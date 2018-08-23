@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/24/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: ece61a3e362ec5e2ff8f415351a0f9257fc72098
-ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
+ms.openlocfilehash: 9a7d20378cac597b748d8a60eb0f0bf17c9ba082
+ms.sourcegitcommit: d27317c16f113e7c111583042ec7e4c5a26adf6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228607"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41746061"
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>將 ASP.NET Core 裝載到 Azure App Service
 
@@ -99,7 +99,7 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 您可以使用下列方法，將 ASP.NET Core 預覽應用程式部署到 Azure App Service：
 
 * [安裝預覽網站延伸模組](#install-the-preview-site-extension)
-* [部署獨立式應用程式](#deploy-the-app-self-contained)
+<!-- * [Deploy the app self-contained](#deploy-the-app-self-contained) -->
 * [將包含 Web 應用程式的 Docker 用於容器](#use-docker-with-web-apps-for-containers)
 
 如果您在使用預覽網站延伸模組時發生任何問題，請在 [GitHub](https://github.com/aspnet/azureintegration/issues/new) 上提出問題。
@@ -130,7 +130,7 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 上圖中顯示的 ASP.NET Core 版本 `2.1.300-preview1-008174` 是範例。 設定網站延伸模組時最新的 ASP.NET Core 預覽版本於您執行 `dotnet --info` 時出現。
 
-`dotnet --info` 會顯示已安裝 [預覽] 之網站擴充功能的路徑。 它會顯示應用程式是從網站擴充功能執行，而不是從預設的 ProgramFiles 位置執行。 如果您看到 ProgramFiles，請重新啟動網站，然後執行 `dotnet --info`。
+`dotnet --info` 會顯示已安裝 [預覽] 之網站延伸模組的路徑。 它會顯示應用程式是從網站擴充功能執行，而不是從預設的 ProgramFiles 位置執行。 如果您看到 ProgramFiles，請重新啟動網站，然後執行 `dotnet --info`。
 
 **搭配使用預覽網站延伸模組與 ARM 範本**
 
@@ -138,14 +138,16 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 [!code-json[Main](index/sample/arm.json?highlight=2)]
 
-### <a name="deploy-the-app-self-contained"></a>部署獨立式應用程式
+<!--
+### Deploy the app self-contained
 
-您可以部署[獨立式應用程式](/dotnet/core/deploying/#self-contained-deployments-scd)，以在部署中包含預覽執行階段。 部署獨立式應用程式時：
+A [self-contained app](/dotnet/core/deploying/#self-contained-deployments-scd) can be deployed that carries the preview runtime in the deployment. When deploying a self-contained app:
 
-* 不需要先準備網站。
-* 應用程式的發行方式必須與針對相依於 Framework 的部署 (其中含有伺服器的共用執行階段和主機) 發行應用程式的方式不同。
+* The site doesn't need to be prepared.
+* The app must be published differently than when publishing for a framework-dependent deployment with the shared runtime and host on the server.
 
-所有 ASP.NET Core 應用程式皆可選配獨立式應用程式。
+Self-contained apps are an option for all ASP.NET Core apps.
+-->
 
 ### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器
 

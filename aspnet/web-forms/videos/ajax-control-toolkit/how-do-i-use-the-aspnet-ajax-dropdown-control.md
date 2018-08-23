@@ -3,17 +3,17 @@ uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-dropdown
 title: '[How Do i:]使用 ASP.NET AJAX 下拉式清單控制項嗎？ | Microsoft Docs'
 author: JoeStagner
 description: 使用 ASP.NET AJAX Control Toolkit 從下拉式清單控制項擴充項，您可以觸發部分 pa 選項的下拉式清單來呈現使用者...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/30/2007
 ms.assetid: a997a9f8-9f71-4b9e-b7ed-f8e3a0daa576
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-dropdown-control
 msc.type: video
-ms.openlocfilehash: 6394818f52509a8784c8d12b54965710f4ece057
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8e253f4213af4a1ffe5e5ee133dec931fcf4a46d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833193"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832217"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-dropdown-control"></a>[How Do i:]使用 ASP.NET AJAX 下拉式清單控制項嗎？
 ====================

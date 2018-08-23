@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/how-do-i/understanding-views-view-data-and-html-helpers
 title: 了解檢視、 檢視資料和 HTML 協助程式 |Microsoft Docs
 author: microsoft
 description: 什麼是 ASP.NET MVC 檢視，它有何不同的 HTML 網頁？ 在本教學課程中，Stephen Walther 會為您介紹檢視，並向您示範如何 t...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/20/2008
 ms.assetid: 81e8ee8e-00ea-4988-9f11-920c1728ee43
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/understanding-views-view-data-and-html-helpers
 msc.type: video
-ms.openlocfilehash: cbed19f0127fafeae156be7da00caf7f4fe453b9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8d34b209c9227f2b004f18891798580f1f5b0211
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813416"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831764"
 ---
 <a name="understanding-views-view-data-and-html-helpers"></a>了解檢視、 檢視資料和 HTML 協助程式
 ====================

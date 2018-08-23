@@ -3,17 +3,17 @@ uid: web-api/overview/odata-support-in-aspnet-web-api/using-select-expand-and-va
 title: 使用 $select，$expand、 和 ASP.NET Web API 2 OData 中的 $value |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/11/2013
 ms.assetid: 43279a80-a96c-4564-b6ea-ad992a2d6828
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/using-select-expand-and-value
 msc.type: authoredcontent
-ms.openlocfilehash: c5c0d374a918706e65254121ba5fa1516afdaf75
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d198ecf40155cba36204bc0810f4735aae6b100b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814455"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833235"
 ---
 <a name="using-select-expand-and-value-in-aspnet-web-api-2-odata"></a>使用 $select，$expand、 和 ASP.NET Web API 2 OData 中的 $value
 ====================

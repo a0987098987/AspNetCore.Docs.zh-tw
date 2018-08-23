@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: 顯示自訂錯誤頁面 (C#) |Microsoft Docs
 author: rick-anderson
 description: 沒有使用者看到的內容中的 ASP.NET web 應用程式的執行階段錯誤發生時？ 答案取決於如何在網站&lt;customErrors&gt;組態...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/09/2009
 ms.assetid: cb061642-faf3-41b2-9372-69e13444d458
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8cd10806b3c803269d00265156ca618aef1db13a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 449b8eb26f3f6018fdd6c6dcc1de1c8d58214ac3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828679"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833854"
 ---
 <a name="displaying-a-custom-error-page-c"></a>顯示自訂錯誤頁面 (C#)
 ====================

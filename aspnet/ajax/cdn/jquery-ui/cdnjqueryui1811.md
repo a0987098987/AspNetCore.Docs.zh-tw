@@ -3,17 +3,17 @@ uid: ajax/cdn/jquery-ui/cdnjqueryui1811
 title: 上的 jQuery UI 1.8.11 Microsoft Ajax CDN |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/23/2014
 ms.assetid: d41d4ae6-a5a5-4615-b567-23f9ace4c80a
 msc.legacyurl: /ajax/cdn/jquery-ui/cdnjqueryui1811
 msc.type: content
-ms.openlocfilehash: 8fadedc1cfb5d1e945dc4ac6749491619038d693
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1b4b3a8e73691c51c11956349579bb14b36096aa
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808867"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831146"
 ---
 <a name="jquery-ui-1811-on-the-microsoft-ajax-cdn"></a>上的 jQuery UI 1.8.11 Microsoft Ajax CDN
 ====================

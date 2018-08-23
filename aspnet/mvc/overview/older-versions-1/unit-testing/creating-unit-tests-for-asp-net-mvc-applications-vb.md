@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-
 title: 建立 ASP.NET MVC 應用程式 (VB) 的單元測試 |Microsoft Docs
 author: StephenWalther
 description: 了解如何建立適用於控制器動作的單元測試。 在本教學課程中，Stephen Walther 會示範如何測試控制器動作傳回 parti...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/19/2008
 ms.assetid: eb35710d-1d99-44ac-b61f-e50af8cb328a
 msc.legacyurl: /mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3a8f142063a7addc8acca2b1a515295e36b26e29
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2bce5456d9c5465156daf511d0f75a68b35cf7d9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837178"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835075"
 ---
 <a name="creating-unit-tests-for-aspnet-mvc-applications-vb"></a>建立單元測試的 ASP.NET MVC 應用程式 (VB)
 ====================

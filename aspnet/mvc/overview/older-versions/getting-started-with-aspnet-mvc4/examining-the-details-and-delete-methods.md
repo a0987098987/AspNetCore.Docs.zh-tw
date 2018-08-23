@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-
 title: 檢查 Details 和 Delete 方法 |Microsoft Docs
 author: Rick-Anderson
 description: 注意： 本教學課程中的更新的版本就可以使用這裡使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 更容易遵循，並示範...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/28/2012
 ms.assetid: 11425ff3-09fc-4efa-be9a-b53bce503460
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: 98aa7b0b198f43bc28d7181af0f0808438d6ef76
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e28a901fec66f03321dd94b6938f12d7ed84d1f9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37834947"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831405"
 ---
 <a name="examining-the-details-and-delete-methods"></a>檢查 Details 和 Delete 方法
 ====================

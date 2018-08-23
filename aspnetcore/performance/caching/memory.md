@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/22/2018
 uid: performance/caching/memory
-ms.openlocfilehash: b57e29965edc791ad4ecfe1b6b863a4a3dbe3f09
-ms.sourcegitcommit: 506a199274e9fe5fb4070b273ba94f29f14cb619
+ms.openlocfilehash: 468e85d3b9fddfa045de1725687a464dd2438ca4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2018
-ms.locfileid: "39332297"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834655"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -34,7 +34,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 ### <a name="cache-guidelines"></a>快取指引
 
 * 程式碼，應一律具有擷取資料的後援選項及**不**取決於快取的值，可供使用。
-* 快取會使用嚇人的資源，而記憶體。 限制快取增長：
+* 快取佔用很少的資源時，記憶體。 限制快取增長：
   * 請勿**不**外部輸入做為快取索引鍵。
   * 您可以使用到期時間，限制快取成長。
   * [使用 SetSize、 大小和 SizeLimit 限制快取大小](#use-setsize-size-and-sizelimit-to-limit-cache-size)
@@ -127,11 +127,11 @@ A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制
 
 下列程式碼會使用`MyMemoryCache`:
 
-[!code-csharp[](memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet)]
+[！ 的程式碼 csharp [] (memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet) [](memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet)]
 
 可以設定快取項目的大小[大小](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.size?view=aspnetcore-2.1#Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_Size)或[SetSize](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryextensions.setsize?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_MemoryCacheEntryExtensions_SetSize_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_System_Int64_)擴充方法：
 
-[!code-csharp[](memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet2&highlight=9,10,14,15)]
+[！ 的程式碼 csharp [] (memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet2 & 反白顯示 = 9、 10、 14、 15) [](memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet2&highlight=9,10,14,15)]
 
 ::: moniker-end
 

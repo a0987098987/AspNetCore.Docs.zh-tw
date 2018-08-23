@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-
 title: 從用戶端程式碼 (VB) 操作 DropShadow 屬性 |Microsoft Docs
 author: wenz
 description: DropShadow 控制項在 AJAX Control Toolkit 擴充具有延伸陰影的面板。 此擴充項的屬性也可以使用用戶端 Javascript 來變更...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 11be4211-2fb9-4e15-b6d4-2aa623d81f3e
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-properties-from-client-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b9220eecca224c2b1e0f19c972c6c2a4dc9c7d35
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d8b8330174f6f49e96c42a0e15eeaf934bf24f87
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37841405"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833029"
 ---
 <a name="manipulating-dropshadow-properties-from-client-code-vb"></a>從用戶端程式碼 (VB) 操作 DropShadow 屬性
 ====================

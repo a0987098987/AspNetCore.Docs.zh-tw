@@ -3,17 +3,17 @@ uid: signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signa
 title: 教學課程： 伺服器廣播與 ASP.NET SignalR 1.x |Microsoft Docs
 author: pfletcher
 description: 本教學課程會示範如何建立使用 ASP.NET SignalR 來提供伺服器廣播的功能的 web 應用程式。 伺服器廣播方法，communic...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/10/2013
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 1f98b35236812aac1362f1e36e60971ff8d896bc
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 76dc2f4d54f6ab4cebbde06dfd611a9b5ee5ae64
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816190"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825562"
 ---
 <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>教學課程： 伺服器廣播與 ASP.NET SignalR 1.x
 ====================
@@ -115,7 +115,7 @@ ms.locfileid: "37816190"
 2. 如果您有 Visual Studio 2012 [ASP.NET 和 Web 工具 2012.2 Update](https://go.microsoft.com/fwlink/?LinkId=279941)，按一下**Web**之下**Visual C#** ，然後選取**SignalR Hub 類別**項目範本。 否則，請選取**類別**範本。
 3. 新類別命名*StockTickerHub.cs*，然後按一下**新增**。
 
-    ![Add StockTickerHub.cs](tutorial-server-broadcast-with-aspnet-signalr/_static/image5.png)
+    ![新增 StockTickerHub.cs](tutorial-server-broadcast-with-aspnet-signalr/_static/image5.png)
 4. 下列程式碼取代範本程式碼：
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample3.cs)]
@@ -295,7 +295,7 @@ SignalR 有內建記錄功能，您可以讓用戶端上，以協助疑難排解
 
     如果您在 Windows 7 (IIS 7.5) 上執行 Internet Explorer 10，傳輸方法是 iframe。
 
-    ![IE 10 Console, IIS 7.5](tutorial-server-broadcast-with-aspnet-signalr/_static/image11.png)
+    ![IE 10 個主控台中，IIS 7.5](tutorial-server-broadcast-with-aspnet-signalr/_static/image11.png)
 
     在 Firefox 中安裝 Firebug 增益集以取得主控台視窗。 如果您在 Windows 8 (IIS 8) 來執行 Firefox 19，傳輸方法是 WebSockets。
 

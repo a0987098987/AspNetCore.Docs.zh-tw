@@ -3,17 +3,17 @@ uid: web-forms/videos/tailspin-spyworks/tailspin-spyworks-display-the-product-li
 title: Tailspin Spyworks-顯示產品清單 |Microsoft Docs
 author: JoeStagner
 description: Joe Stagner 會示範如何在 Tailspin Spyworks 範例 Web Form 應用程式中顯示產品清單。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/09/2010
 ms.assetid: 4c0d920f-e80a-445d-a9da-b603e25d49c4
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-display-the-product-list
 msc.type: video
-ms.openlocfilehash: 4f77a5c52719df7a524264bed4fb7f476fdec933
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a78ef58cc6481f2d9429501e38a7da576c1b38f3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812752"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831136"
 ---
 <a name="tailspin-spyworks---display-the-product-list"></a>Tailspin Spyworks-顯示產品清單
 ====================

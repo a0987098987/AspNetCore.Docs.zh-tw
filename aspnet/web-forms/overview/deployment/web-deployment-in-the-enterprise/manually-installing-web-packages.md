@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/manually-ins
 title: 手動安裝網頁套件 |Microsoft Docs
 author: jrjlee
 description: 本主題描述如何手動匯入網際網路資訊服務 (IIS) web 部署套件。 主題建置和封裝 Web 應用程式...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: f11d22a7-5d32-4ad0-8a9b-276460a61c06
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/manually-installing-web-packages
 msc.type: authoredcontent
-ms.openlocfilehash: 7fd8060104ca4e02919a3fbac135edb3e9396c64
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ca85db5cfb30bc06d6d3b94001a3668088461b87
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833001"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826190"
 ---
 <a name="manually-installing-web-packages"></a>手動安裝網頁套件
 ====================

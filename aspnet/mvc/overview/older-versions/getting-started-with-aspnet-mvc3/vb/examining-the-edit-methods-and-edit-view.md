@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/examining-t
 title: 檢查編輯方法與編輯檢視 (VB) |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/12/2011
 ms.assetid: 5cb3c59b-1e96-464b-b3a8-c55607201872
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 4c0478f077ef22a301d21a5a8ce65d4117ee2348
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 13acaa13d5e696928fbc9834eb355c630ced7162
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815258"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825753"
 ---
 <a name="examining-the-edit-methods-and-edit-view-vb"></a>檢查編輯方法與編輯檢視 (VB)
 ====================

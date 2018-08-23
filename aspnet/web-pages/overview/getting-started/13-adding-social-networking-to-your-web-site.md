@@ -3,17 +3,17 @@ uid: web-pages/overview/getting-started/13-adding-social-networking-to-your-web-
 title: 將社交網路新增至 ASP.NET Web Pages (Razor) 網站 |Microsoft Docs
 author: tfitzmac
 description: 本章說明如何整合您的網站與社交網路服務。 在本章中，您將了解如何讓他人的書籤連結您的網站...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/21/2014
 ms.assetid: 03c342f9-b35c-4d7c-b9ed-cd9aaaffedb6
 msc.legacyurl: /web-pages/overview/getting-started/13-adding-social-networking-to-your-web-site
 msc.type: authoredcontent
-ms.openlocfilehash: e50a35d9770da247d18bbe1b3660b7bd5d46d8e9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 684fcfdde0aefeb168398bdf7a42f9fdbd6e48b3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822440"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832569"
 ---
 <a name="adding-social-networking-to-aspnet-web-pages-razor-sites"></a>加入社交網路的 ASP.NET Web Pages (Razor) 網站
 ====================

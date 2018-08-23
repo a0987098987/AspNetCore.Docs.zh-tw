@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/accordion/databinding-to-an-accordi
 title: 資料繫結至 Accordion (VB) |Microsoft Docs
 author: wenz
 description: 在 AJAX Control Toolkit Accordion 控制項提供多個窗格，並可讓使用者一次顯示其中一個。 面板通常宣告 w...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: b19f0875-7d3e-4ecf-baa1-a0c693c765b3
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/accordion/databinding-to-an-accordion-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e21eeacf776111656eb539b1fef8203db1b761c7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 948741e3b8618a642c440a527fddef825faf595e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805884"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833027"
 ---
 <a name="databinding-to-an-accordion-vb"></a>資料繫結至 Accordion (VB)
 ====================

@@ -3,17 +3,17 @@ uid: web-pages/readme/beta3
 title: Web Matrix 及 ASP.NET Web Pages (Razor) Beta 3 版讀我檔案 |Microsoft Docs
 author: rick-anderson
 description: Web Matrix 及 ASP.NET Web Pages (Razor) Beta 3 版讀我檔案
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/10/2011
 ms.assetid: ffa3d5c9-91e5-4da3-b409-560b0c7fbbf0
 msc.legacyurl: /web-pages/readme/beta3
 msc.type: content
-ms.openlocfilehash: 16b324e555b5450fc1e05c63e7e19985a2d02b89
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3d729d1b0615533dddceff484acb3d42247f6cab
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831828"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831407"
 ---
 <a name="web-matrix-and-aspnet-web-pages-razor-beta-3-release-readme"></a>Web Matrix 及 ASP.NET Web Pages (Razor) Beta 3 版讀我檔案
 ====================

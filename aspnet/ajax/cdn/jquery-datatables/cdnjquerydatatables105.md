@@ -3,17 +3,17 @@ uid: ajax/cdn/jquery-datatables/cdnjquerydatatables105
 title: jQuery DataTables 1.10.5 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/10/2015
 ms.assetid: 7a06c2a5-fd96-436c-baa1-2d148b8f7116
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables105
 msc.type: content
-ms.openlocfilehash: d09f1de126b9b85e4db723411082618af017d790
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 91bbf8167cd3bdc331d4d6f7d0a400a2424bf451
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818174"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825718"
 ---
 <a name="jquery-datatables-1105"></a>jQuery DataTables 1.10.5
 ====================

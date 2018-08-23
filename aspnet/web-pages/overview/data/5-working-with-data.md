@@ -3,17 +3,17 @@ uid: web-pages/overview/data/5-working-with-data
 title: 簡介使用的資料庫，在 ASP.NET Web Pages (Razor) 網站 |Microsoft Docs
 author: tfitzmac
 description: 本章說明如何從資料庫存取資料，並顯示其使用 ASP.NET Web Pages。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/18/2014
 ms.assetid: 673d502f-2c16-4a6f-bb63-dbfd9a77ef47
 msc.legacyurl: /web-pages/overview/data/5-working-with-data
 msc.type: authoredcontent
-ms.openlocfilehash: 5185769530cf78c301f2ac43b25dba6e77ca75a2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b6db23c6f9bba418dff7e6b50bbc1c54f13ccb70
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808502"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833210"
 ---
 <a name="introduction-to-working-with-a-database-in-aspnet-web-pages-razor-sites"></a>簡介使用的資料庫，在 ASP.NET Web Pages (Razor) 網站
 ====================

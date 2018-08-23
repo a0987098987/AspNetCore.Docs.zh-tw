@@ -3,17 +3,17 @@ uid: signalr/overview/testing-and-debugging/unit-testing-signalr-applications
 title: 單元測試 SignalR 應用程式 |Microsoft Docs
 author: pfletcher
 description: 本文說明如何使用 SignalR 2.0 的單元測試功能。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2014
 ms.assetid: d1983524-e0d5-4ee6-9d87-1f552f7cb964
 msc.legacyurl: /signalr/overview/testing-and-debugging/unit-testing-signalr-applications
 msc.type: authoredcontent
-ms.openlocfilehash: f46c6edd2002bcc6e62f4e4fe313c9e50e35aaff
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c6c57026a54775857921075b176e893b5449d4a5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840901"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831752"
 ---
 <a name="unit-testing-signalr-applications"></a>單元測試的 SignalR 應用程式
 ====================

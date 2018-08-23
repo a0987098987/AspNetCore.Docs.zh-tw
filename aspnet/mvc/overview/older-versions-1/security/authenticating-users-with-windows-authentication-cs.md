@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/security/authenticating-users-with-windows-au
 title: 驗證使用者使用 Windows 驗證 (C#) |Microsoft Docs
 author: microsoft
 description: 了解如何在 MVC 應用程式的內容中使用 Windows 驗證。 您了解如何啟用 Windows 驗證，在您的應用程式 web 共同...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: 418bb07e-f369-4119-b4b0-08f890f7abb2
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: dd5cea6b23aad668307326a46db91d8ee5526dcb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0f46af21841a60fe4257cb30b78abdfd421c66bd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802071"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832022"
 ---
 <a name="authenticating-users-with-windows-authentication-c"></a>使用 Windows 驗證 (C#) 驗證使用者
 ====================

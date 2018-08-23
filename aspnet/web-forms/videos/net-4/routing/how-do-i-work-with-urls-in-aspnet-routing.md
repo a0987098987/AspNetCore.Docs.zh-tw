@@ -3,17 +3,17 @@ uid: web-forms/videos/net-4/routing/how-do-i-work-with-urls-in-aspnet-routing
 title: How Do i： 使用 ASP.NET 路由中的 Url？ | Microsoft Docs
 author: rick-anderson
 description: 在這段影片 Chris Pels 會示範如何使用 ASP.NET 路由的網站中指定的 Url。 首先，在建立網站，且路由定義在 gl...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/15/2010
 ms.assetid: 08f9d0a7-cfa0-4914-a672-8a64295d7ba8
 msc.legacyurl: /web-forms/videos/net-4/routing/how-do-i-work-with-urls-in-aspnet-routing
 msc.type: video
-ms.openlocfilehash: 12b1b0bc41365b480c0104c1a1b00fa5ef515137
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d9b0e086cceba5e2f7d372fb193eeeca891b5eb1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818549"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833840"
 ---
 <a name="how-do-i-work-with-urls-in-aspnet-routing"></a>How Do i： 使用 ASP.NET 路由中的 Url？
 ====================

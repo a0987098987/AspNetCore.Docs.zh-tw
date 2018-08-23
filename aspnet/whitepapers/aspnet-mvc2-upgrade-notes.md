@@ -3,17 +3,17 @@ uid: whitepapers/aspnet-mvc2-upgrade-notes
 title: 升級至 ASP.NET MVC 2 的 ASP.NET MVC 1.0 應用程式 |Microsoft Docs
 author: rick-anderson
 description: 本文件說明兩者如何升級 ASP.NET MVC 1.0 應用程式以 ASP.NET MVC 2 手動並使用精靈。 這份文件也適用於 d...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/08/2010
 ms.assetid: f1a01759-d251-4b09-8835-e112e336c6dd
 msc.legacyurl: /whitepapers/aspnet-mvc2-upgrade-notes
 msc.type: content
-ms.openlocfilehash: fe1696cd8f98f2ff253d385b62a6bcd74b536d33
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3de69df7e80037de35c2609232f4574bc9d03c80
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823867"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832612"
 ---
 <a name="upgrading-an-aspnet-mvc-10-application-to-aspnet-mvc-2"></a>升級至 ASP.NET MVC 2 的 ASP.NET MVC 1.0 應用程式
 ====================

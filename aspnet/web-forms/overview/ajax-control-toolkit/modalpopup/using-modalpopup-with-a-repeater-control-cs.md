@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/modalpopup/using-modalpopup-with-a-
 title: 使用 ModalPopup 與重複項控制項 (C#) |Microsoft Docs
 author: wenz
 description: AJAX Control Toolkit 之 ModalPopup 控制項提供簡單的方式來建立使用用戶端表示強制回應快顯。 此外，也可以使用此 contr....
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: d686d84a-1c58-492e-8a77-3eb5a0cfe918
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/using-modalpopup-with-a-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 72d0f16d22911d867f9a91faf273e236453e7b3a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c2ffa22fb8d9d985d99d9f8d2298d317e6caf469
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833620"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834268"
 ---
 <a name="using-modalpopup-with-a-repeater-control-c"></a>使用 ModalPopup 與重複項控制項 (C#)
 ====================

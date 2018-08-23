@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/introduction/adding-a-new-field
 title: 加入新的欄位。 |Microsoft Docs
 author: Rick-Anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/17/2013
 ms.assetid: 4085de68-d243-4378-8a64-86236ea8d2da
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: a4eb759646fc77bbba687d8b4914465d58cd3aaa
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 7326f3d80030cdc5db1c25efc31f59f5b51594f4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38151453"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833230"
 ---
 <a name="adding-a-new-field"></a>新增欄位
 ====================
@@ -118,7 +118,7 @@ Code First 移轉會建立另一個類別檔案中的*移轉*資料夾 (同名 *
 
 您也需要更新檢視範本，以便在瀏覽器檢視中顯示、建立和編輯新的 `Rating` 屬性。
 
-開啟 *\Views\Movies\Index.cshtml* 檔案，並新增`<th>Rating</th>`資料行標題後方**價格**資料行。 然後新增`<td>`要呈現的範本結尾附近的資料行`@item.Rating`值。 以下是 哪些更新 *Index.cshtml* 檢視範本看起來像：
+開啟 *\Views\Movies\Index.cshtml* 檔案，並新增`<th>Rating</th>`資料行標題後方**價格**資料行。 然後新增`<td>`要呈現的範本結尾附近的資料行`@item.Rating`值。 以下是 哪些更新*Index.cshtml*檢視範本看起來像：
 
 [!code-cshtml[Main](adding-a-new-field/samples/sample8.cshtml?highlight=31-33,52-54)]
 
@@ -141,7 +141,7 @@ Code First 移轉會建立另一個類別檔案中的*移轉*資料夾 (同名 *
 
 有幾個方法可以解決這個錯誤：
 
-1. 讓 Entity Framework 自動卸除資料庫，並重新依據新的模型類別結構描述來建立資料庫。 在開發週期早期，當您在測試資料庫上進行開發時，這個方法會很方便；其可讓您一併調整模型和資料庫結構描述，更加快速。 它的缺點是您在資料庫中現有的資料遺失，因此您*不*想要在生產資料庫上使用這種方法 ！ 使用初始設定式將測試資料自動植入資料庫，通常是開發應用程式的有效方式。 如需有關 Entity Framework 資料庫初始設定式的詳細資訊，請參閱 < [ASP.NET MVC/Entity Framework 教學課程](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+1. 讓 Entity Framework 自動卸除資料庫，並重新依據新的模型類別結構描述來建立資料庫。 在開發週期早期，當您在測試資料庫上進行開發時，這個方法會很方便；其可讓您一併調整模型和資料庫結構描述，更加快速。 它的缺點是您在資料庫中現有的資料遺失，因此您 *不* 想要在生產資料庫上使用這種方法 ！ 使用初始設定式將測試資料自動植入資料庫，通常是開發應用程式的有效方式。 如需有關 Entity Framework 資料庫初始設定式的詳細資訊，請參閱 < [ASP.NET MVC/Entity Framework 教學課程](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 2. 您可明確修改現有資料庫的結構描述，使其符合模型類別。 這種方法的優點是可以保留您的資料。 您可以手動方式或藉由建立資料庫變更指令碼來進行這項變更。
 3. 使用 Code First 移轉來更新資料庫結構描述。
 

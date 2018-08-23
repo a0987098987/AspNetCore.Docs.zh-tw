@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-conten
 title: 將動態內容新增至快取的頁面 (C#) |Microsoft Docs
 author: microsoft
 description: 了解如何混合使用動態和快取的內容，在相同的頁面。 快取後替代作業可讓您顯示橫幅廣告 o 之類的動態內容...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: 2ddd4407-d143-4a94-877c-21771bfb97a6
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5c6d5a223a465a00a08f58a188a16cbf3c310431
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a03f943b936c68215d65dca92e62431642226993
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805577"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833185"
 ---
 <a name="adding-dynamic-content-to-a-cached-page-c"></a>將動態內容新增至快取的頁面 (C#)
 ====================

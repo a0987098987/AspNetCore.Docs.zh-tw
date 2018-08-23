@@ -3,17 +3,17 @@ uid: web-forms/pluralsight
 title: Web Form 的 Pluralsight 訓練影片 |Microsoft Docs
 author: rick-anderson
 description: 從 Pluralsight 這個 ASP.NET Web Form 開發課程的 web Form 影片訓練為您介紹數個重要的技術，您需要知道為.NET 開發...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/16/2011
 ms.assetid: c71bb9b2-7136-4ce6-a40a-cc4d9978cfb7
 msc.legacyurl: /web-forms/pluralsight
 msc.type: content
-ms.openlocfilehash: 502aa3ea99b768a58172809cd049380b480f71e3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5aca0d027b735e88689633b0d34b0009566c8913
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811425"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831762"
 ---
 <a name="web-forms-video-training-from-pluralsight"></a>Web Form 的 Pluralsight 訓練影片
 ====================

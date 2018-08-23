@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/how-do-i/creating-model-classes-with-linq-to-sql
 title: 使用 LINQ to SQL 建立模型類別 |Microsoft Docs
 author: StephenWalther
 description: 了解如何利用 Microsoft LINQ to SQL 建立資料存取類別。 在此影片教學課程中，您會學習如何使用 LINQ to SQL DataContext...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/20/2008
 ms.assetid: d33d89ca-bb2a-4fb2-a0fa-0b423d710acb
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/creating-model-classes-with-linq-to-sql
 msc.type: video
-ms.openlocfilehash: 793d89e6ca6f19ee36de38fa8941aef6c7b0d0ac
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e5fd578859fa9cc0d70a12379fc931ad0b9e4d84
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815404"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833231"
 ---
 <a name="creating-model-classes-with-linq-to-sql"></a>使用 LINQ to SQL 建立模型類別
 ====================

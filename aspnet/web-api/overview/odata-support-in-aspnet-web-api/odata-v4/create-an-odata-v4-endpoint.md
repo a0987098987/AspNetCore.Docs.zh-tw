@@ -3,17 +3,17 @@ uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v
 title: 建立 OData v4 端點使用 ASP.NET Web API 2.2 |Microsoft Docs
 author: MikeWasson
 description: 開放式資料通訊協定 (OData) 是網站的資料存取通訊協定。 OData 提供統一的方式來查詢及管理透過 CRUD 作業的資料集...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/24/2014
 ms.assetid: 1e1927c0-ded1-4752-80fd-a146628d2f09
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint
 msc.type: authoredcontent
-ms.openlocfilehash: 04fad9b569972f11256c6b7288db34d4996ca8bf
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7f2d0b8fa8ac290e5018cb5237b1fedb5f40eeb0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804208"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832219"
 ---
 <a name="create-an-odata-v4-endpoint-using-aspnet-web-api-22"></a>建立 OData v4 端點使用 ASP.NET Web API 2.2
 ====================

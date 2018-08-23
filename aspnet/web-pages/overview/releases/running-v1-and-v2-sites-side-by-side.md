@@ -3,17 +3,17 @@ uid: web-pages/overview/releases/running-v1-and-v2-sites-side-by-side
 title: 執行不同版本的 ASP.NET Web Pages (Razor) 並排顯示 |Microsoft Docs
 author: tfitzmac
 description: 這篇文章說明如何在相同電腦或伺服器上執行 ASP.NET Web Pages (Razor) 網站，當網站已設定為使用不同版本...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/10/2014
 ms.assetid: a861409b-4ae6-4868-9e09-87edfac3535f
 msc.legacyurl: /web-pages/overview/releases/running-v1-and-v2-sites-side-by-side
 msc.type: authoredcontent
-ms.openlocfilehash: 86b1d5babac747eb4fa7ba8abde0e6155c8b17fb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9021f9b7a68b8b20f7f2fbcd5649cc7226401a1b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37810052"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831140"
 ---
 <a name="running-different-versions-of-aspnet-web-pages-razor-side-by-side"></a>並存執行不同版本的 ASP.NET Web Pages (Razor)
 ====================

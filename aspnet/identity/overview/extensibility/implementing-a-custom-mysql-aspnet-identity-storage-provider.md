@@ -3,17 +3,17 @@ uid: identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity
 title: 實作自訂的 MySQL ASP.NET Identity 儲存體提供者 |Microsoft Docs
 author: raquelsa
 description: ASP.NET 身分識別是一種可延伸的系統可讓您建立自己的儲存體提供者，並插入您的應用程式中而不需要重新使用的應用...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/22/2015
 ms.assetid: 248f5fe7-39ba-40ea-ab1e-71a69b0bd649
 msc.legacyurl: /identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
 msc.type: authoredcontent
-ms.openlocfilehash: e5784991a95dcff0db38d87707bc83555da716df
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 358b1a3b7277f21c63a1d395f2a5fce79bbe0d56
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805671"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834235"
 ---
 <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a>實作自訂的 MySQL ASP.NET Identity 儲存體提供者
 ====================

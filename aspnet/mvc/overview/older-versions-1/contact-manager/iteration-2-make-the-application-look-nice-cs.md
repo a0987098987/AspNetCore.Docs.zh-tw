@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-applicat
 title: '反覆項目 #2 – 讓應用程式看起來不錯 (C#) |Microsoft Docs'
 author: microsoft
 description: 這個反覆項目，我們以改善應用程式的外觀的修改預設的 ASP.NET MVC 檢視主版頁面和階層式樣式表。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2009
 ms.assetid: f1173feb-11ee-4017-8f3f-86599ea6ae13
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-application-look-nice-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 89dc31d8ab0d73aac3a79a0a942121bb9a240eb7
-ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
+ms.openlocfilehash: c8bbd20cb64fb27a0a6de2cdc14743f6961f4bf0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396136"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832220"
 ---
 <a name="iteration-2--make-the-application-look-nice-c"></a>反覆項目 #2 – 讓應用程式看起來不錯 (C#)
 ====================

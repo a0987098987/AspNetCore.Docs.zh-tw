@@ -3,17 +3,17 @@ uid: signalr/overview/releases/upgrading-signalr-1x-projects-to-20
 title: 將 SignalR 1.x 專案升級至第 2 版 |Microsoft Docs
 author: pfletcher
 description: 本主題描述如何將現有的 SignalR 1.x 專案升級至 SignalR 2.x 中，以及如何針對升級的程序期間可能發生的問題進行疑難排解...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2014
 ms.assetid: adcfef99-9bc5-489d-a91b-9b7c2bc35e04
 msc.legacyurl: /signalr/overview/releases/upgrading-signalr-1x-projects-to-20
 msc.type: authoredcontent
-ms.openlocfilehash: 393beb1ef696bd2dfae25789f79a67157780a219
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 84155a4c171a2ac2149dbbf4237b6561d2814aa0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824159"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825732"
 ---
 <a name="upgrading-signalr-1x-projects-to-version-2"></a>將 SignalR 1.x 專案升級至第 2 版
 ====================

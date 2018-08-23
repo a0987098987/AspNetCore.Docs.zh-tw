@@ -3,17 +3,17 @@ uid: whitepapers/mvc3-release-notes
 title: ASP.NET MVC 3 | Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/06/2010
 ms.assetid: f44c166e-7e91-48a0-a6f8-d9285f3594e5
 msc.legacyurl: /whitepapers/mvc3-release-notes
 msc.type: content
-ms.openlocfilehash: e6ad37d51e0475631314c1110f13fe8aef2f954c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7342b5f4a7e2327f3f3850941510a6e46ec30842
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831066"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830983"
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================

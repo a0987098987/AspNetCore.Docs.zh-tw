@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postba
 title: 使用自動回傳與 CascadingDropDown (C#) |Microsoft Docs
 author: wenz
 description: 在 AJAX Control Toolkit CascadingDropDown 控制擴充 DropDownList 控制項以讓一個 DropDownList 載入中的變更相關聯 anoth 中的值...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 6755d8d9-14be-4a1d-86e5-1a6110f3dea8
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bece4f78b46c44db988e04e0e987450d94c37aab
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7c84951691935d9976f961f65f96fa70633ecbce
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819376"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831174"
 ---
 <a name="using-auto-postback-with-cascadingdropdown-c"></a>使用自動回傳與 CascadingDropDown (C#)
 ====================

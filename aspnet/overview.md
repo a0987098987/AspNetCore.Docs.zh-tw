@@ -4,17 +4,17 @@ title: ASP.NET 概觀 |Microsoft Docs
 author: rick-anderson
 description: ASP.NET 中，免費的架構，用於建立網站、 web 應用程式和 web Api 的簡介。
 ms.assetid: 3a309468-f1ca-4e51-b9c3-536af79d7a8b
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/12/2010
 ms.technology: aspnet
 msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: d477db5f38fff6549f0a7f62963a48ee89b74101
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5bdebcc226050afc2469840dc4a4dc97ec6b80b2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809481"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833194"
 ---
 # <a name="aspnet-overview"></a>ASP.NET 概觀
 

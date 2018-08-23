@@ -3,17 +3,17 @@ uid: web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-fac
 title: 建立 ASP.NET Web Forms 應用程式使用 SMS 雙因素驗證 (C#) |Microsoft Docs
 author: Erikre
 description: 本教學課程會示範如何建置使用雙因素驗證的 ASP.NET Web Forms 應用程式。 本教學課程已設計為來補充本教學課程標題為 Cr...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/09/2014
 ms.assetid: 716264ae-ab72-45de-bfc5-53a6237089cf
 msc.legacyurl: /web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: 16045b116ca5c797e7840f2ee5944e5f2c6282eb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7ad3b7a453a40f2708902ae5b9e5cb75b931d54d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803545"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831759"
 ---
 <a name="create-an-aspnet-web-forms-app-with-sms-two-factor-authentication-c"></a>建立 ASP.NET Web Forms 應用程式使用 SMS 雙因素驗證 (C#)
 ====================
@@ -65,7 +65,7 @@ ms.locfileid: "37803545"
     [!code-xml[Main](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/samples/sample1.xml?highlight=2,6-10)]
 
     > [!WARNING]
-    > 安全性-機密資料絕不儲存在原始程式碼中。 在此範例中，帳戶和認證會儲存在**appSettings**一節*Web.config*檔案。 在 Azure 上，您可以安全地儲存這些值在**[設定](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** 在 Azure 入口網站中的索引標籤。 如需相關資訊，請參閱 Rick Anderson 主題[最佳做法將密碼和其他機密資料部署到 ASP.NET 和 Azure](https://go.microsoft.com/fwlink/?LinkId=513141)。
+    > 安全性-機密資料絕不儲存在原始程式碼中。 在此範例中，帳戶和認證會儲存在**appSettings**一節*Web.config*檔案。 在 Azure 上，您可以安全地儲存這些值在 **[設定](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** 在 Azure 入口網站中的索引標籤。 如需相關資訊，請參閱 Rick Anderson 主題[最佳做法將密碼和其他機密資料部署到 ASP.NET 和 Azure](https://go.microsoft.com/fwlink/?LinkId=513141)。
 5. 設定`SmsService`類別內*應用程式\_Start\IdentityConfig.cs*檔案進行下列變更中反白顯示的黃色： 
 
     [!code-csharp[Main](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/samples/sample2.cs?highlight=5-17)]

@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-create-a-reusable-component-for-sending-
 title: '[How Do i:]建立可重複使用的元件，以便將電子郵件傳送至通訊群組清單 |Microsoft Docs'
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何建立傳送電子郵件給收件者清單可以用於多個網頁和網站的元件。 Firs...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/04/2008
 ms.assetid: 13dd3a26-c210-432e-91fe-355c979060b3
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list
 msc.type: video
-ms.openlocfilehash: 71bed3d232703bbab0fd12414985a56f69af05f5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 70ec234f3c610027dd14995917b2757f4b8a63c5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812710"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831753"
 ---
 <a name="how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list"></a>[How Do i:]建立可重複使用的元件，以便將電子郵件傳送至通訊群組清單
 ====================

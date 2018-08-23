@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-35/how-do-i/how-do-i-advance-cascading-style-sheet-
 title: '[How Do i:]前進階層式樣式表功能和管理 |Microsoft Docs'
 author: rick-anderson
 description: 在這段影片中，我們將建置在基本階層式樣式表來自前一段影片。 我們會前進的基本概念以外，我們剛剛建立的項目和...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/14/2008
 ms.assetid: 6a7e8bea-2a0d-4011-ad71-3f3b5f152fe4
 msc.legacyurl: /web-forms/videos/aspnet-35/how-do-i/how-do-i-advance-cascading-style-sheet-features-and-management
 msc.type: video
-ms.openlocfilehash: 0a2094ceef8973cf0c9445bff8fb400c1d5612c1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b670ed68bf75d52df9696288e628d6ae07eedb3e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37836515"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833195"
 ---
 <a name="how-do-i-advance-cascading-style-sheet-features-and-management"></a>[How Do i:]前進階層式樣式表功能和管理
 ====================

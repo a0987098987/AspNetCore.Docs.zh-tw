@@ -3,17 +3,17 @@ uid: web-pages/overview/routing/creating-readable-urls-in-aspnet-web-pages-sites
 title: 建立可讀取的 Url，在 ASP.NET Web Pages (Razor) 網站 |Microsoft Docs
 author: tfitzmac
 description: 本文說明在 ASP.NET Web Pages (Razor) 網站，然後如何讓您使用更容易讀取與更好的 SEO 的 Url 路由。 將項目方法...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/17/2014
 ms.assetid: a8aac1ac-89de-4415-afe0-97a41c6423d2
 msc.legacyurl: /web-pages/overview/routing/creating-readable-urls-in-aspnet-web-pages-sites
 msc.type: authoredcontent
-ms.openlocfilehash: 3304a226e374618a567e69ac72448a9964a34c47
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b8405283dc5bf44a4cd8d1122d327346774d95e8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809867"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831400"
 ---
 <a name="creating-readable-urls-in-aspnet-web-pages-razor-sites"></a>在 ASP.NET Web Pages (Razor) 網站中建立可讀取的 Url
 ====================

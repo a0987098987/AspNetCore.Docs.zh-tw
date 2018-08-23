@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: 記錄錯誤的詳細資料，使用 ELMAH (C#) |Microsoft Docs
 author: rick-anderson
 description: 錯誤記錄模組和處理常式 (ELMAH) 提供了另一種方法來記錄在生產環境中的執行階段錯誤。 ELMAH 是免費、 開放原始碼的錯誤...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/09/2009
 ms.assetid: 11f6fe44-64ef-4a38-a3b4-35c7bb992352
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2432b22bd5dec1668fdb134eaeb92e372062ddda
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4337500e0da3c6a75737438f3eeed731350847dd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37834120"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832582"
 ---
 <a name="logging-error-details-with-elmah-c"></a>使用 ELMAH (C#) 中記錄錯誤的詳細資料
 ====================

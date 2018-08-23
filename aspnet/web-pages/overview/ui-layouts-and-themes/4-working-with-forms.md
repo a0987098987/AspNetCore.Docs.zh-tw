@@ -3,17 +3,17 @@ uid: web-pages/overview/ui-layouts-and-themes/4-working-with-forms
 title: 使用 ASP.NET Web Pages (Razor) 網站中的 HTML 表單 |Microsoft Docs
 author: tfitzmac
 description: 表單是您在其中放置使用者輸入控制項，例如文字方塊、 核取方塊、 選項按鈕和下拉式清單的 HTML 文件區段。 使用表單北...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/10/2014
 ms.assetid: f3f4b8c8-e8f6-4474-ad94-69228a6c01ee
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/4-working-with-forms
 msc.type: authoredcontent
-ms.openlocfilehash: 4658e80d63c9c3665f197071f3f3d1420362e4a3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3f4effecb3b871f1bd7db1cd2a7aab6eeca80c50
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820281"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832568"
 ---
 <a name="working-with-html-forms-in-aspnet-web-pages-razor-sites"></a>使用 ASP.NET Web Pages (Razor) 網站中的 HTML 表單
 ====================

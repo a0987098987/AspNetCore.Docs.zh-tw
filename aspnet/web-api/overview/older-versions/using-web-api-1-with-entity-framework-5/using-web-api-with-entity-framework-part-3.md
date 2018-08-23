@@ -3,17 +3,17 @@ uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/usi
 title: 第 3 部分： 建立管理員控制器 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/04/2012
 ms.assetid: 6b9ae3c4-0274-4170-a1bb-9df9c546b2a9
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: caf7649f2e420b4063966fd1a371c3d9a5eb4d04
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7ad0ec27021514b447e569e479a9e9127e3f75fa
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815453"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832975"
 ---
 <a name="part-3-creating-an-admin-controller"></a>第 3 部分： 建立管理員控制器
 ====================

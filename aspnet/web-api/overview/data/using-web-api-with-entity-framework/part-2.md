@@ -3,17 +3,17 @@ uid: web-api/overview/data/using-web-api-with-entity-framework/part-2
 title: 新增模型和控制器 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/16/2014
 ms.assetid: 88908ff8-51a9-40eb-931c-a8139128b680
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 31e0fbf65c74a18677588cfa412dc34f7b25f78f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 162ef2cd4ba11040e1bc938617a36495489ba5bc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806354"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825782"
 ---
 <a name="add-models-and-controllers"></a>新增模型和控制器
 ====================

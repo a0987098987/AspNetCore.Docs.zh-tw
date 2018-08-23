@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/music-store/mvc-music-store-part-2-controllers
 title: MVC Music 市集第 2 部分： 控制站 |Microsoft Docs
 author: jongalloway
 description: Jon 會 MVC Music Store 教學課程中建立一些基本的控制器動作。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/22/2010
 ms.assetid: 2849e269-af4f-4e87-a07e-0b9cb01b4241
 msc.legacyurl: /mvc/videos/mvc-2/music-store/mvc-music-store-part-2-controllers
 msc.type: video
-ms.openlocfilehash: b248d8e42a02e3696cf6ef63bd78c3a9ed339f38
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: edcf75c06480085a1bc43a9fffc38c0285c09a61
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814773"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831199"
 ---
 <a name="mvc-music-store-part-2-controllers"></a>MVC Music 市集第 2 部分： 控制站
 ====================

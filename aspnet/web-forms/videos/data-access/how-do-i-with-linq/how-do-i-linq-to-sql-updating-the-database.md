@@ -3,17 +3,17 @@ uid: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updati
 title: '[How Do i:]LINQ to SQL： 更新資料庫 |Microsoft Docs'
 author: scottstanfield
 description: 在這段影片，我示範了如何建立、 更新，並刪除資料錄透過 LINQ，簡單的交易之間關聯性和自訂資料行的更新和...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/15/2007
 ms.assetid: d37b9859-1fc1-4669-89ea-b16f3c349d82
 msc.legacyurl: /web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-the-database
 msc.type: video
-ms.openlocfilehash: c015991a3a12b6f523467ed947e0f72f990ab457
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e50420921bc3e88c51f86ad0ea5aade99fee552a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829657"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834198"
 ---
 <a name="how-do-i-linq-to-sql-updating-the-database"></a>[How Do i:]LINQ to SQL： 更新資料庫
 ====================

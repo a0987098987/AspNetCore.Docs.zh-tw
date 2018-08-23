@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-7
 title: 第 7 節： 成員資格和授權 |Microsoft Docs
 author: jongalloway
 description: 本教學課程系列會詳細說明所有建置 ASP.NET MVC Music 市集範例應用程式所採取的步驟。 第 7 節涵蓋的成員資格和授權。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/13/2010
 ms.assetid: c8511ebe-68bc-4240-87c3-d5ced84a3f37
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 1f2ad9de3a21366931efe6ca2466f4efc23a6192
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 44205f0ef59e00ad9fb1c45fdc0ba8934b5804cc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802535"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833004"
 ---
 <a name="part-7-membership-and-authorization"></a>第 7 節： 成員資格和授權
 ====================

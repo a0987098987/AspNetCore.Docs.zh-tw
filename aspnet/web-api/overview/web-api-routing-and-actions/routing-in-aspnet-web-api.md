@@ -3,17 +3,17 @@ uid: web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api
 title: ASP.NET Web API 中的路由 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/11/2012
 ms.assetid: 0675bdc7-282f-4f47-b7f3-7e02133940ca
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: ed9c575c448563307a0657e734076962fe067164
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 458f9a6369fe97bab33d70bf31bd470b1b0e593c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825404"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831205"
 ---
 <a name="routing-in-aspnet-web-api"></a>ASP.NET Web API 中的路由
 ====================

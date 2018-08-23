@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-cs
 title: 建立評等控制項 (C#) |Microsoft Docs
 author: wenz
 description: 許多網站中，從電子商務社群網站，以提供使用者速率文件或項目。 這通常需要一些編碼工作，但我們確實有...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 969fb28f-2bff-4fc4-b24a-27f5e2534a37
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 67c66d2a28a247493a0b1ea67e15935c27af80ae
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5776101d9e40f999806aefa5a9529dbef21af161
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830950"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833816"
 ---
 <a name="creating-a-rating-control-c"></a>建立評等控制項 (C#)
 ====================

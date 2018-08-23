@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: 使用 ASP.NET 狀況監控 (VB) 中記錄錯誤的詳細資料 |Microsoft Docs
 author: rick-anderson
 description: Microsoft 的健全狀況監視系統會提供簡單且可自訂的方式來記錄各種 web 事件，包括未處理的例外狀況。 本教學課程將逐步引導儲存...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/09/2009
 ms.assetid: 09a6c74e-936a-4c04-8547-5bb313a4e4a3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a19c1dc6ad5b3b45501befded4d8f14f7549b019
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f9aeeb0b3d21707324d239efad4deffcf0f7fead
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809919"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832622"
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-vb"></a>記錄錯誤的詳細資料，使用 ASP.NET 狀況監控 (VB)
 ====================

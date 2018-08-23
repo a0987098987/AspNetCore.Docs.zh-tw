@@ -3,17 +3,17 @@ uid: web-forms/videos/building-35-applications/css
 title: CSS |Microsoft Docs
 author: JoeStagner
 description: 階層式樣式表是不可或缺現代網頁程式開發和 Visual Web Developer 2008 包含一組功能強大的 CSS 建置功能，以協助...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/30/2009
 ms.assetid: 50a55e3b-3f5c-429b-baf9-730221e9ef4c
 msc.legacyurl: /web-forms/videos/building-35-applications/css
 msc.type: video
-ms.openlocfilehash: 48054d646e58c09452660067ffd52133fb011976
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f11d3a72db7adc376cf1213eba1f1a820471305f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833977"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832990"
 ---
 <a name="css"></a>CSS
 ====================

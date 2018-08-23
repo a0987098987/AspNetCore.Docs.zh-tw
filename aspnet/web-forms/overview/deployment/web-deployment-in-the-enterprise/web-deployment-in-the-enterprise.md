@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployme
 title: Web 在企業中的部署 |Microsoft Docs
 author: jrjlee
 description: 本教學課程說明如何以符合您管理的部署，提供企業級 web 應用程式時會遇到的挑戰的許多...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: b8283698-7b82-42a8-8d83-3aeb18ca7fcc
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
 msc.type: authoredcontent
-ms.openlocfilehash: 2cb8cb12ec5af376b58b672813af8626cb0f95d8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 735cc5ac37e369e6149c526174c3f74a08db9758
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806547"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832624"
 ---
 <a name="web-deployment-in-the-enterprise"></a>在企業中的 web 部署
 ====================

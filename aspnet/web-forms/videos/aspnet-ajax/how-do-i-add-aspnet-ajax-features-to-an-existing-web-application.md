@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/how-do-i-add-aspnet-ajax-features-to-an-existi
 title: '[How Do i:]將 ASP.NET AJAX 功能新增至現有的 Web 應用程式嗎？ | Microsoft Docs'
 author: JoeStagner
 description: 了解如何輕鬆地將 Microsoft ASP.NET AJAX 功能新增至現有的 ASP.NET 應用程式。 這段影片示範，不是需要變更您的服務...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/26/2007
 ms.assetid: 5ef4c879-aa90-4492-859b-d4568b87bab3
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-add-aspnet-ajax-features-to-an-existing-web-application
 msc.type: video
-ms.openlocfilehash: fbdbdae576944e24f2effb42f7e9c1200de6c31c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: fde32e7eeca665bbe9f127a76e8883271bb63d47
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814769"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832981"
 ---
 <a name="how-do-i-add-aspnet-ajax-features-to-an-existing-web-application"></a>[How Do i:]將 ASP.NET AJAX 功能新增至現有的 Web 應用程式嗎？
 ====================

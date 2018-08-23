@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/animation/executing-several-animati
 title: 在相同的時間 (VB) 中執行數個動畫 |Microsoft Docs
 author: wenz
 description: 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行 severa...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 2469f7ea-1489-42fb-a8e1-414c90141ce9
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-at-the-same-time-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b748f7f3f8344ff3c87230e26887c761737d4489
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 20baa40c34dd8c8907b940764987441bc7a91da9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814684"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834188"
 ---
 <a name="executing-several-animations-at-the-same-time-vb"></a>執行數個動畫在相同的時間 (VB)
 ====================

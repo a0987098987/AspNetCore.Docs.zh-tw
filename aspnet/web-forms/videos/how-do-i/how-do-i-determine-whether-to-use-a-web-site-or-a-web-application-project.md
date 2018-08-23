@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-determine-whether-to-use-a-web-site-or-a
 title: '[How Do i:]判斷是否要使用的網站或 Web 應用程式專案 |Microsoft Docs'
 author: rick-anderson
 description: 在此影片的 Chris Pels 將會對照 ASP.NET 網站專案和 web 應用程式專案之間的差異。 了解使用的考量...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/22/2008
 ms.assetid: 2fba2d1d-1bd3-451a-ae94-8acf4faa75ec
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-determine-whether-to-use-a-web-site-or-a-web-application-project
 msc.type: video
-ms.openlocfilehash: b19e0f775a85aa31bdcea10b18424f3d5440697d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8063c6f52f7c58fe424ac70f894e0d4463c44f5b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813454"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833790"
 ---
 <a name="how-do-i-determine-whether-to-use-a-web-site-or-a-web-application-project"></a>[How Do i:]判斷是否要使用的網站或 Web 應用程式專案
 ====================

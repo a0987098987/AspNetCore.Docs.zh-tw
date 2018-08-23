@@ -3,17 +3,17 @@ uid: web-pages/overview/releases/top-features-in-web-pages-2
 title: ASP.NET Web pages 2 的頂端功能 |Microsoft Docs
 author: microsoft
 description: 本主題概要說明在 ASP.NET Web Pages 2，隨附於 WebMatr 的輕量型 web 程式設計架構中最上層的新功能...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/13/2012
 ms.assetid: cc712e72-c3d0-4e43-bc2d-28cc09cd8f71
 msc.legacyurl: /web-pages/overview/releases/top-features-in-web-pages-2
 msc.type: authoredcontent
-ms.openlocfilehash: 6e20dedd19ae458b9881973570f23b5d77dda654
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e06db7eb33dc2891d86b65fa56c20b9e8cae1970
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827397"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831157"
 ---
 <a name="the-top-features-in-aspnet-web-pages-2"></a>ASP.NET Web pages 2 最上層的功能
 ====================

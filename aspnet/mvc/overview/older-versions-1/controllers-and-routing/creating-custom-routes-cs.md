@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/controllers-and-routing/creating-custom-route
 title: 建立自訂路由 (C#) |Microsoft Docs
 author: microsoft
 description: 了解如何將自訂的路由新增至 ASP.NET MVC 應用程式。 在本教學課程中，您將了解如何修改 Global.asax 檔案中的預設路由表。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/16/2009
 ms.assetid: 3cd08f02-8763-490a-b625-2ac96a24b73f
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c8ba653579c5f983a7086d15cf6245eff527bfcf
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1d7a25f9d257320c252408ae251e2f9f620930d8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827659"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834189"
 ---
 <a name="creating-custom-routes-c"></a>建立自訂路由 (C#)
 ====================

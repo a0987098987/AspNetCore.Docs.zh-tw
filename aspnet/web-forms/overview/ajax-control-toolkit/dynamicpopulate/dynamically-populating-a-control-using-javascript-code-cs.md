@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populat
 title: 以動態方式填入控制項，使用 JavaScript 程式碼 (C#) |Microsoft Docs
 author: wenz
 description: DynamicPopulate 控制項在 ASP.NET AJAX Control Toolkit 中呼叫 web 服務 （或頁面方法），並會產生的值填滿至 t 的目標控制項...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: cc4c2def-e88c-4456-ae8b-a6ae0ff8cc2d
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6fa8e0b91481467c7f53e7323b72e4b345833905
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e8b49f41f132cc31ca458ce0af3b74dbb54f225e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37841616"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825779"
 ---
 <a name="dynamically-populating-a-control-using-javascript-code-c"></a>以動態方式填入控制項，使用 JavaScript 程式碼 (C#)
 ====================

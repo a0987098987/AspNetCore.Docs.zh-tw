@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/animation/executing-animations-usin
 title: 執行使用用戶端程式碼 (VB) 的動畫 |Microsoft Docs
 author: wenz
 description: 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 動畫執行...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: f7073f50-d765-456d-9957-926ce60f35f6
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9b180ad17e0e3d2dffa6262d10a83a8353e0a1d0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 08cba7fa04249da4f0c7baa8e730ac75489e0efc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811882"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833814"
 ---
 <a name="executing-animations-using-client-side-code-vb"></a>執行動畫使用用戶端程式碼 (VB)
 ====================

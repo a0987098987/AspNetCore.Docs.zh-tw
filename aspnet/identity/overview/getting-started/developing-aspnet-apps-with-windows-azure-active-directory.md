@@ -3,17 +3,17 @@ uid: identity/overview/getting-started/developing-aspnet-apps-with-windows-azure
 title: 開發 ASP.NET 應用程式與 Azure Active Directory |Microsoft Docs
 author: Rick-Anderson
 description: Azure Active Directory 的 Microsoft ASP.NET 工具可以輕鬆為 Azure 上裝載的 web 應用程式啟用驗證。 您可以使用 Azure 驗證...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/14/2014
 ms.assetid: 457d7eaf-ee76-4ceb-9082-c7c1721435ad
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: bb12ed6c13105cf08412ecf969c215cc9004a0c3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e2df906d220d738c45006de8b3c92e157ca9e57e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809069"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832606"
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a>開發 ASP.NET 應用程式與 Azure Active Directory
 ====================

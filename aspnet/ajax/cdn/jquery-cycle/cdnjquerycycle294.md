@@ -3,17 +3,17 @@ uid: ajax/cdn/jquery-cycle/cdnjquerycycle294
 title: jQuery 週期 2.94 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/23/2014
 ms.assetid: 486108f8-0719-492e-85ed-46f3b7bc18d2
 msc.legacyurl: /ajax/cdn/jquery-cycle/cdnjquerycycle294
 msc.type: content
-ms.openlocfilehash: 0e106cdf38082d9d4a2e76c72066c7ecc58fe73e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ae3577daddfc659ef206d56b35f876104ab48aa4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818588"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825553"
 ---
 <a name="jquery-cycle-294"></a>jQuery 週期 2.94
 ====================

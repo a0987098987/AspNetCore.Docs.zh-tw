@@ -3,17 +3,17 @@ uid: web-api/overview/security/external-authentication-services
 title: 外部驗證服務與 ASP.NET Web API (C#) |Microsoft Docs
 author: rmcmurray
 description: 描述如何使用 ASP.NET Web API 中的外部驗證服務。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/26/2013
 ms.assetid: 3bb8eb15-b518-44f5-a67d-a27e051aedc6
 msc.legacyurl: /web-api/overview/security/external-authentication-services
 msc.type: authoredcontent
-ms.openlocfilehash: fe821384a195e69c102aad95e534d543de705a00
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0b23baac7eca0297e063c682a8ae199f9543d75e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822783"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834230"
 ---
 <a name="external-authentication-services-with-aspnet-web-api-c"></a>外部驗證服務與 ASP.NET Web API (C#)
 ====================

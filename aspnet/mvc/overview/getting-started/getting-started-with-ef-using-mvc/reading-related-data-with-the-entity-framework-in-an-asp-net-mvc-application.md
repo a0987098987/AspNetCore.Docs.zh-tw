@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-rela
 title: 讀取相關的資料，使用 ASP.NET MVC 應用程式中的 Entity Framework |Microsoft Docs
 author: tdykstra
 description: /ajax/tutorials/using-ajax-control-toolkit-controls-and-control-extenders-vb
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/07/2014
 ms.assetid: 18cdd896-8ed9-4547-b143-114711e3eafb
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 4147feda2b78eefa2f5e280e587759585da738b3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 16bef0094406f3f45307eabd19c0872e90ecf7ef
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839135"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832230"
 ---
 <a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>讀取相關資料，使用 Entity Framework 中的 ASP.NET MVC 應用程式
 ====================

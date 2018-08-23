@@ -3,17 +3,17 @@ uid: web-api/overview/data/using-web-api-with-entity-framework/part-4
 title: 處理實體關聯性 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/16/2014
 ms.assetid: d2f5710c-23c7-40a5-9cd9-5d0516570cba
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-4
 msc.type: authoredcontent
-ms.openlocfilehash: fcfddb3d56d0be641d2df9d92c334776975621be
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5d05a2e5d4380a15078317545325bd20fde3f83c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37826153"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835076"
 ---
 <a name="handling-entity-relations"></a>處理實體關聯性
 ====================

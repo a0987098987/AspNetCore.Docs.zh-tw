@@ -3,17 +3,17 @@ uid: web-api/overview/advanced/http-cookies
 title: ASP.NET Web API 中的 HTTP Cookie |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/17/2012
 ms.assetid: 243db2ec-8f67-4a5e-a382-4ddcec4b4164
 msc.legacyurl: /web-api/overview/advanced/http-cookies
 msc.type: authoredcontent
-ms.openlocfilehash: 21ba186c11f39bbeedd1c320b98476ba13af27e2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 61e0c47efdd92a3a0b329930aeec757b446eb9b8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819156"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833030"
 ---
 <a name="http-cookies-in-aspnet-web-api"></a>ASP.NET Web API 中的 HTTP Cookie
 ====================

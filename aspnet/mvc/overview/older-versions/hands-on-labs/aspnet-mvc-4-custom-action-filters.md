@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filter
 title: ASP.NET MVC 4 自訂動作篩選條件 |Microsoft Docs
 author: rick-anderson
 description: ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩選的邏輯。 動作篩選條件是自訂屬性 tha...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/18/2013
 ms.assetid: 969ab824-1b98-4552-81fe-b60ef5fc6887
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filters
 msc.type: authoredcontent
-ms.openlocfilehash: c435fef624d526ceb01dbc370c5df52e2a1e8350
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0170fda6849c1dfb53b44908ea55ba2cad0dd067
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807931"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832019"
 ---
 # <a name="aspnet-mvc-4-custom-action-filters"></a>ASP.NET MVC 4 自訂動作篩選條件
 

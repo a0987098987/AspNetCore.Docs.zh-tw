@@ -3,17 +3,17 @@ uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-cascadin
 title: '[How Do i:]使用 ASP.NET AJAX CascadingDropDown 控制擴充項？ | Microsoft Docs'
 author: JoeStagner
 description: 這段影片示範如何 ASP。NET 的標準 DropDownList 可能會變成啟用 AJAX 使用 CascadingDropDown 控制擴充項，從 ASP.NET AJAX 控制...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/24/2007
 ms.assetid: 7dca3704-474b-4b0b-8294-5599279964d9
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-cascadingdropdown-control-extender
 msc.type: video
-ms.openlocfilehash: f2160bfc9905adbe5b9c206237fb8066068ad6cc
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f88c1fa08cfa08e6f8d890c3de69bfdca9b8230d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806292"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832629"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-cascadingdropdown-control-extender"></a>[How Do i:]使用 ASP.NET AJAX CascadingDropDown 控制擴充項？
 ====================

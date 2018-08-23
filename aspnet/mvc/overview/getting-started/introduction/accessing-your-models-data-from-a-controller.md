@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/introduction/accessing-your-models-data-from-a
 title: 從控制器存取模型的資料 |Microsoft Docs
 author: Rick-Anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/17/2013
 ms.assetid: caa1ba4a-f9f0-4181-ba21-042e3997861d
 msc.legacyurl: /mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: a3f3f4a030650ff65b070528c5efa1605be764a0
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 16f4a61d048e90b7962f038e90e0721883726c44
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38120149"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832585"
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>從控制器存取模型資料
 ====================
@@ -61,7 +61,7 @@ ms.locfileid: "38120149"
 ![](accessing-your-models-data-from-a-controller/_static/image5.png)
 
 > [!NOTE]
-> 您可能無法在 [價格] 欄位中輸入小數點或逗號。 若要 jQuery 驗證支援非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點和非英文日期格式，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) 和使用的 JavaScript `Globalize.parseFloat`。 我將示範如何在下一個教學課程中這麼做。 現在，只要輸入如 10 之類的整數。
+> 您可能無法在 [價格] 欄位中輸入小數點或逗號。 以 jQuery 驗證支援非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點和非英文日期格式，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) 和使用的 JavaScript `Globalize.parseFloat`。 我將示範如何在下一個教學課程中這麼做。 現在，只要輸入如 10 之類的整數。
 
 
 按一下 **建立**按鈕會使表單張貼至伺服器時，電影資訊儲存在資料庫中的位置。 若要將您再重新導向 */Movies* URL，您可以在其中看到新建立的電影清單中。

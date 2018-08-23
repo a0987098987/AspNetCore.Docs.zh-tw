@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-dynamic-data/how-to-remove-columns-from-your-dynami
 title: 如何移除動態資料格的資料行 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，您將了解如何利用完整的資料行的樣板，但仍會排除不想要顯示在您的使用者介面中的資料表資料行...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/11/2008
 ms.assetid: 5fb54eb6-d1e1-4537-91ff-e1a9040c13ce
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-remove-columns-from-your-dynamicdata-data-grids
 msc.type: video
-ms.openlocfilehash: 7b61b7ed92d49ce8206c6f522b1489ef5f60c047
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 32ad04d6057b57e8d1c32517fd44a344cc2d2327
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37836213"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832982"
 ---
 <a name="how-to-remove-columns-from-your-dynamicdata-data-grids"></a>如何移除動態資料格的資料行
 ====================

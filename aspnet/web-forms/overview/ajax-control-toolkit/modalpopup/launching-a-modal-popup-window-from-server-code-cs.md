@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/modalpopup/launching-a-modal-popup-
 title: 啟動強制回應快顯視窗中的，從伺服器程式碼 (C#) |Microsoft Docs
 author: wenz
 description: AJAX Control Toolkit 之 ModalPopup 控制項提供簡單的方式來建立使用用戶端表示強制回應快顯。 不過有些情況下會需要該 t...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 2f67d8ef-73ca-447d-a0cc-6e3168431e6a
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/launching-a-modal-popup-window-from-server-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b7b486c4b99e5ddcb9bc244a9c5dcf193d33b696
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b59997d5c3e841d36d475431b02d3df2d1a4b666
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815300"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831793"
 ---
 <a name="launching-a-modal-popup-window-from-server-code-c"></a>啟動強制回應快顯視窗中的，從伺服器程式碼 (C#)
 ====================

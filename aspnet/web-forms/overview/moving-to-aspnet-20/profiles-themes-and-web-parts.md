@@ -3,17 +3,17 @@ uid: web-forms/overview/moving-to-aspnet-20/profiles-themes-and-web-parts
 title: 設定檔、 佈景主題和 Web 組件 |Microsoft Docs
 author: microsoft
 description: 有一些組態中的重大變更和 ASP.NET 2.0 中的檢測。 新的 ASP.NET 組態 API 可讓進行 pr 的組態變更...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2005
 ms.assetid: 92df4051-77c6-492c-bd34-23d24189cea4
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/profiles-themes-and-web-parts
 msc.type: authoredcontent
-ms.openlocfilehash: fa4405302f5b813dc3b99f612ef8efc8793cd6c8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 98559c2a378c72bc5664faafe5436753050b574f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815684"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826195"
 ---
 <a name="profiles-themes-and-web-parts"></a>設定檔、 佈景主題和 Web 組件
 ====================
@@ -255,13 +255,13 @@ ASP.NET 設定檔使用的提供者模型。 預設的提供者會將資訊儲�
 
 如果您想要能夠使用的佈景主題面板檔案中定義的屬性會覆寫屬性中指定設計工具中，您可以使用**StyleSheetTheme**而非佈景主題; 屬性的屬性。 StyleSheetTheme 屬性等同於佈景主題屬性不同之處在於它不會覆寫所有明確的屬性設定，例如佈景主題屬性。
 
-按一下 `<pages>`顯示模式功能表，然後選取瀏覽返回瀏覽模式。
+若要查看此動作，從在練習 1 中的專案開啟 web.config 檔案，並變更`<pages>`如下的項目：
 
 [!code-xml[Main](profiles-themes-and-web-parts/samples/sample19.xml)]
 
-控制項現在有了更新的標題，並沒有框線，如下列螢幕擷取畫面所示。 已編輯的 Web 組件示範頁面
+現在瀏覽 Default.aspx 頁面，您會看到按鈕控制項一次有文字屬性的 「 按鈕 」。 這是因為設計工具中的明確屬性設定會覆寫設定 goButton SkinID 的 Text 屬性。
 
-## <a name="overriding-themes"></a>Web 組件 VS 逐步解說 4 螢幕擷取畫面
+## <a name="overriding-themes"></a>覆寫佈景主題
 
 全域的主題可覆寫相同名稱的應用程式中套用的佈景主題\_應用程式的佈景主題資料夾。 不過，佈景主題不會套用，則為 true 的覆寫案例。 如果執行階段發生在應用程式的佈景主題檔案\_佈景主題資料夾中，它會套用佈景主題使用這些檔案，並忽略全域的佈景主題。
 

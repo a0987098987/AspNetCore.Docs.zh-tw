@@ -3,17 +3,17 @@ uid: single-page-application/overview/templates/backbonejs-template
 title: Backbone 範本 |Microsoft Docs
 author: madskristensen
 description: Backbone.js SPA 範本
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/04/2013
 ms.assetid: 00aca413-f067-4108-9bd1-cf21e64a2646
 msc.legacyurl: /single-page-application/overview/templates/backbonejs-template
 msc.type: authoredcontent
-ms.openlocfilehash: f483a7ef840b7bce71187fd929e9667ee1eaf053
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 325c4f5370340b2e223521fada77cf0e78a67b5b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811000"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833218"
 ---
 <a name="backbone-template"></a>Backbone 範本
 ====================

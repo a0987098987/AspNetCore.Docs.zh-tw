@@ -3,17 +3,17 @@ uid: mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
 title: ASP.NET MVC 4 中使用非同步方法 |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置非同步 ASP.NET MVC Web 應用程式使用 Visual Studio Express 2012 for Web，也就是免費的 ve 的基本概念...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/06/2012
 ms.assetid: a56572ba-81c3-47af-826d-941e9c4775ec
 msc.legacyurl: /mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 5eb1b6dc3e9166c1ecb8e0d1968e12e8fa07f985
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5469ac18f55001b441def5b547b7f1836ee9d052
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37826396"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825746"
 ---
 <a name="using-asynchronous-methods-in-aspnet-mvc-4"></a>使用 ASP.NET MVC 4 中的非同步方法
 ====================
@@ -90,7 +90,7 @@ ASP.NET MVC 4[控制器](https://msdn.microsoft.com/library/system.web.mvc.contr
 
 ## <a id="CreatingAsynchGizmos"></a>  建立非同步的 Gizmo 動作方法
 
-此範例會使用新[async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx)及[await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx)關鍵字 （適用於.NET 4.5 和 Visual Studio 2012），讓編譯器會負責維護複雜的轉換所需非同步程式設計。 編譯器可讓您撰寫程式碼可讓您使用 C# 的同步的控制流程建構，編譯器會自動套用的轉換需要使用回呼，以避免封鎖執行緒。
+此範例會使用新[非同步](https://msdn.microsoft.com/library/hh156513(VS.110).aspx)並[await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx)關鍵字 （適用於.NET 4.5 和 Visual Studio 2012），讓編譯器會負責維護複雜的轉換所需非同步程式設計。 編譯器可讓您撰寫程式碼可讓您使用 C# 的同步的控制流程建構，編譯器會自動套用的轉換需要使用回呼，以避免封鎖執行緒。
 
 下列程式碼示範`Gizmos`同步方法和`GizmosAsync`非同步方法。 如果您的瀏覽器支援[HTML 5`<mark>`項目](http://www.w3.org/wiki/HTML/Elements/mark)，您會看到在變更`GizmosAsync`以黃色反白顯示。
 

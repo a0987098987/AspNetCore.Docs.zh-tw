@@ -3,17 +3,17 @@ uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-clou
 title: Web 開發最佳作法 （使用 Azure 建置真實世界的雲端應用程式） |Microsoft Docs
 author: MikeWasson
 description: 建置真實世界雲端應用程式與 Azure 的電子書是以 Scott Guthrie 所開發的簡報為依據。 它說明 13 模式與做法，他可以...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: 52d6c941-2cd9-442f-9872-2c798d6d90cd
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
 msc.type: authoredcontent
-ms.openlocfilehash: 054fcad387608e136e8171f5d511ee7af1082bd0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: be014eabcc7f88f229722b2d565262c9025c5ad3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824425"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833193"
 ---
 <a name="web-development-best-practices-building-real-world-cloud-apps-with-azure"></a>Web 開發最佳作法 （使用 Azure 建置真實世界的雲端應用程式）
 ====================

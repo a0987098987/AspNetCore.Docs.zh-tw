@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspn
 title: 使用參數化的查詢以 sqldatasource 進行 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們會繼續我們看看 SqlDataSource 控制項，並了解如何定義參數化的查詢。 參數可以指定這兩個宣告...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2007
 ms.assetid: 9128aaac-afe2-449f-84b2-bb1d035083c4
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e4612c48259bfee12a68080ec902c589b2a378b0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 654c0ce5520a206e5e8e2fd20bed92ac1075bfe9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819746"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834632"
 ---
 <a name="using-parameterized-queries-with-the-sqldatasource-c"></a>使用參數化的查詢以 sqldatasource 進行 (C#)
 ====================
@@ -303,7 +303,7 @@ SqlDataSource 可讓網頁程式開發人員定義參數化的查詢，其參數
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

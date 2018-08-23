@@ -3,17 +3,17 @@ uid: single-page-application/overview/templates/hottowel-template
 title: 熱 Towel 範本 |Microsoft Docs
 author: madskristensen
 description: HotTowel 範本
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/09/2013
 ms.assetid: 75af2e17-6ed3-4d24-8ea1-bc340027c318
 msc.legacyurl: /single-page-application/overview/templates/hottowel-template
 msc.type: authoredcontent
-ms.openlocfilehash: 6145a34286ef113002b92d722e227005657098d9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b80b5940b5733a0ae2af3491ccdfa05b84b50343
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825133"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835061"
 ---
 <a name="hot-towel-template"></a>Hot Towel 範本
 ====================

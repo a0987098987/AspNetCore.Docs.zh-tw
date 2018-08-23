@@ -3,17 +3,17 @@ uid: web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-asp
 title: 使用 Web API 和 ASP.NET Web Form |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/03/2012
 ms.assetid: 25da8c3f-4e90-4946-9765-4f160985e1e4
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms
 msc.type: authoredcontent
-ms.openlocfilehash: c9da38d290a812e94ed9473386ba6b897447dac5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a14bf0abd8c5d603cf3859891f855415cf3df9f3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840884"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826197"
 ---
 <a name="using-web-api-with-aspnet-web-forms"></a>使用 Web API 和 ASP.NET Web Form
 ====================

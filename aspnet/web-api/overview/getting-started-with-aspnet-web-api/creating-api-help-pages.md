@@ -3,17 +3,17 @@ uid: web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-page
 title: 建立的 ASP.NET Web API 說明頁面 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2013
 ms.assetid: 0150e67b-c50d-4613-83ea-7b4ef8cacc5a
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 3e8a0e6c4555e2b8d880118ca499b801ac8be63e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2d8758034ca4339ed7e9699cf2f2643bfab87ba4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811940"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830982"
 ---
 <a name="creating-help-pages-for-aspnet-web-api"></a>建立的 ASP.NET Web API 說明頁面
 ====================

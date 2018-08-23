@@ -3,17 +3,17 @@ uid: ajax/cdn/jquery-ui/cdnjqueryui185
 title: jQuery UI 1.8.5 版 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/23/2014
 ms.assetid: 3ca97a10-882c-41bc-9e0c-0807bb92cdd3
 msc.legacyurl: /ajax/cdn/jquery-ui/cdnjqueryui185
 msc.type: content
-ms.openlocfilehash: b36cb725e2653cdf2ed3356e244e373bb82cdfdb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c42c314ee42e8f6bd5c255016e4061406222603c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802946"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832016"
 ---
 <a name="jquery-ui-185"></a>jQuery UI 1.8.5 版
 ====================

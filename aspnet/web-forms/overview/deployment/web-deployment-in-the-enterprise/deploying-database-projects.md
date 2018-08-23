@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-da
 title: 部署資料庫專案 |Microsoft Docs
 author: jrjlee
 description: 注意： 在許多企業部署案例，您需要能夠將累加式更新發佈至已部署的資料庫。 替代方法是重新建立...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 832f226a-1aa3-4093-8c29-ce4196793259
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-database-projects
 msc.type: authoredcontent
-ms.openlocfilehash: 1e5af29a91f5f432f9241dc3ba0c8fc0bfcf773f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 43fa197a1d5a3cf521f4d2202754ff0d121cebe3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804979"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825727"
 ---
 <a name="deploying-database-projects"></a>部署資料庫專案
 ====================

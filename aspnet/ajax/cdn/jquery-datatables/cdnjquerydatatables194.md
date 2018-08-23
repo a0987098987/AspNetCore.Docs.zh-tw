@@ -3,17 +3,17 @@ uid: ajax/cdn/jquery-datatables/cdnjquerydatatables194
 title: jQuery DataTables 1.9.4 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/23/2014
 ms.assetid: f117b38e-38b9-4f3c-911b-21c1621a7797
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables194
 msc.type: content
-ms.openlocfilehash: 766c30e58331dcc660d53b8b007f4c4552aba42c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: acfbdc7e6eddb41314d6afc79de1e6831864949b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822936"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831775"
 ---
 <a name="jquery-datatables-194"></a>jQuery DataTables 1.9.4
 ====================

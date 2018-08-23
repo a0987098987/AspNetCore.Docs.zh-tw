@@ -3,17 +3,17 @@ uid: signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 title: 教學課程： 伺服器廣播與 SignalR 2 |Microsoft Docs
 author: tdykstra
 description: 本教學課程會示範如何建立會使用 ASP.NET SignalR 2 提供伺服器廣播的功能的 web 應用程式。 伺服器廣播表示該 commun...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/13/2014
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 0e86fbea9c5668e20fce7a494c76c52f9c089c09
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c2248e68b3c9411687ab6410f12ec85488fe0738
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820693"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831418"
 ---
 <a name="tutorial-server-broadcast-with-signalr-2"></a>教學課程： 伺服器廣播與 SignalR 2
 ====================
@@ -296,7 +296,7 @@ SignalR 有內建記錄功能，您可以讓用戶端上，以協助疑難排解
 
     如果您在 Windows 7 (IIS 7.5) 上執行 Internet Explorer 10，傳輸方法是 iframe。
 
-    ![IE 10 Console, IIS 7.5](tutorial-server-broadcast-with-signalr/_static/image10.png)
+    ![IE 10 個主控台中，IIS 7.5](tutorial-server-broadcast-with-signalr/_static/image10.png)
 
     在 Firefox 中安裝 Firebug 增益集以取得主控台視窗。 如果您在 Windows 8 (IIS 8) 來執行 Firefox 19，傳輸方法是 WebSockets。
 

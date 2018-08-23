@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-implement-site-navigation-in-aspnet
 title: '[How Do i:]在 ASP.NET 中實作網站導覽嗎？ | Microsoft Docs'
 author: rick-anderson
 description: 在這段影片中，我們了解如何定義網站地圖和使用功能表、 樹狀檢視中和網站地圖的伺服器控制項的內容。 我們了解如何使用 sitemap 至主版頁面...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/18/2007
 ms.assetid: 889e8100-a80c-41c0-bfeb-7d466c754548
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-site-navigation-in-aspnet
 msc.type: video
-ms.openlocfilehash: 1995ce735698f0c7827e2721c07c1d98922a7ba3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ee5b79587672b9bf076439b28aad9de3f0c7dd98
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822427"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825557"
 ---
 <a name="how-do-i-implement-site-navigation-in-aspnet"></a>[How Do i:]在 ASP.NET 中實作網站導覽嗎？
 ====================

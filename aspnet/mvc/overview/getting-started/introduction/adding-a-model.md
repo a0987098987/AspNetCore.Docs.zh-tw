@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/introduction/adding-a-model
 title: 將模型新增 |Microsoft Docs
 author: Rick-Anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/28/2015
 ms.assetid: 276552b5-f349-4fcf-8f40-6d042f7aa88e
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: 2d99a9c553ba79922cb0c5e852709ab97ea2e22b
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: a7326cefd52feb63fc2f602210ed560cdf28706a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38211050"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835037"
 ---
 <a name="adding-a-model"></a>新增模型
 ====================
@@ -27,7 +27,7 @@ ms.locfileid: "38211050"
 
 ## <a name="adding-model-classes"></a>新增模型類別
 
-在 [**方案總管] 中**，以滑鼠右鍵按一下*模型*資料夾中，選取**新增**，然後選取**類別**。
+在 [**方案總管] 中**，以滑鼠右鍵按一下 *模型* 資料夾中，選取**新增**，然後選取**類別**。
 
 ![](adding-a-model/_static/image1.png)
 

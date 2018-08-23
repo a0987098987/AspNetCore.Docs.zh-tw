@@ -3,27 +3,27 @@ uid: web-forms/videos/iis/working-with-iis7-deligated-admin
 title: 使用 IIS7 委派管理員 |Microsoft Docs
 author: JoeStagner
 description: 這段影片中導入令人興奮新 IIS7 管理員建立的遠端管理功能。 它說明伺服器和用戶端設定為歡迎畫面...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/09/2009
 ms.assetid: 7ece1ff3-febd-43c0-9c4f-b5c15c3309f7
 msc.legacyurl: /web-forms/videos/iis/working-with-iis7-deligated-admin
 msc.type: video
-ms.openlocfilehash: d9d22b4f6b4b5f2c24d1a2410163184618697ad6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 58ba56d42259474fa04f061106249c94daf50588
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822683"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832026"
 ---
-<a name="working-with-iis7-delegated-admin"></a><span data-ttu-id="f18b7-104">使用 IIS7 委派管理員</span><span class="sxs-lookup"><span data-stu-id="f18b7-104">Working with IIS7 Delegated Admin</span></span>
+<a name="working-with-iis7-delegated-admin"></a><span data-ttu-id="e7204-104">使用 IIS7 委派管理員</span><span class="sxs-lookup"><span data-stu-id="e7204-104">Working with IIS7 Delegated Admin</span></span>
 ====================
-<span data-ttu-id="f18b7-105">藉由[Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="f18b7-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="e7204-105">藉由[Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="e7204-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="f18b7-106">這段影片中導入令人興奮新 IIS7 管理員建立的遠端管理功能。</span><span class="sxs-lookup"><span data-stu-id="f18b7-106">This video introduces the exciting new remote management functionality built for the IIS7 manager.</span></span> <span data-ttu-id="f18b7-107">它說明伺服器和用戶端設定，以及兩個授權選項。</span><span class="sxs-lookup"><span data-stu-id="f18b7-107">It illustrates both server and client configuration as well as the two authorization options.</span></span>
+<span data-ttu-id="e7204-106">這段影片中導入令人興奮新 IIS7 管理員建立的遠端管理功能。</span><span class="sxs-lookup"><span data-stu-id="e7204-106">This video introduces the exciting new remote management functionality built for the IIS7 manager.</span></span> <span data-ttu-id="e7204-107">它說明伺服器和用戶端設定，以及兩個授權選項。</span><span class="sxs-lookup"><span data-stu-id="e7204-107">It illustrates both server and client configuration as well as the two authorization options.</span></span>
 
-[<span data-ttu-id="f18b7-108">&#9654;觀看影片 （22 分鐘）</span><span class="sxs-lookup"><span data-stu-id="f18b7-108">&#9654; Watch video (22 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-iis7-deligated-admin)
+[<span data-ttu-id="e7204-108">&#9654;觀看影片 （22 分鐘）</span><span class="sxs-lookup"><span data-stu-id="e7204-108">&#9654; Watch video (22 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-iis7-deligated-admin)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="f18b7-109">[上一頁](developing-and-deploying-in-a-shared-hosting.md)
-> [下一頁](feature-specific-delegated-management.md)</span><span class="sxs-lookup"><span data-stu-id="f18b7-109">[Previous](developing-and-deploying-in-a-shared-hosting.md)
+> <span data-ttu-id="e7204-109">[上一頁](developing-and-deploying-in-a-shared-hosting.md)
+> [下一頁](feature-specific-delegated-management.md)</span><span class="sxs-lookup"><span data-stu-id="e7204-109">[Previous](developing-and-deploying-in-a-shared-hosting.md)
 [Next](feature-specific-delegated-management.md)</span></span>

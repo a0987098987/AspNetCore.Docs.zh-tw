@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 的驗證、授權和安全性基本概念。
 ms.author: tdykstra
 ms.date: 11/01/2017
 uid: security/index
-ms.openlocfilehash: ed64594c85d555d8417903947fc3ce927dc04cec
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 3a1c1ea1ad28fccbe5ae91b0be193938b095f60b
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095758"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41746075"
 ---
 # <a name="overview-of-aspnet-core-security"></a>ASP.NET Core 安全性概觀
 
@@ -35,9 +35,9 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
 * [Cross-Site Request Forgery (CSRF)](xref:security/anti-request-forgery) (跨網站偽造要求 (CSRF))
 * [Open redirect attacks](xref:security/preventing-open-redirects) (開啟重新導向攻擊)
 
-除此之外，還有許多弱點是您必須提防的。 如需詳細資訊，請參閱本文件的相關章節 (位於 *ASP.NET 安全性文件*)。
+除此之外，還有許多弱點是您必須提防的。 如需詳細資訊，請參閱 *ASP.NET Core 安全性文件*上本文件的這個章節。
 
-## <a name="aspnet-security-documentation"></a>ASP.NET 安全性文件
+## <a name="aspnet-core-security-documentation"></a>ASP.NET Core 安全性文件
 
 *   [驗證](xref:security/authentication/index)
     *   [身分識別簡介](xref:security/authentication/identity)

@@ -5,26 +5,34 @@ description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式�
 ms.author: casoper
 ms.date: 08/07/2018
 uid: azure/devops/index
-ms.openlocfilehash: 09ca835e908e81c6f38f9430fb40638ba6dc3350
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: f2eb2499a61ce639457f30f4d182dac6ff677a0f
+ms.sourcegitcommit: 6d02e26748a09eabeb0e11740a398cc2bc90b098
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "39722529"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41746416"
 ---
 # <a name="devops-with-aspnet-core-and-azure"></a>ASP.NET Core 與 Azure 的 DevOps
+
+[![封面影像](./media/cover-large.png)](https://aka.ms/devopsbook)
+
+[Cam Soper](https://twitter.com/camsoper) 和 [Scott Addie](https://twitter.com/scottaddie) 著
+
+本指南提供[可下載的 PDF 電子書](https://aka.ms/devopsbook)。
+
+## <a name="welcome"></a>歡迎畫面 
 
 歡迎使用適用於.NET 的 Azure 開發生命週期指南！ 本指南介紹如何使用.NET 工具及程序，為 Azure 建置開發生命週期的基本概念。 完成本指南之後，您就能充分運用完善 DevOps 工具鏈的各項優點。
 
 ## <a name="who-this-guide-is-for"></a>本指南的適用對象
 
-您應是有經驗的 ASP.NET 開發人員 (200-300 級)。 因為本指南涵蓋 Azure 介紹，所以您無須具備這方面的知識。 本指南也適用於工作內容偏重於操作，而不在開發的 DevOps 工程師。
+您應是有經驗的 ASP.NET Core 開發人員 (200-300 級)。 因為本指南涵蓋 Azure 介紹，所以您無須具備這方面的知識。 本指南也適用於工作內容偏重於操作，而不在開發的 DevOps 工程師。
 
 本指南的對象是 Windows 開發人員， 但 .NET Core 也 100% 支援 Linux 與 macOS。 若要將本指南應用到 Linux/macOS，請留意圖說文字所示的 Linux/macOS 差異。
 
 ## <a name="what-this-guide-doesnt-cover"></a>本指南未說明的內容
 
-本指南適用於.NET 開發人員，著重於端對端的持續部署體驗， 而不會詳盡解說 Azure 的一切，也不會在 Azure 服務適用的 .NET API 上著墨太多。 其會將重點圍繞在持續整合、部署、監視及偵錯上。 在快速入門的最後，則會提供後續步驟的建議。 建議中會包含 ASP.NET 開發人員使用的 Azure 平台服務。
+本指南適用於.NET 開發人員，著重於端對端的持續部署體驗， 而不會詳盡解說 Azure 的一切，也不會在 Azure 服務適用的 .NET API 上著墨太多。 其會將重點圍繞在持續整合、部署、監視及偵錯上。 在快速入門的最後，則會提供後續步驟的建議。 建議內含對 ASP.NET Core 開發人員來說很實用的 Azure 平台服務。
 
 ## <a name="whats-in-this-guide"></a>本指南內容
 
@@ -48,18 +56,9 @@ ms.locfileid: "39722529"
 
 ASP.NET Core 開發人員學習 Azure 的其他學習途徑。
 
-## <a name="acknowledgments"></a>感謝
+## <a name="additional-introductory-reading"></a>其他入門閱讀資料
 
-感謝 .NET 社群中，對本指南提出實用建議的所有人！ 我們特別要感謝下列社群成員，擔任這份文件最終審核的工作：
-
-* [Sam Wronski](https://www.youtube.com/c/worldofzerodevelopment)
-* [Jeffrey Palermo](https://twitter.com/jeffreypalermo)
-
-## <a name="conclusion"></a>結論
-
-本指南為您在 ASP.NET Core 及 Azure App Service 上建置持續整合開發生命週期茵定基礎。
-
-## <a name="additional-reading"></a>其他閱讀資料
+如果這是您第一次接觸雲端運算，這些文章會說明基本概念。
 
 * [什麼是雲端運算？](https://azure.microsoft.com/overview/what-is-cloud-computing/)
 * [雲端運算的範例](https://azure.microsoft.com/overview/examples-of-cloud-computing/)

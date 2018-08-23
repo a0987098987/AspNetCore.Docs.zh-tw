@@ -1007,7 +1007,7 @@
 ##### [非同步的預存程序](mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 ##### [處理並行](mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 ##### [實作繼承](mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-##### [進階 Entity Framework 案例](mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application.md)
+##### [進階的 Entity Framework 案例](mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application.md)
 #### [EF Database First 與 ASP.NET MVC](mvc/overview/getting-started/database-first-development/index.md)
 ##### [開始使用使用 MVC 5 的 Entity Framework 6 Database First](mvc/overview/getting-started/database-first-development/setting-up-database.md)
 ##### [建立 Web 應用程式和資料模型](mvc/overview/getting-started/database-first-development/creating-the-web-application.md)
@@ -1640,7 +1640,8 @@
 
 
 
-
+# [Visual Studio 2017](visual-studio/overview/2017/index.md)
+## [將解決方案的建置效能最佳化](xref:visual-studio/overview/2017/optimize-build-perf)
 
 # [Visual Studio 2013](visual-studio/overview/2013/index.md)
 ## [在 Visual Studio 2013 中建立 ASP.NET Web 專案](visual-studio/overview/2013/creating-web-projects-in-visual-studio.md)

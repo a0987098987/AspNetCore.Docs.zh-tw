@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/introduction/an-overview-of-form
 title: 表單驗證 (VB) 的概觀 |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中我們將會開啟從只討論實作;特別是，我們將探討實作表單驗證。 Web 應用程式 w 中...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/14/2008
 ms.assetid: 83267f7d-64d9-41ee-82cf-da91b1bf534d
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 757cdebc436a4cb799f92374744ee9cb69eb0e0b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ca290c6b7b6b4f8da92b9658519d716651d46341
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809455"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833282"
 ---
 <a name="an-overview-of-forms-authentication-vb"></a>表單驗證 (VB) 的概觀
 ====================

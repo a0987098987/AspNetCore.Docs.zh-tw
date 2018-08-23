@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-
 title: 將資料庫角色成員資格部署到測試環境 |Microsoft Docs
 author: jrjlee
 description: 本主題描述如何將使用者帳戶新增至資料庫角色的解決方案部署至測試環境的一部分。 當您部署方案，包含...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 9b2af539-7ad9-47aa-b66e-873bd9906e79
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments
 msc.type: authoredcontent
-ms.openlocfilehash: a690d99df7a19c422fb217544ec183c311d1796f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 07442b7a016ce2a32b1c9e7f44010517e40d7189
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828029"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833281"
 ---
 <a name="deploying-database-role-memberships-to-test-environments"></a>將資料庫角色成員資格部署到測試環境
 ====================
@@ -63,14 +63,14 @@ ms.locfileid: "37828029"
 2. 以滑鼠右鍵按一下**指令碼**資料夾，指向**新增**，然後按一下**新資料夾**。
 3. 型別**測試**做為資料夾名稱，然後按 Enter 鍵。
 4. 以滑鼠右鍵按一下**測試**資料夾，指向**新增**，然後按一下**指令碼**。
-5. 當您定期重新建立資料庫，以在測試環境中，但它應該通常是避免當您將資料庫部署到預備環境或生產環境時，這是通常很有用。
+5. 在**加入新項目**對話方塊方塊中，提供您的指令碼有意義的名稱 (例如**AddRoleMemberships.sql**)，然後按一下**新增**。
 
     ![](deploying-database-role-memberships-to-test-environments/_static/image1.png)
-6. 因此，您應該確定您使用的是必要的條件式邏輯，如此資料庫使用者和角色成員資格時才建立適合執行這項操作。
+6. 在  *AddRoleMemberships.sql*檔案中，將 TRANSACT-SQL 陳述式加入的：
 
-    1. 如需有關使用 VSDBCMD 部署資料庫專案的詳細資訊，請參閱部署資料庫專案。
-    2. 如需自訂不同的目標環境的資料庫部署的指引，請參閱 <<c0>  自訂多個環境的資料庫部署。
-7. 如需有關如何使用自訂的 MSBuild 專案檔來控制部署程序的詳細資訊，請參閱 <<c0>  了解專案檔並了解建置程序。
+    1. 建立資料庫使用者，將會存取您的資料庫之 SQL Server 登入。
+    2. 加入任何必要的資料庫角色中的資料庫使用者。
+7. 檔案應該類似這樣：
 
     [!code-sql[Main](deploying-database-role-memberships-to-test-environments/samples/sample1.sql)]
 8. 儲存檔案。

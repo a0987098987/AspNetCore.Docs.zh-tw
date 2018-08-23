@@ -3,17 +3,17 @@ uid: web-forms/what-is-web-forms
 title: 什麼是 Web Form |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/21/2014
 ms.assetid: 5fa1daf9-1161-4cfa-bd4c-658f48b2c229
 msc.legacyurl: /web-forms/what-is-web-forms
 msc.type: content
-ms.openlocfilehash: 06dfc642f2903be1e4928391806fd815d763c903
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ccb0e6096b0281e5ef8af63bfd84b172e7f209b9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823945"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833472"
 ---
 <a name="what-is-web-forms"></a>什麼是 Web Form
 ====================

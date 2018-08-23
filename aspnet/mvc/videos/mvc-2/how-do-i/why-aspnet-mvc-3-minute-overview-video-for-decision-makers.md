@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/how-do-i/why-aspnet-mvc-3-minute-overview-video-for-decisi
 title: 為什麼 ASP.NET MVC 嗎？ 3 分鐘概觀影片適合決策者 |Microsoft Docs
 author: robconery
 description: ASP.NET MVC 就對決策者想要深入了解 ASP.NET MVC 的優勢高階概觀。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/21/2009
 ms.assetid: 5b3fb86a-3245-41a3-bd1a-bde92e37b18d
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/why-aspnet-mvc-3-minute-overview-video-for-decision-makers
 msc.type: video
-ms.openlocfilehash: 3aa889ed0a96f431fa22fb5afabfa502a8660eab
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 446ae7f1bcbe6c5ee369df59ee14b688ab5d89aa
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811619"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834299"
 ---
 <a name="why-aspnet-mvc-3-minute-overview-video-for-decision-makers"></a>為什麼 ASP.NET MVC 嗎？ 3 分鐘概觀影片適合決策者
 ====================

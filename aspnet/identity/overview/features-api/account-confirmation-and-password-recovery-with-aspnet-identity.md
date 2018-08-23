@@ -3,17 +3,17 @@ uid: identity/overview/features-api/account-confirmation-and-password-recovery-w
 title: 帳戶確認和密碼復原，使用 ASP.NET Identity (C#) |Microsoft Docs
 author: HaoK
 description: 進行本教學課程之前，您應該先完成登入、 電子郵件確認和密碼重設建立安全的 ASP.NET MVC 5 web 應用程式。 本教學課程...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/26/2015
 ms.assetid: 8d54180d-f826-4df7-b503-7debf5ed9fb3
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 08a954f8fab4a92b84bd79b4f644bcc1f55b1bc6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 77a3e9d5e8b2698d2464e33520d779febd4533bd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831079"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833266"
 ---
 <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>帳戶確認和密碼復原，使用 ASP.NET Identity (C#)
 ====================
@@ -89,7 +89,7 @@ ms.locfileid: "37831079"
 
 ASP.NET Identity 的預設資料存放區是 Entity Framework，但您可以設定，以使用其他資料存放區，並新增額外的欄位。 請參閱[額外的資源](#addRes)本教學課程的最後一節。
 
-[OWIN 啟動類別](../../../aspnet/overview/owin-and-katana/owin-startup-class-detection.md)( *Startup.cs* ) 應用程式會啟動，並叫用時會呼叫`ConfigureAuth`方法*應用程式\_Start\Startup.Auth.cs*，這會設定 OWIN 管線，並初始化 ASP.NET 身分識別。 檢查`ConfigureAuth`方法。 每個`CreatePerOwinContext`呼叫會註冊回呼 (儲存在`OwinContext`)，每個要求來建立指定型別的執行個體將一次呼叫。 您可以在建構函式中設定中斷點並`Create`每個型別的方法 (`ApplicationDbContext, ApplicationUserManager`)，並確認每個要求上呼叫。 執行個體`ApplicationDbContext`和`ApplicationUserManager`會儲存在 OWIN 內容中，可以存取整個應用程式。 ASP.NET 身分識別連結到 cookie 中介軟體透過 OWIN 管線。 如需詳細資訊，請參閱 <<c0> [ 每個要求存留期管理，在 ASP.NET 身分識別的 UserManager 類別](https://blogs.msdn.com/b/webdev/archive/2014/02/12/per-request-lifetime-management-for-usermanager-class-in-asp-net-identity.aspx)。
+[OWIN 啟動類別](../../../aspnet/overview/owin-and-katana/owin-startup-class-detection.md)( *Startup.cs* ) 應用程式會啟動，並叫用時會呼叫`ConfigureAuth`方法*應用程式\_Start\Startup.Auth.cs*，這會設定 OWIN 管線，並初始化 ASP.NET 身分識別。 檢查 `ConfigureAuth` 方法。 每個`CreatePerOwinContext`呼叫會註冊回呼 (儲存在`OwinContext`)，每個要求來建立指定型別的執行個體將一次呼叫。 您可以在建構函式中設定中斷點並`Create`每個型別的方法 (`ApplicationDbContext, ApplicationUserManager`)，並確認每個要求上呼叫。 執行個體`ApplicationDbContext`和`ApplicationUserManager`會儲存在 OWIN 內容中，可以存取整個應用程式。 ASP.NET 身分識別連結到 cookie 中介軟體透過 OWIN 管線。 如需詳細資訊，請參閱 <<c0> [ 每個要求存留期管理，在 ASP.NET 身分識別的 UserManager 類別](https://blogs.msdn.com/b/webdev/archive/2014/02/12/per-request-lifetime-management-for-usermanager-class-in-asp-net-identity.aspx)。
 
 當您變更您的安全性設定檔時，會產生新的安全性戳記，並儲存在`SecurityStamp`欄位*AspNetUsers*資料表。 請注意，`SecurityStamp`欄位是不同的安全性 cookie。 安全性 cookie 不會儲存在`AspNetUsers`資料表 （或任何其他身分識別資料庫中的位置）。 使用自我簽署的安全性 cookie 語彙基元[DPAPI](https://msdn.microsoft.com/library/system.security.cryptography.protecteddata.aspx)並建立不含`UserId, SecurityStamp`和到期時間資訊。
 

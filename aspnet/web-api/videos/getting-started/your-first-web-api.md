@@ -3,17 +3,17 @@ uid: web-api/videos/getting-started/your-first-web-api
 title: ASP.NET Web API 第 1 部分： 第一個 Web API |Microsoft Docs
 author: jongalloway
 description: 注意： 這段影片中包含發行前版本的 ASP.NET Web API 的資訊
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/15/2012
 ms.assetid: fda768fb-50f5-4046-8fda-6f199d27bce7
 msc.legacyurl: /web-api/videos/getting-started/your-first-web-api
 msc.type: video
-ms.openlocfilehash: 9123c92a31828687fedb6c70c19ca6ac429ee525
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2254910f7562803a0a0000e3a4f1cb8c23904dbd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839761"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833481"
 ---
 <a name="aspnet-web-api-part-1-your-first-web-api"></a>ASP.NET Web API 第 1 部分： 第一個 Web API
 ====================

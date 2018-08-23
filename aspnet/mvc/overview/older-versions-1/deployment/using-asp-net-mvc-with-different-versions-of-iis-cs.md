@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-v
 title: 使用 ASP.NET MVC 與不同版本的 IIS (C#) |Microsoft Docs
 author: microsoft
 description: 在本教學課程中，您將了解如何使用不同版本的 Internet Information Services 中的 ASP.NET MVC 和 URL 路由。 您了解不同的策略...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/19/2008
 ms.assetid: b0cf4a34-2c1d-4717-bb54-ff029e722990
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0d0c625552c87a8e63e48d145eb14266998cc5e2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: aa7d00c0f54212d495f48929ed2a453942a1ed7d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814872"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826239"
 ---
 <a name="using-aspnet-mvc-with-different-versions-of-iis-c"></a>使用 ASP.NET MVC 與不同版本的 IIS (C#)
 ====================

@@ -3,15 +3,15 @@ uid: webhooks/diagnostics/debugging
 title: ASP.NET Webhook 偵錯 |Microsoft Docs
 author: rick-anderson
 description: 如何偵錯 ASP.NET Webhook。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: 467da78b-3c35-4c51-8b08-77a32379e4a8
-ms.openlocfilehash: 25fa47202dd31d6ebd7a0e179075333108515274
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 517d282fc22703b5861b748aea51023fa0a12a26
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37801984"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826226"
 ---
 # <a name="aspnet-webhooks-debugging"></a>偵錯 ASP.NET Webhook  
 

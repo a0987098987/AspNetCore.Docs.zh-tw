@@ -3,17 +3,17 @@ uid: whitepapers/overview
 title: 技術白皮書 |Microsoft Docs
 author: rick-anderson
 description: 在此頁面上，您會發現可協助您安裝和設定 ASP.NET，並協助您撰寫安全、 快速且彈性的 ASP.NET 應用程式的技術白皮書。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/15/2011
 ms.assetid: d5e79470-01f2-4d65-8077-11c3e10a6784
 msc.legacyurl: /whitepapers
 msc.type: content
-ms.openlocfilehash: b2650c9a396b9049d9919a675be40df1ac1338c9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5017efc4d141afba206aaca5a8b5e6bab996ebbf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802928"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826014"
 ---
 <a name="whitepapers"></a>白皮書
 ====================

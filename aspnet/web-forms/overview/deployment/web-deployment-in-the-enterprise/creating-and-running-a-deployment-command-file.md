@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/creating-and
 title: 建立和執行部署命令檔案 |Microsoft Docs
 author: jrjlee
 description: 本主題說明如何建置可讓您執行單一步驟中使用 Microsoft Build Engine (MSBuild) 專案檔，或重新部署的命令檔...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: c61560e9-9f6c-4985-834a-08a3eabf9c3c
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file
 msc.type: authoredcontent
-ms.openlocfilehash: 6b2a75e0740f648a3a6e4f39c00bd30609325728
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 121df7482f7cbd70b191e518bae791f0642ccc7c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830298"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833480"
 ---
 <a name="creating-and-running-a-deployment-command-file"></a>建立和執行部署命令檔
 ====================

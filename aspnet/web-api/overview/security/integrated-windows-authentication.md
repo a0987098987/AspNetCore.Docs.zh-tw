@@ -3,17 +3,17 @@ uid: web-api/overview/security/integrated-windows-authentication
 title: 整合式 Windows 驗證 |Microsoft Docs
 author: MikeWasson
 description: 描述如何使用 ASP.NET Web API 中的整合式 Windows 驗證。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/18/2012
 ms.assetid: 71ee4c78-c500-4d1c-b761-b4e161a291b5
 msc.legacyurl: /web-api/overview/security/integrated-windows-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: c15677b7aa66619f1ff32819585340ff497b937d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 13dead421abf7ded73cbb2e5f87e54b1a869b5d4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820402"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833894"
 ---
 <a name="integrated-windows-authentication"></a>整合式的 Windows 驗證
 ====================

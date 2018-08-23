@@ -3,17 +3,17 @@ uid: web-api/overview/data/using-web-api-with-entity-framework/part-7
 title: 建立檢視 (UI) |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/16/2014
 ms.assetid: b2445062-a1fe-4133-8994-f510280f6d9a
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-7
 msc.type: authoredcontent
-ms.openlocfilehash: eeaa36ede45b82afd112a270acf68105d1ae6dbc
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: aa0ea68dd83a294e6d6c343887738c60eef595bf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820982"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833279"
 ---
 <a name="create-the-view-ui"></a>建立檢視 (UI)
 ====================

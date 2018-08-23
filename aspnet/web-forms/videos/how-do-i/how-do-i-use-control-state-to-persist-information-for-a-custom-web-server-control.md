@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-use-control-state-to-persist-information
 title: '[How Do i:]使用控制項狀態保存自訂 Web 伺服器控制項的資訊 |Microsoft Docs'
 author: rick-anderson
 description: 在這段影片 Chris Pels 將示範如何將儲存在 ViewState 無關的控制項狀態的自訂 web 伺服器控制項的相關資訊...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/17/2007
 ms.assetid: 3004c934-0563-41ac-ad80-fef985e9e5b4
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-control-state-to-persist-information-for-a-custom-web-server-control
 msc.type: video
-ms.openlocfilehash: 902a36344bab1b47bc5395be19f7ba12dbf7175b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 76abeda343c2c1bff8ad3efb96d93bc084750962
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809835"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832257"
 ---
 <a name="how-do-i-use-control-state-to-persist-information-for-a-custom-web-server-control"></a>[How Do i:]使用控制項狀態保存自訂 Web 伺服器控制項的資訊
 ====================

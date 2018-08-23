@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/how-do-i/aspnet-mvc-2-areas
 title: ASP.NET MVC 2-區域 |Microsoft Docs
 author: jongalloway
 description: 在這段影片中，您將了解如何使用領域功能，輕鬆地組織大型的 ASP.NET MVC 應用程式分成不同 funct...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/22/2010
 ms.assetid: 6ec738b6-c34c-4647-b8bf-9acb8d2a259d
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/aspnet-mvc-2-areas
 msc.type: video
-ms.openlocfilehash: 95f3ea6a054d1e02cca2902fd6eea54ef33d347d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 24284cf9a703c5b7bb385395f9fe2ab3d3f2325b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827575"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826230"
 ---
 <a name="aspnet-mvc-2---areas"></a>ASP.NET MVC 2-區域
 ====================

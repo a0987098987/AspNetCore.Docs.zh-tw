@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-function
 title: '反覆項目 #7 – 新增 Ajax 功能 (VB) |Microsoft Docs'
 author: microsoft
 description: 在第七個反覆項目，改善回應性和我們的應用程式的效能透過新增對 Ajax 支援。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2009
 ms.assetid: f640e063-150e-453d-8cfc-7e54a6ce0f1e
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b39a251acc96a78245238da5b82365958223e4c7
-ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
+ms.openlocfilehash: 0b9c6ff228e73ce63f7a0b046110db656103d6d5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396175"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834698"
 ---
 <a name="iteration-7--add-ajax-functionality-vb"></a>反覆項目 #7 – 新增 Ajax 功能 (VB)
 ====================

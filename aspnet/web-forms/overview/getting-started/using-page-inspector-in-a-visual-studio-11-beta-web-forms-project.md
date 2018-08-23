@@ -3,17 +3,17 @@ uid: web-forms/overview/getting-started/using-page-inspector-in-a-visual-studio-
 title: 使用 Page Inspector，Visual Studio 2012，在 ASP.NET Web form |Microsoft Docs
 author: rick-anderson
 description: Page Inspector for Visual Studio 2012 是 web 開發工具與整合式瀏覽器。 在 Page Inspector 的整合式瀏覽器中，選取任何項目...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/15/2012
 ms.assetid: 2ece0bf4-aae5-4ff4-8f62-28e0819d4f86
 msc.legacyurl: /web-forms/overview/getting-started/using-page-inspector-in-a-visual-studio-11-beta-web-forms-project
 msc.type: authoredcontent
-ms.openlocfilehash: 8e914b87305fa729659822ec1166e9d1947e59cb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d2c377f8466f8f324b75ce60860aa00c11bc0ffe
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806270"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825821"
 ---
 <a name="using-page-inspector-for-visual-studio-2012-in-aspnet-web-forms"></a>在 ASP.NET Web Form 中的 Visual Studio 2012 中使用 Page Inspector
 ====================

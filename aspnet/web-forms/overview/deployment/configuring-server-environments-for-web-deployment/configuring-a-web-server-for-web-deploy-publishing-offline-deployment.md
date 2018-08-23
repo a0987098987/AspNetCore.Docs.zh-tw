@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/configuring-server-environments-for-web-deplo
 title: 設定 Web 伺服器的 Web Deploy 發行 （離線部署） |Microsoft Docs
 author: jrjlee
 description: 本主題描述如何設定 IIS web 伺服器以支援離線網頁發佈和部署。 當您使用 Internet Information Services (我...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: ba92788f-9f03-44b1-b6b2-af8413e6a35d
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 048cd1855e3f03a6f348521c00acb03ddee8c630
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: eab69e93417ddedea9214523de34697b044a871e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824670"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834709"
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-offline-deployment"></a>設定 Web 伺服器，Web deploy 發行 （離線部署）
 ====================
@@ -157,7 +157,7 @@ ms.locfileid: "37824670"
     ![](configuring-a-web-server-for-web-deploy-publishing-offline-deployment/_static/image6.png)
 
     > [!NOTE]
-    > 第一個站台繫結可讓您存取使用的 IP 位址和連接埠，在本機站台或`http://localhost:85`。 第二個網站繫結可讓您從使用電腦名稱在網域上其他電腦存取站台 (例如http://proweb1:85)。
+    > 第一個站台繫結可讓您存取使用的 IP 位址和連接埠，在本機站台或 `http://localhost:85` 。 第二個網站繫結可讓您從使用電腦名稱在網域上其他電腦存取站台 (例如 http://proweb1:85) 。
 13. 在 [**站台繫結**] 對話方塊中，按一下**關閉**。
 14. 在 **連線**窗格中，按一下**應用程式集區**。
 15. 在 **應用程式集區**窗格中，以滑鼠右鍵按一下您的應用程式集區的名稱，然後按一下**基本設定**。 根據預設，應用程式集區的名稱會符合您網站的名稱 (例如**DemoSite**)。

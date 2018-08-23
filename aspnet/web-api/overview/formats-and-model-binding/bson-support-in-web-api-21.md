@@ -3,17 +3,17 @@ uid: web-api/overview/formats-and-model-binding/bson-support-in-web-api-21
 title: ASP.NET Web API 2.1 中的 BSON 支援 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/20/2014
 ms.assetid: ce11b017-0ca6-4376-aa9d-a7f3288101de
 msc.legacyurl: /web-api/overview/formats-and-model-binding/bson-support-in-web-api-21
 msc.type: authoredcontent
-ms.openlocfilehash: 7b9a0c2def4703f6fad65790dfe4227117189933
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 709fb0266c0725176358a1bd0d08b3e07fa6e2a6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839872"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833892"
 ---
 <a name="bson-support-in-aspnet-web-api-21"></a>ASP.NET Web API 2.1 中的 BSON 支援
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/introduction/forms-authenticatio
 title: 表單驗證組態和進階的主題 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程，我們會檢查各種表單驗證設定，並了解如何透過表單項目來修改它們。 這會需要詳細...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/14/2008
 ms.assetid: 829d2f56-5c48-445b-b826-3418a450c788
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d740694772b0fc5ad1c9c4eb5763004523586631
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: eb533cf763c2f3132ea0a5420b4d4cbea16c61cd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831138"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831443"
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-vb"></a>表單驗證組態和進階的主題 (VB)
 ====================
@@ -46,7 +46,7 @@ ms.locfileid: "37831138"
 |           網域           | 當使用以 cookie 為基礎的驗證票證，則此設定會指定 cookie s 網域值。 預設值是空字串，這會導致瀏覽器使用從中它已發行 （例如 www.yourdomain.com) 的網域。 在此情況下，將會在 cookie<strong>不</strong>子網域，例如 admin.yourdomain.com 進行要求時傳送。 如果您想要傳遞至所有子網域，您需要自訂網域屬性將它設定為 yourdomain.com cookie。 |
 |  enableCrossAppRedirects   |                                                                                                                                                                   布林值，指出是否在同一部伺服器上的其他 web 應用程式重新導向至 Url 時，是否需要記住已驗證的使用者。 預設為 false。                                                                                                                                                                   |
 |          loginUrl          |                                                                                                                                                                                                                      登入頁面的 URL。 預設值為 login.aspx。                                                                                                                                                                                                                      |
-|            name            |                                                                                                                                                                                                   當使用以 cookie 為基礎的驗證票證的 cookie 名稱。 預設值為。ASPXAUTH。                                                                                                                                                                                                   |
+|            名稱            |                                                                                                                                                                                                   當使用以 cookie 為基礎的驗證票證的 cookie 名稱。 預設值為。ASPXAUTH。                                                                                                                                                                                                   |
 |            路徑            |                                                                             當使用以 cookie 為基礎的驗證票證，則此設定會指定 cookie s path 屬性。 Path 屬性可讓開發人員限制至特定的目錄階層的 cookie 的範圍。 預設值是，/，而這會通知傳送到任何加入網域所提出的要求的驗證票證 cookie 的瀏覽器。                                                                              |
 |         保護         |                                                                                                                                            指示何種技術用來保護表單驗證票證。 允許的值為： 全部 （預設值）;加密;無。和驗證。 在步驟 3 中詳細討論這些設定。                                                                                                                                            |
 |         requireSSL         |                                                                                                                                                                                布林值，指出是否需要 SSL 連線來傳送驗證 cookie。 預設值為 false。                                                                                                                                                                                |

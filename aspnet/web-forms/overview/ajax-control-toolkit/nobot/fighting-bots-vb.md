@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-vb
 title: 對抗 Bot (VB) |Microsoft Docs
 author: wenz
 description: 自動化的機器人 plaster 與垃圾郵件，提交而不需要任何使用者互動的註解表單的部落格和其他網站。 在 ASP.NET AJAX Con NoBot 控制項...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: e9803150-452d-4521-97e3-d75d5599383c
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e79a973f721c1feeddb00ecbf9d6a76786afb4bb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8b2a2d2d72bfcf3ce8b3b345fda0bad5a37818ee
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833439"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826031"
 ---
 <a name="fighting-bots-vb"></a>對抗 Bot (VB)
 ====================

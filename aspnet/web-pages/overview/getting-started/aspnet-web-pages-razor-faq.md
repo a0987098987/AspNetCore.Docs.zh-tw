@@ -3,17 +3,17 @@ uid: web-pages/overview/getting-started/aspnet-web-pages-razor-faq
 title: ASP.NET Web Pages (Razor) 常見問題集 |Microsoft Docs
 author: tfitzmac
 description: 本文列出一些常見問題解 ASP.NET Web Pages (Razor) 和 WebMatrix。 使用教學課程 ASP.NET Web Pages 中 (R...的軟體版本
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/07/2014
 ms.assetid: b137bd04-25e1-47cb-9d96-ef2e179ecf1f
 msc.legacyurl: /web-pages/overview/getting-started/aspnet-web-pages-razor-faq
 msc.type: authoredcontent
-ms.openlocfilehash: 1f97056c952757ea2d009eaca57d904791e80ca3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 03e89adc2415808ea49107616f529fa895d6e52a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814232"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833880"
 ---
 <a name="aspnet-web-pages-razor-faq"></a>ASP.NET Web Pages (Razor) 常見問題集
 ====================

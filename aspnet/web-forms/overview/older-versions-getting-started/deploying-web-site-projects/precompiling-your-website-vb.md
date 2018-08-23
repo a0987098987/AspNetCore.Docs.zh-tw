@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: 先行編譯您的網站 (VB) |Microsoft Docs
 author: rick-anderson
 description: Visual Studio 為 ASP.NET 開發人員提供兩種專案類型： Web 應用程式專案 (Wap) 和網站專案 (WSPs)。 其中一個主要差異 betwe...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/09/2009
 ms.assetid: c285dc6f-a1c6-46e6-ac03-3830947f57e3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a5d7820bf99348ec9d1014264de5779bb7aead01
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d952a949552f5ec1a0241fd8467431cbec0758e9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809559"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833468"
 ---
 <a name="precompiling-your-website-vb"></a>先行編譯您的網站 (VB)
 ====================

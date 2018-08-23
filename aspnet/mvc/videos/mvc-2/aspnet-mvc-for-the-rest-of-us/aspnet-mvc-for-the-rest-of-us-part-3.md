@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-u
 title: 適合其他人的 ASP.NET MVC： 第 3 部分 |Microsoft Docs
 author: JoeStagner
 description: 在此影片 Microsoft Joe Stagner 會重建 ' 與我們連絡 」 功能使用 Microsoft Entity Framework 和強類型的 ASP.NET MVC 應用程式...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/22/2010
 ms.assetid: 36e519b9-c786-4819-beda-2af72f088623
 msc.legacyurl: /mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-3
 msc.type: video
-ms.openlocfilehash: 1451efb593367895eebb5d303ba8771c15e31845
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 24764c24d939fca1141d8474691f1c8322c4a656
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824308"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831446"
 ---
 <a name="aspnet-mvc-for-the-rest-of-us-part-3"></a>適合其他人的 ASP.NET MVC： 第 3 部分
 ====================

@@ -3,17 +3,17 @@ uid: whitepapers/mvc4-release-notes
 title: ASP.NET MVC 4 | Microsoft Docs
 author: rick-anderson
 description: 本文件說明 ASP.NET MVC 4 的版本。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/09/2011
 ms.assetid: f014524f-25c0-4094-b8e1-886d99536f00
 msc.legacyurl: /whitepapers/mvc4-release-notes
 msc.type: content
-ms.openlocfilehash: 9e4d73349c4c01e0717aabe7da9cb126d2c545c0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a4f78061850ef5ad8c3381daafdb5ea6bca4cb2f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37826569"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835120"
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================

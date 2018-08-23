@@ -3,17 +3,17 @@ uid: web-pages/overview/getting-started/introducing-razor-syntax-c
 title: 使用 Razor 語法 (C#) 的 ASP.NET Web 程式設計簡介 |Microsoft Docs
 author: tfitzmac
 description: 本章概述您程式設計的 ASP.NET 網頁使用 Razor 語法。 ASP.NET 是 Microsoft 的技術，用於執行動態 web 的 pa...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/07/2014
 ms.assetid: aa67d304-583b-4bf8-a231-195656cfb587
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-c
 msc.type: authoredcontent
-ms.openlocfilehash: 22985b71d39d93b8ad42ee923b872846f2fafa99
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 347e5ddbc02866887d3f422ecc291e5e3dfacaaf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814297"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831449"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>使用 Razor 語法 (C#) 的 ASP.NET Web 程式設計簡介
 ====================
@@ -340,84 +340,248 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
 
 下表列出一些常見的轉換和測試方法的變數。
 
-::: 資料列:::::: 資料行:::<strong>方法</strong>::: 資料行後端:::::: 資料行:::<strong>描述</strong>::: 資料行後端:::::: 資料行:::<strong>範例</strong>::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        <strong>方法</strong>
+    :::column-end:::
+    :::column:::
+        <strong>描述</strong>
+    :::column-end:::
+    :::column:::
+        <strong>範例</strong>
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AsInt(), IsInt()` ::: 資料行後端:::::: 資料行::: 轉換字串，表示為整數的整數 （例如"593")。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample28.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AsInt(), IsInt()`
+    :::column-end:::
+    :::column:::
+        將轉換成整數表示 （例如"593 」) 之間的整數的字串。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample28.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AsBool(), IsBool()` ::: 資料行後端:::::: 資料行::: 轉換字串 like &quot;，則為 true&quot;或&quot;false&quot;布林型別。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample29.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AsBool(), IsBool()`
+    :::column-end:::
+    :::column:::
+        將轉換的字串，例如&quot;，則為 true&quot;或是&quot;false&quot;布林型別。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample29.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AsFloat(), IsFloat()` ::: 資料行後端:::::: 資料行::: 將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;浮點數。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample30.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AsFloat(), IsFloat()`
+    :::column-end:::
+    :::column:::
+        將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;浮點數。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample30.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AsDecimal(), IsDecimal()` ::: 資料行後端:::::: 資料行::: 將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;十進位數字。 （在 ASP.NET 中，十進位數字是更精確比浮點數）。::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample31.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AsDecimal(), IsDecimal()`
+    :::column-end:::
+    :::column:::
+        將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;十進位數字。 （在 ASP.NET 中，十進位數字是更精確比浮點數）。 :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample31.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AsDateTime(), IsDateTime()` ::: 資料行後端:::::: 資料行::: 將 asp.net 代表的日期和時間值的字串轉換`DateTime`型別。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample32.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AsDateTime(), IsDateTime()`
+    :::column-end:::
+    :::column:::
+        將 asp.net 代表的日期和時間值的字串轉換`DateTime`型別。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample32.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `ToString()` ::: 資料行後端:::::: 資料行::: 將其他任何資料類型轉換為字串。
-::: 資料行後端:::::: 資料行::: [!code-javascript[Main](introducing-razor-syntax-c/samples/sample33.js)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `ToString()`
+    :::column-end:::
+    :::column:::
+        將任何其他資料類型轉換為字串。
+    :::column-end:::
+    :::column:::
+        [!code-javascript[Main](introducing-razor-syntax-c/samples/sample33.js)]
+    :::column-end:::
+:::row-end:::
 
 ## <a name="operators"></a>運算子
 
 運算子是關鍵字或字元，會告訴 ASP.NET 在運算式中執行命令的類型。 C# 語言 （和 Razor 語法為基礎） 支援許多運算子，但您只需要識別一些開始使用。 下表摘要說明最常見的運算子。
 
 
-::: 資料列:::::: 資料行:::<strong>運算子</strong>::: 資料行後端:::::: 資料行:::<strong>描述</strong>::: 資料行後端:::::: 資料行:::<strong>範例</strong>::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        <strong>Operator</strong>
+    :::column-end:::
+    :::column:::
+        <strong>描述</strong>
+    :::column-end:::
+    :::column:::
+        <strong>範例</strong>
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `+` `-` `*` `/` ::: 資料行後端:::::: 資料行::: 用在數值運算式的數學運算子。
-::: 資料行後端:::::: 資料行::: [!code-css[Main](introducing-razor-syntax-c/samples/sample34.css)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `+` `-` `*` `/`
+    :::column-end:::
+    :::column:::
+        用在數值運算式的數學運算子。
+    :::column-end:::
+    :::column:::
+        [!code-css[Main](introducing-razor-syntax-c/samples/sample34.css)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `=` ::: 資料行後端:::::: 資料行::: 指派。 將陳述式的右邊的值指派給左邊的物件中。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample35.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `=`
+    :::column-end:::
+    :::column:::
+        指派。 將陳述式的右邊的值指派給左邊的物件中。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample35.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `==` ::: 資料行後端:::::: 資料行::: 等號比較。 傳回`true`值是否相等。 (請注意區分`=`運算子和`==`運算子。)::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample36.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `==`
+    :::column-end:::
+    :::column:::
+        相等。 傳回`true`值是否相等。 (請注意區分`=`運算子和`==`運算子。) :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample36.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `!=` ::: 資料行後端:::::: 資料行::: 不等比較。 傳回`true`值是否不相等。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample37.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `!=`
+    :::column-end:::
+    :::column:::
+        不等。 傳回`true`值是否不相等。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample37.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `< > <= >=` ::: 資料行後端:::::: 資料行::: 較少-相比，更-相比，小於-或-等於、 與大於或等於。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample38.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `< > <= >=`
+    :::column-end:::
+    :::column:::
+        較少-相比，大於-小於-或-等於、 與大於或等於比。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample38.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `+` ::: 資料行後端:::::: 資料行::: 用來將字串的串連。 ASP.NET 會知道此運算子和運算式的資料類型的加法運算子之間的差異。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample39.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `+`
+    :::column-end:::
+    :::column:::
+        串連，用來聯結字串。 ASP.NET 會知道此運算子和運算式的資料類型的加法運算子之間的差異。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample39.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `+=` `-=` ::: 資料行後端:::::: 資料行::: 遞增和遞減運算子，以新增和從變數 （分別） 減 1。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample40.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `+=` `-=`
+    :::column-end:::
+    :::column:::
+        遞增和遞減運算子，以新增和從變數 （分別） 減 1。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample40.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `.` ::: 資料行後端:::::: 資料行::: 點。 用來區別物件及其屬性和方法。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample41.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `.`
+    :::column-end:::
+    :::column:::
+        點。 用來區別物件及其屬性和方法。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample41.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `()` ::: 資料行後端:::::: 資料行::: 括號。 用來群組運算式，並將參數傳遞給方法。
-::: 資料行後端:::::: 資料行::: [!code-javascript[Main](introducing-razor-syntax-c/samples/sample42.js)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `()`
+    :::column-end:::
+    :::column:::
+        括號。 用來群組運算式，並將參數傳遞給方法。
+    :::column-end:::
+    :::column:::
+        [!code-javascript[Main](introducing-razor-syntax-c/samples/sample42.js)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `[]` ::: 資料行後端:::::: 資料行::: 方括號。 用來存取陣列或集合中的值。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample43.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `[]`
+    :::column-end:::
+    :::column:::
+        方括號。 用來存取陣列或集合中的值。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample43.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `!` ::: 資料行後端:::::: 資料行::: 沒有。 反轉`true`值`false`，反之亦然。 常用縮寫來測試`false`(也就是針對不`true`)。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample44.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `!`
+    :::column-end:::
+    :::column:::
+        不。 反轉`true`值`false`，反之亦然。 常用縮寫來測試`false`(也就是針對不`true`)。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample44.cs)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `&&` <code>&#124;&#124;</code> ::: 資料行後端:::::: 資料行::: 邏輯 AND 和 OR，這用來連結條件一起。
-::: 資料行後端:::::: 資料行::: [!code-csharp[Main](introducing-razor-syntax-c/samples/sample45.cs)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `&&` <code>&#124;&#124;</code>
+    :::column-end:::
+    :::column:::
+        邏輯 AND 和 OR，這用來連結條件一起。
+    :::column-end:::
+    :::column:::
+        [!code-csharp[Main](introducing-razor-syntax-c/samples/sample45.cs)]
+    :::column-end:::
+:::row-end:::
 
 <a id="ID_WorkingWithFileAndFolderPaths"></a>
 ## <a name="working-with-file-and-folder-paths-in-code"></a>使用檔案和程式碼中的資料夾路徑

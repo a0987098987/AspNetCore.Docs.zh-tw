@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-write-web-events-to-a-sql-server-databas
 title: '[How Do i:]Web 事件寫入 SQL Server 資料庫使用 SqlWebEventProvider |Microsoft Docs'
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何使用 ASP.NET 狀況監控 SqlWebEventProvider 網站到 SQL Server 資料庫中記錄錯誤。 首先，清除...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/28/2008
 ms.assetid: d4c08844-fe1c-4759-9ec7-66263ba678fb
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-write-web-events-to-a-sql-server-database-using-the-sqlwebeventprovider
 msc.type: video
-ms.openlocfilehash: 7bb7394ac74e8a8772b2d05e31eb5dccae1b2d2b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f97a294f6222f1a55e0776412cd060ecfbe25405
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825670"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831237"
 ---
 <a name="how-do-i-write-web-events-to-a-sql-server-database-using-the-sqlwebeventprovider"></a>[How Do i:]Web 事件寫入 SQL Server 資料庫 SqlWebEventProvider
 ====================

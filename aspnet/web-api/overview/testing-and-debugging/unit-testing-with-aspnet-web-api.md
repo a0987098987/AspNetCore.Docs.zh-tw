@@ -3,23 +3,23 @@ uid: web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 title: 單元測試 ASP.NET Web API 2 |Microsoft Docs
 author: tfitzmac
 description: 本指南及應用程式示範如何建立簡單的單元測試，您的 Web API 2 應用程式。 本教學課程會示範如何包含單元測試專案...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/05/2014
 ms.assetid: bf20f78d-ff91-48be-abd1-88e23dcc70ba
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 701ced855ff2848182fdbf8d4b9e2bcf0c33341b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0a3f9ddde725995359de85c5e0783106f5de02bd
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806211"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826034"
 ---
 <a name="unit-testing-aspnet-web-api-2"></a>單元測試 ASP.NET Web API 2
 ====================
 藉由[Tom FitzMacken](https://github.com/tfitzmac)
 
-[下載已完成的專案](http://code.msdn.microsoft.com/Unit-Testing-with-ASPNET-e2867d4d)
+[下載已完成的專案](https://code.msdn.microsoft.com/Unit-Testing-with-ASPNET-1374bc11)
 
 > 本指南及應用程式示範如何建立簡單的單元測試，您的 Web API 2 應用程式。 本教學課程會示範如何在您的解決方案，包括單元測試專案和撰寫檢查從控制器方法的傳回的值的測試方法。
 > 

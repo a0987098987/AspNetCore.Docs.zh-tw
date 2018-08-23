@@ -3,17 +3,17 @@ uid: web-forms/overview/getting-started/creating-a-basic-web-forms-page
 title: 建立基本的 ASP.NET 4.5 Web Form 頁面在 Visual Studio 2013 |Microsoft Docs
 author: Erikre
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/03/2014
 ms.assetid: a2f1c635-0817-4a9a-8c13-d5b5d29727c0
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
-ms.openlocfilehash: 9646aaf6d5ea13b062dbb979b0f1c759716eb7ab
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3efd772854cb97c805d61b63c03f6bae031619de
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842885"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832659"
 ---
 <a name="creating-a-basic-aspnet-45-web-forms-page-in-visual-studio-2013"></a>建立基本的 ASP.NET 4.5 Web Form 頁面在 Visual Studio 2013
 ====================

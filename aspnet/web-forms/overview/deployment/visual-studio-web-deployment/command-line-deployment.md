@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/visual-studio-web-deployment/command-line-dep
 title: 使用 Visual Studio 的 ASP.NET Web 部署： 命令列部署 |Microsoft Docs
 author: tdykstra
 description: 本系列教學課程會示範如何部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web Apps 或協力廠商裝載提供者，使用...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/15/2013
 ms.assetid: 82b8dea0-f062-4ee4-8784-3ffa30fbb1ca
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/command-line-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: f079beabccd253ff13c19d3192181ddbdf00b3bf
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9b2832dd23f68f9283983b52a85e8a9d5f85fd2f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830963"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834694"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-command-line-deployment"></a>使用 Visual Studio 的 ASP.NET Web 部署： 命令列部署
 ====================

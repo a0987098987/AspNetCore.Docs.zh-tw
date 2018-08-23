@@ -3,17 +3,17 @@ uid: whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012
 title: 什麼是 ASP.NET 4.5 和 Visual Studio 2012 的新功能 |Microsoft Docs
 author: rick-anderson
 description: 本文件說明新功能和 ASP.NET 4.5 中引進的增強功能。 此外，本文也將說明進行網頁程式開發的增強功能...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/29/2012
 ms.assetid: ba1fabb4-31a3-4ebf-8327-41a6bbba6eaf
 msc.legacyurl: /whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012
 msc.type: content
-ms.openlocfilehash: cfe9b1a7f05b43d5eb638c8fa7cb581d1edac9d5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6bbfb4aa7f29e4c189da4dfdca6f2113c7550b68
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37835809"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831147"
 ---
 <a name="whats-new-in-aspnet-45-and-visual-studio-2012"></a>在 ASP.NET 4.5 和 Visual Studio 2012 中最新消息
 ====================

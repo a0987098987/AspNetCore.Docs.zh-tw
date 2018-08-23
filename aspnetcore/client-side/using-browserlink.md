@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 09/22/2017
 uid: client-side/using-browserlink
-ms.openlocfilehash: 5ab15c841c472e6c9d47bad70fcf5e0c6dc3010f
-ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
-ms.translationtype: HT
+ms.openlocfilehash: 452ba5149563c186750466f471c7b950f0017614
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37894175"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833487"
 ---
 # <a name="browser-link-in-aspnet-core"></a>ASP.NET Core 中的瀏覽器連結
 
@@ -139,7 +139,7 @@ if (env.IsDevelopment())
 
 ## <a name="how-it-works"></a>它的運作方式
 
-瀏覽器連結會使用 SignalR 來建立 Visual Studio 和瀏覽器之間的通訊通道。 啟用瀏覽器連結時，Visual Studio 就會作為多個用戶端 （瀏覽器） 可以連線到 SignalR 伺服器。 瀏覽器連結也會註冊在 ASP.NET 要求管線的中介軟體元件。 此元件會插入特殊`<script>`到每一個網頁要求從伺服器中的參考。 您可以選取，以查看指令碼參考**檢視原始檔**在瀏覽器，並向下捲動到結尾`<body>`標記的內容：
+瀏覽器連結會使用 SignalR 來建立 Visual Studio 和瀏覽器之間的通訊通道。 啟用瀏覽器連結時，Visual Studio 就會作為多個用戶端 （瀏覽器） 可以連線到 SignalR 伺服器。 瀏覽器連結也會註冊在 ASP.NET Core 要求管線的中介軟體元件。 此元件會插入特殊`<script>`到每一個網頁要求從伺服器中的參考。 您可以選取，以查看指令碼參考**檢視原始檔**在瀏覽器，並向下捲動到結尾`<body>`標記的內容：
 
 ```html
     <!-- Visual Studio Browser Link -->

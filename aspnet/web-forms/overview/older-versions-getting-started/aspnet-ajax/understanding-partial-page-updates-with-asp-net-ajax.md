@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding
 title: 了解部分頁面更新與 ASP.NET AJAX |Microsoft Docs
 author: scottcate
 description: 可能的 ASP.NET AJAX Extensions 最明顯的特色就是能夠執行的部分或累加頁面更新，而不進行完整回傳至 t...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/28/2008
 ms.assetid: 54d9df99-1161-4899-b4e8-2679c85915e7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-partial-page-updates-with-asp-net-ajax
 msc.type: authoredcontent
-ms.openlocfilehash: 8ec4df5ffeaab4490eaea0f0093d543d517bd5f4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2e0b1e1d4cbb282e7fd4b27e0a93ba1b9702edea
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805268"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833462"
 ---
 <a name="understanding-partial-page-updates-with-aspnet-ajax"></a>了解部分頁面更新與 ASP.NET AJAX
 ====================

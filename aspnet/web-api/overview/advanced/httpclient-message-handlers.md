@@ -3,17 +3,17 @@ uid: web-api/overview/advanced/httpclient-message-handlers
 title: ASP.NET Web API 中的 HttpClient 訊息處理常式 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/01/2012
 ms.assetid: 5a4b6c80-b2e9-4710-8969-d5076f7f82b8
 msc.legacyurl: /web-api/overview/advanced/httpclient-message-handlers
 msc.type: authoredcontent
-ms.openlocfilehash: db9edcf4fb31e967c3d4e7635f96c68829aec97d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 764244d1299d8cfcb59c3f15d63b42ebff4f6ac0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831368"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831841"
 ---
 <a name="httpclient-message-handlers-in-aspnet-web-api"></a>ASP.NET Web API 中的 HttpClient 訊息處理常式
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/presenting-and-managing-data/model-binding/using-query-s
 title: 使用查詢字串值來使用模型繫結篩選資料，以及 web form |Microsoft Docs
 author: tfitzmac
 description: 本系列教學課程示範使用 ASP.NET Web Form 專案中的模型繫結的基本層面。 模型繫結進行資料互動更多簡單-...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: b90978bd-795d-4871-9ade-1671caff5730
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/using-query-string-values-to-retrieve-data
 msc.type: authoredcontent
-ms.openlocfilehash: b4615d004a32d00b91635bc321a2d4ea792fddbe
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: fc4ec64cf583f25eca6795f7ff9215f025170054
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837259"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831219"
 ---
 <a name="using-query-string-values-to-filter-data-with-model-binding-and-web-forms"></a>使用模型繫結和 web form 中的查詢字串值來篩選資料
 ====================

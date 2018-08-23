@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/updating-
 title: 使用 ASP.NET MVC 應用程式 (10 個 6) 中的 Entity Framework 更新相關的資料 |Microsoft Docs
 author: tdykstra
 description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 5 Code First 和 Visual Studio 的 ASP.NET MVC 4 應用程式...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/30/2013
 ms.assetid: 7871dc05-2750-470f-8b4c-3a52511949bc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: e85162f58ed9826132db8bd854914a14709f709d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ceb311f16575f7aedf0fd789a28e7313daeeaceb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809429"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832655"
 ---
 <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-6-of-10"></a>使用 Entity Framework 的 ASP.NET MVC 應用程式 (10 個 6) 中更新相關的資料
 ====================

@@ -3,17 +3,17 @@ uid: web-api/overview/data/using-web-api-with-entity-framework/part-9
 title: 將新的項目加入至資料庫 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/16/2014
 ms.assetid: 0967c29e-e124-4db0-a788-c45d0ff5aff2
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-9
 msc.type: authoredcontent
-ms.openlocfilehash: 36251ba907a6f580b63f0fded0591c26b6ff879e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 01586ef6eecdbe1acfadfcfcc0c9ca8b442de2d3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818504"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826004"
 ---
 <a name="add-a-new-item-to-the-database"></a>將新的項目加入至資料庫
 ====================

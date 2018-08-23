@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/hovermenu/using-hovermenu-with-a-re
 title: 使用 HoverMenu 與重複項控制項 (C#) |Microsoft Docs
 author: wenz
 description: 在 AJAX Control Toolkit HoverMenu 控制項提供簡單的快顯效果： 當滑鼠指標停留在項目上方時，快顯視窗會顯示在 specifi...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: e7700e7b-edc3-4183-a713-70e507cc7490
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/hovermenu/using-hovermenu-with-a-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f3135eb52bab1550b1c89dd6ce62044640e80198
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 33f65a132ea9f0a939ab70ac249b397ea883ac8c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831993"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833449"
 ---
 <a name="using-hovermenu-with-a-repeater-control-c"></a>使用 HoverMenu 與重複項控制項 (C#)
 ====================

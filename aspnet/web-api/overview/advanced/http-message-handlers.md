@@ -3,17 +3,17 @@ uid: web-api/overview/advanced/http-message-handlers
 title: ASP.NET Web API 中的 HTTP 訊息處理常式 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/13/2012
 ms.assetid: 9002018b-3aa3-4358-bb1c-fbb5bc751d01
 msc.legacyurl: /web-api/overview/advanced/http-message-handlers
 msc.type: authoredcontent
-ms.openlocfilehash: 5694845d6f7f9d868c7b3f83785fddda863756d9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0b0d7b4c543dc4e597c6c472083898f3a8095a83
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37821793"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834290"
 ---
 <a name="http-message-handlers-in-aspnet-web-api"></a>ASP.NET Web API 中的 HTTP 訊息處理常式
 ====================

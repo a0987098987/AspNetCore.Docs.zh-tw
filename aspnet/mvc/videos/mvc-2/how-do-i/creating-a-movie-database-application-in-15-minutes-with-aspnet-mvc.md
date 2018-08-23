@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/how-do-i/creating-a-movie-database-application-in-15-minut
 title: 在使用 ASP.NET MVC 的 15 分鐘內建立影片資料庫應用程式 |Microsoft Docs
 author: StephenWalther
 description: Stephen Walther 建置整個 ASP.NET MVC 應用程式從開始到完成。 這段影片是供不熟悉 ASP.NET MVC F.的人員了解...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/17/2009
 ms.assetid: c742a7c2-11ed-4f39-b658-960676494db9
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/creating-a-movie-database-application-in-15-minutes-with-aspnet-mvc
 msc.type: video
-ms.openlocfilehash: a65656cfc071d37d1b1ff2b88101c2344c716fc2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 082ac4dd51d6d919baf75f5fe316db86f5dfd189
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839904"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826215"
 ---
 <a name="creating-a-movie-database-application-in-15-minutes-with-aspnet-mvc"></a>在使用 ASP.NET MVC 的 15 分鐘內建立影片資料庫應用程式
 ====================

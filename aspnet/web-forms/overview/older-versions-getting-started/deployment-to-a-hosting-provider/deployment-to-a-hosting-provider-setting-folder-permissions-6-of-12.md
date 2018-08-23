@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-p
 title: 使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 12 個 6-設定資料夾權限 |Microsoft Docs
 author: tdykstra
 description: 這一系列的教學課程會示範如何部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫，使用 Visual Stu...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/17/2011
 ms.assetid: cd03a188-e947-4f55-9bda-b8bce201d8c6
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 50b67c20ee374f1c7ab846446f836411132ddf78
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 81d5107c7e25a10218d13175c47913c94e9ab3fd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803677"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832236"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-setting-folder-permissions---6-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 12 個 6-設定資料夾權限
 ====================

@@ -3,17 +3,17 @@ uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-clou
 title: 分散式快取 （使用 Azure 建置真實世界的雲端應用程式） |Microsoft Docs
 author: MikeWasson
 description: 建置真實世界雲端應用程式與 Azure 的電子書是以 Scott Guthrie 所開發的簡報為依據。 它說明 13 模式與做法，他可以...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/20/2015
 ms.assetid: 406518e9-3817-49ce-8b90-e82bc461e2c0
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
 msc.type: authoredcontent
-ms.openlocfilehash: a165c789ae656025934bc5e3ed8e8caef1c21787
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1f67c754fcc03462c25983a8397a1093997b1213
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37821615"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832244"
 ---
 <a name="distributed-caching-building-real-world-cloud-apps-with-azure"></a>分散式快取 （建置真實世界的雲端應用程式與 Azure）
 ====================

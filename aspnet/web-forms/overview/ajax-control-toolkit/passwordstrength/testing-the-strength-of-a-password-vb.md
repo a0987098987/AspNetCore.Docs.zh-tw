@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-streng
 title: 測試 (VB) 的密碼強度 |Microsoft Docs
 author: wenz
 description: 因此，延遲使用者通常會選擇簡單的密碼，也就是輕而易舉地突破，則幾乎任何地方，需要密碼。 在此 ASP 中 PasswordStrength 控制項。N...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 9215a37f-3133-4887-8ed2-3689f3a53551
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7073a06186ba3ff6c6a12d558445d75d9301589a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: db4b2a6bbdb0716442b104c03d0c4138bf60f9be
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805897"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825789"
 ---
 <a name="testing-the-strength-of-a-password-vb"></a>測試密碼強度的 (VB)
 ====================

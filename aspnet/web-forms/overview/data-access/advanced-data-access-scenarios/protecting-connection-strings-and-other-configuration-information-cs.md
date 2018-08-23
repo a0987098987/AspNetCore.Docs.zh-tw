@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/advanced-data-access-scenarios/protecting-co
 title: 保護連接字串和其他組態資訊 (C#) |Microsoft Docs
 author: rick-anderson
 description: ASP.NET 應用程式通常會儲存在 Web.config 檔案中的組態資訊。 其中有些資訊是機密，保證保護。 由 def...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/03/2007
 ms.assetid: ad8dd396-30f7-4abe-ac02-a0b84422e5be
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 24a066a4c9d60e3dc1897bd3143b382b876e027c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 61ac52ffe28762ce0cf8892621343f71e73a9ca7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842217"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826209"
 ---
 <a name="protecting-connection-strings-and-other-configuration-information-c"></a>保護連接字串和其他組態資訊 (C#)
 ====================
@@ -225,7 +225,7 @@ Integrated Security = True 且缺乏使用者名稱和密碼會指出，正在�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

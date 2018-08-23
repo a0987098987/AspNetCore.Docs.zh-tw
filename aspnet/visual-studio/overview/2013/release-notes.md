@@ -3,17 +3,17 @@ uid: visual-studio/overview/2013/release-notes
 title: ASP.NET 及 Web Tools for Visual Studio 2013 版本資訊 |Microsoft Docs
 author: microsoft
 description: 本文件說明版本的 ASP.NET 和 Web Tools for Visual Studio 2013。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/17/2013
 ms.assetid: 08815768-2702-42ae-ae85-0a59934a11d1
 msc.legacyurl: /visual-studio/overview/2013/release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: 0f5b8d6a4e0cbfefb7a1fa1d81d9bd27af4a5ad6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 44ab88b61a96235da27ff41d6b649bfd7fce3e38
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833720"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832234"
 ---
 <a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET 及 Web Tools for Visual Studio 2013 版本資訊
 ====================

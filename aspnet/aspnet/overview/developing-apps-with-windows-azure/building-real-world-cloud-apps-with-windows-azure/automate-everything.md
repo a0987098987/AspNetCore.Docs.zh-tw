@@ -3,17 +3,17 @@ uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-clou
 title: 自動化所有項目 （建置使用 Azure 的真實世界的雲端應用程式） |Microsoft Docs
 author: MikeWasson
 description: 建置真實世界雲端應用程式與 Azure 的電子書是以 Scott Guthrie 所開發的簡報為依據。 它說明 13 模式與做法，他可以...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: ba6e6baa-9b9f-471f-b39d-b007a3addadc
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
-ms.openlocfilehash: 87b697847845ab88943e7a659ccd9487b9408d5a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4acf7361bed7e135c73cd46c99d15e12757e4679
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839631"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832237"
 ---
 <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>自動化 （建置使用 Azure 的真實世界的雲端應用程式） 的所有項目
 ====================

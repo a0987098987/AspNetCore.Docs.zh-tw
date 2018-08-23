@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinf
 title: 驗證與 IDataErrorInfo 介面 (C#) |Microsoft Docs
 author: StephenWalther
 description: Stephen Walther 會示範如何藉由在模型類別中實作的 IDataErrorInfo 介面中顯示自訂的驗證錯誤訊息。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/02/2009
 ms.assetid: 4733b9f1-9999-48fb-8b73-6038fbcc5ecb
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d3d3e379e5b2cfdd1385d724c0d9bf2a83ce339a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b80535db32c4567135407aeb99967bb40c279ddb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37836023"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832644"
 ---
 <a name="validating-with-the-idataerrorinfo-interface-c"></a>驗證與 IDataErrorInfo 介面 (C#)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-share-data-between-client-javascript-and
 title: '[How Do i:]用戶端 JavaScript 和使用隱藏的欄位的伺服器程式碼之間共用資料 |Microsoft Docs'
 author: rick-anderson
 description: 在此影片的 Chris Pels 將會示範如何使用 ASP.NET 網頁中的隱藏的欄位的共用 JavaScript 和伺服器端程式碼之間的資料。 接下來，了解如何 t...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/13/2008
 ms.assetid: bf0a7434-a017-4506-a240-2bd27e360a2f
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-share-data-between-client-javascript-and-server-code-using-a-hidden-field
 msc.type: video
-ms.openlocfilehash: 980cf1264b67b8fced0bf5e51cf9d4880dcfde15
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 537eed0ecc73e31f6be1ab1d8900ac22b486c6f4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37835116"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835095"
 ---
 <a name="how-do-i-share-data-between-client-javascript-and-server-code-using-a-hidden-field"></a>[How Do i:]用戶端 JavaScript 和使用隱藏的欄位的伺服器程式碼之間共用資料
 ====================

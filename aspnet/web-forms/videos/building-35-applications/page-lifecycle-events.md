@@ -3,17 +3,17 @@ uid: web-forms/videos/building-35-applications/page-lifecycle-events
 title: 頁面生命週期事件 |Microsoft Docs
 author: JoeStagner
 description: ASP.NET 提供一個非常豐富的事件處理機制使用攔截程序至 ASP.NET 網頁生命週期中的所有重要時間執行個體。 這段影片中，將會列舉...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/09/2009
 ms.assetid: 11237821-220e-4357-9fa6-38245084e093
 msc.legacyurl: /web-forms/videos/building-35-applications/page-lifecycle-events
 msc.type: video
-ms.openlocfilehash: 117ec9402dc42e8c8e13e4fe666c07deca81b2a7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f70b4998245554a5db4b980e7754d33882492ea9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809799"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834285"
 ---
 <a name="page-lifecycle-events"></a>頁面生命週期事件
 ====================

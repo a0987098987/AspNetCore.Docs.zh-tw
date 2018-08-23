@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: 處理未處理的例外狀況 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在生產環境中的 web 應用程式就會發生執行階段錯誤時，重要通知開發人員，並記錄錯誤，因此，它可能會在當下診斷出的 la...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/09/2009
 ms.assetid: 5bc1afd5-2484-4528-b158-ab218ba150e8
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 07272a10ac9b1ddf3afd6b089b05a3f071834efe
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d94f0a3c931100d2c79513b1ad7ae0e77d7fcff6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832625"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831425"
 ---
 <a name="processing-unhandled-exceptions-c"></a>處理未處理的例外狀況 (C#)
 ====================

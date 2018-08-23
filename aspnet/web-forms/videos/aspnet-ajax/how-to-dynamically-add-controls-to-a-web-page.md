@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/how-to-dynamically-add-controls-to-a-web-page
 title: 如何以動態方式將控制項加入至網頁 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，我將示範一種技術以動態方式將不定數目的控制項新增至您的網頁。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/16/2008
 ms.assetid: 718e7b1d-e02c-41fe-85d5-44c0d288201f
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-to-dynamically-add-controls-to-a-web-page
 msc.type: video
-ms.openlocfilehash: 3849e844616247ac9fad3482ed3cd27969c86acf
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5cc39d56e10da70822a0ba5d1f1882a7b59041ea
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829732"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831845"
 ---
 <a name="how-to-dynamically-add-controls-to-a-web-page"></a>如何以動態方式將控制項加入至網頁
 ====================

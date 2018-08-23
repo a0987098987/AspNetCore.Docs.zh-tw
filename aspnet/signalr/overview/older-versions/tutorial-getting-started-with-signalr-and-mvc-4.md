@@ -3,17 +3,17 @@ uid: signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-m
 title: 教學課程： 開始使用 SignalR 1.x 及 MVC 4 |Microsoft Docs
 author: pfletcher
 description: 使用 ASP.NET SignalR 及 ASP.NET MVC 4 建置即時聊天應用程式。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/29/2013
 ms.assetid: eeef9f73-6de3-49f9-b50b-9af22108f2ce
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 2d9f983a859f2920154d2021bb313ffa7300198e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 34a7ae97a0a0652c090aa72e2cb21a4bce13bd5c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823471"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826225"
 ---
 <a name="tutorial-getting-started-with-signalr-1x-and-mvc-4"></a>教學課程： 開始使用 SignalR 1.x 及 MVC 4
 ====================

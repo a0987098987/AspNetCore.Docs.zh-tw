@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-vali
 title: 將驗證加入至模型 (C#) |Microsoft Docs
 author: Rick-Anderson
 description: 建立控制器
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/12/2011
 ms.assetid: 9af927e2-1c3b-43d9-917d-1df75be3c482
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: fc5c3d2afcb6fa5b1983de1d09476a2a1e09d302
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 14db6184d3edd584fe35529cd4cf1dba5b528ab1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804448"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832654"
 ---
 <a name="adding-validation-to-the-model-c"></a>將驗證加入至模型 (C#)
 ====================

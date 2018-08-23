@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/recommended-resources-for-mvc
 title: MVC 建議資源 |Microsoft Docs
 author: Rick-Anderson
 description: 本主題提供有關 ASP.NET MVC 5 文件資源的連結。 如果您知道很棒的部落格文章、 stackoverflow 執行緒或任何其他連結，就是...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/10/2014
 ms.assetid: 7958d725-e958-4566-a85b-535eeb985f94
 msc.legacyurl: /mvc/overview/getting-started/recommended-resources-for-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 2b9ec425654307a6685537cc058bfd25ff2ca8de
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 57997241afc0a326d5381c7dcef15122fb04ab7d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37821744"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825790"
 ---
 <a name="mvc-recommended-resources"></a>MVC 建議資源
 ====================

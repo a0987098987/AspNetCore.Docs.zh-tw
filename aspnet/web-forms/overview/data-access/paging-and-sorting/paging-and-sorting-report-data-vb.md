@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report
 title: 分頁和排序報告資料 (VB) |Microsoft Docs
 author: rick-anderson
 description: 分頁和排序是兩個常見的功能，在線上應用程式中顯示資料。 在本教學課程中我們將率先一睹加入排序和...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/15/2006
 ms.assetid: b895e37e-0e69-45cc-a7e4-17ddd2e1b38d
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e8e33bc11074815b5beacd92c49c95f8ea9da2c0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2e1cc844122b0fdebbc0be09f88baa11a461ab8e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808456"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831426"
 ---
 <a name="paging-and-sorting-report-data-vb"></a>分頁和排序報告資料 (VB)
 ====================
@@ -303,7 +303,7 @@ ms.locfileid: "37808456"
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 > [!div class="step-by-step"]
 > [上一頁](creating-a-customized-sorting-user-interface-cs.md)

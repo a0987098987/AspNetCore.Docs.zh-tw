@@ -3,17 +3,17 @@ uid: web-api/overview/data/using-web-api-with-entity-framework/part-3
 title: 使用 Code First 移轉來植入資料庫 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/16/2014
 ms.assetid: 76e2013a-65b7-488c-834d-9448ecea378e
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-3
 msc.type: authoredcontent
-ms.openlocfilehash: bce662110fa63a9aee8e23e7b9fcc9ba9a8d2857
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 533d3a6e9a69584fb2523b2c0a604755e372f031
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805453"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832035"
 ---
 <a name="use-code-first-migrations-to-seed-the-database"></a>使用 Code First 移轉來植入資料庫
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populat
 title: 以動態方式填入控制項 (VB) |Microsoft Docs
 author: wenz
 description: DynamicPopulate 控制項在 ASP.NET AJAX Control Toolkit 中呼叫 web 服務 （或頁面方法），並會產生的值填滿至 t 的目標控制項...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 27305347-7b5d-4519-97b7-197a357e7f6e
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d82f8302ddd861531ba517d785a8695d7b914fa0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: cda816cab99867aac8770c420cab7a78ba699e4e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806341"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834277"
 ---
 <a name="dynamically-populating-a-control-vb"></a>以動態方式填入控制項 (VB)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspi
 title: 第 4 部分： 列出產品 |Microsoft Docs
 author: JoeStagner
 description: 本教學課程系列會詳細說明所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 4 部分涵蓋與 GridView contr.列出產品...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/21/2010
 ms.assetid: 4fab47d5-a6ec-4fdc-91f0-651a093a24b9
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: ec349a2564a63fd950ca5f6a171e6ffd1199c28a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ca7eccd684473d9a1ec4a8adfd8690b291fe702f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813069"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834670"
 ---
 <a name="part-4-listing-products"></a>第 4 部分： 列出產品
 ====================

@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/contact-manager/iteration-3-add-form-validati
 title: '反覆項目 #3 – 新增表單驗證 (C#) |Microsoft Docs'
 author: microsoft
 description: 在第三個反覆項目，我們會加入基本表單驗證。 我們可以防止使用者提交表單，而不會完成必要的表單欄位。 我們也會驗證 emai...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2009
 ms.assetid: 51a0d175-913b-43d8-95e3-840fb96ad1a9
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-3-add-form-validation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d7f5d183b98ea123a780714dec2d806e4e794c2d
-ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
+ms.openlocfilehash: 4115b3898415d63ffb122f3d0fea93022f2baa02
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396072"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832649"
 ---
 <a name="iteration-3--add-form-validation-c"></a>反覆項目 #3 – 新增表單驗證 (C#)
 ====================

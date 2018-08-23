@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-4-linq-to
 title: ASP.NET MVC 店面第 4 節： To Sql 特殊圖文集 |Microsoft Docs
 author: robconery
 description: Rob 建立 '突然增加'-若要測試的想法或靈感，-請確定該 Linq 到 Sql 的功能適用於我的資料存取模式。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/27/2008
 ms.assetid: 990262a5-4c06-472a-8083-ed11e14f1e5a
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-4-linq-to-sql-spike
 msc.type: video
-ms.openlocfilehash: 3c2cba0bb65180c0fbbb5b930a0123ed4671124e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b48d16532daacab3db8e398d911c28390eefff23
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831579"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825810"
 ---
 <a name="aspnet-mvc-storefront-part-4-linq-to-sql-spike"></a>ASP.NET MVC 店面第 4 節： To Sql 特殊圖文集
 ====================

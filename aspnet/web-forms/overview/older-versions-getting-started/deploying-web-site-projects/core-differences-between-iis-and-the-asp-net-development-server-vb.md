@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: 核心 IIS 與 ASP.NET 程式開發伺服器 (VB) 之間的差異 |Microsoft Docs
 author: rick-anderson
 description: 測試在本機的 ASP.NET 應用程式，可能是您使用 ASP.NET 開發 Web 伺服器。 不過，生產性網站是最有可能 pow...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2009
 ms.assetid: 090e9205-52f3-4d72-ae31-44775b8b8421
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 586bc45a44e773c3097de0959411a2d27098459a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: aa20def6568d44b589099af6ecf829789fb06231
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37821086"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833461"
 ---
 <a name="core-differences-between-iis-and-the-aspnet-development-server-vb"></a>IIS 與 ASP.NET 程式開發伺服器 (VB) 的核心差異
 ====================

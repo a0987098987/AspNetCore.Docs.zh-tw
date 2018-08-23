@@ -3,17 +3,17 @@ uid: identity/overview/migrations/migrating-universal-provider-data-for-membersh
 title: 將通用的提供者的資料移轉成員資格和使用者設定檔至 ASP.NET Identity (C#) |Microsoft Docs
 author: rustd
 description: 本教學課程將告訴您需要移轉使用者和角色的資料，以及使用現有的應用程式的通用提供者所建立的使用者設定檔資料的步驟...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/13/2013
 ms.assetid: 2e260430-d13c-4658-bd05-e256fc0d63b8
 msc.legacyurl: /identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 1f685e676d3ca4eeb64f48f0df7212402a9f6f5f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6115b2a6caca05659f1c35ce97954807a6fb01ae
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37810030"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833864"
 ---
 <a name="migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity-c"></a>將通用的提供者的資料移轉成員資格和使用者設定檔至 ASP.NET Identity (C#)
 ====================

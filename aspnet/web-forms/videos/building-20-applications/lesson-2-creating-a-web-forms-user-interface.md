@@ -3,17 +3,17 @@ uid: web-forms/videos/building-20-applications/lesson-2-creating-a-web-forms-use
 title: '[第 2 課:]建立 Web Form 使用者介面 |Microsoft Docs'
 author: microsoft
 description: 在這一課，您將探索各種 ASP.NET&#160;2.0 Visual Web Developer Express 版中可用的伺服器控制項。 此外，您就可以開始...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/25/2005
 ms.assetid: 7eac8f6b-6911-4585-87e8-ba662c1578fb
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-2-creating-a-web-forms-user-interface
 msc.type: video
-ms.openlocfilehash: 95e150a6f86be62864a5f98d600e7a05a0c95359
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ebb2d6af770a9191030fac06691c28772cc3013d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831319"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831436"
 ---
 <a name="lesson-2-creating-a-web-forms-user-interface"></a>[第 2 課:]建立 Web Form 使用者介面
 ====================

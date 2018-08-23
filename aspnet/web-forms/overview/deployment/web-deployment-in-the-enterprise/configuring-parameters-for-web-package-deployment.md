@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-
 title: 設定網頁套件部署的參數 |Microsoft Docs
 author: jrjlee
 description: 本主題描述如何設定參數值，例如 Internet Information Services (IIS) web 應用程式名稱、 連接字串和服務端點...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 37947d79-ab1e-4ba9-9017-52e7a2757414
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: dd8924b0b0055bd32ef55a9ec3a139c4d9b4eb81
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6660ad52ce68932be63e2874a5f6acb34336e575
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825111"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826210"
 ---
 <a name="configuring-parameters-for-web-package-deployment"></a>網頁套件部署的設定參數
 ====================

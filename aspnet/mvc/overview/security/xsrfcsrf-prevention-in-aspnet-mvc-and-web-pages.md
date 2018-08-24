@@ -3,17 +3,17 @@ uid: mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
 title: 在 ASP.NET MVC 和 Web Pages 中的 XSRF/CSRF 防護 |Microsoft Docs
 author: Rick-Anderson
 description: 跨網站偽造要求 （也稱為 XSRF 或 CSRF） 攻擊會將對 web 裝載的應用程式讓惡意網站可能會影響 interacti...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/14/2013
 ms.assetid: aadc5fa4-8215-4fc7-afd5-bcd2ef879728
 msc.legacyurl: /mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
 msc.type: authoredcontent
-ms.openlocfilehash: be0e8ebe521e9952d7525b581f9b91af6edca1da
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: HT
+ms.openlocfilehash: cd1b8de51c180471ab273c4541959368ffbd48a3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820252"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833440"
 ---
 <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>在 ASP.NET MVC 和 Web Pages 中的 XSRF/CSRF 防護
 ====================
@@ -162,7 +162,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie 和目前包含其
 
 | **Property** | **描述** |
 | --- | --- |
-| **AdditionalDataProvider** | [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)權杖產生期間提供的其他資料，在權杖驗證期間耗用額外的資料。 預設值是*null*。 如需詳細資訊，請參閱 < [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)一節。 |
+| **AdditionalDataProvider** | [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)權杖產生期間提供的其他資料，在 權杖驗證期間耗用額外的資料。 預設值是*null*。 如需詳細資訊，請參閱 < [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)一節。 |
 | **CookieName** | 提供用來儲存的防 XSRF 工作階段權杖的 HTTP cookie 名稱的字串。 如果未設定此值，產生的名稱會自動根據應用程式的已部署的虛擬路徑。 預設值是*null*。 |
 | **RequireSsl** | 布林值，指出 ANTI-XSRF 權杖是否需要透過 SSL 安全通道傳送。 如果這個值是 *，則為 true*、 任何自動產生的 cookie 會有 「 安全 」 的旗標設定，及防 XSRF Api 將會擲回，如果從呼叫中不會透過 SSL 提交的要求。 預設值為 *false*。 |
 | **SuppressIdentityHeuristicChecks** | 布林值，指出防 XSRF 系統是否應該停用宣告式身分識別支援。 如果這個值是 *，則為 true*，系統會假設*IIdentity.Name*很適合作為每個使用者的唯一識別碼，並不會嘗試將特殊大小寫*IClaimsIdentity*或是*ClClaimsIdentity*中所述[WIF / ACS / 宣告式驗證](#_WIF_ACS)一節。 預設值是 `false`。 |
@@ -180,7 +180,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie 和目前包含其
 
 連結的工作階段和欄位的語彙基元的安全性權杖時，就技術上而言才需要時嘗試匿名 / 未經驗證的使用者，避免 XSRF 攻擊。 當驗證使用者時，可用來驗證權杖本身 （大概是形式送出的 cookie） 做為其中一個同步處理程式的下半部 k 組。 不過，有效的情況下保護未經授權的使用者，所叫用的登入頁面和防 XSRF 邏輯是一律產生和驗證安全性權杖，即使已驗證的使用者進行更簡單。 它也提供一些額外的保護，攻擊者，設定或是猜測的工作階段權杖會攻擊者克服的另一個障礙入侵欄位語彙基元。
 
-在單一網域裝載多個應用程式時，開發人員應謹慎小心。 比方說，即使*example1.cloudapp.net*並*example2.cloudapp.net*是不同的主控件下的所有主機之間沒有隱含的信任關係 *\*。 cloudapp.net*網域。 這個隱含的信任關係[可讓可能不受信任的主機，以影響彼此的 cookie](http://stackoverflow.com/questions/9636857/how-can-asp-net-or-asp-net-mvc-be-protected-from-related-domain-cookie-attacks) （控管 AJAX 要求的相同原始原則不一定會套用至 HTTP cookie）。 ASP.NET Web 堆疊執行階段會提供一些移轉工作，因此即使惡意的子網域是可以覆寫工作階段權杖它將無法產生使用者的有效欄位 token，將會內嵌至欄位的語彙基元的使用者名稱。 不過，當裝載這類環境中的內建的防 XSRF 常式仍然無法防禦工作階段攔截或登入 XSRF。
+在單一網域裝載多個應用程式時，開發人員應謹慎小心。 比方說，即使 *example1.cloudapp.net* 並 *example2.cloudapp.net* 是不同的主控件下的所有主機之間沒有隱含的信任關係 *\*.cloudapp.net* 網域。 這個隱含的信任關係[可讓可能不受信任的主機，以影響彼此的 cookie](http://stackoverflow.com/questions/9636857/how-can-asp-net-or-asp-net-mvc-be-protected-from-related-domain-cookie-attacks) （控管 AJAX 要求的相同原始原則不一定會套用至 HTTP cookie）。 ASP.NET Web 堆疊執行階段會提供一些移轉工作，因此即使惡意的子網域是可以覆寫工作階段權杖它將無法產生使用者的有效欄位 token，將會內嵌至欄位的語彙基元的使用者名稱。 不過，當裝載這類環境中的內建的防 XSRF 常式仍然無法防禦工作階段攔截或登入 XSRF。
 
 防 XSRF 常式目前執行無法防禦[點擊劫持](https://www.owasp.org/index.php/Clickjacking)。 想要自行防禦點擊劫持的應用程式可能輕鬆地執行這項操作傳送 X 框架選項： sameorigin 所標頭，以及每個回應。 所有新的瀏覽器都支援此標頭。 如需詳細資訊，請參閱 < [IE 部落格](https://blogs.msdn.com/b/ieinternals/archive/2010/03/30/combating-clickjacking-with-x-frame-options.aspx)，則[SDL 的部落格](https://blogs.msdn.com/b/sdl/archive/2009/02/05/clickjacking-defense-in-ie8.aspx)，並[OWASP](https://www.owasp.org/index.php/Clickjacking)。 ASP.NET Web 堆疊執行階段可能會在某些未來的版本進行 MVC 和 Web 網頁的防 XSRF 協助程式會自動將此標頭，以便應用程式會自動受到保護防止此攻擊。
 

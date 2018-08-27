@@ -31,7 +31,7 @@ SignalR JavaScript 用戶端程式庫會以傳遞[npm](https://www.npmjs.com/)�
   npm install @aspnet/signalr
   ```
 
-npm 安裝的套件內容 *node_modules\\ @aspnet\signalr\dist\browser* 資料夾。 建立新的資料夾，名為*signalr*下方*wwwroot\\lib*資料夾。 複製 *signalr.js* 的檔案 *wwwroot\lib\signalr* 資料夾。
+npm 安裝的套件內容 *node_modules\\@aspnet\signalr\dist\browser* 資料夾。 建立新的資料夾，名為*signalr*下方*wwwroot\\lib*資料夾。 複製 *signalr.js* 的檔案 *wwwroot\lib\signalr* 資料夾。
 
 ## <a name="use-the-signalr-javascript-client"></a>使用 SignalR JavaScript 用戶端
 

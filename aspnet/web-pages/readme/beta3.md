@@ -237,7 +237,7 @@ ms.locfileid: "41831407"
 
 #### <a name="issue-lthelpergt-class-cannot-be-found-error"></a>問題: 「&lt;協助程式&gt;找不到類別 」 錯誤
 
-> 在升級到 Beta 3 之後，您可能會看到錯誤，協助程式類別 (例如`Facebook`類別) 找不到不。 從 Beta 2 開始，並繼續在 Beta 3 中，協助程式都已移至您必須明確安裝的套件中。 現有的站台並不會升級為包含這些封裝中;這包括中的站台*\My Documents\IISExpress*或是*\My Documents\My 網站*資料夾。 特別是，您會看到這個錯誤如果您使用中的預設站台*My Sites* (網站 1)，其中包含的參考`Twitter`協助程式。
+> 在升級到 Beta 3 之後，您可能會看到錯誤，協助程式類別 (例如`Facebook`類別) 找不到不。 從 Beta 2 開始，並繼續在 Beta 3 中，協助程式都已移至您必須明確安裝的套件中。 現有的站台並不會升級為包含這些封裝中;這包括中的站台*\My Documents\IISExpress* 或是 *\My Documents\My 網站* 資料夾。 特別是，您會看到這個錯誤如果您使用中的預設站台*My Sites* (網站 1)，其中包含的參考`Twitter`協助程式。
 > 
 > **因應措施**  
 > 在網站中，執行任何協助程式的呼叫註解 *\_Admin*頁面上，並安裝包含您想要使用的協助程式的封裝。 您已安裝封裝之後，您可以參考協助程式行取消註解。

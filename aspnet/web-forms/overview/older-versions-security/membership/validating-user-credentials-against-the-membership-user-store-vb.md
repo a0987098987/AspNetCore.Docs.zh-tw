@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/membership/validating-user-crede
 title: 針對成員資格使用者存放區 (VB) 驗證使用者認證 |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將檢查如何驗證使用者的認證，對使用程式設計的方式和 Login 控制項的成員資格使用者存放區...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/18/2008
 ms.assetid: 17772912-b47b-4557-9ce9-80f22df642f7
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c5eeb67c8d175173f38ffcbc1b01fd5a5931866e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: HT
+ms.openlocfilehash: f5f1121bacdf287e346419d70ac155f47bc826ac
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37821400"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834279"
 ---
 <a name="validating-user-credentials-against-the-membership-user-store-vb"></a>針對成員資格使用者存放區 (VB) 驗證使用者認證
 ====================
@@ -26,7 +26,7 @@ ms.locfileid: "37821400"
 
 ## <a name="introduction"></a>簡介
 
-在 <a id="Tutorial05"></a>[前述教學課程](creating-user-accounts-vb.md)我們探討了如何在成員資格架構中建立新的使用者帳戶。 我們先探討了以程式設計方式建立使用者帳戶，透過`Membership`類別的`CreateUser`方法，並檢查使用 CreateUserWizard Web 控制項。 不過，目前登入頁面會驗證提供的認證，對使用者名稱和密碼組的硬式編碼清單。 我們需要更新登入頁面的邏輯，使它會針對成員資格架構的使用者存放區的認證來驗證。
+在  <a id="Tutorial05"> </a>[前述教學課程](creating-user-accounts-vb.md)我們探討了如何在成員資格架構中建立新的使用者帳戶。 我們先探討了以程式設計方式建立使用者帳戶，透過`Membership`類別的`CreateUser`方法，並檢查使用 CreateUserWizard Web 控制項。 不過，目前登入頁面會驗證提供的認證，對使用者名稱和密碼組的硬式編碼清單。 我們需要更新登入頁面的邏輯，使它會針對成員資格架構的使用者存放區的認證來驗證。
 
 更像是建立使用者帳戶，可以驗證認證以程式設計方式或以宣告方式。 成員資格 API 包含用於以程式設計方式驗證使用者的認證，對使用者存放區的方法。 和 ASP.NET 隨附登入 Web 控制項，會呈現使用者介面使用的使用者名稱、 密碼及登入按鈕的文字方塊。
 
@@ -40,7 +40,7 @@ ms.locfileid: "37821400"
 
 `SqlMembershipProvider`取得指定的使用者密碼，透過驗證提供的認證`aspnet_Membership_GetPasswordWithFormat`預存程序。 請記得，`SqlMembershipProvider`儲存使用者的密碼使用三種格式之一： 清除、 加密或雜湊。 `aspnet_Membership_GetPasswordWithFormat`預存程序傳回的密碼，以其原始格式。 加密或雜湊密碼`SqlMembershipProvider`轉換`password`傳入值`ValidateUser`成其對等的方法來加密或雜湊狀態及再比較它與從資料庫所傳回的內容。 如果儲存在資料庫中的密碼符合格式化輸入使用者的密碼，是有效的認證。
 
-讓我們更新我們的登入頁面 (~ /`Login.aspx`)，因此它會針對成員資格架構的使用者存放區提供的認證來驗證。 我們建立此登入頁面年代<a id="Tutorial02"> </a> [*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-vb.md)教學課程中，兩個文字方塊，使用者名稱和密碼，以建立介面記住我] 核取方塊，並登入按鈕 （請參閱 [圖 1）。 程式碼會驗證輸入的認證，對硬式編碼 （Scott/密碼、 Jisun/密碼和 Sam/密碼） 的使用者名稱和密碼組的清單。 在  <a id="Tutorial03"> </a> [*表單驗證組態和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-vb.md)我們更新了表單中儲存其他資訊的登入網頁的程式碼的教學課程驗證票證`UserData`屬性。
+讓我們更新我們的登入頁面 (~ /`Login.aspx`)，因此它會針對成員資格架構的使用者存放區提供的認證來驗證。 我們建立此登入頁面年代<a id="Tutorial02"></a>[*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-vb.md)教學課程中，兩個文字方塊，使用者名稱和密碼，以建立介面記住我] 核取方塊，並登入按鈕 （請參閱 [圖 1）。 程式碼會驗證輸入的認證，對硬式編碼 （Scott/密碼、 Jisun/密碼和 Sam/密碼） 的使用者名稱和密碼組的清單。 在  <a id="Tutorial03"></a>[*表單驗證組態和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-vb.md)我們更新了表單中儲存其他資訊的登入網頁的程式碼的教學課程驗證票證`UserData`屬性。
 
 
 [![登入頁面的介面包含兩個文字方塊、 CheckBoxList 和按鈕](validating-user-credentials-against-the-membership-user-store-vb/_static/image2.png)](validating-user-credentials-against-the-membership-user-store-vb/_static/image1.png)
@@ -52,7 +52,7 @@ ms.locfileid: "37821400"
 
 [!code-vb[Main](validating-user-credentials-against-the-membership-user-store-vb/samples/sample1.vb)]
 
-此程式碼是非常簡單。 我們會先呼叫`Membership.ValidateUser`方法並傳入提供的使用者名稱和密碼。 如果該方法會傳回 True，則使用者登入透過網站`FormsAuthentication`類別的 RedirectFromLoginPage 方法。 (如我們所述<a id="Tutorial02"> </a> [*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-vb.md)教學課程中，`FormsAuthentication.RedirectFromLoginPage`建立表單驗證票證，並將使用者重新導向以適當的頁面。）如果認證不正確的不過，`InvalidCredentialsMessage`標籤會顯示通知使用者他們的使用者名稱或密碼不正確。
+此程式碼是非常簡單。 我們會先呼叫`Membership.ValidateUser`方法並傳入提供的使用者名稱和密碼。 如果該方法會傳回 True，則使用者登入透過網站`FormsAuthentication`類別的 RedirectFromLoginPage 方法。 (如我們所述<a id="Tutorial02"></a>[*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-vb.md)教學課程中，`FormsAuthentication.RedirectFromLoginPage`建立表單驗證票證，並將使用者重新導向以適當的頁面。）如果認證不正確的不過，`InvalidCredentialsMessage`標籤會顯示通知使用者他們的使用者名稱或密碼不正確。
 
 這樣就完成了 ！
 

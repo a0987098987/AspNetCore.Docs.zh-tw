@@ -3,17 +3,17 @@ uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-clou
 title: 附錄︰ 修正範例應用程式 （建置使用 Azure 的真實世界的雲端應用程式） |Microsoft Docs
 author: MikeWasson
 description: 建置真實世界雲端應用程式與 Azure 的電子書是以 Scott Guthrie 所開發的簡報為依據。 它說明 13 模式與做法，他可以...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: 6a0c17f37ed426c04d2b21fd864337d4339fe573
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: baf46a87155e6368d9a81c5c5b777a491117d7b6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824078"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825140"
 ---
 <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>附錄︰ 修正範例應用程式 （建置使用 Azure 的真實世界的雲端應用程式）
 ====================
@@ -310,7 +310,7 @@ ASP.NET 會自動防止的多種資訊，請在其中惡意使用者可能會在
 
     在 azurewebsites.net 網域中，名稱必須是唯一，而且密碼必須符合密碼複雜性需求的 SQL 資料庫。 （範例 Passw0rd1 沒有符合的需求）。
 
-    請注意，命令便會開始使用 」。\". 為了協助防止惡意指令碼執行，Windows PowerShell 會要求您提供的指令碼檔案的完整的路徑，當您執行指令碼。 您可以使用點來表示目前的目錄 (「。\")或者，提供完整的路徑，例如：
+    請注意，命令便會開始使用 」\". 為了協助防止惡意指令碼執行，Windows PowerShell 會要求您提供的指令碼檔案的完整的路徑，當您執行指令碼。 您可以使用點來表示目前的目錄 (「。\")或者，提供完整的路徑，例如：
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample26.cmd)]
 

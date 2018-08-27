@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/master-pages/master-pages
 title: 主版頁面及 ASP.NET AJAX (VB) |Microsoft Docs
 author: rick-anderson
 description: 討論使用 ASP.NET AJAX 和主版頁面的選項。 探討使用 ScriptManagerProxy 類別;討論各種 JS 檔案會列印文件的載入，請 dependi...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/11/2008
 ms.assetid: 0ee9318c-29bb-4d58-b1dc-94e575b8ae10
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e0ec5359c83bf13398a8a935921cc2a319638ef1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: aa511b8bd2f4d739cbe1f04b2a9cf03bf6928182
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803294"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831221"
 ---
 <a name="master-pages-and-aspnet-ajax-vb"></a>主版頁面及 ASP.NET AJAX (VB)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/implemen
 title: 實作開放式同步存取 (C#) |Microsoft Docs
 author: rick-anderson
 description: Web 應用程式，可讓多位使用者編輯資料，會有兩位使用者，編輯相同的資料在同一時間的風險。 在此 tutori...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: 56e15b33-93b8-43ad-8e19-44c6647ea05c
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9013eab1082c27aac3b561f9507842edc77c7da3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 700770946caa68fca2b3101dd91a683d10aae052
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824444"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831743"
 ---
 <a name="implementing-optimistic-concurrency-c"></a>實作開放式同步存取 (C#)
 ====================
@@ -75,7 +75,7 @@ ms.locfileid: "37824444"
 
 ## <a name="step-2-creating-a-data-access-layer-that-supports-optimistic-concurrency"></a>步驟 2： 建立資料存取層，支援開放式並行存取
 
-若要建立新的具類型資料集，以滑鼠右鍵按一下`DAL``App_Code`資料夾，並新增新的資料集，名為`NorthwindOptimisticConcurrency`。 如我們所見第一個教學課程中，這樣會增加新的 TableAdapter 具類型資料集，會自動啟動 [TableAdapter 組態精靈]。 在第一個畫面中，我們系統會提示來指定要連接到-連線至相同的 Northwind 資料庫使用的資料庫`NORTHWNDConnectionString`上設定`Web.config`。
+若要建立新的具類型資料集，以滑鼠右鍵按一下`DAL` `App_Code`資料夾，並新增新的資料集，名為`NorthwindOptimisticConcurrency`。 如我們所見第一個教學課程中，這樣會增加新的 TableAdapter 具類型資料集，會自動啟動 [TableAdapter 組態精靈]。 在第一個畫面中，我們系統會提示來指定要連接到-連線至相同的 Northwind 資料庫使用的資料庫`NORTHWNDConnectionString`上設定`Web.config`。
 
 
 [![連接到相同的 Northwind 資料庫](implementing-optimistic-concurrency-cs/_static/image8.png)](implementing-optimistic-concurrency-cs/_static/image7.png)
@@ -426,7 +426,7 @@ BLL 方法的傳回值，請檢查透過 ObjectDataSource 的後置的層級的�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 > [!div class="step-by-step"]
 > [上一頁](customizing-the-data-modification-interface-cs.md)

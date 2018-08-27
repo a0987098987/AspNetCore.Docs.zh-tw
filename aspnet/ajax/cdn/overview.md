@@ -3,17 +3,17 @@ uid: ajax/cdn/overview
 title: Microsoft Ajax 內容傳遞網路 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 3ec70bb0746d18e453b6e5728b6ba90b2a3e87f3
-ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
+ms.openlocfilehash: 686cdfa5562f1f3569c30841420b112c522016dc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992931"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824723"
 ---
 <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax 內容傳遞網路
 ====================
@@ -76,7 +76,7 @@ Microsoft Ajax CDN 也會包含下列已上傳，由 Microsoft 程式庫：
 
 Microsoft 不主張其所有權的裝載此 CDN 上的任何協力廠商程式庫。 程式庫的著作權擁有者授權給您的這些程式庫。 您可能必須下載並使用這類程式庫的任何權限會授與，只能由各自的著作權擁有者。 因為這些不是 Microsoft 程式庫，Microsoft 為裝載於此 CDN 上的協力廠商程式庫會提供任何擔保或智慧財產 （包括任何默示的專利權利） 的權限授權。
 
-如果您想要提交您的 JavaScript 程式庫和程式庫是其中一個最上層的 JavaScript 程式庫 (上所列http://trends.builtwith.com)或 是 （a） 常用; 或 （b） 很有幫助在 ASP.NET 上使用，則請連絡這些程式庫的延伸模組/外掛程式AjaxCDNSubmission@Microsoft.com。
+如果您想要提交您的 JavaScript 程式庫和程式庫是其中一個最上層的 JavaScript 程式庫 (上所列http://trends.builtwith.com)或是 （a） 常用; 或 （b） 很有幫助在 ASP.NET 上使用，則請連絡這些程式庫的延伸模組/外掛程式AjaxCDNSubmission@Microsoft.com。
 
 <a id="ajaxmicrosoftcom_renamed_to_ajaxaspnetcdncom_18"></a>
 

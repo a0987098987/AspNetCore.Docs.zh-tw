@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/provide-crud-create-read-update-de
 title: 提供 CRUD （建立、 讀取、 更新、 刪除） 資料表單項目支援 |Microsoft Docs
 author: microsoft
 description: 步驟 5 會示範如何使用我們 DinnersController 類別的進一步所啟用的編輯、 建立及刪除 Dinners 與其，也支援。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: bbb976e5-6150-4283-a374-c22fbafe29f5
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/provide-crud-create-read-update-delete-data-form-entry-support
 msc.type: authoredcontent
-ms.openlocfilehash: bfb8446ec8b39ad6fc88a0d5b747f0cec33bbd25
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 45d74249a34fc7e37e9776a398615d2f613a7582
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37817632"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835024"
 ---
 <a name="provide-crud-create-read-update-delete-data-form-entry-support"></a>提供 CRUD （建立、 讀取、 更新、 刪除） 資料表單項目支援
 ====================
@@ -208,7 +208,7 @@ ASP.NET MVC 包含一些不錯的內建功能可簡化錯誤處理和表單重�
 
 [!code-html[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample15.html)]
 
-您可以自訂的 css 錯誤類別，以便看不過您想要的外觀。 預設 CSS 錯誤-「 輸入-驗證-錯誤 」 – 類別定義於 *\content\site.css* 樣式表，且看起來如下所示：
+您可以自訂的 css 錯誤類別，以便看不過您想要的外觀。 預設 CSS 錯誤-「 輸入-驗證-錯誤 」 – 類別定義於*\content\site.css*樣式表，且看起來如下所示：
 
 [!code-css[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample16.css)]
 

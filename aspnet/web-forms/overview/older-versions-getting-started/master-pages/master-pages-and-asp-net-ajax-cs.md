@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/master-pages/master-pages
 title: 主版頁面和 ASP.NET AJAX (C#) |Microsoft Docs
 author: rick-anderson
 description: 討論使用 ASP.NET AJAX 和主版頁面的選項。 探討使用 ScriptManagerProxy 類別;討論各種 JS 檔案會列印文件的載入，請 dependi...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/11/2008
 ms.assetid: 0c55eb66-ba44-4d49-98e8-5c87fd9b1111
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e8a4f9780b41c5ff77b996894d9f91a532877245
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 47201a0cfeb5d1e548721094d11488e9e804dc9c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842480"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826611"
 ---
 <a name="master-pages-and-aspnet-ajax-c"></a>主版頁面和 ASP.NET AJAX (C#)
 ====================
@@ -232,12 +232,12 @@ ASP.NET AJAX 架構包含在指定的時間; 會執行回傳的計時器控制�
 
 [![按一下 [暫停] 按鈕來停止計時器控制項](master-pages-and-asp-net-ajax-cs/_static/image32.png)](master-pages-and-asp-net-ajax-cs/_static/image31.png)
 
-**圖 11**： 按一下停止計時器控制項的 [暫停] 按鈕 ([按一下以檢視完整大小的影像](master-pages-and-asp-net-ajax-cs/_static/image33.png))
+**圖 11**： 按一下 停止計時器控制項的 [暫停] 按鈕 ([按一下以檢視完整大小的影像](master-pages-and-asp-net-ajax-cs/_static/image33.png))
 
 
 [![按一下 [繼續] 按鈕，以重新啟動計時器](master-pages-and-asp-net-ajax-cs/_static/image35.png)](master-pages-and-asp-net-ajax-cs/_static/image34.png)
 
-**圖 12**： 按一下重新啟動計時器的 [繼續] 按鈕 ([按一下以檢視完整大小的影像](master-pages-and-asp-net-ajax-cs/_static/image36.png))
+**圖 12**： 按一下 重新啟動計時器的 [繼續] 按鈕 ([按一下以檢視完整大小的影像](master-pages-and-asp-net-ajax-cs/_static/image36.png))
 
 
 ## <a name="summary"></a>總結

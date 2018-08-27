@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeat
 title: 格式化 DataList 和 Repeater 基礎資料 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程，我們要逐步執行範例的我們如何格式化 DataList 和 Repeater 控制項，藉由使用具有格式設定函式的外觀...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/13/2006
 ms.assetid: 83e3d759-82b8-41e6-8d62-f0f4b3edec41
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cfb23a65c288ed155625a1f8a4d7db1330ab2407
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4c3a6b085dbd9faec8dab45e64b10678aa9a73b3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840254"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831152"
 ---
 <a name="formatting-the-datalist-and-repeater-based-upon-data-c"></a>格式化 DataList 和 Repeater 根據資料 (C#)
 ====================
@@ -189,7 +189,7 @@ DataList 控制項，格式為整個項目可以使用實作的變更`DataListIt
 
 ## <a name="summary"></a>總結
 
-格式化 DataList 或 Repeater 控制項資料為基礎的內容可以透過兩種技術。 第一個技巧是要建立的事件處理常式`ItemDataBound`引發的事件，因為資料來源中的每一筆記錄會繫結至新`DataListItem`或`RepeaterItem`。 在`ItemDataBound`事件處理常式，可檢查目前的項目的資料，然後格式化可以套用至內容的範本，或針對`DataListItem`s，整個項目本身。
+格式化 DataList 或 Repeater 控制項資料為基礎的內容可以透過兩種技術。 第一個技巧是要建立的事件處理常式`ItemDataBound`引發的事件，因為資料來源中的每一筆記錄會繫結至新`DataListItem`或`RepeaterItem`。 在 `ItemDataBound`事件處理常式，可檢查目前的項目的資料，然後格式化可以套用至內容的範本，或針對`DataListItem`s，整個項目本身。
 
 或者，自訂格式可以實現透過格式設定函式。 可以從 DataList 中叫用方法或 Repeater 的範本，傳回要在其位置中發出的 HTML 格式的函式。 格式函式所傳回的 HTML，通常取決於繫結至目前的項目值。 這些值可以傳遞到格式化的函式，做為純量值或傳遞整個物件繫結至項目 (例如`ProductsRow`執行個體)。
 
@@ -197,7 +197,7 @@ DataList 控制項，格式為整個項目可以使用實作的變更`DataListIt
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

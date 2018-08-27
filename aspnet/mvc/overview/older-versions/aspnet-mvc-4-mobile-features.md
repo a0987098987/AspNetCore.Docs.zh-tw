@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 title: ASP.NET MVC 4 行動功能 |Microsoft Docs
 author: Rick-Anderson
 description: 現在是本教學課程，在部署 ASP.NET MVC 5 行動 Web 應用程式 Azure 網站上的程式碼範例的 MVC 5 版本。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/15/2012
 ms.assetid: 27dc4fc8-1b51-43b0-933f-fc1b52476523
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: c852f4a853d14badb6c9a1c2c1ddb7b069bc3441
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a3cb2414775b2c29617296dcf0c2dc5729153cdd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806578"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825771"
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>ASP.NET MVC 4 Mobile 功能
 ====================
@@ -212,7 +212,7 @@ JQuery.Mobile.MVC NuGet 套件會安裝下列項目：
 [!code-csharp[Main](aspnet-mvc-4-mobile-features/samples/sample11.cs?highlight=26)]
 
 > [!NOTE]
-> 如果您使用 Internet Explorer 9，而且您沒有看到`BundleMobileConfig`黃色反白顯示在上方列中，按一下 [[相容性檢視] 按鈕](https://windows.microsoft.com/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![（關閉） 的相容性檢視按鈕的圖片](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "（關閉） 的相容性檢視按鈕的圖片")在 IE 中進行變更的外框的圖示![（關閉） 的相容性檢視按鈕的圖片](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "（關閉） 的相容性檢視按鈕的圖片")為純色![(on) 相容性檢視按鈕的圖片](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "(on) 相容性檢視按鈕的圖片")。 或者，您可以在 FireFox 或 Chrome 中檢視本教學課程。
+> 如果您使用 Internet Explorer 9，而且您沒有看到`BundleMobileConfig`黃色反白顯示在上方列中，按一下 [相容性檢視按鈕](https://windows.microsoft.com/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![（關閉） 的相容性檢視按鈕的圖片](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "（關閉） 的相容性檢視 按鈕的圖片")在 IE 中進行變更的外框的圖示![（關閉） 的相容性檢視按鈕的圖片](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "（關閉） 的相容性檢視 按鈕的圖片")為純色![(on) 相容性檢視按鈕的圖片](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "(on) 相容性檢視按鈕的圖片")。 或者，您可以在 FireFox 或 Chrome 中檢視本教學課程。
 
 
 開啟*MvcMobile\Views\Shared\\_Layout.Mobile.cshtml*檔案，並新增下列標記直接之後`Html.Partial`呼叫：
@@ -267,7 +267,7 @@ JQuery.Mobile.MVC NuGet 套件會安裝下列項目：
 
 [!code-cshtml[Main](aspnet-mvc-4-mobile-features/samples/sample17.cshtml)]
 
-當`RequireConsistentDisplayMode`設定為`true`，行動配置 (<em>\_Layout.Mobile.cshtml</em>) 只適用於行動檢視。 (也就是檢視檔案屬於表單<em>**ViewName</em><em>.Mobile.cshtml</em>。)您可能想要設定`RequireConsistentDisplayMode`至`true`若行動配置不適用於您的非行動檢視。 下列螢幕擷取畫面如何<em>喇叭</em>呈現頁面時`RequireConsistentDisplayMode`設為`true`。
+當`RequireConsistentDisplayMode`設定為`true`，行動配置 (<em>\_Layout.Mobile.cshtml</em>) 只適用於行動檢視。 (也就是檢視檔案屬於表單<em>* * ViewName</em><em>.Mobile.cshtml</em>。)您可能想要設定`RequireConsistentDisplayMode`至`true`若行動配置不適用於您的非行動檢視。 下列螢幕擷取畫面如何<em>喇叭</em>呈現頁面時`RequireConsistentDisplayMode`設為`true`。
 
 [![p3_speakersConsistent](aspnet-mvc-4-mobile-features/_static/image33.png)](aspnet-mvc-4-mobile-features/_static/image32.png)
 

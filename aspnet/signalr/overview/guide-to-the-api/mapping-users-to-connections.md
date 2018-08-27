@@ -3,17 +3,17 @@ uid: signalr/overview/guide-to-the-api/mapping-users-to-connections
 title: 將 SignalR 使用者對應至連線 |Microsoft Docs
 author: tfitzmac
 description: 本主題說明如何保留使用者和其連線的相關資訊。 Patrick Fletcher 協助撰寫本主題。 本主題中使用的軟體版本...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/30/2014
 ms.assetid: f80c08b1-3f1f-432c-980c-c7b6edeb31b1
 msc.legacyurl: /signalr/overview/guide-to-the-api/mapping-users-to-connections
 msc.type: authoredcontent
-ms.openlocfilehash: bee743c5b201f4eef04cb80aa860ec67c4afe773
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 765f85a4e07966d32bdfc9a0b533040f14a2843e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840430"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825519"
 ---
 <a name="mapping-signalr-users-to-connections"></a>將 SignalR 使用者對應至連線
 ====================
@@ -94,7 +94,7 @@ ms.locfileid: "37840430"
 
 下列範例示範如何保留儲存在記憶體中的字典中的連線與使用者資訊。 字典會使用`HashSet`儲存的連接識別碼。在任何時間使用者可能有多個連接至 SignalR 應用程式。 比方說，透過多個裝置或多個瀏覽器索引標籤來連線的使用者會有一個以上的連線識別碼。
 
-如果應用程式關閉時，所有資訊都會遺失，但它  儵蜪填，使用者會重新建立其連線。 如果您的環境包含多個 web 伺服器，因為每一部伺服器會有不同的連接集合，則記憶體中儲存體即無法運作。
+如果應用程式關閉時，所有資訊都會遺失，但它填，使用者會重新建立其連線。 如果您的環境包含多個 web 伺服器，因為每一部伺服器會有不同的連接集合，則記憶體中儲存體即無法運作。
 
 第一個範例會示範管理使用者對應至連接的類別。 HashSet 的索引鍵會是使用者的名稱。
 

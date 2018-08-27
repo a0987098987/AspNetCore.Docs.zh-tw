@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/controllers-and-routing/improving-performance
 title: 改善效能，使用輸出快取 (C#) |Microsoft Docs
 author: microsoft
 description: 在本教學課程中，您將了解如何大幅改善您的 ASP.NET MVC web 應用程式的效能利用輸出快取。 您...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: 521c9117-81cd-4d8d-9d96-0256dc7bf50f
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 26e65cb5f0e256d4ca819dfde4a748f00d56f08e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 516c370941b8f7e5f3528953491057973679586d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832538"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834680"
 ---
 <a name="improving-performance-with-output-caching-c"></a>改善效能，使用輸出快取 (C#)
 ====================

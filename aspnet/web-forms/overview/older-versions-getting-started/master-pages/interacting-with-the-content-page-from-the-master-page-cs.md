@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/master-pages/interacting-
 title: 內容從與頁面互動主版頁面 (C#) |Microsoft Docs
 author: rick-anderson
 description: 檢驗如何呼叫方法時，由主版頁面的程式碼中設定屬性的 [內容] 頁面等等。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/11/2008
 ms.assetid: 3282df5e-516c-4972-8666-313828b90fb5
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 293e4dab6142393c9d57836a2f04244388e54cec
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 815752ee70eb761d7f9da24c9eada9d4c0c833a7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808362"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826628"
 ---
 <a name="interacting-with-the-content-page-from-the-master-page-c"></a>內容從與頁面互動主版頁面 (C#)
 ====================

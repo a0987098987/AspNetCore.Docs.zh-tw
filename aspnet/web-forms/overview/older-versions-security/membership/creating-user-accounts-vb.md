@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/membership/creating-user-account
 title: 建立使用者帳戶 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將探討使用 （透過 SqlMembershipProvider) 的成員資格架構來建立新的使用者帳戶。 我們將了解如何建立新我們...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/18/2008
 ms.assetid: 9ef3e893-bebe-4b13-9fe5-8b71720dd85e
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-user-accounts-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fe5e55df3fa9f65a94199c2064a785255f231537
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c7f5f4ec6ce27c1a52569e6414b8f96892f68574
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815339"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824318"
 ---
 <a name="creating-user-accounts-vb"></a>建立使用者帳戶 (VB)
 ====================
@@ -298,7 +298,7 @@ CreateUserWizard 控制項，正如其名，衍生自[Wizard 控制項](https://
 
 色彩、 框線、 字型和其他視覺項目皆可設定透過主控件的樣式屬性。 CreateUserWizard 控制項本身有常見的 Web 控制項樣式屬性- `BackColor`， `BorderStyle`， `CssClass`，`Font`等等-而且有定義的特定區段的外觀的樣式屬性的數目CreateUserWizard 的介面。 [ `TextBoxStyle`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.textboxstyle.aspx)，比方說，定義中文字方塊的樣式`CreateUserWizardStep`，而[`TitleTextStyle`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.titletextstyle.aspx)定義 （登入您的新標題的樣式帳戶）。
 
-除了與外觀相關的屬性，還有一些會影響 CreateUserWizard 控制項的行為的屬性。 [ `DisplayCancelButton`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.wizard.displaycancelbutton.aspx)，如果設為 True，會顯示（預設值為 False） 的 [建立使用者] 按鈕旁邊的 [取消] 按鈕。 如果顯示 [取消] 按鈕時，請務必 ssprop_param_table_default [ `CancelDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)，指定使用者按一下 [取消] 之後，會傳送至的頁面。 上一節中的 [繼續] 按鈕所述`CompleteWizardStep`的介面造成回傳，但在相同頁面上離開訪客。 若要傳送至其他網頁的訪客，按一下 [繼續] 按鈕後，只要指定中的 URL [ `ContinueDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)。
+除了與外觀相關的屬性，還有一些會影響 CreateUserWizard 控制項的行為的屬性。 [ `DisplayCancelButton`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.wizard.displaycancelbutton.aspx)，如果設為 True，會顯示 （預設值為 False） 的 [建立使用者] 按鈕旁邊的 [取消] 按鈕。 如果顯示 [取消] 按鈕時，請務必 ssprop_param_table_default [ `CancelDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)，指定使用者按一下 [取消] 之後，會傳送至的頁面。 上一節中的 [繼續] 按鈕所述`CompleteWizardStep`的介面造成回傳，但在相同頁面上離開訪客。 若要傳送至其他網頁的訪客，按一下 [繼續] 按鈕後，只要指定中的 URL [ `ContinueDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)。
 
 讓我們更新`RegisterUser`CreateUserWizard 控制項以顯示 [取消] 按鈕，並傳送訪客`Default.aspx`時按一下 [取消] 或 [繼續] 按鈕。 若要達成此目的，將`DisplayCancelButton`屬性設為 True，同時兩者皆`CancelDestinationPageUrl`和`ContinueDestinationPageUrl`屬性 ~ / Default.aspx。 [圖 14] 顯示更新的 CreateUserWizard 透過瀏覽器檢視時。
 

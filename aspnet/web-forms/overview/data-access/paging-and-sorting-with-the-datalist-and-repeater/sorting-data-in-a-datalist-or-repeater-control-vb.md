@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-rep
 title: 排序 DataList 或 Repeater 控制項 (VB) 中的資料 |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將檢驗如何納入排序 DataList 和 Repeater 中, 支援，以及如何建構資料可以 DataList 或 Repeater...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/13/2006
 ms.assetid: 97c13898-0741-45f9-b3fa-7540ab1679e6
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fcbc1f83a00621ce0031cdcb775537992e3cb843
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ad940afd03b66c17a4d8b1e5c727c317022fbc0a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828879"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823663"
 ---
 <a name="sorting-data-in-a-datalist-or-repeater-control-vb"></a>DataList 或 Repeater 控制項 (VB) 中的排序資料
 ====================
@@ -313,7 +313,7 @@ DataList 範例會檢查在步驟 5 的頁面，透過使用效率不佳的預�
 新增這些之後`Click`事件處理常式和程式碼，以啟用或停用介面分頁的項目已根據目前的起始資料列索引，測試網頁瀏覽器中。 如 [圖 15 所示，當第一次瀏覽頁面的第一個和上一步] 按鈕將會停用。 按一下 [下一步] 顯示的資料，第二個頁面，而按一下最後一個會顯示最後一頁 （請參閱圖 16，17）。 檢視資料的最後一頁時就會停用 下一步 和 最後一個按鈕。
 
 
-[![[上一步] 和 最後一個按鈕就會停用檢視第一個頁面的產品](sorting-data-in-a-datalist-or-repeater-control-vb/_static/image42.png)](sorting-data-in-a-datalist-or-repeater-control-vb/_static/image41.png)
+[![上一步] 和 [最後一個按鈕就會停用檢視第一個頁面的產品](sorting-data-in-a-datalist-or-repeater-control-vb/_static/image42.png)](sorting-data-in-a-datalist-or-repeater-control-vb/_static/image41.png)
 
 **圖 15**： 檢視第一個頁面的產品時停用前一個和最後一個按鈕 ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-vb/_static/image43.png))
 
@@ -387,7 +387,7 @@ S 就是這麼簡單 ！ 儘管有幾個步驟，以取得自訂的分頁和排�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

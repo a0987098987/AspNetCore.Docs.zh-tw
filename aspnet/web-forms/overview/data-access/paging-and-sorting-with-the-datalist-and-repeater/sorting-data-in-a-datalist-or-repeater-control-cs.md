@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-rep
 title: 排序資料 DataList 或 Repeater 控制項 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將檢驗如何納入排序 DataList 和 Repeater 中, 支援，以及如何建構資料可以 DataList 或 Repeater...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/13/2006
 ms.assetid: f52c302a-1b7c-46fe-8a13-8412c95cbf6d
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f394487523a7da112d32fb18b622bc73d5077aaa
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 05fbc51d5341a4d3d634cbbc05c0e66a827b0394
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839988"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823625"
 ---
 <a name="sorting-data-in-a-datalist-or-repeater-control-c"></a>排序資料功能 DataList 或 Repeater 控制項 (C#)
 ====================
@@ -53,12 +53,12 @@ GridView 控制項具有`SortExpression`屬性，它會儲存`SortExpression`[Gr
 
 [![建立 ObjectDataSource，並將它設定為使用 GetProductsAsPagedDataSource() 方法](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image2.png)](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image1.png)
 
-**圖 1**： 建立 ObjectDataSource，並將它設定為使用`GetProductsAsPagedDataSource()`方法 ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image3.png))
+**[圖 1]**： 建立 ObjectDataSource，並將它設定為使用`GetProductsAsPagedDataSource()`方法 ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image3.png))
 
 
 [![設定下拉式清單中更新、 插入和刪除索引標籤為 （無）](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image5.png)](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image4.png)
 
-**圖 2**： 設定下拉式清單中更新、 插入和刪除索引標籤為 （無） ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image6.png))
+**[圖 2]**： 設定下拉式清單中更新、 插入和刪除索引標籤為 （無） ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image6.png))
 
 
 不同於與，Visual Studio 不會自動建立`ItemTemplate`Repeater 控制項繫結至資料來源之後。 此外，我們必須將此新增`ItemTemplate`以宣告方式，如 Repeater 控制項 s 智慧標籤缺少 DataList s 中找到的 [編輯範本] 選項。 可讓 s 使用相同`ItemTemplate`從上一個教學課程中，其中顯示 s 產品名稱、 供應商和類別目錄。
@@ -73,7 +73,7 @@ GridView 控制項具有`SortExpression`屬性，它會儲存`SortExpression`[Gr
 
 [![會顯示每項產品 s 的名稱，供應商和類別目錄](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image8.png)](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image7.png)
 
-**圖 3**： 顯示每個產品的名稱、 供應商和類別目錄 ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image9.png))
+**[圖 3]**： 顯示每個產品的名稱、 供應商和類別目錄 ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image9.png))
 
 
 ## <a name="step-3-instructing-the-objectdatasource-to-sort-the-data"></a>步驟 3： 指示來排序資料的 ObjectDataSource
@@ -92,7 +92,7 @@ GridView 控制項具有`SortExpression`屬性，它會儲存`SortExpression`[Gr
 
 [![產品會依其名稱以反向字母順序排序](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image11.png)](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image10.png)
 
-**圖 4**: 產品會依其名稱以反向字母順序排序 ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image12.png))
+**[圖 4]**: 產品會依其名稱以反向字母順序排序 ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image12.png))
 
 
 ## <a name="step-4-creating-the-sorting-interface-and-remembering-the-sort-expression-and-direction"></a>步驟 4： 建立排序的介面，並記住的排序運算式和方向
@@ -313,7 +313,7 @@ DataList 範例會檢查在步驟 5 的頁面，透過使用效率不佳的預�
 新增這些之後`Click`事件處理常式和程式碼，以啟用或停用介面分頁的項目已根據目前的起始資料列索引，測試網頁瀏覽器中。 如 [圖 15 所示，當第一次瀏覽頁面的第一個和上一步] 按鈕將會停用。 按一下 [下一步] 顯示的資料，第二個頁面，而按一下最後一個會顯示最後一頁 （請參閱圖 16，17）。 檢視資料的最後一頁時就會停用 下一步 和 最後一個按鈕。
 
 
-[![[上一步] 和 最後一個按鈕就會停用檢視第一個頁面的產品](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image42.png)](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image41.png)
+[![上一步] 和 [最後一個按鈕就會停用檢視第一個頁面的產品](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image42.png)](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image41.png)
 
 **圖 15**： 檢視第一個頁面的產品時停用前一個和最後一個按鈕 ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-cs/_static/image43.png))
 
@@ -387,7 +387,7 @@ S 就是這麼簡單 ！ 儘管有幾個步驟，以取得自訂的分頁和排�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

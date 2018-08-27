@@ -1,0 +1,46 @@
+---
+title: 使用 ASP.NET Core 和 Azure 的 DevOps |工具和下載
+author: CamSoper
+description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式，建置 DevOps 管線的完整指導。
+ms.author: casoper
+ms.date: 08/07/2018
+uid: azure/devops/tools-and-downloads
+ms.openlocfilehash: 3cf99f4d497bf2edd8759ab9afdee66ad49fac3d
+ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42909562"
+---
+# <a name="tools-and-downloads"></a><span data-ttu-id="b3bc8-103">工具和下載</span><span class="sxs-lookup"><span data-stu-id="b3bc8-103">Tools and downloads</span></span>
+
+<span data-ttu-id="b3bc8-104">Azure 有數個介面，來佈建和管理資源，例如[Azure 入口網站](https://portal.azure.com)， [Azure CLI](https://docs.microsoft.com/cli/azure/)， [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview)， [Azure 雲端Shell](https://shell.azure.com/bash)，和 Visual Studio。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-104">Azure has several interfaces for provisioning and managing resources, such as the [Azure portal](https://portal.azure.com), [Azure CLI](https://docs.microsoft.com/cli/azure/), [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview), [Azure Cloud Shell](https://shell.azure.com/bash), and Visual Studio.</span></span> <span data-ttu-id="b3bc8-105">本指南會採用最簡單的方法，並使用 Azure Cloud Shell 中盡可能減少所需的步驟。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-105">This guide takes a minimalist approach and uses the Azure Cloud Shell whenever possible to reduce the steps required.</span></span> <span data-ttu-id="b3bc8-106">不過，必須使用 Azure 入口網站的某些部分。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-106">However, the Azure portal must be used for some portions.</span></span>
+
+## <a name="prerequisites"></a><span data-ttu-id="b3bc8-107">必要條件</span><span class="sxs-lookup"><span data-stu-id="b3bc8-107">Prerequisites</span></span>
+
+<span data-ttu-id="b3bc8-108">以下的訂用帳戶是必要的：</span><span class="sxs-lookup"><span data-stu-id="b3bc8-108">The following subscriptions are required:</span></span>
+
+* <span data-ttu-id="b3bc8-109">Azure&mdash;如果您沒有帳戶，請[取得免費試用](https://azure.microsoft.com/free/)。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-109">Azure &mdash; If you don't have an account, [get a free trial](https://azure.microsoft.com/free/).</span></span>
+* <span data-ttu-id="b3bc8-110">Visual Studio Team Services (VSTS)&mdash;第 4 章中建立此帳戶。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-110">Visual Studio Team Services (VSTS) &mdash; This account is created in Chapter 4.</span></span>
+* <span data-ttu-id="b3bc8-111">GitHub&mdash;如果您沒有帳戶，請[免費註冊](https://github.com/join)。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-111">GitHub &mdash; If you don't have an account, [sign up for free](https://github.com/join).</span></span>
+
+<span data-ttu-id="b3bc8-112">下列工具是必要的：</span><span class="sxs-lookup"><span data-stu-id="b3bc8-112">The following tools are required:</span></span>
+
+* <span data-ttu-id="b3bc8-113">[Git](https://git-scm.com/downloads) &mdash; Git 有基本了解建議您使用本指南中。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-113">[Git](https://git-scm.com/downloads) &mdash; A fundamental understanding of Git is recommended for this guide.</span></span> <span data-ttu-id="b3bc8-114">檢閱[Git 文件](https://git-scm.com/doc)，特別[git 遠端](https://git-scm.com/docs/git-remote)並[git 推送](https://git-scm.com/docs/git-push)。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-114">Review the [Git documentation](https://git-scm.com/doc), specifically [git remote](https://git-scm.com/docs/git-remote) and [git push](https://git-scm.com/docs/git-push).</span></span>
+* <span data-ttu-id="b3bc8-115">[.NET core SDK](https://www.microsoft.com/net/download/) &mdash; 2.1.300 版或更新版本才可建置並執行範例應用程式。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-115">[.NET Core SDK](https://www.microsoft.com/net/download/) &mdash; Version 2.1.300 or later is required to build and run the sample app.</span></span> <span data-ttu-id="b3bc8-116">如果 Visual Studio 會隨 **.NET Core 跨平台開發**工作負載中，.NET Core SDK 已安裝。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-116">If Visual Studio is installed with the **.NET Core cross-platform development** workload, the .NET Core SDK is already installed.</span></span>
+
+    <span data-ttu-id="b3bc8-117">確認您的.NET Core SDK 安裝。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-117">Verify your .NET Core SDK installation.</span></span> <span data-ttu-id="b3bc8-118">開啟命令殼層中，然後執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="b3bc8-118">Open a command shell, and run the following command:</span></span>
+
+    ```console
+    dotnet --version
+    ```
+
+## <a name="recommended-tools-windows-only"></a><span data-ttu-id="b3bc8-119">建議的工具 (僅 Windows)</span><span class="sxs-lookup"><span data-stu-id="b3bc8-119">Recommended tools (Windows only)</span></span>
+
+* <span data-ttu-id="b3bc8-120">[Visual Studio](https://www.visualstudio.com/)的功能強大的 Azure 工具提供 GUI 來執行大部分的本指南中所述的功能。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-120">[Visual Studio](https://www.visualstudio.com/)'s robust Azure tools provide a GUI for most of the functionality described in this guide.</span></span> <span data-ttu-id="b3bc8-121">任何版本的 Visual Studio 將會運作，包括免費的 Visual Studio Community Edition。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-121">Any edition of Visual Studio will work, including the free Visual Studio Community Edition.</span></span> <span data-ttu-id="b3bc8-122">教學課程會示範使用和不使用 Visual Studio 的開發、 部署及 DevOps 寫入。</span><span class="sxs-lookup"><span data-stu-id="b3bc8-122">The tutorials are written to demonstrate development, deployment, and DevOps both with and without Visual Studio.</span></span>
+
+  <span data-ttu-id="b3bc8-123">確認 Visual Studio 具有下列[工作負載](https://docs.microsoft.com/visualstudio/install/modify-visual-studio)安裝：</span><span class="sxs-lookup"><span data-stu-id="b3bc8-123">Confirm that Visual Studio has the following [workloads](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) installed:</span></span>
+
+  * <span data-ttu-id="b3bc8-124">ASP.NET 與網頁程式開發</span><span class="sxs-lookup"><span data-stu-id="b3bc8-124">ASP.NET and web development</span></span>
+  * <span data-ttu-id="b3bc8-125">Azure 開發</span><span class="sxs-lookup"><span data-stu-id="b3bc8-125">Azure development</span></span>
+  * <span data-ttu-id="b3bc8-126">.NET Core 跨平台開發</span><span class="sxs-lookup"><span data-stu-id="b3bc8-126">.NET Core cross-platform development</span></span>

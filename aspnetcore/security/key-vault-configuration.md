@@ -2,37 +2,25 @@
 title: ASP.NET Core 中的 azure Key Vault 組態提供者
 author: guardrex
 description: 了解如何使用 Azure 金鑰保存庫的組態提供者設定應用程式使用在執行階段載入的名稱 / 值組。
+monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
+ms.custom: mvc
 ms.date: 08/01/2018
 uid: security/key-vault-configuration
-ms.openlocfilehash: 829c6c7e2750879b51bf3ce8225c6e472900f2ad
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 933f4fb1f2c1c412d318af5974cc9653805242ca
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830224"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927983"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
 
 藉由[Luke Latham](https://github.com/guardrex)和[Andrew Stanton-nurse](https://github.com/anurse)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
-檢視或下載 2.x 的範例程式碼：
-
-* [基本範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/2.x)([如何下載](xref:tutorials/index#how-to-download-a-sample))-讀取到應用程式的祕密的值。
-* [機碼名稱前置詞的範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/2.x)([如何下載](xref:tutorials/index#how-to-download-a-sample))-讀取祕密值使用的機碼名稱前置詞，表示應用程式，可讓您載入一組不同的密碼值，針對每個應用程式版本的版本。
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-檢視或下載 1.x 的範例程式碼：
-
-* [基本範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/1.x)([如何下載](xref:tutorials/index#how-to-download-a-sample))-讀取到應用程式的祕密的值。
-* [機碼名稱前置詞的範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/1.x)([如何下載](xref:tutorials/index#how-to-download-a-sample))-讀取祕密值使用的機碼名稱前置詞，表示應用程式，可讓您載入一組不同的密碼值，針對每個應用程式版本的版本。
-
----
-
 本文件說明如何使用[Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/)組態提供者，從 Azure Key Vault 祕密載入應用程式組態值。 Azure Key Vault 是雲端式服務，可協助您保護密碼編譯金鑰和應用程式和服務所使用的密碼。 常見的案例包括控制存取敏感的組態資料，並符合需求的 FIPS 140-2 Level 2 驗證的硬體安全性模組 (HSM) 儲存組態資料時。 這項功能是適用於 ASP.NET Core 1.1 為目標的應用程式或更高版本。
+
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="package"></a>Package
 
@@ -52,7 +40,7 @@ ms.locfileid: "41830224"
 
 [!code-csharp[Program](key-vault-configuration/samples/basic-sample/2.x/Program.cs?name=snippet1)]
 
-## <a name="creating-key-vault-secrets-and-loading-configuration-values-basic-sample"></a>建立金鑰保存庫密碼和載入組態值 （基本範例）
+## <a name="create-key-vault-secrets-and-load-configuration-values-basic-sample"></a>建立金鑰保存庫祕密，並載入組態值 （基本範例）
 
 1. 建立金鑰保存庫，並設定 Azure Active Directory (Azure AD) 應用程式中的指導方針[開始使用 Azure Key Vault](https://azure.microsoft.com/documentation/articles/key-vault-get-started/)。
    * 將密碼新增至金鑰保存庫使用[AzureRM 金鑰保存庫 PowerShell 模組](/powershell/module/azurerm.keyvault)苀[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureRM.KeyVault)，則[Azure Key Vault REST API](/rest/api/keyvault/)，或[Azure 入口網站](https://portal.azure.com/)。 為建立祕密*手動*或是*憑證*祕密。 *憑證*機密資料是應用程式和服務所使用的憑證，但不是支援的組態提供者。 您應該使用*手動*選項建立的組態提供者使用的名稱 / 值組祕密。
@@ -75,7 +63,7 @@ ms.locfileid: "41830224"
 
 ![透過 「 Azure 金鑰保存庫組態提供者的瀏覽器視窗中顯示祕密值載入](key-vault-configuration/_static/sample1.png)
 
-## <a name="creating-prefixed-key-vault-secrets-and-loading-configuration-values-key-name-prefix-sample"></a>建立帶有前置詞的金鑰保存庫密碼和載入組態值 （索引鍵-名稱-前置詞的範例）
+## <a name="create-prefixed-key-vault-secrets-and-load-configuration-values-key-name-prefix-sample"></a>建立帶有前置詞的金鑰保存庫祕密，並載入組態值 （索引鍵-名稱-前置詞的範例）
 
 `AddAzureKeyVault` 也會提供多載可接受的實作`IKeyVaultSecretManager`，這可讓您控制如何金鑰保存庫祕密會轉換成設定的索引鍵。 比方說，您可以實作的介面，將根據您在應用程式啟動時所提供的前置詞值的祕密值。 這可讓您，比方說，若要載入的應用程式的版本為基礎的祕密。
 
@@ -117,7 +105,7 @@ ms.locfileid: "41830224"
 
    ![瀏覽器視窗中顯示 5.1.0.0 應用程式的版本時，透過 「 Azure 金鑰保存庫組態提供者載入祕密值](key-vault-configuration/_static/sample2-2.png)
 
-## <a name="controlling-access-to-the-clientsecret"></a>ClientSecret 控制存取
+## <a name="control-access-to-the-clientsecret"></a>ClientSecret 控制存取
 
 使用[Secret Manager 工具](xref:security/app-secrets)維護`ClientSecret`外部專案來源樹狀結構。 使用 Secret Manager 中，您將應用程式祕密與特定的專案產生關聯並加以共用跨多個專案。
 
@@ -141,7 +129,7 @@ config.AddAzureKeyVault(
 store.Close();
 ```
 
-## <a name="reloading-secrets"></a>重新載入祕密
+## <a name="reload-secrets"></a>重新載入祕密
 
 密碼會快取直到`IConfigurationRoot.Reload()`呼叫。 過期，停用，以及更新金鑰保存庫中的祕密未遵守應用程式，直到`Reload`執行。
 
@@ -153,7 +141,7 @@ Configuration.Reload();
 
 已停用及過期的密碼會擲回`KeyVaultClientException`。 若要防止您的應用程式擲回，取代您的應用程式或更新已停用/過期的祕密。
 
-## <a name="troubleshooting"></a>疑難排解
+## <a name="troubleshoot"></a>疑難排解
 
 當應用程式無法載入組態使用的提供者時，錯誤訊息會寫入[ASP.NET Core 記錄基礎結構](xref:fundamentals/logging/index)。 在下列情況會造成無法載入組態：
 

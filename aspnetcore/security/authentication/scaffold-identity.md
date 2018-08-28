@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何建立 ASP.NET Core 專案中的身分識別。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 5/16/2018
+ms.date: 08/16/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 07163941d0bd1fea6f9b3d9867536580d8a9e9d8
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: e35836fa9c20729da7c857243410833749b3a595
+ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063269"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43055844"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>ASP.NET Core 專案中的 scaffold 身分識別
 
@@ -26,6 +26,9 @@ ASP.NET Core 2.1 和更新版本可[ASP.NET Core Identity](xref:security/authent
 執行身分識別框架時， *ScaffoldingReadme.txt*專案目錄中建立檔案。 *ScaffoldingReadme.txt*檔案包含需要的完成識別 scaffolding 更新內容的一般指示。 本文件包含更詳細的說明，比*ScaffoldingReadme.txt*檔案。
 
 我們建議使用顯示檔案的差異，並可讓您將變更原始檔控制系統。 執行身分識別 scaffolder 之後檢查所做的變更。
+
+> [!NOTE]
+> 使用時，服務不需要[雙因素驗證](xref:security/authentication/identity-enable-qrcodes)，[帳戶確認和密碼復原](xref:security/authentication/accconfirm)，以及其他與身分識別的安全性功能。 Scaffolding 身分識別時，不會產生服務或服務虛設常式。 若要啟用這些功能的服務必須手動加入。 例如，請參閱[需要電子郵件確認](xref:security/authentication/accconfirm#require-email-confirmation)。
 
 ## <a name="scaffold-identity-into-an-empty-project"></a>Scaffold 的身分識別至空專案
 
@@ -94,7 +97,8 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 [!INCLUDE[](~/includes/webapp-alias-notice.md)]
 -->
 
-[!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)] 中所設定的一些身分識別選項*Areas/Identity/IdentityHostingStartup.cs*。 如需詳細資訊，請參閱 < [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。
+[!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
+中所設定的一些身分識別選項*Areas/Identity/IdentityHostingStartup.cs*。 如需詳細資訊，請參閱 < [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。
 
 ## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>MVC 專案中現有的授權而成的 scaffold 身分識別
 

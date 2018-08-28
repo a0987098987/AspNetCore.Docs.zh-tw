@@ -2,14 +2,15 @@
 uid: index
 layout: HubPage
 ms.topic: hub-page
+ms.author: riande
 title: ASP.NET 文件 | Microsoft Docs
-description: ''
-ms.openlocfilehash: cc887183fba9d3c46fbb1068d13d612a3e1806e6
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+description: 了解如何開發 ASP.NET 與 ASP.NET Web 應用程式。 取得文件、程式碼範例、教學課程等。
+ms.openlocfilehash: 9b63e7a708e1b0551e1f48cea2080528d29bdfa9
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30866812"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927919"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -345,7 +346,7 @@ ms.locfileid: "30866812"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>ASP.NET API 參考</h3>
-                                                    <p>探索 ASP.NET 類別庫。</p>
+                                                    <p>探索 ASP.NET Core 類別庫。</p>
                                                 </div>
                                             </div>
                                         </div>

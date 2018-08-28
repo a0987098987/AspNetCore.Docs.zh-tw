@@ -762,7 +762,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 <a id="Appendix_B_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-b-installing-visual-studio-express-2012-for-web"></a>附錄 b： 安裝 Visual Studio Express 2012 for Web
 
-您可以安裝 **Microsoft Visual Studio Express 2012 for Web** 或另一個&quot;Express&quot;使用版本**[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示會引導您完成安裝所需的步驟*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
+您可以安裝 **Microsoft Visual Studio Express 2012 for Web** 或另一個&quot;Express&quot;使用版本 **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示會引導您完成安裝所需的步驟*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
 
 1. 移至[ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; <em>Visual Studio Express 2012 for Web 含 Windows Azure SDK</em>&quot;。
 2. 按一下 **立即安裝**。 如果您不需要**Web Platform Installer**您將會重新導向至下載並安裝第一次。

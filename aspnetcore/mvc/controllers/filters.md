@@ -3,14 +3,14 @@ title: ASP.NET Core 中的篩選條件
 author: ardalis
 description: 深入了解「篩選條件」的運作方式，以及如何在 ASP.NET Core MVC 中使用它們。
 ms.author: riande
-ms.date: 4/10/2018
+ms.date: 08/15/2018
 uid: mvc/controllers/filters
-ms.openlocfilehash: 24551382847fee0896fe6620d52c30a03aca69d1
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 6b3d5446b1c9aafc02d4c31ad57a234f16513e3f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275641"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751494"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 

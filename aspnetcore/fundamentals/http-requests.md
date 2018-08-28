@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/07/2018
 uid: fundamentals/http-requests
-ms.openlocfilehash: dd217cfed230ea92c31eeed64ec19838032dd224
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: 2a1bf78edb5068d8b10d66e5ef306b1ad4395da6
+ms.sourcegitcommit: 15d7bd0b2c4e6fe9ac335d658bab71a45ca5bc72
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39655228"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41751593"
 ---
 # <a name="initiate-http-requests"></a>初始化 HTTP 要求
 
@@ -46,11 +46,11 @@ ms.locfileid: "39655228"
 
 `IHttpClientFactory` 可以藉由在 `Startup.ConfigureServices` 方法內的 `IServiceCollection` 上呼叫 `AddHttpClient` 擴充方法來註冊。
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet1)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
 註冊之後，程式碼可以在可使用[相依性插入](xref:fundamentals/dependency-injection) (DI) 插入服務的任何位置，接受 `IHttpClientFactory`。 `IHttpClientFactory` 可以用來建立 `HttpClient` 執行個體：
 
-[!code-csharp[](http-requests/samples/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,20)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
 以這種方式使用 `IHttpClientFactory` 是重構現有應用程式的好方法。 它對 `HttpClient` 的使用方式沒有任何影響。 在目前建立 `HttpClient` 執行個體的位置，將那些項目取代為呼叫 [CreateClient](/dotnet/api/system.net.http.ihttpclientfactory.createclient)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "39655228"
 
 如果應用程式需要使用多個不同的 `HttpClient`，且每個都有不同的設定，可以選擇使用**具名用戶端**。 具名 `HttpClient` 的組態可以在 `Startup.ConfigureServices` 中註冊時指定。
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet2)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet2)]
 
 在上述程式碼中，會呼叫 `AddHttpClient` 並提供名稱 *github*。 此用戶端已套用一些預設組態&mdash;即使用 GitHub API 所需的基底位址和兩個標頭。
 
@@ -66,7 +66,7 @@ ms.locfileid: "39655228"
 
 若要使用具名用戶端，可以傳遞字串參數至 `CreateClient`。 指定要建立之用戶端的名稱：
 
-[!code-csharp[](http-requests/samples/Pages/NamedClient.cshtml.cs?name=snippet1&highlight=20)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/NamedClient.cshtml.cs?name=snippet1&highlight=21)]
 
 在上述程式碼中，要求不需要指定主機名稱。 它可以只傳遞路徑，因為已使用為用戶端設定的基底位址。
 
@@ -76,25 +76,25 @@ ms.locfileid: "39655228"
 
 具型別用戶端在其建構函式中接受 `HttpClient` 參數：
 
-[!code-csharp[](http-requests/samples/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
 在上述程式碼中，組態會移到具型別用戶端。 `HttpClient` 物件會公開為公用屬性。 您可定義 API 特定的方法，其公開 `HttpClient` 功能。 `GetAspNetDocsIssues` 方法會封裝從 GitHub 存放庫查詢和剖析最新開啟問題所需的程式碼。
 
 若要註冊具型別用戶端，泛型 `AddHttpClient` 擴充方法可用於 `Startup.ConfigureServices` 內，並指定具型別用戶端類別：
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet3)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet3)]
 
 具型別用戶端會向 DI 註冊為暫時性。 具型別用戶端可以直接插入並使用：
 
-[!code-csharp[](http-requests/samples/Pages/TypedClient.cshtml.cs?name=snippet1&highlight=11-14,20)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/TypedClient.cshtml.cs?name=snippet1&highlight=11-14,20)]
 
 想要的話，具型別用戶端的組態可以在 `Startup.ConfigureServices` 中註冊時指定，而不是在具型別用戶端的建構函式中：
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet4)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet4)]
 
 可以將 `HttpClient` 完全封裝在具型別用戶端內。 可以提供在內部呼叫 `HttpClient` 執行個體的公用方法，而不將它公開為屬性。
 
-[!code-csharp[](http-requests/samples/GitHub/RepoService.cs?name=snippet1&highlight=3)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/GitHub/RepoService.cs?name=snippet1&highlight=4)]
 
 在上述程式碼，`HttpClient` 儲存為私用欄位。 進行外部呼叫的所有存取都會經歷 `GetRepos` 方法。
 
@@ -159,19 +159,19 @@ public class ValuesController : ControllerBase
 
 若要建立處理常式，請定義衍生自 `DelegatingHandler` 的類別。 覆寫 `SendAsync` 方法，以在將要求傳遞至管線中的下一個處理常式之前執行程式碼：
 
-[!code-csharp[Main](http-requests/samples/Handlers/ValidateHeaderHandler.cs?name=snippet1)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Handlers/ValidateHeaderHandler.cs?name=snippet1)]
 
 上述程式碼定義一個基本處理常式。 它會檢查以查看要求上是否已包含 `X-API-KEY` 標頭。 如果遺漏標頭，它可以避免 HTTP 呼叫，並傳回適當的回應。
 
 在註冊期間，可以新增一或多個處理常式至 `HttpClient` 的組態。 此工作是透過 [IHttpClientBuilder](/dotnet/api/microsoft.extensions.dependencyinjection.ihttpclientbuilder) 上的擴充方法完成。
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet5)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet5)]
 
 在上述程式碼，`ValidateHeaderHandler` 已向 DI 註冊。 處理常式**必須**在 DI 中註冊為暫時性。 註冊之後，便可以呼叫 [AddHttpMessageHandler](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.addhttpmessagehandler)，並傳入處理常式的類型。
 
 可以遵循應該執行的順序來註冊多個處理常式。 每個處理常式會包裝下一個處理常式，直到最終 `HttpClientHandler` 執行要求：
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet6)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet6)]
 
 ## <a name="use-polly-based-handlers"></a>使用 Polly 為基礎的處理常式
 
@@ -179,7 +179,7 @@ public class ValuesController : ControllerBase
 
 提供擴充方法來啟用使用 Polly 原則搭配設定的 `HttpClient` 執行個體。 Polly 延伸模組提供於 [Microsoft.Extensions.Http.Polly](https://www.nuget.org/packages/Microsoft.Extensions.Http.Polly/) NuGet 套件中。 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)未包含此套件。 若要使用延伸模組，專案中應該要包含明確的 `<PackageReference />`。
 
-[!code-csharp[](http-requests/samples/HttpClientFactorySample.csproj?highlight=9)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/HttpClientFactorySample.csproj?highlight=9)]
 
 在還原此套件之後，擴充方法可用來支援將 Polly 為基礎的處理常式新增至用戶端。
 
@@ -189,7 +189,7 @@ public class ValuesController : ControllerBase
 
 `AddTransientHttpErrorPolicy` 延伸模組可用於 `Startup.ConfigureServices` 內。 延伸模組能提供 `PolicyBuilder` 物件的存取，該物件已設定來處理代表可能暫時性錯誤的錯誤：
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet7)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet7)]
 
 在上述程式碼，已定義了 `WaitAndRetryAsync` 原則。 失敗的要求會重試最多三次，並且在嘗試之間會有 600 毫秒的延遲時間。
 
@@ -197,7 +197,7 @@ public class ValuesController : ControllerBase
 
 有額外的擴充方法可用來新增 Polly 為基礎的處理常式。 其中一個這類延伸模組是 `AddPolicyHandler`，它有多個多載。 一個多載可讓您在定義要套用的原則時，檢查要求：
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet8)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet8)]
 
 在上述程式碼中，如果外寄要求是 GET，就會套用 10 秒逾時。 任何其他 HTTP 方法會使用 30 秒逾時。
 
@@ -205,7 +205,7 @@ public class ValuesController : ControllerBase
 
 通常會建立巢狀 Polly 原則，以提供增強的功能：
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet9)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet9)]
 
 在上述範例中，會新增兩個處理常式。 第一個使用 `AddTransientHttpErrorPolicy` 延伸模組來新增重試原則。 失敗的要求會重試最多三次。 第二個 `AddTransientHttpErrorPolicy` 呼叫會新增斷路器原則。 如果循序發生五次失敗的嘗試，進一步的外部要求會遭到封鎖 30 秒。 斷路器原則可設定狀態。 透過此用戶端的所有呼叫都會共用相同的線路狀態。
 
@@ -213,7 +213,7 @@ public class ValuesController : ControllerBase
 
 管理定期使用原則的一個方法是定義一次，並向 `PolicyRegistry` 註冊它們。 提供了擴充方法，可以使用來自登錄的原則新增處理常式：
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet10)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet10)]
 
 在上述程式碼中，當 `PolicyRegistry` 新增至 `ServiceCollection` 時，註冊了兩個原則。 為了使用來自登錄的原則，使用了 `AddPolicyHandlerFromRegistry` 方法，並傳遞要套用的原則名稱。
 
@@ -227,7 +227,7 @@ public class ValuesController : ControllerBase
 
 預設處理常式存留時間為兩分鐘。 可以針對每個具名用戶端覆寫預設值。 若要覆寫它，請在於建立用戶端時所傳回的 `IHttpClientBuilder` 上呼叫 [SetHandlerLifetime](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.sethandlerlifetime)：
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet11)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet11)]
 
 不需要處置用戶端。 處置會取消傳出的要求，並保證指定的 `HttpClient` 執行個體在呼叫 [Dispose](/dotnet/api/system.idisposable.dispose#System_IDisposable_Dispose) 之後無法使用。 `IHttpClientFactory` 會追蹤並處置 `HttpClient` 執行個體使用的資源。 `HttpClient` 執行個體通常可視為 .NET 物件，不需要處置。
 
@@ -251,4 +251,4 @@ public class ValuesController : ControllerBase
 
 新增具名或具型別用戶端時，會傳回 `IHttpClientBuilder`。 [ConfigurePrimaryHttpMessageHandler](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.configureprimaryhttpmessagehandler) 擴充方法可用來定義委派。 委派是用來建立及設定該用戶端所使用的主要 `HttpMessageHandler`：
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet12)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet12)]

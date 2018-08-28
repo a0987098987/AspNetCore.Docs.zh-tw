@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/14/2018
 uid: fundamentals/app-state
-ms.openlocfilehash: 072699113a45056ec3ea79436ad56896ba0a4197
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 7794b3c10e26720d3e7ef8965f99b204a3c58d5c
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095810"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41870930"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>ASP.NET Core 中的工作階段與應用程式狀態
 
@@ -105,7 +105,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 
 ::: moniker-end
 
-中介軟體的順序很重要。 在上述範例中，如果在 `UseMvc` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　例外狀況。 如需詳細資訊，請參閱[中介軟體順序](xref:fundamentals/middleware/index#ordering)。
+中介軟體的順序很重要。 在上述範例中，如果在 `UseMvc` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　例外狀況。 如需詳細資訊，請參閱[中介軟體順序](xref:fundamentals/middleware/index#order)。
 
 設定工作階段狀態之後便可以使用 [HttpContext.Session](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)。
 
@@ -299,7 +299,7 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 ::: moniker-end
 
-中介軟體的順序很重要。 在上述範例中，如果在 `UseMvc` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　例外狀況。 如需詳細資訊，請參閱[中介軟體順序](xref:fundamentals/middleware/index#ordering)。
+中介軟體的順序很重要。 在上述範例中，如果在 `UseMvc` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　例外狀況。 如需詳細資訊，請參閱[中介軟體順序](xref:fundamentals/middleware/index#order)。
 
 > [!IMPORTANT]
 > 如果目標為 .NET Framework 且使用以工作階段為基礎的 TempData 提供者，請將 [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) 套件新增至專案。

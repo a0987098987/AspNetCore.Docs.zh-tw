@@ -5,12 +5,12 @@ description: 了解如何檢視 ASP.NET Core 中使用的元件，以及如何�
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/views/view-components
-ms.openlocfilehash: 2b196d8d46942604d1c85eb5f2f073661e5acb30
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c4e4de6e4ffb634a636bccdb2a929a524baebecf
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278358"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751749"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
@@ -75,8 +75,9 @@ ms.locfileid: "36278358"
 
 執行階段會搜尋下列路徑中的檢視：
 
-   * Views/\<controller_name>/Components/\<view_component_name>/\<view_name>
-   * Views/Shared/Components/\<view_component_name>/\<view_name>
+* /Pages/Components/<component name>/\<view_name>
+* Views/\<controller_name>/Components/\<view_component_name>/\<view_name>
+* Views/Shared/Components/\<view_component_name>/\<view_name>
 
 檢視元件的預設檢視名稱是 *Default*，這表示您的檢視檔案通常會命名為 *Default.cshtml*。 建立檢視元件結果時，或呼叫 `View` 方法時，可以指定不同的檢視名稱。
 

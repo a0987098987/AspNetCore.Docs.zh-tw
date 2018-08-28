@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何在 ASP.NET Core 中編寫標籤協助程式。
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 01/19/2018
+ms.date: 08/20/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 5873c6dbdeba1b5f2bf7ac85d8992480228b7125
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2d39488caeea0c87d2efc79f265de7feb200f096
+ms.sourcegitcommit: 15d7bd0b2c4e6fe9ac335d658bab71a45ca5bc72
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275313"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41751497"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
@@ -35,7 +35,7 @@ ms.locfileid: "36275313"
 
 ```html
 <email>Support</email>
-   ```
+```
 
 伺服器將使用我們的電子郵件標籤 (tag) 協助程式，將該標籤 (markup) 轉換成下列項目：
 
@@ -179,7 +179,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 ```csharp
 [HtmlTargetElement("MyBold")]
-   ```
+```
 
 ## <a name="pass-a-model-to-a-tag-helper"></a>將模型傳遞至標籤協助程式
 
@@ -245,26 +245,8 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 2. 將 *Views/Home/Index.cshtml* 檔案的內容取代為下列標記：
 
-   ```cshtml
-   @using AuthoringTagHelpers.Models
-   @model WebsiteContext
-    
-   @{
-       ViewData["Title"] = "Home Page";
-   }
-    
-   <div>
-       <h3>Information about our website (outdated):</h3>
-       <website-information info=@Model />
-       <div condition="@Model.Approved">
-           <p>
-               This website has <strong surround="em"> @Model.Approved </strong> been approved yet.
-               Visit www.contoso.com for more information.
-           </p>
-       </div>
-   </div>
-   ```
-    
+   [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml)]
+
 3. 將 `Home` 控制器中的 `Index` 方法取代為下列程式碼：
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Controllers/HomeController.cs?range=9-18)]

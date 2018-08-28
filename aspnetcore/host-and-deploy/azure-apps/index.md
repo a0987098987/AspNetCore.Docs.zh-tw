@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/24/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 9a7d20378cac597b748d8a60eb0f0bf17c9ba082
-ms.sourcegitcommit: d27317c16f113e7c111583042ec7e4c5a26adf6f
+ms.openlocfilehash: 42775bf4d3e88893260a5973f6f7bc9d3a006b5a
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41746061"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927824"
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>將 ASP.NET Core 裝載到 Azure App Service
 
@@ -46,7 +46,7 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 ::: moniker range=">= aspnetcore-2.0"
 
-## <a name="application-configuration"></a>應用程式組態
+## <a name="application-configuration"></a>應用程式設定
 
 在 ASP.NET 2.0 或更新版本中，以下 NuGet 套件會為部署至 Azure App Service 的應用程式提供自動記錄功能：
 
@@ -57,6 +57,14 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 若以 .NET Core 為目標且參考 [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)，則會已經包含套件。 較新的 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)中不存在套件。 若以 .NET Framework 為目標或參考 `Microsoft.AspNetCore.App` 中繼套件，則會參考個別記錄套件。
 
 ::: moniker-end
+
+## <a name="override-app-configuration-using-the-azure-portal"></a>使用 Azure 入口網站覆寫應用程式設定
+
+[應用程式設定] 刀鋒視窗的 [應用程式設定] 區域允許您為應用程式設定環境變數。 環境變數可由[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)取用。
+
+當應用程式使用 [Web 主機](xref:fundamentals/host/web-host)並使用會將主機設定為使用 `ASPNETCORE_` 前置詞的 [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 環境變數來建置主機。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
+
+當應用程式使用[一般主機](xref:fundamentals/host/generic-host)時，環境變數預設不會被載入到應用程式的設定中，而且必須由開發人員新增設定提供者。 新增設定提供者時，開發人員必須判斷環境變數前置詞。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
@@ -79,7 +87,7 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 了解如何診斷使用 ASP.NET Core 應用程式部署 Azure App Service 的問題。
 
 [Azure 應用程式服務和 IIS 常見的 ASP.NET Core 錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)  
-了解託管於 Azure App Service/IIS 之應用程式的常見部署組態錯誤，及疑難排解建議。
+了解託管於 Azure App Service/IIS 之應用程式的常見部署設定錯誤，及疑難排解建議。
 
 ## <a name="data-protection-key-ring-and-deployment-slots"></a>資料保護金鑰環及部署位置
 
@@ -134,7 +142,7 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 **搭配使用預覽網站延伸模組與 ARM 範本**
 
-如果您使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站延伸模組新增至 Web 應用程式。 例如: 
+如果您使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站延伸模組新增至 Web 應用程式。 例如：
 
 [!code-json[Main](index/sample/arm.json?highlight=2)]
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/19/2018
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 476795645b0430962b61f7a61de29d5d1819602b
-ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
+ms.openlocfilehash: dfef2bf21f325f11d147379f75a8d81a8bd05eec
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39356710"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41886742"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
@@ -899,7 +899,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-建立自訂[中介軟體](xref:fundamentals/middleware/index#writing-middleware)時，`IHostingEnvironment` 可以插入至 `Invoke` 方法：
+建立自訂[中介軟體](xref:fundamentals/middleware/index#write-middleware)時，`IHostingEnvironment` 可以插入至 `Invoke` 方法：
 
 ```csharp
 public async Task Invoke(HttpContext context, IHostingEnvironment env)

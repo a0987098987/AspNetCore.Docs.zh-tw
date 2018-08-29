@@ -76,7 +76,7 @@ Microsoft Ajax CDN 也會包含下列已上傳，由 Microsoft 程式庫：
 
 Microsoft 不主張其所有權的裝載此 CDN 上的任何協力廠商程式庫。 程式庫的著作權擁有者授權給您的這些程式庫。 您可能必須下載並使用這類程式庫的任何權限會授與，只能由各自的著作權擁有者。 因為這些不是 Microsoft 程式庫，Microsoft 為裝載於此 CDN 上的協力廠商程式庫會提供任何擔保或智慧財產 （包括任何默示的專利權利） 的權限授權。
 
-如果您想要提交您的 JavaScript 程式庫和程式庫是其中一個最上層的 JavaScript 程式庫 (上所列http://trends.builtwith.com)或是 （a） 常用; 或 （b） 很有幫助在 ASP.NET 上使用，則請連絡這些程式庫的延伸模組/外掛程式AjaxCDNSubmission@Microsoft.com。
+如果您想要提交您的 JavaScript 程式庫和程式庫是其中一個最上層的 JavaScript 程式庫 (上所列 http://trends.builtwith.com) 或是 （a） 常用; 或 （b） 很有幫助在 ASP.NET 上使用，則請連絡這些程式庫的延伸模組/外掛程式 AjaxCDNSubmission@Microsoft.com 。
 
 <a id="ajaxmicrosoftcom_renamed_to_ajaxaspnetcdncom_18"></a>
 

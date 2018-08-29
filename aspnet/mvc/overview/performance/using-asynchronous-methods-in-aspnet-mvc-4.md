@@ -90,7 +90,7 @@ ASP.NET MVC 4[控制器](https://msdn.microsoft.com/library/system.web.mvc.contr
 
 ## <a id="CreatingAsynchGizmos"></a>  建立非同步的 Gizmo 動作方法
 
-此範例會使用新[非同步](https://msdn.microsoft.com/library/hh156513(VS.110).aspx)並[await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx)關鍵字 （適用於.NET 4.5 和 Visual Studio 2012），讓編譯器會負責維護複雜的轉換所需非同步程式設計。 編譯器可讓您撰寫程式碼可讓您使用 C# 的同步的控制流程建構，編譯器會自動套用的轉換需要使用回呼，以避免封鎖執行緒。
+此範例會使用新[async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx)及[await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx)關鍵字 （適用於.NET 4.5 和 Visual Studio 2012），讓編譯器會負責維護複雜的轉換所需非同步程式設計。 編譯器可讓您撰寫程式碼可讓您使用 C# 的同步的控制流程建構，編譯器會自動套用的轉換需要使用回呼，以避免封鎖執行緒。
 
 下列程式碼示範`Gizmos`同步方法和`GizmosAsync`非同步方法。 如果您的瀏覽器支援[HTML 5`<mark>`項目](http://www.w3.org/wiki/HTML/Elements/mark)，您會看到在變更`GizmosAsync`以黃色反白顯示。
 

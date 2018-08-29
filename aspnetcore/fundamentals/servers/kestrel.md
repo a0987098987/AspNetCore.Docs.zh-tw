@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/02/2018
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 797fce6273eba29d19e640c301d2f4d2059370cc
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 7c7ff337256792dde057c04a5b96a1eb1c093387
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342194"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41902628"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -788,7 +788,7 @@ public class HostFilteringMiddleware
 }
 ```
 
-在 `Startup.Configure` 中註冊前面的 `HostFilteringMiddleware`。 請注意，[中介軟體註冊的順序](xref:fundamentals/middleware/index#ordering)很重要。 註冊應該在註冊中介軟體註冊 (例如 `app.UseExceptionHandler`) 之後立即發生。
+在 `Startup.Configure` 中註冊前面的 `HostFilteringMiddleware`。 請注意，[中介軟體註冊的順序](xref:fundamentals/middleware/index#order)很重要。 註冊應該在註冊中介軟體註冊 (例如 `app.UseExceptionHandler`) 之後立即發生。
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2018
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 9ba77561ab4f6a8668c480d6e81f2ce7e0193c73
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: e6dc76b7cb80e0dfda102df5aefb5d9ce9b821ed
+ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41870943"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43055802"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -131,7 +131,9 @@ public void Configure(IApplicationBuilder app)
 
 ::: moniker-end
 
-在上述程式碼中，<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> 是第一個新增至管線的中介軟體元件。 因此，例外處理常式中介軟體會攔截後續呼叫中發生的所有例外狀況。
+在上面的範例程式碼中，每個中介軟體擴充方法都會透過 <xref:Microsoft.AspNetCore.Builder?displayProperty=fullName> 命名空間在 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> 上公開。
+
+<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> 是第一個新增到管道的中介軟體元件。 因此，例外處理常式中介軟體會攔截後續呼叫中發生的所有例外狀況。
 
 系統會提早在管線中呼叫靜態檔案中介軟體，以便該軟體可處理要求並執行最少運算，而無需一一處理剩餘的元件。 靜態檔案中介軟體**不**提供授權檢查。 其提供的所有檔案，包括在 *wwwroot* 下的檔案，皆可公開使用。 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
 

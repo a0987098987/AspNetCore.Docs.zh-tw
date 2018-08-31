@@ -5,12 +5,12 @@ description: 示範如何使用快取標籤協助程式
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 969716e21211513053f52049368a0a7190ffba47
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 425d8c2235f0070665bc0c967d2498f2cff2a4a6
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276548"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751708"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的快取標籤協助程式
 
@@ -181,7 +181,7 @@ routes.MapRoute(
 | String            | ".AspNetCore.Identity.Application"                |
 |                   | ".AspNetCore.Identity.Application,HairColor" |
 
-接受單一標頭值或標頭值的逗號分隔清單在標頭值變更時，觸發快取重新整理。 下列範例會查看與 ASP.NET 識別建立關聯的 Cookie。 當使用者經過驗證時，待設定的要求 Cookie 會觸發快取重新整理。
+接受單一標頭值或標頭值的逗號分隔清單在標頭值變更時，觸發快取重新整理。 下列範例會查看與 ASP.NET Core 身分識別建立關聯的 Cookie。 當使用者經過驗證時，待設定的要求 Cookie 會觸發快取重新整理。
 
 範例：
 

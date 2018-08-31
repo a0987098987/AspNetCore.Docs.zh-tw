@@ -2,15 +2,16 @@
 title: ASP.NET Core 中的 WebListener 網頁伺服器實作
 author: rick-anderson
 description: 了解 WebListener，這是 Windows 上 ASP.NET Core 的網頁伺服器，可用於直接連線到網際網路而無需 IIS。
+monikerRange: < aspnetcore-2.0
 ms.author: riande
-ms.date: 03/13/2018
+ms.date: 08/15/2018
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: 68aea99d6ce6af12655ef5fdb13130e9279e448a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 5602c1ddbe76879587de12bcd82722c103dee03f
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274865"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751748"
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 WebListener 網頁伺服器實作
 
@@ -45,11 +46,15 @@ WebListener 可用於您需要直接向網際網路公開伺服器而不使用 I
 
 ![Weblistener 直接與網際網路通訊](weblistener/_static/weblistener-to-internet.png)
 
-由於它建置在 Http.Sys 之上，WebListener 不需要反向 Proxy 伺服器以抵禦攻擊。 Http.Sys 是成熟的技術，可抵禦許多種類的攻擊，並提供功能完整之網頁伺服器的穩固性、安全性及延展性。 IIS 本身在 Http.Sys 之上以 HTTP 接聽程式的形式執行。 
+由於它建置在 Http.Sys 之上，WebListener 不需要反向 Proxy 伺服器以抵禦攻擊。 Http.Sys 是成熟的技術，可抵禦許多種類的攻擊，並提供功能完整之網頁伺服器的穩固性、安全性及延展性。 IIS 本身在 Http.Sys 之上以 HTTP 接聽程式的形式執行。
 
 當您需要它所提供的其中一個功能無法使用 Kestrel 來取得時，WebListener 也是不錯的內部部署選擇。
 
 ![Weblistener 直接與內部網路通訊](weblistener/_static/weblistener-to-internal.png)
+
+## <a name="kernel-mode-authentication-with-kerberos"></a>使用 Kerberos 的核心模式驗證
+
+WebListener 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerberos 和 WebListener 不支援使用者模式驗證。 必須使用電腦帳戶來解密 Kerberos 權杖/票證，該權杖/票證取自 Active Directory，並由用戶端將其轉送至伺服器來驗證使用者。 請註冊主機的服務主體名稱 (SPN)，而非應用程式的使用者。
 
 ## <a name="how-to-use-weblistener"></a>WebListener 使用方法
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 7ecbcc81423af20f8da79ebc026b1ac01a250b90
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 33fad930e617c74d9a8c07f850764a6b81fa8ab5
+ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279213"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41751492"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -102,7 +102,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 [HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) 方法存在於 [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/) 套件中。
 
-檔案已設為可公開快取 10 分鐘 (600 秒)：
+檔案已在開發環境中設為可公開快取 10 分鐘 (600 秒)：
 
 ![已新增顯示「快取控制」標頭的回應標頭](static-files/_static/add-header.png)
 
@@ -199,7 +199,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 | http://\<伺服器位址>/StaticFiles/images/banner1.svg    |      MyStaticFiles/images/banner1.svg |
 | http://\<伺服器位址>/StaticFiles             |     MyStaticFiles/default.html |
 
-如果 *MyStaticFiles* 目錄中不存在預設名稱的檔案，http://\<伺服器位址>/StaticFiles 會傳回含有可點按連結的目錄清單：
+如果 *MyStaticFiles* 目錄中不存在預設名稱的檔案， http://\<伺服器位址>/StaticFiles 會傳回含有可點按連結的目錄清單：
 
 ![靜態檔案清單](static-files/_static/db2.png)
 

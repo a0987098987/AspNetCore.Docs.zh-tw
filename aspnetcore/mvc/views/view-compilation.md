@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/17/2018
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 9355d467ca819ea8c6292963b31367ad5ca36d55
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: 05ebc2b51401f8ce8d76d7d121e351cd9ca42c80
+ms.sourcegitcommit: 67a0a04ebb3b21c826e5b9600bacfc897abd6a46
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938533"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42899853"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>ASP.NET Core 中 Razor 檔案的先行編譯
 
@@ -39,9 +39,12 @@ ms.locfileid: "37938533"
 ## <a name="deploy-precompiled-files"></a>部署先行編譯的檔案
 
 ::: moniker range=">= aspnetcore-2.1"
+
 Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 在建置階段中，支援更新 Razor 檔案後進行編輯。 根據預設，只有編譯的 *Views.dll* 會與應用程式一起部署，而 *.cshtml* 檔案則否。
 
 > [!IMPORTANT]
+> ASP.NET Core 3.0 中將移除先行編譯工具。 建議移轉到 [Razor SDK](xref:razor-pages/sdk)。
+>
 > 只有當專案檔中未設定先行編譯特定的屬性時，Razor SDK 才會有效。 例如，將 *.csproj* 檔案的 `MvcRazorCompileOnPublish` 屬性設定成 `true`，便會停用 Razor SDK。
 ::: moniker-end
 
@@ -55,6 +58,8 @@ Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 在建�
 根據預設，ASP.NET Core 2.x 專案範本會隱含地將 `MvcRazorCompileOnPublish` 屬性設定成 `true`。 因此，可以安全地將元素從 *.csproj* 檔案中移除。
 
 > [!IMPORTANT]
+> ASP.NET Core 3.0 中將移除先行編譯工具。 建議移轉到 [Razor SDK](xref:razor-pages/sdk)。
+>
 > 在 ASP.NET Core 2.0 中執行[自封式部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) 時，無法使用 Razor 檔案先行編譯。
 ::: moniker-end
 

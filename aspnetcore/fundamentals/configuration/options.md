@@ -6,23 +6,43 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: ef6b0117b88c4c79771f0280267bd99993028ac8
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: 6258530beedced9570111478fea630b1556e1a1e
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39655416"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927954"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-選項模式使用類別來代表一組相關的設定。 當組態設定依功能隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：
+選項模式使用類別來代表一組相關的設定。 當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：
 
-* [介面隔離準則 (ISP)](http://deviq.com/interface-segregation-principle/)：相依於組態設定的功能 (類別) 只會相依於它們使用的組態設定。
+* [介面隔離準則 (ISP)](http://deviq.com/interface-segregation-principle/)：相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。
 * [關注點分離](http://deviq.com/separation-of-concerns/) (不同考量)：應用程式不同部分的設定不會彼此相依或結合。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([如何下載](xref:tutorials/index#how-to-download-a-sample))本文比較能輕鬆地遵循範例應用程式。
+
+## <a name="prerequisites"></a>必要條件
+
+::: moniker range=">= aspnetcore-2.1"
+
+參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+參考 [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。
+
+::: moniker-end
 
 ## <a name="basic-options-configuration"></a>基本選項組態
 
@@ -102,7 +122,7 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 子選項組態是以[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;3 來示範。
 
-應用程式應該建立屬於應用程式中特定功能群組 (類別) 的選項類別。 需要組態值的應用程式組件應該只能存取它們使用的設定值。
+應用程式應該建立屬於應用程式中特定案例群組 (類別) 的選項類別。 需要組態值的應用程式組件應該只能存取它們使用的設定值。
 
 將選項繫結至組態時，選項類型中的每一個屬性都會繫結至 `property[:sub-property:]` 格式的組態索引鍵。 例如，`MyOptions.Option1` 屬性繫結至索引鍵 `Option1`，其是從 *appsettings.json* 中的 `option1` 屬性讀取。
 

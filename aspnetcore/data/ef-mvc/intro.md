@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 4e0bcffd1162681aa4d31c4fe74acac5a7e981f1
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: cbef7e5edf2950a87a4cd4155c63a22fff2990fe
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38216308"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751437"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
 
@@ -35,7 +35,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [](~/includes/net-core-prereqs.md) [](~/includes/net-core-prereqs.md)]
+[!INCLUDE [](~/includes/net-core-prereqs.md)]
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -80,7 +80,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 * 按一下 [確定] 
 
-  ![[新增 ASP.NET 專案] 對話方塊](intro/_static/new-aspnet.png)
+  ![[新增 ASP.NET Core 專案] 對話方塊](intro/_static/new-aspnet.png)
 
 ## <a name="set-up-the-site-style"></a>設定網站樣式
 
@@ -273,7 +273,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Context&highlight=5,7,9)]
 
-ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制器。 您可以在先前的 *Startup.cs* 檔案中設定它。
+ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制器。 您可以在先前的 *Startup.cs* 檔案中設定它。
 
 控制器含有一個 `Index` 動作方法，該方法會顯示資料庫中的所有學生。 方法會藉由讀取資料庫內容執行個體的 `Students` 屬性，來從 Students 實體集中取得學生的清單：
 

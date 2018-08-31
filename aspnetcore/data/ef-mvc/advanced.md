@@ -5,12 +5,12 @@ description: 本教學課程介紹一些實用主題，這些主題超出開發 
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: be44ef115ce72e1571bbdea2c609ea6c53792c59
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 25916365b4e682a8e296e0affbcddd4f1e5846b1
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38194038"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751723"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC 與 EF Core - 進階 - 10/10
 
@@ -187,7 +187,7 @@ Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCor
 
 ## <a name="next-steps"></a>後續步驟
 
-如此即完成本系列中在 ASP.NET MVC 應用程式中使用 Entity Framework Core 的教學課程。
+如此即完成本系列中在 ASP.NET Core MVC 應用程式中使用 Entity Framework Core 的教學課程。
 
 如需 EF Core 的詳細資訊，請參閱 [Entity Framework Core 文件](https://docs.microsoft.com/ef/core)。 另外，還提供了一本書：[Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action) (Entity Framework Core 實戰)。
 

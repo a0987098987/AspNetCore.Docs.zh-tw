@@ -5,12 +5,12 @@ description: 了解在 ASP.NET Core 應用程式中如何跨多個環境控制�
 ms.author: riande
 ms.date: 07/03/2018
 uid: fundamentals/environments
-ms.openlocfilehash: eaa6fa44ed90d0c85a11f5e67a4bb9a91e84c196
-ms.sourcegitcommit: c8e62aa766641aa55105f7db79cdf2b27a6e5977
+ms.openlocfilehash: 720e5ef9fb63b83499ce1801a1c3f9df4786d748
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39254866"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927938"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>在 ASP.NET Core 中使用多個環境
 
@@ -275,7 +275,11 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 ### <a name="configuration-by-environment"></a>取決於環境的組態
 
-請參閱 <xref:fundamentals/configuration/index#configuration-by-environment> 的＜依環境設定的組態＞一節。
+若要依環境載入組態，建議使用：
+
+* *appsettings* 檔案 (*appsettings.&lt;<Environment>&gt;.json)。 請參閱[組態：檔案組態提供者](xref:fundamentals/configuration/index#file-configuration-provider)。
+* 環境變數 (在裝載應用程式的每部系統上設定)。 請參閱[組態：檔案組態提供者](xref:fundamentals/configuration/index#file-configuration-provider)和[在開發期間安全儲存應用程式祕密：環境變數](xref:security/app-secrets#environment-variables)。
+* 祕密管理員 (僅限開發環境)。 請參閱 <xref:security/app-secrets>。
 
 ## <a name="environment-based-startup-class-and-methods"></a>以環境為基礎的 Startup 類別和方法
 

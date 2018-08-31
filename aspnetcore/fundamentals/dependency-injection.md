@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/02/2018
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 861370dc689e2420838f639ea0b1fb8f73927e16
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: b9c322e56c0902c2a78bbbf2563dd01ce79fdc9a
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342415"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927893"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -55,7 +55,7 @@ public class IndexModel : PageModel
 
     public async Task OnGetAsync()
     {
-        await _myDependency.WriteMessage(
+        await _dependency.WriteMessage(
             "IndexModel.OnGetAsync created this message.");
     }
 }
@@ -74,7 +74,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        await _myDependency.WriteMessage(
+        await _dependency.WriteMessage(
             "HomeController.Index created this message.");
 
         return View();
@@ -143,7 +143,7 @@ public class HomeController : Controller
 ::: moniker-end
 
 > [!NOTE]
-> 每個 `services.Add<ServiceName>` 擴充方法都會新增 (並且可能會設定) 服務。 例如，`services.AddMvc()` 會新增 Razor Pages 與 MVC 要求的服務。 建議應用程式遵循此慣例。 在 [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) 命名空間中放置擴充方法，以封裝服務註冊群組。
+> 每個 `services.Add{SERVICE_NAME}` 擴充方法都會新增 (並且可能會設定) 服務。 例如，`services.AddMvc()` 會新增 Razor Pages 與 MVC 要求的服務。 建議應用程式遵循此慣例。 在 [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) 命名空間中放置擴充方法，以封裝服務註冊群組。
 
 如果服務的建構函式需要基本類型 (例如 `string`)，基本類型可以藉由使用[設定](xref:fundamentals/configuration/index)或[選項模式](xref:fundamentals/configuration/options)來插入：
 
@@ -198,7 +198,7 @@ public class MyDependency : IMyDependency
 | [System.Diagnostics.DiagnosticSource](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticsource) | 單一 |
 | [System.Diagnostics.DiagnosticListener](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticlistener) | 單一 |
 
-當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add<ServiceName>` 擴充方法來註冊該服務要求的所有服務。 下列程式碼範例示範如何使用擴充方法 [AddDbContext](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)、[AddIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.addidentity) 與 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc) 將額外服務新增到容器中：
+當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 下列程式碼範例示範如何使用擴充方法 [AddDbContext](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)、[AddIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.addidentity) 與 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc) 將額外服務新增到容器中：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -377,7 +377,7 @@ Entity Framework 內容應該使用具範圍存留期新增至服務容器。 �
 
 ## <a name="call-services-from-main"></a>從主要呼叫服務
 
-使用 [IServiceScopeFactory.CreateScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory.createscope) 建立 [IServiceScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope)，以解析應用程式範圍中的具範圍服務。 此法可用於在開機時存取具範圍服務，以執行初始化工作。 下列範例示範如何在 `Program.Main` 中取得 `MyScopedService`：
+使用 [IServiceScopeFactory.CreateScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory.createscope) 建立 [IServiceScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope)，以解析應用程 式範圍中的範圍服務。 此法可用於在開機時存取範圍服務，以執行初始化工作。 下列範例示範如何在 `Program.Main` 中取得 `MyScopedService`：
 
 ```csharp
 public static void Main(string[] args)
@@ -410,14 +410,14 @@ public static void Main(string[] args)
 
 當應用程式在開發環境中執行時，預設服務提供者會執行檢查以確認：
 
-* 具範圍服務不是直接或間接由根服務提供者解析。
-* 具範圍服務不是直接或間接插入至單一服務。
+* 範圍服務不是直接或間接由根服務提供者解析。
+* 範圍服務不是直接或間接插入至單一服務。
 
 ::: moniker-end
 
 根服務提供者會在呼叫 [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider) 時建立。 當提供者啟動應用程式時，根服務提供者的存留期與應用程式/伺服器的存留期一致，並會在應用程式關閉時處置。
 
-具範圍服務會由建立這些服務的容器處置。 若是在根容器中建立具範圍服務，因為當應用程式/伺服器關機時，服務只會由根容器處理，所以服務的存留期會提升為單一服務等級。 當呼叫 `BuildServiceProvider` 時，驗證服務範圍會攔截到這些情況。
+範圍服務會由建立這些服務的容器處置。 若是在根容器中建立範圍服務，因為當應用程式/伺服器關機時，服務只會由根容器處理，所以服務的存留期會提升為單一服務等級。 當呼叫 `BuildServiceProvider` 時，驗證服務範圍會攔截到這些情況。
 
 如需詳細資訊，請參閱<xref:fundamentals/host/web-host#scope-validation>。
 
@@ -480,14 +480,24 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="default-service-container-replacement"></a>預設服務容器取代
 
-內建的服務容器是要服務架構和建置在其上的大部分取用者應用程式的基本需求。 不過，開發人員可以使用其偏好的容器取代內建的容器。 `Startup.ConfigureServices` 方法通常會傳回 `void`。 如果方法的簽章變更為傳回 [IServiceProvider](/dotnet/api/system.iserviceprovider)，則可以設定並傳回不同的容器。 .NET 有許多 IoC 容器可用。 在下列範例中，我們使用了 [Autofac](https://autofac.org/) 容器：
+內建服務容器是要服務架構和大部分取用者應用程式的需求。 除非您需要內建容器不支援的特定功能，否則建議使用內建容器。 內建容器中找不到協力廠商容器支援的某些功能：
 
-1. 安裝適當的容器套件：
+* 屬性插入
+* 根據名稱插入
+* 子容器
+* 自訂生命週期管理
+* `Func<T>` 支援延遲初始設定
+
+如需支援配接器的一些容器清單，請參閱 [DependencyInjection readme.md 檔案](https://github.com/aspnet/DependencyInjection#using-other-containers-with-microsoftextensionsdependencyinjection)。
+
+下列範例會以 [Autofac](https://autofac.org/) 取代內建容器：
+
+* 安裝適當的容器套件：
 
     * [Autofac](https://www.nuget.org/packages/Autofac/)
     * [Autofac.Extensions.DependencyInjection](https://www.nuget.org/packages/Autofac.Extensions.DependencyInjection/)
 
-2. 在 `Startup.ConfigureServices` 中設定容器並傳回 `IServiceProvider`：
+* 在 `Startup.ConfigureServices` 中設定容器並傳回 `IServiceProvider`：
 
     ```csharp
     public IServiceProvider ConfigureServices(IServiceCollection services)
@@ -506,7 +516,7 @@ public void ConfigureServices(IServiceCollection services)
 
     若要使用第三方容器，`Startup.ConfigureServices` 必須傳回 `IServiceProvider`。
 
-3. 在 `DefaultModule` 中設定 Autofac：
+* 在 `DefaultModule` 中設定 Autofac：
 
     ```csharp
     public class DefaultModule : Module

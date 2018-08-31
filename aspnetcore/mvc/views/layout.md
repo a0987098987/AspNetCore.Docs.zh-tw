@@ -5,18 +5,18 @@ description: 了解如何先使用通用配置、共用指示詞，以及執行�
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/views/layout
-ms.openlocfilehash: a99b239a0aeeb14492b1eee962dc1149f056f0eb
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: ad0b339572f387be8a636204015ffc361947acb8
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274114"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751407"
 ---
 # <a name="layout-in-aspnet-core"></a>ASP.NET Core 中的配置
 
 作者：[Steve Smith](https://ardalis.com/)
 
-檢視經常會共用視覺效果和程式設計項目。 在本文中，您將了解如何先使用通用配置、共用指示詞，以及執行通用程式碼，再轉譯 ASP.NET 應用程式中的檢視。
+檢視經常會共用視覺效果和程式設計項目。 在本文中，您將了解如何先使用通用配置、共用指示詞，以及先執行通用程式碼，再轉譯 ASP.NET Core 應用程式中的檢視。
 
 ## <a name="what-is-a-layout"></a>何謂配置
 
@@ -26,7 +26,7 @@ ms.locfileid: "36274114"
 
 應用程式內的許多頁面也經常使用指令碼和樣式表這類一般 HTML 結構。 所有這些共用項目可能都定義在 *layout* 檔案中，而之後應用程式內使用的任何檢視都可以參考該檔案。 配置可減少檢視中的重複程式碼，協助它們遵循[不重複 (DRY) 原則](http://deviq.com/don-t-repeat-yourself/)。
 
-依照慣例，ASP.NET 應用程式的預設配置命名為 `_Layout.cshtml`。 Visual Studio ASP.NET Core MVC 專案範本會將此配置檔案包含在 `Views/Shared` 資料夾中：
+依照慣例，ASP.NET Core 應用程式的預設配置命名為 `_Layout.cshtml`。 Visual Studio ASP.NET Core MVC 專案範本會將此配置檔案包含在 `Views/Shared` 資料夾中：
 
 ![方案總管中的 views 資料夾](layout/_static/web-project-views.png)
 

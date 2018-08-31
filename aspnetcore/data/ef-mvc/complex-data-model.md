@@ -5,12 +5,12 @@ description: 在本教學課程中，請新增更多實體和關聯性，並透�
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 1d3c69c8c658b5ca2f0253b790b0dc75d44d3064
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: c97acd2b943e1d4c466c060247220b3b8bab6d6b
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38194086"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751769"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
 
@@ -66,7 +66,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 ### <a name="the-stringlength-attribute"></a>StringLength 屬性
 
-您也可以使用屬性指定資料驗證規則和驗證錯誤訊息。 `StringLength` 屬性會設定資料庫中的最大長度，並為 ASP.NET MVC 提供用戶端和伺服器端驗證。 您也可以在此屬性中指定最小字串長度，但最小值不會對資料庫結構描述造成任何影響。
+您也可以使用屬性指定資料驗證規則和驗證錯誤訊息。 `StringLength` 屬性會設定資料庫中的最大長度，並為 ASP.NET Core MVC 提供用戶端和伺服器端驗證。 您也可以在此屬性中指定最小字串長度，但最小值不會對資料庫結構描述造成任何影響。
 
 假設您想要確保使用者不會在名稱中輸入超過 50 個字元。 若要新增這項限制，請將 `StringLength` 屬性新增到 `LastName` 及 `FirstMidName` 屬性，如下列範例所示：
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2018
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: be75667f34eed7ba601eee331e3451c5738ef223
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c2af9099fe439e1cdbf9ba86ffae3b2b0f67391e
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273565"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751709"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式
 
@@ -130,7 +130,7 @@ public class Movie
 
 ## <a name="intellisense-support-for-tag-helpers"></a>標籤協助程式的 IntelliSense 支援
 
-當您在 Visual Studio 中建立新的 ASP.NET Web 應用程式時，它會新增 NuGet 套件 "Microsoft.AspNetCore.Razor.Tools"。 這是新增標籤協助程式工具的套件。
+當您在 Visual Studio 中建立新的 ASP.NET Core Web 應用程式時，它會新增 NuGet 套件 "Microsoft.AspNetCore.Razor.Tools"。 這是新增標籤協助程式工具的套件。
 
 請考慮撰寫 HTML `<label>` 項目。 只要您在 Visual Studio 編輯器中輸入 `<l`，IntelliSense 就會顯示相符的項目：
 

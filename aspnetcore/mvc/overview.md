@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core MVC 何以是建置使用模型檢視控制器�
 ms.author: riande
 ms.date: 01/08/2018
 uid: mvc/overview
-ms.openlocfilehash: 7f8aab02c0ee37dad49ff224b182ec455e837a7a
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: d2a50e48c20fe69b1fe691bfc9c91a27d4219922
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39378634"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41902595"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -251,3 +251,9 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 ### <a name="view-components"></a>檢視元件
 
 [檢視元件](views/view-components.md)可讓您封裝轉譯邏輯，並在整個應用程式中重複使用。 其類似於[部分檢視](views/partial.md)，但具有相關聯的邏輯。
+
+## <a name="compatibility-version"></a>相容性版本
+
+<xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> 方法可讓應用程式加入或退出 ASP.NET Core MVC 2.1 或更新版本所引入的可能重大行為變更。
+
+如需詳細資訊，請參閱<xref:mvc/compatibility-version>。

@@ -5,16 +5,16 @@ description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式�
 ms.author: casoper
 ms.date: 08/07/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: 3cf99f4d497bf2edd8759ab9afdee66ad49fac3d
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: a63e97d9ab9eb0ed2fbd30e8c2e033f0c048d33e
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42909562"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312297"
 ---
 # <a name="tools-and-downloads"></a>工具和下載
 
-Azure 有數個介面，來佈建和管理資源，例如[Azure 入口網站](https://portal.azure.com)， [Azure CLI](https://docs.microsoft.com/cli/azure/)， [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview)， [Azure 雲端Shell](https://shell.azure.com/bash)，和 Visual Studio。 本指南會採用最簡單的方法，並使用 Azure Cloud Shell 中盡可能減少所需的步驟。 不過，必須使用 Azure 入口網站的某些部分。
+Azure 有數個介面，來佈建和管理資源，例如[Azure 入口網站](https://portal.azure.com)， [Azure CLI](https://docs.microsoft.com/cli/azure/)， [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)， [Azure 雲端Shell](https://shell.azure.com/bash)，和 Visual Studio。 本指南會採用最簡單的方法，並使用 Azure Cloud Shell 中盡可能減少所需的步驟。 不過，必須使用 Azure 入口網站的某些部分。
 
 ## <a name="prerequisites"></a>必要條件
 

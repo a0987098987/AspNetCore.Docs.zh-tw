@@ -5,12 +5,12 @@ description: 了解如何使用受保護的授權的使用者資料建立 Razor 
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: ba59e8d6243965188397c4ba7a130eec42acfb91
-ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
+ms.openlocfilehash: 9f264daa4a6b63478077cadb06a697f274014199
+ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43055876"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336007"
 ---
 ::: moniker range="<= aspnetcore-1.1"
 
@@ -19,7 +19,7 @@ ms.locfileid: "43055876"
 
 ::: moniker range="= aspnetcore-2.0"
 
-請參閱 [此 pdf] (https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_July16_18.pdf)
+請參閱[此 pdf](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_July16_18.pdf)
 
 ::: moniker-end
 
@@ -75,7 +75,13 @@ ms.locfileid: "43055876"
 * [授權](xref:security/authorization/index)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
-下載程式碼與本教學課程需要 ASP.NET Core 2.2 preview 1 或更新版本。 請參閱[此 GitHub 問題](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909)的因應措施。
+::: moniker-end
+::: moniker range="= aspnetcore-2.1"
+
+在 ASP.NET Core 2.1 中，`User.IsInRole`使用時，失敗`AddDefaultIdentity`。 本教學課程使用`AddDefaultIdentity`，因此需要 ASP.NET Core 2.2 preview 1 或更新版本。 請參閱[此 GitHub 問題](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909)的因應措施。
+
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="the-starter-and-completed-app"></a>Starter 和已完成的應用程式
 

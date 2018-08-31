@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/19/2017
 uid: security/cookie-sharing
-ms.openlocfilehash: ed3496db3f7a63a704f0e57faef6b2f6c085a8bd
-ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
+ms.openlocfilehash: afb0405ea87a6239c3017ba0a59a22527a817feb
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228594"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312278"
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>使用 ASP.NET 和 ASP.NET Core 共用應用程式之間的 cookie
 
@@ -43,7 +43,7 @@ ms.locfileid: "39228594"
 
 當使用 ASP.NET Core 身分識別：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 在 `ConfigureServices`方法，請使用[ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie)設定 cookie 的資料保護服務的擴充方法。
 
@@ -59,7 +59,9 @@ options.Cookie.Domain = ".contoso.com";
 
 請參閱*CookieAuthWithIdentity.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 在 `Configure`方法，請使用[CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions)設定：
 
@@ -87,11 +89,11 @@ app.AddIdentity<ApplicationUser, IdentityRole>(options =>
 });
 ```
 
----
+::: moniker-end
 
 當直接使用 cookie:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](cookie-sharing/sample/CookieAuth.Core/Startup.cs?name=snippet1)]
 
@@ -105,7 +107,10 @@ options.Cookie.Domain = ".contoso.com";
 
 請參閱*CookieAuth.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -116,20 +121,22 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 });
 ```
 
----
+::: moniker-end
 
 ## <a name="encrypting-data-protection-keys-at-rest"></a>加密待用資料保護金鑰
 
 針對生產環境部署，設定`DataProtectionProvider`來加密 DPAPI 或 X509Certificate 待用的金鑰。 請參閱[加密的金鑰在 Rest](xref:security/data-protection/implementation/key-encryption-at-rest)如需詳細資訊。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 services.AddDataProtection()
     .ProtectKeysWithCertificate("thumbprint");
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -143,7 +150,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 });
 ```
 
----
+::: moniker-end
 
 ## <a name="sharing-authentication-cookies-between-aspnet-4x-and-aspnet-core-apps"></a>共用的驗證 cookie 之間 ASP.NET 4.x 和 ASP.NET Core 應用程式
 

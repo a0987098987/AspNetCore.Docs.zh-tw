@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 9b96eaa1-8ef0-4338-a2e8-e0f970bfaf68
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: ad5e97cd596e146f742c4c5e882d3938005070d1
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8e3ae964dafc73bdf703cd7cbab430bbc99a6188
+ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825751"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336020"
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>Getting Started with ASP.NET 4.5 Web Form 和 Visual Studio 2013
 ====================
@@ -21,9 +21,7 @@ ms.locfileid: "41825751"
 
 [下載 Wingtip Toys 範例專案 (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409)或[下載電子書 (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
-> 此逐步教學課程系列將教導您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for Web 的 ASP.NET Web Forms 應用程式的基本概念。 [ASP.NET Web Form 測驗](http://quizapp.cloudapp.net/?quiz=ASP.NET)  
-> 測試您的知識並藉由採取 ASP.NET Web Form 測驗加強重要概念。 這項測驗被專從本教學課程系列中所包含的內容。 在測驗中的每個問題時提供說明以及其他指引的連結。
-
+此逐步教學課程系列將教導您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for Web 的 ASP.NET Web Forms 應用程式的基本概念。 [ASP.NET Web Form 測驗](http://quizapp.cloudapp.net/?quiz=ASP.NET)  
 
 ## <a name="introduction"></a>簡介
 

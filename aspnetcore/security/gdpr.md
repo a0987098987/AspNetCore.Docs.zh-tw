@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/29/2018
 uid: security/gdpr
-ms.openlocfilehash: 10384d2abad7692d45f2be19f3ba7f8f8e8c3e17
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0d6f02389fe4292bd0f7cf9a2a58c53449e1810a
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832026"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312080"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>ASP.NET Core 中的歐盟一般資料保護規定 (GDPR) 支援
 
@@ -117,4 +117,4 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Microsoft.com/GDPR](https://www.microsoft.com/en-us/trustcenter/Privacy/GDPR)
+* [Microsoft.com/GDPR](https://www.microsoft.com/trustcenter/Privacy/GDPR)

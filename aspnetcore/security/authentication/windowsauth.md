@@ -5,12 +5,12 @@ description: 本文說明如何使用 IIS Express、 IIS、 HTTP.sys，這和 We
 ms.author: riande
 ms.date: 08/18/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 93b1a1de74ef6554d48709b04870f7e23738846b
-ms.sourcegitcommit: 15d7bd0b2c4e6fe9ac335d658bab71a45ca5bc72
+ms.openlocfilehash: a8066d248c0d4db1d1f61b2a14bdb4656a2f4265
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41826036"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312408"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
@@ -97,7 +97,7 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
 [!code-csharp[](windowsauth/sample/Program2x.cs?highlight=9-14)]
 
 > [!NOTE]
-> HTTP.sys 核心模式驗證，Kerberos 驗證通訊協定的委派。 不支援使用者模式驗證，Kerberos 和 HTTP.sys。 必須用來解密 Kerberos 語彙基元/票證取自 Active Directory 電腦帳戶，並將其轉送至伺服器用戶端，來驗證使用者。 註冊服務主要名稱 (SPN) 的主應用程式中，而非應用程式的使用者。
+> HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerberos 和 HTTP.sys 不支援使用者模式驗證。 必須使用電腦帳戶來解密 Kerberos 權杖/票證，該權杖/票證取自 Active Directory，並由用戶端將其轉送至伺服器來驗證使用者。 請註冊主機的服務主體名稱 (SPN)，而非應用程式的使用者。
 
 ::: moniker-end
 
@@ -110,7 +110,7 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
 [!code-csharp[](windowsauth/sample/Program1x.cs?highlight=6-11)]
 
 > [!NOTE]
-> WebListener 會委派到核心模式驗證，Kerberos 驗證通訊協定。 Kerberos 和 WebListener，不支援使用者模式驗證。 必須用來解密 Kerberos 語彙基元/票證取自 Active Directory 電腦帳戶，並將其轉送至伺服器用戶端，來驗證使用者。 註冊服務主要名稱 (SPN) 的主應用程式中，而非應用程式的使用者。
+> WebListener 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerberos 和 WebListener 不支援使用者模式驗證。 必須使用電腦帳戶來解密 Kerberos 權杖/票證，該權杖/票證取自 Active Directory，並由用戶端將其轉送至伺服器來驗證使用者。 請註冊主機的服務主體名稱 (SPN)，而非應用程式的使用者。
 
 ::: moniker-end
 
@@ -129,7 +129,7 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
 在 ASP.NET Core 2.x 中，`[Authorize]`屬性需要額外的設定，在*Startup.cs*挑戰進行 Windows 驗證的匿名要求。 建議的設定會有些許出入所使用的 web 伺服器而有所不同。
 
 > [!NOTE]
-> 根據預設，缺少授權，才能存取頁面的使用者會看到空的 HTTP 403 回應。 [StatusCodePages 中介軟體](xref:fundamentals/error-handling#configuring-status-code-pages)可以設定為使用者提供更好的 「 拒絕存取 」 體驗。
+> 根據預設，缺少授權，才能存取頁面的使用者會看到空的 HTTP 403 回應。 [StatusCodePages 中介軟體](xref:fundamentals/error-handling#configure-status-code-pages)可以設定為使用者提供更好的 「 拒絕存取 」 體驗。
 
 #### <a name="iis"></a>IIS
 

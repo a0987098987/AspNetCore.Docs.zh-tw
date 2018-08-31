@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: b44769f1d0925f38523d6570858de17f37e32c2b
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: a653b1a5c07feca8672ba38e0cda3ddc30482c5a
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41909914"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312175"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>使用 Visual Studio 中的 ASP.NET Core 使用 LibMan
 
@@ -100,7 +100,7 @@ Visual Studio 提供豐富編輯支援，像是顏色標示、 格式、 Intelli
 
 * 子集[jQuery](https://jquery.com/) 3.3.1 版會從 CDNJS 提供者。 中所定義的子集`files`屬性&mdash;*jquery.min.js*， *jquery.js*，以及*jquery.min.map*。 檔案會放在專案的*wwwroot/lib/jquery*資料夾。
 * 將整個[Bootstrap](https://getbootstrap.com/) 4.1.3 版會擷取並放置於*wwwroot/lib/啟動程序*資料夾。 物件常值`provider`屬性會覆寫`defaultProvider`屬性值。 LibMan 擷取 unpkg 提供者的啟動程序的檔案。
-* 子集[Lodash](https://lodash.com/)已核准的組織內的控管主體。 *Lodash.js*並*lodash.min.js*檔案會從本機檔案系統中擷取*c:\\tmp\\*。 檔案會複製到專案的*wwwroot/lib/lodash*資料夾。
+* 子集[Lodash](https://lodash.com/)已核准的組織內的控管主體。 *Lodash.js*並*lodash.min.js*檔案會從本機檔案系統中擷取*c:\\temp\\lodash\\*。 檔案會複製到專案的*wwwroot/lib/lodash*資料夾。
 
 [!code-json[](samples/LibManSample/libman.json)]
 
@@ -193,7 +193,7 @@ Clean libraries operation completed
 2 libraries were successfully deleted in 1.91 secs
 ```
 
-清除作業只會刪除從專案的檔案。 程式庫檔案保持在未來的還原作業上更快速地擷取的快取中。 若要管理儲存在本機電腦的快取中的程式庫檔案，使用 LibMan CLI。
+清除作業只會刪除從專案的檔案。 程式庫檔案保持在未來的還原作業上更快速地擷取的快取中。 若要管理儲存在本機電腦的快取中的程式庫檔案，請使用[LibMan CLI](xref:client-side/libman/libman-cli)。
 
 ## <a name="uninstall-library-files"></a>解除安裝程式庫檔案
 
@@ -231,4 +231,5 @@ LibMan 會檢查程式庫版本比安裝的版本還新。 可能會發生下列
 
 ## <a name="additional-resources"></a>其他資源
 
+* <xref:client-side/libman/libman-cli>
 * [LibMan GitHub 存放庫](https://github.com/aspnet/LibraryManager)

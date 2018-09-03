@@ -265,6 +265,7 @@
 ## [使用 Gulp](xref:client-side/using-gulp)
 ## [使用 Grunt](xref:client-side/using-grunt)
 ## [使用 LibMan](xref:client-side/libman/index)
+### [LibMan CLI](xref:client-side/libman/libman-cli)
 ### [Visual Studio 中的 LibMan](xref:client-side/libman/libman-vs)
 ## [使用 Bower 管理用戶端套件](xref:client-side/bower)
 ## [建置具有啟動程序的回應式網站](xref:client-side/bootstrap)

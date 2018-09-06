@@ -5,12 +5,12 @@ description: 示範如何要求 HTTPS/TLS 中的 ASP.NET Core web 應用程式�
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: 3bea8661e17fec5128e822d98741d1f8ed7434e5
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: 838cd00545f36736461616f806942249aaf6eee0
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39655494"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893174"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制使用 ASP.NET Core 中的 HTTPS
 
@@ -20,6 +20,8 @@ ms.locfileid: "39655494"
 
 * 需要 HTTPS 進行的所有要求。
 * 將所有 HTTP 要求重新都導向至 HTTPS。
+
+沒有可用的 API 可以防止用戶端第一次要求中傳送機密資料。
 
 > [!WARNING]
 > 請勿**未**使用[RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute)接收機密資訊的 Web Api 上。 `RequireHttpsAttribute` 若要從 HTTP 至 HTTPS 的瀏覽器重新導向，會使用 HTTP 狀態碼。 API 用戶端可能不了解，或是遵循從 HTTP 重新導向至 HTTPS。 此類用戶端可能會透過 HTTP 傳送資訊。 Web Api 應執行下列之一：
@@ -32,7 +34,12 @@ ms.locfileid: "39655494"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-我們建議所有的 ASP.NET Core web 應用程式呼叫 HTTPS 重新導向中介軟體 ([UseHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpspolicybuilderextensions.usehttpsredirection)) 到所有的 HTTP 要求重新導向至 HTTPS。
+我們建議您所有的生產環境 ASP.NET Core web 應用程式呼叫：
+
+* HTTPS 重新導向中介軟體 ([UseHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpspolicybuilderextensions.usehttpsredirection)) 到所有的 HTTP 要求重新導向至 HTTPS。
+* [UseHsts](#hsts)，HTTP Strict Transport 安全性通訊協定 (HSTS)。
+
+### <a name="usehttpsredirection"></a>UseHttpsRedirection
 
 下列程式碼會呼叫`UseHttpsRedirection`在`Startup`類別：
 
@@ -40,35 +47,48 @@ ms.locfileid: "39655494"
 
 上述反白顯示的程式碼：
 
-* 使用預設[HttpsRedirectionOptions.RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode) (`Status307TemporaryRedirect`)。 生產環境應用程式應該呼叫[UseHsts](#hsts)。
-* 使用預設[HttpsRedirectionOptions.HttpsPort](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport) (443)。
+* 使用預設[HttpsRedirectionOptions.RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode) (`Status307TemporaryRedirect`)。
+* 使用預設[HttpsRedirectionOptions.HttpsPort](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport) (null) 但覆寫`ASPNETCORE_HTTPS_PORT`環境變數或[IServerAddressesFeature](/dotnet/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature)。
 
-下列程式碼會呼叫[AddHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpsredirectionservicesextensions.addhttpsredirection)設定中介軟體選項：
+> [!WARNING] 
+>連接埠必須是適用於中介軟體重新導向至 HTTPS。 如果沒有連接埠可用，則不會重新導向至 HTTPS。 HTTPS 連接埠可以指定任何下列設定：
+> 
+>* `HttpsRedirectionOptions.HttpsPort` 
+>* `ASPNETCORE_HTTPS_PORT`環境變數。 
+>* 在開發中，在 HTTPS url *launchsettings.json*。 
+>* 直接在 Kestrel 或 HttpSys 上設定 HTTPS url。 
+
+下列醒目提示程式碼會呼叫[AddHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpsredirectionservicesextensions.addhttpsredirection)設定中介軟體選項：
 
 [!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet2&highlight=14-99)]
 
+呼叫`AddHttpsRedirection`時，才需要變更的值` HttpsPort`或` RedirectStatusCode`;
+
 上述反白顯示的程式碼：
 
-* 設定組[HttpsRedirectionOptions.RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode)到`Status307TemporaryRedirect`，這是預設值。 生產環境應用程式應該呼叫[UseHsts](#hsts)。
+* 設定組[HttpsRedirectionOptions.RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode)到`Status307TemporaryRedirect`，這是預設值。
 * 設定 HTTPS 連接埠為 5001。 預設值為 443。
 
 下列機制會自動設定連接埠：
 
 * 中介軟體可以探索透過連接埠[IServerAddressesFeature](/dotnet/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature)當符合下列條件：
-  - Kestrel 或 HTTP.sys 可直接使用 HTTPS 端點 （也適用於 Visual Studio Code 的偵錯工具執行應用程式）。
-  - 只有**一個 HTTPS 連接埠**應用程式使用。
+
+   * Kestrel 或 HTTP.sys 可直接使用 HTTPS 端點 （也適用於 Visual Studio Code 的偵錯工具執行應用程式）。
+   * 只有**一個 HTTPS 連接埠**應用程式使用。
+
 * 使用 visual Studio:
-  - IIS Express 已啟用 HTTPS。
-  - *launchSettings.json*設定`sslPort`適用於 IIS Express。
+   * IIS Express 已啟用 HTTPS。
+   * *launchSettings.json*設定`sslPort`適用於 IIS Express。
 
 > [!NOTE]
 > 應用程式執行 （例如 IIS、 IIS Express），在反向 proxy 後方時`IServerAddressesFeature`無法使用。 您必須手動設定連接埠。 當未設定連接埠時，不是重新導向要求。
 
 可以藉由設定設定的連接埠[https_port Web 主機組態設定](xref:fundamentals/host/web-host#https-port):
 
-**機碼**：https_port **類型**：*字串*
-**預設值**：未設定預設值。
-**使用設定**: `UseSetting` 
+**索引鍵**: https_port  
+**類型**：*string*  
+**預設**： 未設定預設值。  
+**設定使用**：`UseSetting`  
 **環境變數**: `<PREFIX_>HTTPS_PORT` (前置詞是`ASPNETCORE_`使用 Web 主機時。)
 
 ```csharp
@@ -82,7 +102,7 @@ WebHost.CreateDefaultBuilder(args)
 如果已設定任何連接埠：
 
 * 要求未重新導向。
-* 中介軟體會記錄警告。
+* 中介軟體會記錄警告 「 無法判定重新導向的 https 連接埠。 」
 
 > [!NOTE]
 > 除了使用 HTTPS 重新導向中介軟體 (`UseHttpsRedirection`) 是使用 URL 重寫中介軟體 (`AddRedirectToHttps`)。 `AddRedirectToHttps` 也可以設定的狀態碼和連接埠重新導向為執行時。 如需詳細資訊，請參閱 < [URL 重寫中介軟體](xref:fundamentals/url-rewriting)。
@@ -112,16 +132,22 @@ WebHost.CreateDefaultBuilder(args)
 <a name="hsts"></a>
 ## <a name="http-strict-transport-security-protocol-hsts"></a>HTTP Strict Transport 安全性通訊協定 (HSTS)
 
-每個[OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project)， [HTTP Strict Transport Security (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet)是透過回應標頭使用的 web 應用程式所指定的選擇加入的安全性增強功能。 當支援 HSTS 的瀏覽器會收到此標頭：
+每個[OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project)， [HTTP Strict Transport Security (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet)是透過回應標頭使用的 web 應用程式所指定的選擇加入的安全性增強功能。 當[瀏覽器支援 HSTS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support)收到此標頭：
 
-* 瀏覽器會儲存可防止傳送的任何通訊透過 HTTP 的定義域的組態。 瀏覽器會強制透過 HTTPS 的所有通訊。 
+* 瀏覽器會儲存可防止傳送的任何通訊透過 HTTP 的定義域的組態。 瀏覽器會強制透過 HTTPS 的所有通訊。
 * 瀏覽器會防止使用者使用不受信任或不正確的憑證。 瀏覽器會停用允許使用者暫時信任此種憑證的提示。
+
+因為 HSTS 會強制執行用戶端就會有一些限制：
+
+* 用戶端必須支援 HSTS。
+* HSTS 需要至少一個成功的 HTTPS 要求建立 HSTS 原則。
+* 應用程式必須檢查每個 HTTP 要求並重新導向或拒絕的 HTTP 要求。
 
 ASP.NET Core 2.1 或更新版本會實作 HSTS 與`UseHsts`擴充方法。 下列程式碼會呼叫`UseHsts`應用程式不在[開發模式](xref:fundamentals/environments):
 
 [!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=10)]
 
-`UseHsts` 不建議在開發過程中因為 HSTS 標頭是高可快取瀏覽器。 根據預設，`UseHsts`排除本機回送位址。
+`UseHsts` 不建議在開發過程中因為 HSTS 設定高度快取瀏覽器。 根據預設，`UseHsts`排除本機回送位址。
 
 針對生產環境中實作 HTTPS 第一次，初始 HSTS 將值設定為較小的值。 從設定值時數不超過一天的萬一您需要還原為 HTTP，HTTPS 基礎結構。 確定在 HTTPS 設定的持續性後，增加 HSTS 最大壽命值;常用的值為一年。 
 
@@ -131,7 +157,7 @@ ASP.NET Core 2.1 或更新版本會實作 HSTS 與`UseHsts`擴充方法。 下�
 
 * 設定 Strict 傳輸安全性標頭的預先載入的參數。 預先載入不屬於[RFC HSTS 規格](https://tools.ietf.org/html/rfc6797)，但要預先載入 HSTS 上全新安裝的站台的網頁瀏覽器支援。 請參閱 [https://hstspreload.org/](https://hstspreload.org/) 以取得詳細資訊。
 * 可讓[includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2)，套用 HSTS 原則來裝載子網域。 
-* 明確設定為 60 天的 Strict-傳輸層安全性標頭的最大壽命參數。 如果未設定，預設值為 30 天。 請參閱[最大壽命指示詞](https://tools.ietf.org/html/rfc6797#section-6.1.1)如需詳細資訊。
+* 明確設定為 60 天的 Strict 傳輸安全性標頭的最大壽命參數。 如果未設定，預設值為 30 天。 請參閱[最大壽命指示詞](https://tools.ietf.org/html/rfc6797#section-6.1.1)如需詳細資訊。
 * 新增`example.com`的主機，以排除清單。
 
 `UseHsts` 排除下列 「 回送 」 主控件：
@@ -148,7 +174,7 @@ ASP.NET Core 2.1 或更新版本會實作 HSTS 與`UseHsts`擴充方法。 下�
 <a name="https"></a>
 ## <a name="opt-out-of-https-on-project-creation"></a>選擇退出的 HTTPS 上建立專案
 
-（從 Visual Studio 或 dotnet 命令列） 的 ASP.NET Core 2.1 或更新版本的 web 應用程式範本可讓[HTTPS 重新導向](#require)並[HSTS](#hsts)。 對於不需要 HTTPS 的部署，您可以選擇退出的 HTTPS。 比方說，就不需要其中 HTTPS 處理外部邊緣，每個節點上使用 HTTPS 的某些後端服務。
+（從 Visual Studio 或 dotnet 命令列） 的 ASP.NET Core 2.1 或更新版本的 web 應用程式範本可讓[HTTPS 重新導向](#require)並[HSTS](#hsts)。 對於不需要 HTTPS 的部署，您可以選擇退出的 HTTPS。 比方說，不需要其中 HTTPS 處理外部邊緣，每個節點上使用 HTTPS 的某些後端服務。
 
 若要退出 HTTPS:
 
@@ -174,8 +200,12 @@ dotnet new webapp --no-https
 
 ::: moniker range=">= aspnetcore-2.1"
 
-## <a name="how-to-setup-a-developer-certificate-for-docker"></a>如何設定適用於 Docker 的開發人員憑證
+## <a name="how-to-set-up-a-developer-certificate-for-docker"></a>如何設定適用於 Docker 的開發人員憑證
 
 請參閱[此 GitHub 問題](https://github.com/aspnet/Docs/issues/6199)。
 
 ::: moniker-end
+
+## <a name="additional-information"></a>其他資訊
+
+* [OWASP HSTS 瀏覽器支援](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support)

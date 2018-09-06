@@ -5,12 +5,12 @@ description: 了解如何設定 Azure Active Directory B2C 使用 ASP.NET Core �
 ms.date: 01/25/2018
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 731b25cac6f0d56fd34d12114a73e5cb5265dda6
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: 73a66cea1533cc835796f673021bfa45c35f5935
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202636"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893190"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>使用 Azure Active Directory B2C 在 ASP.NET Core 中的雲端驗證
 
@@ -49,8 +49,8 @@ ms.locfileid: "39202636"
 | 設定                       | 值                     | 注意                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **名稱**                      | *&lt;應用程式名稱&gt;*        | 請輸入**名稱**描述取用者應用程式的應用程式。                                                                                                                                 |
-| **包含 web 應用程式/web API** | [是]                       |                                                                                                                                                                                                    |
-| **允許隱含流程**       | [是]                       |                                                                                                                                                                                                    |
+| **包含 web 應用程式/web API** | 是                       |                                                                                                                                                                                                    |
+| **允許隱含流程**       | 是                       |                                                                                                                                                                                                    |
 | **回覆 URL**                 | `https://localhost:44300/signin-oidc` | 回覆 Url 會是 Azure AD B2C 傳回您的應用程式要求之任何權杖的所在端點。 Visual Studio 會提供要使用的回覆 URL。 現在，輸入`https://localhost:44300/signin-oidc`完成表單。 |
 | **應用程式識別碼 URI**                | 保留空白               | 本教學課程中，不需要。                                                                                                                                                                    |
 | **包含原生用戶端**     | 否                        |                                                                                                                                                                                                    |
@@ -107,7 +107,7 @@ Visual Studio Web 應用程式範本可以設定要用於驗證的 Azure AD B2C 
 
 ## <a name="run-the-app"></a>執行應用程式
 
-在 Visual Studio 中按**F5**以建置並執行應用程式。 Web 應用程式啟動之後，請選取**登入**。
+在 Visual Studio 中按**F5**以建置並執行應用程式。 Web 應用程式啟動之後，請選取**Accept**以接受使用 cookie （若出現提示），然後選取**登入**。
 
 ![登入應用程式](./azure-ad-b2c/_static/signin.png)
 

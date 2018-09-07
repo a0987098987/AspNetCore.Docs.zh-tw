@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 的設定
 author: guardrex
-description: 了解如何使用設定 API 設定 ASP.NET Core 應用程式。
+description: 了解如何使用組態 API 設定 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2018
 uid: fundamentals/configuration/index
-ms.openlocfilehash: a0c57e75b28bc7c5590d20a8fa59b00b6bb9af4e
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: 288f8ba5b45cdecd8c9eae060fee2c2c25dec7f9
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927874"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893242"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -407,7 +407,7 @@ public static void Main(string[] args)
 
 建立切換對應字典之後，它會包含下表中所示的資料。
 
-| 機碼       | 值             |
+| Key       | 值             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -420,7 +420,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 執行上述命令之後，設定包含下表中顯示的值。
 
-| 機碼               | 值    |
+| Key               | 值    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -512,7 +512,7 @@ var host = new WebHostBuilder()
 FilteredConfiguration = _config.AsEnumerable();
 ```
 
-### <a name="prefixes"></a>前置詞
+### <a name="prefixes"></a>首碼
 
 當您將前置詞套用到 `AddEnvironmentVariables` 方法時，會篩選載入到應用程式設定中的環境變數。 例如，若要篩選前置詞為 `CUSTOM_` 的環境變數，請提供前置詞給設定提供者：
 
@@ -742,7 +742,7 @@ var host = new WebHostBuilder()
 1. 執行範例應用程式。 開啟瀏覽器以瀏覽位於 `http://localhost:5000` 的應用程式。
 1. 觀察輸出是否包含表格中所顯示之設定的機碼值組 (視環境而定)。 記錄設定機碼會使用冒號 (`:`) 做為階層式分隔符號。
 
-| 機碼                        | 開發值 | 生產值 |
+| Key                        | 開發值 | 生產值 |
 | -------------------------- | :---------------: | :--------------: |
 | Logging:LogLevel:System    | 資訊       | 資訊      |
 | Logging:LogLevel:Microsoft | 資訊       | 資訊      |
@@ -1122,7 +1122,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 會建立下列設定機碼值組：
 
-| 機碼                   | 值                                             |
+| Key                   | 值                                             |
 | --------------------- | ------------------------------------------------- |
 | starship:name         | USS Enterprise                                    |
 | starship:registry     | NCC-1701                                          |
@@ -1230,7 +1230,7 @@ viewModel.TvShow = tvShow;
 
 考慮下表中顯示的設定機碼與值。
 
-| 機碼     | 值  |
+| Key     | 值  |
 | :-----: | :----: |
 | array:0 | value0 |
 | array:1 | value1 |
@@ -1337,7 +1337,7 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 表格中顯示的機碼值組會載入到設定中。
 
-| 機碼             | 值  |
+| Key             | 值  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1370,7 +1370,7 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 「JSON 設定提供者」會將設定資料讀入到下列機碼值組：
 
-| 機碼                     | 值  |
+| Key                     | 值  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |
@@ -1475,17 +1475,17 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 `AddEFConfiguration` 擴充方法允許新增設定來源到 `ConfigurationBuilder`。
 
-*EFConfigurationProvider/EFConfigurationExtensions.cs*：
+*Extensions/EntityFrameworkExtensions.cs*:
 
 ::: moniker range=">= aspnetcore-2.0"
 
-[!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationExtensions.cs?name=snippet1)]
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-[!code-csharp[](index/samples/1.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationExtensions.cs?name=snippet1)]
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
 
 ::: moniker-end
 
@@ -1503,7 +1503,7 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 ::: moniker-end
 
-## <a name="access-configuration-during-startup"></a>在啟動期間存取設定
+## <a name="access-configuration-during-startup"></a>在啟動期間存取組態
 
 將 `IConfiguration` 插入到 `Startup` 建構函式，以存取 `Startup.ConfigureServices` 中的設定值。 若要存取 `Startup.Configure` 中的設定，請直接將 `IConfiguration` 插入到方法或從建構函式使用執行個體：
 

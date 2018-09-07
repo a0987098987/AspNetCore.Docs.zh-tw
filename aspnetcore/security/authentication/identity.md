@@ -5,12 +5,12 @@ description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如�
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: bc69b1db56361dc185f582032148a4fb8078fdda
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: 96f446ad9ec1ef5d807a8648e68308ee20583365
+ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893229"
+ms.locfileid: "44040024"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -56,7 +56,7 @@ dotnet new webapp --auth Individual -o WebApp1
 <a name="pw"></a>
 ### <a name="configure-identity-services"></a>設定身分識別服務
 
-服務會加入`ConfigureServices`。 下列程式碼不包含產生的範本`CookiePolicyOptions`:
+服務會加入`ConfigureServices`。 典型的模式是呼叫所有`Add{Service}`方法，然後呼叫所有`services.Configure{Service}`方法。 下列程式碼不包含產生的範本`CookiePolicyOptions`:
 
 ::: moniker range=">= aspnetcore-2.1"
 

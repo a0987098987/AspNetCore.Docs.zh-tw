@@ -5,14 +5,14 @@ description: 了解如何設定 ASP.NET Core SignalR 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 07/31/2018
+ms.date: 09/06/2018
 uid: signalr/configuration
-ms.openlocfilehash: eac1202828edbcd295d7e52aa424cd625ee70e34
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: fee6e3382c14e818dff408f95770e711603f769d
+ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "39722460"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44039987"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 組態
 
@@ -63,7 +63,7 @@ var connection = new HubConnectionBuilder()
 | 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
 | `HandshakeTimeout` | 15 秒 | 如果用戶端不在此時間間隔內傳送初始信號交換訊息，就會關閉連線。 這是應該只在交握逾時錯誤是因嚴重的網路延遲而未發生才修改進階的設定。 如需詳細的交握程序的詳細資訊，請參閱[SignalR 中樞的通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
-| `KeepAliveInterval` | 15 秒 | 如果伺服器尚未在此間隔內傳送一則訊息，是自動的 ping 訊息傳送至保持開啟的連接。 |
+| `KeepAliveInterval` | 15 秒 | 如果伺服器尚未在此間隔內傳送一則訊息，是自動的 ping 訊息傳送至保持開啟的連接。 變更時`KeepAliveInterval`，變更`ServerTimeout` / `serverTimeoutInMilliseconds`設定用戶端上。 建議`ServerTimeout` / `serverTimeoutInMilliseconds`的值是雙精度浮點`KeepAliveInterval`值。  |
 | `SupportedProtocols` | 所有已安裝的通訊協定 | 此中樞支援的通訊協定。 根據預設，在伺服器上註冊的所有通訊協定，但可以從這個清單，以停用個別的中樞的特定通訊協定中移除通訊協定。 |
 | `EnableDetailedErrors` | `false` | 如果`true`詳細例外狀況訊息傳回給用戶端中樞方法中擲回例外狀況時。 預設值是`false`，因為這些例外狀況訊息可以包含機密資訊。 |
 
@@ -216,7 +216,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 | .NET 選項 | JavaScript 選項 | 預設值 | 描述 |
 | ----------- | ----------------- | ------------- | ----------- |
-| `ServerTimeout` | `serverTimeoutInMilliseconds` | 30 秒 （30,000 毫秒） | 伺服器活動的逾時。 如果伺服器未傳送訊息，此時間間隔中，用戶端會視為中斷連線的 server 和觸發程序`Closed`事件 (`onclose`在 JavaScript 中)。 |
+| `ServerTimeout` | `serverTimeoutInMilliseconds` | 30 秒 （30,000 毫秒） | 伺服器活動的逾時。 如果伺服器未傳送訊息，此時間間隔中，用戶端會視為中斷連線的 server 和觸發程序`Closed`事件 (`onclose`在 JavaScript 中)。 此值必須夠大，從伺服器傳送的 ping 訊息**和**逾時間隔內收到用戶端。 建議的值是數字在至少兩倍的伺服器的`KeepAliveInterval`值，以允許 ping 抵達的時間。 |
 | `HandshakeTimeout` | 無法設定 | 15 秒 | 初始伺服器交握的逾時。 如果伺服器不會傳送交握回應此時間間隔中，用戶端便會取消交握和觸發程序`Closed`事件 (`onclose`在 JavaScript 中)。 這是應該只在交握逾時錯誤是因嚴重的網路延遲而未發生才修改進階的設定。 如需詳細的交握程序的詳細資訊，請參閱[SignalR 中樞的通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
 
 在.NET 用戶端逾時的值會指定為`TimeSpan`值。 在 JavaScript 用戶端逾時的值會指定為數字，表示以毫秒為單位的持續時間。

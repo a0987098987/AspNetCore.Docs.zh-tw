@@ -393,6 +393,7 @@
 ## [防止跨網站指令碼攻擊](xref:security/cross-site-scripting)
 ## [啟用跨原始來源要求 (CORS)](xref:security/cors)
 ## [在應用程式間共用 Cookie](xref:security/cookie-sharing)
+## [IP 安全清單](xref:security/ip-safelist)
 
 # [效能](xref:performance/index)
 ## [快取回應](xref:performance/caching/index)

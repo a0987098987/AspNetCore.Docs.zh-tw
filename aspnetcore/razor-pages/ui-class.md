@@ -4,16 +4,16 @@ author: Rick-Anderson
 description: 說明如何在類別庫中建立可重複使用的 Razor UI。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 07/21/2018
+ms.date: 09/07/2018
 uid: razor-pages/ui-class
-ms.openlocfilehash: 1f0ef59ce3f3294d6a3bde015ca34800770b1be4
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: 7e9ab07a9060b16c09afb1e88950f6a3e55b13cb
+ms.sourcegitcommit: 8268cc67beb1bb1ca470abb0e28b15a7a71b8204
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "42909207"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44126744"
 ---
-# <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>在 ASP.NET Core 中使用 Razor 類別庫專案建立可重複使用的 UI。
+# <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>建立可重複使用 UI 在 ASP.NET Core 中使用 Razor 類別庫專案
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -41,7 +41,7 @@ Razor 類別庫包含下列專案檔：
 
 從命令列執行 `dotnet new razorclasslib`。 例如: 
 
-``` CLI
+```console
 dotnet new razorclasslib -o RazorUIClassLib
 ```
 
@@ -75,15 +75,16 @@ RCL 可以由下列各項參考：
 
 從命令提示字元中在 *cli* 目錄中，建置 RCL 和 Web 應用程式。
 
-``` CLI
+```console
 dotnet build
 ```
 
 移至 *WebApp1* 目錄並執行應用程式：
 
-``` CLI
+```console
 dotnet run
 ```
+
 ------
 
 遵循[測試 WebApp1](#test) 中的指示執行。
@@ -107,7 +108,7 @@ dotnet run
 
 從命令列執行下列命令：
 
-``` CLI
+```console
 dotnet new razorclasslib -o RazorUIClassLib
 dotnet new page -n _Message -np -o RazorUIClassLib/Areas/MyFeature/Pages/Shared
 dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
@@ -117,33 +118,33 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 * 建立 `RazorUIClassLib` Razor 類別庫 (RCL)。
 * 建立 Razor _Message 頁面，並將它新增至 RCL。 `-np` 參數會建立頁面而不使用 `PageModel`。
-* 建立 [viewstart](xref:mvc/views/layout#running-code-before-each-view) 檔案，並將它新增至 RCL。
+* 會建立[_ViewStart.cshtml](xref:mvc/views/layout#running-code-before-each-view)檔案，並將它新增至 RCL。
 
-需要 viewstart 檔案，才能使用 Razor 頁面專案的版面配置 (在下一節新增)。
+*_ViewStart.cshtml*檔案，才能使用 Razor 頁面專案 （這會新增下一節） 的配置。
 
 ------
 
-### <a name="add-razor-files-and-folders-to-the-project"></a>將 Razor 檔案和資料夾新增至專案。
+### <a name="add-razor-files-and-folders-to-the-project"></a>加入專案中的 Razor 檔案和資料夾
 
 * 將 *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* 中的標記取代為下列程式碼：
 
-[!code-html[Main](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml)]
+[!code-cshtml[Main](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml)]
 
 * 將 *RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml* 中的標記取代為下列程式碼：
 
-[!code-html[Main](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml)]
+[!code-cshtml[Main](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml)]
 
 需要 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` 才能使用部分檢視 (`<partial name="_Message" />`)。 您可以新增 *_ViewImports.cshtml* 檔案，而不要包含 `@addTagHelper` 指示詞。 例如: 
 
-``` CLI
+```console
 dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
 ```
 
-如需 viewimports 的詳細資訊，請參閱[匯入共用指示詞](xref:mvc/views/layout#importing-shared-directives)。
+如需詳細資訊 *_ViewImports.cshtml*，請參閱[匯入共用指示詞](xref:mvc/views/layout#importing-shared-directives)
 
 * 建置類別庫，以確認沒有任何編譯器錯誤：
 
-``` CLI
+```console
 dotnet build RazorUIClassLib
 ```
 
@@ -202,7 +203,7 @@ dotnet run
 
 ## <a name="override-views-partial-views-and-pages"></a>覆寫檢視、部分檢視和頁面
 
-在 Web 應用程式和 Razor 類別庫中發現檢視、部分檢視，或是 Razor 頁面時，以 Web 應用程式中的 Razor 標記 (*.cshtml* 檔案) 為優先。 例如，將 *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* 新增至 WebApp1，WebApp1 中的 Page1 將會優先於 Razor 類別庫中的 Page1。
+在 Web 應用程式和 Razor 類別庫中發現檢視、部分檢視，或是 Razor 頁面時，以 Web 應用程式中的 Razor 標記 (*.cshtml* 檔案) 為優先。 例如，新增*WebApp1/Areas/MyFeature/Pages/Page1.cshtml* WebApp1，以和 Page1 WebApp1 中的將會優先於 Razor 類別庫中的 Page1。
 
 在下載範例中，將 *WebApp1/Areas/MyFeature2* 重新命名為 *WebApp1/Areas/MyFeature* 以測試優先順序。
 
@@ -212,17 +213,17 @@ dotnet run
 
 ### <a name="rcl-pages-layout"></a>RCL 網頁版面配置
 
-若要參考 RCL 內容，就好像它是 web 應用程式的 [頁面] 資料夾的一部分，請使用下列的檔案結構建立 RCL 專案：
+參考 RCL 內容，就好像它是 web 應用程式的一部分*頁*資料夾中，建立 RCL 專案檔案結構如下：
 
 * *RazorUIClassLib/頁面*
 * *RazorUIClassLib/網頁/共用*
 
-假設*RazorUIClassLib/網頁/Shared*包含兩個部分的檔案 *_Header.cshtml*並 *_Footer.cshtml*。 <partial>標記新增到 *_Layout.cshtml*檔案： 
+假設*RazorUIClassLib/網頁/Shared*包含兩個部分的檔案： *_Header.cshtml*並 *_Footer.cshtml*。 `<partial>`標記新增到 *_Layout.cshtml*檔案：
   
-```
-  <body>
-    <partial name="_Header">
-    @RenderBody()
-    <partial name="_Footer">
-  </body>
+```cshtml
+<body>
+  <partial name="_Header">
+  @RenderBody()
+  <partial name="_Footer">
+</body>
 ```

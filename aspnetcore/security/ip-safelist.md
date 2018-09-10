@@ -6,21 +6,22 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: 40fe7b67359efd1692490099c3fb529ba4a6148f
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
-ms.translationtype: HT
+ms.openlocfilehash: 362d1ded00bda3f328e029fb467f2b3eeaa01396
+ms.sourcegitcommit: 8268cc67beb1bb1ca470abb0e28b15a7a71b8204
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44040105"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44126705"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>適用於 ASP.NET Core 的用戶端 IP 安全清單
 
 藉由[Damien Bowden](https://twitter.com/damien_bod)和[Tom Dykstra](https://github.com/tdykstra)
  
-本文說明兩種方式來實作 IP 安全清單 （也稱為允許清單）：
+本文說明三種方式可在 ASP.NET Core 應用程式中實作 IP 安全清單 （也稱為允許清單）。 您可以使用：
 
-* 使用 ASP.NET Core 中介軟體來檢查每個要求的遠端 IP 位址。
-* 使用 ASP.NET Core 動作篩選條件來檢查遠端 IP 位址的特定動作方法的要求。
+* 若要檢查每個要求的遠端 IP 位址的中介軟體。
+* 若要檢查遠端 IP 位址的要求特定的控制器或動作方法的動作篩選條件。
+* Razor 頁面的篩選條件來檢查遠端 IP 位址的 Razor 頁面的要求。
 
 範例應用程式說明這兩種方法。 在每個案例中，包含已核准的用戶端 IP 位址的字串會儲存在應用程式設定。 中介軟體或篩選器會將字串剖析成清單，並檢查 遠端 IP 是否在清單中。 如果沒有，則會傳回 HTTP 403 禁止狀態碼。
 

@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/intro
-ms.openlocfilehash: cbef7e5edf2950a87a4cd4155c63a22fff2990fe
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 46cc5144a289637a0fb1c1c2ac22aba2d881af52
+ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751437"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336103"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
 
@@ -132,7 +132,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 `ID` 屬性會成為資料庫資料表中的主索引鍵資料行，並對應至這個類別。 Entity Framework 預設會將名為 `ID` 或 `classnameID` 的屬性解譯為主索引鍵。
 
-`Enrollments` 屬性為導覽屬性。 導覽屬性會保留與此實體相關的其他實體。 在這個案例中，`Student entity` 的 `Enrollments` 屬性會保有與該 `Student` 實體相關的所有 `Enrollment` 實體。 換句話說，若資料庫中給定的學生資料列有兩個相關的 Enrollment 資料列 (包含該學生於其 StudentID 外部索引鍵資料行中主索引鍵值的資料列)，該 `Student` 實體的 `Enrollments` 導覽屬性便會包含這兩個 `Enrollment` 實體。
+`Enrollments` 屬性為[導覽屬性](/ef/core/modeling/relationships)。 導覽屬性會保留與此實體相關的其他實體。 在這個案例中，`Student entity` 的 `Enrollments` 屬性會保有與該 `Student` 實體相關的所有 `Enrollment` 實體。 換句話說，若資料庫中給定的學生資料列有兩個相關的 Enrollment 資料列 (包含該學生於其 StudentID 外部索引鍵資料行中主索引鍵值的資料列)，該 `Student` 實體的 `Enrollments` 導覽屬性便會包含這兩個 `Enrollment` 實體。
 
 若導覽屬性可保有多個實體 (例如在多對多或一對多關聯性中的情況)，其類型必須為一個清單，使得實體可以在該清單中新增、刪除或更新，例如 `ICollection<T>`。 您可以指定 `ICollection<T>` 或如 `List<T>` 或 `HashSet<T>` 等類型。 若您指定了 `ICollection<T>`，EF 會根據預設建立一個 `HashSet<T>` 集合。
 

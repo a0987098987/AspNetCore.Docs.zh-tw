@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/20/2017
 uid: fundamentals/metapackage-app
-ms.openlocfilehash: e82c219635bbbebe1d6f5639308490c37361b286
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 95fd6b7e73cf325674f1c1e03f9eea88cbc1af13
+ms.sourcegitcommit: f3538693a12cf55b7f124a6519677239170b7c43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952951"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43114771"
 ---
 # <a name="microsoftaspnetcoreapp-metapackage-for-aspnet-core-21"></a>ASP.NET Core 2.1 的 Microsoft.AspNetCore.App 中繼套件
 
@@ -53,6 +53,15 @@ ASP.NET Core 的 [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Micro
 
 `Microsoft.AspNetCore.App` 參考的版本號碼**不**保證會使用該版本的共用架構。 例如，假設指定版本 `2.1.1`，但安裝 `2.1.3`。 在此情況下，應用程式會使用 `2.1.3`。 您可以停用向前復原行為 (修補及 (或) 次要)，但不建議這樣做。 如需套件版本向前復原行為的詳細資訊，請參閱 [dotnet 主機向前復原](https://github.com/dotnet/core-setup/blob/master/Documentation/design-docs/roll-forward-on-no-candidate-fx.md)。
 
+## <a name="update-aspnet-core"></a>更新 ASP.NET Core
+
 `Microsoft.AspNetCore.App` [中繼套件](/dotnet/core/packages#metapackages)不是從 NuGet 更新的傳統套件。 類似於 `Microsoft.NETCore.App`，`Microsoft.AspNetCore.App` 代表共用執行階段，其具有在 NuGet 外部處理的特殊版本控制語意。 如需詳細資訊，請參閱[套件、中繼套件和架構](/dotnet/core/packages)。
+
+更新 ASP.NET Core：
+
+* 在開發電腦和組建伺服器上：下載並安裝 [.NET Core SDK](https://www.microsoft.com/net/download)。
+* 在部署伺服器上：下載並安裝 [.NET Core 執行階段](https://www.microsoft.com/net/download)。
+
+ 應用程式會在應用程式重新開機時，向前復原到已安裝的最新版本。 您不必更新專案檔中的 `Microsoft.AspNetCore.App` 版本號碼。 如需詳細資訊，請參閱[向前復原 Framework 相依的應用程式](/dotnet/core/versions/selection#framework-dependent-apps-roll-forward)。
 
 如果您的應用程式先前使用 `Microsoft.AspNetCore.All`，請參閱[從 Microsoft.AspNetCore.All 移轉至 Microsoft.AspNetCore.App](xref:fundamentals/metapackage#migrate)。

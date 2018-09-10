@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/15/2018
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 087ff4e1e169e1a1f76e93d4993441e47bafc945
-ms.sourcegitcommit: 7097dba14d5b858e82758ee031ac62dbe3611339
+ms.openlocfilehash: cc8f7fa00436a847ab1d1ba0976fb5e3899576ee
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39138593"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312124"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
@@ -35,7 +35,7 @@ ms.locfileid: "39138593"
 
 託管服務會實作 [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice) 介面。 此介面針對主機所管理的物件定義兩種方法：
 
-* [StartAsync(CancellationToken)](/dotnet/api/microsoft.extensions.hosting.ihostedservice.startasync) - 在啟動伺服器和觸發 [IApplicationLifetime.ApplicationStarted](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.applicationstarted) 之後呼叫。 `StartAsync` 包含用來啟動背景工作的邏輯。
+* [StartAsync(CancellationToken)](/dotnet/api/microsoft.extensions.hosting.ihostedservice.startasync) - `StartAsync` 包含啟動背景工作的邏輯。 使用 [Web 主機](xref:fundamentals/host/web-host)時，是在啟動伺服器和觸發 [IApplicationLifetime.ApplicationStarted](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.applicationstarted) 之後才呼叫 `StartAsync`。 使用 [泛型主機](xref:fundamentals/host/generic-host)時，是在觸發 `ApplicationStarted` 之前呼叫 `StartAsync`。
 
 * [StopAsync(CancellationToken)](/dotnet/api/microsoft.extensions.hosting.ihostedservice.stopasync) - 當主機執行正常關機程序時觸發。 `StopAsync` 包含用來結束背景工作和處置任何受控資源的邏輯。 如果應用程式意外關閉 (例如，應用程式的處理序失敗)，可能不會呼叫 `StopAsync`。
 

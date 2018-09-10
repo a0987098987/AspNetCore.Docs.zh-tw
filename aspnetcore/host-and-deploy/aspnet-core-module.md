@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/15/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 8d4283c61163a586557135fddfb85440251aaf29
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2eff8c9cf2661a3ba9870e8c908d0471a6672481
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275615"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312262"
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET Core 模組設定參考
 
@@ -126,7 +126,7 @@ ms.locfileid: "36275615"
 
 ## <a name="log-creation-and-redirection"></a>記錄檔建立和重新導向
 
-如果已設定 `aspNetCore` 元素的 `stdoutLogEnabled` 和 `stdoutLogFile` 屬性，ASP.NET Core 模組就會將 stdout 和 stderr 記錄檔重新導向到磁碟。 `stdoutLogFile` 路徑中的所有資料夾都必須存在，模組才能建立記錄檔。 應用程式集區必須具有記錄檔寫入位置的寫入權限 (請使用 `IIS AppPool\<app_pool_name>` 來提供寫入權限)。
+如果已設定 `aspNetCore` 元素的 `stdoutLogEnabled` 和 `stdoutLogFile` 屬性，ASP.NET Core 模組就會將 stdout 和 stderr 主控台輸出重新導向到磁碟。 `stdoutLogFile` 路徑中的所有資料夾都必須存在，模組才能建立記錄檔。 應用程式集區必須具有記錄檔寫入位置的寫入權限 (請使用 `IIS AppPool\<app_pool_name>` 來提供寫入權限)。
 
 除非發生處理序回收/重新啟動，否則不會輪替記錄檔。 主機服務提供者必須負責限制記錄檔所使用的磁碟空間。
 
@@ -198,7 +198,7 @@ ASP.NET Core 模組安裝程式會以 **SYSTEM** 帳戶的權限執行。 由於
 
    * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema.xml
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>Configuration
 
 **IIS**
 

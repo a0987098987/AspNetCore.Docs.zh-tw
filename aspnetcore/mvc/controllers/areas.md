@@ -5,12 +5,12 @@ description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/controllers/areas
-ms.openlocfilehash: 3e998af42cd6209271495dd8dd97a8aed35717a4
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: b78bb5146f1ab9039fa9ff015471654510718ed6
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274823"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312214"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
@@ -30,13 +30,13 @@ ms.locfileid: "36274823"
 
 區域功能：
 
-* ASP.NET Core MVC 應用程式可以有任意數目的區域
+* ASP.NET Core MVC 應用程式可以有任意數目的區域。
 
-* 每個區域都有自己的控制器、模型和檢視
+* 每個區域都有自己的控制器、模型和檢視。
 
-* 可讓您將大型 MVC 專案組織成多個可以獨立處理的高階元件
+* 區域可讓您將大型 MVC 專案組織成多個可以獨立處理的高階元件。
 
-* 支援多個同名的控制器 (只要這些控制器有不同的「區域」即可)
+* 區域支援多個同名的控制器 (只要這些控制器有不同的「區域」即可)。
 
 請查看範例來說明如何建立和使用區域。 假設您的市集應用程式具有兩個不同的控制器和檢視分組：產品和服務。 使用 MVC 區域的一般資料夾結構如下：
 

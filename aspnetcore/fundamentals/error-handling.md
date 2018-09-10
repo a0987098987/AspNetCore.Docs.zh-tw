@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/05/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: ff04ebeb6a682ec924afe896fd6716010a63f7cd
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 7ea944bc423001aa47ce684443b96104cf9174bf
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751475"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312243"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>處理 ASP.NET Core 中的錯誤
 
@@ -25,7 +25,7 @@ ms.locfileid: "41751475"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-若要設定應用程式以顯示提供例外狀況詳細資訊的頁面，請使用「開發人員例外狀況頁面」。 [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) 套件 (提供於 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)) 會提供該頁面。 將一行程式碼新增至 `Startup.Configure` 方法：
+若要設定應用程式以顯示提供例外狀況詳細資訊的頁面，請使用「開發人員例外狀況頁面」。 [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) 套件 (於 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)提供) 會提供該頁面。 將一行程式碼新增至 `Startup.Configure` 方法：
 
 ::: moniker-end
 
@@ -45,7 +45,7 @@ ms.locfileid: "41751475"
 
 將對 [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage) 的呼叫放置於任何您要攔截例外狀況 (例如 `app.UseMvc`) 的中介軟體之前。
 
->[!WARNING]
+> [!WARNING]
 > **僅有當應用程式是在開發環境中執行時**，才啟用開發人員例外狀況頁面。 當應用程式在生產環境中執行時，您不會想要公開共用例外狀況的詳細資訊。 [進一步了解環境的設定](xref:fundamentals/environments)。
 
 若要查看開發人員例外狀況頁面，請將環境設定為 `Development` 並執行範例應用程式，然後將 `?throw=true` 新增至應用程式的基底 URL。 此頁面包含數個索引標籤，內含例外狀況與要求的相關資訊。 第一個索引標籤包含堆疊追蹤：
@@ -60,7 +60,7 @@ ms.locfileid: "41751475"
 
 ![標頭](error-handling/_static/developer-exception-page-headers.png)
 
-## <a name="configuring-a-custom-exception-handling-page"></a>設定自訂的例外狀況處理頁面
+## <a name="configure-a-custom-exception-handling-page"></a>設定自訂的例外狀況處理頁面
 
 當應用程式不在 `Development` 環境中執行時，請設定使用例外處理常式頁面：
 
@@ -81,13 +81,35 @@ public IActionResult Error()
 }
 ```
 
-## <a name="configuring-status-code-pages"></a>設定狀態碼頁面
+## <a name="configure-status-code-pages"></a>設定狀態碼頁面
 
-根據預設，應用程式不會提供 HTTP 狀態碼「404 (找不到)」等豐富的狀態碼頁面。 若要提供狀態碼頁面，請將下一行新增至 `Startup.Configure` 方法，以設定狀態碼頁面中介軟體：
+根據預設，應用程式不會提供 HTTP 狀態碼「404 (找不到)」等豐富的狀態碼頁面。 若要提供狀態碼頁面，請使用狀態碼頁面中介軟體。
+
+::: moniker range=">= aspnetcore-2.1"
+
+[Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) 套件 (於 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)提供) 會提供中介軟體。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+[Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) 套件 (於 [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)提供) 會提供中介軟體。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+在專案檔中新增 [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) 套件的套件參考可提供中介軟體。
+
+::: moniker-end
+
+將一行程式碼新增至 `Startup.Configure` 方法：
 
 ```csharp
 app.UseStatusCodePages();
 ```
+
+要求處理管線的中介軟體之前，應該先呼叫 <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages*> (例如，靜態檔案中介軟體和 MVC 中介軟體)。
 
 根據預設，狀態碼頁面中介軟體會針對常見狀態碼 (例如 404) 新增純文字處理常式：
 

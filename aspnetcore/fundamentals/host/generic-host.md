@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/16/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: de9044875c8ebc62c80a129d721e7d37be5d846d
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: e19a8a78b4c02fbae3d3acd23ee357c6003c35cf
+ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927805"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44039961"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -196,16 +196,32 @@ var host = new HostBuilder()
 
 ## <a name="extensibility"></a>擴充性
 
-主機擴充性是透過 `IHostBuilder` 上的擴充方法執行。 下列範例示範擴充方法如何使用 [RabbitMQ](https://www.rabbitmq.com/) 擴充 `IHostBuilder` 實作。 此擴充方法 (位於應用程式中的其他位置) 會註冊 RabbitMQ `IHostedService`：
+主機擴充性是透過 `IHostBuilder` 上的擴充方法執行。 下列範例使用 <xref:fundamentals/host/hosted-services> 中示範的 [TimedHostedService](xref:fundamentals/host/hosted-services#timed-background-tasks) 範例顯示擴充方法如何擴充 `IHostBuilder` 實作。
 
 ```csharp
-// UseRabbitMq is an extension method that sets up RabbitMQ to handle incoming
-// messages.
 var host = new HostBuilder()
-    .UseRabbitMq<MyMessageHandler>()
+    .UseHostedService<TimedHostedService>()
     .Build();
 
 await host.StartAsync();
+```
+
+應用程式會建立 `UseHostedService` 擴充方法以註冊在 `T` 中傳遞的裝載服務：
+
+```csharp
+using System;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+public static class Extensions
+{
+    public static IHostBuilder UseHostedService<T>(this IHostBuilder hostBuilder)
+        where T : class, IHostedService, IDisposable
+    {
+        return hostBuilder.ConfigureServices(services =>
+            services.AddHostedService<T>());
+    }
+}
 ```
 
 ## <a name="manage-the-host"></a>管理主機

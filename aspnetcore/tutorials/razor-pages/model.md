@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 9e0fd0ee98c84bb2336749640b2a3c103e4639b6
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: fb3a287725fa68ff9feb9935d7e6c5c2b8316517
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938322"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893116"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -103,14 +103,14 @@ Add-Migration Initial
 Update-Database
 ```
 
-或者，您可以使用下列 .NET Core CLI 命令：
+或者，您可以從專案資料夾使用下列 .NET Core CLI 命令：
 
 ```console
 dotnet ef migrations add Initial
 dotnet ef database update
 ```
 
-請略過下列警告訊息，您將在接下來的教學課程中修正該問題：
+請略過下列警告訊息，您將在稍後的教學課程中修正該問題：
 
 `Microsoft.EntityFrameworkCore.Model.Validation[30000]`
 
@@ -209,7 +209,7 @@ dotnet ef database update
 
 ### <a name="test-the-app"></a>測試應用程式
 
-* 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL ( `http://localhost:port/movies` )。
+* 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL (`http://localhost:port/movies`)。
 * 測試 **Create** 連結。
 
   ![建立頁面](../../tutorials/razor-pages/model/_static/conan.png)

@@ -5,14 +5,14 @@ description: 在本教學課程中，您會建立使用 SignalR for ASP.NET Core
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 08/20/2018
+ms.date: 08/31/2018
 uid: tutorials/signalr
-ms.openlocfilehash: a2573e2817a2d8921954264ca17bc3a7e2a010a8
-ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
+ms.openlocfilehash: 6d96331a4630f766ca11edb056fd3e13b52b6ae4
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43055828"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893161"
 ---
 # <a name="tutorial-get-started-with-signalr-on-aspnet-core"></a>教學課程：SignalR on ASP.NET Core 使用者入門
 
@@ -34,22 +34,19 @@ ms.locfileid: "43055828"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* [Visual Studio 2017 15.7.3 版或更新版本](https://www.visualstudio.com/downloads/)，包含 **ASP.NET 及網頁程式開發**工作負載
+* [Visual Studio 2017 15.8 版或更新版本](https://www.visualstudio.com/downloads/)，包含 **ASP.NET 與網頁程式開發**工作負載
 * [.NET Core SDK 2.1 或更新版本](https://www.microsoft.com/net/download/all)
-* [npm](https://www.npmjs.com/get-npm) (Node.js 的套件管理員，用於 SignalR JavaScript 用戶端程式庫。)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Visual Studio Code](https://code.visualstudio.com/download)
 * [.NET Core SDK 2.1 或更新版本](https://www.microsoft.com/net/download/all)
 * [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-* [npm](https://www.npmjs.com/get-npm) (Node.js 的套件管理員，用於 SignalR JavaScript 用戶端程式庫。)
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * [Visual Studio for Mac 7.5.4 版或更新版本](https://www.visualstudio.com/downloads/)
 * [.NET Core SDK 2.1 或更新版本](https://www.microsoft.com/net/download/all) (隨附於 Visual Studio 安裝)
-* [npm](https://www.npmjs.com/get-npm) (Node.js 的套件管理員，用於 SignalR JavaScript 用戶端程式庫。)
 
 ---
 
@@ -95,76 +92,85 @@ ms.locfileid: "43055828"
 
 ## <a name="add-the-signalr-client-library"></a>新增 SignalR 用戶端程式庫
 
-SignalR 伺服器程式庫包含在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。 但是，您必須從 [npm 這個 Node.js 套件管理員](https://www.npmjs.com/get-npm)中取得 JavaScript 用戶端程式庫。
+SignalR 伺服器程式庫包含在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用[程式庫管理員 (LibMan)](xref:client-side/libman/index) 從 *unpkg* 取得用戶端程式庫。 [unpkg](https://unpkg.com/#/) 是一個[內容傳遞網路](https://wikipedia.org/wiki/Content_delivery_network)，可以傳遞在 [npm、Node.js 套件管理員](https://www.npmjs.com/get-npm)中找到的任何項目。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* 在 [套件管理員主控台] (PMC) 中，切換至專案資料夾 (包含 *SignalRChat.csproj* 檔案的資料夾)。
+* 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增] > [用戶端程式庫]。
 
-  ```console
-  cd SignalRChat
-  ```
+* 在 [新增用戶端程式庫] 對話方塊中，針對 [提供者] 選取 [unpkg]。 
+
+* 針對 [程式庫]，輸入 _@aspnet/signalr@1_，然後選取不是預覽版的最新版本。
+
+  ![[新增用戶端程式庫] 對話方塊 - 選取程式庫](signalr/_static/libman1.png)
+
+* 選取 [選擇特定檔案]、展開 [散發者/瀏覽器] 資料夾，然後選取 *signalr.js* 與 *signalr.min.js*。
+
+* 將 [目標位置] 設定為 *wwwroot/lib/signalr/*，然後選取 [安裝]。
+
+  ![[新增用戶端程式庫] 對話方塊 - 選取檔案與目的地](signalr/_static/libman2.png)
+
+  [LibMan](xref:client-side/libman/index) 會建立 *wwwroot/lib/signalr* 資料夾並將選取的檔案複製到其中。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-2. 切換至新的專案資料夾。
+* 在 [整合式終端機] 中執行下列命令以安裝 LibMan。
 
   ```console
-  cd SignalRChat
-  ``` 
+  dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+  ```
+
+* 瀏覽到專案資料夾 (包含 *SignalRChat.csproj* 檔案的資料夾)。
+
+* 執行下列命令以透過使用 LibMan 來取得 SignalR 用戶端程式庫。 您可能必須等幾秒鐘，才會看到輸出。
+
+  ```console
+  libman install @aspnet/signalr -p unpkg -d wwwroot\lib\signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  ```
+
+  參數指定下列選項：
+  * 使用 unpkg 提供者。
+  * 將檔案複製到 *wwwroot/lib/signalr* 目的地。
+  * 只複製指定的檔案。
+
+  輸出看起來會像下列範例這樣：
+
+  ```console
+  wwwroot/lib/signalr/dist/browser/signalr.js written to disk
+  wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
+  Installed library "@aspnet/signalr@1.0.3" to "wwwroot\lib\signalr"
+  ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在 [終端機] 中，巡覽至專案資料夾 (包含 *SignalRChat.csproj* 檔案的資料夾)。
+* 在 [終端機] 中執行下列命令以安裝 LibMan。
+
+  ```console
+  dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+  ```
+
+* 瀏覽到專案資料夾 (包含 *SignalRChat.csproj* 檔案的資料夾)。
+
+* 執行下列命令以透過使用 LibMan 來取得 SignalR 用戶端程式庫。
+
+  ```console
+  libman install @aspnet/signalr -p unpkg -d wwwroot\lib\signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  ```
+
+  參數指定下列選項：
+  * 使用 unpkg 提供者。
+  * 將檔案複製到 *wwwroot/lib/signalr* 目的地。
+  * 只複製指定的檔案。
+
+  輸出看起來會像下列範例這樣：
+
+  ```console
+  wwwroot/lib/signalr/dist/browser/signalr.js written to disk
+  wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
+  Installed library "@aspnet/signalr@1.0.3" to "wwwroot\lib\signalr"
+  ```
 
 ---
-
-* 執行 npm 初始設定式來建立 *package.json* 檔案：
-
-  ```console
-  npm init -y
-  ```
-
-  該命令會建立類似下列範例的輸出：
-
-  ```console
-  Wrote to C:\tmp\SignalRChat\package.json:
-  {
-    "name": "SignalRChat",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"0
-  }
-  ```
-
-* 安裝用戶端程式庫套件：
-
-  ```console
-  npm install @aspnet/signalr
-  ```
-
-  該命令會建立類似下列範例的輸出：
-
-  ```
-  npm notice created a lockfile as package-lock.json. You should commit this file.
-  npm WARN signalrchat@1.0.0 No description
-  npm WARN signalrchat@1.0.0 No repository field.
-
-  + @aspnet/signalr@1.0.2
-  added 1 package in 0.98s
-  ```
-
-`npm install` 命令已將 JavaScript 用戶端程式庫下載到 *node_modules* 下的子資料夾。 將其從該處複製到 *wwwroot* 下您可以從聊天應用程式網頁參考的資料夾。
-
-* 在 *wwwroot/lib* 中建立 *signalr* 資料夾。
-
-* 將 *signalr.js* 檔案從 *node_modules/@aspnet/signalr/dist/browser* 複製到新的 *wwwroot/lib/signalr* 資料夾。
 
 ## <a name="create-the-signalr-hub"></a>建立 SignalR 中樞
 
@@ -192,7 +198,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 ## <a name="create-the-signalr-client-code"></a>建立 SignalR 用戶端程式碼
 
-* 以下列程式碼取代 *Pages\Index.cshtml* 中的內容：
+* 以下列程式碼取代 *Pages\Index.cshtml* 中的程式碼：
 
   [!code-cshtml[Index](signalr/sample/Pages/Index.cshtml)]
 

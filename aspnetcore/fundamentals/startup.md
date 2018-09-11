@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: 465d33cc1f19428d5189b3a6fa7088ac402a9751
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: 923d17be9c2bb1a9d338599d1cdc4c34302cddab
+ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927967"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44040091"
 ---
 # <a name="application-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -56,6 +56,8 @@ Web 主機提供一些可用於 `Startup` 類別建構函式的服務。 應用�
 * 由 Web 主機在 `Configure` 方法之前呼叫，用來設定應用程式的服務。
 * [組態選項](xref:fundamentals/configuration/index)依慣例設定的位置。
 
+典型模式是呼叫所有 `Add{Service}` 方法，然後呼叫 `services.Configure{Service}` 方法。 例如，請參閱[設定身分識別服務](xref:security/authentication/identity#pw)。
+
 將服務新增至服務容器，使其可在應用程式和 `Configure` 方法內使用。 這些服務會透過[相依性插入](xref:fundamentals/dependency-injection)或從 [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices) 加以解析。
 
 Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細資料可於[在 ASP.NET Core 中代管](xref:fundamentals/host/index)主題中取得。
@@ -66,7 +68,7 @@ Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細�
 
 ## <a name="the-configure-method"></a>Configure 方法
 
-[Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) 方法用來指定應用程式如何回應 HTTP 要求。 藉由將[中介軟體](xref:fundamentals/middleware/index)元件新增至 [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) 執行個體，即可設定要求管線。 `IApplicationBuilder` 可用於 `Configure` 方法，但它未註冊在服務容器中。 裝載會建立 `IApplicationBuilder`，並將它直接傳遞至 `Configure` ([參考來源](https://github.com/aspnet/Hosting/blob/release/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/WebHost.cs#L179-L192))。
+[Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) 方法用來指定應用程式如何回應 HTTP 要求。 藉由將[中介軟體](xref:fundamentals/middleware/index)元件新增至 [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) 執行個體，即可設定要求管線。 `IApplicationBuilder` 可用於 `Configure` 方法，但它未註冊在服務容器中。 裝載會建立 `IApplicationBuilder`，並將它直接傳遞到 `Configure`。
 
 [ASP.NET Core 範本](/dotnet/core/tools/dotnet-new)將管線設定為支援開發人員例外狀況頁面、[BrowserLink](http://vswebessentials.com/features/browserlink)、錯誤頁面、靜態檔案，以及 ASP.NET Core MVC：
 
@@ -86,7 +88,7 @@ Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細�
 
 [!code-csharp[](startup/snapshot_sample/Program.cs?highlight=18,22)]
 
-## <a name="startup-filters"></a>啟動篩選條件
+## <a name="extend-startup-with-startup-filters"></a>使用啟動篩選條件來擴充啟動
 
 使用 [IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) 在應用程式的 [Configure](#the-configure-method) 中介軟體管線的開頭或結尾設定中介軟體。 `IStartupFilter` 有助於確保某個中介軟體會在應用程式要求處理管線的開頭或結尾，於程式庫所新增的中介軟體之前或之後執行。
 
@@ -102,9 +104,9 @@ Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細�
 
 [!code-csharp[](startup/sample/RequestSetOptionsStartupFilter.cs?name=snippet1&highlight=7)]
 
-`IStartupFilter` 註冊在 `ConfigureServices` 的服務容器中：
+`IStartupFilter` 是在 [IWebHostBuilder.ConfigureServices](xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder.ConfigureServices*) 中的服務容器中所註冊，以示範來自 `Startup` 類別外的啟動篩選條件引數 `Startup`：
 
-[!code-csharp[](startup/sample/Startup.cs?name=snippet1&highlight=3)]
+[!code-csharp[](startup/sample/Program.cs?name=snippet1&highlight=4-5)]
 
 提供 `option` 的查詢字串參數時，中介軟體會在 MVC 中介軟體呈現回應之前，先處理值指派：
 
@@ -126,4 +128,3 @@ Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細�
 * <xref:fundamentals/middleware/index>
 * <xref:fundamentals/logging/index>
 * <xref:fundamentals/configuration/index>
-* [StartupLoader 類別：FindStartupType 方法 (參考來源)](https://github.com/aspnet/Hosting/blob/rel/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs#L66-L116)

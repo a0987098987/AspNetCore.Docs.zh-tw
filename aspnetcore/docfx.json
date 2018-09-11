@@ -37,6 +37,9 @@
     ],
     "overwrite": [],
     "externalReference": [],
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
     "globalMetadata": {
       "bilingual_type": "hover over",
       "breadcrumb_path": "/aspnet/breadcrumb/toc.json",

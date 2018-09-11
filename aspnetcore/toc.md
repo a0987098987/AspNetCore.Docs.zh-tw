@@ -287,7 +287,7 @@
 ### [使用 Visual Studio 發佈至 Azure](xref:tutorials/publish-to-azure-webapp-using-vs)
 ### [使用 CLI 工具發佈至 Azure](xref:tutorials/publish-to-azure-webapp-using-cli)
 ### [使用 Visual Studio 與 Git 持續部署到 Azure](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
-### [使用 VSTS 持續部署到 Azure](https://www.visualstudio.com/docs/build/aspnet/core/quick-to-azure)
+### [使用 Azure Pipelines 持續部署到 Azure](/azure/devops/pipelines/get-started-yaml)
 ### [針對 Azure App Service 上的 ASP.NET Core 進行疑難排解](xref:host-and-deploy/azure-apps/troubleshoot)
 ## [ Windows 上使用 IIS 的主機](xref:host-and-deploy/iis/index)
 ### [針對 IIS 上的 ASP.NET Core 進行疑難排解](xref:host-and-deploy/iis/troubleshoot)

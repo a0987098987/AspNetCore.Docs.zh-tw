@@ -5,27 +5,27 @@ description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式�
 ms.author: scaddie
 ms.date: 08/17/2018
 uid: azure/devops/cicd
-ms.openlocfilehash: e084a6115dc7e176c17b2b318233b7a003b39a83
-ms.sourcegitcommit: 1cf65c25ed16495e27f35ded98b3952a30c68f36
+ms.openlocfilehash: 0bfe1545da4c0778055d7c81c1588d3267d2e711
+ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42909020"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44340104"
 ---
 # <a name="continuous-integration-and-deployment"></a>持續整合和部署
 
-在上一章中，您會建立簡單的摘要讀取程式應用程式的本機 Git 存放庫。 在本章中，您會將該程式碼發行至 GitHub 存放庫，並建構的 Visual Studio Team Services (VSTS) DevOps 管線。 持續建置與部署應用程式，可讓管線。 建置和部署至 Azure Web 應用程式的預備位置，就會觸發任何認可的 GitHub 存放庫。
+在上一章中，您會建立簡單的摘要讀取程式應用程式的本機 Git 存放庫。 在本章中，您會將該程式碼發行至 GitHub 存放庫，並建構 Azure DevOps 服務管線，使用 Azure 的管線。 持續建置與部署應用程式，可讓管線。 建置和部署至 Azure Web 應用程式的預備位置，就會觸發任何認可的 GitHub 存放庫。
 
 在本節中，您將完成下列工作：
 
 * 將應用程式的程式碼發行至 GitHub
 * 中斷連線的本機 Git 部署
-* 建立 VSTS 帳戶
-* 在 VSTS 中建立 team 專案
+* 建立 Azure DevOps 的組織
+* Azure DevOps 服務中建立 team 專案
 * 建立組建定義
 * 建立發行管線
 * GitHub 中認可變更，並自動部署至 Azure
-* 檢查 VSTS 的 DevOps 管線
+* 檢查 Azure 管線的管線
 
 ## <a name="publish-the-apps-code-to-github"></a>將應用程式的程式碼發行至 GitHub
 
@@ -53,7 +53,7 @@ ms.locfileid: "42909020"
 
 ## <a name="disconnect-local-git-deployment"></a>中斷連線的本機 Git 部署
 
-移除本機 Git 部署進行下列步驟。 VSTS 會取代並增強了該功能。
+移除本機 Git 部署進行下列步驟。 Azure 的管線 （Azure DevOps 服務） 會取代並增強了該功能。
 
 1. 開啟[Azure 入口網站](https://portal.azure.com/)，然後瀏覽至*接移 (mywebapp\<unique_number\>/預備)* Web 應用程式。 Web 應用程式可以藉由輸入快速找到*預備*入口網站的 [搜尋] 方塊中：
 
@@ -63,26 +63,26 @@ ms.locfileid: "42909020"
 1. 瀏覽至*mywebapp < unique_number >* App Service。 提醒您，入口網站的 [搜尋] 方塊可用來快速找出應用程式服務。
 1. 按一下 **部署選項**。 此時會出現一個新的面板。 按一下 **中斷連線**移除在前一章中已加入本機 Git 原始檔控制組態。 按一下 [確認移除操作**是**] 按鈕。
 
-## <a name="create-a-vsts-account"></a>建立 VSTS 帳戶
+## <a name="create-an-azure-devops-organization"></a>建立 Azure DevOps 的組織
 
-1. 開啟瀏覽器，並瀏覽至[VSTS 帳戶建立頁面](https://go.microsoft.com/fwlink/?LinkId=307137)。
-1. 輸入唯一名稱**挑選一個易記的名稱**文字方塊來形成來存取您的 VSTS 帳戶的 URL。
+1. 開啟瀏覽器，並瀏覽至[Azure DevOps 的組織建立頁面](https://go.microsoft.com/fwlink/?LinkId=307137)。
+1. 輸入唯一名稱**挑選一個易記的名稱**文字方塊來形成來存取組織的 Azure DevOps 的 URL。
 1. 選取  **Git**選項按鈕，因為程式碼裝載於 GitHub 存放庫。
 1. 按一下 [繼續] 按鈕。 在之後短暫的等候、 帳戶以及 team 專案，名為*MyFirstProject*，所建立。
 
-    ![VSTS 帳戶建立頁面](media/cicd/vsts-account-creation.png)
+    ![Azure DevOps 的組織建立頁面](media/cicd/vsts-account-creation.png)
 
-1. 開啟 確認電子郵件，指出專案與 VSTS 帳戶可供使用。 按一下 **啟動您的專案**按鈕：
+1. 開啟 確認電子郵件，指出 Azure DevOps 的組織和專案可供使用。 按一下 **啟動您的專案**按鈕：
 
     ![啟動您的專案 按鈕](media/cicd/vsts-start-project.png)
 
 1. 瀏覽器中開啟 *\<account_name\>。 visualstudio.com*。 按一下  *MyFirstProject*連結，即可開始設定專案的 DevOps 管線。
 
-## <a name="configure-the-devops-pipeline"></a>設定在 DevOps 管線
+## <a name="configure-the-azure-pipelines-pipeline"></a>設定 Azure 管線的管線
 
 有三個不同的步驟，才能完成。 完成操作的 DevOps 管線中的下列三個區段結果中的步驟。
 
-### <a name="grant-vsts-access-to-the-github-repository"></a>授與 VSTS 的 GitHub 存放庫的存取權
+### <a name="grant-azure-devops-access-to-the-github-repository"></a>授與 Azure DevOps 的 GitHub 存放庫的存取權
 
 1. 依序展開**建置程式碼，從外部存放庫或**accordion。 按一下 **安裝程式建置**按鈕：
 
@@ -92,12 +92,12 @@ ms.locfileid: "42909020"
 
     ![選取來源-GitHub](media/cicd/vsts-select-source.png)
 
-1. VSTS 才能存取您的 GitHub 存放庫需要授權。 請輸入 *< GitHub_username > GitHub 連線*中**連線名稱**文字方塊中。 例如: 
+1. Azure DevOps 才能存取您的 GitHub 存放庫需要授權。 請輸入 *< GitHub_username > GitHub 連線*中**連線名稱**文字方塊中。 例如: 
 
     ![GitHub 連接名稱](media/cicd/vsts-repo-authz.png)
 
 1. 如果您的 GitHub 帳戶上啟用雙因素驗證，個人存取權杖是必要的。 在此情況下，按一下**使用 GitHub 個人存取權杖的授權**連結。 請參閱[官方 GitHub 個人存取權杖建立指示](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)取得協助。 只有*存放庫*需要的權限的範圍。 否則，請按一下**使用 OAuth 授權** 按鈕。
-1. 出現提示時，登入您的 GitHub 帳戶。 然後選取 [授權] 可授與您的 VSTS 帳戶的存取權。 如果成功，則會建立新的服務端點。
+1. 出現提示時，登入您的 GitHub 帳戶。 然後選取 [授權] 可授與您 Azure DevOps 的組織的存取權。 如果成功，則會建立新的服務端點。
 1. 按一下省略符號按鈕旁**存放庫** 按鈕。 選取  *< GitHub_username > 簡單-摘要讀取器 /* 從清單中的存放庫。 按一下 [**選取**] 按鈕。
 1. 選取 *主要*從分支**手動和排程組建的預設分支**下拉式清單。 按一下 [繼續] 按鈕。 範本的 [選取] 頁面隨即出現。
 
@@ -205,7 +205,7 @@ ms.locfileid: "42909020"
 
     ![啟用持續整合](media/cicd/enable-ci.png)
 
-1. 瀏覽至**已排入佇列**索引標籤**建置及發行** > **建置**在 VSTS 中的頁面。 已排入佇列的組建會顯示新分支和認可觸發組建：
+1. 瀏覽至**已排入佇列**索引標籤**Azure 管線** > **建置**Azure DevOps 服務中的頁面。 已排入佇列的組建會顯示新分支和認可觸發組建：
 
     ![已排入佇列的組建](media/cicd/build-queued.png)
 
@@ -213,7 +213,7 @@ ms.locfileid: "42909020"
 
     ![更新應用程式](media/cicd/updated-app-v4.png)
 
-## <a name="examine-the-vsts-devops-pipeline"></a>檢查 VSTS 的 DevOps 管線
+## <a name="examine-the-azure-pipelines-pipeline"></a>檢查 Azure 管線的管線
 
 ### <a name="build-definition"></a>組建定義
 
@@ -275,6 +275,6 @@ ms.locfileid: "42909020"
 
 ## <a name="additional-reading"></a>其他閱讀資料
 
-* [建置 ASP.NET Core 應用程式](https://docs.microsoft.com/vsts/build-release/apps/aspnet/build-aspnet-core)
-* [建置並部署至 Azure Web 應用程式](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp)
-* [定義您的 GitHub 儲存機制的 CI 組建程序](https://docs.microsoft.com/vsts/pipelines/build/ci-build-github)
+* [使用 Azure Pipelines 建立您的第一個管線](/azure/devops/pipelines/get-started-yaml)
+* [組建和.NET Core 專案](/azure/devops/pipelines/languages/dotnet-core)
+* [部署 web 應用程式與 Azure 的管線](/azure/devops/pipelines/targets/webapp)

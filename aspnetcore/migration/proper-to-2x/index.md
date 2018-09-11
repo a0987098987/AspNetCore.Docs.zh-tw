@@ -5,12 +5,12 @@ description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 AS
 ms.author: scaddie
 ms.date: 08/27/2017
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 2f42ca6f9da8d9941e5bab40afc36c95360c3550
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 4d71621e5d4a9ef7bfb8020acc2d4a5d3774514f
+ms.sourcegitcommit: 1a2fc47fb5d3da0f2a3c3269613ab20eb3b0da2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342181"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44373354"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 
@@ -32,7 +32,7 @@ ASP.NET Core 專案為開發人員提供了彈性，能以 .NET Core、.NET Fram
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.3" />
 </ItemGroup>
 ```
 
@@ -54,7 +54,7 @@ ASP.NET Core 導入了啟動應用程式的新機制。 ASP.NET 應用程式的�
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
-這個方法是以會影響到實作的方式，將應用程式和其部署所在的伺服器結合在一起。 為將它們分開，引進了 [OWIN](http://owin.org/) 以提供簡潔的方式，同時使用多個架構。 OWIN 提供的管線只新增所需的模組。 裝載環境採用 [Startup](xref:fundamentals/startup) 函式，設定服務和應用程式的要求管線。 `Startup` 向應用程式註冊一組中介軟體。 對於每項要求，應用程式會使用現有處理常式集合連結清單的標頭指標，呼叫每個中介軟體元件。 每個中介軟體元件都可以在要求處理管線新增一或多個處理常式。 此作業是透過將參考傳回處理常式所完成，而此處理常式為清單的新標頭。 每個處理常式都負責記住和叫用清單中的下一個處理常式。 使用 ASP.NET Core，應用程式的進入點是 `Startup`，對 *Global.asax* 不會再有相依性。 使用 OWIN 和 .NET Framework 時，請將類似下列的項目當成管線使用：
+這個方法是以會影響到實作的方式，將應用程式和其部署所在的伺服器結合在一起。 為將它們分開，引進了 [OWIN](http://owin.org/) 以提供簡潔的方式，同時使用多個架構。 OWIN 提供的管線只新增所需的模組。 裝載環境採用 [Startup](xref:fundamentals/startup) 函式，設定服務和應用程式的要求管線。 `Startup` 向應用程式註冊一組中介軟體。 對於每項要求，應用程式會使用現有處理常式集合連結清單的標頭指標，呼叫每個中介軟體元件。 每個中介軟體元件都可以在要求處理管線新增一或多個處理常式。 這項作業是透過將參考傳回處理常式所完成，而此處理常式為清單的新標頭。 每個處理常式都負責記住和叫用清單中的下一個處理常式。 使用 ASP.NET Core，應用程式的進入點是 `Startup`，對 *Global.asax* 不會再有相依性。 使用 OWIN 和 .NET Framework 時，請將類似下列的項目當成管線使用：
 
 [!code-csharp[](samples/webapi-owin.cs)]
 

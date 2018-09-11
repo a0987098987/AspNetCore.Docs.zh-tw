@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: eaece9f5-f80c-428b-b771-5db66d275b7d
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
 msc.type: authoredcontent
-ms.openlocfilehash: 787aacfd843f5f72e567670d601fb036a2c474bc
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 7a92a68ce8bbeec604a22e082975d33f9f3377c1
+ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825358"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44340065"
 ---
 <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>持續整合與持續傳遞 （使用 Azure 建置真實世界的雲端應用程式）
 ====================
@@ -40,9 +40,9 @@ ms.locfileid: "41825358"
 
 自動化在 Azure 中的這些程序很簡單。 因為您在雲端中執行的所有項目，表示您不必購買或管理您的組建或測試環境的伺服器。 您不必等待可執行您的測試上的伺服器。 這麼做的每個建置，可以讓使用您的自動化指令碼、 執行接受度測試或更多深入的測試，在 Azure 中的測試環境開始運作，然後當您完成時就將它清除。 如果您只有 2 小時或 8 個小時或一天中執行該伺服器，您不必支付的金額很少，因為您只支付實際執行機器的時間。 例如，環境所需的修正它的應用程式基本上成本大約 1%，每小時，如果您從免費層級向上一層。 在一個月的過程中，如果您只執行一小時環境一次測試環境可能成本小於您買在星巴克咖啡裡 latte。
 
-## <a name="visual-studio-team-services-vsts"></a>Visual Studio Team Services (VSTS)
+## <a name="azure-devops-services"></a>Azure 的 DevOps 服務 
 
-VSTS 提供多種功能，以協助您進行從規劃到部署的應用程式開發。
+Azure 的 DevOps 服務提供多種功能，以協助您進行從規劃到部署的應用程式開發。
 
 - 它支援 （散發） 的 Git 和 TFVC （集中式） 的原始檔控制。
 - 它提供彈性的建置服務，這表示它以動態方式在需要時，會建立組建伺服器，並會將他們帶往下當他們完成。 您自動可以開始建置，當有人簽入原始程式碼變更，而且您沒有已配置，並支付您自己的組建伺服器位於閒置大部分的情況。 只要您不會超過特定數目的組建，組建服務是免費的。 如果您預期要有大量的組建，您可以少的額外支付保留的組建伺服器。
@@ -52,9 +52,9 @@ VSTS 提供多種功能，以協助您進行從規劃到部署的應用程式開
 - 它支援敏捷式專案管理。
 
 
-如需有關的持續整合和傳遞 VSTS 功能的詳細資訊，請參閱[Visual Studio Team Services](https://www.visualstudio.com/team-services/)。
+如需有關的持續整合與傳遞功能的 Azure DevOps 服務的詳細資訊，請參閱[Azure DevOps 文件](/azure/devops/index)。
 
-如果您想要尋求周全專案管理、 小組共同作業、 和原始檔控制解決方案，簽出 VSTS。 服務最多 5 位使用者免費，而您可以註冊在[Visual Studio Team Services](https://www.visualstudio.com/team-services/)。
+如果您要尋找如周全專案管理、 小組共同作業、 和原始檔控制解決方案，請參閱 Azure DevOps 服務。 在註冊[Azure DevOps 服務](https://dev.azure.com/)。
 
 ## <a name="summary"></a>總結
 

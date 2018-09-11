@@ -5,12 +5,12 @@ description: 收到現有 ASP.NET MVC 或 Web API 應用程式移轉至 ASP.NET 
 ms.author: scaddie
 ms.date: 08/27/2017
 uid: migration/mvc2
-ms.openlocfilehash: d8a3f76bb5125a1ec76d0435ff3317f939a4ec67
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 6e4243c367ec7ec119f4816828884b0b9bf02e1f
+ms.sourcegitcommit: 1a2fc47fb5d3da0f2a3c3269613ab20eb3b0da2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342253"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44373341"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>從 ASP.NET 遷移至 ASP.NET Core 2.0
 
@@ -36,7 +36,7 @@ ASP.NET Core 2.0 專案讓開發人員能夠彈性以 .NET Core、.NET Framework
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.3" />
 </ItemGroup>
 ```
 

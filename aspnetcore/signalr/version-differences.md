@@ -4,14 +4,14 @@ author: tdykstra
 description: SignalR 和 ASP.NET Core SignalR 之間的差異
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
-ms.date: 08/20/2018
+ms.date: 09/10/2018
 uid: signalr/version-differences
-ms.openlocfilehash: b904f57af3700b6e1e2143913dfa08da9bf8bbd2
-ms.sourcegitcommit: d27317c16f113e7c111583042ec7e4c5a26adf6f
+ms.openlocfilehash: 2f3458f27fd7f22339751e0734dd8c5da709a3c0
+ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41831246"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44340117"
 ---
 # <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>ASP.NET SignalR 及 ASP.NET Core SignalR 之間的差異
 
@@ -132,6 +132,20 @@ connection = new HubConnectionBuilder()
     .WithUrl("url")
     .Build();
 ```
+
+## <a name="scaleout-differences"></a>向外延展的差異
+
+ASP.NET SignalR 支援 SQL Server 和 Redis。 ASP.NET Core SignalR 支援 Azure SignalR 服務和 Redis。
+
+### <a name="aspnet"></a>ASP.NET
+
+* [SignalR 向外延展與 Azure 服務匯流排](/aspnet/signalr/overview/performance/scaleout-with-windows-azure-service-bus)
+* [使用 Redis 的 SignalR 向外延展](/aspnet/signalr/overview/performance/scaleout-with-redis)
+* [SignalR 向外延展與 SQL Server](/aspnet/signalr/overview/performance/scaleout-with-sql-server)
+
+### <a name="aspnet-core"></a>ASP.NET Core
+
+* [Azure SignalR 服務](/azure/azure-signalr/)
 
 ## <a name="additional-resources"></a>其他資源
 

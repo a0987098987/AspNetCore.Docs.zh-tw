@@ -5,12 +5,12 @@ description: 了解如何使用受保護的授權的使用者資料建立 Razor 
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: 9f264daa4a6b63478077cadb06a697f274014199
-ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
+ms.openlocfilehash: a263b092194763ae4ff3360fc0d76e8ee494b5a6
+ms.sourcegitcommit: e7e1e531b80b3f4117ff119caadbebf4dcf5dcb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336007"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44510359"
 ---
 ::: moniker range="<= aspnetcore-1.1"
 
@@ -268,6 +268,10 @@ dotnet user-secrets set SeedUserPW <PW>
 更新詳細資料 頁面模型：
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Details.cshtml.cs?name=snippet)]
+
+## <a name="add-a-user-to-a-role"></a>將使用者新增至角色
+
+角色會儲存在身分識別的 cookie。 變更使用者角色不會保存至 cookie 直到 cookie 會重新產生或使用者登出並登入。 將使用者新增至角色的應用程式應該呼叫`SignInManager.RefreshSignInAsync(user)`更新的 cookie。
 
 ## <a name="test-the-completed-app"></a>測試已完成的應用程式
 

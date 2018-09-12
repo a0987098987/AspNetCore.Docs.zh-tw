@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/01/2018
 uid: signalr/hubs
-ms.openlocfilehash: be39666373e2b099054bb71f4a7fcf17aeb9a01c
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: e583676ab0eed45aeaf6391d8cdf8c1485aa914e
+ms.sourcegitcommit: e7e1e531b80b3f4117ff119caadbebf4dcf5dcb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095277"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44510333"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core signalr 中樞
 
@@ -42,9 +42,29 @@ SignalR 中介軟體會需要某些服務，已藉由呼叫`services.AddSignalR`
 
 您可以指定傳回型別和參數，包括複雜型別和陣列，如同在任何 C# 方法。 SignalR 處理的序列化和還原序列化複雜物件並在您的參數和傳回值的陣列。
 
+## <a name="the-context-object"></a>內容物件
+
+`Hub`類別具有`Context`屬性，其中包含與連線相關資訊的下列屬性：
+
+| 屬性 | 描述 |
+| ------ | ----------- |
+| `ConnectionId` | 取得連接，SignalR 所指派的唯一識別碼。 還有一個針對每個連線的連線識別碼。|
+| `UserIdentifier` | 取得[使用者識別碼](xref:signalr/groups)。 根據預設，使用 SignalR`ClaimTypes.NameIdentifier`從`ClaimsPrincipal`連接做為使用者識別碼相關聯。 |
+| `User` | 取得`ClaimsPrincipal`與目前的使用者相關聯。 |
+| `Items` | 取得索引鍵/值集合，可用來共用此連線的範圍內的資料。 資料可以儲存在這個集合中，它會保存連接到不同的中樞方法叫用。 |
+| `Features` | 取得連接上的可用功能的集合。 現在，這個集合不需要在大部分情況下，因此它不尚未記載於詳細資料。 |
+| `ConnectionAborted` | 取得`CancellationToken`連線中止時，可通知。 |
+
+`Hub.Context` 也包含下列方法：
+
+| 方法 | 描述 |
+| ------ | ----------- |
+| `GetHttpContext` | 傳回`HttpContext`進行連接，或`null`如果連接不是 HTTP 要求相關聯。 適用於 HTTP 連線，您可以使用這個方法，以取得資訊，例如 HTTP 標頭和查詢字串。 |
+| `Abort` | 中止連接。 |
+
 ## <a name="the-clients-object"></a>用戶端物件
 
-每個執行個體`Hub`類別具有名為`Clients`，其中包含伺服器與用戶端之間通訊的下列成員：
+`Hub`類別具有`Clients`屬性，其中包含伺服器與用戶端之間通訊的下列屬性：
 
 | 屬性 | 描述 |
 | ------ | ----------- |
@@ -53,7 +73,7 @@ SignalR 中介軟體會需要某些服務，已藉由呼叫`services.AddSignalR`
 | `Others` | 所有連線的用戶端，除了叫用方法的用戶端上呼叫方法 |
 
 
-此外，`Hub.Clients`包含下列方法：
+`Hub.Clients` 也包含下列方法：
 
 | 方法 | 描述 |
 | ------ | ----------- |

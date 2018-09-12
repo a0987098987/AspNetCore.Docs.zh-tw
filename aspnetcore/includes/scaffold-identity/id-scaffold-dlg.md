@@ -11,7 +11,7 @@
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-如果之前尚未安裝 ASP.NET scaffolder，請立即安裝：
+如果之前尚未安裝 ASP.NET Core scaffolder，請立即安裝：
 
 ```cli
 dotnet tool install -g dotnet-aspnet-codegenerator

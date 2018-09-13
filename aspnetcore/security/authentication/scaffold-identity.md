@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 08/16/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 4237e9084abe6575b1f69b143885e94196902965
-ms.sourcegitcommit: e7e1e531b80b3f4117ff119caadbebf4dcf5dcb7
-ms.translationtype: MT
+ms.openlocfilehash: b534936407df0c716638b69740fbb675416a29b3
+ms.sourcegitcommit: 4db337bd47d70c06fff91000c58bc048a491ccec
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/12/2018
-ms.locfileid: "44510346"
+ms.locfileid: "44749265"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>ASP.NET Core 專案中的 scaffold 身分識別
 

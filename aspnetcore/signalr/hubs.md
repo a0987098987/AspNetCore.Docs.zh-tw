@@ -5,14 +5,14 @@ description: 了解如何使用 ASP.NET Core signalr 的中樞。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/01/2018
+ms.date: 09/12/2018
 uid: signalr/hubs
-ms.openlocfilehash: e583676ab0eed45aeaf6391d8cdf8c1485aa914e
-ms.sourcegitcommit: e7e1e531b80b3f4117ff119caadbebf4dcf5dcb7
+ms.openlocfilehash: 17e3ee23967bc1097a3121b3e3e5b58cebe3887d
+ms.sourcegitcommit: a742b55e4b8276a48b8b4394784554fecd883c84
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44510333"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45538358"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core signalr 中樞
 
@@ -94,6 +94,22 @@ SignalR 中介軟體會需要某些服務，已藉由呼叫`services.AddSignalR`
 若要為特定用戶端的呼叫，使用的屬性`Clients`物件。 在下列範例中，`SendMessageToCaller`方法示範如何將訊息傳送至叫用中樞方法的連接。 `SendMessageToGroups`方法會將訊息傳送至儲存在群組`List`名為`groups`。
 
 [!code-csharp[Send messages](hubs/sample/hubs/chathub.cs?range=15-24)]
+
+## <a name="strongly-typed-hubs"></a>強型別的中樞
+
+使用的一項缺點`SendAsync`是它依賴 magic 的字串，以指定要呼叫的用戶端方法。 這可讓程式碼開啟，如果方法名稱的拼字錯誤的執行階段錯誤或遺漏的用戶端。
+
+使用替代`SendAsync`是強型別`Hub`使用<xref:Microsoft.AspNetCore.SignalR.Hub`1>。 在下列範例中，`ChatHub`用戶端方法已成呼叫登出擷取`IChatClient`。  
+
+[!code-csharp[Interface for IChatClient](hubs/sample/hubs/ichatclient.cs?name=snippet_IChatClient)]
+
+此介面可用來重構上述`ChatHub`範例。
+
+[!code-csharp[Strongly typed ChatHub](hubs/sample/hubs/StronglyTypedChatHub.cs?range=8-18,36)]
+
+使用`Hub<IChatClient>`啟用編譯時間檢查的用戶端方法。 這可避免使用魔術字串，因為所造成的問題`Hub<T>`只能提供存取的介面中定義的方法。
+
+使用強型別`Hub<T>`停用重新使用`SendAsync`。
 
 ## <a name="handle-events-for-a-connection"></a>處理連接事件
 

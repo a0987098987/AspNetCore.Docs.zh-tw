@@ -5,12 +5,12 @@ description: 了解如何使用受保護的授權的使用者資料建立 Razor 
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: a263b092194763ae4ff3360fc0d76e8ee494b5a6
-ms.sourcegitcommit: e7e1e531b80b3f4117ff119caadbebf4dcf5dcb7
+ms.openlocfilehash: e4a54c95aa8131441d29a835751ce6241aac2ed3
+ms.sourcegitcommit: 70fb7c9d5f2ddfcf4747382a9f7159feca7a6aa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44510359"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45601765"
 ---
 ::: moniker range="<= aspnetcore-1.1"
 
@@ -269,9 +269,12 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Details.cshtml.cs?name=snippet)]
 
-## <a name="add-a-user-to-a-role"></a>將使用者新增至角色
+## <a name="add-or-remove-a-user-to-a-role"></a>新增或移除使用者角色
 
-角色會儲存在身分識別的 cookie。 變更使用者角色不會保存至 cookie 直到 cookie 會重新產生或使用者登出並登入。 將使用者新增至角色的應用程式應該呼叫`SignInManager.RefreshSignInAsync(user)`更新的 cookie。
+請參閱[本期](https://github.com/aspnet/Docs/issues/8502)有關：
+
+* 移除使用者的權限。 例如靜音交談應用程式中的使用者。
+* 若要新增權限。
 
 ## <a name="test-the-completed-app"></a>測試已完成的應用程式
 

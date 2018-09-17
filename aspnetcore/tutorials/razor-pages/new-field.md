@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: d9bf8c7cea20bf38aacf432465d7b33514bcd64d
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 6c23e5ab21dbb94c69ba50200a1d76647e22410a
+ms.sourcegitcommit: 4afaa55918262c8dcbd3efa9584959a731b47681
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277289"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45613449"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
@@ -29,12 +29,15 @@ ms.locfileid: "36277289"
 ## <a name="adding-a-rating-property-to-the-movie-model"></a>將 Rating 屬性新增至電影模型
 
 開啟 *Models/Movie.cs* 檔案，然後新增 `Rating` 屬性：
+
 ::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
 ::: moniker-end

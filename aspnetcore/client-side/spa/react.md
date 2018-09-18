@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/21/2018
 uid: spa/react
-ms.openlocfilehash: 721ea1d4197ddd17dde657924f12dee2a6858d97
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c83b119e81d7d0abfd727cb8c72abb09763d9448
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291501"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011417"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>React 專案範本與 ASP.NET Core 搭配使用
 
@@ -34,9 +34,10 @@ ms.locfileid: "36291501"
 如果使用 ASP.NET Core 2.0，請確定您已經[安裝更新的 React 專案範本](xref:spa/index#installation)。
 
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
 
-如果您有安裝 ASP.NET Core 2.1，沒有需要安裝 React 專案範本。
+如已安裝 ASP.NET Core 2.1，就沒有必要安裝 React 專案範本。
 
 ::: moniker-end
 

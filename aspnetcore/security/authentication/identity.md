@@ -5,12 +5,12 @@ description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如�
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: af07adcc7f9513845bb91eb233f0a9840e1bd6f4
-ms.sourcegitcommit: 4db337bd47d70c06fff91000c58bc048a491ccec
+ms.openlocfilehash: ca83d07f7d93bd0cc61cd17cc373096b8e6aa2e1
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44749304"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46010971"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -143,6 +143,7 @@ PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，�
    [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Register.cshtml.cs?name=snippet&highlight=7,22)]
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.0"
 
    當使用者按一下**註冊**連結`Register`上叫用動作`AccountController`。 `Register`動作會建立使用者，藉由呼叫`CreateAsync`上`_userManager`物件 (提供給`AccountController`由相依性插入):
@@ -171,6 +172,7 @@ PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，�
    基底`Controller`類別會公開`User`屬性，您可以從控制器方法存取。 比方說，您可以列舉`User.Claims`並進行授權決策。 如需詳細資訊，請參閱 <<c0> [ 授權](xref:security/authorization/index)。
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.0"
 
 當使用者選取時，會顯示登入表單**登入**存取需要驗證的網頁時，會重新導向或連結。 當使用者提交表單時的登入頁面上， `AccountController` `Login`呼叫動作。
@@ -198,12 +200,15 @@ PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，�
 [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/_LoginPartial.cshtml?highlight=10)]
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.0"
+
    按一下 **登出**連結呼叫`LogOut`動作。
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
 
    上述程式碼會呼叫`_signInManager.SignOutAsync`方法。 `SignOutAsync`方法會清除儲存在 cookie 中的使用者宣告。
+
 ::: moniker-end
 
 ## <a name="test-identity"></a>測試身分識別
@@ -230,6 +235,7 @@ PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，�
 ::: moniker range=">= aspnetcore-2.1"
 
 中包含所有身分識別相依的 NuGet 套件[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
+
 ::: moniker-end
 
 身分識別的主要套件[Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/)。 此封裝包含一組核心介面的 ASP.NET Core 身分識別，並包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`。

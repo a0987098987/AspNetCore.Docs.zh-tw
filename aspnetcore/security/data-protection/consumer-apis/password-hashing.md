@@ -5,12 +5,12 @@ description: 了解如何使用 ASP.NET Core 資料保護 Api 的密碼的雜湊
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/consumer-apis/password-hashing
-ms.openlocfilehash: 882ac9b256b0cdf5fd19dc4bd2757cac7e8ecad3
-ms.sourcegitcommit: a742b55e4b8276a48b8b4394784554fecd883c84
+ms.openlocfilehash: 70301ffffbaaf3c5ff0642b19b80e40be83aa438
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45538371"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46010958"
 ---
 # <a name="hash-passwords-in-aspnet-core"></a>ASP.NET Core 中的雜湊密碼
 
@@ -26,4 +26,4 @@ ms.locfileid: "45538371"
 
 [!code-csharp[](password-hashing/samples/passwordhasher.cs)]
 
-請參閱 [原始程式碼] (https://github.com/aspnet/Identity/blob/master/src/Core/PasswordHasher.cs) ASP.NET Core 身分識別的`PasswordHasher`真實世界的型別使用案例。
+請參閱[原始程式碼](https://github.com/aspnet/Identity/blob/master/src/Core/PasswordHasher.cs)ASP.NET Core 身分識別的`PasswordHasher`真實世界的型別使用案例。

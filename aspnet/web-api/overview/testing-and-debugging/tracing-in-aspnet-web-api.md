@@ -8,12 +8,12 @@ ms.date: 02/25/2014
 ms.assetid: 66a837e9-600b-4b72-97a9-19804231c64a
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 697e7e91ae2d9d5712d9306a291635793063117b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 02805eda4f8dceb467547fa4e00aef8ea956f228
+ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824554"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46292280"
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的追蹤
 ====================
@@ -114,7 +114,7 @@ Web API 中的較通用的追蹤基礎結構之上建置 Microsoft.AspNet.WebApi
 
 ## <a name="how-web-api-tracing-works"></a>如何 Web API 追蹤的運作方式
 
-中的 Web API 所使用的 Web API 會使用中的追蹤*外觀*模式︰ 啟用追蹤時，Web API 會包裝的要求管線，以執行追蹤呼叫之類別的各個部分。
+在 Web API 中的追蹤會使用*外觀*模式︰ 啟用追蹤時，Web API 會包裝的要求管線，以執行追蹤呼叫之類別的各個部分。
 
 例如，當選取控制站，管線會使用**IHttpControllerSelector**介面。 啟用追蹤，pipleline 插入類別可實作**IHttpControllerSelector**但呼叫傳遞給實際的實作：
 

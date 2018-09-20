@@ -8,16 +8,18 @@ ms.date: 05/28/2015
 ms.assetid: a36d3bdf-ef1b-47a4-b932-3a0cf4cad716
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 835e359edc87335366c82e35c1ff04902b70334b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 12878082306cf51f8ea08ae614d9420251ecb587
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41823648"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46482953"
 ---
 <a name="introducing-aspnet-web-pages---getting-started"></a>ASP.NET Web Pages-快速入門簡介
 ====================
 藉由[Tom FitzMacken](https://github.com/tfitzmac)
+
+[!INCLUDE[](~/includes/rp.md)]
 
 > > [!NOTE] 
 > > 

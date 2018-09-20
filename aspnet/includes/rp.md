@@ -1,0 +1,1 @@
+新的 web 應用程式開發，我們建議 Razor 頁面。 如需詳細資訊，請參閱 <<c0> [ 開始使用 Razor Pages](/aspnet/core/tutorials/razor-pages/razor-pages-start)。

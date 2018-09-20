@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/29/2018
 uid: security/gdpr
-ms.openlocfilehash: 0d6f02389fe4292bd0f7cf9a2a58c53449e1810a
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 3394eb167d925451947114ea410ef7cb117dd1e2
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312080"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46482927"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>ASP.NET Core 中的歐盟一般資料保護規定 (GDPR) 支援
 
@@ -47,7 +47,7 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 
 [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)呼叫`Startup.Configure`:
 
-[!code-csharp[](gdpr/sample/Startup.cs?name=snippet1&highlight=49)]
+[!code-csharp[](gdpr/sample/Startup.cs?name=snippet1&highlight=51)]
 
 ### <a name="cookieconsentpartialcshtml-partial-view"></a>_CookieConsentPartial.cshtml 部分檢視
 

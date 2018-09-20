@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何在 ASP.NET Core 中的記憶體中的資料快取。
 ms.author: riande
 ms.custom: mvc
-ms.date: 7/22/2018
+ms.date: 09/15/2018
 uid: performance/caching/memory
-ms.openlocfilehash: 091d00ca7a30b61bdd83618e055bf23e0f2753c4
-ms.sourcegitcommit: 67a0a04ebb3b21c826e5b9600bacfc897abd6a46
+ms.openlocfilehash: 2570ad7d939d67530b3de8cd0147815c2e25ecc8
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42899840"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46482979"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -31,7 +31,19 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 記憶體中快取可以儲存任何物件;分散式快取介面僅限於`byte[]`。
 
-### <a name="cache-guidelines"></a>快取指引
+## <a name="systemruntimecachingmemorycache"></a>System.Runtime.Caching/MemoryCache
+
+<xref:System.Runtime.Caching>/<xref:System.Runtime.Caching.MemoryCache> ([NuGet 套件](https://www.nuget.org/packages/System.Runtime.Caching/)) 適用於：
+
+* .NET standard 2.0 或更新版本。
+* 任何[.NET 實作](/dotnet/standard/net-standard#net-implementation-support)為目標的.NET Standard 2.0 或更新版本。 例如，ASP.NET Core 2.0 或更新版本。
+* .NET framework 4.5 或更新版本。
+
+[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` （如本主題所述） 建議`System.Runtime.Caching` / `MemoryCache`因為深入整合到 ASP.NET Core。 例如，`IMemoryCache`適用於原生 ASP.NET Core[相依性插入](xref:fundamentals/dependency-injection)。
+
+使用`System.Runtime.Caching` / `MemoryCache`橋樑相容性移植程式碼，從 ASP.NET 4.x 到 ASP.NET Core。
+
+## <a name="cache-guidelines"></a>快取指引
 
 * 程式碼，應一律具有擷取資料的後援選項及**不**取決於快取的值，可供使用。
 * 快取佔用很少的資源時，記憶體。 限制快取增長：

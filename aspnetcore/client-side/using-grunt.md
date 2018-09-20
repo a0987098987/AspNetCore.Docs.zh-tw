@@ -1,5 +1,5 @@
 ---
-title: 在 ASP.NET Core 中使用 Grunt
+title: 用於 ASP.NET Core Grunt
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -12,27 +12,27 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 06/20/2018
 ms.locfileid: "36272970"
 ---
-# <a name="use-grunt-in-aspnet-core"></a>在 ASP.NET Core 中使用 Grunt
+# <a name="use-grunt-in-aspnet-core"></a>用於 ASP.NET Core Grunt
 
-作者：[Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)
+由[Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)
 
-Grunt 是一個 JavaScript 工作執行器，它會會自動化指令碼縮製、TypeScript 編譯、程式碼品質 "lint" 工具、CSS 前置處理器，以及支援用戶端開發所需的任何重複性工作。Grunt 在 Visual Studio 中受到完整的支援，雖然 ASP.NET 專案範本預設使用 Gulp (請參閱[使用 Gulp](using-gulp.md))。
+Grunt 是會自動將指令碼縮製、 TypeScript 編譯、 程式碼品質 「 不 」 工具，CSS 前處理器，以及幾乎任何重複的工程又需要執行以支援用戶端開發 JavaScript 工作執行器。 雖然 ASP.NET 專案範本預設會使用 Gulp grunt 完全支援 Visual Studio 中，(請參閱[使用 Gulp](using-gulp.md))。
 
-這個範例會使用空的 ASP.NET Core 專案做為起點，展示如何從頭開始自動化用戶端建置程序。
+Agree with slight modification
 
-完成的範例會清除目標部署目錄、結合 JavaScript 檔案、檢查程式碼品質、壓縮 JavaScript 檔案內容並部署到您的 Web 應用程式根目錄。我們將使用下列套件：
+完成的範例會清除目標部署目錄、 組合 JavaScript 檔案、 檢查程式碼品質、 壓縮 JavaScript 文件內容和部署到您的網頁應用程式根目錄。 我們將使用下列套件：
 
-* **grunt**：Grunt 工作執行器套件。
+* **grunt**: grunt 所完成的工作執行器套件。
 
-* **grunt-contrib-clean**：移除檔案或目錄的外掛程式。
+* **grunt contrib 清除**： 移除檔案或目錄的外掛程式。
 
 * **grunt-contrib-jshint**： 檢閱 JavaScript 程式碼品質的外掛程式。
 
-* **grunt-contrib-concat**：將檔案聯結為單一檔案的外掛程式。
+* **grunt-contrib-concat**： 外掛程式聯結成單一檔案的檔案。
 
-* **grunt-contrib-uglify**：最小化 JavaScript 檔案以減少大小的外掛程式。
+* **grunt contrib uglify**： 縮短 JavaScript，以減少大小的外掛程式。
 
-* **grunt-contrib-watch**：監看檔案活動的外掛程式。
+* **監看 contrib grunt 式**： 監看檔案 」 活動的外掛程式。
 
 ## <a name="preparing-the-application"></a>準備應用程式
 

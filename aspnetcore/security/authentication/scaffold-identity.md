@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 08/16/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: b534936407df0c716638b69740fbb675416a29b3
-ms.sourcegitcommit: 4db337bd47d70c06fff91000c58bc048a491ccec
-ms.translationtype: HT
+ms.openlocfilehash: 37ad9897fbc5eb1822ed2413334b4fce9050296b
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44749265"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523034"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>ASP.NET Core 專案中的 scaffold 身分識別
 
@@ -97,8 +97,6 @@ cd RPauth
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files Account.Register
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
 -->
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]

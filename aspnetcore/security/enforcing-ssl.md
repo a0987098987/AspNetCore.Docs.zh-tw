@@ -5,12 +5,12 @@ description: 示範如何要求 HTTPS/TLS 中的 ASP.NET Core web 應用程式�
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: 06ff89d30fb3586c69274cc7cb3e6c75065b098a
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 6e16191b1a4627e683fd2281e5556b2a6e84c082
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011322"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523138"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制使用 ASP.NET Core 中的 HTTPS
 
@@ -192,8 +192,6 @@ ASP.NET Core 2.1 或更新版本會實作 HSTS 與`UseHsts`擴充方法。 下�
 ```console
 dotnet new webapp --no-https
 ```
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
 
 ---
 

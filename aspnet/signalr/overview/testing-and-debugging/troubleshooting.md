@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 4b559e6c-4fb0-4a04-9812-45cf08ae5779
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: 77eedeb962bed06f1375284bcf05c4e4ffcdde3b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9ef69ece2558260f0409e9388751f77ac84a06f1
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832995"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523073"
 ---
 <a name="signalr-troubleshooting"></a>SignalR 疑難排解
 ====================
@@ -157,7 +157,7 @@ SignalR 會自動使用 JSON 序列化程式的方法參數那里的不需要自
 
 ## <a name="configuring-iis-websockets-to-pingpong-to-detect-a-dead-client"></a>設定 IIS websockets，ping/pong 來偵測無作用的用戶端
 
-如果用戶端是廢與否，而且它們都依賴來自基礎 websocket 連線失敗的通知，也就是 OnClose 回呼，不知道 SignalR 伺服器。 此問題的解決方案之一是設定為您執行 ping/pong IIS websockets。 這可確保如果意外中斷，將會關閉您的連線。 如需詳細資訊，請參閱[這篇 stackoverflow 文章](http://stackoverflow.com/questions/19502755/websocket-clients-state-not-changing-on-network-loss)。
+SignalR 伺服器不知道，是否用戶端是廢與否，而且它們都依賴來自基礎 websocket 連線失敗的通知，也就是，`OnClose`回呼。 此問題的解決方案之一是設定為您執行 ping/pong IIS websockets。 這可確保如果意外中斷，將會關閉您的連線。 如需詳細資訊，請參閱[這篇 stackoverflow 文章](http://stackoverflow.com/questions/19502755/websocket-clients-state-not-changing-on-network-loss)。
 
 <a id="other"></a>
 

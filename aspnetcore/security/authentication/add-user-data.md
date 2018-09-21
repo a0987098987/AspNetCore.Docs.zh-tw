@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 6/16/2018
 uid: security/authentication/add-user-data
-ms.openlocfilehash: 3fe329e21b430cc432e97129ffb8499bce002976
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: ffc7323c83d2cacabb7cca4ddb3e90276ed1121f
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826240"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523099"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>加入、 下載及刪除身分識別的 ASP.NET Core 專案的自訂使用者資料
 
@@ -45,8 +45,6 @@ Razor 頁面 web 應用程式，從建立專案範例，但 ASP.NET Core MVC web
 ```cli
 dotnet new webapp -o WebApp1
 ```
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
 
 ---
 

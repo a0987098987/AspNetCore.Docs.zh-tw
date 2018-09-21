@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 08/02/2017
 uid: client-side/spa-services
-ms.openlocfilehash: 6ac922d82e5c93343cd0e9df312719c6df121dcb
-ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
+ms.openlocfilehash: 6d6a92427d5d4b853248e60a12625573c4375515
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37433996"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523294"
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>使用 JavaScriptServices 單一頁面應用程式建立 ASP.NET Core
 
@@ -19,20 +19,20 @@ ms.locfileid: "37433996"
 
 單一頁面應用程式 (SPA) 是熱門的 web 應用程式，因為其本身的豐富使用者經驗類型。 整合用戶端 SPA 架構或程式庫，例如[Angular](https://angular.io/)或[React](https://facebook.github.io/react/)，與伺服器端架構，像 ASP.NET Core 可能相當困難。  [JavaScriptServices](https://github.com/aspnet/JavaScriptServices)特別開發來減少摩擦整合程序中的。 它可讓不同的用戶端和伺服器技術堆疊之間的無縫式作業。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
-
 <a name="what-is-js-services"></a>
 
-## <a name="what-is-javascriptservices"></a>什麼是 JavaScriptServices？
+## <a name="what-is-javascriptservices"></a>什麼是 JavaScriptServices
 
 JavaScriptServices 是 ASP.NET Core 的用戶端技術的集合。 其目標是要做為開發人員的慣用伺服器端平台建置 Spa 置於 ASP.NET Core。
 
 JavaScriptServices 是由三個不同的 NuGet 套件所組成：
+
 * [Microsoft.AspNetCore.NodeServices](https://www.nuget.org/packages/Microsoft.AspNetCore.NodeServices/) (NodeServices)
 * [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) (SpaServices)
 * [Microsoft.AspNetCore.SpaTemplates](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaTemplates/) (SpaTemplates)
 
 這些套件裝很有用如果您：
+
 * 在伺服器上執行 JavaScript
 * 使用 SPA 架構或程式庫
 * 建置用戶端資產 Webpack
@@ -41,11 +41,12 @@ JavaScriptServices 是由三個不同的 NuGet 套件所組成：
 
 <a name="what-is-spa-services"></a>
 
-## <a name="what-is-spaservices"></a>什麼是 SpaServices？
+## <a name="what-is-spaservices"></a>什麼是 SpaServices
 
 SpaServices 已建立以位置為開發人員的慣用伺服器端的平台建置 Spa 的 ASP.NET Core。 SpaServices 不一定要開發使用 ASP.NET Core 的 Spa，它並不會鎖定您到特定用戶端架構。
 
 SpaServices 提供有用的基礎結構如下所示：
+
 * [伺服器端預呈現](#server-prerendering)
 * [Webpack 開發中介軟體](#webpack-dev-middleware)
 * [熱門的模組更換](#hot-module-replacement)
@@ -58,6 +59,7 @@ SpaServices 提供有用的基礎結構如下所示：
 ## <a name="prerequisites-for-using-spaservices"></a>使用 SpaServices 的必要條件
 
 若要使用 SpaServices，安裝下列項目：
+
 * [Node.js](https://nodejs.org/) （版本 6 或更新版本） 與 npm
   * 若要確認已安裝這些元件，而且可以找到，從命令列執行下列命令：
 
@@ -84,6 +86,7 @@ ASP.NET Core[標籤協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 ### <a name="prerequisites"></a>必要條件
 
 安裝下列項目：
+
 * [aspnet 預呈現](https://www.npmjs.com/package/aspnet-prerendering)npm 套件：
 
     ```console
@@ -136,11 +139,14 @@ ASP.NET Core[標籤協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 [Webpack 開發中介軟體](https://webpack.github.io/docs/webpack-dev-middleware.html)導入了簡化的開發工作流程，藉此讓 Webpack 是根據資源需求。 中介軟體會自動編譯並在瀏覽器中重新載入頁面時，提供用戶端的資源。 替代方法是以手動方式時要叫用 Webpack 透過專案的 npm 建置指令碼的第三方相依性或自訂程式碼變更。 Npm 建置指令碼*package.json*檔案在下列範例所示：
 
-[!code-json[](../client-side/spa-services/sample/SpaServicesSampleApp/package.json?range=5)]
+```json
+"build": "npm run build:vendor && npm run build:custom",
+```
 
 ### <a name="prerequisites"></a>必要條件
 
 安裝下列項目：
+
 * [aspnet webpack](https://www.npmjs.com/package/aspnet-webpack) npm 套件：
 
     ```console
@@ -168,6 +174,7 @@ Webpack 的想像[熱模組替換](https://webpack.js.org/concepts/hot-module-re
 ### <a name="prerequisites"></a>必要條件
 
 安裝下列項目：
+
 * [webpack 經常性存取-中介軟體](https://www.npmjs.com/package/webpack-hot-middleware)npm 套件：
 
     ```console
@@ -205,6 +212,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 ### <a name="prerequisites"></a>必要條件
 
 安裝下列項目：
+
 * 用戶端路由 npm 套件。 使用 Angular 做為範例：
 
     ```console
@@ -250,12 +258,13 @@ dotnet new angular
 ### <a name="set-the-runtime-configuration-mode"></a>設定執行階段組態模式
 
 有兩種主要的執行階段組態模式：
+
 * **開發**:
-    * 包含來源對應，以便偵錯。
-    * 不最佳化效能的用戶端程式碼。
+  * 包含來源對應，以便偵錯。
+  * 不最佳化效能的用戶端程式碼。
 * **生產**:
-    * 排除來源對應。
-    * 最佳化透過統合和縮製的用戶端程式碼。
+  * 排除來源對應。
+  * 最佳化透過統合和縮製的用戶端程式碼。
 
 ASP.NET Core 會使用環境變數，名為`ASPNETCORE_ENVIRONMENT`來儲存組態模式。 請參閱**[設定的環境](xref:fundamentals/environments#set-the-environment)** 如需詳細資訊。
 
@@ -277,7 +286,7 @@ dotnet run
 
 ### <a name="running-with-visual-studio-2017"></a>執行使用 Visual Studio 2017
 
-開啟 *.csproj*所產生的檔案[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 在專案開啟時，會自動還原必要的 NuGet 和 npm 套件。 此還原程序可能需要幾分鐘的時間，以及應用程式已準備好執行完成時。 按一下綠色 [執行] 按鈕或按下`Ctrl + F5`，而且瀏覽器會開啟到應用程式的登陸頁面。 根據本機主機上執行的應用程式[執行階段組態模式](#runtime-config-mode)。 
+開啟 *.csproj*所產生的檔案[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 在專案開啟時，會自動還原必要的 NuGet 和 npm 套件。 此還原程序可能需要幾分鐘的時間，以及應用程式已準備好執行完成時。 按一下綠色 [執行] 按鈕或按下`Ctrl + F5`，而且瀏覽器會開啟到應用程式的登陸頁面。 根據本機主機上執行的應用程式[執行階段組態模式](#runtime-config-mode)。
 
 <a name="app-testing"></a>
 
@@ -308,6 +317,7 @@ npm test
 [!code-xml[](../client-side/spa-services/sample/SpaServicesSampleApp/SpaServicesSampleApp.csproj?range=31-45)]
 
 MSBuild 目標須擔負下列責任：
+
 1. 還原 npm 套件
 1. 建立生產等級的組建的協力廠商的用戶端資產
 1. 建立自訂用戶端資產的生產等級的組建

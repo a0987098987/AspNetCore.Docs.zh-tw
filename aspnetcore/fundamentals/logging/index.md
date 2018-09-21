@@ -4,14 +4,14 @@ author: ardalis
 description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 08/27/2018
+ms.date: 09/19/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: c6e9aae06df6ebec373b1296f86e37380bf08b15
-ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
+ms.openlocfilehash: e3bf5909edb515a2dabba206abaa160bc431d622
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43055757"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46483083"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -116,7 +116,7 @@ ASP.NET Core [相依性插入](xref:fundamentals/dependency-injection) (DI) 提�
     },
     "Console":
     {
-      "IncludeScopes": "true"
+      "IncludeScopes": true
     }
   }
 }

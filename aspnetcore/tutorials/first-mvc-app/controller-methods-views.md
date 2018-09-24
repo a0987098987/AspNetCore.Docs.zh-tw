@@ -5,12 +5,12 @@ description: 了解如何在 ASP.NET Core 中使用控制器方法、檢視和 D
 ms.author: riande
 ms.date: 03/07/2017
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: e94cb877576a68540a565225b2b3d79f9be53327
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 42a63044cd14873ff334a728c6c8304214ee8575
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38194010"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011335"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>ASP.NET Core 中的控制器方法和檢視
 
@@ -23,10 +23,15 @@ ms.locfileid: "38194010"
 開啟 *Models/Movie.cs* 檔案，然後新增反白顯示的程式碼行，如下所示：
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](start-mvc/sample/MvcMovie21/Models/MovieDateFixed.cs?name=snippet_1&highlight=2,3,12-13,17)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](start-mvc/sample/MvcMovie/Models/MovieDateWithExtraUsings.cs?name=snippet_1&highlight=13-14)]
+
 ::: moniker-end
 
 [!INCLUDE [adding-model](~/includes/mvc-intro/controller-methods-views.md)]

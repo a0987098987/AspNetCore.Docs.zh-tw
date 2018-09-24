@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 6c23e5ab21dbb94c69ba50200a1d76647e22410a
-ms.sourcegitcommit: 4afaa55918262c8dcbd3efa9584959a731b47681
+ms.openlocfilehash: d6d59ff336095e2f1b8b2e9a0338b7791605ad7a
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45613449"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46010893"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
@@ -83,11 +83,15 @@ SqlException: Invalid column name 'Rating'.
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
 ::: moniker range="= aspnetcore-2.0"
+
 請參閱[完整的 SeedData.cs 檔案](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs) (英文)。
+
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
+
 請參閱[完整的 SeedData.cs 檔案](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/SeedDataRating.cs) (英文)。
+
 ::: moniker-end
 
 建置方案。

@@ -5,12 +5,12 @@ description: 在本教學課程中，請新增更多實體和關聯性，並透�
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: c97acd2b943e1d4c466c060247220b3b8bab6d6b
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 3714cf7ce705a52653394319fef1728a6ddcc3ee
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751769"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011764"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
 
@@ -495,6 +495,7 @@ dotnet ef database update
 ## <a name="summary"></a>總結
 
 您現在已有了更複雜的資料模型和對應的資料庫。 在接下來的課程中，您將深入了解如何存取相關資料。
+
 ::: moniker-end
 
 > [!div class="step-by-step"]

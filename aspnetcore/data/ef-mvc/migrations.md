@@ -5,12 +5,12 @@ description: 在本教學課程中，您將開始使用 EF Core 移轉功能來�
 ms.author: tdykstra
 ms.date: 03/15/2018
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: f710b33ac1a6017b0e3d7e8c3e528675a41424bb
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 556d7d4ad05679ebfce6c909b29610482bb3f350
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38194166"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011460"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---migrations---4-of-10"></a>ASP.NET Core MVC 與 EF Core - 移轉 - 4/10
 
@@ -165,6 +165,7 @@ Done.
 ## <a name="summary"></a>總結
 
 在本教學課程中，您已了解如何建立並套用第一次移轉。 在下一個教學課程中，您就可以展開資料模型以學習更進階的主題。 在過程中，您會建立並套用其他移轉。
+
 ::: moniker-end
 
 > [!div class="step-by-step"]

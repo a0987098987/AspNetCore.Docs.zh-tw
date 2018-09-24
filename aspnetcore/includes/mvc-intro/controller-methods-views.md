@@ -32,18 +32,23 @@ ASP.NET Core 會將 `http://localhost:1234/Movies/Edit/4` 轉譯成對 `Movies` 
 開啟 `Movies` 控制器，並檢查兩個 `Edit` 動作方法。 下列程式碼示範 `HTTP GET Edit` 方法，這個方法會擷取電影，並填入 *Edit.cshtml* Razor 檔案所產生的編輯表單。
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit1)]
 
 下列程式碼示範 `HTTP POST Edit` 方法，這個方法會處理已發佈的電影值：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
 
 下列程式碼示範 `HTTP POST Edit` 方法，這個方法會處理已發佈的電影值：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
 
 `[Bind]` 屬性是一種防止[過度發佈](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost)的方式。 您應該只在想要變更的 `[Bind]` 屬性 (attribute) 中包含屬性 ( property)。 如需詳細資訊，請參閱[保護控制器避免過度發佈](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)。 [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) 提供防止過度發佈的替代方法。
@@ -51,10 +56,15 @@ ASP.NET Core 會將 `http://localhost:1234/Movies/Edit/4` 轉譯成對 `Movies` 
 請注意，第二個 `Edit` 動作方法的前面是 `[HttpPost]` 屬性。
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit2&highlight=1)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2&highlight=4)]
+
 ::: moniker-end
 
 `HttpPost` 屬性指定「只」能為 `POST` 要求叫用這個 `Edit` 方法。 您可以將 `[HttpGet]` 屬性套用至第一個編輯方法，但不需要執行此動作，因為 `[HttpGet]` 是預設值。
@@ -68,10 +78,15 @@ ASP.NET Core 會將 `http://localhost:1234/Movies/Edit/4` 轉譯成對 `Movies` 
 `HttpGet Edit` 方法會採用電影 `ID` 參數，使用 Entity Framework `SingleOrDefaultAsync` 方法查詢電影，並將選取的電影傳回 Edit 檢視。 如果找不到電影，會傳回 `NotFound` (HTTP 404)。
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit1)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
+
 ::: moniker-end
 
 當 Scaffolding 系統建立 Edit 檢視時，它會檢查 `Movie` 類別，並建立程式碼為類別的每個屬性轉譯 `<label>` 和 `<input>` 元素。 下列範例會顯示 Visual Studio Scaffolding 系統所產生的 Edit 檢視：
@@ -93,10 +108,15 @@ ASP.NET Core 會將 `http://localhost:1234/Movies/Edit/4` 轉譯成對 `Movies` 
 下列清單顯示 `[HttpPost]` 版本的 `Edit` 動作方法。
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
 
 `[ValidateAntiForgeryToken]` 屬性會驗證[表單標記協助程式](xref:mvc/views/working-with-forms) 中的防偽語彙基元產生器所產生的隱藏 [XSRF](xref:security/anti-request-forgery) 語彙基元

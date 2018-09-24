@@ -5,12 +5,12 @@ description: 了解如何開始使用 ASP.NET Core MVC 與 Visual Studio。
 ms.author: riande
 ms.date: 10/07/2017
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 1fb3947023843341403f4355c6ae1e61d7e4f6b1
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 41f986a06ec46dc025c4e8218745b4a513e8ee2a
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38217974"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011695"
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>ASP.NET Core MVC 與 Visual Studio 使用者入門
 
@@ -28,7 +28,7 @@ ms.locfileid: "38217974"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[!INCLUDE [](~/includes/net-core-prereqs-windows.md) [](~/includes/net-core-prereqs-windows.md)]
+[!INCLUDE [](~/includes/net-core-prereqs-windows.md)]
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
@@ -83,7 +83,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-[!INCLUDE [](~/includes/net-core-prereqs.md) [](~/includes/net-core-prereqs.md)]
+[!INCLUDE [](~/includes/net-core-prereqs.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
@@ -165,5 +165,6 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 在本教學課程的下一個部分中，我們會了解 MVC，並開始撰寫一些程式碼。
 
 ::: moniker-end
+
 > [!div class="step-by-step"]
 > [下一步](adding-controller.md)  

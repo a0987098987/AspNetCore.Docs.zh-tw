@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 11/03/2017
 services: multiple
 uid: tutorials/publish-to-azure-webapp-using-cli
-ms.openlocfilehash: 526ceef469d473706f39cdc3ee645280e99315b1
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 63a313de786b1f89e84c594cbd665d1b230e4ba3
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38126956"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523242"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-command-line-tools"></a>使用命令列工具將 ASP.NET Core 應用程式發行到 Azure
 
@@ -55,8 +55,6 @@ REM Run the app
 dotnet run
 ```
 
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
-
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
@@ -88,8 +86,6 @@ cd MyApplication
 # Run the app
 dotnet run
 ```
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
 
 ::: moniker-end
 

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/27/2017
 uid: tutorials/razor-pages-vsc/razor-pages-start
-ms.openlocfilehash: b1f1dcc1401d707cff79f3269ab70b900e9fc21c
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: b7f6ca377a892fce912dc0ee9d4b7378f40fbf24
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38123379"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46522923"
 ---
 # <a name="get-started-with-aspnet-core-razor-pages-in-visual-studio-code"></a>Visual Studio Code 中的 ASP.NET Core Razor 頁面使用者入門
 
@@ -34,8 +34,6 @@ dotnet new webapp -o RazorPagesMovie
 cd RazorPagesMovie
 dotnet run
 ```
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
 
 ::: moniker-end
 

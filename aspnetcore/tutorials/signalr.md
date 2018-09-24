@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 6d96331a4630f766ca11edb056fd3e13b52b6ae4
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: 8581628b3f0cf878b8cc1d0684046d22a8374af9
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893161"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523216"
 ---
 # <a name="tutorial-get-started-with-signalr-on-aspnet-core"></a>教學課程：SignalR on ASP.NET Core 使用者入門
 
@@ -75,8 +75,6 @@ ms.locfileid: "43893161"
    ```console
    dotnet new webapp -o SignalRChat
    ```
-
-   [!INCLUDE[](~/includes/webapp-alias-notice.md)]
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 

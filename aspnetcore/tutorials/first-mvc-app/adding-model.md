@@ -5,12 +5,12 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 12/8/2017
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 28a63498bc1a3c7b6ad6be038209dacdb49e44ee
-ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
+ms.openlocfilehash: 5a820789ee3a761025d09aa78f3c42e59fc5fa38
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960664"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011374"
 ---
 [!INCLUDE [adding-model](~/Includes/mvc-intro/adding-model1.md)]
 
@@ -102,6 +102,7 @@ System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity id
 在 PMC 中，輸入下列命令：
 
 ::: moniker range=">= aspnetcore-2.1"
+
 ``` PMC
 Add-Migration Initial
 Update-Database
@@ -113,6 +114,7 @@ Update-Database
       *實體類型「影片」上的十進位資料行 'Price' 未指定任何類型。如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。使用 'ForHasColumnType()' 明確指定可容納所有值的 SQL 伺服器資料行類型。*
 
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
 
 ``` PMC
@@ -152,10 +154,15 @@ Update-Database
 [!INCLUDE [adding-model](~/Includes/mvc-intro/adding-model3.md)]
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Startup.cs?name=ConfigureServices&highlight=13-99)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+
 ::: moniker-end
 
 [!INCLUDE [adding-model](~/Includes/mvc-intro/adding-model4.md)]

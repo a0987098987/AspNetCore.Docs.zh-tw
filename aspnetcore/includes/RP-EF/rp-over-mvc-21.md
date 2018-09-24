@@ -14,4 +14,5 @@
 * 是新應用程式開發的建議方法。
 
 如果您選擇本教學課程，而不是選擇 [Razor Pages](xref:data/ef-rp/intro) 版本，請在[此 GitHub 討論](https://github.com/aspnet/Docs/issues/6146)中告訴我們原因。
+
 ::: moniker-end

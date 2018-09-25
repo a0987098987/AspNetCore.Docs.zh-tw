@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何儲存和擷取為應用程式祕密的 ASP.NET Core 應用程式開發期間的機密資訊。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 08/16/2018
+ms.date: 09/24/2018
 uid: security/app-secrets
-ms.openlocfilehash: 35c316230c19aa69a0dac26ec25a6e017f102237
-ms.sourcegitcommit: 1cf65c25ed16495e27f35ded98b3952a30c68f36
+ms.openlocfilehash: 1ecd9b87b9e4aa2c511349fe407c0cea9dc9f921
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41831245"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028267"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>在 ASP.NET Core 開發的應用程式祕密的安全儲存體
 
@@ -19,7 +19,7 @@ ms.locfileid: "41831245"
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/app-secrets/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-本文件說明針對儲存和擷取機密資料的 ASP.NET Core 應用程式開發期間的技術。 您應該永遠不會將密碼或其他機密資料儲存在原始程式碼中，而且您不應該在開發中使用生產環境祕密，或測試模式。 您可以透過 [Azure Key Vault 設定提供者](xref:security/key-vault-configuration)儲存及保護 Azure 測試與生產祕密。
+本文件說明針對儲存和擷取機密資料的 ASP.NET Core 應用程式開發期間的技術。 永遠不會將密碼或其他機密資料儲存在原始程式碼中。 不應使用生產環境祕密進行開發或測試。 您可以透過 [Azure Key Vault 設定提供者](xref:security/key-vault-configuration)儲存及保護 Azure 測試與生產祕密。
 
 ## <a name="environment-variables"></a>環境變數
 

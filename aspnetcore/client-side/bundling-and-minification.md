@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/10/2018
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: bab2f288f3c6956e44ff929bfd2e257301a5806a
-ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
+ms.openlocfilehash: 45200d34974cbbb44787616eba7508458882416c
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39356697"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028137"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>配套並縮短在 ASP.NET Core 中的靜態資產
 
@@ -201,7 +201,7 @@ dotnet bundle
 > 或者，您可以使用下列通用慣例模式：
 >
 > ```json
-> "inputFiles": ["wwwroot/**/*(*.css|!(*.min.css)"]
+> "inputFiles": ["wwwroot/**/*(*.css|!(*.min.css))"]
 > ```
 >
 > 這個萬用字元模式比對所有 CSS 檔案，並排除縮短的檔案模式。

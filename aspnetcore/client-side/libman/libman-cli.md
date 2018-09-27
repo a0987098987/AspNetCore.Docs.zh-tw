@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/30/2018
 uid: client-side/libman/libman-cli
-ms.openlocfilehash: ad81af2e789a31382f50ed37754bfc94469eb197
-ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
+ms.openlocfilehash: 5667f79648a60b8fd9496f8041ef08891ab766af
+ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336033"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47402081"
 ---
 # <a name="use-the-libman-command-line-interface-cli-with-aspnet-core"></a>使用 ASP.NET Core 使用 LibMan 命令列介面 (CLI)
 
@@ -195,10 +195,10 @@ libman install [-h|--help]
 }
 ```
 
-若要安裝的 jQuery 版本 3.2.1 *jquery.min.js*的檔案*wwwroot\scripts\jquery*使用 CDNJS 提供者的資料夾：
+若要安裝的 jQuery 版本 3.2.1 *jquery.min.js*的檔案*wwwroot/指令碼/jquery*使用 CDNJS 提供者的資料夾：
 
 ```console
-libman install jquery@3.2.1 --provider cdnjs --destination wwwroot\scripts\jquery --files jquery.min.js
+libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquery --files jquery.min.js
 ```
 
 *Libman.json*檔案如下所示：
@@ -210,7 +210,7 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot\scripts\jquer
   "libraries": [
     {
       "library": "jquery@3.2.1",
-      "destination": "wwwroot\\scripts\\jquery",
+      "destination": "wwwroot/scripts/jquery",
       "files": [
         "jquery.min.js"
       ]
@@ -241,7 +241,7 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot\scripts\jquer
   "libraries": [
     {
       "library": "jquery@3.2.1",
-      "destination": "wwwroot\\scripts\\jquery",
+      "destination": "wwwroot/scripts/jquery",
       "files": [
         "jquery.min.js"
       ]
@@ -249,7 +249,7 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot\scripts\jquer
     {
       "library": "C:\\temp\\contosoCalendar\\",
       "provider": "filesystem",
-      "destination": "wwwroot\\lib\\contosoCalendar",
+      "destination": "wwwroot/lib/contosoCalendar",
       "files": [
         "calendar.js",
         "calendar.css"

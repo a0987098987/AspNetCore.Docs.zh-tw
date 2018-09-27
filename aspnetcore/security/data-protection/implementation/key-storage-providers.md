@@ -5,12 +5,12 @@ description: 深入了解 ASP.NET Core，以及如何設定金鑰的儲存體位
 ms.author: riande
 ms.date: 07/16/2018
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: e712ff09b5306bc4481c4cc105448d7cbfa39f3a
-ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
+ms.openlocfilehash: 0e64a65ab1d65efa9f2e4d36a23663b607f206d7
+ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39356762"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47402064"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core 中的金鑰儲存提供者
 
@@ -78,6 +78,24 @@ public void ConfigureServices(IServiceCollection services)
 
 > [!IMPORTANT]
 > 我們建議您使用[Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest)來加密待用的金鑰。
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="entity-framework-core"></a>Entity Framework Core
+
+[Microsoft.AspNetCore.DataProtection.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/)封裝提供一個機制，來儲存至資料庫，使用 Entity Framework Core 資料保護金鑰。 `Microsoft.AspNetCore.DataProtection.EntityFrameworkCore` NuGet 套件必須新增至專案檔，並不屬於[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
+
+透過此封裝，可以跨多個 web 應用程式執行個體共用金鑰。
+
+若要設定 EF Core 提供者，請呼叫[ `PersistKeysToDbContext<TContext>` ](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext)方法：
+
+[!code-csharp[Main](key-storage-providers/sample/Startup.cs?name=snippet&highlight=13-15)]
+
+泛型參數`TContext`，必須繼承自[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)並[IDataProtectionKeyContext](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcore.idataprotectionkeycontext):
+
+[!code-csharp[Main](key-storage-providers/sample/MyKeysContext.cs)]
+
+::: moniker-end
 
 ## <a name="custom-key-repository"></a>自訂金鑰存放庫
 

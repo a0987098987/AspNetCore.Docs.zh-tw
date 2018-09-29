@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/07/2017
 uid: host-and-deploy/index
-ms.openlocfilehash: eb3a4846775fa53132d3692f56bb1b628257ca8f
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: 024275be3fc5db3f2ed2f7cea1582a1a5f12bda7
+ms.sourcegitcommit: 32f5ee0690604d451f61e9a5c28881c9fcf85738
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340208"
+ms.lasthandoff: 09/29/2018
+ms.locfileid: "47454750"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>裝載及部署 ASP.NET Core
 
@@ -70,7 +70,7 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 ## <a name="publishing-to-azure"></a>發行至 Azure
 
-如需使用 Visual Studio 將應用程式發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。 您也可以透過[命令列](xref:tutorials/publish-to-azure-webapp-using-cli)，將應用程式發行至 Azure。
+如需使用 Visual Studio 將應用程式發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。 您也可以透過[命令列](/azure/app-service/app-service-web-get-started-dotnet)，將應用程式發行至 Azure。
 
 ## <a name="host-in-a-web-farm"></a>裝載於 Web 伺服陣列
 

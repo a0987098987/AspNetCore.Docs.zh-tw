@@ -1,5 +1,5 @@
 ---
-title: 使用 ASP.NET Core signalr MessagePack 中樞通訊協定
+title: 使用 ASP.NET Core SignalR MessagePack 中樞通訊協定
 author: tdykstra
 description: 加入 ASP.NET Core SignalR MessagePack 中樞通訊協定。
 monikerRange: '>= aspnetcore-2.1'
@@ -14,9 +14,9 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 07/17/2018
 ms.locfileid: "39094991"
 ---
-# <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core signalr MessagePack 中樞通訊協定
+# <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR MessagePack 中樞通訊協定
 
-藉由[brennan 第瑜吉](https://github.com/BrennanConroy)
+由[brennan Conroy](https://github.com/BrennanConroy)提供
 
 本文假設讀者已熟悉所涵蓋的主題[開始](xref:tutorials/signalr)。
 
@@ -67,7 +67,7 @@ var hubConnection = new HubConnectionBuilder()
 
 ### <a name="javascript-client"></a>JavaScript 用戶端
 
-會提供 Javascript 用戶端的 MessagePack 支援`@aspnet/signalr-protocol-msgpack`NPM 套件。
+會提供 JavaScript 用戶端的 MessagePack 支援`@aspnet/signalr-protocol-msgpack`NPM 套件。
 
 ```console
 npm install @aspnet/signalr-protocol-msgpack
@@ -76,7 +76,7 @@ npm install @aspnet/signalr-protocol-msgpack
 安裝 npm 套件之後，此模組可以直接透過 JavaScript 模組載入器或藉由參考匯入至瀏覽器 *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 檔案。 在瀏覽器`msgpack5`也必須參考程式庫。 使用`<script>`標記，以建立參考。 程式庫，請參閱*node_modules\msgpack5\dist\msgpack5.js*。
 
 > [!NOTE]
-> 當使用`<script>`元素的順序很重要。 如果*signalr-通訊協定-msgpack.js*參考之前*msgpack5.js*，嘗試使用 MessagePack 連線時，就會發生錯誤。 *signalr.js*之前，也需要*signalr-通訊協定-msgpack.js*。
+> 當使用`<script>`元素的順序很重要。 如果*signalr-protocol-msgpack.js*參考之前*msgpack5.js*，嘗試使用 MessagePack 連線時，就會發生錯誤。 *signalr.js*之前，也需要*signalr-protocol-msgpack.js*。
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>

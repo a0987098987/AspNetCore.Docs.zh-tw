@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2018
 uid: security/cors
-ms.openlocfilehash: f654260411f1bd5725a0e3d14951c7e9bbc893e8
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
+ms.openlocfilehash: cfbf24edb1dae76f676d51738b0d57266688d53e
+ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44039974"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48045584"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨源要求 (CORS)
 
@@ -270,7 +270,7 @@ CORS 規格也會指出該設定來源，則`"*"`（所有原始網域） 是無
 
 * 要求方法是 GET、 HEAD 或 POST。
 * 應用程式不會設定要求標頭以外`Accept`， `Accept-Language`， `Content-Language`， `Content-Type`，或`Last-Event-ID`。
-* `Content-Type`標頭，如果設定，有下列值其中之一：
+* `Content-Type`標頭，如果設定，有下列值之一：
   * `application/x-www-form-urlencoded`
   * `multipart/form-data`
   * `text/plain`

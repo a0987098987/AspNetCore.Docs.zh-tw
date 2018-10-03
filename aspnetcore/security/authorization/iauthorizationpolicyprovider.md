@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/02/2018
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: e3a534d3c3da5af4cfd3f72d105fac83e15135f0
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: fdd8f9232c4332aa8307b9dbdfba6af48dfafa72
+ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833897"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48045493"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>在 ASP.NET Core 中使用 IAuthorizationPolicyProvider 的自訂授權原則提供者 
 
@@ -151,7 +151,7 @@ public Task<AuthorizationPolicy> GetDefaultPolicyAsync() =>
 * 註冊自訂`IAuthorizationPolicyProvider`應用程式的相依性插入服務集合中的型別 (在`Startup.ConfigureServices`) 來取代預設的原則提供者。
 
 ```csharp
-services.AddTransient<IAuthorizationPolicyProvider, MinimumAgePolicyProvider>();
+services.AddSingleton<IAuthorizationPolicyProvider, MinimumAgePolicyProvider>();
 ```
 
 完整的自訂`IAuthorizationPolicyProvider`範例都提供[aspnet/AuthSamples GitHub 存放庫](https://github.com/aspnet/AuthSamples/tree/master/samples/CustomPolicyProvider)。

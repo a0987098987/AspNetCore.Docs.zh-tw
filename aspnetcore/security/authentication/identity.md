@@ -5,12 +5,12 @@ description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如�
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: ca83d07f7d93bd0cc61cd17cc373096b8e6aa2e1
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: d427932bb175c09105534379be4d71760f4e04e5
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010971"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47860949"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -45,7 +45,7 @@ ASP.NET Core Identity 是將登入功能加入至 ASP.NET Core 應用程式的�
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 選取 [檔案]  >  [新增]  >  [專案]。 
+* 選取 [檔案]  >  [新增]  >  [專案]。
 * 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1**將專案下載相同的命名空間。 按一下 [確定 **Deploying Office Solutions**]。
 * 選取 ASP.NET Core **Web 應用程式**ASP.NET Core 2.1 中，然後選取**變更驗證**。
 * 選取 **個別使用者帳戶**然後按一下**確定**。
@@ -119,15 +119,12 @@ dotnet new webapp --auth Individual -o WebApp1
 
 新增註冊、 登入和登出的檔案。
 
-
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 如果您建立的專案名稱**WebApp1**，執行下列命令。 否則，請使用正確的命名空間，如`ApplicationDbContext`:
 
-
 ```cli
 dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
-
 ```
 
 PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，逸出分號，在檔案清單，或置於雙引號括住，如上述範例所示的檔案清單。
@@ -163,7 +160,7 @@ PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，�
 登入表單顯示時：
 
 * **登入**選取連結。
-* 當使用者存取的頁面時，它們未經過驗證**或**獲授權，就會重新導向至登入頁面。 
+* 當使用者存取的頁面時，它們未經過驗證**或**獲授權，就會重新導向至登入頁面。
 
 登入頁面上的表單提交時，`OnPostAsync`呼叫動作。 `PasswordSignInAsync` 呼叫`_signInManager`（由相依性插入提供） 的物件。
 
@@ -254,7 +251,6 @@ PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，�
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
 * <xref:security/authentication/identity-enable-qrcodes>
-* [設定身分識別主索引鍵資料類型](xref:security/authentication/identity-primary-key-configuration)。
 * <xref:migration/identity>
 * <xref:security/authentication/accconfirm>
 * <xref:security/authentication/2fa>

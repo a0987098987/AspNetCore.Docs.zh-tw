@@ -6,12 +6,12 @@ description: ASP.NET Webhook 接收器
 ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: 6cdea089-15b2-4732-8c68-921ca561a8f1
-ms.openlocfilehash: 376cb3e3fdc0bc7bd248da1f57e1064fb27b3cef
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d771a588b23abcd7b1b33e694af17b219683fc48
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834588"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47860910"
 ---
 # <a name="aspnet-webhooks-receivers"></a>ASP.NET Webhook 接收器
 
@@ -33,7 +33,7 @@ https://<host>/api/webhooks/incoming/<receiver>/{id}
 
 基於安全性理由，需要的 URI 是許多的 WebHook 接收器*https* URI 且在某些情況下也必須包含的其他查詢參數來強制執行，只有預定的合作對象可以傳送給上述 URI 的 Webhook.
 
-<em> <receiver> </em>元件是名稱的接收者，例如<em>github</em>或是<em>slack</em>。
+`<receiver>`元件是名稱的接收者，例如`github`或`slack`。
 
 *{Id}* 是選擇性的識別碼，可用來識別特定的 WebHook 接收器組態。 這可用來向特定接收者的 n 個 Webhook。 比方說，下列三個 Uri 可用來對三個獨立的 Webhook 註冊：
 

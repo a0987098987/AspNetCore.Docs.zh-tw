@@ -1,7 +1,7 @@
 ---
-title: 小於，Sass，並且在 ASP.NET Core 實用的字型
+title: 在 ASP.NET Core 的 Less，Sass，與 Font Awesome
 author: ardalis
-description: 了解如何使用小於，Sass，並且字型臻 ASP.NET Core 應用程式中。
+description: 了解如何在 ASP.NET Core 應用程式中使用Less，Sass，與 Font Awesome 。
 ms.author: tdykstra
 ms.date: 10/14/2016
 uid: client-side/less-sass-fa
@@ -12,15 +12,15 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 06/20/2018
 ms.locfileid: "36275561"
 ---
-# <a name="less-sass-and-font-awesome-in-aspnet-core"></a>小於，Sass，並且在 ASP.NET Core 實用的字型
+# <a name="less-sass-and-font-awesome-in-aspnet-core"></a>在 ASP.NET Core 的 Less，Sass，與 Font Awesome
 
 作者：[Steve Smith](https://ardalis.com/)
 
-以設定樣式及整體體驗時，web 應用程式的使用者會有越來越多高的期望。 現代化 web 應用程式經常會運用豐富的工具及架構定義和管理其外觀及操作，以一致的方式。 架構喜歡[Bootstrap](http://getbootstrap.com/)可以對定義一組常用的樣式和網站的版面配置選項。 不過，大部分的非一般站台也可以從能夠有效地定義和維護樣式和階層式樣式表 (CSS) 檔案，以及輕鬆存取協助讓站台的介面更直覺的非影像圖示。 這是 where 語言和支援的工具[較少](http://lesscss.org/)和[Sass](http://sass-lang.com/)，如同程式庫和[字型臻](http://fontawesome.io/)，有。
+以設定樣式及整體體驗時，web 應用程式的使用者會有越來越多高的期望。 現代化 web 應用程式經常會運用豐富的工具及架構定義和管理其外觀及操作，以一致的方式。 架構喜歡[Bootstrap](http://getbootstrap.com/)可以對定義一組常用的樣式和網站的版面配置選項。 不過，大部分的非一般站台也可以從能夠有效地定義和維護樣式和階層式樣式表 (CSS) 檔案，以及輕鬆存取協助讓站台的介面更直覺的非影像圖示。 這是 where 語言和支援的工具[Less](http://lesscss.org/)和[Sass](http://sass-lang.com/)，如同程式庫和[Font Awesome](http://fontawesome.io/)，有。
 
 ## <a name="css-preprocessor-languages"></a>CSS 前置處理器的語言
 
-編譯成其他語言，以改進的經驗為基礎的語言，使用的語言被指前置處理器。 有兩個常用的前置處理器 css： 較不和 Sass。  這些前置處理器會將功能加入 CSS，例如變數和改善的可維護性大型、 複雜的樣式表中的巢狀的規則的支援。 CSS，做為語言是非常基本，缺少即使對於簡單的變數，以支援，這傾向於使 CSS 檔案重複和繁雜。 加入透過前置處理器的實際程式設計語言功能，可協助減少重複，並提供較佳的組織的樣式規則。 Visual Studio 提供內建支援這兩個無和 Sass，以及進一步改善開發經驗中，當使用這些語言的擴充功能。
+編譯成其他語言，以改進的經驗為基礎的語言，使用的語言被指前置處理器。 有兩個常用的前置處理器 css： Less 和 Sass。  這些前置處理器會將功能加入 CSS，例如變數和改善的可維護性大型、 複雜的樣式表中的巢狀的規則的支援。 CSS，做為語言是非常基本，缺少即使對於簡單的變數，以支援，這傾向於使 CSS 檔案重複和繁雜。 加入透過前置處理器的實際程式設計語言功能，可協助減少重複，並提供較佳的組織的樣式規則。 Visual Studio 同時提供內建支援 Less 和 Sass，以及當使用這些語言的擴充功能時，進一步改善開發經驗。
 
 做為前置處理器可以如何改善可讀性和可維護性的樣式資訊的快速範例，請考慮這個 CSS:
 
@@ -40,7 +40,7 @@ ms.locfileid: "36275561"
 }
 ```
 
-使用更少，這可以重寫以排除所有的重複使用*mixin* (如此命名，因為它可讓您"mix"自一個類別或規則集至另一個屬性):
+使用 Less，這可以重寫以排除所有的重複使用*mixin* (如此命名，因為它可讓您"mix"自一個類別或規則集至另一個屬性):
 
 ```less
 .header {
@@ -56,15 +56,15 @@ ms.locfileid: "36275561"
 }
 ```
 
-## <a name="less"></a>較低
+## <a name="less"></a>Less
 
-較不 CSS 前置處理器會使用 Node.js 來執行。 從命令提示字元安裝更少，請使用 Node 封裝管理員 (npm) (-g 表示 「 全域 」):
+Less CSS 前置處理器會使用 Node.js 來執行。 從命令提示字元安裝更少，請使用 Node 封裝管理員 (npm) (-g 表示 「 全域 」):
 
 ```console
 npm install -g less
 ```
 
-如果您使用 Visual Studio，您可以開始使用，將一個或多個較少檔案加入至您的專案，然後設定 加以處理在編譯時期 Gulp （或 Grunt） 更少。 新增*樣式*資料夾，以您的專案，然後再加入新的檔案命名為小於*main.less*到這個資料夾。
+如果您使用 Visual Studio，您可以開始使用 Less ，將一個或多個 L檔案加入至您的專案，然後設定在編譯時期使用 Gulp （或 Grunt）進行處理 。 新增*Style*資料夾至您的專案，然後再加入新的 Less 檔案命名為 *main.less* 至這個資料夾。
 
 ![加入較少的檔案](less-sass-fa/_static/add-less-file.png)
 
@@ -94,7 +94,7 @@ body {
 .bgDark2    {color:@darker2}
 ```
 
-`@base` 和其他@-prefixed項目是變數。 每個代表色彩。 除了`@base`，設定色彩函式的使用： 淡化、 暗化，和微調。 淡化和暗化執行幾乎不如預期。微調的數字為度 （大約是色彩滾輪） 以調整色彩的色調。 較少的處理器是聰明，可以忽略不使用的變數，因此我們需要來示範這些變數的運作方式，使用這些位置。 類別`.baseColor`，等將示範每個變數所產生的 CSS 檔案中的導出的值。
+`@base` 和其他@-prefixed項目是變數。 每個代表色彩。 除了`@base`，設定色彩函式的使用： 淡化、 暗化，和微調。 淡化和暗化執行幾乎不如預期。微調的數字為度 （大約是色彩滾輪） 以調整色彩的色調。 L的處理器是聰明，可以忽略不使用的變數，因此我們需要來示範這些變數的運作方式，使用這些位置。 類別`.baseColor`，等將示範每個變數所產生的 CSS 檔案中的導出的值。
 
 ### <a name="get-started"></a>開始使用
 
@@ -193,7 +193,7 @@ body {
 
 ![較不測試範例](less-sass-fa/_static/less-test-screenshot.png)
 
-小於也提供支援巢狀的規則，以及巢狀的媒體查詢。 例如，定義巢狀的階層，例如功能表可能會導致 verbose CSS 規則喜歡這些：
+Less 也提供支援巢狀的規則，以及巢狀的媒體查詢。 例如，定義巢狀的階層，例如功能表可能會導致 verbose CSS 規則喜歡這些：
 
 ```css
 nav {
@@ -223,7 +223,7 @@ nav li a:active {
 
 在理想情況下的所有相關的樣式規則將會放置在一起在 CSS 檔案中，但實際上沒有強制執行這項規則慣例和可能的註解區塊以外的項目。
 
-定義小於使用這些相同的規則看起來像這樣：
+定義 Less 使用這些相同的規則看起來像這樣：
 
 ```less
 nav {
@@ -247,7 +247,7 @@ nav {
 
 `&`語法是使用較少的選取器功能，與代表目前的選取器父系。 因此，在 {...} 區塊中，`&`代表`a`標記，因此`&:link`相當於`a:link`。
 
-建立回應式設計中，非常有用的媒體查詢也可能導致大量重複和 CSS 的複雜度。 小於允許的媒體查詢在類別中，巢狀，因此，整個類別定義不需要在不同中重複最上層`@media`項目。 例如，以下是 CSS 回應功能表：
+建立回應式設計中，非常有用的媒體查詢也可能導致大量重複和 CSS 的複雜度。 Less 允許的媒體查詢在類別中，巢狀，因此，整個類別定義不需要在不同中重複最上層`@media`項目。 例如，以下是 CSS 回應功能表：
 
 ```css
 .navigation {
@@ -267,7 +267,7 @@ nav {
 }
 ```
 
-這可以進一步定義都不做為：
+這可以在 Less 內進一步定義為：
 
 ```less
 .navigation {
@@ -283,11 +283,11 @@ nav {
 }
 ```
 
-小於我們已經看過的另一項功能是支援的數學運算，允許從預先定義的變數建構的樣式屬性。 這使得更新的相關的樣式更容易，因為可以修改基底的變數，而所有相依的值會自動變更。
+Less 我們已經看過的另一項功能是支援的數學運算，允許從預先定義的變數建構的樣式屬性。 這使得更新的相關的樣式更容易，因為可以修改基底的變數，而所有相依的值會自動變更。
 
-CSS 檔案，特別是針對大型網站 （而且特別是如果使用媒體查詢），會變得相當大一段時間，使變得不便使用它們。 Less 檔案可以分開定義，然後提取一起使用`@import`指示詞。 小於也可用來匯入個別 CSS 檔案，如有需要。
+CSS 檔案，特別是針對大型網站 （而且特別是如果使用媒體查詢），會變得相當大一段時間，使變得不便使用它們。 Less 檔案可以分開定義，然後提取一起使用`@import`指示詞。 Less 也可用來匯入個別 CSS 檔案，如有需要。
 
-*Mixins*可以接受參數，而且小於支援條件式邏輯形式的 mixin 成立條件，提供宣告的方式，來定義特定 mixins 時才會生效。 Mixin 成立條件的常見用法是調整色彩如何根據或深色來源色彩。 指定可接受的參數，色彩的 mixin 的 mixin 成立條件可以用來修改該色彩為基礎的 mixin:
+*Mixins*可以接受參數，而且 Less 支援條件式邏輯形式的 mixin 成立條件，提供宣告的方式，來定義特定 mixins 時才會生效。 Mixin 成立條件的常見用法是調整色彩如何根據或深色來源色彩。 指定可接受的參數，色彩的 mixin 的 mixin 成立條件可以用來修改該色彩為基礎的 mixin:
 
 ```less
 .box (@color) when (lightness(@color) >= 50%) {
@@ -314,7 +314,7 @@ CSS 檔案，特別是針對大型網站 （而且特別是如果使用媒體查
 }
 ```
 
-小於提供一些其他功能，但這應該讓您瞭解這個電源的前置處理語言。
+Less 提供一些其他功能，但這應該讓您瞭解這個電源的前置處理語言。
 
 ## <a name="sass"></a>Sass
 
@@ -326,7 +326,7 @@ Sass 很少類似提供支援的許多相同的功能，但稍微不同的語法
 gem install sass
 ```
 
-不過，如果您執行 Visual Studio，您可以開始使用 Sass 大致相同的方式和小於一樣。 開啟*package.json*並加入至 「 gulp sass 」 封裝`devDependencies`:
+不過，如果您執行 Visual Studio，您可以開始使用 Sass 大致相同的方式和 Less 一樣。 開啟*package.json*並加入至 「 gulp sass 」 封裝`devDependencies`:
 
 ```json
 "devDependencies": {
@@ -353,11 +353,11 @@ gulp.task("sass", function () {
 });
 ```
 
-現在您可以加入 Sass 檔案*main2.scss*至*樣式*中專案的根資料夾：
+現在您可以加入 Sass 檔案*main2.scss*至專案的根目錄的*Style*資料夾：
 
 ![加入 scss 檔案](less-sass-fa/_static/add-scss-file.png)
 
-開啟*main2.scss*並加入下列：
+開啟*main2.scss*並加入下列語法：
 
 ```sass
 $base: #CC0000;
@@ -374,7 +374,7 @@ body {
 }
 ```
 
-Sass 支援巢狀大致相同的小於會提供類似的優點。 檔案可以分割函式，並包含使用`@import`指示詞：
+Sass 支援巢狀大致相同的 Less 會提供類似的優點。 檔案可以分割函式，並包含使用`@import`指示詞：
 
 ```sass
 @import 'anotherfile';
@@ -481,13 +481,13 @@ Sass 支援 mixins，使用`@mixin`加以定義的關鍵字和`@include`來包�
 
 屬性現在定義只為視需要多次，CSS 會產生更好。
 
-Sass 也包含函式和條件式邏輯作業，類似於小於。 事實上，有兩種語言的功能非常類似。
+Sass 也包含函式和條件式邏輯作業，類似於 Less。 事實上，有兩種語言的功能非常類似。
 
-## <a name="less-or-sass"></a>較低或 Sass 嗎？
+## <a name="less-or-sass"></a>Less 或 Sass 嗎？
 
-仍有其是否通常較容易使用小於或 sass 此類不一致 （或甚至是是否要偏好使用原始 Sass 內較新的 SCSS 語法）。 最重要的決策可能是**使用這些工具的其中一個**，與只手動編碼 CSS 檔案。 一旦您所做的決策，這兩個無和 Sass 是很好的選擇。
+仍有其是否通常較容易使用 Less 或 sass 此類不一致 （或甚至是是否要偏好使用原始 Sass 內較新的 SCSS 語法）。 最重要的決策可能是**使用這些工具的其中一個**，與只手動編碼 CSS 檔案。 一旦您所做的決策，這兩個無和 Sass 是很好的選擇。
 
-## <a name="font-awesome"></a>實用的字型
+## <a name="font-awesome"></a>Font Awesome
 
 除了 CSS 前處理器，另一個樣式現代化 web 應用程式的最佳資源是字型。 字型都會提供超過 500 個可縮放向量圖示可以自由地使用 web 應用程式中的工具組。 它原本設計為能夠與啟動程序，但在該架構或任何 JavaScript 程式庫上有沒有相依性。
 

@@ -14,13 +14,13 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 09/13/2018
 ms.locfileid: "45538358"
 ---
-# <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core signalr 中樞
+# <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR 中樞
 
 藉由[Rachel Appel](https://twitter.com/rachelappel)和[Kevin Griffin](https://twitter.com/1kevgriff)
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
 
-## <a name="what-is-a-signalr-hub"></a>什麼是 SignalR hub
+## <a name="what-is-a-signalr-hub"></a>什麼是 SignalR 中樞
 
 SignalR 中樞 API 可讓您連線的用戶端上呼叫方法，從伺服器。 在伺服器程式碼中，您會定義用戶端所呼叫的方法。 在用戶端程式碼中，您可以定義會從伺服器呼叫的方法。 SignalR 會負責在幕後能夠即時的用戶端對伺服器和伺服器到用戶端通訊的所有項目。
 

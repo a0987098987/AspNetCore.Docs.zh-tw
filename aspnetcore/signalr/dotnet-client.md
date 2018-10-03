@@ -19,7 +19,7 @@ ms.locfileid: "44749317"
 ASP.NET Core SignalR.NET 用戶端程式庫可讓您與 SignalR 中樞從.NET 應用程式進行通訊。
 
 > [!NOTE]
-> Xamarin 已針對 Visual Studio 版本的特殊需求。 如需詳細資訊，請參閱 [在 Xamarin 中的 SignalR 用戶端 2.1.1](https://github.com/aspnet/Announcements/issues/305)。
+> Xamarin 已針對 Visual Studio 版本的特殊需求。 如需詳細資訊，請參閱[在 Xamarin 中的 SignalR 用戶端 2.1.1](https://github.com/aspnet/Announcements/issues/305)。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 

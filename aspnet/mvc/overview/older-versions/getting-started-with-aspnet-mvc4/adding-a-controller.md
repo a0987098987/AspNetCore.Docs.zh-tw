@@ -8,16 +8,16 @@ ms.date: 08/28/2012
 ms.assetid: 0267d31c-892f-49a1-9e7a-3ae8cc12b2ca
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 772f3c87d6b73b324164bf9619d332a9c01d7476
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 6cc64cd9ed7a8a4cf053a63d22214bf31a80147b
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831196"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48576220"
 ---
 <a name="adding-a-controller"></a>新增控制器
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > > [!NOTE]
 > > 本教學課程中的更新的版本可[此處](../../getting-started/introduction/getting-started.md)使用 ASP.NET MVC 5 和 Visual Studio 2013。 它更安全、 更容易遵循，並示範更多的功能。

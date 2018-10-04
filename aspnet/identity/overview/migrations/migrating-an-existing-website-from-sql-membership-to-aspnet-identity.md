@@ -8,16 +8,16 @@ ms.date: 12/19/2014
 ms.assetid: 220d3d75-16b2-4240-beae-a5b534f06419
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 51b97ee413ea0304177d5963b5fd9d7253778d4f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 393d14799973e9126379743f63f79a7131206f38
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826401"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577609"
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>從 SQL 成員資格的現有網站移轉至 ASP.NET Identity
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)， [Suhas Joshi](https://github.com/suhasj)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))， [Suhas Joshi](https://github.com/suhasj)
 
 > 本教學課程中說明的步驟來移轉現有的 web 應用程式與使用者和角色的資料建立新的 ASP.NET 身分識別系統中使用 SQL 成員資格。 這種方法涉及將現有的資料庫結構描述變更為 ASP.NET 身分識別及舊/新增至該類別中的勾點所需的一個。 您採用這種方法，一旦移轉您的資料庫之後，會讓您輕鬆處理識別未來的更新。
 

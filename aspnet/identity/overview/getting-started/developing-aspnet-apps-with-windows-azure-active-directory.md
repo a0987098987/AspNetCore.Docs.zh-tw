@@ -8,16 +8,16 @@ ms.date: 08/14/2014
 ms.assetid: 457d7eaf-ee76-4ceb-9082-c7c1721435ad
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: e2df906d220d738c45006de8b3c92e157ca9e57e
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 96a6b8d1c258e742907b649b631f8a6c2c4bbf98
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832606"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577466"
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a>開發 ASP.NET 應用程式與 Azure Active Directory
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 Microsoft ASP.NET 工具的 Azure Active Directory 簡化上裝載的 web 應用程式啟用驗證[Azure](https://www.windowsazure.com/home/features/web-sites/)。 您可以使用 Azure 驗證來驗證您的組織，從您內部部署 Active Directory 同步處理的公司帳戶或建立您自己自訂的 Azure Active Directory 網域中的使用者從 Office 365 使用者。 啟用 Windows Azure 驗證設定您的應用程式，來驗證使用者使用單一[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)租用戶。
 

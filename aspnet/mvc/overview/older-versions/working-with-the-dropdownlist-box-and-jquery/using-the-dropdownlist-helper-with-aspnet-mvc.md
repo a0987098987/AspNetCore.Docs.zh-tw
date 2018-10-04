@@ -8,16 +8,16 @@ ms.date: 01/12/2012
 ms.assetid: 53767e05-c8ab-42e1-a94b-22d906195200
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 600a8ad409d55f0b01eedc8168eaec2b39c88a3b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 11b874d2d07c84631c6c5c266c22c6de49d40cf2
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826600"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578064"
 ---
 <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>使用 DropDownList 協助程式搭配 ASP.NET MVC
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 本教學課程將教導您使用的基本概念[DropDownList](https://msdn.microsoft.com/library/dd492948.aspx)協助程式和[ListBox](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.listbox.aspx) ASP.NET MVC Web 應用程式中的協助程式。 您可以使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是要遵循本教學課程的 Microsoft Visual Studio 的免費版本。 在開始之前，請確定您已安裝符合下列先決條件。 您可以安裝所有人都按下列連結： [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)。 或者，您可以個別安裝的必要條件，使用下列連結：
 

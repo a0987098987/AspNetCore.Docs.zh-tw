@@ -8,16 +8,16 @@ ms.date: 06/06/2012
 ms.assetid: a585c9a2-7c8e-478b-9706-90f3739c50d1
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: 5e5fe83e802980a5783c3d77454d5fb0ee7d5a91
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: eeb8ac4402b5e3d233082a749ad16ed98d4a71fc
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830104"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577804"
 ---
 <a name="using-asynchronous-methods-in-aspnet-45"></a>使用 ASP.NET 4.5 中的非同步方法
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > 本教學課程將教導您建置非同步的 ASP.NET Web Forms 應用程式使用的基本概念[Visual Studio Express 2012 for Web](https://www.microsoft.com/visualstudio/11)，這是免費的 Microsoft Visual Studio 版本。 您也可以使用[Visual Studio 2012](https://www.microsoft.com/visualstudio/11)。 在本教學課程包含下列各節。
 > 
@@ -100,7 +100,7 @@ ms.locfileid: "41830104"
 
 ## <a id="CreatingAsynchGizmos"></a>  建立非同步的 Gizmo 頁面
 
-此範例會使用新[非同步](https://msdn.microsoft.com/library/hh156513(VS.110).aspx)並[await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx)關鍵字 （適用於.NET 4.5 和 Visual Studio 2012），讓編譯器會負責維護複雜的轉換所需非同步程式設計。 編譯器可讓您撰寫程式碼可讓您使用 C# 的同步的控制流程建構，編譯器會自動套用的轉換需要使用回呼，以避免封鎖執行緒。
+此範例會使用新[async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx)及[await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx)關鍵字 （適用於.NET 4.5 和 Visual Studio 2012），讓編譯器會負責維護複雜的轉換所需非同步程式設計。 編譯器可讓您撰寫程式碼可讓您使用 C# 的同步的控制流程建構，編譯器會自動套用的轉換需要使用回呼，以避免封鎖執行緒。
 
 ASP.NET 的非同步頁面必須包含[網頁](https://msdn.microsoft.com/library/ydy4x04a.aspx)指示詞搭配`Async`屬性設定為"true"。 下列程式碼示範[網頁](https://msdn.microsoft.com/library/ydy4x04a.aspx)指示詞搭配`Async`屬性設定為"true"，如*GizmosAsync.aspx*頁面。
 

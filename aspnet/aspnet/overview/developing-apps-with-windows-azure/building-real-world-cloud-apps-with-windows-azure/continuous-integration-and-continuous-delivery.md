@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: eaece9f5-f80c-428b-b771-5db66d275b7d
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
 msc.type: authoredcontent
-ms.openlocfilehash: 7a92a68ce8bbeec604a22e082975d33f9f3377c1
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: f701488025ec84a17651f9abff43f84531d35689
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340065"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48576244"
 ---
 <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>持續整合與持續傳遞 （使用 Azure 建置真實世界的雲端應用程式）
 ====================
-藉由[Mike Wasson](https://github.com/MikeWasson)， [Rick Anderson](https://github.com/Rick-Anderson)， [Tom Dykstra](https://github.com/tdykstra)
+藉由[Mike Wasson](https://github.com/MikeWasson)， [Rick Anderson]((https://twitter.com/RickAndMSFT))， [Tom Dykstra](https://github.com/tdykstra)
 
 [下載修正此問題的專案](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)或[下載電子書](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -40,7 +40,7 @@ ms.locfileid: "44340065"
 
 自動化在 Azure 中的這些程序很簡單。 因為您在雲端中執行的所有項目，表示您不必購買或管理您的組建或測試環境的伺服器。 您不必等待可執行您的測試上的伺服器。 這麼做的每個建置，可以讓使用您的自動化指令碼、 執行接受度測試或更多深入的測試，在 Azure 中的測試環境開始運作，然後當您完成時就將它清除。 如果您只有 2 小時或 8 個小時或一天中執行該伺服器，您不必支付的金額很少，因為您只支付實際執行機器的時間。 例如，環境所需的修正它的應用程式基本上成本大約 1%，每小時，如果您從免費層級向上一層。 在一個月的過程中，如果您只執行一小時環境一次測試環境可能成本小於您買在星巴克咖啡裡 latte。
 
-## <a name="azure-devops-services"></a>Azure 的 DevOps 服務 
+## <a name="azure-devops-services"></a>Azure DevOps Services 
 
 Azure 的 DevOps 服務提供多種功能，以協助您進行從規劃到部署的應用程式開發。
 

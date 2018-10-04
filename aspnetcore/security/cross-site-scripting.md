@@ -3,14 +3,14 @@ title: 防止跨網站指令碼 (XSS) ASP.NET Core 中
 author: rick-anderson
 description: 了解跨網站指令碼 (XSS) 和解決此一漏洞的 ASP.NET Core 應用程式中的技術。
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 10/02/2018
 uid: security/cross-site-scripting
-ms.openlocfilehash: 4784b1775d955f0ef00526e50b960fc873ea218d
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: e937ce47b7151155197cd607832eeb6bf62e3a19
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342207"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577440"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>防止跨網站指令碼 (XSS) ASP.NET Core 中
 
@@ -36,9 +36,9 @@ ms.locfileid: "39342207"
 
 Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您真的很努力避免這種方式。 它會使用 HTML 編碼規則，每當您使用的屬性*@* 指示詞。 為 HTML 屬性編碼會是這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的 HTML 編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標籤協助程式也會將編碼的輸入您在 tag 參數中使用。
 
-採取下列 Razor 檢視中;
+採取下列 Razor 檢視：
 
-```none
+```cshtml
 @{
        var untrustedInput = "<\"123\">";
    }
@@ -59,7 +59,7 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
 
 有時候可能會想要將值插入您的檢視中要處理的 JavaScript。 執行這項作業的方法有兩種。 將值插入最安全的方法是將值放在標記的資料屬性，並擷取在 JavaScript 中。 例如: 
 
-```none
+```cshtml
 @{
        var untrustedInput = "<\"123\">";
    }
@@ -114,9 +114,9 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
    <"123">
    ```
 
-您也可以直接呼叫 JavaScript 編碼器
+您也可以直接呼叫 JavaScript 編碼器：
 
-```none
+```cshtml
 @using System.Text.Encodings.Web;
    @inject JavaScriptEncoder encoder;
 
@@ -225,4 +225,4 @@ services.AddSingleton<HtmlEncoder>(
 
 ## <a name="validation-as-an-xss-prevention-technique"></a>XSS 防護技術以及驗證
 
-驗證可以是一個有用的工具，在限制 XSS 攻擊。 例如，數字的字串，包含只有字元 0-9 不會觸發 XSS 攻擊。 驗證變得更複雜的是如果您想要接受使用者輸入層中的 HTML 剖析 HTML 輸入是很困難，不可能的。 MarkDown 和其他文字格式會是比較安全的選項為豐富的輸入。 您永遠不應該依賴單獨的驗證。 一律將編碼不受信任的輸入，輸出之前，無論何種驗證您已執行。
+驗證可以是一個有用的工具，在限制 XSS 攻擊。 例如，數字的字串，包含只有字元 0-9 不會觸發 XSS 攻擊。 接受使用者輸入中的 HTML 時，驗證將會變得更複雜。 剖析 HTML 輸入相當困難，不可能的。 搭配去除內嵌的 HTML，剖析器的 markdown，是比較安全的選項，以接受豐富的輸入。 絕不要依賴在單獨的驗證。 一律將編碼不受信任的輸入，輸出中，無論何種驗證或處理已執行前。

@@ -8,16 +8,16 @@ ms.date: 04/09/2015
 ms.assetid: 0f78aec2-f509-46fa-b20f-d5208425d8ec
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-recommended-resources
 msc.type: authoredcontent
-ms.openlocfilehash: 9937003a23d018ffd7fb4a837fca9d39dcc2a89f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 1d5b44ccce423dda8ac77029e361a531b6c91b26
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830522"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578079"
 ---
 <a name="aspnet-identity-recommended-resources"></a>ASP.NET Identity 建議資源
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > 本主題提供有關如何使用 ASP.NET Identity 的文件資源的連結。
 > 

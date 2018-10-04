@@ -8,16 +8,16 @@ ms.date: 12/13/2013
 ms.assetid: 2e260430-d13c-4658-bd05-e256fc0d63b8
 msc.legacyurl: /identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 6115b2a6caca05659f1c35ce97954807a6fb01ae
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: a91bb6ac51819d7dbb8eb3c63bd36a9d830eecce
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833864"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578221"
 ---
 <a name="migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity-c"></a>將通用的提供者的資料移轉成員資格和使用者設定檔至 ASP.NET Identity (C#)
 ====================
-藉由[請參閱 Pranav Rastogi](https://github.com/rustd)， [Rick Anderson](https://github.com/Rick-Anderson)， [Robert McMurray](https://github.com/rmcmurray)， [Suhas Joshi](https://github.com/suhasj)
+藉由[請參閱 Pranav Rastogi](https://github.com/rustd)， [Rick Anderson]((https://twitter.com/RickAndMSFT))， [Robert McMurray](https://github.com/rmcmurray)， [Suhas Joshi](https://github.com/suhasj)
 
 > 本教學課程會說明需要移轉使用者和角色的資料，以及使用 ASP.NET 身分識別模型的現有應用程式的通用提供者所建立的使用者設定檔資料的步驟。 方法此處提及來移轉使用者設定檔資料可以使用 SQL 成員資格的應用程式中。
 

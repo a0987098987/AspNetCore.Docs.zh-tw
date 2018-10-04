@@ -8,16 +8,16 @@ ms.date: 07/09/2015
 ms.assetid: 7e986ab5-6615-4638-add7-4614ce7b51db
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
 msc.type: authoredcontent
-ms.openlocfilehash: cec29e27e834317661f80eed93cb8b81a0786644
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: f4dae827627103e5cfb9981b6c3b9342cdc34c13
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826402"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577999"
 ---
 <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>監視和遙測 （使用 Azure 建置真實世界的雲端應用程式）
 ====================
-藉由[Mike Wasson](https://github.com/MikeWasson)， [Rick Anderson](https://github.com/Rick-Anderson)， [Tom Dykstra](https://github.com/tdykstra)
+藉由[Mike Wasson](https://github.com/MikeWasson)， [Rick Anderson]((https://twitter.com/RickAndMSFT))， [Tom Dykstra](https://github.com/tdykstra)
 
 [下載修正此問題的專案](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)或[下載電子書](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -29,7 +29,7 @@ ms.locfileid: "41826402"
 ## <a name="buy-or-rent-a-telemetry-solution"></a>購買或租用的遙測解決方案
 
 > [!NOTE]
-> 之前所撰寫的這篇文章[Application Insights](https://azure.microsoft.com/services/application-insights/)發行。 Application Insights 是針對遙測解決方案在 Azure 上慣用的方法。 請參閱[設定為您的 ASP.NET 網站的 Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)如需詳細資訊。
+> 之前所撰寫的這篇文章[Application Insights](/azure/application-insights/app-insights-overview)發行。 Application Insights 是針對遙測解決方案在 Azure 上慣用的方法。 請參閱[設定為您的 ASP.NET 網站的 Application Insights](/azure/application-insights/app-insights-asp-net)如需詳細資訊。
 
 
 絕佳雲端環境的相關的事情之一是，它真的很容易購買，或永久出租踏上的勝利。 遙測是範例。 而不需要大費周章中，您可以取得絕佳的遙測系統啟動和執行、 非常符合成本效益。 有一大堆很棒的合作夥伴整合有了 Azure，而其中部分有免費層 – 因此您可以取得基本的遙測資料的 「 百無。 以下是幾個項目目前可用在 Azure 上：
@@ -38,7 +38,7 @@ ms.locfileid: "41826402"
 - [AppDynamics](http://www.appdynamics.com/)
 - [Dynatrace](https://datamarket.azure.com/application/b4011de2-1212-4375-9211-e882766121ff)
 
-自 2015 年 3 月起[Microsoft Application Insights for Visual Studio Online](https://azure.microsoft.com/documentation/articles/app-insights-get-started/)尚未發行，但可供試用的預覽。[Microsoft System Center](http://www.petri.co.il/microsoft-system-center-introduction.htm#)也包含監視功能。
+[Microsoft System Center](http://www.petri.co.il/microsoft-system-center-introduction.htm#)也包含監視功能。
 
 我們將快速逐步設定 New Relic，以示範如何輕鬆使用遙測系統。
 

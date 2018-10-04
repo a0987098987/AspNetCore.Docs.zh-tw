@@ -8,16 +8,16 @@ ms.date: 03/26/2015
 ms.assetid: 8d54180d-f826-4df7-b503-7debf5ed9fb3
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 77a3e9d5e8b2698d2464e33520d779febd4533bd
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 84f35cfc0f0e0f1c268e0e9c18fd47aa68deb7d1
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833266"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577830"
 ---
 <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>帳戶確認和密碼復原，使用 ASP.NET Identity (C#)
 ====================
-藉由[Hao 是一隻](https://github.com/HaoK)，[請參閱 Pranav Rastogi](https://github.com/rustd)， [Rick Anderson](https://github.com/Rick-Anderson)， [Suhas Joshi](https://github.com/suhasj)
+藉由[Hao 是一隻](https://github.com/HaoK)，[請參閱 Pranav Rastogi](https://github.com/rustd)， [Rick Anderson]((https://twitter.com/RickAndMSFT))， [Suhas Joshi](https://github.com/suhasj)
 
 > 在進行本教學課程之前您應該先完成[登入、 電子郵件確認和密碼重設建立安全的 ASP.NET MVC 5 web 應用程式](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md)。 本教學課程包含更多詳細資料，並將為您示範如何設定本機帳戶的確認電子郵件，並可讓使用者重設其遺忘的密碼，在 ASP.NET 身分識別。 撰寫本文時已由 Rick Anderson ([@RickAndMSFT](https://twitter.com/#!/RickAndMSFT))，請參閱 Pranav Rastogi ([@rustd](https://twitter.com/rustd))，Hao 是一隻和 Suhas Joshi。 NuGet 範例已寫入主要是由 Hao 是一隻。
 

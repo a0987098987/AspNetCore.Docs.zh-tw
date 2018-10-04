@@ -8,16 +8,16 @@ ms.date: 03/26/2015
 ms.assetid: d4911cb3-1afb-4805-b860-10818c4b1280
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: e15595cab2d1f51374d4577a67f0f190a531acb5
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 02a0153f20e9390a5ab8d4ecb4f73556b339d9a9
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824340"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48576450"
 ---
 <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>建立安全的 ASP.NET MVC 5 web 應用程式登入、 電子郵件確認和密碼重設 (C#)
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > 本教學課程會示範如何建置 ASP.NET MVC 5 web 應用程式使用電子郵件確認和密碼重設使用 ASP.NET 身分識別的成員資格系統。 您可以下載完成的應用程式[此處](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952)。 此下載包含可讓您測試而不需設定電子郵件或 SMS 提供者的電子郵件確認和 SMS 的偵錯協助程式。
 > 

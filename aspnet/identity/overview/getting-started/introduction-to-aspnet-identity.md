@@ -8,16 +8,16 @@ ms.date: 10/17/2013
 ms.assetid: 38717fc1-5989-43cf-952d-4007cc1dd923
 msc.legacyurl: /identity/overview/getting-started/introduction-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 24674adf1f28b3ffc0822a4b112c972d1e7ed5b4
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 1938de2b57c8fafa7ea8a656c0a42d2d3f1a6c81
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830768"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577869"
 ---
 <a name="introduction-to-aspnet-identity"></a>ASP.NET Identity 簡介
 ====================
-藉由[Jon Galloway](https://github.com/jongalloway)，[請參閱 Pranav Rastogi](https://github.com/rustd)， [Rick Anderson](https://github.com/Rick-Anderson)， [Tom Dykstra](https://github.com/tdykstra)
+藉由[Jon Galloway](https://github.com/jongalloway)，[請參閱 Pranav Rastogi](https://github.com/rustd)， [Rick Anderson]((https://twitter.com/RickAndMSFT))， [Tom Dykstra](https://github.com/tdykstra)
 
 > ASP.NET 成員資格系統被引進 ASP.NET 2.0 後在 2005 中，而由於則已有許多變更 web 應用程式通常會處理驗證和授權方式。 ASP.NET 身分識別是成員資格系統應該是什麼當您在建立 web、 手機或平板電腦的現代化應用程式的全新觀點。
 > 

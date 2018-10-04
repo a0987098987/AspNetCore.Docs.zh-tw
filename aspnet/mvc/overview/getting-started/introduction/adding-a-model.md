@@ -8,16 +8,16 @@ ms.date: 05/28/2015
 ms.assetid: 276552b5-f349-4fcf-8f40-6d042f7aa88e
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: a7326cefd52feb63fc2f602210ed560cdf28706a
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 3b9d84ae757eac6cc2a1ae8f7857244adff50d7c
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835037"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578272"
 ---
 <a name="adding-a-model"></a>新增模型
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 [!INCLUDE [Tutorial Note](sample/code-location.md)]
 

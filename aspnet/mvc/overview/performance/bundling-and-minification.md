@@ -8,16 +8,16 @@ ms.date: 08/23/2012
 ms.assetid: 5894dc13-5d45-4dad-8096-136499120f1d
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 7e54bdd2f50edb5001982ada9b6ce023584ce5b0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9b627a66007aec09a404147698e2bef06c7e7794
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833012"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577713"
 ---
 <a name="bundling-and-minification"></a>統合和縮製
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > 統合和縮製有兩個技術您可以使用 ASP.NET 4.5 中，以改善要求載入時間。 統合和縮製可改善載入時間減少伺服器的要求數目，並減少大小的要求的資產 （例如 CSS 和 JavaScript。）
 

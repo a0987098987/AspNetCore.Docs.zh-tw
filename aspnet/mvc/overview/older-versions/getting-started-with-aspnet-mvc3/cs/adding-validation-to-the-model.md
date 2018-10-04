@@ -8,16 +8,16 @@ ms.date: 01/12/2011
 ms.assetid: 9af927e2-1c3b-43d9-917d-1df75be3c482
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 14db6184d3edd584fe35529cd4cf1dba5b528ab1
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: dd126ca070b81285f902e164f9e5f82397974096
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832654"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578051"
 ---
 <a name="adding-validation-to-the-model-c"></a>將驗證加入至模型 (C#)
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > > [!NOTE]
 > > 本教學課程中的更新的版本可[此處](../../../getting-started/introduction/getting-started.md)使用 ASP.NET MVC 5 和 Visual Studio 2013。 它更安全、 更容易遵循，並示範更多的功能。

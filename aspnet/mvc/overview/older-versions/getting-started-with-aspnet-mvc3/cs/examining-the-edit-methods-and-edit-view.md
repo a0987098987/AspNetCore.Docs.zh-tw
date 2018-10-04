@@ -8,16 +8,16 @@ ms.date: 01/12/2011
 ms.assetid: 1d266bf0-a61e-423b-a3d2-13773d7dafe2
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: f206d04e0c9db6149b1d01f7dcbb6be733754881
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 6ed989173f7f687e37c73b89217b1cd81e056f75
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826033"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578207"
 ---
 <a name="examining-the-edit-methods-and-edit-view-c"></a>檢查編輯方法與編輯檢視 (C#)
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > > [!NOTE]
 > > 本教學課程中的更新的版本可[此處](../../../getting-started/introduction/getting-started.md)使用 ASP.NET MVC 5 和 Visual Studio 2013。 它更安全、 更容易遵循，並示範更多的功能。

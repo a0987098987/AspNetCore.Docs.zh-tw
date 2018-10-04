@@ -8,16 +8,16 @@ ms.date: 02/20/2013
 ms.assetid: a3cef801-a54b-4ebd-93c3-55764e2e14b1
 msc.legacyurl: /visual-studio/overview/2012/windows-azure-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: d5d055d90b263050ef6defa1b98b139c4f8e4dee
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: a45b0ad2b61c2b78f7f06e85fe5e92193d73041d
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41827030"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577505"
 ---
 <a name="windows-azure-authentication"></a>Windows Azure 驗證
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Microsoft ASP.NET 工具針對 Windows Azure Active Directory 輕鬆地啟用上裝載的 web 應用程式的驗證[Windows Azure Web Sites](https://www.windowsazure.com/home/features/web-sites/)。 您可以使用 Windows Azure 驗證來驗證您的組織，從您內部部署 Active Directory 同步處理的公司帳戶或建立您自己自訂的 Windows Azure Active Directory 網域中的使用者從 Office 365 使用者。 啟用 Windows Azure 驗證設定您的應用程式，來驗證使用者使用單一[Windows Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)租用戶。
 > 

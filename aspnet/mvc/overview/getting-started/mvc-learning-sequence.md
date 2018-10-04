@@ -8,16 +8,16 @@ ms.date: 05/22/2015
 ms.assetid: 8513a57a-2d45-4d6b-881c-15a01c5cbb1c
 msc.legacyurl: /mvc/overview/getting-started/mvc-learning-sequence
 msc.type: authoredcontent
-ms.openlocfilehash: 9ebe068cac7c4afaf223c948936afb66d6130fb1
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 720e3999fe2c1872a50c82bad0711bbcadd176cd
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825719"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48576257"
 ---
 <a name="mvc-recommended-tutorials-and-articles"></a>MVC 建議教學課程和文章
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 <a id="pwd"></a>
 ## <a name="getting-started"></a>快速入門

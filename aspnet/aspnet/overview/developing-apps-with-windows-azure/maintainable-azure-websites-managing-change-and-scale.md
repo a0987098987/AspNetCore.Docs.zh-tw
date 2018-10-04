@@ -8,12 +8,12 @@ ms.date: 07/16/2014
 ms.assetid: ecfd0eb4-c4ad-44e6-9db9-a2a66611ff6a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
-ms.openlocfilehash: a26f22a7cf39593ee068fb8e8d57200120c97ccb
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 05181ae1b2d857eea45983d378b28011c1cd755a
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832971"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578129"
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>實際操作實驗室： 可維護的 Azure 網站： 管理變更和小數位數
 ====================
@@ -22,17 +22,17 @@ ms.locfileid: "41832971"
 [下載 Web 研討會訓練套件](http://aka.ms/webcamps-training-kit)
 
 > Microsoft Azure 可讓您輕鬆建置及部署網站至生產環境。 但您未完成時即時應用程式時，您剛開始使用 ！ 您必須處理變更的需求、 資料庫更新、 小數位數和更多功能。 幸運的是，Azure App Service 具有您的後盾，並附上豐富的功能，可協助您保護您的站台順利執行。
-> 
+>
 > Azure 提供安全且彈性的開發、 部署和延展選項為任何大小的 web 應用程式。 運用現有的工具來建立及部署應用程式無須管理基礎結構。
-> 
+>
 > 自行佈建生產 web 應用程式以分鐘為單位輕鬆地部署您慣用的開發工具所建立的內容。 您可以部署現有的網站，直接從支援的原始檔控制**Git**， **GitHub**， **Bitbucket**， **TFS**，和甚至**DropBox**。 部署直接從您最喜愛的 IDE 或使用指令碼**PowerShell**在 Windows 或**CLI**任何作業系統上執行的工具。 一旦部署之後，掌握您的網站持續進行連續部署的支援。
-> 
+>
 > Azure 提供可調式、 持久的雲端儲存體、 備份和復原解決方案的任何資料，不論巨量或少。 當部署至生產環境，例如資料表、 Blob 和 SQL 資料庫的儲存體服務的應用程式，協助您調整在雲端中的應用程式。
-> 
+>
 > 使用 SQL 資料庫時，請務必保持產能的資料庫部署應用程式的新版本時。 要感謝**Entity Framework Code First Migrations**，開發和部署您的資料模型已簡化，以更新您的環境，以分鐘為單位。 這個實際操作實驗室會顯示您的 web 應用程式部署到 Microsoft Azure 中的生產環境時，可能會遇到的不同主題。
-> 
+>
 > 所有的範例程式碼和程式碼片段會包含在 Web 研討會訓練套件，可在[ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit)。
-> 
+>
 > 如需本主題的深入報導，請參閱 <<c0> [ 建置真實世界雲端應用程式與 Azure 的電子書](building-real-world-cloud-apps-with-windows-azure/introduction.md)。
 
 
@@ -60,7 +60,7 @@ ms.locfileid: "41832971"
 - [Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/)或更新版本
 - [Azure SDK for.NET 2.2](https://www.microsoft.com/windowsazure/sdk/)
 - [GIT 版本控制系統](http://git-scm.com/download)
-- Microsoft Azure 訂用帳戶 
+- Microsoft Azure 訂用帳戶
 
     - 註冊[免費試用版](http://aka.ms/watk-freetrial)
     - 如果您是 Visual Studio Professional、 Test Professional、 Premium 或 Ultimate with MSDN 或 MSDN Platforms 訂閱者時，啟用您[MSDN 權益](http://aka.ms/watk-msdn)現在要開始開發及測試 Azure 上
@@ -202,10 +202,10 @@ ms.locfileid: "41832971"
 
     > [!NOTE]
     > 移轉檔案由兩個方法，組成**向上**並**向下**。
-    > 
+    >
     > - **向上**方法將用來指定哪些變更我們的應用程式需求，要套用至資料庫的目前版本。
     > - **下移**用來回復的變更，我們已新增至**向上**方法。
-    > 
+    >
     > 當資料庫移轉更新資料庫時，它會執行所有移轉作業中的時間戳記順序，以及只是尚未使用上次更新之後 ( \_MigrationHistory 資料表會追蹤的哪些移轉經套用)。 **向上**所有移轉的方法會呼叫並將進行的變更我們已指定到資料庫。 如果我們要回到上一個移轉時，決定**往下**將重做的變更，以反向順序呼叫方法。
 4. 在  **Package Manager Console**，輸入下列命令，然後按**Enter**。
 
@@ -298,15 +298,15 @@ ms.locfileid: "41832971"
 
     > [!NOTE]
     > 根據預設，Azure 會提供網域*azurewebsites.net*同時也提供您設定使用 Azure 管理入口網站的自訂網域的可能性。 不過，您只可以管理自訂網域，如果您使用特定的 Azure App Service 模式。
-    > 
+    >
     > Azure App Service 是免費、 共用、 基本、 標準和 Premium edition 提供。 在免費與共用模式中，所有的 web 應用程式會在多租用戶環境中執行，並有 CPU、 記憶體和網路使用量的配額。 免費的應用程式的最大數目與您計劃而有所不同。 在標準模式中，您可以選擇哪些應用程式在對應的專用虛擬機器上執行的標準 azure 計算資源。 您可以找到中的 web 應用程式模式組態**擴展**web 應用程式的功能表。
-    > 
+    >
     > ![Azure App Service 模式](maintainable-azure-websites-managing-change-and-scale/_static/image19.png "Azure App Service 模式")
-    > 
+    >
     > 如果您使用**Shared**或是**標準**模式中，您將能夠移至您的應用程式中管理 web 應用程式的自訂網域**設定**功能表，然後按一下**管理網域**底下*網域名稱*。
-    > 
+    >
     > ![管理網域](maintainable-azure-websites-managing-change-and-scale/_static/image20.png "管理網域")
-    > 
+    >
     > ![管理自訂網域](maintainable-azure-websites-managing-change-and-scale/_static/image21.png "管理自訂網域")
 9. Web 應用程式建立之後，請按一下下方的連結**URL**檢查新的 web 應用程式是否正在執行的資料行。
 
@@ -754,7 +754,7 @@ ms.locfileid: "41832971"
 
     > [!NOTE]
     > 這個範圍代表您的 web 應用程式的平均 CPU 使用量。 Azure 將會新增或移除執行個體，將您的 web 應用程式保留在這個範圍。 中指定用於調整的執行個體最小和最大數目**執行個體計數**組態。 Azure 永遠不會高於或超過該限制。
-    > 
+    >
     > 預設值**目標 CPU**值只會修改這個實驗室的目的。 藉由設定 CPU 範圍值較小，您會增加以觸發自動調整的機會中, 度的負載放在應用程式時。
 
     ![變更目標會介於 20 到 40%的 CPU](maintainable-azure-websites-managing-change-and-scale/_static/image78.png "變更會介於 20 到 40%的目標 CPU")
@@ -869,7 +869,7 @@ ms.locfileid: "41832971"
 20. 在 [**方案總管] 中**，按兩下**Local.settings**来探索的測試設定檔案。 根據預設，Visual Studio 會使用您的本機電腦來執行測試。
 
     > [!NOTE]
-    > 或者，您可以設定測試專案，以在雲端中使用執行負載測試**Visual Studio Online (VSO)**。 VSO 提供雲端式負載測試會模擬更真實的負載的服務，避免本機環境的條件約束，例如 CPU 容量、 可用記憶體和網路頻寬。 如需使用 VSO 執行負載測試的詳細資訊，請參閱[這篇文章](https://www.visualstudio.com/get-started/load-test-your-app-vs)。
+    > 或者，您可以設定測試專案，以在雲端中使用執行負載測試**測試計劃 Azure**。 Azure 的測試計劃提供雲端式負載測試會模擬更真實的負載的服務，避免本機環境的條件約束，例如 CPU 容量、 可用的記憶體和網路頻寬。 如需有關如何使用 執行負載測試的 Azure 測試計劃的詳細資訊，請參閱[負載測試案例](/azure/devops/test/load-test/overview?view=vsts)。
 
     ![測試設定](maintainable-azure-websites-managing-change-and-scale/_static/image98.png)
 
@@ -904,10 +904,10 @@ ms.locfileid: "41832971"
 
     > [!NOTE]
     > 可能需要幾分鐘的時間才會出現在圖形中的變更 (請按**CTRL + F5**定期重新整理頁面)。 如果看不到任何變更，您可以嘗試下列各項：
-    > 
+    >
     > - 增加的負載測試持續時間 (例如，新增到**10 分鐘**)
     > - 降低的最大和最小值**目標 CPU** web 應用程式的自動調整規模設定中的範圍
-    > - 使用在雲端中執行負載測試**Visual Studio Online**。 更多資訊[這裡](https://www.visualstudio.com/get-started/load-test-your-app-vs.aspx)
+    > - 使用在雲端中執行負載測試**測試計劃 Azure**。 更多資訊[這裡](/azure/devops/test/load-test/index?view=vsts)
 
 * * *
 

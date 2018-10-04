@@ -8,12 +8,12 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 686cdfa5562f1f3569c30841420b112c522016dc
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 7479dc1477c928e0c59adc5f93e6674a7d348172
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824723"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578298"
 ---
 <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax 內容傳遞網路
 ====================
@@ -799,6 +799,7 @@ jQuery 移轉 1.2.0 版
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/bootstrap.bundle.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap.css
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap.css.map
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap.min.css
@@ -813,6 +814,7 @@ jQuery 移轉 1.2.0 版
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.bundle.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css.map
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.min.css

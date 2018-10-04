@@ -8,16 +8,16 @@ ms.date: 01/12/2012
 ms.assetid: 44aa1ac4-6ea2-48a2-972d-52710c48eae5
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/adding-a-new-category-to-the-dropdownlist-using-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: 9a893bf55070adde575d223cd527b02d6f0d470c
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9fb95d22be473a4318520a391fa424106246a054
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831779"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48576348"
 ---
 <a name="adding-a-new-category-to-the-dropdownlist-using-jquery-ui"></a>將新類別新增至 DropDownList 使用 jQuery UI
 ====================
-藉由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 HTML`Select`標記是適合用來呈現一份固定的類別目錄資料，但通常您需要新增新的類別。 假設我們想要在資料庫中的類別中加入內容類型 」 Opera 」？ 在本節中，我們將使用的 jQuery UI 加入對話方塊中，我們可以使用來新增新的類別。 下圖顯示如何在 UI 將會顯示在瀏覽器中。
 

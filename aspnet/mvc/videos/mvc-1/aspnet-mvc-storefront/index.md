@@ -1,27 +1,23 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/index
-title: ASP.NET MVC Storefront |Microsoft 文件
+title: ASP.NET MVC 店面 |Microsoft Docs
 author: rick-anderson
-description: ASP.NET MVC Storefront 入門套件
-ms.author: aspnetcontent
-manager: wpickett
+description: ASP.NET MVC 店面的入門套件
+ms.author: riande
 ms.date: 09/28/2011
-ms.topic: article
 ms.assetid: 296b3a7a-483d-4937-ba2f-3f9c1319616a
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront
 msc.type: chapter
-ms.openlocfilehash: 78b42135d38918fb1d5c1d7a9dcdae1da9b660f1
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: HT
+ms.openlocfilehash: b6030c14980bfe86b04284160d2c1e4a5ccc8bf7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
-ms.locfileid: "29153238"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253741"
 ---
-<a name="aspnet-mvc-storefront"></a>ASP.NET MVC 商店
+<a name="aspnet-mvc-storefront"></a>ASP.NET MVC 店面
 ====================
-> ASP.NET MVC Storefront 入門套件
+> ASP.NET MVC 店面的入門套件
 
 
 - [ASP.NET MVC 店面第 1 節：架構的討論和概觀](aspnet-mvc-storefront-part-1-architectural-discussion-and-overview.md)
@@ -42,7 +38,7 @@ ms.locfileid: "29153238"
 - [ASP.NET MVC 店面第 16 節：使用 OpenID 重做成員資格](aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
 - [ASP.NET MVC 店面第 17 節：和 Jeff Atwood 一起檢查](aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood.md)
 - [ASP.NET MVC 店面第 18 節：累積經驗](aspnet-mvc-storefront-part-18-creating-an-experience.md)
-- [ASP.NET MVC Storefront 一部分 19： 處理訂單，使用 Windows 工作流程](aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
+- [ASP.NET MVC 店面第 19 節：使用 Windows 工作流程處理訂單](aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
 - [ASP.NET MVC 店面第 19a 節：Windows 工作流程的後續追蹤](aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)
 - [ASP.NET MVC 店面第 20 節：記錄](aspnet-mvc-storefront-part-20-logging.md)
 - [ASP.NET MVC 店面第 21 節：訂單管理員及個人化](aspnet-mvc-storefront-part-21-order-manager-and-personalization.md)

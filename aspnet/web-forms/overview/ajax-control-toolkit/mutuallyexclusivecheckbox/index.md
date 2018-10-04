@@ -1,27 +1,23 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/index
-title: MutuallyExclusiveCheckbox |Microsoft 文件
+title: MutuallyExclusiveCheckbox |Microsoft Docs
 author: rick-anderson
-description: 本教學課程示範如何使用 MutuallyExclusiveCheckbox 控制項來建立工作，例如選項按鈕的核取方塊 （互斥），但可以是...
-ms.author: aspnetcontent
-manager: wpickett
+description: 本教學課程示範如何使用 MutuallyExclusiveCheckbox 控制項來建立的運作方式的選項按鈕的核取方塊 （互斥），但這就是...
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: f3f8ccad-2bb3-4cf7-94bf-24b184d987dc
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox
 msc.type: chapter
-ms.openlocfilehash: bea70dbaeb855c586cc0180511c454bf4ffd6e5f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: d171d1908034d81f931236f1494db29599014f70
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26510457"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253977"
 ---
 <a name="mutuallyexclusivecheckbox"></a>MutuallyExclusiveCheckbox
 ====================
-> 本教學課程示範如何使用 MutuallyExclusiveCheckbox 控制項來建立工作，例如選項按鈕的核取方塊 （互斥），但您可以完全清除。
+> 本教學課程示範如何使用 MutuallyExclusiveCheckbox 控制項來建立的運作方式的選項按鈕的核取方塊 （互斥），但可以完全清除。
 
 
 - [建立互斥的核取方塊 (C#)](creating-mutually-exclusive-checkboxes-cs.md)

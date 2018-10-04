@@ -1,29 +1,25 @@
 ---
 uid: web-forms/overview/getting-started/hands-on-labs/index
-title: Visual Studio 2012 未授權者手上實驗室 |Microsoft 文件
+title: Visual Studio 2012 實習實驗室 |Microsoft Docs
 author: rick-anderson
-description: 了解如何開發與這些實際操作實驗室與 ASP.NET Web Form
-ms.author: aspnetcontent
-manager: wpickett
+description: 了解如何開發 ASP.NET Web form 與這些實際操作實驗室
+ms.author: riande
 ms.date: 02/13/2013
-ms.topic: article
 ms.assetid: d0b8ff04-70e0-4453-a331-a4a4f57d72a8
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs
 msc.type: chapter
-ms.openlocfilehash: fcfb9d1f4b1cdd55dbc9472e2b74cab7a4c7d84b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 1e77dcc59856f622d50ebd4e9c26e9a3ca2774e5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26516547"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254220"
 ---
-<a name="visual-studio-2012-hands-on-labs"></a>Visual Studio 2012 未授權者手上實驗室
+<a name="visual-studio-2012-hands-on-labs"></a>Visual Studio 2012 實習實驗室
 ====================
-> 了解如何開發與這些實際操作實驗室與 ASP.NET Web Form
+> 了解如何開發 ASP.NET Web form 與這些實際操作實驗室
 
 
-- [在 ASP.NET 和 Visual Studio 2012 中的 Web 程式開發中最新消息](whats-new-in-aspnet-and-web-development-in-visual-studio-2012.md)
-- [Web Form ASP.NET 4.5 中新功能](whats-new-in-web-forms-in-aspnet-45.md)
-- [Page Inspector 使用 Visual Studio 2012 中](using-page-inspector-in-visual-studio-2012.md)
+- [Visual Studio 2012 中的 ASP.NET 和網頁程式開發的新功能](whats-new-in-aspnet-and-web-development-in-visual-studio-2012.md)
+- [ASP.NET 4.5 的 Web Form 新功能](whats-new-in-web-forms-in-aspnet-45.md)
+- [在 Visual Studio 2012 中使用 Page Inspector](using-page-inspector-in-visual-studio-2012.md)

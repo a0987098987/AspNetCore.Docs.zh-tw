@@ -1,28 +1,24 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/collapsiblepanel/index
-title: CollapsiblePanel |Microsoft 文件
+title: CollapsiblePanel |Microsoft Docs
 author: rick-anderson
-description: 本教學課程會示範如何使用 CollapsiblePanel 控制項，讓使用者展開和摺疊區域在頁面上。
-ms.author: aspnetcontent
-manager: wpickett
+description: 本教學課程會示範如何使用 CollapsiblePanel 控制項，讓使用者展開和摺疊區域 頁面上。
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 3bdbb6ea-917e-4fff-a1cc-f194606a7869
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/collapsiblepanel
 msc.type: chapter
-ms.openlocfilehash: eb511e4c0f126fc54aad7b64473bd40eccf335a6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 019896c58258254f7906ebd965ae521ab05e122c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26509337"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253605"
 ---
 <a name="collapsiblepanel"></a>CollapsiblePanel
 ====================
-> 本教學課程會示範如何使用 CollapsiblePanel 控制項，讓使用者展開和摺疊區域在頁面上。
+> 本教學課程會示範如何使用 CollapsiblePanel 控制項，讓使用者展開和摺疊區域 頁面上。
 
 
-- [摺疊和展開面板從 JavaScript (C#)](collapsing-and-expanding-a-panel-from-javascript-cs.md)
-- [摺疊和展開面板從 JavaScript (VB)](collapsing-and-expanding-a-panel-from-javascript-vb.md)
+- [從 JavaScript 摺疊與展開面板 (C#)](collapsing-and-expanding-a-panel-from-javascript-cs.md)
+- [從 JavaScript 摺疊與展開面板 (VB)](collapsing-and-expanding-a-panel-from-javascript-vb.md)

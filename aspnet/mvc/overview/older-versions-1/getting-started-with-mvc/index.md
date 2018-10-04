@@ -1,27 +1,23 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/index
-title: 開始使用 MVC |Microsoft 文件
+title: 開始使用 MVC |Microsoft Docs
 author: rick-anderson
-description: 這是導入了 ASP.NET MVC 的初級開發教學課程系列。 建立簡單的 web 應用程式可讀取和寫入資料庫中。
-ms.author: aspnetcontent
-manager: wpickett
+description: 這是介紹 ASP.NET MVC 的初學者教學課程系列。 建立簡單的 web 應用程式，從資料庫讀取與寫入。
+ms.author: riande
 ms.date: 11/08/2011
-ms.topic: article
 ms.assetid: 057f01bf-0ad9-488a-ae75-c8f85b8e1f23
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc
 msc.type: chapter
-ms.openlocfilehash: b2e2f167de1e4c1c197bb0a8d37c1a1aed047f14
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: HT
+ms.openlocfilehash: 22e344b0667ac596bea75884df6aadd8e6a5ff92
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
-ms.locfileid: "28883292"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253904"
 ---
-<a name="getting-started-with-mvc"></a>MVC 使用者入門
+<a name="getting-started-with-mvc"></a>開始使用 MVC
 ====================
-> 這是導入了 ASP.NET MVC 的初級開發教學課程系列。 建立簡單的 web 應用程式可讀取和寫入資料庫中。
+> 這是介紹 ASP.NET MVC 的初學者教學課程系列。 建立簡單的 web 應用程式，從資料庫讀取與寫入。
 
 
 - [ASP.NET MVC 簡介](getting-started-with-mvc-part1.md)

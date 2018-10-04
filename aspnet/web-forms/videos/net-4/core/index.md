@@ -1,27 +1,23 @@
 ---
 uid: web-forms/videos/net-4/core/index
-title: 核心 |Microsoft 文件
+title: 核心 |Microsoft Docs
 author: rick-anderson
-description: 這一系列影片探討 ASP.NET 4 自動啟動、 初始設定檔案和 HTML 編碼的核心改進功能。
-ms.author: aspnetcontent
-manager: wpickett
+description: 這一系列影片將探討在 ASP.NET 4 自動啟動、 等全新的組態檔中，HTML 編碼的核心增強功能。
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 257686f7-7e10-4c4b-a2e9-299f93c0f917
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/net-4/core
 msc.type: chapter
-ms.openlocfilehash: 052d0b2bf0b94f5eb8efc274e08297ba6b8c1104
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: fc80120bcc292cd8fd97e28f245994f081b600fc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26526237"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48252853"
 ---
 <a name="core"></a>核心
 ====================
-> 這一系列影片探討 ASP.NET 4 自動啟動、 初始設定檔案和 HTML 編碼的核心改進功能。
+> 這一系列影片將探討在 ASP.NET 4 自動啟動、 等全新的組態檔中，HTML 編碼的核心增強功能。
 
 
 - [自動啟動](aspnet-4-quick-hit-auto-start.md)

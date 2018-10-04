@@ -8,41 +8,37 @@ ms.date: 06/26/2014
 ms.assetid: 72657550-ec09-4779-9bfc-2fb15ecd51c7
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4
 msc.type: authoredcontent
-ms.openlocfilehash: 80173519f1c8abd77b4138b7d29f780ffc60a188
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d07ddab83462ee1bc84ba8ab15fe906937f506e6
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826408"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795388"
 ---
 <a name="entity-relations-in-odata-v4-using-aspnet-web-api-22"></a>使用 ASP.NET Web API 2.2 OData v4 中的實體關聯
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)
 
 > 大部分的資料集定義實體之間的關聯： 客戶具有訂單;活頁簿有作者;產品有供應商。 使用 OData 用戶端可以瀏覽透過實體關聯性。 指定的產品，您可以找到供應商。 您也可以建立或移除關聯性。 例如，您可以設定一項產品的供應商。
-> 
+>
 > 本教學課程會示範如何支援這些作業使用 ASP.NET Web API OData v4 中。 本教學課程是根據本教學課程[建立 OData v4 端點使用 ASP.NET Web API 2](create-an-odata-v4-endpoint.md)。
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
+>
 > - Web API 2.1
 > - OData v4
-> - [Visual Studio 2013 Update 2](https://www.visualstudio.com/downloads/download-visual-studio-vs)
+> - Visual Studio 2013 (下載 Visual Studio 2017[此處](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017))
 > - Entity Framework 6
 > - .NET 4.5
-> 
-> 
+>
 > ## <a name="tutorial-versions"></a>教學課程的版本
-> 
+>
 > OData 第 3 版，請參閱 <<c0> [ 支援 OData v3 中的實體關聯性](https://asp.net/web-api/overview/odata-support-in-aspnet-web-api/odata-v3/working-with-entity-relations)。
-
 
 ## <a name="add-a-supplier-entity"></a>新增 Supplier 實體
 
 > [!NOTE]
 > 本教學課程是根據本教學課程[建立 OData v4 端點使用 ASP.NET Web API 2](create-an-odata-v4-endpoint.md)。
-
 
 首先，我們需要相關的實體。 新增類別，名為`Supplier`Models 資料夾中。
 

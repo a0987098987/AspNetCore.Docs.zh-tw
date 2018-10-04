@@ -8,12 +8,12 @@ ms.date: 12/13/2013
 ms.assetid: cd844025-ccad-41ce-8694-595f1022a49f
 msc.legacyurl: /web-api/overview/testing-and-debugging/mocking-entity-framework-when-unit-testing-aspnet-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: 0bc5ab59583a2be3f889ba05d26c6cda4589057d
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 8945f913abe8fb8397d07a5994000fff2348f1f7
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826647"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795375"
 ---
 <a name="mocking-entity-framework-when-unit-testing-aspnet-web-api-2"></a>模擬 Entity Framework 時的單元測試 ASP.NET Web API 2
 ====================
@@ -22,17 +22,15 @@ ms.locfileid: "41826647"
 [下載已完成的專案](https://code.msdn.microsoft.com/Unit-Testing-with-ASPNET-1374bc11)
 
 > 本指南及應用程式示範如何建立單元測試，您會使用 Entity Framework 的 Web API 2 應用程式。 它會顯示如何修改 scaffold 的控制器，以便傳遞內容物件來進行測試，以及如何建立使用 Entity Framework 的測試物件。
-> 
+>
 > 使用 ASP.NET Web API 進行單元測試的簡介，請參閱 <<c0> [ 單元測試使用 ASP.NET Web API 2](unit-testing-with-aspnet-web-api.md)。
-> 
+>
 > 本教學課程假設您已熟悉 ASP.NET Web API 的基本概念。 如需入門教學課程，請參閱 < [Getting Started with ASP.NET Web API 2](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md)。
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2017](https://www.visualstudio.com/vs/)
+>
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 > - Web API 2
-
 
 ## <a name="in-this-topic"></a>本主題內容
 

@@ -8,12 +8,12 @@ ms.date: 01/20/2014
 ms.assetid: 979d6c9f-0129-4e5b-ae56-4507b281b86d
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: f13720c5e9de99fb4ae5b27a757c257cac881f89
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 35cf3bf555218b6b49b30f48186e4c67aff4ff7b
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834245"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795547"
 ---
 <a name="attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的屬性路由
 ====================
@@ -25,10 +25,9 @@ ms.locfileid: "41834245"
 
 本主題說明如何啟用屬性路由，並且描述屬性路由的各種選項。 使用屬性路由端對端教學課程中，請參閱[使用 Web API 2 中的屬性路由建立 REST API](create-a-rest-api-with-attribute-routing.md)。
 
-
 ## <a name="prerequisites"></a>必要條件
 
-[Visual Studio 2017](https://www.visualstudio.com/vs/) Community、 Professional 或 Enterprise Edition
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community、 Professional 或 Enterprise edition
 
 或者，使用 NuGet 套件管理員來安裝必要的套件。 從**工具**功能表，在 Visual Studio 中，選取**程式庫套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中輸入下列命令：
 
@@ -55,21 +54,21 @@ ms.locfileid: "41834245"
 
 在此範例中，"/ api/v1/產品"會路由傳送到不同的控制器，比"/ api/v2/產品 」。
 
-`/api/v1/products`  
+`/api/v1/products`
 `/api/v2/products`
 
 **多載的 URI 區段**
 
 在此範例中，"1"是順序的數字，但是 「 擱置 」 對應至集合。
 
-`/orders/1`  
+`/orders/1`
 `/orders/pending`
 
 **多個參數類型**
 
 在此範例中，"1"是順序的數字，但是"2013年/06/16"指定的日期。
 
-`/orders/1`  
+`/orders/1`
 `/orders/2013/06/16`
 
 <a id="enable"></a>
@@ -251,7 +250,7 @@ Web API，也會根據要求的 HTTP 方法 （GET、 POST 等） 的動作。 �
 以下是如何決定總排序：
 
 1. 比較**RouteOrder**路由屬性的屬性。
-2. 查看路由範本中的每個 URI 區段。 對於每個區段中，排序，如下所示： 
+2. 查看路由範本中的每個 URI 區段。 對於每個區段中，排序，如下所示：
 
     1. 常值的區段。
     2. 路由條件約束使用的參數。

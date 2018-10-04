@@ -7,12 +7,12 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: c2374e7c9ac89c2af26436529c7fa58a2d2d6ba6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1343bd100f521326477ecd831aa627b4394bad44
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814154"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795349"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>將 ASP.NET MVC 應用程式遷移到 Windows 容器
 
@@ -35,16 +35,16 @@ ms.locfileid: "37814154"
 
 ## <a name="prerequisites"></a>必要條件
 
-開發電腦必須在執行中
+開發用的電腦必須具備下列軟體：
 
-- [Windows 10 年度更新](https://www.microsoft.com/software-download/windows10/) (或更高版本) 或 [Windows Server 2016](https://www.microsoft.com/cloud-platform/windows-server) (或更高版本)。
+- [Windows 10 年度更新版](https://www.microsoft.com/software-download/windows10/)（或更新版本） 或[Windows Server 2016](https://www.microsoft.com/cloud-platform/windows-server) （或更新版本）
 - [Docker for Windows](https://docs.docker.com/docker-for-windows/) - 穩定版 1.13.0 或 1.12 Beta 26 (或更新版本)
-- [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)。
+- [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 
 > [!IMPORTANT]
 > 如果您在使用 Windows Server 2016，請遵循[容器主機部署 - Windows Server](https://msdn.microsoft.com/virtualization/windowscontainers/deployment/deployment) 的指示。
 
-安裝並啟動 Docker 之後，以滑鼠右鍵按一下系統匣圖示，然後選取 [切換至 Windows 容器]。 如此才能根據 Windows 執行 Docker 映像。 此命令需要幾秒鐘的時間執行：
+安裝並啟動 Docker，以滑鼠右鍵按一下系統匣圖示，然後選取後**切換至 Windows 容器**。 如此才能根據 Windows 執行 Docker 映像。 此命令需要幾秒鐘的時間執行：
 
 ![Windows 容器][windows-container]
 
@@ -114,7 +114,7 @@ docker run -d --name randomanswers mvcrandomanswers
 
 `-d` 引數會指示 Docker 在離線模式中啟動映像。 這表示 Docker 映像可在與目前殼層中斷連線的情況下執行。
 
-在許多 docker 範例中，您可能會看到對應的容器和主機的連接埠-p。 預設的 aspnet 映像已經設定要在連接埠 80 上接聽，並將它公開的容器。 
+在許多 docker 範例中，您可能會看到對應的容器和主機的連接埠-p。 預設的 aspnet 映像已經設定要在連接埠 80 上接聽，並將它公開的容器。
 
 `--name randomanswers` 提供執行中容器的名稱。 您可以使用此名稱，而不是大多數命令中的容器識別碼。
 

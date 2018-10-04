@@ -8,12 +8,12 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: da3ca8f89f823fcb2c4ab74af6ddf4f61d4e663a
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 191452204d4347396b1d339d9b82d583a2ce9f3c
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824546"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795510"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的屬性路由建立 REST API
 ====================
@@ -46,13 +46,13 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 屬性路由的一�
 
 ## <a name="prerequisites"></a>必要條件
 
-[Visual Studio 2017](https://www.visualstudio.com/vs/) Community、 Professional 或 Enterprise edition。
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community、 Professional 或 Enterprise edition。
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
 
 執行 Visual Studio 啟動。 從**檔案**功能表上，選取**新增**，然後選取**專案**。
 
-在 **範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。 底下**Visual C#**，選取**Web**。 在專案範本清單中，選取**ASP.NET MVC 4 Web 應用程式**。 將專案命名為&quot;BooksAPI&quot;。
+依序展開**已安裝** > **Visual C#** 類別目錄。 底下**Visual C#**，選取**Web**。 在專案範本清單中，選取**ASP.NET MVC 4 Web 應用程式**。 將專案命名為&quot;BooksAPI&quot;。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image1.png)
 

@@ -9,12 +9,12 @@ ms.date: 03/12/2010
 ms.technology: aspnet
 msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: 5bdebcc226050afc2469840dc4a4dc97ec6b80b2
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 2dc48e1262b1807a77a9889f7e0e62c9b9ea463e
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833194"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48794807"
 ---
 # <a name="aspnet-overview"></a>ASP.NET 概觀
 
@@ -24,7 +24,7 @@ ASP.NET 是免費的 web 架構來建置絕佳的網站和使用 HTML、 CSS 和
 
 ## <a name="get-started"></a>開始使用
 
-[Visual Studio Community 2017](https://www.visualstudio.com/downloads/)的免費 IDE，用以在 Windows 上的 ASP.NET。
+安裝[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community edition 免費的 IDE，適用於在 Windows 上的 ASP.NET。
 
 ## <a name="websites-and-web-applications"></a>網站和 web 應用程式
 
@@ -34,7 +34,7 @@ ASP.NET 是免費的 web 架構來建置絕佳的網站和使用 HTML、 CSS 和
 
 以下是每個架構和如何在它們之間做出選擇的一些概念的概觀。 如果您偏好影片介紹，請參閱[進行 ASP.NET 網站](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/Making-Websites-with-ASPNET)和[Web 工具是什麼？](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/what-is-web-tools)
 
-|   | 如果您在體驗 | 開發樣式 | 專業知識 | 
+|   | 如果您在體驗 | 開發樣式 | 專業知識 |
 |-----------|----------------------|-----------------------------------------------------|----------------|
 | Web Form | Win Form、 WPF、.NET | 快速開發使用豐富的程式庫的封裝的 HTML 標記的控制項 | 中級、 進階的 RAD |
 | MVC       | Ruby on Rails，.NET  | 完整控制 HTML 標記、 程式碼和標記分隔，且容易撰寫測試的詳細資訊。 行動和單一頁面應用程式 (SPA) 是最佳選擇。 | 中級、 進階 |
@@ -42,13 +42,13 @@ ASP.NET 是免費的 web 架構來建置絕佳的網站和使用 HTML、 CSS 和
 
 ### <a name="web-forms"></a>Web Form
 
-您可以使用 ASP.NET Web Form，建置動態網站，使用熟悉的拖放、 事件驅動模型。 在設計介面及數以百計的控制項和元件，可讓您快速建置複雜且功能強大 UI 導向網站的資料存取。 
+您可以使用 ASP.NET Web Form，建置動態網站，使用熟悉的拖放、 事件驅動模型。 在設計介面及數以百計的控制項和元件，可讓您快速建置複雜且功能強大 UI 導向網站的資料存取。
 
 [深入了解 Web Form](web-forms/index.md)
 
 ### <a name="mvc"></a>MVC
 
-ASP.NET MVC 可讓您建置動態網站，可讓清楚分離關注點，並讓您完全掌控標記，進而順暢、 敏捷式軟體開發開發功能強大、 以模式為基礎的方法。 ASP.NET MVC 包含許多功能可讓您建立使用最新的 web 標準的精密應用程式的快速、 tdd 的開發。 
+ASP.NET MVC 可讓您建置動態網站，可讓清楚分離關注點，並讓您完全掌控標記，進而順暢、 敏捷式軟體開發開發功能強大、 以模式為基礎的方法。 ASP.NET MVC 包含許多功能可讓您建立使用最新的 web 標準的精密應用程式的快速、 tdd 的開發。
 
 [深入了解 MVC](mvc/index.md)
 
@@ -80,7 +80,7 @@ ASP.NET SignalR 是 ASP.NET 開發人員更輕鬆開發即時 web 功能的新�
 
 <!-- Put first under SignalR TOC:  Watch video (6 minutes) https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/signalr-and-the-real-time-web -->
 
-## <a name="mobile-apps-and-sites"></a>行動裝置應用程式和網站 
+## <a name="mobile-apps-and-sites"></a>行動裝置應用程式和網站
 
 ASP.NET 能夠與 Web API 後端，以及使用回應式設計架構，像是 Twitter Bootstrap 的行動 web 站台的原生行動應用程式。 如果您要建置原生的行動裝置應用程式，很容易建立 JSON 型 Web API 來控制代碼的資料存取、 驗證及您的應用程式的推播通知。 如果您要建置回應靈敏的行動裝置網站，您可以使用任何的 CSS 架構或您想要的話，或選取功能強大的行動系統，例如 jQuery Mobile 或 Sencha 和 PhoneGap 絕佳行動應用程式的開啟方格系統。
 
@@ -88,7 +88,7 @@ ASP.NET 能夠與 Web API 後端，以及使用回應式設計架構，像是 Tw
 
 <!-- Put first under mobile TOC:  Watch video (11 minutes) https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-and-mobile -->
 
-## <a name="single-page-applications"></a>單一頁面應用程式 
+## <a name="single-page-applications"></a>單一頁面應用程式
 
 ASP.NET 單一頁面應用程式 (SPA) 可協助您建置包含大量使用 HTML 5、 CSS 3 和 JavaScript 的用戶端互動的應用程式。 Visual Studio 包含建置使用 knockout.js 和 ASP.NET Web API 的單一頁面應用程式的範本。 除了內建的 SPA 範本中，社群建立 SPA 範本是可供下載。
 

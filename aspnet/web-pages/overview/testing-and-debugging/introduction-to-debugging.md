@@ -8,38 +8,38 @@ ms.date: 02/20/2014
 ms.assetid: 68de4326-7611-4b9b-b5f6-79b7adc3069f
 msc.legacyurl: /web-pages/overview/testing-and-debugging/introduction-to-debugging
 msc.type: authoredcontent
-ms.openlocfilehash: da04158c58054a8c0b8e31d3a55bea2dcbae7a05
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: fb9a69d568e10ddafd71e2b9600b3dae21576807
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832966"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48794985"
 ---
 <a name="introduction-to-debugging-aspnet-web-pages-razor-sites"></a>簡介偵錯 ASP.NET Web Pages (Razor) 網站
 ====================
 藉由[Tom FitzMacken](https://github.com/tfitzmac)
 
 > 這篇文章會說明各種偵錯 ASP.NET Web Pages (Razor) 網站中的網頁。 偵錯是尋找和修正錯誤，在字碼頁中的程序。
-> 
-> **您將學到什麼：** 
-> 
+>
+> **您將學到什麼：**
+>
 > - 如何顯示資訊可協助分析和偵錯網頁。
 > - 如何使用偵錯工具在 Visual Studio 中。
->   
-> 
+>
+>
 > 以下是所引進的發行項 ASP.NET 功能：
-> 
+>
 > - `ServerInfo`協助程式。
 > - `ObjectInfo` 協助程式。
->   
-> 
+>
+>
 > ## <a name="software-versions"></a>軟體版本
-> 
-> 
+>
+>
 > - ASP.NET Web Pages (Razor) 3
 > - Visual Studio 2013
->   
-> 
+>
+>
 > 本教學課程也適用於 ASP.NET Web Pages 2。 您可以使用 WebMatrix 3，但不是支援整合式偵錯工具。
 
 
@@ -54,8 +54,8 @@ ms.locfileid: "41832966"
 
     您可以新增`ServerInfo`頁面中的任何位置的程式碼。 但是加入結尾會區隔其輸出與您其他的網頁內容，這會讓您更容易閱讀。
 
-    > [!NOTE] 
-    > 
+    > [!NOTE]
+    >
     > **重要**網頁移到生產環境伺服器之前，您應該從您的網頁移除任何診斷程式碼。 這適用於`ServerInfo`協助程式，以及其他診斷技巧這篇文章中的包含程式碼加入至頁面。 因為這類資訊可能有助於不懷好意的人，您不希望您的網站訪客在您的伺服器和類似的詳細資訊，查看您的伺服器名稱、 使用者名稱、 路徑的相關資訊。
 3. 儲存頁面，並在瀏覽器中執行它。
 
@@ -119,7 +119,7 @@ ms.locfileid: "41832966"
 
 ## <a name="using-debugging-tools-in-visual-studio"></a>使用 Visual Studio 中偵錯工具
 
-如需更完整的偵錯體驗，使用 Visual Studio 2013 或免費[Visual Studio Express 2013 for Web](https://www.visualstudio.com/downloads/download-visual-studio-vs#d-2013-express)。 使用 Visual Studio 中，您可以在您想要檢查的行程式碼中設定中斷點。
+使用更完整的偵錯體驗[Visual Studio](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)。 使用 Visual Studio 中，您可以在您想要檢查的行程式碼中設定中斷點。
 
 ![設定中斷點](introduction-to-debugging/_static/image1.png)
 

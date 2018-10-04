@@ -8,22 +8,22 @@ ms.date: 06/11/2014
 ms.assetid: 43a6cce7-a3ef-42aa-ad06-90d36d49f098
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 7b0d5266757219a05b25fc3d1d4cba8514a4dff7
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: e1bb1aa120ced95db7674eae1831f2a2c7356fc0
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41827011"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48794820"
 ---
 <a name="unit-testing-controllers-in-aspnet-web-api-2"></a>單元測試 ASP.NET Web API 2 中的控制站
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)
 
 > 本主題描述一些單元測試控制器，Web API 2 中的特定技術。 閱讀本主題之前，您可能想要閱讀本教學課程[單元測試 ASP.NET Web API 2](unit-testing-with-aspnet-web-api.md)，其中顯示如何將單元測試專案新增至您的解決方案。
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> - [Visual Studio 2017](https://www.visualstudio.com/vs/)
+>
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 > - Web API 2
 > - [Moq](https://github.com/Moq) 4.5.30
 

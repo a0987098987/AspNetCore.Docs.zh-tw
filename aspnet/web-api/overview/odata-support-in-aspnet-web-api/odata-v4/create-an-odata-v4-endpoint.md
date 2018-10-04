@@ -8,37 +8,34 @@ ms.date: 06/24/2014
 ms.assetid: 1e1927c0-ded1-4752-80fd-a146628d2f09
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint
 msc.type: authoredcontent
-ms.openlocfilehash: 7f2d0b8fa8ac290e5018cb5237b1fedb5f40eeb0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 48c1a78c96cb0ebfa0b053dfef84e76433112650
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832219"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795414"
 ---
 <a name="create-an-odata-v4-endpoint-using-aspnet-web-api-22"></a>建立 OData v4 端點使用 ASP.NET Web API 2.2
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)
 
 > 開放式資料通訊協定 (OData) 是網站的資料存取通訊協定。 OData 提供統一的方式來查詢及操作資料集，透過 CRUD 作業 （建立、 讀取、 更新和刪除）。
-> 
+>
 > ASP.NET Web API 支援 v3 和 v4 通訊協定。 您甚至可以執行並排顯示的 v4 端點與 v3 端點。
-> 
+>
 > 本教學課程會示範如何建立支援 CRUD 作業的 OData v4 端點。
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
+>
 > - Web API 2.2
 > - OData v4
-> - [Visual Studio 2013 Update 2](https://www.visualstudio.com/downloads/download-visual-studio-vs)
+> - Visual Studio 2013 (下載 Visual Studio 2017[此處](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017))
 > - Entity Framework 6
 > - .NET 4.5
-> 
-> 
+>
 > ## <a name="tutorial-versions"></a>教學課程的版本
-> 
+>
 > OData 第 3 版，請參閱 <<c0> [ 建立 OData v3 端點](../odata-v3/creating-an-odata-endpoint.md)。
-
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
 

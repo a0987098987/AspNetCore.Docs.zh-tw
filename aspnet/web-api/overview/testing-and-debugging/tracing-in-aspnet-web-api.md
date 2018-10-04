@@ -8,30 +8,28 @@ ms.date: 02/25/2014
 ms.assetid: 66a837e9-600b-4b72-97a9-19804231c64a
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 02805eda4f8dceb467547fa4e00aef8ea956f228
-ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
+ms.openlocfilehash: 426e3500c504a651a325eec021e2d9e8b9cc1d32
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46292280"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795276"
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的追蹤
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)
 
 > 當您嘗試偵錯 web 應用程式時，會無法取代的一組適當的追蹤記錄檔。 本教學課程會示範如何在 ASP.NET Web API 中啟用追蹤。 您可以使用這項功能，來追蹤 Web API 架構的功能之前和之後叫用您的控制器。 您也可以使用它來追蹤自己的程式碼。
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2017](https://www.visualstudio.com/downloads/) （也可用於 Visual Studio 2015）
+>
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) （也可用於 Visual Studio 2015）
 > - Web API 2
 > - [Microsoft.AspNet.WebApi.Tracing](http://www.nuget.org/packages/Microsoft.AspNet.WebApi.Tracing)
 
-
 ## <a name="enable-systemdiagnostics-tracing-in-web-api"></a>啟用 System.Diagnostics 追蹤 Web API 中
 
-首先，我們將建立新的 ASP.NET Web 應用程式專案。 在 Visual Studio 中，從**檔案**功能表上，選取**新增**，然後**專案**。 底下**範本**， **Web**，選取**ASP.NET Web 應用程式**。
+首先，我們將建立新的 ASP.NET Web 應用程式專案。 在 Visual Studio 中，從**檔案**功能表上，選取**新增** > **專案**。 底下**範本**， **Web**，選取**ASP.NET Web 應用程式**。
 
 [![](tracing-in-aspnet-web-api/_static/image2.png)](tracing-in-aspnet-web-api/_static/image1.png)
 

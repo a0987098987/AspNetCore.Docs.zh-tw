@@ -8,12 +8,12 @@ ms.date: 06/05/2014
 ms.assetid: bf20f78d-ff91-48be-abd1-88e23dcc70ba
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 0a3f9ddde725995359de85c5e0783106f5de02bd
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 91cca2789b66b7b8983f8786b506c5fc71db8b75
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826034"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795430"
 ---
 <a name="unit-testing-aspnet-web-api-2"></a>單元測試 ASP.NET Web API 2
 ====================
@@ -22,17 +22,15 @@ ms.locfileid: "41826034"
 [下載已完成的專案](https://code.msdn.microsoft.com/Unit-Testing-with-ASPNET-1374bc11)
 
 > 本指南及應用程式示範如何建立簡單的單元測試，您的 Web API 2 應用程式。 本教學課程會示範如何在您的解決方案，包括單元測試專案和撰寫檢查從控制器方法的傳回的值的測試方法。
-> 
+>
 > 本教學課程假設您已熟悉 ASP.NET Web API 的基本概念。 如需入門教學課程，請參閱 < [Getting Started with ASP.NET Web API 2](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md)。
-> 
+>
 > 本主題中的單元測試是故意局限於簡單的資料案例。 單元測試更進階的資料案例，請參閱[模擬 Entity Framework 時單元測試 ASP.NET Web API 2](mocking-entity-framework-when-unit-testing-aspnet-web-api-2.md)。
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2017](https://www.visualstudio.com/vs/)
+>
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 > - Web API 2
-
 
 ## <a name="in-this-topic"></a>本主題內容
 
@@ -41,7 +39,6 @@ ms.locfileid: "41826034"
 - [必要條件](#prereqs)
 - [下載程式碼](#download)
 - [使用單元測試專案建立應用程式](#appwithunittest)
-
     - [建立應用程式時，加入單元測試專案](#whencreate)
     - [將單元測試專案新增至現有的應用程式](#addtoexisting)
 - [設定 Web API 2 應用程式](#setupproject)
@@ -52,7 +49,7 @@ ms.locfileid: "41826034"
 <a id="prereqs"></a>
 ## <a name="prerequisites"></a>必要條件
 
-Visual Studio 2017 Community、 Professional 或 Enterprise edition
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community、 Professional 或 Enterprise edition
 
 <a id="download"></a>
 ## <a name="download-code"></a>下載程式碼

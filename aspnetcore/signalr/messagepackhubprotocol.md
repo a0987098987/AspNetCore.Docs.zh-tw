@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: 78b708c50ce7a8101c9eaa558171540e61c0d7f0
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: c04834b0d395d08782b51b56e79badba078a5b91
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39094991"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48794833"
 ---
 # <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR MessagePack 中樞通訊協定
 
@@ -50,6 +50,9 @@ services.AddSignalR()
 ```
 
 ## <a name="configure-messagepack-on-the-client"></a>用戶端上設定 MessagePack
+
+> [!NOTE]
+> 預設會啟用 JSON 支援的用戶端。 用戶端只能支援單一通訊協定。 新增 MessagePack 支援取代任何先前設定的通訊協定。
 
 ### <a name="net-client"></a>.NET 用戶端
 

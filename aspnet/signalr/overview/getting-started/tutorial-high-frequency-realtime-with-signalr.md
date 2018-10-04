@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 9f969dda-78ea-4329-b1e3-e51c02210a2b
 msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: e710980cecf9093ea9046b5790379befb5b61841
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 008cbc8ec7ca0af4b20e5e3974cf3862efa7677e
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831214"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48794876"
 ---
 <a name="tutorial-high-frequency-realtime-with-signalr-2"></a>教學課程： 高頻率即時與 SignalR 2
 ====================
@@ -213,7 +213,7 @@ ms.locfileid: "41831214"
 
 ## <a name="further-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何以程式設計的 SignalR 應用程式，將用戶端與伺服器之間的頻率高的訊息傳送方式。 此通訊架構可用於開發線上遊戲，以及其他的模擬，例如[ShootR 遊戲建立與 SignalR](http://shootr.signalr.net)。
+在本教學課程中，您已了解如何以程式設計的 SignalR 應用程式，將用戶端與伺服器之間的頻率高的訊息傳送方式。 此通訊架構可用於開發線上遊戲，以及其他的模擬，例如[ShootR 遊戲建立與 SignalR](https://shootr.azurewebsites.net/)。
 
 在本教學課程中建立完整的應用程式可以從下載[程式碼庫](https://code.msdn.microsoft.com/SignalR-20-MoveShape-Demo-6285b83a)。
 

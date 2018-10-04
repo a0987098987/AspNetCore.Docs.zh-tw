@@ -8,38 +8,38 @@ ms.date: 02/13/2014
 ms.assetid: 0acfec5a-48f2-4766-a801-a0f426966f0a
 msc.legacyurl: /web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio
 msc.type: authoredcontent
-ms.openlocfilehash: 41cb1048b9dab21516e38cfff0772b8b690d474f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: f3c1a74b23a0d9535256caa660408701062fe21c
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825113"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795443"
 ---
 <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a>程式設計使用 Visual Studio 的 ASP.NET Web Pages (Razor)
 ====================
 藉由[Tom FitzMacken](https://github.com/tfitzmac)
 
 > 這篇文章說明如何使用 Visual Studio 或 Visual Web Developer Express 程式 ASP.NET Web Pages (Razor) 網站。
-> 
+>
 > 您將學到什麼
-> 
+>
 > - 您需要以 ASP.NET Web Pages 用於您版本的 Visual Studio 安裝 （如果有任何項目）。
 > - 如何加入支援 ASP.NET Web Pages Visual Web Developer 2010 Express。
 > - 如何使用 Visual Studio 中的功能，才能使用 ASP.NET Razor 頁面，包括 IntelliSense 和偵錯工具。
->   
-> 
+>
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
+>
+>
 > - ASP.NET Web Pages (Razor) 3
 > - Visual Studio 2013
 > - WebMatrix 3
->   
-> 
+>
+>
 > 本教學課程也適用於 ASP.NET Web Pages 2、 與 Visual Studio 2012、 Visual Studio 2010，WebMatrix 2。
 
 
-您可以使用 Razor 語法使用 WebMatrix 或許多其他程式碼編輯器進行程式設計的 ASP.NET Web pages。 您也可以使用 Microsoft Visual Studio 也就是功能完整的整合式的開發環境 (IDE)，提供一組強大的工具建立的多種應用程式 （不只是網站）。 若要使用 ASP.NET Razor 頁面，您也可以使用其中一種完整版本的 Visual Studio 或免費[Visual Studio Express for Web](https://www.visualstudio.com/downloads/download-visual-studio-vs#d-2013-express)版本。
+您可以使用 Razor 語法使用 WebMatrix 或許多其他程式碼編輯器進行程式設計的 ASP.NET Web pages。 您也可以使用 Microsoft Visual Studio 也就是功能完整的整合式的開發環境 (IDE)，提供一組強大的工具建立的多種應用程式 （不只是網站）。 若要使用 ASP.NET Razor 頁面，您可以使用[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)。
 
 Visual Studio 提供使用 ASP.NET Razor 網頁進行程式設計的兩個特別有用功能如下：
 
@@ -47,6 +47,8 @@ Visual Studio 提供使用 ASP.NET Razor 網頁進行程式設計的兩個特別
 - *偵錯工具*。 偵錯工具可讓您疑難排解您的程式碼執行、 檢查變數，並逐步執行逐行程式碼時停止程式。
 
 ## <a name="using-visual-studio-with-different-versions-of-aspnet-web-pages"></a>使用 Visual Studio 使用不同版本的 ASP.NET Web Pages
+
+若要開發 Visual Studio 2017 中的 ASP.NET web 應用程式，安裝**ASP.NET 和 web 開發**工作負載。
 
 Visual Studio 2012 和 Visual Studio 2013 包含支援 ASP.NET Web Pages。 （只有當您安裝 Visual Studio 會安裝才能支援 ASP.NET 網頁的封裝）。
 
@@ -73,7 +75,7 @@ Visual Studio 2010 不支援預設包含 ASP.NET Web Pages。 若要使用 Visua
 
 若要在 Visual Studio 中建立 ASP.NET Razor 網站：
 
-1. 啟動 Visual Studio 或 Visual Web Developer。
+1. 開啟 Visual Studio。
 2. 在 **檔案**功能表上，按一下**新的網站**。
 
     ![建立新的網站](program-asp-net-web-pages-in-visual-studio/_static/image2.png)
@@ -90,28 +92,27 @@ Visual Studio 2010 不支援預設包含 ASP.NET Web Pages。 若要使用 Visua
 既然您已建立站台，您可以看到 IntelliSense 在 Visual Studio 中的運作方式。
 
 1. 在您剛才建立的網站中，開啟*Default.cshtml*頁面。
-2. 在後`<h3>`標記，在頁面中，輸入`@ServerInfo.`（包括點）。 請注意 IntelliSense 如何顯示可用的方法`ServerInfo`下拉式清單中的協助程式。 
+2. 在後`<h3>`標記，在頁面中，輸入`@ServerInfo.`（包括點）。 請注意 IntelliSense 如何顯示可用的方法`ServerInfo`下拉式清單中的協助程式。
 
     ![intellisense](program-asp-net-web-pages-in-visual-studio/_static/image4.png)
-3. 選取`GetHtml`方法清單，然後按 Enter 鍵。 IntelliSense 會自動填入此方法。 (使用 C# 中的任何方法，您必須新增`()`方法之後的字元。)  
-   完整程式碼`GetHtml`方法如以下範例所示：  
+3. 選取`GetHtml`方法清單，然後按 Enter 鍵。 IntelliSense 會自動填入此方法。 (使用 C# 中的任何方法，您必須新增`()`方法之後的字元。)完整程式碼`GetHtml`方法如以下範例所示：
 
     [!code-cshtml[Main](program-asp-net-web-pages-in-visual-studio/samples/sample1.cshtml)]
-4. 按 Ctrl + F5 執行頁面。 這是頁面看起來像時顯示在瀏覽器： 
+4. 按 Ctrl + F5 執行頁面。 這是頁面看起來像時顯示在瀏覽器：
 
     ![在瀏覽器中的預設頁面](program-asp-net-web-pages-in-visual-studio/_static/image5.png)
 5. 關閉瀏覽器。
 
 ### <a name="using-the-debugger"></a>使用偵錯工具
 
-1. 在頂端*Default.cshtml*頁面上，以開頭的行後方`Page.Title`，新增下列程式碼行： 
+1. 在頂端*Default.cshtml*頁面上，以開頭的行後方`Page.Title`，新增下列程式碼行：
 
     [!code-csharp[Main](program-asp-net-web-pages-in-visual-studio/samples/sample2.cs)]
 2. 左邊的程式碼編輯器的灰色邊界，按一下旁邊的 這個新的一行以新增*中斷點*。 中斷點會告知偵錯工具停止在該點執行程式，以便您可以看到發生的事情的標記。
 
     ![設定中斷點](program-asp-net-web-pages-in-visual-studio/_static/image6.png)
 3. 移除對呼叫`ServerInfo.GetHtml`方法，並將呼叫加入`@myTime`變數在它的位置。 這個呼叫會顯示新的一行程式碼所傳回的目前時間值。
-4. 按 F5 以偵錯工具中執行的頁面。 頁面會在您設定的中斷點上停止。 下圖顯示頁面的外觀在編輯器中使用的中斷點 （黃色）。 
+4. 按 F5 以偵錯工具中執行的頁面。 頁面會在您設定的中斷點上停止。 下圖顯示頁面的外觀在編輯器中使用的中斷點 （黃色）。
 
     ![偵錯中斷點](program-asp-net-web-pages-in-visual-studio/_static/image7.png)
 5. 在 偵錯 工具列中，按一下**逐步執行**執行下的一行程式碼 按鈕 （或按 F11）。 每次您按一下此按鈕時，您會繼續執行至下一行程式碼。

@@ -8,32 +8,29 @@ ms.date: 06/27/2014
 ms.assetid: 0e6fb03c-b16d-4bb0-ab0b-552bd2b6ece1
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/odata-actions-and-functions
 msc.type: authoredcontent
-ms.openlocfilehash: 4e61c6b4bf59792b6570e32e6d24635d4f5e5ac3
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 45b84ec4ee76e83ece99bf6841c28e13c3ab7728
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832635"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795263"
 ---
 <a name="actions-and-functions-in-odata-v4-using-aspnet-web-api-22"></a>動作和函式在 OData v4 中的使用 ASP.NET Web API 2.2
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)
 
 > 在 OData 中，動作和函式會將不會輕易地定義為實體上的 CRUD 作業的伺服器端行為的方式。 本教學課程會示範如何將 OData v4 端點，使用 Web API 2.2 中的動作和函式。 本教學課程是根據本教學課程[建立 OData v4 端點使用 ASP.NET Web API 2](create-an-odata-v4-endpoint.md)
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
+>
 > - Web API 2.2
 > - OData v4
-> - [Visual Studio 2013 Update 2](https://www.visualstudio.com/downloads/download-visual-studio-vs)
+> - Visual Studio 2013 (下載 Visual Studio 2017[此處](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017))
 > - .NET 4.5
-> 
-> 
+>
 > ## <a name="tutorial-versions"></a>教學課程的版本
-> 
+>
 > 適用於 OData 版本 3，請參閱[ASP.NET Web API 2 中的 OData 動作](../odata-v3/odata-actions.md)。
-
 
 之間的差異*動作*並*函式*是動作可能有副作用，而且函式不這麼做。 動作和函式可以傳回資料。 動作的部分用法包括：
 

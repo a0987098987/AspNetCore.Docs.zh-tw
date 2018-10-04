@@ -24,14 +24,14 @@ ASP.NET Core SignalR JavaScript 用戶端程式庫可讓開發人員呼叫伺服
 
 ## <a name="install-the-signalr-client-package"></a>SignalR 用戶端封裝安裝
 
-SignalR JavaScript 用戶端程式庫會以[npm](https://www.npmjs.com/)套件形式傳遞。如果您使用 Visual Studio，可以在**Package Manager Console**的根資料夾中執行`npm install`。如果您使用 Visual Studio Code，請從**整合式終端機**中執行命令。
+SignalR JavaScript 用戶端程式庫會以[npm](https://www.npmjs.com/)套件形式傳遞。 如果您使用 Visual Studio，可以在**Package Manager Console**的根資料夾中執行`npm install`。 如果您使用 Visual Studio Code，請從**整合式終端機**中執行命令。
 
   ```console
   npm init -y
   npm install @aspnet/signalr
   ```
 
-npm 會將套件內容安裝在 *node_modules\\@aspnet\signalr\dist\browser* 資料夾中。在 *wwwroot\\lib* 資料夾下，建立名為 *signalr* 的新資料夾。將 *signalr.js* 檔案複製到 *wwwroot\lib\signalr* 資料夾中。
+npm 會將套件內容安裝在 *node_modules\\@aspnet\signalr\dist\browser* 資料夾中。 在 *wwwroot\\lib* 資料夾下，建立名為 *signalr* 的新資料夾。 將 *signalr.js* 檔案複製到 *wwwroot\lib\signalr* 資料夾中。
 
 ## <a name="use-the-signalr-javascript-client"></a>使用 SignalR JavaScript 用戶端
 
@@ -49,15 +49,15 @@ npm 會將套件內容安裝在 *node_modules\\@aspnet\signalr\dist\browser* 資
 
 ### <a name="cross-origin-connections"></a>跨原始來源的連線
 
-一般而言，瀏覽器會從與所要求之頁面相同的網域載入連線。不過，有些情況下會需要連線到另一個網域的連線。
+一般而言，瀏覽器會從與所要求之頁面相同的網域載入連線。 不過，有些情況下會需要連線到另一個網域的連線。
 
-若要防止惡意網站從另一個網站讀取敏感性資料，預設會停用[跨來源連線](xref:security/cors)。若要允許跨來源要求，請在 `Startup` 類別中啟用它。
+若要防止惡意網站從另一個網站讀取敏感性資料，預設會停用[跨來源連線](xref:security/cors)。 若要允許跨來源要求，請在 `Startup` 類別中啟用它。
 
 [!code-csharp[Cross-origin connections](javascript-client/sample/Startup.cs?highlight=29-35,56)]
 
 ## <a name="call-hub-methods-from-client"></a>從用戶端呼叫中樞方法
 
-JavaScript 用戶端會透過 [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection) [invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) 方法呼叫中樞的公用方法。`invoke` 方法接受兩個引數：
+JavaScript 用戶端會透過 [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection) [invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) 方法呼叫中樞的公用方法。 `invoke` 方法接受兩個引數：
 
 * 中樞方法的名稱。 在下列範例中，在中樞的方法名稱是`SendMessage`。
 * 中樞的方法中定義的任何引數。 在下列範例中，引數名稱是`message`。
@@ -84,15 +84,15 @@ SignalR 透過比對 `SendAsync` 與 `connection.on` 中定義的方法名稱與
 
 ## <a name="error-handling-and-logging"></a>錯誤處理和記錄
 
-在 `start` 方法的結尾鏈結 `catch` 方法以處理用戶端錯誤。您可以使用 `console.error` 輸出錯誤至瀏覽器的主控台。
+在 `start` 方法的結尾鏈結 `catch` 方法以處理用戶端錯誤。 您可以使用 `console.error` 輸出錯誤至瀏覽器的主控台。
 
 [!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=28)]
 
 藉由傳遞要在進行連接時，記錄的記錄器和事件類型的安裝程式用戶端記錄追蹤。 使用指定的記錄層級和更新版本，則會記錄訊息。 可用的記錄層級如下所示：
 
 * `signalR.LogLevel.Error` &ndash; 錯誤訊息。 記錄檔`Error`只有訊息。
-* `signalR.LogLevel.Warning` &ndash; 可能的錯誤的相關警告訊息。會記錄 `Warning` 和 `Error` 訊息。
-* `signalR.LogLevel.Information` &ndash; 沒有錯誤的狀態訊息。會記錄 `Information`、`Warning` 和 `Error` 訊息。
+* `signalR.LogLevel.Warning` &ndash; 可能的錯誤的相關警告訊息。 會記錄 `Warning` 和 `Error` 訊息。
+* `signalR.LogLevel.Information` &ndash; 沒有錯誤的狀態訊息。 會記錄 `Information`、`Warning` 和 `Error` 訊息。
 * `signalR.LogLevel.Trace` &ndash; 追蹤訊息。 記錄所有事件，包括中樞和用戶端之間傳輸的資料。
 
 使用[configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging)方法[HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder)設定記錄層級。 訊息會記錄到瀏覽器主控台。

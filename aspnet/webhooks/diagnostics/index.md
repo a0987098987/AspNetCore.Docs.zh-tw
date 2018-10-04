@@ -1,22 +1,19 @@
 ---
 uid: webhooks/diagnostics/index
-title: ASP.NET Webhook 診斷 |Microsoft 文件
+title: ASP.NET Webhook 診斷 |Microsoft Docs
 author: rick-anderson
 description: ASP.NET Webhook 診斷的相關文章
 ms.author: riande
-manager: wpickett
 ms.date: 10/14/2016
-ms.topic: article
 ms.assetid: b5f3d8b0-6964-47a4-954e-c7722e88707b
-ms.prod: .net-framework
-ms.openlocfilehash: dbea60c55ac549c6140918aa58ebe338ba30022a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 8c9c24d29f968f7a6e5f2c61c459098af689c5c6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26529677"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "39289810"
 ---
-# <a name="aspnet-webhooks-diagnostics"></a><span data-ttu-id="02db2-103">ASP.NET Webhook 診斷</span><span class="sxs-lookup"><span data-stu-id="02db2-103">ASP.NET WebHooks Diagnostics</span></span>
+# <a name="aspnet-webhooks-diagnostics"></a><span data-ttu-id="cfe31-103">ASP.NET Webhook 診斷</span><span class="sxs-lookup"><span data-stu-id="cfe31-103">ASP.NET WebHooks Diagnostics</span></span>
 
-* [<span data-ttu-id="02db2-104">記錄</span><span class="sxs-lookup"><span data-stu-id="02db2-104">Logging</span></span>](logging.md)
-* [<span data-ttu-id="02db2-105">偵錯</span><span class="sxs-lookup"><span data-stu-id="02db2-105">Debugging</span></span>](debugging.md)
+* [<span data-ttu-id="cfe31-104">記錄</span><span class="sxs-lookup"><span data-stu-id="cfe31-104">Logging</span></span>](logging.md)
+* [<span data-ttu-id="cfe31-105">偵錯</span><span class="sxs-lookup"><span data-stu-id="cfe31-105">Debugging</span></span>](debugging.md)

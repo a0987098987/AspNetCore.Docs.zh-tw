@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: 6f4fa7cf3746da0a6cdd4bd037fea509d488a59d
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
-ms.translationtype: HT
+ms.openlocfilehash: 435ee61a9c28ad0035457990cd3a889f5b240517
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578012"
+ms.locfileid: "48795534"
 ---
 <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>附錄︰ 修正範例應用程式 （建置使用 Azure 的真實世界的雲端應用程式）
 ====================
@@ -22,7 +22,6 @@ ms.locfileid: "48578012"
 [下載該專案的修正程式](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)
 
 > **建置真實世界雲端應用程式與 Azure**電子書以 Scott Guthrie 所開發的簡報為依據。 它說明 13 的模式，並可協助您的作法是成功開發適用於雲端的 web 應用程式。 電子書的相關資訊，請參閱[第 1 章](introduction.md)。
-
 
 建置真實世界的雲端應用程式與 Azure 的電子書本附錄包含下列各節提供它修正範例應用程式，您可以下載的其他資訊：
 
@@ -177,11 +176,11 @@ ASP.NET 會自動防止的多種資訊，請在其中惡意使用者可能會在
 
 如果非同步方法不需要傳回值，傳回`Task`型別而非`void`。
 
-這個範例取自`FixItQueueManager`類別： 
+這個範例取自`FixItQueueManager`類別：
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample15.cs)]
 
-您應該使用`async void`只針對最上層的事件處理常式。 如果您定義方法，以作為`async void`，呼叫端無法**await**方法或攔截方法擲回任何例外狀況。 如需詳細資訊，請參閱 <<c0> [ 中非同步程式設計的最佳做法](https://msdn.microsoft.com/magazine/jj991977.aspx)。 
+您應該使用`async void`只針對最上層的事件處理常式。 如果您定義方法，以作為`async void`，呼叫端無法**await**方法或攔截方法擲回任何例外狀況。 如需詳細資訊，請參閱 <<c0> [ 中非同步程式設計的最佳做法](https://msdn.microsoft.com/magazine/jj991977.aspx)。
 
 ### <a name="use-a-cancellation-token-to-break-from-worker-role-loop"></a>若要中斷背景工作角色迴圈使用的取消語彙基元
 
@@ -216,8 +215,8 @@ ASP.NET 會自動防止的多種資訊，請在其中惡意使用者可能會在
 <a id="runbase"></a>
 ### <a name="run-the-base-application"></a>執行基本的應用程式
 
-1. 安裝[Visual Studio 2013 或 Visual Studio 2013 Express for Web](https://www.visualstudio.com/downloads)。
-2. 安裝[Azure SDK for.NET for Visual Studio 2013。](https://go.microsoft.com/fwlink/p/?linkid=323510&amp;clcid=0x409)
+1. 安裝[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)。
+2. 安裝[Azure SDK for.NET for Visual Studio](https://azure.microsoft.com/downloads/)。
 3. 下載的.zip 檔案[MSDN Code Gallery](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)。
 4. 在 檔案總管 中，以滑鼠右鍵按一下.zip 檔案並按一下 內容，然後在 屬性 視窗中按一下 解除封鎖。
 5. 將檔案解壓縮。
@@ -225,7 +224,7 @@ ASP.NET 會自動防止的多種資訊，請在其中惡意使用者可能會在
 7. 從 工具 功能表中，按一下 程式庫套件管理員 中，則套件管理員主控台。
 8. 在 套件管理員主控台 (PMC)，按一下 還原。
 9. 結束 Visual Studio。
-10. 開始[Azure 儲存體模擬器](https://msdn.microsoft.com/library/windowsazure/hh403989.aspx)。
+10. 開始[Azure 儲存體模擬器](/azure/storage/common/storage-use-emulator)。
 11. 重新啟動 Visual Studio，您關閉上一個步驟中開啟方案檔。
 12. 請確定將 FixIt 專案設定為啟始專案，，然後按 CTRL + F5 執行專案。
 
@@ -234,24 +233,24 @@ ASP.NET 會自動防止的多種資訊，請在其中惡意使用者可能會在
 
 1. 請依照下列指示，說明如何[執行應用程式基底](#runbase)，然後關閉瀏覽器，然後關閉 Visual Studio。
 2. 啟動 Visual Studio 系統管理員權限。 （您將使用 Azure 計算模擬器中，而且需要系統管理員權限）。
-3. 應用程式中*Web.config*中的檔案*MyFixIt*專案 （web 專案） 中，變更值`appSettings/UseQueues`為"true": 
+3. 應用程式中*Web.config*中的檔案*MyFixIt*專案 （web 專案） 中，變更值`appSettings/UseQueues`為"true":
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample19.cmd?highlight=3)]
 4. 如果[Azure 儲存體模擬器](https://msdn.microsoft.com/library/windowsazure/hh403989.aspx)不是仍在執行中，重新啟動它。
 5. 同時執行的 FixIt web 專案和 MyFixItCloudService 專案。
 
-    使用 Visual Studio 2013:
+    使用 Visual Studio:
 
-   1. 按 f5 鍵執行 FixIt 專案。
-   2. 在 **方案總管**MyFixItCloudService 專案中，以滑鼠右鍵按一下，然後按一下 **偵錯** -- **開始新執行個體**。
+   1. 按下**F5**執行 FixIt 專案。
+   2. 在 **方案總管**MyFixItCloudService 專案中，以滑鼠右鍵按一下，然後按一下 **偵錯** > **開始新執行個體**。
 
-      使用 Visual Studio 2013 Express for Web 中：
+    使用 Visual Studio 2013 Express for Web 中：
 
    3. 在 [方案總管] 中，以滑鼠右鍵按一下 FixIt 方案，然後選取**屬性**。
-   4. 選取 **多個啟始專案**...
+   4. 選取 **多個啟始專案**。
    5. 在 **動作**MyFixIt 和 MyFixItCloudService，底下的下拉式清單中，選取**開始**。
    6. 按一下 [確定 **Deploying Office Solutions**]。
-   7. 按 f5 鍵執行兩個專案。
+   7. 按下**F5**執行這兩個專案。
 
       當您執行 MyFixItCloudService 專案時，Visual Studio 會啟動 Azure 計算模擬器。 根據您的防火牆設定，您可能需要允許通過防火牆的模擬器。
 
@@ -354,8 +353,7 @@ ASP.NET 會自動防止的多種資訊，請在其中惡意使用者可能會在
 
 - `Get-AzureWebsite`
 - `Get-AzureSqlDatabaseServer`
-- `Get-AzureSqlDatabase`： 若要執行這個指令程式，使用管線傳送至資料庫伺服器名稱`Get-AzureSqlDatabase`:  
-    `Get-AzureSqlDatabaseServer | Get-AzureSqlDatabase.`
+- `Get-AzureSqlDatabase`： 若要執行這個指令程式，使用管線傳送至資料庫伺服器名稱`Get-AzureSqlDatabase`:   `Get-AzureSqlDatabaseServer | Get-AzureSqlDatabase.`
 
 若要刪除這些資源，請使用下列命令。 請注意，如果您刪除的資料庫伺服器時，您會自動刪除與伺服器相關聯的資料庫。
 
@@ -366,7 +364,7 @@ ASP.NET 會自動防止的多種資訊，請在其中惡意使用者可能會在
 <a id="deployqueues"></a>
 ## <a name="how-to-deploy-the-app-with-queue-processing-to-azure-app-service-web-apps-and-an-azure-cloud-service"></a>如何使用佇列處理至 Azure App Service Web Apps 和 Azure 雲端服務部署應用程式
 
-若要啟用佇列，請在 MyFixIt\Web.config 檔案中進行下列變更。 底下`appSettings`，變更值`UseQueues`為"true": 
+若要啟用佇列，請在 MyFixIt\Web.config 檔案中進行下列變更。 底下`appSettings`，變更值`UseQueues`為"true":
 
 [!code-xml[Main](the-fix-it-sample-application/samples/sample31.xml)]
 

@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: baf46a87155e6368d9a81c5c5b777a491117d7b6
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
-ms.translationtype: MT
+ms.openlocfilehash: 6f4fa7cf3746da0a6cdd4bd037fea509d488a59d
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825140"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578012"
 ---
 <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>附錄︰ 修正範例應用程式 （建置使用 Azure 的真實世界的雲端應用程式）
 ====================
-藉由[Mike Wasson](https://github.com/MikeWasson)， [Rick Anderson](https://github.com/Rick-Anderson)， [Tom Dykstra](https://github.com/tdykstra)
+藉由[Mike Wasson](https://github.com/MikeWasson)， [Rick Anderson]((https://twitter.com/RickAndMSFT))， [Tom Dykstra](https://github.com/tdykstra)
 
 [下載該專案的修正程式](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)
 
@@ -310,7 +310,7 @@ ASP.NET 會自動防止的多種資訊，請在其中惡意使用者可能會在
 
     在 azurewebsites.net 網域中，名稱必須是唯一，而且密碼必須符合密碼複雜性需求的 SQL 資料庫。 （範例 Passw0rd1 沒有符合的需求）。
 
-    請注意，命令便會開始使用 」\". 為了協助防止惡意指令碼執行，Windows PowerShell 會要求您提供的指令碼檔案的完整的路徑，當您執行指令碼。 您可以使用點來表示目前的目錄 (「。\")或者，提供完整的路徑，例如：
+    請注意，命令便會開始使用 」".\"。 為了協助防止惡意指令碼執行，Windows PowerShell 會要求您提供的指令碼檔案的完整的路徑，當您執行指令碼。 您可以使用點來表示目前的目錄 (「。\")或者，提供完整的路徑，例如：
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample26.cmd)]
 

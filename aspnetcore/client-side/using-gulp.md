@@ -1,4 +1,4 @@
-﻿---
+---
 title: ASP.NET Core 中使用 Gulp
 author: rick-anderson
 description: 了解如何使用 Gulp，在 ASP.NET Core 中。
@@ -61,7 +61,7 @@ paths.concatCssDest = paths.webroot + "css/site.min.css";
 | gulp        | Gulp 串流處理組建系統。 如需詳細資訊，請參閱 < [gulp](https://www.npmjs.com/package/gulp)。 |
 | rimraf      | 節點刪除模組。 如需詳細資訊，請參閱 < [rimraf](https://www.npmjs.com/package/rimraf)。 |
 | gulp concat | 這種模組串連根據作業系統的新行字元的檔案。 如需詳細資訊，請參閱 < [gulp concat](https://www.npmjs.com/package/gulp-concat)。 |
-| gulp-cssmin | 可將 CSS 檔案最小化的模組。如需詳細資訊，請參閱[gulp cssmin](https://www.npmjs.com/package/gulp-cssmin)。 |
+| gulp-cssmin | 可將 CSS 檔案最小化的模組。 如需詳細資訊，請參閱 < [gulp cssmin](https://www.npmjs.com/package/gulp-cssmin)。 |
 | gulp uglify | 縮短模組 *.js*檔案。 如需詳細資訊，請參閱 < [gulp uglify](https://www.npmjs.com/package/gulp-uglify)。 |
 
 一旦匯入必要模組，您可以指定工作。 這裡有六個工作登錄，以下列程式碼：

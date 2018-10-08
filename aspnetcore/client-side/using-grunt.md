@@ -40,7 +40,7 @@ Grunt 是一個 JavaScript 工作執行器，它會會自動化指令碼縮製�
 
 1.  在 Visual Studio 中，建立新`ASP.NET Web Application`。
 
-2.  在**新增 ASP.NET 專案*] 對話方塊中，選取 [ASP.NET Core] **空白**範本，然後按一下 [確定] 按鈕。
+2.  在 [新增 ASP.NET 專案]**** 對話方塊中，選取 [ASP.NET Core] **空白**範本，然後按一下 [確定] 按鈕。
 
 3.  在 [方案總管] 中，檢閱專案結構。 `\src`資料夾包含空白`wwwroot`和`Dependencies`節點。
 
@@ -52,7 +52,7 @@ Grunt 是一個 JavaScript 工作執行器，它會會自動化指令碼縮製�
 
     ![設定自動 compliation TypeScript 檔案的選項](using-grunt/_static/typescript-options.png)
 
-6.  以滑鼠右鍵按一下`TypeScript`目錄中，而且選取**新增 > 新增項目**從內容功能表。 選取**JavaScript 檔案**項目，並將檔案命名*Tastes.ts* (請注意\*.ts 副檔名)。 將下面 TypeScript 程式碼行複製到檔案 (當您儲存時，新*Tastes.js* JavaScript 來源檔案中將會出現)。
+6.  以滑鼠右鍵按一下 `TypeScript` 目錄，然後從快顯功能表選取 [新增 > 新增項目]****。選取 **JavaScript 檔案**項目，並將檔案命名為 *Tastes.ts* (請注意 \*.ts 副檔名)。將下面 TypeScript 程式碼行複製到檔案中 (當您儲存時，新 *Tastes.js* 檔案將會隨 JavaScript 原始程式碼出現)。
     
     ```typescript
     enum Tastes { Sweet, Sour, Salty, Bitter }
@@ -87,9 +87,9 @@ Grunt 是一個 JavaScript 工作執行器，它會會自動化指令碼縮製�
 
 ## <a name="configuring-npm"></a>設定 NPM
 
-接著，設定 NPM 以便下載 grunt 與 grunt-task。
+接著，設定 NPM 以便下載 grunt 與 grunt-tasks。
 
-1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取**新增 > 新增項目**從內容功能表。 選取**NPM 組態檔**項目，保留預設名稱， *package.json*，然後按一下**新增** 按鈕。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後從快顯功能表選取 [新增 > 新增項目]****。選取 **NPM 設定檔**項目，保留預設名稱 *package.json*，然後按一下 [新增]**** 按鈕。
 
 2. 在*package.json*內部檔案`devDependencies`物件大括號中，輸入 「 grunt"。 選取`grunt`從 Intellisense 清單，然後按 Enter 鍵。 Visual Studio 會加上引號 grunt 所完成的封裝名稱，並加入冒號。 右邊的冒號，請從 Intellisense 清單頂端選取封裝的最新穩定版本 (按`Ctrl-Space`Intellisense 不會出現)。
 
@@ -98,7 +98,7 @@ Grunt 是一個 JavaScript 工作執行器，它會會自動化指令碼縮製�
     > [!NOTE]
     > NPM 使用[語意版本設定](http://semver.org/)將組織的相依性。 語意版本設定，也稱為 SemVer 編號方式識別封裝<major>。<minor>。<patch>.Intellisense 會顯示只有幾個常見的選項，以簡化語意版本設定。 Intellisense 清單 (在上述範例 0.4.5) 中的最上層項目會被視為封裝的最新穩定版本。 插入號 (^) 符號符合最新的主要版本和波狀符號 （~） 符合最新的次要版本。 請參閱[NPM semver 版本剖析器參考](https://www.npmjs.com/package/semver)做為 SemVer 提供的完整表現的指南。
 
-3. 如下列範例所示，新增更多的相依性以載入 grunt-contrib-\* 套件，像是 *clean*， *jshint*， *concat*， *uglify*，和 *watch*。 版本不需要與範例相符。
+3. 如下列範例所示，新增更多的相依性以針對 *clean*、*jshint*、*concat*、*uglify* 與 *watch* 載入 grunt-contrib-\* 套件。版本不需要與範例相符。
 
     ```json
     "devDependencies": {
@@ -126,7 +126,7 @@ Grunt 是一個 JavaScript 工作執行器，它會會自動化指令碼縮製�
 
 Grunt 已設定為使用名為資訊清單*Gruntfile.js*定義、 載入和註冊工作，可以手動執行或設定為基礎而執行自動 Visual Studio 中的事件。
 
-1. 以滑鼠右鍵按一下專案，然後選取**新增 > 新增項目**。 選取**Grunt 組態檔**選項，請保留預設名稱， *Gruntfile.js*，然後按一下**新增** 按鈕。
+1. 以滑鼠右鍵按一下專案，然後選取 [新增 > 新增項目]****。 選取 **Grunt 設定檔**選項，保留預設名稱 *Gruntfile.js*，然後按一下 [新增]**** 按鈕。
 
    初始程式碼包含模組定義和`grunt.initConfig()`方法。 `initConfig()`用來設定每一個封裝的選項和模組的其餘部分將會載入並註冊工作。
     
@@ -137,7 +137,7 @@ Grunt 已設定為使用名為資訊清單*Gruntfile.js*定義、 載入和註�
    };
    ```
 
-2. 內部`initConfig()`方法，加入選項`clean`工作範例所示*Gruntfile.js*下方。 「 清除 」 工作會接受目錄字串的陣列。 此工作從 wwwroot/lib 移除檔案，並移除整個 /temp 目錄。
+2. 在 `initConfig()` 方法內，加入 `clean` 工作的選項，如下面的 *Gruntfile.js* 範例所示。 清除工作會接受目錄字串的陣列。此工作會從 wwwroot/lib 移除檔案，並移除整個 /temp 目錄。
 
     ```javascript
     module.exports = function (grunt) {
@@ -147,7 +147,7 @@ Grunt 已設定為使用名為資訊清單*Gruntfile.js*定義、 載入和註�
     };
     ```
 
-3. 在下列 initConfig() 方法中，加入對 `grunt.loadNpmTasks()` 呼叫。 這將使工作可以從 Visual Studio 執行。
+3. 在 initConfig() 方法下方，加入對 `grunt.loadNpmTasks()` 的呼叫。這將使工作可以從 Visual Studio 執行。
 
     ```javascript
     grunt.loadNpmTasks("grunt-contrib-clean");
@@ -202,7 +202,7 @@ Grunt 已設定為使用名為資訊清單*Gruntfile.js*定義、 載入和註�
     ```
 
     > [!NOTE]
-    > 選項 "-W069" 錯誤所產生 jshint JavaScript 使用括號語法來指定的屬性，而不是點標記法，也就是當`Tastes["Sweet"]`而不是`Tastes.Sweet`。 選項會關閉警告，以允許其他處理序繼續進行。
+    > 選項 "-W069" 錯誤是由 jshint 在 JavaScript 使用括號語法來指派屬性而非點標記法 (亦即 `Tastes["Sweet"]`，而非 `Tastes.Sweet`) 時所產生。此選項會關閉警告，以允許處理序的剩餘部分。
 
 10. 新增`uglify`工作使用下列程式碼。
 

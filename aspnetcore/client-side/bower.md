@@ -15,7 +15,7 @@ ms.locfileid: "41902715"
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>用戶端使用管理套件在 ASP.NET Core 中的 Bower
 
-藉由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)，和[Scott Addie](https://scottaddie.com)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)， [Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)，和[Scott Addie](https://scottaddie.com)
 
 > [!IMPORTANT]
 > Bower 會維護，而其維護人員會建議使用不同的解決方案。 [程式庫管理員](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/)(簡稱 LibMan) 是 Visual Studio 的新用戶端程式庫取得的工具 (Visual Studio 15.8 或更新版本）。 如需詳細資訊，請參閱<xref:client-side/libman/index>。 Bower 是透過 15.5 版支援 Visual Studio 中。

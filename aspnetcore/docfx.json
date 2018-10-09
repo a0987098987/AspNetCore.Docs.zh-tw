@@ -1,6 +1,5 @@
 {
   "build": {
-    "markdownEngineName": "markdig",
     "content": [
       {
         "files": [
@@ -13,7 +12,8 @@
           "aspnet/**",
           "**/includes/**",
           "**/aspnet-core-conceptual/**",
-          "_site/**"
+          "_site/**",
+          "***/readme.md"
         ],
         "group": "group1",
         "src": "."
@@ -23,7 +23,9 @@
       {
         "files": [
           "**/*.png",
-          "**/*.jpg"
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.pdf"
         ],
         "exclude": [
           "**/obj/**",
@@ -42,17 +44,58 @@
     ],
     "globalMetadata": {
       "bilingual_type": "hover over",
-      "breadcrumb_path": "/aspnet/breadcrumb/toc.json",
       "_navPath": "/foo",
       "_navRel": "/foo",
+      "breadcrumb_path": "/aspnet/breadcrumb/toc.json",
       "searchScope": [
         "ASP.NET Core"
-      ],
-      "bilingual_type": "hover over"
+      ]
     },
-    "fileMetadata": {},
+    "fileMetadata": {
+      "ms.technology": {
+        "azure/**/**.md": "aspnetcore-azure",
+        "client-side/**/**.md": "aspnetcore-clientside",
+        "data/**/**.md": "aspnetcore-data",
+        "fundamentals/**/**.md": "aspnetcore-fundamentals",
+        "getting-started/**/**.md": "aspnetcore-getstarted",
+        "host-and-deploy/**/**.md": "aspnetcore-hostdeploy",
+        "index.md": "aspnetcore",
+        "migration/**/**.md": "aspnetcore-migration",
+        "mobile/**/**.md": "aspnetcore-mobile",
+        "mvc/**/**.md": "aspnetcore-mvc",
+        "performance/**/**.md": "aspnetcore-performance",
+        "razor-pages/**/**.md": "aspnetcore-razorpages",
+        "release-notes/**/**.md": "aspnetcore-releasenotes",
+        "security/**/**.md": "aspnetcore-security",
+        "signalr/**/**.md": "aspnetcore-signalr",
+        "test/**/**.md": "aspnetcore-test",
+        "tutorials/**/**.md": "aspnetcore-tutorials",
+        "web-api/**/**.md": "aspnetcore-webapi"
+      },
+      "ms.topic": {
+        "azure/**/**.md": "conceptual",
+        "client-side/**/**.md": "conceptual",
+        "data/**/**.md": "conceptual",
+        "fundamentals/**/**.md": "conceptual",
+        "getting-started/**/**.md": "tutorial",
+        "host-and-deploy/**/**.md": "conceptual",
+        "index.md": "conceptual",
+        "migration/**/**.md": "conceptual",
+        "mobile/**/**.md": "conceptual",
+        "mvc/**/**.md": "conceptual",
+        "performance/**/**.md": "conceptual",
+        "razor-pages/**/**.md": "conceptual",
+        "release-notes/**/**.md": "conceptual",
+        "security/**/**.md": "conceptual",
+        "signalr/**/**.md": "conceptual",
+        "test/**/**.md": "conceptual",
+        "tutorials/**/**.md": "tutorial",
+        "web-api/**/**.md": "conceptual"
+      }
+    },
     "template": [],
     "dest": "_site",
+    "markdownEngineName": "markdig",
     "groups": {
       "group1": {
         "dest": "group1-dest",

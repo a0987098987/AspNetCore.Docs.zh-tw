@@ -8,40 +8,40 @@ ms.date: 06/10/2014
 ms.assetid: 03960de2-8d95-4444-9169-4426dcc64913
 msc.legacyurl: /signalr/overview/guide-to-the-api/handling-connection-lifetime-events
 msc.type: authoredcontent
-ms.openlocfilehash: 42cf7faf9112875e15072993b6210348d0c42534
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 1783a3ab292a5460d5cc1b7ad78073071d65d379
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835005"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911937"
 ---
 <a name="understanding-and-handling-connection-lifetime-events-in-signalr"></a>了解和處理 signalr 的連線存留期事件
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom Dykstra](https://github.com/tdykstra)
 
 > 這篇文章提供 SignalR 連線、 重新連線，以及中斷連線事件，您可以控制，以及您可以設定的逾時和 keepalive 設定的總覽。
-> 
+>
 > 本文假設您已經具備 SignalR 和連線的存留期事件的一些知識。 Signalr 簡介，請參閱[SignalR 簡介](../getting-started/introduction-to-signalr.md)。 如需連線存留期事件清單，請參閱下列資源：
-> 
+>
 > - [如何處理中樞類別中的連線存留期事件](hubs-api-guide-server.md#connectionlifetime)
 > - [如何處理 JavaScript 用戶端連線存留期事件](hubs-api-guide-javascript-client.md#connectionlifetime)
 > - [如何處理.NET 用戶端連線存留期事件](hubs-api-guide-net-client.md#connectionlifetime)
-> 
+>
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR 第 2 版
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>本主題的上一個版本
-> 
+>
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
@@ -144,8 +144,8 @@ API 參考主題的連結是 API 的.NET 4.5 版本。 如果您使用.NET 4，�
 
 有些網路環境刻意關閉閒置的連接，並 keepalive 封包的另一個函式是為了避免這個問題讓這些網路可讓您知道 SignalR 連線正在使用中。 在極端情況下 keepalive ping 預設頻率不可能不足以防止已關閉的連線。 在此情況下，您可以設定更常傳送 keepalive ping。 如需詳細資訊，請參閱 <<c0> [ 逾時和 keepalive 設定](#timeoutkeepalive)本主題稍後的。
 
-> [!NOTE] 
-> 
+> [!NOTE]
+>
 > **重要**： 此處所述的事件的順序並不保證。 SignalR 會不斷嘗試以便引發連線存留期事件，此配置中，根據可預測的方式，但有許多變化的網路事件和多種資訊，請在其中基礎的通訊架構，例如傳輸 Api 處理它們。 例如，`Reconnected`可能不會引發事件，當用戶端重新連接，或`OnConnected`建立的連線嘗試不成功時，可能會執行伺服器上的處理常式。 本主題說明某些常見的情況下將通常會產生的效果。
 
 

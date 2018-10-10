@@ -8,12 +8,12 @@ ms.date: 08/29/2011
 ms.assetid: 57666c69-2b0f-423a-a61d-be49547fa585
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 7ecd180b7608e82ea143575c6590574b92843dcf
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 6768472b0c75757c9f368cfea58d5084c26719e1
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577492"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913160"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-4"></a>使用 HTML5 與 jQuery UI Datepicker 快顯行事曆搭配 ASP.NET MVC-第 4 部分
 ====================
@@ -76,13 +76,13 @@ ms.locfileid: "48577492"
 
 首先，您必須安裝的 jQuery UI 程式庫。 若要這樣做，您將使用 NuGet，也就是包含在 Visual Studio 2010 和 Visual Web Developer 的 SP1 版本的套件管理員。
 
-在 Visual Web Developer 中，從**工具**功能表上，選取**程式庫套件管理員**，然後選取**管理 NuGet 套件**。
+在 Visual Web Developer 中，從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**管理 NuGet 套件**。
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4/_static/image3.png)
 
-注意： 如果**工具**不會顯示功能表**程式庫套件管理員**命令，您必須依照的指示安裝 NuGet[安裝 NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)頁面NuGet 網站。   
+注意： 如果**工具**不會顯示功能表**NuGet 套件管理員**命令，您必須依照的指示安裝 NuGet[安裝 NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)頁面NuGet 網站。   
   
-如果您使用 Visual Studio，而不是 Visual Web Developer 中，從**工具**功能表上，選取**程式庫套件管理員**，然後選取**新增程式庫封裝參考**。
+如果您使用 Visual Studio，而不是 Visual Web Developer 中，從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**新增程式庫封裝參考**。
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4/_static/image4.png)
 

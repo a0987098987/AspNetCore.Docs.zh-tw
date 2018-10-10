@@ -8,27 +8,27 @@ ms.date: 04/02/2014
 ms.assetid: 6980ee2e-d6b0-4a08-8fb6-ab96362dd0e3
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api/host-aspnet-web-api-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: cabf88e4e6c946f92a9e4534a4db5ae15dd8cae5
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 40cb1a4514beaf81e7ed75bbd3e478f2ba146fe5
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834660"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910742"
 ---
 <a name="host-aspnet-web-api-2-in-an-azure-worker-role"></a>裝載 ASP.NET Web API 2 中的 Azure 背景工作角色
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)
 
 > 本教學課程會示範如何裝載在 Azure 背景工作角色中的 ASP.NET Web API 使用 OWIN 自我裝載 Web API 架構。
-> 
+>
 > [Open Web Interface for.NET](http://owin.org/) (OWIN) 定義.NET web 伺服器和 web 應用程式之間的抽象概念。 OWIN 可分隔的伺服器，讓 OWIN 很適合用於自我裝載的 web 應用程式，在您自己的程序，IIS 外部的 web 應用程式 – 比方說，在 Azure 背景工作角色。
-> 
+>
 > 在本教學課程中，您將使用 Microsoft.Owin.Host.HttpListener 封裝，以提供 HTTP 伺服器，用於自我裝載 OWIN 應用程式。
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - Web API 2
 > - [Azure SDK for.NET 2.3](https://azure.microsoft.com/downloads/)
 
@@ -56,7 +56,7 @@ ms.locfileid: "41834660"
 
 ## <a name="add-the-web-api-and-owin-packages"></a>新增 Web API 和 OWIN 套件
 
-從**工具**功能表上，按一下**程式庫套件管理員**，然後按一下**Package Manager Console**。
+從**工具**功能表上，按一下**NuGet 套件管理員**，然後按一下**Package Manager Console**。
 
 在 [套件管理員主控台] 視窗中，輸入下列命令：
 

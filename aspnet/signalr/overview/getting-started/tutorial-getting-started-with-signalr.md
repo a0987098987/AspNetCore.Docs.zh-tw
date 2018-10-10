@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: a8b3b778-f009-4369-85c7-e90f9878d8b4
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 647dab496acd63dc774236ed448bd6b37b19c707
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 676dc0854ef6f041e705ed6b39432e11dd8643ed
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826194"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910898"
 ---
 <a name="tutorial-getting-started-with-signalr-2"></a>教學課程： 開始使用 SignalR 2
 ====================
@@ -102,7 +102,7 @@ SignalR 簡化建置即時應用程式的程序。 其中包含 ASP.NET server �
 3. 在 **方案總管**，以滑鼠右鍵按一下專案，然後選取**新增 |SignalR Hub 類別 (v2)**。 將類別命名為**ChatHub.cs**並將它新增至專案。 這個步驟會建立**ChatHub**類別，並將一組指令碼檔案和支援 SignalR 的組件參考加入至專案。
 
     > [!NOTE]
-    > 您也可以新增至專案 SignalR，藉由開啟**工具 |程式庫套件管理員 |套件管理員主控台**並執行命令：
+    > 您也可以新增至專案 SignalR，開啟**工具 > NuGet 套件管理員 > Package Manager Console**並執行命令：
 
     `install-package Microsoft.AspNet.SignalR`
 

@@ -8,38 +8,38 @@ ms.date: 09/28/2015
 ms.assetid: a9fd4dc0-1b96-4443-82ca-932a5b4a8ea4
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: de47593e7f54757d4f91a6e92485567e74b829ed
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9edb7fd100a3f4c5331454045ac206d2f7a81961
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825348"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912445"
 ---
 <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>ASP.NET SignalR 中樞 API 指南-JavaScript 用戶端
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom Dykstra](https://github.com/tdykstra)
 
 > 本文件提供使用 signalr 第 2 版中 JavaScript 用戶端，例如瀏覽器和 Windows 市集 (WinJS) 應用程式的中樞 API 的簡介。
-> 
+>
 > SignalR 中樞 API 可讓您從伺服器連線的用戶端和伺服器的用戶端進行遠端程序呼叫 (Rpc)。 在伺服器程式碼中，您定義可由用戶端，呼叫的方法，呼叫用戶端執行的方法。 在用戶端程式碼中，您定義可以在伺服器上，從呼叫的方法，您呼叫在伺服器執行的方法。 SignalR 會處理所有為您的用戶端-伺服器配管。
-> 
+>
 > SignalR 也提供一個名為持續連線的較低層級 API。 如需 SignalR、 中樞和持續連線，請參閱 < [SignalR 簡介](../getting-started/introduction-to-signalr.md)。
-> 
+>
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR 第 2 版
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>本主題的上一個版本
-> 
+>
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
@@ -234,7 +234,7 @@ Signalr 1.x 中的，跨網域要求是由單一 EnableCrossDomain 旗標控制�
 
 ### <a name="calling-usecors"></a>呼叫 UseCors
 
- 下列程式碼片段示範如何實作 SignalR 2 中的跨網域連接。 
+ 下列程式碼片段示範如何實作 SignalR 2 中的跨網域連接。
 
 **實作 SignalR 2 中的跨網域要求**
 
@@ -242,12 +242,12 @@ Signalr 1.x 中的，跨網域要求是由單一 EnableCrossDomain 旗標控制�
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample11.cs)]
 
-> [!NOTE] 
-> 
+> [!NOTE]
+>
 > - 不需要設定`jQuery.support.cors`設為 true，在您的程式碼。
-> 
+>
 >     ![未將 jQuery.support.cors 設定為 true](hubs-api-guide-javascript-client/_static/image7.png)
-> 
+>
 >     SignalR 處理 CORS 的使用。 設定`jQuery.support.cors`來為 true，則停用 JSONP，因為這會導致 SignalR 假設瀏覽器支援 CORS。
 > - 當您要連線至 localhost URL 時，Internet Explorer 10 不會將它視為跨網域連接，好讓應用程式能夠在本機搭配 IE 10 即使您尚未啟用伺服器上的跨網域連線。
 > - 如需使用 Internet Explorer 9 中的跨網域的連線資訊，請參閱[這個 StackOverflow 執行緒](http://stackoverflow.com/questions/13573397/siganlr-ie9-cross-domain-request-dont-work)。

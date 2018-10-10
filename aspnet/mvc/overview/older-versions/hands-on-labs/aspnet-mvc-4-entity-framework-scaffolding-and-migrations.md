@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 093c1362-f10b-407c-a708-be370f4b62b0
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 10a61b70ef52aa9f5bb9004df3dba9e323d021db
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: bfb1edfcb756706e44126e7e96803bd2e9ce99fb
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830732"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911015"
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>ASP.NET MVC 4 Entity Framework Scaffold 和移轉
 
@@ -172,7 +172,7 @@ ASP.NET MVC scaffolding 提供快速的方式，以產生標準化的方式，�
 
 在這項工作中，您將會更新使用 Entity Framework 移轉的資料庫。 您會發現若要變更模型，並使用 Entity Framework 移轉功能，以反映您的資料庫中的變更是多麼容易。
 
-1. 開啟 [Package Manager Console]。 選取**工具 |程式庫套件管理員 |套件管理員主控台**。
+1. 開啟 [Package Manager Console]。 選取 **工具** > **NuGet 套件管理員** > **Package Manager Console**。
 2. 在套件管理員主控台中，輸入下列命令：
 
     PMC
@@ -274,7 +274,7 @@ ASP.NET MVC scaffolding 提供快速的方式，以產生標準化的方式，�
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>附錄 a： 安裝 Visual Studio Express 2012 for Web
 
-您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;使用版本**[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示會引導您完成安裝所需的步驟*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
+您可以安裝 **Microsoft Visual Studio Express 2012 for Web** 或另一個&quot;Express&quot;使用版本 **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示會引導您完成安裝所需的步驟*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
 
 1. 移至[ [ https://go.microsoft.com/? linkid = 9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; <em>Visual Studio Express 2012 for Web 含 Windows Azure SDK</em>&quot;。
 2. 按一下 **立即安裝**。 如果您不需要**Web Platform Installer**您將會重新導向至下載並安裝第一次。

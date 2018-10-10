@@ -8,27 +8,27 @@ ms.date: 04/11/2014
 ms.assetid: 07aa855a-92ee-4d43-ba66-5bfd7de20ee6
 msc.legacyurl: /aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: 6bead915491c62de809b8625d8071a63c70a6ef5
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: dbf0964695dd2592d063b05c0778923edffe8e2e
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825786"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910769"
 ---
 <a name="host-owin-in-an-azure-worker-role"></a>將 OWIN 裝載在 Azure 背景工作角色
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)
 
 > 本教學課程會示範如何在自我裝載於 Microsoft Azure 背景工作角色的 OWIN。
-> 
+>
 > [Open Web Interface for.NET](http://owin.org/) (OWIN) 定義.NET web 伺服器和 web 應用程式之間的抽象概念。 OWIN 可分隔的伺服器，讓 OWIN 很適合用於自我裝載的 web 應用程式，在您自己的程序，IIS 外部的 web 應用程式 – 比方說，在 Azure 背景工作角色。
-> 
+>
 > 在本教學課程中，您將了解如何在自我裝載在 Microsoft Azure 背景工作角色內的 OWIN 應用程式。 若要深入了解背景工作角色，請參閱[Azure 執行模型](https://azure.microsoft.com/documentation/articles/fundamentals-application-models/#CloudServices)。
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - [Azure SDK for.NET 2.3](https://azure.microsoft.com/downloads/)
 > - [Microsoft.Owin.Selfhost 2.1.0](http://www.nuget.org/packages/Microsoft.Owin.SelfHost/2.1.0)
 
@@ -56,7 +56,7 @@ ms.locfileid: "41825786"
 
 ## <a name="add-the-owin-self-host-packages"></a>新增 OWIN 自我裝載套件
 
-從**工具**功能表上，按一下**程式庫套件管理員**，然後按一下**Package Manager Console**。
+從**工具**功能表上，按一下**NuGet 套件管理員**，然後按一下**Package Manager Console**。
 
 在 [套件管理員主控台] 視窗中，輸入下列命令：
 

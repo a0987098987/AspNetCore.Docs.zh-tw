@@ -8,20 +8,20 @@ ms.date: 11/07/2014
 ms.assetid: 18cdd896-8ed9-4547-b143-114711e3eafb
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 16bef0094406f3f45307eabd19c0872e90ecf7ef
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 18d3720f891e2356af42b58389776f2d04eee39d
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832230"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913199"
 ---
 <a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>讀取相關資料，使用 Entity Framework 中的 ASP.NET MVC 應用程式
 ====================
 藉由[Tom Dykstra](https://github.com/tdykstra)
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)或[下載 PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 2013 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
 
 在上一個教學課程，您已完成 School 資料模型的內容。 在本教學課程中，您將讀取並顯示相關的資料-也就是 Entity Framework 載入到導覽屬性的資料。
@@ -36,7 +36,7 @@ ms.locfileid: "41832230"
 
 有數種方式，Entity Framework，可將相關的資料載入實體的導覽屬性：
 
-- *消極式載入*。 第一次讀取實體時，不會擷取相關資料。 不過，第一次嘗試存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 這會導致多個查詢傳送至資料庫，一個用於實體本身，一個必須擷取每個相關實體資料的時間。 `DbContext`類別預設會啟用消極式載入。 
+- *消極式載入*。 第一次讀取實體時，不會擷取相關資料。 不過，第一次嘗試存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 這會導致多個查詢傳送至資料庫，一個用於實體本身，一個必須擷取每個相關實體資料的時間。 `DbContext`類別預設會啟用消極式載入。
 
     ![Lazy_loading_example](https://asp.net/media/2577850/Windows-Live-Writer_Reading-Re.NET-MVC-Application-5-of-10h1_ADC3_Lazy_loading_example_2c44eabb-5fd3-485a-837d-8e3d053f2c0c.png)
 - *積極式載入*。 讀取實體時，將會同時擷取其相關資料。 這通常會導致單一聯結查詢，其可擷取所有需要的資料。 使用指定積極式載入`Include`方法。
@@ -69,7 +69,7 @@ ms.locfileid: "41832230"
 以下是一些其他[如何停用消極式載入](https://msdn.microsoft.com/data/jj574232):
 
 - 針對特定的導覽屬性，請省略`virtual`關鍵字宣告的屬性。
-- 對於所有導覽屬性，來設定`LazyLoadingEnabled`至`false`，置於您的內容類別的建構函式中的下列程式碼： 
+- 對於所有導覽屬性，來設定`LazyLoadingEnabled`至`false`，置於您的內容類別的建構函式中的下列程式碼：
 
     [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
@@ -183,10 +183,10 @@ Instructors 頁面會顯示三個不同的資料表。 因此，您將建立包�
 
 - 已將模型類別變更為 `InstructorIndexData`。
 - 已將頁面標題從**索引**變更為**講師**。
-- 新增**辦公室**會顯示的資料行`item.OfficeAssignment.Location`只有當`item.OfficeAssignment`不是 null。 (因為這是一對零-或-一關聯性時，可能不會有相關`OfficeAssignment`實體。) 
+- 新增**辦公室**會顯示的資料行`item.OfficeAssignment.Location`只有當`item.OfficeAssignment`不是 null。 (因為這是一對零-或-一關聯性時，可能不會有相關`OfficeAssignment`實體。)
 
     [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample16.cshtml)]
-- 新增程式碼，將會以動態方式新增`class="success"`至`tr`所選取講師的項目。 這會將選取的資料列使用的背景色彩[Bootstrap](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap)類別。 
+- 新增程式碼，將會以動態方式新增`class="success"`至`tr`所選取講師的項目。 這會將選取的資料列使用的背景色彩[Bootstrap](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap)類別。
 
     [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample17.cshtml)]
 - 已新增`ActionLink`標示**選取**正前方中每個資料列的其他連結，這會讓選取的講師識別碼傳送至`Index`方法。
@@ -243,7 +243,7 @@ Instructors 頁面會顯示三個不同的資料表。 因此，您將建立包�
 
 您現在已使用三種方式 （lazy，積極式，和明確） 載入到導覽屬性的相關的資料。 在下一個教學課程中，您將了解如何更新相關資料。
 
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。 您也可以要求在新的主題[顯示我如何使用程式碼](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code)。
+您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 

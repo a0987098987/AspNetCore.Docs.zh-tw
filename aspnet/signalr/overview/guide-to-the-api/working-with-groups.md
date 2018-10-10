@@ -8,34 +8,34 @@ ms.date: 06/10/2014
 ms.assetid: cd378ecd-3e9e-4236-b902-65916d85a048
 msc.legacyurl: /signalr/overview/guide-to-the-api/working-with-groups
 msc.type: authoredcontent
-ms.openlocfilehash: 31dd3239e2e0cd919c23419459bc43ae8e1a6437
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 75ef2998efe4d9bcea62c4a42a2043e2dabd6d85
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41827219"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911506"
 ---
 <a name="working-with-groups-in-signalr"></a>使用 signalr 的群組
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom FitzMacken](https://github.com/tfitzmac)
 
-> 本主題描述如何將使用者新增至群組，並將保存群組成員資格資訊。 
-> 
+> 本主題描述如何將使用者新增至群組，並將保存群組成員資格資訊。
+>
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR 第 2 版
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>本主題的上一個版本
-> 
+>
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
@@ -81,13 +81,13 @@ Signalr 的群組提供一種方法將訊息廣播至連線的用戶端的指定
 
 下列範例所示，您可以傳送訊息至所有群組的成員或群組的唯一指定的成員。
 
-- **所有**連接指定的群組中的用戶端。 
+- **所有**連接指定的群組中的用戶端。
 
     [!code-css[Main](working-with-groups/samples/sample3.css)]
-- 所有已連線的指定群組中的用戶端**除了指定的用戶端**所識別的連接識別碼。 
+- 所有已連線的指定群組中的用戶端**除了指定的用戶端**所識別的連接識別碼。
 
     [!code-csharp[Main](working-with-groups/samples/sample4.cs)]
-- 所有已連線的指定群組中的用戶端**除了呼叫用戶端**。 
+- 所有已連線的指定群組中的用戶端**除了呼叫用戶端**。
 
     [!code-css[Main](working-with-groups/samples/sample5.css)]
 

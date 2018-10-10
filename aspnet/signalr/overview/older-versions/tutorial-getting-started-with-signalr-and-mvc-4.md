@@ -8,12 +8,12 @@ ms.date: 03/29/2013
 ms.assetid: eeef9f73-6de3-49f9-b50b-9af22108f2ce
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 34a7ae97a0a0652c090aa72e2cb21a4bce13bd5c
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 95fc3315149e07dbdb0505a2b5ab197bfedba097
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826225"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910872"
 ---
 <a name="tutorial-getting-started-with-signalr-1x-and-mvc-4"></a>教學課程： 開始使用 SignalR 1.x 及 MVC 4
 ====================
@@ -63,7 +63,7 @@ ms.locfileid: "41826225"
       2. 選取 [網際網路應用程式] 範本，請清除的選項**建立單元測試專案**，按一下 [確定]。
 
          ![建立 mvc 網際網路網站](tutorial-getting-started-with-signalr-and-mvc-4/_static/image4.png)
-      3. 開啟**工具 |程式庫套件管理員 |套件管理員主控台**並執行下列命令。 此步驟可將一組指令碼檔案和啟用 SignalR 功能的組件參考加入至專案。
+      3. 開啟**工具 > NuGet 套件管理員 > Package Manager Console**並執行下列命令。 此步驟可將一組指令碼檔案和啟用 SignalR 功能的組件參考加入至專案。
 
          `install-package Microsoft.AspNet.SignalR -Version 1.1.3`
       4. 在 **方案總管 中**展開指令碼 資料夾。 請注意 SignalR 的指令碼程式庫已加入至專案。

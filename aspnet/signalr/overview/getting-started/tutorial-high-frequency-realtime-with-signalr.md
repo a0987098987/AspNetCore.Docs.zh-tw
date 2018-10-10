@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 9f969dda-78ea-4329-b1e3-e51c02210a2b
 msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 008cbc8ec7ca0af4b20e5e3974cf3862efa7677e
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 23dc9cc7fd469e934ed9915922a3baa772d9e1ab
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48794876"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912024"
 ---
 <a name="tutorial-high-frequency-realtime-with-signalr-2"></a>教學課程： 高頻率即時與 SignalR 2
 ====================
@@ -22,37 +22,37 @@ ms.locfileid: "48794876"
 [下載已完成的專案](http://code.msdn.microsoft.com/SignalR-20-MoveShape-Demo-6285b83a)
 
 > 本教學課程會示範如何建立 web 應用程式，使用 ASP.NET SignalR 2 提供高頻率的傳訊功能。 在此情況下頻繁訊息表示會以固定費率; 的更新在此應用程式，最多 10 個訊息，第二個。
-> 
+>
 > 您會在本教學課程中建立應用程式會顯示使用者可以拖曳圖形。 圖形的位置，所有其他已連線的瀏覽器中就會更新以符合使用定時的更新拖曳圖形的位置。
-> 
+>
 > 本教學課程中介紹的概念有即時遊戲中的應用程式和其他模擬應用程式。
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR 第 2 版
->   
-> 
-> 
+>
+>
+>
 > ## <a name="using-visual-studio-2012-with-this-tutorial"></a>本教學課程中使用 Visual Studio 2012
-> 
-> 
+>
+>
 > 若要使用 Visual Studio 2012，本教學課程中，執行下列作業：
-> 
+>
 > - 更新您[封裝管理員](http://docs.nuget.org/docs/start-here/installing-nuget)為最新版本。
 > - 安裝[Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)。
 > - 在 Web Platform Installer 中，搜尋並安裝**ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012**。 這會安裝 Visual Studio 範本 SignalR 類別，例如**中樞**。
 > - 有些範本 (例如**OWIN 啟動類別**) 將無法使用，這些項目，請改用類別檔案。
-> 
-> 
+>
+>
 > ## <a name="tutorial-versions"></a>教學課程的版本
-> 
+>
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
@@ -102,12 +102,12 @@ ms.locfileid: "48794876"
 3. 在 **方案總管**，以滑鼠右鍵按一下專案，然後選取**新增 |SignalR Hub 類別 (v2)**。 將類別命名為**MoveShapeHub.cs**並將它新增至專案。 這個步驟會建立**MoveShapeHub**類別，並將一組指令碼檔案和支援 SignalR 的組件參考加入至專案。
 
     > [!NOTE]
-    > 您也可以新增至專案 SignalR，依序按一下**工具 |程式庫套件管理員 |套件管理員主控台**並執行命令：
+    > 您也可以新增至專案 SignalR，依序按一下**工具 > NuGet 套件管理員 > Package Manager Console**並執行命令：
 
-    `install-package Microsoft.AspNet.SignalR`. 
+    `install-package Microsoft.AspNet.SignalR`.
 
     如果您可以使用主控台來新增 SignalR，建立 SignalR hub 類別做為個別的步驟之後新增 SignalR。
-4. 按一下 **工具 |程式庫套件管理員 |套件管理員主控台**。 在 [套件管理員] 視窗中，執行下列命令：
+4. 按一下 **工具 > NuGet 套件管理員 > Package Manager Console**。 在 [套件管理員] 視窗中，執行下列命令：
 
     `Install-Package jQuery.UI.Combined`
 

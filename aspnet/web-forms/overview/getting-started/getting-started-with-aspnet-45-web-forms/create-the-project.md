@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 2ce36f78-8ecb-4ab1-b748-6d0ab633ea3f
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
 msc.type: authoredcontent
-ms.openlocfilehash: de0f8092342a8ba8979a31e9a97b603e44e6a85d
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 754f085e3e43f7efa155f410d02a0d29d3349612
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825571"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912289"
 ---
 <a name="create-the-project"></a>建立專案
 ====================
@@ -174,8 +174,7 @@ Web 伺服器收到頁面要求時，它發現頁面、 加以處理，將它傳
 > 
 > Wingtip Toys 應用程式使用 ASP.NET Web Forms 應用程式範本中的功能，除了[Entity Framework Code First](https://weblogs.asp.net/scottgu/archive/2010/12/08/announcing-entity-framework-code-first-ctp5-release.aspx)，這是 NuGet 程式庫，當您使用資料時，可讓程式碼為主的開發。 簡單來說，它會建立您的應用程式，根據您所撰寫的程式碼為您的資料庫部分。 使用 Entity Framework，您可以擷取與操作資料當做強型別物件。 這可讓您專注在您的應用程式，而不是資料的存取方式的詳細資料的商務邏輯。
 > 
-> 如需有關已安裝的程式庫和套件包含 ASP.NET Web Forms 範本的詳細資訊，請參閱已安裝的 NuGet 套件的清單。 若要這樣做，請在 Visual Studio 中建立新的 Web Form 專案，選取**工具** - &gt; **程式庫套件管理員** - &gt; **管理方案的 NuGet 套件**，然後選取**已安裝的套件**中**管理 NuGet 套件** 對話方塊。
-
+> 如需有關已安裝的程式庫和套件包含 ASP.NET Web Forms 範本的詳細資訊，請參閱已安裝的 NuGet 套件的清單。 若要這樣做，請在 Visual Studio 中建立新的 Web Form 專案，選取**工具** > **NuGet 套件管理員** > **管理 NuGet Packages for Solution**，然後選取**已安裝的套件**中**管理 NuGet 套件** 對話方塊。
 
 ### <a name="touring-visual-studio"></a>Touring Visual Studio
 

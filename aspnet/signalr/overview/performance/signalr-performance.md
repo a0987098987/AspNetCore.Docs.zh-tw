@@ -8,34 +8,34 @@ ms.date: 06/10/2014
 ms.assetid: 3751f5e7-59db-4be0-a290-50abc24e5c84
 msc.legacyurl: /signalr/overview/performance/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: ae19493c46ae9670bd200529f73b74b0c3f4db00
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 269c10d7a73f181eaceac1c43ad51f3933d6711c
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825373"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911854"
 ---
 <a name="signalr-performance"></a>SignalR 效能
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)
 
 > 本主題描述如何設計、 測量和改善的 SignalR 應用程式中的效能。
-> 
+>
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR 第 2 版
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>本主題的上一個版本
-> 
+>
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
@@ -139,7 +139,7 @@ SignalR 效能和調整的近期簡報，請參閱 <<c0> [ 調整與 ASP.NET Sig
 
 效能計數器可以加入至使用稱為 SignalR.exe 的公用程式的伺服器。 若要安裝此公用程式，請遵循下列步驟：
 
-1. 在 Visual Studio 應用程式中，選取**工具**，**程式庫套件管理員**，**管理方案的 NuGet 套件...**
+1. 在 Visual Studio 中，選取**工具** > **NuGet 套件管理員** > **管理方案的 NuGet 套件**
 2. 搜尋**signalr.utils**，並選取 [安裝]。
 
     ![](signalr-performance/_static/image1.png)

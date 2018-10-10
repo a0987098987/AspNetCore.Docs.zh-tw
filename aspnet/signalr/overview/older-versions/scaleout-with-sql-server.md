@@ -8,12 +8,12 @@ ms.date: 05/01/2013
 ms.assetid: 1dca7967-8296-444a-9533-837eb284e78c
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: cd0e3d4bdb4d2eb78e5c41167a17f8673584f654
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d68196aa8e4d0c60570a0e36ccc75a2a080d57bc
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824496"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912744"
 ---
 <a name="signalr-scaleout-with-sql-server-signalr-1x"></a>SignalR 向外延展與 SQL Server (SignalR 1.x)
 ====================
@@ -66,7 +66,6 @@ Microsoft SQL Server 2005 或更新版本。 後擋板支援桌上型電腦和�
 > [!NOTE]
 > 如果此查詢似乎發生死結，請確定沒有連線到資料庫的應用程式。
 
-
 如果您已啟用追蹤，追蹤也會顯示是否已啟用 Service Broker。
 
 ## <a name="create-a-signalr-application"></a>建立 SignalR 應用程式
@@ -76,7 +75,7 @@ Microsoft SQL Server 2005 或更新版本。 後擋板支援桌上型電腦和�
 - [開始使用 SignalR](../getting-started/tutorial-getting-started-with-signalr.md)
 - [開始使用 SignalR 和 MVC 4](tutorial-getting-started-with-signalr-and-mvc-4.md)
 
-接下來，我們將修改的聊天應用程式，以支援向外的延展與 SQL Server。 首先，將 SignalR.SqlServer NuGet 封裝加入您的專案。 在 Visual Studio 中，從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+接下來，我們將修改的聊天應用程式，以支援向外的延展與 SQL Server。 首先，將 SignalR.SqlServer NuGet 封裝加入您的專案。 在 Visual Studio 中，從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 [!code-powershell[Main](scaleout-with-sql-server/samples/sample4.ps1)]
 

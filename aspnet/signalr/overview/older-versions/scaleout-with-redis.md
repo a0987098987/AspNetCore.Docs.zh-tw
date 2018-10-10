@@ -8,12 +8,12 @@ ms.date: 05/01/2013
 ms.assetid: 6abecf80-8ffa-41ba-b0d9-1d9edbe7687b
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: 4f587b129a1a22e64625d2ab0fc7655984262ebe
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 90f1f1429dcdf8f1015365e5aa337371c6307715
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825764"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910716"
 ---
 <a name="signalr-scaleout-with-redis-signalr-1x"></a>SignalR 向外延展與 Redis (SignalR 1.x)
 ====================
@@ -94,7 +94,7 @@ Redis 是記憶體中索引鍵-值存放區。 它也支援發行/訂閱模型�
 - [開始使用 SignalR](../getting-started/tutorial-getting-started-with-signalr.md)
 - [開始使用 SignalR 和 MVC 4](tutorial-getting-started-with-signalr-and-mvc-4.md)
 
-接下來，我們將修改的聊天應用程式，以支援向外的延展與 Redis。 首先，將 SignalR.Redis NuGet 封裝加入您的專案。 在 Visual Studio 中，從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+接下來，我們將修改的聊天應用程式，以支援向外的延展與 Redis。 首先，將 SignalR.Redis NuGet 封裝加入您的專案。 在 Visual Studio 中，從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 [!code-powershell[Main](scaleout-with-redis/samples/sample5.ps1)]
 

@@ -8,21 +8,20 @@ ms.date: 01/13/2015
 ms.assetid: c89d809f-6c65-4425-a3fa-c9f6e8ac89f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9b326ec22fc70a8c1746c5cd2c302c7f04fa8d3e
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: ab6a553100d704746840eaad512ec140d4576c44
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830987"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911782"
 ---
 <a name="connection-resiliency-and-command-interception-with-the-entity-framework-in-an-aspnet-mvc-application"></a>連線恢復功能和命令攔截與 Entity Framework 中的 ASP.NET MVC 應用程式
 ====================
 藉由[Tom Dykstra](https://github.com/tdykstra)
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)或[下載 PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 2013 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
-
+> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
 到目前為止應用程式具有已在本機執行 IIS Express 中的開發電腦上。 若要讓實際的應用程式供其他人透過網際網路使用，您必須將它部署至 web 主控提供者，，您必須將資料庫部署到資料庫伺服器。
 
@@ -73,7 +72,7 @@ ms.locfileid: "41830987"
 
 ### <a name="create-a-logging-interface-and-class"></a>建立記錄介面和類別
 
-A[記錄的最佳做法](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry.md#log)是要使用介面而不是硬式編碼將 System.Diagnostics.Trace 或記錄類別的呼叫。 可讓您更輕鬆地變更您的記錄機制稍後，如果您需要這麼做。 讓您將在本節中建立記錄介面和類別來實作其/p > 
+A[記錄的最佳做法](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry.md#log)是要使用介面而不是硬式編碼將 System.Diagnostics.Trace 或記錄類別的呼叫。 可讓您更輕鬆地變更您的記錄機制稍後，如果您需要這麼做。 讓您將在本節中建立記錄介面和類別來實作其/p >
 
 1. 在專案中建立資料夾並將它命名*記錄*。
 2. 在 *記錄*資料夾中，建立名為的類別檔案*ILogger.cs*，並以下列程式碼取代範本程式碼：
@@ -138,7 +137,7 @@ A[記錄的最佳做法](../../../../aspnet/overview/developing-apps-with-window
 
 ## <a name="test-logging-and-connection-resiliency"></a>測試記錄和連線恢復功能
 
-1. 按下 f5 鍵以執行應用程式在偵錯模式中，然後按一下**學生** 索引標籤。
+1. 按下**F5**以執行應用程式在偵錯模式中，然後按一下**學生** 索引標籤。
 2. 看看 Visual Studio**輸出**視窗來查看追蹤輸出。 您可能必須向上捲動過去以前往您記錄器所寫入的記錄某些 JavaScript 錯誤。
 
     請注意，您可以看到傳送至資料庫的實際 SQL 查詢。 您會看到一些初始查詢和 Entity Framework 會開始之前，先檢查資料庫版本的命令和移轉歷程記錄資料表 （您將了解移轉中下一個教學課程）。 您會看到查詢，以供分頁、 以找出多少學生，和最後您會看到取得學生資料的查詢。
@@ -172,7 +171,7 @@ A[記錄的最佳做法](../../../../aspnet/overview/developing-apps-with-window
 
 在本教學課程中，您已了解如何啟用連線恢復功能，並記錄 Entity Framework 撰寫，並傳送至資料庫的 SQL 命令。 在下一個教學課程中，您會將部署到網際網路，將資料庫部署中使用 Code First 移轉應用程式。
 
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。 您也可以要求在新的主題[顯示我如何使用程式碼](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code)。
+您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 

@@ -8,12 +8,12 @@ ms.date: 07/16/2014
 ms.assetid: 4fe2558d-67cc-4d12-a5c1-6fb9f6f16137
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: b6ac0dca92ab3d75eb871099882dcea549264354
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: c18911680b59448cd67190f71e951a3fcf3d0478
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835030"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912731"
 ---
 <a name="hands-on-lab-one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api"></a>實習實驗室： 一個 ASP.NET： 整合 ASP.NET Web Form、 MVC 和 Web API
 ====================
@@ -372,7 +372,7 @@ Web API 架構是 ASP.NET 堆疊的一部分，並可輕鬆實作 HTTP 服務，
 
 當您建立 Web API 時，最好建立說明頁面，讓其他開發人員都知道如何呼叫您的 API。 您可以建立並手動更新文件頁面，但最好是自動產生以避免需要進行的維護工作。 在這項工作中，您將使用的 Nuget 套件來自動產生方案的 Web API 說明頁面。
 
-1. 從**工具**功能表，在 Visual Studio 中，選取**程式庫套件管理員**，然後按一下**Package Manager Console**。
+1. 從**工具**功能表，在 Visual Studio 中，選取**NuGet 套件管理員**，然後按一下**Package Manager Console**。
 2. 在 [ **Package Manager Console** ] 視窗中，執行下列命令：
 
     [!code-powershell[Main](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/samples/sample7.ps1)]

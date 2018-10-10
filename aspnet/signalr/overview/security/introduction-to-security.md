@@ -8,34 +8,34 @@ ms.date: 06/10/2014
 ms.assetid: ed562717-8591-4936-8e10-c7e63dcb570a
 msc.legacyurl: /signalr/overview/security/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: 62f835349697d02ebe7363b00a032a5353d3dfc2
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 765abd36c5182f291499042e787bcb4fcc727997
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830183"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910848"
 ---
 <a name="introduction-to-signalr-security"></a>SignalR 安全性簡介
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom FitzMacken](https://github.com/tfitzmac)
 
-> 本文說明開發 SignalR 應用程式時，您必須考慮的安全性問題。 
-> 
+> 本文說明開發 SignalR 應用程式時，您必須考慮的安全性問題。
+>
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR 第 2 版
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>本主題的上一個版本
-> 
+>
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
@@ -108,7 +108,7 @@ CSRF 攻擊的範例如下：
 
 1. 使用者登入 www.example.com 中的，使用表單驗證。
 2. 伺服器會驗證使用者。 來自伺服器的回應包含驗證 cookie。
-3. 而不需要登出，使用者會造訪惡意的網站。 此惡意的網站包含 HTML 格式如下： 
+3. 而不需要登出，使用者會造訪惡意的網站。 此惡意的網站包含 HTML 格式如下：
 
     [!code-html[Main](introduction-to-security/samples/sample1.html)]
 
@@ -124,12 +124,9 @@ CSRF 攻擊的範例如下：
 
 SignalR 採取下列步驟以建立您的應用程式的有效要求時，防止惡意網站。 SignalR 採取這些步驟，根據預設，您不需要採取任何動作，在您的程式碼。
 
-- **停用跨網域要求**  
- SignalR 停用跨網域要求，以防止使用者呼叫 SignalR 端點來自外部網域。 SignalR 會考慮任何來自外部網域為無效的要求，並封鎖該要求。 我們建議您保留這個預設行為。否則，惡意網站可能誘騙使用者將命令傳送給您的網站。 如果您需要使用跨網域要求，請參閱[如何建立跨網域連接](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain)。
-- **傳入查詢字串，不 cookie 中的連線語彙基元**  
- SignalR 會當做 cookie，而不是傳遞查詢字串值的連線語彙基元。 在 cookie 中儲存的連線語彙基元是不安全的因為瀏覽器也可以在發生惡意程式碼時不小心轉送的連線語彙基元。 此外，查詢字串中傳遞的連線語彙基元可以避免的連線語彙基元保存超過目前的連接。 因此，惡意使用者不能以其他使用者的驗證認證的要求。
-- **確認連線語彙基元**  
- 中所述[連線語彙基元](#connectiontoken) 區段中，伺服器可讓您知道哪一個連接識別碼是與每個已驗證的使用者相關聯。 伺服器不會處理來自使用者名稱不相符之連線識別碼的任何要求。 不可能的惡意使用者猜到正確的要求因為惡意使用者必須知道的使用者名稱和目前的隨機產生的連線識別碼。只要結束連接時，該連線識別碼就會變成無效。 匿名使用者不應該將任何機密資訊的存取。
+- **停用跨網域要求**SignalR 停用跨網域要求，以防止使用者呼叫 SignalR 端點來自外部網域。 SignalR 會考慮任何來自外部網域為無效的要求，並封鎖該要求。 我們建議您保留這個預設行為。否則，惡意網站可能誘騙使用者將命令傳送給您的網站。 如果您需要使用跨網域要求，請參閱[如何建立跨網域連接](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain)。
+- **傳入查詢字串，不 cookie 中的連線語彙基元**SignalR 的連線語彙基元，為查詢字串值，而不是傳遞為 cookie。 在 cookie 中儲存的連線語彙基元是不安全的因為瀏覽器也可以在發生惡意程式碼時不小心轉送的連線語彙基元。 此外，查詢字串中傳遞的連線語彙基元可以避免的連線語彙基元保存超過目前的連接。 因此，惡意使用者不能以其他使用者的驗證認證的要求。
+- **確認連線語彙基元**中所述[連線語彙基元](#connectiontoken) 區段中，伺服器可讓您知道哪一個連接識別碼是與每個已驗證的使用者相關聯。 伺服器不會處理來自使用者名稱不相符之連線識別碼的任何要求。 不可能的惡意使用者猜到正確的要求因為惡意使用者必須知道的使用者名稱和目前的隨機產生的連線識別碼。只要結束連接時，該連線識別碼就會變成無效。 匿名使用者不應該將任何機密資訊的存取。
 
 <a id="recommendations"></a>
 

@@ -8,12 +8,12 @@ ms.date: 07/16/2014
 ms.assetid: ba07958c-42e1-4da0-81db-ba6925ed6db0
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: a3f6174049ffddae4bb2a1819e3684bcdec1b55f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 59831fb8497c86ec5e02de3912b36a15f416597c
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831828"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913227"
 ---
 <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>實習實驗室： 即時 Web 應用程式與 SignalR
 ====================
@@ -148,7 +148,7 @@ ms.locfileid: "41831828"
 
 在這個工作中，您將加入方案中的 SignalR，並將更新傳送至用戶端會自動新增回應傳送至伺服器時。
 
-1. 從**工具**功能表，在 Visual Studio 中，選取**程式庫套件管理員**，然後按一下**Package Manager Console**。
+1. 從**工具**功能表，在 Visual Studio 中，選取**NuGet 套件管理員**，然後按一下**Package Manager Console**。
 2. 在 [ **Package Manager Console** ] 視窗中，執行下列命令：
 
     [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample1.ps1)]
@@ -362,7 +362,7 @@ ms.locfileid: "41831828"
 
 在這個工作中，您會設定**Geek 測驗**連接到 SQL Server 後擋板。 您會先新增**SignalR.SqlServer** NuGet 套件並設定連線到您的後擋板資料庫的字串。
 
-1. 開啟**Package Manager Console**從**工具** | **程式庫套件管理員**。 請確定**GeekQuiz**中選取專案**預設專案**下拉式清單。 輸入下列命令以安裝**Microsoft.AspNet.SignalR.SqlServer** NuGet 套件。
+1. 開啟**Package Manager Console**從**工具** > **NuGet 套件管理員**。 請確定**GeekQuiz**中選取專案**預設專案**下拉式清單。 輸入下列命令以安裝**Microsoft.AspNet.SignalR.SqlServer** NuGet 套件。
 
     [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample13.ps1)]
 2. 針對專案重複上一個步驟，但這次**GeekQuiz2**。

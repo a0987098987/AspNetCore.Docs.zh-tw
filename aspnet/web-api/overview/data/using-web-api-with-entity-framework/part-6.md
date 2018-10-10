@@ -8,12 +8,12 @@ ms.date: 06/16/2014
 ms.assetid: 20360326-b123-4b1e-abae-1d350edf4ce4
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-6
 msc.type: authoredcontent
-ms.openlocfilehash: 4967e21190c34f698e9c28fd9b921f07bef2ffaf
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: b5cb4d93c30ef80a48da48ffc51dd51411b1d0d0
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825540"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912646"
 ---
 <a name="create-the-javascript-client"></a>建立 JavaScript 用戶端
 ====================
@@ -41,7 +41,7 @@ ms.locfileid: "41825540"
 
 ## <a name="add-the-knockout-library"></a>新增 Knockout 程式庫
 
-在 Visual Studio 中，從**工具**功能表上，選取**程式庫套件管理員**。 然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+在 Visual Studio 中，從**工具**功能表上，選取**NuGet 套件管理員**。 然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 [!code-console[Main](part-6/samples/sample1.cmd)]
 

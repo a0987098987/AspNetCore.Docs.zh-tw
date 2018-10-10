@@ -8,34 +8,34 @@ ms.date: 06/10/2014
 ms.assetid: 4b559e6c-4fb0-4a04-9812-45cf08ae5779
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: 9ef69ece2558260f0409e9388751f77ac84a06f1
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: bdb0562955f3bde56a95ce937c27fdbe4aa94823
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46523073"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911677"
 ---
 <a name="signalr-troubleshooting"></a>SignalR 疑難排解
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)
 
 > 本文件說明使用 SignalR 的常見疑難排解問題。
-> 
+>
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR 第 2 版
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>本主題的上一個版本
-> 
+>
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
@@ -294,7 +294,7 @@ jQuery Mobile 的`initializePage`函式會強制重新執行，每個頁面中�
 
 ## <a name="compilation-and-server-side-errors"></a>編譯和伺服器端錯誤
 
- 下節包含可能的解決方案，編譯器和伺服器端執行階段錯誤。 
+ 下節包含可能的解決方案，編譯器和伺服器端執行階段錯誤。
 
 ### <a name="reference-to-hub-instance-is-null"></a>中樞執行個體的參考為 null
 

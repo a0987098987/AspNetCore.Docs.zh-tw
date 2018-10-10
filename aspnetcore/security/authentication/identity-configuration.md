@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 身分識別的預設值，並了解如何設�
 ms.author: riande
 ms.date: 08/14/2018
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 0faab001b981c79f6afa16b2a8cf80c1ef141b11
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 02441cd28c2a99eda7b50ed54f4437d4b52ca5d9
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011296"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911932"
 ---
 # <a name="configure-aspnet-core-identity"></a>設定 ASP.NET Core 身分識別
 
@@ -79,18 +79,30 @@ ASP.NET Core 身分識別設定，例如密碼原則、 鎖定和 cookie 組態�
 
 [IdentityOptions.Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password)指定[PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions)表所示的屬性。
 
+::: moniker range=">= aspnetcore-2.0"
+
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
 | [RequireDigit](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredigit) | 需要介於 0-9 密碼中的數字。 | `true` |
 | [RequiredLength](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredlength) | 密碼長度下限。 | 6 |
-
-::: moniker range=">= aspnetcore-2.0"
-
-| [RequiredUniqueChars](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireduniquechars) |僅適用於 ASP.NET Core 2.0 或更新版本。<br><br> 需要密碼中的不同字元的數。 |1 |
+| [RequireLowercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirelowercase) | 需要密碼中的小寫字元。 | `true` |
+| [RequireNonAlphanumeric](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirenonalphanumeric) | 需要密碼的非英數字元。 | `true` |
+| [RequiredUniqueChars](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireduniquechars) | 僅適用於 ASP.NET Core 2.0 或更新版本。<br><br> 需要密碼中的不同字元的數。 | 1 |
+| [RequireUppercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireuppercase) | 需要密碼以大寫字元。 | `true` |
 
 ::: moniker-end
 
-| [RequireLowercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirelowercase) |需要密碼中的小寫字元。 | `true` | |[RequireNonAlphanumeric](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirenonalphanumeric) |需要密碼的非英數字元。 | `true` | |[RequireUppercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireuppercase) |需要密碼以大寫字元。 | `true` |
+::: moniker range="< aspnetcore-2.0"
+
+| 屬性 | 描述 | 預設 |
+| -------- | ----------- | :-----: |
+| [RequireDigit](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredigit) | 需要介於 0-9 密碼中的數字。 | `true` |
+| [RequiredLength](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredlength) | 密碼長度下限。 | 6 |
+| [RequireLowercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirelowercase) | 需要密碼中的小寫字元。 | `true` |
+| [RequireNonAlphanumeric](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirenonalphanumeric) | 需要密碼的非英數字元。 | `true` |
+| [RequireUppercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireuppercase) | 需要密碼以大寫字元。 | `true` |
+
+::: moniker-end
 
 ### <a name="sign-in"></a>登入
 
@@ -137,7 +149,7 @@ ASP.NET Core 身分識別設定，例如密碼原則、 鎖定和 cookie 組態�
 
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
-| [AllowedUserNameCharacters](/dotnet/api/microsoft.aspnetcore.identity.useroptions.allowedusernamecharacters) | 在 使用者名稱中允許的字元。 | abcdefghijklmnopqrstuvwxyz<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789<br>-._@+ |
+| [AllowedUserNameCharacters](/dotnet/api/microsoft.aspnetcore.identity.useroptions.allowedusernamecharacters) | 在 使用者名稱中允許的字元。 | abcdefghijklmnopqrstuvwxyz<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789<br>-.\_@+ |
 | [RequireUniqueEmail](/dotnet/api/microsoft.aspnetcore.identity.useroptions.requireuniqueemail) | 要求每個使用者必須具有唯一的電子郵件。 | `false` |
 
 ### <a name="cookie-settings"></a>Cookie 設定

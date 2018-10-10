@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: 435ee61a9c28ad0035457990cd3a889f5b240517
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: de3c8ea29f2c271136f58d8165bb92f4ab28ce83
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795534"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912822"
 ---
 <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>附錄︰ 修正範例應用程式 （建置使用 Azure 的真實世界的雲端應用程式）
 ====================
@@ -221,7 +221,7 @@ ASP.NET 會自動防止的多種資訊，請在其中惡意使用者可能會在
 4. 在 檔案總管 中，以滑鼠右鍵按一下.zip 檔案並按一下 內容，然後在 屬性 視窗中按一下 解除封鎖。
 5. 將檔案解壓縮。
 6. 按兩下.sln 檔案，即可啟動 Visual Studio。
-7. 從 工具 功能表中，按一下 程式庫套件管理員 中，則套件管理員主控台。
+7. 從**工具**功能表上，按一下**NuGet 套件管理員**，然後**Package Manager Console**。
 8. 在 套件管理員主控台 (PMC)，按一下 還原。
 9. 結束 Visual Studio。
 10. 開始[Azure 儲存體模擬器](/azure/storage/common/storage-use-emulator)。

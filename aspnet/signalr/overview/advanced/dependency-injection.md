@@ -8,32 +8,32 @@ ms.date: 06/10/2014
 ms.assetid: a14121ae-02cf-4024-8af0-9dd0dc810690
 msc.legacyurl: /signalr/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 2f9b8eeb87882a686df5f35b2e7048a8518c8d4b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 607738e7531eaf9ee9f6a24267b65e153cc4d599
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831191"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912862"
 ---
 <a name="dependency-injection-in-signalr"></a>SignalR 中的相依性插入
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)， [Patrick Fletcher](https://github.com/pfletcher)
 
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR 第 2 版
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>本主題的上一個版本
-> 
+>
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
@@ -140,7 +140,7 @@ Visual Studio 會建立名為的新介面`IStockTicker`，也會變更`StockTick
 
 有許多適用於.NET 的開放原始碼 IoC 容器。 本教學課程中，我將使用[Ninject](http://www.ninject.org/)。 (其他熱門的程式庫包含[Castle Windsor](http://www.castleproject.org/)， [Spring.Net](http://www.springframework.net/)， [Autofac](https://code.google.com/p/autofac/)， [Unity](https://github.com/unitycontainer/unity)，和[StructureMap](http://docs.structuremap.net).)
 
-使用 NuGet 套件管理員來安裝[Ninject 文件庫](https://nuget.org/packages/Ninject/3.0.1.10)。 在 Visual Studio 中，從**工具**功能表中，選取**程式庫套件管理員** | **Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+使用 NuGet 套件管理員來安裝[Ninject 文件庫](https://nuget.org/packages/Ninject/3.0.1.10)。 在 Visual Studio 中，從**工具**功能表中，選取**NuGet 套件管理員** > **Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 [!code-powershell[Main](dependency-injection/samples/sample13.ps1)]
 

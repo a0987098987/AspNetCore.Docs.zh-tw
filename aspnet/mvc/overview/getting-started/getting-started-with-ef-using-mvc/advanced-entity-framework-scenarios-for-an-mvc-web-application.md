@@ -8,21 +8,20 @@ ms.date: 12/08/2014
 ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 6e3de242f7cfc584f4c3d1dfa3d1948ee4d49d66
-ms.sourcegitcommit: 67a0a04ebb3b21c826e5b9600bacfc897abd6a46
+ms.openlocfilehash: 0aa440e700c9bfb02aa5d55ebf481850a730febe
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42899821"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912679"
 ---
 <a name="advanced-entity-framework-6-scenarios-for-an-mvc-5-web-application-12-of-12"></a>MVC 5 Web 應用程式 (12 / 12) 的進階的 Entity Framework 6 案例
 ====================
 藉由[Tom Dykstra](https://github.com/tdykstra)
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)或[下載 PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 2013 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
-
+> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
 在上一個教學課程中，您會實作每個階層的資料表繼承。 本教學課程包含介紹數個會留意在超出開發 ASP.NET web 應用程式使用 Entity Framework Code First 的基本概念時很有用的主題。 逐步指示會引導您完成程式碼，並使用 Visual Studio 的下列主題：
 
@@ -150,7 +149,7 @@ Entity Framework 程式碼的第一個 API 包含可讓您的 SQL 命令直接�
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample6.cs)]
 
-現在上設定中斷點`return`陳述式 (在該行游標 F9)。 按 F5 以偵錯模式中執行專案，然後選取 [課程索引] 頁面。 當程式碼到達中斷點時，檢查`sql`變數。 您會看到傳送到 SQL Server 的查詢。 它是一項簡單`Select`陳述式。
+現在上設定中斷點`return`陳述式 (在該行游標 F9)。 按下**F5**執行偵錯模式中的專案，然後選取 [課程索引] 頁面。 當程式碼到達中斷點時，檢查`sql`變數。 您會看到傳送到 SQL Server 的查詢。 它是一項簡單`Select`陳述式。
 
 [!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample7.json)]
 
@@ -291,7 +290,6 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 
 > 無法建立/陰影複製 '&lt;filename&gt;' 已存在的檔案。
 
-
 方案
 
 等候幾秒鐘的時間，然後重新整理頁面。
@@ -301,7 +299,6 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 錯誤訊息 (從`Update-Database`PMC 命令):
 
 > 詞彙 更新資料庫 ' 無法辨識為 cmdlet、 函式、 指令碼檔案或可執行程式的名稱。 請檢查名稱的拼字，或如果包含路徑的話，確認路徑正確，然後再試一次。
-
 
 方案
 
@@ -313,7 +310,6 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 
 > 一個或多個實體的驗證失敗。 請參閱 'EntityValidationErrors' 屬性，如需詳細資訊。
 
-
 方案
 
 此問題的其中一個原因是驗證錯誤時`Seed`方法執行。 請參閱[植入及偵錯 Entity Framework (EF) Db](https://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)如需有關偵錯秘訣`Seed`方法。
@@ -322,9 +318,7 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 
 錯誤訊息：
 
-> HTTP 錯誤 500.19-內部伺服器錯誤  
-> 無法存取要求的網頁，因為頁面的相關的組態資料無效。
-
+> 無法存取 HTTP 錯誤 500.19-內部伺服器錯誤 」 要求的頁面，因為頁面的相關的組態資料無效。
 
 方案
 
@@ -335,7 +329,6 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 錯誤訊息：
 
 > 建立與 SQL Server　的連線時，發生與網路相關的錯誤或是執行個體特有的錯誤。 找不到或無法存取伺服器。 確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線 (提供者：SQL 網路介面，錯誤：26 - 搜尋指定的伺服器/執行個體時發生錯誤)
-
 
 方案
 

@@ -8,12 +8,12 @@ ms.date: 10/17/2013
 ms.assetid: db0d02d9-58e8-4a0b-8d7d-b8df8ea97b88
 msc.legacyurl: /mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: d6fb40741c5f7b992e907a462ac92972fe603624
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 2566e201e44ccd9642abda7c7996056c73178fd6
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578363"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912848"
 ---
 <a name="how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2"></a>如何將 ASP.NET MVC 4 和 Web API 專案升級至 ASP.NET MVC 5 和 Web API 2
 ====================
@@ -71,8 +71,8 @@ ms.locfileid: "48578363"
     > Microsoft Web Helpers 已被取代 Microsoft.AspNet.WebHelpers。 您應該先，移除舊的封裝，然後再安裝較新的套件。   
     >   
     > 沒有跨版本相容性之間主要的 ASP.NET 套件。 例如，MVC 5 適用於只有第 3 Razor 和不 Razor 2。
-4. Visual Studio 2013 中開啟您的專案。
-5. 移除任何已安裝下列 ASP.NET NuGet 封裝。 您將會移除這些使用套件管理員主控台 (PMC)。 若要開啟 PMC 中，選取**工具**功能表，然後選取**程式庫套件管理員，** 然後選取**Package Manager Console**。 您的專案可能不會包含所有這些。
+4. 在 Visual Studio 中開啟專案。
+5. 移除任何已安裝下列 ASP.NET NuGet 封裝。 您將會移除這些使用套件管理員主控台 (PMC)。 若要開啟 PMC 中，選取**工具**功能表，然後選取**NuGet 套件管理員**然後選取**Package Manager Console**。 您的專案可能不會包含所有這些。
 
     1. `Microsoft.AspNet.WebPages.Administration`  
    通常在從 MVC 3 升級至 MVC 4 時，會新增此套件。 若要移除它，請在 PMC 中執行下列命令：  

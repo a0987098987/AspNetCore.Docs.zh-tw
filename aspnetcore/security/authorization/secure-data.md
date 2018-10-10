@@ -5,12 +5,12 @@ description: 了解如何使用受保護的授權的使用者資料建立 Razor 
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: 2fb13f0772a1f8aa4ed2ff3ece2a2c5d3b7360c9
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 71b7855958b530b8bac32843a8d1e7db0113ffd9
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010932"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912627"
 ---
 ::: moniker range="<= aspnetcore-1.1"
 
@@ -350,6 +350,7 @@ dotnet ef database update
 
 ### <a name="additional-resources"></a>其他資源
 
+* [建置.NET Core 和 SQL Database web 應用程式在 Azure App Service](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 * [ASP.NET Core 授權實驗室](https://github.com/blowdart/AspNetAuthorizationWorkshop)。 這個實驗室會進入此教學課程中介紹的安全性功能的更多詳細資料。
 * [ASP.NET Core 的授權： 簡單、 宣告式和自訂的角色](xref:security/authorization/index)
 * [自訂原則式授權](xref:security/authorization/policies)

@@ -8,12 +8,12 @@ ms.date: 09/30/2015
 ms.assetid: 719727b7-bef3-45ad-bfe9-ba5bcdb2305f
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
 msc.type: authoredcontent
-ms.openlocfilehash: 24ab1c470a22b5b328d1f3bc400400978eb31600
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 3c3557bb2be2807b11874937fcc629b5b773e463
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831842"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912250"
 ---
 <a name="hands-on-lab-build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs"></a>實習實驗室： 建置單一頁面應用程式 (SPA) 使用 ASP.NET Web API 和 Angular.js
 ====================
@@ -308,7 +308,7 @@ Web API 架構是 ASP.NET 堆疊的一部分，旨在讓您輕鬆地實作 HTTP 
 
 
 1. 開啟**Visual Studio Express 2013 for Web** ，然後開啟**GeekQuiz.sln**解決方案位於**來源/Ex2-CreatingASPAInterface/開始**資料夾。 或者，您可以繼續使用解決方案您在前一個練習中取得。
-2. 開啟**Package Manager Console**從**工具** | **程式庫套件管理員**。 輸入下列命令以安裝**AngularJS.Core** NuGet 套件。
+2. 開啟**Package Manager Console**從**工具** > **NuGet 套件管理員**。 輸入下列命令以安裝**AngularJS.Core** NuGet 套件。
 
     [!code-powershell[Main](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs/samples/sample16.ps1)]
 3. 在 [**方案總管] 中**，以滑鼠右鍵按一下**指令碼**資料夾**GeekQuiz**專案，然後選取**新增 |新的資料夾**。 將資料夾命名**應用程式**然後按**Enter**。

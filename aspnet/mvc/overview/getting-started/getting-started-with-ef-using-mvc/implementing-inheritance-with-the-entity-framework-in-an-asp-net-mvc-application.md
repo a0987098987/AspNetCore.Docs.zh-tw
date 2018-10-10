@@ -8,20 +8,20 @@ ms.date: 11/07/2014
 ms.assetid: 08834147-77ec-454a-bb7a-d931d2a40dab
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9bfe860761a18cb4a69d33336d64a169e3c834f9
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 613494d58d7652f69a52241bcd3a7e896bc5407c
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834676"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912698"
 ---
 <a name="implementing-inheritance-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-11-of-12"></a>ASP.NET MVC 5 應用程式 (11 小時，共 12) 中實作 Entity Framework 6 的繼承
 ====================
 藉由[Tom Dykstra](https://github.com/tdykstra)
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)或[下載 PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 2013 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
 
 先前的教學課程中，您會處理並行例外狀況。 本教學課程將示範如何在資料模型中實作繼承。
@@ -116,9 +116,9 @@ TPC 和 TPH 繼承模式通常會提供更佳的效能在 Entity Framework 中�
 
 > [!NOTE]
 > 可以移轉資料和制定的結構描述變更時，取得其他錯誤。 如果您收到的移轉錯誤無法解決，您可以藉由變更連接字串中的繼續進行本教學課程*Web.config*檔案，或藉由刪除資料庫。 簡單的方法是在資料庫重新命名*Web.config*檔案。 比方說，將資料庫名稱變更為 ContosoUniversity2，如下列範例所示：
-> 
+>
 > [!code-xml[Main](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample6.xml?highlight=2)]
-> 
+>
 > 使用新資料庫時，沒有資料移轉，而`update-database`命令是很有可能能順利完成。 如需有關如何刪除資料庫的指示，請參閱 <<c0> [ 如何從 Visual Studio 2012 中卸除資料庫](http://romiller.com/2013/05/17/how-to-drop-a-database-from-visual-studio-2012/)。 如果您要繼續進行本教學課程採用這種方法，在本教學課程結尾處略過部署步驟，或將部署到新的網站和資料庫。 如果您將更新部署到您已被部署到已位於相同站台時，EF 會那里相同的錯誤時自動執行移轉。 如果您想要對移轉錯誤進行疑難排解時，最佳的資源是 Entity Framework 論壇或 StackOverflow.com 其中之一。
 
 
@@ -142,13 +142,13 @@ TPC 和 TPH 繼承模式通常會提供更佳的效能在 Entity Framework 中�
 
 本章節會要求您已經完成選擇性**將應用程式部署至 Azure**一節[第 3 部分排序、 篩選和分頁](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)本教學課程系列。 如果您刪除本機專案中的資料庫來判斷已解決的移轉錯誤，請略過此步驟中;或建立新的站台和資料庫，並部署到新的環境。
 
-1. 在 Visual Studio 中的專案上按一下滑鼠右鍵**方案總管**，然後選取**發佈**從內容功能表。  
-  
+1. 在 Visual Studio 中的專案上按一下滑鼠右鍵**方案總管**，然後選取**發佈**從內容功能表。
+
     ![在專案操作功能表中發行](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-2. 按一下 [發行] 。  
-  
-    ![發行](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)  
-  
+2. 按一下 [發行] 。
+
+    ![發行](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
+
    Web 應用程式會在預設瀏覽器中開啟。
 3. 測試應用程式，以確認它是否運作。
 

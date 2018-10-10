@@ -8,20 +8,20 @@ ms.date: 05/01/2015
 ms.assetid: 7ba88418-5d0a-437d-b6dc-7c3816d4ec07
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: e7f5fd725a0d151f19f49be9ceaf52b049d459c0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 647793a65dec8feaf37de561ad77b4585bb869a8
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830576"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912211"
 ---
 <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>使用 Entity Framework 的 ASP.NET MVC 應用程式中更新相關的資料
 ====================
 藉由[Tom Dykstra](https://github.com/tdykstra)
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)或[下載 PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 2013 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
 
 您在先前的教學課程中顯示相關的資料;在本教學課程中，您將更新相關的資料。 大部分的關聯性，做法是藉由更新外部索引鍵欄位或導覽屬性。 多對多關聯性，Entity Framework 不會聯結資料表直接公開，讓您新增和移除適當的導覽屬性的實體。
@@ -214,8 +214,8 @@ Scaffold 的程式碼不是您所要的。 設定資料的下拉式清單中，�
 
 變更一些課程指派，然後按一下**儲存**。 您所做的變更會反映在 [索引] 頁面上。
 
- 注意： 這裡的方法來編輯講師課程資料時運作相當良好有限的數目的課程。 針對更大的集合，將需要不同的 UI 和不同的更新方法。  
- 
+ 注意： 這裡的方法來編輯講師課程資料時運作相當良好有限的數目的課程。 針對更大的集合，將需要不同的 UI 和不同的更新方法。
+
 
 ## <a name="update-the-deleteconfirmed-method"></a>更新 DeleteConfirmed 方法
 
@@ -269,7 +269,7 @@ HttpPost Create 方法會將之前的範本程式碼來檢查驗證錯誤，並�
 
 您現在已完成此操作相關資料的簡介。 到目前為止在這些教學課程中，您先前曾經使用執行同步 I/O 程式碼。 您可以讓應用程式藉由實作非同步程式碼，更有效率地使用 web 伺服器資源，這是您將在下一個教學課程中執行。
 
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。 您也可以要求在新的主題[顯示我如何使用程式碼](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code)。
+您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 

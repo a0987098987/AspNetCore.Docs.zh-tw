@@ -8,20 +8,20 @@ ms.date: 11/07/2014
 ms.assetid: 46f7f3c9-274f-4649-811d-92222a9b27e2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 25bd71f9860db01afb7177da0f9befbdd8eb8e12
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 25cec8bb9384dbd053f8af12855171a54675a40e
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832044"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912484"
 ---
 <a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application"></a>ASP.NET MVC 應用程式建立更複雜的資料模型
 ====================
 藉由[Tom Dykstra](https://github.com/tdykstra)
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)或[下載 PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 2013 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
 
 在上一個教學課程中您用過三個實體所組成的簡單資料模型。 在本教學課程中，您將新增更多的實體和關聯性，並將指定格式、 驗證和資料庫對應規則來自訂資料模型。 您會看到來自訂資料模型的兩種方式： 藉由將屬性加入至實體類別和程式碼加入至資料庫內容類別。
@@ -230,13 +230,13 @@ Course 實體具有外部索引鍵屬性`DepartmentID`指向相關`Department`�
 
 外部索引鍵屬性和導覽屬性在`Course`實體反映了下列關聯性：
 
-- 課程會指派給一個部門，因此基於上述理由，會有一個 `DepartmentID` 外部索引鍵和一個 `Department` 導覽屬性。 
+- 課程會指派給一個部門，因此基於上述理由，會有一個 `DepartmentID` 外部索引鍵和一個 `Department` 導覽屬性。
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample17.cs)]
-- 由於課程可由任何數量的學生進行註冊，因此 `Enrollments` 導覽屬性為一個集合： 
+- 由於課程可由任何數量的學生進行註冊，因此 `Enrollments` 導覽屬性為一個集合：
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample18.cs)]
-- 課程可由多個講師進行教授，因此 `Instructors` 導覽屬性為一個集合： 
+- 課程可由多個講師進行教授，因此 `Instructors` 導覽屬性為一個集合：
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample19.cs)]
 
@@ -260,15 +260,15 @@ Course 實體具有外部索引鍵屬性`DepartmentID`指向相關`Department`�
 
 外部索引鍵及導覽屬性反映了下列關聯性：
 
-- 部門可以有或沒有一位系統管理員，而系統管理員一律為講師。 因此`InstructorID`屬性是包含做為外部索引鍵`Instructor`後面會加上實體，以及使用問號`int`類型標示為可為 null 的該屬性指定。導覽屬性名為`Administrator`但保留`Instructor`實體： 
+- 部門可以有或沒有一位系統管理員，而系統管理員一律為講師。 因此`InstructorID`屬性是包含做為外部索引鍵`Instructor`後面會加上實體，以及使用問號`int`類型標示為可為 null 的該屬性指定。導覽屬性名為`Administrator`但保留`Instructor`實體：
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample22.cs)]
-- 部門中可能包含許多課程，因此沒有`Courses`導覽屬性： 
+- 部門中可能包含許多課程，因此沒有`Courses`導覽屬性：
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample23.cs)]
 
   > [!NOTE]
-  > 根據慣例，Entity Framework 會為不可為 Null 的外部索引鍵和多對多關聯性啟用串聯刪除。 這可能會導致循環串聯刪除規則，並在您嘗試新增移轉時造成例外狀況。 例如，如果您未定義`Department.InstructorID`屬性可為 null，您會收到下列例外狀況訊息: 「 參考關聯性將會導致不允許循環參考。 」 如果您的商務規則所需`InstructorID`屬性成為不可為 null，您必須使用下列 fluent API 陳述式停用串聯刪除關聯性： 
+  > 根據慣例，Entity Framework 會為不可為 Null 的外部索引鍵和多對多關聯性啟用串聯刪除。 這可能會導致循環串聯刪除規則，並在您嘗試新增移轉時造成例外狀況。 例如，如果您未定義`Department.InstructorID`屬性可為 null，您會收到下列例外狀況訊息: 「 參考關聯性將會導致不允許循環參考。 」 如果您的商務規則所需`InstructorID`屬性成為不可為 null，您必須使用下列 fluent API 陳述式停用串聯刪除關聯性：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample24.cs)]
 
@@ -285,10 +285,10 @@ Course 實體具有外部索引鍵屬性`DepartmentID`指向相關`Department`�
 
 外部索引鍵屬性及導覽屬性反映了下列關聯性：
 
-- 註冊記錄乃針對單一課程，因此當中包含了一個 `CourseID` 外部索引鍵屬性及一個 `Course` 導覽屬性： 
+- 註冊記錄乃針對單一課程，因此當中包含了一個 `CourseID` 外部索引鍵屬性及一個 `Course` 導覽屬性：
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample26.cs)]
-- 註冊記錄乃針對單一學生，因此當中包含了一個 `StudentID` 外部索引鍵屬性及一個 `Student` 導覽屬性： 
+- 註冊記錄乃針對單一學生，因此當中包含了一個 `StudentID` 外部索引鍵屬性及一個 `Student` 導覽屬性：
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample27.cs)]
 
@@ -382,13 +382,13 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 > [!NOTE]
 > 可以移轉資料和制定的結構描述變更時，取得其他錯誤。 如果收到無法解決的移轉錯誤，您可以變更連接字串中的資料庫名稱，或刪除該資料庫。 簡單的方法是在資料庫重新命名*Web.config*檔案。 下列範例顯示名稱變更為 CU\_測試：
-> 
+>
 > [!code-xml[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample36.xml?highlight=1)]
-> 
+>
 > 使用新資料庫時，沒有資料移轉，而`update-database`命令是很有可能能順利完成。 如需有關如何刪除資料庫的指示，請參閱 <<c0> [ 如何從 Visual Studio 2012 中卸除資料庫](http://romiller.com/2013/05/17/how-to-drop-a-database-from-visual-studio-2012/)。
-> 
+>
 > 如果失敗，您可以嘗試的另一項是將資料庫重新初始化在 PMC 中，輸入下列命令：
-> 
+>
 > `update-database -TargetMigration:0`
 
 
@@ -406,7 +406,7 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 您現在已有了更複雜的資料模型和對應的資料庫。 在下列教學課程，您將深入了解不同的方式可存取相關的資料。
 
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。 您也可以要求在新的主題[顯示我如何使用程式碼](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code)。
+您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 

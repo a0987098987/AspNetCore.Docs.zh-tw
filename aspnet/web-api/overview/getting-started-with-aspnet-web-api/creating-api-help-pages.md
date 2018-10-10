@@ -8,12 +8,12 @@ ms.date: 04/01/2013
 ms.assetid: 0150e67b-c50d-4613-83ea-7b4ef8cacc5a
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 2d8758034ca4339ed7e9699cf2f2643bfab87ba4
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: c081064a32151a71fc4f3ea407e0c48a1539432a
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830982"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913121"
 ---
 <a name="creating-help-pages-for-aspnet-web-api"></a>建立的 ASP.NET Web API 說明頁面
 ====================
@@ -55,7 +55,7 @@ ms.locfileid: "41830982"
 
 您可以透過 NuGet 套件管理員，將 [說明] 頁面新增至現有的 Web API 專案中。 這個選項適合您開始從不同的專案範本，於 [Web API] 範本。
 
-從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。 在  [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)視窗中，輸入下列命令之一：
+從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。 在  [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)視窗中，輸入下列命令之一：
 
 針對**C#** 應用程式： `Install-Package Microsoft.AspNet.WebApi.HelpPage`
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 423498f7-1a4b-44a1-b342-5f39d0bcf94f
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: ed5d7b9b4e61b0289734f4cdef1039b31ddda7a7
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: af5e5a9c8d211b07b57aa50238b02cabe249aef8
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825110"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911836"
 ---
 <a name="aspnet-error-handling"></a>ASP.NET 錯誤處理
 ====================
@@ -275,7 +275,7 @@ ELMAH （錯誤記錄模組和處理常式） 是您插入您的 ASP.NET 應用�
 
 您可以使用 ELMAH，您必須先安裝它。 這是容易使用*NuGet*套件安裝程式。 如稍早在本教學課程系列中所述，NuGet 就會是 Visual Studio 擴充功能，可讓您更輕鬆地安裝及更新的開放原始碼程式庫和 Visual Studio 中的工具。
 
-1. 在 Visual Studio 中，從**工具**功能表上，選取**程式庫套件管理員** - &gt; **管理解決方案的 NuGet 套件**。 
+1. 在 Visual Studio 中，從**工具**功能表上，選取**NuGet 套件管理員** > **管理方案的 NuGet 套件**。 
 
     ![ASP.NET 錯誤處理-管理方案的 NuGet 套件](aspnet-error-handling/_static/image6.png)
 2. **管理 NuGet 套件**對話方塊隨即出現在 Visual Studio 中。

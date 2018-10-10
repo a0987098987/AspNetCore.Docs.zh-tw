@@ -8,12 +8,12 @@ ms.date: 02/25/2014
 ms.assetid: 66a837e9-600b-4b72-97a9-19804231c64a
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 426e3500c504a651a325eec021e2d9e8b9cc1d32
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: e0d525e497cf41a79820417a9c832fa6b5cd7f8a
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795276"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912835"
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的追蹤
 ====================
@@ -37,7 +37,7 @@ ms.locfileid: "48795276"
 
 [![](tracing-in-aspnet-web-api/_static/image4.png)](tracing-in-aspnet-web-api/_static/image3.png)
 
-從**工具**功能表上，選取**程式庫套件管理員**，然後**封裝管理主控台**。
+從**工具**功能表上，選取**NuGet 套件管理員**，然後**封裝管理主控台**。
 
 在 [套件管理員主控台] 視窗中，輸入下列命令。
 
@@ -47,7 +47,6 @@ ms.locfileid: "48795276"
 
 > [!NOTE]
 > 如果您想要的 Web API 的特定版本為目標，使用-版本旗標，當您安裝追蹤封裝。
-
 
 在 應用程式中開啟 WebApiConfig.cs 檔案\_開始資料夾。 將下列程式碼加入**註冊**方法。
 

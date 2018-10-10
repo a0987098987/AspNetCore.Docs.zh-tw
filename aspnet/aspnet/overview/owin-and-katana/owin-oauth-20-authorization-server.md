@@ -8,33 +8,33 @@ ms.date: 03/20/2014
 ms.assetid: 20acee16-c70c-41e9-b38f-92bfcf9a4c1c
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
 msc.type: authoredcontent
-ms.openlocfilehash: 2dd4af4543713ab08ad9427d183f667e2dc04f1f
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 095dad49a8e9f963d941a84398afe9da0f46ce0b
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578038"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912263"
 ---
 <a name="owin-oauth-20-authorization-server"></a>OWIN OAuth 2.0 授權伺服器
 ====================
 藉由[Hongye Sun](https://github.com/hongyes)， [Praburaj Thiagarajan](https://github.com/Praburaj)， [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > 本教學課程將引導您如何實作 OAuth 2.0 授權伺服器使用 OWIN OAuth 中介軟體。 這是僅概述的步驟來建立 OWIN OAuth 2.0 授權伺服器的進階教學課程。 這不是逐步教學課程。 [下載範例程式碼](https://code.msdn.microsoft.com/OWIN-OAuth-20-Authorization-ba2b8783/file/114932/1/AuthorizationServer.zip)。
-> 
+>
 > > [!NOTE]
 > > 這個外框，則不應該適合用來建立安全的生產應用程式。 本教學課程旨在提供有關如何實作 OAuth 2.0 授權伺服器使用 OWIN OAuth 中介軟體的外框。
-> 
-> 
+>
+>
 > ## <a name="software-versions"></a>軟體版本
-> 
+>
 > | **在本教學課程中所示** | **也可以搭配** |
 > | --- | --- |
 > | Windows 8.1 | Windows 8，Windows 7 |
-> | [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads) | [Visual Studio 2013 Express for Desktop](https://www.microsoft.com/visualstudio/eng/2013-downloads#d-2013-express)。 Visual Studio 2012 最新的更新應該可行，但本教學課程尚未經過測試，且某些功能表選取項目和對話方塊都不同。 |
+> | [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) | [Visual Studio 2013 Express for Desktop](https://my.visualstudio.com/Downloads?q=visual%20studio%202013#d-2013-express)。 Visual Studio 2012 最新的更新應該可行，但本教學課程尚未經過測試，且某些功能表選取項目和對話方塊都不同。 |
 > | .NET 4.5 |  |
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 如果您有不直接相關的教學課程中的問題，您可以將它們在公佈[Katana 專案，GitHub 上](https://github.com/aspnet/AspNetKatana/)。 如需問題和針對本教學課程有關的註解，請參閱在頁面底部的註解區段。
 
 
@@ -81,11 +81,11 @@ ms.locfileid: "48578038"
 
 - `AuthorizeEndpointPath`: 要求路徑，而用戶端應用程式重新導向 user-agent 以取得使用者同意發出的權杖或程式碼。 其開頭必須前置斜線，比方說，「`/Authorize`"。
 - `TokenEndpointPath`: 要求路徑用戶端應用程式直接進行通訊來取得存取權杖。 它必須以斜線，例如"/token"開頭。 如果用戶端會發出[用戶端\_祕密](http://tools.ietf.org/html/rfc6749#appendix-A.2)，它必須提供至此端點。
-- `ApplicationCanDisplayErrors`： 設定為`true`如果想要產生的用戶端驗證錯誤的自訂錯誤頁面上的 web 應用程式`/Authorize`端點。 這只需要的情況下，瀏覽器不會重新導向回用戶端應用程式，例如，當`client_id`或`redirect_uri`不正確。 `/Authorize`端點應該會看到 「 oauth。錯誤 」、 「 oauth。ErrorDescription"和"oauth。ErrorUri"屬性會新增至 OWIN 環境。 
+- `ApplicationCanDisplayErrors`： 設定為`true`如果想要產生的用戶端驗證錯誤的自訂錯誤頁面上的 web 應用程式`/Authorize`端點。 這只需要的情況下，瀏覽器不會重新導向回用戶端應用程式，例如，當`client_id`或`redirect_uri`不正確。 `/Authorize`端點應該會看到 「 oauth。錯誤 」、 「 oauth。ErrorDescription"和"oauth。ErrorUri"屬性會新增至 OWIN 環境。
 
     > [!NOTE]
     > 如果沒有，則為 true，授權伺服器會傳回預設的錯誤網頁的錯誤詳細資料。
-- `AllowInsecureHttp`: True，以允許授權和語彙基元要求抵達 HTTP URI 位址，並允許連入`redirect_uri`授權要求參數具有 HTTP URI 位址。 
+- `AllowInsecureHttp`: True，以允許授權和語彙基元要求抵達 HTTP URI 位址，並允許連入`redirect_uri`授權要求參數具有 HTTP URI 位址。
 
     > [!WARNING]
     > 安全性-這是只有開發。
@@ -107,9 +107,9 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 ![](owin-oauth-20-authorization-server/_static/image1.png)
 
-檢閱 IETF OAuth 2[授權碼授與](http://tools.ietf.org/html/rfc6749#section-4.1)現在區段。 
+檢閱 IETF OAuth 2[授權碼授與](http://tools.ietf.org/html/rfc6749#section-4.1)現在區段。
 
-**提供者**（在下表中） 是[OAuthAuthorizationServerOptions](https://msdn.microsoft.com/library/microsoft.owin.security.oauth.oauthauthorizationserveroptions(v=vs.111).aspx)。提供者，也就是型別的`OAuthAuthorizationServerProvider`，其中包含所有的 OAuth 伺服器事件。 
+**提供者**（在下表中） 是[OAuthAuthorizationServerOptions](https://msdn.microsoft.com/library/microsoft.owin.security.oauth.oauthauthorizationserveroptions(v=vs.111).aspx)。提供者，也就是型別的`OAuthAuthorizationServerProvider`，其中包含所有的 OAuth 伺服器事件。
 
 | 從授權碼授與區段的流程步驟 | 下載範例會執行這些步驟： |
 | --- | --- |
@@ -134,13 +134,13 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 ![](owin-oauth-20-authorization-server/_static/image2.png)
 
-如果**Grant**  按鈕已選取，`Authorize`動作將會建立新的"Bearer"身分識別和使用它登入。 它會觸發產生持有人權杖，並將它傳送回 JSON 裝載的用戶端的授權伺服器。 
+如果**Grant**  按鈕已選取，`Authorize`動作將會建立新的"Bearer"身分識別和使用它登入。 它會觸發產生持有人權杖，並將它傳送回 JSON 裝載的用戶端的授權伺服器。
 
 ### <a name="implicit-grant"></a>隱含授與
 
 請參閱 IETF OAuth 2[隱含授與](http://tools.ietf.org/html/rfc6749#section-4.2)現在區段。
 
- [隱含授與](http://tools.ietf.org/html/rfc6749#section-4.2)[圖 4] 所示的 flow，流程，以及對應的 OWIN OAuth 則中介軟體會遵循。  
+ [隱含授與](http://tools.ietf.org/html/rfc6749#section-4.2)[圖 4] 所示的 flow，流程，以及對應的 OWIN OAuth 則中介軟體會遵循。
 
 | 隱含授與一節中的流程步驟 | 下載範例會執行這些步驟： |
 | --- | --- |
@@ -159,7 +159,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 請參閱 IETF OAuth 2[資源擁有者密碼認證授與](http://tools.ietf.org/html/rfc6749#section-4.3)現在區段。
 
- [資源擁有者密碼認證授與](http://tools.ietf.org/html/rfc6749#section-4.3)[圖 5] 所示的 flow，流程，以及對應的 OWIN OAuth 則中介軟體會遵循。  
+ [資源擁有者密碼認證授與](http://tools.ietf.org/html/rfc6749#section-4.3)[圖 5] 所示的 flow，流程，以及對應的 OWIN OAuth 則中介軟體會遵循。
 
 | 從資源擁有者密碼認證授與區段的流程步驟 | 下載範例會執行這些步驟： |
 | --- | --- |
@@ -182,7 +182,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 請參閱 IETF OAuth 2[用戶端認證授與](http://tools.ietf.org/html/rfc6749#section-4.4)現在區段。
 
- [用戶端認證授與](http://tools.ietf.org/html/rfc6749#section-4.4)[圖 6] 所示的 flow，流程，以及對應的 OWIN OAuth 則中介軟體會遵循。  
+ [用戶端認證授與](http://tools.ietf.org/html/rfc6749#section-4.4)[圖 6] 所示的 flow，流程，以及對應的 OWIN OAuth 則中介軟體會遵循。
 
 | 從用戶端認證授與區段的流程步驟 | 下載範例會執行這些步驟： |
 | --- | --- |
@@ -203,7 +203,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 請參閱 IETF OAuth 2[重新整理權杖](http://tools.ietf.org/html/rfc6749#section-1.5)現在區段。
 
- [重新整理權杖](http://tools.ietf.org/html/rfc6749#section-1.5)[圖 2] 所示的 flow，流程，以及對應的 OWIN OAuth 則中介軟體會遵循。  
+ [重新整理權杖](http://tools.ietf.org/html/rfc6749#section-1.5)[圖 2] 所示的 flow，流程，以及對應的 OWIN OAuth 則中介軟體會遵循。
 
 | 從用戶端認證授與區段的流程步驟 | 下載範例會執行這些步驟： |
 | --- | --- |
@@ -212,7 +212,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 |  |  |
 | （H） 授權伺服器會驗證用戶端和驗證重新整理權杖，然後如果有效，就會發出新的存取權杖 （以及選擇性地為新的重新整理語彙基元）。 |  |
 
-以下是範例實作`Provider.GrantRefreshToken`: 
+以下是範例實作`Provider.GrantRefreshToken`:
 
 [!code-csharp[Main](owin-oauth-20-authorization-server/samples/sample9.cs)]
 

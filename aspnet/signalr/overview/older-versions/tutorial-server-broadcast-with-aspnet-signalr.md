@@ -8,12 +8,12 @@ ms.date: 04/10/2013
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 76dc2f4d54f6ab4cebbde06dfd611a9b5ee5ae64
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 7d604af11ade848358e291d1df25f2f8df850132
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825562"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911977"
 ---
 <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>教學課程： 伺服器廣播與 ASP.NET SignalR 1.x
 ====================
@@ -80,7 +80,7 @@ ms.locfileid: "41825562"
 
 您可以加入至專案的 SignalR 功能，藉由安裝 NuGet 套件。
 
-1. 按一下 **工具 |程式庫套件管理員 |套件管理員主控台**。
+1. 按一下 **工具 |NuGet 套件管理員 |套件管理員主控台**。
 2. 在 套件管理員中，輸入下列命令。
 
     [!code-powershell[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample1.ps1)]

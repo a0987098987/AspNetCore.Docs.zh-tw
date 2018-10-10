@@ -8,25 +8,25 @@ ms.date: 07/09/2013
 ms.assetid: a90a04ce-9d07-43ad-8250-8a92fb2bd3d5
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 0d16498e94ac0a66c117ed057db398c14080beaa
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 06fd13fe9b12d172d615ae76a71d246a89f5386d
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826612"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910482"
 ---
 <a name="use-owin-to-self-host-aspnet-web-api-2"></a>使用 OWIN 自我裝載 ASP.NET Web API 2
 ====================
 藉由[Kanchan Mehrotra](https://twitter.com/kanchanmeh)
 
 > 本教學課程會示範如何使用 OWIN 自我裝載 Web API 架構的主控台應用程式中裝載 ASP.NET Web API。
-> 
+>
 > [Open Web Interface for.NET](http://owin.org) (OWIN) 定義.NET web 伺服器和 web 應用程式之間的抽象概念。 OWIN 可分隔的伺服器，讓 OWIN 很適合用於自我裝載的 web 應用程式，在您自己的程序，IIS 外部的 web 應用程式。
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads) （也可用於 Visual Studio 2012）
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) （也可用於 Visual Studio 2012）
 > - Web API 2
 
 
@@ -42,7 +42,7 @@ ms.locfileid: "41826612"
 
 ## <a name="add-the-web-api-and-owin-packages"></a>新增 Web API 和 OWIN 套件
 
-從**工具**功能表上，按一下**程式庫套件管理員**，然後按一下**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+從**工具**功能表上，按一下**NuGet 套件管理員**，然後按一下**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 `Install-Package Microsoft.AspNet.WebApi.OwinSelfHost`
 

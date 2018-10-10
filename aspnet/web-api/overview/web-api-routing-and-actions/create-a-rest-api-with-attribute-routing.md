@@ -8,12 +8,12 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 191452204d4347396b1d339d9b82d583a2ce9f3c
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 3b66f02c9be6441ff7d6c38d6180cc8556c6b8b9
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795510"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912887"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的屬性路由建立 REST API
 ====================
@@ -104,7 +104,7 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 屬性路由的一�
 
 ### <a name="seed-the-database"></a>植入資料庫
 
-從 [工具] 功能表中，選取**程式庫套件管理員**，然後選取**Package Manager Console**。
+從 [工具] 功能表中，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。
 
 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
@@ -171,7 +171,7 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 屬性路由的一�
 
 若要取得活頁簿詳細資料，用戶端會傳送 GET 要求`/api/books/{id}/details`，其中 *{id}* 本書的識別碼。
 
-將下列方法加入 `BooksController` 類別中。
+將下列方法加入 `BooksController` 類別。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample13.cs)]
 

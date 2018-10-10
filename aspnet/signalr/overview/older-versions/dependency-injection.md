@@ -8,12 +8,12 @@ ms.date: 05/15/2013
 ms.assetid: eaa206c4-edb3-487e-8fcb-54a3261fed36
 msc.legacyurl: /signalr/overview/older-versions/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: d59ca85f1005b08ff52ded61d94323dabdb40d0a
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 905dea4918be731673c39e788069ce2dc78e1649
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825768"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910690"
 ---
 <a name="dependency-injection-in-signalr-1x"></a>相依性插入 signalr 1.x
 ====================
@@ -122,7 +122,7 @@ Visual Studio 會建立名為的新介面`IStockTicker`，也會變更`StockTick
 
 有許多適用於.NET 的開放原始碼 IoC 容器。 本教學課程中，我將使用[Ninject](http://www.ninject.org/)。 (其他熱門的程式庫包含[Castle Windsor](http://www.castleproject.org/)， [Spring.Net](http://www.springframework.net/)， [Autofac](https://code.google.com/p/autofac/)， [Unity](https://github.com/unitycontainer/unity)，和[StructureMap](http://docs.structuremap.net).)
 
-使用 NuGet 套件管理員來安裝[Ninject 文件庫](https://nuget.org/packages/Ninject/3.0.1.10)。 在 Visual Studio 中，從**工具**功能表中，選取**程式庫套件管理員** | **Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+使用 NuGet 套件管理員來安裝[Ninject 文件庫](https://nuget.org/packages/Ninject/3.0.1.10)。 在 Visual Studio 中，從**工具**功能表中，選取**NuGet 套件管理員** > **Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 [!code-powershell[Main](dependency-injection/samples/sample13.ps1)]
 

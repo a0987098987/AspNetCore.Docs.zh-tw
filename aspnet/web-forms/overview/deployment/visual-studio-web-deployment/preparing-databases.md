@@ -8,12 +8,12 @@ ms.date: 02/15/2013
 ms.assetid: ae4def81-fa37-4883-a13e-d9896cbf6c36
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
-ms.openlocfilehash: 7bdf443fbce7376ac057c848df146717955203f9
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 67f44d9f23a2fe83c48e68328b1dee739056e32f
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833856"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912380"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>使用 Visual Studio 的 ASP.NET Web 部署： 準備資料庫部署
 ====================
@@ -84,15 +84,13 @@ Contoso 大學應用程式資料庫由 Code First，您將使用 Code First 移�
 > [!NOTE]
 > 指定初始設定式類別的另一種方式是藉由呼叫這麼`Database.SetInitializer`中`Application_Start`方法中的*Global.asax*檔案。 如果您要啟用移轉的專案會使用該方法來指定初始設定式中，移除該程式碼行。
 
-
 > [!NOTE]
 > 如果您使用 Visual Studio 2013，新增下列的步驟，在步驟 2 和 3 之間: (a) 在 PMC 輸入 「 更新套件 entityframework-6.1.1 版 」 來取得目前的 EF 版本。 然後 (b) 建置專案，以取得組建錯誤清單並加以修正。 刪除不再存在，以滑鼠右鍵按一下，按一下 加入 using 陳述式需要它們的地方，解析的命名空間的 using 陳述式，並將出現的 System.Data.EntityState 變更 System.Data.Entity.EntityState。
-
 
 ### <a name="enable-code-first-migrations"></a>啟用 Code First 移轉
 
 1. 請確定 ContosoUniversity 專案 (不 ContosoUniversity.DAL) 設定為啟始專案。 在 **方案總管**，以滑鼠右鍵按一下 ContosoUniversity 專案，然後選取**設定為啟始專案**。 在 啟始專案，若要尋找的資料庫連接字串看起來 code First 移轉。
-2. 從**工具**功能表上，按一下**程式庫套件管理員**(或**NuGet 套件管理員**)，然後**Package Manager Console**。
+2. 從**工具**功能表上，選擇**NuGet 套件管理員** > **Package Manager Console**。
 
     ![Selecting_Package_Manager_Console](preparing-databases/_static/image3.png)
 3. 在頂端**Package Manager Console**視窗中選取做為預設專案，然後在 ContosoUniversity.DAL`PM>`提示字元中輸入 「 啟用移轉 」。

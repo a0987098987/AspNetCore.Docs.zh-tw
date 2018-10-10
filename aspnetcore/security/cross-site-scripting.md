@@ -5,18 +5,18 @@ description: 了解跨網站指令碼 (XSS) 和解決此一漏洞的 ASP.NET Cor
 ms.author: riande
 ms.date: 10/02/2018
 uid: security/cross-site-scripting
-ms.openlocfilehash: e937ce47b7151155197cd607832eeb6bf62e3a19
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 50f0211a2c64708d9b788dd10ce9064e66014d55
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577440"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910521"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>防止跨網站指令碼 (XSS) ASP.NET Core 中
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-跨網站指令碼 (XSS) 是可讓攻擊者將用戶端指令碼 (通常是 JavaScript) 放入網頁的安全性弱點。 當其他使用者載入攻擊者的指令碼會執行受影響的頁面時，讓攻擊者竊取 cookie 和工作階段權杖變更透過 DOM 操作之 web 網頁內容，或瀏覽器重新導向至其他頁面。 應用程式接受使用者輸入，並將其輸出在頁面中，而不需要驗證、 編碼或逸出它時，通常會發生 XSS 弱點。
+跨網站指令碼 (XSS) 是可讓攻擊者將用戶端指令碼 (通常是 JavaScript) 放入網頁的安全性弱點。 當其他使用者載入攻擊者的指令碼會執行受影響的頁面時，讓攻擊者竊取 cookie 和工作階段權杖變更透過 DOM 操作之 web 網頁內容，或瀏覽器重新導向至其他頁面。 應用程式會接受使用者輸入，並將它輸出到頁面中，而不需要驗證、 編碼或逸出它時，通常會發生 XSS 弱點。
 
 ## <a name="protecting-your-application-against-xss"></a>保護您的應用程式免遭 XSS
 
@@ -26,15 +26,15 @@ ms.locfileid: "48577440"
 
 2. HTML 項目內的不信任的資料之前，請先確認其為 HTML 編碼。 這類 HTML 編碼會採用字元&lt;變成安全的表單和&amp;l t;
 
-3. 之前將不受信任的資料放入 HTML 屬性，請確定它是編碼的 HTML 屬性。 HTML 屬性編碼是 HTML 編碼的超集，例如將額外的字元編碼成"和 '。
+3. 之前將不受信任的資料放入 HTML 屬性，請確定它是 HTML 編碼。 HTML 屬性編碼是 HTML 編碼的超集，例如將額外的字元編碼成"和 '。
 
-4. 之前將不受信任的資料放入 JavaScript 將您在執行階段擷取其內容的 HTML 項目中的資料。 如果這不可行，請確定資料是 JavaScript 編碼。 JavaScript 的編碼方式會適用於 JavaScript 的危險的字元，取代成其 hex，比方說&lt;會編碼為`\u003C`。
+4. 之前將不受信任的資料放入 JavaScript 將您在執行階段擷取其內容的 HTML 項目中的資料。 如果這不可行，請確定資料是 JavaScript 的編碼。 JavaScript 的編碼方式會適用於 JavaScript 的危險的字元，取代成其 hex，比方說&lt;會編碼為`\u003C`。
 
 5. 將不受信任的資料放入的 URL 查詢字串之前，請先確認其為 URL 編碼。
 
 ## <a name="html-encoding-using-razor"></a>使用 Razor 的 HTML 編碼
 
-Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您真的很努力避免這種方式。 它會使用 HTML 編碼規則，每當您使用的屬性*@* 指示詞。 為 HTML 屬性編碼會是這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的 HTML 編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標籤協助程式也會將編碼的輸入您在 tag 參數中使用。
+Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您真的很努力避免這種方式。 它會使用 HTML 屬性編碼規則，每當您使用*@* 指示詞。 為 HTML 屬性編碼會是這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的 HTML 編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標籤協助程式也會將編碼的輸入您在 tag 參數中使用。
 
 採取下列 Razor 檢視：
 
@@ -55,7 +55,7 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
 >[!WARNING]
 > ASP.NET Core MVC 提供`HtmlString`類別可在輸出時不會自動編碼。 這應該永遠不會用於具有不受信任的輸入組合，這將會公開 XSS 的安全性弱點。
 
-## <a name="javascript-encoding-using-razor"></a>使用 Razor Javascript 編碼
+## <a name="javascript-encoding-using-razor"></a>使用 Razor JavaScript 編碼
 
 有時候可能會想要將值插入您的檢視中要處理的 JavaScript。 執行這項作業的方法有兩種。 將值插入最安全的方法是將值放在標記的資料屬性，並擷取在 JavaScript 中。 例如: 
 
@@ -107,7 +107,7 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
    </script>
    ```
 
-它執行時，會轉譯下列作業：
+它執行時，會轉譯下列：
 
 ```none
 <"123">
@@ -129,7 +129,7 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
    </script>
    ```
 
-這會如下所示; 呈現在瀏覽器
+這將瀏覽器中轉換，如下所示：
 
 ```html
 <script>

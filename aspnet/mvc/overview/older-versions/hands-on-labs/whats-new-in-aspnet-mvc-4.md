@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 48f7feb3-872f-485d-b96f-e30011ff8c4a
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: b1d80928d765bc71ea1579272662b6697371c47b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9d5a51a5887ecbbc96fce1416b88aa849bc3674e
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830559"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912718"
 ---
 # <a name="whats-new-in-aspnet-mvc-4"></a>ASP.NET MVC 4 中最新消息
 
@@ -382,7 +382,7 @@ ASP.NET MVC 4 中的金鑰更新的其中一個是行動裝置開發的支援。
 
       > [!NOTE]
       > 使用 NuGet 的優點之一是，您不需要寄送您的專案中的所有程式庫專案縮小。 NuGet Power tools，藉由指定封裝版本在 Packages.config 檔案中，您將能夠下載所有必要的程式庫第一次執行專案。 這就是為什麼您必須在您開啟現有的方案從這個實驗室之後，執行這些步驟。
-2. 開啟**Package Manager Console**依序按一下**工具** &gt; **程式庫套件管理員** &gt; **套件管理員主控台**功能表選項。
+2. 開啟**Package Manager Console**依序按一下**工具** > **NuGet 套件管理員** > **套件管理員主控台**功能表選項。
 
     ![開啟 NuGet Package Manager Console](whats-new-in-aspnet-mvc-4/_static/image22.png "開啟 NuGet 套件管理員主控台")
 

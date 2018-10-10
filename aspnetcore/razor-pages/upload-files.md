@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 07/11/2018
 uid: razor-pages/upload-files
-ms.openlocfilehash: 4b2f80cd5644cf21d5d8452aff6df4eb5591d41b
-ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
+ms.openlocfilehash: 92e72869967b6e3202c97b92e341ea22adc69651
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "42909618"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912497"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor 頁面
 
@@ -342,4 +342,4 @@ Update-Database
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如需針對 `IFormFile` 上傳進行疑難排解的資訊，請參閱 [ASP.NET Core 的檔案上傳：疑難排解](xref:mvc/models/file-uploads#troubleshooting)。
+如需疑難排解資訊`IFormFile`上傳，請參閱[ASP.NET Core 的檔案上傳： 疑難排解](xref:mvc/models/file-uploads#troubleshooting)。

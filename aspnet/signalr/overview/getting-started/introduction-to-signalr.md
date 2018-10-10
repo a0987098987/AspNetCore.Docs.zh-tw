@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 0fab5e35-8c1f-43d4-8635-b8aba8766a71
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: f35e26bc8db2bbdb579836bbc9556ad2147cb8bf
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d103573fb31bb3b08d054cbf65ff906bd5d151d3
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833022"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912796"
 ---
 <a name="introduction-to-signalr"></a>SignalR 簡介
 ====================
@@ -51,9 +51,7 @@ SignalR 是開放原始碼，可透過存取[GitHub](https://github.com/signalr)
 
 ## <a name="signalr-and-websocket"></a>SignalR 和 WebSocket
 
-SignalR 適用時，會使用新的 WebSocket 傳輸，並會回復到舊版的傳輸在必要時。 雖然您當然可以撰寫直接使用 WebSocket，請使用 SignalR 表示額外的功能，您就需要實作大量已將您的應用程式已為您已完成。 最重要的是，這表示您可以撰寫您的應用程式，以利用而不必擔心建立不同的程式碼路徑的較舊的用戶端 WebSocket。 SignalR 也會幫助您不必擔心 WebSocket，更新，因為 SignalR 會繼續更新，以便支援變更為基礎的傳輸，提供您的應用程式的 WebSocket 版本之間的一致介面。
-
-您當然可以建立使用 WebSocket 單獨的解決方案，而 SignalR 提供的所有功能，您必須撰寫您自己，例如回到其他傳輸，以及修改您的應用程式更新 WebSocket 實作。
+SignalR （如果可用），會使用新的 WebSocket 傳輸，並會回復到舊版的傳輸在必要時。 雖然您當然可以撰寫您的應用程式直接使用 WebSocket，請使用 SignalR，表示您已經完成額外的功能，您就需要實作許多。 最重要的是，這表示您可以撰寫您的應用程式，以利用而不必擔心建立不同的程式碼路徑的較舊的用戶端 WebSocket。 SignalR 也會幫助您不必擔心 WebSocket，更新，因為 SignalR 會更新為基礎的傳輸，支援變更的 WebSocket 版本提供您的應用程式一致的介面。
 
 <a id="transports"></a>
 

@@ -8,12 +8,12 @@ ms.date: 11/17/2011
 ms.assetid: c3c76516-4c48-4153-bd03-d70e3a3edbb0
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 378bcc038335ee852cd1a6c6e545eb72c6e0c78b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9b3d47c3c8fe5f0b37f1d45e19341df3f91a5bb0
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824756"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911184"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server Compact 資料庫-2 / 12
 ====================
@@ -105,12 +105,11 @@ NuGet 套件安裝通常會處理所需的一切若要部署此軟體與應用�
 > [!NOTE]
 > 指定初始設定式類別的另一種方式是藉由呼叫這麼`Database.SetInitializer`中`Application_Start`方法中的*Global.asax*檔案。 如果您要啟用移轉的專案會使用該方法來指定初始設定式中，移除該程式碼行。
 
-
 接下來，啟用 Code First 移轉。
 
 第一個步驟是確定 ContosoUniversity 專案設為啟始專案。 在 **方案總管**，以滑鼠右鍵按一下 ContosoUniversity 專案，然後選取**設定為啟始專案**。 在 啟始專案，若要尋找的資料庫連接字串看起來 code First 移轉。
 
-從**工具**功能表上，按一下**程式庫套件管理員**，然後**Package Manager Console**。
+從**工具**功能表上，按一下**NuGet 套件管理員**，然後**Package Manager Console**。
 
 ![Selecting_Package_Manager_Console](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image6.png)
 

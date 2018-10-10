@@ -8,32 +8,32 @@ ms.date: 06/10/2014
 ms.assetid: 6ecd08c1-e364-4cd7-ad4c-806521911585
 msc.legacyurl: /signalr/overview/performance/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: 630be13906e2143267ef33a59ccc2ea05073a258
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: ebb61e4296f78bcd74622b729a10d45b60ebb724
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831749"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912783"
 ---
 <a name="signalr-scaleout-with-redis"></a>使用 Redis 的 SignalR 向外延展
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)， [Patrick Fletcher](https://github.com/pfletcher)
 
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR 第 2 版
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>本主題的上一個版本
-> 
+>
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
@@ -52,8 +52,8 @@ Redis 是記憶體中索引鍵-值存放區。 它也支援發行/訂閱模型�
 
 雖然本教學課程使用官方 Redis 實作，另外還有[Windows 連接埠的 Redis](https://github.com/MSOpenTech/redis)從 MSOpenTech。 安裝和設定不同，但除此以外步驟都相同。
 
-> [!NOTE] 
-> 
+> [!NOTE]
+>
 > SignalR 向外的延展與 Redis 不支援 Redis 叢集。
 
 
@@ -62,12 +62,12 @@ Redis 是記憶體中索引鍵-值存放區。 它也支援發行/訂閱模型�
 我們會詳細的教學課程之前，以下是您將進行的快速概觀。
 
 1. 安裝 Redis 並啟動 Redis 伺服器。
-2. 將這些 NuGet 套件新增至您的應用程式中： 
+2. 將這些 NuGet 套件新增至您的應用程式中：
 
     - [Microsoft.AspNet.SignalR](http://nuget.org/packages/Microsoft.AspNet.SignalR)
     - [Microsoft.AspNet.SignalR.Redis](http://nuget.org/packages/Microsoft.AspNet.SignalR.Redis)
 3. 建立 SignalR 應用程式。
-4. 若要設定的後擋板的 Startup.cs 中加入下列程式碼： 
+4. 若要設定的後擋板的 Startup.cs 中加入下列程式碼：
 
     [!code-csharp[Main](scaleout-with-redis/samples/sample1.cs)]
 
@@ -112,7 +112,7 @@ Redis 是記憶體中索引鍵-值存放區。 它也支援發行/訂閱模型�
 - [開始使用 SignalR 2.0](../getting-started/tutorial-getting-started-with-signalr.md)
 - [開始使用 SignalR 2.0 和 MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
 
-接下來，我們將修改的聊天應用程式，以支援向外的延展與 Redis。 首先，將 SignalR.Redis NuGet 封裝加入您的專案。 在 Visual Studio 中，從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+接下來，我們將修改的聊天應用程式，以支援向外的延展與 Redis。 首先，將 SignalR.Redis NuGet 封裝加入您的專案。 在 Visual Studio 中，從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 [!code-powershell[Main](scaleout-with-redis/samples/sample5.ps1)]
 

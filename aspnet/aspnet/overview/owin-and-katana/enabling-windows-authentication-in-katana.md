@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 82324ef0-3b75-4f63-a217-76ef4036ec93
 msc.legacyurl: /aspnet/overview/owin-and-katana/enabling-windows-authentication-in-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 0aa578020a1f02fa68c74e758014c642219b4265
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8afa2c9dfbe03a9874513f7d083adf7608f4218f
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824921"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910456"
 ---
 <a name="enabling-windows-authentication-in-katana"></a>在 Katana 中啟用 Windows 驗證
 ====================
@@ -36,7 +36,6 @@ Katana 目前提供兩部伺服器，這兩者都支援 Windows 整合式驗證�
 > [!NOTE]
 > Katana 目前不提供 OWIN 中介軟體進行 Windows 驗證，因為這項功能已在伺服器中可用。
 
-
 ## <a name="windows-authentication-in-iis"></a>在 IIS 中的 Windows 驗證
 
 使用 Microsoft.Owin.Host.SystemWeb，您可以只啟用 IIS 中的 Windows 驗證。
@@ -45,7 +44,7 @@ Katana 目前提供兩部伺服器，這兩者都支援 Windows 整合式驗證�
 
 ![](enabling-windows-authentication-in-katana/_static/image1.png)
 
-接下來，新增 NuGet 套件。 從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+接下來，新增 NuGet 套件。 從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 [!code-console[Main](enabling-windows-authentication-in-katana/samples/sample1.cmd)]
 
@@ -75,7 +74,7 @@ Www-authenticate 標頭，此回應指出伺服器支援[交涉](http://www.ietf
 
 如果您使用 Microsoft.Owin.Host.HttpListener 自我裝載 Katana，您可以直接上啟用 Windows 驗證**HttpListener**執行個體。
 
-首先，建立新的主控台應用程式。 接下來，新增 NuGet 套件。 從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+首先，建立新的主控台應用程式。 接下來，新增 NuGet 套件。 從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 [!code-console[Main](enabling-windows-authentication-in-katana/samples/sample4.cmd)]
 

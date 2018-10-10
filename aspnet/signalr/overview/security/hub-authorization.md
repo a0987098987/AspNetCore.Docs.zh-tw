@@ -8,34 +8,34 @@ ms.date: 01/05/2015
 ms.assetid: a610c796-c131-473c-baef-2e6c568cb2a2
 msc.legacyurl: /signalr/overview/security/hub-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: 21946b9fa0406de79af7b83809869d90e6e8234e
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 886373f6c0949f9dc0d3f95edf1d052c6c05490b
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832636"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910963"
 ---
 <a name="authentication-and-authorization-for-signalr-hubs"></a>SignalR 中樞的驗證和授權
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom FitzMacken](https://github.com/tfitzmac)
 
-> 本主題描述如何限制哪些使用者或角色可以存取中樞方法。 
-> 
+> 本主題描述如何限制哪些使用者或角色可以存取中樞方法。
+>
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR 第 2 版
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>本主題的上一個版本
-> 
+>
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
-> 
+>
 > ## <a name="questions-and-comments"></a>提出問題或意見
-> 
+>
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
@@ -52,7 +52,7 @@ ms.locfileid: "41832636"
     - [使用表單驗證 cookie](#cookie)
     - [Windows 驗證](#windows)
     - [連接標頭](#header)
-    - [憑證](#certificate)
+    - [[MSSQLSERVER 的通訊協定內容]](#certificate)
 
 <a id="authorizeattribute"></a>
 

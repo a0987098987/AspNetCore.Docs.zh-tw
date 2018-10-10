@@ -8,12 +8,12 @@ ms.date: 05/22/2015
 ms.assetid: 52a4d5fe-aa31-4471-b3cb-a064f82cb791
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 27c4bcc6dd127fe1a430aaec462e2c19a5fb7851
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 29ece7754bc6e25ea968c25a99a2f48ab837e12c
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577375"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911529"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>檢查編輯方法與編輯檢視
 ====================
@@ -99,16 +99,15 @@ Scaffold 程式碼使用一些*helper 方法*來簡化 HTML 標記。 [ `Html.La
 > [!NOTE]
 > 以 jQuery 驗證支援非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點和非英文日期格式，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) 和使用的 JavaScript `Globalize.parseFloat`。 您可以從 NuGet 取得 jQuery non-alpha Non-english 驗證。 （不安裝 Globalize 如果您使用英文的地區設定）。
 
+1. 從**工具**功能表上，按一下**NuGet 套件管理員**，然後按一下**管理方案的 NuGet 套件**。
 
-1. 從**工具**功能表上，按一下**NuGetLibrary Package Manager**，然後按一下**管理方案的 NuGet 套件**。  
-  
     ![](examining-the-edit-methods-and-edit-view/_static/image5.png)
 2. 在左窗格中，選取<strong>瀏覽 *。</strong>*（見下圖）。
-3. 在輸入方塊中，輸入 * Globalize * *。  
-  
+3. 在輸入方塊中，輸入 * Globalize * *。
+
     ![](examining-the-edit-methods-and-edit-view/_static/image6.png) 選擇`jQuery.Validation.Globalize`，選擇`MvcMovie`然後按一下**安裝**。 *Scripts\jquery.globalize\globalize.js*檔案會加入至專案。 *Scripts\jquery.globalize\cultures\*資料夾將包含多個文化特性 JavaScript 檔案。 請注意，可能需要五分鐘的時間安裝這個套件。
 
-   下列程式碼顯示修改 Views\Movies\Edit.cshtml 檔案： 
+   下列程式碼顯示修改 Views\Movies\Edit.cshtml 檔案：
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample10.cshtml)]
 

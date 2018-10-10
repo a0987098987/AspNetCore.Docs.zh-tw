@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: d0a89089-eed8-4f61-a478-c5ffa30186f5
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/building-the-ef5-mvc4-chapter-downloads
 msc.type: authoredcontent
-ms.openlocfilehash: fa018ea12929efa742a323d96938d372b634fdd7
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 6b5d10ba9e878908953e999bd1fd44970acf4ca5
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577058"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911964"
 ---
 <a name="building-the-chapter-downloads-for-the-ef-5-mvc-4-tutorials"></a>建置章節下載 EF 5 MVC 4 的教學課程
 ====================
@@ -32,7 +32,7 @@ ms.locfileid: "48577058"
     ![](building-the-ef5-mvc4-chapter-downloads/_static/image1.png)
 3. 將檔案解壓縮。
 4. 按兩下*CUx.sln*檔案以啟動 Visual Studio。
-5. 從**工具**功能表上，按一下**程式庫套件管理員**，然後**Package Manager Console**。  
+5. 從**工具**功能表上，按一下**NuGet 套件管理員**，然後**Package Manager Console**。  
   
     ![](building-the-ef5-mvc4-chapter-downloads/_static/image2.png)
 6. 在 套件管理員主控台 (PMC)，按一下**還原**。  

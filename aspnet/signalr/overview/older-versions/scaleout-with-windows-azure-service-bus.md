@@ -8,12 +8,12 @@ ms.date: 05/01/2013
 ms.assetid: 501db899-e68c-49ff-81b2-1dc561bfe908
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: d3c5af75c87f4ba51bb5627ddf237a70e5181678
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d597eebc958815b1b1b9fdffc256c4453efce6b3
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834606"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910950"
 ---
 <a name="signalr-scaleout-with-azure-service-bus-signalr-1x"></a>SignalR 向外延展與 Azure 服務匯流排 (SignalR 1.x)
 ====================
@@ -88,7 +88,7 @@ ms.locfileid: "41834606"
 
 若要建立交談應用程式，請遵循本教學課程[開始使用 SignalR 和 MVC 4](tutorial-getting-started-with-signalr-and-mvc-4.md)。
 
-使用 NuGet 來安裝必要的程式庫。 從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。 在 [ **Package Manager Console** ] 視窗中，輸入下列命令：
+使用 NuGet 來安裝必要的程式庫。 從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。 在 [ **Package Manager Console** ] 視窗中，輸入下列命令：
 
 [!code-powershell[Main](scaleout-with-windows-azure-service-bus/samples/sample2.ps1)]
 

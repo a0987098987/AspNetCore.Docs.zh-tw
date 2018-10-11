@@ -15,7 +15,7 @@ ms.locfileid: "48795514"
 ---
 # <a name="use-gulp-in-aspnet-core"></a>ASP.NET Core 中使用 Gulp
 
-藉由[Scott Addie](https://scottaddie.com)， [Shayne Boyer](https://twitter.com/spboyer)，和[David 松](https://twitter.com/davidpine7)
+作者：[Scott Addie](https://scottaddie.com)， [Shayne Boyer](https://twitter.com/spboyer) 與 [David Pine](https://twitter.com/davidpine7)
 
 在典型的現代 web 應用程式中，可能會在建置程序：
 
@@ -269,7 +269,7 @@ IntelliSense 會提供程式碼完成、 參數說明和其他功能，大幅提
 
 ## <a name="development-staging-and-production-environments"></a>開發、 預備及生產環境
 
-當 Gulp 用來最佳化用戶端檔案，來預備和生產環境中時，處理的檔案會儲存到本機的預備與生產位置。 *_Layout.cshtml*檔案使用**環境**標籤協助程式提供的 CSS 檔案的兩個不同版本。 版本的 CSS 檔案是用於開發和另一個版本最適合用於預備與生產環境。 在 Visual Studio 2017，當您變更**ASPNETCORE_ENVIRONMENT**環境變數，以`Production`，Visual Studio 會建置 Web 應用程式和連結的最小化的 CSS 檔案。 下列標記示範**環境**標記協助程式包含連結標記`Development`CSS 檔案並縮短`Staging, Production`CSS 檔案。
+當 Gulp 用來最佳化預備和生產環境的用戶端檔案時，處理的檔案會儲存到本機預備與生產位置。 *_Layout.cshtml*檔案使用**環境**標記協助程式提供 CSS 檔案的兩個不同版本。 一個 CSS 檔案版本適用於開發，而另一個版本已同時針對預備與生產環境最佳化。 在 Visual Studio 2017 中，當您將 **ASPNETCORE_ENVIRONMENT** 環境變數變更為 `Production` 時，Visual Studio 會建置 Web 應用程式並連結到最小化的 CSS 檔案。 下列標記顯示**環境**標記協助程式，此協助程式包 `Development` CSS 檔案與最小化之 `Staging, Production` CSS 檔案的含連結標記。
 
 ```html
 <environment names="Development">
@@ -312,7 +312,7 @@ IntelliSense 會提供程式碼完成、 參數說明和其他功能，大幅提
 
 6.  在瀏覽器視窗中，以滑鼠右鍵按一下  頁面上，然後選取**檢視原始檔**來檢視 HTML 頁面。
 
-    請注意，樣式表連結指向縮製的 CSS 檔案。
+    請注意，樣式表連結指向最小化的 CSS 檔案。
 
 7.  關閉瀏覽器以停止 Web 應用程式。
 
@@ -346,5 +346,5 @@ Gulp 社群也提供 Gulp[配方](https://github.com/gulpjs/gulp/blob/master/doc
 ## <a name="additional-resources"></a>其他資源
 
 * [Gulp 文件](https://github.com/gulpjs/gulp/blob/master/docs/README.md)
-* [統合和縮製 ASP.NET Core 中](bundling-and-minification.md)
-* [ASP.NET Core 中使用 Grunt](using-grunt.md)
+* [在 ASP.NET Core 中包裝及最小化](bundling-and-minification.md)
+* [在 ASP.NET Core 中使用 Grunt](using-grunt.md)

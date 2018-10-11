@@ -8,12 +8,12 @@ ms.date: 08/15/2012
 ms.assetid: 27dc4fc8-1b51-43b0-933f-fc1b52476523
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: 8b82b8b9b1ee6646072931da889c643afb34d474
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 6fe55a14b40f8c50dee91cdc7f59d0378f2a1ea2
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578155"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912321"
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>ASP.NET MVC 4 Mobile 功能
 ====================
@@ -184,7 +184,7 @@ ASP.NET MVC 4 中的重要新功能是簡單的機制，可讓您覆寫任何檢
 
 安裝*jQuery.Mobile.MVC*這樣的 NuGet 套件：
 
-1. 從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。
+1. 從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。
 
     [![p3_packageMgr](aspnet-mvc-4-mobile-features/_static/image20.png)](aspnet-mvc-4-mobile-features/_static/image19.png)
 2. 在  **Package Manager Console**，輸入 `Install-Package jQuery.Mobile.MVC -version 1.0.0`
@@ -245,11 +245,11 @@ JQuery.Mobile.MVC NuGet 套件會安裝下列項目：
 
 > [!NOTE]
 > 偵錯附註： 您可以將下列程式碼新增至 Views\Shared 結尾\\_ViewSwitcher.cshtml 協助偵錯檢視，當使用瀏覽器使用者代理字串設定為行動裝置。
-> 
+>
 > [!code-csharp[Main](aspnet-mvc-4-mobile-features/samples/sample15.cs)]
-> 
->  並新增下列標題，即可*Views\Shared\\_Layout.cshtml*檔案。  
-> 
+>
+>  並新增下列標題，即可*Views\Shared\\_Layout.cshtml*檔案。
+>
 > [!code-html[Main](aspnet-mvc-4-mobile-features/samples/sample16.html)]
 
 

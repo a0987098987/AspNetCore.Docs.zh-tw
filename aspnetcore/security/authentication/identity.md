@@ -5,12 +5,12 @@ description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如�
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: d427932bb175c09105534379be4d71760f4e04e5
-ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
+ms.openlocfilehash: e0494afd807080f4cd71127abce7bdb93f952dca
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47860949"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325506"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -160,7 +160,7 @@ PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，�
 登入表單顯示時：
 
 * **登入**選取連結。
-* 當使用者存取的頁面時，它們未經過驗證**或**獲授權，就會重新導向至登入頁面。
+* 使用者嘗試存取受限制的頁面未獲授權可以存取**或**時在還沒有已驗證系統。
 
 登入頁面上的表單提交時，`OnPostAsync`呼叫動作。 `PasswordSignInAsync` 呼叫`_signInManager`（由相依性插入提供） 的物件。
 

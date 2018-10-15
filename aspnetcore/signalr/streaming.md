@@ -7,16 +7,16 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/07/2018
 uid: signalr/streaming
-ms.openlocfilehash: 0001eed830249ac46ba35331759187bb4e7e8fd3
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 3ae9b83d60019eaa3196f35645bf9b4b03f6d8c6
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095258"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325636"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>使用資料流在 ASP.NET Core SignalR
 
-藉由[brennan 第瑜吉](https://github.com/BrennanConroy)
+由[brennan Conroy](https://github.com/BrennanConroy)提供
 
 ASP.NET Core SignalR 支援資料流的伺服器方法的傳回值。 這是適用於其中的資料片段會在一段時間的案例。 時傳回的值串流處理到用戶端，每個片段會傳送至用戶端，它會變成可用，而不是等待變成可用的所有資料。
 
@@ -53,7 +53,7 @@ Console.WriteLine("Streaming completed");
 
 ## <a name="javascript-client"></a>JavaScript 用戶端
 
-JavaScript 用戶端呼叫中樞上資料流的方法，使用`connection.stream`。 `stream`方法接受兩個引數：
+JavaScript 用戶端呼叫中樞上資料流的方法，使用`connection.stream`。 `stream` 方法接受兩個引數：
 
 * 中樞方法的名稱。 下列範例中，在中樞方法名稱是`Counter`。
 * 中樞的方法中定義的引數。 在下列範例中，引數是： 資料流項目，若要接收，以及資料流項目之間的延遲數目的計數。
@@ -62,7 +62,7 @@ JavaScript 用戶端呼叫中樞上資料流的方法，使用`connection.stream
 
 [!code-javascript[Streaming javascript](streaming/sample/wwwroot/js/stream.js?range=19-36)]
 
-若要結束用戶端呼叫從資料流`dispose`方法`ISubscription`傳回`subscribe`方法。
+若要結束用戶端從資料流，呼叫`dispose`方法`ISubscription`傳回`subscribe`方法。
 
 ## <a name="related-resources"></a>相關資源
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/15/2018
 uid: performance/caching/memory
-ms.openlocfilehash: 2570ad7d939d67530b3de8cd0147815c2e25ecc8
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: 960aa18f9d14f633118ccd716201e61464085c05
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46482979"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325922"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -27,7 +27,11 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 在 web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.md)若要避免快取一致性問題。 對於某些應用程式中，分散式快取可以支援更高版本向外延展比記憶體中快取。 使用分散式快取卸載到外部處理序快取記憶體。
 
+::: moniker range="< aspnetcore-2.0"
+
 `IMemoryCache`快取將會收回快取項目，記憶體不足的壓力，除非[快取的優先順序](/dotnet/api/microsoft.extensions.caching.memory.cacheitempriority)設定為`CacheItemPriority.NeverRemove`。 您可以設定`CacheItemPriority`調整與快取收回記憶體不足壓力下的項目優先順序。
+
+::: moniker-end
 
 記憶體中快取可以儲存任何物件;分散式快取介面僅限於`byte[]`。
 

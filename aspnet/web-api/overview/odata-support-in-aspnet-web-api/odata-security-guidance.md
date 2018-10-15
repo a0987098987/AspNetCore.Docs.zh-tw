@@ -8,12 +8,12 @@ ms.date: 02/06/2013
 ms.assetid: b91e6424-1544-4747-bd0b-d1f8418c9653
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-security-guidance
 msc.type: authoredcontent
-ms.openlocfilehash: 2a5b776a81cb3e3cf809dd3c4229448988086a32
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 4ba53e15dab83368097a58ba4d0d2e46d113d1d2
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830729"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325714"
 ---
 <a name="security-guidance-for-aspnet-web-api-2-odata"></a>Security Guidance for ASP.NET Web API 2 OData
 ====================
@@ -59,7 +59,7 @@ ms.locfileid: "41830729"
 - 請考慮停用的 any （） 和 all （） 函式，這些可能會很慢。 
 
     [!code-csharp[Main](odata-security-guidance/samples/sample7.cs)]
-- 如果任何字串屬性包含大型字串 & #8212for 範例、 產品描述或部落格 & #8212consider 停用的字串函數。 
+- 如果任何字串屬性包含大型字串&#8212;例如，產品描述或部落格文章&#8212;請考慮停用的字串函數。 
 
     [!code-csharp[Main](odata-security-guidance/samples/sample8.cs)]
 - 請考慮不允許的導覽屬性進行篩選。 導覽屬性的篩選可能會導致聯結，可能會變慢，視您的資料庫結構描述。 下列程式碼會顯示查詢驗證程式，以防止篩選導覽屬性。 如需有關查詢驗證程式的詳細資訊，請參閱 <<c0> [ 查詢驗證](supporting-odata-query-options.md#query-validation)。 

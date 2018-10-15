@@ -4,14 +4,14 @@ author: steve-smith
 description: 了解如何防止攻擊，惡意網站可能會影響用戶端瀏覽器與應用程式之間的互動的 web 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/19/2018
+ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 6a30e1e2321ca3a81d6e1a320d1d87dddb3033c7
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 213d6d09501b5428bdaad454ec487702ef2a02a6
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095784"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325909"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>ASP.NET Core 中的防止跨網站要求偽造 (XSRF/CSRF) 攻擊
 
@@ -179,6 +179,31 @@ ASP.NET Core 包含三個[篩選器](xref:mvc/controllers/filters)使用防偽�
 
 來自訂[antiforgery 選項](/dotnet/api/Microsoft.AspNetCore.Antiforgery.AntiforgeryOptions)在`Startup.ConfigureServices`:
 
+::: moniker range=">= aspnetcore-2.0"
+
+```csharp
+services.AddAntiforgery(options => 
+{
+    // Set Cookie properties using CookieBuilder properties†.
+    options.FormFieldName = "AntiforgeryFieldname";
+    options.HeaderName = "X-CSRF-TOKEN-HEADERNAME";
+    options.SuppressXFrameOptionsHeader = false;
+});
+```
+
+&dagger;設定 antiforgery`Cookie`屬性使用的屬性[CookieBuilder](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder)類別。
+
+| 選項 | 描述 |
+| ------ | ----------- |
+| [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | 決定用來建立防偽 cookie 的設定。 |
+| [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | 防偽系統用來呈現檢視中的防偽語彙基元的隱藏的表單欄位名稱。 |
+| [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | 防偽系統所使用的標頭名稱。 如果`null`，系統會考慮只表單資料。 |
+| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | 指定是否要隱藏產生`X-Frame-Options`標頭。 根據預設，標頭會產生含有"Sameorigin 所"的值。 預設值為 `false`。 |
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
 ```csharp
 services.AddAntiforgery(options => 
 {
@@ -202,6 +227,8 @@ services.AddAntiforgery(options =>
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | 防偽系統所使用的標頭名稱。 如果`null`，系統會考慮只表單資料。 |
 | [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | 指定是否需要 SSL，則防偽系統。 如果`true`，非 SSL 要求會失敗。 預設值為 `false`。 這個屬性已經過時，將在未來版本中移除。 建議的替代做法是將 Cookie.SecurePolicy。 |
 | [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | 指定是否要隱藏產生`X-Frame-Options`標頭。 根據預設，標頭會產生含有"Sameorigin 所"的值。 預設值為 `false`。 |
+
+::: moniker-end
 
 如需詳細資訊，請參閱 < [CookieAuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.CookieAuthenticationOptions)。
 

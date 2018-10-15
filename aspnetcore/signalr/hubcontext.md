@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/13/2018
 uid: signalr/hubcontext
-ms.openlocfilehash: 2d7d37b655bf7dbb71b321919314bbb8bef8db17
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: bb07a3b5c6e153092635fa4e1283619777865a53
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44339974"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325350"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>傳送來自外部中樞訊息
 
@@ -22,14 +22,14 @@ SignalR 中樞會將訊息傳送至用戶端連線到 SignalR 伺服器的核心
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
 
-## <a name="get-an-instance-of-ihubcontext"></a>取得執行的個體 `IHubContext`
+## <a name="get-an-instance-of-ihubcontext"></a>取得 IHubContext 的執行個體
 
 在 ASP.NET Core SignalR 中，您可以存取的執行個體`IHubContext`透過相依性插入。 您可以插入的執行個體`IHubContext`至控制器、 中介軟體或其他的 DI 服務。 若要將訊息傳送至用戶端使用的執行個體。
 
 > [!NOTE]
 > 這不同於 ASP.NET 4.x SignalR 用來提供存取權的 GlobalHost `IHubContext`。 ASP.NET Core 已不再需要這個全域的單一相依性插入架構。
 
-### <a name="inject-an-instance-of-ihubcontext-in-a-controller"></a>插入的執行個體`IHubContext`控制器中
+### <a name="inject-an-instance-of-ihubcontext-in-a-controller"></a>插入 IHubContext 控制器中的執行的個體
 
 您可以插入的執行個體`IHubContext`到控制器，以將它加入您的建構函式：
 
@@ -39,7 +39,7 @@ SignalR 中樞會將訊息傳送至用戶端連線到 SignalR 伺服器的核心
 
 [!code-csharp[IHubContext](hubcontext/sample/Controllers/HomeController.cs?range=21-25)]
 
-### <a name="get-an-instance-of-ihubcontext-in-middleware"></a>取得的執行個體`IHubContext`在中介軟體
+### <a name="get-an-instance-of-ihubcontext-in-middleware"></a>取得 IHubContext 的執行個體，在中介軟體
 
 存取`IHubContext`內中介軟體管線就像這樣：
 

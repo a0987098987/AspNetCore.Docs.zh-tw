@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/01/2018
 uid: fundamentals/file-providers
-ms.openlocfilehash: 512229cfe7d7efdcd9050fa13dbdbf793be29a0b
-ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
+ms.openlocfilehash: a0d326f5fc995cb903380315879d39a8ce851d06
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39410152"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913212"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
@@ -38,7 +38,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「
 
 * [Exists](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.exists)
 * [IsDirectory](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.isdirectory)
-* [Name](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.name)
+* [名稱](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.name)
 * [Length](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.length) (以位元組為單位)
 * [LastModified](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.lastmodified) 日期
 
@@ -141,7 +141,7 @@ var physicalProvider = _env.ContentRootFileProvider;
 [ManifestEmbeddedFileProvider](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider) 是用來存取內嵌於組件的檔案。 `ManifestEmbeddedFileProvider` 使用已編譯到組件中的資訊清單來重新建構內嵌檔案的原始路徑。
 
 > [!NOTE]
-> ASP.NET Core 2.1 或更新版本中提供了 `ManifestEmbeddedFileProvider`。 若要在 ASP.NET Core 2.0 或更舊的版本中存取內嵌於組件中的檔案，請參閱[此主題的 ASP.NET Core 1.x 版本](xref:fundamentals/file-providers?view=aspnetcore-1.1)。
+> ASP.NET Core 2.1 或更新版本中提供了 `ManifestEmbeddedFileProvider`。 若要在 ASP.NET Core 2.0 或更舊的版本中存取內嵌於組件中的檔案，請參閱[此主題的 ASP.NET Core 1.x 版本](/aspnet/core/fundamentals/file-providers?view=aspnetcore-1.1)。
 
 若要產生內嵌檔案的資訊清單，請將 `<GenerateEmbeddedFilesManifest>` 屬性設定為 `true`。 使用 [&lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) 來指定要內嵌的檔案：
 

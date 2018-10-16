@@ -8,12 +8,12 @@ ms.date: 01/20/2014
 ms.assetid: 979d6c9f-0129-4e5b-ae56-4507b281b86d
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: d16dcc618bf6c60714179601db14f4dd2a9e41ce
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 22eb2fd748d52ec95e813ada8b1bf3b4826ad573
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912148"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348477"
 ---
 <a name="attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的屬性路由
 ====================
@@ -245,11 +245,11 @@ Web API，也會根據要求的 HTTP 方法 （GET、 POST 等） 的動作。 �
 <a id="order"></a>
 ## <a name="route-order"></a>路由順序
 
-當此架構會嘗試比對路由的 URI 時，它會評估以特定順序的路由。 若要指定的順序，將**RouteOrder**屬性路由。 會先評估較低的值。 預設順序值為零。
+當此架構會嘗試比對路由的 URI 時，它會評估以特定順序的路由。 若要指定的順序，將**順序**屬性路由。 會先評估較低的值。 預設順序值為零。
 
 以下是如何決定總排序：
 
-1. 比較**RouteOrder**路由屬性的屬性。
+1. 比較**順序**路由屬性的屬性。
 2. 查看路由範本中的每個 URI 區段。 對於每個區段中，排序，如下所示：
 
     1. 常值的區段。
@@ -271,4 +271,4 @@ Web API，也會根據要求的 HTTP 方法 （GET、 POST 等） 的動作。 �
 4. orders/{\*date}
 5. 訂單 / 擱置中
 
-請注意，[詳細資料] 是常值的區段以及"{id}"之前出現，但"pending"會顯示上次因為**RouteOrder**屬性為 1。 (這個範例那里假設客戶名為 「 詳細資料 」 或 「 暫止 」。 一般情況下，請盡量避免模稜兩可的路由。 在此範例中，較佳的路由範本，如`GetByCustomer`是 「 客戶 / {customerName}")
+請注意，[詳細資料] 是常值的區段以及"{id}"之前出現，但"pending"會顯示上次因為**順序**屬性為 1。 (這個範例那里假設客戶名為 「 詳細資料 」 或 「 暫止 」。 一般情況下，請盡量避免模稜兩可的路由。 在此範例中，較佳的路由範本，如`GetByCustomer`是 「 客戶 / {customerName}")

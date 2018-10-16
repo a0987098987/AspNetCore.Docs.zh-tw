@@ -7,12 +7,12 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: 1343bd100f521326477ecd831aa627b4394bad44
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 2e7b2a2e9d915aec0814def56daab860e1efa8af
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795349"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348412"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>將 ASP.NET MVC 應用程式遷移到 Windows 容器
 
@@ -31,7 +31,7 @@ ms.locfileid: "48795349"
 1. [啟動執行映像的 Docker 容器](#start-a-container)
 1. [使用瀏覽器確認應用程式](#verify-in-the-browser)
 
-[完成的應用程式](https://github.com/dotnet/docs/tree/master/samples/framework/docker/MVCRandomAnswerGenerator)在 GitHub 上。
+[完成的應用程式](https://github.com/dotnet/samples/tree/master/framework/docker/MVCRandomAnswerGenerator)在 GitHub 上。
 
 ## <a name="prerequisites"></a>必要條件
 

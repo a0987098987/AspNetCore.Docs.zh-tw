@@ -4,14 +4,14 @@ author: guardrex
 description: 探索路由和應用程式模型提供者慣例如何協助您控制頁面路由、探索與處理。
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 09/17/2018
+ms.date: 10/12/2018
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: ea4f785dc8a64b430e312fd122a4d3184b61949e
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 13fd6c156afd5ab62739b09296a929120ce3450f
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011858"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348529"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面路由和應用程式慣例
 
@@ -93,7 +93,7 @@ Razor Pages 路由和 MVC 控制器路由共用實作。 在 MVC 主題中的路
 
 新增 [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) 的委派，以新增套用至 Razor 頁面的[模型慣例](xref:mvc/controllers/application-model#conventions)。
 
-**將路由模型慣例新增至所有頁面**
+### <a name="add-a-route-model-convention-to-all-pages"></a>將路由模型慣例新增至所有頁面
 
 使用[慣例](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions)來建立 [IPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelconvention)，並將其新增至頁面路由模型建構期間所套用的 [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) 執行個體的集合。
 
@@ -117,7 +117,7 @@ Razor Pages 路由和 MVC 控制器路由共用實作。 在 MVC 主題中的路
 
 ![使用路由區段 GlobalRouteValue 要求 About 頁面。 呈現的頁面會顯示在頁面的 OnGet 方法中擷取了路由資料值。](razor-pages-conventions/_static/about-page-global-template.png)
 
-**將應用程式模型慣例新增至所有頁面**
+### <a name="add-an-app-model-convention-to-all-pages"></a>將應用程式模型慣例新增至所有頁面
 
 使用[慣例](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions)來建立 [IPageApplicationModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageapplicationmodelconvention)，並將其新增至頁面模型建構期間所套用之 [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) 執行個體的集合。
 
@@ -137,12 +137,12 @@ Razor Pages 路由和 MVC 控制器路由共用實作。 在 MVC 主題中的路
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**將處理常式模型慣例新增至所有頁面**
+### <a name="add-a-handler-model-convention-to-all-pages"></a>將處理常式模型慣例新增至所有頁面
 
 使用[慣例](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions)來建立 [IPageApplicationModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipagehandlermodelconvention)，並將其新增至頁面模型建構期間所套用之 [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) 執行個體的集合。
 
 ```csharp
-public class GlobalPageHandlerModelConvention 
+public class GlobalPageHandlerModelConvention
     : IPageHandlerModelConvention
 {
     public void Apply(PageHandlerModel model)
@@ -168,7 +168,7 @@ services.AddMvc()
 
 衍生自 [IPageRouteModelProvider](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelprovider) 的預設路由模型提供者會叫用慣例，這些慣例的設計目的是要提供設定頁面路由的擴充點。
 
-**資料夾路由模型慣例**
+### <a name="folder-route-model-convention"></a>資料夾路由模型慣例
 
 使用 [AddFolderRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection.addfolderroutemodelconvention) 來建立並新增 [IPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelconvention)，它會針對指定資料夾下的所有頁面在 [PageRouteModel](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageroutemodel) 上叫用動作。
 
@@ -184,7 +184,7 @@ services.AddMvc()
 
 ![以 GlobalRouteValue 和 OtherPagesRouteValue 的路由區段要求 OtherPages 資料夾中的 Page1。 呈現的頁面會顯示在頁面的 OnGet 方法中擷取了路由資料值。](razor-pages-conventions/_static/otherpages-page1-global-and-otherpages-templates.png)
 
-**頁面路由模型慣例**
+### <a name="page-route-model-convention"></a>頁面路由模型慣例
 
 使用 [AddPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection.addpageroutemodelconvention) 來建立並新增 [IPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelconvention)，它會針對指定資料夾下的所有頁面在 [PageRouteModel](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageroutemodel) 上叫用動作。
 
@@ -199,6 +199,44 @@ services.AddMvc()
 在 `localhost:5000/About/GlobalRouteValue/AboutRouteValue` 上要求範例的 About 頁面，並檢查結果：
 
 ![以 GlobalRouteValue 和 AboutRouteValue 的路由區段要求 About 頁面。 呈現的頁面會顯示在頁面的 OnGet 方法中擷取了路由資料值。](razor-pages-conventions/_static/about-page-global-and-about-templates.png)
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="use-a-parameter-transformer-to-customize-page-routes"></a>使用自訂頁面路由的參數轉換程式
+
+您可以使用參數的轉換程式自訂由 ASP.NET Core 所產生的頁面路由。 參數轉換程式實作`IOutboundParameterTransformer`，並將轉換的參數值。 例如，自訂`SlugifyParameterTransformer`參數轉換程式變更`SubscriptionManagement`路由值與`subscription-management`。
+
+`PageRouteTransformerConvention`頁面路由模型慣例會將參數轉換程式用於應用程式中自動產生的頁面路由的資料夾和檔案名稱區段。 在 Razor 頁面的檔案，例如 */Pages/SubscriptionManagement/ViewAll.cshtml*就必須改寫其路由`/SubscriptionManagement/ViewAll`至`/subscription-management/view-all`。
+
+`PageRouteTransformerConvention` 只會轉換來自的 Razor Pages 資料夾和檔案名稱自動產生的區段的頁面路由。 它不會轉換與新增的路由區段`@page`指示詞。 慣例也不會轉換所新增的路由<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>。
+
+`PageRouteTransformerConvention`登錄中的選項為`Startup.ConfigureServices`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc()
+        .AddRazorPagesOptions(options =>
+            {
+                options.Conventions.Add(
+                    new PageRouteTransformerConvention(
+                        new SlugifyParameterTransformer()));
+            });
+}
+
+public class SlugifyParameterTransformer : IOutboundParameterTransformer
+{
+    public string TransformOutbound(object value)
+    {
+        if (value == null) { return null; }
+
+        // Slugify value
+        return Regex.Replace(value.ToString(), "([a-z])([A-Z])", "$1-$2").ToLower();
+    }
+}
+```
+
+::: moniker-end
 
 ## <a name="configure-a-page-route"></a>設定頁面路由
 

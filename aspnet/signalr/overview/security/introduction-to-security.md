@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: ed562717-8591-4936-8e10-c7e63dcb570a
 msc.legacyurl: /signalr/overview/security/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: 765abd36c5182f291499042e787bcb4fcc727997
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 6336d9608f41c367c46d5b9552141546bc782b7d
+ms.sourcegitcommit: 12a8bdb8e83ca9c23c06f3bc6507c9e1a60ea7e5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910848"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49401864"
 ---
 <a name="introduction-to-signalr-security"></a>SignalR 安全性簡介
 ====================
@@ -85,6 +85,14 @@ SignalR 降低執行惡意的命令來驗證寄件者的身分識別的風險。
 ![](introduction-to-security/_static/image4.png)
 
 因為連線識別碼是在驗證程序的一部分，不應該顯示給其他使用者的一位使用者的連線識別碼，或這類的用戶端上的值儲存在 cookie 中。
+
+#### <a name="connection-tokens-vs-other-token-types"></a>與其他語彙基元類型的連線語彙基元
+
+因為它們是工作階段權杖或驗證語彙基元，這會帶來風險，如果公開會出現安全性工具偶爾會標示連線權杖。
+
+SignalR 的連線語彙基元不是驗證權杖。 它用來確認提出此要求的使用者是同一個建立連接。 連線語彙基元是必要的因為 ASP.NET SignalR 允許連線到伺服器之間移動。 權杖關聯的特定使用者的連線，但不會判斷提示發出要求之使用者的身分識別。 SignalR 要求適當的驗證，它必須有一些其他判斷提示使用者，例如 cookie 的身分識別的權杖或持有人權杖。 不過，連線權杖本身會由該使用者，只有該權杖內含的連線識別碼提出要求的任何宣告是與該使用者相關聯。
+
+連線語彙基元提供自己的未驗證宣告，因為它不被視為 「 工作階段 」 或 「 驗證 」 權杖。 取得指定的使用者的連線語彙基元，然後重新它執行要求驗證為不同的使用者 （或未驗證的要求） 中將會失敗，因為不符合要求的使用者身分識別並儲存在權杖中的身分識別。
 
 <a id="rejoingroup"></a>
 

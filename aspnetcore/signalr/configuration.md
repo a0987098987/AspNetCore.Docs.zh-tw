@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 09/06/2018
 uid: signalr/configuration
-ms.openlocfilehash: 72fc53cad7caf55e85d0668c9dbea1a70fc8674b
-ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
+ms.openlocfilehash: 855446003ae9d994854d4d8bb7d0f542a22734e4
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46292332"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391098"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 組態
 
@@ -120,7 +120,7 @@ WebSocket 傳輸具有您可以使用設定的其他選項`WebSockets`屬性：
 
 ### <a name="configure-logging"></a>設定記錄
 
-記錄已在使用.NET 用戶端中`ConfigureLogging`方法。 記錄提供者和篩選可以註冊在相同的方式保持不在伺服器上。 請參閱[ASP.NET Core 中的記錄](xref:fundamentals/logging/index#how-to-add-providers)文件的詳細資訊。
+記錄已在使用.NET 用戶端中`ConfigureLogging`方法。 記錄提供者和篩選可以註冊在相同的方式保持不在伺服器上。 請參閱[ASP.NET Core 中的記錄](xref:fundamentals/logging/index)文件的詳細資訊。
 
 > [!NOTE]
 > 若要註冊的記錄提供者，您必須安裝必要的套件。 請參閱[內建記錄提供者](xref:fundamentals/logging/index#built-in-logging-providers)區段的文件，如需完整清單。

@@ -8,12 +8,12 @@ ms.date: 03/02/2009
 ms.assetid: 21383c9d-6aea-4bad-a99b-b5f2c9d6503f
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/performing-simple-validation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 14d7857c64268df3b998e05797f749f03509dd4b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8ee1d892cd58534c2b64455efed01aa8c2dfdcce
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834663"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391173"
 ---
 <a name="performing-simple-validation-c"></a>執行簡單的驗證 (C#)
 ====================
@@ -90,7 +90,7 @@ Html.ValidationMessage() 協助程式會呼叫每個 HTML 表單欄位旁邊。 
 
 - 輸入驗證錯誤-套用至&lt;輸入&gt;Html.TextBox() 協助程式所呈現的標記。
 - 欄位驗證錯誤-套用至&lt;跨越&gt;Html.ValidationMessage() 協助程式所呈現的標記。
-- 驗證摘要錯誤-套用至&lt;ul&gt; Html.ValidationSumamry() 協助程式所呈現的標記。
+- 驗證摘要錯誤-套用至&lt;ul&gt; Html.ValidationSummary() 協助程式所呈現的標記。
 
 您可以修改這些階層式樣式表類別，並因此修改藉由修改 Site.css 檔案內容的資料夾中的 驗證錯誤的外觀。
 

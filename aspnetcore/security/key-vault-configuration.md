@@ -5,14 +5,14 @@ description: 了解如何使用 Azure 金鑰保存庫的組態提供者設定應
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/01/2018
+ms.date: 10/17/2018
 uid: security/key-vault-configuration
-ms.openlocfilehash: 933f4fb1f2c1c412d318af5974cc9653805242ca
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: 474824cccdc63bb3dc3978ed68cf4c89cec12ad5
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927983"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391138"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
 
@@ -62,6 +62,48 @@ ms.locfileid: "42927983"
 當您執行應用程式時，網頁會顯示載入祕密的值：
 
 ![透過 「 Azure 金鑰保存庫組態提供者的瀏覽器視窗中顯示祕密值載入](key-vault-configuration/_static/sample1.png)
+
+## <a name="bind-an-array-to-a-class"></a>將陣列繫結到類別
+
+提供者可以讀入繫結到 POCO 陣列的陣列中的組態值。
+
+從允許包含冒號的索引鍵的組態來源讀取時 (`:`) 的數值索引鍵的區段分隔符號用來區別構成陣列的索引鍵 (`:0:`， `:1:`，... `:{n}:`)。 如需詳細資訊，請參閱 <<c0> [ 組態： 將陣列繫結至類別](xref:fundamentals/configuration/index#bind-an-array-to-a-class)。
+
+Azure Key Vault 金鑰無法使用冒號做為分隔符號。 本主題中所述的方法會使用雙連字號 (`--`) 當作分隔符號 （區段） 的階層式值。 陣列索引鍵時，會儲存在 Azure 金鑰保存庫上，使用雙連字號和數值的重要片段 (`--0--`， `--1--`，... `--{n}--`)。
+
+檢查下列[Serilog](https://serilog.net/)記錄的 JSON 檔案所提供的提供者組態。 有兩個物件中定義的常值`WriteTo`陣列，其中會反映兩個 Serilog*接收*，可描述記錄輸出的目的地：
+
+```json
+"Serilog": {
+  "WriteTo": [
+    {
+      "Name": "AzureTableStorage",
+      "Args": {
+        "storageTableName": "logs",
+        "connectionString": "DefaultEnd...ountKey=Eby8...GMGw=="
+      }
+    },
+    {
+      "Name": "AzureDocumentDB",
+      "Args": {
+        "endpointUrl": "https://contoso.documents.azure.com:443",
+        "authorizationKey": "Eby8...GMGw=="
+      }
+    }
+  ]
+}
+```
+
+在上述的 JSON 檔案中所示的組態會儲存在 Azure 金鑰保存庫使用雙破折號 (`--`) 標記法和數值的區段：
+
+| Key | 值 |
+| --- | ----- |
+| `Serilog--WriteTo--0--Name` | `AzureTableStorage` |
+| `Serilog--WriteTo--0--Args--storageTableName` | `logs` |
+| `Serilog--WriteTo--0--Args--connectionString` | `DefaultEnd...ountKey=Eby8...GMGw==` |
+| `Serilog--WriteTo--1--Name` | `AzureDocumentDB` |
+| `Serilog--WriteTo--1--Args--endpointUrl` | `https://contoso.documents.azure.com:443` |
+| `Serilog--WriteTo--1--Args--authorizationKey` | `Eby8...GMGw==` |
 
 ## <a name="create-prefixed-key-vault-secrets-and-load-configuration-values-key-name-prefix-sample"></a>建立帶有前置詞的金鑰保存庫祕密，並載入組態值 （索引鍵-名稱-前置詞的範例）
 

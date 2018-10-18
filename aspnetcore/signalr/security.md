@@ -7,12 +7,12 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 06/29/2018
 uid: signalr/security
-ms.openlocfilehash: b66c7fbfbaee4c70a68f3132875fbc81018c3e20
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 98b5eb7be87920aacf7a941f76ff652ae7905303
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095128"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391254"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中的安全性考量
 
@@ -57,6 +57,58 @@ public void Configure(IApplicationBuilder app)
 
 > [!NOTE]
 > SignalR 與不相容的內建的 CORS 功能在 Azure App Service 中。
+
+### <a name="websocket-origin-restriction"></a>WebSocket 原始限制
+
+提供的防護來 CORS 並不適用於 Websocket。 瀏覽器不會執行 CORS 事前要求，也不要採用指定的限制`Access-Control`進行 WebSocket 要求的標頭。 不過，請勿傳送瀏覽器`Origin`時發出 WebSocket 要求的標頭。 您應該設定您的應用程式，以便確保只有來自您預期允許原始來源的 Websocket 驗證這些標頭。
+
+在 ASP.NET Core 2.1 中，這可透過自訂的中介軟體可以放置**上面`UseSignalR`，和任何驗證中介軟體**中您`Configure`方法：
+
+```csharp
+// In your Startup class, add a static field listing the allowed Origin values:
+private static readonly HashSet<string> _allowedOrigins = new HashSet<string>()
+{
+    // Add allowed origins here. For example:
+    "http://www.mysite.com",
+    "http://mysite.com",
+};
+
+// In your Configure method:
+public void Configure(IApplicationBuilder app)
+{
+    // ... other middleware ...
+
+    // Validate Origin header on WebSocket requests to prevent unexpected cross-site WebSocket requests
+    app.Use((context, next) =>
+    {
+        // Check for a WebSocket request.
+        if(string.Equals(context.Request.Headers["Upgrade"], "websocket"))
+        {
+            var origin = context.Request.Headers["Origin"];
+
+            // If there is no origin header, or if the origin header doesn't match an allowed value:
+            if(string.IsNullOrEmpty(origin) && !_allowedOrigins.Contains(origin))
+            {
+                // The origin is not allowed, reject the request
+                context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                return Task.CompletedTask;
+            }
+        }
+
+        // The request is not a WebSocket request or is a valid Origin, so let it continue
+        return next();
+    });
+
+    // ... other middleware ...
+
+    app.UseSignalR();
+
+    // ... other middleware ...
+}
+```
+
+> [!NOTE]
+> `Origin`標頭完全控制用戶端和 like`Referer`標頭，都可能假冒。 這些標頭永遠不應該當做驗證機制。
 
 ### <a name="access-token-logging"></a>存取權杖的記錄
 

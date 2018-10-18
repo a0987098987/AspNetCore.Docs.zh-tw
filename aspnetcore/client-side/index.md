@@ -5,12 +5,12 @@ description: ''
 ms.author: riande
 ms.date: 08/27/2018
 uid: client-side/index
-ms.openlocfilehash: 25c14eb2783babaa15844e69415283d76e41320f
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 0562bbc3866ccd81d75170d918e2d2338271ae48
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312310"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391046"
 ---
 # <a name="client-side-development-in-aspnet-core"></a>ASP.NET Core 的用戶端開發
 
@@ -20,7 +20,6 @@ ms.locfileid: "43312310"
   * [LibMan CLI](xref:client-side/libman/libman-cli)
   * [Visual Studio 中的 LibMan](xref:client-side/libman/libman-vs)
 * [使用 Bower 管理用戶端套件](xref:client-side/bower)
-* [建置具有啟動程序的回應式網站](xref:client-side/bootstrap)
 * [以 LESS、Sass 和 Font Awesome 設定應用程式樣式](xref:client-side/less-sass-fa)
 * [配套並縮短](xref:client-side/bundling-and-minification)
 * [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)

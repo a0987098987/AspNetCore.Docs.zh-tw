@@ -5,12 +5,12 @@ description: 深入了解 ASP.NET Core，以及如何設定金鑰的儲存體位
 ms.author: riande
 ms.date: 07/16/2018
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 0e64a65ab1d65efa9f2e4d36a23663b607f206d7
-ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
+ms.openlocfilehash: 35e2cea4b6404af94de95352dc6ebf3071925cb1
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47402064"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477146"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core 中的金鑰儲存提供者
 
@@ -35,7 +35,19 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="azure-and-redis"></a>Azure 與 Redis
 
-[Microsoft.AspNetCore.DataProtection.AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/)並[Microsoft.AspNetCore.DataProtection.Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/)套件可讓您允許將資料保護金鑰儲存在 Azure 儲存體或 Redis 快取。 可以跨數個執行個體的 web 應用程式共用金鑰。 應用程式可以共用驗證 cookie 或 CSRF 防護，在多部伺服器。 若要設定 Azure Blob 儲存體提供者，呼叫其中一種[PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)多載：
+::: moniker range=">= aspnetcore-2.2"
+
+[Microsoft.AspNetCore.DataProtection.AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/)並[Microsoft.AspNetCore.DataProtection.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/)套件可讓您允許將資料保護金鑰儲存在 Azure 儲存體或 Redis快取。 可以跨數個執行個體的 web 應用程式共用金鑰。 應用程式可以共用驗證 cookie 或 CSRF 防護，在多部伺服器。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+[Microsoft.AspNetCore.DataProtection.AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/)並[Microsoft.AspNetCore.DataProtection.Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/)套件可讓您允許將資料保護金鑰儲存在 Azure 儲存體或 Redis 快取。 可以跨數個執行個體的 web 應用程式共用金鑰。 應用程式可以共用驗證 cookie 或 CSRF 防護，在多部伺服器。
+
+::: moniker-end
+
+若要設定 Azure Blob 儲存體提供者，呼叫其中一種[PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)多載：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -44,6 +56,23 @@ public void ConfigureServices(IServiceCollection services)
         .PersistKeysToAzureBlobStorage(new Uri("<blob URI including SAS token>"));
 }
 ```
+
+::: moniker range=">= aspnetcore-2.2"
+
+若要設定 Redis，呼叫其中一種[PersistKeysToStackExchangeRedis](/dotnet/api/microsoft.aspnetcore.dataprotection.stackexchangeredisdataprotectionbuilderextensions.persistkeystostackexchangeredis)多載：
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    var redis = ConnectionMultiplexer.Connect("<URI>");
+    services.AddDataProtection()
+        .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys");
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
 
 若要設定 Redis，呼叫其中一種[PersistKeysToRedis](/dotnet/api/microsoft.aspnetcore.dataprotection.redisdataprotectionbuilderextensions.persistkeystoredis)多載：
 
@@ -55,6 +84,8 @@ public void ConfigureServices(IServiceCollection services)
         .PersistKeysToRedis(redis, "DataProtection-Keys");
 }
 ```
+
+::: moniker-end
 
 如需詳細資訊，請參閱下列主題：
 

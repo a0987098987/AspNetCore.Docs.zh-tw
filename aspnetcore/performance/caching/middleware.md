@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/26/2017
 uid: performance/caching/middleware
-ms.openlocfilehash: f4e5a414b92e3ca65e19188ebd2bfaef6f32fee7
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: d991bc48ed07ee71b0decaa0bee4df811fdc74c4
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893086"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477523"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>回應快取中 ASP.NET Core 中的介軟體
 
@@ -159,7 +159,7 @@ if (responseCachingFeature != null)
 * [中介軟體](xref:fundamentals/middleware/index)
 * [記憶體中快取](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
-* [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
+* [使用變更權杖來偵測變更](xref:fundamentals/change-tokens)
 * [回應快取](xref:performance/caching/response)
 * [快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
 * [分散式快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

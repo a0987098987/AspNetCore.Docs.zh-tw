@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/15/2018
 uid: performance/caching/memory
-ms.openlocfilehash: 960aa18f9d14f633118ccd716201e61464085c05
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: be2e81d1aa6a89d65414d53a70ca2d2fb5d2d3a3
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325922"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477185"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -173,7 +173,7 @@ A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制
 ## <a name="additional-resources"></a>其他資源
 
 * [使用分散式快取](xref:performance/caching/distributed)
-* [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
+* [使用變更權杖來偵測變更](xref:fundamentals/change-tokens)
 * [回應快取](xref:performance/caching/response)
 * [回應快取中介軟體](xref:performance/caching/middleware)
 * [快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)

@@ -5,12 +5,12 @@ description: 了解如何設定 ASP.NET Core 身分識別的自訂儲存體提�
 ms.author: riande
 ms.date: 09/17/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: db51c39cc700f93917f54c80adbfe7922ffcd67e
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: e206cf584d92a17d61676d71abc6fb577ae63453
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011257"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477614"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -41,7 +41,7 @@ dotnet new webapi -au Individual
 
 ## <a name="the-aspnet-core-identity-architecture"></a>ASP.NET Core 身分識別架構
 
-ASP.NET Core Identity 是由名為管理員和存放區的類別所組成。 *管理員*一些高階的類別，其應用程式開發人員用來執行作業，例如建立身分識別使用者。 *存放區*是較低層級的類別，指定如何保存實體，例如使用者和角色。 請依照下列存放區[儲存機制模式](xref:fundamentals/repository-pattern)和緊密結合的持續性機制。 管理員會分離從存放區，這表示您可以將持續性機制，而不需要變更您的應用程式程式碼 （除了組態）。
+ASP.NET Core Identity 是由名為管理員和存放區的類別所組成。 *管理員*一些高階的類別，其應用程式開發人員用來執行作業，例如建立身分識別使用者。 *存放區*是較低層級的類別，指定如何保存實體，例如使用者和角色。 存放區會遵循儲存機制模式，並會緊密結合的持續性機制。 管理員會分離從存放區，這表示您可以將持續性機制，而不需要變更您的應用程式程式碼 （除了組態）。
 
 下圖顯示如何將 web 應用程式與互動管理員，而與資料存取層的存放區互動。
 

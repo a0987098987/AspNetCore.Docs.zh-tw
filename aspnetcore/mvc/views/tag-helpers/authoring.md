@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 08/20/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 2d39488caeea0c87d2efc79f265de7feb200f096
-ms.sourcegitcommit: 15d7bd0b2c4e6fe9ac335d658bab71a45ca5bc72
+ms.openlocfilehash: 3bad02c650c717b33386f028cb223d14c0a34ff9
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41751497"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477627"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
@@ -113,6 +113,8 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 1. 使用下列變更來更新 *Views/Home/Contact.cshtml* 檔案中的標記：[!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
 
 2. 執行應用程式，並驗證它會產生正確的連結。
+
+<a name="self-closing"></a>
     
    > [!NOTE]
    > 如果您要撰寫電子郵件標籤自我結尾 (`<email mail-to="Rick" />`)，則最終輸出也會是自我結尾。 若要啟用可以寫入只有開始標籤的標籤 (`<email mail-to="Rick">`)，您必須以下列項目來裝飾此類別：

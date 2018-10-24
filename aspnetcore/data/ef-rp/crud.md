@@ -5,12 +5,12 @@ description: 示範如何以 EF Core 來建立、讀取、更新、刪除
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: e3a0ec2e21ae9e9eeaae1eb7c17f1604897fb6f9
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 25493f93daf3fe5e874ad1d06b918196cd1f074d
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342454"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912809"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 
@@ -26,7 +26,7 @@ ms.locfileid: "39342454"
 
 為降低複雜性並將教學課程聚焦於 EF Core，EF Core 程式碼會使用於頁面模型中。 有些開發人員會使用服務層或[存放庫模式](xref:fundamentals/repository-pattern)來建立介於 UI (Razor 頁面) 和資料存取層之間的抽象層。
 
-在本教學課程中，會檢查位於 *Student* 資料夾中的 [建立]、[編輯]、[刪除] 和 [詳細資料] Razor 頁面。
+在本教學課程中，會檢查位於 *Students* 資料夾中的 [建立]、[編輯]、[刪除] 和 [詳細資料] Razor 頁面。
 
 Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式：
 
@@ -35,7 +35,7 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 
 [索引] 頁面和 [詳細資料] 頁面以 HTTP GET 方法 `OnGetAsync` 取得並顯示所要求的資料
 
-## <a name="singleordefaultasync-vs-firstordefaultasync"></a>FirstOrDefaultAsync 與 SingleOrDefaultAsync
+## <a name="singleordefaultasync-vs-firstordefaultasync"></a>SingleOrDefaultAsync 與FirstOrDefaultAsync
 
 產生的程式碼會使用 [FirstOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Threading_CancellationToken_)，一般會偏好它而非 [SingleOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_)。
 
@@ -236,9 +236,9 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 ## <a name="common-errors"></a>常見的錯誤
 
-Student/Index 或其他連結運作失常：
+Students/Index 或其他連結運作失常：
 
-確認 Razor 頁面包含正確的 `@page` 指示詞。 例如，Student/Index Razor 頁面**不應**包含路由範本：
+確認 Razor 頁面包含正確的 `@page` 指示詞。 例如，Students/Index Razor 頁面**不應**包含路由範本：
 
 ```cshtml
 @page "{id:int}"

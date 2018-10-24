@@ -5,12 +5,12 @@ description: 本文示範如何在 ASP.NET Core 應用程式中使用 Entity Fra
 ms.author: tdykstra
 ms.date: 02/24/2017
 uid: data/entity-framework-6
-ms.openlocfilehash: 500954bdf8ea592e0ed706943e0f5ba4f4594dbc
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: ba3ee137bfefd53cf2b7be2f328651ad38104ab5
+ms.sourcegitcommit: 70fb7c9d5f2ddfcf4747382a9f7159feca7a6aa7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274075"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45601739"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>ASP.NET Core 與 Entity Framework 6 使用者入門
 
@@ -66,9 +66,10 @@ ms.locfileid: "36274075"
 
 * 建立方案。
 
-* **[新增專案] > [網路] > [ASP.NET Core Web 應用程式 (.NET Framework)]**
+* [新增] > [新專案] > [Web] > [ASP.NET Core Web 應用程式]
+  * 在專案範本選取項目對話方塊中，選取下拉式清單中的 API 和.NET Framework
 
-* **[新增專案] > [Windows 傳統桌面] > [類別庫 (.NET Framework)]**
+* [新增] > [新增專案] > [Windows Desktop] > [類別庫 (.NET Framework)]
 
 * 在這兩個專案的 [套件管理員主控台] (PMC) 中，執行 `Install-Package Entityframework` 命令。
 

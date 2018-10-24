@@ -5,12 +5,12 @@ description: 深入了解「篩選條件」的運作方式，以及如何在 ASP
 ms.author: riande
 ms.date: 08/15/2018
 uid: mvc/controllers/filters
-ms.openlocfilehash: 6b3d5446b1c9aafc02d4c31ad57a234f16513e3f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: e20d934a17337d404249220d703ac4bb7164dfa6
+ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751494"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47402155"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -231,6 +231,8 @@ System.InvalidOperationException: No service for type
 下列範例示範如何使用 `TypeFilterAttribute` 將引數傳遞至類型：
 
 [!code-csharp[](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_TypeFilter&highlight=1,2)]
+
+### <a name="ifilterfactory-implemented-on-your-attribute"></a>在您屬性上實作的 IFilterFactory
 
 如果您的篩選條件：
 

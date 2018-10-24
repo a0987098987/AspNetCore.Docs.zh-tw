@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/04/2018
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 40af94f9cbb83f27f22d90b6b0f2854090687d34
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 78cdf74648a29ed718d1373d7b3666b10749843d
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312342"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577557"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 
@@ -39,7 +39,7 @@ ASP.NET Core 應用程式在反向 Proxy 設定中會由 IIS 裝載。 您無法
 | **追蹤**<br>`FailedRequestsTracingModule` | [是] | [ASP.NET Core 記錄](xref:fundamentals/logging/index#tracesource-provider) |
 | **檔案快取**<br>`FileCacheModule` | 否 | [回應快取中介軟體](xref:performance/caching/middleware) |
 | **HTTP 快取**<br>`HttpCacheModule` | 否 | [回應快取中介軟體](xref:performance/caching/middleware) |
-| **HTTP 記錄**<br>`HttpLoggingModule` | [是] | [ASP.NET Core 記錄](xref:fundamentals/logging/index)<br>實作：[elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging)、[Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)、[NLog](https://github.com/NLog/NLog.Extensions.Logging)、[Serilog](https://github.com/serilog/serilog-extensions-logging)
+| **HTTP 記錄**<br>`HttpLoggingModule` | [是] | [ASP.NET Core 記錄](xref:fundamentals/logging/index)<br>實作：[elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging)、[Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)、[NLog](https://github.com/NLog/NLog.Extensions.Logging)、[Sentry](https://github.com/getsentry/sentry-dotnet)、[Serilog](https://github.com/serilog/serilog-extensions-logging)
 | **HTTP 重新導向**<br>`HttpRedirectionModule` | [是] | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **IIS 用戶端憑證對應驗證**<br>`IISCertificateMappingAuthenticationModule` | [是] | |
 | **IP 及網域限制**<br>`IpRestrictionModule` | [是] | |

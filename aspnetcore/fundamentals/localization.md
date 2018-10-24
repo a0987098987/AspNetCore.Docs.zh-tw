@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 87df1b8cf57509ddf80ce845d85a9b3f30673c35
-ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
+ms.openlocfilehash: 6e8c4723ab0105b8c756221d3e3c5eebba6cc4e2
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396230"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912026"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -341,7 +341,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 ## <a name="additional-resources"></a>其他資源
 
-* 本文使用的 [Localization.StarterWeb 專案](https://github.com/aspnet/entropy)。
-* [Visual Studio 中的資源檔](/cpp/windows/resource-files-visual-studio)
+* 本文使用的 [Localization.StarterWeb 專案](https://github.com/aspnet/Entropy/tree/master/samples/Localization.StarterWeb)。
+* [全球化與當地語系化 .NET 應用程式](/dotnet/standard/globalization-localization/index)
 * [.resx 檔案中的資源](/dotnet/framework/resources/working-with-resx-files-programmatically)
 * [Microsoft 多語應用程式工具組](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)

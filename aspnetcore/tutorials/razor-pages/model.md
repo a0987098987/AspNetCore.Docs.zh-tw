@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: de82738509bb009f030a02e28904e3155088fa6a
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 5cd1e08ac52d352be23a280419d7456f685a03ad
+ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011354"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48045597"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -22,9 +22,7 @@ ms.locfileid: "46011354"
 
 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie** 並新增下列屬性：
-
-以下列程式碼取代 `Movie` 類別的內容：
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie**，並以下列程式碼取代 `Movie` 類別的內容：
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie21/Models/Movie1.cs?name=snippet)]
 
@@ -41,7 +39,7 @@ ms.locfileid: "46011354"
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold] 對話方塊中，選取 [Razor Pages using Entity Framework (CRUD)] \(使用 Entity Framework 的 Razor Pages (CRUD)\) > [新增]。
+在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)] > [新增]。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
@@ -58,10 +56,10 @@ ms.locfileid: "46011354"
 
 ### <a name="files-created"></a>建立的檔案
 
-* *Pages/Movies* 建立、刪除、詳細資料、編輯、索引。 下一個教學課程會詳述這些頁面。
+* *Pages/Movies*：建立、刪除、詳細資料、編輯、索引。 下一個教學課程會詳述這些頁面。
 * *Data/RazorPagesMovieContext.cs*
 
-### <a name="files-updates"></a>檔案更新
+### <a name="file-updates"></a>檔案更新
 
 * *Startup.cs*：這個檔案的變更會於下一節中詳述。
 * *appsettings.json*：已新增用來連線到本機資料庫的連接字串。
@@ -122,8 +120,8 @@ dotnet ef database update
 
 如果您收到錯誤：
 
-SqlException：無法開啟登入要求的 "RazorPagesMovieContext-GUID" 資料庫。 登入失敗。
-使用者 'User-name' 登入失敗。
+`SqlException: Cannot open database "RazorPagesMovieContext-GUID" requested by the login. The login failed.
+Login failed for user 'User-name'.`
 
 您遺失了[移轉步驟](#pmc)。
 

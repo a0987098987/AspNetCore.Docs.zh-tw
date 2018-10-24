@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2018
 uid: fundamentals/middleware/index
-ms.openlocfilehash: e6dc76b7cb80e0dfda102df5aefb5d9ce9b821ed
-ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
+ms.openlocfilehash: 84e79df7fcf5790e658a20c80f21d73cdc76c054
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43055802"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46483005"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -58,14 +58,18 @@ ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個�
 
 `Startup.Configure` 方法內中介軟體元件的新增順序可定義在要求時叫用中介軟體元件的順序及回應的反向順序。 對安全性、效能與功能性而言，此順序相當重要。
 
-下列 `Configure` 方法會新增下列中介軟體元件：
-
-1. 例外狀況/錯誤處理
-2. 靜態檔案伺服器
-3. 驗證
-4. MVC
+下列 `Startup.Configure` 方法會新增適用於一般應用程式案例的中介軟體元件：
 
 ::: moniker range=">= aspnetcore-2.0"
+
+1. 例外狀況/錯誤處理
+1. HTTP 嚴格的傳輸安全性通訊協定
+1. HTTPS 重新導向
+1. 靜態檔案伺服器
+1. Cookie 強制原則
+1. 驗證
+1. 工作階段
+1. MVC
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -96,11 +100,15 @@ public void Configure(IApplicationBuilder app)
     app.UseStaticFiles();
 
     // Use Cookie Policy Middleware to conform to EU General Data 
-    //   Protection Regulation (GDPR) regulations.
+    // Protection Regulation (GDPR) regulations.
     app.UseCookiePolicy();
 
     // Authenticate before the user accesses secure resources.
     app.UseAuthentication();
+
+    // If the app uses session state, call Session Middleware after Cookie 
+    // Policy Middleware and before MVC Middleware.
+    app.UseSession();
 
     // Add MVC to the request pipeline.
     app.UseMvc();
@@ -110,6 +118,12 @@ public void Configure(IApplicationBuilder app)
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
+
+1. 例外狀況/錯誤處理
+1. 靜態檔案
+1. 驗證
+1. 工作階段
+1. MVC
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -123,6 +137,10 @@ public void Configure(IApplicationBuilder app)
 
     // Authenticate before you access secure resources.
     app.UseIdentity();
+
+    // If the app uses session state, call UseSession before 
+    // MVC Middleware.
+    app.UseSession();
 
     // Add MVC to the request pipeline.
     app.UseMvcWithDefaultRoute();
@@ -215,12 +233,13 @@ ASP.NET Core 隨附下列中介軟體元件。 「順序」欄位說明中介軟
 | 中介軟體 | 描述 | 訂單 |
 | ---------- | ----------- | ----- |
 | [驗證](xref:security/authentication/identity) | 提供驗證支援。 | 在需要 `HttpContext.User` 之前。 OAuth 回呼的終端機。 |
+| [Cookie 原則](xref:security/gdpr) | 追蹤使用者對用於儲存個人資訊的同意，並強制執行 Cookie 欄位的最低標準，例如 `secure` 和 `SameSite`。 | 在發出 Cookie 的中介軟體之前。 範例：驗證、工作階段、MVC (TempData)。 |
 | [CORS](xref:security/cors) | 設定跨原始來源資源共用。 | 在使用 CORS 的元件之前。 |
 | [診斷](xref:fundamentals/error-handling) | 設定診斷。 | 在產生錯誤的元件之前。 |
-| [轉送標頭](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | 將設為 Proxy 的標頭轉送到目前要求。 | 在使用更新欄位的元件之前 (例如：配置、主機、用戶端 IP、方法)。 |
+| [轉送標頭](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | 將設為 Proxy 的標頭轉送到目前要求。 | 在使用更新方法的欄位之前。 範例：配置、主機，用戶端 IP、方法。 |
 | [HTTP 方法覆寫](/dotnet/api/microsoft.aspnetcore.builder.httpmethodoverrideextensions) | 允許傳入的 POST 要求覆寫方法。 | 在使用更新方法的元件之前。 |
 | [HTTPS 重新導向](xref:security/enforcing-ssl#require-https) | 將所有 HTTP 要求重新都導向至 HTTPS (ASP.NET Core 2.1 或更新版本)。 | 在使用 URL 的元件之前。 |
-| [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | 增強安全性的中介軟體，可新增特殊的回應標頭 (ASP.NET Core 2.1 或更新版本)。 | 在傳送回應前和修改要求的元件後 (例如，轉送標頭、URL 重寫)。 |
+| [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | 增強安全性的中介軟體，可新增特殊的回應標頭 (ASP.NET Core 2.1 或更新版本)。 | 在傳送回應前和修改要求的元件後。 範例：轉送的標頭、URL 重寫。 |
 | [MVC](xref:mvc/overview) | 使用 MVC/Razor 頁面處理要求 (ASP.NET Core 2.0 或更新版本)。 | 若要求符合路由則終止。 |
 | [OWIN](xref:fundamentals/owin) | 以 OWIN 為基礎之應用程式、伺服器和中介軟體的 Interop。 | 若 OWIN 中介軟體完全處理要求則終止。 |
 | [回應快取](xref:performance/caching/middleware) | 提供快取回應的支援。 | 在需要快取的元件之前。 |

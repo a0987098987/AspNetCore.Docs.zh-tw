@@ -5,12 +5,12 @@ description: 在此教學課程中，您可以讀取並顯示相關資料-- 也�
 ms.author: riande
 ms.date: 11/05/2017
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: bb1d087a5449c6e26c40e572d161dd9644ac2323
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: e23b8bb870b329bd705fbc9548df62524303893e
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219338"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912317"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -20,7 +20,7 @@ ms.locfileid: "39219338"
 
 在本教學課程中，將會讀取和顯示相關資料。 相關資料是 EF Core 載入到導覽屬性的資料。
 
-若您遭遇到無法解決的問題，請下載[此階段的完整應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part6-related)。
+若您遇到無法解決的問題，請[下載或檢視完整應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。 [下載指示](xref:tutorials/index#how-to-download-a-sample)。
 
 下圖顯示本教學課程的已完成頁面：
 
@@ -51,7 +51,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   ![明確式載入範例](read-related-data/_static/explicit-loading.png)
 
-* [消極式載入](https://docs.microsoft.com/ef/core/querying/related-data#lazy-loading)。 [EF Core 目前不支援消極式載入](https://github.com/aspnet/EntityFrameworkCore/issues/3797)。 第一次讀取實體時，不會擷取相關資料。 第一次存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 每當第一次存取導覽屬性時，查詢會傳送至資料庫。
+* [消極式載入](https://docs.microsoft.com/ef/core/querying/related-data#lazy-loading)。 [EF Core 已在 2.1 版中新增消極式載入](/ef/core/querying/related-data#lazy-loading)。 第一次讀取實體時，不會擷取相關資料。 第一次存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 每當第一次存取導覽屬性時，查詢會傳送至資料庫。
 
 * `Select` 運算子只會載入所需的相關資料。
 

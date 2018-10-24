@@ -1,21 +1,24 @@
 ---
 title: ASP.NET Core 中的效能
-author: ardalis
+author: guardrex
 description: 探索有關 ASP.NET Core 應用程式效能的主題。
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 09/16/2018
 uid: performance/index
-ms.openlocfilehash: e168432280f40f9d3b918a11deb55959c9ffeb70
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: da400078f4e8899ce41ff395c86fdea14bc3c376
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273633"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028084"
 ---
 # <a name="performance-in-aspnet-core"></a>ASP.NET Core 中的效能
 
-* [快取回應](caching/index.md)
-  * [記憶體中快取](caching/memory.md)
-  * [使用分散式快取](caching/distributed.md)
-  * [回應快取](caching/response.md)
-* [回應壓縮中介軟體](response-compression.md)
+下列主題範圍涵蓋 ASP.NET Core 中的效能案例：
+
+[快取回應](xref:performance/caching/index)  
+了解如何快取 ASP.NET Core 中的資料和回應。
+
+[回應壓縮](xref:performance/response-compression)  
+了解回應壓縮及如何使用 ASP.NET Core 應用程式中的回應壓縮中介軟體。

@@ -4,14 +4,14 @@ author: zuckerthoben
 description: 了解如何使用 NSwag 來產生 ASP.NET Core Web API 的文件和說明頁面。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 06/29/2018
+ms.date: 09/20/2018
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: c0811593609b7d1e3529d5253e8b053f180281f3
-ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
+ms.openlocfilehash: b9266e2df75563be6bad1a1f464cef788c333d4c
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126270"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028164"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>NSwag 與 ASP.NET Core 使用者入門
 
@@ -29,9 +29,14 @@ ms.locfileid: "37126270"
 
 ::: moniker-end
 
-搭配使用 [NSwag](https://github.com/RSuter/NSwag) 與 ASP.NET Core 中介軟體需要有 [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet 套件。 該套件包含 Swagger 產生器、Swagger UI (第 2 版和第 3 版)，以及 [ReDoc UI](https://github.com/Rebilly/ReDoc)。
+將 NSwag 中介軟體註冊於：
 
-強烈建議您利用 NSwag 的程式碼產生功能。 選擇下列其中一個選項來產生程式碼：
+* 為實作的 Web API 產生 Swagger 規格。
+* 提供 Swagger UI 以瀏覽並測試 Web API。
+
+若要使用 [NSwag](https://github.com/RSuter/NSwag) ASP.NET Core 中介軟體，請安裝 [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet 套件。 此套件包含中介軟體，以產生並提供 Swagger 規格、Swagger UI (v2 和 v3) 和 [ReDoc UI](https://github.com/Rebilly/ReDoc)。
+
+此外，強烈建議您利用 NSwag 的程式碼產生功能。 選擇下列其中一個選項來使用程式碼產生功能：
 
 * 使用 [NSwagStudio](https://github.com/NSwag/NSwag/wiki/NSwagStudio) 這個 Windows 桌面應用程式，以利用 C# 和 TypeScript 為您的 API 產生用戶端程式碼。
 * 使用 [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) 或 [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) NuGet 套件，以在您的專案內執行程式碼產生作業。
@@ -40,7 +45,7 @@ ms.locfileid: "37126270"
 
 ## <a name="features"></a>功能
 
-要使用 NSwag 的主要原因是不僅能夠引進 Swagger UI 和 Swagger 產生器，還能夠利用彈性的程式碼產生功能。 您不需要現有的 API&mdash;您可以使用包含 Swagger 的協力廠商 API ，並讓 NSwag 產生用戶端實作。 無論哪一種方式都會加速開發週期，因此您可以更輕鬆地隨著 API 變更進行調整。
+使用 NSwag 的主要原因是不僅能夠引進 Swagger UI 和 Swagger 產生器，還能夠利用彈性的程式碼產生功能。 您不需要現有的 API&mdash;您可以使用包含 Swagger 的協力廠商 API ，並讓 NSwag 產生用戶端實作。 無論哪一種方式都會加速開發週期，因此您可以更輕鬆地隨著 API 變更進行調整。
 
 ## <a name="package-installation"></a>套件安裝
 
@@ -94,7 +99,11 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_StartupConfigureImports)]
 
-在 `Startup.Configure` 方法中，啟用中介軟體為產生的 Swagger 規格和 SwaggerUI 提供服務：
+在 `Startup.ConfigureServices` 方法中，註冊所需的 Swagger 服務： 
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_ConfigureServices&highlight=8)]
+
+在 `Startup.Configure` 方法中，啟用中介軟體來為產生的 Swagger 規格和 SwaggerUI v3 提供服務：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_Configure&highlight=6-10)]
 
@@ -254,6 +263,7 @@ XML 註解可使用下列方式啟用：
 ### <a name="data-annotations"></a>資料註解
 
 ::: moniker range="<= aspnetcore-2.0"
+
 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而 Web API 動作的建議傳回型別是 [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult)。 因此，NSwag 無法推斷您的動作所執行的作業，以及它所傳回的內容。 參考下列範例：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
@@ -261,8 +271,11 @@ NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，
 上述動作會傳回 `IActionResult`，但在動作內部則會傳回 [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute) 或 [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest)。 資料註解是用來通知用戶端已知此動作要傳回的 HTTP 狀態碼。 使用下列屬性裝飾動作：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而 Web API 動作的建議傳回型別是 [ActionResult\<T>](/dotnet/api/microsoft.aspnetcore.mvc.actionresult-1)。 目前，NSwag 只能推斷 `T` 所定義的傳回型別。 無法推斷動作中其他可能的傳回型別。 參考下列範例：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
@@ -270,6 +283,7 @@ NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，
 上述動作會傳回 `ActionResult<T>`，但在動作內部則會傳回 [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute)。 由於控制器是以 [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) 屬性裝飾，因此也可能傳回 [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest) 回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。 資料註解是用來通知用戶端已知此動作要傳回的 HTTP 狀態碼。 使用下列屬性裝飾動作：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
+
 ::: moniker-end
 
 Swagger 產生器現在可以正確描述此動作，而產生的用戶端會知道呼叫端點時它們所接收的內容。 強烈建議使用這些屬性裝飾所有動作。 如需 API 動作應該傳回哪些 HTTP 回應的指導方針，請參閱 [RFC 7231 規格](https://tools.ietf.org/html/rfc7231#section-4.3)。

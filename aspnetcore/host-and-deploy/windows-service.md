@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 06/04/2018
+ms.date: 09/25/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 68afe77b05a717cffecc32188f18e9fde208b81f
-ms.sourcegitcommit: 3ca20ed63bf1469f4365f0c1fbd00c98a3191c84
+ms.openlocfilehash: eb88b0bb2e9ce4cfd3a7db2081ad7d62d5dcb08e
+ms.sourcegitcommit: 599ebae5c2d6fcb22dfa6ae7d1f4bdfcacb79af4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41751688"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47211035"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -21,13 +21,13 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="get-started"></a>開始使用
+## <a name="convert-a-project-into-a-windows-service"></a>將專案轉換成 Windows 服務
 
-至少需要變更下列內容，才能設定現有的 ASP.NET Core 專案在服務中執行：
+至少需要變更下列內容，才能設定現有的 ASP.NET Core 專案作為服務執行：
 
 1. 在專案檔中：
 
-   1. 確認有執行階段識別碼，或將它新增至包含目標 Framework 的 **\<PropertyGroup>**：
+   * 確認有 Windows [執行階段識別碼 (RID)](/dotnet/core/rid-catalog)，或將其新增至包含目標 Framework 的 `<PropertyGroup>`：
 
       ::: moniker range=">= aspnetcore-2.1"
 
@@ -62,7 +62,14 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
 
       ::: moniker-end
 
-   1. 新增 [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices/) 的套件參考。
+      發行多個 RID：
+
+      * 以分號分隔的清單提供 RID。
+      * 使用屬性名稱 `<RuntimeIdentifiers>` (複數)。
+
+      如需詳細資訊，請參閱 [.NET Core RID 目錄](/dotnet/core/rid-catalog)。
+
+   * 新增 [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices) 的套件參考。
 
 1. 在 `Program.Main` 中進行下列變更：
 
@@ -84,10 +91,10 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
 
 1. 發行應用程式。 使用 [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) 或 [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)。 使用 Visual Studio 時，請選取 [FolderProfile]。
 
-   若要從命令列發佈範例應用程式，請在專案資料夾的主控台視窗中執行下列命令：
+   若要使用命令列介面 (CLI) 工具發行範例應用程式，請從專案資料夾的命令提示字元執行 [dotnet publish](/dotnet/core/tools/dotnet-publish)命令。 必須在 `<RuntimeIdenfifier>` (或 `<RuntimeIdentifiers>`) 中指定 RID 專案檔的屬性。 在下列範例中，應用程式在 `win7-x64` 執行階段發行設定中發行：
 
    ```console
-   dotnet publish --configuration Release
+   dotnet publish --configuration Release --runtime win7-x64
    ```
 
 1. 使用 [sc.exe](https://technet.microsoft.com/library/bb490995) 命令列工具建立服務。 `binPath` 值是應用程式可執行檔的路徑，其中包括可執行檔的檔案名稱。 **等號和路徑開頭的引號字元之間需要有間距。**
@@ -98,7 +105,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
 
    對於在專案資料夾中發行的服務，請使用 *publish* 資料夾的路徑來建立服務。 在以下範例中：
 
-   * 專案位於 `c:\my_services\AspNetCoreService` 資料夾。
+   * 專案位於 *c:\\my_services\\AspNetCoreService* 資料夾。
    * 專案是以 `Release` 設定所發行。
    * 目標 Framework Moniker (TFM) 是 `netcoreapp2.1`。
    * 執行階段識別碼 (RID) 是 `win7-x64`。
@@ -110,14 +117,14 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
    ```console
    sc create MyService binPath= "c:\my_services\AspNetCoreService\bin\Release\netcoreapp2.1\win7-x64\publish\AspNetCoreService.exe"
    ```
-   
+
    > [!IMPORTANT]
    > 確定 `binPath=` 引數與其值之間具有間距。
-   
+
    若要從不同的資料夾發行並啟動服務：
-   
-      1. 在 `dotnet publish` 命令上使用 [--output &lt;OUTPUT_DIRECTORY&gt;](/dotnet/core/tools/dotnet-publish#options) 選項。 若使用 Visual Studio，選取 [發行] 按鈕之前，請先選取 [FolderProfile] 發行屬性頁面中的 [目標位置]。
-   1. 使用 `sc.exe` 命令搭配輸出資料夾路徑來建立服務。 在提供給 `binPath` 的路徑中包含服務的可執行檔名稱。
+
+      * 在 `dotnet publish` 命令上使用 [--output &lt;OUTPUT_DIRECTORY&gt;](/dotnet/core/tools/dotnet-publish#options) 選項。 若使用 Visual Studio，選取 [發行] 按鈕之前，請先選取 [FolderProfile] 發行屬性頁面中的 [目標位置]。
+      * 使用 `sc.exe` 命令搭配輸出資料夾路徑來建立服務。 在提供給 `binPath` 的路徑中包含服務的可執行檔名稱。
 
 1. 以 `sc start <SERVICE_NAME>` 命令啟動服務。
 
@@ -129,7 +136,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
 
    此命令需要幾秒鐘啓動服務。
 
-1. `sc query <SERVICE_NAME>` 命令可以用來檢查服務的狀態以判斷其狀態：
+1. 若要檢查服務的狀態，請使用 `sc query <SERVICE_NAME>` 命令。 狀態會回報為下列值之一：
 
    * `START_PENDING`
    * `RUNNING`
@@ -168,7 +175,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
    sc delete MyService
    ```
 
-## <a name="provide-a-way-to-run-outside-of-a-service"></a>提供一個在服務外執行的方式
+## <a name="run-the-app-outside-of-a-service"></a>在服務外執行應用程式
 
 在服務外執行時較容易進行測試和偵錯，因此習慣上只有在特定情況下，才會新增呼叫 `RunAsService` 的程式碼。 例如，使用 `--console` 命令列引數或連結偵錯工具，即可讓應用程式以主控台應用程式的形式執行：
 
@@ -232,7 +239,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
 
 ## <a name="current-directory-and-content-root"></a>目前目錄和內容根目錄
 
-針對 Windows 服務呼叫 `Directory.GetCurrentDirectory()` 所傳回的目前工作目錄為 *C:\WINDOWS\system32* 資料夾。 *System32* 資料夾不是儲存服務檔案 (例如，設定檔) 的合適位置。 請使用下列其中一種方法，於使用 [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder) 時，利用 [FileConfigurationExtensions.SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath) 來維護及存取服務的資產和設定檔：
+針對 Windows 服務呼叫 `Directory.GetCurrentDirectory()` 所傳回的目前工作目錄為 *C:\\WINDOWS\\system32* 資料夾。 *System32* 資料夾不是儲存服務檔案 (例如，設定檔) 的合適位置。 請使用下列其中一種方法，於使用 [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder) 時，利用 [FileConfigurationExtensions.SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath) 來維護及存取服務的資產和設定檔：
 
 * 使用內容根路徑。 `IHostingEnvironment.ContentRootPath` 與建立服務時提供給 `binPath` 引數的路徑相同。 請使用內容根路徑並維護應用程式內容根目錄中的檔案，而不是使用 `Directory.GetCurrentDirectory()` 來建立設定檔的路徑。
 * 將檔案儲存在磁碟上的適當位置。 請使用 `SetBasePath` 將絕對路徑指定為包含檔案的資料夾。

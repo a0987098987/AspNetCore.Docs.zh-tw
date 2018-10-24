@@ -3,14 +3,14 @@ title: ASP.NET Core 簡介
 author: rick-anderson
 description: 取得 ASP.NET Core 的簡介，ASP.NET Core 是一種跨平台且高效能的開放原始碼架構，用於建置現代化、雲端式、網際網路連線的應用程式。
 ms.author: riande
-ms.date: 02/28/2018
+ms.date: 9/28/2018
 uid: index
-ms.openlocfilehash: 6de7f1bc8229c5de519e4064dda0a7061cf8b9c6
-ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
+ms.openlocfilehash: 69ab702e9d9f8d746b7bc546d4f2bbb831ff59c7
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37077708"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911685"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -27,20 +27,7 @@ ASP.NET Core 是一種跨平台且高效能的[開放原始碼](https://github.c
 
 數百萬的開發人員已使用 (並持續使用) [ASP.NET 4.x](https://docs.microsoft.com/aspnet/overview) 來建立 Web 應用程式。 ASP.NET Core 是 ASP.NET 4.x 的重新設計，其架構變更可產生更為精簡且更加模組化的架構。
 
-ASP.NET Core 提供下列優點：
-
-* 用於建置 Web UI 和 Web API 的統一劇本。
-* 整合[現代化用戶端架構](xref:client-side/index)和開發工作流程。
-* 雲端就緒、以環境為基礎的[組態系統](xref:fundamentals/configuration/index)。
-* 內建的[相依性插入](xref:fundamentals/dependency-injection)。
-* 輕量型、[高效能](https://github.com/aspnet/benchmarks) \(英文\) 且模組化的 HTTP 要求管線。
-* 能夠在 [IIS](xref:host-and-deploy/iis/index)、[Nginx](xref:host-and-deploy/linux-nginx)、[Apache](xref:host-and-deploy/linux-apache)、[Docker](xref:host-and-deploy/docker/index) 上裝載，或自我裝載於您自己的處理序中。
-* 以 [.NET Core](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server) 為目標時，會有並存應用程式版本設定。
-* 可簡化現代網頁程式開發的工具。
-* 能夠在 Windows、macOS 和 Linux 上建置並執行。
-* 開放原始碼和[社群導向](https://live.asp.net/) \(英文\)。
-
-ASP.NET Core 完全以 [NuGet](https://www.nuget.org/) 套件的形式提供。 使用 NuGet 套件可讓您將應用程式最佳化，使其僅包含必要相依性。 事實上，以 .NET Core 為目標的 ASP.NET Core 2.x 應用程式只需要[單一 NuGet 套件](xref:fundamentals/metapackage)。 應用程式介面區較小的優點包括更嚴密的安全性、減少維護工作，以及提升效能。
+[!INCLUDE[](~/includes/benefits.md)]
 
 ## <a name="build-web-apis-and-web-ui-using-aspnet-core-mvc"></a>使用 ASP.NET Core MVC 建置 Web API 和 Web UI
 
@@ -58,9 +45,16 @@ ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/index#build-web-apis) 
 
 ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Angular](xref:spa/angular)、[React](xref:spa/react) 與 [Bootstrap](xref:client-side/bootstrap)。 如需詳細資訊，請參閱[用戶端開發](xref:client-side/index)。
 
+<a name="target-framework"></a>
+
 ## <a name="aspnet-core-targeting-net-framework"></a>將目標指向 .NET Framework 的 ASP.NET Core
 
 ASP.NET Core 可將目標指向 NET Core 或 .NET Framework。 將目標指向 .NET Framework 的 ASP.NET Core 應用程式無法跨平台&mdash;而只能在 Windows 上執行。 目前沒有任何要將 ASP.NET Core 中，以 .NET Framework 為目標之支援移除的計畫。 一般來說，ASP.NET Core 以 [.NET Standard](/dotnet/standard/net-standard) 程式庫組成。 以 .NET Standard 2.0 編寫的應用程式可在任何支援 .NET Standard 2.0 的位置執行。
+
+與 .NET Standard 2.0 相容的 .NET Framework 版本支援 ASP.NET Core 2.x：
+
+* 強烈建議使用 .NET Framework 4.7.1 和更新版本。
+* .NET Framework 4.6.1 和更新版本。
 
 將目標指向 .NET Core 有多個好處，而這些好處也隨著版本更新越來越多。 NET Core 較 .NET Framework 多的好處包含：
 
@@ -78,5 +72,6 @@ ASP.NET Core 可將目標指向 NET Core 或 .NET Framework。 將目標指向 .
 
 * [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [ASP.NET Core 教學課程](xref:tutorials/index)
+* <xref:tutorials/publish-to-azure-webapp-using-vs>
 * [ASP.NET Core 基本概念](xref:fundamentals/index)
 * [每週的 ASP.NET 社群之聲](https://live.asp.net/) \(英文\) 涵蓋了小組的進度和計劃， 並提供新的部落格和協力廠商軟體。

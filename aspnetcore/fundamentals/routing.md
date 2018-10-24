@@ -4,14 +4,14 @@ author: ardalis
 description: 探索 ASP.NET Core 路由功能如何負責將傳入要求對應至路由處理常式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/20/2018
+ms.date: 10/01/2018
 uid: fundamentals/routing
-ms.openlocfilehash: 94fa6a278466c8cc9926d7893d1ef71d83b865df
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: d9ba96c7b2abd35b1b13c84814bf3f776e8d8731
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41870847"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47861053"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -37,7 +37,7 @@ ms.locfileid: "41870847"
 
 ### <a name="url-matching"></a>URL 比對
 
-URL 比對是路由用來將傳入要求分派給「處理常式」的處理序。 這個處理序通常是根據 URL 路徑中的資料，但是可以擴展為考慮要求中的任何資料。 分派要求給不同處理常式的能力，是調整應用程式大小和複雜度的關鍵。
+URL 比對是路由用來將傳入要求分派給「處理常式」的處理序。 這個處理序是基於 URL 路徑中的資料，但是可以擴展為考慮要求中的任何資料。 分派要求給不同處理常式的能力，是調整應用程式大小和複雜度的關鍵。
 
 傳入要求將進入 `RouterMiddleware`，而後者會依序在每個路由上呼叫 <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> 方法。 <xref:Microsoft.AspNetCore.Routing.IRouter> 執行個體可將 [RouteContext.Handler](xref:Microsoft.AspNetCore.Routing.RouteContext.Handler*) 設定為非 Null 的 <xref:Microsoft.AspNetCore.Http.RequestDelegate>，來選擇是否要「處理」要求。 如果路由為要求設定了處理常式，則路由處理會停止，且會叫用該處理常式來處理要求。 如果已嘗試所有路由，但未找到要求的處理常式，中介軟體會呼叫下一個，而要求管線中的下一個中介軟體將被叫用。
 
@@ -169,12 +169,12 @@ routes.MapRoute(
 
 路由值為 `{ controller = Products, action = List }` 時，此路由會產生 URL `/Products/List`。 路由值會取代對應的路由參數，以形成 URL 路徑。 由於 `id` 是選擇性路由參數，因此它沒有值也不會有問題。
 
-路由值為 `{ controller = Home, action = Index }` 時，此路由會產生 URL `/`。 所提供的路由值符合預設值，因此可以放心地省略這些值對應的區段。 請注意，這兩個產生的 URL 會使用此路由定義反覆存取，並產生用來產生 URL 的相同路由值。
+路由值為 `{ controller = Home, action = Index }` 時，此路由會產生 URL `/`。 所提供的路由值符合預設值，因此可以放心地省略這些值對應的區段。 這兩個產生的 URL 會使用此路由定義反覆存取，並產生用來產生 URL 的相同路由值。
 
 > [!TIP]
 > 使用 ASP.NET Core MVC 的應用程式應該使用 <xref:Microsoft.AspNetCore.Mvc.Routing.UrlHelper> 來產生 URL，而不是直接呼叫路由。
 
-如需 URL 產生處理序的詳細資料，請參閱 [URL 產生參考](#url-generation-reference)。
+如需 URL 產生的詳細資訊，請參閱 [url-generation-reference](#url-generation-reference)。
 
 ## <a name="use-routing-middleware"></a>使用路由中介軟體
 
@@ -269,9 +269,31 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 您可以使用 `*` 字元作為路由參數的前置詞，以繫結至 URI 的其餘部分。 這稱為「全部擷取」參數。 例如，`blog/{*slug}` 符合以 `/blog` 開頭且其後有任何值 (這會指派給 `slug` 路由值) 的所有 URI。 全部擷取參數也可以符合空字串。
 
+::: moniker range=">= aspnetcore-2.2"
+
+當使用路由產生 URL (包括路徑分隔符號 (`/`) 字元) 時，catch-all 參數會逸出適當的字元。 例如，路由值為 `{ path = "my/path" }` 的路由 `foo/{*path}` 會產生 `foo/my%2Fpath`。 請注意逸出的斜線。 若要反覆存取路徑分隔符號字元，請使用 `**` 路由參數前置詞。 具有 `{ path = "my/path" }` 的路由 `foo/{**path}` 會產生 `foo/my/path`。
+
+::: moniker-end
+
 路由參數可能有「預設值」，指定方法是在參數名稱之後指定預設值，並以等號 (`=`) 分隔。 例如，`{controller=Home}` 定義 `Home` 作為 `controller` 的預設值。 如果 URL 中沒有用於參數的任何值，則會使用預設值。 除了預設值之外，路由參數也可以是選擇性參數，指定方法是在參數名稱結尾附加問號 (`?`)，如 `id?` 所示。 選擇性值與預設路由參數之間的差異在於，具有預設值的路由參數一定會產生值；選擇性參數只有在要求 URL 提供值時才會有值。
 
-路由參數也可能會有條件約束，這些條件約束必須符合與 URL 繫結的路由值。 在路由參數名稱之後新增分號 `:` 和條件約束名稱，即可指定路由參數的「內嵌條件約束」。 如果條件約束需要引數，您可以在條件約束名稱後面以括弧 `( )` 括住的方式來提供這些引數。 指定多個內嵌條件約束的方法是附加另一個冒號 `:` 和條件約束名稱。 條件約束名稱會傳遞至 <xref:Microsoft.AspNetCore.Routing.IInlineConstraintResolver> 服務來建立 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 的執行個體，以用於 URL 處理。 例如，路由範本 `blog/{article:minlength(10)}` 指定具有引數 `10` 的 `minlength` 條件約束。 如需路由條件約束詳細資訊和架構所提供的條件約束清單，請參閱[路由條件約束參考](#route-constraint-reference)一節。
+::: moniker range=">= aspnetcore-2.2"
+
+路由參數可能具有條件約束，這些條件約束必須符合與 URL 繫結的路由值。 在路由參數名稱之後新增分號 (`:`) 和條件約束名稱，即可指定路由參數的「內嵌條件約束」。 如果條件約束需要引數，這些引數會在條件約束名稱後面以括弧 `( )` 括住。 指定多個內嵌條件約束的方法是附加另一個冒號 (`:`) 和條件約束名稱。 條件約束名稱和引述會傳遞至 <xref:Microsoft.AspNetCore.Routing.IInlineConstraintResolver> 服務來建立 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 的執行個體，以用於 URL 處理。 如果條件約束建構函式需要服務，則其會從相依性插入的應用程式服務中解析。 例如，路由範本 `blog/{article:minlength(10)}` 指定具有引數 `10` 的 `minlength` 條件約束。 如需路由條件約束詳細資訊和架構所提供的條件約束清單，請參閱[路由條件約束參考](#route-constraint-reference)一節。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+路由參數可能具有條件約束，這些條件約束必須符合與 URL 繫結的路由值。 在路由參數名稱之後新增分號 (`:`) 和條件約束名稱，即可指定路由參數的「內嵌條件約束」。 如果條件約束需要引數，這些引數會在條件約束名稱後面以括弧 `( )` 括住。 指定多個內嵌條件約束的方法是附加另一個冒號 (`:`) 和條件約束名稱。 條件約束名稱和引述會傳遞至 <xref:Microsoft.AspNetCore.Routing.IInlineConstraintResolver> 服務來建立 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 的執行個體，以用於 URL 處理。 例如，路由範本 `blog/{article:minlength(10)}` 指定具有引數 `10` 的 `minlength` 條件約束。 如需路由條件約束詳細資訊和架構所提供的條件約束清單，請參閱[路由條件約束參考](#route-constraint-reference)一節。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+路由參數也可以具有參數轉換器，會在產生連結和將動作與頁面比對至 URI 時，轉換參數的值。 與條件約束類似，可以透過在路徑參數名稱後面新增冒號 (`:`) 和轉換器名稱，將參數轉換器內嵌新增至路徑參數。 例如，路由範本 `blog/{article:slugify}` 會指定 `slugify` 轉換器。
+
+::: moniker-end
 
 下表示範一些路由範本及其行為。
 
@@ -301,7 +323,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 ## <a name="route-constraint-reference"></a>路由條件約束參考
 
-路由條件約束的執行時機是 `Route` 已符合傳入 URL 的語法，並將 URL 路徑語彙基元化成路由值時。 路由條件約束通常會透過路由範本檢查相關聯的路由值，並對是否可接受值做出簡單的是/否決策。 某些路由條件約束會使用路由值以外的資料，以考慮是否可以路由要求。 例如，<xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> 可以依據其 HTTP 指令動詞接受或拒絕要求。
+路由條件約束的執行時機是 `Route` 已符合傳入 URL 的語法，並將 URL 路徑語彙基元化成路由值時。 路由條件約束通常會透過路由範本檢查相關聯的路由值，並對是否可接受值做出是/否決策。 某些路由條件約束會使用路由值以外的資料，以考慮是否可以路由要求。 例如，<xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> 可以依據其 HTTP 指令動詞接受或拒絕要求。
 
 > [!WARNING]
 > 請避免針對**輸入驗證**使用條件約束，因為這麼做表示無效的輸入會導致產生「404 - 找不到」回應，而不是「400 - 錯誤要求」與適當的錯誤訊息。 路由條件約束會用來**釐清**類似的路由，不是用來驗證特定路由的輸入。
@@ -361,9 +383,29 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 | `^[a-z]{2}$` |  hello    | 否    | 請參閱上述的 `^` 和 `$` |
 | `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 
-如需規則運算式的詳細資訊，請參閱 [.NET Framework 規則運算式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)。
+如需規則運算式語法的詳細資訊，請參閱 [.NET Framework 規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 
 若要將參數限制為一組已知的可能值，請使用規則運算式。 例如，`{action:regex(^(list|get|create)$)}` 只會將 `action` 路由值與 `list`、`get` 或 `create` 相符。 如果已傳入條件約束字典，字串 `^(list|get|create)$` 則是對等項目。 已傳入條件約束字典 (未內嵌在範本內) 的條件約束，即使不符合其中一個已知的條件約束，也會被視為規則運算式。
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="parameter-transformer-reference"></a>參數轉換器參考
+
+參數轉換器執行會在為 `Route` 產生連結時執行。 參數轉換器會採用參數的路由值，並將其轉換為新的字串值。 已轉換的值，會用於產生的連結。 例如，具有 `Url.Action(new { article = "MyTestArticle" })` 之路由模式 `blog\{article:slugify}` 中的自訂 `slugify` 參數轉換器，會產生 `blog\my-test-article`。 參數轉換器會實作 `Microsoft.AspNetCore.Routing.IOutboundParameterTransformer`，並使用 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 來設定。
+
+架構也會使用參數轉換器來轉換端點解析的 URI。 例如，ASP.NET Core MVC 會使用參數轉換器，轉換用於比對 `area`、`controller`、`action` 和 `page` 的路由值。
+
+```csharp
+routes.MapRoute(
+    name: "default",
+    template: "{controller=Home:slugify}/{action=Index:slugify}/{id?}");
+```
+
+使用上述的路由，動作 `SubscriptionManagementController.GetAll()` 會與URI `/subscription-management/get-all` 比對。 參數轉換器不會變更用來產生連結的路由值。 `Url.Action("GetAll", "SubscriptionManagement")` 會輸出 `/subscription-management/get-all`。
+
+ASP.NET Core MVC 也隨附 `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention` API 慣例。 慣例會將所指定參數轉換器套用於應用程式中的所有屬性路由權杖。
+
+::: moniker-end
 
 ## <a name="url-generation-reference"></a>URL 產生參考
 
@@ -385,7 +427,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 `VirtualPathContext` 建構函式的第二個參數是「環境值」的集合。 環境值為方便起見，會限制開發人員必須在特定要求內容中指定的值數目。 目前要求的目前路由值被視為用於連結產生的環境值。 在 ASP.NET Core MVC 應用程式中，如果您處於 `HomeController` 的 `About` 動作，則不需要指定控制器路由值以連結到 `Index` 動作 &mdash; 會使用 `Home` 的環境值。
 
-不符合參數的環境值會被忽略，當明確提供的值在 URL 中從左到右進行覆寫時，也會忽略環境值。
+不符合參數的環境值會受到忽略，當明確提供的值在 URL 中從左到右進行覆寫時，也會忽略環境值。
 
 明確提供但不符合任何項目的值會新增至查詢字串。 下表顯示使用路由範本 `{controller}/{action}/{id?}` 時的結果。
 

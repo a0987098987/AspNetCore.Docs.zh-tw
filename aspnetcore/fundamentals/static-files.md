@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 33fad930e617c74d9a8c07f850764a6b81fa8ab5
-ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
+ms.openlocfilehash: 52c7916b9fc55c875d56acd49c01f76dd2053817
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41751492"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47861001"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -216,7 +216,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 ## <a name="non-standard-content-types"></a>非標準的內容類型
 
-靜態檔案中介軟體可理解幾乎 400 種已知的檔案內容類型。 如果使用者要求未知檔案類型的檔案時，靜態檔案中介軟體會傳回 HTTP 404 (找不到) 的回應。 如果啟用目錄瀏覽功能，則會顯示檔案的連結。 URI 會傳回 HTTP 404 錯誤。
+靜態檔案中介軟體可理解幾乎 400 種已知的檔案內容類型。 如果使用者要求具有未知檔案類型的檔案，則靜態檔案中介軟體會將該要求傳遞至管線中的下一個中介軟體。 如果沒有中介軟體處理要求，則會傳回「404 找不到」回應。 如果啟用目錄瀏覽功能，則會在目錄清單中顯示檔案的連結。
 
 下列程式碼可讓您提供未知的類型，並會將未知的檔案轉譯為影像：
 

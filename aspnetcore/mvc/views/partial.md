@@ -1,59 +1,134 @@
 ---
 title: ASP.NET Core 中的部分檢視
 author: ardalis
-description: 了解部分檢視如何在另一個檢視內呈現，以及何時應該在 ASP.NET Core 應用程式中使用它們。
+description: 了解如何使用部分檢視來分割大型的標記檔案，並減少 ASP.NET Core 應用程式中跨 Web 網頁一般標記的重複。
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 uid: mvc/views/partial
-ms.openlocfilehash: 2223f3c6e42927def4b91ff9da58c228e5904756
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: a836ed073dfe769fc3cc0cd0622b17937747928b
+ms.sourcegitcommit: 70fb7c9d5f2ddfcf4747382a9f7159feca7a6aa7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39655319"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45601752"
 ---
 # <a name="partial-views-in-aspnet-core"></a>ASP.NET Core 中的部分檢視
 
-作者：[Steve Smith](https://ardalis.com/)、[Maher JENDOUBI](https://twitter.com/maherjend)、[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Scott Sauber](https://twitter.com/scottsauber)
+作者：[Steve Smith](https://ardalis.com/)、[Luke Latham](https://github.com/guardrex)、[Maher JENDOUBI](https://twitter.com/maherjend)、[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Scott Sauber](https://twitter.com/scottsauber)
 
-ASP.NET Core 支援部分檢視。 部分檢視是用來跨不同的檢視共用可重複使用的網頁部分。
+部分檢視是 [Razor](xref:mvc/views/razor) 標記檔案 (*.cshtml*)，可在另一個標記檔案的轉譯輸出*內*轉譯 HTML 輸出。
+
+::: moniker range=">= aspnetcore-2.1"
+
+字詞「部分檢視」在開發 MVC 應用程式時使用，其中標記檔案稱為「檢視」；或是 Razor Pages 應用程式，其中標記檔案稱為「頁面」。 本主題一般將 MVC 檢視和 Razor Pages 頁面稱為「標記檔案」。
+
+::: moniker-end
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="what-are-partial-views"></a>什麼是部分檢視
-
-部分檢視是一種可在其他檢視中進行轉譯的檢視。 系統會將執行部分檢視所產生的 HTML 輸出，轉譯成呼叫檢視 (或父檢視)。 部分檢視和其他檢視一樣都使用 *.cshtml* 副檔名。
-
-例如，ASP.NET Core 2.1 **Web 應用程式**專案範本包含 *_CookieConsentPartial.cshtml* 部分檢視。 部分檢視會從 *_Layout.cshtml* 中載入：
-
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Shared/_Layout.cshtml?name=snippet_CookieConsentPartial)]
-
 ## <a name="when-to-use-partial-views"></a>使用部分檢視的時機
 
-如果您想將大型檢視拆解成較小的元件，部分檢視是一種有效的方式。 它們可以降低檢視內容重複的情況，並重複使用檢視的項目。 您應該在 [_Layout.cshtml](xref:mvc/views/layout) 中指定一般版面配置項目。 非版面配置的可重複使用內容則可以封裝到部分檢視中。
+針對下列項目，部分檢視是有效的方法：
 
-在多個邏輯項目組成的複雜頁面中，很適合以該頁面的部分檢視處理各項目。 該頁面的各項目可和頁面的其餘項目分開檢視。 頁面本身的檢視變得更加簡易，原因是只包含整體頁面結構以及轉譯部分檢視的呼叫。
+* 將大型標記檔案分解為較小的元件。
 
-ASP.NET Core MVC 控制器有 [PartialView](/dotnet/api/microsoft.aspnetcore.mvc.controller.partialview#Microsoft_AspNetCore_Mvc_Controller_PartialView) 方法，可從動作方法呼叫此方法。 Razor Pages 在 [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) 上沒有對應的 `PartialView` 方法。
+  在由多個邏輯部分組成的大型複雜標記檔案中，使用隔離至部分檢視中的每個部分具有優勢。 標記檔案中的程式碼為可管理，因為標記僅包含整體頁面結構和對部分檢視的參考。
+* 減少標記檔案中一般標記內容的重複。
+
+  當在標記檔案中使用相同的標記項目時，部分檢視會將重複的標記內容移除至某個部分檢視檔案中。 在部分檢視中變更標記時，會更新使用部分檢視之標記檔案的轉譯輸出。
+
+部分檢視不應該用於維護一般版面配置項目。 您應該在 [_Layout.cshtml](xref:mvc/views/layout) 檔案中指定一般版面配置項目。
+
+請勿使用需要複雜轉譯邏輯或程式碼執行來轉譯標記的部分檢視。 請使用[檢視元件](xref:mvc/views/view-components)，而非部分檢視。
 
 ## <a name="declare-partial-views"></a>宣告部分檢視
 
-部分檢視的建立方式與一般檢視相同：您可以在 *Views* 資料夾內建立 *.cshtml* 檔案。 部分檢視和一般檢視之間沒有任何語意差別，只是轉譯方式不同。 控制器的 [ViewResult](/dotnet/api/microsoft.aspnetcore.mvc.viewresult) 會直接傳回檢視，您可以使用這個檢視作為部分檢視。 一般檢視與部分檢視的轉譯方式主要差異在於，部分檢視不會執行 *_ViewStart.cshtml*。 一般檢視則會執行 *_ViewStart.cshtml*。 深入了解[版面配置](xref:mvc/views/layout)中的 *_ViewStart.cshtml*。
+::: moniker range=">= aspnetcore-2.1"
 
-依照慣例，部分檢視檔案名稱的開頭通常是 `_`。 您不一定要依照這項慣例命名，但最好先在視覺呈現上將部分檢視與一般檢視區別開來。
+部分檢視是在「檢視」資料夾 (MVC) 或「頁面」資料夾 (Razor Pages) 中維護的 *.cshtml* 標記檔案。
+
+在 ASP.NET Core MVC 中，控制器的 <xref:Microsoft.AspNetCore.Mvc.ViewResult> 能夠傳回檢視或部分檢視。 已為 ASP.NET Core 2.2 中的 Razor Pages 規劃類似的功能。 在 Razor Pages 中，<xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 可以傳回 <xref:Microsoft.AspNetCore.Mvc.PartialViewResult>。 [參考部分檢視](#reference-a-partial-view)一節介紹參考和轉譯部分檢視。
+
+不同於 MVC 檢視或網頁轉譯，部分檢視不會執行 *_ViewStart.cshtml*。 如需 *_ViewStart.cshtml* 的詳細資訊，請參閱 <xref:mvc/views/layout>。
+
+部分檢視檔案名稱通常以底線 (`_`) 開頭。 您不一定要依照這項慣例命名，但最好先在視覺呈現上將部分檢視與檢視和頁面區別開來。 當檔案名稱以底線開頭時，即使檔案的標記包含 `@page` 指示詞，Razor Pages 也不會將標記檔案當作 Razor Pages 頁面處理。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.1"
+
+部分檢視是在「檢視」資料夾中維護的 *.cshtml* 標記檔案。
+
+控制器的 <xref:Microsoft.AspNetCore.Mvc.ViewResult> 能夠傳回檢視或部分檢視。
+
+不同於 MVC 檢視轉譯，部分檢視不會執行 *_ViewStart.cshtml*。 如需 *_ViewStart.cshtml* 的詳細資訊，請參閱 <xref:mvc/views/layout>。
+
+部分檢視檔案名稱通常以底線 (`_`) 開頭。 您不一定要依照這項慣例命名，但最好先在視覺呈現上將部分檢視與檢視區別開來。
+
+::: moniker-end
 
 ## <a name="reference-a-partial-view"></a>參考部分檢視
 
-在檢視頁面中，您可以使用數種方法轉譯部分檢視。 最佳做法是使用非同步轉譯。
+::: moniker range=">= aspnetcore-2.1"
+
+在標記檔案中，您可以使用數種方法參考部分檢視。 我們建議應用程式使用下列其中一個非同步轉譯方法：
+
+* [部分標記協助程式](#partial-tag-helper)
+* [非同步 HTML 協助程式](#asynchronous-html-helper)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.1"
+
+在標記檔案中，您可以使用兩種方法參考部分檢視：
+
+* [非同步 HTML 協助程式](#asynchronous-html-helper)
+* [同步 HTML 協助程式](#synchronous-html-helper)
+
+我們建議應用程式使用[非同步 HTML 協助程式](#asynchronous-html-helper)。
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
 ### <a name="partial-tag-helper"></a>Partial 標籤協助程式
 
-Partial 標籤協助程式需要使用 ASP.NET Core 2.1 或更新版本。 它會非同步轉譯，並使用類似 HTML 的語法：
+[部分標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)需要使用 ASP.NET Core 2.1 或更新版本。
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_PartialTagHelper)]
+部分標籤協助程式會以非同步方式轉譯內容，並使用類似於 HTML 的語法：
+
+```cshtml
+<partial name="_PartialName" />
+```
+
+當存在檔案副檔名時，部分標籤協助程式會參考部分檢視，該檢視必須與呼叫部分檢視的標記檔案位於相同資料夾中：
+
+```cshtml
+<partial name="_PartialName.cshtml" />
+```
+
+下列範例會從應用程式根目錄參考部分檢視。 開頭為波狀符號斜線 (`~/`) 或斜線 (`/`) 的路徑表示應用程式根目錄：
+
+**Razor 頁面**
+
+```cshtml
+<partial name="~/Pages/Folder/_PartialName.cshtml" />
+<partial name="/Pages/Folder/_PartialName.cshtml" />
+```
+
+**MVC**
+
+```cshtml
+<partial name="~/Views/Folder/_PartialName.cshtml" />
+<partial name="/Views/Folder/_PartialName.cshtml" />
+```
+
+下列範例會以相對路徑參考部分檢視：
+
+```cshtml
+<partial name="../Account/_PartialName.cshtml" />
+```
 
 如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>。
 
@@ -61,119 +136,179 @@ Partial 標籤協助程式需要使用 ASP.NET Core 2.1 或更新版本。 它�
 
 ### <a name="asynchronous-html-helper"></a>非同步 HTML 協助程式
 
-在使用 HTML 協助程式時，最佳做法是使用 [PartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partialasync#Microsoft_AspNetCore_Mvc_Rendering_HtmlHelperPartialExtensions_PartialAsync_Microsoft_AspNetCore_Mvc_Rendering_IHtmlHelper_System_String_)。 它會傳回包裝在 `Task` 中的 [IHtmlContent](/dotnet/api/microsoft.aspnetcore.html.ihtmlcontent) 類型。 方法的參考方式是在呼叫前面加上 `@`：
+使用 HTML 協助程式時，最佳做法是使用 <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.PartialAsync*>。 `PartialAsync` 會傳回包裝在 <xref:System.Threading.Tasks.Task`1> 的 <xref:Microsoft.AspNetCore.Html.IHtmlContent> 類型。 方法的參考方式，是在等候的呼叫前面加上 `@` 字元：
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_PartialAsync)]
+```cshtml
+@await Html.PartialAsync("_PartialName")
+```
 
-或者，您可以使用 [RenderPartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartialasync) 轉譯部分檢視。 這個方法不會傳回結果， ，而是將轉譯輸出直接串流給回應。 因為該方法不會傳回結果，所以您必須在 Razor 程式碼區塊內呼叫它：
+當存在檔案副檔名時，HTML 協助程式會參考部分檢視，該檢視必須與呼叫部分檢視的標記檔案位於相同資料夾中：
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_RenderPartialAsync)]
+```cshtml
+@await Html.PartialAsync("_PartialName.cshtml")
+```
 
-由於它會直接串流結果，因此在某些情況下，`RenderPartialAsync` 的效能可能更好。 不過，建議您使用 `PartialAsync`。
-
-### <a name="synchronous-html-helper"></a>同步 HTML 協助程式
-
-[Partial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partial) 和 [RenderPartial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartial) 分別是 `PartialAsync` 和 `RenderPartialAsync` 的同步對等方法。 不建議使用同步對等方法，原因是會出現這些方法發生死結的情況。 未來版本不會包含同步方法。
-
-> [!IMPORTANT]
-> 如果您的檢視需要執行程式碼，請使用[檢視元件](xref:mvc/views/view-components)，而非部分檢視。
+下列範例會從應用程式根目錄參考部分檢視。 開頭為波狀符號斜線 (`~/`) 或斜線 (`/`) 的路徑表示應用程式根目錄：
 
 ::: moniker range=">= aspnetcore-2.1"
 
-在 ASP.NET Core 2.1 或更新版本中，呼叫 `Partial` 或 `RenderPartial` 會產生分析器警告。 例如，使用 `Partial` 會產生下列警告訊息：
+**Razor 頁面**
 
-> 使用 IHtmlHelper.Partial 可能會導致應用程式死結。 請考慮使用 `<partial>` 標籤協助程式或 `IHtmlHelper.PartialAsync`。
+```cshtml
+@await Html.PartialAsync("~/Pages/Folder/_PartialName.cshtml")
+@await Html.PartialAsync("/Pages/Folder/_PartialName.cshtml")
+```
 
-將對 `@Html.Partial` 的呼叫取代為對 `@await Html.PartialAsync` 的呼叫或 Partial 標籤協助程式。 如需 Partial 標籤協助程式移轉的詳細資訊，請參閱[從 HTML 協助程式移轉](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper#migrate-from-an-html-helper)。
+**MVC**
+
+::: moniker-end
+
+```cshtml
+@await Html.PartialAsync("~/Views/Folder/_PartialName.cshtml")
+@await Html.PartialAsync("/Views/Folder/_PartialName.cshtml")
+```
+
+下列範例會以相對路徑參考部分檢視：
+
+```cshtml
+@await Html.PartialAsync("../Account/_LoginPartial.cshtml")
+```
+
+或者，您可以使用 <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartialAsync*> 轉譯部分檢視。 此方法不會傳回 <xref:Microsoft.AspNetCore.Html.IHtmlContent>。 ，而是將轉譯輸出直接串流給回應。 因為該方法不會傳回結果，所以您必須在 Razor 程式碼區塊內呼叫它：
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_RenderPartialAsync)]
+
+由於 `RenderPartialAsync` 會串流轉譯的內容，因此在某些情況下可提供更好的效能。 在效能十分重要的情況下，請使用這兩種方法對頁面進行效能評定，並使用可產生更快速回應的方法。
+
+### <a name="synchronous-html-helper"></a>同步 HTML 協助程式
+
+<xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.Partial*> 和 <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartial*> 分別是 `PartialAsync` 和 `RenderPartialAsync` 的同步對等方法。 不建議使用同步對等，原因是會出現這些方法發生死結的情況。 同步方法將於未來版本中移除。
+
+> [!IMPORTANT]
+> 如果您需要執行程式碼，請使用[檢視元件](xref:mvc/views/view-components)，而非部分檢視。
+
+::: moniker range=">= aspnetcore-2.1"
+
+呼叫 `Partial` 或 `RenderPartial` 會產生 Visual Studio Analyzer 警告。 例如，`Partial` 的存在會產生下列警告訊息：
+
+> 使用 IHtmlHelper.Partial 可能會導致應用程式死結。 請考慮使用&lt;部分&gt;標籤協助程式或 IHtmlHelper.PartialAsync。
+
+將對 `@Html.Partial` 的呼叫取代為對 `@await Html.PartialAsync` 的呼叫或[部分標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)。 如需 Partial 標籤協助程式移轉的詳細資訊，請參閱[從 HTML 協助程式移轉](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper#migrate-from-an-html-helper)。
 
 ::: moniker-end
 
 ## <a name="partial-view-discovery"></a>部分檢視探索
 
-在參考部分檢視時，您可以透過數種方式參考它的位置。 例如: 
+如果以不含檔案副檔名的名稱參考部分檢視，則會依所述順序搜尋下列位置：
 
 ::: moniker range=">= aspnetcore-2.1"
 
-```cshtml
-// Uses a view in current folder with this name.
-// If none is found, searches the Shared folder.
-<partial name="_ViewName" />
+**Razor 頁面**
 
-// A view with this name must be in the same folder
-<partial name="_ViewName.cshtml" />
+1. 目前正在執行頁面的資料夾
+1. 頁面資料夾上方的目錄圖表
+1. `/Shared`
+1. `/Pages/Shared`
+1. `/Views/Shared`
 
-// Locate the view based on the app root.
-// Paths that start with "/" or "~/" refer to the app root.
-<partial name="~/Views/Folder/_ViewName.cshtml" />
-<partial name="/Views/Folder/_ViewName.cshtml" />
-
-// Locate the view using a relative path
-<partial name="../Account/_LoginPartial.cshtml" />
-```
-
-上述範例會使用 Partial 標籤協助程式，這需要使用 ASP.NET Core 2.1 或更新版本。 下列範例會使用非同步 HTML 協助程式來完成相同的工作。
+**MVC**
 
 ::: moniker-end
 
-```cshtml
-// Uses a view in current folder with this name.
-// If none is found, searches the Shared folder.
-@await Html.PartialAsync("_ViewName")
+::: moniker range=">= aspnetcore-2.0"
 
-// A view with this name must be in the same folder
-@await Html.PartialAsync("_ViewName.cshtml")
+1. `/Areas/<Area-Name>/Views/<Controller-Name>`
+1. `/Areas/<Area-Name>/Views/Shared`
+1. `/Views/Shared`
+1. `/Pages/Shared`
 
-// Locate the view based on the app root.
-// Paths that start with "/" or "~/" refer to the app root.
-@await Html.PartialAsync("~/Views/Folder/_ViewName.cshtml")
-@await Html.PartialAsync("/Views/Folder/_ViewName.cshtml")
+::: moniker-end
 
-// Locate the view using a relative path
-@await Html.PartialAsync("../Account/_LoginPartial.cshtml")
-```
+::: moniker range="< aspnetcore-2.0"
 
-您可以在不同的檢視資料夾中，以相同名稱命名不同的部分檢視。 當您依據名稱 (不含副檔名) 參考檢視時，每個資料夾中的檢視會使用同一個資料夾中的部分檢視。 您也可以指定使用預設的部分檢視，並將其放在 *Shared* 資料夾中。 如果檢視沒有專屬版本的部分檢視，就會使用共用的部分檢視。 您可以使用預設的部分檢視 (在 *Shared*)，而與父檢視位於相同資料夾中的同名部分檢視會將其覆寫。
+1. `/Areas/<Area-Name>/Views/<Controller-Name>`
+1. `/Areas/<Area-Name>/Views/Shared`
+1. `/Views/Shared`
 
-部分檢視可以互相「鏈結」，並呼叫另一個部分檢視 (只要您不建立迴圈)。 在每個檢視或部分檢視內，相對路徑一律相對於該檢視，而非相對於根檢視或父檢視。
+::: moniker-end
+
+部分檢視探索適用於下列慣例：
+
+* 當部分檢視位於不同的資料夾中時，可允許使用具有相同檔案名稱的不同部分檢視。
+* 當以不含檔案副檔名的名稱參考部分檢視，且部分檢視出現在呼叫者的資料夾和*共用*資料夾中時，呼叫者資料夾中的部分檢視會提供部分檢視。 如果呼叫者資料夾中不存在部分檢視，則會從「共用」資料夾中提供部分檢視。 「共用」資料夾中的部分檢視稱為「共用部分檢視」或「預設部分檢視」。
+* 可鏈結部分檢視&mdash;如果呼叫未形成循環參考，則部分檢視可以呼叫另一個部分檢視。 相對路徑一律相對於目前的檔案，而不是相對於檔案的根目錄或父檔案。
 
 > [!NOTE]
-> 父檢視不會顯示在部分檢視中定義的 [Razor](xref:mvc/views/razor) `section`。 `section` 只會顯示在具有其定義的部分檢視。
+> 父標記檔案不會顯示在部分視圖中定義的 [Razor](xref:mvc/views/razor) `section`。 `section` 只會顯示在具有其定義的部分檢視。
 
 ## <a name="access-data-from-partial-views"></a>從部分檢視存取資料
 
-將部分檢視具現化時，它會取得一份父檢視的 `ViewData` 字典。 父檢視不會保存部分檢視內的資料更新。 傳回部分檢視時，部分檢視內的 `ViewData` 變更會遺失。
+將部分檢視具現化時，會收到父檢視 `ViewData` 字典的*複本*。 父檢視不會保存部分檢視內的資料更新。 傳回部分檢視時，部分檢視內的 `ViewData` 變更會遺失。
 
-您可以將 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 的執行個體傳遞給部分檢視：
+下列範例示範如何將 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 的執行個體傳遞給部分檢視：
 
 ```cshtml
 @await Html.PartialAsync("_PartialName", customViewData)
 ```
 
-您可以將模型傳入部分檢視。 該模型可以是頁面的檢視模型或自訂物件。 您可以將模型傳遞給 `PartialAsync` 或 `RenderPartialAsync`：
+您可以將模型傳入部分檢視。 模型可以是自訂物件。 您可以使用 `PartialAsync` (對呼叫者呈現內容區塊) 或 `RenderPartialAsync` (將內容串流至輸出) 來傳遞模型：
 
 ```cshtml
-@await Html.PartialAsync("_PartialName", viewModel)
+@await Html.PartialAsync("_PartialName", model)
 ```
 
-您可以將 `ViewDataDictionary` 的執行個體和檢視模型傳遞給部分檢視：
+::: moniker range=">= aspnetcore-2.1"
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_PartialAsync)]
+**Razor 頁面**
 
-下列標記表示 *Views/Articles/Read.cshtml* 檢視，內含兩個部分檢視。 第二個部分檢視將模型和 `ViewData` 傳入部分檢視。 使用醒目提示的 `ViewDataDictionary` 建構函式多載傳遞新的 `ViewData` 字典，同時保留現有的 `ViewData` 字典。
+範例應用程式中的下列標記來自 *Pages/ArticlesRP/ReadRP.cshtml* 頁面。 此頁面包含兩個部分檢視。 第二個部分檢視將模型和 `ViewData` 傳入部分檢視。 `ViewDataDictionary` 建構函式多載用於傳遞新的 `ViewData` 字典，同時保留現有的 `ViewData` 字典。
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=17-20)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-19)]
 
-*Views/Shared/_AuthorPartial*：
+*Pages/Shared/_AuthorPartialRP.cshtml* 是由 *ReadRP.cshtml* 標記檔案參考的第一個部分檢視：
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Pages/Shared/_AuthorPartialRP.cshtml)]
+
+*Pages/ArticlesRP/_ArticleSectionRP.cshtml* 是由 *ReadRP.cshtml* 標記檔案參考的第二個部分檢視：
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/_ArticleSectionRP.cshtml)]
+
+**MVC**
+
+::: moniker-end
+
+範例應用程式中的下列標記顯示 *Views/Articles/Read.cshtml* 檢視。 此檢視包含兩個部分檢視。 第二個部分檢視將模型和 `ViewData` 傳入部分檢視。 `ViewDataDictionary` 建構函式多載用於傳遞新的 `ViewData` 字典，同時保留現有的 `ViewData` 字典。
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-19)]
+
+*Views/Shared/_AuthorPartial.cshtml* 是由 *ReadRP.cshtml* 標記檔案參考的第一個部分檢視：
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Shared/_AuthorPartial.cshtml)]
 
-*_ArticleSection* 部分檢視：
+*Views/Articles/_ArticleSection.cshtml* 是由 *Read.cshtml* 標記檔案參考的第二個部分檢視：
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/_ArticleSection.cshtml)]
 
-在執行階段期間，會將部分檢視轉譯為父檢視，而這個父檢視本身則在共用的 *_Layout.cshtml* 中轉譯。
+在執行階段期間，會將部分檢視轉譯為父標記檔案的轉譯輸出，而這個父檢視本身則在共用的 *_Layout.cshtml* 中轉譯。 第一個部分檢視會轉譯文章作者的名稱和發行日期：
 
-![部分檢視輸出](partial/_static/output.png)
+> Abraham Lincoln
+>
+> 此部分檢視來自&lt;共用的部分檢視檔案路徑&gt;。
+> 1863 年 11 月 19 日上午 12:00:00
+
+第二個部分檢視會轉譯文章的章節：
+
+> 第一節索引：0
+>
+> 八十七年前...
+>
+> 第二節索引：1
+>
+> 如今，我們正在進行一場偉大的內戰，考驗著...
+>
+> 第三節索引：2
+>
+> 然而，從更廣泛的意義上說，我們無法在此奉獻...
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -183,12 +318,14 @@ Partial 標籤協助程式需要使用 ASP.NET Core 2.1 或更新版本。 它�
 * <xref:mvc/views/tag-helpers/intro>
 * <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>
 * <xref:mvc/views/view-components>
+* <xref:mvc/controllers/areas>
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.0"
+::: moniker range="< aspnetcore-2.1"
 
 * <xref:mvc/views/razor>
 * <xref:mvc/views/view-components>
+* <xref:mvc/controllers/areas>
 
 ::: moniker-end

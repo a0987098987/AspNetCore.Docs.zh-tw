@@ -20,10 +20,10 @@
 
 *_Layout.cshtml* 檔案包含通用的 HTML 元素 (指令碼和樣式表)，並設定應用程式的配置。 例如，當您按一下 **RazorPagesMovie**、**Home**、**About** 或 **Contact** 時，會看到相同的元素。 通用元素包含頂端的導覽功能表和視窗底部的標頭。 如需詳細資訊，請參閱 [Layout](xref:mvc/views/layout)。
 
-*_ViewStart.cshtml* 會設定 Razor 頁面 `Layout` 屬性，以使用 *_Layout.cshtml* 檔案。 如需詳細資訊，請參閱 [Layout](xref:mvc/views/layout)。
-
 *_ViewImports.cshtml* 檔案包含匯入至每個 Razor 頁面的 Razor 指示詞。 如需詳細資訊，請參閱[匯入共用指示詞](xref:mvc/views/layout#importing-shared-directives)。
+
+*_ViewStart.cshtml* 會設定 Razor 頁面 `Layout` 屬性，以使用 *_Layout.cshtml* 檔案。 如需詳細資訊，請參閱 [Layout](xref:mvc/views/layout)。
 
 *_ValidationScriptsPartial.cshtml* 檔案提供 [jQuery](https://jquery.com/) 驗證指令碼的參考。 當我們稍後在教學課程中新增至 `Create` 和 `Edit` 頁面時，將會使用 *_ValidationScriptsPartial.cshtml* 檔案。
 
-`About`、`Contact` 和 `Index` 頁面是您可以用來啟動應用程式的基本頁面。 `Error` 頁面則用來顯示錯誤資訊。
+`About`、`Contact` 和 `Index` 頁面是您可以用來啟動應用程式的基本頁面。 `Error` 頁面則用來顯示錯誤資訊。 `Privacy` 頁面可讓您指定網站隱私權原則的詳細資料。

@@ -5,12 +5,12 @@ description: 了解如何檢視 ASP.NET Core 中使用的元件，以及如何�
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/views/view-components
-ms.openlocfilehash: 0410e2025019bae45d941e61f556f4b2b57bd30f
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: cf2cfcdb07271503b844e31940e90b7376db0a6f
+ms.sourcegitcommit: 599ebae5c2d6fcb22dfa6ae7d1f4bdfcacb79af4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010906"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47211061"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
@@ -95,6 +95,8 @@ ms.locfileid: "46010906"
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
 
+::: moniker range=">= aspnetcore-1.1"
+
 ## <a name="invoking-a-view-component-as-a-tag-helper"></a>叫用檢視元件作為標籤協助程式
 
 針對 ASP.NET Core 1.1 和更新版本，您可以叫用檢視元件作為[標籤協助程式](xref:mvc/views/tag-helpers/intro)：
@@ -110,13 +112,13 @@ ms.locfileid: "46010906"
 </vc:[view-component-name]>
 ```
 
-注意：若要使用檢視元件作為標籤協助程式，您必須使用 `@addTagHelper` 指示詞註冊包含檢視元件的組件。 例如，如果您的檢視元件位在稱為 "MyWebApp" 的組件中，則請將下列指示詞新增至 `_ViewImports.cshtml` 檔案：
+若要使用檢視元件作為標籤協助程式，請使用 `@addTagHelper` 指示詞註冊包含檢視元件的組件。 如果檢視元件位於稱為 `MyWebApp` 的組件中，則請將下列指示詞新增至 *_ViewImports.cshtml* 檔案：
 
 ```cshtml
 @addTagHelper *, MyWebApp
 ```
 
-您可以註冊檢視元件作為任何參考檢視元件之檔案的標籤協助程式。 如需如何註冊標籤協助程式的詳細資訊，請參閱[管理標籤協助程式範圍](xref:mvc/views/tag-helpers/intro#managing-tag-helper-scope)。
+您可以將檢視元件註冊為任何參考檢視元件的檔案標籤協助程式。 如需如何註冊標籤協助程式的詳細資訊，請參閱[管理標籤協助程式範圍](xref:mvc/views/tag-helpers/intro#managing-tag-helper-scope)。
 
 本教學課程中使用的 `InvokeAsync` 方法：
 
@@ -127,6 +129,8 @@ ms.locfileid: "46010906"
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexTagHelper.cshtml?range=37-38)]
 
 在上述範例中，`PriorityList` 檢視元件會變成 `priority-list`。 檢視元件的參數會以小寫 Kebab 形式傳遞為屬性。
+
+::: moniker-end
 
 ### <a name="invoking-a-view-component-directly-from-a-controller"></a>直接從控制器叫用檢視元件
 
@@ -243,6 +247,76 @@ ms.locfileid: "46010906"
 將 `using` 陳述式新增至 Razor 檢視檔案，並使用 `nameof` 運算子：
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml?range=1-6,35-)]
+
+## <a name="perform-synchronous-work"></a>執行同步工作
+
+如果您不需要執行非同步工作，架構會處理叫用同步 `Invoke` 方法。 下列方法會建立同步 `Invoke` 檢視元件：
+
+```csharp
+public class PriorityList : ViewComponent
+{
+    public IViewComponentResult Invoke(int maxPriority, bool isDone)
+    {
+        var items = new List<string> { $"maxPriority: {maxPriority}", $"isDone: {isDone}" };
+        return View(items);
+    }
+}
+```
+
+檢視元件的 Razor 檔案，會列出傳遞至 `Invoke` 方法 (*Views/Home/Components/PriorityList/Default.cshtml*) 的字串：
+
+```cshtml
+@model List<string>
+
+<h3>Priority Items</h3>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item</li>
+    }
+</ul>
+```
+
+::: moniker range=">= aspnetcore-1.1"
+
+使用下列其中一項方式，在 Razor 檔案中叫用檢視元件 (例如 *Views/Home/Index.cshtml*)：
+
+* <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>
+* [標籤協助程式](xref:mvc/views/tag-helpers/intro)
+
+若要使用 <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> 方法，請呼叫 `Component.InvokeAsync`：
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-1.1"
+
+使用 <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> 在 Razor 檔案中叫用檢視元件 (例如 *Views/Home/Index.cshtml*)。
+
+呼叫 `Component.InvokeAsync`：
+
+::: moniker-end
+
+```cshtml
+@await Component.InvokeAsync(nameof(PriorityList), new { maxPriority = 4, isDone = true })
+```
+
+::: moniker range=">= aspnetcore-1.1"
+
+若要使用標籤協助程式，請使用 `@addTagHelper` 指示詞註冊包含檢視元件的組件 (檢視元件位於稱為 `MyWebApp` 的組件中)：
+
+```cshtml
+@addTagHelper *, MyWebApp
+```
+
+使用 Razor 標記檔案中的檢視元件標籤協助程式：
+
+```cshtml
+<vc:priority-list max-priority="999" is-done="false">
+</vc:priority-list>
+```
+::: moniker-end
+
+`PriorityList.Invoke` 的方法簽章為同步，但 Razor 會在標記檔案中找到並使用 `Component.InvokeAsync` 呼叫該方法。
 
 ## <a name="additional-resources"></a>其他資源
 

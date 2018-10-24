@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 2.0 的 Microsoft.AspNetCore.All 中繼套件
 author: Rick-Anderson
-description: Microsoft.AspNetCore.All 中繼套件包含所有支援的 ASP.NET Core 和 Entity Framework Core 套件，以及它們的相依性。
+description: Microsoft.AspNetCore.All 中繼套件不建議用於 ASP.NET Core 2.1 和更新版本。
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 09/20/2017
+ms.date: 09/20/2018
 uid: fundamentals/metapackage
-ms.openlocfilehash: fbc0f5465dc37a612b81c293f1a58b53ea4b2238
-ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
+ms.openlocfilehash: 1942426dbd5c15ae4a5fa5fbb931b94f50aa6043
+ms.sourcegitcommit: 32f5ee0690604d451f61e9a5c28881c9fcf85738
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39123823"
+ms.lasthandoff: 09/29/2018
+ms.locfileid: "47454735"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>ASP.NET Core 2.0 的 Microsoft.AspNetCore.All 中繼套件
 
@@ -65,3 +65,11 @@ ASP.NET Core 的 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Micro
 
 * `StackExchange.Redis` 為 `Microsoft.Extensions.Caching.Redis` 的相依性
 * `Microsoft.ApplicationInsights` 為 `Microsoft.AspNetCore.ApplicationInsights.HostingStartup` 的相依性
+
+## <a name="update-aspnet-core-21"></a>更新 ASP.NET Core 2.1
+
+建議您遷移至 `Microsoft.AspNetCore.App` 中繼套件 2.1 和更新版本。 若要繼續使用 `Microsoft.AspNetCore.All` 中繼套件並確保已部署最新的更新程式版本：
+
+* 在開發電腦和組建伺服器上：安裝最新的 [.NET Core SDK](https://www.microsoft.com/net/download)。
+* 在部署伺服器上：安裝最新的 [.NET Core 執行階段](https://www.microsoft.com/net/download)。
+ 您的應用程式會在應用程式重新開機時，向前復原到已安裝的最新版本。

@@ -5,14 +5,14 @@ description: 了解如何使用 ASP.NET Core SignalR Java 用戶端。
 monikerRange: '>= aspnetcore-2.2'
 ms.author: mimengis
 ms.custom: mvc
-ms.date: 09/06/2018
+ms.date: 10/18/2018
 uid: signalr/java-client
-ms.openlocfilehash: 0eba59a05ea6fd3fed46fcab86ac20caf40ebb65
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: 77ea338f08b1986e69ba8ef1578c4cfe01a310de
+ms.sourcegitcommit: ce6b6792c650708e92cdea051a5d166c0708c7c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46482914"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49652302"
 ---
 # <a name="aspnet-core-signalr-java-client"></a>ASP.NET Core SignalR Java 用戶端
 
@@ -26,12 +26,13 @@ Java 用戶端可讓您從 Java 程式碼，包括 Android 應用程式連接至
 
 ## <a name="install-the-signalr-java-client-package"></a>SignalR Java 用戶端封裝安裝
 
-*Signalr 0.1.0-preview2 35174* JAR 檔案可讓用戶端連線到 SignalR 中樞。 若要尋找最新的 JAR 檔案版本號碼，請參閱[Maven 搜尋結果](https://search.maven.org/search?q=g:com.microsoft.aspnet%20AND%20a:signalr&core=gav)。
+*Signalr 1.0.0-preview3 35501* JAR 檔案可讓用戶端連線到 SignalR 中樞。 若要尋找最新的 JAR 檔案版本號碼，請參閱[Maven 搜尋結果](https://search.maven.org/search?q=g:com.microsoft.signalr%20AND%20a:signalr)。
 
 如果使用 Gradle，加入下列這一行加入`dependencies`一節您*build.gradle*檔案：
 
 ```gradle
-implementation 'com.microsoft.aspnet:signalr:0.1.0-preview2-35174'
+implementation 'com.microsoft.signalr:signalr:1.0.0-preview3-35501'
+implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
 ```
 
 如果使用 Maven，新增下列幾行內`<dependencies>`項目您*pom.xml*檔案：
@@ -42,29 +43,45 @@ implementation 'com.microsoft.aspnet:signalr:0.1.0-preview2-35174'
 
 若要建立`HubConnection`，則`HubConnectionBuilder`應該使用。 建立連接時，您可以設定中樞 URL 和記錄層級。 設定任何所需的選項，藉由呼叫任一`HubConnectionBuilder`方法之前`build`。 啟動與連線`start`。
 
-[!code-java[Build hub connection](java-client/sample/src/main/java/Chat.java?range=17-20)]
+[!code-java[Build hub connection](java-client/sample/src/main/java/Chat.java?range=16-17)]
 
 ## <a name="call-hub-methods-from-client"></a>從用戶端呼叫中樞方法
 
 呼叫`send`叫用中樞方法。 將中樞方法的名稱和任何定義於中樞方法的引數傳遞`send`。
 
-[!code-java[send method](java-client/sample/src/main/java/Chat.java?range=31)]
+[!code-java[send method](java-client/sample/src/main/java/Chat.java?range=28)]
 
 ## <a name="call-client-methods-from-hub"></a>用戶端方法呼叫來自中樞
 
 使用`hubConnection.on`中樞可以呼叫用戶端上定義的方法。 在建置之後，但開始連接之前，請定義的方法。
 
-[!code-java[Define client methods](java-client/sample/src/main/java/Chat.java?range=22-24)]
+[!code-java[Define client methods](java-client/sample/src/main/java/Chat.java?range=19-21)]
+
+## <a name="add-logging"></a>新增記錄
+
+SignalR Java 用戶端會使用[SLF4J](https://www.slf4j.org/)記錄的程式庫。 它是高層級的記錄 API，可讓程式庫的使用者選擇他們自己的特定記錄實作，藉由將特定記錄相依性。 下列程式碼片段示範如何使用`java.util.logging`與 SignalR Java 用戶端。
+
+```gradle
+implementation 'org.slf4j:slf4j-jdk14:1.7.25'
+```
+
+如果您未設定登入您的相依性，SLF4J 會載入預設的無作業記錄器，並出現下列警告訊息：
+
+```
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+```
+
+這可以放心地忽略。
 
 ## <a name="known-limitations"></a>已知的限制
 
-這是早期預覽版本的 Java 用戶端。 有許多尚不支援的功能。 下列的間距是正在進行未來的版本：
+這是預覽版本的 Java 用戶端。 不支援某些功能：
 
-* 只有基本類型可接受的參數和傳回型別。
-* Api 均為同步。
-* 目前支援僅 「 傳送 」 呼叫類型。 不支援 「 叫用 」，並傳回值的資料流。
 * 支援 JSON 通訊協定。
 * 支援 Websocket 傳輸。
+* 資料流尚未支援。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/11/2018
 uid: mvc/views/partial
-ms.openlocfilehash: a836ed073dfe769fc3cc0cd0622b17937747928b
-ms.sourcegitcommit: 70fb7c9d5f2ddfcf4747382a9f7159feca7a6aa7
+ms.openlocfilehash: d3d2f55645881dd05f7663e0a9d3e45d6bb6d77f
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45601752"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477679"
 ---
 # <a name="partial-views-in-aspnet-core"></a>ASP.NET Core 中的部分檢視
 
@@ -44,7 +44,7 @@ ms.locfileid: "45601752"
 
 ## <a name="declare-partial-views"></a>宣告部分檢視
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.0"
 
 部分檢視是在「檢視」資料夾 (MVC) 或「頁面」資料夾 (Razor Pages) 中維護的 *.cshtml* 標記檔案。
 
@@ -52,11 +52,11 @@ ms.locfileid: "45601752"
 
 不同於 MVC 檢視或網頁轉譯，部分檢視不會執行 *_ViewStart.cshtml*。 如需 *_ViewStart.cshtml* 的詳細資訊，請參閱 <xref:mvc/views/layout>。
 
-部分檢視檔案名稱通常以底線 (`_`) 開頭。 您不一定要依照這項慣例命名，但最好先在視覺呈現上將部分檢視與檢視和頁面區別開來。 當檔案名稱以底線開頭時，即使檔案的標記包含 `@page` 指示詞，Razor Pages 也不會將標記檔案當作 Razor Pages 頁面處理。
+部分檢視檔案名稱通常以底線 (`_`) 開頭。 您不一定要依照這項慣例命名，但最好先在視覺呈現上將部分檢視與檢視和頁面區別開來。
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.1"
+::: moniker range="< aspnetcore-2.0"
 
 部分檢視是在「檢視」資料夾中維護的 *.cshtml* 標記檔案。
 

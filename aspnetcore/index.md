@@ -5,12 +5,12 @@ description: 取得 ASP.NET Core 的簡介，ASP.NET Core 是一種跨平台且�
 ms.author: riande
 ms.date: 9/28/2018
 uid: index
-ms.openlocfilehash: 69ab702e9d9f8d746b7bc546d4f2bbb831ff59c7
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 3bb86fa255548ff66592ac14c1020e0c6b47959c
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911685"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391153"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -43,7 +43,7 @@ ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/index#build-web-apis) 
 
 ## <a name="client-side-development"></a>用戶端開發
 
-ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Angular](xref:spa/angular)、[React](xref:spa/react) 與 [Bootstrap](xref:client-side/bootstrap)。 如需詳細資訊，請參閱[用戶端開發](xref:client-side/index)。
+ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Angular](xref:spa/angular)、[React](xref:spa/react) 與 [Bootstrap](https://getbootstrap.com/)。 如需詳細資訊，請參閱[用戶端開發](xref:client-side/index)。
 
 <a name="target-framework"></a>
 

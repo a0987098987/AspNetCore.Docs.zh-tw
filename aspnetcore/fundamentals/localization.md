@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 6e8c4723ab0105b8c756221d3e3c5eebba6cc4e2
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 375d09d9bef59cf18b7805cbefe500aeb2e0cde7
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912026"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326000"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -206,9 +206,9 @@ using Microsoft.Extensions.Localization;
 
 ### <a name="configure-localization"></a>設定當地語系化
 
-您可以在 `ConfigureServices` 方法中設定當地語系化：
+您可以在 `Startup.ConfigureServices` 方法中設定當地語系化：
 
-[!code-csharp[](localization/sample/Localization/Program.cs?name=snippet1)]
+[!code-csharp[](localization/sample/Localization/Startup.cs?name=snippet1)]
 
 * `AddLocalization` 可將當地語系化服務新增至服務容器。 上方的程式碼也會將資源路徑設為 "Resources"。
 
@@ -218,9 +218,9 @@ using Microsoft.Extensions.Localization;
 
 ### <a name="localization-middleware"></a>當地語系化中介軟體
 
-您可以在當地語系化[中介軟體](xref:fundamentals/middleware/index)中，設定要求目前的文化特性。 已在 `Configure` 方法中啟用當地語系化中介軟體。 您必須在可能檢查要求文化特性的任何中介軟體之前，設定當地語系化中介軟體 (例如 `app.UseMvcWithDefaultRoute()`)。
+您可以在當地語系化[中介軟體](xref:fundamentals/middleware/index)中，設定要求目前的文化特性。 已在 `Startup.Configure` 方法中啟用當地語系化中介軟體。 您必須在可能檢查要求文化特性的任何中介軟體之前，設定當地語系化中介軟體 (例如 `app.UseMvcWithDefaultRoute()`)。
 
-[!code-csharp[](localization/sample/Localization/Program.cs?name=snippet2)]
+[!code-csharp[](localization/sample/Localization/Startup.cs?name=snippet2)]
 
 `UseRequestLocalization` 會初始化 `RequestLocalizationOptions` 物件。 在每次要求時，系統會列舉 `RequestLocalizationOptions` 中的 `RequestCultureProvider` 清單，並使用能成功判斷要求的文化特性的第一個提供者。 預設的提供者是來自 `RequestLocalizationOptions` 類別：
 

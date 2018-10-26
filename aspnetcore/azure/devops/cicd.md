@@ -3,14 +3,14 @@ title: 使用 ASP.NET Core 和 Azure 的 DevOps |持續整合和部署
 author: CamSoper
 description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式，建置 DevOps 管線的完整指導。
 ms.author: scaddie
-ms.date: 08/17/2018
+ms.date: 10/24/2018
 uid: azure/devops/cicd
-ms.openlocfilehash: 0bfe1545da4c0778055d7c81c1588d3267d2e711
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: 18a59a1ff6fd6bbf51ff664764725b8972dfa1bf
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340104"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090526"
 ---
 # <a name="continuous-integration-and-deployment"></a>持續整合和部署
 
@@ -230,7 +230,7 @@ ms.locfileid: "44340104"
     > [!NOTE]
     > 若要確認單元測試工作，修改*SimpleFeedReader.Tests\Services\NewsServiceTests.cs*特意不中斷其中一個測試。 例如，變更`Assert.True(result.Count > 0);`要`Assert.False(result.Count > 0);`在`Returns_News_Stories_Given_Valid_Uri`方法。 認可並推送變更至 GitHub。 組建會觸發，並會失敗。 建置管線狀態會變成**失敗**。 一次還原的變更、 認可並推送。 建置成功。
 
-1. **發佈**&mdash;執行`dotnet publish --configuration release --output <local_path_on_build_agent>`命令，以產生 *.zip*與要部署之成品的檔案。 `--output`選項指定的發行位置 *.zip*檔案。 位置由傳遞[預先定義的變數](https://docs.microsoft.com/vsts/pipelines/build/variables)名為`$(build.artifactstagingdirectory)`。 該變數會展開為本機路徑，例如*c:\agent\_work\1\a*，組建代理程式上。
+1. **發佈**&mdash;執行`dotnet publish --configuration release --output <local_path_on_build_agent>`命令，以產生 *.zip*與要部署之成品的檔案。 `--output`選項指定的發行位置 *.zip*檔案。 位置由傳遞[預先定義的變數](/azure/devops/pipelines/build/variables)名為`$(build.artifactstagingdirectory)`。 該變數會展開為本機路徑，例如*c:\agent\_work\1\a*，組建代理程式上。
 1. **發行成品** &mdash; Publishes *.zip*所產生檔案**發行**工作。 此工作會接受 *.zip*檔案位置做為參數，也就是預先定義的變數`$(build.artifactstagingdirectory)`。 *.Zip*檔案會發行名為的資料夾*卸除*。
 
 按一下 組建定義**摘要**連結以檢視組建定義的歷程記錄：

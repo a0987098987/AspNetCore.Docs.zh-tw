@@ -4,14 +4,15 @@ author: rick-anderson
 description: 了解如何建立 ASP.NET Core 專案中的身分識別。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 08/16/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 37ad9897fbc5eb1822ed2413334b4fce9050296b
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: 94ccfc8aa2ad37d89de42f276cb2f808a08cd55e
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46523034"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090637"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>ASP.NET Core 專案中的 scaffold 身分識別
 
@@ -72,7 +73,7 @@ dotnet ef database update
 
 ### <a name="enable-authentication"></a>啟用驗證
 
-在 `Configure`方法`Startup`類別中，呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
+在 `Configure`方法`Startup`類別中，呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
 
 [!code-csharp[](scaffold-identity/sample/StartupRPnoAuth.cs?name=snippet1&highlight=29)]
 
@@ -130,7 +131,7 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
+呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
 
 [!code-csharp[](scaffold-identity/sample/StartupMvcNoAuth.cs?name=snippet1&highlight=23)]
 

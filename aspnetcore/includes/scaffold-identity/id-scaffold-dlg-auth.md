@@ -5,7 +5,7 @@
 * 從**方案總管**，以滑鼠右鍵按一下專案 >**新增** > **新增 Scaffold 項目**。
 * 從左窗格**新增 Scaffold**對話方塊中，選取**識別** > **新增**。
 * 在 [ **ADD 身分識別**] 對話方塊中，選取您想要的選項。
-  * 選取現有的版面配置頁面，或您的版面配置檔將會覆寫以不正確的標記。 選取現有的 _Layout.cshtml 檔案時，就**不**覆寫。
+  * 選取現有的版面配置頁面，或您的版面配置檔將會覆寫以不正確的標記。 當現有 *\_Layout.cshtml*已選取檔案，就**不**覆寫。
 
  比方說`~/Pages/Shared/_Layout.cshtml`Razor 頁面`~/Views/Shared/_Layout.cshtml`MVC 專案
 * 若要使用您現有的資料內容，請選取至少一個檔案，以覆寫。 您必須選取至少一個檔案，以加入您的資料內容。
@@ -49,4 +49,7 @@ Powershell 會使用分號做為命令分隔符號。 使用 powershell 時，�
 ```cli
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
 ```
+
+如果您未指定執行身分識別 scaffolder`--files`旗標或`--useDefaultUI`旗標，所有可用的身分識別 UI 頁面將會建立在您的專案。
+
 -------------

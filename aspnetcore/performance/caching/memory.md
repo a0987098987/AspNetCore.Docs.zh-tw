@@ -1,17 +1,17 @@
 ---
 title: 快取在記憶體中的 ASP.NET Core
 author: rick-anderson
-description: 了解如何在 ASP.NET Core 中的記憶體中的資料快取。
+description: 了解如何快取 ASP.NET Core 中的資料和記憶體。
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/15/2018
 uid: performance/caching/memory
-ms.openlocfilehash: be2e81d1aa6a89d65414d53a70ca2d2fb5d2d3a3
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: f0d5bb74985b6ce0da7d4c5b69e31b8d2bbb5105
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477185"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090042"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -172,9 +172,9 @@ A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制
 
 ## <a name="additional-resources"></a>其他資源
 
-* [使用分散式快取](xref:performance/caching/distributed)
-* [使用變更權杖來偵測變更](xref:fundamentals/change-tokens)
-* [回應快取](xref:performance/caching/response)
-* [回應快取中介軟體](xref:performance/caching/middleware)
-* [快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [分散式快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:performance/caching/distributed>
+* <xref:fundamentals/change-tokens>
+* <xref:performance/caching/response>
+* <xref:performance/caching/middleware>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>

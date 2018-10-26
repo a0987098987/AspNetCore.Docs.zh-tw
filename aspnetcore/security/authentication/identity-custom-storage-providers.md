@@ -3,14 +3,15 @@ title: ASP.NET Core 身分識別的自訂儲存體提供者
 author: ardalis
 description: 了解如何設定 ASP.NET Core 身分識別的自訂儲存體提供者。
 ms.author: riande
-ms.date: 09/17/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: e206cf584d92a17d61676d71abc6fb577ae63453
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: b10731261ca0c748548fcba94a229ba055d46eb5
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477614"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090832"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -24,7 +25,7 @@ ASP.NET Core Identity 是可延伸的系統，可讓您建立自訂的儲存體�
 
 根據預設，ASP.NET Core 身分識別系統會將使用者資訊儲存在 SQL Server 資料庫中使用 Entity Framework Core。 對於許多應用程式，這種方法非常適合。 不過，您也可能會想要使用不同的持續性機制或資料結構描述。 例如: 
 
-* 您使用[Azure 表格儲存體](https://docs.microsoft.com/azure/storage/)或其他資料存放區。
+* 您使用[Azure 表格儲存體](/azure/storage/)或其他資料存放區。
 * 資料庫資料表有不同的結構。 
 * 您可能想要使用不同的資料存取方法，例如[Dapper](https://github.com/StackExchange/Dapper)。 
 
@@ -146,27 +147,27 @@ ASP.NET Core Identity 是由名為管理員和存放區的類別所組成。 *�
 
 ### <a name="interfaces-to-implement-when-customizing-user-store"></a>若要實作自訂使用者存放區時的介面
 
-- **IUserStore**  
+* **IUserStore**  
  [IUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserstore-1)介面是唯一的介面，您必須在使用者存放區實作。 它會定義建立、 更新、 刪除和擷取使用者的方法。
-- **IUserClaimStore**  
+* **IUserClaimStore**  
  [IUserClaimStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserclaimstore-1)介面會定義您要啟用使用者宣告實作的方法。 它包含用於加入、 移除和擷取使用者宣告的方法。
-- **IUserLoginStore**  
+* **IUserLoginStore**  
  [IUserLoginStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserloginstore-1)定義您要啟用外部驗證提供者所實作的方法。 它包含用於加入、 移除和擷取使用者登入和擷取使用者的登入資訊為基礎的方法的方法。
-- **IUserRoleStore**  
+* **IUserRoleStore**  
  [IUserRoleStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserrolestore-1)介面會定義您要對應至角色的使用者實作的方法。 它包含新增、 移除及擷取使用者的角色和方法來檢查是否要將使用者指派給角色的方法。
-- **IUserPasswordStore**  
+* **IUserPasswordStore**  
  [IUserPasswordStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserpasswordstore-1)介面會定義您實作以保存雜湊的密碼的方法。 它包含用於取得和設定雜湊的密碼，並指出使用者是否已設定密碼的方法的方法。
-- **IUserSecurityStampStore**  
+* **IUserSecurityStampStore**  
  [IUserSecurityStampStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1)介面會定義您實作要用於安全性戳記，指出是否已變更的使用者帳戶資訊的方法。 當使用者變更密碼，或新增或移除登入，則會更新這個戳記。 它包含方法來取得和設定的安全性戳記。
-- **IUserTwoFactorStore**  
+* **IUserTwoFactorStore**  
  [IUserTwoFactorStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)介面會定義您實作以支援雙因素驗證的方法。 它包含用於取得和設定是否針對使用者啟用雙因素驗證的方法。
-- **IUserPhoneNumberStore**  
+* **IUserPhoneNumberStore**  
  [IUserPhoneNumberStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserphonenumberstore-1)介面會定義您實作以儲存使用者的電話號碼的方法。 它包含用於取得和設定的電話號碼和是否確認電話號碼的方法。
-- **IUserEmailStore**  
+* **IUserEmailStore**  
  [IUserEmailStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuseremailstore-1)介面會定義您要儲存使用者的電子郵件地址所實作的方法。 它包含用於取得和設定電子郵件地址和電子郵件是否已確認的方法。
-- **IUserLockoutStore**  
+* **IUserLockoutStore**  
  [IUserLockoutStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)介面會定義您實作以儲存有關鎖定的帳戶資訊的方法。 它包含用於追蹤失敗的存取嘗試和鎖定的方法。
-- **IQueryableUserStore**  
+* **IQueryableUserStore**  
  [IQueryableUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1)介面會定義您實作用來提供的可查詢的使用者存放區的成員。
 
 在您的應用程式中，您就會實作所需介面。 例如: 
@@ -199,9 +200,9 @@ public class UserStore : IUserStore<IdentityUser>,
 
 您可以建立`RoleStore`類別，可提供在角色上的所有資料作業的方法。 這個類別就相當於[RoleStore&lt;TRole&gt; ](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.rolestore-1)類別。 在 `RoleStore`類別，實作`IRoleStore<TRole>`並選擇性地`IQueryableRoleStore<TRole>`介面。
 
-- **IRoleStore&lt;TRole&gt;**  
+* **IRoleStore&lt;TRole&gt;**  
  [IRoleStore&lt;TRole&gt; ](/dotnet/api/microsoft.aspnetcore.identity.irolestore-1)介面會定義角色存放區類別中實作的方法。 它包含如建立、 更新、 刪除和擷取角色的方法。
-- **RoleStore&lt;TRole&gt;**  
+* **RoleStore&lt;TRole&gt;**  
  若要自訂`RoleStore`，建立可實作類別`IRoleStore<TRole>`介面。 
 
 ## <a name="reconfigure-app-to-use-a-new-storage-provider"></a>重新設定應用程式以使用新的儲存體提供者
@@ -237,5 +238,5 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="references"></a>參考
 
-- [ASP.NET 4.x 身分識別的自訂儲存體提供者](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
-- [ASP.NET Core Identity](https://github.com/aspnet/identity) -此儲存機制包含社群維護存放區提供者的連結。
+* [ASP.NET 4.x 身分識別的自訂儲存體提供者](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
+* [ASP.NET Core Identity](https://github.com/aspnet/identity) &ndash;此存放庫包含社群維護存放區提供者的連結。

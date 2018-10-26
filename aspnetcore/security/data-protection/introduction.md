@@ -3,14 +3,15 @@ title: ASP.NET Core 資料保護
 author: rick-anderson
 description: 了解資料保護的概念和 ASP.NET Core 資料保護 Api 的設計原則。
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: security/data-protection/introduction
-ms.openlocfilehash: a49eee89e8c11b26c76ba167215c141482159933
-ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
+ms.openlocfilehash: 37f170a3e8a46ef2215b0999358d46dd402636df
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46292293"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089544"
 ---
 # <a name="aspnet-core-data-protection"></a>ASP.NET Core 資料保護
 
@@ -44,7 +45,7 @@ ASP.NET Core 資料保護堆疊旨在做為長期取代&lt;machineKey&gt;項目�
 
 記住這些原則中，我們開發的簡單[易用](xref:security/data-protection/using-data-protection)資料保護堆疊。
 
-無限期的持續性的機密承載不主要是 ASP.NET Core 資料保護 Api。 等其他技術[Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx)並[Azure Rights Management](https://docs.microsoft.com/rights-management/)更適合的案例是無限制的儲存體，而且必須跟著強式金鑰管理功能。 話雖如此，沒有任何禁止開發人員使用 ASP.NET Core 資料保護 Api 進行長期保護的機密資料。
+無限期的持續性的機密承載不主要是 ASP.NET Core 資料保護 Api。 等其他技術[Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx)並[Azure Rights Management](/rights-management/)更適合的案例是無限制的儲存體，而且必須跟著強式金鑰管理功能。 話雖如此，沒有任何禁止開發人員使用 ASP.NET Core 資料保護 Api 進行長期保護的機密資料。
 
 ## <a name="audience"></a>適用對象
 

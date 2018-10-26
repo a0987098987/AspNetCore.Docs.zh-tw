@@ -5,14 +5,14 @@ description: 了解如何使用 Azure 金鑰保存庫的組態提供者設定應
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/17/2018
+ms.date: 10/24/2018
 uid: security/key-vault-configuration
-ms.openlocfilehash: 474824cccdc63bb3dc3978ed68cf4c89cec12ad5
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 06445eb2ecec4cf101b23a4bfe131b2c56a18f62
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391138"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090302"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
 
@@ -151,7 +151,7 @@ Azure Key Vault 金鑰無法使用冒號做為分隔符號。 本主題中所述
 
 使用[Secret Manager 工具](xref:security/app-secrets)維護`ClientSecret`外部專案來源樹狀結構。 使用 Secret Manager 中，您將應用程式祕密與特定的專案產生關聯並加以共用跨多個專案。
 
-在開發環境可支援憑證中的.NET Framework 應用程式時，您可以使用 X.509 憑證來驗證 Azure Key Vault。 X.509 憑證的私密金鑰是由 OS 管理。 如需詳細資訊，請參閱 <<c0> [ 使用而不是用戶端祕密憑證進行驗證](https://docs.microsoft.com/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret)。 使用`AddAzureKeyVault`多載，接受`X509Certificate2`(`_env`在下列範例中：
+在開發環境可支援憑證中的.NET Framework 應用程式時，您可以使用 X.509 憑證來驗證 Azure Key Vault。 X.509 憑證的私密金鑰是由 OS 管理。 如需詳細資訊，請參閱 <<c0> [ 使用而不是用戶端祕密憑證進行驗證](/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret)。 使用`AddAzureKeyVault`多載，接受`X509Certificate2`(`_env`在下列範例中：
 
 ```csharp
 var builtConfig = config.Build();

@@ -1,16 +1,16 @@
 ---
 title: ASP.NET Core 中的回應快取
 author: rick-anderson
-description: 了解如何使用快取以較低的頻寬需求的回應，並增加的 ASP.NET Core 應用程式的效能。
+description: 了解如何使用回應快取來降低頻寬需求，並提升 ASP.NET Core 應用程式的效能。
 ms.author: riande
 ms.date: 09/20/2017
 uid: performance/caching/response
-ms.openlocfilehash: 4bf61502738d70760679ec98c8f2f303eca9d504
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: bbf5b649bac9d31aa6d0ecdc3828648677b05716
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477485"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090689"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core 中的回應快取
 
@@ -68,7 +68,7 @@ Web 伺服器可以快取的回應，當您將新增[回應快取中介軟體](x
 
 若要將資料儲存在記憶體中，應用程式裝載在雲端或伺服器的伺服器陣列時使用分散式快取。 處理要求的伺服器之間共用快取。 用戶端可以提交的要求，如果用戶端快取的資料可用，由群組中的任何伺服器。 ASP.NET Core 提供 SQL Server 和分散式的 Redis 快取。
 
-如需詳細資訊，請參閱[使用分散式快取](xref:performance/caching/distributed)。
+如需詳細資訊，請參閱<xref:performance/caching/distributed>。
 
 ### <a name="cache-tag-helper"></a>快取標籤協助程式
 
@@ -230,9 +230,9 @@ Cache-Control: public,max-age=60
 
 * [將回應儲存在快取](https://tools.ietf.org/html/rfc7234#section-3)
 * [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-* [記憶體中快取](xref:performance/caching/memory)
-* [使用分散式快取](xref:performance/caching/distributed)
-* [使用變更權杖來偵測變更](xref:fundamentals/change-tokens)
-* [回應快取中介軟體](xref:performance/caching/middleware)
-* [快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [分散式快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:performance/caching/memory>
+* <xref:performance/caching/distributed>
+* <xref:fundamentals/change-tokens>
+* <xref:performance/caching/middleware>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>

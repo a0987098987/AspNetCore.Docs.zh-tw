@@ -3,18 +3,19 @@ title: 使用 ASP.NET Core 和 Azure 的 DevOps |將應用程式部署至 App Se
 author: CamSoper
 description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式，建置 DevOps 管線的完整指導。
 ms.author: casoper
-ms.date: 08/07/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 710e65a048fdc062219e90b0db323e8e96fd8e9d
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: 33026ed510aae63a9e580aa5d708f94aad778fca
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340130"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090933"
 ---
 # <a name="deploy-an-app-to-app-service"></a>將應用程式部署至 App Service
 
-[Azure App Service](https://docs.microsoft.com/azure/app-service/)是 Azure 的 web 裝載平台。 手動或自動化程序，可以完成將 web 應用程式部署至 Azure App Service。 本指南的本節將討論以手動方式或使用命令列中，指令碼可以觸發，或以手動方式使用 Visual Studio 觸發的部署方法。
+[Azure App Service](/azure/app-service/)是 Azure 的 web 裝載平台。 手動或自動化程序，可以完成將 web 應用程式部署至 Azure App Service。 本指南的本節將討論以手動方式或使用命令列中，指令碼可以觸發，或以手動方式使用 Visual Studio 觸發的部署方法。
 
 在本節中，您將完成下列工作：
 
@@ -70,7 +71,7 @@ ms.locfileid: "44340130"
 
 ## <a name="create-the-azure-app-service-web-app"></a>建立 Azure App Service Web 應用程式
 
-若要部署應用程式，您必須建立 App Service [Web 應用程式](https://docs.microsoft.com/azure/app-service/app-service-web-overview)。 在建立之後的 Web 應用程式，您將從本機電腦使用 Git 部署至它。
+若要部署應用程式，您必須建立 App Service [Web 應用程式](/azure/app-service/app-service-web-overview)。 在建立之後的 Web 應用程式，您將從本機電腦使用 Git 部署至它。
 
 1. 登入[Azure Cloud Shell](https://shell.azure.com/bash)。 注意： 當您第一次登入時，Cloud Shell 會提示您建立組態檔的儲存體帳戶。 接受預設值，或提供唯一的名稱。
 
@@ -88,7 +89,7 @@ ms.locfileid: "44340130"
     az group create --location centralus --name AzureTutorial
     ```
 
-    `az`命令會叫用[Azure CLI](https://docs.microsoft.com/cli/azure/)。 可以在本機執行 CLI，但在 Cloud Shell 中使用它可以節省時間與組態。
+    `az`命令會叫用[Azure CLI](/cli/azure/)。 可以在本機執行 CLI，但在 Cloud Shell 中使用它可以節省時間與組態。
 
     c.  在 S1 層中建立 App Service 方案。 App Service 方案是共用相同的定價層的 web 應用程式的群組。 S1 層不是免費的但它具有所需的暫存位置功能。
 
@@ -238,7 +239,7 @@ Visual Studio 會建置並部署至 Azure 的應用程式。 瀏覽至 web 應�
 
 ## <a name="additional-reading"></a>其他閱讀資料
 
-* [Web Apps 概觀](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
-* [建置.NET Core 和 SQL Database web 應用程式在 Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
-* [設定 Azure App Service 部署認證](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)
-* [設定 Azure App Service 中的預備環境](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing)
+* [Web Apps 概觀](/azure/app-service/app-service-web-overview)
+* [建置.NET Core 和 SQL Database web 應用程式在 Azure App Service](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
+* [設定 Azure App Service 部署認證](/azure/app-service/app-service-deployment-credentials)
+* [設定 Azure App Service 中的預備環境](/azure/app-service/web-sites-staged-publishing)

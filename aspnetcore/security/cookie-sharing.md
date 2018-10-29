@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/19/2017
 uid: security/cookie-sharing
-ms.openlocfilehash: afb0405ea87a6239c3017ba0a59a22527a817feb
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 7f357df4d450da40f4d6e1a5ab20516ff748e748
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312278"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206896"
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>使用 ASP.NET 和 ASP.NET Core 共用應用程式之間的 cookie
 
@@ -19,7 +19,7 @@ ms.locfileid: "43312278"
 
 網站通常會組成個別的 web 應用程式一起使用。 若要提供單一登入 (SSO) 體驗，在站台內的 web 應用程式必須共用驗證 cookie。 若要支援此案例中，資料保護堆疊可讓共用 Katana 的 cookie 驗證和 ASP.NET Core cookie 驗證票證。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 此範例會說明在使用 cookie 驗證的三個應用程式之間共用的 cookie:
 
@@ -57,7 +57,7 @@ ms.locfileid: "43312278"
 options.Cookie.Domain = ".contoso.com";
 ```
 
-請參閱*CookieAuthWithIdentity.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
+請參閱*CookieAuthWithIdentity.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:index#how-to-download-a-sample))。
 
 ::: moniker-end
 
@@ -105,7 +105,7 @@ app.AddIdentity<ApplicationUser, IdentityRole>(options =>
 options.Cookie.Domain = ".contoso.com";
 ```
 
-請參閱*CookieAuth.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
+請參閱*CookieAuth.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:index#how-to-download-a-sample))。
 
 ::: moniker-end
 
@@ -168,7 +168,7 @@ ASP.NET 4.x 應用程式必須以.NET Framework 4.5.1 為目標或更高版本�
 
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/App_Start/Startup.Auth.cs?name=snippet1)]
 
-請參閱*CookieAuthWithIdentity.NETFramework*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
+請參閱*CookieAuthWithIdentity.NETFramework*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:index#how-to-download-a-sample))。
 
 驗證類型時產生的使用者身分識別，必須符合中定義的類型`AuthenticationType`設有`UseCookieAuthentication`。
 

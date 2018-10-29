@@ -4,14 +4,15 @@ author: rick-anderson
 description: 了解 WebListener，這是 Windows 上 ASP.NET Core 的網頁伺服器，可用於直接連線到網際網路而無需 IIS。
 monikerRange: < aspnetcore-2.0
 ms.author: riande
-ms.date: 08/15/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: 5602c1ddbe76879587de12bcd82722c103dee03f
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 5d72672cc48243f8ee17df615e3379143ed868f6
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751748"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206438"
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 WebListener 網頁伺服器實作
 
@@ -38,7 +39,7 @@ WebListener 支援下列功能：
 
 - Windows 7 與 Windows Server 2008 R2 和更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-weblistener"></a>WebListener 使用時機
 
@@ -160,7 +161,7 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid="{00000
 
 下列資源提供數種案例的詳細指示。 提到 `HttpListener` 的文章同樣適用於 `WebListener`，因為兩者都是根據 Http.Sys。
 
-* [如何：使用 SSL 憑證設定連接埠](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
+* [如何：使用 SSL 憑證設定連接埠](/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
 * [HTTPS Communication - HttpListener based Hosting and Client Certification](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) (HTTPS 通訊 - 以 HttpListener 為基礎的裝載和用戶端憑證) 這是協力廠商部落格，相當老舊但仍有有用的資訊。
 * [How To: Walkthrough Using HttpListener or Http Server unmanaged code (C++) as an SSL Simple Server](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) (如何：逐步解說使用 HttpListener 或 Http Server unmanaged 程式碼 (C++) 作為 SSL 簡單伺服器) 這也是具有有用資訊的較舊部落格。
 * [How Do I Set Up A .NET Core WebListener With SSL?](https://blogs.msdn.microsoft.com/timomta/2016/11/04/how-do-i-set-up-a-net-core-weblistener-with-ssl/) (如何使用 SSL 設定 .NET Core WebListener？)

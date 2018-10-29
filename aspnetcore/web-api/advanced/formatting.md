@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/14/2016
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 3891e8d000c091f34e39a5e40d9bcd12e854a478
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 819bf1b49b56e953a9a4398e82866ba0b01ab4db
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276525"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207104"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 
@@ -19,7 +19,7 @@ ms.locfileid: "36276525"
 
 ASP.NET Core MVC 具有使用固定格式或回應用戶端規格的內建回應資料格式化支援。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/formatting/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/formatting/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="format-specific-action-results"></a>格式特定動作結果
 

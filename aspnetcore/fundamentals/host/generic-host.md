@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/16/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 0924e2764958911dc1711d5427f6dd58e8873739
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: e5f91ed64b7f8402dfe938f0fa8a0d94755d15c6
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477601"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207715"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -24,7 +24,7 @@ ms.locfileid: "49477601"
 
 泛型主機是 ASP.NET Core 2.1 的新功能，不適用於虛擬主機案例。 針對虛擬主機案例，請使用 [Web 主機](xref:fundamentals/host/web-host)。 泛型主機目前正在開發中，未來版本將取代 Web 主機並成為 HTTP 和非 HTTP 案例中的主要主機 API。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 在 [Visual Studio Code](https://code.visualstudio.com/) 中執行範例應用程式時，請使用「外部或整合式終端機」。 請勿在 `internalConsole` 中執行範例。
 

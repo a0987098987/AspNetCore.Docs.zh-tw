@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/20/2018
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: b9266e2df75563be6bad1a1f464cef788c333d4c
-ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
+ms.openlocfilehash: 6c7d76e2202bf47c8d3e5d296e64e9e8c820e2a1
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47028164"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207845"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>NSwag 與 ASP.NET Core 使用者入門
 
@@ -19,13 +19,13 @@ ms.locfileid: "47028164"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.0"
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ::: moniker-end
 
@@ -182,7 +182,7 @@ var foundTodo = await todoClient.GetByIdAsync(1);
 
 您可以使用更適合工作流程的其他方式來產生用戶端程式碼：
 
-* [ MSBuild](https://www.nuget.org/packages/NSwag.MSBuild/)
+* [MSBuild](https://www.nuget.org/packages/NSwag.MSBuild/)
 
 * [在程式碼中](https://github.com/NSwag/NSwag/wiki/SwaggerToCSharpClientGenerator)
 

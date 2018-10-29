@@ -5,12 +5,12 @@ description: 了解在 ASP.NET Core 應用程式中如何跨多個環境控制�
 ms.author: riande
 ms.date: 07/03/2018
 uid: fundamentals/environments
-ms.openlocfilehash: de3c3fd5a2f0e49366d9d5b4e992d0247bcab0e5
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 865257d127084671036147dd1f28c9c4843feef6
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577518"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206844"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>在 ASP.NET Core 中使用多個環境
 
@@ -18,7 +18,7 @@ ms.locfileid: "48577518"
 
 ASP.NET Core 會使用環境變數根據執行階段環境來設定應用程式行為。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="environments"></a>環境
 

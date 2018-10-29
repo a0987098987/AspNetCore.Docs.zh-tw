@@ -6,18 +6,18 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/24/2018
 uid: security/app-secrets
-ms.openlocfilehash: 1ecd9b87b9e4aa2c511349fe407c0cea9dc9f921
-ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
+ms.openlocfilehash: 385d0ecc6ea19d5f84a9fe3c2754f5256a2a5576
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47028267"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207429"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>在 ASP.NET Core 開發的應用程式祕密的安全儲存體
 
 藉由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Daniel Roth](https://github.com/danroth27)，和[Scott Addie](https://github.com/scottaddie)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/app-secrets/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/app-secrets/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 本文件說明針對儲存和擷取機密資料的 ASP.NET Core 應用程式開發期間的技術。 永遠不會將密碼或其他機密資料儲存在原始程式碼中。 不應使用生產環境祕密進行開發或測試。 您可以透過 [Azure Key Vault 設定提供者](xref:security/key-vault-configuration)儲存及保護 Azure 測試與生產祕密。
 
@@ -306,7 +306,7 @@ dotnet user-secrets set "DbPassword" "pass123"
 dotnet user-secrets list
 ```
 
-出現下列輸出：
+即會出現下列輸出：
 
 ```console
 Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted_Connection=True;MultipleActiveResultSets=true

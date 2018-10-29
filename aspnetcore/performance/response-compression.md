@@ -1,24 +1,24 @@
 ---
 title: ASP.NET Core 中的回應壓縮
 author: guardrex
-description: 深入了解回應壓縮，以及如何使用 ASP.NET Core 應用程式中的回應壓縮中介軟體。
+description: 了解回應壓縮及如何使用 ASP.NET Core 應用程式中的回應壓縮中介軟體。
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: performance/response-compression
-ms.openlocfilehash: d5e0b6ed21c14f2e76396cde846c69a76ad40794
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 8c3d74b6a346d51507d3c278b03ddc842feea13e
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578142"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207975"
 ---
 # <a name="response-compression-in-aspnet-core"></a>ASP.NET Core 中的回應壓縮
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 網路頻寬是有限的資源。 減少回應的大小通常應用程式的回應速度通常會大幅增加。 減少承載大小的方法之一是壓縮應用程式的回應。
 

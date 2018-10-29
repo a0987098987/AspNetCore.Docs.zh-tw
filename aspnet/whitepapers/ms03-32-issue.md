@@ -8,12 +8,12 @@ ms.date: 02/10/2010
 ms.assetid: 1365eebb-bdf7-4a05-8d18-7f200531be55
 msc.legacyurl: /whitepapers/ms03-32-issue
 msc.type: content
-ms.openlocfilehash: ce2d705a93577b0c6d28f86069873c6ecd891db6
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9041f8d15a449a517594f8051c3d9f0ceb18a8a3
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41823703"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207013"
 ---
 <a name="fix-for-server-application-unavailable-error-after-applying-security-update-for-ie"></a>套用 IE 的安全性更新之後修正 「 無法使用伺服器應用程式 」 錯誤
 ====================
@@ -38,7 +38,7 @@ Microsoft Internet Explorer 的安全性修補程式 MS03-32 的安全性更新�
 4. 重新登錄 ASP.NET。 這會建立新的隨機密碼的帳戶，並套用預設 ASP.NET 存取控制設定，
 5. 重新啟動 IIS 服務
 
-批次檔包含硬式編碼的暫時密碼的 「<strong>1pass@word</strong>」 將會提示您輸入 runas 命令批次檔執行時。 Runas 命令完成後，ASPNET 帳戶密碼會重新建立強式隨機值。 請注意，如果硬式編碼密碼不符合密碼複雜性需求，您的環境中，批次檔可能會失敗。 如果是這樣，您可以為適用於您環境的另一個值來進行變更。
+批次檔包含硬式編碼的暫時密碼的 「<strong>1\@word</strong>」 將會提示您輸入 runas 命令批次檔執行時。 Runas 命令完成後，ASPNET 帳戶密碼會重新建立強式隨機值。 請注意，如果硬式編碼密碼不符合密碼複雜性需求，您的環境中，批次檔可能會失敗。 如果是這樣，您可以為適用於您環境的另一個值來進行變更。
 
 *> [!IMPORTANT]* 如果您已新增自訂存取控制設定] 或 [ASPNET 帳戶的資料庫帳戶權限，他們必須完成這個批次檔之後，重新建立。 這是因為當帳戶重新建立，它會取得新的安全性識別碼 (SID)。
 
@@ -51,7 +51,7 @@ Microsoft Internet Explorer 的安全性修補程式 MS03-32 的安全性更新�
 3. 將內容解壓縮至 c:\
 4. 選取 [執行] 從 [開始] 功能表，然後輸入 `cmd.exe`
 5. 在 開啟 命令 視窗中，輸入`c:\fixup.cmd`。
-6. 出現提示時，請輸入<strong>1pass@word</strong>做為密碼。
+6. 出現提示時，請輸入<strong>1\@word</strong>做為密碼。
 7. 如果您有先前自訂的存取控制設定或 ASPNET 帳戶的資料庫帳戶權限，您必須立即重新套用這些設定。
 
 在您的不便，這導致許多此。 可供使用，我們將刊登的其他資訊。
@@ -62,7 +62,7 @@ Microsoft Internet Explorer 的安全性修補程式 MS03-32 的安全性更新�
 | --- | --- | --- |
 | 1.0 版 | Windows 2000 Professional | 否 |
 | 1.0 版 | Windows 2000 Server | 否 |
-| 1.0 版 | Windows XP Professional | [是] |
+| 1.0 版 | Windows XP Professional | 是 |
 | 1.0 版 | Windows Server 2003 | 否 |
 | 1.0 版 | Windows XP 回家 Cassini | 否 |
 | 1.1 版 | Windows 2000 Professional | 否 |

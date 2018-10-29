@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core MVC 控制器如何在 ASP.NET Core 中，透�
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 9dec9807e8fc2883144b2da518f36a7eb8ddc871
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 12247dbbbb6de3f8feb7bc37caec4ecf4bd21719
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342129"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206337"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>ASP.NET Core 控制器的相依性插入
 
@@ -18,9 +18,9 @@ ms.locfileid: "39342129"
 
 作者：[Steve Smith](https://ardalis.com/)
 
-ASP.NET Core MVC 控制器應該透過其建構函式明確要求相依性。 在某些情況下，個別的控制器動作可能需要某項服務，但在控制器層級提出此要求並不合理。 這時候，您也可以透過動作方法上的參數形式來插入服務。
+ASP.NET Core MVC 控制器應該透過其建構函式明確要求相依性。 在某些情況下，個別的控制器動作可能需要某項服務，但在控制器層級提出這項要求並不合理。 這時候，您也可以透過動作方法上的參數形式來插入服務。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="dependency-injection"></a>相依性插入
 
@@ -28,7 +28,7 @@ ASP.NET Core MVC 控制器應該透過其建構函式明確要求相依性。 �
 
 ## <a name="constructor-injection"></a>建構函式插入
 
-ASP.NET Core 內建支援以建構函式為基礎的相依性插入，此支援也延伸到 MVC 控制器。 只要您將服務類型以建構函式參數形式新增至控制器，ASP.NET Core 就會嘗試使用其內建服務容器來解析該類型。 一般而言 (但並非絕對)，您可以使用介面來定義服務。 例如，如果您的應用程式有相依於目前時間的商務邏輯，您可以插入服務以擷取時間 (而非將其寫入程式碼)，即可在使用指定時間的實作中成功通過測試。
+ASP.NET Core 內建支援以建構函式為基礎的相依性插入，這項支援也延伸到 MVC 控制器。 只要您將服務類型以建構函式參數形式新增至控制器，ASP.NET Core 就會嘗試使用其內建服務容器來解析該類型。 一般而言 (但並非絕對)，您可以使用介面來定義服務。 例如，如果您的應用程式有相依於目前時間的商務邏輯，您可以插入服務以擷取時間 (而非將其寫入程式碼)，即可在使用指定時間的實作中成功通過測試。
 
 [!code-csharp[](dependency-injection/sample/src/ControllerDI/Interfaces/IDateTime.cs)]
 

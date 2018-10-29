@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 0ab920cc8890f2a1e4d1fb8d783dea666751a53f
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 359bd438066aefcf572c91dacee99e85c0f10b1a
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911288"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207351"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -22,7 +22,7 @@ ms.locfileid: "48911288"
 * [介面隔離準則 (ISP)](http://deviq.com/interface-segregation-principle/)：相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。
 * [關注點分離](http://deviq.com/separation-of-concerns/) (不同考量)：應用程式不同部分的設定不會彼此相依或結合。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([如何下載](xref:tutorials/index#how-to-download-a-sample))本文比較能輕鬆地遵循範例應用程式。
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([如何下載](xref:index#how-to-download-a-sample))本文比較能輕鬆地遵循範例應用程式。
 
 ## <a name="prerequisites"></a>必要條件
 

@@ -5,12 +5,12 @@ description: 本文介紹可攜式物件檔案，並概述在具有 Orchard Core
 ms.author: scaddie
 ms.date: 09/26/2017
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 0baa8dbb1f42cdc30185108fe90937f89d0d42bf
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c9f892f5a886d7167b4705595ed2277279495201
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275781"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207624"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>使用 ASP.NET Core 設定可攜式物件當地語系化
 
@@ -20,7 +20,7 @@ ms.locfileid: "36275781"
 
 **注意：** Orchard Core 不是 Microsoft 產品。 因此，Microsoft 不提供這項功能的支援。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>什麼是 PO 檔案？
 

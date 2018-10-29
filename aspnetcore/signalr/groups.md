@@ -7,20 +7,20 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/groups
-ms.openlocfilehash: d54ab2a113345f98e26425a88cad165d67b8d456
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: d3e580dfc42a36762358899892831c8b68f544b0
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095017"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207156"
 ---
 # <a name="manage-users-and-groups-in-signalr"></a>管理使用者和 signalr 的群組
 
-藉由[brennan 第瑜吉](https://github.com/BrennanConroy)
+由[brennan Conroy](https://github.com/BrennanConroy)提供
 
 SignalR 可讓訊息傳送至特定使用者相關聯的所有連線以及具名群組的連線。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
 
 ## <a name="users-in-signalr"></a>SignalR 中的使用者
 

@@ -3,14 +3,15 @@ title: ASP.NET Core 與 Entity Framework 6 使用者入門
 author: rick-anderson
 description: 本文示範如何在 ASP.NET Core 應用程式中使用 Entity Framework 6。
 ms.author: tdykstra
-ms.date: 02/24/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/entity-framework-6
-ms.openlocfilehash: ba3ee137bfefd53cf2b7be2f328651ad38104ab5
-ms.sourcegitcommit: 70fb7c9d5f2ddfcf4747382a9f7159feca7a6aa7
+ms.openlocfilehash: b7679afbe4c364386fe8f16d22d7e9797a3e0c27
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45601739"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090055"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>ASP.NET Core 與 Entity Framework 6 使用者入門
 
@@ -20,7 +21,7 @@ ms.locfileid: "45601739"
 
 ## <a name="overview"></a>總覽
 
-若要使用 Entity Framework 6，您的專案必須針對 .NET Framework 進行編譯，因為 Entity Framework 6 不支援 .NET Core。 如果您需要跨平台功能，則必須升級至 [Entity Framework Core](https://docs.microsoft.com/ef/)。
+若要使用 Entity Framework 6，您的專案必須針對 .NET Framework 進行編譯，因為 Entity Framework 6 不支援 .NET Core。 如果您需要跨平台功能，則必須升級至 [Entity Framework Core](/ef/)。
 
 在 ASP.NET Core 應用程式中使用 Entity Framework 6 的建議方式是，將 EF6 內容和模型類別置於目標為完整 Framework 的類別庫專案中。 從 ASP.NET Core 專案新增類別庫的參考。 請參閱[使用 EF6 和 ASP.NET Core 專案的 Visual Studio 方案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)範例。
 

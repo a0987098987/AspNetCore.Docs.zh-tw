@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/14/2016
 uid: fundamentals/owin
-ms.openlocfilehash: db28eeff88a13dc95c469f3b7c0746c807da830f
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: eb5cf92a6dcc3ddb9e2f56cd72a710b66f7fae06
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751629"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206883"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>具有 ASP.NET Core 的 Open Web Interface for .NET (OWIN)
 
@@ -29,7 +29,7 @@ OWIN 提供分離層，可讓兩個利用不同物件模型的架構一起使用
 > [!NOTE]
 > 使用這些配接器將伴隨效能成本增加。 僅使用 ASP.NET Core 元件的應用程式不應使用 `Microsoft.AspNetCore.Owin` 套件或配接器。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="running-owin-middleware-in-the-aspnet-core-pipeline"></a>在 ASP.NET Core 管線中執行 OWIN 中介軟體
 

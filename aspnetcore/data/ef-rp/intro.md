@@ -5,12 +5,12 @@ description: 示範如何建立使用 Entity Framework Core 的 Razor 頁面應�
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/intro
-ms.openlocfilehash: f714934a2ef804813290ae0c04432470a2ba5816
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: a234d5fefd671d4503f6c63b79074d47c893f69c
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477562"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207702"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -24,7 +24,7 @@ Contoso 大學的 Web 應用程式範例將示範如何以 Entity Framework (EF)
 
 這個範例應用程式是虛構的 Contoso 大學網站。 其中包括的功能有學生入學許可、課程建立、教師指派。 此頁面是說明如何建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:tutorials/index#how-to-download-a-sample)。
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
 ## <a name="prerequisites"></a>必要條件
 

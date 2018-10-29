@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/07/2017
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 6a110a69c58d5e20a15198378510486daec3d452
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 2cb3844a38f7482c27fb471343109d51a516ea20
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342285"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206692"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的資源為基礎的授權
 
@@ -19,7 +19,7 @@ ms.locfileid: "39342285"
 
 資料繫結前後執行動作的文件載入的頁面處理常式之前，就會發生屬性評估。 基於這些理由，使用宣告式授權`[Authorize]`屬性不敷使用。 相反地，您可以叫用自訂的授權方法&mdash;樣式，稱為必要授權。
 
-使用[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples)([如何下載](xref:tutorials/index#how-to-download-a-sample)) 來瀏覽本主題中所述的功能。
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
 [建立 ASP.NET Core 應用程式與受保護的授權的使用者資料](xref:security/authorization/secure-data)包含範例應用程式使用資源為基礎的授權。
 

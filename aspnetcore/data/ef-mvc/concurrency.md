@@ -3,14 +3,15 @@ title: ASP.NET Core MVC 與 EF Core - 並行 - 8/10
 author: rick-anderson
 description: 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 9bf65621213c9657232dfff1701c9937d5105a9c
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 0ae566a76a2ef656843452ed537b8fdfbddaed22
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38186633"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090897"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---concurrency---8-of-10"></a>ASP.NET Core MVC 與 EF Core - 並行 - 8/10
 
@@ -219,7 +220,6 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 在您剛剛取代的 Scaffold 程式碼中，此方法僅會接受一個記錄識別碼：
 
-
 ```csharp
 public async Task<IActionResult> DeleteConfirmed(int id)
 ```
@@ -278,7 +278,7 @@ public async Task<IActionResult> Delete(Department department)
 
 ## <a name="summary"></a>總結
 
-如此即完成了處理並行衝突的簡介。 如需如何在 EF Core 中處理並行的詳細資訊，請參閱[並行衝突](https://docs.microsoft.com/ef/core/saving/concurrency)。 下一個教學課程會顯示如何為 Instructor 和 Student 實體實作每個階層資料表的繼承。
+如此即完成了處理並行衝突的簡介。 如需如何在 EF Core 中處理並行的詳細資訊，請參閱[並行衝突](/ef/core/saving/concurrency)。 下一個教學課程會顯示如何為 Instructor 和 Student 實體實作每個階層資料表的繼承。
 
 ::: moniker-end
 

@@ -5,16 +5,16 @@ description: 了解如何使用應用程式組件 (也就是應用程式資源�
 ms.author: riande
 ms.date: 01/04/2017
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 41ae3fd4059844698ded4551dcedc8933ab8cff6
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: c0d3ad6bcdf2e56df915b176b28759c59e76faf6
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011309"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206559"
 ---
 # <a name="application-parts-in-aspnet-core"></a>ASP.NET Core 的應用程式組件
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 「應用程式組件」是應用程式資源的抽象概念，其中您可以探索到控制器、檢視元件或標籤協助程式等 MVC 功能。 應用程式組件的其中一個範例是 AssemblyPart，其會封裝組件參考，並將類型與編譯參考公開。 「功能提供者」會使用應用程式組件，來填入 ASP.NET Core MVC 應用程式的功能。 應用程式組件的主要使用案例是讓您設定應用程式，以探索 (或避免載入) 組件中的 MVC 功能。
 

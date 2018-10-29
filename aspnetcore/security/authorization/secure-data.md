@@ -5,12 +5,12 @@ description: 了解如何使用受保護的授權的使用者資料建立 Razor 
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: 71b7855958b530b8bac32843a8d1e7db0113ffd9
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 7d9521686c67ab9120238886d50af081ce4c6907
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912627"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207858"
 ---
 ::: moniker range="<= aspnetcore-1.1"
 
@@ -88,11 +88,11 @@ ms.locfileid: "48912627"
 
 ## <a name="the-starter-and-completed-app"></a>Starter 和已完成的應用程式
 
-[下載](xref:tutorials/index#how-to-download-a-sample)[完成](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2)應用程式。 [測試](#test-the-completed-app)已完成的應用程式，讓您熟悉其安全性功能。
+[下載](xref:index#how-to-download-a-sample)[完成](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2)應用程式。 [測試](#test-the-completed-app)已完成的應用程式，讓您熟悉其安全性功能。
 
 ### <a name="the-starter-app"></a>入門應用程式
 
-[下載](xref:tutorials/index#how-to-download-a-sample) [starter](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2)應用程式。
+[下載](xref:index#how-to-download-a-sample) [starter](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2)應用程式。
 
 執行應用程式中，點選**ContactManager**連結，並確認您可以建立、 編輯和刪除連絡人。
 

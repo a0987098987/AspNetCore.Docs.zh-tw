@@ -7,12 +7,12 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: b3eb643daf230336ce5def96007b6096f86390e6
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: 7b34187747d3081998b8b60a72adae78cafe2c3e
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148937"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207962"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>將 ASP.NET MVC 應用程式遷移到 Windows 容器
 
@@ -71,7 +71,7 @@ ms.locfileid: "50148937"
 在 Dockerfile 中定義您的 Docker 映像。 Dockerfile 包含基礎映像、其他元件、您想要執行的應用程式及其他組態映像的相關指示。  Dockerfile 是建立映像之 `docker build` 命令的輸入。
 
 您將以位於 [Docker Hub](https://hub.docker.com/r/microsoft/aspnet/) 上的 `microsoft/aspnet` 映像為基礎來建立映像。
-基礎映像 `microsoft/aspnet` 是 Windows Server 映像。 它包含 Windows Server Core、 IIS 和 ASP.NET 4.6.2。 當您在容器中執行此映像時，其將會自動啟動 IIS 和已安裝的網站。
+基礎映像 `microsoft/aspnet` 是 Windows Server 映像。 它包含 Windows Server Core、 IIS 和 ASP.NET 4.7.2。 當您在容器中執行此映像時，其將會自動啟動 IIS 和已安裝的網站。
 
 建立映像的 Dockerfile 看起來像這樣：
 
@@ -122,18 +122,7 @@ docker run -d --name randomanswers mvcrandomanswers
 
 ## <a name="verify-in-the-browser"></a>在瀏覽器中確認
 
-> [!NOTE]
-> 目前的 Windows 容器版本中，您無法瀏覽至`http://localhost`。
-> 這是 WinNAT 中的已知行為，未來將會解決此問題。 在解決此問題之前，您必須使用容器的 IP 位址。
-
-容器啟動之後，要找到其 IP 位址，才能從瀏覽器連線到您正在執行的容器：
-
-```console
-docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" randomanswers
-172.31.194.61
-```
-
-連接到執行中的容器使用的 IPv4 位址，`http://172.31.194.61`中所示的範例。 在您的瀏覽器中輸入該 URL，您應該會看到執行中的網站。
+一旦容器啟動時，連接到執行的容器使用`http://localhost`中所示的範例。 在您的瀏覽器中輸入該 URL，您應該會看到執行中的網站。
 
 > [!NOTE]
 > 某些 VPN 或 Proxy 軟體可能會阻止您瀏覽至您的網站。
@@ -145,10 +134,9 @@ GitHub 上的範例目錄包含 [PowerShell 指令碼](https://github.com/dotnet
 ./run.ps1
 ```
 
-上述命令會建立映像、顯示您電腦上的映像清單、啟動容器，然後顯示該容器的 IP 位址。
+上述命令會建置該映像、 映像清單會顯示您的電腦，並啟動容器。
 
-若要停止容器，請發出 `docker
-stop` 命令：
+若要停止容器，請發出 `docker stop` 命令：
 
 ```console
 docker stop randomanswers

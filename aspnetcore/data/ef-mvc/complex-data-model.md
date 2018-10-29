@@ -3,14 +3,15 @@ title: ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
 author: rick-anderson
 description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 3714cf7ce705a52653394319fef1728a6ddcc3ee
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 87212edbfe34af6de938cf95314501e56e64a8be
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011764"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091037"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
 
@@ -232,7 +233,7 @@ Instructor 實體具有一個可為 Null 的 `OfficeAssignment` 導覽屬性 (�
 
 課程實體有一個外部索引鍵屬性 (`DepartmentID`)，該索引鍵指向了相關的 Department 實體，並且其擁有一個 `Department` 導覽屬性。
 
-當您針對相關實體具有一個導覽屬性時，Entity Framework 便不需要您為資料模型新增一個外部索引鍵屬性。  每當需要的時候，EF 便會自動在資料庫中建立外部索引鍵，並為他們建立[陰影屬性](https://docs.microsoft.com/ef/core/modeling/shadow-properties)。 但在資料模型中擁有外部索引鍵，可讓更新變得更為簡單和有效率。 例如，當您擷取了一個要編輯的課程實體，若您沒有載入它，Department 實體便會為 Null，因此當您要更新課程實體時，您必須先擷取 Department 實體。 當外部索引鍵屬性 `DepartmentID` 包含在資料模型中時，您便不需要在更新前擷取 Department 實體。
+當您針對相關實體具有一個導覽屬性時，Entity Framework 便不需要您為資料模型新增一個外部索引鍵屬性。  每當需要的時候，EF 便會自動在資料庫中建立外部索引鍵，並為他們建立[陰影屬性](/ef/core/modeling/shadow-properties)。 但在資料模型中擁有外部索引鍵，可讓更新變得更為簡單和有效率。 例如，當您擷取了一個要編輯的課程實體，若您沒有載入它，Department 實體便會為 Null，因此當您要更新課程實體時，您必須先擷取 Department 實體。 當外部索引鍵屬性 `DepartmentID` 包含在資料模型中時，您便不需要在更新前擷取 Department 實體。
 
 ### <a name="the-databasegenerated-attribute"></a>DatabaseGenerated 屬性
 
@@ -246,7 +247,7 @@ public int CourseID { get; set; }
 
 根據預設，Entity Framework 會假設主索引鍵的值是由資料庫產生。 這是您在大多數案例下所希望的情況。 然而，針對 Course 實體，您會使用使用者定義的課程號碼，例如讓一個部門使用 1000 系列，另一個部門則使用 2000 系列等等。
 
-如果是用於記錄資料列建立或更新的資料庫資料行，則 `DatabaseGenerated` 屬性也能用於產生預設值。  如需詳細資訊，請參閱[產生的屬性](https://docs.microsoft.com/ef/core/modeling/generated-properties)。
+如果是用於記錄資料列建立或更新的資料庫資料行，則 `DatabaseGenerated` 屬性也能用於產生預設值。  如需詳細資訊，請參閱[產生的屬性](/ef/core/modeling/generated-properties)。
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵及導覽屬性
 
@@ -373,7 +374,7 @@ Student 和 Course 實體之間存在一個多對多關聯性，且 Enrollment �
 
 由於外部索引鍵不可為 Null，並且當一起使用時便可唯一識別資料表的每一個資料列，因此您不需要擁有一個個別的主索引鍵。 *InstructorID* 和 *CourseID* 屬性可作為複合主索引鍵發揮功能。 針對 EF 識別複合主索引鍵的唯一方法便是使用 *Fluent API* (您無法使用屬性完成這項操作)。 您會在下節中了解如何設定複合主索引鍵。
 
-複合索引鍵可確保當您針對一個課程擁有多個資料列，且針對一位講師擁有多個資料列時，您無法針對相同的講師和課程擁有多個資料列。 由於 `Enrollment` 聯結實體定義了其自身的主索引鍵，因此這種種類的重複項目是可能的。 若要避免這種重複的項目，您可以在外部索引鍵欄位上新增一個唯一的索引，或使用與 `CourseAssignment` 相似的主複合索引鍵來設定 `Enrollment`。 如需詳細資訊，請參閱[索引](https://docs.microsoft.com/ef/core/modeling/indexes)。
+複合索引鍵可確保當您針對一個課程擁有多個資料列，且針對一位講師擁有多個資料列時，您無法針對相同的講師和課程擁有多個資料列。 由於 `Enrollment` 聯結實體定義了其自身的主索引鍵，因此這種種類的重複項目是可能的。 若要避免這種重複的項目，您可以在外部索引鍵欄位上新增一個唯一的索引，或使用與 `CourseAssignment` 相似的主複合索引鍵來設定 `Enrollment`。 如需詳細資訊，請參閱[索引](/ef/core/modeling/indexes)。
 
 ## <a name="update-the-database-context"></a>更新資料庫內容
 
@@ -385,7 +386,7 @@ Student 和 Course 實體之間存在一個多對多關聯性，且 Enrollment �
 
 ## <a name="fluent-api-alternative-to-attributes"></a>屬性的 Fluent API 替代項目
 
-`DbContext` 類別的 `OnModelCreating` 方法中的程式碼使用了 *Fluent API* 來設定 EF 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式，例如這個從 [EF Core 文件](https://docs.microsoft.com/ef/core/modeling/#methods-of-configuration)取得的範例：
+`DbContext` 類別的 `OnModelCreating` 方法中的程式碼使用了 *Fluent API* 來設定 EF 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式，例如這個從 [EF Core 文件](/ef/core/modeling/#methods-of-configuration)取得的範例：
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -400,7 +401,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 某些開發人員偏好單獨使用 Fluent API，使其實體類別保持「整潔」。 若想要的話，您也可以混合使用屬性和 Fluent API，並且有一些自訂項目只能使用 Fluent API 完成。但一般來說，建議的做法是在這兩種方法中選擇其中一項，然後盡可能的一致使用該方法。 若您確實同時使用了兩者，則請注意當發生衝突時，Fluent API 會覆寫屬性。
 
-如需屬性與 Fluent API 的詳細資訊，請參閱[組態方法](https://docs.microsoft.com/ef/core/modeling/#methods-of-configuration)。
+如需屬性與 Fluent API 的詳細資訊，請參閱[組態方法](/ef/core/modeling/#methods-of-configuration)。
 
 ## <a name="entity-diagram-showing-relationships"></a>顯示關聯性的實體圖表
 

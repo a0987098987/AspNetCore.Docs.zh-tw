@@ -221,7 +221,7 @@
 ### [.NET 用戶端](xref:signalr/dotnet-client)
 ### [.NET API 參考](/dotnet/api/microsoft.aspnetcore.signalr.client)
 ### [Java 用戶端](xref:signalr/java-client)
-### [Java API 參考](/java/api/com.microsoft.aspnet.signalr?view=aspnet-signalr-java)
+### [Java API 參考](/java/api/com.microsoft.signalr?view=aspnet-signalr-java)
 ### [JavaScript 用戶端](xref:signalr/javascript-client)
 ### [JavaScript API 參考](/javascript/api/?view=signalr-js-latest)
 ### [WebPack 和 TypeScript](xref:tutorials/signalr-typescript-webpack)

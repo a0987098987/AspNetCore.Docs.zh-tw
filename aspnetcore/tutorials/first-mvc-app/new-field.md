@@ -3,20 +3,21 @@ title: 將欄位新增至 ASP.NET Core MVC 應用程式
 author: rick-anderson
 description: 了解如何使用 Entity Framework Code First 移轉，將欄位新增至模型，然後將該變更移轉至資料庫。
 ms.author: riande
-ms.date: 10/06/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: b63bad99c4a966703634c711e5406d86e5bd140c
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: e58d5af90b997c66cb749ab8f1b2f8049b8f7303
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010880"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089679"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>將欄位新增至 ASP.NET Core MVC 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-在本節中，您會使用 [Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) Code First 移轉，將欄位新增至模型，然後將該變更移轉至資料庫。
+在本節中，您會使用 [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First 移轉，將欄位新增至模型，然後將該變更移轉至資料庫。
 
 當您使用 EF Code First 自動建立資料庫時，Code First 會將資料表新增至資料庫，以協助追蹤資料庫的結構描述是否與其產生的來源模型類別同步。 如果未同步，EF 會擲回例外狀況。 這可讓您更輕鬆地找出不一致的資料庫/程式碼問題。
 

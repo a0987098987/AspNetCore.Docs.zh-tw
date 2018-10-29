@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: 65e6b13dc3430d7bd9b513da34fbd53e349f9cc2
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: f7cfb3823a188f28398d59e0d009e9ddc159dc32
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091102"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207572"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -19,7 +19,7 @@ ms.locfileid: "50091102"
 
 ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提供者搭配使用。 此文章說明如何搭配內建提供者使用 API。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="add-providers"></a>新增提供者
 

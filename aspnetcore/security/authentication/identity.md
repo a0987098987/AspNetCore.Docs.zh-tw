@@ -5,12 +5,12 @@ description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如�
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: e0494afd807080f4cd71127abce7bdb93f952dca
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 0cea81b46a8f659671c0ae1768884194ad8c1162
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325506"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207793"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -20,7 +20,7 @@ ASP.NET Core Identity 是將登入功能加入至 ASP.NET Core 應用程式的�
 
 可以使用 SQL Server 資料庫來儲存使用者名稱、 密碼和設定檔資料，設定身分識別。 或者，另一個持續性存放區可用，例如 Azure 資料表儲存體。
 
-[檢視或下載範例程式碼。](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/)([如何下載)](xref:index#how-to-download-a-sample))。
 
 本主題中，您將了解如何使用身分識別來註冊、 登入，並登出使用者。 如需有關建立使用身分識別的應用程式的詳細指示，請參閱本文結尾 「 後續步驟 」 一節。
 

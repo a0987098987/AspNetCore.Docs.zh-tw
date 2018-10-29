@@ -5,12 +5,12 @@ description: 了解如何建立和使用 ASP.NET Core 中的 Web API 自訂格�
 ms.author: tdykstra
 ms.date: 02/08/2017
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: a21fcea68d957d0344309c9bbd3286b71c092f60
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: a038cd9c05950333fce9e72f67d6721198fae4d3
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273854"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206311"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的自訂格式器
 
@@ -18,7 +18,7 @@ ms.locfileid: "36273854"
 
 ASP.NET Core MVC 內建支援在 Web API 中使用 JSON、XML 或純文字格式的資料交換。 本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-custom-formatters"></a>自訂格式器的使用時機
 

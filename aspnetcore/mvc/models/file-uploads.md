@@ -3,14 +3,15 @@ title: ASP.NET Core 的檔案上傳
 author: ardalis
 description: 如何使用模型繫結和資料流在 ASP.NET Core MVC 上傳檔案。
 ms.author: riande
-ms.date: 07/05/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 771e22ca01c67f2b6bbee780324d9d08759b3279
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 913fc9aa473950b7117fb9da5c8913e658c43a9d
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38201728"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090263"
 ---
 # <a name="file-uploads-in-aspnet-core"></a>ASP.NET Core 的檔案上傳
 
@@ -70,7 +71,7 @@ public interface IFormFile
 
 [!code-csharp[](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
 
-會先將使用 `IFormFile` 技術所上傳的檔案緩衝至記憶體或是網頁伺服器的磁碟上，再進行處理。 在動作方法內，`IFormFile` 內容可以當成資料流形式來存取。 除了本機檔案系統之外，檔案還可以串流至 [Azure Blob 儲存體](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)或 [Entity Framework](https://docs.microsoft.com/ef/core/index)。
+會先將使用 `IFormFile` 技術所上傳的檔案緩衝至記憶體或是網頁伺服器的磁碟上，再進行處理。 在動作方法內，`IFormFile` 內容可以當成資料流形式來存取。 除了本機檔案系統之外，檔案還可以串流至 [Azure Blob 儲存體](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs)或 [Entity Framework](/ef/core/index)。
 
 若要使用 Entity Framework 將二進位檔案資料儲存至資料庫，請定義實體上類型 `byte[]` 的屬性：
 
@@ -117,7 +118,7 @@ public async Task<IActionResult> Register(RegisterViewModel model)
             user.AvatarImage = memoryStream.ToArray();
         }
     // additional logic omitted
-    
+
     // Don't rely on or trust the model.AvatarImage.FileName property 
     // without validation.
 }

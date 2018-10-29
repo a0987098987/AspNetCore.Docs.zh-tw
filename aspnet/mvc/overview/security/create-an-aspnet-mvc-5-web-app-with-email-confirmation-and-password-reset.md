@@ -8,12 +8,12 @@ ms.date: 03/26/2015
 ms.assetid: d4911cb3-1afb-4805-b860-10818c4b1280
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: 02a0153f20e9390a5ab8d4ecb4f73556b339d9a9
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 5092476c6cf59bea6fab6fa6f169ff11ec4c9c4a
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48576450"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207481"
 ---
 <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>建立安全的 ASP.NET MVC 5 web 應用程式登入、 電子郵件確認和密碼重設 (C#)
 ====================
@@ -56,6 +56,8 @@ ms.locfileid: "48576450"
 
 <a id="SG"></a>
 ## <a name="hook-up-sendgrid"></a>將 SendGrid 連結
+
+在本節中的指示不是最新的。 請參閱[設定 SendGrid 電子郵件提供者](/aspnet/core/security/authentication/accconfirm#configure-email-provider)更新指示進行。
 
 雖然本教學課程中只會顯示如何將透過電子郵件通知[SendGrid](http://sendgrid.com/)，您可以傳送電子郵件使用 SMTP 和其他機制 (請參閱[其他資源](#addRes))。
 

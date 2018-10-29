@@ -5,12 +5,12 @@ description: 了解如何使用 LoggerMessage 來建立可快取的委派，其�
 ms.author: riande
 ms.date: 11/03/2017
 uid: fundamentals/logging/loggermessage
-ms.openlocfilehash: e952591bac29868d87d765820e88c74b50a1fe88
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: a0080a20fed2d8fc295e55822c11d5731c6910ca
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272431"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207507"
 ---
 # <a name="high-performance-logging-with-loggermessage-in-aspnet-core"></a>在 ASP.NET Core 中使用 LoggerMessage 進行高效能記錄
 
@@ -23,7 +23,7 @@ ms.locfileid: "36272431"
 * 記錄器擴充方法需要 "boxing" (轉換) 實值型別，例如將 `int` 轉換為 `object`。 `LoggerMessage` 模式可使用靜態 `Action` 欄位和擴充方法搭配強型別參數來避免 boxing。
 * 記錄器擴充方法在每次寫入記錄訊息時，都必須剖析訊息範本 (具名格式字串)。 `LoggerMessage` 只需在定義訊息時剖析範本一次。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/loggermessage/sample/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/loggermessage/sample/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 範例應用程式以一個基本引述追蹤系統示範 `LoggerMessage` 功能。 該應用程式使用記憶體內部資料庫來新增和刪除引述。 在進行這些作業時，將會使用 `LoggerMessage` 模式來產生記錄訊息。
 

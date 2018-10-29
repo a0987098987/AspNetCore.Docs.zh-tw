@@ -3,14 +3,15 @@ title: ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 author: rick-anderson
 description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
 ms.author: riande
-ms.date: 6/31/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: b81918cbd74200f0672f3002f916523fb4a9a914
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: 9a0d5a8e722487ccf7e08aadb39f838a0963451d
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477653"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090963"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -121,6 +122,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)�
 ```SQL
 SqlException: Invalid column name 'FirstName'.
 ```
+
 若要更新資料庫：
 
 * 建置專案。
@@ -157,7 +159,7 @@ Please review the migration for accuracy.
 
 ![移轉之後 SSOX 中的 Students 資料表](complex-data-model/_static/ssox-after-migration.png)
 
-在移轉套用之前，名稱資料行的類型為 [nvarchar(MAX)](https://docs.microsoft.com/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)。 名稱資料行現在為 `nvarchar(50)`。 資料行的名稱已從 `FirstMidName` 變更為 `FirstName`。
+在移轉套用之前，名稱資料行的類型為 [nvarchar(MAX)](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)。 名稱資料行現在為 `nvarchar(50)`。 資料行的名稱已從 `FirstMidName` 變更為 `FirstName`。
 
 > [!Note]
 > 在下節中，在某些階段建置應用程式會產生編譯錯誤。 指令會指定何時應建置應用程式。
@@ -295,7 +297,7 @@ public Instructor Instructor { get; set; }
 
 當資料模型針對相關實體有一個導覽屬性時，EF Core 不需要針對該模型具備 FK 屬性。
 
-EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](https://docs.microsoft.com/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
+EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
 
 * 若沒有明確載入，`Department` 實體將為 Null。
 * 若要更新課程實體，必須先擷取 `Department` 實體。
@@ -314,7 +316,7 @@ public int CourseID { get; set; }
 
 根據預設，EF Core 會假設 PK 值都是由資料庫產生的。 由資料庫產生 PK 值通常都是最佳做法。 針對 `Course` 實體，使用者指定了 PK。 例如，課程號碼 1000 系列表示數學部門的課程，2000 系列則為英文部門的課程。
 
-`DatabaseGenerated` 屬性也可用於產生預設值。 例如，資料庫會自動產生日期欄位來記錄資料列建立或更新的日期。 如需詳細資訊，請參閱[產生的屬性](https://docs.microsoft.com/ef/core/modeling/generated-properties)。
+`DatabaseGenerated` 屬性也可用於產生預設值。 例如，資料庫會自動產生日期欄位來記錄資料列建立或更新的日期。 如需詳細資訊，請參閱[產生的屬性](/ef/core/modeling/generated-properties)。
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵及導覽屬性
 
@@ -463,7 +465,7 @@ public Student Student { get; set; }
 
 通常會將聯結實體命名為 `EntityName1EntityName2`。 例如，使用此模式的講師-課程聯結資料表為 `CourseInstructor`。 不過，我們建議使用可描述關聯性的名稱。
 
-資料模型一開始都是簡單的，之後便會持續成長。 無承載聯結 (PJT) 常常會演變為包含承載。 藉由在一開始便使用描述性的實體名稱，當聯結資料表變更時便不需要變更名稱。 理想情況下，聯結實體在公司網域中會有自己的自然 (可能為一個單字) 名稱。 例如，「書籍」和「客戶」可連結為一個名為「評分」的聯結實體。 針對講師-課程多對多關聯性，`CourseAssignment` 會比 `CourseInstructor` 來得好。
+資料模型一開始都是簡單的，之後便會持續成長。 無承載聯結 (PJT) 常常會演變為包含承載。 藉由在一開始便使用描述性的實體名稱，當聯結資料表變更時便不需要變更名稱。 理想情況下，聯結實體在公司網域中會有自己的自然 (可能為一個單字) 名稱。 例如，「書籍」和「客戶」可連結為一個名為「評分」 的聯結實體。 針對講師-課程多對多關聯性，`CourseAssignment` 會比 `CourseInstructor` 來得好。
 
 ### <a name="composite-key"></a>複合索引鍵
 
@@ -478,7 +480,7 @@ FK 不可為 Null。 `CourseAssignment` (`InstructorID` 及 `CourseID`) 中的�
 由於 `Enrollment` 聯結實體定義了其自身的 PK，因此這種種類的重複項目是可能的。 若要防止這類重複項目：
 
 * 在 FK 欄位中新增一個唯一的索引，或
-* 為 `Enrollment` 設定一個主複合索引鍵，與 `CourseAssignment` 相似。 如需詳細資訊，請參閱[索引](https://docs.microsoft.com/ef/core/modeling/indexes)。
+* 為 `Enrollment` 設定一個主複合索引鍵，與 `CourseAssignment` 相似。 如需詳細資訊，請參閱[索引](/ef/core/modeling/indexes)。
 
 ## <a name="update-the-db-context"></a>更新資料庫內容
 
@@ -490,7 +492,7 @@ FK 不可為 Null。 `CourseAssignment` (`InstructorID` 及 `CourseID`) 中的�
 
 ## <a name="fluent-api-alternative-to-attributes"></a>屬性的 Fluent API 替代項目
 
-上述程式碼中的 `OnModelCreating` 方法使用了 *Fluent API* 設定 EF Core 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式。 [下列程式碼](https://docs.microsoft.com/ef/core/modeling/#methods-of-configuration)為 Fluent API 的其中一個範例：
+上述程式碼中的 `OnModelCreating` 方法使用了 *Fluent API* 設定 EF Core 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式。 [下列程式碼](/ef/core/modeling/#methods-of-configuration)為 Fluent API 的其中一個範例：
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -516,7 +518,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 * 僅 EF Core 組態 (例如，`HasKey`)。
 * 驗證及 EF Core 組態 (例如，`[StringLength(50)]`)。
 
-如需屬性與 Fluent API 的詳細資訊，請參閱[方法](https://docs.microsoft.com/ef/core/modeling/#methods-of-configuration)。
+如需屬性與 Fluent API 的詳細資訊，請參閱[方法](/ef/core/modeling/#methods-of-configuration)。
 
 ## <a name="entity-diagram-showing-relationships"></a>顯示關聯性的實體圖表
 
@@ -577,6 +579,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 ## <a name="apply-the-migration"></a>套用移轉
 
 現在您有了現有的資料庫，您需要思考如何對其套用未來變更。 本教學課程示範兩種方法：
+
 * [卸除並重新建立資料庫](#drop)
 * [將移轉套用至現有資料庫](#applyexisting)。 雖然這個方法更複雜且耗時，卻是實際生產環境的慣用方法。 **請注意**：這是本教學課程的選擇性章節。 您可以執行卸除並重新建立步驟，然後略過本節。 如果您希望遵循本章節中的步驟，請不要執行卸除並重新建立的步驟。 
 

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 6/16/2018
 uid: security/authentication/add-user-data
-ms.openlocfilehash: ffc7323c83d2cacabb7cca4ddb3e90276ed1121f
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: bc9d46f74a4bc270ffe5cbed16085e0a8043b35c
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46523099"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206818"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>加入、 下載及刪除身分識別的 ASP.NET Core 專案的自訂使用者資料
 
@@ -24,7 +24,7 @@ ms.locfileid: "46523099"
 
 Razor 頁面 web 應用程式，從建立專案範例，但 ASP.NET Core MVC web 應用程式的指示如下。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/authentication/add-user-data/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/authentication/add-user-data/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 

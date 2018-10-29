@@ -8,12 +8,12 @@ ms.date: 02/26/2014
 ms.assetid: 1e4c2eb4-b6cf-42ff-8a65-4d71ddca0394
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/working-with-entity-relations
 msc.type: authoredcontent
-ms.openlocfilehash: fc1c6b938c4e4be379edf1a495ca47f5f5f2eb4f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: f78b5cf36789032f90d3d073698f7a439507277f
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825169"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206857"
 ---
 <a name="supporting-entity-relations-in-odata-v3-with-web-api-2"></a>支援使用 Web API 2 OData v3 中的實體關聯性
 ====================
@@ -65,7 +65,7 @@ ms.locfileid: "41825169"
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample6.cs)]
 
-*金鑰*參數是產品的索引鍵。 方法會傳回相關的實體 & #8212 在此情況下，`Supplier`執行個體。 方法名稱和參數名稱都很重要。 一般情況下，如果導覽屬性名稱為"X"，您需要新增一個名為"GetX 」 方法。 此方法必須採用名為的參數 」*金鑰*"相符的父索引鍵的資料類型。
+*金鑰*參數是產品的索引鍵。 此方法會傳回相關的實體&#8212;在此情況下，`Supplier`執行個體。 方法名稱和參數名稱都很重要。 一般情況下，如果導覽屬性名稱為"X"，您需要新增一個名為"GetX 」 方法。 此方法必須採用名為的參數 」*金鑰*"相符的父索引鍵的資料類型。
 
 它也是包含重要 **[FromOdataUri]** 屬性中*金鑰*參數。 此屬性會告知 Web API，以剖析要求 URI 中的索引鍵時，請使用 OData 語法規則。
 

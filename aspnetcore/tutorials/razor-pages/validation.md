@@ -4,14 +4,15 @@ author: rick-anderson
 description: 了解如何將驗證新增至 ASP.NET Core 中的 Razor 頁面。
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 08/07/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: cd958b9c084de4b3e12784774544610873a519f9
-ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
+ms.openlocfilehash: 2518b9911f13da79c76c84e530cf53fc2df474e5
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045519"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090442"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -27,7 +28,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 ### <a name="adding-validation-rules-to-the-movie-model"></a>將驗證規則新增至電影模型
 
-開啟 *Models/Movie.cs* 檔案。 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 提供一組內建的驗證屬性 (attribute)，其以宣告方式套用至類別或屬性 (property)。 DataAnnotations 也包含格式化屬性 (如 `DataType`)，可協助進行格式化，但不提供驗證。
+開啟 *Models/Movie.cs* 檔案。 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 提供一組內建的驗證屬性 (attribute)，其以宣告方式套用至類別或屬性 (property)。 DataAnnotations 也包含格式化屬性 (如 `DataType`)，可協助進行格式化，但不提供驗證。
 
 更新 `Movie` 類別，以充分利用 `Required`、`StringLength`、`RegularExpression` 和 `Range` 驗證屬性。
 
@@ -45,7 +46,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 驗證屬性 (attribute) 會指定對模型屬性 (property) 強制執行的行為：
 
-* `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須具有值。 不過，使用者可以輸入空白字元以滿足可為 Null 之類型的驗證條件約束。 不可為 Null 的[實值類型](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types) (如 `decimal`、`int`、`float` 和 `DateTime`) 原本就是必要項目，而且不需要 `Required` 屬性。
+* `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須具有值。 不過，使用者可以輸入空白字元以滿足可為 Null 之類型的驗證條件約束。 不可為 Null 的[實值類型](/dotnet/csharp/language-reference/keywords/value-types) (如 `decimal`、`int`、`float` 和 `DateTime`) 原本就是必要項目，而且不需要 `Required` 屬性。
 * `RegularExpression` 屬性會限制使用者可以輸入的字元數目。 在上述程式碼中，`Genre` 必須以一個以上的大寫字母開頭，並在後面加上零個以上的字母、單引號或雙引號、空格字元或連字號。 `Rating` 必須以一個以上的大寫字母開頭，並在後面加上零個以上的字母、數字、單引號或雙引號、空格字元或連字號。
 * `Range` 屬性會將值限制在指定的範圍內。
 * `StringLength` 屬性可設定字串的最大長度，並選擇性地設定最小長度。 
@@ -95,7 +96,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
-[輸入標記協助程式](xref:mvc/views/working-with-forms)會使用 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
+[輸入標記協助程式](xref:mvc/views/working-with-forms)會使用 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
 
 Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中才能指定驗證規則和錯誤字串。 這些驗證規則會自動套用至編輯 `Movie` 模型的 Razor 頁面。
 
@@ -166,10 +167,10 @@ public DateTime ReleaseDate { get; set; }
 
 ## <a name="additional-resources"></a>其他資源
 
-* [使用表單](xref:mvc/views/working-with-forms)
-* [全球化和當地語系化](xref:fundamentals/localization)
-* [標記協助程式簡介](xref:mvc/views/tag-helpers/intro)
-* [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
+* <xref:mvc/views/working-with-forms>
+* <xref:fundamentals/localization>
+* <xref:mvc/views/tag-helpers/intro>
+* <xref:mvc/views/tag-helpers/authoring>
 
 > [!div class="step-by-step"]
 > [上一步：新增欄位](xref:tutorials/razor-pages/new-field)

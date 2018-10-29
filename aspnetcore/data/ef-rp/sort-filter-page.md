@@ -3,14 +3,15 @@ title: ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 
 author: rick-anderson
 description: 在本教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選、分頁功能新增至頁面。
 ms.author: riande
-ms.date: 6/31/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 06669d69fa9fec87d262c2b5bfd8b11649259849
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: 19fe24e0f901c50e8425db7665b5b2257b608146
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348438"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090874"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
 
@@ -51,7 +52,7 @@ Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` �
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=3-4)]
 
-下列程式碼包含 C# 條件式 [?: 運算子](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/conditional-operator)：
+下列程式碼包含 C# 條件式 [?: 運算子](/dotnet/csharp/language-reference/operators/conditional-operator)：
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_Ternary)]
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/01/2018
 uid: fundamentals/file-providers
-ms.openlocfilehash: a0d326f5fc995cb903380315879d39a8ce851d06
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 3274615a0d6b6f928301ce97d18f5d9768963a30
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913212"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207312"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
@@ -24,7 +24,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「
 * [Razor](xref:mvc/views/razor) 使用「檔案提供者」來尋找頁面與檢視。
 * .NET Core 工具使用「檔案提供者」與 Glob 模式來指定應該要發佈哪些檔案。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="file-provider-interfaces"></a>檔案提供者介面
 

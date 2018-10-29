@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2018
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 2eddfa03b28564fcca7cc098e353b05e23b7c6f6
-ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
+ms.openlocfilehash: a06c2da04c1631f5811a535c891ca5190b0d8864
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336271"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207533"
 ---
 # <a name="enhance-an-app-from-an-external-assembly-in-aspnet-core-with-ihostingstartup"></a>在 ASP.NET Core 中使用 IHostingStartup 從外部組件增強應用程式
 
@@ -20,7 +20,7 @@ ms.locfileid: "43336271"
 
 實作 [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) (裝載啟動) 會在啟動時，從外部組件將增強功能新增至應用程式。 例如，外部程式庫可以使用裝載啟動實作，向應用程式提供額外的組態提供者或服務。 ASP.NET Core 2.0 或更新版本提供 `IHostingStartup`。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="hostingstartup-attribute"></a>HostingStartup 屬性
 
@@ -381,7 +381,7 @@ NuGet 套件可以提供裝載啟動的增強功能。 此套件具有 `HostingS
 
 ## <a name="sample-code"></a>範例程式碼
 
-[程式碼範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([如何下載](xref:tutorials/index#how-to-download-a-sample)) 示範裝載啟動實作案例：
+[程式碼範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([如何下載](xref:index#how-to-download-a-sample)) 示範裝載啟動實作案例：
 
 * 兩個裝載啟動組件 (類別程式庫) 各設定一對記憶體內部組態索引鍵/值組：
   * NuGet 套件 (*HostingStartupPackage*)

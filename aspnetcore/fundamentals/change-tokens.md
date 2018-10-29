@@ -5,12 +5,12 @@ description: 了解如何使用變更權杖來追蹤變更。
 ms.author: riande
 ms.date: 11/10/2017
 uid: fundamentals/change-tokens
-ms.openlocfilehash: 1cf3693764919a8fd064584ab7b7ad237e8465b3
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 7ad580a7e999a4eae006ce5dd07cca0cbdbe9ab6
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391374"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206415"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>在 ASP.NET Core 中使用變更權杖來偵測變更
 
@@ -18,7 +18,7 @@ ms.locfileid: "49391374"
 
 「變更權杖」是用來追蹤變更的一般用途低階建置組塊。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/change-tokens/sample/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/change-tokens/sample/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>IChangeToken 介面
 
@@ -195,9 +195,9 @@ var compositeChangeToken =
 
 ## <a name="additional-resources"></a>其他資源
 
-* [記憶體中快取](xref:performance/caching/memory)
-* [使用分散式快取](xref:performance/caching/distributed)
-* [回應快取](xref:performance/caching/response)
-* [回應快取中介軟體](xref:performance/caching/middleware)
-* [快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [分散式快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:performance/caching/memory>
+* <xref:performance/caching/distributed>
+* <xref:performance/caching/response>
+* <xref:performance/caching/middleware>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>

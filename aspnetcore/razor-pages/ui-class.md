@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/07/2018
 uid: razor-pages/ui-class
-ms.openlocfilehash: 3adad70e31089b959192ed0c5828f294c696b070
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: 4cbff1565fe82925d9196d8cd810651b97b293da
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46523112"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206518"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>建立可重複使用 UI 在 ASP.NET Core 中使用 Razor 類別庫專案
 
@@ -21,7 +21,7 @@ Razor 檢視、頁面、控制器、頁面模型、[檢視元件](xref:mvc/views
 
 這項功能需要 [!INCLUDE[](~/includes/2.1-SDK.md)]
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="create-a-class-library-containing-razor-ui"></a>建立包含 Razor UI 的類別庫
 

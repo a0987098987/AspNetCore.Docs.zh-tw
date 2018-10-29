@@ -4,14 +4,15 @@ author: rick-anderson
 description: 了解使用 Visual Studio Code 建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 08/27/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: tutorials/razor-pages-vsc/razor-pages-start
-ms.openlocfilehash: b7f6ca377a892fce912dc0ee9d4b7378f40fbf24
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: 9ea66134c524a6a1a670d55bae4e66cf38a45274
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46522923"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089848"
 ---
 # <a name="get-started-with-aspnet-core-razor-pages-in-visual-studio-code"></a>Visual Studio Code 中的 ASP.NET Core Razor 頁面使用者入門
 
@@ -47,7 +48,7 @@ dotnet run
 
 ::: moniker-end
 
-上述命令使用 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet) 來建立和執行 Razor 頁面專案。 將瀏覽器開啟到 http://localhost:5000，以檢視應用程式。
+上述命令使用 [.NET Core CLI](/dotnet/core/tools/dotnet) 來建立和執行 Razor 頁面專案。 將瀏覽器開啟到 http://localhost:5000，以檢視應用程式。
 
 ![Home 或 Index 頁面](../razor-pages/razor-pages-start/_static/home.png)
 

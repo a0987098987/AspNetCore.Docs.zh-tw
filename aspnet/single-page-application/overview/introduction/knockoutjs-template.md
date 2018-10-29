@@ -8,12 +8,12 @@ ms.date: 01/30/2013
 ms.assetid: f9c07af0-4b20-4b08-af8f-47fc3df169a2
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
-ms.openlocfilehash: 328046363666944f121dedc1883bbe83f5b079d2
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 60bc8bf95cace722244ffc87ff4c00126a0ed2a0
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831819"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207442"
 ---
 <a name="single-page-application-knockoutjs-template"></a>單一頁面應用程式： KnockoutJS 範本
 ====================
@@ -163,7 +163,7 @@ MVC 控制站也位於 [控制器] 資料夾的解決方案。 `HomeController` 
 
 [!code-cshtml[Main](knockoutjs-template/samples/sample4.cshtml)]
 
-當使用者登入時，他們會看到主要的 UI。 否則，他們會看到登入面板。 請注意，此條件式呈現的作業會在伺服器端。 永遠不會嘗試隱藏用戶端上的機密內容 & #8212anything 您傳送 HTTP 回應中會顯示為監看的未經處理的 HTTP 訊息的任何人。
+當使用者登入時，他們會看到主要的 UI。 否則，他們會看到登入面板。 請注意，此條件式呈現的作業會在伺服器端。 永遠不會嘗試隱藏敏感的內容，用戶端上&#8212;HTTP 回應中傳送的任何項目會顯示為監看的未經處理的 HTTP 訊息的任何人。
 
 ## <a name="client-side-javascript-and-knockoutjs"></a>用戶端 JavaScript 和 Knockout.js
 

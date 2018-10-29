@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 213d6d09501b5428bdaad454ec487702ef2a02a6
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: c4a512e5518380f5f0a43d08cd0bcba2f8c26141
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325909"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207663"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>ASP.NET Core 中的防止跨網站要求偽造 (XSRF/CSRF) 攻擊
 
@@ -423,7 +423,7 @@ AngularJS 使用位址 CSRF 慣例。 如果伺服器會傳送具有名稱的 co
 services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
 ```
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="extend-antiforgery"></a>擴充 antiforgery
 

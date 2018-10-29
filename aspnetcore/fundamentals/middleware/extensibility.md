@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/14/2018
 uid: fundamentals/middleware/extensibility
-ms.openlocfilehash: 346f5e7b28a9cd17a03a864772ed8b2e4be9455b
-ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
+ms.openlocfilehash: 566a5c5f642a3f55e72a8e070c69d2bfddaee3a1
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41751473"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207195"
 ---
 # <a name="factory-based-middleware-activation-in-aspnet-core"></a>ASP.NET Core 的 Factory 中介軟體啟用
 
@@ -29,7 +29,7 @@ ms.locfileid: "41751473"
 
 `IMiddleware` 是依據要求啟用，因此範圍服務可以插入中介軟體的建構函式中。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/extensibility/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/extensibility/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 範例應用程式會示範如何依據下列條件來啟用中介軟體：
 

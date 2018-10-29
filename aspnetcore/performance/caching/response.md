@@ -5,12 +5,12 @@ description: 了解如何使用回應快取來降低頻寬需求，並提升 ASP
 ms.author: riande
 ms.date: 09/20/2017
 uid: performance/caching/response
-ms.openlocfilehash: bbf5b649bac9d31aa6d0ecdc3828648677b05716
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 99093cd281ffa8dddc574dc27254c0175e2651b3
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090689"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207364"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core 中的回應快取
 
@@ -19,7 +19,7 @@ ms.locfileid: "50090689"
 > [!NOTE]
 > 回應快取中的 Razor 頁面是適用於 ASP.NET Core 2.1 或更新版本。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 回應快取可減少用戶端或 proxy 會向 web 伺服器提出的要求數目。 回應快取也可以減少 web 伺服器執行產生回應的工作。 回應快取是由指定您想用戶端、 proxy 和中的介軟體來快取回應標頭來控制。
 

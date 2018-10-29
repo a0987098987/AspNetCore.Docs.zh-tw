@@ -6,18 +6,18 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: 4bb28e7644997c50c14046bc0c89338fa35a5f14
-ms.sourcegitcommit: a742b55e4b8276a48b8b4394784554fecd883c84
+ms.openlocfilehash: 42f8071eadabba3eb8cb738be1720f4c6195808c
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45538475"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207234"
 ---
 # <a name="visual-studio-tools-for-docker-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Visual Studio Tools for Docker
 
 Visual Studio 2017 支援建置、偵錯和執行以 .NET Core 為目標的容器化 ASP.NET Core 應用程式。 同時支援 Windows 和 Linux 容器。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 

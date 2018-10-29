@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 10/12/2018
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 13fd6c156afd5ab62739b09296a929120ce3450f
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: f04e0930966c9aaf38543729565b1ef4a80a09e2
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348529"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207689"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面路由和應用程式慣例
 
@@ -25,7 +25,7 @@ ms.locfileid: "49348529"
 
 有不能作為路由區段或參數名稱的保留的字。 如需詳細資訊，請參閱 <<c0> [ 路由： 保留路由名稱](xref:fundamentals/routing#reserved-routing-names)。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/sample/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/sample/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ::: moniker range="= aspnetcore-2.0"
 
@@ -87,7 +87,7 @@ public void ConfigureServices(IServiceCollection services)
 
 可能的話，請避免根據已建立的路由的處理順序而定。 一般而言，路由會選取正確的路由，透過 URL 比對。 如果您必須設定路由`Order`屬性來路由要求是否正確，應用程式的路由傳送，進而可能造成混淆的用戶端和容易維護。 若要簡化應用程式的路由傳送，進而搜尋。 範例應用程式需要的處理順序，來示範數個使用單一的應用程式的路由案例的外顯路由。 不過，您應該嘗試避免設定路由的練習`Order`在生產環境應用程式。
 
-Razor Pages 路由和 MVC 控制器路由共用實作。 在 MVC 主題中的路由順序的詳細資訊位於[路由至控制器動作： 排序屬性路由](xref:mvc/controllers/routing#ordering-attribute-routes)。
+Razor Pages 路由和 MVC 控制器路由會共用實作。 在 MVC 主題中的路由順序的詳細資訊位於[路由至控制器動作： 排序屬性路由](xref:mvc/controllers/routing#ordering-attribute-routes)。
 
 ## <a name="model-conventions"></a>模型慣例
 

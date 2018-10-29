@@ -9,11 +9,11 @@ ms.assetid: aa67d304-583b-4bf8-a231-195656cfb587
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-c
 msc.type: authoredcontent
 ms.openlocfilehash: 347e5ddbc02866887d3f422ecc291e5e3dfacaaf
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831449"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207910"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>使用 Razor 語法 (C#) 的 ASP.NET Web 程式設計簡介
 ====================
@@ -342,13 +342,13 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
 
 :::row:::
     :::column:::
-        <strong>方法</strong>
+        <strong>Method</strong>
     :::column-end:::
     :::column:::
-        <strong>描述</strong>
+        <strong>Description</strong>
     :::column-end:::
     :::column:::
-        <strong>範例</strong>
+        <strong>Example</strong>
     :::column-end:::
 :::row-end:::
 * * *
@@ -357,7 +357,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `AsInt(), IsInt()`
     :::column-end:::
     :::column:::
-        將轉換成整數表示 （例如"593 」) 之間的整數的字串。
+        Converts a string that represents a whole number (like "593") to an integer.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample28.cs)]
@@ -369,7 +369,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `AsBool(), IsBool()`
     :::column-end:::
     :::column:::
-        將轉換的字串，例如&quot;，則為 true&quot;或是&quot;false&quot;布林型別。
+        Converts a string like &quot;true&quot; or &quot;false&quot; to a Boolean type.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample29.cs)]
@@ -381,7 +381,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `AsFloat(), IsFloat()`
     :::column-end:::
     :::column:::
-        將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;浮點數。
+        Converts a string that has a decimal value like &quot;1.3&quot; or &quot;7.439&quot; to a floating-point number.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample30.cs)]
@@ -393,7 +393,8 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `AsDecimal(), IsDecimal()`
     :::column-end:::
     :::column:::
-        將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;十進位數字。 （在 ASP.NET 中，十進位數字是更精確比浮點數）。 :::column-end:::
+        Converts a string that has a decimal value like &quot;1.3&quot; or &quot;7.439&quot; to a decimal number. (In ASP.NET, a decimal number is more precise than a floating-point number.)
+    :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample31.cs)]
     :::column-end:::
@@ -404,7 +405,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `AsDateTime(), IsDateTime()`
     :::column-end:::
     :::column:::
-        將 asp.net 代表的日期和時間值的字串轉換`DateTime`型別。
+        Converts a string that represents a date and time value to the ASP.NET `DateTime` type.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample32.cs)]
@@ -416,7 +417,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `ToString()`
     :::column-end:::
     :::column:::
-        將任何其他資料類型轉換為字串。
+        Converts any other data type to a string.
     :::column-end:::
     :::column:::
         [!code-javascript[Main](introducing-razor-syntax-c/samples/sample33.js)]
@@ -433,10 +434,10 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         <strong>Operator</strong>
     :::column-end:::
     :::column:::
-        <strong>描述</strong>
+        <strong>Description</strong>
     :::column-end:::
     :::column:::
-        <strong>範例</strong>
+        <strong>Examples</strong>
     :::column-end:::
 :::row-end:::
 * * *
@@ -445,7 +446,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `+` `-` `*` `/`
     :::column-end:::
     :::column:::
-        用在數值運算式的數學運算子。
+        Math operators used in numerical expressions.
     :::column-end:::
     :::column:::
         [!code-css[Main](introducing-razor-syntax-c/samples/sample34.css)]
@@ -457,7 +458,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `=`
     :::column-end:::
     :::column:::
-        指派。 將陳述式的右邊的值指派給左邊的物件中。
+        Assignment. Assigns the value on the right side of a statement to the object on the left side.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample35.cs)]
@@ -469,7 +470,8 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `==`
     :::column-end:::
     :::column:::
-        相等。 傳回`true`值是否相等。 (請注意區分`=`運算子和`==`運算子。) :::column-end:::
+        Equality. Returns `true` if the values are equal. (Notice the distinction between the `=` operator and the `==` operator.)
+    :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample36.cs)]
     :::column-end:::
@@ -480,7 +482,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `!=`
     :::column-end:::
     :::column:::
-        不等。 傳回`true`值是否不相等。
+        Inequality. Returns `true` if the values are not equal.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample37.cs)]
@@ -492,7 +494,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `< > <= >=`
     :::column-end:::
     :::column:::
-        較少-相比，大於-小於-或-等於、 與大於或等於比。
+        Less-than, greater-than, less-than-or-equal, and greater-than-or-equal.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample38.cs)]
@@ -504,7 +506,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `+`
     :::column-end:::
     :::column:::
-        串連，用來聯結字串。 ASP.NET 會知道此運算子和運算式的資料類型的加法運算子之間的差異。
+        Concatenation, which is used to join strings. ASP.NET knows the difference between this operator and the addition operator based on the data type of the expression.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample39.cs)]
@@ -516,7 +518,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `+=` `-=`
     :::column-end:::
     :::column:::
-        遞增和遞減運算子，以新增和從變數 （分別） 減 1。
+        The increment and decrement operators, which add and subtract 1 (respectively) from a variable.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample40.cs)]
@@ -528,7 +530,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `.`
     :::column-end:::
     :::column:::
-        點。 用來區別物件及其屬性和方法。
+        Dot. Used to distinguish objects and their properties and methods.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample41.cs)]
@@ -540,7 +542,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `()`
     :::column-end:::
     :::column:::
-        括號。 用來群組運算式，並將參數傳遞給方法。
+        Parentheses. Used to group expressions and to pass parameters to methods.
     :::column-end:::
     :::column:::
         [!code-javascript[Main](introducing-razor-syntax-c/samples/sample42.js)]
@@ -552,7 +554,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `[]`
     :::column-end:::
     :::column:::
-        方括號。 用來存取陣列或集合中的值。
+        Brackets. Used for accessing values in arrays or collections.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample43.cs)]
@@ -564,7 +566,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `!`
     :::column-end:::
     :::column:::
-        不。 反轉`true`值`false`，反之亦然。 常用縮寫來測試`false`(也就是針對不`true`)。
+        Not. Reverses a `true` value to `false` and vice versa. Typically used as a shorthand way to test for `false` (that is, for not `true`).
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample44.cs)]
@@ -576,7 +578,7 @@ Razor 會對 C# 的巢狀區塊中的限制。 如需詳細資訊，請參閱[�
         `&&` <code>&#124;&#124;</code>
     :::column-end:::
     :::column:::
-        邏輯 AND 和 OR，這用來連結條件一起。
+        Logical AND and OR, which are used to link conditions together.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample45.cs)]

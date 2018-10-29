@@ -3,14 +3,15 @@ title: ASP.NET Core MVC 與 EF Core - 繼承 - 9/10
 author: rick-anderson
 description: 本教學課程將說明如何在 ASP.NET Core 應用程式中使用 Entity Framework Core，以實作資料模型中的繼承。
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: a71954297f44f936893a7f1e9d3b0685f81378b9
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 60417040dd296311e1aecff8f224aadf8da82779
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38126700"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090754"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---inheritance---9-of-10"></a>ASP.NET Core MVC 與 EF Core - 繼承 - 9/10
 
@@ -142,7 +143,7 @@ dotnet ef database update
 
 ## <a name="summary"></a>總結
 
-您已針對 `Person`、`Student` 和 `Instructor` 類別實作單表繼承。 如需 Entity Framework Core 中有關繼承的詳細資訊，請參閱[繼承](https://docs.microsoft.com/ef/core/modeling/inheritance)。 在下一個教學課程中，您將了解如何處理各種相對進階的 Entity Framework 案例。
+您已針對 `Person`、`Student` 和 `Instructor` 類別實作單表繼承。 如需 Entity Framework Core 中有關繼承的詳細資訊，請參閱[繼承](/ef/core/modeling/inheritance)。 在下一個教學課程中，您將了解如何處理各種相對進階的 Entity Framework 案例。
 
 ::: moniker-end
 

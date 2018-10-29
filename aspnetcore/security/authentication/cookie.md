@@ -5,12 +5,12 @@ description: 說明的使用沒有 ASP.NET Core 身分識別的 cookie 驗證
 ms.author: riande
 ms.date: 10/11/2017
 uid: security/authentication/cookie
-ms.openlocfilehash: 8045a1bf27853ff5f03166e7cf10d89e2ad38fd1
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 8add7559557d505397c3be8d8a48aa2e9d9e45e8
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011832"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207416"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>使用沒有 ASP.NET Core 身分識別的 cookie 驗證
 
@@ -18,7 +18,7 @@ ms.locfileid: "46011832"
 
 當您在先前的驗證主題中所見[ASP.NET Core Identity](xref:security/authentication/identity)是完整且功能完整的驗證提供者來建立及維護的登入。 不過，您可能要使用您自己的自訂驗證邏輯使用有時 cookie 型驗證。 您可以使用以 cookie 為基礎的驗證作為獨立驗證提供者沒有 ASP.NET Core 身分識別。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/cookie/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/cookie/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 基於示範目的，範例應用程式中，假設使用者林麗莉 Rodriguez 的使用者帳戶會是硬式編碼到應用程式。 使用電子郵件使用者名稱 」maria.rodriguez@contoso.com」 和任何登入使用者的密碼。 使用者通過驗證`AuthenticateUser`方法中的*Pages/Account/Login.cshtml.cs*檔案。 在真實世界範例中，您會驗證使用者，對資料庫。
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/30/2018
 uid: test/integration-tests
-ms.openlocfilehash: 15186383497f8dd9a9766f8fe7cf32f70a121c8e
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: a136a362cd8973b3684f9a70bd4792d75238eab0
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477588"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207871"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -22,7 +22,7 @@ ms.locfileid: "49477588"
 
 本主題假設單元測試的基本知識。 如果熟悉測試概念，請參閱[.NET Core 和.NET Standard 中的單元測試](/dotnet/core/testing/)主題和其連結的內容。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 範例應用程式是 Razor 頁面應用程式，並假設 Razor 頁面的基本知識。 如果不熟悉使用 Razor 頁面，請參閱下列主題：
 

@@ -33,7 +33,8 @@
 
    * 電影清單。
    * 包含內容類型清單的 `SelectList`。 這可讓使用者從清單中選取內容類型。
-   * 包含所選取內容類型的 `movieGenre`。
+   * 包含所選取內容類型的 `MovieGenre`。
+   * `SearchString`，其中包含使用者在搜尋文字方塊中輸入的文字。
 
 以下列程式碼取代 `MoviesController.cs` 中的 `Index` 方法：
 
@@ -45,9 +46,11 @@
 
 藉由投射不同的內容類型來建立內容類型的 `SelectList` (我們不希望選取清單中有重複的內容類型)。
 
+當使用者搜尋項目時，搜尋的值會保留在搜尋方塊中。 若要保留搜尋值，請將搜尋值填入 `SearchString` 屬性。 搜尋值是 `Index` 控制器動作的 `searchString` 參數。
+
 ```csharp
 movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync())
-   ```
+```
 
 ## <a name="adding-search-by-genre-to-the-index-view"></a>將依內容類型搜尋新增至 Index 檢視
 
@@ -57,8 +60,8 @@ movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync())
 
 檢查下列 HTML 協助程式中使用的 Lambda 運算式：
 
-`@Html.DisplayNameFor(model => model.movies[0].Title)`
+`@Html.DisplayNameFor(model => model.Movies[0].Title)`
  
-在上述程式碼中，`DisplayNameFor` HTML 協助程式會檢查 Lambda 運算式中參考的 `Title` 屬性來判斷顯示名稱。 由於 Lambda 運算式是檢查而不是評估，因此您在 `model`、`model.movies` 或 `model.movies[0]` 是 `null` 或空白時，不會收到存取違規。 在評估 Lambda 運算式時 (例如，`@Html.DisplayFor(modelItem => item.Title)`)，會評估模型的屬性值。
+在上述程式碼中，`DisplayNameFor` HTML 協助程式會檢查 Lambda 運算式中參考的 `Title` 屬性來判斷顯示名稱。 由於 Lambda 運算式是檢查而不是評估，因此您在 `model`、`model.Movies` 或 `model.Movies[0]` 是 `null` 或空白時，不會收到存取違規。 在評估 Lambda 運算式時 (例如，`@Html.DisplayFor(modelItem => item.Title)`)，會評估模型的屬性值。
 
 依據內容類型、電影標題和這兩者進行搜尋，藉以測試應用程式。

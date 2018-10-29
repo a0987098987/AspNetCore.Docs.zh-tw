@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: e11657e27787e2fab8eacc8d4148a7ab089f9f53
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 65e6b13dc3430d7bd9b513da34fbd53e349f9cc2
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391319"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091102"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -212,7 +212,7 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 這些透過上一節中所示的 `ILogger` 呼叫建立的記錄是以 "TodoApi.Controllers.TodoController" 為開頭。 開頭為 "Microsoft" 類別的記錄則是來自 ASP.NET Core 架構程式碼。 ASP.NET Core 與應用程式程式碼會使用相同的記錄 API 與提供者。
 
-此文章的其餘部分將說明記錄的一些詳細資料和選項。
+本文的其餘部分將說明記錄的一些詳細資料和選項。
 
 ## <a name="nuget-packages"></a>NuGet 套件
 
@@ -300,12 +300,12 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
   發生需要立即注意的失敗。 範例：資料遺失情況、磁碟空間不足。
 
-使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如：
+使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如: 
 
 * 在生產環境中，透過 `Information` 層級將 `Trace` 傳送到大量資料存放區。 透過 `Critical` 將 `Warning` 傳送到值資料存放區。
 * 在開發期間，透過 `Critical` 將 `Warning` 傳送到主控台，並在進行疑難排解時透過 `Information` 新增 `Trace`。
 
-此文章稍後的[記錄篩選](#log-filtering)一節將說明如何控制提供者所處理的記錄層級。
+本文稍後的[記錄篩選](#log-filtering)一節將說明如何控制提供者所處理的記錄層級。
 
 ASP.NET Core 會寫入架構事件的記錄。 此文章稍早的記錄範例已排除 `Information` 層級以下的記錄，因此未建立 `Debug` 或 `Trace` 層級的任何記錄。 以下是透過執行設定為顯示 `Debug` 記錄之範例應用程式所產生的主控台記錄範例：
 
@@ -440,13 +440,13 @@ System.Exception: Item not found exception.
 
 若要隱藏所有記錄，請指定 `LogLevel.None` 作為最低記錄層級。 `LogLevel.None` 的整數值為 6，高於 `LogLevel.Critical` (5)。
 
-### <a name="create-filter-rules-in-configuration"></a>在設定中建立篩選規則
+### <a name="create-filter-rules-in-configuration"></a>在組態中建立篩選規則
 
-專案範本程式碼會呼叫 `CreateDefaultBuilder` 以設定主控台與偵錯提供者的記錄。 `CreateDefaultBuilder` 方法也會使用如下所示的程式碼，將記錄設定為尋找 `Logging` 區段中的設定：
+專案範本程式碼會呼叫 `CreateDefaultBuilder` 以設定主控台與偵錯提供者的記錄。 `CreateDefaultBuilder` 方法也會使用如下所示的程式碼，將記錄設定為尋找 `Logging` 區段中的組態：
 
-[!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_ExpandDefault&highlight=15)]
+[!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_ExpandDefault&highlight=16)]
 
-設定資料會依提供者和類別指定最低記錄層級，如下列範例所示：
+組態資料會依提供者和類別指定最低記錄層級，如下列範例所示：
 
 [!code-json[](index/samples/2.x/TodoApiSample/appsettings.json)]
 
@@ -462,7 +462,7 @@ System.Exception: Item not found exception.
 
 ### <a name="how-filtering-rules-are-applied"></a>如何套用篩選規則
 
-設定資料和上述範例中所示的 `AddFilter` 程式碼會建立下表中所示的規則。 前六個來自設定範例，最後兩個來自程式碼範例。
+組態資料和上述範例中所示的 `AddFilter` 程式碼會建立下表中所示的規則。 前六項來自組態範例，最後兩項來自程式碼範例。
 
 | number | 提供者      | 開頭如下的類別...          | 最低記錄層級 |
 | :----: | ------------- | --------------------------------------- | ----------------- |
@@ -504,7 +504,7 @@ System.Exception: Item not found exception.
 
 ### <a name="default-minimum-level"></a>預設最低層級
 
-只有設定或程式碼中沒有適用於指定提供者和類別的規則時，最低層級設定才會生效。 下列範例示範如何設定最低層級：
+只有組態或程式碼中沒有適用於指定提供者和類別的規則時，最低層級設定才會生效。 下列範例示範如何設定最低層級：
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_MinLevel&highlight=3)]
 
@@ -512,7 +512,7 @@ System.Exception: Item not found exception.
 
 ### <a name="filter-functions"></a>篩選函式
 
-針對設定或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如: 
+針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如: 
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_FilterFunction&highlight=5-13)]
 
@@ -542,7 +542,7 @@ System.Exception: Item not found exception.
 
 以下是由 ASP.NET Core 與 Entity Framework Core 所使用的一些類別，以及有關它們可傳回哪些記錄的附註：
 
-| 分類                            | 附註 |
+| 分類                            | 注意 |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | 一般 ASP.NET Core 診斷。 |
 | Microsoft.AspNetCore.DataProtection | 已考慮、發現及使用哪些金鑰。 |
@@ -653,7 +653,7 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 [!code-json[](index/samples/1.x/TodoApiSample//appsettings.json)]
 
-上述設定會將架構記錄限制為警告，同時讓應用程式在偵錯層級記錄，如[記錄篩選](#log-filtering)一節中所述。 如需詳細資訊，請參閱[設定](xref:fundamentals/configuration/index)。
+上述設定會將架構記錄限制為警告，同時讓應用程式在偵錯層級記錄，如[記錄篩選](#log-filtering)一節中所述。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 
 ::: moniker-end
 
@@ -755,7 +755,7 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 ::: moniker-end
 
-[AddTraceSource 多載](xref:Microsoft.Extensions.Logging.TraceSourceFactoryExtensions)可讓您傳入來源參數和追蹤接聽程式。
+[AddTraceSource 多載](xref:Microsoft.Extensions.Logging.TraceSourceFactoryExtensions)可讓您傳入來源參數和追蹤接聽項。
 
 若要使用此提供者，應用程式必須在 .NET Framework (而非 .NET Core) 上執行。 該提供者可讓您將訊息路由傳送到種不同的[接聽程式](/dotnet/framework/debug-trace-profile/trace-listeners)，例如範例應用程式中所使用的 <xref:System.Diagnostics.TextWriterTraceListener>。
 
@@ -836,7 +836,7 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 ::: moniker-end
 
-### <a name="azure-log-streaming"></a>Azure 記錄串流
+### <a name="azure-log-streaming"></a>Azure 記錄資料流
 
 Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 
@@ -844,7 +844,7 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 * 網頁伺服器
 * 失敗的要求追蹤
 
-設定 Azure 記錄串流：
+若要設定 Azure 記錄資料流：
 
 * 從您應用程式的入口網站頁面瀏覽到 [診斷記錄]。
 * 將 [應用程式記錄 (檔案系統)] 設定為 [開啟]。
@@ -879,6 +879,7 @@ Application Insights SDK 可以收集及回報由 ASP.NET Core 記錄基礎結�
 * [NLog](http://nlog-project.org/) ([GitHub 存放庫](https://github.com/NLog/NLog.Extensions.Logging))
 * [Sentry](https://sentry.io/welcome/) ([GitHub 存放庫](https://github.com/getsentry/sentry-dotnet))
 * [Serilog](https://serilog.net/) ([GitHub 存放庫](https://github.com/serilog/serilog-extensions-logging))
+* [Stackdriver](https://cloud.google.com/dotnet/docs/stackdriver#logging) ([Github 存放庫](https://github.com/googleapis/google-cloud-dotnet))
 
 某些協力廠商架構可以執行[語意記錄 (也稱為結構化記錄)](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging) \(英文\)。
 

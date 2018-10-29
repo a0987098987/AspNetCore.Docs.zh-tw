@@ -5,12 +5,12 @@ description: 了解如何開始使用 ASP.NET Core MVC 與 Visual Studio。
 ms.author: riande
 ms.date: 10/07/2017
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 41f986a06ec46dc025c4e8218745b4a513e8ee2a
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: fe555e4cfcaec5d4bb8ccee00b06d1bbcaae9dcd
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011695"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391202"
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>ASP.NET Core MVC 與 Visual Studio 使用者入門
 
@@ -48,12 +48,12 @@ ms.locfileid: "46011695"
 完成 [新增 ASP.NET Core Web 應用程式 (.NET Core) - MvcMovie] 對話方塊：
 
 * 在版本選取器下拉式清單方塊中，選取 [ASP.NET Core 2.1]
-* 選取 [Web 應用程式(模型檢視控制器)]。
+* 選取 [Web 應用程式 (模型-檢視-控制器)]
 * 點選 [確定]。
 
 ![[新增專案] 對話方塊, 左窗格中的 .Net core, ASP.NET Core Web ](start-mvc/_static/new_project22-21.png)
 
-Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只要輸入專案名稱，然後選取幾個選項，就立刻會有工作中的應用程式。 這是基本的入門專案，是個好開始。
+Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只要輸入專案名稱，然後選取幾個選項，就立刻會有工作中的應用程式。 這是基本的入門專案，讓我們從這裡開始吧。
 
 點選 **F5** 在偵錯模式中執行應用程式，或 **Ctrl-F5** 在非偵錯模式中執行。
 <!-- These images are also used by uid: tutorials/first-mvc-app-xplat/start-mvc -->

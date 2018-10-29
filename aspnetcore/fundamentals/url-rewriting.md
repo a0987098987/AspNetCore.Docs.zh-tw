@@ -5,12 +5,12 @@ description: 了解如何使用 ASP.NET Core 的 URL 重寫中介軟體，進行
 ms.author: riande
 ms.date: 08/17/2017
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: d3484e222c4412a427d086c1b71a12b81095ba72
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d9f33f34f75fe7bf534146c5a426335e74635018
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276343"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326065"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core 的 URL 重寫中介軟體
 
@@ -63,13 +63,15 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
 ## <a name="extension-and-options"></a>延伸模組和選項
 
-若要建立 URL 重寫和重新導向規則，您可以針對每個規則的擴充方法建立 `RewriteOptions` 類別的執行個體。 依據所需的處理順序來鏈結多個規則。 系統會使用 `app.UseRewriter(options);` 將 `RewriteOptions` 新增至要求管線，並將其傳入 URL 重寫中介軟體。
+若要建立 URL 重寫和重新導向規則，您可以針對每個規則的擴充方法建立 [RewriteOptions](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptions) 類別的執行個體。 依據所需的處理順序來鏈結多個規則。 系統會使用 `app.UseRewriter(options);` 將 `RewriteOptions` 新增至要求管線，並將其傳入 URL 重寫中介軟體。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -88,17 +90,31 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
----
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+### <a name="redirect-non-www-to-www"></a>將非 www 重新導向 www
+
+有三個選項可讓應用程式將非 `www` 要求重新導向 `www`：
+
+* [AddRedirectToWwwPermanent(RewriteOptions)](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptionsextensions.addredirecttowwwpermanent) &ndash; 會將要求永久重新導向 `www` 子網域 (如果要求為非 `www`)。 使用 [Status308PermanentRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status308permanentredirect) 狀態代碼重新導向。
+* [AddRedirectToWww(RewriteOptions)](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptionsextensions.addredirecttowww) &ndash; 會將要求重新導向 `www` 子網域 (如果連入的要求為非 `www`)。 使用 [Status307TemporaryRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status307temporaryredirect) 狀態代碼重新導向。
+* [AddRedirectToWww(RewriteOptions, Int32)](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptionsextensions.addredirecttowww) &ndash; 會將要求重新導向 `www` 子網域 (如果連入的要求為非 `www`)。 允許您提供回應的狀態代碼。 使用 [StatusCodes](/dotnet/api/microsoft.aspnetcore.http.statuscodes) 類別的欄位進行 `AddRedirectToWww` 指派。
+
+::: moniker-end
 
 ### <a name="url-redirect"></a>URL 重新導向
 
 使用 `AddRedirect` 將要求重新導向。 第一個參數會包含您的 Regex，以比對傳入的 URL 路徑。 第二個參數是取代字串。 第三個參數 (如果有的話) 會指定狀態碼。 如果您未指定狀態碼，則預設為 302 (已找到)，表示已暫時移動或取代資源。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=9)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -110,7 +126,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 在啟用開發人員工具的瀏覽器中，使用 `/redirect-rule/1234/5678` 路徑提出範例應用程式的要求。 Regex 會比對 `redirect-rule/(.*)` 上的要求路徑，並會將路徑取代為 `/redirected/1234/5678`。 系統會將重新導向 URL 與 302 (已找到) 狀態碼傳回給用戶端。 瀏覽器在重新導向 URL 處提出新要求，該 URL 也會顯示在瀏覽器的網址列中。 由於範例應用程式中的任何規則都不符合重新導向 URL，因此第二個要求會收到應用程式的 200 (確定) 回應，且回應主體會顯示重新導向 URL。 「重新導向」URL 時，即需往返伺服器。
 
@@ -168,11 +184,13 @@ public void Configure(IApplicationBuilder app)
 
 使用 `AddRewrite` 來建立 URL 重寫的規則。 第一個參數會包含您的 Regex，以比對傳入的 URL 路徑。 第二個參數是取代字串。 第三個參數 `skipRemainingRules: {true|false}` 指出中介軟體是否要在套用目前規則時略過其他重寫規則。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=10-11)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -185,7 +203,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 原始要求：`/rewrite-rule/1234/5678`
 
@@ -222,13 +240,15 @@ public void Configure(IApplicationBuilder app)
 
 使用 `AddApacheModRewrite` 來套用 Apache mod_rewrite 規則。 請確認應用程式已部署規則檔。 如需 mod_rewrite 規則的詳細資訊和範例，請參閱 [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 系統會使用 `StreamReader` 來讀取 *ApacheModRewrite.txt* 規則檔案的規則。
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=3-4,12)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 第一個參數會採用透過[相依性插入](dependency-injection.md)所提供的 `IFileProvider`。 系統會插入 `IHostingEnvironment` 以提供 `ContentRootFileProvider`。 第二個參數是規則檔案的路徑，也就是範例應用程式中的 *ApacheModRewrite.txt*。
 
@@ -242,7 +262,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
----
+::: moniker-end
 
 範例應用程式會將要求從 `/apache-mod-rules-redirect/(.\*)` 重新導向至 `/redirected?id=$1`。 回應狀態碼為 302 (已找到)。
 
@@ -251,8 +271,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 原始要求：`/apache-mod-rules-redirect/1234`
 
 ![瀏覽器視窗，其中的開發人員工具會追蹤要求和回應](url-rewriting/_static/add_apache_mod_redirect.png)
-
-##### <a name="supported-server-variables"></a>支援的伺服器變數
 
 中介軟體可支援下列 Apache mod_rewrite 伺服器變數：
 
@@ -290,13 +308,15 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 若要使用適用於 IIS URL Rewrite Module 的規則，請使用 `AddIISUrlRewrite`。 請確認應用程式已部署規則檔。 在 Windows Server IIS 上執行時，請不要引導中介軟體使用您的 *web.config* 檔案。 使用 IIS 時，這些規則應該儲存在 *web.config* 外部，以免與 IIS Rewrite Module 發生衝突。 如需 IIS URL Rewrite Module 規則的詳細資訊和範例，請參閱 [Using Url Rewrite Module 2.0](/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) (使用 URL Rewrite Module 2.0) 和 [URL Rewrite Module Configuration Reference](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference) (URL Rewrite Module 組態參考)。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 系統會使用 `StreamReader` 來讀取 *IISUrlRewrite.xml* 規則檔案的規則。
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=5-6,13)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 第一個參數會採用 `IFileProvider`，而第二個參數則是 XML 規則檔案的路徑，也就是範例應用程式中的 *IISUrlRewrite.xml*。
 
@@ -310,7 +330,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
----
+::: moniker-end
 
 範例應用程式會將要求從 `/iis-rules-rewrite/(.*)` 重寫至 `/rewritten?id=$1`。 系統會將回應與 200 (確定) 狀態碼傳送給用戶端。
 
@@ -324,7 +344,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 #### <a name="unsupported-features"></a>不支援的功能
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 與 ASP.NET Core 2.x 一起發行的中介軟體不支援下列 IIS URL Rewrite Module 功能：
 
@@ -333,7 +353,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * 萬用字元
 * LogRewrittenUrl
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 與 ASP.NET Core 1.x 一起發行的中介軟體不支援下列 IIS URL Rewrite Module 功能：
 
@@ -346,7 +368,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * Action:CustomResponse
 * LogRewrittenUrl
 
----
+::: moniker-end
 
 #### <a name="supported-server-variables"></a>支援的伺服器變數
 
@@ -385,11 +407,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 | `RuleResult.EndResponse`             | 停止套用規則，並傳送回應                       |
 | `RuleResult.SkipRemainingRules`      | 停止套用規則，並將內容傳送至下一個中介軟體 |
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=14)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -401,7 +425,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 範例應用程式會示範一個方法，以重新導向對 *.xml* 結尾之路徑的要求。 如果您要求 `/file.xml`，該要求會重新導向至 `/xmlfiles/file.xml`。 狀態碼會設定為 301 (已永久移動)。 若要重新導向，您必須明確設定回應的狀態碼；否則，會傳回 200 (確定) 狀態碼，且用戶端不會發生重新導向。
 
@@ -415,11 +439,13 @@ public void Configure(IApplicationBuilder app)
 
 使用 `Add(IRule)`，以在衍生自 `IRule` 的類別中實作您自己的規則邏輯。 相較於使用以方法為基礎的規則方法，使用 `IRule` 更有彈性。 您的衍生類別可包括建構函式，以在其中傳入 `ApplyRule` 方法的參數。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=15-16)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -432,7 +458,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 為了滿足若干條件，系統會檢查範例應用程式中的 `extension` 和 `newPath` 參數值。 `extension` 必須包含值，而且值必須是 *.png*、*.jpg* 或 *.gif*。 如果 `newPath` 無效，就會擲回 `ArgumentException`。 如果您要求 *image.png*，該要求會重新導向至 `/png-images/image.png`。 如果您要求 *image.jpg*，該要求會重新導向至 `/jpg-images/image.jpg`。 狀態碼會設定為 301 (已永久移動)，而 `context.Result` 會設定為停止處理規則，並傳送回應。
 

@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 中的標籤協助程式
 author: rick-anderson
-description: 了解何謂標籤協助程式，以及如何在 ASP.NET Core 中使用它們。
+description: 了解何謂標籤協助程式，以及如何在 ASP.NET Core 中使用。
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2018
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: c2af9099fe439e1cdbf9ba86ffae3b2b0f67391e
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 4b9bceb3ce0153af2d9a30c402febe09707145b7
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751709"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477302"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式
 
@@ -68,7 +68,7 @@ public class Movie
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
-`@addTagHelper` 指示詞讓標籤協助程式可供檢視使用。 在此情況下，檢視檔案是 *Pages/_ViewImports.cshtml*，預設繼承自 *Pages* 資料夾和子資料夾中的所有檔案；讓標籤協助程式可用。 上述程式碼使用萬用字元語法 ("\*") 指定 *Views* 目錄或子目錄中每個檢視檔案都可以使用之指定組件中的所有標籤協助程式 (*Microsoft.AspNetCore.Mvc.TagHelpers*)。 `@addTagHelper` 後面的第一個參數指定要載入的標籤協助程式 (使用 "\*" 表示所有標籤協助程式)，而第二個參數 "Microsoft.AspNetCore.Mvc.TagHelpers" 指定包含標籤協助程式的組件。 *Microsoft.AspNetCore.Mvc.TagHelpers* 是內建 ASP.NET Core 標籤協助程式的組件。
+`@addTagHelper` 指示詞讓標籤協助程式可供檢視使用。 在此情況下，檢視檔案是 *Pages/_ViewImports.cshtml*，預設會由 *Pages* 資料夾和子資料夾中的所有檔案繼承；讓標籤協助程式可用。 上述程式碼使用萬用字元語法 ("\*")，指定 *Views* 目錄或子目錄中每個檢視檔案皆可使用指定組件 (*Microsoft.AspNetCore.Mvc.TagHelpers*) 中的所有標籤協助程式。 `@addTagHelper` 後面的第一個參數指定要載入的標籤協助程式 (使用 "\*" 表示所有標籤協助程式)，而第二個參數 "Microsoft.AspNetCore.Mvc.TagHelpers" 指定包含標籤協助程式的組件。 *Microsoft.AspNetCore.Mvc.TagHelpers* 是內建 ASP.NET Core 標籤協助程式的組件。
 
 若要公開此專案中的所有標籤協助程式 (這會建立名為 *AuthoringTagHelpers* 的組件)，請使用下列內容：
 
@@ -89,7 +89,7 @@ public class Movie
 @addTagHelper AuthoringTagHelpers.TagHelpers.Email*, AuthoringTagHelpers
 ```
 
-如前所述，將 `@addTagHelper` 指示詞新增至 *Views/_ViewImports.cshtml* 檔案，讓 *Views* 目錄和子目錄中的所有檢視檔案都可以使用標籤協助程式。 如果您想要選擇只向那些檢視公開標籤協助程式，則可以使用特定檢視檔案中的 `@addTagHelper` 指示詞。
+如前所述，將 `@addTagHelper` 指示詞新增至 *Views/_ViewImports.cshtml* 檔案，讓 *Views* 目錄和子目錄中的所有檢視檔案都能使用標籤協助程式。 如果您想要選擇只向那些檢視公開標籤協助程式，則可以使用特定檢視檔案中的 `@addTagHelper` 指示詞。
 
 <a name="remove-razor-directives-label"></a>
 
@@ -127,6 +127,10 @@ public class Movie
 ![影像](intro/_static/thp.png)
 
 套用至 `@addTagHelper` 的相同階層規則也會套用至 `@tagHelperPrefix`。
+
+## <a name="self-closing-tag-helpers"></a>自行結尾的標籤協助程式
+
+許多標籤協助程式無法作為自行結尾的標籤。 某些標籤協助程式專門用作自行結尾的標籤。 使用非專門用作自行結尾的標籤協助程式會隱藏轉譯輸出。 讓標籤協助程式自行結尾，會在轉譯輸出中產生自行結尾的標籤。 如需詳細資訊，請參閱[編寫標籤協助程式](xref:mvc/views/tag-helpers/authoring)中的[這項附註](xref:mvc/views/tag-helpers/authoring#self-closing)。
 
 ## <a name="intellisense-support-for-tag-helpers"></a>標籤協助程式的 IntelliSense 支援
 

@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 中的應用程式啟動
 author: ardalis
-description: 探索 Startup 類別如何在 ASP.NET Core 中設定服務和應用程式的要求管線。
+description: 說明 Startup 類別如何在 ASP.NET Core 中設定服務和應用程式的要求管線。
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: 923d17be9c2bb1a9d338599d1cdc4c34302cddab
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
+ms.openlocfilehash: 392dc83666bc6b9012adc6c32169ae7bdc7ed8d7
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44040091"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391111"
 ---
 # <a name="application-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -62,7 +62,7 @@ Web 主機提供一些可用於 `Startup` 類別建構函式的服務。 應用�
 
 Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細資料可於[在 ASP.NET Core 中代管](xref:fundamentals/host/index)主題中取得。
 
-對於需要大量安裝的功能，[IServiceCollection](/dotnet/api/Microsoft.Extensions.DependencyInjection.IServiceCollection) 上有 `Add[Service]` 擴充方法。 適用於 Entity Framework、身分識別和 MVC 的典型 Web 應用程式註冊服務：
+對於需要大量安裝的功能，[IServiceCollection](/dotnet/api/Microsoft.Extensions.DependencyInjection.IServiceCollection) 上有 `Add[Service]` 擴充方法。 適用於 Entity Framework、身分識別和 MVC 的典型 ASP.NET Core 應用程式註冊服務：
 
 [!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 

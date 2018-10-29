@@ -4,14 +4,14 @@ author: guardrex
 description: 深入了解 ASP.NET Core 中的 Web 主機，其負責啟動應用程式以及管理存留期。
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/01/2018
+ms.date: 10/18/2018
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 7440ab26534840b190a346614f645860fc2b7d78
-ms.sourcegitcommit: 7211ae2dd702f67d36365831c490d6178c9a46c8
+ms.openlocfilehash: e19f12f69dfdd5653aea9c6be2b05f24009b875e
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44089895"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477445"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
@@ -46,10 +46,10 @@ public class Program
 * 從下列項目載入[主機組態](#host-configuration-values)：
   * 前面加上 `ASPNETCORE_` 的環境變數 (例如，`ASPNETCORE_ENVIRONMENT`)。
   * 命令列引數。
-* 從下列項目載入應用程式組態：
+* 以下列順序載入應用程式組態：
   * *appsettings.json*。
   * *appsettings.{Environment}.json*
-  * 應用程式在使用輸入組件的 `Development` 環境中執行時的[使用者密碼](xref:security/app-secrets)。
+  * 應用程式在使用項目組件之 `Development` 環境中執行時的[秘密管理員](xref:security/app-secrets)。
   * 環境變數。
   * 命令列引數。
 * 設定主控台和偵錯輸出的[記錄](xref:fundamentals/logging/index)。 記錄包含 *appsettings.json* 或 *appsettings.{Environment}.json* 檔案的記錄組態區段中指定的[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)規則。
@@ -184,7 +184,7 @@ host.Run();
 **類型**：*string*  
 **預設**：包含應用程式進入點的組件名稱。  
 **設定使用**：`UseSetting`  
-**環境變數**：`ASPNETCORE_APPLICATIONKEY`
+**環境變數**：`ASPNETCORE_APPLICATIONNAME`
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -365,15 +365,13 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="hosting-startup-exclude-assemblies"></a>裝載啟動排除組件
 
-DESCRIPTION
+在啟動時排除以分號分隔的裝載啟動組件字串。
 
 **索引鍵**：hostingStartupExcludeAssemblies  
 **類型**：*string*  
 **預設值**：空字串  
 **設定使用**：`UseSetting`  
 **環境變數**：`ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
-
-在啟動時排除以分號分隔的裝載啟動組件字串。
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -659,7 +657,7 @@ dotnet run --urls "http://*:8080"
 host.Run();
 ```
 
-**Start**
+**啟動**
 
 藉由呼叫 `Start` 方法，以非封鎖方式執行主機：
 
@@ -832,7 +830,7 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 host.Run();
 ```
 
-**Start**
+**啟動**
 
 藉由呼叫 `Start` 方法，以非封鎖方式執行主機：
 

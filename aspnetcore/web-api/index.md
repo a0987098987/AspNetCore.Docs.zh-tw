@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/15/2018
 uid: web-api/index
-ms.openlocfilehash: d410f28ff7fda3bf33f73c06b3e626dfd4ee7dd8
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 763b95fb8ed3806bc67b7ad199153ea1027efa57
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41822136"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090416"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建置 Web API
 
@@ -47,7 +47,7 @@ ASP.NET Core 2.1 新增了 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiCo
 
 [!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Controllers/ProductsController.cs?name=snippet_ControllerSignature&highlight=2)]
 
-使用此屬性時，需要透過 <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> 設定的相容性版本 2.1 或更新版本。 例如，*Startup.ConfigureServices* 中的醒目提示程式碼會設定 2.1 相容性旗標：
+使用此屬性時，需要透過 <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> 設定的相容性版本 2.1 或更新版本。 舉例來說，*Startup.ConfigureServices* 中的醒目提示程式碼會設定 2.2 相容性旗標：
 
 [!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Startup.cs?name=snippet_SetCompatibilityVersion&highlight=2)]
 
@@ -61,15 +61,46 @@ ASP.NET Core 2.1 新增了 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiCo
 
 下列章節說明該屬性新增的便利功能。
 
+### <a name="problem-details-responses-for-error-status-codes"></a>錯誤狀態碼的問題詳細資料回應
+
+ASP.NET Core 2.1 及更新版本包含 [ProblemDetails](xref:Microsoft.AspNetCore.Mvc.ProblemDetails)，是一種以 [RFC 7807 規格](https://tools.ietf.org/html/rfc7807)為基礎的類型。 `ProblemDetails` 類型提供了標準化格式，可用來在 HTTP 回應中傳遞錯誤的電腦可讀取詳細資料。
+
+在 ASP.NET Core 2.2 及更新版本中，MVC 會將錯誤狀態碼結果 (狀態碼 400 及以上) 轉換成有 `ProblemDetails` 的結果。 請考慮下列程式碼：
+
+[!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Controllers/PetsController.cs?name=snippet_ProblemDetails_StatusCode&highlight=4)]
+
+`NotFound` 結果的 HTTP 回應具有 404 狀態碼，以及如下所示的 `ProblemDetails` 本文：
+
+```js
+{
+    type: "https://tools.ietf.org/html/rfc7231#section-6.5.4",
+    title: "Not Found",
+    status: 404,
+    traceId: "0HLHLV31KRN83:00000001"
+}
+```
+
+問題詳細資料功能需要 2.2 或更新版本的相容性旗標。 當 [SuppressMapClientErrors](/dotnet/api/microsoft.aspnetcore.Mvc.ApiBehaviorOptions) <!--  Until these resolve, link to the parent class <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressMapClientErrors> --> 屬性設定為 `true` 時，會停用預設行為。 下列來自 `Startup.ConfigureServices` 的醒目提示程式碼會停用問題詳細資料：
+
+[!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Startup.cs?name=snippet_SetCompatibilityVersion&highlight=8)]
+
+使用 [ClientErrorMapping](/dotnet/api/microsoft.aspnetcore.Mvc.ApiBehaviorOptions) <!--  Until these resolve, link to the parent class <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping> --> 屬性可設定 `ProblemDetails` 回應的內容。 舉例來說，下列程式碼會更新 404 回應的 `type` 屬性：
+
+[!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Startup.cs?name=snippet_SetCompatibilityVersion&highlight=10)]
+
 ### <a name="automatic-http-400-responses"></a>HTTP 400 自動回應
 
 驗證錯誤會自動觸發 HTTP 400 回應。 您的動作中將不再需要下列程式碼：
 
 [!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api.Pre21/Controllers/PetsController.cs?name=snippet_ModelStateIsValidCheck)]
 
+使用 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> 可自訂所產生回應的輸出。
+
 當 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressModelStateInvalidFilter> 屬性設定為 `true` 時，會停用預設行為。 請在 *Startup.ConfigureServices* 的 `services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);` 之後新增下列程式碼：
 
 [!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=5)]
+
+使用 2.2 或更新版本的相容性旗標，為 400 回應傳回的預設回應類型是 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>。 使用 [SuppressUseValidationProblemDetailsForInvalidModelStateResponses](/dotnet/api/microsoft.aspnetcore.Mvc.ApiBehaviorOptions) <!--  <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressUseValidationProblemDetailsForInvalidModelStateResponses> --> 屬性可使用 ASP.NET Core 2.1 錯誤格式。
 
 ### <a name="binding-source-parameter-inference"></a>繫結來源參數推斷
 

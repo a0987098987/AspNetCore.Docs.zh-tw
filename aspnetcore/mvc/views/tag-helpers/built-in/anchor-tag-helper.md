@@ -4,22 +4,24 @@ author: pkellner
 description: 探索 ASP.NET Core 錨點標籤協助程式屬性，以及各屬性在 HTML 錨點標籤的延伸行為中所扮演的角色。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 01/31/2018
+ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 6bdf71eaf38f134cb15b5950d2cae6ab67f861a4
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 13508729c1e3b64a8b0e6965da57880738ab85c3
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273880"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325545"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的錨點標籤協助程式
 
 由 [Peter Kellner](http://peterkellner.net) 與 [Scott Addie](https://github.com/scottaddie) 撰寫
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
-
 [錨點標籤協助程式](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper)藉由新增新的屬性，來增強標準 HTML 錨點 (`<a ... ></a>`) 標籤。 依照慣例，屬性名稱的開頭會加上 `asp-`。 所轉譯錨點元素的 `href` 屬性值取決於 `asp-` 屬性的值。
+
+如需標籤協助程式的概觀，請參閱 <xref:mvc/views/tag-helpers/intro>。
+
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 這整份文件的範例皆使用 *SpeakerController*：
 
@@ -171,7 +173,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 [asp-area](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.area) 屬性設定區域名稱，用以設定合適的路由。 下列範例描述了區域屬性如何造成路由重新對應。 將 `asp-area` 設定為 "Blogs" 會在 此錨點標籤之相關控制器和檢視的路由前面加上目錄 *Areas/Blogs*。
 
-* **<專案名稱\>**
+* **{專案名稱}**
   * **wwwroot**
   * **區域**
     * **部落格**
@@ -181,7 +183,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
         * **Home**
           * *AboutBlog.cshtml*
           * *Index.cshtml*
-        * *_ViewStart.cshtml*
+        * *\_ViewStart.cshtml*
   * **控制器**
 
 以上述目錄階層為例，要參考 *AboutBlog.cshtml* 檔案的標記即為：
@@ -195,7 +197,9 @@ MVC 檢視會使用動作提供的模型，如下所示：
 ```
 
 > [!TIP]
-> 若要讓區域在 MVC 應用程式中正常運作，路由範本必須包含區域參考 (若其存在)。 該範本將以 *Startup.Configure* 中 `routes.MapRoute` 方法呼叫的第二個參數表示：[!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
+> 若要讓區域在 MVC 應用程式中正常運作，路由範本必須包含區域參考 (若其存在)。 該範本將以 *Startup.Configure* 中 `routes.MapRoute` 方法呼叫的第二個參數表示：
+>
+> [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
 ## <a name="asp-protocol"></a>asp-protocol
 
@@ -267,5 +271,5 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 ## <a name="additional-resources"></a>其他資源
 
-* [區域](xref:mvc/controllers/areas)
-* [Razor 頁面簡介](xref:razor-pages/index)
+* <xref:mvc/controllers/areas>
+* <xref:razor-pages/index>

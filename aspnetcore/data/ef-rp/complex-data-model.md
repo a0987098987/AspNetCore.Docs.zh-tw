@@ -5,12 +5,12 @@ description: 在本教學課程中，請新增更多實體和關聯性，並透�
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 88d727b0545f1dacb56ea889e45b02f947867b19
-ms.sourcegitcommit: 6425baa92cec4537368705f8d27f3d0e958e43cd
+ms.openlocfilehash: b81918cbd74200f0672f3002f916523fb4a9a914
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39220595"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477653"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -432,7 +432,7 @@ public Student Student { get; set; }
 
 在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
 
-下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表是使用 EF 6.x 的 EF Power Tools 產生的。 建立圖表並不是此教學課程的一部分)。
+下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表是使用 EF 6.x 的 [EF Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition) 產生的。 建立圖表並不是此教學課程的一部分)。
 
 ![學生-課程多對多關聯性](complex-data-model/_static/student-course.png)
 
@@ -463,7 +463,7 @@ public Student Student { get; set; }
 
 通常會將聯結實體命名為 `EntityName1EntityName2`。 例如，使用此模式的講師-課程聯結資料表為 `CourseInstructor`。 不過，我們建議使用可描述關聯性的名稱。
 
-資料模型一開始都是簡單的，之後便會持續成長。 無承載聯結 (PJT) 常常會演變為包含承載。 藉由在一開始便使用描述性的實體名稱，當聯結資料表變更時便不需要變更名稱。 理想情況下，聯結實體在公司網域中會有自己的自然 (可能為一個單字) 名稱。 例如，「書籍」和「客戶」可連結為一個名為「評分」 的聯結實體。 針對講師-課程多對多關聯性，`CourseAssignment` 會比 `CourseInstructor` 來得好。
+資料模型一開始都是簡單的，之後便會持續成長。 無承載聯結 (PJT) 常常會演變為包含承載。 藉由在一開始便使用描述性的實體名稱，當聯結資料表變更時便不需要變更名稱。 理想情況下，聯結實體在公司網域中會有自己的自然 (可能為一個單字) 名稱。 例如，「書籍」和「客戶」可連結為一個名為「評分」的聯結實體。 針對講師-課程多對多關聯性，`CourseAssignment` 會比 `CourseInstructor` 來得好。
 
 ### <a name="composite-key"></a>複合索引鍵
 
@@ -574,9 +574,15 @@ The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_dbo.Cou
 database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 ```
 
-當使用現有的資料執行移轉作業時，某些 FK 條件約束可能會無法透過現有資料滿足。 針對此教學課程，由於您建立了新的資料庫，因此不會發生違反 FK 條件約束的情況。 請參閱[使用舊資料修正外部索引鍵條件約束](#fk)，以取得修正目前資料庫上發生之 FK 違規的說明。
+## <a name="apply-the-migration"></a>套用移轉
 
-### <a name="drop-and-update-the-database"></a>卸除並更新資料庫
+現在您有了現有的資料庫，您需要思考如何對其套用未來變更。 本教學課程示範兩種方法：
+* [卸除並重新建立資料庫](#drop)
+* [將移轉套用至現有資料庫](#applyexisting)。 雖然這個方法更複雜且耗時，卻是實際生產環境的慣用方法。 **請注意**：這是本教學課程的選擇性章節。 您可以執行卸除並重新建立步驟，然後略過本節。 如果您希望遵循本章節中的步驟，請不要執行卸除並重新建立的步驟。 
+
+<a name="drop"></a>
+
+### <a name="drop-and-re-create-the-database"></a>卸除並重新建立資料庫
 
 更新的 `DbInitializer` 中的程式碼會為新的實體新增種子資料。 若要強制 EF Core 建立新的資料庫，請卸除並更新資料庫：
 
@@ -620,11 +626,11 @@ dotnet ef database update
 
 ![SSOX 中的 CourseAssignment 資料](complex-data-model/_static/ssox-ci-data.png)
 
-<a name="fk"></a>
+<a name="applyexisting"></a>
 
-## <a name="fixing-foreign-key-constraints-with-legacy-data"></a>使用舊資料修正外部索引鍵條件約束
+### <a name="apply-the-migration-to-the-existing-database"></a>將移轉套用至現有資料庫
 
-本節為選擇性。
+本節為選擇性。 只有當您略過先前[卸除並重新建立資料庫](#drop)一節，這些步驟才有效。
 
 當使用現有的資料執行移轉作業時，某些 FK 條件約束可能會無法透過現有資料滿足。 當您使用的是生產資料時，您必須進行幾個步驟才能移轉現有資料。 本節提供了修正 FK 條件約束違規的範例。 請不要在沒有備份的情況下進行這些程式碼變更。 若您已完成了先前的章節並已更新資料庫，請不要進行這些程式碼變更。
 
@@ -639,7 +645,7 @@ dotnet ef database update
 * 變更程式碼，以給予新資料行 (`DepartmentID`) 一個新的預設值。
 * 建立一個名為 "Temp" 的假部門以作為預設部門之用。
 
-### <a name="fix-the-foreign-key-constraints"></a>修正外部索引鍵條件約束
+#### <a name="fix-the-foreign-key-constraints"></a>修正外部索引鍵條件約束
 
 更新 `ComplexDataModel` 類別 `Up` 方法：
 

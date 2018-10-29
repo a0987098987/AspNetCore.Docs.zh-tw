@@ -5,12 +5,12 @@ description: 示範如何建立使用 Entity Framework Core 的 Razor 頁面應�
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/intro
-ms.openlocfilehash: 89002f7b4a5af17a9404b14822086c7a9a6ec265
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: f714934a2ef804813290ae0c04432470a2ba5816
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011453"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477562"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -187,9 +187,9 @@ dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Models.Sc
 * *Pages/Students* 建立、刪除、詳細資料、編輯、索引。
 * *Data/SchoolContext.cs*
 
-### <a name="files-updates"></a>檔案更新
+### <a name="file-updates"></a>檔案更新
 
-* *Startup.cs*：這個檔案的變更會於下一節中詳述。
+* *Startup.cs*：這個檔案的變更會於下一節詳述。
 * *appsettings.json*：已新增用來連線到本機資料庫的連接字串。
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容

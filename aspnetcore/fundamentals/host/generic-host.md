@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/16/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: e19a8a78b4c02fbae3d3acd23ee357c6003c35cf
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
+ms.openlocfilehash: 0924e2764958911dc1711d5427f6dd58e8873739
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44039961"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477601"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -44,6 +44,19 @@ ms.locfileid: "44039961"
 [IHostBuilder](/dotnet/api/microsoft.extensions.hosting.ihostbuilder) 是程式庫和應用程式用來初始化、建置及執行主機的主要元件：
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_HostBuilder)]
+
+## <a name="default-services"></a>預設服務
+
+下列服務會在主機初始化期間註冊：
+
+* [環境](xref:fundamentals/environments) (<xref:Microsoft.Extensions.Hosting.IHostingEnvironment>)
+* <xref:Microsoft.Extensions.Hosting.HostBuilderContext>
+* [組態](xref:fundamentals/configuration/index) (<xref:Microsoft.Extensions.Configuration.IConfiguration>)
+* <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> (<xref:Microsoft.Extensions.Hosting.Internal.ApplicationLifetime>)
+* <xref:Microsoft.Extensions.Hosting.IHostLifetime> (<xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime>)
+* <xref:Microsoft.Extensions.Hosting.IHost>
+* [選項](xref:fundamentals/configuration/options) (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions*>)
+* [記錄](xref:fundamentals/logging/index) (<xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging*>)
 
 ## <a name="host-configuration"></a>主機組態
 
@@ -85,7 +98,7 @@ ms.locfileid: "44039961"
 **類型**：*string*  
 **預設**：包含應用程式進入點的組件名稱。  
 **設定使用**：`HostBuilderContext.HostingEnvironment.ApplicationName`  
-**環境變數**：`<PREFIX_>APPLICATIONKEY` (`<PREFIX_>` 是[選擇性和使用者定義的](#configuration-builder))
+**環境變數**：`<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` 是[選擇性和使用者定義的](#configuration-builder))
 
 ```csharp
 var host = new HostBuilder()

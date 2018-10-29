@@ -7,29 +7,29 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/groups
-ms.openlocfilehash: d54ab2a113345f98e26425a88cad165d67b8d456
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: d3e580dfc42a36762358899892831c8b68f544b0
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095017"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207156"
 ---
-# <a name="manage-users-and-groups-in-signalr"></a><span data-ttu-id="a3118-103">管理使用者和 signalr 的群組</span><span class="sxs-lookup"><span data-stu-id="a3118-103">Manage users and groups in SignalR</span></span>
+# <a name="manage-users-and-groups-in-signalr"></a><span data-ttu-id="ce6a1-103">管理使用者和 signalr 的群組</span><span class="sxs-lookup"><span data-stu-id="ce6a1-103">Manage users and groups in SignalR</span></span>
 
-<span data-ttu-id="a3118-104">藉由[brennan 第瑜吉](https://github.com/BrennanConroy)</span><span class="sxs-lookup"><span data-stu-id="a3118-104">By [Brennan Conroy](https://github.com/BrennanConroy)</span></span>
+<span data-ttu-id="ce6a1-104">由[brennan Conroy](https://github.com/BrennanConroy)提供</span><span class="sxs-lookup"><span data-stu-id="ce6a1-104">By [Brennan Conroy](https://github.com/BrennanConroy)</span></span>
 
-<span data-ttu-id="a3118-105">SignalR 可讓訊息傳送至特定使用者相關聯的所有連線以及具名群組的連線。</span><span class="sxs-lookup"><span data-stu-id="a3118-105">SignalR allows messages to be sent to all connections associated with a specific user, as well as to named groups of connections.</span></span>
+<span data-ttu-id="ce6a1-105">SignalR 可讓訊息傳送至特定使用者相關聯的所有連線以及具名群組的連線。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-105">SignalR allows messages to be sent to all connections associated with a specific user, as well as to named groups of connections.</span></span>
 
-<span data-ttu-id="a3118-106">[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)</span><span class="sxs-lookup"><span data-stu-id="a3118-106">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [(how to download)](xref:tutorials/index#how-to-download-a-sample)</span></span>
+<span data-ttu-id="ce6a1-106">[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [（如何下載）](xref:index#how-to-download-a-sample)</span><span class="sxs-lookup"><span data-stu-id="ce6a1-106">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [(how to download)](xref:index#how-to-download-a-sample)</span></span>
 
-## <a name="users-in-signalr"></a><span data-ttu-id="a3118-107">SignalR 中的使用者</span><span class="sxs-lookup"><span data-stu-id="a3118-107">Users in SignalR</span></span>
+## <a name="users-in-signalr"></a><span data-ttu-id="ce6a1-107">SignalR 中的使用者</span><span class="sxs-lookup"><span data-stu-id="ce6a1-107">Users in SignalR</span></span>
 
-<span data-ttu-id="a3118-108">SignalR 可讓您將訊息傳送至特定使用者相關聯的所有連線。</span><span class="sxs-lookup"><span data-stu-id="a3118-108">SignalR allows you to send messages to all connections associated with a specific user.</span></span> <span data-ttu-id="a3118-109">根據預設，使用 SignalR`ClaimTypes.NameIdentifier`從`ClaimsPrincipal`連接做為使用者識別碼相關聯。</span><span class="sxs-lookup"><span data-stu-id="a3118-109">By default, SignalR uses the `ClaimTypes.NameIdentifier` from the `ClaimsPrincipal` associated with the connection as the user identifier.</span></span> <span data-ttu-id="a3118-110">單一使用者可以有多個連線的 SignalR 應用程式。</span><span class="sxs-lookup"><span data-stu-id="a3118-110">A single user can have multiple connections to a SignalR app.</span></span> <span data-ttu-id="a3118-111">比方說，使用者可以在他們的桌面，以及他們的手機上連線。</span><span class="sxs-lookup"><span data-stu-id="a3118-111">For example, a user could be connected on their desktop as well as their phone.</span></span> <span data-ttu-id="a3118-112">每個裝置都個別 SignalR 連線，但它們是所有具有相同的使用者相關聯。</span><span class="sxs-lookup"><span data-stu-id="a3118-112">Each device has a separate SignalR connection, but they're all associated with the same user.</span></span> <span data-ttu-id="a3118-113">如果訊息傳送給使用者時，所有與該使用者相關聯的連接就會收到的訊息。</span><span class="sxs-lookup"><span data-stu-id="a3118-113">If a message is sent to the user, all of the connections associated with that user receive the message.</span></span> <span data-ttu-id="a3118-114">可以存取連接的使用者識別碼`Context.UserIdentifier`中樞內的屬性。</span><span class="sxs-lookup"><span data-stu-id="a3118-114">The user identifier for a connection can be accessed by the `Context.UserIdentifier` property in your hub.</span></span>
+<span data-ttu-id="ce6a1-108">SignalR 可讓您將訊息傳送至特定使用者相關聯的所有連線。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-108">SignalR allows you to send messages to all connections associated with a specific user.</span></span> <span data-ttu-id="ce6a1-109">根據預設，使用 SignalR`ClaimTypes.NameIdentifier`從`ClaimsPrincipal`連接做為使用者識別碼相關聯。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-109">By default, SignalR uses the `ClaimTypes.NameIdentifier` from the `ClaimsPrincipal` associated with the connection as the user identifier.</span></span> <span data-ttu-id="ce6a1-110">單一使用者可以有多個連線的 SignalR 應用程式。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-110">A single user can have multiple connections to a SignalR app.</span></span> <span data-ttu-id="ce6a1-111">比方說，使用者可以在他們的桌面，以及他們的手機上連線。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-111">For example, a user could be connected on their desktop as well as their phone.</span></span> <span data-ttu-id="ce6a1-112">每個裝置都個別 SignalR 連線，但它們是所有具有相同的使用者相關聯。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-112">Each device has a separate SignalR connection, but they're all associated with the same user.</span></span> <span data-ttu-id="ce6a1-113">如果訊息傳送給使用者時，所有與該使用者相關聯的連接就會收到的訊息。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-113">If a message is sent to the user, all of the connections associated with that user receive the message.</span></span> <span data-ttu-id="ce6a1-114">可以存取連接的使用者識別碼`Context.UserIdentifier`中樞內的屬性。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-114">The user identifier for a connection can be accessed by the `Context.UserIdentifier` property in your hub.</span></span>
 
-<span data-ttu-id="a3118-115">傳遞至的使用者識別碼，將訊息傳送至特定使用者`User`函式在您的中樞方法，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="a3118-115">Send a message to a specific user by passing the user identifier to the `User` function in your hub method as shown in the following example:</span></span>
+<span data-ttu-id="ce6a1-115">傳遞至的使用者識別碼，將訊息傳送至特定使用者`User`函式在您的中樞方法，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="ce6a1-115">Send a message to a specific user by passing the user identifier to the `User` function in your hub method as shown in the following example:</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a3118-116">使用者識別碼會區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="a3118-116">The user identifier is case-sensitive.</span></span>
+> <span data-ttu-id="ce6a1-116">使用者識別碼會區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-116">The user identifier is case-sensitive.</span></span>
 
 ```csharp
 public Task SendPrivateMessage(string user, string message)
@@ -38,28 +38,28 @@ public Task SendPrivateMessage(string user, string message)
 }
 ```
 
-<span data-ttu-id="a3118-117">可以藉由建立自訂的使用者識別碼`IUserIdProvider`，並註冊在`ConfigureServices`。</span><span class="sxs-lookup"><span data-stu-id="a3118-117">The user identifier can be customized by creating an `IUserIdProvider`, and registering it in `ConfigureServices`.</span></span>
+<span data-ttu-id="ce6a1-117">可以藉由建立自訂的使用者識別碼`IUserIdProvider`，並註冊在`ConfigureServices`。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-117">The user identifier can be customized by creating an `IUserIdProvider`, and registering it in `ConfigureServices`.</span></span>
 
 [!code-csharp[UserIdProvider](groups/sample/customuseridprovider.cs?range=4-10)]
 
 [!code-csharp[Configure service](groups/sample/startup.cs?range=21-22,39-42)]
 
 > [!NOTE]
-> <span data-ttu-id="a3118-118">註冊您的自訂 SignalR 服務之前，必須呼叫 AddSignalR。</span><span class="sxs-lookup"><span data-stu-id="a3118-118">AddSignalR must be called before registering your custom SignalR services.</span></span>
+> <span data-ttu-id="ce6a1-118">註冊您的自訂 SignalR 服務之前，必須呼叫 AddSignalR。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-118">AddSignalR must be called before registering your custom SignalR services.</span></span>
 
-## <a name="groups-in-signalr"></a><span data-ttu-id="a3118-119">Signalr 的群組</span><span class="sxs-lookup"><span data-stu-id="a3118-119">Groups in SignalR</span></span>
+## <a name="groups-in-signalr"></a><span data-ttu-id="ce6a1-119">Signalr 的群組</span><span class="sxs-lookup"><span data-stu-id="ce6a1-119">Groups in SignalR</span></span>
 
-<span data-ttu-id="a3118-120">群組是連線名稱相關聯的集合。</span><span class="sxs-lookup"><span data-stu-id="a3118-120">A group is a collection of connections associated with a name.</span></span> <span data-ttu-id="a3118-121">訊息可以傳送至群組中的所有連線。</span><span class="sxs-lookup"><span data-stu-id="a3118-121">Messages can be sent to all connections in a group.</span></span> <span data-ttu-id="a3118-122">群組是傳送給多個連線或連線，因為群組由應用程式的建議的方式。</span><span class="sxs-lookup"><span data-stu-id="a3118-122">Groups are the recommended way to send to a connection or multiple connections because the groups are managed by the application.</span></span> <span data-ttu-id="a3118-123">連接可以是多個群組的成員。</span><span class="sxs-lookup"><span data-stu-id="a3118-123">A connection can be a member of multiple groups.</span></span> <span data-ttu-id="a3118-124">這使得群組非常適合類似交談應用程式，其中顯示每個房間，為群組。</span><span class="sxs-lookup"><span data-stu-id="a3118-124">This makes groups ideal for something like a chat application, where each room can be represented as a group.</span></span> <span data-ttu-id="a3118-125">可以加入或移除透過群組連線`AddToGroupAsync`和`RemoveFromGroupAsync`方法。</span><span class="sxs-lookup"><span data-stu-id="a3118-125">Connections can be added to or removed from groups via the `AddToGroupAsync` and `RemoveFromGroupAsync` methods.</span></span>
+<span data-ttu-id="ce6a1-120">群組是連線名稱相關聯的集合。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-120">A group is a collection of connections associated with a name.</span></span> <span data-ttu-id="ce6a1-121">訊息可以傳送至群組中的所有連線。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-121">Messages can be sent to all connections in a group.</span></span> <span data-ttu-id="ce6a1-122">群組是傳送給多個連線或連線，因為群組由應用程式的建議的方式。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-122">Groups are the recommended way to send to a connection or multiple connections because the groups are managed by the application.</span></span> <span data-ttu-id="ce6a1-123">連接可以是多個群組的成員。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-123">A connection can be a member of multiple groups.</span></span> <span data-ttu-id="ce6a1-124">這使得群組非常適合類似交談應用程式，其中顯示每個房間，為群組。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-124">This makes groups ideal for something like a chat application, where each room can be represented as a group.</span></span> <span data-ttu-id="ce6a1-125">可以加入或移除透過群組連線`AddToGroupAsync`和`RemoveFromGroupAsync`方法。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-125">Connections can be added to or removed from groups via the `AddToGroupAsync` and `RemoveFromGroupAsync` methods.</span></span>
 
 [!code-csharp[Hub methods](groups/sample/hubs/chathub.cs?range=15-27)]
 
-<span data-ttu-id="a3118-126">重新連線時，不會保存群組成員資格。</span><span class="sxs-lookup"><span data-stu-id="a3118-126">Group membership isn't preserved when a connection reconnects.</span></span> <span data-ttu-id="a3118-127">連接必須重新建立時，重新加入群組。</span><span class="sxs-lookup"><span data-stu-id="a3118-127">The connection needs to rejoin the group when it's re-established.</span></span> <span data-ttu-id="a3118-128">您不可能來計算群組的成員，因為這項資訊不提供，如果應用程式調整為多部伺服器。</span><span class="sxs-lookup"><span data-stu-id="a3118-128">It's not possible to count the members of a group, since this information is not available if the application is scaled to multiple servers.</span></span>
+<span data-ttu-id="ce6a1-126">重新連線時，不會保存群組成員資格。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-126">Group membership isn't preserved when a connection reconnects.</span></span> <span data-ttu-id="ce6a1-127">連接必須重新建立時，重新加入群組。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-127">The connection needs to rejoin the group when it's re-established.</span></span> <span data-ttu-id="ce6a1-128">您不可能來計算群組的成員，因為這項資訊不提供，如果應用程式調整為多部伺服器。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-128">It's not possible to count the members of a group, since this information is not available if the application is scaled to multiple servers.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a3118-129">群組名稱會區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="a3118-129">Group names are case-sensitive.</span></span>
+> <span data-ttu-id="ce6a1-129">群組名稱會區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="ce6a1-129">Group names are case-sensitive.</span></span>
 
-## <a name="related-resources"></a><span data-ttu-id="a3118-130">相關資源</span><span class="sxs-lookup"><span data-stu-id="a3118-130">Related resources</span></span>
+## <a name="related-resources"></a><span data-ttu-id="ce6a1-130">相關資源</span><span class="sxs-lookup"><span data-stu-id="ce6a1-130">Related resources</span></span>
 
-* [<span data-ttu-id="a3118-131">開始使用</span><span class="sxs-lookup"><span data-stu-id="a3118-131">Get started</span></span>](xref:tutorials/signalr)
-* [<span data-ttu-id="a3118-132">中樞</span><span class="sxs-lookup"><span data-stu-id="a3118-132">Hubs</span></span>](xref:signalr/hubs)
-* [<span data-ttu-id="a3118-133">發佈至 Azure</span><span class="sxs-lookup"><span data-stu-id="a3118-133">Publish to Azure</span></span>](xref:signalr/publish-to-azure-web-app)
+* [<span data-ttu-id="ce6a1-131">開始使用</span><span class="sxs-lookup"><span data-stu-id="ce6a1-131">Get started</span></span>](xref:tutorials/signalr)
+* [<span data-ttu-id="ce6a1-132">中樞</span><span class="sxs-lookup"><span data-stu-id="ce6a1-132">Hubs</span></span>](xref:signalr/hubs)
+* [<span data-ttu-id="ce6a1-133">發佈至 Azure</span><span class="sxs-lookup"><span data-stu-id="ce6a1-133">Publish to Azure</span></span>](xref:signalr/publish-to-azure-web-app)

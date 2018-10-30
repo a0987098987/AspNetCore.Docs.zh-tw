@@ -3,49 +3,43 @@ title: ASP.NET Core MVC 中的快取標籤協助程式
 author: pkellner
 description: 了解如何使用快取標籤協助程式。
 ms.author: riande
-ms.date: 02/14/2017
+ms.custom: mvc
+ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 11754d2858d8f02c7eb9baac8feda9b50ddb3d79
-ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
+ms.openlocfilehash: 7d64c500168166b0a7a29d5b92473726d5a9f49a
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47028151"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325337"
 ---
-# <a name="cache-tag-helper-in-aspnet-core-mvc"></a><span data-ttu-id="82422-103">ASP.NET Core MVC 中的快取標籤協助程式</span><span class="sxs-lookup"><span data-stu-id="82422-103">Cache Tag Helper in ASP.NET Core MVC</span></span>
+# <a name="cache-tag-helper-in-aspnet-core-mvc"></a><span data-ttu-id="7ea84-103">ASP.NET Core MVC 中的快取標籤協助程式</span><span class="sxs-lookup"><span data-stu-id="7ea84-103">Cache Tag Helper in ASP.NET Core MVC</span></span>
 
-<span data-ttu-id="82422-104">由 [Peter Kellner](http://peterkellner.net) 提供</span><span class="sxs-lookup"><span data-stu-id="82422-104">By [Peter Kellner](http://peterkellner.net)</span></span> 
+<span data-ttu-id="7ea84-104">作者：[Peter Kellner](http://peterkellner.net) 與 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="7ea84-104">By [Peter Kellner](http://peterkellner.net) and [Luke Latham](https://github.com/guardrex)</span></span> 
 
-<span data-ttu-id="82422-105">快取標籤協助程式可將 ASP.NET Core 應用程式內容快取至內部 ASP.NET Core 快取提供者，因此大幅提升應用程式的效能。</span><span class="sxs-lookup"><span data-stu-id="82422-105">The Cache Tag Helper provides the ability to dramatically improve the performance of your ASP.NET Core app by caching its content to the internal ASP.NET Core cache provider.</span></span>
+<span data-ttu-id="7ea84-105">快取標籤協助程式可將 ASP.NET Core 應用程式內容快取至內部 ASP.NET Core 快取提供者，以提升應用程式的效能。</span><span class="sxs-lookup"><span data-stu-id="7ea84-105">The Cache Tag Helper provides the ability to improve the performance of your ASP.NET Core app by caching its content to the internal ASP.NET Core cache provider.</span></span>
 
-<span data-ttu-id="82422-106">Razor 檢視引擎將預設的 `expires-after` 設定為 20 分鐘。</span><span class="sxs-lookup"><span data-stu-id="82422-106">The Razor View Engine sets the default `expires-after` to twenty minutes.</span></span>
+<span data-ttu-id="7ea84-106">如需標籤協助程式的概觀，請參閱 <xref:mvc/views/tag-helpers/intro>。</span><span class="sxs-lookup"><span data-stu-id="7ea84-106">For an overview of Tag Helpers, see <xref:mvc/views/tag-helpers/intro>.</span></span>
 
-<span data-ttu-id="82422-107">下列 Razor 標記會快取日期/時間：</span><span class="sxs-lookup"><span data-stu-id="82422-107">The following Razor markup caches the date/time:</span></span>
+<span data-ttu-id="7ea84-107">下列 Razor 標記會快取目前日期：</span><span class="sxs-lookup"><span data-stu-id="7ea84-107">The following Razor markup caches the current date:</span></span>
 
 ```cshtml
 <cache>@DateTime.Now</cache>
 ```
 
-<span data-ttu-id="82422-108">第一個對包含 `CacheTagHelper` 之頁面的要求會顯示目前的日期/時間。</span><span class="sxs-lookup"><span data-stu-id="82422-108">The first request to the page that contains `CacheTagHelper` will display the current date/time.</span></span> <span data-ttu-id="82422-109">其他要求則會顯示在快取過期 (預設為 20 分鐘) 或因記憶體不足而撤銷之前的快取值。</span><span class="sxs-lookup"><span data-stu-id="82422-109">Additional requests will show the cached value until the cache expires (default 20 minutes) or is evicted by memory pressure.</span></span>
+<span data-ttu-id="7ea84-108">第一個對包含標籤協助程式之頁面的要求會顯示目前的日期/時間。</span><span class="sxs-lookup"><span data-stu-id="7ea84-108">The first request to the page that contains the Tag Helper displays the current date.</span></span> <span data-ttu-id="7ea84-109">其他要求則會顯示在快取過期 (預設為 20 分鐘) 之前或快取日期從快取撤銷之前的快取值。</span><span class="sxs-lookup"><span data-stu-id="7ea84-109">Additional requests show the cached value until the cache expires (default 20 minutes) or until the cached date is evicted from the cache.</span></span>
 
-<span data-ttu-id="82422-110">您可以使用下列屬性來設定快取期間：</span><span class="sxs-lookup"><span data-stu-id="82422-110">You can set the cache duration with the following attributes:</span></span>
+## <a name="cache-tag-helper-attributes"></a><span data-ttu-id="7ea84-110">快取標籤協助程式屬性</span><span class="sxs-lookup"><span data-stu-id="7ea84-110">Cache Tag Helper Attributes</span></span>
 
-## <a name="cache-tag-helper-attributes"></a><span data-ttu-id="82422-111">快取標籤協助程式屬性</span><span class="sxs-lookup"><span data-stu-id="82422-111">Cache Tag Helper Attributes</span></span>
+### <a name="enabled"></a><span data-ttu-id="7ea84-111">enabled</span><span class="sxs-lookup"><span data-stu-id="7ea84-111">enabled</span></span>
 
-- - -
+| <span data-ttu-id="7ea84-112">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-112">Attribute Type</span></span>  | <span data-ttu-id="7ea84-113">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-113">Examples</span></span>        | <span data-ttu-id="7ea84-114">預設</span><span class="sxs-lookup"><span data-stu-id="7ea84-114">Default</span></span> |
+| --------------- | --------------- | ------- |
+| <span data-ttu-id="7ea84-115">Boolean</span><span class="sxs-lookup"><span data-stu-id="7ea84-115">Boolean</span></span>         | <span data-ttu-id="7ea84-116">`true`、 `false`</span><span class="sxs-lookup"><span data-stu-id="7ea84-116">`true`, `false`</span></span> | `true`  |
 
-### <a name="enabled"></a><span data-ttu-id="82422-112">enabled</span><span class="sxs-lookup"><span data-stu-id="82422-112">enabled</span></span>    
+<span data-ttu-id="7ea84-117">`enabled` 會決定是否快取以快取標籤協助程式括住的內容。</span><span class="sxs-lookup"><span data-stu-id="7ea84-117">`enabled` determines if the content enclosed by the Cache Tag Helper is cached.</span></span> <span data-ttu-id="7ea84-118">預設為 `true`。</span><span class="sxs-lookup"><span data-stu-id="7ea84-118">The default is `true`.</span></span> <span data-ttu-id="7ea84-119">如果設定為 `false`，則轉譯輸出**不會**被快取。</span><span class="sxs-lookup"><span data-stu-id="7ea84-119">If set to `false`, the rendered output is **not** cached.</span></span>
 
-
-| <span data-ttu-id="82422-113">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-113">Attribute Type</span></span>    | <span data-ttu-id="82422-114">有效值</span><span class="sxs-lookup"><span data-stu-id="82422-114">Valid Values</span></span>      |
-|----------------   |----------------   |
-| <span data-ttu-id="82422-115">boolean</span><span class="sxs-lookup"><span data-stu-id="82422-115">boolean</span></span>           | <span data-ttu-id="82422-116">"true" (預設)</span><span class="sxs-lookup"><span data-stu-id="82422-116">"true" (default)</span></span>  |
-|                   | <span data-ttu-id="82422-117">"false"</span><span class="sxs-lookup"><span data-stu-id="82422-117">"false"</span></span>   |
-
-
-<span data-ttu-id="82422-118">判斷是否快取以快取標籤協助程式括住的內容。</span><span class="sxs-lookup"><span data-stu-id="82422-118">Determines whether the content enclosed by the Cache Tag Helper is cached.</span></span> <span data-ttu-id="82422-119">預設為 `true`。</span><span class="sxs-lookup"><span data-stu-id="82422-119">The default is `true`.</span></span>  <span data-ttu-id="82422-120">如果設定為 `false`，此快取標籤協助程式將不會對轉譯輸出有任何快取影響。</span><span class="sxs-lookup"><span data-stu-id="82422-120">If set to `false` this Cache Tag Helper will have no caching effect on the rendered output.</span></span>
-
-<span data-ttu-id="82422-121">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-121">Example:</span></span>
+<span data-ttu-id="7ea84-120">範例：</span><span class="sxs-lookup"><span data-stu-id="7ea84-120">Example:</span></span>
 
 ```cshtml
 <cache enabled="true">
@@ -53,17 +47,15 @@ ms.locfileid: "47028151"
 </cache>
 ```
 
-- - -
+### <a name="expires-on"></a><span data-ttu-id="7ea84-121">expires-on</span><span class="sxs-lookup"><span data-stu-id="7ea84-121">expires-on</span></span>
 
-### <a name="expires-on"></a><span data-ttu-id="82422-122">expires-on</span><span class="sxs-lookup"><span data-stu-id="82422-122">expires-on</span></span> 
+| <span data-ttu-id="7ea84-122">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-122">Attribute Type</span></span>   | <span data-ttu-id="7ea84-123">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-123">Example</span></span>                            |
+| ---------------- | ---------------------------------- |
+| `DateTimeOffset` | `@new DateTime(2025,1,29,17,02,0)` |
 
-| <span data-ttu-id="82422-123">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-123">Attribute Type</span></span> |           <span data-ttu-id="82422-124">範例值</span><span class="sxs-lookup"><span data-stu-id="82422-124">Example Value</span></span>            |
-|----------------|------------------------------------|
-| <span data-ttu-id="82422-125">DateTimeOffset</span><span class="sxs-lookup"><span data-stu-id="82422-125">DateTimeOffset</span></span> | <span data-ttu-id="82422-126">"@new DateTime(2025,1,29,17,02,0)"</span><span class="sxs-lookup"><span data-stu-id="82422-126">"@new DateTime(2025,1,29,17,02,0)"</span></span> |
+<span data-ttu-id="7ea84-124">`expires-on` 可設定快取項目的絕對到期日。</span><span class="sxs-lookup"><span data-stu-id="7ea84-124">`expires-on` sets an absolute expiration date for the cached item.</span></span>
 
-<span data-ttu-id="82422-127">設定絕對到期日。</span><span class="sxs-lookup"><span data-stu-id="82422-127">Sets an absolute expiration date.</span></span> <span data-ttu-id="82422-128">下列範例會快取 2025 年 1 月 29 日下午 5:02 以前的快取標籤協助程式內容。</span><span class="sxs-lookup"><span data-stu-id="82422-128">The following example will cache the contents of the Cache Tag Helper until 5:02 PM on January 29, 2025.</span></span>
-
-<span data-ttu-id="82422-129">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-129">Example:</span></span>
+<span data-ttu-id="7ea84-125">下列範例會快取 2025 年 1 月 29 日下午 5:02 以前的快取標籤協助程式內容：</span><span class="sxs-lookup"><span data-stu-id="7ea84-125">The following example caches the contents of the Cache Tag Helper until 5:02 PM on January 29, 2025:</span></span>
 
 ```cshtml
 <cache expires-on="@new DateTime(2025,1,29,17,02,0)">
@@ -71,17 +63,15 @@ ms.locfileid: "47028151"
 </cache>
 ```
 
-- - -
+### <a name="expires-after"></a><span data-ttu-id="7ea84-126">expires-after</span><span class="sxs-lookup"><span data-stu-id="7ea84-126">expires-after</span></span>
 
-### <a name="expires-after"></a><span data-ttu-id="82422-130">expires-after</span><span class="sxs-lookup"><span data-stu-id="82422-130">expires-after</span></span>
+| <span data-ttu-id="7ea84-127">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-127">Attribute Type</span></span> | <span data-ttu-id="7ea84-128">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-128">Example</span></span>                      | <span data-ttu-id="7ea84-129">預設</span><span class="sxs-lookup"><span data-stu-id="7ea84-129">Default</span></span>    |
+| -------------- | ---------------------------- | ---------- |
+| `TimeSpan`     | `@TimeSpan.FromSeconds(120)` | <span data-ttu-id="7ea84-130">20 分鐘</span><span class="sxs-lookup"><span data-stu-id="7ea84-130">20 minutes</span></span> |
 
-| <span data-ttu-id="82422-131">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-131">Attribute Type</span></span> |        <span data-ttu-id="82422-132">範例值</span><span class="sxs-lookup"><span data-stu-id="82422-132">Example Value</span></span>         |
-|----------------|------------------------------|
-|    <span data-ttu-id="82422-133">TimeSpan</span><span class="sxs-lookup"><span data-stu-id="82422-133">TimeSpan</span></span>    | <span data-ttu-id="82422-134">"@TimeSpan.FromSeconds(120)"</span><span class="sxs-lookup"><span data-stu-id="82422-134">"@TimeSpan.FromSeconds(120)"</span></span> |
+<span data-ttu-id="7ea84-131">`expires-after` 可設定從第一個要求時間到快取內容的時間長度。</span><span class="sxs-lookup"><span data-stu-id="7ea84-131">`expires-after` sets the length of time from the first request time to cache the contents.</span></span>
 
-<span data-ttu-id="82422-135">設定從第一個要求時間到快取內容的時間長度。</span><span class="sxs-lookup"><span data-stu-id="82422-135">Sets the length of time from the first request time to cache the contents.</span></span> 
-
-<span data-ttu-id="82422-136">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-136">Example:</span></span>
+<span data-ttu-id="7ea84-132">範例：</span><span class="sxs-lookup"><span data-stu-id="7ea84-132">Example:</span></span>
 
 ```cshtml
 <cache expires-after="@TimeSpan.FromSeconds(120)">
@@ -89,17 +79,17 @@ ms.locfileid: "47028151"
 </cache>
 ```
 
-- - -
+<span data-ttu-id="7ea84-133">Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。</span><span class="sxs-lookup"><span data-stu-id="7ea84-133">The Razor View Engine sets the default `expires-after` value to twenty minutes.</span></span>
 
-### <a name="expires-sliding"></a><span data-ttu-id="82422-137">expires-sliding</span><span class="sxs-lookup"><span data-stu-id="82422-137">expires-sliding</span></span>
+### <a name="expires-sliding"></a><span data-ttu-id="7ea84-134">expires-sliding</span><span class="sxs-lookup"><span data-stu-id="7ea84-134">expires-sliding</span></span>
 
-| <span data-ttu-id="82422-138">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-138">Attribute Type</span></span> |        <span data-ttu-id="82422-139">範例值</span><span class="sxs-lookup"><span data-stu-id="82422-139">Example Value</span></span>        |
-|----------------|-----------------------------|
-|    <span data-ttu-id="82422-140">TimeSpan</span><span class="sxs-lookup"><span data-stu-id="82422-140">TimeSpan</span></span>    | <span data-ttu-id="82422-141">"@TimeSpan.FromSeconds(60)"</span><span class="sxs-lookup"><span data-stu-id="82422-141">"@TimeSpan.FromSeconds(60)"</span></span> |
+| <span data-ttu-id="7ea84-135">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-135">Attribute Type</span></span> | <span data-ttu-id="7ea84-136">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-136">Example</span></span>                     |
+| -------------- | --------------------------- |
+| `TimeSpan`     | `@TimeSpan.FromSeconds(60)` |
 
-<span data-ttu-id="82422-142">設定快取項目多久未被存取時應該撤銷。</span><span class="sxs-lookup"><span data-stu-id="82422-142">Sets the time that a cache entry should be evicted if it has not been accessed.</span></span>
+<span data-ttu-id="7ea84-137">設定快取項目的值多久未被存取時應該撤出。</span><span class="sxs-lookup"><span data-stu-id="7ea84-137">Sets the time that a cache entry should be evicted if its value hasn't been accessed.</span></span>
 
-<span data-ttu-id="82422-143">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-143">Example:</span></span>
+<span data-ttu-id="7ea84-138">範例：</span><span class="sxs-lookup"><span data-stu-id="7ea84-138">Example:</span></span>
 
 ```cshtml
 <cache expires-sliding="@TimeSpan.FromSeconds(60)">
@@ -107,18 +97,15 @@ ms.locfileid: "47028151"
 </cache>
 ```
 
-- - -
+### <a name="vary-by-header"></a><span data-ttu-id="7ea84-139">vary-by-header</span><span class="sxs-lookup"><span data-stu-id="7ea84-139">vary-by-header</span></span>
 
-### <a name="vary-by-header"></a><span data-ttu-id="82422-144">vary-by-header</span><span class="sxs-lookup"><span data-stu-id="82422-144">vary-by-header</span></span>
+| <span data-ttu-id="7ea84-140">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-140">Attribute Type</span></span> | <span data-ttu-id="7ea84-141">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-141">Examples</span></span>                                    |
+| -------------- | ------------------------------------------- |
+| <span data-ttu-id="7ea84-142">String</span><span class="sxs-lookup"><span data-stu-id="7ea84-142">String</span></span>         | <span data-ttu-id="7ea84-143">`User-Agent`、 `User-Agent,content-encoding`</span><span class="sxs-lookup"><span data-stu-id="7ea84-143">`User-Agent`, `User-Agent,content-encoding`</span></span> |
 
-| <span data-ttu-id="82422-145">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-145">Attribute Type</span></span>    | <span data-ttu-id="82422-146">範例值</span><span class="sxs-lookup"><span data-stu-id="82422-146">Example Values</span></span>                |
-|----------------   |----------------               |
-| <span data-ttu-id="82422-147">String</span><span class="sxs-lookup"><span data-stu-id="82422-147">String</span></span>            | <span data-ttu-id="82422-148">"User-Agent"</span><span class="sxs-lookup"><span data-stu-id="82422-148">"User-Agent"</span></span>                  |
-|                   | <span data-ttu-id="82422-149">"User-Agent,content-encoding"</span><span class="sxs-lookup"><span data-stu-id="82422-149">"User-Agent,content-encoding"</span></span> |
+<span data-ttu-id="7ea84-144">`vary-by-header` 接受標頭值的逗號分隔清單，在標頭值變更時，會觸發快取重新整理。</span><span class="sxs-lookup"><span data-stu-id="7ea84-144">`vary-by-header` accepts a comma-delimited list of header values that trigger a cache refresh when they change.</span></span>
 
-<span data-ttu-id="82422-150">接受單一標頭值或標頭值的逗號分隔清單在變更時，觸發快取重新整理。</span><span class="sxs-lookup"><span data-stu-id="82422-150">Accepts a single header value or a comma-separated list of header values that trigger a cache refresh when they change.</span></span> <span data-ttu-id="82422-151">下列範例會監視標頭值 `User-Agent`。</span><span class="sxs-lookup"><span data-stu-id="82422-151">The following example monitors the header value `User-Agent`.</span></span> <span data-ttu-id="82422-152">此範例會快取展示給網頁伺服器之每個不同 `User-Agent` 的內容。</span><span class="sxs-lookup"><span data-stu-id="82422-152">The example will cache the content for every different `User-Agent` presented to the web server.</span></span>
-
-<span data-ttu-id="82422-153">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-153">Example:</span></span>
+<span data-ttu-id="7ea84-145">下列範例會監視標頭值 `User-Agent`。</span><span class="sxs-lookup"><span data-stu-id="7ea84-145">The following example monitors the header value `User-Agent`.</span></span> <span data-ttu-id="7ea84-146">此範例會快取展示給網頁伺服器之每個不同 `User-Agent` 的內容：</span><span class="sxs-lookup"><span data-stu-id="7ea84-146">The example caches the content for every different `User-Agent` presented to the web server:</span></span>
 
 ```cshtml
 <cache vary-by-header="User-Agent">
@@ -126,18 +113,15 @@ ms.locfileid: "47028151"
 </cache>
 ```
 
-- - -
+### <a name="vary-by-query"></a><span data-ttu-id="7ea84-147">vary-by-query</span><span class="sxs-lookup"><span data-stu-id="7ea84-147">vary-by-query</span></span>
 
-### <a name="vary-by-query"></a><span data-ttu-id="82422-154">vary-by-query</span><span class="sxs-lookup"><span data-stu-id="82422-154">vary-by-query</span></span>
+| <span data-ttu-id="7ea84-148">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-148">Attribute Type</span></span> | <span data-ttu-id="7ea84-149">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-149">Examples</span></span>             |
+| -------------- | -------------------- |
+| <span data-ttu-id="7ea84-150">String</span><span class="sxs-lookup"><span data-stu-id="7ea84-150">String</span></span>         | <span data-ttu-id="7ea84-151">`Make`、 `Make,Model`</span><span class="sxs-lookup"><span data-stu-id="7ea84-151">`Make`, `Make,Model`</span></span> |
 
-| <span data-ttu-id="82422-155">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-155">Attribute Type</span></span>    | <span data-ttu-id="82422-156">範例值</span><span class="sxs-lookup"><span data-stu-id="82422-156">Example Values</span></span>                |
-|----------------   |----------------               |
-| <span data-ttu-id="82422-157">String</span><span class="sxs-lookup"><span data-stu-id="82422-157">String</span></span>            | <span data-ttu-id="82422-158">"Make"</span><span class="sxs-lookup"><span data-stu-id="82422-158">"Make"</span></span>                |
-|                   | <span data-ttu-id="82422-159">"Make,Model"</span><span class="sxs-lookup"><span data-stu-id="82422-159">"Make,Model"</span></span> |
+<span data-ttu-id="7ea84-152">`vary-by-query` 接受標頭值的逗號分隔清單，在標頭值變更時，會觸發快取重新整理。</span><span class="sxs-lookup"><span data-stu-id="7ea84-152">`vary-by-query` accepts a comma-delimited list of header values that trigger a cache refresh when the header value changes.</span></span>
 
-<span data-ttu-id="82422-160">接受單一標頭值或標頭值的逗號分隔清單在標頭值變更時，觸發快取重新整理。</span><span class="sxs-lookup"><span data-stu-id="82422-160">Accepts a single header value or a comma-separated list of header values that trigger a cache refresh when the header value changes.</span></span> <span data-ttu-id="82422-161">下列範例會查看 `Make` 和 `Model` 的值。</span><span class="sxs-lookup"><span data-stu-id="82422-161">The following example looks at the values of `Make` and `Model`.</span></span>
-
-<span data-ttu-id="82422-162">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-162">Example:</span></span>
+<span data-ttu-id="7ea84-153">下列範例會監視 `Make` 與 `Model` 的值。</span><span class="sxs-lookup"><span data-stu-id="7ea84-153">The following example monitors the values of `Make` and `Model`.</span></span> <span data-ttu-id="7ea84-154">此範例會快取展示給網頁伺服器之每個不同 `Make` 與 `Model` 的內容：</span><span class="sxs-lookup"><span data-stu-id="7ea84-154">The example caches the content for every different `Make` and `Model` presented to the web server:</span></span>
 
 ```cshtml
 <cache vary-by-query="Make,Model">
@@ -145,18 +129,17 @@ ms.locfileid: "47028151"
 </cache>
 ```
 
-- - -
+### <a name="vary-by-route"></a><span data-ttu-id="7ea84-155">vary-by-route</span><span class="sxs-lookup"><span data-stu-id="7ea84-155">vary-by-route</span></span>
 
-### <a name="vary-by-route"></a><span data-ttu-id="82422-163">vary-by-route</span><span class="sxs-lookup"><span data-stu-id="82422-163">vary-by-route</span></span>
+| <span data-ttu-id="7ea84-156">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-156">Attribute Type</span></span> | <span data-ttu-id="7ea84-157">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-157">Examples</span></span>             |
+| -------------- | -------------------- |
+| <span data-ttu-id="7ea84-158">String</span><span class="sxs-lookup"><span data-stu-id="7ea84-158">String</span></span>         | <span data-ttu-id="7ea84-159">`Make`、 `Make,Model`</span><span class="sxs-lookup"><span data-stu-id="7ea84-159">`Make`, `Make,Model`</span></span> |
 
-| <span data-ttu-id="82422-164">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-164">Attribute Type</span></span>    | <span data-ttu-id="82422-165">範例值</span><span class="sxs-lookup"><span data-stu-id="82422-165">Example Values</span></span>                |
-|----------------   |----------------               |
-| <span data-ttu-id="82422-166">String</span><span class="sxs-lookup"><span data-stu-id="82422-166">String</span></span>            | <span data-ttu-id="82422-167">"Make"</span><span class="sxs-lookup"><span data-stu-id="82422-167">"Make"</span></span>                |
-|                   | <span data-ttu-id="82422-168">"Make,Model"</span><span class="sxs-lookup"><span data-stu-id="82422-168">"Make,Model"</span></span> |
+<span data-ttu-id="7ea84-160">`vary-by-route` 接受標頭值的逗號分隔清單，在路由資料參數值變更時，會觸發快取重新整理。</span><span class="sxs-lookup"><span data-stu-id="7ea84-160">`vary-by-route` accepts a comma-delimited list of header values that trigger a cache refresh when the route data parameter value changes.</span></span>
 
-<span data-ttu-id="82422-169">接受單一標頭值或標頭值的逗號分隔清單在路由資料參數值變更時，觸發快取重新整理。</span><span class="sxs-lookup"><span data-stu-id="82422-169">Accepts a single header value or a comma-separated list of header values that trigger a cache refresh when the route data parameter value(s) change.</span></span> <span data-ttu-id="82422-170">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-170">Example:</span></span>
+<span data-ttu-id="7ea84-161">範例：</span><span class="sxs-lookup"><span data-stu-id="7ea84-161">Example:</span></span>
 
-<span data-ttu-id="82422-171">*Startup.cs*</span><span class="sxs-lookup"><span data-stu-id="82422-171">*Startup.cs*</span></span> 
+<span data-ttu-id="7ea84-162">*Startup.cs*：</span><span class="sxs-lookup"><span data-stu-id="7ea84-162">*Startup.cs*:</span></span>
 
 ```csharp
 routes.MapRoute(
@@ -164,7 +147,7 @@ routes.MapRoute(
     template: "{controller=Home}/{action=Index}/{Make?}/{Model?}");
 ```
 
-<span data-ttu-id="82422-172">*Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="82422-172">*Index.cshtml*</span></span>
+<span data-ttu-id="7ea84-163">*Index.cshtml*：</span><span class="sxs-lookup"><span data-stu-id="7ea84-163">*Index.cshtml*:</span></span>
 
 ```cshtml
 <cache vary-by-route="Make,Model">
@@ -172,18 +155,15 @@ routes.MapRoute(
 </cache>
 ```
 
-- - -
+### <a name="vary-by-cookie"></a><span data-ttu-id="7ea84-164">vary-by-cookie</span><span class="sxs-lookup"><span data-stu-id="7ea84-164">vary-by-cookie</span></span>
 
-### <a name="vary-by-cookie"></a><span data-ttu-id="82422-173">vary-by-cookie</span><span class="sxs-lookup"><span data-stu-id="82422-173">vary-by-cookie</span></span>
+| <span data-ttu-id="7ea84-165">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-165">Attribute Type</span></span> | <span data-ttu-id="7ea84-166">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-166">Examples</span></span>                                                                         |
+| -------------- | -------------------------------------------------------------------------------- |
+| <span data-ttu-id="7ea84-167">String</span><span class="sxs-lookup"><span data-stu-id="7ea84-167">String</span></span>         | <span data-ttu-id="7ea84-168">`.AspNetCore.Identity.Application`、 `.AspNetCore.Identity.Application,HairColor`</span><span class="sxs-lookup"><span data-stu-id="7ea84-168">`.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor`</span></span> |
 
-| <span data-ttu-id="82422-174">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-174">Attribute Type</span></span>    | <span data-ttu-id="82422-175">範例值</span><span class="sxs-lookup"><span data-stu-id="82422-175">Example Values</span></span>                |
-|----------------   |----------------               |
-| <span data-ttu-id="82422-176">String</span><span class="sxs-lookup"><span data-stu-id="82422-176">String</span></span>            | <span data-ttu-id="82422-177">".AspNetCore.Identity.Application"</span><span class="sxs-lookup"><span data-stu-id="82422-177">".AspNetCore.Identity.Application"</span></span>                |
-|                   | <span data-ttu-id="82422-178">".AspNetCore.Identity.Application,HairColor"</span><span class="sxs-lookup"><span data-stu-id="82422-178">".AspNetCore.Identity.Application,HairColor"</span></span> |
+<span data-ttu-id="7ea84-169">`vary-by-cookie` 接受標頭值的逗號分隔清單，在標頭值變更時，會觸發快取重新整理。</span><span class="sxs-lookup"><span data-stu-id="7ea84-169">`vary-by-cookie` accepts a comma-delimited list of header values that trigger a cache refresh when the header values change.</span></span>
 
-<span data-ttu-id="82422-179">接受單一標頭值或標頭值的逗號分隔清單在標頭值變更時，觸發快取重新整理。</span><span class="sxs-lookup"><span data-stu-id="82422-179">Accepts a single header value or a comma-separated list of header values that trigger a cache refresh when the header values(s) change.</span></span> <span data-ttu-id="82422-180">下列範例會查看與 ASP.NET Core 身分識別建立關聯的 Cookie。</span><span class="sxs-lookup"><span data-stu-id="82422-180">The following example looks at the cookie associated with ASP.NET Core Identity.</span></span> <span data-ttu-id="82422-181">當使用者經過驗證時，待設定的要求 Cookie 會觸發快取重新整理。</span><span class="sxs-lookup"><span data-stu-id="82422-181">When a user is authenticated the request cookie to be set which triggers a cache refresh.</span></span>
-
-<span data-ttu-id="82422-182">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-182">Example:</span></span>
+<span data-ttu-id="7ea84-170">下列範例會監視與 ASP.NET Core 身分識別建立關聯的 Cookie。</span><span class="sxs-lookup"><span data-stu-id="7ea84-170">The following example monitors the cookie associated with ASP.NET Core Identity.</span></span> <span data-ttu-id="7ea84-171">驗證使用者時，身分識別 Cookie 中的變更會觸發快取重新整理：</span><span class="sxs-lookup"><span data-stu-id="7ea84-171">When a user is authenticated, a change in the Identity cookie triggers a cache refresh:</span></span>
 
 ```cshtml
 <cache vary-by-cookie=".AspNetCore.Identity.Application">
@@ -191,20 +171,15 @@ routes.MapRoute(
 </cache>
 ```
 
-- - -
+### <a name="vary-by-user"></a><span data-ttu-id="7ea84-172">vary-by-user</span><span class="sxs-lookup"><span data-stu-id="7ea84-172">vary-by-user</span></span>
 
-### <a name="vary-by-user"></a><span data-ttu-id="82422-183">vary-by-user</span><span class="sxs-lookup"><span data-stu-id="82422-183">vary-by-user</span></span>
+| <span data-ttu-id="7ea84-173">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-173">Attribute Type</span></span>  | <span data-ttu-id="7ea84-174">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-174">Examples</span></span>        | <span data-ttu-id="7ea84-175">預設</span><span class="sxs-lookup"><span data-stu-id="7ea84-175">Default</span></span> |
+| --------------- | --------------- | ------- |
+| <span data-ttu-id="7ea84-176">Boolean</span><span class="sxs-lookup"><span data-stu-id="7ea84-176">Boolean</span></span>         | <span data-ttu-id="7ea84-177">`true`、 `false`</span><span class="sxs-lookup"><span data-stu-id="7ea84-177">`true`, `false`</span></span> | `true`  |
 
-| <span data-ttu-id="82422-184">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-184">Attribute Type</span></span>    | <span data-ttu-id="82422-185">範例值</span><span class="sxs-lookup"><span data-stu-id="82422-185">Example Values</span></span>                |
-|----------------   |----------------               |
-| <span data-ttu-id="82422-186">Boolean</span><span class="sxs-lookup"><span data-stu-id="82422-186">Boolean</span></span>             | <span data-ttu-id="82422-187">"true"</span><span class="sxs-lookup"><span data-stu-id="82422-187">"true"</span></span>                  |
-|                     | <span data-ttu-id="82422-188">"false" (預設)</span><span class="sxs-lookup"><span data-stu-id="82422-188">"false" (default)</span></span> |
+<span data-ttu-id="7ea84-178">`vary-by-user` 可指定當登入的使用者 (或內容主體) 變更時，是否重設快取。</span><span class="sxs-lookup"><span data-stu-id="7ea84-178">`vary-by-user` specifies whether or not the cache resets when the signed-in user (or Context Principal) changes.</span></span> <span data-ttu-id="7ea84-179">目前的使用者也稱為要求內容主體，可在 Razor 檢視中藉由參考 `@User.Identity.Name` 進行檢視。</span><span class="sxs-lookup"><span data-stu-id="7ea84-179">The current user is also known as the Request Context Principal and can be viewed in a Razor view by referencing `@User.Identity.Name`.</span></span>
 
-<span data-ttu-id="82422-189">指定當登入的使用者 (或內容主體) 變更時，是否應該重設快取。</span><span class="sxs-lookup"><span data-stu-id="82422-189">Specifies whether or not the cache should reset when the logged-in user (or Context Principal) changes.</span></span> <span data-ttu-id="82422-190">目前的使用者也稱為要求內容主體，可在 Razor 檢視中藉由參考 `@User.Identity.Name` 進行檢視。</span><span class="sxs-lookup"><span data-stu-id="82422-190">The current user is also known as the Request Context Principal and can be viewed in a Razor view by referencing `@User.Identity.Name`.</span></span>
-
-<span data-ttu-id="82422-191">下列範例會查看目前登入的使用者。</span><span class="sxs-lookup"><span data-stu-id="82422-191">The following example looks at the current logged in user.</span></span>  
-
-<span data-ttu-id="82422-192">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-192">Example:</span></span>
+<span data-ttu-id="7ea84-180">下列範例會監視目前登入的使用者，以觸發快取重新整理：</span><span class="sxs-lookup"><span data-stu-id="7ea84-180">The following example monitors the current logged in user to trigger a cache refresh:</span></span>
 
 ```cshtml
 <cache vary-by-user="true">
@@ -212,26 +187,22 @@ routes.MapRoute(
 </cache>
 ```
 
-<span data-ttu-id="82422-193">使用此屬性可保留登入再登出週期內的快取內容。</span><span class="sxs-lookup"><span data-stu-id="82422-193">Using this attribute maintains the contents in cache through a log-in and log-out cycle.</span></span>  <span data-ttu-id="82422-194">使用 `vary-by-user="true"` 時，經過驗證之使用者的登入再登出動作會使快取失效。</span><span class="sxs-lookup"><span data-stu-id="82422-194">When using `vary-by-user="true"`, a log-in and log-out action invalidates the cache for the authenticated user.</span></span>  <span data-ttu-id="82422-195">快取失效是由於登入時會產生新的唯一 Cookie 值所致。</span><span class="sxs-lookup"><span data-stu-id="82422-195">The cache is invalidated because a new unique cookie value is generated on login.</span></span> <span data-ttu-id="82422-196">如果沒有任何 Cookie 或 Cookie 已過期，則會以匿名狀態保留快取。</span><span class="sxs-lookup"><span data-stu-id="82422-196">Cache is maintained for the anonymous state when no cookie is present or has expired.</span></span> <span data-ttu-id="82422-197">這表示如果沒有任何使用者登入，則會保留快取。</span><span class="sxs-lookup"><span data-stu-id="82422-197">This means if no user is logged in, the cache will be maintained.</span></span>
+<span data-ttu-id="7ea84-181">使用此屬性可保留登入與登出週期中的快取內容。</span><span class="sxs-lookup"><span data-stu-id="7ea84-181">Using this attribute maintains the contents in cache through a sign-in and sign-out cycle.</span></span> <span data-ttu-id="7ea84-182">當此值設定為 `true` 時，驗證週期將使已驗證之使用者的快取無效。</span><span class="sxs-lookup"><span data-stu-id="7ea84-182">When the value is set to `true`, an authentication cycle invalidates the cache for the authenticated user.</span></span> <span data-ttu-id="7ea84-183">快取失效是由於使用者通過驗證時會產生新的唯一 Cookie 值所致。</span><span class="sxs-lookup"><span data-stu-id="7ea84-183">The cache is invalidated because a new unique cookie value is generated when a user is authenticated.</span></span> <span data-ttu-id="7ea84-184">如果沒有任何 Cookie 或 Cookie 已過期，則會以匿名狀態保留快取。</span><span class="sxs-lookup"><span data-stu-id="7ea84-184">Cache is maintained for the anonymous state when no cookie is present or the cookie has expired.</span></span> <span data-ttu-id="7ea84-185">如果使用者**未**通過驗證，則會維護快取。</span><span class="sxs-lookup"><span data-stu-id="7ea84-185">If the user is **not** authenticated, the cache is maintained.</span></span>
 
-- - -
+### <a name="vary-by"></a><span data-ttu-id="7ea84-186">vary-by</span><span class="sxs-lookup"><span data-stu-id="7ea84-186">vary-by</span></span>
 
-### <a name="vary-by"></a><span data-ttu-id="82422-198">vary-by</span><span class="sxs-lookup"><span data-stu-id="82422-198">vary-by</span></span>
+| <span data-ttu-id="7ea84-187">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-187">Attribute Type</span></span> | <span data-ttu-id="7ea84-188">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-188">Example</span></span>  |
+| -------------- | -------- |
+| <span data-ttu-id="7ea84-189">String</span><span class="sxs-lookup"><span data-stu-id="7ea84-189">String</span></span>         | `@Model` |
 
-| <span data-ttu-id="82422-199">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-199">Attribute Type</span></span> | <span data-ttu-id="82422-200">範例值</span><span class="sxs-lookup"><span data-stu-id="82422-200">Example Values</span></span> |
-|----------------|----------------|
-|     <span data-ttu-id="82422-201">String</span><span class="sxs-lookup"><span data-stu-id="82422-201">String</span></span>     |    <span data-ttu-id="82422-202">"@Model"</span><span class="sxs-lookup"><span data-stu-id="82422-202">"@Model"</span></span>    |
+<span data-ttu-id="7ea84-190">`vary-by` 可自訂要快取哪些資料。</span><span class="sxs-lookup"><span data-stu-id="7ea84-190">`vary-by` allows for customization of what data is cached.</span></span> <span data-ttu-id="7ea84-191">當屬性字串值所參考的物件變更時，就會更新快取標籤協助程式的內容。</span><span class="sxs-lookup"><span data-stu-id="7ea84-191">When the object referenced by the attribute's string value changes, the content of the Cache Tag Helper is updated.</span></span> <span data-ttu-id="7ea84-192">通常會對此屬性指派模型值的字串串連。</span><span class="sxs-lookup"><span data-stu-id="7ea84-192">Often, a string-concatenation of model values are assigned to this attribute.</span></span> <span data-ttu-id="7ea84-193">實際上，這會導致更新任何串連值都會使快取失效的情節。</span><span class="sxs-lookup"><span data-stu-id="7ea84-193">Effectively, this results in a scenario where an update to any of the concatenated values invalidates the cache.</span></span>
 
-<span data-ttu-id="82422-203">可自訂要快取哪些資料。</span><span class="sxs-lookup"><span data-stu-id="82422-203">Allows for customization of what data gets cached.</span></span> <span data-ttu-id="82422-204">當屬性字串值所參考的物件變更時，就會更新快取標籤協助程式的內容。</span><span class="sxs-lookup"><span data-stu-id="82422-204">When the object referenced by the attribute's string value changes, the content of the Cache Tag Helper is updated.</span></span> <span data-ttu-id="82422-205">通常會對此屬性指派模型值的字串串連。</span><span class="sxs-lookup"><span data-stu-id="82422-205">Often a string-concatenation of model values are assigned to this attribute.</span></span>  <span data-ttu-id="82422-206">實際上，這表示更新任何串連值都會使快取失效。</span><span class="sxs-lookup"><span data-stu-id="82422-206">Effectively, that means an update to any of the concatenated values invalidates the cache.</span></span>
+<span data-ttu-id="7ea84-194">下列範例假設轉譯檢視的控制器方法加總兩個路由參數 (`myParam1` 與 `myParam2`) 的整數值，並以單一模型屬性傳回加總。</span><span class="sxs-lookup"><span data-stu-id="7ea84-194">The following example assumes the controller method rendering the view sums the integer value of the two route parameters, `myParam1` and `myParam2`, and returns the sum as the single model property.</span></span> <span data-ttu-id="7ea84-195">當此總和變更時，快取標籤協助程式的內容會重新轉譯和快取。</span><span class="sxs-lookup"><span data-stu-id="7ea84-195">When this sum changes, the content of the Cache Tag Helper is rendered and cached again.</span></span>  
 
-<span data-ttu-id="82422-207">下列範例假設轉譯檢視的控制器方法加總兩個路由參數 `myParam1` 和 `myParam2` 的整數值，並傳回一個模型屬性。</span><span class="sxs-lookup"><span data-stu-id="82422-207">The following example assumes the controller method rendering the view sums the integer value of the two route parameters, `myParam1` and `myParam2`, and returns that as the single model property.</span></span> <span data-ttu-id="82422-208">當此總和變更時，快取標籤協助程式的內容會重新轉譯和快取。</span><span class="sxs-lookup"><span data-stu-id="82422-208">When this sum changes, the content of the Cache Tag Helper is rendered and cached again.</span></span>  
-
-<span data-ttu-id="82422-209">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-209">Example:</span></span>
-
-<span data-ttu-id="82422-210">動作：</span><span class="sxs-lookup"><span data-stu-id="82422-210">Action:</span></span>
+<span data-ttu-id="7ea84-196">動作：</span><span class="sxs-lookup"><span data-stu-id="7ea84-196">Action:</span></span>
 
 ```csharp
-public IActionResult Index(string myParam1,string myParam2,string myParam3)
+public IActionResult Index(string myParam1, string myParam2, string myParam3)
 {
     int num1;
     int num2;
@@ -241,28 +212,23 @@ public IActionResult Index(string myParam1,string myParam2,string myParam3)
 }
 ```
 
-<span data-ttu-id="82422-211">*Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="82422-211">*Index.cshtml*</span></span>
+<span data-ttu-id="7ea84-197">*Index.cshtml*：</span><span class="sxs-lookup"><span data-stu-id="7ea84-197">*Index.cshtml*:</span></span>
 
 ```cshtml
-<cache vary-by="@Model"">
+<cache vary-by="@Model">
     Current Time Inside Cache Tag Helper: @DateTime.Now
 </cache>
 ```
 
-- - -
+### <a name="priority"></a><span data-ttu-id="7ea84-198">priority</span><span class="sxs-lookup"><span data-stu-id="7ea84-198">priority</span></span>
 
-### <a name="priority"></a><span data-ttu-id="82422-212">priority</span><span class="sxs-lookup"><span data-stu-id="82422-212">priority</span></span>
+| <span data-ttu-id="7ea84-199">屬性類型</span><span class="sxs-lookup"><span data-stu-id="7ea84-199">Attribute Type</span></span>      | <span data-ttu-id="7ea84-200">範例</span><span class="sxs-lookup"><span data-stu-id="7ea84-200">Examples</span></span>                               | <span data-ttu-id="7ea84-201">預設</span><span class="sxs-lookup"><span data-stu-id="7ea84-201">Default</span></span>  |
+| ------------------- | -------------------------------------- | -------- |
+| `CacheItemPriority` | <span data-ttu-id="7ea84-202">`High`, `Low`, `NeverRemove`, `Normal`</span><span class="sxs-lookup"><span data-stu-id="7ea84-202">`High`, `Low`, `NeverRemove`, `Normal`</span></span> | `Normal` |
 
-| <span data-ttu-id="82422-213">屬性類型</span><span class="sxs-lookup"><span data-stu-id="82422-213">Attribute Type</span></span>    | <span data-ttu-id="82422-214">範例值</span><span class="sxs-lookup"><span data-stu-id="82422-214">Example Values</span></span>                |
-|----------------   |----------------               |
-| <span data-ttu-id="82422-215">CacheItemPriority</span><span class="sxs-lookup"><span data-stu-id="82422-215">CacheItemPriority</span></span>  | <span data-ttu-id="82422-216">"High"</span><span class="sxs-lookup"><span data-stu-id="82422-216">"High"</span></span>                   |
-|                    | <span data-ttu-id="82422-217">"Low"</span><span class="sxs-lookup"><span data-stu-id="82422-217">"Low"</span></span> |
-|                    | <span data-ttu-id="82422-218">"NeverRemove"</span><span class="sxs-lookup"><span data-stu-id="82422-218">"NeverRemove"</span></span> |
-|                    | <span data-ttu-id="82422-219">"Normal"</span><span class="sxs-lookup"><span data-stu-id="82422-219">"Normal"</span></span> |
+<span data-ttu-id="7ea84-203">`priority` 可提供快取撤銷指導方針給內建快取提供者。</span><span class="sxs-lookup"><span data-stu-id="7ea84-203">`priority` provides cache eviction guidance to the built-in cache provider.</span></span> <span data-ttu-id="7ea84-204">當記憶體不足時，網頁伺服器會先撤出 `Low` 快取項目。</span><span class="sxs-lookup"><span data-stu-id="7ea84-204">The web server evicts `Low` cache entries first when it's under memory pressure.</span></span>
 
-<span data-ttu-id="82422-220">提供快取撤銷指引給內建快取提供者。</span><span class="sxs-lookup"><span data-stu-id="82422-220">Provides cache eviction guidance to the built-in cache provider.</span></span> <span data-ttu-id="82422-221">當記憶體不足時，網頁伺服器會先撤銷 `Low` 快取項目。</span><span class="sxs-lookup"><span data-stu-id="82422-221">The web server will evict `Low` cache entries first when it's under memory pressure.</span></span>
-
-<span data-ttu-id="82422-222">範例：</span><span class="sxs-lookup"><span data-stu-id="82422-222">Example:</span></span>
+<span data-ttu-id="7ea84-205">範例：</span><span class="sxs-lookup"><span data-stu-id="7ea84-205">Example:</span></span>
 
 ```cshtml
 <cache priority="High">
@@ -270,11 +236,11 @@ public IActionResult Index(string myParam1,string myParam2,string myParam3)
 </cache>
 ```
 
-<span data-ttu-id="82422-223">`priority` 屬性並不保證特定快取保留層級。</span><span class="sxs-lookup"><span data-stu-id="82422-223">The `priority` attribute doesn't guarantee a specific level of cache retention.</span></span> <span data-ttu-id="82422-224">`CacheItemPriority` 僅供建議。</span><span class="sxs-lookup"><span data-stu-id="82422-224">`CacheItemPriority` is only a suggestion.</span></span> <span data-ttu-id="82422-225">將此屬性設定為 `NeverRemove` 並不保證一定會保留快取。</span><span class="sxs-lookup"><span data-stu-id="82422-225">Setting this attribute to `NeverRemove` doesn't guarantee that the cache will always be retained.</span></span> <span data-ttu-id="82422-226">如需詳細資訊，請參閱[其他資源](#additional-resources)。</span><span class="sxs-lookup"><span data-stu-id="82422-226">See [Additional Resources](#additional-resources) for more information.</span></span>
+<span data-ttu-id="7ea84-206">`priority` 屬性並不保證特定快取保留層級。</span><span class="sxs-lookup"><span data-stu-id="7ea84-206">The `priority` attribute doesn't guarantee a specific level of cache retention.</span></span> <span data-ttu-id="7ea84-207">`CacheItemPriority` 僅供建議。</span><span class="sxs-lookup"><span data-stu-id="7ea84-207">`CacheItemPriority` is only a suggestion.</span></span> <span data-ttu-id="7ea84-208">將此屬性設定為 `NeverRemove` 並不保證一定會保留快取項目。</span><span class="sxs-lookup"><span data-stu-id="7ea84-208">Setting this attribute to `NeverRemove` doesn't guarantee that cached items are always retained.</span></span> <span data-ttu-id="7ea84-209">請參閱[其他資源](#additional-resources)一節中的主題，以取得詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="7ea84-209">See the topics in the [Additional Resources](#additional-resources) section for more information.</span></span>
 
-<span data-ttu-id="82422-227">快取標籤協助程式相依於[記憶體快取服務](xref:performance/caching/memory)。</span><span class="sxs-lookup"><span data-stu-id="82422-227">The Cache Tag Helper is dependent on the [memory cache service](xref:performance/caching/memory).</span></span> <span data-ttu-id="82422-228">如果尚未新增此服務，快取標籤協助程式會予以新增。</span><span class="sxs-lookup"><span data-stu-id="82422-228">The Cache Tag Helper adds the service if it has not been added.</span></span>
+<span data-ttu-id="7ea84-210">快取標籤協助程式相依於[記憶體快取服務](xref:performance/caching/memory)。</span><span class="sxs-lookup"><span data-stu-id="7ea84-210">The Cache Tag Helper is dependent on the [memory cache service](xref:performance/caching/memory).</span></span> <span data-ttu-id="7ea84-211">如果尚未新增此服務，快取標籤協助程式會予以新增。</span><span class="sxs-lookup"><span data-stu-id="7ea84-211">The Cache Tag Helper adds the service if it hasn't been added.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="82422-229">其他資源</span><span class="sxs-lookup"><span data-stu-id="82422-229">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="7ea84-212">其他資源</span><span class="sxs-lookup"><span data-stu-id="7ea84-212">Additional resources</span></span>
 
-* [<span data-ttu-id="82422-230">記憶體中快取</span><span class="sxs-lookup"><span data-stu-id="82422-230">Cache in-memory</span></span>](xref:performance/caching/memory)
-* [<span data-ttu-id="82422-231">身分識別簡介</span><span class="sxs-lookup"><span data-stu-id="82422-231">Introduction to Identity</span></span>](xref:security/authentication/identity)
+* <xref:performance/caching/memory>
+* <xref:security/authentication/identity>

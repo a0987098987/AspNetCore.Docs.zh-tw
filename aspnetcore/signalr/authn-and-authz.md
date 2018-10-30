@@ -7,12 +7,12 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 06/29/2018
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 31d5f753e043157caf43fa8df54e310ea0efd17b
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 7cfe90115b0710fba196693efd309f7c914f0ad4
+ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207936"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234536"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中驗證和授權
 
@@ -28,11 +28,13 @@ SignalR 可以搭配[ASP.NET Core 驗證](xref:security/authentication/index)使
 
 在瀏覽器為基礎的應用程式中的 cookie 驗證可讓您現有的使用者認證，以自動流向 SignalR 連線。 使用瀏覽器用戶端時，不需要進行其他設定。 如果使用者登入您的應用程式，SignalR 連線會自動繼承此驗證。
 
-除非應用程式只需要從瀏覽器用戶端驗證使用者，不建議使用 cookie 驗證。 使用時[.NET 用戶端](xref:signalr/dotnet-client)，則`Cookies`屬性可以設定在`.WithUrl`呼叫，以提供 cookie。 不過，使用 cookie 驗證，從.NET 用戶端需要應用程式提供 API，以交換驗證 cookie 的資料。
+Cookie 是瀏覽器特定的方式，傳送存取權杖，但非瀏覽器用戶端可以傳送給他們。 使用時[.NET 用戶端](xref:signalr/dotnet-client)，則`Cookies`屬性可以設定在`.WithUrl`呼叫，以提供 cookie。 不過，使用 cookie 驗證，從.NET 用戶端需要應用程式提供 API，以交換驗證 cookie 的資料。
 
 ### <a name="bearer-token-authentication"></a>持有人權杖驗證
 
-使用非瀏覽器用戶端的用戶端時，持有人權杖驗證是建議的方法。 這種方法，用戶端會提供伺服器驗證，並使用來識別使用者的存取權杖。 持有人權杖驗證的詳細資料已超出本文的範圍。 在伺服器上，持有人權杖驗證使用設定[JWT Bearer 中介軟體](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer)。
+用戶端可以提供存取權杖，而不是使用 cookie。 伺服器會驗證權杖，並使用它來識別使用者。 只有在建立連線時，才完成這項驗證。 連接的期間，伺服器不會自動重新驗證權杖撤銷檢查。
+
+在伺服器上，持有人權杖驗證使用設定[JWT Bearer 中介軟體](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer)。
 
 在 JavaScript 用戶端，語彙基元，可供使用[accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication)選項。
 
@@ -55,6 +57,10 @@ var connection = new HubConnectionBuilder()
 在標準的 web Api，持有人權杖會傳送 HTTP 標頭。 不過，SignalR 是無法使用某些傳輸時，在瀏覽器中設定這些標頭。 使用 WebSockets 和 Server-Sent 事件時，權杖會傳送做為查詢字串參數。 若要支援此伺服器上，則需要其他組態：
 
 [!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?name=snippet)]
+
+### <a name="cookies-vs-bearer-tokens"></a>持有人權杖與 cookie 
+
+因為 cookie 特有的瀏覽器，從其他種類的用戶端傳送會增加複雜度，相較於傳送持有人權杖。 基於這個理由，不建議 cookie 驗證，除非應用程式只需要從瀏覽器用戶端驗證使用者。 使用非瀏覽器用戶端的用戶端時，持有人權杖驗證是建議的方法。
 
 ### <a name="windows-authentication"></a>Windows 驗證
 

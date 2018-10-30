@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 5cd1e08ac52d352be23a280419d7456f685a03ad
-ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
+ms.openlocfilehash: 41a88e06afbe6e7accd03ff7b39aa69e15e0c0b4
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045597"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325809"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -20,9 +20,9 @@ ms.locfileid: "48045597"
 
 ## <a name="add-a-data-model"></a>新增資料模型
 
-在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增]**** > [新增資料夾]****。 將資料夾命名為 *Models*。
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie**，並以下列程式碼取代 `Movie` 類別的內容：
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增]**** > [類別]****。 將類別命名為 **Movie**，並以下列程式碼取代 `Movie` 類別的內容：
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie21/Models/Movie1.cs?name=snippet)]
 
@@ -32,34 +32,33 @@ ms.locfileid: "48045597"
 
 建立 *Pages/Movies* 資料夾：
 
-* 在 [方案總管] 中，以滑鼠右鍵按一下 *Pages* 資料夾 > [新增] > [新增資料夾]。
+* 在 [方案總管]**** 中，以滑鼠右鍵按一下 *Pages* 資料夾 > [新增]**** > [新增資料夾]****。
 * 將資料夾命名為 *Movies*
 
-在 [方案總管] 中，以滑鼠右鍵按一下 *Pages/Movies* 資料夾 > [新增] > [新增 Scaffold 項目]。
+在 [方案總管]**** 中，以滑鼠右鍵按一下 *Pages/Movies* 資料夾 > [新增]**** > [新增 Scaffold 項目]****。
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)] > [新增]。
+在 [新增 Scaffold]**** 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)]**** > [新增]****。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
-完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\) 對話方塊：
+完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)**** 對話方塊：
 
-* 在 [模型類別] 下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)。
-* 在 [資料內容類別] 列中選取 [+] (加號)，並接受產生的名稱 **RazorPagesMovie.Models.RazorPagesMovieContext**。
-* 在 [資料內容類別] 下拉式清單中，選取 [RazorPagesMovie.Models.RazorPagesMovieContext]
-* 選取 [新增]。
+* 在 [模型類別]**** 下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)****。
+* 在 [資料內容類別]**** 列中選取 [+]**** (加號)，並接受產生的名稱 **RazorPagesMovie.Models.RazorPagesMovieContext**。
+* 選取 [新增]****。
 
 ![前述指示中的圖片。](model/_static/arp.png)
 
-隨即建立 Scaffold 處理序並變更下列檔案：
+隨即建立 Scaffold 處理序並更新下列檔案：
 
 ### <a name="files-created"></a>建立的檔案
 
 * *Pages/Movies*：建立、刪除、詳細資料、編輯、索引。 下一個教學課程會詳述這些頁面。
 * *Data/RazorPagesMovieContext.cs*
 
-### <a name="file-updates"></a>檔案更新
+### <a name="file-updated"></a>檔案已更新
 
 * *Startup.cs*：這個檔案的變更會於下一節中詳述。
 * *appsettings.json*：已新增用來連線到本機資料庫的連接字串。
@@ -90,7 +89,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 * 新增初始移轉。
 * 以初始移轉更新資料庫。
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+從 [工具]**** 功能表中，選取 [NuGet 套件管理員]**** > [套件管理員主控台]****。
 
   ![PMC 功能表](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -110,9 +109,10 @@ dotnet ef database update
 
 請略過下列警告訊息，您將在稍後的教學課程中修正該問題：
 
-`Microsoft.EntityFrameworkCore.Model.Validation[30000]`
-
-      *No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'.*
+```console
+Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'.
+```
 
 `Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選擇描述移轉的名稱。 如需詳細資訊，請參閱[移轉簡介](xref:data/ef-mvc/migrations#introduction-to-migrations)。
 
@@ -120,8 +120,10 @@ dotnet ef database update
 
 如果您收到錯誤：
 
-`SqlException: Cannot open database "RazorPagesMovieContext-GUID" requested by the login. The login failed.
-Login failed for user 'User-name'.`
+```console
+SqlException: Cannot open database "RazorPagesMovieContext-GUID" requested by the login. The login failed.
+Login failed for user 'User-name'.
+```
 
 您遺失了[移轉步驟](#pmc)。
 
@@ -133,9 +135,9 @@ Login failed for user 'User-name'.`
 
 ## <a name="add-a-data-model"></a>新增資料模型
 
-在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增]**** > [新增資料夾]****。 將資料夾命名為 *Models*。
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie** 並新增下列屬性：
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增]**** > [類別]****。 將類別命名為 **Movie** 並新增下列屬性：
 
 [!INCLUDE [model 2](~/includes/RP/model2.md)]
 
@@ -164,7 +166,7 @@ Login failed for user 'User-name'.`
 * 新增初始移轉。
 * 以初始移轉更新資料庫。
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+從 [工具]**** 功能表中，選取 [NuGet 套件管理員]**** > [套件管理員主控台]****。
 
   ![PMC 功能表](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -186,9 +188,10 @@ dotnet ef database update
 
 請略過下列訊息：
 
-    `Microsoft.EntityFrameworkCore.Model.Validation[30000]`
-
-      *No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'*
+```console
+Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'
+```
 
 您將在接下來的教學課程中修正該問題。
 

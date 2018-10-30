@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: index
-ms.openlocfilehash: fcd95b88b970073f4d7eddf89729683d18be449d
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 37448b1b3d0da4e3cb34b1cd51f663b7e53ddced
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090650"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207390"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -66,6 +66,14 @@ ASP.NET Core 可將目標指向 NET Core 或 .NET Framework。 將目標指向 .
 * 開啟原始檔
 
 我們正致力於縮短 .NET Framework 與 .NET Core 之間的 API 差距。 [Windows 相容性套件](/dotnet/core/porting/windows-compat-pack)在 .NET Core 中發佈了上千個僅供 Windows 使用的 API。 這些 API 並不適用於 .NET Core 1.x。
+
+## <a name="how-to-download-a-sample"></a>如何下載範例
+
+許多文章及教學課程都有包含範例程式碼的連結。
+
+1. [下載 ASP.NET 存放庫 ZIP 檔案](https://codeload.github.com/aspnet/Docs/zip/master)。
+1. 解壓縮 *Docs-master.zip* 檔案。
+1. 使用範例連結中的 URL，協助您巡覽至範例目錄。
 
 ## <a name="next-steps"></a>後續步驟
 

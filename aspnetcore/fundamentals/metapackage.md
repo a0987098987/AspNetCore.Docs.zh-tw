@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/20/2018
 uid: fundamentals/metapackage
-ms.openlocfilehash: 1942426dbd5c15ae4a5fa5fbb931b94f50aa6043
-ms.sourcegitcommit: 32f5ee0690604d451f61e9a5c28881c9fcf85738
+ms.openlocfilehash: b1924e07acd2b4feb25c69b8c4674002e6ba0464
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2018
-ms.locfileid: "47454735"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325675"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>ASP.NET Core 2.0 的 Microsoft.AspNetCore.All 中繼套件
 
@@ -61,14 +61,14 @@ ASP.NET Core 的 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Micro
 
 若要從 `Microsoft.AspNetCore.All` 移到 `Microsoft.AspNetCore.App`，如果您的應用程式使用來自上述套件的任何 API，或這些套件中隨附的套件，請將參考新增到專案中的這些套件。
 
-若前述套件的任何相依性不是 `Microsoft.AspNetCore.App` 的相依性，即不包含在內。 例如: 
+若前述套件的任何相依性不是 `Microsoft.AspNetCore.App` 的相依性，即不包含在內。 例如：
 
 * `StackExchange.Redis` 為 `Microsoft.Extensions.Caching.Redis` 的相依性
 * `Microsoft.ApplicationInsights` 為 `Microsoft.AspNetCore.ApplicationInsights.HostingStartup` 的相依性
 
 ## <a name="update-aspnet-core-21"></a>更新 ASP.NET Core 2.1
 
-建議您遷移至 `Microsoft.AspNetCore.App` 中繼套件 2.1 和更新版本。 若要繼續使用 `Microsoft.AspNetCore.All` 中繼套件並確保已部署最新的更新程式版本：
+建議您移轉到 `Microsoft.AspNetCore.App` 中繼套件 2.1 與更新版本。 若要繼續使用 `Microsoft.AspNetCore.All` 中繼套件並確保已部署最新的更新程式版本：
 
 * 在開發電腦和組建伺服器上：安裝最新的 [.NET Core SDK](https://www.microsoft.com/net/download)。
 * 在部署伺服器上：安裝最新的 [.NET Core 執行階段](https://www.microsoft.com/net/download)。

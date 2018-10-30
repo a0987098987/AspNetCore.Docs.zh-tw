@@ -3,44 +3,54 @@ title: ASP.NET Core 中的分散式快取標籤協助程式
 author: pkellner
 description: 了解如何使用分散式快取標籤協助程式。
 ms.author: riande
-ms.date: 02/14/2017
+ms.custom: mvc
+ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: 1b51164a6d3dab2eeaf64262d6f0d9961bd00d12
-ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
+ms.openlocfilehash: a5b33451a763c297c6d7885855a321c43435abb4
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47028077"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325207"
 ---
 # <a name="distributed-cache-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的分散式快取標籤協助程式
 
-由 [Peter Kellner](http://peterkellner.net) 提供 
+作者：[Peter Kellner](http://peterkellner.net) 與 [Luke Latham](https://github.com/guardrex)
 
 分散式快取標籤協助程式可將 ASP.NET Core 應用程式內容快取至分散式快取來源，因此大幅提升應用程式的效能。
 
-分散式快取標籤協助程式繼承自與快取標籤協助程式相同的基底類別。 所有與快取標籤協助程式建立關聯的屬性也會適用於分散式標籤協助程式。
+如需標籤協助程式的概觀，請參閱 <xref:mvc/views/tag-helpers/intro>。
 
-分散式快取標籤協助程式遵循**明確的相依性原則**，稱為**建構函式插入**。 具體來說，`IDistributedCache` 介面容器會傳入分散式快取標籤協助程式的建構函式。 如果 `ConfigureServices` 中未建立 `IDistributedCache` 的特定具體實作 (通常位於 startup.cs)，則分散式快取標籤協助程式將會使用與基本快取標籤協助程式相同的記憶體內部提供者來儲存快取資料。
+分散式快取標籤協助程式繼承自與快取標籤協助程式相同的基底類別。 分散式標籤協助程式可以使用所有[快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)屬性。
+
+分散式快取標籤協助程式會使用[建構函式插入](xref:fundamentals/dependency-injection#constructor-injection-behavior)。 <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> 介面會被傳入分散式快取標籤協助程式的建構函式。 如果 `Startup.ConfigureServices` 中未建立 `IDistributedCache` 的具體實作 (*Startup.cs*)，[分散式快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)將會使用與快取標籤協助程式相同的記憶體內部提供者來儲存快取資料。
 
 ## <a name="distributed-cache-tag-helper-attributes"></a>分散式快取標籤協助程式屬性
 
-- - -
+### <a name="attributes-shared-with-the-cache-tag-helper"></a>與快取標籤協助程式共用的屬性
 
-### <a name="enabled-expires-on-expires-after-expires-sliding-vary-by-header-vary-by-query-vary-by-route-vary-by-cookie-vary-by-user-vary-by-priority"></a>enabled expires-on expires-after expires-sliding vary-by-header vary-by-query vary-by-route vary-by-cookie vary-by-user vary-by priority
+* `enabled`
+* `expires-on`
+* `expires-after`
+* `expires-sliding`
+* `vary-by-header`
+* `vary-by-query`
+* `vary-by-route`
+* `vary-by-cookie`
+* `vary-by-user`
+* `vary-by priority`
 
-如需定義，請參閱＜快取標籤協助程式＞。 分散式快取標籤協助程式繼承自與快取標籤協助程式相同的類別，因此上述所有屬性都是快取標籤協助程式中的通用屬性。
+分散式快取標籤協助程式繼承自與快取標籤協助程式相同的類別。 如需這些屬性的描述，請參閱[快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)。
 
-- - -
+### <a name="name"></a>名稱
 
-### <a name="name-required"></a>名稱 (必要)
+| 屬性類型 | 範例                               |
+| -------------- | ------------------------------------- |
+| String         | `my-distributed-cache-unique-key-101` |
 
-| 屬性類型    | 範例值     |
-|----------------   |----------------   |
-| 字串    | "my-distributed-cache-unique-key-101"     |
+`name` 是必要的。 `name` 屬性會作為每個預存快取執行個體的索引鍵。 不同於快取標記協助程式是根據 Razor 頁面名稱和 Razor 頁面中的位置，來對每個執行個體指派一個快取索引鍵，分散式快取標記協助程式只會以 `name` 屬性為其索引鍵根據。
 
-此必要的 `name` 屬性可作為針對每個分散式快取標籤協助程式執行個體所儲存的快取索引鍵。 不同於基本快取標記協助程式是根據 Razor 頁面名稱和 Razor 頁面中的標記協助程式位置，來對每個快取標記協助程式執行個體指派一個索引鍵，分散式快取標記協助程式只會以 `name` 屬性為其索引鍵根據
-
-使用範例：
+範例：
 
 ```cshtml
 <distributed-cache name="my-distributed-cache-unique-key-101">
@@ -50,7 +60,7 @@ ms.locfileid: "47028077"
 
 ## <a name="distributed-cache-tag-helper-idistributedcache-implementations"></a>分散式快取標記協助程式 IDistributedCache 實作
 
-ASP.NET Core 內建兩項 `IDistributedCache` 實作。 其中一項是以 SQL Server 為基礎，另一項是以 Redis 為基礎。 如需這些實作的詳細資料，請參閱<xref:performance/caching/distributed>。 這兩項實作都需要在 ASP.NET Core 的 *Startup.cs* 中設定 `IDistributedCache` 執行個體。
+ASP.NET Core 內建兩個 <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> 實作。 其中一個是以 SQL Server 為基礎，另一項是以 Redis 為基礎。 如需這些實作的詳細資料，請參閱<xref:performance/caching/distributed>。 這兩個實作都涉及在 `Startup` 的 `IDistributedCache` 中設定執行個體。
 
 沒有特別與使用 `IDistributedCache` 的任何特定實作建立關聯的標籤屬性。
 

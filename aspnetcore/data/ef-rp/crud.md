@@ -5,12 +5,12 @@ description: 示範如何以 EF Core 來建立、讀取、更新、刪除
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: 25493f93daf3fe5e874ad1d06b918196cd1f074d
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 4af16bdf3928609214c1255cdd411312c8b7d3f3
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912809"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477432"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 
@@ -24,7 +24,7 @@ ms.locfileid: "48912809"
 
 在本教學課程中，將會檢閱並自訂 Scaffold CRUD (建立、讀取、更新、刪除)。
 
-為降低複雜性並將教學課程聚焦於 EF Core，EF Core 程式碼會使用於頁面模型中。 有些開發人員會使用服務層或[存放庫模式](xref:fundamentals/repository-pattern)來建立介於 UI (Razor 頁面) 和資料存取層之間的抽象層。
+為降低複雜性並將教學課程聚焦於 EF Core，EF Core 程式碼會使用於頁面模型中。 有些開發人員會使用服務層或儲存機制模式來建立介於 UI (Razor 頁面) 和資料存取層之間的抽象層。
 
 在本教學課程中，會檢查位於 *Students* 資料夾中的 [建立]、[編輯]、[刪除] 和 [詳細資料] Razor 頁面。
 
@@ -68,7 +68,7 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index1.cshtml?name=snippet)]
 
-執行應用程式並選取 [詳細資料] 連結。 URL 的格式為 `http://localhost:5000/Students/Details?id=2` 。 使用 (`?id=2`) 查詢字串來傳遞 Student ID。
+執行應用程式並選取 [詳細資料]**** 連結。 URL 的格式為 `http://localhost:5000/Students/Details?id=2` 。 使用 (`?id=2`) 查詢字串來傳遞 Student ID。
 
 更新 [編輯]、[詳細資料] 和 [刪除] Razor 頁面，以使用 `"{id:int}"` 路由範本。 將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。
 
@@ -106,7 +106,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 上述程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 針對每個註冊，會顯示課程標題及成績。 課程標題會從儲存於 Enrollments 實體之 `Course` 導覽屬性中的課程 (Course) 實體擷取。
 
-執行應用程式，選取 [Students] 索引標籤，然後按一下學生的 [詳細資料] 連結。 將會顯示所選取學生的課程及成績清單。
+執行應用程式，選取 [Students]**** 索引標籤，然後按一下學生的 [詳細資料]**** 連結。 將會顯示所選取學生的課程及成績清單。
 
 ## <a name="update-the-create-page"></a>更新 [建立] 頁面
 

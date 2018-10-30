@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 7633c0a40764cc18a656f0497e3280e4067cb59f
-ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
+ms.openlocfilehash: f47a68840a6307b69bc92a7b157037d91dce5422
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045571"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477211"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>更新 ASP.NET Core 應用程式中產生的頁面
 
@@ -37,7 +37,7 @@ ms.locfileid: "48045571"
 
 ::: moniker-end
 
-以滑鼠右鍵按一下紅色曲線 > [快速動作及重構]。
+以滑鼠右鍵按一下紅色曲線 > [快速動作及重構]****。
 
   ![操作功能表隨即顯示 **> [Quick Actions and Refactorings] (快速控制項目及重構)**。](da1/qa.png)
 
@@ -51,4 +51,4 @@ ms.locfileid: "48045571"
 
 > [!div class="step-by-step"]
 > [上一步：使用 SQL Server LocalDB](xref:tutorials/razor-pages/sql)
-> [新增搜尋](xref:tutorials/razor-pages/search)
+> [下一步：新增搜尋](xref:tutorials/razor-pages/search)

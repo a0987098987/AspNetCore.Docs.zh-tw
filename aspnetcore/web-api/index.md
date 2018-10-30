@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/15/2018
 uid: web-api/index
-ms.openlocfilehash: e4615e5d416ba2433d55309b25ee3643c6c636ac
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 950f4e8afa13bf297ea8658ef1c1bea0c9b62936
+ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207000"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234588"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建置 Web API
 
@@ -71,7 +71,7 @@ ASP.NET Core 2.1 及更新版本包含 [ProblemDetails](xref:Microsoft.AspNetCor
 
 `NotFound` 結果的 HTTP 回應具有 404 狀態碼，以及如下所示的 `ProblemDetails` 本文：
 
-```js
+```json
 {
     type: "https://tools.ietf.org/html/rfc7231#section-6.5.4",
     title: "Not Found",

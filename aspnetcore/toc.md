@@ -3,6 +3,8 @@
 ## [比較 ASP.NET Core 與 ASP.NET](xref:fundamentals/choose-between-aspnet-and-aspnetcore)
 ## [比較 .NET Core 與 .NET Framework](/dotnet/articles/standard/choosing-core-framework-server)
 
+# [開始使用](xref:getting-started)
+
 # 教學課程
 ## Web 應用程式
 ### Razor Pages

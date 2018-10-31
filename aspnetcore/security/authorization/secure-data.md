@@ -5,12 +5,12 @@ description: 了解如何使用受保護的授權的使用者資料建立 Razor 
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: 786e83eb28722e83eea46def962593f58ad524e2
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: 185628d4e06c9b5ae7f2685c10ea9e46dd5abe92
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244836"
+ms.locfileid: "50253217"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -71,16 +71,16 @@ ms.locfileid: "50244836"
 本教學課程會前進。 您應該先熟悉：
 
 * [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
-* [驗證](xref:security/authentication/index)
+* [驗證](xref:security/authentication/identity)
 * [帳戶確認和密碼復原](xref:security/authentication/accconfirm)
-* [授權](xref:security/authorization/index)
+* [授權](xref:security/authorization/introduction)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
-在 ASP.NET Core 2.1 中，`User.IsInRole`使用時，失敗`AddDefaultIdentity`。 本教學課程使用`AddDefaultIdentity`，因此需要 ASP.NET Core 2.2 preview 1 或更新版本。 請參閱[此 GitHub 問題](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909)的因應措施。
+在 ASP.NET Core 2.1 中，`User.IsInRole`使用時，失敗`AddDefaultIdentity`。 本教學課程使用`AddDefaultIdentity`，因此需要 ASP.NET Core 2.2 或更新版本。 請參閱[此 GitHub 問題](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909)的因應措施。
 
 ::: moniker-end
 
@@ -352,7 +352,7 @@ dotnet ef database update
 
 * [建置.NET Core 和 SQL Database web 應用程式在 Azure App Service](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 * [ASP.NET Core 授權實驗室](https://github.com/blowdart/AspNetAuthorizationWorkshop)。 這個實驗室會進入此教學課程中介紹的安全性功能的更多詳細資料。
-* [ASP.NET Core 的授權： 簡單、 宣告式和自訂的角色](xref:security/authorization/index)
+* <xref:security/authorization/introduction>
 * [自訂原則式授權](xref:security/authorization/policies)
 
 ::: moniker-end

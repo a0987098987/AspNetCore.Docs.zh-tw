@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/19/2018
 uid: performance/caching/distributed
-ms.openlocfilehash: 37806cc5c8da115f6a95fdad5ccc716d6375cb6e
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: d80cde372535aa04604ce0cd5a731a1448515093
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206245"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50253004"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>分散式快取的 ASP.NET Core
 
@@ -29,7 +29,7 @@ ms.locfileid: "50206245"
 
 特定的實作分散式快取設定。 本文說明如何設定 SQL Server 和 Redis 分散式快取。 協力廠商實作也會提供的這類[NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([在 GitHub 上的 NCache](https://github.com/Alachisoft/NCache))。 無論選取哪一個實作時，應用程式與快取使用的互動<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>介面。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 

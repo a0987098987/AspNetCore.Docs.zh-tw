@@ -5,12 +5,12 @@ description: 了解如何建置使用電子郵件確認和密碼重設的 ASP.NE
 ms.author: riande
 ms.date: 7/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 1fae5af24359afc991a30cd2b8e2f6927845962b
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: 4c2e62335bc7dd004829dbc2a8c1f62ea91f334f
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244797"
+ms.locfileid: "50253035"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
@@ -27,7 +27,7 @@ ms.locfileid: "50244797"
 本教學課程會示範如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。 本教學課程**不**開頭主題。 您應該先熟悉：
 
 * [ASP.NET Core](xref:tutorials/razor-pages/razor-pages-start)
-* [驗證](xref:security/authentication/index)
+* [驗證](xref:security/authentication/identity)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
 <!-- see C:/Dropbox/wrk/Code/SendGridConsole/Program.cs -->

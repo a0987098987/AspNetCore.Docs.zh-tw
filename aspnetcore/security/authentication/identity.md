@@ -5,12 +5,12 @@ description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如�
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: 0cea81b46a8f659671c0ae1768884194ad8c1162
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 4e162edc8fb63457c8690692685f344dccdfc659
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207793"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50252925"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -166,7 +166,7 @@ PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，�
 
    [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-   基底`Controller`類別會公開`User`屬性，您可以從控制器方法存取。 比方說，您可以列舉`User.Claims`並進行授權決策。 如需詳細資訊，請參閱 <<c0> [ 授權](xref:security/authorization/index)。
+   基底`Controller`類別會公開`User`屬性，您可以從控制器方法存取。 比方說，您可以列舉`User.Claims`並進行授權決策。 如需詳細資訊，請參閱<xref:security/authorization/introduction>。
 
 ::: moniker-end
 

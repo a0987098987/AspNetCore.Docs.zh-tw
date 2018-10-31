@@ -7,12 +7,12 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 06/29/2018
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 7cfe90115b0710fba196693efd309f7c914f0ad4
-ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
+ms.openlocfilehash: aa1721ba1802e1bfba04d57378085a136c100deb
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50234536"
+ms.locfileid: "50252902"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中驗證和授權
 
@@ -22,7 +22,7 @@ ms.locfileid: "50234536"
 
 ## <a name="authenticate-users-connecting-to-a-signalr-hub"></a>驗證連接到 SignalR 中樞的使用者
 
-SignalR 可以搭配[ASP.NET Core 驗證](xref:security/authentication/index)使用者相關聯的每個連線。 在中樞中，驗證資料可以從存取[ `HubConnectionContext.User` ](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user)屬性。 驗證可讓與使用者相關聯的所有連接上呼叫方法的中樞 (請參閱[管理使用者和群組 signalr](xref:signalr/groups)如需詳細資訊)。 多個連接可能會與單一使用者相關聯。
+SignalR 可以搭配[ASP.NET Core 驗證](xref:security/authentication/identity)使用者相關聯的每個連線。 在中樞中，驗證資料可以從存取[ `HubConnectionContext.User` ](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user)屬性。 驗證可讓與使用者相關聯的所有連接上呼叫方法的中樞 (請參閱[管理使用者和群組 signalr](xref:signalr/groups)如需詳細資訊)。 多個連接可能會與單一使用者相關聯。
 
 ### <a name="cookie-authentication"></a>Cookie 驗證
 

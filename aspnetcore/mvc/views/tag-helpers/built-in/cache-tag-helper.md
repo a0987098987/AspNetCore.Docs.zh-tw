@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 7d64c500168166b0a7a29d5b92473726d5a9f49a
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 2590682755721a4bb14902b9fe7138a3bff56d31
+ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325337"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50148807"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的快取標籤協助程式
 
@@ -119,7 +119,7 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 | -------------- | -------------------- |
 | String         | `Make`、 `Make,Model` |
 
-`vary-by-query` 接受標頭值的逗號分隔清單，在標頭值變更時，會觸發快取重新整理。
+`vary-by-query` 接受查詢字串 (<xref:Microsoft.AspNetCore.Http.HttpRequest.Query*>) 中 <xref:Microsoft.AspNetCore.Http.IQueryCollection.Keys*> 的逗點分隔清單，當任何所列索引碼的值變更時，會觸發快取重新整理。
 
 下列範例會監視 `Make` 與 `Model` 的值。 此範例會快取展示給網頁伺服器之每個不同 `Make` 與 `Model` 的內容：
 

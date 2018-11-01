@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: index
-ms.openlocfilehash: 37448b1b3d0da4e3cb34b1cd51f663b7e53ddced
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: e9bca9fe22dbb64086eba3445c50941c5440974c
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207390"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50253062"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -32,9 +32,9 @@ ASP.NET Core 是一種跨平台且高效能的[開放原始碼](https://github.c
 
 ## <a name="build-web-apis-and-web-ui-using-aspnet-core-mvc"></a>使用 ASP.NET Core MVC 建置 Web API 和 Web UI
 
-ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/index#build-web-apis) 和 [Web 應用程式](xref:tutorials/index#build-web-apps)的功能：
+ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/first-web-api) 和 [Web 應用程式](xref:tutorials/razor-pages/index)的功能：
 
-* [模型檢視控制器 (MVC) 模式](xref:mvc/overview)有助於讓您的 Web API 和 Web 應用程式[可測試](xref:test/index)。
+* [模型檢視控制器 (MVC) 模式](xref:mvc/overview)有助於讓您的 Web API 和 Web 應用程式可測試。
 * [Razor 頁面](xref:razor-pages/index) (ASP.NET Core 2.0 中的新功能) 是以頁面為基礎的程式設計模型，可讓建置 Web UI 更容易且更具工作效率。
 * [Razor 標記](xref:mvc/views/razor)提供了適用於 [Razor 頁面](xref:razor-pages/index)和 [MVC 檢視](xref:mvc/views/overview)的高效率語法。
 * [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。
@@ -80,7 +80,6 @@ ASP.NET Core 可將目標指向 NET Core 或 .NET Framework。 將目標指向 .
 如需詳細資訊，請參閱下列資源：
 
 * [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
-* [ASP.NET Core 教學課程](xref:tutorials/index)
 * <xref:tutorials/publish-to-azure-webapp-using-vs>
 * [ASP.NET Core 基本概念](xref:fundamentals/index)
 * [每週的 ASP.NET 社群之聲](https://live.asp.net/) \(英文\) 涵蓋了小組的進度和計劃， 並提供新的部落格和協力廠商軟體。

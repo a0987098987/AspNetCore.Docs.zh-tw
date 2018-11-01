@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/09/2018
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 35f283becd156da22a4d9d2034055ee79b75ffda
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: cbc48222aeb4a1d23144bfb70aece5a83a700d09
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326169"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207897"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -54,7 +54,7 @@ ASP.NET Core 中的應用程式設定是以由*設定提供者*所建立的機�
 
 *選項模式*是此主題中所述之設定概念的延伸。 選項使用類別來代表一組相關的設定。 如需使用選項模式的詳細資訊，請參閱 <xref:fundamentals/configuration/options>。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 此主題中提供的範例需要：
 
@@ -293,7 +293,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 // Call other providers here and call AddCommandLine last.
-                config.AddCommandLine(args)
+                config.AddCommandLine(args);
             })
             .UseStartup<Startup>();
 }
@@ -432,7 +432,7 @@ public class Program
         WebHost.CreateDefaultBuilder()
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
-                config.AddCommandLine(args, _switchMappings)
+                config.AddCommandLine(args, _switchMappings);
             })
             .UseStartup<Startup>();
 }
@@ -571,7 +571,7 @@ public class Program
                 // Call additional providers here as needed.
                 // Call AddEnvironmentVariables last if you need to allow environment
                 // variables to override values from other providers.
-                config.AddEnvironmentVariables(prefix: "PREFIX_")
+                config.AddEnvironmentVariables(prefix: "PREFIX_");
             })
             .UseStartup<Startup>();
 }
@@ -756,7 +756,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddIniFile("config.ini", optional: true, reloadOnChange: true)
+                config.AddIniFile("config.ini", optional: true, reloadOnChange: true);
             })
             .UseStartup<Startup>();
 }
@@ -887,7 +887,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddJsonFile("config.json", optional: true, reloadOnChange: true)
+                config.AddJsonFile("config.json", optional: true, reloadOnChange: true);
             })
             .UseStartup<Startup>();
 }
@@ -1002,7 +1002,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddXmlFile("config.xml", optional: true, reloadOnChange: true)
+                config.AddXmlFile("config.xml", optional: true, reloadOnChange: true);
             })
             .UseStartup<Startup>();
 }
@@ -1151,7 +1151,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddKeyPerFile(directoryPath: path, optional: true)
+                config.AddKeyPerFile(directoryPath: path, optional: true);
             })
             .UseStartup<Startup>();
 }
@@ -1204,7 +1204,7 @@ public class Program
         WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
-                config.AddInMemoryCollection(_dict)
+                config.AddInMemoryCollection(_dict);
             })
             .UseStartup<Startup>();
 }

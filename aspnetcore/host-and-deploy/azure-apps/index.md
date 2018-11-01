@@ -1,19 +1,19 @@
 ---
-title: 將 ASP.NET Core 裝載到 Azure App Service
+title: 將 ASP.NET Core 應用程式部署至 Azure App Service
 author: guardrex
-description: 探索如何在 Azure App Service 中裝載 ASP.NET Core 應用程式，及實用資源的連結。
+description: 本文包含 Azure 主機和部署資源的連結。
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/29/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 23289823e154d93e4bedd23a1efae0e58c71eae0
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: 315261c4d20970fc399cc2a879dd452bdf3be93f
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340182"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326052"
 ---
-# <a name="host-aspnet-core-on-azure-app-service"></a>將 ASP.NET Core 裝載到 Azure App Service
+# <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
 [Azure App Service](https://azure.microsoft.com/services/app-service/) 是 [Microsoft 雲端運算平台服務](https://azure.microsoft.com/)，用於裝載 Web 應用程式，包括 ASP.NET Core。
 
@@ -31,9 +31,6 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 [使用 Visual Studio 發佈至 Azure](xref:tutorials/publish-to-azure-webapp-using-vs)  
 了解如何使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure App Service。
-
-[使用 CLI 工具發佈至 Azure](xref:tutorials/publish-to-azure-webapp-using-cli)  
-了解如何使用 Git 命令列用戶端將 ASP.NET Core 應用程式發佈到 Azure App Service。
 
 [使用 Visual Studio 與 Git 持續部署到 Azure](xref:host-and-deploy/azure-apps/azure-continuous-deployment)  
 了解如何使用 Visual Studio 建立 ASP.NET Core Web 應用程式，並透過 Git 持續部署將它部署到 Azure App Service。
@@ -61,6 +58,8 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 ## <a name="override-app-configuration-using-the-azure-portal"></a>使用 Azure 入口網站覆寫應用程式設定
 
 [應用程式設定] 刀鋒視窗的 [應用程式設定] 區域允許您為應用程式設定環境變數。 環境變數可由[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)取用。
+
+在 Azure 入口網站中建立或修改應用程式設定並選取 [儲存] 按鈕後，即會重新啟動 Azure 應用程式。 當服務重新啟動之後，環境變數便可供應用程式使用。
 
 當應用程式使用 [Web 主機](xref:fundamentals/host/web-host)並使用會將主機設定為使用 `ASPNETCORE_` 前置詞的 [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 環境變數來建置主機。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
 
@@ -104,11 +103,11 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 ## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>將 ASP.NET Core 預覽版本部署至 Azure App Service
 
-您可以使用下列方法，將 ASP.NET Core 預覽應用程式部署到 Azure App Service：
+請使用下列的其中一個方法：
 
-* [安裝預覽網站延伸模組](#install-the-preview-site-extension)
-<!-- * [Deploy the app self-contained](#deploy-the-app-self-contained) -->
-* [將包含 Web 應用程式的 Docker 用於容器](#use-docker-with-web-apps-for-containers)
+* [安裝預覽網站延伸模組](#install-the-preview-site-extension)。
+* [部署獨立式應用程式](#deploy-the-app-self-contained).
+* [將具有 Web Apps 的 Docker 用於容器](#use-docker-with-web-apps-for-containers)。
 
 ### <a name="install-the-preview-site-extension"></a>安裝預覽網站延伸模組
 
@@ -164,18 +163,46 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 如果您使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站延伸模組新增至 Web 應用程式。 例如: 
 
-[!code-json[Main](index/sample/arm.json?highlight=2)]
+[!code-json[](index/sample/arm.json?highlight=2)]
 
-<!--
-### Deploy the app self-contained
+### <a name="deploy-the-app-self-contained"></a>部署獨立式應用程式
 
-A [self-contained app](/dotnet/core/deploying/#self-contained-deployments-scd) can be deployed that carries the preview runtime in the deployment. When deploying a self-contained app:
+以預覽執行階段為目標的[獨立式部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) 會在部署中包含預覽執行階段。
 
-* The site doesn't need to be prepared.
-* The app must be published differently than when publishing for a framework-dependent deployment with the shared runtime and host on the server.
+部署獨立式應用程式時：
 
-Self-contained apps are an option for all ASP.NET Core apps.
--->
+* Azure App Service 中的網站不需要[預覽網站延伸模組](#install-the-preview-site-extension)。
+* 應用程式發佈必須遵循不同於針對 [Framework 相依部署 (FDD)](/dotnet/core/deploying#framework-dependent-deployments-fdd) 發佈時使用的方法。
+
+#### <a name="publish-from-visual-studio"></a>從 Visual Studio 發佈
+
+1. 從 Visual Studio 工具列中選取 [建置] > [發佈 {應用程式名稱}]。
+1. 在 [挑選發佈目標] 對話方塊中，確認已選取 [App Service]。
+1. 選取 [進階]。 [發佈] 對話方塊隨即開啟。
+1. 在 [發行] 對話方塊中：
+   * 確認已選取 [發行] 設定。
+   * 開啟 [部署模式] 下拉式清單，然後選取 [獨立式]。
+   * 從 [目標執行階段] 下拉式清單中選取目標執行階段。 預設為 `win-x86`。
+   * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項] 並選取核取方塊，以移除目的地的其他檔案。
+   * 選取 [儲存]。
+1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
+
+#### <a name="publish-using-command-line-interface-cli-tools"></a>使用命令列介面 (CLI) 工具發佈
+
+1. 在專案檔中，指定一或多個[執行階段識別碼 (RID)](/dotnet/core/rid-catalog)。 針對單一 RID 使用 `<RuntimeIdentifier>` (單數)，或者使用 `<RuntimeIdentifiers>` (複數) 來提供以分號分隔的 RID 清單。 在下列範例中已指定 `win-x86`：
+
+   ```xml
+   <PropertyGroup>
+     <TargetFramework>netcoreapp2.1</TargetFramework>
+     <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+   </PropertyGroup>
+   ```
+1. 從命令殼層中使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，針對主機執行階段以 [發行] 設定來發佈應用程式。 在下列範例中，將針對 `win-x86` RID發佈應用程式。 提供給 `--runtime` 選項的 RID 必須在專案檔的 `<RuntimeIdentifier>` (或 `<RuntimeIdentifiers>`) 屬性中提供。
+
+   ```console
+   dotnet publish --configuration Release --runtime win-x86
+   ```
+1. 將 bin/Release/{目標 FRAMEWORK}/{執行階段識別碼}/publish 目錄的內容移至 App Service 中的網站。
 
 ### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器
 

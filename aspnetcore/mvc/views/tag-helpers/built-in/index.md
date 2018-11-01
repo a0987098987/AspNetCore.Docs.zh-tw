@@ -3,23 +3,24 @@ title: ASP.NET Core 內建的標記協助程式
 author: pkellner
 description: 了解 ASP.NET Core 內建標籤協助程式如何提升您的產能。
 ms.author: riande
-ms.date: 09/18/2018
+ms.custom: mvc
+ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 5d9425e0b68578c86a6f9a691322e0bb63a860fb
-ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
+ms.openlocfilehash: 58840d6ecd09bd2ae7f96c046a0cb93c018f9645
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46292306"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325480"
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>ASP.NET Core 內建的標記協助程式
 
 由 [Peter Kellner](http://peterkellner.net) 提供
 
-ASP.NET Core 包含許多內建標記協助程式，能夠提高您的產能。 本節提供內建標記協助程式的概觀。
+如需標籤協助程式的概觀，請參閱 <xref:mvc/views/tag-helpers/intro>。
 
 > [!NOTE]
-> 有一些標記協助程式由 [Razor](xref:mvc/views/razor) 檢視引擎在內部使用，因此不會加以討論。 這包括 ~ 字元的標記協助程式，其可將範圍擴展到網站的根路徑。
+> 有一些內建標籤協助程式未在本文件中加以描述。 這些標籤協助程式供 [Razor](xref:mvc/views/razor) 檢視引擎在內部使用。 這包括 `~` (波狀符號) 字元的標籤協助程式，其可將範圍擴展到網站的根路徑。
 
 ## <a name="built-in-aspnet-core-tag-helpers"></a>內建的 ASP.NET Core 標記協助程式
 

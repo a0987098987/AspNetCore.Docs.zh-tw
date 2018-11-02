@@ -4,22 +4,27 @@ author: rick-anderson
 description: 探索 ASP.NET Core 應用程式的基本建置概念。
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/20/2018
+ms.date: 10/25/2018
 uid: fundamentals/index
-ms.openlocfilehash: 83dfb5707700da01c45bae3c0c00e67ca397d402
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: ab140051648c1640b3c4f382bfd8201c5c0c2039
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325467"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207468"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
-ASP.NET Core 應用程式是一種主控台應用程式，可使用其 `Main` 方法建立網頁伺服器：
+ASP.NET Core 應用程式是主控台應用程式，可使用其 `Program.Main` 方法建立網頁伺服器。 `Main` 方法是應用程式的「受控進入點」：
 
 ::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](index/snapshots/2.x/Program.cs)]
+
+.NET Core 主機：
+
+* 載入 [.NET Core 執行階段](https://github.com/dotnet/coreclr)。
+* 使用第一個命令列引數做為包含進入點 (`Main`) 之受控二進位檔案的路徑，並開始執行程式碼。
 
 `Main` 方法會叫用 [WebHost.CreateDefaultBuilder](xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*)，這會遵循[建立器模式](https://wikipedia.org/wiki/Builder_pattern)來建立 Web 主機。 產生器具有定義網頁伺服器 (例如，<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>) 和啟動類別 (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*>) 的方法。 以前述範例而言，會自動配置 [Kestrel](xref:fundamentals/servers/kestrel) 網頁伺服器。 ASP.NET Core 的 Web 主機會嘗試在 IIS 上執行 (如果有的話)。 其他網頁伺服器 (例如 [HTTP.sys](xref:fundamentals/servers/httpsys)) 則可透過叫用適當的擴充方法來使用。 `UseStartup` 將於下一節進一步說明。
 
@@ -30,6 +35,11 @@ ASP.NET Core 應用程式是一種主控台應用程式，可使用其 `Main` �
 ::: moniker range="< aspnetcore-2.0"
 
 [!code-csharp[](index/snapshots/1.x/Program.cs)]
+
+.NET Core 主機：
+
+* 載入 [.NET Core 執行階段](https://github.com/dotnet/coreclr)。
+* 使用第一個命令列引數做為包含進入點 (`Main`) 之受控二進位檔案的路徑，並開始執行程式碼。
 
 `Main` 方法會使用 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>，這會遵循[建立器模式](https://wikipedia.org/wiki/Builder_pattern)來建立 Web 應用程式主機。 產生器具有定義網頁伺服器 (例如，<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>) 和啟動類別 (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*>) 的方法。 在上述範例中，會使用 [Kestrel](xref:fundamentals/servers/kestrel) 網頁伺服器。 其他網頁伺服器 (例如 [WebListener](xref:fundamentals/servers/weblistener)) 則可透過叫用適當的擴充方法來使用。 `UseStartup` 將於下一節進一步說明。
 
@@ -75,9 +85,11 @@ ASP.NET Core 應用程式是一種主控台應用程式，可使用其 `Main` �
 
 內容根目錄是應用程式所使用任何內容的基底路徑，例如 [Razor 頁面](xref:razor-pages/index)、MVC 檢視和靜態資產。 根據預設，內容根目錄與裝載應用程式之可執行檔的應用程式基底路徑相同。
 
-## <a name="web-root"></a>Web 根目錄
+## <a name="web-root-webroot"></a>Web 根目錄 (webroot)
 
-應用程式的 Web 根目錄是專案中包含公用、靜態資源 (例如 CSS、JavaScript 和影像檔) 的目錄。
+應用程式的 Web 根目錄是專案中包含公用、靜態資源 (例如 CSS、JavaScript 與影像檔) 的目錄。 根據預設，*wwwroot* 是 webroot。
+
+針對 Razor (*.cshtml*) 檔案，波狀符號斜線 `~/` 指向 webroot。 開頭為 `~/` 的路徑稱為虛擬路徑。
 
 ## <a name="dependency-injection-services"></a>相依性插入 (服務)
 
@@ -147,36 +159,6 @@ ASP.NET Core 提供用來將應用程式要求路由至路由處理常式的案�
 
 如需詳細資訊，請參閱<xref:fundamentals/routing>。
 
-## <a name="file-providers"></a>檔案提供者
-
-ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化，而檔案提供者則提供通用介面，讓您可跨平台使用檔案。
-
-如需詳細資訊，請參閱<xref:fundamentals/file-providers>。
-
-## <a name="static-files"></a>靜態檔案
-
-靜態檔案中介軟體負責提供靜態檔案，例如 HTML、CSS、影像和 JavaScript 檔案。
-
-如需詳細資訊，請參閱<xref:fundamentals/static-files>。
-
-## <a name="session-and-app-state"></a>工作階段和應用程式狀態
-
-ASP.NET Core 提供數種方法，可在使用者瀏覽 Web 應用程式時保留工作階段與應用程式狀態。
-
-如需詳細資訊，請參閱<xref:fundamentals/app-state>。
-
-## <a name="globalization-and-localization"></a>全球化和當地語系化
-
-使用 ASP.NET Core 建立多語系網站，讓更廣大的群眾得以使用您的網站。 ASP.NET Core 可提供服務與中介軟體，用以將內容當地語系化成不同的語言與文化特性。
-
-如需詳細資訊，請參閱<xref:fundamentals/localization>。
-
-## <a name="request-features"></a>要求功能
-
-有關 HTTP 要求和回應的網頁伺服器實作詳細資料，定義於介面中。 伺服器實作與中介軟體會使用這些介面，建立及修改應用程式的裝載管線。
-
-如需詳細資訊，請參閱<xref:fundamentals/request-features>。
-
 ## <a name="background-tasks"></a>背景工作
 
 背景工作會實作為*託管服務*。 託管服務是具有背景工作邏輯的類別，可實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。
@@ -188,43 +170,3 @@ ASP.NET Core 提供數種方法，可在使用者瀏覽 Web 應用程式時保�
 在使用 Razor 頁面和 MVC 處理要求時，會自動提供 `HttpContext`。 在 `HttpContext` 尚無法使用的情況下，您可以透過 <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> 介面及其預設實作 <xref:Microsoft.AspNetCore.Http.HttpContextAccessor> 存取 `HttpContext`。
 
 如需詳細資訊，請參閱<xref:fundamentals/httpcontext>。
-
-## <a name="websockets"></a>WebSockets
-
-[WebSocket](https://wikipedia.org/wiki/WebSocket) 為通訊協定，其可在 TCP 連線下啟用雙向的持續性通訊通道。 其可用於像是聊天、股票行情、遊戲等應用程式，以及您希望在 Web 應用程式中使用即時功能的任何位置。 ASP.NET Core 支援 Web 通訊端案例。
-
-如需詳細資訊，請參閱<xref:fundamentals/websockets>。
-
-::: moniker range=">= aspnetcore-2.1"
-
-## <a name="microsoftaspnetcoreapp-metapackage"></a>Microsoft.AspNetCore.App 中繼套件
-
-[Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) 中繼套件可簡化套件管理。
-
-如需詳細資訊，請參閱<xref:fundamentals/metapackage-app>。
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-## <a name="microsoftaspnetcoreall-metapackage"></a>Microsoft.AspNetCore.All 中繼套件
-
-ASP.NET Core 的 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) 中繼套件包括：
-
-* 所有由 ASP.NET Core 小組支援的套件。
-* Entity Framework Core 支援的所有套件。
-* ASP.NET Core 與 Entity Framework Core 所使用的內部與第三人相依性。
-
-如需詳細資訊，請參閱<xref:fundamentals/metapackage>。
-
-::: moniker-end
-
-## <a name="net-core-vs-net-framework-runtime"></a>.NET Core 與 .NET Framework 執行階段
-
-ASP.NET Core 應用程式可將目標設為 .NET Core 或 .NET Framework 執行階段。
-
-如需詳細資訊，請參閱[在 .NET Core 和 .NET Framework 之間進行選擇](/dotnet/articles/standard/choosing-core-framework-server)。
-
-## <a name="choose-between-aspnet-core-and-aspnet"></a>在 ASP.NET Core 與 ASP.NET 之間選擇
-
-如需在 ASP.NET Core 與 ASP.NET 之間選擇的詳細資訊，請參閱 <xref:fundamentals/choose-between-aspnet-and-aspnetcore>。

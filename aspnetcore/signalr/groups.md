@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/groups
-ms.openlocfilehash: d3e580dfc42a36762358899892831c8b68f544b0
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 02db46f090c487a03171de244ff7ad0d5e9de0fa
+ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207156"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50758163"
 ---
 # <a name="manage-users-and-groups-in-signalr"></a>管理使用者和 signalr 的群組
 
@@ -54,6 +54,8 @@ public Task SendPrivateMessage(string user, string message)
 [!code-csharp[Hub methods](groups/sample/hubs/chathub.cs?range=15-27)]
 
 重新連線時，不會保存群組成員資格。 連接必須重新建立時，重新加入群組。 您不可能來計算群組的成員，因為這項資訊不提供，如果應用程式調整為多部伺服器。
+
+若要保護資源的存取權，使用群組時，使用[驗證和授權](xref:signalr/authn-and-authz)ASP.NET Core 中的功能。 如果您只將使用者新增至群組的認證適用於該群組時，傳送至該群組的訊息將只會移至授權的使用者。 不過，群組不是一項安全性功能。 驗證宣告有群組未這麼做，例如到期及撤銷的功能。 如果已撤銷使用者的權限存取群組，您必須以手動方式偵測，並從群組中移除。
 
 > [!NOTE]
 > 群組名稱會區分大小寫。

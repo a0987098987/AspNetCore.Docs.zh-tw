@@ -5,14 +5,14 @@ description: 了解如何使用 ASP.NET Core SignalR HubContext 服務來傳送�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 06/13/2018
+ms.date: 11/01/2018
 uid: signalr/hubcontext
-ms.openlocfilehash: 8be888e1f7b16d65ebbaa24b618e84fca029d80b
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: af125791a75a2dd68c236dd8c5b51eecff244ce4
+ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207949"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50758150"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>傳送來自外部中樞訊息
 
@@ -54,6 +54,27 @@ app.Use(next => async (context) =>
 
 > [!NOTE]
 > 從呼叫中樞方法的時機，外部`Hub`類別，所以會沒有相關聯的引動過程的呼叫端。 因此，就沒有存取權`ConnectionId`， `Caller`，和`Others`屬性。
+
+### <a name="inject-a-strongly-typed-hubcontext"></a>插入的強型別 HubContext
+
+若要插入的強型別 HubContext，請確定您的中樞繼承自`Hub<T>`。 將使用其插入`IHubContext<THub, T>`介面而非`IHubContext<THub>`。
+
+```csharp
+public class ChatController : Controller
+{
+    public IHubContext<ChatHub, IChatClient> _strongChatHubContext { get; }
+
+    public SampleDataController(IHubContext<ChatHub, IChatClient> chatHubContext)
+    {
+        _strongChatHubContext = chatHubContext;
+    }
+
+    public async Task SendMessage(string message)
+    {
+        await _strongChatHubContext.Clients.All.ReceiveMessage(message);
+    }
+}
+```
 
 ## <a name="related-resources"></a>相關資源
 

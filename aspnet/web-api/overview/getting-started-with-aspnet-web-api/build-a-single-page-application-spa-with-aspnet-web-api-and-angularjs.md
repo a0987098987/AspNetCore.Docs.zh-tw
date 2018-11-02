@@ -150,7 +150,7 @@ Web API 架構是 ASP.NET 堆疊的一部分，旨在讓您輕鬆地實作 HTTP 
 
     > [!NOTE]
     > **授權**篩選檢查，以查看是否已驗證使用者。 如果使用者未經過驗證，它會傳回 HTTP 狀態碼 401 （未經授權），而不叫用動作。 您可以套用全域，在控制器層級，或個別動作的層級的篩選器。
-9. 現在，您將自訂網頁和商標版面的配置。 若要這樣做，請開啟 **\_Layout.cshtml**檔案**檢視 |共用**資料夾，並更新的內容**&lt;標題&gt;** 取代的項目*My ASP.NET Application*與*Geek 測驗*.
+9. 現在，您將自訂網頁和商標版面的配置。 若要這樣做，請開啟 **\_Layout.cshtml** 檔案 **檢視 |共用** 資料夾，並更新的內容 **&lt;標題&gt;** 取代的項目 *My ASP.NET Application* 與 *Geek 測驗*.
 
     [!code-cshtml[Main](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs/samples/sample4.cshtml)]
 10. 在相同的檔案中，更新導覽列藉由移除*關於*並*連絡人*連結和重新命名*首頁*連結至*播放*。 此外，重新命名*應用程式名稱*連結至*Geek 測驗*。 在導覽列 HTML 看起來應該類似下列的程式碼。

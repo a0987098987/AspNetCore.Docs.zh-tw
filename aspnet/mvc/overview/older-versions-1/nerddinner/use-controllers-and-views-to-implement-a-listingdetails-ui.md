@@ -272,19 +272,19 @@ Html.ActionLink() helper 方法的第一個參數是要顯示的連結文字 （
 
 ### <a name="convention-based-naming-and-the-views-directory-structure"></a>以慣例為基礎的命名和 \Views 目錄結構
 
-預設的 ASP.NET MVC 應用程式會使用以慣例為基礎的目錄，解析檢視範本時，命名結構。 這可讓開發人員不必完整限定的位置路徑參考從控制器類別內的檢視時。 根據預設 ASP.NET MVC 會尋找檢視範本檔案中的 * \Views\[ControllerName]\*目錄應用程式下方。
+預設的 ASP.NET MVC 應用程式會使用以慣例為基礎的目錄，解析檢視範本時，命名結構。 這可讓開發人員不必完整限定的位置路徑參考從控制器類別內的檢視時。 根據預設 ASP.NET MVC 會尋找檢視範本檔案中的 *\Views\[ControllerName]\* 目錄應用程式下方。
 
-比方說，我們一直在處理明確參考三個檢視範本的 DinnersController 類別 –:"Index"、"Details"和"NotFound"。 ASP.NET MVC 會預設情況下尋找這些檢視內*\Views\Dinners*目錄底下的應用程式根目錄：
+比方說，我們一直在處理明確參考三個檢視範本的 DinnersController 類別 –:"Index"、"Details"和"NotFound"。 ASP.NET MVC 會預設情況下尋找這些檢視內 *\Views\Dinners* 目錄底下的應用程式根目錄：
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image26.png)
 
 請注意上述方式有目前專案中的三個控制器類別 (DinnersController HomeController，AccountController – 我們在建立專案時預設便會加入這兩個)，而且有三個子目錄 （一個用於每個控制站） \Views 目錄內。
 
-從首頁和帳戶控制器所參考的檢視將會自動解除其檢視範本，從個別*\Views\Home*並*\Views\Account*目錄。 *\Views\Shared*子目錄提供儲存在應用程式內的多個控制站都是重複使用的檢視範本的方式。 當 ASP.NET MVC 會嘗試解析檢視範本時，它首先會檢查內*\Views\[控制器]* 特定目錄中，如果找不到檢視範本那里它看起來會內*\Views\共用*目錄。
+從首頁和帳戶控制器所參考的檢視將會自動解除其檢視範本，從個別 *\Views\Home* 並 *\Views\Account* 目錄。 *\Views\Shared*子目錄提供儲存在應用程式內的多個控制站都是重複使用的檢視範本的方式。 當 ASP.NET MVC 會嘗試解析檢視範本時，它首先會檢查內 *\Views\[控制器]* 特 定目錄中，如果找不到檢視範本那里它看起來會內 *\Views\共用* 目錄。
 
 談到命名個別的檢視範本的範例，建議的指引，就是讓共用相同的名稱，做為動作方法，導致呈現的檢視範本。 例如，上面我們"Index"動作方法使用 [索引] 檢視來呈現檢視結果，而 [詳細資料] 動作的方法使用 [詳細資料] 檢視來呈現其結果。 這可讓您方便您快速查看哪一個範本是與每個動作建立關聯。
 
-開發人員不需要時檢視範本具有相同的名稱，作為在控制器上叫用動作方法，明確指定檢視範本名稱。 我們可以改為只是模型物件傳遞給 「 View()"helper 方法 （如果沒有指定的檢視表名稱），和 ASP.NET MVC 會自動推斷我們想要使用*\Views\[ControllerName]\[ActionName]* 檢視範本呈現的磁碟上。
+開發人員不需要時檢視範本具有相同的名稱，作為在控制器上叫用動作方法，明確指定檢視範本名稱。 我們可以改為只是模型物件傳遞給 「 View()"helper 方法 （如果沒有指定的檢視表名稱），和 ASP.NET MVC 會自動推斷我們想要使用 *\Views\[ControllerName]\[ActionName]* 檢視範本呈現的磁碟上。
 
 這可讓我們有點，清除我們的控制器程式碼，並避免重複兩次相同的程式碼名稱：
 

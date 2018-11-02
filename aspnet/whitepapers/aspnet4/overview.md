@@ -196,7 +196,7 @@ ASP.NET 4 引進了新的選項，擴充應用程式 Url 的大小。 舊版 ASP
 
 [!code-xml[Main](overview/samples/sample10.xml)]
 
-若要允許長或短的路徑 （不包含通訊協定、 伺服器名稱，以及查詢字串之 url 的部分），修改*[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* 屬性。 若要允許長或短的查詢字串，修改的值*[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* 屬性。
+若要允許長或短的路徑 （不包含通訊協定、 伺服器名稱，以及查詢字串之 url 的部分），修改 *[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* 屬性。 若要允許長或短的查詢字串，修改的值 *[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* 屬性。
 
 ASP.NET 4 也可讓您設定的 URL 字元檢查所使用的字元。 當 ASP.NET 在 URL 的路徑部分中找到無效的字元時，它會拒絕要求，並發出 HTTP 400 錯誤。 在舊版 ASP.NET 中，URL 字元檢查已限制為一組固定的字元。 在 ASP.NET 4 中，您可以自訂的一組使用新的有效字元*requestPathInvalidChars*屬性*httpRuntime*組態項目，如下列範例所示：
 

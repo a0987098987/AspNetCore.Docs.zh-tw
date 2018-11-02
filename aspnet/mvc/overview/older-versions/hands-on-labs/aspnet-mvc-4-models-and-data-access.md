@@ -115,7 +115,7 @@ Code First 方法可讓我們不會產生類別，通常會結合 framework 定�
 
       > [!NOTE]
       > 使用 NuGet 的優點之一是，您不需要寄送您的專案中的所有程式庫專案縮小。 NuGet Power tools，藉由指定封裝版本在 Packages.config 檔案中，您將能夠下載所有必要的程式庫第一次執行專案。 這就是為什麼您必須在您開啟現有的方案從這個實驗室之後，執行這些步驟。
-2. 新增**MvcMusicStore**資料庫檔案。 在這個實際操作實驗室中，您將使用已建立的資料庫呼叫**MvcMusicStore.mdf**。 若要這樣做，請以滑鼠右鍵按一下**應用程式\_資料**資料夾，指向**新增**，然後按一下**現有項目**。 瀏覽至**\Source\Assets** ，然後選取**MvcMusicStore.mdf**檔案。
+2. 新增**MvcMusicStore**資料庫檔案。 在這個實際操作實驗室中，您將使用已建立的資料庫呼叫**MvcMusicStore.mdf**。 若要這樣做，請以滑鼠右鍵按一下**應用程式\_資料**資料夾，指向**新增**，然後按一下**現有項目**。 瀏覽至 **\Source\Assets** ，然後選取 **MvcMusicStore.mdf** 檔案。
 
     ![加入現有項目](aspnet-mvc-4-models-and-data-access/_static/image2.png "加入現有項目")
 
@@ -290,7 +290,7 @@ Code First 方法可讓我們不會產生類別，通常會結合 framework 定�
 
       > [!NOTE]
       > 使用 NuGet 的優點之一是，您不需要寄送您的專案中的所有程式庫專案縮小。 NuGet Power tools，藉由指定封裝版本在 Packages.config 檔案中，您將能夠下載所有必要的程式庫第一次執行專案。 這就是為什麼您必須在您開啟現有的方案從這個實驗室之後，執行這些步驟。
-2. 新增**SampleData.cs**的檔案**模型**資料夾。 若要這樣做，請以滑鼠右鍵按一下**模型**資料夾，指向**新增**，然後按一下 **現有項目**。 瀏覽至**\Source\Assets** ，然後選取**SampleData.cs**檔案。
+2. 新增**SampleData.cs**的檔案**模型**資料夾。 若要這樣做，請以滑鼠右鍵按一下**模型**資料夾，指向**新增**，然後按一下 **現有項目**。 瀏覽至 **\Source\Assets** ，然後選取 **SampleData.cs** 檔案。
 
     ![範例資料填入程式碼](aspnet-mvc-4-models-and-data-access/_static/image18.png "範例資料填入程式碼")
 
@@ -534,7 +534,7 @@ Code First 方法可讓我們不會產生類別，通常會結合 framework 定�
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>附錄 a： 安裝 Visual Studio Express 2012 for Web
 
-您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;使用版本**[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示會引導您完成安裝所需的步驟*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
+您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;使用版本 **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示會引導您完成安裝所需的步驟*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
 
 1. 移至[ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; <em>Visual Studio Express 2012 for Web 含 Windows Azure SDK</em>&quot;。
 2. 按一下 **立即安裝**。 如果您不需要**Web Platform Installer**您將會重新導向至下載並安裝第一次。

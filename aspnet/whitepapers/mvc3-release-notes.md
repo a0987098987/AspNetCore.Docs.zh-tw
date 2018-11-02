@@ -229,7 +229,7 @@ https://go.microsoft.com/fwlink/?LinkID=208140
 
 <span data-ttu-id="e72b9-259">針對*的資料內容類別*，您可進行下列選擇：</span><span class="sxs-lookup"><span data-stu-id="e72b9-259">For *Data Context class*, you can make these choices:</span></span>
 
-- <span data-ttu-id="e72b9-260">如果您想要使用的程式碼優先 」 而沒有現有的資料內容類別中，選擇 新的資料內容 * *。</span><span class="sxs-lookup"><span data-stu-id="e72b9-260">If you want to use Code First and have no existing data context class, choose **New data context **.</span></span> <span data-ttu-id="e72b9-261">然後會為您產生的資料內容類別。</span><span class="sxs-lookup"><span data-stu-id="e72b9-261">A data context class will then be generated for you.</span></span>
+- <span data-ttu-id="e72b9-260">如果您想要使用的程式碼優先 」 而沒有現有的資料內容類別中，選擇 新的資料內容 \* \*。</span><span class="sxs-lookup"><span data-stu-id="e72b9-260">If you want to use Code First and have no existing data context class, choose \*\*New data context \*\*.</span></span> <span data-ttu-id="e72b9-261">然後會為您產生的資料內容類別。</span><span class="sxs-lookup"><span data-stu-id="e72b9-261">A data context class will then be generated for you.</span></span>
 - <span data-ttu-id="e72b9-262">如果您想要使用 Code First 與現有的資料內容類別，它在這裡選擇。</span><span class="sxs-lookup"><span data-stu-id="e72b9-262">If you want to use Code First and have an existing data context class, choose it here.</span></span> <span data-ttu-id="e72b9-263">它會更新以保存您選取的模型類別。</span><span class="sxs-lookup"><span data-stu-id="e72b9-263">It will be updated to persist the model class you have selected.</span></span>
 - <span data-ttu-id="e72b9-264">如果您使用 Database First 或 Model First，選擇您的物件內容類別。</span><span class="sxs-lookup"><span data-stu-id="e72b9-264">If you are using Database First or Model First, choose your object context class here.</span></span>
 

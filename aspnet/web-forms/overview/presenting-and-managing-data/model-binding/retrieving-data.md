@@ -72,7 +72,7 @@ ms.locfileid: "41831124"
 
 <span data-ttu-id="cb26f-146">儲存並關閉 Site.Master。</span><span class="sxs-lookup"><span data-stu-id="cb26f-146">Save and close Site.Master.</span></span>
 
-<span data-ttu-id="cb26f-147">現在，您將建立顯示學生資料的 web 表單。</span><span class="sxs-lookup"><span data-stu-id="cb26f-147">Now, you'll create the web form for displaying student data.</span></span> <span data-ttu-id="cb26f-148">以滑鼠右鍵按一下您的專案，並**新增****新項目**。</span><span class="sxs-lookup"><span data-stu-id="cb26f-148">Right-click your project, and **Add** a **New Item**.</span></span> <span data-ttu-id="cb26f-149">選取 **使用主版頁面的 Web Form**範本，並將它命名**Students.aspx**。</span><span class="sxs-lookup"><span data-stu-id="cb26f-149">Select the **Web Form with Master Page** template, and name it **Students.aspx**.</span></span>
+<span data-ttu-id="cb26f-147">現在，您將建立顯示學生資料的 web 表單。</span><span class="sxs-lookup"><span data-stu-id="cb26f-147">Now, you'll create the web form for displaying student data.</span></span> <span data-ttu-id="cb26f-148">以滑鼠右鍵按一下您的專案，並**新增\*\*\*\*新項目**。</span><span class="sxs-lookup"><span data-stu-id="cb26f-148">Right-click your project, and **Add** a **New Item**.</span></span> <span data-ttu-id="cb26f-149">選取 **使用主版頁面的 Web Form**範本，並將它命名**Students.aspx**。</span><span class="sxs-lookup"><span data-stu-id="cb26f-149">Select the **Web Form with Master Page** template, and name it **Students.aspx**.</span></span>
 
 ![建立頁面](retrieving-data/_static/image5.png)
 

@@ -75,7 +75,7 @@ ms.locfileid: "41827221"
 
 [!code-html[Main](the-entity-framework-and-aspnet-getting-started-part-1/samples/sample1.html)]
 
-<span data-ttu-id="b0eef-151">尋找* 功能表*控制項，名為`NavigationMenu`並取代為下列的標記中，加入您要建立之頁面的功能表項目。</span><span class="sxs-lookup"><span data-stu-id="b0eef-151">Find the *Menu* control named `NavigationMenu` and replace it with the following markup, which adds menu items for the pages you'll be creating.</span></span>
+<span data-ttu-id="b0eef-151">尋找\* 功能表\*控制項，名為`NavigationMenu`並取代為下列的標記中，加入您要建立之頁面的功能表項目。</span><span class="sxs-lookup"><span data-stu-id="b0eef-151">Find the *Menu* control named `NavigationMenu` and replace it with the following markup, which adds menu items for the pages you'll be creating.</span></span>
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-1/samples/sample2.aspx)]
 

@@ -91,7 +91,7 @@ ms.locfileid: "41826424"
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image1.png)
 3. <span data-ttu-id="42c36-200">中**新的部署組態檔**對話方塊方塊中，為檔案提供有意義的名稱 (例如**TestEnvironment.sqldeployment**)，然後按一下 **儲存**。</span><span class="sxs-lookup"><span data-stu-id="42c36-200">In the **New Deployment Configuration File** dialog box, give the file a meaningful name (for example, **TestEnvironment.sqldeployment**), and then click **Save**.</span></span>
-4. <span data-ttu-id="42c36-201">在  *[Filename] * * *.sqldeployment** 頁面設定部署屬性，以符合您的目的地環境的需求，然後儲存檔案。</span><span class="sxs-lookup"><span data-stu-id="42c36-201">On the *[Filename]***.sqldeployment** page, set the deployment properties to match the requirements of your destination environment, and then save the file.</span></span>
+4. <span data-ttu-id="42c36-201">在  *[Filename] \* \* *.sqldeployment** 頁面設定部署屬性，以符合您的目的地環境的需求，然後儲存檔案。</span><span class="sxs-lookup"><span data-stu-id="42c36-201">On the *[Filename]\*\*\*.sqldeployment*\* page, set the deployment properties to match the requirements of your destination environment, and then save the file.</span></span>
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image2.png)
 5. <span data-ttu-id="42c36-202">請注意新的檔案加入資料庫專案中的 [屬性] 資料夾。</span><span class="sxs-lookup"><span data-stu-id="42c36-202">Notice that the new file is added to the Properties folder in your database project.</span></span>

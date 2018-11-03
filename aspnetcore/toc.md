@@ -179,8 +179,8 @@
 ### [使用 Visual Studio for Mac 建立 Web API](xref:tutorials/first-web-api-mac)
 ### [適用於原生行動應用程式的 Web API](xref:mobile/native-mobile-backend)
 ## Swagger / OpenAPI
-### [概觀](xref:tutorials/get-started-with-swashbuckle)
-### [Swagger 說明頁面](xref:tutorials/web-api-help-pages-using-swagger)
+### [概觀](xref:tutorials/web-api-help-pages-using-swagger)
+### [開始使用 Swashbuckle](xref:tutorials/get-started-with-swashbuckle)
 ### [開始使用 NSwag](xref:tutorials/get-started-with-nswag)
 ## [動作傳回型別](xref:web-api/action-return-types)
 ## [格式化回應資料](xref:web-api/advanced/formatting)

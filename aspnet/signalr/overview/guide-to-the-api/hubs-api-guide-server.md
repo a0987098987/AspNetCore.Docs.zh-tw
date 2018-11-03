@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: b19913e5-cd8a-4e4b-a872-5ac7a858a934
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-server
 msc.type: authoredcontent
-ms.openlocfilehash: 03dd8a73141330348f2877760a5978a8a0b95122
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 6545491cfa36bb9fee555eb0348ec0a319bff470
+ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833442"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50758241"
 ---
 <a name="aspnet-signalr-hubs-api-guide---server-c"></a>ASP.NET SignalR 中樞 API 指南-伺服器 (C#)
 ====================
@@ -304,6 +304,11 @@ SignalR 2.1 新增的支援[進度報告模式](https://blogs.msdn.com/b/dotnet/
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample23.cs?highlight=5)]
 
+叫用用戶端的方法是非同步作業，並傳回`Task`。 使用`await`:
+
+* 若要確保訊息會傳送不會發生錯誤。 
+* 若要啟用攔截及處理在 try / catch 區塊中的錯誤。
+
 **使用產生之 proxy 的 JavaScript 用戶端**
 
 [!code-html[Main](hubs-api-guide-server/samples/sample24.html?highlight=1)]
@@ -572,7 +577,7 @@ SignalR 追蹤連線，而不是使用者，因此如果您希望使用者是相
 
 ## <a name="how-to-handle-errors-in-the-hub-class"></a>如何在中樞類別中處理錯誤
 
-若要處理您的中樞類別方法中發生的錯誤，請使用一或多個下列方法：
+若要處理您的中樞類別方法中發生的錯誤，請先確定您會 「 觀察 」 （例如，叫用用戶端方法） 的非同步作業中的任何例外狀況使用`await`。 然後使用一或多個下列方法：
 
 - 將您的方法程式碼包裝在 try / catch 區塊，並記錄例外狀況物件。 以進行偵錯您可以將例外狀況傳送至用戶端，但在生產環境中的用戶端傳送的詳細的資訊的原因不建議的安全性。
 - 建立中樞的管線模組來處理[OnIncomingError](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.hubpipelinemodule.onincomingerror(v=vs.111).aspx)方法。 下列範例示範會記錄錯誤，後面接著程式碼，將模組插入至中樞管線的 Startup.cs 中的管線模組。

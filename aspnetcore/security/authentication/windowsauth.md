@@ -1,16 +1,17 @@
 ---
 title: 在 ASP.NET Core 中設定 Windows 驗證
-author: ardalis
-description: 本文說明如何使用 IIS Express、 IIS、 HTTP.sys，這和 WebListener 的 ASP.NET Core 中設定 Windows 驗證。
+author: scottaddie
+description: 了解如何使用 IIS Express、 IIS、 HTTP.sys，這和 WebListener 的 ASP.NET Core 中設定 Windows 驗證。
 ms.author: riande
-ms.date: 08/18/2018
+ms.custom: mvc
+ms.date: 11/01/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: a8066d248c0d4db1d1f61b2a14bdb4656a2f4265
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 87fcab75555c1dae0b2815c30d79fd4615df9660
+ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312408"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50968289"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
@@ -98,6 +99,9 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
 
 > [!NOTE]
 > HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerberos 和 HTTP.sys 不支援使用者模式驗證。 必須使用電腦帳戶來解密 Kerberos 權杖/票證，該權杖/票證取自 Active Directory，並由用戶端將其轉送至伺服器來驗證使用者。 請註冊主機的服務主體名稱 (SPN)，而非應用程式的使用者。
+
+> [!NOTE]
+> HTTP.sys 不支援 Nano Server 1709 版或更新版本上。 若要使用 Windows 驗證和 HTTP.sys 使用 Nano Server，請使用[Server Core (microsoft/windowsservercore) 容器](https://hub.docker.com/r/microsoft/windowsservercore/)。 如需有關 Server Core 的詳細資訊，請參閱[什麼是 Windows Server 中的 Server Core 安裝選項？](/windows-server/administration/server-core/what-is-server-core)。
 
 ::: moniker-end
 

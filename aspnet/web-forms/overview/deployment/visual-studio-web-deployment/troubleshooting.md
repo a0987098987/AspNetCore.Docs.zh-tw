@@ -30,7 +30,7 @@ ms.locfileid: "41834287"
 
 - [使用 Visual Studio 疑難排解 Azure App Service 中的 Web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
 - [監視 Azure App Service 中的 Web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-monitor//)
-- [發表最新的 Windows Azure SDK 2.0 for.NET](http://https://weblogs.asp.net/scottgu/announcing-the-release-of-windows-azure-sdk-2-0-for-net) （ScottGu 的部落格，會示範如何取得 Visual Studio 中的診斷記錄檔）
+- [發表最新的 Windows Azure SDK 2.0 for.NET](http:// https://weblogs.asp.net/scottgu/announcing-the-release-of-windows-azure-sdk-2-0-for-net) （ScottGu 的部落格，會示範如何取得 Visual Studio 中的診斷記錄檔）
 
 ## <a name="server-error-in--application---current-custom-error-settings-prevent-details-of-the-error-from-being-viewed-remotely"></a>伺服器錯誤 '/' 應用程式-在目前的自訂錯誤設定防止錯誤的詳細資料從遠端檢視
 

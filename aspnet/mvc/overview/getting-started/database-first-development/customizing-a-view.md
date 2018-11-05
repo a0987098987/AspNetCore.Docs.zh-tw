@@ -1,19 +1,19 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/customizing-a-view
 title: EF Database First 與 ASP.NET MVC： 自訂檢視 |Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: 您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本教學課程的里...
 ms.author: riande
 ms.date: 10/01/2014
 ms.assetid: 269380ff-d7e1-4035-8ad1-fe1316a25f76
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/customizing-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: ce450af93459f2a69557b3fe0d1ead813ae99986
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: f66e097d53514ab3842e04cd545ca626c652478a
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825785"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021206"
 ---
 <a name="ef-database-first-with-aspnet-mvc-customizing-a-view"></a>EF Database First 與 ASP.NET MVC： 自訂檢視
 ====================

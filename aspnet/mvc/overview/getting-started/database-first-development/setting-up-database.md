@@ -1,19 +1,19 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/setting-up-database
 title: 開始使用 Entity Framework 6 Database First 使用 MVC 5 |Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: 您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本教學課程的里...
 ms.author: riande
 ms.date: 10/01/2014
 ms.assetid: 095abad4-3bfe-4f06-b092-ae6a735b7e49
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/setting-up-database
 msc.type: authoredcontent
-ms.openlocfilehash: 44725b772922426b08c72de83d384c1e03e319cb
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 7fcb2b82dfa27ae192e1890c0c771d68658760a4
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825307"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021140"
 ---
 <a name="getting-started-with-entity-framework-6-database-first-using-mvc-5"></a>開始使用 Entity Framework 6 Database First 使用 MVC 5
 ====================

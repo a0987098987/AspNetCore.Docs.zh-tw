@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/getting-started/introducing-razor-syntax-vb
 title: 使用 Razor 語法 (Visual Basic) 的 ASP.NET Web 程式設計簡介 |Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: 本附錄提供您的概觀與 ASP.NET Web pages 程式設計在 Visual Basic 中使用 Razor 語法。
 ms.author: riande
 ms.date: 02/07/2014
 ms.assetid: 5da59646-e973-41cd-88a9-c6b2c0594027
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cbec035533c37723afcd5bf4aa0c6e1c83dbae23
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 17a3a4925766b74446955a8e3a6fddbf9d29a721
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830950"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021699"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a>使用 Razor 語法 (Visual Basic) 的 ASP.NET Web 程式設計簡介
 ====================
@@ -275,13 +275,13 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
 
 :::row:::
     :::column:::
-        <strong>方法</strong>
+        <strong>Method</strong>
     :::column-end:::
     :::column:::
-        <strong>描述</strong>
+        <strong>Description</strong>
     :::column-end:::
     :::column:::
-        <strong>範例</strong>
+        <strong>Example</strong>
     :::column-end:::
 :::row-end:::
 * * *
@@ -290,7 +290,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `AsInt(), IsInt()`
     :::column-end:::
     :::column:::
-        將代表整數的字串轉換 (例如&quot;593&quot;) 成整數。
+        Converts a string that represents a whole number (like &quot;593&quot;) to an integer.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)]
@@ -302,7 +302,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `AsBool(), IsBool()`
     :::column-end:::
     :::column:::
-        將轉換的字串，例如&quot;，則為 true&quot;或是&quot;false&quot;布林型別。
+        Converts a string like &quot;true&quot; or &quot;false&quot; to a Boolean type.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)]
@@ -314,7 +314,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `AsFloat(), IsFloat()`
     :::column-end:::
     :::column:::
-        將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;浮點數。
+        Converts a string that has a decimal value like &quot;1.3&quot; or &quot;7.439&quot; to a floating-point number.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample25.vb)]
@@ -326,7 +326,8 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `AsDecimal(), IsDecimal()`
     :::column-end:::
     :::column:::
-        將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;十進位數字。 （在 ASP.NET 中，十進位數字是更精確比浮點數）。 :::column-end:::
+        Converts a string that has a decimal value like &quot;1.3&quot; or &quot;7.439&quot; to a decimal number. (In ASP.NET, a decimal number is more precise than a floating-point number.)
+    :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample26.vb)]
     :::column-end:::
@@ -337,7 +338,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `AsDateTime(), IsDateTime()`
     :::column-end:::
     :::column:::
-        將 asp.net 代表的日期和時間值的字串轉換`DateTime`型別。
+        Converts a string that represents a date and time value to the ASP.NET `DateTime` type.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample27.vb)]
@@ -349,7 +350,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `ToString()`
     :::column-end:::
     :::column:::
-        將任何其他資料類型轉換為字串。
+        Converts any other data type to a string.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample28.vb)]
@@ -367,10 +368,10 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         <strong>Operator</strong>
     :::column-end:::
     :::column:::
-        <strong>描述</strong>
+        <strong>Description</strong>
     :::column-end:::
     :::column:::
-        <strong>範例</strong>
+        <strong>Examples</strong>
     :::column-end:::
 :::row-end:::
 * * *
@@ -379,7 +380,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `+ - * /`
     :::column-end:::
     :::column:::
-        用在數值運算式的數學運算子。
+        Math operators used in numerical expressions.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)]
@@ -391,7 +392,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `=`
     :::column-end:::
     :::column:::
-        指派和相等。 根據內容，將陳述式的右邊的值指派給物件，在左側，或檢查值相等。
+        Assignment and equality. Depending on context, either assigns the value on the right side of a statement to the object on the left side, or checks the values for equality.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)]
@@ -403,7 +404,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `<>`
     :::column-end:::
     :::column:::
-        不等。 傳回`True`值是否不相等。
+        Inequality. Returns `True` if the values are not equal.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample31.vb)]
@@ -415,7 +416,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `< > <= >=`
     :::column-end:::
     :::column:::
-        小於、 大於、 小於或等於、 與大於或等於。
+        Less than, greater than, less than or equal, and greater than or equal.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample32.vb)]
@@ -427,7 +428,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `&`
     :::column-end:::
     :::column:::
-        串連，用來聯結字串。
+        Concatenation, which is used to join strings.
     :::column-end:::
     :::column:::
         [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample33.vbhtml)]
@@ -439,7 +440,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `+= -=`
     :::column-end:::
     :::column:::
-        遞增和遞減運算子，以新增和從變數 （分別） 減 1。
+        The increment and decrement operators, which add and subtract 1 (respectively) from a variable.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample34.vb)]
@@ -451,7 +452,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `.`
     :::column-end:::
     :::column:::
-        點。 用來區別物件及其屬性和方法。
+        Dot. Used to distinguish objects and their properties and methods.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample35.vb)]
@@ -463,7 +464,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `()`
     :::column-end:::
     :::column:::
-        括號。 群組運算式，用來將參數傳遞至方法，以及存取陣列和集合的成員。
+        Parentheses. Used to group expressions, to pass parameters to methods, and to access members of arrays and collections.
     :::column-end:::
     :::column:::
         [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample36.vbhtml)]
@@ -475,7 +476,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `Not`
     :::column-end:::
     :::column:::
-        不。 反轉，則為 true 的值為 false，反之亦然。 常用縮寫來測試`False`(也就是針對不`True`)。
+        Not. Reverses a true value to false and vice versa. Typically used as a shorthand way to test for `False` (that is, for not `True`).
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample37.vb)]
@@ -487,7 +488,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
         `AndAlso OrElse`
     :::column-end:::
     :::column:::
-        邏輯 AND 和 OR，這用來連結條件一起。
+        Logical AND and OR, which are used to link conditions together.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample38.vb)]

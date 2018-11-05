@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/18-customizing-site-wide-behavior
 title: ASP.NET Web Pages (Razor) 網站的自訂全網站行為 |Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: 本章說明如何對您的整個網站或整個資料夾，而不是單一頁面的設定。
 ms.author: riande
 ms.date: 02/17/2014
 ms.assetid: e158bed7-226f-4275-b02e-7553bd58c669
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/18-customizing-site-wide-behavior
 msc.type: authoredcontent
-ms.openlocfilehash: a6737c05d3326a2cd7535f32e99482b0de394575
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: ca7c241d6e4d1e4baa581faf2bda4ed275b4e785
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826232"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021465"
 ---
 <a name="customizing-site-wide-behavior-for-aspnet-web-pages-razor-sites"></a>ASP.NET Web Pages (Razor) 網站的自訂全網站行為
 ====================

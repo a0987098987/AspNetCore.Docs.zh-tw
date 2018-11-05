@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 title: 簡介 ASP.NET Web Pages-更新資料庫的資料 |Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: 本教學課程會示範如何更新 （變更） 現有的資料庫項目，當您使用 ASP.NET Web Pages (Razor)。 它假設您已完成序列個...
 ms.author: riande
 ms.date: 01/02/2018
 ms.assetid: ac86ec9c-6b69-485b-b9e0-8b9127b13e6b
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: 9d0da2eed9964e56a01f3c811d6a14c9d1735e10
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 206d7e209857aceb3eb92c2405bb73f7ff7dbaeb
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832058"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021426"
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a>ASP.NET Web Pages 簡介-更新資料庫資料
 ====================

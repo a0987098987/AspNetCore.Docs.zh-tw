@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices
 title: 轉譯 ASP.NET Web Pages (Razor) 網站的行動裝置 |Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: 本文說明如何建立會適當地呈現在 行動裝置的 ASP.NET Web Pages (Razor) 網站中的頁面。 您將學到什麼： 您如何...
 ms.author: riande
 ms.date: 02/17/2014
 ms.assetid: f15ab392-c05e-4269-83bf-7c6d2b8c8ec8
 msc.legacyurl: /web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices
 msc.type: authoredcontent
-ms.openlocfilehash: 7159283efcd4a82d5dff68f2d9e315f804e7cdcb
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: dd06a54d396bd85eeef7c004ee115828d541a2c1
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834702"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51020933"
 ---
 <a name="rendering-aspnet-web-pages-razor-sites-for-mobile-devices"></a>行動裝置轉譯 ASP.NET Web Pages (Razor) 網站
 ====================

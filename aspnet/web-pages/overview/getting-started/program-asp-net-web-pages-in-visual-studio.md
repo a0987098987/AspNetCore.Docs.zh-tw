@@ -1,19 +1,19 @@
 ---
 uid: aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio
 title: 程式設計 ASP.NET Web Pages (Razor) 使用 Visual Studio |Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: 此附錄將解釋如何使用 Visual Studio 2010 或 Visual Web Developer 2010 Express 含有 Razor 語法的 ASP.NET Web Pages 程式。
 ms.author: riande
 ms.date: 02/13/2014
 ms.assetid: 0acfec5a-48f2-4766-a801-a0f426966f0a
 msc.legacyurl: /web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio
 msc.type: authoredcontent
-ms.openlocfilehash: f3c1a74b23a0d9535256caa660408701062fe21c
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 5b8df17ec1021d133579e23cb4f5b0d0f67d4c7c
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795443"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51020451"
 ---
 <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a>程式設計使用 Visual Studio 的 ASP.NET Web Pages (Razor)
 ====================

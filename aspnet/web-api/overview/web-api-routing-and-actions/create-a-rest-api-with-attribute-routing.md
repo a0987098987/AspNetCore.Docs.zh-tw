@@ -8,12 +8,12 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 3b66f02c9be6441ff7d6c38d6180cc8556c6b8b9
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 18a44c280e6df1603837938d24d7d639d8c87cc2
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912887"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021413"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的屬性路由建立 REST API
 ====================
@@ -52,11 +52,11 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 屬性路由的一�
 
 執行 Visual Studio 啟動。 從**檔案**功能表上，選取**新增**，然後選取**專案**。
 
-依序展開**已安裝** > **Visual C#** 類別目錄。 底下**Visual C#**，選取**Web**。 在專案範本清單中，選取**ASP.NET MVC 4 Web 應用程式**。 將專案命名為&quot;BooksAPI&quot;。
+依序展開**已安裝** > **Visual C#** 類別目錄。 底下**Visual C#**，選取**Web**。 在專案範本清單中，選取**ASP.NET Web 應用程式 (.NET Framework)**。 將專案命名為&quot;BooksAPI&quot;。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image1.png)
 
-在 **新的 ASP.NET 專案**對話方塊中，選取**空白**範本。 在"新增資料夾和核心參考 」，選取**Web API**核取方塊。 按一下 **建立專案**。
+在 **新的 ASP.NET Web 應用程式**對話方塊中，選取**空白**範本。 在"新增資料夾和核心參考 」，選取**Web API**核取方塊。 按一下 [確定 **Deploying Office Solutions**]。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image2.png)
 
@@ -86,7 +86,7 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 屬性路由的一�
 
 ![](create-a-rest-api-with-attribute-routing/_static/image4.png)
 
-在**新增 Scaffold**對話方塊中，選取 「 Web API 2 控制器會執行讀取/寫入動作，使用 Entity Framework。 」
+在 **新增 Scaffold**對話方塊中，選取**Web API 2 控制器與動作，使用 Entity Framework**。
 
 [![](create-a-rest-api-with-attribute-routing/_static/image6.png)](create-a-rest-api-with-attribute-routing/_static/image5.png)
 

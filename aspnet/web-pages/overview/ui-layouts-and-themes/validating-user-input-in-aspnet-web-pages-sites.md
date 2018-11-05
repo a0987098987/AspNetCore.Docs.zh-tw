@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/validating-user-input-in-aspnet-web-pages-sites
 title: 驗證使用者輸入，在 ASP.NET Web Pages (Razor) 網站 |Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: 這篇文章討論如何驗證您從使用者取得的資訊&mdash;也就是若要確定使用者輸入有效 HTML 中的資訊表單中存新檔...
 ms.author: riande
 ms.date: 02/20/2014
 ms.assetid: 4eb060cc-cf14-41ae-bab1-14a2c15332d0
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/validating-user-input-in-aspnet-web-pages-sites
 msc.type: authoredcontent
-ms.openlocfilehash: 761d6965883f46e1253f1fb0105cb0d4539fcf9d
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8f049adce33e452896b5e2a444635ff30d18e480
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834203"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021517"
 ---
 <a name="validating-user-input-in-aspnet-web-pages-razor-sites"></a>ASP.NET Web Pages (Razor) 網站中驗證使用者輸入
 ====================

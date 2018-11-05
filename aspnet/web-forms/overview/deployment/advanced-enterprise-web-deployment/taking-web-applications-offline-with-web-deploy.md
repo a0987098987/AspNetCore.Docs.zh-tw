@@ -145,7 +145,7 @@ ms.locfileid: "41825331"
 1. <span data-ttu-id="77afd-196">Visual Studio 2010 中開啟您的方案。</span><span class="sxs-lookup"><span data-stu-id="77afd-196">Open your solution in Visual Studio 2010.</span></span>
 2. <span data-ttu-id="77afd-197">中**方案總管 中** 視窗中，以滑鼠右鍵按一下您 web 應用程式的專案節點 (例如**ContactManager.Mvc**)，指向**新增**，然後按一下  **新項目**。</span><span class="sxs-lookup"><span data-stu-id="77afd-197">In the **Solution Explorer** window, right-click your web application project node (for example, **ContactManager.Mvc**), point to **Add**, and then click **New Item**.</span></span>
 3. <span data-ttu-id="77afd-198">在 **加入新項目**對話方塊中，選取**XML 檔案**範本。</span><span class="sxs-lookup"><span data-stu-id="77afd-198">In the **Add New Item** dialog box, select the **XML File** template.</span></span>
-4. <span data-ttu-id="77afd-199">在 **名稱**方塊中，輸入 *[專案名稱] * * *.wpp.targets** (比方說， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.</span><span class="sxs-lookup"><span data-stu-id="77afd-199">In the **Name** box, type *[project name]***.wpp.targets** (for example, **ContactManager.Mvc.wpp.targets**), and then click **Add**.</span></span>
+4. <span data-ttu-id="77afd-199">在 **名稱**方塊中，輸入 *[專案名稱] \* \* *.wpp.targets** (比方說， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.</span><span class="sxs-lookup"><span data-stu-id="77afd-199">In the **Name** box, type *[project name]\*\*\*.wpp.targets*\* (for example, **ContactManager.Mvc.wpp.targets**), and then click **Add**.</span></span>
 
     ![](taking-web-applications-offline-with-web-deploy/_static/image4.png)
 

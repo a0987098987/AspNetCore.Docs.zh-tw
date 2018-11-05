@@ -5,18 +5,18 @@ description: 了解如何使用 ASP.NET Core 的 URL 重寫中介軟體，進行
 ms.author: riande
 ms.date: 08/17/2017
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: d9f33f34f75fe7bf534146c5a426335e74635018
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 5a1891c838436467fb49ff6288587fab08201179
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326065"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207182"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core 的 URL 重寫中介軟體
 
 由 [Luke Latham](https://github.com/guardrex) 和 [Mikael Mengistu](https://github.com/mikaelm12) 提供
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/sample/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/sample/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的動作。 URL 重寫會在資源位置和位址之間建立一個抽象層，讓位置和位址不那麼緊密連結。 下列幾種情況非常適合使用 URL 重寫：
 
@@ -399,9 +399,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### <a name="method-based-rule"></a>以方法為基礎的規則
 
-使用 `Add(Action<RewriteContext> applyRule)` 以在方法中實作您自己的規則邏輯。 `RewriteContext` 會公開 `HttpContext` 以便用於您的方法。 `context.Result` 可判斷其他管線處理的執行方式。
+使用 `Add(Action<RewriteContext> applyRule)` 以在方法中實作您自己的規則邏輯。 `RewriteContext` 會公開 `HttpContext` 以便用於您的方法。 `RewriteContext.Result` 可判斷其他管線處理的執行方式。
 
-| context.Result                       | 動作                                                          |
+| `RewriteContext.Result`              | 動作                                                          |
 | ------------------------------------ | --------------------------------------------------------------- |
 | `RuleResult.ContinueRules` (預設值) | 繼續套用規則                                         |
 | `RuleResult.EndResponse`             | 停止套用規則，並傳送回應                       |
@@ -437,7 +437,7 @@ public void Configure(IApplicationBuilder app)
 
 ### <a name="irule-based-rule"></a>以 IRule 為基礎的規則
 
-使用 `Add(IRule)`，以在衍生自 `IRule` 的類別中實作您自己的規則邏輯。 相較於使用以方法為基礎的規則方法，使用 `IRule` 更有彈性。 您的衍生類別可包括建構函式，以在其中傳入 `ApplyRule` 方法的參數。
+使用 `Add(IRule)` 來封裝類別中實作 `IRule` 介面的專屬規則邏輯。 相較於使用以方法為基礎的規則方法，使用 `IRule` 更有彈性。 您的實作類別可以包含建構函式，以在其中傳入 `ApplyRule` 方法的參數。
 
 ::: moniker range=">= aspnetcore-2.0"
 

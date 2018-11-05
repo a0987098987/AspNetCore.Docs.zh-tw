@@ -1,17 +1,17 @@
 ---
-title: 針對 Azure App Service 上的 ASP.NET Core 進行疑難排解
+title: 針對 Azure App Service 上的 ASP.NET Core 啟動錯誤進行疑難排解
 author: guardrex
 description: 了解如何診斷 ASP.NET Core Azure App Service 部署的問題。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/31/2018
+ms.date: 10/24/2018
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: a995c743b4e43be8bea5329affb3f2c736b1d016
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 05bb024f5b0d2b554cc861c250a92fd7ae23437f
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41902550"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090741"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>針對 Azure App Service 上的 ASP.NET Core 進行疑難排解
 
@@ -108,7 +108,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 
 ## <a name="common-startup-errors"></a>常見的啟動錯誤 
 
-請參閱 [ASP.NET Core 常見錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)。 參考主題涵蓋了大多數導致應用程式無法啟動的常見問題。
+請參閱 <xref:host-and-deploy/azure-iis-errors-reference>。 參考主題涵蓋了大多數導致應用程式無法啟動的常見問題。
 
 ## <a name="slow-or-hanging-app"></a>回應緩慢或無回應的應用程式
 
@@ -175,8 +175,8 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [ASP.NET Core 中的錯誤處理簡介](xref:fundamentals/error-handling)
-* [Azure 應用程式服務和 IIS 常見的 ASP.NET Core 錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)
+* <xref:fundamentals/error-handling>
+* <xref:host-and-deploy/azure-iis-errors-reference>
 * [使用 Visual Studio 疑難排解 Azure App Service 中的 Web 應用程式](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
 * [對您的 Azure Web 應用程式中「502 不正確的閘道」和「503 服務無法使用」的 HTTP 錯誤進行疑難排解](/azure/app-service/app-service-web-troubleshoot-http-502-http-503)
 * [針對 Azure App Service 中 Web 應用程式效能變慢的問題進行疑難排解](/azure/app-service/app-service-web-troubleshoot-performance-degradation)

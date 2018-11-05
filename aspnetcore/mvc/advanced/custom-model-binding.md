@@ -5,12 +5,12 @@ description: 了解模型繫結如何讓控制器動作直接使用 ASP.NET Core
 ms.author: riande
 ms.date: 04/10/2017
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: b8745241b0699d270bb8f3a56ab614b0ca49e64b
-ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
+ms.openlocfilehash: dc901aea3c20e7f2e955f39d923216de70ef015b
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045532"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090403"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>ASP.NET Core 中的自訂模型繫結
 
@@ -22,7 +22,7 @@ ms.locfileid: "48045532"
 
 ## <a name="default-model-binder-limitations"></a>預設模型繫結器限制
 
-預設模型繫結器支援大多數常見的 .NET Core 資料類型，因此應該符合大部分開發人員的需求。 這些開發人員希望能夠將要求中以文字為主的輸入直接繫結至模型類型。 輸入可能需要進行轉換才能繫結。 例如，當您有可用來查詢模型資料的索引鍵時， 您可以使用自訂模型繫結器，根據索引鍵來擷取資料。
+預設模型繫結器支援大多數的常見 .NET Core 資料類型，因此應該符合大部分開發人員的需求。 這些開發人員希望能夠將要求中以文字為主的輸入直接繫結至模型類型。 輸入可能需要進行轉換才能繫結。 例如，當您有可用來查詢模型資料的索引鍵時， 您可以使用自訂模型繫結器，根據索引鍵來擷取資料。
 
 ## <a name="model-binding-review"></a>模型繫結檢閱
 

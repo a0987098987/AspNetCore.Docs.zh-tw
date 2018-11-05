@@ -6,18 +6,38 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: c88441b39d8c96ec817c58fc56ebd51a0887b077
-ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
+ms.openlocfilehash: 80292f8cfecd5363fb8acc8578f9bb0ca9ee5969
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045558"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090159"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>將搜尋新增至 ASP.NET Core Razor 頁面
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 在本文件中，我們會將搜尋功能新增至 Index 頁面，以便由「內容類型」或「名稱」來搜尋電影。
+
+將下列反白顯示的屬性新增至 *Pages/Movies/Index.cshtml.cs*：
+
+::: moniker range="= aspnetcore-2.0"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
+
+::: moniker-end
+
+* `SearchString`：包含使用者在搜尋文字方塊中輸入的文字。
+* `Genres`：包含內容類型清單。 這可讓使用者從清單中選取內容類型。
+* `MovieGenre`：包含使用者所選取的特定內容類型 (例如「西部片」)。
+
+您將使用本文件稍後的 `Genres` 和 `MovieGenre` 屬性。
 
 使用下列程式碼來更新 Index 頁面的 `OnGetAsync` 方法：
 
@@ -40,6 +60,8 @@ var movies = from m in _context.Movie
 `s => s.Title.Contains()` 程式碼是一種 [Lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)。 在以方法為基礎的 [LINQ](/dotnet/csharp/programming-guide/concepts/linq/) 查詢中，會將 Lambda 作為標準查詢運算子方法的引數，例如 [Where](/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) 方法或 `Contains` (用於上述程式碼)。 定義 LINQ 查詢或藉由呼叫像是 `Where`、`Contains` 或 `OrderBy` 等方法進行修改時，並不會加以執行。 而會延後執行查詢。 這表示系統會延遲評估運算式，直到該運算式的實現值受到逐一查看，或呼叫 `ToListAsync` 方法為止。 如需詳細資訊，請參閱[查詢執行](/dotnet/framework/data/adonet/ef/language-reference/query-execution)。
 
 **注意：**[Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 方法是在資料庫上執行，而不是在 C# 程式碼中執行。 查詢是否區分大小寫取決於資料庫和定序。 在 SQL Server 上，`Contains` 對應至 [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql)，因此不區分大小寫。 而在 SQLlite 中，由於使用預設定序，因此會區分大小寫。
+
+最後，`OnGetAsync` 方法的最後一行會將使用者的搜尋值填入 `SearchString` 屬性。 填入 `SearchString` 屬性時，在執行搜尋之後，會保留搜尋方塊中的搜尋值。
 
 巡覽至 Movies 頁面，並將 `?searchString=Ghost` 這類查詢字串附加至 URL (例如，`http://localhost:5000/Movies?searchString=Ghost`)。 隨即顯示篩選過的電影。
 
@@ -66,25 +88,6 @@ HTML`<form>` 標記會使用[表單標記協助程式](xref:mvc/views/working-wi
 ![索引檢視，其中已將 ghost 一詞輸入 [標題] 篩選條件文字方塊](search/_static/filter.png)
 
 ## <a name="search-by-genre"></a>依內容類型搜尋
-
-將下列反白顯示的屬性新增至 *Pages/Movies/Index.cshtml.cs*：
-
-::: moniker range="= aspnetcore-2.0"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
-
-::: moniker-end
-
-
-`Genres` 屬性包含內容類型清單。 這可讓使用者從清單中選取內容類型。
-
-`MovieGenre` 屬性包含使用者選取的特定內容類型 (例如「西部片」)。
 
 以下列程式碼更新 `OnGetAsync` 方法：
 

@@ -3,14 +3,14 @@ title: ASP.NET Core 的 Razor 語法參考
 author: rick-anderson
 description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記語法。
 ms.author: riande
-ms.date: 10/18/2017
+ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: d0f4d59cb605cc3cc7cdfa84bfc65399699e475a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 10f0db168b36fed82def8227b3c3edcf5b57f6d7
+ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272684"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50148885"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -404,7 +404,7 @@ Razor 指示詞是以隱含運算式表示，這些運算式具有保留關鍵�
 
 了解 Razor 如何針對檢視產生程式碼，可讓您更容易了解指示詞的運作方式。
 
-[!code-html[](razor/sample/Views/Home/Contact8.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact8.cshtml)]
 
 程式碼會產生類似如下的類別：
 
@@ -422,7 +422,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 }
 ```
 
-本文稍後的[檢視針對檢視所產生的 Razor C# 類別](#viewing-the-razor-c-class-generated-for-a-view)一節將說明如何檢視此產生的類別。
+本文稍後在[檢查針對檢視所產生的 Razor C# 類別](#inspect-the-razor-c-class-generated-for-a-view)一節中說明如何檢視這個產生的類別。
 
 <a name="using"></a>
 ### <a name="using"></a>@using
@@ -497,7 +497,6 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 ```
 
 ### <a name="inject"></a>@inject
-
 
 `@inject` 指示詞可讓 Razor Page 從[服務容器](xref:fundamentals/dependency-injection)將服務插入至檢視。 如需詳細資訊，請參閱[在檢視中插入相依性](xref:mvc/views/dependency-injection)。
 
@@ -574,32 +573,76 @@ C# Razor 關鍵字必須使用 `@(@C# Razor Keyword)` (例如 `@(@case)`) 雙重
 
 * Class - 類別
 
-## <a name="viewing-the-razor-c-class-generated-for-a-view"></a>檢視針對檢視所產生的 Razor C# 類別
+## <a name="inspect-the-razor-c-class-generated-for-a-view"></a>檢查針對檢視所產生的 Razor C# 類別
+
+::: moniker range=">= aspnetcore-2.1"
+
+使用 .NET Core SDK 2.1 或更新版本，[Razor SDK](xref:razor-pages/sdk) 會處理 Razor 檔案的編譯。 建置專案時，Razor SDK 會在專案根目錄中產生 *obj/<build_configuration>/<target_framework_moniker>/Razor* 目錄。 *Razor* 目錄內的目錄結構會鏡像專案目錄結構。
+
+請考慮將目標設為 .NET Core 2.1 之 ASP.NET Core 2.1 Razor Pages 專案中的下列目錄結構：
+
+* **Areas/**
+  * **Admin/**
+    * **Pages/**
+      * *Index.cshtml*
+      * *Index.cshtml.cs*
+* **Pages/**
+  * **Shared/**
+    * *_Layout.cshtml*
+  * *_ViewImports.cshtml*
+  * *_ViewStart.cshtml*
+  * *Index.cshtml*
+  * *Index.cshtml.cs*
+
+在 *Debug* 設定中建置專案會產生下列 *obj* 目錄：
+
+* **obj/**
+  * **Debug/**
+    * **netcoreapp2.1/**
+      * **Razor/**
+        * **Areas/**
+          * **Admin/**
+            * **Pages/**
+              * *Index.g.cshtml.cs*
+        * **Pages/**
+          * **Shared/**
+            * *_Layout.g.cshtml.cs*
+          * *_ViewImports.g.cshtml.cs*
+          * *_ViewStart.g.cshtml.cs*
+          * *Index.g.cshtml.cs*
+
+若要檢視針對 *Pages/Index.cshtml* 所產生的類別，請開啟 *obj/Debug/netcoreapp2.1/Razor/Pages/Index.g.cshtml.cs*。
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
 
 請將下列類別新增至 ASP.NET Core MVC 專案：
 
 [!code-csharp[](razor/sample/Utilities/CustomTemplateEngine.cs)]
 
-以 `CustomTemplateEngine` 類別覆寫 MVC 所新增的 `RazorTemplateEngine`：
+在 `Startup.ConfigureServices` 中，將 MVC 所新增的 `RazorTemplateEngine` 覆寫為 `CustomTemplateEngine` 類別：
 
 [!code-csharp[](razor/sample/Startup.cs?highlight=4&range=10-14)]
 
-在 `CustomTemplateEngine` 的 `return csharpDocument` 陳述式上設定中斷點。 當程式在中斷點停止執行時，請檢視 `generatedCode` 的值。
+在 `CustomTemplateEngine` 的 `return csharpDocument;` 陳述式上設定中斷點。 當程式在中斷點停止執行時，請檢視 `generatedCode` 的值。
 
 ![generatedCode 的文字視覺化檢視](razor/_static/tvr.png)
+
+::: moniker-end
 
 ## <a name="view-lookups-and-case-sensitivity"></a>檢視查閱和區分大小寫
 
 Razor 檢視引擎會針對檢視執行區分大小寫的查閱。 不過，實際查閱則取決於基礎檔案系統：
 
-* 檔案式來源： 
+* 檔案式來源：
   * 在具有不區分大小寫之檔案系統的作業系統上 (例如 Windows)，實體檔案提供者查閱不會區分大小寫。 例如，`return View("Test")` 針對 */Views/Home/Test.cshtml* 和 */Views/home/test.cshtml* (以及任何其他大小寫變體) 會有相符的結果。
   * 在區分大小寫的檔案系統上 (例如 Linux、OSX 及使用 `EmbeddedFileProvider`)，查閱會區分大小寫。 例如，`return View("Test")` 會明確符合 */Views/Home/Test.cshtml*。
 * 先行編譯的檢視：在 ASP.NET Core 2.0 和更新版本中，在所有作業系統上查閱先行編譯的檢視不會區分大小寫。 此行為與 Windows 上之實體檔案提供者的行為相同。 如果兩個先行編譯的檢視只有大小寫不同，查閱的結果不會由此決定。
 
 建議開發人員比對檔案和目錄的大小寫以及下列項目的大小寫：
 
-    * 區域、控制器和動作名稱。 
+    * 區域、控制器和動作名稱。
     * Razor Pages。
-    
+
 比對大小寫可確保不論基礎檔案系統為何，部署作業都能夠找到其值。

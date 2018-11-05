@@ -56,6 +56,13 @@
 
 ## <a name="images-and-screenshots"></a>影像和螢幕擷取畫面
 
+不包含影像與發行項，但下列項目除外：
+
+* 在基本上線 (初學者) 教學課程中。
+* 需要影像予以釐清時。
+
+這些限制會減少存放庫的大小。
+
 還有一個選擇性步驟，那就是確認文件中使用的所有影像和螢幕擷取畫面均已壓縮，這有助於檔案大小和頁面載入效能。 一些熱門的工具包括 TinyPNG (使用 [TinyPNG 網站](https://tinypng.com/)或 [TinyPNG API](https://tinypng.com/developers)) 或 [Image Optimizer](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ImageOptimizer) Visual Studio 延伸模組。 
 
 ## <a name="code-snippets"></a>程式碼片段

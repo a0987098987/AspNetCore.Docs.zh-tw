@@ -3,14 +3,15 @@ title: ASP.NET Core MVC 中的模型驗證
 author: tdykstra
 description: 了解 ASP.NET Core MVC 中的模型驗證。
 ms.author: riande
-ms.date: 07/31/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: mvc/models/validation
-ms.openlocfilehash: fe036f261b80f6134078835080409720d149374d
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 73d41b4718071d00a6f80b33de182da2ad90f331
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312150"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090946"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證
 
@@ -27,6 +28,13 @@ ms.locfileid: "43312150"
 ## <a name="validation-attributes"></a>驗證屬性
 
 驗證屬性是設定模型驗證的方式，因此概念上類似於資料庫資料表中的欄位驗證。 包括條件約束，例如指派資料類型或必要欄位。 其他驗證類型還包括將模式套用至資料以強制執行商務規則，例如信用卡、電話號碼或電子郵件地址。 驗證屬性可讓您更輕鬆地強制執行這些需求，而且使用起來更容易。
+
+驗證屬性指定於屬性層級： 
+
+```csharp 
+[Required] 
+public string MyProperty { get; set; } 
+``` 
 
 以下是應用程式中已註解的 `Movie` 模型，其儲存電影和電視節目的相關資訊。 大部分屬性都是必要的，而且有幾個字串屬性具有長度需求。 此外，`Price` 屬性還有 0 至 $999.99 的數字範圍限制，以及自訂驗證屬性。
 
@@ -62,7 +70,7 @@ MVC 支援將任何衍生自 `ValidationAttribute` 的屬性用於驗證。 您�
 
 與驗證和驗證屬性無關的 MVC 模型繫結，會拒絕送出含有遺漏值或空白字元之不可為 Null 型別的表單欄位。 如果目標屬性 (property) 上沒有 `BindRequired` 屬性 (attribute)，模型繫結會忽略不可為 Null 型別的遺漏資料 (傳入表單資料中不會有表單欄位)。
 
-[BindRequired 屬性](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.bindrequiredattribute) (另請參閱[使用屬性自訂模型繫結行為](xref:mvc/models/model-binding#customize-model-binding-behavior-with-attributes)) 有助於確保表單資料完整。 套用至屬性時，模型繫結系統需要該屬性的值。 套用至類型時，模型繫結系統需要該類型之所有屬性的值。
+[BindRequired 屬性](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.bindrequiredattribute) (另請參閱 <xref:mvc/models/model-binding#customize-model-binding-behavior-with-attributes>) 適用於確保表單資料已完成。 套用至屬性時，模型繫結系統需要該屬性的值。 套用至類型時，模型繫結系統需要該類型之所有屬性的值。
 
 當您使用 [Nullable\<T> 類型](/dotnet/csharp/programming-guide/nullable-types/) (例如 `decimal?` 或 `System.Nullable<decimal>`) 並將它標示為 `Required` 時，就會將屬性視為標準可為 Null 的型別 (例如 `string`) 來執行伺服器端驗證檢查。
 
@@ -256,4 +264,4 @@ $.get({
 public string MiddleName { get; set; }
 ```
 
-如同所有屬性引數，`AdditionalFields` 必須是常數運算式。 因此，您不得使用[字串插值](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫 [`string.Join()`](https://msdn.microsoft.com/library/system.string.join(v=vs.110).aspx) 來初始化 `AdditionalFields`。 針對每個新增 `[Remote]` 屬性的額外欄位，都必須另外新增一個引數至控制器動作方法。
+如同所有屬性引數，`AdditionalFields` 必須是常數運算式。 因此，您不得使用[字串插值](/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫 [`string.Join()`](https://msdn.microsoft.com/library/system.string.join(v=vs.110).aspx) 來初始化 `AdditionalFields`。 針對每個新增 `[Remote]` 屬性的額外欄位，都必須另外新增一個引數至控制器動作方法。

@@ -4,20 +4,21 @@ author: rick-anderson
 description: 示範如何使用 Entity Framework Core 將新欄位新增至 Razor Pages
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 05/30/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: d6d59ff336095e2f1b8b2e9a0338b7791605ad7a
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: f8be269887903797803257d8a21e002519102047
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010893"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089509"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-在本節中，您會使用 [Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) Code First 移轉，將欄位新增至模型，然後將該變更移轉至資料庫。
+在本節中，您會使用 [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First 移轉，將欄位新增至模型，然後將該變更移轉至資料庫。
 
 使用 EF Code First 自動建立資料庫時，Code First 會：
 
@@ -96,7 +97,9 @@ SqlException: Invalid column name 'Rating'.
 
 建置方案。
 
-<a name="pmc"></a> 從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+<a name="pmc"></a>
+
+從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
 在 PMC 中，輸入下列命令：
 
 ```powershell
@@ -111,7 +114,9 @@ Update-Database
 
 "Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
 
-<a name="ssox"></a> 如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器或 [Sql Server 物件總管](xref:tutorials/razor-pages/sql#ssox) (SSOX) 的刪除連結來執行這項操作。 若要從 SSOX 中刪除資料庫：
+<a name="ssox"></a>
+
+如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器或 [Sql Server 物件總管](xref:tutorials/razor-pages/sql#ssox) (SSOX) 的刪除連結來執行這項操作。 若要從 SSOX 中刪除資料庫：
 
 * 在 SSOX 中選取資料庫。
 * 以滑鼠右鍵按一下資料庫，然後選取 [刪除]。

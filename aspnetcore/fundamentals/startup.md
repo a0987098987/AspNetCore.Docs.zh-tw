@@ -6,18 +6,20 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: 392dc83666bc6b9012adc6c32169ae7bdc7ed8d7
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 2212344cb3c651714e8c520b096ab0c4eaf5a180
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391111"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206452"
 ---
-# <a name="application-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
+# <a name="app-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
 作者：[Steve Smith](https://ardalis.com)、[Tom Dykstra](https://github.com/tdykstra) 和 [Luke Latham](https://github.com/guardrex)
 
 `Startup` 類別可設定服務和應用程式的要求管線。
+
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/startup/sample/) ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="the-startup-class"></a>Startup 類別
 
@@ -44,7 +46,7 @@ Web 主機提供一些可用於 `Startup` 類別建構函式的服務。 應用�
 
 [!code-csharp[](startup/snapshot_sample/Startup2.cs)]
 
-插入 `IHostingEnvironment` 的替代方式是使用基於慣例的方法。 應用程式可以針對不同的環境定義個別的 `Startup` 類別 (例如 `StartupDevelopment`)，並在執行階段選取適當的 `Startup` 類別。 將優先使用其名稱尾碼符合目前環境的類別。 如果應用程式是在開發環境中執行，且同時包含 `Startup` 類別和 `StartupDevelopment` 類別，則會使用 `StartupDevelopment` 類別。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments#environment-based-startup-class-and-methods)。
+插入 `IHostingEnvironment` 的替代方式是使用基於慣例的方法。 應用程式針對不同的環境定義個別的 `Startup` 類別 (例如 `StartupDevelopment`) 時，會在執行階段選取適當的 `Startup` 類別。 將優先使用其名稱尾碼符合目前環境的類別。 如果應用程式是在開發環境中執行，且同時包含 `Startup` 類別和 `StartupDevelopment` 類別，則會使用 `StartupDevelopment` 類別。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments#environment-based-startup-class-and-methods)。
 
 若要深入了解 `WebHostBuilder`，請參閱[裝載](xref:fundamentals/host/index)主題。 如需在啟動期間處理錯誤的資訊，請參閱[啟動例外狀況處理](xref:fundamentals/error-handling#startup-exception-handling)。
 
@@ -96,7 +98,7 @@ Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細�
 
 每個 `IStartupFilter` 會在要求管線中實作一或多個中介軟體。 篩選條件將依照它們新增至服務容器的順序叫用。 篩選條件可能會在控制權傳給下一個篩選條件之前或之後新增中介軟體，因此它們會附加至應用程式管線的開頭或結尾。
 
-[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/startup/sample/) ([如何下載](xref:tutorials/index#how-to-download-a-sample)) 示範如何使用 `IStartupFilter` 註冊中介軟體。 範例應用程式包含一個中介軟體，用來從查詢字串參數設定選項值：
+範例應用程式示範如何使用 `IStartupFilter` 來註冊中介軟體。 範例應用程式包含一個中介軟體，用來從查詢字串參數設定選項值：
 
 [!code-csharp[](startup/sample/RequestSetOptionsMiddleware.cs?name=snippet1)]
 

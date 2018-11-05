@@ -3,14 +3,15 @@ title: ASP.NET Core MVC 和 EF Core - CRUD - 2/10
 author: rick-anderson
 description: ''
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/crud
-ms.openlocfilehash: de9b0bd1e0346d4c12f256e6226353f1ab47ed11
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: 34927415beadaa3f5c9035a9101e3c99f7cbc395
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477575"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090819"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC 和 EF Core - CRUD - 2/10
 
@@ -91,7 +92,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 <a href="/Students/Edit?studentID=6">Edit</a>
 ```
 
-如需標籤協助程式的詳細資訊，請參閱 [ASP.NET Core 中的標籤協助程式](xref:mvc/views/tag-helpers/intro)。
+如需標籤協助程式的詳細資訊，請參閱 <xref:mvc/views/tag-helpers/intro>。
 
 ### <a name="add-enrollments-to-the-details-view"></a>將註冊新增至 [詳細資料] 檢視中
 
@@ -121,7 +122,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 您從 `Bind` 屬性移除了 `ID`，因為該識別碼是 SQL Server 在插入該資料列時自動為其建立的主索引鍵值。 使用者輸入的內容不會設定識別碼值。
 
-除了 `Bind` 屬性外，try-catch 區塊是您對 Scaffold 程式碼進行的唯一變更。 若在儲存變更時捕捉到衍生自 `DbUpdateException` 的例外狀況，則會顯示一般錯誤訊息。 `DbUpdateException` 例外狀況有時候是因為某些外部因素造成的，而非程式設計上的錯誤，因此系統會建議使用者再試一次。 雖然在此範例中並未實作，但生產環境品質的應用程式應記錄例外狀況。 如需詳細資訊，請參閱[監視及遙測 (使用 Azure 建置現實世界的雲端應用程式)](https://docs.microsoft.com/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)中的**深入解析記錄檔**一節。
+除了 `Bind` 屬性外，try-catch 區塊是您對 Scaffold 程式碼進行的唯一變更。 若在儲存變更時捕捉到衍生自 `DbUpdateException` 的例外狀況，則會顯示一般錯誤訊息。 `DbUpdateException` 例外狀況有時候是因為某些外部因素造成的，而非程式設計上的錯誤，因此系統會建議使用者再試一次。 雖然在此範例中並未實作，但生產環境品質的應用程式應記錄例外狀況。 如需詳細資訊，請參閱[監視及遙測 (使用 Azure 建置現實世界的雲端應用程式)](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)中的**深入解析記錄檔**一節。
 
 `ValidateAntiForgeryToken` 屬性可協助防止跨網站偽造要求 (CSRF) 攻擊。 [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) 會自動將權杖插入檢視中，並在使用者提交表單時包含在內。 權杖會由 `ValidateAntiForgeryToken` 屬性進行驗證。 如需 CSRF 的詳細資訊，請參閱[防偽要求](../../security/anti-request-forgery.md)。
 
@@ -277,7 +278,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 ## <a name="handling-transactions"></a>處理交易
 
-根據預設，Entity Framework 隱含性的實作了交易。 在您對多個資料列或資料表進行變更，然後呼叫 `SaveChanges` 的案例下，Entity Framework 會自動確認您所有的變更都已成功或是失敗。 若有些變更已先完成，之後卻發生錯誤，則這些變更都會自動進行復原。 針對您需要更多控制的案例 -- 例如，若您想要在一個交易中包含在 Entity Framework 之外完成的作業 -- 請參閱[交易](https://docs.microsoft.com/ef/core/saving/transactions)。
+根據預設，Entity Framework 隱含性的實作了交易。 在您對多個資料列或資料表進行變更，然後呼叫 `SaveChanges` 的案例下，Entity Framework 會自動確認您所有的變更都已成功或是失敗。 若有些變更已先完成，之後卻發生錯誤，則這些變更都會自動進行復原。 針對您需要更多控制的案例 -- 例如，若您想要在一個交易中包含在 Entity Framework 之外完成的作業 -- 請參閱[交易](/ef/core/saving/transactions)。
 
 ## <a name="no-tracking-queries"></a>無追蹤查詢
 
@@ -291,7 +292,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 * 您想要連結到一個實體以更新它，但稍早之前您才為了不同的目的擷取過相同的實體。 由於實體已由資料庫內容進行追蹤，您無法連結到您想要變更的實體。 處理這種情況的一種方法，便是在稍早之前的查詢中呼叫 `AsNoTracking`。
 
-如需詳細資訊，請參閱[追蹤與不追蹤](https://docs.microsoft.com/ef/core/querying/tracking)。
+如需詳細資訊，請參閱[追蹤與不追蹤](/ef/core/querying/tracking)。
 
 ## <a name="summary"></a>總結
 

@@ -3,14 +3,15 @@ title: ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
 author: rick-anderson
 description: ''
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 46cc5144a289637a0fb1c1c2ac22aba2d881af52
-ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
+ms.openlocfilehash: 6f867875ed670065ef76728342d3854281f08ae4
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336103"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091063"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
 
@@ -28,7 +29,7 @@ Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (
 
 [下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需如何在 EF 6.x 和 EF Core 之間做選擇的詳細資訊，請參閱 [EF Core 與EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/)。 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
+EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需如何在 EF 6.x 和 EF Core 之間做選擇的詳細資訊，請參閱 [EF Core 與EF6.x](/ef/efcore-and-ef6/)。 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
 
 > [!NOTE]
 > 如需此教學課程的 ASP.NET Core 1.1 版本，請參閱[以 PDF 格式儲存之此教學課程的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf)。
@@ -106,11 +107,11 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 ## <a name="entity-framework-core-nuget-packages"></a>Entity Framework Core NuGet 套件
 
-若要將 EF Core 支援新增至專案，請安裝您欲使用之資料庫的提供者。 本教學課程使用 SQL Server，其提供者套件為 [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/)。 此套件包含在 [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) 中繼套件內，因此您不需要安裝它。
+若要將 EF Core 支援新增至專案，請安裝您欲使用之資料庫的提供者。 本教學課程使用 SQL Server，其提供者套件為 [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/)。 此套件包含在 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) 中；因此，如果您的應用程式具有 `Microsoft.AspNetCore.App` 套件的套件參考，則您不需要參考套件。
 
 此套件及其相依性 (`Microsoft.EntityFrameworkCore` 及 `Microsoft.EntityFrameworkCore.Relational`) 提供了 EF 的執行階段支援。 您會在稍後的[移轉](migrations.md)教學課程中新增工具套件。
 
-如需其他 Entity Framework Core 可用之資料庫提供者的資訊，請參閱[資料庫提供者](https://docs.microsoft.com/ef/core/providers/)。
+如需其他 Entity Framework Core 可用之資料庫提供者的資訊，請參閱[資料庫提供者](/ef/core/providers/)。
 
 ## <a name="create-the-data-model"></a>建立資料模型
 
@@ -357,7 +358,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 * 若您想要充分利用非同步程式碼帶來的效能優點，請確保任何您正在使用的程式庫 (例如分頁) 也使用了非同步 (若它們有呼叫任何可能會傳送查詢到資料庫的 Entity Framework 方法的話)。
 
-如需在 .NET 中非同步程式設計的詳細資訊，請參閱[非同步總覽](https://docs.microsoft.com/dotnet/articles/standard/async)。
+如需在 .NET 中非同步程式設計的詳細資訊，請參閱[非同步總覽](/dotnet/articles/standard/async)。
 
 ## <a name="summary"></a>總結
 

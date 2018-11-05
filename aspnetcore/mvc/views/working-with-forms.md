@@ -3,15 +3,15 @@ title: ASP.NET Core 表單中的標籤協助程式
 author: rick-anderson
 description: 描述搭配表單使用的內建標籤協助程式。
 ms.author: riande
-ms.custom: H1Hack27Feb2017
-ms.date: 02/14/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: e613dc1e85b84cc5e2b8ad2bf3958040257d1966
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
-ms.translationtype: HT
+ms.openlocfilehash: efc71cc8d072769cde07e129b6d9bb933fc2f7af
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911275"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090211"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
@@ -29,7 +29,7 @@ ms.locfileid: "48911275"
 
 * 產生 MVC 控制器動作或具名路由的 HTML [\<FORM>](https://www.w3.org/TR/html401/interact/forms.html) `action` 屬性值
 
-* 產生隱藏的[要求驗證權杖](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)，以防止跨站台要求偽造 (搭配 HTTP Post 動作方法中的 `[ValidateAntiForgeryToken]` 屬性使用時)
+* 產生隱藏的[要求驗證權杖](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)，以防止跨站台要求偽造 (搭配 HTTP Post 動作方法中的 `[ValidateAntiForgeryToken]` 屬性使用時)
 
 * 提供 `asp-route-<Parameter Name>` 屬性，其中 `<Parameter Name>` 新增至路由值。 `Html.BeginForm` 和 `Html.BeginRouteForm` 的 `routeValues` 參數提供類似的功能。
 
@@ -48,7 +48,7 @@ ms.locfileid: "48911275"
 </form>
 ```
 
-MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-action` 產生 `action` 屬性值。 表單標籤協助程式也會產生隱藏的[要求驗證權杖](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)，以防止跨站台要求偽造 (搭配 HTTP Post 動作方法中的 `[ValidateAntiForgeryToken]` 屬性使用時)。 保護純粹的 HTML 表單抵禦跨站台要求偽造很困難，而表單標籤協助程式為您提供此服務。
+MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-action` 產生 `action` 屬性值。 表單標籤協助程式也會產生隱藏的[要求驗證權杖](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)，以防止跨站台要求偽造 (搭配 HTTP Post 動作方法中的 `[ValidateAntiForgeryToken]` 屬性使用時)。 保護純粹的 HTML 表單抵禦跨站台要求偽造很困難，而表單標籤協助程式為您提供此服務。
 
 ### <a name="using-a-named-route"></a>使用具名路由
 
@@ -106,12 +106,12 @@ Type expected
 
 |.NET 型別|輸入類型|
 |---|---|
-|Bool|type=”checkbox”|
-|String|type=”text”|
-|DateTime|type=”datetime”|
-|Byte|type=”number”|
-|Int|type=”number”|
-|Single、Double|type=”number”|
+|Bool|type="checkbox"|
+|String|type="text"|
+|DateTime|type="datetime"|
+|Byte|type="number"|
+|Int|type="number"|
+|Single、Double|type="number"|
 
 
 下表顯示輸入標籤協助程式將對應至特定的輸入類型的一些常見[資料註解](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性 (不是每個驗證屬性都列出)：
@@ -119,13 +119,13 @@ Type expected
 
 |屬性|輸入類型|
 |---|---|
-|[EmailAddress]|type=”email”|
-|[Url]|type=”url”|
-|[HiddenInput]|type=”hidden”|
-|[Phone]|type=”tel”|
-|[DataType(DataType.Password)]| type=”password”|
-|[DataType(DataType.Date)]| type=”date”|
-|[DataType(DataType.Time)]| type=”time”|
+|[EmailAddress]|type="email"|
+|[Url]|type="url"|
+|[HiddenInput]|type="hidden"|
+|[Phone]|type="tel"|
+|[DataType(DataType.Password)]| type="password"|
+|[DataType(DataType.Date)]| type="date"|
+|[DataType(DataType.Time)]| type="time"|
 
 
 範例：
@@ -244,7 +244,6 @@ public IActionResult Edit(int id, int colorIndex)
 *Views/Shared/EditorTemplates/ToDoItem.cshtml* 範本：
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
-
 
 >[!NOTE]
 >一律使用 `for` (且「不要」使用 `foreach`) 來逐一查看清單。 評估 LINQ 運算式中的索引子可能成本高昂，應該降到最低。
@@ -574,10 +573,10 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 ## <a name="additional-resources"></a>其他資源
 
-* [標記協助程式](xref:mvc/views/tag-helpers/intro)
+* <xref:mvc/views/tag-helpers/intro>
 * [HTML 表單項目](https://www.w3.org/TR/html401/interact/forms.html)
 * [要求驗證權杖](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
-* [模型繫結](xref:mvc/models/model-binding)
-* [模型驗證](xref:mvc/models/validation)
+* <xref:mvc/models/model-binding>
+* <xref:mvc/models/validation>
 * [IAttributeAdapter 介面](/dotnet/api/Microsoft.AspNetCore.Mvc.DataAnnotations.IAttributeAdapter)
 * [此文件的程式碼片段](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/working-with-forms/sample/final)

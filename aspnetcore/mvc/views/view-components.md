@@ -5,12 +5,12 @@ description: 了解如何檢視 ASP.NET Core 中使用的元件，以及如何�
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/views/view-components
-ms.openlocfilehash: 52bfb9e3983eb49aabdef238d53c6fdd2950c075
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 91399acafb36f1f8759ed1783e70e59b631e3bf0
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207598"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50253125"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
@@ -88,7 +88,7 @@ ms.locfileid: "50207598"
 若要使用檢視元件，請在檢視內呼叫下列項目：
 
 ```cshtml
-@Component.InvokeAsync("Name of view component", {Anonymous Type Containing Parameters})
+@await Component.InvokeAsync("Name of view component", {Anonymous Type Containing Parameters})
 ```
 
 參數將傳遞給 `InvokeAsync` 方法。 本文中所開發的 `PriorityList` 檢視元件是透過 *Views/Todo/Index.cshtml* 檢視檔案所叫用。 在下列範例中，`InvokeAsync` 方法是使用兩個參數所呼叫：

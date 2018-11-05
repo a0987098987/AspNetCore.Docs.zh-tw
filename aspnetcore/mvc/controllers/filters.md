@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2018
 uid: mvc/controllers/filters
-ms.openlocfilehash: 6803e8e3a285716792427e9fb059c204f5a88ecb
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: e5305852fad058961661373f9310d6dcaf30aa16
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391306"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50253191"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Tom Dykstra](https://github.com/tdykstra/) 以及 [Steve Smith](https://ardalis.com/)
 
-ASP.NET Core MVC 中的「篩選條件」** 可讓您在要求處理管線的特定階段之前或之後執行程式碼。
+ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定階段之前或之後執行程式碼。
 
 > [!IMPORTANT]
 > 本主題**不**適用於 Razor 頁面。 ASP.NET Core 2.1 和更新版本支援 Razor 頁面的 [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) 和 [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0)。 如需詳細資訊，請參閱 [Razor 頁面的篩選條件方法](xref:razor-pages/filter)。
@@ -34,7 +34,7 @@ ASP.NET Core MVC 中的「篩選條件」** 可讓您在要求處理管線的特
 
 ## <a name="how-do-filters-work"></a>篩選條件如何運作？
 
-篩選條件在「MVC 動作引動過程管線」** 中執行，這有時又稱為「篩選條件管線」**。  MVC 之後的篩選條件管線執行會選取要執行的動作。
+篩選條件在「MVC 動作引動過程管線」中執行，這有時又稱為「篩選條件管線」。  MVC 之後的篩選條件管線執行會選取要執行的動作。
 
 ![要求處理會歷經其他中介軟體、路由中介軟體、動作選取和 MVC 動作引動過程管線。 要求處理繼續往回歷經動作選取、路由中介軟體，以及各種其他中介軟體，然後才能成為傳送至用戶端的回應。](filters/_static/filter-pipeline-1.png)
 
@@ -112,7 +112,7 @@ ASP.NET Core MVC 中的「篩選條件」** 可讓您在要求處理管線的特
 
 ## <a name="filter-scopes-and-order-of-execution"></a>篩選條件範圍和執行的順序
 
-篩選條件可以新增至管線的三個「範圍」** 之一。 您可以使用屬性將篩選條件新增至特定的動作方法或控制器類別。 或者您可以為所有控制器和動作全域地註冊篩選條件。 藉由將篩選條件新增至 `ConfigureServices` 中的 `MvcOptions.Filters` 集合，即可全域新增篩選條件：
+篩選條件可以新增至管線的三個「範圍」之一。 您可以使用屬性將篩選條件新增至特定的動作方法或控制器類別。 或者您可以為所有控制器和動作全域地註冊篩選條件。 藉由將篩選條件新增至 `ConfigureServices` 中的 `MvcOptions.Filters` 集合，即可全域新增篩選條件：
 
 [!code-csharp[](./filters/sample/src/FiltersSample/Startup.cs?name=snippet_ConfigureServices&highlight=5-8)]
 
@@ -120,14 +120,14 @@ ASP.NET Core MVC 中的「篩選條件」** 可讓您在要求處理管線的特
 
 當管線的特定階段有多個篩選條件時，範圍會決定篩選條件的預設執行順序。  全域篩選條件會圍繞類別篩選條件，後者又圍繞方法篩選條件。 這有時候稱為「俄羅斯娃娃」巢狀結構，因為範圍的每次增加都圍繞著前一個範圍，就像[俄羅斯娃娃](https://wikipedia.org/wiki/Matryoshka_doll)一樣。 您通常不必明確決定順序，即可得到想要的覆寫行為。
 
-因為這個巢狀結構，篩選條件的「之後」** 程式碼，執行的順序會與「之前」** 程式碼相反。 順序看起來像這樣：
+因為這個巢狀結構，篩選條件的「之後」程式碼，執行的順序會與「之前」程式碼相反。 順序看起來像這樣：
 
-* 全域套用的篩選條件「之前」** 程式碼
-  * 套用至控制器的篩選條件「之前」** 程式碼
-    * 套用至動作方法的篩選條件「之前」** 程式碼
-    * 套用至動作方法的篩選條件「之後」** 程式碼
-  * 套用至控制器的篩選條件「之後」** 程式碼
-* 全域套用的篩選條件「之後」** 程式碼
+* 全域套用的篩選條件「之前」程式碼
+  * 套用至控制器的篩選條件「之前」程式碼
+    * 套用至動作方法的篩選條件「之前」程式碼
+    * 套用至動作方法的篩選條件「之後」程式碼
+  * 套用至控制器的篩選條件「之後」程式碼
+* 全域套用的篩選條件「之後」程式碼
   
 下列範例說明同步動作篩選條件的篩選條件方法呼叫順序。
 
@@ -152,7 +152,7 @@ ASP.NET Core MVC 中的「篩選條件」** 可讓您在要求處理管線的特
 
 ### <a name="overriding-the-default-order"></a>覆寫預設順序
 
-您可以藉由實作 `IOrderedFilter` 來覆寫預設執行序列。 此介面會公開 `Order` 屬性，其優先順序高於範圍，可決定執行順序。 `Order` 值較低的篩選條件，會在 `Order` 值較高的篩選條件之前執行其「之前」** 程式碼。 `Order` 值較低的篩選條件，會在 `Order` 值較高的篩選條件之後執行其「之後」** 程式碼。 您可以使用建構函式參數來設定 `Order` 屬性：
+您可以藉由實作 `IOrderedFilter` 來覆寫預設執行序列。 此介面會公開 `Order` 屬性，其優先順序高於範圍，可決定執行順序。 `Order` 值較低的篩選條件，會在 `Order` 值較高的篩選條件之前執行其「之前」程式碼。 `Order` 值較低的篩選條件，會在 `Order` 值較高的篩選條件之後執行其「之後」程式碼。 您可以使用建構函式參數來設定 `Order` 屬性：
 
 ```csharp
 [MyFilter(Name = "Controller Level Attribute", Order=1)]
@@ -211,7 +211,7 @@ ASP.NET Core MVC 中的「篩選條件」** 可讓您在要求處理管線的特
 
 [!code-csharp[](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_ServiceFilter&highlight=1)]
 
-使用 `ServiceFilterAttribute` 時，設定 `IsReusable` 是一個提示，篩選條件執行個體「可能」** 會在其建立的要求範圍之外重複使用。 該架構不保證將在稍後的某個時間點建立篩選條件的單一執行個體，或者不會從 DI 容器重新要求篩選條件。 在使用仰賴具有非單一存留期之服務的篩選條件時，請避免使用 `IsReusable`。
+使用 `ServiceFilterAttribute` 時，設定 `IsReusable` 是一個提示，篩選條件執行個體「可能」會在其建立的要求範圍之外重複使用。 該架構不保證將在稍後的某個時間點建立篩選條件的單一執行個體，或者不會從 DI 容器重新要求篩選條件。 在使用仰賴具有非單一存留期之服務的篩選條件時，請避免使用 `IsReusable`。
 
 使用 `ServiceFilterAttribute` 而不註冊篩選條件類型會導致例外狀況：
 
@@ -231,7 +231,7 @@ System.InvalidOperationException: No service for type
 * 使用 `TypeFilterAttribute` 參考的類型不需要先向容器註冊。  它們的相依性由容器滿足。 
 * `TypeFilterAttribute` 可以選擇性地接受類型的建構函式引數。
 
-使用 `TypeFilterAttribute` 時，設定 `IsReusable` 是一個提示，篩選條件執行個體「可能」** 會在其建立的要求範圍之外重複使用。 該架構不保證將建立篩選條件的單一執行個體。 在使用仰賴具有非單一存留期之服務的篩選條件時，請避免使用 `IsReusable`。
+使用 `TypeFilterAttribute` 時，設定 `IsReusable` 是一個提示，篩選條件執行個體「可能」會在其建立的要求範圍之外重複使用。 該架構不保證將建立篩選條件的單一執行個體。 在使用仰賴具有非單一存留期之服務的篩選條件時，請避免使用 `IsReusable`。
 
 下列範例示範如何使用 `TypeFilterAttribute` 將引數傳遞至類型：
 
@@ -261,7 +261,7 @@ System.InvalidOperationException: No service for type
 
 您不應該在授權篩選條件內擲回例外狀況，因為不會處理例外狀況 (例外狀況篩選條件將不會處理它們)。 請考慮在例外狀況發生時發出挑戰。
 
-深入了解[授權](../../security/authorization/index.md)。
+深入了解[授權](xref:security/authorization/introduction)。
 
 ## <a name="resource-filters"></a>資源篩選條件
 
@@ -318,7 +318,7 @@ System.InvalidOperationException: No service for type
 
 ## <a name="exception-filters"></a>例外狀況篩選條件
 
-「例外狀況篩選條件」** 會實作 `IExceptionFilter` 或 `IAsyncExceptionFilter` 介面。 它們可以用來實作常見的應用程式錯誤處理原則。 
+「例外狀況篩選條件」會實作 `IExceptionFilter` 或 `IAsyncExceptionFilter` 介面。 它們可以用來實作常見的應用程式錯誤處理原則。 
 
 下列範例例外狀況篩選條件會使用自訂的開發人員檢視，以顯示在開發應用程式時發生的例外狀況詳細資料：
 
@@ -341,7 +341,7 @@ System.InvalidOperationException: No service for type
 * 適合用於設陷 MVC 動作內發生的例外狀況。
 * 不像錯誤處理中介軟體那麼有彈性。 
 
-偏好使用中介軟體進行例外狀況處理。 只有當您需要根據選擇的 MVC 動作執行「不同的」** 錯誤處理時，才使用例外狀況篩選條件。 比方說，您的應用程式可能會有 API 端點及檢視/HTML 的動作方法。 API 端點可能將錯誤資訊傳回為 JSON，而以檢視為基礎的動作則可能將錯誤頁面傳回為 HTML。
+偏好使用中介軟體進行例外狀況處理。 只有當您需要根據選擇的 MVC 動作執行「不同的」錯誤處理時，才使用例外狀況篩選條件。 比方說，您的應用程式可能會有 API 端點及檢視/HTML 的動作方法。 API 端點可能將錯誤資訊傳回為 JSON，而以檢視為基礎的動作則可能將錯誤頁面傳回為 HTML。
 
 `ExceptionFilterAttribute` 可以子類別化。 
 

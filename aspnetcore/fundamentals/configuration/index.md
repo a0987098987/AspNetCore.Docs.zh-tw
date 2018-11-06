@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/09/2018
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 2af66c0f35109dc1de954bf501f33ad61ddef4db
-ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
+ms.openlocfilehash: 6dd478770d4eae4d497da576c17fbe7d2c133b89
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50968367"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021738"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -1151,6 +1151,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "path/to/files");
                 config.AddKeyPerFile(directoryPath: path, optional: true);
             })
             .UseStartup<Startup>();
@@ -1509,13 +1510,13 @@ viewModel.TvShow = tvShow;
 
 考慮下表中顯示的設定機碼與值。
 
-| Key     | 值  |
-| :-----: | :----: |
-| array:0 | value0 |
-| array:1 | value1 |
-| array:2 | value2 |
-| array:4 | value4 |
-| array:5 | value5 |
+| Key             | 值  |
+| :-------------: | :----: |
+| array:entries:0 | value0 |
+| array:entries:1 | value1 |
+| array:entries:2 | value2 |
+| array:entries:4 | value4 |
+| array:entries:5 | value5 |
 
 這些機碼與值是使用「記憶體設定提供者」在範例應用程式中載入：
 
@@ -1574,17 +1575,17 @@ _config.GetSection("array").Bind(arrayExample);
 
 繫結物件 (`ArrayExample`的執行個體) 會從設定接收陣列資料。
 
-| `ArrayExamples.Entries` 索引 | `ArrayExamples.Entries` 值 |
-| :---------------------------: | :---------------------------: |
-| 0                             | value0                        |
-| 1                             | value1                        |
-| 2                             | value2                        |
-| 3                             | value4                        |
-| 4                             | value5                        |
+| `ArrayExample.Entries` 索引 | `ArrayExample.Entries` 值 |
+| :--------------------------: | :--------------------------: |
+| 0                            | value0                       |
+| 1                            | value1                       |
+| 2                            | value2                       |
+| 3                            | value4                       |
+| 4                            | value5                       |
 
 繫結物件中的索引 &num;3 存放 `array:4` 設定機碼與其 `value4` 的設定資料。 當繫結包含陣列的設定資料時，設定機碼中的陣列索引只會用來列舉設定資料 (當建立物件時)。 設定資料中不能保留 Null 值，當設定機碼中的陣列略過一或多個索引時，不會在繫結物件中建立 Null 值項目。
 
-由會在設定中產生正確機碼值組的任何設定提供者繫結到 `ArrayExamples` 執行個體之前，可以提供索引 &num;3 缺少的設定項目。 若範例包含具有缺少之機碼值組的額外 JSON 設定提供者，`ArrayExamples.Entries` 會符合完整的設定陣列：
+由會在設定中產生正確機碼值組的任何設定提供者繫結到 `ArrayExample` 執行個體之前，可以提供索引 &num;3 缺少的設定項目。 若範例包含具有缺少之機碼值組的額外 JSON 設定提供者，`ArrayExample.Entries` 會符合完整的設定陣列：
 
 *missing_value.json*：
 
@@ -1620,16 +1621,16 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
-在「JSON 設定提供者」包含索引 &num;3 的項目之後，若繫結 `ArrayExamples` 類別執行個體，`ArrayExamples.Entries` 陣列會包括這些值：
+在「JSON 設定提供者」包含索引 &num;3 的項目之後，若繫結 `ArrayExample` 類別執行個體，`ArrayExample.Entries` 陣列會包括這些值：
 
-| `ArrayExamples.Entries` 索引 | `ArrayExamples.Entries` 值 |
-| :---------------------------: | :---------------------------: |
-| 0                             | value0                        |
-| 1                             | value1                        |
-| 2                             | value2                        |
-| 3                             | value3                        |
-| 4                             | value4                        |
-| 5                             | value5                        |
+| `ArrayExample.Entries` 索引 | `ArrayExample.Entries` 值 |
+| :--------------------------: | :--------------------------: |
+| 0                            | value0                       |
+| 1                            | value1                       |
+| 2                            | value2                       |
+| 3                            | value3                       |
+| 4                            | value4                       |
+| 5                            | value5                       |
 
 **JSON 陣列處理**
 

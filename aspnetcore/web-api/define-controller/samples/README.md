@@ -2,7 +2,8 @@
 
 此範例應用程式包含下列專案：
 
-- **WebApiSample.Api**：以 .NET Core 2.1 為目標的 ASP.NET Core 2.1 專案。
+- **WebApiSample.Api.22*：以 .NET Core 2.2 為目標的 ASP.NET Core 2.2 專案。
+- **WebApiSample.Api.21**：以 .NET Core 2.1 為目標的 ASP.NET Core 2.1 專案。
 - **WebApiSample.Api.Pre21**：以 .NET Core 2.0 為目標的 ASP.NET Core 2.0 專案。
 - **WebApiSample.DataAccess**：用為 2 個 Web API 專案資料存取層的 .NET Standard 2.0 類別庫。
 

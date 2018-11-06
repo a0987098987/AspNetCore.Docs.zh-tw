@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/models/validation
-ms.openlocfilehash: 73d41b4718071d00a6f80b33de182da2ad90f331
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 1063fdccb97e55e6b0eb6689187134ff41c10a02
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090946"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50253152"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證
 
@@ -22,6 +22,8 @@ ms.locfileid: "50090946"
 應用程式必須驗證資料，才能將資料儲存在資料庫中。 資料必須檢查是否有潛在安全性威脅、確認其類型和大小是否適當地格式化，而且必須符合您的規則。 驗證是必要的，但它在實作方面可能鎖碎繁複。 在 MVC 中，驗證會在用戶端和伺服器上進行。
 
 但幸好 .NET 已將驗證抽象化為驗證屬性。 這些屬性包含驗證程式碼，藉此減少您必須撰寫的程式碼數量。
+
+在 ASP.NET Core 2.2 與更新版本中，若 ASP.NET Core 執行階段可以判斷給定模型圖形不需要驗證，它會跳過驗證。 當驗證無法驗證或沒有任何關聯之驗證程式的模型時，跳過驗證可大幅改善效能。 跳過的驗證包括諸如基本類型集合 (`byte[]`、`string[]`、`Dictionary<string, string>` 等) 的物件，或沒有任何驗證程式的複雜物件。
 
 [從 GitHub 檢視或下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/validation/sample)。
 
@@ -126,11 +128,11 @@ MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200)
 
 [!code-cshtml[](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
 
-[jQuery 低調驗證](https://github.com/aspnet/jquery-validation-unobtrusive) (jQuery Unobtrusive Validation) 指令碼是建置在熱門 [jQuery 驗證](https://jqueryvalidation.org/) 外掛程式上的自訂 Microsoft 前端程式庫。 若沒有 jQuery 低調驗證，您就必須在兩個地方撰寫相同的驗證邏輯程式碼：一次在模型屬性 (property) 上的伺服器端驗證屬性 (attribute)，另一次在用戶端指令碼 (jQuery 驗證的 [`validate()`](https://jqueryvalidation.org/validate/) 方法範例顯示這可能會變得多麼複雜)。 相反地，MVC 的[標籤協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview)能夠使用模型屬性 (property) 中的驗證屬性 (attribute) 和類型中繼資料，來轉譯需要驗證之表單項目中的 HTML 5 [data- 屬性 (attribute)](http://w3c.github.io/html/dom.html#embedding-custom-non-visible-data-with-the-data-attributes)。 MVC 針對內建和自訂屬性都會產生 `data-` 屬性。 jQuery 低調驗證會接著剖析 `data-` 屬性並將邏輯傳遞至 jQuery 驗證，以有效地將伺服器端驗證邏輯「複製」到用戶端。 您可以使用相關的標籤協助程式，來顯示用戶端的驗證錯誤，如下所示：
+[jQuery 低調驗證](https://github.com/aspnet/jquery-validation-unobtrusive) (jQuery Unobtrusive Validation) 指令碼是建置在熱門 [jQuery 驗證](https://jqueryvalidation.org/) 外掛程式上的自訂 Microsoft 前端程式庫。 若沒有 jQuery 低調驗證，您就必須在兩個地方撰寫相同的驗證邏輯程式碼：一次在模型屬性 (property) 上的伺服器端驗證屬性 (attribute)，另一次在用戶端指令碼 (jQuery 驗證的 [`validate()`](https://jqueryvalidation.org/validate/) 方法範例顯示這可能會變得多麼複雜)。 相反地，MVC 的[標籤協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview)能夠使用模型屬性 (property) 中的驗證屬性 (attribute) 和類型中繼資料，來轉譯需要驗證之表單元素中的 HTML 5 [data- 屬性 (attribute)](http://w3c.github.io/html/dom.html#embedding-custom-non-visible-data-with-the-data-attributes)。 MVC 針對內建和自訂屬性都會產生 `data-` 屬性。 jQuery 低調驗證會接著剖析 `data-` 屬性並將邏輯傳遞至 jQuery 驗證，以有效地將伺服器端驗證邏輯「複製」到用戶端。 您可以使用相關的標籤協助程式，來顯示用戶端的驗證錯誤，如下所示：
 
 [!code-cshtml[](validation/sample/Views/Movies/Create.cshtml?highlight=4,5&range=19-25)]
 
-上述標籤協助程式會轉譯下列 HTML。 請注意，HTML 輸出中的 `data-` 屬性 (attribute) 會對應至 `ReleaseDate` 屬性 (property) 的驗證屬性 (attribute)。 下面的 `data-val-required` 屬性包含使用者未填入發行日期欄位時所要顯示的錯誤訊息。 jQuery 低調驗證會將此值傳遞至 jQuery 驗證的 [`required()`](https://jqueryvalidation.org/required-method/) 方法，然後在隨附的 **\<span>** 項目中顯示該訊息。
+上述標籤協助程式會轉譯下列 HTML。 請注意，HTML 輸出中的 `data-` 屬性 (attribute) 會對應至 `ReleaseDate` 屬性 (property) 的驗證屬性 (attribute)。 下面的 `data-val-required` 屬性包含使用者未填入發行日期欄位時所要顯示的錯誤訊息。 jQuery 低調驗證會將此值傳遞至 jQuery 驗證的 [`required()`](https://jqueryvalidation.org/required-method/) 方法，然後在隨附的 **\<span>** 元素中顯示該訊息。
 
 ```html
 <form action="/Movies/Create" method="post">
@@ -180,7 +182,7 @@ $.get({
 
 ### <a name="add-validation-to-dynamic-controls"></a>將驗證新增至動態控制項
 
-您也可以在動態產生個別控制項 (例如 `<input/>` 和 `<select/>`) 時，更新表單上的驗證規則。 您無法將這些項目的選取器直接傳遞至 `parse()` 方法，因為周圍的表單已經過剖析，因此不會更新。 相反地，您會先移除現有的驗證資料，再重新剖析整份表單，如下所示：
+您也可以在動態產生個別控制項 (例如 `<input/>` 和 `<select/>`) 時，更新表單上的驗證規則。 您無法將這些元素的選取器直接傳遞至 `parse()` 方法，因為周圍的表單已經過剖析，因此不會更新。 相反地，您會先移除現有的驗證資料，再重新剖析整份表單，如下所示：
 
 ```js
 $.get({
@@ -205,7 +207,7 @@ $.get({
 
 [!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=30-42)]
 
-實作此介面的屬性可以新增至 HTML 屬性來產生欄位。 檢查 `ReleaseDate` 項目的輸出會顯示類似於上述範例的 HTML，不同之處在於現在有 `IClientModelValidator` 的 `AddValidation` 方法中所定義的 `data-val-classicmovie` 屬性。
+實作此介面的屬性可以新增至 HTML 屬性來產生欄位。 檢查 `ReleaseDate` 元素的輸出會顯示類似於上述範例的 HTML，不同之處在於現在有 `IClientModelValidator` 的 `AddValidation` 方法中所定義的 `data-val-classicmovie` 屬性。
 
 ```html
 <input class="form-control" type="datetime"

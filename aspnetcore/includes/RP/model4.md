@@ -1,4 +1,4 @@
-下表詳細列出 ASP.NET Core 程式碼產生器的參數：
+下表詳細列出 ASP.NET Core 程式碼產生器參數：
 
 | 參數               | 描述|
 | ----------------- | ------------ |
@@ -13,10 +13,12 @@
 ```console
 dotnet aspnet-codegenerator razorpage -h
 ```
+
 <a name="test"></a>
+
 ### <a name="test-the-app"></a>測試應用程式
 
-* 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL (`http://localhost:port/movies`)。
+* 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL (`http://localhost:port/Movies`)。
 * 測試 **Create** 連結。
 
   ![建立頁面](../../tutorials/razor-pages/model/_static/conan.png)
@@ -27,7 +29,4 @@ dotnet aspnet-codegenerator razorpage -h
 
 如果您收到類似下列的錯誤，請確認您已執行移轉並更新資料庫：
 
-```
-An unhandled exception occurred while processing the request.
-'no such table: Movie'.
-```
+`An unhandled exception occurred while processing the request. 'no such table: Movie'.`

@@ -15,7 +15,7 @@
 * 定義不含方法的 API 控制器類別。
 * 當 `TodoItems` 是空的時建立新待辦事項。 您將無法刪除所有待辦事項，因為建構函式會在 `TodoItems` 是空的時建立一個新的待辦事項。
 
-在接下來的幾節中，我們將新增方法藉以實作 API。 類別將以 `[ApiController]` 屬性進行標註來啟用一些便捷的功能。 如需屬性所啟用功能的資訊，請參閱[以 ApiControllerAttribute 標註類別](xref:web-api/index#annotate-class-with-apicontrollerattribute)。
+在接下來的幾節中，我們將新增方法藉以實作 API。 類別將以 `[ApiController]` 屬性進行標註來啟用一些便捷的功能。 如需屬性所啟用功能的資訊，請參閱[以 ApiControllerAttribute 標註](xref:web-api/index#annotation-with-apicontrollerattribute)。
 
 ::: moniker-end
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 01e6af13c3a16de368528b1650543d36ef910571
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 78e5281d109977e8f41fe1f207254d3016f9c569
+ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207832"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50244862"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
@@ -49,7 +49,7 @@ ms.locfileid: "50207832"
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs)]
 
-   * 標籤協助程式使用以根類別名稱的項目為目標的命名慣例 (去掉類別名稱的 *TagHelper* 部分)。 在此範例中，**Email**TagHelper 的根名稱是 *email*，因此將會以 `<email>` 標籤為目標。 此命名慣例應該適用於大部分的標籤協助程式，稍後將示範如何行覆寫它。
+   * 標籤協助程式使用以根類別名稱的元素為目標的命名慣例 (去掉類別名稱的 *TagHelper* 部分)。 在此範例中，**Email**TagHelper 的根名稱是 *email*，因此將會以 `<email>` 標籤為目標。 此命名慣例應該適用於大部分的標籤協助程式，稍後將示範如何行覆寫它。
 
    * `EmailTagHelper` 類別衍生自 `TagHelper`。 `TagHelper` 類別提供撰寫標籤協助程式的方法和屬性。
 
@@ -57,7 +57,7 @@ ms.locfileid: "50207832"
 
    * `Process` (和 `ProcessAsync`) 的內容參數包含與目前 HTML 標籤執行建立關聯的資訊。
 
-   * `Process` (和 `ProcessAsync`) 的輸出參數包含具狀態 HTML 項目，以呈現用來產生 HTML 標籤和內容的原始來源。
+   * `Process` (和 `ProcessAsync`) 的輸出參數包含具狀態 HTML 元素，以呈現用來產生 HTML 標籤和內容的原始來源。
 
    * 類別名稱的尾碼為 **TagHelper**，這「不」是必要的，但視為最佳做法慣例。 您可以將類別宣告為：
 
@@ -80,7 +80,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
 -->
 
-若要使用 FQN 將標籤協助程式新增至檢視，請依序新增 FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) 和組件名稱 (*AuthoringTagHelpers*)。 大部分開發人員都會想要使用萬用字元語法。 [標籤協助程式簡介](intro.md)會詳述標籤協助程式新增、移除、階層和萬用字元語法。
+若要使用 FQN 將標籤協助程式新增至檢視，請依序新增 FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) 與**組件名稱** (*AuthoringTagHelpers*，它不一定是 `namespace`)。 大部分開發人員都會想要使用萬用字元語法。 [標籤協助程式簡介](intro.md)會詳述標籤協助程式新增、移除、階層和萬用字元語法。
 
 1. 使用下列變更來更新 *Views/Home/Contact.cshtml* 檔案中的標記：
 
@@ -131,7 +131,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    * 此版本使用非同步 `ProcessAsync` 方法。 非同步 `GetChildContentAsync` 會傳回包含 `TagHelperContent` 的 `Task`。
 
-   * 使用 `output` 參數，以取得 HTML 項目的內容。
+   * 使用 `output` 參數，以取得 HTML 元素的內容。
 
 1. 對 *Views/Home/Contact.cshtml* 檔案進行下列變更，讓標籤協助程式可以取得目標電子郵件。
 
@@ -145,7 +145,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/BoldTagHelper.cs)]
 
-   * `[HtmlTargetElement]` 屬性會傳遞屬性參數，以指定是否有任何包含名為 "bold" 之 HTML 屬性的 HTML 項目相符，並且執行類別中的 `Process` 覆寫方法。 在我們的範例中，`Process` 方法會移除 "bold" 屬性，並使用 `<strong></strong>` 括住包含標記。
+   * `[HtmlTargetElement]` 屬性會傳遞屬性參數，以指定是否有任何包含名為 "bold" 之 HTML 屬性的 HTML 元素相符，並且執行類別中的 `Process` 覆寫方法。 在我們的範例中，`Process` 方法會移除 "bold" 屬性，並使用 `<strong></strong>` 括住包含標記。
 
    * 因為您不想要取代現有標籤內容，所以必須使用 `PreContent.SetHtmlContent` 方法來撰寫開頭 `<strong>` 標籤，並使用 `PostContent.SetHtmlContent` 方法來撰寫結尾 `</strong>` 標籤。
 
@@ -155,7 +155,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 1. 執行應用程式。 您可以使用慣用的瀏覽器來檢查原始檔，並驗證標記。
 
-   上面的 `[HtmlTargetElement]` 屬性只會將目標設為提供屬性名稱 "bold" 的 HTML 標記。 標籤協助程式未曾修改 `<bold>` 項目。
+   上面的 `[HtmlTargetElement]` 屬性只會將目標設為提供屬性名稱 "bold" 的 HTML 標記。 標籤協助程式未曾修改 `<bold>` 元素。
 
 1. 將 `[HtmlTargetElement]` 屬性行標籤為註解，而且它會預設為目標 `<bold>` 標籤 (tag)，也就是表單 `<bold>` 的 HTML 標記 (markup)。 請記住，預設命名慣例將符合類別名稱 **Bold**TagHelper 與 `<bold>` 標籤。
 
@@ -165,13 +165,13 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 [!code-csharp[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zBoldTagHelperCopy.cs?highlight=1,2&range=5-15)]
 
-將多個屬性新增至相同的陳述式時，執行階段會將它們視為邏輯 AND。 例如，在下列程式碼中，HTML 項目必須命名為具有 "bold" 屬性的 "bold" (`<bold bold />`) 才能相符。
+將多個屬性新增至相同的陳述式時，執行階段會將它們視為邏輯 AND。 例如，在下列程式碼中，HTML 元素必須命名為具有 "bold" 屬性的 "bold" (`<bold bold />`) 才能相符。
 
 ```csharp
 [HtmlTargetElement("bold", Attributes = "bold")]
    ```
 
-您也可以使用 `[HtmlTargetElement]` 來變更目標項目的名稱。 例如，如果您想要 `BoldTagHelper` 將目標設為 `<MyBold>` 標籤，您可以使用下列屬性：
+您也可以使用 `[HtmlTargetElement]` 來變更目標元素的名稱。 例如，如果您想要 `BoldTagHelper` 將目標設為 `<MyBold>` 標籤，您可以使用下列屬性：
 
 ```csharp
 [HtmlTargetElement("MyBold")]
@@ -191,7 +191,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    * 如前所述，標籤協助程式會將標籤協助程式依照 Pascal 命名法大小寫慣例的類別名稱和屬性轉譯成[小寫 Kebab](http://wiki.c2.com/?KebabCase)。 因此，若要在 Razor 中使用 `WebsiteInformationTagHelper`，您將撰寫 `<website-information />`。
 
-   * 您未明確識別具有 `[HtmlTargetElement]` 屬性的目標項目，因此會將預設值 `website-information` 設為目標。 如果您已套用下列屬性 (請注意，它不是 Kebab 大小寫，但符合類別名稱)：
+   * 您未明確識別具有 `[HtmlTargetElement]` 屬性的目標元素，因此會將預設值 `website-information` 設為目標。 如果您已套用下列屬性 (請注意，它不是 Kebab 大小寫，但符合類別名稱)：
 
    ```csharp
    [HtmlTargetElement("WebsiteInformation")]
@@ -203,7 +203,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    [HtmlTargetElement("Website-Information")]
    ```
 
-   * 自我結尾項目沒有內容。 在此範例中，Razor 標記 (markup) 將使用自我結尾標籤 (tag)，但標籤 (tag) 協助程式將會建立 [section](http://www.w3.org/TR/html5/sections.html#the-section-element) 項目 (此項目不是自我結尾的，而且您將在 `section` 項目內撰寫內容)。 因此，您需要將 `TagMode` 設定為 `StartTagAndEndTag`，才能撰寫輸出。 或者，您可以將設定 `TagMode` 的行設定為註解，並撰寫含結尾標籤 (tag) 的標籤 (markup)  (本教學課程稍後會提供範例標記)。
+   * 自我結尾元素沒有內容。 在此範例中，Razor 標記 (markup) 將使用自我結尾標籤 (tag)，但標籤 (tag) 協助程式將會建立 [section](http://www.w3.org/TR/html5/sections.html#the-section-element) 元素 (此元素不是自我結尾的，而且您將在 `section` 元素內撰寫內容)。 因此，您需要將 `TagMode` 設定為 `StartTagAndEndTag`，才能撰寫輸出。 或者，您可以將設定 `TagMode` 的行設定為註解，並撰寫含結尾標籤 (tag) 的標籤 (markup)  (本教學課程稍後會提供範例標記)。
 
    * 下行中的 `$` (貨幣符號) 使用[插入字串](/dotnet/csharp/language-reference/keywords/interpolated-strings)：
 
@@ -265,7 +265,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?range=7-19)]
 
    >[!NOTE]
-   >`AutoLinkerHttpTagHelper` 類別將目標設為 `p` 項目，並使用 [Regex](/dotnet/standard/base-types/regular-expression-language-quick-reference) 來建立錨點。
+   >`AutoLinkerHttpTagHelper` 類別將目標設為 `p` 元素，並使用 [Regex](/dotnet/standard/base-types/regular-expression-language-quick-reference) 來建立錨點。
 
 1. 將下列標記新增至 *Views/Home/Contact.cshtml* 檔案結尾：
 
@@ -292,7 +292,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    >
    > 上述程式碼會確認已修改內容；如果已修改，則會從輸出緩衝區中取得內容。
 
-1. 執行應用程式，並驗證兩個連結如預期運作。 雖然可能會顯示自動連結器標籤協助程式正確且完整，但是它有些微小問題。 如果先執行 WWW 標籤協助程式，則 www 連結會不正確。 新增 `Order` 多載以控制標籤執行順序，來更新程式碼。 `Order` 屬性可決定相對於以相同項目為目標的其他標籤協助程式的執行順序。 預設順序值為零，而且會先執行值較小的執行個體。
+1. 執行應用程式，並驗證兩個連結如預期運作。 雖然可能會顯示自動連結器標籤協助程式正確且完整，但是它有些微小問題。 如果先執行 WWW 標籤協助程式，則 www 連結會不正確。 新增 `Order` 多載以控制標籤執行順序，來更新程式碼。 `Order` 屬性可決定相對於以相同元素為目標的其他標籤協助程式的執行順序。 預設順序值為零，而且會先執行值較小的執行個體。
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs?highlight=5,6,7,8&range=8-15)]
 

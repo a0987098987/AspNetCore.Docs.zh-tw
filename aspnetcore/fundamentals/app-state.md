@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/14/2018
 uid: fundamentals/app-state
-ms.openlocfilehash: da20538a0dc6e13caedaf6a1130e66981dcb7af2
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 5ca909681ca9da3fae0391991902da97581852be
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207286"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50253178"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>ASP.NET Core 中的工作階段與應用程式狀態
 
@@ -71,7 +71,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 記憶體中快取提供者會將工作階段資料存放在應用程式所在伺服器的記憶體中。 在伺服器陣列案例中：
 
 * 使用「黏性工作階段」將每個工作階段繫結至個別伺服器上的特定應用程式執行個體。 [Azure App Service](https://azure.microsoft.com/services/app-service/) 預設會使用[應用程式要求路由 (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) 來強制執行自黏工作階段。 不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。 較好的方法是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。 如需詳細資訊，請參閱<xref:performance/caching/distributed>。
-* 工作階段 Cookie 是透過 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密。 必須正確設定資料保護，以閱讀每一部機器上的工作階段 Cookie。 如需詳細資訊，請參閱 [ASP.NET Core 的資料保護](xref:security/data-protection/index)和[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。
+* 工作階段 Cookie 是透過 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密。 必須正確設定資料保護，以閱讀每一部機器上的工作階段 Cookie。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>與[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。
 
 ### <a name="configure-session-state"></a>設定工作階段狀態
 
@@ -274,7 +274,7 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 1. 應用程式已經使用工作階段狀態了嗎？ 如果是的話，使用工作階段狀態 TempData 提供者沒有額外的應用程式成本 (除了資料的大小之外)。
 2. 應用程式是否盡量只將 TempData 用於相對少量的資料 (最多 500 個位元組)？ 如果是的話，Cookie TempData 提供者將對包含 TempData 的每個要求新增少量成本。 如果不是的話，則工作階段狀態 TempData 提供者可能有助於避免在每個要求中來回傳送大量資料，直到取用 TempData 為止。
-3. 應用程式在伺服器陣列中的多部伺服器上執行？ 如果是的話，不需要額外組態，即可在資料保護之外使用 Cookie TempData 提供者 (請參閱[資料保護](xref:security/data-protection/index)和[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers))。
+3. 應用程式在伺服器陣列中的多部伺服器上執行？ 如果是的話，不需要額外組態，即可在資料保護之外使用 Cookie TempData 提供者 (請參閱 <xref:security/data-protection/introduction>與[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers))。
 
 > [!NOTE]
 > 大部分的 Web 用戶端 (例如網頁瀏覽器) 會強制執行每個 Cookie 的大小上限、Cookie 總數或這兩者的限制。 使用 Cookie TempData 提供者時，請確認應用程式不會超過這些限制。 請考慮資料的大小總計。 請考慮因為加密和區塊處理而增加的 Cookie 大小。

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/17/2018
 uid: tutorials/first-web-api
-ms.openlocfilehash: 2694388324cdbd246aad6c88d8439171704dfe89
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: 88d1958ce5c42d559754972a855c1ffe22ab45a6
+ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "39722512"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234575"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio"></a>使用 ASP.NET Core 和 Visual Studio 來建立 Web API
 
@@ -21,7 +21,7 @@ ms.locfileid: "39722512"
 
 本教學課程有 3 個版本：
 
-* Windows：使用 Visual Studio 在 Windows 上建立 Web API (此教學課程)
+* Windows：使用 Visual Studio 在 Windows 上建立 Web API (針對此教學課程，請參閱[影片版本](https://www.youtube.com/watch?v=TTkhEyGBfAk))
 * macOS：[使用 Visual Studio for Mac 建立 Web API](xref:tutorials/first-web-api-mac)
 * macOS、Linux、Windows：[使用 Visual Studio Code 建立 Web API](xref:tutorials/web-api-vsc)
 
@@ -43,7 +43,7 @@ ms.locfileid: "39722512"
 
 ### <a name="launch-the-app"></a>啟動應用程式
 
-在 Visual Studio 中，按 CTRL + F5 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:<port>/api/values`，其中 `<port>` 是隨機選擇的連接埠編號。 Chrome、Microsoft Edge 和 Firefox 顯示下列輸出：
+在 Visual Studio 中，按 CTRL + F5 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:<port>/api/values`，其中 `<port>` 是隨機選擇的通訊埠編號。 Chrome、Microsoft Edge 和 Firefox 顯示下列輸出：
 
 ```json
 ["value1","value2"]
@@ -92,7 +92,7 @@ ms.locfileid: "39722512"
 
 ### <a name="launch-the-app"></a>啟動應用程式
 
-在 Visual Studio 中，按 CTRL + F5 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:<port>/api/values`，其中 `<port>` 是隨機選擇的連接埠編號。 瀏覽至位於 `http://localhost:<port>/api/todo` 的 `Todo` 控制器。
+在 Visual Studio 中，按 CTRL + F5 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:<port>/api/values`，其中 `<port>` 是隨機選擇的通訊埠編號。 瀏覽至位於 `http://localhost:<port>/api/todo` 的 `Todo` 控制器。
 
 [!INCLUDE[last part of web API](../includes/webApi/end.md)]
 

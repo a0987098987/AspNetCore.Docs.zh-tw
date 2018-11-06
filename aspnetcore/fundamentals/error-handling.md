@@ -1,17 +1,17 @@
 ---
 title: 處理 ASP.NET Core 中的錯誤
-author: ardalis
+author: tdykstra
 description: 了解如何處理 ASP.NET Core 應用程式中的錯誤。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 07/05/2018
+ms.date: 11/01/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: d1e94fdc89fbebc264dc001bbf35666af16f4799
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 89117d78486493747d649c3bb0d9cce9f97ef419
+ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50208027"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50968315"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>處理 ASP.NET Core 中的錯誤
 
@@ -119,17 +119,28 @@ app.UseStatusCodePages();
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePages)]
 
-另一個方法則採用內容類型和格式字串：
+`UseStatusCodePages` 的多載接受內容類型與格式字串：
 
 ```csharp
 app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
 ```
+### <a name="redirect-re-execute-extension-methods"></a>重新導向重新執行擴充方法
 
-也有重新導向和重新執行的擴充方法。 重新導向方法會將 *302 已找到*狀態碼，傳送到用戶端，並將該用戶端重新導向至提供的位置 URL 範本。 範本可能包含該狀態碼的 `{0}` 預留位置。 開頭為 `~` 的 URL，已於前方加上基底路徑。 未以 `~` 開頭的 URL，會原狀使用。
+<xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePagesWithRedirects*>：
+
+* 傳送「302 - 已找到」狀態碼傳送給用戶端。
+* 將用戶端重新導向到 URL 範本中提供的位置。 
+
+範本可能包含該狀態碼的 `{0}` 預留位置。 範本的開頭必須是正斜線 (`/`)。
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
 
-重新執行方法會將原始狀態碼傳回給用戶端，並會指定應由透過使用替代路徑來重新執行要求管線的方法，產生回應主體。 此路徑可包含以下狀態碼的 `{0}` 預留位置：
+<xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePagesWithReExecute*>：
+
+* 傳回原始狀態碼給用戶端。
+* 指定應由透過使用替代路徑來重新執行要求管線的方法，產生回應主體。 
+
+範本可能包含該狀態碼的 `{0}` 預留位置。 範本的開頭必須是正斜線 (`/`)。
 
 ```csharp
 app.UseStatusCodePagesWithReExecute("/error/{0}");
@@ -146,7 +157,7 @@ if (statusCodePagesFeature != null)
 }
 ```
 
-如果在應用程式中使用指向端點的 `UseStatusCodePages*` 多載，請建立該端點的 MVC 檢視或 Razor 頁面。 例如，Razor Pages 應用程式的 [dotnet new](/dotnet/core/tools/dotnet-new) 範本會產生下列頁面和頁面模型類別：
+若要在應用程式中使用指向端點的 `UseStatusCodePages*` 多載，請建立該端點的 MVC 檢視或 Razor 頁面。 例如，Razor Pages 應用程式的 [dotnet new](/dotnet/core/tools/dotnet-new) 範本會產生下列頁面和頁面模型類別：
 
 *Error.cshtml*：
 

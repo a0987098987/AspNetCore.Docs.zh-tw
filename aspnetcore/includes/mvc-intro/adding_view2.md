@@ -18,7 +18,7 @@
 
 ## <a name="change-the-title-and-menu-link-in-the-layout-file"></a>變更配置檔案中的標題和功能表連結
 
-在標題項目中將 `MvcMovie` 變更成 `Movie App`。 將版面配置範本中的錨定文字從 `MvcMovie` 變更為 `Movie App`，並將控制器從 `Home` 變更為 `Movies`，如以下的醒目提示：
+在標題元素中將 `MvcMovie` 變更成 `Movie App`。 將版面配置範本中的錨定文字從 `MvcMovie` 變更為 `Movie App`，並將控制器從 `Home` 變更為 `Movies`，如以下的醒目提示：
 
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -28,7 +28,7 @@
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout21.cshtml?highlight=7,31)]
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout21.cshtml?highlight=6,29)]
 
 ::: moniker-end
 
@@ -115,6 +115,6 @@
 
 ![顯示一個 Welcome 標籤和顯示四次的片語 Hello Rick 的 About 檢視](~/tutorials/first-mvc-app/adding-view/_static/rick2.png)
 
-在上述範例中，我們使用 `ViewData` 字典，以便將資料從控制器傳遞至檢視。 稍後在教學課程中，我們將使用檢視模型將控制器中的資料傳遞至檢視。 傳遞資料的檢視模型方法通常比 `ViewData` 字典方法較為慣用。 如需詳細資訊，請參閱 [ViewModel vs ViewData vs ViewBag vs TempData vs Session in MVC](http://www.mytecbits.com/microsoft/dot-net/viewmodel-viewdata-viewbag-tempdata-mvc)(MVC 中的 ViewMode 與 ViewData 與 ViewBag 與 TempData 與 Session)。
+在上述範例中，我們使用 `ViewData` 字典，以便將資料從控制器傳遞至檢視。 稍後在教學課程中，我們將使用檢視模型將控制器中的資料傳遞至檢視。 傳遞資料的檢視模型方法通常比 `ViewData` 字典方法較為慣用。 如需詳細資訊，請參閱[何時應該使用 ViewBag、ViewData 或 TempData ](http://www.rachelappel.com/when-to-use-viewbag-viewdata-or-tempdata-in-asp-net-mvc-3-applications/) \(英文\)。
 
 這是一種代表模型的 "M"，但不是資料庫類型。 讓我們運用所學的內容，建立電影的資料庫。

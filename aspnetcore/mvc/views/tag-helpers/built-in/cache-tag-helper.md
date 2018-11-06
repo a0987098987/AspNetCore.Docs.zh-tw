@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 2590682755721a4bb14902b9fe7138a3bff56d31
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: fb69584f6e9d4756e175bbd6f3deb1f413b80fc5
+ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148807"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50244810"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的快取標籤協助程式
 
@@ -135,7 +135,7 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 | -------------- | -------------------- |
 | String         | `Make`、 `Make,Model` |
 
-`vary-by-route` 接受標頭值的逗號分隔清單，在路由資料參數值變更時，會觸發快取重新整理。
+`vary-by-route` 接受路由參數名稱的逗點分隔清單，當路由資料參數值變更時，這些路由參數名稱會觸發快取重新整理。
 
 範例：
 
@@ -161,7 +161,7 @@ routes.MapRoute(
 | -------------- | -------------------------------------------------------------------------------- |
 | String         | `.AspNetCore.Identity.Application`、 `.AspNetCore.Identity.Application,HairColor` |
 
-`vary-by-cookie` 接受標頭值的逗號分隔清單，在標頭值變更時，會觸發快取重新整理。
+`vary-by-cookie` 接受 Cookie 名稱的逗點分隔清單，當 Cookie 值變更時，這些 Cookie 名稱會觸發快取重新整理。
 
 下列範例會監視與 ASP.NET Core 身分識別建立關聯的 Cookie。 驗證使用者時，身分識別 Cookie 中的變更會觸發快取重新整理：
 

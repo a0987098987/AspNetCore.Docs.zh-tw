@@ -6,18 +6,29 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/01/2018
 uid: fundamentals/routing
-ms.openlocfilehash: 06059d720bd4444b1ec12e42d466ee54d1658203
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: a014782ba503bc8bd0fdefb4cb4f382aa8fde4cd
+ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207752"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50244966"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
 作者：[Ryan Nowak](https://github.com/rynowak)、[Steve Smith](https://ardalis.com/) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 路由功能負責將傳入要求對應至路由處理常式。 路由定義於應用程式，並在該應用程式啟動時進行設定。 路由可以選擇性地從要求中所包含的 URL 擷取值，然後這些值就可用於處理要求。 利用應用程式中的路由資訊，路由功能也能夠產生對應至路由處理常式的 URL。 因此，路由可以依據 URL，找到路由處理常式，或依據路由處理常式資訊，找到對應至指定路由處理常式的 URL。
+
+大部分應用程式都應該選擇基本的描述性路由傳送配置，讓 URL 可讀且有意義。 預設慣例路由 `{controller=Home}/{action=Index}/{id?}`：
+
+* 支援基本的描述性路由傳送配置：
+* 是將供瀏覽者使用之 Web 應用程式的好起點。
+
+在特殊情況下，通常會使用[屬性路由傳送](xref:mvc/controllers/routing#attribute-routing)或專屬的慣例路由，新增額外的簡潔路由到應用程式的高流量區域 (例如，部落格、商務)。
+
+Web API 應該使用屬性路由傳送來將應用程式功能模型建構為作業由 HTTP 指令動詞代表的資源集合。 這表示相同邏輯資源上的許多作業 (例如，GET、POST) 都會使用相同的 URL。 屬性路由傳送提供仔細設計 API URL 空間所需的控制層級。
+
+MVC 的 URL 產生支援允許在不需要以硬式編碼方式指定 URL 以連結應用程式的情況下開發應用程式。 這可讓您從基本路由傳送設定開始，並在決定應用程式功能之後修改路由。
 
 > [!IMPORTANT]
 > 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。

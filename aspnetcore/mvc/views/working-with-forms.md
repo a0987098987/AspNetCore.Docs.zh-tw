@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: efc71cc8d072769cde07e129b6d9bb933fc2f7af
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
-ms.translationtype: MT
+ms.openlocfilehash: 7319fbbfe3e78e61526f9042b2b6004a351c2186
+ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090211"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234614"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Dave Paquette](https://twitter.com/Dave_Paquette)和 [Jerrie Pelser](https://github.com/jerriep)
 
-本文件示範使用表單和常用在表單上的 HTML 項目。 HTML [表單](https://www.w3.org/TR/html401/interact/forms.html)項目提供用來將資料張貼回伺服器的主要機制 Web 應用程式。 本文件的大部分在描述[標籤協助程式](tag-helpers/intro.md)，以及它們如何協助您有效率地建立強大的 HTML 表單。 我們建議您先閱讀[標籤協助程式簡介](tag-helpers/intro.md)，然後才閱讀這份文件。
+本文件示範使用表單和常用在表單上的 HTML 元素。 HTML [表單](https://www.w3.org/TR/html401/interact/forms.html)元素提供用來將資料張貼回伺服器的主要機制 Web 應用程式。 本文件的大部分在描述[標籤協助程式](tag-helpers/intro.md)，以及它們如何協助您有效率地建立強大的 HTML 表單。 我們建議您先閱讀[標籤協助程式簡介](tag-helpers/intro.md)，然後才閱讀這份文件。
 
 在許多情況下，HTML 協助程式都會提供特定標籤協助程式的替代方式，但請務必辨識標籤協助程式未取代 HTML 協助程式，而且每個 HTML 協助程式都沒有標籤協助程式。 有 HTML 協助程式替代存在時，便會予以提及。
 
@@ -69,7 +69,7 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 
 ## <a name="the-input-tag-helper"></a>輸入標籤協助程式
 
-輸入標籤協助程式會將 HTML [\<input>](https://www.w3.org/wiki/HTML/Elements/input) 項目繫結到 Razor 檢視中的模型運算式。
+輸入標籤協助程式會將 HTML [\<input>](https://www.w3.org/wiki/HTML/Elements/input) 元素繫結到 Razor 檢視中的模型運算式。
 
 語法：
 
@@ -225,7 +225,7 @@ public IActionResult Edit(int id, int colorIndex)
    }
 ```
 
-下列 Razor 示範如何存取特定 `Color` 項目：
+下列 Razor 示範如何存取特定 `Color` 元素：
 
 [!code-HTML[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
@@ -245,8 +245,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
->[!NOTE]
->一律使用 `for` (且「不要」使用 `foreach`) 來逐一查看清單。 評估 LINQ 運算式中的索引子可能成本高昂，應該降到最低。
+當值將在 `asp-for` 或 `Html.DisplayFor` 相當內容中使用時，應該使用 `foreach` (如果可能的話)。 一般而言，`for` 比 `foreach` 好 (若案例允許的話)，因為它不需要配置列舉程式；不過，評估 LINQ 運算式中的索引子可能成本高昂且應該儘可能避免。
 
 &nbsp;
 
@@ -257,7 +256,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 `Textarea Tag Helper` 標籤協助程式類似於輸入標籤協助程式。
 
-* 會從 [\<textarea>](https://www.w3.org/wiki/HTML/Elements/textarea) 項目的模型產生 `id` 和 `name` 屬性，以及資料驗證屬性。
+* 會從 [\<textarea>](https://www.w3.org/wiki/HTML/Elements/textarea) 元素的模型產生 `id` 和 `name` 屬性，以及資料驗證屬性。
 
 * 提供強型別。
 
@@ -287,11 +286,11 @@ public IActionResult Edit(int id, int colorIndex)
 
 ## <a name="the-label-tag-helper"></a>標籤標籤協助程式
 
-* 會針對運算式名稱產生標籤標題和 [<label>](https://www.w3.org/wiki/HTML/Elements/label) 項目的 `for` 屬性
+* 會針對運算式名稱產生標籤標題和 [<label>](https://www.w3.org/wiki/HTML/Elements/label) 元素的 `for` 屬性
 
 * HTML 協助程式替代：`Html.LabelFor`。
 
-`Label Tag Helper` 相較於純粹的 HTML標籤項目，提供下列優點：
+`Label Tag Helper` 相較於純粹的 HTML標籤元素，提供下列優點：
 
 * 您會自動從 `Display` 屬性取得描述性的標籤值。 預定的顯示名稱可能會隨著時間而改變，`Display` 屬性和標籤標籤協助程式的組合會在使用它的每個地方都套用 `Display`。
 
@@ -305,27 +304,27 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]
 
-會為 `<label>` 項目產生下列 HTML：
+會為 `<label>` 元素產生下列 HTML：
 
 ```HTML
 <label for="Email">Email Address</label>
 ```
 
-標籤標籤協助程式產生了 "Email" 的 `for` 屬性值，這是與 `<input>` 項目建立關聯的識別碼。 標籤協助程式會產生一致的 `id` 和 `for` 項目，所以能夠正確地相關聯。 在此範例中的標題來自 `Display` 屬性。 如果模型未包含 `Display` 屬性，標題會是運算式的屬性名稱。
+標籤標籤協助程式產生了 "Email" 的 `for` 屬性值，這是與 `<input>` 元素建立關聯的識別碼。 標籤協助程式會產生一致的 `id` 和 `for` 元素，所以能夠正確地相關聯。 在此範例中的標題來自 `Display` 屬性。 如果模型未包含 `Display` 屬性，標題會是運算式的屬性名稱。
 
 ## <a name="the-validation-tag-helpers"></a>驗證標籤協助程式
 
-有兩個驗證標籤協助程式。 `Validation Message Tag Helper` (這會顯示模型上單一屬性的驗證訊息)，和 `Validation Summary Tag Helper` (這會顯示驗證錯誤的摘要)。 `Input Tag Helper` 會根據您模型類別上的資料註釋屬性，將 HTML5 用戶端端驗證屬性新增至輸入項目。 也會在伺服器上執行驗證。 驗證標籤協助程式會在發生驗證錯誤時顯示這些錯誤訊息。
+有兩個驗證標籤協助程式。 `Validation Message Tag Helper` (這會顯示模型上單一屬性的驗證訊息)，和 `Validation Summary Tag Helper` (這會顯示驗證錯誤的摘要)。 `Input Tag Helper` 會根據您模型類別上的資料註釋屬性，將 HTML5 用戶端端驗證屬性新增至輸入元素。 也會在伺服器上執行驗證。 驗證標籤協助程式會在發生驗證錯誤時顯示這些錯誤訊息。
 
 ### <a name="the-validation-message-tag-helper"></a>驗證訊息標籤協助程式
 
-* 新增 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)`data-valmsg-for="property"` 屬性至 [span](https://developer.mozilla.org/docs/Web/HTML/Element/span) 項目，它會將驗證錯誤訊息附加在指定模型屬性的輸入欄位。 發生用戶端驗證錯誤時，[jQuery](https://jquery.com/) 會在 `<span>` 項目顯示錯誤訊息。
+* 新增 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)`data-valmsg-for="property"` 屬性至 [span](https://developer.mozilla.org/docs/Web/HTML/Element/span) 元素，它會將驗證錯誤訊息附加在指定模型屬性的輸入欄位。 發生用戶端驗證錯誤時，[jQuery](https://jquery.com/) 會在 `<span>` 元素顯示錯誤訊息。
 
 * 也會在伺服器上發生驗證。 用戶端可能停用 JavaScript，而一些驗證只能在伺服器端進行。
 
 * HTML 協助程式替代：`Html.ValidationMessageFor`
 
-`Validation Message Tag Helper` 與 HTML [span](https://developer.mozilla.org/docs/Web/HTML/Element/span) 項目上的 `asp-validation-for` 屬性搭配使用。
+`Validation Message Tag Helper` 與 HTML [span](https://developer.mozilla.org/docs/Web/HTML/Element/span) 元素上的 `asp-validation-for` 屬性搭配使用。
 
 ```HTML
 <span asp-validation-for="Email"></span>
@@ -344,7 +343,7 @@ public IActionResult Edit(int id, int colorIndex)
 > [!NOTE]
 > 您必須具有正確 JavaScript 和 [jQuery](https://jquery.com/) 指令碼參考的檢視。 如需詳細資訊，請參閱[模型驗證](../models/validation.md)。
 
-發生伺服器端驗證錯誤時 (例如當您有自訂伺服器端驗證或是已停用用戶端驗證時)，MVC 會將該錯誤訊息放置為 `<span>` 項目的主體。
+發生伺服器端驗證錯誤時 (例如當您有自訂伺服器端驗證或是已停用用戶端驗證時)，MVC 會將該錯誤訊息放置為 `<span>` 元素的主體。
 
 ```HTML
 <span class="field-validation-error" data-valmsg-for="Email"
@@ -355,7 +354,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ### <a name="the-validation-summary-tag-helper"></a>驗證摘要標籤協助程式
 
-* 使用 `asp-validation-summary` 屬性設定 `<div>` 項目的目標
+* 使用 `asp-validation-summary` 屬性設定 `<div>` 元素的目標
 
 * HTML 協助程式替代：`@Html.ValidationSummary`
 
@@ -369,7 +368,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ### <a name="sample"></a>範例
 
-在下列範例中，資料模型裝飾了 `DataAnnotation` 屬性，它會在 `<input>` 項目產生驗證錯誤訊息。  在發生驗證錯誤時，驗證標籤協助程式會顯示錯誤訊息：
+在下列範例中，資料模型裝飾了 `DataAnnotation` 屬性，它會在 `<input>` 元素產生驗證錯誤訊息。  在發生驗證錯誤時，驗證標籤協助程式會顯示錯誤訊息：
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
@@ -398,11 +397,11 @@ public IActionResult Edit(int id, int colorIndex)
 
 ## <a name="the-select-tag-helper"></a>選取標籤協助程式
 
-* 為模型的屬性產生 [select](https://www.w3.org/wiki/HTML/Elements/select) 以及相關聯的 [option](https://www.w3.org/wiki/HTML/Elements/option) 項目。
+* 為模型的屬性產生 [select](https://www.w3.org/wiki/HTML/Elements/select) 以及相關聯的 [option](https://www.w3.org/wiki/HTML/Elements/option) 元素。
 
 * 有 HTML 協助程式的替代 `Html.DropDownListFor` 和 `Html.ListBoxFor`
 
-`Select Tag Helper` `asp-for` 指定 [select](https://www.w3.org/wiki/HTML/Elements/select) 項目的模型屬性名稱，而 `asp-items` 指定 [option](https://www.w3.org/wiki/HTML/Elements/option) 項目。  例如: 
+`Select Tag Helper` `asp-for` 指定 [select](https://www.w3.org/wiki/HTML/Elements/select) 元素的模型屬性名稱，而 `asp-items` 指定 [option](https://www.w3.org/wiki/HTML/Elements/option) 元素。  例如: 
 
 [!code-HTML[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
@@ -445,7 +444,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 ### <a name="enum-binding"></a>列舉繫結
 
-使用 `<select>` 搭配 `enum` 屬性，並從 `enum` 值產生 `SelectListItem` 項目通常很方便。
+使用 `<select>` 搭配 `enum` 屬性，並從 `enum` 值產生 `SelectListItem` 元素通常很方便。
 
 範例：
 
@@ -481,9 +480,9 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 ### <a name="option-group"></a>選項群組
 
-當檢視模型包含一或多個 `SelectListGroup` 物件時，會產生 HTML [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) 項目。
+當檢視模型包含一或多個 `SelectListGroup` 物件時，會產生 HTML [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) 元素。
 
-`CountryViewModelGroup` 將 `SelectListItem` 項目分組成「北美洲」和「歐洲」群組：
+`CountryViewModelGroup` 將 `SelectListItem` 元素分組成「北美洲」和「歐洲」群組：
 
 [!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44&range=6-56)]
 
@@ -550,13 +549,13 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
-新增 HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) 項目並不限於「沒有選取項目」的案例。 例如，下列檢視和動作方法會產生類似於上述程式碼的 HTML：
+新增 HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) 元素並不限於「沒有選取項目」的案例。 例如，下列檢視和動作方法會產生類似於上述程式碼的 HTML：
 
 [!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
 
 [!code-HTML[](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
 
-將會選取正確的 `<option>` 項目 (包含 `selected="selected"` 屬性)，視目前的 `Country` 值而定。
+將會選取正確的 `<option>` 元素 (包含 `selected="selected"` 屬性)，視目前的 `Country` 值而定。
 
 ```HTML
  <form method="post" action="/Home/IndexEmpty">
@@ -574,7 +573,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:mvc/views/tag-helpers/intro>
-* [HTML 表單項目](https://www.w3.org/TR/html401/interact/forms.html)
+* [HTML 表單元素](https://www.w3.org/TR/html401/interact/forms.html)
 * [要求驗證權杖](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
 * <xref:mvc/models/model-binding>
 * <xref:mvc/models/validation>

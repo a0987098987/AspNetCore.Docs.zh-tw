@@ -5,12 +5,12 @@ description: 了解如何啟用 QR 程式碼產生使用 ASP.NET Core 雙因素�
 ms.author: riande
 ms.date: 08/14/2018
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 4535efdde7340436c6a508848bff86e103df570e
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 437f354f71128a98bae9abdced291e04efc9f48e
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830566"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225378"
 ---
 # <a name="enable-qr-code-generation-for-totp-authenticator-apps-in-aspnet-core"></a>啟用 ASP.NET Core 中的 TOTP 驗證器應用程式的 QR 代碼產生
 
@@ -28,7 +28,7 @@ ASP.NET Core web 應用程式範本支援驗證器，但不提供支援 QRCode �
 
 ## <a name="adding-qr-codes-to-the-2fa-configuration-page"></a>新增至 2FA 的 [設定] 頁面的 QR 代碼
 
-使用這些指示*qrcode.js*從https://davidshimjs.github.io/qrcodejs/存放庫。
+使用這些指示*qrcode.js*從 https://davidshimjs.github.io/qrcodejs/存放庫。
 
 * 下載[qrcode.js javascript 程式庫](https://davidshimjs.github.io/qrcodejs/)至`wwwroot\lib`專案中的資料夾。
 
@@ -97,7 +97,7 @@ ASP.NET Core web 應用程式範本支援驗證器，但不提供支援 QRCode �
 
 從範本的預設程式碼如下所示：
 
-```c#
+```csharp
 private string GenerateQrCodeUri(string email, string unformattedKey)
 {
     return string.Format(

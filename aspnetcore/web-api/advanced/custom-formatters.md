@@ -5,12 +5,12 @@ description: 了解如何建立和使用 ASP.NET Core 中的 Web API 自訂格�
 ms.author: tdykstra
 ms.date: 02/08/2017
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: a038cd9c05950333fce9e72f67d6721198fae4d3
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: ee6f166ced41c41506f2a17a7d362399c165b718
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206311"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51020646"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的自訂格式器
 
@@ -51,6 +51,8 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON、XML 或純文字格式
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=classdef)]
 
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
+
 如需二進位類型，請從 [InputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.inputformatter) 或 [OutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformatter) 基底類別來衍生。
 
 ### <a name="specify-valid-media-types-and-encodings"></a>指定有效的媒體類型和編碼方式
@@ -58,6 +60,8 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON、XML 或純文字格式
 在建構函式中，您可以新增 `SupportedMediaTypes` 和 `SupportedEncodings` 集合，以指定有效的媒體類型和編碼方式。
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=ctor&highlight=3,5-6)]
+
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 > [!NOTE]
 > 您無法在格式器類別中執行建構函式的相依性插入。 舉例來說，您無法藉由將記錄器參數新增至建構函式，而取得記錄器。 若要存取服務，您必須使用可傳入方法的內容物件。 [下列](#read-write)程式碼範例會示範這項操作。
@@ -67,6 +71,8 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON、XML 或純文字格式
 您可以覆寫 `CanReadType` 或 `CanWriteType` 方法，以指定要序列化或還原序列化的類型。 例如，您可能只能透過 `Contact` 類型建立 vCard 文字，反之亦然。
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=canwritetype)]
+
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 #### <a name="the-canwriteresult-method"></a>CanWriteResult 方法
 
@@ -84,6 +90,8 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON、XML 或純文字格式
 您可以在 `ReadRequestBodyAsync` 或 `WriteResponseBodyAsync` 中進行還原序列化或序列化的實際工作。 下列範例中，醒目標示的程式碼行示範如何透過相依性插入容器以取得服務 (您無法透過建構函式參數來取得)。
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=writeresponse&highlight=3-4)]
+
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 ## <a name="how-to-configure-mvc-to-use-a-custom-formatter"></a>如何設定 MVC 以使用自訂格式器
 

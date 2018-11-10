@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2018
 uid: mvc/controllers/testing
-ms.openlocfilehash: 18674f85a0cf8c6dfffa94a2160f7182752674f7
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 7e27f30e35c2c6e9062c8321b8b8544a38a69605
+ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207988"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "50758137"
 ---
 # <a name="test-controller-logic-in-aspnet-core"></a>測試 ASP.NET Core 中的控制器邏輯
 
@@ -182,7 +182,6 @@ ms.locfileid: "50207988"
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:test/index>
 * <xref:test/integration-tests>
 * [使用 Visual Studio 建立和執行單元測試](/visualstudio/test/unit-test-your-code)。
 * [明確相依性準則](https://deviq.com/explicit-dependencies-principle/)

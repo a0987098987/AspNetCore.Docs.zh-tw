@@ -5,14 +5,14 @@ description: 了解如何在 ASP.NET Core SignalR 使用驗證和授權。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
-ms.date: 10/17/2018
+ms.date: 11/06/2018
 uid: signalr/security
-ms.openlocfilehash: 1adf762cd6de4f0cf62e31c0ec6e595a32ed56f8
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: f646d319cf3030fd4d769e882514da14b230bbdd
+ms.sourcegitcommit: c3fa5aded0bf76a7414047d50b8a2311d27ee1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477536"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51276141"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中的安全性考量
 
@@ -35,7 +35,7 @@ ms.locfileid: "49477536"
 * HTTP 方法`GET`和`POST`必須允許。
 * 必須啟用認證，即使在不使用驗證。
 
-例如，下列的 CORS 原則允許 SignalR 瀏覽器的用戶端，裝載於`http://example.com`存取 SignalR 應用程式裝載於`http://signalr.example.com`:
+例如，下列的 CORS 原則允許 SignalR 瀏覽器的用戶端，裝載於`https://example.com`存取 SignalR 應用程式裝載於`https://signalr.example.com`:
 
 [!code-csharp[Main](security/sample/Startup.cs?name=snippet1)]
 
@@ -43,6 +43,14 @@ ms.locfileid: "49477536"
 > SignalR 與不相容的內建的 CORS 功能在 Azure App Service 中。
 
 ## <a name="websocket-origin-restriction"></a>WebSocket 原始限制
+
+::: moniker range=">= aspnetcore-2.2"
+
+Websocket 不適用於 CORS 所提供的保護。 如原始 WebSockets 限制，請參閱[WebSockets 原始限制](xref:fundamentals/websockets#websocket-origin-restriction)。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
 
 Websocket 不適用於 CORS 所提供的保護。 瀏覽器執行**不**:
 
@@ -58,9 +66,18 @@ Websocket 不適用於 CORS 所提供的保護。 瀏覽器執行**不**:
 > [!NOTE]
 > `Origin`標頭控制用戶端和 like`Referer`標頭，都可能假冒。 這些標頭應該**不**用作為驗證機制。
 
+::: moniker-end
+
 ## <a name="access-token-logging"></a>存取權杖的記錄
 
-使用 WebSockets 或 Server-Sent 事件時，瀏覽器用戶端會查詢字串中傳送存取權杖。 接收存取權杖，透過查詢字串是使用標準通常一樣安全`Authorization`標頭。 不過，許多網頁伺服器會記錄每個要求，包括查詢字串的 URL。 記錄的 Url 可能會記錄的存取權杖。 最佳做法是設定 web 伺服器的記錄設定，以避免記錄的存取權杖。
+使用 WebSockets 或 Server-Sent 事件時，瀏覽器用戶端會查詢字串中傳送存取權杖。 接收存取權杖，透過查詢字串是使用標準通常一樣安全`Authorization`標頭。 您應該一律使用 HTTPS，若要確保安全的端對端連線的用戶端與伺服器之間。 許多網頁伺服器會記錄每個要求，包括查詢字串的 URL。 記錄的 Url 可能會記錄的存取權杖。 ASP.NET Core 記錄每個要求的 URL，根據預設，會包含查詢字串。 例如: 
+
+```
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:5000/myhub?access_token=1234
+```
+
+如果您有關於使用您的伺服器記錄檔中記錄這項資料的考量，您可以停用此記錄完全設定`Microsoft.AspNetCore.Hosting`記錄器`Warning`層級或更高版本 (這些訊息全都寫入於`Info`層級)。 請參閱文件[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)如需詳細資訊。 如果您仍然想要記錄特定的要求資訊，您可以[撰寫的中介軟體](xref:fundamentals/middleware/index#write-middleware)來記錄的資料要求，並篩選出`access_token`查詢字串值 （如果有的話）。
 
 ## <a name="exceptions"></a>例外狀況
 

@@ -8,12 +8,12 @@ ms.date: 06/06/2012
 ms.assetid: a585c9a2-7c8e-478b-9706-90f3739c50d1
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: 61bb977af9dca6fc080151ffd6ea3d966f1b1592
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 9a3c9fab4932c3bc85733a912cf1d1eaaecc1ab7
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325415"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225482"
 ---
 <a name="using-asynchronous-methods-in-aspnet-45"></a>使用 ASP.NET 4.5 中的非同步方法
 ====================
@@ -198,9 +198,10 @@ Void 的非同步事件的缺點是，開發人員不再有事件時執行的完
   
   請注意，在上述映像中的.NET framework 會列為 v4.0，即使應用程式集區使用.NET 4.5。 若要了解這項差異，請參閱下列各項：
 
-        - [.NET Versioning and Multi-Targeting - .NET 4.5 is an in-place upgrade to .NET 4.0](http://www.hanselman.com/blog/NETVersioningAndMultiTargetingNET45IsAnInplaceUpgradeToNET40.aspx)
-        - [How to set an IIS Application or AppPool to use ASP.NET 3.5 rather than 2.0](http://www.hanselman.com/blog/HowToSetAnIISApplicationOrAppPoolToUseASPNET35RatherThan20.aspx)
-        - [.NET Framework Versions and Dependencies](https://msdn.microsoft.com/library/bb822049(VS.110).aspx)
+- [.NET 版本控制和多目標為.NET 4.5 是.NET 4.0 的就地升級](http://www.hanselman.com/blog/NETVersioningAndMultiTargetingNET45IsAnInplaceUpgradeToNET40.aspx)
+- [如何設定 IIS 應用程式或應用程式集區使用 ASP.NET 3.5，而不是 2.0](http://www.hanselman.com/blog/HowToSetAnIISApplicationOrAppPoolToUseASPNET35RatherThan20.aspx)
+- [.NET Framework 版本和相依性](https://msdn.microsoft.com/library/bb822049(VS.110).aspx)
+
 - 如果您的應用程式使用 web 服務或 System.NET 與後端透過 HTTP 進行通訊您可能需要增加[Connectionmanagement>/maxconnection](https://msdn.microsoft.com/library/fb6y0fyc(VS.110).aspx)項目。 ASP.NET 應用程式，這會受限於 12 倍的 Cpu 數目的自動設定功能。 這表示在四處理器上可以有最多 12 \* 4 = 48 IP 端點的並行連線。 因為這會繫結至[autoConfig](https://msdn.microsoft.com/library/7w2sway1(VS.110).aspx)，最簡單的方式來增加`maxconnection`在 ASP.NET 應用程式是設定[System.Net.ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(VS.110).aspx)以程式設計方式在從`Application_Start`方法中的*global.asax*檔案。 如需範例下載此範例，請參閱。
 - 在.NET 4.5 中，預設值為 5000 [MaxConcurrentRequestsPerCPU](https://blogs.msdn.com/tmarq/archive/2007/07/21/asp-net-thread-usage-on-iis-7-0-and-6-0.aspx)應該沒問題。
 

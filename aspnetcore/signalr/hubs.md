@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: signalr/hubs
-ms.openlocfilehash: be42314afad4ff43d2fcf1abbc96c5b78c773977
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 27aedc5b2f2060d961070fbd1ff5304eaa3956d1
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206012"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225352"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR 中樞
 
@@ -41,6 +41,11 @@ SignalR 中介軟體會需要某些服務，已藉由呼叫`services.AddSignalR`
 [!code-csharp[Create and use hubs](hubs/sample/hubs/chathub.cs?range=8-37)]
 
 您可以指定傳回型別和參數，包括複雜型別和陣列，如同在任何 C# 方法。 SignalR 處理的序列化和還原序列化複雜物件並在您的參數和傳回值的陣列。
+
+> [!NOTE]
+> 中樞是暫時性的：
+> * 不會將狀態儲存在中樞類別上的屬性。 每個中樞方法的呼叫會在新的中樞執行個體上執行。  
+> * 使用`await`呼叫非同步方法，取決於中樞保持運作時。 比方說，這類方法`Clients.All.SendAsync(...)`如果在未呼叫可能會失敗`await`和中樞方法完成之後才`SendAsync`完成。
 
 ## <a name="the-context-object"></a>內容物件
 

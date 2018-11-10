@@ -4,14 +4,14 @@ author: scottaddie
 description: 了解可用來在 ASP.NET Core 中建置 Web API 的功能，以及每個功能的使用時機。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/30/2018
+ms.date: 11/06/2018
 uid: web-api/index
-ms.openlocfilehash: b3e26bee5e4dc8937e810bc5db300a486437f568
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: 010c437afc494fa4426f6922421afac46bbf6b39
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244758"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225430"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建置 Web API
 
@@ -77,13 +77,13 @@ ASP.NET Core 2.1 新增了 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiCo
 
 ### <a name="automatic-http-400-responses"></a>HTTP 400 自動回應
 
-驗證錯誤會自動觸發 HTTP 400 回應。 您的動作中將不再需要下列程式碼：
+模型驗證錯誤會自動觸發 HTTP 400 回應。 因此，您的動作將不再需要下列程式碼：
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.Pre21/Controllers/PetsController.cs?name=snippet_ModelStateIsValidCheck)]
 
 使用 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> 可自訂所產生回應的輸出。
 
-當 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressModelStateInvalidFilter> 屬性設定為 `true` 時，會停用預設行為。 在 `services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_<version_number>);` 後，於 `Startup.ConfigureServices` 中新增下列程式碼：
+當您的動作可以從模型驗證錯誤復原時，停用預設行為將會有所幫助。 當 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressModelStateInvalidFilter> 屬性設定為 `true` 時，會停用預設行為。 在 `services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_<version_number>);` 後，於 `Startup.ConfigureServices` 中新增下列程式碼：
 
 ::: moniker-end
 

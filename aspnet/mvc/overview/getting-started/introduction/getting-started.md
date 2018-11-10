@@ -7,12 +7,12 @@ ms.date: 10/04/2018
 ms.assetid: f3d8adbe-55e7-4fd4-84a8-7155bc45c676
 msc.legacyurl: /mvc/overview/getting-started/introduction/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 2cc9364b815cae0207fc59784303c6a0906f1b94
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 462583a42f20126ef8f8b5927268c20ec1ceab89
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578441"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505793"
 ---
 <a name="getting-started-with-aspnet-mvc-5"></a>開始使用 ASP.NET MVC 5
 ====================
@@ -55,7 +55,7 @@ Visual Studio 使用您剛才建立的 ASP.NET MVC 專案預設範本，因此�
 
 ![](getting-started/_static/image5.png)
 
-現成這個預設範本可讓您`Home`， `Contact`，和`About`頁面。 上述映像不會顯示**首頁**，**有關**，並**連絡人**連結。 根據您的瀏覽器視窗的大小，您可能需要按一下 瀏覽圖示，以查看這些連結。
+現成這個預設範本可讓您`Home`， `Contact`，和`About`頁面。 不會顯示下列影像**首頁**，**有關**，並**連絡人**連結。 根據您的瀏覽器視窗的大小，您可能需要按一下 瀏覽圖示，以查看這些連結。
 
 ![](getting-started/_static/image6.png)
 

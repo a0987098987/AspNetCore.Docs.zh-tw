@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: tutorials/signalr
-ms.openlocfilehash: fcfe2fa6cc88b9eee1389e171fa5eb7711b4f14f
-ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
+ms.openlocfilehash: 7d9f3a3f8aa7a5e47169da66e6fa2d6a28de3853
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50758124"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021244"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
@@ -69,12 +69,13 @@ ms.locfileid: "50758124"
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-* 開啟您可以用於新專案的資料夾。
+* 對要建立新專案資料夾所在的資料夾，開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
 
-* 在 [整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal) 中執行下列命令：
+* 執行下列命令：
 
    ```console
    dotnet new webapp -o SignalRChat
+   code -r SignalRChat
    ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
@@ -113,13 +114,11 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-* 在 [整合式終端機] 中執行下列命令以安裝 LibMan。
+* 在整合式終端機中，執行下列命令以安裝 LibMan。
 
   ```console
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
-
-* 瀏覽到專案資料夾 (包含 *SignalRChat.csproj* 檔案的資料夾)。
 
 * 執行下列命令以透過使用 LibMan 來取得 SignalR 用戶端程式庫。 您可能必須等幾秒鐘，才會看到輸出。
 
@@ -225,8 +224,12 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* 按 **CTRL+F5** 即可執行應用程式而不偵錯。
+* 在整合式終端機中，執行下列命令：
 
+  ```console
+  dotnet run -p SignalRChat
+  ```
+  
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 從功能表中選取 [執行] > [啟動但不偵錯]。

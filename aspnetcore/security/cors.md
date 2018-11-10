@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何為標準，以允許或拒絕在 ASP.NET Core 應用程式的跨原始要求的 CORS。
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 uid: security/cors
-ms.openlocfilehash: cfbf24edb1dae76f676d51738b0d57266688d53e
-ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
+ms.openlocfilehash: 8e5056b448d47d75272e9394b03ce8a58b05a0f4
+ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045584"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51191317"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨源要求 (CORS)
 
@@ -137,17 +137,37 @@ A*跨源原則*新增 CORS 中介軟體使用時，可以指定<xref:Microsoft.A
 
 ### <a name="set-the-allowed-origins"></a>設定允許的來源
 
-若要允許一或多個特定的來源，呼叫<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithOrigins*>:
+ASP.NET Core MVC 中的 CORS 中介軟體有幾種方式可以指定允許的來源：
+
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithOrigins*>： 可讓您指定一個或多個 Url。 URL 可能包含配置、 主機名稱和連接埠，但不含任何路徑資訊。 例如， `https://example.com` 。 必須指定不含尾端斜線的 URL (`/`)。
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=20-24&highlight=4)]
 
-若要允許所有原始網域，請呼叫<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>:
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>： 允許來自任何配置的所有原始網域的 CORS 要求 (`http`或`https`)。
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=28-32&highlight=4)]
 
 請仔細考慮，才能允許來自任何來源的要求。 允許來自任何來源的要求表示*任何網站*可以將跨原始來源要求對您的應用程式。
 
+::: moniker range=">= aspnetcore-2.2"
+
+> [!NOTE]
+> 指定`AllowAnyOrigin`和`AllowCredentials`是不安全的設定，可能會導致跨網站偽造要求。 當應用程式已設有兩個 CORS 服務就會傳回 CORS 回應無效。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+> [!NOTE]
+> 指定`AllowAnyOrigin`和`AllowCredentials`是不安全的設定，可能會導致跨網站偽造要求。 請考慮指定確切的原始來源清單，如果您的用戶端需要授權，才能存取伺服器資源。
+
+::: moniker-end
+
 此設定會影響[預檢要求和存取控制-允許-原始標頭](#preflight-requests)（本主題稍後所述）。
+
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains*> -允許來自任何子網域指定網域的 CORS 要求。 配置不是萬用字元。
+
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=98-104&highlight=4)]
 
 ### <a name="set-the-allowed-http-methods"></a>設定允許的 HTTP 方法
 

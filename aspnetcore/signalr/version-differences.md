@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.date: 09/10/2018
 uid: signalr/version-differences
-ms.openlocfilehash: 3cec37719b743b3c805ada77249f526278e44599
-ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
+ms.openlocfilehash: 8f07647959b6ef815eed599703bdb1bfb446572f
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50234601"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505748"
 ---
 # <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>ASP.NET SignalR 及 ASP.NET Core SignalR 之間的差異
 
@@ -36,6 +36,10 @@ ASP.NET Core SignalR 並不支援自動重新連線。 如果用戶端已中斷�
 ### <a name="protocol-support"></a>通訊協定支援
 
 ASP.NET Core SignalR 支援 JSON，以及新的二進位通訊協定，以根據[MessagePack](xref:signalr/messagepackhubprotocol)。 此外，您可以建立自訂通訊協定。
+
+### <a name="transports"></a>傳輸
+
+在 ASP.NET Core SignalR 中不支援永久框架傳輸。
 
 ## <a name="differences-on-the-server"></a>在伺服器上的差異
 
@@ -72,6 +76,14 @@ ASP.NET Core SignalR 現在支援[串流資料](xref:signalr/streaming)從用戶
 
 能夠將任意的狀態傳遞用戶端與中樞 （通常稱為 HubState） 之間已移除，以及支援進度訊息。 目前沒有任何對應的中樞 proxy。
 
+### <a name="globalhost"></a>GlobalHost
+
+ASP.NET Core 具有內建於 framework 的相依性插入 (DI)。 服務可以存取使用 DI [HubContext](xref:signalr/hubcontext)。 `GlobalHost`物件，以取得用於 ASP.NET SignalR`HubContext`不存在於 ASP.NET Core SignalR。
+
+### <a name="hubpipeline"></a>HubPipeline
+
+ASP.NET Core SignalR 沒有支援`HubPipeline`模組。
+
 ## <a name="differences-on-the-client"></a>在用戶端上的差異
 
 ### <a name="typescript"></a>TypeScript
@@ -90,6 +102,10 @@ npm install @aspnet/signalr
 ### <a name="jquery"></a>jQuery
 
 已移除對 jQuery 的相依性，但專案仍然可以使用 jQuery。
+
+### <a name="internet-explorer-support"></a>Internet Explorer 支援
+
+ASP.NET Core SignalR 需要 Microsoft Internet Explorer 11 或更新版本 （ASP.NET SignalR 支援 Microsoft Internet Explorer 8 和更新版本）。
 
 ### <a name="javascript-client-method-syntax"></a>JavaScript 用戶端方法語法
 

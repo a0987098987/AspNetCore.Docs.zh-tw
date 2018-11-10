@@ -1,19 +1,19 @@
 ---
 uid: mvc/overview/older-versions/using-oauth-providers-with-mvc
 title: 使用 OAuth 提供者與 MVC 4 |Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: 本教學課程會示範如何建置 ASP.NET MVC 4 web 應用程式，可讓使用者從外部提供者，例如 Facebo 的認證來登入...
 ms.author: riande
 ms.date: 06/19/2013
 ms.assetid: 7a87f16f-0e19-4f15-a88a-094ae866c4a2
 msc.legacyurl: /mvc/overview/older-versions/using-oauth-providers-with-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 9b0db2775db5c74762bdc55328ad44ef7ebe75ce
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d0203b62c911056fc56ed103c1c42f67816cbbf0
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833008"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021751"
 ---
 <a name="using-oauth-providers-with-mvc-4"></a>使用 OAuth 提供者與 MVC 4
 ====================
@@ -83,7 +83,7 @@ AuthConfig 檔案包含程式碼以註冊的外部驗證提供者的用戶端。
 - [Microsoft](http://manage.dev.live.com/)
 - [Twitter](https://dev.twitter.com/)
 
-當您向 Facebook 註冊您的網站，您可以提供&quot;localhost&quot;站台網域和`&quot;http://localhost/&quot;`url，如下圖所示。 使用 localhost 適用於大部分的提供者，但目前不適用於 Microsoft 提供者。 Microsoft 提供者，您必須包含有效的網站 URL。
+當您向 Facebook 註冊您的網站，您可以提供&quot;localhost&quot;站台網域和`&quot; http://localhost/&quot;`url，如下圖所示。 使用 localhost 適用於大部分的提供者，但目前不適用於 Microsoft 提供者。 Microsoft 提供者，您必須包含有效的網站 URL。
 
 ![註冊網站](using-oauth-providers-with-mvc/_static/image4.png)
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/05/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 5408fb04231a61e0c4c7a91eb15196bf754ddfa7
-ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
+ms.openlocfilehash: aa821b4923d2a5495ab3e9973142e1e97371ec91
+ms.sourcegitcommit: c3fa5aded0bf76a7414047d50b8a2311d27ee1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51191369"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51276166"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -30,62 +30,43 @@ ms.locfileid: "51191369"
 
 如需在 Azure 中裝載的資訊，請參閱 <xref:host-and-deploy/azure-apps/index>。
 
-## <a name="http2-support"></a>HTTP/2 支援
-
-::: moniker range=">= aspnetcore-2.2"
-
-在下列 IIS 部署案例中，ASP.NET Core 支援 [HTTP/2](https://httpwg.org/specs/rfc7540.html)：
-
-* 同處理序
-  * Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
-  * 目標 Framework：.NET Core 2.2 或更新版本
-  * TLS 1.2 或更新版本連線
-* 跨處理序
-  * Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
-  * 公開 Edge Server 連線使用 HTTP/2，但是對 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)的反向 Proxy 連線使用 HTTP/1.1。
-  * 目標 Framework：不適用於跨處理序部署，因為 HTTP/2 連線完全由 IIS 處理。
-  * TLS 1.2 或更新版本連線
-
-針對建立 HTTP/2 連線時的同處理序部署，[HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) 會回報 `HTTP/2`。 針對建立 HTTP/2 連線時的跨處理序部署，[HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) 會回報 `HTTP/1.1`。
-
-如需有關同處理序和跨處理序主控模型的詳細資訊，請參閱 <xref:fundamentals/servers/aspnet-core-module> 主題和 <xref:host-and-deploy/aspnet-core-module>。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.2"
-
-[HTTP/2](https://httpwg.org/specs/rfc7540.html) 支援符合下列基本需求的跨處理序部署：
-
-* Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
-* 公開 Edge Server 連線使用 HTTP/2，但是對 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)的反向 Proxy 連線使用 HTTP/1.1。
-* 目標 Framework：不適用於跨處理序部署，因為 HTTP/2 連線完全由 IIS 處理。
-* TLS 1.2 或更新版本連線
-
-如果已建立 HTTP/2 連線，[HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) 會報告 `HTTP/1.1`。
-
-::: moniker-end
-
-HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTTP/1.1。 如需使用 IIS 部署之 HTTP/2 設定的詳細資訊，請參閱 [IIS 上的 HTTP/2](/iis/get-started/whats-new-in-iis-10/http2-on-iis)。
-
 ## <a name="application-configuration"></a>應用程式組態
 
 ### <a name="enable-the-iisintegration-components"></a>啟用 IISIntegration 元件
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-2.1"
 
-**同處理序主控模型**
-
-一般的 *Program.cs* 會呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 以開始設定主機。 `CreateDefaultBuilder` 會呼叫 `UseIIS` 方法來啟動 [CoreCLR](/dotnet/standard/glossary#coreclr)，並在 IIS 工作者處理序 (`w3wp.exe`) 內裝載應用程式。 效能測試指出，相較於對 [Kestrel](xref:fundamentals/servers/kestrel) 以跨處理序方式裝載應用程式和 Proxy 要求相比，以同處理序方式裝載 .NET Core 應用程式可提供更高的要求輸送量。
-
-**跨處理序裝載模型**
-
-一般的 *Program.cs* 會呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 以開始設定主機。 針對使用 IIS 的跨處理序裝載，`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 設為 Web 伺服器，並設定 [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) 的基底路徑與連接埠來啟用 IIS 整合：
+一般的 *Program.cs* 會呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 以開始設定主機：
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
         ...
 ```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+一般的 *Program.cs* 會呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 以開始設定主機：
+
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        ...
+```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+**同處理序主控模型**
+
+`CreateDefaultBuilder` 會呼叫 `UseIIS` 方法來啟動 [CoreCLR](/dotnet/standard/glossary#coreclr)，並在 IIS 工作者處理序 (*w3wp.exe* 或 *iisexpress.exe*) 內裝載應用程式。 效能測試指出，相較於將 .NET Core 應用程式裝載於處理序外，並將要求 Proxy 處理至 [Kestrel](xref:fundamentals/servers/kestrel)，裝載於處理序內可提供明顯更高的要求輸送量。
+
+**跨處理序裝載模型**
+
+針對使用 IIS 的處理序外裝載，`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
 
 ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `CreateDefaultBuilder` 會呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> 方法。 `UseIISIntegration` 會將 Kestrel 設定為在位於 localhost IP 位址 (`127.0.0.1`) 的動態連接埠上接聽。 若動態連接埠是 1234，Kestrel 會在 `127.0.0.1:1234` 接聽。 此設定會取代由下列項目提供的其他 URL 設定：
 
@@ -95,19 +76,13 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Cr
 
 在使用模組時不需要呼叫 `UseUrls` 或 Kestrel 的 `Listen` API。 若呼叫 `UseUrls` 或 `Listen`，Kestrel 只會接聽未使用 IIS 執行應用程式時指定的連接埠。
 
-如需有關同處理序和跨處理序主控模型的詳細資訊，請參閱 <xref:fundamentals/servers/aspnet-core-module> 主題和 <xref:host-and-deploy/aspnet-core-module>。
+如需處理序內和處理序外裝載模型的詳細資訊，請參閱 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)及 [ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)。
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
-一般的 *Program.cs* 會呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 以開始設定主機。 `CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 設為網頁伺服器，並設定 [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) 的基底路徑與連接埠來啟用 IIS 整合：
-
-```csharp
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-        ...
-```
+`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
 
 ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `CreateDefaultBuilder` 會呼叫 [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) 方法。 `UseIISIntegration` 會將 Kestrel 設定為在位於 localhost IP 位址 (`127.0.0.1`) 的動態連接埠上接聽。 若動態連接埠是 1234，Kestrel 會在 `127.0.0.1:1234` 接聽。 此設定會取代由下列項目提供的其他 URL 設定：
 
@@ -121,13 +96,7 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Cr
 
 ::: moniker range="= aspnetcore-2.0"
 
-一般的 *Program.cs* 會呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 以開始設定主機。 `CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 設為網頁伺服器，並設定 [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) 的基底路徑與連接埠來啟用 IIS 整合：
-
-```csharp
-public static IWebHost BuildWebHost(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-        ...
-```
+`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
 
 ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `CreateDefaultBuilder` 會呼叫 [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) 方法。 `UseIISIntegration` 會將 Kestrel 設定為在位於 localhost IP 位址 (`localhost`) 的動態連接埠上接聽。 若動態連接埠是 1234，Kestrel 會在 `localhost:1234` 接聽。 此設定會取代由下列項目提供的其他 URL 設定：
 
@@ -167,7 +136,29 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Us
 
 ### <a name="iis-options"></a>IIS 選項
 
-若要設定 IIS 選項，請在 [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configureservices) 中包括 [IISOptions](/dotnet/api/microsoft.aspnetcore.builder.iisoptions) 的服務設定。 在下列範例中，已停用將用戶端憑證轉送至應用程式以填入 `HttpContext.Connection.ClientCertificate` 的功能：
+::: moniker range=">= aspnetcore-2.2"
+
+**同處理序主控模型**
+
+若要設定 IIS 伺服器選項，請在 [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configureservices) 中包括 [IISServerOptions](/dotnet/api/microsoft.aspnetcore.builder.iisserveroptions) 的服務設定。 下列範例會停用 AutomaticAuthentication：
+
+```csharp
+services.Configure<IISServerOptions>(options => 
+{
+    options.AutomaticAuthentication = false;
+});
+```
+
+| 選項                         | 預設 | 設定 |
+| ------------------------------ | :-----: | ------- |
+| `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
+| `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
+
+**跨處理序裝載模型**
+
+::: moniker-end
+
+若要設定 IIS 選項，請在 [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configureservices) 中包括 [IISOptions](/dotnet/api/microsoft.aspnetcore.builder.iisoptions) 的服務設定。 下列範例會防止應用程式填入 `HttpContext.Connection.ClientCertificate`：
 
 ```csharp
 services.Configure<IISOptions>(options => 
@@ -212,7 +203,7 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="webconfig-file-location"></a>web.config 檔案位置
 
-為了在 IIS 與 Kestrel 伺服器之間建立反向 Proxy，*web.config* 檔案必須存在於已部署應用程式的內容根路徑 (通常是應用程式基底路徑)。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
+為了正確設定 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)，*web.config* 檔案必須存在於已部署應用程式的內容根路徑 (通常是應用程式基底路徑)。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
 
 機密檔案存在於應用程式的實體路徑上，例如 *\<組件>.runtimeconfig.json*、*\<組件>.xml* (XML 文件註解)，以及 *\<組件>.deps.json*。 當 *web.config* 檔案存在且網站正常啟動時，在有人要求機密檔案的情況下，IIS 並不會提供它們。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
 
@@ -266,7 +257,7 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="install-the-net-core-hosting-bundle"></a>安裝 .NET Core 裝載套件組合
 
-在主控系統上安裝 .NET Core 裝載套件組合。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core 裝載套件組合。
+在主控系統上安裝 .NET Core 裝載套件組合。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core 裝載套件組合。
 
 > [!IMPORTANT]
 > 若裝載套件組合在 IIS 之前安裝，則必須對該套件組合安裝進行修復。 請在安裝 IIS 之後，再次執行裝載套件組合安裝程式。
@@ -373,30 +364,19 @@ services.Configure<IISOptions>(options =>
 
 * 使用 Web Deploy 並參考專案檔中的 `Microsoft.NET.Sdk.Web`。 *app_offline.htm* 檔案是放在 Web 應用程式目錄的根目錄中。 當檔案存在時，ASP.NET Core 模組會正常關閉應用程式，並在部署期間提供 *app_offline.htm* 檔案。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module#app_offlinehtm)。
 * 在伺服器上的 IIS 管理員中手動停止應用程式集區。
-* 使用 PowerShell 停止和重新啟動應用程式集區 (需要 PowerShell 5 或更新版本)：
+* 使用 PowerShell 卸除 *app_offline.html* (需要 PowerShell 5 或更新版本)：
 
   ```PowerShell
-  $webAppPoolName = 'APP_POOL_NAME'
+  $pathToApp = 'PATH_TO_APP'
 
   # Stop the AppPool
-  if((Get-WebAppPoolState $webAppPoolName).Value -ne 'Stopped') {
-      Stop-WebAppPool -Name $webAppPoolName
-      while((Get-WebAppPoolState $webAppPoolName).Value -ne 'Stopped') {
-          Start-Sleep -s 1
-      }
-      Write-Host `-AppPool Stopped
-  }
+  New-Item -Path $pathToApp app_offline.htm
 
   # Provide script commands here to deploy the app
 
   # Restart the AppPool
-  if((Get-WebAppPoolState $webAppPoolName).Value -ne 'Started') {
-      Start-WebAppPool -Name $webAppPoolName
-      while((Get-WebAppPoolState $webAppPoolName).Value -ne 'Started') {
-          Start-Sleep -s 1
-      }
-      Write-Host `-AppPool Started
-  }
+  Remove-Item -Path $pathToApp app_offline.htm
+
   ```
 
 ## <a name="data-protection"></a>資料保護
@@ -492,7 +472,22 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 
 ## <a name="application-pools"></a>應用程式集區
 
-在伺服器上裝載多個網站時，建議您在其各自的應用程式集區中執行各個應用程式，讓應用程式彼此隔離。 IIS [新增網站] 對話方塊預設成此組態。 當您提供**網站名稱**時，文字會自動轉移至 [應用程式集區] 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
+::: moniker range=">= aspnetcore-2.2"
+
+應用程式集區隔離取決於裝載模型：
+
+* 處理序內裝載 &ndash; 應用程式必須在分開的應用程式集區中執行。
+* 處理序外裝載 &ndash; 建議藉由在各自的應用程式集區中執行每個應用程式，以將應用程式互相隔離。
+
+IIS [新增網站] 對話方塊預設每個應用程式皆為單一應用程式集區。 當提供**網站名稱**時，文字會自動轉移至 [應用程式集區] 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+在伺服器上裝載多個網站時，建議您在其各自的應用程式集區中執行各個應用程式，讓應用程式彼此隔離。 IIS [新增網站] 對話方塊預設成此組態。 當提供 [網站名稱] 時，文字會自動轉移至 [應用程式集區] 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
+
+::: moniker-end
 
 ## <a name="application-pool-identity"></a>應用程式集區身分識別
 
@@ -529,6 +524,41 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 ```
 
 如需詳細資訊，請參閱 [icacls](/windows-server/administration/windows-commands/icacls) 主題。
+
+## <a name="http2-support"></a>HTTP/2 支援
+
+::: moniker range=">= aspnetcore-2.2"
+
+在下列 IIS 部署案例中，ASP.NET Core 支援 [HTTP/2](https://httpwg.org/specs/rfc7540.html)：
+
+* 同處理序
+  * Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
+  * TLS 1.2 或更新版本連線
+* 跨處理序
+  * Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
+  * 公開 Edge Server 連線使用 HTTP/2，但是對 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)的反向 Proxy 連線使用 HTTP/1.1。
+  * TLS 1.2 或更新版本連線
+
+針對建立 HTTP/2 連線時的同處理序部署，[HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) 會回報 `HTTP/2`。 針對建立 HTTP/2 連線時的跨處理序部署，[HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) 會回報 `HTTP/1.1`。
+
+如需有關同處理序和跨處理序主控模型的詳細資訊，請參閱 <xref:fundamentals/servers/aspnet-core-module> 主題和 <xref:host-and-deploy/aspnet-core-module>。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+[HTTP/2](https://httpwg.org/specs/rfc7540.html) 支援符合下列基本需求的跨處理序部署：
+
+* Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
+* 公開 Edge Server 連線使用 HTTP/2，但是對 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)的反向 Proxy 連線使用 HTTP/1.1。
+* 目標 Framework：不適用於跨處理序部署，因為 HTTP/2 連線完全由 IIS 處理。
+* TLS 1.2 或更新版本連線
+
+如果已建立 HTTP/2 連線，[HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) 會報告 `HTTP/1.1`。
+
+::: moniker-end
+
+HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTTP/1.1。 如需使用 IIS 部署之 HTTP/2 設定的詳細資訊，請參閱 [IIS 上的 HTTP/2](/iis/get-started/whats-new-in-iis-10/http2-on-iis)。
 
 ## <a name="deployment-resources-for-iis-administrators"></a>IIS 系統管理員的部署資源
 

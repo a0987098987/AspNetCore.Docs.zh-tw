@@ -52,21 +52,21 @@ ms.locfileid: "49348477"
 
 **API 版本設定**
 
-在此範例中，"/ api/v1/產品"會路由傳送到不同的控制器，比"/ api/v2/產品 」。
+在此範例中，"/api/v1/products"路由會傳送到不同的控制器"/api/v2/products"。
 
 `/api/v1/products`
 `/api/v2/products`
 
 **多載的 URI 區段**
 
-在此範例中，"1"是順序的數字，但是 「 擱置 」 對應至集合。
+在此範例中，"1"是順序的數字，但是"pending"對應至集合。
 
 `/orders/1`
 `/orders/pending`
 
 **多個參數類型**
 
-在此範例中，"1"是順序的數字，但是"2013年/06/16"指定的日期。
+在此範例中，"1"是順序的數字，但是"2013/06/16"指定的日期。
 
 `/orders/1`
 `/orders/2013/06/16`
@@ -82,7 +82,7 @@ ms.locfileid: "49348477"
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample3.cs)]
 
-如需有關如何設定 Web API 的詳細資訊，請參閱 <<c0> [ 設定 ASP.NET Web API 2](../advanced/configuring-aspnet-web-api.md)。
+如需有關如何設定 Web API 的詳細資訊，請參閱 <c0> [ 設定 ASP.NET Web API 2](../advanced/configuring-aspnet-web-api.md)。
 
 <a id="config"></a>
 ### <a name="note-migrating-from-web-api-1"></a>注意： 從 Web API 1 進行移轉
@@ -106,7 +106,7 @@ Web API 2 之前, 的 Web API 專案範本會產生如下的程式碼：
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample6.cs)]
 
-字串&quot;客戶 / {customerId} /&quot;是路由的 URI 範本。 Web API 會嘗試比對要求的 URI 範本。 在此範例中，「 客戶 」 和 「 訂單 」 是常值的區段，且"{customerId}"變數的參數。 下列 Uri 會符合此範本：
+字串"customers/{customerId}/orders"是路由的 URI 範本。 Web API 會嘗試比對要求的 URI 範本。 在此範例中，"customers"和"orders"是常值的區段，且"{customerId}"變數的參數。 下列 Uri 會符合此範本：
 
 - `http://localhost/customers/1/orders`
 - `http://localhost/customers/bob/orders`
@@ -114,7 +114,7 @@ Web API 2 之前, 的 Web API 專案範本會產生如下的程式碼：
 
 您可以藉由比對來限制[條件約束](#constraints)，本主題稍後所述。
 
-請注意， &quot;{customerId}&quot;路由範本中的參數名稱相符*customerId*方法中的參數。 當 Web API 會叫用控制器動作時，它會嘗試將路由參數繫結。 比方說，如果 URI 為`http://example.com/customers/1/orders`，Web API 會嘗試將值"1"的繫結*customerId*動作中的參數。
+請注意， "{customerId}"路由範本中的參數名稱相符*customerId*方法中的參數。 當 Web API 會叫用控制器動作時，它會嘗試將路由參數繫結。 比方說，如果 URI 為`http://example.com/customers/1/orders`，Web API 會嘗試將值"1"的繫結*customerId*動作中的參數。
 
 URI 樣板可以有數個參數：
 
@@ -166,11 +166,11 @@ Web API，也會根據要求的 HTTP 方法 （GET、 POST 等） 的動作。 �
 <a id="constraints"></a>
 ## <a name="route-constraints"></a>路由條件約束
 
-路由條件約束可讓您限制如何比對路由範本中的參數。 一般語法&quot;{參數： 條件約束}&quot;。 例如: 
+路由條件約束可讓您限制如何比對路由範本中的參數。 一般語法"{參數： 條件約束}"。 例如: 
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample14.cs)]
 
-在這裡，第一個路由將只會選取如果&quot;識別碼&quot;URI 區段是一個整數。 否則，將會選擇第二個路由。
+在這裡，第一個路由將只會選取如果"識別碼"URI 區段是一個整數。 否則，將會選擇第二個路由。
 
 下表列出支援的條件約束。
 
@@ -193,7 +193,7 @@ Web API，也會根據要求的 HTTP 方法 （GET、 POST 等） 的動作。 �
 | range | 比對的值範圍內的整數。 | {x: range(10,50)} |
 | regex | 符合規則運算式。 | {x: regex(^\d{3}-\d{3}-\d{4}$)} |
 
-請注意一些條件約束，例如&quot;min&quot;，接受括號括住的引數。 您可以將多個條件約束套用至參數，並以冒號分隔。
+請注意一些條件約束，例如"min"，接受括號括住的引數。 您可以將多個條件約束套用至參數，並以冒號分隔。
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample15.cs)]
 
@@ -228,7 +228,7 @@ Web API，也會根據要求的 HTTP 方法 （GET、 POST 等） 的動作。 �
 
 這是上述範例中，幾乎相同，但有所些微差異的行為時所套用的預設值。
 
-- 在第一個範例 ("{lcid？}") 中，1033年的預設值是直接指派給方法參數，讓參數會將此的確切值。
+- 在第一個範例 ("{lcid?}") 中，1033年的預設值是直接指派給方法參數，讓參數會將此的確切值。
 - 在第二個範例中 ("{lcid = 1033年}")，"1033"的預設值會透過模型繫結程序。 預設模型繫結器將轉換成數值 1033年"1033"。 不過，您可以插入可能會執行一些不同的自訂模型繫結器。
 
 （在大部分情況下，除非您有自訂模型繫結器在管線中，兩種形式會是對等）。
@@ -265,10 +265,10 @@ Web API，也會根據要求的 HTTP 方法 （GET、 POST 等） 的動作。 �
 
 這些路由會排序，如下所示。
 
-1. 訂單/詳細資料
-2. 訂單 / {id}
+1. orders/details
+2. orders/{id}
 3. orders/{customerName}
 4. orders/{\*date}
-5. 訂單 / 擱置中
+5. orders/pending
 
-請注意，[詳細資料] 是常值的區段以及"{id}"之前出現，但"pending"會顯示上次因為**順序**屬性為 1。 (這個範例那里假設客戶名為 「 詳細資料 」 或 「 暫止 」。 一般情況下，請盡量避免模稜兩可的路由。 在此範例中，較佳的路由範本，如`GetByCustomer`是 「 客戶 / {customerName}")
+請注意，"details"是常值的區段以及"{id}"之前出現，但"pending"會顯示上次因為**順序**屬性為 1。 (這個範例假設沒有客戶名叫做"details"或"pending"。 一般情況下，請盡量避免模稜兩可的路由。 在此範例中，較佳的路由範本，如`GetByCustomer`是'customers/{customerName}")

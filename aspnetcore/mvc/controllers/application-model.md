@@ -5,12 +5,12 @@ description: 了解如何讀取及操作應用程式模型，來修改 ASP.NET C
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/application-model
-ms.openlocfilehash: 7a03f5eaa561557f3abe9c8dd8f4e46a57413a55
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: f3e0aafa3e6a352c632e4abbf3943be61f11ea81
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277588"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225495"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>在 ASP.NET Core 中使用應用程式模型
 
@@ -63,7 +63,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 * 將動作方法參數新增至內容
 * 套用路由和其他屬性
 
-某些內建行為由 `DefaultApplicationModelProvider` 實作。 此提供者負責建構 [`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel)，而它則會參考 [`ActionModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ActionModel)、[`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) 和 [`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ParameterModel) 執行個體。 `DefaultApplicationModelProvider` 類別是內部架構實作詳細資料，未來將會變更。 
+某些內建行為由 `DefaultApplicationModelProvider` 實作。 此提供者負責建構 [`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel)，而它則會參考 [`ActionModel` ](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ActionModel)、[`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) 和 [`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ParameterModel) 執行個體。 `DefaultApplicationModelProvider` 類別是內部架構實作詳細資料，未來將會變更。 
 
 `AuthorizationApplicationModelProvider` 負責套用與 `AuthorizeFilter` 和 `AllowAnonymousFilter` 屬性建立關聯的行為。 [進一步了解這些屬性](xref:security/authorization/simple)。
 
@@ -80,7 +80,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 * [`IActionModelConvention`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iactionmodelconvention)
 * [`IParameterModelConvention`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iparametermodelconvention)
 
-藉由將慣例新增至 MVC 選項或實作 `Attribute` 並將其套用至控制器、動作或動作參數 (類似於 [`Filters`](xref:mvc/controllers/filters)) 來套用慣例。 與篩選條件不同的是，只有在應用程式啟動時才會執行慣例，而不會在每個要求當中執行。
+藉由將慣例新增至 MVC 選項或實作 `Attribute` 並將其套用至控制器、動作或動作參數 (類似於 [`Filters` ](xref:mvc/controllers/filters)) 來套用慣例。 與篩選條件不同的是，只有在應用程式啟動時才會執行慣例，而不會在每個要求當中執行。
 
 ### <a name="sample-modifying-the-applicationmodel"></a>範例：修改 ApplicationModel
 
@@ -169,7 +169,7 @@ ASP.NET Core MVC 會使用與 ASP.NET Web API 2 不同的一組慣例。 您可�
 
 若要使用 Web API 相容性填充碼，您必須將套件新增到您的專案，然後藉由在 `Startup` 中呼叫 `AddWebApiConventions` 來新增慣例：
 
-```c#
+```csharp
 services.AddMvc().AddWebApiConventions();
 ```
 

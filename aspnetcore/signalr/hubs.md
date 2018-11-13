@@ -9,7 +9,7 @@ ms.date: 09/12/2018
 uid: signalr/hubs
 ms.openlocfilehash: 27aedc5b2f2060d961070fbd1ff5304eaa3956d1
 ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51225352"

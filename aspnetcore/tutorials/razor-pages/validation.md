@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: f46bddb618d2a030e29b7dfa1671ea53b0d4bcc2
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: d4cc0ab9de314c0c5a1a9016efd1e566ff1c47d2
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51021348"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505774"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -61,8 +61,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 ![有多個 jQuery 用戶端驗證錯誤的電影檢視表單](validation/_static/val.png)
 
-> [!NOTE]
-> 您可能無法在 `Price` 欄位中輸入小數點或逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 如需詳細資訊，請參閱[其他資源](#additional-resources)。 現在，只要輸入如 10 之類的整數。
+[!INCLUDE[](~/includes/currency.md)]
 
 請注意表單在包含無效值的每個欄位中自動呈現驗證錯誤訊息的方式。 用戶端 (使用 JavaScript 和 jQuery) 與伺服器端 (當使用者已停用 JavaScript 時) 都會強制執行這些錯誤。
 

@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 中的網頁伺服器實作
-author: rick-anderson
+author: guardrex
 description: 探索 ASP.NET Core 的網頁伺服器 Kestrel 與 HTTP.sys。 了解如何選擇伺服器，以及何時使用反向 Proxy 伺服器。
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: fundamentals/servers/index
-ms.openlocfilehash: 6b6ebbe9d31d571ea470fba0989d622dcf6e68af
-ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
+ms.openlocfilehash: 06d4bf09b07fc70a10b3e260e78c29fe189486c5
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50758202"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505722"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -144,7 +144,7 @@ HTTP.sys 在 ASP.NET Core 1.x 中名為 [WebListener](xref:fundamentals/servers/
 
 * [Kestrel](xref:fundamentals/servers/kestrel#http2-support)
   * 作業系統
-    * Windows Server 2012 R2/Windows 8.1 或更新版本
+    * Windows Server 2016/Windows 10 或更新版本&dagger;
     * Linux 含 OpenSSL 1.0.2 或更新版本 (例如 Ubuntu 16.04 或更新版本)
     * 未來版本的 macOS 將會支援 HTTP/2。
   * 目標 Framework：.NET Core 2.2 或更新版本
@@ -158,6 +158,8 @@ HTTP.sys 在 ASP.NET Core 1.x 中名為 [WebListener](xref:fundamentals/servers/
   * Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
   * 公眾對應 Edge Server 連線使用 HTTP/2，但是對 Kestrel 的反向 Proxy 連線使用 HTTP/1.1。
   * 目標 Framework：不適用於 IIS 跨處理序部署。
+
+&dagger;Kestrel 在 Windows Server 2012 R2 與 Windows 8.1 對 HTTP/2 的支援有限。 支援有限的原因是這些作業系統上的支援 TLS 密碼編譯套件清單有限。 可能需要使用橢圓曲線數位簽章演算法 (ECDSA) 產生的憑證來保護 TLS 連線。
 
 ::: moniker-end
 

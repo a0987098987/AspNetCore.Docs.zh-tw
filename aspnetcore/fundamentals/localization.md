@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 5014d697603d802929b417e6439d4cc6983184d2
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: af11906f86fe4ea91ed520584daedc094ab2dc0b
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207585"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505826"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -338,6 +338,8 @@ services.Configure<RequestLocalizationOptions>(options =>
 * 特定文化特性：具有指定的語言和地區的文化特性  (例如 "en-US"、"en-GB"、"es-CL")。
 * 父文化特性：包含特定文化特性的中性文化特性  (例如，"en" 是 "en-US" 和 "en-GB" 的父文化特性)。
 * 地區設定：地區設定與文化特性相同。
+
+[!INCLUDE[](~/includes/currency.md)]
 
 ## <a name="additional-resources"></a>其他資源
 

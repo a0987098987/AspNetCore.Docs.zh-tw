@@ -155,7 +155,7 @@ Web API，也會根據要求的 HTTP 方法 （GET、 POST 等） 的動作。 �
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample11.cs)]
 
-方法的屬性上使用波狀符號 （`~`），來覆寫的路由前置詞：
+方法的屬性上使用波狀符號 （~），來覆寫的路由前置詞：
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample12.cs)]
 

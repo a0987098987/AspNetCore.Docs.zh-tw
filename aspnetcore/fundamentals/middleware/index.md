@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2018
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 84e79df7fcf5790e658a20c80f21d73cdc76c054
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: 6daf201654d68de978141f3dd42d48732c1161f7
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46483005"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570031"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -34,7 +34,7 @@ ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個�
 
 ![要求處理模式說明要求抵達，經過三個中介軟體所處理，然後應用程式送出回應。 每個中介軟體會執行自己的邏輯，並於 next() 陳述式中將要求遞交給下一個中介軟體。 在第三個中介軟體處理要求後，要求會反向傳回經前兩個中介軟體，以在其 next() 陳述式後，至作為回應離開應用程式傳到用戶端前的期間內，進行額外處理。](index/_static/request-delegate-pipeline.png)
 
-每一個委派皆能在下個委派的前後執行作業。 委派也可決定不將要求傳遞到下個委派，這就是所謂*對要求管線執行最少運算*。 因為最少運算可避免不必要的工作，所以經常使用。 例如，靜態檔案中介軟體可傳回靜態檔案的要求，並對剩餘管線執行最少運算。 處理例外狀況的委派會提前在管線中呼叫，以便其可與管線後續階段中所發生的例外狀況達成一致。
+每一個委派皆能在下個委派的前後執行作業。 委派也可決定不將要求傳遞到下個委派，這就是所謂*對要求管線執行最少運算*。 因為最少運算可避免不必要的工作，所以經常使用。 例如，靜態檔案中介軟體可能會傳回要求，表示需要靜態檔案，並對剩餘的管線執行最少運算。 處理例外狀況的委派會提前在管線中呼叫，以便其可與管線後續階段中所發生的例外狀況達成一致。
 
 最簡潔的 ASP.NET Core 應用程式會設定單一要求委派來處理所有要求。 此情況不包含實際要求管線。 反之，系統會呼叫單一匿名函式來回應每個 HTTP 要求。
 
@@ -153,26 +153,26 @@ public void Configure(IApplicationBuilder app)
 
 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> 是第一個新增到管道的中介軟體元件。 因此，例外處理常式中介軟體會攔截後續呼叫中發生的所有例外狀況。
 
-系統會提早在管線中呼叫靜態檔案中介軟體，以便該軟體可處理要求並執行最少運算，而無需一一處理剩餘的元件。 靜態檔案中介軟體**不**提供授權檢查。 其提供的所有檔案，包括在 *wwwroot* 下的檔案，皆可公開使用。 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
+靜態檔案中介軟體會提前在管線中呼叫，以便其無須逐一處理剩餘的元件，就能處理要求及執行最少運算。 靜態檔案中介軟體**不會**執行授權檢查。 其提供的所有檔案，包括在 *wwwroot* 下的檔案，皆可公開使用。 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
 
 ::: moniker range=">= aspnetcore-2.0"
 
-若要求未經靜態檔案中介軟體處理，則會將其傳遞至驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>)，以執行驗證。 驗證不會對未經驗證的要求執行最少運算。 雖然驗證中介軟體會驗證要求，但只有在 MVC 選取特定 Razor 頁面或 MVC 控制器及動作後，才會進行驗證 (與拒絕)。
+若靜態檔案中介軟體未處理要求，該要求會繼續傳遞給執行驗證的驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>)。 驗證不會對未經驗證的要求執行最少運算。 雖然驗證中介軟體會驗證要求，但只有在 MVC 選取特定 Razor 頁面或 MVC 控制器及動作後，才會進行驗證 (與拒絕)。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-若要求未經靜態檔案中介軟體處理，則會將其傳遞至身分識別中介軟體 (<xref:Microsoft.AspNetCore.Builder.BuilderExtensions.UseIdentity*>)，以執行驗證。 身分識別不會對未經驗證的要求執行最少運算。 雖然身分識別會驗證要求，但只有在 MVC 選取特定控制器及動作後，才會進行驗證 (與拒絕)。
+若靜態檔案中介軟體未處理要求，該要求會繼續傳遞給執行驗證的身分識別中介軟體 (<xref:Microsoft.AspNetCore.Builder.BuilderExtensions.UseIdentity*>)。 身分識別不會對未經驗證的要求執行最少運算。 雖然身分識別會驗證要求，但只有在 MVC 選取特定控制器及動作後，才會進行驗證 (與拒絕)。
 
 ::: moniker-end
 
-下列範例會示範中介軟體的順序，其中靜態檔案中介軟體會比回應壓縮中介軟體先處理靜態檔案的要求。 靜態檔案並不會以此中介軟體順序壓縮。 來自 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute*> 的 MVC 回應可壓縮。
+下列範例示範靜態檔案中介軟體在回應壓縮中介軟體之前處理靜態檔案要求之前的靜態檔案順序。 靜態檔案並不會以此中介軟體順序壓縮。 來自 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute*> 的 MVC 回應可壓縮。
 
 ```csharp
 public void Configure(IApplicationBuilder app)
 {
-    // Static files not compressed by Static Files Middleware.
+    // Static files not compressed by Static File Middleware.
     app.UseStaticFiles();
     app.UseResponseCompression();
     app.UseMvcWithDefaultRoute();

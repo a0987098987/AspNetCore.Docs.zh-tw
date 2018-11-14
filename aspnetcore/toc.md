@@ -185,6 +185,8 @@
 ## [動作傳回型別](xref:web-api/action-return-types)
 ## [格式化回應資料](xref:web-api/advanced/formatting)
 ## [自訂格式器](xref:web-api/advanced/custom-formatters)
+## [分析器](xref:web-api/advanced/analyzers)
+## [慣例](xref:web-api/advanced/conventions)
 
 # 即時應用程式
 ## [概觀](xref:signalr/introduction)

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何設定 ASP.NET Core 中的資料保護。
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/17/2017
+ms.date: 11/13/2018
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 0377fe9fbe5a1eeddb384443370751baa3c0ee43
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: 3be220df4b14ed8dbbd1fab70f46578e9408aa26
+ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46482992"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635312"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>設定 ASP.NET Core 資料保護
 
@@ -135,7 +135,14 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="setapplicationname"></a>SetApplicationName
 
-根據預設，資料保護系統隔離應用程式不會彼此，即使它們共用相同的實體索引鍵存放庫。 這可防止應用程式了解彼此的受保護的承載。 若要共用受保護的承載，兩個應用程式之間，使用[SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname)與每個應用程式相同的值：
+根據預設，資料保護系統隔離應用程式不會彼此，即使它們共用相同的實體索引鍵存放庫。 這可防止應用程式了解彼此的受保護的承載。
+
+若要共用的受保護應用程式間的承載：
+
+* 設定<xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>中具有相同值的每個應用程式。
+* 跨應用程式使用相同版本的資料保護 API 堆疊。 執行**任一**的應用程式的專案檔中的下列：
+  * 參考相同的共用的 framework 版本，透過[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
+  * 參考相同[Data Protection 套件](xref:security/data-protection/introduction#package-layout)版本。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -177,7 +184,7 @@ ASP.NET Core 主應用程式不提供資料保護系統 (例如，如果您將�
 
 資料保護堆疊可讓您變更使用新產生的索引鍵的預設演算法。 若要這樣做最簡單的方式是呼叫[UseCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecryptographicalgorithms)設定回呼：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 services.AddDataProtection()
@@ -189,7 +196,9 @@ services.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 services.AddDataProtection()
@@ -201,7 +210,7 @@ services.AddDataProtection()
     });
 ```
 
----
+::: moniker-end
 
 EncryptionAlgorithm 的預設值是 AES-256-CBC，預設 ValidationAlgorithm HMACSHA256。 透過系統管理員可以設定預設原則[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy)，但明確呼叫`UseCryptographicAlgorithms`會覆寫預設原則。
 
@@ -214,7 +223,7 @@ EncryptionAlgorithm 的預設值是 AES-256-CBC，預設 ValidationAlgorithm HMA
 
 ### <a name="specifying-custom-managed-algorithms"></a>指定受管理的自訂演算法
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 若要指定受管理的自訂演算法，建立[ManagedAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.managedauthenticatedencryptorconfiguration)指向實作類型的執行個體：
 
@@ -234,7 +243,9 @@ serviceCollection.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 若要指定受管理的自訂演算法，建立[ManagedAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.managedauthenticatedencryptionsettings)指向實作類型的執行個體：
 
@@ -254,7 +265,7 @@ serviceCollection.AddDataProtection()
     });
 ```
 
----
+::: moniker-end
 
 通常\*類型屬性必須指向實體，可具現化 （透過公用的無參數建構函式） 實作[SymmetricAlgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm)並[KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm)，不過系統特殊案例某些等值`typeof(Aes)`為了方便起見。
 
@@ -263,7 +274,7 @@ serviceCollection.AddDataProtection()
 
 ### <a name="specifying-custom-windows-cng-algorithms"></a>指定自訂的 Windows CNG 演算法
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 若要指定 HMAC 驗證搭配使用 CBC 模式加密的自訂 Windows CNG 演算法，建立[CngCbcAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration)執行個體，包含演算法的資訊：
 
@@ -285,7 +296,9 @@ services.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 若要指定 HMAC 驗證搭配使用 CBC 模式加密的自訂 Windows CNG 演算法，建立[CngCbcAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cngcbcauthenticatedencryptionsettings)執行個體，包含演算法的資訊：
 
@@ -307,12 +320,12 @@ services.AddDataProtection()
     });
 ```
 
----
+::: moniker-end
 
 > [!NOTE]
 > 對稱區塊加密演算法金鑰長度必須 > = 128 位元為單位的區塊大小 > = 64 位元，而且它必須支援使用 PKCS #7 填補的 CBC 模式加密。 雜湊演算法必須有摘要大小 > = 128 位元，且必須支援正在開啟與 BCRYPT\_ALG\_處理\_HMAC\_旗標的旗標。 \*可以設定為 null，以指定的演算法所用的預設提供者提供者屬性。 請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)文件的詳細資訊。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 若要指定使用驗證 Galois/計數器模式加密的自訂 Windows CNG 演算法，建立[CngGcmAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cnggcmauthenticatedencryptorconfiguration)執行個體，包含演算法的資訊：
 
@@ -330,7 +343,9 @@ services.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 若要指定使用驗證 Galois/計數器模式加密的自訂 Windows CNG 演算法，建立[CngGcmAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cnggcmauthenticatedencryptionsettings)執行個體，包含演算法的資訊：
 
@@ -348,7 +363,7 @@ services.AddDataProtection()
     });
 ```
 
----
+::: moniker-end
 
 > [!NOTE]
 > 對稱區塊加密演算法金鑰長度必須 > = 128 位元，區塊大小為剛好為 128 位元，而且它必須支援 GCM 加密。 您可以設定[EncryptionAlgorithmProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider)屬性設為 null 指定演算法所用的預設提供者。 請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)文件的詳細資訊。
@@ -364,7 +379,7 @@ services.AddDataProtection()
 * 是保存超過容器的存留期，例如共用的磁碟區或主應用程式掛接的磁碟區的 Docker 磁碟區的資料夾。
 * 外部提供者，例如[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)或是[Redis](https://redis.io/)。
 
-## <a name="see-also"></a>另請參閱
+## <a name="additional-resources"></a>其他資源
 
 * <xref:security/data-protection/configuration/non-di-scenarios>
 * <xref:security/data-protection/configuration/machine-wide-policy>

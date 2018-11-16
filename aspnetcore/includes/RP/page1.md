@@ -30,7 +30,7 @@ Razor 頁面衍生自 `PageModel`。 依照慣例，`PageModel` 衍生的類別�
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Pages/Movies/Create.cshtml.cs?name=snippet)]
 
-請檢查 *Pages/Movies/Index.cshtml* Razor 頁面：
+<a name="index"></a> 請檢查 *Pages/Movies/Index.cshtml* Razor 頁面：
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml)]
 
@@ -51,7 +51,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 
-`@model` 指示詞會指定傳遞至 Razor 頁面的模型類型。 在上述範例中，`@model` 行可讓 `PageModel` 衍生的類別供 Razor 頁面使用。 此模型用於頁面上的 `@Html.DisplayNameFor` 和 `@Html.DisplayName` [HTML 協助程式](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers)。
+`@model` 指示詞會指定傳遞至 Razor 頁面的模型類型。 在上述範例中，`@model` 行可讓 `PageModel` 衍生的類別供 Razor 頁面使用。 此模型用於頁面上的 `@Html.DisplayNameFor` 和 `@Html.DisplayFor` [HTML 協助程式](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers)。
 
 <!-- why don't xref links work?
 [HTML Helpers 2](xref:aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs)
@@ -106,13 +106,13 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 ```cshtml
 <a asp-page="/Index" class="navbar-brand">RazorPagesMovie</a>
 ```
-以下列標記來取代上述元素。
+以下列標記來取代上述項目。
 
 ```cshtml
 <a asp-page="/Movies/Index" class="navbar-brand">RpMovie</a>
 ```
 
-上述的錨點元素是[標記協助程式](xref:mvc/views/tag-helpers/intro)。 在此情況下，它是[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)。 `asp-page="/Movies/Index"` 標記協助程式的屬性和值會建立 `/Movies/Index` Razor 頁面的連結。
+上述的錨點項目是[標記協助程式](xref:mvc/views/tag-helpers/intro)。 在此情況下，它是[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)。 `asp-page="/Movies/Index"` 標記協助程式的屬性和值會建立 `/Movies/Index` Razor 頁面的連結。
 
 儲存變更，並按一下 **RpMovie** 連結來測試應用程式。 請參閱 GitHub 中的 [_Layout.cshtml](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Shared/_Layout.cshtml) 檔案。
 

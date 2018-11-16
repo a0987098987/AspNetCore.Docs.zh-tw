@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 6a53c1ba5badd741afc3321ce21b047965c611db
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 2b23bf8230f7a1c207ef7870da098ffb0c597fd5
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090598"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225443"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>針對 IIS 上的 ASP.NET Core 進行疑難排解
 
@@ -19,7 +19,17 @@ ms.locfileid: "50090598"
 
 本文說明以 [Internet Information Services (IIS)](/iis) 裝載 ASP.NET Core 應用程式時，如何診斷此應用程式的啟動問題。 本文中資訊適用的裝載環境是 Windows Server 和 Windows 桌面上的 IIS。
 
+::: moniker range=">= aspnetcore-2.2"
+
+在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 在本機偵錯時發生的「502.5 - 處理序失敗」或「500.30 - 啟動失敗」可以使用本主題中的建議在該位置進行疑難排解。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
 在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 在本機偵錯時發生的「502.5 處理序失敗」可以使用本主題中的建議來進行疑難排解。
+
+::: moniker-end
 
 其他疑難排解主題：
 
@@ -40,11 +50,40 @@ ms.locfileid: "50090598"
 **502.5 處理序失敗**  
 背景工作處理序失敗。 應用程式未啟動。
 
-ASP.NET Core 模組嘗試啟動背景工作處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。
+ASP.NET Core 模組嘗試啟動後端 dotnet 處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。 
+
+因為目標 ASP.NET Core 共用架構的版本不存在，導致應用程式設定錯誤是常見的失敗狀況。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。
 
 當裝載或應用程式設定錯誤造成背景工作處理序發生失敗時，會傳回 [502.5 處理序失敗] 錯誤頁面：
 
 ![顯示 [502.5 處理序失敗] 頁面的瀏覽器視窗](troubleshoot/_static/process-failure-page.png)
+
+::: moniker range=">= aspnetcore-2.2"
+
+**500.30 同處理序啟動失敗**
+
+背景工作處理序失敗。 應用程式未啟動。
+
+ASP.NET Core 模組嘗試啟動 .NET Core CLR 同處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。 
+
+因為目標 ASP.NET Core 共用架構的版本不存在，導致應用程式設定錯誤是常見的失敗狀況。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。
+
+**500.0 同處理序處理常式載入失敗**
+
+背景工作處理序失敗。 應用程式未啟動。
+
+The ASP.NET Core 模組找不到 .NET Core CLR，並尋找同處理序要求處理常式 (*aspnetcorev2_inprocess.dll*)。 請檢查︰
+
+* 應用程式以 [Microsoft.AspNetCore.Server.IIS](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IIS) NuGet 套件或 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)為目標。
+* 應用程式設為目標的 ASP.NET Core 共用架構版本有安裝在目標機器上。
+
+**500.0 跨處理序處理常式載入失敗**
+
+背景工作處理序失敗。 應用程式未啟動。
+
+ASP.NET Core 模組找不到跨處理序裝載要求處理常式。 請確定 *aspnetcorev2_outofprocess.dll* 出現在子資料夾中，且位於 *aspnetcorev2.dll* 旁。 
+
+::: moniker-end
 
 **500 內部伺服器錯誤**  
 應用程式啟動，但有錯誤導致伺服器無法完成要求。

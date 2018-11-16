@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 0d167f779f9dcae6b0d946dce5e341793daf43bf
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: ca86b1548c7c28a64fd391617b2e8290c1c264cf
+ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091011"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51191356"
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET Core 模組設定參考
 
-作者：[Luke Latham](https://github.com/guardrex)[Rick Anderson](https://twitter.com/RickAndMSFT)及 [Sourabh Shirhatti](https://twitter.com/sshirhatti)
+作者：[Luke Latham](https://github.com/guardrex)、[Rick Anderson](https://twitter.com/RickAndMSFT)、[Sourabh Shirhatti](https://twitter.com/sshirhatti) 及 [Justin Kotalik](https://github.com/jkotalik)
 
 本文說明如何設定 ASP.NET Core 模組來裝載 ASP.NET Core 應用程式。 如需 ASP.NET Core 模組簡介及安裝指示，請參閱 [ASP.NET Core 模組概觀](xref:fundamentals/servers/aspnet-core-module)。
 
@@ -27,11 +27,11 @@ ms.locfileid: "50091011"
 
 現有的應用程式可以選擇同處理序裝載，但 [dotnet new](/dotnet/core/tools/dotnet-new) 範本預設會針對所有 IIS 和 IIS Express 案例使用同處理序裝載模型。
 
-若要設定同處理序裝載的應用程式，請將 `<AspNetCoreModuleHostingModel>` 屬性新增至應用程式的專案檔，其值為 `inprocess` (跨處理序裝載是使用 `outofprocess` 設定)：
+若要設定同處理序裝載的應用程式，請將 `<AspNetCoreHostingModel>` 屬性新增至應用程式的專案檔 (例如 *MyApp.csproj*)，且其值為 `inprocess` (跨處理序裝載是使用 `outofprocess` 設定)：
 
 ```xml
 <PropertyGroup>
-  <AspNetCoreModuleHostingModel>inprocess</AspNetCoreModuleHostingModel>
+  <AspNetCoreHostingModel>inprocess</AspNetCoreHostingModel>
 </PropertyGroup>
 ```
 
@@ -51,6 +51,8 @@ ms.locfileid: "50091011"
 
 * 偵測到用戶端中斷連線。 用戶端中斷連線時，會取消 [HttpContext.RequestAborted](xref:Microsoft.AspNetCore.Http.HttpContext.RequestAborted*) 取消權杖。
 
+* `Directory.GetCurrentDirectory()` 會傳回 IIS 所啟動處理序的背景工作目錄，而非應用程式目錄 (例如 *w3wp.exe*為 *C:\Windows\System32\inetsrv*)。
+
 ### <a name="hosting-model-changes"></a>裝載模型變更
 
 如果 `hostingModel` 設定在 *web.config* 檔案中已有所變更 (如[使用 web.config 進行設定](#configuration-with-webconfig)一節中所說明)，模組會回收 IIS 的工作者處理序。
@@ -59,7 +61,7 @@ ms.locfileid: "50091011"
 
 ### <a name="process-name"></a>處理序名稱
 
-`Process.GetCurrentProcess().ProcessName` 會報告 `w3wp` (同處理序) 或 `dotnet` (跨處理序)。
+`Process.GetCurrentProcess().ProcessName` 會報告 `w3wp`/`iisexpress` (同處理序) 或 `dotnet` (跨處理序)。
 
 ::: moniker-end
 
@@ -74,16 +76,18 @@ ms.locfileid: "50091011"
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
-  <system.webServer>
-    <handlers>
-      <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
-    </handlers>
-    <aspNetCore processPath="dotnet" 
-                arguments=".\MyApp.dll" 
-                stdoutLogEnabled="false" 
-                stdoutLogFile=".\logs\stdout" 
-                hostingModel="inprocess" />
-  </system.webServer>
+  <location path="." inheritInChildApplications="false">
+    <system.webServer>
+      <handlers>
+        <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+      </handlers>
+      <aspNetCore processPath="dotnet" 
+                  arguments=".\MyApp.dll" 
+                  stdoutLogEnabled="false" 
+                  stdoutLogFile=".\logs\stdout" 
+                  hostingModel="inprocess" />
+    </system.webServer>
+  </location>
 </configuration>
 ```
 
@@ -115,15 +119,17 @@ ms.locfileid: "50091011"
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
-  <system.webServer>
-    <handlers>
-      <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
-    </handlers>
-    <aspNetCore processPath=".\MyApp.exe" 
-                stdoutLogEnabled="false" 
-                stdoutLogFile=".\logs\stdout" 
-                hostingModel="inprocess" />
-  </system.webServer>
+  <location path="." inheritInChildApplications="false">
+    <system.webServer>
+      <handlers>
+        <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+      </handlers>
+      <aspNetCore processPath=".\MyApp.exe" 
+                  stdoutLogEnabled="false" 
+                  stdoutLogFile=".\logs\stdout" 
+                  hostingModel="inprocess" />
+    </system.webServer>
+  </location>
 </configuration>
 ```
 
@@ -266,13 +272,25 @@ ms.locfileid: "50091011"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-僅適用於跨處理序裝載。
+同處理序及跨處理序裝載無法啟動應用程式時，兩者皆會產生自訂錯誤頁面。
+
+若 ASP.NET Core 模組找不到同處理序或跨處理序要求處理常式時，就會顯示 [500.0 - 同處理序/跨處理序處理常式載入失敗] 狀態碼頁面。
+
+對於同處理序裝載，若 ASP.NET Core 模組無法啟動應用程式，就會顯示 [500.30 - 啟動失敗] 狀態碼頁面。
+
+對於跨處理序裝載，若 ASP.NET Core 模組無法啟動後端處理序，或後端處理序啟動但無法在所設定的連接埠上進行接聽，就會顯示 [502.5 - 處理序失敗] 狀態碼頁面。
+
+若要避免此頁面產生並還原至預設的 IIS 5xx 狀態碼頁面，請使用 `disableStartUpErrorPage` 屬性。 如需有關設定自訂錯誤訊息的詳細資訊，請參閱 [HTTP 錯誤 &lt;httpErrors&gt;](/iis/configuration/system.webServer/httpErrors/)。
 
 ::: moniker-end
 
-如果 ASP.NET Core 模組無法啟動後端處理序，或後端處理序啟動但無法在所設定的連接埠上進行接聽，就會顯示 [502.5 - 處理序失敗] 狀態碼頁面。 若要抑制此頁面並還原至預設的 IIS 502 狀態碼頁面，請使用 `disableStartUpErrorPage` 屬性。 如需有關設定自訂錯誤訊息的詳細資訊，請參閱 [HTTP 錯誤`<httpErrors>`](/iis/configuration/system.webServer/httpErrors/)。
+::: moniker range="< aspnetcore-2.2"
+
+如果 ASP.NET Core 模組無法啟動後端處理序，或後端處理序啟動但無法在所設定的連接埠上進行接聽，就會顯示 [502.5 - 處理序失敗] 狀態碼頁面。 若要抑制此頁面並還原至預設的 IIS 502 狀態碼頁面，請使用 `disableStartUpErrorPage` 屬性。 如需有關設定自訂錯誤訊息的詳細資訊，請參閱 [HTTP 錯誤 &lt;httpErrors&gt;](/iis/configuration/system.webServer/httpErrors/)。
 
 ![502.5 處理序失敗狀態碼頁面](aspnet-core-module/_static/ANCM-502_5.png)
+
+::: moniker-end
 
 ## <a name="log-creation-and-redirection"></a>記錄檔建立和重新導向
 
@@ -283,6 +301,12 @@ ms.locfileid: "50091011"
 建議只有在進行應用程式啟動問題疑難排解時，才使用 stdout 記錄檔。 請勿將 stdout 記錄檔用來進行一般應用程式記錄。 針對 ASP.NET Core 應用程式中的例行性記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
 建立記錄檔時，系統會自動新增時間戳記和副檔名。 記錄檔名稱會藉由將時間戳記、處理序識別碼及副檔名 (*.log*) 以底線分隔並附加至 `stdoutLogFile` 路徑的最後一個區段 (通常是 *stdout*) 來組成。 如果 `stdoutLogFile` 路徑的結尾是 *stdout*，則在 2018 年 2 月 5 日 19:42:32 建立且 PID 為 1934 的應用程式記錄檔檔案名稱會是 *stdout_20180205194132_1934.log*。
+
+::: moniker range=">= aspnetcore-2.2"
+
+若 `stdoutLogEnabled` 為 false，會擷取在應用程式啟動時發生的錯誤，並發出最大 30KB 的事件記錄檔。 啟動之後，就會捨棄其他的記錄檔。
+
+::: moniker-end
 
 下列範例 `aspNetCore` 元素會設定 Azure App Service 中所裝載應用程式的 stdout 記錄。 系統可接受使用本機路徑或網路共用路徑來進行本機記錄。 請確認 AppPool 使用者身分識別具備所提供路徑的寫入權限。
 
@@ -399,11 +423,27 @@ ASP.NET Core 模組安裝程式會以 **SYSTEM** 帳戶的權限執行。 由於
 
    * %windir%\SysWOW64\inetsrv\aspnetcore.dll
 
+::: moniker range=">= aspnetcore-2.2"
+
+   * %ProgramFiles%\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll
+
+   * %ProgramFiles(x86)%\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll
+
+::: moniker-end
+
 **IIS Express (x86/amd64)：**
 
    * %ProgramFiles%\IIS Express\aspnetcore.dll
 
    * %ProgramFiles(x86)%\IIS Express\aspnetcore.dll
+
+::: moniker range=">= aspnetcore-2.2"
+
+   * %ProgramFiles%\IIS Express\Asp.Net Core Module\V2\aspnetcorev2.dll
+
+   * %ProgramFiles(x86)%\IIS Express\Asp.Net Core Module\V2\aspnetcorev2.dll
+
+::: moniker-end
 
 ### <a name="schema"></a>結構描述
 
@@ -411,9 +451,20 @@ ASP.NET Core 模組安裝程式會以 **SYSTEM** 帳戶的權限執行。 由於
 
    * %windir%\System32\inetsrv\config\schema\aspnetcore_schema.xml
 
+::: moniker range=">= aspnetcore-2.2"
+
+   * %windir%\System32\inetsrv\config\schema\aspnetcore_schema_v2.xml
+
+::: moniker-end
 **IIS Express**
 
    * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema.xml
+
+::: moniker range=">= aspnetcore-2.2"
+
+   * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema_v2.xml
+
+::: moniker-end
 
 ### <a name="configuration"></a>Configuration
 
@@ -423,6 +474,6 @@ ASP.NET Core 模組安裝程式會以 **SYSTEM** 帳戶的權限執行。 由於
 
 **IIS Express**
 
-   * .vs\config\applicationHost.config
+   * %ProgramFiles%\IIS Express\config\templates\PersonalWebServer\applicationHost.config
 
-在 *applicationHost.config* 檔案中搜尋 *aspnetcore.dll*，即可找到這些檔案。 針對 IIS Express，*applicationHost.config* 檔案預設並不存在。 啟動 Visual Studio 方案中的任何 Web 應用程式專案時，便會在 *\<application_root>\\.vs\\config* 建立該檔案。
+在 *applicationHost.config* 檔案中搜尋 *aspnetcore*，即可找到這些檔案。

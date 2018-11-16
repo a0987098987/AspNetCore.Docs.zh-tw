@@ -3,14 +3,15 @@ title: ASP.NET Core 中的 Facebook 外部登入設定
 author: rick-anderson
 description: 本教學課程示範如何整合到現有的 ASP.NET Core 應用程式的 Facebook 帳戶使用者驗證。
 ms.author: riande
-ms.date: 08/01/2017
+ms.custom: mvc
+ms.date: 11/11/2018
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 3ba6fe7785afa268e54e6032f1963c1867f6bb27
-ms.sourcegitcommit: 74c09caec8992635825b45b7f065f871d33c077a
+ms.openlocfilehash: e8ae16538b5d6844af7d983071fad629ebbe6217
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42634805"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708500"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Facebook 外部登入設定
 
@@ -28,19 +29,19 @@ ms.locfileid: "42634805"
 
 * 填寫表單，然後點選**建立應用程式識別碼** 按鈕。
 
-   ![建立新的應用程式識別碼的表單](index/_static/FBNewAppId.png)
+  ![建立新的應用程式識別碼的表單](index/_static/FBNewAppId.png)
 
 * 在 **選取的產品**頁面上，按一下**設定**上**Facebook 登入**卡。
 
-   ![產品 [安裝] 頁面](index/_static/FBProductSetup.png)
+  ![產品 [安裝] 頁面](index/_static/FBProductSetup.png)
 
 * **快速入門**精靈將會啟動具有**選擇平台**做的第一頁。 現在略過精靈，依序按一下**設定**在左側功能表中的連結：
 
-   ![略過快速入門](index/_static/FBSkipQuickStart.png)
+  ![略過快速入門](index/_static/FBSkipQuickStart.png)
 
 * 您會看到**用戶端 OAuth 設定**頁面：
 
-![用戶端 OAuth 設定 頁面](index/_static/FBOAuthSetup.png)
+  ![用戶端 OAuth 設定 頁面](index/_static/FBOAuthSetup.png)
 
 * 輸入您的開發 URI 與 */signin-facebook*附加至**有效的 OAuth 重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-facebook`)。 稍後在本教學課程中設定 Facebook 驗證會自動處理在要求 */signin-facebook*實作 OAuth 流程的路由。
 
@@ -49,10 +50,9 @@ ms.locfileid: "42634805"
 
 * 按一下 **儲存變更**。
 
-* 按一下 **設定 > 基本**在左側導覽中的連結。 
+* 按一下 **設定** > **基本**在左側導覽中的連結。
 
-    在此頁面上，記下您`App ID`和您`App Secret`。 您會新增至 ASP.NET Core 應用程式下一節：
-
+  在此頁面上，記下您`App ID`和您`App Secret`。 您會新增至 ASP.NET Core 應用程式下一節：
 
 * 部署站台時，您必須先討論一下**Facebook 登入**安裝頁面，並註冊新的公用 URI。
 
@@ -69,7 +69,7 @@ dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
 
 ## <a name="configure-facebook-authentication"></a>設定 Facebook 驗證
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 將 Facebook 服務中的新增`ConfigureServices`方法中的*Startup.cs*檔案：
 
@@ -87,9 +87,11 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
 
-[!INCLUDE[](~/includes/chain-auth-providers.md)]
+[!INCLUDE[](includes/chain-auth-providers.md)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 安裝[Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook)封裝。
 
@@ -108,7 +110,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 });
 ```
 
----
+::: moniker-end
 
 請參閱[FacebookOptions](/dotnet/api/microsoft.aspnetcore.builder.facebookoptions) Facebook 驗證所支援的組態選項的詳細資訊的 API 參考。 組態選項可以用來：
 
@@ -134,6 +136,8 @@ Facebook 驗證會要求預設公用設定檔和電子郵件地址：
 您現在用來登入您的 Facebook 認證：
 
 ![Web 應用程式： 驗證使用者](index/_static/Done.png)
+
+[!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="troubleshooting"></a>疑難排解
 

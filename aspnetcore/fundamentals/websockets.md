@@ -5,14 +5,14 @@ description: 了解如何在 ASP.NET Core 中開始使用 WebSocket。
 monikerRange: '>= aspnetcore-1.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 06/28/2018
+ms.date: 11/06/2018
 uid: fundamentals/websockets
-ms.openlocfilehash: b0f1aeff6c7a5777993459274293ba23f2d9dc12
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 3a649f88699d61636d9aa7fbfe4468ca67b3b018
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206736"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225404"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core 中的 WebSockets 支援
 
@@ -72,10 +72,24 @@ ms.locfileid: "50206736"
 
 ::: moniker-end
 
+::: moniker range="< aspnetcore-2.2"
+
 您可以設定下列設定：
 
-* `KeepAliveInterval` - 要將 "ping" 框架傳送到用戶端，以確保 Proxy 保持連線開啟的頻率。
-* `ReceiveBufferSize` - 用來接收資料的緩衝區大小。 進階使用者可能需要變更此設定，以便根據資料的大小進行效能調整。
+* `KeepAliveInterval` - 要將 "ping" 框架傳送到用戶端，以確保 Proxy 保持連線開啟的頻率。 預設為兩分鐘。
+* `ReceiveBufferSize` - 用來接收資料的緩衝區大小。 進階使用者可能需要變更此設定，以便根據資料的大小進行效能調整。 預設為 4 KB。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+您可以設定下列設定：
+
+* `KeepAliveInterval` - 要將 "ping" 框架傳送到用戶端，以確保 Proxy 保持連線開啟的頻率。 預設為兩分鐘。
+* `ReceiveBufferSize` - 用來接收資料的緩衝區大小。 進階使用者可能需要變更此設定，以便根據資料的大小進行效能調整。 預設為 4 KB。
+* `AllowedOrigins` - WebSocket 要求之允許 Origin 標頭值的清單。 根據預設，會允許所有來源。 如需詳細資訊，請參閱下方的 "WebSocket origin restriction" (WebSocket 來源限制)。
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -128,6 +142,32 @@ WebSocket 要求可以傳入任何 URL，但此範例程式碼只接受 `/ws` �
 ::: moniker-end
 
 如果在開始此迴圈之前接受 WebSocket 連線，中介軟體管線就會結束。 在關閉通訊端後，管線會回溯。 也就是說，在接受 WebSocket 後，要求就會在管線中停止向前移動。 當迴圈完成且通訊端關閉時，要求會繼續備份管線。
+
+::: moniker range=">= aspnetcore-2.2"
+
+### <a name="websocket-origin-restriction"></a>WebSocket 來源限制
+
+CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
+
+* 執行 CORS 的事前要求。
+* 進行 WebSocket 要求時，採用 `Access-Control` 標頭中所指定的限制。
+
+不過，瀏覽器會在發出 WebSocket 要求時，傳送 `Origin` 標頭。 應設定應用程式驗證這些標頭，以確保只允許來自預期來源的 WebSocket。
+
+若您在 "https://server.com" 上裝載伺服器，且在 "https://client.com" 上裝載用戶端，請將 "https://client.com" 新增至 `AllowedOrigins` 清單中，以讓 WebSockets 進行驗證。
+
+```csharp
+app.UseWebSockets(new WebSocketOptions()
+{
+    AllowedOrigins.Add("https://client.com");
+    AllowedOrigins.Add("https://www.client.com");
+});
+```
+
+> [!NOTE]
+> 因為 `Origin` 由用戶端控制，所以和 `Referer` 標頭一樣可能受到偽造。 **請勿**使用這些標頭作為驗證機制。
+
+::: moniker-end
 
 ## <a name="iisiis-express-support"></a>IIS/IIS Express 支援
 

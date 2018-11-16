@@ -5,14 +5,14 @@ description: 了解如何建立額外的宣告並從外部提供者的權杖。
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/28/2018
+ms.date: 11/11/2018
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: dc8b3e32141466a12e4eff0c86d2d4bed689afe5
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9a24ac138950ef2bedac48f506655d06520137cf
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206353"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708357"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>保存其他的宣告與 ASP.NET Core 中的外部提供者的權杖
 
@@ -22,13 +22,11 @@ ms.locfileid: "50206353"
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisite"></a>必要條件
+## <a name="prerequisites"></a>必要條件
 
 決定哪些應用程式中支援的外部驗證提供者。 每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端祕密。 如需詳細資訊，請參閱<xref:security/authentication/social/index>。 [範例應用程式](#sample-app-instructions)會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
 
-## <a name="authentication-provider-configuration"></a>驗證提供者組態
-
-### <a name="set-the-client-id-and-client-secret"></a>設定用戶端識別碼和用戶端祕密
+## <a name="set-the-client-id-and-client-secret"></a>設定用戶端識別碼和用戶端祕密
 
 OAuth 驗證提供者會建立信任關係，使用用戶端識別碼和用戶端祕密應用程式。 用戶端識別碼和用戶端密碼值會針對應用程式外部驗證提供者所使用的提供者註冊應用程式時。 應用程式使用每個外部提供者必須獨立設定，提供者的用戶端識別碼和用戶端祕密。 如需詳細資訊，請參閱適用於您案例的外部驗證提供者主題：
 
@@ -43,7 +41,7 @@ OAuth 驗證提供者會建立信任關係，使用用戶端識別碼和用戶�
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=4,6)]
 
-### <a name="establish-the-authentication-scope"></a>建立驗證範圍
+## <a name="establish-the-authentication-scope"></a>建立驗證範圍
 
 指定從提供者擷取所指定的權限清單<xref:Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Scope*>。 常見的外部提供者的驗證領域會出現在下表中。
 
@@ -58,7 +56,7 @@ OAuth 驗證提供者會建立信任關係，使用用戶端識別碼和用戶�
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=7)]
 
-### <a name="map-user-data-keys-and-create-claims"></a>將使用者資料的索引鍵對應，並建立宣告
+## <a name="map-user-data-keys-and-create-claims"></a>將使用者資料的索引鍵對應，並建立宣告
 
 在 提供者的選項，指定<xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.MapJsonKey*>每個索引鍵的外部提供者的 JSON 使用者資料，來讀取登入的應用程式身分識別。 如需有關宣告類型的詳細資訊，請參閱<xref:System.Security.Claims.ClaimTypes>。
 
@@ -72,7 +70,7 @@ OAuth 驗證提供者會建立信任關係，使用用戶端識別碼和用戶�
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=30-31)]
 
-### <a name="save-the-access-token"></a>儲存存取權杖
+## <a name="save-the-access-token"></a>儲存存取權杖
 
 <xref:Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.SaveTokens*> 定義存取和重新整理權杖是否應該儲存在<xref:Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties>成功授權之後。 `SaveTokens` 設定為`false`預設情況下，以減少最終的驗證 cookie 的大小。
 
@@ -93,7 +91,7 @@ OAuth 驗證提供者會建立信任關係，使用用戶端識別碼和用戶�
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnGetCallbackAsync&highlight=31-32)]
 
-### <a name="how-to-add-additional-custom-tokens"></a>如何新增額外的自訂權杖
+## <a name="how-to-add-additional-custom-tokens"></a>如何新增額外的自訂權杖
 
 若要示範如何新增自訂權杖，它會儲存為一部分`SaveTokens`，範例應用程式會新增<xref:Microsoft.AspNetCore.Authentication.AuthenticationToken>與目前<xref:System.DateTime>如[AuthenticationToken.Name](xref:Microsoft.AspNetCore.Authentication.AuthenticationToken.Name*)的`TicketCreated`:
 
@@ -143,3 +141,5 @@ Authentication Properties
 .expires
     Mon, 10 Sep 2018 18:08:05 GMT
 ```
+
+[!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]

@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/06/2018
 uid: web-api/index
-ms.openlocfilehash: 010c437afc494fa4426f6922421afac46bbf6b39
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: 7541c4c308deaecda0bda9a9c77d9372b65a5100
+ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225430"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635293"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建置 Web API
 
@@ -23,7 +23,7 @@ ms.locfileid: "51225430"
 
 ## <a name="derive-class-from-controllerbase"></a>來自 ControllerBase 的衍生類別
 
-繼承自用作為 Web API 的控制器中之 <xref:Microsoft.AspNetCore.Mvc.ControllerBase> 類別。 例如: 
+繼承自用作為 Web API 的控制器中之 <xref:Microsoft.AspNetCore.Mvc.ControllerBase> 類別。 例如：
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -41,9 +41,9 @@ ms.locfileid: "51225430"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-## <a name="annotation-with-apicontrollerattribute"></a>使用 ApiControllerAttribute 標註
+## <a name="annotation-with-apicontroller-attribute"></a>使用 ApiController 屬性的註釋
 
-ASP.NET Core 2.1 新增了 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) 屬性代表 Web API 控制器類別。 例如: 
+ASP.NET Core 2.1 新增了 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) 屬性代表 Web API 控制器類別。 例如：
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_ControllerSignature&highlight=2)]
 
@@ -193,7 +193,7 @@ services.AddMvc()
 
 ### <a name="attribute-routing-requirement"></a>屬性路由需求
 
-屬性路由已變成必要項目。 例如: 
+屬性路由已變成必要項目。 例如：
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_ControllerSignature&highlight=1)]
 
@@ -214,7 +214,7 @@ services.AddMvc()
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.22/Controllers/ProductsController.cs?name=snippet_ProblemDetailsStatusCode)]
 
-`NotFound` 的 HTTP 回應具有 404 狀態碼，並附有 `ProblemDetails` 本文。 例如: 
+`NotFound` 的 HTTP 回應具有 404 狀態碼，並附有 `ProblemDetails` 本文。 例如：
 
 ```json
 {

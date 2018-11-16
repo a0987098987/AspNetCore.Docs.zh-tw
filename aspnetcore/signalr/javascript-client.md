@@ -5,14 +5,14 @@ description: ASP.NET Core SignalR JavaScript 用戶端的概觀。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 08/14/2018
+ms.date: 11/14/2018
 uid: signalr/javascript-client
-ms.openlocfilehash: 02844c35d1933d36576c25ff335a572fb65eff5c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 7de7abd7176e160154a458a3b90f662ba8f47f8c
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50208014"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708383"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 
@@ -98,6 +98,17 @@ SignalR 透過比對 `SendAsync` 與 `connection.on` 中定義的方法名稱與
 使用[configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging)方法[HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder)設定記錄層級。 訊息會記錄到瀏覽器主控台。
 
 [!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=9-12)]
+
+## <a name="reconnect-clients"></a>重新連線用戶端
+
+SignalR 的 JavaScript 用戶端不會自動重新連線。 您必須撰寫程式碼會以手動方式重新連接您的用戶端。 下列程式碼示範一個典型的重新連線的方法：
+
+1. 函式 (在此情況下，`start`函式) 建立以啟動的連線。
+1. 呼叫`start`函式中的連線`onclose`事件處理常式。
+
+[!code-javascript[Reconnect the JavaScript client](javascript-client/sample/wwwroot/js/chat.js?range=30-42)]
+
+真實世界實作會使用指數退避法，或指定的次數後放棄重試一次。 
 
 ## <a name="additional-resources"></a>其他資源
 

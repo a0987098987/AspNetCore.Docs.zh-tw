@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何使用選項模式來代表 ASP.NET Core 應用程式中的一組相關設定。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/28/2017
+ms.date: 11/09/2018
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 359bd438066aefcf572c91dacee99e85c0f10b1a
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 99aa5028a8704c7e9e3010415137e2560213a2ad
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207351"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505788"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -252,7 +252,7 @@ named_options_2: option1 = named_options_2_value1_from_action, option2 = 5
 
 ## <a name="configure-all-options-with-the-configureall-method"></a>使用 ConfigureAll 方法設定所有選項
 
-使用 [OptionsServiceCollectionExtensions.ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) 方法設定所有選項執行個體。 下列程式碼會為具有共通值的所有設定執行個體設定 `Option1`。 將下列程式碼手動新增至 `Configure` 方法：
+使用 [OptionsServiceCollectionExtensions.ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) 方法設定所有選項執行個體。 下列程式碼會為具有共通值的所有設定執行個體設定 `Option1`。 將下列程式碼手動新增至 `ConfigureServices` 方法：
 
 ```csharp
 services.ConfigureAll<MyOptions>(myOptions => 
@@ -270,6 +270,35 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 
 > [!NOTE]
 > 所有選項都是具名執行個體。 現有的 `IConfigureOption` 執行個體會視為以 `Options.DefaultName` 執行個體為目標，也就是 `string.Empty`。 `IConfigureNamedOptions` 也會實作 `IConfigureOptions`。 [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) 的預設實作 ([參考來源](https://github.com/aspnet/Options/blob/release/2.0/src/Microsoft.Extensions.Options/IOptionsFactory.cs)) 有邏輯可適當地使用每一個。 `null` 具名選項用來以所有具名執行個體為目標，而不是特定的具名執行個體 ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) 和 [PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) 使用此慣例)。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+## <a name="optionsbuilder-api"></a>OptionsBuilder API
+
+<xref:Microsoft.Extensions.Options.OptionsBuilder`1> 會用於設定 `TOptions` 執行個體。 因為 `OptionsBuilder` 僅為初始 `AddOptions<TOptions>(string optionsName)` 呼叫的單一參數，而不是出現在所有後續呼叫的參數，所以其可簡化建立具名選項的程序。 選項驗證及接受服務依存性的 `ConfigureOptions` 多載，只可透過 `OptionsBuilder` 使用。
+
+```csharp
+// Options.DefaultName = "" is used.
+services.AddOptions<MyOptions>().Configure(o => o.Property = "default");
+    
+services.AddOptions<MyOptions>("optionalName")
+    .Configure(o => o.Property = "named");
+```
+
+## <a name="configurelttoptions-tdep1--tdep4gt-method"></a>設定 &lt;TOptions, TDep1, ...TDep4&gt; 方法
+
+透過以未定案的方式實作 `IConfigure[Named]Options`，來使用從 DI 到設定選項的服務是多餘的。 `OptionsBuilder<TOptions>`上 `ConfigureOptions` 的多載可讓您使用最多五個服務來設定選項：
+
+```csharp
+services.AddOptions<MyOptions>("optionalName")
+    .Configure<Service1, Service2, Service3, Service4, Service5>(
+        (o, s, s2, s3, s4, s5) => 
+            o.Property = DoSomethingWith(s, s2, s3, s4, s5));
+```
+
+多載會註冊暫時性泛型 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions`1>，其具有會接受所指定泛型服務類型的建構函式。 
 
 ::: moniker-end
 
@@ -329,7 +358,49 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-積極式驗證 (在啟動時快速檢錯) 和資料註解驗證已排定將在未來發行。
+透過呼叫 `OptionsBuilder<TOptions>` 上的 `ValidateDataAnnotations` 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證：
+
+```csharp
+private class AnnotatedOptions
+{
+    [Required]
+    public string Required { get; set; }
+
+    [StringLength(5, ErrorMessage = "Too long.")]
+    public string StringLength { get; set; }
+
+    [Range(-5, 5, ErrorMessage = "Out of range.")]
+    public int IntRange { get; set; }
+}
+    
+[Fact]
+public void CanValidateDataAnnotations()
+{
+    var services = new ServiceCollection();
+    services.AddOptions<AnnotatedOptions>()
+        .Configure(o =>
+        {
+            o.StringLength = "111111";
+            o.IntRange = 10;
+            o.Custom = "nowhere";
+        })
+        .ValidateDataAnnotations();
+
+    var sp = services.BuildServiceProvider();
+
+    var error = Assert.Throws<OptionsValidationException>(() => 
+        sp.GetRequiredService<IOptions<AnnotatedOptions>>().Value);
+    ValidateFailure<AnnotatedOptions>(error, Options.DefaultName, 1,
+        "DataAnnotation validation failed for members Required " +
+            "with the error 'The Required field is required.'.",
+        "DataAnnotation validation failed for members StringLength " +
+            "with the error 'Too long.'.",
+        "DataAnnotation validation failed for members IntRange " +
+            "with the error 'Out of range.'.");
+}    
+```
+
+我們考慮在之後的版本中加入積極式驗證 (啟動時快速檢錯)。
 
 ::: moniker-end
 

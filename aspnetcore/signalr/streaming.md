@@ -5,14 +5,14 @@ description: ''
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 11/14/2018
 uid: signalr/streaming
-ms.openlocfilehash: 70f12999b7f4230147b9ea43f6f7730b0816c43a
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 6d5f707bd2a37e1999c6e87e3cfc369aa0301207
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206384"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708435"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>使用資料流在 ASP.NET Core SignalR
 
@@ -29,14 +29,33 @@ ASP.NET Core SignalR 支援資料流的伺服器方法的傳回值。 這是適�
 > [!NOTE]
 > 寫入`ChannelReader`在背景執行緒，然後傳回`ChannelReader`儘速。 其他中樞引動過程將會遭到封鎖，直到`ChannelReader`會傳回。
 
-[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.cs?range=10-34)]
+::: moniker range="= aspnetcore-2.1"
+
+[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.aspnetcore21.cs?range=12-36)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.cs?range=11-35)]
+
+> [!NOTE]
+> 在 ASP.NET Core 2.2 或更新版本，串流處理中樞方法可以接受`CancellationToken`從資料流的用戶端取消訂閱時，會觸發的參數。 若要停止伺服器作業，並釋放任何資源，如果用戶端中斷連線的資料流結束前使用此權杖。
+
+::: moniker-end
 
 ## <a name="net-client"></a>.NET 用戶端
 
 `StreamAsChannelAsync`方法`HubConnection`用來叫用的資料流的方法。 將中樞方法的名稱和定義中的中樞方法的引數傳遞`StreamAsChannelAsync`。 泛型參數上的`StreamAsChannelAsync<T>`指定的資料流的方法所傳回的物件類型。 A`ChannelReader<T>`傳回的資料流引動過程，和代表用戶端上的資料流。 若要讀取資料，常見的模式是迴圈`WaitToReadAsync`並呼叫`TryRead`可用資料時。 資料流已關閉伺服器，或取消語彙基元傳遞至時，將會結束迴圈`StreamAsChannelAsync`已取消。
 
+::: moniker range=">= aspnetcore-2.2"
+
 ```csharp
-var channel = await hubConnection.StreamAsChannelAsync<int>("Counter", 10, 500, CancellationToken.None);
+// Call "Cancel" on this CancellationTokenSource to send a cancellation message to 
+// the server, which will trigger the corresponding token in the Hub method.
+var cancellationTokenSource = new CancellationTokenSource();
+var channel = await hubConnection.StreamAsChannelAsync<int>(
+    "Counter", 10, 500, cancellationTokenSource.Token);
 
 // Wait asynchronously for data to become available
 while (await channel.WaitToReadAsync())
@@ -51,6 +70,29 @@ while (await channel.WaitToReadAsync())
 Console.WriteLine("Streaming completed");
 ```
 
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
+
+```csharp
+var channel = await hubConnection
+    .StreamAsChannelAsync<int>("Counter", 10, 500, CancellationToken.None);
+
+// Wait asynchronously for data to become available
+while (await channel.WaitToReadAsync())
+{
+    // Read all currently available data synchronously, before waiting for more data
+    while (channel.TryRead(out var count))
+    {
+        Console.WriteLine($"{count}");
+    }
+}
+
+Console.WriteLine("Streaming completed");
+```
+
+::: moniker-end
+
 ## <a name="javascript-client"></a>JavaScript 用戶端
 
 JavaScript 用戶端呼叫中樞上資料流的方法，使用`connection.stream`。 `stream` 方法接受兩個引數：
@@ -62,7 +104,17 @@ JavaScript 用戶端呼叫中樞上資料流的方法，使用`connection.stream
 
 [!code-javascript[Streaming javascript](streaming/sample/wwwroot/js/stream.js?range=19-36)]
 
+::: moniker range="= aspnetcore-2.1"
+
 若要結束用戶端從資料流，呼叫`dispose`方法`ISubscription`傳回`subscribe`方法。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+若要結束用戶端從資料流，呼叫`dispose`方法`ISubscription`傳回`subscribe`方法。 呼叫這個方法會造成`CancellationToken`參數 （如果您提供一個） 之中樞方法的取消。
+
+::: moniker-end
 
 ## <a name="related-resources"></a>相關資源
 

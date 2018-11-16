@@ -4,20 +4,20 @@ author: scottaddie
 description: 了解如何在 ASP.NET Core 應用程式中實作資源為基礎的授權，Authorize 屬性不敷使用時。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/07/2017
+ms.date: 11/15/2018
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 2cb3844a38f7482c27fb471343109d51a516ea20
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 6a163caa26b277fbee6b9d61f8f1d16a60c75b03
+ms.sourcegitcommit: d3392f688cfebc1f25616da7489664d69c6ee330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206692"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51818365"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的資源為基礎的授權
 
 授權策略取決於所存取之資源。 請考慮具有 [作者] 內容的文件。 只有作者都可以更新文件。 因此，文件必須從擷取的資料存放區才能進行授權的評估。
 
-資料繫結前後執行動作的文件載入的頁面處理常式之前，就會發生屬性評估。 基於這些理由，使用宣告式授權`[Authorize]`屬性不敷使用。 相反地，您可以叫用自訂的授權方法&mdash;樣式，稱為必要授權。
+資料繫結之前和在頁面處理常式或載入的文件的動作執行之前，就會發生屬性評估。 基於這些理由，使用宣告式授權`[Authorize]`屬性不敷使用。 相反地，您可以叫用自訂的授權方法&mdash;又稱為樣式*命令式授權*。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
@@ -31,7 +31,7 @@ ms.locfileid: "50206692"
 
 `IAuthorizationService` 有兩個`AuthorizeAsync`方法多載︰ 一個接受資源的原則名稱和其他接受資源和一份需求來評估。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user,
@@ -42,7 +42,9 @@ Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user,
                           string policyName);
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 ```csharp
 Task<bool> AuthorizeAsync(ClaimsPrincipal user,
@@ -53,7 +55,7 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
                           string policyName);
 ```
 
----
+::: moniker-end
 
 <a name="security-authorization-resource-based-imperative"></a>
 
@@ -62,31 +64,39 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 > [!NOTE]
 > 下列範例假設已在執行驗證的程式碼及組`User`屬性。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/Edit.cshtml.cs?name=snippet_DocumentEditHandler)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentEditAction)]
 
----
+::: moniker-end
 
 ## <a name="write-a-resource-based-handler"></a>撰寫資源為基礎的處理常式
 
-資源為基礎的授權並不太大差異比撰寫處理常式[撰寫的一般需求處理常式](xref:security/authorization/policies#security-authorization-policies-based-authorization-handler)。 建立自訂需求類別，並實作需求處理常式類別。 處理常式類別指定需求和資源類型。 例如，處理常式利用`SameAuthorRequirement`需求和`Document`資源看起來像這樣：
+資源為基礎的授權並不太大差異比撰寫處理常式[撰寫的一般需求處理常式](xref:security/authorization/policies#security-authorization-policies-based-authorization-handler)。 建立自訂需求類別，並實作需求處理常式類別。 如需有關建立需求類別的詳細資訊，請參閱[需求](xref:security/authorization/policies#requirements)。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+處理常式類別指定需求和資源類型。 例如，處理常式利用`SameAuthorRequirement`和`Document`資源如下所示：
+
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
 
----
+::: moniker-end
 
-註冊處理常式中的與需求`Startup.ConfigureServices`方法：
+在上述範例中，您可想像一下`SameAuthorRequirement`是特殊案例的更多一般`SpecificAuthorRequirement`類別。 `SpecificAuthorRequirement`類別 （未顯示） 包含`Name`屬性代表作者的名稱。 `Name`屬性無法設定為目前的使用者。
+
+註冊處理常式中的與需求`Startup.ConfigureServices`:
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Startup.cs?name=snippet_ConfigureServicesSample&highlight=3-7,9)]
 
@@ -98,15 +108,17 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 處理常式的使用，如下所示，實作`OperationAuthorizationRequirement`需求和`Document`資源：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
----
+::: moniker-end
 
 上述的處理常式會驗證作業使用的資源、 使用者的身分識別和需求之`Name`屬性。
 
@@ -115,16 +127,18 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 > [!NOTE]
 > 下列範例假設已在執行驗證的程式碼及組`User`屬性。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/View.cshtml.cs?name=snippet_DocumentViewHandler&highlight=10-11)]
 
 如果授權成功，則會傳回檢視文件的頁面。 如果授權失敗，但使用者驗證時，傳回`ForbidResult`會通知任何授權失敗的驗證中介軟體。 A`ChallengeResult`必須執行驗證時，會傳回。 互動式的瀏覽器用戶端，可能適合將使用者重新導向至登入頁面。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentViewAction&highlight=11-12)]
 
 如果授權成功，則會傳回文件的檢視。 如果授權失敗，傳回`ChallengeResult`授權失敗，，和中介軟體可以採取適當的回應會通知任何驗證中介軟體。 適當的回應可能會傳回 401 或 403 狀態碼。 互動式的瀏覽器用戶端，這可能表示將使用者重新導向至登入頁面。
 
----
+::: moniker-end

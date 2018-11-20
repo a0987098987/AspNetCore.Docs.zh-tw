@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/30/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 9943c9dd2d6dd67a79186ee880b181a5915d06be
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: cac5ccdea7838d26b7468f9bf1ab8d317b444b46
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505709"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708513"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -75,7 +75,7 @@ ms.locfileid: "51505709"
 **類型**：*string*  
 **預設**：包含應用程式進入點的組件名稱。  
 **設定使用**：`HostBuilderContext.HostingEnvironment.ApplicationName`  
-**環境變數**：`<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` 是[選擇性和使用者定義的](#configuration-builder))
+**環境變數**：`<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` 是[選擇性和使用者定義的](#configurehostconfiguration))
 
 ### <a name="content-root"></a>內容根目錄
 
@@ -85,7 +85,7 @@ ms.locfileid: "51505709"
 **類型**：*string*  
 **預設值**：預設為應用程式組件所在的資料夾。  
 **設定使用**：`UseContentRoot`  
-**環境變數**：`<PREFIX_>CONTENTROOT` (`<PREFIX_>` 是[選擇性和使用者定義的](#configuration-builder))
+**環境變數**：`<PREFIX_>CONTENTROOT` (`<PREFIX_>` 是[選擇性和使用者定義的](#configurehostconfiguration))
 
 如果路徑不存在，就無法啟動主機。
 
@@ -99,7 +99,7 @@ ms.locfileid: "51505709"
 **類型**：*string*  
 **預設值**：Production  
 **設定使用**：`UseEnvironment`  
-**環境變數**：`<PREFIX_>ENVIRONMENT` (`<PREFIX_>` 是[選擇性和使用者定義的](#configuration-builder))
+**環境變數**：`<PREFIX_>ENVIRONMENT` (`<PREFIX_>` 是[選擇性和使用者定義的](#configurehostconfiguration))
 
 環境可以設定為任何值。 架構定義的值包括 `Development`、`Staging` 和 `Production`。 值不區分大小寫。
 

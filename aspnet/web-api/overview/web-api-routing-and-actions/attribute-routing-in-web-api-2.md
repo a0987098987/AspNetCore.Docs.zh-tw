@@ -82,7 +82,7 @@ ms.locfileid: "49348477"
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample3.cs)]
 
-如需有關如何設定 Web API 的詳細資訊，請參閱 <<c0> [ 設定 ASP.NET Web API 2](../advanced/configuring-aspnet-web-api.md)。
+如需有關如何設定 Web API 的詳細資訊，請參閱 <c0> [ 設定 ASP.NET Web API 2](../advanced/configuring-aspnet-web-api.md)。
 
 <a id="config"></a>
 ### <a name="note-migrating-from-web-api-1"></a>注意： 從 Web API 1 進行移轉
@@ -106,7 +106,7 @@ Web API 2 之前, 的 Web API 專案範本會產生如下的程式碼：
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample6.cs)]
 
-字串&quot;客戶 / {customerId} /&quot;是路由的 URI 範本。 Web API 會嘗試比對要求的 URI 範本。 在此範例中，「 客戶 」 和 「 訂單 」 是常值的區段，且"{customerId}"變數的參數。 下列 Uri 會符合此範本：
+字串&quot;customers/{customerId}/orders&quot;是路由的 URI 範本。 Web API 會嘗試比對要求的 URI 範本。 在此範例中，"customers"和"orders"是常值的區段， 下列 Uri 會符合此範本：
 
 - `http://localhost/customers/1/orders`
 - `http://localhost/customers/bob/orders`

@@ -2,23 +2,26 @@
 title: ASP.NET Core 中的 Kestrel 網頁伺服器實作
 author: guardrex
 description: 了解 Kestrel，這是 ASP.NET Core 的跨平台網頁伺服器。
-monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/05/2018
+ms.date: 11/12/2018
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: a26726a824db31e07b881dbfa8dc2ef37d4d3492
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: 793aa6e190da0170a395292ea661f7c828f817c1
+ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505761"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597806"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
 作者：[Tom Dykstra](https://github.com/tdykstra)、[Chris Ross](https://github.com/Tratcher) 和 [Stephen Halter](https://twitter.com/halter73)
 
+::: moniker range="<= aspnetcore-1.1"
+
 如需本主題的 1.1 版，請下載 [ASP.NET Core (1.1 版，PDF) 中的 Kestrel 網頁伺服器實作](https://webpifeed.blob.core.windows.net/webpifeed/Partners/Kestrel_1.1.pdf)。
+
+::: moniker-end
 
 Kestrel 是 [ASP.NET Core 的跨平台網頁伺服器](xref:fundamentals/servers/index)。 Kestrel 是 ASP.NET Core 專案範本中預設隨附的網頁伺服器。
 

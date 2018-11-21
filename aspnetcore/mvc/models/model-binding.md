@@ -4,14 +4,14 @@ author: tdykstra
 description: 了解 ASP.NET Core MVC 中的模型繫結如何將 HTTP 要求中的資料對應至動作方法參數。
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: tdykstra
-ms.date: 08/14/2018
+ms.date: 11/13/2018
 uid: mvc/models/model-binding
-ms.openlocfilehash: 0ce20a8040c6b19da1f57e1c053a7ef81d8bcb23
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 1dc9b41328ed78440622acc1865b6f088d394403
+ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751668"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597780"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core 中的資料繫結
 
@@ -55,7 +55,7 @@ The link works but generates an error when building with DocFX
 
 到目前為止，範例會使用簡單類型。 在 MVC 中，簡單類型是任何 .NET 基本類型或是包含字串類型轉換子的類型。 如果動作方法的參數是類別 (例如將簡單和複雜類型包含為屬性的 `Movie` 類型)，則仍會妥善地處理 MVC 的模型繫結。 它會使用反映和遞迴以周遊尋找相符項目之複雜類型的屬性。 模型繫結會尋找模式 *parameter_name.property_name*，以將值繫結至屬性。 如果找不到此表單的相符值，則會嘗試只使用屬性名稱進行繫結。 針對這些類型 (例如 `Collection` 類型)，模型繫結會尋找 *parameter_name[index]* 或只尋找 *[index]* 的相符項目。 模型繫結會以同樣地方式處理 `Dictionary` 類型，並要求 *parameter_name[key]* 或只要求 *[key]*，只要索引鍵是簡單類型即可。 所支援的索引鍵符合針對相同模型類型所產生的欄位名稱 HTML 和標籤協助程式。 這會啟用反覆存取值，讓表單欄位持續填入使用者輸入，以方便使用；例如，從建立或編輯所繫結的資料未通過驗證時。
 
-若要進行繫結，類別必須具有公用預設建構函式，而要繫結的成員必須是公用可寫入屬性。 發生模型繫結時，只會使用公用預設建構函式來具現化此類別，接著可以設定屬性。
+若要讓模型繫結可行，類別必須具有要繫結的公用預設建構函式及公用可寫入屬性。 發生模型繫結時，會使用公用預設建構函式將此類別具現化，接著可以設定屬性。
 
 繫結參數時，模型繫結會停止尋找具有該名稱的值，並繼續繫結下一個參數。 否則，預設模型繫結行為會將參數設定為其預設值 (視其類型而定)：
 

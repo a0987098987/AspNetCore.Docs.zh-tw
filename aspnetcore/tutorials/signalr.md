@@ -5,14 +5,14 @@ description: 在本教學課程中，您會建立使用 ASP.NET Core SignalR 的
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 08/31/2018
+ms.date: 11/13/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 7d9f3a3f8aa7a5e47169da66e6fa2d6a28de3853
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: 8916b3659250c1bcbbc2dc9b3d466586f98bcc7e
+ms.sourcegitcommit: d3392f688cfebc1f25616da7489664d69c6ee330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51021244"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51818378"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
@@ -238,7 +238,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 * 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
-* 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送] 按鈕。
+* 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送訊息] 按鈕。
 
   名稱和訊息會立即顯示在兩個頁面上。
 

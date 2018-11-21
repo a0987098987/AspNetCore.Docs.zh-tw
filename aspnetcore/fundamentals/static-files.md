@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 5d00e6ba57053d17b45a24a1c57a446cb3db22ca
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: fb92141b1864574242b29ecc386024ce72a6be87
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207130"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570122"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -96,7 +96,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
   * **images**
       * *banner1.svg*
 
-您可以設定靜態檔案中介軟體，以讓要求存取 *banner1.svg* 檔案，如下所示：
+透過設定靜態檔案中介軟體，可讓要求存取 *banner1.svg* 檔案，如下所示：
 
 [!code-csharp[](static-files/samples/1x/StartupTwoStaticFiles.cs?name=snippet_ConfigureMethod&highlight=5-10)]
 
@@ -122,10 +122,10 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 靜態檔案中介軟體不提供授權檢查。 其提供的所有檔案，包括在 *wwwroot* 下的檔案，皆可公開存取。 若要依據授權來提供檔案：
 
-* 請將它們儲存在 *wwwroot* 外部和可存取靜態檔案中介軟體的任何目錄，**並**
+* 請將它們儲存在 *wwwroot* 外部和可存取靜態檔案中介軟體的任何目錄。
 * 透過動作方法，將它們提供給已套用授權的目標。 傳回 [FileResult](/dotnet/api/microsoft.aspnetcore.mvc.fileresult) 物件：
 
-[!code-csharp[](static-files/samples/1x/Controllers/HomeController.cs?name=snippet_BannerImageAction)]
+  [!code-csharp[](static-files/samples/1x/Controllers/HomeController.cs?name=snippet_BannerImageAction)]
 
 ## <a name="enable-directory-browsing"></a>啟用目錄瀏覽
 

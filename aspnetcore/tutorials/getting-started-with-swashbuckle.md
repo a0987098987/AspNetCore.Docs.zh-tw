@@ -4,14 +4,14 @@ author: zuckerthoben
 description: 了解如何將 Swashbuckle 新增至 ASP.NET Core Web API 專案，以整合 Swagger UI。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/05/2018
+ms.date: 11/14/2018
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 945a2ebe138ba6a1f6029f9e867887b1ce8d628f
-ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
+ms.openlocfilehash: 9832e1ea2b59085b6680820469b16d549f4b0582
+ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51191278"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635338"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -107,6 +107,8 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
 > 若要在應用程式的根目錄 (`http://localhost:<port>/`) 上提供 Swagger UI，請將 `RoutePrefix` 屬性設為空字串：
 >
 > [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup3.cs?name=snippet_UseSwaggerUI&highlight=4)]
+
+若使用虛擬目錄 (例如搭配 IIS 或 反向 Proxy)，請將 Swagger 端點設定為使用 `./` 前置詞的相對路徑。 例如，`./swagger/v1/swagger.json`。 使用 `/swagger/v1/swagger.json` 指示應用程式在 URL 的真實根目錄 (若已使用，請加上路由前置詞) 尋找 JSON 檔案。 例如，應使用 `http://localhost:<port>/<route_prefix>/swagger/v1/swagger.json`，而非 `http://localhost:<port>/<virtual_directory>/<route_prefix>/swagger/v1/swagger.json`。
 
 ## <a name="customize-and-extend"></a>自訂與擴充
 

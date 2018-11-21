@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/01/2018
 uid: fundamentals/file-providers
-ms.openlocfilehash: 3274615a0d6b6f928301ce97d18f5d9768963a30
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 5d0d46ba82cd84e48e5a9b23d6d330d8888beb41
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207312"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570096"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
@@ -20,7 +20,7 @@ ms.locfileid: "50207312"
 ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「檔案提供者」在整個 ASP.NET Core 架構中使用：
 
 * [IHostingEnvironment](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment) 將應用程式的內容根目錄與 Web 根目錄公開為 `IFileProvider` 類型。
-* [靜態檔案中介軟體](xref:fundamentals/static-files)使用「檔案提供者」來尋找靜態檔案。
+* [靜態檔案中介軟體](xref:fundamentals/static-files)使用檔案提供者尋找靜態檔案。
 * [Razor](xref:mvc/views/razor) 使用「檔案提供者」來尋找頁面與檢視。
 * .NET Core 工具使用「檔案提供者」與 Glob 模式來指定應該要發佈哪些檔案。
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 取得 ASP.NET Core 的簡介，ASP.NET Core 是一種跨平台且高效能的開放原始碼架構，用於建置現代化、雲端式、網際網路連線的應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/10/2018
+ms.date: 11/16/2018
 uid: index
-ms.openlocfilehash: 1699acc0086dfd50c573afc239bc8f37eb9e7af9
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: ccf00316218c0787136193a7acaf55b8687c6ede
+ms.sourcegitcommit: 04b55a5ce9d649ff2df926157ec28ae47afe79e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569984"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52156941"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -77,7 +77,9 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 1. 解壓縮 *Docs-master.zip* 檔案。
 1. 使用範例連結中的 URL，協助您巡覽至範例目錄。
 
-為能示範多種情節，範例應用程式會使用 `#define` 及 `#if-#else/#elif-#endif` 兩個 C# 陳述式，從範例程式碼選取不同的區段來執行。 對於使用此法的範例，請將 C# 檔案頂端的 `#define` 陳述式，設定為您要執行之情節相關聯的符號。 範例可能會要求您在多個檔案的頂端設定符號，以執行情節。
+### <a name="preprocessor-directives-in-sample-code"></a>範例程式碼中的前置處理器指示詞
+
+為了示範多種情節，範例應用程式會使用 `#define` 及 `#if-#else/#elif-#endif` 這兩個 C# 陳述式，從範例程式碼選取不同的區段來執行。 對於使用此法的範例，請將 C# 檔案頂端的 `#define` 陳述式，設定為您要執行之情節相關聯的符號。 部分範例會要求在多個檔案的頂端設定符號，以執行情節。
 
 例如下列 `#define` 符號清單指出其提供四個情節 (每個符號一個情節)。 目前的範例設定會執行 `TemplateCode` 情節：
 
@@ -92,6 +94,33 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 ```
 
 如需如何使用 [C# 前置處理器指示詞](/dotnet/csharp/language-reference/preprocessor-directives/)，以選擇編譯不同之程式碼區段的詳細資訊，請參閱 [#define (C# 參考)](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-define) 及 [#if (C# 參考)](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if)。
+
+### <a name="regions-in-sample-code"></a>範例程式碼中的區域
+
+部分範例應用程式包含由 [#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region) 與 [#end-region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion) C# 陳述式括住的程式碼區段。 文件建置系統會將這些區域插入轉譯的文件主題中。  
+
+區域名稱通常包含字組 "snippet"。 下列範例顯示了名為 `snippet_FilterInCode` 的區域：
+
+```csharp
+#region snippet_FilterInCode
+WebHost.CreateDefaultBuilder(args)
+    .UseStartup<Startup>()
+    .ConfigureLogging(logging =>
+        logging.AddFilter("System", LogLevel.Debug)
+            .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Trace))
+            .Build();
+#endregion
+```
+
+上述的 C# 程式碼片段會在主題的 Markdown 檔案中，透過以下程式行加以參考：
+
+```
+[!code-csharp[](sample/SampleApp/Program.cs?name=snippet_FilterInCode)]
+```
+
+您可以放心忽略 (或移除) 程式碼周圍的 `#region` 與 `#end-region` 陳述式。 但若您打算執行主題中所述的範例情境，則請勿變更這些陳述式內的程式碼。 您可以在試驗其他案例時自由改變程式碼。
+
+如需詳細資訊，請參閱 [Contribute to the ASP.NET documentation: Code snippets](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets) (參與 ASP.NET 文件：程式碼片段)。
 
 ## <a name="next-steps"></a>後續步驟
 

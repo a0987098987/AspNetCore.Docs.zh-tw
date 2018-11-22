@@ -5,14 +5,14 @@ description: 了解如何使用 ASP.NET Core signalr 的中樞。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/07/2018
+ms.date: 11/20/2018
 uid: signalr/hubs
-ms.openlocfilehash: 0413d354307208726f4252f431ac59526effed08
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 91f92e9d6b776457cd319965d548ee401ddc5e0e
+ms.sourcegitcommit: 4225e2c49a0081e6ac15acff673587201f54b4aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569915"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282133"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR 中樞
 
@@ -85,7 +85,6 @@ public class ChatHub : Hub
 | `Caller` | 叫用中樞方法的用戶端上呼叫方法 |
 | `Others` | 所有連線的用戶端，除了叫用方法的用戶端上呼叫方法 |
 
-
 `Hub.Clients` 也包含下列方法：
 
 | 方法 | 描述 |
@@ -126,7 +125,17 @@ public class ChatHub : Hub
 
 使用`Hub<IChatClient>`啟用編譯時間檢查的用戶端方法。 這可避免使用魔術字串，因為所造成的問題`Hub<T>`只能提供存取的介面中定義的方法。
 
-使用強型別`Hub<T>`停用重新使用`SendAsync`。
+使用強型別`Hub<T>`停用重新使用`SendAsync`。 介面上定義任何方法仍然可以定義會以非同步的。 事實上，每一種方法應傳回`Task`。 因為它是一個介面，請勿使用`async`關鍵字。 例如: 
+
+```csharp
+public interface IClient
+{
+    Task ClientMethod();
+}
+```
+
+> [!NOTE]
+> `Async`尾碼不會移除與方法名稱。 除非您用戶端的方法以定義`.on('MyMethodAsync')`，您不應該使用`MyMethodAsync`做為名稱。
 
 ## <a name="change-the-name-of-a-hub-method"></a>變更中樞方法的名稱
 
@@ -150,7 +159,7 @@ public class ChatHub : Hub
 
 [!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
-根據預設，如果您的中樞擲回例外狀況，SignalR 泛型錯誤訊息傳回給用戶端。 例如: 
+如果您的中樞擲回例外狀況，不關閉連線。 根據預設，SignalR 會傳回給用戶端的一般錯誤訊息。 例如: 
 
 ```
 Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking 'MethodName' on the server.

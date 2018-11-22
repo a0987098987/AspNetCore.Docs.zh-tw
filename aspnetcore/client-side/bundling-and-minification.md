@@ -4,14 +4,14 @@ author: scottaddie
 description: 了解如何藉由套用統合和縮製技術最佳化的 ASP.NET Core web 應用程式中的靜態資源。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/04/2018
+ms.date: 11/20/2018
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 152f3c810b587d734c1b1076a09ea38d13872e2d
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 5d5f0aadb7740c9b2b959d12a585cd8c91758ce8
+ms.sourcegitcommit: 4225e2c49a0081e6ac15acff673587201f54b4aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795401"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282132"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>配套並縮短在 ASP.NET Core 中的靜態資產
 
@@ -27,7 +27,7 @@ ms.locfileid: "48795401"
 
 ### <a name="bundling"></a>統合
 
-統合將多個檔案結合成單一檔案。 統合可減少所呈現的 web 資產，例如網頁伺服器要求的數目。 您可以建立任意數目的個別的套件組合，專為 CSS、 JavaScript 等。較少的檔案表示更少的 HTTP 要求從瀏覽器到伺服器或服務，提供您的應用程式。 這會導致改善第一次頁面載入效能。
+統合將多個檔案結合成單一檔案。 統合可減少所需呈現的 web 資產，例如網頁伺服器要求的數目。 您可以建立任意數目的個別的套件組合，專為 CSS、 JavaScript 等。較少的檔案表示更少的 HTTP 要求從瀏覽器到伺服器或服務，提供您的應用程式。 這會導致改善第一次頁面載入效能。
 
 ### <a name="minification"></a>縮製
 
@@ -67,9 +67,21 @@ MVC 和 Razor 頁面專案範本提供統合和縮製 JSON 組態檔所組成的
 
 ## <a name="configure-bundling-and-minification"></a>設定統合和縮製
 
-MVC 和 Razor 頁面的 「 專案 」 範本會提供*bundleconfig.json*組態檔會定義每一個套件組合的選項。 根據預設，適用於自訂 JavaScript 定義單一套組的組態 (*wwwroot/js/site.js*) 和樣式表 (*wwwroot/css/site.css*) 檔案：
+::: moniker range="<= aspnetcore-2.0"
+
+在 ASP.NET Core 2.0 或更早版本，MVC 和 Razor 頁面專案範本會提供*bundleconfig.json*定義每一個套件組合的選項的組態檔：
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+在 ASP.NET Core 2.1 或更新版本中，加入新的 JSON 檔案，名為*bundleconfig.json*、 MVC 或 Razor 頁面專案根目錄。 做為起點，該檔案中包含下列 JSON:
+
+::: moniker-end
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig.json)]
+
+*Bundleconfig.json*檔案會定義每一個套件組合的選項。 在上述範例中，單一組合設定定義適用於自訂的 JavaScript (*wwwroot/js/site.js*) 和樣式表 (*wwwroot/css/site.css*) 檔案。
 
 設定選項包括：
 
@@ -156,7 +168,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 dotnet clean
 ```
 
-出現下列輸出：
+即會出現下列輸出：
 
 ```console
 Microsoft (R) Build Engine version 15.4.8.50001 for .NET Core
@@ -216,27 +228,31 @@ dotnet bundle
 
 下列`environment`中執行時，標籤會呈現未處理的 CSS 檔案`Development`環境：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=21-24)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=9-12)]
 
----
+::: moniker-end
 
 下列`environment`以外的其他環境中執行時，標籤會呈現統合和縮製的 CSS 檔案`Development`。 例如，在執行`Production`或`Staging`觸發這些樣式表呈現：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=5&range=25-30)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=13-18)]
 
----
+::: moniker-end
 
 ## <a name="consume-bundleconfigjson-from-gulp"></a>使用 Gulp 從 bundleconfig.json
 

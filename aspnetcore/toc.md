@@ -85,7 +85,7 @@
 ##### [更新頁面](xref:tutorials/razor-pages-mac/da1)
 ##### [新增搜尋](xref:tutorials/razor-pages-mac/search)
 ### [篩選](xref:razor-pages/filter)
-### [類別庫](xref:razor-pages/ui-class)
+### [Razor 類別庫](xref:razor-pages/ui-class)
 ### [路由及應用程式慣例](xref:razor-pages/razor-pages-conventions)
 ### [上傳檔案](xref:razor-pages/upload-files)
 ### [Razor SDK](xref:razor-pages/sdk)

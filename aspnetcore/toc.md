@@ -283,7 +283,7 @@
 ## 裝載於 Azure App Service
 ### [概觀](xref:host-and-deploy/azure-apps/index)
 ### [使用 Visual Studio 發佈](xref:tutorials/publish-to-azure-webapp-using-vs)
-### [使用 CLI 工具發佈](/azure/app-service/app-service-web-get-started-dotnet)
+### [使用 CLI 工具發佈](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 ### [使用 Visual Studio 及 Git 發佈](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
 ### [使用 Azure Pipelines 的持續部署](/azure/devops/pipelines/get-started-yaml)
 ### [針對啟動錯誤進行疑難排解](xref:host-and-deploy/azure-apps/troubleshoot)
@@ -313,7 +313,6 @@
 ## [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)
 ## [目錄結構](xref:host-and-deploy/directory-structure)
 ## [Azure App Service 及 IIS 的錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)
-
 
 # 安全性及身分識別
 ## [概觀](xref:security/index)

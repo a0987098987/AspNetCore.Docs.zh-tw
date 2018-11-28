@@ -5,18 +5,18 @@ description: 了解如何使用 IHostingStartup 實作，從外部組件增強 A
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2018
+ms.date: 11/22/2018
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: a06c2da04c1631f5811a535c891ca5190b0d8864
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: ef3b48dc72f294a783d789c4c9a796e3498a91d9
+ms.sourcegitcommit: 710fc5fcac258cc8415976dc66bdb355b3e061d5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207533"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52299452"
 ---
 # <a name="enhance-an-app-from-an-external-assembly-in-aspnet-core-with-ihostingstartup"></a>在 ASP.NET Core 中使用 IHostingStartup 從外部組件增強應用程式
 
-作者：[Luke Latham](https://github.com/guardrex)
+作者：[Luke Latham](https://github.com/guardrex) 與 [Pavel Krymets](https://github.com/pakrym)
 
 實作 [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) (裝載啟動) 會在啟動時，從外部組件將增強功能新增至應用程式。 例如，外部程式庫可以使用裝載啟動實作，向應用程式提供額外的組態提供者或服務。 ASP.NET Core 2.0 或更新版本提供 `IHostingStartup`。
 
@@ -113,14 +113,21 @@ ms.locfileid: "50207533"
 
 這個方法僅適用於 .NET Core 應用程式，不適用於 .NET Framework。
 
-在沒有進入點的主控台應用程式中，可以提供不需要啟用編譯時間參考的動態裝載啟動增強功能。 此應用程式包含 `HostingStartup` 屬性。 建立動態裝載啟動：
+在沒有包含 `HostingStartup` 屬性之進入點的主控台應用程式中，可以提供不需要啟用編譯時間參考的動態裝載啟動增強功能。 發佈主控台應用程式會產生裝載啟動組件，這些組件可從執行階段存放區取用。
 
-1. 實作程式庫是從包含 `IHostingStartup` 實作的類別建立。 實作程式庫可視為一般套件。
-1. 沒有進入點的主控台應用程式會參考實作程式庫套件。 使用主控台應用程式的原因：
-   * 相依性檔案是可執行的應用程式資產，所以程式庫無法提供相依性檔案。
-   * 程式庫無法直接新增至[執行階段套件存放區](/dotnet/core/deploying/runtime-store)，這需要以共用執行階段為目標的可執行專案。
-1. 發佈主控台應用程式以取得裝載啟動的相依性。 發佈主控台應用程式的結果是從相依性檔案中刪減未使用的相依性。
-1. 應用程式及其相依性檔案會放入執行階段套件存放區。 若要探索裝載啟動組件及其相依性檔案，兩者會在成對的環境變數中參考。
+沒有進入點的主控台應用程式會在此程序中使用，因為：
+
+* 需要相依性檔案才能取用裝載啟動組件中的裝載啟動。 相依性檔案是可執行的應用程式資產，這是透過發佈應用程式 (而非程式庫) 所產生。
+* 程式庫無法直接新增至[執行階段套件存放區](/dotnet/core/deploying/runtime-store)，這需要以共用執行階段為目標的可執行專案。
+
+在建立動態裝載啟動階段中：
+
+* 會從沒有進入點的主控台應用程式建立裝載啟動組件：
+  * 包括包含 `IHostingStartup` 實作的類別。
+  * 包括 [HostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.hostingstartupattribute) 屬性以識別 `IHostingStartup` 實作類別。
+* 發佈主控台應用程式以取得裝載啟動的相依性。 發佈主控台應用程式的結果是從相依性檔案中刪減未使用的相依性。
+* 相依性檔案已修改以設定裝載啟動組件的執行階段位置。
+* 裝載啟動組件與其相依性檔案會放入執行階段套件存放區。 若要探索裝載啟動組件與其相依性檔案，兩者會在成對的環境變數中列出。
 
 主控台應用程式會參考 [Microsoft.AspNetCore.Hosting.Abstractions](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.Abstractions/) 套件：
 
@@ -167,187 +174,98 @@ HostingStartupLibrary;HostingStartupPackage;StartupDiagnostics
 
 裝載啟動實作置於[執行階段存放區](/dotnet/core/deploying/runtime-store)。 增強的應用程式不需要組件的編譯時間參考。
 
-建置裝載啟動之後，裝載啟動的專案檔可作為 [dotnet store](/dotnet/core/tools/dotnet-store) 命令的資訊清單檔。
+建置裝載啟動之後，會使用資訊清單專案檔與 [dotnet store](/dotnet/core/tools/dotnet-store) 命令來產生執行階段存放區。
 
 ```console
-dotnet store --manifest <PROJECT_FILE> --runtime <RUNTIME_IDENTIFIER>
+dotnet store --manifest {MANIFEST FILE} --runtime {RUNTIME IDENTIFIER} --output {OUTPUT LOCATION} --skip-optimization
 ```
 
-此命令會將裝載啟動組件和不屬於共用架構的其他相依性放在使用者設定檔的執行階段存放區中，分別為：
+在範例應用程式 (*RuntimeStore* 專案) 中，我們使用下列命令：
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%USERPROFILE%\.dotnet\store\x64\<TARGET_FRAMEWORK_MONIKER>\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\<TARGET_FRAMEWORK_MONIKER>\
+``` console
+dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./deployment/store --skip-optimization
 ```
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-```
-/Users/<USER>/.dotnet/store/x64/<TARGET_FRAMEWORK_MONIKER>/<ENHANCEMENT_ASSEMBLY_NAME>/<ENHANCEMENT_VERSION>/lib/<TARGET_FRAMEWORK_MONIKER>/
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-```
-/Users/<USER>/.dotnet/store/x64/<TARGET_FRAMEWORK_MONIKER>/<ENHANCEMENT_ASSEMBLY_NAME>/<ENHANCEMENT_VERSION>/lib/<TARGET_FRAMEWORK_MONIKER>/
-```
-
----
-
-如果您想要放置組件和相依性供全域使用，請將 `-o|--output` 選項新增至 `dotnet store` 命令，加上下列路徑：
-
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%PROGRAMFILES%\dotnet\store\x64\<TARGET_FRAMEWORK_MONIKER>\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\<TARGET_FRAMEWORK_MONIKER>\
-```
-
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-```
-/usr/local/share/dotnet/store/x64/<TARGET_FRAMEWORK_MONIKER>/<ENHANCEMENT_ASSEMBLY_NAME>/<ENHANCEMENT_VERSION>/lib/<TARGET_FRAMEWORK_MONIKER>/
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-```
-/usr/local/share/dotnet/store/x64/<TARGET_FRAMEWORK_MONIKER>/<ENHANCEMENT_ASSEMBLY_NAME>/<ENHANCEMENT_VERSION>/lib/<TARGET_FRAMEWORK_MONIKER>/
-```
-
----
+為讓執行階段探索執行階段存放區，執行階段存放區的位置會新增到 `DOTNET_SHARED_STORE` 環境變數。
 
 **修改並放置裝載啟動的相依性檔案**
 
-執行階段位置是在 *\*.deps.json* 檔案中指定。 若要啟用增強功能，`runtime` 元素必須指定增強功能之執行階段組件的位置。 請在 `runtime` 位置前面加上 `lib/<TARGET_FRAMEWORK_MONIKER>/`：
+若要在沒有對加強功能之套件參考的情況下啟用加強功能，請使用 `additionalDeps` 指定對執行階段的額外相依性。 `additionalDeps` 可讓您：
 
-[!code-json[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement2.deps.json?range=2-13&highlight=8)]
+* 透過提供一組額外的 *\*.deps.json* 檔案在啟動時與應用程式的自有 *\*.deps.json* 檔案合併，以延伸應用程式的程式庫圖表。
+* 讓裝載啟動組件可供探索且可載入。
 
-在程式碼範例中 (*StartupDiagnostics* 專案)，*\*.deps.json* 檔案的修改是由 [PowerShell](/powershell/scripting/powershell-scripting) 指令碼執行。 PowerShell 指令碼則是由專案檔中的建置目標自動觸發。
+用於產生額外相依性的建議方法是：
 
-此實作的 *\*.deps.json* 檔案必須位於可存取的位置。
+ 1. 在上一節參考的執行階段存放區資訊清單檔上執行 `dotnet publish`。
+ 1. 從程式庫與產生之 *\*deps.json* 檔案的 `runtime` 區段移除資訊清單參考。
 
-如果是供個別使用者使用，請將檔案置於使用者設定檔之 `.dotnet` 設定的 *additonalDeps* 資料夾中：
+在範例專案中，`store.manifest/1.0.0` 屬已從 `targets` 與 `libraries` 區段移除：
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%USERPROFILE%\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\
-```
-
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-```
-/Users/<USER>/.dotnet/x64/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-```
-/Users/<USER>/.dotnet/x64/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/
-```
-
----
-
-如果是供全域使用，請將檔案置於 .NET Core 安裝的 *additonalDeps* 資料夾中：
-
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%PROGRAMFILES%\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\
-```
-
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-```
-/usr/local/share/dotnet/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-```
-/usr/local/share/dotnet/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/
-```
-
----
-
-共用的 Framework 版本反映了目標應用程式所使用的共用執行階段版本。 *\*.runtimeconfig.json* 檔案會顯示共用的執行階段。 在範例應用程式中 (*HostingStartupApp*)，是在 *HostingStartupApp.runtimeconfig.json* 檔案中指定共用的執行階段。
-
-**列出裝載啟動的相依性檔案**
-
-*\*.deps.json* 檔案的實作位置會列在 `DOTNET_ADDITIONAL_DEPS` 環境變數中。
-
-如果檔案放在使用者設定檔的 *.dotnet* 資料夾中，請將環境變數值設定為：
-
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%USERPROFILE%\.dotnet\x64\additionalDeps\
+```json
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "4ea77c7b75ad1895ae1ea65e6ba2399010514f99"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "store.manifest/1.0.0": {
+        "dependencies": {
+          "StartupDiagnostics": "1.0.0"
+        },
+        "runtime": {
+          "store.manifest.dll": {}
+        }
+      },
+      "StartupDiagnostics/1.0.0": {
+        "runtime": {
+          "lib/netcoreapp2.1/StartupDiagnostics.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "store.manifest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StartupDiagnostics/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oiQr60vBQW7+nBTmgKLSldj06WNLRTdhOZpAdEbCuapoZ+M2DJH2uQbRLvFT8EGAAv4TAKzNtcztpx5YOgBXQQ==",
+      "path": "startupdiagnostics/1.0.0",
+      "hashPath": "startupdiagnostics.1.0.0.nupkg.sha512"
+    }
+  }
+}
 ```
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+將 *\*.deps.json* 檔案放到下列位置：
 
 ```
-/Users/<USER>/.dotnet/x64/additionalDeps/
+{ADDITIONAL DEPENDENCIES PATH}/shared/{SHARED FRAMEWORK NAME}/{SHARED FRAMEWORK VERSION}/{ENHANCEMENT ASSEMBLY NAME}.deps.json
 ```
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+* `{ADDITIONAL DEPENDENCIES PATH}` &ndash; 位置已新增到 `DOTNET_ADDITIONAL_DEPS` 環境變數。
+* `{SHARED FRAMEWORK NAME}` &ndash; 這個額外相依性檔案需要共用架構。
+* `{SHARED FRAMEWORK VERSION}` &ndash; 最小共用架構版本。
+* `{ENHANCEMENT ASSEMBLY NAME}` &ndash; 加強功能的組件名稱。
+
+在範例應用程式 (*RuntimeStore* 專案) 中，額外的相依性檔案是放到下列位置：
 
 ```
-/Users/<USER>/.dotnet/x64/additionalDeps/
+additionalDeps/shared/Microsoft.AspNetCore.App/2.1.0/StartupDiagnostics.deps.json
 ```
 
----
+為讓執行階段探索執行階段存放區，額外的相依性檔案位置會新增到 `DOTNET_ADDITIONAL_DEPS` 環境變數。
 
-如果針對全域使用將檔案置於 .NET Core 安裝，請提供檔案的完整路徑：
-
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%PROGRAMFILES%\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
-```
-
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-```
-/usr/local/share/dotnet/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-```
-/usr/local/share/dotnet/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
-```
-
----
-
-為使範例應用程式 (*HostingStartupApp*) 尋找相依性檔案 (*HostingStartupApp.runtimeconfig.json*)，相依性檔案要放在使用者的設定檔中。
-
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-請將 `DOTNET_ADDITIONAL_DEPS` 環境變數設為下列值：
-
-```
-%UserProfile%\.dotnet\x64\additionalDeps\StartupDiagnostics\
-```
-
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-請將 `DOTNET_ADDITIONAL_DEPS` 環境變數設為下列值：
-
-```
-/Users/<USER>/.dotnet/x64/additionalDeps/StartupDiagnostics/
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-請將 `DOTNET_ADDITIONAL_DEPS` 環境變數設為下列值：
-
-```
-/Users/<USER>/.dotnet/x64/additionalDeps/StartupDiagnostics/
-```
-
----
+在範例應用程式 (*RuntimeStore* 專案) 中，建置執行階段存放區並產生額外的相依性檔案是透過使用 [PowerShell](/powershell/scripting/powershell-scripting) 指令碼來完成的。
 
 如需如何為各種作業系統設定環境變數的範例，請參閱[使用多個環境](xref:fundamentals/environments)。
 
@@ -355,9 +273,9 @@ dotnet store --manifest <PROJECT_FILE> --runtime <RUNTIME_IDENTIFIER>
 
 為利於在多機器環境中部署裝載啟動，範例應用程式會在包含下列項目的發佈輸出中建立 *deployment* 資料夾：
 
-* 裝載啟動組件。
+* 裝載啟動執行階段存放區。
 * 裝載啟動相依性檔案。
-* 建立或修改 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` 和 `DOTNET_ADDITIONAL_DEPS` 以支援啟用裝載啟動的 PowerShell 指令碼。 在部署系統上，從系統管理 PowerShell 命令提示字元執行指令碼。
+* 建立或修改 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`、`DOTNET_SHARED_STORE` 與 `DOTNET_ADDITIONAL_DEPS` 以支援啟用裝載啟動的 PowerShell 指令碼。 在部署系統上，從系統管理 PowerShell 命令提示字元執行指令碼。
 
 ### <a name="nuget-package"></a>NuGet 套件
 

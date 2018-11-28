@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/04/2018
 uid: client-side/using-gulp
-ms.openlocfilehash: 4f383be0498b5b861bd43cc0f0685b1e62c7571b
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: e280eabecbd427f3e1418b3d7a60e0ea3df46a5a
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795514"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450602"
 ---
 # <a name="use-gulp-in-aspnet-core"></a>ASP.NET Core 中使用 Gulp
 
@@ -28,7 +28,7 @@ ms.locfileid: "48795514"
 
 ## <a name="gulp"></a>Gulp
 
-Gulp 是以 JavaScript 為基礎的資料流建置工具組，用於用戶端程式碼。 當在建置環境中觸發特定事件時，通常會使用它透過一系列的程序串流用戶端檔案。 例如，在新的建置之前，Gulp 可用於自動化[包裝及縮小](bundling-and-minification.md)或開發環境清理。
+Gulp 是以 JavaScript 為基礎的資料流建置工具組，用於用戶端程式碼。 當在建置環境中觸發特定事件時，通常會使用它透過一系列的程序串流用戶端檔案。 比方說，Gulp 可用來自動化[統合和縮製](bundling-and-minification.md)或開發環境，新的組建之前的清除。
 
 在 *gulpfile.js* 中定義一組 Gulp 工作。 下列 JavaScript 包含 Gulp 模組，並指定要在即將到來的工作中引用的文件路徑：
 
@@ -58,7 +58,7 @@ paths.concatCssDest = paths.webroot + "css/site.min.css";
 
 | 模組名稱 | 描述 |
 | ----------- | ----------- |
-| gulp        | Gulp 串流處理組建系統。 如需詳細資訊，請參閱 < [gulp](https://www.npmjs.com/package/gulp)。 |
+| Gulp        | Gulp 串流處理組建系統。 如需詳細資訊，請參閱 < [gulp](https://www.npmjs.com/package/gulp)。 |
 | rimraf      | 節點刪除模組。 如需詳細資訊，請參閱 < [rimraf](https://www.npmjs.com/package/rimraf)。 |
 | gulp concat | 這種模組串連根據作業系統的新行字元的檔案。 如需詳細資訊，請參閱 < [gulp concat](https://www.npmjs.com/package/gulp-concat)。 |
 | gulp-cssmin | 可將 CSS 檔案最小化的模組。 如需詳細資訊，請參閱 < [gulp cssmin](https://www.npmjs.com/package/gulp-cssmin)。 |

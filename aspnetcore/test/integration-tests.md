@@ -5,14 +5,14 @@ description: 了解整合測試如何確保應用程式的元件在基礎結構�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/30/2018
+ms.date: 11/26/2018
 uid: test/integration-tests
-ms.openlocfilehash: a136a362cd8973b3684f9a70bd4792d75238eab0
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9729925c89c212bb6e6fac1a484b6288697afe57
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207871"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450745"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -100,8 +100,8 @@ ASP.NET Core 中的整合測試需要下列各項：
 測試專案必須：
 
 * 請參考下列套件：
-  - [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
-  - [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
+  * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
+  * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * 專案檔中指定 Web SDK (`<Project Sdk="Microsoft.NET.Sdk.Web">`)。 Web SDK 時，必須參考[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
 
 這些必要條件中所見[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/)。 檢查*tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*檔案。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
@@ -316,6 +316,10 @@ SUT 應用程式執行時，會產生下列標記：
   "shadowCopy": false
 }
 ```
+
+## <a name="disposal-of-objects"></a>物件的處置
+
+在測試後`IClassFixture`實作會執行， [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)並[HttpClient](/dotnet/api/system.net.http.httpclient) xUnit 處置時進行處置[WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1). 如果物件具現化開發人員需要處置，處置它們在`IClassFixture`實作。 如需詳細資訊，請參閱 <<c0> [ 實作 Dispose 方法](/dotnet/standard/garbage-collection/implementing-dispose)。
 
 ## <a name="integration-tests-sample"></a>整合測試範例
 

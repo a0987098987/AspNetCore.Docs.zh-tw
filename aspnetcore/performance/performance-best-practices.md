@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 11/29/2018
 uid: performance/performance-best-practices
-ms.openlocfilehash: ced86dbc2d6f40b503493eda122d8977d6df7035
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 9f3ed97bf4d4eb371ff5ae3874234b44745cc4ca
+ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452925"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52618112"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>ASP.NET Core 效能最佳做法
 
@@ -24,7 +24,7 @@ ms.locfileid: "52452925"
 
 ## <a name="cache-aggressively"></a>積極地快取
 
-快取會討論這份文件的幾個部分。 如需詳細資訊，請參閱 <<c0> [ 快取 ASP.NET Core 中的回應](xref:performance/caching/index)。
+快取會討論這份文件的幾個部分。 如需詳細資訊，請參閱<xref:performance/caching/response>。
 
 ## <a name="avoid-blocking-calls"></a>避免封鎖呼叫
 
@@ -71,7 +71,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 * **請勿**以非同步方式呼叫所有的資料存取 Api。
 * **不這麼做**擷取更多超出所需的資料。 撰寫查詢來傳回只是目前的 HTTP 要求所需的資料。
-* **請勿**考慮快取經常存取接受要稍微過期的資料時，從資料庫或遠端服務擷取的資料。 根據此案例中，您可能會使用[MemoryCache](xref:performance/caching/memory)或是[DistributedCache](xref:performance/caching/distributed)。 如需詳細資訊，請參閱 <<c0> [ 快取 ASP.NET Core 中的回應](xref:performance/caching/index)。
+* **請勿**考慮快取經常存取接受要稍微過期的資料時，從資料庫或遠端服務擷取的資料。 根據此案例中，您可能會使用[MemoryCache](xref:performance/caching/memory)或是[DistributedCache](xref:performance/caching/distributed)。 如需詳細資訊，請參閱<xref:performance/caching/response>。
 * 最小化的網路往返。 目標是要擷取所需的單一呼叫中的所有資料，而不是數個呼叫。
 * **請勿**使用[無追蹤查詢](/ef/core/querying/tracking#no-tracking-queries)進行唯讀存取資料時，Entity Framework Core 中。 EF Core 可以更有效率地傳回無追蹤查詢的結果。
 * **請勿**篩選和彙總的 LINQ 查詢 (與`.Where`， `.Select`，或`.Sum`例如陳述式)，讓篩選是由資料庫。

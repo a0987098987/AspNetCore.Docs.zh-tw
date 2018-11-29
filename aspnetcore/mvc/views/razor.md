@@ -5,12 +5,12 @@ description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記
 ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: 10f0db168b36fed82def8227b3c3edcf5b57f6d7
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: ab9fb3f55399764c5fe985811d92c504ed210767
+ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148885"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52256576"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -525,6 +525,105 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 ### <a name="section"></a>@section
 
 `@section` 指示詞可搭配[配置](xref:mvc/views/layout)使用，讓檢視可以轉譯 HTML 頁面中不同部分的內容。 如需詳細資訊，請參閱[區段](xref:mvc/views/layout#layout-sections-label)。
+
+## <a name="templated-razor-delegates"></a>樣板化 Razor 委派
+
+Razor 範本可讓您使用下列格式定義 UI 程式碼片段：
+
+```cshtml
+@<tag>...</tag>
+```
+
+下列範例說明如何以 <xref:System.Func`2> 的形式指定樣板化 Razor 委派。 該範例會指定 [dynamic 類型](/dotnet/csharp/programming-guide/types/using-type-dynamic)作為委派所封裝方法的參數。 並指定 [object 類型](/dotnet/csharp/language-reference/keywords/object)作為委派的傳回值。 此範本會搭配具有 `Name` 屬性之 `Pet` 的 <xref:System.Collections.Generic.List`1> 來使用。
+
+```csharp
+public class Pet
+{
+    public string Name { get; set; }
+}
+```
+
+```cshtml
+@{
+    Func<dynamic, object> petTemplate = @<p>You have a pet named @item.Name.</p>;
+
+    var pets = new List<Pet>
+    {
+        new Pet { Name = "Rin Tin Tin" },
+        new Pet { Name = "Mr. Bigglesworth" },
+        new Pet { Name = "K-9" }
+    };
+}
+```
+
+此範本使用 `foreach` 陳述式所提供的 `pets` 進行轉譯：
+
+```cshtml
+@foreach (var pet in pets)
+{
+    @petTemplate2(pet)
+}
+```
+
+轉譯輸出：
+
+```html
+<p>You have a pet named <strong>Rin Tin Tin</strong>.</p>
+<p>You have a pet named <strong>Mr. Bigglesworth</strong>.</p>
+<p>You have a pet named <strong>K-9</strong>.</p>
+```
+
+您也可以提供內嵌 Razor 範本作為方法的引數。 在下列範例中，`Repeat` 方法會接收 Razor 範本。 此方法使用範本來產生 HTML 內容，並重複出現清單所提供的項目：
+
+```cshtml
+@using Microsoft.AspNetCore.Html
+
+@functions {
+    public static IHtmlContent Repeat(IEnumerable<dynamic> items, int times, 
+        Func<dynamic, IHtmlContent> template)
+    {
+        var html = new HtmlContentBuilder();
+
+        foreach (var item in items)
+        {
+            for (var i = 0; i < times; i++)
+            {
+                html.AppendHtml(template(item));
+            }
+        }
+
+        return html;
+    }
+}
+```
+
+使用先前範例中的寵物清單，呼叫 `Repeat` 方法並指定：
+
+* <xref:System.Collections.Generic.List`1> 的 `Pet`。
+* 每個寵物的重複次數。
+* 用於未排序清單中清單項目的內嵌範本。
+
+```cshtml
+<ul>
+    @Repeat(pets, 3, @<li>@item.Name</li>)
+</ul>
+```
+
+轉譯輸出：
+
+```html
+<ul>
+    <li>Rin Tin Tin</li>
+    <li>Rin Tin Tin</li>
+    <li>Rin Tin Tin</li>
+    <li>Mr. Bigglesworth</li>
+    <li>Mr. Bigglesworth</li>
+    <li>Mr. Bigglesworth</li>
+    <li>K-9</li>
+    <li>K-9</li>
+    <li>K-9</li>
+</ul>
+```
 
 ## <a name="tag-helpers"></a>標籤協助程式
 

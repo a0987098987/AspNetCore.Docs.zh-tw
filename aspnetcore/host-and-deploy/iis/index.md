@@ -4,20 +4,23 @@ author: guardrex
 description: 了解如何在 Windows Server Internet Information Services (IIS) 上裝載 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/10/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 1b34195dc51ca8dab5e8eda10f05ff6678fbc78c
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 77fa6e1ef6a7fc707c2665826d3c1f4c2691979c
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570161"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450797"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
 作者：[Luke Latham](https://github.com/guardrex)
 
 [安裝 .NET Core 裝載套件組合](#install-the-net-core-hosting-bundle)
+
+> [!NOTE]
+> 我們正為規劃中的 ASP.NET Core 目錄新結構測試其可用性。  如果您有幾分鐘的時間可以嘗試在目前或建議的目錄中尋找 7 個不同主題，請[按一下這裡參加研究](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5)。
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
@@ -416,31 +419,19 @@ services.Configure<IISOptions>(options =>
 
   針對取用資料保護 API 的所有應用程式，資料保護系統僅支援有限的預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy)設定。 如需詳細資訊，請參閱<xref:security/data-protection/introduction>。
 
-## <a name="sub-application-configuration"></a>子應用程式設定
+## <a name="virtual-directories"></a>虛擬目錄
 
-根應用程式下新增的子應用程式不應包含當作處理常式的 ASP.NET Core 模組。 如果您在子應用程式的 *web.config* 檔案中將模組新增為處理常式，則嘗試瀏覽子應用程式時，會收到參考錯誤設定檔的 *500.19 內部伺服器錯誤*。
+ASP.NET Core 應用程式不支援 [IIS 虛擬目錄](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)。 應用程式能以[子應用程式](#sub-applications)的形式裝載。
 
-下列範例顯示 ASP.NET Core 子應用程式的已發佈 *web.config* 檔案：
+## <a name="sub-applications"></a>子應用程式
 
-::: moniker range=">= aspnetcore-2.2"
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <location path="." inheritInChildApplications="false">
-    <system.webServer>
-      <aspNetCore processPath="dotnet" 
-        arguments=".\MyApp.dll" 
-        stdoutLogEnabled="false" 
-        stdoutLogFile=".\logs\stdout" />
-    </system.webServer>
-  </location>
-</configuration>
-```
-
-::: moniker-end
+ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#applications)的形式裝載。 子應用程式的路徑會成為根應用程式 URL 的一部分。
 
 ::: moniker range="< aspnetcore-2.2"
+
+子應用程式不應該包括 ASP.NET Core 模組做為處理常式。 如果您在子應用程式的 *web.config* 檔案中將模組新增為處理常式，則嘗試瀏覽子應用程式時，會收到參考錯誤設定檔的 *500.19 內部伺服器錯誤*。
+
+下列範例顯示 ASP.NET Core 子應用程式的已發佈 *web.config* 檔案：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -473,7 +464,23 @@ services.Configure<IISOptions>(options =>
 
 ::: moniker-end
 
-如需設定 ASP.NET Core 模組的詳細資訊，請參閱 [ASP.NET Core 模組簡介](xref:fundamentals/servers/aspnet-core-module)主題和 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)。
+子應用程式內的靜態資產連結應該使用波狀符號與斜線 (`~/`) 標記法。 波狀符號與斜線標記法會觸發[標記協助程式](xref:mvc/views/tag-helpers/intro)以將子應用程式的路徑基底附加到轉譯的相對連結前面。 針對位於 `/subapp_path` 的子應用程式，使用 `src="~/image.png"` 連結的影像會轉譯為 `src="/subapp_path/image.png"`。 根應用程式的靜態檔案中介軟體不會處理靜態檔案要求。 要求會由子應用程式的靜態檔案中介軟體處理。
+
+若靜態資產的 `src` 屬性是設定為絕對路徑 (例如，`src="/image.png"`)，會以不使用子應用程式路徑基底的方式轉譯連結。 根應用程式的靜態檔案中介軟體嘗試從根應用程式的 [webroot](xref:fundamentals/index#web-root-webroot) 為資產提供服務，這導致 *404 - 找不到*回應 (除非根應用程式可存取靜態資產)。
+
+裝載 ASP.NET Core 應用程式做為另一個 ASP.NET Core 應用程式下的子應用程式：
+
+1. 為子應用程式建立應用程式集區。 將 [.NET CLR 版本] 設定為 [沒有 Managed 程式碼]。
+
+1. 使用根網站下資料夾中的子應用程式在 IIS 管理員中新增根網站。
+
+1. 以滑鼠右鍵按一下 IIS 管理員中的子應用程式資料夾，然後選取 [轉換成應用程式]。
+
+1. 在 [新增應用程式] 對話方塊中，使用 [應用程式集區] 的[選取] 按鈕來指派您為子應用程式建立的應用程式集區。 選取 [確定]。
+
+將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
+
+如需有關同處理序裝載模型與如何設定 ASP.NET Core 模組的詳細資訊，請參閱 <xref:fundamentals/servers/aspnet-core-module> 與 <xref:host-and-deploy/aspnet-core-module>。
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
@@ -610,6 +617,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 ## <a name="additional-resources"></a>其他資源
 
+* <xref:test/troubleshoot>
 * [ASP.NET Core 簡介](xref:index)
 * [Microsoft IIS 官方網站](https://www.iis.net/)
 * [Windows Server 技術內容庫](/windows-server/windows-server)

@@ -123,7 +123,7 @@ ms.locfileid: "51570083"
 
     ![儲存組建定義為強制回應對話方塊](media/cicd/vsts-save-modal.png)
 
-    使用的預設資料夾*\\*，然後按一下**儲存** 按鈕。
+    使用的預設資料夾 *\\* ，然後按一下**儲存** 按鈕。
 
 ### <a name="create-the-release-pipeline"></a>建立發行管線
 

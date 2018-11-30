@@ -166,7 +166,7 @@ ms.locfileid: "48912406"
 
 `CourseID` 屬性是外部索引鍵，對應的導覽屬性是 `Course`。 一個 `Enrollment` 實體與一個 `Course` 實體建立關聯。
 
-Entity Framework 的屬性解譯為外部索引鍵屬性是否將它命名*&lt;導覽屬性名稱&gt;&lt;主索引鍵屬性名稱&gt;* (例如`StudentID`for`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`)。 外部索引鍵屬性也可以命名相同只要*&lt;主索引鍵屬性名稱&gt;* (例如`CourseID`因為`Course`實體的主索引鍵是`CourseID`)。
+Entity Framework 的屬性解譯為外部索引鍵屬性是否將它命名 *&lt;導覽屬性名稱&gt;&lt;主索引鍵屬性名稱&gt;* (例如`StudentID`for`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`)。 外部索引鍵屬性也可以命名相同只要 *&lt;主索引鍵屬性名稱&gt;* (例如`CourseID`因為`Course`實體的主索引鍵是`CourseID`)。
 
 ### <a name="the-course-entity"></a>Course 實體
 
@@ -267,7 +267,7 @@ Entity Framework 可以自動建立 （或卸除並重新建立） 為您的應�
 
      ![Visual Studio 中加入控制器 對話方塊](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/add-controller.png)
 
-     當您按一下 **新增**，建立框架*StudentController.cs*檔案和一組檢視 (*.cshtml*檔案)，可以使用該控制器。 未來當您建立使用 Entity Framework 的專案，您也可以利用的框架的一些額外的功能： 建立第一個模型類別，請勿建立連接字串，然後在**新增控制器**  方塊中指定**新的資料內容**藉由選取**+** 旁邊**資料內容類別**。 框架會建立您`DbContext`類別和您的連線字串以及控制器和檢視。
+     當您按一下 **新增**，建立框架*StudentController.cs*檔案和一組檢視 (*.cshtml*檔案)，可以使用該控制器。 未來當您建立使用 Entity Framework 的專案，您也可以利用的框架的一些額外的功能： 建立第一個模型類別，請勿建立連接字串，然後在 **新增控制器**  方塊中指定 **新的資料內容** 藉由選取 **+** 旁邊 **資料內容類別**。 框架會建立您`DbContext`類別和您的連線字串以及控制器和檢視。
 4. Visual Studio 會開啟*Controllers\StudentController.cs*檔案。 您會看到類別變數已經建立的資料庫內容物件具現化：
 
      [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample11.cs)]

@@ -306,7 +306,7 @@ Web deployment 工作失敗。 (無法完成遠端代理程式的 url 要求 '<h
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限的應用程式\_Data 資料夾。 若您知道的站台資料夾的預設權限是否正確，而且不需要設定，您加入停用此行為**&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或.wpp.targets 檔案 （以會影響所有設定檔）。 如需有關如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
+根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限的應用程式\_Data 資料夾。 若您知道的站台資料夾的預設權限是否正確，而且不需要設定，您加入停用此行為 **&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或.wpp.targets 檔案 （以會影響所有設定檔）。 如需有關如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
 
 ## <a name="access-denied-errors-when-the-application-tries-to-write-to-an-application-folder"></a>當應用程式嘗試寫入應用程式資料夾時，存取被拒錯誤
 
@@ -316,7 +316,7 @@ Web deployment 工作失敗。 (無法完成遠端代理程式的 url 要求 '<h
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限的應用程式\_Data 資料夾。 如果您的應用程式需要的子資料夾的寫入權限，您可以設定為該資料夾的權限中所示設定資料夾權限並部署至生產環境教學課程，在這一系列。 如果您的應用程式需要的站台的根資料夾的寫入權限，您必須防止根資料夾上設定唯讀存取權，加上**&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或.wpp.targets 檔案 （以會影響所有設定檔）。 如需有關如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
+根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限的應用程式\_Data 資料夾。 如果您的應用程式需要的子資料夾的寫入權限，您可以設定為該資料夾的權限中所示設定資料夾權限並部署至生產環境教學課程，在這一系列。 如果您的應用程式需要的站台的根資料夾的寫入權限，您必須防止根資料夾上設定唯讀存取權，加上 **&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或.wpp.targets 檔案 （以會影響所有設定檔）。 如需有關如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
 
 <a id="aspnet45error"></a>
 

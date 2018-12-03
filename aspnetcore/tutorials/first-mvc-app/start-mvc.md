@@ -5,12 +5,12 @@ description: 了解如何開始使用 ASP.NET Core MVC 與 Visual Studio。
 ms.author: riande
 ms.date: 10/07/2017
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: fe555e4cfcaec5d4bb8ccee00b06d1bbcaae9dcd
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 9d50607899058c887597a3d73198552d3ef5b020
+ms.sourcegitcommit: c4572be5ebb301013a5698caf9b5572b76cb2e34
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391202"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52710084"
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>ASP.NET Core MVC 與 Visual Studio 使用者入門
 
@@ -23,6 +23,9 @@ ms.locfileid: "49391202"
 * macOS：[使用 Visual Studio for Mac 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app-mac/start-mvc)
 * Windows：[使用 Visual Studio 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app/start-mvc)
 * macOS、Linux 和 Windows：[使用 Visual Studio Code 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app-xplat/start-mvc)
+
+> [!NOTE]
+> 我們正為規劃中的 ASP.NET Core 目錄新結構測試其可用性。  如果您有幾分鐘的時間可以嘗試在目前或建議的目錄中尋找 7 個不同主題，請[按一下這裡參加研究](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5)。
 
 ## <a name="install-visual-studio-and-net-core"></a>安裝 Visual Studio 和 .NET Core
 
@@ -81,26 +84,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 ::: moniker range="<= aspnetcore-2.0"
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
-
 [!INCLUDE [](~/includes/net-core-prereqs.md)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-安裝 Visual Studio Community 2017。 選取要下載的社群。 如已安裝 Visual Studio 2017 請跳過此步驟。
-
-* [Visual Studio 2017 首頁的安裝程式](https://www.visualstudio.com/)
-
-執行安裝程式並選取下列工作負載：
-
-* **ASP.NET 與網頁程式開發** (位在 [Web & Cloud] (Web 與雲端) 下)
-* **.NET Core 跨平台開發** (位在 [其他工具組] 下)
-
-![**ASP.NET 與網頁程式開發** (位在 [Web & Cloud] (Web 與雲端)**** 下)](start-mvc/_static/web_workload.png)
-
-![**.NET Core 跨平台開發** (位在 [其他工具組]**** 下)](start-mvc/_static/x_plat_wl.png)
-
----
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
@@ -117,8 +101,6 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 ![[新增專案] 對話方塊, 左窗格中的 .Net core, ASP.NET Core Web ](start-mvc/_static/new_project2.png)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
 完成 [新增 ASP.NET Core Web 應用程式 (.NET Core) - MvcMovie] 對話方塊：
 
 * 在版本選取器下拉式清單方塊中，選取 [ASP.NET Core 2.-]。
@@ -126,19 +108,6 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 * 點選 [確定]。
 
 ![[新增專案] 對話方塊, 左窗格中的 .Net core, ASP.NET Core Web ](start-mvc/_static/new_project22.png)
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-完成 [新增 ASP.NET Core Web 應用程式 (.NET Core) - MvcMovie] 對話方塊：
-
-* 在版本選取器下拉式清單方塊中，點選 [ASP.NET Core 1.1]。
-* 點選 [Web 應用程式]
-* 保留預設值 [No Authentication] (無驗證)
-* 點選 [確定]。
-
-![新的 ASP.NET Core Web 應用程式](start-mvc/_static/p3.png)
-
----
 
 Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只要輸入專案名稱，然後選取幾個選項，就立刻會有工作中的應用程式。 這是基本的入門專案，是個好開始。
 

@@ -314,7 +314,7 @@ Entity Framework 可以自動建立 （或卸除並重新建立） 為您的應�
 - 複數化的形式的實體類別名稱會用於資料表名稱。
 - 實體屬性名稱會用於資料行名稱。
 - 名為實體屬性`ID`或是*classname* `ID`被視為主索引鍵屬性。
-- 是否將它命名，將會解譯為外部索引鍵屬性的屬性*&lt;導覽屬性名稱&gt;&lt;主索引鍵屬性名稱&gt;* (比方說，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`)。 外部索引鍵屬性也可以命名相同只要&lt;主索引鍵屬性名稱&gt;(例如`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
+- 是否將它命名，將會解譯為外部索引鍵屬性的屬性 *&lt;導覽屬性名稱&gt;&lt;主索引鍵屬性名稱&gt;* (比方說，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`)。 外部索引鍵屬性也可以命名相同只要&lt;主索引鍵屬性名稱&gt;(例如`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
 
 您已了解可以覆寫慣例。 例如，指定資料表名稱不應該要複數化，，和更新版本，您會看到如何明確地標示為外部索引鍵屬性的屬性。 您將進一步了解慣例和如何覆寫其[建立更多複雜的資料模型](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)稍後在本系列教學課程。 如需慣例的詳細資訊，請參閱 <<c0> [ 程式碼的第一個慣例](/ef/ef6/modeling/code-first/conventions/built-in)。
 

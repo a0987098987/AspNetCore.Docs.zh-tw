@@ -72,7 +72,7 @@ ms.locfileid: "51021335"
 
 儲存並關閉 Site.Master。
 
-現在，您將建立顯示學生資料的 web 表單。 以滑鼠右鍵按一下您的專案，並**新增****新項目**。 選取 **使用主版頁面的 Web Form**範本，並將它命名**Students.aspx**。
+現在，您將建立顯示學生資料的 web 表單。 以滑鼠右鍵按一下您的專案，並 **新增** **新項目**。 選取 **使用主版頁面的 Web Form**範本，並將它命名**Students.aspx**。
 
 ![建立頁面](retrieving-data/_static/image5.png)
 

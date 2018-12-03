@@ -25,7 +25,7 @@ ms.locfileid: "51708396"
 
 ![登入對話方塊](index/_static/MicrosoftDevLogin.png)
 
-如果您還沒有 Microsoft 帳戶，請點選**[建立一個 ！](https://signup.live.com/signup?wa=wsignin1.0&rpsnv=13&ct=1478151035&rver=6.7.6643.0&wp=SAPI_LONG&wreply=https%3a%2f%2fapps.dev.microsoft.com%2fLoginPostBack&id=293053&aadredir=1&contextid=D70D4F21246BAB50&bk=1478151036&uiflavor=web&uaid=f0c3de863a914c358b8dc01b1ff49e85&mkt=EN-US&lc=1033&lic=1)** 登入之後將您重新導向 **我的應用程式** 頁面：
+如果您還沒有 Microsoft 帳戶，請點選 **[建立一個 ！](https://signup.live.com/signup?wa=wsignin1.0&rpsnv=13&ct=1478151035&rver=6.7.6643.0&wp=SAPI_LONG&wreply=https%3a%2f%2fapps.dev.microsoft.com%2fLoginPostBack&id=293053&aadredir=1&contextid=D70D4F21246BAB50&bk=1478151036&uiflavor=web&uaid=f0c3de863a914c358b8dc01b1ff49e85&mkt=EN-US&lc=1033&lic=1)** 登入之後將您重新導向 **我的應用程式** 頁面：
 
 ![開啟 Microsoft Edge 中的 Microsoft 開發人員入口網站](index/_static/MicrosoftDev.png)
 

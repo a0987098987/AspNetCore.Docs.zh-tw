@@ -4,14 +4,14 @@ author: guardrex
 description: 了解 Kestrel，這是 ASP.NET Core 的跨平台網頁伺服器。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/12/2018
+ms.date: 11/26/2018
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 793aa6e190da0170a395292ea661f7c828f817c1
-ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
+ms.openlocfilehash: 1ef9491ebbc31fd8aa3752b53123eb6c9cf31b42
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597806"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450831"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -468,7 +468,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
 
 如需詳細資訊，請參閱[伺服器 URL](xref:fundamentals/host/web-host#server-urls) 和[覆寫設定](xref:fundamentals/host/web-host#override-configuration)。
 
-使用這些方法提供的值可以是一或多個 HTTP 和 HTTPS 端點 (如果有預設憑證可用則為 HTTPS)。 將值設定為以分號分隔的清單 (例如，`"Urls": "http://localhost:8000;http://localhost:8001"`)。
+使用這些方法提供的值可以是一或多個 HTTP 和 HTTPS 端點 (如果有預設憑證可用則為 HTTPS)。 將值設定為以分號分隔的清單 (例如，`"Urls": "http://localhost:8000; http://localhost:8001"`)。
 
 *從組態取代預設憑證*
 
@@ -1027,7 +1027,8 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 ## <a name="additional-resources"></a>其他資源
 
-* [強制使用 HTTPS](xref:security/enforcing-ssl)
+* <xref:test/troubleshoot>
+* <xref:security/enforcing-ssl>
+* <xref:host-and-deploy/proxy-load-balancer>
 * [Kestrel 原始程式碼](https://github.com/aspnet/KestrelHttpServer)
 * [RFC 7230：訊息語法和路由 (第 5.4 節：主機)](https://tools.ietf.org/html/rfc7230#section-5.4)
-* [設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)

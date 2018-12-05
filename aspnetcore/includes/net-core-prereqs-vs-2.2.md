@@ -1,0 +1,2 @@
+* <span data-ttu-id="e5118-101">[Visual Studio 2017 版本 15.9 以後](https://visualstudio.microsoft.com/downloads/)具有**ASP.NET 和 web 開發**工作負載</span><span class="sxs-lookup"><span data-stu-id="e5118-101">[Visual Studio 2017 version 15.9 or later](https://visualstudio.microsoft.com/downloads/) with the **ASP.NET and web development** workload</span></span>
+* [<span data-ttu-id="e5118-102">.NET core SDK 2.2 或更新版本</span><span class="sxs-lookup"><span data-stu-id="e5118-102">.NET Core SDK 2.2 or later</span></span>](https://www.microsoft.com/net/download/all)

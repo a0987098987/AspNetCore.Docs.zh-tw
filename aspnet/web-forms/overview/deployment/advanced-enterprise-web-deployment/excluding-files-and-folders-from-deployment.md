@@ -92,7 +92,7 @@ ms.locfileid: "41826026"
 1. Visual Studio 2010 中開啟您的方案。
 2. 中**方案總管 中** 視窗中，以滑鼠右鍵按一下您 web 應用程式的專案節點 (例如**ContactManager.Mvc**)，指向**新增**，然後按一下  **新項目**。
 3. 在 **加入新項目**對話方塊中，選取**XML 檔案**範本。
-4. 在 **名稱**方塊中，輸入[專案名稱] ***.wpp.targets* (比方說， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**. 
+4. 在 **名稱**方塊中，輸入 *[專案名稱]* **.wpp.targets** (比方說， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.
 
     ![](excluding-files-and-folders-from-deployment/_static/image3.png)
 

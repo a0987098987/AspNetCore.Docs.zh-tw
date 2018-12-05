@@ -8,23 +8,23 @@ ms.date: 06/10/2014
 ms.assetid: 6ecd08c1-e364-4cd7-ad4c-806521911585
 msc.legacyurl: /signalr/overview/performance/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: ebb61e4296f78bcd74622b729a10d45b60ebb724
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: f92946ae99bf8cb3840adb5d98004acb87e24925
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912783"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861286"
 ---
 <a name="signalr-scaleout-with-redis"></a>使用 Redis 的 SignalR 向外延展
 ====================
-藉由[Mike Wasson](https://github.com/MikeWasson)， [Patrick Fletcher](https://github.com/pfletcher)
+藉由[Mike Wasson](https://github.com/MikeWasson)
 
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
 >
 >
 > - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
-> - SignalR 第 2 版
+> - SignalR 2.4 版
 >
 >
 >
@@ -65,7 +65,8 @@ Redis 是記憶體中索引鍵-值存放區。 它也支援發行/訂閱模型�
 2. 將這些 NuGet 套件新增至您的應用程式中：
 
     - [Microsoft.AspNet.SignalR](http://nuget.org/packages/Microsoft.AspNet.SignalR)
-    - [Microsoft.AspNet.SignalR.Redis](http://nuget.org/packages/Microsoft.AspNet.SignalR.Redis)
+    - [Microsoft.AspNet.SignalR.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.StackExchangeRedis)
+    
 3. 建立 SignalR 應用程式。
 4. 若要設定的後擋板的 Startup.cs 中加入下列程式碼：
 
@@ -112,7 +113,7 @@ Redis 是記憶體中索引鍵-值存放區。 它也支援發行/訂閱模型�
 - [開始使用 SignalR 2.0](../getting-started/tutorial-getting-started-with-signalr.md)
 - [開始使用 SignalR 2.0 和 MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
 
-接下來，我們將修改的聊天應用程式，以支援向外的延展與 Redis。 首先，將 SignalR.Redis NuGet 封裝加入您的專案。 在 Visual Studio 中，從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+接下來，我們將修改的聊天應用程式，以支援向外的延展與 Redis。 首先，新增`Microsoft.AspNet.SignalR.StackExchangeRedis`NuGet 封裝加入您的專案。 在 Visual Studio 中，從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 [!code-powershell[Main](scaleout-with-redis/samples/sample5.ps1)]
 

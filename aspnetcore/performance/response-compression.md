@@ -5,14 +5,14 @@ description: 了解回應壓縮及如何使用 ASP.NET Core 應用程式中的�
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/21/2018
+ms.date: 12/01/2018
 uid: performance/response-compression
-ms.openlocfilehash: 8c3d74b6a346d51507d3c278b03ddc842feea13e
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 2516fbb30e55990dc4ad0d92069853bc26874bc9
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207975"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861884"
 ---
 # <a name="response-compression-in-aspnet-core"></a>ASP.NET Core 中的回應壓縮
 
@@ -24,7 +24,7 @@ ms.locfileid: "50207975"
 
 ## <a name="when-to-use-response-compression-middleware"></a>回應壓縮中介軟體的使用時機
 
-使用 IIS、 Apache 或 Nginx 中的伺服器為基礎的回應壓縮技術。 中介軟體的效能可能不會符合伺服器模組。 [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys)並[Kestrel](xref:fundamentals/servers/kestrel)目前並未提供內建壓縮支援。
+使用 IIS、 Apache 或 Nginx 中的伺服器為基礎的回應壓縮技術。 中介軟體的效能可能不會符合伺服器模組。 [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys)伺服器和[Kestrel](xref:fundamentals/servers/kestrel)伺服器目前並未提供內建壓縮支援。
 
 當您準備時，請使用回應壓縮中介軟體：
 
@@ -33,8 +33,8 @@ ms.locfileid: "50207975"
   * [Apache mod_deflate 模組](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
   * [Nginx 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * 直接在裝載：
-  * [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys)(先前稱為[WebListener](xref:fundamentals/servers/weblistener))
-  * [Kestrel](xref:fundamentals/servers/kestrel)
+  * [HTTP.sys](xref:fundamentals/servers/httpsys)伺服器 (先前稱為[WebListener](xref:fundamentals/servers/weblistener))
+  * [Kestrel](xref:fundamentals/servers/kestrel)伺服器
 
 ## <a name="response-compression"></a>回應壓縮
 
@@ -94,7 +94,7 @@ ms.locfileid: "50207975"
 * 使用 Gzip 和自訂壓縮提供者的應用程式回應的壓縮。
 * 如何將 MIME 類型加入至壓縮的 MIME 類型的預設清單。
 
-## <a name="package"></a>Package
+## <a name="package"></a>封裝
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -432,7 +432,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Nginx 背後時的中介軟體問題的反向 proxy
 
-當要求 proxy 處理的 Nginx`Accept-Encoding`標頭移除。 這可防止壓縮回應的中介軟體。 如需詳細資訊，請參閱 < [NGINX： 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)。 此問題會追蹤[找出 nginx (BasicMiddleware #123) 的傳遞壓縮](https://github.com/aspnet/BasicMiddleware/issues/123)。
+當要求 proxy 處理的 Nginx`Accept-Encoding`標頭移除。 移除`Accept-Encoding`標頭會防止從壓縮回應的中介軟體。 如需詳細資訊，請參閱 < [NGINX： 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)。 此問題會追蹤[找出 nginx 傳遞壓縮 (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123)。
 
 ## <a name="working-with-iis-dynamic-compression"></a>使用 IIS 動態壓縮
 

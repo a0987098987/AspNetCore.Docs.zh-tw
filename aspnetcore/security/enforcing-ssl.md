@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何在 ASP.NET Core web 應用程式需要 HTTPS/TLS。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/18/2018
+ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: d287d30203fbf367203afe65e05478806fafab34
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: b15c6b5ac77f047c40704c9e164165c55b6ae93b
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570044"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861520"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制使用 ASP.NET Core 中的 HTTPS
 
@@ -76,12 +76,12 @@ ms.locfileid: "51570044"
   設定時<xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder>在`Program`:
 
   [!code-csharp[](enforcing-ssl/sample-snapshot/Program.cs?name=snippet_Program&highlight=10)]
-* 表示具有安全的配置使用的連接埠`ASPNETCORE_URLS`環境變數。 環境變數設定伺服器。 中介軟體間接探索透過 HTTPS 連接埠<xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>。 (沒有**不**反向 proxy 的部署中運作。)
+* 表示具有安全的配置使用的連接埠`ASPNETCORE_URLS`環境變數。 環境變數設定伺服器。 中介軟體間接探索透過 HTTPS 連接埠<xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>。 這個方法不適用於反向 proxy 的部署。
 * 在開發中，請在中設定的 HTTPS URL *launchsettings.json*。 使用 IIS Express 時，請啟用 HTTPS。
-* 設定向外公開 edge 部署的 HTTPS URL 端點[Kestrel](xref:fundamentals/servers/kestrel)或是[HTTP.sys](xref:fundamentals/servers/httpsys)。 只有**一個 HTTPS 連接埠**應用程式使用。 中介軟體會探索透過連接埠<xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>。
+* 設定向外公開 edge 部署的 HTTPS URL 端點[Kestrel](xref:fundamentals/servers/kestrel)伺服器或[HTTP.sys](xref:fundamentals/servers/httpsys)伺服器。 只有**一個 HTTPS 連接埠**應用程式使用。 中介軟體會探索透過連接埠<xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>。
 
 > [!NOTE]
-> 應用程式執行 （例如 IIS、 IIS Express），在反向 proxy 後方時`IServerAddressesFeature`無法使用。 您必須手動設定連接埠。 當未設定連接埠時，不是重新導向要求。
+> 在反向 proxy 組態中，執行應用程式時<xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>無法使用。 使用本節中所述的其他方法的其中一個連接埠設定。
 
 使用 Kestrel 或 HTTP.sys 時做為向外公開邊緣伺服器，Kestrel 或 HTTP.sys 必須設定為接聽兩者：
 

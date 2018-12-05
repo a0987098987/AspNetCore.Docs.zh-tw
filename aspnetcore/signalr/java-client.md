@@ -5,14 +5,14 @@ description: 了解如何使用 ASP.NET Core SignalR Java 用戶端。
 monikerRange: '>= aspnetcore-2.2'
 ms.author: mimengis
 ms.custom: mvc
-ms.date: 11/06/2018
+ms.date: 11/07/2018
 uid: signalr/java-client
-ms.openlocfilehash: 4ee4e61fc301ebeec4d95b1167f94f16c38f3ac5
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: d0eff38c1f622b896ed1dc3002238aec7b6bfd38
+ms.sourcegitcommit: 8a65f6c2cbe290fb2418eed58f60fb74c95392c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225417"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52892090"
 ---
 # <a name="aspnet-core-signalr-java-client"></a>ASP.NET Core SignalR Java 用戶端
 
@@ -26,13 +26,12 @@ Java 用戶端可讓您從 Java 程式碼，包括 Android 應用程式連接至
 
 ## <a name="install-the-signalr-java-client-package"></a>SignalR Java 用戶端封裝安裝
 
-*Signalr 1.0.0-preview3 35501* JAR 檔案可讓用戶端連線到 SignalR 中樞。 若要尋找最新的 JAR 檔案版本號碼，請參閱[Maven 搜尋結果](https://search.maven.org/search?q=g:com.microsoft.signalr%20AND%20a:signalr)。
+*Signalr 1.0.0* JAR 檔案可讓用戶端連線到 SignalR 中樞。 若要尋找最新的 JAR 檔案版本號碼，請參閱[Maven 搜尋結果](https://search.maven.org/search?q=g:com.microsoft.signalr%20AND%20a:signalr)。
 
 如果使用 Gradle，加入下列這一行加入`dependencies`一節您*build.gradle*檔案：
 
 ```gradle
-implementation 'com.microsoft.signalr:signalr:1.0.0-preview3-35501'
-implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+implementation 'com.microsoft.signalr:signalr:1.0.0'
 ```
 
 如果使用 Maven，新增下列幾行內`<dependencies>`項目您*pom.xml*檔案：
@@ -75,6 +74,12 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 
 這可以放心地忽略。
 
+## <a name="android-development-notes"></a>Android 開發附註
+
+與 SignalR 用戶端功能的 Android SDK 相容性，請考慮下列項目，指定您的目標 Android SDK 版本時：
+
+* SignalR Java 用戶端會執行 Android API 層級 16 及更新版本。
+* Azure SignalR 服務透過連接 Android API 層級 20 和更新版本需要因為[Azure SignalR 服務](/azure/azure-signalr/signalr-overview)要求 TLS 1.2，且不支援 SHA-1 為基底的加密套件。 Android[新增支援 SHA-256 （和更新版本） 的加密套件](https://developer.android.com/reference/javax/net/ssl/SSLSocket)在 API 層級 20。
 
 ## <a name="configure-bearer-token-authentication"></a>設定持有人權杖驗證
 
@@ -88,9 +93,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
     })).build();
 ```
 
-## <a name="known-limitations"></a>已知的限制
-
-這是預覽版本的 Java 用戶端。 不支援某些功能：
+## <a name="known-limitations"></a>已知限制
 
 * 支援 JSON 通訊協定。
 * 支援 Websocket 傳輸。

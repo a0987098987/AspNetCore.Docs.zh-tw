@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何在 Windows Server Internet Information Services (IIS) 上裝載 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 12/01/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 77fa6e1ef6a7fc707c2665826d3c1f4c2691979c
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 1680b1377351fbfbfc38249868da389012dd5fb6
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450797"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862183"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -65,11 +65,11 @@ public static IWebHost BuildWebHost(string[] args) =>
 
 **同處理序主控模型**
 
-`CreateDefaultBuilder` 會呼叫 `UseIIS` 方法來啟動 [CoreCLR](/dotnet/standard/glossary#coreclr)，並在 IIS 工作者處理序 (*w3wp.exe* 或 *iisexpress.exe*) 內裝載應用程式。 效能測試指出，相較於將 .NET Core 應用程式裝載於處理序外，並將要求 Proxy 處理至 [Kestrel](xref:fundamentals/servers/kestrel)，裝載於處理序內可提供明顯更高的要求輸送量。
+`CreateDefaultBuilder` 會呼叫 `UseIIS` 方法來啟動 [CoreCLR](/dotnet/standard/glossary#coreclr)，並在 IIS 工作者處理序 (*w3wp.exe* 或 *iisexpress.exe*) 內裝載應用程式。 效能測試指出，相較於跨處理序裝載 .NET Core 應用程式，並將要求 Proxy 處理至 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器，裝載於同處理序可提供明顯更高的要求輸送量。
 
 **跨處理序裝載模型**
 
-針對使用 IIS 的處理序外裝載，`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
+若是使用 IIS 的跨處理序裝載，`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
 
 ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `CreateDefaultBuilder` 會呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> 方法。 `UseIISIntegration` 會將 Kestrel 設定為在位於 localhost IP 位址 (`127.0.0.1`) 的動態連接埠上接聽。 若動態連接埠是 1234，Kestrel 會在 `127.0.0.1:1234` 接聽。 此設定會取代由下列項目提供的其他 URL 設定：
 
@@ -85,7 +85,7 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Cr
 
 ::: moniker range="= aspnetcore-2.1"
 
-`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
+`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
 
 ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `CreateDefaultBuilder` 會呼叫 [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) 方法。 `UseIISIntegration` 會將 Kestrel 設定為在位於 localhost IP 位址 (`127.0.0.1`) 的動態連接埠上接聽。 若動態連接埠是 1234，Kestrel 會在 `127.0.0.1:1234` 接聽。 此設定會取代由下列項目提供的其他 URL 設定：
 
@@ -99,7 +99,7 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Cr
 
 ::: moniker range="= aspnetcore-2.0"
 
-`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
+`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
 
 ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `CreateDefaultBuilder` 會呼叫 [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) 方法。 `UseIISIntegration` 會將 Kestrel 設定為在位於 localhost IP 位址 (`localhost`) 的動態連接埠上接聽。 若動態連接埠是 1234，Kestrel 會在 `localhost:1234` 接聽。 此設定會取代由下列項目提供的其他 URL 設定：
 
@@ -484,7 +484,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
-IIS 組態受到這些適用於反向 Proxy 組態之 IIS 功能 *web.config* 的 **\<system.webServer>** 區段所影響。 如果在伺服器層級設定 IIS 使用動態壓縮，則在應用程式 *web.config* 檔案中的 **\<urlCompression>** 元素將可停用它。
+在對使用了 ASP.NET Core 模組的 ASP.NET Core 有作用的 IIS 情境下，設定會受 *web.config* 的 `<system.webServer>` 區段影響。 舉例來說，IIS 設定對動態壓縮有作用。 如果在伺服器層級將 IIS 設為使用動態壓縮，應用程式 *web.config* 檔案中的 `<urlCompression>` 元素則可為 ASP.NET Core 應用程式予以停用。
 
 如需詳細資訊，請參閱 [\<system.webServer> 的設定參考](/iis/configuration/system.webServer/)、[ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)以及 [IIS 模組與 ASP.NET Core](xref:host-and-deploy/iis/modules)。 若要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (支援 IIS 10.0 或更新版本)，請參閱 IIS 參考文件之[環境變數 \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
 
@@ -492,10 +492,10 @@ IIS 組態受到這些適用於反向 Proxy 組態之 IIS 功能 *web.config* �
 
 ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用程式的設定區段：
 
-* **\<system.web>**
-* **\<appSettings>**
-* **\<connectionStrings>**
-* **\<位置>**
+* `<system.web>`
+* `<appSettings>`
+* `<connectionStrings>`
+* `<location>`
 
 使用其他組態提供者設定的 ASP.NET Core 應用程式。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 

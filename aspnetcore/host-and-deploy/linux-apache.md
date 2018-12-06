@@ -4,14 +4,14 @@ description: 了解如何在 CentOS 上將 Apache 設定為反向 Proxy 伺服�
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 10/23/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 1d303fbde2a398b4628d3390aea80957a59f711b
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: d0e36d0a73df43a26c03dc4154962240683817b5
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253135"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450810"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -180,9 +180,9 @@ sudo systemctl restart httpd
 sudo systemctl enable httpd
 ```
 
-## <a name="monitoring-the-app"></a>監視應用程式
+## <a name="monitor-the-app"></a>監視應用程式
 
-Apache 現在已設定完成，可將對 `http://localhost:80` 發出的要求轉送給在位於 `http://127.0.0.1:5000` 的 Kestrel 上執行的 ASP.NET Core 應用程式。  不過，並未設定 Apache 來管理 Kestrel 處理序。 請使用 *systemd* 並建立服務檔案，以啟動並監視基礎 Web 應用程式。 *systemd* 是 init 系統，提供許多強大的啟動、停止和管理處理程序功能。 
+Apache 現在已設定完成，可將對 `http://localhost:80` 發出的要求轉送給在位於 `http://127.0.0.1:5000` 的 Kestrel 上執行的 ASP.NET Core 應用程式。 不過，並未設定 Apache 來管理 Kestrel 處理序。 請使用 *systemd* 並建立服務檔案，以啟動並監視基礎 Web 應用程式。 *systemd* 是 init 系統，提供許多強大的啟動、停止和管理處理程序功能。
 
 ### <a name="create-the-service-file"></a>建立服務檔
 
@@ -259,7 +259,7 @@ Connection: Keep-Alive
 Transfer-Encoding: chunked
 ```
 
-### <a name="viewing-logs"></a>檢視記錄
+### <a name="view-logs"></a>檢視記錄
 
 由於是使用 *systemd* 來管理使用 Kestrel 的 Web 應用程式，因此會將事件和處理序都記錄在集中式日誌中。 不過，此日誌包含 *systemd* 所管理全部服務和處理序的項目。 若要檢視 `kestrel-helloapp.service` 的特定項目，請使用下列命令：
 
@@ -288,7 +288,7 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 * <xref:security/data-protection/implementation/key-storage-providers>
 * <xref:security/data-protection/implementation/key-encryption-at-rest>
 
-## <a name="securing-the-app"></a>確保應用程式的安全性
+## <a name="secure-the-app"></a>保護應用程式
 
 ### <a name="configure-firewall"></a>設定防火牆
 
@@ -485,4 +485,5 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
 ## <a name="additional-resources"></a>其他資源
 
 * [Linux 上 .NET Core 的必要條件](/dotnet/core/linux-prerequisites)
-* [設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)
+* <xref:test/troubleshoot>
+* <xref:host-and-deploy/proxy-load-balancer>

@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: c4b23f75da298e4ee804f649219c2ce466b6d6ea
-ms.sourcegitcommit: 710fc5fcac258cc8415976dc66bdb355b3e061d5
+ms.openlocfilehash: 0d33901805d6728fb8006f14d41090b874ab28b1
+ms.sourcegitcommit: e8d80ff566bfe505b43389d7bc4551edb1c0c872
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52299439"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52549106"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -65,7 +65,7 @@ ms.locfileid: "52299439"
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
-ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，此教學課程中稍後會示範。
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
@@ -213,6 +213,9 @@ Microsoft.EntityFrameworkCore.Model.Validation[30000]
 
 * 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL (`http://localhost:port/movies`)。
 * 測試 **Create** 連結。
+
+  > [!NOTE]
+  > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期欄位支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須將您的應用程式全球化。 如需全球化指示，請參閱[此 GitHub 問題](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420) \(英文\)。
 
   ![建立頁面](../../tutorials/razor-pages/model/_static/conan.png)
 

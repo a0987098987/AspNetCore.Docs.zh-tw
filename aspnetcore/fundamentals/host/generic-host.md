@@ -5,14 +5,14 @@ description: 了解 .NET 中的泛型主機，其負責啟動應用程式以及�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/30/2018
+ms.date: 11/28/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: cac5ccdea7838d26b7468f9bf1ab8d317b444b46
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: 4d435984d8169b558ab026ef8541c90f7a2a96b9
+ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708513"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52618151"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -44,6 +44,28 @@ ms.locfileid: "51708513"
 <xref:Microsoft.Extensions.Hosting.IHostBuilder> 是程式庫和應用程式用來初始化、建置及執行主機的主要元件：
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_HostBuilder)]
+
+## <a name="options"></a>選項
+
+<xref:Microsoft.Extensions.Hosting.IHost> 的 <xref:Microsoft.Extensions.Hosting.HostOptions> 設定選項。
+
+### <a name="shutdown-timeout"></a>關機逾時
+
+<xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> 會為 <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*> 設定逾時。 預設值是五秒鐘。
+
+`Program.Main` 中的下列選項設定可將預設的五秒鐘關機逾時增加到 20 秒：
+
+```csharp
+var host = new HostBuilder()
+    .ConfigureServices((hostContext, services) =>
+    {
+        services.Configure<HostOptions>(option =>
+        {
+            option.ShutdownTimeout = System.TimeSpan.FromSeconds(20);
+        });
+    })
+    .Build();
+```
 
 ## <a name="default-services"></a>預設服務
 

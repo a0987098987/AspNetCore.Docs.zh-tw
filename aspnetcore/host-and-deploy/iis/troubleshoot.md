@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何診斷 ASP.NET Core 應用程式的 Internet Information Services (IIS) 部署問題。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 2b23bf8230f7a1c207ef7870da098ffb0c597fd5
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: 2ff870623de43676be38c5de8f338a7913e885a8
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225443"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450706"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>針對 IIS 上的 ASP.NET Core 進行疑難排解
 
@@ -47,7 +47,8 @@ ms.locfileid: "51225443"
 
 ## <a name="app-startup-errors"></a>應用程式啟動錯誤
 
-**502.5 處理序失敗**  
+### <a name="5025-process-failure"></a>502.5 處理序失敗
+
 背景工作處理序失敗。 應用程式未啟動。
 
 ASP.NET Core 模組嘗試啟動後端 dotnet 處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。 
@@ -60,7 +61,7 @@ ASP.NET Core 模組嘗試啟動後端 dotnet 處理序，但無法啟動。 通�
 
 ::: moniker range=">= aspnetcore-2.2"
 
-**500.30 同處理序啟動失敗**
+### <a name="50030-in-process-startup-failure"></a>500.30 同處理序啟動失敗
 
 背景工作處理序失敗。 應用程式未啟動。
 
@@ -68,7 +69,7 @@ ASP.NET Core 模組嘗試啟動 .NET Core CLR 同處理序，但無法啟動。 
 
 因為目標 ASP.NET Core 共用架構的版本不存在，導致應用程式設定錯誤是常見的失敗狀況。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。
 
-**500.0 同處理序處理常式載入失敗**
+### <a name="5000-in-process-handler-load-failure"></a>500.0 同處理序處理常式載入失敗
 
 背景工作處理序失敗。 應用程式未啟動。
 
@@ -77,7 +78,7 @@ The ASP.NET Core 模組找不到 .NET Core CLR，並尋找同處理序要求處�
 * 應用程式以 [Microsoft.AspNetCore.Server.IIS](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IIS) NuGet 套件或 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)為目標。
 * 應用程式設為目標的 ASP.NET Core 共用架構版本有安裝在目標機器上。
 
-**500.0 跨處理序處理常式載入失敗**
+### <a name="5000-out-of-process-handler-load-failure"></a>500.0 跨處理序處理常式載入失敗
 
 背景工作處理序失敗。 應用程式未啟動。
 
@@ -85,12 +86,13 @@ ASP.NET Core 模組找不到跨處理序裝載要求處理常式。 請確定 *a
 
 ::: moniker-end
 
-**500 內部伺服器錯誤**  
+### <a name="500-internal-server-error"></a>500 內部伺服器錯誤
+
 應用程式啟動，但有錯誤導致伺服器無法完成要求。
 
 此錯誤是在啟動或建立回應時，在應用程式的程式碼內發生。 回應可能未包含任何內容，或是回應可能在瀏覽器中以「500 內部伺服器錯誤」的形式出現。 「應用程式事件記錄檔」通常會指出該應用程式已正常啟動。 從伺服器的觀點來看，這是正確的。 應用程式已啟動，但無法產生有效的回應。 請在伺服器上[於命令提示字元中執行應用程式](#run-the-app-at-a-command-prompt)或[啟用 ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)，以針對問題進行疑難排解。
 
-**連線重設**
+### <a name="connection-reset"></a>連線重設
 
 如果是在傳送標頭之後才發生錯誤，則當發生錯誤時，伺服器已來不及傳送「500 內部伺服器錯誤」。 通常是在將回應的複雜物件序列化的期間發生錯誤時，會發生此錯誤。 這類錯誤會在用戶端上顯示為「連線重設」錯誤。 [應用程式記錄](xref:fundamentals/logging/index)可協助針對這些類型的錯誤進行疑難排解。
 
@@ -113,7 +115,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 許多啟動錯誤不會在「應用程式事件記錄檔」中產生實用的資訊。 您可以藉由在主控系統上的命令提示字元中執行應用程式，來找出一些錯誤的原因。
 
-**架構相依部署**
+#### <a name="framework-dependent-deployment"></a>與 Framework 相依的部署
 
 如果應用程式是[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)：
 
@@ -121,7 +123,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
 1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與反向 Proxy 設定有關的機率較大，而與應用程式本身有關的機率較小。
 
-**自封式部署**
+#### <a name="self-contained-deployment"></a>自封式部署
 
 如果應用程式是[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)：
 
@@ -142,7 +144,8 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 1. 瀏覽至 [logs] 資料夾。 尋找並開啟最新的 stdout 記錄檔。
 1. 研究記錄檔以了解錯誤。
 
-**重要！** 完成疑難排解時，請停用 stdout 記錄。
+> [!IMPORTANT]
+> 完成疑難排解時，請停用 stdout 記錄。
 
 1. 編輯 *web.config* 檔案。
 1. 將 **stdoutLogEnabled** 設定為 `false`。
@@ -153,9 +156,27 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 >
 > 針對 ASP.NET Core 應用程式中的例行性記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
-## <a name="enabling-the-developer-exception-page"></a>啟用開發人員例外狀況頁面
+## <a name="enable-the-developer-exception-page"></a>啟用開發人員例外頁面
 
 在開發環境中，可以將 `ASPNETCORE_ENVIRONMENT` [環境變數新增至 web.config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) 來執行應用程式。 只要主機產生器上的 `UseEnvironment` 不會覆寫應用程式啟動內的環境，設定該環境變數便可允許在應用程式執行時顯示[開發人員例外狀況頁面](xref:fundamentals/error-handling)。
+
+::: moniker range=">= aspnetcore-2.2"
+
+```xml
+<aspNetCore processPath="dotnet"
+      arguments=".\MyApp.dll"
+      stdoutLogEnabled="false"
+      stdoutLogFile=".\logs\stdout"
+      hostingModel="inprocess">
+  <environmentVariables>
+    <environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Development" />
+  </environmentVariables>
+</aspNetCore>
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -168,11 +189,17 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 </aspNetCore>
 ```
 
+::: moniker-end
+
 只有在沒有對網際網路公開的暫存和測試伺服器上使用時，才建議為 `ASPNETCORE_ENVIRONMENT` 設定環境變數。 進行疑難排解之後，請從 *web.config* 檔案中移除環境變數。 如需有關在 *web.config* 中設定環境變數的資訊，請參閱 [aspNetCore 的 environmentVariables 子元素](xref:host-and-deploy/aspnet-core-module#setting-environment-variables)。
 
-## <a name="common-startup-errors"></a>常見的啟動錯誤 
+## <a name="common-startup-errors"></a>常見的啟動錯誤
 
 請參閱 <xref:host-and-deploy/azure-iis-errors-reference>。 參考主題涵蓋了大多數導致應用程式無法啟動的常見問題。
+
+## <a name="obtain-data-from-an-app"></a>從應用程式取得資料
+
+若應用程式能夠回應要求、請使用終端機內嵌中介軟體從應用程式取得要求、連線與額外資料。 如如需詳細資訊與範例程式碼，請參閱 <xref:test/troubleshoot#obtain-data-from-an-app>。
 
 ## <a name="slow-or-hanging-app"></a>回應緩慢或無回應的應用程式
 
@@ -190,7 +217,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 [Application Insights](/azure/application-insights/) 提供來自 IIS 所裝載應用程式的遙測資料，包括錯誤記錄和報告功能。 Application Insights 只能針對在應用程式啟動之後，應用程式記錄功能變成可用時所發生的錯誤提出報告。 如需詳細資訊，請參閱 [ASP.NET Core 的 Application Insights](/azure/application-insights/app-insights-asp-net-core)。
 
-## <a name="additional-troubleshooting-advice"></a>其他疑難排解建議
+## <a name="additional-advice"></a>額外建議
 
 有時，在升級開發電腦上的 .NET Core SDK 或應用程式內的套件版本之後，正常運作的應用程式便立即發生失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
 
@@ -201,11 +228,12 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 > [!TIP]
 > 有一個便利的方式可以清除套件快取，就是從命令提示字元執行 `dotnet nuget locals all --clear`。
-> 
+>
 > 您也可以使用 [nuget.exe](https://www.nuget.org/downloads) 工具並執行 `nuget locals all -clear` 命令，來清除套件快取。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 
 ## <a name="additional-resources"></a>其他資源
 
+* <xref:test/troubleshoot>
 * <xref:fundamentals/error-handling>
 * <xref:host-and-deploy/azure-iis-errors-reference>
 * <xref:host-and-deploy/aspnet-core-module>

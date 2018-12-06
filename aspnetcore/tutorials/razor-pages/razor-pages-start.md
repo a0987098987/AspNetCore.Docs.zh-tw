@@ -5,12 +5,12 @@ description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中�
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 4ee9a014114e2536f7584b2a1ff9d699fb971aa8
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: ca5b134aaa0a9218bc3b0466c3448bd41e8cef8b
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206974"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450732"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
@@ -18,21 +18,24 @@ ms.locfileid: "50206974"
 
 ::: moniker range="= aspnetcore-2.0"
 
-我們建議您遵循本教學課程的 ASP.NET Core 2.1。 它**更**容易理解並涵蓋更多功能。 在版本選取器中選取 [ASP.NET Core 2.1]。
+我們建議您遵循此教學課程的 ASP.NET Core 2.1。 它**更**容易理解並涵蓋更多功能。 在版本選取器中選取 [ASP.NET Core 2.1]。
 
 ![目錄中的版本選取器](razor-pages-start/_static/v21.png)
 
 ::: moniker-end
 
-本教學課程將教導您建置 ASP.NET Core Razor Pages之 Web 應用程式的基本概念。 Razor Pages 是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
+此教學課程將教導您建置 ASP.NET Core Razor Pages之 Web 應用程式的基本概念。 Razor Pages 是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
 
-本教學課程有 3 個版本：
+此教學課程有 3 個版本：
 
-* Windows：本教學課程
-* macOS：[Razor 頁面與 Visual Studio for Mac 使用者入門](xref:tutorials/razor-pages-mac/razor-pages-start)
+* Windows：此教學課程
+* macOS：[Razor Pages 與 Visual Studio for Mac 使用者入門](xref:tutorials/razor-pages-mac/razor-pages-start)
 * macOS、Linux 和 Windows：[Visual Studio Code 中的 ASP.NET Core Razor 頁面使用者入門](xref:tutorials/razor-pages-vsc/razor-pages-start)
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+
+> [!NOTE]
+> 我們正為規劃中的 ASP.NET Core 目錄新結構測試其可用性。  如果您有幾分鐘的時間可以嘗試在目前或建議的目錄中尋找 7 個不同主題，請[按一下這裡參加研究](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5)。
 
 ::: moniker range=">= aspnetcore-2.1"
 

@@ -7,12 +7,12 @@ ms.author: pranavkm
 ms.custom: mvc
 ms.date: 11/13/2018
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 023b8d09511aa42966e2a7d1c85e407bb6e79b0f
-ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
+ms.openlocfilehash: ede9a46c160cf6a49aa93da710af0bf0b8f59acc
+ms.sourcegitcommit: c4572be5ebb301013a5698caf9b5572b76cb2e34
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635383"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52710071"
 ---
 # <a name="use-web-api-conventions"></a>使用 Web API 慣例
 
@@ -26,7 +26,7 @@ ASP.NET Core 2.2 引進擷取常見 [API 文件](xref:tutorials/web-api-help-pag
 
 ## <a name="apply-web-api-conventions"></a>套用 Web API 慣例
 
-可透過三種方式套用慣例。 慣例不會進行撰寫，各個動作可能僅會與一個慣例建立關聯。 相較於較不特定的慣例，更特定的慣例 (詳述如下) 擁有較高的優先順序。 當兩個以上相同屬性的慣例套用至動作時，慣例就具有不確定性。 下列選項的作用為將慣例套用至動作，其順序為從最特定到最不特定：
+可透過三種方式套用慣例。 慣例不會進行撰寫。 每個動作可能僅會與一個慣例建立關聯。 相較於較不特定的慣例，更特定的慣例 (詳述如下) 擁有較高的優先順序。 當兩個以上相同屬性的慣例套用至動作時，慣例就具有不確定性。 下列選項的作用為將慣例套用至動作，其順序為從最特定到最不特定：
 
 1. `Microsoft.AspNetCore.Mvc.ApiConventionMethodAttribute` &mdash; 會套用至個別動作，並會指定慣例型別及其套用的慣例方法。 在下列範例中，慣例方法 `Microsoft.AspNetCore.Mvc.DefaultApiConventions.Put` 會套用至 `Update` 動作：
 

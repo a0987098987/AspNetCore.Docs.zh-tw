@@ -2,16 +2,17 @@
 title: 將 ASP.NET Core 應用程式部署至 Azure App Service
 author: guardrex
 description: 本文包含 Azure 主機和部署資源的連結。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/04/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: c55a5202643bb947b3f38f67aec55ee5cf7b1496
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: b32dd3cb84a86d12c61e391b88355ab0411c2815
+ms.sourcegitcommit: a3a15d3ad4d6e160a69614a29c03bbd50db110a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244745"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52951962"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -41,23 +42,35 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 [Azure Web 應用程式沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
 探索 Azure 應用程式平台強制實施的 Azure App Service 執行階段執行限制。
 
-::: moniker range=">= aspnetcore-2.0"
-
 ## <a name="application-configuration"></a>應用程式組態
 
-下列 NuGet 套件會為部署至 Azure App Service 的應用程式提供自動記錄功能：
+### <a name="platform"></a>Platform
+
+::: moniker range=">= aspnetcore-2.2"
+
+Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執行階段。 App Service 可使用的 [.NET Core SDK](/dotnet/core/sdk) 為 32 位元，但您可以使用 [Kudu](https://github.com/projectkudu/kudu/wiki) 主控台，或透過[具有 Visual Studio 發行設定檔或 CLI 命令的 MSDeploy](xref:host-and-deploy/visual-studio-publish-profiles) 部署 64 位元的應用程式。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+對於具有原生相依性的應用程式而言，Azure App Service 具有 32 位元 (x86) 應用程式的執行階段。 App Service 可使用的 [.NET Core SDK](/dotnet/core/sdk) 為 32 位元。
+
+::: moniker-end
+
+### <a name="packages"></a>封裝
+
+包含下列 NuGet 套件，為部署至 Azure App Service 的應用程式提供自動記錄功能：
 
 * [Microsoft.AspNetCore.AzureAppServices.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServices.HostingStartup/) 使用 [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration) 提供 ASP.NET Core 與 Azure App Service 整合的啟動。 新增的記錄功能由 `Microsoft.AspNetCore.AzureAppServicesIntegration` 套件提供。
 * [Microsoft.AspNetCore.AzureAppServicesIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServicesIntegration/) 執行 [AddAzureWebAppDiagnostics](/dotnet/api/microsoft.extensions.logging.azureappservicesloggerfactoryextensions.addazurewebappdiagnostics)，以在 `Microsoft.Extensions.Logging.AzureAppServices` 套件中新增 Azure App Service 診斷記錄提供者。
 * [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/) 提供記錄器實作以支援 Azure App Service 診斷記錄和記錄串流功能。
 
-若以 .NET Core 為目標且參考 [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)，則已包含上述套件。 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)中不存在套件。 若以 .NET Framework 為目標或參考 `Microsoft.AspNetCore.App` 中繼套件，則會參考個別記錄套件。
-
-::: moniker-end
+上述套件無法從 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)取得。 以 .NET Framework 為目標或參考 `Microsoft.AspNetCore.App` 中繼套件的應用程式必須明確參考應用程式之專案檔中的個別套件。
 
 ## <a name="override-app-configuration-using-the-azure-portal"></a>使用 Azure 入口網站覆寫應用程式設定
 
-[應用程式設定] 刀鋒視窗的 [應用程式設定] 區域允許您為應用程式設定環境變數。 環境變數可由[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)取用。
+Azure 入口網站中的應用程式設定允許您為應用程式設定環境變數。 環境變數可由[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)取用。
 
 在 Azure 入口網站中建立或修改應用程式設定並選取 [儲存] 按鈕後，即會重新啟動 Azure 應用程式。 當服務重新啟動之後，環境變數便可供應用程式使用。
 
@@ -113,48 +126,36 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 如果您在使用預覽網站延伸模組時發生任何問題，請在 [GitHub](https://github.com/aspnet/azureintegration/issues/new) 上提出問題。
 
-1. 從 Azure 入口網站中，巡覽至 [App Service] 刀鋒視窗。
+1. 從 Azure 入口網站瀏覽至 App Service。
 1. 選取 Web 應用程式。
-1. 在搜尋方塊中鍵入"ex"，或將管理區段的清單向下捲動至 [開發工具]。
-1. 選取 [開發工具] > [延伸模組]。
+1. 在搜尋方塊中鍵入 "ex" 來篩選 "Extensions"，也可往下捲動管理工具的清單。
+1. 選取 [擴充功能]。
 1. 選取 [新增]。
-1. 從清單選取 [ASP.NET Core &lt;x.y&gt; (x86) 執行階段] 延伸模組，其中 `<x.y>` 是 ASP.NET Core 預覽版本 (例如 **ASP.NET Core 2.2 (x86) 執行階段**)。 x86 執行階段適用於[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)，其依賴由 ASP.NET Core 模組裝載的跨處理序。
+1. 從清單選取 [ASP.NET Core {X.Y} ({x64|x86}) 執行階段] 延伸模組，其中 `{X.Y}` 是 ASP.NET Core 預覽版本，而 `{x64|x86}` 則指定平台。
 1. 選取 [確定] 以接受法律條款。
 1. 選取 [確定] 安裝延伸模組。
 
 當作業完成後，會安裝最新的 .NET Core 預覽。 確認安裝：
 
-1. 選取 [開發工具] 下的 [進階工具]。
-1. 選取 [進階工具] 刀鋒視窗上的 [開始]。
+1. 選取 [進階工具]。
+1. 在 [進階工具] 中選取 [移至]。
 1. 選取 [偵錯主控台] > [PowerShell] 功能表項目。
-1. 在 PowerShell 提示執行下列命令。 在命令中使用 ASP.NET Core 執行階段版本取代 `<x.y>`：
+1. 在 PowerShell 提示執行下列命令。 在命令中使用 ASP.NET Core 執行階段版本取代 `{X.Y}`，並以平台取代 `{PLATFORM}`：
 
    ```powershell
-   Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.<x.y>.x86\
-   ```
-   如果安裝的預覽執行階段適用於 ASP.NET Core 2.2，命令就會是：
-   ```powershell
-   Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.2.2.x86\
+   Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.{PLATFORM}\
    ```
    當已安裝 x64 預覽執行階段時，此命令會傳回 `True`。
 
-::: moniker range=">= aspnetcore-2.2"
-
 > [!NOTE]
-> 對於裝載於 A 系列計算或更高裝載層的應用程式，應用程式服務應用程式的平台架構 (x86 x64) 設定在 [一般設定] 下的 [應用程式設定] 刀鋒視窗中。 如果在同處理序模式中執行應用程式，且平台架構設定為適用於 64 位元 (x64)，ASP.NET Core 模組會使用 64 位元預覽執行階段 (如果有)。 安裝 **ASP.NET Core &lt;x.y&gt; (x64) 執行階段**延伸模組 (例如 **ASP.NET Core 2.2 (x64) 執行階段**)。
+> 對於裝載於 A 系列計算或更高裝載層的應用程式，應用程式服務應用程式的平台架構 (x86/x64) 會設定在 Azure 入口網站中應用程式的設定內。 如果在同處理序模式中執行應用程式，且平台架構設定為適用於 64 位元 (x64)，ASP.NET Core 模組會使用 64 位元預覽執行階段 (如果有)。 請安裝 [ASP.NET Core {X.Y} (x64) 執行階段] 延伸模組。
 >
-> 在安裝 x64 預覽執行階段後，請在 Kudu PowerShell 命令視窗中執行下列命令，以確認安裝。 在命令中使用 ASP.NET Core 執行階段版本取代 `<x.y>`：
+> 在安裝 x64 預覽執行階段後，請在 Kudu PowerShell 命令視窗中執行下列命令，以確認安裝。 在命令中使用 ASP.NET Core 執行階段版本取代 `{X.Y}`：
 >
 > ```powershell
-> Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.<x.y>.x64\
-> ```
-> 如果安裝的預覽執行階段適用於 ASP.NET Core 2.2，命令就會是：
-> ```powershell
-> Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.2.2.x64\
+> Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64\
 > ```
 > 當已安裝 x64 預覽執行階段時，此命令會傳回 `True`。
-
-::: moniker-end
 
 > [!NOTE]
 > **ASP.NET Core 延伸模組**可在 Azure 應用程式服務上提供適用於 ASP.NET Core 的其他功能，例如：提供 Azure 記錄。 若從 Visual Studio 部署，會自動安裝延伸模組。 若未安裝延伸模組，請為應用程式安裝。

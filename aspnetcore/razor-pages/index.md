@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/12/2018
 uid: razor-pages/index
-ms.openlocfilehash: 7fc048e427fd49e2142160615a12989fd4f40303
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: cc881ff42d57ab1654f492a70006a995939e4844
+ms.sourcegitcommit: 8a65f6c2cbe290fb2418eed58f60fb74c95392c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207611"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52892116"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 簡介
 
@@ -25,15 +25,15 @@ Razor Pages 是 ASP.NET Core MVC 新的部分，更容易編寫以頁面為焦�
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [](~/includes/net-core-prereqs.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-all-2.2.md)]
 
 <a name="rpvs17"></a>
 
-## <a name="creating-a-razor-pages-project"></a>建立 Razor Pages 專案
+## <a name="create-a-razor-pages-project"></a>建立 Razor Pages 專案
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-如需如何使用 Visual Studio 建立 Razor Pages 專案的詳細說明，請參閱[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。
+如需如何建立 Razor Pages 專案的詳細說明，請參閱[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -52,20 +52,6 @@ Razor Pages 是 ASP.NET Core MVC 新的部分，更容易編寫以頁面為焦�
 從 Visual Studio for Mac 開啟已產生的 *.csproj* 檔案。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-::: moniker range=">= aspnetcore-2.1"
-
-從命令列執行 `dotnet new webapp`。
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-從命令列執行 `dotnet new razor`。
-
-::: moniker-end
-
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -117,7 +103,7 @@ Razor Pages 是在 *Startup.cs* 中啟用：
 * 執行階段預設會在 *Pages* 資料夾中尋找 Razor Pages 的檔案。
 * `Index` 是 URL 未包含頁面時的預設頁面。
 
-## <a name="writing-a-basic-form"></a>撰寫基本表單
+## <a name="write-a-basic-form"></a>撰寫基本表單
 
 Razor Pages 設計用於製作一般的模式，可搭配網頁瀏覽器一起使用，在建置應用程式時能易於實作。 [模型繫結](xref:mvc/models/model-binding)、[標記協助程式](xref:mvc/views/tag-helpers/intro)和 HTML 協助程式搭配 Razor Page 類別中定義的屬性「就這麼簡單」。 `Contact` 模型請考慮實作基本的「與我們連絡」格式頁面：
 
@@ -173,10 +159,7 @@ DB 內容：
 
 Razor Pages 預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可以減少您必須撰寫的程式碼數量。 透過使用相同的屬性呈現表單欄位 (`<input asp-for="Customer.Name" />`) 並接受輸入，繫結可以減少程式碼。
 
-> [!NOTE]
-> 基於安全性考量，您必須加入才能將 GET 要求資料繫結至頁面模型屬性。 請先驗證使用者輸入再將其對應至屬性。 在解決仰賴查詢字串或路由值的案例時，選擇使用此行為相當實用。
->
-> 若要在 GET 要求上繫結屬性，請將 `[BindProperty]` 屬性的 `SupportsGet` 屬性設定為 `true`：`[BindProperty(SupportsGet = true)]`
+[!INCLUDE[](~/includes/bind-get.md)]
 
 首頁 (*Index.cshtml*)：
 
@@ -246,7 +229,7 @@ Razor Pages 預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可�
 
 ## <a name="manage-head-requests-with-the-onget-handler"></a>使用 OnGet 處理常式管理 HEAD 要求
 
-HEAD 要求可讓您擷取特定資源的標頭。 不同於 GET 要求，HEAD 要求不會傳回回應主體。 
+HEAD 要求可讓您擷取特定資源的標頭。 不同於 GET 要求，HEAD 要求不會傳回回應主體。
 
 一般來說，HEAD 要求會建立 HEAD 處理常式並加以呼叫： 
 

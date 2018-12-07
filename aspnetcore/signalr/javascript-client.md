@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/14/2018
 uid: signalr/javascript-client
-ms.openlocfilehash: 247ccd40412cdb41f38edccbe96d4832751f12cf
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: cd64a65889227d84615768bc3d8fddcd362fbba4
+ms.sourcegitcommit: eef99d14d96dc8c3c1bb0e2c4cb14da152f8a952
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861981"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53022475"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 
@@ -45,7 +45,7 @@ npm 會將套件內容安裝在 *node_modules\\@aspnet\signalr\dist\browser* 資
 
 下列程式碼會建立並啟動連線。 中樞的名稱不區分大小寫。
 
-[!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=9-12,28)]
+[!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=9-12)]
 
 ### <a name="cross-origin-connections"></a>跨原始來源的連線
 
@@ -86,7 +86,7 @@ SignalR 透過比對 `SendAsync` 與 `connection.on` 中定義的方法名稱與
 
 在 `start` 方法的結尾鏈結 `catch` 方法以處理用戶端錯誤。 您可以使用 `console.error` 輸出錯誤至瀏覽器的主控台。
 
-[!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=28)]
+[!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=43-45)]
 
 藉由傳遞要在進行連接時，記錄的記錄器和事件類型的安裝程式用戶端記錄追蹤。 使用指定的記錄層級和更新版本，則會記錄訊息。 可用的記錄層級如下所示：
 
@@ -106,7 +106,7 @@ SignalR 的 JavaScript 用戶端不會自動重新連線。 您必須撰寫程�
 1. 函式 (在此情況下，`start`函式) 建立以啟動的連線。
 1. 呼叫`start`函式中的連線`onclose`事件處理常式。
 
-[!code-javascript[Reconnect the JavaScript client](javascript-client/sample/wwwroot/js/chat.js?range=30-42)]
+[!code-javascript[Reconnect the JavaScript client](javascript-client/sample/wwwroot/js/chat.js?range=28-40)]
 
 真實世界實作會使用指數退避法，或指定的次數後放棄重試一次。 
 

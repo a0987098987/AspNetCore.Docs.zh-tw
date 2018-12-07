@@ -8,12 +8,12 @@ ms.date: 05/28/2015
 ms.assetid: 7e85c70e-1a88-4408-8b3d-29611c7713ed
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/publishing
 msc.type: authoredcontent
-ms.openlocfilehash: fe196e5db8fd1cecbe84b2eb970939303f9313d1
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: bd6611a03ee4940f5d4176ce23464f313b9ec884
+ms.sourcegitcommit: eef99d14d96dc8c3c1bb0e2c4cb14da152f8a952
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51021452"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53022501"
 ---
 <a name="introducing-aspnet-web-pages---publishing-a-site-by-using-webmatrix"></a>ASP.NET Web Pages 簡介-使用 WebMatrix 發佈網站
 ====================
@@ -50,7 +50,7 @@ ms.locfileid: "51021452"
 <a id="defaultpage"></a>
 ## <a name="setting-up-the-default-page"></a>預設頁面設定
 
-當使用者巡覽至您的網站的基底位址時，您的站台的預設頁面會顯示給使用者。 例如，當 Default.htm 設為站台的預設頁面上，在 www.contoso.com，然後瀏覽至<strong>www.contoso.com</strong>瀏覽至相同<strong>www.contoso.com/Default.htm</strong>。
+當使用者巡覽至您的網站的基底位址時，您的站台的預設頁面會顯示給使用者。 例如，當*Default.htm*設定為站台的預設頁面`www.contoso.com`，然後瀏覽至`www.contoso.com`等同於瀏覽至`www.contoso.com/Default.htm`。
 
 目前，您的網站使用**Default.cshtml**為預設的網頁。 此頁面為您的預設頁面，但在本教學課程您尚未加入任何內容至該頁面所以它會顯示空白頁面。 開啟 Default.cshtml，並取代為下列程式碼中的內容。
 

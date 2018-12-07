@@ -168,7 +168,7 @@ Scaffold 的程式碼不是您所要的。 設定資料的下拉式清單中，�
 
 方法簽章現在是不同於`HttpGet``Edit`方法，所以方法名稱會從`EditPost`回到`Edit`。
 
-由於檢視沒有一堆`Course`自動更新實體，模型繫結無法`Courses`導覽屬性。 而不是使用更新的模型繫結`Courses`導覽屬性，您將執行，在新`UpdateInstructorCourses`方法。 因此您必須從模型繫結器中排除 `Courses` 屬性。 這並不需要進行任何變更，要呼叫的程式碼[TryUpdateModel](https://msdn.microsoft.com/library/dd470908(v=vs.98).aspx)因為您使用*列入白名單*多載和`Courses`不在 include 清單中。
+由於檢視沒有一堆`Course`自動更新實體，模型繫結無法`Courses`導覽屬性。 而不是使用更新的模型繫結`Courses`導覽屬性，您將執行，在新`UpdateInstructorCourses`方法。 因此您必須從模型繫結器中排除 `Courses` 屬性。 這並不需要進行任何變更，要呼叫的程式碼[TryUpdateModel](https://msdn.microsoft.com/library/dd470908(v=vs.98).aspx)因為您使用*列入允許清單*多載和`Courses`不在 include 清單中。
 
 如果沒有核取方塊已選取中的程式碼`UpdateInstructorCourses`初始化`Courses`具有空的集合導覽屬性：
 

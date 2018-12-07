@@ -116,7 +116,7 @@ Url 藉由`ActionLink`Razor 檢視中的陳述式。 下列程式碼中，`id`�
 
     "OverPost" 的值會成功新增到插入資料列的 `Secret` 屬性中，即使您沒有要讓網頁設定該屬性。
 
-    建議您最好使用`Include`參數搭配`Bind`屬性設定為*列入白名單*欄位。 它也可使用`Exclude`參數*封鎖清單*您想要排除的欄位。 原因`Include`是更安全的是，當您將新屬性加入實體時，新的欄位不會自動受到`Exclude`清單。
+    建議您最好使用`Include`參數搭配`Bind`屬性設定為*列入允許清單*欄位。 它也可使用`Exclude`參數*封鎖清單*您想要排除的欄位。 原因`Include`是更安全的是，當您將新屬性加入實體時，新的欄位不會自動受到`Exclude`清單。
 
     您可以防止大量指派在編輯案例中的，請先從資料庫讀取實體，然後呼叫`TryUpdateModel`，並傳入明確允許的屬性清單。 這是這些教學課程所使用的方法。
 
@@ -161,7 +161,7 @@ Url 藉由`ActionLink`Razor 檢視中的陳述式。 下列程式碼中，`id`�
 
    新的程式碼會讀取現有的實體，呼叫<xref:System.Web.Mvc.Controller.TryUpdateModel%2A>更新中已張貼的表單資料中的使用者輸入的欄位。 Entity Framework 的自動變更追蹤集合[EntityState.Modified](<xref:System.Data.EntityState.Modified>)實體上的旗標。 當[SaveChanges](https://msdn.microsoft.com/library/system.data.entity.dbcontext.savechanges(v=VS.103).aspx)呼叫方法時，<xref:System.Data.EntityState.Modified>旗標會使 Entity Framework 建立 SQL 陳述式來更新資料庫資料列。 [並行存取衝突](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)會被忽略，並更新資料庫的資料列的所有資料行，包括使用者未變更。 (稍後的教學課程示範如何處理並行衝突，如果您只想要更新資料庫中的個別欄位，您可以設定為實體[EntityState.Unchanged](<xref:System.Data.EntityState.Unchanged>)並將個別欄位設定為[EntityState.Modified](<xref:System.Data.EntityState.Modified>)。)
 
-   若要防止大量指派，您想要更新 [編輯] 頁面的欄位會列入白名單中的`TryUpdateModel`參數。 雖然目前沒有額外保護的欄位，但列出您希望模型繫結器繫結的欄位可確保您於未來將欄位新增到資料模型中時，新增的欄位會自動獲得保護，直到您明確的在這裡新增它們為止。
+   若要防止大量指派，您想要更新 [編輯] 頁面的欄位會列入允許清單中的`TryUpdateModel`參數。 雖然目前沒有額外保護的欄位，但列出您希望模型繫結器繫結的欄位可確保您於未來將欄位新增到資料模型中時，新增的欄位會自動獲得保護，直到您明確的在這裡新增它們為止。
 
    基於這些變更，方法簽章的 HttpPost Edit 方法等同於 HttpGet edit 方法;因此您已重新命名方法 EditPost。
 

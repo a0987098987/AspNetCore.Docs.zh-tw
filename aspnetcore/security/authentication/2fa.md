@@ -5,13 +5,14 @@ description: 了解如何設定雙因素驗證 (2FA) 與 ASP.NET Core 應用程�
 monikerRange: < aspnetcore-2.0
 ms.author: riande
 ms.date: 09/22/2018
+ms.custom: seodec18
 uid: security/authentication/2fa
-ms.openlocfilehash: 5b0866ecf15381b040e3646eecc22374b6b0c9e2
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 6f20928b0dec9b235fa17c1b44c81a48d031e9e0
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50205882"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121657"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>使用 ASP.NET Core 中的 SMS 的雙因素驗證
 
@@ -97,7 +98,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 * 點選您的使用者名稱，就會啟動`Index`管理控制器中的動作方法。 然後點選 電話號碼**新增**連結。
 
-![管理檢視](2fa/_static/login2fa2.png)
+![管理檢視： 點選 [新增] 連結](2fa/_static/login2fa2.png)
 
 * 新增電話號碼接收驗證碼，並點選**傳送驗證碼**。
 
@@ -111,11 +112,11 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 * [管理] 檢視會顯示已成功新增您的電話號碼。
 
-![管理檢視](2fa/_static/login2fa5.png)
+![管理檢視-已成功新增電話號碼](2fa/_static/login2fa5.png)
 
 * 點選**啟用**啟用雙因素驗證。
 
-![管理檢視](2fa/_static/login2fa6.png)
+![管理檢視-啟用雙因素驗證](2fa/_static/login2fa6.png)
 
 ### <a name="test-two-factor-authentication"></a>測試兩個雙因素驗證
 

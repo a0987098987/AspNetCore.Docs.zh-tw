@@ -1,17 +1,17 @@
 ---
-title: 使用 ASP.NET Core 和 Azure 的 DevOps |工具和下載
+title: 工具和下載-使用 ASP.NET Core 和 Azure 的 DevOps
 author: CamSoper
-description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式，建置 DevOps 管線的完整指導。
+description: 工具和下載所需的 ASP.NET Core 與 Azure 的 DevOps。
 ms.author: casoper
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: 573e257e6fc7614010a8749ff439f16011c2c10a
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: a12bced8826a3399d5cf347be72baf77cc39d8b6
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50089375"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121410"
 ---
 # <a name="tools-and-downloads"></a>工具和下載
 

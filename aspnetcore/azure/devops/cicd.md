@@ -1,16 +1,17 @@
 ---
-title: 使用 ASP.NET Core 和 Azure 的 DevOps |持續整合和部署
+title: 持續整合和部署-使用 ASP.NET Core 和 Azure 的 DevOps
 author: CamSoper
-description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式，建置 DevOps 管線的完整指導。
+description: 持續整合及 DevOps 中的部署使用 ASP.NET Core 和 Azure
 ms.author: scaddie
 ms.date: 10/24/2018
+ms.custom: seodec18
 uid: azure/devops/cicd
-ms.openlocfilehash: edaf2c2e1428e5e82104786d94584a4ef08f9ee3
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: e5bddde41291c9573f58d749bbf830de9ea9319d
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570083"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121585"
 ---
 # <a name="continuous-integration-and-deployment"></a>持續整合和部署
 
@@ -235,15 +236,15 @@ ms.locfileid: "51570083"
 
 按一下 組建定義**摘要**連結以檢視組建定義的歷程記錄：
 
-![建置定義歷程記錄](media/cicd/build-definition-summary.png)
+![螢幕擷取畫面顯示組建定義歷程記錄](media/cicd/build-definition-summary.png)
 
 在產生的頁面上，按一下對應至唯一的組建編號的連結：
 
-![組建定義摘要 頁面](media/cicd/build-definition-completed.png)
+![螢幕擷取畫面顯示組建定義摘要頁面](media/cicd/build-definition-completed.png)
 
 這個特定組建的摘要會顯示。 按一下 **成品**索引標籤，並注意*卸除*組建所產生的資料夾會列出：
 
-![組建定義成品-置放資料夾](media/cicd/build-definition-artifacts.png)
+![螢幕擷取畫面顯示組建定義成品置放資料夾](media/cicd/build-definition-artifacts.png)
 
 使用**下載**並**瀏覽**檢查已發行的成品的連結。
 
@@ -251,25 +252,25 @@ ms.locfileid: "51570083"
 
 發行管線建立同名*MyFirstProject ASP.NET Core CD*:
 
-![發行管線的概觀](media/cicd/release-definition-overview.png)
+![螢幕擷取畫面顯示發行管線的概觀](media/cicd/release-definition-overview.png)
 
 發行管線的兩個主要元件如下**成品**並**環境**。 按一下  方塊中的**成品**區段會顯示下列窗格：
 
-![發行管線成品](media/cicd/release-definition-artifacts.png)
+![螢幕擷取畫面顯示發行管線成品](media/cicd/release-definition-artifacts.png)
 
 **來源 （組建定義）** 值代表此發行管線所連結的組建定義。 *.Zip*成功執行的組建定義時所產生的檔案提供給*生產*環境以部署至 Azure。 按一下 *階段 1、 2 個工作*連結*生產*環境方塊，以檢視發行管線工作：
 
-![發行管線工作](media/cicd/release-definition-tasks.png)
+![螢幕擷取畫面顯示發行管線工作](media/cicd/release-definition-tasks.png)
 
 發行管線是由兩個工作所組成：*位置中部署 Azure App Service*並*管理 Azure App Service-位置交換*。 按一下第一項工作會顯示下列工作組態：
 
-![發行管線部署工作](media/cicd/release-definition-task1.png)
+![螢幕擷取畫面顯示發行管線部署工作](media/cicd/release-definition-task1.png)
 
 在 [部署] 工作中定義的 Azure 訂用帳戶、 服務類型、 web 應用程式名稱、 資源群組和部署位置。 **封裝或資料夾**文字方塊中會保留 *.zip*擷取並部署到的檔案路徑*預備*插槽*mywebapp\<唯一（_n)\>*  web 應用程式。
 
 按一下位置交換工作會顯示下列工作組態：
 
-![發行管線位置交換工作](media/cicd/release-definition-task2.png)
+![螢幕擷取畫面顯示發行管線位置交換工作](media/cicd/release-definition-task2.png)
 
 提供訂用帳戶、 資源群組、 服務類型、 web 應用程式名稱，以及部署位置的詳細資料。 **與生產環境交換** 核取方塊。 因此，將位元部署到*預備*位置交換到生產環境。
 

@@ -3,14 +3,15 @@ title: 建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 author: rick-anderson
 description: 了解如何使用受保護的授權的使用者資料建立 Razor 頁面應用程式。 包含 HTTPS、 驗證、 安全性、 ASP.NET Core 身分識別。
 ms.author: riande
-ms.date: 7/24/2018
+ms.date: 12/07/2018
+ms.custom: seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 185628d4e06c9b5ae7f2685c10ea9e46dd5abe92
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: d49ee7779b425d625b81c8a65694121c616bfba6
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253217"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121631"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -38,21 +39,21 @@ ms.locfileid: "50253217"
 
 在下圖中，使用者 Rick (`rick@example.com`) 登入。 Rick 只能檢視已核准的連絡人和**編輯**/**刪除**/**新建**他連絡人的連結。 只有最後一筆記錄，由 Rick，顯示**編輯**並**刪除**連結。 其他使用者不會看到最後一筆記錄，直到管理員或系統管理員的狀態變更為 「 Approved 」。
 
-![前面所述的映像](secure-data/_static/rick.png)
+![螢幕擷取畫面顯示 Rick 登入](secure-data/_static/rick.png)
 
 在下圖中，`manager@contoso.com`登入，並在管理員的角色：
 
-![前面所述的映像](secure-data/_static/manager1.png)
+![螢幕擷取畫面顯示manager@contoso.com登入](secure-data/_static/manager1.png)
 
 下圖顯示之管理員的連絡詳細資料檢視：
 
-![前面所述的映像](secure-data/_static/manager.png)
+![連絡人的管理員的檢視](secure-data/_static/manager.png)
 
 **核准**並**拒絕**按鈕只會顯示為管理員和系統管理員。
 
 在下圖中，`admin@contoso.com`登入，並在系統管理員角色：
 
-![前面所述的映像](secure-data/_static/admin.png)
+![螢幕擷取畫面顯示admin@contoso.com登入](secure-data/_static/admin.png)
 
 系統管理員將擁有所有權限。 她可以讀取/編輯/刪除的任何連絡人，並變更連絡人的狀態。
 
@@ -281,25 +282,32 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="test-the-completed-app"></a>測試已完成的應用程式
 
+如果您尚未設定植入的使用者帳戶的密碼，使用[Secret Manager 工具](xref:security/app-secrets#secret-manager)設定密碼：
+
+* 選擇強式密碼： 使用八個或多個字元和至少一個大寫字元、 數字，則符號。 比方說，`Passw0rd!`符合強式密碼需求。
+* 執行下列命令，從專案的資料夾，其中`<PW>`的密碼：
+
+  ```console
+  dotnet user-secrets set SeedUserPW <PW>
+  ```
+
 如果應用程式的連絡人：
 
-* 刪除中的所有記錄`Contact`資料表。
+* 刪除的記錄中的所有`Contact`資料表。
 * 重新啟動植入資料庫的應用程式。
 
-註冊使用者瀏覽的連絡人。
-
-測試已完成的應用程式的簡單方法是啟動三個不同的瀏覽器 （或 incognito/InPrivate 版本）。 在瀏覽器中註冊新的使用者 (例如`test@example.com`)。 使用不同的使用者登入每個瀏覽器。 請確認下列作業：
+測試已完成的應用程式的簡單方法是啟動三個不同的瀏覽器 （或 incognito/InPrivate 工作階段）。 在瀏覽器中註冊新的使用者 (例如`test@example.com`)。 使用不同的使用者登入每個瀏覽器。 請確認下列作業：
 
 * 已註冊的使用者可以檢視所有已核准的連絡資料。
 * 已註冊的使用者可以編輯/刪除他們自己的資料。
-* 經理可以核准或拒絕連絡人資料。 `Details`檢視會顯示**核准**並**拒絕**按鈕。
-* 系統管理員可以核准/拒絕和編輯/刪除任何資料。
+* 經理可以核准/拒絕連絡人資料。 `Details`檢視會顯示**核准**並**拒絕**按鈕。
+* 系統管理員可以核准/拒絕和編輯/刪除所有資料。
 
-| 使用者| 選項 |
-| ------------ | ---------|
-| test@example.com | 可以編輯/刪除自己的資料 |
-| manager@contoso.com | 可以核准/拒絕和編輯/刪除擁有資料 |
-| admin@contoso.com | 可以編輯/刪除和核准/拒絕的所有資料|
+| 使用者                | 植入的應用程式 | 選項                                  |
+| ------------------- | :---------------: | ---------------------------------------- |
+| test@example.com    | 否                | 編輯/刪除自己的資料。                |
+| manager@contoso.com | 是               | 核准/拒絕和編輯/刪除自己的資料。 |
+| admin@contoso.com   | 是               | 核准/拒絕和編輯/刪除所有資料。 |
 
 在系統管理員的瀏覽器中建立的連絡人。 複製的 URL 刪除和編輯從系統管理員連絡。 這些連結貼入測試使用者的瀏覽器，以確認測試使用者無法執行這些作業。
 

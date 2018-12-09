@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 08/02/2017
 uid: client-side/spa-services
-ms.openlocfilehash: b0fc6be29e3ecedd9706238f439f229377bb5a63
-ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
+ms.openlocfilehash: ee772e67ef14608bcc6e3498ade00424ff6090e5
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52256546"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121372"
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>使用 JavaScriptServices 單一頁面應用程式建立 ASP.NET Core
 
@@ -157,7 +157,7 @@ ASP.NET Core[標籤協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 Webpack 開發中介軟體會註冊到 HTTP 要求管線中的下列程式碼透過*Startup.cs*檔案的`Configure`方法：
 
-[!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=webpack-middleware-registration&highlight=4)]
+[!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_WebpackMiddlewareRegistration&highlight=4)]
 
 `UseWebpackDevMiddleware`擴充方法必須先呼叫才能[註冊靜態檔案裝載](xref:fundamentals/static-files)透過`UseStaticFiles`擴充方法。 基於安全性理由，請在開發模式中執行的應用程式時，才註冊中介軟體。
 
@@ -223,7 +223,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 
 名為擴充方法`MapSpaFallbackRoute`用於`Configure`方法：
 
-[!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=mvc-routing-table&highlight=7-9)]
+[!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_MvcRoutingTable&highlight=7-9)]
 
 提示： 他們已設定的順序評估路由。 因此，`default`進行模式比對第一次使用上述的程式碼範例中的路由。
 

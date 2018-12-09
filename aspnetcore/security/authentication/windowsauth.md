@@ -3,15 +3,15 @@ title: 在 ASP.NET Core 中設定 Windows 驗證
 author: scottaddie
 description: 了解如何使用 IIS Express、 IIS、 HTTP.sys，這和 WebListener 的 ASP.NET Core 中設定 Windows 驗證。
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 11/01/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 87fcab75555c1dae0b2815c30d79fd4615df9660
-ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
+ms.openlocfilehash: 342759a6ff4b5679e0d54c979188ae66d339562d
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50968289"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121293"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
@@ -31,7 +31,7 @@ Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使�
 
 ### <a name="use-the-windows-authentication-app-template"></a>使用 Windows 驗證應用程式範本
 
-在 Visual Studio:
+在 Visual Studio 中：
 
 1. 建立新的 ASP.NET Core Web 應用程式。
 1. 從範本清單中選取 Web 應用程式。
@@ -47,7 +47,7 @@ Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使�
 
 Visual Studio 專案**屬性**頁面的**偵錯** 索引標籤能提供 Windows 驗證和匿名驗證的核取方塊。
 
-![Windows 驗證的瀏覽器螢幕擷取畫面](windowsauth/_static/vs-auth-property-menu.png)
+![Windows 驗證的瀏覽器螢幕擷取畫面反白顯示的驗證選項](windowsauth/_static/vs-auth-property-menu.png)
 
 或者，設定這兩個屬性，在*launchSettings.json*檔案：
 

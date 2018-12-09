@@ -1,17 +1,17 @@
 ---
-title: 使用 ASP.NET Core 和 Azure 的 DevOps |將應用程式部署至 App Service
+title: 將應用程式部署至 App Service-使用 ASP.NET Core 和 Azure 的 DevOps
 author: CamSoper
-description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式，建置 DevOps 管線的完整指導。
+description: 將 ASP.NET Core 應用程式部署至 Azure App Service，使用 ASP.NET Core 和 Azure 的 DevOps 的第一個步驟。
 ms.author: casoper
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 33026ed510aae63a9e580aa5d708f94aad778fca
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 4424d3d15cbd234357c8265fa276834cb9abf352
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090933"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121216"
 ---
 # <a name="deploy-an-app-to-app-service"></a>將應用程式部署至 App Service
 
@@ -150,12 +150,12 @@ ms.locfileid: "50090933"
 3. 按下**Ctrl**+**Shift**+**B**建置應用程式。
 4. 在 方案總管 中，以滑鼠右鍵按一下專案，然後按一下 **發佈**。
 
-    ![以滑鼠右鍵按一下發行](./media/deploying-to-app-service/publish.png)
+    ![螢幕擷取畫面顯示以滑鼠右鍵按一下，發行](./media/deploying-to-app-service/publish.png)
 5. Visual Studio 可以建立新的 App Service 資源，但這項更新將會發行透過現有的部署。 在 **挑選發行目標**對話方塊中，選取**App Service**從左邊的清單，然後選取**選取現有**。 按一下 [發行] 。
 6. 在 [ **App Service** ] 對話方塊中，確認 Microsoft 或組織帳戶，用來建立您的 Azure 訂用帳戶會顯示在右上方。 如果不存在，請按一下下拉式清單，並將它新增。
 7. 確認已選取正確的 Azure**訂用帳戶**已選取。 針對**檢視**，選取**資源群組**。 依序展開**AzureTutorial**資源群組，然後選取現有的 web 應用程式。 按一下 [確定 **Deploying Office Solutions**]。
 
-    ![發行應用程式服務 對話方塊](./media/deploying-to-app-service/publish-dialog.png)
+    ![螢幕擷取畫面顯示 [發行的 App Service] 對話方塊](./media/deploying-to-app-service/publish-dialog.png)
 
 Visual Studio 會建置並部署至 Azure 的應用程式。 瀏覽至 web 應用程式 URL。 驗證`<h2>`項目修改已上線。
 
@@ -211,7 +211,7 @@ Visual Studio 會建置並部署至 Azure 的應用程式。 瀏覽至 web 應�
 
 6. 若要確認 V3，已部署至預備位置，請開啟兩個瀏覽器視窗。 在一個視窗中，瀏覽至原始的 web 應用程式 URL。 在其他視窗中，瀏覽至預備 web 應用程式 URL。 生產環境 URL 是 V2 應用程式。 預備 URL 是 V3 應用程式。
 
-    ![比較瀏覽器視窗](./media/deploying-to-app-service/ready-to-swap.png)
+    ![比較瀏覽器視窗的螢幕擷取畫面](./media/deploying-to-app-service/ready-to-swap.png)
 
 7. 在 Cloud Shell 中，驗證/準備總預備位置交換到生產位置。
 

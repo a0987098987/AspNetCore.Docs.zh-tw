@@ -3,15 +3,15 @@ title: ASP.NET Core 中的 Google 外部登入設定
 author: rick-anderson
 description: 本教學課程示範如何整合到現有的 ASP.NET Core 應用程式的 Google 帳戶使用者驗證。
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 11/11/2018
 uid: security/authentication/google-logins
-ms.openlocfilehash: dfda83e1d7cf3c5ff8e31de20c15d468de5d15c0
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: e5deda5d521643e3155be00f4630a86c6a82575c
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708448"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121527"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Google 外部登入設定
 
@@ -27,7 +27,7 @@ ms.locfileid: "51708448"
 
 * 將您重新導向**API 管理員程式庫**頁面：
 
-![API 管理員文件庫頁面](index/_static/GoogleConsoleSwitchboard.png)
+![在 [API Manager 程式庫] 頁面上的平台](index/_static/GoogleConsoleSwitchboard.png)
 
 * 點選**Create**並輸入您**專案名稱**:
 
@@ -35,15 +35,15 @@ ms.locfileid: "51708448"
 
 * 接受之後的對話方塊，將您重新導向回媒體櫃 頁面，讓您可以選擇新的應用程式的功能。 尋找**Google + API**清單中，按一下 新增 API 功能的連結：
 
-![API 管理員文件庫頁面](index/_static/GoogleConsoleChooseApi.png)
+![在 [API Manager 程式庫] 頁面中搜尋 [Google + API]](index/_static/GoogleConsoleChooseApi.png)
 
 * 新加入的 API 頁面會隨即顯示。 點選**啟用**將 Google + 號功能新增至您的應用程式：
 
-![API 管理員 Google + API 頁面](index/_static/GoogleConsoleEnableApi.png)
+![在 [API 管理員 Google + API] 頁面上的平台](index/_static/GoogleConsoleEnableApi.png)
 
 * 啟用之後，API，請點選**建立認證**設定祕密：
 
-![API 管理員 Google + API 頁面](index/_static/GoogleConsoleGoCredentials.png)
+![在 API 管理員 Google + API 頁面上建立認證 按鈕](index/_static/GoogleConsoleGoCredentials.png)
 
 * 選擇：
   * **Google + API**

@@ -1,17 +1,18 @@
 ---
 title: ASP.NET Core 類別庫中的可重複使用 Razor UI
 author: Rick-Anderson
-description: 說明如何在類別庫中建立可重複使用的 Razor UI。
+description: 說明如何建立可重複使用 Razor UI，使用 ASP.NET Core 中的類別庫中的部分檢視。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/07/2018
+ms.custom: seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 4cbff1565fe82925d9196d8cd810651b97b293da
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: e5f329dcc423a7b7d6c247d0d359d35d95283de4
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206518"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121488"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>建立可重複使用 UI 在 ASP.NET Core 中使用 Razor 類別庫專案
 

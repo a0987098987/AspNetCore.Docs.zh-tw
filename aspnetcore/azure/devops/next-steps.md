@@ -1,17 +1,17 @@
 ---
-title: 使用 ASP.NET Core 和 Azure 的 DevOps |接下來的步驟
+title: 下一步-使用 ASP.NET Core 和 Azure 的 DevOps
 author: CamSoper
-description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式，建置 DevOps 管線的完整指導。
+description: 其他適用於使用 ASP.NET Core 和 Azure 的 DevOps 學習路徑。
 ms.author: casoper
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/next-steps
-ms.openlocfilehash: b82e7251b507f8d141930673d50722cfaa576db5
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 7c3b1c701b13b2a2052c72f5f84bba33d4995ad7
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50089874"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121320"
 ---
 # <a name="next-steps"></a>後續步驟
 

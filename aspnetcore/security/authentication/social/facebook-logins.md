@@ -3,15 +3,15 @@ title: ASP.NET Core 中的 Facebook 外部登入設定
 author: rick-anderson
 description: 本教學課程示範如何整合到現有的 ASP.NET Core 應用程式的 Facebook 帳戶使用者驗證。
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 11/11/2018
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: e8ae16538b5d6844af7d983071fad629ebbe6217
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: 8bb22dc6df9879e827ff9a5ac11e9e3ad5346dc2
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708500"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121501"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Facebook 外部登入設定
 
@@ -129,7 +129,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 Facebook 驗證會要求預設公用設定檔和電子郵件地址：
 
-![Facebook 驗證 頁面](index/_static/FBLoginDone.png)
+![Facebook 驗證頁面同意畫面](index/_static/FBLoginDone.png)
 
 一旦您輸入您的 Facebook 認證將您重新導向回您的網站，您可以在其中設定您的電子郵件。
 

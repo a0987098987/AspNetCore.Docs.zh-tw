@@ -3,15 +3,15 @@ title: ASP.NET Core 中的金鑰管理擴充性
 author: rick-anderson
 description: 深入了解 ASP.NET Core 資料保護金鑰管理擴充性。
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 1cf3fc30f72fb872ff9d7f33fc5ffb12a11a982f
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: e5ed2a65355a1dba34af09379f2583b3e73c24d7
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090611"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121423"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>ASP.NET Core 中的金鑰管理擴充性
 

@@ -1,17 +1,17 @@
 ---
-title: 使用 ASP.NET Core 和 Azure 的 DevOps |監視和偵錯
+title: 監視和偵錯-使用 ASP.NET Core 和 Azure 的 DevOps
 author: CamSoper
-description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式，建置 DevOps 管線的完整指導。
+description: 監視和 DevOps 解決方案偵錯您的程式碼，使用 ASP.NET Core 和 Azure
 ms.author: casoper
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/monitor
-ms.openlocfilehash: c4013de574fdf34114f2ae6c6a2150d72f807578
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: e005b951aec578b396fc19dec5d2f55cbce4f664
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090178"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121605"
 ---
 # <a name="monitor-and-debug"></a>監視和偵錯
 
@@ -35,7 +35,7 @@ App Service web 應用程式輕鬆地即時監視。 Azure 入口網站將呈現
 
 1. **概觀**索引標籤會顯示有用的 「 在摘要 」 資訊，包括顯示最近使用的計量的圖表。
 
-    ![概觀面板](./media/monitoring/overview.png)
+    ![螢幕擷取畫面顯示概觀面板](./media/monitoring/overview.png)
 
     * **Http 5xx**： 伺服器端錯誤計數，通常是 ASP.NET Core 程式碼中的例外狀況。
     * **資料輸入**： 進入您的 web 應用程式的資料輸入。
@@ -45,7 +45,7 @@ App Service web 應用程式輕鬆地即時監視。 Azure 入口網站將呈現
 
     此頁面上，也會找到自助服務的數個工具，適用於疑難排解和最佳化。
 
-    ![自助服務工具](./media/monitoring/wizards.png)
+    ![螢幕擷取畫面顯示自助工具](./media/monitoring/wizards.png)
 
     * **診斷並解決問題**是自助疑難排解。
     * **Application Insights**適用於分析效能和應用程式的行為，並稍後再討論這一節。
@@ -103,7 +103,7 @@ ASP.NET Core 與 web 伺服器 (App Service) 記錄檔會產生 web 應用程式
 1. 開啟[Azure 入口網站](https://portal.azure.com)，然後瀏覽至*mywebapp\<unique_number\>*  App Service。
 1. 在左側功能表中，向下捲動至**監視**區段，然後選取**記錄資料流**。
 
-    ![記錄資料流連結](./media/monitoring/log-stream.png)
+    ![螢幕擷取畫面顯示記錄檔資料流連結](./media/monitoring/log-stream.png)
 
 記錄檔也可以[透過 Azure CLI 或 Azure PowerShell 串流](/azure/app-service/web-sites-enable-diagnostic-log#streamlogs)，包括透過 Cloud Shell。
 

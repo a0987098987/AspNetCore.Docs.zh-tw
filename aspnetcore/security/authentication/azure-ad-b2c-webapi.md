@@ -1,19 +1,19 @@
 ---
-title: 在 web Api 與 Azure Active Directory B2C 在 ASP.NET Core 中的雲端驗證
+title: 在 web Api 與 Azure Active Directory B2C 在 ASP.NET Core 中的驗證
 author: camsoper
 description: 了解如何設定 Azure Active Directory B2C 驗證與 ASP.NET Core Web API。 測試驗證的 web API 使用 Postman。
 ms.author: casoper
 ms.date: 09/21/2018
-ms.custom: mvc
+ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: a7a109909d66b1016e78eedc8b802068143c65e3
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: e8ac1e33819dd369460139df25597e1aa0979c91
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348542"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121709"
 ---
-# <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>在 web Api 與 Azure Active Directory B2C 在 ASP.NET Core 中的雲端驗證
+# <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>在 web Api 與 Azure Active Directory B2C 在 ASP.NET Core 中的驗證
 
 作者 [Cam Soper](https://twitter.com/camsoper)
 
@@ -69,7 +69,7 @@ API 使用新建立的 Azure AD B2C 租用戶中註冊[文件中的步驟](/azur
 
 Visual Studio Web 應用程式範本可以設定要用於驗證的 Azure AD B2C 租用戶。
 
-在 Visual Studio:
+在 Visual Studio 中：
 
 1. 建立新的 ASP.NET Core Web 應用程式。 
 2. 選取  **Web API**從範本清單。
@@ -150,7 +150,7 @@ Postman 會模擬來自 Azure AD B2C 租用戶取得權杖的 web 應用程式�
 
 若要確認 web API 需要驗證，首先請未經驗證的要求。
 
-1. 在 **輸入要求 URL**方塊中，輸入的 URL `ValuesController`。 URL 會與顯示在瀏覽器中使用的相同**api/值**附加。 例如，`https://localhost:44375/api/values`。
+1. 在 **輸入要求 URL**方塊中，輸入的 URL `ValuesController`。 URL 會與顯示在瀏覽器中使用的相同**api/值**附加。 例如， `https://localhost:44375/api/values` 。
 2. 選取 [**傳送**] 按鈕。
 3. 請注意回應的狀態是*401 未授權*。
 

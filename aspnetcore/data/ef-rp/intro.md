@@ -3,14 +3,15 @@ title: ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 
 author: rick-anderson
 description: 示範如何建立使用 Entity Framework Core 的 Razor 頁面應用程式
 ms.author: riande
+ms.custom: seodec18
 ms.date: 11/22/2018
 uid: data/ef-rp/intro
-ms.openlocfilehash: afba4395fe9dbe22516b6c4ebdc4c582381981fd
-ms.sourcegitcommit: 710fc5fcac258cc8415976dc66bdb355b3e061d5
+ms.openlocfilehash: 34c7238b689993245e033625dcd0e728b7c45163
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52299465"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121696"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -306,7 +307,7 @@ EF Core 會建立空白資料庫。 在本節中，會寫入 `Initialize` 方法
 * EF Core 內容在執行緒中並不安全：不要嘗試執行多個平行作業。
 * 若要利用非同步程式碼的效能優勢，請確認程式庫套件 (例如分頁) 在呼叫將查詢傳送至資料庫的 EF Core 方法時是使用非同步。
 
-如需非同步方法的詳細資訊，請參閱 [Async 概觀](/dotnet/articles/standard/async)和[使用 Async 和 Await 設計非同步程式](/dotnet/csharp/programming-guide/concepts/async/)。
+如需非同步方法的詳細資訊，請參閱 [Async 概觀](/dotnet/standard/async)和[使用 Async 和 Await 設計非同步程式](/dotnet/csharp/programming-guide/concepts/async/)。
 
 在下一個教學課程中，將會檢視基本的 CRUD (建立、讀取、更新、刪除) 作業。
 

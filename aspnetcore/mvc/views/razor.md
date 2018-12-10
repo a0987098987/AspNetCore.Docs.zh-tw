@@ -5,12 +5,12 @@ description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記
 ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: ab9fb3f55399764c5fe985811d92c504ed210767
-ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
+ms.openlocfilehash: 2ec86c774e0fd26c4455829680a2b1db687b8090
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52256576"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121580"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -508,7 +508,7 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 @functions { // C# Code }
 ```
 
-例如: 
+例如：
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -741,7 +741,7 @@ Razor 檢視引擎會針對檢視執行區分大小寫的查閱。 不過，實�
 
 建議開發人員比對檔案和目錄的大小寫以及下列項目的大小寫：
 
-    * 區域、控制器和動作名稱。
-    * Razor Pages。
+* 區域、控制器和動作名稱。
+* Razor Pages。
 
 比對大小寫可確保不論基礎檔案系統為何，部署作業都能夠找到其值。

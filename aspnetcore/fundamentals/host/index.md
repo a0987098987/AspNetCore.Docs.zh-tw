@@ -1,19 +1,19 @@
 ---
-title: 在 ASP.NET Core 中代管
+title: ASP.NET Core 中的 Web 主機與泛型主機
 author: guardrex
 description: 深入了解 ASP.NET Core 的 Web 代管以及 .NET 的一般代管，其負責啟動應用程式以及進行存留期間的管理。
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc,seodec18
 ms.date: 08/28/2018
 uid: fundamentals/host/index
-ms.openlocfilehash: 9927722b5080beb94e5628d9e7b54e6d50a5bff8
-ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
+ms.openlocfilehash: 3e67d8338aa7ac1b1530d0498ee0126d36a8d72b
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336046"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121514"
 ---
-# <a name="host-in-aspnet-core"></a>在 ASP.NET Core 中代管
+# <a name="web-host-and-generic-host-in-aspnet-core"></a>ASP.NET Core 中的 Web 主機與泛型主機
 
 .NET 應用程式會設定並啟動「主機」。 主機負責應用程式啟動和存留期管理。 提供兩種 API 可供使用：
 

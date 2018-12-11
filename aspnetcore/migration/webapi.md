@@ -4,14 +4,14 @@ author: ardalis
 description: 了解如何從 ASP.NET 4.x Web API 的 web API 實作移轉至 ASP.NET Core MVC。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/01/2018
+ms.date: 12/10/2018
 uid: migration/webapi
-ms.openlocfilehash: f5d886a7c3182b5cd372762ade67c2e748051049
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9806c502f8f5244740f9f9614657a40cfaa03314
+ms.sourcegitcommit: 1872d2e6f299093c78a6795a486929ffb0bbffff
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207273"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53216829"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>從 ASP.NET Web API 移轉至 ASP.NET Core
 
@@ -23,8 +23,7 @@ ASP.NET 4.x Web API 是一種 HTTP 服務，達到各種用戶端，包括瀏覽
 
 ## <a name="prerequisites"></a>必要條件
 
-* [.NET Core 2.1 SDK 或更新版本](https://www.microsoft.com/net/download/all)
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7.3 版或更新版本，包含 **ASP.NET 及網頁程式開發**工作負載
+[!INCLUDE [net-core-prereqs-vs-2.2](../includes/net-core-prereqs-vs-2.2.md)]
 
 ## <a name="review-aspnet-4x-web-api-project"></a>檢閱 ASP.NET 4.x Web API 專案
 
@@ -34,15 +33,15 @@ ASP.NET 4.x Web API 是一種 HTTP 服務，達到各種用戶端，包括瀏覽
 
 [!code-csharp[](webapi/sample/ProductsApp/Global.asax.cs?highlight=14)]
 
-`WebApiConfig` 定義於*App_Start*資料夾。 它有一個靜態`Register`方法：
+`WebApiConfig`類別位於*App_Start*資料夾和擁有的靜態`Register`方法：
 
-[!code-csharp[](webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15-20)]
+[!code-csharp[](webapi/sample/ProductsApp/App_Start/WebApiConfig.cs)]
 
 這個類別會設定[屬性路由](/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)，但實際上並不是專案中使用。 它也會設定路由表，由 ASP.NET Web API。 在此情況下，ASP.NET 4.x Web API 必須要有符合格式的 Url `/api/{controller}/{id}`，使用`{id}`為選擇性。
 
-*ProductsApp*專案包含一個控制站。 控制器會繼承`ApiController`和公開兩種方法：
+*ProductsApp*專案包含一個控制站。 控制器會繼承`ApiController`且包含兩個動作：
 
-[!code-csharp[](webapi/sample/ProductsApp/Controllers/ProductsController.cs?highlight=19,24)]
+[!code-csharp[](webapi/sample/ProductsApp/Controllers/ProductsController.cs?highlight=28,33)]
 
 `Product`所使用的模型`ProductsController`是簡單的類別：
 
@@ -88,6 +87,12 @@ ASP.NET 4.x Web API 是一種 HTTP 服務，達到各種用戶端，包括瀏覽
 1. 刪除 `using System.Web.Http;`。
 1. 變更`GetProduct`動作的傳回類型從`IHttpActionResult`至`ActionResult<Product>`。
 
+簡化`GetProduct`動作的`return`如下的陳述式：
+
+```csharp
+return product;
+```
+
 ## <a name="configure-routing"></a>設定路由
 
 設定路由，如下所示：
@@ -102,11 +107,19 @@ ASP.NET 4.x Web API 是一種 HTTP 服務，達到各種用戶端，包括瀏覽
     上述[[路由]](xref:Microsoft.AspNetCore.Mvc.RouteAttribute)屬性會設定控制器的屬性路由的模式。 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute)屬性會讓屬性路由此控制器中的所有動作的需求。
 
     屬性路由支援權杖，例如`[controller]`和`[action]`。 在執行階段，每個語彙基元會取代控制器或動作，名稱分別屬性套用。 權杖會減少專案中的魔術字串數目。 路由與保持同步的相對應的控制站，並套用時自動重新命名重構的動作，也請確定語彙基元。
+1. 專案的相容性模式設定為 ASP.NET Core 2.2:
+
+    [!code-csharp[](webapi/sample/ProductsCore/Startup.cs?name=snippet_ConfigureServices&highlight=4)]
+
+    上述的變更：
+
+    * 需要使用`[ApiController]`在控制器層級的屬性。
+    * 選擇加入可能最新 ASP.NET Core 2.2 中所導入行為。
 1. 啟用 HTTP Get 要求以`ProductController`動作：
     * 適用於[[HttpGet]](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute)屬性設定為`GetAllProducts`動作。
     * 適用於`[HttpGet("{id}")]`屬性設定為`GetProduct`動作。
 
-這些變更並移除未使用之後`using`陳述式， *ProductsController.cs*檔案看起來像這樣：
+在前述的變更和移除未使用之後`using`陳述式， *ProductsController.cs*檔案看起來像這樣：
 
 [!code-csharp[](webapi/sample/ProductsCore/Controllers/ProductsController.cs)]
 
@@ -147,3 +160,4 @@ Web API 相容性填充碼是要作為暫時的措施來支援大型 ASP.NET 4.x
 
 * <xref:web-api/index>
 * <xref:web-api/action-return-types>
+* <xref:mvc/compatibility-version>

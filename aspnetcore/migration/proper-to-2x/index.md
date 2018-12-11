@@ -3,14 +3,14 @@ title: 從 ASP.NET 移轉至 ASP.NET Core
 author: isaac2004
 description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 ASP.NET Core.web 的指導
 ms.author: scaddie
-ms.date: 08/27/2017
+ms.date: 12/10/2018
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 1a3e3f0b514c262cfe13ea8391ab97b95aa4384e
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: 6808fefb890dcdec6abdd0604ab61dfd2573d910
+ms.sourcegitcommit: 1872d2e6f299093c78a6795a486929ffb0bbffff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148794"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53216790"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 
@@ -66,7 +66,7 @@ ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 相反地
 
 `Startup` 必須包含 `Configure` 方法。 在 `Configure` 中將必要的中介軟體新增至管線。 在下列範例中 (從預設的網站範本)，會使用數個擴充方法設定管線，以支援：
 
-* [BrowserLink](http://vswebessentials.com/features/browserlink)
+* [瀏覽器連結](xref:client-side/using-browserlink)
 * 錯誤頁面
 * 靜態檔案
 * ASP.NET Core MVC

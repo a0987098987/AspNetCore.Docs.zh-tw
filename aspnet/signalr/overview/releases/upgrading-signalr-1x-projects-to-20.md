@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: adcfef99-9bc5-489d-a91b-9b7c2bc35e04
 msc.legacyurl: /signalr/overview/releases/upgrading-signalr-1x-projects-to-20
 msc.type: authoredcontent
-ms.openlocfilehash: 450ddedb520035cc05a0dbcca1a2666dd1ba24c7
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 23ea23585b15395cf86bdad13885af32d1b64e79
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910547"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53286840"
 ---
 <a name="upgrading-signalr-1x-projects-to-version-2"></a>將 SignalR 1.x 專案升級至第 2 版
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本主題描述如何將現有的 SignalR 1.x 專案升級至 SignalR 2.x 中，以及如何進行疑難排解，升級程序期間可能發生問題。
 >
@@ -50,18 +52,18 @@ SignalR 2 使用的伺服器平台提供具有一致開發體驗[OWIN](http://ow
 
 雖然建議您升級至 SignalR 2 的應用程式，SignalR 1.x 仍受支援。
 
-本教學課程說明如何升級 web 裝載的應用程式，SignalR 2。 SignalR 2 現在支援自我裝載的應用程式 （其會裝載在主控台應用程式、 Windows 服務或其他處理序伺服器）。 如需如何開始使用 SignalR 2 建立的自我裝載的應用程式的資訊，請參閱[教學課程： SignalR 自我裝載](../deployment/tutorial-signalr-self-host.md)。
+本教學課程說明如何升級 web 裝載的應用程式，SignalR 2。 SignalR 2 現在支援自我裝載的應用程式 （其會裝載在主控台應用程式、 Windows 服務或其他處理序伺服器）。 如需如何開始使用 SignalR 2 建立的自我裝載的應用程式的資訊，請參閱[教學課程：SignalR 自我裝載](../deployment/tutorial-signalr-self-host.md)。
 
 ## <a name="contents"></a>內容
 
 下列各節描述升級 SignalR 專案，以及如何針對可能發生的問題進行疑難排解所涉及的工作。
 
-- [範例： 升級至 SignalR 2 的快速入門教學課程](#example)
+- [範例：升級至 SignalR 2 的快速入門教學課程](#example)
 - [在升級期間發生的錯誤進行疑難排解](#troubleshooting)
 
 <a id="example"></a>
 
-## <a name="example-upgrading-the-getting-started-tutorial-application-to-signalr-2"></a>範例： 快速入門教學課程應用程式升級為 SignalR 2
+## <a name="example-upgrading-the-getting-started-tutorial-application-to-signalr-2"></a>範例：開始使用教學課程應用程式升級為 SignalR 2
 
 在本節中，您將更新應用程式中建立[入門教學課程的 SignalR 1.x 版](../older-versions/index.md)使用 SignalR 2。
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 10/25/2018
 uid: razor-pages/sdk
-ms.openlocfilehash: eb4db69f71ec1e481e022192ca05b9d9d61573b9
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 2df7dc4234207d3dbac8a4ff47751adc8fc6a192
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121436"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284430"
 ---
 # <a name="aspnet-core-razor-sdk"></a>ASP.NET Core Razor SDK
 

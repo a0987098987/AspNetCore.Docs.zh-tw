@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 11/11/2018
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 8bb22dc6df9879e827ff9a5ac11e9e3ad5346dc2
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: d4f3e210b0d3c79eaf2233f97a29a6d96cd69b39
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121501"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284379"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Facebook 外部登入設定
 
@@ -121,7 +121,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 執行您的應用程式，然後按一下**登入**。 您會看到一個選項來使用 Facebook 登入。
 
-![Web 應用程式： 未驗證的使用者](index/_static/DoneFacebook.png)
+![Web 應用程式：未經驗證的使用者](index/_static/DoneFacebook.png)
 
 當您按一下**Facebook**，將您重新導向至 Facebook 進行驗證：
 
@@ -135,13 +135,13 @@ Facebook 驗證會要求預設公用設定檔和電子郵件地址：
 
 您現在用來登入您的 Facebook 認證：
 
-![Web 應用程式： 驗證使用者](index/_static/Done.png)
+![Web 應用程式：已驗證的使用者](index/_static/Done.png)
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="troubleshooting"></a>疑難排解
 
-* **ASP.NET Core 2.x 僅：** 如果身分識別未設定藉由呼叫`services.AddIdentity`中`ConfigureServices`，來驗證嘗試會導致*ArgumentException： 必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這麼做。
+* **ASP.NET Core 2.x 只有：** 如果身分識別未設定藉由呼叫`services.AddIdentity`中`ConfigureServices`，來驗證嘗試會導致*ArgumentException:必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這麼做。
 * 如果尚未套用初始移轉建立站台資料庫，您會收到*處理要求時資料庫作業失敗*時發生錯誤。 點選**套用移轉**建立資料庫，並重新整理 以忽略錯誤繼續執行。
 
 ## <a name="next-steps"></a>後續步驟

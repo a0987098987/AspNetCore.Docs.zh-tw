@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: b19913e5-cd8a-4e4b-a872-5ac7a858a934
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-server
 msc.type: authoredcontent
-ms.openlocfilehash: 6545491cfa36bb9fee555eb0348ec0a319bff470
-ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
+ms.openlocfilehash: 4730c4d9f601f561cfc884e0a9c2c2d12785ae0f
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50758241"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288101"
 ---
 <a name="aspnet-signalr-hubs-api-guide---server-c"></a>ASP.NET SignalR 中樞 API 指南-伺服器 (C#)
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom Dykstra](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本文件提供簡介 SignalR 第 2 版的 ASP.NET SignalR 中樞 API 的伺服器端程式設計的程式碼範例示範常見的選項。
 > 
@@ -41,7 +43,6 @@ ms.locfileid: "50758241"
 > ## <a name="questions-and-comments"></a>提出問題或意見
 > 
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
-
 
 ## <a name="overview"></a>總覽
 
@@ -103,7 +104,7 @@ SignalR 2 的伺服器元件只可在.NET 4.5 中。 執行.NET 4.0 的伺服器
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample1.cs)]
 
-如果您要新增 SignalR 功能至 ASP.NET MVC 應用程式，請確定 SignalR 的路由，會加入其他路由之前。 如需詳細資訊，請參閱 <<c0> [ 教學課程： 開始使用 SignalR 2 和 MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)。
+如果您要新增 SignalR 功能至 ASP.NET MVC 應用程式，請確定 SignalR 的路由，會加入其他路由之前。 如需詳細資訊，請參閱[教學課程：開始使用 SignalR 2 和 MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)。
 
 <a id="signalrurl"></a>
 

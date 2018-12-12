@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 4424d3d15cbd234357c8265fa276834cb9abf352
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 9fe17c9e210d4dda9b74818104fc52a60d4f0077
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121216"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284535"
 ---
 # <a name="deploy-an-app-to-app-service"></a>將應用程式部署至 App Service
 
@@ -35,7 +35,7 @@ ms.locfileid: "53121216"
 
 從命令殼層中，下載的程式碼、 建置專案，並執行它，如下所示。
 
-> *注意： Linux/macOS 使用者應變更適當的路徑，例如使用正斜線 (`/`) 而不是反斜線 (`\`)。*
+> *注意：Linux/macOS 使用者應變更適當的路徑，例如，使用正斜線 (`/`) 而不是反斜線 (`\`)。*
 
 1. 複製程式碼到您的本機電腦上的資料夾。
 
@@ -73,7 +73,7 @@ ms.locfileid: "53121216"
 
 若要部署應用程式，您必須建立 App Service [Web 應用程式](/azure/app-service/app-service-web-overview)。 在建立之後的 Web 應用程式，您將從本機電腦使用 Git 部署至它。
 
-1. 登入[Azure Cloud Shell](https://shell.azure.com/bash)。 注意： 當您第一次登入時，Cloud Shell 會提示您建立組態檔的儲存體帳戶。 接受預設值，或提供唯一的名稱。
+1. 登入[Azure Cloud Shell](https://shell.azure.com/bash)。 注意:當您第一次登入時，Cloud Shell 會提示您建立組態檔的儲存體帳戶。 接受預設值，或提供唯一的名稱。
 
 2. 使用 Cloud Shell 中的下列步驟。
 
@@ -141,7 +141,7 @@ ms.locfileid: "53121216"
 
 ## <a name="deployment-with-visual-studio"></a>使用 Visual Studio 部署
 
-> *注意： 本節僅適用於 Windows。Linux 和 macOS 使用者應在下面的步驟 2 所述的變更。儲存檔案，並認可變更與本機存放庫`git commit`。最後，將變更推送`git push`，如所示的第一個區段。*
+> *注意：本節僅適用於 Windows。Linux 和 macOS 使用者應在下面的步驟 2 所述的變更。儲存檔案，並認可變更與本機存放庫`git commit`。最後，將變更推送`git push`，如所示的第一個區段。*
 
 從命令殼層已部署應用程式。 讓我們將更新部署至應用程式中使用 Visual Studio 的整合式的工具。 在幕後，Visual Studio 會完成同樣的工作命令列工具，但在 Visual Studio 的熟悉的 UI。
 

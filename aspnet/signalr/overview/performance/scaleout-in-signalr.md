@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 7e781fc1-1c1f-45a8-bc1d-338e96dbe9c9
 msc.legacyurl: /signalr/overview/performance/scaleout-in-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 78d917ae3a12edb9f117742d1a35d2accb073f01
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 50f9e5bc2713af7fe41473339e360099a92d4c5d
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911678"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53286983"
 ---
 <a name="introduction-to-scaleout-in-signalr"></a>SignalR 的向外延展簡介
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)， [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
 >
@@ -78,9 +80,9 @@ Signalr，每則訊息是透過訊息匯流排傳送。 訊息匯流排實作[IM
 
 使用後擋板，最大訊息輸送量低於時用戶端直接與單一伺服器節點。 這是因為後擋板轉送至每個節點中，每個訊息，讓後擋板成為瓶頸。 這項限制是否發生問題，則應用程式而定。 例如，以下是一些典型的 SignalR 案例：
 
-- [伺服器廣播](../getting-started/tutorial-server-broadcast-with-signalr.md)（例如，股票行情指示器）： 背板適用於此案例中，因為伺服器控制傳送訊息的速率。
-- [用戶端到用戶端](../getting-started/tutorial-getting-started-with-signalr.md)（例如聊天）： 在此案例中後, 擋板瓶頸的訊息數目隨著用戶端數目; 也就是說，如果訊息的速率成長按比例越多的用戶端加入。
-- [高頻率即時](../getting-started/tutorial-high-frequency-realtime-with-signalr.md)（例如，即時遊戲）： 這種情況下不建議後擋板。
+- [伺服器廣播](../getting-started/tutorial-server-broadcast-with-signalr.md)（例如，股票行情指示器）：背板適用於此案例中，因為伺服器控制傳送訊息的速率。
+- [用戶端到用戶端](../getting-started/tutorial-getting-started-with-signalr.md)（例如聊天）：在此案例中後, 擋板如果可能會發生瓶頸的訊息數目隨著; 的用戶端數目也就是說，如果訊息的速率成長按比例越多的用戶端加入。
+- [高頻率即時](../getting-started/tutorial-high-frequency-realtime-with-signalr.md)（例如，即時遊戲）：後擋板不建議此案例中。
 
 ## <a name="enabling-tracing-for-signalr-scaleout"></a>啟用 SignalR 向外延展的追蹤
 

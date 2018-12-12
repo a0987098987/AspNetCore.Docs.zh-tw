@@ -8,16 +8,18 @@ ms.date: 10/21/2013
 ms.assetid: c34bc627-41af-4c21-a817-e97a19a7f252
 msc.legacyurl: /signalr/overview/older-versions/persistent-connection-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: 6c13a63630948a8b6bd1f6e3a6e752b9695256bf
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 4973cb9bd03088106fe9502e0e706c6c28d2d46d
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830191"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53286853"
 ---
 <a name="authentication-and-authorization-for-signalr-persistent-connections-signalr-1x"></a>SignalR 持續連線的驗證和授權 (SignalR 1.x)
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom FitzMacken](https://github.com/tfitzmac)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本主題描述如何強制執行授權的持續連線。 如需將安全性整合至 SignalR 應用程式的一般資訊，請參閱[安全性簡介](index.md)。
 

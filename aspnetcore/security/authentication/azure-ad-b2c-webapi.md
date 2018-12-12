@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 09/21/2018
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: e8ac1e33819dd369460139df25597e1aa0979c91
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 9c541644d276bbdc990bb01f8bd80c92862cd6f0
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121709"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284613"
 ---
 # <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>在 web Api 與 Azure Active Directory B2C 在 ASP.NET Core 中的驗證
 
@@ -19,7 +19,7 @@ ms.locfileid: "53121709"
 
 [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) 是適用於 web 和行動裝置應用程式的雲端身分識別管理解決方案。 服務提供雲端和內部部署中託管的應用程式的驗證。 驗證類型包括個別帳戶，社交網路帳戶，以及同盟企業帳戶。 Azure AD B2C 也提供多重要素驗證，以最低組態。
 
-Azure Active Directory (Azure AD) 與 Azure AD B2C 是個別的產品供應項目。 Azure AD 租用戶代表組織，而 Azure AD B2C 租用戶代表與信賴憑證者應用程式要使用的身分識別的集合。 若要進一步了解，請參閱[Azure AD B2C： 常見問題集 (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs)。
+Azure Active Directory (Azure AD) 與 Azure AD B2C 是個別的產品供應項目。 Azure AD 租用戶代表組織，而 Azure AD B2C 租用戶代表與信賴憑證者應用程式要使用的身分識別的集合。 若要進一步了解，請參閱[Azure AD B2C:常見問題集 (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs)。
 
 Web Api 都沒有使用者介面，因為它們無法將使用者重新導向至安全權杖服務，例如 Azure AD B2C。 相反地，API 會從呼叫端已經驗證與 Azure AD B2C 使用者的應用程式，傳遞持有人權杖。 API 接著會驗證權杖，而不需要直接使用者互動。
 
@@ -175,14 +175,14 @@ Postman 會模擬來自 Azure AD B2C 租用戶取得權杖的 web 應用程式�
    |      <strong>權杖名稱</strong>       |                                          *{語彙基元名稱}*                                       |                                                                                                                   輸入權杖的描述性名稱。                                                                                                                    |
    |      <strong>授與類型</strong>       |                                           隱含                                            |                                                                                                                                                                                                                                                                              |
    |     <strong>回呼 URL</strong>      |                                 `https://getpostman.com/postman`                              |                                                                                                                                                                                                                                                                              |
-   |       <strong>驗證 URL</strong>        | `https://login.microsoftonline.com/{tenant domain name}/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` |  取代 *{租用戶網域名稱}* 租用戶的網域名稱。 **重要**： 此 URL 必須有相同的網域名稱，做為中找到的資訊`AzureAdB2C.Instance`web API 中*appsettings.json*檔案。 請參閱附註&dagger;。                                                  |
+   |       <strong>驗證 URL</strong>        | `https://login.microsoftonline.com/{tenant domain name}/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` |  取代 *{租用戶網域名稱}* 租用戶的網域名稱。 **重要**:此 URL 必須有相同的網域名稱，做為項目中找到`AzureAdB2C.Instance`在 web API *appsettings.json*檔案。 請參閱附註&dagger;。                                                  |
    |       <strong>用戶端識別碼</strong>       |                *{輸入 Postman 應用程式<b>應用程式識別碼</b>}*                              |                                                                                                                                                                                                                                                                              |
    |         <strong>範圍</strong>         |         `https://{tenant domain name}/{api}/user_impersonation openid offline_access`       | 取代 *{租用戶網域名稱}* 租用戶的網域名稱。 取代 *{api}* 應用程式識別碼 URI 與您提供給 web API 第一次登錄時 (在此情況下， `api`)。 URL 的模式是： `https://{tenant}.onmicrosoft.com/{api-id-uri}/{scope name}`。         |
    |         <strong>狀態</strong>         |                                      *{空白}*                                          |                                                                                                                                                                                                                                                                              |
    | <strong>用戶端驗證</strong> |                                本文中傳送用戶端認證                                |                                                                                                                                                                                                                                                                              |
 
     > [!NOTE]
-    > &dagger; 在 Azure Active Directory B2C 入口網站中的 [原則設定] 對話方塊會顯示兩個可能的 Url： 一個格式`https://login.microsoftonline.com/`{租用戶網域名稱} / {額外路徑資訊} 和其他格式`https://{tenant name}.b2clogin.com/`{租用戶網域名稱} / {額外路徑資訊}。 它有**重要**的網域中找到`AzureAdB2C.Instance`在 web API 的*appsettings.json*檔案符合所使用的 web 應用程式*appsettings.json*檔案。 這是用於在 Postman 中的 [驗證 URL] 欄位的相同網域。 請注意，Visual Studio 會使用稍微不同的 URL 格式，比在入口網站中顯示的內容。 只要符合定義域，URL 就會運作。
+    > &dagger; 在 Azure Active Directory B2C 入口網站中的 [原則設定] 對話方塊會顯示兩個可能的 Url:其中一個格式`https://login.microsoftonline.com/`{租用戶網域名稱} / {額外路徑資訊} 和其他格式`https://{tenant name}.b2clogin.com/`{租用戶網域名稱} / {額外路徑資訊}。 它有**重要**的網域中找到`AzureAdB2C.Instance`在 web API 的*appsettings.json*檔案符合所使用的 web 應用程式*appsettings.json*檔案。 這是用於在 Postman 中的 [驗證 URL] 欄位的相同網域。 請注意，Visual Studio 會使用稍微不同的 URL 格式，比在入口網站中顯示的內容。 只要符合定義域，URL 就會運作。
 
 3. 選取 [**要求權杖**] 按鈕。
 

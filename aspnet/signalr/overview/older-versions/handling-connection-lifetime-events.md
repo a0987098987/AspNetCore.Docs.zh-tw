@@ -8,16 +8,18 @@ ms.date: 06/05/2013
 ms.assetid: e608e263-264d-448b-b0eb-6eeb77713b22
 msc.legacyurl: /signalr/overview/older-versions/handling-connection-lifetime-events
 msc.type: authoredcontent
-ms.openlocfilehash: 5a0e912540bf24abd8a7e91c73c87ed9213be487
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: f965c38e18c442268f9bb1d7ffb5e98a135efade
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832668"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287673"
 ---
 <a name="understanding-and-handling-connection-lifetime-events-in-signalr-1x"></a>了解和處理連線存留期事件 SignalR 1.x
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom Dykstra](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 這篇文章提供 SignalR 連線、 重新連線，以及中斷連線事件，您可以控制，以及您可以設定的逾時和 keepalive 設定的總覽。
 > 
@@ -63,7 +65,7 @@ API 參考主題的連結是 API 的.NET 4.5 版本。 如果您使用.NET 4，�
 這篇文章會區別*SignalR 連線*，*傳輸連線*，並*實體連線*:
 
 - **SignalR 連線**指的用戶端和伺服器 URL、 SignalR API 所維護，而且可以連接 ID 唯一識別之間的邏輯關聯性 此關聯性的相關資料由 SignalR 維護，並用來建立傳輸連接。 SignalR 和關聯性結尾時，處置資料的用戶端呼叫`Stop`SignalR 嘗試重新建立遺失的傳輸連線期間達到方法或逾時限制。
-- **傳輸連線**用戶端和伺服器，維護的其中一個四種傳輸 Api 之間的邏輯關聯性是指： Websocket 伺服器傳送事件，不限次數框架時，或長時間輪詢。 SignalR 使用傳輸 API 以建立傳輸連接，並傳輸 API 取決於建立傳輸連線的實體網路連線存在。 SignalR 終止它時，或當傳輸 API 偵測到的實體連接已中斷，就會結束傳輸連線。
+- **傳輸連線**指的用戶端和伺服器，維護的其中一個四種傳輸 Api 之間的邏輯關聯性：Websocket 伺服器傳送事件、 不限次數的框架或長輪詢。 SignalR 使用傳輸 API 以建立傳輸連接，並傳輸 API 取決於建立傳輸連線的實體網路連線存在。 SignalR 終止它時，或當傳輸 API 偵測到的實體連接已中斷，就會結束傳輸連線。
 - **實體連接**參考的實體網路的連結-線、 無線訊號，路由器等，可簡化用戶端電腦和伺服器電腦之間的通訊。 實體連線必須存在於若要建立傳輸連線，而且必須以建立 SignalR 連線建立傳輸連接。 不過，重大的實體連接不一定會立即結束的傳輸連線或 SignalR 連線，如稍後本主題將說明。
 
 在下列圖表中，由 SignalR 連線的中樞 API 和 PersistentConnection API SignalR 層級、 傳輸連線由傳輸層和實體連接由伺服器之間的線條和用戶端。

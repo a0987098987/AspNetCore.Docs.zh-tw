@@ -8,16 +8,18 @@ ms.date: 04/16/2013
 ms.assetid: ad2a5da5-2e79-40ea-bc84-028d327f5982
 msc.legacyurl: /signalr/overview/older-versions/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: c677bcbc78eac6056c035c2b34fe659caac9c6fa
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: a679a7c66a94fa440a1ead64225eb86f7de90c9e
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912276"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287952"
 ---
 <a name="high-frequency-realtime-with-signalr-1x"></a>高頻率即時與 SignalR 1.x
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本教學課程會示範如何建立 web 應用程式，使用 ASP.NET SignalR 提供高頻率的傳訊功能。 在此情況下頻繁訊息表示會以固定費率; 的更新在此應用程式，最多 10 個訊息，第二個。
 > 

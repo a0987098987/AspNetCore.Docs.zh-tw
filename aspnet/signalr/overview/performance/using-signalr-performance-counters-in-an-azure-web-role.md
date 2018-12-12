@@ -9,30 +9,32 @@ ms.date: 10/03/2018
 ms.assetid: 2a127d3b-21ed-4cc9-bec0-cdab4e742a25
 msc.legacyurl: /signalr/overview/performance/using-signalr-performance-counters-in-an-azure-web-role
 msc.type: authoredcontent
-ms.openlocfilehash: 7304ff17bb53f94bdee1e90602d206bf32184e37
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: bdd875201895c6eaf155b54582d0898c2570d93c
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795456"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287693"
 ---
 # <a name="using-signalr-performance-counters-in-an-azure-web-role"></a>使用 Azure Web 角色中的 SignalR 效能計數器
 
 作者：[Luke Latham](https://github.com/guardrex)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 SignalR 效能計數器用來監視 Azure Web 角色中的應用程式的效能。 計數器是由 Microsoft Azure 診斷擷取。 您在 Azure 上使用安裝 SignalR 效能計數器*signalr.exe*，獨立或內部部署應用程式所用的相同工具。 Azure 角色是暫時性的因為您會設定應用程式安裝並註冊在啟動時的 SignalR 效能計數器。
 
 ## <a name="prerequisites"></a>必要條件
 
 * Visual Studio 2015 或[2017年](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
-* [Microsoft Azure SDK for Visual Studio](https://azure.microsoft.com/downloads/) **附註： 安裝 SDK 之後，重新啟動您的電腦。**
-* Microsoft Azure 訂用帳戶： 若要申請免費 Azure 試用帳戶，請參閱[Azure 免費試用](https://azure.microsoft.com/free/)。
+* [Microsoft Azure SDK for Visual Studio](https://azure.microsoft.com/downloads/) **附註：安裝 SDK 之後，重新啟動您的電腦。**
+* Microsoft Azure 訂用帳戶：若要申請免費 Azure 試用帳戶，請參閱[Azure 免費試用](https://azure.microsoft.com/free/)。
 
 ## <a name="creating-an-azure-web-role-application-that-exposes-signalr-performance-counters"></a>建立 Azure Web 角色應用程式公開 （expose) 的 SignalR 效能計數器
 
 1. 開啟 Visual Studio。
 
-2. 在 Visual Studio 中，選取**檔案** > **新增** > **專案**。
+2. 在 Visual Studio 中，選取 [檔案] > [新增] > [專案]。
 
 3. 在**新的專案**對話方塊中，選取**Visual C#** > **雲端**在左側的類別目錄，然後選取**Azure 雲端服務**範本。 將應用程式命名**SignalRPerfCounters** ，然後選取**確定**。
 

@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr
-title: 教學課程： 開始使用 SignalR 2 |Microsoft Docs
+title: 教學課程：開始使用 SignalR 2 |Microsoft Docs
 author: pfletcher
 description: 此教學課程會示範如何使用 SignalR 建立即時聊天應用程式。 您會加入空白的 ASP.NET web 應用程式中的 SignalR，並建立 HTML pa...
 ms.author: riande
@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: a8b3b778-f009-4369-85c7-e90f9878d8b4
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 676dc0854ef6f041e705ed6b39432e11dd8643ed
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 3b06e7d0a602e061112adbceba92276f836f6311
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910898"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287334"
 ---
-<a name="tutorial-getting-started-with-signalr-2"></a>教學課程： 開始使用 SignalR 2
+<a name="tutorial-getting-started-with-signalr-2"></a>教學課程：開始使用 SignalR 2
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 [下載已完成的專案](http://code.msdn.microsoft.com/SignalR-Getting-Started-b9d18aa9)
 

@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/next-steps
-ms.openlocfilehash: 7c3b1c701b13b2a2052c72f5f84bba33d4995ad7
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: a775dc42551a43bcce72b5f9ca364ed00b1dc4e6
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121320"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284456"
 ---
 # <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
-title: 教學課程： 高頻率即時與 SignalR 2 |Microsoft Docs
+title: 教學課程：高頻率即時與 SignalR 2 |Microsoft Docs
 author: pfletcher
 description: 本教學課程會示範如何建立 web 應用程式，使用 ASP.NET SignalR 提供高頻率的傳訊功能。 高頻率訊息處理中...
 ms.author: riande
@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 9f969dda-78ea-4329-b1e3-e51c02210a2b
 msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 23dc9cc7fd469e934ed9915922a3baa772d9e1ab
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 04ce650509268ee63daafe24bc8dcc9725aea16b
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912024"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287711"
 ---
-<a name="tutorial-high-frequency-realtime-with-signalr-2"></a>教學課程： 高頻率即時與 SignalR 2
+<a name="tutorial-high-frequency-realtime-with-signalr-2"></a>教學課程：高頻率即時與 SignalR 2
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 [下載已完成的專案](http://code.msdn.microsoft.com/SignalR-20-MoveShape-Demo-6285b83a)
 

@@ -8,16 +8,18 @@ ms.date: 05/15/2013
 ms.assetid: eaa206c4-edb3-487e-8fcb-54a3261fed36
 msc.legacyurl: /signalr/overview/older-versions/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 905dea4918be731673c39e788069ce2dc78e1649
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 2035b3feebfa32dd7ec4d6adf715a7fee5e7b74f
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910690"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287352"
 ---
 <a name="dependency-injection-in-signalr-1x"></a>相依性插入 signalr 1.x
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)， [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 相依性插入是移除硬式編碼物件，方便您將物件的相依性，針對測試 （使用模擬 （mock） 物件），或變更執行階段行為之間的相依性的方法。 本教學課程會示範如何對 SignalR 中樞的相依性插入。 它也會示範如何使用 SignalR 使用 IoC 容器。 IoC 容器是一般架構的相依性插入。
 
@@ -81,8 +83,8 @@ ms.locfileid: "48910690"
 
 Stockservices.asmx 範例會定義兩個主要類別：
 
-- `StockTickerHub`： 管理用戶端連線 hub 類別。
-- `StockTicker`: 保存股票的價格，而且會定期更新它們的 singleton。
+- `StockTickerHub`：中樞的類別，用來管理用戶端連線。
+- `StockTicker`：單一保留股價，並定期更新它們。
 
 `StockTickerHub` 保留的參考`StockTicker`單一值，雖然`StockTicker`保存參考**IHubConnectionContext**的`StockTickerHub`。 它會使用此介面來與通訊`StockTickerHub`執行個體。 (如需詳細資訊，請參閱 <<c0> [ 伺服器廣播與 ASP.NET SignalR](index.md)。)
 

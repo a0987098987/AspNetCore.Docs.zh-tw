@@ -8,16 +8,18 @@ ms.date: 09/28/2015
 ms.assetid: a9fd4dc0-1b96-4443-82ca-932a5b4a8ea4
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: 9edb7fd100a3f4c5331454045ac206d2f7a81961
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 8e493eda256351904da49e1222773f188e6a2058
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912445"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288062"
 ---
 <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>ASP.NET SignalR 中樞 API 指南-JavaScript 用戶端
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom Dykstra](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本文件提供使用 signalr 第 2 版中 JavaScript 用戶端，例如瀏覽器和 Windows 市集 (WinJS) 應用程式的中樞 API 的簡介。
 >
@@ -41,7 +43,6 @@ ms.locfileid: "48912445"
 > ## <a name="questions-and-comments"></a>提出問題或意見
 >
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
-
 
 ## <a name="overview"></a>總覽
 
@@ -226,7 +227,7 @@ Signalr 1.x 中的，跨網域要求是由單一 EnableCrossDomain 旗標控制�
 
 如果 JSONP 需要在用戶端 （以支援跨網域要求在較舊的瀏覽器中），它必須明確啟用 splittunneling`EnableJSONP`上`HubConfiguration`物件到`true`，如下所示。 JSONP 是預設為停用，其會比 CORS 較不安全。
 
-**Microsoft.Owin.Cors 加入您的專案：** 若要安裝此程式庫，請在套件管理員主控台中執行下列命令：
+**Microsoft.Owin.Cors 加入您的專案：** 若要安裝此程式庫，請在 Package Manager Console 執行下列命令：
 
 `Install-Package Microsoft.Owin.Cors`
 
@@ -464,13 +465,13 @@ Signalr 1.x 中的，跨網域要求是由單一 EnableCrossDomain 旗標控制�
 
 SignalR 提供以下連線，您可以處理存留期事件：
 
-- `starting`： 透過連線傳送任何資料之前引發。
-- `received`： 在此連接上收到任何資料時引發。 提供已接收的資料。
-- `connectionSlow`： 當用戶端偵測到較慢或經常卸除連接時引發。
-- `reconnecting`： 基礎傳輸可讓您開始重新連線時引發。
-- `reconnected`： 當基礎傳輸已重新連接時引發。
-- `stateChanged`： 連線狀態變更時引發。 提供的舊狀態和新的狀態 （連接、 已連線、 正在重新連線或已中斷連線）。
-- `disconnected`： 當連接已中斷連線時引發。
+- `starting`：透過連線傳送任何資料之前引發。
+- `received`：在此連接上收到任何資料時，就會引發。 提供已接收的資料。
+- `connectionSlow`：當用戶端偵測到較慢或經常卸除連接時引發。
+- `reconnecting`：基礎傳輸可讓您開始重新連線時引發。
+- `reconnected`：當基礎傳輸已重新連接時引發。
+- `stateChanged`：連線狀態變更時引發。 提供的舊狀態和新的狀態 （連接、 已連線、 正在重新連線或已中斷連線）。
+- `disconnected`：當連接已中斷連線時，就會引發。
 
 例如，如果您想要顯示警告訊息，可能會造成明顯延遲的連線問題時，處理`connectionSlow`事件。
 

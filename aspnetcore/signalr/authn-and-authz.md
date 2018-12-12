@@ -7,12 +7,12 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 06/29/2018
 uid: signalr/authn-and-authz
-ms.openlocfilehash: aa1721ba1802e1bfba04d57378085a136c100deb
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 6624b2b4361eb0a5bb6e45108878ee6fe5ecb443
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252902"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284408"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中驗證和授權
 
@@ -141,3 +141,7 @@ public class ChatHub: Hub
     }
 }
 ```
+
+## <a name="additional-resources"></a>其他資源
+
+* [ASP.NET Core 中的持有人權杖驗證](https://blogs.msdn.microsoft.com/webdev/2016/10/27/bearer-token-authentication-in-asp-net-core/)

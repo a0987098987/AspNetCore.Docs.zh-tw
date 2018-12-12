@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: ce1305f9-30fd-49e3-bf38-d0a78dfb06c3
 msc.legacyurl: /signalr/overview/performance/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: 3adc8768eb7271de32180ba98f67864b22283510
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 5cdb9b5eb6d3f5ebd5c96e4b0d89926c18bddadd
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910794"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287607"
 ---
 <a name="signalr-scaleout-with-azure-service-bus"></a>SignalR 向外延展與 Azure 服務匯流排
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)， [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 在本教學課程中，您將部署至 Windows Azure Web 角色，使用服務匯流排後擋板以將訊息分散至每個角色執行個體的 SignalR 應用程式。 (您也可以使用服務匯流排後的擋板[web 應用程式在 Azure App Service 中的](https://docs.microsoft.com/azure/app-service-web/)。)
 
@@ -49,13 +51,13 @@ ms.locfileid: "48910794"
 
     [!code-csharp[Main](scaleout-with-windows-azure-service-bus/samples/sample1.cs)]
 
-此程式碼會使用的預設值來設定的後擋板[TopicCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.servicebusscaleoutconfiguration.topiccount(v=vs.118).aspx)並[MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx)。 如需變更這些值的詳細資訊，請參閱[SignalR 效能： 向外延展計量](signalr-performance.md#scaleout_metrics)。
+此程式碼會使用的預設值來設定的後擋板[TopicCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.servicebusscaleoutconfiguration.topiccount(v=vs.118).aspx)並[MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx)。 如需變更這些值的詳細資訊，請參閱[SignalR 效能：向外延展計量](signalr-performance.md#scaleout_metrics)。
 
 每個應用程式，「 YourAppName"挑選不同的值。 請勿在多個應用程式使用相同的值。
 
 ## <a name="create-the-azure-services"></a>建立 Azure 服務
 
-建立雲端服務中所述[如何建立和部署雲端服務](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy)。 請依照下列章節中的步驟 「 如何： 建立雲端服務，使用 快速建立 」。 本教學課程中，您不需要上傳憑證。
+建立雲端服務中所述[如何建立和部署雲端服務](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy)。 請依照下列章節中的步驟 「 如何：建立雲端服務，使用 快速建立 」。 本教學課程中，您不需要上傳憑證。
 
 ![](scaleout-with-windows-azure-service-bus/_static/image2.png)
 
@@ -87,8 +89,8 @@ ms.locfileid: "48910794"
 
 [專案] 精靈會建立兩個專案：
 
-- ChatService： 此專案是 Windows Azure 應用程式。 它會定義 Azure 角色和其他組態選項。
-- SignalRChat： 此專案是您的 ASP.NET MVC 5 專案。
+- ChatService:此專案是 Windows Azure 應用程式。 它會定義 Azure 角色和其他組態選項。
+- SignalRChat:此專案是您的 ASP.NET MVC 5 專案。
 
 ## <a name="create-the-signalr-chat-application"></a>建立 SignalR 聊天應用程式
 

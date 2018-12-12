@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 3751f5e7-59db-4be0-a290-50abc24e5c84
 msc.legacyurl: /signalr/overview/performance/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: 269c10d7a73f181eaceac1c43ad51f3933d6711c
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 9346f0ff9720361f07afe196f59305f0f38ffe8a
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911854"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287765"
 ---
 <a name="signalr-performance"></a>SignalR 效能
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本主題描述如何設計、 測量和改善的 SignalR 應用程式中的效能。
 >
@@ -88,7 +90,7 @@ SignalR 效能和調整的近期簡報，請參閱 <<c0> [ 調整與 ASP.NET Sig
 
 **SignalR 組態設定**
 
-- **DefaultMessageBufferSize**： 依預設，SignalR 會保留在記憶體中每個連線的中樞每 1000 則訊息。 如果使用大型訊息時，這可能會產生記憶體問題可以降低此值可以緩解這些問題。 這項設定可以在中設定`Application_Start`事件處理常式在 ASP.NET 應用程式，或`Configuration`的 OWIN 啟動類別中的自我裝載的應用程式的方法。 下列範例示範如何減少此值，以降低您的應用程式，以降低伺服器使用的記憶體數量的記憶體使用量：
+- **DefaultMessageBufferSize**:根據預設，SignalR 會保留在記憶體中每個連線的中樞每 1000 則訊息。 如果使用大型訊息時，這可能會產生記憶體問題可以降低此值可以緩解這些問題。 這項設定可以在中設定`Application_Start`事件處理常式在 ASP.NET 應用程式，或`Configuration`的 OWIN 啟動類別中的自我裝載的應用程式的方法。 下列範例示範如何減少此值，以降低您的應用程式，以降低伺服器使用的記憶體數量的記憶體使用量：
 
     **.NET 伺服器程式碼在 Startup.cs 中的減少預設的訊息緩衝區大小**
 
@@ -96,10 +98,10 @@ SignalR 效能和調整的近期簡報，請參閱 <<c0> [ 調整與 ASP.NET Sig
 
 **IIS 組態設定**
 
-- **每個應用程式的最大並行要求**： 增加並行的 IIS 要求將會增加可用的服務要求的伺服器資源。 預設值為 5000。若要增加此設定，請在提升權限的命令提示字元執行下列命令：
+- **每個應用程式的最大並行要求**:增加並行的 IIS 要求將會增加可用的服務要求的伺服器資源。 預設值為 5000。若要增加此設定，請在提升權限的命令提示字元執行下列命令：
 
     [!code-console[Main](signalr-performance/samples/sample4.cmd)]
-- **ApplicationPool QueueLength**： 這是 Http.sys 的應用程式集區排入佇列的要求數目上限。 當佇列已滿時，新的要求就會收到 503 「 服務無法使用 」 回應。 預設值為 1000。
+- **ApplicationPool QueueLength**:這是 Http.sys 的應用程式集區排入佇列的要求數目上限。 當佇列已滿時，新的要求就會收到 503 「 服務無法使用 」 回應。 預設值為 1000。
 
     縮短工作者處理序中裝載您的應用程式的應用程式集區佇列長度，將會節省記憶體資源。 如需詳細資訊，請參閱 <<c0> [ 管理、 調整，並設定應用程式集區](https://technet.microsoft.com/library/cc745955.aspx)。
 
@@ -112,10 +114,10 @@ SignalR 效能和調整的近期簡報，請參閱 <<c0> [ 調整與 ASP.NET Sig
 
 可能會改善 SignalR 效能的 ASP.NET 設定包括下列各項：
 
-- **每一 CPU 的最大並行要求**： 提高此設定可能會解決效能瓶頸。 若要增加此設定，新增下列組態設定加入`aspnet.config`檔案：
+- **每一 CPU 的最大並行要求**:增加此設定，可能有助於解決效能瓶頸。 若要增加此設定，新增下列組態設定加入`aspnet.config`檔案：
 
     [!code-xml[Main](signalr-performance/samples/sample5.xml?highlight=4)]
-- **要求佇列限制**： 當連線總數超過`maxConcurrentRequestsPerCPU`設定時，ASP.NET 會開始節流使用佇列的要求。 若要增加佇列的大小，您可以增加`requestQueueLimit`設定。 若要這樣做，請新增下列組態設定加入`processModel`中的節點`config/machine.config`(而非`aspnet.config`):
+- **要求佇列限制**:當連線總數超過`maxConcurrentRequestsPerCPU`設定時，ASP.NET 會開始節流使用佇列的要求。 若要增加佇列的大小，您可以增加`requestQueueLimit`設定。 若要這樣做，請新增下列組態設定加入`processModel`中的節點`config/machine.config`(而非`aspnet.config`):
 
     [!code-xml[Main](signalr-performance/samples/sample6.xml)]
 
@@ -197,14 +199,14 @@ SignalR 效能和調整的近期簡報，請參閱 <<c0> [ 調整與 ASP.NET Sig
 
 下列度量會測量 SignalR 訊息傳輸所產生的錯誤。 **中樞解析**中樞或中樞方法無法解析時，會發生錯誤。 **中樞叫用**錯誤是在叫用中樞方法時擲回的例外狀況。 **傳輸**錯誤是在 HTTP 要求或回應期間擲回的連線錯誤。
 
-- **錯誤： 所有的總數**
-- **錯誤： All/Sec**
-- **錯誤： 中樞解析總數**
-- **錯誤： 中樞解析數/秒**
-- **錯誤： 中樞叫用總數**
-- **錯誤： 中樞叫用數/秒**
-- **錯誤： 傳輸總數**
-- **錯誤： 傳輸數/秒**
+- **錯誤：所有總計**
+- **錯誤：All/Sec**
+- **錯誤：中樞解析總計**
+- **錯誤：每秒中樞解析**
+- **錯誤：中樞叫用總數**
+- **錯誤：每秒中樞叫用**
+- **錯誤：傳輸的總數**
+- **錯誤：傳輸/秒**
 
 <a id="scaleout_metrics"></a>
 

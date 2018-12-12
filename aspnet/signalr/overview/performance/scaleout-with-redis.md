@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 6ecd08c1-e364-4cd7-ad4c-806521911585
 msc.legacyurl: /signalr/overview/performance/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: f92946ae99bf8cb3840adb5d98004acb87e24925
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 5151c718c82408fdcb75de16211b55488ca513d2
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861286"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287733"
 ---
 <a name="signalr-scaleout-with-redis"></a>使用 Redis 的 SignalR 向外延展
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
 >

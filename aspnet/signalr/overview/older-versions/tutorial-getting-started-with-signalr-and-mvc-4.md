@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
-title: 教學課程： 開始使用 SignalR 1.x 及 MVC 4 |Microsoft Docs
+title: 教學課程：開始使用 SignalR 1.x 及 MVC 4 |Microsoft Docs
 author: pfletcher
 description: 使用 ASP.NET SignalR 及 ASP.NET MVC 4 建置即時聊天應用程式。
 ms.author: riande
@@ -8,16 +8,18 @@ ms.date: 03/29/2013
 ms.assetid: eeef9f73-6de3-49f9-b50b-9af22108f2ce
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 95fc3315149e07dbdb0505a2b5ab197bfedba097
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: a67d05288252c17d84b1d7df5f7bcddde3c887f5
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910872"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287706"
 ---
-<a name="tutorial-getting-started-with-signalr-1x-and-mvc-4"></a>教學課程： 開始使用 SignalR 1.x 及 MVC 4
+<a name="tutorial-getting-started-with-signalr-1x-and-mvc-4"></a>教學課程：開始使用 SignalR 1.x 及 MVC 4
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tim Teebken](https://github.com/timlt)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本教學課程會示範如何使用 ASP.NET SignalR 建立即時聊天應用程式。 您會將 SignalR 加入至 MVC 4 應用程式，並建立交談檢視，以傳送和顯示訊息。
 

@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 4b559e6c-4fb0-4a04-9812-45cf08ae5779
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: bdb0562955f3bde56a95ce937c27fdbe4aa94823
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: e41061f0310c021b10dc6667a5c3297788213b0a
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911677"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287945"
 ---
 <a name="signalr-troubleshooting"></a>SignalR 疑難排解
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本文件說明使用 SignalR 的常見疑難排解問題。
 >
@@ -71,7 +73,7 @@ SignalR 需要 JSON 剖析器要出現序列化伺服器與用戶端之間的呼
 
 ### <a name="mixing-hub-and-persistentconnection-syntax"></a>混用中樞 PersistentConnection 語法
 
-SignalR 使用兩種通訊模式： 中樞和 PersistentConnections。 呼叫這兩個通訊模型的語法是不同的用戶端程式碼。 如果您已新增中樞伺服器程式碼中，確認所有用戶端程式碼會使用適當的中樞語法。
+SignalR 使用兩種通訊模式：中樞和 PersistentConnections。 呼叫這兩個通訊模型的語法是不同的用戶端程式碼。 如果您已新增中樞伺服器程式碼中，確認所有用戶端程式碼會使用適當的中樞語法。
 
 **建立 PersistentConnection JavaScript 用戶端中的 JavaScript 用戶端程式碼**
 
@@ -135,7 +137,7 @@ SignalR 會自動使用 JSON 序列化程式的方法參數那里的不需要自
 
 這種行為是設計上的預期行為。 當使用者嘗試離開頁面有使用中的 SignalR 連線時，則 SignalR 用戶端接著便可通知伺服器將會停止用戶端連線的最佳嘗試。 如果 SignalR 用戶端的最佳嘗試無法連線到伺服器，伺服器將會處置之後可設定的連接`DisconnectTimeout`更新版本中，在這段`OnDisconnected`事件就會引發。 如果 SignalR 用戶端的最佳嘗試會成功，`OnDisconnected`事件就會立即引發。
 
-如需設定資訊`DisconnectTimeout`設定，請參閱[處理連線存留期事件： DisconnectTimeout](../guide-to-the-api/handling-connection-lifetime-events.md#disconnecttimeout)。
+如需設定資訊`DisconnectTimeout`設定，請參閱[處理連線存留期事件：DisconnectTimeout](../guide-to-the-api/handling-connection-lifetime-events.md#disconnecttimeout)。
 
 ### <a name="connection-limit-reached"></a>已達到連線限制
 
@@ -187,10 +189,10 @@ SignalR 伺服器不知道，是否用戶端是廢與否，而且它們都依賴
 
 有多種原因會導致此問題。 請確認下列各項：
 
-- **中樞 proxy 位址參考的格式不正確：** 參考產生的中樞 proxy 位址的格式不正確，如果經常看到此錯誤。 確認會正確地設定中樞位址的參考。 請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。
-- **將路由新增至應用程式，然後再加入中樞路由：** 如果您的應用程式使用其他路由，請確認新增的第一個路由會呼叫`MapSignalR`。
-- **使用 IIS 7 或沒有更新 7.5 無副檔名的 url:** 使用 IIS 7 或 7.5 需要更新無副檔名的 url，讓伺服器能夠提供存取中樞定義`/signalr/hubs`。 您可以找到更新[此處](https://support.microsoft.com/kb/980368)。
-- **IIS 快取過期或已損毀：** 若要確認快取內容不是已過期，請清除快取的 PowerShell 視窗中輸入下列命令：
+- **中樞 proxy 的位址參考的格式不正確：** 如果產生的中樞 proxy 位址的參考的格式不正確，通常會出現此錯誤。 確認會正確地設定中樞位址的參考。 請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。
+- **加入應用程式，然後再加入中樞路由的路由：** 如果您的應用程式使用其他路由，請確認新增的第一個路由會呼叫`MapSignalR`。
+- **使用 IIS 7 或沒有更新 7.5 無副檔名的 url:** 使用 IIS 7 或 7.5 無副檔名的 url 需要更新，以便在伺服器可以提供存取中樞定義`/signalr/hubs`。 您可以找到更新[此處](https://support.microsoft.com/kb/980368)。
+- **IIS 快取過期或已損毀：** 若要確認快取內容不會過期，請清除快取的 PowerShell 視窗中輸入下列命令：
 
     [!code-powershell[Main](troubleshooting/samples/sample11.ps1)]
 
@@ -200,7 +202,7 @@ SignalR 伺服器不知道，是否用戶端是廢與否，而且它們都依賴
 
 如果防火牆或 proxy 設定不正確，導致重寫要求標頭，通常也會出現此錯誤。 解決方法是請確定連接埠 80 已啟用防火牆或 proxy 上。
 
-### <a name="unexpected-response-code-500"></a>「 非預期的回應碼： 500"
+### <a name="unexpected-response-code-500"></a>「 非預期的回應碼：500"
 
 如果應用程式中使用的.NET framework 版本不符合在 Web.Config 中指定的版本，可能會發生此錯誤。解決方法是確認.NET 4.5 用於應用程式設定和 Web.Config 檔案。
 
@@ -212,7 +214,7 @@ SignalR 伺服器不知道，是否用戶端是廢與否，而且它們都依賴
 
 請確認您傳送給您的方法的參數不包含非可序列化的型別 （例如檔案控制代碼或資料庫連接）。 如果您需要在您不想要傳送至用戶端 （無論是安全性或序列化的原因），使用伺服器端物件上使用成員`JSONIgnore`屬性。
 
-### <a name="protocol-error-unknown-transport-error"></a>「 通訊協定錯誤： 未知的傳輸 」 錯誤
+### <a name="protocol-error-unknown-transport-error"></a>「 通訊協定錯誤：未知的傳輸中 」 錯誤
 
 如果用戶端不支援 SignalR 使用的傳輸，可能會發生此錯誤。 請參閱[傳輸和後援](../getting-started/introduction-to-signalr.md#transports)所在的瀏覽器可以使用與 SignalR 的資訊。
 
@@ -224,11 +226,11 @@ SignalR 伺服器不知道，是否用戶端是廢與否，而且它們都依賴
 
 如果使用驗證時，並停止連線之前，登出用戶端，可能會出現此錯誤。 解決方法是停止前用戶端登出 SignalR 連線。
 
-### <a name="uncaught-error-signalr-jquery-not-found-please-ensure-jquery-is-referenced-before-the-signalrjs-file-error"></a>「 無法攔截錯誤： SignalR： 找不到 jQuery。 請確定 jQuery 參考 SignalR.js 檔案前 」 錯誤
+### <a name="uncaught-error-signalr-jquery-not-found-please-ensure-jquery-is-referenced-before-the-signalrjs-file-error"></a>「 無法攔截錯誤：找不到 SignalR: jQuery。 請確定 jQuery 參考 SignalR.js 檔案前 」 錯誤
 
 SignalR JavaScript 用戶端需要執行的 jQuery。 請確認您參考 jQuery 是正確的所使用的路徑有效，且參考至 jQuery 是 signalr 參考之前。
 
-### <a name="uncaught-typeerror-cannot-read-property-ltpropertygt-of-undefined-error"></a>「 無法攔截 TypeError： 無法讀取屬性 '&lt;屬性&gt;' 未定義 」 錯誤
+### <a name="uncaught-typeerror-cannot-read-property-ltpropertygt-of-undefined-error"></a>「 無法攔截 TypeError:無法讀取屬性 '&lt;屬性&gt;' 未定義 」 錯誤
 
 從沒有 jQuery 或參考正確的中樞 proxy 會產生此錯誤。 請確認您到 jQuery 和中樞 proxy 的參考正確，所使用的路徑有效，且參考 jQuery 是之前的中樞 proxy 的參考。 中樞 proxy 的預設參考看起來應該如下所示：
 
@@ -282,7 +284,7 @@ jQuery Mobile 的`initializePage`函式會強制重新執行，每個頁面中�
 
 這是已知的問題，並說明[此處](https://github.com/SignalR/SignalR/issues/1963)。 這個徵兆可能會看到使用最新的 JQuery 程式庫;因應措施是降級至 JQuery 1.8.2 應用程式。
 
-### <a name="invalidoperationexception-not-a-valid-web-socket-request"></a>「 InvalidOperationException： 不是有效的 web 通訊端要求。
+### <a name="invalidoperationexception-not-a-valid-web-socket-request"></a>「 InvalidOperationException:不是有效的 web 通訊端要求。
 
 如果使用 WebSocket 通訊協定，但網路 proxy 正在修改的要求標頭，則可能會發生此錯誤。 解決方法是設定 proxy 以允許連接埠 80 上的使用 WebSocket。
 

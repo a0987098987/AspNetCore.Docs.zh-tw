@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/monitor
-ms.openlocfilehash: e005b951aec578b396fc19dec5d2f55cbce4f664
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 00489bd92dfff8fd80bd24c2e60193d32031d7c4
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121605"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284366"
 ---
 # <a name="monitor-and-debug"></a>監視和偵錯
 
@@ -37,11 +37,11 @@ App Service web 應用程式輕鬆地即時監視。 Azure 入口網站將呈現
 
     ![螢幕擷取畫面顯示概觀面板](./media/monitoring/overview.png)
 
-    * **Http 5xx**： 伺服器端錯誤計數，通常是 ASP.NET Core 程式碼中的例外狀況。
-    * **資料輸入**： 進入您的 web 應用程式的資料輸入。
-    * **資料輸出**： 從您的 web 應用程式輸出至用戶端的資料。
-    * **要求**： 的 HTTP 要求計數。
-    * **平均回應時間**： 之 web 應用程式，以回應 HTTP 要求的平均時間。
+    * **Http 5xx**:伺服器端錯誤，通常是 ASP.NET Core 程式碼中的例外狀況的計數。
+    * **中的資料**:進入您的 web 應用程式的資料輸入。
+    * **資料輸出**:從您的 web 應用程式資料輸出至用戶端。
+    * **要求**:HTTP 要求的計數。
+    * **平均回應時間**:Web 應用程式，以回應 HTTP 要求的平均時間。
 
     此頁面上，也會找到自助服務的數個工具，適用於疑難排解和最佳化。
 
@@ -111,7 +111,7 @@ ASP.NET Core 與 web 伺服器 (App Service) 記錄檔會產生 web 應用程式
 
 Azure 監視器 」 也提供[即時警示](/azure/monitoring-and-diagnostics/insights-alerts-portal)根據計量、 系統管理事件及其他準則。
 
-> *注意： 目前 web 應用程式計量的警示僅供以警示 （傳統） 服務。*
+> *注意：目前 web 應用程式計量的警示僅供以警示 （傳統） 服務。*
 
 [警示 （傳統） 服務](/azure/monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal)您可以在 Azure 監視器中或之下找到**監視**的 App Service 設定 區段。
 

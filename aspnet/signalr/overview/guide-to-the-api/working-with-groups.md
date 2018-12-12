@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: cd378ecd-3e9e-4236-b902-65916d85a048
 msc.legacyurl: /signalr/overview/guide-to-the-api/working-with-groups
 msc.type: authoredcontent
-ms.openlocfilehash: 75ef2998efe4d9bcea62c4a42a2043e2dabd6d85
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: bf4b8597fe9c0bff06b95cfb9970211106191fd4
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911506"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287633"
 ---
 <a name="working-with-groups-in-signalr"></a>使用 signalr 的群組
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom FitzMacken](https://github.com/tfitzmac)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本主題描述如何將使用者新增至群組，並將保存群組成員資格資訊。
 >
@@ -37,7 +39,6 @@ ms.locfileid: "48911506"
 > ## <a name="questions-and-comments"></a>提出問題或意見
 >
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
-
 
 ## <a name="overview"></a>總覽
 

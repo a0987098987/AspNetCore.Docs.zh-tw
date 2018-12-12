@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: a12bced8826a3399d5cf347be72baf77cc39d8b6
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 0c64e723f1b912323103f201a66c1edaeccdcc2d
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121410"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284341"
 ---
 # <a name="tools-and-downloads"></a>工具和下載
 

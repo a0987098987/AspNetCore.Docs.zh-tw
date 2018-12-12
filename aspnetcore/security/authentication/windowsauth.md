@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 11/01/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 342759a6ff4b5679e0d54c979188ae66d339562d
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 15e388433cc9b01e9db3e2fb56aca1ebb5ba5ba4
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121293"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284407"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
@@ -61,9 +61,9 @@ IIS 會使用[ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)
 
 啟用 Windows 驗證的 IIS 角色服務。 如需詳細資訊，請參閱 <<c0> [ 啟用 IIS 角色服務 （請參閱步驟 2） 中的 Windows 驗證](xref:host-and-deploy/iis/index#iis-configuration)。
 
-根據預設，IIS Integration 中介軟體會設定來自動驗證要求。 如需詳細資訊，請參閱 <<c0> [ 裝載 ASP.NET Core 與 IIS 的 Windows 上： IIS 選項 (AutomaticAuthentication)](xref:host-and-deploy/iis/index#iis-options)。
+根據預設，IIS Integration 中介軟體會設定來自動驗證要求。 如需詳細資訊，請參閱[裝載 ASP.NET Core 與 IIS 的 Windows 上：IIS 選項 (AutomaticAuthentication)](xref:host-and-deploy/iis/index#iis-options)。
 
-ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙基元。 如需詳細資訊，請參閱 < [ASP.NET Core 模組組態參考： aspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
+ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙基元。 如需詳細資訊，請參閱[ASP.NET Core 模組組態參考：AspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
 
 ### <a name="create-a-new-iis-site"></a>建立新的 IIS 站台
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 11/11/2018
 uid: security/authentication/google-logins
-ms.openlocfilehash: e5deda5d521643e3155be00f4630a86c6a82575c
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 372504eb4f6fea412b5b160e0d5e9251dafe0d56
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121527"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284483"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Google 外部登入設定
 
@@ -50,11 +50,11 @@ ms.locfileid: "53121527"
   * **網頁伺服器 (例如 node.js，Tomcat)**，及
   * **使用者資料**:
 
-![API 管理員認證 頁面上： 找出哪些種類的認證需要面板](index/_static/GoogleConsoleChooseCred.png)
+![API 管理員認證 頁面中：了解哪些種類的認證需要面板](index/_static/GoogleConsoleChooseCred.png)
 
 * 點選**我需要哪些認證？** 這會引領您的應用程式設定的第二個步驟**建立 OAuth 2.0 用戶端識別碼**:
 
-![API 管理員認證 頁面上： 建立 OAuth 2.0 用戶端識別碼](index/_static/GoogleConsoleCreateClient.png)
+![API 管理員認證 頁面中：建立 OAuth 2.0 用戶端識別碼](index/_static/GoogleConsoleCreateClient.png)
 
 * 因為我們會建立 Google + 專案，與只是一項特徵 （登入），我們可以輸入相同**名稱**OAuth 2.0 用戶端識別碼，為我們所使用的專案。
 
@@ -67,13 +67,13 @@ ms.locfileid: "53121527"
 
 * 點選**建立用戶端識別碼**，這會帶您到第三個步驟中，**設定 OAuth 2.0 同意畫面**:
 
-![API 管理員認證 頁面上： 設定 OAuth 2.0 同意畫面](index/_static/GoogleConsoleAddCred.png)
+![API 管理員認證 頁面中：設定 OAuth 2.0 同意畫面](index/_static/GoogleConsoleAddCred.png)
 
 * 輸入您的對外**電子郵件地址**並**產品名稱**當 Google + 提示使用者登入您的應用程式所示。 在有其他選項**更多的自訂選項**。
 
 * 點選**繼續**繼續進行到最後一個步驟中，**下載認證**:
 
-![API 管理員認證 頁面上： 下載認證](index/_static/GoogleConsoleFinish.png)
+![API 管理員認證 頁面中：下載認證](index/_static/GoogleConsoleFinish.png)
 
 * 點選**下載**儲存 JSON 檔案包含應用程式祕密，以及**完成**以完成建立新的應用程式。
 
@@ -136,7 +136,7 @@ app.UseGoogleAuthentication(new GoogleOptions()
 
 執行您的應用程式，然後按一下**登入**。 此時會出現 使用 Google 登入選項：
 
-![在 Microsoft Edge 中執行的 web 應用程式： 未驗證的使用者](index/_static/DoneGoogle.png)
+![在 Microsoft Edge 中執行的 web 應用程式：未經驗證的使用者](index/_static/DoneGoogle.png)
 
 當您按一下 Google 時，您會重新導向至 Google 進行驗證：
 
@@ -146,14 +146,14 @@ app.UseGoogleAuthentication(new GoogleOptions()
 
 您現在用來登入您的 Google 認證：
 
-![在 Microsoft Edge 中執行的 web 應用程式： 驗證使用者](index/_static/Done.png)
+![在 Microsoft Edge 中執行的 web 應用程式：已驗證的使用者](index/_static/Done.png)
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="troubleshooting"></a>疑難排解
 
 * 如果您收到`403 (Forbidden)`錯誤頁面，從您自己的應用程式時執行，在開發模式 （或中斷偵錯工具相同的錯誤），確保**Google + API**中已啟用**API Manager 程式庫**依照所列的步驟[早在此頁面上](#create-the-app-in-google-api-console)。 如果登入無法運作，而且您未收到任何錯誤，切換到開發模式，以便讓您更輕鬆地偵錯問題。
-* **ASP.NET Core 2.x 僅：** 如果身分識別未設定藉由呼叫`services.AddIdentity`中`ConfigureServices`，來驗證嘗試會導致*ArgumentException： 必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這麼做。
+* **ASP.NET Core 2.x 只有：** 如果身分識別未設定藉由呼叫`services.AddIdentity`中`ConfigureServices`，來驗證嘗試會導致*ArgumentException:必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這麼做。
 * 如果尚未套用初始移轉建立站台資料庫，您會收到*處理要求時資料庫作業失敗*時發生錯誤。 點選**套用移轉**建立資料庫，並重新整理 以忽略錯誤繼續執行。
 
 ## <a name="next-steps"></a>後續步驟

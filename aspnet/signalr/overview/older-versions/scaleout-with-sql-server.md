@@ -8,16 +8,18 @@ ms.date: 05/01/2013
 ms.assetid: 1dca7967-8296-444a-9533-837eb284e78c
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: d68196aa8e4d0c60570a0e36ccc75a2a080d57bc
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 682aa837ed991cbf5d78dcb304e2c1bce905c52c
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912744"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287521"
 ---
 <a name="signalr-scaleout-with-sql-server-signalr-1x"></a>SignalR 向外延展與 SQL Server (SignalR 1.x)
 ====================
 藉由[Mike Wasson](https://github.com/MikeWasson)， [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 在本教學課程中，您將使用 SQL Server 將訊息散發到部署兩個不同的 IIS 執行個體中的 SignalR 應用程式。 您也可以在單一測試電腦上，執行本教學課程中，但若要取得完整的效果，您需要部署兩個或多部伺服器的 SignalR 應用程式。 其中一部伺服器，或個別的專用伺服器上，您也必須安裝 SQL Server。 另一個選項是執行本教學課程使用 Azure 上的 Vm。
 

@@ -8,23 +8,24 @@ ms.date: 04/18/2018
 ms.assetid: eac31beb-0f46-4afa-9def-e80904dea4f0
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
-ms.openlocfilehash: d522602c3523d97a12c74b2d901391bd00d4f2b9
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: e270f9a328f36854fdfb3e23b78e0b40cdda6411
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832251"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287353"
 ---
 <a name="supported-platforms"></a>支援的平台
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 此文章說明 SignalR 支援哪些用戶端和伺服器。 
 > 
 > ## <a name="questions-and-comments"></a>提出問題或意見
 > 
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
-
 
 SignalR 支援各種不同的伺服器和用戶端設定底下。 此外，每個傳輸選項有一組自己的; 的需求如果無法使用的傳輸的系統需求，則 SignalR 也能流暢地容錯移轉至其他傳輸。 如需有關支援 SignalR 的傳輸的詳細資訊，請參閱[傳輸和後援](introduction-to-signalr.md#transports)。
 
@@ -91,7 +92,7 @@ SignalR 可以用於下列瀏覽器：
 | ForeverFrame | 8+ | N/A | N/A | N/A | 4.1 |
 | 長輪詢 | 8+ | 目前-1 | 目前-1 | 目前-1 | 4.1 |
 
-\*: 6 + 所需的完整功能。
+\*：6 + 所需的完整功能。
 
 #### <a name="unsupported-browsers"></a>不支援的瀏覽器
 

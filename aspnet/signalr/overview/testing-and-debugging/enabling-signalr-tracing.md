@@ -8,16 +8,18 @@ ms.date: 08/08/2014
 ms.assetid: 30060acb-be3e-4347-996f-3870f0c37829
 msc.legacyurl: /signalr/overview/testing-and-debugging/enabling-signalr-tracing
 msc.type: authoredcontent
-ms.openlocfilehash: 6ab9a5de16a1440d14f7526c0cd417592ba415db
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: 733163699f83cbf68d6d5a27e86d208c3922272c
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51021322"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287659"
 ---
 <a name="enabling-signalr-tracing"></a>啟用 SignalR 追蹤
 ====================
 藉由[Tom FitzMacken](https://github.com/tfitzmac)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本文件說明如何啟用和設定追蹤 SignalR 伺服器和用戶端。 追蹤可讓您檢視 SignalR 應用程式中的 診斷事件的資訊。
 >

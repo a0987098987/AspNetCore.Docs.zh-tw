@@ -8,16 +8,18 @@ ms.date: 06/05/2013
 ms.assetid: 347210ba-c452-4feb-886f-b51d89f58971
 msc.legacyurl: /signalr/overview/older-versions/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: df949347cecd9ac617a52ad798f37bebdb8524fa
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 6c2a8e72959c9370ff46084ca135c2b2977f4f42
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830124"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287679"
 ---
 <a name="signalr-troubleshooting-signalr-1x"></a>SignalR 疑難排解 (SignalR 1.x)
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本文件說明使用 SignalR 的常見疑難排解問題。
 
@@ -53,7 +55,7 @@ SignalR 需要 JSON 剖析器要出現序列化伺服器與用戶端之間的呼
 
 ### <a name="mixing-hub-and-persistentconnection-syntax"></a>混用中樞 PersistentConnection 語法
 
-SignalR 使用兩種通訊模式： 中樞和 PersistentConnections。 呼叫這兩個通訊模型的語法是不同的用戶端程式碼。 如果您已新增中樞伺服器程式碼中，確認所有用戶端程式碼會使用適當的中樞語法。
+SignalR 使用兩種通訊模式：中樞和 PersistentConnections。 呼叫這兩個通訊模型的語法是不同的用戶端程式碼。 如果您已新增中樞伺服器程式碼中，確認所有用戶端程式碼會使用適當的中樞語法。
 
 **建立 PersistentConnection JavaScript 用戶端中的 JavaScript 用戶端程式碼**
 
@@ -157,8 +159,8 @@ SignalR 會自動使用 JSON 序列化程式的方法參數那里的不需要自
 
 有多種原因會導致此問題。 請確認下列各項：
 
-- **中樞 proxy 位址參考的格式不正確：** 參考產生的中樞 proxy 位址的格式不正確，如果經常看到此錯誤。 確認會正確地設定中樞位址的參考。 請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。
-- **將路由新增至應用程式，然後再加入中樞路由：** 如果您的應用程式使用其他路由，請確認新增的第一個路由會呼叫`MapHubs`。
+- **中樞 proxy 的位址參考的格式不正確：** 如果產生的中樞 proxy 位址的參考的格式不正確，通常會出現此錯誤。 確認會正確地設定中樞位址的參考。 請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。
+- **加入應用程式，然後再加入中樞路由的路由：** 如果您的應用程式使用其他路由，請確認新增的第一個路由會呼叫`MapHubs`。
 
 ### <a name="500-internal-server-error"></a>「 500 內部伺服器錯誤 」
 
@@ -172,7 +174,7 @@ SignalR 會自動使用 JSON 序列化程式的方法參數那里的不需要自
 
 請確認您傳送給您的方法的參數不包含非可序列化的型別 （例如檔案控制代碼或資料庫連接）。 如果您需要在您不想要傳送至用戶端 （無論是安全性或序列化的原因），使用伺服器端物件上使用成員`JSONIgnore`屬性。
 
-### <a name="protocol-error-unknown-transport-error"></a>「 通訊協定錯誤： 未知的傳輸 」 錯誤
+### <a name="protocol-error-unknown-transport-error"></a>「 通訊協定錯誤：未知的傳輸中 」 錯誤
 
 如果用戶端不支援 SignalR 使用的傳輸，可能會發生此錯誤。 請參閱[傳輸和後援](../getting-started/introduction-to-signalr.md#transports)所在的瀏覽器可以使用與 SignalR 的資訊。
 
@@ -184,11 +186,11 @@ SignalR 會自動使用 JSON 序列化程式的方法參數那里的不需要自
 
 如果使用驗證時，並停止連線之前，登出用戶端，可能會出現此錯誤。 解決方法是停止前用戶端登出 SignalR 連線。
 
-### <a name="uncaught-error-signalr-jquery-not-found-please-ensure-jquery-is-referenced-before-the-signalrjs-file-error"></a>「 無法攔截錯誤： SignalR： 找不到 jQuery。 請確定 jQuery 參考 SignalR.js 檔案前 」 錯誤
+### <a name="uncaught-error-signalr-jquery-not-found-please-ensure-jquery-is-referenced-before-the-signalrjs-file-error"></a>「 無法攔截錯誤：找不到 SignalR: jQuery。 請確定 jQuery 參考 SignalR.js 檔案前 」 錯誤
 
 SignalR JavaScript 用戶端需要執行的 jQuery。 請確認您參考 jQuery 是正確的所使用的路徑有效，且參考至 jQuery 是 signalr 參考之前。
 
-### <a name="uncaught-typeerror-cannot-read-property-ltpropertygt-of-undefined-error"></a>「 無法攔截 TypeError： 無法讀取屬性 '&lt;屬性&gt;' 未定義 」 錯誤
+### <a name="uncaught-typeerror-cannot-read-property-ltpropertygt-of-undefined-error"></a>「 無法攔截 TypeError:無法讀取屬性 '&lt;屬性&gt;' 未定義 」 錯誤
 
 從沒有 jQuery 或參考正確的中樞 proxy 會產生此錯誤。 請確認您到 jQuery 和中樞 proxy 的參考正確，所使用的路徑有效，且參考 jQuery 是之前的中樞 proxy 的參考。 中樞 proxy 的預設參考看起來應該如下所示：
 

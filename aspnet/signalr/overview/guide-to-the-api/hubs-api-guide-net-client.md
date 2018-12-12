@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 6d02d9f7-94e5-4140-9f51-5a6040f274f6
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 2d7dd1480694eacffc0cfa60ac0179b16348488d
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 0a2b24039259ef90579a7f215bb9e35ebef7b9b9
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912991"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288036"
 ---
 <a name="aspnet-signalr-hubs-api-guide---net-client-c"></a>ASP.NET SignalR 中樞 API 指南-.NET 用戶端 (C#)
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom Dykstra](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本文件提供使用 signalr 第 2 版，.NET 用戶端，例如 Windows 市集 (WinRT)、 WPF、 Silverlight 和主控台應用程式中的中樞 API 的簡介。
 >
@@ -41,7 +43,6 @@ ms.locfileid: "48912991"
 > ## <a name="questions-and-comments"></a>提出問題或意見
 >
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
-
 
 ## <a name="overview"></a>總覽
 
@@ -329,12 +330,12 @@ ForeverFrame 傳輸不會包含這份清單中，因為它僅供瀏覽器。
 
 SignalR 提供以下連線，您可以處理存留期事件：
 
-- `Received`： 在此連接上收到任何資料時引發。 提供已接收的資料。
-- `ConnectionSlow`： 當用戶端偵測到較慢或經常卸除連接時引發。
-- `Reconnecting`： 基礎傳輸可讓您開始重新連線時引發。
-- `Reconnected`： 當基礎傳輸已重新連接時引發。
-- `StateChanged`： 連線狀態變更時引發。 提供的舊狀態和新的狀態。 如需連線狀態的值請參閱[ConnectionState 列舉](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.connectionstate(v=vs.111).aspx)。
-- `Closed`： 當連接已中斷連線時引發。
+- `Received`：在此連接上收到任何資料時，就會引發。 提供已接收的資料。
+- `ConnectionSlow`：當用戶端偵測到較慢或經常卸除連接時引發。
+- `Reconnecting`：基礎傳輸可讓您開始重新連線時引發。
+- `Reconnected`：當基礎傳輸已重新連接時引發。
+- `StateChanged`：連線狀態變更時引發。 提供的舊狀態和新的狀態。 如需連線狀態的值請參閱[ConnectionState 列舉](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.connectionstate(v=vs.111).aspx)。
+- `Closed`：當連接已中斷連線時，就會引發。
 
 例如，如果您想要顯示的錯誤，不嚴重，但會造成間歇性連線問題的警告訊息，例如速度很慢或頻繁的連接，卸除處理`ConnectionSlow`事件。
 

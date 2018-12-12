@@ -8,21 +8,23 @@ ms.date: 02/22/2015
 ms.assetid: 148d9ca7-1af1-44b6-a9fb-91e261b9b463
 msc.legacyurl: /signalr/overview/performance/signalr-connection-density-testing-with-crank
 msc.type: authoredcontent
-ms.openlocfilehash: 556accb1bcc18e9e4d1f813a87fc6f4b67bda088
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: 308fed51953b085506488c5e0dda1ced9f4d09fb
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51021478"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287560"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a>SignalR 連線密度測試與區軸
 ====================
 藉由[Tom FitzMacken](https://github.com/tfitzmac)
 
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
+
 > 本文說明如何使用曲柄工具來測試多個模擬用戶端應用程式。
 
 
-一旦您的應用程式執行 （可能是 Azure web 角色，IIS，或自我裝載使用 Owin） 及其裝載環境中，您可以測試使用曲柄工具連線密度高程度的應用程式的回應。 Internet Information Services (IIS) 伺服器、 Owin 主機或 Azure web 角色，可以是裝載環境。 (注意： 效能計數器並不適用於 Azure App Service Web Apps，因此您無法從連線密度測試取得效能資料。)
+一旦您的應用程式執行 （可能是 Azure web 角色，IIS，或自我裝載使用 Owin） 及其裝載環境中，您可以測試使用曲柄工具連線密度高程度的應用程式的回應。 Internet Information Services (IIS) 伺服器、 Owin 主機或 Azure web 角色，可以是裝載環境。 (注意：效能計數器並不適用於 Azure App Service Web Apps，因此您無法從連線密度測試取得效能資料。）
 
 連線密度是指可以在伺服器建立的同時 TCP 連線數目。 每個 TCP 連線時，會產生其本身的額外負荷，並開啟大量的閒置的連線將最終會建立記憶體瓶頸。
 
@@ -44,22 +46,22 @@ ms.locfileid: "51021478"
 
 可用的選項，即使工具包括：
 
-- **/?**： 顯示說明畫面。 可用的選項也會顯示如果**Url**省略參數。
-- **/ Url**: SignalR 連線的 URL。 這是必要參數。 SignalR 應用程式中使用預設的對應，路徑的結尾是"/ signalr"。
-- **/ 傳輸**： 使用傳輸的名稱。 預設值是`auto`，這將會選取最適合可用的通訊協定。 選項包括`WebSockets`， `ServerSentEvents`，並`LongPolling`(`ForeverFrame`不可行的曲柄，因為.NET 用戶端而不是使用 Internet Explorer)。 如需有關如何 SignalR 選取傳輸的詳細資訊，請參閱[傳輸和後援](../getting-started/introduction-to-signalr.md#transports)。
-- **/ BatchSize**： 在每個批次中加入的用戶端數目。 預設值為 50。
-- **/ ConnectInterval**: 間隔 （毫秒） 之間加入連接。 預設值為 500。
-- **/ 連線**： 用於負載測試應用程式的連線數目。 預設值是 100,000。
-- **/ ConnectTimeout**: 逾時中止測試之前的秒數。 預設值為 300。
-- **MinServerMBytes**： 達到的最小伺服器 mb。 預設值為 500。
-- **SendBytes**： 裝載傳送至伺服器，以位元組為單位的大小。 預設值為 0。
-- **SendInterval**： 以毫秒為單位，到伺服器的訊息之間的延遲。 預設值為 500。
-- **SendTimeout**： 以毫秒為單位的訊息至伺服器的逾時。 預設值為 300。
-- **ControllerUrl**： 其中一部用戶端將裝載控制站中樞的 Url。 預設值是 null （無中樞控制站）。 即使工作階段啟動; 時，控制器中樞已啟動沒有進一步中樞控制站與區軸之間的連絡方式為。
-- **NumClients**： 模擬用戶端連線到應用程式的數目。 的預設值是 1。
-- **Logfile**： 測試回合記錄檔的檔名。 預設為 `crank.csv`。
-- **SampleInterval**： 以毫秒為單位的效能計數器樣本之間的時間。 預設值為 1000。
-- **SignalRInstance**： 伺服器上的效能計數器的執行個體名稱。 預設值是使用用戶端連線狀態。
+- **/?**:顯示說明畫面。 可用的選項也會顯示如果**Url**省略參數。
+- **/ Url**:SignalR 連線的 URL。 這是必要參數。 SignalR 應用程式中使用預設的對應，路徑的結尾是"/ signalr"。
+- **/ 傳輸**:使用的傳輸名稱。 預設值是`auto`，這將會選取最適合可用的通訊協定。 選項包括`WebSockets`， `ServerSentEvents`，並`LongPolling`(`ForeverFrame`不可行的曲柄，因為.NET 用戶端而不是使用 Internet Explorer)。 如需有關如何 SignalR 選取傳輸的詳細資訊，請參閱[傳輸和後援](../getting-started/introduction-to-signalr.md#transports)。
+- **/ BatchSize**:在每個批次中加入的用戶端數目。 預設值為 50。
+- **/ ConnectInterval**:間隔 （毫秒） 之間加入連接。 預設值為 500。
+- **/ 連線**:用於負載測試應用程式的連線數目。 預設值是 100,000。
+- **/ ConnectTimeout**:逾時中止測試之前的秒數。 預設值為 300。
+- **MinServerMBytes**:若要觸達的最小伺服器 mb 為單位。 預設值為 500。
+- **SendBytes**:裝載傳送至伺服器，以位元組為單位的大小。 預設值為 0。
+- **SendInterval**:以毫秒為單位，到伺服器的訊息之間的延遲。 預設值為 500。
+- **SendTimeout**:以毫秒為單位的訊息至伺服器逾時。 預設值為 300。
+- **ControllerUrl**:其中一部用戶端將裝載控制站中樞 Url。 預設值是 null （無中樞控制站）。 即使工作階段啟動; 時，控制器中樞已啟動沒有進一步中樞控制站與區軸之間的連絡方式為。
+- **NumClients**:模擬用戶端連線到應用程式數目。 的預設值是 1。
+- **Logfile**:測試回合記錄檔的檔名。 預設為 `crank.csv`。
+- **SampleInterval**:時間 （毫秒） 效能計數器樣本之間。 預設值為 1000。
+- **SignalRInstance**:在伺服器上的效能計數器執行個體名稱。 預設值是使用用戶端連線狀態。
 
 ### <a name="example"></a>範例
 

@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
-title: 教學課程： 伺服器廣播與 SignalR 2 |Microsoft Docs
+title: 教學課程：伺服器廣播與 SignalR 2 |Microsoft Docs
 author: tdykstra
 description: 本教學課程會示範如何建立會使用 ASP.NET SignalR 2 提供伺服器廣播的功能的 web 應用程式。 伺服器廣播表示該 commun...
 ms.author: riande
@@ -8,16 +8,18 @@ ms.date: 10/13/2014
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 7a85a704dc5d830ec793540fbc44a3ce7ec8c934
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: ad2eee8742d5bc45dc2bdc90f76736b4dc94d14b
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911528"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288004"
 ---
-<a name="tutorial-server-broadcast-with-signalr-2"></a>教學課程： 伺服器廣播與 SignalR 2
+<a name="tutorial-server-broadcast-with-signalr-2"></a>教學課程：伺服器廣播與 SignalR 2
 ====================
 藉由[Tom Dykstra](https://github.com/tdykstra)， [Tom FitzMacken](https://github.com/tfitzmac)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > 本教學課程會示範如何建立會使用 ASP.NET SignalR 2 提供伺服器廣播的功能的 web 應用程式。 伺服器廣播表示傳送至用戶端的通訊由伺服器起始。 這種情況下需要不同的程式設計方法，比對等案例，例如交談應用程式，在其中傳送到用戶端的通訊所起始的一或多個用戶端。
 >
@@ -52,7 +54,6 @@ ms.locfileid: "48911528"
 > ## <a name="questions-and-comments"></a>提出問題或意見
 >
 > 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
-
 
 ## <a name="overview"></a>總覽
 

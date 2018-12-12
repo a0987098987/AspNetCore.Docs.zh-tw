@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
-title: 教學課程： 開始使用 SignalR 2 和 MVC 5 |Microsoft Docs
+title: 教學課程：開始使用 SignalR 2 和 MVC 5 |Microsoft Docs
 author: pfletcher
 description: 本教學課程會示範如何使用 ASP.NET SignalR 2 建立即時聊天應用程式。 您將加入 MVC 5 應用程式中的 SignalR 和建立交談檢視...
 ms.author: riande
@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 80bfe5fb-bdfc-41fe-ac43-2132e5d69fac
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: a58b95adfb5d0165887b95abd3247d3a829aa882
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 568f82daa67f33736c2bf7a45a3e1339f265c487
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912224"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287506"
 ---
-<a name="tutorial-getting-started-with-signalr-2-and-mvc-5"></a>教學課程： 開始使用 SignalR 2 和 MVC 5
+<a name="tutorial-getting-started-with-signalr-2-and-mvc-5"></a>教學課程：開始使用 SignalR 2 和 MVC 5
 ====================
 藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tim Teebken](https://github.com/timlt)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 [下載已完成的專案](http://code.msdn.microsoft.com/Getting-Started-with-c366b2f3)
 

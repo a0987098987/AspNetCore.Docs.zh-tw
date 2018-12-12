@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/getting-started/real-time-web-applications-with-signalr
-title: 實習實驗室： 即時 Web 應用程式與 SignalR |Microsoft Docs
+title: 實習實驗室：使用 SignalR 即時 Web 應用程式 |Microsoft Docs
 author: rick-anderson
 description: 即時 Web 應用程式功能的伺服器端將內容推至連線的用戶端時，即時的能力。 適用於 ASP.NET 開發人員，ASP...
 ms.author: riande
@@ -8,16 +8,19 @@ ms.date: 07/16/2014
 ms.assetid: ba07958c-42e1-4da0-81db-ba6925ed6db0
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 59831fb8497c86ec5e02de3912b36a15f416597c
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: de2f2349fc284e167bd8227ae55da79b9f1f4549
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913227"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287998"
 ---
-<a name="hands-on-lab-real-time-web-applications-with-signalr"></a>實習實驗室： 即時 Web 應用程式與 SignalR
+<a name="hands-on-lab-real-time-web-applications-with-signalr"></a>實習實驗室：使用 SignalR 即時 Web 應用程式
 ====================
+
 藉由[Web Camp 小組](https://twitter.com/webcamps)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 [下載 Web 研討會訓練套件](http://aka.ms/webcamps-training-kit)
 
@@ -25,9 +28,9 @@ ms.locfileid: "48913227"
 > 
 > **SignalR**也提供簡單、 高階 API，以進行用戶端 RPC 的伺服器 （在用戶端的瀏覽器，從伺服器端.NET 程式碼中呼叫 JavaScript 函式） 在您的 ASP.NET 應用程式，以及新增實用的攔截程序進行連線管理例如連接/中斷連接事件、 分組連線和授權。
 > 
-> **SignalR**是一些需要執行用戶端與伺服器之間的即時工作傳輸的抽象概念。 A **SignalR**連接一開始為 HTTP，並再升級至**WebSocket**連接，如果有的話。 **WebSocket**是的理想傳輸**SignalR**，因為這樣會讓伺服器記憶體最有效率地使用具有最低的延遲，而且具有最基礎的功能 (例如完整的雙工用戶端之間的通訊和伺服器），但它也會有最嚴苛的需求： **WebSocket**需要使用伺服器**Windows Server 2012**或**Windows 8**，以及 **.NET framework 4.5**。 如果不符合這些需求， **SignalR**會嘗試使用其他傳輸進行其連線 (例如*Ajax 長時間輪詢*)。
+> **SignalR**是一些需要執行用戶端與伺服器之間的即時工作傳輸的抽象概念。 A **SignalR**連接一開始為 HTTP，並再升級至**WebSocket**連接，如果有的話。 **WebSocket**是的理想傳輸**SignalR**，因為這樣會讓伺服器記憶體最有效率地使用具有最低的延遲，而且具有最基礎的功能 (例如完整的雙工用戶端之間的通訊和伺服器），但它也會有最嚴苛的需求：**WebSocket**需要使用伺服器**Windows Server 2012**或是**Windows 8**，連同 **.NET Framework 4.5**。 如果不符合這些需求， **SignalR**會嘗試使用其他傳輸進行其連線 (例如*Ajax 長時間輪詢*)。
 > 
-> **SignalR** API 包含用戶端和伺服器之間進行通訊的兩個模型：**持續連線**並**中樞**。 A**連線**代表簡單的端點用來傳送單一位收件者，分組，或廣播訊息。 A**中樞**連接 API，可讓您的用戶端與伺服器彼此直接呼叫方法為基礎建置更高層級的管線。
+> **SignalR** API 包含用戶端和伺服器之間進行通訊的兩個模型：**持續性連線**並**中樞**。 A**連線**代表簡單的端點用來傳送單一位收件者，分組，或廣播訊息。 A**中樞**連接 API，可讓您的用戶端與伺服器彼此直接呼叫方法為基礎建置更高層級的管線。
 > 
 > ![SignalR 架構](real-time-web-applications-with-signalr/_static/image1.png)
 > 
@@ -84,14 +87,14 @@ ms.locfileid: "48913227"
 1. [有關使用 SignalR 即時資料](#Exercise1)
 2. [向外延展使用 SQL Server](#Exercise2)
 
-估計的時間才能完成這個實驗室： **60 分鐘**
+估計的時間才能完成這個實驗室：**60 分鐘**
 
 > [!NOTE]
 > 當您第一次啟動 Visual Studio 時，您必須選取其中一個預先定義的設定集合。 每個預先定義的集合以符合特定的開發樣式設計，並決定視窗版面配置、 編輯器的行為、 IntelliSense 程式碼片段和對話方塊選項。 在這個實驗室中的程序說明完成指定的工作，在 Visual Studio 中使用時所需的動作**一般開發設定**集合。 如果您選擇不同的設定集合，您的開發環境，可能會有在步驟中，您應該考慮到的差異。
 
 
 <a id="Exercise1"></a>
-### <a name="exercise-1-working-with-real-time-data-using-signalr"></a>練習 1： 使用使用 SignalR 的即時資料
+### <a name="exercise-1-working-with-real-time-data-using-signalr"></a>練習 1:有關使用 SignalR 即時資料
 
 交談通常是用做為範例，您可以執行整個即時 Web 功能更大。 每當使用者重新整理網頁，以查看新的資料或此頁面會實作 Ajax 長時間輪詢來擷取新的資料，您可以使用 SignalR。
 
@@ -248,7 +251,7 @@ ms.locfileid: "48913227"
     *統計資料重新整理之後回應 頁面*
 
 <a id="Exercise2"></a>
-### <a name="exercise-2-scaling-out-using-sql-server"></a>練習 2： 向外延展使用 SQL Server
+### <a name="exercise-2-scaling-out-using-sql-server"></a>練習 2:向外延展使用 SQL Server
 
 當調整 web 應用程式，您通常可以選擇之間*向上*並*相應放大*選項。 *相應增加*表示使用更大的伺服器，使用更多資源 （CPU、 RAM 等），同時*相應放大*表示新增更多伺服器來處理負載。 後者的問題在於用戶端可以取得路由傳送至不同的伺服器。 連線到一部伺服器的用戶端不會接收從另一部伺服器傳送的訊息。
 
@@ -269,9 +272,9 @@ ms.locfileid: "48913227"
 > [!NOTE]
 > 有一些案例，其中的後擋板可能成為瓶頸。 以下是一些典型的 SignalR 案例：
 > 
-> - [伺服器廣播](tutorial-server-broadcast-with-signalr.md)（例如，股票行情指示器）： 背板適用於此案例中，因為伺服器控制傳送訊息的速率。
-> - [用戶端到用戶端](tutorial-getting-started-with-signalr.md)（例如聊天）： 在此案例中後, 擋板瓶頸的訊息數目隨著用戶端數目; 也就是說，如果訊息的速率成長按比例越多的用戶端加入。
-> - [高頻率即時](tutorial-high-frequency-realtime-with-signalr.md)（例如，即時遊戲）： 這種情況下不建議後擋板。
+> - [伺服器廣播](tutorial-server-broadcast-with-signalr.md)（例如，股票行情指示器）：背板適用於此案例中，因為伺服器控制傳送訊息的速率。
+> - [用戶端到用戶端](tutorial-getting-started-with-signalr.md)（例如聊天）：在此案例中後, 擋板如果可能會發生瓶頸的訊息數目隨著; 的用戶端數目也就是說，如果訊息的速率成長按比例越多的用戶端加入。
+> - [高頻率即時](tutorial-high-frequency-realtime-with-signalr.md)（例如，即時遊戲）：後擋板不建議此案例中。
 
 
 在這個練習中，您將使用**SQL Server**散發郵件，跨越**Geek 測驗**應用程式。 您將這些工作的電腦上執行單一測試以了解如何設定組態，但是為了取得完整的效果，您必須部署兩個或多部伺服器的 SignalR 應用程式。 其中一部伺服器，或個別的專用伺服器上，您也必須安裝 SQL Server。
@@ -346,7 +349,7 @@ ms.locfileid: "48913227"
     ![查詢服務訊息代理程式狀態](real-time-web-applications-with-signalr/_static/image25.png "查詢服務訊息代理程式狀態")
 
     *查詢服務訊息代理程式狀態*
-8. 如果值**已\_broker\_啟用**資料庫中的資料行是&quot;0&quot;，使用下列命令來啟用它。 取代**&lt;您資料庫&gt;** 建立資料庫時，您設定的名稱 (例如： SignalR)。
+8. 如果值**已\_broker\_啟用**資料庫中的資料行是&quot;0&quot;，使用下列命令來啟用它。 取代**&lt;您資料庫&gt;** 建立資料庫時，您設定的名稱 (例如：SignalR)。
 
     [!code-sql[Main](real-time-web-applications-with-signalr/samples/sample12.sql)]
 
@@ -375,7 +378,7 @@ ms.locfileid: "48913227"
 5. 同樣地， **Visual Studio**將會啟動兩個執行個體**Geek 測驗**在不同的連接埠。 將其中一個瀏覽器釘選在左側及右側螢幕上的其他和您的認證登入。 保留在左側的邏輯頁面，並移至**統計資料**pagein 右邊的瀏覽器。
 6. 開始回答問題，在左邊的瀏覽器中。 此時**統計資料**感謝後擋板更新頁面。 應用程式之間切換 (**統計資料**現在位於左邊，和**邏輯**位於右邊)，並重複進行測試以驗證它是否運作的兩個執行個體。 後擋板做*共用快取*訊息的每個連接的伺服器，且每個伺服器會將訊息儲存在他們自己的本機快取，以散發給連線的用戶端。
 7. 返回 Visual Studio，並停止偵錯。
-8. SQL Server 後擋板元件會自動產生所需的資料表上指定的資料庫。 在 [ **SQL Server 物件總管**] 面板中，開啟您建立的後擋板的資料庫 (例如： SignalR) 展開一個資料表。 您應該會看到下列資料表：
+8. SQL Server 後擋板元件會自動產生所需的資料表上指定的資料庫。 在 [ **SQL Server 物件總管**] 面板中，開啟您建立的後擋板的資料庫 (例如：SignalR) 展開一個資料表。 您應該會看到下列資料表：
 
     ![後擋板產生資料表](real-time-web-applications-with-signalr/_static/image27.png)
 

@@ -3,15 +3,15 @@ title: ASP.NET Core 中的 Web 主機與泛型主機
 author: guardrex
 description: 深入了解 ASP.NET Core 的 Web 代管以及 .NET 的一般代管，其負責啟動應用程式以及進行存留期間的管理。
 ms.author: riande
-ms.custom: mvc,seodec18
+ms.custom: mvc, seodec18
 ms.date: 08/28/2018
 uid: fundamentals/host/index
-ms.openlocfilehash: 3e67d8338aa7ac1b1530d0498ee0126d36a8d72b
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 43a68f67368ce37a1fb4032579c6c4e4c05d2719
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121514"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284574"
 ---
 # <a name="web-host-and-generic-host-in-aspnet-core"></a>ASP.NET Core 中的 Web 主機與泛型主機
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/11/2018
 uid: getting-started
-ms.openlocfilehash: cf9e731f7638687b3f40b42864ef7ee8f5522b39
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: dc85fe9189c93476859a6c00d60ec24d6eeec3fa
+ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284345"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335308"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
@@ -65,7 +65,7 @@ dotnet dev-certs https --trust
 
 上述命令會顯示以下訊息：
 
-已要求信任 HTTPS 開發憑證。若憑證尚未受到信任，我們會執行下列命令：*`'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`。  
+*已要求信任 HTTPS 開發憑證。若憑證尚未受到信任，我們會執行下列命令：*`'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`。  
 *此命令可能會提示您提供密碼，以在系統金鑰鏈上安裝憑證。
 
 密碼：*
@@ -111,6 +111,3 @@ dotnet run
 
 > [!div class="nextstepaction"]
 > <xref:index>
-
-> [!NOTE]
-> 我們正為規劃中的 ASP.NET Core 目錄新結構測試其可用性。 如果您有幾分鐘的時間可以嘗試在目前或建議的目錄中尋找七個不同主題，請[按一下這裡參加研究](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82)。

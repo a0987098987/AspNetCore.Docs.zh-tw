@@ -6,21 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/11/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: b71adcaad710ecfb7f81de0cc302f293d1728bec
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 175df4ab633c1d84de645208cd97e8a675fb169c
+ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53288114"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335386"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
 作者：[Luke Latham](https://github.com/guardrex)
 
 [安裝 .NET Core 裝載套件組合](#install-the-net-core-hosting-bundle)
-
-> [!NOTE]
-> 我們正為規劃中的 ASP.NET Core 目錄新結構測試其可用性。  如果您有幾分鐘的時間可以嘗試在目前或建議的目錄中尋找 7 個不同主題，請[按一下這裡參加研究](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82)。
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
@@ -41,7 +38,7 @@ ms.locfileid: "53288114"
 * 需要較大的 IIS 堆疊大小。
 * 有 64 位元原生相依性。
 
-## <a name="application-configuration"></a>應用程式設定
+## <a name="application-configuration"></a>應用程式組態
 
 ### <a name="enable-the-iisintegration-components"></a>啟用 IISIntegration 元件
 
@@ -210,7 +207,7 @@ services.Configure<IISOptions>(options =>
 </PropertyGroup>
 ```
 
-使 Web SDK 無法轉換檔案時，應該由開發人員手動設定 *processPath* 和 *arguments*。 如需詳細資訊，請參閱 [ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)。
+使 Web SDK 無法轉換檔案時，應該由開發人員手動設定 *processPath* 和 *arguments*。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)。
 
 ### <a name="webconfig-file-location"></a>web.config 檔案位置
 
@@ -220,7 +217,7 @@ services.Configure<IISOptions>(options =>
 
 ***web.config* 檔案必須持續存在於部署之中、已正確命名，並能夠設定網站以正常啟動。無論在任何情況下，請都不要從生產環境部署移除 *web.config* 檔案。**
 
-## <a name="iis-configuration"></a>IIS 設定
+## <a name="iis-configuration"></a>IIS 組態
 
 **Windows Server 作業系統**
 
@@ -304,11 +301,11 @@ services.Configure<IISOptions>(options =>
 如果 Windows 裝載套件組合安裝程式偵測到 IIS 需要重設才能完成安裝，安裝程式會重設 IIS。 如果安裝程式觸發 IIS 重設，所有 IIS 應用程式集區和網站都會重新啟動。
 
 > [!NOTE]
-> 如需 IIS 共用設定的資訊，請參閱[使用 IIS 共用設定的 ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration)。
+> 如需 IIS 共用組態的資訊，請參閱[使用 IIS 共用組態的 ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration)。
 
 ## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>使用 Visual Studio 發佈時安裝 Web Deploy
 
-將應用程式部署到具有 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) 的伺服器時，請在伺服器上安裝最新版的 Web Deploy。 若要安裝 Web Deploy，請使用 [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 或從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=43717)直接取得安裝程式。 慣用的方法是使用 WebPI。 WebPI 提供獨立的安裝程式和設定以裝載提供者。
+將應用程式部署到具有 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) 的伺服器時，請在伺服器上安裝最新版的 Web Deploy。 若要安裝 Web Deploy，請使用 [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 或從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=43717)直接取得安裝程式。 慣用的方法是使用 WebPI。 WebPI 提供獨立的安裝程式和組態以裝載提供者。
 
 ## <a name="create-the-iis-site"></a>建立 IIS 網站
 
@@ -377,7 +374,7 @@ services.Configure<IISOptions>(options =>
 
 當應用程式執行時，會鎖定部署資料夾中的檔案。 無法於部署期間覆寫已鎖定的檔案。 若要釋放部署中的已鎖定檔案，請使用下列其中**一種**方法停止應用程式集區：
 
-* 使用 Web Deploy 並參考專案檔中的 `Microsoft.NET.Sdk.Web`。 *app_offline.htm* 檔案是放在 Web 應用程式目錄的根目錄中。 當檔案存在時，ASP.NET Core 模組會正常關閉應用程式，並在部署期間提供 *app_offline.htm* 檔案。 如需詳細資訊，請參閱 [ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module#app_offlinehtm)。
+* 使用 Web Deploy 並參考專案檔中的 `Microsoft.NET.Sdk.Web`。 *app_offline.htm* 檔案是放在 Web 應用程式目錄的根目錄中。 當檔案存在時，ASP.NET Core 模組會正常關閉應用程式，並在部署期間提供 *app_offline.htm* 檔案。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module#app_offlinehtm)。
 * 在伺服器上的 IIS 管理員中手動停止應用程式集區。
 * 使用 PowerShell 卸除 *app_offline.html* (需要 PowerShell 5 或更新版本)：
 
@@ -494,13 +491,13 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 如需有關同處理序裝載模型與如何設定 ASP.NET Core 模組的詳細資訊，請參閱 <xref:fundamentals/servers/aspnet-core-module> 與 <xref:host-and-deploy/aspnet-core-module>。
 
-## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 設定
+## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
 在對使用了 ASP.NET Core 模組的 ASP.NET Core 有作用的 IIS 情境下，設定會受 *web.config* 的 `<system.webServer>` 區段影響。 舉例來說，IIS 設定對動態壓縮有作用。 如果在伺服器層級將 IIS 設為使用動態壓縮，應用程式 *web.config* 檔案中的 `<urlCompression>` 元素則可為 ASP.NET Core 應用程式予以停用。
 
 如需詳細資訊，請參閱 [\<system.webServer> 的設定參考](/iis/configuration/system.webServer/)、[ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)以及 [IIS 模組與 ASP.NET Core](xref:host-and-deploy/iis/modules)。 若要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (支援 IIS 10.0 或更新版本)，請參閱 IIS 參考文件之[環境變數 \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
 
-## <a name="configuration-sections-of-webconfig"></a>web.config 的設定區段
+## <a name="configuration-sections-of-webconfig"></a>web.config 的組態區段
 
 ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用程式的設定區段：
 
@@ -509,7 +506,7 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 * `<connectionStrings>`
 * `<location>`
 
-使用其他設定提供者設定的 ASP.NET Core 應用程式。 如需詳細資訊，請參閱[設定](xref:fundamentals/configuration/index)。
+使用其他組態提供者設定的 ASP.NET Core 應用程式。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 
 ## <a name="application-pools"></a>應用程式集區
 
@@ -526,7 +523,7 @@ IIS [新增網站] 對話方塊預設每個應用程式皆為單一應用程式�
 
 ::: moniker range="< aspnetcore-2.2"
 
-在伺服器上裝載多個網站時，建議您在其各自的應用程式集區中執行各個應用程式，讓應用程式彼此隔離。 IIS [新增網站] 對話方塊預設成此設定。 當提供 [網站名稱] 時，文字會自動轉移至 [應用程式集區] 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
+在伺服器上裝載多個網站時，建議您在其各自的應用程式集區中執行各個應用程式，讓應用程式彼此隔離。 IIS [新增網站] 對話方塊預設成此組態。 當提供 [網站名稱] 時，文字會自動轉移至 [應用程式集區] 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
 
 ::: moniker-end
 
@@ -613,7 +610,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)
 
 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。  
-[ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)
+[ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
 
 了解已發行之 ASP.NET Core 應用程式的目錄結構。  
 [目錄結構](xref:host-and-deploy/directory-structure)

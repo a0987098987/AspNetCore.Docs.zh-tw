@@ -3,14 +3,14 @@ title: 從 ASP.NET 移轉至 ASP.NET Core
 author: isaac2004
 description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 ASP.NET Core.web 的指導
 ms.author: scaddie
-ms.date: 12/10/2018
+ms.date: 12/11/2018
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 6808fefb890dcdec6abdd0604ab61dfd2573d910
-ms.sourcegitcommit: 1872d2e6f299093c78a6795a486929ffb0bbffff
+ms.openlocfilehash: a9eef832a68afa1a73e3c7c545378da190602ce2
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53216790"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284392"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "53216790"
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
+[.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download)
 
 ## <a name="target-frameworks"></a>目標 Framework
 
@@ -28,15 +28,15 @@ ASP.NET Core 專案為開發人員提供了彈性，能以 .NET Core、.NET Fram
 
 以 .NET Framework 為目標時，專案需要參考個別的 NuGet 套件。
 
-以 .NET Core 為目標，借助 ASP.NET Core [中繼套件](xref:fundamentals/metapackage)，可讓您消除許多明確的套件參考。 在您的專案中安裝 `Microsoft.AspNetCore.All` 中繼套件：
+以 .NET Core 為目標，借助 ASP.NET Core [中繼套件](xref:fundamentals/metapackage-app)，可讓您消除許多明確的套件參考。 在您的專案中安裝 `Microsoft.AspNetCore.App` 中繼套件：
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
+   <PackageReference Include="Microsoft.AspNetCore.App" />
 </ItemGroup>
 ```
 
-使用中繼套件時，不使用應用程式部署中繼套件中參考的任何套件。 .NET Core 執行階段存放區包含這些資產，而且它們會先行編譯以改善效能。 如需詳細資料，請參閱 [ASP.NET Core 2.x 的 Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)。
+使用中繼套件時，不使用應用程式部署中繼套件中參考的任何套件。 .NET Core 執行階段存放區包含這些資產，而且它們會先行編譯以改善效能。 如需詳細資訊，請參閱 [ASP.NET Core 的 Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
 
 ## <a name="project-structure-differences"></a>專案結構差異
 
@@ -50,7 +50,7 @@ ASP.NET Core 中已簡化 *.csproj* 檔案格式。 值得注意的變更包括�
 
 ## <a name="globalasax-file-replacement"></a>取代 Global.asax 檔案
 
-ASP.NET Core 導入了啟動應用程式的新機制。 ASP.NET 應用程式的進入點是 *Global.asax* 檔案。 路由組態和篩選器和區域登錄等工作，會在 *Global.asax* 檔案中處理。
+ASP.NET Core 導入了啟動應用程式的新機制。 ASP.NET 應用程式的進入點是 *Global.asax* 檔案。 路由設定和篩選器和區域登錄等工作，會在 *Global.asax* 檔案中處理。
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
@@ -64,22 +64,21 @@ ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 相反地
 
 [!code-csharp[](samples/program.cs)]
 
-`Startup` 必須包含 `Configure` 方法。 在 `Configure` 中將必要的中介軟體新增至管線。 在下列範例中 (從預設的網站範本)，會使用數個擴充方法設定管線，以支援：
+`Startup` 必須包含 `Configure` 方法。 在 `Configure` 中將必要的中介軟體新增至管線。 在下列範例 (來自從預設的網站範本) 中，擴充方法會使用對下列項目的支援來設定管線：
 
-* [瀏覽器連結](xref:client-side/using-browserlink)
 * 錯誤頁面
-* 靜態檔案
+* HTTP 嚴格的傳輸安全性
+* HTTP 重新導向 到 HTTPS
 * ASP.NET Core MVC
-* 身分識別
 
-[!code-csharp[](../../common/samples/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,21&start=58&end=84)]
+[!code-csharp[](samples/startup.cs)]
 
 主機與應用程式已分離，這讓您未來可以彈性移至不同的平台。
 
 > [!NOTE]
 > 如需 ASP.NET Core 啟動與中介軟體更深入的參考，請參閱 [ASP.NET Core 中的啟動](xref:fundamentals/startup)
 
-## <a name="store-configurations"></a>儲存組態
+## <a name="store-configurations"></a>儲存設定
 
 ASP.NET 支援儲存設定。 例如，這些設定是用來支援要部署應用程式的環境。 過去的常見做法是將所有自訂機碼值組儲存在 *Web.config* 檔案的 `<appSettings>` 區段中：
 
@@ -89,7 +88,7 @@ ASP.NET 支援儲存設定。 例如，這些設定是用來支援要部署應�
 
 [!code-csharp[](samples/read-webconfig.cs)]
 
-ASP.NET Core 可將應用程式的組態資料儲存在任何檔案中，將它們當成中介軟體啟動程序的一部分載入。 專案範本中所用的預設檔案是 *appsettings.json*：
+ASP.NET Core 可將應用程式的設定資料儲存在任何檔案中，將它們當成中介軟體啟動程序的一部分載入。 專案範本中所用的預設檔案是 *appsettings.json*：
 
 [!code-json[](samples/appsettings-sample.json)]
 
@@ -101,7 +100,7 @@ ASP.NET Core 可將應用程式的組態資料儲存在任何檔案中，將它�
 
 [!code-csharp[](samples/read-appsettings.cs)]
 
-此方法有延伸模組可讓處理序更強固，例如使用[相依性插入](xref:fundamentals/dependency-injection) (DI) 載入具有這些值的服務。 DI 方法提供強型別的組態物件集合。
+此方法有延伸模組可讓處理序更強固，例如使用[相依性插入](xref:fundamentals/dependency-injection) (DI) 載入具有這些值的服務。 DI 方法提供強型別的設定物件集合。
 
 ````csharp
 // Assume AppConfiguration is a class representing a strongly-typed version of AppConfiguration section
@@ -109,7 +108,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 ````
 
 > [!NOTE]
-> 如需 ASP.NET Core 組態更深入的參考，請參閱 [ASP.NET Core 中的組態](xref:fundamentals/configuration/index)。
+> 如需 ASP.NET Core 設定更深入的參考，請參閱 [ASP.NET Core 中的設定](xref:fundamentals/configuration/index)。
 
 ## <a name="native-dependency-injection"></a>原生相依性插入
 

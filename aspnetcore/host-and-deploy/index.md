@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何設定裝載環境及部署 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/06/2018
 uid: host-and-deploy/index
-ms.openlocfilehash: 86022c33a3c5a8b82b14ae51b98c44497f39bd16
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: f443a8ee28a859b5075a8bb03016407af9a3ddb1
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862443"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284522"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>裝載及部署 ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "52862443"
 
 .NET Core 應用程式可以發行為「自主式部署」或「相依於架構的部署」。 如果應用程式是自主式，包含 .NET 執行階段的組件檔會包含在 *publish* 資料夾中。 如果應用程式是與 Framework 相依的應用程式，則不會包含 .NET 執行階段檔案，因為應用程式具有對伺服器上已安裝之 .NET 版本的參考。 預設部署模式是與 Framework 相依。 如需詳細資訊，請參閱 [.NET Core 應用程式部署](/dotnet/core/deploying/)。
 
-除了 *.exe* 和 *.dll* 檔案之外，ASP.NET Core 應用程式的 *publish* 資料夾通常還包含組態檔、靜態資產和 MVC 檢視。 如需詳細資訊，請參閱<xref:host-and-deploy/directory-structure>。
+除了 *.exe* 和 *.dll* 檔案之外，ASP.NET Core 應用程式的 *publish* 資料夾通常還包含設定檔、靜態資產和 MVC 檢視。 如需詳細資訊，請參閱<xref:host-and-deploy/directory-structure>。
 
 ## <a name="set-up-a-process-manager"></a>設定處理序管理員
 
@@ -72,7 +72,11 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 ## <a name="publish-to-azure"></a>發佈至 Azure
 
-請參閱 <xref:tutorials/publish-to-azure-webapp-using-vs> 以取得有關如何使用 Visual Studio 將應用程式發佈到 Azure 的指示。 您也可以透過[命令列](/azure/app-service/app-service-web-get-started-dotnet)，將應用程式發行至 Azure。
+請參閱 <xref:tutorials/publish-to-azure-webapp-using-vs> 以取得有關如何使用 Visual Studio 將應用程式發佈到 Azure 的指示。 [在 Azure 中建立 ASP.NET Core Web 應用程式](/azure/app-service/app-service-web-get-started-dotnet)提供其他範例。
+
+## <a name="publish-with-msdeploy-on-windows"></a>在 Windows 上使用 MSDeploy 來發行
+
+請參閱 <xref:host-and-deploy/visual-studio-publish-profiles> 以取得有關如何使用 Visual Studio 發行設定檔發行應用程式的指示，包括從 Windows 命令提示字元使用 [dotnet msbuild](/dotnet/core/tools/dotnet-msbuild) 命令。
 
 ## <a name="host-in-a-web-farm"></a>裝載於 Web 伺服陣列
 

@@ -5,14 +5,14 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/04/2018
+ms.date: 12/10/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: b32dd3cb84a86d12c61e391b88355ab0411c2815
-ms.sourcegitcommit: a3a15d3ad4d6e160a69614a29c03bbd50db110a2
+ms.openlocfilehash: b6ff2124aac7e866f630cf359cbd188e88906844
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52951962"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284691"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -42,7 +42,7 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 [Azure Web 應用程式沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
 探索 Azure 應用程式平台強制實施的 Azure App Service 執行階段執行限制。
 
-## <a name="application-configuration"></a>應用程式組態
+## <a name="application-configuration"></a>應用程式設定
 
 ### <a name="platform"></a>Platform
 
@@ -84,6 +84,8 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ## <a name="monitoring-and-logging"></a>監視與記錄
 
+部署到 App Service 的 ASP.NET Core 應用程式會自動接收 App Service 延伸模組 **ASP.NET Core 記錄延伸模組**。 延伸模組啟用了 Azure 監視功能。
+
 如需監視、記錄及疑難排解的資訊，請參閱下列文章：
 
 [如何：監視 Azure App Service 中的應用程式](/azure/app-service/web-sites-monitor)  
@@ -99,7 +101,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 了解如何診斷使用 ASP.NET Core 應用程式部署 Azure App Service 的問題。
 
 <xref:host-and-deploy/azure-iis-errors-reference>  
-了解託管於 Azure App Service/IIS 之應用程式的常見部署組態錯誤，及疑難排解建議。
+了解託管於 Azure App Service/IIS 之應用程式的常見部署設定錯誤，及疑難排解建議。
 
 ## <a name="data-protection-key-ring-and-deployment-slots"></a>資料保護金鑰環及部署位置
 
@@ -227,4 +229,4 @@ Windows Server 上的 Azure App Service 使用 [Internet Information Services (I
 * <xref:fundamentals/servers/aspnet-core-module>
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
-* [Microsoft TechNet Library：Windows Server](/windows-server/windows-server-versions)
+* [Microsoft TechNet 文件庫：Windows Server](/windows-server/windows-server-versions)

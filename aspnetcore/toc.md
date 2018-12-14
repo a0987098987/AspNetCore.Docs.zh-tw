@@ -177,6 +177,7 @@
 ## 教學課程
 ### [使用 JavaScript 的 SignalR](xref:tutorials/signalr)
 ### [使用 TypeScript 的 SignalR](xref:tutorials/signalr-typescript-webpack)
+## [範例](https://github.com/aspnet/SignalR-samples)
 ## 伺服器概念
 ### [中樞](xref:signalr/hubs)
 ### [HubContext](xref:signalr/hubcontext)
@@ -402,6 +403,7 @@
 ### [分散式快取](xref:performance/caching/distributed)
 ### [回應快取中介軟體](xref:performance/caching/middleware)
 ## [回應壓縮](xref:performance/response-compression)
+## [診斷工具](xref:performance/diagnostic-tools)
 
 # 其他主題
 ## [全球化和當地語系化](xref:fundamentals/localization)

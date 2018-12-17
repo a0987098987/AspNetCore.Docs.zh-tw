@@ -21,7 +21,7 @@ ms.locfileid: "52458539"
 
 [跨原始資源共用](https://www.w3.org/TR/cors/)(CORS) 是 W3C 標準，可讓伺服器放寬同源原則。 使用 CORS，伺服器可以明確允許某些跨源要求並拒絕其他。 CORS 可較為安全且更有彈性，比早期的技術，例如[JSONP](https://wikipedia.org/wiki/JSONP)。 本主題說明如何在 ASP.NET Core 應用程式中啟用 CORS。
 
-## <a name="same-origin"></a>婞鎏磭懘
+## <a name="same-origin"></a>同源政策
 
 兩個 Url 有相同的原點，如果它們有相同的配置、 主機和連接埠 ([RFC 6454](https://tools.ietf.org/html/rfc6454))。
 

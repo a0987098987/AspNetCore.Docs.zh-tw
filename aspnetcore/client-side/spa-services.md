@@ -266,7 +266,7 @@ dotnet new angular
   * 排除來源對應。
   * 最佳化透過統合和縮製的用戶端程式碼。
 
-ASP.NET Core 會使用環境變數，名為`ASPNETCORE_ENVIRONMENT`來儲存組態模式。 請參閱**[設定的環境](xref:fundamentals/environments#set-the-environment)** 如需詳細資訊。
+ASP.NET Core 會使用環境變數，名為`ASPNETCORE_ENVIRONMENT`來儲存組態模式。 請參閱 **[設定的環境](xref:fundamentals/environments#set-the-environment)** 如需詳細資訊。
 
 ### <a name="running-with-net-core-cli"></a>執行使用.NET Core CLI
 

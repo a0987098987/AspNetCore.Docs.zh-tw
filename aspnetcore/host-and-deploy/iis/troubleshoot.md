@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何診斷 ASP.NET Core 應用程式的 Internet Information Services (IIS) 部署問題。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 12/06/2018
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 2ff870623de43676be38c5de8f338a7913e885a8
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 6d43057639ea88bb21ac66f2799062e06fffc530
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450706"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121683"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>針對 IIS 上的 ASP.NET Core 進行疑難排解
 
@@ -92,6 +92,26 @@ ASP.NET Core 模組找不到跨處理序裝載要求處理常式。 請確定 *a
 
 此錯誤是在啟動或建立回應時，在應用程式的程式碼內發生。 回應可能未包含任何內容，或是回應可能在瀏覽器中以「500 內部伺服器錯誤」的形式出現。 「應用程式事件記錄檔」通常會指出該應用程式已正常啟動。 從伺服器的觀點來看，這是正確的。 應用程式已啟動，但無法產生有效的回應。 請在伺服器上[於命令提示字元中執行應用程式](#run-the-app-at-a-command-prompt)或[啟用 ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)，以針對問題進行疑難排解。
 
+### <a name="failed-to-start-application-errorcode-0x800700c1"></a>無法啟動應用程式 (ErrorCode '0x800700c1')
+
+```
+EventID: 1010
+Source: IIS AspNetCore Module V2
+Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
+```
+
+應用程式無法啟動，因為無法載入應用程式的組件 (*.dll*)。
+
+當已發行的應用程式與 w3wp/iisexpress 處理序之間出現位元不符的情況時，就會發生此錯誤。
+
+確認應用程式集區的 32 位元設定正確：
+
+1. 在 IIS 管理員的 [應用程式集區] 中，選取應用程式集區。
+1. 在 [動作] 面板中，選取 [編輯應用程式集區] 下的 [進階設定]。
+1. 設定 [啟用 32 位元應用程式]：
+   * 如果部署 32 位元 (x86) 應用程式，請將值設定為 `True`。
+   * 如果部署 64 位元 (x64) 應用程式，請將值設定為 `False`。
+
 ### <a name="connection-reset"></a>連線重設
 
 如果是在傳送標頭之後才發生錯誤，則當發生錯誤時，伺服器已來不及傳送「500 內部伺服器錯誤」。 通常是在將回應的複雜物件序列化的期間發生錯誤時，會發生此錯誤。 這類錯誤會在用戶端上顯示為「連線重設」錯誤。 [應用程式記錄](xref:fundamentals/logging/index)可協助針對這些類型的錯誤進行疑難排解。
@@ -101,6 +121,21 @@ ASP.NET Core 模組找不到跨處理序裝載要求處理常式。 請確定 *a
 ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預設值時，在模組記錄處理序失敗之前，應用程式最多可花費兩分鐘來進行啟動。 如需有關設定模組的資訊，請參閱 [aspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
 
 ## <a name="troubleshoot-app-startup-errors"></a>針對應用程式啟動錯誤進行疑難排解
+
+### <a name="enable-the-aspnet-core-module-debug-log"></a>啟用 ASP.NET Core 模組偵錯記錄
+
+將下列處理常式設定新增至應用程式的 *web.config* 檔案，以啟用 ASP.NET Core 模組偵錯記錄：
+
+```xml
+<aspNetCore ...>
+  <handlerSettings>
+    <handlerSetting name="debugLevel" value="file" />
+    <handlerSetting name="debugFile" value="c:\temp\ancm.log" />
+  </handlerSettings>
+</aspNetCore>
+```
+
+確認為記錄指定的路徑存在，而且應用程式集區的身分識別具有該位置的寫入權限。
 
 ### <a name="application-event-log"></a>應用程式事件記錄檔
 
@@ -121,7 +156,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 1. 在命令提示字元中，瀏覽至部署資料夾，然後使用 *dotnet.exe* 來執行應用程式組件以執行應用程式。 在下列命令中，請以應用程式組件的名稱取代 \<assembly_name>：`dotnet .\<assembly_name>.dll`。
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
-1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與反向 Proxy 設定有關的機率較大，而與應用程式本身有關的機率較小。
+1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
 #### <a name="self-contained-deployment"></a>自封式部署
 
@@ -129,7 +164,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 1. 在命令提示字元中，瀏覽至部署資料夾，然後執行應用程式的可執行檔。 在下列命令中，請以應用程式組件的名稱取代 \<assembly_name>：`<assembly_name>.exe`。
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
-1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與反向 Proxy 設定有關的機率較大，而與應用程式本身有關的機率較小。
+1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
 ### <a name="aspnet-core-module-stdout-log"></a>ASP.NET Core 模組 stdout 記錄檔
 
@@ -167,7 +202,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
       arguments=".\MyApp.dll"
       stdoutLogEnabled="false"
       stdoutLogFile=".\logs\stdout"
-      hostingModel="inprocess">
+      hostingModel="InProcess">
   <environmentVariables>
     <environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Development" />
   </environmentVariables>

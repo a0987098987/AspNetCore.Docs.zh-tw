@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2018
+ms.date: 12/06/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 5a3fd9c3453c07ee550c7de0333c9a49d5d5d1af
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 0ad73d89ffa3a8a3625c6e248efaad821e1b4d0a
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450654"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121553"
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET Core 模組設定參考
 
@@ -27,17 +27,17 @@ ms.locfileid: "52450654"
 
 現有的應用程式可以選擇同處理序裝載，但 [dotnet new](/dotnet/core/tools/dotnet-new) 範本預設會針對所有 IIS 和 IIS Express 案例使用同處理序裝載模型。
 
-若要設定同處理序裝載的應用程式，請將 `<AspNetCoreHostingModel>` 屬性新增至應用程式的專案檔 (例如 *MyApp.csproj*)，且其值為 `inprocess` (跨處理序裝載是使用 `outofprocess` 設定)：
+若要設定同處理序裝載的應用程式，請將 `<AspNetCoreHostingModel>` 屬性新增至應用程式的專案檔 (例如 *MyApp.csproj*)，且其值為 `InProcess` (跨處理序裝載是使用 `outofprocess` 設定)：
 
 ```xml
 <PropertyGroup>
-  <AspNetCoreHostingModel>inprocess</AspNetCoreHostingModel>
+  <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
 </PropertyGroup>
 ```
 
 同處理序裝載時具有下列特性：
 
-* 不會使用 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)。 自訂 <xref:Microsoft.AspNetCore.Hosting.Server.IServer> 實作 `IISHttpServer` 可作為應用程式的伺服器。
+* 使用 IIS HTTP 伺服器 (`IISHttpServer`) 而不是 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器。 IIS HTTP 伺服器 (`IISHttpServer`) 是將 IIS 原生要求轉換為 ASP.NET Core Managed 要求以供應用程式處理的另一項 <xref:Microsoft.AspNetCore.Hosting.Server.IServer> 實作。
 
 * [requestTimeout 屬性](#attributes-of-the-aspnetcore-element)不適用於同處理序裝載。
 
@@ -51,7 +51,9 @@ ms.locfileid: "52450654"
 
 * 偵測到用戶端中斷連線。 用戶端中斷連線時，會取消 [HttpContext.RequestAborted](xref:Microsoft.AspNetCore.Http.HttpContext.RequestAborted*) 取消權杖。
 
-* `Directory.GetCurrentDirectory()` 會傳回 IIS 所啟動處理序的背景工作目錄，而非應用程式目錄 (例如 *w3wp.exe*為 *C:\Windows\System32\inetsrv*)。
+* <xref:System.IO.Directory.GetCurrentDirectory*> 會傳回 IIS 所啟動處理序的背景工作目錄，而非應用程式目錄 (例如 *w3wp.exe* 為 *C:\Windows\System32\inetsrv*)。
+
+  如需設定應用程式目前所在目錄的範例程式碼，請參閱 [CurrentDirectoryHelpers 類別](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/aspnet-core-module/samples_snapshot/2.x/CurrentDirectoryHelpers.cs)。 呼叫 `SetCurrentDirectory` 方法。 後續呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 會提供應用程式的目錄。
 
 ### <a name="hosting-model-changes"></a>裝載模型變更
 
@@ -85,7 +87,7 @@ ms.locfileid: "52450654"
                   arguments=".\MyApp.dll" 
                   stdoutLogEnabled="false" 
                   stdoutLogFile=".\logs\stdout" 
-                  hostingModel="inprocess" />
+                  hostingModel="InProcess" />
     </system.webServer>
   </location>
 </configuration>
@@ -127,7 +129,7 @@ ms.locfileid: "52450654"
       <aspNetCore processPath=".\MyApp.exe" 
                   stdoutLogEnabled="false" 
                   stdoutLogFile=".\logs\stdout" 
-                  hostingModel="inprocess" />
+                  hostingModel="InProcess" />
     </system.webServer>
   </location>
 </configuration>
@@ -163,12 +165,12 @@ ms.locfileid: "52450654"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-| 屬性 | 描述 | 預設 |
+| 屬性 | 說明 | 預設 |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p> | |
 | `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗] 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` |
 | `forwardWindowsAuthToken` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會依據要求將權杖以標頭 'MS-ASPNETCORE-WINAUTHTOKEN' 形式轉送至在 %ASPNETCORE_PORT% 進行接聽的子處理序。 該處理序需負責依據要求呼叫此權杖上的 CloseHandle。</p> | `true` |
-| `hostingModel` | <p>選擇性字串屬性。</p><p>將裝載模型指定為同處理序 (`inprocess`) 或跨處理序 (`outofprocess`)。</p> | `outofprocess` |
+| `hostingModel` | <p>選擇性字串屬性。</p><p>將裝載模型指定為同處理序 (`InProcess`) 或跨處理序 (`OutOfProcess`)。</p> | `OutOfProcess` |
 | `processesPerApplication` | <p>選擇性的整數屬性。</p><p>指定 **processPath** 設定中所指定處理序執行個體每個應用程式可上調的數目。</p><p>&dagger;針對同處理序裝載，此值會限制為 `1`。</p> | 預設值：`1`<br>最小值：`1`<br>最大值：`100`&dagger; |
 | `processPath` | <p>必要的字串屬性。</p><p>啟動接聽 HTTP 要求之處理序的可執行檔路徑。 支援相對路徑。 如果路徑的開頭為 `.`，該路徑即被視為網站根目錄的相對路徑。</p> | |
 | `rapidFailsPerMinute` | <p>選擇性的整數屬性。</p><p>指定允許 **processPath** 中所指定處理序每分鐘當機的次數。 如果超出此限制，模組就會在該分鐘的剩餘時間內停止啟動處理序。</p><p>不支援同處理序裝載。</p> | 預設值：`10`<br>最小值：`0`<br>最大值︰`100` |
@@ -182,7 +184,7 @@ ms.locfileid: "52450654"
 
 ::: moniker range="= aspnetcore-2.1"
 
-| 屬性 | 描述 | 預設 |
+| 屬性 | 說明 | 預設 |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p>| |
 | `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗] 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` |
@@ -200,7 +202,7 @@ ms.locfileid: "52450654"
 
 ::: moniker range="<= aspnetcore-2.0"
 
-| 屬性 | 描述 | 預設 |
+| 屬性 | 說明 | 預設 |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p>| |
 | `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗] 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` |
@@ -229,7 +231,7 @@ ms.locfileid: "52450654"
       arguments=".\MyApp.dll"
       stdoutLogEnabled="false"
       stdoutLogFile="\\?\%home%\LogFiles\stdout"
-      hostingModel="inprocess">
+      hostingModel="InProcess">
   <environmentVariables>
     <environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Development" />
     <environmentVariable name="CONFIG_DIR" value="f:\application_config" />
@@ -319,7 +321,7 @@ ms.locfileid: "52450654"
     arguments=".\MyApp.dll"
     stdoutLogEnabled="true"
     stdoutLogFile="\\?\%home%\LogFiles\stdout"
-    hostingModel="inprocess">
+    hostingModel="InProcess">
 </aspNetCore>
 ```
 
@@ -348,7 +350,7 @@ ASP.NET Core 模組提供者是可設定的，以提供增強型診斷記錄。 
     arguments=".\MyApp.dll"
     stdoutLogEnabled="false"
     stdoutLogFile="\\?\%home%\LogFiles\stdout"
-    hostingModel="inprocess">
+    hostingModel="InProcess">
   <handlerSettings>
     <handlerSetting name="debugFile" value="aspnetcore-debug.log" />
     <handlerSetting name="debugLevel" value="FILE,TRACE" />

@@ -5,14 +5,14 @@ description: 在本教學課程中，您會建立使用 ASP.NET Core SignalR 的
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/13/2018
+ms.date: 11/30/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 190717dc6e6f9f2766ba92aa7472f4cdea9b6827
-ms.sourcegitcommit: e7fafb153b9de7595c2558a0133f8d1c33a3bddb
+ms.openlocfilehash: c52041b34d6c9d1d8f06f980c900b805a0933293
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52458526"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861976"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
@@ -32,27 +32,10 @@ ms.locfileid: "52458526"
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([如何下載](xref:index#how-to-download-a-sample))。
 
 > [!NOTE]
-> 我們正為規劃中的 ASP.NET Core 目錄新結構測試其可用性。  如果您有幾分鐘的時間可以嘗試在目前或建議的目錄中尋找 7 個不同主題，請[按一下這裡參加研究](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5)。
+> 我們正為規劃中的 ASP.NET Core 目錄新結構測試其可用性。  如果您有幾分鐘的時間可以嘗試在目前或建議的目錄中尋找 7 個不同主題，請[按一下這裡參加研究](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82)。
 
-## <a name="prerequisites"></a>必要條件
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
-* [Visual Studio 2017 15.8 版或更新版本](https://www.visualstudio.com/downloads/)，包含 **ASP.NET 與網頁程式開發**工作負載
-* [.NET Core SDK 2.1 或更新版本](https://www.microsoft.com/net/download/all)
-
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-* [Visual Studio Code](https://code.visualstudio.com/download)
-* [.NET Core SDK 2.1 或更新版本](https://www.microsoft.com/net/download/all)
-* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
-
-* [Visual Studio for Mac 7.5.4 版或更新版本](https://www.visualstudio.com/downloads/)
-* [.NET Core SDK 2.1 或更新版本](https://www.microsoft.com/net/download/all) (隨附於 Visual Studio 安裝)
-
----
+[!INCLUDE [|Prerequisites](~/includes/net-core-prereqs-all-2.2.md)]
 
 ## <a name="create-a-web-project"></a>建立 Web 專案
 
@@ -66,7 +49,7 @@ ms.locfileid: "52458526"
 
 * 選取 [Web 應用程式] 建立使用 Razor Pages 的專案。
 
-* 選取 **.NET Core** 作為目標 Framework、選取 [ASP.NET Core 2.1]，然後按一下 [確定]。
+* 選取 **.NET Core** 作為目標 Framework、選取 [ASP.NET Core 2.2]，然後按一下 [確定]。
 
   ![Visual Studio 的 [新增專案] 對話方塊](signalr/_static/signalr-new-project-choose-type.png)
 

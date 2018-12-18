@@ -3,14 +3,14 @@ title: 檢視 ASP.NET Core 中的元件
 author: rick-anderson
 description: 了解如何檢視 ASP.NET Core 中使用的元件，以及如何將這些元件新增到應用程式。
 ms.author: riande
-ms.date: 02/14/2017
+ms.date: 12/03/2018
 uid: mvc/views/view-components
-ms.openlocfilehash: 91399acafb36f1f8759ed1783e70e59b631e3bf0
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 5812abad80cd906d6b9a7175bd7cdefd03a99eb3
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253125"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861325"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
@@ -63,13 +63,13 @@ ms.locfileid: "50253125"
 
 ### <a name="view-component-methods"></a>檢視元件方法
 
-檢視元件會在傳回 `IViewComponentResult` 的 `InvokeAsync` 方法中定義其邏輯。 參數直接來自檢視元件的引動過程，而不是來自模型繫結。 檢視元件絕不會直接處理要求。 通常，檢視元件會初始化模型，並呼叫 `View` 方法將其傳遞至檢視。 簡要來說，檢視元件方法：
+檢視元件會在傳回 `Task<IViewComponentResult>` 的 `InvokeAsync` 方法或傳回 `IViewComponentResult` 的同步 `Invoke` 方法中定義其邏輯。 參數直接來自檢視元件的引動過程，而不是來自模型繫結。 檢視元件絕不會直接處理要求。 通常，檢視元件會初始化模型，並呼叫 `View` 方法將其傳遞至檢視。 簡要來說，檢視元件方法：
 
-* 定義可傳回 `IViewComponentResult` 的 `InvokeAsync` 方法
-* 通常會初始化模型，並呼叫 `ViewComponent` `View` 方法將其傳遞至檢視
-* 參數來自呼叫端方法，而非 HTTP，而且沒有模型繫結
-* 無法直接當成 HTTP 端點連接，它們是透過您的程式碼所叫用 (通常是在檢視中)。 檢視元件絕不會處理要求
-* 已多載在簽章上，而非目前 HTTP 要求中的任何詳細資料
+* 定義傳回 `Task<IViewComponentResult>` 的 `InvokeAsync` 方法或傳回 `IViewComponentResult` 的同步 `Invoke` 方法。
+* 通常會初始化模型，並呼叫 `ViewComponent` `View` 方法將其傳遞至檢視。
+* 參數來自呼叫端方法，而非 HTTP。 沒有模型繫結。
+* 無法直接當成 HTTP 端點連接。 它們是透過您的程式碼所叫用 (通常是在檢視中)。 檢視元件絕不會處理要求。
+* 已多載在簽章上，而非目前 HTTP 要求中的任何詳細資料。
 
 ### <a name="view-search-path"></a>檢視搜尋路徑
 

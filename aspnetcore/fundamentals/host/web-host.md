@@ -4,14 +4,14 @@ author: guardrex
 description: 深入了解 ASP.NET Core 中的 Web 主機，其負責啟動應用程式以及管理存留期。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2018
+ms.date: 12/01/2018
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 5af09ad715768d51ce8ef2c8425cc51ebada6859
-ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
+ms.openlocfilehash: bc77413127273aba207e68e7fbcb8ad916267e8e
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597819"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862274"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
@@ -45,7 +45,7 @@ public class Program
 
 `CreateDefaultBuilder` 會執行下列工作：
 
-* 將 [Kestrel](xref:fundamentals/servers/kestrel) 設定為網頁伺服器，並使用應用程式主機組態提供者設定伺服器。 如需 Kestrel 預設選項，請參閱 <xref:fundamentals/servers/kestrel#kestrel-options>。
+* 使用應用程式的主機組態提供者，將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設定為網頁伺服器。 如需 Kestrel 伺服器的預設選項，請參閱 <xref:fundamentals/servers/kestrel#kestrel-options>。
 * 設定 [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory) 所傳回路徑的內容根目錄。
 * 從下列項目載入[主機組態](#host-configuration-values)：
   * 前面加上 `ASPNETCORE_` 的環境變數 (例如，`ASPNETCORE_ENVIRONMENT`)。
@@ -57,7 +57,7 @@ public class Program
   * 環境變數。
   * 命令列引數。
 * 設定主控台和偵錯輸出的[記錄](xref:fundamentals/logging/index)。 記錄包含 *appsettings.json* 或 *appsettings.{Environment}.json* 檔案的記錄組態區段中指定的[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)規則。
-* 在 IIS 背後執行時，啟用 [IIS 整合](xref:host-and-deploy/iis/index)。 設定使用 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)時伺服器接聽的基底路徑和連接埠。 此模組會在 IIS 和 Kestrel 之間建立反向 Proxy。 也會設定應用程式以[擷取啟動錯誤](#capture-startup-errors)。 如需 IIS 預設選項，請參閱 <xref:host-and-deploy/iis/index#iis-options>。
+* 以 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)在 IIS 背後執行時，`CreateDefaultBuilder` 會啟用 [IIS 整合](xref:host-and-deploy/iis/index)，以設定應用程式的基底位址和連接埠。 IIS 整合也會設定應用程式以[擷取啟動錯誤](#capture-startup-errors)。 如需 IIS 預設選項，請參閱 <xref:host-and-deploy/iis/index#iis-options>。
 * 如果應用程式的環境是「開發」，請將 [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) 設定為 `true`。 如需詳細資訊，請參閱[範圍驗證](#scope-validation)。
 
 `CreateDefaultBuilder` 所定義的組態可以透過 [ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration)、[ConfigureLogging](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging)，以及 [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) 的其他方法和擴充方法加以覆寫及擴增。 數個範例如下：

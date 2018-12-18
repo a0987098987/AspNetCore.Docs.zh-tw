@@ -2,17 +2,17 @@
 title: 將驗證新增至 ASP.NET Core Razor 頁面
 author: rick-anderson
 description: 了解如何將驗證新增至 ASP.NET Core 中的 Razor 頁面。
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/5/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: d4cc0ab9de314c0c5a1a9016efd1e566ff1c47d2
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: 87171beb7c214b1370d4d4144a79cb6d2c56098f
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505774"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862365"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -22,27 +22,20 @@ ms.locfileid: "51505774"
 
 ## <a name="validation"></a>驗證
 
-軟體開發的核心原則稱為 [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself)("**D**on't **R**epeat **Y**ourself", 不重複原則)。 Razor 頁面可促進開發，只要指定功能一次，就能在整個應用程式中運用。 DRY 有助於降低應用程式中的程式碼數量。 DRY 可使程式碼較少出現錯誤，而且更容易進行測試和維護。
+軟體開發的核心原則稱為 [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself)("**D**on't **R**epeat **Y**ourself", 不重複原則)。 Razor Pages可促進開發，只要指定功能一次，就能在整個應用程式中運用。 DRY 有助於：
 
-Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
+* 降低應用程式中的程式碼數量。
+* 使程式碼較少出現錯誤，而且更容易進行測試和維護。
+
+Razor Pages 和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
 
 ### <a name="adding-validation-rules-to-the-movie-model"></a>將驗證規則新增至電影模型
 
-開啟 *Models/Movie.cs* 檔案。 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 提供一組內建的驗證屬性 (attribute)，其以宣告方式套用至類別或屬性 (property)。 DataAnnotations 也包含格式化屬性 (如 `DataType`)，可協助進行格式化，但不提供驗證。
+開啟 *Models/Movie.cs* 檔案。 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 提供一組內建的驗證屬性 (attribute)，其以宣告方式套用至類別或屬性 (property)。 DataAnnotations 也包含格式化屬性 (例如 `DataType`)，可協助進行格式化，但不提供驗證。
 
 更新 `Movie` 類別，以充分利用 `Required`、`StringLength`、`RegularExpression` 和 `Range` 驗證屬性。
 
-::: moniker range="= aspnetcore-2.0"
-
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDA.cs?name=snippet1)]
-
-::: moniker-end
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDA.cs?name=snippet1)]
 
 驗證屬性 (attribute) 會指定對模型屬性 (property) 強制執行的行為：
 
@@ -113,11 +106,8 @@ Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中
 
 `DataType.Date` 未指定顯示日期的格式。 根據預設，將依據以伺服器 `CultureInfo` 為基礎的預設格式顯示資料欄位。
 
-::: moniker range=">= aspnetcore-2.1"
 
 `[Column(TypeName = "decimal(18, 2)")]` 資料註解為必要項，因此 Entity Framework Core 可將 `Price` 正確對應到資料庫中的貨幣。 如需詳細資訊，請參閱[資料類型](/ef/core/modeling/relational/data-types)。
-
-::: moniker-end
 
 `DisplayFormat` 屬性用來明確指定日期格式：
 
@@ -144,17 +134,7 @@ public DateTime ReleaseDate { get; set; }
 
 下列程式碼會顯示一行上的結合屬性：
 
-::: moniker range="= aspnetcore-2.0"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDAmult.cs?name=snippet1)]
-
-::: moniker-end
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
 [Razor Pages 和 EF Core 使用者入門](xref:data/ef-rp/intro)說明使用 Razor Pages 執行進階 EF Core 作業。
 

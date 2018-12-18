@@ -4,14 +4,14 @@ author: zuckerthoben
 description: 了解如何將 Swashbuckle 新增至 ASP.NET Core Web API 專案，以整合 Swagger UI。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/14/2018
+ms.date: 11/30/2018
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 9832e1ea2b59085b6680820469b16d549f4b0582
-ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
+ms.openlocfilehash: 9229b4536c3d5090e640de71357c728ddbd5dcc3
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635338"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862339"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -108,7 +108,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
 >
 > [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup3.cs?name=snippet_UseSwaggerUI&highlight=4)]
 
-若使用虛擬目錄 (例如搭配 IIS 或 反向 Proxy)，請將 Swagger 端點設定為使用 `./` 前置詞的相對路徑。 例如，`./swagger/v1/swagger.json`。 使用 `/swagger/v1/swagger.json` 指示應用程式在 URL 的真實根目錄 (若已使用，請加上路由前置詞) 尋找 JSON 檔案。 例如，應使用 `http://localhost:<port>/<route_prefix>/swagger/v1/swagger.json`，而非 `http://localhost:<port>/<virtual_directory>/<route_prefix>/swagger/v1/swagger.json`。
+若使用目錄搭配 IIS 或 反向 Proxy，請將 Swagger 端點設定為使用 `./` 前置詞的相對路徑。 例如，`./swagger/v1/swagger.json`。 使用 `/swagger/v1/swagger.json` 指示應用程式在 URL 的真實根目錄 (若已使用，請加上路由前置詞) 尋找 JSON 檔案。 例如，使用 `http://localhost:<port>/<route_prefix>/swagger/v1/swagger.json` 而不是 `http://localhost:<port>/<virtual_directory>/<route_prefix>/swagger/v1/swagger.json`。
 
 ## <a name="customize-and-extend"></a>自訂與擴充
 

@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 模組
 author: guardrex
-description: 了解 ASP.NET Core 模組如何讓 Kestrel Web 伺服器將 IIS 或 IIS Express 作為反向 Proxy 伺服器使用。
+description: 了解 ASP.NET Core 模組如何允許 Kestrel 網頁伺服器使用 IIS 或 IIS Express。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 uid: fundamentals/servers/aspnet-core-module
-ms.openlocfilehash: 39c1b364f9dab635c79e00561d212c858c0c4395
-ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
+ms.openlocfilehash: d3f3a42dd7aebc425905b865376a584bcf0e5153
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51191252"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861455"
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
@@ -36,7 +36,7 @@ ASP.NET Core 模組可讓 ASP.NET Core 應用程式在反向 Proxy 組態中的 
 
 ::: moniker range=">= aspnetcore-2.2"
 
-同處理序裝載時，該模組會有自己的伺服器實作 `IISHttpServer`。
+同處理序裝載時，模組會使用 IIS 同處理序伺服程式實作：IIS HTTP 伺服器 (`IISHttpServer`)。
 
 跨處理序裝載時，該模組只適用於 Kestrel。 該模組與 [HTTP.sys](xref:fundamentals/servers/httpsys) (先前稱為 [WebListener](xref:fundamentals/servers/weblistener)) 不相容。
 
@@ -73,9 +73,9 @@ ASP.NET Core 模組：
 
 ![ASP.NET Core 模組](aspnet-core-module/_static/ancm-inprocess.png)
 
-要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 模組會接收原生要求，並將控制項傳遞至 `IISHttpServer`，再由其將要求從原生轉換成受控。
+要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 模組會接收原生要求，並將它傳遞至 IIS HTTP 伺服器 (`IISHttpServer`)。 IIS HTTP 伺服器是 IIS 同處理序伺服程式實作，可將要求從原生轉換為受控。
 
-`IISHttpServer` 收取要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 應用程式的回應會傳回 IIS，而 IIS 會將其推送回起始要求的 HTTP 用戶端。
+IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 應用程式的回應會傳回 IIS，而 IIS 會將其推送回起始要求的用戶端。
 
 ### <a name="out-of-process-hosting-model"></a>跨處理序裝載模型
 

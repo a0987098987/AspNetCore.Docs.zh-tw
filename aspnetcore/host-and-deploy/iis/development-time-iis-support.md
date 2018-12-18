@@ -4,14 +4,14 @@ author: shirhatti
 description: 了解當 ASP.NET Core 應用程式在 Windows Server 上的 IIS 後方執行時，對其提供的偵錯支援。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 11/30/2018
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 65dbe690a33d82a4edddf315803dc4c656db27a0
-ms.sourcegitcommit: e8d80ff566bfe505b43389d7bc4551edb1c0c872
+ms.openlocfilehash: 51375e6a6bb25a469d467ca97a151abd305c1ece
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52549097"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862378"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
@@ -54,7 +54,7 @@ IIS 的網站必須含有下列設定：
 ## <a name="enable-development-time-iis-support-in-visual-studio"></a>在 Visual Studio 中啟用開發階段 IIS 支援
 
 1. 啟動 Visual Studio 安裝程式。
-1. 選取 [開發階段 IIS 支援] 元件。 此元件在 [ASP.NET 與網頁程式開發] 工作負載的 [摘要] 面板中，會列為選擇性元件。 此元件會安裝 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，這是在反向 Proxy 設定中，於 IIS 後方執行 ASP.NET Core 應用程式所需的原生 IIS 模組。
+1. 選取 [開發階段 IIS 支援] 元件。 此元件在 [ASP.NET 與網頁程式開發] 工作負載的 [摘要] 面板中，會列為選擇性元件。 此元件會安裝 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，這是搭配 IIS 執行 ASP.NET Core 應用程式所需的原生 IIS 模組。
 
 ![修改 Visual Studio 功能：選取 [工作負載] 索引標籤。 在 [Web and Cloud]\(Web 與雲端\) 區段中，選取 [ASP.NET 與網頁程式開發] 面板。 在右側 [摘要] 面板的 [選擇性] 區域中，有 [開發階段 IIS 支援] 的核取方塊。](development-time-iis-support/_static/development_time_support.png)
 

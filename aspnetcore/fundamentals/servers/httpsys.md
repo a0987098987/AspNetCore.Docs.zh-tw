@@ -5,14 +5,14 @@ description: 深入了解 HTTP.sys，這是 Windows 上的 ASP.NET Core 網頁�
 monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 12/01/2018
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: f5ab1a3cbd1020a5ab2bd64a81b5782fd116f069
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 8810fd295e8c4269812e712ce2fdc9b9fa2bbb4f
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450641"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861689"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 
@@ -21,7 +21,7 @@ ms.locfileid: "52450641"
 > [!NOTE]
 > 本主題適用於 ASP.NET Core 2.0 或更新版本。 在舊版的 ASP.NET Core 中，HTTP.sys 名為 [WebListener](xref:fundamentals/servers/weblistener)。
 
-[HTTP.sys](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#hypertext-transfer-protocol-stack-httpsys) 是只在 Windows 上執行的 [ASP.NET Core 網頁伺服器](xref:fundamentals/servers/index)。 HTTP.sys 是 [Kestrel](xref:fundamentals/servers/kestrel) 的替代方式，提供了一些 Kestrel 未提供的功能。
+[HTTP.sys](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#hypertext-transfer-protocol-stack-httpsys) 是只在 Windows 上執行的 [ASP.NET Core 網頁伺服器](xref:fundamentals/servers/index)。 HTTP.sys 是 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器的替代方式，提供了一些 Kestrel 未提供的功能。
 
 > [!IMPORTANT]
 > HTTP.sys 與 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)不相容，且不能與 IIS 或 IIS Express 搭配使用。
@@ -97,7 +97,7 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
    **HTTP.sys 選項**
 
-   | 屬性 | 描述 | 預設 |
+   | 屬性 | 說明 | 預設 |
    | -------- | ----------- | :-----: |
    | [AllowSynchronousIO](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.allowsynchronousio) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `true` |
    | [Authentication.AllowAnonymous](/dotnet/api/microsoft.aspnetcore.server.httpsys.authenticationmanager.allowanonymous) | 允許匿名要求。 | `true` |

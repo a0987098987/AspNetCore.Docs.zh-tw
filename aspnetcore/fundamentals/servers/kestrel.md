@@ -4,14 +4,14 @@ author: guardrex
 description: 了解 Kestrel，這是 ASP.NET Core 的跨平台網頁伺服器。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 12/01/2018
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 1ef9491ebbc31fd8aa3752b53123eb6c9cf31b42
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 2a6a3786aa3a78bb83f497db22acac873512f939
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450831"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861923"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -74,25 +74,27 @@ Kestrel 支援下列功能：
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>何時搭配使用 Kestrel 與反向 Proxy
 
-您可以單獨使用 Kestrel，或與 IIS、Nginx 或 Apache 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網際網路接收 HTTP 要求，並在進行一些初步處理後，將其轉送至 Kestrel。
+您可以單獨使用 Kestrel，或與 [Internet Information Services (IIS)](https://www.iis.net/)、[Nginx](http://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
 
 ![Kestrel 不使用反向 Proxy 伺服器直接與網際網路通訊](kestrel/_static/kestrel-to-internet2.png)
 
 ![Kestrel 透過 IIS、Nginx 或 Apache 等反向 Proxy 伺服器間接與網際網路通訊](kestrel/_static/kestrel-to-internet.png)
 
-不論設定是否具有反向 Proxy 伺服器，對於 ASP.NET Core 2.0 或更新版本的應用程式，其中之一都是有效且支援的裝載設定。
+不論組態是否具有反向 Proxy 伺服器，對於從網際網路接收要求的 ASP.NET Core 2.1 或更新版本的應用程式來說，都是支援的裝載組態。
 
-反向 Proxy 存在的情況如下：有多個在單一伺服器上執行的應用程式共用相同的 IP 和連接埠。 Kestrel 不支援這種情況，因為 Kestrel 不支援在多個處理序之間共用相同的 IP 和連接埠。 當 Kestrel 設定為接聽通訊埠時，Kestrel 會處理該連接埠的所有流量，而不論要求的主機標頭。 可以共用連接埠的反向 Proxy 能夠在唯一的 IP 和連接埠上轉送要求給 Kestrel。
+Kestrel 用作不需要反向 Proxy 伺服器的 Edge Server 時，不支援在多個處理序之間共用相同的 IP 和連接埠。 當 Kestrel 設定為接聽連接埠時，Kestrel 會處理該連接埠的所有流量，而不論要求的 `Host` 標頭為何。 可以共用連接埠的反向 Proxy 能夠在唯一的 IP 和連接埠上轉送要求給 Kestrel。
 
-即使不需要反向 Proxy 伺服器，反向 Proxy 伺服器也是不錯的選擇：
+即使不需要反向 Proxy 伺服器，使用反向 Proxy 伺服器也是不錯的選擇。
 
-* 它可以限制它所主控之應用程式的公開介面區。
-* 它提供額外的組態和防禦層。
-* 它能夠與現有基礎結構更好地整合。
-* 它簡化負載平衡和 SSL 組態。 只有反向 Proxy 伺服器需要 SSL 憑證，而且該伺服器可以使用一般 HTTP 與內部網路上的應用程式伺服器通訊。
+反向 Proxy：
+
+* 可以限制它所主控之應用程式的公開介面區。
+* 提供額外的組態和防禦層。
+* 能夠與現有基礎結構更好地整合。
+* 簡化負載平衡和安全通訊 (HTTPS) 組態。 只有反向 Proxy 伺服器需要 X.509 憑證，而且該伺服器可以使用一般 HTTP 與內部網路上的應用程式伺服器通訊。
 
 > [!WARNING]
-> 如果未使用反向 Proxy 並啟用主機篩選，則必須啟用[主機篩選](#host-filtering)。
+> 裝載於反向 Proxy 組態需要[主機篩選](#host-filtering)。
 
 ## <a name="how-to-use-kestrel-in-aspnet-core-apps"></a>如何在 ASP.NET Core 應用程式中使用 Kestrel
 
@@ -990,7 +992,7 @@ private class TlsFilterAdapter : IConnectionAdapter
   主機名稱 `*` 和 `+` 並不特殊。 無法辨識為有效 IP 位址或 `localhost` 的任何項目，都會繫結至所有 IPv4 和 IPv6 IP。 若要在相同連接埠上將不同的主機名稱繫結至不同的 ASP.NET Core 應用程式，請使用 [HTTP.sys](xref:fundamentals/servers/httpsys) 或反向 Proxy 伺服器 (例如 IIS、Nginx 或 Apache)。
 
   > [!WARNING]
-  > 如果未使用反向 Proxy 並啟用主機篩選，請啟用[主機篩選](#host-filtering)。
+  > 裝載於反向 Proxy 組態需要[主機篩選](#host-filtering)。
 
 * 主機 `localhost` 名稱與連接埠號碼，或回送 IP 與連接埠號碼
 
@@ -1004,7 +1006,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 ## <a name="host-filtering"></a>主機篩選
 
-雖然 Kestrel 根據前置詞來支援組態，例如 `http://example.com:5000`，Kestrel 大多會忽略主機名稱。 主機 `localhost` 是特殊情況，用來繫結到回送位址。 任何非明確 IP 位址的主機，會繫結至所有公用 IP 位址。 此資訊完全不用來驗證要求 `Host` 標頭。
+雖然 Kestrel 根據前置詞來支援組態，例如 `http://example.com:5000`，Kestrel 大多會忽略主機名稱。 主機 `localhost` 是特殊情況，用來繫結到回送位址。 任何非明確 IP 位址的主機，會繫結至所有公用 IP 位址。 `Host` 標頭未驗證。
 
 因應措施是使用主機篩選中介軟體。 主機篩選中介軟體係由 [Microsoft.AspNetCore.HostFiltering](https://www.nuget.org/packages/Microsoft.AspNetCore.HostFiltering) 套件提供，隨附於 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 或更新版本)。 中介軟體是由 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 新增，它會呼叫 [AddHostFiltering](/dotnet/api/microsoft.aspnetcore.builder.hostfilteringservicesextensions.addhostfiltering)：
 
@@ -1021,9 +1023,9 @@ private class TlsFilterAdapter : IConnectionAdapter
 ```
 
 > [!NOTE]
-> [轉送標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)也有 [ForwardedHeadersOptions.AllowedHosts](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.allowedhosts) 選項。 在不同的案例中，轉送標頭中介軟體和主機篩選中介軟體有類似的功能。 當不保留主機標頭，卻使用反向 Proxy 伺服器或負載平衡器轉送要求時，可使用轉送標頭中介軟體設定 `AllowedHosts`。 當使用 Kestrel 作為公眾面向邊緣伺服器，或直接轉送主機標頭時，可使用主機篩選中介軟體設定 `AllowedHosts`。
+> [轉送標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)也有 [ForwardedHeadersOptions.AllowedHosts](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.allowedhosts) 選項。 在不同的案例中，轉送標頭中介軟體和主機篩選中介軟體有類似的功能。 當不保留 `Host` 標頭，卻使用反向 Proxy 伺服器或負載平衡器轉送要求時，可使用轉送標頭中介軟體設定 `AllowedHosts`。 當使用 Kestrel 作為公眾對應 Edge Server，或直接轉送 `Host` 標頭時，可使用主機篩選中介軟體設定 `AllowedHosts`。
 >
-> 如需轉送標頭中介軟體的詳細資訊，請參閱[設定 ASP.NET Core 以與 Proxy 伺服器和負載平衡器搭配運作](xref:host-and-deploy/proxy-load-balancer)。
+> 如需轉送標頭中介軟體的詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
 
 ## <a name="additional-resources"></a>其他資源
 

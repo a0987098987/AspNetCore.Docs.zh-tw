@@ -4,14 +4,14 @@ author: guardrex
 description: 探索 ASP.NET Core 應用程式的使用中和非使用中 IIS 模組，管理 IIS 模組的方式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/12/2018
+ms.date: 11/30/2018
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: b417d479d0c3f8b3e739d4c72b52247de0e88e56
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: c6a6cc9b6b3410267c6f5034f824648a1ebbe10f
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325948"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862235"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 
@@ -21,12 +21,12 @@ ms.locfileid: "49325948"
 
 ## <a name="native-modules"></a>原生模組
 
-下表指出對於向 ASP.NET Core 應用程式發出的反向 Proxy 要求有作用的原生 IIS 模組。
+下表指出可搭配 ASP.NET Core 應用程式和 ASP.NET Core 模組運作的原生 IIS 模組。
 
 | Module | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
 | --- | :---: | --- |
 | **匿名驗證**<br>`AnonymousAuthenticationModule`                                  | 是 | |
-| **基本驗證**<br>`BasicAuthenticationModule`                                          | 是 | |
+| **基本驗證**<br>`BasicAuthenticationModule`                                          | [是] | |
 | **用戶端憑證對應驗證**<br>`CertificateMappingAuthenticationModule`      | 是 | |
 | **CGI**<br>`CgiModule`                                                                           | 否  | |
 | **設定驗證**<br>`ConfigurationValidationModule`                                  | 是 | |
@@ -35,20 +35,20 @@ ms.locfileid: "49325948"
 | **預設文件**<br>`DefaultDocumentModule`                                                  | 否  | [預設檔案中介軟體](xref:fundamentals/static-files#serve-a-default-document) |
 | **摘要式驗證**<br>`DigestAuthenticationModule`                                        | 是 | |
 | **目錄瀏覽**<br>`DirectoryListingModule`                                               | 否  | [目錄瀏覽中介軟體](xref:fundamentals/static-files#enable-directory-browsing) |
-| **動態壓縮**<br>`DynamicCompressionModule`                                            | 是 | [回應壓縮中介軟體](xref:performance/response-compression) |
+| **動態壓縮**<br>`DynamicCompressionModule`                                            | [是] | [回應壓縮中介軟體](xref:performance/response-compression) |
 | **追蹤**<br>`FailedRequestsTracingModule`                                                     | 是 | [ASP.NET Core 記錄](xref:fundamentals/logging/index#tracesource-provider) |
 | **檔案快取**<br>`FileCacheModule`                                                            | 否  | [回應快取中介軟體](xref:performance/caching/middleware) |
 | **HTTP 快取**<br>`HttpCacheModule`                                                            | 否  | [回應快取中介軟體](xref:performance/caching/middleware) |
 | **HTTP 記錄**<br>`HttpLoggingModule`                                                          | 是 | [ASP.NET Core 記錄](xref:fundamentals/logging/index) |
 | **HTTP 重新導向**<br>`HttpRedirectionModule`                                                  | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
-| **IIS 用戶端憑證對應驗證**<br>`IISCertificateMappingAuthenticationModule` | [是] | |
-| **IP 及網域限制**<br>`IpRestrictionModule`                                          | [是] | |
-| **ISAPI 篩選器**<br>`IsapiFilterModule`                                                         | 是 | [中介軟體](xref:fundamentals/middleware/index) |
+| **IIS 用戶端憑證對應驗證**<br>`IISCertificateMappingAuthenticationModule` | 是 | |
+| **IP 及網域限制**<br>`IpRestrictionModule`                                          | 是 | |
+| **ISAPI 篩選器**<br>`IsapiFilterModule`                                                         | [是] | [中介軟體](xref:fundamentals/middleware/index) |
 | **ISAPI**<br>`IsapiModule`                                                                       | 是 | [中介軟體](xref:fundamentals/middleware/index) |
-| **通訊協定支援**<br>`ProtocolSupportModule`                                                  | [是] | |
-| **要求篩選**<br>`RequestFilteringModule`                                                | 是 | [URL 重寫中介軟體`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
+| **通訊協定支援**<br>`ProtocolSupportModule`                                                  | 是 | |
+| **要求篩選**<br>`RequestFilteringModule`                                                | [是] | [URL 重寫中介軟體`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **要求監視器**<br>`RequestMonitorModule`                                                    | 是 | |
-| **URL 重新寫入**&#8224;<br>`RewriteModule`                                                      | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
+| **URL 重新寫入**&#8224;<br>`RewriteModule`                                                      | [是] | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **伺服器端包含**<br>`ServerSideIncludeModule`                                            | 否  | |
 | **靜態壓縮**<br>`StaticCompressionModule`                                              | 否  | [回應壓縮中介軟體](xref:performance/response-compression) |
 | **靜態內容**<br>`StaticFileModule`                                                         | 否  | [靜態檔案中介軟體](xref:fundamentals/static-files) |

@@ -28,7 +28,7 @@ ASP.NET Core web 應用程式範本支援驗證器，但不提供支援 QRCode �
 
 ## <a name="adding-qr-codes-to-the-2fa-configuration-page"></a>新增至 2FA 的 [設定] 頁面的 QR 代碼
 
-使用這些指示*qrcode.js*從 https://davidshimjs.github.io/qrcodejs/存放庫。
+使用這些指示*qrcode.js*從 https://davidshimjs.github.io/qrcodejs/ 存放庫。
 
 * 下載[qrcode.js javascript 程式庫](https://davidshimjs.github.io/qrcodejs/)至`wwwroot\lib`專案中的資料夾。
 

@@ -20,11 +20,11 @@ ms.locfileid: "41910087"
 
 <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> 方法可讓應用程式加入或退出 ASP.NET Core MVC 2.1 或更新版本所引入的可能重大行為變更。 這些可能的重大行為變更通常在於 MVC 子系統的運作方式，以及執行階段呼叫**您的程式碼**的方式。 透過選擇加入，您可以取得最新的行為和 ASP.NET Core 的長期行為。
 
-下列程式碼會將相容性模式設定為 ASP.NET Core 2.1：
+下列程式碼會將相容性模式設定為 ASP.NET Core 2.2：
 
 [!code-csharp[Main](compatibility-version/samples/2.x/CompatibilityVersionSample/Startup.cs?name=snippet1)]
 
-建議您使用最新版本 (`CompatibilityVersion.Version_2_1`) 測試應用程式。 預計大部分的應用程式都不會使用最新版本進行重大行為變更。
+建議您使用最新版本 (`CompatibilityVersion.Version_2_2`) 測試應用程式。 預計大部分的應用程式都不會使用最新版本進行重大行為變更。
 
 呼叫 `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)` 的應用程式會受到保護，防止執行 ASP.NET Core 2.1 MVC 和更新版本的 2.x 版所引進的可能重大行為變更。 這項保護：
 
@@ -33,7 +33,7 @@ ms.locfileid: "41910087"
 
 適用於 ASP.NET Core 2.1 和更新版本的 2.x 應用程式且**不會**呼叫 `SetCompatibilityVersion` 的預設相容性為 2.0 相容性。 也就是說，不呼叫 `SetCompatibilityVersion` 等同於呼叫 `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`。
 
-下列程式碼會將相容性模式設定為 ASP.NET Core 2.1，但下列行為除外：
+下列程式碼會將相容性模式設定為 ASP.NET Core 2.2，但下列行為除外：
 
 * [AllowCombiningAuthorizeFilters](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
 * [InputFormatterExceptionPolicy](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)

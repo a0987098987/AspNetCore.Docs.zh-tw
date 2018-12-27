@@ -4,16 +4,16 @@ title: 路由和 ASP.NET Web API 中的動作選項 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: riande
-ms.date: 07/27/2012
+ms.date: 12/14/2018
 ms.assetid: bcf2d223-cb7f-411e-be05-f43e96a14015
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/routing-and-action-selection
 msc.type: authoredcontent
-ms.openlocfilehash: b4912d3ee1e13651f2a63d54d7dbfd92e00f85f8
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: ce54181996376cb5dde3b91c10c16f33b3c6a570
+ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826620"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53425168"
 ---
 <a name="routing-and-action-selection-in-aspnet-web-api"></a>路由和 ASP.NET Web API 中的動作選取
 ====================
@@ -62,7 +62,7 @@ ms.locfileid: "41826620"
 
 [!code-csharp[Main](routing-and-action-selection/samples/sample4.cs)]
 
-URI"`http://localhost/api/products`"符合此路由。 "{Category}"區段會指派預設值 [全部]。
+Uri`http://localhost/api/products/all`和`http://localhost/api/products`符合上述的路由。 在後者的 URI、 遺漏`{category}`區段會指派預設值`all`。
 
 ### <a name="route-dictionary"></a>路由字典
 
@@ -83,7 +83,7 @@ URI 路徑 「 api/產品 」 中，將會包含路由字典：
 
 - 控制站: 「 產品 」
 - 類別: 「 玩具 」
-- 識別碼:"123"
+- 識別碼："123"
 
 預設值也可以在路由範本中包含值，不會不出現在任何地方。 如果路由符合，該值會儲存在字典中。 例如: 
 
@@ -92,7 +92,7 @@ URI 路徑 「 api/產品 」 中，將會包含路由字典：
 如果 URI 的路徑是"api/root/8"，字典會包含兩個值：
 
 - 控制站: 「 客戶 」
-- 識別碼:"8"
+- 識別碼："8"
 
 ## <a name="selecting-a-controller"></a>選取控制站
 
@@ -122,7 +122,7 @@ URI 路徑 「 api/產品 」 中，將會包含路由字典：
 
 **HTTP 方法。** 架構只會選擇符合要求的 HTTP 方法，取決於下列動作：
 
-1. 您可以使用屬性中指定的 HTTP 方法： **AcceptVerbs**， **HttpDelete**， **HttpGet**， **HttpHead**， **HttpOptions**， **HttpPatch**， **HttpPost**，或**HttpPut**。
+1. 您可以使用屬性來指定 HTTP 方法：**AcceptVerbs**， **HttpDelete**， **HttpGet**， **HttpHead**， **HttpOptions**， **HttpPatch**， **HttpPost**，或**HttpPut**。
 2. 否則，如果以"Get"、"Post"、"Put"、"Delete"、"Head"、 [選項] 或 「 修補 」 開頭的控制器方法的名稱，然後依照慣例動作支援該 HTTP 方法。
 3. 如果以上皆非，方法支援 POST。
 
@@ -189,7 +189,7 @@ HTTP 要求：
 URI 比對名為"DefaultApi"的路由。 路由字典包含下列項目：
 
 - 控制站: 「 產品 」
-- 識別碼:"1"
+- 識別碼："1"
 
 路由字典不包含查詢字串參數，"version"和"details"，但這些仍然會被視為動作選取的期間。
 

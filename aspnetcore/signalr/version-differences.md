@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.date: 11/14/2018
 uid: signalr/version-differences
-ms.openlocfilehash: c9302f1c9e7cd4e62eaeaef871feb54ef26aa3ca
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: fb10d6e62ff28128e6e9e5dcef55e44f25de8ad0
+ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708409"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53425116"
 ---
 # <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>ASP.NET SignalR 及 ASP.NET Core SignalR 之間的差異
 
@@ -24,6 +24,7 @@ ASP.NET Core SignalR 與不相容用戶端或為 ASP.NET SignalR 的伺服器。
 | 伺服器 NuGet 套件 | [Microsoft.AspNet.SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) (.NET Core)<br>[Microsoft.AspNetCore.SignalR](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) (.NET Framework) |
 | 用戶端 NuGet 套件 | [Microsoft.AspNet.SignalR.Client](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[Microsoft.AspNet.SignalR.JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [Microsoft.AspNetCore.SignalR.Client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
 | 用戶端 npm 套件 | [signalr](https://www.npmjs.com/package/signalr) | [@aspnet/signalr](https://www.npmjs.com/package/@aspnet/signalr) |
+| Java 用戶端 | [GitHub 存放庫](https://github.com/SignalR/java-client)（已過時）  | Maven 套件[com.microsoft.signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
 | 伺服器應用程式類型 | ASP.NET (System.Web) 或 OWIN 自我裝載 | ASP.NET Core |
 | 支援的伺服器平台 | .NET framework 4.5 或更新版本 | .NET Framework 4.6.1 或更新版本<br>.NET core 2.1 或更新版本 |
 
@@ -165,7 +166,7 @@ ASP.NET SignalR 支援 SQL Server 和 Redis。 ASP.NET Core SignalR 支援 Azure
 
 ### <a name="aspnet-core"></a>ASP.NET Core
 
-* [Azure SignalR 服務](/azure/azure-signalr/)
+* [Azure SignalR Service](/azure/azure-signalr/)
 
 ## <a name="additional-resources"></a>其他資源
 

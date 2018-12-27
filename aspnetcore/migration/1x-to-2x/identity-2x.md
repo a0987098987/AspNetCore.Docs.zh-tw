@@ -3,14 +3,14 @@ title: 將驗證和身分識別移轉至 ASP.NET Core 2.0
 author: scottaddie
 description: 本文概述了最常見的步驟移轉 ASP.NET Core 1.x 驗證和身分識別為 ASP.NET Core 2.0。
 ms.author: scaddie
-ms.date: 10/26/2017
+ms.date: 12/18/2018
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 6d457d42ad29ca579ba74e3b097d143bd6531b72
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: d28b4af483c7ec9d6cff6db3e2f1693e765d4202
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834712"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637608"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>將驗證和身分識別移轉至 ASP.NET Core 2.0
 
@@ -283,7 +283,7 @@ services.AddAuthentication(options =>
 
 上述第一種變化不會受到 2.0 的變更。
 
-上述第二種變化會受到 2.0 的變更。 例如，您可能會允許匿名使用者到您的應用程式在 IIS 或[HTTP.sys](xref:fundamentals/servers/weblistener)層但授權的使用者，在控制器層級。 在此案例中，設定為預設配置`IISDefaults.AuthenticationScheme`中`ConfigureServices`方法*Startup.cs*:
+上述第二種變化會受到 2.0 的變更。 例如，您可能會允許匿名使用者到您的應用程式在 IIS 或[HTTP.sys](xref:fundamentals/servers/httpsys)層但授權的使用者，在控制器層級。 在此案例中，設定為預設配置`IISDefaults.AuthenticationScheme`在`Startup.ConfigureServices`方法：
 
 ```csharp
 services.AddAuthentication(IISDefaults.AuthenticationScheme);

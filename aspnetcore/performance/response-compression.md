@@ -5,14 +5,14 @@ description: 了解回應壓縮及如何使用 ASP.NET Core 應用程式中的�
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/18/2018
 uid: performance/response-compression
-ms.openlocfilehash: 2516fbb30e55990dc4ad0d92069853bc26874bc9
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 51ab51652a7b3f9b4ef97b3abbffe2e398c0bfb5
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861884"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637751"
 ---
 # <a name="response-compression-in-aspnet-core"></a>ASP.NET Core 中的回應壓縮
 
@@ -33,12 +33,12 @@ ms.locfileid: "52861884"
   * [Apache mod_deflate 模組](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
   * [Nginx 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * 直接在裝載：
-  * [HTTP.sys](xref:fundamentals/servers/httpsys)伺服器 (先前稱為[WebListener](xref:fundamentals/servers/weblistener))
-  * [Kestrel](xref:fundamentals/servers/kestrel)伺服器
+  * [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys)（先前稱為 WebListener）
+  * [Kestrel 伺服器](xref:fundamentals/servers/kestrel)
 
 ## <a name="response-compression"></a>回應壓縮
 
-通常，任何原本不壓縮的回應可以獲益於回應壓縮。 回應原本不壓縮通常包括： CSS、 JavaScript、 HTML、 XML 和 JSON。 您不應該壓縮原生壓縮的資產，例如 PNG 檔案。 如果您嘗試以進一步將壓縮的原生壓縮的回應，降低小的大小和傳輸的時間將可能會執行處理壓縮花費的時間。 不壓縮檔案小於大約 150 1000年位元組 （取決於檔案的內容及壓縮的效率）。 壓縮的小檔案的額外負荷可能會產生比未壓縮的檔案較大的壓縮的檔。
+通常，任何原本不壓縮的回應可以獲益於回應壓縮。 回應原本不壓縮通常包括：CSS、 JavaScript、 HTML、 XML 和 JSON。 您不應該壓縮原生壓縮的資產，例如 PNG 檔案。 如果您嘗試以進一步將壓縮的原生壓縮的回應，降低小的大小和傳輸的時間將可能會執行處理壓縮花費的時間。 不壓縮檔案小於大約 150 1000年位元組 （取決於檔案的內容及壓縮的效率）。 壓縮的小檔案的額外負荷可能會產生比未壓縮的檔案較大的壓縮的檔。
 
 當用戶端可以處理壓縮的內容時，用戶端必須傳送通知其功能的伺服器`Accept-Encoding`與要求的標頭。 當伺服器傳送壓縮的內容時，它必須包含資訊`Content-Encoding`標頭壓縮的回應編碼的方式。 中介軟體所支援的內容編碼表示法會顯示下表中。
 
@@ -50,7 +50,7 @@ ms.locfileid: "52861884"
 | `deflate`                       | 否                   | [DEFLATE 壓縮的資料格式](https://tools.ietf.org/html/rfc1951) |
 | `exi`                           | 否                   | [W3C 有效的 XML 交換](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | 是                  | [Gzip 檔案格式](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | 是                  | 「 沒有編碼 」 的識別項： 必須未編碼的回應。 |
+| `identity`                      | 是                  | 「 沒有編碼 」 的識別項：回應必須不會進行編碼。 |
 | `pack200-gzip`                  | 否                   | [Java 封存的網路傳輸格式](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
 | `*`                             | 是                  | 編碼不明確要求任何可用的內容 |
 
@@ -64,7 +64,7 @@ ms.locfileid: "52861884"
 | `deflate`                       | 否                   | [DEFLATE 壓縮的資料格式](https://tools.ietf.org/html/rfc1951) |
 | `exi`                           | 否                   | [W3C 有效的 XML 交換](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | [是] （預設值）        | [Gzip 檔案格式](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | 是                  | 「 沒有編碼 」 的識別項： 必須未編碼的回應。 |
+| `identity`                      | 是                  | 「 沒有編碼 」 的識別項：回應必須不會進行編碼。 |
 | `pack200-gzip`                  | 否                   | [Java 封存的網路傳輸格式](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
 | `*`                             | 是                  | 編碼不明確要求任何可用的內容 |
 
@@ -74,7 +74,7 @@ ms.locfileid: "52861884"
 
 中介軟體可讓您新增額外的壓縮提供者的自訂`Accept-Encoding`標頭值。 如需詳細資訊，請參閱 <<c0> [ 自訂提供者](#custom-providers)如下。
 
-中介軟體可以回應的品質值 (qvalue， `q`) 加權時由用戶端傳送到設定優先權的壓縮配置。 如需詳細資訊，請參閱 < [RFC 7231： 接受編碼](https://tools.ietf.org/html/rfc7231#section-5.3.4)。
+中介軟體可以回應的品質值 (qvalue， `q`) 加權時由用戶端傳送到設定優先權的壓縮配置。 如需詳細資訊，請參閱[RFC 7231:接受編碼](https://tools.ietf.org/html/rfc7231#section-5.3.4)。
 
 壓縮演算法受限於壓縮速度與壓縮的效能之間取捨。 *有效性*在此內容中是指輸出的大小在壓縮後的。 最小的大小之後，即可最*最佳*壓縮。
 
@@ -432,7 +432,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Nginx 背後時的中介軟體問題的反向 proxy
 
-當要求 proxy 處理的 Nginx`Accept-Encoding`標頭移除。 移除`Accept-Encoding`標頭會防止從壓縮回應的中介軟體。 如需詳細資訊，請參閱 < [NGINX： 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)。 此問題會追蹤[找出 nginx 傳遞壓縮 (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123)。
+當要求 proxy 處理的 Nginx`Accept-Encoding`標頭移除。 移除`Accept-Encoding`標頭會防止從壓縮回應的中介軟體。 如需詳細資訊，請參閱[NGINX:壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)。 此問題會追蹤[找出 nginx 傳遞壓縮 (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123)。
 
 ## <a name="working-with-iis-dynamic-compression"></a>使用 IIS 動態壓縮
 
@@ -464,7 +464,7 @@ public void ConfigureServices(IServiceCollection services)
 
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/index>
-* [Mozilla Developer Network： 接受編碼](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
-* [RFC 7231 節 3.1.2.1： 內容 Codings](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
-* [第 4.2.3 RFC 7230 節： Gzip 編碼](https://tools.ietf.org/html/rfc7230#section-4.2.3)
+* [Mozilla 開發人員網路：接受編碼](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
+* [RFC 7231 節 3.1.2.1:內容 Codings](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
+* [第 4.2.3 RFC 7230 節：Gzip 編碼](https://tools.ietf.org/html/rfc7230#section-4.2.3)
 * [GZIP 檔案格式規格 4.3 版](http://www.ietf.org/rfc/rfc1952.txt)

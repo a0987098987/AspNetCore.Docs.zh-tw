@@ -3,14 +3,14 @@ title: ASP.NET Core 中的金鑰儲存提供者
 author: rick-anderson
 description: 深入了解 ASP.NET Core，以及如何設定金鑰的儲存體位置中的金鑰儲存提供者。
 ms.author: riande
-ms.date: 12/06/2018
+ms.date: 12/19/2018
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: e10271d5979b503a8a842f8866a0e2a3fa040656
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: d6dabc9e4581e0891d1dd14f73e086d50b45bba4
+ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121449"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735735"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core 中的金鑰儲存提供者
 
@@ -125,6 +125,38 @@ public void ConfigureServices(IServiceCollection services)
 泛型參數`TContext`，必須繼承自[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)並[IDataProtectionKeyContext](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcore.idataprotectionkeycontext):
 
 [!code-csharp[Main](key-storage-providers/sample/MyKeysContext.cs)]
+
+建立`DataProtectionKeys`資料表。 
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+執行下列命令中的**Package Manager Console** (PMC) 視窗：
+
+```PowerShell
+Add-Migration AddDataProtectionKeys -Context MyKeysContext
+Update-Database -Context MyKeysContext
+```
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+在命令殼層中執行下列命令：
+
+```console
+dotnet ef migrations add AddDataProtectionKeys --context MyKeysContext
+dotnet ef database update --context MyKeysContext
+```
+
+---
+
+`MyKeysContext` 是`DbContext`上述的程式碼範例中所定義。 如果您使用`DbContext`使用不同的名稱，以取代您`DbContext`名稱`MyKeysContext`。
+
+`DataProtectionKeys`類別/實體會採用下表中所顯示的結構。
+
+| 屬性/欄位 | CLR 型別 | SQL 類型              |
+| -------------- | -------- | --------------------- |
+| `Id`           | `int`    | `int`PK，不是 null   |
+| `FriendlyName` | `string` | `nvarchar(MAX)`為 null |
+| `Xml`          | `string` | `nvarchar(MAX)`為 null |
 
 ::: moniker-end
 

@@ -1,23 +1,23 @@
 ---
 title: 在 ASP.NET Core 中設定 Windows 驗證
 author: scottaddie
-description: 了解如何使用 IIS Express、 IIS、 HTTP.sys，這和 WebListener 的 ASP.NET Core 中設定 Windows 驗證。
+description: 了解如何在 ASP.NET Core，使用 IIS Express、 IIS 和 HTTP.sys 中設定 Windows 驗證。
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 11/01/2018
+ms.date: 12/18/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 15e388433cc9b01e9db3e2fb56aca1ebb5ba5ba4
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: 94dff2f47b2b076cb15f8d385239179b52786678
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284407"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637816"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
 作者：[Steve Smith](https://ardalis.com) 和 [Scott Addie](https://twitter.com/Scott_Addie)
 
-可以使用 IIS 時，裝載的 ASP.NET Core 應用程式設定 Windows 驗證[HTTP.sys](xref:fundamentals/servers/httpsys)，或[WebListener](xref:fundamentals/servers/weblistener)。
+可以使用 IIS 裝載的 ASP.NET Core 應用程式設定 Windows 驗證或[HTTP.sys](xref:fundamentals/servers/httpsys)。
 
 ## <a name="windows-authentication"></a>Windows 驗證
 
@@ -55,7 +55,7 @@ Visual Studio 專案**屬性**頁面的**偵錯** 索引標籤能提供 Windows 
 
 ## <a name="enable-windows-authentication-with-iis"></a>啟用 iis 的 Windows 驗證
 
-IIS 會使用[ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)主機 ASP.NET Core 應用程式。 在 IIS 中，應用程式設定 Windows 驗證。 下列各節示範如何使用 IIS 管理員來設定 ASP.NET Core 應用程式以使用 Windows 驗證。
+IIS 會使用[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)主機 ASP.NET Core 應用程式。 在 IIS 中，應用程式設定 Windows 驗證。 下列各節示範如何使用 IIS 管理員來設定 ASP.NET Core 應用程式以使用 Windows 驗證。
 
 ### <a name="iis-configuration"></a>IIS 組態
 
@@ -89,8 +89,6 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
 
 啟動應用程式以確認 Windows 驗證正常運作。
 
-::: moniker range=">= aspnetcore-2.0"
-
 ## <a name="enable-windows-authentication-with-httpsys"></a>啟用 Windows 驗證，http.sys
 
 雖然 Kestrel 不支援 Windows 驗證，您可以使用[HTTP.sys](xref:fundamentals/servers/httpsys)支援在 Windows 上的自我裝載的案例。 下列範例會設定要搭配 Windows 驗證使用 HTTP.sys 的應用程式的 web 主機：
@@ -103,28 +101,13 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
 > [!NOTE]
 > HTTP.sys 不支援 Nano Server 1709 版或更新版本上。 若要使用 Windows 驗證和 HTTP.sys 使用 Nano Server，請使用[Server Core (microsoft/windowsservercore) 容器](https://hub.docker.com/r/microsoft/windowsservercore/)。 如需有關 Server Core 的詳細資訊，請參閱[什麼是 Windows Server 中的 Server Core 安裝選項？](/windows-server/administration/server-core/what-is-server-core)。
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-## <a name="enable-windows-authentication-with-weblistener"></a>啟用 Windows 驗證與 WebListener
-
-雖然 Kestrel 不支援 Windows 驗證，您可以使用[WebListener](xref:fundamentals/servers/weblistener)支援在 Windows 上的自我裝載的案例。 下列範例會設定應用程式的 web 主機，以搭配使用 WebListener 與 Windows 驗證：
-
-[!code-csharp[](windowsauth/sample/Program1x.cs?highlight=6-11)]
-
-> [!NOTE]
-> WebListener 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerberos 和 WebListener 不支援使用者模式驗證。 必須使用電腦帳戶來解密 Kerberos 權杖/票證，該權杖/票證取自 Active Directory，並由用戶端將其轉送至伺服器來驗證使用者。 請註冊主機的服務主體名稱 (SPN)，而非應用程式的使用者。
-
-::: moniker-end
-
 ## <a name="work-with-windows-authentication"></a>使用 Windows 驗證
 
 匿名存取的設定狀態決定的方式`[Authorize]`和`[AllowAnonymous]`應用程式中使用屬性。 下列兩節會說明如何處理不允許和允許設定狀態的匿名存取。
 
 ### <a name="disallow-anonymous-access"></a>不允許匿名存取
 
-當您啟用 Windows 驗證，並已停用匿名存取，`[Authorize]`和`[AllowAnonymous]`屬性沒有任何作用。 如果 IIS 網站 （或 HTTP.sys 或 WebListener 伺服器） 設定為不允許匿名存取，要求永遠不會到達您的應用程式。 基於這個理由，`[AllowAnonymous]`屬性不適用。
+當您啟用 Windows 驗證，並已停用匿名存取，`[Authorize]`和`[AllowAnonymous]`屬性沒有任何作用。 如果 IIS 網站 （或 HTTP.sys） 設定為不允許匿名存取，要求永遠不會到達您的應用程式。 基於這個理由，`[AllowAnonymous]`屬性不適用。
 
 ### <a name="allow-anonymous-access"></a>允許匿名存取
 

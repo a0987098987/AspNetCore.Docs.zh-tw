@@ -3,15 +3,15 @@ title: 建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 author: rick-anderson
 description: 了解如何使用受保護的授權的使用者資料建立 Razor 頁面應用程式。 包含 HTTPS、 驗證、 安全性、 ASP.NET Core 身分識別。
 ms.author: riande
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.custom: seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: d49ee7779b425d625b81c8a65694121c616bfba6
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: fa82d3d99f4e4b7ad17ed385fb7c029745797e8d
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121631"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637829"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -57,15 +57,15 @@ ms.locfileid: "53121631"
 
 系統管理員將擁有所有權限。 她可以讀取/編輯/刪除的任何連絡人，並變更連絡人的狀態。
 
-藉由建立應用程式[scaffolding](xref:tutorials/first-mvc-app-xplat/adding-model#scaffold-the-moviecontroller)下列`Contact`模型：
+藉由建立應用程式[scaffolding](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model)下列`Contact`模型：
 
 [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet)]
 
 此範例包含下列 「 授權 」 處理常式：
 
-* `ContactIsOwnerAuthorizationHandler`： 可確保使用者只能編輯其資料。
-* `ContactManagerAuthorizationHandler`： 允許管理員核准或拒絕連絡人。
-* `ContactAdministratorsAuthorizationHandler`： 可讓系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。
+* `ContactIsOwnerAuthorizationHandler`：可確保使用者只能編輯其資料。
+* `ContactManagerAuthorizationHandler`：允許經理核准或拒絕連絡人。
+* `ContactAdministratorsAuthorizationHandler`：可讓系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -284,7 +284,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 如果您尚未設定植入的使用者帳戶的密碼，使用[Secret Manager 工具](xref:security/app-secrets#secret-manager)設定密碼：
 
-* 選擇強式密碼： 使用八個或多個字元和至少一個大寫字元、 數字，則符號。 比方說，`Passw0rd!`符合強式密碼需求。
+* 選擇強式密碼：使用八個或多個字元和至少一個大寫字元、 數字和符號。 比方說，`Passw0rd!`符合強式密碼需求。
 * 執行下列命令，從專案的資料夾，其中`<PW>`的密碼：
 
   ```console

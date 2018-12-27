@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 04/25/2018
 uid: signalr/introduction
-ms.openlocfilehash: 2fff24609caf7592bad763a077288990a29617aa
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: da18837c690d2182589db5f486ae74e537ade931
+ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342545"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53425142"
 ---
 # <a name="introduction-to-aspnet-core-signalr"></a>ASP.NET Core SignalR 簡介
 
@@ -36,7 +36,7 @@ SignalR 提供的 API 來建立伺服器到用戶端[遠端程序呼叫 (RPC)](h
 * 將訊息傳送至特定的用戶端或群組的用戶端。
 * 可調整來處理增加的流量。
 
-來源裝載於[SignalR GitHub 上的存放庫](https://github.com/aspnet/signalr)。
+來源裝載於[SignalR GitHub 上的存放庫](https://github.com/aspnet/AspNetCore/tree/master/src/SignalR)。
 
 ## <a name="transports"></a>傳輸
 

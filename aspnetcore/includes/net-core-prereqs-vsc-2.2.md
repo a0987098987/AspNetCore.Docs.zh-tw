@@ -1,3 +1,3 @@
-* [<span data-ttu-id="adf9b-101">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="adf9b-101">Visual Studio Code</span></span>](https://code.visualstudio.com/download)
-* [<span data-ttu-id="adf9b-102">.NET core SDK 2.2 或更新版本</span><span class="sxs-lookup"><span data-stu-id="adf9b-102">.NET Core SDK 2.2 or later</span></span>](https://www.microsoft.com/net/download/all)
-* [<span data-ttu-id="adf9b-103">C#如需 Visual Studio Code 版本 1.17.1 或更新版本</span><span class="sxs-lookup"><span data-stu-id="adf9b-103">C# for Visual Studio Code version 1.17.1 or later</span></span>](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [<span data-ttu-id="fdefb-101">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="fdefb-101">Visual Studio Code</span></span>](https://code.visualstudio.com/download)
+* [<span data-ttu-id="fdefb-102">.NET Core SDK 2.2 或更新版本</span><span class="sxs-lookup"><span data-stu-id="fdefb-102">.NET Core SDK 2.2 or later</span></span>](https://www.microsoft.com/net/download/all)
+* [<span data-ttu-id="fdefb-103">適用於 Visual Studio Code 1.17.1 版或更新版本的 C#</span><span class="sxs-lookup"><span data-stu-id="fdefb-103">C# for Visual Studio Code version 1.17.1 or later</span></span>](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)

@@ -5,14 +5,14 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/10/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: b6ff2124aac7e866f630cf359cbd188e88906844
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: c70363c9cff94a682553745aba7fd4e396721f4e
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284691"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637673"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -42,7 +42,7 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 [Azure Web 應用程式沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
 探索 Azure 應用程式平台強制實施的 Azure App Service 執行階段執行限制。
 
-## <a name="application-configuration"></a>應用程式設定
+## <a name="application-configuration"></a>應用程式組態
 
 ### <a name="platform"></a>Platform
 
@@ -101,7 +101,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 了解如何診斷使用 ASP.NET Core 應用程式部署 Azure App Service 的問題。
 
 <xref:host-and-deploy/azure-iis-errors-reference>  
-了解託管於 Azure App Service/IIS 之應用程式的常見部署設定錯誤，及疑難排解建議。
+了解託管於 Azure App Service/IIS 之應用程式的常見部署組態錯誤，及疑難排解建議。
 
 ## <a name="data-protection-key-ring-and-deployment-slots"></a>資料保護金鑰環及部署位置
 
@@ -164,7 +164,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 **搭配使用預覽網站延伸模組與 ARM 範本**
 
-如果您使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站延伸模組新增至 Web 應用程式。 例如: 
+如果您使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站延伸模組新增至 Web 應用程式。 例如：
 
 [!code-json[](index/sample/arm.json?highlight=2)]
 
@@ -226,7 +226,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 Windows Server 上的 Azure App Service 使用 [Internet Information Services (IIS)](https://www.iis.net/)。 有關基礎 IIS 技術的主題如下：
 
 * <xref:host-and-deploy/iis/index>
-* <xref:fundamentals/servers/aspnet-core-module>
+* <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
 * [Microsoft TechNet 文件庫：Windows Server](/windows-server/windows-server-versions)

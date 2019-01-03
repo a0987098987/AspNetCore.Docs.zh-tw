@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何在 Windows Server Internet Information Services (IIS) 上裝載 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/11/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 175df4ab633c1d84de645208cd97e8a675fb169c
-ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
+ms.openlocfilehash: 4356d986731f915c2e76a4c4863f951572820de0
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335386"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637870"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.locfileid: "53335386"
 * Windows 7 或更新版本
 * Windows Server 2008 R2 或更新版本
 
-[HTTP.sys 伺服器](xref:fundamentals/servers/httpsys) (先前稱為 [WebListener](xref:fundamentals/servers/weblistener)) 不適用搭配 IIS 的反向 Proxy 設定。 請使用 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)。
+[HTTP.sys 伺服器](xref:fundamentals/servers/httpsys) (先前稱為 WebListener) 不適用搭配 IIS 的反向 Proxy 設定。 請使用 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)。
 
 如需在 Azure 中裝載的資訊，請參閱 <xref:host-and-deploy/azure-apps/index>。
 
@@ -74,7 +74,7 @@ public static IWebHost BuildWebHost(string[] args) =>
 
 **跨處理序裝載模型**
 
-若是使用 IIS 的跨處理序裝載，`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
+若是使用 IIS 的跨處理序裝載，`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
 
 ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `CreateDefaultBuilder` 會呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> 方法。 `UseIISIntegration` 會將 Kestrel 設定為在位於 localhost IP 位址 (`127.0.0.1`) 的動態連接埠上接聽。 若動態連接埠是 1234，Kestrel 會在 `127.0.0.1:1234` 接聽。 此設定會取代由下列項目提供的其他 URL 設定：
 
@@ -84,13 +84,13 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Cr
 
 在使用模組時不需要呼叫 `UseUrls` 或 Kestrel 的 `Listen` API。 若呼叫 `UseUrls` 或 `Listen`，Kestrel 只會接聽未使用 IIS 執行應用程式時指定的連接埠。
 
-如需處理序內和處理序外裝載模型的詳細資訊，請參閱 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)及 [ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)。
+如需處理序內和處理序外裝載模型的詳細資訊，請參閱 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)及 [ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)。
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
-`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
+`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
 
 ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `CreateDefaultBuilder` 會呼叫 [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) 方法。 `UseIISIntegration` 會將 Kestrel 設定為在位於 localhost IP 位址 (`127.0.0.1`) 的動態連接埠上接聽。 若動態連接埠是 1234，Kestrel 會在 `127.0.0.1:1234` 接聽。 此設定會取代由下列項目提供的其他 URL 設定：
 
@@ -104,7 +104,7 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Cr
 
 ::: moniker range="= aspnetcore-2.0"
 
-`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
+`CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設為網頁伺服器，並設定 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)的基底路徑與連接埠來啟用 IIS 整合。
 
 ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `CreateDefaultBuilder` 會呼叫 [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) 方法。 `UseIISIntegration` 會將 Kestrel 設定為在位於 localhost IP 位址 (`localhost`) 的動態連接埠上接聽。 若動態連接埠是 1234，Kestrel 會在 `localhost:1234` 接聽。 此設定會取代由下列項目提供的其他 URL 設定：
 
@@ -187,13 +187,13 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="webconfig-file"></a>web.config 檔案
 
-*web.config* 檔案是用來設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 發佈專案時，由 MSBuild 目標 (`_TransformWebConfig`) 處理 *web.config* 檔案的建立、轉換及發佈。 此目標存在於 Web SDK 目標 (`Microsoft.NET.Sdk.Web`)。 SDK 設定在專案檔的頂端：
+*web.config* 檔案是用來設定 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)。 發佈專案時，由 MSBuild 目標 (`_TransformWebConfig`) 處理 *web.config* 檔案的建立、轉換及發佈。 此目標存在於 Web SDK 目標 (`Microsoft.NET.Sdk.Web`)。 SDK 設定在專案檔的頂端：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
 ```
 
-如果專案中沒有 *web.config* 檔案，則系統會使用正確的 *processPath* 和 *arguments* 建立該檔案以設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，並將該檔案移至[已發行的輸出](xref:host-and-deploy/directory-structure)。
+如果專案中沒有 *web.config* 檔案，則系統會使用正確的 *processPath* 和 *arguments* 建立該檔案以設定 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)，並將該檔案移至[已發行的輸出](xref:host-and-deploy/directory-structure)。
 
 如果 *web.config* 檔案存在於專案中，則系統會使用正確的 *processPath* 和 *arguments* 來轉換該檔案以設定 ASP.NET Core 模組，然後將它移至已發行的輸出。 轉換不會修改檔案中的 IIS 組態設定。
 
@@ -265,7 +265,7 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="install-the-net-core-hosting-bundle"></a>安裝 .NET Core 裝載套件組合
 
-在主控系統上安裝 .NET Core 裝載套件組合。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core 裝載套件組合。
+在主控系統上安裝 .NET Core 裝載套件組合。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core 裝載套件組合。
 
 > [!IMPORTANT]
 > 若裝載套件組合在 IIS 之前安裝，則必須對該套件組合安裝進行修復。 請在安裝 IIS 之後，再次執行裝載套件組合安裝程式。
@@ -335,9 +335,9 @@ services.Configure<IISOptions>(options =>
 
     ASP.NET Core 會在不同的處理序中執行，並管理執行階段。 ASP.NET Core 不依賴載入桌面 CLR。 將 [.NET CLR 版本] 設為 [沒有受控碼] 是選擇性的。
 
-1. *ASP.NET Core 2.2 或更新版本*：對於使用[同處理序主控模型](xref:fundamentals/servers/aspnet-core-module#in-process-hosting-model)的 64 位元 (x64) [自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)，會停用 32 位元 (x86) 處理序的應用程式集區。
+1. *ASP.NET Core 2.2 或更新版本*：對於使用[同處理序主控模型](xref:fundamentals/servers/index#in-process-hosting-model)的 64 位元 (x64) [自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)，會停用 32 位元 (x86) 處理序的應用程式集區。
 
-   在 IIS 管理員之 [應用程式集區] 的[動作]資訊看板中，選取 [設定應用程式集區預設值] 或 [進階設定]。 找到 [啟用 32 位元應用程式]，然後將其值設定為 `False`。 此設定不會影響為[處理程序外裝載](xref:fundamentals/servers/aspnet-core-module#out-of-process-hosting-model)部署的應用程式。
+   在 IIS 管理員之 [應用程式集區] 的[動作]資訊看板中，選取 [設定應用程式集區預設值] 或 [進階設定]。 找到 [啟用 32 位元應用程式]，然後將其值設定為 `False`。 此設定不會影響為[處理程序外裝載](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model)部署的應用程式。
 
 1. 確認處理序模型身分識別具有適當的權限。
 
@@ -489,7 +489,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
-如需有關同處理序裝載模型與如何設定 ASP.NET Core 模組的詳細資訊，請參閱 <xref:fundamentals/servers/aspnet-core-module> 與 <xref:host-and-deploy/aspnet-core-module>。
+如需有關同處理序裝載模型與如何設定 ASP.NET Core 模組的詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module> 與 <xref:host-and-deploy/aspnet-core-module>。
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
@@ -579,7 +579,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 針對建立 HTTP/2 連線時的同處理序部署，[HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) 會回報 `HTTP/2`。 針對建立 HTTP/2 連線時的跨處理序部署，[HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) 會回報 `HTTP/1.1`。
 
-如需有關同處理序和跨處理序主控模型的詳細資訊，請參閱 <xref:fundamentals/servers/aspnet-core-module> 主題和 <xref:host-and-deploy/aspnet-core-module>。
+如需有關同處理序和跨處理序主控模型的詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module> 主題和 <xref:host-and-deploy/aspnet-core-module>。
 
 ::: moniker-end
 
@@ -607,7 +607,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 [.NET Core 應用程式部署](/dotnet/core/deploying/)
 
 了解 ASP.NET Core 模組如何讓 Kestrel Web 伺服器將 IIS 或 IIS Express 作為反向 Proxy 伺服器使用。  
-[ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)
 
 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。  
 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)

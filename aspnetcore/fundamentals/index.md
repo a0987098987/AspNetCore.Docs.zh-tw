@@ -4,14 +4,14 @@ author: rick-anderson
 description: 探索 ASP.NET Core 應用程式的基本建置概念。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/18/2018
 uid: fundamentals/index
-ms.openlocfilehash: 8bd447632f915cadcc5199ec50b292ad27f6c3ba
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 11dc6336ae7667038983c967f28232bef325f5bb
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861580"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637764"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -41,7 +41,7 @@ ASP.NET Core 應用程式是主控台應用程式，可使用其 `Program.Main` 
 * 載入 [.NET Core 執行階段](https://github.com/dotnet/coreclr)。
 * 使用第一個命令列引數做為包含進入點 (`Main`) 之受控二進位檔案的路徑，並開始執行程式碼。
 
-`Main` 方法會使用 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>，這會遵循[建立器模式](https://wikipedia.org/wiki/Builder_pattern)來建立 Web 應用程式主機。 產生器具有定義網頁伺服器 (例如，<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>) 和啟動類別 (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*>) 的方法。 在上述範例中，會使用 [Kestrel](xref:fundamentals/servers/kestrel) 網頁伺服器。 其他網頁伺服器 (例如 [WebListener](xref:fundamentals/servers/weblistener)) 則可透過叫用適當的擴充方法來使用。 `UseStartup` 將於下一節進一步說明。
+`Main` 方法會使用 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>，這會遵循[建立器模式](https://wikipedia.org/wiki/Builder_pattern)來建立 Web 應用程式主機。 產生器具有定義網頁伺服器 (例如，<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>) 和啟動類別 (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*>) 的方法。 在上述範例中，會使用 [Kestrel](xref:fundamentals/servers/kestrel) 網頁伺服器。 其他網頁伺服器 (例如 [HTTP.sys](xref:fundamentals/servers/httpsys)) 則可透過叫用適當的擴充方法來使用。 `UseStartup`啟動[章節會進一步說明 ](#startup)。
 
 `WebHostBuilder` 提供許多選擇性方法，包括用來裝載於 IIS 和 IIS Express 中的 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>，以及用於指定根內容目錄的 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseContentRoot*>。 <xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder.Build*> 與 <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*> 方法則會建置 <xref:Microsoft.AspNetCore.Hosting.IWebHost> 物件，裝載應用程式並開始接聽 HTTP 要求。
 
@@ -140,7 +140,7 @@ ASP.NET Core 裝載模型不會直接接聽要求。 裝載模型需透過 HTTP 
 ASP.NET Core 隨附下列伺服器實作：
 
 * [Kestrel](xref:fundamentals/servers/kestrel) 伺服器是受控、跨平台的網路伺服器。 Kestrel 通常會使用 [IIS](https://www.iis.net/)在反向 Proxy 設定中執行。 Kestrel 也可在 ASP.NET Core 2.0 或更新版本中作為直接向網際網路公開的公眾 Edge Server 執行。
-* IIS HTTP 伺服器 (`IISHttpServer`) 是 [IIS 同處理序伺服器](xref:fundamentals/servers/aspnet-core-module#in-process-hosting-model)。
+* IIS HTTP 伺服器 (`IISHttpServer`) 是 IIS 的[同處理序伺服器](xref:fundamentals/servers/index#in-process-hosting-model)。
 * [HTTP.sys](xref:fundamentals/servers/httpsys) 伺服器是 Windows 上的 ASP.NET Core 網頁伺服器。
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)

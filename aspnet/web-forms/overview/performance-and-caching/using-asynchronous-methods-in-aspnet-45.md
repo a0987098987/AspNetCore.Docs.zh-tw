@@ -4,16 +4,16 @@ title: 使用 ASP.NET 4.5 中的非同步方法 |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置非同步 ASP.NET Web Forms 應用程式使用 Visual Studio Express 2012 for Web，也就是一個免費的基本概念...
 ms.author: riande
-ms.date: 06/06/2012
+ms.date: 01/02/2019
 ms.assetid: a585c9a2-7c8e-478b-9706-90f3739c50d1
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: 9a3c9fab4932c3bc85733a912cf1d1eaaecc1ab7
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: c36749f82051ee8965035eca9c2e4e57a5dbd616
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225482"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997340"
 ---
 <a name="using-asynchronous-methods-in-aspnet-45"></a>使用 ASP.NET 4.5 中的非同步方法
 ====================
@@ -38,7 +38,7 @@ ms.locfileid: "51225482"
 
 如需有關 using [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx)並[非同步](https://msdn.microsoft.com/library/hh156513(VS.110).aspx)關鍵字和[工作](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx)命名空間，請參閱下列參考。
 
-- [.NET 中的技術白皮書： 非同步](https://go.microsoft.com/fwlink/?LinkId=204844)
+- [白皮書：在.NET 中的非同步功能](https://go.microsoft.com/fwlink/?LinkId=204844)
 - [Async/Await 常見問題集](https://blogs.msdn.com/b/pfxteam/archive/2012/04/12/10293335.aspx)
 - [Visual Studio 非同步程式設計](https://msdn.microsoft.com/vstudio/gg316360)
 
@@ -68,7 +68,7 @@ ms.locfileid: "51225482"
 - 作業會受限於網路或 I/o-bound 而不是 CPU 繫結。
 - 平行處理原則是比簡化程式碼更重要的。
 - 您想要提供一個機制，讓使用者取消長時間執行的要求。
-- 當切換出執行緒的優點加權內容切換的成本。 一般情況下，您應該讓方法非同步如果在不執行任何工作時封鎖 ASP.NET 要求執行緒的同步方法。 藉由呼叫非同步，ASP.NET 要求執行緒不會封鎖其等候完成的 web 服務要求時不任何工作。
+- 當切換執行緒的優點超過內容切換的成本。 一般情況下，您應該讓方法非同步如果在不執行任何工作時封鎖 ASP.NET 要求執行緒的同步方法。 藉由呼叫非同步，ASP.NET 要求執行緒不會封鎖其等候完成的 web 服務要求時不任何工作。
 - 測試顯示出封鎖作業是效能瓶頸的站台和 IIS 可以服務多個要求，使用非同步方法對這些封鎖呼叫。
 
   可下載的範例示範如何有效地使用非同步方法。 所提供的範例被設計成提供簡單的示範，ASP.NET 4.5 中非同步程式設計。 此範例的目的不是要在 ASP.NET 中的非同步程式設計的參考架構。 範例程式會呼叫[ASP.NET Web API](../../../web-api/index.md)方法會接著呼叫[Task.Delay](https://msdn.microsoft.com/library/hh139096(VS.110).aspx)以模擬長時間執行的 web 服務呼叫。 大部分的生產應用程式不會顯示使用非同步方法可帶來明顯好處。   
@@ -79,9 +79,9 @@ ms.locfileid: "51225482"
 
 您可以下載範例應用程式，從[ https://github.com/RickAndMSFT/Async-ASP.NET ](https://github.com/RickAndMSFT/Async-ASP.NET)上[GitHub](https://github.com/)站台。 儲存機制是由三個專案所組成：
 
-- *WebAppAsync*： 使用 Web API 的 ASP.NET Web Form 專案**WebAPIpwg**服務。 大部分的程式碼針對本教學課程是從這個專案。
-- *WebAPIpgw*： 實作的 ASP.NET MVC 4 Web API 專案`Products, Gizmos and Widgets`控制站。 它提供的資料*WebAppAsync*專案並*Mvc4Async*專案。
-- *Mvc4Async*： 包含另一個教學課程中使用的程式碼的 ASP.NET MVC 4 專案。 它會呼叫 Web API **WebAPIpwg**服務。
+- *WebAppAsync*:ASP.NET Web Form 專案和使用 Web API **WebAPIpwg**服務。 大部分的程式碼針對本教學課程是從這個專案。
+- *WebAPIpgw*:實作 ASP.NET MVC 4 Web API 專案`Products, Gizmos and Widgets`控制站。 它提供的資料*WebAppAsync*專案並*Mvc4Async*專案。
+- *Mvc4Async*:ASP.NET MVC 4 專案包含另一個教學課程中使用的程式碼。 它會呼叫 Web API **WebAPIpwg**服務。
 
 ## <a id="GizmosSynch"></a>  Gizmo 同步頁面
 

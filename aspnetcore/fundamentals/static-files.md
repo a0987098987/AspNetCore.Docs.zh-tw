@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何在 ASP.NET Core Web 應用程式中提供靜態檔案、保護其安全，並設定靜態檔案裝載中介軟體的行為。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/18/2018
+ms.date: 12/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: fb92141b1864574242b29ecc386024ce72a6be87
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 4c08d65cc1f658ef08a9b4b362ac7f8a3a243557
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570122"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637777"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -246,7 +246,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 * 使用 `UseDirectoryBrowser` 和 `UseStaticFiles` 公開內容的 URL 可能有區分大小寫，並受限於基礎檔案系統的字元限制。 例如，Windows 不區分大小寫&mdash;macOS 和 Linux 則區分大小寫。
 
-* 裝載於 IIS 中的 ASP.NET Core 應用程式會使用 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，將所有要求轉送給應用程式 (包括靜態檔案要求)， 而不會使用 IIS 靜態檔案處理常式。 因此，上述處理常式不可能在模組處理要求之前處理要求。
+* 裝載於 IIS 中的 ASP.NET Core 應用程式會使用 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)，將所有要求轉送給應用程式 (包括靜態檔案要求)， 而不會使用 IIS 靜態檔案處理常式。 因此，上述處理常式不可能在模組處理要求之前處理要求。
 
 * 請完成 IIS 管理員中的下列步驟，以移除伺服器或網站層級的 IIS 靜態檔案處理常式：
     1. 巡覽至 [模組] 功能。

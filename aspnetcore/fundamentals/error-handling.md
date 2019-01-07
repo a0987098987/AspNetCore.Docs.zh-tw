@@ -4,14 +4,14 @@ author: tdykstra
 description: 了解如何處理 ASP.NET Core 應用程式中的錯誤。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/01/2018
+ms.date: 12/18/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: fbc86d36f66e71e6ebd84f536148fba2e3c452d8
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: f4358cba81d2aa47a26f90a8d5f4e77310bcad00
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570057"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637634"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>處理 ASP.NET Core 中的錯誤
 
@@ -226,7 +226,7 @@ public class ErrorModel : PageModel
 
 如果錯誤是在主機位址/連接埠繫結之後發生，則裝載層只會顯示擷取到的啟動錯誤的錯誤頁面。 在 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器上執行應用程式時，如果繫結因為任何原因失敗，裝載層會記錄 dotnet 處理序損毀的重大例外狀況，但不會顯示任何錯誤頁面。
 
-在 [IIS](/iis) 或 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 上執行時，如果無法啟動處理序，[模組](xref:fundamentals/servers/aspnet-core-module)會傳回 *502.5 處理序失敗*。 如需在裝載於 IIS 上時針對啟動問題進行疑難排解的資訊，請參閱 <xref:host-and-deploy/iis/troubleshoot>。 如需使用 Azure App Service 針對啟動問題進行疑難排解的資訊，請參閱 <xref:host-and-deploy/azure-apps/troubleshoot>。
+在 [IIS](/iis) 或 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 上執行時，如果無法啟動處理序，[模組](xref:host-and-deploy/aspnet-core-module)會傳回 *502.5 處理序失敗*。 如需在裝載於 IIS 上時針對啟動問題進行疑難排解的資訊，請參閱 <xref:host-and-deploy/iis/troubleshoot>。 如需使用 Azure App Service 針對啟動問題進行疑難排解的資訊，請參閱 <xref:host-and-deploy/azure-apps/troubleshoot>。
 
 ## <a name="aspnet-core-mvc-error-handling"></a>ASP.NET Core MVC 錯誤處理
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: seodec18
 ms.date: 09/11/2018
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: b75fbea330e48075c4a2789454e973d4c56ffa53
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: eb216bdac7dd029c3d985f2edd9e70eb91f42883
+ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121176"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335336"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>在 ASP.NET 4.x 和 ASP.NET Core 之間進行選擇
 
@@ -62,6 +62,3 @@ ASP.NET 4.x 是一個成熟的架構，其提供在 Windows 上建置企業級�
 * [ASP.NET 簡介](/aspnet/overview)
 * [ASP.NET Core 簡介](xref:index)
 * <xref:host-and-deploy/azure-apps/index>
-
-> [!NOTE]
-> 我們正為規劃中的 ASP.NET Core 目錄新結構測試其可用性。  如果您有幾分鐘的時間可以嘗試在目前或建議的目錄中尋找 7 個不同主題，請[按一下這裡參加研究](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82)。

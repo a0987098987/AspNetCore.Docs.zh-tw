@@ -2,125 +2,170 @@
 title: 在 ASP.NET Core 中設定 Windows 驗證
 author: scottaddie
 description: 了解如何在 ASP.NET Core，使用 IIS Express、 IIS 和 HTTP.sys 中設定 Windows 驗證。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 12/18/2018
+ms.date: 12/23/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 94dff2f47b2b076cb15f8d385239179b52786678
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 64178c8fce71445fc6a728a236d811484b21e3e0
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637816"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099256"
 ---
-# <a name="configure-windows-authentication-in-aspnet-core"></a><span data-ttu-id="fd6a3-103">在 ASP.NET Core 中設定 Windows 驗證</span><span class="sxs-lookup"><span data-stu-id="fd6a3-103">Configure Windows Authentication in ASP.NET Core</span></span>
+# <a name="configure-windows-authentication-in-aspnet-core"></a><span data-ttu-id="7ffb0-103">在 ASP.NET Core 中設定 Windows 驗證</span><span class="sxs-lookup"><span data-stu-id="7ffb0-103">Configure Windows Authentication in ASP.NET Core</span></span>
 
-<span data-ttu-id="fd6a3-104">作者：[Steve Smith](https://ardalis.com) 和 [Scott Addie](https://twitter.com/Scott_Addie)</span><span class="sxs-lookup"><span data-stu-id="fd6a3-104">By [Steve Smith](https://ardalis.com) and [Scott Addie](https://twitter.com/Scott_Addie)</span></span>
+<span data-ttu-id="7ffb0-104">藉由[Scott Addie](https://twitter.com/Scott_Addie)和[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="7ffb0-104">By [Scott Addie](https://twitter.com/Scott_Addie) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="fd6a3-105">可以使用 IIS 裝載的 ASP.NET Core 應用程式設定 Windows 驗證或[HTTP.sys](xref:fundamentals/servers/httpsys)。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-105">Windows Authentication can be configured for ASP.NET Core apps hosted with IIS or [HTTP.sys](xref:fundamentals/servers/httpsys).</span></span>
+<span data-ttu-id="7ffb0-105">[Windows 驗證](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)可以設定與裝載的 ASP.NET Core 應用程式[IIS](xref:host-and-deploy/iis/index)或是[HTTP.sys](xref:fundamentals/servers/httpsys)。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-105">[Windows Authentication](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) can be configured for ASP.NET Core apps hosted with [IIS](xref:host-and-deploy/iis/index) or [HTTP.sys](xref:fundamentals/servers/httpsys).</span></span>
 
-## <a name="windows-authentication"></a><span data-ttu-id="fd6a3-106">Windows 驗證</span><span class="sxs-lookup"><span data-stu-id="fd6a3-106">Windows Authentication</span></span>
+<span data-ttu-id="7ffb0-106">Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使用者。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-106">Windows Authentication relies on the operating system to authenticate users of ASP.NET Core apps.</span></span> <span data-ttu-id="7ffb0-107">使用 Active Directory 網域身分識別或 Windows 帳戶，來識別使用者在公司網路中執行您的伺服器時，您可以使用 Windows 驗證。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-107">You can use Windows Authentication when your server runs on a corporate network using Active Directory domain identities or Windows accounts to identify users.</span></span> <span data-ttu-id="7ffb0-108">Windows 驗證最適合內部網路的環境，其中使用者、 用戶端應用程式，以及網頁伺服器都屬於相同 Windows 網域。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-108">Windows Authentication is best suited to intranet environments where users, client apps, and web servers belong to the same Windows domain.</span></span>
 
-<span data-ttu-id="fd6a3-107">Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使用者。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-107">Windows Authentication relies on the operating system to authenticate users of ASP.NET Core apps.</span></span> <span data-ttu-id="fd6a3-108">使用 Active Directory 網域身分識別或其他 Windows 帳戶來識別使用者在公司網路中執行您的伺服器時，您可以使用 Windows 驗證。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-108">You can use Windows Authentication when your server runs on a corporate network using Active Directory domain identities or other Windows accounts to identify users.</span></span> <span data-ttu-id="fd6a3-109">Windows 驗證最適合內部網路環境中使用者、 用戶端應用程式，以及 web 伺服器屬於相同 Windows 網域。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-109">Windows Authentication is best suited to intranet environments in which users, client applications, and web servers belong to the same Windows domain.</span></span>
+## <a name="enable-windows-authentication-in-an-aspnet-core-app"></a><span data-ttu-id="7ffb0-109">啟用 ASP.NET Core 應用程式中的 Windows 驗證</span><span class="sxs-lookup"><span data-stu-id="7ffb0-109">Enable Windows Authentication in an ASP.NET Core app</span></span>
 
-<span data-ttu-id="fd6a3-110">[深入了解 Windows 驗證並將它安裝為 IIS](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-110">[Learn more about Windows Authentication and installing it for IIS](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/).</span></span>
+<span data-ttu-id="7ffb0-110">**Web 應用程式**可透過 Visual Studio 或.NET Core CLI 的範本可以設定為支援 Windows 驗證。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-110">The **Web Application** template available via Visual Studio or the .NET Core CLI can be configured to support Windows Authentication.</span></span>
 
-## <a name="enable-windows-authentication-in-an-aspnet-core-app"></a><span data-ttu-id="fd6a3-111">啟用 ASP.NET Core 應用程式中的 Windows 驗證</span><span class="sxs-lookup"><span data-stu-id="fd6a3-111">Enable Windows Authentication in an ASP.NET Core app</span></span>
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="7ffb0-111">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="7ffb0-111">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="fd6a3-112">若要支援 Windows 驗證，可以設定 Visual Studio Web 應用程式範本。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-112">The Visual Studio Web Application template can be configured to support Windows Authentication.</span></span>
+### <a name="use-the-windows-authentication-app-template-for-a-new-project"></a><span data-ttu-id="7ffb0-112">新的專案中使用 Windows 驗證應用程式範本</span><span class="sxs-lookup"><span data-stu-id="7ffb0-112">Use the Windows Authentication app template for a new project</span></span>
 
-### <a name="use-the-windows-authentication-app-template"></a><span data-ttu-id="fd6a3-113">使用 Windows 驗證應用程式範本</span><span class="sxs-lookup"><span data-stu-id="fd6a3-113">Use the Windows Authentication app template</span></span>
+<span data-ttu-id="7ffb0-113">在 Visual Studio 中：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-113">In Visual Studio:</span></span>
 
-<span data-ttu-id="fd6a3-114">在 Visual Studio 中：</span><span class="sxs-lookup"><span data-stu-id="fd6a3-114">In Visual Studio:</span></span>
+1. <span data-ttu-id="7ffb0-114">建立新**ASP.NET Core Web 應用程式**。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-114">Create a new **ASP.NET Core Web Application**.</span></span>
+1. <span data-ttu-id="7ffb0-115">選取  **Web 應用程式**從範本清單。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-115">Select **Web Application** from the list of templates.</span></span>
+1. <span data-ttu-id="7ffb0-116">選取 **變更驗證**按鈕，然後選取**Windows 驗證**。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-116">Select the **Change Authentication** button and select **Windows Authentication**.</span></span>
 
-1. <span data-ttu-id="fd6a3-115">建立新的 ASP.NET Core Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-115">Create a new ASP.NET Core Web Application.</span></span>
-1. <span data-ttu-id="fd6a3-116">從範本清單中選取 Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-116">Select Web Application from the list of templates.</span></span>
-1. <span data-ttu-id="fd6a3-117">選取 **變更驗證**按鈕，然後選取**Windows 驗證**。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-117">Select the **Change Authentication** button and select **Windows Authentication**.</span></span>
+<span data-ttu-id="7ffb0-117">執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-117">Run the app.</span></span> <span data-ttu-id="7ffb0-118">使用者名稱會出現在呈現的應用程式使用者介面。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-118">The username appears in the rendered app's user interface.</span></span>
 
-<span data-ttu-id="fd6a3-118">執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-118">Run the app.</span></span> <span data-ttu-id="fd6a3-119">使用者名稱會出現在右上方的應用程式。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-119">The username appears in the top right of the app.</span></span>
+### <a name="manual-configuration-for-an-existing-project"></a><span data-ttu-id="7ffb0-119">手動設定現有的專案</span><span class="sxs-lookup"><span data-stu-id="7ffb0-119">Manual configuration for an existing project</span></span>
 
-![Windows 驗證的瀏覽器螢幕擷取畫面](windowsauth/_static/browser-screenshot.png)
+<span data-ttu-id="7ffb0-120">專案的屬性可讓您以啟用 Windows 驗證並停用匿名驗證：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-120">The project's properties allow you to enable Windows Authentication and disable Anonymous Authentication:</span></span>
 
-<span data-ttu-id="fd6a3-121">針對使用 IIS Express 的開發工作，此範本會提供所有必要的組態，若要使用 Windows 驗證。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-121">For development work using IIS Express, the template provides all the configuration necessary to use Windows Authentication.</span></span> <span data-ttu-id="fd6a3-122">下一節示範如何手動設定 Windows 驗證的 ASP.NET Core 應用程式。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-122">The following section shows how to manually configure an ASP.NET Core app for Windows Authentication.</span></span>
+1. <span data-ttu-id="7ffb0-121">在 Visual Studio 的專案上按一下滑鼠右鍵**方案總管**，然後選取**屬性**。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-121">Right-click the project in Visual Studio's **Solution Explorer** and select **Properties**.</span></span>
+1. <span data-ttu-id="7ffb0-122">選取 [偵錯] 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-122">Select the **Debug** tab.</span></span>
+1. <span data-ttu-id="7ffb0-123">清除核取方塊**啟用匿名驗證**。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-123">Clear the check box for **Enable Anonymous Authentication**.</span></span>
+1. <span data-ttu-id="7ffb0-124">選取核取方塊**啟用 Windows 驗證**。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-124">Select the check box for **Enable Windows Authentication**.</span></span>
 
-### <a name="visual-studio-settings-for-windows-and-anonymous-authentication"></a><span data-ttu-id="fd6a3-123">Visual Studio 設定 Windows 和匿名驗證</span><span class="sxs-lookup"><span data-stu-id="fd6a3-123">Visual Studio settings for Windows and anonymous authentication</span></span>
+<span data-ttu-id="7ffb0-125">或者，設定屬性，在`iisSettings`的節點*launchSettings.json*檔案：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-125">Alternatively, the properties can be configured in the `iisSettings` node of the *launchSettings.json* file:</span></span>
 
-<span data-ttu-id="fd6a3-124">Visual Studio 專案**屬性**頁面的**偵錯** 索引標籤能提供 Windows 驗證和匿名驗證的核取方塊。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-124">The Visual Studio project **Properties** page's **Debug** tab provides check boxes for Windows Authentication and anonymous authentication.</span></span>
+[!code-json[](windowsauth/sample_snapshot/launchSettings.json?highlight=2-3)]
 
-![Windows 驗證的瀏覽器螢幕擷取畫面反白顯示的驗證選項](windowsauth/_static/vs-auth-property-menu.png)
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="7ffb0-126">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="7ffb0-126">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-<span data-ttu-id="fd6a3-126">或者，設定這兩個屬性，在*launchSettings.json*檔案：</span><span class="sxs-lookup"><span data-stu-id="fd6a3-126">Alternatively, these two properties can be configured in the *launchSettings.json* file:</span></span>
+<span data-ttu-id="7ffb0-127">使用**Windows 驗證**應用程式範本。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-127">Use the **Windows Authentication** app template.</span></span>
 
-[!code-json[](windowsauth/sample/launchSettings.json?highlight=3-4)]
+<span data-ttu-id="7ffb0-128">執行[dotnet 新](/dotnet/core/tools/dotnet-new)命令搭配`webapp`引數 （ASP.NET Core Web 應用程式） 和`--auth Windows`切換：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-128">Execute the [dotnet new](/dotnet/core/tools/dotnet-new) command with the `webapp` argument (ASP.NET Core Web App) and `--auth Windows` switch:</span></span>
 
-## <a name="enable-windows-authentication-with-iis"></a><span data-ttu-id="fd6a3-127">啟用 iis 的 Windows 驗證</span><span class="sxs-lookup"><span data-stu-id="fd6a3-127">Enable Windows Authentication with IIS</span></span>
+```console
+dotnet new webapp --auth Windows
+```
 
-<span data-ttu-id="fd6a3-128">IIS 會使用[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)主機 ASP.NET Core 應用程式。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-128">IIS uses the [ASP.NET Core Module](xref:host-and-deploy/aspnet-core-module) to host ASP.NET Core apps.</span></span> <span data-ttu-id="fd6a3-129">在 IIS 中，應用程式設定 Windows 驗證。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-129">Windows Authentication is configured in IIS, not the app.</span></span> <span data-ttu-id="fd6a3-130">下列各節示範如何使用 IIS 管理員來設定 ASP.NET Core 應用程式以使用 Windows 驗證。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-130">The following sections show how to use IIS Manager to configure an ASP.NET Core app to use Windows Authentication.</span></span>
+---
 
-### <a name="iis-configuration"></a><span data-ttu-id="fd6a3-131">IIS 組態</span><span class="sxs-lookup"><span data-stu-id="fd6a3-131">IIS configuration</span></span>
+## <a name="enable-windows-authentication-with-iis"></a><span data-ttu-id="7ffb0-129">啟用 iis 的 Windows 驗證</span><span class="sxs-lookup"><span data-stu-id="7ffb0-129">Enable Windows Authentication with IIS</span></span>
 
-<span data-ttu-id="fd6a3-132">啟用 Windows 驗證的 IIS 角色服務。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-132">Enable the IIS Role Service for Windows Authentication.</span></span> <span data-ttu-id="fd6a3-133">如需詳細資訊，請參閱 <<c0> [ 啟用 IIS 角色服務 （請參閱步驟 2） 中的 Windows 驗證](xref:host-and-deploy/iis/index#iis-configuration)。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-133">For more information, see [Enable Windows Authentication in IIS Role Services (see Step 2)](xref:host-and-deploy/iis/index#iis-configuration).</span></span>
+<span data-ttu-id="7ffb0-130">IIS 會使用[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)主機 ASP.NET Core 應用程式。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-130">IIS uses the [ASP.NET Core Module](xref:host-and-deploy/aspnet-core-module) to host ASP.NET Core apps.</span></span> <span data-ttu-id="7ffb0-131">Windows 驗證針對透過 IIS *web.config*檔案。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-131">Windows Authentication is configured for IIS via the *web.config* file.</span></span> <span data-ttu-id="7ffb0-132">下列各節將示範如何：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-132">The following sections show how to:</span></span>
 
-<span data-ttu-id="fd6a3-134">根據預設，IIS Integration 中介軟體會設定來自動驗證要求。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-134">IIS Integration Middleware is configured to automatically authenticate requests by default.</span></span> <span data-ttu-id="fd6a3-135">如需詳細資訊，請參閱[裝載 ASP.NET Core 與 IIS 的 Windows 上：IIS 選項 (AutomaticAuthentication)](xref:host-and-deploy/iis/index#iis-options)。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-135">For more information, see [Host ASP.NET Core on Windows with IIS: IIS options (AutomaticAuthentication)](xref:host-and-deploy/iis/index#iis-options).</span></span>
+* <span data-ttu-id="7ffb0-133">提供本機*web.config*部署應用程式時，請在伺服器啟動 Windows 驗證的檔案。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-133">Provide a local *web.config* file that activates Windows Authentication on the server when the app is deployed.</span></span>
+* <span data-ttu-id="7ffb0-134">使用 IIS 管理員設定*web.config*已經部署到伺服器的 ASP.NET Core 應用程式的檔案。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-134">Use the IIS Manager to configure the *web.config* file of an ASP.NET Core app that has already been deployed to the server.</span></span>
 
-<span data-ttu-id="fd6a3-136">ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙基元。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-136">The ASP.NET Core Module is configured to forward the Windows Authentication token to the app by default.</span></span> <span data-ttu-id="fd6a3-137">如需詳細資訊，請參閱[ASP.NET Core 模組組態參考：AspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-137">For more information, see [ASP.NET Core Module configuration reference: Attributes of the aspNetCore element](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).</span></span>
+### <a name="iis-configuration"></a><span data-ttu-id="7ffb0-135">IIS 組態</span><span class="sxs-lookup"><span data-stu-id="7ffb0-135">IIS configuration</span></span>
 
-### <a name="create-a-new-iis-site"></a><span data-ttu-id="fd6a3-138">建立新的 IIS 站台</span><span class="sxs-lookup"><span data-stu-id="fd6a3-138">Create a new IIS site</span></span>
+<span data-ttu-id="7ffb0-136">如果您尚未這麼做，請啟用 IIS 可裝載 ASP.NET Core 應用程式。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-136">If you haven't already done so, enable IIS to host ASP.NET Core apps.</span></span> <span data-ttu-id="7ffb0-137">如需詳細資訊，請參閱<xref:host-and-deploy/iis/index>。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-137">For more information, see <xref:host-and-deploy/iis/index>.</span></span>
 
-<span data-ttu-id="fd6a3-139">指定的名稱和資料夾，並允許它建立新的應用程式集區。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-139">Specify a name and folder and allow it to create a new application pool.</span></span>
+<span data-ttu-id="7ffb0-138">啟用 Windows 驗證的 IIS 角色服務。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-138">Enable the IIS Role Service for Windows Authentication.</span></span> <span data-ttu-id="7ffb0-139">如需詳細資訊，請參閱 <<c0> [ 啟用 IIS 角色服務 （請參閱步驟 2） 中的 Windows 驗證](xref:host-and-deploy/iis/index#iis-configuration)。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-139">For more information, see [Enable Windows Authentication in IIS Role Services (see Step 2)](xref:host-and-deploy/iis/index#iis-configuration).</span></span>
 
-### <a name="customize-authentication"></a><span data-ttu-id="fd6a3-140">自訂驗證</span><span class="sxs-lookup"><span data-stu-id="fd6a3-140">Customize authentication</span></span>
+<span data-ttu-id="7ffb0-140">根據預設，IIS Integration 中介軟體會設定來自動驗證要求。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-140">IIS Integration Middleware is configured to automatically authenticate requests by default.</span></span> <span data-ttu-id="7ffb0-141">如需詳細資訊，請參閱[裝載 ASP.NET Core 與 IIS 的 Windows 上：IIS 選項 (AutomaticAuthentication)](xref:host-and-deploy/iis/index#iis-options)。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-141">For more information, see [Host ASP.NET Core on Windows with IIS: IIS options (AutomaticAuthentication)](xref:host-and-deploy/iis/index#iis-options).</span></span>
 
-<span data-ttu-id="fd6a3-141">開啟站台的驗證功能。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-141">Open the Authentication features for the site.</span></span>
+<span data-ttu-id="7ffb0-142">ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙基元。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-142">The ASP.NET Core Module is configured to forward the Windows Authentication token to the app by default.</span></span> <span data-ttu-id="7ffb0-143">如需詳細資訊，請參閱[ASP.NET Core 模組組態參考：AspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-143">For more information, see [ASP.NET Core Module configuration reference: Attributes of the aspNetCore element](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).</span></span>
 
-![IIS 驗證 功能表](windowsauth/_static/iis-authentication-menu.png)
+### <a name="create-a-new-iis-site"></a><span data-ttu-id="7ffb0-144">建立新的 IIS 站台</span><span class="sxs-lookup"><span data-stu-id="7ffb0-144">Create a new IIS site</span></span>
 
-<span data-ttu-id="fd6a3-143">停用匿名驗證，並啟用 Windows 驗證。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-143">Disable Anonymous Authentication and enable Windows Authentication.</span></span>
+<span data-ttu-id="7ffb0-145">指定的名稱和資料夾，並允許它建立新的應用程式集區。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-145">Specify a name and folder and allow it to create a new application pool.</span></span>
 
-![IIS 驗證設定](windowsauth/_static/iis-auth-settings.png)
+### <a name="enable-windows-authentication-for-the-app-in-iis"></a><span data-ttu-id="7ffb0-146">啟用 IIS 中的應用程式的 Windows 驗證</span><span class="sxs-lookup"><span data-stu-id="7ffb0-146">Enable Windows Authentication for the app in IIS</span></span>
 
-### <a name="publish-your-project-to-the-iis-site-folder"></a><span data-ttu-id="fd6a3-145">將專案發佈至 IIS 的站台資料夾</span><span class="sxs-lookup"><span data-stu-id="fd6a3-145">Publish your project to the IIS site folder</span></span>
+<span data-ttu-id="7ffb0-147">使用**任一**下列其中一個方法：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-147">Use **either** of the following approaches:</span></span>
 
-<span data-ttu-id="fd6a3-146">使用 Visual Studio 或.NET Core CLI，將應用程式發行至目的資料夾。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-146">Using Visual Studio or the .NET Core CLI, publish the app to the destination folder.</span></span>
+* <span data-ttu-id="7ffb0-148">[在之前發佈的應用程式的開發後端設定](#development-side-configuration-with-a-local-webconfig-file)(*建議*)</span><span class="sxs-lookup"><span data-stu-id="7ffb0-148">[Development-side configuration before publishing the app](#development-side-configuration-with-a-local-webconfig-file) (*Recommended*)</span></span>
+* [<span data-ttu-id="7ffb0-149">之後發佈的應用程式的伺服器端設定</span><span class="sxs-lookup"><span data-stu-id="7ffb0-149">Server-side configuration after publishing the app</span></span>](#server-side-configuration-with-the-iis-manager)
 
-![Visual Studio 發佈對話方塊](windowsauth/_static/vs-publish-app.png)
+#### <a name="development-side-configuration-with-a-local-webconfig-file"></a><span data-ttu-id="7ffb0-150">使用本機 web.config 檔案的開發後端設定</span><span class="sxs-lookup"><span data-stu-id="7ffb0-150">Development-side configuration with a local web.config file</span></span>
 
-<span data-ttu-id="fd6a3-148">深入了解[發行至 IIS](xref:host-and-deploy/iis/index)。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-148">Learn more about [publishing to IIS](xref:host-and-deploy/iis/index).</span></span>
+<span data-ttu-id="7ffb0-151">執行下列步驟**之前**您[發佈和部署您的專案](#publish-and-deploy-your-project-to-the-iis-site-folder)。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-151">Perform the following steps **before** you [publish and deploy your project](#publish-and-deploy-your-project-to-the-iis-site-folder).</span></span>
 
-<span data-ttu-id="fd6a3-149">啟動應用程式以確認 Windows 驗證正常運作。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-149">Launch the app to verify Windows Authentication is working.</span></span>
+<span data-ttu-id="7ffb0-152">新增下列*web.config*至專案根目錄的檔案：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-152">Add the following *web.config* file to the project root:</span></span>
 
-## <a name="enable-windows-authentication-with-httpsys"></a><span data-ttu-id="fd6a3-150">啟用 Windows 驗證，http.sys</span><span class="sxs-lookup"><span data-stu-id="fd6a3-150">Enable Windows Authentication with HTTP.sys</span></span>
+[!code-xml[](windowsauth/sample_snapshot/web_2.config)]
 
-<span data-ttu-id="fd6a3-151">雖然 Kestrel 不支援 Windows 驗證，您可以使用[HTTP.sys](xref:fundamentals/servers/httpsys)支援在 Windows 上的自我裝載的案例。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-151">Although Kestrel doesn't support Windows Authentication, you can use [HTTP.sys](xref:fundamentals/servers/httpsys) to support self-hosted scenarios on Windows.</span></span> <span data-ttu-id="fd6a3-152">下列範例會設定要搭配 Windows 驗證使用 HTTP.sys 的應用程式的 web 主機：</span><span class="sxs-lookup"><span data-stu-id="fd6a3-152">The following example configures the app's web host to use HTTP.sys with Windows Authentication:</span></span>
+<span data-ttu-id="7ffb0-153">專案 sdk 的發行時 (不含`<IsTransformWebConfigDisabled>`屬性設定為`true`專案檔中)，發行*web.config*檔案包含`<location><system.webServer><security><authentication>`一節。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-153">When the project is published by the SDK (without the `<IsTransformWebConfigDisabled>` property set to `true` in the project file), the published *web.config* file includes the `<location><system.webServer><security><authentication>` section.</span></span> <span data-ttu-id="7ffb0-154">如需詳細資訊`<IsTransformWebConfigDisabled>`屬性，請參閱<xref:host-and-deploy/iis/index#webconfig-file>。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-154">For more information on the `<IsTransformWebConfigDisabled>` property, see <xref:host-and-deploy/iis/index#webconfig-file>.</span></span>
 
-[!code-csharp[](windowsauth/sample/Program2x.cs?highlight=9-14)]
+#### <a name="server-side-configuration-with-the-iis-manager"></a><span data-ttu-id="7ffb0-155">伺服器端設定使用 IIS 管理員</span><span class="sxs-lookup"><span data-stu-id="7ffb0-155">Server-side configuration with the IIS Manager</span></span>
+
+<span data-ttu-id="7ffb0-156">執行下列步驟**之後**您[發佈和部署您的專案](#publish-and-deploy-your-project-to-the-iis-site-folder)。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-156">Perform the following steps **after** you [publish and deploy your project](#publish-and-deploy-your-project-to-the-iis-site-folder).</span></span>
+
+1. <span data-ttu-id="7ffb0-157">在 [IIS 管理員] 中，選取 IIS 站台之下**站台**節點**連線**資訊看板。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-157">In IIS Manager, select the IIS site under the **Sites** node of the **Connections** sidebar.</span></span>
+1. <span data-ttu-id="7ffb0-158">按兩下**驗證**中**IIS**區域。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-158">Double-click **Authentication** in the **IIS** area.</span></span>
+1. <span data-ttu-id="7ffb0-159">選取 **匿名驗證**。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-159">Select **Anonymous Authentication**.</span></span> <span data-ttu-id="7ffb0-160">選取 **停用**中**動作**資訊看板。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-160">Select **Disable** in the **Actions** sidebar.</span></span>
+1. <span data-ttu-id="7ffb0-161">選取  **Windows 驗證**。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-161">Select **Windows Authentication**.</span></span> <span data-ttu-id="7ffb0-162">選取 **啟用**中**動作**資訊看板。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-162">Select **Enable** in the **Actions** sidebar.</span></span>
+
+<span data-ttu-id="7ffb0-163">IIS 管理員在採取這些動作，會修改應用程式的*web.config*檔案。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-163">When these actions are taken, IIS Manager modifies the app's *web.config* file.</span></span> <span data-ttu-id="7ffb0-164">A`<system.webServer><security><authentication>`節點新增與更新的設定，如`anonymousAuthentication`和`windowsAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="7ffb0-164">A `<system.webServer><security><authentication>` node is added with updated settings for `anonymousAuthentication` and `windowsAuthentication`:</span></span>
+
+[!code-xml[](windowsauth/sample_snapshot/web_1.config?highlight=4-5)]
+
+<span data-ttu-id="7ffb0-165">`<system.webServer>`區段新增至*web.config*由 IIS 管理員中的檔案超出應用程式的`<location>`發佈應用程式時，由.NET Core SDK 加入的區段。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-165">The `<system.webServer>` section added to the *web.config* file by IIS Manager is outside of the app's `<location>` section added by the .NET Core SDK when the app is published.</span></span> <span data-ttu-id="7ffb0-166">因為區段會新增外部`<location>`節點，設定會由任何繼承[子應用程式](xref:host-and-deploy/iis/index#sub-applications)目前的應用程式。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-166">Because the section is added outside of the `<location>` node, the settings are inherited by any [sub-apps](xref:host-and-deploy/iis/index#sub-applications) to the current app.</span></span> <span data-ttu-id="7ffb0-167">若要防止繼承，移動加入`<security>`區段內的`<location><system.webServer>`SDK 所提供的一節。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-167">To prevent inheritance, move the added `<security>` section inside of the `<location><system.webServer>` section that the SDK provided.</span></span>
+
+<span data-ttu-id="7ffb0-168">將 IIS 設定使用 IIS 管理員時，它只會影響應用程式的*web.config*伺服器上的檔案。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-168">When IIS Manager is used to add the IIS configuration, it only affects the app's *web.config* file on the server.</span></span> <span data-ttu-id="7ffb0-169">後續部署應用程式可能會覆寫伺服器上的設定，如果伺服器的複本*web.config*專案的取代*web.config*檔案。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-169">A subsequent deployment of the app may overwrite the settings on the server if the server's copy of *web.config* is replaced by the project's *web.config* file.</span></span> <span data-ttu-id="7ffb0-170">使用**任一**下列其中一個方法來管理設定：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-170">Use **either** of the following approaches to manage the settings:</span></span>
+
+* <span data-ttu-id="7ffb0-171">使用 IIS 管理員中的設定重設*web.config*檔案之後部署上覆寫該檔案。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-171">Use IIS Manager to reset the settings in the *web.config* file after the file is overwritten on deployment.</span></span>
+* <span data-ttu-id="7ffb0-172">新增*web.config 檔案*應用程式在本機使用的設定。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-172">Add a *web.config file* to the app locally with the settings.</span></span> <span data-ttu-id="7ffb0-173">如需詳細資訊，請參閱 <<c0> [ 開發後端設定](#development-side-configuration-with-a-local-webconfig-file)一節。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-173">For more information, see the [Development-side configuration](#development-side-configuration-with-a-local-webconfig-file) section.</span></span>
+
+### <a name="publish-and-deploy-your-project-to-the-iis-site-folder"></a><span data-ttu-id="7ffb0-174">發行，並將專案部署至 IIS 的站台資料夾</span><span class="sxs-lookup"><span data-stu-id="7ffb0-174">Publish and deploy your project to the IIS site folder</span></span>
+
+<span data-ttu-id="7ffb0-175">使用 Visual Studio 或.NET Core CLI，發行應用程式並部署到目的資料夾。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-175">Using Visual Studio or the .NET Core CLI, publish and deploy the app to the destination folder.</span></span>
+
+<span data-ttu-id="7ffb0-176">如需有關如何使用 IIS 裝載的詳細資訊，發行和部署，請參閱下列主題：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-176">For more information on hosting with IIS, publishing, and deployment, see the following topics:</span></span>
+
+* [<span data-ttu-id="7ffb0-177">dotnet publish</span><span class="sxs-lookup"><span data-stu-id="7ffb0-177">dotnet publish</span></span>](/dotnet/core/tools/dotnet-publish)
+* <xref:host-and-deploy/iis/index>
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/visual-studio-publish-profiles>
+
+<span data-ttu-id="7ffb0-178">啟動應用程式以確認 Windows 驗證正常運作。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-178">Launch the app to verify Windows Authentication is working.</span></span>
+
+## <a name="enable-windows-authentication-with-httpsys"></a><span data-ttu-id="7ffb0-179">啟用 Windows 驗證，http.sys</span><span class="sxs-lookup"><span data-stu-id="7ffb0-179">Enable Windows Authentication with HTTP.sys</span></span>
+
+<span data-ttu-id="7ffb0-180">雖然 Kestrel 不支援 Windows 驗證，您可以使用[HTTP.sys](xref:fundamentals/servers/httpsys)支援在 Windows 上的自我裝載的案例。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-180">Although Kestrel doesn't support Windows Authentication, you can use [HTTP.sys](xref:fundamentals/servers/httpsys) to support self-hosted scenarios on Windows.</span></span> <span data-ttu-id="7ffb0-181">下列範例會設定要搭配 Windows 驗證使用 HTTP.sys 的應用程式的 web 主機：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-181">The following example configures the app's web host to use HTTP.sys with Windows Authentication:</span></span>
+
+[!code-csharp[](windowsauth/sample_snapshot/Program.cs?highlight=9-14)]
 
 > [!NOTE]
-> <span data-ttu-id="fd6a3-153">HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-153">HTTP.sys delegates to kernel mode authentication with the Kerberos authentication protocol.</span></span> <span data-ttu-id="fd6a3-154">Kerberos 和 HTTP.sys 不支援使用者模式驗證。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-154">User mode authentication isn't supported with Kerberos and HTTP.sys.</span></span> <span data-ttu-id="fd6a3-155">必須使用電腦帳戶來解密 Kerberos 權杖/票證，該權杖/票證取自 Active Directory，並由用戶端將其轉送至伺服器來驗證使用者。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-155">The machine account must be used to decrypt the Kerberos token/ticket that's obtained from Active Directory and forwarded by the client to the server to authenticate the user.</span></span> <span data-ttu-id="fd6a3-156">請註冊主機的服務主體名稱 (SPN)，而非應用程式的使用者。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-156">Register the Service Principal Name (SPN) for the host, not the user of the app.</span></span>
+> <span data-ttu-id="7ffb0-182">HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-182">HTTP.sys delegates to kernel mode authentication with the Kerberos authentication protocol.</span></span> <span data-ttu-id="7ffb0-183">Kerberos 和 HTTP.sys 不支援使用者模式驗證。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-183">User mode authentication isn't supported with Kerberos and HTTP.sys.</span></span> <span data-ttu-id="7ffb0-184">必須使用電腦帳戶來解密 Kerberos 權杖/票證，該權杖/票證取自 Active Directory，並由用戶端將其轉送至伺服器來驗證使用者。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-184">The machine account must be used to decrypt the Kerberos token/ticket that's obtained from Active Directory and forwarded by the client to the server to authenticate the user.</span></span> <span data-ttu-id="7ffb0-185">請註冊主機的服務主體名稱 (SPN)，而非應用程式的使用者。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-185">Register the Service Principal Name (SPN) for the host, not the user of the app.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="fd6a3-157">HTTP.sys 不支援 Nano Server 1709 版或更新版本上。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-157">HTTP.sys isn't supported on Nano Server version 1709 or later.</span></span> <span data-ttu-id="fd6a3-158">若要使用 Windows 驗證和 HTTP.sys 使用 Nano Server，請使用[Server Core (microsoft/windowsservercore) 容器](https://hub.docker.com/r/microsoft/windowsservercore/)。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-158">To use Windows Authentication and HTTP.sys with Nano Server, use a [Server Core (microsoft/windowsservercore) container](https://hub.docker.com/r/microsoft/windowsservercore/).</span></span> <span data-ttu-id="fd6a3-159">如需有關 Server Core 的詳細資訊，請參閱[什麼是 Windows Server 中的 Server Core 安裝選項？](/windows-server/administration/server-core/what-is-server-core)。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-159">For more information on Server Core, see [What is the Server Core installation option in Windows Server?](/windows-server/administration/server-core/what-is-server-core).</span></span>
+> <span data-ttu-id="7ffb0-186">HTTP.sys 不支援 Nano Server 1709 版或更新版本上。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-186">HTTP.sys isn't supported on Nano Server version 1709 or later.</span></span> <span data-ttu-id="7ffb0-187">若要使用 Windows 驗證和 HTTP.sys 使用 Nano Server，請使用[Server Core (microsoft/windowsservercore) 容器](https://hub.docker.com/r/microsoft/windowsservercore/)。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-187">To use Windows Authentication and HTTP.sys with Nano Server, use a [Server Core (microsoft/windowsservercore) container](https://hub.docker.com/r/microsoft/windowsservercore/).</span></span> <span data-ttu-id="7ffb0-188">如需有關 Server Core 的詳細資訊，請參閱[什麼是 Windows Server 中的 Server Core 安裝選項？](/windows-server/administration/server-core/what-is-server-core)。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-188">For more information on Server Core, see [What is the Server Core installation option in Windows Server?](/windows-server/administration/server-core/what-is-server-core).</span></span>
 
-## <a name="work-with-windows-authentication"></a><span data-ttu-id="fd6a3-160">使用 Windows 驗證</span><span class="sxs-lookup"><span data-stu-id="fd6a3-160">Work with Windows Authentication</span></span>
+## <a name="work-with-windows-authentication"></a><span data-ttu-id="7ffb0-189">使用 Windows 驗證</span><span class="sxs-lookup"><span data-stu-id="7ffb0-189">Work with Windows Authentication</span></span>
 
-<span data-ttu-id="fd6a3-161">匿名存取的設定狀態決定的方式`[Authorize]`和`[AllowAnonymous]`應用程式中使用屬性。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-161">The configuration state of anonymous access determines the way in which the `[Authorize]` and `[AllowAnonymous]` attributes are used in the app.</span></span> <span data-ttu-id="fd6a3-162">下列兩節會說明如何處理不允許和允許設定狀態的匿名存取。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-162">The following two sections explain how to handle the disallowed and allowed configuration states of anonymous access.</span></span>
+<span data-ttu-id="7ffb0-190">匿名存取的設定狀態決定的方式`[Authorize]`和`[AllowAnonymous]`應用程式中使用屬性。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-190">The configuration state of anonymous access determines the way in which the `[Authorize]` and `[AllowAnonymous]` attributes are used in the app.</span></span> <span data-ttu-id="7ffb0-191">下列兩節會說明如何處理不允許和允許設定狀態的匿名存取。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-191">The following two sections explain how to handle the disallowed and allowed configuration states of anonymous access.</span></span>
 
-### <a name="disallow-anonymous-access"></a><span data-ttu-id="fd6a3-163">不允許匿名存取</span><span class="sxs-lookup"><span data-stu-id="fd6a3-163">Disallow anonymous access</span></span>
+### <a name="disallow-anonymous-access"></a><span data-ttu-id="7ffb0-192">不允許匿名存取</span><span class="sxs-lookup"><span data-stu-id="7ffb0-192">Disallow anonymous access</span></span>
 
-<span data-ttu-id="fd6a3-164">當您啟用 Windows 驗證，並已停用匿名存取，`[Authorize]`和`[AllowAnonymous]`屬性沒有任何作用。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-164">When Windows Authentication is enabled and anonymous access is disabled, the `[Authorize]` and `[AllowAnonymous]` attributes have no effect.</span></span> <span data-ttu-id="fd6a3-165">如果 IIS 網站 （或 HTTP.sys） 設定為不允許匿名存取，要求永遠不會到達您的應用程式。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-165">If the IIS site (or HTTP.sys) is configured to disallow anonymous access, the request never reaches your app.</span></span> <span data-ttu-id="fd6a3-166">基於這個理由，`[AllowAnonymous]`屬性不適用。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-166">For this reason, the `[AllowAnonymous]` attribute isn't applicable.</span></span>
+<span data-ttu-id="7ffb0-193">當您啟用 Windows 驗證，並已停用匿名存取，`[Authorize]`和`[AllowAnonymous]`屬性沒有任何作用。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-193">When Windows Authentication is enabled and anonymous access is disabled, the `[Authorize]` and `[AllowAnonymous]` attributes have no effect.</span></span> <span data-ttu-id="7ffb0-194">如果 IIS 網站 （或 HTTP.sys） 設定為不允許匿名存取，要求永遠不會到達您的應用程式。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-194">If the IIS site (or HTTP.sys) is configured to disallow anonymous access, the request never reaches your app.</span></span> <span data-ttu-id="7ffb0-195">基於這個理由，`[AllowAnonymous]`屬性不適用。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-195">For this reason, the `[AllowAnonymous]` attribute isn't applicable.</span></span>
 
-### <a name="allow-anonymous-access"></a><span data-ttu-id="fd6a3-167">允許匿名存取</span><span class="sxs-lookup"><span data-stu-id="fd6a3-167">Allow anonymous access</span></span>
+### <a name="allow-anonymous-access"></a><span data-ttu-id="7ffb0-196">允許匿名存取</span><span class="sxs-lookup"><span data-stu-id="7ffb0-196">Allow anonymous access</span></span>
 
-<span data-ttu-id="fd6a3-168">當啟用 Windows 驗證和匿名存取時，使用`[Authorize]`和`[AllowAnonymous]`屬性。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-168">When both Windows Authentication and anonymous access are enabled, use the `[Authorize]` and `[AllowAnonymous]` attributes.</span></span> <span data-ttu-id="fd6a3-169">`[Authorize]`屬性可讓您安全的應用程式真正需要 Windows 驗證的項目。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-169">The `[Authorize]` attribute allows you to secure pieces of the app which truly do require Windows Authentication.</span></span> <span data-ttu-id="fd6a3-170">`[AllowAnonymous]`屬性覆寫`[Authorize]`屬性允許匿名存取的應用程式內的使用方式。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-170">The `[AllowAnonymous]` attribute overrides `[Authorize]` attribute usage within apps which allow anonymous access.</span></span> <span data-ttu-id="fd6a3-171">請參閱[簡單授權](xref:security/authorization/simple)屬性使用方式詳細資料。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-171">See [Simple Authorization](xref:security/authorization/simple) for attribute usage details.</span></span>
+<span data-ttu-id="7ffb0-197">當啟用 Windows 驗證和匿名存取時，使用`[Authorize]`和`[AllowAnonymous]`屬性。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-197">When both Windows Authentication and anonymous access are enabled, use the `[Authorize]` and `[AllowAnonymous]` attributes.</span></span> <span data-ttu-id="7ffb0-198">`[Authorize]`屬性可讓您安全的應用程式真正需要 Windows 驗證的項目。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-198">The `[Authorize]` attribute allows you to secure pieces of the app which truly do require Windows Authentication.</span></span> <span data-ttu-id="7ffb0-199">`[AllowAnonymous]`屬性覆寫`[Authorize]`屬性允許匿名存取的應用程式內的使用方式。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-199">The `[AllowAnonymous]` attribute overrides `[Authorize]` attribute usage within apps which allow anonymous access.</span></span> <span data-ttu-id="7ffb0-200">請參閱[簡單授權](xref:security/authorization/simple)屬性使用方式詳細資料。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-200">See [Simple Authorization](xref:security/authorization/simple) for attribute usage details.</span></span>
 
-<span data-ttu-id="fd6a3-172">在 ASP.NET Core 2.x 中，`[Authorize]`屬性需要額外的設定，在*Startup.cs*挑戰進行 Windows 驗證的匿名要求。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-172">In ASP.NET Core 2.x, the `[Authorize]` attribute requires additional configuration in *Startup.cs* to challenge anonymous requests for Windows Authentication.</span></span> <span data-ttu-id="fd6a3-173">建議的設定會有些許出入所使用的 web 伺服器而有所不同。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-173">The recommended configuration varies slightly based on the web server being used.</span></span>
+<span data-ttu-id="7ffb0-201">在 ASP.NET Core 2.x 中，`[Authorize]`屬性需要額外的設定，在*Startup.cs*挑戰進行 Windows 驗證的匿名要求。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-201">In ASP.NET Core 2.x, the `[Authorize]` attribute requires additional configuration in *Startup.cs* to challenge anonymous requests for Windows Authentication.</span></span> <span data-ttu-id="7ffb0-202">建議的設定會有些許出入所使用的 web 伺服器而有所不同。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-202">The recommended configuration varies slightly based on the web server being used.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="fd6a3-174">根據預設，缺少授權，才能存取頁面的使用者會看到空的 HTTP 403 回應。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-174">By default, users who lack authorization to access a page are presented with an empty HTTP 403 response.</span></span> <span data-ttu-id="fd6a3-175">[StatusCodePages 中介軟體](xref:fundamentals/error-handling#configure-status-code-pages)可以設定為使用者提供更好的 「 拒絕存取 」 體驗。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-175">The [StatusCodePages middleware](xref:fundamentals/error-handling#configure-status-code-pages) can be configured to provide users with a better "Access Denied" experience.</span></span>
+> <span data-ttu-id="7ffb0-203">根據預設，缺少授權，才能存取頁面的使用者會看到空的 HTTP 403 回應。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-203">By default, users who lack authorization to access a page are presented with an empty HTTP 403 response.</span></span> <span data-ttu-id="7ffb0-204">[StatusCodePages 中介軟體](xref:fundamentals/error-handling#configure-status-code-pages)可以設定為使用者提供更好的 「 拒絕存取 」 體驗。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-204">The [StatusCodePages middleware](xref:fundamentals/error-handling#configure-status-code-pages) can be configured to provide users with a better "Access Denied" experience.</span></span>
 
-#### <a name="iis"></a><span data-ttu-id="fd6a3-176">IIS</span><span class="sxs-lookup"><span data-stu-id="fd6a3-176">IIS</span></span>
+#### <a name="iis"></a><span data-ttu-id="7ffb0-205">IIS</span><span class="sxs-lookup"><span data-stu-id="7ffb0-205">IIS</span></span>
 
-<span data-ttu-id="fd6a3-177">如果使用 IIS，請將下列內容加入`ConfigureServices`方法：</span><span class="sxs-lookup"><span data-stu-id="fd6a3-177">If using IIS, add the following to the `ConfigureServices` method:</span></span>
+<span data-ttu-id="7ffb0-206">如果使用 IIS，請將下列內容加入`ConfigureServices`方法：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-206">If using IIS, add the following to the `ConfigureServices` method:</span></span>
 
 ```csharp
 // IISDefaults requires the following import:
@@ -128,9 +173,9 @@ ms.locfileid: "53637816"
 services.AddAuthentication(IISDefaults.AuthenticationScheme);
 ```
 
-#### <a name="httpsys"></a><span data-ttu-id="fd6a3-178">HTTP.sys</span><span class="sxs-lookup"><span data-stu-id="fd6a3-178">HTTP.sys</span></span>
+#### <a name="httpsys"></a><span data-ttu-id="7ffb0-207">HTTP.sys</span><span class="sxs-lookup"><span data-stu-id="7ffb0-207">HTTP.sys</span></span>
 
-<span data-ttu-id="fd6a3-179">如果使用 HTTP.sys，將下列內容加入`ConfigureServices`方法：</span><span class="sxs-lookup"><span data-stu-id="fd6a3-179">If using HTTP.sys, add the following to the `ConfigureServices` method:</span></span>
+<span data-ttu-id="7ffb0-208">如果使用 HTTP.sys，將下列內容加入`ConfigureServices`方法：</span><span class="sxs-lookup"><span data-stu-id="7ffb0-208">If using HTTP.sys, add the following to the `ConfigureServices` method:</span></span>
 
 ```csharp
 // HttpSysDefaults requires the following import:
@@ -138,10 +183,10 @@ services.AddAuthentication(IISDefaults.AuthenticationScheme);
 services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
 ```
 
-### <a name="impersonation"></a><span data-ttu-id="fd6a3-180">模擬</span><span class="sxs-lookup"><span data-stu-id="fd6a3-180">Impersonation</span></span>
+### <a name="impersonation"></a><span data-ttu-id="7ffb0-209">模擬</span><span class="sxs-lookup"><span data-stu-id="7ffb0-209">Impersonation</span></span>
 
-<span data-ttu-id="fd6a3-181">ASP.NET Core 不會實作模擬。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-181">ASP.NET Core doesn't implement impersonation.</span></span> <span data-ttu-id="fd6a3-182">應用程式執行的所有要求，使用應用程式集區或處理序身分識別的應用程式身分識別。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-182">Apps run with the application identity for all requests, using app pool or process identity.</span></span> <span data-ttu-id="fd6a3-183">如果您需要明確地執行動作的使用者身分，使用`WindowsIdentity.RunImpersonated`。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-183">If you need to explicitly perform an action on behalf of a user, use `WindowsIdentity.RunImpersonated`.</span></span> <span data-ttu-id="fd6a3-184">在此內容中執行單一動作，然後關閉 內容。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-184">Run a single action in this context and then close the context.</span></span>
+<span data-ttu-id="7ffb0-210">ASP.NET Core 不會實作模擬。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-210">ASP.NET Core doesn't implement impersonation.</span></span> <span data-ttu-id="7ffb0-211">應用程式執行的所有要求，使用應用程式集區或處理序身分識別的應用程式的身分識別。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-211">Apps run with the app's identity for all requests, using app pool or process identity.</span></span> <span data-ttu-id="7ffb0-212">如果您需要明確地執行動作的使用者身分，使用[WindowsIdentity.RunImpersonated](xref:System.Security.Principal.WindowsIdentity.RunImpersonated*)中[終端機內嵌中介軟體](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)在`Startup.Configure`。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-212">If you need to explicitly perform an action on behalf of a user, use [WindowsIdentity.RunImpersonated](xref:System.Security.Principal.WindowsIdentity.RunImpersonated*) in a [terminal inline middleware](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder) in `Startup.Configure`.</span></span> <span data-ttu-id="7ffb0-213">在此內容中執行單一動作，然後關閉 內容。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-213">Run a single action in this context and then close the context.</span></span>
 
-[!code-csharp[](windowsauth/sample/Startup.cs?name=snippet_Impersonate&highlight=10-18)]
+[!code-csharp[](windowsauth/sample_snapshot/Startup.cs?highlight=10-19)]
 
-<span data-ttu-id="fd6a3-185">請注意，`RunImpersonated`不支援非同步作業，而不應該用於複雜的案例。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-185">Note that `RunImpersonated` doesn't support asynchronous operations and shouldn't be used for complex scenarios.</span></span> <span data-ttu-id="fd6a3-186">比方說，包裝整個要求或中介軟體鏈結不支援或建議。</span><span class="sxs-lookup"><span data-stu-id="fd6a3-186">For example, wrapping entire requests or middleware chains isn't supported or recommended.</span></span>
+<span data-ttu-id="7ffb0-214">`RunImpersonated` 不支援非同步作業，而不應該用於複雜的案例。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-214">`RunImpersonated` doesn't support asynchronous operations and shouldn't be used for complex scenarios.</span></span> <span data-ttu-id="7ffb0-215">比方說，包裝整個要求或中介軟體鏈結不支援或建議。</span><span class="sxs-lookup"><span data-stu-id="7ffb0-215">For example, wrapping entire requests or middleware chains isn't supported or recommended.</span></span>

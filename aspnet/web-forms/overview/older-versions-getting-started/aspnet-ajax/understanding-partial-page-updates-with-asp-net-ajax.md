@@ -8,12 +8,12 @@ ms.date: 03/28/2008
 ms.assetid: 54d9df99-1161-4899-b4e8-2679c85915e7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-partial-page-updates-with-asp-net-ajax
 msc.type: authoredcontent
-ms.openlocfilehash: 2e0b1e1d4cbb282e7fd4b27e0a93ba1b9702edea
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 4883046aa16d5e67b7f0c92e15c897ef1a933b67
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833462"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098931"
 ---
 <a name="understanding-partial-page-updates-with-aspnet-ajax"></a>了解部分頁面更新與 ASP.NET AJAX
 ====================
@@ -46,18 +46,18 @@ Microsoft ASP.NET 技術會以物件導向和事件導向的程式設計模型�
 
 能夠整合部分網頁呈現會整合到 ASP.NET，幾乎不需要變更到您的專案。
 
-## <a name="walkthrough-integrating-partial-rendering-into-an-existing-project"></a>逐步解說： 將部分呈現模型整合到現有的專案
+## <a name="walkthrough-integrating-partial-rendering-into-an-existing-project"></a>逐步解說：將部分呈現模型整合到現有的專案
 
 
 1. 在 Microsoft Visual Studio 2008 中，建立新的 ASP.NET 網站專案移至<em>檔案</em> <em>- &gt;新增</em> <em>- &gt;網站</em> ，然後從對話方塊選取 ASP.NET 網站。 您可以為它命名您喜歡，並可能會先安裝到檔案系統或到網際網路資訊服務 (IIS)。
 2. 您會看到基本的 ASP.NET 標記的空白的預設頁面 (伺服器端表單和`@Page`指示詞)。 卸除稱為標籤`Label1`，而且按鈕呼叫`Button1`拖曳到頁面中的表單項目。 您可以為任何您喜歡設定其 text 屬性。
 3. 在 設計 檢視中，按兩下 `Button1`來產生程式碼後置的事件處理常式。 在這個事件處理常式中，設定`Label1.Text`要按下按鈕 ！ 。
 
-**列表 1: Default.aspx，才能啟用部分呈現的標記**
+**列表 1:Default.aspx，才能啟用部分呈現的標記**
 
 [!code-aspx[Main](understanding-partial-page-updates-with-asp-net-ajax/samples/sample1.aspx)]
 
-**列表 2： 程式碼後置 （已修剪） 在 default.aspx.cs 中**
+**列表 2:（已修剪） 在 default.aspx.cs 中的程式碼後置**
 
 [!code-csharp[Main](understanding-partial-page-updates-with-asp-net-ajax/samples/sample2.cs)]
 
@@ -85,13 +85,13 @@ Microsoft ASP.NET 技術會以物件導向和事件導向的程式設計模型�
 1. 中的任何地方`<form>`項目，包含 ScriptManager 控制項，方法是按兩下`ScriptManager`工具箱 中的項目。
 2. 編輯`<asp:ScriptManager>`標記，使其包含屬性`EnablePartialRendering= true`。
 
-**列表 3： 使用部分呈現啟用 default.aspx 的標記**
+**列表 3:藉由啟用部分呈現的 default.aspx 的標記**
 
 [!code-aspx[Main](understanding-partial-page-updates-with-asp-net-ajax/samples/sample3.aspx)]
 
 1. 開啟 web.config 檔案。 請注意，Visual Studio 會自動新增 System.Web.Extensions.dll 編譯參考。
 
-1. What's New in Visual Studio 2008: web.config 所附 ASP.NET 網站專案範本會自動包含所有必要的參考，ASP.NET AJAX Extensions，並包含的組態資訊，可以加上註解的區段未加上註解來啟用其他功能。 已安裝 ASP.NET 2.0 AJAX Extensions 時，visual Studio 2005 就會有類似的範本。 不過，在 Visual Studio 2008 中，AJAX 擴充功能會退出預設 （也就是他們所參考的預設值，但是可以移除做為參考）。
+1. Visual Studio 2008 中最新消息：Web.config 隨附於與 ASP.NET 網站專案範本會自動包含所有必要的參考，ASP.NET AJAX Extensions，並包含標記為註解區段以啟用其他未加上註解的組態資訊功能。 已安裝 ASP.NET 2.0 AJAX Extensions 時，visual Studio 2005 就會有類似的範本。 不過，在 Visual Studio 2008 中，AJAX 擴充功能會退出預設 （也就是他們所參考的預設值，但是可以移除做為參考）。
 
 
 [![](understanding-partial-page-updates-with-asp-net-ajax/_static/image8.png)](understanding-partial-page-updates-with-asp-net-ajax/_static/image7.png)
@@ -153,7 +153,7 @@ Visual Studio 2008 似乎不隨附預先定義的範本，ASP.NET Ajax 的網站
 
 ScriptManager 控制項是 ASP.NET AJAX Extensions 的基本核心。 它提供 （包括大量的用戶端指令碼型別系統） 的指令碼程式庫的存取、 支援部分呈現，並可廣泛支援的其他 ASP.NET 服務 （例如驗證和程式碼剖析，還有其他 Web 服務）。 ScriptManager 控制項還提供全球化和當地語系化支援用戶端指令碼。
 
-## <a name="providing-alterative-and-supplemental-scripts"></a>提供 Alterative 和補充指令碼
+## <a name="providing-alternative-and-supplemental-scripts"></a>提供替代和補充指令碼
 
 雖然 Microsoft ASP.NET 2.0 AJAX Extensions 包含整個指令碼，在這兩個偵錯和發行版本做為參考的組件中內嵌的資源，開發人員可以自由重新 ScriptManager 導向至自訂指令碼檔案，以及註冊其他必要的指令碼。
 
@@ -169,7 +169,7 @@ ScriptManager 控制項是 ASP.NET AJAX Extensions 的基本核心。 它提供 
 
 用戶端自訂，也可以而不是使用預設的警示方塊;比方說，您可能想要顯示自訂`<div>`項目，而不是預設瀏覽器的強制回應對話方塊。 在此情況下，您可以處理用戶端指令碼中的錯誤訊息：
 
-**列表 5： 用戶端指令碼以顯示自訂錯誤**
+**列表 5:用戶端指令碼，以顯示自訂錯誤**
 
 [!code-html[Main](understanding-partial-page-updates-with-asp-net-ajax/samples/sample4.html)]
 

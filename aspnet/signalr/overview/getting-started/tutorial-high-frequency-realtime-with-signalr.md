@@ -1,228 +1,255 @@
 ---
 uid: signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
-title: 教學課程：高頻率即時與 SignalR 2 |Microsoft Docs
+title: 教學課程：使用 SignalR 2 建立高頻率即時應用程式 |Microsoft Docs
 author: pfletcher
-description: 本教學課程會示範如何建立 web 應用程式，使用 ASP.NET SignalR 提供高頻率的傳訊功能。 高頻率訊息處理中...
+description: 本教學課程會示範如何建立 web 應用程式，使用 ASP.NET SignalR 提供高頻率的傳訊功能。
 ms.author: riande
-ms.date: 06/10/2014
+ms.date: 01/02/2019
 ms.assetid: 9f969dda-78ea-4329-b1e3-e51c02210a2b
 msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 04ce650509268ee63daafe24bc8dcc9725aea16b
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.topic: tutorial
+ms.openlocfilehash: 85503db0b41be6f87136627667d6dd71f0d4f609
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287711"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098586"
 ---
-<a name="tutorial-high-frequency-realtime-with-signalr-2"></a>教學課程：高頻率即時與 SignalR 2
-====================
-藉由[Patrick Fletcher](https://github.com/pfletcher)
+# <a name="tutorial-create-high-frequency-real-time-app-with-signalr-2"></a>教學課程：使用 SignalR 2 建立高頻率即時應用程式
+
+本教學課程會示範如何建立 web 應用程式，使用 ASP.NET SignalR 2 提供高頻率的傳訊功能。 在此情況下，「 高頻率傳訊 」，表示伺服器會以固定費率來傳送更新。 您傳送第二個最多 10 個訊息。
+
+您所建立的應用程式會顯示使用者可以拖曳圖形。 伺服器會更新所有連線的瀏覽器，以符合使用定時的更新拖曳圖形的位置中圖形的位置。
+
+本教學課程中介紹的概念有即時遊戲中的應用程式和其他模擬應用程式。
+
+在本教學課程中，您：
+
+> [!div class="checklist"]
+> * 設定專案
+> * 建立基底的應用程式
+> * 應用程式啟動時，對應到中樞
+> * 新增用戶端
+> * 執行應用程式
+> * 新增用戶端迴圈
+> * 新增伺服器迴圈
+> * 新增動畫更為順暢
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-[下載已完成的專案](http://code.msdn.microsoft.com/SignalR-20-MoveShape-Demo-6285b83a)
-
-> 本教學課程會示範如何建立 web 應用程式，使用 ASP.NET SignalR 2 提供高頻率的傳訊功能。 在此情況下頻繁訊息表示會以固定費率; 的更新在此應用程式，最多 10 個訊息，第二個。
->
-> 您會在本教學課程中建立應用程式會顯示使用者可以拖曳圖形。 圖形的位置，所有其他已連線的瀏覽器中就會更新以符合使用定時的更新拖曳圖形的位置。
->
-> 本教學課程中介紹的概念有即時遊戲中的應用程式和其他模擬應用程式。
->
-> ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
->
->
-> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
-> - .NET 4.5
-> - SignalR 第 2 版
->
->
->
-> ## <a name="using-visual-studio-2012-with-this-tutorial"></a>本教學課程中使用 Visual Studio 2012
->
->
-> 若要使用 Visual Studio 2012，本教學課程中，執行下列作業：
->
-> - 更新您[封裝管理員](http://docs.nuget.org/docs/start-here/installing-nuget)為最新版本。
-> - 安裝[Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)。
-> - 在 Web Platform Installer 中，搜尋並安裝**ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012**。 這會安裝 Visual Studio 範本 SignalR 類別，例如**中樞**。
-> - 有些範本 (例如**OWIN 啟動類別**) 將無法使用，這些項目，請改用類別檔案。
->
->
-> ## <a name="tutorial-versions"></a>教學課程的版本
->
-> 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
->
-> ## <a name="questions-and-comments"></a>提出問題或意見
->
-> 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
-
-
-## <a name="overview"></a>總覽
-
-本教學課程會示範如何建立與其他瀏覽器即時分享物件狀態的應用程式。 我們將建立的應用程式稱為 MoveShape。 MoveShape 頁面會顯示使用者可以拖曳; HTML Div 項目當使用者拖曳 Div，則其新位置將傳送到伺服器，然後就可以知道所有其他連線的用戶端更新以符合圖形的位置。
-
-![應用程式視窗](tutorial-high-frequency-realtime-with-signalr/_static/image1.png)
-
-在本教學課程所建立的應用程式根據示範中，由 Damian Edwards 主講。 可以看到包含這段示範影片的影片[此處](https://channel9.msdn.com/Series/Building-Web-Apps-with-ASP-NET-Jump-Start/Building-Web-Apps-with-ASPNET-Jump-Start-08-Real-time-Communication-with-SignalR)。
-
-本教學課程會示範如何從每個引發拖曳圖形的事件傳送 SignalR 訊息啟動。 每個連線的用戶端會更新圖形的本機版本的位置收到訊息的每一次。
-
-儘管應用程式將使用此方法來運作，這不是建議的程式設計模型，因為會開始傳送，因此用戶端和伺服器無法取得應付訊息，並會降低效能的訊息數目沒有上限. 脫離，圖形會立即移動每個方法，由，而不是移動順暢到每個新的位置，也會是在用戶端上顯示的動畫。 本教學課程後面幾節將示範如何建立計時器函式，將由用戶端或伺服器，傳送的訊息最大速率限制以及如何將圖案移動位置之間的順暢。 在本教學課程所建立的應用程式的最終版本可以從下載[程式碼庫](https://code.msdn.microsoft.com/SignalR-20-MoveShape-Demo-6285b83a)。
-
-本教學課程包含下列各節：
-
-- [必要條件](#prerequisites)
-- [建立專案並加入 SignalR 和 JQuery.UI NuGet 封裝](#createtheproject2013)
-- [建立基底的應用程式](#baseapp)
-- [應用程式啟動時啟動的中樞](#startup2013)
-- [新增用戶端迴圈](#clientloop)
-- [新增伺服器迴圈](#serverloop)
-- [用戶端上新增動畫更為順暢](#animation)
-- [後續步驟](#furthersteps)
-
-<a id="prerequisites"></a>
-
 ## <a name="prerequisites"></a>必要條件
 
-本教學課程需要 Visual Studio 2013。
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)具有**ASP.NET 和 web 開發**工作負載。
 
-<a id="createtheproject2013"></a>
+## <a name="set-up-the-project"></a>設定專案
 
-## <a name="create-the-project-and-add-the-signalr-and-jqueryui-nuget-package"></a>建立專案並加入 SignalR 和 JQuery.UI NuGet 封裝
+在本節中，您可以建立 Visual Studio 2017 中的專案。
 
-在本節中，我們將建立 Visual Studio 2013 中的專案。
+本節說明如何使用 Visual Studio 2017 來建立空白的 ASP.NET Web 應用程式並新增之 SignalR 和 jQuery.UI 程式庫。
 
-下列步驟使用 Visual Studio 2013 建立 ASP.NET 空白 Web 應用程式並將新增之 SignalR 和 jQuery.UI 程式庫：
+1. 在 Visual Studio 中建立 ASP.NET Web 應用程式。
 
-1. 在 Visual Studio 建立 ASP.NET Web 應用程式。
+    ![建立 web](tutorial-high-frequency-realtime-with-signalr/_static/image1.png)
 
-    ![建立 web](tutorial-high-frequency-realtime-with-signalr/_static/image2.png)
-2. 在 **新增 ASP.NET 專案** 視窗中，保持**空白**選取，然後按一下 **建立專案**。
+1. 在 [**新增 ASP.NET Web 應用程式-MoveShapeDemo** ] 視窗中，保持**空白**，並選取 **[確定]**。
 
-    ![建立空白網站](tutorial-high-frequency-realtime-with-signalr/_static/image3.png)
-3. 在 **方案總管**，以滑鼠右鍵按一下專案，然後選取**新增 |SignalR Hub 類別 (v2)**。 將類別命名為**MoveShapeHub.cs**並將它新增至專案。 這個步驟會建立**MoveShapeHub**類別，並將一組指令碼檔案和支援 SignalR 的組件參考加入至專案。
+1. 在 **方案總管**，以滑鼠右鍵按一下專案，然後選取**新增** > **新項目**。
 
-    > [!NOTE]
-    > 您也可以新增至專案 SignalR，依序按一下**工具 > NuGet 套件管理員 > Package Manager Console**並執行命令：
+1. 在 **加入新項目-MoveShapeDemo**，選取**已安裝** > **Visual C#**   >  **Web**  > **SignalR** ，然後選取**SignalR Hub 類別 (v2)**。
 
-    `install-package Microsoft.AspNet.SignalR`.
+1. 將類別命名為*MoveShapeHub*並將它新增至專案。
 
-    如果您可以使用主控台來新增 SignalR，建立 SignalR hub 類別做為個別的步驟之後新增 SignalR。
-4. 按一下 **工具 > NuGet 套件管理員 > Package Manager Console**。 在 [套件管理員] 視窗中，執行下列命令：
+    這個步驟會建立*MoveShapeHub.cs*類別檔案。 同時，它會新增一組指令碼檔案和專案支援 SignalR 的組件參考。
 
-    `Install-Package jQuery.UI.Combined`
+1. 選取 **工具** > **NuGet 套件管理員** > **Package Manager Console**。
 
-    這會安裝 jQuery UI 程式庫，您將用來製作圖案動畫。
-5. 在 **方案總管 中**展開指令碼 節點。 適用於 jQuery、 jQueryUI 及 SignalR 的指令碼程式庫會顯示在專案中。
+1. 在  **Package Manager Console**，執行下列命令：
 
-    ![指令碼程式庫參考](tutorial-high-frequency-realtime-with-signalr/_static/image4.png)
+    ```console
+    Install-Package jQuery.UI.Combined
+    ```
 
-<a id="baseapp"></a>
+    此命令會安裝 jQuery UI 程式庫。 您可以使用它來製作圖案動畫。
+
+1. 在 [**方案總管] 中**，展開 [指令碼] 節點。
+
+    ![指令碼程式庫參考](tutorial-high-frequency-realtime-with-signalr/_static/image2.png)
+
+    適用於 jQuery、 jQueryUI 及 SignalR 的指令碼程式庫會顯示在專案中。
 
 ## <a name="create-the-base-application"></a>建立基底的應用程式
 
-在本節中，我們將建立每個滑鼠移動事件期間，將形狀的位置傳送至伺服器的瀏覽器應用程式。 伺服器然後廣播給所有其他連接的用戶端的這項資訊是在接收。 我們將探討在稍後的章節中的此應用程式。
+在本節中，您可以建立瀏覽器應用程式。 應用程式會每個滑鼠移動事件期間，將形狀的位置傳送至伺服器。 伺服器會廣播到所有其他連線的用戶端即時的這項資訊。 您進一步了解此應用程式在稍後的章節。
 
-1. 如果您尚未建立 MoveShapeHub.cs 類別中**方案總管**，以滑鼠右鍵按一下專案，然後選取**新增**，**類別...**.將類別命名為**MoveShapeHub**然後按一下**新增**。
-2. 在新程式碼取代**MoveShapeHub**為下列程式碼的類別。
+1. 開啟*MoveShapeHub.cs*檔案。
+
+1. 中的程式碼取代*MoveShapeHub.cs*這段程式碼檔案：
 
     [!code-csharp[Main](tutorial-high-frequency-realtime-with-signalr/samples/sample1.cs)]
 
-    `MoveShapeHub`上述類別會實作 SignalR hub。 依照[開始使用 SignalR](tutorial-getting-started-with-signalr.md)教學課程中，中樞都有在用戶端會直接呼叫的方法。 在此情況下，用戶端會傳送物件，其中包含新的伺服器，然後取得傳播到所有其他連線的用戶端 圖形的 X 和 Y 座標。 SignalR 將自動序列化此物件，使用 JSON。
+1. 儲存檔案。
 
-    物件，將會傳送至用戶端 (`ShapeModel`) 包含要儲存圖形的位置的成員。 在伺服器上物件的版本也包含成員，才能追蹤用戶端的資料儲存，以便指定用戶端將不會傳送自己的資料。 這個成員會使用`JsonIgnore`以防止它被序列化並傳送至用戶端的屬性。
+`MoveShapeHub`類別是實作 SignalR hub。 依照[開始使用 SignalR](tutorial-getting-started-with-signalr.md)教學課程中，中樞都有在用戶端直接呼叫的方法。 在此情況下，於物件，使用新的 X 和 Y 座標的圖形，以伺服器的用戶端傳送。 這些座標取得傳播到所有其他連線的用戶端。 SignalR 會自動將序列化此物件，使用 JSON。
 
-<a id="startup2013"></a>
-## <a name="starting-the-hub-when-the-application-starts"></a>應用程式啟動時啟動的中樞
+應用程式傳送`ShapeModel`給用戶端的物件。 它有成員，以儲存圖形的位置。 在伺服器上物件的版本也有成員，才能追蹤用戶端的資料儲存。 此物件會防止伺服器將用戶端的資料傳送至本身。 這個成員會使用`JsonIgnore`屬性將序列化資料，將它傳送回用戶端應用程式。
 
-1. 接下來，我們會設定對應至中樞應用程式啟動時。 在 SignalR 2 中，這是藉由新增 OWIN 啟動類別，稱之為`MapSignalR`時的啟動類別`Configuration`OWIN 啟動時，執行方法。 OWIN 的啟動類別加入使用`OwinStartup`組件屬性。
+## <a name="map-to-the-hub-when-app-starts"></a>應用程式啟動時，對應到中樞
 
-    在 **方案總管**，以滑鼠右鍵按一下專案，然後按一下 **新增 |OWIN 啟動類別**。 將類別命名為*啟始*，按一下 **確定**。
-2. 變更 Startup.cs 的內容所示：
+接下來，您對應至中樞時設定應用程式啟動。 SignalR 2 中新增 OWIN 啟動類別，將會建立對應。
+
+1. 在 **方案總管**，以滑鼠右鍵按一下專案，然後選取**新增** > **新項目**。
+
+1. 在 **加入新項目-MoveShapeDemo**選取**已安裝** > **Visual C#**   >  **Web** ，然後選取  **OWIN 啟動類別**。
+
+1. 將類別命名為*啟始*，然後選取**確定**。
+
+1. 取代預設的程式碼中*Startup.cs*這段程式碼檔案：
 
     [!code-csharp[Main](tutorial-high-frequency-realtime-with-signalr/samples/sample2.cs)]
 
-<a id="client"></a>
-## <a name="adding-the-client"></a>新增用戶端
+OWIN 啟動類別呼叫`MapSignalR`應用程式在執行時`Configuration`方法。 應用程式新增至 OWIN 的啟動類別處理使用`OwinStartup`組件屬性。
 
-1. 接下來，我們將新增用戶端。 在 **方案總管**，以滑鼠右鍵按一下專案，然後按一下 **新增 |新的項目**。 在 **加入新項目**對話方塊中，選取**Html 網頁**。 將頁面命名**Default.html**然後按一下**新增**。
-2. 在 **方案總管**，以滑鼠右鍵按一下您剛建立的網頁，然後按一下**設定為起始頁**。
-3. HTML 網頁中的預設程式碼取代為下列程式碼片段。
+## <a name="add-the-client"></a>新增用戶端
 
-    > [!NOTE]
-    > 確認指令碼參照以下相符項目新增至您的專案，在指令碼 資料夾中的封裝。
+加入 HTML 網頁用戶端。
 
-    [!code-html[Main](tutorial-high-frequency-realtime-with-signalr/samples/sample3.html)]
+1. 在 **方案總管**，以滑鼠右鍵按一下專案，然後選取**新增** > **HTML 網頁**。
 
-    上述的 HTML 和 JavaScript 程式碼會建立紅色的 Div 稱為圖形、 啟用圖形的拖曳行為使用 jQuery 程式庫，並使用圖形的`drag`圖形的位置傳送至伺服器的事件。
-4. 按 f5 鍵啟動應用程式。 複製頁面的 URL，並將它貼到第二個瀏覽器視窗。 將圖形拖曳其中一個瀏覽器視窗中：其他瀏覽器視窗內圖案應該一併移動。
+1. 將頁面命名**預設**，然後選取**確定**。
 
-    ![應用程式視窗](tutorial-high-frequency-realtime-with-signalr/_static/image5.png)
+1. 在 [**方案總管] 中**，以滑鼠右鍵按一下*Default.html* ，然後選取**設定為起始頁**。
 
-<a id="clientloop"></a>
+1. 取代預設的程式碼中*Default.html*這段程式碼檔案：
+
+    [!code-html[Main](tutorial-high-frequency-realtime-with-signalr/samples/sample3.html?highlight=14-16)]
+
+1. 在 **方案總管**，展開**指令碼**。
+
+    JQuery 和 SignalR 的指令碼程式庫會顯示在專案中。
+
+    > [!IMPORTANT]
+    > 套件管理員安裝新版 SignalR 指令碼。
+
+1. 更新程式碼區塊，以對應至專案中的指令碼檔案的版本中的指令碼參考。
+
+此 HTML 和 JavaScript 程式碼會建立紅色`div`稱為`shape`。 它可讓使用 jQuery 程式庫的圖形的拖曳行為，並使用`drag`圖形的位置傳送至伺服器的事件。
+
+## <a name="run-the-app"></a>執行應用程式
+
+您可以執行應用程式到 se'e 它運作。 當您瀏覽器視窗周圍拖曳圖形時，圖案會移動其他瀏覽器中太。
+
+1. 在工具列中，開啟**指令碼偵錯**，然後選取 偵錯模式中執行應用程式的 播放 按鈕。
+
+    ![使用者開啟偵錯模式，然後選取 [播放] 的螢幕擷取畫面。](tutorial-high-frequency-realtime-with-signalr/_static/image3.png)
+
+    瀏覽器視窗隨即開啟的右上角的紅色圖形。
+
+1. 複製頁面的 URL。
+
+1. 開啟另一個瀏覽器，並將 URL 貼到 [網址] 列。
+
+1. 其中一種瀏覽器視窗中拖曳圖形。 遵循其他瀏覽器視窗中的圖形。
+
+雖然應用程式使用這個方法的函式，它不是建議的程式設計模型。 取得傳送的訊息數目沒有上限。 如此一來，用戶端和伺服器無法取得應付訊息，並降低效能。 此外，應用程式會顯示在用戶端上脫離的動畫。 因為，圖形會在每個方法所立即移，則會發生此不穩定的動畫。 最好是如果，圖形會順暢地移至每個新的位置。 接下來，您會了解如何修正這些問題。
 
 ## <a name="add-the-client-loop"></a>新增用戶端迴圈
 
-由於傳送每一個滑鼠移動事件形狀的位置，會建立網路流量不需要數量，將訊息從用戶端就必須進行節流處理。 我們將使用 javascript`setInterval`函式來設定迴圈，將新的位置資訊傳送到伺服器以固定費率。 這個迴圈是功能的 「 遊戲迴圈 」，重複呼叫的函式的磁碟機的所有遊戲或其他模擬非常基本表示法。
+傳送每一個滑鼠移動事件形狀的位置，會建立不必要的網路傳輸量。 應用程式必須進行節流處理來自用戶端的訊息。
 
-1. 更新用戶端中的程式碼的 HTML 網頁，以符合下列程式碼片段。
+使用 javascript`setInterval`函式來設定迴圈，將新的位置資訊傳送到伺服器以固定費率。 這個迴圈是基本的表示法的 「 遊戲迴圈 」。 它會重複呼叫的函式的磁碟機的遊戲的所有功能。
 
-    [!code-html[Main](tutorial-high-frequency-realtime-with-signalr/samples/sample4.html)]
+1. 中的用戶端程式碼取代*Default.html*這段程式碼檔案：
 
-    上述的更新新增了`updateServerModel`函式，都會呼叫固定的頻率。 此函式會將位置資料傳送到伺服器時`moved`旗標指出是要傳送的新位置資料。
-2. 按 f5 鍵啟動應用程式。 複製頁面的 URL，並將它貼到第二個瀏覽器視窗。 將圖形拖曳其中一個瀏覽器視窗中：其他瀏覽器視窗內圖案應該一併移動。 取得傳送到伺服器的訊息數目會受到節流控制，因為動畫不會顯示為 smooth 上一節。
+    [!code-html[Main](tutorial-high-frequency-realtime-with-signalr/samples/sample4.html?highlight=14-16)]
 
-    ![應用程式視窗](tutorial-high-frequency-realtime-with-signalr/_static/image6.png)
+    > [!IMPORTANT]
+    > 您必須取代指令碼參考一次。 它們必須符合專案中的指令碼的版本。
 
-<a id="serverloop"></a>
+    這個新的程式碼加入`updateServerModel`函式。 它會呼叫在固定的頻率。 函式會將位置資料傳送到伺服器時`moved`旗標指出是要傳送的新位置資料。
+
+1. 選取 [播放] 按鈕，啟動應用程式
+
+1. 複製頁面的 URL。
+
+1. 開啟另一個瀏覽器，並將 URL 貼到 [網址] 列。
+
+1. 其中一種瀏覽器視窗中拖曳圖形。 遵循其他瀏覽器視窗中的圖形。
+
+因為應用程式節流處理的訊息傳送到伺服器時，動畫不會顯示為 smooth 數目未在第一個。
 
 ## <a name="add-the-server-loop"></a>新增伺服器迴圈
 
-在目前的應用程式，從伺服器傳送至用戶端的訊息移通常會將收到。 這會呈現類似的問題，因為出現在用戶端中;訊息可以傳送頻率比所需之連接如此一來可能會淹沒。 本節說明如何更新伺服器實作的計時器，針對外寄訊息的速率進行節流。
+在目前的應用程式，從伺服器傳送至用戶端的訊息移通常在收到。 如我們在用戶端上所見，此網路流量會提供類似的問題。
 
-1. 內容取代`MoveShapeHub.cs`取代為下列程式碼片段。
+應用程式可以比在需要更常傳送訊息。 如此一來連接可能會淹沒。 本節說明如何更新伺服器，以加入計時器，針對外寄訊息的速率進行節流。
+
+1. 內容取代`MoveShapeHub.cs`以下列程式碼：
 
     [!code-csharp[Main](tutorial-high-frequency-realtime-with-signalr/samples/sample5.cs)]
 
-    上述程式碼會展開要新增的用戶端`Broadcaster`類別，節流處理外寄訊息使用`Timer`從.NET framework 類別。
+1. 選取 啟動應用程式的 播放 按鈕。
 
-    由於中樞本身是暫時性 （它會建立每次需要它），`Broadcaster`會建立為單一值。 延遲初始設定 （.NET 4 中引入） 用來延遲其建立，直到有需要確保計時器啟動之前，完全建立第一個 「 中樞 」 執行個體。
+1. 複製頁面的 URL。
 
-    用戶端的呼叫`UpdateShape`函式接著會移出的中樞`UpdateModel`方法，所以它不再接收內送訊息時，立即呼叫。 相反地，您會將用戶端訊息傳送速率為每秒 25 呼叫受`_broadcastLoop`從計時器`Broadcaster`類別。
+1. 開啟另一個瀏覽器，並將 URL 貼到 [網址] 列。
 
-    最後，而不是直接將用戶端方法呼叫從中樞`Broadcaster`類別需要取得目前作業的中樞的參考 (`_hubContext`) 使用`GlobalHost`。
-2. 按 f5 鍵啟動應用程式。 複製頁面的 URL，並將它貼到第二個瀏覽器視窗。 將圖形拖曳其中一個瀏覽器視窗中：其他瀏覽器視窗內圖案應該一併移動。 不會從上一節中，瀏覽器中的可見差異，但會進行節流處理至用戶端傳送的訊息數目。
+1. 其中一種瀏覽器視窗中拖曳圖形。
 
-    ![應用程式視窗](tutorial-high-frequency-realtime-with-signalr/_static/image7.png)
+此程式碼會展開要新增的用戶端`Broadcaster`類別。 新的類別節流處理外寄訊息使用`Timer`從.NET framework 類別。
 
-<a id="animation"></a>
+您最好了解中樞本身是暫時性。 它會建立每次需要它。 因此，應用程式會建立`Broadcaster`為 singleton。 延遲的情況下，它在使用延遲初始設定`Broadcaster`的建立，直到需要為止。 如此一來，可保證應用程式完全建立第一個 「 中樞 」 執行個體，再開始計時器。
 
-## <a name="add-smooth-animation-on-the-client"></a>用戶端上新增動畫更為順暢
+用戶端的呼叫`UpdateShape`函式接著會移出的中樞`UpdateModel`方法。 它不會再呼叫應用程式接收內送訊息時，立即。 相反地，應用程式會將訊息傳送速率為每秒 25 呼叫用戶端。 此程序由管理`_broadcastLoop`從計時器`Broadcaster`類別。
 
-應用程式幾乎已完成，但我們無法讓一個更多改進，圖形用戶端上的移動中移動以回應伺服器的訊息時。 而不是給定伺服器的新位置來設定圖案的位置，我們會使用 JQuery UI 程式庫的`animate`順暢移動圖形，其目前的和新的位置之間的函式。
+最後，而不是直接將用戶端方法呼叫從中樞`Broadcaster`類別需要取得目前作業的參考`_hubContext`中樞。 它會取得與參考`GlobalHost`。
 
-1. 更新用戶端`updateShape`方法看起來像下列反白顯示的程式碼：
+## <a name="add-smooth-animation"></a>新增動畫更為順暢
+
+應用程式幾乎已完成，但我們無法讓多個的其中一項改進。 應用程式移動以回應伺服器訊息用戶端上的圖案。 而不是給定伺服器的新位置來設定圖案的位置，使用 JQuery UI 程式庫的`animate`函式。 它可以將圖案移動其目前的和新的位置之間的順暢。
+
+1. 更新用戶端`updateShape`方法中的*Default.html*檔案看起來像是醒目提示的程式碼：
 
     [!code-html[Main](tutorial-high-frequency-realtime-with-signalr/samples/sample6.html?highlight=33-40)]
 
-    上述程式碼會將圖形從舊位置移到新伺服器所指定的期間 （在本例中為 100 毫秒） 的動畫間隔。 新動畫開始之前，會清除任何在圖形上執行的上一個動畫。
-2. 按 f5 鍵啟動應用程式。 複製頁面的 URL，並將它貼到第二個瀏覽器視窗。 將圖形拖曳其中一個瀏覽器視窗中：其他瀏覽器視窗內圖案應該一併移動。 移動的另一個視窗中的圖形應該會出現較不為移轉的時間，而不是一次設定每個內送訊息會以內插值取代其移動不穩定。
+1. 選取 啟動應用程式的 播放 按鈕。
 
-    ![應用程式視窗](tutorial-high-frequency-realtime-with-signalr/_static/image8.png)
+1. 複製頁面的 URL。
 
-<a id="furthersteps"></a>
+1. 開啟另一個瀏覽器，並將 URL 貼到 [網址] 列。
 
-## <a name="further-steps"></a>後續步驟
+1. 其中一種瀏覽器視窗中拖曳圖形。
 
-在本教學課程中，您已了解如何以程式設計的 SignalR 應用程式，將用戶端與伺服器之間的頻率高的訊息傳送方式。 此通訊架構可用於開發線上遊戲，以及其他的模擬，例如[ShootR 遊戲建立與 SignalR](https://shootr.azurewebsites.net/)。
+移動的另一個視窗中的圖形會顯示較不穩定。 應用程式進行插補其移動移轉時間，而不是每個內送訊息一次設定。
 
-在本教學課程中建立完整的應用程式可以從下載[程式碼庫](https://code.msdn.microsoft.com/SignalR-20-MoveShape-Demo-6285b83a)。
+此程式碼會將圖形從舊位置移至新的。 伺服器會提供形狀的位置的動畫時間間隔期間。 在此情況下，這會是 100 毫秒。 應用程式會清除任何新的動畫開始之前，在圖形上執行的上一個動畫。
 
-若要深入了解 SignalR 開發概念，請瀏覽下列網站 SignalR 原始碼和資源：
+## <a name="additional-resources"></a>其他資源
 
-- [SignalR 專案](http://signalr.net)
-- [SignalR Github 和範例](https://github.com/SignalR/SignalR)
-- [SignalR Wiki](https://github.com/SignalR/SignalR/wiki)
+只是您已了解的通訊架構可用於開發線上遊戲，以及其他的模擬，像是[ShootR 遊戲建立與 SignalR](https://shootr.azurewebsites.net/)。
 
-如需如何部署至 Azure 的 SignalR 應用程式的逐步解說，請參閱 <<c0> [ 使用 Azure App Service 中的 Web 應用程式的使用 SignalR](../deployment/using-signalr-with-azure-web-sites.md)。 如需如何將 Visual Studio web 專案部署至 Windows Azure 網站的詳細資訊，請參閱[Azure App Service 中建立 ASP.NET web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/)。
+如需 SignalR 相關資訊，請參閱下列資源：
+
+* [SignalR 專案](http://signalr.net)
+
+* [SignalR GitHub 和範例](https://github.com/SignalR/SignalR)
+
+* [SignalR Wiki](https://github.com/SignalR/SignalR/wiki)
+
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您：
+
+> [!div class="checklist"]
+> * 設定專案
+> * 建立基本的應用程式
+> * 應用程式啟動時，對應到中樞
+> * 新增用戶端
+> * 執行應用程式
+> * 新增用戶端迴圈
+> * 新增伺服器迴圈
+> * 已新增的動畫更為順暢
+
+請前往下一篇文章，以了解如何建立會使用 ASP.NET SignalR 2 提供伺服器廣播的功能的 web 應用程式。
+> [!div class="nextstepaction"]
+> [SignalR 2 及伺服器廣播](tutorial-server-broadcast-with-signalr.md)

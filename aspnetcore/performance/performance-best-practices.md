@@ -4,14 +4,14 @@ author: mjrousos
 description: ASP.NET Core 應用程式中的效能和避免常見效能問題的秘訣。
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
-ms.date: 11/29/2018
+ms.date: 1/9/2019
 uid: performance/performance-best-practices
-ms.openlocfilehash: 9f3ed97bf4d4eb371ff5ae3874234b44745cc4ca
-ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
+ms.openlocfilehash: 25aa4c1e22ead7db4775c6e5e81b6fd627c6d7a6
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618112"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099061"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>ASP.NET Core 效能最佳做法
 
@@ -19,8 +19,7 @@ ms.locfileid: "52618112"
 
 本主題提供指導方針的效能與 ASP.NET Core 的最佳作法。
 
-<a name="hot"></a>
-<!-- TODO review hot code paths is jargon that won't MT (machine translate) and is not well defined for native speakers. --> 本文件中，程式碼路徑定義為程式碼路徑，常被稱為和大部分的執行時間發生的位置。 熱門的程式碼路徑通常會限制應用程式向外延展與效能。
+<a name="hot"></a> 本文件中，程式碼路徑定義為程式碼路徑，常被稱為和大部分的執行時間發生的位置。 熱門的程式碼路徑通常會限制應用程式向外延展與效能。
 
 ## <a name="cache-aggressively"></a>積極地快取
 
@@ -129,6 +128,10 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 * **請勿**使用 ASP.NET Core[內建支援](xref:client-side/bundling-and-minification)包裝和縮小用戶端資產。
 * **請勿**之類的其他協力廠商工具，請考慮[Gulp](uid:client-side/bundling-and-minification#consume-bundleconfigjson-from-gulp)或是[Webpack](https://webpack.js.org/)針對更複雜的用戶端資產管理。
+
+## <a name="compress-responses"></a>壓縮回應
+
+ 減少回應的大小通常應用程式的回應速度通常會大幅增加。 減少承載大小的方法之一是壓縮應用程式的回應。 如需詳細資訊，請參閱 <<c0> [ 回應壓縮](xref:performance/response-compression)。
 
 ## <a name="use-the-latest-aspnet-core-release"></a>使用最新的 ASP.NET Core 版本
 

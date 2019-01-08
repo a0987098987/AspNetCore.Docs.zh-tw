@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 09/21/2018
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 9c541644d276bbdc990bb01f8bd80c92862cd6f0
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: 6d0365b103572d6059ce61c54b9b3406da9e5bd4
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284613"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098697"
 ---
 # <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>在 web Api 與 Azure Active Directory B2C 在 ASP.NET Core 中的驗證
 
@@ -157,8 +157,8 @@ Postman 會模擬來自 Azure AD B2C 租用戶取得權杖的 web 應用程式�
     ![401 未授權的回應](./azure-ad-b2c-webapi/postman-401-status.png)
 
 > [!IMPORTANT]
-> 如果您收到 「 無法取得任何回應 」 的錯誤，您可能需要停用中的 SSL 憑證驗證[Postman 設定](https://learning.getpostman.com/docs/postman/launching_postman/settings)。 
- 
+> 如果您收到 「 無法取得任何回應 」 的錯誤，您可能需要停用中的 SSL 憑證驗證[Postman 設定](https://learning.getpostman.com/docs/postman/launching_postman/settings)。
+
 ### <a name="obtain-a-bearer-token"></a>取得持有人權杖
 
 若要讓 web API 已驗證的要求，持有人權杖是必要的。 Postman 可方便在登入 Azure AD B2C 租用戶，並取得權杖。

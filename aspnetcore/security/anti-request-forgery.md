@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: c4a512e5518380f5f0a43d08cd0bcba2f8c26141
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 3c1ea8f41eb6ed847bf24141ef0ae0c7e03d8a79
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207663"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099217"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>ASP.NET Core 中的防止跨網站要求偽造 (XSRF/CSRF) 攻擊
 
@@ -225,7 +225,7 @@ services.AddAntiforgery(options =>
 | [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | 在 cookie 上設定的路徑。 這個屬性已經過時，將在未來版本中移除。 建議的替代做法是 Cookie.Path。 |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | 防偽系統用來呈現檢視中的防偽語彙基元的隱藏的表單欄位名稱。 |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | 防偽系統所使用的標頭名稱。 如果`null`，系統會考慮只表單資料。 |
-| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | 指定是否需要 SSL，則防偽系統。 如果`true`，非 SSL 要求會失敗。 預設值為 `false`。 這個屬性已經過時，將在未來版本中移除。 建議的替代做法是將 Cookie.SecurePolicy。 |
+| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | 指定防偽系統是否需要 HTTPS。 如果`true`，非 HTTPS 的要求會失敗。 預設值為 `false`。 這個屬性已經過時，將在未來版本中移除。 建議的替代做法是將 Cookie.SecurePolicy。 |
 | [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | 指定是否要隱藏產生`X-Frame-Options`標頭。 根據預設，標頭會產生含有"Sameorigin 所"的值。 預設值為 `false`。 |
 
 ::: moniker-end

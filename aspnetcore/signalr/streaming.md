@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/14/2018
 uid: signalr/streaming
-ms.openlocfilehash: 6d5f707bd2a37e1999c6e87e3cfc369aa0301207
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: e0d201a7ffebbbe387a874c6d788994faa2be7a5
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708435"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098801"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>使用資料流在 ASP.NET Core SignalR
 
@@ -27,20 +27,20 @@ ASP.NET Core SignalR 支援資料流的伺服器方法的傳回值。 這是適�
 中樞的方法會自動變成資料流處理的中樞方法傳回時`ChannelReader<T>`或`Task<ChannelReader<T>>`。 以下是此範例示範的資料串流到用戶端的基本概念。 每當物件寫入`ChannelReader`該物件會立即傳送至用戶端。 在結束時，`ChannelReader`完成告知用戶端的資料流已關閉。
 
 > [!NOTE]
-> 寫入`ChannelReader`在背景執行緒，然後傳回`ChannelReader`儘速。 其他中樞引動過程將會遭到封鎖，直到`ChannelReader`會傳回。
+> * 寫入`ChannelReader`在背景執行緒，然後傳回`ChannelReader`儘速。 其他中樞引動過程將會遭到封鎖，直到`ChannelReader`會傳回。
+> * 包裝您的邏輯中`try ... catch`並完成`Channel`在 catch 和外部 catch 以確保中樞方法叫用正確地完成。
 
 ::: moniker range="= aspnetcore-2.1"
 
-[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.aspnetcore21.cs?range=12-36)]
+[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.aspnetcore21.cs?name=snippet1)]
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.2"
 
-[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.cs?range=11-35)]
+[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.cs?name=snippet1)]
 
-> [!NOTE]
-> 在 ASP.NET Core 2.2 或更新版本，串流處理中樞方法可以接受`CancellationToken`從資料流的用戶端取消訂閱時，會觸發的參數。 若要停止伺服器作業，並釋放任何資源，如果用戶端中斷連線的資料流結束前使用此權杖。
+在 ASP.NET Core 2.2 或更新版本，串流處理中樞方法可以接受`CancellationToken`從資料流的用戶端取消訂閱時，會觸發的參數。 若要停止伺服器作業，並釋放任何資源，如果用戶端中斷連線的資料流結束前使用此權杖。
 
 ::: moniker-end
 

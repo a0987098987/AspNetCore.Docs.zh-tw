@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: seodec18
 uid: security/authentication/2fa
-ms.openlocfilehash: 6f20928b0dec9b235fa17c1b44c81a48d031e9e0
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 48bfc50378fc0ec212f5b9d4e7ce05bb4fc97b9d
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121657"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098883"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>使用 ASP.NET Core 中的 SMS 的雙因素驗證
 
@@ -27,15 +27,15 @@ ms.locfileid: "53121657"
 
 ## <a name="create-a-new-aspnet-core-project"></a>建立新的 ASP.NET Core 專案
 
-建立新的 ASP.NET Core web app，名為`Web2FA`與個別使用者帳戶。 請依照下列中的指示[ASP.NET Core 應用程式中強制使用 SSL](xref:security/enforcing-ssl)設定，並要求使用 SSL。
+建立新的 ASP.NET Core web app，名為`Web2FA`與個別使用者帳戶。 請依照下列中的指示<xref:security/enforcing-ssl>設定，並需要 HTTPS。
 
 ### <a name="create-an-sms-account"></a>建立 SMS 帳戶
 
-從建立 SMS 帳戶，例如[twilio](https://www.twilio.com/)或是[ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/)。 記錄的驗證認證 (twilio: accountSid 和 authToken，如 ASPSMS： 使用者金鑰和密碼)。
+從建立 SMS 帳戶，例如[twilio](https://www.twilio.com/)或是[ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/)。 記錄的驗證認證 (twilio: accountSid 和 authToken，如 ASPSMS:使用者金鑰和密碼）。
 
 #### <a name="figuring-out-sms-provider-credentials"></a>找出 SMS 提供者認證
 
-**Twilio:** 從您的 Twilio 帳戶的 [儀表板] 索引標籤中，複製**Account SID**並**驗證權杖**。
+**Twilio:** 從您的 Twilio 帳戶的 [儀表板] 索引標籤中，複製**帳戶 SID**並**驗證權杖**。
 
 **ASPSMS:** 從您的帳戶設定，瀏覽至**Userkey** ，並將其連同複製您**密碼**。
 
@@ -43,9 +43,9 @@ ms.locfileid: "53121657"
 
 #### <a name="specifying-senderid--originator"></a>指定寄件者識別碼 / 建立者
 
-**Twilio:** 數字 索引標籤上，複製您的 Twilio**電話號碼**。
+**Twilio:** 從數字] 索引標籤上，複製 [您的 Twilio**電話號碼**。
 
-**ASPSMS:** 內 解除鎖定的建立者 功能表中，解除鎖定一或多個建立者，或選擇 英數字元的建立者 （不支援所有的網路）。
+**ASPSMS:** 在 解除鎖定的建立者 功能表中，解除鎖定一或多個建立者，或選擇 英數字元的建立者 （不支援所有的網路）。
 
 我們稍後會儲存這個值與機碼內的 「 密碼管理員 」 工具`SMSAccountFrom`。
 
@@ -136,7 +136,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ## <a name="account-lockout-for-protecting-against-brute-force-attacks"></a>防止暴力密碼破解攻擊的帳戶鎖定
 
-帳戶鎖定被建議使用於 2FA。 一旦使用者登入時透過本機帳戶或社交帳戶，則會儲存 2FA 在每次失敗的嘗試。 如果達到最大失敗的存取嘗試時，使用者會被封鎖 (預設值： 5 存取嘗試失敗後的 5 分鐘鎖定)。 驗證成功重設失敗的存取嘗試次數和重設時鐘。 存取嘗試失敗的最大值，而且可以使用設定鎖定時間[MaxFailedAccessAttempts](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.maxfailedaccessattempts)並[DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan)。 下列組態會設定帳戶鎖定的存取嘗試失敗 10 後 10 分鐘的時間：
+帳戶鎖定被建議使用於 2FA。 一旦使用者登入時透過本機帳戶或社交帳戶，則會儲存 2FA 在每次失敗的嘗試。 如果達到最大失敗的存取嘗試時，使用者會被封鎖 (預設值：5 分鐘後鎖定 5 存取嘗試失敗）。 驗證成功重設失敗的存取嘗試次數和重設時鐘。 存取嘗試失敗的最大值，而且可以使用設定鎖定時間[MaxFailedAccessAttempts](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.maxfailedaccessattempts)並[DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan)。 下列組態會設定帳戶鎖定的存取嘗試失敗 10 後 10 分鐘的時間：
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet2&highlight=13-17)]
 

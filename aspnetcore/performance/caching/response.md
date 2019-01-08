@@ -3,14 +3,14 @@ title: ASP.NET Core 中的回應快取
 author: rick-anderson
 description: 了解如何使用回應快取來降低頻寬需求，並提升 ASP.NET Core 應用程式的效能。
 ms.author: riande
-ms.date: 09/20/2017
+ms.date: 01/07/2018
 uid: performance/caching/response
-ms.openlocfilehash: 99093cd281ffa8dddc574dc27254c0175e2651b3
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 5fbcaddff6e53d01a19ba8a7455c719feb614326
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207364"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098944"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core 中的回應快取
 
@@ -23,7 +23,7 @@ ms.locfileid: "50207364"
 
 回應快取可減少用戶端或 proxy 會向 web 伺服器提出的要求數目。 回應快取也可以減少 web 伺服器執行產生回應的工作。 回應快取是由指定您想用戶端、 proxy 和中的介軟體來快取回應標頭來控制。
 
-Web 伺服器可以快取的回應，當您將新增[回應快取中介軟體](xref:performance/caching/middleware)。
+[ResponseCache 屬性](#responsecache-attribute)參與設定快取標頭，快取的回應時，可能會接受用戶端的回應。 [回應快取中介軟體](xref:performance/caching/middleware)可以用來在伺服器上的快取回應。 中介軟體可以使用`ResponseCache`屬性來影響伺服器端快取行為的內容。
 
 ## <a name="http-based-response-caching"></a>以 HTTP 為基礎的回應快取
 
@@ -35,9 +35,9 @@ Web 伺服器可以快取的回應，當您將新增[回應快取中介軟體](x
 | --------------------------------------------------------------- | ------ |
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | 快取可以儲存回應。 |
 | [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | 回應不能儲存的共用快取。 私用快取可以儲存和重複使用的回應。 |
-| [max-age](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | 用戶端不會接受的回應其年齡大於指定的秒數。 範例： `max-age=60` （60 秒）， `max-age=2592000` （1 個月） |
-| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **在要求上**： 快取必須使用預存的回應來滿足要求。 注意： 用戶端中，原始伺服器重新產生的回應和中介軟體會更新其快取中的預存的回應。<br><br>**在回應上**： 回應絕不會用於後續的要求，而不需在來源伺服器上的驗證。 |
-| [no-store](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **在要求上**： 快取不得儲存要求。<br><br>**在回應上**： 快取不得儲存回應的任何部分。 |
+| [max-age](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | 用戶端不會接受的回應其年齡大於指定的秒數。 例如：`max-age=60` （60 秒）， `max-age=2592000` （1 個月） |
+| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **在要求上**:快取來滿足要求，絕不能使用的預存的回應。 注意:原始伺服器重新產生回應的用戶端和中介軟體會更新其快取中的預存的回應。<br><br>**在回應上**:回應不必須用於後續的要求，而不需在來源伺服器上的驗證。 |
+| [no-store](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **在要求上**:快取不得儲存要求。<br><br>**在回應上**:快取不得儲存回應的任何部分。 |
 
 其他扮演的角色中快取的快取標頭會顯示下表中。
 
@@ -54,7 +54,7 @@ Web 伺服器可以快取的回應，當您將新增[回應快取中介軟體](x
 
 一律接受用戶端`Cache-Control`才有您考慮的目標 HTTP 快取要求標頭強大的意義。 正式規格，在快取的目的在於降低跨網路的用戶端、 proxy 和伺服器滿足要求的延遲和網路額外負荷。 它不一定是控制原始伺服器上的負載的方式。
 
-沒有任何目前開發人員控制這個快取的行為時使用[回應快取中介軟體](xref:performance/caching/middleware)因為中介軟體會遵守官方快取規格。 [未來的增強功能中, 介軟體](https://github.com/aspnet/ResponseCaching/issues/96)允許設定要略過要求的中介軟體`Cache-Control`時決定要做為快取回的應標頭。 這會讓您將以您的伺服器更能控制負載時使用的中介軟體。
+沒有此快取的行為沒有開發人員控制使用時[回應快取中介軟體](xref:performance/caching/middleware)因為中介軟體會遵守官方快取規格。 [計劃中介軟體的增強功能](https://github.com/aspnet/AspNetCore/issues/2612)是設定來略過要求的中介軟體的好機會`Cache-Control`時決定要做為快取回的應標頭。 計劃的增強功能提供更好的控制伺服器負載的機會。
 
 ## <a name="other-caching-technology-in-aspnet-core"></a>ASP.NET Core 中的其他快取技術
 
@@ -91,7 +91,7 @@ Web 伺服器可以快取的回應，當您將新增[回應快取中介軟體](x
 
 [VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys)查詢金鑰之指定清單的值而異的預存的回應。 單一值時`*`是所有的回應要求查詢字串參數提供中介軟體而異。 `VaryByQueryKeys` 需要 ASP.NET Core 1.1 或更新版本。
 
-必須啟用回應快取中介軟體，才能設定`VaryByQueryKeys`屬性; 否則會擲回執行階段例外狀況。 沒有對應的 HTTP 標頭，如`VaryByQueryKeys`屬性。 回應快取中介軟體處理一項 HTTP 功能屬性。 做為快取回的應中介軟體，查詢字串和查詢字串值必須符合先前的要求。 例如，請考慮要求和下表所示的結果的順序。
+[回應快取中介軟體](xref:performance/caching/middleware)必須設定啟用`VaryByQueryKeys`屬性; 否則會擲回執行階段例外狀況。 沒有對應的 HTTP 標頭，如`VaryByQueryKeys`屬性。 回應快取中介軟體處理一項 HTTP 功能屬性。 做為快取回的應中介軟體，查詢字串和查詢字串值必須符合先前的要求。 例如，請考慮要求和下表所示的結果的順序。
 
 | 要求                          | 結果                   |
 | -------------------------------- | ------------------------ |

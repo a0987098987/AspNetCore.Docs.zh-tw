@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: b15c6b5ac77f047c40704c9e164165c55b6ae93b
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 0c3add9c8860a47932cda3a8b07c83dc774bf1f1
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861520"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098970"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制使用 ASP.NET Core 中的 HTTPS
 
@@ -69,9 +69,9 @@ ms.locfileid: "52861520"
 
   **索引鍵**: `https_port`  
   **類型**：*string*  
-  **預設**： 未設定預設值。  
+  **預設**:未設定預設值。  
   **設定使用**：`UseSetting`  
-  **環境變數**: `<PREFIX_>HTTPS_PORT` (前置詞`ASPNETCORE_`使用時[Web 主機](xref:fundamentals/host/web-host)。)
+  **環境變數**:`<PREFIX_>HTTPS_PORT` (前置詞`ASPNETCORE_`使用時[Web 主機](xref:fundamentals/host/web-host)。)
 
   設定時<xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder>在`Program`:
 
@@ -98,7 +98,7 @@ ms.locfileid: "52861520"
 
 如果要求轉送的反向 proxy 設定，使用[轉送標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)之前呼叫 HTTPS 重新導向中介軟體。 轉送標頭中介軟體更新`Request.Scheme`，並使用`X-Forwarded-Proto`標頭。 中介軟體允許重新導向 Uri 和其他安全性原則才能正常運作。 轉送標頭中介軟體不使用時後, 端應用程式可能不會收到正確的配置和得到的重新導向迴圈。 常見的使用者錯誤訊息是發生太多的重新導向。
 
-部署至 Azure App Service 時，請依照下列中的指導方針[教學課程： 將現有的自訂 SSL 憑證繫結至 Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl)。
+部署至 Azure App Service 時，請依照下列中的指導方針[教學課程：將現有的自訂 SSL 憑證繫結至 Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl)。
 
 ### <a name="options"></a>選項
 
@@ -192,9 +192,9 @@ ASP.NET Core 2.1 或更新版本會實作 HSTS 與`UseHsts`擴充方法。 下�
 
 `UseHsts` 排除下列 「 回送 」 主控件：
 
-* `localhost` : IPv4 回送位址。
-* `127.0.0.1` : IPv4 回送位址。
-* `[::1]` : IPv6 回送位址。
+* `localhost`：IPv4 回送位址。
+* `127.0.0.1`：IPv4 回送位址。
+* `[::1]`：IPv6 回送位址。
 
 ::: moniker-end
 
@@ -260,7 +260,7 @@ dotnet dev-certs https --help
 ## <a name="additional-information"></a>其他資訊
 
 * <xref:host-and-deploy/proxy-load-balancer>
-* [裝載 ASP.NET Core，Linux 上使用 Apache: SSL 設定](xref:host-and-deploy/linux-apache#ssl-configuration)
-* [裝載 ASP.NET Core，Linux 上使用 Nginx: SSL 設定](xref:host-and-deploy/linux-nginx#configure-ssl)
+* [Linux 上使用 Apache 裝載 ASP.NET Core:HTTPS 設定](xref:host-and-deploy/linux-apache#https-configuration)
+* [Linux 上使用 Nginx 裝載 ASP.NET Core:HTTPS 設定](xref:host-and-deploy/linux-nginx#https-configuration)
 * [如何在 IIS 上設定 SSL](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)
 * [OWASP HSTS 瀏覽器支援](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support)

@@ -2,62 +2,77 @@
 title: 在 ASP.NET Core 中設定 Windows 驗證
 author: scottaddie
 description: 了解如何在 ASP.NET Core，使用 IIS Express、 IIS 和 HTTP.sys 中設定 Windows 驗證。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 12/18/2018
+ms.date: 12/23/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 94dff2f47b2b076cb15f8d385239179b52786678
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 64178c8fce71445fc6a728a236d811484b21e3e0
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637816"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099256"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
-作者：[Steve Smith](https://ardalis.com) 和 [Scott Addie](https://twitter.com/Scott_Addie)
+藉由[Scott Addie](https://twitter.com/Scott_Addie)和[Luke Latham](https://github.com/guardrex)
 
-可以使用 IIS 裝載的 ASP.NET Core 應用程式設定 Windows 驗證或[HTTP.sys](xref:fundamentals/servers/httpsys)。
+[Windows 驗證](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)可以設定與裝載的 ASP.NET Core 應用程式[IIS](xref:host-and-deploy/iis/index)或是[HTTP.sys](xref:fundamentals/servers/httpsys)。
 
-## <a name="windows-authentication"></a>Windows 驗證
-
-Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使用者。 使用 Active Directory 網域身分識別或其他 Windows 帳戶來識別使用者在公司網路中執行您的伺服器時，您可以使用 Windows 驗證。 Windows 驗證最適合內部網路環境中使用者、 用戶端應用程式，以及 web 伺服器屬於相同 Windows 網域。
-
-[深入了解 Windows 驗證並將它安裝為 IIS](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)。
+Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使用者。 使用 Active Directory 網域身分識別或 Windows 帳戶，來識別使用者在公司網路中執行您的伺服器時，您可以使用 Windows 驗證。 Windows 驗證最適合內部網路的環境，其中使用者、 用戶端應用程式，以及網頁伺服器都屬於相同 Windows 網域。
 
 ## <a name="enable-windows-authentication-in-an-aspnet-core-app"></a>啟用 ASP.NET Core 應用程式中的 Windows 驗證
 
-若要支援 Windows 驗證，可以設定 Visual Studio Web 應用程式範本。
+**Web 應用程式**可透過 Visual Studio 或.NET Core CLI 的範本可以設定為支援 Windows 驗證。
 
-### <a name="use-the-windows-authentication-app-template"></a>使用 Windows 驗證應用程式範本
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+### <a name="use-the-windows-authentication-app-template-for-a-new-project"></a>新的專案中使用 Windows 驗證應用程式範本
 
 在 Visual Studio 中：
 
-1. 建立新的 ASP.NET Core Web 應用程式。
-1. 從範本清單中選取 Web 應用程式。
+1. 建立新**ASP.NET Core Web 應用程式**。
+1. 選取  **Web 應用程式**從範本清單。
 1. 選取 **變更驗證**按鈕，然後選取**Windows 驗證**。
 
-執行應用程式。 使用者名稱會出現在右上方的應用程式。
+執行應用程式。 使用者名稱會出現在呈現的應用程式使用者介面。
 
-![Windows 驗證的瀏覽器螢幕擷取畫面](windowsauth/_static/browser-screenshot.png)
+### <a name="manual-configuration-for-an-existing-project"></a>手動設定現有的專案
 
-針對使用 IIS Express 的開發工作，此範本會提供所有必要的組態，若要使用 Windows 驗證。 下一節示範如何手動設定 Windows 驗證的 ASP.NET Core 應用程式。
+專案的屬性可讓您以啟用 Windows 驗證並停用匿名驗證：
 
-### <a name="visual-studio-settings-for-windows-and-anonymous-authentication"></a>Visual Studio 設定 Windows 和匿名驗證
+1. 在 Visual Studio 的專案上按一下滑鼠右鍵**方案總管**，然後選取**屬性**。
+1. 選取 [偵錯] 索引標籤。
+1. 清除核取方塊**啟用匿名驗證**。
+1. 選取核取方塊**啟用 Windows 驗證**。
 
-Visual Studio 專案**屬性**頁面的**偵錯** 索引標籤能提供 Windows 驗證和匿名驗證的核取方塊。
+或者，設定屬性，在`iisSettings`的節點*launchSettings.json*檔案：
 
-![Windows 驗證的瀏覽器螢幕擷取畫面反白顯示的驗證選項](windowsauth/_static/vs-auth-property-menu.png)
+[!code-json[](windowsauth/sample_snapshot/launchSettings.json?highlight=2-3)]
 
-或者，設定這兩個屬性，在*launchSettings.json*檔案：
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-[!code-json[](windowsauth/sample/launchSettings.json?highlight=3-4)]
+使用**Windows 驗證**應用程式範本。
+
+執行[dotnet 新](/dotnet/core/tools/dotnet-new)命令搭配`webapp`引數 （ASP.NET Core Web 應用程式） 和`--auth Windows`切換：
+
+```console
+dotnet new webapp --auth Windows
+```
+
+---
 
 ## <a name="enable-windows-authentication-with-iis"></a>啟用 iis 的 Windows 驗證
 
-IIS 會使用[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)主機 ASP.NET Core 應用程式。 在 IIS 中，應用程式設定 Windows 驗證。 下列各節示範如何使用 IIS 管理員來設定 ASP.NET Core 應用程式以使用 Windows 驗證。
+IIS 會使用[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)主機 ASP.NET Core 應用程式。 Windows 驗證針對透過 IIS *web.config*檔案。 下列各節將示範如何：
+
+* 提供本機*web.config*部署應用程式時，請在伺服器啟動 Windows 驗證的檔案。
+* 使用 IIS 管理員設定*web.config*已經部署到伺服器的 ASP.NET Core 應用程式的檔案。
 
 ### <a name="iis-configuration"></a>IIS 組態
+
+如果您尚未這麼做，請啟用 IIS 可裝載 ASP.NET Core 應用程式。 如需詳細資訊，請參閱<xref:host-and-deploy/iis/index>。
 
 啟用 Windows 驗證的 IIS 角色服務。 如需詳細資訊，請參閱 <<c0> [ 啟用 IIS 角色服務 （請參閱步驟 2） 中的 Windows 驗證](xref:host-and-deploy/iis/index#iis-configuration)。
 
@@ -69,23 +84,53 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
 
 指定的名稱和資料夾，並允許它建立新的應用程式集區。
 
-### <a name="customize-authentication"></a>自訂驗證
+### <a name="enable-windows-authentication-for-the-app-in-iis"></a>啟用 IIS 中的應用程式的 Windows 驗證
 
-開啟站台的驗證功能。
+使用**任一**下列其中一個方法：
 
-![IIS 驗證 功能表](windowsauth/_static/iis-authentication-menu.png)
+* [在之前發佈的應用程式的開發後端設定](#development-side-configuration-with-a-local-webconfig-file)(*建議*)
+* [之後發佈的應用程式的伺服器端設定](#server-side-configuration-with-the-iis-manager)
 
-停用匿名驗證，並啟用 Windows 驗證。
+#### <a name="development-side-configuration-with-a-local-webconfig-file"></a>使用本機 web.config 檔案的開發後端設定
 
-![IIS 驗證設定](windowsauth/_static/iis-auth-settings.png)
+執行下列步驟**之前**您[發佈和部署您的專案](#publish-and-deploy-your-project-to-the-iis-site-folder)。
 
-### <a name="publish-your-project-to-the-iis-site-folder"></a>將專案發佈至 IIS 的站台資料夾
+新增下列*web.config*至專案根目錄的檔案：
 
-使用 Visual Studio 或.NET Core CLI，將應用程式發行至目的資料夾。
+[!code-xml[](windowsauth/sample_snapshot/web_2.config)]
 
-![Visual Studio 發佈對話方塊](windowsauth/_static/vs-publish-app.png)
+專案 sdk 的發行時 (不含`<IsTransformWebConfigDisabled>`屬性設定為`true`專案檔中)，發行*web.config*檔案包含`<location><system.webServer><security><authentication>`一節。 如需詳細資訊`<IsTransformWebConfigDisabled>`屬性，請參閱<xref:host-and-deploy/iis/index#webconfig-file>。
 
-深入了解[發行至 IIS](xref:host-and-deploy/iis/index)。
+#### <a name="server-side-configuration-with-the-iis-manager"></a>伺服器端設定使用 IIS 管理員
+
+執行下列步驟**之後**您[發佈和部署您的專案](#publish-and-deploy-your-project-to-the-iis-site-folder)。
+
+1. 在 [IIS 管理員] 中，選取 IIS 站台之下**站台**節點**連線**資訊看板。
+1. 按兩下**驗證**中**IIS**區域。
+1. 選取 **匿名驗證**。 選取 **停用**中**動作**資訊看板。
+1. 選取  **Windows 驗證**。 選取 **啟用**中**動作**資訊看板。
+
+IIS 管理員在採取這些動作，會修改應用程式的*web.config*檔案。 A`<system.webServer><security><authentication>`節點新增與更新的設定，如`anonymousAuthentication`和`windowsAuthentication`:
+
+[!code-xml[](windowsauth/sample_snapshot/web_1.config?highlight=4-5)]
+
+`<system.webServer>`區段新增至*web.config*由 IIS 管理員中的檔案超出應用程式的`<location>`發佈應用程式時，由.NET Core SDK 加入的區段。 因為區段會新增外部`<location>`節點，設定會由任何繼承[子應用程式](xref:host-and-deploy/iis/index#sub-applications)目前的應用程式。 若要防止繼承，移動加入`<security>`區段內的`<location><system.webServer>`SDK 所提供的一節。
+
+將 IIS 設定使用 IIS 管理員時，它只會影響應用程式的*web.config*伺服器上的檔案。 後續部署應用程式可能會覆寫伺服器上的設定，如果伺服器的複本*web.config*專案的取代*web.config*檔案。 使用**任一**下列其中一個方法來管理設定：
+
+* 使用 IIS 管理員中的設定重設*web.config*檔案之後部署上覆寫該檔案。
+* 新增*web.config 檔案*應用程式在本機使用的設定。 如需詳細資訊，請參閱 <<c0> [ 開發後端設定](#development-side-configuration-with-a-local-webconfig-file)一節。
+
+### <a name="publish-and-deploy-your-project-to-the-iis-site-folder"></a>發行，並將專案部署至 IIS 的站台資料夾
+
+使用 Visual Studio 或.NET Core CLI，發行應用程式並部署到目的資料夾。
+
+如需有關如何使用 IIS 裝載的詳細資訊，發行和部署，請參閱下列主題：
+
+* [dotnet publish](/dotnet/core/tools/dotnet-publish)
+* <xref:host-and-deploy/iis/index>
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/visual-studio-publish-profiles>
 
 啟動應用程式以確認 Windows 驗證正常運作。
 
@@ -93,7 +138,7 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
 
 雖然 Kestrel 不支援 Windows 驗證，您可以使用[HTTP.sys](xref:fundamentals/servers/httpsys)支援在 Windows 上的自我裝載的案例。 下列範例會設定要搭配 Windows 驗證使用 HTTP.sys 的應用程式的 web 主機：
 
-[!code-csharp[](windowsauth/sample/Program2x.cs?highlight=9-14)]
+[!code-csharp[](windowsauth/sample_snapshot/Program.cs?highlight=9-14)]
 
 > [!NOTE]
 > HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerberos 和 HTTP.sys 不支援使用者模式驗證。 必須使用電腦帳戶來解密 Kerberos 權杖/票證，該權杖/票證取自 Active Directory，並由用戶端將其轉送至伺服器來驗證使用者。 請註冊主機的服務主體名稱 (SPN)，而非應用程式的使用者。
@@ -140,8 +185,8 @@ services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
 
 ### <a name="impersonation"></a>模擬
 
-ASP.NET Core 不會實作模擬。 應用程式執行的所有要求，使用應用程式集區或處理序身分識別的應用程式身分識別。 如果您需要明確地執行動作的使用者身分，使用`WindowsIdentity.RunImpersonated`。 在此內容中執行單一動作，然後關閉 內容。
+ASP.NET Core 不會實作模擬。 應用程式執行的所有要求，使用應用程式集區或處理序身分識別的應用程式的身分識別。 如果您需要明確地執行動作的使用者身分，使用[WindowsIdentity.RunImpersonated](xref:System.Security.Principal.WindowsIdentity.RunImpersonated*)中[終端機內嵌中介軟體](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)在`Startup.Configure`。 在此內容中執行單一動作，然後關閉 內容。
 
-[!code-csharp[](windowsauth/sample/Startup.cs?name=snippet_Impersonate&highlight=10-18)]
+[!code-csharp[](windowsauth/sample_snapshot/Startup.cs?highlight=10-19)]
 
-請注意，`RunImpersonated`不支援非同步作業，而不應該用於複雜的案例。 比方說，包裝整個要求或中介軟體鏈結不支援或建議。
+`RunImpersonated` 不支援非同步作業，而不應該用於複雜的案例。 比方說，包裝整個要求或中介軟體鏈結不支援或建議。

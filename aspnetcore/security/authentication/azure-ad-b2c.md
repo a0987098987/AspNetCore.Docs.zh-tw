@@ -5,12 +5,12 @@ description: 了解如何設定 Azure Active Directory B2C 使用 ASP.NET Core �
 ms.date: 01/25/2018
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 73a66cea1533cc835796f673021bfa45c35f5935
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: 2c544475ccd3eb76f2737fec1cf269ac86add372
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893190"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098983"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>使用 Azure Active Directory B2C 在 ASP.NET Core 中的雲端驗證
 
@@ -19,7 +19,7 @@ ms.locfileid: "43893190"
 [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) 是適用於 web 和行動裝置應用程式的雲端身分識別管理解決方案。 服務提供雲端和內部部署中託管的應用程式的驗證。 驗證類型包括個別帳戶，社交網路帳戶，以及同盟企業帳戶。 此外，Azure AD B2C 可提供多重要素驗證，以最低組態。
 
 > [!TIP]
-> Azure Active Directory (Azure AD) 與 Azure AD B2C 是個別的產品供應項目。 Azure AD 租用戶代表組織，而 Azure AD B2C 租用戶代表與信賴憑證者應用程式要使用的身分識別的集合。 若要進一步了解，請參閱[Azure AD B2C： 常見問題集 (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs)。
+> Azure Active Directory (Azure AD) 與 Azure AD B2C 是個別的產品供應項目。 Azure AD 租用戶代表組織，而 Azure AD B2C 租用戶代表與信賴憑證者應用程式要使用的身分識別的集合。 若要進一步了解，請參閱[Azure AD B2C:常見問題集 (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs)。
 
 在本教學課程，了解如何：
 
@@ -66,7 +66,7 @@ ms.locfileid: "43893190"
 
 Visual Studio Web 應用程式範本可以設定要用於驗證的 Azure AD B2C 租用戶。
 
-在 Visual Studio:
+在 Visual Studio 中：
 
 1. 建立新的 ASP.NET Core Web 應用程式。 
 2. 選取  **Web 應用程式**從範本清單。
@@ -96,7 +96,7 @@ Visual Studio Web 應用程式範本可以設定要用於驗證的 Azure AD B2C 
 傳回與仍處於開啟狀態的 B2C 應用程式內容的瀏覽器視窗。 變更暫存**回覆 URL**指定從 Visual Studio 的較早的值複製。 選取 **儲存**視窗的頂端。
 
 > [!TIP]
-> 如果您之前未複製回覆 URL，在 web 專案內容中，使用 [偵錯] 索引標籤的 SSL 位址，並附加**CallbackPath**值從*appsettings.json*。
+> 如果您之前未複製回覆 URL，在 web 專案內容中，使用 HTTPS 位址，從 [偵錯] 索引標籤，並附加**CallbackPath**值從*appsettings.json*。
 
 ## <a name="configure-policies"></a>設定原則
 

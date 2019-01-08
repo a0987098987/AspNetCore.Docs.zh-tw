@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: fa82d3d99f4e4b7ad17ed385fb7c029745797e8d
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: bdba706c1ef24ebe35129cb8bb2d9949196245a1
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637829"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098918"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -59,7 +59,7 @@ ms.locfileid: "53637829"
 
 藉由建立應用程式[scaffolding](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model)下列`Contact`模型：
 
-[!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet)]
+[!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
 此範例包含下列 「 授權 」 處理常式：
 
@@ -314,33 +314,33 @@ dotnet user-secrets set SeedUserPW <PW>
 ## <a name="create-the-starter-app"></a>建立入門應用程式
 
 * 建立名為"ContactManager"Razor 頁面應用程式
-   * 建立應用程式與**個別使用者帳戶**。
-   * 提供名稱"ContactManager"使命名空間符合此範例中使用的命名空間。
-   * `-uld` 指定 LocalDB，而不是 SQLite
+  * 建立應用程式與**個別使用者帳戶**。
+  * 提供名稱"ContactManager"使命名空間符合此範例中使用的命名空間。
+  * `-uld` 指定 LocalDB，而不是 SQLite
 
   ```console
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* 新增*Models\Contact.cs*:
+* 新增*Models/Contact.cs*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
 * Scaffold`Contact`模型。
 * 建立初始移轉並更新資料庫：
 
-```console
-dotnet aspnet-codegenerator razorpage -m Contact -udl -dc ApplicationDbContext -outDir Pages\Contacts --referenceScriptLibraries
-dotnet ef database drop -f
-dotnet ef migrations add initial
-dotnet ef database update
-```
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Contact -udl -dc ApplicationDbContext -outDir Pages\Contacts --referenceScriptLibraries
+  dotnet ef database drop -f
+  dotnet ef migrations add initial
+  dotnet ef database update
+  ```
 
 * 更新**ContactManager**中的錨點*pages/_layout.cshtml*檔案：
 
-```cshtml
-<a asp-page="/Contacts/Index" class="navbar-brand">ContactManager</a>
-```
+  ```cshtml
+  <a asp-page="/Contacts/Index" class="navbar-brand">ContactManager</a>
+  ```
 
 * 測試應用程式建立、 編輯和刪除連絡人
 

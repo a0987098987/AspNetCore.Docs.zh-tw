@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/redis-backplane
-ms.openlocfilehash: 343cb5b2c7ed7162bae7865553a783fea45f0cfb
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: fde7f08ae2310b0b9bf9b7fe25a1dfc4a568adb6
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284463"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099351"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>設定 ASP.NET Core SignalR 向外延展 Redis 後擋板
 
@@ -24,7 +24,10 @@ ms.locfileid: "53284463"
 
 * 部署 Redis 伺服器。
 
-  針對生產用途，Redis 後擋板建議只針對內部部署基礎結構。 若要延遲降至最低，Redis 伺服器應該在相同資料中心與 SignalR 應用程式。 如果您的 SignalR 應用程式正在執行 Azure 雲端中，我們會建議 Azure SignalR 服務，而不是 Redis 後擋板。 您可以使用 Azure Redis 快取服務進行開發和測試環境。 如需詳細資訊，請參閱下列資源：
+  > [!IMPORTANT] 
+  > 針對生產用途，它會在相同的資料中心與 SignalR 應用程式執行時，才建議 Redis 後擋板。 否則，網路延遲會降低效能。 如果您的 SignalR 應用程式正在執行 Azure 雲端中，我們會建議 Azure SignalR 服務，而不是 Redis 後擋板。 您可以使用 Azure Redis 快取服務進行開發和測試環境。
+
+  如需詳細資訊，請參閱下列資源：
 
   * <xref:signalr/scale>
   * [Redis 文件](https://redis.io/)

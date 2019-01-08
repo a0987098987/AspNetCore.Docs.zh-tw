@@ -4,16 +4,16 @@ title: 檢查編輯方法與編輯檢視 |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: riande
-ms.date: 05/22/2015
+ms.date: 01/06/2019
 ms.assetid: 52a4d5fe-aa31-4471-b3cb-a064f82cb791
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 29ece7754bc6e25ea968c25a99a2f48ab837e12c
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 75fd3a7dd55107cbdb9095d5b54b616133b4f65e
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911529"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099392"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>檢查編輯方法與編輯檢視
 ====================
@@ -83,15 +83,19 @@ Scaffold 程式碼使用一些*helper 方法*來簡化 HTML 標記。 [ `Html.La
 
 [ValidateAntiForgeryToken](https://msdn.microsoft.com/library/system.web.mvc.validateantiforgerytokenattribute(v=vs.108).aspx)屬性會驗證[XSRF](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)所產生的語彙基元`@Html.AntiForgeryToken()`檢視中呼叫。
 
-[ASP.NET MVC 模型繫結](https://msdn.microsoft.com/library/dd410405.aspx)採用表單的值，並建立`Movie`物件傳遞為`movie`參數。 `ModelState.IsValid` 方法會驗證表單中提交的資料可用於修改 (編輯或更新) `Movie` 物件。 如果資料是有效的電影資料會儲存至`Movies`的集合`db(MovieDBContext`執行個體)。 新的電影資料會儲存到資料庫，藉由呼叫`SaveChanges`方法的`MovieDBContext`。 儲存資料之後，程式碼將使用者重新導向至 `MoviesController` 類別的 `Index` 動作方法，此方法會顯示電影集合，包括剛剛所進行的變更。
+[ASP.NET MVC 模型繫結](https://msdn.microsoft.com/library/dd410405.aspx)採用表單的值，並建立`Movie`物件傳遞為`movie`參數。 `ModelState.IsValid`表單中提交的資料可用來修改 （編輯或更新） 會確認`Movie`物件。 如果資料是有效的電影資料會儲存至`Movies`的集合`db`(`MovieDBContext`執行個體)。 新的電影資料會儲存到資料庫，藉由呼叫`SaveChanges`方法的`MovieDBContext`。 儲存資料之後，程式碼將使用者重新導向至 `MoviesController` 類別的 `Index` 動作方法，此方法會顯示電影集合，包括剛剛所進行的變更。
 
-只要用戶端驗證會決定欄位的值不是有效，則會顯示一則錯誤訊息。 如果您停用 JavaScript，就不需要用戶端驗證，但是伺服器會偵測到已張貼的值不是有效的並會重新顯示表單值，並顯示錯誤訊息。 稍後在本教學課程中，我們會檢視更詳細的驗證。
+只要用戶端驗證會決定欄位的值不是有效的則會顯示一則錯誤訊息。 JavaScript 已停用，則會停用用戶端驗證。 不過，在伺服器偵測到已張貼的值不是有效的並使用錯誤訊息就會重新顯示表單值。
+
+稍後在本教學課程中，驗證會檢查在更多詳細資料。
 
 `Html.ValidationMessageFor`中的協助程式*Edit.cshtml*檢視範本負責顯示適當的錯誤訊息。
 
 ![abcNotValid](examining-the-edit-methods-and-edit-view/_static/image4.png)
 
 所有`HttpGet`方法遵循類似的模式。 他們會取得電影物件 (或物件的清單，這種案例`Index`)，並將模型傳遞至檢視。 `Create`方法會將空白電影物件傳遞給建立檢視。 建立、編輯、刪除或以其他方式修改資料的所有方法都會在方法的 `HttpPost` 多載中執行這個動作。 修改資料中的 HTTP GET 方法會造成安全性風險，部落格張貼文章中所述[ASP.NET MVC 秘訣 #46 – 不使用刪除連結，因為它們會造成安全性漏洞](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx)。 修改的 GET 方法中的資料也會違反 HTTP 最佳做法和架構[REST](http://en.wikipedia.org/wiki/Representational_State_Transfer)模式指定 GET 要求不應該變更應用程式的狀態。 也就是說，執行 GET 作業應該是安全的作業，沒有任何副作用，而且不會修改您的保存資料。
+
+## <a name="jquery-validation-for-non-english-locales"></a>jQuery 驗證的非英文地區設定
 
 如果您使用的英文 （美國） 的電腦，您可以略過本節並移至下一個教學課程。 您可以下載本教學課程的 Globalize 新版[此處](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=16475)。 如需國際化的絕佳兩部分教學課程，請參閱 < [Nadeem 的 ASP.NET MVC 5 國際化](http://afana.me/post/aspnet-mvc-internationalization.aspx)。
 

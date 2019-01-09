@@ -4,16 +4,16 @@ title: 新增驗證 |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: riande
-ms.date: 10/17/2013
+ms.date: 01/06/2019
 ms.assetid: 9f35ca15-e216-4db6-9ebf-24380b0f31b4
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 22e59a99a179a7a414447036b973e3ad3b462515
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 6831259ce19c3747c179d6fc1b7e2095051a603b
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577947"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099022"
 ---
 <a name="adding-validation"></a>新增驗證
 ====================
@@ -97,7 +97,7 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援就是執行
 
 [!code-csharp[Main](adding-validation/samples/sample5.cs)]
 
-第一個 (HTTP GET)`Create` 動作方法會顯示初始建立表單。 第二個 (`[HttpPost]`) 版本處理表單張貼。 第二個 `Create` 方法 (`HttpPost` 版本) 會呼叫`ModelState.IsValid` 檢查電影是否有任何驗證錯誤。 呼叫此方法會評估已套用至物件的所有驗證屬性。 如果物件有驗證錯誤，則 `Create` 方法會重新顯示表單。 如果沒有任何錯誤，方法即會將新的電影儲存到資料庫。 在影片範例中，**表單不張貼至伺服器的用戶端; 上偵測到驗證錯誤時，第二個** `Create`**絕不會呼叫方法**。 如果您停用 JavaScript 瀏覽器中，用戶端驗證已停用與 HTTP POST`Create`方法呼叫`ModelState.IsValid`檢查電影是否有任何驗證錯誤。
+第一個 (HTTP GET)`Create` 動作方法會顯示初始建立表單。 第二個 (`[HttpPost]`) 版本處理表單張貼。 第二個`Create`方法 (`HttpPost`版本) 會檢查`ModelState.IsValid`電影是否有任何驗證錯誤。 取得這個屬性會評估已套用至物件的所有驗證屬性。 如果物件有驗證錯誤`Create`方法會重新顯示表單。 如果沒有任何錯誤，方法即會將新的電影儲存到資料庫。 在影片範例中，**表單不張貼至伺服器，用戶端; 上偵測到驗證錯誤時，第二個** `Create` **絕不會呼叫方法**。 如果您停用 JavaScript 瀏覽器中，用戶端驗證是停用日及 HTTP POST`Create`方法取得`ModelState.IsValid`檢查電影是否有任何驗證錯誤。
 
 您可以在 `HttpPost Create` 方法中設定中斷點，並確認永遠不會呼叫該方法，用戶端驗證就不會在偵測到驗證錯誤時，提交表單資料。 如果您停用瀏覽器的 JavaScript，然後提交有錯誤的表單，就會叫用中斷點。 您仍可使用沒有 JavaScript 的完整驗證。 下圖顯示如何停用 Internet Explorer 中的 JavaScript。
 
@@ -159,7 +159,7 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援就是執行
 
 下列程式碼會顯示一行上的結合屬性：
 
-[!code-csharp[Main](adding-validation/samples/sample10.cs?highlight=6,10)]
+[!code-csharp[Main](adding-validation/samples/sample10.cs?highlight=4,6,10,12)]
 
 在數列的下一個部分中，我們會檢閱應用程式，並對自動產生的 `Details` 和 `Delete` 方法進行一些改良。
 

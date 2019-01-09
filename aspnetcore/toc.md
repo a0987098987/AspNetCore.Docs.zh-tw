@@ -179,7 +179,9 @@
 ## [快照集偵錯](/azure/application-insights/app-insights-snapshot-debugger)
 ## [Visual Studio 中的快照集偵錯](/visualstudio/debugger/debug-live-azure-applications)
 ## [整合測試](xref:test/integration-tests)
+## [負載與壓力測試](xref:test/loadtests)
 ## [疑難排解](xref:test/troubleshoot)
+## [記錄](xref:fundamentals/logging/index)
 
 # 資料存取
 ## 教學課程
@@ -392,6 +394,7 @@
 ## [使用檔案監看員](xref:tutorials/dotnet-watch)
 
 # 移轉
+## [2.2 至 3.0](xref:migration/22-to-30)
 ## [2.1 至 2.2](xref:migration/21-to-22)
 ## [2.0 至 2.1](xref:migration/20_21)
 ## 1.x 至 2.0
@@ -406,6 +409,7 @@
 ### [ClaimsPrincipal.Current](xref:migration/claimsprincipal-current)
 ### [身分識別的成員資格](xref:migration/proper-to-2x/membership-to-core-identity)
 ### [HTTP 模組到中介軟體](xref:migration/http-modules)
+## [記錄 (非 ASP.NET Core)](xref:migration/logging-nonaspnetcore)
 
 # 新功能
 ## [2.2 中的新功能](xref:aspnetcore-2.2)

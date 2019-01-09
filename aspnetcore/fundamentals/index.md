@@ -4,14 +4,14 @@ author: rick-anderson
 description: 探索 ASP.NET Core 應用程式的基本建置概念。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/06/2019
 uid: fundamentals/index
-ms.openlocfilehash: 11dc6336ae7667038983c967f28232bef325f5bb
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: a56beebd796448705c7b84f47699e9739f451419
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637764"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099230"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -63,7 +63,7 @@ ASP.NET Core 應用程式是主控台應用程式，可使用其 `Program.Main` 
 
 ::: moniker-end
 
-`Startup` 類別是您用來定義要求處理管線以及設定應用程式所需之所有服務的位置。 `Startup` 必須是公用類別，而且包含下列方法：
+`Startup` 類別是設定應用程式所需之任何服務及定義要求處理管線的位置。 `Startup` 必須是公用類別，而且通常包含下列方法。 `Startup.ConfigureServices` 是選擇項。
 
 ::: moniker range=">= aspnetcore-2.0"
 

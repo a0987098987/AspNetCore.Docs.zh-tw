@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 uid: security/authentication/social/index
-ms.openlocfilehash: 47ac1f966ff727957e6ed700c3c68efa16b1b38b
-ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
+ms.openlocfilehash: 063d452fb6ab91b712ade7f7b7ed99823dbdc657
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2018
-ms.locfileid: "53735722"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098814"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
@@ -46,11 +46,11 @@ ms.locfileid: "53735722"
 * 輸入新帳戶的電子郵件和密碼，然後選取 [註冊]。
 * 遵循指示以套用移轉。
 
-## <a name="require-ssl"></a>需要 SSL
+## <a name="require-https"></a>需要 HTTPS
 
-OAuth 2.0 要求使用 SSL 以透過 HTTPS 通訊協定進行驗證。
+OAuth 2.0 要求使用 SSL/TLS 以透過 HTTPS 通訊協定進行驗證。
 
-使用 **Web 應用程式**或 **Web API** 專案範本 (使用 ASP.NET Core 2.1 或更新版本) 來建立的專案，會自動設為啟用 SSL。 如果您在專案精靈的 [變更驗證] 對話方塊中選取了 [個別使用者帳戶] 選項，應用程式會以安全的預設端點啟動。
+使用 **Web 應用程式**或 **Web API** 專案範本 (使用 ASP.NET Core 2.1 或更新版本) 來建立的專案，會自動設為啟用 HTTPS。 如果您在專案精靈的 [變更驗證] 對話方塊中選取了 [個別使用者帳戶] 選項，應用程式會以安全的預設端點啟動。
 
 如需詳細資訊，請參閱<xref:security/enforcing-ssl>。
 

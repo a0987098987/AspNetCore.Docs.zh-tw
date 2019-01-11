@@ -5,80 +5,82 @@ description: 了解如何為 ASP.NET Core 基礎結構 (例如應用程式和資
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/03/2018
+ms.date: 12/12/2018
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: d8fd43d9d689396cf30ca371763cdf7ac9423c77
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: cf2aea91221887dad5646604214f810493d4b175
+ms.sourcegitcommit: 1ea1b4fc58055c62728143388562689f1ef96cb2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862595"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53329142"
 ---
-# <a name="health-checks-in-aspnet-core"></a><span data-ttu-id="39579-103">ASP.NET Core 中的健康狀態檢查</span><span class="sxs-lookup"><span data-stu-id="39579-103">Health checks in ASP.NET Core</span></span>
+# <a name="health-checks-in-aspnet-core"></a><span data-ttu-id="2e52c-103">ASP.NET Core 中的健康狀態檢查</span><span class="sxs-lookup"><span data-stu-id="2e52c-103">Health checks in ASP.NET Core</span></span>
 
-<span data-ttu-id="39579-104">作者：[Luke Latham](https://github.com/guardrex) 和 [Glenn Condron](https://github.com/glennc)</span><span class="sxs-lookup"><span data-stu-id="39579-104">By [Luke Latham](https://github.com/guardrex) and [Glenn Condron](https://github.com/glennc)</span></span>
+<span data-ttu-id="2e52c-104">作者：[Luke Latham](https://github.com/guardrex) 和 [Glenn Condron](https://github.com/glennc)</span><span class="sxs-lookup"><span data-stu-id="2e52c-104">By [Luke Latham](https://github.com/guardrex) and [Glenn Condron](https://github.com/glennc)</span></span>
 
-<span data-ttu-id="39579-105">ASP.NET Core 提供健康狀態檢查中介軟體和程式庫，來報告應用程式基礎結構元件的健康狀態。</span><span class="sxs-lookup"><span data-stu-id="39579-105">ASP.NET Core offers Health Check Middleware and libraries for reporting the health of app infrastructure components.</span></span>
+<span data-ttu-id="2e52c-105">ASP.NET Core 提供健康狀態檢查中介軟體和程式庫，來報告應用程式基礎結構元件的健康狀態。</span><span class="sxs-lookup"><span data-stu-id="2e52c-105">ASP.NET Core offers Health Check Middleware and libraries for reporting the health of app infrastructure components.</span></span>
 
-<span data-ttu-id="39579-106">應用程式會將健康狀態檢查公開為 HTTP 端點。</span><span class="sxs-lookup"><span data-stu-id="39579-106">Health checks are exposed by an app as HTTP endpoints.</span></span> <span data-ttu-id="39579-107">您可以針對各種即時監控案例來設定健康狀態檢查端點：</span><span class="sxs-lookup"><span data-stu-id="39579-107">Health check endpoints can be configured for a variety of real-time monitoring scenarios:</span></span>
+<span data-ttu-id="2e52c-106">應用程式會將健康狀態檢查公開為 HTTP 端點。</span><span class="sxs-lookup"><span data-stu-id="2e52c-106">Health checks are exposed by an app as HTTP endpoints.</span></span> <span data-ttu-id="2e52c-107">您可以針對各種即時監控案例來設定健康狀態檢查端點：</span><span class="sxs-lookup"><span data-stu-id="2e52c-107">Health check endpoints can be configured for a variety of real-time monitoring scenarios:</span></span>
 
-* <span data-ttu-id="39579-108">容器協調器和負載平衡器可以使用健康狀態探查，來檢查應用程式的狀態。</span><span class="sxs-lookup"><span data-stu-id="39579-108">Health probes can be used by container orchestrators and load balancers to check an app's status.</span></span> <span data-ttu-id="39579-109">例如，容器協調器可能會暫停輪流部署或重新啟動容器，來回應失敗的健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="39579-109">For example, a container orchestrator may respond to a failing health check by halting a rolling deployment or restarting a container.</span></span> <span data-ttu-id="39579-110">負載平衡器可能會將流量從失敗的執行個體路由傳送至狀況良好的執行個體，來回應狀況不良的應用程式。</span><span class="sxs-lookup"><span data-stu-id="39579-110">A load balancer might react to an unhealthy app by routing traffic away from the failing instance to a healthy instance.</span></span>
-* <span data-ttu-id="39579-111">您可以監控所使用記憶體、磁碟及其他實體伺服器資源的健康狀態。</span><span class="sxs-lookup"><span data-stu-id="39579-111">Use of memory, disk, and other physical server resources can be monitored for healthy status.</span></span>
-* <span data-ttu-id="39579-112">健康狀態檢查可以測試應用程式的相依性 (例如資料庫和外部服務端點)，確認其是否可用且正常運作。</span><span class="sxs-lookup"><span data-stu-id="39579-112">Health checks can test an app's dependencies, such as databases and external service endpoints, to confirm availability and normal functioning.</span></span>
+* <span data-ttu-id="2e52c-108">容器協調器和負載平衡器可以使用健康狀態探查，來檢查應用程式的狀態。</span><span class="sxs-lookup"><span data-stu-id="2e52c-108">Health probes can be used by container orchestrators and load balancers to check an app's status.</span></span> <span data-ttu-id="2e52c-109">例如，容器協調器可能會暫停輪流部署或重新啟動容器，來回應失敗的健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="2e52c-109">For example, a container orchestrator may respond to a failing health check by halting a rolling deployment or restarting a container.</span></span> <span data-ttu-id="2e52c-110">負載平衡器可能會將流量從失敗的執行個體路由傳送至狀況良好的執行個體，來回應狀況不良的應用程式。</span><span class="sxs-lookup"><span data-stu-id="2e52c-110">A load balancer might react to an unhealthy app by routing traffic away from the failing instance to a healthy instance.</span></span>
+* <span data-ttu-id="2e52c-111">您可以監控所使用記憶體、磁碟及其他實體伺服器資源的健康狀態。</span><span class="sxs-lookup"><span data-stu-id="2e52c-111">Use of memory, disk, and other physical server resources can be monitored for healthy status.</span></span>
+* <span data-ttu-id="2e52c-112">健康狀態檢查可以測試應用程式的相依性 (例如資料庫和外部服務端點)，確認其是否可用且正常運作。</span><span class="sxs-lookup"><span data-stu-id="2e52c-112">Health checks can test an app's dependencies, such as databases and external service endpoints, to confirm availability and normal functioning.</span></span>
 
-<span data-ttu-id="39579-113">[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="39579-113">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="2e52c-113">[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="2e52c-113">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="39579-114">範例應用程式包含本主題中所述的案例範例。</span><span class="sxs-lookup"><span data-stu-id="39579-114">The sample app includes examples of the scenarios described in this topic.</span></span> <span data-ttu-id="39579-115">若要在指定的案例中執行範例應用程式，請在命令殼層中使用來自專案資料夾的 [dotnet run](/dotnet/core/tools/dotnet-run) 命令。</span><span class="sxs-lookup"><span data-stu-id="39579-115">To run the sample app for a given scenario, use the [dotnet run](/dotnet/core/tools/dotnet-run) command from the project's folder in a command shell.</span></span> <span data-ttu-id="39579-116">如需如何使用範例應用程式的詳細資訊，請參閱範例應用程式的 *README.md* 檔案和本主題中的案例描述。</span><span class="sxs-lookup"><span data-stu-id="39579-116">See the sample app's *README.md* file and the scenario descriptions in this topic for details on how to use the sample app.</span></span>
+<span data-ttu-id="2e52c-114">範例應用程式包含本主題中所述的案例範例。</span><span class="sxs-lookup"><span data-stu-id="2e52c-114">The sample app includes examples of the scenarios described in this topic.</span></span> <span data-ttu-id="2e52c-115">若要在指定的案例中執行範例應用程式，請在命令殼層中使用來自專案資料夾的 [dotnet run](/dotnet/core/tools/dotnet-run) 命令。</span><span class="sxs-lookup"><span data-stu-id="2e52c-115">To run the sample app for a given scenario, use the [dotnet run](/dotnet/core/tools/dotnet-run) command from the project's folder in a command shell.</span></span> <span data-ttu-id="2e52c-116">如需如何使用範例應用程式的詳細資訊，請參閱範例應用程式的 *README.md* 檔案和本主題中的案例描述。</span><span class="sxs-lookup"><span data-stu-id="2e52c-116">See the sample app's *README.md* file and the scenario descriptions in this topic for details on how to use the sample app.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="39579-117">必要條件</span><span class="sxs-lookup"><span data-stu-id="39579-117">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="2e52c-117">必要條件</span><span class="sxs-lookup"><span data-stu-id="2e52c-117">Prerequisites</span></span>
 
-<span data-ttu-id="39579-118">健康狀態檢查通常會搭配使用外部監視服務或容器協調器，來檢查應用程式的狀態。</span><span class="sxs-lookup"><span data-stu-id="39579-118">Health checks are usually used with an external monitoring service or container orchestrator to check the status of an app.</span></span> <span data-ttu-id="39579-119">將健康狀態檢查新增至應用程式之前，請決定要使用的監控系統。</span><span class="sxs-lookup"><span data-stu-id="39579-119">Before adding health checks to an app, decide on which monitoring system to use.</span></span> <span data-ttu-id="39579-120">監控系統會指定要建立哪些健康狀態檢查類型，以及如何設定其端點。</span><span class="sxs-lookup"><span data-stu-id="39579-120">The monitoring system dictates what types of health checks to create and how to configure their endpoints.</span></span>
+<span data-ttu-id="2e52c-118">健康狀態檢查通常會搭配使用外部監視服務或容器協調器，來檢查應用程式的狀態。</span><span class="sxs-lookup"><span data-stu-id="2e52c-118">Health checks are usually used with an external monitoring service or container orchestrator to check the status of an app.</span></span> <span data-ttu-id="2e52c-119">將健康狀態檢查新增至應用程式之前，請決定要使用的監控系統。</span><span class="sxs-lookup"><span data-stu-id="2e52c-119">Before adding health checks to an app, decide on which monitoring system to use.</span></span> <span data-ttu-id="2e52c-120">監控系統會指定要建立哪些健康狀態檢查類型，以及如何設定其端點。</span><span class="sxs-lookup"><span data-stu-id="2e52c-120">The monitoring system dictates what types of health checks to create and how to configure their endpoints.</span></span>
 
-<span data-ttu-id="39579-121">參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.AspNetCore.Diagnostics.HealthChecks](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.HealthChecks) 套件的套件參考。</span><span class="sxs-lookup"><span data-stu-id="39579-121">Reference the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) or add a package reference to the [Microsoft.AspNetCore.Diagnostics.HealthChecks](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.HealthChecks) package.</span></span>
+<span data-ttu-id="2e52c-121">參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.AspNetCore.Diagnostics.HealthChecks](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.HealthChecks) 套件的套件參考。</span><span class="sxs-lookup"><span data-stu-id="2e52c-121">Reference the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) or add a package reference to the [Microsoft.AspNetCore.Diagnostics.HealthChecks](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.HealthChecks) package.</span></span>
 
-<span data-ttu-id="39579-122">範例應用程式提供啟動程式碼，來示範數個案例的健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="39579-122">The sample app provides start-up code to demonstrate health checks for several scenarios.</span></span> <span data-ttu-id="39579-123">[資料庫探查](#database-probe)案例使用 [BeatPulse](https://github.com/Xabaril/BeatPulse) 來探查資料庫連線的健康狀態。</span><span class="sxs-lookup"><span data-stu-id="39579-123">The [database probe](#database-probe) scenario probes the health of a database connection using [BeatPulse](https://github.com/Xabaril/BeatPulse).</span></span> <span data-ttu-id="39579-124">[DbContext 探查](#entity-framework-core-dbcontext-probe)案例使用 EF Core `DbContext` 來探查資料庫。</span><span class="sxs-lookup"><span data-stu-id="39579-124">The [DbContext probe](#entity-framework-core-dbcontext-probe) scenario probes a database using an EF Core `DbContext`.</span></span> <span data-ttu-id="39579-125">若要使用範例應用程式來探索資料庫案例：</span><span class="sxs-lookup"><span data-stu-id="39579-125">To explore the database scenarios using the sample app:</span></span>
+<span data-ttu-id="2e52c-122">範例應用程式提供啟動程式碼，來示範數個案例的健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="2e52c-122">The sample app provides startup code to demonstrate health checks for several scenarios.</span></span> <span data-ttu-id="2e52c-123">[資料庫探查](#database-probe)案例使用 [BeatPulse](https://github.com/Xabaril/BeatPulse) 來檢查資料庫連線的健康狀態。</span><span class="sxs-lookup"><span data-stu-id="2e52c-123">The [database probe](#database-probe) scenario checks the health of a database connection using [BeatPulse](https://github.com/Xabaril/BeatPulse).</span></span> <span data-ttu-id="2e52c-124">[DbContext 探查](#entity-framework-core-dbcontext-probe)案例使用 EF Core `DbContext` 來檢查資料庫。</span><span class="sxs-lookup"><span data-stu-id="2e52c-124">The [DbContext probe](#entity-framework-core-dbcontext-probe) scenario checks a database using an EF Core `DbContext`.</span></span> <span data-ttu-id="2e52c-125">為了探索資料庫案例，範例應用程式會：</span><span class="sxs-lookup"><span data-stu-id="2e52c-125">To explore the database scenarios, the sample app:</span></span>
 
-* <span data-ttu-id="39579-126">建立資料庫，並在應用程式的 *appsettings.json* 檔案中提供其連接字串。</span><span class="sxs-lookup"><span data-stu-id="39579-126">Create a database and provide its connection string in the *appsettings.json* file of the app.</span></span>
-* <span data-ttu-id="39579-127">新增 [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/) 的套件參考。</span><span class="sxs-lookup"><span data-stu-id="39579-127">Add a package reference to [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).</span></span>
+* <span data-ttu-id="2e52c-126">建立資料庫，並在 *appsettings.json* 檔案中提供其連接字串。</span><span class="sxs-lookup"><span data-stu-id="2e52c-126">Creates a database and provides its connection string in the *appsettings.json* file.</span></span>
+* <span data-ttu-id="2e52c-127">在其專案檔中具有下列套件參考：</span><span class="sxs-lookup"><span data-stu-id="2e52c-127">Has the following package references in its project file:</span></span>
+  * [<span data-ttu-id="2e52c-128">AspNetCore.HealthChecks.SqlServer</span><span class="sxs-lookup"><span data-stu-id="2e52c-128">AspNetCore.HealthChecks.SqlServer</span></span>](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/)
+  * [<span data-ttu-id="2e52c-129">Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore</span><span class="sxs-lookup"><span data-stu-id="2e52c-129">Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore</span></span>](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/)
 
 > [!NOTE]
-> <span data-ttu-id="39579-128">Microsoft 不會維護或支援 [BeatPulse](https://github.com/Xabaril/BeatPulse)。</span><span class="sxs-lookup"><span data-stu-id="39579-128">[BeatPulse](https://github.com/Xabaril/BeatPulse) isn't maintained or supported by Microsoft.</span></span>
+> <span data-ttu-id="2e52c-130">Microsoft 不會維護或支援 [BeatPulse](https://github.com/Xabaril/BeatPulse)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-130">[BeatPulse](https://github.com/Xabaril/BeatPulse) isn't maintained or supported by Microsoft.</span></span>
 
-<span data-ttu-id="39579-129">另一個健康狀態檢查案例示範如何將健康狀態檢查篩選至管理連接埠。</span><span class="sxs-lookup"><span data-stu-id="39579-129">Another health check scenario demonstrates how to filter health checks to a management port.</span></span> <span data-ttu-id="39579-130">範例應用程式會要求您建立 *Properties/launchSettings.json* 檔案，其中包含管理 URL 和管理連接埠。</span><span class="sxs-lookup"><span data-stu-id="39579-130">The sample app requires you to create a *Properties/launchSettings.json* file that includes the management URL and management port.</span></span> <span data-ttu-id="39579-131">如需詳細資訊，請參閱[依連接埠篩選](#filter-by-port)一節。</span><span class="sxs-lookup"><span data-stu-id="39579-131">For more information, see the [Filter by port](#filter-by-port) section.</span></span>
+<span data-ttu-id="2e52c-131">另一個健康狀態檢查案例示範如何將健康狀態檢查篩選至管理連接埠。</span><span class="sxs-lookup"><span data-stu-id="2e52c-131">Another health check scenario demonstrates how to filter health checks to a management port.</span></span> <span data-ttu-id="2e52c-132">範例應用程式會要求您建立 *Properties/launchSettings.json* 檔案，其中包含管理 URL 和管理連接埠。</span><span class="sxs-lookup"><span data-stu-id="2e52c-132">The sample app requires you to create a *Properties/launchSettings.json* file that includes the management URL and management port.</span></span> <span data-ttu-id="2e52c-133">如需詳細資訊，請參閱[依連接埠篩選](#filter-by-port)一節。</span><span class="sxs-lookup"><span data-stu-id="2e52c-133">For more information, see the [Filter by port](#filter-by-port) section.</span></span>
 
-## <a name="basic-health-probe"></a><span data-ttu-id="39579-132">基本健康狀態探查</span><span class="sxs-lookup"><span data-stu-id="39579-132">Basic health probe</span></span>
+## <a name="basic-health-probe"></a><span data-ttu-id="2e52c-134">基本健康狀態探查</span><span class="sxs-lookup"><span data-stu-id="2e52c-134">Basic health probe</span></span>
 
-<span data-ttu-id="39579-133">對於許多應用程式，報告應用程式是否可處理要求的基本健康狀態探查組態 (「活躍度」)，便足以探索應用程式的狀態。</span><span class="sxs-lookup"><span data-stu-id="39579-133">For many apps, a basic health probe configuration that reports the app's availability to process requests (*liveness*) is sufficient to discover the status of the app.</span></span>
+<span data-ttu-id="2e52c-135">對於許多應用程式，報告應用程式是否可處理要求的基本健康狀態探查組態 (「活躍度」)，便足以探索應用程式的狀態。</span><span class="sxs-lookup"><span data-stu-id="2e52c-135">For many apps, a basic health probe configuration that reports the app's availability to process requests (*liveness*) is sufficient to discover the status of the app.</span></span>
 
-<span data-ttu-id="39579-134">基本組態會登錄健康狀態檢查服務，並呼叫健康狀態檢查中介軟體在健康狀態回應的 URL 端點做出回應。</span><span class="sxs-lookup"><span data-stu-id="39579-134">The basic configuration registers health check services and calls the Health Check Middleware to respond at a URL endpoint with a health response.</span></span> <span data-ttu-id="39579-135">預設並未登錄特定健康狀態檢查來測試任何特定相依性或子系統。</span><span class="sxs-lookup"><span data-stu-id="39579-135">By default, no specific health checks are registered to test any particular dependency or subsystem.</span></span> <span data-ttu-id="39579-136">如果應用程式能夠在健康狀態端點 URL 做出回應，則視為狀況良好。</span><span class="sxs-lookup"><span data-stu-id="39579-136">The app is considered healthy if it's capable of responding at the health endpoint URL.</span></span> <span data-ttu-id="39579-137">預設回應寫入器會將狀態 (`HealthCheckStatus`) 以純文字回應形式回寫到用戶端，指出狀態為 `HealthCheckResult.Healthy` 或 `HealthCheckResult.Unhealthy`。</span><span class="sxs-lookup"><span data-stu-id="39579-137">The default response writer writes the status (`HealthCheckStatus`) as a plaintext response back to the client, indicating either a `HealthCheckResult.Healthy` or `HealthCheckResult.Unhealthy` status.</span></span>
+<span data-ttu-id="2e52c-136">基本組態會登錄健康狀態檢查服務，並呼叫健康狀態檢查中介軟體在健康狀態回應的 URL 端點做出回應。</span><span class="sxs-lookup"><span data-stu-id="2e52c-136">The basic configuration registers health check services and calls the Health Check Middleware to respond at a URL endpoint with a health response.</span></span> <span data-ttu-id="2e52c-137">預設並未登錄特定健康狀態檢查來測試任何特定相依性或子系統。</span><span class="sxs-lookup"><span data-stu-id="2e52c-137">By default, no specific health checks are registered to test any particular dependency or subsystem.</span></span> <span data-ttu-id="2e52c-138">如果應用程式能夠在健康狀態端點 URL 做出回應，則視為狀況良好。</span><span class="sxs-lookup"><span data-stu-id="2e52c-138">The app is considered healthy if it's capable of responding at the health endpoint URL.</span></span> <span data-ttu-id="2e52c-139">預設回應寫入器會將狀態 (`HealthStatus`) 以純文字回應形式回寫到用戶端，指出狀態為 `HealthStatus.Healthy`、`HealthStatus.Degraded` 或 `HealthStatus.Unhealthy`。</span><span class="sxs-lookup"><span data-stu-id="2e52c-139">The default response writer writes the status (`HealthStatus`) as a plaintext response back to the client, indicating either a `HealthStatus.Healthy`, `HealthStatus.Degraded` or `HealthStatus.Unhealthy` status.</span></span>
 
-<span data-ttu-id="39579-138">在 `Startup.ConfigureServices` 中，使用 `AddHealthChecks` 登錄健康狀態檢查服務。</span><span class="sxs-lookup"><span data-stu-id="39579-138">Register health check services with `AddHealthChecks` in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="39579-139">在 `Startup.Configure` 的要求處理管線中，使用 `UseHealthChecks` 新增健康狀態檢查中介軟體。</span><span class="sxs-lookup"><span data-stu-id="39579-139">Add Health Check Middleware with `UseHealthChecks` in the request processing pipeline of `Startup.Configure`.</span></span>
+<span data-ttu-id="2e52c-140">在 `Startup.ConfigureServices` 中，使用 `AddHealthChecks` 登錄健康狀態檢查服務。</span><span class="sxs-lookup"><span data-stu-id="2e52c-140">Register health check services with `AddHealthChecks` in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="2e52c-141">在 `Startup.Configure` 的要求處理管線中，使用 `UseHealthChecks` 新增健康狀態檢查中介軟體。</span><span class="sxs-lookup"><span data-stu-id="2e52c-141">Add Health Check Middleware with `UseHealthChecks` in the request processing pipeline of `Startup.Configure`.</span></span>
 
-<span data-ttu-id="39579-140">在範例應用程式中，健康狀態檢查端點是在 `/health` (*BasicStartup.cs*) 建立：</span><span class="sxs-lookup"><span data-stu-id="39579-140">In the sample app, the health check endpoint is created at `/health` (*BasicStartup.cs*):</span></span>
+<span data-ttu-id="2e52c-142">在範例應用程式中，健康狀態檢查端點是在 `/health` (*BasicStartup.cs*) 建立：</span><span class="sxs-lookup"><span data-stu-id="2e52c-142">In the sample app, the health check endpoint is created at `/health` (*BasicStartup.cs*):</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/BasicStartup.cs?name=snippet1&highlight=5,10)]
 
-<span data-ttu-id="39579-141">若要使用範例應用程式執行基本組態案例，請在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="39579-141">To run the basic configuration scenario using the sample app, execute the following command from the project's folder in a command shell:</span></span>
+<span data-ttu-id="2e52c-143">若要使用範例應用程式執行基本組態案例，請在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="2e52c-143">To run the basic configuration scenario using the sample app, execute the following command from the project's folder in a command shell:</span></span>
 
 ```console
 dotnet run --scenario basic
 ```
 
-### <a name="docker-example"></a><span data-ttu-id="39579-142">Docker 範例</span><span class="sxs-lookup"><span data-stu-id="39579-142">Docker example</span></span>
+### <a name="docker-example"></a><span data-ttu-id="2e52c-144">Docker 範例</span><span class="sxs-lookup"><span data-stu-id="2e52c-144">Docker example</span></span>
 
-<span data-ttu-id="39579-143">[Docker](xref:host-and-deploy/docker/index) 提供內建 `HEALTHCHECK` 指示詞，可用來檢查使用基本健康狀態檢查組態的應用程式狀態：</span><span class="sxs-lookup"><span data-stu-id="39579-143">[Docker](xref:host-and-deploy/docker/index) offers a built-in `HEALTHCHECK` directive that can be used to check the status of an app that uses the basic health check configuration:</span></span>
+<span data-ttu-id="2e52c-145">[Docker](xref:host-and-deploy/docker/index) 提供內建 `HEALTHCHECK` 指示詞，可用來檢查使用基本健康狀態檢查組態的應用程式狀態：</span><span class="sxs-lookup"><span data-stu-id="2e52c-145">[Docker](xref:host-and-deploy/docker/index) offers a built-in `HEALTHCHECK` directive that can be used to check the status of an app that uses the basic health check configuration:</span></span>
 
 ```
 HEALTHCHECK CMD curl --fail http://localhost:5000/health || exit
 ```
 
-## <a name="create-health-checks"></a><span data-ttu-id="39579-144">建立健康狀態檢查</span><span class="sxs-lookup"><span data-stu-id="39579-144">Create health checks</span></span>
+## <a name="create-health-checks"></a><span data-ttu-id="2e52c-146">建立健康狀態檢查</span><span class="sxs-lookup"><span data-stu-id="2e52c-146">Create health checks</span></span>
 
-<span data-ttu-id="39579-145">健康狀態檢查是藉由實作 `IHealthCheck` 介面來建立。</span><span class="sxs-lookup"><span data-stu-id="39579-145">Health checks are created by implementing the `IHealthCheck` interface.</span></span> <span data-ttu-id="39579-146">`IHealthCheck.CheckHealthAsync` 方法會傳回 `Task<HealthCheckResult>`，指出健康狀態為 `Healthy`、`Degraded` 或 `Unhealthy`。</span><span class="sxs-lookup"><span data-stu-id="39579-146">The `IHealthCheck.CheckHealthAsync` method returns a `Task<HealthCheckResult>` that indicates the health as `Healthy`, `Degraded`, or `Unhealthy`.</span></span> <span data-ttu-id="39579-147">結果會寫成具有可設定狀態碼的純文字回應 ([健康狀態檢查選項](#health-check-options)一節中將說明如何進行組態)。</span><span class="sxs-lookup"><span data-stu-id="39579-147">The result is written as a plaintext response with a configurable status code (configuration is described in the [Health check options](#health-check-options) section).</span></span> <span data-ttu-id="39579-148">`HealthCheckResult` 也可以傳回選擇性索引鍵/值組。</span><span class="sxs-lookup"><span data-stu-id="39579-148">`HealthCheckResult` can also return optional key-value pairs.</span></span>
+<span data-ttu-id="2e52c-147">健康狀態檢查是藉由實作 `IHealthCheck` 介面來建立。</span><span class="sxs-lookup"><span data-stu-id="2e52c-147">Health checks are created by implementing the `IHealthCheck` interface.</span></span> <span data-ttu-id="2e52c-148">`IHealthCheck.CheckHealthAsync` 方法會傳回 `Task<HealthCheckResult>`，指出健康狀態為 `Healthy`、`Degraded` 或 `Unhealthy`。</span><span class="sxs-lookup"><span data-stu-id="2e52c-148">The `IHealthCheck.CheckHealthAsync` method returns a `Task<HealthCheckResult>` that indicates the health as `Healthy`, `Degraded`, or `Unhealthy`.</span></span> <span data-ttu-id="2e52c-149">結果會寫成具有可設定狀態碼的純文字回應 ([健康狀態檢查選項](#health-check-options)一節中將說明如何進行組態)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-149">The result is written as a plaintext response with a configurable status code (configuration is described in the [Health check options](#health-check-options) section).</span></span> <span data-ttu-id="2e52c-150">`HealthCheckResult` 也可以傳回選擇性索引鍵/值組。</span><span class="sxs-lookup"><span data-stu-id="2e52c-150">`HealthCheckResult` can also return optional key-value pairs.</span></span>
 
-### <a name="example-health-check"></a><span data-ttu-id="39579-149">範例健康狀態檢查</span><span class="sxs-lookup"><span data-stu-id="39579-149">Example health check</span></span>
+### <a name="example-health-check"></a><span data-ttu-id="2e52c-151">範例健康狀態檢查</span><span class="sxs-lookup"><span data-stu-id="2e52c-151">Example health check</span></span>
 
-<span data-ttu-id="39579-150">下列 `ExampleHealthCheck` 類別示範健康狀態檢查的配置：</span><span class="sxs-lookup"><span data-stu-id="39579-150">The following `ExampleHealthCheck` class demonstrates the layout of a health check:</span></span>
+<span data-ttu-id="2e52c-152">下列 `ExampleHealthCheck` 類別示範健康狀態檢查的配置：</span><span class="sxs-lookup"><span data-stu-id="2e52c-152">The following `ExampleHealthCheck` class demonstrates the layout of a health check:</span></span>
 
 ```csharp
 public class ExampleHealthCheck : IHealthCheck
@@ -109,9 +111,9 @@ public class ExampleHealthCheck : IHealthCheck
 }
 ```
 
-### <a name="register-health-check-services"></a><span data-ttu-id="39579-151">登錄健康狀態檢查服務</span><span class="sxs-lookup"><span data-stu-id="39579-151">Register health check services</span></span>
+### <a name="register-health-check-services"></a><span data-ttu-id="2e52c-153">登錄健康狀態檢查服務</span><span class="sxs-lookup"><span data-stu-id="2e52c-153">Register health check services</span></span>
 
-<span data-ttu-id="39579-152">使用 `AddCheck` 將 `ExampleHealthCheck` 類型新增至健康狀態檢查服務：</span><span class="sxs-lookup"><span data-stu-id="39579-152">The `ExampleHealthCheck` type is added to health check services with `AddCheck`:</span></span>
+<span data-ttu-id="2e52c-154">使用 `AddCheck` 將 `ExampleHealthCheck` 類型新增至健康狀態檢查服務：</span><span class="sxs-lookup"><span data-stu-id="2e52c-154">The `ExampleHealthCheck` type is added to health check services with `AddCheck`:</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -121,9 +123,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="39579-153">下列範例中所顯示的 `AddCheck` 多載會設定在健康狀態檢查報告失敗時所要報告的失敗狀態 (`HealthStatus`)。</span><span class="sxs-lookup"><span data-stu-id="39579-153">The `AddCheck` overload shown in the following example sets the failure status (`HealthStatus`) to report when the health check reports a failure.</span></span> <span data-ttu-id="39579-154">如果將失敗狀態設定為 `null` (預設)，則會報告 `HealthStatus.Unhealthy`。</span><span class="sxs-lookup"><span data-stu-id="39579-154">If the failure status is set to `null` (default), `HealthStatus.Unhealthy` is reported.</span></span> <span data-ttu-id="39579-155">此多載對程式庫作者很有用。若健康狀態檢查實作採用此設定，則當健康狀態檢查失敗時，應用程式就會強制程式庫指出失敗狀態。</span><span class="sxs-lookup"><span data-stu-id="39579-155">This overload is a useful scenario for library authors, where the failure status indicated by the library is enforced by the app when a health check failure occurs if the health check implementation honors the setting.</span></span>
+<span data-ttu-id="2e52c-155">下列範例中所顯示的 `AddCheck` 多載會設定在健康狀態檢查報告失敗時所要報告的失敗狀態 (`HealthStatus`)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-155">The `AddCheck` overload shown in the following example sets the failure status (`HealthStatus`) to report when the health check reports a failure.</span></span> <span data-ttu-id="2e52c-156">如果將失敗狀態設定為 `null` (預設)，則會報告 `HealthStatus.Unhealthy`。</span><span class="sxs-lookup"><span data-stu-id="2e52c-156">If the failure status is set to `null` (default), `HealthStatus.Unhealthy` is reported.</span></span> <span data-ttu-id="2e52c-157">此多載對程式庫作者很有用。若健康狀態檢查實作採用此設定，則當健康狀態檢查失敗時，應用程式就會強制程式庫指出失敗狀態。</span><span class="sxs-lookup"><span data-stu-id="2e52c-157">This overload is a useful scenario for library authors, where the failure status indicated by the library is enforced by the app when a health check failure occurs if the health check implementation honors the setting.</span></span>
 
-<span data-ttu-id="39579-156">您可以使用「標籤」來篩選健康狀態檢查 ([篩選健康狀態檢查](#filter-health-checks)一節中將進一步說明)。</span><span class="sxs-lookup"><span data-stu-id="39579-156">*Tags* can be used to filter health checks (described further in the [Filter health checks](#filter-health-checks) section).</span></span>
+<span data-ttu-id="2e52c-158">您可以使用「標籤」來篩選健康狀態檢查 ([篩選健康狀態檢查](#filter-health-checks)一節中將進一步說明)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-158">*Tags* can be used to filter health checks (described further in the [Filter health checks](#filter-health-checks) section).</span></span>
 
 ```csharp
 services.AddHealthChecks()
@@ -133,7 +135,7 @@ services.AddHealthChecks()
         tags: new[] { "example" });
 ```
 
-<span data-ttu-id="39579-157">`AddCheck` 也可以執行匿名函式。</span><span class="sxs-lookup"><span data-stu-id="39579-157">`AddCheck` can also execute a lambda function.</span></span> <span data-ttu-id="39579-158">在下列範例中，健康狀態檢查名稱指定為 `Example`，且檢查一律會傳回狀況良好狀態：</span><span class="sxs-lookup"><span data-stu-id="39579-158">In the following example, the health check name is specified as `Example` and the check always returns a healthy state:</span></span>
+<span data-ttu-id="2e52c-159">`AddCheck` 也可以執行匿名函式。</span><span class="sxs-lookup"><span data-stu-id="2e52c-159">`AddCheck` can also execute a lambda function.</span></span> <span data-ttu-id="2e52c-160">在下列範例中，健康狀態檢查名稱指定為 `Example`，且檢查一律會傳回狀況良好狀態：</span><span class="sxs-lookup"><span data-stu-id="2e52c-160">In the following example, the health check name is specified as `Example` and the check always returns a healthy state:</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -144,9 +146,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="use-health-checks-middleware"></a><span data-ttu-id="39579-159">使用健康狀態檢查中介軟體</span><span class="sxs-lookup"><span data-stu-id="39579-159">Use Health Checks Middleware</span></span>
+### <a name="use-health-checks-middleware"></a><span data-ttu-id="2e52c-161">使用健康狀態檢查中介軟體</span><span class="sxs-lookup"><span data-stu-id="2e52c-161">Use Health Checks Middleware</span></span>
 
-<span data-ttu-id="39579-160">在 `Startup.Configure` 中，使用端點 URL 或相對路徑呼叫處理管線中的 `UseHealthChecks`：</span><span class="sxs-lookup"><span data-stu-id="39579-160">In `Startup.Configure`, call `UseHealthChecks` in the processing pipeline with the endpoint URL or relative path:</span></span>
+<span data-ttu-id="2e52c-162">在 `Startup.Configure` 中，使用端點 URL 或相對路徑呼叫處理管線中的 `UseHealthChecks`：</span><span class="sxs-lookup"><span data-stu-id="2e52c-162">In `Startup.Configure`, call `UseHealthChecks` in the processing pipeline with the endpoint URL or relative path:</span></span>
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -155,26 +157,26 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-<span data-ttu-id="39579-161">如果健康狀態檢查應該接聽特定連接埠，請使用 `UseHealthChecks` 的多載來設定連接埠 ([依連接埠篩選](#filter-by-port)一節中將進一步說明)：</span><span class="sxs-lookup"><span data-stu-id="39579-161">If the health checks should listen on a specific port, use an overload of `UseHealthChecks` to set the port (described further in the [Filter by port](#filter-by-port) section):</span></span>
+<span data-ttu-id="2e52c-163">如果健康狀態檢查應該接聽特定連接埠，請使用 `UseHealthChecks` 的多載來設定連接埠 ([依連接埠篩選](#filter-by-port)一節中將進一步說明)：</span><span class="sxs-lookup"><span data-stu-id="2e52c-163">If the health checks should listen on a specific port, use an overload of `UseHealthChecks` to set the port (described further in the [Filter by port](#filter-by-port) section):</span></span>
 
 ```csharp
 app.UseHealthChecks("/health", port: 8000);
 ```
 
-<span data-ttu-id="39579-162">健康狀態檢查中介軟體是應用程式要求處理管線中的「終端機中介軟體」。</span><span class="sxs-lookup"><span data-stu-id="39579-162">Health Checks Middleware is a *terminal middleware* in the app's request processing pipeline.</span></span> <span data-ttu-id="39579-163">系統會執行所遇到第一個與要求 URL 完全相符的健康狀態檢查端點，並跳過中介軟體管線的其餘部分。</span><span class="sxs-lookup"><span data-stu-id="39579-163">The first health check endpoint encountered that's an exact match to the request URL executes and short-circuits the rest of the middleware pipeline.</span></span> <span data-ttu-id="39579-164">若出現跳過，則不會在相符的健康狀態檢查之後執行中介軟體。</span><span class="sxs-lookup"><span data-stu-id="39579-164">When short-circuiting occurs, no middleware following the matched health check executes.</span></span>
+<span data-ttu-id="2e52c-164">健康狀態檢查中介軟體是應用程式要求處理管線中的「終端機中介軟體」。</span><span class="sxs-lookup"><span data-stu-id="2e52c-164">Health Checks Middleware is a *terminal middleware* in the app's request processing pipeline.</span></span> <span data-ttu-id="2e52c-165">系統會執行所遇到第一個與要求 URL 完全相符的健康狀態檢查端點，並跳過中介軟體管線的其餘部分。</span><span class="sxs-lookup"><span data-stu-id="2e52c-165">The first health check endpoint encountered that's an exact match to the request URL executes and short-circuits the rest of the middleware pipeline.</span></span> <span data-ttu-id="2e52c-166">若出現跳過，則不會在相符的健康狀態檢查之後執行中介軟體。</span><span class="sxs-lookup"><span data-stu-id="2e52c-166">When short-circuiting occurs, no middleware following the matched health check executes.</span></span>
 
-## <a name="health-check-options"></a><span data-ttu-id="39579-165">健康狀態檢查選項</span><span class="sxs-lookup"><span data-stu-id="39579-165">Health check options</span></span>
+## <a name="health-check-options"></a><span data-ttu-id="2e52c-167">健康狀態檢查選項</span><span class="sxs-lookup"><span data-stu-id="2e52c-167">Health check options</span></span>
 
-<span data-ttu-id="39579-166">`HealthCheckOptions` 讓您有機會自訂健康狀態檢查行為：</span><span class="sxs-lookup"><span data-stu-id="39579-166">`HealthCheckOptions` provide an opportunity to customize health check behavior:</span></span>
+<span data-ttu-id="2e52c-168">`HealthCheckOptions` 讓您有機會自訂健康狀態檢查行為：</span><span class="sxs-lookup"><span data-stu-id="2e52c-168">`HealthCheckOptions` provide an opportunity to customize health check behavior:</span></span>
 
-* [<span data-ttu-id="39579-167">篩選健康狀態檢查</span><span class="sxs-lookup"><span data-stu-id="39579-167">Filter health checks</span></span>](#filter-health-checks)
-* [<span data-ttu-id="39579-168">自訂 HTTP 狀態碼</span><span class="sxs-lookup"><span data-stu-id="39579-168">Customize the HTTP status code</span></span>](#customize-the-http-status-code)
-* [<span data-ttu-id="39579-169">隱藏快取標頭</span><span class="sxs-lookup"><span data-stu-id="39579-169">Suppress cache headers</span></span>](#suppress-cache-headers)
-* [<span data-ttu-id="39579-170">自訂輸出</span><span class="sxs-lookup"><span data-stu-id="39579-170">Customize output</span></span>](#customize-output)
+* [<span data-ttu-id="2e52c-169">篩選健康狀態檢查</span><span class="sxs-lookup"><span data-stu-id="2e52c-169">Filter health checks</span></span>](#filter-health-checks)
+* [<span data-ttu-id="2e52c-170">自訂 HTTP 狀態碼</span><span class="sxs-lookup"><span data-stu-id="2e52c-170">Customize the HTTP status code</span></span>](#customize-the-http-status-code)
+* [<span data-ttu-id="2e52c-171">隱藏快取標頭</span><span class="sxs-lookup"><span data-stu-id="2e52c-171">Suppress cache headers</span></span>](#suppress-cache-headers)
+* [<span data-ttu-id="2e52c-172">自訂輸出</span><span class="sxs-lookup"><span data-stu-id="2e52c-172">Customize output</span></span>](#customize-output)
 
-### <a name="filter-health-checks"></a><span data-ttu-id="39579-171">篩選健康狀態檢查</span><span class="sxs-lookup"><span data-stu-id="39579-171">Filter health checks</span></span>
+### <a name="filter-health-checks"></a><span data-ttu-id="2e52c-173">篩選健康狀態檢查</span><span class="sxs-lookup"><span data-stu-id="2e52c-173">Filter health checks</span></span>
 
-<span data-ttu-id="39579-172">根據預設，健康狀態檢查中介軟體會執行所有登錄的健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="39579-172">By default, Health Check Middleware runs all registered health checks.</span></span> <span data-ttu-id="39579-173">若要執行健康狀態檢查子集，請對 `Predicate` 選項提供傳回布林值的函式。</span><span class="sxs-lookup"><span data-stu-id="39579-173">To run a subset of health checks, provide a function that returns a boolean to the `Predicate` option.</span></span> <span data-ttu-id="39579-174">在下列範例中，會依函式條件陳述式中的標籤 (`bar_tag`) 篩選出 `Bar` 健康狀態檢查。只有在健康狀態檢查的 `Tag` 屬性符合 `foo_tag` 或 `baz_tag` 時，才傳回 `true`：</span><span class="sxs-lookup"><span data-stu-id="39579-174">In the following example, the `Bar` health check is filtered out by its tag (`bar_tag`) in the function's conditional statement, where `true` is only returned if the health check's `Tag` property matches `foo_tag` or `baz_tag`:</span></span>
+<span data-ttu-id="2e52c-174">根據預設，健康狀態檢查中介軟體會執行所有登錄的健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="2e52c-174">By default, Health Check Middleware runs all registered health checks.</span></span> <span data-ttu-id="2e52c-175">若要執行健康狀態檢查子集，請對 `Predicate` 選項提供傳回布林值的函式。</span><span class="sxs-lookup"><span data-stu-id="2e52c-175">To run a subset of health checks, provide a function that returns a boolean to the `Predicate` option.</span></span> <span data-ttu-id="2e52c-176">在下列範例中，會依函式條件陳述式中的標籤 (`bar_tag`) 篩選出 `Bar` 健康狀態檢查。只有在健康狀態檢查的 `Tag` 屬性符合 `foo_tag` 或 `baz_tag` 時，才傳回 `true`：</span><span class="sxs-lookup"><span data-stu-id="2e52c-176">In the following example, the `Bar` health check is filtered out by its tag (`bar_tag`) in the function's conditional statement, where `true` is only returned if the health check's `Tag` property matches `foo_tag` or `baz_tag`:</span></span>
 
 ```csharp
 using System.Threading.Tasks;
@@ -203,9 +205,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-### <a name="customize-the-http-status-code"></a><span data-ttu-id="39579-175">自訂 HTTP 狀態碼</span><span class="sxs-lookup"><span data-stu-id="39579-175">Customize the HTTP status code</span></span>
+### <a name="customize-the-http-status-code"></a><span data-ttu-id="2e52c-177">自訂 HTTP 狀態碼</span><span class="sxs-lookup"><span data-stu-id="2e52c-177">Customize the HTTP status code</span></span>
 
-<span data-ttu-id="39579-176">您可以使用 `ResultStatusCodes` 來自訂健康狀態與 HTTP 狀態碼的對應。</span><span class="sxs-lookup"><span data-stu-id="39579-176">Use `ResultStatusCodes` to customize the mapping of health status to HTTP status codes.</span></span> <span data-ttu-id="39579-177">下列 `StatusCode` 指派是中介軟體所使用的預設值。</span><span class="sxs-lookup"><span data-stu-id="39579-177">The following `StatusCode` assignments are the default values used by the middleware.</span></span> <span data-ttu-id="39579-178">請變更狀態碼值以符合您的需求。</span><span class="sxs-lookup"><span data-stu-id="39579-178">Change the status code values to meet your requirements.</span></span>
+<span data-ttu-id="2e52c-178">您可以使用 `ResultStatusCodes` 來自訂健康狀態與 HTTP 狀態碼的對應。</span><span class="sxs-lookup"><span data-stu-id="2e52c-178">Use `ResultStatusCodes` to customize the mapping of health status to HTTP status codes.</span></span> <span data-ttu-id="2e52c-179">下列 `StatusCode` 指派是中介軟體所使用的預設值。</span><span class="sxs-lookup"><span data-stu-id="2e52c-179">The following `StatusCode` assignments are the default values used by the middleware.</span></span> <span data-ttu-id="2e52c-180">請變更狀態碼值以符合您的需求。</span><span class="sxs-lookup"><span data-stu-id="2e52c-180">Change the status code values to meet your requirements.</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -216,20 +218,20 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     app.UseHealthChecks("/health", new HealthCheckOptions()
     {
         // The following StatusCodes are the default assignments for
-        // the HealthCheckStatus properties.
+        // the HealthStatus properties.
         ResultStatusCodes =
         {
-            [HealthCheckStatus.Healthy] = StatusCodes.Status200OK,
-            [HealthCheckStatus.Degraded] = StatusCodes.Status200OK,
-            [HealthCheckStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+            [HealthStatus.Healthy] = StatusCodes.Status200OK,
+            [HealthStatus.Degraded] = StatusCodes.Status200OK,
+            [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
         }
     });
 }
 ```
 
-### <a name="suppress-cache-headers"></a><span data-ttu-id="39579-179">隱藏快取標頭</span><span class="sxs-lookup"><span data-stu-id="39579-179">Suppress cache headers</span></span>
+### <a name="suppress-cache-headers"></a><span data-ttu-id="2e52c-181">隱藏快取標頭</span><span class="sxs-lookup"><span data-stu-id="2e52c-181">Suppress cache headers</span></span>
 
-<span data-ttu-id="39579-180">`AllowCachingResponses` 會控制健康狀態檢查中介軟體是否將 HTTP 標頭新增至探查回應，以防止回應快取。</span><span class="sxs-lookup"><span data-stu-id="39579-180">`AllowCachingResponses` controls whether the Health Check Middleware adds HTTP headers to a probe response to prevent response caching.</span></span> <span data-ttu-id="39579-181">如果值為 `false` (預設)，則中介軟體會設定或覆寫 `Cache-Control`、`Expires` 和 `Pragma` 標頭，以防止回應快取。</span><span class="sxs-lookup"><span data-stu-id="39579-181">If the value is `false` (default), the middleware sets or overrides the `Cache-Control`, `Expires`, and `Pragma` headers to prevent response caching.</span></span> <span data-ttu-id="39579-182">如果值為 `true`，則中介軟體不會修改回應的快取標頭。</span><span class="sxs-lookup"><span data-stu-id="39579-182">If the value is `true`, the middleware doesn't modify the cache headers of the response.</span></span>
+<span data-ttu-id="2e52c-182">`AllowCachingResponses` 會控制健康狀態檢查中介軟體是否將 HTTP 標頭新增至探查回應，以防止回應快取。</span><span class="sxs-lookup"><span data-stu-id="2e52c-182">`AllowCachingResponses` controls whether the Health Check Middleware adds HTTP headers to a probe response to prevent response caching.</span></span> <span data-ttu-id="2e52c-183">如果值為 `false` (預設)，則中介軟體會設定或覆寫 `Cache-Control`、`Expires` 和 `Pragma` 標頭，以防止回應快取。</span><span class="sxs-lookup"><span data-stu-id="2e52c-183">If the value is `false` (default), the middleware sets or overrides the `Cache-Control`, `Expires`, and `Pragma` headers to prevent response caching.</span></span> <span data-ttu-id="2e52c-184">如果值為 `true`，則中介軟體不會修改回應的快取標頭。</span><span class="sxs-lookup"><span data-stu-id="2e52c-184">If the value is `true`, the middleware doesn't modify the cache headers of the response.</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -245,9 +247,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-### <a name="customize-output"></a><span data-ttu-id="39579-183">自訂輸出</span><span class="sxs-lookup"><span data-stu-id="39579-183">Customize output</span></span>
+### <a name="customize-output"></a><span data-ttu-id="2e52c-185">自訂輸出</span><span class="sxs-lookup"><span data-stu-id="2e52c-185">Customize output</span></span>
 
-<span data-ttu-id="39579-184">`ResponseWriter` 選項會取得或設定用來寫入回應的委派。</span><span class="sxs-lookup"><span data-stu-id="39579-184">The `ResponseWriter` option gets or sets a delegate used to write the response.</span></span> <span data-ttu-id="39579-185">預設委派會使用字串值 `HealthReport.Status` 寫入基本純文字回應。</span><span class="sxs-lookup"><span data-stu-id="39579-185">The default delegate writes a minimal plaintext response with the string value of `HealthReport.Status`.</span></span>
+<span data-ttu-id="2e52c-186">`ResponseWriter` 選項會取得或設定用來寫入回應的委派。</span><span class="sxs-lookup"><span data-stu-id="2e52c-186">The `ResponseWriter` option gets or sets a delegate used to write the response.</span></span> <span data-ttu-id="2e52c-187">預設委派會使用字串值 `HealthReport.Status` 寫入基本純文字回應。</span><span class="sxs-lookup"><span data-stu-id="2e52c-187">The default delegate writes a minimal plaintext response with the string value of `HealthReport.Status`.</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -280,71 +282,79 @@ private static Task WriteResponse(HttpContext httpContext,
 }
 ```
 
-## <a name="database-probe"></a><span data-ttu-id="39579-186">資料庫探查</span><span class="sxs-lookup"><span data-stu-id="39579-186">Database probe</span></span>
+## <a name="database-probe"></a><span data-ttu-id="2e52c-188">資料庫探查</span><span class="sxs-lookup"><span data-stu-id="2e52c-188">Database probe</span></span>
 
-<span data-ttu-id="39579-187">健康狀態檢查可指定資料庫查詢以布林測試方式來執行，藉此指出資料庫是否正常回應。</span><span class="sxs-lookup"><span data-stu-id="39579-187">A health check can specify a database query to run as a boolean test to indicate if the database is responding normally.</span></span>
+<span data-ttu-id="2e52c-189">健康狀態檢查可指定資料庫查詢以布林測試方式來執行，藉此指出資料庫是否正常回應。</span><span class="sxs-lookup"><span data-stu-id="2e52c-189">A health check can specify a database query to run as a boolean test to indicate if the database is responding normally.</span></span>
 
-<span data-ttu-id="39579-188">範例應用程式使用適用於 ASP.NET Core 應用程式的健康狀態檢查程式庫 [BeatPulse](https://github.com/Xabaril/BeatPulse)，在 SQL Server 資料庫上執行健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="39579-188">The sample app uses [BeatPulse](https://github.com/Xabaril/BeatPulse), a health check library for ASP.NET Core apps, to perform a health check on a SQL Server database.</span></span> <span data-ttu-id="39579-189">BeatPulse 會對資料庫執行 `SELECT 1` 查詢，以確認資料庫連線狀況良好。</span><span class="sxs-lookup"><span data-stu-id="39579-189">BeatPulse executes a `SELECT 1` query against the database to confirm the connection to the database is healthy.</span></span>
+<span data-ttu-id="2e52c-190">範例應用程式使用適用於 ASP.NET Core 應用程式的健康狀態檢查程式庫 [BeatPulse](https://github.com/Xabaril/BeatPulse)，在 SQL Server 資料庫上執行健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="2e52c-190">The sample app uses [BeatPulse](https://github.com/Xabaril/BeatPulse), a health check library for ASP.NET Core apps, to perform a health check on a SQL Server database.</span></span> <span data-ttu-id="2e52c-191">BeatPulse 會對資料庫執行 `SELECT 1` 查詢，以確認資料庫連線狀況良好。</span><span class="sxs-lookup"><span data-stu-id="2e52c-191">BeatPulse executes a `SELECT 1` query against the database to confirm the connection to the database is healthy.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="39579-190">使用查詢檢查資料庫連線時，請選擇快速傳回的查詢。</span><span class="sxs-lookup"><span data-stu-id="39579-190">When checking a database connection with a query, choose a query that returns quickly.</span></span> <span data-ttu-id="39579-191">查詢方法具有多載資料庫而降低其效能的風險。</span><span class="sxs-lookup"><span data-stu-id="39579-191">The query approach runs the risk of overloading the database and degrading its performance.</span></span> <span data-ttu-id="39579-192">在大部分情況下，不需要執行測試查詢。</span><span class="sxs-lookup"><span data-stu-id="39579-192">In most cases, running a test query isn't necessary.</span></span> <span data-ttu-id="39579-193">只要成功建立資料庫連線就已足夠。</span><span class="sxs-lookup"><span data-stu-id="39579-193">Merely making a successful connection to the database is sufficient.</span></span> <span data-ttu-id="39579-194">如果您發現有必要執行查詢，請選擇簡單的 SELECT 查詢，例如 `SELECT 1`。</span><span class="sxs-lookup"><span data-stu-id="39579-194">If you find it necessary to run a query, choose a simple SELECT query, such as `SELECT 1`.</span></span>
+> <span data-ttu-id="2e52c-192">使用查詢檢查資料庫連線時，請選擇快速傳回的查詢。</span><span class="sxs-lookup"><span data-stu-id="2e52c-192">When checking a database connection with a query, choose a query that returns quickly.</span></span> <span data-ttu-id="2e52c-193">查詢方法具有多載資料庫而降低其效能的風險。</span><span class="sxs-lookup"><span data-stu-id="2e52c-193">The query approach runs the risk of overloading the database and degrading its performance.</span></span> <span data-ttu-id="2e52c-194">在大部分情況下，不需要執行測試查詢。</span><span class="sxs-lookup"><span data-stu-id="2e52c-194">In most cases, running a test query isn't necessary.</span></span> <span data-ttu-id="2e52c-195">只要成功建立資料庫連線就已足夠。</span><span class="sxs-lookup"><span data-stu-id="2e52c-195">Merely making a successful connection to the database is sufficient.</span></span> <span data-ttu-id="2e52c-196">如果您發現有必要執行查詢，請選擇簡單的 SELECT 查詢，例如 `SELECT 1`。</span><span class="sxs-lookup"><span data-stu-id="2e52c-196">If you find it necessary to run a query, choose a simple SELECT query, such as `SELECT 1`.</span></span>
 
-<span data-ttu-id="39579-195">若要使用 BeatPulse 程式庫，請包含 [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/) 的套件參考。</span><span class="sxs-lookup"><span data-stu-id="39579-195">In order to use the BeatPulse library, include a package reference to [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).</span></span>
+<span data-ttu-id="2e52c-197">若要使用 BeatPulse 程式庫，請包含 [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/) 的套件參考。</span><span class="sxs-lookup"><span data-stu-id="2e52c-197">In order to use the BeatPulse library, include a package reference to [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).</span></span>
 
-<span data-ttu-id="39579-196">在範例應用程式的 *appsettings.json* 檔案中提供有效的資料庫連接字串。</span><span class="sxs-lookup"><span data-stu-id="39579-196">Supply a valid database connection string in the *appsettings.json* file of the sample app.</span></span> <span data-ttu-id="39579-197">應用程式使用名為 `HealthCheckSample` 的 SQL Server 資料庫：</span><span class="sxs-lookup"><span data-stu-id="39579-197">The app uses a SQL Server database named `HealthCheckSample`:</span></span>
+<span data-ttu-id="2e52c-198">在範例應用程式的 *appsettings.json* 檔案中提供有效的資料庫連接字串。</span><span class="sxs-lookup"><span data-stu-id="2e52c-198">Supply a valid database connection string in the *appsettings.json* file of the sample app.</span></span> <span data-ttu-id="2e52c-199">應用程式使用名為 `HealthCheckSample` 的 SQL Server 資料庫：</span><span class="sxs-lookup"><span data-stu-id="2e52c-199">The app uses a SQL Server database named `HealthCheckSample`:</span></span>
 
 [!code-json[](health-checks/samples/2.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-<span data-ttu-id="39579-198">在 `Startup.ConfigureServices` 中，使用 `AddHealthChecks` 登錄健康狀態檢查服務。</span><span class="sxs-lookup"><span data-stu-id="39579-198">Register health check services with `AddHealthChecks` in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="39579-199">範例應用程式使用資料庫的連接字串 (*DbHealthStartup.cs*) 來呼叫 BeatPulse 的 `AddSqlServer` 方法：</span><span class="sxs-lookup"><span data-stu-id="39579-199">The sample app calls BeatPulse's `AddSqlServer` method with the database's connection string (*DbHealthStartup.cs*):</span></span>
+<span data-ttu-id="2e52c-200">在 `Startup.ConfigureServices` 中，使用 `AddHealthChecks` 登錄健康狀態檢查服務。</span><span class="sxs-lookup"><span data-stu-id="2e52c-200">Register health check services with `AddHealthChecks` in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="2e52c-201">範例應用程式使用資料庫的連接字串 (*DbHealthStartup.cs*) 來呼叫 BeatPulse 的 `AddSqlServer` 方法：</span><span class="sxs-lookup"><span data-stu-id="2e52c-201">The sample app calls BeatPulse's `AddSqlServer` method with the database's connection string (*DbHealthStartup.cs*):</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
-<span data-ttu-id="39579-200">在 `Startup.Configure` 中，呼叫應用程式處理管線中的健康狀態檢查中介軟體：</span><span class="sxs-lookup"><span data-stu-id="39579-200">Call Health Check Middleware in the app processing pipeline in `Startup.Configure`:</span></span>
+<span data-ttu-id="2e52c-202">在 `Startup.Configure` 中，呼叫應用程式處理管線中的健康狀態檢查中介軟體：</span><span class="sxs-lookup"><span data-stu-id="2e52c-202">Call Health Check Middleware in the app processing pipeline in `Startup.Configure`:</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_Configure)]
 
-<span data-ttu-id="39579-201">若要使用範例應用程式執行資料庫探查案例，請在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="39579-201">To run the database probe scenario using the sample app, execute the following command from the project's folder in a command shell:</span></span>
+<span data-ttu-id="2e52c-203">若要使用範例應用程式執行資料庫探查案例，請在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="2e52c-203">To run the database probe scenario using the sample app, execute the following command from the project's folder in a command shell:</span></span>
 
 ```console
 dotnet run --scenario db
 ```
 
 > [!NOTE]
-> <span data-ttu-id="39579-202">Microsoft 不會維護或支援 [BeatPulse](https://github.com/Xabaril/BeatPulse)。</span><span class="sxs-lookup"><span data-stu-id="39579-202">[BeatPulse](https://github.com/Xabaril/BeatPulse) isn't maintained or supported by Microsoft.</span></span>
+> <span data-ttu-id="2e52c-204">Microsoft 不會維護或支援 [BeatPulse](https://github.com/Xabaril/BeatPulse)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-204">[BeatPulse](https://github.com/Xabaril/BeatPulse) isn't maintained or supported by Microsoft.</span></span>
 
-## <a name="entity-framework-core-dbcontext-probe"></a><span data-ttu-id="39579-203">Entity Framework Core DbContext 探查</span><span class="sxs-lookup"><span data-stu-id="39579-203">Entity Framework Core DbContext probe</span></span>
+## <a name="entity-framework-core-dbcontext-probe"></a><span data-ttu-id="2e52c-205">Entity Framework Core DbContext 探查</span><span class="sxs-lookup"><span data-stu-id="2e52c-205">Entity Framework Core DbContext probe</span></span>
 
-<span data-ttu-id="39579-204">使用 [Entity Framework (EF) Core](/ef/core/) 的應用程式支援 `DbContext` 檢查。</span><span class="sxs-lookup"><span data-stu-id="39579-204">The `DbContext` check is supported in apps that use [Entity Framework (EF) Core](/ef/core/).</span></span> <span data-ttu-id="39579-205">這項檢查會確認應用程式是否可與針對 EF Core `DbContext` 設定的資料庫通訊。</span><span class="sxs-lookup"><span data-stu-id="39579-205">This check confirms that the app can communicate with the database configured for an EF Core `DbContext`.</span></span> <span data-ttu-id="39579-206">根據預設，`DbContextHealthCheck` 會呼叫 EF Core 的 `CanConnectAsync` 方法。</span><span class="sxs-lookup"><span data-stu-id="39579-206">By default, the `DbContextHealthCheck` calls EF Core's `CanConnectAsync` method.</span></span> <span data-ttu-id="39579-207">您可以自訂使用 `AddDbContextCheck` 方法的多載檢查健康狀態時所要執行的作業。</span><span class="sxs-lookup"><span data-stu-id="39579-207">You can customize what operation is run when checking health using overloads of the `AddDbContextCheck` method.</span></span>
+<span data-ttu-id="2e52c-206">`DbContext` 檢查會確認應用程式是否可與針對 EF Core `DbContext` 設定的資料庫通訊。</span><span class="sxs-lookup"><span data-stu-id="2e52c-206">The `DbContext` check confirms that the app can communicate with the database configured for an EF Core `DbContext`.</span></span> <span data-ttu-id="2e52c-207">應用程式支援 `DbContext` 檢查：</span><span class="sxs-lookup"><span data-stu-id="2e52c-207">The `DbContext` check is supported in apps that:</span></span>
 
-<span data-ttu-id="39579-208">`AddDbContextCheck<TContext>` 會登錄 `DbContext` (`TContext`) 的健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="39579-208">`AddDbContextCheck<TContext>` registers a health check for a `DbContext` (`TContext`).</span></span> <span data-ttu-id="39579-209">根據預設，健康狀態檢查的名稱是 `TContext` 類型的名稱。</span><span class="sxs-lookup"><span data-stu-id="39579-209">By default, the name of the health check is the name of the `TContext` type.</span></span> <span data-ttu-id="39579-210">多載可用來設定失敗狀態、標籤和自訂測試查詢。</span><span class="sxs-lookup"><span data-stu-id="39579-210">An overload is available to configure the failure status, tags, and a custom test query.</span></span>
+* <span data-ttu-id="2e52c-208">使用 [Entity Framework (EF) Core](/ef/core/)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-208">Use [Entity Framework (EF) Core](/ef/core/).</span></span>
+* <span data-ttu-id="2e52c-209">包含 [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/) 的套件參考。</span><span class="sxs-lookup"><span data-stu-id="2e52c-209">Include a package reference to [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/).</span></span>
 
-<span data-ttu-id="39579-211">在範例應用程式中，`AppDbContext` 會提供給 `AddDbContextCheck` 並在 `Startup.ConfigureServices` 中登錄為服務。</span><span class="sxs-lookup"><span data-stu-id="39579-211">In the sample app, `AppDbContext` is provided to `AddDbContextCheck` and registered as a service in `Startup.ConfigureServices`.</span></span>
+<span data-ttu-id="2e52c-210">`AddDbContextCheck<TContext>` 會登錄 `DbContext` 的健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="2e52c-210">`AddDbContextCheck<TContext>` registers a health check for a `DbContext`.</span></span> <span data-ttu-id="2e52c-211">`DbContext` 會以 `TContext` 形式提供給方法。</span><span class="sxs-lookup"><span data-stu-id="2e52c-211">The `DbContext` is supplied as the `TContext` to the method.</span></span> <span data-ttu-id="2e52c-212">多載可用來設定失敗狀態、標籤和自訂測試查詢。</span><span class="sxs-lookup"><span data-stu-id="2e52c-212">An overload is available to configure the failure status, tags, and a custom test query.</span></span>
 
-<span data-ttu-id="39579-212">*DbContextHealthStartup.cs*：</span><span class="sxs-lookup"><span data-stu-id="39579-212">*DbContextHealthStartup.cs*:</span></span>
+<span data-ttu-id="2e52c-213">根據預設：</span><span class="sxs-lookup"><span data-stu-id="2e52c-213">By default:</span></span>
+
+* <span data-ttu-id="2e52c-214">`DbContextHealthCheck` 會呼叫 EF Core 的 `CanConnectAsync` 方法。</span><span class="sxs-lookup"><span data-stu-id="2e52c-214">The `DbContextHealthCheck` calls EF Core's `CanConnectAsync` method.</span></span> <span data-ttu-id="2e52c-215">您可以自訂使用 `AddDbContextCheck` 方法多載檢查健康狀態時所要執行的作業。</span><span class="sxs-lookup"><span data-stu-id="2e52c-215">You can customize what operation is run when checking health using `AddDbContextCheck` method overloads.</span></span>
+* <span data-ttu-id="2e52c-216">健康狀態檢查的名稱是 `TContext` 類型的名稱。</span><span class="sxs-lookup"><span data-stu-id="2e52c-216">The name of the health check is the name of the `TContext` type.</span></span>
+
+<span data-ttu-id="2e52c-217">在範例應用程式中，`AppDbContext` 會提供給 `AddDbContextCheck` 並在 `Startup.ConfigureServices` 中登錄為服務。</span><span class="sxs-lookup"><span data-stu-id="2e52c-217">In the sample app, `AppDbContext` is provided to `AddDbContextCheck` and registered as a service in `Startup.ConfigureServices`.</span></span>
+
+<span data-ttu-id="2e52c-218">*DbContextHealthStartup.cs*：</span><span class="sxs-lookup"><span data-stu-id="2e52c-218">*DbContextHealthStartup.cs*:</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_ConfigureServices)]
 
-<span data-ttu-id="39579-213">在範例應用程式中，`UseHealthChecks` 會在 `Startup.Configure` 中新增健康狀態檢查中介軟體。</span><span class="sxs-lookup"><span data-stu-id="39579-213">In the sample app, `UseHealthChecks` adds the Health Check Middleware in `Startup.Configure`.</span></span>
+<span data-ttu-id="2e52c-219">在範例應用程式中，`UseHealthChecks` 會在 `Startup.Configure` 中新增健康狀態檢查中介軟體。</span><span class="sxs-lookup"><span data-stu-id="2e52c-219">In the sample app, `UseHealthChecks` adds the Health Check Middleware in `Startup.Configure`.</span></span>
 
-<span data-ttu-id="39579-214">*DbContextHealthStartup.cs*：</span><span class="sxs-lookup"><span data-stu-id="39579-214">*DbContextHealthStartup.cs*:</span></span>
+<span data-ttu-id="2e52c-220">*DbContextHealthStartup.cs*：</span><span class="sxs-lookup"><span data-stu-id="2e52c-220">*DbContextHealthStartup.cs*:</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_Configure)]
 
-<span data-ttu-id="39579-215">若要使用範例應用程式執行 `DbContext` 探查案例，請確認 SQL Server 執行個體中不存在連接字串所指定的資料庫。</span><span class="sxs-lookup"><span data-stu-id="39579-215">To run the `DbContext` probe scenario using the sample app, confirm that the database specified by the the connection string doesn't exist in the SQL Server instance.</span></span> <span data-ttu-id="39579-216">如果資料庫存在，請予以刪除。</span><span class="sxs-lookup"><span data-stu-id="39579-216">If the database exists, delete it.</span></span>
+<span data-ttu-id="2e52c-221">若要使用範例應用程式執行 `DbContext` 探查案例，請確認 SQL Server 執行個體中不存在連接字串所指定的資料庫。</span><span class="sxs-lookup"><span data-stu-id="2e52c-221">To run the `DbContext` probe scenario using the sample app, confirm that the database specified by the the connection string doesn't exist in the SQL Server instance.</span></span> <span data-ttu-id="2e52c-222">如果資料庫存在，請予以刪除。</span><span class="sxs-lookup"><span data-stu-id="2e52c-222">If the database exists, delete it.</span></span>
 
-<span data-ttu-id="39579-217">在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="39579-217">Execute the following command from the project's folder in a command shell:</span></span>
+<span data-ttu-id="2e52c-223">在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="2e52c-223">Execute the following command from the project's folder in a command shell:</span></span>
 
 ```console
 dotnet run --scenario dbcontext
 ```
 
-<span data-ttu-id="39579-218">在應用程式執行之後，對瀏覽器中的 `/health` 端點提出要求來檢查健康狀態。</span><span class="sxs-lookup"><span data-stu-id="39579-218">After the app is running, check the health status by making a request to the `/health` endpoint in a browser.</span></span> <span data-ttu-id="39579-219">資料庫和 `AppDbContext` 不存在，因此應用程式會提供下列回應：</span><span class="sxs-lookup"><span data-stu-id="39579-219">The database and `AppDbContext` don't exist, so app provides the following response:</span></span>
+<span data-ttu-id="2e52c-224">在應用程式執行之後，對瀏覽器中的 `/health` 端點提出要求來檢查健康狀態。</span><span class="sxs-lookup"><span data-stu-id="2e52c-224">After the app is running, check the health status by making a request to the `/health` endpoint in a browser.</span></span> <span data-ttu-id="2e52c-225">資料庫和 `AppDbContext` 不存在，因此應用程式會提供下列回應：</span><span class="sxs-lookup"><span data-stu-id="2e52c-225">The database and `AppDbContext` don't exist, so app provides the following response:</span></span>
 
 ```
 Unhealthy
 ```
 
-<span data-ttu-id="39579-220">觸發範例應用程式以建立資料庫。</span><span class="sxs-lookup"><span data-stu-id="39579-220">Trigger the sample app to create the database.</span></span> <span data-ttu-id="39579-221">對 `/createdatabase` 提出要求。</span><span class="sxs-lookup"><span data-stu-id="39579-221">Make a request to `/createdatabase`.</span></span> <span data-ttu-id="39579-222">應用程式會回應：</span><span class="sxs-lookup"><span data-stu-id="39579-222">The app responds:</span></span>
+<span data-ttu-id="2e52c-226">觸發範例應用程式以建立資料庫。</span><span class="sxs-lookup"><span data-stu-id="2e52c-226">Trigger the sample app to create the database.</span></span> <span data-ttu-id="2e52c-227">對 `/createdatabase` 提出要求。</span><span class="sxs-lookup"><span data-stu-id="2e52c-227">Make a request to `/createdatabase`.</span></span> <span data-ttu-id="2e52c-228">應用程式會回應：</span><span class="sxs-lookup"><span data-stu-id="2e52c-228">The app responds:</span></span>
 
 ```
 Creating the database...
@@ -352,13 +362,13 @@ Done!
 Navigate to /health to see the health status.
 ```
 
-<span data-ttu-id="39579-223">對 `/health` 端點提出要求。</span><span class="sxs-lookup"><span data-stu-id="39579-223">Make a request to the `/health` endpoint.</span></span> <span data-ttu-id="39579-224">資料庫和內容存在，因此應用程式會回應：</span><span class="sxs-lookup"><span data-stu-id="39579-224">The database and context exist, so app responds:</span></span>
+<span data-ttu-id="2e52c-229">對 `/health` 端點提出要求。</span><span class="sxs-lookup"><span data-stu-id="2e52c-229">Make a request to the `/health` endpoint.</span></span> <span data-ttu-id="2e52c-230">資料庫和內容存在，因此應用程式會回應：</span><span class="sxs-lookup"><span data-stu-id="2e52c-230">The database and context exist, so app responds:</span></span>
 
 ```
 Healthy
 ```
 
-<span data-ttu-id="39579-225">觸發範例應用程式以刪除資料庫。</span><span class="sxs-lookup"><span data-stu-id="39579-225">Trigger the sample app to delete the database.</span></span> <span data-ttu-id="39579-226">對 `/deletedatabase` 提出要求。</span><span class="sxs-lookup"><span data-stu-id="39579-226">Make a request to `/deletedatabase`.</span></span> <span data-ttu-id="39579-227">應用程式會回應：</span><span class="sxs-lookup"><span data-stu-id="39579-227">The app responds:</span></span>
+<span data-ttu-id="2e52c-231">觸發範例應用程式以刪除資料庫。</span><span class="sxs-lookup"><span data-stu-id="2e52c-231">Trigger the sample app to delete the database.</span></span> <span data-ttu-id="2e52c-232">對 `/deletedatabase` 提出要求。</span><span class="sxs-lookup"><span data-stu-id="2e52c-232">Make a request to `/deletedatabase`.</span></span> <span data-ttu-id="2e52c-233">應用程式會回應：</span><span class="sxs-lookup"><span data-stu-id="2e52c-233">The app responds:</span></span>
 
 ```
 Deleting the database...
@@ -366,50 +376,50 @@ Done!
 Navigate to /health to see the health status.
 ```
 
-<span data-ttu-id="39579-228">對 `/health` 端點提出要求。</span><span class="sxs-lookup"><span data-stu-id="39579-228">Make a request to the `/health` endpoint.</span></span> <span data-ttu-id="39579-229">應用程式會提供狀況不良回應：</span><span class="sxs-lookup"><span data-stu-id="39579-229">The app provides an unhealthy response:</span></span>
+<span data-ttu-id="2e52c-234">對 `/health` 端點提出要求。</span><span class="sxs-lookup"><span data-stu-id="2e52c-234">Make a request to the `/health` endpoint.</span></span> <span data-ttu-id="2e52c-235">應用程式會提供狀況不良回應：</span><span class="sxs-lookup"><span data-stu-id="2e52c-235">The app provides an unhealthy response:</span></span>
 
 ```
 Unhealthy
 ```
 
-## <a name="separate-readiness-and-liveness-probes"></a><span data-ttu-id="39579-230">個別的整備度與活躍度探查</span><span class="sxs-lookup"><span data-stu-id="39579-230">Separate readiness and liveness probes</span></span>
+## <a name="separate-readiness-and-liveness-probes"></a><span data-ttu-id="2e52c-236">個別的整備度與活躍度探查</span><span class="sxs-lookup"><span data-stu-id="2e52c-236">Separate readiness and liveness probes</span></span>
 
-<span data-ttu-id="39579-231">在某些主控案例中，使用一組健康狀態檢查來區分兩個應用程式狀態：</span><span class="sxs-lookup"><span data-stu-id="39579-231">In some hosting scenarios, a pair of health checks are used that distinguish two app states:</span></span>
+<span data-ttu-id="2e52c-237">在某些主控案例中，使用一組健康狀態檢查來區分兩個應用程式狀態：</span><span class="sxs-lookup"><span data-stu-id="2e52c-237">In some hosting scenarios, a pair of health checks are used that distinguish two app states:</span></span>
 
-* <span data-ttu-id="39579-232">應用程式正常運作但尚未準備好接收要求。</span><span class="sxs-lookup"><span data-stu-id="39579-232">The app is functioning but not yet ready to receive requests.</span></span> <span data-ttu-id="39579-233">此狀態是指應用程式的「整備度」。</span><span class="sxs-lookup"><span data-stu-id="39579-233">This state is the app's *readiness*.</span></span>
-* <span data-ttu-id="39579-234">應用程式正常運作並回應要求。</span><span class="sxs-lookup"><span data-stu-id="39579-234">The app is functioning and responding to requests.</span></span> <span data-ttu-id="39579-235">此狀態是指應用程式的「活躍度」。</span><span class="sxs-lookup"><span data-stu-id="39579-235">This state is the app's *liveness*.</span></span>
+* <span data-ttu-id="2e52c-238">應用程式正常運作但尚未準備好接收要求。</span><span class="sxs-lookup"><span data-stu-id="2e52c-238">The app is functioning but not yet ready to receive requests.</span></span> <span data-ttu-id="2e52c-239">此狀態是指應用程式的「整備度」。</span><span class="sxs-lookup"><span data-stu-id="2e52c-239">This state is the app's *readiness*.</span></span>
+* <span data-ttu-id="2e52c-240">應用程式正常運作並回應要求。</span><span class="sxs-lookup"><span data-stu-id="2e52c-240">The app is functioning and responding to requests.</span></span> <span data-ttu-id="2e52c-241">此狀態是指應用程式的「活躍度」。</span><span class="sxs-lookup"><span data-stu-id="2e52c-241">This state is the app's *liveness*.</span></span>
 
-<span data-ttu-id="39579-236">整備度檢查通常會執行一組更廣泛且耗時的檢查，以判斷應用程式的所有子系統和資源是否都可供使用。</span><span class="sxs-lookup"><span data-stu-id="39579-236">The readiness check usually performs a more extensive and time-consuming set of checks to determine if all of the app's subsystems and resources are available.</span></span> <span data-ttu-id="39579-237">活躍度檢查只會執行快速檢查，以判斷應用程式是否可處理要求。</span><span class="sxs-lookup"><span data-stu-id="39579-237">A liveness check merely performs a quick check to determine if the app is available to process requests.</span></span> <span data-ttu-id="39579-238">當應用程式通過其整備度檢查之後，就不需要再對應用程式執行這組耗費資源的整備度檢查&mdash;後續檢查只需要檢查活躍度。</span><span class="sxs-lookup"><span data-stu-id="39579-238">After the app passes its readiness check, there's no need to burden the app further with the expensive set of readiness checks&mdash;further checks only require checking for liveness.</span></span>
+<span data-ttu-id="2e52c-242">整備度檢查通常會執行一組更廣泛且耗時的檢查，以判斷應用程式的所有子系統和資源是否都可供使用。</span><span class="sxs-lookup"><span data-stu-id="2e52c-242">The readiness check usually performs a more extensive and time-consuming set of checks to determine if all of the app's subsystems and resources are available.</span></span> <span data-ttu-id="2e52c-243">活躍度檢查只會執行快速檢查，以判斷應用程式是否可處理要求。</span><span class="sxs-lookup"><span data-stu-id="2e52c-243">A liveness check merely performs a quick check to determine if the app is available to process requests.</span></span> <span data-ttu-id="2e52c-244">當應用程式通過其整備度檢查之後，就不需要再對應用程式執行這組耗費資源的整備度檢查&mdash;後續檢查只需要檢查活躍度。</span><span class="sxs-lookup"><span data-stu-id="2e52c-244">After the app passes its readiness check, there's no need to burden the app further with the expensive set of readiness checks&mdash;further checks only require checking for liveness.</span></span>
 
-<span data-ttu-id="39579-239">範例應用程式包含健康狀態檢查，會在[託管服務](xref:fundamentals/host/hosted-services)中長時間執行的啟動工作完成時回報。</span><span class="sxs-lookup"><span data-stu-id="39579-239">The sample app contains a health check to report the completion of long-running startup task in a [Hosted Service](xref:fundamentals/host/hosted-services).</span></span> <span data-ttu-id="39579-240">`StartupHostedServiceHealthCheck` 會公開屬性 `StartupTaskCompleted`。託管服務可在其長時間執行的工作完成時，將此屬性設定為 `true` (*StartupHostedServiceHealthCheck.cs*)：</span><span class="sxs-lookup"><span data-stu-id="39579-240">The `StartupHostedServiceHealthCheck` exposes a property, `StartupTaskCompleted`, that the hosted service can set to `true` when its long-running task is finished (*StartupHostedServiceHealthCheck.cs*):</span></span>
+<span data-ttu-id="2e52c-245">範例應用程式包含健康狀態檢查，會在[託管服務](xref:fundamentals/host/hosted-services)中長時間執行的啟動工作完成時回報。</span><span class="sxs-lookup"><span data-stu-id="2e52c-245">The sample app contains a health check to report the completion of long-running startup task in a [Hosted Service](xref:fundamentals/host/hosted-services).</span></span> <span data-ttu-id="2e52c-246">`StartupHostedServiceHealthCheck` 會公開屬性 `StartupTaskCompleted`。託管服務可在其長時間執行的工作完成時，將此屬性設定為 `true` (*StartupHostedServiceHealthCheck.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2e52c-246">The `StartupHostedServiceHealthCheck` exposes a property, `StartupTaskCompleted`, that the hosted service can set to `true` when its long-running task is finished (*StartupHostedServiceHealthCheck.cs*):</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/StartupHostedServiceHealthCheck.cs?name=snippet1&highlight=5)]
 
-<span data-ttu-id="39579-241">[託管服務](xref:fundamentals/host/hosted-services) (*Services/StartupHostedService*) 會啟動長時間執行的背景工作。</span><span class="sxs-lookup"><span data-stu-id="39579-241">The long-running background task is started by a [Hosted Service](xref:fundamentals/host/hosted-services) (*Services/StartupHostedService*).</span></span> <span data-ttu-id="39579-242">工作完成時，`StartupHostedServiceHealthCheck.StartupTaskCompleted` 會設定為 `true`：</span><span class="sxs-lookup"><span data-stu-id="39579-242">At the conclusion of the task, `StartupHostedServiceHealthCheck.StartupTaskCompleted` is set to `true`:</span></span>
+<span data-ttu-id="2e52c-247">[託管服務](xref:fundamentals/host/hosted-services) (*Services/StartupHostedService*) 會啟動長時間執行的背景工作。</span><span class="sxs-lookup"><span data-stu-id="2e52c-247">The long-running background task is started by a [Hosted Service](xref:fundamentals/host/hosted-services) (*Services/StartupHostedService*).</span></span> <span data-ttu-id="2e52c-248">工作完成時，`StartupHostedServiceHealthCheck.StartupTaskCompleted` 會設定為 `true`：</span><span class="sxs-lookup"><span data-stu-id="2e52c-248">At the conclusion of the task, `StartupHostedServiceHealthCheck.StartupTaskCompleted` is set to `true`:</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/Services/StartupHostedService.cs?name=snippet1&highlight=18-20)]
 
-<span data-ttu-id="39579-243">健康狀態檢查是 `Startup.ConfigureServices` 中使用 `AddCheck` 隨託管服務一起登錄。</span><span class="sxs-lookup"><span data-stu-id="39579-243">The health check is registered with `AddCheck` in `Startup.ConfigureServices` along with the hosted service.</span></span> <span data-ttu-id="39579-244">由於託管服務必須在健康狀態檢查上設定此屬性，因此也會在服務容器 (*LivenessProbeStartup.cs*) 中登錄健康狀態檢查：</span><span class="sxs-lookup"><span data-stu-id="39579-244">Because the hosted service must set the property on the health check, the health check is also registered in the service container (*LivenessProbeStartup.cs*):</span></span>
+<span data-ttu-id="2e52c-249">健康狀態檢查是 `Startup.ConfigureServices` 中使用 `AddCheck` 隨託管服務一起登錄。</span><span class="sxs-lookup"><span data-stu-id="2e52c-249">The health check is registered with `AddCheck` in `Startup.ConfigureServices` along with the hosted service.</span></span> <span data-ttu-id="2e52c-250">由於託管服務必須在健康狀態檢查上設定此屬性，因此也會在服務容器 (*LivenessProbeStartup.cs*) 中登錄健康狀態檢查：</span><span class="sxs-lookup"><span data-stu-id="2e52c-250">Because the hosted service must set the property on the health check, the health check is also registered in the service container (*LivenessProbeStartup.cs*):</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices)]
 
-<span data-ttu-id="39579-245">在 `Startup.Configure` 中，呼叫應用程式處理管線中的健康狀態檢查中介軟體。</span><span class="sxs-lookup"><span data-stu-id="39579-245">Call Health Check Middleware in the app processing pipeline in `Startup.Configure`.</span></span> <span data-ttu-id="39579-246">在範例應用程式中，健康狀態檢查端點是在 `/health/ready` (針對整備度檢查) 和 `/health/live` (針對活躍度檢查) 建立。</span><span class="sxs-lookup"><span data-stu-id="39579-246">In the sample app, the health check endpoints are created at `/health/ready` for the readiness check and `/health/live` for the liveness check.</span></span> <span data-ttu-id="39579-247">整備度檢查使用 `ready` 標籤來篩選健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="39579-247">The readiness check filters health checks to the health check with the `ready` tag.</span></span> <span data-ttu-id="39579-248">活躍度檢查是藉由在 `HealthCheckOptions.Predicate` 中傳回 `false` 來篩選出 `StartupHostedServiceHealthCheck` (如需詳細資訊，請參閱[篩選健康狀態檢查](#filter-health-checks))：</span><span class="sxs-lookup"><span data-stu-id="39579-248">The liveness check filters out the `StartupHostedServiceHealthCheck` by returning `false` in the `HealthCheckOptions.Predicate` (for more information, see [Filter health checks](#filter-health-checks)):</span></span>
+<span data-ttu-id="2e52c-251">在 `Startup.Configure` 中，呼叫應用程式處理管線中的健康狀態檢查中介軟體。</span><span class="sxs-lookup"><span data-stu-id="2e52c-251">Call Health Check Middleware in the app processing pipeline in `Startup.Configure`.</span></span> <span data-ttu-id="2e52c-252">在範例應用程式中，健康狀態檢查端點是在 `/health/ready` (針對整備度檢查) 和 `/health/live` (針對活躍度檢查) 建立。</span><span class="sxs-lookup"><span data-stu-id="2e52c-252">In the sample app, the health check endpoints are created at `/health/ready` for the readiness check and `/health/live` for the liveness check.</span></span> <span data-ttu-id="2e52c-253">整備度檢查使用 `ready` 標籤來篩選健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="2e52c-253">The readiness check filters health checks to the health check with the `ready` tag.</span></span> <span data-ttu-id="2e52c-254">活躍度檢查是藉由在 `HealthCheckOptions.Predicate` 中傳回 `false` 來篩選出 `StartupHostedServiceHealthCheck` (如需詳細資訊，請參閱[篩選健康狀態檢查](#filter-health-checks))：</span><span class="sxs-lookup"><span data-stu-id="2e52c-254">The liveness check filters out the `StartupHostedServiceHealthCheck` by returning `false` in the `HealthCheckOptions.Predicate` (for more information, see [Filter health checks](#filter-health-checks)):</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_Configure)]
 
-<span data-ttu-id="39579-249">若要使用範例應用程式執行整備度/活躍度組態案例，請在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="39579-249">To run the readiness/liveness configuration scenario using the sample app, execute the following command from the project's folder in a command shell:</span></span>
+<span data-ttu-id="2e52c-255">若要使用範例應用程式執行整備度/活躍度組態案例，請在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="2e52c-255">To run the readiness/liveness configuration scenario using the sample app, execute the following command from the project's folder in a command shell:</span></span>
 
 ```console
 dotnet run --scenario liveness
 ```
 
-<span data-ttu-id="39579-250">在瀏覽器中，瀏覽 `/health/ready` 數次，直到經過 15 秒。</span><span class="sxs-lookup"><span data-stu-id="39579-250">In a browser, visit `/health/ready` several times until 15 seconds have passed.</span></span> <span data-ttu-id="39579-251">健康狀態檢查報告前 15 秒為 `Unhealthy`。</span><span class="sxs-lookup"><span data-stu-id="39579-251">The health check reports `Unhealthy` for the first 15 seconds.</span></span> <span data-ttu-id="39579-252">15 秒之後，端點會報告 `Healthy`，以反映託管服務長時間執行的工作已完成。</span><span class="sxs-lookup"><span data-stu-id="39579-252">After 15 seconds, the endpoint reports `Healthy`, which reflects the completion of the long-running task by the hosted service.</span></span>
+<span data-ttu-id="2e52c-256">在瀏覽器中，瀏覽 `/health/ready` 數次，直到經過 15 秒。</span><span class="sxs-lookup"><span data-stu-id="2e52c-256">In a browser, visit `/health/ready` several times until 15 seconds have passed.</span></span> <span data-ttu-id="2e52c-257">健康狀態檢查報告前 15 秒為 `Unhealthy`。</span><span class="sxs-lookup"><span data-stu-id="2e52c-257">The health check reports `Unhealthy` for the first 15 seconds.</span></span> <span data-ttu-id="2e52c-258">15 秒之後，端點會報告 `Healthy`，以反映託管服務長時間執行的工作已完成。</span><span class="sxs-lookup"><span data-stu-id="2e52c-258">After 15 seconds, the endpoint reports `Healthy`, which reflects the completion of the long-running task by the hosted service.</span></span>
 
-### <a name="kubernetes-example"></a><span data-ttu-id="39579-253">Kubernetes 範例</span><span class="sxs-lookup"><span data-stu-id="39579-253">Kubernetes example</span></span>
+### <a name="kubernetes-example"></a><span data-ttu-id="2e52c-259">Kubernetes 範例</span><span class="sxs-lookup"><span data-stu-id="2e52c-259">Kubernetes example</span></span>
 
-<span data-ttu-id="39579-254">使用個別的整備度與活躍度檢查在 [Kubernetes](https://kubernetes.io/) 之類的環境中很有用。</span><span class="sxs-lookup"><span data-stu-id="39579-254">Using separate readiness and liveness checks is useful in an environment such as [Kubernetes](https://kubernetes.io/).</span></span> <span data-ttu-id="39579-255">在 Kubernetes 中，應用程式可能需要執行耗時的啟動工作才能接受要求 (例如基礎資料庫可用性測試)。</span><span class="sxs-lookup"><span data-stu-id="39579-255">In Kubernetes, an app might be required to perform time-consuming startup work before accepting requests, such as a test of the underlying database availability.</span></span> <span data-ttu-id="39579-256">使用個別的檢查可讓協調器區分應用程式是否為正常運作但尚未準備好，或應用程式是否無法啟動。</span><span class="sxs-lookup"><span data-stu-id="39579-256">Using separate checks allows the orchestrator to distinguish whether the app is functioning but not yet ready or if the app has failed to start.</span></span> <span data-ttu-id="39579-257">如需 Kubernetes 中整備度與活躍度探查的詳細資訊，請參閱 Kubernetes 文件中的 [Configure Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) (設定活躍度與整備度探查)。</span><span class="sxs-lookup"><span data-stu-id="39579-257">For more information on readiness and liveness probes in Kubernetes, see [Configure Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) in the Kubernetes documentation.</span></span>
+<span data-ttu-id="2e52c-260">使用個別的整備度與活躍度檢查在 [Kubernetes](https://kubernetes.io/) 之類的環境中很有用。</span><span class="sxs-lookup"><span data-stu-id="2e52c-260">Using separate readiness and liveness checks is useful in an environment such as [Kubernetes](https://kubernetes.io/).</span></span> <span data-ttu-id="2e52c-261">在 Kubernetes 中，應用程式可能需要執行耗時的啟動工作才能接受要求 (例如基礎資料庫可用性測試)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-261">In Kubernetes, an app might be required to perform time-consuming startup work before accepting requests, such as a test of the underlying database availability.</span></span> <span data-ttu-id="2e52c-262">使用個別的檢查可讓協調器區分應用程式是否為正常運作但尚未準備好，或應用程式是否無法啟動。</span><span class="sxs-lookup"><span data-stu-id="2e52c-262">Using separate checks allows the orchestrator to distinguish whether the app is functioning but not yet ready or if the app has failed to start.</span></span> <span data-ttu-id="2e52c-263">如需 Kubernetes 中整備度與活躍度探查的詳細資訊，請參閱 Kubernetes 文件中的 [Configure Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) (設定活躍度與整備度探查)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-263">For more information on readiness and liveness probes in Kubernetes, see [Configure Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) in the Kubernetes documentation.</span></span>
 
-<span data-ttu-id="39579-258">下列範例示範 Kubernetes 整備度探查組態：</span><span class="sxs-lookup"><span data-stu-id="39579-258">The following example demonstrates a Kubernetes readiness probe configuration:</span></span>
+<span data-ttu-id="2e52c-264">下列範例示範 Kubernetes 整備度探查組態：</span><span class="sxs-lookup"><span data-stu-id="2e52c-264">The following example demonstrates a Kubernetes readiness probe configuration:</span></span>
 
 ```
 spec:
@@ -428,50 +438,50 @@ spec:
       - containerPort: 80
 ```
 
-## <a name="metric-based-probe-with-a-custom-response-writer"></a><span data-ttu-id="39579-259">透過自訂回應寫入器的計量型探查</span><span class="sxs-lookup"><span data-stu-id="39579-259">Metric-based probe with a custom response writer</span></span>
+## <a name="metric-based-probe-with-a-custom-response-writer"></a><span data-ttu-id="2e52c-265">透過自訂回應寫入器的計量型探查</span><span class="sxs-lookup"><span data-stu-id="2e52c-265">Metric-based probe with a custom response writer</span></span>
 
-<span data-ttu-id="39579-260">範例應用程式示範透過自訂回應寫入器的記憶體健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="39579-260">The sample app demonstrates a memory health check with a custom response writer.</span></span>
+<span data-ttu-id="2e52c-266">範例應用程式示範透過自訂回應寫入器的記憶體健康狀態檢查。</span><span class="sxs-lookup"><span data-stu-id="2e52c-266">The sample app demonstrates a memory health check with a custom response writer.</span></span>
 
-<span data-ttu-id="39579-261">如果應用程式使用超過指定的記憶體閾值 (在範例應用程式中為 1 GB)，`MemoryHealthCheck` 會報告降級的狀態。</span><span class="sxs-lookup"><span data-stu-id="39579-261">`MemoryHealthCheck` reports a degraded status if the app uses more than a given threshold of memory (1 GB in the sample app).</span></span> <span data-ttu-id="39579-262">`HealthCheckResult` 包含應用程式的記憶體回收行程 (GC) 資訊 (*MemoryHealthCheck.cs*)：</span><span class="sxs-lookup"><span data-stu-id="39579-262">The `HealthCheckResult` includes Garbage Collector (GC) information for the app (*MemoryHealthCheck.cs*):</span></span>
+<span data-ttu-id="2e52c-267">如果應用程式使用超過指定的記憶體閾值 (在範例應用程式中為 1 GB)，`MemoryHealthCheck` 會報告降級的狀態。</span><span class="sxs-lookup"><span data-stu-id="2e52c-267">`MemoryHealthCheck` reports a degraded status if the app uses more than a given threshold of memory (1 GB in the sample app).</span></span> <span data-ttu-id="2e52c-268">`HealthCheckResult` 包含應用程式的記憶體回收行程 (GC) 資訊 (*MemoryHealthCheck.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2e52c-268">The `HealthCheckResult` includes Garbage Collector (GC) information for the app (*MemoryHealthCheck.cs*):</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
-<span data-ttu-id="39579-263">在 `Startup.ConfigureServices` 中，使用 `AddHealthChecks` 登錄健康狀態檢查服務。</span><span class="sxs-lookup"><span data-stu-id="39579-263">Register health check services with `AddHealthChecks` in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="39579-264">`MemoryHealthCheck` 會登錄為服務，而不是將健康狀態檢查傳遞至 `AddCheck` 以啟用檢查。</span><span class="sxs-lookup"><span data-stu-id="39579-264">Instead of enabling the health check by passing it to `AddCheck`, the `MemoryHealthCheck` is registered as a service.</span></span> <span data-ttu-id="39579-265">所有 `IHealthCheck` 登錄的服務都可供健康狀態檢查服務和中介軟體使用。</span><span class="sxs-lookup"><span data-stu-id="39579-265">All `IHealthCheck` registered services are available to the health check services and middleware.</span></span> <span data-ttu-id="39579-266">建議將健康狀態檢查服務登錄為單一服務。</span><span class="sxs-lookup"><span data-stu-id="39579-266">We recommend registering health check services as Singleton services.</span></span>
+<span data-ttu-id="2e52c-269">在 `Startup.ConfigureServices` 中，使用 `AddHealthChecks` 登錄健康狀態檢查服務。</span><span class="sxs-lookup"><span data-stu-id="2e52c-269">Register health check services with `AddHealthChecks` in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="2e52c-270">`MemoryHealthCheck` 會登錄為服務，而不是將健康狀態檢查傳遞至 `AddCheck` 以啟用檢查。</span><span class="sxs-lookup"><span data-stu-id="2e52c-270">Instead of enabling the health check by passing it to `AddCheck`, the `MemoryHealthCheck` is registered as a service.</span></span> <span data-ttu-id="2e52c-271">所有 `IHealthCheck` 登錄的服務都可供健康狀態檢查服務和中介軟體使用。</span><span class="sxs-lookup"><span data-stu-id="2e52c-271">All `IHealthCheck` registered services are available to the health check services and middleware.</span></span> <span data-ttu-id="2e52c-272">建議將健康狀態檢查服務登錄為單一服務。</span><span class="sxs-lookup"><span data-stu-id="2e52c-272">We recommend registering health check services as Singleton services.</span></span>
 
-<span data-ttu-id="39579-267">*CustomWriterStartup.cs*：</span><span class="sxs-lookup"><span data-stu-id="39579-267">*CustomWriterStartup.cs*:</span></span>
+<span data-ttu-id="2e52c-273">*CustomWriterStartup.cs*：</span><span class="sxs-lookup"><span data-stu-id="2e52c-273">*CustomWriterStartup.cs*:</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_ConfigureServices&highlight=4)]
 
-<span data-ttu-id="39579-268">在 `Startup.Configure` 中，呼叫應用程式處理管線中的健康狀態檢查中介軟體。</span><span class="sxs-lookup"><span data-stu-id="39579-268">Call Health Check Middleware in the app processing pipeline in `Startup.Configure`.</span></span> <span data-ttu-id="39579-269">當健康狀態檢查執行時，會將 `WriteResponse` 委派提供給 `ResponseWriter` 屬性以輸出自訂 JSON 回應：</span><span class="sxs-lookup"><span data-stu-id="39579-269">A `WriteResponse` delegate is provided to the `ResponseWriter` property to output a custom JSON response when the health check executes:</span></span>
+<span data-ttu-id="2e52c-274">在 `Startup.Configure` 中，呼叫應用程式處理管線中的健康狀態檢查中介軟體。</span><span class="sxs-lookup"><span data-stu-id="2e52c-274">Call Health Check Middleware in the app processing pipeline in `Startup.Configure`.</span></span> <span data-ttu-id="2e52c-275">當健康狀態檢查執行時，會將 `WriteResponse` 委派提供給 `ResponseWriter` 屬性以輸出自訂 JSON 回應：</span><span class="sxs-lookup"><span data-stu-id="2e52c-275">A `WriteResponse` delegate is provided to the `ResponseWriter` property to output a custom JSON response when the health check executes:</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_Configure&highlight=6)]
 
-<span data-ttu-id="39579-270">`WriteResponse` 方法會將 `CompositeHealthCheckResult` 格式化為 JSON 物件，並產生 JSON 輸出作為健康狀態檢查回應：</span><span class="sxs-lookup"><span data-stu-id="39579-270">The `WriteResponse` method formats the `CompositeHealthCheckResult` into a JSON object and yields JSON output for the health check response:</span></span>
+<span data-ttu-id="2e52c-276">`WriteResponse` 方法會將 `CompositeHealthCheckResult` 格式化為 JSON 物件，並產生 JSON 輸出作為健康狀態檢查回應：</span><span class="sxs-lookup"><span data-stu-id="2e52c-276">The `WriteResponse` method formats the `CompositeHealthCheckResult` into a JSON object and yields JSON output for the health check response:</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_WriteResponse)]
 
-<span data-ttu-id="39579-271">若要使用範例應用程式透過自訂回應寫入器輸出執行計量型探查，請在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="39579-271">To run the metric-based probe with custom response writer output using the sample app, execute the following command from the project's folder in a command shell:</span></span>
+<span data-ttu-id="2e52c-277">若要使用範例應用程式透過自訂回應寫入器輸出執行計量型探查，請在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="2e52c-277">To run the metric-based probe with custom response writer output using the sample app, execute the following command from the project's folder in a command shell:</span></span>
 
 ```console
 dotnet run --scenario writer
 ```
 
 > [!NOTE]
-> <span data-ttu-id="39579-272">[BeatPulse](https://github.com/Xabaril/BeatPulse) 隨附計量型健康狀態檢查案例，包括磁碟儲存體和最大值活躍度檢查。</span><span class="sxs-lookup"><span data-stu-id="39579-272">[BeatPulse](https://github.com/Xabaril/BeatPulse) includes metric-based health check scenarios, including disk storage and maximum value liveness checks.</span></span>
+> <span data-ttu-id="2e52c-278">[BeatPulse](https://github.com/Xabaril/BeatPulse) 隨附計量型健康狀態檢查案例，包括磁碟儲存體和最大值活躍度檢查。</span><span class="sxs-lookup"><span data-stu-id="2e52c-278">[BeatPulse](https://github.com/Xabaril/BeatPulse) includes metric-based health check scenarios, including disk storage and maximum value liveness checks.</span></span>
 >
-> <span data-ttu-id="39579-273">Microsoft 不會維護或支援 [BeatPulse](https://github.com/Xabaril/BeatPulse)。</span><span class="sxs-lookup"><span data-stu-id="39579-273">[BeatPulse](https://github.com/Xabaril/BeatPulse) isn't maintained or supported by Microsoft.</span></span>
+> <span data-ttu-id="2e52c-279">Microsoft 不會維護或支援 [BeatPulse](https://github.com/Xabaril/BeatPulse)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-279">[BeatPulse](https://github.com/Xabaril/BeatPulse) isn't maintained or supported by Microsoft.</span></span>
 
-## <a name="filter-by-port"></a><span data-ttu-id="39579-274">依連接埠篩選</span><span class="sxs-lookup"><span data-stu-id="39579-274">Filter by port</span></span>
+## <a name="filter-by-port"></a><span data-ttu-id="2e52c-280">依連接埠篩選</span><span class="sxs-lookup"><span data-stu-id="2e52c-280">Filter by port</span></span>
 
-<span data-ttu-id="39579-275">呼叫 `UseHealthChecks` 並提供連接埠會限制對指定的連接埠提出健康狀態檢查要求。</span><span class="sxs-lookup"><span data-stu-id="39579-275">Calling `UseHealthChecks` with a port restricts health check requests to the port specified.</span></span> <span data-ttu-id="39579-276">這通常會用於容器環境，以公開監視服務的連接埠。</span><span class="sxs-lookup"><span data-stu-id="39579-276">This is typically used in a container environment to expose a port for monitoring services.</span></span>
+<span data-ttu-id="2e52c-281">呼叫 `UseHealthChecks` 並提供連接埠會限制對指定的連接埠提出健康狀態檢查要求。</span><span class="sxs-lookup"><span data-stu-id="2e52c-281">Calling `UseHealthChecks` with a port restricts health check requests to the port specified.</span></span> <span data-ttu-id="2e52c-282">這通常會用於容器環境，以公開監視服務的連接埠。</span><span class="sxs-lookup"><span data-stu-id="2e52c-282">This is typically used in a container environment to expose a port for monitoring services.</span></span>
 
-<span data-ttu-id="39579-277">範例應用程式使用[環境變數組態提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)來設定連接埠。</span><span class="sxs-lookup"><span data-stu-id="39579-277">The sample app configures the port using the [Environment Variable Configuration Provider](xref:fundamentals/configuration/index#environment-variables-configuration-provider).</span></span> <span data-ttu-id="39579-278">連接埠是在 *launchSettings.json* 檔案中設定，並透過環境變數傳遞至組態提供者。</span><span class="sxs-lookup"><span data-stu-id="39579-278">The port is set in the *launchSettings.json* file and passed to the configuration provider via an environment variable.</span></span> <span data-ttu-id="39579-279">您也必須將伺服器設定為在管理連接埠上接聽要求。</span><span class="sxs-lookup"><span data-stu-id="39579-279">You must also configure the server to listen to requests on the management port.</span></span>
+<span data-ttu-id="2e52c-283">範例應用程式使用[環境變數組態提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)來設定連接埠。</span><span class="sxs-lookup"><span data-stu-id="2e52c-283">The sample app configures the port using the [Environment Variable Configuration Provider](xref:fundamentals/configuration/index#environment-variables-configuration-provider).</span></span> <span data-ttu-id="2e52c-284">連接埠是在 *launchSettings.json* 檔案中設定，並透過環境變數傳遞至組態提供者。</span><span class="sxs-lookup"><span data-stu-id="2e52c-284">The port is set in the *launchSettings.json* file and passed to the configuration provider via an environment variable.</span></span> <span data-ttu-id="2e52c-285">您也必須將伺服器設定為在管理連接埠上接聽要求。</span><span class="sxs-lookup"><span data-stu-id="2e52c-285">You must also configure the server to listen to requests on the management port.</span></span>
 
-<span data-ttu-id="39579-280">若要使用範例應用程式示範管理連接埠組態，請在 *Properties* 資料夾中建立 *launchSettings.json* 檔案。</span><span class="sxs-lookup"><span data-stu-id="39579-280">To use the sample app to demonstrate management port configuration, create the *launchSettings.json* file in a *Properties* folder.</span></span>
+<span data-ttu-id="2e52c-286">若要使用範例應用程式示範管理連接埠組態，請在 *Properties* 資料夾中建立 *launchSettings.json* 檔案。</span><span class="sxs-lookup"><span data-stu-id="2e52c-286">To use the sample app to demonstrate management port configuration, create the *launchSettings.json* file in a *Properties* folder.</span></span>
 
-<span data-ttu-id="39579-281">下列 *launchSettings.json* 檔案並未包含在範例應用程式的專案檔中，因此必須手動建立。</span><span class="sxs-lookup"><span data-stu-id="39579-281">The following *launchSettings.json* file isn't included in the sample app's project files and must be created manually.</span></span>
+<span data-ttu-id="2e52c-287">下列 *launchSettings.json* 檔案並未包含在範例應用程式的專案檔中，因此必須手動建立。</span><span class="sxs-lookup"><span data-stu-id="2e52c-287">The following *launchSettings.json* file isn't included in the sample app's project files and must be created manually.</span></span>
 
-<span data-ttu-id="39579-282">*Properties/launchSettings.json*：</span><span class="sxs-lookup"><span data-stu-id="39579-282">*Properties/launchSettings.json*:</span></span>
+<span data-ttu-id="2e52c-288">*Properties/launchSettings.json*：</span><span class="sxs-lookup"><span data-stu-id="2e52c-288">*Properties/launchSettings.json*:</span></span>
 
 ```json
 {
@@ -491,14 +501,14 @@ dotnet run --scenario writer
 }
 ```
 
-<span data-ttu-id="39579-283">在 `Startup.ConfigureServices` 中，使用 `AddHealthChecks` 登錄健康狀態檢查服務。</span><span class="sxs-lookup"><span data-stu-id="39579-283">Register health check services with `AddHealthChecks` in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="39579-284">呼叫 `UseHealthChecks` 會指定管理連接埠 (*ManagementPortStartup.cs*)：</span><span class="sxs-lookup"><span data-stu-id="39579-284">The call to `UseHealthChecks` specifies the management port (*ManagementPortStartup.cs*):</span></span>
+<span data-ttu-id="2e52c-289">在 `Startup.ConfigureServices` 中，使用 `AddHealthChecks` 登錄健康狀態檢查服務。</span><span class="sxs-lookup"><span data-stu-id="2e52c-289">Register health check services with `AddHealthChecks` in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="2e52c-290">呼叫 `UseHealthChecks` 會指定管理連接埠 (*ManagementPortStartup.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2e52c-290">The call to `UseHealthChecks` specifies the management port (*ManagementPortStartup.cs*):</span></span>
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ManagementPortStartup.cs?name=snippet1&highlight=12,18)]
 
 > [!NOTE]
-> <span data-ttu-id="39579-285">您可以在程式碼中明確設定 URL 和管理連接埠，避免在範例應用程式中建立 *launchSettings.json* 檔案。</span><span class="sxs-lookup"><span data-stu-id="39579-285">You can avoid creating the *launchSettings.json* file in the sample app by setting the URLs and management port explicitly in code.</span></span> <span data-ttu-id="39579-286">在 `WebHostBuilder` 建立所在的 *Program.cs* 中，新增 `UseUrls` 呼叫並提供應用程式的正常回應端點和管理連接埠端點。</span><span class="sxs-lookup"><span data-stu-id="39579-286">In *Program.cs* where the `WebHostBuilder` is created, add a call to `UseUrls` and provide the app's normal response endpoint and the management port endpoint.</span></span> <span data-ttu-id="39579-287">在 `UseHealthChecks` 呼叫所在的 *ManagementPortStartup.cs* 中，明確指定管理連接埠。</span><span class="sxs-lookup"><span data-stu-id="39579-287">In *ManagementPortStartup.cs* where `UseHealthChecks` is called, specify the management port explicitly.</span></span>
+> <span data-ttu-id="2e52c-291">您可以在程式碼中明確設定 URL 和管理連接埠，避免在範例應用程式中建立 *launchSettings.json* 檔案。</span><span class="sxs-lookup"><span data-stu-id="2e52c-291">You can avoid creating the *launchSettings.json* file in the sample app by setting the URLs and management port explicitly in code.</span></span> <span data-ttu-id="2e52c-292">在 `WebHostBuilder` 建立所在的 *Program.cs* 中，新增 `UseUrls` 呼叫並提供應用程式的正常回應端點和管理連接埠端點。</span><span class="sxs-lookup"><span data-stu-id="2e52c-292">In *Program.cs* where the `WebHostBuilder` is created, add a call to `UseUrls` and provide the app's normal response endpoint and the management port endpoint.</span></span> <span data-ttu-id="2e52c-293">在 `UseHealthChecks` 呼叫所在的 *ManagementPortStartup.cs* 中，明確指定管理連接埠。</span><span class="sxs-lookup"><span data-stu-id="2e52c-293">In *ManagementPortStartup.cs* where `UseHealthChecks` is called, specify the management port explicitly.</span></span>
 >
-> <span data-ttu-id="39579-288">*Program.cs*：</span><span class="sxs-lookup"><span data-stu-id="39579-288">*Program.cs*:</span></span>
+> <span data-ttu-id="2e52c-294">*Program.cs*：</span><span class="sxs-lookup"><span data-stu-id="2e52c-294">*Program.cs*:</span></span>
 >
 > ```csharp
 > return new WebHostBuilder()
@@ -515,23 +525,23 @@ dotnet run --scenario writer
 >     .Build();
 > ```
 >
-> <span data-ttu-id="39579-289">*ManagementPortStartup.cs*：</span><span class="sxs-lookup"><span data-stu-id="39579-289">*ManagementPortStartup.cs*:</span></span>
+> <span data-ttu-id="2e52c-295">*ManagementPortStartup.cs*：</span><span class="sxs-lookup"><span data-stu-id="2e52c-295">*ManagementPortStartup.cs*:</span></span>
 >
 > ```csharp
 > app.UseHealthChecks("/health", port: 5001);
 > ```
 
-<span data-ttu-id="39579-290">若要使用範例應用程式執行管理連接埠組態案例，請在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="39579-290">To run the management port configuration scenario using the sample app, execute the following command from the project's folder in a command shell:</span></span>
+<span data-ttu-id="2e52c-296">若要使用範例應用程式執行管理連接埠組態案例，請在命令殼層中執行來自專案資料夾的下列命令：</span><span class="sxs-lookup"><span data-stu-id="2e52c-296">To run the management port configuration scenario using the sample app, execute the following command from the project's folder in a command shell:</span></span>
 
 ```console
 dotnet run --scenario port
 ```
 
-## <a name="distribute-a-health-check-library"></a><span data-ttu-id="39579-291">發佈健康狀態檢查程式庫</span><span class="sxs-lookup"><span data-stu-id="39579-291">Distribute a health check library</span></span>
+## <a name="distribute-a-health-check-library"></a><span data-ttu-id="2e52c-297">發佈健康狀態檢查程式庫</span><span class="sxs-lookup"><span data-stu-id="2e52c-297">Distribute a health check library</span></span>
 
-<span data-ttu-id="39579-292">若要發佈健康狀態檢查作為程式庫：</span><span class="sxs-lookup"><span data-stu-id="39579-292">To distribute a health check as a library:</span></span>
+<span data-ttu-id="2e52c-298">若要發佈健康狀態檢查作為程式庫：</span><span class="sxs-lookup"><span data-stu-id="2e52c-298">To distribute a health check as a library:</span></span>
 
-1. <span data-ttu-id="39579-293">寫入健康狀態檢查，將 `IHealthCheck` 介面當做獨立類別來實作。</span><span class="sxs-lookup"><span data-stu-id="39579-293">Write a health check that implements the `IHealthCheck` interface as a standalone class.</span></span> <span data-ttu-id="39579-294">此類別可能依賴[相依性插入 (DI)](xref:fundamentals/dependency-injection)、類型啟用和[具名選項](xref:fundamentals/configuration/options)來存取組態資料。</span><span class="sxs-lookup"><span data-stu-id="39579-294">The class can rely on [dependency injection (DI)](xref:fundamentals/dependency-injection), type activation, and [named options](xref:fundamentals/configuration/options) to access configuration data.</span></span>
+1. <span data-ttu-id="2e52c-299">寫入健康狀態檢查，將 `IHealthCheck` 介面當做獨立類別來實作。</span><span class="sxs-lookup"><span data-stu-id="2e52c-299">Write a health check that implements the `IHealthCheck` interface as a standalone class.</span></span> <span data-ttu-id="2e52c-300">此類別可能依賴[相依性插入 (DI)](xref:fundamentals/dependency-injection)、類型啟用和[具名選項](xref:fundamentals/configuration/options)來存取組態資料。</span><span class="sxs-lookup"><span data-stu-id="2e52c-300">The class can rely on [dependency injection (DI)](xref:fundamentals/dependency-injection), type activation, and [named options](xref:fundamentals/configuration/options) to access configuration data.</span></span>
 
    ```csharp
    using System;
@@ -580,19 +590,19 @@ dotnet run --scenario port
    }
    ```
 
-1. <span data-ttu-id="39579-295">使用取用應用程式在其 `Startup.Configure` 方法中呼叫的參數，來寫入延伸模組。</span><span class="sxs-lookup"><span data-stu-id="39579-295">Write an extension method with parameters that the consuming app calls in its `Startup.Configure` method.</span></span> <span data-ttu-id="39579-296">在下列範例中，假設健康狀態檢查方法簽章如下：</span><span class="sxs-lookup"><span data-stu-id="39579-296">In the following example, assume the following health check method signature:</span></span>
+1. <span data-ttu-id="2e52c-301">使用取用應用程式在其 `Startup.Configure` 方法中呼叫的參數，來寫入延伸模組。</span><span class="sxs-lookup"><span data-stu-id="2e52c-301">Write an extension method with parameters that the consuming app calls in its `Startup.Configure` method.</span></span> <span data-ttu-id="2e52c-302">在下列範例中，假設健康狀態檢查方法簽章如下：</span><span class="sxs-lookup"><span data-stu-id="2e52c-302">In the following example, assume the following health check method signature:</span></span>
 
    ```csharp
    ExampleHealthCheck(string, string, int )
    ```
 
-   <span data-ttu-id="39579-297">上述簽章指出 `ExampleHealthCheck` 需要額外的資料，才能處理健康狀態檢查探查邏輯。</span><span class="sxs-lookup"><span data-stu-id="39579-297">The preceding signature indicates that the `ExampleHealthCheck` requires additional data to process the health check probe logic.</span></span> <span data-ttu-id="39579-298">此資料會提供給委派，以在使用延伸模組登錄健康狀態檢查時，用來建立健康狀態檢查執行個體。</span><span class="sxs-lookup"><span data-stu-id="39579-298">The data is provided to the delegate used to create the health check instance when the health check is registered with an extension method.</span></span> <span data-ttu-id="39579-299">在下列範例中，呼叫者會選擇性地指定：</span><span class="sxs-lookup"><span data-stu-id="39579-299">In the following example, the caller specifies optional:</span></span>
+   <span data-ttu-id="2e52c-303">上述簽章指出 `ExampleHealthCheck` 需要額外的資料，才能處理健康狀態檢查探查邏輯。</span><span class="sxs-lookup"><span data-stu-id="2e52c-303">The preceding signature indicates that the `ExampleHealthCheck` requires additional data to process the health check probe logic.</span></span> <span data-ttu-id="2e52c-304">此資料會提供給委派，以在使用延伸模組登錄健康狀態檢查時，用來建立健康狀態檢查執行個體。</span><span class="sxs-lookup"><span data-stu-id="2e52c-304">The data is provided to the delegate used to create the health check instance when the health check is registered with an extension method.</span></span> <span data-ttu-id="2e52c-305">在下列範例中，呼叫者會選擇性地指定：</span><span class="sxs-lookup"><span data-stu-id="2e52c-305">In the following example, the caller specifies optional:</span></span>
 
-   * <span data-ttu-id="39579-300">健康狀態檢查名稱 (`name`)。</span><span class="sxs-lookup"><span data-stu-id="39579-300">health check name (`name`).</span></span> <span data-ttu-id="39579-301">如果為 `null`，則會使用 `example_health_check`。</span><span class="sxs-lookup"><span data-stu-id="39579-301">If `null`, `example_health_check` is used.</span></span>
-   * <span data-ttu-id="39579-302">健康狀態檢查的字串資料點 (`data1`)。</span><span class="sxs-lookup"><span data-stu-id="39579-302">string data point for the health check (`data1`).</span></span>
-   * <span data-ttu-id="39579-303">健康狀態檢查的整數資料點 (`data2`)。</span><span class="sxs-lookup"><span data-stu-id="39579-303">integer data point for the health check (`data2`).</span></span> <span data-ttu-id="39579-304">如果為 `null`，則會使用 `1`。</span><span class="sxs-lookup"><span data-stu-id="39579-304">If `null`, `1` is used.</span></span>
-   * <span data-ttu-id="39579-305">失敗狀態 (`HealthStatus`)。</span><span class="sxs-lookup"><span data-stu-id="39579-305">failure status (`HealthStatus`).</span></span> <span data-ttu-id="39579-306">預設為 `null`。</span><span class="sxs-lookup"><span data-stu-id="39579-306">The default is `null`.</span></span> <span data-ttu-id="39579-307">如果為 `null`，則會報告失敗狀態為 `HealthStatus.Unhealthy`。</span><span class="sxs-lookup"><span data-stu-id="39579-307">If `null`, `HealthStatus.Unhealthy` is reported for a failure status.</span></span>
-   * <span data-ttu-id="39579-308">標籤 (`IEnumerable<string>`)。</span><span class="sxs-lookup"><span data-stu-id="39579-308">tags (`IEnumerable<string>`).</span></span>
+   * <span data-ttu-id="2e52c-306">健康狀態檢查名稱 (`name`)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-306">health check name (`name`).</span></span> <span data-ttu-id="2e52c-307">如果為 `null`，則會使用 `example_health_check`。</span><span class="sxs-lookup"><span data-stu-id="2e52c-307">If `null`, `example_health_check` is used.</span></span>
+   * <span data-ttu-id="2e52c-308">健康狀態檢查的字串資料點 (`data1`)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-308">string data point for the health check (`data1`).</span></span>
+   * <span data-ttu-id="2e52c-309">健康狀態檢查的整數資料點 (`data2`)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-309">integer data point for the health check (`data2`).</span></span> <span data-ttu-id="2e52c-310">如果為 `null`，則會使用 `1`。</span><span class="sxs-lookup"><span data-stu-id="2e52c-310">If `null`, `1` is used.</span></span>
+   * <span data-ttu-id="2e52c-311">失敗狀態 (`HealthStatus`)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-311">failure status (`HealthStatus`).</span></span> <span data-ttu-id="2e52c-312">預設為 `null`。</span><span class="sxs-lookup"><span data-stu-id="2e52c-312">The default is `null`.</span></span> <span data-ttu-id="2e52c-313">如果為 `null`，則會報告失敗狀態為 `HealthStatus.Unhealthy`。</span><span class="sxs-lookup"><span data-stu-id="2e52c-313">If `null`, `HealthStatus.Unhealthy` is reported for a failure status.</span></span>
+   * <span data-ttu-id="2e52c-314">標籤 (`IEnumerable<string>`)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-314">tags (`IEnumerable<string>`).</span></span>
 
    ```csharp
    using System.Collections.Generic;
@@ -619,17 +629,17 @@ dotnet run --scenario port
    }
    ```
 
-## <a name="health-check-publisher"></a><span data-ttu-id="39579-309">健康狀態檢查發行者</span><span class="sxs-lookup"><span data-stu-id="39579-309">Health Check Publisher</span></span>
+## <a name="health-check-publisher"></a><span data-ttu-id="2e52c-315">健康狀態檢查發行者</span><span class="sxs-lookup"><span data-stu-id="2e52c-315">Health Check Publisher</span></span>
 
-<span data-ttu-id="39579-310">當 `IHealthCheckPublisher` 新增至服務容器時，健康狀態檢查系統會定期執行健康狀態檢查，並呼叫 `PublishAsync` 傳回結果。</span><span class="sxs-lookup"><span data-stu-id="39579-310">When an `IHealthCheckPublisher` is added to the service container, the health check system periodically executes your health checks and calls `PublishAsync` with the result.</span></span> <span data-ttu-id="39579-311">這對推送型健康狀態監控系統案例很有用，其預期每個處理序會定期呼叫監控系統來判斷健康狀態。</span><span class="sxs-lookup"><span data-stu-id="39579-311">This is useful in a push-based health monitoring system scenario that expects each process to call the monitoring system periodically in order to determine health.</span></span>
+<span data-ttu-id="2e52c-316">當 `IHealthCheckPublisher` 新增至服務容器時，健康狀態檢查系統會定期執行健康狀態檢查，並呼叫 `PublishAsync` 傳回結果。</span><span class="sxs-lookup"><span data-stu-id="2e52c-316">When an `IHealthCheckPublisher` is added to the service container, the health check system periodically executes your health checks and calls `PublishAsync` with the result.</span></span> <span data-ttu-id="2e52c-317">這對推送型健康狀態監控系統案例很有用，其預期每個處理序會定期呼叫監控系統來判斷健康狀態。</span><span class="sxs-lookup"><span data-stu-id="2e52c-317">This is useful in a push-based health monitoring system scenario that expects each process to call the monitoring system periodically in order to determine health.</span></span>
 
-<span data-ttu-id="39579-312">`IHealthCheckPublisher` 介面有單一方法：</span><span class="sxs-lookup"><span data-stu-id="39579-312">The `IHealthCheckPublisher` interface has a single method:</span></span>
+<span data-ttu-id="2e52c-318">`IHealthCheckPublisher` 介面有單一方法：</span><span class="sxs-lookup"><span data-stu-id="2e52c-318">The `IHealthCheckPublisher` interface has a single method:</span></span>
 
 ```csharp
 Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 ```
 
 > [!NOTE]
-> <span data-ttu-id="39579-313">[BeatPulse](https://github.com/Xabaril/BeatPulse) 隨附數個系統的發行者，包括 [Application Insights](/azure/application-insights/app-insights-overview)。</span><span class="sxs-lookup"><span data-stu-id="39579-313">[BeatPulse](https://github.com/Xabaril/BeatPulse) includes publishers for several systems, including [Application Insights](/azure/application-insights/app-insights-overview).</span></span>
+> <span data-ttu-id="2e52c-319">[BeatPulse](https://github.com/Xabaril/BeatPulse) 隨附數個系統的發行者，包括 [Application Insights](/azure/application-insights/app-insights-overview)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-319">[BeatPulse](https://github.com/Xabaril/BeatPulse) includes publishers for several systems, including [Application Insights](/azure/application-insights/app-insights-overview).</span></span>
 >
-> <span data-ttu-id="39579-314">Microsoft 不會維護或支援 [BeatPulse](https://github.com/Xabaril/BeatPulse)。</span><span class="sxs-lookup"><span data-stu-id="39579-314">[BeatPulse](https://github.com/Xabaril/BeatPulse) isn't maintained or supported by Microsoft.</span></span>
+> <span data-ttu-id="2e52c-320">Microsoft 不會維護或支援 [BeatPulse](https://github.com/Xabaril/BeatPulse)。</span><span class="sxs-lookup"><span data-stu-id="2e52c-320">[BeatPulse](https://github.com/Xabaril/BeatPulse) isn't maintained or supported by Microsoft.</span></span>

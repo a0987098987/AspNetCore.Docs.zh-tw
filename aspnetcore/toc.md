@@ -1,12 +1,20 @@
-# 總覽
+# [ASP.NET Core 文件](/aspnet/#pivot=core)
+
+# 概觀
 ## [關於 ASP.NET Core](xref:index)
 ## [比較 ASP.NET Core 與 ASP.NET](xref:fundamentals/choose-between-aspnet-and-aspnetcore)
 ## [比較 .NET Core 與 .NET Framework](/dotnet/articles/standard/choosing-core-framework-server)
 
 # [開始使用](xref:getting-started)
 
+# 新功能
+## [2.2 中的新功能](xref:aspnetcore-2.2)
+## [2.1 的新功能](xref:aspnetcore-2.1)
+## [2.0 的新功能](xref:aspnetcore-2.0)
+## [1.1 的新功能](xref:aspnetcore-1.1)
+
 # 教學課程
-## Web API
+## Web API 應用程式
 ### [建立 Web API](xref:tutorials/first-web-api)
 ### [Web API (使用 MongoDB)](xref:tutorials/first-mongo-app)
 ## Web 應用程式
@@ -121,7 +129,7 @@
 ### [自訂模型繫結](xref:mvc/advanced/custom-model-binding)
 ### [相容性版本](xref:mvc/compatibility-version)
 
-# Web API
+# Web API 應用程式
 ## [概觀](xref:web-api/index)
 
 ## 教學課程
@@ -376,6 +384,7 @@
 ### [回應快取中介軟體](xref:performance/caching/middleware)
 ## [回應壓縮](xref:performance/response-compression)
 ## [診斷工具](xref:performance/diagnostic-tools)
+## [負載與壓力測試](xref:test/loadtests)
 
 # 其他主題
 ## [全球化和當地語系化](xref:fundamentals/localization)
@@ -410,12 +419,6 @@
 ### [身分識別的成員資格](xref:migration/proper-to-2x/membership-to-core-identity)
 ### [HTTP 模組到中介軟體](xref:migration/http-modules)
 ## [記錄 (非 ASP.NET Core)](xref:migration/logging-nonaspnetcore)
-
-# 新功能
-## [2.2 中的新功能](xref:aspnetcore-2.2)
-## [2.1 的新功能](xref:aspnetcore-2.1)
-## [2.0 的新功能](xref:aspnetcore-2.0)
-## [1.1 的新功能](xref:aspnetcore-1.1)
 
 # [API 參考](/dotnet/api/?view=aspnetcore-2.2)
 

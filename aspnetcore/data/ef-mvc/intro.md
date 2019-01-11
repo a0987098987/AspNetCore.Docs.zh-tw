@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-mvc/intro
-ms.openlocfilehash: f1682203850f2c5440fe8d0b98830ca8772ff70f
-ms.sourcegitcommit: c4572be5ebb301013a5698caf9b5572b76cb2e34
+ms.openlocfilehash: 1191632555dc9331f815c1bfb1f313459824754a
+ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "50244878"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53577899"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
 
@@ -75,7 +75,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 * 選取 [ASP.NET Core 2.0] 及 [Web Application (Model-View-Controller] (Web 應用程式 (模型-檢視-控制器)) 範本。
 
-  **注意：** 本教學課程需要 ASP.NET Core 2.0 和 EF Core 2.0 或更新版本-請確認**ASP.NET Core 1.1**未選取。
+  **注意：** 本教學課程需要 ASP.NET Core 2.0 和 EF Core 2.0 或更新版本 -- 請確認未選取 **ASP.NET Core 1.1**。
 
 * 確認 [驗證] 已設為 [No Authentication] (無驗證)。
 
@@ -245,7 +245,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 如果出現 [新增 MVC 相依性] 對話方塊：
 
-* [將 Visual Studio 更新為最新版本](https://www.visualstudio.com/downloads/)。 15.5 之前的 Visual Studio 版本會顯示此對話方塊。
+* [將 Visual Studio 更新為最新版本](https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)。 15.5 之前的 Visual Studio 版本會顯示此對話方塊。
 * 如果您無法更新，請選取 [新增]，然後再次遵循新增控制器步驟進行。
 
 * 在 [新增 Scaffold] 對話方塊中：

@@ -5,14 +5,14 @@ description: 了解如何為 ASP.NET Core 基礎結構 (例如應用程式和資
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/03/2018
+ms.date: 12/12/2018
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: d8fd43d9d689396cf30ca371763cdf7ac9423c77
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: cf2aea91221887dad5646604214f810493d4b175
+ms.sourcegitcommit: 1ea1b4fc58055c62728143388562689f1ef96cb2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862595"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53329142"
 ---
 # <a name="health-checks-in-aspnet-core"></a>ASP.NET Core 中的健康狀態檢查
 
@@ -36,10 +36,12 @@ ASP.NET Core 提供健康狀態檢查中介軟體和程式庫，來報告應用�
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.AspNetCore.Diagnostics.HealthChecks](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.HealthChecks) 套件的套件參考。
 
-範例應用程式提供啟動程式碼，來示範數個案例的健康狀態檢查。 [資料庫探查](#database-probe)案例使用 [BeatPulse](https://github.com/Xabaril/BeatPulse) 來探查資料庫連線的健康狀態。 [DbContext 探查](#entity-framework-core-dbcontext-probe)案例使用 EF Core `DbContext` 來探查資料庫。 若要使用範例應用程式來探索資料庫案例：
+範例應用程式提供啟動程式碼，來示範數個案例的健康狀態檢查。 [資料庫探查](#database-probe)案例使用 [BeatPulse](https://github.com/Xabaril/BeatPulse) 來檢查資料庫連線的健康狀態。 [DbContext 探查](#entity-framework-core-dbcontext-probe)案例使用 EF Core `DbContext` 來檢查資料庫。 為了探索資料庫案例，範例應用程式會：
 
-* 建立資料庫，並在應用程式的 *appsettings.json* 檔案中提供其連接字串。
-* 新增 [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/) 的套件參考。
+* 建立資料庫，並在 *appsettings.json* 檔案中提供其連接字串。
+* 在其專案檔中具有下列套件參考：
+  * [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/)
+  * [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/)
 
 > [!NOTE]
 > Microsoft 不會維護或支援 [BeatPulse](https://github.com/Xabaril/BeatPulse)。
@@ -50,7 +52,7 @@ ASP.NET Core 提供健康狀態檢查中介軟體和程式庫，來報告應用�
 
 對於許多應用程式，報告應用程式是否可處理要求的基本健康狀態探查組態 (「活躍度」)，便足以探索應用程式的狀態。
 
-基本組態會登錄健康狀態檢查服務，並呼叫健康狀態檢查中介軟體在健康狀態回應的 URL 端點做出回應。 預設並未登錄特定健康狀態檢查來測試任何特定相依性或子系統。 如果應用程式能夠在健康狀態端點 URL 做出回應，則視為狀況良好。 預設回應寫入器會將狀態 (`HealthCheckStatus`) 以純文字回應形式回寫到用戶端，指出狀態為 `HealthCheckResult.Healthy` 或 `HealthCheckResult.Unhealthy`。
+基本組態會登錄健康狀態檢查服務，並呼叫健康狀態檢查中介軟體在健康狀態回應的 URL 端點做出回應。 預設並未登錄特定健康狀態檢查來測試任何特定相依性或子系統。 如果應用程式能夠在健康狀態端點 URL 做出回應，則視為狀況良好。 預設回應寫入器會將狀態 (`HealthStatus`) 以純文字回應形式回寫到用戶端，指出狀態為 `HealthStatus.Healthy`、`HealthStatus.Degraded` 或 `HealthStatus.Unhealthy`。
 
 在 `Startup.ConfigureServices` 中，使用 `AddHealthChecks` 登錄健康狀態檢查服務。 在 `Startup.Configure` 的要求處理管線中，使用 `UseHealthChecks` 新增健康狀態檢查中介軟體。
 
@@ -216,12 +218,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     app.UseHealthChecks("/health", new HealthCheckOptions()
     {
         // The following StatusCodes are the default assignments for
-        // the HealthCheckStatus properties.
+        // the HealthStatus properties.
         ResultStatusCodes =
         {
-            [HealthCheckStatus.Healthy] = StatusCodes.Status200OK,
-            [HealthCheckStatus.Degraded] = StatusCodes.Status200OK,
-            [HealthCheckStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+            [HealthStatus.Healthy] = StatusCodes.Status200OK,
+            [HealthStatus.Degraded] = StatusCodes.Status200OK,
+            [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
         }
     });
 }
@@ -314,9 +316,17 @@ dotnet run --scenario db
 
 ## <a name="entity-framework-core-dbcontext-probe"></a>Entity Framework Core DbContext 探查
 
-使用 [Entity Framework (EF) Core](/ef/core/) 的應用程式支援 `DbContext` 檢查。 這項檢查會確認應用程式是否可與針對 EF Core `DbContext` 設定的資料庫通訊。 根據預設，`DbContextHealthCheck` 會呼叫 EF Core 的 `CanConnectAsync` 方法。 您可以自訂使用 `AddDbContextCheck` 方法的多載檢查健康狀態時所要執行的作業。
+`DbContext` 檢查會確認應用程式是否可與針對 EF Core `DbContext` 設定的資料庫通訊。 應用程式支援 `DbContext` 檢查：
 
-`AddDbContextCheck<TContext>` 會登錄 `DbContext` (`TContext`) 的健康狀態檢查。 根據預設，健康狀態檢查的名稱是 `TContext` 類型的名稱。 多載可用來設定失敗狀態、標籤和自訂測試查詢。
+* 使用 [Entity Framework (EF) Core](/ef/core/)。
+* 包含 [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/) 的套件參考。
+
+`AddDbContextCheck<TContext>` 會登錄 `DbContext` 的健康狀態檢查。 `DbContext` 會以 `TContext` 形式提供給方法。 多載可用來設定失敗狀態、標籤和自訂測試查詢。
+
+根據預設：
+
+* `DbContextHealthCheck` 會呼叫 EF Core 的 `CanConnectAsync` 方法。 您可以自訂使用 `AddDbContextCheck` 方法多載檢查健康狀態時所要執行的作業。
+* 健康狀態檢查的名稱是 `TContext` 類型的名稱。
 
 在範例應用程式中，`AppDbContext` 會提供給 `AddDbContextCheck` 並在 `Startup.ConfigureServices` 中登錄為服務。
 

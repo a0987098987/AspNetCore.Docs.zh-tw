@@ -1,33 +1,43 @@
 ---
-title: ASP.NET Core 模組設定參考
+title: ASP.NET Core 模組
 author: guardrex
 description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/06/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 0ad73d89ffa3a8a3625c6e248efaad821e1b4d0a
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: dee4fe7a498d211cb8ef6a3c49017c3cc8a56847
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121553"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637855"
 ---
-# <a name="aspnet-core-module-configuration-reference"></a>ASP.NET Core 模組設定參考
+# <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
-作者：[Luke Latham](https://github.com/guardrex)、[Rick Anderson](https://twitter.com/RickAndMSFT)、[Sourabh Shirhatti](https://twitter.com/sshirhatti) 及 [Justin Kotalik](https://github.com/jkotalik)
-
-本文說明如何設定 ASP.NET Core 模組來裝載 ASP.NET Core 應用程式。 如需 ASP.NET Core 模組簡介及安裝指示，請參閱 [ASP.NET Core 模組概觀](xref:fundamentals/servers/aspnet-core-module)。
+作者：[Tom Dykstra](https://github.com/tdykstra)、[Rick Strahl](https://github.com/RickStrahl)、[Chris Ross](https://github.com/Tratcher)、[Rick Anderson](https://twitter.com/RickAndMSFT)、[Sourabh Shirhatti](https://twitter.com/sshirhatti)、[Justin Kotalik](https://github.com/jkotalik) 和 [Luke Latham](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-2.2"
 
-## <a name="hosting-model"></a>裝載模型
+ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線以便：
 
-針對執行 .NET Core 2.2 或更新版本的應用程式，該模組支援同處理序裝載模型，因此相較於反向 Proxy (跨處理序) 裝載會有更高的效能。 如需詳細資訊，請參閱<xref:fundamentals/servers/aspnet-core-module#aspnet-core-module-description>。
+* 在 IIS 工作者處理序 (`w3wp.exe`) 中裝載 ASP.NET Core 應用程式 (稱為[同處理序裝載模型](#in-process-hosting-model))。
+* 將 Web 要求轉送到執行 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)的後端 ASP.NET Core 應用程式 (稱為[跨處理序裝載模型](#out-of-process-hosting-model))。
 
-現有的應用程式可以選擇同處理序裝載，但 [dotnet new](/dotnet/core/tools/dotnet-new) 範本預設會針對所有 IIS 和 IIS Express 案例使用同處理序裝載模型。
+支援的 Windows 版本：
 
-若要設定同處理序裝載的應用程式，請將 `<AspNetCoreHostingModel>` 屬性新增至應用程式的專案檔 (例如 *MyApp.csproj*)，且其值為 `InProcess` (跨處理序裝載是使用 `outofprocess` 設定)：
+* Windows 7 或更新版本
+* Windows Server 2008 R2 或更新版本
+
+同處理序裝載時，模組會使用 IIS 的同處理序伺服程式實作，稱為 IIS HTTP 伺服器 (`IISHttpServer`)。
+
+跨處理序裝載時，該模組只適用於 Kestrel。 該模組與 [HTTP.sys](xref:fundamentals/servers/httpsys) 不相容。
+
+## <a name="hosting-models"></a>裝載模型
+
+### <a name="in-process-hosting-model"></a>同處理序裝載模型
+
+若要設定同處理序裝載的應用程式，請將 `<AspNetCoreHostingModel>` 屬性新增至應用程式的專案檔，其值為 `InProcess` (跨處理序裝載是使用 `OutOfProcess` 設定)：
 
 ```xml
 <PropertyGroup>
@@ -35,9 +45,11 @@ ms.locfileid: "53121553"
 </PropertyGroup>
 ```
 
+如果檔案中沒有 `<AspNetCoreHostingModel>` 屬性，預設值為 `OutOfProcess`。
+
 同處理序裝載時具有下列特性：
 
-* 使用 IIS HTTP 伺服器 (`IISHttpServer`) 而不是 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器。 IIS HTTP 伺服器 (`IISHttpServer`) 是將 IIS 原生要求轉換為 ASP.NET Core Managed 要求以供應用程式處理的另一項 <xref:Microsoft.AspNetCore.Hosting.Server.IServer> 實作。
+* 使用 IIS HTTP 伺服器 (`IISHttpServer`) 而不是 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器。
 
 * [requestTimeout 屬性](#attributes-of-the-aspnetcore-element)不適用於同處理序裝載。
 
@@ -55,6 +67,21 @@ ms.locfileid: "53121553"
 
   如需設定應用程式目前所在目錄的範例程式碼，請參閱 [CurrentDirectoryHelpers 類別](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/aspnet-core-module/samples_snapshot/2.x/CurrentDirectoryHelpers.cs)。 呼叫 `SetCurrentDirectory` 方法。 後續呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 會提供應用程式的目錄。
 
+### <a name="out-of-process-hosting-model"></a>跨處理序裝載模型
+
+若要設定跨處理序裝載的應用程式，請在專案檔中使用下列任一方法：
+
+* 請勿指定 `<AspNetCoreHostingModel>` 屬性。 如果檔案中沒有 `<AspNetCoreHostingModel>` 屬性，預設值為 `OutOfProcess`。
+* 將 `<AspNetCoreHostingModel>` 屬性的值設定為 `OutOfProcess` (同處理序裝載是使用 `InProcess` 設定)：
+
+```xml
+<PropertyGroup>
+  <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+</PropertyGroup>
+```
+
+使用 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器而不是 IIS HTTP 伺服器 (`IISHttpServer`)。
+
 ### <a name="hosting-model-changes"></a>裝載模型變更
 
 如果 `hostingModel` 設定在 *web.config* 檔案中已有所變更 (如[使用 web.config 進行設定](#configuration-with-webconfig)一節中所說明)，模組會回收 IIS 的工作者處理序。
@@ -66,6 +93,43 @@ ms.locfileid: "53121553"
 `Process.GetCurrentProcess().ProcessName` 會報告 `w3wp`/`iisexpress` (同處理序) 或 `dotnet` (跨處理序)。
 
 ::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線，將 Web 要求重新轉送到後端的 ASP.NET Core 應用程式。
+
+支援的 Windows 版本：
+
+* Windows 7 或更新版本
+* Windows Server 2008 R2 或更新版本
+
+該模組只適用於 Kestrel。 該模組與 [HTTP.sys](xref:fundamentals/servers/httpsys) 不相容。
+
+因為處理序中執行的 ASP.NET Core 應用程式會與 IIS 背景工作處理序分開，所以此模組也會執行處理序管理。 此模組會在第一個要求到達時啟動 ASP.NET Core 應用程式的處理序，並在應用程式損毀時將它重新啟動。 此行為基本上與在 IIS 中執行同處理序，並由 [Windows 處理器啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 所管理的 ASP.NET 4.x 應用程式相同。
+
+下圖說明 IIS、ASP.NET Core 模組和應用程式之間的關聯性：
+
+![ASP.NET Core 模組](aspnet-core-module/_static/ancm-outofprocess.png)
+
+要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的通訊埠上將要求路由至 IIS，此通訊埠通常是 80 (HTTP) 或 443 (HTTPS)。 此模組會在應用程式的隨機通訊埠上將要求轉送至 Kestrel，而且不會是通訊埠 80 或 443。
+
+此模組在啟動時透過環境變數指定通訊埠，而 IIS 整合中介軟體則會設定伺服器來接聽 `http://localhost:{port}`。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 此模組不支援 HTTPS 轉送，因此即使由 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
+
+Kestrel 收取來自模組的要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 IIS Integration 新增的中介軟體會更新配置、遠端 IP 和帳戶路徑基底，以將要求轉送至 Kestrel。 應用程式的回應會傳回 IIS，而 IIS 會將其推送回起始要求的 HTTP 用戶端。
+
+::: moniker-end
+
+許多如 Windows 驗證等原生模組仍在使用中。 若要深入了解搭配 ASP.NET Core 模組的使用中 IIS 模組，請參閱<xref:host-and-deploy/iis/modules>。
+
+ASP.NET Core 模組也可以：
+
+* 設定背景工作處理序的環境變數。
+* 將 stdout 輸出記錄到檔案儲存區，以針對啟動問題進行疑難排解。
+* 轉送 Windows 驗證權杖。
+
+## <a name="how-to-install-and-use-the-aspnet-core-module"></a>如何安裝和使用 ASP.NET Core 模組
+
+如需如何安裝和使用 ASP.NET Core 模組的指示，請參閱<xref:host-and-deploy/iis/index>。
 
 ## <a name="configuration-with-webconfig"></a>使用 web.config 進行設定
 
@@ -395,7 +459,7 @@ ASP.NET Core 模組提供者是可設定的，以提供增強型診斷記錄。 
 
 在 ASP.NET Core 模組與 Kestrel 之間建立的 Proxy 會使用 HTTP 通訊協定。 使用 HTTP 是一項效能最佳化作業，其中模組與 Kestrel 之間的流量會在網路介面外的回送位址進行。 沒有從伺服器外的位置竊聽模組與 Kestrel 之間流量的風險。
 
-配對權杖用來保證 Kestrel 所接收的要求已由 IIS 代理，而且不是來自其他來源。 模組會建立配對權杖，並將其設定成環境變數 (`ASPNETCORE_TOKEN`)。 配對權杖也會設定成每個代理要求的標頭 (`MSAspNetCoreToken`)。 IIS 中介軟體會檢查其收到的每個要求，以確認配對權杖的標頭值符合環境變數值。 如果權杖值不相符，將記錄並拒絕要求。 使用者無法從伺服器外的位置存取配對權杖環境變數，以及模組與 Kestrel 之間的流量。 在不知道配對權杖值的情況下，攻擊者無法略過 IIS 中介軟體的檢查送出要求。
+配對權杖用來保證 Kestrel 所接收的要求已由 IIS 代理，而且不是來自其他來源。 模組會建立配對權杖，並將其設定成環境變數 (`ASPNETCORE_TOKEN`)。 配對權杖也會設定成每個代理要求的標頭 (`MS-ASPNETCORE-TOKEN`)。 IIS 中介軟體會檢查其收到的每個要求，以確認配對權杖的標頭值符合環境變數值。 如果權杖值不相符，將記錄並拒絕要求。 使用者無法從伺服器外的位置存取配對權杖環境變數，以及模組與 Kestrel 之間的流量。 在不知道配對權杖值的情況下，攻擊者無法略過 IIS 中介軟體的檢查送出要求。
 
 ## <a name="aspnet-core-module-with-an-iis-shared-configuration"></a>具有 IIS 共用設定的 ASP.NET Core 模組
 
@@ -481,3 +545,9 @@ ASP.NET Core 模組安裝程式會以 **SYSTEM** 帳戶的權限執行。 由於
    * %ProgramFiles%\IIS Express\config\templates\PersonalWebServer\applicationHost.config
 
 在 *applicationHost.config* 檔案中搜尋 *aspnetcore*，即可找到這些檔案。
+
+## <a name="additional-resources"></a>其他資源
+
+* <xref:host-and-deploy/iis/index>
+* [ASP.NET Core 模組 GitHub 存放庫 (參考來源)](https://github.com/aspnet/AspNetCoreModule)
+* <xref:host-and-deploy/iis/modules>

@@ -4,14 +4,14 @@ description: 了解如何在 CentOS 上將 Apache 設定為反向 Proxy 伺服�
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/20/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 46cdb764b872e86f0fd7d19133aae14891bdd452
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 8c590743328885336498ca2446c618b13a7d2ce2
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862456"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997223"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -471,6 +471,7 @@ sudo yum install mod_proxy_balancer
 ```bash
 sudo nano /etc/httpd/conf.d/ratelimit.conf
 ```
+
 此範例檔案將根目錄位置下的頻寬限制為 600 KB/秒：
 
 ```
@@ -481,6 +482,13 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
     </Location>
 </IfModule>
 ```
+
+### <a name="long-request-header-fields"></a>要求標頭欄位太長
+
+如果應用程式所需的要求標頭欄位長度超過 Proxy 伺服器的預設設定 (通常為 8,190 個位元組)，請調整 [LimitRequestFieldSize](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize) 指示詞的值。 要套用的值會因案例而異。 如需詳細資訊，請參閱您的伺服器文件。
+
+> [!WARNING]
+> 除非必要，否則請勿增加 `LimitRequestFieldSize` 的預設值。 增加此值會提高緩衝區溢位及惡意使用者發動拒絕服務 (DoS) 攻擊的風險。
 
 ## <a name="additional-resources"></a>其他資源
 

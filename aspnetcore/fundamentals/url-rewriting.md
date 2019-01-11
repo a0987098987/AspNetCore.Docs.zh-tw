@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何使用 ASP.NET Core 的 URL 重寫中介軟體，進行 URL 重寫與重新導向作業。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 12/18/2018
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 84052789717738a48c346d35d1a2642017a9ab93
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: d2dd5e9b7f196bcbd1940f7ef58331dabd2367a1
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861910"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637803"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core 的 URL 重寫中介軟體
 
@@ -56,7 +56,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
 * 若重新導向為暫時性或很有可能變更時，請使用 302 (已找到) 狀態碼。 302 狀態碼會指示用戶端不要儲存 URL 並在之後使用。
 
-如需狀態碼的詳細資訊，請參閱 [RFC 2616: Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (RFC 2616：狀態碼定義)。
+如需狀態碼的詳細資訊，請參閱 [RFC 2616：Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (狀態碼定義)。
 
 「URL 重寫」伺服器端作業，會從用戶端要求以外的其他資源位址提供資源。 重寫 URL 並不需要伺服器的來回行程。 系統不會將重寫的 URL 傳回用戶端，也不會顯示在瀏覽器的網址列中。
 
@@ -78,7 +78,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 * [Apache Server 上的 Apache mod_rewrite 模組](https://httpd.apache.org/docs/2.4/rewrite/)
 * [Nginx 上的 URL 重寫](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
 
-此外也請在應用程式裝載於 [HTTP.sys server](xref:fundamentals/servers/httpsys) (前稱為 [WebListener](xref:fundamentals/servers/weblistener)) 時使用中介軟體。
+此外也請在應用程式裝載於 [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys) (之前稱為 WebListener) 時使用中介軟體。
 
 使用 IIS、Apache 和 Nginx 所提供伺服器型 URL 重寫技術的主要原因包括：
 
@@ -193,7 +193,7 @@ public void Configure(IApplicationBuilder app)
 
 | 路徑                               | 比對 |
 | ---------------------------------- | :---: |
-| `/redirect-rule/1234/5678`         | [是]   |
+| `/redirect-rule/1234/5678`         | 是   |
 | `/my-cool-redirect-rule/1234/5678` | [是]   |
 | `/anotherredirect-rule/1234/5678`  | 是   |
 
@@ -201,7 +201,7 @@ public void Configure(IApplicationBuilder app)
 
 | 路徑                              | 比對 |
 | --------------------------------- | :---: |
-| `/rewrite-rule/1234/5678`         | [是]   |
+| `/rewrite-rule/1234/5678`         | 是   |
 | `/my-cool-rewrite-rule/1234/5678` | 否    |
 | `/anotherrewrite-rule/1234/5678`  | 否    |
 

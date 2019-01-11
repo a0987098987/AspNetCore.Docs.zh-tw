@@ -5,24 +5,24 @@ description: 了解如何建立和使用 ASP.NET Core 中的 Web API 自訂格�
 ms.author: tdykstra
 ms.date: 02/08/2017
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: ee6f166ced41c41506f2a17a7d362399c165b718
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: 2861a15a80725dcc237d33313a24822cf8aa9c7e
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51020646"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997288"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的自訂格式器
 
 作者：[Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core MVC 內建支援在 Web API 中使用 JSON、XML 或純文字格式的資料交換。 本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。
+ASP.NET Core MVC 內建支援在 Web API 中使用 JSON 或 XML 的資料交換。 本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-custom-formatters"></a>自訂格式器的使用時機
 
-如果您希望[內容交涉](xref:web-api/advanced/formatting#content-negotiation)程序支援某些內容類型，但內建的格式器 (JSON、 XML 和純文字) 不支援這些內容類型時，即可使用自訂的格式器。
+如果您希望[內容交涉](xref:web-api/advanced/formatting#content-negotiation)程序支援某些內容類型，但內建的格式器 (JSON 和 XML) 不支援這些內容類型時，即可使用自訂的格式器。
 
 例如，您有些 Web API 用戶端可以處理 [Protobuf](https://github.com/google/protobuf) 格式，因此您希望搭配使用 Protobuf 與這些用戶端，以便更有效率。 或者，您可能會想要 Web API 以 [vCard](https://wikipedia.org/wiki/VCard) 格式 (其為交換連絡人資料的常用格式) 來傳送連絡人名稱和地址。 本文提供的範例應用程式會實作簡單的 vCard 格式器。
 
@@ -103,7 +103,8 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON、XML 或純文字格式
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[應用程式範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)，其會實作簡單的 vCard 輸入和輸出格式器。 應用程式會讀取並寫入 vCard，如下範例所示：
+* [GitHub 上的純文字格式器範例程式碼。](https://github.com/aspnet/Entropy/tree/master/samples/Mvc.Formatters)
+* [此文件的範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)，其會實作簡單的 vCard 輸入和輸出格式器。 應用程式會讀取並寫入 vCard，如下範例所示：
 
 ```
 BEGIN:VCARD

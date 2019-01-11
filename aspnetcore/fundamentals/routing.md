@@ -4,14 +4,14 @@ author: rick-anderson
 description: 探索 ASP.NET Core 路由功能如何負責將要求 URI 對應至端點選取器，並將傳入要求分派給端點。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/15/2018
+ms.date: 12/29/2018
 uid: fundamentals/routing
-ms.openlocfilehash: f18ec1da2affbf67b7ada570b68f98a42c7256a5
-ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
+ms.openlocfilehash: c57b309e4474f9aff5c0594a3d9d1c796990d31e
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52256589"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997353"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -96,7 +96,7 @@ URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的�
 路由系統具有下列特性：
 
 * 使用路由範本語法以 Token 化路由參數來定義路由。
-* 允許傳統式和屬性式端點設定。
+* 允許傳統式和屬性式端點組態。
 * `IRouteConstraint` 可用來判斷 URL 參數是否包含對指定端點條件約束有效的值。
 * 應用程式模型 (例如 MVC/Razor Pages) 會註冊其所有端點，這些端點的路由情節實作符合預期。
 * 路由實作會在中介軟體管線需要時制定路由決策。
@@ -193,7 +193,7 @@ URL 產生是路由可用來依據一組路由值建立 URL 路徑的處理序�
 
 `LinkGenerator` 提供的方法支援適用於任何位址類型的標準連結產生功能。 使用連結產生器的最便利方式是透過執行特定位址類型作業的擴充方法。
 
-| 擴充方法   | 描述                                                         |
+| 擴充方法   | 說明                                                         |
 | ------------------ | ------------------------------------------------------------------- |
 | `GetPathByAddress` | 根據提供的值產生具有絕對路徑的 URI。 |
 | `GetUriByAddress`  | 根據提供的值產生絕對 URI。             |
@@ -292,6 +292,8 @@ ASP.NET Core 2.2 或更新版本中的端點路由與 ASP.NET Core 中的舊版�
 在下列範例中，中介軟體使用 `LinkGenerator` API 建立列出市集產品的動作方法連結。 應用程式中的任何類別都可以使用連結產生器，方法是將它插入類別並呼叫 `GenerateLink`。
 
 ```csharp
+using Microsoft.AspNetCore.Routing;
+
 public class ProductsLinkMiddleware
 {
     private readonly LinkGenerator _linkGenerator;
@@ -303,8 +305,7 @@ public class ProductsLinkMiddleware
 
     public async Task InvokeAsync(HttpContext httpContext)
     {
-        var url = _linkGenerator.GenerateLink(new { controller = "Store",
-                                                    action = "ListProducts" });
+        var url = _linkGenerator.GetPathByAction("ListProducts", "Store");
 
         httpContext.Response.ContentType = "text/plain";
 
@@ -654,10 +655,10 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 | 運算式   | String    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | [是]   | 子字串相符項目     |
-| `[a-z]{2}`   | 123abc456 | [是]   | 子字串相符項目     |
-| `[a-z]{2}`   | mz        | [是]   | 符合運算式    |
-| `[a-z]{2}`   | MZ        | [是]   | 不區分大小寫    |
+| `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
+| `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
+| `[a-z]{2}`   | mz        | 是   | 符合運算式    |
+| `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
 | `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
 | `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 
@@ -679,12 +680,23 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 例如，具有 `Url.Action(new { article = "MyTestArticle" })` 之路由模式 `blog\{article:slugify}` 中的自訂 `slugify` 參數轉換器，會產生 `blog\my-test-article`。
 
+若要在路由模式中使用參數轉換器，請先在 `Startup.ConfigureServices` 中使用 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 進行設定：
+
+```csharp
+services.AddRouting(options =>
+{
+    // Replace the type and the name used to refer to it with your own
+    // IOutboundParameterTransformer implementation
+    options.ConstraintMap["slugify"] = typeof(SlugifyParameterTransformer);
+});
+```
+
 架構會使用參數轉換器來轉換端點解析的 URI。 例如，ASP.NET Core MVC 會使用參數轉換器，轉換用於比對 `area`、`controller`、`action` 和 `page` 的路由值。
 
 ```csharp
 routes.MapRoute(
     name: "default",
-    template: "{controller=Home:slugify}/{action=Index:slugify}/{id?}");
+    template: "{controller:slugify=Home}/{action:slugify=Index}/{id?}");
 ```
 
 使用上述的路由，動作 `SubscriptionManagementController.GetAll()` 會與URI `/subscription-management/get-all` 比對。 參數轉換器不會變更用來產生連結的路由值。 例如，`Url.Action("GetAll", "SubscriptionManagement")` 會輸出 `/subscription-management/get-all`。

@@ -4,14 +4,14 @@ author: guardrex
 description: 深入了解 ASP.NET Core 中的 Web 主機，其負責啟動應用程式以及管理存留期。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/18/2018
 uid: fundamentals/host/web-host
-ms.openlocfilehash: bc77413127273aba207e68e7fbcb8ad916267e8e
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 7215027a083c0ed0bc3b15196e390a31c5dcfc14
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862274"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637842"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
@@ -57,7 +57,7 @@ public class Program
   * 環境變數。
   * 命令列引數。
 * 設定主控台和偵錯輸出的[記錄](xref:fundamentals/logging/index)。 記錄包含 *appsettings.json* 或 *appsettings.{Environment}.json* 檔案的記錄組態區段中指定的[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)規則。
-* 以 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)在 IIS 背後執行時，`CreateDefaultBuilder` 會啟用 [IIS 整合](xref:host-and-deploy/iis/index)，以設定應用程式的基底位址和連接埠。 IIS 整合也會設定應用程式以[擷取啟動錯誤](#capture-startup-errors)。 如需 IIS 預設選項，請參閱 <xref:host-and-deploy/iis/index#iis-options>。
+* 以 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)在 IIS 背後執行時，`CreateDefaultBuilder` 會啟用 [IIS 整合](xref:host-and-deploy/iis/index)，以設定應用程式的基底位址和連接埠。 IIS 整合也會設定應用程式以[擷取啟動錯誤](#capture-startup-errors)。 如需 IIS 預設選項，請參閱 <xref:host-and-deploy/iis/index#iis-options>。
 * 如果應用程式的環境是「開發」，請將 [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) 設定為 `true`。 如需詳細資訊，請參閱[範圍驗證](#scope-validation)。
 
 `CreateDefaultBuilder` 所定義的組態可以透過 [ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration)、[ConfigureLogging](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging)，以及 [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) 的其他方法和擴充方法加以覆寫及擴增。 數個範例如下：
@@ -152,7 +152,7 @@ WebHost.CreateDefaultBuilder(args)
 
 **索引鍵**：captureStartupErrors  
 **類型**：*bool* (`true` 或 `1`)  
-**預設值**：預設為 `false`，除非應用程式執行時在 IIS 背後有 Kestrel，此時預設值即為 `true`。  
+**預設**：預設為 `false`，除非應用程式執行時在 IIS 背後有 Kestrel，此時預設即為 `true`。  
 **設定使用**：`CaptureStartupErrors`  
 **環境變數**：`ASPNETCORE_CAPTURESTARTUPERRORS`
 
@@ -169,7 +169,7 @@ WebHost.CreateDefaultBuilder(args)
 
 **索引鍵**：contentRoot  
 **類型**：*string*  
-**預設值**：預設為應用程式組件所在的資料夾。  
+**預設**：預設為應用程式組件所在的資料夾。  
 **設定使用**：`UseContentRoot`  
 **環境變數**：`ASPNETCORE_CONTENTROOT`
 
@@ -203,7 +203,7 @@ WebHost.CreateDefaultBuilder(args)
 
 **索引鍵**：environment  
 **類型**：*string*  
-**預設值**：Production  
+**預設**：生產環境  
 **設定使用**：`UseEnvironment`  
 **環境變數**：`ASPNETCORE_ENVIRONMENT`
 
@@ -220,7 +220,7 @@ WebHost.CreateDefaultBuilder(args)
 
 **索引鍵**：hostingStartupAssemblies  
 **類型**：*string*  
-**預設值**：空字串  
+**預設**：空字串  
 **設定使用**：`UseSetting`  
 **環境變數**：`ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`
 
@@ -237,9 +237,9 @@ WebHost.CreateDefaultBuilder(args)
 
 設定 HTTPS 重新導向連接埠。 用於[強制 HTTPS](xref:security/enforcing-ssl)。
 
-**機碼**：https_port **類型**：*字串*
-**預設值**：未設定預設值。
-**設定 using**：`UseSetting`
+**索引鍵**：https_port **類型**：*string*
+**預設**：未設定預設值。
+**設定使用**：`UseSetting`
 **環境變數**：`ASPNETCORE_HTTPS_PORT`
 
 ```csharp
@@ -253,7 +253,7 @@ WebHost.CreateDefaultBuilder(args)
 
 **索引鍵**：hostingStartupExcludeAssemblies  
 **類型**：*string*  
-**預設值**：空字串  
+**預設**：空字串  
 **設定使用**：`UseSetting`  
 **環境變數**：`ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
 
@@ -317,7 +317,7 @@ Kestrel 有它自己的端點設定 API。 如需詳細資訊，請參閱<xref:f
 
 **索引鍵**：shutdownTimeoutSeconds  
 **類型**：*int*  
-**預設值**：5  
+**預設**：5  
 **設定使用**：`UseShutdownTimeout`  
 **環境變數**：`ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`
 
@@ -341,7 +341,7 @@ WebHost.CreateDefaultBuilder(args)
 
 **索引鍵**：startupAssembly  
 **類型**：*string*  
-**預設值**：應用程式的組件  
+**預設**：應用程式的組件  
 **設定使用**：`UseStartup`  
 **環境變數**：`ASPNETCORE_STARTUPASSEMBLY`
 
@@ -363,7 +363,7 @@ WebHost.CreateDefaultBuilder(args)
 
 **索引鍵**：webroot  
 **類型**：*string*  
-**預設值**：如果未指定，則預設值為 "(Content Root)/wwwroot"，如果該路徑存在的話。 如果路徑不存在，則會使用無作業檔案提供者。  
+**預設**：如果未指定，則預設為 "(Content Root)/wwwroot" (若該路徑存在的話)。 如果路徑不存在，則會使用無作業檔案提供者。  
 **設定使用**：`UseWebRoot`  
 **環境變數**：`ASPNETCORE_WEBROOT`
 

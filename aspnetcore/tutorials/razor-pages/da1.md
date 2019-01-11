@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何更新 ASP.NET Core 應用程式中產生的頁面。
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
-ms.date: 12/3/2018
+ms.date: 12/20/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: b88dcd12ee670eb2e0919bdb07b9b7556a5b80e7
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 396cb9b9eeaab2d3db6108feeba71dbc2bc8981d
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862404"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997197"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>更新 ASP.NET Core 應用程式中產生的頁面
 
@@ -69,22 +69,22 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 @page "{id:int?}"
 ```
 
-若要測試行為或 `@page "{id:int?}"`：
+若要測試 `@page "{id:int?}"` 的行為：
 
-* 將 *Pages/Movies/Details.cshtml* 中的頁面指示詞設定為 `@page "{id:int?}"`
+* 將 *Pages/Movies/Details.cshtml* 中的頁面指示詞設定為 `@page "{id:int?}"`。
 * 設定 `public async Task<IActionResult> OnGetAsync(int? id)` (位於 *Pages/Movies/Details.cshtml.cs*) 中的中斷點。
-* 巡覽至 `https://localhost:5001/Movies/Details/`
+* 巡覽至 `https://localhost:5001/Movies/Details/`。
 
 使用 `@page "{id:int}"` 指示詞，永遠不會叫用中斷點。 路由引擎會傳回 HTTP 404。 使用 `@page "{id:int?}"`，`OnGetAsync` 方法會傳回 `NotFound` (HTTP 404)。
 
-雖然不建議這樣做，但您可以將刪除方法寫成：
+雖然不建議這樣做，但您可以將 `OnGetAsync` 方法 (位在 *Pages/Movies/Delete.cshtml.cs*中) 寫成：
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Delete.cshtml.cs?name=snippet)]
 
 測試上述程式碼：
 
-* 選取刪除連結。
-* 從 URL 中移除識別碼。 例如，將 `https://localhost:5001/Movies/Delete/8` 變更為 `https://localhost:5001/Movies/Delete`
+* 選取 **Delete** 連結。
+* 從 URL 中移除識別碼。 例如，將 `https://localhost:5001/Movies/Delete/8` 變更為 `https://localhost:5001/Movies/Delete`。
 * 在偵錯工具中逐步執行程式碼。
 
 ### <a name="review-concurrency-exception-handling"></a>檢閱並行存取例外狀況處理
@@ -125,7 +125,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
   public Movie Movie { get; set; }
   ```
 
-* 如果模型狀態中有錯誤 (例如，`ReleaseDate`無法轉換為 date)，則會以提交的值再次發佈表單。
+* 如果模型狀態中有錯誤 (例如 `ReleaseDate` 無法轉換為日期)，則會以提交的值顯示表單。
 * 如果沒有任何模型錯誤，則會儲存電影。
 
 Index、Create 和 Delete Razor 頁面中的 HTTP GET 方法都會依循類似的模式。 Create Razor 頁面中的 HTTP POST `OnPostAsync` 方法，會依循與 Edit Razor 頁面中的 `OnPostAsync` 方法類似的模式。

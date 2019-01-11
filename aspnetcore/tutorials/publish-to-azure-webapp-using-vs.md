@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure App Service。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/06/2018
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 7eab773746f76b00e8e796387c4ee1dc042a4c23
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: e71cb8badbbc852685c845e6bbb0bbb12ab5499f
+ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121267"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53577808"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure
 
@@ -68,7 +68,7 @@ Visual Studio 會建立解決方案。
 
 * 選取 [註冊] 並註冊新的使用者。 您可以使用虛構的電子郵件地址。 提交時，頁面會顯示下列錯誤：
 
-    「內部伺服器錯誤: 處理要求時資料庫作業失敗。SQL 例外狀況：無法開啟資料庫。為應用程式資料庫內容套用現有的移轉可能會解決此問題。」
+    *「內部伺服器錯誤：處理要求時資料庫作業失敗。SQL 例外狀況：無法開啟資料庫。為應用程式資料庫內容套用現有的移轉可能會解決此問題。」
 * 選取 [套用移轉]，並在頁面更新後重新整理頁面。
 
 ![內部伺服器錯誤：處理要求時資料庫作業失敗。 SQL 例外狀況：無法開啟資料庫。 為應用程式資料庫內容套用現有的移轉可能會解決此問題。](publish-to-azure-webapp-using-vs/_static/mig.png)
@@ -140,7 +140,7 @@ Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟
 
 * 選取 [儲存]。 Visual Studio 會回到 [發行] 對話方塊。 
 
-![[發行] 對話方塊：設定面板](publish-to-azure-webapp-using-vs/_static/pubs.png)
+![[發行] 對話方塊：[設定] 面板](publish-to-azure-webapp-using-vs/_static/pubs.png)
 
 按一下 [發行] 。 Visual Studio 會將您的應用程式發佈至 Azure。 部署完成時，會在瀏覽器中開啟應用程式。
 
@@ -154,7 +154,9 @@ Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟
 
 ### <a name="update-the-app"></a>更新應用程式
 
-* 編輯 *Pages/About.cshtml* Razor 頁面，並變更其內容。 例如，您可以修改段落，使其說出 "Hello ASP.NET Core!"：[!code-html[About](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
+* 編輯 *Pages/About.cshtml* Razor 頁面，並變更其內容。 例如，您可以修改段落使其說出 "Hello ASP.NET Core!"：
+
+    [!code-html[About](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
 
 * 以滑鼠右鍵按一下專案，然後再次選取 [發行...]。
 
@@ -187,4 +189,5 @@ Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟
 * [Azure App Service](/azure/app-service/app-service-web-overview)
 * [Azure 資源群組](/azure/azure-resource-manager/resource-group-overview#resource-groups)
 * [Azure SQL Database](/azure/sql-database/)
+* <xref:host-and-deploy/visual-studio-publish-profiles>
 * <xref:host-and-deploy/azure-apps/troubleshoot>

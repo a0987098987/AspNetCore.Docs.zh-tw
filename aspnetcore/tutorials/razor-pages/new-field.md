@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: e280bc9553113982a1f1a77eabab32575c905237
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 9b3ad5f6c4b1c9b5f016f5591127c8d1b213948d
+ms.sourcegitcommit: 1ea1b4fc58055c62728143388562689f1ef96cb2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862287"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53329129"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
@@ -96,9 +96,13 @@ Update-Database
 
 "Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
 
+`Update-Database` 命令會指示架構將結構描述變更套用至資料庫。
+
 <a name="ssox"></a>
 
-如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器或 [Sql Server 物件總管](xref:tutorials/razor-pages/sql#ssox) (SSOX) 的刪除連結來執行這項操作。 若要從 SSOX 中刪除資料庫：
+如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器或 [Sql Server 物件總管](xref:tutorials/razor-pages/sql#ssox) (SSOX) 的刪除連結來執行這項操作。
+
+另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要在 SSOX 中刪除資料庫：
 
 * 在 SSOX 中選取資料庫。
 * 以滑鼠右鍵按一下資料庫，然後選取 [刪除]。
@@ -111,12 +115,9 @@ Update-Database
   ```
 
 <!-- Code -------------------------->
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
-<!-- copy/paste this tab to the next. Not worth an include  --> SQLite 不支援移轉。
-
-* 刪除資料庫或變更 *appsettings.json* 檔案中的資料庫名稱。
-* 刪除 *Migrations* 資料夾 (及資料夾中的所有檔案)。
+<!-- copy/paste this tab to the next. Not worth an include  -->
 
 執行下列 .NET Core CLI 命令：
 
@@ -125,20 +126,28 @@ dotnet ef migrations add Rating
 dotnet ef database update
 ```
 
-<!-- Mac -------------------------->
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+`ef migrations add` 命令會告知架構，以便：
 
-SQLite 不支援移轉。
+* 比較 `Movie` 模型與 `Movie` 資料庫結構描述。
+* 建立程式碼，將資料庫結構描述移轉至新模型。
 
-* 刪除資料庫或變更 *appsettings.json* 檔案中的資料庫名稱。
-* 刪除 *Migrations* 資料夾 (及資料夾中的所有檔案)。
+"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
 
-執行下列 .NET Core CLI 命令：
+`ef database update` 命令會指示架構將結構描述變更套用至資料庫。
+
+如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器中的刪除連結或使用 SQLite 工具來執行這項操作。
+
+另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要刪除資料庫，請刪除資料庫檔案 (*MvcMovie.db*)。 然後執行 `ef database update` 命令： 
 
 ```console
-dotnet ef migrations add Rating
 dotnet ef database update
 ```
+
+> [!NOTE]
+> EF Core SQLite 提供者不支援許多結構描述變更作業。 例如，其支援新增資料行，但不支援移除資料行。 如果您新增移轉來移除資料行，`ef migrations add` 命令會成功，但 `ef database update` 命令會失敗。 您可以手動撰寫移轉程式碼來重建資料表，藉此解決一些限制。 重建資料表需要重新命名現有的資料表、建立新的資料表、將資料複製到新的資料表，以及卸除舊的資料表。 如需詳細資訊，請參閱下列資源：
+> * [SQLite EF Core 資料庫提供者限制](/ef/core/providers/sqlite/limitations)
+> * [自訂移轉程式碼](/ef/core/managing-schemas/migrations/#customize-migration-code)
+> * [資料植入](/ef/core/modeling/data-seeding)
 
 ---  
 <!-- End of VS tabs -->

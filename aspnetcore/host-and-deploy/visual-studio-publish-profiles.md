@@ -4,30 +4,36 @@ author: rick-anderson
 description: 了解如何在 Visual Studio 中建立發行設定檔，並使用這些設定檔來管理對各種目標的 ASP.NET Core 應用程式部署。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/06/2018
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 3e626f99b06b0343360d6c46447e357890433dda
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: 3d24cd2cd4697e8e7cf7e4bdf4d076a09b6a6a23
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148924"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284704"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔
 
 作者：[Sayed Ibrahim Hashimi](https://github.com/sayedihashimi) 及 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本文將焦點放在使用 Visual Studio 2017 來建立及使用發行設定檔。 使用 Visual Studio 建立的發行設定檔，可從 MSBuild 和 Visual Studio 2017 執行。 如需發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。
+::: moniker range="<= aspnetcore-1.1"
+
+如需本主題的 1.1 版，請下載 [Visual Studio publish profiles for ASP.NET Core app deployment (PDF 1.1 版)](https://webpifeed.blob.core.windows.net/webpifeed/Partners/VS_Publish_Profiles_1.1.pdf) (適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔)。
+
+::: moniker-end
+
+本文將焦點放在使用 Visual Studio 2017 或更新版本來建立及使用發行設定檔。 使用 Visual Studio 建立的發行設定檔，可從 MSBuild 和 Visual Studio 執行。 如需發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。
 
 以下是使用 `dotnet new mvc`命令來建立的專案檔：
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.2"
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,37 +45,17 @@ ms.locfileid: "50148924"
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.0"
+::: moniker range="< aspnetcore-2.2"
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
-  </ItemGroup>
-
-</Project>
-```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.8" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
 </Project>
@@ -122,7 +108,7 @@ ms.locfileid: "50148924"
 
 ## <a name="basic-command-line-publishing"></a>基本命令列發佈
 
-命令列發佈適用於所有 .NET Core 支援的平台，而不需要 Visual Studio。 在下列範例中，是從專案目錄 (其中包含 *.csproj* 檔案) 執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令。 如果不在專案資料夾中，請以明確方式傳入專案檔路徑。 例如: 
+命令列發佈適用於所有 .NET Core 支援的平台，而不需要 Visual Studio。 在下列範例中，是從專案目錄 (其中包含 *.csproj* 檔案) 執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令。 如果不在專案資料夾中，請以明確方式傳入專案檔路徑。 例如：
 
 ```console
 dotnet publish C:\Webs\Web1
@@ -130,24 +116,10 @@ dotnet publish C:\Webs\Web1
 
 執行下列命令來建立及發佈 Web 應用程式：
 
-::: moniker range=">= aspnetcore-2.0"
-
 ```console
 dotnet new mvc
 dotnet publish
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```console
-dotnet new mvc
-dotnet restore
-dotnet publish
-```
-
-::: moniker-end
 
 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令會產生類似以下的輸出：
 
@@ -174,7 +146,7 @@ dotnet publish -c Release -o C:\MyWebs\test
 
 您可以使用下列兩種格式其中之一來傳遞 MSBuild 屬性：
 
-* ` p:<NAME>=<VALUE>`
+* `p:<NAME>=<VALUE>`
 * `/p:<NAME>=<VALUE>`
 
 下列命令會將 `Release` 組建發佈到網路共用：
@@ -187,12 +159,12 @@ dotnet publish -c Release -o C:\MyWebs\test
 
 ## <a name="publish-profiles"></a>發行設定檔
 
-本節會使用 Visual Studio 2017 來建立發行設定檔。 建立之後，即可從 Visual Studio 或命令列進行發佈。
+本節會使用 Visual Studio 2017 或更新版本來建立發行設定檔。 建立設定檔之後，即可從 Visual Studio 或命令列進行發佈。
 
 發行設定檔可以簡化發佈程序，且設定檔數目並無限制。 請在 Visual Studio 中選擇下列其中一個路徑來建立設定檔：
 
 * 在 [方案總管] 中的專案上按一下滑鼠右鍵，然後選取 [發佈]。
-* 從 [建置] 功能表中選取 [發佈 &lt;project_name&gt;] 。
+* 從 [建置] 功能表選取 [發佈 {專案名稱}]。
 
 應用程式容量頁面的 [發佈] 索引標籤隨即顯示。 如果專案缺少發行設定檔，則會顯示下列頁面：
 
@@ -214,11 +186,11 @@ dotnet publish -c Release -o C:\MyWebs\test
 
 如需詳細資訊，請參閱[哪些發佈選項適合我？](/visualstudio/ide/not-in-toc/web-publish-options)。
 
-使用 Visual Studio 來建立發行設定檔時，會建立 *Properties/PublishProfiles/&lt;profile_name&gt;.pubxml* MSBuild 檔案。 此 *.pubxml* 檔案是一個 MSBuild 檔案，而且包含發佈組態設定。 您可以變更這個檔案以自訂建置和發佈程序。 發佈程序會讀取這個檔案。 `<LastUsedBuildConfiguration>` 很特殊，因為它是全域屬性，不應該在組建中所匯入的任何檔案中。 如需詳細資訊，請參閱 [MSBuild：如何設定組態屬性](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx) \(英文\)。
+使用 Visual Studio 來建立發行設定檔時，會建立 *Properties/PublishProfiles/{設定檔名稱}.pubxml* MSBuild 檔案。 此 *.pubxml* 檔案是一個 MSBuild 檔案，而且包含發佈組態設定。 您可以變更這個檔案以自訂建置和發佈程序。 發佈程序會讀取這個檔案。 `<LastUsedBuildConfiguration>` 很特殊，因為它是全域屬性，不應該在組建中所匯入的任何檔案中。 如需詳細資訊，請參閱 [MSBuild：如何設定組態屬性](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx) \(英文\)。
 
 發佈到 Azure 目標時，*.pubxml* 檔案會包含您的 Azure 訂用帳戶識別碼。 使用該目標類型時，不建議將此檔案新增至原始檔控制。 發佈到非 Azure 目標時，可放心簽入 *.pubxml* 檔案。
 
-機密資訊 (例如發佈密碼) 會依每個使用者/電腦加密。 其儲存位置是在 *Properties/PublishProfiles/&lt;profile_name&gt;.pubxml.user* 檔案中。 由於此檔案可以儲存機密資訊，因此不應該將它簽入至原始檔控制。
+機密資訊 (例如發佈密碼) 會依每個使用者/電腦加密。 其儲存位置是在 *Properties/PublishProfiles/{設定檔名稱}.pubxml.user* 檔案中。 由於此檔案可以儲存機密資訊，因此不應該將它簽入至原始檔控制。
 
 如需如何在 ASP.NET Core 上發佈 Web 應用程式的概觀，請參閱[裝載及部署](xref:host-and-deploy/index)。 發佈 ASP.NET Core 應用程式所需的 MSBuild 工作和目標是可從 https://github.com/aspnet/websdk 取得的開放原始碼。
 
@@ -270,7 +242,7 @@ dotnet publish /p:PublishProfile=Azure /p:Configuration=Release
 使用發行設定檔時，請設定下列 MSBuild 屬性：
 
 * `DeployOnBuild=true`
-* `PublishProfile=<Publish profile name>`
+* `PublishProfile={PUBLISH PROFILE}`
 
 使用名為 *FolderProfile* 的設定檔來進行發佈時，可以執行下列兩個命令其中之一：
 
@@ -321,34 +293,49 @@ msbuild /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderP
 
 ## <a name="publish-to-an-msdeploy-endpoint-from-the-command-line"></a>從命令列發佈至 MSDeploy 端點
 
-您可以使用 .NET Core CLI 或 MSBuild 來完成發佈。 `dotnet publish` 在 .NET Core 的內容中執行。 `msbuild` 命令需要 .NET Framework，因此會將它限制在 Windows 環境。
+下列範例使用由 Visual Studio 建立的 ASP.NET Core Web 應用程式，名為 *AzureWebApp*。 並使用 Visual Studio 新增了一個 Azure 應用程式發行設定檔。 如需如何建立設定檔的詳細資訊，請參閱[發行設定檔](#publish-profiles)一節。
 
-以 MSDeploy 發佈最簡單的方式，是先在 Visual Studio 2017 中建立發行設定檔，再從命令列使用設定檔。
+若要使用發行設定檔部署應用程式，請從 **Visual Studio 開發人員命令提示字元**執行 `msbuild` 命令。 您可以從 Windows 工作列 [開始] 功能表的 [Visual Studio] 資料夾中存取此命令提示字元。 為方便存取，您可以將命令提示字元新增至 Visual Studio 的 [工具] 功能表。 如需詳細資訊，請參閱[適用於 Visual Studio 的開發人員命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs#run-the-command-prompt-from-inside-visual-studio)。
 
-下列範例會建立 ASP.NET Core Web 應用程式 (使用 `dotnet new mvc`)，並使用 Visual Studio 來新增 Azure 發行設定檔。
-
-請從「VS 2017 的開發人員命令提示字元」執行 `msbuild`。 「開發人員命令提示字元」的路徑中會有已設定一些 MSBuild 變數的正確 *msbuild.exe*。
-
-MSBuild 使用下列語法：
+MSBuild 使用下列命令語法：
 
 ```console
-msbuild <path-to-project-file> /p:DeployOnBuild=true /p:PublishProfile=<Publish Profile> /p:Username=<USERNAME> /p:Password=<PASSWORD>
+msbuild {PATH} 
+    /p:DeployOnBuild=true 
+    /p:PublishProfile={PROFILE} 
+    /p:Username={USERNAME} 
+    /p:Password={PASSWORD}
 ```
 
-請從 *\<發佈名稱>.PublishSettings* 檔案取得 `Password`。 從下列其中一個位置下載 *.PublishSettings* 檔案：
+* {PATH} &ndash; 應用程式的專案檔路徑。
+* {PROFILE} &ndash; 發行設定檔的名稱。
+* {USERNAME} &ndash; MSDeploy 使用者名稱。 {USERNAME} 可以在發行設定檔中找到。
+* {PASSWORD} &ndash; MSDeploy 密碼。 您可以從 *{PROFILE}.PublishSettings* 檔案取得 {PASSWORD}。 從下列其中一個位置下載 *.PublishSettings* 檔案：
+  * 方案總管：選取 [檢視] > [Cloud Explorer]。 連線到您的 Azure 訂用帳戶。 開啟 [應用程式服務]。 以滑鼠右鍵按一下應用程式。 選取 [下載發行設定檔]。
+  * Azure 入口網站：在 Web 應用程式的 [概觀] 面板中，選取 [取得發行設定檔]。
 
-* 方案總管：在 Web 應用程式上按一下滑鼠右鍵，然後選取 [下載發行設定檔]。
-* Azure 入口網站：按一下 Web 應用程式 [概觀] 面板上的 [取得發行設定檔]。
-
-`Username` 可以在發行設定檔中找到。
-
-下列範例使用 *Web11112 - Web Deploy*發行設定檔：
+下列範例使用名為 *AzureWebApp - Web Deploy* 的發行設定檔：
 
 ```console
-msbuild "C:\Webs\Web1\Web1.csproj" /p:DeployOnBuild=true
- /p:PublishProfile="Web11112 - Web Deploy"  /p:Username="$Web11112"
- /p:Password="<password removed>"
+msbuild "AzureWebApp.csproj" 
+    /p:DeployOnBuild=true 
+    /p:PublishProfile="AzureWebApp - Web Deploy" 
+    /p:Username="$AzureWebApp" 
+    /p:Password=".........."
 ```
+
+您也可以從 Windows 命令提示字元透過 .NET Core CLI [dotnet msbuild](/dotnet/core/tools/dotnet-msbuild) 命令來使用發行設定檔：
+
+```console
+dotnet msbuild "AzureWebApp.csproj"
+    /p:DeployOnBuild=true 
+    /p:PublishProfile="AzureWebApp - Web Deploy" 
+    /p:Username="$AzureWebApp" 
+    /p:Password=".........."
+```
+
+> [!NOTE]
+> [dotnet msbuild](/dotnet/core/tools/dotnet-msbuild) 命令可跨平台使用，並可在 macOS 和 Linux 上編譯 ASP.NET Core 應用程式。 不過，macOS 和 Linux 上的 MSBuild 無法將應用程式部署至 Azure 或其他 MSDeploy 端點。 只有在 Windows 上才提供 MSDeploy。
 
 ## <a name="exclude-files"></a>排除檔案
 
@@ -510,7 +497,7 @@ MSBuild file.
 
 ## <a name="the-kudu-service"></a>Kudu 服務
 
-若要檢視 Azure App Service Web 應用程式部署中的檔案，請使用 [Kudu 服務](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service)。 將 `scm` 權杖附加至 Web 應用程式名稱。 例如: 
+若要檢視 Azure App Service Web 應用程式部署中的檔案，請使用 [Kudu 服務](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service)。 將 `scm` 權杖附加至 Web 應用程式名稱。 例如：
 
 | URL                                    | 結果       |
 | -------------------------------------- | ------------ |

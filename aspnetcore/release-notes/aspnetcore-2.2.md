@@ -4,14 +4,14 @@ author: tdykstra
 description: 了解 ASP.NET Core 2.2 的新功能。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/03/2018
+ms.date: 12/18/2018
 uid: aspnetcore-2.2
-ms.openlocfilehash: d0bb0698526e2f7af8f0e99b0393f3ce48657b34
-ms.sourcegitcommit: a3a15d3ad4d6e160a69614a29c03bbd50db110a2
+ms.openlocfilehash: 13d7dec834a5661b445b4fc0c0be8be9b7b41b9e
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52952053"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637725"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2 的新功能
 
@@ -25,7 +25,7 @@ Open API (也稱為 Swagger) 是用來描述 REST API 的語言無關規格。 O
 
 * <xref:web-api/advanced/analyzers>
 * <xref:web-api/advanced/conventions>
-* [ASP.NET Core 2.2.0-preview1: Open API Analyzers & Conventions](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/) (ASP.NET Core 2.2.0 - 預覽 1：Open API 分析器與慣例)
+* [ASP.NET Core 2.2.0-preview1:Open API Analyzers & Conventions](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/) (ASP.NET Core 2.2.0-preview1：Open API 分析器與慣例)
 
 ## <a name="problem-details-support"></a>問題詳細資料支援
 
@@ -72,7 +72,7 @@ HTTP/2 是 HTTP 通訊協定的主要版本。 一些值得注意的 HTTP/2 功�
 
 在舊版的 ASP.NET Core 中，IIS 是作為反向 Proxy。 在 2.2 中，ASP.NET Core 模組可啟動 CoreCLR，並在 IIS 背景工作處理序 (*w3wp.exe*) 內裝載應用程式。 同處理序裝載以 IIS 執行時可改善效能和診斷。
 
-如需詳細資訊，請參閱[IIS 同處理序裝載](xref:fundamentals/servers/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model)。
+如需詳細資訊，請參閱 [IIS 的同處理序裝載](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model)。
 
 ## <a name="signalr-java-client"></a>SignalR Java 用戶端
 

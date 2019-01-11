@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/04/2019
 uid: test/loadtests
-ms.openlocfilehash: 0a53405cba19435a74b398ba42a05456c50bdc72
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: d989bc841a372bed7ebf2c84c6abe1a57762ad04
+ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099478"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54207352"
 ---
 # <a name="load-and-stress-testing-aspnet-core"></a>負載和壓力測試的 ASP.NET Core
 
@@ -24,7 +24,7 @@ ms.locfileid: "54099478"
 * 高使用者負載 – 尖峰或逐漸增加。
 * 有限的運算資源。  
 
-壓力的情況下，可以應用程式從失敗中復原並依正常程序傳回預期的行為？ 在正常情況下執行的應用程式。
+壓力的情況下，可以應用程式從失敗中復原並依正常程序傳回預期的行為？ 應用程式是在資源不足時*不*在正常情況下執行。
 
 ## <a name="visual-studio-tools"></a>Visual Studio Tools
 

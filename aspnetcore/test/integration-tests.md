@@ -5,14 +5,14 @@ description: 了解整合測試如何確保應用程式的元件在基礎結構�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 01/11/2019
 uid: test/integration-tests
-ms.openlocfilehash: 9729925c89c212bb6e6fac1a484b6288697afe57
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 0f919d7715a26f1efdb37d35b047a7050e46a272
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450745"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249512"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -72,9 +72,9 @@ ASP.NET Core 中的整合測試需要下列各項：
 
 1. SUT 的 web 主機已設定。
 1. 測試伺服器用戶端會提交要求給應用程式。
-1. *排列*測試步驟執行： 測試應用程式會準備要求。
-1. *Act*測試步驟執行： 用戶端送出要求並接收回應。
-1. *Assert*測試步驟執行：*實際*做為驗證回應*傳遞*或*失敗*根據*預期*回應。
+1. *排列*測試步驟執行：測試應用程式會準備要求。
+1. *Act*測試步驟執行：用戶端會提交要求，並接收回應。
+1. *Assert*測試步驟執行：*實際*回應會驗證為*傳遞*或是*失敗*根據*預期*回應。
 1. 處理程序會繼續直到所有的測試會執行。
 1. 報告測試結果。
 
@@ -114,7 +114,7 @@ ASP.NET Core 中的整合測試需要下列各項：
 
 [WebApplicationFactory&lt;TEntryPoint&gt; ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1)用來建立[TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)整合測試。 `TEntryPoint` 通常是 SUT 的進入點類別`Startup`類別。
 
-測試類別會實作*類別的裝置*介面 (`IClassFixture`) 以指出包含測試類別，且提供共用的物件執行個體的類別中的測試。
+測試類別會實作*類別的裝置*介面 ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) 以指出包含測試類別，且提供共用的物件執行個體的類別中的測試。
 
 ### <a name="basic-test-of-app-endpoints"></a>基本測試的應用程式端點
 
@@ -151,7 +151,7 @@ Web 主機組態可以建立獨立的測試類別，藉由繼承自`WebApplicati
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   在植入的資料庫[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)由執行`InitializeDbForTests`方法。 此方法所述[整合測試範例： 測試應用程式的組織](#test-app-organization)一節。
+   在植入的資料庫[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)由執行`InitializeDbForTests`方法。 中所述的方法是[整合測試的範例：測試應用程式組織](#test-app-organization)一節。
 
 2. 使用自訂`CustomWebApplicationFactory`測試類別中。 下列範例會使用中的處理站`IndexPageTests`類別：
 
@@ -173,9 +173,9 @@ Web 主機組態可以建立獨立的測試類別，藉由繼承自`WebApplicati
 
 * `GetDocumentAsync` &ndash; 接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回`IHtmlDocument`。 `GetDocumentAsync` 使用準備的處理站*虛擬回應*根據原始`HttpResponseMessage`。 如需詳細資訊，請參閱 < [AngleSharp 文件](https://github.com/AngleSharp/AngleSharp#documentation)。
 * `SendAsync` 擴充方法`HttpClient`compose [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)然後呼叫[SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_)提交要求給 SUT。 多載`SendAsync`接受 HTML 表單 (`IHtmlFormElement`) 和下列：
-  - 提交按鈕的表單 (`IHtmlElement`)
-  - 表單值集合 (`IEnumerable<KeyValuePair<string, string>>`)
-  - 提交按鈕 (`IHtmlElement`)，從而形成值 (`IEnumerable<KeyValuePair<string, string>>`)
+  * 提交按鈕的表單 (`IHtmlElement`)
+  * 表單值集合 (`IEnumerable<KeyValuePair<string, string>>`)
+  * 提交按鈕 (`IHtmlElement`)，從而形成值 (`IEnumerable<KeyValuePair<string, string>>`)
 
 > [!NOTE]
 > [AngleSharp](https://anglesharp.github.io/)第三方剖析供示範之用，本主題中的範例應用程式的程式庫。 AngleSharp 不支援，或整合測試的 ASP.NET Core 應用程式所需。 其他剖析器可以使用，例如[Html 靈活度組件 (HAP)](http://html-agility-pack.net/)。 另一種方法是撰寫程式碼來直接處理防偽系統的要求驗證語彙基元和防偽 cookie。

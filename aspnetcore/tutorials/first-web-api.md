@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/10/2018
 uid: tutorials/first-web-api
-ms.openlocfilehash: c2b4dcddd5332330cd6e6abe7d3a12697cde845e
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: 03936ee74836c7b214cb3dc4023a6e3c252f2a26
+ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53382000"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54207443"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>教學課程：使用 ASP.NET Core MVC 建立 Web API
 
@@ -311,7 +311,7 @@ ms.locfileid: "53382000"
 
 上述程式碼是 HTTP POST 方法，如 [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) 屬性所示。 該方法會從 HTTP 要求本文取得待辦事項的值。
 
-`CreatedAtRoute` 方法：
+`CreatedAtAction` 方法：
 
 * 傳回 201 回應。 對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是 HTTP 201。
 * 將位置標頭新增至回應。 位置標頭指定新建立之待辦事項的 URI。 如需詳細資訊，請參閱 [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (已建立 10.2.2 201)。
@@ -398,7 +398,7 @@ ms.locfileid: "53382000"
 
 在本節中，將會新增 HTML 網頁，以使用 jQuery 來呼叫 Web API。 jQuery 會起始要求，並使用來自 API 回應的詳細資料更新頁面。
 
-請設定應用程式來[提供靜態檔案](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)，並[啟用預設檔案對應](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)：
+請設定應用程式來[提供靜態檔案](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)，並[啟用預設檔案對應](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)：
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Startup.cs?highlight=14-15&name=snippet_configure)]
 

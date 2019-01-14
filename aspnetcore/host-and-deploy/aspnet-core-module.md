@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/11/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: dee4fe7a498d211cb8ef6a3c49017c3cc8a56847
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: f97d6f188bfcba6285cbd1fa91ce530e96395929
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637855"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249559"
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
@@ -44,6 +44,8 @@ ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線以便：
   <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
 </PropertyGroup>
 ```
+
+以 .NET Framework 為目標的 ASP.NET Core 應用程式不支援處理序內裝載模型。
 
 如果檔案中沒有 `<AspNetCoreHostingModel>` 屬性，預設值為 `OutOfProcess`。
 

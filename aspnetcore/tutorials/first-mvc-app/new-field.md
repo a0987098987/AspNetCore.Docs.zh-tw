@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: c6e7fe13a55a14533949d212bfb149ccd91103e5
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: 7993b36bf9115225e082d2929bb253aba5b18310
+ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997236"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54207365"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>將欄位新增至 ASP.NET Core MVC 應用程式
 
@@ -45,7 +45,7 @@ ms.locfileid: "53997236"
 
 編輯 */Views/Movies/Index.cshtml* 檔案，然後新增 `Rating` 欄位：
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
+[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-64)]
 
 使用 `Rating` 欄位更新 */Views/Movies/Create.cshtml*。
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2018
 uid: mvc/controllers/filters
-ms.openlocfilehash: d25976af860ed8733c0548a4102e0095969b2ba6
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: d4fe49a9225b9980a956ef9c773ad631beb557ae
+ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861845"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54207456"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -236,6 +236,7 @@ System.InvalidOperationException: No service for type
 下列範例示範如何使用 `TypeFilterAttribute` 將引數傳遞至類型：
 
 [!code-csharp[](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_TypeFilter&highlight=1,2)]
+[!code-csharp[](../../mvc/controllers/filters/sample/src/FiltersSample/Filters/LogConstantFilter.cs?name=snippet_TypeFilter_Implementation&highlight=6)]
 
 ### <a name="ifilterfactory-implemented-on-your-attribute"></a>在您屬性上實作的 IFilterFactory
 

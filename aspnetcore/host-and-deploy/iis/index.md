@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何在 Windows Server Internet Information Services (IIS) 上裝載 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/11/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 4356d986731f915c2e76a4c4863f951572820de0
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 3239b4652d739ed2ac205c9daae7754dbd8e918c
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637870"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249551"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -71,6 +71,8 @@ public static IWebHost BuildWebHost(string[] args) =>
 **同處理序主控模型**
 
 `CreateDefaultBuilder` 會呼叫 `UseIIS` 方法來啟動 [CoreCLR](/dotnet/standard/glossary#coreclr)，並在 IIS 工作者處理序 (*w3wp.exe* 或 *iisexpress.exe*) 內裝載應用程式。 效能測試指出，相較於跨處理序裝載 .NET Core 應用程式，並將要求 Proxy 處理至 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器，裝載於同處理序可提供明顯更高的要求輸送量。
+
+以 .NET Framework 為目標的 ASP.NET Core 應用程式不支援處理序內裝載模型。
 
 **跨處理序裝載模型**
 

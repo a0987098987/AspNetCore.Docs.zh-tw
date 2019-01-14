@@ -4,14 +4,14 @@ author: scottaddie
 description: 了解可用來在 ASP.NET Core 中建置 Web API 的功能，以及每個功能的使用時機。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/06/2018
+ms.date: 01/11/2019
 uid: web-api/index
-ms.openlocfilehash: 7541c4c308deaecda0bda9a9c77d9372b65a5100
-ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
+ms.openlocfilehash: a826bdecdd3a25eb23597123166695c169ba4229
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635293"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249434"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建置 Web API
 
@@ -141,7 +141,10 @@ services.AddMvc()
 
 * 系統會依據複雜類型參數推斷 **[FromBody]**。 如果是任何具有像是 <xref:Microsoft.AspNetCore.Http.IFormCollection> 與 <xref:System.Threading.CancellationToken> 等特殊意義的複雜內建類型，則為此規則的例外。 繫結來源推斷程式碼會忽略這些特殊的類型。 並不會為像是 `string` 或 `int` 等簡單型別，推斷 `[FromBody]`。 因此，當需要使用該功能時，應為簡單型別使用 `[FromBody]` 屬性。 當動作已明確指定多個參數 (透過 `[FromBody]`) 或推斷為從要求主體繫結時，會擲回例外狀況。 例如，下列動作簽章會造成例外狀況：
 
-[!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/TestController.cs?name=snippet_ActionsCausingExceptions)]
+    [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/TestController.cs?name=snippet_ActionsCausingExceptions)]
+
+    > [!NOTE]
+    > 在 ASP.NET Core 2.1 中，集合類型參數 (例如清單與陣列) 不正確地推斷為 [[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)。 [[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) 應該用於這些參數 (若它們將從要求本文繫結)。 此行為在 ASP.NET Core 2.2 或更新版本中已修復，其中集合類型參數預設推斷為從本文繫結。
 
 * 為類型 <xref:Microsoft.AspNetCore.Http.IFormFile> 與 <xref:Microsoft.AspNetCore.Http.IFormFileCollection> 的動作參數，推斷 **[FromForm]**。 而不會依據任何簡單或使用者定義的類型進行推斷。
 * 系統會依據符合路由範本參數的任何動作參數名稱，推斷 **[FromRoute]**。 如果有多個路由符合動作參數，則會將任何路由值視為 `[FromRoute]`。

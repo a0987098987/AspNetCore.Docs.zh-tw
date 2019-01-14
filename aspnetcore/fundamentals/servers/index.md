@@ -4,14 +4,14 @@ author: guardrex
 description: 探索 ASP.NET Core 的網頁伺服器 Kestrel 與 HTTP.sys。 了解如何選擇伺服器，以及何時使用反向 Proxy 伺服器。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/11/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 2c209942ed219b6d6ca309d8aba94b264d421158
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 4210d67397c85a1608f79fc4ed9d283521356226
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637738"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249486"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -48,6 +48,8 @@ ASP.NET Core 模組：
   * 載入 [CoreCLR](/dotnet/standard/glossary#coreclr)。
   * 呼叫 `Program.Main`。
 * 處理 IIS 原生要求的存留期。
+
+以 .NET Framework 為目標的 ASP.NET Core 應用程式不支援處理序內裝載模型。
 
 下圖說明 IIS、ASP.NET Core 模組和同處理序裝載應用程式之間的關聯性：
 

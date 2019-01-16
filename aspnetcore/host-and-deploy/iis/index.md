@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/11/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 3239b4652d739ed2ac205c9daae7754dbd8e918c
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: 83c084beb059d803811e9739d34bdbdd6bcff463
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249551"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341793"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -312,11 +312,6 @@ services.Configure<IISOptions>(options =>
 ## <a name="create-the-iis-site"></a>建立 IIS 網站
 
 1. 在主控系統上，請建立資料夾以容納應用程式的已發行資料夾和檔案。 應用程式的部署配置已詳述於[目錄結構](xref:host-and-deploy/directory-structure)主題。
-
-1. 在新的資料夾內，建立 *logs* 資料夾，以在啟用 stdout 記錄時保留 ASP.NET Core 模組 stdout 記錄。 如果應用程式已在承載中部署 *logs* 資料夾，請略過此步驟。 如需在於本機建置專案的情況下使 MSBuild 自動建立 *logs* 資料夾的相關指示，請參閱[目錄結構](xref:host-and-deploy/directory-structure)主題。
-
-   > [!IMPORTANT]
-   > 請只使用 stdout 記錄來對應用程式啟動失敗進行疑難排解。 請永遠不要將 stdout 記錄用於例行的應用程式記錄。 因為它並沒有記錄檔大小或數量上的限制。 應用程式集區必須具有記錄檔寫入位置的寫入權限。 所有位於記錄檔位置路徑上的資料夾都必須存在。 如需 stdout 記錄的詳細資訊，請參閱[記錄建立和重新導向](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)。 如需在 ASP.NET Core 應用程式中進行記錄的相關資訊，請參閱[記錄](xref:fundamentals/logging/index)主題。
 
 1. 在 [IIS 管理員] 中，於 [連線] 面板中開啟伺服器的節點。 以滑鼠右鍵按一下 [網站] 資料夾。 從操作功能表選取 [新增網站]。
 

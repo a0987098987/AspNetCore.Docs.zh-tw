@@ -1,28 +1,25 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
-title: 開始使用 Entity Framework 6 Code First 使用 MVC 5 |Microsoft Docs
+title: 教學課程：開始使用 Entity Framework 6 Code First 使用 MVC 5 |Microsoft Docs
+description: 在此系列教學課程中，您將了解如何建置使用 Entity Framework 6 存取資料的 ASP.NET MVC 5 應用程式。
 author: tdykstra
 ms.author: riande
-ms.date: 12/04/2018
+ms.date: 01/10/2019
+ms.topic: tutorial
 ms.assetid: 00bc8b51-32ed-4fd3-9745-be4c2a9c1eaf
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: c7ab9458f83e05af84f72d9a2519a8c1c39b84b5
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 5d524c981af2d9d8f44254c61631937e6f049cdb
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861429"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341702"
 ---
-# <a name="get-started-with-entity-framework-6-code-first-using-mvc-5"></a>開始使用 Entity Framework 6 Code First 使用 MVC 5
-
-藉由[Tom Dykstra](https://github.com/tdykstra)
-
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+# <a name="tutorial-get-started-with-entity-framework-6-code-first-using-mvc-5"></a>教學課程：開始使用 Entity Framework 6 Code First 使用 MVC 5
 
 > [!NOTE]
-> 對於新的開發，我們建議[ASP.NET Core Razor Pages](/aspnet/core/razor-pages)透過 ASP.NET MVC 控制器和檢視。 類似如下的教學課程系列可供 Razor Pages [Razor 頁面教學課程](/aspnet/core/tutorials/razor-pages/razor-pages-start):
->
+> 對於新的開發，我們建議[ASP.NET Core Razor Pages](/aspnet/core/razor-pages)透過 ASP.NET MVC 控制器和檢視。 類似如下的教學課程系列的使用 Razor 頁面，請參閱[教學課程：開始使用 ASP.NET Core 中的 Razor Pages](/aspnet/core/tutorials/razor-pages/razor-pages-start)。 新的教學課程：
 > * 比較容易學習。
 > * 提供更多 EF Core 最佳做法。
 > * 使用更有效率的查詢。
@@ -30,59 +27,45 @@ ms.locfileid: "52861429"
 > * 涵蓋更多功能。
 > * 是新應用程式開發的建議方法。
 
-> 這篇文章會示範如何建立使用 Entity Framework 6 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 本教學課程使用 Code First 的工作流程。 如需有關如何選擇 Code First、 Database First 或 Model First 的資訊，請參閱[建立模型](/ef/ef6/modeling/)。
->
-> 範例應用程式是虛構的大學，名為 Contoso 大學網站。 其中包括的功能有學生入學許可、課程建立、教師指派。 本教學課程系列會說明如何建立 Contoso 大學範例應用程式。 您可以[下載完成的應用程式](https://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)。
->
-> 由 Mike Brind 轉譯的 Visual Basic 版本位於： [EF 6，在 Visual Basic 中的 MVC 5](http://www.mikesdotnetting.com/Article/241/MVC-5-with-EF-6-in-Visual-Basic-Creating-an-Entity-Framework-Data-Model) Mikesdotnetting 站台上。
->
-> ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
->
-> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
-> - [Entity Framework 6](https://www.nuget.org/packages/EntityFramework)
-> - [Windows Azure SDK 2.2](https://go.microsoft.com/fwlink/p/?linkid=323510) （選擇性）
->
-> ## <a name="tutorial-versions"></a>教學課程的版本
->
-> 本教學課程的先前版本，請參閱[EF 4.1 / MVC 3 電子書](https://social.technet.microsoft.com/wiki/contents/articles/11608.e-book-gallery-for-microsoft-technologies.aspx#GettingStartedwiththeEntityFramework4.1usingASP.NETMVC)並[開始使用 MVC 4 的 EF 5](../../older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
->
-> ## <a name="questions-and-comments"></a>提出問題或意見
->
-> 歡迎留下意見反應，在您喜歡本教學課程，以及我們可以改善使用在頁面底部的註解。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET Entity Framework 論壇](https://forums.asp.net/1227.aspx)或是[StackOverflow.com](http://stackoverflow.com/)。
->
-> 如果您遇到您無法解決問題時，您通常可以藉由比較您的程式碼已完成的專案，您可以下載中找到問題的解決方案。 一些常見錯誤及如何解決這些問題，請參閱[常見的錯誤和解決方案或因應措施](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)。
+在此系列教學課程中，您將了解如何建置使用 Entity Framework 6 存取資料的 ASP.NET MVC 5 應用程式。 本教學課程使用 Code First 的工作流程。 如需有關如何選擇 Code First、 Database First 或 Model First 的資訊，請參閱[建立模型](/ef/ef6/modeling/)。
 
-## <a name="the-contoso-university-web-app"></a>Contoso 大學 Web 應用程式
-
-在這些教學課程中，您將建置應用程式是一個簡單的大學網站。 使用者可以檢視和更新學生、課程和教師資訊。 以下是幾個您要建立的畫面：
+本教學課程系列會說明如何建立 Contoso 大學範例應用程式。 範例應用程式是簡單的大學網站。 有了它，您可以檢視和更新學生、 課程和講師資訊。 以下是兩個您所建立的畫面：
 
 ![Students_Index_page](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image1.png)
 
 ![編輯學生](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image2.png)
 
-使本教學課程能聚焦於如何使用 Entity Framework，網站的使用者介面不會變更的內建範本所產生的內容。
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 建立 MVC web 應用程式
+> * 設定網站樣式
+> * 安裝 Entity Framework 6
+> * 建立資料模型
+> * 建立資料庫內容
+> * 初始化含有測試資料的 DB
+> * 將 EF 6 設定為使用 LocalDB
+> * 建立控制器和檢視
+> * 檢視資料庫
 
 ## <a name="prerequisites"></a>必要條件
 
-請參閱**軟體版本**頁面的頂端。 Entity Framework 6 不是必要條件，因為您安裝 EF NuGet 套件做為本教學課程的一部分。
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 
 ## <a name="create-an-mvc-web-app"></a>建立 MVC web 應用程式
 
-1. 開啟 Visual Studio，並使用下列方法建立新 C# web 專案**ASP.NET Web 應用程式 (.NET Framework)** 範本。 專案"ContosoUniversity"的名稱。
+1. 開啟 Visual Studio 並建立C#web 專案使用**ASP.NET Web 應用程式 (.NET Framework)** 範本。 將專案命名為*ContosoUniversity* ，然後選取**確定**。
 
    ![在 Visual Studio 中新增專案對話方塊](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/new-project-dialog.png)
 
-2. 在 [新增 ASP.NET 專案] 對話方塊中，選取**MVC**範本。
+1. 在 **新增 ASP.NET Web 應用程式集 ContosoUniversity**，選取**MVC**。
 
    ![新 web 應用程式 對話方塊在 Visual Studio 中](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/new-web-app-dialog.png)
 
-3. 如果**驗證**未設定為**不需要驗證**，按一下就可以將它變更它**變更驗證**。
+    > [!NOTE]
+    > 根據預設，**驗證**選項設定為**不需要驗證**。 本教學課程中，web 應用程式不需要使用者登入。 此外，它不會限制存取權依據誰登入。
 
-   在 **變更驗證**對話方塊中，選取**不需要驗證**，然後選擇  **確定**。 本教學課程中，web 應用程式不需要使用者登入，，也不會限制誰登入為基礎的存取。
-
-   ![變更 Visual Studio 中的 [驗證] 對話方塊](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/change-authentication.png)
-
-4. 在 [新增 ASP.NET 專案] 對話方塊中，按一下**確定**建立專案。
+1. 選取 [確定] 建立專案。
 
 ## <a name="set-up-the-site-style"></a>設定網站樣式
 
@@ -101,9 +84,7 @@ ms.locfileid: "52861429"
 
    [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample2.cshtml)]
 
-3. 按下**Ctrl**+**F5**執行網站。 您會看到與主功能表的 [首頁] 頁面。
-
-   ![Contoso 大學首頁](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image6.png)
+3. 按下 Ctrl + F5 來執行網站。 您會看到與主功能表的 [首頁] 頁面。
 
 ## <a name="install-entity-framework-6"></a>安裝 Entity Framework 6
 
@@ -115,17 +96,18 @@ ms.locfileid: "52861429"
    Install-Package EntityFramework
    ```
 
-   ![安裝 EF](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image7.png)
-
-   下圖顯示 6.0.0 安裝，但 NuGet 會安裝最新版的 Entity Framework （不含發行前版本），這本教學課程以最新的更新是 6.2.0。
-
 這個步驟是，本教學課程有您手動執行，但是，無法在完成自動由 ASP.NET MVC 樣板功能的幾個步驟。 您的所作所為它們以手動方式，讓您可以看到使用 Entity Framework (EF) 所需的步驟。 您將更新版本使用 scaffolding 建立 MVC 控制器和檢視。 替代方法是讓 scaffolding 自動安裝 EF NuGet 套件、 建立資料庫內容類別，以及建立連接字串。 當您準備好這麼這樣一來時，您只需要為略過這些步驟，並在您建立實體類別之後，建立 MVC 控制器的結構。
 
 ## <a name="create-the-data-model"></a>建立資料模型
 
 接下來您會為 Contoso 大學應用程式建立實體類別。 您首先要使用下列三個實體：
 
-![Class_diagram](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image8.png)
+**Course** <-> **註冊** <-> **學生**
+
+| 實體 | Relationship |
+| -------- | ------------ |
+| 課程來註冊 | 一對多 |
+| 若要註冊的學生 | 一對多 |
 
 在 `Student` 和 `Enrollment` 實體之間存在一對多關聯性，`Course` 與 `Enrollment` 實體之間也存在一對多關聯性。 換句話說，一位學生可以註冊並參加任何數目的課程，而一個課程也可以有任何數目的學生註冊。
 
@@ -136,9 +118,7 @@ ms.locfileid: "52861429"
 
 ### <a name="the-student-entity"></a>Student 實體
 
-![Student_entity](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image9.png)
-
-- 在*模型*資料夾中，建立名為的類別檔案*Student.cs*中的資料夾上按一下滑鼠右鍵**方案總管 中**，然後選擇**新增**  > **類別**。 下列程式碼取代範本程式碼：
+- 在*模型*資料夾中，建立名為的類別檔案*Student.cs*中的資料夾上按一下滑鼠右鍵**方案總管 中**，然後選擇**新增**  > **類別**。 使用下列程式碼取代範本程式碼：
 
    [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample3.cs)]
 
@@ -151,8 +131,6 @@ ms.locfileid: "52861429"
 若導覽屬性可保有多個實體 (例如在多對多或一對多關聯性中的情況)，其類型必須為一個清單，使得實體可以在該清單中新增、刪除或更新，例如 `ICollection`。
 
 ### <a name="the-enrollment-entity"></a>Enrollment 實體
-
-![Enrollment_entity](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image10.png)
 
 - 在 *Models* 資料夾中，建立 *Enrollment.cs*，然後使用下列程式碼取代現有的程式碼：
 
@@ -169,8 +147,6 @@ ms.locfileid: "52861429"
 Entity Framework 的屬性解譯為外部索引鍵屬性是否將它命名 *&lt;導覽屬性名稱&gt;&lt;主索引鍵屬性名稱&gt;* (例如`StudentID`for`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`)。 外部索引鍵屬性也可以命名相同只要 *&lt;主索引鍵屬性名稱&gt;* (例如`CourseID`因為`Course`實體的主索引鍵是`CourseID`)。
 
 ### <a name="the-course-entity"></a>Course 實體
-
-![Course_entity](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image11.png)
 
 - 在 *模型*資料夾中，建立*Course.cs*，以下列程式碼取代範本程式碼：
 
@@ -210,7 +186,7 @@ Entity Framework 的屬性解譯為外部索引鍵屬性是否將它命名 *&lt;
 
 `modelBuilder.Conventions.Remove`中的陳述式[OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx)方法會防止資料表名稱的複數化。 如果您沒有這麼做，在資料庫中產生的資料表就會命名為`Students`， `Courses`，和`Enrollments`。 相反地，資料表名稱會`Student`， `Course`，和`Enrollment`。 針對是否要複數化資料表名稱，開發人員並沒有共識。 本教學課程使用的單數形式，但很重要的一點是，您可以選取任何您想要包含或省略這行程式碼的表單。
 
-## <a name="set-up-ef-to-initialize-the-database-with-test-data"></a>初始化具有測試資料的資料庫設定 EF
+## <a name="initialize-db-with-test-data"></a>初始化含有測試資料的 DB
 
 Entity Framework 可以自動建立 （或卸除並重新建立） 為您的應用程式執行時的資料庫。 您可以指定每次執行應用程式，或此模型會與現有的資料庫同步處理時，才，應該完成這。 您也可以撰寫`Seed`方法，Entity Framework 會自動呼叫之後才能填入測試資料建立資料庫。
 
@@ -235,7 +211,7 @@ Entity Framework 可以自動建立 （或卸除並重新建立） 為您的應�
 > [!NOTE]
 > 當您部署在生產網頁伺服器應用程式時，您必須移除或停用程式碼，會卸除並重新建立資料庫。 您將在稍後的教學課程中，在這一系列來這麼做。
 
-## <a name="set-up-ef-to-use-a-sql-server-express-localdb-database"></a>設定為使用 SQL Server Express LocalDB 資料庫的 EF
+## <a name="set-up-ef-6-to-use-localdb"></a>將 EF 6 設定為使用 LocalDB
 
 [LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb?view=sql-server-2017)是輕量版的 SQL Server Express database engine。 輕鬆安裝和設定、 啟動隨選、 並以使用者模式執行。 LocalDB 以特殊的執行模式執行的 SQL Server Express，可讓您使用資料庫作為 *.mdf*檔案。 您可以將 LocalDB 資料庫檔案放在*應用程式\_資料*web 專案，如果您想要能夠將複製的資料庫專案的資料夾。 在 SQL Server Express 使用者執行個體功能也可讓您能夠使用 *.mdf*檔案，但使用者執行個體功能已被取代; 因此，建議使用的 LocalDB *.mdf*檔案。 使用 Visual Studio 預設會安裝 LocalDB。
 
@@ -249,7 +225,7 @@ Entity Framework 可以自動建立 （或卸除並重新建立） 為您的應�
 
 您實際上不需要在連接字串*Web.config*檔案。 如果您未提供的連接字串，Entity Framework 會使用預設連接字串，根據您的內容類別。 如需詳細資訊，請參閱 < [Code First 至新的資料庫](/ef/ef6/modeling/code-first/workflows/new-database)。
 
-## <a name="create-a-student-controller-and-views"></a>建立學生控制器和檢視
+## <a name="create-controller-and-views"></a>建立控制器和檢視
 
 現在您將建立顯示資料的網頁。 會自動要求資料的程序就會觸發建立的資料庫。 您一開始先建立新的控制器。 但您這麼做之前，建置專案，以供 MVC 控制器的 scaffolding 的模型和內容的類別。
 
@@ -261,11 +237,9 @@ Entity Framework 可以自動建立 （或卸除並重新建立） 為您的應�
 3. 在 [**新增控制器**] 對話方塊中，進行下列選擇，，然後選擇**新增**:
 
    - 模型類別：**學生 (ContosoUniversity.Models)**。 （如果您沒有看到此選項，在下拉式清單中的，建置專案並再試一次）。
-   - 資料內容類別： **SchoolContext (ContosoUniversity.DAL)**。
-   - 控制器名稱： **StudentController** (不 StudentsController)。
+   - 資料內容類別：**SchoolContext (ContosoUniversity.DAL)**。
+   - 控制器名稱：**StudentController** (不 StudentsController)。
    - 保留其他欄位的預設值。
-
-     ![Visual Studio 中加入控制器 對話方塊](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/add-controller.png)
 
      當您按一下 **新增**，建立框架*StudentController.cs*檔案和一組檢視 (*.cshtml*檔案)，可以使用該控制器。 未來當您建立使用 Entity Framework 的專案，您也可以利用的框架的一些額外的功能： 建立第一個模型類別，請勿建立連接字串，然後在 **新增控制器**  方塊中指定 **新的資料內容** 藉由選取 **+** 旁邊 **資料內容類別**。 框架會建立您`DbContext`類別和您的連線字串以及控制器和檢視。
 4. Visual Studio 會開啟*Controllers\StudentController.cs*檔案。 您會看到類別變數已經建立的資料庫內容物件具現化：
@@ -279,13 +253,11 @@ Entity Framework 可以自動建立 （或卸除並重新建立） 為您的應�
      *Student\Index.cshtml*檢視以表格顯示這份清單：
 
      [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample13.cshtml)]
-5. 按下**Ctrl**+**F5**執行專案。 （如果您收到 「 無法建立陰影複製 」 的錯誤時，關閉瀏覽器並再試一次）。
+5. 按 Ctrl + F5 執行專案。 （如果您收到 「 無法建立陰影複製 」 的錯誤時，關閉瀏覽器並再試一次）。
 
      按一下 **學生**索引標籤來查看測試資料，`Seed`插入的方法。 根據如何窄瀏覽器視窗是，您會看到的最上層的網址列中的學生 索引標籤連結，或您必須按一下右上角來查看連結。
 
      ![功能表按鈕](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image14.png)
-
-     ![學生 [索引] 頁面](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image15.png)
 
 ## <a name="view-the-database"></a>檢視資料庫
 
@@ -296,11 +268,8 @@ Entity Framework 可以自動建立 （或卸除並重新建立） 為您的應�
 1. 關閉瀏覽器。
 2. 在**伺服器總管**，展開**資料連接**（您可能需要先選取 [重新整理] 按鈕），展開**學校內容 (ContosoUniversity)**，然後展開**資料表**以查看新的資料庫中的資料表。
 
-    ![在 [伺服器總管] 中的資料庫資料表](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image16.png)
-
 3. 以滑鼠右鍵按一下**學生**資料表，然後按一下**顯示資料表資料**以查看所建立的資料行和資料列插入至資料表。
 
-    ![Student 資料表](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/table-data.png)
 4. 關閉**伺服器總管**連接。
 
 *ContosoUniversity1.mdf*並 *.ldf*資料庫檔案位於 *%USERPROFILE%* 資料夾。
@@ -316,15 +285,32 @@ Entity Framework 可以自動建立 （或卸除並重新建立） 為您的應�
 - 名為實體屬性`ID`或是*classname* `ID`被視為主索引鍵屬性。
 - 是否將它命名，將會解譯為外部索引鍵屬性的屬性 *&lt;導覽屬性名稱&gt;&lt;主索引鍵屬性名稱&gt;* (比方說，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`)。 外部索引鍵屬性也可以命名相同只要&lt;主索引鍵屬性名稱&gt;(例如`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
 
-您已了解可以覆寫慣例。 例如，指定資料表名稱不應該要複數化，，和更新版本，您會看到如何明確地標示為外部索引鍵屬性的屬性。 您將進一步了解慣例和如何覆寫其[建立更多複雜的資料模型](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)稍後在本系列教學課程。 如需慣例的詳細資訊，請參閱 <<c0> [ 程式碼的第一個慣例](/ef/ef6/modeling/code-first/conventions/built-in)。
+您已了解可以覆寫慣例。 例如，指定資料表名稱不應該要複數化，，和更新版本，您會看到如何明確地標示為外部索引鍵屬性的屬性。
+## <a name="additional-resources"></a>其他資源
 
-## <a name="summary"></a>總結
+如需有關 EF 6 的詳細資訊，請參閱下列文章：
 
-您已建立簡單的應用程式使用 Entity Framework 和 SQL Server Express LocalDB 來儲存及顯示資料。 在接下來您將了解如何執行基本的教學課程會建立、 讀取、 更新和刪除 (CRUD) 作業。
+* [ASP.NET 資料存取 - 建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)
 
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
+* [程式碼的第一個慣例](/ef/ef6/modeling/code-first/conventions/built-in)
 
-其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
+* [建立更複雜的資料模型](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
 
-> [!div class="step-by-step"]
-> [下一步](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 建立 MVC web 應用程式
+> * 設定網站樣式
+> * 安裝的 Entity Framework 6
+> * 建立資料模型
+> * 建立資料庫內容
+> * 初始化含有測試資料的 DB
+> * 將 EF 6 設定為使用 LocalDB
+> * 建立的控制器和檢視
+> * 檢視資料庫
+
+請前往下一篇文章，以了解如何檢閱和自訂的建立、 讀取、 更新、 刪除 (CRUD) 程式碼，在您的控制器和檢視。
+> [!div class="nextstepaction"]
+> [實作基本的 CRUD 功能](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)

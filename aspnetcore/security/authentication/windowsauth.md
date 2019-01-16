@@ -5,14 +5,14 @@ description: 了解如何在 ASP.NET Core，使用 IIS Express、 IIS 和 HTTP.s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 12/23/2018
+ms.date: 01/15/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 64178c8fce71445fc6a728a236d811484b21e3e0
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: c98bdedcf943a9057c96a8e5d62615e400074899
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099256"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341650"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
@@ -62,6 +62,8 @@ dotnet new webapp --auth Windows
 ```
 
 ---
+
+當修改現有的專案，請確認專案檔包含的套件參考[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)**或是** [Microsoft.AspNetCore.Authentication](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication/) NuGet 套件。
 
 ## <a name="enable-windows-authentication-with-iis"></a>啟用 iis 的 Windows 驗證
 

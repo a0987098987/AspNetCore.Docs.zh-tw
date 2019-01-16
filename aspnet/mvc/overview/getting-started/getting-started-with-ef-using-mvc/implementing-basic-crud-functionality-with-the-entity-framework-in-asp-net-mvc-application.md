@@ -1,40 +1,49 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
-title: 在 ASP.NET MVC 應用程式中實作 Entity framework 的基本 CRUD 功能 |Microsoft Docs
+title: 教學課程：在 ASP.NET MVC 中實作 Entity framework 的 CRUD 功能 |Microsoft Docs
+description: 檢閱並自訂建立、 讀取、 更新、 刪除 (CRUD) 程式碼，在控制器和檢視中自動建立的 MVC scaffolding。
 author: tdykstra
-description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式...
 ms.author: riande
-ms.date: 10/05/2015
+ms.date: 01/11/2019
+ms.topic: tutorial
 ms.assetid: a2f70ba4-83d1-4002-9255-24732726c4f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 08b5d38b38d3323e347f0f849ccc0c25fe49efb9
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 9c6f8f3a2ffc0a9c5e15111ae47c331dab24ff43
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912652"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341716"
 ---
-<a name="implementing-basic-crud-functionality-with-the-entity-framework-in-aspnet-mvc-application"></a>在 ASP.NET MVC 應用程式中實作 Entity framework 的基本 CRUD 功能
-====================
-藉由[Tom Dykstra](https://github.com/tdykstra)
+# <a name="tutorial-implement-crud-functionality-with-the-entity-framework-in-aspnet-mvc"></a>教學課程：在 ASP.NET MVC 中實作 Entity framework 的 CRUD 功能
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
-
-在前一個教學課程中，您建立了一個使用 Entity Framework 及 SQL Server LocalDB 來儲存及顯示資料的 MVC 應用程式。 在本教學課程中，您將檢閱並自訂建立、 讀取、 更新、 刪除 (CRUD) MVC scaffolding 自動為您建立控制器和檢視表中的程式碼。
+在 [先前的教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)，建立 MVC 應用程式來儲存和使用 SQL Server LocalDB 與 Entity Framework (EF) 6 顯示資料。 在本教學課程中，您檢閱和自訂的建立、 讀取、 更新、 刪除 (CRUD) MVC scaffolding 自動為您建立控制器和檢視表中的程式碼。
 
 > [!NOTE]
-> 實作儲存機制模式，以在您的控制器及資料存取層之間建立抽象層是一種非常常見的做法。 為了使這些教學課程維持簡單，並聚焦於教導如何使用 Entity Framework，課程中將不會使用儲存機制。 如需如何實作存放庫資訊，請參閱[ASP.NET 資料存取內容對應](../../../../whitepapers/aspnet-data-access-content-map.md)。
+> 實作儲存機制模式，以在您的控制器及資料存取層之間建立抽象層是一種非常常見的做法。 若要簡單並聚焦於教導如何使用 EF 6 本身，請保留這些教學課程中，它們不使用存放庫。 如需如何實作存放庫資訊，請參閱[ASP.NET 資料存取內容對應](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
-在本教學課程中，您將建立下列網頁：
+以下是您所建立之 web 網頁的範例：
 
-![Student_Details_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image1.png)
+![Student [詳細資料] 頁面的螢幕擷取畫面。](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image1.png)
 
-![Student_Edit_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image2.png)
+![學生的螢幕擷取畫面中建立頁面。](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image2.png)
 
-![Student_delete_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image3.png)
+![螢幕擷取畫面至學生刪除頁面。](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image3.png)
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 建立詳細資料頁面
+> * 更新 [建立] 頁面
+> * 更新的 HttpPost Edit 方法
+> * 更新 [刪除] 頁面
+> * 關閉資料庫連接
+> * 處理交易
+
+## <a name="prerequisites"></a>必要條件
+
+* [建立 Entity Framework 資料模型](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
 
 ## <a name="create-a-details-page"></a>建立詳細資料頁面
 
@@ -46,7 +55,7 @@ Scaffold 的程式碼，讓學生`Index`向左翻頁`Enrollments`屬性，因為
 
 索引鍵的值會傳遞給方法的`id`參數，來自*將資料路由傳送*中**詳細資料**索引 頁面上的超連結。
 
-### <a name="tip-route-data"></a>提示：**將資料路由傳送**
+### <a name="tip-route-data"></a>提示：**路由資料**
 
 路由資料是在路由表中指定的 URL 區段中找到的模型繫結的資料。 例如，指定預設路由`controller`， `action`，和`id`區段：
 
@@ -86,9 +95,7 @@ Url 藉由`ActionLink`Razor 檢視中的陳述式。 下列程式碼中，`id`�
 
 3. 開啟 [詳細資料] 頁面來啟動程式 (**Ctrl**+**F5**)，並選取**學生**] 索引標籤，然後按一下 [ **的詳細資料** Alexander Carson 的連結。 (如果您按下**Ctrl**+**F5**雖然*Details.cshtml*檔案開啟，您會收到 HTTP 400 錯誤。 這是因為 Visual Studio 會嘗試執行詳細資料 頁面中，但它沒有達到從指定的學生，若要顯示的連結。 如果發生這種情況，移除 URL 中的 [Student/詳細資料] 並再試一次，或者，關閉瀏覽器，以滑鼠右鍵按一下專案，然後按一下**檢視** > **瀏覽器中的檢視**。)
 
-    您會看到選取學生的課程及成績清單：
-
-    ![Student_Details_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image4.png)
+    您會看到所選學生的課程及成績清單。
 
 4. 關閉瀏覽器。
 
@@ -136,19 +143,15 @@ Url 藉由`ActionLink`Razor 檢視中的陳述式。 下列程式碼中，`id`�
 
 3. 輸入名稱和無效的日期，然後按一下**建立**以查看錯誤訊息。
 
-    ![Students_Create_page_error_message](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image6.png)
-
     這是您取得預設的伺服器端驗證。 在稍後的教學課程中，您會看到如何將產生的用戶端驗證的程式碼的屬性。 下列醒目提示的程式碼顯示中的模型驗證檢查**建立**方法。
 
     [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample10.cs?highlight=1)]
 
 4. 將日期變更為有效的值，然後按一下 [建立] 來在 [索引] 頁面上查看新增的學生。
 
-    ![Students_Index_page_with_new_student](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image7.png)
-
 5. 關閉瀏覽器。
 
-## <a name="update-the-edit-httppost-method"></a>更新編輯 HttpPost 方法
+## <a name="update-httppost-edit-method"></a>更新 HttpPost Edit 方法
 
 1. 取代<xref:System.Web.Mvc.HttpPostAttribute>`Edit`動作方法，以下列程式碼：
 
@@ -189,11 +192,7 @@ Url 藉由`ActionLink`Razor 檢視中的陳述式。 下列程式碼中，`id`�
 
 2. 執行頁面，來啟動程式中，選取**學生** 索引標籤，然後按一下**編輯**超連結。
 
-   ![Student_Edit_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image8.png)
-
 3. 變更一部分的資料，然後按一下 [儲存]。 您會看到 [索引] 頁面中變更的資料。
-
-   ![Students_Index_page_after_edit](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image9.png)
 
 4. 關閉瀏覽器。
 
@@ -229,9 +228,7 @@ Url 藉由`ActionLink`Razor 檢視中的陳述式。 下列程式碼中，`id`�
 
     [!code-cshtml[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample15.cshtml?highlight=2)]
 
-4. 執行頁面，來啟動程式中，選取**學生** 索引標籤，然後按一下**刪除**超連結：
-
-    ![Student_Delete_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image10.png)
+4. 執行頁面，來啟動程式中，選取**學生** 索引標籤，然後按一下**刪除**超連結。
 
 5. 選擇**刪除**頁面上所顯示**確定您想要刪除此項目嗎？**。
 
@@ -249,16 +246,24 @@ Url 藉由`ActionLink`Razor 檢視中的陳述式。 下列程式碼中，`id`�
 
 根據預設，Entity Framework 隱含性的實作了交易。 在案例中，您對多個資料列或資料表的變更，然後呼叫`SaveChanges`，Entity Framework 會自動可確保，所有變更的成功或全部失敗。 若有些變更已先完成，之後卻發生錯誤，則這些變更都會自動進行復原。 其中您需要更多控制的案例&mdash;比方說，如果您想要包含在交易中，Entity Framework 之外完成的作業&mdash;請參閱[使用交易](/ef/ef6/saving/transactions)。
 
-## <a name="summary"></a>總結
+## <a name="additional-resources"></a>其他資源
 
-您現在有一組完整的頁面，執行簡單的 CRUD 作業，如`Student`實體。 您可以用於 MVC 協助程式產生的資料欄位 UI 元素。 如需有關 MVC 協助程式的詳細資訊，請參閱[轉譯表單使用 HTML 協助程式](/previous-versions/aspnet/dd410596(v=vs.98))（發行項是為 MVC 3 但仍與 MVC 5）。
+您現在有一組完整的頁面，執行簡單的 CRUD 作業，如`Student`實體。 您可以用於 MVC 協助程式產生的資料欄位 UI 元素。 如需 MVC 協助程式的詳細資訊，請參閱[轉譯表單使用 HTML 協助程式](/previous-versions/aspnet/dd410596(v=vs.98))（發行項是為 MVC 3 但仍與 MVC 5）。
 
-在下一個教學課程中，您將會展開的 [索引] 頁面的功能，加上排序和分頁。
+其他的 EF 6 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
+## <a name="next-steps"></a>後續步驟
 
-其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
+在本教學課程中，您已：
 
-> [!div class="step-by-step"]
-> [上一頁](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
-> [下一頁](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [!div class="checklist"]
+> * 建立詳細資料頁面
+> * 更新 [建立] 頁面
+> * 更新的 HttpPost Edit 方法
+> * 更新 [刪除] 頁面
+> * 關閉的資料庫連接
+> * 處理的交易
+
+請前往下一篇文章，以了解如何新增排序、 篩選和分頁至專案。
+> [!div class="nextstepaction"]
+> [排序、篩選與分頁](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)

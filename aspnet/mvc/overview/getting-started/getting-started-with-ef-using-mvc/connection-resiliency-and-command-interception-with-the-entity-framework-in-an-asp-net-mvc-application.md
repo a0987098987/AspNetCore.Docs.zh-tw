@@ -1,33 +1,39 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
-title: 連線恢復功能和命令攔截與 ASP.NET MVC 應用程式中的 Entity Framework |Microsoft Docs
+title: 教學課程：ASP.NET MVC 應用程式中使用 EF 的連線恢復功能和命令攔截
 author: tdykstra
-description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式...
+description: 在本教學課程中，您將了解如何使用連線恢復功能和命令攔截。 也就是 Entity Framework 6 的兩個重要的功能。
 ms.author: riande
-ms.date: 01/13/2015
+ms.date: 01/14/2018
+ms.topic: tutorial
 ms.assetid: c89d809f-6c65-4425-a3fa-c9f6e8ac89f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: ab6a553100d704746840eaad512ec140d4576c44
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: fae5c7e1ad1000ed90630c3620b853de3a735d60
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911782"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341720"
 ---
-<a name="connection-resiliency-and-command-interception-with-the-entity-framework-in-an-aspnet-mvc-application"></a>連線恢復功能和命令攔截與 Entity Framework 中的 ASP.NET MVC 應用程式
-====================
-藉由[Tom Dykstra](https://github.com/tdykstra)
-
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+# <a name="tutorial-use-connection-resiliency-and-command-interception-with-entity-framework-in-an-aspnet-mvc-app"></a>教學課程：在 ASP.NET MVC 應用程式中使用 Entity Framework 連接恢復功能和命令攔截
 
 到目前為止應用程式具有已在本機執行 IIS Express 中的開發電腦上。 若要讓實際的應用程式供其他人透過網際網路使用，您必須將它部署至 web 主控提供者，，您必須將資料庫部署到資料庫伺服器。
 
-在本教學課程中，您將學習如何使用 Entity Framework 6 的兩個您要部署到雲端環境時，會特別有價值的功能： 連接恢復功能 （自動重試的暫時性錯誤） 和命令攔截 （擷取所有 SQL 查詢傳送至資料庫，以記錄或進行變更。）
+在本教學課程中，您將了解如何使用連線恢復功能和命令攔截。 它們是兩個重要功能的 Entity Framework 6，您要部署到雲端環境時，會特別有用： 連線恢復功能 （自動重試的暫時性錯誤） 和命令攔截 （捕捉所有的 SQL 查詢傳送至資料庫若要記錄或加以變更。）
 
 此連接恢復功能和命令攔截教學課程是選擇性的。 如果您略過本教學課程中，必須要在後續的教學課程中進行一些微幅調整。
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 啟用連線恢復功能
+> * 啟用命令攔截
+> * 測試新的組態
+
+## <a name="prerequisites"></a>必要條件
+
+* [排序、篩選與分頁](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
 ## <a name="enable-connection-resiliency"></a>啟用連線恢復功能
 
@@ -48,7 +54,7 @@ ms.locfileid: "48911782"
 您只需要進行連接復原是衍生自組件中建立的類別[DbConfiguration](https://msdn.microsoft.com/data/jj680699.aspx)類別，並在該類別中設定 SQL Database*執行策略*，在 EF 中是另一種說法*重試原則*。
 
 1. 在 DAL 資料夾中，新增名為的類別檔案*SchoolConfiguration.cs*。
-2. 下列程式碼取代範本程式碼：
+2. 使用下列程式碼取代範本程式碼：
 
     [!code-csharp[Main](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
@@ -135,7 +141,7 @@ A[記錄的最佳做法](../../../../aspnet/overview/developing-apps-with-window
 
     您已撰寫的暫時性錯誤模擬程式碼可讓您在 UI 中輸入不同的值而造成暫時性錯誤的方式。 或者，您可以撰寫一律產生暫時性例外狀況的序列，而不檢查特定的參數值的攔截器程式碼。 只有在您想要產生暫時性錯誤時，您接著可以增加攔截器。 如果您這麼做，不過，不加入的攔截器，直到資料庫初始化完成之後。 換句話說，才能開始產生暫時性錯誤時，才能執行其中一個實體集上的至少一個資料庫作業等查詢。 Entity Framework 資料庫初始化期間執行數個查詢，並不在交易中中, 執行，因此在初始化期間的錯誤可能會導致要進入不一致狀態的內容。
 
-## <a name="test-logging-and-connection-resiliency"></a>測試記錄和連線恢復功能
+## <a name="test-the-new-configuration"></a>測試新的組態
 
 1. 按下**F5**以執行應用程式在偵錯模式中，然後按一下**學生** 索引標籤。
 2. 看看 Visual Studio**輸出**視窗來查看追蹤輸出。 您可能必須向上捲動過去以前往您記錄器所寫入的記錄某些 JavaScript 錯誤。
@@ -167,14 +173,19 @@ A[記錄的最佳做法](../../../../aspnet/overview/developing-apps-with-window
     ![空的例外狀況](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 5. 取消註解*SetExecutionStrategy*一行*SchoolConfiguration.cs*。
 
-## <a name="summary"></a>總結
-
-在本教學課程中，您已了解如何啟用連線恢復功能，並記錄 Entity Framework 撰寫，並傳送至資料庫的 SQL 命令。 在下一個教學課程中，您會將部署到網際網路，將資料庫部署中使用 Code First 移轉應用程式。
-
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
+## <a name="additional-resources"></a>其他資源
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
-> [!div class="step-by-step"]
-> [上一頁](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [下一頁](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 已啟用的連線恢復功能
+> * 啟用的命令攔截
+> * 測試新的組態
+
+請前往下一篇文章，以了解 Code First 移轉和 Azure 部署。
+> [!div class="nextstepaction"]
+> [Code First 移轉和 Azure 部署](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)

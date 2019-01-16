@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何使用選項模式來代表 ASP.NET Core 應用程式中的一組相關設定。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/28/2018
+ms.date: 12/29/2018
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 0e3784de18be16e3217a015dd94f1b43b6621c1c
-ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
+ms.openlocfilehash: 20365a078327d76693a40fa79a4a594e29e0901c
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53577886"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099243"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -217,7 +217,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions`1> 的具名選項支援是以範例應用程式中的範例 &num;6 來示範。
 
-「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，具名選項是以 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*> 宣告的。 `Configure` 會呼叫擴充方法 <xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*> 方法：
+「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，會使用 [OptionsServiceCollectionExtensions.Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*) 來宣告具名選項，而前者又會呼叫 [ConfigureNamedOptions\<TOptions>.Configure](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*) 擴充方法：
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 

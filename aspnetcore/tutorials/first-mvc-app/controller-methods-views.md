@@ -5,18 +5,18 @@ description: 了解如何在 ASP.NET Core 中使用控制器方法、檢視和 D
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: e6bdaec6dfe681582a54bd39ce1c76bebe6f5fb2
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: cd1b0f2ccffaa660f137b8d739933e56018f2702
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997249"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249408"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>ASP.NET Core 中的控制器方法和檢視
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-剛開始使用此電影應用程式還不錯，但其呈現效果卻不理想。 我們不想看到時間 (下圖的 12:00:00 AM)，而且 **ReleaseDate** 應該是兩個分開的字。
+此電影應用程式有個不錯的開始，但呈現效果不盡理想，例如 **ReleaseDate** 應該是兩個字。
 
 ![Index 檢視：Release Date (發行日期) 是一個字 (不含空格)，且每個電影的發行日期均顯示 12 AM 的時間](working-with-sql/_static/m55.png)
 

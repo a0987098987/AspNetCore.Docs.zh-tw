@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 12/4/2018
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: acfc446732803c67714943fe3e5b7a31055ebcd7
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 2b68523ac84596bda2914d9c348ddea8c7ea9465
+ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862001"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54207378"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Scaffold Razor 頁面
 
@@ -57,6 +57,12 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 
 `@model` 指示詞會指定傳遞至 Razor 頁面的模型類型。 在上述範例中，`@model` 行可讓 `PageModel` 衍生的類別供 Razor 頁面使用。 此模型用於頁面上的 `@Html.DisplayNameFor` 和 `@Html.DisplayFor` [HTML 協助程式](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers)。
+
+### <a name="the-layout-page"></a>版面配置頁
+
+選取功能表連結 (**RazorPagesMovie**、**Home** 及 **Privacy**)。 每個頁面會顯示相同的功能表配置。 功能表配置會在 *Pages/Shared/_Layout.cshtml* 檔案中實作。 開啟 *Pages/Shared/_Layout.cshtml* 檔案。
+
+[版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是一個「包裝」在版面配置頁中的預留位置，可供顯示您建立的所有頁面特定檢視。 例如，如果您選取 [Privacy] 連結，就會在 `RenderBody` 方法內呈現 **Pages/Privacy.cshtml** 檢視。
 
 <a name="vd"></a>
 ### <a name="viewdata-and-layout"></a>ViewData 和 Layout

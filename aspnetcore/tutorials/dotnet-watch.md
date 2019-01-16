@@ -5,12 +5,12 @@ description: 本教學課程會示範如何在 ASP.NET Core 應用程式中安�
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: fc08efa433f688a0b9009aed35fdee2b0c228619
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: f1e0d91b27df4af7cbfb6f2547c94c0370c65d0d
+ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063295"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54207498"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>使用檔案監看員開發 ASP.NET Core 應用程式
 
@@ -20,7 +20,7 @@ ms.locfileid: "39063295"
 
 本教學課程使用現有的 Web API 與兩個端點：一個傳回加總，另一個傳回產品。 本教學課程已修正產品方法的 Bug。
 
-下載[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)。 它包含兩個專案：*WebApp* (ASP.NET Core Web API) 和 *WebAppTests* (Web API 的單元測試)。
+下載[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)。 這是由二個專案所組成：*WebApp* (ASP.NET Core Web API) 和 *WebAppTests* (Web API 的單元測試)。
 
 在命令殼層中，巡覽至 *WebApp* 資料夾。 執行下列命令：
 
@@ -66,7 +66,7 @@ Application started. Press Ctrl+C to shut down.
 
 ## <a name="run-net-core-cli-commands-using-dotnet-watch"></a>使用 `dotnet watch` 執行 .NET Core CLI 命令
 
-任何 [.NET Core CLI 命令](/dotnet/core/tools#cli-commands)都可以使用 `dotnet watch` 執行。 例如: 
+任何 [.NET Core CLI 命令](/dotnet/core/tools#cli-commands)都可以使用 `dotnet watch` 執行。 例如：
 
 | 命令 | 使用監看式的命令 |
 | ---- | ----- |
@@ -179,4 +179,4 @@ dotnet watch msbuild /t:Test
 
 ## <a name="dotnet-watch-in-github"></a>GitHub 中的 `dotnet-watch`
 
-`dotnet-watch` 為 GitHub [DotNetTools 存放庫](https://github.com/aspnet/DotNetTools/tree/master/src/dotnet-watch) 的一部分。
+`dotnet-watch` 是 GitHub [aspnet/AspNetCore 存放庫](https://github.com/aspnet/AspNetCore/tree/master/src/Tools/dotnet-watch)的一部分。

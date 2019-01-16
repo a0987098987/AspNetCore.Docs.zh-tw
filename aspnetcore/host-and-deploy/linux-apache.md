@@ -6,12 +6,12 @@ ms.author: spboyer
 ms.custom: mvc
 ms.date: 12/20/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 8c590743328885336498ca2446c618b13a7d2ce2
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: 217dc840748ef33173ae6a8c001aee558864ec59
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997223"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099405"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -324,15 +324,15 @@ icmp-blocks:
 rich rules: 
 ```
 
-### <a name="ssl-configuration"></a>SSL 組態
+### <a name="https-configuration"></a>HTTPS 設定
 
-為了設定適用於 SSL 的 Apache，會使用 *mod_ssl* 模組。 安裝 *httpd* 模組時，已一併安裝 *mod_ssl* 模組。 如果未安裝該模組，請使用 `yum` 將它新增到設定中。
+為了設定適用於 HTTPS 的 Apache，會使用 *mod_ssl* 模組。 安裝 *httpd* 模組時，已一併安裝 *mod_ssl* 模組。 如果未安裝該模組，請使用 `yum` 將它新增到設定中。
 
 ```bash
 sudo yum install mod_ssl
 ```
 
-若要強制執行 SSL，請安裝 `mod_rewrite` 模組來啟用 URL 重寫：
+若要強制執行 HTTPS，請安裝 `mod_rewrite` 模組來啟用 URL 重寫：
 
 ```bash
 sudo yum install mod_rewrite

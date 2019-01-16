@@ -5,12 +5,12 @@ description: 將檢視新增至簡易的 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 03/04/2017
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 5267e5a49bb6ecdd4cef671989f111eae7a64ec4
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: 321ffd6b0168d4befc950a58035d19561e879491
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53381812"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249447"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
 
@@ -24,7 +24,7 @@ ms.locfileid: "53381812"
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-上述程式碼會傳回 `View` 物件。 它使用檢視範本來產生對瀏覽器的 HTML 回應。 如上述 `Index` 方法等控制器方法 (也稱為動作方法)，通常會傳回 [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult) (或衍生自 `ActionResult` 的類別)，而不是如字串等類型。
+上述程式碼會呼叫控制器的 <xref:Microsoft.AspNetCore.Mvc.Controller.View*> 方法。 它使用檢視範本來產生 HTML 回應。 上述 `Index` 方法等控制器方法 (也稱為「動作方法」) 通常會傳回 <xref:Microsoft.AspNetCore.Mvc.IActionResult> (或衍生自 <xref:Microsoft.AspNetCore.Mvc.ActionResult> 的類別)，而不會傳回像是 `string` 的類型。
 
 ## <a name="add-a-view"></a>新增檢視
 
@@ -86,9 +86,9 @@ ms.locfileid: "53381812"
 
 [版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是顯示您建立之所有檢視特定頁面的預留位置，「包裝」在版面配置頁中。 例如，如果您選取 **Privacy** 連結，**Views/Home/Privacy.cshtml** 檢視就會呈現在 `RenderBody` 方法內。
 
-## <a name="change-the-title-and-menu-link-in-the-layout-file"></a>變更配置檔案中的標題和功能表連結
+## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>變更配置檔案中的標題、頁尾及功能表連結
 
-* 在標題項目中將 `MvcMovie` 變更成 `Movie App`。
+* 在 title 和 footer 元素中，將 `MvcMovie` 變更為 `Movie App`。
 * 將錨點元素 `<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MvcMovie</a>` 變更為 `<a class="navbar-brand" asp-controller="Movies" asp-action="Index">Movie App</a>`。
 
 下列標記顯示醒目提示的變更：

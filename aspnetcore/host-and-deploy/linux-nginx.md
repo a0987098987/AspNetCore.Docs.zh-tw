@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/20/2018
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 534c62c127e685af9c6076932943def25bd3ac06
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: 24973e7bedcb219ac411948db8aa27d7219eac31
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997327"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099282"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -68,7 +68,7 @@ dotnet publish --configuration Release
 
 ### <a name="use-a-reverse-proxy-server"></a>使用反向 Proxy 伺服器
 
-Kestrel 非常適用於從 ASP.NET Core 提供動態內容。 不過，Web 服務功能不像 IIS、Apache 或 Nginx 這類伺服器那樣豐富。 反向 Proxy 伺服器可以讓 HTTP 伺服器卸下提供靜態內容、快取要求、壓縮要求及終止 SSL 等工作的負擔。 反向 Proxy 伺服器可能位在專用電腦上，或可能與 HTTP 伺服器一起部署。
+Kestrel 非常適用於從 ASP.NET Core 提供動態內容。 不過，Web 服務功能不像 IIS、Apache 或 Nginx 這類伺服器那樣豐富。 反向 Proxy 伺服器可以讓 HTTP 伺服器卸下提供靜態內容、快取要求、壓縮要求及終止 HTTPS 等工作的負擔。 反向 Proxy 伺服器可能位在專用電腦上，或可能與 HTTP 伺服器一起部署。
 
 為達到本指南的目的，使用 Nginx 的單一執行個體。 它會在相同的伺服器上和 HTTP 伺服器一起執行。 您可以根據需求，選擇不同的設定。
 
@@ -349,7 +349,7 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 設定伺服器的其他所需模組。 請考慮使用 [ModSecurity](https://www.modsecurity.org/) 等 Web 應用程式防火牆來強化應用程式。
 
-#### <a name="configure-ssl"></a>設定 SSL
+#### <a name="https-configuration"></a>HTTPS 設定
 
 * 藉由指定由受信任憑證授權單位 (CA) 核發的有效憑證，將伺服器設定成在連接埠 `443` 上接聽 HTTPS 流量。
 
@@ -357,7 +357,7 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 * 新增 `HTTP Strict-Transport-Security` (HSTS) 標頭可確保用戶端提出的所有後續要求都會透過 HTTPS。
 
-* 如果未來將會停用 SSL，請不要新增 HSTS 標頭或選擇適當的 `max-age`。
+* 如果未來將會停用 HTTPS，請不要新增 HSTS 標頭，或是選擇適當的 `max-age`。
 
 新增 */etc/nginx/Proxy.conf* 組態檔：
 

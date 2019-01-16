@@ -4,14 +4,14 @@ author: tdykstra
 description: 了解 ASP.NET Core MVC 中的模型驗證。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/06/2018
+ms.date: 01/04/2019
 uid: mvc/models/validation
-ms.openlocfilehash: f1757f807e50019e5071abc42ec3129935ab77aa
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: f3a34972006b5fdee307c9a8d9989b2cc1e36893
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225456"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099379"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證
 
@@ -44,23 +44,23 @@ public string MyProperty { get; set; }
 
 只要透過模型讀取就會顯示此應用程式資料的相關規則，因此更容易維護程式碼。 以下是幾個常用的內建驗證屬性：
 
-* `[CreditCard]`：驗證屬性具有信用卡格式。
+* `[CreditCard]`：驗證屬性是否具有信用卡格式。
 
 * `[Compare]`：驗證模型比對中的兩個屬性。
 
-* `[EmailAddress]`：驗證屬性具有電子郵件格式。
+* `[EmailAddress]`：驗證屬性是否具有電子郵件格式。
 
-* `[Phone]`：驗證屬性具有電話格式。
+* `[Phone]`：驗證屬性是否具有電話格式。
 
-* `[Range]`：驗證屬性值落在指定範圍內。
+* `[Range]`：驗證屬性值是否落在指定的範圍內。
 
-* `[RegularExpression]`：驗證資料符合指定的規則運算式。
+* `[RegularExpression]`：驗證資料是否符合指定的規則運算式。
 
-* `[Required]`：讓屬性成為必要。
+* `[Required]`：將屬性設定為必要。
 
-* `[StringLength]`：驗證字串屬性的長度不超過指定的上限。
+* `[StringLength]`：驗證字串屬性的長度是否不超過指定的上限。
 
-* `[Url]`：驗證屬性具有 URL 格式。
+* `[Url]`：驗證屬性是否具有 URL 格式。
 
 MVC 支援將任何衍生自 `ValidationAttribute` 的屬性用於驗證。 您可以在 [System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) 命名空間中找到許多實用的驗證屬性。
 
@@ -84,7 +84,7 @@ MVC 支援將任何衍生自 `ValidationAttribute` 的屬性用於驗證。 您�
 
 MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200 個)。 您可以在 `Startup.ConfigureServices` 中使用下列程式碼來設定此數目：
 
-[!code-csharp[](validation/sample/Startup.cs?range=27)]
+[!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors)]
 
 ## <a name="handle-model-state-errors"></a>處理模型狀態錯誤
 

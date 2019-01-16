@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 481e3810f1e1aca40e0ee1ce3da6c67dc9d841f4
-ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
+ms.openlocfilehash: 892fb8898c78a1645c766544715a8256462207c6
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53425103"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249382"
 ---
 # <a name="use-web-api-conventions"></a>使用 Web API 慣例
 
@@ -49,6 +49,8 @@ ASP.NET Core MVC 2.2 和更新版本在 `Microsoft.AspNetCore.Mvc.DefaultApiConv
     [ProducesResponseType(404)]
     [ProducesResponseType(400)]
     ```
+
+如需有關 `[ProducesDefaultResponseType]`,的詳細資訊，請參閱[預設回應](https://swagger.io/docs/specification/describing-responses/#default) \(英文\)。
 
 1. 套用到控制器的 `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` &mdash; 會將指定的慣例類型套用至控制器上的所有動作。 慣例方法由提示所裝飾，且該提示會決定要套用慣例方法的動作。 如需提示的詳細資訊，請參閱[建立 Web API 慣例](#create-web-api-conventions)。
 

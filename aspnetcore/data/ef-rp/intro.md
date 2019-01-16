@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: seodec18
 ms.date: 11/22/2018
 uid: data/ef-rp/intro
-ms.openlocfilehash: b66d20a46b29b6975512026fa940f7f9e50deeb5
-ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
+ms.openlocfilehash: 868163ed621ef9818759efd72ed3d233dc958219
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53425129"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249499"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -261,6 +261,8 @@ EF Core 會建立空白資料庫。 在本節中，會寫入 `Initialize` 方法
 在 *Data* 資料夾中，建立名為 *DbInitializer.cs* 的新類別檔案並新增下列程式碼：
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Intro)]
+
+注意：上述程式碼針對命名空間 (`namespace ContosoUniversity.Models`) 使用 `Models`，而不是使用 `Data`。 `Models` 與產生框架的程式碼一致。 如需詳細資訊，請參閱[此 GitHub Scaffolding 問題](https://github.com/aspnet/Scaffolding/issues/822)。
 
 程式碼會檢查資料庫中是否有任何學生。 如果資料庫中沒有學生，則會使用測試資料初始化資料庫。 它會將測試資料載入陣列之中，而非 `List<T>` 集合，以最佳化效能。
 

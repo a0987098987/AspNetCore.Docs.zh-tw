@@ -1,6 +1,14 @@
+---
+ms.openlocfilehash: a3ac1ac389892681e8c122d569e6325353ed6e88
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341676"
+---
 # [ASP.NET Core 文件](/aspnet/#pivot=core)
 
-# 概觀
+# 總覽
 ## [關於 ASP.NET Core](xref:index)
 ## [比較 ASP.NET Core 與 ASP.NET](xref:fundamentals/choose-between-aspnet-and-aspnetcore)
 ## [比較 .NET Core 與 .NET Framework](/dotnet/articles/standard/choosing-core-framework-server)
@@ -251,7 +259,9 @@
 ### [使用 CLI 工具發佈](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 ### [使用 Visual Studio 及 Git 發佈](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
 ### [使用 Azure Pipelines 的持續部署](/azure/devops/pipelines/get-started-yaml)
-### [針對啟動錯誤進行疑難排解](xref:host-and-deploy/azure-apps/troubleshoot)
+### [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)
+### [疑難排解](xref:host-and-deploy/azure-apps/troubleshoot)
+### [錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)
 ## DevOps 
 ### [概觀](xref:azure/devops/index)
 ### [工具及下載](xref:azure/devops/tools-and-downloads)
@@ -261,10 +271,11 @@
 ### [後續步驟](xref:azure/devops/next-steps)
 ## 裝載於使用 IIS 的 Windows
 ### [概觀](xref:host-and-deploy/iis/index)
-### [針對 IIS 進行疑難排解](xref:host-and-deploy/iis/troubleshoot)
 ### [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)
 ### [Visual Studio 中的 IIS 支援](xref:host-and-deploy/iis/development-time-iis-support)
 ### [IIS 模組](xref:host-and-deploy/iis/modules)
+### [疑難排解](xref:host-and-deploy/iis/troubleshoot)
+### [錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)
 ## [Kestrel](xref:fundamentals/servers/kestrel)
 ## [HTTP.sys](xref:fundamentals/servers/httpsys)
 ## [Windows 服務中的主機](xref:host-and-deploy/windows-service)
@@ -279,7 +290,6 @@
 ## [裝載於 Web 伺服陣列](xref:host-and-deploy/web-farm)
 ## [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)
 ## [目錄結構](xref:host-and-deploy/directory-structure)
-## [Azure App Service 及 IIS 的錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)
 ## [健康狀態檢查](xref:host-and-deploy/health-checks)
 
 # 安全性及身分識別
@@ -420,6 +430,6 @@
 ### [HTTP 模組到中介軟體](xref:migration/http-modules)
 ## [記錄 (非 ASP.NET Core)](xref:migration/logging-nonaspnetcore)
 
-# [API 參考](/dotnet/api/?view=aspnetcore-2.2)
+# [API 參考](/dotnet/api/?view=aspnetcore-2.1)
 
 # [參與](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md)

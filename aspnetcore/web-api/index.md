@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/11/2019
 uid: web-api/index
-ms.openlocfilehash: a826bdecdd3a25eb23597123166695c169ba4229
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: 8ba20c51f38a43adca4133a402c6d741379a4c54
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249434"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341608"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建置 Web API
 
@@ -133,7 +133,9 @@ services.AddMvc()
 > [!WARNING]
 > 當值可能包含 `%2f` (也就是 `/`) 時，請勿使用 `[FromRoute]`。 `%2f` 不會是未逸出的 `/`。 如果值可能包含 `%2f`，請使用 `[FromQuery]`。
 
-不含 `[ApiController]` 屬性時，即會明確定義繫結來源屬性。 在下列範例中，`[FromQuery]` 屬性表示 `discontinuedOnly` 參數值是在要求 URL 查詢字串中提供：
+不含 `[ApiController]` 屬性時，即會明確定義繫結來源屬性。 若沒有 `[ApiController]` 或其他繫結來源屬性 (例如 `[FromQuery]`)，ASP.NET Core 執行階段會嘗試使用複雜物件模型繫結器。 複雜物件模型繫結器會從值提供者 (具有已定義的順序) 提取資料。 例如，「主體模型繫結器」一律是選擇加入的。
+
+在下列範例中，`[FromQuery]` 屬性表示 `discontinuedOnly` 參數值是在要求 URL 查詢字串中提供：
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_BindingSourceAttributes&highlight=3)]
 
@@ -245,3 +247,4 @@ services.AddMvc()
 * <xref:web-api/advanced/formatting>
 * <xref:tutorials/web-api-help-pages-using-swagger>
 * <xref:mvc/controllers/routing>
+****

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 取得 ASP.NET Core 的簡介，ASP.NET Core 是一種跨平台且高效能的開放原始碼架構，用於建置現代化、雲端式、網際網路連線的應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/16/2018
+ms.date: 01/15/2019
 uid: index
-ms.openlocfilehash: fed81090f123084f3f33e75f86d09f55ac7fb481
-ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
+ms.openlocfilehash: e7c81ff82e5206a5aca217417f6cb1c339d72e89
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335295"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341403"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -97,7 +97,7 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
 ### <a name="regions-in-sample-code"></a>範例程式碼中的區域
 
-部分範例應用程式包含由 [#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region) 與 [#end-region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion) C# 陳述式括住的程式碼區段。 文件建置系統會將這些區域插入轉譯的文件主題中。  
+部分範例應用程式包含由 [#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region) 與 [#endregion](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion) C# 陳述式括住的程式碼區段。 文件建置系統會將這些區域插入轉譯的文件主題中。  
 
 區域名稱通常包含字組 "snippet"。 下列範例顯示了名為 `snippet_FilterInCode` 的區域：
 
@@ -118,7 +118,7 @@ WebHost.CreateDefaultBuilder(args)
 [!code-csharp[](sample/SampleApp/Program.cs?name=snippet_FilterInCode)]
 ```
 
-您可以放心忽略 (或移除) 程式碼周圍的 `#region` 與 `#end-region` 陳述式。 但若您打算執行主題中所述的範例情境，則請勿變更這些陳述式內的程式碼。 您可以在試驗其他案例時自由改變程式碼。
+您可以放心忽略 (或移除) 程式碼周圍的 `#region` 與 `#endregion` 陳述式。 但若您打算執行主題中所述的範例情境，則請勿變更這些陳述式內的程式碼。 您可以在試驗其他案例時自由改變程式碼。
 
 如需詳細資訊，請參閱 [Contribute to the ASP.NET documentation:Code snippets](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets)。(參與 ASP.NET 文件：程式碼片段)。
 

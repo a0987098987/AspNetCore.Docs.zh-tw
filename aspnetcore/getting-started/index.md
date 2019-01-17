@@ -4,14 +4,14 @@ author: rick-anderson
 description: 使用 ASP.NET Core 建立並執行簡單 Hello World 應用程式的快速教學課程。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/11/2018
+ms.date: 01/15/2019
 uid: getting-started
-ms.openlocfilehash: dc85fe9189c93476859a6c00d60ec24d6eeec3fa
-ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
+ms.openlocfilehash: eee927f4306fa7757f3f361e6c6f367658512897
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335308"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341806"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
@@ -65,7 +65,7 @@ dotnet dev-certs https --trust
 
 上述命令會顯示以下訊息：
 
-*已要求信任 HTTPS 開發憑證。若憑證尚未受到信任，我們會執行下列命令：*`'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`。  
+已要求信任 HTTPS 開發憑證。若憑證尚未受到信任，我們會執行下列命令：*`'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`。  
 *此命令可能會提示您提供密碼，以在系統金鑰鏈上安裝憑證。
 
 密碼：*
@@ -87,7 +87,7 @@ cd aspnetcoreapp
 dotnet run
 ```
 
-瀏覽至 [https://localhost:5001](https://localhost:5001)。 按一下 [接受] 以接受隱私權與 Cookie 原則。 此應用程式不會保留個人資訊。
+命令殼層指出應用程式已啟動之後，瀏覽到 [https://localhost:5001](https://localhost:5001)。 按一下 [接受] 以接受隱私權與 Cookie 原則。 此應用程式不會保留個人資訊。
 
 ## <a name="edit-a-razor-page"></a>編輯 Razor 頁面
 

@@ -4,14 +4,14 @@ author: tdykstra
 description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/11/2018
+ms.date: 01/14/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: f7cfb3823a188f28398d59e0d009e9ddc159dc32
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 0908cc6eeaaba4006a0029ef86d3e47dcf3f9a28
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207572"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341741"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -272,7 +272,7 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 在上述程式碼中，第一個參數是[記錄事件識別碼](#log-event-id)。 第二個參數是訊息範本，其中的預留位置會置入其餘方法參數所提供的引數值。 此文章稍後的[訊息範本小節](#log-message-template)將詳細說明方法參數。
 
-在方法名稱中包含層級的記錄方法 (例如 `LogInformation` 與 `LogWarning`) 是 [ILogger 的擴充方法](xref:Microsoft.Extensions.Logging.LoggerExtensions)。 這些方法會呼叫接受 `Log` 參數的 `LogLevel`。 您可以直接呼叫 `Log` 方法，而不是呼叫其中一個擴充方法，但語法會更複雜。 如需詳細資訊，請參閱 <xref:Microsoft.Extensions.Logging.ILogger> 與[記錄器延伸模組原始程式碼](https://github.com/aspnet/Logging/blob/master/src/Microsoft.Extensions.Logging.Abstractions/LoggerExtensions.cs)。
+在方法名稱中包含層級的記錄方法 (例如 `LogInformation` 與 `LogWarning`) 是 [ILogger 的擴充方法](xref:Microsoft.Extensions.Logging.LoggerExtensions)。 這些方法會呼叫接受 `Log` 參數的 `LogLevel`。 您可以直接呼叫 `Log` 方法，而不是呼叫其中一個擴充方法，但語法會更複雜。 如需詳細資訊，請參閱 <xref:Microsoft.Extensions.Logging.ILogger> 與[記錄器延伸模組原始程式碼](https://github.com/aspnet/Extensions/blob/release/2.2/src/Logging/Logging.Abstractions/src/LoggerExtensions.cs)。
 
 ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴重性。
 
@@ -282,7 +282,7 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 偵錯 = 1
 
-  針對可在開發與偵錯中使用的資訊。 範例：`Entering method Configure with flag set to true.` 由於記錄的數目很龐大，因此除非您正在進行疑難排解，否則通常不會在生產環境中啟用 `Debug` 層級記錄。
+  針對可在開發與偵錯中使用的資訊。 範例：`Entering method Configure with flag set to true.` 只有在進行疑難排解時才在生產環境中啟用 `Debug` 層級記錄，因為此類記錄的數目非常多。
 
 * 資訊 = 2
 
@@ -300,7 +300,7 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
   發生需要立即注意的失敗。 範例：資料遺失情況、磁碟空間不足。
 
-使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如: 
+使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如：
 
 * 在生產環境中，透過 `Information` 層級將 `Trace` 傳送到大量資料存放區。 透過 `Critical` 將 `Warning` 傳送到值資料存放區。
 * 在開發期間，透過 `Critical` 將 `Warning` 傳送到主控台，並在進行疑難排解時透過 `Information` 新增 `Trace`。
@@ -512,7 +512,7 @@ System.Exception: Item not found exception.
 
 ### <a name="filter-functions"></a>篩選函式
 
-針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如: 
+針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如：
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_FilterFunction&highlight=5-13)]
 
@@ -863,7 +863,7 @@ Application Insights SDK 可以收集及回報由 ASP.NET Core 記錄基礎結�
 
 * [Application Insights 概觀](/azure/application-insights/app-insights-overview)
 * [Application Insights for ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
-* [Microsoft/ApplicationInsights-aspnetcore Wiki：記錄](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Logging)。
+* [Microsoft/ApplicationInsights-aspnetcore Wiki：記錄](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Logging).
 
 ::: moniker-end
 

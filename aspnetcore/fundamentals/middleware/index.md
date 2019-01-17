@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 4e5da1036b77e876899ccdea48bdec69454e1657
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: c55dbd5a9ac31f55daf1cb3146fb18b91b016919
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861481"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341585"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -20,7 +20,7 @@ ms.locfileid: "52861481"
 中介軟體為組成應用程式管線的軟體，用以處理要求與回應。 每個元件：
 
 * 可選擇是否要將要求傳送到管線中的下一個元件。
-* 可以在叫用管線中下一個元件的前後執行工作。
+* 可以下一個元件的前後執行工作。
 
 要求委派用於建置要求管線， 其會處理每個 HTTP 要求。
 
@@ -230,7 +230,7 @@ app.Map("/level1", level1App => {
 
 ASP.NET Core 隨附下列中介軟體元件。 「順序」欄位說明中介軟體在要求管線中的位置，以及中介軟體可終止要求並防止其他中介軟體處理要求的情況。
 
-| 中介軟體 | 描述 | 訂單 |
+| 中介軟體 | 說明 | 訂單 |
 | ---------- | ----------- | ----- |
 | [驗證](xref:security/authentication/identity) | 提供驗證支援。 | 在需要 `HttpContext.User` 之前。 OAuth 回呼的終端機。 |
 | [Cookie 原則](xref:security/gdpr) | 追蹤使用者對用於儲存個人資訊的同意，並強制執行 Cookie 欄位的最低標準，例如 `secure` 和 `SameSite`。 | 在發出 Cookie 的中介軟體之前。 範例：驗證、工作階段、MVC (TempData)。 |

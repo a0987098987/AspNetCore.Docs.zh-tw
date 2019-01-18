@@ -1,36 +1,49 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
-title: ASP.NET MVC 應用程式建立更複雜的資料模型 |Microsoft Docs
+title: 教學課程：建立更複雜的資料模型的 ASP.NET MVC 應用程式
 author: tdykstra
-description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式...
+description: 在本教學課程中，您將新增更多的實體和關聯性，並將指定格式、 驗證和資料庫對應規則來自訂資料模型。
 ms.author: riande
-ms.date: 11/07/2014
+ms.date: 01/16/2019
+ms.topic: tutorial
 ms.assetid: 46f7f3c9-274f-4649-811d-92222a9b27e2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 25cec8bb9384dbd053f8af12855171a54675a40e
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 50cbc184983b3e37c34332dad52bc0d70ade18c2
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912484"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396294"
 ---
-<a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application"></a>ASP.NET MVC 應用程式建立更複雜的資料模型
-====================
-藉由[Tom Dykstra](https://github.com/tdykstra)
+# <a name="tutorial-create-a-more-complex-data-model-for-an-aspnet-mvc-app"></a>教學課程：建立更複雜的資料模型的 ASP.NET MVC 應用程式
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
-
-
-在上一個教學課程中您用過三個實體所組成的簡單資料模型。 在本教學課程中，您將新增更多的實體和關聯性，並將指定格式、 驗證和資料庫對應規則來自訂資料模型。 您會看到來自訂資料模型的兩種方式： 藉由將屬性加入至實體類別和程式碼加入至資料庫內容類別。
+在上一個教學課程中您用過三個實體所組成的簡單資料模型。 您在本教學課程中新增更多的實體和關聯性，而您指定格式、 驗證和資料庫對應規則來自訂資料模型。 本文將說明兩種方式可以自訂資料模型： 藉由將屬性加入至實體類別和程式碼加入至資料庫內容類別。
 
 當您完成時，實體類別會構成如下列圖例中所顯示的完整資料模型：
 
 ![School_class_diagram](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image1.png)
 
-## <a name="customize-the-data-model-by-using-attributes"></a>使用屬性自訂資料模型
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 自訂資料模型
+> * 更新 Student 實體
+> * 建立 Instructor 實體
+> * 建立 OfficeAssignment 實體
+> * 修改 Course 實體
+> * 建立 Department 實體
+> * 修改 Enrollment 實體
+> * 將程式碼加入至資料庫的內容
+> * 測試資料植入資料庫
+> * 新增移轉
+> * 更新資料庫
+
+## <a name="prerequisites"></a>必要條件
+
+* [第一個移轉和部署程式碼](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+
+## <a name="customize-the-data-model"></a>自訂資料模型
 
 在本節中，您會了解到如何使用指定格式、驗證和資料庫對應規則的屬性來自訂資料模型。 然後在下列各節的數個您要建立完整`School`加上的資料模型屬性類別已建立並建立新的類別，針對模型中剩餘的實體類型。
 
@@ -62,7 +75,7 @@ ms.locfileid: "48912484"
 
 如果您使用`DataType`屬性與 [日期] 欄位中，您必須指定`DisplayFormat`也為了確保欄位在 Chrome 瀏覽器中正確轉譯的屬性。 如需詳細資訊，請參閱 <<c0> [ 這個 StackOverflow 執行緒](http://stackoverflow.com/questions/12633471/mvc4-datatype-date-editorfor-wont-display-date-value-in-chrome-fine-in-ie)。
 
-如需如何處理在 MVC 中的其他日期格式的詳細資訊，請移至[MVC 5 簡介： 檢查編輯方法與編輯檢視](../introduction/examining-the-edit-methods-and-edit-view.md)和 [搜尋] 中的頁面&quot;國際化&quot;。
+如需如何處理在 MVC 中的其他日期格式的詳細資訊，請移至[MVC 5 簡介：檢查編輯方法與編輯檢視](../introduction/examining-the-edit-methods-and-edit-view.md)和 [搜尋] 中的頁面&quot;國際化&quot;。
 
 再次執行 學生的 索引 頁面，並請注意，時間都不會再顯示註冊日期欄位。 也會使用任何檢視，則為 true`Student`模型。
 
@@ -96,9 +109,7 @@ ms.locfileid: "48912484"
 
 Entity Framework 會使用移轉檔案名稱的前面加上時間戳記來排序移轉。 您可以建立多個移轉前執行`update-database`命令，然後所有的移轉會套用已建立的順序。
 
-執行**建立**頁面，然後輸入超過 50 個字元名稱。 當您按一下 [建立] 時，用戶端驗證便會顯示錯誤訊息。
-
-![用戶端端 val 錯誤](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image3.png)
+執行**建立**頁面，然後輸入超過 50 個字元名稱。 當您按一下 **建立**，用戶端驗證便會顯示錯誤訊息：*LastName 欄位必須是具有最大長度為 50 的字串。*
 
 ### <a name="the-column-attribute"></a>資料行屬性
 
@@ -116,8 +127,6 @@ Entity Framework 會使用移轉檔案名稱的前面加上時間戳記來排序
 
 在 **伺服器總管**，開啟*學生*資料表設計工具，按兩下*學生*資料表。
 
-![](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image4.png)
-
 您套用前兩個移轉之前下, 圖顯示原始的資料行名稱。 除了從變更資料行名稱`FirstMidName`要`FirstName`，兩個名稱的資料行已從`MAX`長度為 50 個字元。
 
 ![](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image5.png)
@@ -127,12 +136,9 @@ Entity Framework 會使用移轉檔案名稱的前面加上時間戳記來排序
 > [!NOTE]
 > 若您嘗試在完成建立下列章節中所有的實體類別前進行編譯，您可能會收到編譯器錯誤。
 
+## <a name="update-student-entity"></a>更新 Student 實體
 
-## <a name="complete-changes-to-the-student-entity"></a>完成對 Student 實體作出的變更
-
-![Student_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image6.png)
-
-在  *Models\Student.cs*，稍早為下列程式碼取代您所新增的程式碼。 所做的變更已醒目提示。
+在  *Models\Student.cs*，稍早為下列程式碼取代您所新增的程式碼。 所做的變更已醒目標示。
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample7.cs?highlight=11,13,15,18,22,25-32)]
 
@@ -150,9 +156,7 @@ Entity Framework 會使用移轉檔案名稱的前面加上時間戳記來排序
 
 `FullName` 為一個計算屬性，會傳回藉由串連兩個其他屬性而建立的值。 因此只有`get`存取子，且沒有`FullName`會產生資料庫中的資料行。
 
-## <a name="create-the-instructor-entity"></a>建立 Instructor 實體
-
-![Instructor_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image7.png)
+## <a name="create-instructor-entity"></a>建立 Instructor 實體
 
 建立*Models\Instructor.cs*，以下列程式碼取代範本程式碼：
 
@@ -176,9 +180,7 @@ Entity Framework 會使用移轉檔案名稱的前面加上時間戳記來排序
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample12.cs)]
 
-## <a name="create-the-officeassignment-entity"></a>建立 OfficeAssignment 實體
-
-![OfficeAssignment_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image8.png)
+## <a name="create-officeassignment-entity"></a>建立 OfficeAssignment 實體
 
 建立*Models\OfficeAssignment.cs*為下列程式碼：
 
@@ -210,8 +212,6 @@ Entity Framework 會使用移轉檔案名稱的前面加上時間戳記來排序
 
 ## <a name="modify-the-course-entity"></a>修改 Course 實體
 
-![Course_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image9.png)
-
 在  *Models\Course.cs*，稍早為下列程式碼取代您所新增的程式碼：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample15.cs)]
@@ -242,8 +242,6 @@ Course 實體具有外部索引鍵屬性`DepartmentID`指向相關`Department`�
 
 ## <a name="create-the-department-entity"></a>建立 Department 實體
 
-![Department_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image10.png)
-
 建立*Models\Department.cs*為下列程式碼：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample20.cs)]
@@ -268,14 +266,11 @@ Course 實體具有外部索引鍵屬性`DepartmentID`指向相關`Department`�
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample23.cs)]
 
   > [!NOTE]
-  > 根據慣例，Entity Framework 會為不可為 Null 的外部索引鍵和多對多關聯性啟用串聯刪除。 這可能會導致循環串聯刪除規則，並在您嘗試新增移轉時造成例外狀況。 例如，如果您未定義`Department.InstructorID`屬性可為 null，您會收到下列例外狀況訊息: 「 參考關聯性將會導致不允許循環參考。 」 如果您的商務規則所需`InstructorID`屬性成為不可為 null，您必須使用下列 fluent API 陳述式停用串聯刪除關聯性：
+  > 根據慣例，Entity Framework 會為不可為 Null 的外部索引鍵和多對多關聯性啟用串聯刪除。 這可能會導致循環串聯刪除規則，並在您嘗試新增移轉時造成例外狀況。 例如，如果您未定義`Department.InstructorID`屬性可為 null，您會收到下列例外狀況訊息：「 參考關聯性將會導致不允許循環參考。 」 如果您的商務規則所需`InstructorID`屬性成為不可為 null，您必須使用下列 fluent API 陳述式停用串聯刪除關聯性：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample24.cs)]
 
-
 ## <a name="modify-the-enrollment-entity"></a>修改 Enrollment 實體
-
-![Enrollment_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image11.png)
 
  在  *Models\Enrollment.cs*，稍早為下列程式碼取代您所新增的程式碼
 
@@ -312,15 +307,15 @@ Course 實體具有外部索引鍵屬性`DepartmentID`指向相關`Department`�
 
 Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和更新的讀取和更新的間接`Instructor.Courses`和`Course.Instructors`導覽屬性。
 
-## <a name="entity-diagram-showing-relationships"></a>顯示關聯性的實體圖表
+## <a name="entity-relationship-diagram"></a>實體關係圖
 
 下列圖例顯示了 Entity Framework Power Tools 為完成的 School 模型建立的圖表。
 
-![School_data_model_diagram](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image15.png)
+![School_data_model_diagram](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image1.png)
 
 除了多對多關聯性線條 (\*來\*) 和一對多關聯性線條 (1 到\*)，您可以看到以下到零或-一一關聯性線條 (1 對 0..1) 之間`Instructor`和`OfficeAssignment`實體和零-或--一對多關聯性線條 (0..1 對\*) 之間的 Instructor 和 Department 實體。
 
-## <a name="customize-the-data-model-by-adding-code-to-the-database-context"></a>程式碼加入至資料庫的內容來自訂資料模型
+## <a name="add-code-to-database-context"></a>將程式碼加入至資料庫的內容
 
 接下來您要在其中加入新的實體來`SchoolContext`類別，並自訂對應使用的一些[fluent API](https://msdn.microsoft.com/data/jj591617)呼叫。 API 是"fluent"，因為它通常由串連一系列的方法呼叫一起成單一陳述式，如下列範例所示：
 
@@ -346,7 +341,7 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 如需 「 fluent API 」 陳述式在幕後的執行資訊，請參閱[Fluent API](https://blogs.msdn.com/b/aspnetue/archive/2011/05/04/entity-framework-code-first-tutorial-supplement-what-is-going-on-in-a-fluent-api-call.aspx)部落格文章。
 
-## <a name="seed-the-database-with-test-data"></a>使用測試資料植入資料庫
+## <a name="seed-database-with-test-data"></a>測試資料植入資料庫
 
 中的程式碼取代*Migrations\Configuration.cs*檔案取代下列程式碼，以針對您已建立的新實體提供種子資料。
 
@@ -358,7 +353,7 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 當您建立`Course`物件，初始化`Instructors`導覽屬性，以空的集合，使用程式碼`Instructors = new List<Instructor>()`。 這讓您能夠新增`Instructor`與此相關的實體`Course`使用`Instructors.Add`方法。 如果您未建立空的清單，您便無法將這些關聯性，因為`Instructors`屬性會是 null，而且不會有`Add`方法。 您也可以加入清單初始化建構函式。
 
-## <a name="add-a-migration-and-update-the-database"></a>新增移轉並更新資料庫
+## <a name="add-a-migration"></a>新增移轉
 
 在 PMC 中，輸入`add-migration`命令 (沒有`update-database`命令):
 
@@ -376,6 +371,8 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 當`Seed`方法執行時，它會插入資料列`Department`資料表也會與現有`Course`這些新的資料列`Department`資料列。 如果您尚未新增任何課程在 UI 中，然後您不再需要"Temp"部門或預設值在`Course.DepartmentID`資料行。 若要允許，有人可能已經加入課程所使用的應用程式的可能性，也要更新`Seed`方法的程式碼，以確保所有`Course`資料列 (而不只是由先前執行插入`Seed`方法) 具有有效`DepartmentID`之前先移除預設的值從資料行值，並刪除"Temp"部門。
 
+## <a name="update-the-database"></a>更新資料庫
+
 當您完成編輯之後&lt;*時間戳記&gt;\_ComplexDataModel.cs*檔案中，輸入`update-database`在 PMC 中執行移轉命令。
 
 [!code-powershell[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample35.ps1)]
@@ -391,7 +388,6 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 >
 > `update-database -TargetMigration:0`
 
-
 開啟中的資料庫**伺服器總管**當您稍早，並展開**資料表**節點以查看所有的資料表已建立的。 (如果您仍有**伺服器總管**開啟從稍早的時間，再按**重新整理** 按鈕。)
 
 ![](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image16.png)
@@ -402,14 +398,28 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 ![Table_data_in_CourseInstructor_table](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image17.png)
 
-## <a name="summary"></a>總結
-
-您現在已有了更複雜的資料模型和對應的資料庫。 在下列教學課程，您將深入了解不同的方式可存取相關的資料。
-
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
+## <a name="additional-resources"></a>其他資源
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
-> [!div class="step-by-step"]
-> [上一頁](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [下一頁](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 自訂資料模型
+> * 已更新的 Student 實體
+> * 建立的 Instructor 實體
+> * 建立的 OfficeAssignment 實體
+> * 修改 Course 實體
+> * 建立 Department 實體
+> * 修改 Enrollment 實體
+> * 新增的程式碼的資料庫內容
+> * 測試資料植入的資料庫
+> * 新增移轉
+> * 更新資料庫
+
+請前往下一篇文章，以了解如何讀取和顯示 Entity Framework 載入到導覽屬性的相關的資料。
+
+> [!div class="nextstepaction"]
+> [讀取相關資料](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)

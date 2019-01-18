@@ -4,20 +4,19 @@ title: 了解和處理 signalr 的連線存留期事件 |Microsoft Docs
 author: pfletcher
 description: 本文說明如何使用事件中樞 API 所公開。
 ms.author: riande
-ms.date: 06/10/2014
+ms.date: 01/15/2019
 ms.assetid: 03960de2-8d95-4444-9169-4426dcc64913
 msc.legacyurl: /signalr/overview/guide-to-the-api/handling-connection-lifetime-events
 msc.type: authoredcontent
-ms.openlocfilehash: 6a354179a82eba1d4a64184bfdeb302472fabf5f
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 5aaec6795f714ba0877ec3b22eff45eb281b44aa
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287974"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396164"
 ---
 <a name="understanding-and-handling-connection-lifetime-events-in-signalr"></a>了解和處理 signalr 的連線存留期事件
 ====================
-藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom Dykstra](https://github.com/tdykstra)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
@@ -32,7 +31,7 @@ ms.locfileid: "53287974"
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
 >
 >
-> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 > - .NET 4.5
 > - SignalR 第 2 版
 >
@@ -147,7 +146,7 @@ API 參考主題的連結是 API 的.NET 4.5 版本。 如果您使用.NET 4，�
 
 > [!NOTE]
 >
-> **重要**:此處所述的事件的順序並不保證。 SignalR 會不斷嘗試以便引發連線存留期事件，此配置中，根據可預測的方式，但有許多變化的網路事件和多種資訊，請在其中基礎的通訊架構，例如傳輸 Api 處理它們。 例如，`Reconnected`可能不會引發事件，當用戶端重新連接，或`OnConnected`建立的連線嘗試不成功時，可能會執行伺服器上的處理常式。 本主題說明某些常見的情況下將通常會產生的效果。
+> **重要**：此處所述的事件的順序並不保證。 SignalR 會不斷嘗試以便引發連線存留期事件，此配置中，根據可預測的方式，但有許多變化的網路事件和多種資訊，請在其中基礎的通訊架構，例如傳輸 Api 處理它們。 例如，`Reconnected`可能不會引發事件，當用戶端重新連接，或`OnConnected`建立的連線嘗試不成功時，可能會執行伺服器上的處理常式。 本主題說明某些常見的情況下將通常會產生的效果。
 
 
 <a id="clientdisconnect"></a>

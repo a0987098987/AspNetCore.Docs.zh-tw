@@ -4,20 +4,19 @@ title: ASP.NET SignalR 中樞 API 指南-JavaScript 用戶端 |Microsoft Docs
 author: pfletcher
 description: 本文件提供使用 signalr 第 2 版中 JavaScript 用戶端，例如瀏覽器和 Windows 市集 (WinJS) applicat 的中樞 API 的簡介...
 ms.author: riande
-ms.date: 09/28/2015
+ms.date: 01/15/2019
 ms.assetid: a9fd4dc0-1b96-4443-82ca-932a5b4a8ea4
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: a8352045d99b77713c94ab809417c5dc4675557f
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 12d675b6a2f2f6acdd8c3a5d0d27b5ad2fb1efc4
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099269"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396307"
 ---
 <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>ASP.NET SignalR 中樞 API 指南-JavaScript 用戶端
 ====================
-藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom Dykstra](https://github.com/tdykstra)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
@@ -30,7 +29,7 @@ ms.locfileid: "54099269"
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
 >
 >
-> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 > - .NET 4.5
 > - SignalR 第 2 版
 >
@@ -142,9 +141,7 @@ JavaScript 用戶端必須參考 jQuery 和 SignalR core JavaScript 檔案。 JQ
 
 一般而言，使用相同的方法來指定您用於 CSS 或 JavaScript 檔案的 「 signalr/中樞 」 URL。 如果您指定的 URL，而不需使用波狀符號，在某些情況下您的應用程式會正常運作時您在 Visual Studio 中使用 IIS Express 測試，但部署至完整 IIS 時，將會失敗並傳回 404 錯誤。 如需詳細資訊，請參閱 <<c0>  **解析根層級資源的參考**中[ASP.NET Web 專案的 Visual Studio 中的 Web 伺服器](https://msdn.microsoft.com/library/58wxa9w5.aspx)MSDN 網站上。
 
-當您執行 Visual Studio 2013 中 web 專案在偵錯模式中，如果您使用 Internet Explorer 作為您的瀏覽器時，您可以看到中的 proxy 檔案**方案總管**下方**指令碼文件**，如下所示下圖。
-
-![在 [方案總管] 中的 JavaScript 產生之 proxy 檔案](hubs-api-guide-javascript-client/_static/image1.png)
+當您執行時 web 專案在 Visual Studio 2017 在偵錯模式中，如果您使用 Internet Explorer 作為您的瀏覽器時，您可以看到中的 proxy 檔案**方案總管**下方**指令碼**。
 
 若要查看檔案的內容，請按兩下**中樞**。 如果您不使用 Visual Studio 2012 或 2013年和 Internet Explorer 中，或如果您不在偵錯模式中，您也可以瀏覽至 「 signalR/中樞 」 的 URL 來取得檔案的內容。 例如，如果您的站台還在執行`http://localhost:56699`，請移至`http://localhost:56699/SignalR/hubs`瀏覽器中。
 
@@ -306,8 +303,8 @@ Signalr 1.x 中的，跨網域要求是由單一 EnableCrossDomain 旗標控制�
 
 您可以使用下列值來指定傳輸方法：
 
-- 「 webSockets"
-- 「 foreverFrame"
+- "webSockets"
+- "foreverFrame"
 - "serverSentEvents"
 - 「 longPolling"
 

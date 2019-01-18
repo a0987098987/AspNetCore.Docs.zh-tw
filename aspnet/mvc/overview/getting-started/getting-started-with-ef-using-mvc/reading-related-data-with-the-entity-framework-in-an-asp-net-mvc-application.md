@@ -1,28 +1,22 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
-title: 讀取相關的資料，使用 ASP.NET MVC 應用程式中的 Entity Framework |Microsoft Docs
+title: 教學課程：閱讀 ASP.NET MVC 應用程式中使用 EF 的相關的資料
+description: 在本教學課程中，您將讀取並顯示相關的資料-也就是 Entity Framework 載入到導覽屬性的資料。
 author: tdykstra
-description: /ajax/tutorials/using-ajax-control-toolkit-controls-and-control-extenders-vb
 ms.author: riande
-ms.date: 11/07/2014
+ms.date: 01/17/2019
+ms.topic: tutorial
 ms.assetid: 18cdd896-8ed9-4547-b143-114711e3eafb
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 18d3720f891e2356af42b58389776f2d04eee39d
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 8660a75655b801364cce7c4b59847c5c00562a27
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913199"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396203"
 ---
-<a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>讀取相關資料，使用 Entity Framework 中的 ASP.NET MVC 應用程式
-====================
-藉由[Tom Dykstra](https://github.com/tdykstra)
-
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
-
+# <a name="tutorial-read-related-data-with-ef-in-an-aspnet-mvc-app"></a>教學課程：閱讀 ASP.NET MVC 應用程式中使用 EF 的相關的資料
 
 在上一個教學課程，您已完成 School 資料模型的內容。 在本教學課程中，您將讀取並顯示相關的資料-也就是 Entity Framework 載入到導覽屬性的資料。
 
@@ -32,7 +26,18 @@ ms.locfileid: "48913199"
 
 ![Instructors_index_page_with_instructor_and_course_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 
-## <a name="lazy-eager-and-explicit-loading-of-related-data"></a>延遲，積極式，明確載入相關資料
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 了解如何將相關的資料
+> * 建立的 Courses 頁面
+> * 建立 Instructors 頁面
+
+## <a name="prerequisites"></a>必要條件
+
+* [建立更複雜的資料模型](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
+
+## <a name="learn-how-to-load-related-data"></a>了解如何將相關的資料
 
 有數種方式，Entity Framework，可將相關的資料載入實體的導覽屬性：
 
@@ -54,7 +59,7 @@ ms.locfileid: "48913199"
 
 相反地，在某些情況下會更有效率消極式載入。 積極式載入可能會導致非常複雜的聯結產生的 SQL Server 無法有效率地處理。 或者如果您需要存取實體的導覽屬性，只會針對一組實體的子集正在處理，消極式載入可能會比較好，因為積極式載入會擷取比您所需的更多資料。 如果效能嚴重不足，最好先測試這兩種方式的效能，才能做出最好的選擇。
 
-消極式載入可加上遮罩會造成效能問題的程式碼。 例如，未指定積極式或明確載入，但處理大量的實體，而且每個反覆項目中使用數個導覽屬性的程式碼可能會非常沒有效率 （因為許多往返資料庫）。 在開發使用在內部部署 SQL server 中正常執行的應用程式可能會遇到效能問題移到 Azure SQL Database，因為增加的延遲和消極式載入時。 分析實際的測試負載的資料庫查詢，可協助您判斷是否適當消極式載入。 如需詳細資訊，請參閱[揭密 Entity Framework 策略： 載入相關的資料](https://msdn.microsoft.com/magazine/hh205756.aspx)並[使用 Entity Framework 對 SQL Azure 以減少網路延遲](https://msdn.microsoft.com/magazine/gg309181.aspx)。
+消極式載入可加上遮罩會造成效能問題的程式碼。 例如，未指定積極式或明確載入，但處理大量的實體，而且每個反覆項目中使用數個導覽屬性的程式碼可能會非常沒有效率 （因為許多往返資料庫）。 在開發使用在內部部署 SQL server 中正常執行的應用程式可能會遇到效能問題移到 Azure SQL Database，因為增加的延遲和消極式載入時。 分析實際的測試負載的資料庫查詢，可協助您判斷是否適當消極式載入。 如需詳細資訊，請參閱[揭密 Entity Framework 策略：載入相關的資料](https://msdn.microsoft.com/magazine/hh205756.aspx)並[使用 Entity Framework 降低 SQL Azure 的網路延遲](https://msdn.microsoft.com/magazine/gg309181.aspx)。
 
 ### <a name="disable-lazy-loading-before-serialization"></a>停用消極式載入，序列化之前
 
@@ -73,13 +78,19 @@ ms.locfileid: "48913199"
 
     [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
-## <a name="create-a-courses-page-that-displays-department-name"></a>建立顯示部門名稱的 Courses 頁面
+## <a name="create-a-courses-page"></a>建立的 Courses 頁面
 
 `Course`實體包含導覽屬性，其中包含`Department`指派課程的部門實體。 若要在課程清單中顯示所指派部門的名稱，您需要取得`Name`屬性從`Department`中的實體`Course.Department`導覽屬性。
 
-建立的控制器命名為`CourseController`(不 CoursesController) 的`Course`實體類型，使用的相同選項**使用 MVC 5 控制器與檢視，Entity Framework**您先前為的框架`Student`控制器，如下圖所示：
+建立的控制器命名為`CourseController`(不 CoursesController) 的`Course`實體類型，使用的相同選項**使用 MVC 5 控制器與檢視，Entity Framework**您先前為的框架`Student`控制器：
 
-![Add_Controller_dialog_box_for_Course_controller](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
+| 設定 | 值 |
+| ------- | ----- |
+| 模型類別 | 選取 **課程 (ContosoUniversity.Models)**。 |
+| 資料內容類別 | 選取  **SchoolContext (ContosoUniversity.DAL)**。 |
+| 控制器名稱 | 請輸入*CourseController*。 同樣地，未*CoursesController*具有*s*。 當您選取**課程 (ContosoUniversity.Models)**，則**控制站名稱**自動填入值。 您不必變更值。 |
+
+保留其他預設值，然後新增控制器。
 
 開啟*Controllers\CourseController.cs*並查看`Index`方法：
 
@@ -103,15 +114,9 @@ ms.locfileid: "48913199"
 
 執行網頁 (選取**課程**的 Contoso 大學首頁上的索引標籤) 以查看含有部門名稱的清單。
 
-![Courses_index_page_with_department_names](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
+## <a name="create-an-instructors-page"></a>建立 Instructors 頁面
 
-## <a name="create-an-instructors-page-that-shows-courses-and-enrollments"></a>建立顯示課程 」 和 「 註冊 」 的 Instructors 頁面
-
-在本節中，您會建立控制器並檢視`Instructor`實體以顯示 Instructors 頁面：
-
-![Instructors_index_page_with_instructor_and_course_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
-
-此頁面將以下列方式讀取和顯示相關資料：
+在本節中，您會建立控制器並檢視`Instructor`實體以顯示 Instructors 頁面。 此頁面將以下列方式讀取和顯示相關資料：
 
 - 講師清單會顯示相關的資料，從`OfficeAssignment`實體。 `Instructor` 與 `OfficeAssignment` 實體具有一對零或一關聯性。 您將使用積極式載入`OfficeAssignment`實體。 如上所述，當您需要主要資料表中所有擷取資料列的相關資料時，積極式載入通常更有效率。 在此情況下，您可能想要顯示所有已呈現講師的辦公室指派。
 - 當使用者選取講師，相關`Course`實體便會顯示。 `Instructor` 與 `Course` 實體具有多對多關聯性。 您將使用積極式載入`Course`實體和其相關`Department`實體。 在此情況下，消極式載入可能會更有效率因為您需要只會針對所選講師的課程。 不過，這個範例會示範如何在本身處於導覽屬性內的實體中，針對導覽屬性使用積極式載入。
@@ -127,9 +132,15 @@ Instructors 頁面會顯示三個不同的資料表。 因此，您將建立包�
 
 ### <a name="create-the-instructor-controller-and-views"></a>建立 Instructor 控制器和檢視
 
-建立`InstructorController`(不 InstructorsController) 控制站使用 EF 讀取/寫入動作，如下圖所示：
+建立`InstructorController`(不 InstructorsController) 使用 EF 讀取/寫入動作的控制器：
 
-![Add_Controller_dialog_box_for_Instructor_controller](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
+| 設定 | 值 |
+| ------- | ----- |
+| 模型類別 | 選取 **講師 (ContosoUniversity.Models)**。 |
+| 資料內容類別 | 選取  **SchoolContext (ContosoUniversity.DAL)**。 |
+| 控制器名稱 | 請輸入*InstructorController*。 同樣地，未*InstructorsController*具有*s*。 當您選取**課程 (ContosoUniversity.Models)**，則**控制站名稱**自動填入值。 您不必變更值。 |
+
+保留其他預設值，然後新增控制器。
 
 開啟*Controllers\InstructorController.cs*並加入`using`陳述式`ViewModels`命名空間：
 
@@ -193,8 +204,6 @@ Instructors 頁面會顯示三個不同的資料表。 因此，您將建立包�
 
 執行應用程式，然後選取**講師** 索引標籤。此頁面會顯示`Location`屬性的相關`OfficeAssignment`實體和空的資料表資料格時有無相關`OfficeAssignment`實體。
 
-![Instructors_index_page_with_nothing_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
-
 在  *Views\Instructor\Index.cshtml*檔案之後則會在結尾,`table`項目 （在檔案結尾），新增下列程式碼。 當選取講師時，此程式碼會顯示與講師相關的課程。
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample18.cshtml)]
@@ -203,8 +212,6 @@ Instructors 頁面會顯示三個不同的資料表。 因此，您將建立包�
 
 執行網頁，然後選取講師。 現在您會看到一個方格，其中顯示指派給所選取講師的課程，而且在每個課程中，您可以看到指派的部門名稱。
 
-![Instructors_index_page_with_instructor_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-
 在您剛才新增的程式碼區塊之後，新增下列程式碼。 這會在選取課程時，顯示已註冊該課程的學生清單。
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample19.cshtml)]
@@ -212,8 +219,6 @@ Instructors 頁面會顯示三個不同的資料表。 因此，您將建立包�
 此程式碼會讀取`Enrollments`屬性以顯示學生的清單檢視模型的註冊過程中。
 
 執行網頁，然後選取講師。 接著選取課程，以查看已註冊學生和其年級的清單。
-
-![Instructors_index_page_with_instructor_and_course_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
 
 ### <a name="adding-explicit-loading"></a>新增明確式載入
 
@@ -239,14 +244,20 @@ Instructors 頁面會顯示三個不同的資料表。 因此，您將建立包�
 
 立即執行 Instructor 索引 頁面，您會看到任何差異，在頁面上，顯示的內容，雖然您已變更資料擷取的方式。
 
-## <a name="summary"></a>總結
-
-您現在已使用三種方式 （lazy，積極式，和明確） 載入到導覽屬性的相關的資料。 在下一個教學課程中，您將了解如何更新相關資料。
-
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
+## <a name="additional-resources"></a>其他資源
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
-> [!div class="step-by-step"]
-> [上一頁](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
-> [下一頁](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 了解如何將相關的資料
+> * 建立的 Courses 頁面
+> * 建立 Instructors 頁面
+
+請前往下一篇文章，以了解如何更新相關的資料。
+
+> [!div class="nextstepaction"]
+> [更新相關資料](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)

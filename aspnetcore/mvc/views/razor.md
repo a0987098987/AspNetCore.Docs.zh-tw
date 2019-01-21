@@ -651,7 +651,7 @@ Razor 關鍵字會使用 `@(Razor Keyword)` (例如 `@(functions)`) 逸出。
 
 ### <a name="c-razor-keywords"></a>C# Razor 關鍵字
 
-* 大小寫
+* case
 * do
 * default
 * for

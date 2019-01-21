@@ -4,20 +4,20 @@ author: rick-anderson
 description: 本教學課程示範如何搭配使用 OAuth 2.0 與外部驗證提供者，建立 ASP.NET Core 2.x 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 1/19/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 063d452fb6ab91b712ade7f7b7ed99823dbdc657
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 48dd8b772234ff18158423a36ed1716102bc2f31
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098814"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396138"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程會示範如何建立 ASP.NET Core 2.x 應用程式，讓使用者使用 OAuth 2.0 與來自外部驗證提供者的認證進行登入。
+本教學課程會示範如何建置 ASP.NET Core 2.2 應用程式，讓使用者可使用 OAuth 2.0 以外部驗證提供者提供的認證登入。
 
 下列各節涵蓋 [Facebook](xref:security/authentication/facebook-logins)、[Twitter](xref:security/authentication/twitter-logins)、[Google](xref:security/authentication/google-logins) 和 [Microsoft](xref:security/authentication/microsoft-logins) 的提供者。 您可透過 [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) 和 [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers) 這類協力廠商套件，取得其他提供者。
 
@@ -30,29 +30,13 @@ ms.locfileid: "54098814"
 * 在 Visual Studio 2017 中，從起始頁面建立新專案，或透過 [檔案] > [新增] >  [專案]。
 
 * 選取在 [Visual C#] > [.NET Core] 類別中提供的 [ASP.NET Core Web 應用程式] 範本：
-
-![[新增專案] 對話](index/_static/new-project.png)
-
-* 點選 [Web 應用程式]，並驗證已將 [驗證] 設定為 [個別使用者帳戶]：
-
-![[新增 Web 應用程式] 對話方塊](index/_static/select-project.png)
-
-注意:本教學課程適用於 ASP.NET Core 2.0 SDK 版本，您可於精靈頂端加以選取。
+* 選取 [變更驗證]，然後將驗證設定為 [個別使用者帳戶]。
 
 ## <a name="apply-migrations"></a>套用移轉
 
-* 執行應用程式並選取 [登入] 連結。
-* 選取 [以新使用者身分註冊] 連結。
+* 執行應用程式並選取 [登錄] 連結。
 * 輸入新帳戶的電子郵件和密碼，然後選取 [註冊]。
 * 遵循指示以套用移轉。
-
-## <a name="require-https"></a>需要 HTTPS
-
-OAuth 2.0 要求使用 SSL/TLS 以透過 HTTPS 通訊協定進行驗證。
-
-使用 **Web 應用程式**或 **Web API** 專案範本 (使用 ASP.NET Core 2.1 或更新版本) 來建立的專案，會自動設為啟用 HTTPS。 如果您在專案精靈的 [變更驗證] 對話方塊中選取了 [個別使用者帳戶] 選項，應用程式會以安全的預設端點啟動。
-
-如需詳細資訊，請參閱<xref:security/enforcing-ssl>。
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
@@ -83,11 +67,11 @@ OAuth 2.0 要求使用 SSL/TLS 以透過 HTTPS 通訊協定進行驗證。
 
 若要建立密碼，並使用您在外部提供者登入程序期間所設的電子郵件進行登入：
 
-* 點選右上角的 [Hello &lt;電子郵件別名&gt;] 連結以巡覽至 [管理] 檢視。
+* 選取右上角的 [Hello &lt;電子郵件別名&gt;] 連結以巡覽至 [管理] 檢視。
 
 ![Web 應用程式的 [管理] 檢視](index/_static/pass1a.png)
 
-* 點選 [建立]
+* 選取 [建立]
 
 ![[設定密碼] 頁面](index/_static/pass2a.png)
 

@@ -1,35 +1,42 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
-title: 排序、 篩選和分頁與 ASP.NET MVC 應用程式中的 Entity Framework |Microsoft Docs
+title: 教學課程：新增排序、 篩選和分頁與 ASP.NET MVC 應用程式中的 Entity Framework |Microsoft Docs
 author: tdykstra
-description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式...
+description: 在本教學課程中新增排序、 篩選和分頁功能**學生**索引頁面。 您也會建立簡單的群組頁面。
 ms.author: riande
-ms.date: 10/08/2018
+ms.date: 01/14/2019
 ms.assetid: d5723e46-41fe-4d09-850a-e03b9e285bfa
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9fabb5a90af715d4e96ff79b43bfff5a4600ac08
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.topic: tutorial
+ms.openlocfilehash: 1f18a15d39d58ffb4ac48cfccee6519d33294e85
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912770"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444191"
 ---
-# <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application"></a>排序、 篩選和分頁與 Entity Framework 的 ASP.NET MVC 應用程式中
+# <a name="tutorial-add-sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application"></a>教學課程：新增排序、 篩選和分頁與 Entity Framework 的 ASP.NET MVC 應用程式中
 
-藉由[Tom Dykstra](https://github.com/tdykstra)
+在 [先前的教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)，您實作的基本 CRUD 作業的 web 網頁的一組`Student`實體。 在本教學課程中新增排序、 篩選和分頁功能**學生**索引頁面。 您也會建立簡單的群組頁面。
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
-
-在上一個教學課程中，您可以實作的基本 CRUD 作業的 web 網頁的一組`Student`實體。 在本教學課程中，您將新增排序、 篩選和分頁功能**學生**索引頁面。 此外，還要建立將執行簡易群組的頁面。
-
-下圖顯示當您完成時的頁面外觀。 資料行標題是使用者可以按一下以依據該資料行排序的連結。 重覆按一下資料行標題，可切換遞增和遞減排序次序。
+下圖顯示當您完成時的頁面的外觀。 資料行標題是使用者可以按一下以依據該資料行排序的連結。 重覆按一下資料行標題，可切換遞增和遞減排序次序。
 
 ![Students_Index_page_with_paging](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
 
-## <a name="add-column-sort-links-to-the-students-index-page"></a>將資料行排序連結新增至 Students [索引] 頁面
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 新增資料行排序連結
+> * 新增搜尋方塊
+> * 加入分頁
+> * 建立 [關於] 頁面
+
+## <a name="prerequisites"></a>必要條件
+
+* [實作基本的 CRUD 功能](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
+
+## <a name="add-column-sort-links"></a>新增資料行排序連結
 
 若要將排序新增至學生的 [索引] 頁面，您將會變更`Index`方法`Student`控制器並將程式碼加入`Student`索引檢視。
 
@@ -70,13 +77,9 @@ ms.locfileid: "48912770"
 
 2. 執行頁面，然後按一下**姓氏**並**註冊日期**資料行標題，以確認該排序運作。
 
-   ![Students_Index_page_with_sort_hyperlinks](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
-
    按一下 之後**姓氏**標題之下，學生以遞減顯示姓氏來排序。
 
-   ![在網頁瀏覽器學生 [索引] 檢視](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
-
-## <a name="add-a-search-box-to-the-students-index-page"></a>在搜尋方塊新增至 Students [索引] 頁面
+## <a name="add-a-search-box"></a>新增搜尋方塊
 
 若要新增至 Students [索引] 頁面的篩選，您會將文字方塊和提交按鈕新增至檢視，並進行對應的變更，在`Index`方法。 [文字] 方塊可讓您輸入要在名字和姓氏欄位中搜尋的字串。
 
@@ -103,15 +106,11 @@ ms.locfileid: "48912770"
 
 2. 執行頁面，輸入搜尋字串，然後按一下**搜尋**以確認篩選可以運作。
 
-   ![Students_Index_page_with_search_box](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
-
    請注意 URL 未包含"an"搜尋字串，這表示，如果您將本頁加入標籤，您無法取得篩選的清單，當您使用書籤。 這也適用於資料行排序連結時，因為它們會排序整個清單。 您將會變更**搜尋**来用於篩選準則中的查詢字串，稍後在本教學課程中的按鈕。
 
-## <a name="add-paging-to-the-students-index-page"></a>將分頁新增至 Students [索引] 頁面
+## <a name="add-paging"></a>加入分頁
 
-若要將分頁新增至 Students [索引] 頁面中，您將先安裝**PagedList.Mvc** NuGet 套件。 然後您將進行中的其他變更`Index`方法，並新增到分頁連結`Index`檢視。 **PagedList.Mvc**許多很好的分頁和排序封裝的 ASP.NET MVC 的其中一個，而且它的使用僅為例，不做為它的建議，透過其他選項。 下圖顯示分頁連結。
-
-![Students_index_page_with_paging](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
+若要將分頁新增至 Students [索引] 頁面中，您將先安裝**PagedList.Mvc** NuGet 套件。 然後您將進行中的其他變更`Index`方法，並新增到分頁連結`Index`檢視。 **PagedList.Mvc**許多很好的分頁和排序封裝的 ASP.NET MVC 的其中一個，而且它的使用僅為例，不做為它的建議，透過其他選項。
 
 ### <a name="install-the-pagedlistmvc-nuget-package"></a>安裝 PagedList.MVC NuGet 套件
 
@@ -124,8 +123,6 @@ NuGet **PagedList.Mvc**會自動安裝套件**PagedList**套件作為相依性�
    ```text
    Install-Package PagedList.Mvc
    ```
-
-   ![安裝 PagedList.Mvc](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
 3. 建置專案。
 
@@ -161,7 +158,7 @@ NuGet **PagedList.Mvc**會自動安裝套件**PagedList**套件作為相依性�
 
 ### <a name="add-paging-links-to-the-student-index-view"></a>將分頁連結新增至學生 [索引] 檢視
 
-1. 在  *Views\Student\Index.cshtml*，以下列程式碼取代現有的程式碼。 所做的變更已醒目提示。
+1. 在  *Views\Student\Index.cshtml*，以下列程式碼取代現有的程式碼。 所做的變更已醒目標示。
 
    [!code-cshtml[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cshtml?highlight=1-3,6,9,14,17,24,30,55-56,58-59)]
 
@@ -197,13 +194,9 @@ NuGet **PagedList.Mvc**會自動安裝套件**PagedList**套件作為相依性�
 
 2. 執行網頁。
 
-   ![Students [索引] 頁面上，使用分頁](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
-
    以不同排序次序按一下分頁連結，以確定分頁運作正常。 然後輸入搜尋字串並再次嘗試分頁，以確認分頁的排序和篩選能正確運作。
 
-   ![Students [索引] 頁面搜尋篩選條件文字](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-
-## <a name="create-an-about-page-that-shows-student-statistics"></a>建立顯示學生統計資料的 About 頁面
+## <a name="create-an-about-page"></a>建立 [關於] 頁面
 
 Contoso 大學網站的相關頁面，您將會顯示多少學生註冊每個註冊日期。 這需要對群組進行分組和簡單計算。 若要完成此工作，您需要執行下列作業：
 
@@ -249,14 +242,24 @@ Contoso 大學網站的相關頁面，您將會顯示多少學生註冊每個註
 
    ![About_page](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-在本教學課程中，您已了解如何建立資料模型，並實作基本的 CRUD、 排序、 篩選、 分頁和分組功能。 在下一個教學課程中，您就可以展開資料模型以學習更進階的主題。
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
+## <a name="additional-resources"></a>其他資源
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
-> [!div class="step-by-step"]
-> [上一頁](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
-> [下一頁](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 新增資料行排序連結
+> * 新增搜尋方塊
+> * 加入分頁
+> * 建立 [關於] 頁面
+
+請前往下一篇文章，以了解如何使用連線恢復功能和命令攔截。
+> [!div class="nextstepaction"]
+> [連接恢復功能和命令攔截](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)

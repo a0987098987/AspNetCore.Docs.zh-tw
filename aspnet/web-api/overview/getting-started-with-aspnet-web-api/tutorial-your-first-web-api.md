@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 11/28/2017
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 62e99a41ba935470c39476c9aea8ee4193543425
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 7bec95af4532535f0d620bfe6862958907466874
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795289"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444255"
 ---
 <a name="get-started-with-aspnet-web-api-2-c"></a>開始使用 ASP.NET Web API 2 (C#)
 ====================
@@ -107,8 +107,8 @@ Scaffolding 會建立名為 ProductsController.cs 在 Controllers 資料夾中�
 
 | 控制器方法 | URI |
 | --- | --- |
-| GetAllProducts | / api/產品 |
-| GetProduct | /api/產品/*識別碼* |
+| GetAllProducts | /api/products |
+| GetProduct | /api/products/*id* |
 
 針對`GetProduct`方法中，*識別碼*URI 中是預留位置。 例如，若要取得識別碼 5 的產品，URI 是`api/products/5`。
 
@@ -178,7 +178,7 @@ JQuery [getJSON](http://api.jquery.com/jQuery.getJSON/)函式會將 AJAX 要求�
 
 若要查看為即時 web 應用程式正在執行的完成的網站嗎？ 您可以部署您的 Azure 帳戶的應用程式的完整版本，只要按一下下面的按鈕。
 
-[![](http://azuredeploy.net/deploybutton.png)](https://deploy.azure.com/?WT.mc_id=deploy_azure_aspnet&repository=https://github.com/tfitzmac/WebAPI-ProductsApp#/form/setup)
+[![](https://azuredeploy.net/deploybutton.png)](https://deploy.azure.com/?WT.mc_id=deploy_azure_aspnet&repository=https://github.com/tfitzmac/WebAPI-ProductsApp#/form/setup)
 
 您需要有 Azure 帳戶才能將此解決方案部署至 Azure。 如果您還沒有帳戶，您會有下列選項：
 

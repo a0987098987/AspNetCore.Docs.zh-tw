@@ -1,34 +1,43 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
-title: ASP.NET MVC 5 應用程式 (11 小時，共 12) 中實作 Entity Framework 6 的繼承 |Microsoft Docs
+title: 範本：在 ASP.NET MVC 5 應用程式中實作使用 EF 的繼承
+description: 本教學課程將示範如何在資料模型中實作繼承。
 author: tdykstra
-description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式...
 ms.author: riande
-ms.date: 11/07/2014
+ms.date: 01/21/2019
+ms.topic: tutorial
 ms.assetid: 08834147-77ec-454a-bb7a-d931d2a40dab
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 613494d58d7652f69a52241bcd3a7e896bc5407c
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: df8715e4416ce3ccdf1d9e380addcded553d85f8
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912698"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444281"
 ---
-<a name="implementing-inheritance-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-11-of-12"></a>ASP.NET MVC 5 應用程式 (11 小時，共 12) 中實作 Entity Framework 6 的繼承
-====================
-藉由[Tom Dykstra](https://github.com/tdykstra)
-
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
-
+# <a name="template-implement-inheritance-with-ef-in-an-aspnet-mvc-5-app"></a>範本：在 ASP.NET MVC 5 應用程式中實作使用 EF 的繼承
 
 先前的教學課程中，您會處理並行例外狀況。 本教學課程將示範如何在資料模型中實作繼承。
 
 在物件導向程式設計中，您可以使用[繼承](http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming))以便[程式碼重複使用](http://en.wikipedia.org/wiki/Code_reuse)。 在本教學課程中，您將變更 `Instructor` 和 `Student` 類別，讓它們衍生自 `Person` 基底類別，而此基底類別包含講師和學生通用的屬性，例如 `LastName`。 您不會新增或變更任何網頁，但是您將變更一些程式碼，這些變更將會自動反映在資料庫中。
 
-## <a name="options-for-mapping-inheritance-to-database-tables"></a>將繼承對應至資料庫資料表的選項
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 了解如何將繼承對應至資料庫
+> * 建立 Person 類別
+> * 更新 Instructor 和 Student
+> * 將人員加入至模型
+> * 建立和更新的移轉
+> * 測試實作
+> * 部署到 Azure
+
+## <a name="prerequisites"></a>必要條件
+
+* [實作繼承](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+
+## <a name="map-inheritance-to-database"></a>將繼承對應至資料庫
 
 `Instructor`並`Student`中的類別`School`資料模型有完全相同的數個屬性：
 
@@ -62,7 +71,9 @@ TPC 和 TPH 繼承模式通常會提供更佳的效能在 Entity Framework 中�
 
 [!code-csharp[Main](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
-## <a name="make-student-and-instructor-classes-inherit-from-person"></a>使 Student 和 Instructor 類別繼承自 Person 類別
+## <a name="update-instructor-and-student"></a>更新 Instructor 和 Student
+
+現在更新*Instructor.cs*並*Sudent.cs*繼承值*Person.sc*。
 
 在  *Instructor.cs*，衍生`Instructor`類別從`Person`類別，並移除索引鍵和名稱的欄位。 程式碼看起來應該如下列範例所示：
 
@@ -72,7 +83,7 @@ TPC 和 TPH 繼承模式通常會提供更佳的效能在 Entity Framework 中�
 
 [!code-csharp[Main](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cs)]
 
-## <a name="add-the-person-entity-type-to-the-model"></a>將 Person 實體類型加入模型
+## <a name="add-person-to-the-model"></a>將人員加入至模型
 
 在  *SchoolContext.cs*，新增`DbSet`屬性`Person`實體類型：
 
@@ -80,7 +91,7 @@ TPC 和 TPH 繼承模式通常會提供更佳的效能在 Entity Framework 中�
 
 這就是 Entity Framework 為了設定單表繼承而必須執行的所有工作。 如您所見，更新資料庫時，會有`Person`資料表的位置`Student`和`Instructor`資料表。
 
-## <a name="create-and-update-a-migrations-file"></a>建立和更新移轉檔案
+## <a name="create-and-update-migrations"></a>建立和更新的移轉
 
 在 套件管理員主控台 (PMC)，請輸入下列命令：
 
@@ -121,18 +132,13 @@ TPC 和 TPH 繼承模式通常會提供更佳的效能在 Entity Framework 中�
 >
 > 使用新資料庫時，沒有資料移轉，而`update-database`命令是很有可能能順利完成。 如需有關如何刪除資料庫的指示，請參閱 <<c0> [ 如何從 Visual Studio 2012 中卸除資料庫](http://romiller.com/2013/05/17/how-to-drop-a-database-from-visual-studio-2012/)。 如果您要繼續進行本教學課程採用這種方法，在本教學課程結尾處略過部署步驟，或將部署到新的網站和資料庫。 如果您將更新部署到您已被部署到已位於相同站台時，EF 會那里相同的錯誤時自動執行移轉。 如果您想要對移轉錯誤進行疑難排解時，最佳的資源是 Entity Framework 論壇或 StackOverflow.com 其中之一。
 
-
-## <a name="testing"></a>測試
+## <a name="test-the-implementation"></a>測試實作
 
 執行網站，然後嘗試各種頁面。 一切項目的運作與之前一樣。
 
 在 [**伺服器總管] 中，** 展開**資料 Connections\SchoolContext** ，然後**資料表**，，您會看到**學生**及**講師**已被取代的資料表**人員**資料表。 依序展開**Person**資料表，而且您看到它有使用中的資料行的所有**學生**並**講師**資料表。
 
-![Server_Explorer_showing_Person_table](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
-
 以滑鼠右鍵按一下 Person 資料表，然後按一下 [顯示資料表資料] 以查看鑑別子資料行。
-
-![](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
 下圖說明新的 School 資料庫的結構：
 
@@ -144,22 +150,37 @@ TPC 和 TPH 繼承模式通常會提供更佳的效能在 Entity Framework 中�
 
 1. 在 Visual Studio 中的專案上按一下滑鼠右鍵**方案總管**，然後選取**發佈**從內容功能表。
 
-    ![在專案操作功能表中發行](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
 2. 按一下 [發行] 。
 
-    ![發行](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
+    在預設瀏覽器中，開啟 Web 應用程式。
 
-   Web 應用程式會在預設瀏覽器中開啟。
 3. 測試應用程式，以確認它是否運作。
 
     第一次您執行頁面，來存取資料庫，Entity Framework 便會執行所有移轉`Up`才能讓資料庫維持在最新狀態與目前的資料模型的方法。
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-您已針對 `Person`、`Student` 和 `Instructor` 類別實作單表繼承。 如需有關這個主題以及其他繼承結構的詳細資訊，請參閱[TPT 繼承模式](https://msdn.microsoft.com/data/jj618293)並[TPH 繼承模式](https://msdn.microsoft.com/data/jj618292)MSDN 上。 在下一個教學課程中，您將了解如何處理各種相對進階的 Entity Framework 案例。
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+
+## <a name="additional-resources"></a>其他資源
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
-> [!div class="step-by-step"]
-> [上一頁](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [下一頁](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)
+如需有關這個主題以及其他繼承結構的詳細資訊，請參閱[TPT 繼承模式](https://msdn.microsoft.com/data/jj618293)並[TPH 繼承模式](https://msdn.microsoft.com/data/jj618292)MSDN 上。 在下一個教學課程中，您將了解如何處理各種相對進階的 Entity Framework 案例。
+
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 了解如何將繼承對應至資料庫
+> * 建立 Person 類別
+> * 更新的 Instructor 和 Student
+> * 已新增至模型的人員
+> * 建立和更新的移轉
+> * 測試實作
+> * 部署至 Azure
+
+請前往下一篇文章，以了解要注意的是在超出開發 ASP.NET web 應用程式使用 Entity Framework Code First 的基本概念時很有用的主題。
+> [!div class="nextstepaction"]
+> [進階的 Entity Framework 案例](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)

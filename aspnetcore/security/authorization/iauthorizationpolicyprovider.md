@@ -4,14 +4,14 @@ author: mjrousos
 description: 了解如何在 ASP.NET Core 應用程式中使用自訂 IAuthorizationPolicyProvider，來動態產生的授權原則。
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/02/2018
+ms.date: 01/21/2019
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: ef3e81da6fb9e2e332b553607be35fcd79e9362d
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: ca57a9fd8e3c11f15fe14bbe4538bc748c4c84b6
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249369"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444151"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>在 ASP.NET Core 中使用 IAuthorizationPolicyProvider 的自訂授權原則提供者 
 
@@ -25,8 +25,7 @@ ms.locfileid: "54249369"
 * 使用大範圍的原則 （適用於不同的空間數字或年齡，例如），因此沒有任何意義加入具有每個個別的授權原則`AuthorizationOptions.AddPolicy`呼叫。
 * 在執行階段根據外部資料來源 （例如資料庫） 中的資訊建立原則，或透過其他機制以動態方式判斷授權需求。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/AuthSamples/)從[AspNetCore GitHub 存放庫](https://github.com/aspnet/AspNetCore)。 下載 aspnet/AuthSamples 存放庫的 ZIP 檔案。
-將解壓縮*AuthSamples 解壓縮*檔案。 瀏覽至*範例/CustomPolicyProvider*專案資料夾。
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider)從[AspNetCore GitHub 存放庫](https://github.com/aspnet/AspNetCore)。 下載 aspnet/AspNetCore 存放庫的 ZIP 檔案。 將檔案解壓縮。 瀏覽至*src/Security/範例/CustomPolicyProvider*專案資料夾。
 
 ## <a name="customize-policy-retrieval"></a>自訂原則抓取
 
@@ -84,7 +83,7 @@ internal class MinimumAgeAuthorizeAttribute : AuthorizeAttribute
 public IActionResult RequiresMinimumAge10()
 ```
 
-## <a name="custom-iauthorizationpolicyprovider"></a>自訂 IAuthorizationPolicyProvider
+## <a name="custom-iauthorizationpolicyprovider"></a>Custom IAuthorizationPolicyProvider
 
 自訂`MinimumAgeAuthorizeAttribute`輕鬆地要求授權原則的任何所需的最低存在時間。 要解決的下一個問題確保所有這些不同的年齡，授權原則可供使用。 這正是`IAuthorizationPolicyProvider`很有用。
 
@@ -154,4 +153,4 @@ public Task<AuthorizationPolicy> GetDefaultPolicyAsync() =>
 services.AddSingleton<IAuthorizationPolicyProvider, MinimumAgePolicyProvider>();
 ```
 
-完整的自訂`IAuthorizationPolicyProvider`範例都提供[aspnet/AuthSamples GitHub 存放庫](https://github.com/aspnet/AuthSamples/tree/master/samples/CustomPolicyProvider)。
+完整的自訂`IAuthorizationPolicyProvider`範例都提供[aspnet/AuthSamples GitHub 存放庫](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider)。

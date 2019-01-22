@@ -5,12 +5,12 @@ description: 了解如何建置使用電子郵件確認和密碼重設的 ASP.NE
 ms.author: riande
 ms.date: 7/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 4c2e62335bc7dd004829dbc2a8c1f62ea91f334f
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 0dc9907f9f54c8a0daf2e05a3769897e5145935f
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253035"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444138"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
@@ -204,7 +204,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 您可能需要展開的導覽列，以查看使用者名稱。
 
-![導覽列](accconfirm/_static/x.png)
+![navbar](accconfirm/_static/x.png)
 
 [管理] 頁面會顯示**設定檔**選取的索引標籤。 **電子郵件**顯示核取方塊，指出電子郵件已確認。
 

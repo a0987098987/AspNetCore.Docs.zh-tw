@@ -1,34 +1,28 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Async 和 Entity framework 的 ASP.NET MVC 應用程式中的預存程序 |Microsoft Docs
+title: 教學課程：使用 async 和 ASP.NET MVC 應用程式中的 ef 的預存程序
+description: 在本教學課程中，您會看到如何實作非同步程式設計模型，並了解如何使用預存程序。
 author: tdykstra
-description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式...
 ms.author: riande
-ms.date: 11/07/2014
+ms.date: 01/18/2019
+ms.topic: tutorial
 ms.assetid: 27d110fc-d1b7-4628-a763-26f1e6087549
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 84be966c1e1a4357125c1a53b8065676c8f073f6
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 0896664174bc2fee65b73ecf256d994f2abacc0a
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910729"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444359"
 ---
-<a name="async-and-stored-procedures-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Async 和 Entity framework 的 ASP.NET MVC 應用程式中的預存程序
-====================
-藉由[Tom Dykstra](https://github.com/tdykstra)
-
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
-
+# <a name="tutorial-use-async-and-stored-procedures-with-ef-in-an-aspnet-mvc-app"></a>教學課程：使用 async 和 ASP.NET MVC 應用程式中的 ef 的預存程序
 
 在先前的教學課程中，您學會如何讀取和更新使用同步程式設計模型的資料。 在本教學課程中，您會看到如何實作非同步程式設計模型。 非同步程式碼有助於比較好，因為它能夠更妥善運用伺服器資源的應用程式。
 
-在本教學課程也會看到如何使用預存程序插入、 更新和刪除作業的實體。
+在本教學課程中您也了解如何使用預存程序來插入、 更新和刪除作業，在實體上。
 
-最後，您將會重新部署至 Azure，以及您部署的第一次之後，您已實作的資料庫變更的所有應用程式。
+最後，您重新部署至 Azure，以及您部署的第一次之後，您已實作的資料庫變更的所有應用程式。
 
 下列圖例顯示了您將操作的一些頁面。
 
@@ -36,7 +30,19 @@ ms.locfileid: "48910729"
 
 ![建立部門](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 
-## <a name="why-bother-with-asynchronous-code"></a>為何要麻煩使用非同步程式碼
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 深入了解非同步程式碼
+> * 建立 Department 控制器
+> * 使用預存程序
+> * 部署到 Azure
+
+## <a name="prerequisites"></a>必要條件
+
+* [更新相關資料](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+
+## <a name="why-use-asynchronous-code"></a>為何要使用非同步程式碼
 
 網頁伺服器的可用執行緒數量有限，而且在高負載情況下，可能會使用所有可用的執行緒。 發生此情況時，伺服器將無法處理新的要求，直到執行緒空出來。 使用同步程式碼，許多執行緒可能在實際上並未執行任何工作時受到占用，原因是在等候 I/O 完成。 使用非同步程式碼，處理程序在等候 I/O 完成時，其執行緒將會空出來以讓伺服器處理其他要求。 如此一來，非同步程式碼可讓伺服器資源會更有效率地使用，而且伺服器已啟用以處理更多的流量，不會造成延遲。
 
@@ -44,11 +50,9 @@ ms.locfileid: "48910729"
 
 如需有關非同步程式設計的詳細資訊，請參閱 <<c0> [ 使用.NET 4.5 的非同步支援，以避免封鎖呼叫](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices.md#async)。
 
-## <a name="create-the-department-controller"></a>建立 Department 控制器
+## <a name="create-department-controller"></a>建立 Department 控制器
 
-建立使用相同方式較早的控制站，但這次選取 Department 控制器**使用非同步控制器**動作 核取方塊。
-
-![部門控制站 scaffold](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
+建立使用相同方式較早的控制站，但這次選取 Department 控制器**使用非同步控制器動作**核取方塊。
 
 下列反白顯示的同步程式碼新增了哪些功能`Index`進行非同步的方法：
 
@@ -89,8 +93,6 @@ ms.locfileid: "48910729"
 
 執行應用程式，然後按一下**部門** 索引標籤。
 
-![部門頁面](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
-
 一切都運作中的相同其他控制器，但此控制器中所有的 SQL 查詢會以非同步方式執行。
 
 要注意當您使用 Entity Framework 使用非同步程式設計的一些事項：
@@ -98,7 +100,7 @@ ms.locfileid: "48910729"
 - 非同步程式碼不是安全執行緒。 換句話說，也就是說，不要嘗試執行多個作業以平行方式使用相同的內容執行個體。
 - 若您想要充分利用非同步程式碼帶來的效能優點，請確保任何您正在使用的程式庫 (例如分頁) 也使用了非同步 (若它們有呼叫任何可能會傳送查詢到資料庫的 Entity Framework 方法的話)。
 
-## <a name="use-stored-procedures-for-inserting-updating-and-deleting"></a>用於插入、 更新和刪除的預存程序
+## <a name="use-stored-procedures"></a>使用預存程序
 
 有些開發人員和 Dba 想要使用預存程序來存取資料庫。 在舊版的 Entity Framework 中，您可以擷取使用預存程序的資料[執行原始的 SQL 查詢](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)，但您無法指示 EF 來使用預存程序進行更新作業。 在 EF 6 很容易設定 Code First 至使用預存程序。
 
@@ -120,7 +122,6 @@ ms.locfileid: "48910729"
 4. 在 偵錯模式中執行應用程式中，按一下**部門**索引標籤，然後再按一下**建立新**。
 5. 新的部門中，輸入資料，然後按一下**建立**。
 
-     ![建立部門](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
 6. 在 Visual Studio 中檢視記錄檔，在**輸出**視窗來查看預存程序用來插入新的 Department 資料列。
 
      ![部門 Insert 預存程序](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
@@ -143,12 +144,24 @@ ms.locfileid: "48910729"
 
     第一次您執行頁面，來存取資料庫，Entity Framework 便會執行所有移轉`Up`才能讓資料庫維持在最新狀態與目前的資料模型的方法。 您現在可以使用所有的部署，包括您在本教學課程新增部門頁面最後一次您新增的網頁。
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-在本教學課程中您會看到如何增進伺服器的效能，撰寫程式碼以非同步方式執行，以及如何使用預存程序插入、 更新和刪除作業。 在下一個教學課程中，您會看到如何防止資料遺失，當多位使用者嘗試同時編輯同一筆記錄。
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+
+## <a name="additional-resources"></a>其他資源
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
-> [!div class="step-by-step"]
-> [上一頁](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [下一頁](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 了解非同步程式碼
+> * 建立 Department 控制器
+> * 使用預存程序
+> * 部署至 Azure
+
+請前往下一篇文章，以了解如何在多位使用者同時更新相同的實體時處理衝突。
+> [!div class="nextstepaction"]
+> [處理並行](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)

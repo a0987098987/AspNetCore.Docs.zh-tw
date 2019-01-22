@@ -1,36 +1,41 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
-title: 處理使用 Entity Framework 6 在 ASP.NET MVC 5 應用程式 (10 小時，共 12) 中的並行 |Microsoft Docs
+title: 教學課程：ASP.NET MVC 5 應用程式中處理 ef 的並行存取
+description: 本教學課程會示範如何使用以多位使用者同時更新相同的實體時處理衝突的開放式並行存取。
 author: tdykstra
-description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式...
 ms.author: riande
-ms.date: 12/08/2014
+ms.date: 01/21/2019
+ms.topic: tutorial
 ms.assetid: be0c098a-1fb2-457e-b815-ddca601afc65
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 22fd6bc92aa0d516e1bfeb5aa6a67d7246d977ac
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: b77b8d6f952472f4d3030f54665f970b8ace2caf
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913251"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444177"
 ---
-<a name="handling-concurrency-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-10-of-12"></a>處理並行使用 Entity Framework 6 在 ASP.NET MVC 5 應用程式 (10 小時，共 12)
-====================
-藉由[Tom Dykstra](https://github.com/tdykstra)
+# <a name="tutorial-handle-concurrency-with-ef-in-an-aspnet-mvc-5-app"></a>教學課程：ASP.NET MVC 5 應用程式中處理 ef 的並行存取
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+在先前的教學課程中，您學會如何更新資料。 本教學課程會示範如何使用以多位使用者同時更新相同的實體時處理衝突的開放式並行存取。 變更網頁使用`Department`實體，使它們處理並行錯誤。 下列圖例顯示了 [編輯] 和 [刪除] 頁面，包括一些發生並行衝突時會顯示的訊息。
 
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
 
+![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image15.png)
 
-在先前的教學課程中，您學會如何更新資料。 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
+在本教學課程中，您已：
 
-您要變更使用的網頁`Department`實體，使它們處理並行錯誤。 下列圖例顯示索引 [刪除] 頁面，其中包括一些發生並行衝突會顯示的訊息。
+> [!div class="checklist"]
+> * 深入了解並行衝突
+> * 新增開放式並行存取
+> * 修改 Department 控制器
+> * 測試並行處理
+> * 更新 [刪除] 頁面
 
-![Department_Index_page_before_edits](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
+## <a name="prerequisites"></a>必要條件
 
-![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
+* [非同步的預存程序](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
 ## <a name="concurrency-conflicts"></a>並行衝突
 
@@ -46,11 +51,7 @@ ms.locfileid: "48913251"
 
 封閉式並行存取的替代方案是*開放式並行存取*。 開放式並行存取表示允許並行衝突發生，然後在衝突發生時適當的做出反應。 例如，John 在部門編輯頁面上，將英文部門的**預算**從$350,000.00 變更為$0.00。
 
-![Changing_English_dept_budget_to_100000](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
-
 John 按之前**儲存**，Jane 執行相同的頁面和變更**Start Date**欄位從 時間 2007 年 9 月 1 日到 2013 年 8 月 8 日。
-
-![Changing_English_dept_start_date_to_1999](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 
 John 按**儲存**第一個和所看到他的變更，回到 [索引] 頁面，然後 Jane 的瀏覽器時按下**儲存**。 接下來發生的情況便是由您處理並行衝突的方式決定。 一部分選項包括下列項目：
 
@@ -75,7 +76,7 @@ John 按**儲存**第一個和所看到他的變更，回到 [索引] 頁面，�
 
 在本教學課程的其餘部分您可以加入[rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx)追蹤屬性`Department`實體，建立控制器和檢視，並測試以確認一切都運作正常。
 
-## <a name="add-an-optimistic-concurrency-property-to-the-department-entity"></a>新增到 Department 實體的開放式並行存取屬性
+## <a name="add-optimistic-concurrency"></a>新增開放式並行存取
 
 在  *Models\Department.cs*，新增一個名為的追蹤屬性`RowVersion`:
 
@@ -91,7 +92,7 @@ John 按**儲存**第一個和所看到他的變更，回到 [索引] 頁面，�
 
 [!code-console[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cmd)]
 
-## <a name="modify-the-department-controller"></a>修改 Department 控制器
+## <a name="modify-department-controller"></a>修改 Department 控制器
 
 在  *Controllers\DepartmentController.cs*，新增`using`陳述式：
 
@@ -135,37 +136,23 @@ John 按**儲存**第一個和所看到他的變更，回到 [索引] 頁面，�
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cshtml?highlight=18)]
 
-## <a name="testing-optimistic-concurrency-handling"></a>測試開放式並行存取處理
+## <a name="test-concurrency-handling"></a>測試並行處理
 
-執行站台，然後按一下**部門**:
-
-![Department_Index_page_before_edits](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
+執行站台，然後按一下**部門**。
 
 以滑鼠右鍵按一下**編輯**超連結，英文部門時，然後選取**中新的索引標籤上，開啟**然後按一下**編輯**英文部門的超連結。 兩個索引標籤會顯示相同的資訊。
 
-![Department_Edit_page_before_changes](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
-
 變更第一個瀏覽器索引標籤中的欄位，然後按一下 [儲存]。
-
-![Department_Edit_page_1_after_change](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
 
 瀏覽器會顯示索引頁面，當中包含了變更之後的值。
 
-![Departments_Index_page_after_first_budget_edit](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-
-變更第二個瀏覽器索引標籤中的欄位，然後按一下**儲存**。
-
-![Department_Edit_page_2_after_change](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
-
-按一下 **儲存**第二個瀏覽器索引標籤中。您會看到一個錯誤訊息：
+變更第二個瀏覽器索引標籤中的欄位，然後按一下**儲存**。 您會看到一個錯誤訊息：
 
 ![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
 
 再按一下 [儲存]。 您在第二個瀏覽器索引標籤中輸入的值會儲存與您在第一個瀏覽器中變更資料的原始值。 您會在索引頁面出現時看到儲存的值。
 
-![Department_Index_page_with_change_from_second_browser](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image11.png)
-
-## <a name="updating-the-delete-page"></a>更新 [刪除] 頁面
+## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
 
 針對 [刪除] 頁面，Entity Framework 會偵測由其他對部門進行類似編輯的人員所造成的並行衝突。 當`HttpGet``Delete`方法會顯示確認檢視，檢視會包含原始`RowVersion`隱藏欄位中的值。 值，便可`HttpPost``Delete`在使用者確認刪除時呼叫的方法。 當 Entity Framework 建立 SQL`DELETE`命令，其中包含`WHERE`子句，而其原始`RowVersion`值。 如果命令會導致零個資料列受影響 （亦即已顯示 [刪除] 確認頁面之後，已變更資料列），則會擲回並行例外狀況，而`HttpGet Delete`方法呼叫錯誤旗標設為`true`才能重新顯示確認頁面，並出現錯誤訊息。 此外，也可以零個資料列已受到影響，因為另一位使用者，已刪除資料列，因此在此情況下會顯示不同的錯誤訊息。
 
@@ -191,7 +178,7 @@ John 按**儲存**第一個和所看到他的變更，回到 [索引] 頁面，�
 
 若捕捉到並行錯誤，程式碼會重新顯示刪除確認頁面，並提供一個旗標指示其應顯示並行錯誤訊息。
 
-在  *Views\Department\Delete.cshtml*，將錯誤訊息欄位和 DepartmentID 及 RowVersion 屬性隱藏的欄位的下列程式碼取代 scaffold 程式碼。 所做的變更已醒目提示。
+在  *Views\Department\Delete.cshtml*，將錯誤訊息欄位和 DepartmentID 及 RowVersion 屬性隱藏的欄位的下列程式碼取代 scaffold 程式碼。 所做的變更已醒目標示。
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample17.cshtml?highlight=9-10,21,52-54)]
 
@@ -209,17 +196,11 @@ John 按**儲存**第一個和所看到他的變更，回到 [索引] 頁面，�
 
 執行 Departments 索引 頁面。 以滑鼠右鍵按一下**刪除**超連結，英文部門時，然後選取**中新的索引標籤上，開啟**然後在第一個索引標籤中按一下**編輯**英文部門的超連結。
 
-在第一個視窗中，請變更其中一個值，然後按一下**儲存**:
-
-![Department_Edit_page_after_change_before_delete](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image12.png)
+在第一個視窗中，請變更其中一個值，然後按一下**儲存**。
 
 [索引] 頁面會確認變更。
 
-![Departments_Index_page_after_budget_edit_before_delete](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image13.png)
-
 在第二個索引標籤中，按一下 [刪除]。
-
-![Department_Delete_confirmation_page_before_concurrency_error](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image14.png)
 
 您會看到並行錯誤訊息，並且 Department 值已根據資料庫中的內容重新整理。
 
@@ -227,12 +208,27 @@ John 按**儲存**第一個和所看到他的變更，回到 [索引] 頁面，�
 
 若您再按一下 [刪除]，則您將會重新導向至 [索引] 頁面，並且系統將顯示該部門已遭刪除。
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-如此即完成了處理並行衝突的簡介。 其他方式來處理各種並行案例的相關資訊，請參閱[開放式並行存取模式](https://msdn.microsoft.com/data/jj592904)並[屬性值使用](https://msdn.microsoft.com/data/jj592677)MSDN 上。 下一個教學課程示範如何實作每個階層的資料表繼承`Instructor`和`Student`實體。
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+
+## <a name="additional-resources"></a>其他資源
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
-> [!div class="step-by-step"]
-> [上一頁](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [下一頁](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+其他方式來處理各種並行案例的相關資訊，請參閱[開放式並行存取模式](https://msdn.microsoft.com/data/jj592904)並[屬性值使用](https://msdn.microsoft.com/data/jj592677)MSDN 上。 下一個教學課程示範如何實作每個階層的資料表繼承`Instructor`和`Student`實體。
+
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 了解並行衝突
+> * 已新增的開放式並行存取
+> * 修改後的 Department 控制器
+> * 已測試的並行處理
+> * 更新 [刪除] 頁面
+
+請前往下一篇文章，以了解如何在資料模型中實作繼承。
+> [!div class="nextstepaction"]
+> [在資料模型中實作繼承](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)

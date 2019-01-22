@@ -1,30 +1,24 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
-title: 使用 Entity Framework 的 ASP.NET MVC 應用程式中更新相關的資料 |Microsoft Docs
+title: 教學課程：ASP.NET MVC 應用程式中，使用 EF 更新相關的資料
+description: 在本教學課程中，您將更新相關的資料。 大部分的關聯性，做法是藉由更新外部索引鍵欄位或導覽屬性。
 author: tdykstra
-description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式...
 ms.author: riande
-ms.date: 05/01/2015
+ms.date: 01/17/2019
+ms.topic: tutorial
 ms.assetid: 7ba88418-5d0a-437d-b6dc-7c3816d4ec07
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 647793a65dec8feaf37de561ad77b4585bb869a8
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 3f95470fd1832d7d25a331a1b6a9dfede7356f38
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912211"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444307"
 ---
-<a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>使用 Entity Framework 的 ASP.NET MVC 應用程式中更新相關的資料
-====================
-藉由[Tom Dykstra](https://github.com/tdykstra)
+# <a name="tutorial-update-related-data-with-ef-in-an-aspnet-mvc-app"></a>教學課程：ASP.NET MVC 應用程式中，使用 EF 更新相關的資料
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
-
-
-您在先前的教學課程中顯示相關的資料;在本教學課程中，您將更新相關的資料。 大部分的關聯性，做法是藉由更新外部索引鍵欄位或導覽屬性。 多對多關聯性，Entity Framework 不會聯結資料表直接公開，讓您新增和移除適當的導覽屬性的實體。
+在上一個教學課程中，您會顯示相關的資料。 在本教學課程中，您將更新相關的資料。 大部分的關聯性，做法是藉由更新外部索引鍵欄位或導覽屬性。 多對多關聯性，Entity Framework 不會聯結資料表直接公開，讓您新增和移除適當的導覽屬性的實體。
 
 下列圖例顯示了您將操作的一些頁面。
 
@@ -34,7 +28,20 @@ ms.locfileid: "48912211"
 
 ![編輯講師課程](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
 
-## <a name="customize-the-create-and-edit-pages-for-courses"></a>自訂 Courses 的 [建立] 和 [編輯] 頁面
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 自訂 [課程] 頁面
+> * 將 office 新增至講師頁面
+> * 將課程新增至講師頁面
+> * 更新 DeleteConfirmed
+> * 將辦公室位置和課程新增至 [新增] 頁面
+
+## <a name="prerequisites"></a>必要條件
+
+* [讀取相關資料](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+
+## <a name="customize-courses-pages"></a>自訂 [課程] 頁面
 
 當新的課程實體建立時，其必須要與現有的部門具有關聯性。 若要達成此目的，Scaffold 程式碼包含了控制器方法和 [建立] 和 [編輯] 檢視，當中包含了一個可選取部門的下拉式清單。 下拉式清單會設定`Course.DepartmentID`外部索引鍵屬性，就是這麼 Entity Framework 必須以載入`Department`導覽屬性，以適當`Department`實體。 您將使用 Scaffold 程式碼，但會稍微對其進行一些變更以新增錯誤處理及排序下拉式清單。
 
@@ -82,19 +89,20 @@ ms.locfileid: "48912211"
 
 執行**Create**網頁 (顯示課程索引頁面，然後按一下**建立新**) 並輸入新的課程資料：
 
-![Course_create_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
+| 值 | 設定 |
+| ----- | ------- |
+| number | 請輸入*1000年*。 |
+| 標題 | 請輸入*代數*。 |
+| 參與名單 | 請輸入*4*。 |
+|部門 | 選取 **數學**。 |
 
 按一下 [建立] 。 課程索引 頁面會顯示新的課程新增至清單。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
 
-![Course_Index_page_showing_new_course](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
-
 執行**編輯**網頁 (顯示課程索引頁面，然後按一下**編輯**課程)。
-
-![Course_edit_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
 變更頁面上的資料，然後按一下 [儲存]。 課程索引 頁面會顯示更新的課程資料。
 
-## <a name="adding-an-edit-page-for-instructors"></a>新增講師 [編輯] 的頁面
+## <a name="add-office-to-instructors-page"></a>將 office 新增至講師頁面
 
 當您編輯講師記錄時，您可能會想要更新講師的辦公室指派。 `Instructor`實體具有一對零-或-一關係`OfficeAssignment`實體，這表示您必須處理下列情況：
 
@@ -116,7 +124,7 @@ Scaffold 的程式碼不是您所要的。 設定資料的下拉式清單中，�
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample11.cs)]
 
-若要參考`RetryLimitExceededException`需要`using`陳述式; 若要將它加入，請以滑鼠右鍵按一下`RetryLimitExceededException`，然後按一下**解決** - **使用 System.Data.Entity.Infrastructure**.
+若要參考`RetryLimitExceededException`需要`using`陳述式。 若要將它加入，停留`RetryLimitExceededException`。 此時會出現此問題的說明。 選取 **顯示可能的修正**，然後按一下**使用 System.Data.Entity.Infrastructure;**。
 
 ![解析重試例外狀況](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
 
@@ -138,13 +146,9 @@ Scaffold 的程式碼不是您所要的。 設定資料的下拉式清單中，�
 
 執行網頁 (選取**講師**索引標籤，然後按一下**編輯**講師上)。 變更 [辦公室位置]，然後按一下 [儲存]。
 
-![Changing_the_office_location](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
+## <a name="add-courses-to-instructors-page"></a>將課程新增至講師頁面
 
-## <a name="adding-course-assignments-to-the-instructor-edit-page"></a>將課程指派給講師的編輯頁面
-
-講師可教授任何數量的課程。 現在您將藉由使用核取方塊群組，新增變更課程指派的能力來強化 Instructor [編輯] 頁面，如以下螢幕擷取畫面所示：
-
-![Instructor_edit_page_with_courses](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
+講師可教授任何數量的課程。 現在您將會增強 Instructor [編輯] 頁面，藉由新增變更課程指派使用核取方塊群組的能力。
 
 之間的關聯性`Course`和`Instructor`實體是多對多，這表示您沒有直接存取中的聯結資料表的外部索引鍵屬性。 相反地，您新增和移除實體，來回`Instructor.Courses`導覽屬性。
 
@@ -154,7 +158,7 @@ Scaffold 的程式碼不是您所要的。 設定資料的下拉式清單中，�
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample15.cs)]
 
-在  *InstructorController.cs*，取代`HttpGet``Edit`為下列程式碼的方法。 所做的變更已醒目提示。
+在  *InstructorController.cs*，取代`HttpGet``Edit`為下列程式碼的方法。 所做的變更已醒目標示。
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample16.cs?highlight=9,12,20-35)]
 
@@ -162,7 +166,7 @@ Scaffold 的程式碼不是您所要的。 設定資料的下拉式清單中，�
 
 中的程式碼`PopulateAssignedCourseData`方法會讀取所有`Course`為了載入一份使用檢視的課程實體模型類別。 針對每個課程，程式碼會檢查課程是否存在於講師的 `Courses` 導覽屬性中。 若要檢查課程是否已指派給講師時，請建立有效率的查閱，指派給講師的課程會放入[HashSet](https://msdn.microsoft.com/library/bb359438.aspx)集合。 `Assigned`屬性設定為`true`指派的講師的課程。 檢視會使用這個屬性，來判斷哪一個核取方塊必須顯示為已選取。 最後，清單會傳遞至檢視中`ViewBag`屬性。
 
-接下來，新增當使用者按一下 [儲存] 時要執行的程式碼。 取代`EditPost`方法會呼叫新方法以更新為下列程式碼`Courses`導覽屬性`Instructor`實體。 所做的變更已醒目提示。
+接下來，新增當使用者按一下 [儲存] 時要執行的程式碼。 取代`EditPost`方法會呼叫新方法以更新為下列程式碼`Courses`導覽屬性`Instructor`實體。 所做的變更已醒目標示。
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample17.cs?highlight=3,11,25,37,40-68)]
 
@@ -204,20 +208,15 @@ Scaffold 的程式碼不是您所要的。 設定資料的下拉式清單中，�
 
 [!code-cshtml[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample23.cshtml?highlight=7-14)]
 
-執行**Instructor 索引**頁面，以查看指派給每位講師的課程：
-
-![Instructor_index_page](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
+執行**Instructor 索引**頁面，以查看指派給每位講師的課程。
 
 按一下 **編輯**講師，以查看 編輯 頁面上。
 
-![Instructor_edit_page_with_courses](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image11.png)
-
 變更一些課程指派，然後按一下**儲存**。 您所做的變更會反映在 [索引] 頁面上。
 
- 注意： 這裡的方法來編輯講師課程資料時運作相當良好有限的數目的課程。 針對更大的集合，將需要不同的 UI 和不同的更新方法。
+ 注意:這裡的方法來編輯講師課程資料時運作相當良好有限的數目的課程。 針對更大的集合，將需要不同的 UI 和不同的更新方法。
 
-
-## <a name="update-the-deleteconfirmed-method"></a>更新 DeleteConfirmed 方法
+## <a name="update-deleteconfirmed"></a>更新 DeleteConfirmed
 
 在  *InstructorController.cs*，刪除`DeleteConfirmed`方法，然後插入下列程式碼加以取代。
 
@@ -258,21 +257,31 @@ HttpPost Create 方法會將之前的範本程式碼來檢查驗證錯誤，並�
 
 執行 [建立] 頁面，並新增一名講師。
 
-![講師的課程所建立](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image12.png)
-
 <a id="transactions"></a>
+
 ## <a name="handling-transactions"></a>處理交易
 
 中所述[基本的 CRUD 功能教學課程](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)，預設的 Entity Framework 隱含實作了交易。 如案例，您需要更多控制，例如，如果您想要包含在交易-Entity Framework 之外完成的作業，請參閱[使用交易](https://msdn.microsoft.com/data/dn456843)MSDN 上。
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-您現在已完成此操作相關資料的簡介。 到目前為止在這些教學課程中，您先前曾經使用執行同步 I/O 程式碼。 您可以讓應用程式藉由實作非同步程式碼，更有效率地使用 web 伺服器資源，這是您將在下一個教學課程中執行。
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-您喜歡本教學課程中的方式，和我們可以改善，歡迎留下意見反應。
+## <a name="additional-resources"></a>其他資源
 
 其他 Entity Framework 資源連結可在[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
-> [!div class="step-by-step"]
-> [上一頁](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [下一頁](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-step"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 自訂的課程 頁面
+> * 新增的辦公室 instructors 頁面
+> * 已新增至講師頁面的課程
+> * 更新的 DeleteConfirmed
+> * 新增的辦公室位置和課程，[建立] 頁面
+
+請前往下一篇文章，以了解如何實作非同步程式設計模型。
+> [!div class="nextstepaction"]
+> [非同步程式設計模型](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)

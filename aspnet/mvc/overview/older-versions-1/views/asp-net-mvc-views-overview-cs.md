@@ -8,12 +8,12 @@ ms.date: 02/16/2008
 ms.assetid: 152ab1e5-aec2-4ea7-b8cc-27a24dd9acb8
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ac47caa46d93c6157926f1c9b5112555fae4f8f5
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: a8e64a99549584f150d64d909ac97210257b1147
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825765"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444125"
 ---
 <a name="aspnet-mvc-views-overview-c"></a>ASP.NET MVC 檢視概觀 (C#)
 ====================
@@ -75,7 +75,7 @@ View();
 
 例如，列表 2 中的檢視會顯示目前的日期和時間。
 
-**列表 2-\Views\Home\Index.aspx**
+**Listing 2 - \Views\Home\Index.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample2.aspx)]
 
@@ -87,11 +87,11 @@ View();
 
 因為您經常呼叫 response.write （） 時，Microsoft 提供您與快速鍵呼叫 response.write （） 方法。 [列表 3] 檢視會使用分隔符號&lt;%= %&gt;呼叫 response.write （） 的捷徑。
 
-**列表 3-Views\Home\Index2.aspx**
+**Listing 3 - Views\Home\Index2.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample3.aspx)]
 
-您可以使用任何.NET 語言來產生動態內容檢視中。 一般來說，您將會使用 Visual Basic.NET 或 C# 來撰寫您的控制器和檢視。
+您可以使用任何.NET 語言來產生動態內容檢視中。 一般來說，您將使用 Visual Basic.NET 或C#撰寫您的控制器和檢視。
 
 ## <a name="using-html-helpers-to-generate-view-content"></a>使用 HTML Helper 來產生檢視內容
 
@@ -99,14 +99,14 @@ View();
 
 例如，在 列表 4 善加利用三個 HTML 協助程式中，檢視 BeginForm()、 TextBox() 和 Password() 協助程式，來產生登入會形成 （請參閱 圖 1）。
 
-**列表 4-\Views\Home\Login.aspx**
+**Listing 4 -- \Views\Home\Login.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample4.aspx)]
 
 
 [![[新增專案] 對話方塊](asp-net-mvc-views-overview-cs/_static/image1.jpg)](asp-net-mvc-views-overview-cs/_static/image1.png)
 
-**圖 01**： 標準的登入表單 ([按一下以檢視完整大小的影像](asp-net-mvc-views-overview-cs/_static/image2.png))
+**圖 01**:標準的登入表單 ([按一下以檢視完整大小的影像](asp-net-mvc-views-overview-cs/_static/image2.png))
 
 
 所有 HTML 協助程式方法會呼叫檢視的 Html 屬性。 比方說，您會藉由呼叫 Html.TextBox() 方法呈現文字方塊。
@@ -115,7 +115,7 @@ View();
 
 使用 HTML 協助程式方法是選擇性的。 可以讓您的生活更容易藉由縮減的 HTML 和您要撰寫的指令碼。 表 5 中的檢視轉譯完全相同的形式列表 4 中的檢視，而不需使用 HTML 協助程式。
 
-**列表 5-\Views\Home\Login.aspx**
+**Listing 5 -- \Views\Home\Login.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample5.aspx)]
 
@@ -133,13 +133,13 @@ View();
 
 列表 7 中的檢視的檢視資料中擷取訊息，並呈現至瀏覽器的訊息。
 
-**列表 7-\Views\Product\Index.aspx**
+**Listing 7 -- \Views\Product\Index.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample7.aspx)]
 
 請注意檢視在轉譯的訊息時，會採用 Html.Encode() HTML 協助程式方法的優點。 Html.Encode() HTML 協助程式的特殊字元編碼這類&lt;和&gt;成可放心地顯示在網頁中的字元。 每當您呈現使用者提交到網站的內容時，您應該編碼內容，以防止 JavaScript 插入式攻擊。
 
-(因為我們建立訊息自行 ProductController 中，我們不 t 是否真的要對訊息進行編碼。 不過，它是很好的習慣，以顯示內容從檢視中檢視資料擷取時，務必呼叫 Html.Encode() 方法）。
+（因為我們建立我們自己 ProductController 中，我們真的不需要編碼訊息的訊息。 不過，它是很好的習慣，以顯示內容從檢視中檢視資料擷取時，務必呼叫 Html.Encode() 方法）。
 
 在列表 7 中，我們將從控制器的簡單字串訊息傳遞至檢視的檢視資料的優點。 您也可以使用檢視的資料來傳遞其他類型的資料，例如資料庫記錄，從控制器到檢視的集合。 比方說，如果您要在檢視中，顯示產品資料庫資料表的內容，則您會傳遞集合資料庫的記錄檢視中的資料。
 

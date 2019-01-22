@@ -3,14 +3,15 @@ title: ASP.NET Core MVC 與 EF Core - 進階 - 10/10
 author: rick-anderson
 description: 本教學課程介紹一些實用主題，這些主題超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念。
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 5cdba79c0b8edd9b865bda8328c86356cbe6a0a2
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: ba3834b29e78972bf914a5cba1a2cae3cc19a315
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010919"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "50090780"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC 與 EF Core - 進階 - 10/10
 
@@ -100,7 +101,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 請注意，生產環境程式碼可確保更新一律會產生有效的資料。 此處顯示的簡化程式碼會增加足夠的學分數而使其數目大於 5。 (`Credits` 屬性具有 `[Range(0, 5)]` 屬性。)更新查詢可正常運作，但是無效的資料可能會導致系統的其他部分假設學分數為 5 或更少，進而發生非預期的結果。
 
-如需原始 SQL 查詢的詳細資訊，請參閱[原始 SQL 查詢](https://docs.microsoft.com/ef/core/querying/raw-sql)。
+如需原始 SQL 查詢的詳細資訊，請參閱[原始 SQL 查詢](/ef/core/querying/raw-sql)。
 
 ## <a name="examine-sql-sent-to-the-database"></a>檢查傳送至資料庫的 SQL
 
@@ -162,7 +163,7 @@ Entity Framework 藉由比較實體的目前值與原始值，判斷實體如何
 
 * ChangeTracker.Entries
 
-如果您追蹤的實體數量龐大，而且您在迴圈中呼叫其中一種方法多次，您可能會透過使用 `ChangeTracker.AutoDetectChangesEnabled` 屬性暫時關閉自動變更偵測，使效能獲得顯著改善。 例如: 
+如果您追蹤的實體數量龐大，而且您在迴圈中呼叫其中一種方法多次，您可能會透過使用 `ChangeTracker.AutoDetectChangesEnabled` 屬性暫時關閉自動變更偵測，使效能獲得顯著改善。 例如：
 
 ```csharp
 _context.ChangeTracker.AutoDetectChangesEnabled = false;
@@ -176,7 +177,7 @@ Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCor
 
 ## <a name="reverse-engineer-from-existing-database"></a>從現有資料庫進行還原工程
 
-若要從現有資料庫對包括實體類別的資料模型進行還原工程，請使用 [scaffold-dbcontext](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell#scaffold-dbcontext) 命令。 請參閱[快速入門教學課程](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)。
+若要從現有資料庫對包括實體類別的資料模型進行還原工程，請使用 [scaffold-dbcontext](/ef/core/miscellaneous/cli/powershell#scaffold-dbcontext) 命令。 請參閱[快速入門教學課程](/ef/core/get-started/aspnetcore/existing-db)。
 
 <a id="dynamic-linq"></a>
 ## <a name="use-dynamic-linq-to-simplify-sort-selection-code"></a>使用動態的 LINQ 來簡化排序選取程式碼
@@ -189,11 +190,11 @@ Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCor
 
 如此即完成本系列中在 ASP.NET Core MVC 應用程式中使用 Entity Framework Core 的教學課程。
 
-如需 EF Core 的詳細資訊，請參閱 [Entity Framework Core 文件](https://docs.microsoft.com/ef/core)。 另外，還提供了一本書：[Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action) (Entity Framework Core 實戰)。
+如需 EF Core 的詳細資訊，請參閱 [Entity Framework Core 文件](/ef/core)。 另外，還提供了一本書：[Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action)。
 
-如需如何部署 Web 應用程式的資訊，請參閱[裝載和部署](xref:host-and-deploy/index)。
+如需如何部署 Web 應用程式的資訊，請參閱<xref:host-and-deploy/index>。
 
-如需與 ASP.NET Core MVC 相關之其他主題 (例如驗證和授權) 的資訊，請參閱 [ASP.NET Core 文件](xref:index)。
+如需與 ASP.NET Core MVC 相關之其他主題 (例如驗證和授權) 的資訊，請參閱 <xref:index>。
 
 ## <a name="acknowledgments"></a>感謝
 
@@ -239,7 +240,7 @@ dotnet ef database drop
 
 錯誤訊息：
 
-> 建立與 SQL Server　的連線時，發生與網路相關的錯誤或是執行個體特有的錯誤。 找不到或無法存取伺服器。 確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線 (提供者：SQL 網路介面，錯誤：26 - 搜尋指定的伺服器/執行個體時發生錯誤)
+> 建立與 SQL Server　的連線時，發生與網路相關的錯誤或是執行個體特有的錯誤。 找不到或無法存取伺服器。 確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線 (提供者：SQL 網路介面，錯誤：26 - 尋找指定的伺服器/執行個體時發生錯誤)
 
 解決方案:
 

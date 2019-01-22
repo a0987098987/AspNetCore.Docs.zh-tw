@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/11/2018
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: ee0bebb8b5c688f8471d6420d1641b87ac271f6c
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: 4bc5ead8e24c4bb7fe6cd2f52fd2aa622187180c
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284561"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341390"
 ---
 # <a name="aspnet-core-directory-structure"></a>ASP.NET Core 目錄結構
 
@@ -37,7 +37,7 @@ ms.locfileid: "53284561"
 
 *wwwroot* 目錄 (如果存在) 只包含靜態資產。
 
-使用下列兩種方法其中之一，即可為部署建立 stdout *Logs* 目錄：
+使用下列兩種方法其中之一，即可為部署建立 *Logs* 目錄：
 
 * 將下列 `<Target>` 元素新增至專案檔：
 
@@ -57,6 +57,8 @@ ms.locfileid: "53284561"
 * 在部署中的伺服器上實體建立 *Logs* 目錄。
 
 部署目錄會要求「讀取/執行」權限。 *Logs* 目錄會要求「讀取/寫入」權限。 其他可供寫入檔案的目錄會要求「讀取/寫入」權限。
+
+[ASP.NET Core 模組 stdout 記錄](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)在部署中不需要有 *Logs* 資料夾。 當建立記錄檔時，此模組能夠在 `stdoutLogFile` 路徑中建立任何資料夾。 建立 *Logs* 資料夾對 [ASP.NET Core 模組增強型偵錯記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)很有用。 模組不會在提供給 `<handlerSetting>` 值的路徑中自動建立資料夾，這些資料夾應該已存在於部署中，模組才能寫入偵錯記錄。
 
 ## <a name="additional-resources"></a>其他資源
 

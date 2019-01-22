@@ -6,12 +6,12 @@ ms.author: riande
 monikerRange: '>= aspnetcore-2.2'
 ms.date: 12/3/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 0915c525d5fb96a3d32f91fbd65a4e1f62ee28b8
-ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
+ms.openlocfilehash: b9e8ece6da2c25a77ef0396eb22a19efde58563e
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53577860"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396112"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -23,7 +23,7 @@ ms.locfileid: "53577860"
 
 模型類別稱為 POCO 類別 (來自「簡單的 CLR 物件」)，因為它們對 EF Core 沒有任何相依性。 它們會定義資料儲存在資料庫中的屬性。
 
-[檢視或下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages-start/sample/)範例。
+[檢視或下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start)範例。
 
 ## <a name="add-a-data-model"></a>新增資料模型
 
@@ -147,6 +147,10 @@ ms.locfileid: "53577860"
 [!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
 
 ---
+
+上述命令會產生下列警告：「實體類型 'Movie' 上的十進位資料行 'Price' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
+
+您可以忽略該警告，稍後的教學課程中將修正此問題。
 
 隨即建立 Scaffold 處理序並更新下列檔案：
 

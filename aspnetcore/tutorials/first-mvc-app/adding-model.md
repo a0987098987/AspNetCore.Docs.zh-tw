@@ -5,12 +5,12 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 12/8/2017
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 630b4b0549a8549d9570d701fb1691310ec442c3
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: 062a248ffdf8e30ed01a72e0a555c1c9a1ab1b6d
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53381851"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341599"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
@@ -171,6 +171,10 @@ Update-Database
 
 ---  
 <!-- End of VS tabs -->
+
+上述命令會產生下列警告：「實體類型 'Movie' 上的十進位資料行 'Price' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
+
+您可以忽略該警告，稍後的教學課程中將修正此問題。
 
 結構描述以 `DbContext`(位在 *Models/MovieContext.cs* 檔案內) 中指定的模型為基礎。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
 

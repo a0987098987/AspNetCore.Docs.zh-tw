@@ -5,12 +5,12 @@ description: 了解在 ASP.NET Core 應用程式中如何跨多個環境控制�
 ms.author: riande
 ms.date: 07/03/2018
 uid: fundamentals/environments
-ms.openlocfilehash: 865257d127084671036147dd1f28c9c4843feef6
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 642af9e8f9e322e3624dad46bb1463f6525f5c9e
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206844"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341663"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>在 ASP.NET Core 中使用多個環境
 
@@ -111,9 +111,9 @@ ASP.NET Core 會在應用程式啟動時讀取 `ASPNETCORE_ENVIRONMENT` 環境�
 
 以 [dotnet run](/dotnet/core/tools/dotnet-run) 啟動應用程式時，會使用具有 `"commandName": "Project"` 的第一個設定檔。 `commandName` 的值可指定要啟動的網頁伺服器。 `commandName` 可以是下列任何一個項目：
 
-* IIS Express
-* IIS
-* 啟動 Kestrel 的專案
+* `IISExpress`
+* `IIS`
+* `Project` (這會啟動 Kestrel)
 
 以 [dotnet run](/dotnet/core/tools/dotnet-run) 啟動應用程式時：
 
@@ -183,7 +183,7 @@ Visual Studio 專案屬性的 [偵錯] 索引標籤提供 GUI，可編輯 *launc
 1. 在 [設定] 群組中，選取 [應用程式設定] 刀鋒視窗。
 1. 在 [應用程式設定] 區域中，選取 [新增設定]。
 1. 針對 [輸入名稱]，提供 `ASPNETCORE_ENVIRONMENT`。 針對 [輸入值]，提供環境 (例如 `Staging`)。
-1. 如果您想要在交換部署位置時，環境設定保留目前的位置，請選取 [位置設定] 核取方塊。 如需詳細資訊，請參閱 [Azure 文件：交換哪些設定？](/azure/app-service/web-sites-staged-publishing)。
+1. 如果您想要在交換部署位置時，環境設定保留目前的位置，請選取 [位置設定] 核取方塊。 如需詳細資訊，請參閱 [Azure 文件：哪些設定已交換](/azure/app-service/web-sites-staged-publishing)。
 1. 選取刀鋒視窗頂端的 [儲存]。
 
 Azure App Service 會在新增、變更或刪除 Azure 入口網站的應用程式設定 (環境變數) 之後自動重新啟動應用程式。

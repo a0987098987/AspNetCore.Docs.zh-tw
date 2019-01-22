@@ -1,17 +1,17 @@
 ---
-title: 針對 Azure App Service 上的 ASP.NET Core 啟動錯誤進行疑難排解
+title: 針對 Azure App Service 上的 ASP.NET Core 進行疑難排解
 author: guardrex
 description: 了解如何診斷 ASP.NET Core Azure App Service 部署的問題。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/11/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: b36c321c6ba6801a32b5187651063337b4533fd1
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 65a5e355bc15db6de9060331395c441160c8b62d
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637647"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341637"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>針對 Azure App Service 上的 ASP.NET Core 進行疑難排解
 
@@ -51,15 +51,15 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 若要存取「應用程式事件記錄檔」，請使用 Azure 入口網站中的 [診斷並解決問題] 刀鋒視窗：
 
-1. 在 Azure 入口網站的 [應用程式服務] 刀鋒視窗中，開啟應用程式的刀鋒視窗。
-1. 選取 [診斷並解決問題] 刀鋒視窗。
-1. 在 [選取問題類別] 底下，選取 [Web 應用程式停止運作] 按鈕。
-1. 在 [建議的解決方案] 底下，開啟用來**開啟應用程式事件記錄檔**的窗格。 選取 [開啟應用程式事件記錄檔] 按鈕。
-1. 檢查 [來源] 資料行中 *IIS AspNetCoreModule* 所提供的最新錯誤。
+1. 在 Azure 入口網站的 [應用程式服務] 中，開啟應用程式。
+1. 選取 [診斷並解決問題]。
+1. 選取 [診斷工具] 標題。
+1. 在 [支援工具] 下，選取 [應用程式事件] 按鈕。
+1. 檢查 [來源] 資料行中 *IIS AspNetCoreModule* 或 *IIS AspNetCoreModule V2* 項目所提供的最新錯誤。
 
 除了使用 [診斷並解決問題] 刀鋒視窗之外，也可以使用 [Kudu](https://github.com/projectkudu/kudu/wiki) 來直接檢查「應用程式事件記錄檔」：
 
-1. 選取 [開發工具] 區域中的 [進階工具] 刀鋒視窗。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
 1. 開啟 [LogFiles] 資料夾。
 1. 選取 *eventlog.xml* 檔案旁邊的鉛筆圖示。
@@ -69,7 +69,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 許多啟動錯誤不會在「應用程式事件記錄檔」中產生實用的資訊。 您可以在 [Kudu](https://github.com/projectkudu/kudu/wiki)「遠端執行主控台」中執行應用程式來探索錯誤：
 
-1. 選取 [開發工具] 區域中的 [進階工具] 刀鋒視窗。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
 1. 將資料夾開啟至路徑 [site] > [wwwroot]。
 1. 在主控台中，藉由執行應用程式的組件來執行應用程式。
@@ -95,7 +95,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 檢查 [修改時間] 資料行，然後選取鉛筆圖示來編輯修改日期最新的 stdout 記錄檔。
 1. 當記錄檔開啟時，會顯示錯誤。
 
-**重要！** 完成疑難排解時，請停用 stdout 記錄。
+完成疑難排解時，請停用 stdout 記錄：
 
 1. 在 Kudu [診斷主控台] 中，返回路徑 [site] > [wwwroot] 以顯露 *web.config* 檔案。 再次選取鉛筆圖示來開啟 **web.config** 檔案。
 1. 將 **stdoutLogEnabled** 設定為 `false`。
@@ -106,7 +106,37 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 >
 > 針對 ASP.NET Core 應用程式啟動後的一般記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
-## <a name="common-startup-errors"></a>常見的啟動錯誤 
+::: moniker range=">= aspnetcore-2.2"
+
+### <a name="aspnet-core-module-debug-log"></a>ASP.NET Core 模組偵錯記錄
+
+ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入的記錄。 啟用及檢視 stdout 記錄檔：
+
+1. 若要啟用增強型診斷記錄，請執行下列任一動作：
+   * 遵循[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中的指示，來設定應用程式進行增強型診斷記錄。 重新部署應用程式。
+   * 使用 Kudu 主控台，將[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所顯示的 `<handlerSettings>` 新增至即時應用程式的 *web.config* 檔案：
+     1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+     1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
+     1. 將資料夾開啟至路徑 [site] > [wwwroot]。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存] 按鈕。
+1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
+1. 將資料夾開啟至路徑 [site] > [wwwroot]。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
+1. 使用檔案名稱旁的鉛筆圖示來開啟記錄檔。
+
+完成疑難排解時，請停用偵錯記錄：
+
+1. 若要停用增強型偵錯記錄，請執行下列任一動作：
+   * 從 *web.config* 檔案本機移除 `<handlerSettings>` 並重新部署應用程式。
+   * 使用 Kudu 主控台來編輯 *web.config* 檔案並移除 `<handlerSettings>` 區段。 儲存檔案。
+
+> [!WARNING]
+> 無法停用偵錯記錄，可能會造成應用程式或伺服器發生失敗。 記錄檔大小沒有任何限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用偵錯記錄。
+>
+> 針對 ASP.NET Core 應用程式啟動後的一般記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
+
+::: moniker-end
+
+## <a name="common-startup-errors"></a>常見的啟動錯誤
 
 請參閱 <xref:host-and-deploy/azure-iis-errors-reference>。 參考主題涵蓋了大多數導致應用程式無法啟動的常見問題。
 
@@ -157,7 +187,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 對應用程式發出要求。
 1. 在記錄資料流資料內，會指出錯誤的原因。
 
-**重要！** 完成疑難排解時，請務必停用 stdout 記錄。 請參閱 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)一節中的指示。
+完成疑難排解時，請務必停用 stdout 記錄。 請參閱 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)一節中的指示。
 
 檢視失敗要求追蹤記錄檔 (FREB 記錄檔)：
 

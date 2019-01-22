@@ -4,14 +4,14 @@ author: tdykstra
 description: 了解 ASP.NET Core MVC 中的模型驗證。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 01/14/2019
 uid: mvc/models/validation
-ms.openlocfilehash: f3a34972006b5fdee307c9a8d9989b2cc1e36893
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 7c8255097dfc72480794930ebe4d6cb568edbd7c
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099379"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396190"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證
 
@@ -35,7 +35,7 @@ ms.locfileid: "54099379"
 
 ```csharp
 [Required]
-public string MyProperty { get; set; } 
+public string MyProperty { get; set; }
 ```
 
 以下是應用程式中已註解的 `Movie` 模型，其儲存電影和電視節目的相關資訊。 大部分屬性都是必要的，而且有幾個字串屬性具有長度需求。 此外，`Price` 屬性還有 0 至 $999.99 的數字範圍限制，以及自訂驗證屬性。
@@ -78,6 +78,37 @@ MVC 支援將任何衍生自 `ValidationAttribute` 的屬性用於驗證。 您�
 
 用戶端驗證要求表單欄位的值必須對應至模型屬性 (若已標示為 `Required`)，以及不可為 Null 型別的屬性 (若未標示為 `Required`)。 `Required` 可用來控制用戶端驗證錯誤訊息。
 
+::: moniker range=">= aspnetcore-2.1"
+
+## <a name="top-level-node-validation"></a>最上層節點驗證
+
+最上層節點包括：
+
+* 動作參數
+* 控制器屬性
+* 頁面處理常式參數
+* 頁面模型屬性
+
+除了驗證模型屬性，也會驗證模型所繫結的最上層節點。 在來自範例應用程式的下列範例中，`VerifyPhone` 方法會使用 <xref:System.ComponentModel.DataAnnotations.RegularExpressionAttribute> 來驗證表單之 [電話] 欄位中的使用者資料：
+
+[!code-csharp[](validation/sample/UsersController.cs?name=snippet_VerifyPhone)]
+
+最上層節點可以搭配使用 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.BindRequiredAttribute> 和驗證屬性。 在來自範例應用程式的下列範例中，`CheckAge` 方法會指定提交表單時必須從查詢字串繫結 `age` 參數：
+
+[!code-csharp[](validation/sample/UsersController.cs?name=snippet_CheckAge)]
+
+在 [檢查年齡] 頁面 (*CheckAge.cshtml*) 中，有兩個表單。 第一個表單會提交 `Age` 值 `99` 作為查詢字串：`https://localhost:5001/Users/CheckAge?Age=99`。
+
+從查詢字串提交正確格式化的 `age` 時，即會驗證表單。
+
+[檢查年齡] 頁面上的第二個表單會在要求本文中提交 `Age` 值，而且驗證會失敗。 由於 `age` 參數必須來自查詢字串，因此繫結會失敗。
+
+驗證預設會啟用並由 <xref:Microsoft.AspNetCore.Mvc.MvcOptions> 的 <xref:Microsoft.AspNetCore.Mvc.MvcOptions.AllowValidatingTopLevelNodes*> 屬性控制。 若要停用最上層節點驗證，請在 MVC 選項 (`Startup.ConfigureServices`) 中將 `AllowValidatingTopLevelNodes` 設定為 `false`：
+
+[!code-csharp[](validation/sample_snapshot/Startup.cs?name=snippet_AddMvc&highlight=4)]
+
+::: moniker-end
+
 ## <a name="model-state"></a>模型狀態
 
 模型狀態代表送出之 HTML 表單值中的驗證錯誤。
@@ -104,7 +135,7 @@ MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200 
 
 此時，您可能需要手動執行驗證。 若要執行這項操作，請呼叫 `TryValidateModel` 方法，如下所示：
 
-[!code-csharp[](validation/sample/MoviesController.cs?range=52)]
+[!code-csharp[](validation/sample/MoviesController.cs?name=snippet_TryValidateModel)]
 
 ## <a name="custom-validation"></a>自訂驗證
 
@@ -112,17 +143,17 @@ MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200 
 
 在下列範例中，商務規則表示使用者可能未將 1960 年以後發行之電影的內容類型設定為 *Classic*。 `[ClassicMovie]` 屬性會先檢查內容類型，如果是 Classic，會再檢查發行日期是否晚於 1960 年。 如果是在 1960 年以後發行，則驗證失敗。 用來驗證資料的屬性接受代表年份的整數參數。 您可以擷取屬性建構函式中的參數值，如下所示：
 
-[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=9-28)]
+[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
 
 上述 `movie` 變數代表 `Movie` 物件，其中包含送出待驗證之表單中的資料。 在本例中，驗證程式碼會根據規則，檢查 `ClassicMovieAttribute` 類別之 `IsValid` 方法中的日期和內容類型。 驗證成功時，`IsValid` 會傳回 `ValidationResult.Success` 程式碼。 驗證失敗時，會傳回 `ValidationResult` 和錯誤訊息：
 
-[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=55-58)]
+[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?name=snippet_GetErrorMessage)]
 
 當使用者修改 `Genre` 欄位並送出表單時，`ClassicMovieAttribute` 的 `IsValid` 方法會確認電影是否為 Classic。 如同任何內建屬性，將 `ClassicMovieAttribute` 套用至 `ReleaseDate` 等屬性可確保進行驗證，如上述程式碼範例所示。 由於此範例僅適用於 `Movie` 類型，使用 `IValidatableObject` 會是更好的選擇，如下一個段落所示。
 
 或者，您也可以透過在 `IValidatableObject` 介面上實作 `Validate` 方法，將此相同的程式碼放在模型中。 自訂驗證屬性適用於驗證個別屬性，而實作 `IValidatableObject` 則可用來實作類別層級驗證，如下所示。
 
-[!code-csharp[](validation/sample/MovieIValidatable.cs?range=32-40)]
+[!code-csharp[](validation/sample/MovieIValidatable.cs?name=snippet_Validate)]
 
 ## <a name="client-side-validation"></a>用戶端驗證
 
@@ -130,13 +161,13 @@ MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200 
 
 您必須具有適當 JavaScript 指令碼參考的檢視，以確保用戶端驗證如下所示正常運作。
 
-[!code-cshtml[](validation/sample/Views/Shared/_Layout.cshtml?range=37)]
+[!code-cshtml[](validation/sample/Views/Shared/_Layout.cshtml?name=snippet_ScriptTag)]
 
 [!code-cshtml[](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
 
 [jQuery 低調驗證](https://github.com/aspnet/jquery-validation-unobtrusive) (jQuery Unobtrusive Validation) 指令碼是建置在熱門 [jQuery 驗證](https://jqueryvalidation.org/) 外掛程式上的自訂 Microsoft 前端程式庫。 若沒有 jQuery 低調驗證，您就必須在兩個地方撰寫相同的驗證邏輯程式碼：一次在模型屬性 (property) 上的伺服器端驗證屬性 (attribute)，另一次在用戶端指令碼 (jQuery 驗證的 [`validate()`](https://jqueryvalidation.org/validate/) 方法範例顯示這可能會變得多麼複雜)。 相反地，MVC 的[標籤協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview)能夠使用模型屬性 (property) 中的驗證屬性 (attribute) 和類型中繼資料，來轉譯需要驗證之表單項目中的 HTML 5 [data- 屬性 (attribute)](http://w3c.github.io/html/dom.html#embedding-custom-non-visible-data-with-the-data-attributes)。 MVC 針對內建和自訂屬性都會產生 `data-` 屬性。 jQuery 低調驗證會接著剖析 `data-` 屬性並將邏輯傳遞至 jQuery 驗證，以有效地將伺服器端驗證邏輯「複製」到用戶端。 您可以使用相關的標籤協助程式，來顯示用戶端的驗證錯誤，如下所示：
 
-[!code-cshtml[](validation/sample/Views/Movies/Create.cshtml?highlight=4,5&range=19-25)]
+[!code-cshtml[](validation/sample/Views/Movies/Create.cshtml?name=snippet_ReleaseDate&highlight=4-5)]
 
 上述標籤協助程式會轉譯下列 HTML。 請注意，HTML 輸出中的 `data-` 屬性 (attribute) 會對應至 `ReleaseDate` 屬性 (property) 的驗證屬性 (attribute)。 下面的 `data-val-required` 屬性包含使用者未填入發行日期欄位時所要顯示的錯誤訊息。 jQuery 低調驗證會將此值傳遞至 jQuery 驗證的 [`required()`](https://jqueryvalidation.org/required-method/) 方法，然後在隨附的 **\<span>** 項目中顯示該訊息。
 
@@ -211,7 +242,7 @@ $.get({
 
 您可以建立自訂屬性的用戶端端邏輯，為 [jQuery Validation](http://jqueryvalidation.org/documentation/) 建立配接器的[低調驗證](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html) 會將它當作驗證的一部分自動為您在用戶端上執行。 第一個步驟是實作 `IClientModelValidator` 介面，以控制要新增的 data- 屬性，如下所示：
 
-[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=30-42)]
+[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?name=snippet_AddValidation)]
 
 實作此介面的屬性可以新增至 HTML 屬性來產生欄位。 檢查 `ReleaseDate` 項目的輸出會顯示類似於上述範例的 HTML，不同之處在於現在有 `IClientModelValidator` 的 `AddValidation` 方法中所定義的 `data-val-classicmovie` 屬性。
 
@@ -236,7 +267,7 @@ $.get({
 
 您可以在兩個步驟的程序中實作遠端驗證。 首先，您必須為模型加註 `[Remote]` 屬性。 `[Remote]` 屬性接受多個多載，您可以使用這些多載將用戶端 JavaScript 導向至適當的程式碼進行呼叫。 下列範例指向 `Users` 控制器的 `VerifyEmail` 動作方法。
 
-[!code-csharp[](validation/sample/User.cs?range=7-8)]
+[!code-csharp[](validation/sample/User.cs?name=snippet_UserEmailProperty)]
 
 第二個步驟將驗證程式碼放在 `[Remote]` 屬性中所定義的對應動作方法中。 根據 jQuery 驗證[遠端](https://jqueryvalidation.org/remote-method/)方法文件，伺服器回應必須是符合下列任一條件的 JSON 字串：
 
@@ -247,17 +278,17 @@ $.get({
 
 `VerifyEmail` 方法的定義遵循這些規則，如下所示。 如果電子郵件已在使用中，則會傳回驗證錯誤訊息；如果電子郵件可用，則會傳回 `true`，並將結果包裝在 `JsonResult` 物件中。 用戶端可接著使用此傳回值繼續進行，或顯示錯誤訊息 (如有需要)。
 
-[!code-csharp[](validation/sample/UsersController.cs?range=19-28)]
+[!code-csharp[](validation/sample/UsersController.cs?name=snippet_VerifyEmail)]
 
 現在，當使用者輸入電子郵件時，檢視中的 JavaScript 會發出遠端呼叫，以查看該電子郵件是否已在使用中；若在使用中，則會顯示錯誤訊息。 否則，使用者可以像往常一樣送出表單。
 
 `[Remote]` 屬性 (attribute) 的 `AdditionalFields` 屬性 (property) 可用於針對伺服器上的資料來驗證欄位組合。 例如，如果上述 `User` 模型有兩個額外的屬性 `FirstName` 和 `LastName`，您可能想要確認沒有任何現有的使用者已有該組名稱。 您可以定義新的屬性，如下列程式碼所示：
 
-[!code-csharp[](validation/sample/User.cs?range=10-13)]
+[!code-csharp[](validation/sample/User.cs?name=snippet_UserNameProperties)]
 
 `AdditionalFields` 可能已明確設定為 `"FirstName"` 和 `"LastName"` 字串，但使用上述 [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) 運算子可簡化稍後的重構。 執行驗證的動作方法必須接受兩個引數，一個是 `FirstName` 的值，另一個是 `LastName` 的值。
 
-[!code-csharp[](validation/sample/UsersController.cs?range=30-39)]
+[!code-csharp[](validation/sample/UsersController.cs?name=snippet_VerifyName)]
 
 現在，當使用者輸入名字和姓氏時，JavaScript 會：
 
@@ -272,4 +303,4 @@ $.get({
 public string MiddleName { get; set; }
 ```
 
-如同所有屬性引數，`AdditionalFields` 必須是常數運算式。 因此，您不得使用[字串插值](/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫 [`string.Join()`](https://msdn.microsoft.com/library/system.string.join(v=vs.110).aspx) 來初始化 `AdditionalFields`。 針對每個新增 `[Remote]` 屬性的額外欄位，都必須另外新增一個引數至控制器動作方法。
+如同所有屬性引數，`AdditionalFields` 必須是常數運算式。 因此，您不得使用[內插字串](/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫 <xref:System.String.Join*> 來初始化 `AdditionalFields`。 針對每個新增 `[Remote]` 屬性的額外欄位，都必須另外新增一個引數至控制器動作方法。

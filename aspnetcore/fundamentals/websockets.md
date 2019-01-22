@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/06/2018
 uid: fundamentals/websockets
-ms.openlocfilehash: 3a649f88699d61636d9aa7fbfe4468ca67b3b018
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: 6c32269181ea3311c4aea99c08a1c043e7833b05
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225404"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341444"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core 中的 WebSockets 支援
 
@@ -156,13 +156,7 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 
 若您在 "https://server.com" 上裝載伺服器，且在 "https://client.com" 上裝載用戶端，請將 "https://client.com" 新增至 `AllowedOrigins` 清單中，以讓 WebSockets 進行驗證。
 
-```csharp
-app.UseWebSockets(new WebSocketOptions()
-{
-    AllowedOrigins.Add("https://client.com");
-    AllowedOrigins.Add("https://www.client.com");
-});
-```
+[!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSocketsOptionsAO&highlight=6-7)]
 
 > [!NOTE]
 > 因為 `Origin` 由用戶端控制，所以和 `Referer` 標頭一樣可能受到偽造。 **請勿**使用這些標頭作為驗證機制。

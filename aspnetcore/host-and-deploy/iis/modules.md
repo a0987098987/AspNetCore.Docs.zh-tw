@@ -4,14 +4,14 @@ author: guardrex
 description: 探索 ASP.NET Core 應用程式的使用中和非使用中 IIS 模組，管理 IIS 模組的方式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 01/17/2019
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: c6a6cc9b6b3410267c6f5034f824648a1ebbe10f
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 8c32a668b3945f0da0194162e19e965b4aed3934
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862235"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396268"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 
@@ -26,7 +26,7 @@ ms.locfileid: "52862235"
 | Module | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
 | --- | :---: | --- |
 | **匿名驗證**<br>`AnonymousAuthenticationModule`                                  | 是 | |
-| **基本驗證**<br>`BasicAuthenticationModule`                                          | [是] | |
+| **基本驗證**<br>`BasicAuthenticationModule`                                          | 是 | |
 | **用戶端憑證對應驗證**<br>`CertificateMappingAuthenticationModule`      | 是 | |
 | **CGI**<br>`CgiModule`                                                                           | 否  | |
 | **設定驗證**<br>`ConfigurationValidationModule`                                  | 是 | |
@@ -35,7 +35,7 @@ ms.locfileid: "52862235"
 | **預設文件**<br>`DefaultDocumentModule`                                                  | 否  | [預設檔案中介軟體](xref:fundamentals/static-files#serve-a-default-document) |
 | **摘要式驗證**<br>`DigestAuthenticationModule`                                        | 是 | |
 | **目錄瀏覽**<br>`DirectoryListingModule`                                               | 否  | [目錄瀏覽中介軟體](xref:fundamentals/static-files#enable-directory-browsing) |
-| **動態壓縮**<br>`DynamicCompressionModule`                                            | [是] | [回應壓縮中介軟體](xref:performance/response-compression) |
+| **動態壓縮**<br>`DynamicCompressionModule`                                            | 是 | [回應壓縮中介軟體](xref:performance/response-compression) |
 | **追蹤**<br>`FailedRequestsTracingModule`                                                     | 是 | [ASP.NET Core 記錄](xref:fundamentals/logging/index#tracesource-provider) |
 | **檔案快取**<br>`FileCacheModule`                                                            | 否  | [回應快取中介軟體](xref:performance/caching/middleware) |
 | **HTTP 快取**<br>`HttpCacheModule`                                                            | 否  | [回應快取中介軟體](xref:performance/caching/middleware) |
@@ -43,12 +43,12 @@ ms.locfileid: "52862235"
 | **HTTP 重新導向**<br>`HttpRedirectionModule`                                                  | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **IIS 用戶端憑證對應驗證**<br>`IISCertificateMappingAuthenticationModule` | 是 | |
 | **IP 及網域限制**<br>`IpRestrictionModule`                                          | 是 | |
-| **ISAPI 篩選器**<br>`IsapiFilterModule`                                                         | [是] | [中介軟體](xref:fundamentals/middleware/index) |
+| **ISAPI 篩選器**<br>`IsapiFilterModule`                                                         | 是 | [中介軟體](xref:fundamentals/middleware/index) |
 | **ISAPI**<br>`IsapiModule`                                                                       | 是 | [中介軟體](xref:fundamentals/middleware/index) |
 | **通訊協定支援**<br>`ProtocolSupportModule`                                                  | 是 | |
-| **要求篩選**<br>`RequestFilteringModule`                                                | [是] | [URL 重寫中介軟體`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
+| **要求篩選**<br>`RequestFilteringModule`                                                | 是 | [URL 重寫中介軟體`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **要求監視器**<br>`RequestMonitorModule`                                                    | 是 | |
-| **URL 重新寫入**&#8224;<br>`RewriteModule`                                                      | [是] | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
+| **URL 重新寫入**&#8224;<br>`RewriteModule`                                                      | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **伺服器端包含**<br>`ServerSideIncludeModule`                                            | 否  | |
 | **靜態壓縮**<br>`StaticCompressionModule`                                              | 否  | [回應壓縮中介軟體](xref:performance/response-compression) |
 | **靜態內容**<br>`StaticFileModule`                                                         | 否  | [靜態檔案中介軟體](xref:fundamentals/static-files) |
@@ -105,13 +105,13 @@ ms.locfileid: "52862235"
 
 如果選擇透過 *web.config* 中的設定來移除模組，請先將模組解除鎖定，以及將 *web.config* 的 `<modules>` 區段解除鎖定：
 
-1. 將伺服器層級的模組解除鎖定。 選取「IIS 管理員」[連線] 資訊看板中的 IIS 伺服器。 開啟 [IIS] 區域中的 [模組]。 選取清單中的模組。 在右邊的 [動作] 資訊看板上，選取 [解除鎖定]。 將您打算稍後從 *web.config* 移除的模組都解除鎖定。
+1. 將伺服器層級的模組解除鎖定。 選取「IIS 管理員」[連線] 資訊看板中的 IIS 伺服器。 開啟 [IIS] 區域中的 [模組]。 選取清單中的模組。 在右邊的 [動作] 資訊看板上，選取 [解除鎖定]。 若模組的動作項目顯示為**鎖定**，就代表該模組已經解除鎖定，且不需要任何動作。 將您打算稍後從 *web.config* 移除的模組都解除鎖定。
 
 2. 在 *web.config* 不含 `<modules>` 區段的情況下部署應用程式。如果在 *web.config* 包含 `<modules>` 區段的情況下部署應用程式，但未先在「IIS 管理員」中將該區段解除鎖定，則當「設定管理員」嘗試將該區段解除鎖定時就會擲回例外狀況。 因此，請在沒有 `<modules>` 區段的情況下部署應用程式。
 
-3. 將 *web.config* 的 `<modules>` 區段解除鎖定。在 [連線] 資訊看板中，選取 [站台]中的網站。 在 [管理] 區域中，開啟 [設定編輯器]。 使用導覽控制項來選取 `system.webServer/modules` 區段。 在右邊的 [動作] 資訊看板上，選取將區段 [解除鎖定]。
+3. 將 *web.config* 的 `<modules>` 區段解除鎖定。在 [連線] 資訊看板中，選取 [站台]中的網站。 在 [管理] 區域中，開啟 [設定編輯器]。 使用導覽控制項來選取 `system.webServer/modules` 區段。 在右邊的 [動作] 資訊看板上，選取將區段 [解除鎖定]。 若模組區段的動作項目顯示為**鎖定區段**，就代表該模組區段已經解除鎖定，且不需要任何動作。
 
-4. 此時，可以在 *web.config* 檔案中，新增一個含有 `<remove>` 元素的 `<modules>` 區段以從應用程式移除模組。 您可以新增多個 `<remove>` 元素來移除多個模組。 如果已在伺服器上進行 *web.config* 變更，請立即在本機對專案的 *web.config* 檔案進行相同的變更。 以這種方式移除模組不會影響模組與伺服器上其他應用程式的搭配使用。
+4. 將 `<modules>` 區段新增至具有 `<remove>` 元素的應用程式本機 *web.config* 檔案，以從應用程式移除該模組。 新增多個 `<remove>` 元素以移除多個模組。 如果已在伺服器上進行 *web.config* 變更，請立即在本機對專案的 *web.config* 檔案進行相同的變更。 使用此方法移除模組不會影響模組與伺服器上其他應用程式的搭配使用。
 
    ```xml
    <configuration>
@@ -122,6 +122,26 @@ ms.locfileid: "52862235"
     </system.webServer>
    </configuration>
    ```
+   
+若要使用 *web.config* 對 IIS Express 新增或移除模組，請修改 *applicationHost.config* 以解除鎖定 `<modules>` 區段：
+
+1. 開啟 *{APPLICATION ROOT}\\.vs\config\applicationhost.config*。
+
+1. 找出 IIS 模組的 `<section>` 元素，並將 `overrideModeDefault` 從 `Deny` 變更為 `Allow`：
+
+   ```xml
+   <section name="modules" 
+            allowDefinition="MachineToApplication" 
+            overrideModeDefault="Allow" />
+   ```
+   
+1. 找出 `<location path="" overrideMode="Allow"><system.webServer><modules>` 區段。 對於您要移除的任何模組，請將 `lockItem` 從 `true` 變更為 `false`。 以下為將 CGI 模組解除鎖定的範例：
+
+   ```xml
+   <add name="CgiModule" lockItem="false" />
+   ```
+   
+1. 在將 `<modules>` 區段及個別模組解除鎖定後，您可任意使用應用程式的 *web.config* 檔案新增或移除 IIS 模組，以在 IIS Express 上執行應用程式。
 
 您也可以使用 *Appcmd.exe* 來移除 IIS 模組。 請在命令中提供 `MODULE_NAME` 和 `APPLICATION_NAME`：
 

@@ -110,7 +110,7 @@ EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 �
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-移除移轉
+Remove-Migration
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 

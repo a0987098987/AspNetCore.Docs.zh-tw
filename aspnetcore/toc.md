@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a3ac1ac389892681e8c122d569e6325353ed6e88
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: 494f34fb55ed924ad3affcad53486b54396325fe
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341676"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444320"
 ---
 # [ASP.NET Core 文件](/aspnet/#pivot=core)
 
@@ -25,6 +25,8 @@ ms.locfileid: "54341676"
 ## Web API 應用程式
 ### [建立 Web API](xref:tutorials/first-web-api)
 ### [Web API (使用 MongoDB)](xref:tutorials/first-mongo-app)
+### [行動裝置的後端](xref:mobile/native-mobile-backend)
+
 ## Web 應用程式
 ### [Razor 頁面](xref:tutorials/razor-pages/index)
 ### [MVC](xref:tutorials/first-mvc-app/index)
@@ -32,7 +34,6 @@ ms.locfileid: "54341676"
 ## 即時 Web 應用程式
 ### [使用 JavaScript 的 SignalR](xref:tutorials/signalr)
 ### [使用 TypeScript 的 SignalR](xref:tutorials/signalr-typescript-webpack)
-## [建立原生行動應用程式的後端服務](xref:mobile/native-mobile-backend)
 
 ## 資料存取
 ### [使用 Razor Pages 的 EF Core](xref:data/ef-rp/index)
@@ -50,16 +51,13 @@ ms.locfileid: "54341676"
 ## [選項](xref:fundamentals/configuration/options)
 ## [記錄](xref:fundamentals/logging/index)
 ## [處理錯誤](xref:fundamentals/error-handling)
-## 中介軟體
-### [概觀](xref:fundamentals/middleware/index)
-### [Factory 式中介軟體](xref:fundamentals/middleware/extensibility)
-### [Factory 式中介軟體與協力廠商容器](xref:fundamentals/middleware/extensibility-third-party-container)
+## [中介軟體](xref:fundamentals/middleware/index)
 ## 主機
 ### [概觀](xref:fundamentals/host/index)
 ### [Web 代管](xref:fundamentals/host/web-host)
 ### [一般代管](xref:fundamentals/host/generic-host)
 ## [伺服器](xref:fundamentals/servers/index)
-## [初始化 HTTP 要求](xref:fundamentals/http-requests)
+## [發出 HTTP 要求](xref:fundamentals/http-requests)
 
 # Web 應用程式
 ## Razor Pages
@@ -286,6 +284,7 @@ ms.locfileid: "54341676"
 ### [建置 Docker 映像](/dotnet/articles/core/docker/building-net-docker-images)
 ### [Visual Studio Tools](xref:host-and-deploy/docker/visual-studio-tools-for-docker)
 ### [發行至 Docker 映像](/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
+### [範例 Docker 映像](https://github.com/dotnet/dotnet-docker/blob/master/samples/aspnetapp/README.md)
 ## [Proxy 和負載平衡器組態](xref:host-and-deploy/proxy-load-balancer)
 ## [裝載於 Web 伺服陣列](xref:host-and-deploy/web-farm)
 ## [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)
@@ -373,7 +372,7 @@ ms.locfileid: "54341676"
 #### [暫時資料保護提供者](xref:security/data-protection/implementation/key-storage-ephemeral)
 ### 相容性
 #### [概觀](xref:security/data-protection/compatibility/index)
-#### [取代 ASP.NET 中的 <machineKey>](xref:security/data-protection/compatibility/replacing-machinekey)
+#### [取代 ASP.NET 中的 machineKey](xref:security/data-protection/compatibility/replacing-machinekey)
 ## [在開發過程中保護祕密](xref:security/app-secrets)
 ## [強制使用 HTTPS](xref:security/enforcing-ssl)
 ## [EU 一般資料保護規定 (GDPR) 支援](xref:security/gdpr)
@@ -396,12 +395,14 @@ ms.locfileid: "54341676"
 ## [診斷工具](xref:performance/diagnostic-tools)
 ## [負載與壓力測試](xref:test/loadtests)
 
-# 其他主題
-## [全球化和當地語系化](xref:fundamentals/localization)
-## [使用 Orchard Core 的可攜式物件當地語系化](xref:fundamentals/portable-object-localization)
+# 全球化和當地語系化
+## [概觀](xref:fundamentals/localization)
+## [可攜式物件當地語系化](xref:fundamentals/portable-object-localization)
+
+# 進階
 ## [URL 重寫](xref:fundamentals/url-rewriting)
 ## [檔案提供者](xref:fundamentals/file-providers)
-## [要求的功能](xref:fundamentals/request-features)
+## [要求功能介面](xref:fundamentals/request-features)
 ## [存取 HttpContext](xref:fundamentals/httpcontext)
 ## [變更權杖](xref:fundamentals/change-tokens)
 ## [開啟 Web Interface for .NET (OWIN)](xref:fundamentals/owin)
@@ -411,6 +412,8 @@ ms.locfileid: "54341676"
 ## [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)
 ## [使用 LoggerMessage 記錄](xref:fundamentals/logging/loggermessage)
 ## [使用檔案監看員](xref:tutorials/dotnet-watch)
+### [Factory 式中介軟體](xref:fundamentals/middleware/extensibility)
+### [Factory 式中介軟體與協力廠商容器](xref:fundamentals/middleware/extensibility-third-party-container)
 
 # 移轉
 ## [2.2 至 3.0](xref:migration/22-to-30)

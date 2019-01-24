@@ -25,25 +25,25 @@ ms.locfileid: "50207539"
 ![課程 [編輯] 頁面](update-related-data/_static/course-edit.png)
 ![講師 [編輯] 頁面](update-related-data/_static/instructor-edit-courses.png)
 
-檢查並測試 [建立] 與 [編輯] 課程頁面。 建立新的課程。 部門是依照其主索引鍵 (整數) 來進行選取，而不是它的名稱。 編輯新的課程。 當您完成測試時，請刪除新的課程。
+檢查並測試 *Create* 與 *Edit* 課程頁面。 建立新的課程。 部門是依照其主索引鍵 (整數) 來進行選取，而不是它的名稱。 編輯新的課程。 當您完成測試時，請刪除新的課程。
 
 ## <a name="create-a-base-class-to-share-common-code"></a>建立要共用通用程式碼的基底類別
 
-[課程]/[建立] 和 [課程]/[編輯] 頁面每個都需要部門名稱的清單。 請針對 [建立] 和 [編輯] 頁面建立 *Pages/Courses/DepartmentNamePageModel.cshtml.cs* 基底類別：
+`Courses/Create` 和 `Courses/Edit` 頁面每個都需要部門名稱的清單。 請針對 *Create* 和 *Edit* 頁面建立 *Pages/Courses/DepartmentNamePageModel.cshtml.cs* 基底類別：
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
 
 上述程式碼會建立 [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) 以包含部門名稱的清單。 如果指定了 `selectedDepartment`，就會在 `SelectList` 中選取該部門。
 
-[建立] 和 [編輯] 頁面模型類別將衍生自 `DepartmentNamePageModel`。
+*Create* 和 *Edit* 頁面模型類別將衍生自 `DepartmentNamePageModel`。
 
 ## <a name="customize-the-courses-pages"></a>自訂 [課程] 頁面
 
-當新的課程實體建立時，其必須要與現有的部門具有關聯性。 為了在建立課程新增部門，[建立] 和 [編輯] 的基底類別包含用來選取部門的下拉式清單。 下拉式清單會設定 `Course.DepartmentID` 外部索引鍵 (FK) 屬性。 EF Core 則使用 `Course.DepartmentID` FK 來載入 `Department` 導覽屬性。
+當新的課程實體建立時，其必須要與現有的部門具有關聯性。 為了在建立課程新增部門，*Create* 和 *Edit* 的基底類別包含用來選取部門的下拉式清單。 下拉式清單會設定 `Course.DepartmentID` 外部索引鍵 (FK) 屬性。 EF Core 則使用 `Course.DepartmentID` FK 來載入 `Department` 導覽屬性。
 
 ![建立課程](update-related-data/_static/ddl.png)
 
-以下列程式碼更新 [建立] 頁面模型：
+以下列程式碼更新 *Create* 頁面模型：
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Create.cshtml.cs?highlight=7,18,32-999)]
 
@@ -74,9 +74,9 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 測試 [建立] 頁面。 [建立] 頁面會顯示部門名稱，而不是部門識別碼。
 
-### <a name="update-the-courses-edit-page"></a>更新 Courses 的 [編輯] 頁面。
+### <a name="update-the-courses-edit-page"></a>更新 Courses 的 *Edit* 頁面。
 
-以下列程式碼更新 [編輯] 頁面模型：
+以下列程式碼更新 *Edit* 頁面模型：
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40,47-999)]
 

@@ -654,7 +654,9 @@ dotnet ef database update
 
 [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
 
-新增下列醒目提示程式碼。 新的程式碼應位於 `.CreateTable( name: "Department"` 區塊之後：[!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
+新增下列醒目提示程式碼。 新的程式碼應位於 `.CreateTable( name: "Department"` 區塊之後：
+
+[!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
 藉由上述的變更，現有的 `Course` 資料列便會在執行 `ComplexDataModel``Up` 方法後與 "Temp" 部門產生關聯。
 

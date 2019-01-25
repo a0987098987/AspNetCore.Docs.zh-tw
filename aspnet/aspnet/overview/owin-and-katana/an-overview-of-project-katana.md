@@ -84,7 +84,7 @@ OWIN 的第二個索引鍵項目是應用程式委派。 這是函式簽章會�
 - 非同步的設計可讓要有效率地使用它處理的運算資源，特別是在更多的 I/O 密集作業的抽象概念。
 - 因為應用程式委派是不可部分完成的執行單位，因為做為參數的委派上執行的環境字典時，OWIN 元件可以輕鬆地鏈結在一起，以建立複雜的 HTTP 處理管線。
 
-從實作觀點來看，OWIN 會是一種規格 ([http://owin.org/html/owin.html](http://owin.org/html/owin.html))。 其目標並不是成為下一代 的 Web 框架，而是Web框架與Web伺服器如何互動的規格。
+從實作觀點來看，OWIN 是一種規格 ([http://owin.org/html/owin.html](http://owin.org/html/owin.html))。其目標並不是成為下一代 的 Web 架構，而是 Web 架構與 Web 伺服器如何互動的規格。
 
 如果您已調查[OWIN](http://owin.org/)或是[Katana](https://github.com/aspnet/AspNetKatana/wiki)，您可能也會發現[Owin NuGet 套件](http://nuget.org/packages/Owin)和 Owin.dll。 此程式庫包含單一的介面， [IAppBuilder](https://github.com/owin/owin/blob/master/src/Owin/IAppBuilder.cs)，它會正式制定並制訂中所述的啟動順序[區段 4](http://owin.org/html/owin.html#4-application-startup)的 OWIN 規格。 雖然不需要以組建 OWIN 伺服器[IAppBuilder](https://github.com/owin/owin/blob/master/src/Owin/IAppBuilder.cs)介面提供具體的參考點，以及它正由 Katana 專案元件。
 

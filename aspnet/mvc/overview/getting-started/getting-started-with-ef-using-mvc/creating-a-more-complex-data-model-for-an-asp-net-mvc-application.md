@@ -4,17 +4,17 @@ title: 教學課程：建立更複雜的資料模型的 ASP.NET MVC 應用程式
 author: tdykstra
 description: 在本教學課程中，您將新增更多的實體和關聯性，並將指定格式、 驗證和資料庫對應規則來自訂資料模型。
 ms.author: riande
-ms.date: 01/16/2019
+ms.date: 01/22/2019
 ms.topic: tutorial
 ms.assetid: 46f7f3c9-274f-4649-811d-92222a9b27e2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 50cbc184983b3e37c34332dad52bc0d70ade18c2
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
-ms.translationtype: MT
+ms.openlocfilehash: 5d05d456315c019c545a91b527bb05510126c06b
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396294"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836619"
 ---
 # <a name="tutorial-create-a-more-complex-data-model-for-an-aspnet-mvc-app"></a>教學課程：建立更複雜的資料模型的 ASP.NET MVC 應用程式
 
@@ -397,6 +397,10 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 以滑鼠右鍵按一下`CourseInstructor`資料表，然後選取**顯示資料表資料**以確認它的資料中的`Instructor`實體新增至`Course.Instructors`導覽屬性。
 
 ![Table_data_in_CourseInstructor_table](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image17.png)
+
+## <a name="get-the-code"></a>取得程式碼
+
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
 ## <a name="additional-resources"></a>其他資源
 

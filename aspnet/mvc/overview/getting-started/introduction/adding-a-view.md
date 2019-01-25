@@ -3,14 +3,14 @@ title: 將檢視新增至 MVC 應用程式
 author: Rick-Anderson
 description: 將檢視新增至 MVC 應用程式
 ms.author: riande
-ms.date: 09/1721/2017
+ms.date: 01/23/2019
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: 47447c82506cc0eb4dafabe272b3204f76a2edd7
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: afa7584529566ebe82a0eb3849de89bd0df064bd
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098658"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837750"
 ---
 <a name="adding-a-view"></a>新增檢視
 ====================
@@ -60,7 +60,7 @@ ms.locfileid: "54098658"
 
 ![](adding-a-view/_static/image6.png)
 
-看起來很好。 不過，請注意，瀏覽器的標題列會顯示&quot;索引-我的 ASP.NET 應用"和在頁面頂端的大型連結會顯示"Application name"。 根據如何小您進行瀏覽器視窗，您可能需要按一下以查看右上角的三個橫條來**首頁**，**有關**，**連絡人**， **註冊**並**登入**連結。
+看起來很好。 不過，請注意，瀏覽器的標題列會顯示 索引-My ASP.NET 應用程式，「 巨量的連結，在頁面頂端顯示 "Application name"。 根據如何小您進行瀏覽器視窗，您可能需要按一下以查看右上角的三個橫條來**首頁**，**有關**，**連絡人**， **註冊**並**登入**連結。
 
 ## <a name="changing-views-and-layout-pages"></a>變更檢視和版面配置頁
 
@@ -112,7 +112,7 @@ ms.locfileid: "54098658"
 
 我們移至資料庫，並討論模型之前，不過，讓我們先討論將資訊從控制器傳遞至檢視。 控制器類別會叫用，以回應傳入的 URL 要求。 控制器類別是回應的您可在此撰寫處理傳入的瀏覽器的程式碼要求、 從資料庫擷取資料和最終決定哪一種將傳回給瀏覽器。 然後從控制器來產生並格式化瀏覽器的 HTML 回應使用檢視範本。
 
-控制器是負責提供任何資料或物件所需為了讓檢視範本來呈現至瀏覽器的回應。 最佳做法是：**檢視範本應該永遠不會執行商務邏輯或直接與資料庫互動**。 相反地，檢視範本應該只使用由控制器提供給它的資料。 維護這&quot;關注點分離&quot;精簡、 可測試且更易於維護，協助保持您的程式碼。
+控制器是負責提供任何資料或物件所需為了讓檢視範本來呈現至瀏覽器的回應。 最佳做法：**檢視範本應該永遠不會執行商務邏輯或直接與資料庫互動**。 相反地，檢視範本應該只使用由控制器提供給它的資料。 維護這&quot;關注點分離&quot;精簡、 可測試且更易於維護，協助保持您的程式碼。
 
 目前，`Welcome`中的動作方法`HelloWorldController`類別會採用`name`和`numTimes`參數，然後輸出到瀏覽器直接的值。 與其讓控制器呈現這個回應，做為字串，讓我們變更控制器以改為使用檢視範本。 檢視範本會產生動態回應，這表示您需要將適當數量的資料從控制器傳遞至檢視，以便產生回應。 您可以透過讓控制器將檢視範本需要的動態資料 （參數） 放置`ViewBag`檢視範本之後可以存取的物件。
 

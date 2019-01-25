@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/older-versions/handling-connection-lifetime-events
 title: 了解和處理 signalr 的連線存留期事件 1.x |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 本文說明如何使用事件中樞 API 所公開。
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/05/2013
 ms.assetid: e608e263-264d-448b-b0eb-6eeb77713b22
 msc.legacyurl: /signalr/overview/older-versions/handling-connection-lifetime-events
 msc.type: authoredcontent
-ms.openlocfilehash: f965c38e18c442268f9bb1d7ffb5e98a135efade
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: bf10cf3e3e1881a976e8a123b48007f7bd8821f7
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287673"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837659"
 ---
 <a name="understanding-and-handling-connection-lifetime-events-in-signalr-1x"></a>了解和處理連線存留期事件 SignalR 1.x
 ====================

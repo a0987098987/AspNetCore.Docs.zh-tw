@@ -1,20 +1,20 @@
 ---
 uid: signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 title: 教學課程：使用 SignalR 2 建立高頻率即時應用程式 |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 本教學課程會示範如何建立 web 應用程式，使用 ASP.NET SignalR 提供高頻率的傳訊功能。
-ms.author: riande
-ms.date: 01/02/2019
+ms.author: bradyg
+ms.date: 01/22/2019
 ms.assetid: 9f969dda-78ea-4329-b1e3-e51c02210a2b
 msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
 ms.topic: tutorial
-ms.openlocfilehash: 85503db0b41be6f87136627667d6dd71f0d4f609
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 44aaa2b0c059de310e963f642fa56c2f00a7e443
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098586"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836723"
 ---
 # <a name="tutorial-create-high-frequency-real-time-app-with-signalr-2"></a>教學課程：使用 SignalR 2 建立高頻率即時應用程式
 
@@ -24,7 +24,7 @@ ms.locfileid: "54098586"
 
 本教學課程中介紹的概念有即時遊戲中的應用程式和其他模擬應用程式。
 
-在本教學課程中，您：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 設定專案
@@ -224,6 +224,10 @@ OWIN 啟動類別呼叫`MapSignalR`應用程式在執行時`Configuration`方法
 
 此程式碼會將圖形從舊位置移至新的。 伺服器會提供形狀的位置的動畫時間間隔期間。 在此情況下，這會是 100 毫秒。 應用程式會清除任何新的動畫開始之前，在圖形上執行的上一個動畫。
 
+## <a name="get-the-code"></a>取得程式碼
+
+[下載已完成的專案](http://code.msdn.microsoft.com/SignalR-20-MoveShape-Demo-6285b83a)
+
 ## <a name="additional-resources"></a>其他資源
 
 只是您已了解的通訊架構可用於開發線上遊戲，以及其他的模擬，像是[ShootR 遊戲建立與 SignalR](https://shootr.azurewebsites.net/)。
@@ -238,7 +242,7 @@ OWIN 啟動類別呼叫`MapSignalR`應用程式在執行時`Configuration`方法
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 設定專案

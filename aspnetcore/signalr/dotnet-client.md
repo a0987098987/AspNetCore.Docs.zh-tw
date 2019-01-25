@@ -1,18 +1,18 @@
 ---
 title: ASP.NET Core SignalR.NET 用戶端
-author: tdykstra
+author: bradygaster
 description: ASP.NET Core SignalR.NET 用戶端的相關資訊
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: bradyg
 ms.custom: mvc
 ms.date: 09/10/2018
 uid: signalr/dotnet-client
-ms.openlocfilehash: 488d2ec31ce71534eeff4b9428262cc9ca00d992
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 25b618f7a424b217c0fb55417754ea358280b95a
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50205948"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836302"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>ASP.NET Core SignalR.NET 用戶端
 

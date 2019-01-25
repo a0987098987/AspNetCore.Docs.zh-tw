@@ -1,18 +1,18 @@
 ---
 title: 使用 ASP.NET Core SignalR MessagePack 中樞通訊協定
-author: tdykstra
+author: bradygaster
 description: 加入 ASP.NET Core SignalR MessagePack 中樞通訊協定。
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: bradyg
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: 0874afc5493eca5d43dfde30bb28aedc1f193744
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 2852ca93c62e706e9a5203625822c2fb954fd2b8
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325572"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54835605"
 ---
 # <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR MessagePack 中樞通訊協定
 

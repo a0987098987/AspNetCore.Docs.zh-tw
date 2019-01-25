@@ -1,18 +1,18 @@
 ---
 title: ASP.NET Core SignalR 中的安全性考量
-author: tdykstra
+author: bradygaster
 description: 了解如何在 ASP.NET Core SignalR 使用驗證和授權。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
 ms.date: 11/06/2018
 uid: signalr/security
-ms.openlocfilehash: f646d319cf3030fd4d769e882514da14b230bbdd
-ms.sourcegitcommit: c3fa5aded0bf76a7414047d50b8a2311d27ee1ef
+ms.openlocfilehash: 52cfac6be8e61572acdf0b19dab574b607314d97
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51276141"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836060"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中的安全性考量
 
@@ -42,29 +42,29 @@ ms.locfileid: "51276141"
 > [!NOTE]
 > SignalR 與不相容的內建的 CORS 功能在 Azure App Service 中。
 
-## <a name="websocket-origin-restriction"></a>WebSocket 原始限制
+## <a name="websocket-origin-restriction"></a>WebSocket Origin Restriction
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Websocket 不適用於 CORS 所提供的保護。 如原始 WebSockets 限制，請參閱[WebSockets 原始限制](xref:fundamentals/websockets#websocket-origin-restriction)。
+CORS 所提供的保護不套用至 WebSocket。 如原始 WebSockets 限制，請參閱[WebSockets 原始限制](xref:fundamentals/websockets#websocket-origin-restriction)。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-Websocket 不適用於 CORS 所提供的保護。 瀏覽器執行**不**:
+CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 
-* 執行 CORS 事前要求。
-* 採用指定的限制`Access-Control`進行 WebSocket 要求的標頭。
+* 執行 CORS 的事前要求。
+* 進行 WebSocket 要求時，採用 `Access-Control` 標頭中所指定的限制。
 
-不過，請勿傳送瀏覽器`Origin`時發出 WebSocket 要求的標頭。 應用程式應該設定為驗證這些標頭，以確保允許來自預期的原始來源的 Websocket。
+不過，瀏覽器會在發出 WebSocket 要求時，傳送 `Origin` 標頭。 應設定應用程式驗證這些標頭，以確保只允許來自預期來源的 WebSocket。
 
 在 ASP.NET Core 2.1 和更新版本，標頭驗證，可透過自訂的中介軟體放**之前`UseSignalR`，並驗證中介軟體**在`Configure`:
 
 [!code-csharp[Main](security/sample/Startup.cs?name=snippet2)]
 
 > [!NOTE]
-> `Origin`標頭控制用戶端和 like`Referer`標頭，都可能假冒。 這些標頭應該**不**用作為驗證機制。
+> 因為 `Origin` 由用戶端控制，所以和 `Referer` 標頭一樣可能受到偽造。 這些標頭應該**不**用作為驗證機制。
 
 ::: moniker-end
 

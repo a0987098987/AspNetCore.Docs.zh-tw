@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/releases/upgrading-signalr-1x-projects-to-20
 title: 將 SignalR 1.x 專案升級至第 2 版 |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 本主題描述如何將現有的 SignalR 1.x 專案升級至 SignalR 2.x 中，以及如何針對升級的程序期間可能發生的問題進行疑難排解...
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: adcfef99-9bc5-489d-a91b-9b7c2bc35e04
 msc.legacyurl: /signalr/overview/releases/upgrading-signalr-1x-projects-to-20
 msc.type: authoredcontent
-ms.openlocfilehash: 23ea23585b15395cf86bdad13885af32d1b64e79
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: a1cb4903f3cdeef70ffd0f624a3a2170f641a395
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53286840"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837334"
 ---
 <a name="upgrading-signalr-1x-projects-to-version-2"></a>將 SignalR 1.x 專案升級至第 2 版
 ====================
@@ -58,7 +58,7 @@ SignalR 2 使用的伺服器平台提供具有一致開發體驗[OWIN](http://ow
 
 下列各節描述升級 SignalR 專案，以及如何針對可能發生的問題進行疑難排解所涉及的工作。
 
-- [範例：升級至 SignalR 2 的快速入門教學課程](#example)
+- [例如：升級至 SignalR 2 的快速入門教學課程](#example)
 - [在升級期間發生的錯誤進行疑難排解](#troubleshooting)
 
 <a id="example"></a>

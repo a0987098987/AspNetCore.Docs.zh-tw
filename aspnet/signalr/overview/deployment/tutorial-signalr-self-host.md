@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/deployment/tutorial-signalr-self-host
 title: 教學課程：SignalR 自我裝載 |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 本教學課程會示範如何建立自我裝載的 SignalR 2 伺服器，以及如何使用 JavaScript 用戶端連線到它。 教學課程 V 中使用的軟體版本...
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 400db427-27af-4f2f-abf0-5486d5e024b5
 msc.legacyurl: /signalr/overview/deployment/tutorial-signalr-self-host
 msc.type: authoredcontent
-ms.openlocfilehash: 48cb3d4d71c33ac3382b2b35b5a19fa1c4958874
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 6a6359d59a4b715e13fe2bbcef57da6d6d6294b5
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287399"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54835748"
 ---
 <a name="tutorial-signalr-self-host"></a>教學課程：SignalR 自我裝載
 ====================
@@ -93,7 +93,7 @@ SignalR 伺服器通常裝載在 IIS 中，ASP.NET 應用程式中，但它也�
 
     上述程式碼包含三個類別：
 
-    - **計劃**，包括**Main**定義主要執行路徑的方法。 在此方法中，類型的 web 應用程式**啟始**會在指定的 URL 啟動 (`http://localhost:8080`)。 如果端點需要安全性，就可以實作 SSL。 請參閱[How to:使用 SSL 憑證設定連接埠](https://msdn.microsoft.com/library/ms733791.aspx)如需詳細資訊。
+    - **計劃**，包括**Main**定義主要執行路徑的方法。 在此方法中，類型的 web 應用程式**啟始**會在指定的 URL 啟動 (`http://localhost:8080`)。 如果端點需要安全性，就可以實作 SSL。 請參閱[如何：使用 SSL 憑證設定連接埠](https://msdn.microsoft.com/library/ms733791.aspx)如需詳細資訊。
     - **啟始**、 包含 SignalR 伺服器組態的類別 (本教學課程使用的唯一設定是在呼叫`UseCors`)，和呼叫`MapSignalR`，專案中建立路由的中樞中的任何物件。
     - **MyHub**，應用程式會提供給用戶端的 SignalR Hub 類別。 這個類別具有單一方法**傳送**，用戶端會呼叫以將訊息廣播到所有其他連線的用戶端。
 6. 編譯並執行應用程式。 伺服器正在執行的地址應該會顯示在主控台視窗中。

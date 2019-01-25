@@ -1,19 +1,19 @@
 ---
 uid: signalr/index
-title: SignalR |Microsoft Docs
-author: rick-anderson
+title: SignalR | Microsoft Docs
+author: bradygaster
 description: Microsoft ASP.NET SignalR 是 ASP.NET 開發人員適用的程式庫，可簡化將即時 web 功能新增至您的應用程式的程序。
-ms.author: riande
+ms.author: bradyg
 ms.date: 10/24/2012
 ms.assetid: 282a521f-2b86-4fac-bcf6-b6d5e0fe969c
 msc.legacyurl: /signalr
 msc.type: categoryindex
-ms.openlocfilehash: 75978763451b3cb88146fde3c8dfd5d4b327dc5d
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 52a36a2790de31e82d7ec7bae9f4c24439749009
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "48253524"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837607"
 ---
 <a name="signalr"></a>SignalR
 ====================
@@ -24,10 +24,10 @@ ms.locfileid: "48253524"
         - [SignalR 簡介](overview/getting-started/introduction-to-signalr.md)
         - [支援的平台](overview/getting-started/supported-platforms.md)
         - [教學課程：開始使用 SignalR 2](overview/getting-started/tutorial-getting-started-with-signalr.md)
-        - [教學課程：開始使用 SignalR 2 及 MVC 5](overview/getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
+        - [教學課程：開始使用 SignalR 2 和 MVC 5](overview/getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
         - [教學課程：高頻率即時與 SignalR 2](overview/getting-started/tutorial-high-frequency-realtime-with-signalr.md)
         - [教學課程：伺服器廣播與 SignalR 2](overview/getting-started/tutorial-server-broadcast-with-signalr.md)
-        - [實習實驗室：即時 Web 應用程式與 SignalR](overview/getting-started/real-time-web-applications-with-signalr.md)
+        - [實習實驗室：使用 SignalR 即時 Web 應用程式](overview/getting-started/real-time-web-applications-with-signalr.md)
     - [API 指南](overview/guide-to-the-api/index.md)
 
         - [中樞 API 指南 - 伺服器 (C#)](overview/guide-to-the-api/hubs-api-guide-server.md)

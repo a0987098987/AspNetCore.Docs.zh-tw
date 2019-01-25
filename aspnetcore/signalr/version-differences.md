@@ -1,17 +1,17 @@
 ---
 title: SignalR 和 ASP.NET Core SignalR 之間的差異
-author: tdykstra
+author: bradygaster
 description: SignalR 和 ASP.NET Core SignalR 之間的差異
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: bradyg
 ms.date: 11/14/2018
 uid: signalr/version-differences
-ms.openlocfilehash: fb10d6e62ff28128e6e9e5dcef55e44f25de8ad0
-ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
+ms.openlocfilehash: 091fc44fccf820a394e7c6f775700c85bebc9101
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53425116"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836658"
 ---
 # <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>ASP.NET SignalR 及 ASP.NET Core SignalR 之間的差異
 

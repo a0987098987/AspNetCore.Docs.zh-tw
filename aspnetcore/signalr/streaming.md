@@ -1,18 +1,18 @@
 ---
 title: 使用資料流在 ASP.NET Core SignalR
-author: tdykstra
+author: bradygaster
 description: ''
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/14/2018
 uid: signalr/streaming
-ms.openlocfilehash: e0d201a7ffebbbe387a874c6d788994faa2be7a5
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: ade2d6fb6e799d53ff3aaa69c641d0088acdee95
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098801"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837399"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>使用資料流在 ASP.NET Core SignalR
 

@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 title: 教學課程：伺服器廣播與 ASP.NET SignalR 1.x |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 本教學課程會示範如何建立使用 ASP.NET SignalR 來提供伺服器廣播的功能的 web 應用程式。 伺服器廣播方法，communic...
-ms.author: riande
+ms.author: bradyg
 ms.date: 04/10/2013
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: d5c09f6493c4dedb4fc2ecbf9055dd014ede71f2
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 258a55bf72c4b3425d001f478620fa9651952b3f
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53288043"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837464"
 ---
 <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>教學課程：伺服器廣播與 ASP.NET SignalR 1.x
 ====================
@@ -117,8 +117,8 @@ ms.locfileid: "53288043"
 2. 如果您有 Visual Studio 2012 [ASP.NET 和 Web 工具 2012.2 Update](https://go.microsoft.com/fwlink/?LinkId=279941)，按一下**Web**之下**Visual C#** ，然後選取**SignalR Hub 類別**項目範本。 否則，請選取**類別**範本。
 3. 新類別命名*StockTickerHub.cs*，然後按一下**新增**。
 
-    ![新增 StockTickerHub.cs](tutorial-server-broadcast-with-aspnet-signalr/_static/image5.png)
-4. 下列程式碼取代範本程式碼：
+    ![Add StockTickerHub.cs](tutorial-server-broadcast-with-aspnet-signalr/_static/image5.png)
+4. 使用下列程式碼取代範本程式碼：
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample3.cs)]
 
@@ -208,7 +208,7 @@ ms.locfileid: "53288043"
 ## <a name="set-up-the-client-code"></a>設定用戶端程式碼
 
 1. 新的 HTML 檔案的資料夾中建立專案，並將它命名*StockTicker.html*。
-2. 下列程式碼取代範本程式碼：
+2. 使用下列程式碼取代範本程式碼：
 
     [!code-html[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample13.html)]
 
@@ -219,7 +219,7 @@ ms.locfileid: "53288043"
    > 請確定 JavaScript 檔案參考中*StockTicker.html*正確無誤。 也就是確定您的指令碼標記 (在範例中的 1.8.2) 中的 jQuery 版本是 jQuery 版本在專案的相同*指令碼*資料夾，並確定您的指令碼標記中的 SignalR 版本是 SignalR 相同在您的專案中的版本*指令碼*資料夾。 如有必要，請變更指令碼標記中的檔案名稱。
 4. 在 **方案總管 中**，以滑鼠右鍵按一下*StockTicker.html*，然後按一下 **設定為起始頁**。
 5. 在專案資料夾中建立新的 JavaScript 檔案並將它命名*StockTicker.js*...
-6. 下列程式碼取代範本程式碼：
+6. 使用下列程式碼取代範本程式碼：
 
     [!code-javascript[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample14.js)]
 
@@ -297,7 +297,7 @@ SignalR 有內建記錄功能，您可以讓用戶端上，以協助疑難排解
 
     如果您在 Windows 7 (IIS 7.5) 上執行 Internet Explorer 10，傳輸方法是 iframe。
 
-    ![IE 10 個主控台中，IIS 7.5](tutorial-server-broadcast-with-aspnet-signalr/_static/image11.png)
+    ![IE 10 Console, IIS 7.5](tutorial-server-broadcast-with-aspnet-signalr/_static/image11.png)
 
     在 Firefox 中安裝 Firebug 增益集以取得主控台視窗。 如果您在 Windows 8 (IIS 8) 來執行 Firefox 19，傳輸方法是 WebSockets。
 

@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/performance/index
 title: SignalR 效能 |Microsoft Docs
-author: rick-anderson
+author: bradygaster
 description: 如何最大化 SignalR 應用程式的效能。
-ms.author: riande
+ms.author: bradyg
 ms.date: 09/19/2014
 ms.assetid: fda81611-b67b-4c62-915e-8adc1924a401
 msc.legacyurl: /signalr/overview/performance
 msc.type: chapter
-ms.openlocfilehash: d37efcd81074099cf26cb7f4048e350bbefc152a
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 1f5e0ec92a7babb41c45cb16166cc1060e824cfa
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "48254156"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836580"
 ---
 <a name="signalr-performance"></a>SignalR 效能
 ====================

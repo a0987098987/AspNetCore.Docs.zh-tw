@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/advanced/dependency-injection
 title: SignalR 中的相依性插入 |Microsoft Docs
-author: MikeWasson
+author: bradygaster
 description: 軟體使用本主題的 Visual Studio 2013.NET 4.5 SignalR 本主題的第 2 版上一個版本的版本較早版本的相關資訊...
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: a14121ae-02cf-4024-8af0-9dd0dc810690
 msc.legacyurl: /signalr/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: f5959902b030621a19d912d7db2ea0faf95b7a7c
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 54e263e277852d2d478ce5bccd4164254498831a
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287783"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836606"
 ---
 <a name="dependency-injection-in-signalr"></a>SignalR 中的相依性插入
 ====================

@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/getting-started/supported-platforms
 title: 支援的平台 |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 此文章說明 SignalR 支援哪些用戶端和伺服器。
-ms.author: riande
+ms.author: bradyg
 ms.date: 04/18/2018
 ms.assetid: eac31beb-0f46-4afa-9def-e80904dea4f0
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
-ms.openlocfilehash: e270f9a328f36854fdfb3e23b78e0b40cdda6411
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 60fa74b54797efbe14ba525160b2f750a4f5a451
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287353"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836047"
 ---
 <a name="supported-platforms"></a>支援的平台
 ====================
@@ -113,8 +113,8 @@ SignalR 可以用於下列瀏覽器：
 | --- | --- | --- |
 | Web 通訊端 | Windows 8 及更新版本和.NET 4.5 + | N/A |
 | 不限次數的框架 | N/A | N/A |
-| 伺服器傳送事件 | .NET 4 + | 5+ |
-| 長輪詢 | .NET 4 + | 5+ |
+| 伺服器傳送事件 | .NET 4+ | 5+ |
+| 長輪詢 | .NET 4+ | 5+ |
 
 <a id="android"></a>
 
@@ -124,12 +124,12 @@ SignalR 可以用於 Windows 市集應用程式和 Windows Phone 8 應用程式�
 
 **Windows 市集和 Windows Phone 傳輸需求**
 
-| Transport | Windows 市集 /.NET | Windows 市集 / JavaScript | Windows Phone / IE | Windows Phone /.NET |
+| Transport | Windows 市集 /.NET | Windows 市集 / JavaScript | Windows Phone/ IE | Windows Phone/ .NET |
 | --- | --- | --- | --- | --- |
-| WebSockets | N/A | Win8 + | 8+ | N/A |
-| 不限次數的框架 | N/A | Win8 + | 7.5+ | N/A |
-| 伺服器傳送事件 | Win8 + | N/A | N/A | 8+ |
-| 長輪詢 | Win8 + | Win8 + | 7.5+ | 8+ |
+| WebSockets | N/A | Win8+ | 8+ | N/A |
+| 不限次數的框架 | N/A | Win8+ | 7.5+ | N/A |
+| 伺服器傳送事件 | Win8+ | N/A | N/A | 8+ |
+| 長輪詢 | Win8+ | Win8+ | 7.5+ | 8+ |
 
 <a id="updates"></a>
 

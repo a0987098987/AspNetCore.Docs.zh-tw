@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/index
 title: SignalR 指引 |Microsoft Docs
-author: rick-anderson
+author: bradygaster
 description: ''
-ms.author: riande
+ms.author: bradyg
 ms.date: 10/24/2012
 ms.assetid: e57da75a-1d98-4e3c-8787-f1d7e1eb2d86
 msc.legacyurl: /signalr/overview
 msc.type: book
-ms.openlocfilehash: d22f9e561d8d22c2562bc2f723beb2189592fdda
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 2ab5094e863c5762c0c4c70a15f4da1088bc52e7
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "48254197"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837568"
 ---
 <a name="signalr-guidance"></a>SignalR 指引
 ====================
@@ -22,10 +22,10 @@ ms.locfileid: "48254197"
     - [SignalR 簡介](getting-started/introduction-to-signalr.md)
     - [支援的平台](getting-started/supported-platforms.md)
     - [教學課程：開始使用 SignalR 2](getting-started/tutorial-getting-started-with-signalr.md)
-    - [教學課程：開始使用 SignalR 2 及 MVC 5](getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
+    - [教學課程：開始使用 SignalR 2 和 MVC 5](getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
     - [教學課程：高頻率即時與 SignalR 2](getting-started/tutorial-high-frequency-realtime-with-signalr.md)
     - [教學課程：伺服器廣播與 SignalR 2](getting-started/tutorial-server-broadcast-with-signalr.md)
-    - [實習實驗室：即時 Web 應用程式與 SignalR](getting-started/real-time-web-applications-with-signalr.md)
+    - [實習實驗室：使用 SignalR 即時 Web 應用程式](getting-started/real-time-web-applications-with-signalr.md)
 - [API 指南](guide-to-the-api/index.md)
 
     - [中樞 API 指南 - 伺服器 (C#)](guide-to-the-api/hubs-api-guide-server.md)

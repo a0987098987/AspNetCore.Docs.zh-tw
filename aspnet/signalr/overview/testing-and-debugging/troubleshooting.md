@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/testing-and-debugging/troubleshooting
 title: SignalR 疑難排解 |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 本文說明開發 SignalR 應用程式的常見問題。
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 4b559e6c-4fb0-4a04-9812-45cf08ae5779
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: e41061f0310c021b10dc6667a5c3297788213b0a
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 38802814fbb748513274f1fd8a33521fafd48ed3
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287945"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837204"
 ---
 <a name="signalr-troubleshooting"></a>SignalR 疑難排解
 ====================

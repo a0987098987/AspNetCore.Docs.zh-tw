@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/older-versions/scaleout-with-redis
 title: SignalR 向外延展與 Redis (SignalR 1.x) |Microsoft Docs
-author: MikeWasson
+author: bradygaster
 description: ''
-ms.author: riande
+ms.author: bradyg
 ms.date: 05/01/2013
 ms.assetid: 6abecf80-8ffa-41ba-b0d9-1d9edbe7687b
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: 3f70536a4bda90a0298f6bb4f7ef47b8a257175b
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 74294bd04d5649f2ec54e58adb744f5e30525162
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287542"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836411"
 ---
 <a name="signalr-scaleout-with-redis-signalr-1x"></a>SignalR 向外延展與 Redis (SignalR 1.x)
 ====================

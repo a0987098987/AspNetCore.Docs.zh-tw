@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/getting-started/introduction-to-signalr
 title: SignalR 簡介 |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 此文章說明 SignalR 為何，以及一些應建立解決方案。
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 0fab5e35-8c1f-43d4-8635-b8aba8766a71
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: c865078c14b8615faa278819f86a9dd623a42f36
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 7b9dae3e5d79319a9fefee41f4525a59f950746a
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287561"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837763"
 ---
 <a name="introduction-to-signalr"></a>SignalR 簡介
 ====================

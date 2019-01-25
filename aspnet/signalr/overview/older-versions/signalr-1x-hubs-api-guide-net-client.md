@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/older-versions/signalr-1x-hubs-api-guide-net-client
 title: ASP.NET SignalR 中樞 API 指南-.NET 用戶端 (SignalR 1.x) |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 本文件提供使用 signalr.NET 用戶端，例如 Windows 市集 (WinRT)、 WPF、 Silverlight 和優缺點比較的第 2 版的中樞 API 的簡介...
-ms.author: riande
+ms.author: bradyg
 ms.date: 04/17/2013
 ms.assetid: c334adc3-d6dc-44f3-9f06-f7634475aad3
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 34356338f24788226351e8e22b47eaaf7ea03e61
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: dbf62b2f9851e3612885aa5375cd2c3432570643
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287973"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836190"
 ---
 <a name="aspnet-signalr-hubs-api-guide---net-client-signalr-1x"></a>ASP.NET SignalR 中樞 API 指南-.NET 用戶端 (SignalR 1.x)
 ====================

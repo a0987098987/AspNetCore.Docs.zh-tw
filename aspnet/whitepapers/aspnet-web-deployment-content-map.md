@@ -8,18 +8,18 @@ ms.date: 03/14/2014
 ms.assetid: 58b583cd-c4ab-47a3-8527-8c92c298c91f
 msc.legacyurl: /whitepapers/aspnet-web-deployment-content-map
 msc.type: content
-ms.openlocfilehash: c970d929c4e6b581bedd2947982926ac448facfa
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 6df0c9d2f38ad1d39abd62787c600ef80da8e8e0
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831439"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836217"
 ---
 <a name="aspnet-web-deployment---recommended-resources"></a>ASP.NET Web 部署-建議資源
 ====================
 > 本主題提供有關如何部署資源 （發佈） ASP.NET web 文件連結至 IIS 的應用程式，使用 Visual Studio 2010、 Visual Web Developer 2010 和更新版本。
 > 
-> 如果您知道很棒的部落格文章[stackoverflow](http://stackoverflow.com)執行緒或任何其他會很有用的連結[傳送一封電子郵件給我們](mailto:aspnetue@microsoft.com?subject=Deployment Content Map)與連結。
+> 如果您知道很棒的部落格文章[stackoverflow](http://stackoverflow.com)執行緒或任何其他會很有用的連結[傳送一封電子郵件給我們](mailto:aspnetue@microsoft.com?subject=Deployment%20Content%20Map)與連結。
 > 
 > > [!NOTE] 
 > > 
@@ -75,7 +75,7 @@ ms.locfileid: "41831439"
 
 - [如何部署 Windows Azure 網站](https://docs.microsoft.com/azure/app-service-web/web-sites-deploy)。 說明選項，並提供資源的連結將 web 專案部署至 Windows Azure 網站。 包括從 Visual Studio 部署的相關區段。
 - [使用 Visual Studio 的 ASP.NET Web 部署](../web-forms/overview/deployment/visual-studio-web-deployment/introduction.md)。 分成 12 個單元的教學課程，示範如何部署 web 應用程式與 SQL Server 資料庫。 資料庫的部署使用的 dbDacFx 提供者 」 和 「 Entity Framework Code First 移轉。 也包含下列資訊[Web.config 檔案轉換](../web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations.md)，[部署個別的檔案](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update.md#specificfiles)，[命令列部署](../web-forms/overview/deployment/visual-studio-web-deployment/command-line-deployment.md)，和[如何自訂 Visual Studio web 發行管線，藉由編輯.pubxml 檔案](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files.md)。 適用於所有的 ASP.NET web 專案，包括 Web Form、 MVC 和 Web API）。
-- [如何： 部署 Web 專案使用單鍵發行 Visual Studio 中](https://msdn.microsoft.com/library/dd465337.aspx)（參考 [Visual Studio Web 發行精靈] 的資訊）。
+- [如何：部署 Web 專案使用單鍵發行 Visual Studio 中](https://msdn.microsoft.com/library/dd465337.aspx)（參考 [Visual Studio Web 發行精靈] 的資訊）。
 - [使用 SQL Server Compact 使用 Visual Studio 將 ASP.NET Web 應用程式部署](../web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12.md)。 這是舊版**使用 Visual Studio 的 ASP.NET Web 部署**列頂端的這一節。 如需有關如何部署 SQL Server Compact 資料庫，以及如何從 SQL Server Compact 移轉至 SQL Server 的完整版本資訊的主要適用於目前。
 - [.NET 多層式應用程式使用儲存體資料表、 佇列和 Blob](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36) （Microsoft Azure 站台）。 5 部分教學課程系列中，示範如何建立 MVC 專案，並將它部署至 Windows Azure 雲端服務。
 
@@ -83,8 +83,8 @@ ms.locfileid: "41831439"
 <a id="package"></a>
 ## <a name="deploying-a-web-application-by-creating-and-installing-a-web-deployment-package"></a>部署 web 應用程式建立及安裝 web 部署套件
 
-- [如何： 在 Visual Studio 中建立 Web 部署套件](https://msdn.microsoft.com/library/dd465323.aspx)(MSDN)。
-- [如何： 使用 deploy.cmd 檔案的部署封裝建立的 Visual studio 的安裝](https://msdn.microsoft.com/library/ff356104.aspx)(MSDN)。
+- [如何：在 Visual Studio 中建立 Web 部署套件](https://msdn.microsoft.com/library/dd465323.aspx)(MSDN)。
+- [如何：Visual studio 建立部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)(MSDN)。
 - [使用 Web Deploy 封裝部署在 dev 方塊上的 IIS 和協力廠商主機](http://sedodream.com/2011/11/08/UsingAWebDeployPackageToDeployToIISOnTheDevBoxAndToAThirdPartyHost.aspx)（Sayed Hashimi 部落格）。 如何使用 IIS 管理員在本機電腦上安裝 IIS 中的部署套件和裝載在公司的支援 IIS 管理員進行遠端管理。
 - [建置 Web 部署套件從 Visual Studio 2010](https://www.iis.net/learn/publish/using-web-deploy/building-a-web-deploy-package-from-visual-studio-2010) （IIS.NET 網站）。 包含命令列的封裝建立和安裝的指示。
 - [封裝一次發行任何地方](http://sedodream.com/2012/03/14/PackageWebUpdatedAndVideoBelow.aspx)（Sayed Hashimi 部落格）。 導入了 NuGet 套件，可自動轉換多個目的地環境的 Web.config 檔案的程序，以便您可以將一個封裝部署到多部伺服器。 另請參閱[PackageWeb 影片](https://www.youtube.com/watch?v=-LvUJFI8CzM)由 Sayed Hashimi。
@@ -100,7 +100,7 @@ ms.locfileid: "41831439"
 - [持續整合與持續傳遞 （使用 Windows Azure 建置真實世界的雲端應用程式）。](../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery.md) 導入了持續整合與持續傳遞的電子書章節。
 - [如何部署 Windows Azure 網站](https://docs.microsoft.com/azure/app-service-web/web-sites-deploy)。 部署 web 專案至 Windows Azure 網站的資源來說明選項和連結。 包含關於自動化部署，從原始檔控制的區段。
 - [部署 Web 應用程式，在企業案例](../web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md)。 40 部分教學課程系列中，示範如何使用 Visual Studio 2010 和 Team Foundation Server 2010 CI 程序中的部署作業自動化。
-- [在 Microsoft Build Engine： 使用 MSBuild 和 Team Foundation Build，Sayed Hashimi 和 William bartholomew< /](http://msbuildbook.com)。 這是一本書，而不需要 web 資源，但它是不可或缺的指南以了解如何設定連續整合案例的 MSBuild。
+- [在 Microsoft Build Engine:使用 MSBuild 和 Team Foundation Build，Sayed Hashimi 和 William bartholomew< /](http://msbuildbook.com)。 這是一本書，而不需要 web 資源，但它是不可或缺的指南以了解如何設定連續整合案例的 MSBuild。
 - [MSBuild 延伸模組套件](https://github.com/mikefourie/MSBuildExtensionPack)。 包含部署的工作。
 - [Team Foundation 組建自訂指南](https://aka.ms/vsarsolutions)。 透過 ALM Ranger 上設定 Team Foundation Server 的文件涵蓋 web 部署，並包含教學課程和影片。
 - [從 CI 伺服器的 SlowCheetah XML 轉換](http://sedodream.com/2011/12/12/SlowCheetahXMLTransformsFromACIServer.aspx)（Sayed Hashimi 部落格）。 說明如何使用 SlowCheetah，Visual Studio 增益集轉換 app.config 和其他 XML 檔案。
@@ -119,7 +119,7 @@ ms.locfileid: "41831439"
 - [如何停用 Web.config 轉換？](https://msdn.microsoft.com/library/ee942158.aspx#disable_web_config_transformation) (MSDN)。
 - [何時應該使用 Web Deploy 的參數而不是 Web.config 轉換？](https://msdn.microsoft.com/library/ee942158.aspx#web_deploy_parameters) (MSDN)。
 - [Codeplex.com 上發行 （XML 文件轉換） XDT](https://blogs.msdn.com/b/webdev/archive/2013/04/23/xdt-xml-document-transform-released-on-codeplex-com.aspx) （.NET Web 程式開發和工具部落格）。 發表的 Web.config 檔案轉換引擎的原始程式碼，並列出一些使用它的工具。
-- [Windows Azure 網站： 應用程式的字串方式和連接字串的運作](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx)（Microsoft Azure 部落格）。 如果您的目的地環境是 Windows Azure 網站，而且您想要轉換，轉換 Web.config 的替代項目`appSettings`或`connectionStrings`。
+- [Windows Azure 網站：如何在應用程式字串與連接字串的運作](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx)（Microsoft Azure 部落格）。 如果您的目的地環境是 Windows Azure 網站，而且您想要轉換，轉換 Web.config 的替代項目`appSettings`或`connectionStrings`。
 
 
 <a id="webdeployparms"></a>
@@ -127,12 +127,12 @@ ms.locfileid: "41831439"
 
 ## <a name="using-web-deploy-parameters-to-change-settings-in-the-destination-web-application-during-deployment"></a>若要變更設定，在目的地 web 應用程式，在部署期間使用 Web Deploy 的參數
 
-- [如何： 使用 Web Deploy Web 部署套件中的參數](https://msdn.microsoft.com/library/ff398068.aspx)(MSDN)。
-- [MSDeploy： 如何更新在發佈的應用程式設定為基礎的發行設定檔](http://sedodream.com/2013/03/02/MSDeployHowToUpdateAppSettingsOnPublishBasedOnThePublishProfile.aspx)（Sayed Hashimi 部落格）。 顯示如何將 Web 部署參數到 Visual Studio 發行設定檔。
+- [如何：使用 Web Deploy Web 部署套件中的參數](https://msdn.microsoft.com/library/ff398068.aspx)(MSDN)。
+- [MSDeploy:如何更新在發佈的應用程式設定為基礎的發行設定檔](http://sedodream.com/2013/03/02/MSDeployHowToUpdateAppSettingsOnPublishBasedOnThePublishProfile.aspx)（Sayed Hashimi 部落格）。 顯示如何將 Web 部署參數到 Visual Studio 發行設定檔。
 - [Web 部署參數化](https://www.iis.net/learn/publish/using-web-deploy/web-deploy-parameterization)（IIS.NET 網站）。
 - [Web 部署中動作的參數化](http://vishaljoshi.blogspot.com/2010/07/web-deploy-parameterization-in-action.html)（Vishal Joshi 部落格）。
 - [Web 部署參數化 vs。Web.config 轉換](http://vishaljoshi.blogspot.com/2010/06/parameterization-vs-webconfig.html)（Vishal Joshi 部落格）。
-- [Windows Azure 網站： 應用程式的字串方式和連接字串的運作](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx)（Microsoft Azure 部落格）。 替代 Web 部署參數，如果您的目的地環境是 Windows Azure 網站，而且您想要參數化`appSettings`或`connectionStrings`。
+- [Windows Azure 網站：如何在應用程式字串與連接字串的運作](https://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx)（Microsoft Azure 部落格）。 替代 Web 部署參數，如果您的目的地環境是 Windows Azure 網站，而且您想要參數化`appSettings`或`connectionStrings`。
 
 
 <a id="appoffline"></a>
@@ -140,7 +140,7 @@ ms.locfileid: "41831439"
 
 ## <a name="making-sure-an-application-is-off-line-during-deployment"></a>確定應用程式是在部署期間離線
 
-- [使用 Visual Studio 的 ASP.NET Web 部署： 部署程式碼更新](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update.md)。 請參閱節**將應用程式離線部署期間。**
+- [使用 Visual Studio 的 ASP.NET Web 部署：部署程式碼更新](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update.md)。 請參閱節**將應用程式離線部署期間。**
 - [離線應用程式發行前](https://www.iis.net/learn/publish/deploying-application-packages/taking-an-application-offline-before-publishing)（IIS.net 網站）。 說明功能，Web Deploy 3.0，可自動處理應用程式的內建\_offline.htm 檔案。 這項功能不適用於自訂應用程式\_offline.htm 檔案。
 - [在發行期間進行 web 應用程式離線](http://sedodream.com/2012/01/08/HowToTakeYourWebAppOfflineDuringPublishing.aspx)（Sayed Hashimi 部落格）。 如何使用自訂的應用程式的程序自動化\_offline.htm 檔案。
 - [Web 發行的更新，離線應用程式和 usechecksum](https://blogs.msdn.com/b/webdev/archive/2013/10/30/web-publishing-updates-for-app-offline-and-usechecksum.aspx) （Microsoft Web 程式開發部落格）。 自動化使用應用程式的另一個選項\_offline.htm 檔案。
@@ -154,7 +154,7 @@ ms.locfileid: "41831439"
 
 - [在 Visual Studio 中設定資料庫部署](https://msdn.microsoft.com/library/dd394698.aspx#dbdeployment)(MSDN)。 可用於部署 web 專案的資料庫選項的概觀。
 - [使用 Visual Studio 的 ASP.NET Web 部署](../web-forms/overview/deployment/visual-studio-web-deployment/introduction.md)。 分成 12 個單元的教學課程系列，會顯示資料庫的部署使用 dbDacFx 提供者和 Entity Framework Code First 移轉。
-- [如何： 部署 Web 專案使用單鍵發行 Visual Studio 中](https://msdn.microsoft.com/library/dd465337.aspx)(MSDN)。
+- [如何：部署 Web 專案使用單鍵發行 Visual Studio 中](https://msdn.microsoft.com/library/dd465337.aspx)(MSDN)。
 - [將使用成員資格、 OAuth 和 SQL Database 的安全 ASP.NET MVC 5 應用程式部署至 Windows Azure 網站](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)。 長的教學課程，建置和部署的應用程式使用單一的 SQL Server 資料庫的成員資格和應用程式資料。
 - [使用 SQL Server Compact 使用 Visual Studio 將 ASP.NET Web 應用程式部署](../web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12.md)。 分成 12 個單元的教學課程，示範如何部署 SQL Server Compact 資料庫，以及如何從 SQL Server Compact 移轉至 SQL Server 的完整版本。
 
@@ -211,7 +211,7 @@ ms.locfileid: "41831439"
 
 ## <a name="automating-common-deployment-tasks-that-are-not-automated-out-of-the-box"></a>根據預設，未自動化的自動化一般部署工作
 
-- [使用 Visual Studio 的 ASP.NET Web 部署： 部署的額外檔案](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files.md)。
+- [使用 Visual Studio 的 ASP.NET Web 部署：部署其他檔案](../web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files.md)。
 - [在 Web 發行設定資料夾權限](http://sedodream.com/2011/11/08/SettingFolderPermissionsOnWebPublish.aspx)（Sayed Hashimi 部落格）。
 - [如何擴充以包含 web 專案套件的登錄設定的目標檔案](https://blogs.msdn.com/webdevtools/archive/2010/02/09/how-to-extend-target-file-to-include-registry-settings-for-web-project-package.aspx)（Web 開發工具部落格）。
 - [擴充 XML (Web.config) 轉換](http://sedodream.com/2010/09/09/ExtendingXMLWebconfigConfigTransformation.aspx)（Sayed Hashimi 部落格）。 示範如何建立自訂的 XDT 轉換。
@@ -244,7 +244,7 @@ ms.locfileid: "41831439"
 ## <a name="troubleshooting-deployment-problems"></a>疑難排解部署問題
 
 - [疑難排解 Visual Studio 中的 Windows Azure Web Sites](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio) （Microsoft Azure 站台）。
-- [使用 Visual Studio 的 ASP.NET Web 部署： 疑難排解](../web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting.md)。
+- [使用 Visual Studio 的 ASP.NET Web 部署：疑難排解](../web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting.md)。
 - [疑難排解常見的問題，使用 Web 部署](https://www.iis.net/learn/publish/troubleshooting-web-deploy/troubleshooting-common-problems-with-web-deploy)。
 - [Web 部署錯誤碼](https://www.iis.net/learn/publish/troubleshooting-web-deploy/web-deploy-error-codes)（IIS.net 網站）。
 - [Web 部署常見問題集適用於 Visual Studio 和 ASP.NET](https://msdn.microsoft.com/library/ee942158.aspx) (MSDN)。

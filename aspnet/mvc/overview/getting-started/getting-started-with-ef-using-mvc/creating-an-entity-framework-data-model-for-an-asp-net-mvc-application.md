@@ -4,17 +4,17 @@ title: 教學課程：開始使用 Entity Framework 6 Code First 使用 MVC 5 |M
 description: 在此系列教學課程中，您將了解如何建置使用 Entity Framework 6 存取資料的 ASP.NET MVC 5 應用程式。
 author: tdykstra
 ms.author: riande
-ms.date: 01/10/2019
+ms.date: 01/22/2019
 ms.topic: tutorial
 ms.assetid: 00bc8b51-32ed-4fd3-9745-be4c2a9c1eaf
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 5d524c981af2d9d8f44254c61631937e6f049cdb
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
-ms.translationtype: MT
+ms.openlocfilehash: b72a4ae1a89fd47d9c6ff63ccd45b26324508a63
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341702"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836177"
 ---
 # <a name="tutorial-get-started-with-entity-framework-6-code-first-using-mvc-5"></a>教學課程：開始使用 Entity Framework 6 Code First 使用 MVC 5
 
@@ -286,6 +286,11 @@ Entity Framework 可以自動建立 （或卸除並重新建立） 為您的應�
 - 是否將它命名，將會解譯為外部索引鍵屬性的屬性 *&lt;導覽屬性名稱&gt;&lt;主索引鍵屬性名稱&gt;* (比方說，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`)。 外部索引鍵屬性也可以命名相同只要&lt;主索引鍵屬性名稱&gt;(例如`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
 
 您已了解可以覆寫慣例。 例如，指定資料表名稱不應該要複數化，，和更新版本，您會看到如何明確地標示為外部索引鍵屬性的屬性。
+
+## <a name="get-the-code"></a>取得程式碼
+
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+
 ## <a name="additional-resources"></a>其他資源
 
 如需有關 EF 6 的詳細資訊，請參閱下列文章：

@@ -3,18 +3,18 @@ uid: signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 title: 教學課程：伺服器廣播與 SignalR 2 |Microsoft Docs
 author: tdykstra
 description: 本教學課程會示範如何建立會使用 ASP.NET SignalR 2 提供伺服器廣播的功能的 web 應用程式。
-ms.author: riande
+ms.author: bradyg
 ms.date: 01/02/2019
 ms.topic: tutorial
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: a6014e604613492db91b2dc6f846c3c73d938d99
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: a243c78c7d552f1c82a88c6083871fcd16538618
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099295"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837425"
 ---
 # <a name="tutorial-server-broadcast-with-signalr-2"></a>教學課程：伺服器廣播與 SignalR 2
 
@@ -26,7 +26,7 @@ ms.locfileid: "54099295"
 
 ![建立 web](tutorial-server-broadcast-with-signalr/_static/image1.png)
 
-在本教學課程中，您：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 建立專案
@@ -81,7 +81,7 @@ ms.locfileid: "54099295"
 
 您只想的一個執行個體`StockTicker`類別，以在伺服器上執行，因此您必須設定每個參考`StockTickerHub`執行個體與單一`StockTicker`執行個體。 `StockTicker`的類別必須將廣播給用戶端，因為它具有內建的資料，以及觸發更新，但`StockTicker`不是`Hub`類別。 `StockTicker`類別必須取得 SignalR 中樞的連接內容物件的參考。 它可以接著使用 SignalR 連線內容物件廣播給用戶端。
 
-#### <a name="create-stocktickerhubcs"></a>建立 StockTickerHub.cs
+#### <a name="create-stocktickerhubcs"></a>Create StockTickerHub.cs
 
 1. 在 **方案總管**，以滑鼠右鍵按一下專案，然後選取**新增** > **新項目**。
 
@@ -321,7 +321,7 @@ SignalR 有內建記錄功能，您可以讓用戶端上，以協助疑難排解
 
     [!code-javascript[Main](tutorial-server-broadcast-with-signalr/samples/sample19.js?highlight=2)]
 
-1. 按下**F5**執行專案。
+1. 按 **F5** 執行專案。
 
 1. 開啟瀏覽器的開發人員工具 視窗，然後選取主控台，以查看記錄檔。 您可能必須重新整理頁面，以查看 SignalR 交涉新連線的傳輸方法的記錄檔。
 
@@ -487,7 +487,7 @@ JQuery 程式碼，可讓捲動：
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 建立專案

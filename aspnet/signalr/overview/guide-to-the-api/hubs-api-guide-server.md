@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/guide-to-the-api/hubs-api-guide-server
 title: ASP.NET SignalR 中樞 API 指南-伺服器 (C#) |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 本文件介紹 SignalR 第 2 版的 ASP.NET SignalR 中樞 API 的伺服器端程式設計利用程式碼範例示範...
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: b19913e5-cd8a-4e4b-a872-5ac7a858a934
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-server
 msc.type: authoredcontent
-ms.openlocfilehash: 4730c4d9f601f561cfc884e0a9c2c2d12785ae0f
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: a28663c8d5c679f85e863e7d0b4523a6f4dd4a1f
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53288101"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837451"
 ---
 <a name="aspnet-signalr-hubs-api-guide---server-c"></a>ASP.NET SignalR 中樞 API 指南-伺服器 (C#)
 ====================

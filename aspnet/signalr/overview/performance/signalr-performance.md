@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/performance/signalr-performance
 title: SignalR 效能 |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: SignalR 效能
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 3751f5e7-59db-4be0-a290-50abc24e5c84
 msc.legacyurl: /signalr/overview/performance/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: 9346f0ff9720361f07afe196f59305f0f38ffe8a
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 3326c2e600854fc7a4435d96c45b04a6188d3937
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287765"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836508"
 ---
 <a name="signalr-performance"></a>SignalR 效能
 ====================
@@ -204,7 +204,7 @@ SignalR 效能和調整的近期簡報，請參閱 <<c0> [ 調整與 ASP.NET Sig
 - **錯誤：中樞解析總計**
 - **錯誤：每秒中樞解析**
 - **錯誤：中樞叫用總數**
-- **錯誤：每秒中樞叫用**
+- **錯誤：Hub Invocation/Sec**
 - **錯誤：傳輸的總數**
 - **錯誤：傳輸/秒**
 
@@ -266,7 +266,7 @@ A**緩衝處理**資料流是已進入錯誤的狀態; 當資料流處於錯誤�
 **Web 服務**
 
 - Web Service\Current Connections
-- Web Service\Maximum 連線
+- Web Service\Maximum Connections
 
 **執行緒處理**
 

@@ -1,26 +1,26 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr
 title: 教學課程：使用 SignalR 2 的即時聊天 |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 此教學課程會示範如何使用 SignalR 建立即時聊天應用程式。 SignalR 加入空白的 ASP.NET web 應用程式上。
-ms.author: riande
-ms.date: 01/02/2019
+ms.author: bradyg
+ms.date: 01/22/2019
 ms.assetid: a8b3b778-f009-4369-85c7-e90f9878d8b4
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
 ms.topic: tutorial
-ms.openlocfilehash: aa015abc47bb2450e04e167c0404aaa1d119ba2c
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 90f2c03fbda522e3a46200bc0132cc74100ce70f
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098620"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836788"
 ---
 # <a name="tutorial-real-time-chat-with-signalr-2"></a>教學課程：即時聊天與 SignalR 2
 
 本教學課程會示範如何使用 SignalR 建立即時聊天應用程式。 SignalR 加入空白的 ASP.NET web 應用程式，並建立 HTML 網頁來傳送，並顯示訊息。
 
-在本教學課程中，您：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 設定專案
@@ -161,6 +161,10 @@ SignalRChat 應用程式會示範兩個基本的 SignalR 開發工作。 它說�
 > 這個方法可確保程式碼在事件處理常式執行之前，會建立連接。
 
 程式碼啟動連線並再將它傳遞至 click 事件處理函式**傳送**HTML 網頁中的按鈕。
+
+## <a name="get-the-code"></a>取得程式碼
+
+[下載已完成的專案](http://code.msdn.microsoft.com/SignalR-Getting-Started-b9d18aa9)
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/security/hub-authorization
 title: SignalR 中樞的驗證和授權 |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 本主題描述如何限制哪些使用者或角色可以存取中樞方法。 本主題中使用的軟體版本 Visual Studio 2013.NET 4.5 SignalR ve...
-ms.author: riande
+ms.author: bradyg
 ms.date: 01/05/2015
 ms.assetid: a610c796-c131-473c-baef-2e6c568cb2a2
 msc.legacyurl: /signalr/overview/security/hub-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: d957d31e0c5453d0d4a48958fa4b25d61407f207
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: bfea212283165facc046e5355571c1e6d9c7cd7d
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287620"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837412"
 ---
 <a name="authentication-and-authorization-for-signalr-hubs"></a>SignalR 中樞的驗證和授權
 ====================

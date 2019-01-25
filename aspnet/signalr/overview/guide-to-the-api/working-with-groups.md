@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/guide-to-the-api/working-with-groups
 title: 使用 signalr 的群組 |Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: 本主題描述如何保存中樞 API 使用的群組成員資格資訊。
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: cd378ecd-3e9e-4236-b902-65916d85a048
 msc.legacyurl: /signalr/overview/guide-to-the-api/working-with-groups
 msc.type: authoredcontent
-ms.openlocfilehash: bf4b8597fe9c0bff06b95cfb9970211106191fd4
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 384b7e5f07fa46ea3cc32e5c18c3c2327b7aedd3
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287633"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836801"
 ---
 <a name="working-with-groups-in-signalr"></a>使用 signalr 的群組
 ====================

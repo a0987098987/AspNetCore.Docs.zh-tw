@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/older-versions/dependency-injection
 title: 相依性插入 signalr 1.x |Microsoft Docs
-author: MikeWasson
+author: bradygaster
 description: ''
-ms.author: riande
+ms.author: bradyg
 ms.date: 05/15/2013
 ms.assetid: eaa206c4-edb3-487e-8fcb-54a3261fed36
 msc.legacyurl: /signalr/overview/older-versions/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 2035b3feebfa32dd7ec4d6adf715a7fee5e7b74f
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: c8aac09c3d3e06529f7834eb3f60dca2f3073922
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287352"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836289"
 ---
 <a name="dependency-injection-in-signalr-1x"></a>相依性插入 signalr 1.x
 ====================

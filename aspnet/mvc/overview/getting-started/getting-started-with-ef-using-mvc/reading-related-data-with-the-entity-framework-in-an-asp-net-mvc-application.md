@@ -4,17 +4,17 @@ title: 教學課程：閱讀 ASP.NET MVC 應用程式中使用 EF 的相關的�
 description: 在本教學課程中，您將讀取並顯示相關的資料-也就是 Entity Framework 載入到導覽屬性的資料。
 author: tdykstra
 ms.author: riande
-ms.date: 01/17/2019
+ms.date: 01/22/2019
 ms.topic: tutorial
 ms.assetid: 18cdd896-8ed9-4547-b143-114711e3eafb
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 8660a75655b801364cce7c4b59847c5c00562a27
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
-ms.translationtype: MT
+ms.openlocfilehash: 5f45820cd7abd60e69c19368cee50e91e31a75a0
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396203"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836827"
 ---
 # <a name="tutorial-read-related-data-with-ef-in-an-aspnet-mvc-app"></a>教學課程：閱讀 ASP.NET MVC 應用程式中使用 EF 的相關的資料
 
@@ -243,6 +243,10 @@ Instructors 頁面會顯示三個不同的資料表。 因此，您將建立包�
 請注意，您使用`Collection`方法來載入集合屬性，但會保留一個實體的屬性，您使用`Reference`方法。
 
 立即執行 Instructor 索引 頁面，您會看到任何差異，在頁面上，顯示的內容，雖然您已變更資料擷取的方式。
+
+## <a name="get-the-code"></a>取得程式碼
+
+[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
 ## <a name="additional-resources"></a>其他資源
 

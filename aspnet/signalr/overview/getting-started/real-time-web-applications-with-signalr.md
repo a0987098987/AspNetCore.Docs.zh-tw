@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/getting-started/real-time-web-applications-with-signalr
 title: 實習實驗室：使用 SignalR 即時 Web 應用程式 |Microsoft Docs
-author: rick-anderson
+author: bradygaster
 description: 即時 Web 應用程式功能的伺服器端將內容推至連線的用戶端時，即時的能力。 適用於 ASP.NET 開發人員，ASP...
-ms.author: riande
+ms.author: bradyg
 ms.date: 07/16/2014
 ms.assetid: ba07958c-42e1-4da0-81db-ba6925ed6db0
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: de2f2349fc284e167bd8227ae55da79b9f1f4549
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: d4998c8b739b4b1a06699a17464a7399a87a8595
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287998"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837503"
 ---
 <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>實習實驗室：使用 SignalR 即時 Web 應用程式
 ====================
@@ -223,7 +223,7 @@ ms.locfileid: "53287998"
     > 當您將 SignalR 和其他指令碼程式庫加入您的 Visual Studio 專案時，套件管理員可能會安裝的版本比本主題中所顯示的版本還新的 SignalR 指令碼檔案。 請確定您的程式碼中的指令碼參考符合安裝在您專案的指令碼程式庫的版本。
 14. 新增下列醒目提示的程式碼，以連線到 SignalR 中樞的用戶端，並從中樞收到新訊息時，更新統計資料。
 
-    (程式碼片段- *RealTimeSignalR-Ex1-SignalRClientCode*)
+    (Code Snippet - *RealTimeSignalR - Ex1 - SignalRClientCode*)
 
     [!code-cshtml[Main](real-time-web-applications-with-signalr/samples/sample10.cshtml)]
 

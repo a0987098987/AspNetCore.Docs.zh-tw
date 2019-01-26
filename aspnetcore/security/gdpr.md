@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/29/2018
 uid: security/gdpr
-ms.openlocfilehash: 7688ac6264b089ebd3544494c967684cb291a547
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 5f5ed96354b0b71961c122506602e60b95b809fa
+ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207511"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54889739"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>ASP.NET Core 中的歐盟一般資料保護規定 (GDPR) 支援
 
@@ -49,7 +49,7 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 
 [!code-csharp[](gdpr/sample/Startup.cs?name=snippet1&highlight=51)]
 
-### <a name="cookieconsentpartialcshtml-partial-view"></a>_CookieConsentPartial.cshtml 部分檢視
+### <a name="cookieconsentpartialcshtml-partial-view"></a>_CookieConsentPartial.cshtml partial view
 
 *_CookieConsentPartial.cshtml*部分檢視：
 
@@ -92,6 +92,7 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 * 若要產生`Account/Manage`程式碼，請參閱 < [Scaffold 識別](xref:security/authentication/scaffold-identity)。
 * **刪除**並**下載**連結只會依據預設身分識別資料。 建立自訂使用者資料的應用程式必須延伸到 delete/下載自訂的使用者資料。 如需詳細資訊，請參閱 <<c0> [ 加入、 下載及刪除身分識別的自訂使用者資料](xref:security/authentication/add-user-data)。
 * 儲存使用者的身分識別資料庫資料表中儲存的語彙基元`AspNetUserTokens`串聯的 delete 行為，因為透過刪除使用者時，會刪除[外部索引鍵](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152)。
+* [外部提供者驗證](xref:security/authentication/social/index)，例如 Facebook 和 Google，無法使用之前接受 cookie 的原則。
 
 ## <a name="encryption-at-rest"></a>待用加密
 
@@ -110,7 +111,7 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 
 不會提供內建的加密靜止的資料庫，您可以使用磁碟加密來提供相同的保護。 例如: 
 
-* [適用於 Windows Server 的 BitLocker](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
+* [BitLocker for Windows Server](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
 * Linux:
   * [eCryptfs](https://launchpad.net/ecryptfs)
   * [EncFS](https://github.com/vgough/encfs)。

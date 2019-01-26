@@ -5,12 +5,12 @@ description: 了解如何啟用 QR 程式碼產生使用 ASP.NET Core 雙因素�
 ms.author: riande
 ms.date: 08/14/2018
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 437f354f71128a98bae9abdced291e04efc9f48e
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: cf99cc21a7a1bb4d01c7cc092106d23375a1a76f
+ms.sourcegitcommit: ca5f03210bedc61c6639a734ae5674bfe095dee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225378"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55073123"
 ---
 # <a name="enable-qr-code-generation-for-totp-authenticator-apps-in-aspnet-core"></a>啟用 ASP.NET Core 中的 TOTP 驗證器應用程式的 QR 代碼產生
 
@@ -25,6 +25,8 @@ QR 代碼需要 ASP.NET Core 2.0 或更新版本。
 ASP.NET Core 隨附個別驗證的驗證器應用程式的支援。 兩個因素驗證 (2FA) 驗證器應用程式，使用以時間為基礎單次密碼演算法 (TOTP)，是建議的方法 2FA 的產業。 2FA 使用 TOTP 是慣用的 SMS 2FA。 驗證器應用程式提供的使用者必須確認使用者名稱和密碼之後輸入 6 to 8 位數代碼。 通常驗證器應用程式會安裝在智慧型手機。
 
 ASP.NET Core web 應用程式範本支援驗證器，但不提供支援 QRCode 產生。 QRCode 產生器可簡化 2FA 的安裝程式。 本文件將引導您完成新增[QR 代碼](https://wikipedia.org/wiki/QR_code)2FA 的 [組態] 頁面的產生。
+
+雙因素驗證並不會使用外部驗證提供者，例如[Google](xref:security/authentication/google-logins)或是[Facebook](xref:security/authentication/facebook-logins)。 外部登入受到任何機制所提供的外部登入提供者。 例如，請考慮[Microsoft](xref:security/authentication/microsoft-logins)驗證提供者需要硬體金鑰或另一個 2FA 方法。 如果預設範本強制執行 「 本機 」 2FA 使用者會需要滿足兩種 2FA 方法，這是不常使用的案例。
 
 ## <a name="adding-qr-codes-to-the-2fa-configuration-page"></a>新增至 2FA 的 [設定] 頁面的 QR 代碼
 

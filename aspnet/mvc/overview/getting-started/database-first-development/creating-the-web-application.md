@@ -1,30 +1,38 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/creating-the-web-application
-title: EF Database First 與 ASP.NET MVC： 建立 Web 應用程式和資料模型 |Microsoft Docs
+title: 教學課程：建立 Web 應用程式和 ef 資料模型資料庫的第一個使用 ASP.NET MVC
+description: 本文著重於建立 web 應用程式，並產生您的資料庫資料表為基礎的資料模型。
 author: Rick-Anderson
-description: 您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本教學課程的里...
 ms.author: riande
-ms.date: 10/01/2014
+ms.date: 01/23/2019
+ms.topic: tutorial
 ms.assetid: bc8f2bd5-ff57-4dcd-8418-a5bd517d8953
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/creating-the-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 6679b61326bd016481d96a4b5d58ec006f86b633
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: 095d355866c9ab8fba3759f3e05e2a521992f3d6
+ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51020793"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54889765"
 ---
-<a name="ef-database-first-with-aspnet-mvc-creating-the-web-application-and-data-models"></a>EF Database First 與 ASP.NET MVC： 建立 Web 應用程式和資料模型
-====================
-藉由[Tom FitzMacken](https://github.com/tfitzmac)
+# <a name="tutorial-create-the-the-web-application-and-data-models-for-ef-database-first-with-aspnet-mvc"></a>教學課程：建立 Web 應用程式和 ef 資料模型資料庫的第一個使用 ASP.NET MVC
 
-> 您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本系列教學課程會示範如何自動產生程式碼，可讓使用者顯示、 編輯、 建立及刪除位於資料庫資料表中的資料。 產生的程式碼會對應至資料庫資料表中的資料行。
-> 
-> 此系列的一部分，著重於建立 web 應用程式，並產生您的資料庫資料表為基礎的資料模型。
+ 您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本系列教學課程會示範如何自動產生程式碼，可讓使用者顯示、 編輯、 建立及刪除位於資料庫資料表中的資料。 產生的程式碼會對應至資料庫資料表中的資料行。
 
+本文著重於建立 web 應用程式，並產生您的資料庫資料表為基礎的資料模型。
 
-## <a name="create-a-new-aspnet-web-application"></a>建立新的 ASP.NET Web 應用程式
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 建立 ASP.NET Web 應用程式
+> * 產生模型
+
+## <a name="prerequisites"></a>必要條件
+
+* [開始使用 Entity Framework 6 Database First 使用 MVC 5](setting-up-database.md)
+
+## <a name="create-an-aspnet-web-app"></a>建立 ASP.NET Web 應用程式
 
 在新的解決方案或與資料庫專案相同的方案中，建立新的專案在 Visual Studio 中，並選取**ASP.NET Web 應用程式**範本。 將專案命名為**ContosoSite**。
 
@@ -33,8 +41,6 @@ ms.locfileid: "51020793"
 按一下 [確定 **Deploying Office Solutions**]。
 
 在 [新增 ASP.NET 專案] 視窗中，選取**MVC**範本。 您可以清除**雲端中的主機**選項現在，因為您將部署更新版本的雲端應用程式。 按一下 **確定**建立應用程式。
-
-![選取 mvc 範本](creating-the-web-application/_static/image2.png)
 
 建立專案的預設檔案和資料夾。
 
@@ -48,39 +54,31 @@ ms.locfileid: "51020793"
 
 以滑鼠右鍵按一下**模型**資料夾，然後選取**新增**並**新項目**。
 
-![加入新項目](creating-the-web-application/_static/image4.png)
-
 在 [加入新項目] 視窗中，選取**資料**的左窗格中並**ADO.NET 實體資料模型**從中間窗格中的選項。 將新的模型檔案**ContosoModel**。
-
-![建立模型](creating-the-web-application/_static/image5.png)
 
 按一下 [加入] 。
 
 在 [實體資料模型精靈] 中，選取**資料庫的 EF Designer**。
 
-![從資料庫產生](creating-the-web-application/_static/image6.png)
-
 按 [ **下一步**]。
 
 如果您有在您的開發環境內定義的資料庫連接，您可能會看到其中一個預先選取這些連線。 不過，您會想要建立新的連接到您在本教學課程的第一個部分中建立的資料庫。 按一下 [**新的連接**] 按鈕。
 
-![連接到資料庫](creating-the-web-application/_static/image7.png)
-
-在 [連接屬性] 視窗中，提供您的資料庫建立所在的本機伺服器的名稱 (在此情況下 **(localdb) \ProjectsV12**)。 提供伺服器名稱之後, 請從可用的資料庫選取 ContosoUniversityData。
+在 [連接屬性] 視窗中，提供您的資料庫建立所在的本機伺服器的名稱 (在此情況下 **(localdb) \Projects13**)。 提供伺服器名稱之後, 請從可用的資料庫選取 ContosoUniversityData。
 
 ![設定連接屬性](creating-the-web-application/_static/image8.png)
 
 按一下 [確定 **Deploying Office Solutions**]。
 
-現在會顯示正確的連接屬性。 您可以在 Web.Config 檔案中使用連接的預設名稱
+現在會顯示正確的連接屬性。 您可以在 Web.Config 檔案中使用連接的預設名稱。
 
-![連線設定](creating-the-web-application/_static/image9.png)
+按 [ **下一步**]。
+
+選取最新版的 Entity Framework。
 
 按 [ **下一步**]。
 
 選取 **資料表**來產生所有的三個資料表的模型。
-
-![選取資料表](creating-the-web-application/_static/image10.png)
 
 按一下 [ **完成**]。
 
@@ -92,12 +90,18 @@ ms.locfileid: "51020793"
 
 [模型] 資料夾現在包含已從資料庫產生模型與相關的許多新檔案。
 
-![顯示新的模型檔案](creating-the-web-application/_static/image12.png)
-
 **ContosoModel.Context.cs**檔案包含的類別衍生自**DbContext**類別，並提供屬性，對應至資料庫資料表每個模型類別。 **Course.cs**， **Enrollment.cs**，並**Student.cs**檔案包含代表資料庫資料表的模型類別。 使用樣板時，您將使用模型類別和內容類別。
 
 繼續進行本教學課程之前，建置專案。 在下一步 區段中，您會產生資料模型為基礎的程式碼，但如果尚未建置專案，將無法運作一節。
 
-> [!div class="step-by-step"]
-> [上一頁](setting-up-database.md)
-> [下一頁](generating-views.md)
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 建立 ASP.NET web 應用程式
+> * 產生模型
+
+前往下一篇文章，以了解如何建立會產生資料模型為基礎的程式碼。
+> [!div class="nextstepaction"]
+> [產生檢視](generating-views.md)

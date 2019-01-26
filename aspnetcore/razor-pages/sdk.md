@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 10/25/2018
 uid: razor-pages/sdk
-ms.openlocfilehash: 2df7dc4234207d3dbac8a4ff47751adc8fc6a192
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: 0e6cfeb1863ed14ffe670cf082e99f28b26718dd
+ms.sourcegitcommit: ca5f03210bedc61c6639a734ae5674bfe095dee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284430"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55073097"
 ---
 # <a name="aspnet-core-razor-sdk"></a>ASP.NET Core Razor SDK
 
@@ -80,7 +80,7 @@ ms.locfileid: "53284430"
 | `RazorTargetName` | Razor 所產生組件的檔案名稱 (不含副檔名)。 | 
 | `RazorOutputPath` | Razor 輸出目錄。 |
 | `RazorCompileToolset` | 用來判斷可用來建置 Razor 組件的工具組。 有效值為 `Implicit`、`RazorSDK` 及 `PrecompilationTool`。 |
-| `EnableDefaultContentItems` | 如果是 `true`，請包括特定檔案類型 (例如 *.cshtml* 檔案)，作為專案中的內容。 透過參考時`Microsoft.NET.Sdk.Web`，檔案底下*wwwroot*和組態檔也會包含在內。 |
+| [EnableDefaultContentItems](https://github.com/aspnet/websdk/blob/rel-2.0.0/src/ProjectSystem/Microsoft.NET.Sdk.Web.ProjectSystem.Targets/netstandard1.0/Microsoft.NET.Sdk.Web.ProjectSystem.targets#L21) | 預設為 `true`。 當`true`，包括*web.config*， *.json*，和 *.cshtml*檔案做為專案中的內容。 透過參考時`Microsoft.NET.Sdk.Web`，檔案底下*wwwroot*和組態檔也會包含在內。 |
 | `EnableDefaultRazorGenerateItems` | 如果是 `true`，請包括來自 `RazorGenerate` 項目之 `Content` 項目的 *.cshtml* 檔案。 |
 | `GenerateRazorTargetAssemblyInfo` | 當`true`，會產生 *.cs*檔案，其中包含指定屬性`RazorAssemblyAttribute`和包含編譯輸出中的檔案。 |
 | `EnableDefaultRazorTargetAssemblyInfoAttributes` | 如果是 `true`，請將一組預設的組件屬性新增至 `RazorAssemblyAttribute`。 |
@@ -89,6 +89,8 @@ ms.locfileid: "53284430"
 | `IncludeRazorContentInPack` | 當`true`，所有 Razor 內容項目 (*.cshtml*檔案) 會標示為要包含在產生的 NuGet 套件。 預設值為 `false`。 |
 | `EmbedRazorGenerateSources` | 如果是 `true`，請將 RazorGenerate (*.cshtml*) 項目當作內嵌檔案新增至產生的 Razor 組件。 預設值為 `false`。 |
 | `UseRazorBuildServer` | 如果是 `true`，請使用持續性組建伺服器處理序來卸載程式碼產生工作。 預設值為 `UseSharedCompilation`。 |
+
+如需有關屬性的詳細資訊，請參閱 [MSBuild 屬性](/visualstudio/msbuild/msbuild-properties)。
 
 ### <a name="targets"></a>目標
 

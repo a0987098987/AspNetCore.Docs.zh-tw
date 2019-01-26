@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: ff480f7e8c2801fcb6a64c37d95e7e15467acde6
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
-ms.translationtype: HT
+ms.openlocfilehash: d0208c8890467ec6044d807aeee7c7ae02e18790
+ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837490"
+ms.locfileid: "54889999"
 ---
 # <a name="tutorial-learn-about-advanced-ef-scenarios-for-an-mvc-5-web-app"></a>教學課程：深入了解的 MVC 5 Web 應用程式的進階 EF 案例
 
@@ -290,7 +290,7 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[下載已完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+[下載已完成的專案](https://webpifeed.blob.core.windows.net/webpifeed/Partners/ASP.NET%20MVC%20Application%20Using%20Entity%20Framework%20Code%20First.zip)
 
 ## <a name="additional-resources"></a>其他資源
 

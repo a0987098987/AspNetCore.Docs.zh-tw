@@ -1,17 +1,17 @@
 ---
 title: 開始使用 ASP.NET Core SignalR
-author: tdykstra
+author: bradygaster
 description: 在本教學課程中，您會建立使用 ASP.NET Core SignalR 的聊天應用程式。
-ms.author: tdykstra
+ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/30/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 36296513726f7e098a536afc22fcbfb2cafe946d
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: 53ec924c2d7b4fac227be0c0bf24d93476528167
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997275"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836554"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 

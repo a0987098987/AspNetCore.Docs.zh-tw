@@ -3,7 +3,8 @@
     "content": [
       {
         "files": [
-          "**/*.md"
+          "**/*.md",
+          "**/*.yml"
         ],
         "exclude": [
           "**/obj/**",
@@ -13,7 +14,8 @@
           "**/includes/**",
           "**/aspnet-core-conceptual/**",
           "_site/**",
-          "***/readme.md"
+          "***/readme.md",
+          "***/license.md"
         ],
         "group": "group1",
         "src": "."
@@ -50,6 +52,7 @@
       "feedback_github_repo": "aspnet/docs.zh-tw",
       "feedback_product_url": "https://github.com/aspnet/Home/blob/master/CONTRIBUTING.md",
       "feedback_system": "GitHub",
+      "ms.prod": "aspnet-core",
       "searchScope": [
         "ASP.NET Core"
       ]

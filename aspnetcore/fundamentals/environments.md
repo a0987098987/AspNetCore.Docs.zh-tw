@@ -3,14 +3,14 @@ title: 在 ASP.NET Core 中使用多個環境
 author: rick-anderson
 description: 了解在 ASP.NET Core 應用程式中如何跨多個環境控制應用程式的行為。
 ms.author: riande
-ms.date: 07/03/2018
+ms.date: 01/22/2019
 uid: fundamentals/environments
-ms.openlocfilehash: 642af9e8f9e322e3624dad46bb1463f6525f5c9e
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: 39e1b48481832a6d76de605b37410fe2e16dcd88
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341663"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836736"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>在 ASP.NET Core 中使用多個環境
 
@@ -237,6 +237,20 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 **web.config**
 
 若要使用 *web.config* 設定 `ASPNETCORE_ENVIRONMENT` 環境變數，請參閱 <xref:host-and-deploy/aspnet-core-module#setting-environment-variables> 的＜設定環境變數＞一節。 當使用 *web.config*設定 `ASPNETCORE_ENVIRONMENT` 環境變數時，其值會覆寫系統層級的設定。
+
+::: moniker range=">= aspnetcore-2.2"
+
+**專案檔或發行設定檔**
+
+**適用於 Windows IIS 部署：** 在發行設定檔 (*.pubxml*) 或專案檔中包括 `<EnvironmentName>` 屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
+
+```xml
+<PropertyGroup>
+  <EnvironmentName>Development</EnvironmentName>
+</PropertyGroup>
+```
+
+::: moniker-end
 
 **每個 IIS 應用程式集區**
 

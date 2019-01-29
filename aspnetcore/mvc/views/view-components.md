@@ -5,12 +5,12 @@ description: 了解如何檢視 ASP.NET Core 中使用的元件，以及如何�
 ms.author: riande
 ms.date: 12/03/2018
 uid: mvc/views/view-components
-ms.openlocfilehash: 5812abad80cd906d6b9a7175bd7cdefd03a99eb3
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 156db610d99eaf8a8042a4c7c85267d521a20fd4
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861325"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836697"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
@@ -20,7 +20,7 @@ ms.locfileid: "52861325"
 
 ## <a name="view-components"></a>檢視元件
 
-檢視元件與部分檢視類似，但功能更強大。 檢視元件不會使用模型繫結，並且只取決於呼叫它時所提供的資料。 撰寫本文時使用的是 ASP.NET Core MVC，但檢視元件也適用於 Razor 頁面。
+檢視元件與部分檢視類似，但功能更強大。 檢視元件不會使用模型繫結，並且只取決於呼叫它時所提供的資料。 此文章是使用控制器與檢視所撰寫，但檢視元件也能搭配 Razor Pages 使用。
 
 檢視元件：
 
@@ -140,7 +140,7 @@ ms.locfileid: "52861325"
 
 [!code-csharp[](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs?name=snippet_IndexVC)]
 
-## <a name="walkthrough-creating-a-simple-view-component"></a>逐步解說：建立簡單檢視元件
+## <a name="walkthrough-creating-a-simple-view-component"></a>逐步解說：建立簡單的檢視元件
 
 [下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/view-components/sample)、建置和測試起始程式碼。 它是具有 `Todo` 控制器的簡單專案，而此控制器顯示 *Todo* 項目清單。
 

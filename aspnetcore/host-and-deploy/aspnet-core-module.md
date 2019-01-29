@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/11/2019
+ms.date: 01/22/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 192e4bf8e970083cc05babcd7fb3cf52985e35bf
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: 4eea360d08c79b889db00132109cf49492f84de6
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396320"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837776"
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
@@ -286,7 +286,20 @@ ASP.NET Core 模組也可以：
 
 ### <a name="setting-environment-variables"></a>設定環境變數
 
-您可以在 `processPath` 屬性中為處理序指定環境變數。 請使用 `environmentVariables` 集合元素的 `environmentVariable` 子元素來指定環境變數。 本節中所設定環境變數的優先順序會高於系統環境變數。
+::: moniker range=">= aspnetcore-3.0"
+
+您可以在 `processPath` 屬性中為處理序指定環境變數。 請使用 `<environmentVariables>` 集合元素的 `<environmentVariable>` 子元素來指定環境變數。 本節中所設定環境變數的優先順序會高於系統環境變數。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+您可以在 `processPath` 屬性中為處理序指定環境變數。 請使用 `<environmentVariables>` 集合元素的 `<environmentVariable>` 子元素來指定環境變數。
+
+> [!WARNING]
+> 此節中所設定的環境變數與使用相同名稱設定的系統環境變數相衝突。 若同時在 *web.config* 檔案與 Windows 中的系統層級設定環境變數，來自 *web.config* 檔案的值會成為附加到系統環境變數值 (例如，`ASPNETCORE_ENVIRONMENT: Development;Development`)，這會造成應用程式無法啟動。
+
+::: moniker-end
 
 下列範例會設定兩個環境變數。 `ASPNETCORE_ENVIRONMENT` 會將應用程式的環境設定為 `Development`。 開發人員可以在 *web.config* 檔案中暫時設定這個值，以在進行應用程式例外狀況偵錯時，強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入。 `CONFIG_DIR` 是一個使用者定義的環境變數範例，其中開發人員已撰寫程式碼，會在啟動時讀取值來構成用以載入應用程式設定檔的路徑。
 
@@ -320,6 +333,19 @@ ASP.NET Core 模組也可以：
   </environmentVariables>
 </aspNetCore>
 ```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+> [!NOTE]
+> 在 *web.config* 中直接設定環境的替代方式是在發行設定檔 (*.pubxml*) 或專案檔中包括 `<EnvironmentName>` 屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
+>
+> ```xml
+> <PropertyGroup>
+>   <EnvironmentName>Development</EnvironmentName>
+> </PropertyGroup>
+> ```
 
 ::: moniker-end
 
@@ -409,7 +435,7 @@ ASP.NET Core 模組也可以：
 
 ## <a name="enhanced-diagnostic-logs"></a>增強型診斷記錄
 
-ASP.NET Core 模組提供者是可設定的，以提供增強型診斷記錄。 將 `<handlerSettings>` 項目新增至 *web.config* 中的 `<aspNetCore>` 項目。將 `debugLevel` 設定為 `TRACE` 會公開精確性更高的診斷資訊：
+ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<handlerSettings>` 項目新增至 *web.config* 中的 `<aspNetCore>` 項目。將 `debugLevel` 設定為 `TRACE` 會公開精確性更高的診斷資訊：
 
 ```xml
 <aspNetCore processPath="dotnet"

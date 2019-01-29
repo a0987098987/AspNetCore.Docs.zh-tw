@@ -5,12 +5,12 @@ description: 將檢視新增至簡易的 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 03/04/2017
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 321ffd6b0168d4befc950a58035d19561e879491
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: f241a19c8821019f327fb160f01fe01eca53c5d0
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249447"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836895"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
 
@@ -104,7 +104,7 @@ ms.locfileid: "54249447"
 
 **注意**：尚未實作 `Movies` 控制器。 此時，`Movie App` 連結無法運作。
 
-儲存您的變更並選取 **Privacy** 連結。 請注意，瀏覽器索引標籤上的標題會顯示 **Privacy - Movie App**，而不是 **Privacy - Mvc Movie**：
+儲存您的變更並選取 **Privacy** 連結。 請注意，瀏覽器索引標籤上的標題會顯示 **Privacy Policy - Movie App**，而不是 **Privacy Policy - Mvc Movie**：
 
 ![Privacy 索引標籤](~/tutorials/first-mvc-app/adding-view/_static/about2.png)
 

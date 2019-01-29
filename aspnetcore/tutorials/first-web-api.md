@@ -4,14 +4,14 @@ author: rick-anderson
 description: 使用 ASP.NET Core MVC 建立 Web API
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/10/2018
+ms.date: 01/24/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 03936ee74836c7b214cb3dc4023a6e3c252f2a26
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 65af70be2cec68d30dd712b80312ebcd40ea0624
+ms.sourcegitcommit: c6db8b14521814f1f7e528d7aa06e474e4c04a1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207443"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "55065044"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>教學課程：使用 ASP.NET Core MVC 建立 Web API
 
@@ -168,13 +168,9 @@ ms.locfileid: "54207443"
 
 * 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [類別]。 將類別命名為 *TodoContext*，然後按一下 [新增]。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * 將 `TodoContext` 類別新增至 *Models* 資料夾。
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
-
-* 在 *Models* 資料夾中，新增 `TodoContext` 類別：
 
 ---
 
@@ -207,13 +203,9 @@ ms.locfileid: "54207443"
 
   ![在搜尋方塊中輸入 controller 且已選取 Web API 控制器的 [新增項目] 對話方塊](first-web-api/_static/new_controller.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * 在 *Controllers* 資料夾中，建立名為 `TodoController` 的類別。
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
-
-* 在 *Controllers* 資料夾中新增 `TodoController` 類別。
 
 ---
 
@@ -265,13 +257,11 @@ ms.locfileid: "54207443"
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
 
 * 以控制器的名稱取代 `[controller]`，也就是將控制器類別名稱減去 "Controller" 字尾。 在此範例中，控制器類別名稱是 **Todo**Controller，因此容器名稱是 "todo"。 ASP.NET Core [路由](xref:mvc/controllers/routing)不區分大小寫。
-* 如果 `[HttpGet]` 屬性具有路由範本 (例如 `[HttpGet("/products")]`)，請將其附加到路徑。 此範例不使用範本。 如需詳細資訊，請參閱[使用 Http[Verb] 屬性的屬性路由](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)。
+* 如果 `[HttpGet]` 屬性具有路由範本 (例如 `[HttpGet("products")]`)，請將其附加到路徑。 此範例不使用範本。 如需詳細資訊，請參閱[使用 Http[Verb] 屬性的屬性路由](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)。
 
 在下列 `GetTodoItem` 方法中，`"{id}"` 是待辦事項唯一識別碼的預留位置變數。 在叫用 `GetTodoItem` 時，會將 URL 中的 `"{id}"` 值提供給方法的 `id` 參數。
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
-
-`Name = "GetTodo"` 參數會建立具名路由。 您稍後將了解應用程式如何使用該命名方式透過路由名稱建立 HTTP 連結。
 
 ## <a name="return-values"></a>傳回值
 
@@ -313,9 +303,9 @@ ms.locfileid: "54207443"
 
 `CreatedAtAction` 方法：
 
-* 傳回 201 回應。 對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是 HTTP 201。
-* 將位置標頭新增至回應。 位置標頭指定新建立之待辦事項的 URI。 如需詳細資訊，請參閱 [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (已建立 10.2.2 201)。
-* 使用 "GetTodo" 具名路由來建立 URL。 "GetTodo" 具名路由定義在 `GetTodoItem` 中：
+* 成功時會傳回 HTTP 201 狀態碼。 對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是 HTTP 201。
+* 將 `Location` 標頭加到回應中。 `Location` 標頭指定新建立之待辦事項的 URI。 如需詳細資訊，請參閱 [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (已建立 10.2.2 201)。
+* 參考 `GetTodoItem` 動作以建立 `Location` 標頭的 URI。 C# `nameof` 關鍵字是用來避免在 `CreatedAtAction` 呼叫中以硬式編碼方式寫入動作名稱。
 
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
 
@@ -339,7 +329,7 @@ ms.locfileid: "54207443"
 
   ![Postman 與建立要求](first-web-api/_static/create.png)
 
-  如果您收到 405「不允許的方法」錯誤，可能是由於新增　`PostTodoItem` 方法之後未編譯專案所導致。
+  如果您收到 405「不允許的方法」錯誤，可能是由於新增 `PostTodoItem` 方法之後未編譯專案所導致。
 
 ### <a name="test-the-location-header-uri"></a>測試位置標頭 URI
 

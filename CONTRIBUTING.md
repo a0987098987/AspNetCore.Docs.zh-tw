@@ -34,7 +34,7 @@
 ![description of image for alt attribute](configuration/index/_static/imagename.png)
 ```
 
-所有影像都應有[替代 (alt) 文字](https://wikipedia.org/wiki/Alt_attribute)。 如需指定 alt 文字的建議，請參閱線上資源，例如 [WebAIM: Alternative Text](https://webaim.org/techniques/alttext/) (WebAIM：替代文字)。
+所有影像都應有[替代 (alt) 文字](https://wikipedia.org/wiki/Alt_attribute)。 如需指定 alt 文字的建議，請參閱線上資源，例如 [WebAIM：替代文字](https://webaim.org/techniques/alttext/)。
 
 針對 Markdown 檔案名稱和影像檔案名稱，請使用小寫。
 
@@ -67,7 +67,7 @@
 
 ## <a name="code-snippets"></a>程式碼片段
 
-文章通常會包含程式碼片段，作重點說明之用。 DFM 可讓您將程式碼複製到 Markdown 檔案中，或參考不同的程式碼檔案。 建議盡可能使用不同的程式碼檔案，將程式碼中的錯誤機率降到最低。 程式碼檔案會儲存在存放庫 (使用於先前範例專案所述的資料夾結構) 中。 
+文章通常會包含程式碼片段，作為重點說明之用。 DFM 可讓您將程式碼複製到 Markdown 檔案中，或參考不同的程式碼檔案。 建議盡可能使用不同的程式碼檔案，將程式碼中的錯誤機率降到最低。 程式碼檔案會儲存在存放庫 (使用於先前範例專案所述的資料夾結構) 中。 
 
 下列範例說明 *configuration/index.md* 檔案中所使用的 [DFM 程式碼片段語法](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html#code-snippet)。
 
@@ -112,7 +112,7 @@ DocFX 需要：
 
 ### <a name="windows-instructions"></a>Windows 指示
 
-* 從 [DocFX 版本](https://github.com/dotnet/docfx/releases)下載並解壓縮 *docfx.zip*。
+* 請從 [DocFX 版本](https://github.com/dotnet/docfx/releases)下載並解壓縮 *docfx.zip*。
 * 將 DocFX 新增至您的 PATH。
 * 在命令列視窗中，巡覽至包含 *docfx.json* 檔案的適當資料夾 (若是 ASP.NET 內容則為 *aspnet*；若是 ASP.NET Core 內容則為 *aspnetcore*)，然後執行下列命令：
 
@@ -124,22 +124,20 @@ DocFX 需要：
 
 ### <a name="mono-instructions"></a>Mono 指示
 
-* 透過 Homebrew 安裝 Mono：`brew install mono`。
-* 下載[最新版本的 DocFX](https://github.com/dotnet/docfx/releases)。
-* 解壓縮至 `\bin\docfx`。
-* 建立 **docfx** 的別名：
+* 透過 Homebrew 安裝 Mono：
 
   ```
-  function docfx {
-    mono $HOME/bin/docfx/docfx.exe
-  }
-    
-  function docfx-serve {
-    mono $HOME/bin/docfx/docfx.exe serve _site
-  }
+  brew install mono
   ```
+* 下載[最新版的 DocFX](https://github.com/dotnet/docfx/releases)。
+* 將壓縮檔解壓縮到 *$HOME/bin/docfx*。
+* 在 bash shell 中建立 **docfx** 的別名配對。 第一個別名是用來建置文件。 第二個別名是用來建置及提供文件。
 
-* 執行 *Docs\aspnet* 或 *Docs\aspnetcore* 目錄中的 `docfx` 來建置網站。 執行 `docfx-serve` 以檢視位於 `http://localhost:8080` 的網站。
+  ```
+  alias docfx='mono $HOME/bin/docfx/docfx.exe'
+  alias docfx-serve='mono $HOME/bin/docfx/docfx.exe --serve'
+  ```
+* 從存放庫的根目錄執行 `docfx` 以建置網站。 執行 `docfx-serve` 以在 `http://localhost:8080` 檢視網站。
 
 ## <a name="voice-and-tone"></a>語態和語氣
 

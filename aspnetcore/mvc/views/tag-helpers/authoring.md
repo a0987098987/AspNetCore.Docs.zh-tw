@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 16f3a435af267a5a17a24ee9fbda2b1c7c8818fd
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: c21decd39b7855cf2eefb2bb482e5e91b9487863
+ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121618"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54889934"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
@@ -96,7 +96,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs?range=6-22)]
 
-* 標籤協助程式依照 Pascal 命名法大小寫慣例的類別和屬性名稱會轉譯成其[小寫 Kebab](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101)。 因此，若要使用 `MailTo` 屬性，您將使用 `<email mail-to="value"/>` 對等項目。
+* 標籤協助程式依照 Pascal 命名法大小寫慣例的類別和屬性名稱會轉譯成其[小寫 kebab](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101)。 因此，若要使用 `MailTo` 屬性，您將使用 `<email mail-to="value"/>` 對等項目。
 
 * 最後一行設定功能最小之標籤協助程式的已完成內容。
 
@@ -189,7 +189,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
-   * 如前所述，標籤協助程式會將標籤協助程式依照 Pascal 命名法大小寫慣例的類別名稱和屬性轉譯成[小寫 Kebab](http://wiki.c2.com/?KebabCase)。 因此，若要在 Razor 中使用 `WebsiteInformationTagHelper`，您將撰寫 `<website-information />`。
+   * 如前所述，標籤協助程式會將標籤協助程式依照 Pascal 大小寫 C# 命名法大小寫慣例的類別名稱和屬性轉譯成[小寫 kebab](http://wiki.c2.com/?KebabCase)。 因此，若要在 Razor 中使用 `WebsiteInformationTagHelper`，您將撰寫 `<website-information />`。
 
    * 您未明確識別具有 `[HtmlTargetElement]` 屬性的目標項目，因此會將預設值 `website-information` 設為目標。 如果您已套用下列屬性 (請注意，它不是 Kebab 大小寫，但符合類別名稱)：
 
@@ -197,7 +197,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    [HtmlTargetElement("WebsiteInformation")]
    ```
 
-   小寫 Kebab 標籤 `<website-information />` 將不相符。 如果您想要使用 `[HtmlTargetElement]` 屬性，請使用 Kebab 大小寫，如下所示：
+   小寫 kebab 標籤 `<website-information />` 將不相符。 如果您想要使用 `[HtmlTargetElement]` 屬性，請使用 Kebab 大小寫，如下所示：
 
    ```csharp
    [HtmlTargetElement("Website-Information")]

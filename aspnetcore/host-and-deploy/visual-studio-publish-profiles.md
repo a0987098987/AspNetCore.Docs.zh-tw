@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何在 Visual Studio 中建立發行設定檔，並使用這些設定檔來管理對各種目標的 ASP.NET Core 應用程式部署。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/06/2018
+ms.date: 01/22/2019
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 3d24cd2cd4697e8e7cf7e4bdf4d076a09b6a6a23
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: 03acaa73fc2ebdc62522a1e081ca6ed72515483f
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284704"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836479"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔
 
@@ -336,6 +336,16 @@ dotnet msbuild "AzureWebApp.csproj"
 
 > [!NOTE]
 > [dotnet msbuild](/dotnet/core/tools/dotnet-msbuild) 命令可跨平台使用，並可在 macOS 和 Linux 上編譯 ASP.NET Core 應用程式。 不過，macOS 和 Linux 上的 MSBuild 無法將應用程式部署至 Azure 或其他 MSDeploy 端點。 只有在 Windows 上才提供 MSDeploy。
+
+## <a name="set-the-environment"></a>設定環境
+
+在發行設定檔 (*.pubxml*) 或專案檔中包括 `<EnvironmentName>` 屬性，以設定應用程式的[環境](xref:fundamentals/environments)：
+
+```xml
+<PropertyGroup>
+  <EnvironmentName>Development</EnvironmentName>
+</PropertyGroup>
+```
 
 ## <a name="exclude-files"></a>排除檔案
 

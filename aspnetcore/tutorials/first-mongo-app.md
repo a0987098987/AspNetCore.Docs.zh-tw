@@ -4,14 +4,14 @@ author: prkhandelwal
 description: 此教學課程示範如何使用 MongoDB NoSQL 資料庫建置 ASP.NET Core Web API。
 ms.author: scaddie
 ms.custom: mvc, seodec18
-ms.date: 11/29/2018
+ms.date: 01/23/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: bd9a36c5eb06542c820e71e937b8da10f735a0f8
-ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
+ms.openlocfilehash: 6375ae618816671bd9c64f038603747c64cdce56
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53577834"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54835592"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
 
@@ -54,11 +54,11 @@ ms.locfileid: "53577834"
 
 ## <a name="configure-mongodb"></a>設定 MongoDB
 
-若使用 Windows，MongoDB 預設會安裝在 *C:\Program Files\MongoDB*。 新增 *C:\Program Files\MongoDB\Server\<version_number>\bin* 到 `Path` 環境變數。 此變更會啟用從您開發機器上的任意位置存取 MongoDB 的功能。
+若使用 Windows，MongoDB 預設會安裝在 *C:\\Program Files\\MongoDB*。 將 *C:\\Program Files\\MongoDB\\Server\\\<版本號碼>\\bin* 新增到 `Path` 環境變數。 此變更會啟用從您開發機器上的任意位置存取 MongoDB 的功能。
 
 在下列步驟中使用 mongo 殼層來建立資料庫、建立集合及存放文件。 如需有關 mongo 殼層命令的詳細資訊，請參閱[使用 mongo 殼層](https://docs.mongodb.com/manual/mongo/#working-with-the-mongo-shell)。
 
-1. 選擇您開發機器上的目錄來存放資料。 例如， Windows 上的 *C:\BooksData*。 若該目錄不存在，請建立它。 mongo 殼層不會建立新目錄。
+1. 選擇您開發機器上的目錄來存放資料。 例如， Windows 上的 *C:\\BooksData*。 若該目錄不存在，請建立它。 mongo 殼層不會建立新目錄。
 1. 開啟命令殼層。 執行下列命令以連線到預設連接埠 27017 上的 MongoDB。 請記得將 `<data_directory_path>` 取代為您在上一個步驟中選擇的目錄。
 
     ```console
@@ -188,7 +188,13 @@ ms.locfileid: "53577834"
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Models/Book.cs)]
 
-在上面的類別中，需要 `Id` 屬性才能將通用語言執行平台 (CLR) 物件對應到 MongoDB 集合。 該類別中的其他屬性是使用 `[BsonElement]` 屬性修飾。 屬性的值代表 MongoDB 集合中的屬性名稱。
+在上面的類別中，需要 `Id` 屬性：
+
+* 才能將通用語言執行平台 (CLR) 物件對應到 MongoDB 集合。
+* 使用 `[BsonId]` 加上附註以指定此屬性做為文件的主要機碼。
+* 使用 `[BsonRepresentation(BsonType.ObjectId)]` 加上附註以允許將參數傳遞為類型 `string` 而非 `ObjectId`。 Mongo 會處理從 `string` 轉換到 `ObjectId` 的作業。
+
+該類別中的其他屬性是使用 `[BsonElement]` 屬性加上註解。 屬性的值代表 MongoDB 集合中的屬性名稱。
 
 ## <a name="add-a-crud-operations-class"></a>新增 CRUD 作業類別
 

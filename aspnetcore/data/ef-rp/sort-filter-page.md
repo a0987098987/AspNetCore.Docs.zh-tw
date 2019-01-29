@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 19fe24e0f901c50e8425db7665b5b2257b608146
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 350243fb94b4798293a5a61b580c3b3b4d8c6d4a
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090874"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444294"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
 
@@ -122,7 +122,7 @@ Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` �
 * 將 `searchString` 參數新增至 `OnGetAsync` 方法。 從文字方塊中接收搜尋字串值文字方塊會在下一節新增。
 * 將 `Where` 子句新增至 LINQ 陳述式。 `Where` 子句只會選取名字或姓氏包含搜尋字串的學生。 有可以搜尋的值，LINQ 陳述式才會執行。
 
-注意：上述程式碼會在 `IQueryable` 物件上呼叫 `Where` 方法，而篩選是由伺服器處理。 在某些情況下，應用程式可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 例如，假設 `_context.Students` 從 EF Core `DbSet` 變為傳回 `IEnumerable` 集合的儲存機制方法。 結果通常都是一樣的，但在某些情況下可能會不同。
+注意:上面的程式碼會呼叫 `IQueryable` 物件上的 `Where` 方法，而且會在伺服器上處理篩選。 在某些情況下，應用程式可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 例如，假設 `_context.Students` 從 EF Core `DbSet` 變為傳回 `IEnumerable` 集合的儲存機制方法。 結果通常都是一樣的，但在某些情況下可能會不同。
 
 例如，.NET Framework 的 `Contains` 實作，預設會執行區分大小寫的比較。 在 SQL Server，`Contains` 區分大小寫取決於 SQL Server 執行個體的定序設定。 SQL Server 預設為不區分大小寫。 可以使用 `ToUpper` 使測試明確不區分大小寫：
 
@@ -258,6 +258,8 @@ http://localhost:5000/Students?SearchString=an
 [!code-csharp[](intro/samples/cu21/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
 ### <a name="update-the-about-page-model"></a>更新 About 頁面模型
+
+ASP.NET Core 2.2 中的 Web 範本不包括 [關於] 頁面。 若您使用 ASP.NET Core 2.2，請建立 [關於 Razor Page] 頁面。
 
 以下列程式碼更新 *Pages/About.cshtml.cs* 檔案：
 

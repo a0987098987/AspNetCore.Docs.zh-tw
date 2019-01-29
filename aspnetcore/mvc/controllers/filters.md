@@ -4,23 +4,20 @@ author: ardalis
 description: 深入了解「篩選條件」的運作方式，以及如何在 ASP.NET Core MVC 中使用它們。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2018
+ms.date: 1/15/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: d4fe49a9225b9980a956ef9c773ad631beb557ae
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: fe3082481b51c968fd361dbcc9553c4e35a36f2a
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207456"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444346"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Tom Dykstra](https://github.com/tdykstra/) 以及 [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定階段之前或之後執行程式碼。
-
-> [!IMPORTANT]
-> 本主題**不**適用於 Razor 頁面。 ASP.NET Core 2.1 和更新版本支援 Razor 頁面的 [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) 和 [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0)。 如需詳細資訊，請參閱 [Razor 頁面的篩選條件方法](xref:razor-pages/filter)。
 
  內建篩選條件會處理工作，例如：
 
@@ -32,7 +29,7 @@ ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定
 
 [從 GitHub 檢視或下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)。
 
-## <a name="how-do-filters-work"></a>篩選條件如何運作？
+## <a name="how-filters-work"></a>篩選條件如何運作
 
 篩選條件在「MVC 動作引動過程管線」中執行，這有時又稱為「篩選條件管線」。  MVC 之後的篩選條件管線執行會選取要執行的動作。
 
@@ -46,7 +43,7 @@ ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定
 
 * [資源篩選條件](#resource-filters)是授權之後最先處理要求的。  它們可以在篩選條件管線的其餘部分之前執行程式碼，以及在管線的其餘部分完成之後執行程式碼。 基於效能的考量，它們適合用來實作快取或以其他方式縮短篩選條件管線。 它們在模型繫結之前執行，因此可能會影響模型繫結。
 
-* [動作篩選條件](#action-filters)可以緊接在呼叫個別動作方法之前和之後執行程式碼。 它們可以用來處理傳遞至動作的引數，和從動作傳回的結果。
+* [動作篩選條件](#action-filters)可以緊接在呼叫個別動作方法之前和之後執行程式碼。 它們可以用來處理傳遞至動作的引數，和從動作傳回的結果。 Razor Pages 中不支援動作篩選條件。
 
 * [例外狀況篩選條件](#exception-filters)用來將通用原則套用到在任何項目寫入回應主體之前，發生的未處理例外狀況。
 
@@ -68,14 +65,13 @@ ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定
 
 [!code-csharp[](./filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8-10,13)]
 
-您可以為單一類別中的多個篩選條件階段實作介面。 例如，[Actionfilterattribut](/dotnet/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute?view=aspnetcore-2.0) 類別會實作 `IActionFilter`、`IResultFilter`，以及它們的非同步對等項目。
+您可以為單一類別中的多個篩選條件階段實作介面。 例如，<xref:Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute> 類別會實作 `IActionFilter`、`IResultFilter` 與其非同步對等項目。
 
 > [!NOTE]
-> 請實作同步**或**非同步版本的篩選條件介面，但不要兩者同時實作。 架構會先檢查以查看篩選條件是否實作非同步介面，如果是的話，便呼叫該介面。 如果沒有，它會呼叫同步介面的方法。 如果您要在一個類別上同時實作兩種介面，則只會呼叫非同步方法。 使用抽象類別時，例如 [Actionfilterattribut](/dotnet/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute?view=aspnetcore-2.0)，您只會覆寫同步方法或每個篩選條件類型的非同步方法。
+> 請實作同步**或**非同步版本的篩選條件介面，但不要兩者同時實作。 架構會先檢查以查看篩選條件是否實作非同步介面，如果是的話，便呼叫該介面。 如果沒有，它會呼叫同步介面的方法。 如果您要在一個類別上同時實作兩種介面，則只會呼叫非同步方法。 使用抽象類別時，例如 <xref:Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute>，您只會覆寫同步方法或每個篩選條件類型的非同步方法。
 
 ### <a name="ifilterfactory"></a>IFilterFactory
-
-[IFilterFactory](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory) 實作 [IFilterMetadata](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifiltermetadata)。 因此，`IFilterFactory` 執行個體可用來在篩選條件管線中任何位置作為 `IFilterMetadata` 執行個體。 當架構準備要叫用篩選條件時，會嘗試將它轉換成 `IFilterFactory`。 如果該轉換成功，則會呼叫 [CreateInstance](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory.createinstance) 方法來建立將被叫用的 `IFilterMetadata` 執行個體。 因為在應用程式啟動時不需要明確設定精確的篩選條件管線，所以這提供了具有彈性的設計。
+[IFilterFactory](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory) 會實作 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>。 因此，`IFilterFactory` 執行個體可用來在篩選條件管線中任何位置作為 `IFilterMetadata` 執行個體。 當架構準備要叫用篩選條件時，會嘗試將它轉換成 `IFilterFactory`。 如果該轉換成功，則會呼叫 [CreateInstance](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory.createinstance) 方法來建立將被叫用的 `IFilterMetadata` 執行個體。 因為在應用程式啟動時不需要明確設定精確的篩選條件管線，所以這提供了具有彈性的設計。
 
 您可以對您自己的屬性實作，實作 `IFilterFactory` 以作為另一種建立篩選條件的方法：
 
@@ -280,6 +276,9 @@ System.InvalidOperationException: No service for type
 
 ## <a name="action-filters"></a>動作篩選條件
 
+> [!IMPORTANT]
+> 動作篩選條件**不會**套用到 Razor Pages。 Razor Pages 支援 <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> 與 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter>。 如需詳細資訊，請參閱 [Razor 頁面的篩選條件方法](xref:razor-pages/filter)。
+
 *動作篩選條件*：
 
 * 實作 `IActionFilter` 或 `IAsyncActionFilter` 介面。
@@ -289,13 +288,13 @@ System.InvalidOperationException: No service for type
 
 [!code-csharp[](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?name=snippet_ActionFilter)]
 
-[ActionExecutingContext](/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext) 提供下列屬性：
+<xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext> 提供下列屬性：
 
 * `ActionArguments` - 可讓您管理動作的輸入。
 * `Controller` - 可讓您管理控制器執行個體。 
 * `Result` - 設定動作方法和後續動作篩選條件的縮短執行。 擲回例外狀況也會導致無法執行動作方法和後續的篩選條件，但會被視為失敗，而不是成功的結果。
 
-[ActionExecutedContext](/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutedcontext) 提供 `Controller` 和 `Result`，再加上下列屬性：
+<xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext> 提供 `Controller` 與 `Result`，加上下列屬性：
 
 * `Canceled` - 如果動作執行被另一個篩選條件縮短，則為 true。
 * `Exception` - 如果動作或後續的動作篩選條件擲回例外狀況，則為非 Null。 將這個屬性設為 Null，實際上會「處理」例外狀況，並且會執行 `Result`，彷彿它已正常地從動作方法傳回。
@@ -391,4 +390,5 @@ System.InvalidOperationException: No service for type
 
 ## <a name="next-actions"></a>後續動作
 
-若要嘗試使用篩選條件，請[下載、測試及修改範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)。
+* 請參閱[Razor Pages 的篩選方法](xref:razor-pages/filter)
+* 若要嘗試使用篩選條件，請[下載、測試及修改 Github 範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)。

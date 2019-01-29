@@ -5,14 +5,14 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 01/22/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: bdb29c318c66ac884b9225ba8c2a0dfc1f364255
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: eedaf64710506f2a2aac65c178a9888d2ab33d38
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637699"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837477"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -44,7 +44,9 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 #### <a name="framework-dependent-deployment-fdd"></a>架構相依部署 (FDD)
 
-將 Windows [執行階段識別碼 (RID)](/dotnet/core/rid-catalog) 新增至包含目標 Framework 的 `<PropertyGroup>`。 新增 `<SelfContained>` 屬性集到 `false`。 透過新增 `<IsTransformWebConfigDisabled>` 屬性集到 `true`，以停用 *web.config* 檔案的建立。
+將 Windows [執行階段識別碼 (RID)](/dotnet/core/rid-catalog) 新增至包含目標 Framework 的 `<PropertyGroup>`。 在下列範例中，RID 已設定為 `win7-x64`。 新增 `<SelfContained>` 屬性集到 `false`。 這些屬性會指示 SDK 產生適用於 Windows 的可執行檔 (*.exe*)。
+
+針對 Windows Services 應用程式，不需要 *web.config* 檔案 (發行 ASP.NET Core 應用程式時通常會產生此檔案)。 若要停用 *web.config* 檔案的建立，請新增 `<IsTransformWebConfigDisabled>` 屬性集到 `true`。
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -60,6 +62,8 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
+
+新增 `<UseAppHost>` 屬性集到 `true`。 此屬性為服務提供 FDD 的啟用路徑 (可執行檔 *.exe*)。
 
 ```xml
 <PropertyGroup>

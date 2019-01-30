@@ -46,7 +46,7 @@ ASP.NET Core Identity 是將登入功能加入至 ASP.NET Core 應用程式的�
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 [檔案]  >  [新增]  >  [專案]。
-* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1**將專案下載相同的命名空間。 按一下 [確定 **Deploying Office Solutions**]。
+* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1**將專案下載相同的命名空間。 按一下 [確定]。
 * 選取 ASP.NET Core **Web 應用程式**ASP.NET Core 2.1 中，然後選取**變更驗證**。
 * 選取 **個別使用者帳戶**然後按一下**確定**。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: a2f70ba4-83d1-4002-9255-24732726c4f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: da94329cc2e6dbe01cf6af8b5851b4c30a508975
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: 9ed388543dd54d209ff2a0b92df4f7659962582c
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889883"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236467"
 ---
 # <a name="tutorial-implement-crud-functionality-with-the-entity-framework-in-aspnet-mvc"></a>教學課程：在 ASP.NET MVC 中實作 Entity framework 的 CRUD 功能
 
@@ -37,7 +37,7 @@ ms.locfileid: "54889883"
 > * 建立詳細資料頁面
 > * 更新 [建立] 頁面
 > * 更新的 HttpPost Edit 方法
-> * 更新 [刪除] 頁面
+> * 更新 *Delete* 頁面
 > * 關閉資料庫連接
 > * 處理交易
 
@@ -135,7 +135,7 @@ Url 藉由`ActionLink`Razor 檢視中的陳述式。 下列程式碼中，`id`�
 
     [!code-cshtml[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample9.cshtml)]
 
-    *Create.chstml*也包含`@Html.AntiForgeryToken()`，這適用於`ValidateAntiForgeryToken`屬性中的控制站，以協助防止[跨網站偽造要求](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)攻擊。
+    *Create.cshtml*也包含`@Html.AntiForgeryToken()`，這適用於`ValidateAntiForgeryToken`屬性中的控制站，以協助防止[跨網站偽造要求](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)攻擊。
 
     不需要變更在*Create.cshtml*。
 
@@ -196,7 +196,7 @@ Url 藉由`ActionLink`Razor 檢視中的陳述式。 下列程式碼中，`id`�
 
 4. 關閉瀏覽器。
 
-## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
+## <a name="update-the-delete-page"></a>更新 *Delete* 頁面
 
 在  *Controllers\StudentController.cs*，範本程式碼<xref:System.Web.Mvc.HttpGetAttribute>`Delete`方法會使用`Find`方法來擷取所選`Student`實體，當您在中所見`Details`和`Edit`方法。 然而，若要在呼叫 `SaveChanges` 失敗時實作自訂錯誤訊息，您需要將一些功能新增至此方法及其對應的檢視。
 

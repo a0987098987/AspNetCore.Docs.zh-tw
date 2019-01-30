@@ -1,26 +1,26 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/setting-up-database
 title: 教學課程：開始使用 EF Database First 使用 MVC 5
-description: 本文說明如何開始使用的現有資料庫，並快速建立 web 應用程式，可讓使用者與資料互動。
+description: 本教學課程會示範如何開始使用的現有資料庫，並快速建立 web 應用程式，可讓使用者與資料互動。
 author: Rick-Anderson
 ms.author: riande
-ms.date: 01/23/2019
+ms.date: 01/28/2019
 ms.topic: tutorial
 ms.assetid: 095abad4-3bfe-4f06-b092-ae6a735b7e49
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/setting-up-database
 msc.type: authoredcontent
-ms.openlocfilehash: 8b094b7c334eaad510c46b55a99ec727b9c381c2
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: a503e3db63c873249178fd4783d322f4067c3208
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889921"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236376"
 ---
 # <a name="tutorial-get-started-with-ef-database-first-using-mvc-5"></a>教學課程：開始使用 EF Database First 使用 MVC 5
 
 您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本系列教學課程會示範如何自動產生程式碼，可讓使用者顯示、 編輯、 建立及刪除位於資料庫資料表中的資料。 產生的程式碼會對應至資料庫資料表中的資料行。 在系列的最後一個部分中，您將部署至 Azure 的站台和資料庫。
 
-本文說明如何開始使用的現有資料庫，並快速建立 web 應用程式，可讓使用者與資料互動。 它會使用 Entity Framework 6 和 MVC 5 建置 web 應用程式。 ASP.NET 樣板功能可讓您自動產生程式碼顯示、 更新、 建立和刪除資料。 使用 Visual Studio 內發行的工具，您可以輕鬆地部署站台和資料庫至 Azure。
+本教學課程會示範如何開始使用的現有資料庫，並快速建立 web 應用程式，可讓使用者與資料互動。 它會使用 Entity Framework 6 和 MVC 5 建置 web 應用程式。 ASP.NET 樣板功能可讓您自動產生程式碼顯示、 更新、 建立和刪除資料。 使用 Visual Studio 內發行的工具，您可以輕鬆地部署站台和資料庫至 Azure。
 
 此系列的一部分，著重於建立資料庫，並填入資料。
 
@@ -37,7 +37,7 @@ ms.locfileid: "54889921"
 
 ## <a name="introduction"></a>簡介
 
-本文會說明這種情況您有一個資料庫並想要產生程式碼，該資料庫的欄位為基礎的 web 應用程式。 這個方法會呼叫第一個資料庫的開發。 如果您還沒有現有的資料庫，您可以改為使用此方法稱為 Code First 開發這牽涉到定義的資料類別和類別屬性從產生的資料庫。
+本教學課程可解決這種情況您有一個資料庫並想要產生程式碼，該資料庫的欄位為基礎的 web 應用程式。 這個方法會呼叫第一個資料庫的開發。 如果您還沒有現有的資料庫，您可以改為使用此方法稱為 Code First 開發這牽涉到定義的資料類別和類別屬性從產生的資料庫。
 
 ## <a name="set-up-the-database"></a>將資料庫設定
 
@@ -102,6 +102,6 @@ Code First 開發簡介範例，請參閱[Getting Started with ASP.NET MVC 5](..
 > [!div class="checklist"]
 > * 將資料庫設定
 
-請前往下一篇文章，以了解如何建立 web 應用程式和資料模型。
+請前進到下一個教學課程，以了解如何建立 web 應用程式和資料模型。
 > [!div class="nextstepaction"]
 > [建立 web 應用程式和資料模型](creating-the-web-application.md)

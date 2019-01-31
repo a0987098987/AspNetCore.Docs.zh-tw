@@ -53,7 +53,7 @@ items:
       href: /ef/core/get-started/aspnetcore/new-db
     - uid: data/ef-mvc/index
       name: 使用 MVC 的 EF Core，長篇教學課程
-- name: 基本概念
+- name: Fundamentals
   items:
   - uid: fundamentals/index
     name: 概觀
@@ -190,13 +190,13 @@ items:
       - name: 表單
         href: mvc/views/working-with-forms.md#the-form-tag-helper
       - uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-        name: 影像
+        name: Image
       - name: 輸入
         href: mvc/views/working-with-forms.md#the-input-tag-helper
       - name: 標籤
         href: mvc/views/working-with-forms.md#the-label-tag-helper
       - uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-        name: 部分
+        name: Partial
       - name: 選用版
         href: mvc/views/working-with-forms.md#the-select-tag-helper
       - name: 文字區域
@@ -310,7 +310,7 @@ items:
     - uid: signalr/redis-backplane
       name: Redis 後擋板
   - uid: signalr/configuration
-    name: 設定
+    name: Configuration
   - uid: signalr/authn-and-authz
     name: 驗證與授權
   - uid: signalr/security
@@ -455,6 +455,8 @@ items:
       name: 概觀
     - uid: tutorials/publish-to-azure-webapp-using-vs
       name: 使用 Visual Studio 發佈
+    - name: 使用 Visual Studio for Mac 來發行
+      href: /visualstudio/mac/publish-app-svc
     - name: 使用 CLI 工具發佈
       href: /azure/app-service/app-service-web-tutorial-dotnetcore-sqldb
     - uid: host-and-deploy/azure-apps/azure-continuous-deployment
@@ -523,10 +525,12 @@ items:
     name: 裝載於 Web 伺服陣列
   - uid: host-and-deploy/visual-studio-publish-profiles
     name: Visual Studio 發行設定檔
+  - name: Visual Studio for Mac 發行到資料夾
+    href: /visualstudio/mac/publish-folder
   - uid: host-and-deploy/directory-structure
     name: 目錄結構
   - uid: host-and-deploy/health-checks
-    name: 健康情況檢查
+    name: 健康狀態檢查
 - name: 安全性及身分識別
   items:
   - uid: security/index
@@ -539,6 +543,8 @@ items:
       name: Scaffold 身分識別
     - uid: security/authentication/add-user-data
       name: 將自訂使用者資料新增至身分識別
+    - uid: security/authentication/samples
+      name: 驗證範例
     - uid: security/authentication/customize_identity_model
       name: 自訂身分識別
     - uid: security/authentication/community
@@ -641,7 +647,7 @@ items:
         name: 限制受保護承載的存留期
       - uid: security/data-protection/consumer-apis/dangerous-unprotect
         name: 取消金鑰已被撤銷之承載的保護
-    - name: 設定
+    - name: Configuration
       items:
       - uid: security/data-protection/configuration/index
         name: 概觀
@@ -806,9 +812,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.1
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 4f8ccb592b7f95794cad01edd1e0f514bd9943c1
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: a6169489db7d7365e254c8f1213de348a4429c49
+ms.sourcegitcommit: e7276930515216338a33c4a03c0d7a87fc718ffe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54892991"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55293514"

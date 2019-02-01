@@ -349,7 +349,7 @@ ms.locfileid: "54837503"
     ![查詢服務訊息代理程式狀態](real-time-web-applications-with-signalr/_static/image25.png "查詢服務訊息代理程式狀態")
 
     *查詢服務訊息代理程式狀態*
-8. 如果值**已\_broker\_啟用**資料庫中的資料行是&quot;0&quot;，使用下列命令來啟用它。 取代**&lt;您資料庫&gt;** 建立資料庫時，您設定的名稱 (例如：SignalR)。
+8. 如果值**已\_broker\_啟用**資料庫中的資料行是&quot;0&quot;，使用下列命令來啟用它。 取代 **&lt;您資料庫&gt;** 建立資料庫時，您設定的名稱 (例如：SignalR)。
 
     [!code-sql[Main](real-time-web-applications-with-signalr/samples/sample12.sql)]
 
@@ -369,7 +369,7 @@ ms.locfileid: "54837503"
 
     [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample13.ps1)]
 2. 針對專案重複上一個步驟，但這次**GeekQuiz2**。
-3. 若要設定 SQL Server 後擋板，開啟**Startup.cs**的檔案**GeekQuiz**專案，並新增下列程式碼**設定**方法。 取代**&lt;您資料庫&gt;** 與您建立 SQL Server 後擋板時使用的資料庫名稱。 重複這個步驟**GeekQuiz2**專案。
+3. 若要設定 SQL Server 後擋板，開啟**Startup.cs**的檔案**GeekQuiz**專案，並新增下列程式碼**設定**方法。 取代 **&lt;您資料庫&gt;** 與您建立 SQL Server 後擋板時使用的資料庫名稱。 重複這個步驟**GeekQuiz2**專案。
 
     (程式碼片段- *RealTimeSignalR-Ex2-StartupConfiguration*)
 

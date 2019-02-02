@@ -5,10 +5,10 @@ items:
   href: overview.md
 - name: 教學課程
   href: tutorials.md
-- name: Web Forms
+- name: Web Form
   href: web-forms/index.md
   items:
-  - name: 指導方針
+  - name: 指引
     href: web-forms/overview/index.md
     items:
     - name: 快速入門
@@ -220,7 +220,7 @@ items:
       - name: ASP.NET 4 - Tailspin Spyworks
         href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/index.md
         items:
-        - name: 第 1 部分：[檔案] -> [新增專案]
+        - name: 第 1 部份：[檔案] -> [新增專案]
           href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1.md
         - name: 第 2 部分：資料存取層
           href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2.md
@@ -647,7 +647,7 @@ items:
           href: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-cs.md
         - name: 測試密碼強度 (VB)
           href: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb.md
-      - name: 快顯視窗
+      - name: 快顯
         href: web-forms/overview/ajax-control-toolkit/popup/index.md
         items:
         - name: 使用多個快顯視窗控制項 (C#)
@@ -1804,7 +1804,7 @@ items:
       - name: 如何使用 LINQ
         href: web-forms/videos/data-access/how-do-i-with-linq/index.md
         items:
-        - name: LINQ to SQL：概觀
+        - name: LINQ to SQL：總覽
           href: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-overview.md
         - name: LINQ to SQL：資料模型
           href: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-data-model.md
@@ -2062,7 +2062,7 @@ items:
 - name: MVC
   href: mvc/index.md
   items:
-  - name: 指導方針
+  - name: 指引
     href: mvc/overview/index.md
     items:
     - name: 快速入門
@@ -2135,8 +2135,6 @@ items:
           href: mvc/overview/getting-started/database-first-development/customizing-a-view.md
         - name: 增強資料驗證
           href: mvc/overview/getting-started/database-first-development/enhancing-data-validation.md
-        - name: 發佈至 Azure
-          href: mvc/overview/getting-started/database-first-development/publish-to-azure.md
       - name: ASP.NET MVC 5 應用程式生命週期
         href: mvc/overview/getting-started/lifecycle-of-an-aspnet-mvc-5-application.md
       - name: MVC 建議資源
@@ -2311,9 +2309,9 @@ items:
       - name: MVC 3 Music 市集
         href: mvc/overview/older-versions/mvc-music-store/index.md
         items:
-        - name: 第 1 部分：概觀和 [檔案] -> [新增專案]
+        - name: 第 1 部份：概觀和 [檔案] -> [新增專案]
           href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1.md
-        - name: 第 2 部分：控制器
+        - name: 第 2 部分：Controllers
           href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-2.md
         - name: 第 3 部分：檢視和 ViewModels
           href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3.md
@@ -2352,7 +2350,7 @@ items:
     - name: 舊版 - MVC 1 和 2
       href: mvc/overview/older-versions-1/index.md
       items:
-      - name: 概觀
+      - name: 總覽
         href: mvc/overview/older-versions-1/overview/index.md
         items:
         - name: ASP.NET MVC 概觀
@@ -2674,7 +2672,7 @@ items:
         items:
         - name: MVC Music 市集第 1 部分：簡介、工具與專案結構
           href: mvc/videos/mvc-2/music-store/mvc-music-store-part-1-intro-tools-and-project-structure.md
-        - name: MVC Music 市集第 2 部分：控制器
+        - name: MVC Music 市集第 2 部分：Controllers
           href: mvc/videos/mvc-2/music-store/mvc-music-store-part-2-controllers.md
         - name: MVC Music 市集第 3 部分：檢視和 ViewModels
           href: mvc/videos/mvc-2/music-store/mvc-music-store-part-3-views-and-viewmodels.md
@@ -2754,7 +2752,7 @@ items:
 - name: Web API
   href: web-api/index.md
   items:
-  - name: 指導方針
+  - name: 指引
     href: web-api/overview/index.md
     items:
     - name: 快速入門
@@ -2997,7 +2995,7 @@ items:
 - name: Web Pages
   href: web-pages/index.md
   items:
-  - name: 指導方針
+  - name: 指引
     href: web-pages/overview/index.md
     items:
     - name: 快速入門
@@ -3200,7 +3198,7 @@ items:
 - name: SignalR
   href: signalr/index.md
   items:
-  - name: 指導方針
+  - name: 指引
     href: signalr/overview/index.md
     items:
     - name: 快速入門
@@ -3332,7 +3330,7 @@ items:
         href: signalr/overview/older-versions/troubleshooting.md
       - name: SignalR 1.x 中的相依性插入
         href: signalr/overview/older-versions/dependency-injection.md
-  - name: 影片
+  - name: 視訊
     href: signalr/videos/index.md
     items:
     - name: ASP.NET SignalR 影片
@@ -3352,7 +3350,7 @@ items:
 - name: 單一頁面應用程式
   href: single-page-application/index.md
   items:
-  - name: 概觀
+  - name: 總覽
     href: single-page-application/overview/index.md
     items:
     - name: 簡介
@@ -3470,7 +3468,7 @@ items:
 - name: 身分識別
   href: identity/index.md
   items:
-  - name: 概觀
+  - name: 總覽
     href: identity/overview/index.md
     items:
     - name: 開始使用 ASP.NET Identity
@@ -3749,7 +3747,7 @@ items:
       href: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application.md
   - name: 實際操作實驗室：容易維護的 Azure 網站：管理變更與規模
     href: aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale.md
-- name: OWIN 與 Katana
+- name: OWIN 和 Katana
   href: aspnet/overview/owin-and-katana/index.md
   items:
   - name: Katana 專案概觀
@@ -3812,9 +3810,9 @@ items:
     href: whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012.md
 - name: 應用程式開發介面參考
   href: api-ref.md
-ms.openlocfilehash: e96b99f5a6432ae359e1b8543701e4e2d49171a4
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: 32bc0de99f07ad72d4b09dd29ac3f316609b0c69
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "55291170"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667826"

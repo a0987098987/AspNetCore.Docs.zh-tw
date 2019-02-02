@@ -4,20 +4,18 @@ title: OWIN OAuth 2.0 授權伺服器 |Microsoft Docs
 author: hongyes
 description: 本教學課程將引導您如何實作 OAuth 2.0 授權伺服器使用 OWIN OAuth 中介軟體。 這是進階的教學課程，只有 outlin...
 ms.author: riande
-ms.date: 03/20/2014
+ms.date: 01/28/2019
 ms.assetid: 20acee16-c70c-41e9-b38f-92bfcf9a4c1c
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
 msc.type: authoredcontent
-ms.openlocfilehash: 095dad49a8e9f963d941a84398afe9da0f46ce0b
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: b8451d2d9e346bd5e2f51ba45e48030a5221b549
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912263"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667644"
 ---
-<a name="owin-oauth-20-authorization-server"></a>OWIN OAuth 2.0 授權伺服器
-====================
-藉由[Hongye Sun](https://github.com/hongyes)， [Praburaj Thiagarajan](https://github.com/Praburaj)， [Rick Anderson]((https://twitter.com/RickAndMSFT))
+# <a name="owin-oauth-20-authorization-server"></a>OWIN OAuth 2.0 授權伺服器
 
 > 本教學課程將引導您如何實作 OAuth 2.0 授權伺服器使用 OWIN OAuth 中介軟體。 這是僅概述的步驟來建立 OWIN OAuth 2.0 授權伺服器的進階教學課程。 這不是逐步教學課程。 [下載範例程式碼](https://code.msdn.microsoft.com/OWIN-OAuth-20-Authorization-ba2b8783/file/114932/1/AuthorizationServer.zip)。
 >
@@ -29,9 +27,9 @@ ms.locfileid: "48912263"
 >
 > | **在本教學課程中所示** | **也可以搭配** |
 > | --- | --- |
-> | Windows 8.1 | Windows 8，Windows 7 |
-> | [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) | [Visual Studio 2013 Express for Desktop](https://my.visualstudio.com/Downloads?q=visual%20studio%202013#d-2013-express)。 Visual Studio 2012 最新的更新應該可行，但本教學課程尚未經過測試，且某些功能表選取項目和對話方塊都不同。 |
-> | .NET 4.5 |  |
+> | Windows 8.1 | Windows 10，8，Windows 7 |
+> | [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+> | .NET 4.7.2 |  |
 >
 > ## <a name="questions-and-comments"></a>提出問題或意見
 >
@@ -53,7 +51,7 @@ ms.locfileid: "48912263"
 <a id="prerequisites"></a>
 ## <a name="prerequisites"></a>必要條件
 
-- [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/downloads#d-2013-editions)或免費[Visual Studio Express 2013](https://www.microsoft.com/visualstudio/eng/downloads#d-2013-express)，如下所示**軟體版本**頁面的頂端。
+- [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)中所示**軟體版本**頁面的頂端。
 - OWIN 熟悉。 請參閱[Getting Started with Katana 專案](https://msdn.microsoft.com/magazine/dn451439.aspx)並[OWIN 和 Katana 中最新消息](index.md)。
 - 熟悉[OAuth](http://tools.ietf.org/html/rfc6749)術語，包括[角色](http://tools.ietf.org/html/rfc6749#section-1.1)，[通訊協定流程](http://tools.ietf.org/html/rfc6749#section-1.2)，以及[授權授與](http://tools.ietf.org/html/rfc6749#section-1.3)。 [OAuth 2.0 簡介](http://tools.ietf.org/html/rfc6749#section-1)提供了絕佳的簡介。
 
@@ -79,19 +77,19 @@ ms.locfileid: "48912263"
 
 `UseOAuthAuthorizationServer`擴充方法是設定授權伺服器。 安裝程式選項如下：
 
-- `AuthorizeEndpointPath`: 要求路徑，而用戶端應用程式重新導向 user-agent 以取得使用者同意發出的權杖或程式碼。 其開頭必須前置斜線，比方說，「`/Authorize`"。
-- `TokenEndpointPath`: 要求路徑用戶端應用程式直接進行通訊來取得存取權杖。 它必須以斜線，例如"/token"開頭。 如果用戶端會發出[用戶端\_祕密](http://tools.ietf.org/html/rfc6749#appendix-A.2)，它必須提供至此端點。
-- `ApplicationCanDisplayErrors`： 設定為`true`如果想要產生的用戶端驗證錯誤的自訂錯誤頁面上的 web 應用程式`/Authorize`端點。 這只需要的情況下，瀏覽器不會重新導向回用戶端應用程式，例如，當`client_id`或`redirect_uri`不正確。 `/Authorize`端點應該會看到 「 oauth。錯誤 」、 「 oauth。ErrorDescription"和"oauth。ErrorUri"屬性會新增至 OWIN 環境。
+- `AuthorizeEndpointPath`：要求路徑，而用戶端應用程式重新導向 user-agent 以取得使用者同意發出的權杖或程式碼。 其開頭必須前置斜線，比方說，「`/Authorize`"。
+- `TokenEndpointPath`：若要取得存取權杖的要求路徑用戶端應用程式直接通訊。 它必須以斜線，例如"/token"開頭。 如果用戶端會發出[用戶端\_祕密](http://tools.ietf.org/html/rfc6749#appendix-A.2)，它必須提供至此端點。
+- `ApplicationCanDisplayErrors`：設定為`true`如果想要產生的用戶端驗證錯誤的自訂錯誤頁面上的 web 應用程式`/Authorize`端點。 這只需要的情況下，瀏覽器不會重新導向回用戶端應用程式，例如，當`client_id`或`redirect_uri`不正確。 `/Authorize`端點應該會看到 「 oauth。錯誤 」、 「 oauth。ErrorDescription"和"oauth。ErrorUri"屬性會新增至 OWIN 環境。
 
     > [!NOTE]
     > 如果沒有，則為 true，授權伺服器會傳回預設的錯誤網頁的錯誤詳細資料。
-- `AllowInsecureHttp`: True，以允許授權和語彙基元要求抵達 HTTP URI 位址，並允許連入`redirect_uri`授權要求參數具有 HTTP URI 位址。
+- `AllowInsecureHttp`：True 表示允許授權和語彙基元要求抵達 HTTP URI 位址，並允許連入`redirect_uri`授權要求參數具有 HTTP URI 位址。
 
     > [!WARNING]
     > 安全性-這是只有開發。
-- `Provider`: 應用程式提供給授權伺服器中介軟體所引發的程序事件的物件。 應用程式可能完整，實作介面，或它可能會建立的執行個體`OAuthAuthorizationServerProvider`並指派此伺服器所支援的 OAuth 流程所需的委派。
-- `AuthorizationCodeProvider`： 產生單次使用授權碼傳回至用戶端應用程式。 OAuth 伺服器可保護應用程式**必須**提供的執行個體`AuthorizationCodeProvider`語彙基元所產生的程式`OnCreate/OnCreateAsync`事件會被視為適用於只有一個呼叫`OnReceive/OnReceiveAsync`。
-- `RefreshTokenProvider`： 產生可用來產生新的存取權杖時所需的重新整理權杖。 如果未提供授權伺服器不會傳回來自重新整理權杖`/Token`端點。
+- `Provider`：提供應用程式對授權伺服器中介軟體所引發的程序事件的物件。 應用程式可能完整，實作介面，或它可能會建立的執行個體`OAuthAuthorizationServerProvider`並指派此伺服器所支援的 OAuth 流程所需的委派。
+- `AuthorizationCodeProvider`：產生單次使用授權碼傳回至用戶端應用程式。 OAuth 伺服器可保護應用程式**必須**提供的執行個體`AuthorizationCodeProvider`語彙基元所產生的程式`OnCreate/OnCreateAsync`事件會被視為適用於只有一個呼叫`OnReceive/OnReceiveAsync`。
+- `RefreshTokenProvider`：產生可用來產生新的存取權杖時所需的重新整理權杖。 如果未提供授權伺服器不會傳回來自重新整理權杖`/Token`端點。
 
 ## <a name="account-management"></a>帳戶管理
 
@@ -116,7 +114,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 |  |  |
 | （A） 用戶端導向資源擁有者的使用者代理程式的授權端點以起始流程。 用戶端會包含其用戶端識別碼、 要求的範圍、 本機狀態和重新導向 URI 的授權伺服器會將 user-agent 回後授與 （或拒絕存取）。 | Provider.MatchEndpoint Provider.ValidateClientRedirectUri Provider.ValidateAuthorizeRequest Provider.AuthorizeEndpoint |
 |  |  |
-| （B） 授權伺服器會驗證資源擁有者 （透過使用者-代理程式），然後表明資源擁有者授與或拒絕用戶端的存取要求。 | **&lt;如果使用者授與存取權&gt;** Provider.MatchEndpoint Provider.ValidateClientRedirectUri Provider.ValidateAuthorizeRequest Provider.AuthorizeEndpoint AuthorizationCodeProvider.CreateAsync |
+| （B） 授權伺服器會驗證資源擁有者 （透過使用者-代理程式），然後表明資源擁有者授與或拒絕用戶端的存取要求。 | **&lt;If user grants access&gt;** Provider.MatchEndpoint Provider.ValidateClientRedirectUri Provider.ValidateAuthorizeRequest Provider.AuthorizeEndpoint AuthorizationCodeProvider.CreateAsync |
 |  |  |
 | （C） 假設資源擁有者授與存取，授權伺服器會將使用者代理程式重新導向回用戶端會使用重新導向 URI 提供先前 （在要求中或在用戶端註冊）。 ... |  |
 |  |  |
@@ -147,7 +145,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 |  |  |
 | （A） 用戶端導向資源擁有者的使用者代理程式的授權端點以起始流程。 用戶端會包含其用戶端識別碼、 要求的範圍、 本機狀態和重新導向 URI 的授權伺服器會將 user-agent 回後授與 （或拒絕存取）。 | Provider.MatchEndpoint Provider.ValidateClientRedirectUri Provider.ValidateAuthorizeRequest Provider.AuthorizeEndpoint |
 |  |  |
-| （B） 授權伺服器會驗證資源擁有者 （透過使用者-代理程式），然後表明資源擁有者授與或拒絕用戶端的存取要求。 | **&lt;如果使用者授與存取權&gt;** Provider.MatchEndpoint Provider.ValidateClientRedirectUri Provider.ValidateAuthorizeRequest Provider.AuthorizeEndpoint AuthorizationCodeProvider.CreateAsync |
+| （B） 授權伺服器會驗證資源擁有者 （透過使用者-代理程式），然後表明資源擁有者授與或拒絕用戶端的存取要求。 | **&lt;If user grants access&gt;** Provider.MatchEndpoint Provider.ValidateClientRedirectUri Provider.ValidateAuthorizeRequest Provider.AuthorizeEndpoint AuthorizationCodeProvider.CreateAsync |
 |  |  |
 | （C） 假設資源擁有者授與存取，授權伺服器會將使用者代理程式重新導向回用戶端會使用重新導向 URI 提供先前 （在要求中或在用戶端註冊）。 ... |  |
 |  |  |

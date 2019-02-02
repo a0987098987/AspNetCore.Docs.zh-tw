@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: 0ed5e67a-34c0-4b57-84a6-802b0fb3cd00
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/enhancing-data-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 85299d70c6cba52c1d40a42edfd429c96318134a
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.openlocfilehash: 897cd7c6a40445e2a4abede50d81e101372d3233
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236480"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667618"
 ---
 # <a name="tutorial-enhance-data-validation-for-ef-database-first-with-aspnet-mvc-app"></a>教學課程：增強 EF Database First 與 ASP.NET MVC 應用程式的資料的驗證
 
@@ -84,6 +84,14 @@ ms.locfileid: "55236480"
 
 開啟*Student.cs*檔案或*Enrollment.cs*檔案，並請注意，您在稍早所套用的資料驗證屬性已不在檔案中。 不過，執行應用程式，並請注意當您輸入的資料仍然會套用驗證規則。
 
+## <a name="conclusion"></a>結論
+
+這一系列將提供如何從現有的資料庫，可讓使用者編輯、 更新、 建立和刪除的資料產生程式碼的簡單範例。 它使用 ASP.NET MVC 5、 Entity Framework 與 ASP.NET Scaffolding 來建立專案。 
+
+Code First 開發簡介範例，請參閱[Getting Started with ASP.NET MVC 5](../introduction/getting-started.md)。 
+
+如需更進階的範例，請參閱 <<c0> [ 建立 ASP.NET MVC 4 應用程式的 Entity Framework 資料模型](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 請注意，您使用第一個資料庫中的資料使用 DbContext API 與您用來處理在 Code First 資料的 API 相同。 即使您想要使用第一個資料庫，您可以了解如何處理更複雜的案例，例如讀取及更新的相關的資料，處理並行衝突，Code First 的教學課程中，依此類推。 唯一的差別是在建立資料庫、 內容類別和實體類別的方式。
+
 ## <a name="additional-resources"></a>其他資源
 
 您可以套用至屬性和類別的資料驗證註解的完整清單，請參閱 < [System.ComponentModel.DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)。
@@ -96,6 +104,6 @@ ms.locfileid: "55236480"
 > * 已新增的資料註解
 > * 已新增的中繼資料類別
 
-請前進到下一個教學課程，以了解如何將 web 應用程式和資料庫發佈至 Azure。
+若要了解如何部署至 Azure App Service 的 web 應用程式和 SQL database，請參閱本教學課程：
 > [!div class="nextstepaction"]
-> [發佈至 Azure](publish-to-azure.md)
+> [將.NET 應用程式部署至 Azure App Service](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase/)

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 3c1ea8f41eb6ed847bf24141ef0ae0c7e03d8a79
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 6e140717834b901e12ef7863fd07b983b0c55107
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099217"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667657"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>ASP.NET Core 中的防止跨網站要求偽造 (XSRF/CSRF) 攻擊
 
@@ -412,15 +412,40 @@ xhttp.send(JSON.stringify({ "newPassword": "ReallySecurePassword999$$$" }));
 
 ### <a name="angularjs"></a>AngularJS
 
-AngularJS 使用位址 CSRF 慣例。 如果伺服器會傳送具有名稱的 cookie `XSRF-TOKEN`，AngularJS`$http`服務將 cookie 的值加入標頭將要求傳送到伺服器時。 此程序是自動的。 標頭不需要明確設定。 標頭名稱`X-XSRF-TOKEN`。 伺服器應該偵測此標頭，並驗證其內容。
+AngularJS 使用位址 CSRF 慣例。 如果伺服器會傳送具有名稱的 cookie `XSRF-TOKEN`，AngularJS`$http`服務將 cookie 的值加入標頭將要求傳送到伺服器時。 此程序是自動的。 標頭不需要明確設定的用戶端中。 標頭名稱`X-XSRF-TOKEN`。 伺服器應該偵測此標頭，並驗證其內容。
 
-適用於 ASP.NET Core API 會使用此慣例︰
+ASP.NET Core api，才能使用此慣例，在您的應用程式啟動：
 
 * 設定您的應用程式提供的權杖在 cookie 中稱為`XSRF-TOKEN`。
 * 將 antiforgery 服務設定為尋找標頭`X-XSRF-TOKEN`。
 
 ```csharp
-services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
+public void Configure(IApplicationBuilder app, IAntiforgery antiforgery)
+{
+    app.Use(next => context =>
+    {
+        string path = context.Request.Path.Value;
+
+        if (
+            string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase))
+        {
+            // The request token can be sent as a JavaScript-readable cookie, 
+            // and Angular uses it by default.
+            var tokens = antiforgery.GetAndStoreTokens(context);
+            context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken, 
+                new CookieOptions() { HttpOnly = false });
+        }
+
+        return next(context);
+    });
+}
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // Angular's default header name for sending the XSRF token.
+    services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
+}
 ```
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))

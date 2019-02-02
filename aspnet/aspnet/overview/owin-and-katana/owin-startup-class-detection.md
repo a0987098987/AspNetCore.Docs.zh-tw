@@ -4,39 +4,38 @@ title: OWIN 啟動類別偵測 |Microsoft Docs
 author: Praburaj
 description: 本教學課程會示範如何設定載入的 OWIN 啟動類別。 如需有關 OWIN 的詳細資訊，請參閱 < 概觀的 Katana 專案。 本教學課程是...
 ms.author: riande
-ms.date: 10/17/2013
+ms.date: 01/28/2019
 ms.assetid: 08257f55-36f4-4e39-9c88-2a5602838c79
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-startup-class-detection
 msc.type: authoredcontent
-ms.openlocfilehash: 4e753187f1caae646402712c2abc28856ae71a79
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 0b34cca8b48383dbb028106651758dff889ed614
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910703"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667293"
 ---
 <a name="owin-startup-class-detection"></a>OWIN 啟動類別偵測
 ====================
-藉由[Praburaj Thiagarajan](https://github.com/Praburaj)， [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > 本教學課程會示範如何設定載入的 OWIN 啟動類別。 如需有關 OWIN 的詳細資訊，請參閱[概觀的 Katana 專案](an-overview-of-project-katana.md)。 本教學課程中所編寫的 Rick Anderson ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) )，Praburaj Thiagarajan 和 Howard Dierking ( [ @howard \_dierking](https://twitter.com/howard_dierking) )。
 >
 > ## <a name="prerequisites"></a>必要條件
 >
-> [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
+> [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 
 
 ## <a name="owin-startup-class-detection"></a>OWIN 啟動類別偵測
 
  每個 OWIN 應用程式有啟動類別，您可在其中指定應用程式管線的元件。 有許多種，您可以連接您的啟動類別的執行階段、 根據裝載模型選擇 （OwinHost、 IIS 和 IIS Express）。 本教學課程中所示的 startup 類別可以用於每個裝載的應用程式。 您可以連接的啟動類別裝載執行階段使用其中一種方法：
 
-1. **命名慣例**: Katana 會尋找名為類別`Startup`比對組件名稱或全域命名空間的命名空間中。
-2. **OwinStartup 屬性**： 這是大部分開發人員將移至指定的啟動類別的方法。 下列屬性會設定為啟動類別`TestStartup`類別中`StartupDemo`命名空間。
+1. **命名慣例**:Katana 會尋找名為類別`Startup`比對組件名稱或全域命名空間的命名空間中。
+2. **OwinStartup 屬性**:這是大部分開發人員將移至指定的啟動類別的方法。 下列屬性會設定為啟動類別`TestStartup`類別中`StartupDemo`命名空間。
 
     [!code-csharp[Main](owin-startup-class-detection/samples/sample1.cs)]
 
    `OwinStartup`屬性會覆寫的命名慣例。 您也可以使用這個屬性指定好記的名稱，不過，使用易記的名稱需要您同時使用`appSetting`組態檔中的項目。
-3. **在組態檔中的 appSetting 元素**:`appSetting`項目會覆寫`OwinStartup`屬性和命名慣例。 您可以有多個啟動類別 (每個使用`OwinStartup`屬性)，並設定啟動類別將會載入組態檔使用類似下列的標記中：
+3. **在組態檔中的 appSetting 元素**:`appSetting`元素會覆寫`OwinStartup`屬性和命名慣例。 您可以有多個啟動類別 (每個使用`OwinStartup`屬性)，並設定啟動類別將會載入組態檔使用類似下列的標記中：
 
     [!code-xml[Main](owin-startup-class-detection/samples/sample2.xml)]
 
@@ -60,7 +59,7 @@ ms.locfileid: "48910703"
 1. 建立空的 Asp.Net web 應用程式並將它命名**StartupDemo**。 -安裝`Microsoft.Owin.Host.SystemWeb`使用 NuGet 套件管理員。 從**工具**功能表上，選取**NuGet 套件管理員**，然後**Package Manager Console**。 輸入下列命令：
 
     [!code-powershell[Main](owin-startup-class-detection/samples/sample7.ps1)]
-2. 新增 OWIN 啟動類別。 Visual Studio 2013 中以滑鼠右鍵按一下專案，然後選取**加入類別**。-在**加入新項目**對話方塊中，輸入*OWIN*在搜尋欄位中，並將 Startup.cs 中，名稱然後按一下**新增**。
+2. 新增 OWIN 啟動類別。 Visual Studio 2017 中以滑鼠右鍵按一下專案，然後選取**加入類別**。-在**加入新項目**對話方塊中，輸入*OWIN*在搜尋欄位中，並將 Startup.cs 中，名稱然後選取**新增**。
 
      ![](owin-startup-class-detection/_static/image1.png)
 
@@ -80,7 +79,7 @@ ms.locfileid: "48910703"
      > [!NOTE]
      > 在上述程式碼中，我們有註解`OwinStartup`屬性，我們依賴執行名為類別的慣例`Startup`。-按***F5***執行應用程式。 按 重新整理數次。
 
-    ![](owin-startup-class-detection/_static/image4.png) 注意： 本教學課程中的映像中顯示的數字不會符合您看到的數字。 毫秒數的字串用來顯示新的回應，當您重新整理頁面。
+    ![](owin-startup-class-detection/_static/image4.png) 注意：在本教學課程中的映像中顯示的數字不會符合您看到的數字。 毫秒數的字串用來顯示新的回應，當您重新整理頁面。
   您可以看到中的追蹤資訊**輸出**視窗。
 
     ![](owin-startup-class-detection/_static/image5.png)
@@ -158,6 +157,7 @@ ms.locfileid: "48910703"
 
    載入實際執行啟動類別。
     ![](owin-startup-class-detection/_static/image9.png)
+
    我們的應用程式有多個啟動類別，並在此範例中我們已延後載入執行階段之前的啟動類別。
 8. 測試下列執行階段啟動選項：
 

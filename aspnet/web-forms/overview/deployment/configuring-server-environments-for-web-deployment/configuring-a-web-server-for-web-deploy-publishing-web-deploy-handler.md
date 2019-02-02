@@ -4,20 +4,18 @@ title: 設定 Web 伺服器的 Web Deploy 發行 (Web Deploy 處理常式) |Micr
 author: jrjlee
 description: 本主題描述如何設定 Internet Information Services (IIS) web 伺服器以支援網頁發佈和部署使用 IIS Web 部署 Han...
 ms.author: riande
-ms.date: 05/04/2012
+ms.date: 01/29/2017
 ms.assetid: 90ebf911-1c46-4470-b876-1335bd0f590f
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler
 msc.type: authoredcontent
-ms.openlocfilehash: 13e4fdf77daf26abe837a90db9c11ecbe1957823
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: cf18a8860d34daa23f61e3dde13c2c79c6c0d4a5
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833776"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667319"
 ---
-<a name="configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler"></a>設定 Web 伺服器的 Web Deploy 發行 (Web Deploy 處理常式)
-====================
-藉由[Jason Lee](https://github.com/jrjlee)
+# <a name="configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler"></a>設定 Web Deploy 發行的網頁伺服器 (Web Deploy 處理常式)
 
 [下載 PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
@@ -57,9 +55,9 @@ ms.locfileid: "41833776"
 - 安裝.NET Framework 4.0。
 - 安裝 ASP.NET MVC 3。
 
-本主題將說明如何執行上述各程序。 工作與本主題中的逐步解說假設您從執行 Windows Server 2008 R2 的全新的伺服器組建。 在繼續之前，請確認：
+本主題將說明如何執行上述各程序。 工作與本主題中的逐步解說假設您從執行 Windows Server 2016 的全新的伺服器組建。 在繼續之前，請確認：
 
-- 安裝 Windows Server 2008 R2 Service Pack 1 和所有可用的更新。
+- Windows Server 2016
 - 伺服器已加入網域。
 - 伺服器具有靜態 IP 位址。
 
@@ -74,14 +72,14 @@ ms.locfileid: "41833776"
 在此情況下，您需要安裝這些項目：
 
 - **IIS 7 建議組態**。 這可讓**網頁伺服器 (IIS)** web 伺服器上的角色，並安裝的一組 IIS 模組和元件，您需要以裝載 ASP.NET 應用程式。
-- **IIS： 管理服務**。 這是在 IIS 中安裝 Web 管理服務 (WMSvc)。 此服務可讓您的 IIS 網站的遠端管理，並會公開給用戶端的 Web 部署的處理常式端點。
-- **IIS： 基本驗證**。 這會安裝 IIS 基本驗證模組。 這可讓 Web 管理服務 (WMSvc) 來驗證您提供的認證。
+- **IIS:管理服務**。 這是在 IIS 中安裝 Web 管理服務 (WMSvc)。 此服務可讓您的 IIS 網站的遠端管理，並會公開給用戶端的 Web 部署的處理常式端點。
+- **IIS:基本驗證**。 這會安裝 IIS 基本驗證模組。 這可讓 Web 管理服務 (WMSvc) 來驗證您提供的認證。
 - **Web Deployment Tool 2.1 或更新版本**。 這會在您的伺服器上安裝 Web Deploy （和其基礎可執行檔，MSDeploy.exe）。 此程序的一部分，它會安裝 Web 部署處理常式，並整合與 Web 管理服務。
 - **.NET framework 4.0**。 如此才能執行這個版本的.NET Framework 所建置的應用程式。
 - **ASP.NET MVC 3**。 這會安裝您要執行 MVC 3 應用程式的組件。
 
 > [!NOTE]
-> 本逐步解說說明如何使用 Web Platform Installer 來安裝和設定各種元件。 雖然您不需要使用 Web Platform Installer，它可以簡化安裝程序自動偵測相依性，並確保您一律取得最新的產品版本。 如需詳細資訊，請參閱 < [Microsoft Web Platform Installer 3.0](https://go.microsoft.com/?linkid=9805118)。
+> 本逐步解說說明如何使用 Web Platform Installer 來安裝和設定各種元件。 雖然您不需要使用 Web Platform Installer，它可以簡化安裝程序自動偵測相依性，並確保您一律取得最新的產品版本。 如需詳細資訊，請參閱 < [Microsoft Web Platform Installer](https://go.microsoft.com/?linkid=9805118)。
 
 
 **若要安裝必要的產品和元件**
@@ -91,7 +89,7 @@ ms.locfileid: "41833776"
 
     > [!NOTE]
     > 您現在可以隨時從啟動 Web Platform Installer**啟動**功能表。 若要這樣做，請在**開始**功能表上，按一下**所有程式**，然後按一下**Microsoft Web Platform Installer**。
-3. 在頂端**Web Platform Installer 3.0**  視窗中，按一下**產品**。
+3. 在頂端**Web Platform Installer**  視窗中，按一下**產品**。
 4. 在左邊視窗中，在導覽窗格中，按一下 **架構**。
 5. 在  **Microsoft.NET Framework 4**資料列，如果尚未安裝.NET Framework，按一下**新增**。
 
@@ -103,13 +101,13 @@ ms.locfileid: "41833776"
 7. 在 [導覽] 窗格中，按一下**Server**。
 8. 在  **IIS 7 建議組態**資料列中，按一下**新增**。
 9. 在  **Web 部署工具 2.1**資料列中，按一下**新增**。
-10. 在  **IIS： 基本驗證**資料列中，按一下**新增**。
-11. 在  **IIS： 管理服務**資料列中，按一下**新增**。
+10. 在  **IIS:基本驗證**資料列中，按一下**新增**。
+11. 在  **IIS:管理服務**資料列中，按一下**新增**。
 12. 按一下 [安裝] 。 Web Platform Installer 將會顯示您的產品清單&#x2014;以及任何相關聯相依性&#x2014;安裝就會提示您接受授權條款。
 
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image2.png)
 13. 檢閱授權條款，然後如果您同意這些條款，按一下**我接受**。
-14. 安裝完成時，按一下**完成**，然後關閉**Web Platform Installer 3.0**視窗。
+14. 安裝完成時，按一下**完成**，然後關閉**Web Platform Installer**視窗。
 
 如果您安裝 IIS 之前，您就會安裝.NET Framework 4.0，您必須執行[ASP.NET IIS 註冊工具](https://msdn.microsoft.com/library/k6h9cz8h(v=VS.100).aspx)(aspnet\_regiis.exe) 向 IIS 註冊 ASP.NET 的最新版本。 如果沒有這麼做，您會發現，IIS 會提供靜態內容 （例如 HTML 檔案） 沒有任何問題，但它會傳回**HTTP 錯誤 404.0 – 找不到**當您嘗試瀏覽至 ASP.NET 內容。 您可以使用下一個程序，以確保已註冊 ASP.NET 4.0。
 
@@ -145,7 +143,7 @@ ms.locfileid: "41833776"
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image3.png)
 3. 在中央窗格中，在**IIS**，按兩下**驗證**。
 
-    ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image4.png)
+    ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image20.png)
 4. 以滑鼠右鍵按一下**基本驗證**，然後按一下**啟用**。
 
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image5.png)
@@ -207,7 +205,7 @@ ms.locfileid: "41833776"
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image11.png)
 
     > [!NOTE]
-    > 在生產環境中，您可能會想要裝載您的網站連接埠 80 上，並設定主機標頭，以及比對 DNS 記錄。 如需有關如何在 IIS 7 中設定主機標頭的詳細資訊，請參閱 <<c0> [ 網站 (IIS 7) 中設定主機標頭](https://technet.microsoft.com/library/cc753195(WS.10).aspx)。 如需有關 Windows Server 2008 R2 中 DNS 伺服器角色的詳細資訊，請參閱 < [DNS 伺服器概觀](https://technet.microsoft.com/en-gb/library/cc770392.aspx)並[DNS 伺服器](https://technet.microsoft.com/windowsserver/dd448607)。
+    > 在生產環境中，您可能會想要裝載您的網站連接埠 80 上，並設定主機標頭，以及比對 DNS 記錄。 如需有關如何在 IIS 7 中設定主機標頭的詳細資訊，請參閱 <<c0> [ 網站 (IIS 7) 中設定主機標頭](https://technet.microsoft.com/library/cc753195(WS.10).aspx)。 如需有關 Windows Server 中的 DNS 伺服器角色的詳細資訊，請參閱 < [DNS 伺服器概觀](https://technet.microsoft.com/en-gb/library/cc770392.aspx)並[DNS 伺服器](https://technet.microsoft.com/windowsserver/dd448607)。
 9. 在 [ **動作** ] 窗格的 [ **編輯站台**] 下方，按一下 [ **繫結**]。
 10. 在 [**站台繫結**] 對話方塊中，按一下**新增**。
 
@@ -222,9 +220,9 @@ ms.locfileid: "41833776"
 13. 在 [**站台繫結**] 對話方塊中，按一下**關閉**。
 14. 在 **連線**窗格中，按一下**應用程式集區**。
 15. 在 **應用程式集區**窗格中，以滑鼠右鍵按一下您的應用程式集區的名稱，然後按一下**基本設定**。 根據預設，應用程式集區的名稱會符合您網站的名稱 (例如**DemoSite**)。
-16. 在  **.NET Framework 版本**清單中，選取 **.NET Framework v4.0.30319**，然後按一下**確定**。
+16. 在  **.NET CLR 版本**清單中，選取 **.NET CLR v4.0.30319**，然後按一下**確定**。
 
-    ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image14.png)
+    ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image21.png)
 
     > [!NOTE]
     > 範例解決方案需要.NET Framework 4.0。 這不是 Web Deploy 的需求在一般情況下。

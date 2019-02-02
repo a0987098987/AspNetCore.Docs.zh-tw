@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.assetid: 095abad4-3bfe-4f06-b092-ae6a735b7e49
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/setting-up-database
 msc.type: authoredcontent
-ms.openlocfilehash: a503e3db63c873249178fd4783d322f4067c3208
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.openlocfilehash: dfc6c7a7083524a1e7049fdc879fe679f951084d
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236376"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667735"
 ---
 # <a name="tutorial-get-started-with-ef-database-first-using-mvc-5"></a>教學課程：開始使用 EF Database First 使用 MVC 5
 
-您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本系列教學課程會示範如何自動產生程式碼，可讓使用者顯示、 編輯、 建立及刪除位於資料庫資料表中的資料。 產生的程式碼會對應至資料庫資料表中的資料行。 在系列的最後一個部分中，您將部署至 Azure 的站台和資料庫。
+您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本系列教學課程會示範如何自動產生程式碼，可讓使用者顯示、 編輯、 建立及刪除位於資料庫資料表中的資料。 產生的程式碼會對應至資料庫資料表中的資料行。 在系列的最後一個部分中，您將了解如何將資料註解新增至資料模型，以指定驗證需求，並顯示格式設定。 當您完成時，您可以前往 Azure 的文章，以了解如何將.NET 應用程式和 SQL database 部署到 Azure App Service。
 
 本教學課程會示範如何開始使用的現有資料庫，並快速建立 web 應用程式，可讓使用者與資料互動。 它會使用 Entity Framework 6 和 MVC 5 建置 web 應用程式。 ASP.NET 樣板功能可讓您自動產生程式碼顯示、 更新、 建立和刪除資料。 使用 Visual Studio 內發行的工具，您可以輕鬆地部署站台和資料庫至 Azure。
 
@@ -51,7 +51,7 @@ ms.locfileid: "55236376"
 
 ![建立資料庫專案](setting-up-database/_static/image1.png)
 
-您現在有了空的資料庫專案。 您將此將資料庫部署到 Azure 稍後在本教學課程中，因此您必須將 Azure SQL Database 設為專案的目標平台。 設定目標平台不會實際部署資料庫，例如：它只表示資料庫專案將會確認資料庫設計適用於目標平台。 若要設定目標平台，請開啟**屬性**的專案，然後選取**Microsoft Azure SQL Database**目標平台。
+您現在有了空的資料庫專案。 若要確定您可以將此資料庫部署至 Azure，您會將 Azure SQL Database 作為專案的目標平台。 設定目標平台不會實際部署資料庫，例如：它只表示資料庫專案將會確認資料庫設計適用於目標平台。 若要設定目標平台，請開啟**屬性**的專案，然後選取**Microsoft Azure SQL Database**目標平台。
 
 您可以建立本教學課程需要加上定義的資料表的 SQL 指令碼的資料表。 以滑鼠右鍵按一下您的專案，並加入新項目。 選取 **資料表和檢視表** > **表格**並將它命名*學生*。
 

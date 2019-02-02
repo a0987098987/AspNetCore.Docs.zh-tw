@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何儲存和擷取為應用程式祕密的 ASP.NET Core 應用程式開發期間的機密資訊。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 09/24/2018
+ms.date: 01/31/2019
 uid: security/app-secrets
-ms.openlocfilehash: 385d0ecc6ea19d5f84a9fe3c2754f5256a2a5576
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: eaa2e9d1ba98d391a29a9ff55872d062df016b87
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207429"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667774"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>在 ASP.NET Core 開發的應用程式祕密的安全儲存體
 
@@ -38,7 +38,7 @@ ms.locfileid: "50207429"
 > [!WARNING]
 > 環境變數通常會儲存在一般、 未加密的文字。 如果電腦或處理序遭到入侵，就可以由不受信任的合作對象存取環境變數。 您可能需要其他措施以避免使用者密碼洩露。
 
-## <a name="secret-manager"></a>密碼管理員
+## <a name="secret-manager"></a>Secret Manager
 
 Secret Manager 工具會在 ASP.NET Core 專案的開發期間儲存機密資料。 在此情況下，某份機密資料會是應用程式祕密。 應用程式密碼會儲存在專案樹狀結構與不同的位置。 應用程式祕密與特定專案相關聯或在數個專案之間共用。 應用程式祕密未簽入原始檔控制中。
 
@@ -208,11 +208,11 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 [ASP.NET Core 組態 API](xref:fundamentals/configuration/index)提供 Secret Manager 祕密的存取。 如果您的專案以.NET Framework 為目標，安裝[Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet 套件。
 
-在 ASP.NET Core 2.0 或更新版本中，使用者密碼設定來源會自動加入開發模式時的專案呼叫[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder)初始化主應用程式使用預先設定的預設值的新執行個體。 `CreateDefaultBuilder` 呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)當[EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname)會[開發](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development):
+在 ASP.NET Core 2.0 或更新版本中，使用者密碼設定來源會自動加入開發模式時的專案呼叫<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>初始化主應用程式使用預先設定的預設值的新執行個體。 `CreateDefaultBuilder` 呼叫<xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*>時<xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName>是<xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development>:
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Program.cs?name=snippet_CreateWebHostBuilder&highlight=2)]
 
-當`CreateDefaultBuilder`不是呼叫在主應用程式建構期間，新增使用者密碼設定來源，藉由呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)在`Startup`建構函式：
+當`CreateDefaultBuilder`不是呼叫，藉由呼叫明確新增使用者密碼設定來源<xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*>在`Startup`建構函式。 呼叫`AddUserSecrets`僅當應用程式開發的環境中執行，如下列範例所示：
 
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=12)]
 

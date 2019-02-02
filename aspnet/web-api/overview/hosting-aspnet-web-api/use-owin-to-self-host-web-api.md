@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api
-title: 使用 OWIN 自我裝載 ASP.NET Web API 2 |Microsoft Docs
+title: 使用 OWIN 自我裝載 ASP.NET Web API |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會示範如何使用 OWIN 自我裝載 Web API 架構的主控台應用程式中裝載 ASP.NET Web API。 Open Web Interface for.NET (OWIN) d...
 ms.author: riande
@@ -8,16 +8,15 @@ ms.date: 07/09/2013
 ms.assetid: a90a04ce-9d07-43ad-8250-8a92fb2bd3d5
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 06fd13fe9b12d172d615ae76a71d246a89f5386d
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 59ce24aa47ca590fbe9b617dbbe8bc6b3711849e
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910482"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667384"
 ---
-<a name="use-owin-to-self-host-aspnet-web-api-2"></a>使用 OWIN 自我裝載 ASP.NET Web API 2
+<a name="use-owin-to-self-host-aspnet-web-api"></a>使用 OWIN 自我裝載 ASP.NET Web API 
 ====================
-藉由[Kanchan Mehrotra](https://twitter.com/kanchanmeh)
 
 > 本教學課程會示範如何使用 OWIN 自我裝載 Web API 架構的主控台應用程式中裝載 ASP.NET Web API。
 >
@@ -26,8 +25,8 @@ ms.locfileid: "48910482"
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
 >
 >
-> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) （也可用於 Visual Studio 2012）
-> - Web API 2
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 
+> - Web API 5.2.7
 
 
 > [!NOTE]
@@ -36,13 +35,13 @@ ms.locfileid: "48910482"
 
 ## <a name="create-a-console-application"></a>建立主控台應用程式
 
-在上**檔案**功能表上，按一下**新增**，然後按一下**專案**。 從**已安裝的範本**，在 Visual C# 中，按一下**Windows** ，然後按一下 **主控台應用程式**。 將專案命名為"OwinSelfhostSample 」，然後按一下**確定**。
+在 [**檔案**] 功能表**新增**，然後選取**專案**。 從**已安裝**下方**視覺化C#** ，選取**Windows Desktop** ，然後選取**主控台應用程式 (.Net Framework)**。 將專案命名為"OwinSelfhostSample 」，然後選取**確定**。
 
-[![](use-owin-to-self-host-web-api/_static/image2.png)](use-owin-to-self-host-web-api/_static/image1.png)
+[![](use-owin-to-self-host-web-api/_static/image7.png)](use-owin-to-self-host-web-api/_static/image7.png)
 
 ## <a name="add-the-web-api-and-owin-packages"></a>新增 Web API 和 OWIN 套件
 
-從**工具**功能表上，按一下**NuGet 套件管理員**，然後按一下**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
+從**工具**功能表上，選取**NuGet 套件管理員**，然後選取**Package Manager Console**。 在 [套件管理員主控台] 視窗中，輸入下列命令：
 
 `Install-Package Microsoft.AspNet.WebApi.OwinSelfHost`
 
@@ -68,13 +67,13 @@ ms.locfileid: "48910482"
 
 [!code-csharp[Main](use-owin-to-self-host-web-api/samples/sample2.cs)]
 
-## <a name="start-the-owin-host-and-make-a-request-using-httpclient"></a>啟動 OWIN 主機，並使用 HttpClient 提出要求
+## <a name="start-the-owin-host-and-make-a-request-with-httpclient"></a>啟動 OWIN 主機和 HttpClient 要求
 
 您可以將所有的 Program.cs 檔案中的未定案程式碼取代為下列：
 
 [!code-csharp[Main](use-owin-to-self-host-web-api/samples/sample3.cs)]
 
-## <a name="running-the-application"></a>執行應用程式
+## <a name="run-the-application"></a>執行應用程式
 
 若要執行應用程式，請在 Visual Studio 中按 F5。 輸出看起來應該如下所示：
 

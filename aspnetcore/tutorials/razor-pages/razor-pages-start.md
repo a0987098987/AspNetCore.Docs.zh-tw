@@ -5,18 +5,22 @@ description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中�
 ms.author: riande
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 929bc72b16e302a5018038bc449704b7078dd33a
-ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
+ms.openlocfilehash: bec5838c2efaffb933828260eaf1a840ff202140
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53425077"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667761"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-這是本系列的第一個教學課程。 [本系列](xref:tutorials/razor-pages/index)將教導您建置 ASP.NET Core Razor Pages Web 應用程式的基本概念。 在本系列結束時，您將會有一個可管理電影資料庫的應用程式。  
+這是本系列的第一個教學課程。 [本系列](xref:tutorials/razor-pages/index)將教導您建置 ASP.NET Core Razor Pages Web 應用程式的基本概念。
+
+[!INCLUDE[](~/includes/advancedRP.md)]
+
+在本系列結束時，您將會有一個可管理電影資料庫的應用程式。  
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
@@ -29,7 +33,7 @@ ms.locfileid: "53425077"
 
 在本教學課程結束時，您將會有一個運作正常的 Razor Pages Web 應用程式，並將在稍後的教學課程中以此為建置基礎。
 
-[Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
+![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
 [!INCLUDE[](~/includes/net-core-prereqs-all-2.2.md)]
 

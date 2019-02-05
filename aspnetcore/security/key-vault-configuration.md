@@ -2,76 +2,292 @@
 title: ASP.NET Core 中的 azure Key Vault 組態提供者
 author: guardrex
 description: 了解如何使用 Azure 金鑰保存庫的組態提供者設定應用程式使用在執行階段載入的名稱 / 值組。
-monikerRange: '>= aspnetcore-1.1'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 01/28/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: c6dc8b9c462841351b3ada72deeae727da356a6c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 8e40c8308a692731e71fb8ebebfc64e606874290
+ms.sourcegitcommit: 98e9c7187772d4ddefe6d8e85d0d206749dbd2ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207884"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55737651"
 ---
-# <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a><span data-ttu-id="837ef-103">ASP.NET Core 中的 azure Key Vault 組態提供者</span><span class="sxs-lookup"><span data-stu-id="837ef-103">Azure Key Vault configuration provider in ASP.NET Core</span></span>
+# <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a><span data-ttu-id="0c2c4-103">ASP.NET Core 中的 azure Key Vault 組態提供者</span><span class="sxs-lookup"><span data-stu-id="0c2c4-103">Azure Key Vault Configuration Provider in ASP.NET Core</span></span>
 
-<span data-ttu-id="837ef-104">藉由[Luke Latham](https://github.com/guardrex)和[Andrew Stanton-nurse](https://github.com/anurse)</span><span class="sxs-lookup"><span data-stu-id="837ef-104">By [Luke Latham](https://github.com/guardrex) and [Andrew Stanton-Nurse](https://github.com/anurse)</span></span>
+<span data-ttu-id="0c2c4-104">藉由[Luke Latham](https://github.com/guardrex)和[Andrew Stanton-nurse](https://github.com/anurse)</span><span class="sxs-lookup"><span data-stu-id="0c2c4-104">By [Luke Latham](https://github.com/guardrex) and [Andrew Stanton-Nurse](https://github.com/anurse)</span></span>
 
-<span data-ttu-id="837ef-105">本文件說明如何使用[Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/)組態提供者，從 Azure Key Vault 祕密載入應用程式組態值。</span><span class="sxs-lookup"><span data-stu-id="837ef-105">This document explains how to use the [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) configuration provider to load app configuration values from Azure Key Vault secrets.</span></span> <span data-ttu-id="837ef-106">Azure Key Vault 是雲端式服務，可協助您保護密碼編譯金鑰和應用程式和服務所使用的密碼。</span><span class="sxs-lookup"><span data-stu-id="837ef-106">Azure Key Vault is a cloud-based service that helps you safeguard cryptographic keys and secrets used by apps and services.</span></span> <span data-ttu-id="837ef-107">常見的案例包括控制存取敏感的組態資料，並符合需求的 FIPS 140-2 Level 2 驗證的硬體安全性模組 (HSM) 儲存組態資料時。</span><span class="sxs-lookup"><span data-stu-id="837ef-107">Common scenarios include controlling access to sensitive configuration data and meeting the requirement for FIPS 140-2 Level 2 validated Hardware Security Modules (HSM's) when storing configuration data.</span></span> <span data-ttu-id="837ef-108">這項功能是適用於 ASP.NET Core 1.1 為目標的應用程式或更高版本。</span><span class="sxs-lookup"><span data-stu-id="837ef-108">This feature is available for apps that target ASP.NET Core 1.1 or higher.</span></span>
+<span data-ttu-id="0c2c4-105">本文件說明如何使用[Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/)組態提供者，從 Azure Key Vault 祕密載入應用程式組態值。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-105">This document explains how to use the [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) Configuration Provider to load app configuration values from Azure Key Vault secrets.</span></span> <span data-ttu-id="0c2c4-106">Azure Key Vault 是雲端式服務，可以協助使用者保護密碼編譯金鑰和應用程式和服務所使用的密碼。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-106">Azure Key Vault is a cloud-based service that assists in safeguarding cryptographic keys and secrets used by apps and services.</span></span> <span data-ttu-id="0c2c4-107">ASP.NET Core 應用程式使用 Azure 金鑰保存庫的常見案例包括：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-107">Common scenarios for using Azure Key Vault with ASP.NET Core apps include:</span></span>
 
-<span data-ttu-id="837ef-109">[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="837ef-109">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+* <span data-ttu-id="0c2c4-108">控制對敏感的組態資料的存取。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-108">Controlling access to sensitive configuration data.</span></span>
+* <span data-ttu-id="0c2c4-109">儲存組態資料時，符合 fips 需求 140-2 Level 2 驗證的硬體安全性模組 (HSM)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-109">Meeting the requirement for FIPS 140-2 Level 2 validated Hardware Security Modules (HSM's) when storing configuration data.</span></span>
 
-## <a name="package"></a><span data-ttu-id="837ef-110">Package</span><span class="sxs-lookup"><span data-stu-id="837ef-110">Package</span></span>
+<span data-ttu-id="0c2c4-110">此案例是適用於應用程式為目標的 ASP.NET Core 2.1 或更新版本。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-110">This scenario is available for apps that target ASP.NET Core 2.1 or later.</span></span>
 
-<span data-ttu-id="837ef-111">若要使用的提供者，將參考加入[Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/)封裝。</span><span class="sxs-lookup"><span data-stu-id="837ef-111">To use the provider, add a reference to the [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) package.</span></span>
+<span data-ttu-id="0c2c4-111">[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="0c2c4-111">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="app-configuration"></a><span data-ttu-id="837ef-112">應用程式設定</span><span class="sxs-lookup"><span data-stu-id="837ef-112">App configuration</span></span>
+## <a name="packages"></a><span data-ttu-id="0c2c4-112">封裝</span><span class="sxs-lookup"><span data-stu-id="0c2c4-112">Packages</span></span>
 
-<span data-ttu-id="837ef-113">您可以瀏覽提供者[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples)。</span><span class="sxs-lookup"><span data-stu-id="837ef-113">You can explore the provider with the [sample apps](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples).</span></span> <span data-ttu-id="837ef-114">一旦您建立金鑰保存庫，並建立祕密，保存庫中，範例應用程式安全地載入其組態中的祕密的值，並在網頁中顯示它們。</span><span class="sxs-lookup"><span data-stu-id="837ef-114">Once you establish a key vault and create secrets in the vault, the sample apps securely load the secret values into their configurations and display them in webpages.</span></span>
+<span data-ttu-id="0c2c4-113">若要使用 Azure 金鑰保存庫的組態提供者，將新增的套件參考[Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/)封裝。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-113">To use the Azure Key Vault Configuration Provider, add a package reference to the [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) package.</span></span>
 
-<span data-ttu-id="837ef-115">提供者新增至應用程式的組態`AddAzureKeyVault`延伸模組。</span><span class="sxs-lookup"><span data-stu-id="837ef-115">The provider is added to the app's configuration with the `AddAzureKeyVault` extension.</span></span> <span data-ttu-id="837ef-116">在範例應用程式擴充功能會使用從載入的三個組態值*appsettings.json*檔案。</span><span class="sxs-lookup"><span data-stu-id="837ef-116">In the sample apps, the extension uses three configuration values loaded from the *appsettings.json* file.</span></span>
+<span data-ttu-id="0c2c4-114">若要採用 Azure 受控服務身分識別案例中，將新增的套件參考[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)封裝。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-114">To adopt the Azure Managed Service Identity scenario, add a package reference to the [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) package.</span></span>
 
-| <span data-ttu-id="837ef-117">應用程式設定</span><span class="sxs-lookup"><span data-stu-id="837ef-117">App Setting</span></span>    | <span data-ttu-id="837ef-118">描述</span><span class="sxs-lookup"><span data-stu-id="837ef-118">Description</span></span>                    | <span data-ttu-id="837ef-119">範例</span><span class="sxs-lookup"><span data-stu-id="837ef-119">Example</span></span>                                      |
-| -------------- | ------------------------------ | -------------------------------------------- |
-| `Vault`        | <span data-ttu-id="837ef-120">Azure 金鑰保存庫名稱</span><span class="sxs-lookup"><span data-stu-id="837ef-120">Azure Key Vault name</span></span>           | <span data-ttu-id="837ef-121">contosovault</span><span class="sxs-lookup"><span data-stu-id="837ef-121">contosovault</span></span>                                 |
-| `ClientId`     | <span data-ttu-id="837ef-122">Azure Active Directory 應用程式識別碼</span><span class="sxs-lookup"><span data-stu-id="837ef-122">Azure Active Directory App Id</span></span>  | <span data-ttu-id="837ef-123">627e911e-43cc-61d4-992e-12db9c81b413</span><span class="sxs-lookup"><span data-stu-id="837ef-123">627e911e-43cc-61d4-992e-12db9c81b413</span></span>         |
-| `ClientSecret` | <span data-ttu-id="837ef-124">Azure Active Directory 應用程式金鑰</span><span class="sxs-lookup"><span data-stu-id="837ef-124">Azure Active Directory App Key</span></span> | <span data-ttu-id="837ef-125">g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=</span><span class="sxs-lookup"><span data-stu-id="837ef-125">g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=</span></span> |
+> [!NOTE]
+> <span data-ttu-id="0c2c4-115">在本文撰寫之際，最新穩定版本`Microsoft.Azure.Services.AppAuthentication`，版本`1.0.3`，可讓您[系統指派給受控身分識別](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-115">At the time of writing, the latest stable release of `Microsoft.Azure.Services.AppAuthentication`, version `1.0.3`, provides support for [system-assigned managed identities](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka).</span></span> <span data-ttu-id="0c2c4-116">支援*指派使用者給受控身分識別*位於`1.0.2-preview`封裝。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-116">Support for *user-assigned managed identities* is available in the `1.0.2-preview` package.</span></span> <span data-ttu-id="0c2c4-117">本主題示範如何使用系統管理的身分識別，並提供的範例應用程式使用的版本`1.0.3`的`Microsoft.Azure.Services.AppAuthentication`封裝。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-117">This topic demonstrates the use of system-managed identities, and the provided sample app uses version `1.0.3` of the `Microsoft.Azure.Services.AppAuthentication` package.</span></span>
 
-[!code-csharp[Program](key-vault-configuration/samples/basic-sample/2.x/Program.cs?name=snippet1)]
+## <a name="sample-app"></a><span data-ttu-id="0c2c4-118">範例應用程式</span><span class="sxs-lookup"><span data-stu-id="0c2c4-118">Sample app</span></span>
 
-## <a name="create-key-vault-secrets-and-load-configuration-values-basic-sample"></a><span data-ttu-id="837ef-126">建立金鑰保存庫祕密，並載入組態值 （基本範例）</span><span class="sxs-lookup"><span data-stu-id="837ef-126">Create key vault secrets and load configuration values (basic-sample)</span></span>
+<span data-ttu-id="0c2c4-119">範例應用程式執行所決定的兩種模式之一`#define`陳述式，在頂端*Program.cs*檔案：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-119">The sample app runs in either of two modes determined by the `#define` statement at the top of the *Program.cs* file:</span></span>
 
-1. <span data-ttu-id="837ef-127">建立金鑰保存庫，並設定 Azure Active Directory (Azure AD) 應用程式中的指導方針[開始使用 Azure Key Vault](https://azure.microsoft.com/documentation/articles/key-vault-get-started/)。</span><span class="sxs-lookup"><span data-stu-id="837ef-127">Create a key vault and set up Azure Active Directory (Azure AD) for the app following the guidance in [Get started with Azure Key Vault](https://azure.microsoft.com/documentation/articles/key-vault-get-started/).</span></span>
-   * <span data-ttu-id="837ef-128">將密碼新增至金鑰保存庫使用[AzureRM 金鑰保存庫 PowerShell 模組](/powershell/module/azurerm.keyvault)苀[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureRM.KeyVault)，則[Azure Key Vault REST API](/rest/api/keyvault/)，或[Azure 入口網站](https://portal.azure.com/)。</span><span class="sxs-lookup"><span data-stu-id="837ef-128">Add secrets to the key vault using the [AzureRM Key Vault PowerShell Module](/powershell/module/azurerm.keyvault) available from the [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureRM.KeyVault), the [Azure Key Vault REST API](/rest/api/keyvault/), or the [Azure Portal](https://portal.azure.com/).</span></span> <span data-ttu-id="837ef-129">為建立祕密*手動*或是*憑證*祕密。</span><span class="sxs-lookup"><span data-stu-id="837ef-129">Secrets are created as either *Manual* or *Certificate* secrets.</span></span> <span data-ttu-id="837ef-130">*憑證*機密資料是應用程式和服務所使用的憑證，但不是支援的組態提供者。</span><span class="sxs-lookup"><span data-stu-id="837ef-130">*Certificate* secrets are certificates for use by apps and services but are not supported by the configuration provider.</span></span> <span data-ttu-id="837ef-131">您應該使用*手動*選項建立的組態提供者使用的名稱 / 值組祕密。</span><span class="sxs-lookup"><span data-stu-id="837ef-131">You should use the *Manual* option to create name-value pair secrets for use with the configuration provider.</span></span>
-     * <span data-ttu-id="837ef-132">簡單的密碼會建立為名稱 / 值組。</span><span class="sxs-lookup"><span data-stu-id="837ef-132">Simple secrets are created as name-value pairs.</span></span> <span data-ttu-id="837ef-133">Azure Key Vault 祕密名稱必須是限制為英數字元及虛線。</span><span class="sxs-lookup"><span data-stu-id="837ef-133">Azure Key Vault secret names are limited to alphanumeric characters and dashes.</span></span>
-     * <span data-ttu-id="837ef-134">階層式的值 （組態區段） 使用`--`（兩個連字號） 做為分隔符號，在此範例中。</span><span class="sxs-lookup"><span data-stu-id="837ef-134">Hierarchical values (configuration sections) use `--` (two dashes) as a separator in the sample.</span></span> <span data-ttu-id="837ef-135">通常用來分隔的區段中的子機碼的冒號[ASP.NET Core 組態](xref:fundamentals/configuration/index)，祕密名稱中不允許。</span><span class="sxs-lookup"><span data-stu-id="837ef-135">Colons, which are normally used to delimit a section from a subkey in [ASP.NET Core configuration](xref:fundamentals/configuration/index), aren't allowed in secret names.</span></span> <span data-ttu-id="837ef-136">因此，兩個連字號是用，而且密碼會載入應用程式的設定時，已還原為冒號。</span><span class="sxs-lookup"><span data-stu-id="837ef-136">Therefore, two dashes are used and swapped for a colon when the secrets are loaded into the app's configuration.</span></span>
-     * <span data-ttu-id="837ef-137">建立兩個*手動*具有下列名稱 / 值組的密碼。</span><span class="sxs-lookup"><span data-stu-id="837ef-137">Create two *Manual* secrets with the following name-value pairs.</span></span> <span data-ttu-id="837ef-138">第一個密碼是簡單名稱和值，和第二個祕密建立祕密的值與區段和祕密名稱中的子機碼：</span><span class="sxs-lookup"><span data-stu-id="837ef-138">The first secret is a simple name and value, and the second secret creates a secret value with a section and subkey in the secret name:</span></span>
-       * <span data-ttu-id="837ef-139">`SecretName`: `secret_value_1`</span><span class="sxs-lookup"><span data-stu-id="837ef-139">`SecretName`: `secret_value_1`</span></span>
-       * <span data-ttu-id="837ef-140">`Section--SecretName`: `secret_value_2`</span><span class="sxs-lookup"><span data-stu-id="837ef-140">`Section--SecretName`: `secret_value_2`</span></span>
-   * <span data-ttu-id="837ef-141">向 Azure Active Directory 中註冊範例應用程式。</span><span class="sxs-lookup"><span data-stu-id="837ef-141">Register the sample app with Azure Active Directory.</span></span>
-   * <span data-ttu-id="837ef-142">授權應用程式存取金鑰保存庫。</span><span class="sxs-lookup"><span data-stu-id="837ef-142">Authorize the app to access the key vault.</span></span> <span data-ttu-id="837ef-143">當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，授權應用程式存取金鑰保存庫中，提供`List`並`Get`祕密存取`-PermissionsToSecrets list,get`。</span><span class="sxs-lookup"><span data-stu-id="837ef-143">When you use the `Set-AzureRmKeyVaultAccessPolicy` PowerShell cmdlet to authorize the app to access the key vault, provide `List` and `Get` access to secrets with `-PermissionsToSecrets list,get`.</span></span>
+* <span data-ttu-id="0c2c4-120">`Basic` &ndash; 示範如何使用 Azure 金鑰保存庫的應用程式識別碼和密碼 （用戶端密碼） 來存取儲存在金鑰保存庫中的祕密。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-120">`Basic` &ndash; Demonstrates the use of an Azure Key Vault Application ID and Password (Client Secret) to access secrets stored in the key vault.</span></span> <span data-ttu-id="0c2c4-121">部署`Basic`版本的任何主機能夠為 ASP.NET Core 應用程式範例。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-121">Deploy the `Basic` version of the sample to any host capable of serving an ASP.NET Core app.</span></span>
+* <span data-ttu-id="0c2c4-122">`Managed` &ndash; 示範如何使用 Azure[受控服務識別 (MSI)](/azure/active-directory/managed-identities-azure-resources/overview)驗證的應用程式至 Azure Key Vault 與 Azure AD 驗證不含認證儲存在應用程式的程式碼或組態。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-122">`Managed` &ndash; Demonstrates how to use Azure's [Managed Service Identity (MSI)](/azure/active-directory/managed-identities-azure-resources/overview) to authenticate the app to Azure Key Vault with Azure AD authentication without credentials stored in the app's code or configuration.</span></span> <span data-ttu-id="0c2c4-123">當您可以使用 MSI 來進行驗證，不需要的 Azure AD 應用程式識別碼和密碼 （用戶端祕密）。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-123">When using MSI to authenticate, an Azure AD Application ID and Password (Client Secret) aren't required.</span></span> <span data-ttu-id="0c2c4-124">`Managed`範例版本必須部署至 Azure。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-124">The `Managed` version of the sample must be deployed to Azure.</span></span>
 
-2. <span data-ttu-id="837ef-144">應用程式的更新*appsettings.json*的值的檔案`Vault`， `ClientId`，和`ClientSecret`。</span><span class="sxs-lookup"><span data-stu-id="837ef-144">Update the app's *appsettings.json* file with the values of `Vault`, `ClientId`, and `ClientSecret`.</span></span>
-3. <span data-ttu-id="837ef-145">執行範例應用程式，它會取得從其組態值`IConfigurationRoot`祕密名稱同名。</span><span class="sxs-lookup"><span data-stu-id="837ef-145">Run the sample app, which obtains its configuration values from `IConfigurationRoot` with the same name as the secret name.</span></span>
-   * <span data-ttu-id="837ef-146">非階層式的值： 值`SecretName`取得`config["SecretName"]`。</span><span class="sxs-lookup"><span data-stu-id="837ef-146">Non-hierarchical values: The value for `SecretName` is obtained with `config["SecretName"]`.</span></span>
-   * <span data-ttu-id="837ef-147">（區段） 的階層式值： 使用`:`（冒號） 標記法或`GetSection`擴充方法。</span><span class="sxs-lookup"><span data-stu-id="837ef-147">Hierarchical values (sections): Use `:` (colon) notation or the `GetSection` extension method.</span></span> <span data-ttu-id="837ef-148">您可以使用任一種方法來取得組態值：</span><span class="sxs-lookup"><span data-stu-id="837ef-148">Use either of these approaches to obtain the configuration value:</span></span>
-     * `config["Section:SecretName"]`
-     * `config.GetSection("Section")["SecretName"]`
+<span data-ttu-id="0c2c4-125">如需有關如何設定範例應用程式使用前置處理器指示詞 (`#define`)，請參閱<xref:index#preprocessor-directives-in-sample-code>。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-125">For more information on how to configure a sample app using preprocessor directives (`#define`), see <xref:index#preprocessor-directives-in-sample-code>.</span></span>
 
-<span data-ttu-id="837ef-149">當您執行應用程式時，網頁會顯示載入祕密的值：</span><span class="sxs-lookup"><span data-stu-id="837ef-149">When you run the app, a webpage shows the loaded secret values:</span></span>
+## <a name="secret-storage-in-the-development-environment"></a><span data-ttu-id="0c2c4-126">在開發環境中的祕密儲存體</span><span class="sxs-lookup"><span data-stu-id="0c2c4-126">Secret storage in the Development environment</span></span>
 
-![透過 「 Azure 金鑰保存庫組態提供者的瀏覽器視窗中顯示祕密值載入](key-vault-configuration/_static/sample1.png)
+<span data-ttu-id="0c2c4-127">設定在本機使用的祕密[Secret Manager 工具](xref:security/app-secrets)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-127">Set secrets locally using the [Secret Manager tool](xref:security/app-secrets).</span></span> <span data-ttu-id="0c2c4-128">當在開發環境中本機電腦上，執行範例應用程式時，會載入密碼從本機的祕密管理員存放區。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-128">When the sample app runs on the local machine in the Development environment, secrets are loaded from the local Secret Manager store.</span></span>
 
-## <a name="bind-an-array-to-a-class"></a><span data-ttu-id="837ef-151">將陣列繫結到類別</span><span class="sxs-lookup"><span data-stu-id="837ef-151">Bind an array to a class</span></span>
+<span data-ttu-id="0c2c4-129">Secret Manager 工具需要`<UserSecretsId>`應用程式的專案檔中的屬性。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-129">The Secret Manager tool requires a `<UserSecretsId>` property in the app's project file.</span></span> <span data-ttu-id="0c2c4-130">設定屬性值 (`{GUID}`) 任何唯一的 guid:</span><span class="sxs-lookup"><span data-stu-id="0c2c4-130">Set the property value (`{GUID}`) to any unique GUID:</span></span>
 
-<span data-ttu-id="837ef-152">提供者可以讀入繫結到 POCO 陣列的陣列中的組態值。</span><span class="sxs-lookup"><span data-stu-id="837ef-152">The provider is capable of reading configuration values into an array for binding to a POCO array.</span></span>
+```xml
+<PropertyGroup>
+  <UserSecretsId>{GUID}</UserSecretsId>
+</PropertyGroup>
+```
 
-<span data-ttu-id="837ef-153">從允許包含冒號的索引鍵的組態來源讀取時 (`:`) 的數值索引鍵的區段分隔符號用來區別構成陣列的索引鍵 (`:0:`， `:1:`，...</span><span class="sxs-lookup"><span data-stu-id="837ef-153">When reading from a configuration source that allows keys to contain colon (`:`) separators, a numeric key segment is used to distinguish the keys that make up an array (`:0:`, `:1:`, …</span></span> <span data-ttu-id="837ef-154">`:{n}:`)。</span><span class="sxs-lookup"><span data-stu-id="837ef-154">`:{n}:`).</span></span> <span data-ttu-id="837ef-155">如需詳細資訊，請參閱 <<c0> [ 組態： 將陣列繫結至類別](xref:fundamentals/configuration/index#bind-an-array-to-a-class)。</span><span class="sxs-lookup"><span data-stu-id="837ef-155">For more information, see [Configuration: Bind an array to a class](xref:fundamentals/configuration/index#bind-an-array-to-a-class).</span></span>
+<span data-ttu-id="0c2c4-131">密碼會建立為名稱 / 值組。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-131">Secrets are created as name-value pairs.</span></span> <span data-ttu-id="0c2c4-132">階層式的值 （組態區段） 會使用`:`（冒號） 為分隔符號[ASP.NET Core 組態](xref:fundamentals/configuration/index)索引鍵名稱。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-132">Hierarchical values (configuration sections) use a `:` (colon) as a separator in [ASP.NET Core configuration](xref:fundamentals/configuration/index) key names.</span></span>
 
-<span data-ttu-id="837ef-156">Azure Key Vault 金鑰無法使用冒號做為分隔符號。</span><span class="sxs-lookup"><span data-stu-id="837ef-156">Azure Key Vault keys can't use a colon as a separator.</span></span> <span data-ttu-id="837ef-157">本主題中所述的方法會使用雙連字號 (`--`) 當作分隔符號 （區段） 的階層式值。</span><span class="sxs-lookup"><span data-stu-id="837ef-157">The approach described in this topic uses double dashes (`--`) as a separator for hierarchical values (sections).</span></span> <span data-ttu-id="837ef-158">陣列索引鍵時，會儲存在 Azure 金鑰保存庫上，使用雙連字號和數值的重要片段 (`--0--`， `--1--`，...</span><span class="sxs-lookup"><span data-stu-id="837ef-158">Array keys are stored in Azure Key Vault with double dashes and numeric key segments (`--0--`, `--1--`, …</span></span> <span data-ttu-id="837ef-159">`--{n}--`)。</span><span class="sxs-lookup"><span data-stu-id="837ef-159">`--{n}--`).</span></span>
+<span data-ttu-id="0c2c4-133">Secret Manager 可從命令殼層，開啟專案的內容根目錄，其中`{SECRET NAME}`名稱和`{SECRET VALUE}`的值：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-133">The Secret Manager is used from a command shell opened to the project's content root, where `{SECRET NAME}` is the name and `{SECRET VALUE}` is the value:</span></span>
 
-<span data-ttu-id="837ef-160">檢查下列[Serilog](https://serilog.net/)記錄的 JSON 檔案所提供的提供者組態。</span><span class="sxs-lookup"><span data-stu-id="837ef-160">Examine the following [Serilog](https://serilog.net/) logging provider configuration provided by a JSON file.</span></span> <span data-ttu-id="837ef-161">有兩個物件中定義的常值`WriteTo`陣列，其中會反映兩個 Serilog*接收*，可描述記錄輸出的目的地：</span><span class="sxs-lookup"><span data-stu-id="837ef-161">There are two object literals defined in the `WriteTo` array that reflect two Serilog *sinks*, which describe destinations for logging output:</span></span>
+```console
+dotnet user-secrets set "{SECRET NAME}" "{SECRET VALUE}"
+```
+
+<span data-ttu-id="0c2c4-134">從專案的內容根目錄設定範例應用程式祕密命令殼層中執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-134">Execute the following commands in a command shell from the project's content root to set the secrets for the sample app:</span></span>
+
+```console
+dotnet user-secrets set "SecretName" "secret_value_1_dev"
+dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
+```
+
+<span data-ttu-id="0c2c4-135">當這些祕密儲存在 Azure Key Vault[生產環境使用 Azure Key Vault 中密碼的儲存體](#secret-storage-in-the-production-environment-with-azure-key-vault)區段中，`_dev`後置詞變更為`_prod`。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-135">When these secrets are stored in Azure Key Vault in the [Secret storage in the Production environment with Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) section, the `_dev` suffix is changed to `_prod`.</span></span> <span data-ttu-id="0c2c4-136">後置詞提供視覺提示，指出組態值的來源的應用程式的輸出中。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-136">The suffix provides a visual cue in the app's output indicating the source of the configuration values.</span></span>
+
+## <a name="secret-storage-in-the-production-environment-with-azure-key-vault"></a><span data-ttu-id="0c2c4-137">在生產環境使用 Azure Key Vault 的祕密儲存體</span><span class="sxs-lookup"><span data-stu-id="0c2c4-137">Secret storage in the Production environment with Azure Key Vault</span></span>
+
+<span data-ttu-id="0c2c4-138">所提供的指示[快速入門：設定並從使用 Azure CLI 的 Azure 金鑰保存庫擷取祕密](/azure/key-vault/quick-create-cli)主題會彙總以供建立 Azure Key Vault 及儲存範例應用程式所使用的密碼。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-138">The instructions provided by the [Quickstart: Set and retrieve a secret from Azure Key Vault using Azure CLI](/azure/key-vault/quick-create-cli) topic are summarized here for creating an Azure Key Vault and storing secrets used by the sample app.</span></span> <span data-ttu-id="0c2c4-139">請參閱本主題以取得詳細資料。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-139">Refer to the topic for further details.</span></span>
+
+1. <span data-ttu-id="0c2c4-140">開啟 Azure Cloud shell 中使用中的下列方法的任一[Azure 入口網站](https://portal.azure.com/):</span><span class="sxs-lookup"><span data-stu-id="0c2c4-140">Open Azure Cloud shell using any one of the following methods in the [Azure portal](https://portal.azure.com/):</span></span>
+
+   * <span data-ttu-id="0c2c4-141">選取 **試試**的程式碼區塊右上角。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-141">Select **Try It** in the upper-right corner of a code block.</span></span> <span data-ttu-id="0c2c4-142">使用搜尋字串"Azure CLI 」，在文字方塊中。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-142">Use the search string "Azure CLI" in the text box.</span></span>
+   * <span data-ttu-id="0c2c4-143">在您的瀏覽器中開啟 Cloud Shell**啟動 Cloud Shell**  按鈕。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-143">Open Cloud Shell in your browser with the **Launch Cloud Shell** button.</span></span>
+   * <span data-ttu-id="0c2c4-144">選取  **Cloud Shell**在 Azure 入口網站右上角的功能表上的按鈕。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-144">Select the **Cloud Shell** button on the menu in the upper-right corner of the Azure portal.</span></span>
+
+   <span data-ttu-id="0c2c4-145">如需詳細資訊，請參閱 < [Azure 命令列介面 (CLI)](/cli/azure/)並[Azure Cloud Shell 概觀](/azure/cloud-shell/overview)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-145">For more information, see [Azure Command-Line Interface (CLI)](/cli/azure/) and [Overview of Azure Cloud Shell](/azure/cloud-shell/overview).</span></span>
+
+1. <span data-ttu-id="0c2c4-146">如果您不已通過驗證，登入的`az login`命令。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-146">If you aren't already authenticated, sign in with the `az login` command.</span></span>
+
+1. <span data-ttu-id="0c2c4-147">建立資源群組，使用下列命令，其中`{RESOURCE GROUP NAME}`是新的資源群組的資源群組名稱和`{LOCATION}`是 Azure 區域 （資料中心）：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-147">Create a resource group with the following command, where `{RESOURCE GROUP NAME}` is the resource group name for the new resource group and `{LOCATION}` is the Azure region (datacenter):</span></span>
+
+   ```console
+   az group create --name "{RESOURCE GROUP NAME}" --location {LOCATION}
+   ```
+
+1. <span data-ttu-id="0c2c4-148">在資源群組中，使用下列命令，建立金鑰保存庫所在`{KEY VAULT NAME}`是新的金鑰保存庫的名稱和`{LOCATION}`是 Azure 區域 （資料中心）：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-148">Create a key vault in the resource group with the following command, where `{KEY VAULT NAME}` is the name for the new key vault and `{LOCATION}` is the Azure region (datacenter):</span></span>
+
+   ```console
+   az keyvault create --name "{KEY VAULT NAME}" --resource-group "{RESOURCE GROUP NAME}" --location {LOCATION}
+   ```
+
+1. <span data-ttu-id="0c2c4-149">建立金鑰保存庫中的密碼，做為名稱 / 值組。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-149">Create secrets in the key vault as name-value pairs.</span></span>
+
+   <span data-ttu-id="0c2c4-150">Azure Key Vault 祕密名稱必須是限制為英數字元及虛線。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-150">Azure Key Vault secret names are limited to alphanumeric characters and dashes.</span></span> <span data-ttu-id="0c2c4-151">階層式的值 （組態區段） 使用`--`（兩個連字號） 做為分隔符號。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-151">Hierarchical values (configuration sections) use `--` (two dashes) as a separator.</span></span> <span data-ttu-id="0c2c4-152">通常用來分隔的區段中的子機碼的冒號[ASP.NET Core 組態](xref:fundamentals/configuration/index)，不允許在金鑰保存庫祕密名稱。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-152">Colons, which are normally used to delimit a section from a subkey in [ASP.NET Core configuration](xref:fundamentals/configuration/index), aren't allowed in key vault secret names.</span></span> <span data-ttu-id="0c2c4-153">因此，兩個連字號是用，而且密碼會載入應用程式的設定時，已還原為冒號。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-153">Therefore, two dashes are used and swapped for a colon when the secrets are loaded into the app's configuration.</span></span>
+
+   <span data-ttu-id="0c2c4-154">下列的機密資料是範例應用程式搭配使用。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-154">The following secrets are for use with the sample app.</span></span> <span data-ttu-id="0c2c4-155">值包括`_prod`後置詞來區別從`_dev`後置詞從使用者的機密資訊的開發環境中載入的值。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-155">The values include a `_prod` suffix to distinguish them from the `_dev` suffix values loaded in the Development environment from User Secrets.</span></span> <span data-ttu-id="0c2c4-156">取代`{KEY VAULT NAME}`與您在先前步驟中建立的金鑰保存庫名稱：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-156">Replace `{KEY VAULT NAME}` with the name of the key vault that you created in the prior step:</span></span>
+
+   ```console
+   az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "SecretName" --value "secret_value_1_prod"
+   az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "Section--SecretName" --value "secret_value_2_prod"
+   ```
+
+## <a name="use-application-id-and-client-secret"></a><span data-ttu-id="0c2c4-157">使用應用程式識別碼和用戶端祕密</span><span class="sxs-lookup"><span data-stu-id="0c2c4-157">Use Application ID and Client Secret</span></span>
+
+<span data-ttu-id="0c2c4-158">設定 Azure AD、 Azure 金鑰保存庫和應用程式，用以向 key vault，當應用程式裝載在 Azure 之外的應用程式識別碼和密碼 （用戶端祕密）。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-158">Configure Azure AD, Azure Key Vault, and the app to use an Application ID and Password (Client Secret) to authenticate to a key vault when the app is hosted outside of Azure.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="0c2c4-159">雖然在 Azure 中託管的應用程式支援使用應用程式識別碼和密碼 （用戶端秘密），我們建議您使用[受控服務識別 (MSI) 提供者](#use-the-managed-service-identity-msi-provider)裝載在 Azure 中的應用程式時。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-159">Although using an Application ID and Password (Client Secret) is supported for apps hosted in Azure, we recommend using the [Managed Service Identity (MSI) Provider](#use-the-managed-service-identity-msi-provider) when hosting an app in Azure.</span></span> <span data-ttu-id="0c2c4-160">MSI 不需要將認證儲存在應用程式或其組態，因此被視為通常更安全的方法。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-160">MSI doesn't require storing credentials in the app or its configuration, so it's regarded as a generally safer approach.</span></span>
+
+<span data-ttu-id="0c2c4-161">範例應用程式可使用的應用程式識別碼和密碼 （用戶端密碼） 時`#define`陳述式，在頂端*Program.cs*檔案設定為`Basic`。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-161">The sample app uses an Application ID and Password (Client Secret) when the `#define` statement at the top of the *Program.cs* file is set to `Basic`.</span></span>
+
+1. <span data-ttu-id="0c2c4-162">使用 Azure AD 註冊應用程式，並建立應用程式的身分識別的密碼 （用戶端祕密）。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-162">Register the app with Azure AD and establish a Password (Client Secret) for the app's identity.</span></span>
+1. <span data-ttu-id="0c2c4-163">在應用程式中儲存的金鑰保存庫名稱、 應用程式識別碼和密碼/用戶端祕密*appsettings.json*檔案。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-163">Store the key vault name, Application ID, and Password/Client Secret in the app's *appsettings.json* file.</span></span>
+1. <span data-ttu-id="0c2c4-164">瀏覽至**金鑰保存庫**在 Azure 入口網站中。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-164">Navigate to **Key vaults** in the Azure portal.</span></span>
+1. <span data-ttu-id="0c2c4-165">選取您在建立金鑰保存庫[生產環境使用 Azure Key Vault 中密碼的儲存體](#secret-storage-in-the-production-environment-with-azure-key-vault)一節。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-165">Select the key vault that you created in the [Secret storage in the Production environment with Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) section.</span></span>
+1. <span data-ttu-id="0c2c4-166">選取 **存取原則**。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-166">Select **Access policies**.</span></span>
+1. <span data-ttu-id="0c2c4-167">選取 **新增**。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-167">Select **Add new**.</span></span>
+1. <span data-ttu-id="0c2c4-168">選取 **選取主體**依名稱選取的已註冊的應用程式。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-168">Select **Select principal** and select the registered app by name.</span></span> <span data-ttu-id="0c2c4-169">選取 [**選取**] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-169">Select the **Select** button.</span></span>
+1. <span data-ttu-id="0c2c4-170">開啟**祕密權限**，並提供應用程式與**取得**並**清單**權限。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-170">Open **Secret permissions** and provide the app with **Get** and **List** permissions.</span></span>
+1. <span data-ttu-id="0c2c4-171">選取 [確定]。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-171">Select **OK**.</span></span>
+1. <span data-ttu-id="0c2c4-172">選取 [儲存]。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-172">Select **Save**.</span></span>
+1. <span data-ttu-id="0c2c4-173">部署應用程式。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-173">Deploy the app.</span></span>
+
+<span data-ttu-id="0c2c4-174">`Basic`範例應用程式取得其組態值從`IConfigurationRoot`具有相同名稱與祕密名稱：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-174">The `Basic` sample app obtains its configuration values from `IConfigurationRoot` with the same name as the secret name:</span></span>
+
+* <span data-ttu-id="0c2c4-175">非階層式的值：值`SecretName`取得`config["SecretName"]`。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-175">Non-hierarchical values: The value for `SecretName` is obtained with `config["SecretName"]`.</span></span>
+* <span data-ttu-id="0c2c4-176">（區段） 的階層式值：使用`:`（冒號） 標記法或`GetSection`擴充方法。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-176">Hierarchical values (sections): Use `:` (colon) notation or the `GetSection` extension method.</span></span> <span data-ttu-id="0c2c4-177">您可以使用任一種方法來取得組態值：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-177">Use either of these approaches to obtain the configuration value:</span></span>
+  * `config["Section:SecretName"]`
+  * `config.GetSection("Section")["SecretName"]`
+
+<span data-ttu-id="0c2c4-178">應用程式呼叫`AddAzureKeyVault`所提供的值*appsettings.json*檔案：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-178">The app calls `AddAzureKeyVault` with values supplied by the *appsettings.json* file:</span></span>
+
+[!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet1&highlight=11-14)]
+
+<span data-ttu-id="0c2c4-179">範例值：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-179">Example values:</span></span>
+
+* <span data-ttu-id="0c2c4-180">金鑰保存庫名稱： `contosovault`</span><span class="sxs-lookup"><span data-stu-id="0c2c4-180">Key vault name: `contosovault`</span></span>
+* <span data-ttu-id="0c2c4-181">應用程式識別碼： `627e911e-43cc-61d4-992e-12db9c81b413`</span><span class="sxs-lookup"><span data-stu-id="0c2c4-181">Application ID: `627e911e-43cc-61d4-992e-12db9c81b413`</span></span>
+* <span data-ttu-id="0c2c4-182">密碼： `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`</span><span class="sxs-lookup"><span data-stu-id="0c2c4-182">Password: `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`</span></span>
+
+<span data-ttu-id="0c2c4-183">*appsettings.json*：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-183">*appsettings.json*:</span></span>
+
+[!code-json[](key-vault-configuration/sample/appsettings.json)]
+
+<span data-ttu-id="0c2c4-184">當您執行應用程式時，網頁就會顯示載入的祕密值。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-184">When you run the app, a webpage shows the loaded secret values.</span></span> <span data-ttu-id="0c2c4-185">使用，在開發環境中，載入祕密值`_dev`後置詞。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-185">In the Development environment, secret values load with the `_dev` suffix.</span></span> <span data-ttu-id="0c2c4-186">在生產環境中，值則是使用載入`_prod`後置詞。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-186">In the Production environment, the values load with the `_prod` suffix.</span></span>
+
+## <a name="use-the-managed-service-identity-msi-provider"></a><span data-ttu-id="0c2c4-187">使用受控的服務識別 (MSI) 提供者</span><span class="sxs-lookup"><span data-stu-id="0c2c4-187">Use the Managed Service Identity (MSI) Provider</span></span>
+
+<span data-ttu-id="0c2c4-188">部署至 Azure 的應用程式可以充分利用的受控服務識別 (MSI)，可讓使用 Azure Key Vault 進行驗證的應用程式使用 Azure AD 驗證，而不需要認證 （應用程式識別碼和用戶端密碼/密碼） 儲存在應用程式。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-188">An app deployed to Azure can take advantage of Managed Service Identity (MSI), which allows the app to authenticate with Azure Key Vault using Azure AD authentication without credentials (Application ID and Password/Client Secret) stored in the app.</span></span>
+
+<span data-ttu-id="0c2c4-189">範例應用程式會使用 MSI 時`#define`陳述式，在頂端*Program.cs*檔案設定為`Managed`。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-189">The sample app uses MSI when the `#define` statement at the top of the *Program.cs* file is set to `Managed`.</span></span>
+
+<span data-ttu-id="0c2c4-190">輸入應用程式的保存庫名稱*appsettings.json*檔案。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-190">Enter the vault name into the app's *appsettings.json* file.</span></span> <span data-ttu-id="0c2c4-191">範例應用程式不需要應用程式識別碼和密碼 （用戶端秘密），當設定為`Managed`版本，因此您可以忽略這些組態項目。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-191">The sample app doesn't require an Application ID and Password (Client Secret) when set to the `Managed` version, so you can ignore those configuration entries.</span></span> <span data-ttu-id="0c2c4-192">應用程式部署至 Azure，以及 Azure 驗證應用程式存取只使用 保存庫名稱儲存在 Azure Key Vault *appsettings.json*檔案。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-192">The app is deployed to Azure, and Azure authenticates the app to access Azure Key Vault only using the vault name stored in the *appsettings.json* file.</span></span>
+
+<span data-ttu-id="0c2c4-193">將範例應用程式部署至 Azure App Service。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-193">Deploy the sample app to Azure App Service.</span></span>
+
+<span data-ttu-id="0c2c4-194">應用程式部署至 Azure App Service 與 Azure AD 建立服務時，會自動註冊。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-194">An app deployed to Azure App Service is automatically registered with Azure AD when the service is created.</span></span> <span data-ttu-id="0c2c4-195">從下列命令中使用的部署中取得的物件識別碼。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-195">Obtain the Object ID from the deployment for use in the following command.</span></span> <span data-ttu-id="0c2c4-196">物件識別碼時，會顯示在 Azure 入口網站上，在**識別**App Service 的面板。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-196">The Object ID is shown in the Azure portal on the **Identity** panel of the App Service.</span></span>
+
+<span data-ttu-id="0c2c4-197">使用 Azure CLI 和應用程式的物件識別碼，提供應用程式與`list`和`get`存取金鑰保存庫的權限：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-197">Using Azure CLI and the app's Object ID, provide the app with `list` and `get` permissions to access the key vault:</span></span>
+
+```console
+az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secret-permissions get list
+```
+
+<span data-ttu-id="0c2c4-198">**重新啟動應用程式**使用 Azure CLI、 PowerShell 或 Azure 入口網站。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-198">**Restart the app** using Azure CLI, PowerShell, or the Azure portal.</span></span>
+
+<span data-ttu-id="0c2c4-199">範例應用程式：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-199">The sample app:</span></span>
+
+* <span data-ttu-id="0c2c4-200">建立的執行個體`AzureServiceTokenProvider`類別，而不需要的連接字串。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-200">Creates an instance of the `AzureServiceTokenProvider` class without a connection string.</span></span> <span data-ttu-id="0c2c4-201">當未提供的連接字串時，提供者會嘗試從 MSI 取得存取權杖。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-201">When a connection string isn't provided, the provider attempts to obtain an access token from MSI.</span></span>
+* <span data-ttu-id="0c2c4-202">新`KeyVaultClient`會透過`AzureServiceTokenProvider`執行個體權杖回呼。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-202">A new `KeyVaultClient` is created with the `AzureServiceTokenProvider` instance token callback.</span></span>
+* <span data-ttu-id="0c2c4-203">`KeyVaultClient`的預設實作會使用執行個體`IKeyVaultSecretManager`載入所有祕密的值，會取代雙連字號 (`--`) 加上冒號 (`:`) 中索引鍵名稱。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-203">The `KeyVaultClient` instance is used with a default implementation of `IKeyVaultSecretManager` that loads all secret values and replaces double-dashes (`--`) with colons (`:`) in key names.</span></span>
+
+[!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet2&highlight=13-21)]
+
+<span data-ttu-id="0c2c4-204">當您執行應用程式時，網頁就會顯示載入的祕密值。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-204">When you run the app, a webpage shows the loaded secret values.</span></span> <span data-ttu-id="0c2c4-205">在開發環境中，有祕密值`_dev`後置詞，因為它們由使用者祕密。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-205">In the Development environment, secret values have the `_dev` suffix because they're provided by User Secrets.</span></span> <span data-ttu-id="0c2c4-206">在生產環境中，值則是使用載入`_prod`後置詞，因為它們由 Azure 金鑰保存庫。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-206">In the Production environment, the values load with the `_prod` suffix because they're provided by Azure Key Vault.</span></span>
+
+<span data-ttu-id="0c2c4-207">如果您收到`Access denied`錯誤，確認已向 Azure AD 註冊應用程式，且提供存取金鑰保存庫。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-207">If you receive an `Access denied` error, confirm that the app is registered with Azure AD and provided access to the key vault.</span></span> <span data-ttu-id="0c2c4-208">請確認您已重新開啟的服務在 Azure 中。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-208">Confirm that you've restarted the service in Azure.</span></span>
+
+## <a name="use-a-key-name-prefix"></a><span data-ttu-id="0c2c4-209">使用索引鍵名稱前置詞</span><span class="sxs-lookup"><span data-stu-id="0c2c4-209">Use a key name prefix</span></span>
+
+<span data-ttu-id="0c2c4-210">`AddAzureKeyVault` 提供的多載，接受的實作`IKeyVaultSecretManager`，這可讓您控制如何金鑰保存庫祕密會轉換成設定的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-210">`AddAzureKeyVault` provides an overload that accepts an implementation of `IKeyVaultSecretManager`, which allows you to control how key vault secrets are converted into configuration keys.</span></span> <span data-ttu-id="0c2c4-211">比方說，您可以實作的介面，將根據您在應用程式啟動時所提供的前置詞值的祕密值。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-211">For example, you can implement the interface to load secret values based on a prefix value you provide at app startup.</span></span> <span data-ttu-id="0c2c4-212">這可讓您，比方說，若要載入的應用程式的版本為基礎的祕密。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-212">This allows you, for example, to load secrets based on the version of the app.</span></span>
+
+> [!WARNING]
+> <span data-ttu-id="0c2c4-213">若要將多個應用程式的祕密放入相同的金鑰保存庫，或將環境的密碼，請勿使用前置詞上的金鑰保存庫祕密 (例如*開發*與*生產*祕密) 置於同一個保存庫。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-213">Don't use prefixes on key vault secrets to place secrets for multiple apps into the same key vault or to place environmental secrets (for example, *development* versus *production* secrets) into the same vault.</span></span> <span data-ttu-id="0c2c4-214">我們建議，不同的應用程式和開發/生產環境使用不同的金鑰保存庫來隔離應用程式環境，以最高層級的安全性。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-214">We recommend that different apps and development/production environments use separate key vaults to isolate app environments for the highest level of security.</span></span>
+
+<span data-ttu-id="0c2c4-215">在下列範例中，祕密建立金鑰保存庫 」 （並使用 Secret Manager 工具開發環境） 的`5000-AppSecret`（期間不允許在金鑰保存庫祕密名稱）。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-215">In the following example, a secret is established in the key vault (and using the Secret Manager tool for the Development environment) for `5000-AppSecret` (periods aren't allowed in key vault secret names).</span></span> <span data-ttu-id="0c2c4-216">此祕密表示 version=5.0.0.0 新版應用程式的應用程式祕密。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-216">This secret represents an app secret for version 5.0.0.0 of the app.</span></span> <span data-ttu-id="0c2c4-217">應用程式，5.1.0.0，另一個版本的祕密加入至金鑰保存庫 （並使用 Secret Manager 工具） 的`5100-AppSecret`。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-217">For another version of the app, 5.1.0.0, a secret is added to the key vault (and using the Secret Manager tool) for `5100-AppSecret`.</span></span> <span data-ttu-id="0c2c4-218">每個應用程式版本載入其組態設為其建立版本的祕密值`AppSecret`、 清除關閉版本載入祕密。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-218">Each app version loads its versioned secret value into its configuration as `AppSecret`, stripping off the version as it loads the secret.</span></span>
+
+<span data-ttu-id="0c2c4-219">`AddAzureKeyVault` 自訂呼叫`IKeyVaultSecretManager`:</span><span class="sxs-lookup"><span data-stu-id="0c2c4-219">`AddAzureKeyVault` is called with a custom `IKeyVaultSecretManager`:</span></span>
+
+[!code-csharp[](key-vault-configuration/sample_snapshot/Program.cs?name=snippet1&highlight=22)]
+
+<span data-ttu-id="0c2c4-220">金鑰保存庫名稱、 應用程式識別碼和密碼 （用戶端祕密） 的值由*appsettings.json*檔案：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-220">The values for key vault name, Application ID, and Password (Client Secret) are provided by the *appsettings.json* file:</span></span>
+
+[!code-json[](key-vault-configuration/sample/appsettings.json)]
+
+<span data-ttu-id="0c2c4-221">範例值：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-221">Example values:</span></span>
+
+* <span data-ttu-id="0c2c4-222">金鑰保存庫名稱： `contosovault`</span><span class="sxs-lookup"><span data-stu-id="0c2c4-222">Key vault name: `contosovault`</span></span>
+* <span data-ttu-id="0c2c4-223">應用程式識別碼： `627e911e-43cc-61d4-992e-12db9c81b413`</span><span class="sxs-lookup"><span data-stu-id="0c2c4-223">Application ID: `627e911e-43cc-61d4-992e-12db9c81b413`</span></span>
+* <span data-ttu-id="0c2c4-224">密碼： `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`</span><span class="sxs-lookup"><span data-stu-id="0c2c4-224">Password: `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`</span></span>
+
+<span data-ttu-id="0c2c4-225">`IKeyVaultSecretManager`實作回應組態中載入適當的祕密的祕密版本前置詞：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-225">The `IKeyVaultSecretManager` implementation reacts to the version prefixes of secrets to load the proper secret into configuration:</span></span>
+
+[!code-csharp[](key-vault-configuration/sample_snapshot/Startup.cs?name=snippet1)]
+
+<span data-ttu-id="0c2c4-226">`Load`逐一查看，找出有版本前置詞的保存庫祕密提供者演算法所呼叫方法。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-226">The `Load` method is called by a provider algorithm that iterates through the vault secrets to find the ones that have the version prefix.</span></span> <span data-ttu-id="0c2c4-227">當版本的前置詞上有`Load`，此演算法會使用`GetKey`方法傳回的密碼名稱的組態名稱。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-227">When a version prefix is found with `Load`, the algorithm uses the `GetKey` method to return the configuration name of the secret name.</span></span> <span data-ttu-id="0c2c4-228">它會除去版本前置詞，從 祕密的名稱，並傳回載入的祕密名稱的其餘部分，將應用程式設定成名稱 / 值組。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-228">It strips off the version prefix from the secret's name and returns the rest of the secret name for loading into the app's configuration name-value pairs.</span></span>
+
+<span data-ttu-id="0c2c4-229">當這個方法的實作方式：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-229">When this approach is implemented:</span></span>
+
+1. <span data-ttu-id="0c2c4-230">應用程式的專案檔中指定的應用程式的版本。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-230">The app's version specified in the app's project file.</span></span> <span data-ttu-id="0c2c4-231">在下列範例中，應用程式的版本設為`5.0.0.0`:</span><span class="sxs-lookup"><span data-stu-id="0c2c4-231">In the following example, the app's version is set to `5.0.0.0`:</span></span>
+
+   ```xml
+   <PropertyGroup>
+     <Version>5.0.0.0</Version>
+   </PropertyGroup>
+   ```
+
+1. <span data-ttu-id="0c2c4-232">確認`<UserSecretsId>`屬性會出現在應用程式的專案檔案，其中`{GUID}`是使用者所提供的 GUID:</span><span class="sxs-lookup"><span data-stu-id="0c2c4-232">Confirm that a `<UserSecretsId>` property is present in the app's project file, where `{GUID}` is a user-supplied GUID:</span></span>
+
+   ```xml
+   <PropertyGroup>
+     <UserSecretsId>{GUID}</UserSecretsId>
+   </PropertyGroup>
+   ```
+
+   <span data-ttu-id="0c2c4-233">儲存在本機使用下列的祕密[Secret Manager 工具](xref:security/app-secrets):</span><span class="sxs-lookup"><span data-stu-id="0c2c4-233">Save the following secrets locally with the [Secret Manager tool](xref:security/app-secrets):</span></span>
+
+   ```console
+   dotnet user-secrets set "5000-AppSecret" "5.0.0.0_secret_value_dev"
+   dotnet user-secrets set "5100-AppSecret" "5.1.0.0_secret_value_dev"
+   ```
+
+1. <span data-ttu-id="0c2c4-234">密碼會儲存在 Azure Key Vault 中使用下列 Azure CLI 命令：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-234">Secrets are saved in Azure Key Vault using the following Azure CLI commands:</span></span>
+
+   ```console
+   az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "5000-AppSecret" --value "5.0.0.0_secret_value_prod"
+   az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "5100-AppSecret" --value "5.1.0.0_secret_value_prod"
+   ```
+
+1. <span data-ttu-id="0c2c4-235">執行應用程式時，會載入的金鑰保存庫祕密。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-235">When the app is run, the key vault secrets are loaded.</span></span> <span data-ttu-id="0c2c4-236">字串密碼`5000-AppSecret`會對應到應用程式的專案檔中指定的應用程式的版本 (`5.0.0.0`)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-236">The string secret for `5000-AppSecret` is matched to the app's version specified in the app's project file (`5.0.0.0`).</span></span>
+
+1. <span data-ttu-id="0c2c4-237">版本， `5000` （與 dash)，移除的索引鍵名稱。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-237">The version, `5000` (with the dash), is stripped from the key name.</span></span> <span data-ttu-id="0c2c4-238">在整個應用程式，讀取具有索引鍵的組態`AppSecret`載入祕密的值。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-238">Throughout the app, reading configuration with the key `AppSecret` loads the secret value.</span></span>
+
+1. <span data-ttu-id="0c2c4-239">如果應用程式的版本會變更專案檔案中`5.1.0.0`再次執行應用程式，則傳回的祕密值是`5.1.0.0_secret_value_dev`在開發環境和`5.1.0.0_secret_value_prod`在生產環境中。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-239">If the app's version is changed in the project file to `5.1.0.0` and the app is run again, the secret value returned is `5.1.0.0_secret_value_dev` in the Development environment and `5.1.0.0_secret_value_prod` in Production.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="0c2c4-240">您也可以提供您自己`KeyVaultClient`實作`AddAzureKeyVault`。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-240">You can also provide your own `KeyVaultClient` implementation to `AddAzureKeyVault`.</span></span> <span data-ttu-id="0c2c4-241">自訂用戶端會允許跨應用程式共用用戶端的單一執行個體。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-241">A custom client permits sharing a single instance of the client across the app.</span></span>
+
+## <a name="authenticate-to-azure-key-vault-with-an-x509-certificate"></a><span data-ttu-id="0c2c4-242">Azure 金鑰保存庫中的 X.509 憑證進行驗證</span><span class="sxs-lookup"><span data-stu-id="0c2c4-242">Authenticate to Azure Key Vault with an X.509 certificate</span></span>
+
+<span data-ttu-id="0c2c4-243">在開發環境可支援憑證中的.NET Framework 應用程式時，您可以使用 X.509 憑證來驗證 Azure Key Vault。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-243">When developing a .NET Framework app in an environment that supports certificates, you can authenticate to Azure Key Vault with an X.509 certificate.</span></span> <span data-ttu-id="0c2c4-244">X.509 憑證的私密金鑰是由 OS 管理。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-244">The X.509 certificate's private key is managed by the OS.</span></span> <span data-ttu-id="0c2c4-245">如需詳細資訊，請參閱 <<c0> [ 使用而不是用戶端祕密憑證進行驗證](/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-245">For more information, see [Authenticate with a Certificate instead of a Client Secret](/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret).</span></span> <span data-ttu-id="0c2c4-246">使用`AddAzureKeyVault`多載，接受`X509Certificate2`(`_env`在下列範例中：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-246">Use the `AddAzureKeyVault` overload that accepts an `X509Certificate2` (`_env` in the following example :</span></span>
+
+```csharp
+var builtConfig = config.Build();
+
+var store = new X509Store(StoreLocation.CurrentUser);
+store.Open(OpenFlags.ReadOnly);
+var cert = store.Certificates
+    .Find(X509FindType.FindByThumbprint, 
+        config["CertificateThumbprint"], false);
+
+config.AddAzureKeyVault(
+    builtConfig["Vault"],
+    builtConfig["ClientId"],
+    cert.OfType<X509Certificate2>().Single(),
+    new EnvironmentSecretManager(context.HostingEnvironment.ApplicationName));
+
+store.Close();
+```
+
+## <a name="bind-an-array-to-a-class"></a><span data-ttu-id="0c2c4-247">將陣列繫結到類別</span><span class="sxs-lookup"><span data-stu-id="0c2c4-247">Bind an array to a class</span></span>
+
+<span data-ttu-id="0c2c4-248">提供者可以讀入繫結到 POCO 陣列的陣列中的組態值。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-248">The provider is capable of reading configuration values into an array for binding to a POCO array.</span></span>
+
+<span data-ttu-id="0c2c4-249">從允許包含冒號的索引鍵的組態來源讀取時 (`:`) 的數值索引鍵的區段分隔符號用來區別構成陣列的索引鍵 (`:0:`， `:1:`，...</span><span class="sxs-lookup"><span data-stu-id="0c2c4-249">When reading from a configuration source that allows keys to contain colon (`:`) separators, a numeric key segment is used to distinguish the keys that make up an array (`:0:`, `:1:`, …</span></span> <span data-ttu-id="0c2c4-250">`:{n}:`)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-250">`:{n}:`).</span></span> <span data-ttu-id="0c2c4-251">如需詳細資訊，請參閱[組態：將陣列繫結至類別](xref:fundamentals/configuration/index#bind-an-array-to-a-class)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-251">For more information, see [Configuration: Bind an array to a class](xref:fundamentals/configuration/index#bind-an-array-to-a-class).</span></span>
+
+<span data-ttu-id="0c2c4-252">Azure Key Vault 金鑰無法使用冒號做為分隔符號。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-252">Azure Key Vault keys can't use a colon as a separator.</span></span> <span data-ttu-id="0c2c4-253">本主題中所述的方法會使用雙連字號 (`--`) 當作分隔符號 （區段） 的階層式值。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-253">The approach described in this topic uses double dashes (`--`) as a separator for hierarchical values (sections).</span></span> <span data-ttu-id="0c2c4-254">陣列索引鍵時，會儲存在 Azure 金鑰保存庫上，使用雙連字號和數值的重要片段 (`--0--`， `--1--`，...</span><span class="sxs-lookup"><span data-stu-id="0c2c4-254">Array keys are stored in Azure Key Vault with double dashes and numeric key segments (`--0--`, `--1--`, …</span></span> <span data-ttu-id="0c2c4-255">`--{n}--`)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-255">`--{n}--`).</span></span>
+
+<span data-ttu-id="0c2c4-256">檢查下列[Serilog](https://serilog.net/)記錄的 JSON 檔案所提供的提供者組態。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-256">Examine the following [Serilog](https://serilog.net/) logging provider configuration provided by a JSON file.</span></span> <span data-ttu-id="0c2c4-257">有兩個物件中定義的常值`WriteTo`陣列，其中會反映兩個 Serilog*接收*，可描述記錄輸出的目的地：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-257">There are two object literals defined in the `WriteTo` array that reflect two Serilog *sinks*, which describe destinations for logging output:</span></span>
 
 ```json
 "Serilog": {
@@ -94,9 +310,9 @@ ms.locfileid: "50207884"
 }
 ```
 
-<span data-ttu-id="837ef-162">在上述的 JSON 檔案中所示的組態會儲存在 Azure 金鑰保存庫使用雙破折號 (`--`) 標記法和數值的區段：</span><span class="sxs-lookup"><span data-stu-id="837ef-162">The configuration shown in the preceding JSON file is stored in Azure Key Vault using double dash (`--`) notation and numeric segments:</span></span>
+<span data-ttu-id="0c2c4-258">在上述的 JSON 檔案中所示的組態會儲存在 Azure 金鑰保存庫使用雙破折號 (`--`) 標記法和數值的區段：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-258">The configuration shown in the preceding JSON file is stored in Azure Key Vault using double dash (`--`) notation and numeric segments:</span></span>
 
-| <span data-ttu-id="837ef-163">Key</span><span class="sxs-lookup"><span data-stu-id="837ef-163">Key</span></span> | <span data-ttu-id="837ef-164">值</span><span class="sxs-lookup"><span data-stu-id="837ef-164">Value</span></span> |
+| <span data-ttu-id="0c2c4-259">Key</span><span class="sxs-lookup"><span data-stu-id="0c2c4-259">Key</span></span> | <span data-ttu-id="0c2c4-260">值</span><span class="sxs-lookup"><span data-stu-id="0c2c4-260">Value</span></span> |
 | --- | ----- |
 | `Serilog--WriteTo--0--Name` | `AzureTableStorage` |
 | `Serilog--WriteTo--0--Args--storageTableName` | `logs` |
@@ -105,101 +321,35 @@ ms.locfileid: "50207884"
 | `Serilog--WriteTo--1--Args--endpointUrl` | `https://contoso.documents.azure.com:443` |
 | `Serilog--WriteTo--1--Args--authorizationKey` | `Eby8...GMGw==` |
 
-## <a name="create-prefixed-key-vault-secrets-and-load-configuration-values-key-name-prefix-sample"></a><span data-ttu-id="837ef-165">建立帶有前置詞的金鑰保存庫祕密，並載入組態值 （索引鍵-名稱-前置詞的範例）</span><span class="sxs-lookup"><span data-stu-id="837ef-165">Create prefixed key vault secrets and load configuration values (key-name-prefix-sample)</span></span>
+## <a name="reload-secrets"></a><span data-ttu-id="0c2c4-261">重新載入祕密</span><span class="sxs-lookup"><span data-stu-id="0c2c4-261">Reload secrets</span></span>
 
-<span data-ttu-id="837ef-166">`AddAzureKeyVault` 也會提供多載可接受的實作`IKeyVaultSecretManager`，這可讓您控制如何金鑰保存庫祕密會轉換成設定的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="837ef-166">`AddAzureKeyVault` also provides an overload that accepts an implementation of `IKeyVaultSecretManager`, which allows you to control how key vault secrets are converted into configuration keys.</span></span> <span data-ttu-id="837ef-167">比方說，您可以實作的介面，將根據您在應用程式啟動時所提供的前置詞值的祕密值。</span><span class="sxs-lookup"><span data-stu-id="837ef-167">For example, you can implement the interface to load secret values based on a prefix value you provide at app startup.</span></span> <span data-ttu-id="837ef-168">這可讓您，比方說，若要載入的應用程式的版本為基礎的祕密。</span><span class="sxs-lookup"><span data-stu-id="837ef-168">This allows you, for example, to load secrets based on the version of the app.</span></span>
-
-> [!WARNING]
-> <span data-ttu-id="837ef-169">若要將多個應用程式的祕密放入相同的金鑰保存庫，或將環境的密碼，請勿使用前置詞上的金鑰保存庫祕密 (例如*開發*與*生產*祕密) 置於同一個保存庫。</span><span class="sxs-lookup"><span data-stu-id="837ef-169">Don't use prefixes on key vault secrets to place secrets for multiple apps into the same key vault or to place environmental secrets (for example, *development* versus *production* secrets) into the same vault.</span></span> <span data-ttu-id="837ef-170">我們建議，不同的應用程式和開發/生產環境使用不同的金鑰保存庫來隔離應用程式環境，以最高層級的安全性。</span><span class="sxs-lookup"><span data-stu-id="837ef-170">We recommend that different apps and development/production environments use separate key vaults to isolate app environments for the highest level of security.</span></span>
-
-<span data-ttu-id="837ef-171">您使用第二個範例應用程式中的金鑰保存庫來建立祕密`5000-AppSecret`（期間不允許在金鑰保存庫祕密名稱） 代表您的應用程式的 version=5.0.0.0 新版應用程式祕密。</span><span class="sxs-lookup"><span data-stu-id="837ef-171">Using the second sample app, you create a secret in the key vault for `5000-AppSecret` (periods aren't allowed in key vault secret names) representing an app secret for version 5.0.0.0 of your app.</span></span> <span data-ttu-id="837ef-172">如需另一個版本，5.1.0.0，您建立的密碼`5100-AppSecret`。</span><span class="sxs-lookup"><span data-stu-id="837ef-172">For another version, 5.1.0.0, you create a secret for `5100-AppSecret`.</span></span> <span data-ttu-id="837ef-173">每個應用程式版本會將它自己的祕密值載入其設定為`AppSecret`、 清除關閉版本載入祕密。</span><span class="sxs-lookup"><span data-stu-id="837ef-173">Each app version loads its own secret value into its configuration as `AppSecret`, stripping off the version as it loads the secret.</span></span> <span data-ttu-id="837ef-174">範例的實作如下所示：</span><span class="sxs-lookup"><span data-stu-id="837ef-174">The sample's implementation is shown below:</span></span>
-
-[!code-csharp[Configuration builder](key-vault-configuration/samples/key-name-prefix-sample/2.x/Program.cs?name=snippet1&highlight=18)]
-
-[!code-csharp[PrefixKeyVaultSecretManager](key-vault-configuration/samples/key-name-prefix-sample/2.x/Startup.cs?name=snippet1)]
-
-<span data-ttu-id="837ef-175">`Load`逐一查看，找出有版本前置詞的保存庫祕密提供者演算法所呼叫方法。</span><span class="sxs-lookup"><span data-stu-id="837ef-175">The `Load` method is called by a provider algorithm that iterates through the vault secrets to find the ones that have the version prefix.</span></span> <span data-ttu-id="837ef-176">當版本的前置詞上有`Load`，此演算法會使用`GetKey`方法傳回的密碼名稱的組態名稱。</span><span class="sxs-lookup"><span data-stu-id="837ef-176">When a version prefix is found with `Load`, the algorithm uses the `GetKey` method to return the configuration name of the secret name.</span></span> <span data-ttu-id="837ef-177">它會除去版本前置詞，從 祕密的名稱，並傳回載入的祕密名稱的其餘部分，將應用程式設定成名稱 / 值組。</span><span class="sxs-lookup"><span data-stu-id="837ef-177">It strips off the version prefix from the secret's name and returns the rest of the secret name for loading into the app's configuration name-value pairs.</span></span>
-
-<span data-ttu-id="837ef-178">當您實作這種方法：</span><span class="sxs-lookup"><span data-stu-id="837ef-178">When you implement this approach:</span></span>
-
-1. <span data-ttu-id="837ef-179">載入的金鑰保存庫祕密。</span><span class="sxs-lookup"><span data-stu-id="837ef-179">The key vault secrets are loaded.</span></span>
-2. <span data-ttu-id="837ef-180">字串密碼`5000-AppSecret`會比對。</span><span class="sxs-lookup"><span data-stu-id="837ef-180">The string secret for `5000-AppSecret` is matched.</span></span>
-3. <span data-ttu-id="837ef-181">版本中， `5000` （使用 dash)，移除離開的索引鍵名稱從`AppSecret`祕密值載入應用程式的設定。</span><span class="sxs-lookup"><span data-stu-id="837ef-181">The version, `5000` (with the dash), is stripped off of the key name leaving `AppSecret` to load with the secret value into the app's configuration.</span></span>
-
-> [!NOTE]
-> <span data-ttu-id="837ef-182">您也可以提供您自己`KeyVaultClient`實作`AddAzureKeyVault`。</span><span class="sxs-lookup"><span data-stu-id="837ef-182">You can also provide your own `KeyVaultClient` implementation to `AddAzureKeyVault`.</span></span> <span data-ttu-id="837ef-183">提供自訂的用戶端，可讓您共用的用戶端的組態提供者與您的應用程式的其他部分之間的單一執行個體。</span><span class="sxs-lookup"><span data-stu-id="837ef-183">Supplying a custom client allows you to share a single instance of the client between the configuration provider and other parts of your app.</span></span>
-
-1. <span data-ttu-id="837ef-184">建立金鑰保存庫，並設定 Azure Active Directory (Azure AD) 應用程式中的指導方針[開始使用 Azure Key Vault](https://azure.microsoft.com/documentation/articles/key-vault-get-started/)。</span><span class="sxs-lookup"><span data-stu-id="837ef-184">Create a key vault and set up Azure Active Directory (Azure AD) for the app following the guidance in [Get started with Azure Key Vault](https://azure.microsoft.com/documentation/articles/key-vault-get-started/).</span></span>
-   * <span data-ttu-id="837ef-185">將密碼新增至金鑰保存庫使用[AzureRM 金鑰保存庫 PowerShell 模組](/powershell/module/azurerm.keyvault)苀[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureRM.KeyVault)，則[Azure Key Vault REST API](/rest/api/keyvault/)，或[Azure 入口網站](https://portal.azure.com/)。</span><span class="sxs-lookup"><span data-stu-id="837ef-185">Add secrets to the key vault using the [AzureRM Key Vault PowerShell Module](/powershell/module/azurerm.keyvault) available from the [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureRM.KeyVault), the [Azure Key Vault REST API](/rest/api/keyvault/), or the [Azure Portal](https://portal.azure.com/).</span></span> <span data-ttu-id="837ef-186">為建立祕密*手動*或是*憑證*祕密。</span><span class="sxs-lookup"><span data-stu-id="837ef-186">Secrets are created as either *Manual* or *Certificate* secrets.</span></span> <span data-ttu-id="837ef-187">*憑證*機密資料是應用程式和服務所使用的憑證，但不是支援的組態提供者。</span><span class="sxs-lookup"><span data-stu-id="837ef-187">*Certificate* secrets are certificates for use by apps and services but are not supported by the configuration provider.</span></span> <span data-ttu-id="837ef-188">您應該使用*手動*選項建立的組態提供者使用的名稱 / 值組祕密。</span><span class="sxs-lookup"><span data-stu-id="837ef-188">You should use the *Manual* option to create name-value pair secrets for use with the configuration provider.</span></span>
-     * <span data-ttu-id="837ef-189">階層式的值 （組態區段） 使用`--`（兩個連字號） 做為分隔符號。</span><span class="sxs-lookup"><span data-stu-id="837ef-189">Hierarchical values (configuration sections) use `--` (two dashes) as a separator.</span></span>
-     * <span data-ttu-id="837ef-190">建立兩個*手動*具有下列名稱 / 值組的祕密：</span><span class="sxs-lookup"><span data-stu-id="837ef-190">Create two *Manual* secrets with the following name-value pairs:</span></span>
-       * <span data-ttu-id="837ef-191">`5000-AppSecret`: `5.0.0.0_secret_value`</span><span class="sxs-lookup"><span data-stu-id="837ef-191">`5000-AppSecret`: `5.0.0.0_secret_value`</span></span>
-       * <span data-ttu-id="837ef-192">`5100-AppSecret`: `5.1.0.0_secret_value`</span><span class="sxs-lookup"><span data-stu-id="837ef-192">`5100-AppSecret`: `5.1.0.0_secret_value`</span></span>
-   * <span data-ttu-id="837ef-193">向 Azure Active Directory 中註冊範例應用程式。</span><span class="sxs-lookup"><span data-stu-id="837ef-193">Register the sample app with Azure Active Directory.</span></span>
-   * <span data-ttu-id="837ef-194">授權應用程式存取金鑰保存庫。</span><span class="sxs-lookup"><span data-stu-id="837ef-194">Authorize the app to access the key vault.</span></span> <span data-ttu-id="837ef-195">當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，授權應用程式存取金鑰保存庫中，提供`List`並`Get`祕密存取`-PermissionsToSecrets list,get`。</span><span class="sxs-lookup"><span data-stu-id="837ef-195">When you use the `Set-AzureRmKeyVaultAccessPolicy` PowerShell cmdlet to authorize the app to access the key vault, provide `List` and `Get` access to secrets with `-PermissionsToSecrets list,get`.</span></span>
-
-2. <span data-ttu-id="837ef-196">應用程式的更新*appsettings.json*的值的檔案`Vault`， `ClientId`，和`ClientSecret`。</span><span class="sxs-lookup"><span data-stu-id="837ef-196">Update the app's *appsettings.json* file with the values of `Vault`, `ClientId`, and `ClientSecret`.</span></span>
-3. <span data-ttu-id="837ef-197">執行範例應用程式，它會取得從其組態值`IConfigurationRoot`前置詞的祕密名稱同名。</span><span class="sxs-lookup"><span data-stu-id="837ef-197">Run the sample app, which obtains its configuration values from `IConfigurationRoot` with the same name as the prefixed secret name.</span></span> <span data-ttu-id="837ef-198">在此範例中，前置詞是應用程式的版本，您提供給`PrefixKeyVaultSecretManager`當您加入的 Azure Key Vault 組態提供者。</span><span class="sxs-lookup"><span data-stu-id="837ef-198">In this sample, the prefix is the app's version, which you provided to the `PrefixKeyVaultSecretManager` when you added the Azure Key Vault configuration provider.</span></span> <span data-ttu-id="837ef-199">值`AppSecret`取得`config["AppSecret"]`。</span><span class="sxs-lookup"><span data-stu-id="837ef-199">The value for `AppSecret` is obtained with `config["AppSecret"]`.</span></span> <span data-ttu-id="837ef-200">應用程式所產生的網頁顯示載入的值：</span><span class="sxs-lookup"><span data-stu-id="837ef-200">The webpage generated by the app shows the loaded value:</span></span>
-
-   ![瀏覽器視窗中顯示應用程式的版本時 version=5.0.0.0，透過 「 Azure 金鑰保存庫組態提供者載入祕密值](key-vault-configuration/_static/sample2-1.png)
-
-4. <span data-ttu-id="837ef-202">變更應用程式中的組件的專案檔版本`5.0.0.0`至`5.1.0.0`並再次執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="837ef-202">Change the version of the app assembly in the project file from `5.0.0.0` to `5.1.0.0` and run the app again.</span></span> <span data-ttu-id="837ef-203">這次，則傳回的祕密值是`5.1.0.0_secret_value`。</span><span class="sxs-lookup"><span data-stu-id="837ef-203">This time, the secret value returned is `5.1.0.0_secret_value`.</span></span> <span data-ttu-id="837ef-204">應用程式所產生的網頁顯示載入的值：</span><span class="sxs-lookup"><span data-stu-id="837ef-204">The webpage generated by the app shows the loaded value:</span></span>
-
-   ![瀏覽器視窗中顯示 5.1.0.0 應用程式的版本時，透過 「 Azure 金鑰保存庫組態提供者載入祕密值](key-vault-configuration/_static/sample2-2.png)
-
-## <a name="control-access-to-the-clientsecret"></a><span data-ttu-id="837ef-206">ClientSecret 控制存取</span><span class="sxs-lookup"><span data-stu-id="837ef-206">Control access to the ClientSecret</span></span>
-
-<span data-ttu-id="837ef-207">使用[Secret Manager 工具](xref:security/app-secrets)維護`ClientSecret`外部專案來源樹狀結構。</span><span class="sxs-lookup"><span data-stu-id="837ef-207">Use the [Secret Manager tool](xref:security/app-secrets) to maintain the `ClientSecret` outside of your project source tree.</span></span> <span data-ttu-id="837ef-208">使用 Secret Manager 中，您將應用程式祕密與特定的專案產生關聯並加以共用跨多個專案。</span><span class="sxs-lookup"><span data-stu-id="837ef-208">With Secret Manager, you associate app secrets with a specific project and share them across multiple projects.</span></span>
-
-<span data-ttu-id="837ef-209">在開發環境可支援憑證中的.NET Framework 應用程式時，您可以使用 X.509 憑證來驗證 Azure Key Vault。</span><span class="sxs-lookup"><span data-stu-id="837ef-209">When developing a .NET Framework app in an environment that supports certificates, you can authenticate to Azure Key Vault with an X.509 certificate.</span></span> <span data-ttu-id="837ef-210">X.509 憑證的私密金鑰是由 OS 管理。</span><span class="sxs-lookup"><span data-stu-id="837ef-210">The X.509 certificate's private key is managed by the OS.</span></span> <span data-ttu-id="837ef-211">如需詳細資訊，請參閱 <<c0> [ 使用而不是用戶端祕密憑證進行驗證](/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret)。</span><span class="sxs-lookup"><span data-stu-id="837ef-211">For more information, see [Authenticate with a Certificate instead of a Client Secret](/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret).</span></span> <span data-ttu-id="837ef-212">使用`AddAzureKeyVault`多載，接受`X509Certificate2`(`_env`在下列範例中：</span><span class="sxs-lookup"><span data-stu-id="837ef-212">Use the `AddAzureKeyVault` overload that accepts an `X509Certificate2` (`_env` in the following example :</span></span>
-
-```csharp
-var builtConfig = config.Build();
-
-var store = new X509Store(StoreLocation.CurrentUser);
-store.Open(OpenFlags.ReadOnly);
-var cert = store.Certificates
-    .Find(X509FindType.FindByThumbprint, 
-        config["CertificateThumbprint"], false);
-
-config.AddAzureKeyVault(
-    builtConfig["Vault"],
-    builtConfig["ClientId"],
-    cert.OfType<X509Certificate2>().Single(),
-    new EnvironmentSecretManager(context.HostingEnvironment.ApplicationName));
-
-store.Close();
-```
-
-## <a name="reload-secrets"></a><span data-ttu-id="837ef-213">重新載入祕密</span><span class="sxs-lookup"><span data-stu-id="837ef-213">Reload secrets</span></span>
-
-<span data-ttu-id="837ef-214">密碼會快取直到`IConfigurationRoot.Reload()`呼叫。</span><span class="sxs-lookup"><span data-stu-id="837ef-214">Secrets are cached until `IConfigurationRoot.Reload()` is called.</span></span> <span data-ttu-id="837ef-215">過期，停用，以及更新金鑰保存庫中的祕密未遵守應用程式，直到`Reload`執行。</span><span class="sxs-lookup"><span data-stu-id="837ef-215">Expired, disabled, and updated secrets in the key vault are not respected by the app until `Reload` is executed.</span></span>
+<span data-ttu-id="0c2c4-262">密碼會快取直到`IConfigurationRoot.Reload()`呼叫。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-262">Secrets are cached until `IConfigurationRoot.Reload()` is called.</span></span> <span data-ttu-id="0c2c4-263">過期，停用，以及更新金鑰保存庫中的祕密未遵守應用程式，直到`Reload`執行。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-263">Expired, disabled, and updated secrets in the key vault are not respected by the app until `Reload` is executed.</span></span>
 
 ```csharp
 Configuration.Reload();
 ```
 
-## <a name="disabled-and-expired-secrets"></a><span data-ttu-id="837ef-216">已停用和到期的祕密</span><span class="sxs-lookup"><span data-stu-id="837ef-216">Disabled and expired secrets</span></span>
+## <a name="disabled-and-expired-secrets"></a><span data-ttu-id="0c2c4-264">已停用和到期的祕密</span><span class="sxs-lookup"><span data-stu-id="0c2c4-264">Disabled and expired secrets</span></span>
 
-<span data-ttu-id="837ef-217">已停用及過期的密碼會擲回`KeyVaultClientException`。</span><span class="sxs-lookup"><span data-stu-id="837ef-217">Disabled and expired secrets throw a `KeyVaultClientException`.</span></span> <span data-ttu-id="837ef-218">若要防止您的應用程式擲回，取代您的應用程式或更新已停用/過期的祕密。</span><span class="sxs-lookup"><span data-stu-id="837ef-218">To prevent your app from throwing, replace your app or update the disabled/expired secret.</span></span>
+<span data-ttu-id="0c2c4-265">已停用及過期的密碼會擲回`KeyVaultClientException`。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-265">Disabled and expired secrets throw a `KeyVaultClientException`.</span></span> <span data-ttu-id="0c2c4-266">若要防止您的應用程式擲回，取代您的應用程式或更新已停用/過期的祕密。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-266">To prevent your app from throwing, replace your app or update the disabled/expired secret.</span></span>
 
-## <a name="troubleshoot"></a><span data-ttu-id="837ef-219">疑難排解</span><span class="sxs-lookup"><span data-stu-id="837ef-219">Troubleshoot</span></span>
+## <a name="troubleshoot"></a><span data-ttu-id="0c2c4-267">疑難排解</span><span class="sxs-lookup"><span data-stu-id="0c2c4-267">Troubleshoot</span></span>
 
-<span data-ttu-id="837ef-220">當應用程式無法載入組態使用的提供者時，錯誤訊息會寫入[ASP.NET Core 記錄基礎結構](xref:fundamentals/logging/index)。</span><span class="sxs-lookup"><span data-stu-id="837ef-220">When the app fails to load configuration using the provider, an error message is written to the [ASP.NET Core Logging infrastructure](xref:fundamentals/logging/index).</span></span> <span data-ttu-id="837ef-221">在下列情況會造成無法載入組態：</span><span class="sxs-lookup"><span data-stu-id="837ef-221">The following conditions will prevent configuration from loading:</span></span>
+<span data-ttu-id="0c2c4-268">當應用程式無法載入組態使用的提供者時，錯誤訊息會寫入[ASP.NET Core 記錄基礎結構](xref:fundamentals/logging/index)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-268">When the app fails to load configuration using the provider, an error message is written to the [ASP.NET Core Logging infrastructure](xref:fundamentals/logging/index).</span></span> <span data-ttu-id="0c2c4-269">在下列情況會造成無法載入組態：</span><span class="sxs-lookup"><span data-stu-id="0c2c4-269">The following conditions will prevent configuration from loading:</span></span>
 
-* <span data-ttu-id="837ef-222">應用程式未正確設定 Azure Active Directory 中。</span><span class="sxs-lookup"><span data-stu-id="837ef-222">The app isn't configured correctly in Azure Active Directory.</span></span>
-* <span data-ttu-id="837ef-223">金鑰保存庫不存在於 Azure 金鑰保存庫。</span><span class="sxs-lookup"><span data-stu-id="837ef-223">The key vault doesn't exist in Azure Key Vault.</span></span>
-* <span data-ttu-id="837ef-224">應用程式未獲授權存取金鑰保存庫。</span><span class="sxs-lookup"><span data-stu-id="837ef-224">The app isn't authorized to access the key vault.</span></span>
-* <span data-ttu-id="837ef-225">存取原則不包含`Get`和`List`權限。</span><span class="sxs-lookup"><span data-stu-id="837ef-225">The access policy doesn't include `Get` and `List` permissions.</span></span>
-* <span data-ttu-id="837ef-226">在金鑰保存庫中，設定資料 （名稱 / 值組） 錯誤命名為，遺漏，停用，或已過期。</span><span class="sxs-lookup"><span data-stu-id="837ef-226">In the key vault, the configuration data (name-value pair) is incorrectly named, missing, disabled, or expired.</span></span>
-* <span data-ttu-id="837ef-227">應用程式有錯誤的金鑰保存庫名稱 (`Vault`)，Azure AD 應用程式識別碼 (`ClientId`)，或 Azure AD 金鑰 (`ClientSecret`)。</span><span class="sxs-lookup"><span data-stu-id="837ef-227">The app has the wrong key vault name (`Vault`), Azure AD App Id (`ClientId`), or Azure AD Key (`ClientSecret`).</span></span>
-* <span data-ttu-id="837ef-228">Azure AD 金鑰 (`ClientSecret`) 已過期。</span><span class="sxs-lookup"><span data-stu-id="837ef-228">The Azure AD Key (`ClientSecret`) is expired.</span></span>
-* <span data-ttu-id="837ef-229">不正確的值，您想要載入的應用程式中設定金鑰 （名稱）。</span><span class="sxs-lookup"><span data-stu-id="837ef-229">The configuration key (name) is incorrect in the app for the value you're trying to load.</span></span>
+* <span data-ttu-id="0c2c4-270">應用程式未正確設定 Azure Active Directory 中。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-270">The app isn't configured correctly in Azure Active Directory.</span></span>
+* <span data-ttu-id="0c2c4-271">金鑰保存庫不存在於 Azure 金鑰保存庫。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-271">The key vault doesn't exist in Azure Key Vault.</span></span>
+* <span data-ttu-id="0c2c4-272">應用程式未獲授權存取金鑰保存庫。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-272">The app isn't authorized to access the key vault.</span></span>
+* <span data-ttu-id="0c2c4-273">存取原則不包含`Get`和`List`權限。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-273">The access policy doesn't include `Get` and `List` permissions.</span></span>
+* <span data-ttu-id="0c2c4-274">在金鑰保存庫中，設定資料 （名稱 / 值組） 錯誤命名為，遺漏，停用，或已過期。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-274">In the key vault, the configuration data (name-value pair) is incorrectly named, missing, disabled, or expired.</span></span>
+* <span data-ttu-id="0c2c4-275">應用程式有錯誤的金鑰保存庫名稱 (`Vault`)，Azure AD 應用程式識別碼 (`ClientId`)，或 Azure AD 金鑰 (`ClientSecret`)。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-275">The app has the wrong key vault name (`Vault`), Azure AD App Id (`ClientId`), or Azure AD Key (`ClientSecret`).</span></span>
+* <span data-ttu-id="0c2c4-276">Azure AD 金鑰 (`ClientSecret`) 已過期。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-276">The Azure AD Key (`ClientSecret`) is expired.</span></span>
+* <span data-ttu-id="0c2c4-277">不正確的值，您想要載入的應用程式中設定金鑰 （名稱）。</span><span class="sxs-lookup"><span data-stu-id="0c2c4-277">The configuration key (name) is incorrect in the app for the value you're trying to load.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="837ef-230">其他資源</span><span class="sxs-lookup"><span data-stu-id="837ef-230">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="0c2c4-278">其他資源</span><span class="sxs-lookup"><span data-stu-id="0c2c4-278">Additional resources</span></span>
 
 * <xref:fundamentals/configuration/index>
-* [<span data-ttu-id="837ef-231">Microsoft Azure： 金鑰保存庫</span><span class="sxs-lookup"><span data-stu-id="837ef-231">Microsoft Azure: Key Vault</span></span>](https://azure.microsoft.com/services/key-vault/)
-* [<span data-ttu-id="837ef-232">Microsoft Azure: Key Vault 文件</span><span class="sxs-lookup"><span data-stu-id="837ef-232">Microsoft Azure: Key Vault Documentation</span></span>](/azure/key-vault/)
-* [<span data-ttu-id="837ef-233">如何產生並傳輸受 HSM 保護金鑰的 Azure 金鑰保存庫</span><span class="sxs-lookup"><span data-stu-id="837ef-233">How to generate and transfer HSM-protected keys for Azure Key Vault</span></span>](/azure/key-vault/key-vault-hsm-protected-keys)
-* [<span data-ttu-id="837ef-234">KeyVaultClient 類別</span><span class="sxs-lookup"><span data-stu-id="837ef-234">KeyVaultClient Class</span></span>](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
+* [<span data-ttu-id="0c2c4-279">Microsoft Azure:金鑰保存庫</span><span class="sxs-lookup"><span data-stu-id="0c2c4-279">Microsoft Azure: Key Vault</span></span>](https://azure.microsoft.com/services/key-vault/)
+* [<span data-ttu-id="0c2c4-280">Microsoft Azure:Key Vault 文件</span><span class="sxs-lookup"><span data-stu-id="0c2c4-280">Microsoft Azure: Key Vault Documentation</span></span>](/azure/key-vault/)
+* [<span data-ttu-id="0c2c4-281">如何產生並傳輸受 HSM 保護金鑰的 Azure 金鑰保存庫</span><span class="sxs-lookup"><span data-stu-id="0c2c4-281">How to generate and transfer HSM-protected keys for Azure Key Vault</span></span>](/azure/key-vault/key-vault-hsm-protected-keys)
+* [<span data-ttu-id="0c2c4-282">KeyVaultClient 類別</span><span class="sxs-lookup"><span data-stu-id="0c2c4-282">KeyVaultClient Class</span></span>](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)

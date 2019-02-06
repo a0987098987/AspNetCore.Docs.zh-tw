@@ -61,7 +61,7 @@ ms.locfileid: "54341599"
 
 完成 [新增控制器] 對話方塊：
 
-* **模型類別：***Movie (MvcMovie.Models)*
+* **模型類別：** Movie (MvcMovie.Models) 
 * **資料內容類別：** 選取 **+** 圖示並新增預設的 **MvcMovie.Models.MvcMovieContext**
 
 ![新增資料內容](adding-model/_static/dc.png)

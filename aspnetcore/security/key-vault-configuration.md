@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/28/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 8e40c8308a692731e71fb8ebebfc64e606874290
-ms.sourcegitcommit: 98e9c7187772d4ddefe6d8e85d0d206749dbd2ef
+ms.openlocfilehash: d255321f6083747ce9b452e1efd4da5bc015bf64
+ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55737651"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55854428"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
 
@@ -31,7 +31,7 @@ ms.locfileid: "55737651"
 
 若要使用 Azure 金鑰保存庫的組態提供者，將新增的套件參考[Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/)封裝。
 
-若要採用 Azure 受控服務身分識別案例中，將新增的套件參考[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)封裝。
+採用[管理 Azure 資源的身分識別](/azure/active-directory/managed-identities-azure-resources/overview)案例中，新增的套件參考[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)封裝。
 
 > [!NOTE]
 > 在本文撰寫之際，最新穩定版本`Microsoft.Azure.Services.AppAuthentication`，版本`1.0.3`，可讓您[系統指派給受控身分識別](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka)。 支援*指派使用者給受控身分識別*位於`1.0.2-preview`封裝。 本主題示範如何使用系統管理的身分識別，並提供的範例應用程式使用的版本`1.0.3`的`Microsoft.Azure.Services.AppAuthentication`封裝。
@@ -40,8 +40,8 @@ ms.locfileid: "55737651"
 
 範例應用程式執行所決定的兩種模式之一`#define`陳述式，在頂端*Program.cs*檔案：
 
-* `Basic` &ndash; 示範如何使用 Azure 金鑰保存庫的應用程式識別碼和密碼 （用戶端密碼） 來存取儲存在金鑰保存庫中的祕密。 部署`Basic`版本的任何主機能夠為 ASP.NET Core 應用程式範例。
-* `Managed` &ndash; 示範如何使用 Azure[受控服務識別 (MSI)](/azure/active-directory/managed-identities-azure-resources/overview)驗證的應用程式至 Azure Key Vault 與 Azure AD 驗證不含認證儲存在應用程式的程式碼或組態。 當您可以使用 MSI 來進行驗證，不需要的 Azure AD 應用程式識別碼和密碼 （用戶端祕密）。 `Managed`範例版本必須部署至 Azure。
+* `Basic` &ndash; 示範如何使用 Azure 金鑰保存庫的應用程式識別碼和密碼 （用戶端密碼） 來存取儲存在金鑰保存庫中的祕密。 部署`Basic`版本的任何主機能夠為 ASP.NET Core 應用程式範例。 請依照下列中的指導方針[使用應用程式識別碼和非 Azure 代管應用程式的用戶端祕密](#use-application-id-and-client-secret-for-non-azure-hosted-apps)一節。
+* `Managed` &ndash; 示範如何使用[管理 Azure 資源的身分識別](/azure/active-directory/managed-identities-azure-resources/overview)驗證的應用程式至 Azure Key Vault 與 Azure AD 驗證不含認證儲存在應用程式的程式碼或組態。 當使用受管理的身分識別進行驗證，不需要的 Azure AD 應用程式識別碼和密碼 （用戶端祕密）。 `Managed`範例版本必須部署至 Azure。 請依照下列中的指導方針[適用於 Azure 資源使用受控身分識別](#use-managed-identities-for-azure-resources)一節。
 
 如需有關如何設定範例應用程式使用前置處理器指示詞 (`#define`)，請參閱<xref:index#preprocessor-directives-in-sample-code>。
 
@@ -111,12 +111,12 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "Section--SecretName" --value "secret_value_2_prod"
    ```
 
-## <a name="use-application-id-and-client-secret"></a>使用應用程式識別碼和用戶端祕密
+## <a name="use-application-id-and-client-secret-for-non-azure-hosted-apps"></a>使用非 Azure 代管應用程式的應用程式識別碼和用戶端祕密
 
-設定 Azure AD、 Azure 金鑰保存庫和應用程式，用以向 key vault，當應用程式裝載在 Azure 之外的應用程式識別碼和密碼 （用戶端祕密）。
+設定 Azure AD、 Azure 金鑰保存庫和應用程式使用的應用程式識別碼和密碼 （用戶端密碼） 來驗證 key vault**當應用程式裝載在 Azure 之外**。
 
 > [!NOTE]
-> 雖然在 Azure 中託管的應用程式支援使用應用程式識別碼和密碼 （用戶端秘密），我們建議您使用[受控服務識別 (MSI) 提供者](#use-the-managed-service-identity-msi-provider)裝載在 Azure 中的應用程式時。 MSI 不需要將認證儲存在應用程式或其組態，因此被視為通常更安全的方法。
+> 雖然在 Azure 中託管的應用程式支援使用應用程式識別碼和密碼 （用戶端秘密），我們建議您使用[管理 Azure 資源的身分識別](#use-managed-identities-for-azure-resources)裝載在 Azure 中的應用程式時。 受管理的身分識別會需要將認證儲存在應用程式或其組態，因此被視為通常更安全的方法。
 
 範例應用程式可使用的應用程式識別碼和密碼 （用戶端密碼） 時`#define`陳述式，在頂端*Program.cs*檔案設定為`Basic`。
 
@@ -155,11 +155,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 當您執行應用程式時，網頁就會顯示載入的祕密值。 使用，在開發環境中，載入祕密值`_dev`後置詞。 在生產環境中，值則是使用載入`_prod`後置詞。
 
-## <a name="use-the-managed-service-identity-msi-provider"></a>使用受控的服務識別 (MSI) 提供者
+## <a name="use-managed-identities-for-azure-resources"></a>適用於 Azure 資源的使用受管理身分識別
 
-部署至 Azure 的應用程式可以充分利用的受控服務識別 (MSI)，可讓使用 Azure Key Vault 進行驗證的應用程式使用 Azure AD 驗證，而不需要認證 （應用程式識別碼和用戶端密碼/密碼） 儲存在應用程式。
+**應用程式部署至 Azure**可以充分善用[管理適用於 Azure 資源的身分識別](/azure/active-directory/managed-identities-azure-resources/overview)，可讓應用程式，以向 Azure Key Vault 使用不含認證的 Azure AD 驗證 (應用程式識別碼和Password/Client 密碼) 儲存在應用程式。
 
-範例應用程式會使用 MSI 時`#define`陳述式，在頂端*Program.cs*檔案設定為`Managed`。
+範例應用程式會使用適用於 Azure 資源的受管理身分識別時`#define`陳述式，在頂端*Program.cs*檔案設定為`Managed`。
 
 輸入應用程式的保存庫名稱*appsettings.json*檔案。 範例應用程式不需要應用程式識別碼和密碼 （用戶端秘密），當設定為`Managed`版本，因此您可以忽略這些組態項目。 應用程式部署至 Azure，以及 Azure 驗證應用程式存取只使用 保存庫名稱儲存在 Azure Key Vault *appsettings.json*檔案。
 
@@ -177,7 +177,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 範例應用程式：
 
-* 建立的執行個體`AzureServiceTokenProvider`類別，而不需要的連接字串。 當未提供的連接字串時，提供者會嘗試從 MSI 取得存取權杖。
+* 建立的執行個體`AzureServiceTokenProvider`類別，而不需要的連接字串。 當未提供的連接字串時，提供者會嘗試從適用於 Azure 資源的受管理身分識別取得存取權杖。
 * 新`KeyVaultClient`會透過`AzureServiceTokenProvider`執行個體權杖回呼。
 * `KeyVaultClient`的預設實作會使用執行個體`IKeyVaultSecretManager`載入所有祕密的值，會取代雙連字號 (`--`) 加上冒號 (`:`) 中索引鍵名稱。
 

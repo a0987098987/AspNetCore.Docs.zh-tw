@@ -114,30 +114,34 @@ DocFX 需要：
 
 * 請從 [DocFX 版本](https://github.com/dotnet/docfx/releases)下載並解壓縮 *docfx.zip*。
 * 將 DocFX 新增至您的 PATH。
-* 在命令列視窗中，巡覽至包含 *docfx.json* 檔案的適當資料夾 (若是 ASP.NET 內容則為 *aspnet*；若是 ASP.NET Core 內容則為 *aspnetcore*)，然後執行下列命令：
+* 在命令殼層中，巡覽至包含 *docfx.json* 檔案的資料夾 (若是 ASP.NET 內容則為 *aspnet*；若是 ASP.NET Core 內容則為 *aspnetcore*)，然後執行下列命令：
 
-  ```
+  ```console
   docfx --serve
   ```
-    
-* 在瀏覽器中，巡覽至 `http://localhost:8080`。
+* 在瀏覽器中，巡覽至 `http://localhost:8080/group1-dest/`。
 
 ### <a name="mono-instructions"></a>Mono 指示
 
 * 透過 Homebrew 安裝 Mono：
 
-  ```
+  ```console
   brew install mono
   ```
 * 下載[最新版的 DocFX](https://github.com/dotnet/docfx/releases)。
 * 將壓縮檔解壓縮到 *$HOME/bin/docfx*。
 * 在 bash shell 中建立 **docfx** 的別名配對。 第一個別名是用來建置文件。 第二個別名是用來建置及提供文件。
 
-  ```
+  ```console
   alias docfx='mono $HOME/bin/docfx/docfx.exe'
   alias docfx-serve='mono $HOME/bin/docfx/docfx.exe --serve'
   ```
-* 從存放庫的根目錄執行 `docfx` 以建置網站。 執行 `docfx-serve` 以在 `http://localhost:8080` 檢視網站。
+* 在命令殼層中，巡覽至包含 *docfx.json* 檔案的資料夾 (若是 ASP.NET 內容則為 *aspnet*；若是 ASP.NET Core 內容則為 *aspnetcore*)，然後執行下列命令，透過其別名組建和提供文件：
+
+  ```console
+  docfx-serve
+  ```
+* 在瀏覽器中，巡覽至 `http://localhost:8080/group1-dest/`。
 
 ## <a name="voice-and-tone"></a>語態和語氣
 

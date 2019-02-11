@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 892fb8898c78a1645c766544715a8256462207c6
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: 5ae96b213a19464045e1d0b1a76f8eb81089dc5b
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249382"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236337"
 ---
 # <a name="use-web-api-conventions"></a>使用 Web API 慣例
 
@@ -58,7 +58,7 @@ ASP.NET Core MVC 2.2 和更新版本在 `Microsoft.AspNetCore.Mvc.DefaultApiConv
 
     [!code-csharp[](conventions/sample/Controllers/ContactsConventionController.cs?name=snippet_ApiConventionTypeAttribute&highlight=2)]
 
-1. 套用至組件的 `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` &mdash; 會將指定的慣例類型套用至目前組件中的所有控制器。 建議您將組件層級屬性套用至 `Startup` 類別。
+1. 套用至組件的 `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` &mdash; 會將指定的慣例類型套用至目前組件中的所有控制器。 建議您套用 *Startup.cs* 檔案中的組件層級屬性。
 
     在下列範例中，會將一組預設的慣例套用至組件中的所有控制器：
 

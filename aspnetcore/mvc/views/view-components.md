@@ -3,14 +3,14 @@ title: 檢視 ASP.NET Core 中的元件
 author: rick-anderson
 description: 了解如何檢視 ASP.NET Core 中使用的元件，以及如何將這些元件新增到應用程式。
 ms.author: riande
-ms.date: 12/03/2018
+ms.date: 1/30/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: 156db610d99eaf8a8042a4c7c85267d521a20fd4
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: d0e528fcf9e20afee98e74fbc09c67b81e123e95
+ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836697"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55428391"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
@@ -75,9 +75,11 @@ ms.locfileid: "54836697"
 
 執行階段會搜尋下列路徑中的檢視：
 
-* /Pages/Components/{檢視元件名稱}/{檢視名稱}
 * /Views/{控制器名稱}/Components/{檢視元件名稱}/{檢視名稱}
 * /Views/Shared/Components/{檢視元件名稱}/{檢視名稱}
+* /Pages/Shared/Components/{檢視元件名稱}/{檢視名稱}
+
+搜尋路徑適用於使用控制器 + 檢視和 Razor Pages 的專案。
 
 檢視元件的預設檢視名稱是 *Default*，這表示您的檢視檔案通常會命名為 *Default.cshtml*。 建立檢視元件結果時，或呼叫 `View` 方法時，可以指定不同的檢視名稱。
 
@@ -91,9 +93,9 @@ ms.locfileid: "54836697"
 @await Component.InvokeAsync("Name of view component", {Anonymous Type Containing Parameters})
 ```
 
-參數將傳遞給 `InvokeAsync` 方法。 本文中所開發的 `PriorityList` 檢視元件是透過 *Views/Todo/Index.cshtml* 檢視檔案所叫用。 在下列範例中，`InvokeAsync` 方法是使用兩個參數所呼叫：
+參數將傳遞給 `InvokeAsync` 方法。 本文中所開發的 `PriorityList` 檢視元件是透過 *Views/ToDO/Index.cshtml* 檢視檔案所叫用。 在下列範例中，`InvokeAsync` 方法是使用兩個參數所呼叫：
 
-[!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
+[!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexFinal.cshtml?range=35)]
 
 ::: moniker range=">= aspnetcore-1.1"
 
@@ -101,9 +103,9 @@ ms.locfileid: "54836697"
 
 針對 ASP.NET Core 1.1 和更新版本，您可以叫用檢視元件作為[標籤協助程式](xref:mvc/views/tag-helpers/intro)：
 
-[!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexTagHelper.cshtml?range=37-38)]
+[!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexTagHelper.cshtml?range=37-38)]
 
-標籤協助程式依照 Pascal 命名法大小寫慣例的類別和方法參數會轉譯成其[小寫 Kebab](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101)。 用來叫用檢視元件的標籤協助程式會使用 `<vc></vc>` 項目。 檢視元件指定如下：
+標籤協助程式依照 Pascal 命名法大小寫慣例的類別和方法參數會轉譯成其 [Kebab 字體](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101)。 用來叫用檢視元件的標籤協助程式會使用 `<vc></vc>` 項目。 檢視元件指定如下：
 
 ```cshtml
 <vc:[view-component-name]
@@ -122,13 +124,13 @@ ms.locfileid: "54836697"
 
 本教學課程中使用的 `InvokeAsync` 方法：
 
-[!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
+[!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexFinal.cshtml?range=35)]
 
 在標籤 (tag) 協助程式標籤 (markup) 中：
 
-[!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexTagHelper.cshtml?range=37-38)]
+[!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexTagHelper.cshtml?range=37-38)]
 
-在上述範例中，`PriorityList` 檢視元件會變成 `priority-list`。 檢視元件的參數會以小寫 Kebab 形式傳遞為屬性。
+在上述範例中，`PriorityList` 檢視元件會變成 `priority-list`。 檢視元件的參數會以 Kebab 字體傳遞為屬性。
 
 ::: moniker-end
 
@@ -142,7 +144,7 @@ ms.locfileid: "54836697"
 
 ## <a name="walkthrough-creating-a-simple-view-component"></a>逐步解說：建立簡單的檢視元件
 
-[下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/view-components/sample)、建置和測試起始程式碼。 它是具有 `Todo` 控制器的簡單專案，而此控制器顯示 *Todo* 項目清單。
+[下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/view-components/sample)、建置和測試起始程式碼。 它是具有 `ToDo` 控制器的簡單專案，而此控制器顯示 *ToDO* 項目清單。
 
 ![ToDos 清單](view-components/_static/2dos.png)
 
@@ -175,14 +177,14 @@ ms.locfileid: "54836697"
 * 建立 *Views/Shared/Components/PriorityList* 資料夾。 此資料夾名稱必須符合檢視元件類別的名稱，或去掉尾碼的類別名稱 (如果我們遵循慣例，並在類別名稱中使用 *ViewComponent* 尾碼)。 如果您已使用 `ViewComponent` 屬性，則類別名稱需要符合屬性指定。
 
 * 建立 *Views/Shared/Components/PriorityList/Default.cshtml* Razor 檢視：[!code-cshtml[](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
-    
-   Razor 檢視採用 `TodoItem` 清單，並加以顯示。 如果檢視元件 `InvokeAsync` 方法未傳遞檢視名稱 (如我們的範例所示)，則依照慣例會使用 *Default* 作為檢視名稱。 在教學課程稍後，我將示範如何傳遞檢視的名稱。 若要覆寫特定控制器的預設樣式，請在控制器特定檢視資料夾中新增檢視 (例如 *Views/Todo/Components/PriorityList/Default.cshtml*)。
-    
-    如果檢視元件是控制器特有的，則可以將它新增至控制器特定資料夾 (*Views/Todo/Components/PriorityList/Default.cshtml*)。
 
-* 將包含優先順序清單元件呼叫的 `div` 新增至 *Views/Todo/index.cshtml* 檔案底端：
+   Razor 檢視採用 `TodoItem` 清單，並加以顯示。 如果檢視元件 `InvokeAsync` 方法未傳遞檢視名稱 (如我們的範例所示)，則依照慣例會使用 *Default* 作為檢視名稱。 在教學課程稍後，我將示範如何傳遞檢視的名稱。 若要覆寫特定控制器的預設樣式，請在控制器特定檢視資料夾中新增檢視 (例如 *Views/ToDO/Components/PriorityList/Default.cshtml*)。
 
-    [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml?range=34-38)]
+    如果檢視元件是控制器特有的，則可以將它新增至控制器特定資料夾 (*Views/ToDO/Components/PriorityList/Default.cshtml*)。
+
+* 將包含優先順序清單元件呼叫的 `div` 新增至 *Views/ToDO/index.cshtml* 檔案底端：
+
+    [!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexFirst.cshtml?range=34-38)]
 
 `@await Component.InvokeAsync` 標記顯示呼叫檢視元件的語法。 第一個引數是我們想要叫用或呼叫之元件的名稱。 後續參數會傳遞至元件。 `InvokeAsync` 可以採用任意數目的引數。
 
@@ -206,11 +208,11 @@ ms.locfileid: "54836697"
 
 [!code-cshtml[](../../mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml?highlight=3)]
 
-更新 *Views/TodoList/Index.cshtml*：
+更新 *Views/ToDO/Index.cshtml*：
 
-<!-- Views/TodoList/Index.cshtml is never imported, so change to test tutorial -->
+<!-- Views/ToDo/Index.cshtml is never imported, so change to test tutorial -->
 
-[!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
+[!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexFinal.cshtml?range=35)]
 
 執行應用程式，並驗證 PVC 檢視。
 
@@ -221,7 +223,7 @@ ms.locfileid: "54836697"
 ### <a name="examine-the-view-path"></a>檢查檢視路徑
 
 * 將優先順序參數變更為 3 或更小，以不傳回優先順序檢視。
-* 將 *Views/Todo/Components/PriorityList/Default.cshtml* 暫時重新命名為 *1Default.cshtml*。
+* 將 *Views/ToDO/Components/PriorityList/Default.cshtml* 暫時重新命名為 *1Default.cshtml*。
 * 測試應用程式，您會收到下列錯誤：
 
    ```
@@ -232,8 +234,8 @@ ms.locfileid: "54836697"
    EnsureSuccessful
    ```
 
-* 將 *Views/Todo/Components/PriorityList/1Default.cshtml* 複製至 *Views/Shared/Components/PriorityList/Default.cshtml*。
-* 將某個標記新增至 *Shared* Todo 檢視元件檢視，指出檢視來自 *Shared* 資料夾。
+* 將 *Views/ToDO/Components/PriorityList/1Default.cshtml* 複製至 *Views/Shared/Components/PriorityList/Default.cshtml*。
+* 將某個標記新增至 *Shared* ToDO 檢視元件檢視，指出檢視來自 *Shared* 資料夾。
 * 測試 **Shared** 元件檢視。
 
 ![含 Shared 元件檢視的 ToDo 輸出](view-components/_static/shared.png)
@@ -246,7 +248,7 @@ ms.locfileid: "54836697"
 
 將 `using` 陳述式新增至 Razor 檢視檔案，並使用 `nameof` 運算子：
 
-[!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml?range=1-6,35-)]
+[!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexNameof.cshtml?range=1-6,35-)]
 
 ## <a name="perform-synchronous-work"></a>執行同步工作
 

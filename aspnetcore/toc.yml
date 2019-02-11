@@ -312,6 +312,8 @@ items:
       href: /azure/azure-signalr/signalr-overview
     - uid: signalr/redis-backplane
       name: Redis 後擋板
+    - uid: signalr/background-services
+      name: 具備背景服務的 SignalR
   - uid: signalr/configuration
     name: Configuration
   - uid: signalr/authn-and-authz
@@ -444,7 +446,7 @@ items:
       name: 常見問題集
     - uid: razor-components/get-started
       name: 開始使用
-    - uid: tutorials/first-blazor-app
+    - uid: tutorials/first-razor-components-app
       name: 建置您的第一個應用程式
     - uid: razor-components/components
       name: 元件
@@ -745,7 +747,7 @@ items:
   - uid: security/gdpr
     name: EU 一般資料保護規定 (GDPR) 支援
   - uid: security/key-vault-configuration
-    name: Azure Key Vault 設定提供者
+    name: Azure Key Vault 組態提供者
   - uid: security/anti-request-forgery
     name: 防偽要求
   - uid: security/preventing-open-redirects
@@ -810,11 +812,10 @@ items:
     name: 使用 LoggerMessage 記錄
   - uid: tutorials/dotnet-watch
     name: 使用檔案監看員
-    items:
-    - uid: fundamentals/middleware/extensibility
-      name: Factory 式中介軟體
-    - uid: fundamentals/middleware/extensibility-third-party-container
-      name: 使用協力廠商容器的 Factory 式中介軟體
+  - uid: fundamentals/middleware/extensibility
+    name: Factory 式中介軟體
+  - uid: fundamentals/middleware/extensibility-third-party-container
+    name: 使用協力廠商容器的 Factory 式中介軟體
 - name: 移轉
   items:
   - uid: migration/22-to-30
@@ -853,9 +854,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.1
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 75c0220d1dac2fa2a51efd075e05cfd1e5070c8c
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: ebe88d54a391dfe44e6fda02028f9103fceb2ef8
+ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667800"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55854363"

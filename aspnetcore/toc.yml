@@ -442,8 +442,6 @@ items:
     items:
     - uid: razor-components/index
       name: 總覽
-    - uid: razor-components/faq
-      name: 常見問題集
     - uid: razor-components/get-started
       name: 開始使用
     - uid: tutorials/first-razor-components-app
@@ -851,12 +849,12 @@ items:
   - uid: migration/logging-nonaspnetcore
     name: 記錄 (非 ASP.NET Core)
 - name: 應用程式開發介面參考
-  href: /dotnet/api/?view=aspnetcore-2.1
+  href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: ebe88d54a391dfe44e6fda02028f9103fceb2ef8
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
+ms.openlocfilehash: 202bb46df6692e84e8abcefbd333abf3a3fafb7f
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854363"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103133"

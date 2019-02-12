@@ -3400,7 +3400,7 @@ items:
   href: visual-studio/overview/2017/index.md
   items:
   - name: 將解決方案的建置效能最佳化
-    href: uid:visual-studio/overview/2017/optimize-build-perf
+    href: visual-studio/overview/2017/optimize-build-perf.md
 - name: Visual Studio 2013
   href: visual-studio/overview/2013/index.md
   items:
@@ -3810,9 +3810,9 @@ items:
     href: whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012.md
 - name: 應用程式開發介面參考
   href: api-ref.md
-ms.openlocfilehash: 32bc0de99f07ad72d4b09dd29ac3f316609b0c69
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: 62f2efd95bb9712d56740a685659106eda21ace0
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667826"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103185"

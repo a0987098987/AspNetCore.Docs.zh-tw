@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何快取 ASP.NET Core 中的資料和記憶體。
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/15/2018
+ms.date: 02/11/2019
 uid: performance/caching/memory
-ms.openlocfilehash: 54b4029362c6b26254cb08397ef2e9131f6291d4
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9a7727ad41a05f39d74877af3c8f2e3f7a620c7d
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207247"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103068"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -33,7 +33,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 ::: moniker-end
 
-記憶體中快取可以儲存任何物件;分散式快取介面僅限於`byte[]`。
+記憶體中快取可以儲存任何物件;分散式快取介面僅限於`byte[]`。 記憶體中和分散式快取存放區快取項目做為索引鍵 / 值組。
 
 ## <a name="systemruntimecachingmemorycache"></a>System.Runtime.Caching/MemoryCache
 
@@ -97,7 +97,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 ![索引檢視，其中顯示兩個不同的時間](memory/_static/time.png)
 
-下列程式碼會使用[GetOrCreate](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__)並[GetOrCreateAsync](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___)快取資料。 
+下列程式碼會使用[GetOrCreate](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__)並[GetOrCreateAsync](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___)快取資料。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet2&highlight=3-7,14-19)]
 
@@ -105,7 +105,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_gct)]
 
-請參閱[IMemoryCache 方法](/dotnet/api/microsoft.extensions.caching.memory.imemorycache)並[CacheExtensions 方法](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions)如需快取方法的描述。
+<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*> <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*>，並[取得](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.get#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_)擴充方法一部分[CacheExtensions](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions)擴充的功能的類別<xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>。 請參閱[IMemoryCache 方法](/dotnet/api/microsoft.extensions.caching.memory.imemorycache)並[CacheExtensions 方法](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions)如需其他快取方法的描述。
 
 ## <a name="memorycacheentryoptions"></a>MemoryCacheEntryOptions
 

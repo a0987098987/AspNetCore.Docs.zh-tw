@@ -5,14 +5,14 @@ description: 了解如何使用 Azure 金鑰保存庫的組態提供者設定應
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 02/08/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: d255321f6083747ce9b452e1efd4da5bc015bf64
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
+ms.openlocfilehash: f70389c86420d81e284ecc863ac8386f726ed2cf
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854428"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103107"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
 
@@ -271,8 +271,8 @@ var cert = store.Certificates
         config["CertificateThumbprint"], false);
 
 config.AddAzureKeyVault(
-    builtConfig["Vault"],
-    builtConfig["ClientId"],
+    builtConfig["KeyVaultName"],
+    builtConfig["AzureADApplicationId"],
     cert.OfType<X509Certificate2>().Single(),
     new EnvironmentSecretManager(context.HostingEnvironment.ApplicationName));
 
@@ -342,8 +342,8 @@ Configuration.Reload();
 * 應用程式未獲授權存取金鑰保存庫。
 * 存取原則不包含`Get`和`List`權限。
 * 在金鑰保存庫中，設定資料 （名稱 / 值組） 錯誤命名為，遺漏，停用，或已過期。
-* 應用程式有錯誤的金鑰保存庫名稱 (`Vault`)，Azure AD 應用程式識別碼 (`ClientId`)，或 Azure AD 金鑰 (`ClientSecret`)。
-* Azure AD 金鑰 (`ClientSecret`) 已過期。
+* 應用程式有錯誤的金鑰保存庫名稱 (`KeyVaultName`)，Azure AD 應用程式識別碼 (`AzureADApplicationId`)，或 Azure AD 密碼 （用戶端祕密） (`AzureADPassword`)。
+* Azure AD 密碼 （用戶端祕密） (`AzureADPassword`) 已過期。
 * 不正確的值，您想要載入的應用程式中設定金鑰 （名稱）。
 
 ## <a name="additional-resources"></a>其他資源

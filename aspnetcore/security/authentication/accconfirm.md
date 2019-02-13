@@ -3,14 +3,14 @@ title: 帳戶確認和 ASP.NET Core 中的密碼復原
 author: rick-anderson
 description: 了解如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。
 ms.author: riande
-ms.date: 7/11/2018
+ms.date: 2/11/2019
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 0dc9907f9f54c8a0daf2e05a3769897e5145935f
-ms.sourcegitcommit: e418cb9cddeb3de06fa0cb4fdb5529da03ff6d63
+ms.openlocfilehash: 77d7b209d57f9ee44f158798ff780ce85c87aaf2
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "54444138"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56159404"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
@@ -41,7 +41,7 @@ ms.locfileid: "54444138"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 * 在 Visual Studio 中，建立新**Web 應用程式**專案，命名為**WebPWrecover**。
-* 選取  **ASP.NET Core 2.1**。
+* 選取 **ASP.NET Core 2.1**。
 * 保留預設值**驗證**設為**不需要驗證**。 下一個步驟中加入驗證。
 
 在下一個步驟：
@@ -166,7 +166,7 @@ dotnet add package SendGrid
 
 將下列程式碼加入`ConfigureServices`方法中的*Startup.cs*檔案：
 
-* 新增`EmailSender`作為單一服務。
+* 新增`EmailSender`為暫時性的服務。
 * 註冊`AuthMessageSenderOptions`組態執行個體。
 
 [!code-csharp[](accconfirm/sample/WebPWrecover21/Startup.cs?name=snippet2&highlight=12-99)]
@@ -195,7 +195,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 * 請檢查您的帳戶確認連結的電子郵件。 請參閱[偵錯電子郵件](#debug)如果您沒有收到電子郵件。
 * 按一下連結，以確認您的電子郵件。
-* 登入您的電子郵件和密碼。
+* 使用您的電子郵件和密碼登入。
 * 登出。
 
 ### <a name="view-the-manage-page"></a>檢視 [管理] 頁面
@@ -213,7 +213,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 * 如果您的登入，請選取**登出**。
 * 選取 **登入**連結，然後選取**忘記密碼？** 連結。
 * 輸入您用來註冊帳戶的電子郵件。
-* 會傳送具有重設密碼連結的電子郵件。 請檢查您的電子郵件，然後按一下 重設密碼連結。 已成功重設您的密碼之後，您可以登入您的電子郵件和新密碼。
+* 會傳送具有重設密碼連結的電子郵件。 請檢查您的電子郵件，然後按一下 重設密碼連結。 已成功重設您的密碼之後，您可以使用您的電子郵件和新密碼登入。
 
 <a name="debug"></a>
 

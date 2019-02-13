@@ -5,12 +5,12 @@ description: 深入了解資料保護的金鑰管理和 ASP.NET Core 中的存�
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: beff17dd81143db02a0cbc79fa7cb3a6a4deeda6
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 2f022a4c7519485fe629ce47c27d214c8c27d5bc
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095095"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56159207"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>資料保護的金鑰管理和 ASP.NET Core 中的存留期
 
@@ -26,6 +26,13 @@ ms.locfileid: "39095095"
    * 各部署位置，例如預備和生產位置，不會共用金鑰環。 當您交換部署位置，例如交換預備環境或生產環境，或使用 A 之間 / B 測試、 使用資料保護的任何應用程式將無法解密儲存的資料使用前一個位置內的金鑰環。 這會導致正在登入的使用者複製應用程式使用標準的 ASP.NET Core cookie 驗證，因為它使用資料保護來保護其 cookie。 如果您想要的位置無關的金鑰環，請使用外部金鑰環提供者，例如 Azure Blob 儲存體、 Azure Key Vault，SQL 存放區中，或 Redis 快取。
 
 1. 如果使用者設定檔可用時，會保存索引鍵 *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys*資料夾。 如果作業系統是 Windows，在待用期間使用 DPAPI 加密金鑰。
+
+   應用程式集區的 [setProfileEnvironment 屬性](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)也必須啟用。 `setProfileEnvironment` 的預設值為 `true`。 在某些情況下 (例如 Windows OS)，`setProfileEnvironment` 會設為 `false`。 如果金鑰並未如預期地儲存在使用者設定檔目錄中：
+
+   1. 瀏覽至 *%windir%/system32/inetsrv/config* 資料夾。
+   1. 開啟 *applicationHost.config* 檔案。
+   1. 找到 `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>` 項目。
+   1. 確認 `setProfileEnvironment` 屬性不存在 (其預設值為 `true`)，或明確地將屬性值設為 `true`。
 
 1. 如果應用程式裝載在 IIS 中，金鑰會保存到特殊的登錄機碼，只是背景工作處理序帳戶列入 Acl 中的 HKLM 登錄中。 在待用期間使用 DPAPI 加密金鑰。
 

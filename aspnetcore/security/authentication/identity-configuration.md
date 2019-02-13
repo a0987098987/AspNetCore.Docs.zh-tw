@@ -3,14 +3,14 @@ title: 設定 ASP.NET Core 身分識別
 author: AdrienTorris
 description: 了解 ASP.NET Core 身分識別的預設值，並了解如何設定身分識別屬性，以使用自訂的值。
 ms.author: riande
-ms.date: 08/14/2018
+ms.date: 02/11/2019
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 02441cd28c2a99eda7b50ed54f4437d4b52ca5d9
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 3213f669cbfccdcda7cc7c0142b8101e696678e6
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911932"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56159509"
 ---
 # <a name="configure-aspnet-core-identity"></a>設定 ASP.NET Core 身分識別
 
@@ -175,3 +175,23 @@ ASP.NET Core 身分識別設定，例如密碼原則、 鎖定和 cookie 組態�
 ::: moniker-end
 
 如需詳細資訊，請參閱 < [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions)。
+
+## <a name="password-hasher-options"></a>密碼雜湊程式選項
+
+<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions> 取得並設定密碼雜湊的選項。
+
+| 選項 | 描述 |
+| ------ | ----------- |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | 雜湊的新密碼時所用的相容性模式。 預設值為 <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>。 雜湊的密碼，並呼叫的第一個位元組*格式標記*，指定用來雜湊密碼的雜湊演算法的版本。 當驗證的密碼雜湊，<xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*>方法會選取正確的演算法為基礎的第一個位元組。 用戶端是能夠進行驗證而不論其中演算法版本，用來雜湊密碼。 設定相容性模式會影響的雜湊*新的密碼*。 |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> | 使用雜湊密碼使用 PBKDF2 時的反覆運算次數。 此值時才會使用<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode>設為<xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>。 值必須是正整數，預設值為`10000`。 |
+
+在下列範例中，<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount>設定為`12000`在`Startup.ConfigureServices`:
+
+```csharp
+// using Microsoft.AspNetCore.Identity;
+
+services.Configure<PasswordHasherOptions>(option =>
+{
+    option.IterationCount = 12000;
+});
+```

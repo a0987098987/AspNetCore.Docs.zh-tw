@@ -416,28 +416,6 @@ items:
       href: /azure/vs-storage-aspnet5-getting-started-tables/
 - name: 用戶端開發
   items:
-  - uid: client-side/index
-    name: 總覽
-  - uid: client-side/using-gulp
-    name: Gulp
-  - uid: client-side/using-grunt
-    name: Grunt
-  - name: LibMan
-    items:
-    - uid: client-side/libman/index
-      name: 總覽
-    - uid: client-side/libman/libman-cli
-      name: CLI
-    - uid: client-side/libman/libman-vs
-      name: Visual Studio
-  - uid: client-side/bower
-    name: Bower
-  - uid: client-side/less-sass-fa
-    name: LESS、Sass 與 Font Awesome
-  - uid: client-side/bundling-and-minification
-    name: 配套並縮小
-  - uid: client-side/using-browserlink
-    name: 瀏覽器連結
   - name: Razor 元件
     items:
     - uid: razor-components/index
@@ -470,8 +448,36 @@ items:
         name: 設定連結器
   - name: 單頁應用程式
     items:
-    - uid: spa/index
-      name: 總覽
+    - name: Blazor
+      items:
+      - uid: spa/blazor/index
+        name: 總覽
+      - uid: spa/blazor/get-started
+        name: 開始使用
+      - uid: tutorials/first-razor-components-app
+        name: 建置您的第一個應用程式
+      - uid: razor-components/components
+        name: 元件
+      - uid: razor-components/class-libraries
+        name: 元件程式庫
+      - uid: razor-components/layouts
+        name: 版面配置
+      - uid: razor-components/dependency-injection
+        name: 相依性插入
+      - uid: razor-components/routing
+        name: 路由
+      - uid: razor-components/javascript-interop
+        name: JavaScript Interop
+      - uid: razor-components/debug
+        name: 偵錯
+      - uid: razor-components/hosting-models
+        name: 裝載模型
+      - name: 裝載和部署
+        items:
+        - uid: host-and-deploy/razor-components/index
+          name: 總覽
+        - uid: host-and-deploy/razor-components/configure-linker
+          name: 設定連結器
     - uid: spa/angular
       name: Angular
     - uid: spa/react
@@ -480,6 +486,26 @@ items:
       name: 使用 Redux 的 React
     - uid: client-side/spa-services
       name: JavaScriptServices
+  - name: LibMan
+    items:
+    - uid: client-side/libman/index
+      name: 總覽
+    - uid: client-side/libman/libman-cli
+      name: CLI
+    - uid: client-side/libman/libman-vs
+      name: Visual Studio
+  - uid: client-side/using-gulp
+    name: Gulp
+  - uid: client-side/using-grunt
+    name: Grunt
+  - uid: client-side/bower
+    name: Bower
+  - uid: client-side/less-sass-fa
+    name: LESS、Sass 與 Font Awesome
+  - uid: client-side/bundling-and-minification
+    name: 配套並縮小
+  - uid: client-side/using-browserlink
+    name: 瀏覽器連結
 - name: 裝載及部署
   items:
   - uid: host-and-deploy/index
@@ -852,9 +878,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 202bb46df6692e84e8abcefbd333abf3a3fafb7f
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 7c9baf2a9e3a800ff9abfcb757ffde039d49a9a4
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103133"
+ms.locfileid: "56159538"

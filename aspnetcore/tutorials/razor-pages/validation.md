@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 87171beb7c214b1370d4d4144a79cb6d2c56098f
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 99b1073fe025ee8693d9fe833402d245f78a603d
+ms.sourcegitcommit: e7276930515216338a33c4a03c0d7a87fc718ffe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862365"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55293503"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -142,7 +142,7 @@ public DateTime ReleaseDate { get; set; }
 
 如需部署至 Azure 的資訊，請參閱[教學課程：使用 SQL Database 在 Azure 中建置 ASP.NET 應用程式](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)。 這些指示適用於 ASP.NET 應用程式，而不是 ASP.NET Core 應用程式，但是步驟都相同。
 
-感謝您看完這份 Razor Pages 簡介。 感謝您提供意見反應。 完成本教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
+感謝您看完這份 Razor Pages 簡介。 完成本教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
 
 ## <a name="additional-resources"></a>其他資源
 

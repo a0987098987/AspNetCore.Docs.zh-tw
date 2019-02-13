@@ -6,10 +6,10 @@ ms.author: riande
 ms.date: 7/11/2018
 uid: security/authentication/accconfirm
 ms.openlocfilehash: 0dc9907f9f54c8a0daf2e05a3769897e5145935f
-ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
+ms.sourcegitcommit: e418cb9cddeb3de06fa0cb4fdb5529da03ff6d63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2019
+ms.lasthandoff: 02/07/2019
 ms.locfileid: "54444138"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原

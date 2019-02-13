@@ -6,10 +6,10 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: migration/identity
 ms.openlocfilehash: 72e62e78e37325ec47d54abbc11a875ae87fb63a
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.sourcegitcommit: b72bbc9ae91e4bd37c9ea9b2d09ebf47afb25dd7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
+ms.lasthandoff: 02/11/2019
 ms.locfileid: "41832061"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core"></a>移轉至 ASP.NET Core 的驗證和身分識別

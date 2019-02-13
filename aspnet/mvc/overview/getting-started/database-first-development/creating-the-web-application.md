@@ -1,26 +1,26 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/creating-the-web-application
 title: 教學課程：建立 Web 應用程式和 ef 資料模型資料庫的第一個使用 ASP.NET MVC
-description: 本文著重於建立 web 應用程式，並產生您的資料庫資料表為基礎的資料模型。
+description: 本教學課程著重於建立 web 應用程式，並產生您的資料庫資料表為基礎的資料模型。
 author: Rick-Anderson
 ms.author: riande
-ms.date: 01/23/2019
+ms.date: 01/28/2019
 ms.topic: tutorial
 ms.assetid: bc8f2bd5-ff57-4dcd-8418-a5bd517d8953
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/creating-the-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 095d355866c9ab8fba3759f3e05e2a521992f3d6
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: dced55386c3f810e406c5c2b3f0071b45e3b2dbd
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889765"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236363"
 ---
 # <a name="tutorial-create-the-the-web-application-and-data-models-for-ef-database-first-with-aspnet-mvc"></a>教學課程：建立 Web 應用程式和 ef 資料模型資料庫的第一個使用 ASP.NET MVC
 
  您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本系列教學課程會示範如何自動產生程式碼，可讓使用者顯示、 編輯、 建立及刪除位於資料庫資料表中的資料。 產生的程式碼會對應至資料庫資料表中的資料行。
 
-本文著重於建立 web 應用程式，並產生您的資料庫資料表為基礎的資料模型。
+本教學課程著重於建立 web 應用程式，並產生您的資料庫資料表為基礎的資料模型。
 
 在本教學課程中，您已：
 
@@ -38,7 +38,7 @@ ms.locfileid: "54889765"
 
 ![建立專案](creating-the-web-application/_static/image1.png)
 
-按一下 [確定 **Deploying Office Solutions**]。
+按一下 [確定] 。
 
 在 [新增 ASP.NET 專案] 視窗中，選取**MVC**範本。 您可以清除**雲端中的主機**選項現在，因為您將部署更新版本的雲端應用程式。 按一下 **確定**建立應用程式。
 
@@ -68,7 +68,7 @@ ms.locfileid: "54889765"
 
 ![設定連接屬性](creating-the-web-application/_static/image8.png)
 
-按一下 [確定 **Deploying Office Solutions**]。
+按一下 [確定] 。
 
 現在會顯示正確的連接屬性。 您可以在 Web.Config 檔案中使用連接的預設名稱。
 
@@ -102,6 +102,6 @@ ms.locfileid: "54889765"
 > * 建立 ASP.NET web 應用程式
 > * 產生模型
 
-前往下一篇文章，以了解如何建立會產生資料模型為基礎的程式碼。
+請前進到下一個教學課程，以了解如何建立會產生資料模型為基礎的程式碼。
 > [!div class="nextstepaction"]
 > [產生檢視](generating-views.md)

@@ -4,16 +4,16 @@ title: 啟用 ASP.NET Web API 2 中的跨原始來源要求 |Microsoft Docs
 author: MikeWasson
 description: 示範如何在 ASP.NET Web API 中支援跨原始資源共用 (CORS)。
 ms.author: riande
-ms.date: 10/10/2018
+ms.date: 01/29/2019
 ms.assetid: 9b265a5a-6a70-4a82-adce-2d7c56ae8bdd
 msc.legacyurl: /web-api/overview/security/enabling-cross-origin-requests-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 118b779c89edb874f7f928315d1094738be5f097
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: 97a0027194b019b09e220493dcb593e682027fe3
+ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348516"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55428443"
 ---
 <a name="enable-cross-origin-requests-in-aspnet-web-api-2"></a>啟用 ASP.NET Web API 2 中的跨原始來源要求
 ====================
@@ -67,7 +67,7 @@ ms.locfileid: "49348516"
 
    [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample1.cs)]
 
-4. 您可以在本機執行應用程式，或部署至 Azure。 （在本教學課程的螢幕擷取畫面，應用程式會部署至 Azure App Service Web Apps。）若要確認 web API 會正常運作，巡覽至`http://hostname/api/test/`，其中*hostname*是您用來部署應用程式的網域。 回應文字，您應該會看到&quot;取得： 測試訊息&quot;。
+4. 您可以在本機執行應用程式，或部署至 Azure。 （在本教學課程的螢幕擷取畫面，應用程式會部署至 Azure App Service Web Apps。）若要確認 web API 會正常運作，巡覽至`http://hostname/api/test/`，其中*hostname*是您用來部署應用程式的網域。 您應該會看到回應文字，&quot;取得：測試訊息&quot;。
 
    ![Web 瀏覽器顯示測試訊息](enabling-cross-origin-requests-in-web-api/_static/image4.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "49348516"
 ![在瀏覽器中的 'Try' 時發生錯誤](enabling-cross-origin-requests-in-web-api/_static/image7.png)
 
 > [!NOTE]
-> 如果您觀察在工具中的 HTTP 流量要[Fiddler](http://www.telerik.com/fiddler)，您會看到瀏覽器會傳送 GET 要求，並要求成功，但 AJAX 呼叫會傳回錯誤。 請務必了解同源原則不會防止從瀏覽器*傳送*要求。 相反地，它會防止應用程式看到*回應*。
+> 如果您觀察在工具中的 HTTP 流量要[Fiddler](https://www.telerik.com/fiddler)，您會看到瀏覽器會傳送 GET 要求，並要求成功，但 AJAX 呼叫會傳回錯誤。 請務必了解同源原則不會防止從瀏覽器*傳送*要求。 相反地，它會防止應用程式看到*回應*。
 
 ![Fiddler web 偵錯工具顯示 web 要求](enabling-cross-origin-requests-in-web-api/_static/image8.png)
 
@@ -156,14 +156,30 @@ CORS 規格引進了數個新的 HTTP 標頭啟用跨源要求。 如果瀏覽�
 
 事前要求使用 HTTP OPTIONS; 方法。 它包含兩個特殊標頭：
 
-- 存取控制-要求的方法： 將實際的要求使用 HTTP 方法。
-- 存取控制-要求的標頭： 要求標頭的清單，*應用程式*實際要求上設定。 （同樣地，這不包括瀏覽器設定的標頭。）
+- 存取控制-要求的方法：將會用於實際要求的 HTTP 方法。
+- 存取控制-access-control-request-headers 標：要求標頭的清單，*應用程式*實際要求上設定。 （同樣地，這不包括瀏覽器設定的標頭。）
 
 以下是範例回應，假設伺服器允許的要求：
 
 [!code-console[Main](enabling-cross-origin-requests-in-web-api/samples/sample9.cmd?highlight=6-7)]
 
 此回應包含存取控制-允許-方法標頭，其中列出允許的方法，並選擇性地存取控制-允許-標頭的標頭，它會列出允許的標頭。 如果預檢要求成功，瀏覽器會傳送實際要求，如先前所述。
+
+工具通常用來測試與預檢 OPTIONS 要求的端點 (例如[Fiddler](https://www.telerik.com/fiddler)並[Postman](https://www.getpostman.com/)) 不要傳送必要的 「 選項 」 標頭，根據預設。 確認`Access-Control-Request-Method`和`Access-Control-Request-Headers`與要求一起傳送的標頭和選項的標頭達到透過 IIS 應用程式。
+
+若要設定 IIS 以允許 ASP.NET 應用程式來接收和處理選項要求，請將下列組態新增至應用程式的*web.config*檔案中`<system.webServer><handlers>`區段：
+
+```xml
+<system.webServer>
+  <handlers>
+    <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
+    <remove name="OPTIONSVerbHandler" />
+    <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" />
+  </handlers>
+</system.webServer>
+```
+
+移除`OPTIONSVerbHandler`防止 IIS 處理選項要求。 取代為`ExtensionlessUrlHandler-Integrated-4.0`允許連到應用程式，因為預設模組登錄只允許使用無副檔名 Url 的 GET、 HEAD、 POST 和偵錯要求的 OPTIONS 要求。
 
 ## <a name="scope-rules-for-enablecors"></a>[EnableCors] 的範圍規則
 
@@ -229,7 +245,7 @@ CORS 規格引進了數個新的 HTTP 標頭啟用跨源要求。 如果瀏覽�
 - 內容語言
 - Content-Type
 - 到期
-- 上次修改
+- Last-Modified
 - Pragma
 
 CORS 規格會呼叫這些[簡單的回應標頭](https://dvcs.w3.org/hg/cors/raw-file/tip/Overview.html#simple-response-header)。 若要讓其他標頭可供應用程式，設定*exposedHeaders*的參數 **[EnableCors]**。

@@ -5,12 +5,12 @@ description: 將檢視新增至簡易的 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 03/04/2017
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: f241a19c8821019f327fb160f01fe01eca53c5d0
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 32eddb233a8a6b9b8f480926673d15d568ce6ede
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836895"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236428"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
 
@@ -93,7 +93,7 @@ ms.locfileid: "54836895"
 
 下列標記顯示醒目提示的變更：
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Shared/_Layout.cshtml?highlight=6,24)]
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Shared/_Layout.cshtml?highlight=6,24,51)]
 
 在上述標記中，由於此應用程式未使用[區域](xref:mvc/controllers/areas)，因此已省略 `asp-area` [錨點標籤協助程式屬性](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)。
 

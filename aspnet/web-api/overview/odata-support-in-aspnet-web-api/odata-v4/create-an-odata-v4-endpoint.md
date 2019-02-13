@@ -4,20 +4,18 @@ title: 建立 OData v4 端點使用 ASP.NET Web API 2.2 |Microsoft Docs
 author: MikeWasson
 description: 開放式資料通訊協定 (OData) 是網站的資料存取通訊協定。 OData 提供統一的方式來查詢及管理透過 CRUD 作業的資料集...
 ms.author: riande
-ms.date: 06/24/2014
+ms.date: 01/23/2019
 ms.assetid: 1e1927c0-ded1-4752-80fd-a146628d2f09
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint
 msc.type: authoredcontent
-ms.openlocfilehash: 48c1a78c96cb0ebfa0b053dfef84e76433112650
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: c6a4aa4eb563fd77d5afd9248175d5f5b7984d19
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795414"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667566"
 ---
-<a name="create-an-odata-v4-endpoint-using-aspnet-web-api-22"></a>建立 OData v4 端點使用 ASP.NET Web API 2.2
-====================
-藉由[Mike Wasson](https://github.com/MikeWasson)
+# <a name="create-an-odata-v4-endpoint-using-aspnet-web-api"></a>建立使用 ASP.NET Web API OData v4 端點 
 
 > 開放式資料通訊協定 (OData) 是網站的資料存取通訊協定。 OData 提供統一的方式來查詢及操作資料集，透過 CRUD 作業 （建立、 讀取、 更新和刪除）。
 >
@@ -27,11 +25,11 @@ ms.locfileid: "48795414"
 >
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
 >
-> - Web API 2.2
+> - Web API 5.2
 > - OData v4
-> - Visual Studio 2013 (下載 Visual Studio 2017[此處](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017))
+> - Visual Studio 2017 (下載 Visual Studio 2017[此處](https://visualstudio.microsoft.com/downloads/))
 > - Entity Framework 6
-> - .NET 4.5
+> - .NET 4.7.2
 >
 > ## <a name="tutorial-versions"></a>教學課程的版本
 >
@@ -41,13 +39,17 @@ ms.locfileid: "48795414"
 
 在 Visual Studio 中，從**檔案**功能表上，選取**新增** &gt; **專案**。
 
-依序展開**已安裝** &gt; **範本** &gt; **Visual C#** &gt; **Web**，然後選取  **ASP.NET Web 應用程式**範本。 將專案命名為&quot;ProductService&quot;。
+依序展開**已安裝** &gt; **視覺C#**  &gt; **Web**，然後選取**ASP.NET Web 應用程式 (.NET Framework)** 範本。 將專案命名為&quot;ProductService&quot;。
 
-[![](create-an-odata-v4-endpoint/_static/image2.png)](create-an-odata-v4-endpoint/_static/image1.png)
+[![](create-an-odata-v4-endpoint/_static/image7.png)](create-an-odata-v4-endpoint/_static/image7.png)
 
-在 **新的專案**對話方塊中，選取**空白**範本。 在下&quot;新增的資料夾和核心參考...&quot;，按一下**Web API**。 按一下 [確定 **Deploying Office Solutions**]。
+選取 [確定]。
 
-[![](create-an-odata-v4-endpoint/_static/image4.png)](create-an-odata-v4-endpoint/_static/image3.png)
+
+
+[![](create-an-odata-v4-endpoint/_static/image8.png)](create-an-odata-v4-endpoint/_static/image8.png)
+
+選取 **空**範本。 底下**新增的資料夾和核心參考：**，選取**Web API**。 選取 [確定]。
 
 ## <a name="install-the-odata-packages"></a>安裝 OData 的套件
 
@@ -138,7 +140,7 @@ A*控制器*是處理 HTTP 要求的類別。 您建立個別的控制器，在�
 
 這是控制器的起點。 接下來，我們將新增的所有 CRUD 作業的方法。
 
-## <a name="querying-the-entity-set"></a>查詢的實體集
+## <a name="query-the-entity-set"></a>查詢的實體集
 
 新增下列方法來`ProductsController`。
 
@@ -148,13 +150,13 @@ A*控制器*是處理 HTTP 要求的類別。 您建立個別的控制器，在�
 
 **[EnableQuery]** 屬性可讓用戶端使用查詢選項，例如 $filter、 $sort 和 $page 修改查詢。 如需詳細資訊，請參閱 <<c0> [ 支援的 OData 查詢選項](../supporting-odata-query-options.md)。
 
-## <a name="adding-an-entity-to-the-entity-set"></a>將實體新增至實體集
+## <a name="add-an-entity-to-the-entity-set"></a>將實體新增至實體集
 
 若要讓用戶端將新的產品加入至資料庫，將新增下列方法加入`ProductsController`。
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample10.cs)]
 
-## <a name="updating-an-entity"></a>更新實體
+## <a name="update-an-entity"></a>更新實體
 
 OData 支援兩個不同的語意，來更新實體、 PATCH 和 PUT。
 
@@ -169,7 +171,7 @@ PUT 的缺點是用戶端必須在實體中，包括未變更的值傳送的所�
 
 修補程式，在控制器會使用**差異&lt;T&gt;** 來追蹤變更的類型。
 
-## <a name="deleting-an-entity"></a>刪除實體
+## <a name="delete-an-entity"></a>刪除實體
 
 若要啟用從資料庫刪除一項產品的用戶端，新增下列方法加入`ProductsController`。
 

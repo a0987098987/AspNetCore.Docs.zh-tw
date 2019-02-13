@@ -56,7 +56,7 @@ ms.locfileid: "54837750"
 
 您也可以以滑鼠右鍵按一下*Index.cshtml*檔案，然後選取**Page Inspector 中的檢視。** 請參閱[Page Inspector 教學課程](../../views/using-page-inspector-in-aspnet-mvc.md)如需詳細資訊。
 
-或者，執行應用程式，並瀏覽至`HelloWorld`控制站 (`http://localhost:xxxx/HelloWorld`)。 `Index`在控制器方法並沒有進行太多工作; 它只會執行陳述式`return View()`，其所指定方法應使用檢視範本檔案來呈現至瀏覽器的回應。 因為您沒有明確指定要使用的檢視範本檔案的名稱，預設使用 ASP.NET MVC *Index.cshtml*檢視中的檔案*\Views\HelloWorld*資料夾。 下圖顯示的字串&quot;Hello from our View Template ！&quot;硬式編碼在檢視中。
+或者，執行應用程式，並瀏覽至`HelloWorld`控制站 (`http://localhost:xxxx/HelloWorld`)。 `Index`在控制器方法並沒有進行太多工作; 它只會執行陳述式`return View()`，其所指定方法應使用檢視範本檔案來呈現至瀏覽器的回應。 因為您沒有明確指定要使用的檢視範本檔案的名稱，預設使用 ASP.NET MVC *Index.cshtml* 檢視中的檔案 *\Views\HelloWorld* 資料夾。 下圖顯示的字串&quot;Hello from our View Template ！&quot;硬式編碼在檢視中。
 
 ![](adding-a-view/_static/image6.png)
 

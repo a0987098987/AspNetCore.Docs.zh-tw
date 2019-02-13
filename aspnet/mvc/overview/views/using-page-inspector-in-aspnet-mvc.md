@@ -8,12 +8,12 @@ ms.date: 08/15/2012
 ms.assetid: c7e4e1ab-4932-4614-9f53-aaf7c706d498
 msc.legacyurl: /mvc/overview/views/using-page-inspector-in-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: c465b0bac9af90a892d6e62a327ba36977d08d4a
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 0dea8b077878139a3f513cb51447b86a93fe55b8
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832027"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236532"
 ---
 <a name="using-page-inspector-in-aspnet-mvc"></a>在 ASP.NET MVC 中使用 Page Inspector
 ====================
@@ -59,7 +59,7 @@ Page Inspector 隨附於 Microsoft Web Developer Tools。 1.3 為最新版本。
 
 ![新的 ASP.NET MVC 應用程式](using-page-inspector-in-aspnet-mvc/_static/image2.png)
 
-按一下 [確定 **Deploying Office Solutions**]。
+按一下 [確定] 。
 
 在 **新的 ASP.NET MVC 4 專案**對話方塊中，選取**網際網路應用程式**。 離開**Razor**做為預設檢視引擎。
 
@@ -81,7 +81,7 @@ Page Inspector 隨附於 Microsoft Web Developer Tools。 1.3 為最新版本。
 
 ![Page Inspector 中檢視 Index.cshtml](using-page-inspector-in-aspnet-mvc/_static/image8.png)
 
-根據預設，Page Inspector 停駐成為視窗左側的 Visual Studio 環境。 如果想要的話，您可以將它固定到其他位置，或取消停駐視窗。 請參閱[如何： 排列和停駐 Windows](https://msdn.microsoft.com/library/z4y0hsax.aspx)。
+根據預設，Page Inspector 停駐成為視窗左側的 Visual Studio 環境。 如果想要的話，您可以將它固定到其他位置，或取消停駐視窗。 請參閱[如何：排列和固定視窗](https://msdn.microsoft.com/library/z4y0hsax.aspx)。
 
 Page Inspector 視窗的上方窗格會顯示目前的網頁瀏覽器視窗中。 下方窗格會顯示 HTML 標記，以及可讓您檢查頁面的不同層面的某些索引標籤中的頁面。 下方窗格大致[F12 開發人員工具](https://msdn.microsoft.com/ie/aa740478)Internet Explorer 中。
 
@@ -240,7 +240,7 @@ Page Inspector 立即偵測到的變更*Site.css*檔案，並在 更新列會顯
 > SPA 範本需要[ASP.NET 和 Web 工具 2012.2](https://go.microsoft.com/fwlink/?LinkId=282650)更新。
 
 
-在 Visual Studio 中，選擇**檔案** &gt; **新專案**。 在左側，展開**Visual C#**，選取**Web**，然後選取**ASP.NET MVC4 Web 應用程式**。 按一下 [確定 **Deploying Office Solutions**]。
+在 Visual Studio 中，選擇**檔案** &gt; **新專案**。 在左側，展開**Visual C#**，選取**Web**，然後選取**ASP.NET MVC4 Web 應用程式**。 按一下 [確定] 。
 
 在 **新的 ASP.NET MVC 4 專案**對話方塊中，選取**單一頁面應用程式**。
 

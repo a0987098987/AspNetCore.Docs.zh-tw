@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: 2852ca93c62e706e9a5203625822c2fb954fd2b8
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: da6eeeb51f5d0fc2ad69978688ad1c4ca4d63dab
+ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54835605"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55854337"
 ---
 # <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR MessagePack 中樞通訊協定
 
@@ -70,7 +70,7 @@ var hubConnection = new HubConnectionBuilder()
 
 ### <a name="javascript-client"></a>JavaScript 用戶端
 
-會提供 JavaScript 用戶端的 MessagePack 支援`@aspnet/signalr-protocol-msgpack`NPM 套件。
+會提供 JavaScript 用戶端的 MessagePack 支援`@aspnet/signalr-protocol-msgpack`npm 套件。
 
 ```console
 npm install @aspnet/signalr-protocol-msgpack

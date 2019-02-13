@@ -8,12 +8,12 @@ ms.date: 05/22/2015
 ms.assetid: df001954-18bf-4550-b03d-43911a0ea186
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 2cf2274a5592e1f073e62c9b8a789fbb61e23a51
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 31fd35ac63f3eb31d824e1710833ad83a0852ac9
+ms.sourcegitcommit: a91e8dd2f4b788114c8bc834507277f4b5e8d6c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48576372"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55712259"
 ---
 <a name="search"></a>搜尋
 ====================
@@ -126,7 +126,7 @@ Visual Studio 2013 都有一項不錯的改進時顯示和編輯檢視檔案。 
 
 [!code-csharp[Main](adding-search/samples/sample13.cs)]
 
-如先前所述，不執行查詢上的資料基底直到電影清單逐一 (這會在檢視中，在後`Index`動作方法傳回)。
+如先前所述，查詢是不在資料庫上執行之前的電影清單逐一 (這會在檢視中，在後`Index`動作方法傳回)。
 
 ## <a name="adding-markup-to-the-index-view-to-support-search-by-genre"></a>將標記新增至 [索引] 檢視，以支援依內容類型搜尋
 

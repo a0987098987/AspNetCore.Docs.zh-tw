@@ -4,22 +4,20 @@ title: 外部驗證服務與 ASP.NET Web API (C#) |Microsoft Docs
 author: rmcmurray
 description: 描述如何使用 ASP.NET Web API 中的外部驗證服務。
 ms.author: riande
-ms.date: 06/26/2013
+ms.date: 01/28/2019
 ms.assetid: 3bb8eb15-b518-44f5-a67d-a27e051aedc6
 msc.legacyurl: /web-api/overview/security/external-authentication-services
 msc.type: authoredcontent
-ms.openlocfilehash: 0b23baac7eca0297e063c682a8ae199f9543d75e
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: de9b64e6c582059ec66ab352f60773f50af7b1ff
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834230"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667852"
 ---
-<a name="external-authentication-services-with-aspnet-web-api-c"></a>外部驗證服務與 ASP.NET Web API (C#)
-====================
-藉由[Robert McMurray](https://github.com/rmcmurray)
+# <a name="external-authentication-services-with-aspnet-web-api-c"></a>外部驗證服務與 ASP.NET Web API (C#)
 
-展開 visual Studio 2013 和 ASP.NET 4.5.1 的安全性選項[單一頁面應用程式](../../../single-page-application/index.md)(SPA) 及[Web API](../../index.md)服務外部驗證服務，其中包含數個整合OAuth/OpenID 和社交媒體驗證服務： Microsoft 帳戶、 Twitter、 Facebook 和 Google。
+展開的安全性選項 visual Studio 2017 和 ASP.NET 4.7.2[單一頁面應用程式](../../../single-page-application/index.md)(SPA) 及[Web API](../../index.md)服務外部驗證服務，其中包含數個整合OAuth/OpenID 和社交媒體驗證服務：Microsoft 帳戶、 Twitter、 Facebook 和 Google。  
 
 ### <a name="in-this-walkthrough"></a>在本逐步解說
 
@@ -34,21 +32,19 @@ ms.locfileid: "41834230"
     - [結合外部驗證服務](#COMBINE)
     - [設定 IIS Express 要使用完整網域名稱](#FQDN)
     - [濆爧髍孮 Microsoft 驗證您的應用程式設定](#OBTAIN)
-    - [選擇性︰ 停用本機註冊](#DISABLE)
+    - [選擇性：停用本機註冊](#DISABLE)
 
 ### <a name="prerequisites"></a>必要條件
 
 若要依照本逐步解說中的範例，您需要具備下列項目：
 
-- Visual Studio 2013
-- 至少一個下列的外部驗證服務帳戶：
+- Visual Studio 2017
+- 開發人員使用的應用程式識別碼和祕密金鑰的其中一個下列的社交媒體驗證服務帳戶：
 
-    - Google 使用者帳戶
-    - 開發人員使用的應用程式識別碼和祕密金鑰的其中一個下列的社交媒體驗證服務帳戶：
-
-        - Microsoft 帳戶 ([https://go.microsoft.com/fwlink/?LinkID=144070](https://go.microsoft.com/fwlink/?LinkID=144070))
-        - Twitter ([https://dev.twitter.com/](https://dev.twitter.com/))
-        - Facebook ([https://developers.facebook.com/](https://developers.facebook.com/))
+  - Microsoft 帳戶 ([https://go.microsoft.com/fwlink/?LinkID=144070](https://go.microsoft.com/fwlink/?LinkID=144070))
+  - Twitter ([https://dev.twitter.com/](https://dev.twitter.com/))
+  - Facebook ([https://developers.facebook.com/](https://developers.facebook.com/))
+  - Google ([https://developers.google.com/](https://developers.google.com))
 
 <a id="USING"></a>
 ## <a name="using-external-authentication-services"></a>使用外部驗證服務
@@ -65,43 +61,41 @@ ms.locfileid: "41834230"
 
 [![](external-authentication-services/_static/image4.png "按一下以展開映像")](external-authentication-services/_static/image3.png)
 
-Visual Studio 2013 和 ASP.NET 4.5.1 與外部驗證服務的整合更輕鬆地進行開發人員藉由提供內建的整合，如以下驗證服務：
+Visual Studio 2017 和 ASP.NET 4.7.2 與外部驗證服務的整合更輕鬆地進行開發人員藉由提供內建的整合，如以下驗證服務：
 
 - Facebook
 - Google
 - Microsoft 帳戶 （Windows Live ID 帳戶）
 - Twitter
 
-在本逐步解說的範例將示範如何使用 Visual Studio 2013 中使用隨附的新 ASP.NET Web 應用程式範本就可以將它設定每個支援的外部驗證服務。
+在本逐步解說的範例將示範如何使用 Visual Studio 2017 中隨附的新 ASP.NET Web 應用程式範本中設定每個支援的外部驗證服務。
 
 > [!NOTE]
 > 如有必要，您可能需要將您的 FQDN 新增到您的外部驗證服務的設定。 這項需求根據安全性限制，某些外部驗證服務，而這需要您的應用程式設定中的 FQDN，以符合您的用戶端會使用的 FQDN。 （這個步驟很大的每個外部驗證服務，您必須參考文件，每個外部驗證服務，以查看這是否必要，以及如何設定這些設定）。如果您要設定 IIS Express 來測試此環境中使用 FQDN，請參閱[若要使用完整網域名稱設定 IIS Express](#FQDN)稍後在本逐步解說的區段。
 
 
 <a id="SAMPLE"></a>
-## <a name="creating-a-sample-web-application"></a>建立範例 Web 應用程式
+## <a name="create-a-sample-web-application"></a>建立範例 Web 應用程式
 
 下列步驟將引導您完成使用 ASP.NET Web 應用程式範本，建立範例應用程式，您將使用此範例應用程式的每個外部驗證服務，稍後在本逐步解說。
 
-啟動 Visual Studio 2013 選取**新的專案**從 [開始] 頁面。 或從**檔案**功能表上，選取**新增**，然後**專案**。
+啟動 Visual Studio 2017，然後選取**新的專案**從 [開始] 頁面。 或從**檔案**功能表上，選取**新增**，然後**專案**。
 
-[![](external-authentication-services/_static/image6.png "按一下以展開映像")](external-authentication-services/_static/image5.png)
+<!-- [![](external-authentication-services/_static/image6.png "Click to Expand the Image")](external-authentication-services/_static/image5.png) -->
 
-當**新的專案**對話方塊隨即出現，請選取**已安裝****範本**展開**Visual C#**。 底下**Visual C#**，選取**Web**。 在專案範本清單中，選取**ASP.NET Web 應用程式**。 輸入您專案的名稱，然後按一下**確定**。
+當**新的專案**對話方塊隨即出現，請選取**已安裝**展開**Visual C#** 。 底下**Visual C#**，選取**Web**。 在專案範本清單中，選取**ASP.NET Web 應用程式 (.Net Framework)**。 輸入您專案的名稱，然後按一下**確定**。
 
-[![](external-authentication-services/_static/image8.png "按一下以展開映像")](external-authentication-services/_static/image7.png)
+[![](external-authentication-services/_static/image71.png "按一下以展開映像")](external-authentication-services/_static/image71.png)
 
-當**新的 ASP.NET 專案**顯示，請選取**SPA**範本，然後按一下**建立的專案**。
+當**新的 ASP.NET 專案**顯示，請選取**單一頁面應用程式**範本，然後按一下**建立的專案**。
 
-[![](external-authentication-services/_static/image10.png "按一下以展開映像")](external-authentication-services/_static/image9.png)
+[![](external-authentication-services/_static/image72.png "按一下以展開映像")](external-authentication-services/_static/image72.png)
 
-Visual studio 2013 的等候建立您的專案。
+等候與 Visual Studio 2017 建立您的專案。
 
-[![](external-authentication-services/_static/image12.png "按一下以展開映像")](external-authentication-services/_static/image11.png)
+<!-- [![](external-authentication-services/_static/image12.png "Click to Expand the Image")](external-authentication-services/_static/image11.png) -->
 
-當 Visual Studio 2013 已完成建立您的專案時，開啟*Startup.Auth.cs*檔案，它位於**應用程式\_啟動**資料夾。
-
-[![](external-authentication-services/_static/image14.png "按一下以展開映像")](external-authentication-services/_static/image13.png)
+當 Visual Studio 2017 完成建立專案時，開啟*Startup.Auth.cs*檔案，它位於**應用程式\_啟動**資料夾。
 
 當您第一次建立專案時，沒有任何外部驗證服務中啟用*Startup.Auth.cs*檔案; 下圖說明您的程式碼可能類似，反白顯示位置區段會啟用外部驗證服務和任何相關的設定，才能使用您的 ASP.NET 應用程式中的 Microsoft 帳戶、 Twitter、 Facebook 或 Google 驗證：
 
@@ -109,9 +103,9 @@ Visual studio 2013 的等候建立您的專案。
 
 當您按 F5 以建置和偵錯您的 web 應用程式時，它會顯示登入畫面，您會看到尚未定義任何外部驗證服務。
 
-[![](external-authentication-services/_static/image16.png "按一下以展開映像")](external-authentication-services/_static/image15.png)
+[![](external-authentication-services/_static/image73.png "按一下以展開映像")](external-authentication-services/_static/image73.png)
 
-在下列章節中，您將學習如何啟用每個外部驗證服務所提供的 Visual Studio 2013 中的 ASP.NET。
+在下列章節中，您將了解如何啟用每個外部驗證服務所提供的 Visual Studio 2017 中的 ASP.NET。
 
 <a id="FACEBOOK"></a>
 ## <a name="enabling-facebook-authentication"></a>啟用 Facebook 驗證
@@ -120,10 +114,9 @@ Visual studio 2013 的等候建立您的專案。
 
 一旦您取得您的應用程式識別碼和祕密金鑰，請使用下列步驟來啟用 web 應用程式的 Facebook 驗證：
 
-1. 在 Visual Studio 2013 中開啟您的專案時，開啟*Startup.Auth.cs*檔案：
+1. 在 Visual Studio 2017 中開啟您的專案時，開啟*Startup.Auth.cs*檔案。
 
-    [![](external-authentication-services/_static/image18.png "按一下以展開映像")](external-authentication-services/_static/image17.png)
-2. 找出程式碼的反白顯示的區段：
+2. 找出 [Facebook 驗證] 區段的程式碼：
 
     [!code-csharp[Main](external-authentication-services/samples/sample2.cs)]
 3. 移除&quot; // &quot;字元的程式碼中，反白顯示的行取消註解，然後新增 您的應用程式識別碼和祕密金鑰。 一旦您加入這些參數，您可以重新編譯您的專案：
@@ -131,7 +124,7 @@ Visual studio 2013 的等候建立您的專案。
     [!code-csharp[Main](external-authentication-services/samples/sample3.cs)]
 4. 當您按 f5 鍵在網頁瀏覽器中開啟 web 應用程式時，您會看到 Facebook，已定義為外部驗證服務：
 
-    [![](external-authentication-services/_static/image20.png "按一下以展開映像")](external-authentication-services/_static/image19.png)
+    [![](external-authentication-services/_static/image74.png "按一下以展開映像")](external-authentication-services/_static/image74.png)
 5. 當您按一下 [ **Facebook** ] 按鈕，您的瀏覽器會被重新導向至 Facebook 登入頁面：
 
     [![](external-authentication-services/_static/image22.png "按一下以展開映像")](external-authentication-services/_static/image21.png)
@@ -145,22 +138,22 @@ Visual studio 2013 的等候建立您的專案。
 <a id="GOOGLE"></a>
 ## <a name="enabling-google-authentication"></a>啟用 Google 驗證
 
-Google 是到目前為止最簡單的方法來啟用，因為它不需要開發人員帳戶，也不會要求您的應用程式識別碼或祕密金鑰等其他的外部驗證服務的其他資訊的外部驗證服務需要此項目。
+使用 Google 驗證會要求您建立 Google 開發人員帳戶，而您的專案需要的應用程式識別碼和祕密金鑰，將來自 Google 才能運作。 建立 Google 開發人員帳戶，並取得您的應用程式識別碼和祕密金鑰的相關資訊，請參閱[ https://developers.google.com ](https://developers.google.com)。
+
 
 若要啟用 Google 驗證 web 應用程式，請使用下列步驟：
 
-1. 在 Visual Studio 2013 中開啟您的專案時，開啟*Startup.Auth.cs*檔案：
+1. 在 Visual Studio 2017 中開啟您的專案時，開啟*Startup.Auth.cs*檔案。
 
-    [![](external-authentication-services/_static/image28.png "按一下以展開映像")](external-authentication-services/_static/image27.png)
-2. 找出程式碼的反白顯示的區段：
+2. 找出 [Google 驗證] 區段的程式碼：
 
     [!code-csharp[Main](external-authentication-services/samples/sample4.cs)]
-3. 移除&quot; // &quot;字元的程式碼中，反白顯示的行取消註解，再重新編譯您的專案：
+3. 移除&quot; // &quot;字元的程式碼中，反白顯示的行取消註解，然後新增 您的應用程式識別碼和祕密金鑰。 一旦您加入這些參數，您可以重新編譯您的專案：
 
     [!code-csharp[Main](external-authentication-services/samples/sample5.cs)]
 4. 當您按 f5 鍵在網頁瀏覽器中開啟 web 應用程式時，您會看到，Google 已定義為外部驗證服務：
 
-    [![](external-authentication-services/_static/image30.png "按一下以展開映像")](external-authentication-services/_static/image29.png)
+    [![](external-authentication-services/_static/image75.png "按一下以展開映像")](external-authentication-services/_static/image75.png)
 5. 當您按一下 [ **Google** ] 按鈕，您的瀏覽器會被重新導向至 Google 登入頁面：
 
     [![](external-authentication-services/_static/image32.png "按一下以展開映像")](external-authentication-services/_static/image31.png)
@@ -181,10 +174,9 @@ Microsoft 驗證會要求您建立開發人員帳戶，以及它需要用戶端�
 
 一旦您取得您的取用者金鑰和取用者祕密，請使用下列步驟來啟用 web 應用程式的 Microsoft 驗證：
 
-1. 在 Visual Studio 2013 中開啟您的專案時，開啟*Startup.Auth.cs*檔案：
+1. 在 Visual Studio 2017 中開啟您的專案時，開啟*Startup.Auth.cs*檔案。
 
-    [![](external-authentication-services/_static/image40.png "按一下以展開映像")](external-authentication-services/_static/image39.png)
-2. 找出程式碼的反白顯示的區段：
+2. 找出程式碼的 Microsoft 驗證 的區段：
 
     [!code-csharp[Main](external-authentication-services/samples/sample6.cs)]
 3. 移除&quot; // &quot;取消註解的程式碼中，反白顯示的行，然後新增 您的用戶端識別碼和用戶端祕密的字元。 一旦您加入這些參數，您可以重新編譯您的專案：
@@ -213,10 +205,9 @@ Twitter 驗證會要求您建立開發人員帳戶，以及它需要取用者金
 
 一旦您取得您的取用者金鑰和取用者祕密，請使用下列步驟啟用 Twitter 驗證 web 應用程式：
 
-1. 在 Visual Studio 2013 中開啟您的專案時，開啟*Startup.Auth.cs*檔案：
+1. 在 Visual Studio 2017 中開啟您的專案時，開啟*Startup.Auth.cs*檔案。
 
-    [![](external-authentication-services/_static/image52.png "按一下以展開映像")](external-authentication-services/_static/image51.png)
-2. 找出程式碼的反白顯示的區段：
+2. 找出程式碼的 Twitter 驗證 的區段：
 
     [!code-csharp[Main](external-authentication-services/samples/sample8.cs)]
 3. 移除&quot; // &quot;取消註解的程式碼中，反白顯示的行，然後新增 您的取用者金鑰和取用者密碼的字元。 一旦您加入這些參數，您可以重新編譯您的專案：
@@ -251,9 +242,9 @@ Twitter 驗證會要求您建立開發人員帳戶，以及它需要取用者金
 [![](external-authentication-services/_static/image62.png "按一下以展開映像")](external-authentication-services/_static/image61.png)
 
 <a id="FQDN"></a>
-### <a name="configuring-iis-express-to-use-a-fully-qualified-domain-name"></a>設定 IIS Express 要使用完整網域名稱
+### <a name="configure-iis-express-to-use-a-fully-qualified-domain-name"></a>設定 IIS Express 以使用完整的網域名稱
 
-某些外部驗證提供者不支援測試您的應用程式使用 HTTP 位址，例如`http://localhost:port/`。 若要暫時解決此問題，您可以新增靜態的完整格式網域名稱 (FQDN) 對應至主機檔案，並使用 FQDN 進行測試/偵錯的 Visual Studio 2013 中設定您的專案選項。 若要這樣做，請使用下列步驟：
+某些外部驗證提供者不支援測試您的應用程式使用 HTTP 位址，例如`http://localhost:port/`。 若要解決此問題，您可以新增靜態的完整格式網域名稱 (FQDN) 對應至主機檔案，並設定要用於測試/偵錯 FQDN 的 Visual Studio 2017 中的專案選項。 若要這樣做，請使用下列步驟：
 
 - 新增靜態 FQDN 對應您的主機檔案：
 
@@ -268,7 +259,7 @@ Twitter 驗證會要求您建立開發人員帳戶，以及它需要取用者金
 
 - 設定 Visual Studio 專案使用的 FQDN:
 
-  1. 在 Visual Studio 2013 中開啟您的專案時，請按一下**專案**功能表，然後選取 專案屬性。 例如，您可以選取**WebApplication1 屬性**。
+  1. 在 Visual Studio 2017 中開啟您的專案時，請按一下**專案**功能表，然後選取 專案屬性。 例如，您可以選取**WebApplication1 屬性**。
   2. 選取 [ **Web** ] 索引標籤。
   3. 輸入的 FQDN<strong>專案 Url</strong>。 例如，您會輸入<kbd> <http://www.wingtiptoys.com> </kbd>如果這是您新增至主機檔案的 FQDN 對應。
 
@@ -291,16 +282,18 @@ Twitter 驗證會要求您建立開發人員帳戶，以及它需要取用者金
 
 1. 瀏覽至[ https://go.microsoft.com/fwlink/?LinkID=144070 ](https://go.microsoft.com/fwlink/?LinkID=144070)並輸入您的 Microsoft 帳戶名稱和密碼提示時，然後按一下**登入**:
 
-    [![](external-authentication-services/_static/image64.png "按一下以展開映像")](external-authentication-services/_static/image63.png)
-2. 輸入的名稱和出現提示時，您的應用程式的語言，然後按一下**我接受**:
+   <!--  [![](external-authentication-services/_static/image64.png "Click to Expand the Image")](external-authentication-services/_static/image63.png) -->
+2. 選取 **新增應用程式**並輸入您的應用程式出現提示時，名稱，然後按一下**建立**:
 
-    [![](external-authentication-services/_static/image66.png "按一下以展開映像")](external-authentication-services/_static/image65.png)
-3. 上**API 設定**應用程式頁面上，輸入您的應用程式和複製的 重新導向網域**用戶端識別碼**並**用戶端祕密**為您的專案，然後按一下 **儲存**:
+    [![](external-authentication-services/_static/image79.png "按一下以展開映像")](external-authentication-services/_static/image79.png)
+3. 選取您的應用程式**名稱**和其應用程式屬性頁面隨即出現。
 
-    [![](external-authentication-services/_static/image68.png "按一下以展開映像")](external-authentication-services/_static/image67.png)
+4. 輸入您的應用程式的重新導向網域。 複製**應用程式識別碼**和 **應用程式祕密**，選取**產生密碼**。 複製顯示的密碼。 應用程式識別碼和密碼是您的用戶端識別碼和用戶端祕密。 選取  **Ok** ，然後**儲存**。
+
+    [![](external-authentication-services/_static/image77.png "按一下以展開映像")](external-authentication-services/_static/image77.png)
 
 <a id="DISABLE"></a>
-### <a name="optional-disable-local-registration"></a>選擇性︰ 停用本機註冊
+### <a name="optional-disable-local-registration"></a>選擇項：停用本機註冊
 
 目前的 ASP.NET 本機註冊功能不會防止自動的程式 (bot) 帳戶; 建立成員例如，藉由使用一種 bot 防護及驗證的技術，像是[CAPTCHA](../../../web-pages/overview/security/16-adding-security-and-membership.md)。 基於這個原因，您應該移除的登入頁面上的本機登入表單和註冊連結。 若要這樣做，請開啟 *\_Login.cshtml*在專案中，頁面上，然後再標記為註解的線條，「 本機登入面板和 [註冊] 連結。 產生的頁面看起來應該像下列程式碼範例：
 

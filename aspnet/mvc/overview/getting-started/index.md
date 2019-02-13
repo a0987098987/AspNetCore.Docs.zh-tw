@@ -8,12 +8,12 @@ ms.date: 08/31/2011
 ms.assetid: d916dbe0-1895-491b-8bb6-93f4594ce757
 msc.legacyurl: /mvc/overview/getting-started
 msc.type: chapter
-ms.openlocfilehash: c815a98c536159df44b775fd5130029446e1ad73
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: a2b96388cb7408d3c5fa548d0f43cfb2287661bf
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "48252747"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667280"
 ---
 <a name="aspnet-mvc-getting-started"></a>ASP.NET MVC 使用者入門
 ====================
@@ -55,7 +55,6 @@ ms.locfileid: "48252747"
     - [變更資料庫](database-first-development/changing-the-database.md)
     - [自訂檢視](database-first-development/customizing-a-view.md)
     - [增強資料驗證](database-first-development/enhancing-data-validation.md)
-    - [發佈至 Azure](database-first-development/publish-to-azure.md)
 - [ASP.NET MVC 5 應用程式生命週期](lifecycle-of-an-aspnet-mvc-5-application.md)
 - [MVC 建議資源](recommended-resources-for-mvc.md)
 - [MVC 建議教學課程和文章](mvc-learning-sequence.md)

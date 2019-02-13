@@ -8,12 +8,12 @@ ms.date: 08/29/2011
 ms.assetid: c23d27f7-b0cf-44f2-8445-fb69e045c674
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: a4cd6e9adfcd85503b9843232903a243bc07c959
-ms.sourcegitcommit: 392a36ed269b88899d6bb652aa7f4dfb72e43e7f
+ms.openlocfilehash: 3e700d2db4f86fe6734e2f08b01c9f8a8a69b6c3
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50220657"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667787"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-1"></a>ASP.NET MVC： 第 1 部分中使用 HTML5 與 jQuery UI Datepicker 快顯行事曆
 ====================
@@ -24,19 +24,19 @@ ms.locfileid: "50220657"
 
 本教學課程將教導您如何使用編輯器範本、 顯示範本和 jQuery 的基本概念[UI datepicker 快顯行事曆](http://plugins.jquery.com/project/datepicker)ASP.NET MVC Web 應用程式中。 本教學課程中，您可以使用 Microsoft Visual Web Developer 2010 Express Service Pack 1 (&quot;Visual Web Developer&quot;)，這是免費版本的 Microsoft Visual Studio，或如果您已具備，您可以使用 Visual Studio 2010 SP1。
 
-在開始之前，請確定您已安裝符合下列先決條件。 您可以安裝所有人都按下列連結： [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)。 或者，您可以個別安裝所需的軟體，使用下列連結：
+在開始之前，請確定您已安裝符合下列先決條件。 您可以安裝所有人都按下列連結：[Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)。 或者，您可以個別安裝所需的軟體，使用下列連結：
 
 - [Visual Studio Web Developer Express SP1 必要條件](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)
 - [ASP.NET MVC 3 Tools Update](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
 - [SQL Server Compact 4.0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)（執行階段 + 工具支援）
 
-如果您使用 Visual Studio 2010 而不 Visual Web Developer 中，請按一下下列連結安裝必要的： [Visual Studio 2010 必要條件](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack)。
+如果您使用 Visual Studio 2010 而不 Visual Web Developer 中，請按一下下列連結安裝必要條件：[Visual Studio 2010 的必要元件](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack)。
 
 本教學課程假設您已完成[Getting Started with MVC 3](../getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md)教學課程中，或您已熟悉 ASP.NET MVC 開發。 本教學課程開頭中完成的專案[Getting Started with MVC 3](../getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md)教學課程。
 
 本教學課程會示範在 C# 程式碼。 不過，[入門專案](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15800)和已完成的專案也會提供在 Visual Basic 中。
 
-C# 和 Visual Basic 原始程式碼的 Visual Studio 專案位於本主題隨附了：[下載](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15800)。
+Visual Studio 專案使用C#和 Visual Basic 原始程式碼位於本主題隨附了：[下載](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15800)。
 
 ### <a name="what-youll-build"></a>您將建置
 
@@ -54,7 +54,11 @@ C# 和 Visual Basic 原始程式碼的 Visual Studio 專案位於本主題隨附
 
 ### <a name="getting-started"></a>快速入門
 
-如果您還沒有將入門專案的電影清單應用程式，下載，使用下列連結：[下載](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098)。 然後在 Windows 檔案總管中，以滑鼠右鍵按一下*MvcMovie.zip*檔案，然後選取**屬性**。 在  **MvcMovie.zip 屬性**對話方塊中，選取**解除封鎖**。 (解除封鎖可避免安全性警告，當您嘗試使用時，就會發生 *.zip*您已經從 web 下載的檔案。)
+如果您還沒有將入門專案的電影清單應用程式，下載： 
+
+* [下載](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098)。
+* 在 Windows 檔案總管中，以滑鼠右鍵按一下*MvcMovie.zip*檔案，然後選取**屬性**。 
+* 在  **MvcMovie.zip 屬性**對話方塊中，選取**解除封鎖**。 (解除封鎖可避免安全性警告，當您嘗試使用時，就會發生 *.zip*您已經從 web 下載的檔案。)
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1/_static/image2.png)
 

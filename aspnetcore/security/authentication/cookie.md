@@ -5,12 +5,12 @@ description: 說明的使用沒有 ASP.NET Core 身分識別的 cookie 驗證
 ms.author: riande
 ms.date: 10/11/2017
 uid: security/authentication/cookie
-ms.openlocfilehash: f55b36cf3fc3b60e9d592348625f58ebaba90da7
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: f05e5b83359ec1739115293e092eaed0c811c046
+ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570109"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55854376"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>使用沒有 ASP.NET Core 身分識別的 cookie 驗證
 
@@ -44,30 +44,29 @@ ms.locfileid: "51570109"
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet2)]
 
-**AddCookie 選項**
+**AddCookie Options**
 
 [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions?view=aspnetcore-2.0)類別用來設定驗證提供者選項。
 
 | 選項 | 描述 |
 | ------ | ----------- |
-| [AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath?view=aspnetcore-2.0) | 提供要找到 302 （重新導向 URL） 所提供的路徑時所觸發`HttpContext.ForbidAsync`。 預設值是 `/Account/AccessDenied`。 |
+| [AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath?view=aspnetcore-2.0) | 提供要找到 302 （重新導向 URL） 所提供的路徑時所觸發`HttpContext.ForbidAsync`。 預設值為 `/Account/AccessDenied`。 |
 | [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.claimsissuer?view=aspnetcore-2.0) | 若要使用的簽發者[簽發者](/dotnet/api/system.security.claims.claim.issuer)cookie 驗證服務所建立的任何宣告的屬性。 |
 | [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain?view=aspnetcore-2.0) | 其中提供 cookie 的網域名稱。 根據預設，這是要求的主機名稱。 瀏覽器只在要求中，cookie 傳送相符的主機名稱。 您可能想要調整該項目可在網域中擁有任何主機可用的 cookie。 例如，若要設定 cookie 網域`.contoso.com`並提供給`contoso.com`， `www.contoso.com`，和`staging.www.contoso.com`。 |
-| [Cookie.Expiration](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.expiration?view=aspnetcore-2.0) | 取得或設定 cookie 的存留時間。 目前這個選項不會生效，就會變成過時的 ASP.NET Core 2.1 +。 使用`ExpireTimeSpan`設定 cookie 的到期時間的選項。 如需詳細資訊，請參閱 <<c0> [ 釐清行為 CookieAuthenticationOptions.Cookie.Expiration](https://github.com/aspnet/Security/issues/1293)。 |
-| [Cookie.HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly?view=aspnetcore-2.0) | 旗標，指出是否 cookie 應該僅供伺服器存取。 此值變更為`false`允許用戶端指令碼，以存取 cookie，可能會用來開啟您的應用程式應有的 cookie 竊取您的應用程式[跨網站指令碼 (XSS)](xref:security/cross-site-scripting)弱點。 預設值是 `true`。 |
+| [Cookie.HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly?view=aspnetcore-2.0) | 旗標，指出是否 cookie 應該僅供伺服器存取。 此值變更為`false`允許用戶端指令碼，以存取 cookie，可能會用來開啟您的應用程式應有的 cookie 竊取您的應用程式[跨網站指令碼 (XSS)](xref:security/cross-site-scripting)弱點。 預設值為 `true`。 |
 | [Cookie.Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name?view=aspnetcore-2.0) | 設定 cookie 的名稱。 |
 | [Cookie.Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path?view=aspnetcore-2.0) | 用來隔離在相同的主機名稱上執行的應用程式。 如果您在執行的應用程式`/app1`想要將 cookie 限制為該應用程式，請設定`CookiePath`屬性設`/app1`。 如此一來，cookie 才可用的要求`/app1`和其下的任何應用程式。 |
 | [Cookie.SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite?view=aspnetcore-2.0) | 表示瀏覽器是否應該允許 cookie 附加至相同站台要求 (`SameSiteMode.Strict`) 或跨網站要求使用安全的 HTTP 方法和相同站台要求 (`SameSiteMode.Lax`)。 當設定為`SameSiteMode.None`，未設定的 cookie 標頭值。 請注意， [Cookie 原則中介軟體](#cookie-policy-middleware)可能會覆寫您所提供的值。 若要支援 OAuth 驗證，預設值是`SameSiteMode.Lax`。 如需詳細資訊，請參閱 < [SameSite cookie 原則因為損毀的 OAuth 驗證](https://github.com/aspnet/Security/issues/1231)。 |
-| [Cookie.SecurePolicy](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.securepolicy?view=aspnetcore-2.0) | 旗標，指出是否建立的 cookie 會受限於 HTTPS (`CookieSecurePolicy.Always`)，HTTP 或 HTTPS (`CookieSecurePolicy.None`)，或要求相同的通訊協定 (`CookieSecurePolicy.SameAsRequest`)。 預設值是 `CookieSecurePolicy.SameAsRequest`。 |
+| [Cookie.SecurePolicy](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.securepolicy?view=aspnetcore-2.0) | 旗標，指出是否建立的 cookie 會受限於 HTTPS (`CookieSecurePolicy.Always`)，HTTP 或 HTTPS (`CookieSecurePolicy.None`)，或要求相同的通訊協定 (`CookieSecurePolicy.SameAsRequest`)。 預設值為 `CookieSecurePolicy.SameAsRequest`。 |
 | [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.dataprotectionprovider?view=aspnetcore-2.0) | 設定組`DataProtectionProvider`用來建立預設`TicketDataFormat`。 如果`TicketDataFormat`屬性設定，`DataProtectionProvider`選項不會使用。 如果未提供，則會使用應用程式的預設資料保護提供者。 |
 | [事件](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.events?view=aspnetcore-2.0) | 處理常式會呼叫提供者，讓應用程式控制項的特定處理時間點上的方法。 如果`Events`不提供的預設執行個體提供呼叫方法時，不做任何動作。 |
 | [EventsType](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.eventstype?view=aspnetcore-2.0) | 若要取得做為服務類型`Events`而非屬性的執行個體。 |
 | [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.expiretimespan?view=aspnetcore-2.0) | `TimeSpan`之後儲存在 cookie 內的驗證票證已過期。 `ExpireTimeSpan` 會加入至目前的時間來建立票證的到期時間。 `ExpiredTimeSpan`值一律會移到加密的 AuthTicket 由伺服器進行驗證。 它也可能會進入[Set-cookie](https://tools.ietf.org/html/rfc6265#section-4.1)標頭，但是只有`IsPersistent`設定。 若要設定`IsPersistent`要`true`，設定[AuthenticationProperties](/dotnet/api/microsoft.aspnetcore.authentication.authenticationproperties)傳遞至`SignInAsync`。 預設值`ExpireTimeSpan`為 14 天。 |
-| [LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath?view=aspnetcore-2.0) | 提供要找到 302 （重新導向 URL） 所提供的路徑時所觸發`HttpContext.ChallengeAsync`。 產生 401 的目前 URL 加入至`LoginPath`所命名的查詢字串參數為`ReturnUrlParameter`。 一次要求`LoginPath`授與新登入的身分識別，`ReturnUrlParameter`值用來將瀏覽器重新導向回到原始的未經授權的狀態程式碼的 URL。 預設值是 `/Account/Login`。 |
-| [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath?view=aspnetcore-2.0) | 如果`LogoutPath`提供，以處理常式中，則該路徑的要求重新導向的值為基礎`ReturnUrlParameter`。 預設值是 `/Account/Logout`。 |
-| [ReturnUrlParameter](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.returnurlparameter?view=aspnetcore-2.0) | 判斷由 302 已找到 （重新導向 URL） 回應的處理常式會附加查詢字串參數的名稱。 `ReturnUrlParameter` 在要求抵達時，會使用`LoginPath`或`LogoutPath`執行登入或登出動作後，瀏覽器傳回至原始 URL。 預設值是 `ReturnUrl`。 |
+| [LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath?view=aspnetcore-2.0) | 提供要找到 302 （重新導向 URL） 所提供的路徑時所觸發`HttpContext.ChallengeAsync`。 產生 401 的目前 URL 加入至`LoginPath`所命名的查詢字串參數為`ReturnUrlParameter`。 一次要求`LoginPath`授與新登入的身分識別，`ReturnUrlParameter`值用來將瀏覽器重新導向回到原始的未經授權的狀態程式碼的 URL。 預設值為 `/Account/Login`。 |
+| [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath?view=aspnetcore-2.0) | 如果`LogoutPath`提供，以處理常式中，則該路徑的要求重新導向的值為基礎`ReturnUrlParameter`。 預設值為 `/Account/Logout`。 |
+| [ReturnUrlParameter](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.returnurlparameter?view=aspnetcore-2.0) | 判斷由 302 已找到 （重新導向 URL） 回應的處理常式會附加查詢字串參數的名稱。 `ReturnUrlParameter` 在要求抵達時，會使用`LoginPath`或`LogoutPath`執行登入或登出動作後，瀏覽器傳回至原始 URL。 預設值為 `ReturnUrl`。 |
 | [SessionStore](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.sessionstore?view=aspnetcore-2.0) | 選擇性的容器，用來儲存跨要求的身分識別。 使用時，只有工作階段識別碼會傳送至用戶端。 `SessionStore` 可用來降低大型的身分識別的潛在問題。 |
-| [slidingExpiration](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.slidingexpiration?view=aspnetcore-2.0) | 旗標，指出是否要以動態方式發出新的更新的到期時間的 cookie。 這可能會發生的任何位置的目前 cookie 到期期間超過 50%過期的要求。 新的到期日往前移動目前的日期加上`ExpireTimespan`。 [絕對的 cookie 到期時間](xref:security/authentication/cookie#absolute-cookie-expiration)可以透過設定`AuthenticationProperties`類別呼叫時`SignInAsync`。 絕對到期時間可以改善您的應用程式的安全性限制的驗證 cookie 為有效的時間量。 預設值是 `true`。 |
+| [SlidingExpiration](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.slidingexpiration?view=aspnetcore-2.0) | 旗標，指出是否要以動態方式發出新的更新的到期時間的 cookie。 這可能會發生的任何位置的目前 cookie 到期期間超過 50%過期的要求。 新的到期日往前移動目前的日期加上`ExpireTimespan`。 [絕對的 cookie 到期時間](xref:security/authentication/cookie#absolute-cookie-expiration)可以透過設定`AuthenticationProperties`類別呼叫時`SignInAsync`。 絕對到期時間可以改善您的應用程式的安全性限制的驗證 cookie 為有效的時間量。 預設值為 `true`。 |
 | [TicketDataFormat](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.ticketdataformat?view=aspnetcore-2.0) | `TicketDataFormat`用來保護且取消保護身分識別和其他屬性儲存在 cookie 值中。 如果未提供，`TicketDataFormat`會使用建立[DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.dataprotectionprovider?view=aspnetcore-2.0)。 |
 | [驗證](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.validate?view=aspnetcore-2.0) | 檢查的選項都是有效的方法。 |
 
@@ -113,12 +112,12 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions()
 | [AutomaticChallenge](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticchallenge?view=aspnetcore-1.1) | 如果為 true，則驗證中介軟體會處理自動的挑戰。 如果為 false，驗證中介軟體只會改變明確指出時的回應`AuthenticationScheme`。 |
 | [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.claimsissuer?view=aspnetcore-1.1) | 若要使用的簽發者[簽發者](/dotnet/api/system.security.claims.claim.issuer)cookie 驗證中介軟體所建立的任何宣告的屬性。 |
 | [CookieDomain](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiedomain?view=aspnetcore-1.1) | 其中提供 cookie 的網域名稱。 根據預設，這是要求的主機名稱。 瀏覽器，只是要比對的主機名稱的 cookie。 您可能想要調整該項目可在網域中擁有任何主機可用的 cookie。 例如，若要設定 cookie 網域`.contoso.com`並提供給`contoso.com`， `www.contoso.com`，和`staging.www.contoso.com`。 |
-| [CookieHttpOnly](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiehttponly?view=aspnetcore-1.1) | 旗標，指出是否 cookie 應該僅供伺服器存取。 此值變更為`false`允許用戶端指令碼，以存取 cookie，可能會用來開啟您的應用程式應有的 cookie 竊取您的應用程式[跨網站指令碼 (XSS)](xref:security/cross-site-scripting)弱點。 預設值是 `true`。 |
+| [CookieHttpOnly](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiehttponly?view=aspnetcore-1.1) | 旗標，指出是否 cookie 應該僅供伺服器存取。 此值變更為`false`允許用戶端指令碼，以存取 cookie，可能會用來開啟您的應用程式應有的 cookie 竊取您的應用程式[跨網站指令碼 (XSS)](xref:security/cross-site-scripting)弱點。 預設值為 `true`。 |
 | [CookiePath](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiepath?view=aspnetcore-1.1) | 用來隔離在相同的主機名稱上執行的應用程式。 如果您在執行的應用程式`/app1`想要將 cookie 限制為該應用程式，請設定`CookiePath`屬性設`/app1`。 如此一來，cookie 才可用的要求`/app1`和其下的任何應用程式。 |
-| [CookieSecure](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiesecure?view=aspnetcore-1.1) | 旗標，指出是否建立的 cookie 會受限於 HTTPS (`CookieSecurePolicy.Always`)，HTTP 或 HTTPS (`CookieSecurePolicy.None`)，或要求相同的通訊協定 (`CookieSecurePolicy.SameAsRequest`)。 預設值是 `CookieSecurePolicy.SameAsRequest`。 |
+| [CookieSecure](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiesecure?view=aspnetcore-1.1) | 旗標，指出是否建立的 cookie 會受限於 HTTPS (`CookieSecurePolicy.Always`)，HTTP 或 HTTPS (`CookieSecurePolicy.None`)，或要求相同的通訊協定 (`CookieSecurePolicy.SameAsRequest`)。 預設值為 `CookieSecurePolicy.SameAsRequest`。 |
 | [描述](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.description?view=aspnetcore-1.1) | 其他資訊提供給應用程式的驗證類型的詳細資訊。 |
 | [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.expiretimespan?view=aspnetcore-1.1) | `TimeSpan`之後驗證票證已過期。 它會新增至目前的時間來建立票證的到期時間。 若要使用`ExpireTimeSpan`，您必須設定`IsPersistent`要`true`中`AuthenticationProperties`傳遞至`SignInAsync`。 預設值為 14 天。 |
-| [slidingExpiration](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.slidingexpiration?view=aspnetcore-1.1) | 旗標，指出是否 cookie 的到期日重設時超過一半的`ExpireTimeSpan`經過這段間隔。 新的 exipiration 時間往前移動目前的日期加上`ExpireTimespan`。 [絕對的 cookie 到期時間](xref:security/authentication/cookie#absolute-cookie-expiration)可以透過設定`AuthenticationProperties`類別呼叫時`SignInAsync`。 絕對到期時間可以改善您的應用程式的安全性限制的驗證 cookie 為有效的時間量。 預設值是 `true`。 |
+| [SlidingExpiration](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.slidingexpiration?view=aspnetcore-1.1) | 旗標，指出是否 cookie 的到期日重設時超過一半的`ExpireTimeSpan`經過這段間隔。 新的 exipiration 時間往前移動目前的日期加上`ExpireTimespan`。 [絕對的 cookie 到期時間](xref:security/authentication/cookie#absolute-cookie-expiration)可以透過設定`AuthenticationProperties`類別呼叫時`SignInAsync`。 絕對到期時間可以改善您的應用程式的安全性限制的驗證 cookie 為有效的時間量。 預設值為 `true`。 |
 
 設定`CookieAuthenticationOptions`Cookie 驗證中介軟體中`Configure`方法：
 
@@ -143,11 +142,11 @@ app.UseCookiePolicy(cookiePolicyOptions);
 
 | 屬性 | 描述 |
 | -------- | ----------- |
-| [HttpOnly](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.httponly) | 會影響是否 cookie 必須 HttpOnly，這是旗標，指出是否 cookie 應該僅供伺服器存取。 預設值是 `HttpOnlyPolicy.None`。 |
-| [MinimumSameSitePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.minimumsamesitepolicy) | 會影響的 cookie 相同站台屬性 （如下所示）。 預設值是 `SameSiteMode.Lax`。 此選項可供 ASP.NET Core 2.0 +。 |
+| [HttpOnly](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.httponly) | 會影響是否 cookie 必須 HttpOnly，這是旗標，指出是否 cookie 應該僅供伺服器存取。 預設值為 `HttpOnlyPolicy.None`。 |
+| [MinimumSameSitePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.minimumsamesitepolicy) | 會影響的 cookie 相同站台屬性 （如下所示）。 預設值為 `SameSiteMode.Lax`。 此選項可供 ASP.NET Core 2.0 +。 |
 | [OnAppendCookie](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.onappendcookie) | 呼叫時，附加 cookie。 |
 | [OnDeleteCookie](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.ondeletecookie) | 刪除 cookie 時，會呼叫它。 |
-| [安全](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.secure) | 會影響是否 cookie 必須是安全。 預設值是 `CookieSecurePolicy.None`。 |
+| [Secure](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.secure) | 會影響是否 cookie 必須是安全。 預設值為 `CookieSecurePolicy.None`。 |
 
 **MinimumSameSitePolicy** (ASP.NET Core 2.0 + 只)
 

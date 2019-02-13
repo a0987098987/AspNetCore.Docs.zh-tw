@@ -1,7 +1,7 @@
 items:
 - name: ASP.NET Core 文件
   href: /aspnet/#pivot=core
-- name: 概觀
+- name: 總覽
   items:
   - uid: index
     name: 關於 ASP.NET Core
@@ -53,10 +53,10 @@ items:
       href: /ef/core/get-started/aspnetcore/new-db
     - uid: data/ef-mvc/index
       name: 使用 MVC 的 EF Core，長篇教學課程
-- name: 基本概念
+- name: Fundamentals
   items:
   - uid: fundamentals/index
-    name: 概觀
+    name: 總覽
   - uid: fundamentals/startup
     name: 應用程式啟動
   - uid: fundamentals/dependency-injection
@@ -78,7 +78,7 @@ items:
   - name: 主機
     items:
     - uid: fundamentals/host/index
-      name: 概觀
+      name: 總覽
     - uid: fundamentals/host/web-host
       name: Web 主機
     - uid: fundamentals/host/generic-host
@@ -92,10 +92,11 @@ items:
   - name: Razor Pages
     items:
     - uid: razor-pages/index
-      name: 概觀
-    - uid: tutorials/razor-pages/index
-      name: 教學課程
+      name: 簡介
+    - name: 教學課程
       items:
+      - uid: tutorials/razor-pages/index
+        name: 總覽
       - uid: tutorials/razor-pages/razor-pages-start
         name: 開始使用
       - uid: tutorials/razor-pages/model
@@ -125,7 +126,7 @@ items:
   - name: MVC
     items:
     - uid: mvc/overview
-      name: 概觀
+      name: 總覽
     - uid: tutorials/first-mvc-app/index
       name: 教學課程
       items:
@@ -165,12 +166,14 @@ items:
       name: 相依性插入 - 檢視
     - uid: mvc/controllers/testing
       name: 單元測試
+  - uid: razor-components/index
+    name: Razor 元件
   - uid: fundamentals/app-state
     name: 工作階段和應用程式狀態
   - name: 標籤協助程式
     items:
     - uid: mvc/views/tag-helpers/intro
-      name: 概觀
+      name: 總覽
     - uid: mvc/views/tag-helpers/authoring
       name: 建立標記協助程式
     - uid: mvc/views/working-with-forms
@@ -190,13 +193,13 @@ items:
       - name: 表單
         href: mvc/views/working-with-forms.md#the-form-tag-helper
       - uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-        name: 影像
+        name: Image
       - name: 輸入
         href: mvc/views/working-with-forms.md#the-input-tag-helper
       - name: 標籤
         href: mvc/views/working-with-forms.md#the-label-tag-helper
       - uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-        name: 部分
+        name: Partial
       - name: 選用版
         href: mvc/views/working-with-forms.md#the-select-tag-helper
       - name: 文字區域
@@ -236,7 +239,7 @@ items:
 - name: Web API 應用程式
   items:
   - uid: web-api/index
-    name: 概觀
+    name: 總覽
   - name: 教學課程
     items:
     - uid: tutorials/first-web-api
@@ -246,7 +249,7 @@ items:
   - name: Swagger / OpenAPI
     items:
     - uid: tutorials/web-api-help-pages-using-swagger
-      name: 概觀
+      name: 總覽
     - uid: tutorials/get-started-with-swashbuckle
       name: 開始使用 Swashbuckle
     - uid: tutorials/get-started-with-nswag
@@ -304,13 +307,15 @@ items:
   - name: 裝載和調整規模
     items:
     - uid: signalr/scale
-      name: 概觀
+      name: 總覽
     - name: Azure SignalR Service
       href: /azure/azure-signalr/signalr-overview
     - uid: signalr/redis-backplane
       name: Redis 後擋板
+    - uid: signalr/background-services
+      name: 具備背景服務的 SignalR
   - uid: signalr/configuration
-    name: 設定
+    name: Configuration
   - uid: signalr/authn-and-authz
     name: 驗證與授權
   - uid: signalr/security
@@ -352,7 +357,7 @@ items:
     - name: 使用 Razor Pages 的 EF Core
       items:
       - uid: data/ef-rp/index
-        name: 概觀
+        name: 總覽
       - uid: data/ef-rp/intro
         name: 開始使用
       - uid: data/ef-rp/crud
@@ -376,7 +381,7 @@ items:
     - name: 使用 MVC 的 EF Core，長篇教學課程
       items:
       - uid: data/ef-mvc/index
-        name: 概觀
+        name: 總覽
       - uid: data/ef-mvc/intro
         name: 開始使用
       - uid: data/ef-mvc/crud
@@ -412,7 +417,7 @@ items:
 - name: 用戶端開發
   items:
   - uid: client-side/index
-    name: 概觀
+    name: 總覽
   - uid: client-side/using-gulp
     name: Gulp
   - uid: client-side/using-grunt
@@ -420,7 +425,7 @@ items:
   - name: LibMan
     items:
     - uid: client-side/libman/index
-      name: 概觀
+      name: 總覽
     - uid: client-side/libman/libman-cli
       name: CLI
     - uid: client-side/libman/libman-vs
@@ -433,10 +438,40 @@ items:
     name: 配套並縮小
   - uid: client-side/using-browserlink
     name: 瀏覽器連結
+  - name: Razor 元件
+    items:
+    - uid: razor-components/index
+      name: 總覽
+    - uid: razor-components/get-started
+      name: 開始使用
+    - uid: tutorials/first-razor-components-app
+      name: 建置您的第一個應用程式
+    - uid: razor-components/components
+      name: 元件
+    - uid: razor-components/class-libraries
+      name: 元件程式庫
+    - uid: razor-components/layouts
+      name: 版面配置
+    - uid: razor-components/dependency-injection
+      name: 相依性插入
+    - uid: razor-components/routing
+      name: 路由
+    - uid: razor-components/javascript-interop
+      name: JavaScript Interop
+    - uid: razor-components/debug
+      name: 偵錯
+    - uid: razor-components/hosting-models
+      name: 裝載模型
+    - name: 裝載和部署
+      items:
+      - uid: host-and-deploy/razor-components/index
+        name: 總覽
+      - uid: host-and-deploy/razor-components/configure-linker
+        name: 設定連結器
   - name: 單頁應用程式
     items:
     - uid: spa/index
-      name: 概觀
+      name: 總覽
     - uid: spa/angular
       name: Angular
     - uid: spa/react
@@ -448,13 +483,15 @@ items:
 - name: 裝載及部署
   items:
   - uid: host-and-deploy/index
-    name: 概觀
+    name: 總覽
   - name: 裝載於 Azure App Service
     items:
     - uid: host-and-deploy/azure-apps/index
-      name: 概觀
+      name: 總覽
     - uid: tutorials/publish-to-azure-webapp-using-vs
       name: 使用 Visual Studio 發佈
+    - name: 使用 Visual Studio for Mac 來發行
+      href: /visualstudio/mac/publish-app-svc
     - name: 使用 CLI 工具發佈
       href: /azure/app-service/app-service-web-tutorial-dotnetcore-sqldb
     - uid: host-and-deploy/azure-apps/azure-continuous-deployment
@@ -470,7 +507,7 @@ items:
   - name: DevOps
     items:
     - uid: azure/devops/index
-      name: 概觀
+      name: 總覽
     - uid: azure/devops/tools-and-downloads
       name: 工具及下載
     - uid: azure/devops/deploy-to-app-service
@@ -484,7 +521,7 @@ items:
   - name: 裝載於使用 IIS 的 Windows
     items:
     - uid: host-and-deploy/iis/index
-      name: 概觀
+      name: 總覽
     - uid: host-and-deploy/aspnet-core-module
       name: ASP.NET Core 模組
     - uid: host-and-deploy/iis/development-time-iis-support
@@ -508,7 +545,7 @@ items:
   - name: 裝載於 Docker
     items:
     - uid: host-and-deploy/docker/index
-      name: 概觀
+      name: 總覽
     - name: 建置 Docker 映像
       href: /dotnet/core/docker/building-net-docker-images
     - uid: host-and-deploy/docker/visual-studio-tools-for-docker
@@ -523,14 +560,22 @@ items:
     name: 裝載於 Web 伺服陣列
   - uid: host-and-deploy/visual-studio-publish-profiles
     name: Visual Studio 發行設定檔
+  - name: Visual Studio for Mac 發行到資料夾
+    href: /visualstudio/mac/publish-folder
   - uid: host-and-deploy/directory-structure
     name: 目錄結構
   - uid: host-and-deploy/health-checks
-    name: 健康情況檢查
+    name: 健康狀態檢查
+  - name: Razor 元件
+    items:
+    - uid: host-and-deploy/razor-components/index
+      name: 總覽
+    - uid: host-and-deploy/razor-components/configure-linker
+      name: 設定連結器
 - name: 安全性及身分識別
   items:
   - uid: security/index
-    name: 概觀
+    name: 總覽
   - name: 驗證
     items:
     - uid: security/authentication/identity
@@ -539,6 +584,8 @@ items:
       name: Scaffold 身分識別
     - uid: security/authentication/add-user-data
       name: 將自訂使用者資料新增至身分識別
+    - uid: security/authentication/samples
+      name: 驗證範例
     - uid: security/authentication/customize_identity_model
       name: 自訂身分識別
     - uid: security/authentication/community
@@ -552,7 +599,7 @@ items:
     - name: Google、Facebook...
       items:
       - uid: security/authentication/social/index
-        name: 概觀
+        name: 總覽
       - uid: security/authentication/google-logins
         name: Google 驗證
       - uid: security/authentication/facebook-logins
@@ -578,7 +625,7 @@ items:
     - name: Azure Active Directory
       items:
       - uid: security/authentication/azure-active-directory/index
-        name: 概觀
+        name: 總覽
       - name: 將 Azure AD 整合到 Web 應用程式中
         href: https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/
       - uid: security/authentication/azure-ad-b2c
@@ -598,7 +645,7 @@ items:
   - name: 授權
     items:
     - uid: security/authorization/introduction
-      name: 概觀
+      name: 總覽
     - uid: security/authorization/secure-data
       name: 建立具有授權的 Web 應用程式
     - uid: security/authorization/razor-pages-authorization
@@ -624,13 +671,13 @@ items:
   - name: 資料保護
     items:
     - uid: security/data-protection/introduction
-      name: 概觀
+      name: 總覽
     - uid: security/data-protection/using-data-protection
       name: 資料保護 API
     - name: 取用者 API
       items:
       - uid: security/data-protection/consumer-apis/overview
-        name: 概觀
+        name: 總覽
       - uid: security/data-protection/consumer-apis/purpose-strings
         name: 目的字串
       - uid: security/data-protection/consumer-apis/purpose-strings-multitenancy
@@ -641,10 +688,10 @@ items:
         name: 限制受保護承載的存留期
       - uid: security/data-protection/consumer-apis/dangerous-unprotect
         name: 取消金鑰已被撤銷之承載的保護
-    - name: 設定
+    - name: Configuration
       items:
       - uid: security/data-protection/configuration/index
-        name: 概觀
+        name: 總覽
       - uid: security/data-protection/configuration/overview
         name: 設定資料保護
       - uid: security/data-protection/configuration/default-settings
@@ -656,7 +703,7 @@ items:
     - name: 擴充性 API
       items:
       - uid: security/data-protection/extensibility/index
-        name: 概觀
+        name: 總覽
       - uid: security/data-protection/extensibility/core-crypto
         name: 核心加密擴充性
       - uid: security/data-protection/extensibility/key-management
@@ -666,7 +713,7 @@ items:
     - name: 實作
       items:
       - uid: security/data-protection/implementation/index
-        name: 概觀
+        name: 總覽
       - uid: security/data-protection/implementation/authenticated-encryption-details
         name: 已驗證的加密詳細資料
       - uid: security/data-protection/implementation/subkeyderivation
@@ -688,7 +735,7 @@ items:
     - name: 相容性
       items:
       - uid: security/data-protection/compatibility/index
-        name: 概觀
+        name: 總覽
       - uid: security/data-protection/compatibility/replacing-machinekey
         name: 取代 ASP.NET 中的 machineKey
   - uid: security/app-secrets
@@ -698,7 +745,7 @@ items:
   - uid: security/gdpr
     name: EU 一般資料保護規定 (GDPR) 支援
   - uid: security/key-vault-configuration
-    name: Azure Key Vault 設定提供者
+    name: Azure Key Vault 組態提供者
   - uid: security/anti-request-forgery
     name: 防偽要求
   - uid: security/preventing-open-redirects
@@ -714,11 +761,11 @@ items:
 - name: 效能
   items:
   - uid: performance/performance-best-practices
-    name: 概觀
+    name: 總覽
   - name: 回應快取
     items:
     - uid: performance/caching/response
-      name: 概觀
+      name: 總覽
     - uid: performance/caching/memory
       name: 記憶體內部快取
     - uid: performance/caching/distributed
@@ -734,7 +781,7 @@ items:
 - name: 全球化和當地語系化
   items:
   - uid: fundamentals/localization
-    name: 概觀
+    name: 總覽
   - uid: fundamentals/portable-object-localization
     name: 可攜式物件當地語系化
 - name: 進階
@@ -763,11 +810,10 @@ items:
     name: 使用 LoggerMessage 記錄
   - uid: tutorials/dotnet-watch
     name: 使用檔案監看員
-    items:
-    - uid: fundamentals/middleware/extensibility
-      name: Factory 式中介軟體
-    - uid: fundamentals/middleware/extensibility-third-party-container
-      name: 使用協力廠商容器的 Factory 式中介軟體
+  - uid: fundamentals/middleware/extensibility
+    name: Factory 式中介軟體
+  - uid: fundamentals/middleware/extensibility-third-party-container
+    name: 使用協力廠商容器的 Factory 式中介軟體
 - name: 移轉
   items:
   - uid: migration/22-to-30
@@ -779,13 +825,13 @@ items:
   - name: 1.x 至 2.0
     items:
     - uid: migration/1x-to-2x/index
-      name: 概觀
+      name: 總覽
     - uid: migration/1x-to-2x/identity-2x
       name: 驗證和身分識別
   - name: ASP.NET 至 ASP.NET Core
     items:
     - uid: migration/proper-to-2x/index
-      name: 概觀
+      name: 總覽
     - uid: migration/mvc
       name: MVC
     - uid: migration/webapi
@@ -803,12 +849,12 @@ items:
   - uid: migration/logging-nonaspnetcore
     name: 記錄 (非 ASP.NET Core)
 - name: 應用程式開發介面參考
-  href: /dotnet/api/?view=aspnetcore-2.1
+  href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 4f8ccb592b7f95794cad01edd1e0f514bd9943c1
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: 202bb46df6692e84e8abcefbd333abf3a3fafb7f
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54892991"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103133"

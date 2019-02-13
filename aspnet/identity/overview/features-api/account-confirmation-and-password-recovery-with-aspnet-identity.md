@@ -4,23 +4,20 @@ title: 帳戶確認和密碼復原，使用 ASP.NET Identity (C#) |Microsoft Doc
 author: HaoK
 description: 進行本教學課程之前，您應該先完成登入、 電子郵件確認和密碼重設建立安全的 ASP.NET MVC 5 web 應用程式。 本教學課程...
 ms.author: riande
-ms.date: 03/26/2015
+ms.date: 01/23/2019
 ms.assetid: 8d54180d-f826-4df7-b503-7debf5ed9fb3
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 84f35cfc0f0e0f1c268e0e9c18fd47aa68deb7d1
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 47dc2c1044a5964624ba2f8af4f174a2fd99d3e8
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577830"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236402"
 ---
-<a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>帳戶確認和密碼復原，使用 ASP.NET Identity (C#)
-====================
-藉由[Hao 是一隻](https://github.com/HaoK)，[請參閱 Pranav Rastogi](https://github.com/rustd)， [Rick Anderson]((https://twitter.com/RickAndMSFT))， [Suhas Joshi](https://github.com/suhasj)
+# <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>帳戶確認和密碼復原，使用 ASP.NET Identity (C#)
 
-> 在進行本教學課程之前您應該先完成[登入、 電子郵件確認和密碼重設建立安全的 ASP.NET MVC 5 web 應用程式](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md)。 本教學課程包含更多詳細資料，並將為您示範如何設定本機帳戶的確認電子郵件，並可讓使用者重設其遺忘的密碼，在 ASP.NET 身分識別。 撰寫本文時已由 Rick Anderson ([@RickAndMSFT](https://twitter.com/#!/RickAndMSFT))，請參閱 Pranav Rastogi ([@rustd](https://twitter.com/rustd))，Hao 是一隻和 Suhas Joshi。 NuGet 範例已寫入主要是由 Hao 是一隻。
-
+> 在進行本教學課程之前您應該先完成[登入、 電子郵件確認和密碼重設建立安全的 ASP.NET MVC 5 web 應用程式](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md)。 本教學課程包含更多詳細資料，並將為您示範如何設定本機帳戶的確認電子郵件，並可讓使用者重設其遺忘的密碼，在 ASP.NET 身分識別。
 
 本機使用者帳戶需要使用者建立帳戶的密碼和密碼 （安全） 儲存在 web 應用程式。 ASP.NET Identity 也支援不需要使用者建立應用程式密碼的社交帳戶。 [社交帳戶](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)使用協力廠商 （例如 Google、 Twitter、 Facebook 或 Microsoft） 驗證使用者。 本主題涵蓋下列資訊：
 
@@ -32,7 +29,7 @@ ms.locfileid: "48577830"
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image1.png)
 
-按一下 [註冊] 按鈕會傳送確認電子郵件，其中包含電子郵件地址的驗證語彙基元。
+選取 [Register] 按鈕會傳送確認電子郵件，其中包含電子郵件地址的驗證語彙基元。
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image2.png)
 
@@ -40,7 +37,7 @@ ms.locfileid: "48577830"
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image3.png)
 
-按一下連結，確認該帳戶。
+選取此連結確認帳戶。
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image4.png)
 
@@ -55,11 +52,11 @@ ms.locfileid: "48577830"
 使用者很快就會收到一封電子郵件，讓他們能夠重設其密碼的連結。  
   
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image6.png)  
-按一下連結會移至重設頁面。  
+選取此連結會移至重設頁面。  
   
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image7.png)  
   
-按一下 **重設**按鈕將會確認重設密碼。  
+選取**重設**按鈕將會確認重設密碼。  
   
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image8.png)
 
@@ -67,16 +64,13 @@ ms.locfileid: "48577830"
 
 ## <a name="create-an-aspnet-web-app"></a>建立 ASP.NET Web 應用程式
 
-開始安裝並執行[Visual Studio Express 2013 for Web](https://go.microsoft.com/fwlink/?LinkId=299058)或是[Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566)。 安裝 Visual Studio [2013 Update 2](https://go.microsoft.com/fwlink/?LinkId=390521)或更高版本。
-
-> [!NOTE]
-> 警告： 您必須安裝 Visual Studio [2013 Update 2](https://go.microsoft.com/fwlink/?LinkId=390521)完成本教學課程。
+開始安裝並執行[Visual Studio 2017](https://visualstudio.microsoft.com/)。
 
 
 1. 建立新的 ASP.NET Web 專案，然後選取 [MVC] 範本。 Web Form 也支援 ASP.NET 身分識別，因此您可以依照類似的步驟，在 web form 應用程式。
-2. 保留為預設的驗證**個別使用者帳戶**。
-3. 執行應用程式，請按一下**註冊**連結，並註冊的使用者。 此時，唯一的驗證電子郵件是使用[[EmailAddress]](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx)屬性。
-4. 在 [伺服器總管] 中，瀏覽至**資料 Connections\DefaultConnection\Tables\AspNetUsers**，以滑鼠右鍵按一下並選取**開啟資料表定義**。
+2. 若要驗證變更**個別使用者帳戶**。
+3. 執行應用程式，請選取**註冊**連結，並註冊的使用者。 此時，唯一的驗證電子郵件是使用[[EmailAddress]](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx)屬性。
+4. 在 [伺服器總管] 中，瀏覽至**資料 Connections\DefaultConnection\Tables\AspNetUsers**，以滑鼠右鍵按一下，然後選取**開啟資料表定義**。
 
     下圖顯示`AspNetUsers`結構描述：
 
@@ -97,7 +91,7 @@ Cookie 中介軟體會檢查每個要求的 cookie。 `SecurityStampValidator`�
 
 每個程式碼的註解`UseCookieAuthentication`方法支援 cookie 驗證。 `SecurityStamp`欄位和相關聯的程式碼會提供額外一層的應用程式的安全性，當您變更密碼，您就會記錄從您用以登入瀏覽器。 `SecurityStampValidator.OnValidateIdentity`方法可讓應用程式的使用者登入時，驗證安全性權杖時變更密碼，或使用外部登入使用。 這樣才能確保以舊密碼產生的任何權杖 (cookie) 都會失效。 在範例專案中，如果您變更使用者密碼然後新的權杖會為使用者產生，任何先前的權杖都會失效和`SecurityStamp`欄位會更新。
 
-身分識別系統可讓您設定您的應用程式，使用者的安全性設定檔變更時 (例如，當使用者變更其密碼或變更相關聯的登入 (例如 Facebook、 Google、 Microsoft 帳戶等)，使用者登出所有瀏覽器執行個體。 例如下, 圖顯示[單一登出的範例](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/SingleSignOutSample/readme.txt)應用程式，這可讓使用者登出所有的瀏覽器執行個體 （在此情況下，在 IE、 Firefox 和 Chrome），依序按一下按鈕即可。 或者，此範例可讓您只登出的特定瀏覽器執行個體。
+身分識別系統可讓您設定您的應用程式，使用者的安全性設定檔變更時 (例如，當使用者變更其密碼或變更相關聯的登入 (例如 Facebook、 Google、 Microsoft 帳戶等)，使用者登出所有瀏覽器執行個體。 例如下, 圖顯示[單一登出的範例](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/SingleSignOutSample/readme.txt)應用程式，這可讓使用者選取一個按鈕，即可登出所有的瀏覽器執行個體 （在此情況下，在 IE、 Firefox 和 Chrome）。 或者，此範例可讓您只登出的特定瀏覽器執行個體。
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image11.png)
 
@@ -138,25 +132,25 @@ OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`並登入使用
 
 ## <a name="email-confirmation"></a>電子郵件確認
 
-它是個不錯的主意，以確認新的使用者向以確認它們不會模擬其他人的電子郵件 （亦即，尚未註冊使用其他人的電子郵件）。 假設您有討論論壇，您會想要防止`"bob@example.com"`註冊為`"joe@contoso.com"`。 而不需要電子郵件確認`"joe@contoso.com"`無法從您的應用程式收到不想要的電子郵件。 假設 Bob 不小心註冊為`"bib@example.com"`並沒注意到，他便無法使用密碼復原，因為應用程式不需要其正確的電子郵件。 電子郵件確認來自 bot 提供有限的保護，並不提供保護，從決定濫發垃圾郵件者，它們有許多的工作電子郵件別名，它們可用來註冊。在下列範例中，使用者將無法變更其密碼，直到已確認他們的帳戶 (由他們按一下確認連結收到他們註冊的電子郵件帳戶。)您可以將此工作流程套用至其他案例中，例如傳送確認及重設系統管理員，等變更其設定檔的使用者的使用者傳送電子郵件建立的新帳戶密碼的連結。 您通常想要防止新使用者張貼至您的網站的任何資料之前先確認電子郵件、 SMS 文字訊息或其他機制。 <a id="build"></a>
+它是個不錯的主意，以確認新的使用者向以確認它們不會模擬其他人的電子郵件 （亦即，尚未註冊使用其他人的電子郵件）。 假設您有討論論壇，您會想要防止`"bob@example.com"`註冊為`"joe@contoso.com"`。 而不需要電子郵件確認`"joe@contoso.com"`無法從您的應用程式收到不想要的電子郵件。 假設 Bob 不小心註冊為`"bib@example.com"`並沒注意到，他便無法使用密碼復原，因為應用程式不需要其正確的電子郵件。 電子郵件確認來自 bot 提供有限的保護，並不提供保護，從決定濫發垃圾郵件者，它們有許多的工作電子郵件別名，它們可用來註冊。在下列範例中，使用者將無法變更其密碼，直到已確認他們的帳戶 （藉由它們選取他們註冊的電子郵件帳戶收到的確認連結。）您可以將此工作流程套用至其他案例中，例如傳送確認及重設系統管理員，等變更其設定檔的使用者的使用者傳送電子郵件建立的新帳戶密碼的連結。 您通常想要防止新使用者張貼至您的網站的任何資料之前先確認電子郵件、 SMS 文字訊息或其他機制。 <a id="build"></a>
 
-## <a name="building-a-more-complete-sample"></a>建置更完整的範例
+## <a name="build-a-more-complete-sample"></a>建立更完整的範例
 
 在本節中，您會使用 NuGet 來下載更完整範例，我們將使用。
 
 1. 建立新***空***ASP.NET Web 專案。
-2. 在套件管理員主控台中，輸入下列命令的下列命令： 
+2. 在套件管理員主控台中，輸入下列命令： 
 
     [!code-console[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample4.cmd)]
 
    在本教學課程中，我們將使用[SendGrid](http://sendgrid.com/)傳送電子郵件。 `Identity.Samples`套件會安裝我們將使用的程式碼。
 3. 設定[專案，以使用 SSL](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)。
-4. 測試建立本機帳戶執行的應用程式中，然後再按一下**註冊**連結，然後張貼之註冊表單。
-5. 按一下模擬電子郵件確認示範電子郵件連結。
+4. 測試建立本機帳戶執行應用程式中，選取**註冊**連結，然後張貼之註冊表單。
+5. 選取示範電子郵件連結，以模擬電子郵件確認。
 6. 移除此範例示範電子郵件連結確認程式碼 (`ViewBag.Link`帳戶控制器中的程式碼。 請參閱`DisplayEmail`和`ForgotPasswordConfirmation`動作方法和 razor 檢視)。
 
-> [!NOTE]
-> 警告： 如果您變更任何安全性設定，在此範例中，生產應用程式將會需要進行明確呼叫所做的變更安全性稽核。
+> [!WARNING]
+> 如果您變更任何安全性設定，在此範例中，生產應用程式必須進行安全性稽核會明確呼叫所做的變更。
 
 
 ## <a name="examine-the-code-in-appstartidentityconfigcs"></a>檢查應用程式中的程式碼\_Start\IdentityConfig.cs
@@ -176,7 +170,7 @@ OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`並登入使用
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample6.cs)]
 
-上述程式碼會使用模型資料來建立新的使用者帳戶使用的電子郵件和輸入的密碼。 資料存放區中的電子郵件別名時，帳戶建立失敗，並重新顯示表單。 `GenerateEmailConfirmationTokenAsync`方法會建立安全的確認語彙基元，並將它儲存在 ASP.NET 身分識別資料存放區。 [其中使用了 Url.Action](https://msdn.microsoft.com/library/dd505232(v=vs.118).aspx)方法會建立一個連結，其中包含`UserId`和確認語彙基元。 此連結，然後傳送電子郵件給使用者，使用者可以按一下以確認他們的帳戶其電子郵件應用程式中的連結。
+上述程式碼會使用模型資料來建立新的使用者帳戶使用的電子郵件和輸入的密碼。 資料存放區中的電子郵件別名時，帳戶建立失敗，並重新顯示表單。 `GenerateEmailConfirmationTokenAsync`方法會建立安全的確認語彙基元，並將它儲存在 ASP.NET 身分識別資料存放區。 [其中使用了 Url.Action](https://msdn.microsoft.com/library/dd505232(v=vs.118).aspx)方法會建立一個連結，其中包含`UserId`和確認語彙基元。 此連結，然後傳送電子郵件給使用者，使用者可以選取其電子郵件應用程式中的連結，以確認其帳戶。
 
 <a id="email"></a>
 
@@ -198,9 +192,9 @@ OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`並登入使用
 > 安全性-機密資料絕不儲存在原始程式碼中。 帳戶和認證會儲存在 appSetting 中。 在 Azure 上，您可以安全地儲存這些值在 **[設定](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** 在 Azure 入口網站中的索引標籤。 請參閱[最佳做法將密碼和其他機密資料部署到 ASP.NET 和 Azure](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md)。
 
 
-輸入您的 SendGrid 認證、 執行應用程式，註冊的電子郵件別名可以按一下您的電子郵件中的 [確認] 連結。 若要查看如何執行這項作業您[Outlook.com](http://outlook.com)電子郵件帳戶，請參閱 John Atten [Outlook.Com SMTP 主機的 C# SMTP 組態](http://typecastexception.com/post/2013/12/20/C-SMTP-Configuration-for-OutlookCom-SMTP-Host.aspx)和他[ASP.NET 身分識別 2.0： 設定註冊帳戶驗證與雙因素授權](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx)文章。
+輸入您的 SendGrid 認證，執行應用程式，註冊的電子郵件別名可以選取 [確認] 連結您的電子郵件中。 若要查看如何執行這項作業您[Outlook.com](http://outlook.com)電子郵件帳戶，請參閱 John Atten [ C# Outlook.Com SMTP 主機的 SMTP 組態](http://typecastexception.com/post/2013/12/20/C-SMTP-Configuration-for-OutlookCom-SMTP-Host.aspx)和他[ASP.NET 身分識別 2.0:設定註冊帳戶驗證和雙因素授權](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx)文章。
 
-當使用者按下**註冊**電子郵件地址會傳送包含驗證語彙基元確認電子郵件 按鈕。
+一旦使用者選取**註冊**電子郵件地址會傳送包含驗證語彙基元確認電子郵件 按鈕。
 
 ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image12.png)
 
@@ -216,7 +210,7 @@ OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`並登入使用
 
 如果尚未確認使用者電子郵件，方法就會以無訊息模式失敗。 無效的電子郵件地址張貼錯誤時，如果惡意使用者就可以使用該資訊來尋找有效的使用者識別碼 （電子郵件別名） 攻擊。
 
-下列程式碼示範`ConfirmEmail`在帳戶控制器當使用者按一下傳送給他們的電子郵件中的 [確認] 連結時所呼叫的方法：
+下列程式碼示範`ConfirmEmail`在帳戶控制器當使用者在傳送給他們的電子郵件中選取 [確認] 連結時所呼叫的方法：
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample10.cs)]
 
@@ -230,13 +224,13 @@ OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`並登入使用
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample12.cs)]
 
- 若要讓您的應用程式更安全，ASP.NET 身分識別支援雙因素驗證 (2FA)。 請參閱[ASP.NET 身分識別 2.0： 設定帳戶驗證和雙因素授權](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx)由 John Atten。 雖然您可以設定帳戶鎖定的密碼登入嘗試失敗，該方法可讓您的登入容易[DOS](http://en.wikipedia.org/wiki/Denial-of-service_attack)鎖定。 我們建議您只適用於帳戶鎖定 2FA。  
+ 若要讓您的應用程式更安全，ASP.NET 身分識別支援雙因素驗證 (2FA)。 請參閱[ASP.NET 身分識別 2.0:設定帳戶驗證和雙因素授權](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx)由 John Atten。 雖然您可以設定帳戶鎖定的密碼登入嘗試失敗，該方法可讓您的登入容易[DOS](http://en.wikipedia.org/wiki/Denial-of-service_attack)鎖定。 我們建議您只適用於帳戶鎖定 2FA。  
 <a id="addRes"></a>
 
 ## <a name="additional-resources"></a>其他資源
 
 - [ASP.NET Identity 的自訂儲存體提供者概觀](../extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
 - [使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入的 MVC 5 應用程式](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)也會示範如何將使用者資料表中的設定檔資訊。
-- [ASP.NET MVC 和身分識別 2.0： 了解基本概念](http://typecastexception.com/post/2014/04/20/ASPNET-MVC-and-Identity-20-Understanding-the-Basics.aspx)由 John Atten。
+- [ASP.NET MVC 和身分識別 2.0:了解基本概念](http://typecastexception.com/post/2014/04/20/ASPNET-MVC-and-Identity-20-Understanding-the-Basics.aspx)由 John Atten。
 - [ASP.NET Identity 簡介](../getting-started/introduction-to-aspnet-identity.md)
 - [宣佈 ASP.NET 身分識別 2.0.0 RTM](https://blogs.msdn.com/b/webdev/archive/2014/03/20/test-announcing-rtm-of-asp-net-identity-2-0-0.aspx)請參閱 Pranav rastogi。

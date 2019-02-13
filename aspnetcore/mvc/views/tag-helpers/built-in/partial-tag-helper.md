@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/25/2018
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: bcaeb3ba286feb55c0755c5baee4b7608710e647
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: d56df549d845b1f83ec4a5ec97ce6b44438f725a
+ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207780"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55428430"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>ASP.NET Core 的部分標記協助程式
 
@@ -53,7 +53,7 @@ ms.locfileid: "50207780"
 
 ## <a name="for"></a>for
 
-`for` 屬性會針對目前的模型指派一個要評估的 [ModelExpression](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.modelexpression)。 `ModelExpression` 可推斷 `@Model.` 語法。 例如，可以使用 `for="Product"`，而不是 `for="@Model.Product"`。 使用 `@` 符號來定義內嵌運算式會覆寫這個預設的推斷行為。 `for` 屬性不能與 [model](#model) 屬性一起使用。
+`for` 屬性會針對目前的模型指派一個要評估的 [ModelExpression](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.modelexpression)。 `ModelExpression` 可推斷 `@Model.` 語法。 例如，可以使用 `for="Product"`，而不是 `for="@Model.Product"`。 使用 `@` 符號來定義內嵌運算式會覆寫這個預設的推斷行為。
 
 下列標記將載入 *_ProductPartial.cshtml*：
 

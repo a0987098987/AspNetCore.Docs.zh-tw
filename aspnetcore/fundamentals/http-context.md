@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/27/2018
 uid: fundamentals/httpcontext
-ms.openlocfilehash: ee185cd30af51fa6ee9a4d23ea60a56ec1b76c8d
-ms.sourcegitcommit: 506a199274e9fe5fb4070b273ba94f29f14cb619
+ms.openlocfilehash: babc637cdec8590ac14f7924c17e862e5b2f6a81
+ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2018
-ms.locfileid: "39332284"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55428482"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>存取 ASP.NET Core 中的 HttpContext
 
@@ -109,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-在上述範例中：
+在以下範例中：
 
 * `UserRepository` 宣告其對 `IHttpContextAccessor` 的相依性。
 * 當相依性插入解析相依性鏈結並建立 `UserRepository` 的實例時，將提供相依性。

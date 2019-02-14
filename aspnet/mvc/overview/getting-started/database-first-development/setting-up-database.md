@@ -4,17 +4,17 @@ title: 教學課程：開始使用 EF Database First 使用 MVC 5
 description: 本教學課程會示範如何開始使用的現有資料庫，並快速建立 web 應用程式，可讓使用者與資料互動。
 author: Rick-Anderson
 ms.author: riande
-ms.date: 01/28/2019
+ms.date: 01/15/2019
 ms.topic: tutorial
 ms.assetid: 095abad4-3bfe-4f06-b092-ae6a735b7e49
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/setting-up-database
 msc.type: authoredcontent
-ms.openlocfilehash: dfc6c7a7083524a1e7049fdc879fe679f951084d
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: d99fdb5382037038d4428ff1946f39aee380fb75
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667735"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248221"
 ---
 # <a name="tutorial-get-started-with-ef-database-first-using-mvc-5"></a>教學課程：開始使用 EF Database First 使用 MVC 5
 
@@ -33,17 +33,16 @@ ms.locfileid: "55667735"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 
-## <a name="introduction"></a>簡介
-
-本教學課程可解決這種情況您有一個資料庫並想要產生程式碼，該資料庫的欄位為基礎的 web 應用程式。 這個方法會呼叫第一個資料庫的開發。 如果您還沒有現有的資料庫，您可以改為使用此方法稱為 Code First 開發這牽涉到定義的資料類別和類別屬性從產生的資料庫。
 
 ## <a name="set-up-the-database"></a>將資料庫設定
 
 為了模擬的環境需要現有的資料庫，您會先使用一些預先填入的資料，建立資料庫，然後再建立 web 應用程式連接至資料庫。
 
-本教學課程被開發使用 LocalDB。 您可以使用現有的資料庫伺服器，而不使用 LocalDB，但根據您的 Visual Studio 和您的資料庫類型的版本，所有的 Visual Studio 中的資料工具可能不支援。 如果工具不適用於您的資料庫中，您可能需要針對您的資料庫執行某些管理套件中的特定資料庫的步驟。
+
+本教學課程被開發使用 Visual Studio 2017 中使用 LocalDB。 您可以使用現有的資料庫伺服器，而不使用 LocalDB，但根據您的 Visual Studio 和您的資料庫類型的版本，所有的 Visual Studio 中的資料工具可能不支援。 如果工具不適用於您的資料庫中，您可能需要針對您的資料庫執行某些管理套件中的特定資料庫的步驟。
+
 
 如果您的 Visual Studio 版本中有資料庫工具的問題，請確定您已安裝最新版的資料庫工具。 如需更新或安裝資料庫工具的資訊，請參閱[Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/hh297027)。
 

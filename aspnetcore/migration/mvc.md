@@ -3,14 +3,14 @@ title: 從 ASP.NET MVC 移轉至 ASP.NET Core MVC
 author: ardalis
 description: 了解如何將 ASP.NET MVC 專案移轉至 ASP.NET Core MVC 開始使用。
 ms.author: riande
-ms.date: 03/07/2017
+ms.date: 02/13/2019
 uid: migration/mvc
-ms.openlocfilehash: 7c9d927bbd06f96f130d53e946a2963b5804960b
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: 2ca51a145243444722ad8081fd8cdbb65d72b53a
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505735"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248039"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>從 ASP.NET MVC 移轉至 ASP.NET Core MVC
 
@@ -27,9 +27,9 @@ ms.locfileid: "51505735"
 
 ![Visual Studio 新增專案對話方塊](mvc/_static/new-project.png)
 
-![新的 Web 應用程式 對話方塊： ASP.NET 範本 面板中選取的 MVC 專案範本](mvc/_static/new-project-select-mvc-template.png)
+![新的 Web 應用程式 對話方塊中：ASP.NET 範本 面板中選取的 MVC 專案範本](mvc/_static/new-project-select-mvc-template.png)
 
-*選擇性︰* 從方案的名稱變更*WebApp1*要*Mvc5*。 Visual Studio 會顯示新的方案名稱 (*Mvc5*)，讓您更方便區分此專案從下一步 的專案。
+*選擇性：* 從方案的名稱變更*WebApp1*要*Mvc5*。 Visual Studio 會顯示新的方案名稱 (*Mvc5*)，讓您更方便區分此專案從下一步 的專案。
 
 ## <a name="create-the-aspnet-core-project"></a>建立 ASP.NET Core 專案
 
@@ -37,9 +37,9 @@ ms.locfileid: "51505735"
 
 ![[新增專案] 對話](mvc/_static/new_core.png)
 
-![新的 ASP.NET Web 應用程式 對話方塊： 在 ASP.NET Core 範本 面板中選取的空白專案範本](mvc/_static/new-project-select-empty-aspnet5-template.png)
+![新的 ASP.NET Web 應用程式 對話方塊中：ASP.NET Core 範本 面板中選取的空白專案範本](mvc/_static/new-project-select-empty-aspnet5-template.png)
 
-* *選擇性︰* 建立新的 ASP.NET Core 應用程式使用*Web 應用程式*專案範本。 將專案命名為*WebApp1*，然後選取驗證選項**個別使用者帳戶**。 重新命名此應用程式*FullAspNetCore*。 轉換中建立此專案可節省時間。 您可以查看範本產生的程式碼以查看最後的結果，或將程式碼複製到轉換專案。 它也很有用時停滯的轉換步驟，以比較與範本產生專案。
+* *選擇性：* 建立新的 ASP.NET Core 應用程式使用*Web 應用程式*專案範本。 將專案命名為*WebApp1*，然後選取驗證選項**個別使用者帳戶**。 重新命名此應用程式*FullAspNetCore*。 轉換中建立此專案可節省時間。 您可以查看範本產生的程式碼以查看最後的結果，或將程式碼複製到轉換專案。 它也很有用時停滯的轉換步驟，以比較與範本產生專案。
 
 ## <a name="configure-the-site-to-use-mvc"></a>設定站台使用 MVC
 
@@ -149,7 +149,7 @@ ms.locfileid: "51505735"
 
 * 建立*Views/Shared*資料夾。
 
-* *選擇性︰* 複製 *_ViewImports.cshtml*從*FullAspNetCore* MVC 專案*檢視*到 ASP.NET Core 專案的資料夾*檢視*資料夾。 中的任何命名空間宣告中移除 *_ViewImports.cshtml*檔案。 *_ViewImports.cshtml*檔案提供的所有檢視檔案的命名空間和帶入[標籤協助程式](xref:mvc/views/tag-helpers/intro)。 標籤協助程式會在新的版面配置檔案。 *_ViewImports.cshtml*檔案是 ASP.NET Core 的新功能。
+* *選擇性：* 複製 *_ViewImports.cshtml*從*FullAspNetCore* MVC 專案*檢視*到 ASP.NET Core 專案的資料夾*檢視*資料夾。 中的任何命名空間宣告中移除 *_ViewImports.cshtml*檔案。 *_ViewImports.cshtml*檔案提供的所有檢視檔案的命名空間和帶入[標籤協助程式](xref:mvc/views/tag-helpers/intro)。 標籤協助程式會在新的版面配置檔案。 *_ViewImports.cshtml*檔案是 ASP.NET Core 的新功能。
 
 * 複製 *_Layout.cshtml*舊的 ASP.NET MVC 專案中的檔案*Views/Shared*到 ASP.NET Core 專案的資料夾*Views/Shared*資料夾。
 
@@ -204,5 +204,5 @@ ASP.NET Core 會將 web 應用程式中的未處理例外狀況轉換成 HTTP 50
 
 ## <a name="additional-resources"></a>其他資源
 
-* [用戶端開發](xref:client-side/index)
-* [標記協助程式](xref:mvc/views/tag-helpers/intro)
+* <xref:razor-components/index>
+* <xref:mvc/views/tag-helpers/intro>

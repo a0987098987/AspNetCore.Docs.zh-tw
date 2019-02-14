@@ -4,18 +4,21 @@ title: 教學課程：ASP.NET MVC 5 應用程式中處理 ef 的並行存取
 description: 本教學課程會示範如何使用以多位使用者同時更新相同的實體時處理衝突的開放式並行存取。
 author: tdykstra
 ms.author: riande
-ms.date: 01/21/2019
 ms.topic: tutorial
+ms.date: 01/15/2019
 ms.assetid: be0c098a-1fb2-457e-b815-ddca601afc65
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 2b41b51de5fd6d87b9905ba2bb3ddf7cedb47e69
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: b513d7d86d382068bc1a8f1bcc61289ee946d38b
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889830"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248299"
 ---
+<a name="handling-concurrency-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-10-of-12"></a>處理並行使用 Entity Framework 6 在 ASP.NET MVC 5 應用程式 (10 小時，共 12)
+====================
+
 # <a name="tutorial-handle-concurrency-with-ef-in-an-aspnet-mvc-5-app"></a>教學課程：ASP.NET MVC 5 應用程式中處理 ef 的並行存取
 
 在先前的教學課程中，您學會如何更新資料。 本教學課程會示範如何使用以多位使用者同時更新相同的實體時處理衝突的開放式並行存取。 變更網頁使用`Department`實體，使它們處理並行錯誤。 下列圖例顯示了 [編輯] 和 [刪除] 頁面，包括一些發生並行衝突時會顯示的訊息。
@@ -26,12 +29,14 @@ ms.locfileid: "54889830"
 
 在本教學課程中，您已：
 
+
 > [!div class="checklist"]
 > * 深入了解並行衝突
 > * 新增開放式並行存取
 > * 修改 Department 控制器
 > * 測試並行處理
-> * 更新 [刪除] 頁面
+> * 更新 *Delete* 頁面
+
 
 ## <a name="prerequisites"></a>必要條件
 

@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何使用 ASP.NET Core 分散式快取來改善應用程式效能和延展性，特別是在雲端或伺服器陣列環境中。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/19/2018
+ms.date: 02/13/2019
 uid: performance/caching/distributed
-ms.openlocfilehash: d80cde372535aa04604ce0cd5a731a1448515093
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: a157eb075874d2118e3e34b51410b539a1ec37df
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253004"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248584"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>分散式快取的 ASP.NET Core
 
@@ -76,7 +76,7 @@ ms.locfileid: "50253004"
 
 ### <a name="distributed-memory-cache"></a>分散式記憶體內部快取
 
-分散式記憶體內部快取 (<xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddDistributedMemoryCache*>) 是一種架構提供的實作`IDistributedCache`，儲存在記憶體中的項目。 分散式記憶體內部快取並不實際的分散式快取。 快取項目會儲存在應用程式執行所在的伺服器上的應用程式執行個體。
+分散式記憶體內部快取 (<xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddDistributedMemoryCache*>) 是一種架構提供的實作<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>，儲存在記憶體中的項目。 分散式記憶體內部快取並不實際的分散式快取。 快取項目會儲存在應用程式執行所在的伺服器上的應用程式執行個體。
 
 分散式記憶體內部快取是很有用的實作：
 
@@ -149,13 +149,13 @@ services.AddDistributedRedisCache(options =>
 
 ## <a name="use-the-distributed-cache"></a>使用分散式快取
 
-若要使用<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>介面中，要求的執行個體`IDistributedCache`從應用程式中的任何建構函式。 提供執行個體[相依性插入 (DI)](xref:fundamentals/dependency-injection)。
+若要使用<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>介面中，要求的執行個體<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>從應用程式中的任何建構函式。 提供執行個體[相依性插入 (DI)](xref:fundamentals/dependency-injection)。
 
-當應用程式啟動時，`IDistributedCache`插入至`Startup.Configure`。 使用快取的目前時間<xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime>(如需詳細資訊，請參閱 < [Web 主機： IApplicationLifetime 介面](xref:fundamentals/host/web-host#iapplicationlifetime-interface)):
+當應用程式啟動時，<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>插入至`Startup.Configure`。 使用快取的目前時間<xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime>(如需詳細資訊，請參閱[Web 主機：IApplicationLifetime 介面](xref:fundamentals/host/web-host#iapplicationlifetime-interface)):
 
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_Configure&highlight=10)]
 
-範例應用程式會插入`IDistributedCache`成`IndexModel`供 [索引] 頁面。
+範例應用程式會插入<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>成`IndexModel`供 [索引] 頁面。
 
 每次載入 [索引] 頁面時，快取的時間，以檢查快取`OnGetAsync`。 如果尚未過期的快取的時間，則會顯示的時間。 如果經過 20 秒自前次存取快取的時間 （上一次此頁面已載入），頁面會顯示*快取的時間已過期*。
 
@@ -164,13 +164,13 @@ services.AddDistributedRedisCache(options =>
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Pages/Index.cshtml.cs?name=snippet_IndexModel&highlight=7,14-20,25-29)]
 
 > [!NOTE]
-> 若要使用的單一或範圍存留期不需要`IDistributedCache`執行個體 (至少為內建實作)。
+> 若要使用的單一或範圍存留期不需要<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>執行個體 (至少為內建實作)。
 >
-> 您也可以建立`IDistributedCache`執行個體，只要您可能需要其中一個，而不是使用 DI，但在程式碼中建立的執行個體可以讓您的程式碼難以測試，且違反[明確相依性準則](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)。
+> 您也可以建立<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>執行個體，只要您可能需要其中一個，而不是使用 DI，但在程式碼中建立的執行個體可以讓您的程式碼難以測試，且違反[明確相依性準則](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)。
 
 ## <a name="recommendations"></a>建議
 
-當您決定哪一個實作時`IDistributedCache`最適合您的應用程式，請考慮下列：
+當您決定哪一個實作時<xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache>最適合您的應用程式，請考慮下列：
 
 * 現有的基礎結構
 * 效能需求

@@ -4,26 +4,36 @@ title: 搜尋 |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: riande
-ms.date: 05/22/2015
+ms.date: 01/17/2019
 ms.assetid: df001954-18bf-4550-b03d-43911a0ea186
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 31fd35ac63f3eb31d824e1710833ad83a0852ac9
-ms.sourcegitcommit: a91e8dd2f4b788114c8bc834507277f4b5e8d6c5
+ms.openlocfilehash: ada125c917656f3a83524ff39e53b4cfc041a497
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712259"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248377"
 ---
 <a name="search"></a>搜尋
 ====================
-藉由[Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 [!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 ## <a name="adding-a-search-method-and-search-view"></a>新增搜尋方法和搜尋檢視
 
 在本節中，您會將搜尋功能加入`Index`動作方法，可讓您搜尋的內容類型或名稱的電影。
+
+## <a name="prerequisites"></a>必要條件
+
+若要符合此區段的螢幕擷取畫面，您需要執行應用程式 (F5)，並將下列的影片新增到資料庫。
+
+| 標題 | 發行日期 | 內容類型 | 價格 |
+| ----- | ------------ | ----- | ----- |
+| Ghostbusters | 6/8/1984 | 喜劇 | 6.99 |
+| Ghostbusters II | 6/16/1989 | 喜劇 | 6.99 |
+| 世界各地的 Apes | 3/27/1986 | 動作 | 5.99 |
+
 
 ## <a name="updating-the-index-form"></a>更新索引表單
 
@@ -68,7 +78,7 @@ ms.locfileid: "55712259"
 
 ![](adding-search/_static/image2.png)
 
-但是，您不能期望使用者在每次想要搜尋電影時修改 URL。 所以現在您將 UI，可協助他們篩選電影。 如果您變更的簽章`Index`方法，以測試如何傳遞路由繫結的 ID 參數，將它變更以便您`Index`方法會採用字串參數，名為`searchString`:
+但是，您不能期望使用者在每次想要搜尋電影時修改 URL。 因此，現在您將新增可協助他們篩選電影的 UI。 如果您變更的簽章`Index`方法，以測試如何傳遞路由繫結的 ID 參數，將它變更以便您`Index`方法會採用字串參數，名為`searchString`:
 
 [!code-csharp[Main](adding-search/samples/sample7.cs)]
 
@@ -120,7 +130,7 @@ Visual Studio 2013 都有一項不錯的改進時顯示和編輯檢視檔案。 
 
 [!code-csharp[Main](adding-search/samples/sample12.cs)]
 
-程式碼會使用`AddRange`方法的泛型`List`將清單中的所有不同的內容類型的集合。 (不含`Distinct`修飾詞，會加入重複的內容類型 — 比方說，喜劇會新增兩次在我們的範例)。 程式碼再將儲存在內容類型清單`ViewBag.MovieGenre`物件。 儲存類別目錄資料 （這類電影內容類型的） 當做[SelectList](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx)物件中`ViewBag`，則存取下拉式清單方塊中的類別目錄資料的 MVC 應用程式的典型方法。
+程式碼會使用`AddRange`方法的泛型`List`將清單中的所有不同的內容類型的集合。 (不含`Distinct`修飾詞，會加入重複的內容類型 — 比方說，喜劇會新增兩次在我們的範例)。 程式碼再將儲存在內容類型清單`ViewBag.MovieGenre`物件。 將類別目錄資料 （這類電影內容類型） 儲存為[SelectList](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx)物件中`ViewBag`，則存取下拉式清單方塊中的類別目錄資料的 MVC 應用程式的典型方法。
 
 下列程式碼示範如何檢查`movieGenre`參數。 如果不是空的程式碼進一步限制電影查詢來限制所選的影片來指定內容類型。
 

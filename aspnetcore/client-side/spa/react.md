@@ -2,26 +2,19 @@
 title: React 專案範本與 ASP.NET Core 搭配使用
 author: SteveSandersonMS
 description: 了解如何開始使用 React 和 create-react-app 適用的 ASP.NET Core 單頁應用程式 (SPA) 專案範本。
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/21/2018
+ms.date: 02/13/2019
 uid: spa/react
-ms.openlocfilehash: d83bff8abcd5b59d8bc4a51a101510755394f0c4
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: aa08a9d8d06d8b52be564fabf904d4923684d4e4
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667683"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248026"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>React 專案範本與 ASP.NET Core 搭配使用
-
-::: moniker range="= aspnetcore-2.0"
-
-> [!NOTE]
-> 本文件與 ASP.NET Core 2.0 包含的 React 專案範本無關， 而是討論您可以手動更新的新版 React 範本。 ASP.NET Core 2.1 預設會包含此範本。
-
-::: moniker-end
 
 更新的 React 專案範本可利用 React 和 [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA) 慣例來實作功能多樣的用戶端使用者介面 (UI)，適合作為 ASP.NET Core 應用程式入門。
 
@@ -29,17 +22,7 @@ ms.locfileid: "55667683"
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
-::: moniker range="= aspnetcore-2.0"
-
-如果使用 ASP.NET Core 2.0，請確定您已經[安裝更新的 React 專案範本](xref:spa/index#installation)。
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
 如已安裝 ASP.NET Core 2.1，就沒有必要安裝 React 專案範本。
-
-::: moniker-end
 
 進入命令提示字元，然後在空目錄中使用 `dotnet new react` 命令以建立新的專案。 例如，下列命令會在 *my-new-app* 目錄中建立應用程式並切換到該目錄：
 

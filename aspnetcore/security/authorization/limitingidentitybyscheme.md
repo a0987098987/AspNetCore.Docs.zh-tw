@@ -5,12 +5,12 @@ description: 這篇文章說明如何使用多個驗證方法時，限制至特�
 ms.author: riande
 ms.date: 10/22/2018
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: fbe9f32e01a214f41b5a6e9f43e8fdee5fc612df
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 778bb61f472ab2e76f85da5999d3c79238188f19
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50089392"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248195"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>ASP.NET Core 中的特定結構描述的授權
 
@@ -201,6 +201,6 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-因為預設的授權原則覆寫時，就可以使用簡單`[Authorize]`控制器中的屬性。 然後，控制器會接受要求的第一個或第二個簽發者所簽發的 jwt。
+因為預設的授權原則覆寫時，就可以使用`[Authorize]`控制器中的屬性。 然後，控制器會接受要求的第一個或第二個簽發者所簽發的 jwt。
 
 ::: moniker-end

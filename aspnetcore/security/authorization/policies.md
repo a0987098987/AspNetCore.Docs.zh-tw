@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/21/2017
 uid: security/authorization/policies
-ms.openlocfilehash: 4e8a9ac6c0594f9bab67214aaa8cab9199cca29d
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 937c73c26cd3935c5069d4735e754d1a567f41f4
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207391"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248104"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的原則為基礎的授權
 
@@ -32,6 +32,8 @@ ms.locfileid: "54207391"
 授權需求是原則可用來評估目前的使用者主體的資料參數的集合。 在我們的 「 AtLeast21 」 原則的需求是單一參數&mdash;的最低存在時間。 需求會實作[IAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationrequirement)，這是空的 marker 介面。 無法實作參數化的最短使用期限需求如下所示：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Requirements/MinimumAgeRequirement.cs?name=snippet_MinimumAgeRequirementClass)]
+
+如果授權原則包含多個授權需求，所有的需求必須傳遞成功原則評估的順序。 換句話說，在處理新增至單一授權原則的多個授權需求**AND**為基礎。
 
 > [!NOTE]
 > 要求不需要有資料或屬性。

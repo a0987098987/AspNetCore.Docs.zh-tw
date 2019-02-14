@@ -4,18 +4,22 @@ title: 教學課程：ASP.NET MVC 應用程式中，使用 EF 更新相關的資
 description: 在本教學課程中，您將更新相關的資料。 大部分的關聯性，做法是藉由更新外部索引鍵欄位或導覽屬性。
 author: tdykstra
 ms.author: riande
-ms.date: 01/17/2019
+ms.date: 01/19/2019
 ms.topic: tutorial
 ms.assetid: 7ba88418-5d0a-437d-b6dc-7c3816d4ec07
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: daefbcea39dc341c6fc72eb344b05eb2dbf0c3ba
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: 1ef4242ff3bd1dd86f4d58bd04ba08e8b90fdaa4
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889843"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248273"
 ---
+<a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>使用 Entity Framework 的 ASP.NET MVC 應用程式中更新相關的資料
+====================
+
+
 # <a name="tutorial-update-related-data-with-ef-in-an-aspnet-mvc-app"></a>教學課程：ASP.NET MVC 應用程式中，使用 EF 更新相關的資料
 
 在上一個教學課程中，您會顯示相關的資料。 在本教學課程中，您將更新相關的資料。 大部分的關聯性，做法是藉由更新外部索引鍵欄位或導覽屬性。 多對多關聯性，Entity Framework 不會聯結資料表直接公開，讓您新增和移除適當的導覽屬性的實體。
@@ -124,9 +128,12 @@ Scaffold 的程式碼不是您所要的。 設定資料的下拉式清單中，�
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample11.cs)]
 
-若要參考`RetryLimitExceededException`需要`using`陳述式。 若要將它加入，停留`RetryLimitExceededException`。 此時會出現此問題的說明。 選取 **顯示可能的修正**，然後按一下**使用 System.Data.Entity.Infrastructure;**。
+若要參考`RetryLimitExceededException`需要`using`陳述式，將它加入-停留`RetryLimitExceededException`。 會出現下列訊息：![ 重試例外狀況訊息](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image13.png)
 
-![解析重試例外狀況](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
+
+選取 **顯示 potentital 修正**，然後**使用 System.Data.Entity.Infrastructure**
+
+![解析重試例外狀況](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image14.png)
 
 程式碼會執行下列操作：
 

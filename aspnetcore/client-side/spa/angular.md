@@ -2,26 +2,19 @@
 title: 搭配 ASP.NET Core 使用 Angular 專案範本
 author: SteveSandersonMS
 description: 了解如何開始使用適用於 Angular 與 Angular CLI 的 ASP.NET Core 單頁應用程式 (SPA) 專案範本。
-monikerRange: '>= aspnetcore-2.0'
-ms.author: scaddie
+monikerRange: '>= aspnetcore-2.1'
+ms.author: stevesa
 ms.custom: mvc
-ms.date: 02/21/2018
+ms.date: 02/13/2019
 uid: spa/angular
-ms.openlocfilehash: 8283fe9e96acb57942040dd4c90fabd204a19663
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 35a839e31369e8dbf00f5dbfb3751a2985335755
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326039"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248117"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Angular 專案範本
-
-::: moniker range="= aspnetcore-2.0"
-
-> [!NOTE]
-> 本文件與包含於 ASP.NET Core 2.0 中的 Angular 專案範本無關。 其內容是關於您可以手動更新的新版 Angular 範本。 ASP.NET Core 2.1 預設會包含此範本。
-
-::: moniker-end
 
 更新的 Angular 專案範本很適合作為 ASP.NET Core 應用程式的建置起點，並利用 Angular 和 Angular CLI 來實作功能豐富的用戶端使用者介面 (UI)。
 
@@ -29,17 +22,7 @@ ms.locfileid: "49326039"
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
-::: moniker range="= aspnetcore-2.0"
-
-如果使用 ASP.NET Core 2.0，請確定您已[安裝更新的 Angular 專案範本](xref:spa/index#installation)。
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
 如已安裝 ASP.NET Core 2.1，就沒有必要安裝 Angular 專案範本。
-
-::: moniker-end
 
 進入命令提示字元，然後在空目錄中使用 `dotnet new angular` 命令以建立新的專案。 例如，下列命令會在 *my-new-app* 目錄中建立應用程式並切換到該目錄：
 
@@ -70,7 +53,7 @@ Now listening on: http://localhost:<port>
 
 在瀏覽器中開啟這個 URL。
 
-應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 系統會記錄一則類似下列的訊息：*NG Live Development Server is listening on localhost:&lt;otherport&gt;, open your browser on http://localhost:&lt;otherport&gt;/*. 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
+應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 系統會記錄一則類似下面的訊息：*NG Live 程式開發伺服器在 localhost 上接聽：&lt;otherport&gt;，開啟您的瀏覽器 http://localhost:&lt; otherport&gt;/*。 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
 
 ---
 

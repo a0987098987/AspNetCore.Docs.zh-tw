@@ -4,14 +4,14 @@ author: ssougnez
 description: 在本教學課程中，您可以設定 Webpack 來組合並建置其用戶端以 TypeScript 撰寫的 ASP.NET Core SignalR Web 應用程式。
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 02/11/2019
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 8292ab2e0ad1f5c67ac7f15c280b49700f6717ad
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: aaf9aa59928ed6b17bc0586d97dbdefc9e30362c
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836320"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56102948"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
 
@@ -80,13 +80,13 @@ dotnet new web -o SignalRWebPack
 1. 安裝必要的 npm 套件。 從專案的根目錄中執行下列命令：
 
     ```console
-    npm install -D -E clean-webpack-plugin@0.1.19 css-loader@0.28.11 html-webpack-plugin@3.2.0 mini-css-extract-plugin@0.4.0 ts-loader@4.4.1 typescript@2.9.2 webpack@4.12.0 webpack-cli@3.0.6
+    npm install -D -E clean-webpack-plugin@1.0.1 css-loader@2.1.0 html-webpack-plugin@4.0.0-beta.5 mini-css-extract-plugin@0.5.0 ts-loader@5.3.3 typescript@3.3.3 webpack@4.29.3 webpack-cli@3.2.3
     ```
 
     要注意的一些命令詳細資料：
 
     * 版本號碼接在每一個套件名稱的 `@` 符號之後。 npm 會安裝這些特定的套件版本。
-    * `-E` 選項會停用 npm 將[語意版本控制](https://semver.org/)範圍運算子寫入 *package.json* 的預設行為。 例如，會使用 `"webpack": "4.12.0"`，而不是 `"webpack": "^4.12.0"`。 此選項可防止意外升級至較新的套件版本。
+    * `-E` 選項會停用 npm 將[語意版本控制](https://semver.org/)範圍運算子寫入 *package.json* 的預設行為。 例如，會使用 `"webpack": "4.29.3"`，而不是 `"webpack": "^4.29.3"`。 此選項可防止意外升級至較新的套件版本。
 
     如需詳細資料，請參閱官方的 [npm-install](https://docs.npmjs.com/cli/install) 文件。
 

@@ -199,7 +199,7 @@ CSS 自動同步處理功能可讓您直接編輯 CSS 檔案並查看立即在 P
 
 在 Visual Studio 2012 CSS 編輯器有色彩選擇器，可讓您輕鬆地選擇並插入色彩。 色彩選擇器包含標準的調色盤的色彩、 支援標準的色彩名稱、 雜湊程式碼、 RGB、 RGBA、 HSL 和 HSLA 色彩，並維護一份您已使用最新文件中的色彩。
 
-在上一個區段中，您可以變更的值`background-color`屬性。 要叫用色彩選擇器，將插入點之後的屬性名稱和類型**#** 或是**rgb (**。
+在上一個區段中，您可以變更的值`background-color`屬性。 要叫用色彩選擇器，將插入點之後的屬性名稱和類型 **#** 或是**rgb (**。
 
 ![CSS 色彩選擇器列](using-page-inspector-in-aspnet-mvc/_static/image36.png)
 

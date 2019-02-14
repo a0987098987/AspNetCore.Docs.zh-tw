@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: dbfb63bb7406ee8e20ae25b366162702ac87942c
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.openlocfilehash: 3e266bc435ff7e4a15655276c581ac171f0de47c
+ms.sourcegitcommit: a91e8dd2f4b788114c8bc834507277f4b5e8d6c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236454"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55712272"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
@@ -51,7 +51,8 @@ ms.locfileid: "55236454"
 
    * 標籤協助程式使用以根類別名稱的項目為目標的命名慣例 (去掉類別名稱的 *TagHelper* 部分)。 在此範例中，**EmailTagHelper** 的根名稱是 *email*，因此將會以 `<email>` 標籤為目標。 此命名慣例應該適用於大部分的標籤協助程式，稍後將示範如何行覆寫它。
 
-   * `EmailTagHelper` 類別衍生自 `TagHelper`。 `TagHelper` 類別提供撰寫標籤協助程式的方法和屬性。
+   * 
+  `EmailTagHelper` 類別衍生自 `TagHelper`。 `TagHelper` 類別提供撰寫標籤協助程式的方法和屬性。
 
    * 覆寫的 `Process` 方法控制標籤協助程式在其執行時的作用。 `TagHelper` 類別也會使用相同的參數來提供非同步版本 (`ProcessAsync`)。
 
@@ -227,7 +228,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    > [!NOTE]
    > 您可以搭配使用下列標籤 (markup) 與結尾標籤 (tag)，並移除標籤 (tag) 協助程式中包含 `TagMode.StartTagAndEndTag` 的行：
    >
-   > [!code-html[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutNotSelfClosing.cshtml?range=13-18)]
+   > [!code-html[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutNotSelfClosing.cshtml?range=20-21)]
 
 ## <a name="condition-tag-helper"></a>條件標籤協助程式
 

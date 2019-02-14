@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: seodec18
 ms.date: 11/22/2018
 uid: data/ef-rp/intro
-ms.openlocfilehash: 868163ed621ef9818759efd72ed3d233dc958219
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: 0c12aa983f01285e27c10bba4e622b2d2ae0a1f2
+ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249499"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55854441"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -177,6 +177,7 @@ dotnet run
 
 ```console
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
+dotnet tool install --global dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Models.SchoolContext -udl -outDir Pages\Students --referenceScriptLibraries
 ```
 ------
@@ -262,7 +263,7 @@ EF Core 會建立空白資料庫。 在本節中，會寫入 `Initialize` 方法
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Intro)]
 
-注意：上述程式碼針對命名空間 (`namespace ContosoUniversity.Models`) 使用 `Models`，而不是使用 `Data`。 `Models` 與產生框架的程式碼一致。 如需詳細資訊，請參閱[此 GitHub Scaffolding 問題](https://github.com/aspnet/Scaffolding/issues/822)。
+注意:上述程式碼針對命名空間 (`namespace ContosoUniversity.Models`) 使用 `Models`，而不是使用 `Data`。 `Models` 與產生框架的程式碼一致。 如需詳細資訊，請參閱[此 GitHub Scaffolding 問題](https://github.com/aspnet/Scaffolding/issues/822)。
 
 程式碼會檢查資料庫中是否有任何學生。 如果資料庫中沒有學生，則會使用測試資料初始化資料庫。 它會將測試資料載入陣列之中，而非 `List<T>` 集合，以最佳化效能。
 

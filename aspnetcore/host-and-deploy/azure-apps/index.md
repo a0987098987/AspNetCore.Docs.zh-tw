@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: c70363c9cff94a682553745aba7fd4e396721f4e
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 4c7f2348b13207fb6f2ff830bbf67ffa30e5489c
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637673"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248234"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -215,6 +215,10 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 安全通訊協定繫結可讓您指定透過 HTTPS 回應要求時要使用的憑證。 繫結需要針對特定主機名稱簽發的有效私密憑證 (*.pfx*)。 如需詳細資訊，請參閱[教學課程：將現有的自訂 SSL 憑證繫結至 Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl)。
 
+## <a name="transform-webconfig"></a>轉換 web.config
+
+如需在發佈時轉換 *web.config* (例如依據設定、設定檔或環境設定環境變數)，請參閱<xref:host-and-deploy/iis/transform-webconfig>。
+
 ## <a name="additional-resources"></a>其他資源
 
 * [Web Apps 概觀 (5 分鐘的概觀影片)](/azure/app-service/app-service-web-overview)
@@ -226,7 +230,6 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 Windows Server 上的 Azure App Service 使用 [Internet Information Services (IIS)](https://www.iis.net/)。 有關基礎 IIS 技術的主題如下：
 
 * <xref:host-and-deploy/iis/index>
-* <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
 * [Microsoft TechNet 文件庫：Windows Server](/windows-server/windows-server-versions)

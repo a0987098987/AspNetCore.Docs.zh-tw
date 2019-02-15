@@ -558,6 +558,8 @@ items:
       name: 疑難排解
     - uid: host-and-deploy/azure-iis-errors-reference
       name: 錯誤參考
+    - uid: host-and-deploy/iis/transform-webconfig
+      name: 轉換 web.config
   - uid: fundamentals/servers/kestrel
     name: Kestrel
   - uid: fundamentals/servers/httpsys
@@ -878,9 +880,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 7c9baf2a9e3a800ff9abfcb757ffde039d49a9a4
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: d2015955147460621d64ea6035f5f8118a02469b
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159538"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248390"

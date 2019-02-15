@@ -4,14 +4,14 @@ author: guardrex
 description: 探索 ASP.NET Core 的網頁伺服器 Kestrel 與 HTTP.sys。 了解如何選擇伺服器，以及何時使用反向 Proxy 伺服器。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 02/13/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: a9f40ad7e9a63d6f88b6533578db8dfc55490bc9
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: 672fe2ce6fd0adae09c380fe508344a254f1a9fe
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396242"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248130"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -198,13 +198,13 @@ HTTP.sys 也可用於只公開到內部網路的應用程式。
 
 ## <a name="aspnet-core-server-infrastructure"></a>ASP.NET Core 伺服器基礎結構
 
-可在 `Startup.Configure` 方法中使用的 [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) 會公開 [IFeatureCollection](/dotnet/api/microsoft.aspnetcore.http.features.ifeaturecollection) 類型的 [ServerFeatures](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.serverfeatures) 屬性。 Kestrel 和 HTTP.sys 只會個別公開單一功能 [IServerAddressesFeature](/dotnet/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature)，但不同的伺服器實作可能會公開其他的功能。
+`Startup.Configure` 方法提供的 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> 會公開類型<xref:Microsoft.AspNetCore.Http.Features.IFeatureCollection> 的 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ServerFeatures> 屬性。 Kestrel 與 HTTP.sys 只會公開 <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> 功能，但不同的伺服器實作則可能會公開更多的功能。
 
 `IServerAddressesFeature` 可用來找出伺服器實作在執行階段已繫結的連接埠。
 
 ## <a name="custom-servers"></a>自訂伺服器
 
-如果內建伺服器不符合應用程式的需求，則可以建立自訂伺服器實作。 [Open Web Interface for .NET (OWIN) 指南](xref:fundamentals/owin)示範如何撰寫以 [Nowin](https://github.com/Bobris/Nowin) 為基礎的 [IServer](/dotnet/api/microsoft.aspnetcore.hosting.server.iserver) 實作。 只有應用程式使用的功能介面需要實作，但至少必須支援 [IHttpRequestFeature](/dotnet/api/microsoft.aspnetcore.http.features.ihttprequestfeature) 和 [IHttpResponseFeature](/dotnet/api/microsoft.aspnetcore.http.features.ihttpresponsefeature)。
+如果內建伺服器不符合應用程式的需求，則可以建立自訂伺服器實作。 [Open Web Interface for .NET (OWIN) 指南](xref:fundamentals/owin)示範如何撰寫採用 [Nowin](https://github.com/Bobris/Nowin) 的 <xref:Microsoft.AspNetCore.Hosting.Server.IServer> 實作。 只有該應用程式使用的功能介面才需要實作，但至少須支援 <xref:Microsoft.AspNetCore.Http.Features.IHttpRequestFeature> 及 <xref:Microsoft.AspNetCore.Http.Features.IHttpResponseFeature>。
 
 ## <a name="server-startup"></a>伺服器啟動
 
@@ -212,7 +212,7 @@ HTTP.sys 也可用於只公開到內部網路的應用程式。
 
 * [Visual Studio](https://www.visualstudio.com/vs/) &ndash; 您可以使用啟動設定檔搭配 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)/[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)或主控台來啟動應用程式和伺服器。
 * [Visual Studio Code](https://code.visualstudio.com/) &ndash; 應用程式和伺服器會由 [Omnisharp](https://github.com/OmniSharp/omnisharp-vscode) 啟動，這也可啟動 CoreCLR 偵錯工具。
-* [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/) &ndash; 應用程式和伺服器會由 [Mono Soft-Mode 偵錯工具](http://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/)啟動。
+* [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/) &ndash; 應用程式和伺服器會由 [Mono Soft-Mode 偵錯工具](https://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/)啟動。
 
 當您在專案資料夾中使用命令提示字元啟動應用程式時，[dotnet run](/dotnet/core/tools/dotnet-run) 會啟動應用程式和伺服器 (僅限 Kestrel 和 HTTP.sys)。 組態是由 `-c|--configuration` 選項指定，會設為 `Debug` (預設值) 或 `Release`。 如果 launchSettings.json 檔案中出現啟動設定檔，請使用 `--launch-profile <NAME>` 選項來設定啟動設定檔 (例如，`Development` 或 `Production`)。 如需詳細資訊，請參閱 [dotnet run](/dotnet/core/tools/dotnet-run) 和 [.NET Core 發佈封裝](/dotnet/core/build/distribution-packaging)。
 

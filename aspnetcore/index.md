@@ -4,14 +4,14 @@ author: rick-anderson
 description: 取得 ASP.NET Core 的簡介，ASP.NET Core 是一種跨平台且高效能的開放原始碼架構，用於建置現代化、雲端式、網際網路連線的應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 02/13/2019
 uid: index
-ms.openlocfilehash: e7c81ff82e5206a5aca217417f6cb1c339d72e89
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: c3f07814bfab19a0f070e0b48b0d2ef6cfc1594e
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341403"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248156"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -44,7 +44,7 @@ ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/first-web-api) 和 [We
 
 ## <a name="client-side-development"></a>用戶端開發
 
-ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Angular](xref:spa/angular)、[React](xref:spa/react) 與 [Bootstrap](https://getbootstrap.com/)。 如需詳細資訊，請參閱[用戶端開發](xref:client-side/index)。
+ASP.NET Core 無縫整合了一些熱門用戶端架構及程式庫，包括 [Razor 元件](xref:razor-components/index)、[Angular](xref:spa/angular)、[React](xref:spa/react) 及 [Bootstrap](https://getbootstrap.com/)。 如需詳細資訊，請參閱 [Razor 元件](xref:razor-components/index)及*用戶端開發*下的相關主題。
 
 <a name="target-framework"></a>
 

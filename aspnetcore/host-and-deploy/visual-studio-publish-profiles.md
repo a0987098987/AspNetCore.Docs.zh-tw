@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/22/2019
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 03acaa73fc2ebdc62522a1e081ca6ed72515483f
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: e1e8f99be18d6f395a146bda805f71c46cd0346d
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836479"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248351"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔
 
@@ -347,6 +347,8 @@ dotnet msbuild "AzureWebApp.csproj"
 </PropertyGroup>
 ```
 
+如果您需要進行 *web.config* 轉換 (例如根據設定、設定檔或環境設定環境變數)，請參閱<xref:host-and-deploy/iis/transform-webconfig>。
+
 ## <a name="exclude-files"></a>排除檔案
 
 發佈 ASP.NET Core Web 應用程式時，會包含 *wwwroot* 資料夾的組建成品和內容。 `msbuild` 支援[通用慣例模式](https://gruntjs.com/configuring-tasks#globbing-patterns)。 例如，下列 `<Content>` 元素會排除 *wwwroot/content* 資料夾及其所有子資料夾中的所有文字檔 (*.txt*)。
@@ -521,3 +523,4 @@ MSBuild file.
 * [Web Deploy](https://www.iis.net/downloads/microsoft/web-deploy) (MSDeploy) 可簡化對 IIS 伺服器的 Web 應用程式和網站部署。
 * [https://github.com/aspnet/websdk](https://github.com/aspnet/websdk/issues)：針對部署提出問題及要求功能。
 * [從 Visual Studio 將 ASP.NET Web 應用程式發佈至 Azure VM](/azure/virtual-machines/windows/publish-web-app-from-visual-studio)
+* <xref:host-and-deploy/iis/transform-webconfig>

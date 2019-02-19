@@ -1,31 +1,41 @@
 ---
-title: ASP.NET Core MVC 與 EF Core - 進階 - 10/10
-author: rick-anderson
+title: 教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
 description: 本教學課程介紹一些實用主題，這些主題超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念。
+author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/05/2019
+ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: ba3834b29e78972bf914a5cba1a2cae3cc19a315
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: f02aa1d6d8e431e7e2613835b3216786aed4ecd4
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "50090780"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103094"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC 與 EF Core - 進階 - 10/10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+# <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
 
 在上一個教學課程中，您實作了單表繼承。 本教學課程介紹幾個實用的主題，在超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念時，需要注意這些主題。
 
-## <a name="raw-sql-queries"></a>原始 SQL 查詢
+在本教學課程中，您會：
+
+> [!div class="checklist"]
+> * 執行原始 SQL 查詢
+> * 呼叫查詢以傳回實體
+> * 呼叫查詢以傳回其他類型
+> * 呼叫更新查詢
+> * 檢查 SQL 查詢
+> * 建立抽象層
+> * 了解自動變更偵測
+> * 了解 EF Core 原始程式碼和開發計劃
+> * 了解如何使用動態 LINQ 來簡化程式碼
+
+## <a name="prerequisites"></a>必要條件
+
+* [在 ASP.NET Core MVC Web 應用程式中使用 EF Core 來實作繼承](inheritance.md)
+
+## <a name="perform-raw-sql-queries"></a>執行原始 SQL 查詢
 
 使用 Entity Framework 的優點之一，是它可避免將程式碼繫結至太接近儲存資料之特定方法的位置。 它可透過產生 SQL 查詢和命令來達成此目的，同時這也可讓您不必自行撰寫。 但當您需要執行手動建立的特定 SQL 查詢時，會出現例外情況。 針對這些情況，Entity Framework Code 的第一個 API 會包含可讓您將 SQL 命令直接傳遞至資料庫的方法。 EF Core 1.0 中有下列選項可供您選擇：
 
@@ -37,7 +47,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 如同在 Web 應用程式中執行 SQL 命令一樣，您必須採取一些預防措施，以保護您的網站免於遭受 SQL 插入式攻擊。 執行這項操作的方法之一是使用參數化查詢，以確定網頁所提交的字串無法解譯為 SQL 命令。 在本教學課程中，您會在將使用者輸入整合到查詢時，使用參數化查詢。
 
-## <a name="call-a-query-that-returns-entities"></a>呼叫傳回實體的查詢
+## <a name="call-a-query-to-return-entities"></a>呼叫查詢以傳回實體
 
 `DbSet<TEntity>` 類別會提供一種方法，您可使用它來執行查詢，以傳回類型 `TEntity` 的實體。 若要查看其運作方式，您需要變更 Department 控制器的 `Details` 方法中的程式碼。
 
@@ -49,7 +59,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 ![部門詳細資料](advanced/_static/department-details.png)
 
-## <a name="call-a-query-that-returns-other-types"></a>呼叫傳回其他類型的查詢
+## <a name="call-a-query-to-return-other-types"></a>呼叫查詢以傳回其他類型
 
 先前您已針對顯示每個註冊日期之學生數目的 About 頁面，建立學生統計資料方格。 您已從學生實體集 (`_context.Students`) 取得資料，並使用 LINQ 將結果投射到 `EnrollmentDateGroup` 檢視模型物件清單。 假設您想要撰寫 SQL 本身，而不是使用 LINQ。 若要執行這項操作，您必須執行 SQL 查詢以傳回實體物件以外的某些項目。 在 EF Core 1.0 中，執行這項操作的方法之一是撰寫 ADO.NET 程式碼，並從 EF 取得資料庫連線。
 
@@ -83,7 +93,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 在方案總管中，以滑鼠右鍵按一下 *Views/Courses* 資料夾，然後按一下 [新增] > [新增項目]。
 
-在 [新增項目] 對話方塊中，按一下左窗格中 [已安裝] 下的 [ASP.NET]，按一下 [MVC 檢視頁面]，並將新的檢視命名為 *UpdateCourseCredits.cshtml*。
+在 [加入新項目] 對話方塊中，按一下左窗格中 [已安裝] 底下的 [ASP.NET Core]，按一下 [Razor 檢視]，然後將新的檢視命名為 *UpdateCourseCredits.cshtml*。
 
 在 *Views/Courses/UpdateCourseCredits.cshtml* 中，以下列程式碼取代範本程式碼：
 
@@ -103,7 +113,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 如需原始 SQL 查詢的詳細資訊，請參閱[原始 SQL 查詢](/ef/core/querying/raw-sql)。
 
-## <a name="examine-sql-sent-to-the-database"></a>檢查傳送至資料庫的 SQL
+## <a name="examine-sql-queries"></a>檢查 SQL 查詢
 
 有時能夠看到傳送至資料庫的實際 SQL 查詢很有幫助。 EF Core 會自動使用 ASP.NET Core 的內建記錄功能來寫入記錄檔，以包含用於查詢和更新的 SQL。 在本節中，您將看到 SQL 記錄的一些範例。
 
@@ -139,7 +149,7 @@ ORDER BY [t].[ID]
 
 請注意，您不必使用偵錯模式並在中斷點處停止，便能在 [輸出]  視窗中取得記錄輸出。 它只是在您想要查看輸出的點上停止記錄的便利方式。 如果不這樣做，記錄將繼續進行，而您必須往回捲動以尋找您感興趣的部分。
 
-## <a name="repository-and-unit-of-work-patterns"></a>存放庫和工作單元模式
+## <a name="create-an-abstraction-layer"></a>建立抽象層
 
 許多開發人員撰寫程式碼以實作存放庫和工作單元模式，作為使用 Entity Framework 之程式碼周圍的包裝函式。 這些模式主要用來建立資料存取層和應用程式的商務邏輯層之間的抽象層。 實作這些模式可協助隔離您的應用程式與資料存放區中的變更，並可促進自動化單元測試或測試驅動開發 (TDD)。 不過，撰寫額外的程式碼來實作這些模式並非一直是使用 EF 之應用程式的最佳選擇，原因如下：
 
@@ -169,7 +179,7 @@ Entity Framework 藉由比較實體的目前值與原始值，判斷實體如何
 _context.ChangeTracker.AutoDetectChangesEnabled = false;
 ```
 
-## <a name="entity-framework-core-source-code-and-development-plans"></a>Entity Framework Core 的原始程式碼和開發計劃
+## <a name="ef-core-source-code-and-development-plans"></a>EF Core 原始程式碼和開發計劃
 
 Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore)。 EF Core 存放庫包含每夜組建、問題追蹤、功能規格、設計會議記錄和[未來開發藍圖](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap)。 您可以提交或尋找 Bug，並做出貢獻。
 
@@ -180,27 +190,19 @@ Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCor
 若要從現有資料庫對包括實體類別的資料模型進行還原工程，請使用 [scaffold-dbcontext](/ef/core/miscellaneous/cli/powershell#scaffold-dbcontext) 命令。 請參閱[快速入門教學課程](/ef/core/get-started/aspnetcore/existing-db)。
 
 <a id="dynamic-linq"></a>
-## <a name="use-dynamic-linq-to-simplify-sort-selection-code"></a>使用動態的 LINQ 來簡化排序選取程式碼
+
+## <a name="use-dynamic-linq-to-simplify-code"></a>使用動態 LINQ 來簡化程式碼
 
 [本系列的第三個教學課程](sort-filter-page.md)示範如何在 `switch` 陳述式中，以硬式編碼的資料行名稱來撰寫 LINQ 程式碼。 若有兩個資料行可供選擇，這可正常運作；但是如果您有許多資料行，程式碼可能變得冗長。 若要解決該問題，您可以使用 `EF.Property` 方法，以指定屬性的名稱作為字串。 若要試用這種方法，請以下列程式碼取代 `StudentsController` 中的 `Index` 方法。
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DynamicLinq)]
 
-## <a name="next-steps"></a>後續步驟
-
-如此即完成本系列中在 ASP.NET Core MVC 應用程式中使用 Entity Framework Core 的教學課程。
-
-如需 EF Core 的詳細資訊，請參閱 [Entity Framework Core 文件](/ef/core)。 另外，還提供了一本書：[Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action)。
-
-如需如何部署 Web 應用程式的資訊，請參閱<xref:host-and-deploy/index>。
-
-如需與 ASP.NET Core MVC 相關之其他主題 (例如驗證和授權) 的資訊，請參閱 <xref:index>。
-
 ## <a name="acknowledgments"></a>感謝
 
-Tom Dykstra 和 Rick Anderson (Twitter @RickAndMSFT) 撰寫了本教學課程。 Rowan Miller、Diego Vega 和其他 Entity Framework 小組成員協助進行程式碼檢閱，並協助對撰寫本教學課程的程式碼時發生的問題進行偵錯。
+Tom Dykstra 和 Rick Anderson (Twitter @RickAndMSFT) 撰寫了本教學課程。 Rowan Miller、Diego Vega 和其他 Entity Framework 小組成員協助進行程式碼檢閱，並協助對撰寫本教學課程的程式碼時發生的問題進行偵錯。 John Parente 和 Paul Goldman 更新了 ASP.NET Core 2.2 的教學課程。
 
-## <a name="common-errors"></a>常見的錯誤
+<a id="common-errors"></a>
+## <a name="troubleshoot-common-errors"></a>針對常見錯誤進行疑難排解
 
 ### <a name="contosouniversitydll-used-by-another-process"></a>ContosoUniversity.dll 已由其他處理序使用
 
@@ -246,7 +248,33 @@ dotnet ef database drop
 
 檢查連接字串。 如果您已手動刪除資料庫檔案，請變更建構字串的資料庫名稱，以重新開始使用新的資料庫。
 
-::: moniker-end
+## <a name="get-the-code"></a>取得程式碼
 
-> [!div class="step-by-step"]
-> [上一步](inheritance.md)
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+
+## <a name="additional-resources"></a>其他資源
+
+如需 EF Core 的詳細資訊，請參閱 [Entity Framework Core 文件](/ef/core)。 另外，還提供了一本書：[Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action)。
+
+如需如何部署 Web 應用程式的資訊，請參閱<xref:host-and-deploy/index>。
+
+如需與 ASP.NET Core MVC 相關之其他主題 (例如驗證和授權) 的資訊，請參閱 <xref:index>。
+
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 執行原始 SQL 查詢
+> * 呼叫查詢以傳回實體
+> * 呼叫查詢以傳回其他類型
+> * 呼叫更新查詢
+> * 檢查 SQL 查詢
+> * 建立抽象層
+> * 了解自動變更偵測
+> * 了解 EF Core 原始程式碼和開發計劃
+> * 了解如何使用動態 LINQ 來簡化程式碼
+
+如此即完成本系列中在 ASP.NET Core MVC 應用程式中使用 Entity Framework Core 的教學課程。 如果您想要了解如何搭配 ASP.NET Core 使用 EF 6，請參閱下一篇文章。
+> [!div class="nextstepaction"]
+> [使用 ASP.NET Core 的 EF 6](../entity-framework-6.md)

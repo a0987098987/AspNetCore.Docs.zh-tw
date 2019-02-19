@@ -1,42 +1,38 @@
 ---
-title: ASP.NET Core MVC 和 EF Core - CRUD - 2/10
+title: 教學課程：實作 CRUD 功能 - ASP.NET MVC 搭配 EF Core
+description: 在本教學課程中，您將檢閱並自訂 MVC Scaffolding 自動為您在控制器及檢視中建立的 CRUD (建立、讀取、更新、刪除) 程式碼。
 author: rick-anderson
-description: ''
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/04/2019
+ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 34927415beadaa3f5c9035a9101e3c99f7cbc395
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 368b1774ba977ec8020a02d48705200fd54c3bbd
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090819"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56102977"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC 和 EF Core - CRUD - 2/10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+# <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學課程：實作 CRUD 功能 - ASP.NET MVC 搭配 EF Core
 
 在前一個教學課程中，您建立了一個使用 Entity Framework 及 SQL Server LocalDB 來儲存及顯示資料的 MVC 應用程式。 在本教學課程中，您將檢閱並自訂 MVC Scaffolding 自動為您在控制器及檢視中建立的 CRUD (建立、讀取、更新、刪除) 程式碼。
 
 > [!NOTE]
 > 實作儲存機制模式，以在您的控制器及資料存取層之間建立抽象層是一種非常常見的做法。 為了使這些教學課程維持簡單，並聚焦於教導如何使用 Entity Framework，課程中將不會使用儲存機制。 如需儲存機制的詳細資訊，請參閱[本系列的最後一個教學課程](advanced.md)。
 
-在本教學課程中，您將使用下列網頁：
+在本教學課程中，您會：
 
-![Student [詳細資料] 頁面](crud/_static/student-details.png)
+> [!div class="checklist"]
+> * 自訂 [詳細資料] 頁面
+> * 更新 [建立] 頁面
+> * 更新 [編輯] 頁面
+> * 更新 *Delete* 頁面
+> * 關閉資料庫連線
 
-![Student [建立] 頁面](crud/_static/student-create.png)
+## <a name="prerequisites"></a>必要條件
 
-![Student [編輯] 頁面](crud/_static/student-edit.png)
-
-![Student [刪除] 頁面](crud/_static/student-delete.png)
+* [開始在 ASP.NET Core MVC Web 應用程式中使用 EF Core](intro.md)
 
 ## <a name="customize-the-details-page"></a>自訂 [詳細資料] 頁面
 
@@ -172,7 +168,7 @@ public class Student
 
 在 *StudentController.cs* 中，HttpGet `Edit` 方法 (沒有 `HttpPost` 屬性的方法) 會使用 `SingleOrDefaultAsync` 方法來擷取選取的 Student 實體，如同您在 `Details` 方法中所看到的。 您不需要變更這個方法。
 
-### <a name="recommended-httppost-edit-code-read-and-update"></a>建議的 HttpPost Edit 程式碼：讀取及更新
+### <a name="recommended-httppost-edit-code-read-and-update"></a>建議的 HttpPost Edit 程式碼：讀取和更新
 
 將 HttpPost Edit 動作方法以下列程式碼取代。
 
@@ -186,7 +182,7 @@ public class Student
 
 作為這些變更的結果，HttpPost `Edit` 方法的方法簽章會與 HttpGet `Edit` 方法的簽章一樣；因此，您已將方法重新命名為 `EditPost`。
 
-### <a name="alternative-httppost-edit-code-create-and-attach"></a>HttpPost Edit 程式碼的替代方案：建立及連結
+### <a name="alternative-httppost-edit-code-create-and-attach"></a>替代的 HttpPost Edit 程式碼：建立並附加
 
 建議的 HttpPost Edit 程式碼可確保只有受到變更的資料行會獲得更新，並且會保留您不想要在資料繫結中包含之屬性內的資料。 然而，讀取優先的方法會需要額外的資料庫讀取，因此可能導致需要更多複雜的程式碼來處理並行衝突。 其替代方案便是將模型繫結器建立的實體連結到 EF 內容，並將其標示為已修改。 (請不要使用此程式碼更新您的專案。此程式碼僅作為展示選擇性的方法之用。)
 
@@ -270,13 +266,13 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 按一下 [刪除]。 顯示的 [索引] 頁面將不會包含遭刪除的學生。 (您會在並行教學課程中看到錯誤處理程式碼範例的實際情況。)
 
-## <a name="closing-database-connections"></a>關閉資料庫連線
+## <a name="close-database-connections"></a>關閉資料庫連線
 
 若要釋放資料庫連線保留的資源，您必須在完成作業並不再需要內容執行個體時盡快處置它。 ASP.NET Core 內建的[相依性插入](../../fundamentals/dependency-injection.md)會為您完成這項工作。
 
 在 *Startup.cs* 中，您會呼叫 [AddDbContext 擴充方法](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) 來在 ASP.NET Core DI 容器中佈建 `DbContext` 類別。 根據預設，該方法會將服務存留期設定為 `Scoped`。 `Scoped` 表示內容物件的存留期會與 Web 要求的存留期保持一致，並且在 Web 要求結束時會自動呼叫 `Dispose` 方法。
 
-## <a name="handling-transactions"></a>處理交易
+## <a name="handle-transactions"></a>處理交易
 
 根據預設，Entity Framework 隱含性的實作了交易。 在您對多個資料列或資料表進行變更，然後呼叫 `SaveChanges` 的案例下，Entity Framework 會自動確認您所有的變更都已成功或是失敗。 若有些變更已先完成，之後卻發生錯誤，則這些變更都會自動進行復原。 針對您需要更多控制的案例 -- 例如，若您想要在一個交易中包含在 Entity Framework 之外完成的作業 -- 請參閱[交易](/ef/core/saving/transactions)。
 
@@ -294,12 +290,21 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 如需詳細資訊，請參閱[追蹤與不追蹤](/ef/core/querying/tracking)。
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-您現在已有完整的頁面組，可為 Student 實體進行簡易的 CRUD 作業。 在下一個教學課程中，您會將 [索引] 頁面的功能進行拓展，新增排序、篩選和分頁功能。
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>後續步驟
 
-> [!div class="step-by-step"]
-> [上一頁](intro.md)
-> [下一頁](sort-filter-page.md)
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 自訂 [詳細資料] 頁面
+> * 更新 [建立] 頁面
+> * 更新 [編輯] 頁面
+> * 更新 [刪除] 頁面
+> * 關閉資料庫連線
+
+若要了解如何藉由新增排序、篩選及分頁來擴充 [索引] 頁面的功能，請前往下一篇文章。
+> [!div class="nextstepaction"]
+> [排序、篩選及分頁](sort-filter-page.md)

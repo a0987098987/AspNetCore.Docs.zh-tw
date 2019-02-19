@@ -4,14 +4,14 @@ author: isaac2004
 description: 了解 ASP.NET Core 2.1 的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/30/2018
+ms.date: 02/13/2019
 uid: aspnetcore-2.1
-ms.openlocfilehash: e16bb874f317b922f3900b540596f6ff38debb2f
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 8299af819f86d3d2371650ce3d87deb817f0feb8
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206831"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248169"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>ASP.NET Core 2.1 的新功能
 
@@ -70,7 +70,7 @@ Web 應用程式通常需要同時接聽 HTTP 和 HTTPS，然後將所有 HTTP �
 
 在生產環境中，必須明確設定 HTTPS。 在 2.1 中，已新增為 Kestrel 設定 HTTPS 的預設組態結構描述。 應用程式可以設定為使用下列：
 
-* 包括 URL 在內的多個端點。 如需詳細資訊，請參閱[實作 Kestrel 網頁伺服器：端點組態](xref:fundamentals/servers/kestrel#endpoint-configuration)。
+* 包括 URL 在內的多個端點。 如需詳細資訊，請參閱 [Kestrel 網頁伺服器實作：端點組態](xref:fundamentals/servers/kestrel#endpoint-configuration)。
 * 用於 HTTPS 的憑證來自磁碟檔案或憑證存放區。
 
 ## <a name="gdpr"></a>GDPR
@@ -131,7 +131,7 @@ ASP.NET Core 2.1 包含新的 `IHttpClientFactory` 服務，讓您在應用程�
 
 ## <a name="kestrel-transport-configuration"></a>Kestrel 傳輸組態
 
-隨著 ASP.NET Core 2.1 的發行，Kestrel 的預設傳輸不再根據 Libuv，而是改為根據受控通訊端。 如需詳細資訊，請參閱[實作 Kestrel 網頁伺服器：傳輸組態](xref:fundamentals/servers/kestrel#transport-configuration)。
+隨著 ASP.NET Core 2.1 的發行，Kestrel 的預設傳輸不再根據 Libuv，而是改為根據受控通訊端。 如需詳細資訊，請參閱 [Kestrel 網頁伺服器實作：傳輸組態](xref:fundamentals/servers/kestrel#transport-configuration)。
 
 ## <a name="generic-host-builder"></a>泛型主機建立器
 
@@ -144,7 +144,12 @@ ASP.NET Core 2.1 包含新的 `IHttpClientFactory` 服務，讓您在應用程�
 已更新適用於 Angular、React 和 React with Redux 的單頁應用程式範本，以使用標準的專案結構，並為每個架構建置系統。
 
 Angular 範本以 Angular CLI 為基礎，React 範本以 create-react-app 為基礎。
-如需詳細資訊，請參閱[以 ASP.NET Core 使用單頁應用程式範本](xref:spa/index)。
+
+如需詳細資訊，請參閱:
+
+* <xref:spa/angular>
+* <xref:spa/react>
+* <xref:spa/react-with-redux>
 
 ## <a name="razor-pages-search-for-razor-assets"></a>Razor Pages 搜尋 Razor 資產
 

@@ -4,14 +4,14 @@ author: ardalis
 description: 深入了解「篩選條件」的運作方式，以及如何在 ASP.NET Core MVC 中使用它們。
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/15/2019
+ms.date: 02/08/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: fe3082481b51c968fd361dbcc9553c4e35a36f2a
-ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
+ms.openlocfilehash: 3cd576b389a2a4384c0ba90b5740ac42140533cc
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54444346"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56159310"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -71,6 +71,7 @@ ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定
 > 請實作同步**或**非同步版本的篩選條件介面，但不要兩者同時實作。 架構會先檢查以查看篩選條件是否實作非同步介面，如果是的話，便呼叫該介面。 如果沒有，它會呼叫同步介面的方法。 如果您要在一個類別上同時實作兩種介面，則只會呼叫非同步方法。 使用抽象類別時，例如 <xref:Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute>，您只會覆寫同步方法或每個篩選條件類型的非同步方法。
 
 ### <a name="ifilterfactory"></a>IFilterFactory
+
 [IFilterFactory](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory) 會實作 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>。 因此，`IFilterFactory` 執行個體可用來在篩選條件管線中任何位置作為 `IFilterMetadata` 執行個體。 當架構準備要叫用篩選條件時，會嘗試將它轉換成 `IFilterFactory`。 如果該轉換成功，則會呼叫 [CreateInstance](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory.createinstance) 方法來建立將被叫用的 `IFilterMetadata` 執行個體。 因為在應用程式啟動時不需要明確設定精確的篩選條件管線，所以這提供了具有彈性的設計。
 
 您可以對您自己的屬性實作，實作 `IFilterFactory` 以作為另一種建立篩選條件的方法：
@@ -348,8 +349,12 @@ System.InvalidOperationException: No service for type
 
 ## <a name="result-filters"></a>結果篩選條件
 
-* 實作 `IResultFilter` 或 `IAsyncResultFilter` 介面。
+* 實作介面：
+  * `IResultFilter` 或 `IAsyncResultFilter`。
+  * `IAlwaysRunResultFilter` 或 `IAsyncAlwaysRunResultFilter`
 * 它們執行會包圍動作結果的執行。 
+
+### <a name="iresultfilter-and-iasyncresultfilter"></a>IResultFilter 和 IAsyncResultFilter
 
 以下是結果篩選條件的範例，它會新增 HTTP 標頭。
 
@@ -371,6 +376,35 @@ System.InvalidOperationException: No service for type
 針對 `IAsyncResultFilter`，對 `ResultExecutionDelegate` 呼叫 `await next` 會執行任何後續的結果篩選條件和動作結果。 若要縮短，請將 `ResultExecutingContext.Cancel` 設為 true，且不要呼叫 `ResultExectionDelegate`。
 
 架構提供一個抽象 `ResultFilterAttribute`，您可以進行子分類。 稍早所示的 [AddHeaderAttribute](#add-header-attribute)類別是結果篩選條件屬性的範例。
+
+### <a name="ialwaysrunresultfilter-and-iasyncalwaysrunresultfilter"></a>IAlwaysRunResultFilter 和 IAsyncAlwaysRunResultFilter
+
+<xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> 和 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> 介面會宣告針對動作結果執行的 <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> 實作。 篩選會套用至動作結果，除非 <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter> 或 <xref:Microsoft.AspNetCore.Mvc.Filters.IAuthorizationFilter> 發生作用而使回應發生短路。
+
+換句話說，這些「一律執行」的篩選一律會執行，除非例外狀況或授權篩選使它們發生短路。 `IExceptionFilter` 和 `IAuthorizationFilter` 以外的篩選不會使它們發生短路。
+
+例如，下列篩選一律會執行，並會在內容交涉失敗時，為動作結果 (<xref:Microsoft.AspNetCore.Mvc.ObjectResult>) 設定「422 無法處理的實體」狀態碼：
+
+```csharp
+public class UnprocessableResultFilter : Attribute, IAlwaysRunResultFilter
+{
+    public void OnResultExecuting(ResultExecutingContext context)
+    {
+        if (context.Result is StatusCodeResult statusCodeResult &&
+            statusCodeResult.StatusCode == 415)
+        {
+            context.Result = new ObjectResult("Can't process this!")
+            {
+                StatusCode = 422,
+            };
+        }
+    }
+
+    public void OnResultExecuted(ResultExecutedContext context)
+    {
+    }
+}
+```
 
 ## <a name="using-middleware-in-the-filter-pipeline"></a>在篩選條件管線中使用中介軟體
 

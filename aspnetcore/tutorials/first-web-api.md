@@ -4,14 +4,14 @@ author: rick-anderson
 description: 使用 ASP.NET Core MVC 建立 Web API
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/24/2019
+ms.date: 02/4/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 65af70be2cec68d30dd712b80312ebcd40ea0624
-ms.sourcegitcommit: c6db8b14521814f1f7e528d7aa06e474e4c04a1f
+ms.openlocfilehash: 5d72cb214a3d5565452b3b95f364818a71be44b7
+ms.sourcegitcommit: 98e9c7187772d4ddefe6d8e85d0d206749dbd2ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "55065044"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55737638"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>教學課程：使用 ASP.NET Core MVC 建立 Web API
 
@@ -39,7 +39,7 @@ ms.locfileid: "55065044"
 
 本教學課程會建立以下 API：
 
-|API | 說明 | 要求本文 | 回應本文 |
+|API | 描述 | 要求本文 | 回應本文 |
 |--- | ---- | ---- | ---- |
 |GET /api/todo | 取得所有待辦事項 | 無 | 待辦事項的陣列|
 |GET /api/todo/{id} | 依識別碼取得項目 | 無 | 待辦事項|
@@ -351,6 +351,8 @@ ms.locfileid: "55065044"
 `PutTodoItem` 類似於 `PostTodoItem`，但是會使用 HTTP PUT。 回應是 [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (204 (沒有內容))。 根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是變更。 若要支援部分更新，請使用 [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)。
 
 ### <a name="test-the-puttodoitem-method"></a>測試 PutTodoItem 方法
+
+此範例使用在每次應用程式啟動都必須起始的記憶體內部資料庫。 資料庫中必須有項目，您才能進行 PUT 呼叫。 在進行 PUT 呼叫之前，請先呼叫 GET 以確保資料庫中有項目。
 
 更新識別碼為 1 的待辦事項，並將其名稱設定為 "feed fish"：
 

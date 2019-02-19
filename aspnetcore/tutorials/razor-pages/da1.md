@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.date: 12/20/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 396cb9b9eeaab2d3db6108feeba71dbc2bc8981d
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: c950d1654591fe3c78daae0e2cb7a9b37472284f
+ms.sourcegitcommit: a91e8dd2f4b788114c8bc834507277f4b5e8d6c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997197"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55712246"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>更新 ASP.NET Core 應用程式中產生的頁面
 

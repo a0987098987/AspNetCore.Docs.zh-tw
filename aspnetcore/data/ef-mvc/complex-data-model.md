@@ -1,27 +1,20 @@
 ---
-title: ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
-author: rick-anderson
+title: 教學課程：建立複雜的資料模型 - ASP.NET MVC 搭配 EF Core
 description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
+author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/05/2019
+ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 87212edbfe34af6de938cf95314501e56e64a8be
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: c08fd6ff7c19c63161135b4c87609f6edd3edb80
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091037"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103120"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+# <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>教學課程：建立複雜的資料模型 - ASP.NET MVC 搭配 EF Core
 
 在先前的教學課程中，您建立了由三個實體組成的簡單資料模型。 在本教學課程中，您會新增更多實體和關聯性，並透過指定格式、驗證和資料庫對應規則來自訂資料模型。
 
@@ -29,7 +22,27 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 ![實體圖表](complex-data-model/_static/diagram.png)
 
-## <a name="customize-the-data-model-by-using-attributes"></a>使用屬性自訂資料模型
+在本教學課程中，您會：
+
+> [!div class="checklist"]
+> * 自訂資料模型
+> * 對 Student 實體進行變更
+> * 建立 Instructor 實體
+> * 建立 OfficeAssignment 實體
+> * 修改 Course 實體
+> * 建立 Department 實體
+> * 修改 Enrollment 實體
+> * 更新資料庫內容
+> * 將測試資料植入資料庫
+> * 新增移轉
+> * 變更連接字串
+> * 更新資料庫
+
+## <a name="prerequisites"></a>必要條件
+
+* [在 MVC Web 應用程式中使用 ASP.NET Core 的 EF Core 移轉功能](migrations.md)
+
+## <a name="customize-the-data-model"></a>自訂資料模型
 
 在本節中，您會了解到如何使用指定格式、驗證和資料庫對應規則的屬性來自訂資料模型。 然後在下列幾個章節中，您會透過將屬性新增到您已建立的類別，以及為模型中剩餘的實體類型建立新的類別，來建立完整的 School 資料模型。
 
@@ -97,9 +110,7 @@ dotnet ef database update
 
 Entity Framework 會使用移轉檔案名稱前置的時間戳記來排序移轉。 您可以在執行 update-database 命令前建立多個移轉，然後所有的移轉便會依照其建立的先後順序套用。
 
-執行應用程式，選取 [Students] 索引標籤，按一下 [新建]，然後輸入大於 50 個字元的名稱。 當您按一下 [建立] 時，用戶端驗證便會顯示錯誤訊息。
-
-![顯示字元長度錯誤的 Students [索引] 頁面](complex-data-model/_static/string-length-errors.png)
+請執行應用程式、選取 [Students] 索引標籤、按一下 [建立新項目]，然後嘗試輸入長度超過 50 個字元的名稱。 應用程式應該會防止您這麼做。 
 
 ### <a name="the-column-attribute"></a>Column 屬性
 
@@ -132,7 +143,7 @@ dotnet ef database update
 > [!Note]
 > 若您嘗試在完成建立下列章節中所有的實體類別前進行編譯，您可能會收到編譯器錯誤。
 
-## <a name="final-changes-to-the-student-entity"></a>對 Student 實體作出的最後變更
+## <a name="changes-to-student-entity"></a>對 Student 實體進行變更
 
 ![Student 實體](complex-data-model/_static/student-entity.png)
 
@@ -160,7 +171,7 @@ public string LastName { get; set; }
 
 `FullName` 為一個計算屬性，會傳回藉由串連兩個其他屬性而建立的值。 因此其僅具有 get 存取子，且資料庫中不會產生 `FullName` 資料行。
 
-## <a name="create-the-instructor-entity"></a>建立 Instructor 實體
+## <a name="create-instructor-entity"></a>建立 Instructor 實體
 
 ![Instructor 實體](complex-data-model/_static/instructor-entity.png)
 
@@ -196,7 +207,7 @@ Contoso 大學的商務規則要求講師最多只能擁有一間辦公室，因
 public OfficeAssignment OfficeAssignment { get; set; }
 ```
 
-## <a name="create-the-officeassignment-entity"></a>建立 OfficeAssignment 實體
+## <a name="create-officeassignment-entity"></a>建立 OfficeAssignment 實體
 
 ![OfficeAssignment 實體](complex-data-model/_static/officeassignment-entity.png)
 
@@ -223,7 +234,7 @@ Instructor 實體具有一個可為 Null 的 `OfficeAssignment` 導覽屬性 (�
 
 您可以將 `[Required]` 屬性置於 Instructor 導覽屬性上，以指定其必須要有一個相關的講師，但您不需要這麼做，因為 `InstructorID` 外部索引鍵 (同時也是此資料表的索引鍵) 不可為 Null。
 
-## <a name="modify-the-course-entity"></a>修改 Course 實體
+## <a name="modify-course-entity"></a>修改 Course 實體
 
 ![Course 實體](complex-data-model/_static/course-entity.png)
 
@@ -272,7 +283,7 @@ public ICollection<Enrollment> Enrollments { get; set; }
 public ICollection<CourseAssignment> CourseAssignments { get; set; }
 ```
 
-## <a name="create-the-department-entity"></a>建立 Department 實體
+## <a name="create-department-entity"></a>建立 Department 實體
 
 ![Department 實體](complex-data-model/_static/department-entity.png)
 
@@ -318,7 +329,7 @@ public ICollection<Course> Courses { get; set; }
 >    .OnDelete(DeleteBehavior.Restrict)
 > ```
 
-## <a name="modify-the-enrollment-entity"></a>修改 Enrollment 實體
+## <a name="modify-enrollment-entity"></a>修改 Enrollment 實體
 
 ![Enrollment 實體](complex-data-model/_static/enrollment-entity.png)
 
@@ -384,7 +395,7 @@ Student 和 Course 實體之間存在一個多對多關聯性，且 Enrollment �
 
 此程式碼會新增一個新實體，並設定 CourseAssignment 實體的複合主索引鍵。
 
-## <a name="fluent-api-alternative-to-attributes"></a>屬性的 Fluent API 替代項目
+## <a name="about-a-fluent-api-alternative"></a>關於 Fluent API 替代項目
 
 `DbContext` 類別的 `OnModelCreating` 方法中的程式碼使用了 *Fluent API* 來設定 EF 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式，例如這個從 [EF Core 文件](/ef/core/modeling/#methods-of-configuration)取得的範例：
 
@@ -411,7 +422,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 除了一對多關聯性線條外 (1 到 \*)，您也可以在 Instructor 和 OfficeAssignment 實體間看到一對零或一關聯性線條 (1 到 0..1)，以及介於 Instructor 和 Department 實體間的零或一對多關聯性線條 (0..1 到 *)。
 
-## <a name="seed-the-database-with-test-data"></a>使用測試資料植入資料庫
+## <a name="seed-database-with-test-data"></a>將測試資料植入資料庫
 
 使用下列程式碼取代 *Data/DbInitializer.cs* 中的程式碼，以為您建立的新實體提供種子資料。
 
@@ -456,7 +467,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 儲存您的變更並建置專案。
 
-## <a name="change-the-connection-string-and-update-the-database"></a>變更連接字串並更新資料庫
+## <a name="change-the-connection-string"></a>變更連接字串
 
 您現在在 `DbInitializer` 類別中已有了新的程式碼，可將新實體的種子資料新增至空白資料庫中。 若要使 EF 建立新的空白資料庫，將位於 *appsettings.json* 連接字串中的資料庫名稱變更為 ContosoUniversity3 或您所使用之電腦上未用過的其他名稱。
 
@@ -474,6 +485,8 @@ Done. To undo this action, use 'ef migrations remove'
 > ```console
 > dotnet ef database drop
 > ```
+
+## <a name="update-the-database"></a>更新資料庫
 
 在您變更資料庫名稱或刪除資料庫之後，在命令視窗中執行 `database update` 命令以執行移轉。
 
@@ -493,12 +506,28 @@ dotnet ef database update
 
 ![SSOX 中的 CourseAssignment 資料](complex-data-model/_static/ssox-ci-data.png)
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-您現在已有了更複雜的資料模型和對應的資料庫。 在接下來的課程中，您將深入了解如何存取相關資料。
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>後續步驟
 
-> [!div class="step-by-step"]
-> [上一頁](migrations.md)
-> [下一頁](read-related-data.md)
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 自訂資料模型
+> * 對 Student 實體進行變更
+> * 建立 Instructor 實體
+> * 建立 OfficeAssignment 實體
+> * 修改 Course 實體
+> * 建立 Department 實體
+> * 修改 Enrollment 實體
+> * 更新資料庫內容
+> * 將測試資料植入資料庫
+> * 新增移轉
+> * 變更連接字串
+> * 更新資料庫
+
+若要深入了解如何存取相關資料，請前往下一篇文章。
+> [!div class="nextstepaction"]
+> [存取相關資料](read-related-data.md)

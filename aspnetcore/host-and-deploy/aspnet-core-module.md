@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/22/2019
+ms.date: 02/08/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 4eea360d08c79b889db00132109cf49492f84de6
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 9270d7b462bbac1ae0ad896c0937ea6dd909b2cd
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837776"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56159551"
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
@@ -51,7 +51,11 @@ ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線以便：
 
 同處理序裝載時具有下列特性：
 
-* 使用 IIS HTTP 伺服器 (`IISHttpServer`) 而不是 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器。
+* 使用 IIS HTTP 伺服器 (`IISHttpServer`) 而不是 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器。 針對同處理序，[CreateDefaultBuilder](xref:fundamentals/host/web-host#set-up-a-host) 會呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIIS*> 來：
+
+  * 註冊 `IISHttpServer`。
+  * 設定伺服器在 ASP.NET Core 模組後方執行時應該接聽的連接埠和基底路徑。
+  * 設定主機以擷取啟動錯誤。
 
 * [requestTimeout 屬性](#attributes-of-the-aspnetcore-element)不適用於同處理序裝載。
 
@@ -83,6 +87,11 @@ ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線以便：
 ```
 
 使用 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器而不是 IIS HTTP 伺服器 (`IISHttpServer`)。
+
+針對跨處理序，[CreateDefaultBuilder](xref:fundamentals/host/web-host#set-up-a-host) 會呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> 來：
+
+* 設定伺服器在 ASP.NET Core 模組後方執行時應該接聽的連接埠和基底路徑。
+* 設定主機以擷取啟動錯誤。
 
 ### <a name="hosting-model-changes"></a>裝載模型變更
 
@@ -231,7 +240,7 @@ ASP.NET Core 模組也可以：
 
 ::: moniker range=">= aspnetcore-2.2"
 
-| 屬性 | 說明 | 預設 |
+| 屬性 | 描述 | 預設 |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p> | |
 | `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗] 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` |
@@ -250,7 +259,7 @@ ASP.NET Core 模組也可以：
 
 ::: moniker range="= aspnetcore-2.1"
 
-| 屬性 | 說明 | 預設 |
+| 屬性 | 描述 | 預設 |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p>| |
 | `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗] 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` |
@@ -268,7 +277,7 @@ ASP.NET Core 模組也可以：
 
 ::: moniker range="<= aspnetcore-2.0"
 
-| 屬性 | 說明 | 預設 |
+| 屬性 | 描述 | 預設 |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p>| |
 | `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗] 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` |
@@ -497,6 +506,32 @@ ASP.NET Core 模組安裝程式會以 **SYSTEM** 帳戶的權限執行。 由於
 1. 執行安裝程式。
 1. 將已更新的 *applicationHost.config* 檔案匯出到共用。
 1. 重新啟用「IIS 共用設定」。
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="application-initialization"></a>應用程式初始化
+
+[IIS 應用程式初始化](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)是一項 IIS 功能，可在應用程式集區啟動或回收時，將 HTTP 要求傳送給應用程式。 要求會觸發應用程式啟動。 [同處理序裝載模型](xref:fundamentals/servers/index#in-process-hosting-model)和[跨處理序裝載模型](xref:fundamentals/servers/index#out-of-process-hosting-model)都可藉由 ASP.NET Core 模組第 2 版使用「應用程式初始化」。
+
+啟用「應用程式初始化」：
+
+1. 確認已啟用「IIS 應用程式初始化」角色功能：
+   * 在 Windows 7 或更新版本上：瀏覽至控制台 > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] (畫面左側)。 開啟 [網際網路資訊服務] > [World Wide Web 服務] > [應用程式開發功能]。 選取 [應用程式初始化]的核取方塊。
+   * 在 Windows Server 2008 R2 或更新版本上，開啟 [新增角色及功能精靈]。 當您到達 [選取角色服務] 面板時，開啟 [應用程式開發] 節點，然後選取 [應用程式初始化] 核取方塊。
+1. 在 [IIS 管理員] 中，選取 [連線] 面板中的 [應用程式集區]。
+1. 從清單中選取應用程式的應用程式集區。
+1. 在 [動作] 面板中，選取 [編輯應用程式集區] 下的 [進階設定]。
+1. 將 [啟動模式] 設定為 [AlwaysRunning]。
+1. 開啟 [連線] 面板中的 [站台] 節點。
+1. 選取應用程式。
+1. 選取 [動作] 面板中 [管理網站] 底下的 [進階設定]。
+1. 將 [預先載入已啟用] 設定為 [True]。
+
+如需詳細資訊，請參閱 [IIS 8.0 應用程式初始化](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)。
+
+應用程式如果使用[跨處理序裝載模型](xref:fundamentals/servers/index#out-of-process-hosting-model)，就必須使用外部服務來定期偵測應用程式，以讓它保持執行。
+
+::: moniker-end
 
 ## <a name="module-version-and-hosting-bundle-installer-logs"></a>模組版本和裝載套件組合安裝程式記錄檔
 

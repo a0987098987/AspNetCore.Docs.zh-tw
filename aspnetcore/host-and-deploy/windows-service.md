@@ -5,14 +5,14 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 01/22/2019
+ms.date: 02/13/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: eedaf64710506f2a2aac65c178a9888d2ab33d38
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 081a631c9c3e74c01e15f4b0b272d650c162bd20
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837477"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248247"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -112,7 +112,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
   若條件為偽 (應用程式是以服務形式執行)：
 
-  * 呼叫 <xref:System.IO.Directory.SetCurrentDirectory*> 並使用應用程式發佈位置的路徑。 請勿呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 來取得路徑，因為當呼叫 `GetCurrentDirectory` 時，Windows 服務應用程式會傳回 *C:\\WINDOWS\\system32* 資料夾。 如需詳細資訊，請參閱[目前目錄與內容根目錄](#current-directory-and-content-root)一節。
+  * 呼叫 <xref:System.IO.Directory.SetCurrentDirectory*> 並使用應用程式發佈位置的路徑。 請勿呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 來取得路徑，因為當呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 時，Windows 服務應用程式會傳回 *C:\\WINDOWS\\system32* 資料夾。 如需詳細資訊，請參閱[目前目錄與內容根目錄](#current-directory-and-content-root)一節。
   * 呼叫 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> 以服務形式執行應用程式。
 
   因為[命令列設定提供者](xref:fundamentals/configuration/index#command-line-configuration-provider) 需要命令列引數的名稱值組，在 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 收到引數之前，`--console` 切換參數就會從引數移除。
@@ -147,11 +147,13 @@ dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
 
 ### <a name="create-a-user-account"></a>建立使用者帳戶
 
-使用 `net user` 命令為服務建立使用者帳戶：
+從系統管理命令殼層使用 `net user` 命令為服務建立使用者帳戶：
 
 ```console
 net user {USER ACCOUNT} {PASSWORD} /add
 ```
+
+預設的密碼到期期限是六週。
 
 針對範例應用程式，建立名為 `ServiceUser` 的使用者帳戶與密碼。 在下列命令中，將 `{PASSWORD}` 取代為[強式密碼](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)。
 
@@ -167,9 +169,13 @@ net localgroup {GROUP} {USER ACCOUNT} /add
 
 如需詳細資訊，請參閱[服務使用者帳戶](/windows/desktop/services/service-user-accounts)。
 
+使用 Active Directory 時有一個管理使用者的替代方法，就是使用「受控服務帳戶」。 如需詳細資訊，請參閱[群組受控服務帳戶概觀](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)。
+
 ### <a name="set-permissions"></a>設定權限
 
-使用 [icacls](/windows-server/administration/windows-commands/icacls) 命令授與對應用程式資料夾的寫入/讀取/執行存取權：
+#### <a name="access-to-the-app-folder"></a>存取應用程式資料夾
+
+從系統管理命令殼層使用 [icacls](/windows-server/administration/windows-commands/icacls) 命令，授與對應用程式資料夾的寫入/讀取/執行存取權：
 
 ```console
 icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
@@ -195,11 +201,23 @@ icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
 
 如需詳細資訊，請參閱 [icacls](/windows-server/administration/windows-commands/icacls)。
 
+#### <a name="log-on-as-a-service"></a>以服務方式登入
+
+將[以服務方式登入](/windows/security/threat-protection/security-policy-settings/log-on-as-a-service)權限授與使用者帳戶：
+
+1. 在 [本機安全性原則] 主控台或 [本機群組原則編輯器] 主控台中，找出 [使用者權限指派] 原則。 如需指示，請參閱：[設定安全性原則設定](/windows/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings)。
+1. 找出 `Log on as a service` 原則。 按兩下該原則以開啟它。
+1. 選取 [新增使用者或群組]。
+1. 選取 [進階]，然後選取 [立即尋找]。
+1. 選取稍早在[建立使用者帳戶](#create-a-user-account)一節中建立的使用者帳戶。 選取 [確定] 以接受該選取項目。
+1. 確定物件名稱正確之後，選取 [確定]。
+1. 選取 [套用]。 選取 [確定] 以關閉原則視窗。
+
 ## <a name="manage-the-service"></a>管理服務
 
 ### <a name="create-the-service"></a>建立服務
 
-使用 [sc.exe](https://technet.microsoft.com/library/bb490995) 命令列工具建立服務。 `binPath` 值是應用程式可執行檔的路徑，其中包括可執行檔的檔案名稱。 **等號與每個參數與值的引號字元之間必須有空格。**
+從系統管理命令殼層使用 [sc.exe](https://technet.microsoft.com/library/bb490995) 命令列工具來建立服務。 `binPath` 值是應用程式可執行檔的路徑，其中包括可執行檔的檔案名稱。 **等號與每個參數與值的引號字元之間必須有空格。**
 
 ```console
 sc create {SERVICE NAME} binPath= "{PATH}" obj= "{DOMAIN}\{USER ACCOUNT}" password= "{PASSWORD}"
@@ -207,7 +225,7 @@ sc create {SERVICE NAME} binPath= "{PATH}" obj= "{DOMAIN}\{USER ACCOUNT}" passwo
 
 * `{SERVICE NAME}` &ndash; 要指派給[服務控制管理員](/windows/desktop/services/service-control-manager)中之服務的名稱。
 * `{PATH}` &ndash; 服務可執行檔的路徑。
-* `{DOMAIN}` &ndash; 已加入網域之機器的網域。 若機器未加入網域，則為本機機器名稱。
+* `{DOMAIN}` &ndash; 已加入網域之機器的網域。 若機器未加入網域，請使用本機電腦名稱。
 * `{USER ACCOUNT}` &ndash; 用於執行服務的使用者帳戶。
 * `{PASSWORD}` &ndash; 使用者帳戶密碼。
 

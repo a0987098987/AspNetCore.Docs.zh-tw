@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/12/2019
 uid: spa/blazor/get-started
-ms.openlocfilehash: 8c984bab8a13b4fc2d87fd1a7e0b285dfa25ba09
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: 26336f73f6c8976ed5de819cebc3c5c50274ab03
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159573"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410004"
 ---
 # <a name="get-started-with-blazor"></a>開始使用 Blazor
 
@@ -32,7 +32,7 @@ ms.locfileid: "56159573"
 1. 在命令殼層中執行下列命令，請 Blazor 範本適用於.NET Core CLI:
 
    ```console
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::0.8.0-preview-19104-04
    ```
 
 1. 選取 **檔案** > **新專案** > **Web** > **ASP.NET Core Web 應用程式**。
@@ -97,7 +97,7 @@ Congratulations! You just ran your first Blazor app!
 1. 在命令殼層中執行下列命令，將新增 Blazor 範本：
 
    ```console
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::0.8.0-preview-19104-04
    ```
 
 1. 在命令殼層中建立第一個 Blazor 專案：
@@ -122,9 +122,9 @@ Congratulations! You just ran your first Blazor app!
 * 計數器
 * 擷取資料
 
-在 [計數器] 頁面中，選取**Click me**按鈕，以遞增的計數器，而不需要重新整理頁面。 遞增計數器，以在網頁上通常需要撰寫 JavaScript，但 Blazor 提供更好的方法使用C#。
+在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 遞增計數器，以在網頁上通常需要撰寫 JavaScript，但 Blazor 提供更好的方法使用C#。
 
-*Pages/Counter.cshtml*:
+*Pages/Counter.cshtml*：
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Counter1.cshtml)]
 
@@ -150,13 +150,13 @@ Congratulations! You just ran your first Blazor app!
 若要將參數加入至計數器的元件，更新 元件的`@functions`區塊：
 
 * 新增的屬性`IncrementAmount`附有`[Parameter]`屬性。
-* 變更`IncrementCount`方法，以使用`IncrementAmount`增加的值時`currentCount`。
+* 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
 
-*Pages/Counter.cshtml*:
+*Pages/Counter.cshtml*：
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Counter2.cshtml?highlight=4,8)]
 
-指定`IncrementAmount`首頁元件中的參數`<Counter>`使用屬性的項目。
+使用屬性在「首頁」元件的 `<Counter>` 元素中指定 `IncrementAmount` 參數。
 
 *Pages/Index.cshtml*：
 

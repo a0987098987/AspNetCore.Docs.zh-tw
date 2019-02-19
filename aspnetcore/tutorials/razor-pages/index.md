@@ -2,16 +2,15 @@
 title: 教學課程：使用 ASP.NET Core 建立 Razor Pages Web 應用程式
 author: rick-anderson
 description: 使用 Visual Studio、ASP.NET Core 及 EF Core 在 Windows 上建立 Razor Pages Web 應用程式。
-monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/08/2017
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: db0dab630f986b6f60e24b7a39e20c7a4607f931
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: c543e86b58b37a120df22331043944757beeca3a
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667371"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410056"
 ---
 # <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Razor Pages Web 應用程式
 

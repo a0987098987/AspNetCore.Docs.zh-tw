@@ -2,34 +2,33 @@
 title: 教學課程：使用 ASP.NET Core 建立 Razor Pages Web 應用程式
 author: rick-anderson
 description: 使用 Visual Studio、ASP.NET Core 及 EF Core 在 Windows 上建立 Razor Pages Web 應用程式。
-monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/08/2017
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: db0dab630f986b6f60e24b7a39e20c7a4607f931
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: c543e86b58b37a120df22331043944757beeca3a
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667371"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410056"
 ---
-# <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a><span data-ttu-id="f6479-103">教學課程：使用 ASP.NET Core 建立 Razor Pages Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="f6479-103">Tutorial: Create a Razor Pages web app with ASP.NET Core</span></span>
+# <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a><span data-ttu-id="240ab-103">教學課程：使用 ASP.NET Core 建立 Razor Pages Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="240ab-103">Tutorial: Create a Razor Pages web app with ASP.NET Core</span></span>
 
-<span data-ttu-id="f6479-104">本系列教學課程說明建置 Razor Pages Web 應用程式的基本概念。</span><span class="sxs-lookup"><span data-stu-id="f6479-104">This series of tutorials explains the basics of building a Razor Pages web app.</span></span> 
+<span data-ttu-id="240ab-104">本系列教學課程說明建置 Razor Pages Web 應用程式的基本概念。</span><span class="sxs-lookup"><span data-stu-id="240ab-104">This series of tutorials explains the basics of building a Razor Pages web app.</span></span> 
 
 [!INCLUDE[](~/includes/advancedRP.md)]
 
-<span data-ttu-id="f6479-105">本系列包含下列教學課程：</span><span class="sxs-lookup"><span data-stu-id="f6479-105">This series includes the following tutorials:</span></span>
+<span data-ttu-id="240ab-105">本系列包含下列教學課程：</span><span class="sxs-lookup"><span data-stu-id="240ab-105">This series includes the following tutorials:</span></span>
 
-1. [<span data-ttu-id="f6479-106">建立 Razor 頁面 Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="f6479-106">Create a Razor Pages web app</span></span>](xref:tutorials/razor-pages/razor-pages-start)
-1. [<span data-ttu-id="f6479-107">將模型新增至 Razor 頁面應用程式</span><span class="sxs-lookup"><span data-stu-id="f6479-107">Add a model to a Razor Pages app</span></span>](xref:tutorials/razor-pages/model)
-1. [<span data-ttu-id="f6479-108">Scaffold (產生) Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="f6479-108">Scaffold (generate) Razor pages</span></span>](xref:tutorials/razor-pages/page)
-1. [<span data-ttu-id="f6479-109">使用資料庫</span><span class="sxs-lookup"><span data-stu-id="f6479-109">Work with a database</span></span>](xref:tutorials/razor-pages/sql)
-1. [<span data-ttu-id="f6479-110">更新 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="f6479-110">Update Razor pages</span></span>](xref:tutorials/razor-pages/da1)
-1. [<span data-ttu-id="f6479-111">新增搜尋</span><span class="sxs-lookup"><span data-stu-id="f6479-111">Add search</span></span>](xref:tutorials/razor-pages/search)
-1. [<span data-ttu-id="f6479-112">新增欄位</span><span class="sxs-lookup"><span data-stu-id="f6479-112">Add a new field</span></span>](xref:tutorials/razor-pages/new-field)
-1. [<span data-ttu-id="f6479-113">新增驗證</span><span class="sxs-lookup"><span data-stu-id="f6479-113">Add validation</span></span>](xref:tutorials/razor-pages/validation)
+1. [<span data-ttu-id="240ab-106">建立 Razor 頁面 Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="240ab-106">Create a Razor Pages web app</span></span>](xref:tutorials/razor-pages/razor-pages-start)
+1. [<span data-ttu-id="240ab-107">將模型新增至 Razor 頁面應用程式</span><span class="sxs-lookup"><span data-stu-id="240ab-107">Add a model to a Razor Pages app</span></span>](xref:tutorials/razor-pages/model)
+1. [<span data-ttu-id="240ab-108">Scaffold (產生) Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="240ab-108">Scaffold (generate) Razor pages</span></span>](xref:tutorials/razor-pages/page)
+1. [<span data-ttu-id="240ab-109">使用資料庫</span><span class="sxs-lookup"><span data-stu-id="240ab-109">Work with a database</span></span>](xref:tutorials/razor-pages/sql)
+1. [<span data-ttu-id="240ab-110">更新 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="240ab-110">Update Razor pages</span></span>](xref:tutorials/razor-pages/da1)
+1. [<span data-ttu-id="240ab-111">新增搜尋</span><span class="sxs-lookup"><span data-stu-id="240ab-111">Add search</span></span>](xref:tutorials/razor-pages/search)
+1. [<span data-ttu-id="240ab-112">新增欄位</span><span class="sxs-lookup"><span data-stu-id="240ab-112">Add a new field</span></span>](xref:tutorials/razor-pages/new-field)
+1. [<span data-ttu-id="240ab-113">新增驗證</span><span class="sxs-lookup"><span data-stu-id="240ab-113">Add validation</span></span>](xref:tutorials/razor-pages/validation)
 
-<span data-ttu-id="f6479-114">最後，您會擁有一個能夠顯示及管理電影資料庫的應用程式。</span><span class="sxs-lookup"><span data-stu-id="f6479-114">At the end, you'll have an app that can display and manage a database of movies.</span></span>
+<span data-ttu-id="240ab-114">最後，您會擁有一個能夠顯示及管理電影資料庫的應用程式。</span><span class="sxs-lookup"><span data-stu-id="240ab-114">At the end, you'll have an app that can display and manage a database of movies.</span></span>
 
 ![範例應用程式的範例頁面](index/_static/sample-page.png)

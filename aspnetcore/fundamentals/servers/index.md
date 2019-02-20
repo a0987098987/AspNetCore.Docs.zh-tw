@@ -4,14 +4,8 @@ author: guardrex
 description: 探索 ASP.NET Core 的網頁伺服器 Kestrel 與 HTTP.sys。 了解如何選擇伺服器，以及何時使用反向 Proxy 伺服器。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/14/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 672fe2ce6fd0adae09c380fe508344a254f1a9fe
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248130"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -57,7 +51,7 @@ ASP.NET Core 模組：
 
 要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 模組會接收原生要求，並將它傳遞至 IIS HTTP 伺服器 (`IISHttpServer`)。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
 
-IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 應用程式的回應會傳回 IIS，而 IIS 會將其推送回起始要求的用戶端。
+IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 應用程式的回應會透過 IIS HTTP 伺服器傳回 IIS。 IIS 會將回應傳送到起始該要求的用戶端。
 
 現有的應用程式可以選擇同處理序裝載，但 [dotnet new](/dotnet/core/tools/dotnet-new) 範本預設會對所有 IIS 和 IIS Express 案例使用同處理序裝載模型。
 

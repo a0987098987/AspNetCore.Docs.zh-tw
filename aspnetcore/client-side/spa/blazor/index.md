@@ -7,12 +7,6 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 uid: spa/blazor/index
-ms.openlocfilehash: 0d22365701a4fc1857582c13459280e50d59c858
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159569"
 ---
 # <a name="introduction-to-blazor"></a>Blazor 簡介
 
@@ -27,7 +21,7 @@ Blazor 是單一頁面應用程式架構，適用於建置使用 .NET 的互動�
 * **C# 語言**：以 C# 撰寫而不是 JavaScript。
 * **.NET 生態系統**：利用現有的 .NET 程式庫生態系統。
 * **完整堆疊開發**：共用伺服器和用戶端邏輯。
-* **速度和延展性**：NET 專為效能、可靠性和安全性設計。
+* **速度與延展性**：.NET 專為效能、可靠性和安全性設計。
 * **領先業界的工具**：使用 Windows、Linux 和 macOS 版的 Visual Studio 保持生產力。
 * **穩定性與一致性**：以平易近人的語言、架構和工具建置，穩定、功能豐富且容易使用。
 

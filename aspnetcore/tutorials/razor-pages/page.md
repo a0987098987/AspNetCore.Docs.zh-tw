@@ -2,16 +2,15 @@
 title: ASP.NET Core 中的 Scaffold Razor 頁面
 author: rick-anderson
 description: 說明 Scaffolding 所產生的 Razor 頁面。
-monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 12/4/2018
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: f97930c9e09dbf46acc9e91aff9469db8970fa77
-ms.sourcegitcommit: a91e8dd2f4b788114c8bc834507277f4b5e8d6c5
+ms.openlocfilehash: ad87e3da72c3dd6adf8cf55d16da58fa47ed5542
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712285"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410345"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Scaffold Razor 頁面
 

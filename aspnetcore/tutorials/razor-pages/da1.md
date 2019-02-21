@@ -2,16 +2,15 @@
 title: 更新 ASP.NET Core 應用程式中產生的頁面
 author: rick-anderson
 description: 了解如何更新 ASP.NET Core 應用程式中產生的頁面。
-monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.date: 12/20/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: c950d1654591fe3c78daae0e2cb7a9b37472284f
-ms.sourcegitcommit: a91e8dd2f4b788114c8bc834507277f4b5e8d6c5
+ms.openlocfilehash: 62385f33dc86609726305728fbc19dd9ff27dc87
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712246"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410189"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>更新 ASP.NET Core 應用程式中產生的頁面
 

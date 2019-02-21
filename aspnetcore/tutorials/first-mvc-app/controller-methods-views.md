@@ -5,12 +5,12 @@ description: 了解如何在 ASP.NET Core 中使用控制器方法、檢視和 D
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: cd1b0f2ccffaa660f137b8d739933e56018f2702
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: 36c8141ba5827366572dabcfd0fdf9600c745706
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249408"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410517"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>ASP.NET Core 中的控制器方法和檢視
 
@@ -100,7 +100,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 
 [表單標記協助程式](xref:mvc/views/working-with-forms)會產生隱藏的防偽語彙基元，其必須符合電影控制器的 `Edit` 方法中 `[ValidateAntiForgeryToken]` 產生的防偽語彙基元。 如需詳細資訊，請參閱[反要求偽造](xref:security/anti-request-forgery)。
 
-`HttpGet Edit` 方法會採用電影 `ID` 參數，使用 Entity Framework `SingleOrDefaultAsync` 方法查詢電影，並將選取的電影傳回 Edit 檢視。 如果找不到電影，會傳回 `NotFound` (HTTP 404)。
+`HttpGet Edit` 方法會採用電影 `ID` 參數，使用 Entity Framework `FindAsync` 方法查詢電影，並將選取的電影傳回 Edit 檢視。 如果找不到電影，會傳回 `NotFound` (HTTP 404)。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit1)]
 

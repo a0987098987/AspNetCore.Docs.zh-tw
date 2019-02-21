@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 913fc9aa473950b7117fb9da5c8913e658c43a9d
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 5e6e2cd5fac25e2abe27915c2f4caa64b13e90bd
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090263"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56409979"
 ---
 # <a name="file-uploads-in-aspnet-core"></a>ASP.NET Core 的檔案上傳
 
@@ -108,9 +108,10 @@ public async Task<IActionResult> Register(RegisterViewModel model)
     ViewData["ReturnUrl"] = returnUrl;
     if  (ModelState.IsValid)
     {
-        var user = new ApplicationUser {
-          UserName = model.Email,
-          Email = model.Email
+        var user = new ApplicationUser 
+        {
+            UserName = model.Email,
+            Email = model.Email
         };
         using (var memoryStream = new MemoryStream())
         {

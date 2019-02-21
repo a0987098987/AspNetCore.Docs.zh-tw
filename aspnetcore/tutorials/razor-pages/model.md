@@ -3,15 +3,14 @@ title: 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 author: rick-anderson
 description: 了解如何使用 Entity Framework Core (EF Core)，新增用來管理資料庫中電影的類別。
 ms.author: riande
-monikerRange: '>= aspnetcore-2.2'
 ms.date: 02/12/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: ab2bf372b305672a95d34879ad2c13a620d93c7a
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: c7341430e8e2ace7eb04faa308020095139d5b94
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159284"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410228"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -214,7 +213,7 @@ Update-Database
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-## <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
+### <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
 ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
 

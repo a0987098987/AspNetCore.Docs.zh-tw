@@ -5,12 +5,12 @@ description: 示範如何將搜尋新增至基本 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: 8686041c3629faf9ffc4ab766e8d78eda00740dc
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: e5dce35b60080ef752f8e6c6004158219015cbf5
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997262"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410634"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>將搜尋新增至 ASP.NET Core MVC 應用程式
 
@@ -51,11 +51,11 @@ var movies = from m in _context.Movie
 
 前一個 `Index` 方法：
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&name=snippet_1stSearch)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,6,8&name=snippet_1stSearch)]
 
 含有 `id` 參數的已更新 `Index` 方法：
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&name=snippet_SearchID)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,6,8&name=snippet_SearchID)]
 
 您現在可以將搜尋標題作為路由資料 (URL 區段) 傳遞，而不是作為查詢字串值。
 
@@ -63,7 +63,7 @@ var movies = from m in _context.Movie
 
 但是，您不能期望使用者在每次想要搜尋電影時修改 URL。 因此，現在您將新增可協助他們篩選電影的 UI 項目。 如果您已變更 `Index` 方法的簽章來測試如何傳遞路由繫結的 `ID` 參數，請將其變更回採用一個名為 `searchString` 參數：
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&name=snippet_1stSearch)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,6,8&name=snippet_1stSearch)]
 
 開啟 *Views/Movies/Index.cshtml* 檔案，並新增下面強調顯示的 `<form>` 標記：
 

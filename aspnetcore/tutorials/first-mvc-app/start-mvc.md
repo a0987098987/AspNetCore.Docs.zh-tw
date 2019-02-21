@@ -1,17 +1,16 @@
 ---
 title: ASP.NET Core MVC 使用者入門
 author: rick-anderson
-monikerRange: '>= aspnetcore-2.2'
 description: 了解如何開始使用 ASP.NET Core MVC。
 ms.author: riande
 ms.date: 12/12/2018
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: cfce3b5792a5d0673bae5ddbba9e2d4d515a6279
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: f0c2351de017de7f4c62021b8f9478603055e9bc
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53381799"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410543"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 

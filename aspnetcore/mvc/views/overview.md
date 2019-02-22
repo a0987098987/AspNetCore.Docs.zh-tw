@@ -5,18 +5,18 @@ description: 了解檢視如何處理 ASP.NET Core MVC 中的應用程式資料�
 ms.author: riande
 ms.date: 12/12/2017
 uid: mvc/views/overview
-ms.openlocfilehash: 276540a5d77b1d65119d1b2104508d77f45d5588
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 6c5b4d7b89ac07a85b5aad626e37855de98064eb
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219364"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410429"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Luke Latham](https://github.com/guardrex)
 
-本文件說明 ASP.NET Core MVC 應用程式中所使用的檢視。 如需 Razor 頁面的資訊，請參閱 [Razor 頁面簡介](xref:razor-pages/index)。
+此文件說明 ASP.NET Core MVC 應用程式中所使用的檢視。 如需 Razor 頁面的資訊，請參閱 [Razor 頁面簡介](xref:razor-pages/index)。
 
 在模型檢視控制器 (MVC) 模式中，「檢視」會處理應用程式的資料呈現和使用者互動。 檢視是具有內嵌 [Razor 標記](xref:mvc/views/razor)的 HTML 範本。 Razor 標記是與 HTML 標記互動的程式碼，可以產生傳送至用戶端的網頁。
 
@@ -34,7 +34,7 @@ ms.locfileid: "39219364"
 
 ## <a name="benefits-of-using-views"></a>使用檢視的優點
 
-檢視可協助在 MVC 應用程式內建立[關注區隔 (SoC) 設計](http://deviq.com/separation-of-concerns/)，方法是區隔使用者介面標記與應用程式的其他部分。 遵循 SoC 設計可讓您的應用程式模組化，以提供數個優點：
+檢視可協助在 MVC 應用程式內建立[關注區隔](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns)，方法是區隔使用者介面標記與應用程式的其他部分。 遵循 SoC 設計可讓您的應用程式模組化，以提供數個優點：
 
 * 應用程式較容易維護，因為其組織性較佳。 檢視一般會依應用程式功能分組。 這可讓您在處理功能時更輕鬆地找到相關檢視。
 * 應用程式的組件是鬆散耦合的。 您可以分別從商務邏輯和資料存取元件來建置和更新應用程式的檢視。 您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。

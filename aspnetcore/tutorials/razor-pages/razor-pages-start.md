@@ -5,12 +5,12 @@ description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中�
 ms.author: riande
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: bec5838c2efaffb933828260eaf1a840ff202140
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: acebe52719e1876dc6808441fcff6fe849e36983
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667761"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410410"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
@@ -24,14 +24,14 @@ ms.locfileid: "55667761"
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-在本教學課程中，您將：
+在此教學課程中，您將：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。
 > * 執行應用程式。
 > * 檢查專案檔。
 
-在本教學課程結束時，您將會有一個運作正常的 Razor Pages Web 應用程式，並將在稍後的教學課程中以此為建置基礎。
+在此教學課程結束時，您將會有一個運作正常的 Razor Pages Web 應用程式，並將在稍後的教學課程中以此為建置基礎。
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
@@ -108,7 +108,7 @@ cd RazorPagesMovie
 
 * 按 **Ctrl-F5** 即可執行而不使用偵錯工具。
 
-  Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後巡覽至 `http://localhost:5001`。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
+  Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後瀏覽至 `http://localhost:5001`。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
   
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -160,7 +160,7 @@ cd RazorPagesMovie
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已：
+在此教學課程中，您已：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。

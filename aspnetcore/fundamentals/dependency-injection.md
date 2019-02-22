@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 3626ce834b904db64c1976aefc77dc60a7bfdf1c
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 5e5b9746da9bbc13a147b807aabfd3d9ab90a0ca
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253165"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410504"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -342,32 +342,32 @@ Entity Framework 內容應該使用具範圍存留期新增至服務容器。 �
 控制器作業：
 
 暫時性： d233e165-f417-469b-a866-1cf1935d2518  
-具範圍： 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
-單一資料庫： 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-執行個體： 00000000-0000-0000-0000-000000000000
+具範圍：5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+單一資料庫：01271bc1-9e31-48e7-8f7c-7261b040ded9  
+執行個體：00000000-0000-0000-0000-000000000000
 
 `OperationService` 作業：
 
 暫時性： c6b049eb-1318-4e31-90f1-eb2dd849ff64  
-具範圍： 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
-單一資料庫： 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-執行個體： 00000000-0000-0000-0000-000000000000
+具範圍：5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+單一資料庫：01271bc1-9e31-48e7-8f7c-7261b040ded9  
+執行個體：00000000-0000-0000-0000-000000000000
 
 **:第二個要求：**
 
 控制器作業：
 
 暫時性： b63bd538-0a37-4ff1-90ba-081c5138dda0  
-具範圍： 31e820c5-4834-4d22-83fc-a60118acb9f4  
-單一資料庫： 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-執行個體： 00000000-0000-0000-0000-000000000000
+具範圍：31e820c5-4834-4d22-83fc-a60118acb9f4  
+單一資料庫：01271bc1-9e31-48e7-8f7c-7261b040ded9  
+執行個體：00000000-0000-0000-0000-000000000000
 
 `OperationService` 作業：
 
 暫時性： c4cbacb8-36a2-436d-81c8-8c1b78808aaf  
-具範圍： 31e820c5-4834-4d22-83fc-a60118acb9f4  
-單一資料庫： 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-執行個體： 00000000-0000-0000-0000-000000000000
+具範圍：31e820c5-4834-4d22-83fc-a60118acb9f4  
+單一資料庫：01271bc1-9e31-48e7-8f7c-7261b040ded9  
+執行個體：00000000-0000-0000-0000-000000000000
 
 觀察哪些 `OperationId` 值在要求內以及要求之間不同：
 
@@ -437,10 +437,9 @@ public static void Main(string[] args)
 最佳做法是：
 
 * 設計服務以使用相依性插入來取得其相依性。
-* 避免具狀態的靜態方法呼叫 (一個稱為[靜電依附](https://deviq.com/static-cling/)的實踐)。
+* 避免具狀態的靜態方法呼叫。
 * 避免直接在服務內具現化相依類別。 直接具現化會將程式碼耦合到特定實作。
-
-藉由遵循[物件導向設計的 SOLID 準則](https://deviq.com/solid/)，應用程式類別自然而然會傾向小型、構造良好且可輕鬆地測試。
+* 讓應用程式類別維持在小型、情況良好且可輕鬆測試的狀態。
 
 若類別有太多插入的相依性，這通常表示類別有太多責任而且正違反[單一責任原則 (SRP)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#single-responsibility) \(英文\)。 將類別負責的某些部分移到新的類別，以嘗試重構類別。 請記住，Razor Pages 頁面模型類別與 MVC 控制器類別應該專注於 UI 考量。 商務規則和資料存取實作詳細資料應該保存在適合這些[分開考量](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (Separation of Concerns) 類別中。
 
@@ -488,7 +487,7 @@ public void ConfigureServices(IServiceCollection services)
 * 自訂生命週期管理
 * `Func<T>` 支援延遲初始設定
 
-如需支援配接器的一些容器清單，請參閱 [DependencyInjection readme.md 檔案](https://github.com/aspnet/DependencyInjection#using-other-containers-with-microsoftextensionsdependencyinjection)。
+如需支援配接器的一些容器清單，請參閱 [DependencyInjection readme.md 檔案](https://github.com/aspnet/Extensions/tree/master/src/DependencyInjection)。
 
 下列範例會以 [Autofac](https://autofac.org/) 取代內建容器：
 
@@ -560,8 +559,7 @@ DI 是靜態/全域物件存取模式的「替代」選項。 如果您將 DI �
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/extensibility>
 * [在 ASP.NET Core 使用 Dependency Injection 撰寫簡潔的程式碼 (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
-* [Container-Managed Application Design, Prelude: Where does the Container Belong?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/) (容器管理的應用程式設計，序曲：容器屬於何處？)
+* [容器管理的應用程式設計，序：容器屬於哪裡？](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)
 * [明確相依性準則](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)
 * [逆轉控制容器和相依性插入模式 (Martin Fowler)](https://www.martinfowler.com/articles/injection.html) \(英文\)
-* [New is Glue (「黏附」程式碼到特定實作)](https://ardalis.com/new-is-glue) \(英文\)
 * [How to register a service with multiple interfaces in ASP.NET Core DI](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/) (如何使用 ASP.NET Core DI 中的多個介面註冊服務)

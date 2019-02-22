@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core MVC 控制器如何在 ASP.NET Core 中，透�
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 12247dbbbb6de3f8feb7bc37caec4ecf4bd21719
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9d9d0a68927da62fad8df72c868eaf4b8ada440d
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206337"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410267"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>ASP.NET Core 控制器的相依性插入
 
@@ -24,7 +24,7 @@ ASP.NET Core MVC 控制器應該透過其建構函式明確要求相依性。 �
 
 ## <a name="dependency-injection"></a>相依性插入
 
-相依性插入是一種遵循[相依性反向準則](http://deviq.com/dependency-inversion-principle/)的技術，可讓您使用鬆散耦合的模組組成應用程式。 ASP.NET Core 已內建支援[相依性插入](../../fundamentals/dependency-injection.md)，您可更輕鬆地測試和維護應用程式。
+ASP.NET Core 已內建支援[相依性插入](../../fundamentals/dependency-injection.md)，您可更輕鬆地測試和維護應用程式。
 
 ## <a name="constructor-injection"></a>建構函式插入
 
@@ -63,7 +63,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceP
 ![伺服器問候語](dependency-injection/_static/server-greeting.png)
 
 >[!TIP]
-> 請參閱[測試控制器邏輯](testing.md)，以了解為何在控制器中明確要求相依性 [http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/) 可讓您更輕鬆地測試程式碼。
+> 請參閱[測試控制器邏輯](testing.md)以了解如何透過明確地要求控制器中的相依性，以讓程式碼更容易測試。
 
 ASP.NET Core 內建的相依性插入支援只使用單一建構函式來進行類別的服務要求。 如果您有一個以上的建構函式，可能會收到如下的例外狀況說明：
 
@@ -101,4 +101,4 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstr
 
 [!code-csharp[](./dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7&range=7-22)]
 
-採用「選項」模式時，可讓設定和組態彼此分離，並確保控制器落實 [Separation of Concerns](http://deviq.com/separation-of-concerns/) (關注點分離) 原則，因為控制器不需要知道如何尋找設定資訊以及到何處尋找。 這麼做也可以確保控制器能更輕鬆針對[測試控制器邏輯](testing.md)進行單元測試，因為控制器類別內的設定類別不會有任何 [Static Cling](http://deviq.com/static-cling/) (非預期耦合) 或直接具現化的問題。
+採用「選項」模式時，可讓設定和組態彼此分離，並確保控制器落實 [Separation of Concerns](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (關注點分離) 原則，因為控制器不需要知道如何尋找設定資訊以及到何處尋找。 這麼做也可以確保控制器能更輕鬆地執行[單元測試](testing.md)，因為控制器類別內的設定類別不會有任何直接具現化的問題。

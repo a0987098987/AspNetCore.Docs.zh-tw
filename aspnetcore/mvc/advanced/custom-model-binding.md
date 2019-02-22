@@ -5,12 +5,12 @@ description: 了解模型繫結如何讓控制器動作直接使用 ASP.NET Core
 ms.author: riande
 ms.date: 11/13/2018
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 1da42829270e8ff4a626a45aec4d4e825062bd4f
-ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
+ms.openlocfilehash: 33551c9fc22561b992b4a09a4c7187ade136c09c
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635286"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410241"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>ASP.NET Core 中的自訂模型繫結
 
@@ -104,7 +104,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
 
-在此範例中，由於引數名稱不是預設的 `authorId`，因此會使用 `ModelBinder` 屬性在參數上指定。 請注意，控制器和動作方法相較於查詢動作方法中的實體，都更為簡化。 使用 Entity Framework Core 擷取作者的邏輯已移至模型繫結器。 當您有數個繫結至 `Author` 模型的方法時，這樣做會明顯簡化許多，而且可協助您遵循 [DRY 原則](http://deviq.com/don-t-repeat-yourself/)。
+在此範例中，由於引數名稱不是預設的 `authorId`，因此會使用 `ModelBinder` 屬性在參數上指定。 請注意，控制器和動作方法相較於查詢動作方法中的實體，都更為簡化。 使用 Entity Framework Core 擷取作者的邏輯已移至模型繫結器。 當您有數個繫結至 `Author` 模型的方法時，這樣做會明顯簡化許多。
 
 您可以將 `ModelBinder` 屬性套用至個別模型屬性 (例如在 ViewModel 上) 或動作方法參數，只指定該類型或動作的特定模型繫結器或模型名稱。
 
@@ -114,7 +114,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinderProvider.cs?highlight=17-20)]
 
-> 注意：上述程式碼會傳回 `BinderTypeModelBinder`。 `BinderTypeModelBinder` 會作為模型繫結器的 Factory，並提供相依性插入 (DI)。 `AuthorEntityBinder` 需要 DI 能夠存取 EF Core。 如果您的模型繫結器需要來自 DI 的服務，請使用 `BinderTypeModelBinder`。
+> 注意:上述程式碼會傳回 `BinderTypeModelBinder`。 `BinderTypeModelBinder` 會作為模型繫結器的 Factory，並提供相依性插入 (DI)。 `AuthorEntityBinder` 需要 DI 能夠存取 EF Core。 如果您的模型繫結器需要來自 DI 的服務，請使用 `BinderTypeModelBinder`。
 
 若要使用自訂模型繫結器提供者，將它新增 `ConfigureServices`：
 

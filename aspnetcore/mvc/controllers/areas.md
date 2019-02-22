@@ -5,12 +5,12 @@ description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/controllers/areas
-ms.openlocfilehash: b78bb5146f1ab9039fa9ff015471654510718ed6
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 19e818fa198936ea1bee0da8039e88a3c0abbf6b
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312214"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410608"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
@@ -38,40 +38,24 @@ ms.locfileid: "43312214"
 
 * 區域支援多個同名的控制器 (只要這些控制器有不同的「區域」即可)。
 
-請查看範例來說明如何建立和使用區域。 假設您的市集應用程式具有兩個不同的控制器和檢視分組：產品和服務。 使用 MVC 區域的一般資料夾結構如下：
+請查看範例來說明如何建立和使用區域。 假設您的市集應用程式具有兩個不同的控制器和檢視分組：產品與服務。 使用 MVC 區域的一般資料夾結構如下：
 
-* 專案名稱
-
+* Project name
   * 區域
-
     * 產品
-
       * Controllers
-
         * HomeController.cs
-
         * ManageController.cs
-
       * 檢視
-
         * 首頁
-
           * Index.cshtml
-
         * 管理
-
           * Index.cshtml
-
     * 服務
-
       * Controllers
-
         * HomeController.cs
-
       * 檢視
-
         * 首頁
-
           * Index.cshtml
 
 MVC 嘗試轉譯區域中的檢視時，預設會嘗試在下列位置中尋找：

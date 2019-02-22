@@ -5,24 +5,24 @@ description: 了解如何先使用通用配置、共用指示詞，以及執行�
 ms.author: riande
 ms.date: 10/18/2018
 uid: mvc/views/layout
-ms.openlocfilehash: b23fd4e0b1d91a4dd5aae548aa2b2081aa37a561
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 1bd225c804b333efea834a46b7d9ba46b1bb69d8
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391293"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410569"
 ---
 # <a name="layout-in-aspnet-core"></a>ASP.NET Core 中的配置
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Dave Brock](https://twitter.com/daveabrock)
 
-頁面和檢視經常會共用視覺效果和程式設計項目。 本文會示範如何：
+頁面和檢視經常會共用視覺效果和程式設計項目。 此文章示範如何：
 
 * 使用常見配置。
 * 共用指示詞。
 * 執行常見的程式碼，再轉譯頁面或檢視。
 
-本文件將探討 ASP.NET Core MVC 兩種不同方法的配置：Razor Pages 和包含檢視的控制器。 針對本主題，差異很小：
+此文章件將探討 ASP.NET Core MVC 兩種不同方法的配置：Razor Pages 和包含檢視的控制器。 針對此主題，差異很小：
 
 * Razor Pages 位於 *Pages* 資料夾。
 * 包含檢視的控制器，使用 *Views* 資料夾進行檢視。
@@ -33,7 +33,7 @@ ms.locfileid: "49391293"
 
 ![頁面配置範例](layout/_static/page-layout.png)
 
-應用程式內的許多頁面也經常使用指令碼和樣式表這類一般 HTML 結構。 所有這些共用項目可能都定義在 *layout* 檔案中，而之後應用程式內使用的任何檢視都可以參考該檔案。 配置可減少檢視中的重複程式碼，協助它們遵循[不重複 (DRY) 原則](http://deviq.com/don-t-repeat-yourself/)。
+應用程式內的許多頁面也經常使用指令碼和樣式表這類一般 HTML 結構。 所有這些共用項目可能都定義在 *layout* 檔案中，而之後應用程式內使用的任何檢視都可以參考該檔案。 配置可減少檢視中的重複程式碼。
 
 依照慣例，ASP.NET Core 應用程式的預設配置命名為 *_Layout.cshtml*。 使用範本建立的新 ASP.NET Core 專案配置檔案：
 
@@ -41,7 +41,7 @@ ms.locfileid: "49391293"
 
   ![方案總管中的 pages 資料夾](layout/_static/rp-web-project-views.png)
 
-* 包含檢視的控制器：*Views/Shared/_Layout.cshtml*
+* 具有檢視的控制器：*Views/Shared/_Layout.cshtml*
 
  ![方案總管中的 views 資料夾](layout/_static/mvc-web-project-views.png)
 

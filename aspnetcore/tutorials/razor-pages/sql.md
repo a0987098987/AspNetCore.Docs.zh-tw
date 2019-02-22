@@ -2,16 +2,15 @@
 title: 使用資料庫和 ASP.NET Core
 author: rick-anderson
 description: 說明如何使用資料庫和 ASP.NET Core。
-monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.date: 12/07/2017
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 817102a7b89ef4f078d7d0a0bf03ba7cb2745a5d
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 3e05f5dbc73c35f1f938346b2eaab8c0fa7d8ab9
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861273"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410293"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>使用資料庫和 ASP.NET Core
 
@@ -179,5 +178,5 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 接下來的教學課程將會清除資料的呈現。
 
 > [!div class="step-by-step"]
-> [上一步：包含 Scaffold 的 Razor Pages](xref:tutorials/razor-pages/page)
+> [上一步：Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
 > [下一步：更新頁面](xref:tutorials/razor-pages/da1)

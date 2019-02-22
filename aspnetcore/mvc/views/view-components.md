@@ -5,12 +5,12 @@ description: 了解如何檢視 ASP.NET Core 中使用的元件，以及如何�
 ms.author: riande
 ms.date: 1/30/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: d0e528fcf9e20afee98e74fbc09c67b81e123e95
-ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
+ms.openlocfilehash: d979c9480f7bffff993f0ea526bdc231b940baa2
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55428391"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410478"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
@@ -43,7 +43,7 @@ ms.locfileid: "55428391"
 
 ## <a name="creating-a-view-component"></a>建立檢視元件
 
-本節包含建立檢視元件的高階需求。 在本文稍後，我們會詳細檢查每個步驟，並建立檢視元件。
+本節包含建立檢視元件的高階需求。 在此文章稍後，我們會詳細檢查每個步驟，並建立檢視元件。
 
 ### <a name="the-view-component-class"></a>檢視元件類別
 
@@ -93,7 +93,7 @@ ms.locfileid: "55428391"
 @await Component.InvokeAsync("Name of view component", {Anonymous Type Containing Parameters})
 ```
 
-參數將傳遞給 `InvokeAsync` 方法。 本文中所開發的 `PriorityList` 檢視元件是透過 *Views/ToDO/Index.cshtml* 檢視檔案所叫用。 在下列範例中，`InvokeAsync` 方法是使用兩個參數所呼叫：
+參數將傳遞給 `InvokeAsync` 方法。 此文章中所開發的 `PriorityList` 檢視元件是透過 *Views/ToDO/Index.cshtml* 檢視檔案所叫用。 在下列範例中，`InvokeAsync` 方法是使用兩個參數所呼叫：
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexFinal.cshtml?range=35)]
 
@@ -122,7 +122,7 @@ ms.locfileid: "55428391"
 
 您可以將檢視元件註冊為任何參考檢視元件的檔案標籤協助程式。 如需如何註冊標籤協助程式的詳細資訊，請參閱[管理標籤協助程式範圍](xref:mvc/views/tag-helpers/intro#managing-tag-helper-scope)。
 
-本教學課程中使用的 `InvokeAsync` 方法：
+此教學課程中使用的 `InvokeAsync` 方法：
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexFinal.cshtml?range=35)]
 
@@ -240,7 +240,7 @@ ms.locfileid: "55428391"
 
 ![含 Shared 元件檢視的 ToDo 輸出](view-components/_static/shared.png)
 
-### <a name="avoiding-magic-strings"></a>避免魔術字串
+### <a name="avoiding-hard-coded-strings"></a>避免硬式編碼的字串
 
 如果您想要編譯時間安全，則可以將寫在程式碼中的檢視元件名稱取代為類別名稱。 建立不含 "ViewComponent" 尾碼的檢視元件：
 

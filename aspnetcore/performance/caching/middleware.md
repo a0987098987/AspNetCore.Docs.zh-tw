@@ -5,14 +5,14 @@ description: 了解如何設定和使用 ASP.NET Core 中的回應快取中介�
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/16/2019
+ms.date: 02/20/2019
 uid: performance/caching/middleware
-ms.openlocfilehash: bb265d04022ec2f8fdb3f2f3bc42f6b3f0b2b338
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: c7c3dbd0c9cf029fa6921d77450e780768c8aa6e
+ms.sourcegitcommit: 0945078a09c372f17e9b003758ed87e99c2449f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410319"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56647911"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>回應快取中 ASP.NET Core 中的介軟體
 
@@ -138,7 +138,7 @@ if (responseCachingFeature != null)
 
 * 伺服器回應 200 （確定） 狀態碼必須產生要求。
 * 要求方法必須是 GET 或 HEAD。
-* 終端機中介軟體必須處理前回應快取中介軟體的回應。
+* 在  `Startup.Configure`，需要壓縮的中介軟體之前，必須放回應快取中介軟體。 如需詳細資訊，請參閱<xref:fundamentals/middleware/index>。
 * `Authorization`不得存在於標頭。
 * `Cache-Control` 標頭參數必須有效，且必須標示為回應`public`而未標示為`private`。
 * `Pragma: no-cache`標頭不能有如果`Cache-Control`標頭不存在，作為`Cache-Control`標頭會覆寫`Pragma`標頭時出現。

@@ -4,16 +4,16 @@ title: 使用 Web API 中的 SSL |Microsoft Docs
 author: MikeWasson
 description: 示範如何使用 SSL 與 ASP.NET Web API，包括使用 SSL 用戶端憑證。
 ms.author: riande
-ms.date: 12/12/2012
+ms.date: 02/22/2019
 ms.assetid: 97f6164f-59cf-45c0-b820-e4aa29b45396
 msc.legacyurl: /web-api/overview/security/working-with-ssl-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: b11b35f58a1f033423f5e6ea5f5373df0d1fcb5f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 69c0d217f605096d968435c062ee9931f8dff75f
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831750"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56744101"
 ---
 <a name="working-with-ssl-in-web-api"></a>使用 Web API 中的 SSL
 ====================
@@ -58,8 +58,8 @@ SSL 會使用公開金鑰基礎結構憑證，以提供驗證。 伺服器必須
 2. 按兩下**SSL 設定**在中間窗格中的功能。
 3. 底下**用戶端憑證**，選取其中一個選項： 
 
-    - **接受**: IIS 會接受來自用戶端的憑證，而不需要。
-    - **需要**： 需要用戶端憑證。 （若要啟用此選項，您也必須選取 [需要 SSL]）
+    - **接受**:IIS 會接受來自用戶端的憑證，而不需要。
+    - **需要**:需要用戶端憑證。 （若要啟用此選項，您也必須選取 [需要 SSL]）
 
 您也可以在 ApplicationHost.config 檔案中設定這些選項：
 
@@ -69,7 +69,7 @@ SSL 會使用公開金鑰基礎結構憑證，以提供驗證。 伺服器必須
 
 ### <a name="creating-a-client-certificate-for-testing"></a>建立用戶端憑證進行測試
 
-基於測試目的，您可以使用[MakeCert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)建立用戶端憑證。 首先，建立測試根授權單位：
+基於測試目的，您可以使用[MakeCert.exe](/windows/desktop/SecCrypto/makecert)建立用戶端憑證。 首先，建立測試根授權單位：
 
 [!code-console[Main](working-with-ssl-in-web-api/samples/sample4.cmd)]
 

@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 12/07/2016
 uid: migration/http-modules
-ms.openlocfilehash: 9dd28b86966912cce87166feb37e65adf3dd6dcb
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 601b93fb12ab5b37b7d8ad8fd9825accc6e314cd
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41902667"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743851"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>將 HTTP 處理常式和模組移轉至 ASP.NET Core 中介軟體
 
@@ -46,7 +46,7 @@ ASP.NET Core 中介軟體之前，讓我們先複習一下 HTTP 模組和處理�
 
 **模組中處理連入要求的順序取決於：**
 
-   1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的系列事件： [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest)， [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一或多個事件的處理常式。
+   1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的系列事件：[BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest)， [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一或多個事件的處理常式。
 
    2. 對於相同事件，也就是在已設定的順序*Web.config*。
 
@@ -96,7 +96,7 @@ ASP.NET Core 中介軟體之前，讓我們先複習一下 HTTP 模組和處理�
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddleware.cs?highlight=9,13,20,24,28,30,32)]
 
-上一節中建立上述的中介軟體範本[寫入中介軟體](xref:fundamentals/middleware/index#write-middleware)。
+上一節中建立上述的中介軟體範本[寫入中介軟體](xref:fundamentals/middleware/write)。
 
 *MyMiddlewareExtensions*協助程式類別可讓您更輕鬆地設定您的中介軟體，在您`Startup`類別。 `UseMyMiddleware`方法會將您的中介軟體類別加入至要求管線。 中介軟體所需的服務取得插入中介軟體的建構函式中。
 

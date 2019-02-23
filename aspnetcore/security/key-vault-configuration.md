@@ -5,14 +5,14 @@ description: 了解如何使用 Azure 金鑰保存庫的組態提供者設定應
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/08/2019
+ms.date: 02/22/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: f70389c86420d81e284ecc863ac8386f726ed2cf
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 2188929d6f380327465e8ce0fd8ad659188416d3
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103107"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743981"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
 
@@ -116,7 +116,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 設定 Azure AD、 Azure 金鑰保存庫和應用程式使用的應用程式識別碼和密碼 （用戶端密碼） 來驗證 key vault**當應用程式裝載在 Azure 之外**。
 
 > [!NOTE]
-> 雖然在 Azure 中託管的應用程式支援使用應用程式識別碼和密碼 （用戶端秘密），我們建議您使用[管理 Azure 資源的身分識別](#use-managed-identities-for-azure-resources)裝載在 Azure 中的應用程式時。 受管理的身分識別會需要將認證儲存在應用程式或其組態，因此被視為通常更安全的方法。
+> 雖然在 Azure 中託管的應用程式支援使用應用程式識別碼和密碼 （用戶端秘密），我們建議您使用[管理 Azure 資源的身分識別](#use-managed-identities-for-azure-resources)裝載在 Azure 中的應用程式時。 受管理的身分識別並不需要將認證儲存在應用程式或其組態，因此被視為通常更安全的方法。
 
 範例應用程式可使用的應用程式識別碼和密碼 （用戶端密碼） 時`#define`陳述式，在頂端*Program.cs*檔案設定為`Basic`。
 

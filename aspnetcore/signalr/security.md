@@ -7,12 +7,12 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 11/06/2018
 uid: signalr/security
-ms.openlocfilehash: 52cfac6be8e61572acdf0b19dab574b607314d97
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 6e9f849ed856cf1cbf989b8b16cab5209c465471
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836060"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743783"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中的安全性考量
 
@@ -77,7 +77,7 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
       Request starting HTTP/1.1 GET http://localhost:5000/myhub?access_token=1234
 ```
 
-如果您有關於使用您的伺服器記錄檔中記錄這項資料的考量，您可以停用此記錄完全設定`Microsoft.AspNetCore.Hosting`記錄器`Warning`層級或更高版本 (這些訊息全都寫入於`Info`層級)。 請參閱文件[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)如需詳細資訊。 如果您仍然想要記錄特定的要求資訊，您可以[撰寫的中介軟體](xref:fundamentals/middleware/index#write-middleware)來記錄的資料要求，並篩選出`access_token`查詢字串值 （如果有的話）。
+如果您有關於使用您的伺服器記錄檔中記錄這項資料的考量，您可以停用此記錄完全設定`Microsoft.AspNetCore.Hosting`記錄器`Warning`層級或更高版本 (這些訊息全都寫入於`Info`層級)。 請參閱文件[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)如需詳細資訊。 如果您仍然想要記錄特定的要求資訊，您可以[撰寫的中介軟體](xref:fundamentals/middleware/write)來記錄的資料要求，並篩選出`access_token`查詢字串值 （如果有的話）。
 
 ## <a name="exceptions"></a>例外狀況
 

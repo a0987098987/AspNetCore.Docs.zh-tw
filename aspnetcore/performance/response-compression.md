@@ -145,7 +145,7 @@ public class Startup
 
 附註：
 
-* `app.UseResponseCompression` 之前必須先呼叫`app.UseMvc`。
+* `app.UseResponseCompression` 必須在 `app.UseMvc` 之前呼叫。
 * 使用一種工具，例如[Fiddler](http://www.telerik.com/fiddler)， [Firebug](http://getfirebug.com/)，或[Postman](https://www.getpostman.com/)設`Accept-Encoding`要求標頭，然後研究回應標頭、 大小和主體。
 
 將要求提交到範例應用程式，而不需要`Accept-Encoding`標頭，並觀察回應是未壓縮。 `Content-Encoding`和`Vary`標頭不存在的回應。

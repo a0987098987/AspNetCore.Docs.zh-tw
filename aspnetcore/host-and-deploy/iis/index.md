@@ -4,14 +4,8 @@ author: guardrex
 description: 了解如何在 Windows Server Internet Information Services (IIS) 上裝載 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/19/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 5d6ba8b7ee6f09a7d00aa0285802cf0aad267a1d
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248416"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -296,13 +290,14 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="install-the-hosting-bundle"></a>安裝裝載套件組合
 
-1. 在伺服器上執行安裝程式。 從系統管理員命令提示字元執行安裝程式時，有 下列切換參數可用：
+1. 在伺服器上執行安裝程式。 從系統管理員命令殼層執行安裝程式時，有 下列參數可用：
 
    * `OPT_NO_ANCM=1` &ndash; 跳過安裝 ASP.NET Core 模組。
    * `OPT_NO_RUNTIME=1` &ndash; 跳過安裝 .NET Core 執行階段。
    * `OPT_NO_SHAREDFX=1` &ndash; 跳過安裝 ASP.NET 共用架構 (ASP.NET 執行階段)。
-   * `OPT_NO_X86=1` &ndash; 跳過安裝 x86 執行階段。 當您確定不會裝載 32 位元應用程式時，請使用此切換。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此切換並安裝這兩個執行階段。
-1. 請重新啟動系統，或是從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**。 重新啟動 IIS 將能偵測到由安裝程式對系統路徑 (此為環境變數) 所做出的變更。
+   * `OPT_NO_X86=1` &ndash; 跳過安裝 x86 執行階段。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
+   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
+1. 請重新啟動系統，或是從命令殼層依序執行 **net stop was /y** 和 **net start w3svc**。 重新啟動 IIS 將能偵測到由安裝程式對系統路徑 (此為環境變數) 所做出的變更。
 
 如果 Windows 裝載套件組合安裝程式偵測到 IIS 需要重設才能完成安裝，安裝程式會重設 IIS。 如果安裝程式觸發 IIS 重設，所有 IIS 應用程式集區和網站都會重新啟動。
 

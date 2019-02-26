@@ -4,14 +4,8 @@ author: rick-anderson
 description: 取得 ASP.NET Core 的簡介，ASP.NET Core 是一種跨平台且高效能的開放原始碼架構，用於建置現代化、雲端式、網際網路連線的應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/14/2019
 uid: index
-ms.openlocfilehash: c3f07814bfab19a0f070e0b48b0d2ef6cfc1594e
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248156"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -68,6 +62,34 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 * 開啟原始檔
 
 我們正致力於縮短 .NET Framework 與 .NET Core 之間的 API 差距。 [Windows 相容性套件](/dotnet/core/porting/windows-compat-pack)在 .NET Core 中發佈了上千個僅供 Windows 使用的 API。 這些 API 並不適用於 .NET Core 1.x。
+
+## <a name="recommended-learning-path"></a>建議學習路徑
+
+我們建議遵循一系列的教學課程和文章，取得開發 ASP.NET Core 應用程式的簡介：
+
+1. 遵循您想要開發或維護應用程式類型的教學課程：
+
+   |應用程式類型  |情節  |教學課程  |
+   |----------|----------|----------|
+   |Web 應用程式       | 針對全新開發        |[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
+   |Web 應用程式       | 針對維護 MVC 應用程式 |[開始使用 MVC](xref:tutorials/first-mvc-app/start-mvc)|
+   |Web API       |                            |[建立 Web API](xref:tutorials/first-web-api)\*  |
+   |即時應用程式 |                            |[開始使用 SignalR](xref:tutorials/signalr) |
+
+1. 遵循示範如何進行基本資料存取的教學課程：
+
+   |情節  |教學課程  |
+   |----------|----------|
+   | 針對全新開發        |[搭配 Entity Framework Core 的 Razor 頁面](xref:data/ef-rp/intro) |
+   | 針對維護 MVC 應用程式 |[搭配 Entity Framework Core 的 MVC](xref:data/ef-mvc/intro)
+
+1. 閱讀適用於所有應用程式類型的 ASP.NET Core 功能概觀：
+
+   * [基礎概念](xref:fundamentals/index)
+
+1. 瀏覽其他您感興趣主題的目錄。
+
+\*目前已有新的 [Web API 教學課程，可讓您在瀏覽器中完整地遵循](https://docs.microsoft.com/learn/modules/build-web-api-net-core)，而無須進行本機 IDE 安裝。  程式碼會在 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) 中執行，且會使用 [curl](https://curl.haxx.se/) 來進行測試。
 
 ## <a name="how-to-download-a-sample"></a>如何下載範例
 
@@ -126,7 +148,7 @@ WebHost.CreateDefaultBuilder(args)
 
 如需詳細資訊，請參閱下列資源：
 
-* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
+* <xref:getting-started>
 * <xref:tutorials/publish-to-azure-webapp-using-vs>
 * [ASP.NET Core 基本概念](xref:fundamentals/index)
 * [每週的 ASP.NET 社群之聲](https://live.asp.net/) \(英文\) 涵蓋了小組的進度和計劃， 並提供新的部落格和協力廠商軟體。

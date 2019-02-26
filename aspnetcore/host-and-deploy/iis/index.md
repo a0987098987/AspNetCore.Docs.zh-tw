@@ -136,7 +136,7 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Us
 
 ::: moniker-end
 
-如需代管的詳細資訊，請參閱[在 ASP.NET Core 中代管](xref:fundamentals/host/index)。
+如需代管的詳細資訊，請參閱[在 ASP.NET Core 中代管](xref:fundamentals/index#host)。
 
 ### <a name="iis-options"></a>IIS 選項
 
@@ -478,7 +478,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 子應用程式內的靜態資產連結應該使用波狀符號與斜線 (`~/`) 標記法。 波狀符號與斜線標記法會觸發[標記協助程式](xref:mvc/views/tag-helpers/intro)以將子應用程式的路徑基底附加到轉譯的相對連結前面。 針對位於 `/subapp_path` 的子應用程式，使用 `src="~/image.png"` 連結的影像會轉譯為 `src="/subapp_path/image.png"`。 根應用程式的靜態檔案中介軟體不會處理靜態檔案要求。 要求會由子應用程式的靜態檔案中介軟體處理。
 
-若靜態資產的 `src` 屬性是設定為絕對路徑 (例如，`src="/image.png"`)，會以不使用子應用程式路徑基底的方式轉譯連結。 根應用程式的靜態檔案中介軟體嘗試從根應用程式的 [webroot](xref:fundamentals/index#web-root-webroot) 為資產提供服務，這導致 *404 - 找不到*回應 (除非根應用程式可存取靜態資產)。
+若靜態資產的 `src` 屬性是設定為絕對路徑 (例如，`src="/image.png"`)，會以不使用子應用程式路徑基底的方式轉譯連結。 根應用程式的靜態檔案中介軟體會嘗試從根應用程式的 [webroot](xref:fundamentals/index#web-root) 提供資產，這會導致「404 - 找不到」回應 (除非根應用程式可存取靜態資產)。
 
 裝載 ASP.NET Core 應用程式做為另一個 ASP.NET Core 應用程式下的子應用程式：
 

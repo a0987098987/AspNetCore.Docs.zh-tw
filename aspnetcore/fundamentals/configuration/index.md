@@ -6,12 +6,6 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/25/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 2465570e469020ae2855508bd1bfc8528e188ebb
-ms.sourcegitcommit: ca5f03210bedc61c6639a734ae5674bfe095dee8
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55073162"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -70,7 +64,7 @@ ASP.NET Core 中的應用程式設定是以由*設定提供者*所建立的機�
 
 ## <a name="host-vs-app-configuration"></a>主機與應用程式設定的比較
 
-設定及啟動應用程式之前，會先設定及啟動「主機」。 主機負責應用程式啟動和存留期管理。 應用程式與主機都是使用此主題中所述的設定提供者來設定的。 主機設定機碼值組會成為應用程式全域設定的一部分。 如需有關當建置主機時如何使用設定提供者的詳細資訊，以及設定來源如何影響主機設定的詳細資訊，請參閱 <xref:fundamentals/host/index>。
+設定及啟動應用程式之前，會先設定及啟動「主機」。 主機負責應用程式啟動和存留期管理。 應用程式與主機都是使用此主題中所述的設定提供者來設定的。 主機設定機碼值組會成為應用程式全域設定的一部分。 如需建置主機時如何使用組態提供者，以及組態來源如何影響主機組態的詳細資訊，請參閱[主機](xref:fundamentals/index#host)。
 
 ## <a name="default-configuration"></a>預設的組態
 
@@ -249,7 +243,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 在上面的範例中，環境名稱 (`env.EnvironmentName`) 與應用程式組件名稱 (`env.ApplicationName`) 是由 <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> 提供。 如需詳細資訊，請參閱<xref:fundamentals/environments>。 透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。 `SetBasePath` 在 [Microsoft.Extensions.Configuration FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
-。
+.
 
 ::: moniker-end
 
@@ -519,7 +513,7 @@ public static void Main(string[] args)
 
 建立切換對應字典之後，它會包含下表中所示的資料。
 
-| Key       | 值             |
+| 索引鍵       | 值             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -532,7 +526,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 執行上述命令之後，設定包含下表中顯示的值。
 
-| Key               | 值    |
+| 索引鍵               | 值    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -988,7 +982,7 @@ var host = new WebHostBuilder()
 1. 執行範例應用程式。 開啟瀏覽器以瀏覽位於 `http://localhost:5000` 的應用程式。
 1. 觀察輸出是否包含表格中所顯示之設定的機碼值組 (視環境而定)。 記錄設定機碼會使用冒號 (`:`) 做為階層式分隔符號。
 
-| Key                        | 開發值 | 生產值 |
+| 索引鍵                        | 開發值 | 生產值 |
 | -------------------------- | :---------------: | :--------------: |
 | Logging:LogLevel:System    | 資訊       | 資訊      |
 | Logging:LogLevel:Microsoft | 資訊       | 資訊      |
@@ -1440,7 +1434,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 會建立下列設定機碼值組：
 
-| Key                   | 值                                             |
+| 索引鍵                   | 值                                             |
 | --------------------- | ------------------------------------------------- |
 | starship:name         | USS Enterprise                                    |
 | starship:registry     | NCC-1701                                          |
@@ -1552,7 +1546,7 @@ viewModel.TvShow = tvShow;
 
 考慮下表中顯示的設定機碼與值。
 
-| Key             | 值  |
+| 索引鍵             | 值  |
 | :-------------: | :----: |
 | array:entries:0 | value0 |
 | array:entries:1 | value1 |
@@ -1661,7 +1655,7 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 表格中顯示的機碼值組會載入到設定中。
 
-| Key             | 值  |
+| 索引鍵             | 值  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1694,7 +1688,7 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 「JSON 設定提供者」會將設定資料讀入到下列機碼值組：
 
-| Key                     | 值  |
+| 索引鍵                     | 值  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |

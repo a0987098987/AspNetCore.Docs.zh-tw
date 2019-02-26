@@ -6,12 +6,6 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/15/2019
 uid: getting-started
-ms.openlocfilehash: eee927f4306fa7757f3f361e6c6f367658512897
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341806"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
@@ -107,7 +101,7 @@ dotnet run
 > * 執行專案。
 > * 進行變更。
 
-若要深入了解 ASP.NET Core，請參閱簡介：
+若要深入了解 ASP.NET Core，請參閱簡介中的建議學習路徑：
 
 > [!div class="nextstepaction"]
-> <xref:index>
+> <xref:index#recommended-learning-path>

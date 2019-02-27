@@ -8,14 +8,14 @@ ms.date: 10/02/2014
 ms.assetid: 0a8d6044-5fab-4213-82d6-5618d5601358
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: b964257165f8a50bef5cb5d8cee4fb30a5e91cf0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: acc13776840408756901e20589b9efacc83ff2a9
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831241"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833679"
 ---
-<a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>建立安全的 ASP.NET Web Forms 應用程式與使用者註冊、 電子郵件確認和密碼重設 (C#)
+<a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>以使用者註冊、電子郵件確認和密碼重設建立安全的 ASP.NET Web Forms 應用程式 (C#)
 ====================
 藉由[Erik Reitan](https://github.com/Erikre)
 
@@ -42,7 +42,7 @@ ms.locfileid: "41831241"
 開始安裝並執行[Visual Studio Express 2013 for Web](https://go.microsoft.com/fwlink/?LinkId=299058)或是[Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566)。 安裝[Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465)或更高版本以及。
 
 > [!NOTE]
-> 警告： 您必須安裝[Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465)或更新版本，才能完成本教學課程。
+> 警告：您必須安裝[Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465)或更新版本，才能完成本教學課程。
 
 
 1. 建立新的專案 (**檔案** - &gt; **新專案**)，然後選取**ASP.NET Web 應用程式**範本和最新的.NET Framework從版本**新的專案** 對話方塊。
@@ -70,6 +70,8 @@ ms.locfileid: "41831241"
 
 <a id="SG"></a>
 ## <a name="hook-up-sendgrid"></a>將 SendGrid 連結
+
+SendGrid 已變更的 API，因為撰寫本教學課程。 目前的 SendGrid 指示，請參閱[SendGrid](http://sendgrid.com/)或是[啟用的帳戶確認和密碼復原](xref:security/authentication/accconfirm#enable-account-confirmation-and-password-recovery)。
 
 雖然本教學課程中只會顯示如何將透過電子郵件通知[SendGrid](http://sendgrid.com/)，您可以傳送電子郵件使用 SMTP 和其他機制 (請參閱[其他資源](#addRes))。
 

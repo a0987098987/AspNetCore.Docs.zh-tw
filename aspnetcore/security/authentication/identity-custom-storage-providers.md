@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: b10731261ca0c748548fcba94a229ba055d46eb5
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: ccd56d0c15639e1ad29094e947f8055702ee2264
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090832"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833666"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -106,7 +106,7 @@ ASP.NET Core Identity 是由名為管理員和存放區的類別所組成。 *�
 
 會儲存及擷取哪些角色指派給哪些使用者。 [範例](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
-**提示：** 只實作應用程式中想要使用的類別。
+**提示：** 只有實作您想要使用您的應用程式中的類別。
 
 在資料存取類別中，提供程式碼來執行資料作業的持續性機制。 比方說，在自訂提供者，您可能必須建立新的使用者，在下列程式碼*儲存*類別：
 
@@ -133,7 +133,7 @@ ASP.NET Core Identity 是由名為管理員和存放區的類別所組成。 *�
 * [IUserPasswordStore](/dotnet/api/microsoft.aspnetcore.identity.iuserpasswordstore-1)
 * [IUserSecurityStampStore](/dotnet/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1)
 * [IUserEmailStore](/dotnet/api/microsoft.aspnetcore.identity.iuseremailstore-1)
-* [IPhoneNumberStore](/dotnet/api/microsoft.aspnetcore.identity.iphonenumberstore-1)
+* [IUserPhoneNumberStore](/dotnet/api/microsoft.aspnetcore.identity.iuserphonenumberstore-1)
 * [IQueryableUserStore](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1)
 * [IUserLoginStore](/dotnet/api/microsoft.aspnetcore.identity.iuserloginstore-1)
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)

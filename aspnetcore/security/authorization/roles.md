@@ -5,25 +5,18 @@ description: 了解如何將角色傳遞至 Authorize 屬性來限制 ASP.NET Co
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/roles
-ms.openlocfilehash: 0467ea82831bffe6882e584930c2fa1212a244c7
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: c38e7144166ce7741eee6e3acb4d1c952ad4f024
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248091"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899160"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的角色為基礎的授權
 
 <a name="security-authorization-role-based"></a>
 
 建立身分識別時它可能屬於一個或多個角色。 比方說，Tracy 可能隸屬於系統管理員和使用者角色中，儘管 Scott 可能只屬於使用者角色。 建立及管理這些角色的方式取決於備份存放區的授權程序。 角色會公開給開發人員逐步[IsInRole](/dotnet/api/system.security.principal.genericprincipal.isinrole)方法[ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal)類別。
-
-::: moniker range=">= aspnetcore-2.0"
-
-> [!IMPORTANT]
-> 本主題**不**適用於 Razor 頁面。 Razor Pages 支援[IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter)並[IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter)。 如需詳細資訊，請參閱 [Razor 頁面的篩選條件方法](xref:razor-pages/filter)。
-
-::: moniker-end
 
 ## <a name="adding-role-checks"></a>新增角色檢查
 
@@ -94,6 +87,28 @@ public class ControlPanelController : Controller
     }
 }
 ```
+
+::: moniker range=">= aspnetcore-2.0"
+
+Razor 頁面`AuthorizeAttribute`可以透過下列方式套用：
+
+* 使用[慣例](xref:razor-pages/razor-pages-conventions#page-model-action-conventions)，或
+* 套用`AuthorizeAttribute`至`PageModel`執行個體：
+
+```csharp
+[Authorize(Policy = "RequireAdministratorRole")]
+public class UpdateModel : PageModel
+{
+    public ActionResult OnPost()
+    {
+    }
+}
+```
+
+> [!IMPORTANT]
+> 篩選屬性，包括`AuthorizeAttribute`只能套用至 PageModel，無法套用至特定頁面處理常式方法。
+::: moniker-end
+
 
 <a name="security-authorization-role-policy"></a>
 

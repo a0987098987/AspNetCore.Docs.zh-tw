@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: spa/react
-ms.openlocfilehash: aa08a9d8d06d8b52be564fabf904d4923684d4e4
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 3b2b2e67b5d577872bafefef5624a13ca1a22449
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248026"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899173"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>React 專案範本與 ASP.NET Core 搭配使用
 
@@ -102,3 +102,6 @@ npm install --save <package_name>
     ```
 
 當您啟動 ASP.NET Core 應用程式，它並不會啟動 CRA 伺服器。 而是改為使用您手動啟動的執行個體。 這樣可以加快它的啟動和重新啟動速度。 不用每一次都要等候 React 應用程式來重新建置。
+
+> [!IMPORTANT]
+> 「 伺服器端轉譯 」 不支援的功能，此範本。 我們使用此範本的目標是符合 「 建立 react-應用程式 」 使用的同位檢查。 因此，案例和功能不包含在 「 建立 react-應用程式 」 專案 （例如 SSR) 中不支援，而且會留給您作為練習使用者。

@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何使用 ASP.NET Core 分散式快取來改善應用程式效能和延展性，特別是在雲端或伺服器陣列環境中。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 uid: performance/caching/distributed
-ms.openlocfilehash: a157eb075874d2118e3e34b51410b539a1ec37df
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 7337ee3b823064c942832d8a44e4d4289bc4fd0e
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248584"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899420"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>分散式快取的 ASP.NET Core
 
@@ -33,7 +33,15 @@ ms.locfileid: "56248584"
 
 ## <a name="prerequisites"></a>必要條件
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.2"
+
+若要使用 SQL Server 分散式快取中，參考[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)或新增的套件參考[Microsoft.Extensions.Caching.SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer)封裝。
+
+若要使用 Redis 的分散式快取中，參考[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，並新增套件參考[Microsoft.Extensions.Caching.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)封裝。 Redis 封裝不包含在`Microsoft.AspNetCore.App`套件，因此您必須分別參考 Redis 封裝，專案檔中。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
 
 若要使用 SQL Server 分散式快取中，參考[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)或新增的套件參考[Microsoft.Extensions.Caching.SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer)封裝。
 

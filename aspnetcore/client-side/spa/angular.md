@@ -7,12 +7,12 @@ ms.author: stevesa
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: spa/angular
-ms.openlocfilehash: 35a839e31369e8dbf00f5dbfb3751a2985335755
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: f33f4b96faf71440c3e8878c0480f2908ace70d1
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248117"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899251"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Angular 專案範本
 
@@ -117,51 +117,6 @@ npm install --save <package_name>
     ```
 
 當您啟動 ASP.NET Core 應用程式時，它並不會啟動 Angular CLI 伺服器。 而是改為使用您手動啟動的執行個體。 這樣可以加快它的啟動和重新啟動速度。 它再也不必每次都得等候 Angular CLI 重建您的用戶端應用程式。
-
-## <a name="server-side-rendering"></a>伺服器端轉譯
-
-作為效能功能，您可以選擇在伺服器上預先轉譯 Angular 應用程式，以及在用戶端上執行它。 這表示瀏覽器接收到代表應用程式起始 UI 的 HTML 標記，因此瀏覽器會在下載及執行您的 JavaScript 組合之前先顯示 UI。 這些實作大部分是來自稱為 [Angular Universal](https://universal.angular.io/) \(英文\) 的 Angular 功能。
-
-> [!TIP]
-> 啟用伺服器端轉譯 (SSR) 會在開發和部署期間引入數個額外的複雜性。 請參閱 [SSR 的缺點 ](#drawbacks-of-ssr) 以判斷 SSR 是否適合您的需求。
-
-若要啟用 SSR，您必須對專案進行數個額外的處理。
-
-在 *Startup* 類別中，在設定 `spa.Options.SourcePath` 的行*之後*，以及在呼叫 `UseAngularCliServer` 或 `UseProxyToSpaDevelopmentServer` 的行*之前*，新增下列內容：
-
-[!code-csharp[](sample/AngularServerSideRendering/Startup.cs?name=snippet_Call_UseSpa&highlight=5-12)]
-
-在開發模式中，此程式碼會嘗試透過執行指令碼 `build:ssr` (於 *ClientApp\package.json* 中定義) 來建置 SSR 組合。 這會建置名為 `ssr`的 Angular 應用程式 (其尚未定義)。
-
-在 *ClientApp/.angular-cli.json* 的 `apps` 陣列尾端，定義名稱為 `ssr` 的額外應用程式。 使用下列選項：
-
-[!code-json[](sample/AngularServerSideRendering/ClientApp/.angular-cli.json?range=24-41)]
-
-這個已啟用 SSR 的新應用程式組態需要兩個額外的檔案：*tsconfig.server.json* 和 *main.server.ts*。 *tsconfig.server.json* 檔案會指定 TypeScript 編譯選項。 *main.server.ts* 檔案會在 SSR 期間作為程式碼進入點。
-
-在 *ClientApp/src* 內新增名為 *tsconfig.server.json* (伴隨現有的 *tsconfig.app.json*)，其中包含下列項目：
-
-[!code-json[](sample/AngularServerSideRendering/ClientApp/src/tsconfig.server.json)]
-
-此檔案會設定 Angular 的 AoT 編譯器，以尋找名為 `app.server.module` 的模組。 透過在 *ClientApp/src/app/app.server.module.ts* 建立新檔案 (伴隨現有的 *app.module.ts*) 並包含下列項目來新增它：
-
-[!code-typescript[](sample/AngularServerSideRendering/ClientApp/src/app/app.server.module.ts)]
-
-此模組會繼承自您的用戶端 `app.module`，並定義 SSR 期間可用的額外 Angular 模組。
-
-回想 *.angular-cli.json* 中的新 `ssr` 項目，有參考名為 *main.server.ts* 的進入點檔案。 您尚未新增該檔案，現在就是新增它的時機。 在 *ClientApp/src/main.server.ts* 建立新檔案 (伴隨現有的 *main.ts*)，其中包含下列項目：
-
-[!code-typescript[](sample/AngularServerSideRendering/ClientApp/src/main.server.ts)]
-
-此檔案的程式碼便是在 ASP.NET Core 執行您新增至 *Startup* 類別的 `UseSpaPrerendering` 中介軟體時，會針對每個要求執行的程式碼。 它負責處理接收來自 .NET 程式碼的 `params` (例如要求的 URL)，以及呼叫 Angular SSR API 來取得產生的 HTML。
-
-嚴格來說，這已足夠在開發模式中啟用 SSR。 請務必做出最後一項變更，以確保應用程式能在發行時正常執行。 在應用程式的主要 *.csproj* 檔案中，將 `BuildServerSideRenderer` 屬性值設定為 `true`：
-
-[!code-xml[](sample/AngularServerSideRendering/AngularServerSideRendering.csproj?name=snippet_EnableBuildServerSideRenderer)]
-
-這樣會設定建置流程以在發行期間執行 `build:ssr`，並將 SSR 檔案部署至伺服器。 如果您未啟用此功能，SSR 將會在實際執行時失敗。
-
-當您的應用程式於開發或實際執行模式中執行時，Angular 程式碼會預先在伺服器上轉譯為 HTML。 用戶端程式碼會以一般的方式執行。
 
 ### <a name="pass-data-from-net-code-into-typescript-code"></a>將資料從.NET 程式碼傳遞至 TypeScript 程式碼
 

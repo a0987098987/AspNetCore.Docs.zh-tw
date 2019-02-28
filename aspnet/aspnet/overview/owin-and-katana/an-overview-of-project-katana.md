@@ -22,7 +22,7 @@ ms.locfileid: "41823597"
 > ASP.NET Framework 已存在超過十年，且平台已啟用了無數的網站和服務。 進化的 Web 應用程式開發策略，因為架構已經能夠發展在 ASP.NET MVC 和 ASP.NET Web API 等技術的步驟。 開發 Web 應用程式會將其下一個進化步驟納入雲端運算的世界，因為專案[Katana](https://channel9.msdn.com/Shows/Web+Camps+TV/The-Katana-Project-OWIN-for-ASPNET)提供一組基礎的 ASP.NET 應用程式，可靈活、 可攜性，讓他們的元件輕量級，並提供更佳的效能 – 將另一種方法，專案[Katana](https://channel9.msdn.com/Shows/Web+Camps+TV/The-Katana-Project-OWIN-for-ASPNET)雲端最佳化您的 ASP.NET 應用程式。
 
 
-## <a name="why-katana--why-now"></a>為什麼 Katana – 為什麼現在嗎？
+## <a name="why-katana--why-now"></a>為什麼是 Katana – 為什麼是現在？
 
  不論是否其中會討論開發人員 framework 或使用者的產品，請務必了解基礎有關為何要建立的產品 – 和這個過程包含了解針對所建立的產品。 ASP.NET 原本是以兩個客戶的需求而建立。   
   

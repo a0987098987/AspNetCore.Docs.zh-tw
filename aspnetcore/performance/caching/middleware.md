@@ -20,25 +20,25 @@ ms.locfileid: "56647911"
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
-這篇文章說明如何在 ASP.NET Core 應用程式中設定回應快取中介軟體。 中介軟體會判斷何時可快取的回應、 存放區回應，以及從快取中回應。 如需 HTTP 快取和`ResponseCache`屬性的簡介，請參閱[回應快取](xref:performance/caching/response)。
+這篇文章說明如何在 ASP.NET Core 應用程式中設定回應快取中介軟體。中介軟體會判斷何時可快取回應、存放回應，以及從快取提供回應。如需 HTTP 快取和 `ResponseCache` 屬性的簡介，請參閱[回應快取](xref:performance/caching/response)。
 
 ## <a name="package"></a>套件
 
 ::: moniker range=">= aspnetcore-2.1"
 
-參考[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)或增加套件參考到[Microsoft.AspNetCore.ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/)套件。
+參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)或加入對 [Microsoft.AspNetCore.ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) 套件的套件參考。
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-參考[Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)或增加套件參考到[Microsoft.AspNetCore.ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/)套件。
+參考[Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)或增加對 [Microsoft.AspNetCore.ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) 套件的套件參考。
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-1.1"
 
-增加套件參考到[Microsoft.AspNetCore.ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/)套件。
+增加對 [Microsoft.AspNetCore.ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) 套件的套件參考。
 
 ::: moniker-end
 
@@ -48,11 +48,11 @@ ms.locfileid: "56647911"
 
 [!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=9)]
 
-設定應用程式使用中的中介軟體與`UseResponseCaching`擴充方法，將中介軟體新增至要求處理管線。 範例應用程式會新增[ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2)標頭到回應中，回應快取最多可快取 10 秒。 該範例設置回應快取中介軟體，只有當後續請求的[ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4)標頭與原始請求的[ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4)標頭匹配時，才會傳送[ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4)標頭。 在程式碼範例中，如下所示[CacheControlHeaderValue](/dotnet/api/microsoft.net.http.headers.cachecontrolheadervalue)並[HeaderNames](/dotnet/api/microsoft.net.http.headers.headernames)需要`using`陳述式[Microsoft.Net.Http.Headers](/dotnet/api/microsoft.net.http.headers)命名空間。
+設定應用程式透過 `UseResponseCaching` 擴充方法使用中介軟體，此擴充方法會將中介軟體新增到要求處理管線。範例應用程式會新增 [`Cache-Control`](https://tools.ietf.org/html/rfc7234#section-5.2) 標頭到回應中，這會快取可快取的回應最多 10 秒。只有當後續邀求的 [`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4) 標頭符合原始要求的 [`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4) 時，範例才會傳送 [`Vary`](https://tools.ietf.org/html/rfc7231#section-7.1.4) 標頭，以設定中介軟體提供快取的回應。在接下來的程式碼範例中，[CacheControlHeaderValue](/dotnet/api/microsoft.net.http.headers.cachecontrolheadervalue) 與 [HeaderNames](/dotnet/api/microsoft.net.http.headers.headernames) 需要 `using` 陳述式 (針對 [Microsoft.Net.Http.Headers](/dotnet/api/microsoft.net.http.headers) 命名空間)。
 
 [!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=17,22-29)]
 
-只有伺服器回應 200 （確定） 狀態碼時，回應快取中介軟體才會快取。任何其他回應，包括[錯誤網頁](xref:fundamentals/error-handling)中, 中介軟體會被忽略。
+回應快取中介軟體只會快取產生 200 (沒問題) 狀態碼的伺服器回應。中介軟體會忽略任何其他回應，包括[錯誤頁面](xref:fundamentals/error-handling)。
 
 > [!WARNING]
 > 包含內容的已驗證的用戶端的回應必須標示為不可快取，以防止從儲存和處理這些回應的中介軟體。 請參閱[快取的條件](#conditions-for-caching)如需有關如何在中介軟體，判斷回應是否可快取。

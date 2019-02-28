@@ -5,12 +5,12 @@ description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中�
 ms.author: riande
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: acebe52719e1876dc6808441fcff6fe849e36983
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 81a2a76fc1cecc78b69226fe714d7c9272b04bf7
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410410"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899186"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
@@ -24,14 +24,14 @@ ms.locfileid: "56410410"
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-在此教學課程中，您將：
+在本教學課程中，您將：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。
 > * 執行應用程式。
 > * 檢查專案檔。
 
-在此教學課程結束時，您將會有一個運作正常的 Razor Pages Web 應用程式，並將在稍後的教學課程中以此為建置基礎。
+在本教學課程結束時，您將會有一個運作正常的 Razor Pages Web 應用程式，並將在稍後的教學課程中以此為建置基礎。
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
@@ -96,23 +96,29 @@ cd RazorPagesMovie
 
 ---
 
-## <a name="run-the-web-app"></a>執行 Web 應用程式
+## <a name="run-the-app"></a>執行應用程式
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 按 Ctrl+F5 即可執行而不使用偵錯工具。
 
-  Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 在上述影像中，連接埠編號為 5001。 當您執行應用程式時，會看到不同的連接埠編號。
+  [!INCLUDE[](~/includes/trustCertVS.md)]
+
+  Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。
   
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 按 **Ctrl-F5** 即可執行而不使用偵錯工具。
+
+  [!INCLUDE[](~/includes/trustCertVSC.md)]
 
   Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後瀏覽至 `http://localhost:5001`。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
   
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)啟動瀏覽器，然後巡覽至 `http://localhost:5001`。
+
+[!INCLUDE[](~/includes/trustCertMac.md)]
 
 <!-- End of VS tabs -->
 
@@ -160,7 +166,7 @@ cd RazorPagesMovie
 
 ## <a name="next-steps"></a>後續步驟
 
-在此教學課程中，您已：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。

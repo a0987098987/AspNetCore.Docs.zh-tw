@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 4c08d65cc1f658ef08a9b4b362ac7f8a3a243557
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: e6bda5dd60c62c7bdbfa81f34c14cfcd07e8d700
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637777"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56744049"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -23,7 +23,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ## <a name="serve-static-files"></a>提供靜態檔案
 
-靜態檔案會儲存在專案的 Web 根目錄中。 預設目錄是 *\<content_root>/wwwroot*，但是可以透過 [UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_) 方法進行變更。 如需詳細資訊，請參閱[內容根目錄](xref:fundamentals/index#content-root)和 [Web 根目錄](xref:fundamentals/index#web-root-webroot)。
+靜態檔案會儲存在專案的 Web 根目錄中。 預設目錄是 *\<content_root>/wwwroot*，但是可以透過 [UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_) 方法進行變更。 如需詳細資訊，請參閱[內容根目錄](xref:fundamentals/index#content-root)和 [Web 根目錄](xref:fundamentals/index#web-root)。
 
 您必須讓應用程式的 Web 主機記住內容根目錄。
 
@@ -82,7 +82,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 [!code-cshtml[](static-files/samples/1x/Views/Home/Index.cshtml?name=snippet_static_file_wwwroot)]
 
-在上述程式碼中，波浪字元 `~/` 會指向 Web 根目錄。 如需詳細資訊，請參閱 [Web 根目錄](xref:fundamentals/index#web-root-webroot)。
+在上述程式碼中，波浪字元 `~/` 會指向 Web 根目錄。 如需詳細資訊，請參閱 [Web 根目錄](xref:fundamentals/index#web-root)。
 
 ### <a name="serve-files-outside-of-web-root"></a>提供 Web 根目錄外的檔案
 

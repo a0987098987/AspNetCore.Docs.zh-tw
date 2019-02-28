@@ -5,14 +5,14 @@ description: 了解如何在組建 Blazor 應用程式時，控制中繼語言 (
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 uid: host-and-deploy/razor-components/configure-linker
-ms.openlocfilehash: c3c38ec2509344cc02f3895d5d0c2d35059d1d8e
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: 7c53e7912ec3b0ae471ea38777f874f55a32487d
+ms.sourcegitcommit: 0945078a09c372f17e9b003758ed87e99c2449f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55668013"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56647937"
 ---
 # <a name="configure-the-linker-for-blazor"></a>設定 Blazor 的連結器
 
@@ -73,7 +73,7 @@ Blazor 會在每個版本模式組建期間執行[中繼語言 (IL)](/dotnet/sta
 </linker>
 ```
 
-若要深入了解組態檔的檔案格式，請參閱 [IL 連結器：XML 描述項的語法](https://github.com/mono/linker/blob/master/linker/README.md#syntax-of-xml-descriptor)。
+若要深入了解組態檔的檔案格式，請參閱 [IL 連結器：XML 描述項的語法](https://github.com/mono/linker/blob/master/src/linker/README.md#syntax-of-xml-descriptor)。
 
 在專案檔中使用 `BlazorLinkerDescriptor` 項目指定組態檔：
 

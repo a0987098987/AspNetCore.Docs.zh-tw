@@ -5,14 +5,8 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 02/26/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 4c7f2348b13207fb6f2ff830bbf67ffa30e5489c
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248234"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -22,10 +16,10 @@ ms.locfileid: "56248234"
 
 Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教學課程、範例、使用說明指南及其他資源的首頁。 關於裝載 ASP.NET Core 應用程式，有兩個值得參考的教學課程：
 
-[快速入門：在 Azure 中建立 ASP.NET Core Web 應用程式](/azure/app-service/app-service-web-get-started-dotnet)  
+[在 Azure 中建立 ASP.NET Core Web 應用程式](/azure/app-service/app-service-web-get-started-dotnet)  
 在 Windows 上使用 Visual Studio 建立 ASP.NET Core Web 應用程式並將其部署到 Azure App Service。
 
-[快速入門：在 Linux 上於 App Service 中建立 .NET Core Web 應用程式](/azure/app-service/containers/quickstart-dotnetcore)  
+[在 Linux 上的 App Service 中建立 ASP.NET Core 應用程式](/azure/app-service/containers/quickstart-dotnetcore)  
 在 Linux 上使用命令列建立 ASP.NET Core Web 應用程式並將其部署到 Azure App Service。
 
 若要閱讀下列文章，請參閱 ASP.NET Core 文件：

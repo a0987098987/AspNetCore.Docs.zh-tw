@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/08/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: 3cd576b389a2a4384c0ba90b5740ac42140533cc
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: a9081a9938d56b7612bba13937eba384ff02455b
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159310"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833731"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -316,7 +316,7 @@ System.InvalidOperationException: No service for type
 `OnActionExecuted` 方法在動作方法之後執行，且可以透過 `ActionExecutedContext.Result` 屬性看到及管理動作的結果。 `ActionExecutedContext.Canceled` - 如果動作執行被另一個篩選條件縮短，則將設為 true。 `ActionExecutedContext.Exception` - 如果動作或後續的動作篩選條件擲回例外狀況，則將設為非 Null 值。 將 `ActionExecutedContext.Exception` 設定為 null：
 
 * 實際「處理」例外狀況。
-* 執行 `ActionExectedContext.Result`，彷彿它已正常地從動作方法傳回。
+* 執行 `ActionExecutedContext.Result`，彷彿它已正常地從動作方法傳回。
 
 ## <a name="exception-filters"></a>例外狀況篩選條件
 

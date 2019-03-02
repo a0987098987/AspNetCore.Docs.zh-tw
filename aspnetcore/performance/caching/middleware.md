@@ -98,21 +98,21 @@ if (responseCachingFeature != null)
 
 ## <a name="http-headers-used-by-response-caching-middleware"></a>回應快取中介軟體所使用的 HTTP 標頭
 
-回應快取中介軟體會設定使用 HTTP 標頭。
+使用 HTTP 標頭設定回應快取的中介軟體。
 
-| 頁首 | 詳細資料 |
+| 標頭 | 詳細資料 |
 | ------ | ------- |
-| 授權 | 如果標頭存在，未快取的回應。 |
-| Cache-Control | 中介軟體只會考慮快取回應標記為`public`快取指示詞。 控制快取使用下列參數：<ul><li>max-age</li><li>max-stale&#8224;</li><li>min-fresh</li><li>must-revalidate</li><li>無快取</li><li>無存放區</li><li>only-if-cached</li><li>private</li><li>public</li><li>s maxage</li><li>proxy-revalidate&#8225;</li></ul>&#8224;若要指定無限制到`max-stale`中, 介軟體會採取任何動作。<br>&#8225;`proxy-revalidate`具有相同的效果`must-revalidate`。<br><br>如需詳細資訊，請參閱[RFC 7231:要求快取控制指示詞](https://tools.ietf.org/html/rfc7234#section-5.2.1)。 |
-| Pragma | A`Pragma: no-cache`要求標頭會產生相同的效果`Cache-Control: no-cache`。 此標頭中的相關指示詞會覆寫`Cache-Control`標頭，如果有的話。 考慮使用 HTTP/1.0 的回溯相容性。 |
+| Authorization | 如果標頭存在，回應不會有快取。 |
+| Cache-Control | 中介軟體只會考慮快取回應標記為`public`快取指示詞。 控制快取使用下列參數：<ul><li>max-age</li><li>max-stale&#8224;</li><li>min-fresh</li><li>must-revalidate</li><li>no-cache</li><li>no-store</li><li>only-if-cached</li><li>private</li><li>public</li><li>s maxage</li><li>proxy-revalidate&#8225;</li></ul>&#8224;如果沒有指定限制到`max-stale`中, 中介軟體不會採取任何動作。<br>&#8225;`proxy-revalidate`具有相同的效果`must-revalidate`。<br><br>如需詳細資訊，請參閱[RFC 7231:要求快取控制指示詞](https://tools.ietf.org/html/rfc7234#section-5.2.1)。 |
+| Pragma | `Pragma: no-cache`要求標頭會產生相同的效果`Cache-Control: no-cache`。 此標頭中的相關指示詞會覆寫`Cache-Control`標頭，如果有的話。 考慮使用 HTTP/1.0 的回溯相容性。 |
 | Set-Cookie | 如果標頭存在，未快取的回應。 設定一或多個 cookie 的要求處理管線中的任何中介軟體會防止從快取的回應的回應快取中介軟體 (例如[cookie 架構 TempData 提供者](xref:fundamentals/app-state#tempdata))。  |
-| 而有所不同 | `Vary`標頭，會由另一個標頭用來改變快取回的應。 例如，快取所包含的編碼方式的回應`Vary: Accept-Encoding`標頭，來快取回應的要求標頭`Accept-Encoding: gzip`和`Accept-Encoding: text/plain`分開。 回應標頭值是`*`絕對不會儲存。 |
-| 到期 | 此標頭視為過時的回應不是儲存或擷取除非覆寫其他`Cache-Control`標頭。 |
-| 如果 If-none-Match | 如果值不是從快取提供完整的回應`*`而`ETag`的回應不符合任何提供的值。 否則，會提供 304 （未修改） 的回應。 |
-| If-Modified-Since | 如果`If-None-Match`標頭不存在，如果快取的回應日期比所提供的值從快取提供完整的回應。 否則，會提供 304 （未修改） 的回應。 |
-| 日期 | 提供從快取時`Date`標頭設定中介軟體，如果它未提供原始回應。 |
-| 內容長度 | 提供從快取時`Content-Length`標頭設定中介軟體，如果它未提供原始回應。 |
-| 存留期 | `Age`原始回應中傳送的標頭被忽略。 提供快取的回應時中, 介軟體會計算新的值。 |
+| Vary | `Vary`標頭，會由另一個標頭用來改變快取回應。 例如，快取所包含的編碼方式的回應`Vary: Accept-Encoding`標頭，來快取回應的要求標頭`Accept-Encoding: gzip`和`Accept-Encoding: text/plain`分開。 回應標頭值是`*`絕對不會儲存。 |
+| Expires | 除非被其他`Cache-Control`標頭覆蓋，否則不會存儲或檢索此標頭過時的回應。 |
+| If-none-Match | 如果值不是`*`並且回應的`ETag`與提供的任何值都不匹配，則從快取提供完整回應。 否則，會提供 304 （未修改） 的回應。 |
+| If-Modified-Since | 如果`If-None-Match`標頭不存在，則如果快取的回應日期比提供的值更新，則從快取提供完整回應。 否則，會提供 304 （未修改） 的回應。 |
+| Date | 提供快取時，如果原始回應中未提供`Date`標頭，則由中介軟體設定。 |
+| Content-Length | 提供快取時，如果原始回應中未提供`Content-Length`標頭，則由中介軟體設定。 |
+| Age | `Age`原始回應中傳送的標頭被忽略。 中介軟體提供快取的回應時會計算新的值。 |
 
 ## <a name="caching-respects-request-cache-control-directives"></a>快取會遵守要求快取控制指示詞
 

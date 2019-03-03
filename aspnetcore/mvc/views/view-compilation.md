@@ -1,18 +1,18 @@
 ---
-title: ASP.NET Core 中 Razor 檔案的編譯和先行編譯
+title: ASP.NET Core 中 Razor 檔案的先行編譯
 author: rick-anderson
-description: 了解先行編譯 Razor 檔案的好處，以及如何完成 ASP.NET Core 應用程式中 Razor 檔案的先行編譯。
+description: 了解在 ASP.NET Core 應用程式中發生 Razor 檔案編譯的方式。
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: c4e8f722fdf3d3f64807cc35ff9f349af7f32abd
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 0b6173a7860f5f1d9d11219fbf3f57f76d703031
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248182"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899264"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>ASP.NET Core 中 Razor 檔案的先行編譯
 
@@ -30,28 +30,31 @@ ms.locfileid: "56248182"
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
 叫用關聯的 Razor 頁面或 MVC 檢視時，Razor 檔案便會在執行階段編譯。 Razor 檔案會在建置和發佈階段使用 [Razor SDK](xref:razor-pages/sdk) 來編譯。
 
 ::: moniker-end
 
-## <a name="precompilation-considerations"></a>先行編譯的考量
+::: moniker range=">= aspnetcore-3.0"
 
-以下是先行編譯 Razor 檔案的副作用：
+Razor 檔案會在建置和發佈階段使用 [Razor SDK](xref:razor-pages/sdk) 來編譯。 您可能會藉由設定應用程式，選擇性地啟用執行階段編譯。
 
-* 較小的發佈組合
-* 更快速的啟動時間
-* 您無法編輯 Razor 檔案，因為發佈組合中沒有關聯的內容。
+::: moniker-end
 
-## <a name="deploy-precompiled-files"></a>部署先行編譯的檔案
+## <a name="razor-compilation"></a>Razor 編譯
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-3.0"
+Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 啟用時，執行階段編譯將補充建置時間編譯，以允許更新 Razor 檔案 (如果檔案已經過編輯)。
 
-Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 在建置階段中，支援更新 Razor 檔案後進行編輯。 根據預設，只有編譯的 *Views.dll* 會與應用程式一起部署，而 *.cshtml* 檔案則否。
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+
+Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 在建置階段中，支援更新 Razor 檔案後進行編輯。 根據預設，只有已編譯的 *Views.dll* 會與您的應用程式一起部署，而且在編譯 Razor 檔案時不需要任何 *.cshtml* 檔案或參考組件。
 
 > [!IMPORTANT]
-> ASP.NET Core 3.0 中將移除先行編譯工具。 建議移轉到 [Razor SDK](xref:razor-pages/sdk)。
+> 先行編譯工具已被取代，且將在 ASP.NET Core 3.0 中移除。 建議移轉到 [Razor SDK](xref:razor-pages/sdk)。
 >
 > 只有當專案檔中未設定先行編譯特定的屬性時，Razor SDK 才會有效。 例如，將 *.csproj* 檔案的 `MvcRazorCompileOnPublish` 屬性設定成 `true`，便會停用 Razor SDK。
 
@@ -68,7 +71,7 @@ Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 在建�
 根據預設，ASP.NET Core 2.x 專案範本會隱含地將 `MvcRazorCompileOnPublish` 屬性設定成 `true`。 因此，可以安全地將元素從 *.csproj* 檔案中移除。
 
 > [!IMPORTANT]
-> ASP.NET Core 3.0 中將移除先行編譯工具。 建議移轉到 [Razor SDK](xref:razor-pages/sdk)。
+> 先行編譯工具已被取代，且將在 ASP.NET Core 3.0 中移除。 建議移轉到 [Razor SDK](xref:razor-pages/sdk)。
 >
 > 在 ASP.NET Core 2.0 中執行[自封式部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) 時，無法使用 Razor 檔案先行編譯。
 
@@ -96,24 +99,44 @@ dotnet publish -c Release
 
 ::: moniker-end
 
-## <a name="recompile-razor-files-on-change"></a>在發生變更時重新編譯 Razor 檔案
+## <a name="runtime-compilation"></a>執行階段編譯
 
-<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions> <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> 可取得或設定可決定磁碟上的檔案變更時是否要重新編譯 Razor files (Razor 檢視與 Razor Pages) 的值。
+::: moniker range="= aspnetcore-2.1"
 
-當設定為 `true` 時，[IFileProvider.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) 會監視已設定之 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 執行個體中的 Razor 是否發生變更。
+建置時間編譯會透過 Razor 檔案的執行階段編譯來補充。 當 *.cshtml* 檔案的內容變更時，ASP.NET Core MVC 將重新編譯 Razor 檔案。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
+
+建置時間編譯會透過 Razor 檔案的執行階段編譯來補充。 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions> <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> 可取得或設定可決定磁碟上的檔案變更時是否要重新編譯 Razor files (Razor 檢視與 Razor Pages) 的值。
 
 針對下列項目，預設值是 `true`：
 
-* ASP.NET Core 2.1 或更舊的應用程式。
-* ASP.NET Core 2.2 或更新的應用程式 (在開發環境中)。
-
-<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> 與相容性參數關聯，而且可以視已針對應用程式設定的相容性版本提供不同的行為。 透過設定 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> 優先順序高於應用程式相容性版本意指的值，來設定應用程式。
-
-若應用程式的相容性版本是設定為 <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1> 或更舊版本，則除非已明確設定，否則 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> 會設定為 `true`。
-
-若應用程式的相容性版本是設定為 <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2> 或更新版本，則除非環境為開發環境或已明確設定值，否則 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> 會設定為 `false`。
+* 如果應用程式的相容性版本設定為 <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1> 或更早版本。
+* 如果應用程式的相容性版本設定為 <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2> 或更新版本且應用程式位於 <xref:Microsoft.AspNetCore.Hosting.HostingEnvironmentExtensions.IsDevelopment*> 開發環境中。 換句話說，除非明確設定 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange>，否則 Razor 檔案不會在非開發環境中重新編譯。
 
 如需設定應用程式相容性版本的指導方針與範例，請參閱<xref:mvc/compatibility-version>。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+使用 `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation` 封裝來啟用執行階段編譯。 若要啟用執行階段編譯，應用程式必須
+
+* 安裝 [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 封裝。
+* 更新應用程式的 `ConfigureServices` 以包含對 `AddMvcRazorRuntimeCompilation` 的呼叫：
+
+```csharp
+services
+    .AddMvc()
+    .AddMvcRazorRuntimeCompilation()
+```
+
+針對要在部署時運作的執行階段編譯，應用程式必須額外修改其專案檔，以將 `PreserveCompilationReferences` 設定為 `true`。
+[!code-xml[](view-compilation/sample/RuntimeCompilation.csproj?highlight=3)]
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>其他資源
 

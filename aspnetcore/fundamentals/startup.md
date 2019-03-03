@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 685b496943642b349321a36a7200d6d51ecf4d6e
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: cfd0a57d5d0b60862b017a170b6d5cbddf56f15a
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396221"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56744179"
 ---
 # <a name="app-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -31,7 +31,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 [!code-csharp[](startup/sample_snapshot/Startup1.cs?highlight=4,10)]
 
-一旦建置應用程式[主機](xref:fundamentals/host/index)，就會對應用程式指定 `Startup` 類別。 當在 `Program` 類別中的主機建立器上呼叫 `Build` 時，就會建置該應用程式的主機。 通常會在主機建立器上透過呼叫 [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定 `Startup` 類別：
+一旦建置應用程式[主機](xref:fundamentals/index#host)，就會對應用程式指定 `Startup` 類別。 當在 `Program` 類別中的主機建立器上呼叫 `Build` 時，就會建置該應用程式的主機。 通常會在主機建立器上透過呼叫 [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定 `Startup` 類別：
 
 [!code-csharp[](startup/sample_snapshot/Program3.cs?name=snippet_Program&highlight=10)]
 
@@ -47,7 +47,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 插入 `IHostingEnvironment` 的替代方式是使用基於慣例的方法。 應用程式針對不同的環境定義個別的 `Startup` 類別 (例如 `StartupDevelopment`) 時，會在執行階段選取適當的 `Startup` 類別。 將優先使用其名稱尾碼符合目前環境的類別。 如果應用程式是在開發環境中執行，且同時包含 `Startup` 類別和 `StartupDevelopment` 類別，則會使用 `StartupDevelopment` 類別。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments#environment-based-startup-class-and-methods)。
 
-若要深入了解主機，請參閱 <xref:fundamentals/host/index>。 如需在啟動期間處理錯誤的資訊，請參閱[啟動例外狀況處理](xref:fundamentals/error-handling#startup-exception-handling)。
+若要深入了解主機，請參閱[主機](xref:fundamentals/index#host)。 如需在啟動期間處理錯誤的資訊，請參閱[啟動例外狀況處理](xref:fundamentals/error-handling#startup-exception-handling)。
 
 ## <a name="the-configureservices-method"></a>ConfigureServices 方法
 
@@ -59,7 +59,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 典型的模式為呼叫所有 `Add{Service}` 方法，然後呼叫所有 `services.Configure{Service}` 方法。 例如，請參閱[設定身分識別服務](xref:security/authentication/identity#pw)。
 
-主機可能會在呼叫 `Startup` 方法之前，設定一些服務。 如需詳細資訊，請參閱<xref:fundamentals/host/index>。
+主機可能會在呼叫 `Startup` 方法之前，設定一些服務。 如需詳細資訊，請參閱[主機](xref:fundamentals/index#host)。
 
 對於需要大量安裝的功能，可從 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> 上取得 `Add{Service}` 擴充方法。 適用於 Entity Framework、身分識別和 MVC 的典型 ASP.NET Core 應用程式註冊服務：
 
@@ -134,7 +134,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:fundamentals/host/index>
+* [主機](xref:fundamentals/index#host)
 * <xref:fundamentals/environments>
 * <xref:fundamentals/middleware/index>
 * <xref:fundamentals/logging/index>

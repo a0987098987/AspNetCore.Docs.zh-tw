@@ -5,14 +5,14 @@ description: 深入了解 HTTP.sys，這是 Windows 上的 ASP.NET Core 網頁�
 monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/21/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 859e3daeba125ab1a9392c1bdbf2733de2f79a34
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: abb426b1a41226e52d9b9b5c00c41ff816890d36
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248338"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56744127"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 
@@ -94,7 +94,7 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
    **HTTP.sys 選項**
 
-   | 屬性 | 描述 | 預設 |
+   | 屬性 | 說明 | 預設 |
    | -------- | ----------- | :-----: |
    | [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `true` |
    | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
@@ -135,7 +135,9 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
 ### <a name="configure-windows-server"></a>設定 Windows Server
 
-1. 判斷要為應用程式開啟的連接埠，然後使用「Windows 防火牆」或 [PowerShell Cmdlet](https://technet.microsoft.com/library/jj554906) 來開啟防火牆連接埠，以允許流量到達 HTTP.sys。 部署至 Azure VM 時，請在[網路安全性群組](/azure/virtual-network/security-overview)中開啟連接埠。 在下列命令和應用程式設定中，會使用連接埠 443。
+1. 判斷要為應用程式開啟的連接埠，然後使用 [Windows 防火牆](/windows/security/threat-protection/windows-firewall/create-an-inbound-port-rule)或 [New-NetFirewallRule](/powershell/module/netsecurity/new-netfirewallrule) PowerShell Cmdlet 來開啟防火牆連接埠，以允許流量到達 HTTP.sys。 在下列命令和應用程式設定中，會使用連接埠 443。
+
+1. 部署至 Azure VM 時，請在[網路安全性群組](/azure/virtual-machines/windows/nsg-quickstart-portal)中開啟連接埠。 在下列命令和應用程式設定中，會使用連接埠 443。
 
 1. 視需要取得並安裝 X.509 憑證。
 
@@ -272,5 +274,5 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 * [使用 HTTP.sys 來啟用 Windows 驗證](xref:security/authentication/windowsauth#enable-windows-authentication-with-httpsys) \(機器翻譯\)
 * [HTTP 伺服器 API](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx) \(英文\)
 * [aspnet/HttpSysServer GitHub 存放庫 (原始程式碼)](https://github.com/aspnet/HttpSysServer/) \(英文\)
-* <xref:fundamentals/host/index>
+* [主機](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>

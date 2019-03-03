@@ -4,14 +4,14 @@ author: guardrex
 description: 了解 ASP.NET Core 如何實作相依性插入以及如何使用它。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/25/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 5e5b9746da9bbc13a147b807aabfd3d9ab90a0ca
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 5e1522e0819d989a7029c2928c1c33624c1774c7
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410504"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899355"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -179,7 +179,7 @@ public class MyDependency : IMyDependency
 
 ## <a name="framework-provided-services"></a>架構提供的服務
 
-`Startup.ConfigureServices` 方法負責定義應用程式將使用的服務，包括像是 Entity Framework Core 與 ASP.NET Core MVC 等平台功能。 一開始，提供給 `ConfigureServices` 的 `IServiceCollection` 具有下列已定義的服務 (取決於[主機的設定方式](xref:fundamentals/host/index))：
+`Startup.ConfigureServices` 方法負責定義應用程式將使用的服務，包括像是 Entity Framework Core 與 ASP.NET Core MVC 等平台功能。 一開始，提供給 `ConfigureServices` 的 `IServiceCollection` 具有下列已定義的服務 (取決於[主機的設定方式](xref:fundamentals/index#host))：
 
 | 服務類型 | 存留期 |
 | ------------ | -------- |
@@ -253,7 +253,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="entity-framework-contexts"></a>Entity Framework 內容
 
-Entity Framework 內容應該使用具範圍存留期新增至服務容器。 這是在註冊資料庫內容時透過對 [AddDbContext](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) 方法的呼叫來自動處理的。 使用資料庫內容的服務也應該使用具範圍存留期。
+通常會使用[具範圍存留期](#service-lifetimes)來將 Entity Framework 內容新增至服務容器，因為正常會將 Web 應用程式資料庫作業範圍設定為該要求。 註冊資料庫內容時，如果 <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*> 多載未指定留存期，則會將範圍設定為預設存留期。 指定存留期的服務不應該使用存留期比服務還短的資料庫內容。
 
 ## <a name="lifetime-and-registration-options"></a>留期和註冊選項
 

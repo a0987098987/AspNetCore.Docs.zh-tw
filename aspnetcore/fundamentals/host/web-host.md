@@ -1,21 +1,23 @@
 ---
 title: ASP.NET Core Web 主機
 author: guardrex
-description: 深入了解 ASP.NET Core 中的 Web 主機，其負責啟動應用程式以及管理存留期。
+description: 了解 ASP.NET Core 中的 Web 主機，其負責啟動應用程式及管理存留期。
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 7215027a083c0ed0bc3b15196e390a31c5dcfc14
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 878fbaa1a61946dadf23ba8fefbf22021e547cc2
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637842"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56744088"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
 作者：[Luke Latham](https://github.com/guardrex)
+
+ASP.NET Core 應用程式會設定並啟動「主機」。 主機負責應用程式啟動和存留期管理。 至少，主機會設定伺服器和要求處理管線。 主機也可以設定記錄、相依性插入和設定。
 
 ::: moniker range="<= aspnetcore-1.1"
 
@@ -23,7 +25,17 @@ ms.locfileid: "53637842"
 
 ::: moniker-end
 
-ASP.NET Core 應用程式會設定並啟動「主機」。 主機負責應用程式啟動和存留期管理。 至少，主機會設定伺服器和要求處理管線。 本主題涵蓋 ASP.NET Core Web 主機 ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder))，這對裝載 Web 應用程式很實用。 如需 .NET 泛型主機 ([IHostBuilder](/dotnet/api/microsoft.extensions.hosting.ihostbuilder)) 的說明，請參閱 <xref:fundamentals/host/generic-host>。
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+
+本文所涵蓋的 ASP.NET Core Web 主機 (<xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder>) 適用於裝載 Web 應用程式。 如需 .NET 泛型主機 ([IHostBuilder](/dotnet/api/microsoft.extensions.hosting.ihostbuilder)) 的相關資訊，請參閱 <xref:fundamentals/host/generic-host>。
+
+::: moniker-end
+
+::: moniker range="> aspnetcore-2.2"
+
+本文涵蓋 ASP.NET Core Web 主機 ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder))。 在 ASP.NET Core 3.0 中，泛型主機會取代 Web 主機。 如需詳細資訊，請參閱[主機](xref:fundamentals/index#host)。
+
+::: moniker-end
 
 ## <a name="set-up-a-host"></a>設定主機
 
@@ -669,7 +681,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-建立自訂[中介軟體](xref:fundamentals/middleware/index#write-middleware)時，`IHostingEnvironment` 可以插入至 `Invoke` 方法：
+建立自訂[中介軟體](xref:fundamentals/middleware/write)時，`IHostingEnvironment` 可以插入至 `Invoke` 方法：
 
 ```csharp
 public async Task Invoke(HttpContext context, IHostingEnvironment env)

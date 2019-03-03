@@ -3,26 +3,26 @@ title: ASP.NET Core 中的配置
 author: ardalis
 description: 了解如何先使用通用配置、共用指示詞，以及執行通用程式碼，再轉譯 ASP.NET 應用程式中的檢視。
 ms.author: riande
-ms.date: 10/18/2018
+ms.date: 02/26/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 1bd225c804b333efea834a46b7d9ba46b1bb69d8
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 7a60ee15e688d6f0e531302457604fa759213758
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410569"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899238"
 ---
 # <a name="layout-in-aspnet-core"></a>ASP.NET Core 中的配置
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Dave Brock](https://twitter.com/daveabrock)
 
-頁面和檢視經常會共用視覺效果和程式設計項目。 此文章示範如何：
+頁面和檢視經常會共用視覺效果和程式設計項目。 本文會示範如何：
 
 * 使用常見配置。
 * 共用指示詞。
 * 執行常見的程式碼，再轉譯頁面或檢視。
 
-此文章件將探討 ASP.NET Core MVC 兩種不同方法的配置：Razor Pages 和包含檢視的控制器。 針對此主題，差異很小：
+此文章件將探討 ASP.NET Core MVC 兩種不同方法的配置：Razor Pages 和包含檢視的控制器。 針對本主題，差異很小：
 
 * Razor Pages 位於 *Pages* 資料夾。
 * 包含檢視的控制器，使用 *Views* 資料夾進行檢視。
@@ -49,15 +49,15 @@ ms.locfileid: "56410569"
 
 下列程式碼顯示使用範本建立之專案 (包含控制器和檢視) 的配置檔案：
 
-[!code-html[](~/common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=44,72)]
+[!code-cshtml[](~/common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=44,72)]
 
 ## <a name="specifying-a-layout"></a>指定配置
 
 Razor 檢視具有 `Layout` 屬性。 個別檢視透過設定此屬性來指定配置：
 
-[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
-指定的配置可以使用完整路徑 (例如 */Pages/Shared/_Layout.cshtml* 或 */Views/Shared/_Layout.cshtml*) 或部分名稱 (例如：`_Layout`)。 提供部分名稱時，Razor 檢視引擎將使用其標準探索程序來搜尋配置檔案。 首先搜尋處理常式方法 (或控制器) 所在的資料夾，接著搜尋 *Shared* 資料夾。 此探索程序相當於用來探索[部分檢視](partial.md)的程序。
+指定的配置可以使用完整路徑 (例如 */Pages/Shared/_Layout.cshtml* 或 */Views/Shared/_Layout.cshtml*) 或部分名稱 (例如：`_Layout`)。 提供部分名稱時，Razor 檢視引擎會使用其標準探索程序來搜尋配置檔案。 首先搜尋處理常式方法 (或控制器) 所在的資料夾，接著搜尋 *Shared* 資料夾。 此探索程序相當於用來探索[部分檢視](xref:mvc/views/partial#partial-view-discovery)的程序。
 
 根據預設，每個配置都必須呼叫 `RenderBody`。 不論在何處呼叫 `RenderBody`，都會轉譯檢視內容。
 
@@ -123,7 +123,7 @@ Razor 頁面中的本文和每個區段都必須進行轉譯或忽略。
 
 範例 `_ViewImports.cshtml` 檔案：
 
-[!code-html[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
 ASP.NET Core MVC 應用程式的 *_ViewImports.cshtml* 檔案通常會放在 *Pages* (或 *Views*) 資料夾中。 *_ViewImports.cshtml* 檔案可以放在任何資料夾內；在此案例中，該檔案只會套用至該資料夾和其子資料夾內的頁面或檢視。 `_ViewImports` 檔案會從根層級開始處理，然後處理導向頁面或檢視本身位置的每個資料夾。 根層級指定的 `_ViewImports` 設定可以在資料夾層級覆寫。
 
@@ -151,7 +151,7 @@ ASP.NET Core MVC 應用程式的 *_ViewImports.cshtml* 檔案通常會放在 *Pa
 
 範例 *_ViewStart.cshtml* 檔案：
 
-[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
 
 上面的檔案指定所有檢視都會使用 *_Layout.cshtml* 配置。
 

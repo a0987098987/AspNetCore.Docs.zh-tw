@@ -1,28 +1,51 @@
 ---
 title: .NET 泛型主機
 author: guardrex
-description: 了解 .NET 中的泛型主機，其負責啟動應用程式以及管理存留期。
+description: 了解 ASP.NET Core 的泛型主機，其負責啟動應用程式及管理存留期。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 4d435984d8169b558ab026ef8541c90f7a2a96b9
-ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
+ms.openlocfilehash: a128b7c19d544d1dd28ab16f7a208ceef680ce81
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618151"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743838"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-.NET Core 應用程式會設定並啟動「主機」。 主機負責應用程式啟動和存留期管理。 本主題的內容涵蓋 ASP.NET Core 泛型主機 (<xref:Microsoft.Extensions.Hosting.HostBuilder>)，其對於裝載不會處理 HTTP 要求的應用程式相當實用。 如需 Web 主機 (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>) 的說明，請參閱 <xref:fundamentals/host/web-host>。
+::: moniker range="<= aspnetcore-2.2"
 
-泛型主機的目標是將 HTTP 管線與 Web 主機 API 分離，以允許更廣泛的主機陣列案例。 傳訊、背景工作及其他以泛型主機為基礎的非 HTTP 工作負載都可利用跨領域功能，例如設定、相依性插入 (DI) 和記錄。
+ASP.NET Core 應用程式會設定並啟動主機。 主機負責應用程式啟動和存留期管理。
 
-泛型主機是 ASP.NET Core 2.1 的新功能，不適用於虛擬主機案例。 針對虛擬主機案例，請使用 [Web 主機](xref:fundamentals/host/web-host)。 泛型主機目前正在開發中，未來版本將取代 Web 主機並成為 HTTP 和非 HTTP 案例中的主要主機 API。
+本文所涵蓋的 ASP.NET Core 泛型主機 (<xref:Microsoft.Extensions.Hosting.HostBuilder>)，可用來不會處理 HTTP 要求的應用程式。
+
+泛型主機的用途是將 HTTP 管線從 Web 主機 API 分離，以允許更廣泛的主機陣列案例。 傳訊、背景工作及其他以泛型主機為基礎的非 HTTP 工作負載都受益於跨領域的功能，例如設定、相依性插入 (DI) 和記錄。
+
+泛型主機是 ASP.NET Core 2.1 的新功能，不適用於虛擬主機案例。 針對虛擬主機案例，請使用 [Web 主機](xref:fundamentals/host/web-host)。 泛型主機將在未來版本中取代 Web 主機，並成為 HTTP 和非 HTTP 案例中的主要主機 API。
+
+::: moniker-end
+
+::: moniker range="> aspnetcore-2.2"
+
+ASP.NET Core 應用程式會設定並啟動主機。 主機負責應用程式啟動和存留期管理。
+
+本文涵蓋 .NET Core 泛型主機 (<xref:Microsoft.Extensions.Hosting.HostBuilder>)。
+
+泛型主機與 Web 主機不同，其會將 HTTP 管線從 Web 主機 API 分離，以允許更廣泛的主機陣列案例。 傳訊、背景工作及其他非 HTTP 工作負載都可使用泛型主機並受益於跨領域的功能，例如設定、相依性插入 (DI) 和記錄。
+
+從 ASP.NET Core 3.0 開始，建議針對 HTTP 和非 HTTP 工作負載使用泛型主機。 HTTP 伺服器實作 (如果包含) 會以 <xref:Microsoft.Extensions.Hosting.IHostedService> 的實作來執行。 `IHostedService` 是也可針對其他工作負載使用的介面。
+
+不再針對 Web 應用程式建議使用 Web 主機，但仍然適用於回溯相容性。
+
+> [!NOTE]
+> 本文的其餘部分尚未更新為 3.0。
+
+::: moniker-end
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -105,7 +128,7 @@ var host = new HostBuilder()
 
 **索引鍵**：contentRoot  
 **類型**：*string*  
-**預設值**：預設為應用程式組件所在的資料夾。  
+**預設**：預設為應用程式組件所在的資料夾。  
 **設定使用**：`UseContentRoot`  
 **環境變數**：`<PREFIX_>CONTENTROOT` (`<PREFIX_>` 是[選擇性和使用者定義的](#configurehostconfiguration))
 
@@ -119,7 +142,7 @@ var host = new HostBuilder()
 
 **索引鍵**：environment  
 **類型**：*string*  
-**預設值**：Production  
+**預設**：生產環境  
 **設定使用**：`UseEnvironment`  
 **環境變數**：`<PREFIX_>ENVIRONMENT` (`<PREFIX_>` 是[選擇性和使用者定義的](#configurehostconfiguration))
 

@@ -48,7 +48,7 @@ ms.locfileid: "56647911"
 
 [!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=9)]
 
-設定應用程式使用中的介軟體與`UseResponseCaching`擴充方法，將中介軟體新增至要求處理管線。 範例應用程式會新增[ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2)快取可快取的回應達 10 秒的回應標頭。 此範例會傳送[ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4)標頭，若要設定中介軟體提供快取回的應只有當[ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4)後續的要求標頭是否完全符合原始要求。 在程式碼範例中，如下所示[CacheControlHeaderValue](/dotnet/api/microsoft.net.http.headers.cachecontrolheadervalue)並[HeaderNames](/dotnet/api/microsoft.net.http.headers.headernames)需要`using`陳述式[Microsoft.Net.Http.Headers](/dotnet/api/microsoft.net.http.headers)命名空間。
+設定應用程式透過 `UseResponseCaching` 擴充方法使用中介軟體，此擴充方法會將中介軟體新增到要求處理管線。 範例應用程式會新增 [`Cache-Control`](https://tools.ietf.org/html/rfc7234#section-5.2) 標頭到回應中，這會快取可快取的回應最多 10 秒。 只有當後續邀求的 [`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4) 標頭符合原始要求的 [`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4) 時，範例才會傳送 [`Vary`](https://tools.ietf.org/html/rfc7231#section-7.1.4) 標頭，以設定中介軟體提供快取的回應。 在接下來的程式碼範例中，[CacheControlHeaderValue](/dotnet/api/microsoft.net.http.headers.cachecontrolheadervalue) 與 [HeaderNames](/dotnet/api/microsoft.net.http.headers.headernames) 需要 `using` 陳述式 (針對 [Microsoft.Net.Http.Headers](/dotnet/api/microsoft.net.http.headers) 命名空間)。
 
 [!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=17,22-29)]
 

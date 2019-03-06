@@ -4,14 +4,8 @@ author: tdykstra
 description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 01/14/2019
+ms.date: 03/02/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 81620f0c844f3dbb1a2da0e9f1c319f87d9790b6
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667696"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -31,7 +25,7 @@ ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提�
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_ExpandDefault&highlight=17-19)]
 
-預設專案範本會呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A> 擴充方法，擴充方法會接著新增下列記錄提供者：
+預設專案範本會呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A>，該項目會新增下列記錄提供者：
 
 * 主控台
 * 偵錯
@@ -98,7 +92,7 @@ ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提�
 
 若要在 `Startup` 類別中寫入記錄，請在建構函式簽章中包括 `ILogger` 參數：
 
-[!code-csharp[](index/samples/2.x/TodoApiSample/Startup.cs?name=snippet_Startup&highlight=3,5,8,19,26)]
+[!code-csharp[](index/samples/2.x/TodoApiSample/Startup.cs?name=snippet_Startup&highlight=3,5,8,20,27)]
 
 ### <a name="create-logs-in-program"></a>在程式中建立記錄
 
@@ -806,7 +800,7 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 * 不要明確地呼叫 <xref:Microsoft.Extensions.Logging.AzureAppServicesLoggerFactoryExtensions.AddAzureWebAppDiagnostics*>。 當應用程式部署至 Azure App Service 時，就會自動提供此提供者給應用程式。
 
-若以 .NET Framework 為目標，或是參考 `Microsoft.AspNetCore.App` 中繼套件，請將提供者套件新增至專案。 叫用 <xref:Microsoft.Extensions.Logging.ILoggerFactory> 執行個體上的 `AddAzureWebAppDiagnostics`：
+若以 .NET Framework 為目標，或是參考 `Microsoft.AspNetCore.App` 中繼套件，請將提供者套件新增至專案。 叫用 `AddAzureWebAppDiagnostics`：
 
 ```csharp
 logging.AddAzureWebAppDiagnostics();
@@ -822,19 +816,27 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-1.1"
+::: moniker range="<= aspnetcore-2.1"
 
 <xref:Microsoft.Extensions.Logging.AzureAppServicesLoggerFactoryExtensions.AddAzureWebAppDiagnostics*> 多載可讓您傳入 <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureAppServicesDiagnosticsSettings>。 設定物件可覆寫預設設定，例如記錄輸出範本、Blob 名稱與檔案大小限制。 (*輸出範本*是訊息範本，它除了會套用到 `ILogger` 方法呼叫所提供的記錄之外，還會套用到所有記錄。)
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+如果要進行提供者設定，請使用 <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureFileLoggerOptions> 和 <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureBlobLoggerOptions>，如以下範例中所示：
+
+[!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_AzLogOptions&highlight=19-27)]
+
+::: moniker-end
 
 當您部署到 App Service 應用程式時，應用程式會接受 Azure 入口網站的 [App Service] 頁面之[診斷記錄](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag)區段中的設定。 當更新這些設定時，變更會立即生效，而不需要重新啟動或重新部署應用程式。
 
 ![Azure 記錄設定](index/_static/azure-logging-settings.png)
 
-記錄檔的預設位置為 *D:\\home\\LogFiles\\Application* 資料夾，而預設檔案名稱為 *diagnostics-yyyymmdd.txt*。 預設檔案大小限制為 10 MB，而預設保留的檔案數目上限為 2。 預設 Blob 名稱為 *{app-name}{timestamp}/yyyy/mm/dd/hh/{guid}-applicationLog.txt*。 如需預設行為的詳細資訊，請參閱 <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureAppServicesDiagnosticsSettings>。
+記錄檔的預設位置為 *D:\\home\\LogFiles\\Application* 資料夾，而預設檔案名稱為 *diagnostics-yyyymmdd.txt*。 預設檔案大小限制為 10 MB，而預設保留的檔案數目上限為 2。 預設 Blob 名稱為 *{app-name}{timestamp}/yyyy/mm/dd/hh/{guid}-applicationLog.txt*。
 
 此提供者僅適用於專案在 Azure 環境中執行的情況。 若在本機執行專案，不會有任何作用，即它不會寫入本機檔案或 blob 的本機開發儲存體。
-
-::: moniker-end
 
 ### <a name="azure-log-streaming"></a>Azure 記錄資料流
 

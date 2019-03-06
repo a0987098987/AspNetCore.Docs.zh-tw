@@ -4,7 +4,7 @@ author: rick-anderson
 description: 了解建置 ASP.NET Core 應用程式的基本概念。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/14/2019
+ms.date: 03/02/2019
 uid: fundamentals/index
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
@@ -75,7 +75,7 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 * 中介軟體元件
 * 記錄
 * DI
-* 組態
+* Configuration
 
 在單一物件中包含所有應用程式相互依存資源的主要理由便是生命週期管理：控制應用程式的啟動及順利關機。
 
@@ -83,7 +83,7 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 
 ::: moniker range="<= aspnetcore-2.2"
 
-ASP.NET Core 2.x 會針對 Web 應用程式使用 Web 主機 (`WebHost` 類別)。 架構會提供 `CreateDefaultBuilder` 延伸模組方法，使用常用的選項設定主機，例如下列項目：
+ASP.NET Core 2.x 會針對 Web 應用程式使用 Web 主機 (`WebHost` 類別)。 架構會提供 `CreateDefaultBuilder` 來設定具有常用選項的主機，例如下列項目：
 
 * 使用 [Kestrel](#servers) 作為網頁伺服器，並啟用 IIS 整合。
 * 從 *appsettings.json*、環境變數、命令列引數及其他來源載入組態。
@@ -105,13 +105,13 @@ ASP.NET Core 2.x 會針對 Web 應用程式使用 Web 主機 (`WebHost` 類別)�
 
 在 ASP.NET Core 3.0 中，您可以在 Web 應用程式中使用 Web 主機 (`WebHost` 類別) 或一般主機 (`Host` 類別)。 建議您使用一般主機，Web 主機則適用於回溯相容性。
 
-架構會提供 `CreateDefaultBuilder` 及 `ConfigureWebHostDefaults` 延伸模組方法，使用常用的選項設定主機，例如下列項目：
+架構會提供 `CreateDefaultBuilder` 和 `ConfigureWebHostDefaults` 方法來設定具有常用選項的主機，例如下列項目：
 
 * 使用 [Kestrel](#servers) 作為網頁伺服器，並啟用 IIS 整合。
 * 從 *appsettings.json*、*appsettings.[EnvironmentName].json*、環境變數及命令列引數載入組態。
 * 將記錄輸出傳送到主控台及偵錯提供者。
 
-以下是建置主機的範例程式碼。 使用常用選項設定主機的延伸模組方法已在其中醒目提示。
+以下是建置主機的範例程式碼。 使用常用選項設定主機的方法已在其中醒目提示。
 
 [!code-csharp[](index/snapshots/3.x/Program1.cs?highlight=9-10)]
 
@@ -184,7 +184,7 @@ ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 �
 
 如需詳細資訊，請參閱[伺服器](xref:fundamentals/servers/index)。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>Configuration
 
 ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，以成對名稱和數值的形式取得設定。 您可以使用各種來源的內建組態提供者，例如 *.json* 檔案、*.xml* 檔案、環境變數及命令列引數。 您也可以撰寫自訂組態提供者。
 

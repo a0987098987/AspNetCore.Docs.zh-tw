@@ -5,12 +5,6 @@ description: 使用 Visual Studio、ASP.NET Core 及 EF Core 在 Windows 上建�
 ms.author: riande
 ms.date: 09/08/2017
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: c543e86b58b37a120df22331043944757beeca3a
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410056"
 ---
 # <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Razor Pages Web 應用程式
 
@@ -32,3 +26,7 @@ ms.locfileid: "56410056"
 最後，您會擁有一個能夠顯示及管理電影資料庫的應用程式。
 
 ![範例應用程式的範例頁面](index/_static/sample-page.png)
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=F0SP7Ry4flQ&feature=youtu.be)

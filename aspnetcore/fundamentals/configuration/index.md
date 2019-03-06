@@ -4,7 +4,7 @@ author: guardrex
 description: 了解如何使用組態 API 設定 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/25/2019
+ms.date: 03/04/2019
 uid: fundamentals/configuration/index
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
@@ -128,7 +128,26 @@ ASP.NET Core 中的應用程式設定是以由*設定提供者*所建立的機�
 
 「檔案設定提供者」可以在應用程式啟動之後且底層設定檔案變更時重新載入設定。 此主題稍後將說明「檔案設定提供者」。
 
-您可以在應用程式的[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器中找到 <xref:Microsoft.Extensions.Configuration.IConfiguration>。 設定提供者無法使用 DI，因為當它們由主機設定時，它無法使用。
+您可以在應用程式的[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器中找到 <xref:Microsoft.Extensions.Configuration.IConfiguration>。 <xref:Microsoft.Extensions.Configuration.IConfiguration> 可插入 Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 來取得類別的組態：
+
+```csharp
+// using Microsoft.Extensions.Configuration;
+
+public class IndexModel : PageModel
+{
+    private readonly IConfiguration _config;
+
+    public IndexModel(IConfiguration config)
+    {
+        _config = config;
+    }
+        
+    // The _config local variable is used to obtain configuration 
+    // throughout the class.
+}
+```
+
+設定提供者無法使用 DI，因為當它們由主機設定時，它無法使用。
 
 設定機碼會採用下列慣例：
 
@@ -243,7 +262,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 在上面的範例中，環境名稱 (`env.EnvironmentName`) 與應用程式組件名稱 (`env.ApplicationName`) 是由 <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> 提供。 如需詳細資訊，請參閱<xref:fundamentals/environments>。 透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。 `SetBasePath` 在 [Microsoft.Extensions.Configuration FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
-.
+。
 
 ::: moniker-end
 
@@ -256,6 +275,8 @@ public void ConfigureServices(IServiceCollection services)
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=19)]
 
 ::: moniker-end
+
+應用程式啟動期間，可以使用 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 中為應用程式提供的組態，包括 `Startup.ConfigureServices`。 如需詳細資訊，請參閱[在啟動期間存取組態](#access-configuration-during-startup)一節。
 
 ## <a name="command-line-configuration-provider"></a>命令列設定提供者
 
@@ -513,7 +534,7 @@ public static void Main(string[] args)
 
 建立切換對應字典之後，它會包含下表中所示的資料。
 
-| 索引鍵       | 值             |
+| Key       | 值             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -526,7 +547,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 執行上述命令之後，設定包含下表中顯示的值。
 
-| 索引鍵               | 值    |
+| Key               | 值    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -982,7 +1003,7 @@ var host = new WebHostBuilder()
 1. 執行範例應用程式。 開啟瀏覽器以瀏覽位於 `http://localhost:5000` 的應用程式。
 1. 觀察輸出是否包含表格中所顯示之設定的機碼值組 (視環境而定)。 記錄設定機碼會使用冒號 (`:`) 做為階層式分隔符號。
 
-| 索引鍵                        | 開發值 | 生產值 |
+| Key                        | 開發值 | 生產值 |
 | -------------------------- | :---------------: | :--------------: |
 | Logging:LogLevel:System    | 資訊       | 資訊      |
 | Logging:LogLevel:Microsoft | 資訊       | 資訊      |
@@ -1305,10 +1326,29 @@ var host = new WebHostBuilder()
 
 [ConfigurationBinder.GetValue&lt;T&gt;](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) 會從具有所指定機碼的設定擷取值，並將它轉換為指定的型別。 若找不到機碼，多載允許您提供預設值。
 
-下列範例會從具有機碼 `NumberKey` 的設定擷取字串值、將值的型別設定為 `int`，並將值存放在變數 `intValue` 中。 若在設定機碼中找不到 `NumberKey`，`intValue` 會接收 `99` 的預設值：
+下列範例：
+
+* 從具有機碼 `NumberKey` 的組態擷取字串值。 若在組態機碼中找不到 `NumberKey`，則會使用預設值 `99`。
+* 鍵入值為 `int`。
+* 在 `NumberConfig` 屬性中儲存值供頁面使用。
 
 ```csharp
-var intValue = config.GetValue<int>("NumberKey", 99);
+// using Microsoft.Extensions.Configuration;
+
+public class IndexModel : PageModel
+{
+    public IndexModel(IConfiguration config)
+    {
+        _config = config;
+    }
+    
+    public int NumberConfig { get; private set; }
+        
+    public void OnGet()
+    {
+        NumberConfig = _config.GetValue<int>("NumberKey", 99);
+    }
+}
 ```
 
 ## <a name="getsection-getchildren-and-exists"></a>GetSection、GetChildren 與 Exists
@@ -1434,7 +1474,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 會建立下列設定機碼值組：
 
-| 索引鍵                   | 值                                             |
+| Key                   | 值                                             |
 | --------------------- | ------------------------------------------------- |
 | starship:name         | USS Enterprise                                    |
 | starship:registry     | NCC-1701                                          |
@@ -1546,7 +1586,7 @@ viewModel.TvShow = tvShow;
 
 考慮下表中顯示的設定機碼與值。
 
-| 索引鍵             | 值  |
+| Key             | 值  |
 | :-------------: | :----: |
 | array:entries:0 | value0 |
 | array:entries:1 | value1 |
@@ -1655,7 +1695,7 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 表格中顯示的機碼值組會載入到設定中。
 
-| 索引鍵             | 值  |
+| Key             | 值  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1688,7 +1728,7 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 「JSON 設定提供者」會將設定資料讀入到下列機碼值組：
 
-| 索引鍵                     | 值  |
+| Key                     | 值  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |

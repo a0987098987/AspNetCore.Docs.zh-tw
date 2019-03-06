@@ -6,13 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 58840d6ecd09bd2ae7f96c046a0cb93c018f9645
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325480"
 ---
+
 # <a name="aspnet-core-built-in-tag-helpers"></a>ASP.NET Core 內建的標記協助程式
 
 由 [Peter Kellner](http://peterkellner.net) 提供
@@ -35,6 +30,8 @@ ms.locfileid: "49325480"
 [comment]: **[FormActionTagHelper](xref:mvc/views/tag-helpers/builtin-th/form-action-tag-helper)**
 
 **[表單標記協助程式](xref:mvc/views/working-with-forms#the-form-tag-helper)**
+
+**[表單動作標記協助程式](xref:mvc/views/working-with-forms#the-form-action-tag-helper)**
 
 **[影像標記協助程式](xref:mvc/views/tag-helpers/builtin-th/image-tag-helper)**
 

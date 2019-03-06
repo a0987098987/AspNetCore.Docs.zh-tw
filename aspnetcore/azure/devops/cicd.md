@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.date: 10/24/2018
 ms.custom: seodec18
 uid: azure/devops/cicd
-ms.openlocfilehash: e5bddde41291c9573f58d749bbf830de9ea9319d
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 906aae3fd4b4abd0becc8847b0f54c372bda300a
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121585"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346303"
 ---
 # <a name="continuous-integration-and-deployment"></a>持續整合和部署
 
@@ -60,9 +60,9 @@ ms.locfileid: "53121585"
 
     ![預備 Web 應用程式搜尋字詞](media/cicd/portal-search-box.png)
 
-1. 按一下 **部署選項**。 此時會出現一個新的面板。 按一下 **中斷連線**移除在前一章中已加入本機 Git 原始檔控制組態。 按一下 [確認移除操作**是**] 按鈕。
+1. 按一下 **部署中心**。 此時會出現一個新的面板。 按一下 **中斷連線**移除在前一章中已加入本機 Git 原始檔控制組態。 按一下 [確認移除操作**是**] 按鈕。
 1. 瀏覽至*mywebapp < unique_number >* App Service。 提醒您，入口網站的 [搜尋] 方塊可用來快速找出應用程式服務。
-1. 按一下 **部署選項**。 此時會出現一個新的面板。 按一下 **中斷連線**移除在前一章中已加入本機 Git 原始檔控制組態。 按一下 [確認移除操作**是**] 按鈕。
+1. 按一下 **部署中心**。 此時會出現一個新的面板。 按一下 **中斷連線**移除在前一章中已加入本機 Git 原始檔控制組態。 按一下 [確認移除操作**是**] 按鈕。
 
 ## <a name="create-an-azure-devops-organization"></a>建立 Azure DevOps 的組織
 
@@ -262,7 +262,7 @@ ms.locfileid: "53121585"
 
 ![螢幕擷取畫面顯示發行管線工作](media/cicd/release-definition-tasks.png)
 
-發行管線是由兩個工作所組成：*位置中部署 Azure App Service*並*管理 Azure App Service-位置交換*。 按一下第一項工作會顯示下列工作組態：
+發行管線包含兩個工作：*部署 Azure App Service，插槽*並*管理 Azure App Service-Slot Swap*。 按一下第一項工作會顯示下列工作組態：
 
 ![螢幕擷取畫面顯示發行管線部署工作](media/cicd/release-definition-task1.png)
 

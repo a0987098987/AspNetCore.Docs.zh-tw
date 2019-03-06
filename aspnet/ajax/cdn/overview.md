@@ -8,12 +8,12 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 65eee9bc477fc8adf10e8d819b93375ffbb72d7b
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: ea42a33fbca09787a6643cb14e87f9a7b2fd32b0
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341835"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346550"
 ---
 <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax 內容傳遞網路
 ====================
@@ -727,6 +727,8 @@ jQuery 移轉 1.2.0 版
 - https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.1.debug.js
 - https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js
 - https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.0.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.0.debug.js
 
 <a id="Globalize_Releases_on_the_CDN_12"></a>
 

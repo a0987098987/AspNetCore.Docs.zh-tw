@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/04/2019
 uid: test/loadtests
-ms.openlocfilehash: d989bc841a372bed7ebf2c84c6abe1a57762ad04
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 587df6e216943d3eeec779df4d0554dd0fc2fda0
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207352"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345424"
 ---
 # <a name="load-and-stress-testing-aspnet-core"></a>負載和壓力測試的 ASP.NET Core
 
@@ -26,6 +26,10 @@ ms.locfileid: "54207352"
 
 壓力的情況下，可以應用程式從失敗中復原並依正常程序傳回預期的行為？ 應用程式是在資源不足時*不*在正常情況下執行。
 
+Visual Studio 2019 將會是具有負載測試功能的最終 Visual Studio 版本。 針對需要負載測試工具的客戶，我們建議使用替代的負載測試工具，例如 Apache JMeter、Akamai CloudTest、Blazemeter。 如需詳細資訊，請參閱 < [Visual Studio 2019 Preview 版本資訊](/visualstudio/releases/2019/release-notes-preview#test-tools)。
+
+Azure DevOps 中測試服務的負載即將結束在 2020年。 如需詳細資訊，請參閱[雲端式負載測試服務生命週期結束的](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)。
+
 ## <a name="visual-studio-tools"></a>Visual Studio Tools
 
 Visual Studio 可讓使用者建立、 開發及偵錯 web 效能和負載測試。 會提供透過網頁瀏覽器中錄製動作建立測試的選項。
@@ -36,7 +40,7 @@ Visual Studio 可讓使用者建立、 開發及偵錯 web 效能和負載測試
 
 在內部部署中執行，或使用 Azure DevOps 的雲端中執行，您可以設定負載測試。
 
-## <a name="azure-devops"></a>Azure 的 DevOps
+## <a name="azure-devops"></a>Azure DevOps
 
 可以使用啟動負載測試回合[Azure DevOps 測試計劃](/azure/devops/test/load-test/index?view=vsts)服務。
 

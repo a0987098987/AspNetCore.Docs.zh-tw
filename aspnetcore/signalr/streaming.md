@@ -1,18 +1,18 @@
 ---
 title: 使用資料流在 ASP.NET Core SignalR
 author: bradygaster
-description: ''
+description: 了解如何從伺服器中樞方法會傳回值的資料流，並取用使用.NET 和 JavaScript 的用戶端的資料流。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/14/2018
 uid: signalr/streaming
-ms.openlocfilehash: ade2d6fb6e799d53ff3aaa69c641d0088acdee95
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: fb7183f7189d62c181f69ffdb170e3da25612919
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837399"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345583"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>使用資料流在 ASP.NET Core SignalR
 
@@ -24,10 +24,32 @@ ASP.NET Core SignalR 支援資料流的伺服器方法的傳回值。 這是適�
 
 ## <a name="set-up-the-hub"></a>設定中樞
 
-中樞的方法會自動變成資料流處理的中樞方法傳回時`ChannelReader<T>`或`Task<ChannelReader<T>>`。 以下是此範例示範的資料串流到用戶端的基本概念。 每當物件寫入`ChannelReader`該物件會立即傳送至用戶端。 在結束時，`ChannelReader`完成告知用戶端的資料流已關閉。
+::: moniker range=">= aspnetcore-3.0"
+
+中樞的方法會自動變成資料流處理的中樞方法傳回時`ChannelReader<T>`， `IAsyncEnumerable<T>`， `Task<ChannelReader<T>>`，或`Task<IAsyncEnumerable<T>>`。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+中樞的方法會自動變成資料流處理的中樞方法傳回時`ChannelReader<T>`或`Task<ChannelReader<T>>`。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+在 ASP.NET Core 3.0 或更新版本、 串流處理中樞方法可以傳回`IAsyncEnumerable<T>`除了`ChannelReader<T>`。 最簡單的方式傳回`IAsyncEnumerable<T>`是透過讓中樞方法的非同步迭代器方法，如下列範例所示。 中樞非同步迭代器方法可以接受`CancellationToken`從資料流的用戶端取消訂閱時，會觸發的參數。 非同步迭代器方法，輕鬆避免常見的問題，通道等不會傳回`ChannelReader`及早或結束方法，而不會完成`ChannelWriter`。
+
+[!INCLUDE[](~/includes/csharp-8-required.md)]
+
+[!code-csharp[Streaming hub async iterator method](streaming/sample/Hubs/AsyncEnumerableHub.cs?name=snippet_AsyncIterator)]
+
+::: moniker-end
+
+下列範例顯示資料串流到用戶端會使用通道的基本的概念。 每當物件寫入`ChannelWriter`該物件會立即傳送至用戶端。 在結束時，`ChannelWriter`完成告知用戶端的資料流已關閉。
 
 > [!NOTE]
-> * 寫入`ChannelReader`在背景執行緒，然後傳回`ChannelReader`儘速。 其他中樞引動過程將會遭到封鎖，直到`ChannelReader`會傳回。
+> * 寫入`ChannelWriter`在背景執行緒，然後傳回`ChannelReader`儘速。 其他中樞引動過程將會遭到封鎖，直到`ChannelReader`會傳回。
 > * 包裝您的邏輯中`try ... catch`並完成`Channel`在 catch 和外部 catch 以確保中樞方法叫用正確地完成。
 
 ::: moniker range="= aspnetcore-2.1"
@@ -51,8 +73,8 @@ ASP.NET Core SignalR 支援資料流的伺服器方法的傳回值。 這是適�
 ::: moniker range=">= aspnetcore-2.2"
 
 ```csharp
-// Call "Cancel" on this CancellationTokenSource to send a cancellation message to 
-// the server, which will trigger the corresponding token in the Hub method.
+// Call "Cancel" on this CancellationTokenSource to send a cancellation message to
+// the server, which will trigger the corresponding token in the hub method.
 var cancellationTokenSource = new CancellationTokenSource();
 var channel = await hubConnection.StreamAsChannelAsync<int>(
     "Counter", 10, 500, cancellationTokenSource.Token);
@@ -113,6 +135,25 @@ JavaScript 用戶端呼叫中樞上資料流的方法，使用`connection.stream
 ::: moniker range=">= aspnetcore-2.2"
 
 若要結束用戶端從資料流，呼叫`dispose`方法`ISubscription`傳回`subscribe`方法。 呼叫這個方法會造成`CancellationToken`參數 （如果您提供一個） 之中樞方法的取消。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+## <a name="java-client"></a>Java 用戶端
+SignalR Java 用戶端會使用`stream`方法來叫用資料流的方法。 它接受三個或多個引數：
+
+* 資料流項目的預期的類型 
+* 中樞方法的名稱。
+* 中樞的方法中定義的引數。 
+
+```java
+hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
+    .subscribe(
+        (item) -> {/* Define your onNext handler here. */ },
+        (error) -> {/* Define your onError handler here. */},
+        () -> {/* Define your onCompleted handler here. */});
+```
+`stream`方法`HubConnection`傳回資料流項目類型的可預見值。 可觀察的型別`subscribe`方法可讓您定義您`onNext`，`onError`和`onCompleted`處理常式。
 
 ::: moniker-end
 

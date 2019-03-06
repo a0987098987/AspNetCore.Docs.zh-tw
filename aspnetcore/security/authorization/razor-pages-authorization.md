@@ -2,16 +2,17 @@
 title: ASP.NET Core 中的 razor Pages 授權慣例
 author: guardrex
 description: 了解如何控制存取，授權使用者，並允許匿名使用者存取頁面的資料夾慣例的頁面。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/27/2017
+ms.date: 03/03/2019
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: 675dc8aa4bf00bb21981cc892a09a4acd0d53c15
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 040d33eba7eaf7a3aece2eedcdef7343e52972af
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207260"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345495"
 ---
 # <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>ASP.NET Core 中的 razor Pages 授權慣例
 
@@ -21,40 +22,42 @@ ms.locfileid: "50207260"
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-範例應用程式會使用[沒有 ASP.NET Core 身分識別的 Cookie 驗證](xref:security/authentication/cookie)。 假設使用者林麗莉 Rodriguez 的使用者帳戶是硬式編碼到應用程式。 使用電子郵件使用者名稱 」maria.rodriguez@contoso.com」 和任何登入使用者的密碼。 使用者通過驗證`AuthenticateUser`方法中的*Pages/Account/Login.cshtml.cs*檔案。 在真實世界範例中，您會驗證使用者，對資料庫。 若要使用 ASP.NET Core 身分識別，請依照下列中的指導方針[ASP.NET core 身分識別簡介](xref:security/authentication/identity)主題。 本主題所示的範例與概念同樣適用於使用 ASP.NET Core 身分識別的應用程式。
+範例應用程式會使用[沒有 ASP.NET Core 身分識別的 cookie 驗證](xref:security/authentication/cookie)。 本主題所示的範例與概念同樣適用於使用 ASP.NET Core 身分識別的應用程式。 若要使用 ASP.NET Core 身分識別，請依照下列中的指導方針<xref:security/authentication/identity>。
 
 ## <a name="require-authorization-to-access-a-page"></a>需要授權，才能存取頁面
 
-使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)透過慣例[AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions)加入[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)至位於指定路徑的頁面：
+使用<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*>透過慣例<xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*>以新增<xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter>至位於指定路徑的頁面：
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,4)]
 
 指定的路徑是檢視引擎路徑，也就是 Razor 頁面根相對路徑，而不需要擴充功能和包含只正斜線。
 
-[AuthorizePage 多載](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizePage_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_)是如果您需要指定授權原則可使用。
+若要指定[授權原則](xref:security/authorization/policies)，使用[AuthorizePage 多載](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*):
 
-::: moniker range=">= aspnetcore-2.1"
+```csharp
+options.Conventions.AuthorizePage("/Contact", "AtLeast21");
+```
 
 > [!NOTE]
-> `AuthorizeFilter`可以套用至頁面模型類別`[Authorize]`篩選條件屬性。 如需詳細資訊，請參閱 <<c0> [ 授權篩選條件屬性](xref:razor-pages/filter#authorize-filter-attribute)。
-
-::: moniker-end
+> <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter>可以套用至頁面模型類別`[Authorize]`篩選條件屬性。 如需詳細資訊，請參閱 <<c0> [ 授權篩選條件屬性](xref:razor-pages/filter#authorize-filter-attribute)。
 
 ## <a name="require-authorization-to-access-a-folder-of-pages"></a>需要授權，才能存取頁面的資料夾
 
-使用[AuthorizeFolder](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizefolder)透過慣例[AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions)加入[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)所有指定的路徑在資料夾中的頁面：
+使用<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*>透過慣例<xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*>以新增<xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter>所有指定的路徑在資料夾中的頁面：
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,5)]
 
 指定的路徑是檢視引擎路徑，也就是 Razor 頁面的根相對路徑。
 
-[AuthorizeFolder 多載](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizefolder#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizeFolder_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_)是如果您需要指定授權原則可使用。
+若要指定[授權原則](xref:security/authorization/policies)，使用[AuthorizeFolder 多載](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*):
 
-::: moniker range=">= aspnetcore-2.1"
+```csharp
+options.Conventions.AuthorizeFolder("/Private", "AtLeast21");
+```
 
 ## <a name="require-authorization-to-access-an-area-page"></a>需要授權，才能存取 [區域] 頁面
 
-使用[AuthorizeAreaPage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizeareapage)透過慣例[AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions)加入[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)至位於指定路徑的 [區域] 頁面：
+使用<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*>透過慣例<xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*>以新增<xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter>至位於指定路徑的 [區域] 頁面：
 
 ```csharp
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
@@ -62,11 +65,15 @@ options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 
 頁面名稱是檔案的指定的區域不含副檔名，相對於頁面根目錄的路徑。 例如，檔案的頁面名稱*Areas/Identity/Pages/Manage/Accounts.cshtml*是 */管理/帳戶*。
 
-[AuthorizeAreaPage 多載](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizeareapage#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizeAreaPage_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_System_String_)是如果您需要指定授權原則可使用。
+若要指定[授權原則](xref:security/authorization/policies)，使用[AuthorizeAreaPage 多載](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):
+
+```csharp
+options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts", "AtLeast21");
+```
 
 ## <a name="require-authorization-to-access-a-folder-of-areas"></a>需要授權，才能存取區域的資料夾
 
-使用[AuthorizeAreaFolder](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizeareafolder)透過慣例[AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions)加入[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)所有位於指定路徑的資料夾中的領域：
+使用<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*>透過慣例<xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*>以新增<xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter>所有位於指定路徑的資料夾中的領域：
 
 ```csharp
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
@@ -74,13 +81,15 @@ options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 
 資料夾路徑是相對於指定的區域頁面根目錄之資料夾的路徑。 例如，底下的檔案的資料夾路徑*領域/身分識別/網頁/管理/* 是 */管理*。
 
-[AuthorizeAreaFolder 多載](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizeareafolder#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizeAreaFolder_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_System_String_)是如果您需要指定授權原則可使用。
+若要指定[授權原則](xref:security/authorization/policies)，使用[AuthorizeAreaFolder 多載](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):
 
-::: moniker-end
+```csharp
+options.Conventions.AuthorizeAreaFolder("Identity", "/Manage", "AtLeast21");
+```
 
 ## <a name="allow-anonymous-access-to-a-page"></a>允許匿名存取 頁面
 
-使用[AllowAnonymousToPage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.allowanonymoustopage)透過慣例[AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions)加入[AllowAnonymousFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.allowanonymousfilter)至位於指定路徑的頁面：
+使用<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToPage*>透過慣例<xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*>以新增<xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter>至位於指定路徑的頁面：
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,6)]
 
@@ -88,7 +97,7 @@ options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 
 ## <a name="allow-anonymous-access-to-a-folder-of-pages"></a>允許匿名存取頁面的資料夾
 
-使用[AllowAnonymousToFolder](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.allowanonymoustofolder)透過慣例[AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions)加入[AllowAnonymousFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.allowanonymousfilter)所有指定的路徑在資料夾中的頁面：
+使用<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToFolder*>透過慣例<xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*>以新增<xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter>所有指定的路徑在資料夾中的頁面：
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,7)]
 
@@ -96,23 +105,23 @@ options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 
 ## <a name="note-on-combining-authorized-and-anonymous-access"></a>請注意在結合授權及匿名存取
 
-它是完全有效，無法指定頁面的資料夾需要授權，並指定該資料夾內的頁面允許匿名存取：
+指定有效的頁面需要授權的資料夾並指定該資料夾內的頁面允許匿名存取：
 
 ```csharp
 // This works.
 .AuthorizeFolder("/Private").AllowAnonymousToPage("/Private/Public")
 ```
 
-反之，不過，則不然。 您無法宣告的匿名存取頁面的資料夾，並指定授權的頁面中：
+相反地，不過，不是有效的。 您無法宣告的匿名存取頁面的資料夾，然後指定 需要授權該資料夾內的頁面：
 
 ```csharp
 // This doesn't work!
-.AllowAnonymousToFolder("/Public").AuthorizePage("/Public/Private") 
+.AllowAnonymousToFolder("/Public").AuthorizePage("/Public/Private")
 ```
 
-需要私用的頁面上的授權將無法運作，因為當同時`AllowAnonymousFilter`並`AuthorizeFilter`篩選會套用到頁面上，`AllowAnonymousFilter`獲勝] 和 [控制存取。
+在 [私人] 頁面上的要求授權失敗。 當同時<xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter>並<xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter>套用至網頁，<xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter>會優先使用並控制存取。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Razor Pages 自訂路由和頁面模型提供者](xref:razor-pages/razor-pages-conventions)
-* [PageConventionCollection](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection)類別
+* <xref:razor-pages/razor-pages-conventions>
+* <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection>

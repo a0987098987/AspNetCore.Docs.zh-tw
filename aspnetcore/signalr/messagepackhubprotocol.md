@@ -5,14 +5,14 @@ description: 加入 ASP.NET Core SignalR MessagePack 中樞通訊協定。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 06/04/2018
+ms.date: 02/27/2019
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: da6eeeb51f5d0fc2ad69978688ad1c4ca4d63dab
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
+ms.openlocfilehash: 7742f6f8bb53fb3c299ff98ae52a0da519ff396c
+ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854337"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57400667"
 ---
 # <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR MessagePack 中樞通訊協定
 
@@ -98,6 +98,74 @@ const connection = new signalR.HubConnectionBuilder()
 
 > [!NOTE]
 > 在此階段中，有 MessagePack 通訊協定在 JavaScript 用戶端上的沒有組態選項。
+
+## <a name="messagepack-quirks"></a>MessagePack quirks
+
+有幾個問題時要注意的使用 MessagePack 中樞通訊協定。
+
+### <a name="messagepack-is-case-sensitive"></a>MessagePack 會區分大小寫
+
+MessagePack 通訊協定會區分大小寫。 例如，請考慮下列C#類別：
+
+```csharp
+public class ChatMessage
+{
+    public string Sender { get; }
+    public string Message { get; }
+}
+```
+
+當從 JavaScript 用戶端傳送，您必須使用`PascalCased`屬性的名稱，因為大小寫必須符合C#完全類別。 例如: 
+
+```javascript
+connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
+```
+
+使用`camelCased`名稱不會正確地繫結至C#類別。 使用來解決這個`Key`屬性來指定 MessagePack 屬性不同的名稱。 如需詳細資訊，請參閱 < [MessagePack CSharp 文件](https://github.com/neuecc/MessagePack-CSharp#object-serialization)。
+
+### <a name="datetimekind-is-not-preserved-when-serializingdeserializing"></a>當序列化/還原序列化時，不會保留 DateTime.Kind
+
+MessagePack 通訊協定不提供編碼方式`Kind`的值`DateTime`。 如此一來，還原序列化時的日期，MessagePack 中樞通訊協定會假設連入的日期是以 UTC 格式。 如果您正在使用`DateTime`當地時間的值，我們建議您將轉換為 UTC，然後才傳送。 它們從 UTC 轉換為當地時間時接收它們。
+
+如需有關這項限制的詳細資訊，請參閱 GitHub 問題[aspnet/SignalR # 2632年](https://github.com/aspnet/SignalR/issues/2632)。
+
+### <a name="datetimeminvalue-is-not-supported-by-messagepack-in-javascript"></a>MessagePack 在 JavaScript 中不支援 DateTime.MinValue
+
+[Msgpack5](https://github.com/mcollina/msgpack5) SignalR JavaScript 用戶端所使用的程式庫不支援`timestamp96`MessagePack 中的型別。 此類型用來編碼 （無論是使用極早期在過去或未來很遠） 非常大的日期值。 值`DateTime.MinValue`已`January 1, 0001`這必須在編碼`timestamp96`值。 因為此，傳送`DateTime.MinValue`javascript 用戶端不支援。 當`DateTime.MinValue`收到 JavaScript 用戶端，會擲回下列錯誤：
+
+```
+Uncaught Error: unable to find ext type 255 at decoder.js:427
+```
+
+通常`DateTime.MinValue`用來編碼的 「 遺漏 」 或`null`值。 如果您要編碼 MessagePack 中的值，請使用可為 null`DateTime`值 (`DateTime?`) 或編碼個別`bool`值，指出日期是否存在。
+
+如需有關這項限制的詳細資訊，請參閱 GitHub 問題[aspnet/SignalR # 2228年](https://github.com/aspnet/SignalR/issues/2228)。
+
+### <a name="messagepack-support-in-ahead-of-time-compilation-environment"></a>MessagePack 「 預先-「 編譯環境中的支援
+
+[MessagePack CSharp](https://github.com/neuecc/MessagePack-CSharp) .NET 用戶端和伺服器所使用的程式庫會使用程式碼產生最佳化序列化。 如此一來，它不支援使用 「 預先-「 編譯 （例如 Xamarin iOS 或 Unity） 的環境上的預設值。 可以在這些環境中使用 MessagePack，藉由 「 預先產生"序列化/還原序列化程式程式碼。 如需詳細資訊，請參閱 < [MessagePack CSharp 文件](https://github.com/neuecc/MessagePack-CSharp#pre-code-generationunityxamarin-supports)。 一旦您預先產生序列化程式，您可以將它們註冊使用傳遞至設定委派`AddMessagePackProtocol`:
+
+```csharp
+services.AddSignalR()
+    .AddMessagePackProtocol(options =>
+    {
+        options.FormatterResolvers = new List<MessagePack.IFormatterResolver>()
+        {
+            MessagePack.Resolvers.GeneratedResolver.Instance,
+            MessagePack.Resolvers.StandardResolver.Instance
+        };
+    });
+```
+
+### <a name="type-checks-are-more-strict-in-messagepack"></a>型別檢查為 MessagePack 中更嚴格
+
+JSON 中樞通訊協定會在還原序列化期間執行型別轉換。 例如，如果連入物件的屬性值是數字 (`{ foo: 42 }`)，但在.NET 類別上的屬性的類型是`string`，值會轉換。 不過，MessagePack 不會執行這項轉換，而且將會擲回的例外狀況，您所見，在伺服器端記錄檔 （而在主控台中）：
+
+```
+InvalidDataException: Error binding arguments. Make sure that the types of the provided values match the types of the hub method being invoked.
+```
+
+如需有關這項限制的詳細資訊，請參閱 GitHub 問題[aspnet/SignalR # 2937年](https://github.com/aspnet/SignalR/issues/2937)。
 
 ## <a name="related-resources"></a>相關資源
 

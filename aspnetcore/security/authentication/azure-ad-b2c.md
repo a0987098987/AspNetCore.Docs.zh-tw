@@ -2,15 +2,15 @@
 title: 使用 Azure Active Directory B2C 在 ASP.NET Core 中的雲端驗證
 author: camsoper
 description: 了解如何設定 Azure Active Directory B2C 使用 ASP.NET Core 的驗證。
-ms.date: 01/25/2018
+ms.date: 02/27/2019
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 2c544475ccd3eb76f2737fec1cf269ac86add372
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 86be999e02cfe34193bd594dcf89e8872590cca5
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098983"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346498"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>使用 Azure Active Directory B2C 在 ASP.NET Core 中的雲端驗證
 
@@ -104,6 +104,30 @@ Visual Studio Web 應用程式範本可以設定要用於驗證的 Azure AD B2C 
 
 > [!WARNING]
 > 請確定 原則名稱，文件中所述完全是因為這些原則所使用的**變更驗證**Visual Studio 中的對話方塊。 中可驗證的原則名稱*appsettings.json*。
+
+## <a name="configure-the-underlying-openidconnectoptionsjwtbearercookie-options"></a>設定基礎 OpenIdConnectOptions/JwtBearer/Cookie 選項
+
+若要直接設定基礎的選項，使用中的適當配置常數`Startup.ConfigureServices`:
+
+```csharp
+services.Configure<OpenIdConnectOptions>(
+    AzureAD[B2C]Defaults.OpenIdScheme, options => 
+    {
+        // Omitted for brevity
+    });
+
+services.Configure<CookieAuthenticationOptions>(
+    AzureAD[B2C]Defaults.CookieScheme, options => 
+    {
+        // Omitted for brevity
+    });
+
+services.Configure<JwtBearerOptions>(
+    AzureAD[B2C]Defaults.JwtBearerAuthenticationScheme, options => 
+    {
+        // Omitted for brevity
+    });
+```
 
 ## <a name="run-the-app"></a>執行應用程式
 

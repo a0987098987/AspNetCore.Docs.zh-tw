@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何為標準，以允許或拒絕在 ASP.NET Core 應用程式的跨原始要求的 CORS。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/08/2019
+ms.date: 02/27/2019
 uid: security/cors
-ms.openlocfilehash: bc3a0883043a4d6fa33c1ff76fcb7be457b6b840
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: eb8dd3b1c96d9060b0164dcd4d0fbe004ed4af84
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899342"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346368"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨源要求 (CORS)
 
@@ -56,7 +56,7 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會為指定�
 
 上述程式碼：
 
-* 設定"_myAllowSpecificOrigins 」 的原則名稱。 原則名稱是任意的。
+* 若要設定的原則名稱"\_myAllowSpecificOrigins"。 原則名稱是任意的。
 * 呼叫<xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*>延伸模組方法，可讓核心。
 * 呼叫<xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*>具有[lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)。 Lambda 會採用<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder>物件。 [組態選項](#cors-policy-options)，例如`WithOrigins`，本文稍後所述。
 
@@ -70,9 +70,26 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會為指定�
 
 [!code-csharp[](cors/sample/Cors/WebAPI/Startup2.cs?name=snippet2)]
 
-下列醒目提示的程式碼適用於所有的應用程式端點，透過 CORS 原則[CORS 中介軟體](#enable-cors-with-cors-middleware):
+下列醒目提示的程式碼會套用至透過 CORS 中介軟體的所有應用程式端點的 CORS 原則：
 
-[!code-csharp[](cors/sample/Cors/WebAPI/Startup.cs?name=snippet3&highlight=12)]
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        app.UseHsts();
+    }
+
+    app.UseCors(); 
+
+    app.UseHttpsRedirection();
+    app.UseMvc();
+}
+```
 
 請參閱[Razor 頁面、 控制器及動作方法中的 啟用 CORS](#ecors)套用頁面/控制站/動作層級的 CORS 原則。
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 3dbb2d358ec9e3dcdd96c3771576911d906d796f
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 622f28f3b4348820c8781e0ba14ae5137136e797
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248429"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346563"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -193,7 +193,7 @@ URL 產生是路由可用來依據一組路由值建立 URL 路徑的處理序�
 
 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 提供的方法支援適用於任何位址類型的標準連結產生功能。 使用連結產生器的最便利方式是透過執行特定位址類型作業的擴充方法。
 
-| 擴充方法   | 描述                                                         |
+| 擴充方法   | 說明                                                         |
 | ------------------ | ------------------------------------------------------------------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | 根據提供的值產生具有絕對路徑的 URI。 |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | 根據提供的值產生絕對 URI。             |
@@ -583,7 +583,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 | `{Page=Home}`                            | `/Contact`              | 比對並將 `Page` 設定為 `Contact`。                                      |
 | `{controller}/{action}/{id?}`            | `/Products/List`        | 對應至 `Products` 控制器和 `List` 動作。                       |
 | `{controller}/{action}/{id?}`            | `/Products/Details/123` | 對應至 `Products` 控制器和 `Details` 動作 (`id` 設定為 123)。 |
-| `{controller=Home}/{action=Index}/{id?`} | `/`                     | 對應至 `Home` 控制器和 `Index` 方法 (會忽略 `id`)。        |
+| `{controller=Home}/{action=Index}/{id?}` | `/`                     | 對應至 `Home` 控制器和 `Index` 方法 (會忽略 `id`)。        |
 
 使用範本通常是最簡單的路由方式。 條件約束和預設值也可以在路由範本外部指定。
 

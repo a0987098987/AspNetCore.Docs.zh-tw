@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 878fbaa1a61946dadf23ba8fefbf22021e547cc2
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: 94d7e3436b52646166733e9e7334ac533c72b7b8
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56744088"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346462"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
@@ -668,7 +668,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     if (env.IsDevelopment())
     {
-        // In Development, use the developer exception page
+        // In Development, use the Developer Exception Page
         app.UseDeveloperExceptionPage();
     }
     else

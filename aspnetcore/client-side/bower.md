@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 08/09/2018
 uid: client-side/bower
-ms.openlocfilehash: 06edf7ee791aac0984ff71c2f243f61093f0d503
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 08e6daa537c6c6f92a1cf80d70745e8ef606f580
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570018"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665609"
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>用戶端使用管理套件在 ASP.NET Core 中的 Bower
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)， [Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)，和[Scott Addie](https://scottaddie.com)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)， [Noel Rice](https://twitter.com/noelrice1)，和[Scott Addie](https://scottaddie.com)
 
 > [!IMPORTANT]
 > Bower 會維護，而其維護人員會建議使用不同的解決方案。 [程式庫管理員](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/)(簡稱 LibMan) 是 Visual Studio 的新用戶端程式庫取得的工具 (Visual Studio 15.8 或更新版本）。 如需詳細資訊，請參閱<xref:client-side/libman/index>。 Bower 是透過 15.5 版支援 Visual Studio 中。
@@ -91,7 +91,7 @@ Bower 用法[語意版本設定](http://semver.org/)組織相依性。 語意版
 
 * 建立新的 ASP.NET Core Web 應用程式與**ASP.NET Core Web 應用程式 (.NET Core)** 範本。 選取 **空**專案範本，然後按一下**確定**。
 
-* 在 [方案總管] 中，以滑鼠右鍵按一下專案 >**加入新項目**，然後選取**Bower 組態檔**。 ： 附註 *.bowerrc*也會加入檔案。
+* 在 [方案總管] 中，以滑鼠右鍵按一下專案 >**加入新項目**，然後選取**Bower 組態檔**。 注意:A *.bowerrc*也會加入檔案。
 
 * 開啟*bower.json*，並新增 jquery 來啟動`dependencies`一節。 產生*bower.json*檔案看起來如下列範例所示。 版本會隨著時間改變，而不符合下列映像。
 
@@ -101,7 +101,7 @@ Bower 用法[語意版本設定](http://semver.org/)組織相依性。 語意版
 
   請確認專案包含*bootstrap*並*jQuery*中的目錄*wwwroot/lib*。 Bower 用法 *.bowerrc*檔案，以安裝中的資產*wwwroot/lib*。
 
-  注意: [管理 Bower 封裝] UI 提供替代檔案手動編輯。
+  注意:[管理 Bower 封裝] UI 會提供替代檔案手動編輯。
 
 ### <a name="enable-static-files"></a>啟用靜態檔案
 
@@ -114,7 +114,7 @@ Bower 用法[語意版本設定](http://semver.org/)組織相依性。 語意版
 
 在本節中，您將建立 HTML 網頁以確認它可以存取部署的封裝。
 
-* 加入新的 HTML 網頁，名為*Index.html*要*wwwroot*資料夾。 注意： 您必須加入至 HTML 檔案*wwwroot*資料夾。 根據預設，無法提供靜態內容之外*wwwroot*。 請參閱[靜態檔案](xref:fundamentals/static-files)如需詳細資訊。
+* 加入新的 HTML 網頁，名為*Index.html*要*wwwroot*資料夾。 注意:您必須新增至 HTML 檔案*wwwroot*資料夾。 根據預設，無法提供靜態內容之外*wwwroot*。 請參閱[靜態檔案](xref:fundamentals/static-files)如需詳細資訊。
 
   內容取代*Index.html*以下列標記：
 

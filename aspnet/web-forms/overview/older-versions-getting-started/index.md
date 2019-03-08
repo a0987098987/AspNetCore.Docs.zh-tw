@@ -2,34 +2,28 @@
 uid: web-forms/overview/older-versions-getting-started/index
 title: 舊版-Web Form 使用者入門 |Microsoft Docs
 author: rick-anderson
-description: 說明 ASP.NET Web Form 4 和更早版本的文件。
+description: 在 ASP.NET Web Form 4 和更早版本的教學課程。
 ms.author: riande
 ms.date: 10/18/2014
 ms.assetid: e03585c2-80bf-4083-99ba-9fcbc883ccd8
 msc.legacyurl: /web-forms/overview/older-versions-getting-started
 msc.type: chapter
-ms.openlocfilehash: 93eed9c2560b8e5106b224114eb1109d3da95daf
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "48254064"
 ---
 <a name="older-versions---web-forms-getting-started"></a>舊版-Web Form 使用者入門
 ====================
-> 說明 ASP.NET Web Form 4 和更早版本的文件。
+> 在 ASP.NET Web Form 4 和更早版本的教學課程。
 
 
 - [ASP.NET 4 - Tailspin Spyworks](tailspin-spyworks/index.md)
 
-    - [第 1 節：[檔案] -> [新增專案]](tailspin-spyworks/tailspin-spyworks-part-1.md)
-    - [第 2 節：資料存取層](tailspin-spyworks/tailspin-spyworks-part-2.md)
-    - [第 3 節：[版面配置與分類] 功能表](tailspin-spyworks/tailspin-spyworks-part-3.md)
-    - [第 4 節：列出產品](tailspin-spyworks/tailspin-spyworks-part-4.md)
-    - [第 5 節：商務邏輯](tailspin-spyworks/tailspin-spyworks-part-5.md)
+    - [第 1 部分：檔案]-> [新增專案](tailspin-spyworks/tailspin-spyworks-part-1.md)
+    - [第 2 部分：資料存取層](tailspin-spyworks/tailspin-spyworks-part-2.md)
+    - [第 3 部分：版面配置與分類 功能表](tailspin-spyworks/tailspin-spyworks-part-3.md)
+    - [第 4 部分：列出產品](tailspin-spyworks/tailspin-spyworks-part-4.md)
+    - [第 5 部分：商務邏輯](tailspin-spyworks/tailspin-spyworks-part-5.md)
     - [第 6 節：ASP.NET 成員資格](tailspin-spyworks/tailspin-spyworks-part-6.md)
     - [第 7 節：新增功能](tailspin-spyworks/tailspin-spyworks-part-7.md)
-    - [第 8 節：最後的頁面、例外狀況處理和結論](tailspin-spyworks/tailspin-spyworks-part-8.md)
+    - [第 8 節：最後的頁面、 例外狀況處理和結論](tailspin-spyworks/tailspin-spyworks-part-8.md)
 - [ASP.NET 4 - Entity Framework 4 和 Web Form 使用者入門](getting-started-with-ef/index.md)
 
     - [Entity Framework 4.0 Database First 使用者入門](getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1.md)
@@ -42,9 +36,9 @@ ms.locfileid: "48254064"
     - [Entity Framework 4.0 Database First 使用者入門 - 第 8 節](getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8.md)
 - [ASP.NET 4 - 繼續使用 Entity Framework 4 及 Web Form](continuing-with-ef/index.md)
 
-    - [Entity Framework 4.0 和 ObjectDataSource 控制項，第 1 節：使用者入門](continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
-    - [Entity Framework 4.0 和 ObjectDataSource 控制項，第 2 節：新增商務邏輯層和單元測試](continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
-    - [Entity Framework 4.0 和 ObjectDataSource 控制項，第 3 節：排序和篩選](continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
+    - [Entity Framework 4.0 和 ObjectDataSource 控制項，第 1 部分：開始使用](continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
+    - [Entity Framework 4.0 和 ObjectDataSource 控制項，第 2 部分：新增商務邏輯層和單元測試](continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
+    - [Entity Framework 4.0 和 ObjectDataSource 控制項，第 3 部分：排序和篩選](continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
     - [在 ASP.NET 4 中使用 Entity Framework 4.0 處理並行](continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
     - [在 ASP.NET 4 中使用 Entity Framework 4.0 將效能最大化](continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)
     - [Entity Framework 4.0 的新功能](continuing-with-ef/what-s-new-in-the-entity-framework-4.md)

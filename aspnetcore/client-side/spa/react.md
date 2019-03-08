@@ -5,14 +5,14 @@ description: 了解如何開始使用 React 和 create-react-app 適用的 ASP.N
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 03/07/2019
 uid: spa/react
-ms.openlocfilehash: 3b2b2e67b5d577872bafefef5624a13ca1a22449
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7b07f696ae071531c88c9f8cf528fc6f0bf97b46
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899173"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665557"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>React 專案範本與 ASP.NET Core 搭配使用
 
@@ -105,3 +105,7 @@ npm install --save <package_name>
 
 > [!IMPORTANT]
 > 「 伺服器端轉譯 」 不支援的功能，此範本。 我們使用此範本的目標是符合 「 建立 react-應用程式 」 使用的同位檢查。 因此，案例和功能不包含在 「 建立 react-應用程式 」 專案 （例如 SSR) 中不支援，而且會留給您作為練習使用者。
+
+## <a name="additional-resources"></a>其他資源
+
+* <xref:security/authentication/identity/spa>

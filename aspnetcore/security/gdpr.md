@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/29/2018
 uid: security/gdpr
-ms.openlocfilehash: 5f5ed96354b0b71961c122506602e60b95b809fa
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: bbb3b8e091b5a0be8e852d70ba1a5d7100782ba3
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889739"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665372"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>ASP.NET Core 中的歐盟一般資料保護規定 (GDPR) 支援
 
@@ -75,7 +75,9 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 
 [!code-csharp[Main](gdpr/sample/RP/Startup.cs?name=snippet1)]
 
-[工作階段狀態](xref:fundamentals/app-state)cookie 不重要。 停用追蹤時，工作階段狀態未作用。
+[工作階段狀態](xref:fundamentals/app-state)cookie 不重要。 停用追蹤時，工作階段狀態未作用。 下列程式碼可讓工作階段 cookie 不可或缺：
+
+[!code-csharp[](gdpr/sample/RP/Startup.cs?name=snippet2)]
 
 <a name="pd"></a>
 

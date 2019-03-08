@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 02/07/2019
 uid: signalr/configuration
-ms.openlocfilehash: c5921db895a732c9663c9d962195a2c0635f5aa0
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.openlocfilehash: 070d6fed26b6d14c4b8a35d0f7d94abafb08993b
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400654"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665411"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 組態
 
@@ -82,7 +82,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-單一中樞的選項會覆寫中提供的全域選項`AddSignalR`，並可使用設定[AddHubOptions\<T >](/dotnet/api/microsoft.extensions.dependencyinjection.huboptionsdependencyinjectionextensions.addhuboptions):
+單一中樞的選項會覆寫中提供的全域選項`AddSignalR`，並可使用設定<xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddHubOptions*>:
 
 ```csharp
 services.AddSignalR().AddHubOptions<MyHub>(options =>

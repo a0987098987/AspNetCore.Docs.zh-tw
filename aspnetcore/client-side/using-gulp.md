@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/04/2018
 uid: client-side/using-gulp
-ms.openlocfilehash: e280eabecbd427f3e1418b3d7a60e0ea3df46a5a
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 43277dc5910971374187f49031e74769c9e29e1f
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450602"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665622"
 ---
 # <a name="use-gulp-in-aspnet-core"></a>ASP.NET Core 中使用 Gulp
 
@@ -24,7 +24,7 @@ ms.locfileid: "52450602"
 * 編譯 LESS 或 SASS 檔案為 CSS 。
 * 編譯 CoffeeScript 或 TypeScript 檔案為 JavaScript。
 
-「工作執行器」是一種自動執行例行性開發工作等的工具。 Visual Studio 為兩個熱門的 JavaScript 型工作執行器提供內建支援: [Gulp](https://gulpjs.com/)和[Grunt](using-grunt.md)。
+「工作執行器」是一種自動執行例行性開發工作等的工具。 Visual Studio 提供兩個熱門 JavaScript 為基礎的工作執行器內建的支援：[Gulp](https://gulpjs.com/)並[Grunt](using-grunt.md)。
 
 ## <a name="gulp"></a>Gulp
 
@@ -58,11 +58,11 @@ paths.concatCssDest = paths.webroot + "css/site.min.css";
 
 | 模組名稱 | 描述 |
 | ----------- | ----------- |
-| Gulp        | Gulp 串流處理組建系統。 如需詳細資訊，請參閱 < [gulp](https://www.npmjs.com/package/gulp)。 |
+| gulp        | Gulp 串流處理組建系統。 如需詳細資訊，請參閱 < [gulp](https://www.npmjs.com/package/gulp)。 |
 | rimraf      | 節點刪除模組。 如需詳細資訊，請參閱 < [rimraf](https://www.npmjs.com/package/rimraf)。 |
-| gulp concat | 這種模組串連根據作業系統的新行字元的檔案。 如需詳細資訊，請參閱 < [gulp concat](https://www.npmjs.com/package/gulp-concat)。 |
+| gulp-concat | 這種模組串連根據作業系統的新行字元的檔案。 如需詳細資訊，請參閱 < [gulp concat](https://www.npmjs.com/package/gulp-concat)。 |
 | gulp-cssmin | 可將 CSS 檔案最小化的模組。 如需詳細資訊，請參閱 < [gulp cssmin](https://www.npmjs.com/package/gulp-cssmin)。 |
-| gulp uglify | 縮短模組 *.js*檔案。 如需詳細資訊，請參閱 < [gulp uglify](https://www.npmjs.com/package/gulp-uglify)。 |
+| gulp-uglify | 縮短模組 *.js*檔案。 如需詳細資訊，請參閱 < [gulp uglify](https://www.npmjs.com/package/gulp-uglify)。 |
 
 一旦匯入必要模組，您可以指定工作。 這裡有六個工作登錄，以下列程式碼：
 
@@ -97,7 +97,7 @@ gulp.task("default", gulp.series(["min"]));
 
 |任務名稱|描述|
 |--- |--- |
-|清除： js|若要移除 site.js 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
+|clean:js|若要移除 site.js 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
 |清除： css|若要移除 site.css 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
 |清除|工作，以呼叫`clean:js`工作，後面接著`clean:css`工作。|
 |min:js|工作並縮短，串連的 js 資料夾中的所有.js 檔案。 。 排除 min.js 檔案。|
@@ -337,7 +337,7 @@ Gulp 工作會向函式名稱。 如果其他工作必須執行目前的工作�
 |src   |`gulp.src(globs[, options]) { }`|`src`函式會提供符合 glob 值的檔案。 `glob`參數是`string`或`array`，決定要讀取的檔案。 `options`參數提供的其他檔案選項。|
 |目的地  |`gulp.dest(path[, options]) { }`|`dest`函式會定義可以寫入檔案的位置。 `path`參數是字串或函式，判斷目的地資料夾。 `options`參數是物件，指定輸出資料夾的選項。|
 
-如需其他的 Gulp API 參考資訊，請參閱[Gulp Docs API](https://github.com/gulpjs/gulp/blob/master/docs/API.md)。
+如需其他的 Gulp API 參考資訊，請參閱[Gulp Docs API](https://gulpjs.org/API.html)。
 
 ## <a name="gulp-recipes"></a>Gulp 配方
 

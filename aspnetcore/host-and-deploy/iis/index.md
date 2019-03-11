@@ -286,7 +286,7 @@ services.Configure<IISOptions>(options =>
 1. 使用**執行階段與裝載套件組合**連結。
 
 > [!WARNING]
-> 某些安裝程式包含已達到期生命週期結束 (EOL) 的發行版本，這些發行版本已不受 Microsoft 支援。 如需詳細資訊，請參閱[支援原則](https://www.microsoft.com/net/download/dotnet-core/2.0) \(英文 \)。
+> 某些安裝程式包含已達到期生命週期結束 (EOL) 的發行版本，這些發行版本已不受 Microsoft 支援。 如需詳細資訊，請參閱[支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) \(英文 \)。
 
 ### <a name="install-the-hosting-bundle"></a>安裝裝載套件組合
 
@@ -592,7 +592,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
 * 公開 Edge Server 連線使用 HTTP/2，但是對 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)的反向 Proxy 連線使用 HTTP/1.1。
-* 目標 Framework:不適用於跨處理序部署，因為 HTTP/2 連線完全由 IIS 處理。
+* 目標 Framework：不適用於跨處理序部署，因為 HTTP/2 連線完全由 IIS 處理。
 * TLS 1.2 或更新版本連線
 
 如果已建立 HTTP/2 連線，[HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) 會報告 `HTTP/1.1`。

@@ -120,7 +120,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ### <a name="install-the-preview-site-extension"></a>安裝預覽網站延伸模組
 
-如果您在使用預覽網站延伸模組時發生任何問題，請在 [GitHub](https://github.com/aspnet/azureintegration/issues/new) 上提出問題。
+如果您在使用預覽網站延伸模組時發生任何問題，請建立 [aspnet/AspNetCore 問題](https://github.com/aspnet/AspNetCore/issues)。
 
 1. 從 Azure 入口網站瀏覽至 App Service。
 1. 選取 Web 應用程式。

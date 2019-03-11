@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何設定 ASP.NET Core 中的資料保護。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/13/2018
+ms.date: 03/08/2019
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 0aef2680f48b7923579f90943846f22734f61b50
-ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
+ms.openlocfilehash: 36a06246513215ec29891df02688d113db11f914
+ms.sourcegitcommit: 32bc00435767189fa3ae5fb8a91a307bf889de9d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54444268"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57733488"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>設定 ASP.NET Core 資料保護
 
@@ -384,3 +384,4 @@ services.AddDataProtection()
 * <xref:security/data-protection/configuration/non-di-scenarios>
 * <xref:security/data-protection/configuration/machine-wide-policy>
 * <xref:host-and-deploy/web-farm>
+* <xref:security/data-protection/implementation/key-storage-providers>

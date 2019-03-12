@@ -8,7 +8,7 @@ items:
   - uid: fundamentals/choose-between-aspnet-and-aspnetcore
     name: 比較 ASP.NET Core 與 ASP.NET
   - name: 比較 .NET Core 與 .NET Framework
-    href: /dotnet/standard/choosing-core-framework-server
+    href: /dotnet/standard/choosing-core-framework-server?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
 - uid: getting-started
   name: 開始使用
 - name: 新功能
@@ -36,12 +36,52 @@ items:
       displayName: tutorial
   - name: Web 應用程式
     items:
-    - uid: tutorials/razor-pages/index
-      name: Razor Pages
+    - name: Razor Pages
       displayName: tutorial
-    - uid: tutorials/first-mvc-app/index
-      name: MVC
+      items:
+      - uid: tutorials/razor-pages/index
+        name: 總覽
+      - uid: tutorials/razor-pages/razor-pages-start
+        name: 開始使用
+      - uid: tutorials/razor-pages/model
+        name: 新增模型
+      - uid: tutorials/razor-pages/page
+        name: Scaffolding
+      - uid: tutorials/razor-pages/sql
+        name: 使用資料庫
+      - uid: tutorials/razor-pages/da1
+        name: 更新頁面
+      - uid: tutorials/razor-pages/search
+        name: 新增搜尋
+      - uid: tutorials/razor-pages/new-field
+        name: 新增欄位
+      - uid: tutorials/razor-pages/validation
+        name: 新增驗證
+    - name: MVC
       displayName: tutorial
+      items:
+      - uid: tutorials/first-mvc-app/index
+        name: 總覽
+      - uid: tutorials/first-mvc-app/start-mvc
+        name: 開始使用
+      - uid: tutorials/first-mvc-app/adding-controller
+        name: 新增控制器
+      - uid: tutorials/first-mvc-app/adding-view
+        name: 新增檢視
+      - uid: tutorials/first-mvc-app/adding-model
+        name: 新增模型
+      - uid: tutorials/first-mvc-app/working-with-sql
+        name: 使用資料庫
+      - uid: tutorials/first-mvc-app/controller-methods-views
+        name: 控制器動作與檢視
+      - uid: tutorials/first-mvc-app/search
+        name: 新增搜尋
+      - uid: tutorials/first-mvc-app/new-field
+        name: 新增欄位
+      - uid: tutorials/first-mvc-app/validation
+        name: 新增驗證
+      - uid: tutorials/first-mvc-app/details
+        name: 檢查 Details 與 Delete 方法
   - name: 即時 Web 應用程式
     items:
     - uid: tutorials/signalr
@@ -52,17 +92,57 @@ items:
       displayName: tutorial
   - name: 資料存取
     items:
-    - uid: data/ef-rp/index
-      name: 使用 Razor Pages 的 EF Core
+    - name: 使用 Razor Pages 的 EF Core
       displayName: tutorial
-    - name: 使用 MVC 的 EF Core，現有 DB
+      items:
+      - uid: data/ef-rp/index
+        name: 總覽
+      - uid: data/ef-rp/intro
+        name: 開始使用
+      - uid: data/ef-rp/crud
+        name: 建立、讀取、更新及刪除
+      - uid: data/ef-rp/sort-filter-page
+        name: 排序、篩選、分頁及分組
+      - uid: data/ef-rp/migrations
+        name: 移轉
+      - uid: data/ef-rp/complex-data-model
+        name: 建立複雜的資料模型
+      - uid: data/ef-rp/read-related-data
+        name: 讀取相關資料
+      - uid: data/ef-rp/update-related-data
+        name: 更新相關資料
+      - uid: data/ef-rp/concurrency
+        name: 處理並行衝突
+    - name: 使用 MVC 的 EF Core，現有資料庫
       displayName: tutorial
-      href: /ef/core/get-started/aspnetcore/existing-db
-    - name: 使用 MVC 的 EF Core，新的 DB
+      href: /ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
+    - name: 使用 MVC 的 EF Core，新的資料庫
       displayName: tutorial
-      href: /ef/core/get-started/aspnetcore/new-db
-    - uid: data/ef-mvc/index
-      name: 使用 MVC 的 EF Core，長篇教學課程
+      href: /ef/core/get-started/aspnetcore/new-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
+    - name: 使用 MVC 的 EF Core，10 堂教學課程
+      items:
+      - uid: data/ef-mvc/index
+        name: 總覽
+      - uid: data/ef-mvc/intro
+        name: 開始使用
+      - uid: data/ef-mvc/crud
+        name: 建立、讀取、更新及刪除
+      - uid: data/ef-mvc/sort-filter-page
+        name: 排序、篩選、分頁及分組
+      - uid: data/ef-mvc/migrations
+        name: 移轉
+      - uid: data/ef-mvc/complex-data-model
+        name: 建立複雜的資料模型
+      - uid: data/ef-mvc/read-related-data
+        name: 讀取相關資料
+      - uid: data/ef-mvc/update-related-data
+        name: 更新相關資料
+      - uid: data/ef-mvc/concurrency
+        name: 處理並行衝突
+      - uid: data/ef-mvc/inheritance
+        name: 繼承
+      - uid: data/ef-mvc/advanced
+        name: 進階主題
 - name: Fundamentals
   items:
   - uid: fundamentals/index
@@ -115,7 +195,7 @@ items:
       - uid: tutorials/razor-pages/page
         name: Scaffolding
       - uid: tutorials/razor-pages/sql
-        name: 運用 DB
+        name: 使用資料庫
       - uid: tutorials/razor-pages/da1
         name: 更新頁面
       - uid: tutorials/razor-pages/search
@@ -150,7 +230,7 @@ items:
       - uid: tutorials/first-mvc-app/adding-model
         name: 新增模型
       - uid: tutorials/first-mvc-app/working-with-sql
-        name: 運用 DB
+        name: 使用資料庫
       - uid: tutorials/first-mvc-app/controller-methods-views
         name: 控制器動作與檢視
       - uid: tutorials/first-mvc-app/search
@@ -337,7 +417,7 @@ items:
       displayName: signalr
     - name: Azure SignalR Service
       displayName: signalr
-      href: /azure/azure-signalr/signalr-overview
+      href: /azure/azure-signalr/signalr-overview?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
     - uid: signalr/redis-backplane
       name: Redis 後擋板
       displayName: signalr
@@ -370,7 +450,7 @@ items:
 - name: 測試、偵錯及疑難排解
   items:
   - name: 單元測試
-    href: /dotnet/core/testing/unit-testing-with-dotnet-test
+    href: /dotnet/core/testing/unit-testing-with-dotnet-test?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
   - uid: test/razor-pages-tests
     name: Razor Pages 單元測試
   - uid: mvc/controllers/testing
@@ -378,7 +458,7 @@ items:
   - name: 遠端偵錯
     href: /visualstudio/debugger/remote-debugging-azure
   - name: 快照集偵錯
-    href: /azure/application-insights/app-insights-snapshot-debugger
+    href: /azure/azure-monitor/app/snapshot-debugger?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
   - name: Visual Studio 中的快照集偵錯
     href: /visualstudio/debugger/debug-live-azure-applications
   - uid: test/integration-tests
@@ -413,11 +493,11 @@ items:
         name: 更新相關資料
       - uid: data/ef-rp/concurrency
         name: 處理並行衝突
-    - name: 使用 MVC 的 EF Core，新的 DB
-      href: /ef/core/get-started/aspnetcore/new-db
-    - name: 使用 MVC 的 EF Core，現有 DB
-      href: /ef/core/get-started/aspnetcore/existing-db
-    - name: 使用 MVC 的 EF Core，長篇教學課程
+    - name: 使用 MVC 的 EF Core，新的資料庫
+      href: /ef/core/get-started/aspnetcore/new-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
+    - name: 使用 MVC 的 EF Core，現有資料庫
+      href: /ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
+    - name: 使用 MVC 的 EF Core，10 堂教學課程
       items:
       - uid: data/ef-mvc/index
         name: 總覽
@@ -446,13 +526,13 @@ items:
   - name: 使用 Visual Studio 的 Azure 儲存體
     items:
     - name: 已連線的服務
-      href: /azure/vs-azure-tools-connected-services-storage
+      href: /visualstudio/azure/vs-azure-tools-connected-services-storage
     - name: Blob 儲存體
-      href: /azure/vs-storage-aspnet5-getting-started-blobs/
+      href: /azure/visual-studio/vs-storage-aspnet5-getting-started-blobs?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
     - name: 佇列儲存體
-      href: /azure/vs-storage-aspnet5-getting-started-queues/
+      href: /azure/visual-studio/vs-storage-aspnet5-getting-started-queues?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
     - name: 資料表儲存體
-      href: /azure/vs-storage-aspnet5-getting-started-tables/
+      href: /azure/visual-studio/vs-storage-aspnet5-getting-started-tables?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
 - name: 用戶端開發
   items:
   - name: Razor 元件
@@ -562,10 +642,10 @@ items:
       displayName: azure, deploy, publish
     - name: 使用 Visual Studio for Mac 來發行
       displayName: azure, deploy, publish
-      href: /visualstudio/mac/publish-app-svc
+      href: /visualstudio/mac/publish-app-svc?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
     - name: 使用 CLI 工具發佈
       displayName: azure, deploy, publish
-      href: /azure/app-service/app-service-web-tutorial-dotnetcore-sqldb
+      href: /azure/app-service/app-service-web-tutorial-dotnetcore-sqldb?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
     - uid: host-and-deploy/azure-apps/azure-continuous-deployment
       name: 使用 Visual Studio 與 Git 發佈
       displayName: azure, deploy, publish
@@ -654,7 +734,7 @@ items:
       displayName: deploy, publish, docker
     - name: 發行至 Docker 映像
       displayName: deploy, publish, docker
-      href: /azure/vs-azure-tools-docker-hosting-web-apps-in-docker
+      href: /visualstudio/containers/vs-azure-tools-docker-hosting-web-apps-in-docker
     - name: 範例 Docker 映像
       displayName: deploy, publish, docker
       href: https://github.com/dotnet/dotnet-docker/blob/master/samples/aspnetapp/README.md
@@ -669,7 +749,7 @@ items:
     displayName: deploy, publish
   - name: Visual Studio for Mac 發行到資料夾
     displayName: deploy, publish
-    href: /visualstudio/mac/publish-folder
+    href: /visualstudio/mac/publish-folder?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
   - uid: host-and-deploy/directory-structure
     name: 目錄結構
     displayName: deploy, publish
@@ -754,7 +834,7 @@ items:
     - name: 使用 IdentityServer4 保護 ASP.NET Core 應用程式
       href: https://identityserver4.readthedocs.io/
     - name: 使用 Azure App Service 驗證 (簡單驗證) 保護 ASP.NET Core 應用程式
-      href: /azure/app-service/app-service-authentication-overview
+      href: /azure/app-service/overview-authentication-authorization?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
     - uid: security/authentication/individual
       name: 個別使用者帳戶
   - name: 授權
@@ -980,9 +1060,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 755ddaf4262956deb285b48c6c1d0205c25f4ced
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 1430ab85bd40bb3090b5e6a2e313a690bc280f1e
+ms.sourcegitcommit: 32bc00435767189fa3ae5fb8a91a307bf889de9d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665466"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57733524"

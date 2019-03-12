@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - 並行 - 8/8
 author: rick-anderson
-description: 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
+description: 此教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/07/2018
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 71d68a7ee249c31efa78d98247017e85c009ed8b
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: a6c264e460855c9f1d6f5a363eb7ee2cf69619ee
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997314"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346290"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 並行 - 8/8
 
@@ -19,7 +19,7 @@ ms.locfileid: "53997314"
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-本教學課程會顯示如何在多位使用者同時並行更新實體時處理衝突。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
+此教學課程會顯示如何在多位使用者同時並行更新實體時處理衝突。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
 ## <a name="concurrency-conflicts"></a>並行衝突
 
@@ -174,7 +174,7 @@ dotnet ef database update
 
 ### <a name="update-the-departments-index-page"></a>更新 Departments [索引] 頁面
 
-Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但該欄位不應該顯示出來。 在本教學課程中，`RowVersion` 的最後一個位元組會顯示出來，以協助您了解並行。 最後一個位元組不一定是唯一的。 實際的應用程式不會顯示 `RowVersion` 或 `RowVersion` 的最後一個位元組。
+Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但該欄位不應該顯示出來。 在此教學課程中，`RowVersion` 的最後一個位元組會顯示出來，以協助您了解並行。 最後一個位元組不一定是唯一的。 實際的應用程式不會顯示 `RowVersion` 或 `RowVersion` 的最後一個位元組。
 
 更新 [索引] 頁面：
 
@@ -306,6 +306,9 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 * [EF Core 中的並行權杖](/ef/core/modeling/concurrency)
 * [在 EF Core 中處理並行](/ef/core/saving/concurrency)
+* [這個教學課程的 YouTube 版本 (處理並行存取衝突)](https://youtu.be/EosxHTFgYps)
+* [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=kcxERLnaGO0)
+* [這個教學課程的 YouTube 版本 (第 3 部分)](https://www.youtube.com/watch?v=d4RbpfvELRs)
 
 > [!div class="step-by-step"]
 > [上一步](xref:data/ef-rp/update-related-data)

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 98de39c63c992dce7d60563df316d848339b811a
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: f8661a48ddd6fc616c141435edc603117b4925fb
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410371"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345883"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
@@ -59,13 +59,13 @@ ms.locfileid: "56410371"
 
 1. 讓 Entity Framework 自動卸除資料庫，並使用新的模型類別結構描述來重新建立資料庫。 在開發週期早期，這個方法會很方便；其可讓您一併調整模型和資料庫結構描述，更加快速。 缺點是會遺失在資料庫中的現有資料。 請勿在生產環境資料庫上使用此方法！ 在結構描述變更時卸除資料庫以及使用初始設定式將測試資料自動植入資料庫，通常是開發應用程式的有效方式。
 
-2. 您可明確修改現有資料庫的結構描述，使其符合模型類別。 這種方法的優點是可以保留您的資料。 您可以手動方式或藉由建立資料庫變更指令碼來進行這項變更。
+2. 您可明確修改現有資料庫的結構描述，使其符合模型類別。 這種方法的優點是可以保留您的資料。 您可以手動方式或藉由建立資料庫變更指令碼來進行此變更。
 
 3. 使用 Code First 移轉來更新資料庫結構描述。
 
-在本教學課程中，請使用 Code First 移轉。
+在此教學課程中，請使用 Code First 移轉。
 
-更新 `SeedData` 類別，使其提供新資料行的值。 範例變更如下所示，但您會想要為每個 `new Movie` 區塊進行這項變更。
+更新 `SeedData` 類別，使其提供新資料行的值。 範例變更如下所示，但您會想要為每個 `new Movie` 區塊進行此變更。
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
@@ -99,7 +99,7 @@ Update-Database
 
 <a name="ssox"></a>
 
-如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器或 [Sql Server 物件總管](xref:tutorials/razor-pages/sql#ssox) (SSOX) 的刪除連結來執行這項操作。
+如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器或 [Sql Server 物件總管](xref:tutorials/razor-pages/sql#ssox) (SSOX) 的刪除連結來執行此操作。
 
 另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要在 SSOX 中刪除資料庫：
 
@@ -134,7 +134,7 @@ dotnet ef database update
 
 `ef database update` 命令會指示架構將結構描述變更套用至資料庫。
 
-如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器中的刪除連結或使用 SQLite 工具來執行這項操作。
+如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器中的刪除連結或使用 SQLite 工具來執行此操作。
 
 另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要刪除資料庫，請刪除資料庫檔案 (*MvcMovie.db*)。 然後執行 `ef database update` 命令： 
 
@@ -152,6 +152,10 @@ dotnet ef database update
 <!-- End of VS tabs -->
 
 執行應用程式，並驗證您可以使用 `Rating` 欄位建立/編輯/顯示電影。 若未植入資料庫，請在 `SeedData.Initialize` 方法中設定中斷點。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://youtu.be/3i7uMxiGGR8)
 
 > [!div class="step-by-step"]
 > [上一步：新增搜尋](xref:tutorials/razor-pages/search)

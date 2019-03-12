@@ -4,14 +4,14 @@ description: 了解如何在 CentOS 上將 Apache 設定為反向 Proxy 伺服�
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/27/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 0dec9c657134bba3224a1fbb69aaefaaba753404
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 69026997b2c269a4fb56ed2a79fa42ae218368e1
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248260"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345933"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "56248260"
 
 使用本指南來了解如何在 [CentOS 7](https://www.centos.org/) 上將 [Apache](https://httpd.apache.org/) 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器上執行的 ASP.NET Core Web 應用程式。 [mod_proxy 延伸模組](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html)和相關的模組會建立伺服器的反向 Proxy。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 執行 CentOS 7 的伺服器搭配具有 sudo 權限的標準使用者帳戶。
 * 在伺服器上安裝 .NET Core 執行階段。
@@ -92,7 +92,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 如果未將任何 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 指定給中介軟體，則要轉送的預設標頭會是 `None`。
 
-預設只會信任在 localhost (127.0.0.1, [::1]) 上執行的 Proxy。 如果組織內有其他受信任的 Proxy 或網路處理網際網路與網頁伺服器之間的要求，請使用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>，將其新增至 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> 或 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 清單。 下列範例會將 IP 位址 10.0.0.100 的受信任 Proxy 伺服器新增至 `Startup.ConfigureServices` 中「轉送的標頭中介軟體」的 `KnownProxies`：
+在預設情況下，在回送位址 (127.0.0.0/8, [::1]) 上執行的 Proxy (包括標準的本機位址 (127.0.0.1)) 是受信任的。 如果組織內有其他受信任的 Proxy 或網路處理網際網路與網頁伺服器之間的要求，請使用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>，將其新增至 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> 或 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 清單。 下列範例會將 IP 位址 10.0.0.100 的受信任 Proxy 伺服器新增至 `Startup.ConfigureServices` 中「轉送的標頭中介軟體」的 `KnownProxies`：
 
 ```csharp
 services.Configure<ForwardedHeadersOptions>(options =>
@@ -492,6 +492,6 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Linux 上 .NET Core 的必要條件](/dotnet/core/linux-prerequisites)
+* [Linux 上 .NET Core 的先決條件](/dotnet/core/linux-prerequisites)
 * <xref:test/troubleshoot>
 * <xref:host-and-deploy/proxy-load-balancer>

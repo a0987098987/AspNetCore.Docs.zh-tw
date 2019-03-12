@@ -1,16 +1,16 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - 更新相關資料 - 7/8
 author: rick-anderson
-description: 在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
+description: 在此教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 4306118240c052585a5c2eeb2053ce03534b547c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: c3dbfe57a832ba63c5da2f89c0d29e443a1277a7
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207539"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345758"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 更新相關資料 - 7/8
 
@@ -18,7 +18,7 @@ ms.locfileid: "50207539"
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-本教學課程將示範如何更新相關資料。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
+此教學課程將示範如何更新相關資料。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
 下圖顯示一些完成的頁面。
 
@@ -65,7 +65,7 @@ ms.locfileid: "50207539"
 
 * 將標題從 **DepartmentID** 變更為 **Department**。
 * 以 `DepartmentNameSL` (來自基底類別) 取代 `"ViewBag.DepartmentID"`。
-* 新增 [選取部門] 選項。 這項變更會呈現 [選取部門] ，而不是第一個部門。
+* 新增 [選取部門] 選項。 此變更會呈現 [選取部門] ，而不是第一個部門。
 * 未選取部門時，請新增驗證訊息。
 
 Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#the-select-tag-helper)：
@@ -197,7 +197,7 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 執行應用程式，並測試已更新的講師 [編輯] 頁面。 變更一些課程指派。 所做的變更會反映在 [索引] 頁面上。
 
-注意：這裡所用來編輯講師課程資料的方法在課程的數量有限時運作相當良好。 針對更大的集合，不同的 UI 和不同的更新方法可能更有用且更有效率。
+注意:這裡所用來編輯講師課程資料的方法在課程的數量有限時運作相當良好。 針對更大的集合，不同的 UI 和不同的更新方法可能更有用且更有效率。
 
 ### <a name="update-the-instructors-create-page"></a>更新講師 *Create* 頁面
 
@@ -224,6 +224,11 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 * 為 `CourseAssignments` 導覽屬性使用積極式載入。 必須包含 `CourseAssignments`，否則刪除講師時不會刪除它們。 若要避免需要讀取們，您可以在資料庫中設定串聯刪除。
 
 * 若要刪除的講師已指派為任何部門的系統管理員，請先從這些部門中移除講師的指派。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本 (第 1 部分)](https://www.youtube.com/watch?v=Csh6gkmwc9E)
+* [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=mOAankB_Zgc)
 
 > [!div class="step-by-step"]
 > [上一頁](xref:data/ef-rp/read-related-data)

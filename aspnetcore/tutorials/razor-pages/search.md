@@ -5,12 +5,12 @@ description: 示範如何將搜尋新增至 ASP.NET Core Razor 頁面
 ms.author: riande
 ms.date: 12/3/2018
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 3900b33f31fef79327d01b0579208355b0bce90c
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 8a8e51632a75efd6411bae46b9a7f9e4f16b480f
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410215"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346196"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>將搜尋新增至 ASP.NET Core Razor 頁面
 
@@ -27,7 +27,7 @@ ms.locfileid: "56410215"
 * `SearchString`：包含使用者在搜尋文字方塊中輸入的文字。 `SearchString` 是以 [`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute) 屬性裝飾。 `[BindProperty]` 使用與屬性相同的名稱來繫結表單值和查詢字串。 需要 `(SupportsGet = true)` 才能在 GET 要求上進行繫結。
 * `Genres`：包含內容類型清單。 `Genres` 可讓使用者從清單中選取內容類型。 `SelectList` 需要 `using Microsoft.AspNetCore.Mvc.Rendering;`
 * `MovieGenre`：包含使用者所選取的特定內容類型 (例如「西部片」)。
-* 稍後在本教學課程中將會使用 `Genres` 和 `MovieGenre`。
+* 稍後在此教學課程中將會使用 `Genres` 和 `MovieGenre`。
 
 [!INCLUDE[](~/includes/bind-get.md)]
 
@@ -105,6 +105,11 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
 
 依據內容類型、電影標題和這兩者進行搜尋，藉以測試應用程式。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://youtu.be/4B6pHtdyo08)
+
 
 > [!div class="step-by-step"]
 > [上一步：更新頁面](xref:tutorials/razor-pages/da1)

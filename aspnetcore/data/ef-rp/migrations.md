@@ -1,16 +1,16 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 author: rick-anderson
-description: 在本教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。
+description: 在此教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 2051f55bfa7a9582486df78ec91315f0b03cb1e8
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: ef79aca700068aadf9b5b2b689213b6e78a5d729
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938374"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346433"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 
@@ -22,12 +22,12 @@ ms.locfileid: "37938374"
 
 [!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
-在本教學課程中，會使用 EF Core 移轉功能來管理資料模型變更。
+在此教學課程中，會使用 EF Core 移轉功能來管理資料模型變更。
 
 若您遇到無法解決的問題，請下載[完整應用程式](
 https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
 
-開發新的應用程式時，資料模型經常變更。 每次模型變更時，模型就與資料庫不同步。 本教學課程從設定 Entity Framework 來建立不存在的資料庫開始。 每次資料模型變更時：
+開發新的應用程式時，資料模型經常變更。 每次模型變更時，模型就與資料庫不同步。 此教學課程從設定 Entity Framework 來建立不存在的資料庫開始。 每次資料模型變更時：
 
 * 會卸除資料庫。
 * EF 會建立一個符合模型的新資料庫。
@@ -126,7 +126,7 @@ remove migrations 命令會刪除移轉，並確保正確地重設快照集。
 
 ### <a name="remove-ensurecreated-and-test-the-app"></a>移除 EnsureCreated 並測試應用程式
 
-早期開發會使用 `EnsureCreated`。 在本教學課程中，則使用移轉。 `EnsureCreated` 具有下列限制：
+早期開發會使用 `EnsureCreated`。 在此教學課程中，則使用移轉。 `EnsureCreated` 具有下列限制：
 
 * 略過移轉，並建立資料庫和結構描述。
 * 不會建立移轉資料表。
@@ -171,10 +171,11 @@ The login failed.
 Login failed for user 'user name'.
 ```
 
-解決方案：執行 `dotnet ef database update`
+解決方案:執行 `dotnet ef database update`
 
 ### <a name="additional-resources"></a>其他資源
 
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=OWSUuMLKTJo)
 * [.NET Core CLI](/ef/core/miscellaneous/cli/dotnet)。
 * [套件管理員主控台 (Visual Studio)](/ef/core/miscellaneous/cli/powershell)
 

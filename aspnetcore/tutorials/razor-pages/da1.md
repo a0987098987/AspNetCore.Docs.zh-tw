@@ -5,12 +5,12 @@ description: 了解如何更新 ASP.NET Core 應用程式中產生的頁面。
 ms.author: riande
 ms.date: 12/20/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 62385f33dc86609726305728fbc19dd9ff27dc87
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 19f54e04e748f5cf0469c2b5428800694d2c9344
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410189"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346102"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>更新 ASP.NET Core 應用程式中產生的頁面
 
@@ -130,6 +130,10 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 Index、Create 和 Delete Razor 頁面中的 HTTP GET 方法都會依循類似的模式。 Create Razor 頁面中的 HTTP POST `OnPostAsync` 方法，會依循與 Edit Razor 頁面中的 `OnPostAsync` 方法類似的模式。
 
 搜尋會在接下來的教學課程中新增。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://youtu.be/yLnnleREMtQ)
 
 > [!div class="step-by-step"]
 > [上一步：使用資料庫](xref:tutorials/razor-pages/sql)

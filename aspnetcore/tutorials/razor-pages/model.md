@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 02/12/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: c7341430e8e2ace7eb04faa308020095139d5b94
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0ba00750dee1ccbef5d91d8c66f2de0db401c5c1
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56410228"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346355"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -147,10 +147,6 @@ ms.locfileid: "56410228"
 
 ---
 
-上述命令會產生下列警告：「實體類型 'Movie' 上的十進位資料行 'Price' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
-
-您可以忽略該警告，稍後的教學課程中將修正此問題。
-
 隨即建立 Scaffold 處理序並更新下列檔案：
 
 ### <a name="files-created"></a>建立的檔案
@@ -205,6 +201,10 @@ Update-Database
 ---  
 <!-- End of VS tabs -->
 
+上述命令會產生下列警告：「實體類型 'Movie' 上的十進位資料行 'Price' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
+
+您可以忽略該警告，稍後的教學課程中將修正此問題。
+
 `ef migrations add InitialCreate` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (在 *RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
 
 `ef database update` 命令會執行 *Migrations/\<時間戳記>_InitialCreate.cs* 檔案中的 `Up` 方法。 `Up` 方法會建立資料庫。
@@ -215,7 +215,7 @@ Update-Database
 
 ### <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
-ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，此教學課程中稍後會示範。
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
@@ -271,6 +271,10 @@ Login failed for user 'User-name'.
 * 測試 **Edit**、**Details** 和 **Delete** 連結。
 
 下一個教學課程說明 Scaffolding 所建立的檔案。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=sFVIsdR_RcM)
 
 > [!div class="step-by-step"]
 > [上一步：開始使用](xref:tutorials/razor-pages/razor-pages-start)

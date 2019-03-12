@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何在 Ubuntu 16.04 上將 Nginx 設定為反向 Proxy，以將 HTTP 流量轉送至在 Kestrel 上執行的 ASP.NET Core Web 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2018
+ms.date: 02/27/2019
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: a04927ca0377b965f3b4574e55fb9ed450959a7f
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 11754279d18a2449451364b4aaba723b7afb06d5
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248312"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345920"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "56248312"
 
 本指南說明在 Ubuntu 16.04 伺服器上設定生產環境就緒的 ASP.NET Core 環境。 這些指示可能使用較新版本的 Ubuntu，但未經測試。
 
-如需有關 ASP.NET Core 支援之其他 Linux 發行版本的資訊，請參閱 [Linux 上 .NET Core 的必要條件](/dotnet/core/linux-prerequisites)。
+如需有關 ASP.NET Core 支援之其他 Linux 發行版本的資訊，請參閱 [Linux 上 .NET Core 的先決條件](/dotnet/core/linux-prerequisites)。
 
 > [!NOTE]
 > 針對 Ubuntu 14.04，建議使用 *supervisord*作為監視 Kestrel 處理序的解決方案。 在 Ubuntu 14.04 上無法使用 *systemd*。 如需 Ubuntu 14.04 指示，請參閱[本主題前一版本](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)。
@@ -31,7 +31,7 @@ ms.locfileid: "56248312"
 * 確保 Web 應用程式在啟動時以精靈的形式執行。
 * 設定程序管理工具以協助重新啟動 Web 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器。
 1. 在伺服器上安裝 .NET Core 執行階段。
@@ -113,7 +113,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 如果未將任何 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 指定給中介軟體，則要轉送的預設標頭會是 `None`。
 
-預設只會信任在 localhost (127.0.0.1, [::1]) 上執行的 Proxy。 如果組織內有其他受信任的 Proxy 或網路處理網際網路與網頁伺服器之間的要求，請使用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>，將其新增至 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> 或 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 清單。 下列範例會將 IP 位址 10.0.0.100 的受信任 Proxy 伺服器新增至 `Startup.ConfigureServices` 中「轉送的標頭中介軟體」的 `KnownProxies`：
+在預設情況下，在回送位址 (127.0.0.0/8, [::1]) 上執行的 Proxy (包括標準的本機位址 (127.0.0.1)) 是受信任的。 如果組織內有其他受信任的 Proxy 或網路處理網際網路與網頁伺服器之間的要求，請使用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>，將其新增至 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> 或 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 清單。 下列範例會將 IP 位址 10.0.0.100 的受信任 Proxy 伺服器新增至 `Startup.ConfigureServices` 中「轉送的標頭中介軟體」的 `KnownProxies`：
 
 ```csharp
 services.Configure<ForwardedHeadersOptions>(options =>
@@ -397,7 +397,7 @@ sudo nano /etc/nginx/nginx.conf
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Linux 上 .NET Core 的必要條件](/dotnet/core/linux-prerequisites)
+* [Linux 上 .NET Core 的先決條件](/dotnet/core/linux-prerequisites)
 * [Nginx：Binary Releases:Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (二進位版本：官方 Debian/Ubuntu 套件)
 * <xref:test/troubleshoot>
 * <xref:host-and-deploy/proxy-load-balancer>

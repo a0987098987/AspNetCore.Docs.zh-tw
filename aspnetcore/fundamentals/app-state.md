@@ -4,20 +4,20 @@ author: rick-anderson
 description: 探索方法以在要求之間保留工作階段和應用程式狀態。
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/14/2018
+ms.date: 03/04/2019
 uid: fundamentals/app-state
-ms.openlocfilehash: a510e4f49e158203dd7c5e1e0bd28472541f7925
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 2e3591ac1d6b1670b27b1ed9e42f59ba2b956b37
+ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836333"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57400706"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>ASP.NET Core 中的工作階段與應用程式狀態
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Steve Smith](https://ardalis.com/)、[Diana LaRose](https://github.com/DianaLaRose) 和 [Luke Latham](https://github.com/guardrex)
 
-HTTP 是無狀態的通訊協定。 若不採取其他步驟，HTTP 要求是獨立的訊息，不會保留使用者的值或應用程式狀態。 本文描述數種方法來在要求之間保留使用者資料和應用程式狀態。
+HTTP 是無狀態的通訊協定。 若不採取其他步驟，HTTP 要求是獨立的訊息，不會保留使用者的值或應用程式狀態。 此文章描述數種方法來在要求之間保留使用者資料和應用程式狀態。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/app-state/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -64,7 +64,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 * 應用程式會在最後一個要求之後，保留工作階段一段有限的時間。 應用程式會設定工作階段逾時或使用預設值 20 分鐘。 工作階段狀態適合用來儲存特定工作階段特定的使用者資料，但資料不需要在工作階段之間永久儲存的情況。
 * 工作階段資料會在呼叫 [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) 實作或工作階段過期時刪除。
 * 沒有任何預設機制可通知應用程式程式碼，用戶端瀏覽器已關閉，或工作階段 Cookie 遭到刪除或在用戶端上已過期。
-ASP.NET Core MVC 和 Razor Pages 範本包含[一般資料保護規定 (GDPR) 支援](xref:security/gdpr)。 [工作階段狀態的 Cookie 不重要](xref:security/gdpr#tempdata-provider-and-session-state-cookies-are-not-essential)；停用追蹤時，工作階段狀態將無法運作。
+ASP.NET Core MVC 和 Razor Pages 範本包含對一般資料保護規定 (GDPR) 的支援。 工作階段狀態 Cookie 未預設標示為必要項目，因此工作階段狀態無法運作，除網站訪客允許追蹤。 如需詳細資訊，請參閱<xref:security/gdpr#tempdata-provider-and-session-state-cookies-are-not-essential>。
 
 > [!WARNING]
 > 請勿將敏感性資料存放在工作階段狀態。 使用者可能不會關閉瀏覽器，並清除工作階段 Cookie。 某些瀏覽器會在瀏覽器視窗之間維護有效的工作階段 Cookie。 工作階段可能無法限制為單一使用者&mdash;下一位使用者可能會繼續使用相同的工作階段 Cookie 瀏覽應用程式。

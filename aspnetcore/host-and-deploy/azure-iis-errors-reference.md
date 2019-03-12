@@ -4,14 +4,14 @@ author: guardrex
 description: 取得在 Azure Apps Service 與 IIS 上裝載 ASP.NET Core 應用程式時的常見錯誤疑難排解建議。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/21/2019
+ms.date: 02/28/2019
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: d1cdac4d27ee1bc3ebb4329c1bbd3bdacb34a58c
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: 1c8cb31b306b38ec17596af0a84f22ca0e3d911c
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56743943"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346222"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Azure App Service 與 IIS 搭配 ASP.NET Core 時的常見錯誤參考
 
@@ -56,6 +56,39 @@ ms.locfileid: "56743943"
 疑難排解：
 
 作業系統升級時不會保留 **C:\Windows\SysWOW64\inetsrv** 目錄中的非作業系統檔案。 如果先安裝 ASP.NET Core 模組再升級 OS，然後在 OS 升級之後以 32 位元模式執行任何應用程式集區，就會發生此問題。 作業系統升級之後，請修復 ASP.NET Core 模組。 請參閱[安裝 .NET Core 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)。 執行安裝程式時，請選取 [修復]。
+
+## <a name="missing-site-extension-32-bit-x86-and-64-bit-x64-site-extensions-installed-or-wrong-process-bitness-set"></a>遺失網站延伸模組、已安裝 32 位元 (x86) 和 64 位元 (x64) 網站延伸模組，或錯誤的處理序位元集合
+
+*適用於 Azure 應用程式服務所裝載的應用程式。*
+
+* **瀏覽器：** HTTP 錯誤 500.0 - ANCM 同處理序處理常式載入失敗 
+
+* **應用程式記錄檔：** 叫用 hostfxr 尋找同處理序要求處理常式失敗，不會尋找任何原生相依性。 找不到同處理序要求處理常式。 已從叫用的 hostfxr 擷取輸出：無法找到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。 無法啟動應用程式 '/LM/W3SVC/1416782824/ROOT', ErrorCode '0x8000ffff'。
+
+* **ASP.NET Core 模組 stdout 記錄檔：** 無法找到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。
+
+::: moniker range=">= aspnetcore-2.2"
+
+* **ASP.NET Core 模組偵錯記錄：** 叫用 hostfxr 尋找同處理序要求處理常式失敗，不會尋找任何原生相依性。 這最有可能表示應用程式設定不正確，請檢查應用程式設為目標的 Microsoft.NetCore.App 和 Microsoft.AspNetCore.App 版本，並確定已安裝在電腦上。 失敗的 HRESULT 已傳回：0x8000ffff。 找不到同處理序要求處理常式。 無法找到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。
+
+::: moniker-end
+
+疑難排解：
+
+* 如果在預覽執行階段中執行應用程式，請安裝與應用程式位元和應用程式執行階段版本相符的 32 位元 (x86) **或** 64 位元 (x64) 網站延伸模組。 **請勿同時安裝這兩個延伸模組或延伸模組的多個執行階段版本。**
+
+  * ASP.NET Core {RUNTIME VERSION} (x86) 執行階段
+  * ASP.NET Core {RUNTIME VERSION} (x64) 執行階段
+
+  重新啟動應用程式。 請等候數秒，讓應用程式重新啟動。 
+
+* 如果在預覽執行階段中執行應用程式，而且已經安裝 32 位元 (x86) 和 64 位元 (x64) [網站延伸模組](xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension)，請將與應用程式位元不符的網站延伸模組解除安裝。 移除網站延伸模組之後，請重新啟動應用程式。 請等候數秒，讓應用程式重新啟動。
+
+* 如果在預覽執行階段中執行應用程式，且網站延伸模組位元與應用程式相符，請確認預覽網站延伸模組的「執行階段版本」是否與應用程式相符。
+
+* 確認**應用程式設定**中應用程式的**平台**與應用程式位元相符。
+
+如需詳細資訊，請參閱<xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>。
 
 ## <a name="an-x86-app-is-deployed-but-the-app-pool-isnt-enabled-for-32-bit-apps"></a>已部署 x86 應用程式，但未啟用 32 位元應用程式的應用程式集區
 

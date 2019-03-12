@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 1dc9f1278e502cd5040e82c18d99e2da6f139568
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 56c2d783e8c75aad7487aa03309bb962f4354567
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410582"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346524"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -505,11 +505,11 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 在此教學課程中，Fluent API 僅會用於無法使用屬性完成的資料庫對應。 然而，Fluent API 可指定大部分透過屬性可完成的格式、驗證及對應規則。
 
-某些屬性 (例如 `MinimumLength`) 無法使用 Fluent API 來套用。 `MinimumLength` 不會變更結構描述。它只會套用一項最小長度驗證規則。
+某些屬性 (例如 `MinimumLength`) 無法使用 Fluent API 來套用。 `MinimumLength` 不會變更結構描述。它只會套用一個最小長度驗證規則。
 
 某些開發人員偏好單獨使用 Fluent API，使其實體類別保持「整潔」。 屬性和 Fluent API 可混合使用。 有一些設定只能透過 Fluent API 完成 (指定複合 PK)。 有一些設定只能透過屬性完成 (`MinimumLength`)。 使用 Fluent API 或屬性的建議做法為：
 
-* 從這兩種方法中選擇一項。
+* 從這兩種方法中選擇一個。
 * 持續且盡量使用您選擇的方法。
 
 此教學課程中使用到的某些屬性主要用於：
@@ -666,6 +666,11 @@ dotnet ef database update
 * 不使用 "Temp" 部門或 `Course.DepartmentID` 的預設值。
 
 下一個教學課程會涵蓋相關資料。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本 (第 1 部分)](https://www.youtube.com/watch?v=0n2f0ObgCoA)
+* [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=Je0Z5K1TNmY)
 
 ::: moniker-end
 

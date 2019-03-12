@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: seodec18
 ms.date: 11/22/2018
 uid: data/ef-rp/intro
-ms.openlocfilehash: 0c12aa983f01285e27c10bba4e622b2d2ae0a1f2
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
+ms.openlocfilehash: ac9bb9163cb1d5da1017ec204c37f3ac82aaae97
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854441"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346264"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -27,7 +27,7 @@ Contoso 大學的 Web 應用程式範例將示範如何以 Entity Framework (EF)
 
 [下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -196,7 +196,7 @@ dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Models.Sc
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
-ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，在本教學課程稍後會示範。
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，在此教學課程稍後會示範。
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
@@ -227,7 +227,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 * 執行應用程式。
 * `EnsureCreated` 會建立包含 `EmailAddress` 資料行的資料庫。
 
-在開發初期，結構描述快速發展之時，`EnsureCreated` 很方便。 稍後在本教學課程中，會刪除資料庫並使用移轉。
+在開發初期，結構描述快速發展之時，`EnsureCreated` 很方便。 稍後在此教學課程中，會刪除資料庫並使用移轉。
 
 ### <a name="test-the-app"></a>測試應用程式
 
@@ -249,7 +249,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 * 實體集通常會對應至資料庫資料表。
 * 實體會對應至資料表中的資料列。
 
-`DbSet<Enrollment>` 和 `DbSet<Course>` 可加以忽略。 EF Core 會隱含它們，因為 `Student` 實體引用 `Enrollment` 實體，而 `Enrollment` 實體引用 `Course` 實體。 本教學課程中，請在 `SchoolContext` 保留 `DbSet<Enrollment>` 和 `DbSet<Course>`。
+`DbSet<Enrollment>` 和 `DbSet<Course>` 可加以忽略。 EF Core 會隱含它們，因為 `Student` 實體引用 `Enrollment` 實體，而 `Enrollment` 實體引用 `Course` 實體。 針對此教學課程，請在 `SchoolContext` 保留 `DbSet<Enrollment>` 和 `DbSet<Course>`。
 
 ### <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
@@ -315,6 +315,10 @@ EF Core 會建立空白資料庫。 在本節中，會寫入 `Initialize` 方法
 在下一個教學課程中，將會檢視基本的 CRUD (建立、讀取、更新、刪除) 作業。
 
 ::: moniker-end
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=P7iTtQnkrNs)
 
 > [!div class="step-by-step"]
 > [下一步](xref:data/ef-rp/crud)

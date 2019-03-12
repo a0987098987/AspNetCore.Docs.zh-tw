@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
 author: rick-anderson
-description: 在本教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選、分頁功能新增至頁面。
+description: 在此教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選、分頁功能新增至頁面。
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 350243fb94b4798293a5a61b580c3b3b4d8c6d4a
-ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
+ms.openlocfilehash: 4616e93e0cfc25f3ad66721856a4e48910f2fcf5
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54444294"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345955"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
 
@@ -23,7 +23,7 @@ ms.locfileid: "54444294"
 
 [!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
-在本教學課程中，將新增排序、篩選、分組和分頁功能。
+在此教學課程中，將新增排序、篩選、分組和分頁功能。
 
 下圖顯示已完成的頁面。 資料行標題為可按式連結，可用以排序資料行。 重覆按一下資料行標題，可切換遞增和遞減排序次序。
 
@@ -282,6 +282,7 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 ## <a name="additional-resources"></a>其他資源
 
 * [偵錯 ASP.NET Core 2.x 原始檔](https://github.com/aspnet/Docs/issues/4155)
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=MDs7PFpoMqI)
 
 在下一個教學課程中，應用程式將會使用移轉來更新資料模型。
 

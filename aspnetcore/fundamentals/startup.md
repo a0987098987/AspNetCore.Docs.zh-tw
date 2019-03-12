@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
-ms.openlocfilehash: cfd0a57d5d0b60862b017a170b6d5cbddf56f15a
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: d629c2f02f9021454d8f8539018f3e2ca4703a00
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56744179"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346394"
 ---
 # <a name="app-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -40,7 +40,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 將[相依性插入](xref:fundamentals/dependency-injection)至 `Startup` 類別的常見用法是插入：
 
 * <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> 來根據環境設定服務。
-* <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> 來讀取組態。
+* <xref:Microsoft.Extensions.Configuration.IConfiguration> 來讀取組態。
 * <xref:Microsoft.Extensions.Logging.ILoggerFactory> 來在 `Startup.ConfigureServices` 中建立記錄器。
 
 [!code-csharp[](startup/sample_snapshot/Startup2.cs?highlight=7-8)]
@@ -73,7 +73,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 [ASP.NET Core 範本](/dotnet/core/tools/dotnet-new)會以下列支援設定管線：
 
-* [開發人員例外頁面](xref:fundamentals/error-handling#the-developer-exception-page)
+* [開發人員例外狀況頁面](xref:fundamentals/error-handling#developer-exception-page)
 * [例外處理常式](xref:fundamentals/error-handling#configure-a-custom-exception-handling-page)
 * [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [HTTPS 重新導向](xref:security/enforcing-ssl)

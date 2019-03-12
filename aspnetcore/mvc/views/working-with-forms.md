@@ -4,20 +4,20 @@ author: rick-anderson
 description: 描述搭配表單使用的內建標籤協助程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/11/2019
+ms.date: 02/27/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: cd15c641fbf702071bd57510a1d51737f6ab8e19
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: a0fbeac51bd1bfbc50c4d369a479ce5f3091358b
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099009"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346251"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Dave Paquette](https://twitter.com/Dave_Paquette)和 [Jerrie Pelser](https://github.com/jerriep)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[N. Taylor Mullen](https://github.com/NTaylorMullen)、[Dave Paquette](https://twitter.com/Dave_Paquette) 和 [Jerrie Pelser](https://github.com/jerriep)
 
-本文件示範使用表單和常用在表單上的 HTML 項目。 HTML [表單](https://www.w3.org/TR/html401/interact/forms.html)項目提供用來將資料張貼回伺服器的主要機制 Web 應用程式。 本文件的大部分在描述[標籤協助程式](tag-helpers/intro.md)，以及它們如何協助您有效率地建立強大的 HTML 表單。 我們建議您先閱讀[標籤協助程式簡介](tag-helpers/intro.md)，然後才閱讀這份文件。
+此文件示範使用表單和常用在表單上的 HTML 項目。 HTML [表單](https://www.w3.org/TR/html401/interact/forms.html)項目提供用來將資料張貼回伺服器的主要機制 Web 應用程式。 此文件的大部分在描述[標籤協助程式](tag-helpers/intro.md)，以及它們如何協助您有效率地建立強大的 HTML 表單。 我們建議您先閱讀[標籤協助程式簡介](tag-helpers/intro.md)，然後才閱讀這份文件。
 
 在許多情況下，HTML 協助程式都會提供特定標籤協助程式的替代方式，但請務必辨識標籤協助程式未取代 HTML 協助程式，而且每個 HTML 協助程式都沒有標籤協助程式。 有 HTML 協助程式替代存在時，便會予以提及。
 
@@ -66,6 +66,98 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 
 >[!NOTE]
 >使用內建的範本，`returnUrl` 只會在您嘗試存取授權的資源，但未經過驗證或授權時才自動填入。 當您嘗試未經授權的存取時，安全性中介軟體會將您重新導向到登入頁面，並設定 `returnUrl`。
+
+## <a name="the-form-action-tag-helper"></a>表單動作標記協助程式
+
+表單動作標記協助程式會在產生的 `<button ...>` 或 `<input type="image" ...>` 標記上產生 `formaction` 屬性。 `formaction` 屬性可讓您控制表單提交其資料的位置。 它會繫結至類型 `image` 的 [\<input>](https://www.w3.org/wiki/HTML/Elements/input) 元素和 [\<button>](https://www.w3.org/wiki/HTML/Elements/button) 元素。 表單動作標記協助程式允許使用多個 [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) `asp-` 屬性來控制會為相應元素產生哪個 `formaction` 連結。
+
+支援 [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) 屬性來控制 `formaction` 的值：
+
+|屬性|說明|
+|---|---|
+|[asp-controller](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-controller)|控制器的名稱。|
+|[asp-action](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-action)|動作方法的名稱。|
+|[asp-area](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-area)|區域的名稱。|
+|[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|Razor 頁面的名稱。|
+|[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Razor 頁面處理常式的名稱。|
+|[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|路由的名稱。|
+|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|單一 URL 路由值。 例如，`asp-route-id="1234"`。|
+|[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|所有路由值。|
+|[asp-fragment](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-fragment)|URL 片段。|
+
+### <a name="submit-to-controller-example"></a>提交至控制器範例
+
+輸入或選取按鈕時，下列標記會將表單提交到 `HomeController` 的 `Index` 動作：
+
+```cshtml
+<form method="post">
+    <button asp-controller="Home" asp-action="Index">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-controller="Home" 
+                                asp-action="Index" />
+</form>
+```
+
+上述標記會產生下列 HTML：
+
+```html
+<form method="post">
+    <button formaction="/Home">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/Home" />
+</form>
+```
+
+### <a name="submit-to-page-example"></a>提交至頁面範例
+
+下列標記會將表單提交到 `About` Razor 頁面：
+
+```cshtml
+<form method="post">
+    <button asp-page="About">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-page="About" />
+</form>
+```
+
+上述標記會產生下列 HTML：
+
+```html
+<form method="post">
+    <button formaction="/About">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/About" />
+</form>
+```
+
+### <a name="submit-to-route-example"></a>提交至路由範例
+
+請考量 `/Home/Test` 端點：
+
+```csharp
+public class HomeController : Controller
+{
+    [Route("/Home/Test", Name = "Custom")]
+    public string Test()
+    {
+        return "This is the test page";
+    }
+}
+```
+
+下列標記會將表單提交到 `/Home/Test` 端點。
+
+```cshtml
+<form method="post">
+    <button asp-route="Custom">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-route="Custom" />
+</form>
+```
+
+上述標記會產生下列 HTML：
+
+```html
+<form method="post">
+    <button formaction="/Home/Test">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/Home/Test" />
+</form>
+```
 
 ## <a name="the-input-tag-helper"></a>輸入標籤協助程式
 
@@ -358,7 +450,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * HTML 協助程式替代：`@Html.ValidationSummary`
 
-`Validation Summary Tag Helper` 用來顯示驗證訊息的摘要。 `asp-validation-summary` 屬性值可以是下列任一項：
+`Validation Summary Tag Helper` 用來顯示驗證訊息的摘要。 `asp-validation-summary` 屬性值可以是下列任一個：
 
 |asp-validation-summary|顯示的驗證訊息|
 |--- |--- |

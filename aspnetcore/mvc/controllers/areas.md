@@ -5,12 +5,12 @@ description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功
 ms.author: riande
 ms.date: 02/14/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: c21eed04ea68512515da262b6b6895dc1a821039
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.openlocfilehash: 8904d217a18fff65113ae3469efe60258d20d5f0
+ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833523"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57400641"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
@@ -27,6 +27,8 @@ ms.locfileid: "56833523"
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) ([如何下載](xref:index#how-to-download-a-sample))。 下載範例提供基本的應用程式來測試區域。
 
+如果您使用 Razor Pages，請參閱此文件中的[使用 Razor Pages 的區域](#areas-with-razor-pages)。
+
 ## <a name="areas-for-controllers-with-views"></a>適用於控制器與檢視的區域
 
 使用區域、控制器及檢視的典型 ASP.NET Core Web 應用程式包含下列項目：
@@ -35,7 +37,7 @@ ms.locfileid: "56833523"
 * 使用 [&lbrack;Area&rbrack;](#attribute) 屬性裝飾的控制器可使控制器與區域產生關聯：[!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
 * [已新增至啟動的區域路由](#add-area-route)：[!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
 
-## <a name="area-folder-structure"></a>區域資料夾結構
+### <a name="area-folder-structure"></a>區域資料夾結構
 假設應用程式具有兩個邏輯群組：「產品」和「服務」。 使用區域，資料夾結構應該如下：
 
 * Project name
@@ -68,11 +70,6 @@ ms.locfileid: "56833523"
 
 非檢視資料夾的位置 (例如「控制站」和「模型」) 並**不**重要。 例如，「控制站」和「模型」資料夾並非必要項。 「控制器」和「模型」的內容都是要編譯為 .dll 的程式碼。 「檢視」的內容要在向該檢視發出要求之後才會編譯。
 
-<!-- TODO review:
-The content of the *Views* isn't compiled until a request to that view has been made.
-
-What about precompiled views? 
- -->
 <a name="attribute"></a>
 
 ### <a name="associate-the-controller-with-an-area"></a>使控制器與區域產生關聯
@@ -99,7 +96,7 @@ What about precompiled views?
 
 如需詳細資訊，請參閱[區域路由](xref:mvc/controllers/routing#areas)。
 
-### <a name="link-generation-with-areas"></a>使用區域產生連結
+### <a name="link-generation-with-mvc-areas"></a>使用 MVC 區域產生連結
 
 以下來自[範例下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)的程式碼會顯示使用指定的區域來產生連結：
 
@@ -107,7 +104,7 @@ What about precompiled views?
 
 使用上述程式碼產生的連結，在應用程式中的任何位置都是有效的。
 
-範例下載包括[部分檢視](xref:mvc/views/partial)，其中可在未指定區域的情況下包含上述連結和相同連結。 部分檢視會在[配置檔案]()中進行參考，因此，應用程式中的每個頁面都會顯示產生的連結。 在未指定區域的情況下產生的連結，只有在從相同區域與控制器中的頁面進行參考時才有效。
+範例下載包括[部分檢視](xref:mvc/views/partial)，其中可在未指定區域的情況下包含上述連結和相同連結。 部分檢視會在[配置檔案](xref:mvc/views/layout)中進行參考，因此，應用程式中的每個頁面都會顯示產生的連結。 在未指定區域的情況下產生的連結，只有在從相同區域與控制器中的頁面進行參考時才有效。
 
 未指定區域或控制站時，路由即會取決於「環境」值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。
 
@@ -117,11 +114,6 @@ What about precompiled views?
 
 若要針對整個應用程式共用通用的配置，請將 *_ViewStart.cshtml* 移至應用程式根資料夾。
 
-<!-- This section will be completed after https://github.com/aspnet/Docs/pull/10978 is merged.
-<a name="arp"></a>
-
-## Areas for Razor Pages
--->
 <a name="rename"></a>
 
 ### <a name="change-default-area-folder-where-views-are-stored"></a>變更檢視儲存所在的預設區域資料夾
@@ -130,7 +122,72 @@ What about precompiled views?
 
 [!code-csharp[](areas/samples/MVCareas/Startup2.cs?name=snippet)]
 
-<!-- TODO review - can we delete this. Areas doesn't change publishing - right? -->
+<a name="arp"></a>
+
+## <a name="areas-with-razor-pages"></a>使用 Razor Pages 的區域
+
+使用 Razor Pages 的區域需要應用程式根目錄中的 *Areas/&lt;區域名稱&gt;/Pages* 資料夾。 下列資料夾結構是搭配[範例下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)一起使用的
+
+* Project name
+  * 區域
+    * 產品
+      * 頁面
+        * _ViewImports
+        * 關於
+        * 索引
+    * 服務
+      * 頁面
+        * 管理
+          * 關於
+          * 索引
+
+### <a name="link-generation-with-razor-pages-and-areas"></a>使用 Razor Pages 和區域產生連結
+
+以下來自[範例下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas)的程式碼會顯示使用指定的區域 (例如 `asp-area="Products"`) 來產生連結：
+
+[!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet)]
+
+使用上述程式碼產生的連結，在應用程式中的任何位置都是有效的。
+
+範例下載包括[部分檢視](xref:mvc/views/partial)，其中可在未指定區域的情況下包含上述連結和相同連結。 部分檢視會在[配置檔案](xref:mvc/views/layout)中進行參考，因此，應用程式中的每個頁面都會顯示產生的連結。 在未指定區域的情況下產生的連結，只有在從相同區域中的頁面進行參考時才有效。
+
+未指定區域時，路由即會取決於「環境」值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。 例如，試想從下列程式碼產生的連結：
+
+[!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
+
+針對上述程式碼：
+
+* 僅當最後一個要求是針對 `Services` 區域中的頁面時，從 `<a asp-page="/Manage/About">` 產生的連結才是正確的。 例如 `/Services/Manage/`、`/Services/Manage/Index` 或 `/Services/Manage/About`。
+* 僅當最後一個要求是針對 `/Home` 中的頁面時，從 `<a asp-page="/About">` 產生的連結才是正確的。
+* 程式碼來自[下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas)。
+
+### <a name="import-namespace-and-tag-helpers-with-viewimports-file"></a>使用 _ViewImports 檔案匯入命名空間和標記協助程式
+
+可以將 *_ViewImports* 檔案新增至每個區域 *Pages* 資料夾，以將命名空間和標記協助程式匯入到資料夾中的每個 Razor 頁面。
+
+請考慮範例程式碼的 *Services* 區域，該區域不包含 *_ViewImports* 檔案。 下列標記示範 */Services/Manage/About* Razor頁面：
+
+[!code-cshtml[](areas/samples/RPareas/Areas/Services/Pages/Manage/About.cshtml)]
+
+在上述標記中：
+
+* 必須使用完整的網域名稱來指定此模型 (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`)。
+* [標記協助程式]()由 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` 啟用
+
+在範例下載中，Products 區域包含下列 *_ViewImports* 檔案：
+
+[!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/_ViewImports.cshtml)]
+
+下列標記示範 */Products/About* Razor 頁面：[!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/About.cshtml)]
+
+在上述檔案中，命名空間和 `@addTagHelper` 指示詞是由 *Areas/Products/Pages/_ViewImports.cshtml* 檔案匯入到檔案中的：
+
+如需詳細資訊，請參閱[管理標籤協助程式範圍](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope)和[匯入共用指示詞](xref:mvc/views/layout#importing-shared-directives)。
+
+### <a name="shared-layout-for-razor-pages-areas"></a>Razor Pages 區域的共用版面配置
+
+若要針對整個應用程式共用通用的配置，請將 *_ViewStart.cshtml* 移至應用程式根資料夾。
+
 ### <a name="publishing-areas"></a>發行區域
 
-*.csproj* 檔案中包含 `<Project Sdk="Microsoft.NET.Sdk.Web">` 時，所有 `*.cshtml` 和 `wwwroot/**` 檔案都會發行至輸出。
+.csproj* 檔案中包含 `<Project Sdk="Microsoft.NET.Sdk.Web">` 時，所有 `*.cshtml` 和 `wwwroot/**` 檔案都會發行至輸出。

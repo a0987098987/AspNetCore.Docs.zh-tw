@@ -5,14 +5,14 @@ description: 了解在 ASP.NET Core 應用程式中發生 Razor 檔案編譯的�
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 03/02/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 0b6173a7860f5f1d9d11219fbf3f57f76d703031
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0b3aea584de63cb8032e4ca112d2441349bdfbb3
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899264"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345480"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>ASP.NET Core 中 Razor 檔案的先行編譯
 
@@ -38,7 +38,7 @@ ms.locfileid: "56899264"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Razor 檔案會在建置和發佈階段使用 [Razor SDK](xref:razor-pages/sdk) 來編譯。 您可能會藉由設定應用程式，選擇性地啟用執行階段編譯。
+Razor 檔案會在建置和發佈階段使用 [Razor SDK](xref:razor-pages/sdk) 來編譯。 您可以透過設定應用程式，選擇性地啟用執行階段編譯。
 
 ::: moniker-end
 
@@ -93,7 +93,7 @@ Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 在建�
 dotnet publish -c Release
 ```
 
-先行編譯成功時，會產生 <專案名稱>.PrecompiledViews.dll 檔案，其中包含編譯過的 Razor 檔案。 例如，以下螢幕擷取畫面為 *WebApplication1.PrecompiledViews.dll* 內 *Index.cshtml* 的內容：
+先行編譯成功時，會產生 *\<專案名稱>.PrecompiledViews.dll* 檔案，其中包含編譯過的 Razor 檔案。 例如，以下螢幕擷取畫面為 *WebApplication1.PrecompiledViews.dll* 內 *Index.cshtml* 的內容：
 
 ![DLL 內部的 Razor 檢視](view-compilation/_static/razor-views-in-dll.png)
 
@@ -122,18 +122,19 @@ dotnet publish -c Release
 
 ::: moniker range=">= aspnetcore-3.0"
 
-使用 `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation` 封裝來啟用執行階段編譯。 若要啟用執行階段編譯，應用程式必須
+使用 `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation` 封裝來啟用執行階段編譯。 若要啟用執行階段編譯，應用程式必須：
 
-* 安裝 [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 封裝。
+* 安裝 [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 套件。
 * 更新應用程式的 `ConfigureServices` 以包含對 `AddMvcRazorRuntimeCompilation` 的呼叫：
 
-```csharp
-services
-    .AddMvc()
-    .AddMvcRazorRuntimeCompilation()
-```
+  ```csharp
+  services
+      .AddMvc()
+      .AddMvcRazorRuntimeCompilation()
+  ```
 
 針對要在部署時運作的執行階段編譯，應用程式必須額外修改其專案檔，以將 `PreserveCompilationReferences` 設定為 `true`。
+
 [!code-xml[](view-compilation/sample/RuntimeCompilation.csproj?highlight=3)]
 
 ::: moniker-end

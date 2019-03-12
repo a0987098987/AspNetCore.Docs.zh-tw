@@ -5,12 +5,12 @@ description: 說明如何使用資料庫和 ASP.NET Core。
 ms.author: riande
 ms.date: 12/07/2017
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 3e05f5dbc73c35f1f938346b2eaab8c0fa7d8ab9
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 9f01f5c9fcf9c423ccc2af8ae6ca55c2f427c9c1
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410293"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346024"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>使用資料庫和 ASP.NET Core
 
@@ -140,7 +140,7 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 <!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行這項操作
+* 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行此操作
 * 強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。 若要強制初始化，IIS Express 必須停止並重新啟動。 您可以使用下列其中一個方法來執行此工作：
 
   * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束] 或 [停止網站]：
@@ -176,6 +176,10 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 ![在 Chrome 中開啟的電影應用程式顯示電影資料](sql/_static/m55.png)
 
 接下來的教學課程將會清除資料的呈現。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://youtu.be/A_5ff11sDHY)
 
 > [!div class="step-by-step"]
 > [上一步：Scaffolded Razor Pages](xref:tutorials/razor-pages/page)

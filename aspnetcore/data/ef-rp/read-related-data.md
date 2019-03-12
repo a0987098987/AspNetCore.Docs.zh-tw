@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: cf8733e1e806c4be0c4b217fc45c7a338a03a3ce
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 140f482e136acf4daba1248fecc87e06db6866f3
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207552"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345884"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -19,11 +19,11 @@ ms.locfileid: "50207552"
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-在本教學課程中，將會讀取和顯示相關資料。 相關資料是 EF Core 載入到導覽屬性的資料。
+在此教學課程中，將會讀取和顯示相關資料。 相關資料是 EF Core 載入到導覽屬性的資料。
 
 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
-下圖顯示本教學課程的已完成頁面：
+下圖顯示此教學課程的已完成頁面：
 
 ![Courses [索引] 頁面](read-related-data/_static/courses-index.png)
 
@@ -46,9 +46,9 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   ![個別查詢範例](read-related-data/_static/separate-queries.png)
 
-  注意：EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
+  注意:EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
 
-* [明確式載入](/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如: 
+* [明確式載入](/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如：
 
   ![明確式載入範例](read-related-data/_static/explicit-loading.png)
 
@@ -184,7 +184,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 查詢具有兩個 Include：
 
-* `OfficeAssignment`：顯示在 [Instructors 檢視](#IP)。
+* `OfficeAssignment`：顯示在 [Instructors 檢視](#IP)中。
 * `CourseAssignments`：它顯示所教授的課程。
 
 
@@ -330,6 +330,11 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 測試應用程式。 就使用者的觀點而言，應用程式行為與之前的版本相同。
 
 下一個教學課程會示範如何更新相關資料。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本 (第 1 部分)](https://www.youtube.com/watch?v=PzKimUDmrvE)
+* [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=xvDDrIHv5ko)
 
 >[!div class="step-by-step"]
 >[上一頁](xref:data/ef-rp/complex-data-model)

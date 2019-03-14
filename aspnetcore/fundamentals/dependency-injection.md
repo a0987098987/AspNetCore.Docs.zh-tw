@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/25/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 5e1522e0819d989a7029c2928c1c33624c1774c7
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 72e3ae1c4be18edaa2e7f1906cf65269e5ed2288
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899355"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665492"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -559,7 +559,6 @@ DI 是靜態/全域物件存取模式的「替代」選項。 如果您將 DI �
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/extensibility>
 * [在 ASP.NET Core 使用 Dependency Injection 撰寫簡潔的程式碼 (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
-* [容器管理的應用程式設計，序：容器屬於哪裡？](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)
 * [明確相依性準則](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)
 * [逆轉控制容器和相依性插入模式 (Martin Fowler)](https://www.martinfowler.com/articles/injection.html) \(英文\)
 * [How to register a service with multiple interfaces in ASP.NET Core DI](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/) (如何使用 ASP.NET Core DI 中的多個介面註冊服務)

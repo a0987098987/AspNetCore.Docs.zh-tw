@@ -5,12 +5,12 @@ description: 如何將驗證新增至 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 04/13/2017
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: 431715e7c584d3ee381cbafb42171a7c01dddb3a
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: 49db8d7c1d3e54f416c66685c19b3a2e3b14251c
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53382052"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665440"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>將驗證新增至 ASP.NET Core MVC 應用程式
 
@@ -59,7 +59,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 最明顯的好處是，您不需要為了啟用這項驗證 UI 而變更 `MoviesController` 類別或 *Create.cshtml* 檢視的程式碼，一行都不用。 您稍早在本教學課程中建立的控制器和檢視會自動拾取您指定的驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 `Edit` 動作方法測試驗證，即會套用相同的驗證。
 
-要一直到沒有任何用戶端驗證錯誤之後，才會將表單資料傳送到伺服器。 藉由使用 [Fiddler 工具](http://www.telerik.com/fiddler)，或 [F12 開發人員工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，您可以將中斷點放入 `HTTP Post` 方法來驗證。
+要一直到沒有任何用戶端驗證錯誤之後，才會將表單資料傳送到伺服器。 藉由使用 [Fiddler 工具](http://www.telerik.com/fiddler)，或 [F12 開發人員工具](/microsoft-edge/devtools-guide)，您可以將中斷點放入 `HTTP Post` 方法來驗證。
 
 ## <a name="how-validation-works"></a>驗證的運作方式
 

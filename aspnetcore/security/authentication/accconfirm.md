@@ -3,14 +3,14 @@ title: 帳戶確認和 ASP.NET Core 中的密碼復原
 author: rick-anderson
 description: 了解如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。
 ms.author: riande
-ms.date: 2/11/2019
+ms.date: 3/11/2019
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 77d7b209d57f9ee44f158798ff780ce85c87aaf2
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: 05efb75d26558702c88e87d191a780371034282c
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56159404"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841471"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
@@ -22,7 +22,7 @@ ms.locfileid: "56159404"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette)
+藉由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Ponant](https://github.com/Ponant)，和[Joe Audette](https://twitter.com/joeaudette)
 
 本教學課程會示範如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。 本教學課程**不**開頭主題。 您應該先熟悉：
 
@@ -34,45 +34,23 @@ ms.locfileid: "56159404"
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [](~/includes/2.1-SDK.md)]
+[.NET core 2.2 SDK 或更新版本](https://www.microsoft.com/net/download/all)
 
 ## <a name="create-a-web--app-and-scaffold-identity"></a>建立 web 應用程式，並建立身分識別的結構
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
-
-* 在 Visual Studio 中，建立新**Web 應用程式**專案，命名為**WebPWrecover**。
-* 選取 **ASP.NET Core 2.1**。
-* 保留預設值**驗證**設為**不需要驗證**。 下一個步驟中加入驗證。
-
-在下一個步驟：
-
-* 將版面配置頁面設為 *~/Pages/Shared/_Layout.cshtml*
-* 選取*帳戶/註冊*
-* 建立新**資料內容類別**
-
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+執行下列命令來建立驗證的 web 應用程式。
 
 ```console
-dotnet new webapp -o WebPWrecover
+dotnet new webapp -au Individual -uld -o WebPWrecover
 cd WebPWrecover
-dotnet tool install -g dotnet-aspnet-codegenerator
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
-dotnet aspnet-codegenerator identity -fi Account.Register -dc WebPWrecover.Models.WebPWrecoverContext
-dotnet ef migrations add CreateIdentitySchema
+dotnet aspnet-codegenerator identity -dc WebPWrecover.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout;Account.ConfirmEmail
 dotnet ef database drop -f
 dotnet ef database update
-dotnet build
+dotnet run
+
 ```
-
-執行`dotnet aspnet-codegenerator identity --help`scaffolding 工具取得說明。
-
-------
-
-請依照下列中的指示[啟用驗證](xref:security/authentication/scaffold-identity#useauthentication):
-
-* 新增`app.UseAuthentication();`至 `Startup.Configure`
-* 新增`<partial name="_LoginPartial" />`和配置檔案。
 
 ## <a name="test-new-user-registration"></a>測試新的使用者註冊
 
@@ -91,9 +69,9 @@ dotnet build
 
 您通常想要防止新使用者之前確認電子郵件張貼到您的網站的任何資料。
 
-更新*Areas/Identity/IdentityHostingStartup.cs*要求確認電子郵件：
+更新`Startup.ConfigureServices`要求確認電子郵件：
 
-[!code-csharp[](accconfirm/sample/WebPWrecover21/Areas/Identity/IdentityHostingStartup.cs?name=snippet1&highlight=10-13)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=8-11)]
 
 `config.SignIn.RequireConfirmedEmail = true;` 防止已註冊的使用者登入，直到確認其電子郵件。
 
@@ -103,13 +81,9 @@ dotnet build
 
 建立類別來擷取安全的電子郵件的金鑰。 此範例中，建立*Services/AuthMessageSenderOptions.cs*:
 
-[!code-csharp[](accconfirm/sample/WebPWrecover21/Services/AuthMessageSenderOptions.cs?name=snippet1)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
 #### <a name="configure-sendgrid-user-secrets"></a>設定 SendGrid 使用者祕密
-
-新增的唯一`<UserSecretsId>`值`<PropertyGroup>`專案檔的項目：
-
-[!code-xml[](accconfirm/sample/WebPWrecover21/WebPWrecover.csproj?highlight=5)]
 
 設定`SendGridUser`並`SendGridKey`具有[secret manager 工具](xref:security/app-secrets)。 例如: 
 
@@ -120,7 +94,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 在 Windows、 Secret Manager 儲存中的索引鍵/值組*secrets.json*檔案中`%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`目錄。
 
-內容*secrets.json*檔案未加密。 *Secrets.json*如下所示的檔案 (`SendGridKey`已移除值。)
+內容*secrets.json*檔案未加密。 下列標記示範*secrets.json*檔案。 `SendGridKey`已移除值。
 
  ```json
   {
@@ -137,7 +111,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 安裝`SendGrid`NuGet 套件：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 從 [套件管理員] 主控台中，輸入下列命令：
 
@@ -160,7 +134,7 @@ dotnet add package SendGrid
 
 實作`IEmailSender`，建立*Services/EmailSender.cs*與下列類似的程式碼：
 
-[!code-csharp[](accconfirm/sample/WebPWrecover21/Services/EmailSender.cs)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Services/EmailSender.cs)]
 
 ### <a name="configure-startup-to-support-email"></a>設定啟動，以支援電子郵件
 
@@ -169,13 +143,13 @@ dotnet add package SendGrid
 * 新增`EmailSender`為暫時性的服務。
 * 註冊`AuthMessageSenderOptions`組態執行個體。
 
-[!code-csharp[](accconfirm/sample/WebPWrecover21/Startup.cs?name=snippet2&highlight=12-99)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=15-99)]
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>啟用帳戶確認和密碼復原
 
 範本會將程式碼進行帳戶確認和密碼復原。 尋找`OnPostAsync`方法中的*Areas/Identity/Pages/Account/Register.cshtml.cs*。
 
-防止新註冊的使用者自動記錄的標記為註解下面這一行：
+防止新註冊的使用者自動登入註解下面這一行：
 
 ```csharp
 await _signInManager.SignInAsync(user, isPersistent: false);
@@ -183,16 +157,13 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 使用已變更反白顯示的列，會顯示完整的方法：
 
-[!code-csharp[](accconfirm/sample/WebPWrecover21/Areas/Identity/Pages/Account/Register.cshtml.cs?highlight=22&name=snippet_Register)]
+[!code-csharp[](accconfirm/sample/WebPWrecover22/Areas/Identity/Pages/Account/Register.cshtml.cs?highlight=22&name=snippet_Register)]
 
 ## <a name="register-confirm-email-and-reset-password"></a>註冊、 確認電子郵件，以及重設密碼
 
 執行 web 應用程式，並測試的帳戶確認和密碼復原流程。
 
 * 執行應用程式並註冊新的使用者
-
-  ![Web 應用程式註冊帳戶檢視](accconfirm/_static/loginaccconfirm1.png)
-
 * 請檢查您的帳戶確認連結的電子郵件。 請參閱[偵錯電子郵件](#debug)如果您沒有收到電子郵件。
 * 按一下連結，以確認您的電子郵件。
 * 使用您的電子郵件和密碼登入。
@@ -202,21 +173,46 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 在瀏覽器中，選取您的使用者名稱：![瀏覽器視窗中的使用使用者名稱](accconfirm/_static/un.png)
 
-您可能需要展開的導覽列，以查看使用者名稱。
-
-![navbar](accconfirm/_static/x.png)
-
 [管理] 頁面會顯示**設定檔**選取的索引標籤。 **電子郵件**顯示核取方塊，指出電子郵件已確認。
 
 ### <a name="test-password-reset"></a>測試密碼重設
 
-* 如果您的登入，請選取**登出**。
+* 如果您已登入，請選取**登出**。
 * 選取 **登入**連結，然後選取**忘記密碼？** 連結。
 * 輸入您用來註冊帳戶的電子郵件。
 * 會傳送具有重設密碼連結的電子郵件。 請檢查您的電子郵件，然後按一下 重設密碼連結。 已成功重設您的密碼之後，您可以使用您的電子郵件和新密碼登入。
 
-<a name="debug"></a>
+## <a name="change-email-and-activity-timeout"></a>變更電子郵件和活動的逾時
 
+預設閒置逾時為 14 天。 下列程式碼會設定為 5 天的閒置逾時：
+
+[!code-csharp[](accconfirm/sample/WebPWrecover22/StartupAppCookie.cs?name=snippet1)]
+
+### <a name="change-all-data-protection-token-lifespans"></a>變更所有資料保護權杖的期限
+
+下列程式碼會變更為 3 小時內的所有資料保護權杖逾時期限：
+
+[!code-csharp[](accconfirm/sample/WebPWrecover22/StartupAllTokens.cs?name=snippet1&highlight=15-16)]
+
+內建在身分識別的使用者語彙基元 (請參閱[AspNetCore/src/Identity/Extensions.Core/src/TokenOptions.cs](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) ) 已[一天的逾時](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)。
+
+### <a name="change-the-email-token-lifespan"></a>變更的電子郵件的權杖存留時間
+
+預設權杖存留時間[身分識別的使用者語彙基元](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs)是[有一天](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)。 本節說明如何變更的電子郵件的權杖存留時間。
+
+新增自訂[DataProtectorTokenProvider\<TUser >](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1)和<xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:
+
+[!code-csharp[](accconfirm/sample/WebPWrecover22/TokenProviders/CustomTokenProvider.cs?name=snippet1)]
+
+將自訂提供者新增至服務容器：
+
+[!code-csharp[](accconfirm/sample/WebPWrecover22/StartupEmail.cs?name=snippet1&highlight=10-13)]
+
+### <a name="resend-email-confirmation"></a>重新傳送電子郵件確認
+
+請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/5410)。
+
+<a name="debug"></a>
 ### <a name="debug-email"></a>偵錯電子郵件
 
 如果您無法收到電子郵件工作：

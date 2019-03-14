@@ -2,23 +2,23 @@
 title: 在 ASP.NET Core 中使用裝載啟動組件
 author: guardrex
 description: 了解如何使用 IHostingStartup 實作，從外部組件增強 ASP.NET Core 應用程式。
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 02/14/2019
+ms.date: 03/10/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: cffad201c84414ee4788877d80d3619a9013ae99
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 6111ae77369608e828eebf6229b5702630bc63f8
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410491"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841458"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>在 ASP.NET Core 中使用裝載啟動組件
 
 作者：[Luke Latham](https://github.com/guardrex) 與 [Pavel Krymets](https://github.com/pakrym)
 
-實作 [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) (裝載啟動) 會在啟動時，從外部組件將增強功能新增至應用程式。 例如，外部程式庫可以使用裝載啟動實作，向應用程式提供額外的組態提供者或服務。 ASP.NET Core 2.0 或更新版本提供 `IHostingStartup`。
+實作 [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) (裝載啟動) 會在啟動時，從外部組件將增強功能新增至應用程式。 例如，外部程式庫可以使用裝載啟動實作，向應用程式提供額外的組態提供者或服務。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -40,8 +40,6 @@ ms.locfileid: "56410491"
 
 ## <a name="disable-automatic-loading-of-hosting-startup-assemblies"></a>停用自動載入裝載啟動組件
 
-::: moniker range=">= aspnetcore-2.1"
-
 若要停用自動載入裝載啟動組件，請使用下列任一方法：
 
 * 若要防止載入所有裝載啟動組件，請將下列任一項目設為 `true` 或 `1`：
@@ -50,17 +48,6 @@ ms.locfileid: "56410491"
 * 若要防止載入特定的裝載啟動組件，請將下列任一項目設為以分號分隔的裝載啟動組件字串，藉此於啟動時排除：
   * [裝載啟動排除組件](xref:fundamentals/host/web-host#hosting-startup-exclude-assemblies)主機組態設定。
   * `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES` 環境變數。
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-若要停用自動載入裝載啟動組件，請將下列任一項目設為 `true` 或 `1`：
-
-* [防止裝載啟動](xref:fundamentals/host/web-host#prevent-hosting-startup)主機組態設定。
-* `ASPNETCORE_PREVENTHOSTINGSTARTUP` 環境變數。
-
-::: moniker-end
 
 如已設定主機組態設定和環境變數，主機設定即會控制行為。
 

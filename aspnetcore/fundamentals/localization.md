@@ -5,16 +5,16 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: af11906f86fe4ea91ed520584daedc094ab2dc0b
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: 70de86f2e8c4a5577b8a4b50c53d66eb3b205c09
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505826"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665532"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT)、[Damien Bowden](https://twitter.com/damien_bod)、[Bart Calixto](https://twitter.com/bartmax)、[Nadeem Afana](https://twitter.com/NadeemAfana) 和 [Hisham Bin Ateya](https://twitter.com/hishambinateya) 提供
+由 [Rick Anderson](https://twitter.com/RickAndMSFT)、[Damien Bowden](https://twitter.com/damien_bod)、[Bart Calixto](https://twitter.com/bartmax)、[Nadeem Afana](https://afana.me/) 和 [Hisham Bin Ateya](https://twitter.com/hishambinateya) 提供
 
 使用 ASP.NET Core 建立多語系網站時，可讓更廣大的群眾使用您的網站。 ASP.NET Core 提供服務與中介軟體，可將網站當地語系化成不同的語言與文化特性。
 
@@ -127,7 +127,7 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 1. 在方案總管中，以滑鼠右鍵按一下要放置資源檔的資料夾 > [新增] > [新增項目]。
 
-    ![巢狀特色選單：方案總管會開啟 [資源] 的特色選單， 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
+    ![巢狀快顯功能表：在 [方案總管] 中，會開啟 [資源] 的快顯功能表。 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
 
 2. 在 [Search installed templates] (搜尋已安裝的範本) 方塊中，輸入「資源」，並命名檔案。
 
@@ -254,7 +254,7 @@ Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `u
 
 ### <a name="the-accept-language-http-header"></a>Accept-Language HTTP 標頭
 
-您可在大多數的瀏覽器中設定 [Accept-Language 標頭](https://www.w3.org/International/questions/qa-accept-lang-locales)，其最初的設計目的是用來指定使用者的語言。 這項設定可指出瀏覽器已設好要傳送哪些項目，或已從基礎作業系統繼承哪些項目。 透過瀏覽器要求的 Accept-Language HTTP 標頭來偵測使用者的慣用語言，並非萬無一失 (請參閱 [Setting language preferences in a browser](https://www.w3.org/International/questions/qa-lang-priorities.en.php) (在瀏覽器中設定語言喜好設定)。 生產環境應用程式應該包含可讓使用者自訂文化特性的選擇方式。
+您可在大多數的瀏覽器中設定 [Accept-Language 標頭](https://www.w3.org/International/questions/qa-accept-lang-locales)，其最初的設計目的是用來指定使用者的語言。 此設定可指出瀏覽器已設好要傳送哪些項目，或已從基礎作業系統繼承哪些項目。 透過瀏覽器要求的 Accept-Language HTTP 標頭來偵測使用者的慣用語言，並非萬無一失 (請參閱 [Setting language preferences in a browser](https://www.w3.org/International/questions/qa-lang-priorities.en.php) (在瀏覽器中設定語言喜好設定)。 生產環境應用程式應該包含可讓使用者自訂文化特性的選擇方式。
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>在 IE 中設定 Accept-Language HTTP 標頭
 
@@ -331,12 +331,12 @@ services.Configure<RequestLocalizationOptions>(options =>
 詞彙：
 
 * 全球化 (G11N)：讓應用程式支援不同語言和區域的程序。
-* 當地語系化 (L10N)：針對特定語言和區域，自訂應用程式的程序。
-* 國際化 (I18N)：包含全球化和當地語系化這兩部分的描述。
-* 文化特性：它是一種語言和/或地區。
-* 中性文化特性：具有指定的語言但不限地區的文化特性  (例如 "en"、"es")。
-* 特定文化特性：具有指定的語言和地區的文化特性  (例如 "en-US"、"en-GB"、"es-CL")。
-* 父文化特性：包含特定文化特性的中性文化特性  (例如，"en" 是 "en-US" 和 "en-GB" 的父文化特性)。
+* 當地語系化 (L10N)：針對特定語言和區域自訂應用程式的程序。
+* 國際化 (I18N)：描述全球化和當地語系化。
+* 文化特性：它是一種語言和選擇性的區域。
+* 中性文化特性：具有指定的語言但不限地區的文化特性。 (例如 "en"、"es")。
+* 特定文化特性：具有指定的語言與區域的文化特性。 (例如 "en-US"、"en-GB"、"es-CL")。
+* 父文化特性：包含特定文化特性的中性文化特性。 (例如，"en" 是 "en-US" 和 "en-GB" 的父文化特性)。
 * 地區設定：地區設定與文化特性相同。
 
 [!INCLUDE[](~/includes/currency.md)]

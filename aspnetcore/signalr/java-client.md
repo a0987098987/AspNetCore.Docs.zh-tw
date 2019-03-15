@@ -5,14 +5,14 @@ description: 了解如何使用 ASP.NET Core SignalR Java 用戶端。
 monikerRange: '>= aspnetcore-2.2'
 ms.author: mimengis
 ms.custom: mvc
-ms.date: 11/07/2018
+ms.date: 03/14/2019
 uid: signalr/java-client
-ms.openlocfilehash: d0eff38c1f622b896ed1dc3002238aec7b6bfd38
-ms.sourcegitcommit: 8a65f6c2cbe290fb2418eed58f60fb74c95392c8
+ms.openlocfilehash: 09e5ce23ddcc250d212a8cdf1176f39531a9c0ba
+ms.sourcegitcommit: d913bca90373c07f89b1d1df01af5fc01fc908ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892090"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57978486"
 ---
 # <a name="aspnet-core-signalr-java-client"></a>ASP.NET Core SignalR Java 用戶端
 
@@ -49,6 +49,9 @@ implementation 'com.microsoft.signalr:signalr:1.0.0'
 呼叫`send`叫用中樞方法。 將中樞方法的名稱和任何定義於中樞方法的引數傳遞`send`。
 
 [!code-java[send method](java-client/sample/src/main/java/Chat.java?range=28)]
+
+> [!NOTE]
+> 如果您使用 Azure SignalR 服務中*無伺服器模式*，您無法從用戶端呼叫中樞方法。 如需詳細資訊，請參閱 < [SignalR 服務文件](/azure/azure-signalr/signalr-concept-serverless-development-config)。
 
 ## <a name="call-client-methods-from-hub"></a>用戶端方法呼叫來自中樞
 
@@ -105,3 +108,4 @@ HubConnection hubConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
 * <xref:signalr/hubs>
 * <xref:signalr/javascript-client>
 * <xref:signalr/publish-to-azure-web-app>
+* [Azure SignalR 服務的無伺服器文件](/azure/azure-signalr/signalr-concept-serverless-development-config)

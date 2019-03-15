@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何診斷 ASP.NET Core Azure App Service 部署的問題。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/11/2019
+ms.date: 03/05/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 65a5e355bc15db6de9060331395c441160c8b62d
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: c3732bfab362ec034248eb3912d4b1337c94216e
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341637"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665424"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>針對 Azure App Service 上的 ASP.NET Core 進行疑難排解
 
@@ -71,11 +71,56 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
-1. 將資料夾開啟至路徑 [site] > [wwwroot]。
-1. 在主控台中，藉由執行應用程式的組件來執行應用程式。
-   * 如果應用程式是[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)，請使用 *dotnet.exe* 來執行應用程式的組件。 在下列命令中，請以應用程式組件的名稱取代 `<assembly_name>`：`dotnet .\<assembly_name>.dll`
-   * 如果應用程式是[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)，請執行應用程式的可執行檔。 在下列命令中，請以應用程式組件的名稱取代 `<assembly_name>`：`<assembly_name>.exe`
-1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+
+#### <a name="test-a-32-bit-x86-app"></a>測試 32 位元 (x86) 應用程式
+
+##### <a name="current-release"></a>目前的版本
+
+1. `cd d:\home\site\wwwroot`
+1. 執行應用程式：
+   * 如果應用程式是[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)：
+
+     ```console
+     dotnet .\{ASSEMBLY NAME}.dll
+     ```
+   * 如果應用程式是[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)：
+
+     ```console
+     {ASSEMBLY NAME}.exe
+     ```
+   
+來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+   
+##### <a name="framework-depdendent-deployment-running-on-a-preview-release"></a>在預覽版上執行的架構相依部署
+
+*要求安裝 ASP.NET Core {VERSION} (x86) 執行階段網站延伸模組。*
+
+1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` 是執行階段版本)
+1. 執行應用程式：`dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
+
+來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+
+#### <a name="test-a-64-bit-x64-app"></a>測試 64 位元 (x64) 應用程式
+
+##### <a name="current-release"></a>目前的版本
+
+* 如果應用程式是 64 位元 (x64) [架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)：
+  1. `cd D:\Program Files\dotnet`
+  1. 執行應用程式：`dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
+* 如果應用程式是[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)：
+  1. `cd D:\home\site\wwwroot`
+  1. 執行應用程式：`{ASSEMBLY NAME}.exe`
+
+來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+
+##### <a name="framework-depdendent-deployment-running-on-a-preview-release"></a>在預覽版上執行的架構相依部署
+
+*要求安裝 ASP.NET Core {VERSION} (x64) 執行階段網站延伸模組。*
+
+1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64` (`{X.Y}` 是執行階段版本)
+1. 執行應用程式：`dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
+
+來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
 
 ### <a name="aspnet-core-module-stdout-log"></a>ASP.NET Core 模組 stdout 記錄檔
 

@@ -5,14 +5,14 @@ description: ASP.NET Core SignalR.NET 用戶端的相關資訊
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 09/10/2018
+ms.date: 03/14/2019
 uid: signalr/dotnet-client
-ms.openlocfilehash: 25b618f7a424b217c0fb55417754ea358280b95a
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: a03abef53aa44f0a1016b8f72d8e3a7af2f9bed1
+ms.sourcegitcommit: d913bca90373c07f89b1d1df01af5fc01fc908ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836302"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57978300"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>ASP.NET Core SignalR.NET 用戶端
 
@@ -64,6 +64,9 @@ connection.Closed += (error) => {
 
 [!code-csharp[InvokeAsync method](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_InvokeAsync)]
 
+> [!NOTE]
+> 如果您使用 Azure SignalR 服務中*無伺服器模式*，您無法從用戶端呼叫中樞方法。 如需詳細資訊，請參閱 < [SignalR 服務文件](/azure/azure-signalr/signalr-concept-serverless-development-config)。
+
 ## <a name="call-client-methods-from-hub"></a>用戶端方法呼叫來自中樞
 
 定義的方法使用呼叫中樞`connection.On`之後建置，但之前啟動連線。
@@ -85,3 +88,4 @@ connection.Closed += (error) => {
 * [中樞](xref:signalr/hubs)
 * [JavaScript 用戶端](xref:signalr/javascript-client)
 * [發佈至 Azure](xref:signalr/publish-to-azure-web-app)
+* [Azure SignalR 服務的無伺服器文件](/azure/azure-signalr/signalr-concept-serverless-development-config)

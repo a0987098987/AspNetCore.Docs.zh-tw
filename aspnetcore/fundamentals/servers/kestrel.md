@@ -4,14 +4,14 @@ author: guardrex
 description: 了解 Kestrel，這是 ASP.NET Core 的跨平台網頁伺服器。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 03/04/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: dcf027c2c495cbecd8464e43749b9154a4360e36
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 5fc6c78f3eb76fcf3dd663c8d878250f0051f153
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248403"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665635"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -417,6 +417,17 @@ ASP.NET Core 預設會繫結至：
 * `http://localhost:5000`
 * `https://localhost:5001` (當有本機開發憑證存在時)
 
+使用以下各項指定 URL：
+
+* `ASPNETCORE_URLS` 環境變數。
+* `--urls` 命令列引數。
+* `urls` 主機組態索引鍵。
+* `UseUrls` 擴充方法。
+
+使用這些方法提供的值可以是一或多個 HTTP 和 HTTPS 端點 (如果有預設憑證可用則為 HTTPS)。 將值設定為以分號分隔的清單 (例如，`"Urls": "http://localhost:8000; http://localhost:8001"`)。
+
+如需有關這些方法的詳細資訊，請參閱[伺服器 URL](xref:fundamentals/host/web-host#server-urls) 和[覆寫設定](xref:fundamentals/host/web-host#override-configuration)。
+
 開發憑證會建立於：
 
 * 已安裝 [.NET Core SDK](/dotnet/core/sdk) 時。
@@ -430,7 +441,7 @@ ASP.NET Core 2.1 和更新版本的專案範本會將應用程式設定為預設
 
 `UseUrls`、`--urls` 命令列引數、`urls` 主機組態索引鍵和 `ASPNETCORE_URLS` 環境變數同樣有效，但卻有本節稍後註明的限制 (針對 HTTPS 端點組態必須有預設憑證可用)。
 
-ASP.NET Core 2.1 `KestrelServerOptions` 組態：
+ASP.NET Core 2.1 或更新版本 `KestrelServerOptions` 設定：
 
 ### <a name="configureendpointdefaultsactionltlistenoptionsgt"></a>ConfigureEndpointDefaults(Action&lt;ListenOptions&gt;)
 
@@ -484,17 +495,6 @@ ASP.NET Core 2.1 `KestrelServerOptions` 組態：
 *無組態*
 
 Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果預設憑證可用的話)。
-
-使用以下各項指定 URL：
-
-* `ASPNETCORE_URLS` 環境變數。
-* `--urls` 命令列引數。
-* `urls` 主機組態索引鍵。
-* `UseUrls` 擴充方法。
-
-如需詳細資訊，請參閱[伺服器 URL](xref:fundamentals/host/web-host#server-urls) 和[覆寫設定](xref:fundamentals/host/web-host#override-configuration)。
-
-使用這些方法提供的值可以是一或多個 HTTP 和 HTTPS 端點 (如果有預設憑證可用則為 HTTPS)。 將值設定為以分號分隔的清單 (例如，`"Urls": "http://localhost:8000; http://localhost:8001"`)。
 
 *從組態取代預設憑證*
 

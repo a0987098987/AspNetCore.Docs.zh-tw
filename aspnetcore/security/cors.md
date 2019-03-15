@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/27/2019
 uid: security/cors
-ms.openlocfilehash: eb8dd3b1c96d9060b0164dcd4d0fbe004ed4af84
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 6be8b4da1642a9eff021371c229a17071d6e9bfb
+ms.sourcegitcommit: d913bca90373c07f89b1d1df01af5fc01fc908ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346368"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57978467"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨源要求 (CORS)
 
@@ -446,11 +446,11 @@ Test message
 
   * 使用 Microsoft Edge:
 
-    **SEC7120: [CORS] 來源 'https://localhost:44375'找不到'https://localhost:44375'中跨原始來源資源的存取控制-允許-原始回應標頭'https://webapi.azurewebsites.net/api/values/1'。**
+    **SEC7120: [CORS] 原點`https://localhost:44375`找不到`https://localhost:44375`中跨原始來源資源的存取控制-允許-原始回應標頭 `https://webapi.azurewebsites.net/api/values/1`**
 
   * 使用 Chrome:
 
-    **存取 XMLHttpRequest 在 'https://webapi.azurewebsites.net/api/values/1'從原點'https://localhost:44375' 已封鎖的 CORS 原則：要求的資源上有沒有 '存取控制-允許-原始' 標頭。**
+    **存取在 XMLHttpRequest`https://webapi.azurewebsites.net/api/values/1`從原點`https://localhost:44375`已封鎖的 CORS 原則：要求的資源上有沒有 '存取控制-允許-原始' 標頭。**
 
 ## <a name="additional-resources"></a>其他資源
 

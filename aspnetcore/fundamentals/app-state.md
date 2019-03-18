@@ -2,22 +2,23 @@
 title: ASP.NET Core 中的工作階段與應用程式狀態
 author: rick-anderson
 description: 探索方法以在要求之間保留工作階段和應用程式狀態。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/04/2019
+ms.date: 03/12/2019
 uid: fundamentals/app-state
-ms.openlocfilehash: 2e3591ac1d6b1670b27b1ed9e42f59ba2b956b37
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.openlocfilehash: 7de57d4923beaf32c0cb9aec49ea3e570fec6170
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400706"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841575"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>ASP.NET Core 中的工作階段與應用程式狀態
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Steve Smith](https://ardalis.com/)、[Diana LaRose](https://github.com/DianaLaRose) 和 [Luke Latham](https://github.com/guardrex)
 
-HTTP 是無狀態的通訊協定。 若不採取其他步驟，HTTP 要求是獨立的訊息，不會保留使用者的值或應用程式狀態。 此文章描述數種方法來在要求之間保留使用者資料和應用程式狀態。
+HTTP 是無狀態的通訊協定。 若不採取其他步驟，HTTP 要求是獨立的訊息，不會保留使用者的值或應用程式狀態。 本文描述數種方法來在要求之間保留使用者資料和應用程式狀態。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/app-state/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -64,7 +65,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 * 應用程式會在最後一個要求之後，保留工作階段一段有限的時間。 應用程式會設定工作階段逾時或使用預設值 20 分鐘。 工作階段狀態適合用來儲存特定工作階段特定的使用者資料，但資料不需要在工作階段之間永久儲存的情況。
 * 工作階段資料會在呼叫 [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) 實作或工作階段過期時刪除。
 * 沒有任何預設機制可通知應用程式程式碼，用戶端瀏覽器已關閉，或工作階段 Cookie 遭到刪除或在用戶端上已過期。
-ASP.NET Core MVC 和 Razor Pages 範本包含對一般資料保護規定 (GDPR) 的支援。 工作階段狀態 Cookie 未預設標示為必要項目，因此工作階段狀態無法運作，除網站訪客允許追蹤。 如需詳細資訊，請參閱<xref:security/gdpr#tempdata-provider-and-session-state-cookies-are-not-essential>。
+* ASP.NET Core MVC 和 Razor Pages 範本包含對一般資料保護規定 (GDPR) 的支援。 工作階段狀態 Cookie 未預設標示為必要項目，因此工作階段狀態無法運作，除網站訪客允許追蹤。 如需詳細資訊，請參閱<xref:security/gdpr#tempdata-provider-and-session-state-cookies-are-not-essential>。
 
 > [!WARNING]
 > 請勿將敏感性資料存放在工作階段狀態。 使用者可能不會關閉瀏覽器，並清除工作階段 Cookie。 某些瀏覽器會在瀏覽器視窗之間維護有效的工作階段 Cookie。 工作階段可能無法限制為單一使用者&mdash;下一位使用者可能會繼續使用相同的工作階段 Cookie 瀏覽應用程式。
@@ -76,17 +77,7 @@ ASP.NET Core MVC 和 Razor Pages 範本包含對一般資料保護規定 (GDPR) 
 
 ### <a name="configure-session-state"></a>設定工作階段狀態
 
-::: moniker range=">= aspnetcore-2.0"
-
 [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) 套件隨附於 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)，提供用來管理工作階段狀態的中介軟體。 若要啟用工作階段中介軟體，`Startup` 必須包含：
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) 套件提供用來管理工作階段狀態的中介軟體。 若要啟用工作階段中介軟體，`Startup` 必須包含：
-
-::: moniker-end
 
 * 任一 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 記憶體快取。 `IDistributedCache` 實作會作為工作階段的支援存放區。 如需詳細資訊，請參閱<xref:performance/caching/distributed>。
 * 在 `ConfigureServices` 中呼叫 [AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions.addsession)。
@@ -94,17 +85,7 @@ ASP.NET Core MVC 和 Razor Pages 範本包含對一般資料保護規定 (GDPR) 
 
 下列程式碼示範如何設定記憶體內部工作階段提供者，以及 `IDistributedCache` 的預設記憶體中實作。
 
-::: moniker range=">= aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/2.x/SessionSample/Startup.cs?name=snippet1&highlight=11,13-18,39)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Startup.cs?name=snippet1&highlight=5,7-12,19)]
-
-::: moniker-end
+[!code-csharp[](app-state/samples/2.x/SessionSample/Startup.cs?name=snippet1&highlight=5-14,34)]
 
 中介軟體的順序很重要。 在上述範例中，如果在 `UseMvc` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　例外狀況。 如需詳細資訊，請參閱[中介軟體順序](xref:fundamentals/middleware/index#order)。
 
@@ -124,8 +105,6 @@ ASP.NET Core MVC 和 Razor Pages 範本包含對一般資料保護規定 (GDPR) 
 
 若要覆寫工作階段的預設值，請使用 [SessionOptions](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions)。
 
-::: moniker range=">= aspnetcore-2.0"
-
 | 選項 | 說明 |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookie) | 決定用來建立 Cookie 的設定。 [Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) 預設為 [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`)。 [Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) 預設為 [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`)。 [SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite) 預設為 [SameSiteMode.Lax](/dotnet/api/microsoft.aspnetcore.http.samesitemode) (`1`)。 [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) 預設為 `true`。 [IsEssential](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.isessential) 預設為 `false`。 |
@@ -134,36 +113,9 @@ ASP.NET Core MVC 和 Razor Pages 範本包含對一般資料保護規定 (GDPR) 
 
 工作階段使用 Cookie 來追蹤和識別來自單一瀏覽器的要求。 此 Cookie 預設名為 `.AspNetCore.Session`，並使用路徑 `/`。 由於 Cookie 預設值未指定網域，因此它不會提供給頁面上的用戶端指令碼 (因為 [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) 預設為 `true`)。
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-| 選項 | 說明 |
-| ------ | ----------- |
-| [CookieDomain](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiedomain) | 決定用來建立 Cookie 的網域。 預設不會設定 `CookieDomain`。 |
-| [CookieHttpOnly](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiehttponly) | 決定瀏覽器是否應該允許 Cookie 由用戶端 JavaScript 存取。 預設值是 `true`，這表示 Cookie 僅會傳遞給 HTTP 要求，並未開放給頁面上的指令碼使用。 |
-| [CookieName](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiename) | 決定用來保存工作階段識別碼的 Cookie 名稱。 預設值是 [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`)。 |
-| [CookiePath](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiepath) | 決定用來建立 Cookie 的路徑。 預設為 [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`)。 |
-| [CookieSecure](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiesecure) | 決定是否應該只在 HTTPS 要求傳送 Cookie。 預設值是 [CookieSecurePolicy.None](/dotnet/api/microsoft.aspnetcore.http.cookiesecurepolicy) (`2`)。 |
-| [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) | `IdleTimeout` 指出工作階段可以閒置多久，之後才會放棄它的內容。 每個工作階段存取都會重設逾時。 請注意，這只適用於工作階段的內容，而不適用於 Cookie。 預設值是 20 分鐘。 |
-
-工作階段使用 Cookie 來追蹤和識別來自單一瀏覽器的要求。 此 Cookie 預設名為 `.AspNet.Session`，並使用路徑 `/`。
-
-::: moniker-end
-
 若要覆寫 Cookie 工作階段的預設值，請使用 `SessionOptions`：
 
-::: moniker range=">= aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples_snapshot/2.x/SessionSample/Startup.cs?name=snippet1&highlight=13-18)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples_snapshot/1.x/SessionSample/Startup.cs?name=snippet1&highlight=5-9)]
-
-::: moniker-end
+[!code-csharp[](app-state/samples_snapshot/2.x/SessionSample/Startup.cs?name=snippet1&highlight=14-19)]
 
 應用程式會使用 [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) 屬性，判斷工作階段可以在放棄伺服器快取中的內容之前閒置多長時間。 這個屬性與 Cookie 到期日無關。 透過[工作階段中介軟體](/dotnet/api/microsoft.aspnetcore.session.sessionmiddleware)傳遞的每個要求都會重設逾時。
 
@@ -173,17 +125,7 @@ ASP.NET Core MVC 和 Razor Pages 範本包含對一般資料保護規定 (GDPR) 
 
 工作階段狀態的存取，是從 Razor Pages [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) 類別，或 MVC [Controller](/dotnet/api/microsoft.aspnetcore.mvc.controller) 類別搭配 [HttpContext.Session](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)。 這個屬性是 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 實作。
 
-::: moniker range=">= aspnetcore-2.0"
-
 `ISession` 實作提供數個延伸模組來設定和擷取整數和字串值。 當專案參考 [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/) 套件時，擴充方法位於 [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) 命名空間 (新增 `using Microsoft.AspNetCore.Http;` 陳述式即可取得擴充方法的存取權)。 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)包含兩個套件。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-`ISession` 實作提供數個擴充方法來設定和擷取整數和字串值。 當專案參考 [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/) 套件時，擴充方法位於 [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) 命名空間 (新增 `using Microsoft.AspNetCore.Http;` 陳述式即可取得擴充方法的存取權)。
-
-::: moniker-end
 
 `ISession` 擴充方法：
 
@@ -207,47 +149,17 @@ Name: @HttpContext.Session.GetString(IndexModel.SessionKeyName)
 
 下列範例示範如何設定及取得整數和字串：
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=18-19,22-23)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet1&highlight=10-11,18-19)]
-
-::: moniker-end
 
 若要啟用分散式快取案例，即使是使用記憶體中快取時，都必須序列化所有工作階段資料。 已提供最小字串及數字的序列化程式 (請參閱 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 的方法和擴充方法)。 複雜類型必須由使用者使用另一個機制加以序列化，例如 JSON。
 
 新增下列擴充方法，即可設定和取得可序列化物件：
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](app-state/samples/2.x/SessionSample/Extensions/SessionExtensions.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Extensions/SessionExtensions.cs?name=snippet1)]
-
-::: moniker-end
 
 下列範例示範如何使用擴充方法來設定和取得可序列化物件：
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet2)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet2&highlight=4,12)]
-
-::: moniker-end
 
 ## <a name="tempdata"></a>TempData
 
@@ -255,19 +167,9 @@ ASP.NET Core 會公開 [Razor Pages 頁面模型的 TempData 屬性](/dotnet/api
 
 ### <a name="tempdata-providers"></a>TempData 提供者
 
-::: moniker range=">= aspnetcore-2.0"
-
-在 ASP.NET Core 2.0 或更新版本中，預設會使用 Cookie 架構 TempData 提供者，將 TempData 儲存在 Cookie 中。
+預設會使用以 Cookie 為基礎的 TempData 提供者，以將 TempData 儲存在 Cookie 中。
 
 Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密，並使用 [Base64UrlTextEncoder](/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder) 編碼，然後分成區塊。 因為 Cookie 分成區塊，所以不適用 ASP.NET Core 1.x 中找到的 Cookie 大小限制。 Cookie 資料不會壓縮，因為壓縮加密資料可能會導致安全性問題，例如 [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) 和 [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)) 攻擊。 如需 Cookie 架構 TempData 提供者的詳細資訊，請參閱 [CookieTempDataProvider](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.cookietempdataprovider)。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-在 ASP.NET Core 1.0 和 1.1 中，工作階段狀態 TempData 提供者是預設提供者。
-
-::: moniker-end
 
 ### <a name="choose-a-tempdata-provider"></a>選擇 TempData 提供者
 
@@ -282,23 +184,11 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 ### <a name="configure-the-tempdata-provider"></a>設定 TempData 提供者
 
-::: moniker range=">= aspnetcore-2.0"
-
 預設會啟用 Cookie 架構 TempData 提供者。
 
 若要啟用以工作階段為基礎的 TempData 提供者，請使用 [AddSessionStateTempDataProvider](/dotnet/api/microsoft.extensions.dependencyinjection.mvcviewfeaturesmvcbuilderextensions.addsessionstatetempdataprovider) 擴充方法：
 
 [!code-csharp[](app-state/samples_snapshot_2/2.x/SessionSample/Startup.cs?name=snippet1&highlight=11,13,32)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-下列 `Startup` 類別程式碼會設定工作階段架構 TempData 提供者：
-
-[!code-csharp[](app-state/samples_snapshot_2/1.x/SessionSample/Startup.cs?name=snippet1&highlight=4,9)]
-
-::: moniker-end
 
 中介軟體的順序很重要。 在上述範例中，如果在 `UseMvc` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　例外狀況。 如需詳細資訊，請參閱[中介軟體順序](xref:fundamentals/middleware/index#order)。
 
@@ -341,31 +231,11 @@ app.Run(async (context) =>
 
 如果是只由單一應用程式使用的中介軟體，可接受 `string` 索引鍵。 應用程式執行個體之間共用的中介軟體，應該使用唯一的物件索引鍵，來避免索引鍵衝突。 下列範例示範如何使用中介軟體類別中定義的唯一物件索引鍵：
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](app-state/samples/2.x/SessionSample/Middleware/HttpContextItemsMiddleware.cs?name=snippet1&highlight=4,13)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Middleware/HttpContextItemsMiddleware.cs?name=snippet1&highlight=5,14)]
-
-::: moniker-end
 
 其他程式碼可以使用中介軟體類別所公開的索引鍵，來存取 `HttpContext.Items` 中儲存的值：
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet3)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet3)]
-
-::: moniker-end
 
 此方法也有在程式碼中消除使用索引鍵字串的優點。
 
@@ -401,8 +271,6 @@ app.Run(async (context) =>
 
 3. 取用資料服務類別：
 
-    ::: moniker range=">= aspnetcore-2.0"
-
     ```csharp
     public class IndexModel : PageModel
     {
@@ -413,23 +281,6 @@ app.Run(async (context) =>
         }
     }
     ```
-
-    ::: moniker-end
-
-    ::: moniker range="< aspnetcore-2.0"
-
-    ```csharp
-    public class HomeController : Controller
-    {
-        public HomeController(MyAppData myService)
-        {
-            // Do something with the service
-            //    Examples: Read data, store in a field or property
-        }
-    }
-    ```
-
-    ::: moniker-end
 
 ## <a name="common-errors"></a>常見的錯誤
 

@@ -5,14 +5,14 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 03/08/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 081a631c9c3e74c01e15f4b0b272d650c162bd20
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: ecc7f3a8cd813c2803d03294e38d726905eeb1b8
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248247"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841419"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -21,6 +21,10 @@ ms.locfileid: "56248247"
 ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications)，不需要使用 IIS。 當裝載為 Windows 服務時，應用程式將會在重新開機後自動啟動。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+
+## <a name="prerequisites"></a>必要條件
+
+* [PowerShell 6](https://github.com/PowerShell/PowerShell)
 
 ## <a name="deployment-type"></a>部署類型
 
@@ -121,13 +125,13 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=snippet_Program)]
 
-### <a name="publish-the-app"></a>發行應用程式
+## <a name="publish-the-app"></a>發行應用程式
 
 使用 [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) (這是一個 [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)) 或 Visual Studio Code 來發行應用程式。 使用 Visual Studio 時，請選取 [FolderProfile] 並設定 [目標位置]，再選取 [發行] 按鈕。
 
 若要使用命令列介面 (CLI) 工具發佈應用程式，請在將發行設定傳遞到 [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) 選項的情況下從專案資料夾的命令提示字元中執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令。 搭配路徑使用 [-o|--output](/dotnet/core/tools/dotnet-publish#options) 選項以發行到應用程式以外的資料夾。
 
-#### <a name="publish-a-framework-dependent-deployment-fdd"></a>發行架構相依部署 (FDD)
+### <a name="publish-a-framework-dependent-deployment-fdd"></a>發行架構相依部署 (FDD)
 
 在下列範例中，應用程式是發行到 *c:\\svc* 資料夾：
 
@@ -135,7 +139,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 dotnet publish --configuration Release --output c:\svc
 ```
 
-#### <a name="publish-a-self-contained-deployment-scd"></a>發行自封式部署 (SCD)
+### <a name="publish-a-self-contained-deployment-scd"></a>發行自封式部署 (SCD)
 
 必須在 `<RuntimeIdenfifier>` (或 `<RuntimeIdentifiers>`) 中指定 RID 專案檔的屬性。 提供執行階段給 `dotnet publish` 命令的 [-r|--runtime](/dotnet/core/tools/dotnet-publish#options) 選項。
 
@@ -145,11 +149,11 @@ dotnet publish --configuration Release --output c:\svc
 dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
 ```
 
-### <a name="create-a-user-account"></a>建立使用者帳戶
+## <a name="create-a-user-account"></a>建立使用者帳戶
 
-從系統管理命令殼層使用 `net user` 命令為服務建立使用者帳戶：
+透過系統管理 PowerShell 6 命令殼層使用 `net user` 命令，為服務建立使用者帳戶：
 
-```console
+```powershell
 net user {USER ACCOUNT} {PASSWORD} /add
 ```
 
@@ -157,13 +161,13 @@ net user {USER ACCOUNT} {PASSWORD} /add
 
 針對範例應用程式，建立名為 `ServiceUser` 的使用者帳戶與密碼。 在下列命令中，將 `{PASSWORD}` 取代為[強式密碼](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)。
 
-```console
+```powershell
 net user ServiceUser {PASSWORD} /add
 ```
 
 若需要將使用者新增到某個群組，請使用 `net localgroup` 命令，其中 `{GROUP}` 是群組的名稱：
 
-```console
+```powershell
 net localgroup {GROUP} {USER ACCOUNT} /add
 ```
 
@@ -171,13 +175,11 @@ net localgroup {GROUP} {USER ACCOUNT} /add
 
 使用 Active Directory 時有一個管理使用者的替代方法，就是使用「受控服務帳戶」。 如需詳細資訊，請參閱[群組受控服務帳戶概觀](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)。
 
-### <a name="set-permissions"></a>設定權限
+## <a name="set-permission-log-on-as-a-service"></a>設定權限：以服務方式登入
 
-#### <a name="access-to-the-app-folder"></a>存取應用程式資料夾
+使用 [icacls](/windows-server/administration/windows-commands/icacls) 命令授與對應用程式資料夾的寫入/讀取/執行存取權：
 
-從系統管理命令殼層使用 [icacls](/windows-server/administration/windows-commands/icacls) 命令，授與對應用程式資料夾的寫入/讀取/執行存取權：
-
-```console
+```powershell
 icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
 ```
 
@@ -195,82 +197,69 @@ icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
 
 針對發行到 *c:\\svc* 資料夾的範例應用程式與具有寫入/讀取/執行權限的 `ServiceUser` 帳戶，請使用下列命令：
 
-```console
+```powershell
 icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
 ```
 
 如需詳細資訊，請參閱 [icacls](/windows-server/administration/windows-commands/icacls)。
 
-#### <a name="log-on-as-a-service"></a>以服務方式登入
+## <a name="create-the-service"></a>建立服務
 
-將[以服務方式登入](/windows/security/threat-protection/security-policy-settings/log-on-as-a-service)權限授與使用者帳戶：
+使用 [RegisterService.ps1](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts) 的 PowerShell 指令碼註冊服務。 透過系統管理 PowerShell 6 命令提示字元，執行下列命令：
 
-1. 在 [本機安全性原則] 主控台或 [本機群組原則編輯器] 主控台中，找出 [使用者權限指派] 原則。 如需指示，請參閱：[設定安全性原則設定](/windows/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings)。
-1. 找出 `Log on as a service` 原則。 按兩下該原則以開啟它。
-1. 選取 [新增使用者或群組]。
-1. 選取 [進階]，然後選取 [立即尋找]。
-1. 選取稍早在[建立使用者帳戶](#create-a-user-account)一節中建立的使用者帳戶。 選取 [確定] 以接受該選取項目。
-1. 確定物件名稱正確之後，選取 [確定]。
-1. 選取 [套用]。 選取 [確定] 以關閉原則視窗。
-
-## <a name="manage-the-service"></a>管理服務
-
-### <a name="create-the-service"></a>建立服務
-
-從系統管理命令殼層使用 [sc.exe](https://technet.microsoft.com/library/bb490995) 命令列工具來建立服務。 `binPath` 值是應用程式可執行檔的路徑，其中包括可執行檔的檔案名稱。 **等號與每個參數與值的引號字元之間必須有空格。**
-
-```console
-sc create {SERVICE NAME} binPath= "{PATH}" obj= "{DOMAIN}\{USER ACCOUNT}" password= "{PASSWORD}"
+```powershell
+.\RegisterService.ps1 
+    -Name {NAME} 
+    -DisplayName "{DISPLAY NAME}" 
+    -Description "{DESCRIPTION}" 
+    -Path "{PATH}" 
+    -Exe {ASSEMBLY}.exe 
+    -User {DOMAIN\USER}
 ```
-
-* `{SERVICE NAME}` &ndash; 要指派給[服務控制管理員](/windows/desktop/services/service-control-manager)中之服務的名稱。
-* `{PATH}` &ndash; 服務可執行檔的路徑。
-* `{DOMAIN}` &ndash; 已加入網域之機器的網域。 若機器未加入網域，請使用本機電腦名稱。
-* `{USER ACCOUNT}` &ndash; 用於執行服務的使用者帳戶。
-* `{PASSWORD}` &ndash; 使用者帳戶密碼。
-
-> [!WARNING]
-> 請**勿**省略 `obj` 參數。 `obj` 的預設值是 [LocalSystem 帳戶](/windows/desktop/services/localsystem-account)帳戶。 以 `LocalSystem` 帳戶執行服務會帶來重大安全性風險。 一律使用具有受限權限的使用者帳戶來執行服務。
 
 在範例應用程式的下列範例中：
 
 * 服務的名稱是 **MyService**。
-* 已發行的服務位於 *c:\\svc* 資料夾。 應用程式可執行檔名稱是 *SampleApp.exe*。 以雙引號 (") 括住 `binPath` 值。
-* 服務是以 `ServiceUser` 帳戶執行。 將 `{DOMAIN}` 取代為使用者帳戶的網域或本機電腦名稱。 以雙引號 (") 括住 `obj` 值。 範例：若裝載系統是名為 `MairaPC` 的本機電腦，請將 `obj` 設定為 `"MairaPC\ServiceUser"`。
-* 將 `{PASSWORD}` 取代為使用者帳戶的密碼。 以雙引號 (") 括住 `password` 值。
+* 已發行的服務位於 *c:\\svc* 資料夾。 應用程式可執行檔名稱是 *SampleApp.exe*。
+* 服務是以 `ServiceUser` 帳戶執行。 下列範例中，本機電腦名稱為 `Desktop-PC`。
 
-```console
-sc create MyService binPath= "c:\svc\sampleapp.exe" obj= "{DOMAIN}\ServiceUser" password= "{PASSWORD}"
+```powershell
+.\RegisterService.ps1 
+    -Name MyService 
+    -DisplayName "My Cool Service" 
+    -Description "This is the Sample App service." 
+    -Path "c:\svc" 
+    -Exe SampleApp.exe 
+    -User Desktop-PC\ServiceUser
 ```
 
-> [!IMPORTANT]
-> 確定參數的等號與參數的值之間有空格。
+## <a name="manage-the-service"></a>管理服務
 
 ### <a name="start-the-service"></a>啟動服務
 
-以 `sc start {SERVICE NAME}` 命令啟動服務。
+以 `Start-Service -Name {NAME}` 的 PowerShell 6 命令啟動服務。
 
 請使用下列命令啟動範例應用程式服務：
 
-```console
-sc start MyService
+```powershell
+Start-Service -Name MyService
 ```
 
 此命令需要幾秒鐘啓動服務。
 
 ### <a name="determine-the-service-status"></a>判斷服務狀態
 
-若要檢查服務的狀態，請使用 `sc query {SERVICE NAME}` 命令。 狀態會回報為下列值之一：
+若要檢查服務狀態，請使用 `Get-Service -Name {NAME}` 的 PowerShell 6 命令。 狀態會回報為下列值之一：
 
-* `START_PENDING`
-* `RUNNING`
-* `STOP_PENDING`
-* `STOPPED`
+* `Starting`
+* `Running`
+* `Stopping`
+* `Stopped`
 
 使用下列命令來檢查範例應用程式服務的狀態：
 
-```console
-sc query MyService
+```powershell
+Get-Service -Name MyService
 ```
 
 ### <a name="browse-a-web-app-service"></a>瀏覽 Web 應用程式服務
@@ -281,28 +270,22 @@ sc query MyService
 
 ### <a name="stop-the-service"></a>停止服務
 
-以 `sc stop {SERVICE NAME}` 命令停止服務。
+以 `Stop-Service -Name {NAME}` 的 PowerShell 6 命令停止服務。
 
 下列命令會停止範例應用程式服務：
 
-```console
-sc stop MyService
+```powershell
+Stop-Service -Name MyService
 ```
 
-### <a name="delete-the-service"></a>刪除服務
+### <a name="remove-the-service"></a>移除服務
 
-在停止服務的短暫延遲之後，請以 `sc delete {SERVICE NAME}` 命令解除安裝服務。
+在停止服務的短暫延遲之後，請以 `Remove-Service -Name {NAME}` 的 Powershell 6 命令移除服務。
 
 檢查範例應用程式服務的狀態：
 
-```console
-sc query MyService
-```
-
-當範例應用程式服務處於 `STOPPED` 狀態時，請使用下列命令來解除安裝範例應用程式服務：
-
-```console
-sc delete MyService
+```powershell
+Remove-Service -Name MyService
 ```
 
 ## <a name="handle-starting-and-stopping-events"></a>處理開始與停止事件

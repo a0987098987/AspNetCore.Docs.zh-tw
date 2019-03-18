@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: f8661a48ddd6fc616c141435edc603117b4925fb
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 3799b072da04e32948b5fc78032f0575e760aa1d
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345883"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841442"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
@@ -59,13 +59,13 @@ ms.locfileid: "57345883"
 
 1. 讓 Entity Framework 自動卸除資料庫，並使用新的模型類別結構描述來重新建立資料庫。 在開發週期早期，這個方法會很方便；其可讓您一併調整模型和資料庫結構描述，更加快速。 缺點是會遺失在資料庫中的現有資料。 請勿在生產環境資料庫上使用此方法！ 在結構描述變更時卸除資料庫以及使用初始設定式將測試資料自動植入資料庫，通常是開發應用程式的有效方式。
 
-2. 您可明確修改現有資料庫的結構描述，使其符合模型類別。 這種方法的優點是可以保留您的資料。 您可以手動方式或藉由建立資料庫變更指令碼來進行此變更。
+2. 您可明確修改現有資料庫的結構描述，使其符合模型類別。 這種方法的優點是可以保留您的資料。 您可以手動方式或藉由建立資料庫變更指令碼來進行這項變更。
 
 3. 使用 Code First 移轉來更新資料庫結構描述。
 
-在此教學課程中，請使用 Code First 移轉。
+在本教學課程中，請使用 Code First 移轉。
 
-更新 `SeedData` 類別，使其提供新資料行的值。 範例變更如下所示，但您會想要為每個 `new Movie` 區塊進行此變更。
+更新 `SeedData` 類別，使其提供新資料行的值。 範例變更如下所示，但您會想要為每個 `new Movie` 區塊進行這項變更。
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
@@ -99,7 +99,7 @@ Update-Database
 
 <a name="ssox"></a>
 
-如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器或 [Sql Server 物件總管](xref:tutorials/razor-pages/sql#ssox) (SSOX) 的刪除連結來執行此操作。
+如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器或 [Sql Server 物件總管](xref:tutorials/razor-pages/sql#ssox) (SSOX) 的刪除連結來執行這項操作。
 
 另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要在 SSOX 中刪除資料庫：
 
@@ -116,37 +116,15 @@ Update-Database
 <!-- Code -------------------------->
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
-<!-- copy/paste this tab to the next. Not worth an include  -->
+### <a name="drop-and-re-create-the-database"></a>卸除並重新建立資料庫
 
-執行下列 .NET Core CLI 命令：
+[!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-```console
-dotnet ef migrations add Rating
-dotnet ef database update
-```
-
-`ef migrations add` 命令會告知架構，以便：
-
-* 比較 `Movie` 模型與 `Movie` 資料庫結構描述。
-* 建立程式碼，將資料庫結構描述移轉至新模型。
-
-"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
-
-`ef database update` 命令會指示架構將結構描述變更套用至資料庫。
-
-如果您刪除資料庫中的所有記錄，初始設定式會將內容植入資料庫，並包含 `Rating` 欄位。 您可以使用瀏覽器中的刪除連結或使用 SQLite 工具來執行此操作。
-
-另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要刪除資料庫，請刪除資料庫檔案 (*MvcMovie.db*)。 然後執行 `ef database update` 命令： 
+刪除資料庫並使用移轉重新建立資料庫。 若要刪除資料庫，請刪除資料庫檔案 (*MvcMovie.db*)。 然後執行 `ef database update` 命令： 
 
 ```console
 dotnet ef database update
 ```
-
-> [!NOTE]
-> EF Core SQLite 提供者不支援許多結構描述變更作業。 例如，其支援新增資料行，但不支援移除資料行。 如果您新增移轉來移除資料行，`ef migrations add` 命令會成功，但 `ef database update` 命令會失敗。 您可以手動撰寫移轉程式碼來重建資料表，藉此解決一些限制。 重建資料表需要重新命名現有的資料表、建立新的資料表、將資料複製到新的資料表，以及卸除舊的資料表。 如需詳細資訊，請參閱下列資源：
-> * [SQLite EF Core 資料庫提供者限制](/ef/core/providers/sqlite/limitations)
-> * [自訂移轉程式碼](/ef/core/managing-schemas/migrations/#customize-migration-code)
-> * [資料植入](/ef/core/modeling/data-seeding)
 
 ---  
 <!-- End of VS tabs -->

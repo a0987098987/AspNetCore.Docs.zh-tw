@@ -5,12 +5,12 @@ description: 說明如何使用資料庫和 ASP.NET Core。
 ms.author: riande
 ms.date: 12/07/2017
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 9f01f5c9fcf9c423ccc2af8ae6ca55c2f427c9c1
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: e2e9be0aa25166e216d34419859cd907d0423f70
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346024"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841562"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>使用資料庫和 ASP.NET Core
 
@@ -89,16 +89,18 @@ LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發�
 
 * 以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視資料]：
 
-  ![開啟的電影資料表顯示資料表資料](sql/_static/vd22.png)
+  ![開啟的電影資料表，其中顯示資料表資料](sql/_static/vd22.png)
 <!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
+[!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
 <!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
+[!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
 ---  
 <!-- End of VS tabs -->
@@ -140,7 +142,7 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 <!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行此操作
+* 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行這項操作
 * 強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。 若要強制初始化，IIS Express 必須停止並重新啟動。 您可以使用下列其中一個方法來執行此工作：
 
   * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束] 或 [停止網站]：

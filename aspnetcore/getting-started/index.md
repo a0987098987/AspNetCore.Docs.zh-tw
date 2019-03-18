@@ -9,7 +9,7 @@ uid: getting-started
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
-此教學課程示範如何使用 .NET Core 命令列介面來建立 ASP.NET Core Web 應用程式。
+本教學課程示範如何使用 .NET Core 命令列介面來建立 ASP.NET Core Web 應用程式。
 
 您將了解如何：
 
@@ -59,8 +59,8 @@ dotnet dev-certs https --trust
 
 上述命令會顯示以下訊息：
 
-已要求信任 HTTPS 開發憑證。若憑證尚未受到信任，我們會執行下列命令：*`'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`。
- 
+已要求信任 HTTPS 開發憑證。若憑證尚未受到信任，我們會執行下列命令：* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`
+
 此命令可能會提示您提供密碼，以在系統金鑰鏈上安裝憑證。 若您同意信任開發憑證，請輸入您的密碼。
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
@@ -92,7 +92,7 @@ dotnet run
 
 ## <a name="next-steps"></a>後續步驟
 
-在此教學課程中，您將了解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web 應用程式專案。

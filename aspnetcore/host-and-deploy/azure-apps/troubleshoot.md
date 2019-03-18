@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何診斷 ASP.NET Core Azure App Service 部署的問題。
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/05/2019
+ms.date: 03/06/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: c3732bfab362ec034248eb3912d4b1337c94216e
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 326f66070d51c04298abbf6292d2d350414311de
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665424"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841394"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>針對 Azure App Service 上的 ASP.NET Core 進行疑難排解
 
@@ -187,13 +187,16 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ## <a name="slow-or-hanging-app"></a>回應緩慢或無回應的應用程式
 
-當應用程式針對要求回應緩慢或無回應時，請參閱[針對 Azure App Service 中 Web 應用程式效能變慢的問題進行疑難排解](/azure/app-service/app-service-web-troubleshoot-performance-degradation)來取得疑難排解指南。
+當應用程式針對要求回應緩慢或無回應時，請參閱下列文章：
+
+* [針對 Azure App Service 中 Web 應用程式效能變慢的問題進行疑難排解](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
+* [使用損毀診斷程式網站延伸模組來擷取傾印，以取得 Azure Web 應用程式上的間歇性例外狀況或效能問題](https://blogs.msdn.microsoft.com/asiatech/2015/12/28/use-crash-diagnoser-site-extension-to-capture-dump-for-intermittent-exception-issues-or-performance-issues-on-azure-web-app/) \(英文\)
 
 ## <a name="remote-debugging"></a>遠端偵錯
 
 請參閱下列主題：
 
-* [＜使用 Visual Studio 疑難排解 Azure App Service 中的 Web 應用程式＞的＜遠端偵錯 Web 應用程式＞一節](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug) (Azure 文件)
+* [＜使用 Visual Studio 針對 Azure App Service 中的 Web 應用程式進行疑難排解＞的＜為 Web 應用程式進行遠端偵錯＞一節](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug) (Azure 文件)
 * [在 Visual Studio 2017 中針對 Azure 中 IIS 上的 ASP.NET Core 進行遠端偵錯](/visualstudio/debugger/remote-debugging-azure) \(機器翻譯\) (Visual Studio 文件)
 
 ## <a name="application-insights"></a>Application Insights

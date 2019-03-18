@@ -5,14 +5,8 @@ description: 探索 ASP.NET Core Razor 元件，這是在 ASP.NET Core 應用程
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2019
+ms.date: 03/13/2019
 uid: razor-components/index
-ms.openlocfilehash: 04a73d33cee0deedaf3dc97395836a936b580fbd
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159522"
 ---
 # <a name="introduction-to-razor-components"></a>Razor 元件簡介
 
@@ -54,11 +48,11 @@ Razor 元件與瀏覽器通訊所使用的連線也會用來處理 JavaScript in
 
 *Razor 元件*是一種 UI，例如頁面、對話方塊或資料輸入表單。 元件會處理使用者事件，並定義彈性的 UI 轉譯邏輯。 元件可以為巢狀，且可重複使用。
 
-元件是內建在 .NET 組建內的 .NET 類別，能夠以 NuGet 套件的方式共用及散發。 此類別可使用 Razor 標記頁面 (*.cshtml*) 或 C# 類別 (*.cs*) 的形式撰寫。
+元件是內建在 .NET 組建內的 .NET 類別，能夠以 NuGet 套件的方式共用及散發。 該類別通常以 Razor 標記頁面的形式編寫，它包含 *.razor* 副檔名。
 
 [Razor](xref:mvc/views/razor) 是結合 HTML 標記與 C# 程式碼的語法。 Razor 專為開發人員生產力而設計，讓開發人員能在同一個檔案中，使用 [IntelliSense](/visualstudio/ide/using-intellisense) 支援切換標記和 C#。 Razor Pages 和 MVC 檢視也會使用 Razor。 不同於 Razor Pages 和 MVC 檢視，它們是圍繞在要求/回應模型而建置，元件則是專門用來處理 UI 組合。 Razor 元件可專門用來處理用戶端 UI 邏輯和組合。
 
-下列標記是 Razor 檔案 (*DialogComponent.cshtml*) 中自訂對話方塊元件的範例：
+下列標記是 Razor 檔案 (*DialogComponent.razor*) 中自訂對話方塊元件的範例：
 
 ```cshtml
 <div>

@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何診斷 ASP.NET Core 應用程式的 Internet Information Services (IIS) 部署問題。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 03/06/2019
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 68fcd578c051ae9ba6234cad0465a7ef42f1ed14
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 2f36ae2bda8537e91a3bc925505986bdd6a22a47
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637686"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841549"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>針對 IIS 上的 ASP.NET Core 進行疑難排解
 
@@ -236,13 +236,51 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 若應用程式能夠回應要求、請使用終端機內嵌中介軟體從應用程式取得要求、連線與額外資料。 如如需詳細資訊與範例程式碼，請參閱 <xref:test/troubleshoot#obtain-data-from-an-app>。
 
-## <a name="slow-or-hanging-app"></a>回應緩慢或無回應的應用程式
+## <a name="create-a-dump"></a>建立傾印
 
-當應用程式針對要求回應緩慢或無回應時，請取得[傾印檔案](/visualstudio/debugger/using-dump-files)並加以分析。 您可以使用下列任何工具來取得傾印檔案：
+「傾印」是系統記憶體的快照集，可協助您判斷應用程式損毀、啟動失敗或應用程式緩慢的原因。
 
-* [ProcDump](/sysinternals/downloads/procdump)
-* [DebugDiag](https://www.microsoft.com/download/details.aspx?id=49924)
-* WinDbg：[下載適用於 Windows 的偵錯工具](https://developer.microsoft.com/windows/hardware/download-windbg)、[使用 WinDbg 進行偵錯](/windows-hardware/drivers/debugger/debugging-using-windbg)
+### <a name="app-crashes-or-encounters-an-exception"></a>應用程式損毀或發生例外狀況
+
+從 [Windows 錯誤報告 (WER)](/windows/desktop/wer/windows-error-reporting) 取得並分析傾印：
+
+1. 在 `c:\dumps` 中建立資料夾以保存損毀傾印檔案。 應用程式集區必須具備該資料夾的寫入權限。
+1. 執行 [EnableDumps PowerShell 指令碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/troubleshoot/scripts/EnableDumps.ps1)：
+   * 如果應用程式是使用[同處理序主控模型](xref:fundamentals/servers/index#in-process-hosting-model)，請執行 *w3wp.exe* 的指令碼：
+
+     ```console
+     .\EnableDumps w3wp.exe c:\dumps
+     ```
+   * 如果應用程式是使用[跨處理序主控模型](xref:fundamentals/servers/index#out-of-process-hosting-model)，請執行 *dotnet.exe* 的指令碼：
+
+     ```console
+     .\EnableDumps dotnet.exe c:\dumps
+     ```
+1. 在會導致損毀的情況下，執行應用程式。
+1. 發生損毀之後，請執行 [DisableDumps PowerShell 指令碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/troubleshoot/scripts/DisableDumps.ps1)：
+   * 如果應用程式是使用[同處理序主控模型](xref:fundamentals/servers/index#in-process-hosting-model)，請執行 *w3wp.exe* 的指令碼：
+
+     ```console
+     .\DisableDumps w3wp.exe
+     ```
+   * 如果應用程式是使用[跨處理序主控模型](xref:fundamentals/servers/index#out-of-process-hosting-model)，請執行 *dotnet.exe* 的指令碼：
+
+     ```console
+     .\DisableDumps dotnet.exe
+     ```
+
+在應用程式損毀且傾印收集完成之後，即可正常結束應用程式。 PowerShell 指令碼會將 WER 設定為每個應用程式收集最多五個傾印。
+
+> [!WARNING]
+> 損毀傾印可能會佔用大量磁碟空間 (每個高達好幾 GB)。
+
+### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>應用程式停止回應、在啟動期間失敗，或正常執行
+
+當應用程式「停止回應」(停止回應但未損毀)、在啟動期間失敗，或正常執行時，請參閱[使用者模式傾印檔案：選擇最適合的工具](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)，選取適當的工具來產生傾印。
+
+### <a name="analyze-the-dump"></a>分析傾印
+
+您可以使用數種方法來分析傾印。 如需詳細資訊，請參閱[分析使用者模式傾印檔案](/windows-hardware/drivers/debugger/analyzing-a-user-mode-dump-file)。
 
 ## <a name="remote-debugging"></a>遠端偵錯
 

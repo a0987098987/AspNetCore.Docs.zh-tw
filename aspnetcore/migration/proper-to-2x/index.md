@@ -5,12 +5,6 @@ description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 AS
 ms.author: scaddie
 ms.date: 12/11/2018
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: a9eef832a68afa1a73e3c7c545378da190602ce2
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284392"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 
@@ -50,7 +44,7 @@ ASP.NET Core 中已簡化 *.csproj* 檔案格式。 值得注意的變更包括�
 
 ## <a name="globalasax-file-replacement"></a>取代 Global.asax 檔案
 
-ASP.NET Core 導入了啟動應用程式的新機制。 ASP.NET 應用程式的進入點是 *Global.asax* 檔案。 路由設定和篩選器和區域登錄等工作，會在 *Global.asax* 檔案中處理。
+ASP.NET Core 導入了啟動應用程式的新機制。 ASP.NET 應用程式的進入點是 *Global.asax* 檔案。 路由組態和篩選器和區域登錄等工作，會在 *Global.asax* 檔案中處理。
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
@@ -66,10 +60,10 @@ ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 相反地
 
 `Startup` 必須包含 `Configure` 方法。 在 `Configure` 中將必要的中介軟體新增至管線。 在下列範例 (來自從預設的網站範本) 中，擴充方法會使用對下列項目的支援來設定管線：
 
-* 錯誤頁面
-* HTTP 嚴格的傳輸安全性
-* HTTP 重新導向 到 HTTPS
-* ASP.NET Core MVC
+- 錯誤頁面
+- HTTP 嚴格的傳輸安全性
+- HTTP 重新導向 到 HTTPS
+- ASP.NET Core MVC
 
 [!code-csharp[](samples/startup.cs)]
 
@@ -78,7 +72,7 @@ ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 相反地
 > [!NOTE]
 > 如需 ASP.NET Core 啟動與中介軟體更深入的參考，請參閱 [ASP.NET Core 中的啟動](xref:fundamentals/startup)
 
-## <a name="store-configurations"></a>儲存設定
+## <a name="store-configurations"></a>儲存組態
 
 ASP.NET 支援儲存設定。 例如，這些設定是用來支援要部署應用程式的環境。 過去的常見做法是將所有自訂機碼值組儲存在 *Web.config* 檔案的 `<appSettings>` 區段中：
 
@@ -88,7 +82,7 @@ ASP.NET 支援儲存設定。 例如，這些設定是用來支援要部署應�
 
 [!code-csharp[](samples/read-webconfig.cs)]
 
-ASP.NET Core 可將應用程式的設定資料儲存在任何檔案中，將它們當成中介軟體啟動程序的一部分載入。 專案範本中所用的預設檔案是 *appsettings.json*：
+ASP.NET Core 可將應用程式的組態資料儲存在任何檔案中，將它們當成中介軟體啟動程序的一部分載入。 專案範本中所用的預設檔案是 *appsettings.json*：
 
 [!code-json[](samples/appsettings-sample.json)]
 
@@ -100,7 +94,7 @@ ASP.NET Core 可將應用程式的設定資料儲存在任何檔案中，將它�
 
 [!code-csharp[](samples/read-appsettings.cs)]
 
-此方法有延伸模組可讓處理序更強固，例如使用[相依性插入](xref:fundamentals/dependency-injection) (DI) 載入具有這些值的服務。 DI 方法提供強型別的設定物件集合。
+此方法有延伸模組可讓處理序更強固，例如使用[相依性插入](xref:fundamentals/dependency-injection) (DI) 載入具有這些值的服務。 DI 方法提供強型別的組態物件集合。
 
 ````csharp
 // Assume AppConfiguration is a class representing a strongly-typed version of AppConfiguration section
@@ -108,7 +102,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 ````
 
 > [!NOTE]
-> 如需 ASP.NET Core 設定更深入的參考，請參閱 [ASP.NET Core 中的設定](xref:fundamentals/configuration/index)。
+> 如需 ASP.NET Core 組態更深入的參考，請參閱 [ASP.NET Core 中的組態](xref:fundamentals/configuration/index)。
 
 ## <a name="native-dependency-injection"></a>原生相依性插入
 
@@ -118,15 +112,15 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 使用 Unity 設定相依性插入的範例，是實作包裝 `UnityContainer` 的 `IDependencyResolver`：
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample8.cs)]
+[!code-csharp[](samples/sample8.cs)]
 
 建立您 `UnityContainer` 的執行個體、註冊您的服務，以及為容器設定 `UnityResolver` 新執行個體的 `HttpConfiguration` 相依性解析程式：
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample9.cs)]
+[!code-csharp[](samples/sample9.cs)]
 
 在需要的位置插入 `IProductRepository`：
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample5.cs)]
+[!code-csharp[](samples/sample5.cs)]
 
 因為相依性插入是 ASP.NET Core 的一部分，所以您可以在 *Startup.cs* 的 `ConfigureServices` 方法中新增服務：
 

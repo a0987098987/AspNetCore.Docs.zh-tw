@@ -193,7 +193,6 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
 
 以下是您在 Visual Studio 中執行相同應用程式時，出現在 [偵錯] 視窗中的相同記錄範例：
 
-
 ```console
 Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request starting HTTP/1.1 GET http://localhost:53104/api/todo/0  
 Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker:Information: Executing action method TodoApi.Controllers.TodoController.GetById (TodoApi) with arguments (0) - ModelState is Valid
@@ -214,7 +213,7 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 ## <a name="log-category"></a>記錄類別
 
-建立 `ILogger` 物件時，會為它指定「類別」。 該類別會包含在每個由該 `Ilogger` 執行個體所產生的記錄訊息中。 類別可以是任意字串，但慣例是使用類別名稱，例如 "TodoApi.Controllers.TodoController"。
+建立 `ILogger` 物件時，會為它指定「類別」。 該類別會包含在每個由該 `ILogger` 執行個體所產生的記錄訊息中。 類別可以是任意字串，但慣例是使用類別名稱，例如 "TodoApi.Controllers.TodoController"。
 
 使用 `ILogger<T>` 來取得`ILogger` 執行個體，它使用 `T` 的完整類型名稱做為類別：
 

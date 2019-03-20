@@ -295,7 +295,7 @@ public class Program
 
 建立切換對應字典之後，它會包含下表中所示的資料。
 
-| 機碼       | 值             |
+| Key       | 值             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -308,7 +308,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 執行上述命令之後，設定包含下表中顯示的值。
 
-| 機碼               | 值    |
+| Key               | 值    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -530,8 +530,6 @@ key=value
 * 檔案是否為選擇性。
 * 檔案變更時是否要重新載入設定。
 * <xref:Microsoft.Extensions.FileProviders.IFileProvider> 是用於存取該檔案。
-
-
 
 當您使用 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 初始化新的 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 時，會自動呼叫 `AddJsonFile` 兩次。 會呼叫此方法以從下列位置載入設定：
 

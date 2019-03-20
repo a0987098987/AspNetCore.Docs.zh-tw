@@ -7,12 +7,6 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/29/2019
 uid: host-and-deploy/razor-components/index
-ms.openlocfilehash: 9debd75128ceecb805fc673a8182a785fc9f7942
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667927"
 ---
 # <a name="host-and-deploy-razor-components"></a>裝載和部署 Razor 元件
 
@@ -273,7 +267,7 @@ http {
 
 如下列範例所示，新增一行至 Dockerfile：
 
-```
+```Dockerfile
 FROM nginx:alpine
 COPY ./bin/Release/netstandard2.0/publish /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/nginx.conf

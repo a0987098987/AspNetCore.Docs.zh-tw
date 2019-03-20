@@ -637,8 +637,6 @@ items:
     name: Grunt
   - uid: client-side/bower
     name: Bower
-  - uid: client-side/less-sass-fa
-    name: LESS、Sass 與 Font Awesome
   - uid: client-side/bundling-and-minification
     name: 配套並縮小
   - uid: client-side/using-browserlink
@@ -1078,9 +1076,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: d49acf4884da00a6409259f0d9eeca1d16d7d05f
-ms.sourcegitcommit: a467828b5e4eaae291d961ffe2279a571900de23
+ms.openlocfilehash: f3aa8dab0cbb667b99835dada53151b5a64d88e9
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58142395"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209501"

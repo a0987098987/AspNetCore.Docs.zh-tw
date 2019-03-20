@@ -5,12 +5,12 @@ description: 了解如何建置使用電子郵件確認和密碼重設的 ASP.NE
 ms.author: riande
 ms.date: 3/11/2019
 uid: security/authentication/accconfirm
-ms.openlocfilehash: d102ed0a4a75f6273fcda0a8cc7e9d091ff94b50
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 3bfc2ce46cfbc2ee308940f9e04eb2ffeec09073
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209913"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265490"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
@@ -45,6 +45,7 @@ dotnet new webapp -au Individual -uld -o WebPWrecover
 cd WebPWrecover
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
+dotnet tool install -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator identity -dc WebPWrecover.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout;Account.ConfirmEmail"
 dotnet ef database drop -f
 dotnet ef database update
@@ -63,6 +64,7 @@ dotnet run
 您可能想要這封電子郵件一次的下一個步驟時使用的應用程式會傳送確認電子郵件。 以滑鼠右鍵按一下資料列，然後選取**刪除**。 刪除電子郵件別名更容易在下列步驟。
 
 <a name="prevent-login-at-registration"></a>
+
 ## <a name="require-email-confirmation"></a>需要電子郵件確認
 
 您最好確認新的使用者註冊的電子郵件。 電子郵件確認可協助您確認它們無法模擬其他人 （也就是尚未註冊使用其他人的電子郵件）。 假設您有討論論壇，而且您想要防止 「yli@example.com"中註冊為 「nolivetto@contoso.com"。 而不需要電子郵件確認"nolivetto@contoso.com」 無法從您的應用程式收到不想要的電子郵件。 假設使用者不小心註冊為 「ylo@example.com"並還沒有發現..."yli 」 的拼字錯誤。 他們將無法使用密碼復原，因為應用程式沒有正確的電子郵件。 電子郵件確認 bot 提供有限的保護。 電子郵件確認不會提供保護，防範惡意使用者與許多電子郵件帳戶。
@@ -96,13 +98,13 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 內容*secrets.json*檔案未加密。 下列標記示範*secrets.json*檔案。 `SendGridKey`已移除值。
 
- ```json
-  {
-    "SendGridUser": "RickAndMSFT",
-    "SendGridKey": "<key removed>"
-  }
-  ```
- 
+```json
+{
+  "SendGridUser": "RickAndMSFT",
+  "SendGridKey": "<key removed>"
+}
+```
+
 如需詳細資訊，請參閱 <<c0> [ 選項模式](xref:fundamentals/configuration/options)並[組態](xref:fundamentals/configuration/index)。
 
 ### <a name="install-sendgrid"></a>安裝 SendGrid
@@ -130,6 +132,7 @@ dotnet add package SendGrid
 ------
 
 請參閱[免費開始使用 SendGrid](https://sendgrid.com/free/)報名免費的 SendGrid 帳戶。
+
 ### <a name="implement-iemailsender"></a>實作 IEmailSender
 
 實作`IEmailSender`，建立*Services/EmailSender.cs*與下列類似的程式碼：
@@ -213,6 +216,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/5410)。
 
 <a name="debug"></a>
+
 ### <a name="debug-email"></a>偵錯電子郵件
 
 如果您無法收到電子郵件工作：

@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: spa/react
-ms.openlocfilehash: 7b07f696ae071531c88c9f8cf528fc6f0bf97b46
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 91a71498574d6d96c2c06e896283fed801e8adb3
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665557"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265234"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>React 專案範本與 ASP.NET Core 搭配使用
 
@@ -85,7 +85,7 @@ npm install --save <package_name>
     ```
     BROWSER=none
     ```
-    
+
     啟動 CRA 伺服器外部時，這會導致無法開啟網頁瀏覽器。
 
 2. 在命令提示字元中，切換至 *ClientApp* 子目錄，然後啟動 CRA 程式開發伺服器：

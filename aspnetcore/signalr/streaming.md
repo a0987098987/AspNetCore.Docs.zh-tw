@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/14/2018
 uid: signalr/streaming
-ms.openlocfilehash: fb7183f7189d62c181f69ffdb170e3da25612919
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 7c176e3f21ffca7b97d9d3c2e8861032f22587b8
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345583"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264310"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>使用資料流在 ASP.NET Core SignalR
 
@@ -139,12 +139,14 @@ JavaScript 用戶端呼叫中樞上資料流的方法，使用`connection.stream
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
+
 ## <a name="java-client"></a>Java 用戶端
+
 SignalR Java 用戶端會使用`stream`方法來叫用資料流的方法。 它接受三個或多個引數：
 
-* 資料流項目的預期的類型 
+* 資料流項目的預期的類型
 * 中樞方法的名稱。
-* 中樞的方法中定義的引數。 
+* 中樞的方法中定義的引數。
 
 ```java
 hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
@@ -153,6 +155,7 @@ hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
         (error) -> {/* Define your onError handler here. */},
         () -> {/* Define your onCompleted handler here. */});
 ```
+
 `stream`方法`HubConnection`傳回資料流項目類型的可預見值。 可觀察的型別`subscribe`方法可讓您定義您`onNext`，`onError`和`onCompleted`處理常式。
 
 ::: moniker-end

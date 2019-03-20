@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: seodec18
 uid: security/authentication/2fa
-ms.openlocfilehash: 48bfc50378fc0ec212f5b9d4e7ce05bb4fc97b9d
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 116249a7cd4faebd0c899e383d86f5c5c3c7146a
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098883"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265243"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>使用 ASP.NET Core 中的 SMS 的雙因素驗證
 
@@ -35,9 +35,13 @@ ms.locfileid: "54098883"
 
 #### <a name="figuring-out-sms-provider-credentials"></a>找出 SMS 提供者認證
 
-**Twilio:** 從您的 Twilio 帳戶的 [儀表板] 索引標籤中，複製**帳戶 SID**並**驗證權杖**。
+**Twilio:**
 
-**ASPSMS:** 從您的帳戶設定，瀏覽至**Userkey** ，並將其連同複製您**密碼**。
+從您的 Twilio 帳戶的 [儀表板] 索引標籤中，複製**帳戶 SID**並**驗證權杖**。
+
+**ASPSMS:**
+
+從您的帳戶設定，瀏覽至**Userkey** ，並將其連同複製您**密碼**。
 
 我們稍後會儲存使用中索引鍵的祕密管理員工具的這些值`SMSAccountIdentification`和`SMSAccountPassword`。
 
@@ -49,12 +53,11 @@ ms.locfileid: "54098883"
 
 我們稍後會儲存這個值與機碼內的 「 密碼管理員 」 工具`SMSAccountFrom`。
 
-
 ### <a name="provide-credentials-for-the-sms-service"></a>SMS 服務提供的認證
 
 我們將使用[選項模式](xref:fundamentals/configuration/options)存取使用者帳戶和金鑰設定。
 
-   * 建立類別來擷取安全的 SMS 金鑰。 此範例中，`SMSoptions`類別中建立*Services/SMSoptions.cs*檔案。
+* 建立類別來擷取安全的 SMS 金鑰。 此範例中，`SMSoptions`類別中建立*Services/SMSoptions.cs*檔案。
 
 [!code-csharp[](2fa/sample/Web2FA/Services/SMSoptions.cs)]
 
@@ -64,17 +67,18 @@ ms.locfileid: "54098883"
 C:/Web2FA/src/WebApp1>dotnet user-secrets set SMSAccountIdentification 12345
 info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 ```
+
 * 新增 NuGet 套件的 SMS 提供者。 從套件管理員主控台 (PMC) 執行：
 
 **Twilio:**
+
 `Install-Package Twilio`
 
 **ASPSMS:**
+
 `Install-Package ASPSMS`
 
-
 * 將程式碼中的加入*Services/MessageServices.cs*檔案以啟用 SMS。 使用 Twilio 或 ASPSMS 區段：
-
 
 **Twilio:** [!code-csharp[](2fa/sample/Web2FA/Services/MessageServices_twilio.cs)]
 
@@ -88,7 +92,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ### <a name="enable-two-factor-authentication"></a>啟用雙因素驗證
 
-開啟*Views/Manage/Index.cshtml* Razor 檢視檔案] 和 [移除註解字元 （因此不需要標記為註解）。
+開啟*Views/Manage/Index.cshtml* Razor 檢視檔案] 和 [移除註解字元，因此不需要標記的標記為註解）。
 
 ## <a name="log-in-with-two-factor-authentication"></a>登入雙重要素驗證
 

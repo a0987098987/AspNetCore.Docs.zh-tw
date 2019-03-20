@@ -5,12 +5,12 @@ description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如�
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: d57ab5f2fdfabdfe3a987475d2db68b3fc1dec72
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 355c53e0c957944cb35c37c6b01e724af5f93f44
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209196"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265475"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -27,6 +27,7 @@ ASP.NET Core Identity 是將登入功能加入至 ASP.NET Core 應用程式的�
 ::: moniker range=">= aspnetcore-2.1"
 
 <a name="adi"></a>
+
 ## <a name="adddefaultidentity-and-addidentity"></a>AddDefaultIdentity 和 AddIdentity
 
 [AddDefaultIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionuiextensions.adddefaultidentity?view=aspnetcore-2.1#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionUIExtensions_AddDefaultIdentity__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Identity_IdentityOptions__) ASP.NET Core 2.1 中引進。 呼叫`AddDefaultIdentity`類似於呼叫下列命令：
@@ -71,6 +72,7 @@ dotnet new webapp --auth Individual -o WebApp1
 [!INCLUDE[](~/includes/view-identity-db.md)]
 
 <a name="pw"></a>
+
 ### <a name="configure-identity-services"></a>設定身分識別服務
 
 服務會加入`ConfigureServices`。 典型模式是呼叫所有 `Add{Service}` 方法，然後呼叫 `services.Configure{Service}` 方法。

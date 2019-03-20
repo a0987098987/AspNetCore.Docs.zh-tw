@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.date: 10/24/2018
 ms.custom: seodec18
 uid: azure/devops/cicd
-ms.openlocfilehash: 906aae3fd4b4abd0becc8847b0f54c372bda300a
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 676620b5dd151c9cd009d7cb278ed2c2b122c83f
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346303"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264876"
 ---
 # <a name="continuous-integration-and-deployment"></a>持續整合和部署
 
@@ -39,17 +39,23 @@ ms.locfileid: "57346303"
 1. 按一下 [**建立存放庫**] 按鈕。
 1. 開啟 [本機電腦的命令殼層]。 瀏覽至在其中的目錄*簡單-摘要讀取器*儲存 Git 儲存機制。
 1. 重新命名現有*原點*遠端*上游*。 執行下列命令：
+
     ```console
     git remote rename origin upstream
     ```
+
 1. 加入新*原點*遠端指向您的 GitHub 上的存放庫複本。 執行下列命令：
+
     ```console
     git remote add origin https://github.com/<GitHub_username>/simple-feed-reader/
     ```
+
 1. 將本機 Git 儲存機制發行至新建立的 GitHub 存放庫。 執行下列命令：
+
     ```console
     git push -u origin master
     ```
+
 1. 開啟瀏覽器視窗，並瀏覽至`https://github.com/<GitHub_username>/simple-feed-reader/`。 驗證您的程式碼，會出現在 GitHub 存放庫。
 
 ## <a name="disconnect-local-git-deployment"></a>中斷連線的本機 Git 部署
@@ -192,6 +198,7 @@ ms.locfileid: "57346303"
     ```console
     git commit -a -m "upgraded to V4"
     ```
+
 1. 推送變更*主要*分支*原點*遠端的 GitHub 存放庫：
 
     ```console

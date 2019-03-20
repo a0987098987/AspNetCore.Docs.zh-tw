@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/10/2019
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: 0b7001a311eeaaa78e3d52e2ec66d33ad057c381
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 3b708da13ff9f2887eee87ea17844312a4fe1b8d
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207404"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264726"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>從 ASP.NET 成員資格驗證移轉至 ASP.NET Core 2.0 身分識別
 
@@ -54,6 +54,7 @@ ASP.NET Core 2.0 會遵循[識別](/aspnet/identity/index)ASP.NET 4.5 中導入�
       }
     }
     ```
+
 1. 選取 **檢視** > **SQL Server 物件總管**。 展開對應至指定的資料庫名稱的節點`ConnectionStrings:DefaultConnection`的屬性*appsettings.json*。
 
     `Update-Database`命令所建立的結構描述所指定的資料庫和所需的應用程式初始化任何資料。 下圖說明使用上述步驟建立的資料表結構。
@@ -66,7 +67,7 @@ ASP.NET Core 2.0 會遵循[識別](/aspnet/identity/index)ASP.NET 4.5 中導入�
 
 ### <a name="users"></a>使用者
 
-|*身分識別<br>(dbo。AspNetUsers)*        ||*成員資格<br>(dbo.aspnet_Users / dbo.aspnet_Membership)*||
+|*Identity<br>(dbo.AspNetUsers)*        ||*Membership<br>(dbo.aspnet_Users / dbo.aspnet_Membership)*||
 |----------------------------------------|-----------------------------------------------------------|
 |**欄位名稱**                 |**Type**|**欄位名稱**                                    |**Type**|
 |`Id`                           |字串  |`aspnet_Users.UserId`                             |字串  |
@@ -82,7 +83,7 @@ ASP.NET Core 2.0 會遵循[識別](/aspnet/identity/index)ASP.NET 4.5 中導入�
 
 ### <a name="roles"></a>角色
 
-|*身分識別<br>(dbo。AspNetRoles)*        ||*成員資格<br>(dbo.aspnet_Roles)*||
+|*Identity<br>(dbo.AspNetRoles)*        ||*Membership<br>(dbo.aspnet_Roles)*||
 |----------------------------------------|-----------------------------------|
 |**欄位名稱**                 |**Type**|**欄位名稱**   |**Type**         |
 |`Id`                           |字串  |`RoleId`         | 字串          |
@@ -91,7 +92,7 @@ ASP.NET Core 2.0 會遵循[識別](/aspnet/identity/index)ASP.NET 4.5 中導入�
 
 ### <a name="user-roles"></a>使用者角色
 
-|*身分識別<br>(dbo。[Aspnetuserroles])*||*成員資格<br>(dbo.aspnet_UsersInRoles)*||
+|*Identity<br>(dbo.AspNetUserRoles)*||*Membership<br>(dbo.aspnet_UsersInRoles)*||
 |------------------------------------|------------------------------------------|
 |**欄位名稱**           |**Type**  |**欄位名稱**|**Type**                   |
 |`RoleId`                 |字串    |`RoleId`      |字串                     |
@@ -127,7 +128,7 @@ SELECT aspnet_Users.UserId,
        -- Creates an empty password since passwords don't map between the 2 schemas
        '',
        /*
-        The SecurityStamp token is used to verify the state of an account and 
+        The SecurityStamp token is used to verify the state of an account and
         is subject to change at any time. It should be initialized as a new ID.
        */
        NewID(),

@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 9fe17c9e210d4dda9b74818104fc52a60d4f0077
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: e09d03f1d30f128b1db1588aa92b28ec3e4ae626
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284535"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264388"
 ---
 # <a name="deploy-an-app-to-app-service"></a>將應用程式部署至 App Service
 
@@ -193,6 +193,7 @@ Visual Studio 會建置並部署至 Azure 的應用程式。 瀏覽至 web 應�
     ```console
     git commit -a -m "upgraded to V3"
     ```
+
 5. 使用本機電腦的命令殼層，將預備部署 URL 新增為 Git 遠端和推送認可的變更：
 
     a. 將預備環境的遠端 URL 新增至本機 Git 存放庫。

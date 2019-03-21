@@ -5,12 +5,12 @@ description: 探索與個別使用者帳戶建立的 ASP.NET Core 專案為基�
 ms.author: riande
 ms.date: 11/30/2017
 uid: security/authentication/individual
-ms.openlocfilehash: c73365eafaf2c38ef02c3c83ccf5ced4264f7dc0
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: f9c1be16386da935382275815bb5fd5c72894b1c
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56743770"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265427"
 ---
 # <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>個別使用者帳戶建立的 ASP.NET Core 專案為基礎的發行項
 
@@ -39,6 +39,7 @@ dotnet new razor -au Individual
 請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/5833)web API 驗證。
 
 <a name="no"></a>
+
 ## <a name="no-authentication"></a>沒有驗證
 
 在.NET Core CLI，以指定驗證`-au`選項。 在 Visual Studio 中，**變更驗證**對話是適用於新的 web 應用程式。 在 Visual Studio 中的新 web 應用程式的預設值是**不需要驗證**。
@@ -49,6 +50,7 @@ dotnet new razor -au Individual
 * 不包含驗證碼。
 
 <a name="win"></a>
+
 ## <a name="windows-authentication"></a>Windows 驗證
 
 指定 Windows 驗證用於新的 web 應用程式中使用.NET Core CLI`-au Windows`選項。 在 Visual Studio 中，**變更驗證** 對話方塊提供**Windows 驗證**選項。

@@ -5,12 +5,12 @@ description: 了解如何將角色傳遞至 Authorize 屬性來限制 ASP.NET Co
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/roles
-ms.openlocfilehash: c38e7144166ce7741eee6e3acb4d1c952ad4f024
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0e01e1976e2721ca64720a67c6341661f646395c
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899160"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209092"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的角色為基礎的授權
 
@@ -108,7 +108,6 @@ public class UpdateModel : PageModel
 > [!IMPORTANT]
 > 篩選屬性，包括`AuthorizeAttribute`只能套用至 PageModel，無法套用至特定頁面處理常式方法。
 ::: moniker-end
-
 
 <a name="security-authorization-role-policy"></a>
 

@@ -5,12 +5,12 @@ description: 了解如何啟用 QR 程式碼產生使用 ASP.NET Core 雙因素�
 ms.author: riande
 ms.date: 08/14/2018
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: cf99cc21a7a1bb4d01c7cc092106d23375a1a76f
-ms.sourcegitcommit: ca5f03210bedc61c6639a734ae5674bfe095dee8
+ms.openlocfilehash: 5581f2001036746974a858d8a664db16df50edb2
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55073123"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209222"
 ---
 # <a name="enable-qr-code-generation-for-totp-authenticator-apps-in-aspnet-core"></a>啟用 ASP.NET Core 中的 TOTP 驗證器應用程式的 QR 代碼產生
 
@@ -103,7 +103,7 @@ ASP.NET Core web 應用程式範本支援驗證器，但不提供支援 QRCode �
 private string GenerateQrCodeUri(string email, string unformattedKey)
 {
     return string.Format(
-        AuthenicatorUriFormat,
+        AuthenticatorUriFormat,
         _urlEncoder.Encode("Razor Pages"),
         _urlEncoder.Encode(email),
         unformattedKey);

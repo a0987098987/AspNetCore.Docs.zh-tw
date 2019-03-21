@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 uid: performance/caching/memory
-ms.openlocfilehash: 9a7727ad41a05f39d74877af3c8f2e3f7a620c7d
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: c115e43b9dd4f838ab9600c2e105d86732d857ad
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103068"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208263"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -111,10 +111,10 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 下列範例：
 
-- 設定絕對到期時間。 這是最長的時間可以快取項目，並防止項目時，會持續更新滑動期限變得太過時。
-- 設定滑動期限。 要求存取此快取的項目會重設滑動的到期時鐘。
-- 若要設定快取優先權`CacheItemPriority.NeverRemove`。
-- 設定組[PostEvictionDelegate](/dotnet/api/microsoft.extensions.caching.memory.postevictiondelegate) ，之後就會呼叫從快取收回項目的。 從快取中移除的項目程式碼在不同執行緒上執行的回呼。
+* 設定絕對到期時間。 這是最長的時間可以快取項目，並防止項目時，會持續更新滑動期限變得太過時。
+* 設定滑動期限。 要求存取此快取的項目會重設滑動的到期時鐘。
+* 若要設定快取優先權`CacheItemPriority.NeverRemove`。
+* 設定組[PostEvictionDelegate](/dotnet/api/microsoft.extensions.caching.memory.postevictiondelegate) ，之後就會呼叫從快取收回項目的。 從快取中移除的項目程式碼在不同執行緒上執行的回呼。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_et&highlight=14-21)]
 
@@ -161,14 +161,14 @@ A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制
 
 ## <a name="additional-notes"></a>其他備註
 
-- 當使用回呼，以便重新填入快取項目：
+* 當使用回呼，以便重新填入快取項目：
 
-  - 多個要求可以找到快取索引鍵的值空白因為尚未完成的回呼。
-  - 這會導致數個執行緒重新填入快取的項目。
+  * 多個要求可以找到快取索引鍵的值空白因為尚未完成的回呼。
+  * 這會導致數個執行緒重新填入快取的項目。
 
-- 以建立另一個使用一個快取項目時，父項目的到期的權杖和以時間為基礎的到期日設定，也會複製子系。 手動移除已到期或更新的父項目，則不是子系。
+* 以建立另一個使用一個快取項目時，父項目的到期的權杖和以時間為基礎的到期日設定，也會複製子系。 手動移除已到期或更新的父項目，則不是子系。
 
-- 使用[PostEvictionCallbacks](/dotnet/api/microsoft.extensions.caching.memory.icacheentry.postevictioncallbacks#Microsoft_Extensions_Caching_Memory_ICacheEntry_PostEvictionCallbacks)設定從快取收回快取項目之後會引發的回呼。
+* 使用[PostEvictionCallbacks](/dotnet/api/microsoft.extensions.caching.memory.icacheentry.postevictioncallbacks#Microsoft_Extensions_Caching_Memory_ICacheEntry_PostEvictionCallbacks)設定從快取收回快取項目之後會引發的回呼。
 
 ## <a name="additional-resources"></a>其他資源
 

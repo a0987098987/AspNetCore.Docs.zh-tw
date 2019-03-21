@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/21/2017
 uid: security/authorization/policies
-ms.openlocfilehash: c2bc626b2dd341dda878a151def6b405884357d7
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: e72f15c28fb7b62c671dd6475cc323cacce42de6
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665398"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208317"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的原則為基礎的授權
 
@@ -19,13 +19,25 @@ ms.locfileid: "57665398"
 
 授權原則是由一或多個需求所組成。 它會註冊為授權服務的組態，在`Startup.ConfigureServices`方法：
 
-[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63,72)]
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,66)]
 
 在上述範例中，會建立 「 AtLeast21 」 原則。 它有一個需求&mdash;的最短使用期限，做為參數的需求，提供。
 
-原則會套用使用`[Authorize]`原則名稱的屬性。 例如: 
+## <a name="applying-policies-to-mvc-controllers"></a>將原則套用至 MVC 控制器
+
+如果您使用 Razor 頁面，請參閱[將原則套用至 Razor Pages](#applying-policies-to-razor-pages)本文件中。
+
+原則會套用至控制器使用`[Authorize]`原則名稱的屬性。 例如: 
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
+
+## <a name="applying-policies-to-razor-pages"></a>將原則套用至 Razor Pages
+
+原則時，會套用至 Razor 頁面上，使用`[Authorize]`原則名稱的屬性。 例如: 
+
+[!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
+
+原則也可以套用至 Razor Pages 使用[授權慣例](xref:security/authorization/razor-pages-authorization)。
 
 ## <a name="requirements"></a>需求
 
@@ -70,7 +82,7 @@ ms.locfileid: "57665398"
 
 在設定期間的服務集合中註冊處理常式。 例如: 
 
-[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63-65,72)]
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,62-63,66)]
 
 上述程式碼會註冊`MinimumAgeHandler`為叫用單一`services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();`。 可以使用任何內建註冊處理常式[服務存留期](xref:fundamentals/dependency-injection#service-lifetimes)。
 
@@ -112,7 +124,7 @@ ms.locfileid: "57665398"
 
 比方說前, 一個`BadgeEntryHandler`重寫，如下所示：
 
-[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=52-53,57-63)]
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=50-51,55-61)]
 
 ## <a name="accessing-mvc-request-context-in-handlers"></a>存取 MVC 處理常式中的要求內容
 

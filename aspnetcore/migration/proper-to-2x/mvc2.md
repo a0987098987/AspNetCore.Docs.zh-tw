@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: migration/mvc2
-ms.openlocfilehash: 9960932bd288ea12e346272f1838026778f1d355
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: 7f048f2f95f1a51a0b6ce3d36665420ff28ec26f
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148859"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208469"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>從 ASP.NET 遷移至 ASP.NET Core 2.0
 
@@ -21,7 +21,7 @@ ms.locfileid: "50148859"
 
 ## <a name="prerequisites"></a>必要條件
 
-安裝**一個**的 從下列[.NET 下載： Windows](https://www.microsoft.com/net/download/windows):
+安裝**一個**從以下的[.NET 下載：Windows](https://www.microsoft.com/net/download/windows):
 
 * .NET Core SDK
 * Visual Studio for Windows
@@ -113,7 +113,7 @@ ASP.NET Core 可將應用程式的組態資料儲存在任何檔案中，將它�
 services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
 ````
 
-**注意︰** ASP.NET Core 組態更深入的參考，請參閱<xref:fundamentals/configuration/index>。
+**注意：** 如需 ASP.NET Core 組態更深入參考，請參閱<xref:fundamentals/configuration/index>。
 
 ## <a name="native-dependency-injection"></a>原生相依性插入
 
@@ -123,15 +123,15 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 設定使用 Unity 的相依性插入的範例實作`IDependencyResolver`包裝`UnityContainer`:
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample8.cs)]
+[!code-csharp[](samples/sample8.cs)]
 
 建立您 `UnityContainer` 的執行個體、註冊您的服務，以及為容器設定 `UnityResolver` 新執行個體的 `HttpConfiguration` 相依性解析程式：
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample9.cs)]
+[!code-csharp[](samples/sample9.cs)]
 
 在需要的位置插入 `IProductRepository`：
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample5.cs)]
+[!code-csharp[](samples/sample5.cs)]
 
 因為相依性插入是 ASP.NET Core 的一部分，您可以新增您的服務中`Startup.ConfigureServices`:
 
@@ -155,7 +155,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 例如，位在 `http://<app>/images/<imageFileName>` 等位置的瀏覽器可存取 *wwwroot/images* 資料夾中的影像資產。
 
-**注意︰** 提供 ASP.NET Core 中的靜態檔案的更深入參考，請參閱<xref:fundamentals/static-files>。
+**注意：** 提供 ASP.NET Core 中的靜態檔案的更深入參考，請參閱<xref:fundamentals/static-files>。
 
 ## <a name="additional-resources"></a>其他資源
 

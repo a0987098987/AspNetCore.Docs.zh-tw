@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/19/2017
 uid: security/cookie-sharing
-ms.openlocfilehash: 7f357df4d450da40f4d6e1a5ab20516ff748e748
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 504d3369c908aabddeaa2fc3d1ef16a42b5cb771
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206896"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208511"
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>使用 ASP.NET 和 ASP.NET Core 共用應用程式之間的 cookie
 
@@ -110,7 +110,6 @@ options.Cookie.Domain = ".contoso.com";
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
-
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions

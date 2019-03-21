@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 12/07/2016
 uid: migration/http-modules
-ms.openlocfilehash: 601b93fb12ab5b37b7d8ad8fd9825accc6e314cd
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: 516230a66ee3edba986c91d79684256aa8e4c994
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56743851"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209842"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>將 HTTP 處理常式和模組移轉至 ASP.NET Core 中介軟體
 
@@ -26,29 +26,29 @@ ASP.NET Core 中介軟體之前，讓我們先複習一下 HTTP 模組和處理�
 
 **處理常式包括：**
 
-   * 類別實作[IHttpHandler](/dotnet/api/system.web.ihttphandler)
+* 類別實作[IHttpHandler](/dotnet/api/system.web.ihttphandler)
 
-   * 用來處理要求，以指定的檔案名稱或副檔名，例如 *.report*
+* 用來處理要求，以指定的檔案名稱或副檔名，例如 *.report*
 
-   * [設定](/iis/configuration/system.webserver/handlers/)在*Web.config*
+* [設定](/iis/configuration/system.webserver/handlers/)在*Web.config*
 
 **模組有︰**
 
-   * 類別實作[IHttpModule](/dotnet/api/system.web.ihttpmodule)
+* 類別實作[IHttpModule](/dotnet/api/system.web.ihttpmodule)
 
-   * 叫用每個要求
+* 叫用每個要求
 
-   * 能夠以最少運算 （停止進一步處理的要求）
+* 能夠以最少運算 （停止進一步處理的要求）
 
-   * 無法新增至 HTTP 回應，或自行建立
+* 無法新增至 HTTP 回應，或自行建立
 
-   * [設定](/iis/configuration/system.webserver/modules/)在*Web.config*
+* [設定](/iis/configuration/system.webserver/modules/)在*Web.config*
 
 **模組中處理連入要求的順序取決於：**
 
-   1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的系列事件：[BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest)， [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一或多個事件的處理常式。
+1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的系列事件：[BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest)， [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一或多個事件的處理常式。
 
-   2. 對於相同事件，也就是在已設定的順序*Web.config*。
+2. 對於相同事件，也就是在已設定的順序*Web.config*。
 
 除了模組，您可以新增至生命週期事件的處理常式您*Global.asax.cs*檔案。 在 設定模組中的處理常式之後，執行這些處理常式。
 
@@ -56,29 +56,29 @@ ASP.NET Core 中介軟體之前，讓我們先複習一下 HTTP 模組和處理�
 
 **中介軟體是 HTTP 模組和處理常式比簡單的：**
 
-   * 模組、 處理常式*Global.asax.cs*， *Web.config* （除了 IIS 組態） 和應用程式生命週期都不見了
+* 模組、 處理常式*Global.asax.cs*， *Web.config* （除了 IIS 組態） 和應用程式生命週期都不見了
 
-   * 模組和處理常式的角色有接手的中介軟體
+* 模組和處理常式的角色有接手的中介軟體
 
-   * 中介軟體會設定為使用程式碼，而非在*Web.config*
+* 中介軟體會設定為使用程式碼，而非在*Web.config*
 
-   * [管線分支](xref:fundamentals/middleware/index#use-run-and-map)可讓您將要求傳送至特定中介軟體，根據不僅同時也在要求標頭、 查詢字串等的 URL。
+* [管線分支](xref:fundamentals/middleware/index#use-run-and-map)可讓您將要求傳送至特定中介軟體，根據不僅同時也在要求標頭、 查詢字串等的 URL。
 
 **中介軟體是非常類似於模組：**
 
-   * 在每個要求的主體中叫用
+* 在每個要求的主體中叫用
 
-   * 能夠藉由將要求中，最少運算[不將要求傳遞至下一個中介軟體](#http-modules-shortcircuiting-middleware)
+* 能夠藉由將要求中，最少運算[不將要求傳遞至下一個中介軟體](#http-modules-shortcircuiting-middleware)
 
-   * 能夠建立自己的 HTTP 回應
+* 能夠建立自己的 HTTP 回應
 
 **中介軟體和模組會處理不同的順序：**
 
-   * 以這它們要插入至要求管線，而模組的順序主要是根據順序為基礎的中介軟體順序[應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)事件
+* 以這它們要插入至要求管線，而模組的順序主要是根據順序為基礎的中介軟體順序[應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)事件
 
-   * 回應的中介軟體順序是反向程序，從要求，而模組的順序是相同的要求和回應
+* 回應的中介軟體順序是反向程序，從要求，而模組的順序是相同的要求和回應
 
-   * 請參閱[使用 IApplicationBuilder 建立中介軟體管線](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)
+* 請參閱[使用 IApplicationBuilder 建立中介軟體管線](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)
 
 ![中介軟體](http-modules/_static/middleware.png)
 

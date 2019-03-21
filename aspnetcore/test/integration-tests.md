@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/25/2019
 uid: test/integration-tests
-ms.openlocfilehash: 053713e148df70b0be6bb567b55b2381a78d6c3e
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.openlocfilehash: 50cb6b26be187c7f36f189e77fd29b4559221f2c
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833575"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209235"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -91,7 +91,7 @@ ASP.NET Core 中的整合測試需要下列各項：
 [單元測試](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)文件說明如何設定測試專案和測試執行器，以及如何執行測試和建議方法，名稱測試和測試類別的詳細指示。
 
 > [!NOTE]
-> 建立測試專案的應用程式時，分開的單元測試整合測試分成不同的專案。 這有助於確保，測試基礎結構的元件不小心包含在單元測試。 區隔單元和整合測試也可讓控制哪些資料集的測試的執行。
+> 建立測試專案的應用程式時，分開的單元測試整合測試分成不同的專案。 這有助於確保測試基礎結構的元件意外不包含在單元測試。 區隔單元和整合測試也可讓控制哪些資料集的測試的執行。
 
 沒有幾乎任何的 Razor Pages 應用程式的測試組態和 MVC 應用程式之間的差異。 唯一的差別是在測試命名的方式。 在 Razor 頁面應用程式中測試的頁面端點通常命名為之後的頁面模型類別 (例如`IndexPageTests`來測試索引頁面的元件整合)。 在 MVC 應用程式中，測試會通常依控制器類別並命名這些測試的控制站 (例如`HomeControllerTests`測試針對 Home 控制器元件整合)。
 

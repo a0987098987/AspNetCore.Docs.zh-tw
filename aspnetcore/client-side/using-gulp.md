@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/04/2018
 uid: client-side/using-gulp
-ms.openlocfilehash: 43277dc5910971374187f49031e74769c9e29e1f
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 9f6d03a1e8a81bceca15cb1e1aa664c22c31e1d3
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665622"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209868"
 ---
 # <a name="use-gulp-in-aspnet-core"></a>ASP.NET Core 中使用 Gulp
 
@@ -86,7 +86,7 @@ gulp.task("min:css", () => {
 });
 
 gulp.task("min", gulp.series(["min:js", "min:css"]));
-    
+
 // A 'default' task is required by Gulp v4
 gulp.task("default", gulp.series(["min"]));
 ```
@@ -108,7 +108,7 @@ gulp.task("default", gulp.series(["min"]));
 
 如果您尚未建立新的 Web 應用程式，請在 Visual Studio 中建立新的 ASP.NET Web 應用程式專案。
 
-1.  開啟*package.json*檔案 (新增如果不存在)，並新增下列。
+1. 開啟*package.json*檔案 (新增如果不存在)，並新增下列。
 
     ```json
     {
@@ -122,71 +122,71 @@ gulp.task("default", gulp.series(["min"]));
     }
     ```
 
-2.  將新的 JavaScript 檔案加入至專案並將它命名*gulpfile.js*，然後複製下列程式碼。
+2. 將新的 JavaScript 檔案加入至專案並將它命名*gulpfile.js*，然後複製下列程式碼。
 
     ```javascript
     /// <binding Clean='clean' />
     "use strict";
-    
+
     const gulp = require("gulp"),
           rimraf = require("rimraf"),
           concat = require("gulp-concat"),
           cssmin = require("gulp-cssmin"),
           uglify = require("gulp-uglify");
-    
+
     const paths = {
       webroot: "./wwwroot/"
     };
-    
+
     paths.js = paths.webroot + "js/**/*.js";
     paths.minJs = paths.webroot + "js/**/*.min.js";
     paths.css = paths.webroot + "css/**/*.css";
     paths.minCss = paths.webroot + "css/**/*.min.css";
     paths.concatJsDest = paths.webroot + "js/site.min.js";
     paths.concatCssDest = paths.webroot + "css/site.min.css";
-    
+
     gulp.task("clean:js", done => rimraf(paths.concatJsDest, done));
     gulp.task("clean:css", done => rimraf(paths.concatCssDest, done));
     gulp.task("clean", gulp.series(["clean:js", "clean:css"]));
 
     gulp.task("min:js", () => {
       return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
-        .pipe(concat(paths.concatJsDest))
-        .pipe(uglify())
-        .pipe(gulp.dest("."));
+      .pipe(concat(paths.concatJsDest))
+      .pipe(uglify())
+      .pipe(gulp.dest("."));
     });
 
     gulp.task("min:css", () => {
       return gulp.src([paths.css, "!" + paths.minCss])
-        .pipe(concat(paths.concatCssDest))
-        .pipe(cssmin())
-        .pipe(gulp.dest("."));
+      .pipe(concat(paths.concatCssDest))
+      .pipe(cssmin())
+      .pipe(gulp.dest("."));
     });
 
     gulp.task("min", gulp.series(["min:js", "min:css"]));
-    
+
     // A 'default' task is required by Gulp v4
     gulp.task("default", gulp.series(["min"]));
     ```
 
-3.  在**方案總管 中**，以滑鼠右鍵按一下*gulpfile.js*，然後選取**Task Runner Explorer**。
-    
+3. 在**方案總管 中**，以滑鼠右鍵按一下*gulpfile.js*，然後選取**Task Runner Explorer**。
+
     ![從 [方案總管] 中開啟 [Task Runner explorer]](using-gulp/_static/02-SolutionExplorer-TaskRunnerExplorer.png)
-    
+
     **Task Runner Explorer**顯示 Gulp 工作的清單。 (您可能必須按一下 **重新整理**專案名稱的左邊會出現的按鈕。)
-    
+
     ![Task Runner explorer](using-gulp/_static/03-TaskRunnerExplorer.png)
-    
+
     > [!IMPORTANT]
     > **Task Runner Explorer**操作功能表項目才會出現*gulpfile.js*專案根目錄中。
 
-4.  下面**工作**中**Task Runner Explorer**，以滑鼠右鍵按一下**全新**，然後選取**執行**從快顯功能表。
+4. 下面**工作**中**Task Runner Explorer**，以滑鼠右鍵按一下**全新**，然後選取**執行**從快顯功能表。
 
     ![工作執行器總管清除工作](using-gulp/_static/04-TaskRunner-clean.png)
 
     **Task Runner Explorer**會建立名為新的索引標籤**全新**並執行 「 清除 」 工作，因為它定義在*gulpfile.js*。
 
-5.  以滑鼠右鍵按一下**全新**工作，然後選取**繫結** > **之前建置**。
+5. 以滑鼠右鍵按一下**全新**工作，然後選取**繫結** > **之前建置**。
 
     ![繫結 BeforeBuild task Runner explorer](using-gulp/_static/05-TaskRunner-BeforeBuild.png)
 
@@ -206,7 +206,7 @@ gulp.task("default", gulp.series(["min"]));
 
 若要定義新的 Gulp 工作，修改*gulpfile.js*。
 
-1.  結尾新增下列 JavaScript *gulpfile.js*:
+1. 結尾新增下列 JavaScript *gulpfile.js*:
 
     ```javascript
     gulp.task('first', done => {
@@ -217,11 +217,11 @@ gulp.task("default", gulp.series(["min"]));
 
     這項工作中名為`first`，和它就會顯示為字串。
 
-2.  儲存*gulpfile.js*。
+2. 儲存*gulpfile.js*。
 
-3.  在**方案總管 中**，以滑鼠右鍵按一下*gulpfile.js*，然後選取*Task Runner Explorer*。
+3. 在**方案總管 中**，以滑鼠右鍵按一下*gulpfile.js*，然後選取*Task Runner Explorer*。
 
-4.  在**Task Runner Explorer**，以滑鼠右鍵按一下**第一次**，然後選取**執行**。
+4. 在**Task Runner Explorer**，以滑鼠右鍵按一下**第一次**，然後選取**執行**。
 
     ![執行第一項工作的工作執行器總管](using-gulp/_static/06-TaskRunner-First.png)
 
@@ -231,7 +231,7 @@ gulp.task("default", gulp.series(["min"]));
 
 當您執行多個工作時，工作同時執行的預設值。 不過，如果您需要以特定順序執行工作，您必須指定當每個工作完成時，也為哪些工作相依於另一項工作完成。
 
-1.  若要定義一系列的工作順序執行，取代`first`中新增上述的工作*gulpfile.js*取代下列項目：
+1. 若要定義一系列的工作順序執行，取代`first`中新增上述的工作*gulpfile.js*取代下列項目：
 
     ```javascript
     gulp.task('series:first', done => {
@@ -240,22 +240,22 @@ gulp.task("default", gulp.series(["min"]));
     });
     gulp.task('series:second', done => {
       console.log('second task! <-----');
-      done(); // signal completion
+        done(); // signal completion
     });
 
     gulp.task('series', gulp.series(['series:first', 'series:second']), () => { });
 
     // A 'default' task is required by Gulp v4
-    gulp.task('default', gulp.series('series'));
+      gulp.task('default', gulp.series('series'));
     ```
- 
+
     您現在有三項工作： `series:first`， `series:second`，和`series`。 `series:second` 」 工作包含第二個參數，用以指定工作要執行和之前完成陣列`series:second`工作將會執行。 在上方，唯一的程式碼中所指定`series:first`前，必須完成工作`series:second`工作將會執行。
 
-2.  儲存*gulpfile.js*。
+2. 儲存*gulpfile.js*。
 
-3.  中**方案總管**，以滑鼠右鍵按一下*gulpfile.js* ，然後選取**Task Runner Explorer**如果尚未開啟。
+3. 中**方案總管**，以滑鼠右鍵按一下*gulpfile.js* ，然後選取**Task Runner Explorer**如果尚未開啟。
 
-4.  在  **Task Runner Explorer**，以滑鼠右鍵按一下**系列**，然後選取**執行**。
+4. 在  **Task Runner Explorer**，以滑鼠右鍵按一下**系列**，然後選取**執行**。
 
     ![Task Runner explorer，執行序列工作](using-gulp/_static/07-TaskRunner-Series.png)
 
@@ -298,27 +298,27 @@ IntelliSense 會提供程式碼完成、 參數說明和其他功能，大幅提
 
 若要切換為不同的環境中編譯，修改**ASPNETCORE_ENVIRONMENT**環境變數的值。
 
-1.  在**Task Runner Explorer**，確認**min**已設為執行的工作**之前建置**。
+1. 在**Task Runner Explorer**，確認**min**已設為執行的工作**之前建置**。
 
-2.  在 **方案總管**，以滑鼠右鍵按一下專案名稱，然後選取**屬性**。
+2. 在 **方案總管**，以滑鼠右鍵按一下專案名稱，然後選取**屬性**。
 
     Web 應用程式的屬性工作表會顯示。
 
-3.  按一下 [偵錯] 索引標籤。
+3. 按一下 [偵錯] 索引標籤。
 
-4.  設定的值**主控： 環境**環境變數，以`Production`。
+4. 設定的值**主控： 環境**環境變數，以`Production`。
 
-5.  按下**F5**瀏覽器中執行應用程式。
+5. 按下**F5**瀏覽器中執行應用程式。
 
-6.  在瀏覽器視窗中，以滑鼠右鍵按一下  頁面上，然後選取**檢視原始檔**來檢視 HTML 頁面。
+6. 在瀏覽器視窗中，以滑鼠右鍵按一下  頁面上，然後選取**檢視原始檔**來檢視 HTML 頁面。
 
     請注意，樣式表連結指向最小化的 CSS 檔案。
 
-7.  關閉瀏覽器以停止 Web 應用程式。
+7. 關閉瀏覽器以停止 Web 應用程式。
 
-8.  在 Visual Studio 中，返回 Web 應用程式的屬性工作表，並將變更**主控： 環境**環境變數將會回到`Development`。
+8. 在 Visual Studio 中，返回 Web 應用程式的屬性工作表，並將變更**主控： 環境**環境變數將會回到`Development`。
 
-9.  按下**F5**在瀏覽器中再次執行應用程式。
+9. 按下**F5**在瀏覽器中再次執行應用程式。
 
 10. 在瀏覽器視窗中，以滑鼠右鍵按一下  頁面上，然後選取**檢視原始檔**以查看頁面的 HTML。
 

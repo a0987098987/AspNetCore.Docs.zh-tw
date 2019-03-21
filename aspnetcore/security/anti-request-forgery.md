@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 6e140717834b901e12ef7863fd07b983b0c55107
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: 88a2d127407378b9e83df7f48b1938ed081f9bb2
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667657"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208524"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>ASP.NET Core 中的防止跨網站要求偽造 (XSRF/CSRF) 攻擊
 
@@ -106,8 +106,8 @@ CSRF 攻擊是可能對 web 應用程式使用 cookie 進行驗證，因為：
 
 自動產生的防偽語彙基元的 HTML 表單項目發生時`<form>`標記包含`method="post"`屬性和下列其中一項條件成立：
 
-  * 動作屬性是空的 (`action=""`)。
-  * 未提供的 action 屬性 (`<form method="post">`)。
+* 動作屬性是空的 (`action=""`)。
+* 未提供的 action 屬性 (`<form method="post">`)。
 
 您可以停用自動產生的防偽語彙基元，為 HTML 表單項目：
 

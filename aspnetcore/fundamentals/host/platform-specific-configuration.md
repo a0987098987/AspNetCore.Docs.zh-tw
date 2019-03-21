@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 03/10/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 6111ae77369608e828eebf6229b5702630bc63f8
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 25564ecebf48f65a209ac48e77856ef36d897959
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841458"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264987"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>在 ASP.NET Core 中使用裝載啟動組件
 
@@ -351,6 +351,7 @@ NuGet 套件可以提供裝載啟動的增強功能。 此套件具有 `HostingS
      <RestoreSources>$(RestoreSources);https://api.nuget.org/v3/index.json;../HostingStartupPackage/bin/Debug</RestoreSources>
    </PropertyGroup>
    ```
+
 1. 觀察 [索引] 頁面所呈現的服務組態索引鍵值是否符合套件之 `ServiceKeyInjection.Configure` 方法設定的值。
 
 如果您變更並重新編譯 *HostingStartupPackage* 專案，請清除本機的 NuGet 套件快取，以確保 *HostingStartupApp* 從本機快取接收更新的套件，而非過時的套件。 若要清除本機 NuGet 快取，請執行下列 [dotnet nuget locals](/dotnet/core/tools/dotnet-nuget-locals) 命令：
@@ -374,6 +375,7 @@ dotnet nuget locals all --clear
      </Reference>
    </ItemGroup>
    ```
+
 1. 觀察 [索引] 頁面所呈現的服務組態索引鍵值是否符合類別庫之 `ServiceKeyInjection.Configure` 方法所設定的值。
 
 **從部署在執行階段存放區的組件啟用**
@@ -387,6 +389,7 @@ dotnet nuget locals all --clear
    ```console
    dotnet store --manifest StartupDiagnostics.csproj --runtime <RID>
    ```
+
    在 Windows，此命令會使用 `win7-x64` [執行階段識別碼 (RID)](/dotnet/core/rid-catalog)。 為不同的執行階段提供裝載啟動時，請替換成正確的 RID。
 1. 設定環境變數：
    * 將 *StartupDiagnostics* 的組件名稱新增至 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` 環境變數。

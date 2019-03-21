@@ -5,18 +5,18 @@ description: 說明 Scaffolding 所產生的 Razor 頁面。
 ms.author: riande
 ms.date: 12/4/2018
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 07ad142b369fab92589f63479533a769136a087b
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: c4d0e5c7b7365edc0df5428c250037db7ef3da2a
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346446"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265268"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Scaffold Razor 頁面
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-此教學課程會檢查在先前教學課程中 Scaffolding 所建立的 Razor 頁面。
+本教學課程會檢查在先前教學課程中 Scaffolding 所建立的 Razor 頁面。
 
 [檢視或下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22)範例。
 
@@ -51,6 +51,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 `DisplayNameFor` HTML 協助程式會檢查 Lambda 運算式中參考的 `Title` 屬性來判斷顯示名稱。 Lambda 運算式是進行檢查而不是評估。 這表示當 `model`、`model.Movie` 或 `model.Movie[0]` 是 `null` 或空白時，不會有任何存取違規。 在評估 Lambda 運算式時 (例如，使用 `@Html.DisplayFor(modelItem => item.Title)`)，會評估模型的屬性值。
 
 <a name="md"></a>
+
 ### <a name="the-model-directive"></a>
   @model 指示詞
 
@@ -65,6 +66,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 [版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是一個「包裝」在版面配置頁中的預留位置，可供顯示您建立的所有頁面特定檢視。 例如，如果您選取 [Privacy] 連結，就會在 `RenderBody` 方法內呈現 **Pages/Privacy.cshtml** 檢視。
 
 <a name="vd"></a>
+
 ### <a name="viewdata-and-layout"></a>ViewData 和 Layout
 
 請考慮來自 *Pages/Movies/Index.cshtml* 檔案的下列程式碼：
@@ -73,12 +75,12 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 上述強調顯示的程式碼是 Razor 轉換成 C# 的範例。 `{` 和 `}` 字元中含括 C# 程式碼的區塊。
 
-`PageModel` 基底類別有 `ViewData` 字典屬性，可用來新增至您想要傳遞到檢視的資料。 您可以使用索引鍵/值模式將物件新增至 `ViewData` 字典。 在上述範例中，"Title" 屬性會新增至 `ViewData` 字典。 
+`PageModel` 基底類別有 `ViewData` 字典屬性，可用來新增至您想要傳遞到檢視的資料。 您可以使用索引鍵/值模式將物件新增至 `ViewData` 字典。 在上述範例中，"Title" 屬性會新增至 `ViewData` 字典。
 
 "Title" 屬性是用於 *Pages/Shared/_Layout.cshtml* 檔案。 下列標記會顯示 *_Layout.cshtml* 檔案的前幾行。
 
 <!-- we need a snapshot copy of layout because we are
-changing in in the next step. 
+changing in in the next step.
 -->
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/NU/_Layout.cshtml?highlight=6-99)]
 
@@ -89,7 +91,6 @@ changing in in the next step.
 變更 *Pages/Shared/_Layout.cshtml* 檔案中的 `<title>` 元素，以顯示 **Movie** 而不是 **RazorPagesMovie**。
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
-
 
 在 *Pages/Shared/_Layout.cshtml* 檔案中尋找下列錨點元素。
 
@@ -124,7 +125,7 @@ changing in in the next step.
 
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
-`OnGet` 方法會初始化頁面所需的任何狀態。 建立頁面沒有任何要初始化的狀態，所以傳回 `Page`。 稍後在此教學課程中您會看到 `OnGet` 方法初始化狀態。 `Page` 方法會建立 `PageResult` 物件，用以呈現 *Create.cshtml* 頁面。
+`OnGet` 方法會初始化頁面所需的任何狀態。 建立頁面沒有任何要初始化的狀態，所以傳回 `Page`。 稍後在本教學課程中您會看到 `OnGet` 方法初始化狀態。 `Page` 方法會建立 `PageResult` 物件，用以呈現 *Create.cshtml* 頁面。
 
 `Movie` 屬性 (property) 使用 `[BindProperty]` 屬性 (attribute) 來加入[模型繫結](xref:mvc/models/model-binding)。 當 Create 表單發佈表單值時，ASP.NET Core 執行階段會將發佈的值繫結至 `Movie` 模型。
 
@@ -142,24 +143,21 @@ changing in in the next step.
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml)]
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Visual Studio 會以特別的粗體字型顯示 `<form method="post">` 標籤，用於標籤協助程式：
 
 ![Create.cshtml 頁面的 VS17 檢視](page/_static/th.png)
-<!-- Code -------------------------->
+
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 如需標籤協助程式 (例如 `<form method="post">`) 的詳細資訊，請參閱 [ASP.NET Core 中的標籤協助程式](xref:mvc/views/tag-helpers/intro)。
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 Visual Studio for Mac 會以特別的粗體字型顯示 `<form method="post">` 標籤，用於標籤協助程式。
 
----  
-<!-- End of VS tabs -->
+---
 
 `<form method="post">` 項目是[表單標記協助程式](xref:mvc/views/working-with-forms#the-form-tag-helper)。 表單標記協助程式會自動包含 [antiforgery 語彙基元](xref:security/anti-request-forgery)。
 
@@ -167,7 +165,7 @@ Scaffolding 引擎會在模型中建立每個欄位的 Razor 標記 (除了識�
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=15-20)]
 
-[驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers) (`<div asp-validation-summary` 和 ` <span asp-validation-for`) 會顯示驗證錯誤。 驗證將於此文章稍後詳細討論到。
+[驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers) (`<div asp-validation-summary` 和 ` <span asp-validation-for`) 會顯示驗證錯誤。 驗證將於本文稍後詳細討論到。
 
 [標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper) (`<label asp-for="Movie.Title" class="control-label"></label>`) 會產生 `Title` 屬性 (property) 的標籤標題和 `for` 屬性 (attribute)。
 
@@ -176,7 +174,6 @@ Scaffolding 引擎會在模型中建立每個欄位的 Razor 標記 (除了識�
 ## <a name="additional-resources"></a>其他資源
 
 * [這個教學課程的 YouTube 版本](https://youtu.be/zxgKjPYnOMM)
-
 
 > [!div class="step-by-step"]
 > [上一步：新增模型](xref:tutorials/razor-pages/model)

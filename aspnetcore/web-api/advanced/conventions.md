@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 5ae96b213a19464045e1d0b1a76f8eb81089dc5b
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.openlocfilehash: 64be4984779724eb60af3b70d4f52b22eae32213
+ms.sourcegitcommit: 10e14b85490f064395e9b2f423d21e3c2d39ed8b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236337"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58142310"
 ---
 # <a name="use-web-api-conventions"></a>使用 Web API 慣例
 
@@ -25,7 +25,7 @@ ASP.NET Core 2.2 和更新版本包含擷取常見 [API 文件](xref:tutorials/w
 * 定義從特定動作類型傳回的最常見傳回型別和狀態碼。
 * 識別偏離已定義標準的動作。
 
-ASP.NET Core MVC 2.2 和更新版本在 `Microsoft.AspNetCore.Mvc.DefaultApiConventions` 中包含一組預設慣例。 這些慣例是以 ASP.NET Core **API** 專案範本中所提供的控制器 (*ValuesController.cs*) 為基礎。 若動作遵循範本中的模式，就應該可以成功使用預設慣例。 如果預設慣例不符合您的需求，請參閱[建立 Web API 慣例](#create-web-api-conventions)。
+ASP.NET Core MVC 2.2 和更新版本在 <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName> 中包含一組預設慣例。 這些慣例是以 ASP.NET Core **API** 專案範本中所提供的控制器 (*ValuesController.cs*) 為基礎。 若動作遵循範本中的模式，就應該可以成功使用預設慣例。 如果預設慣例不符合您的需求，請參閱[建立 Web API 慣例](#create-web-api-conventions)。
 
 在執行階段，<xref:Microsoft.AspNetCore.Mvc.ApiExplorer> 了解慣例。 `ApiExplorer` 是 MVC 與 [OpenAPI](https://www.openapis.org/) (也稱為 Swagger) 文件產生器通訊的抽象層。 來自套用慣例的屬性會與動作建立關聯，且包含在動作的 OpenAPI 文件中。 [API 分析器](xref:web-api/advanced/analyzers)也了解慣例。 若您的動作為非傳統的 (例如，其傳回未由套用慣例所記載的狀態碼)，就會出現警告，建議您記載狀態碼。
 

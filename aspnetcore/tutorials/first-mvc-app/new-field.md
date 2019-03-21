@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: f352a9c3573119028d1bc42fd622919ce0560e7c
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 44487b91c8bbd353157a5f5f1b834187e47e2f3e
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841497"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264658"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>將欄位新增至 ASP.NET Core MVC 應用程式
 
@@ -49,18 +49,17 @@ ms.locfileid: "57841497"
 
 使用 `Rating` 欄位更新 */Views/Movies/Create.cshtml*。
 
-<!-- VS -------------------------->
 # <a name="visual-studio--visual-studio-for-mactabvisual-studiovisual-studio-mac"></a>[Visual Studio / Visual Studio for Mac](#tab/visual-studio+visual-studio-mac)
 
 您可以複製/貼上前一個「表單群組」，讓 IntelliSense 協助您更新這些欄位。 IntelliSense 會使用[標記協助程式](xref:mvc/views/tag-helpers/intro)。
 
 ![在檢視的第二個 Label 項目中，開發人員已針對 asp-for 屬性值鍵入字母 R。 IntelliSense 的操作功能表會顯示可用的欄位，包括 Rating (清單中已自動反白顯示)。 當開發人員按一下欄位，或按下鍵盤上的 Enter 鍵時，即會將值設為 Rating。](new-field/_static/cr.png)
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
 <!-- This tab intentionally left blank. -->
----  
-<!-- End of VS tabs -->
+
+---
 
 更新 `SeedData` 類別，使其提供新資料行的值。 範例變更如下所示，但您會想要為每個 `new Movie` 進行這項變更。
 
@@ -82,7 +81,6 @@ ms.locfileid: "57841497"
 
 在本教學課程中，請使用 Code First 移轉。
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
@@ -106,17 +104,17 @@ Update-Database
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-刪除資料庫並使用移轉重新建立資料庫。 若要刪除資料庫，請刪除資料庫檔案 (*MvcMovie.db*)。 然後執行 `ef database update` 命令： 
+刪除資料庫並使用移轉重新建立資料庫。 若要刪除資料庫，請刪除資料庫檔案 (*MvcMovie.db*)。 然後執行 `ef database update` 命令：
 
 ```console
 dotnet ef database update
 ```
 
----  
+---
 <!-- End of VS tabs -->
 
 執行應用程式，並驗證您可以使用 `Rating` 欄位建立/編輯/顯示電影。 您應該將 `Rating` 欄位新增至 `Edit`、`Details` 和 `Delete` 檢視範本。
 
 > [!div class="step-by-step"]
 > [上一頁](search.md)
-> [下一頁](validation.md)  
+> [下一頁](validation.md)

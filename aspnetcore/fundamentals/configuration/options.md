@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/26/2019
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 9566ed75375bdfaa9d6d8bf898b9fb2054356017
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8d219658b7116ad7e1f2a73678ef76ea1ce69595
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899316"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209183"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -126,7 +126,7 @@ option1 = value1_from_json, option2 = -1
 啟用多個設定服務時，最後一個指定的設定來源會「勝出」並設定此組態值。 當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：
 
 ```html
-delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
+delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 ```
 
 ## <a name="suboptions-configuration"></a>子選項組態

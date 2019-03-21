@@ -5,12 +5,12 @@ description: 了解如何將控制器新增至簡單的 ASP.NET Core MVC 應用�
 ms.author: riande
 ms.date: 02/28/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: bbb7b06e2c9c63f44cb7f7a8ee63bffa1e316b3e
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: dad9262e544fc216ddc694b11b0dfb88b58db9cd
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53381864"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265016"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>將控制器新增至 ASP.NET Core MVC 應用程式
 
@@ -30,7 +30,6 @@ MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 
 
 ## <a name="add-a-controller"></a>新增控制器
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 在 [方案總管] 中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]
@@ -42,14 +41,12 @@ MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 
 
 * 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\) 對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]。
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]，將新檔案命名為 *HelloWorldController.cs*。
 
   ![操作功能表](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 在方案總管中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]。
@@ -62,7 +59,6 @@ MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 
 ![新增 MVC 控制器並將其命名](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
 ---
-<!-- End of VS tabs -->
 
 以下列內容取代 *Controllers/HelloWorldController.cs* 的內容：
 
@@ -130,7 +126,6 @@ Remove link for simplified tutorial.
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 在這些範例中，控制器已執行 MVC 的 "VC" 部分，也就是檢視和控制器工作。 控制器會直接傳回 HTML。 一般來說，您不希望控制器直接傳回 HTML，因為撰寫程式碼和維護會變得很麻煩。 相反地，您通常使用個別的 Razor 檢視範本檔案來協助產生 HTML 回應。 您可在接下來的教學課程中這麼做。
-
 
 > [!div class="step-by-step"]
 > [上一頁](start-mvc.md)

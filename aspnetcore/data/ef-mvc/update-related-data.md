@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/05/2019
 ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: ac94f2e2876c2d8d571a451e4641787ffe37b3d2
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 1606b872df2df839266ef17efee1948065c4efae
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209410"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關資料 - ASP.NET MVC 搭配 EF Core
 
@@ -24,7 +24,7 @@ ms.locfileid: "56103029"
 
 ![Instructor [編輯] 頁面](update-related-data/_static/instructor-edit-courses.png)
 
-在本教學課程中，您會：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 自訂 Courses 頁面
@@ -131,11 +131,11 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 程式碼會執行下列操作：
 
--  將方法名稱變更為 `EditPost`，因為簽章目前與 HttpGet `Edit` 方法相同 (`ActionName` 屬性指出 `/Edit/` URL 仍在使用中)。
+* 將方法名稱變更為 `EditPost`，因為簽章目前與 HttpGet `Edit` 方法相同 (`ActionName` 屬性指出 `/Edit/` URL 仍在使用中)。
 
--  針對 `OfficeAssignment` 導覽屬性使用積極式載入從資料庫中取得目前的 Instructor 實體。 這與您在 HttpGet `Edit` 方法中所做的事情一樣。
+* 針對 `OfficeAssignment` 導覽屬性使用積極式載入從資料庫中取得目前的 Instructor 實體。 這與您在 HttpGet `Edit` 方法中所做的事情一樣。
 
--  使用從模型繫結器取得的值更新擷取的 Instructor 實體。 `TryUpdateModel` 多載可讓您將要包含的屬性加入允許清單中。 這可防止大量指派，如同在[第二個教學課程](crud.md)中所解釋的。
+* 使用從模型繫結器取得的值更新擷取的 Instructor 實體。 `TryUpdateModel` 多載可讓您將要包含的屬性加入允許清單中。 這可防止大量指派，如同在[第二個教學課程](crud.md)中所解釋的。
 
     <!-- Snippets don't play well with <ul> [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
@@ -146,7 +146,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
         i => i.FirstMidName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
     ```
 
--   若辦公室位置為空白，將 Instructor.OfficeAssignment 屬性設為 Null，以刪除在 OfficeAssignment 資料表中的相關資料列。
+* 若辦公室位置為空白，將 Instructor.OfficeAssignment 屬性設為 Null，以刪除在 OfficeAssignment 資料表中的相關資料列。
 
     <!-- Snippets don't play well with <ul>  "intro/samples/cu/Controllers/InstructorsController.cs"} -->
 
@@ -157,7 +157,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
     }
     ```
 
-- 將變更儲存到資料庫。
+* 將變更儲存到資料庫。
 
 ### <a name="update-the-instructor-edit-view"></a>更新 Instructor [編輯] 檢視
 
@@ -225,7 +225,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 <a id="notepad"></a>
 > [!NOTE]
-> 當您將程式碼貼至 Visual Studio 時，分行符號可能會產生變更使程式碼失效。  按 Ctrl+Z 來復原自動格式化。  這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 您可以在[這裡](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html)檢查此問題的狀態。
+> 當您將程式碼貼至 Visual Studio 時，分行符號可能會產生變更使程式碼失效。 按 Ctrl+Z 來復原自動格式化。 這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 您可以在[這裡](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html)檢查此問題的狀態。
 
 [!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
@@ -250,7 +250,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 此程式碼會進行下列變更：
 
-* 為 `CourseAssignments` 導覽屬性進行積極式載入。  您必須包含這個，否則 EF 將無法得知相關 `CourseAssignment` 而無法刪除他們。  若要避免在此讀取他們，您可以在資料庫中設定串聯刪除。
+* 為 `CourseAssignments` 導覽屬性進行積極式載入。 您必須包含這個，否則 EF 將無法得知相關 `CourseAssignment` 而無法刪除他們。 若要避免在此讀取他們，您可以在資料庫中設定串聯刪除。
 
 * 若要刪除的講師已指派為任何部門的系統管理員，請先從這些部門中移除講師的指派。
 

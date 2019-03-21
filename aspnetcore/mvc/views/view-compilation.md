@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/02/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 0b3aea584de63cb8032e4ca112d2441349bdfbb3
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 11195f00e922f6817a0fa0988fad9d8082dea30a
+ms.sourcegitcommit: 10e14b85490f064395e9b2f423d21e3c2d39ed8b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345480"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58142325"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>ASP.NET Core 中 Razor 檔案的先行編譯
 
@@ -130,7 +130,7 @@ dotnet publish -c Release
   ```csharp
   services
       .AddMvc()
-      .AddMvcRazorRuntimeCompilation()
+      .AddRazorRuntimeCompilation()
   ```
 
 針對要在部署時運作的執行階段編譯，應用程式必須額外修改其專案檔，以將 `PreserveCompilationReferences` 設定為 `true`。

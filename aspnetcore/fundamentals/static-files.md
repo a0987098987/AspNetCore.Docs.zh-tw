@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: e6bda5dd60c62c7bdbfa81f34c14cfcd07e8d700
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: 114fee0795977043f3a74a81a15923a8bf5faf6b
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56744049"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208631"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -94,7 +94,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
   * **js**
 * **MyStaticFiles**
   * **images**
-      * *banner1.svg*
+    * *banner1.svg*
 
 透過設定靜態檔案中介軟體，可讓要求存取 *banner1.svg* 檔案，如下所示：
 
@@ -193,7 +193,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
   * **js**
 * **MyStaticFiles**
   * **images**
-      * *banner1.svg*
+    * *banner1.svg*
   * *default.html*
 
 下列程式碼可啟用靜態檔案、預設檔案和 `MyStaticFiles` 的目錄瀏覽功能：

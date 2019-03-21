@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 3799b072da04e32948b5fc78032f0575e760aa1d
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: f471e4bd12510b1de78f3281dcb21d73975d0cb8
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841442"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264745"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
@@ -73,7 +73,6 @@ ms.locfileid: "57841442"
 
 建置方案。
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 <a name="pmc"></a>
@@ -113,21 +112,19 @@ Update-Database
   Update-Database
   ```
 
-<!-- Code -------------------------->
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 ### <a name="drop-and-re-create-the-database"></a>卸除並重新建立資料庫
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-刪除資料庫並使用移轉重新建立資料庫。 若要刪除資料庫，請刪除資料庫檔案 (*MvcMovie.db*)。 然後執行 `ef database update` 命令： 
+刪除資料庫並使用移轉重新建立資料庫。 若要刪除資料庫，請刪除資料庫檔案 (*MvcMovie.db*)。 然後執行 `ef database update` 命令：
 
 ```console
 dotnet ef database update
 ```
 
----  
-<!-- End of VS tabs -->
+---
 
 執行應用程式，並驗證您可以使用 `Rating` 欄位建立/編輯/顯示電影。 若未植入資料庫，請在 `SeedData.Initialize` 方法中設定中斷點。
 

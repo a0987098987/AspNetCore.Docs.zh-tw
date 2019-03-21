@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/27/2018
 uid: fundamentals/httpcontext
-ms.openlocfilehash: 446882297524af3cbaed3ba7f941935debf5e7f4
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 373c036e0839ce51259e23f8503fbe4691b48751
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899194"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209592"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>存取 ASP.NET Core 中的 HttpContext
 
@@ -163,4 +163,3 @@ public class EmailController
         // send the email
     }
 }
-

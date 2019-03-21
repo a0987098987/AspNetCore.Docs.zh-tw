@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 961b41a63a5dd066a51468239bd855b7f723a3ae
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: e9214139c0e6e958445feb13b6350bad376a0152
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346037"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208235"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -57,7 +57,7 @@ Razor Pages 和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 請注意表單在包含無效值的每個欄位中自動呈現驗證錯誤訊息的方式。 用戶端 (使用 JavaScript 和 jQuery) 與伺服器端 (當使用者已停用 JavaScript 時) 都會強制執行這些錯誤。
 
-明顯的好處是：**不**需要在 Create 或 Edit 頁面中進行程式碼變更。 一旦 DataAnnotations 套用至模型，就會啟用驗證 UI。 此教學課程中建立的 Razor 頁面會自動拾取驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 Edit 頁面測試驗證，會套用相同的驗證。
+明顯的好處是：**不**需要在 Create 或 Edit 頁面中進行程式碼變更。 一旦 DataAnnotations 套用至模型，就會啟用驗證 UI。 本教學課程中建立的 Razor 頁面會自動拾取驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 Edit 頁面測試驗證，會套用相同的驗證。
 
 要一直到沒有任何用戶端驗證錯誤之後，才會將表單資料發佈到伺服器。 請確認表單資料不會經由下列一或多種方式發佈：
 
@@ -83,7 +83,7 @@ Razor Pages 和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
    }
   ```
 
-下列程式碼顯示您稍早在此教學課程中包含 Scaffold 的部分 *Create.cshtml* 頁面。 Create 和 Edit 頁面會使用它來顯示初始表單，以及在發生錯誤時重新顯示格式。
+下列程式碼顯示您稍早在本教學課程中包含 Scaffold 的部分 *Create.cshtml* 頁面。 Create 和 Edit 頁面會使用它來顯示初始表單，以及在發生錯誤時重新顯示格式。
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
@@ -104,7 +104,6 @@ Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中
 `DataType` 列舉可提供給許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可針對 `DataType.EmailAddress` 建立 `mailto:` 連結。 在支援 HTML5 的瀏覽器中，可以為 `DataType.Date` 提供日期選取器。 `DataType` 屬性會發出 HTML 5 瀏覽器使用的 HTML 5 `data-` (唸成的 data dash) 屬性。 `DataType` 屬性**不**會提供任何驗證。
 
 `DataType.Date` 未指定顯示日期的格式。 根據預設，將依據以伺服器 `CultureInfo` 為基礎的預設格式顯示資料欄位。
-
 
 `[Column(TypeName = "decimal(18, 2)")]` 資料註解為必要項，因此 Entity Framework Core 可將 `Price` 正確對應到資料庫中的貨幣。 如需詳細資訊，請參閱[資料類型](/ef/core/modeling/relational/data-types)。
 
@@ -141,7 +140,7 @@ public DateTime ReleaseDate { get; set; }
 
 如需部署至 Azure 的資訊，請參閱[教學課程：使用 SQL Database 在 Azure 中建置 ASP.NET 應用程式](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)。 這些指示適用於 ASP.NET 應用程式，而不是 ASP.NET Core 應用程式，但是步驟都相同。
 
-感謝您看完這份 Razor Pages 簡介。 完成此教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
+感謝您看完這份 Razor Pages 簡介。 完成本教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
 
 ## <a name="additional-resources"></a>其他資源
 

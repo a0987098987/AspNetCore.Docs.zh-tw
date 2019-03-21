@@ -5,12 +5,12 @@ description: ''
 ms.author: riande
 ms.date: 07/03/2017
 uid: mvc/controllers/actions
-ms.openlocfilehash: 8289424b3cd3678bea18a25c7850e409795d1577
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 952e4dbb2c4343ca87ace1535e4a5968faf088cf
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209011"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>在 ASP.NET Core MVC 中處理控制器要求
 
@@ -91,14 +91,14 @@ ms.locfileid: "56410428"
 
 此類型的一些協助程式方法包括 `BadRequest`、`CreatedAtRoute` 和 `Ok`。 這些方法的範例分別包括 `return BadRequest(modelState);`、`return CreatedAtRoute("routename", values, newobject);` 和 `return Ok(value);`。 請注意，只有在傳遞值時，`BadRequest` 和 `Ok` 才會執行內容交涉；如果未傳遞值，則會改成作為「HTTP 狀態碼」結果類型。 相反地，`CreatedAtRoute` 方法一律會執行內容交涉，因為其多載全部都需要傳遞值。
 
-### <a name="cross-cutting-concerns"></a>交叉關注
+### <a name="cross-cutting-concerns"></a>跨領域關注
 
 應用程式通常會共用其工作流程的各部分。 範例包括需要驗證購物車存取權的應用程式，或快取某些頁面上資料的應用程式。 若要在動作方法之前或之後執行邏輯，請使用 *filter*。 在交叉關注上使用[篩選](xref:mvc/controllers/filters)可減少重複。
 
 大部分的篩選屬性 (例如 `[Authorize]`) 可以套用至控制器或動作層級 (視所需的細微性層級而定)。
 
-錯誤處理和回應快取通常是交叉關注：
-   * [處理錯誤](xref:mvc/controllers/filters#exception-filters)
-   * [回應快取](xref:performance/caching/response)
+錯誤處理和回應快取通常是跨領域關注：
+* [處理錯誤](xref:mvc/controllers/filters#exception-filters)
+* [回應快取](xref:performance/caching/response)
 
-許多交叉關注都可以使用篩選或自訂[中介軟體](xref:fundamentals/middleware/index)進行處理。
+許多跨領域關注都可以使用篩選或自訂[中介軟體](xref:fundamentals/middleware/index)進行處理。

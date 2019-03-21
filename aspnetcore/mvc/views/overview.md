@@ -5,18 +5,18 @@ description: 了解檢視如何處理 ASP.NET Core MVC 中的應用程式資料�
 ms.author: riande
 ms.date: 12/12/2017
 uid: mvc/views/overview
-ms.openlocfilehash: 6c5b4d7b89ac07a85b5aad626e37855de98064eb
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 0ee1fef9e9da15d91427a2eb5b5f530a0b77ce33
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410429"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265383"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Luke Latham](https://github.com/guardrex)
 
-此文件說明 ASP.NET Core MVC 應用程式中所使用的檢視。 如需 Razor 頁面的資訊，請參閱 [Razor 頁面簡介](xref:razor-pages/index)。
+本文件說明 ASP.NET Core MVC 應用程式中所使用的檢視。 如需 Razor 頁面的資訊，請參閱 [Razor 頁面簡介](xref:razor-pages/index)。
 
 在模型檢視控制器 (MVC) 模式中，「檢視」會處理應用程式的資料呈現和使用者互動。 檢視是具有內嵌 [Razor 標記](xref:mvc/views/razor)的 HTML 範本。 Razor 標記是與 HTML 標記互動的程式碼，可以產生傳送至用戶端的網頁。
 
@@ -70,11 +70,13 @@ ms.locfileid: "56410429"
   ```csharp
   return View("Orders");
   ```
+
 * 要傳遞至檢視的[模型](xref:mvc/models/model-binding)：
 
   ```csharp
   return View(Orders);
   ```
+
 * 檢視和模型：
 
   ```csharp

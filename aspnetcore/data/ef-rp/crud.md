@@ -5,12 +5,12 @@ description: 示範如何以 EF Core 來建立、讀取、更新、刪除
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: adb281277599456356251c6ee30772a25f14ac58
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: c104498a4411ac36672ffbb9660948d4e96bf1ee
+ms.sourcegitcommit: 10e14b85490f064395e9b2f423d21e3c2d39ed8b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346046"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58142384"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 
@@ -22,11 +22,11 @@ ms.locfileid: "57346046"
 
 [!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
-在此教學課程中，將會檢閱並自訂 Scaffold CRUD (建立、讀取、更新、刪除)。
+在本教學課程中，將會檢閱並自訂 Scaffold CRUD (建立、讀取、更新、刪除)。
 
 為降低複雜性並將教學課程聚焦於 EF Core，EF Core 程式碼會使用於頁面模型中。 有些開發人員會使用服務層或儲存機制模式來建立介於 UI (Razor 頁面) 和資料存取層之間的抽象層。
 
-在此教學課程中，會檢查位於 *Students* 資料夾中的 [建立]、[編輯]、[刪除] 和 [詳細資料] Razor 頁面。
+在本教學課程中，會檢查位於 *Students* 資料夾中的 [建立]、[編輯]、[刪除] 和 [詳細資料] Razor 頁面。
 
 Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式：
 
@@ -94,7 +94,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 [Include](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include) 及 [ThenInclude](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.theninclude#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_ThenInclude__3_Microsoft_EntityFrameworkCore_Query_IIncludableQueryable___0_System_Collections_Generic_IEnumerable___1___System_Linq_Expressions_Expression_System_Func___1___2___) 方法會使內容載入 `Student.Enrollments` 導覽屬性，以及位於每一個註冊中的 `Enrollment.Course` 導覽屬性。 將會在讀取相關資料教學課程中詳細檢視這些方法。
 
-[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) 方法在傳回實體未在目前內容中更新的案例下可改善效能。 `AsNoTracking` 稍後在此教學課程中將會討論。
+[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) 方法在傳回實體未在目前內容中更新的案例下可改善效能。 `AsNoTracking` 稍後在本教學課程中將會討論。
 
 ### <a name="display-related-enrollments-on-the-details-page"></a>在 [詳細資料] 頁面上顯示相關的註冊
 
@@ -250,7 +250,7 @@ Students/Index 或其他連結運作失常：
 
 ## <a name="additional-resources"></a>其他資源
 
-* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=F0SP7Ry4flQ&list=PLnVvOWNfuhGV45HnNgd0vuIIkoQ1UaVBf)
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=K4X1MT2jt6o)
 
 > [!div class="step-by-step"]
 > [上一頁](xref:data/ef-rp/intro)

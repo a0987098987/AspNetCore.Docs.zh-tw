@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 140f482e136acf4daba1248fecc87e06db6866f3
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: a264cdaf0f577be6ea2043935b485f4fd16e0229
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345884"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264948"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -19,11 +19,11 @@ ms.locfileid: "57345884"
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-在此教學課程中，將會讀取和顯示相關資料。 相關資料是 EF Core 載入到導覽屬性的資料。
+在本教學課程中，將會讀取和顯示相關資料。 相關資料是 EF Core 載入到導覽屬性的資料。
 
 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
-下圖顯示此教學課程的已完成頁面：
+下圖顯示本教學課程的已完成頁面：
 
 ![Courses [索引] 頁面](read-related-data/_static/courses-index.png)
 
@@ -65,9 +65,10 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 * 從 `Department` 實體取得 `Name` 屬性。
 * `Department` 實體來自 `Course.Department` 導覽屬性。
 
-![ourse.Department](read-related-data/_static/dep-crs.png)
+![Course.Department](read-related-data/_static/dep-crs.png)
 
 <a name="scaffold"></a>
+
 ### <a name="scaffold-the-course-model"></a>Scaffold Course 模型
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
@@ -115,6 +116,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 ![Courses [索引] 頁面](read-related-data/_static/courses-index.png)
 
 <a name="select"></a>
+
 ### <a name="loading-related-data-with-select"></a>使用 Select 載入相關資料
 
 `OnGetAsync` 方法使用 `Include` 方法載入相關資料：
@@ -187,7 +189,6 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 * `OfficeAssignment`：顯示在 [Instructors 檢視](#IP)中。
 * `CourseAssignments`：它顯示所教授的課程。
 
-
 ### <a name="update-the-instructors-index-page"></a>更新 Instructors [索引] 頁面
 
 以下列標記更新 *Pages/Instructors/Index.cshtml*：
@@ -198,11 +199,11 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 * 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int?}"`。 `"{id:int?}"` 是路由範本。 路由範本將 URL 中的整數查詢字串變更為路由資料。 例如，只有在 `@page` 指示詞產生如下的 URL 時，按一下講師的 [選取] 連結：
 
-    `http://localhost:1234/Instructors?id=2`
+  `http://localhost:1234/Instructors?id=2`
 
-    頁面指示詞是 `@page "{id:int?}"` 時，先前的 URL 為：
+  頁面指示詞是 `@page "{id:int?}"` 時，先前的 URL 為：
 
-    `http://localhost:1234/Instructors/2`
+  `http://localhost:1234/Instructors/2`
 
 * 頁面標題是 **Instructors**。
 * 新增 [辦公室] 資料行，該資料行只有在 `item.OfficeAssignment` 不是 Null 時才會顯示 `item.OfficeAssignment.Location`。 因為這是一對零或一關聯性，所有可能沒有相關的 OfficeAssignment 實體。

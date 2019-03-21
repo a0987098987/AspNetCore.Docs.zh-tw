@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/08/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: a9081a9938d56b7612bba13937eba384ff02455b
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.openlocfilehash: 4fe04cde2a234302845b2cbded106f1e809842bc
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833731"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209290"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -19,11 +19,11 @@ ms.locfileid: "56833731"
 
 ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定階段之前或之後執行程式碼。
 
- 內建篩選條件會處理工作，例如：
+內建篩選條件會處理工作，例如：
 
- * 授權 (避免存取使用者未獲授權的資源)。
- * 確定所有要求都使用 HTTPS。
- * 回應快取 (縮短要求管線，傳回快取的回應)。 
+* 授權 (避免存取使用者未獲授權的資源)。
+* 確定所有要求都使用 HTTPS。
+* 回應快取 (縮短要求管線，傳回快取的回應)。 
 
 可以建立自訂篩選條件來處理跨領域關注。 篩選條件可以避免在動作之間複製程式碼。 例如，錯誤處理例外狀況篩選條件中可以合併錯誤處理。
 
@@ -373,7 +373,7 @@ System.InvalidOperationException: No service for type
 
 如果動作結果或後續的結果篩選條件擲回例外狀況，則 `ResultExecutedContext.Exception` 將設為非 Null 值。 將 `Exception` 設為 Null，實際上會「處理」例外狀況，並且使管線中稍後的 MVC 不會重新擲回例外狀況。 當您處理結果篩選條件的例外狀況時，您可能無法將任何資料寫入至回應。 如果動作結果在執行中途擲回，且標頭已清除至用戶端，則沒有任何可靠的機制能傳送失敗碼。
 
-針對 `IAsyncResultFilter`，對 `ResultExecutionDelegate` 呼叫 `await next` 會執行任何後續的結果篩選條件和動作結果。 若要縮短，請將 `ResultExecutingContext.Cancel` 設為 true，且不要呼叫 `ResultExectionDelegate`。
+針對 `IAsyncResultFilter`，對 `ResultExecutionDelegate` 呼叫 `await next` 會執行任何後續的結果篩選條件和動作結果。 若要縮短，請將 `ResultExecutingContext.Cancel` 設為 true，且不要呼叫 `ResultExecutionDelegate`。
 
 架構提供一個抽象 `ResultFilterAttribute`，您可以進行子分類。 稍早所示的 [AddHeaderAttribute](#add-header-attribute)類別是結果篩選條件屬性的範例。
 

@@ -5,12 +5,12 @@ description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功
 ms.author: riande
 ms.date: 02/14/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 8904d217a18fff65113ae3469efe60258d20d5f0
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.openlocfilehash: 79bc023a7bd00a9d4de375e3cddaafd148251469
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400641"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264760"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
@@ -38,6 +38,7 @@ ms.locfileid: "57400641"
 * [已新增至啟動的區域路由](#add-area-route)：[!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
 
 ### <a name="area-folder-structure"></a>區域資料夾結構
+
 假設應用程式具有兩個邏輯群組：「產品」和「服務」。 使用區域，資料夾結構應該如下：
 
 * Project name
@@ -172,7 +173,7 @@ ms.locfileid: "57400641"
 在上述標記中：
 
 * 必須使用完整的網域名稱來指定此模型 (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`)。
-* [標記協助程式]()由 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` 啟用
+* [標記協助程式](xref:mvc/views/tag-helpers/intro)由 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` 啟用
 
 在範例下載中，Products 區域包含下列 *_ViewImports* 檔案：
 

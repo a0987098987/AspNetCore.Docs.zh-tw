@@ -5,12 +5,12 @@ description: 了解如何在 ASP.NET Core MVC 應用程式中使用 SQL Server L
 ms.author: riande
 ms.date: 03/07/2017
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: a6b2026a43bda94a84a05749e9ea395308dec231
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 983742276f3519b540cd62e4ada6eb5189650aa8
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841432"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265222"
 ---
 # <a name="work-with-sql-in-aspnet-core"></a>在 ASP.NET Core 中使用 SQL
 
@@ -18,7 +18,6 @@ ms.locfileid: "57841432"
 
 `MvcMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 檔案的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=13-99)]
@@ -27,7 +26,6 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 
 [!code-json[](start-mvc/sample/MvcMovie/appsettings.json?highlight=2&range=8-10)]
 
-<!-- Code -------------------------->
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
@@ -36,12 +34,10 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/appsettingsSQLite.json?highlight=2&range=8-10)]
 
----  
-<!-- End of VS tabs -->
+---
 
 當您將應用程式部署到測試或生產環境伺服器時，可以使用環境變數或另一個方法來設定實際 SQL Server 的連接字串。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
@@ -71,7 +67,7 @@ LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發�
 [!INCLUDE[](~/includes/rp/sqlite.md)]
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
----  
+---
 <!-- End of VS tabs -->
 
 ## <a name="seed-the-database"></a>植入資料庫
@@ -90,6 +86,7 @@ if (context.Movie.Any())
 ```
 
 <a name="si"></a>
+
 ### <a name="add-the-seed-initializer"></a>新增種子初始設定式
 
 以下列程式碼取代 *Program.cs* 的內容：
@@ -98,7 +95,6 @@ if (context.Movie.Any())
 
 測試應用程式
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 SSOX 的刪除連結來執行這項操作。
@@ -113,13 +109,11 @@ if (context.Movie.Any())
     * 如果您已在非偵錯模式中執行 VS，請按 F5 以偵錯模式執行。
     * 如果您已在偵錯模式中執行 VS，請停止偵錯工具，然後按 F5。
 
-<!-- Code -------------------------->
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 請刪除資料庫中的所有記錄 (這樣會執行 seed 方法)。 停止並啟動應用程式來植入資料庫。
 
----  
-<!-- End of VS tabs -->
+---
 
 應用程式會顯示植入的資料。
 
@@ -127,4 +121,4 @@ if (context.Movie.Any())
 
 > [!div class="step-by-step"]
 > [上一頁](adding-model.md)
-> [下一頁](controller-methods-views.md)  
+> [下一頁](controller-methods-views.md)

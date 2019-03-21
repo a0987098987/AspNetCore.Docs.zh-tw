@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - 並行 - 8/8
 author: rick-anderson
-description: 此教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
+description: 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/07/2018
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: a6c264e460855c9f1d6f5a363eb7ee2cf69619ee
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 3fb8ebe415d0619d33302a08e97da78db0ad1d1e
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346290"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265503"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 並行 - 8/8
 
@@ -19,7 +19,7 @@ ms.locfileid: "57346290"
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-此教學課程會顯示如何在多位使用者同時並行更新實體時處理衝突。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
+本教學課程會顯示如何在多位使用者同時並行更新實體時處理衝突。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
 ## <a name="concurrency-conflicts"></a>並行衝突
 
@@ -95,9 +95,9 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 資料庫會產生一個循序 `rowversion` 數字，每一次資料列更新時該數字都會遞增。 在 `Update` 或 `Delete` 命令中，`Where` 子句會包含 `rowversion` 的擷取值。 如果更新的資料列已變更：
 
- * `rowversion` 便不會符合擷取的值。
- * `Update` 或 `Delete` 命令便會找不到資料列，因為 `Where` 子句包含了擷取的 `rowversion`。
- * 於是便會擲回 `DbUpdateConcurrencyException`。
+* `rowversion` 便不會符合擷取的值。
+* `Update` 或 `Delete` 命令便會找不到資料列，因為 `Where` 子句包含了擷取的 `rowversion`。
+* 於是便會擲回 `DbUpdateConcurrencyException`。
 
 在 EF Core 中，當 `Update` 或 `Delete` 命令沒有更新任何資料列時，系統便會擲回並行例外狀況。
 
@@ -152,6 +152,7 @@ dotnet ef database update
 * 執行移轉，以更新資料庫。
 
 <a name="scaffold"></a>
+
 ## <a name="scaffold-the-departments-model"></a>Scaffold Departments 模型
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
@@ -174,7 +175,7 @@ dotnet ef database update
 
 ### <a name="update-the-departments-index-page"></a>更新 Departments [索引] 頁面
 
-Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但該欄位不應該顯示出來。 在此教學課程中，`RowVersion` 的最後一個位元組會顯示出來，以協助您了解並行。 最後一個位元組不一定是唯一的。 實際的應用程式不會顯示 `RowVersion` 或 `RowVersion` 的最後一個位元組。
+Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但該欄位不應該顯示出來。 在本教學課程中，`RowVersion` 的最後一個位元組會顯示出來，以協助您了解並行。 最後一個位元組不一定是唯一的。 實際的應用程式不會顯示 `RowVersion` 或 `RowVersion` 的最後一個位元組。
 
 更新 [索引] 頁面：
 
@@ -272,7 +273,6 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 使用下列程式碼更新 *ges/Departments/Delete.cshtml*：
 
 [!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
-
 
 上述標記會進行下列變更：
 

@@ -5,12 +5,12 @@ description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記
 ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: 8e9ec3c5040e5a24cd5f773b1232897338741c0c
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: 254c85ee9e74dc72170b19d27fbc5f1ae7ccd3dc
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396255"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264748"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -69,9 +69,9 @@ Razor 隱含運算式會以 `@` 開頭，後面接著 C# 程式碼：
 
 上述程式碼會產生類似下列其中一項的編譯器錯誤：
 
- * "Int" 項目未關閉。 所有項目都必須自行結束或具有相對應的結束標籤。
- *  無法將方法群組 'GenericMethod' 轉換成非委派類型 'type'。 您是否想要叫用方法？ 
- 
+* "Int" 項目未關閉。 所有項目都必須自行結束或具有相對應的結束標籤。
+* 無法將方法群組 'GenericMethod' 轉換成非委派類型 'type'。 您是否想要叫用方法？
+
 泛型方法呼叫必須包裝在 [Razor 明確運算式](#explicit-razor-expressions)或 [Razor 程式碼區塊](#razor-code-blocks)中。
 
 ## <a name="explicit-razor-expressions"></a>Razor 明確運算式
@@ -199,7 +199,7 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 
 **\<text>** 標籤可用來控制轉譯內容時的空白字元：
 
-* **\<text>** 標籤之間的內容會轉譯。 
+* **\<text>** 標籤之間的內容會轉譯。
 * **\<text>** 標籤前後不能有空白字元出現在 HTML 輸出中。
 
 ### <a name="explicit-line-transition-with-"></a>使用 @ 的明確行轉換：
@@ -216,7 +216,7 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 
 若程式碼中沒有 `@:`，就會產生 Razor 執行階段錯誤。
 
-警告:Razor 檔案中的額外 `@` 字元可能會導致稍後在區塊的陳述式中發生編譯器錯誤。 這些編譯器錯誤可能很難了解，因為實際錯誤發生在回報的錯誤之前。 將多個明確/隱含運算式合併成單一程式碼區塊之後，經常會出現此錯誤。
+警告：Razor 檔案中的額外 `@` 字元可能會導致稍後在區塊的陳述式中發生編譯器錯誤。 這些編譯器錯誤可能很難了解，因為實際錯誤發生在回報的錯誤之前。 將多個明確/隱含運算式合併成單一程式碼區塊之後，經常會出現此錯誤。
 
 ## <a name="control-structures"></a>控制結構
 
@@ -337,7 +337,6 @@ else
 
 在 C# 中，`using` 陳述式可用來確保物件經過處置。 在 Razor 中，使用相同的機制來建立 HTML 協助程式，以包含其他內容。 在下列程式碼中，HTML 協助程式使用 `@using` 陳述式來轉譯表單標籤：
 
-
 ```cshtml
 @using (Html.BeginForm())
 {
@@ -425,6 +424,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 本文稍後在[檢查針對檢視所產生的 Razor C# 類別](#inspect-the-razor-c-class-generated-for-a-view)一節中說明如何檢視這個產生的類別。
 
 <a name="using"></a>
+
 ### <a name="using"></a>@using
 
 `@using` 指示詞會將 C# `using` 指示詞新增至產生的檢視：
@@ -579,7 +579,7 @@ public class Pet
 @using Microsoft.AspNetCore.Html
 
 @functions {
-    public static IHtmlContent Repeat(IEnumerable<dynamic> items, int times, 
+    public static IHtmlContent Repeat(IEnumerable<dynamic> items, int times,
         Func<dynamic, IHtmlContent> template)
     {
         var html = new HtmlContentBuilder();

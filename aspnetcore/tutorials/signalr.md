@@ -6,12 +6,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/30/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 53ec924c2d7b4fac227be0c0bf24d93476528167
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: ba36f75dfa40012df3140cdcbf8a7732fb0709fe
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836554"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264543"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
@@ -79,7 +79,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
 * 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增] > [用戶端程式庫]。
 
-* 在 [新增用戶端程式庫] 對話方塊中，針對 [提供者] 選取 [unpkg]。 
+* 在 [新增用戶端程式庫] 對話方塊中，針對 [提供者] 選取 [unpkg]。
 
 * 針對 [程式庫]，輸入 `@aspnet/signalr@1`，然後選取非預覽版的最新版本。
 
@@ -210,7 +210,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
   ```console
   dotnet run -p SignalRChat.csproj
   ```
-  
+
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 從功能表中選取 [執行] > [啟動但不偵錯]。

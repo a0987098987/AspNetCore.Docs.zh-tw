@@ -5,12 +5,12 @@ description: 說明如何使用資料庫和 ASP.NET Core。
 ms.author: riande
 ms.date: 12/07/2017
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: e2e9be0aa25166e216d34419859cd907d0423f70
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 6cef55382d8c77e95280ea4eea2dbc2af1c81987
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841562"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265570"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>使用資料庫和 ASP.NET Core
 
@@ -20,23 +20,19 @@ ms.locfileid: "57841562"
 
 `RazorPagesMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
----  
-<!-- End of VS tabs -->
+---
 
 如需 `ConfigureServices` 中所用之方法的詳細資訊，請參閱：
 
@@ -45,29 +41,24 @@ ms.locfileid: "57841562"
 
 ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本機開發，它會從 *appsettings.json* 檔案取得連接字串。
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 您的產生程式碼會有不同的資料庫 (`Database={Database name}`) 名稱值。 名稱值為任意值。
 
 [!code-json[](razor-pages-start/sample/RazorPagesMovie22/appsettings.json)]
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 
----  
-<!-- End of VS tabs -->
+---
 
 將應用程式部署到測試或生產環境伺服器時，可以使用環境變數來設定實際資料庫伺服器的連接字串。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
@@ -89,21 +80,19 @@ LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發�
 
 * 以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視資料]：
 
-  ![開啟的電影資料表，其中顯示資料表資料](sql/_static/vd22.png)
-<!-- Code -------------------------->
+  ![開啟的電影資料表顯示資料表資料](sql/_static/vd22.png)
+
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
----  
-<!-- End of VS tabs -->
+---
 
 ## <a name="seed-the-database"></a>植入資料庫
 
@@ -119,7 +108,9 @@ if (context.Movie.Any())
     return;   // DB has been seeded.
 }
 ```
+
 <a name="si"></a>
+
 ### <a name="add-the-seed-initializer"></a>新增種子初始設定式
 
 在 *Program.cs* 中，修改 `Main` 方法來執行下列動作：
@@ -139,7 +130,6 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 
 ### <a name="test-the-app"></a>測試應用程式
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行這項操作
@@ -154,25 +144,20 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
     * 如果您已在非偵錯模式中執行 VS，請按 F5 以偵錯模式執行。
     * 如果您已在偵錯模式中執行 VS，請停止偵錯工具，然後按 F5。
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 請刪除資料庫中的所有記錄 (這樣會執行 seed 方法)。 停止並啟動應用程式來植入資料庫。
 
 應用程式會顯示植入的資料。
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 請刪除資料庫中的所有記錄 (這樣會執行 seed 方法)。 停止並啟動應用程式來植入資料庫。
 
 應用程式會顯示植入的資料。
 
----  
-<!-- End of VS tabs -->
+---
 
-
-   
 應用程式會顯示植入的資料：
 
 ![在 Chrome 中開啟的電影應用程式顯示電影資料](sql/_static/m55.png)

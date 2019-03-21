@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: e5bb1a86453bb945789cc1f4b56616551e316615
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.openlocfilehash: de740775e124298f7c3d3be0c6f5a7311174116d
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400680"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265486"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 
@@ -123,7 +123,7 @@ ms.locfileid: "57400680"
     </system.webServer>
    </configuration>
    ```
-   
+
 若要使用 *web.config* 對 IIS Express 新增或移除模組，請修改 *applicationHost.config* 以解除鎖定 `<modules>` 區段：
 
 1. 開啟 *{APPLICATION ROOT}\\.vs\config\applicationhost.config*。
@@ -131,17 +131,17 @@ ms.locfileid: "57400680"
 1. 找出 IIS 模組的 `<section>` 元素，並將 `overrideModeDefault` 從 `Deny` 變更為 `Allow`：
 
    ```xml
-   <section name="modules" 
-            allowDefinition="MachineToApplication" 
+   <section name="modules"
+            allowDefinition="MachineToApplication"
             overrideModeDefault="Allow" />
    ```
-   
+
 1. 找出 `<location path="" overrideMode="Allow"><system.webServer><modules>` 區段。 對於您要移除的任何模組，請將 `lockItem` 從 `true` 變更為 `false`。 以下為將 CGI 模組解除鎖定的範例：
 
    ```xml
    <add name="CgiModule" lockItem="false" />
    ```
-   
+
 1. 在將 `<modules>` 區段及個別模組解除鎖定後，您可任意使用應用程式的 *web.config* 檔案新增或移除 IIS 模組，以在 IIS Express 上執行應用程式。
 
 您也可以使用 *Appcmd.exe* 來移除 IIS 模組。 請在命令中提供 `MODULE_NAME` 和 `APPLICATION_NAME`：

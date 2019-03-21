@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2018
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: e71cb8badbbc852685c845e6bbb0bbb12ab5499f
-ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
+ms.openlocfilehash: b2b5a155d0dff28e471af449731da787f19d1faf
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53577808"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208353"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure
 
@@ -68,7 +68,7 @@ Visual Studio 會建立解決方案。
 
 * 選取 [註冊] 並註冊新的使用者。 您可以使用虛構的電子郵件地址。 提交時，頁面會顯示下列錯誤：
 
-    *「內部伺服器錯誤：處理要求時資料庫作業失敗。SQL 例外狀況：無法開啟資料庫。為應用程式資料庫內容套用現有的移轉可能會解決此問題。」
+    *「內部伺服器錯誤：處理要求時資料庫作業失敗。SQL 例外狀況：無法開啟資料庫。為應用程式資料庫內容套用現有的移轉可能會解決此問題。」*
 * 選取 [套用移轉]，並在頁面更新後重新整理頁面。
 
 ![內部伺服器錯誤：處理要求時資料庫作業失敗。 SQL 例外狀況：無法開啟資料庫。 為應用程式資料庫內容套用現有的移轉可能會解決此問題。](publish-to-azure-webapp-using-vs/_static/mig.png)
@@ -127,7 +127,7 @@ Visual Studio 會回到 [建立 App Service] 對話方塊。
 
 ![[設定 SQL Database] 對話方塊](publish-to-azure-webapp-using-vs/_static/conf_final.png)
 
-Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟可能需要幾分鐘的時間。 如需所建立資源的資訊，請參閱[其他資源](#additonal-resources)。
+Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟可能需要幾分鐘的時間。 如需所建立資源的資訊，請參閱[其他資源](#additional-resources)。
 
 部署完成時，請選取 [設定]：
 
@@ -135,8 +135,8 @@ Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟
 
 在 [發行] 對話方塊的 [設定] 頁面上：
 
-  * 展開 [資料庫] 並選取 [在執行階段使用此連接字串]。
-  * 展開 [Entity Framework 移轉] 並選取 [在發行時套用此移轉]。
+* 展開 [資料庫] 並選取 [在執行階段使用此連接字串]。
+* 展開 [Entity Framework 移轉] 並選取 [在發行時套用此移轉]。
 
 * 選取 [儲存]。 Visual Studio 會回到 [發行] 對話方塊。 
 
@@ -184,7 +184,7 @@ Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟
 
 * <xref:host-and-deploy/azure-apps/azure-continuous-deployment>
 
-## <a name="additonal-resources"></a>其他資源
+## <a name="additional-resources"></a>其他資源
 
 * [Azure App Service](/azure/app-service/app-service-web-overview)
 * [Azure 資源群組](/azure/azure-resource-manager/resource-group-overview#resource-groups)

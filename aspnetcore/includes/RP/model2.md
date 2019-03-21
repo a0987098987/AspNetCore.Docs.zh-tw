@@ -1,7 +1,16 @@
+---
+ms.openlocfilehash: 86cf1874677dc8b79e3223fb0819eb1881c69a11
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265605"
+---
 <a name="dc"></a>
-### 
 
-將下列 `RazorPagesMovieContext` 類別新增至 *Models* 資料夾：  
+### <a name="add-a-database-context-class"></a>新增資料庫內容類別
+
+將下列 `RazorPagesMovieContext` 類別新增至 *Models* 資料夾：
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 

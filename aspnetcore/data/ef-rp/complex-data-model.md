@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 author: rick-anderson
-description: 在此教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
+description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 56c2d783e8c75aad7487aa03309bb962f4354567
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: fbe43e019ddab6f9acc2ea46799f0a39aa7c2e7c
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346524"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208986"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -23,7 +23,7 @@ ms.locfileid: "57346524"
 
 [!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
-先前的教學課程建立了基本的資料模型，該模型由三個實體組成。 在此教學課程中：
+先前的教學課程建立了基本的資料模型，該模型由三個實體組成。 在本教學課程中：
 
 * 新增更多實體和關聯性。
 * 藉由指定格式、驗證和資料庫對應規則來自訂資料模型。
@@ -101,7 +101,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)�
 
 ![移轉之前於 SSOX 中的 Students 資料表](complex-data-model/_static/ssox-before-migration.png)
 
-上述影像顯示了 `Student` 資料表的結構描述。 名稱欄位的類型為 `nvarchar(MAX)`，因為移轉尚未在資料庫中執行。 在此教學課程的稍後執行移轉後，名稱欄位便會成為 `nvarchar(50)`。
+上述影像顯示了 `Student` 資料表的結構描述。 名稱欄位的類型為 `nvarchar(MAX)`，因為移轉尚未在資料庫中執行。 在本教學課程的稍後執行移轉後，名稱欄位便會成為 `nvarchar(50)`。
 
 ### <a name="the-column-attribute"></a>Column 屬性
 
@@ -223,8 +223,8 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 導覽屬性類型包括：
 
 * `ICollection<T>`
-*  `List<T>`
-*  `HashSet<T>`
+* `List<T>`
+* `HashSet<T>`
 
 若已指定 `ICollection<T>`，EF Core 會根據預設建立一個 `HashSet<T>` 集合。
 
@@ -267,7 +267,6 @@ public int InstructorID { get; set; }
 
 * 參考型別 (例如類別可為 Null)。
 * 講師可能沒有辦公室指派。
-
 
 `OfficeAssignment` 實體有不可為 Null 的`Instructor` 導覽屬性，因為：
 
@@ -505,11 +504,11 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 在此教學課程中，Fluent API 僅會用於無法使用屬性完成的資料庫對應。 然而，Fluent API 可指定大部分透過屬性可完成的格式、驗證及對應規則。
 
-某些屬性 (例如 `MinimumLength`) 無法使用 Fluent API 來套用。 `MinimumLength` 不會變更結構描述。它只會套用一個最小長度驗證規則。
+某些屬性 (例如 `MinimumLength`) 無法使用 Fluent API 來套用。 `MinimumLength` 不會變更結構描述。它只會套用一項最小長度驗證規則。
 
 某些開發人員偏好單獨使用 Fluent API，使其實體類別保持「整潔」。 屬性和 Fluent API 可混合使用。 有一些設定只能透過 Fluent API 完成 (指定複合 PK)。 有一些設定只能透過屬性完成 (`MinimumLength`)。 使用 Fluent API 或屬性的建議做法為：
 
-* 從這兩種方法中選擇一個。
+* 從這兩種方法中選擇一項。
 * 持續且盡量使用您選擇的方法。
 
 此教學課程中使用到的某些屬性主要用於：
@@ -575,10 +574,10 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 ## <a name="apply-the-migration"></a>套用移轉
 
-現在您有了現有的資料庫，您需要思考如何對其套用未來變更。 此教學課程示範兩種方法：
+現在您有了現有的資料庫，您需要思考如何對其套用未來變更。 本教學課程示範兩種方法：
 
 * [卸除並重新建立資料庫](#drop)
-* [將移轉套用至現有資料庫](#applyexisting)。 雖然這個方法更複雜且耗時，卻是實際生產環境的慣用方法。 **注意**：這是此教學課程的選擇性章節。 您可以執行卸除並重新建立步驟，然後略過本節。 如果您希望遵循本章節中的步驟，請不要執行卸除並重新建立的步驟。 
+* [將移轉套用至現有資料庫](#applyexisting)。 雖然這個方法更複雜且耗時，卻是實際生產環境的慣用方法。 **注意**：這是本教學課程的選擇性章節。 您可以執行卸除並重新建立步驟，然後略過本節。 如果您希望遵循本章節中的步驟，請不要執行卸除並重新建立的步驟。 
 
 <a name="drop"></a>
 

@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 02/12/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 0ba00750dee1ccbef5d91d8c66f2de0db401c5c1
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: b4f14241d50383ad4d1c1d8c9d00ca439f371b7d
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346355"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265024"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -26,8 +26,6 @@ ms.locfileid: "57346355"
 
 ## <a name="add-a-data-model"></a>新增資料模型
 
-<!-- VS -------------------------->
-
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
@@ -35,8 +33,6 @@ ms.locfileid: "57346355"
 以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
-
-<!-- Code -------------------------->
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -47,7 +43,6 @@ ms.locfileid: "57346355"
 
 [!INCLUDE [model 2](~/includes/RP/model2.md)]
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
@@ -62,8 +57,6 @@ ms.locfileid: "57346355"
 
 [!INCLUDE [model 2](~/includes/RP/model2.md)]
 
-<!-- End of VS tabs -->
-
 ---
 
 建置專案，以確認沒有任何編譯錯誤。
@@ -71,8 +64,6 @@ ms.locfileid: "57346355"
 ## <a name="scaffold-the-movie-model"></a>Scaffold 影片模型
 
 在本節中會 scaffold 影片模型。 亦即 Scaffolding 工具會產生影片模型的建立、讀取、更新和刪除 (CRUD) 作業頁面。
-
-<!-- VS -------------------------->
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -98,8 +89,6 @@ ms.locfileid: "57346355"
 ![前述指示中的圖片。](model/_static/arp.png)
 
 *appsettings.json* 檔案會隨即更新用來連線到本機資料庫的連接字串。
-
-<!-- Code -------------------------->
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -127,8 +116,6 @@ ms.locfileid: "57346355"
 
 [!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
 
-<!-- Mac -------------------------->
-
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
@@ -137,6 +124,7 @@ ms.locfileid: "57346355"
   ```console
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
+
 * 執行下列命令：
 
   ```console
@@ -164,11 +152,7 @@ ms.locfileid: "57346355"
 
 ## <a name="initial-migration"></a>初始移轉
 
-<!-- VS -------------------------->
-
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
-<!-- VS -------------------------->
 
 在本節中，您可以使用套件管理員主控台 (PMC) 進行下列作業：
 
@@ -186,11 +170,7 @@ Add-Migration Initial
 Update-Database
 ```
 
-<!-- Code -------------------------->
-
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-<!-- Mac -------------------------->
 
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
@@ -198,8 +178,7 @@ Update-Database
 
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
----  
-<!-- End of VS tabs -->
+---
 
 上述命令會產生下列警告：「實體類型 'Movie' 上的十進位資料行 'Price' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
 
@@ -209,13 +188,11 @@ Update-Database
 
 `ef database update` 命令會執行 *Migrations/\<時間戳記>_InitialCreate.cs* 檔案中的 `Up` 方法。 `Up` 方法會建立資料庫。
 
-<!-- VS -------------------------->
-
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
-ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，此教學課程中稍後會示範。
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
@@ -230,15 +207,10 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 上述程式碼會建立實體集的 [`DbSet<Movie>`](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
 
 連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
-<!-- Code -------------------------->
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-<!-- Mac -------------------------->
-
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
-
-<!-- End of VS tabs -->
 
 ---
 
@@ -264,7 +236,7 @@ Login failed for user 'User-name'.
 * 測試 **Create** 連結。
 
   ![建立頁面](model/_static/conan.png)
-  
+
   > [!NOTE]
   > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，則必須將應用程式全球化。 如需全球化指示，請參閱[此 GitHub 問題](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420) \(英文\)。
 

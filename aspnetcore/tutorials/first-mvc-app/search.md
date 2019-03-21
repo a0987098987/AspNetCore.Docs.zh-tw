@@ -5,12 +5,12 @@ description: 示範如何將搜尋新增至基本 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: e5dce35b60080ef752f8e6c6004158219015cbf5
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 41d7494b77edaddbf719cab087142f0132dd3ed6
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410634"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208378"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>將搜尋新增至 ASP.NET Core MVC 應用程式
 
@@ -37,7 +37,7 @@ var movies = from m in _context.Movie
 
 上述 `s => s.Title.Contains()` 程式碼是 [Lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)。 在以方法為基礎的 [LINQ](/dotnet/standard/using-linq) 查詢中，Lambda 會用來作為標準查詢運算子方法的引數，例如 [Where](/dotnet/api/system.linq.enumerable.where) 方法或 `Contains` (用於上述程式碼)。 定義 LINQ 查詢或藉由呼叫像是 `Where`、`Contains` 或 `OrderBy` 等方法進行修改時，並不會執行查詢。 而會延後執行查詢。  這是指延遲評估運算式，直到實際反覆運算其實現值或呼叫 `ToListAsync` 方法為止。 如需延後查詢執行的詳細資訊，請參閱[查詢執行](/dotnet/framework/data/adonet/ef/language-reference/query-execution)。
 
-注意:[Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 方法是在資料庫上執行，而不是在上方顯示的 C# 程式碼中執行。 查詢是否區分大小寫取決於資料庫和定序。 在 SQL Server 上，[Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 對應至 [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql)，因此不區分大小寫。 在 SQLlite 中，由於使用預設定序，它會區分大小寫。
+注意:[Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 方法是在資料庫上執行，而不是在上方顯示的 C# 程式碼中執行。 查詢是否區分大小寫取決於資料庫和定序。 在 SQL Server 上，[Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 對應至 [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql)，因此不區分大小寫。 而在 SQLlite 中，由於使用預設定序，因此會區分大小寫。
 
 巡覽至 `/Movies/Index`。 將查詢字串 (例如 `?searchString=Ghost`) 附加至 URL。 隨即顯示篩選過的電影。
 
@@ -113,10 +113,10 @@ HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with
 
 電影內容類型檢視模型將包含：
 
-   * 電影清單。
-   * 包含內容類型清單的 `SelectList`。 這可讓使用者從清單中選取內容類型。
-   * 包含所選取內容類型的 `MovieGenre`。
-   * `SearchString`，其中包含使用者在搜尋文字方塊中輸入的文字。
+* 電影清單。
+* 包含內容類型清單的 `SelectList`。 這可讓使用者從清單中選取內容類型。
+* 包含所選取內容類型的 `MovieGenre`。
+* `SearchString`，其中包含使用者在搜尋文字方塊中輸入的文字。
 
 以下列程式碼取代 `MoviesController.cs` 中的 `Index` 方法：
 
@@ -148,4 +148,4 @@ HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with
 
 > [!div class="step-by-step"]
 > [上一頁](controller-methods-views.md)
-> [下一頁](new-field.md)  
+> [下一頁](new-field.md)

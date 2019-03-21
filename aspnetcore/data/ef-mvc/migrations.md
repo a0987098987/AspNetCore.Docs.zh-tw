@@ -7,18 +7,18 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: ac924e7d6bee2f02ab11281a5c27f2c94a7183b3
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 6d4ed0e95499c30417e1cfd07f57de824a8a62ed
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56102990"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265524"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>教學課程：使用移轉功能 - ASP.NET MVC 搭配 EF Core
 
 在本教學課程中，您會先使用 EF Core 移轉功能來管理資料模型變更。 在稍後的教學課程中，您將在變更資料模型時新增更多移轉作業。
 
-在本教學課程中，您會：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 了解移轉
@@ -28,7 +28,6 @@ ms.locfileid: "56102990"
 > * 檢查 Up 和 Down 方法
 > * 了解資料模型快照集
 > * 套用移轉
-
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -60,6 +59,7 @@ ms.locfileid: "56102990"
 
 > [!NOTE]
 > 如果您不想變更資料庫名稱，替代方法是刪除資料庫。 使用 [SQL Server 物件總管] (SSOX) 或 `database drop` CLI 命令：
+>
 > ```console
 > dotnet ef database drop
 > ```

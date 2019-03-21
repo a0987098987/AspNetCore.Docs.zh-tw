@@ -5,12 +5,12 @@ description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中�
 ms.author: riande
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 29d9369cfa6a4c76f015b5a819a27dfa280d4075
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 88449a0064dad42d8d2bf9fbdd67078e4c2ba8de
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346407"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58210050"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
@@ -146,7 +146,6 @@ cd RazorPagesMovie
 * *.cshtml.cs* 檔案，其中包含處理頁面事件的 C# 程式碼。
 
 支援檔案的名稱以底線開頭。 例如，*_Layout.cshtml* 檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱<xref:mvc/views/layout>。
-
 
 ### <a name="wwwroot-folder"></a>wwwroot 資料夾
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 12/18/2018
 uid: fundamentals/owin
-ms.openlocfilehash: 51982c7ebc4f66c2b0b73bf425d9ecbd0bf37826
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: de8548fe2396102fe44a8e6a000b44d4eea63285
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637790"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209921"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>具有 ASP.NET Core 的 Open Web Interface for .NET (OWIN)
 
@@ -260,14 +260,12 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 | owin.ResponseHeaders | `IDictionary<string,string[]>`  | |
 | owin.ResponseBody | `Stream`  | |
 
-
 ### <a name="other-data-owin-v100"></a>其他資料 (OWIN 1.0.0 版)
 
 | Key               | 值 (類型) | 說明 |
 | ----------------- | ------------ | ----------- |
 | owin.CallCancelled | `CancellationToken` |  |
 | owin.Version  | `String` | |   
-
 
 ### <a name="common-keys"></a>共同索引鍵
 
@@ -282,13 +280,11 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 | server.IsLocal  | `bool` | |    
 | server.OnSendingHeaders  | `Action<Action<object>,object>` | |
 
-
 ### <a name="sendfiles-v030"></a>SendFiles 0.3.0 版
 
 | Key               | 值 (類型) | 說明 |
 | ----------------- | ------------ | ----------- |
 | sendfile.SendAsync | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | 每個要求 |
-
 
 ### <a name="opaque-v030"></a>Opaque 0.3.0 版
 
@@ -298,7 +294,6 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 | opaque.Upgrade | `OpaqueUpgrade` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
 | opaque.Stream | `Stream` |  |
 | opaque.CallCancelled | `CancellationToken` |  |
-
 
 ### <a name="websocket-v030"></a>WebSocket 0.3.0 版
 

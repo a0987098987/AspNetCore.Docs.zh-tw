@@ -1,16 +1,16 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 author: rick-anderson
-description: 在此教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。
+description: 在本教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/migrations
-ms.openlocfilehash: ef79aca700068aadf9b5b2b689213b6e78a5d729
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 5848e5e1e45708c3ab5c2a79614111662701aa77
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346433"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320156"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 
@@ -22,12 +22,12 @@ ms.locfileid: "57346433"
 
 [!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
-在此教學課程中，會使用 EF Core 移轉功能來管理資料模型變更。
+在本教學課程中，會使用 EF Core 移轉功能來管理資料模型變更。
 
 若您遇到無法解決的問題，請下載[完整應用程式](
 https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
 
-開發新的應用程式時，資料模型經常變更。 每次模型變更時，模型就與資料庫不同步。 此教學課程從設定 Entity Framework 來建立不存在的資料庫開始。 每次資料模型變更時：
+開發新的應用程式時，資料模型經常變更。 每次模型變更時，模型就與資料庫不同步。 本教學課程從設定 Entity Framework 來建立不存在的資料庫開始。 每次資料模型變更時：
 
 * 會卸除資料庫。
 * EF 會建立一個符合模型的新資料庫。
@@ -61,7 +61,7 @@ Drop-Database
  dotnet ef database drop
  ```
 
-------
+---
 
 ## <a name="create-an-initial-migration-and-update-the-db"></a>建立初始移轉並更新資料庫
 
@@ -81,7 +81,7 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-------
+---
 
 ### <a name="examine-the-up-and-down-methods"></a>檢查 Up 和 Down 方法
 
@@ -120,13 +120,13 @@ dotnet ef migrations remove
 
 如需詳細資訊，請參閱 [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)。
 
-------
+---
 
 remove migrations 命令會刪除移轉，並確保正確地重設快照集。
 
 ### <a name="remove-ensurecreated-and-test-the-app"></a>移除 EnsureCreated 並測試應用程式
 
-早期開發會使用 `EnsureCreated`。 在此教學課程中，則使用移轉。 `EnsureCreated` 具有下列限制：
+早期開發會使用 `EnsureCreated`。 在本教學課程中，則使用移轉。 `EnsureCreated` 具有下列限制：
 
 * 略過移轉，並建立資料庫和結構描述。
 * 不會建立移轉資料表。

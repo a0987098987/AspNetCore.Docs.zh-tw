@@ -109,7 +109,7 @@ dotnet publish -c Release
 * 應用程式會直接在瀏覽器 UI 執行緒上執行。 支援下列策略之一：
   * Blazor 應用程式由 ASP.NET Core 應用程式提供服務。 介紹於[使用 ASP.NET Core 的用戶端 Blazor 裝載部署](#client-side-blazor-hosted-deployment-with-aspnet-core)一節。
   * Blazor 應用程式放在靜態裝載的網頁伺服器或服務上，其中 .NET 不會用來提供服務給 Blazor 應用程式。 其於[用戶端 Blazor 獨立部署](#client-side-blazor-standalone-deployment)一節中介紹。
-  
+
 ### <a name="configure-the-linker"></a>設定連結器
 
 Blazor 在每個組建上執行中繼語言 (IL) 連結，以從輸出組件移除不必要的 IL。 您可以控制組建上的組件連結。 如需詳細資訊，請參閱<xref:host-and-deploy/razor-components/configure-linker>。
@@ -191,7 +191,8 @@ Blazor 應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以�
 
 如需部署至 Azure App Service 的資訊，請參閱下列主題：
 
-<xref:tutorials/publish-to-azure-webapp-using-vs>  
+<xref:tutorials/publish-to-azure-webapp-using-vs>
+
 了解如何使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure App Service。
 
 ### <a name="client-side-blazor-standalone-deployment"></a>用戶端 Blazor 獨立部署
@@ -299,5 +300,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 如需部署至 Azure App Service 的資訊，請參閱下列主題：
 
-<xref:tutorials/publish-to-azure-webapp-using-vs>  
+<xref:tutorials/publish-to-azure-webapp-using-vs>
+
 了解如何使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure App Service。

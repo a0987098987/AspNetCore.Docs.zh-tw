@@ -141,6 +141,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    ```powershell
    Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.{PLATFORM}\
    ```
+
    當已安裝 x64 預覽執行階段時，此命令會傳回 `True`。
 
 > [!NOTE]
@@ -194,11 +195,13 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
      <RuntimeIdentifier>win-x86</RuntimeIdentifier>
    </PropertyGroup>
    ```
+
 1. 從命令殼層中使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，針對主機執行階段以 [發行] 設定來發佈應用程式。 在下列範例中，將針對 `win-x86` RID發佈應用程式。 提供給 `--runtime` 選項的 RID 必須在專案檔的 `<RuntimeIdentifier>` (或 `<RuntimeIdentifiers>`) 屬性中提供。
 
    ```console
    dotnet publish --configuration Release --runtime win-x86
    ```
+
 1. 將 bin/Release/{目標 FRAMEWORK}/{執行階段識別碼}/publish 目錄的內容移至 App Service 中的網站。
 
 ### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器

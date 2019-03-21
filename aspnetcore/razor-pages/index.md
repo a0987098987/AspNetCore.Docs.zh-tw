@@ -264,6 +264,7 @@ services.AddMvc()
 您不必撰寫任何[防偽驗證](xref:security/anti-request-forgery)程式碼。 防偽權杖的產生和驗證會自動包含在 Razor 頁面中。
 
 <a name="layout"></a>
+
 ## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a>搭配 Razor Pages 使用版面配置、部分、範本和標記協助程式。
 
 Pages 可搭配 Razor 檢視引擎的所有功能一起使用。 版面配置、部分、範本、標記協助程式、*_ViewStart.cshtml*、*_ViewImports.cshtml* 運作方式一如它們在傳統 Razor 檢視中的方式。
@@ -465,6 +466,7 @@ public string Message { get; set; }
 如需詳細資訊，請參閱 [TempData](xref:fundamentals/app-state#tempdata)。
 
 <a name="mhpp"></a>
+
 ## <a name="multiple-handlers-per-page"></a>每頁面有多個處理常式
 
 下列頁面會使用 `asp-page-handler` 標記協助程式為兩個頁面處理常式產生標記：

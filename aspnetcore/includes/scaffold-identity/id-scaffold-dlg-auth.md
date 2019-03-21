@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 53774177030adf8a61606a696af85cd1f57d6ab9
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320276"
+---
 執行身分識別框架：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
@@ -15,41 +23,41 @@
   * 選取  **+** 來建立新的按鈕**資料內容類別**。
   * 選取 **新增**。
 
-注意： 如果您要建立新的使用者內容，您不需要選取要覆寫的檔案。
+注意:如果您要建立新的使用者內容，您不需要選取要覆寫的檔案。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 如果之前尚未安裝 ASP.NET Core scaffolder，請立即安裝：
 
-```cli
+```console
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
 新增的套件參考[Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/)至專案 (\*.csproj) 檔案。 在專案目錄中，執行下列命令：
 
-```cli
+```console
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 ```
 
 執行下列命令來列出識別 scaffolder 選項：
 
-```cli
+```console
 dotnet aspnet-codegenerator identity -h
 ```
 
 在 [專案] 資料夾中，執行身分識別 scaffolder 使用您想要的選項。 例如，若要設定的預設 UI 身分識別和檔案的最小數目，請執行下列命令。 使用正確的完整的名稱，為您的資料庫內容：
 
-```cli
+```console
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files Account.Register
 ```
 
-Powershell 會使用分號做為命令分隔符號。 使用 powershell 時，逸出分號區隔，在檔案清單，或置於雙引號括住的檔案清單。 例如: 
+PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，逸出分號區隔，在檔案清單，或置於雙引號括住的檔案清單。 例如: 
 
-```cli
+```console
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
 ```
 
 如果您未指定執行身分識別 scaffolder`--files`旗標或`--useDefaultUI`旗標，所有可用的身分識別 UI 頁面將會建立在您的專案。
 
--------------
+---

@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/20/2018
 uid: signalr/hubs
-ms.openlocfilehash: 9bc74079235338c75c47e06bde2b78dc1c466bd6
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 244ddc40e647bfcc3ca8cda2797c51bc49174822
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836684"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320143"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR 中樞
 
@@ -52,6 +52,7 @@ public class ChatHub : Hub
 
 > [!NOTE]
 > 中樞是暫時性的：
+>
 > * 不會將狀態儲存在中樞類別上的屬性。 每個中樞方法的呼叫會在新的中樞執行個體上執行。  
 > * 使用`await`呼叫非同步方法，取決於中樞保持運作時。 比方說，這類方法`Clients.All.SendAsync(...)`如果在未呼叫可能會失敗`await`和中樞方法完成之後才`SendAsync`完成。
 

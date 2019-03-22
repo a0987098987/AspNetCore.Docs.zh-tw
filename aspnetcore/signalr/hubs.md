@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/20/2018
 uid: signalr/hubs
-ms.openlocfilehash: 244ddc40e647bfcc3ca8cda2797c51bc49174822
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: f037c1f6fd7ef773b8e7b2fd4fdf6e28222c441a
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320143"
+ms.locfileid: "58327257"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR 中樞
 
@@ -116,7 +116,7 @@ public class ChatHub : Hub
 
 使用的一項缺點`SendAsync`是它依賴 magic 的字串，以指定要呼叫的用戶端方法。 這可讓程式碼開啟，如果方法名稱的拼字錯誤的執行階段錯誤或遺漏的用戶端。
 
-使用替代`SendAsync`是強型別`Hub`使用<xref:Microsoft.AspNetCore.SignalR.Hub`1>。 在下列範例中，`ChatHub`用戶端方法已成呼叫登出擷取`IChatClient`。  
+使用替代`SendAsync`是強型別`Hub`使用<xref:Microsoft.AspNetCore.SignalR.Hub%601>。 在下列範例中，`ChatHub`用戶端方法已成呼叫登出擷取`IChatClient`。  
 
 [!code-csharp[Interface for IChatClient](hubs/sample/hubs/ichatclient.cs?name=snippet_IChatClient)]
 

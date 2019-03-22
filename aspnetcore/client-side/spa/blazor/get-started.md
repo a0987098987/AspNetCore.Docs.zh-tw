@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/12/2019
 uid: spa/blazor/get-started
-ms.openlocfilehash: 667c57d536450fa2f8ae1cabc7c5a76a16d38a55
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: f46bd9af0f0762e794349d4e98de5c086a690d72
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665583"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327225"
 ---
 # <a name="get-started-with-blazor"></a>開始使用 Blazor
 
@@ -28,7 +28,7 @@ ms.locfileid: "57665583"
 
 若要在 Visual Studio 中建立第一個 Blazor 專案：
 
-1. 安裝最新[Blazor 語言服務延伸模組](https://go.microsoft.com/fwlink/?linkid=870389)從 Visual Studio Marketplace。 此步驟會 Blazor 範本提供給 Visual Studio。
+1. 安裝最新[Blazor 擴充](https://go.microsoft.com/fwlink/?linkid=870389)從 Visual Studio Marketplace。 此步驟會 Blazor 範本提供給 Visual Studio。
 1. 在命令殼層中執行下列命令，請 Blazor 範本適用於.NET Core CLI:
 
    ```console

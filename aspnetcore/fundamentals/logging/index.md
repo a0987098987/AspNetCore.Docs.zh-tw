@@ -56,7 +56,7 @@ ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提�
 
 ## <a name="create-logs"></a>建立記錄
 
-從 DI 取得 <xref:Microsoft.Extensions.Logging.ILogger`1> 物件。
+從 DI 取得 <xref:Microsoft.Extensions.Logging.ILogger%601> 物件。
 
 ::: moniker range=">= aspnetcore-2.0"
 

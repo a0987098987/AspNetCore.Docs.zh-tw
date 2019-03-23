@@ -34,7 +34,7 @@ ms.locfileid: "58210128"
 
 兩個 Url 有相同的原點，如果它們有相同的配置、 主機和連接埠 ([RFC 6454](https://tools.ietf.org/html/rfc6454))。
 
-這些兩個 Url 有相同的來源：
+這兩個 Url 有相同的來源：
 
 * `https://example.com/foo.html`
 * `https://example.com/bar.html`
@@ -46,7 +46,7 @@ ms.locfileid: "58210128"
 * `http://example.com/foo.html` &ndash; 不同的配置
 * `https://example.com:9000/foo.html` &ndash; 不同的連接埠
 
-比較原始來源時，Internet Explorer 不會視為連接埠。
+比較原始來源時，Internet Explorer 不會考慮連接埠。
 
 ## <a name="cors-with-named-policy-and-middleware"></a>使用具名的原則和中介軟體的 CORS
 
@@ -377,7 +377,7 @@ Date: Wed, 20 May 2015 06:33:22 GMT
 
 本章節描述中所發生情況[CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)要求的 HTTP 訊息層級。
 
-* CORS 是**不**的安全性功能。 CORS 是 W3C 標準，可讓伺服器放寬同源原則。
+* CORS 是**不**安全的功能。 CORS 是 W3C 標準，可讓伺服器放寬同源原則。
   * 比方說，無法使用惡意執行者[防止跨網站指令碼 (XSS)](xref:security/cross-site-scripting)對您的網站並執行其已啟用 CORS 的站台的跨網站要求竊取資訊。
 * 您的 API 不允許 CORS 較為安全。
   * 它由用戶端 （瀏覽器） 強制執行 CORS。 伺服器會執行要求，並傳回回應，它是發生錯誤，區塊會將回應傳回用戶端。 例如，任何下列工具會顯示伺服器回應：

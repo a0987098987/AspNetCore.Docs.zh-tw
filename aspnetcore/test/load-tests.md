@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/04/2019
 uid: test/loadtests
-ms.openlocfilehash: 39632af2c92dac548c03e24d35a5e8a03e00890d
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 08c4251059b7d9f4549ad710054d8299c4943465
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209829"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419377"
 ---
 # <a name="load-and-stress-testing-aspnet-core"></a>負載和壓力測試的 ASP.NET Core
 
-負載測試和壓力測試很重要，可確保 web 應用程式是高效能且可調整。 其目標是不同甚至是他們通常會共用類似的測試。
+負載測試和壓力測試很重要，可確保 web 應用程式是高效能且可調整。 其目標是不同的即使它們通常會共用類似的測試。
 
 **負載測試**:測試是否應用程式可以處理的特定案例的使用者指定的負載，同時仍然可滿足回應目標。 在正常情況下執行的應用程式。
 

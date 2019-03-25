@@ -5,12 +5,12 @@ description: 了解如何開始使用 ASP.NET Core MVC。
 ms.author: riande
 ms.date: 12/12/2018
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: c09c06f55c4179e9e2174f0063ab7387b7e4c31b
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: dbc07558d7d7672e60e8834dc3e4e9d8aab437e3
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899225"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265280"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 
@@ -36,7 +36,6 @@ ms.locfileid: "56899225"
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 從 Visual Studio 中，選取 [檔案] > [新增] > [專案]。
@@ -50,7 +49,7 @@ ms.locfileid: "56899225"
 * 將專案命名為 "MvcMovie" (請務必將專案命名為 "MvcMovie"，以便複製程式碼時命名空間相符)。
 * 選取 [確定]
 
-![[新增專案] 對話方塊, 左窗格中的 .Net core, ASP.NET Core Web ](start-mvc/_static/new_project2-21.png)
+![[新增專案] 對話方塊、左窗格中的 [.Net Core]、ASP.NET Core Web ](start-mvc/_static/new_project2-21.png)
 
 完成 [新增 ASP.NET Core Web 應用程式 (.NET Core) - MvcMovie] 對話方塊：
 
@@ -58,11 +57,10 @@ ms.locfileid: "56899225"
 * 選取 [Web 應用程式 (模型-檢視-控制器)]
 * 選取 [確定]
 
-![[新增專案] 對話方塊, 左窗格中的 .Net core, ASP.NET Core Web ](start-mvc/_static/new_project22-21.png)
+![[新增專案] 對話方塊、左窗格中的 [.Net Core]、ASP.NET Core Web ](start-mvc/_static/new_project22-21.png)
 
 Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只要輸入專案名稱，然後選取幾個選項，就立刻會有工作中的應用程式。 這是基本的入門專案，讓我們從這裡開始吧。
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 本教學課程假設您熟悉 VS Code。 如需詳細資訊，請參閱 [VS Code 使用者入門](https://code.visualstudio.com/docs)和 [Visual Studio Code 說明](#visual-studio-code-help)。
@@ -81,7 +79,6 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
   * `code -r MvcMovie`：在 Visual Studio Code 中載入 *MvcMovie.csproj* 專案檔。
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 選取 [檔案] > [新增方案]。
@@ -96,12 +93,11 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 * 將專案命名為 **MvcMovie**，然後選取 [建立]。
 
----  
-<!-- End of VS tabs -->
+---
 
 ### <a name="run-the-app"></a>執行應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 選取 **Ctrl-F5** 以非偵錯模式執行應用程式。
 
@@ -117,13 +113,13 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   ![IIS Express](start-mvc/_static/iis_express.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 按 Ctrl+F5 即可執行而不使用偵錯工具。
 
 [!INCLUDE[](~/includes/trustCertVSC.md)]
 
-  Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後巡覽至 `https://localhost:5001`。 位址列會顯示 `localhost:port:5001`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
+  Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後瀏覽至 `https://localhost:5001`。 位址列會顯示 `localhost:port:5001`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
 
   使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式來重新整理頁面並檢視變更。
 
@@ -136,7 +132,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 * 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 當您執行應用程式時，會看到不同的連接埠編號。
 * 您可以從 [執行] 功能表的偵錯或非偵錯模式中啟動應用程式。
 
-------
+---
 
 * 選取 [接受] 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
@@ -151,4 +147,4 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 在本教學課程的下一個部分中，您會了解 MVC，並開始撰寫一些程式碼。
 
 > [!div class="step-by-step"]
-> [下一步](adding-controller.md)  
+> [下一步](adding-controller.md)

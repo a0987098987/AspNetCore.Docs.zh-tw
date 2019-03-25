@@ -5,12 +5,12 @@ description: 了解如何讀取及操作應用程式模型，來修改 ASP.NET C
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/application-model
-ms.openlocfilehash: f3e0aafa3e6a352c632e4abbf3943be61f11ea81
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: 6b0591a877c0d82e0ee6ab002eb6a6650753677b
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225495"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208592"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>在 ASP.NET Core 中使用應用程式模型
 
@@ -25,9 +25,9 @@ ASP.NET Core MVC 應用程式模型包含抽象介面和描述 MVC 應用程式�
 ASP.NET Core MVC 應用程式模型具有下列結構：
 
 * ApplicationModel
-    * 控制器 (ControllerModel)
-        * 動作 (ActionModel)
-            * 參數 (ParameterModel)
+  * 控制器 (ControllerModel)
+    * 動作 (ActionModel)
+      * 參數 (ParameterModel)
 
 模型的每個層級都可存取共同的 `Properties` 集合，而較低層級可以存取並覆寫階層架構中較高層級所設定的屬性值。 屬性會在建立動作時保存到 `ActionDescriptor.Properties`。 然後當處理要求時，可以透過 `ActionContext.ActionDescriptor.Properties` 來存取慣例所新增或修改的任何屬性。 使用屬性是針對每個動作設定篩選條件及模型繫結器等的好方法。
 

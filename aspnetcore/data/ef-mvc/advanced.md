@@ -7,18 +7,18 @@ ms.custom: mvc
 ms.date: 02/05/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: f02aa1d6d8e431e7e2613835b3216786aed4ecd4
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: c4804bd6614c7d5a2a30c8f59a645f603929ad52
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103094"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264590"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
 
 在上一個教學課程中，您實作了單表繼承。 本教學課程介紹幾個實用的主題，在超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念時，需要注意這些主題。
 
-在本教學課程中，您會：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 執行原始 SQL 查詢
@@ -81,7 +81,7 @@ ms.locfileid: "56103094"
 
 ![更新課程學分數頁面](advanced/_static/update-credits.png)
 
-在 *CoursesContoller.cs* 中，為 HttpGet 和 HttpPost 新增 UpdateCourseCredits 方法：
+在 *CoursesController.cs* 中，為 HttpGet 和 HttpPost 新增 UpdateCourseCredits 方法：
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
 
@@ -202,6 +202,7 @@ Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCor
 Tom Dykstra 和 Rick Anderson (Twitter @RickAndMSFT) 撰寫了本教學課程。 Rowan Miller、Diego Vega 和其他 Entity Framework 小組成員協助進行程式碼檢閱，並協助對撰寫本教學課程的程式碼時發生的問題進行偵錯。 John Parente 和 Paul Goldman 更新了 ASP.NET Core 2.2 的教學課程。
 
 <a id="common-errors"></a>
+
 ## <a name="troubleshoot-common-errors"></a>針對常見錯誤進行疑難排解
 
 ### <a name="contosouniversitydll-used-by-another-process"></a>ContosoUniversity.dll 已由其他處理序使用

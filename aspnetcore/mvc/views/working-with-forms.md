@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/27/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: a0fbeac51bd1bfbc50c4d369a479ce5f3091358b
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 2d5168ed4b1e14e507262361de9fa959924b82f6
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346251"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209553"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
@@ -205,9 +205,7 @@ Type expected
 |Int|type="number"|
 |Single、Double|type="number"|
 
-
 下表顯示輸入標籤協助程式將對應至特定的輸入類型的一些常見[資料註解](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性 (不是每個驗證屬性都列出)：
-
 
 |屬性|輸入類型|
 |---|---|
@@ -215,10 +213,9 @@ Type expected
 |[Url]|type="url"|
 |[HiddenInput]|type="hidden"|
 |[Phone]|type="tel"|
-|[DataType(DataType.Password)]| type="password"|
-|[DataType(DataType.Date)]| type="date"|
-|[DataType(DataType.Time)]| type="time"|
-
+|[DataType(DataType.Password)]|type="password"|
+|[DataType(DataType.Date)]|type="date"|
+|[DataType(DataType.Time)]|type="time"|
 
 範例：
 
@@ -378,7 +375,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ## <a name="the-label-tag-helper"></a>標籤標籤協助程式
 
-* 會針對運算式名稱產生標籤標題和 [<label>](https://www.w3.org/wiki/HTML/Elements/label) 項目的 `for` 屬性
+* 會針對運算式名稱產生 [\<label>](https://www.w3.org/wiki/HTML/Elements/label)元素的相關標籤標題和 `for` 屬性
 
 * HTML 協助程式替代：`Html.LabelFor`。
 
@@ -450,7 +447,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * HTML 協助程式替代：`@Html.ValidationSummary`
 
-`Validation Summary Tag Helper` 用來顯示驗證訊息的摘要。 `asp-validation-summary` 屬性值可以是下列任一個：
+`Validation Summary Tag Helper` 用來顯示驗證訊息的摘要。 `asp-validation-summary` 屬性值可以是下列任一項：
 
 |asp-validation-summary|顯示的驗證訊息|
 |--- |--- |

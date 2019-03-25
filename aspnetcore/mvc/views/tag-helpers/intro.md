@@ -4,20 +4,20 @@ author: rick-anderson
 description: 了解何謂標籤協助程式，以及如何在 ASP.NET Core 中使用。
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 2/14/2018
+ms.date: 03/18/2019
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 4b9bceb3ce0153af2d9a30c402febe09707145b7
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: 7768dd45bdbe40c16176d57a76823cbb9dd0b91b
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477302"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264611"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-## <a name="what-are-tag-helpers"></a>何謂標籤協助程式？
+## <a name="what-are-tag-helpers"></a>什麼是標籤協助程式
 
 標籤協助程式可讓伺服器端程式碼參與建立和轉譯 Razor 檔案中的 HTML 項目。 例如，內建 `ImageTagHelper` 可以將版本號碼附加至映像名稱。 只要映像變更，伺服器就會產生映像的新唯一版本，以保證用戶端可以取得最新的映像 (而不是過期的快取映像)。 有許多適用於一般工作 (例如建立表單和連結、載入資產等) 的內建標籤協助程式，還有更多位於公用 GitHub 存放庫及作為 NuGet 套件來提供。 標籤協助程式是以 C# 編寫，並根據項目名稱、屬性名稱或上層標籤來設定目標 HTML 項目。 例如，套用 `LabelTagHelper` 屬性時，內建 `LabelTagHelper` 可以將目標設為 HTML `<label>` 項目。 如果您熟悉 [HTML 協助程式](http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers)，則標籤協助程式可減少 Razor 檢視中 HTML 與 C# 之間的明確轉換。 在許多情況下，HTML 協助程式都會提供特定標籤協助程式的替代方式，但請務必辨識標籤協助程式未取代 HTML 協助程式，而且每個 HTML 協助程式都沒有標籤協助程式。 [標籤協助程式與 HTML 協助程式的比較](#tag-helpers-compared-to-html-helpers)會詳述差異。
 
@@ -122,6 +122,7 @@ public class Movie
 ```cshtml
 @tagHelperPrefix th:
 ```
+
 在下列程式碼影像中，標籤協助程式前置詞設定為 `th:`，因此只有使用前置詞 `th:` 的項目才支援標籤協助程式 (啟用標籤協助程式的項目具有特殊字型)。 `<label>` 和 `<input>` 項目具有標籤協助程式前置詞並且已啟用標籤協助程式，而 `<span>` 項目則否。
 
 ![影像](intro/_static/thp.png)
@@ -158,7 +159,7 @@ IntelliSense 陳述式完成可讓您輸入 Tab 鍵，來完成具有所選取�
 
 ![影像](intro/_static/stmtcomplete.png)
 
-只要輸入標籤協助程式屬性，標籤和屬性字型就會變更。 使用預設 Visual Studio "Blue" 或 "Light" 色彩佈景主題，而且字型為粗體紫色。 如果要使用 "Dark" 佈景主題，則字型是粗體藍綠色。 本文件中的影像是使用預設佈景主題所取得。
+只要輸入標籤協助程式屬性，標籤和屬性字型就會變更。 使用預設 Visual Studio "Blue" 或 "Light" 色彩佈景主題，而且字型為粗體紫色。 如果要使用 "Dark" 佈景主題，則字型是粗體藍綠色。 此文件中的影像是使用預設佈景主題所取得。
 
 ![影像](intro/_static/labelaspfor2.png)
 
@@ -186,37 +187,21 @@ at (`@`) 符號會告知 Razor 這是程式碼啟動。 下兩個參數 ("FirstN
 new {@class="caption"}
 ```
 
-是用來代表屬性的匿名物件。 因為 <strong>class</strong> 是 C# 中的保留關鍵字，所以您可以使用 `@` 符號來強制 C# 將 "@class=" 解譯為符號 (屬性名稱)。 針對前端設計人員 (熟悉 HTML/CSS/JavaScript 和其他用戶端技術，但不熟悉 C# 和 Razor)，這行大部分為外部。 您必須編寫整行，而 IntelliSense 沒有任何幫助。
+是用來代表屬性的匿名物件。 由於 `class` 是 C# 中的保留關鍵字，因此您可以使用 `@` 符號來強制 C# 將 `@class=` 解譯為符號 (屬性名稱)。 針對前端設計人員 (熟悉 HTML/CSS/JavaScript 和其他用戶端技術，但不熟悉 C# 和 Razor)，這行大部分為外部。 您必須編寫整行，而 IntelliSense 沒有任何幫助。
 
 使用 `LabelTagHelper`，可以將相同的標記撰寫為：
 
-![影像](intro/_static/label2.png)
+```cshtml
+<label class="caption" asp-for="FirstName"></label>
+```
 
 使用標籤協助程式版本時，只要您在 Visual Studio 編輯器中輸入 `<l`，IntelliSense 就會顯示相符的項目：
 
 ![影像](intro/_static/label.png)
 
-IntelliSense 可協助您撰寫整行。 `LabelTagHelper` 也預設為將 `asp-for` 屬性值 ("FirstName") 的內容設定為 "First Name"；它會將依照 Camel 命名法大小寫慣例的屬性轉換成句子，而句子包含具有空格且發生每個新大寫字母的屬性名稱。 在下列標記中：
+IntelliSense 可協助您撰寫整行。
 
-![影像](intro/_static/label2.png)
-
-產生：
-
-```cshtml
-<label class="caption" for="FirstName">First Name</label>
-```
-
-如果您將內容新增至 `<label>`，則不會使用依照 Camel 命名法大小寫慣例的句子到句子大小寫內容。 例如: 
-
-![影像](intro/_static/1stName.png)
-
-產生：
-
-```cshtml
-<label class="caption" for="FirstName">Name First</label>
-```
-
-下列程式碼影像顯示透過 Visual Studio 2015 所含的舊版 ASP.NET 4.5.x MVC 範本所產生的 *Views/Account/Register.cshtml* Razor 檢視的 Form 部分。
+下列程式碼影像顯示從 Visual Studio 所含 ASP.NET 4.5.x MVC 範本產生之 *Views/Account/Register.cshtml* Razor 檢視的「表單」部分。
 
 ![影像](intro/_static/regCS.png)
 

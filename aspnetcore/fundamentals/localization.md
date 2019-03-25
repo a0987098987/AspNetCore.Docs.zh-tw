@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 70de86f2e8c4a5577b8a4b50c53d66eb3b205c09
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 4e87423a02a275eae7e2f6054e7a3b6c22cd7cee
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665532"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320211"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -76,7 +76,7 @@ ASP.NET Core 中導入了 `IStringLocalizer` 和 `IStringLocalizer<T>`，其設�
 
 | Key | 值 |
 | ----- | ------ |
-| `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b> ` |
+| `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 轉譯的檢視內容可能包含來自資源檔的 HTML 標記。
 
@@ -98,6 +98,7 @@ DataAnnotations 錯誤訊息會使用 `IStringLocalizer<T>` 來當地語系化�
 在 ASP.NET Core MVC 1.1.0 和更高版本中，系統會將非驗證屬性當地語系化。 ASP.NET Core MVC 1.0 **不會**查閱非驗證屬性的當地語系化字串。
 
 <a name="one-resource-string-multiple-classes"></a>
+
 ### <a name="using-one-resource-string-for-multiple-classes"></a>針對多個類別使用同一個資源字串
 
 下列程式碼會示範如何針對含有多個類別的驗證屬性使用同一個資源字串：
@@ -172,7 +173,7 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 如果 `RootNamespace` 與 `AssemblyName` 不同，請將下列內容納入 *AssemblyInfo.cs* (參數值取代為實際值)：
 
-```Csharp
+```csharp
 using System.Reflection;
 using Microsoft.Extensions.Localization;
 
@@ -254,7 +255,7 @@ Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `u
 
 ### <a name="the-accept-language-http-header"></a>Accept-Language HTTP 標頭
 
-您可在大多數的瀏覽器中設定 [Accept-Language 標頭](https://www.w3.org/International/questions/qa-accept-lang-locales)，其最初的設計目的是用來指定使用者的語言。 此設定可指出瀏覽器已設好要傳送哪些項目，或已從基礎作業系統繼承哪些項目。 透過瀏覽器要求的 Accept-Language HTTP 標頭來偵測使用者的慣用語言，並非萬無一失 (請參閱 [Setting language preferences in a browser](https://www.w3.org/International/questions/qa-lang-priorities.en.php) (在瀏覽器中設定語言喜好設定)。 生產環境應用程式應該包含可讓使用者自訂文化特性的選擇方式。
+您可在大多數的瀏覽器中設定 [Accept-Language 標頭](https://www.w3.org/International/questions/qa-accept-lang-locales)，其最初的設計目的是用來指定使用者的語言。 這項設定可指出瀏覽器已設好要傳送哪些項目，或已從基礎作業系統繼承哪些項目。 透過瀏覽器要求的 Accept-Language HTTP 標頭來偵測使用者的慣用語言，並非萬無一失 (請參閱 [Setting language preferences in a browser](https://www.w3.org/International/questions/qa-lang-priorities.en.php) (在瀏覽器中設定語言喜好設定)。 生產環境應用程式應該包含可讓使用者自訂文化特性的選擇方式。
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>在 IE 中設定 Accept-Language HTTP 標頭
 
@@ -304,7 +305,6 @@ services.Configure<RequestLocalizationOptions>(options =>
 ### <a name="set-the-culture-programmatically"></a>以程式設計方式來設定文化特性
 
 [GitHub](https://github.com/aspnet/entropy) 上的這個範例 **Localization.StarterWeb** 專案包含可設定 `Culture` 的 UI。 *Views/Shared/_SelectLanguagePartial.cshtml* 檔可讓您從支援的文化特性清單中選取文化特性：
-
 
 [!code-cshtml[](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 

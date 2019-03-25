@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
 author: rick-anderson
-description: 在此教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選、分頁功能新增至頁面。
+description: 在本教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選、分頁功能新增至頁面。
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 4616e93e0cfc25f3ad66721856a4e48910f2fcf5
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 162586059e3115bc15efaa63a9a0652e09872f1b
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345955"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209961"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
 
@@ -23,7 +23,7 @@ ms.locfileid: "57345955"
 
 [!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
-在此教學課程中，將新增排序、篩選、分組和分頁功能。
+在本教學課程中，將新增排序、篩選、分組和分頁功能。
 
 下圖顯示已完成的頁面。 資料行標題為可按式連結，可用以排序資料行。 重覆按一下資料行標題，可切換遞增和遞減排序次序。
 
@@ -128,7 +128,7 @@ Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` �
 
 `Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
-如果程式碼變更為使用 `IEnumerable`，則上述程式碼會確保結果不區分大小寫。 在 `IEnumerable` 集合上呼叫 `Contains` 時，會使用 .NET Core 實作。 在 `IQueryable` 物件上呼叫 `Contains` 時，會使用資料庫實作。 從儲存機制中傳回 `IEnumerable` 時，效能可能會顯著損失：
+如果程式碼變更為使用 `IEnumerable`，則上述程式碼會確保結果不區分大小寫。 在 `IEnumerable` 集合上呼叫 `Contains` 時，會使用 .NET Core 實作。 在 `IQueryable` 物件上呼叫 `Contains` 時，會使用資料庫實作。 從存放庫傳回 `IEnumerable` 可能對效能產生明顯的負面影響：
 
 1. 所有列都會從資料庫伺服器傳回。
 1. 在應用程式中，傳回的所有資料列都會套用篩選。

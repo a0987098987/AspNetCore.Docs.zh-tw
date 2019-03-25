@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 326f66070d51c04298abbf6292d2d350414311de
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 36c2bdfa585a0fd54ca93bf4c0edb4cf6f7d934a
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841394"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265439"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>針對 Azure App Service 上的 ASP.NET Core 進行疑難排解
 
@@ -19,12 +19,11 @@ ms.locfileid: "57841394"
 
 [!INCLUDE [Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
-本文說明如何使用 Azure App Service 診斷工具來診斷 ASP.NET Core 應用程式啟動問題。 如需其他疑難排解建議，請參閱 Azure 文件中的 [Azure App Service 診斷概觀](/azure/app-service/app-service-diagnostics)和[如何：監視 Azure App Service 中的應用程式](/azure/app-service/web-sites-monitor)。
+此文件說明如何使用 Azure App Service 診斷工具來診斷 ASP.NET Core 應用程式啟動問題。 如需其他疑難排解建議，請參閱 Azure 文件中的 [Azure App Service 診斷概觀](/azure/app-service/app-service-diagnostics)和[如何：監視 Azure App Service 中的應用程式](/azure/app-service/web-sites-monitor)。
 
 ## <a name="app-startup-errors"></a>應用程式啟動錯誤
 
-**502.5 處理序失敗**  
-背景工作處理序失敗。 應用程式未啟動。
+**502.5 處理序失敗** 背景工作處理序失敗。 應用程式未啟動。
 
 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)嘗試啟動背景工作處理序，但無法啟動。 檢查「應用程式事件記錄檔」通常有助於針對這類問題進行疑難排解。 [應用程式事件記錄檔](#application-event-log)一節說明了如何存取此記錄檔。
 
@@ -32,7 +31,8 @@ ms.locfileid: "57841394"
 
 ![顯示 [502.5 處理序失敗] 頁面的瀏覽器視窗](troubleshoot/_static/process-failure-page.png)
 
-**500 內部伺服器錯誤**  
+**500 內部伺服器錯誤**
+
 應用程式啟動，但有錯誤導致伺服器無法完成要求。
 
 此錯誤是在啟動或建立回應時，在應用程式的程式碼內發生。 回應可能未包含任何內容，或是回應可能在瀏覽器中以「500 內部伺服器錯誤」的形式出現。 「應用程式事件記錄檔」通常會指出該應用程式已正常啟動。 從伺服器的觀點來看，這是正確的。 應用程式已啟動，但無法產生有效的回應。 請[在 Kudu 主控台中執行應用程式](#run-the-app-in-the-kudu-console)或[啟用 ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)，以針對問題進行疑難排解。
@@ -83,15 +83,16 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
      ```console
      dotnet .\{ASSEMBLY NAME}.dll
      ```
+
    * 如果應用程式是[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)：
 
      ```console
      {ASSEMBLY NAME}.exe
      ```
-   
+
 來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
-   
-##### <a name="framework-depdendent-deployment-running-on-a-preview-release"></a>在預覽版上執行的架構相依部署
+
+##### <a name="framework-dependent-deployment-running-on-a-preview-release"></a>在預覽版上執行的架構相依部署
 
 *要求安裝 ASP.NET Core {VERSION} (x86) 執行階段網站延伸模組。*
 
@@ -113,7 +114,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
 
-##### <a name="framework-depdendent-deployment-running-on-a-preview-release"></a>在預覽版上執行的架構相依部署
+##### <a name="framework-dependent-deployment-running-on-a-preview-release"></a>在預覽版上執行的架構相依部署
 
 *要求安裝 ASP.NET Core {VERSION} (x64) 執行階段網站延伸模組。*
 
@@ -196,7 +197,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 請參閱下列主題：
 
-* [＜使用 Visual Studio 針對 Azure App Service 中的 Web 應用程式進行疑難排解＞的＜為 Web 應用程式進行遠端偵錯＞一節](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug) (Azure 文件)
+* [＜使用 Visual Studio 疑難排解 Azure App Service 中的 Web 應用程式＞的＜遠端偵錯 Web 應用程式＞一節](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug) (Azure 文件)
 * [在 Visual Studio 2017 中針對 Azure 中 IIS 上的 ASP.NET Core 進行遠端偵錯](/visualstudio/debugger/remote-debugging-azure) \(機器翻譯\) (Visual Studio 文件)
 
 ## <a name="application-insights"></a>Application Insights
@@ -230,7 +231,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 1. 在 Azure 入口網站中，選取 [診斷記錄檔] 刀鋒視窗。
 1. 選取 [應用程式記錄 (檔案系統)] 和 [詳細錯誤訊息].的 [開啟] 開關。 選取刀鋒視窗頂端的 [儲存] 按鈕。
-1. 若要包含失敗要求追蹤 (也稱為「失敗要求事件緩衝處理」(FREB) 記錄)，請選取 [失敗要求的追蹤] 的 [開啟] 開關。 
+1. 若要包含失敗要求追蹤 (也稱為「失敗要求事件緩衝處理」(FREB) 記錄)，請選取 [失敗要求的追蹤] 的 [開啟] 開關。
 1. 選取 [記錄資料流] 刀鋒視窗 (列在入口網站中緊接在 [診斷記錄檔] 刀鋒視窗之下)。
 1. 對應用程式發出要求。
 1. 在記錄資料流資料內，會指出錯誤的原因。

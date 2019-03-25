@@ -4,20 +4,20 @@ author: guardrex
 description: 了解如何診斷 ASP.NET Core 應用程式的 Internet Information Services (IIS) 部署問題。
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/06/2019
+ms.date: 03/14/2019
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 2f36ae2bda8537e91a3bc925505986bdd6a22a47
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 1fa90737aadebe3f714c702fbce649629d79dcd4
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841549"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264545"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>針對 IIS 上的 ASP.NET Core 進行疑難排解
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-本文說明以 [Internet Information Services (IIS)](/iis) 裝載 ASP.NET Core 應用程式時，如何診斷此應用程式的啟動問題。 本文中資訊適用的裝載環境是 Windows Server 和 Windows 桌面上的 IIS。
+此文件說明以 [Internet Information Services (IIS)](/iis) 裝載 ASP.NET Core 應用程式時，如何診斷此應用程式的啟動問題。 此文件中資訊適用的裝載環境是 Windows Server 和 Windows 桌面上的 IIS。
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -33,17 +33,13 @@ ms.locfileid: "57841549"
 
 其他疑難排解主題：
 
-<xref:host-and-deploy/azure-apps/troubleshoot>  
-雖然 App Service 使用 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)和 IIS 來裝載應用程式，但如需 App Service 特定的指示，請參閱其專屬的主題。
+<xref:host-and-deploy/azure-apps/troubleshoot> 雖然 App Service 使用 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)和 IIS 來裝載應用程式，但如需 App Service 特定的指示，請參閱其專屬的主題。
 
-<xref:fundamentals/error-handling>  
-了解在本機系統上進行開發時，如何處理 ASP.NET Core 應用程式中的錯誤。
+<xref:fundamentals/error-handling> 了解在本機系統上進行開發時，如何處理 ASP.NET Core 應用程式中的錯誤。
 
-[了解使用 Visual Studio 進行偵錯](/visualstudio/debugger/getting-started-with-the-debugger)  
-本主題將介紹 Visual Studio 偵錯工具的功能。
+[了解如何使用 Visual Studio 進行偵錯](/visualstudio/debugger/getting-started-with-the-debugger) 本主題介紹 Visual Studio 偵錯工具的功能。
 
-[使用 Visual Studio Code 進行偵錯](https://code.visualstudio.com/docs/editor/debugging) \(英文\)  
-了解 Visual Studio Code 中內建的偵錯支援。
+[使用 Visual Studio Code 進行偵錯](https://code.visualstudio.com/docs/editor/debugging) \(英文\) 了解 Visual Studio Code 中內建的偵錯支援。
 
 ## <a name="app-startup-errors"></a>應用程式啟動錯誤
 
@@ -51,7 +47,7 @@ ms.locfileid: "57841549"
 
 背景工作處理序失敗。 應用程式未啟動。
 
-ASP.NET Core 模組嘗試啟動後端 dotnet 處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。 
+ASP.NET Core 模組嘗試啟動後端 dotnet 處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。
 
 因為目標 ASP.NET Core 共用架構的版本不存在，導致應用程式設定錯誤是常見的失敗狀況。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。
 
@@ -65,7 +61,7 @@ ASP.NET Core 模組嘗試啟動後端 dotnet 處理序，但無法啟動。 通�
 
 背景工作處理序失敗。 應用程式未啟動。
 
-ASP.NET Core 模組嘗試啟動 .NET Core CLR 同處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。 
+ASP.NET Core 模組嘗試啟動 .NET Core CLR 同處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。
 
 因為目標 ASP.NET Core 共用架構的版本不存在，導致應用程式設定錯誤是常見的失敗狀況。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。
 
@@ -82,7 +78,7 @@ The ASP.NET Core 模組找不到 .NET Core CLR，並尋找同處理序要求處�
 
 背景工作處理序失敗。 應用程式未啟動。
 
-ASP.NET Core 模組找不到跨處理序裝載要求處理常式。 請確定 *aspnetcorev2_outofprocess.dll* 出現在子資料夾中，且位於 *aspnetcorev2.dll* 旁。 
+ASP.NET Core 模組找不到跨處理序裝載要求處理常式。 請確定 *aspnetcorev2_outofprocess.dll* 出現在子資料夾中，且位於 *aspnetcorev2.dll* 旁。
 
 ::: moniker-end
 
@@ -172,7 +168,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 1. 瀏覽至主控系統上網站的部署資料夾。
 1. 如果 [logs] 資料夾不存在，請建立該資料夾。 如需有關如何讓 MSBuild 在部署中自動建立 [logs] 資料夾的指示，請參閱[目錄結構](xref:host-and-deploy/directory-structure)主題。
-1. 編輯 *web.config* 檔案。 將 **stdoutLogEnabled** 設定為 `true`，並將 **stdoutLogFile** 路徑變更為指向 [logs] 資料夾 (例如 `.\logs\stdout`)。 路徑中的 `stdout` 是記錄檔名稱前置詞。 建立記錄檔時，系統會自動新增時間戳記、處理序識別碼及副檔名。 使用 `stdout` 作為檔案名稱前置詞時，一般記錄檔會命名為 *stdout_20180205184032_5412.log*。 
+1. 編輯 *web.config* 檔案。 將 **stdoutLogEnabled** 設定為 `true`，並將 **stdoutLogFile** 路徑變更為指向 [logs] 資料夾 (例如 `.\logs\stdout`)。 路徑中的 `stdout` 是記錄檔名稱前置詞。 建立記錄檔時，系統會自動新增時間戳記、處理序識別碼及副檔名。 使用 `stdout` 作為檔案名稱前置詞時，一般記錄檔會命名為 *stdout_20180205184032_5412.log*。
 1. 請確定您的應用程式集區身分識別具有 *logs* 資料夾的寫入權限。
 1. 儲存已更新的 *web.config* 檔案。
 1. 對應用程式發出要求。
@@ -245,24 +241,27 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 從 [Windows 錯誤報告 (WER)](/windows/desktop/wer/windows-error-reporting) 取得並分析傾印：
 
 1. 在 `c:\dumps` 中建立資料夾以保存損毀傾印檔案。 應用程式集區必須具備該資料夾的寫入權限。
-1. 執行 [EnableDumps PowerShell 指令碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/troubleshoot/scripts/EnableDumps.ps1)：
+1. 執行 [EnableDumps PowerShell 指令碼](https://github.com/aspnet/Docs/blob/master/aspnetcore/host-and-deploy/iis/troubleshoot/scripts/EnableDumps.ps1)：
    * 如果應用程式是使用[同處理序主控模型](xref:fundamentals/servers/index#in-process-hosting-model)，請執行 *w3wp.exe* 的指令碼：
 
      ```console
      .\EnableDumps w3wp.exe c:\dumps
      ```
+
    * 如果應用程式是使用[跨處理序主控模型](xref:fundamentals/servers/index#out-of-process-hosting-model)，請執行 *dotnet.exe* 的指令碼：
 
      ```console
      .\EnableDumps dotnet.exe c:\dumps
      ```
+
 1. 在會導致損毀的情況下，執行應用程式。
-1. 發生損毀之後，請執行 [DisableDumps PowerShell 指令碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/troubleshoot/scripts/DisableDumps.ps1)：
+1. 發生損毀之後，請執行 [DisableDumps PowerShell 指令碼](https://github.com/aspnet/Docs/blob/master/aspnetcore/host-and-deploy/iis/troubleshoot/scripts/DisableDumps.ps1)：
    * 如果應用程式是使用[同處理序主控模型](xref:fundamentals/servers/index#in-process-hosting-model)，請執行 *w3wp.exe* 的指令碼：
 
      ```console
      .\DisableDumps w3wp.exe
      ```
+
    * 如果應用程式是使用[跨處理序主控模型](xref:fundamentals/servers/index#out-of-process-hosting-model)，請執行 *dotnet.exe* 的指令碼：
 
      ```console

@@ -1,22 +1,22 @@
 ---
 title: 使用 ASP.NET Core 設定可攜式物件當地語系化
 author: sebastienros
-description: 本文介紹可攜式物件檔案，並概述在具有 Orchard Core 架構的 ASP.NET Core 應用程式中使用它們的步驟。
+description: 此文件介紹可攜式物件檔案，並概述在具有 Orchard Core 架構的 ASP.NET Core 應用程式中使用它們的步驟。
 ms.author: scaddie
 ms.date: 09/26/2017
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: c9f892f5a886d7167b4705595ed2277279495201
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 466759b30e756a7cac8abab7352025df0462bb6f
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207624"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58210089"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>使用 ASP.NET Core 設定可攜式物件當地語系化
 
 作者：[Sébastien Ros](https://github.com/sebastienros) 和 [Scott Addie](https://twitter.com/Scott_Addie)
 
-本文將逐步說明在具有 [Orchard Core](https://github.com/OrchardCMS/OrchardCore) 架構的 ASP.NET Core 應用程式中使用可攜式物件 (PO) 檔案的步驟。
+此文件將逐步說明在具有 [Orchard Core](https://github.com/OrchardCMS/OrchardCore) 架構的 ASP.NET Core 應用程式中使用可攜式物件 (PO) 檔案的步驟。
 
 **注意：** Orchard Core 不是 Microsoft 產品。 因此，Microsoft 不提供這項功能的支援。
 
@@ -91,7 +91,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="creating-a-po-file"></a>建立 PO 檔案
 
-在應用程式根資料夾中建立名為 *<culture code>.po* 的檔案。 在此範例中，檔案名稱是 *fr.po*，因為使用法文語言：
+在應用程式根資料夾中建立名為 *\<culture code>.po* 的檔案。 在此範例中，檔案名稱是 *fr.po*，因為使用法文語言：
 
 [!code-text[](localization/sample/POLocalization/fr.po)]
 

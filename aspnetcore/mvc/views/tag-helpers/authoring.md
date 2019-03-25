@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 3e266bc435ff7e4a15655276c581ac171f0de47c
-ms.sourcegitcommit: a91e8dd2f4b788114c8bc834507277f4b5e8d6c5
+ms.openlocfilehash: ddfd7cb8c67e28709b8ce75d5a4d0a8c0c0cc43c
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712272"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58210076"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
@@ -81,7 +81,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
 -->
 
-若要使用 FQN 將標籤協助程式新增至檢視，請依序新增 FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) 與**組件名稱** (*AuthoringTagHelpers*，它不一定是 `namespace`)。 大部分開發人員都會想要使用萬用字元語法。 [標籤協助程式簡介](intro.md)會詳述標籤協助程式新增、移除、階層和萬用字元語法。
+若要使用 FQN 將標籤協助程式新增至檢視，您需先新增 FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)，再新增**組件名稱** (*AuthoringTagHelpers*，不一定要是 `namespace`)。 大部分開發人員都會想要使用萬用字元語法。 [標籤協助程式簡介](intro.md)會詳述標籤協助程式新增、移除、階層和萬用字元語法。
 
 1. 使用下列變更來更新 *Views/Home/Contact.cshtml* 檔案中的標記：
 

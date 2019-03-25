@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 02/21/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: abb426b1a41226e52d9b9b5c00c41ff816890d36
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: 6ec9b7bf3da0015b8ac3918a4d47644fffc14cdb
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56744127"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209170"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 
@@ -148,7 +148,7 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 1. 如果應用程式是[與架構相依的部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)，請安裝 .NET Core、.NET Framework 或兩者 (如果應用程式是以 .NET Framework 為目標的 .NET Core 應用程式)。
 
    * **.NET Core** &ndash; 如果應用程式需要 .NET Core，請從 [.NET Core 下載](https://dotnet.microsoft.com/download)取得並執行 **.NET Core 執行階段**安裝程式。 請勿在伺服器上安裝完整的 SDK。
-   * **.NET Framework** &ndash; 如果應用程式需要 .NET Framework，請參閱 [.NET Framework 安裝指南](/dotnet/framework/install/)。 安裝必要的 .NET Framework。 您可以從 [.NET Core 下載](https://dotnet.microsoft.com/download)頁面取得最新的 .NET Framework 安裝程式。
+   * **.NET Framework** &ndash; 如果應用程式需要 .NET Framework，請參閱 [.NET Framework 安裝指南](/dotnet/framework/install/)。 安裝必要的 .NET Framework。 您可以從 [.NET Core 下載](https://dotnet.microsoft.com/download)頁面取得最新 .NET Framework 的安裝程式。
 
    如果應用程式是[自封式部署](/dotnet/core/deploying/#framework-dependent-deployments-scd)，則應用程式的部署中會包含執行階段。 不需要在伺服器上安裝任何架構。
 

@@ -5,12 +5,12 @@ description: 將檢視新增至簡易的 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 03/04/2017
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 32eddb233a8a6b9b8f480926673d15d568ce6ede
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.openlocfilehash: 6ff706012dabbf9500a805708c1f058b59ebc610
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236428"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265556"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
 
@@ -28,7 +28,6 @@ ms.locfileid: "55236428"
 
 ## <a name="add-a-view"></a>新增檢視
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 依序以滑鼠右鍵按一下 *Views* 資料夾、[新增] > [新增資料夾]，然後將資料夾命名為 *HelloWorld*。
@@ -47,7 +46,6 @@ ms.locfileid: "55236428"
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view.png)
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 為 `HelloWorldController` 新增 `Index` 檢視。
@@ -55,7 +53,6 @@ ms.locfileid: "55236428"
 * 新增資料夾，並命名為 *Views/HelloWorld*。
 * 將檔案新增至 *Views/HelloWorld* 資料夾，並命名為 *Index.cshtml*。
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 依序以滑鼠右鍵按一下 *Views* 資料夾、[新增] > [新增資料夾]，然後將資料夾命名為 *HelloWorld*。
@@ -69,8 +66,7 @@ ms.locfileid: "55236428"
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view.png)
 
----  
-<!-- End of VS tabs -->
+---
 
 使用下列內容取代 *Views/HelloWorld/Index.cshtml* Razor 檢視檔案的內容：
 
@@ -152,7 +148,7 @@ ms.locfileid: "55236428"
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
-`ViewData` 字典物件包含將傳遞至檢視的資料。 
+`ViewData` 字典物件包含將傳遞至檢視的資料。
 
 建立名為 *Views/HelloWorld/Welcome.cshtml* 的 Welcome 檢視範本。
 

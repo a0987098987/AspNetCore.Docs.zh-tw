@@ -1,4 +1,12 @@
-# <a name="contribute-to-the-aspnet-documentation"></a>參與 ASP.NET 文件
+---
+ms.openlocfilehash: 98a03118954baa85b093a0514e1ac6f0fb6353e8
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320104"
+---
+# <a name="contribute-to-the-aspnet-core-documentation"></a>參與 ASP.NET Core 文件
 
 本文件涵蓋參與 [ASP.NET 文件網站](https://docs.microsoft.com/aspnet/)所裝載文章和程式碼範例的程序。 歡迎您加入修正錯字和新增文章的行列。
 
@@ -18,7 +26,7 @@
 
 如需此程序進展至發行新文章的範例，請參閱 .NET Docs 存放庫中的[議題&num;67](https://github.com/dotnet/docs/issues/67) 和[提取要求&num;798](https://github.com/dotnet/docs/pull/798)。 新文章為[記錄您的程式碼](https://docs.microsoft.com/dotnet/articles/csharp/codedoc)。
 
-## <a name="docs-authoring-pack-extension-in-visual-studio-code"></a>Visual Studio Code 中的 Docs Authoring Pack 延伸模組 
+## <a name="docs-authoring-pack-extension-in-visual-studio-code"></a>Visual Studio Code 中的 Docs Authoring Pack 延伸模組
 
 如果您使用 Visual Studio Code 來參與 ASP.NET 文件，您即可藉由安裝 [Docs Authoring Pack](https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-authoring-pack) 延伸模組來提高生產力。 該延伸模組會提供各種不同的工具，協助 Markdown linting、程式碼拼字檢查和文章範本。
 
@@ -30,7 +38,7 @@
 
 在每個 Markdown 檔案中，可能存在一個影像資料夾和一個範例程式碼資料夾。 如果文章是 [fundamentals/configuration/index.md](https://github.com/aspnet/Docs/blob/master/aspnetcore/fundamentals/configuration/index.md)，影像會位於 [fundamentals/configuration/index/\_static](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/_static) 中，而範例應用程式專案檔會位於 [fundamentals/configuration/index/sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/sample) 中。 *fundamentals/configuration/index.md* 檔案中的影像會由下列 Markdown 轉譯：
 
-```
+```md
 ![description of image for alt attribute](configuration/index/_static/imagename.png)
 ```
 
@@ -42,13 +50,13 @@
 
 內部連結應使用目標文章的 `uid` 並搭配 xref 連結 (設為連結內容標題的連結文字)：
 
-```
+```md
 <xref:uid_of_the_topic>
 ```
 
 如果文章的標題不適用於連結文字 (例如連結文字是句子中的單字或片語)，請使用下列命令來指定 xref 連結和連結文字：
 
-```
+```md
 [link text](xref:uid_of_the_topic)
 ```
 
@@ -73,13 +81,13 @@
 
 若要將完整程式碼檔案轉譯為程式碼片段：
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs)]
 ```
 
 若要使用行號，將一部分檔案轉譯為程式碼片段：
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs?range=1-10,20,30,40-50]
 [!code-html[](configuration/index/sample/Views/Home/Index.cshtml?range=1-10,20,30,40-50]
 ```
@@ -88,13 +96,13 @@
 
 若要轉譯名為 "snippet_Example" 的 C# 區域：
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs?name=snippet_Example)]
 ```
 
 若要醒目提示轉譯程式碼片段中所選取的行 (通常會以黃色背景色彩呈現)：
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs?name=snippet_Example&highlight=1-3,10,20-25)]
 [!code-csharp[](configuration/index/sample/Program.cs?range=10-20&highlight=1-3]
 [!code-html[](configuration/index/sample/Views/Home/Index.cshtml?range=10-20&highlight=1-3]
@@ -119,6 +127,7 @@ DocFX 需要：
   ```console
   docfx --serve
   ```
+
 * 在瀏覽器中，巡覽至 `http://localhost:8080/group1-dest/`。
 
 ### <a name="mono-instructions"></a>Mono 指示
@@ -128,6 +137,7 @@ DocFX 需要：
   ```console
   brew install mono
   ```
+
 * 下載[最新版的 DocFX](https://github.com/dotnet/docfx/releases)。
 * 將壓縮檔解壓縮到 *$HOME/bin/docfx*。
 * 在 bash shell 中建立 **docfx** 的別名配對。 第一個別名是用來建置文件。 第二個別名是用來建置及提供文件。
@@ -136,11 +146,13 @@ DocFX 需要：
   alias docfx='mono $HOME/bin/docfx/docfx.exe'
   alias docfx-serve='mono $HOME/bin/docfx/docfx.exe --serve'
   ```
+
 * 在命令殼層中，巡覽至包含 *docfx.json* 檔案的資料夾 (若是 ASP.NET 內容則為 *aspnet*；若是 ASP.NET Core 內容則為 *aspnetcore*)，然後執行下列命令，透過其別名組建和提供文件：
 
   ```console
   docfx-serve
   ```
+
 * 在瀏覽器中，巡覽至 `http://localhost:8080/group1-dest/`。
 
 ## <a name="voice-and-tone"></a>語態和語氣

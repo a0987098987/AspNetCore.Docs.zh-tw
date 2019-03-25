@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: f7b557c8e560393ae886c46fad95c48ccbcc65b4
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 31fca1b32942f9246e099c01669f77824edf521e
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56102964"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264841"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>教學課程：開始在 ASP.NET MVC Web 應用程式中使用 EF Core
 
@@ -27,7 +27,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 > [!NOTE]
 > 如需此教學課程的 ASP.NET Core 1.1 版本，請參閱[以 PDF 格式儲存之此教學課程的 VS 2017 Update 2 版本](https://webpifeed.blob.core.windows.net/webpifeed/Partners/efmvc1.1.pdf)。
 
-在本教學課程中，您會：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 建立 ASP.NET Core MVC Web 應用程式
@@ -316,7 +316,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 ![SSOX 中的 Student 資料表](intro/_static/ssox-student-table.png)
 
-<em>.mdf</em> 和 <em>.ldf</em> 資料庫檔案位於 <em>C:\Users\\<yourusername></em> 資料夾中。
+*.mdf* 和 *.ldf* 資料庫檔案位於 *C:\Users\\\<您的使用者名稱>* 資料夾中。
 
 因為您在應用程式啟動時執行的初始設定式方法中呼叫了 `EnsureCreated`，您現在可以對 `Student` 類別進行變更、刪除資料庫、重新執行應用程式，資料庫會自動重新建立以符合您所作出的變更。 例如，若您將一個 `EmailAddress` 屬性新增到 `Student` 類別，您便會在重新建立的資料表中看到新的 `EmailAddress` 資料行。
 
@@ -330,7 +330,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 * 命名為 ID 或 classnameID 的實體屬性，會辨識為主索引鍵屬性。
 
-* 如果屬性已命名為 *<navigation property name><primary key property name>* (例如，`StudentID` 為 `Student` 的導覽屬性，因為 `Student` 實體的主索引鍵是 `ID`)，會將屬性解譯為外部索引鍵屬性。 外部索引鍵屬性也可以簡單的命名為 *<primary key property name>* (例如 `EnrollmentID`，因為 `Enrollment` 實體的主索引鍵為 `EnrollmentID`)。
+* 如果屬性命名為*\<導覽屬性名稱>\<主索引鍵屬性名稱>*，系統就會將該屬性解譯為外部索引鍵屬性 (例如，若為 `Student` 導覽屬性，則為 `StudentID`，因為 `Student` 實體的主索引鍵是 `ID`)。 外部索引鍵屬性也可以直接命名為 *\<主索引鍵屬性名稱>* (例如 `EnrollmentID`，因為 `Enrollment` 實體的主索引鍵為 `EnrollmentID`)。
 
 慣例行為可以被覆寫。 例如，您可以明確指定資料表名稱，如稍早在本教學課程中您所見到的。 您可以設定資料行名稱以及將任何屬性設為主索引鍵或外部索引鍵，如同您在本系列[稍後的教學課程](complex-data-model.md)中所見。
 

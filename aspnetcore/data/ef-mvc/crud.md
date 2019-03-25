@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 368b1774ba977ec8020a02d48705200fd54c3bbd
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 83f5d4bdc3d5872109649818b61a6dbb656fd8be
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56102977"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264827"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學課程：實作 CRUD 功能 - ASP.NET MVC 搭配 EF Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "56102977"
 > [!NOTE]
 > 實作儲存機制模式，以在您的控制器及資料存取層之間建立抽象層是一種非常常見的做法。 為了使這些教學課程維持簡單，並聚焦於教導如何使用 Entity Framework，課程中將不會使用儲存機制。 如需儲存機制的詳細資訊，請參閱[本系列的最後一個教學課程](advanced.md)。
 
-在本教學課程中，您會：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 自訂 [詳細資料] 頁面
@@ -123,6 +123,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 `ValidateAntiForgeryToken` 屬性可協助防止跨網站偽造要求 (CSRF) 攻擊。 [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) 會自動將權杖插入檢視中，並在使用者提交表單時包含在內。 權杖會由 `ValidateAntiForgeryToken` 屬性進行驗證。 如需 CSRF 的詳細資訊，請參閱[防偽要求](../../security/anti-request-forgery.md)。
 
 <a id="overpost"></a>
+
 ### <a name="security-note-about-overposting"></a>關於大量指派 (overposting) 的安全性注意事項
 
 Scaffold 程式碼在 `Create` 方法上包含的 `Bind` 屬性是在建立案例中防止大量指派 (overposting) 的一種方法。 例如，假設 Student 實體包含了一個 `Secret` 屬性，而您不希望這個網頁設定這個屬性。
@@ -182,7 +183,7 @@ public class Student
 
 作為這些變更的結果，HttpPost `Edit` 方法的方法簽章會與 HttpGet `Edit` 方法的簽章一樣；因此，您已將方法重新命名為 `EditPost`。
 
-### <a name="alternative-httppost-edit-code-create-and-attach"></a>替代的 HttpPost Edit 程式碼：建立並附加
+### <a name="alternative-httppost-edit-code-create-and-attach"></a>替代的 HttpPost Edit 程式碼：建立並連結
 
 建議的 HttpPost Edit 程式碼可確保只有受到變更的資料行會獲得更新，並且會保留您不想要在資料繫結中包含之屬性內的資料。 然而，讀取優先的方法會需要額外的資料庫讀取，因此可能導致需要更多複雜的程式碼來處理並行衝突。 其替代方案便是將模型繫結器建立的實體連結到 EF 內容，並將其標示為已修改。 (請不要使用此程式碼更新您的專案。此程式碼僅作為展示選擇性的方法之用。)
 

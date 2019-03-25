@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: e186a3cb484035199a8f355540c3e985db87ad98
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 9157c94c6e8f433869c8163ebf7772a7271b11ba
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248571"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265324"
 ---
 # <a name="health-checks-in-aspnet-core"></a>ASP.NET Core 中的健康狀態檢查
 
@@ -92,7 +92,7 @@ public class ExampleHealthCheck : IHealthCheck
     }
 
     public Task<HealthCheckResult> CheckHealthAsync(
-        HealthCheckContext context, 
+        HealthCheckContext context,
         CancellationToken cancellationToken = default(CancellationToken))
     {
         // Execute health check logic here. This example sets a dummy
@@ -130,8 +130,8 @@ public void ConfigureServices(IServiceCollection services)
 ```csharp
 services.AddHealthChecks()
     .AddCheck<ExampleHealthCheck>(
-        "example_health_check", 
-        failureStatus: HealthStatus.Degraded, 
+        "example_health_check",
+        failureStatus: HealthStatus.Degraded,
         tags: new[] { "example" });
 ```
 
@@ -141,7 +141,7 @@ services.AddHealthChecks()
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddHealthChecks()
-        .AddCheck("Example", () => 
+        .AddCheck("Example", () =>
             HealthCheckResult.Healthy("Example is OK!"), tags: new[] { "example" })
 }
 ```
@@ -186,11 +186,11 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddHealthChecks()
-        .AddCheck("Foo", () => 
+        .AddCheck("Foo", () =>
             HealthCheckResult.Healthy("Foo is OK!"), tags: new[] { "foo_tag" })
-        .AddCheck("Bar", () => 
+        .AddCheck("Bar", () =>
             HealthCheckResult.Unhealthy("Bar is unhealthy!"), tags: new[] { "bar_tag" })
-        .AddCheck("Baz", () => 
+        .AddCheck("Baz", () =>
             HealthCheckResult.Healthy("Baz is OK!"), tags: new[] { "baz_tag" });
 }
 
@@ -199,7 +199,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     app.UseHealthChecks("/health", new HealthCheckOptions()
     {
         // Filter out the 'Bar' health check. Only Foo and Baz execute.
-        Predicate = (check) => check.Tags.Contains("foo_tag") || 
+        Predicate = (check) => check.Tags.Contains("foo_tag") ||
             check.Tags.Contains("baz_tag")
     });
 }
@@ -264,7 +264,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     });
 }
 
-private static Task WriteResponse(HttpContext httpContext, 
+private static Task WriteResponse(HttpContext httpContext,
     HealthReport result)
 {
     httpContext.Response.ContentType = "application/json";
@@ -340,7 +340,7 @@ dotnet run --scenario db
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_Configure)]
 
-若要使用範例應用程式執行 `DbContext` 探查案例，請確認 SQL Server 執行個體中不存在連接字串所指定的資料庫。 如果資料庫存在，請予以刪除。
+若要使用範例應用程式來執行 `DbContext` 探查案例，請確認 SQL Server 執行個體中沒有連接字串所指定的資料庫。 如果資料庫存在，請予以刪除。
 
 在命令殼層中執行來自專案資料夾的下列命令：
 
@@ -615,11 +615,11 @@ dotnet run --scenario port
        const string NAME = "example_health_check";
 
        public static IHealthChecksBuilder AddExampleHealthCheck(
-           this IHealthChecksBuilder builder, 
-           string name = default, 
-           string data1, 
-           int data2 = 1, 
-           HealthStatus? failureStatus = default, 
+           this IHealthChecksBuilder builder,
+           string name = default,
+           string data1,
+           int data2 = 1,
+           HealthStatus? failureStatus = default,
            IEnumerable<string> tags = default)
        {
            return builder.Add(new HealthCheckRegistration(
@@ -666,14 +666,14 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 ::: moniker range="= aspnetcore-2.2"
 
 > [!NOTE]
-> 以下因應措施可允許在已將一或多個其他託管服務新增至應用程式的情況下，將 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 執行個體新增至服務容器。 使用 ASP.NET Core 3.0 版時，不需要採取此因應措施。 如需詳細資訊，請參閱： https://github.com/aspnet/Extensions/issues/639。
+> 以下因應措施可允許在已將一或多個其他託管服務新增至應用程式的情況下，將 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 執行個體新增至服務容器。 使用 ASP.NET Core 3.0 版時，不需要採取此因應措施。 如需詳細資訊，請參閱： https://github.com/aspnet/Extensions/issues/639 \(英文\)。
 >
 > ```csharp
-> private const string HealthCheckServiceAssembly = 
+> private const string HealthCheckServiceAssembly =
 >     "Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherHostedService";
 >
 > services.TryAddEnumerable(
->     ServiceDescriptor.Singleton(typeof(IHostedService), 
+>     ServiceDescriptor.Singleton(typeof(IHostedService),
 >         typeof(HealthCheckPublisherOptions).Assembly
 >             .GetType(HealthCheckServiceAssembly)));
 > ```

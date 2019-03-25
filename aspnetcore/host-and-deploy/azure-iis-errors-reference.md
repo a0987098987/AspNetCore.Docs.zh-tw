@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 1c8cb31b306b38ec17596af0a84f22ca0e3d911c
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 053dcce7f8c59b7afe7e52d2f704c992afce0b67
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346222"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265179"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Azure App Service 與 IIS 搭配 ASP.NET Core 時的常見錯誤參考
 
@@ -61,7 +61,7 @@ ms.locfileid: "57346222"
 
 *適用於 Azure 應用程式服務所裝載的應用程式。*
 
-* **瀏覽器：** HTTP 錯誤 500.0 - ANCM 同處理序處理常式載入失敗 
+* **瀏覽器：** HTTP 錯誤 500.0 - ANCM 同處理序處理常式載入失敗
 
 * **應用程式記錄檔：** 叫用 hostfxr 尋找同處理序要求處理常式失敗，不會尋找任何原生相依性。 找不到同處理序要求處理常式。 已從叫用的 hostfxr 擷取輸出：無法找到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。 無法啟動應用程式 '/LM/W3SVC/1416782824/ROOT', ErrorCode '0x8000ffff'。
 
@@ -80,7 +80,7 @@ ms.locfileid: "57346222"
   * ASP.NET Core {RUNTIME VERSION} (x86) 執行階段
   * ASP.NET Core {RUNTIME VERSION} (x64) 執行階段
 
-  重新啟動應用程式。 請等候數秒，讓應用程式重新啟動。 
+  重新啟動應用程式。 請等候數秒，讓應用程式重新啟動。
 
 * 如果在預覽執行階段中執行應用程式，而且已經安裝 32 位元 (x86) 和 64 位元 (x64) [網站延伸模組](xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension)，請將與應用程式位元不符的網站延伸模組解除安裝。 移除網站延伸模組之後，請重新啟動應用程式。 請等候數秒，讓應用程式重新啟動。
 
@@ -201,8 +201,8 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
   ```xml
   <section name="aspNetCore" overrideModeDefault="Allow" />
   ```
-  
-  或者，安裝 the ASP.NET Core Hosting Bundle 的最新版本。 最新版本回溯相容，提供支援的 ASP.NET Core 應用程式。
+
+  或者，您也可以安裝最新版的「ASP.NET Core 裝載套件組合」。 最新版本回溯相容，提供支援的 ASP.NET Core 應用程式。
 
 ## <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>不正確的 processPath、遺失 PATH 變數、未安裝裝載套件組合、未重新啟動系統/IIS、未安裝 VC++ 可轉散發套件或 dotnet.exe 存取違規
 

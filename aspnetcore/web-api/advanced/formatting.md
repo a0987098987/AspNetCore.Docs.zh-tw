@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/14/2016
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 819bf1b49b56e953a9a4398e82866ba0b01ab4db
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: b0fce0632fd2d885cb8e9a056923ec365d2f327d
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207104"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209982"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 
@@ -129,13 +129,13 @@ services.AddMvc(options =>
 
 新增 XML 格式支援之後，控制器方法應該會根據要求的 `Accept` 標頭來傳回適當的格式，如這個 Fiddler 範例所示範：
 
-![Fiddler 主控台：要求的 [原始] 索引標籤會顯示 Accept 標頭值 application/xml。 回應的 [原始] 索引標籤會顯示 Content-Type 標頭值 application/xml。](formatting/_static/xml-response.png)
+![Fiddler 主控台：要求的 [原始] 索引標籤會顯示 Accept 標頭值為 application/xml。 回應的 [原始] 索引標籤會顯示 Content-Type 標頭值 application/xml。](formatting/_static/xml-response.png)
 
 您可以在 [偵測器] 索引標籤中看到已設定 `Accept: application/xml` 標頭來提出原始 GET 要求。 回應窗格會顯示 `Content-Type: application/xml` 標頭，並已將 `Author` 物件序列化為 XML。
 
 使用 [編輯器] 索引標籤，修改在 `Accept` 標頭中指定 `application/json` 的要求。 執行要求，並將回應格式化為 JSON：
 
-![Fiddler 主控台：要求的 [原始] 索引標籤會顯示 Accept 標頭值 application/json。 回應的 [原始] 索引標籤會顯示 Content-Type 標頭值 application/json。](formatting/_static/json-response-fiddler.png)
+![Fiddler 主控台：要求的 [原始] 索引標籤會顯示 Accept 標頭值為 application/json。 回應的 [原始] 索引標籤會顯示 Content-Type 標頭值 application/json。](formatting/_static/json-response-fiddler.png)
 
 在此螢幕擷取畫面中，您可以看到要求設定 `Accept: application/json` 標頭，而回應指定與其 `Content-Type` 相同的值。 `Author` 物件會以 JSON 格式顯示在回應本文中。
 
@@ -168,7 +168,7 @@ services.AddMvc(options =>
 
 ## <a name="response-format-url-mappings"></a>回應格式 URL 對應
 
-用戶端可以要求特定格式作為 URL 的一部分 (例如在查詢字串中或作為路徑的一部分)，或是使用格式特定副檔名 (例如 .xml 或 .json)。 應該在 API 所使用的路由中指定要求路徑的對應。 例如: 
+用戶端可以要求特定格式作為 URL 的一部分 (例如在查詢字串中或作為路徑的一部分)，或是使用格式特定副檔名 (例如 .xml 或 .json)。 應該在 API 所使用的路由中指定要求路徑的對應。 例如：
 
 ```csharp
 [FormatFilter]
@@ -180,10 +180,8 @@ public class ProductsController
 
 此路由可將所要求的格式指定為選擇性副檔名。 `[FormatFilter]` 屬性會檢查 `RouteData` 中是否有格式值，並在建立回應時將回應格式對應至適當的格式器。
 
-
 |           路由            |             格式器              |
 |----------------------------|------------------------------------|
 |   `/products/GetById/5`    |    預設輸出格式器    |
 | `/products/GetById/5.json` | JSON 格式器 (如果已設定) |
 | `/products/GetById/5.xml`  | XML 格式器 (如果已設定)  |
-

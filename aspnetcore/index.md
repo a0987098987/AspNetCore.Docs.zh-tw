@@ -18,7 +18,7 @@ ASP.NET Core 是一種跨平台且高效能的[開放原始碼](https://github.c
 * 部署到雲端或在內部部署。
 * 在 [.NET Core 或 .NET Framework](/dotnet/articles/standard/choosing-core-framework-server) 上執行。
 
-## <a name="why-use-aspnet-core"></a>為何使用 ASP.NET Core？
+## <a name="why-to-use-aspnet-core"></a>使用 ASP.NET Core 的理由
 
 數百萬的開發人員已使用 (並持續使用) [ASP.NET 4.x](/aspnet/overview) 來建立 Web 應用程式。 ASP.NET Core 是 ASP.NET 4.x 的重新設計，其架構變更可產生更為精簡且更加模組化的架構。
 
@@ -136,7 +136,7 @@ WebHost.CreateDefaultBuilder(args)
 
 上述的 C# 程式碼片段會在主題的 Markdown 檔案中，透過以下程式行加以參考：
 
-```
+```md
 [!code-csharp[](sample/SampleApp/Program.cs?name=snippet_FilterInCode)]
 ```
 

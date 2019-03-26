@@ -4,14 +4,14 @@ author: mjrousos
 description: 了解如何將從要擷取目前已驗證的使用者的身分識別與 ASP.NET Core 中的宣告的 ClaimsPrincipal.Current 轉移。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/04/2018
+ms.date: 03/26/2019
 uid: migration/claimsprincipal-current
-ms.openlocfilehash: 35c3389798041e141c45bf0a76fa9d7285212768
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 526cc3cf3a58a656e2a1b162cfaccacc7694dc51
+ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41823715"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488638"
 ---
 # <a name="migrate-from-claimsprincipalcurrent"></a>移轉 ClaimsPrincipal.Current 從
 
@@ -56,4 +56,4 @@ Console.WriteLine($"Current user: {Thread.CurrentPrincipal?.Identity.Name}");
   * 取得的執行個體`IHttpContextAccessor`在啟動期間並將它儲存到靜態變數中。 執行個體是開放給先前已從靜態屬性擷取目前使用者的程式碼中使用。
   * 擷取目前的使用者`ClaimsPrincipal`使用`HttpContextAccessor.HttpContext?.User`。 如果這個程式碼會使用 HTTP 要求的內容之外`HttpContext`為 null。
 
-最終選項，使用`IHttpContextAccessor`，違反 （靜態相依性偏好插入相依性） 的 ASP.NET Core 原則。 計劃最後會移除對靜態的相依性`IHttpContextAccessor`協助程式。 它可以是很有用的橋接器，不過，移轉大型的現有 ASP.NET 應用程式先前使用時`ClaimsPrincipal.Current`。
+最後一個選項，使用`IHttpContextAccessor`執行個體儲存在靜態變數，是 ASP.NET Core 的原則 （優先靜態的相依性插入的相依性） 相反。 打算最終擷取`IHttpContextAccessor`改為從相依性插入執行個體。 靜態協助程式時，可能會很有用的橋接器，不過，移轉大型的現有 ASP.NET 應用程式先前使用`ClaimsPrincipal.Current`。

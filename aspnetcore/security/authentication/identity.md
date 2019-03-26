@@ -3,14 +3,14 @@ title: ASP.NET core 身分識別簡介
 author: rick-anderson
 description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如何設定密碼的需求 （RequireDigit、 RequiredLength、 RequiredUniqueChars，等等）。
 ms.author: riande
-ms.date: 08/08/2018
+ms.date: 03/26/2019
 uid: security/authentication/identity
-ms.openlocfilehash: 355c53e0c957944cb35c37c6b01e724af5f93f44
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: efe8119c2d18db50dce3df57fa0e300d0d0df2cd
+ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58265475"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488669"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -47,7 +47,7 @@ ASP.NET Core Identity 是將登入功能加入至 ASP.NET Core 應用程式的�
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 [檔案]  >  [新增]  >  [專案]。
-* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1**將專案下載相同的命名空間。 按一下 [確定] 。
+* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1**將專案下載相同的命名空間。 按一下 [確定 **Deploying Office Solutions**]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取**變更驗證**。
 * 選取 **個別使用者帳戶**然後按一下**確定**。
 
@@ -64,6 +64,24 @@ dotnet new webapp --auth Individual -o WebApp1
 * / 身分識別/帳戶/登入
 * / 身分識別/帳戶/登出
 * / 身分識別/帳戶/管理
+
+### <a name="apply-migrations"></a>套用移轉
+
+適用於初始化資料庫的移轉作業。
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+在 套件管理員主控台 (PMC) 中執行下列命令：
+
+```PM> Update-Database```
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+```cli
+dotnet ef database update
+```
+
+---
 
 ### <a name="test-register-and-login"></a>測試註冊和登入
 

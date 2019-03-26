@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: 了解 ASP.NET Core 專案的相關警告和錯誤，並為其進行疑難排解。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/26/2019
+ms.date: 03/13/2019
 uid: test/troubleshoot
-ms.openlocfilehash: 1f53375a6aa504c989920a0bff83b400b7bd83ec
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 3d755b2f0c509d65dea86bbe719e42935d87d546
+ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208839"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488737"
 ---
 # <a name="troubleshoot-aspnet-core-projects"></a>疑難排解 ASP.NET Core 專案
 
@@ -33,8 +33,6 @@ ms.locfileid: "58208839"
 
 > 會安裝 32 和 64 位元版本的.NET Core sdk。 只有從安裝在 64 位元版本的範本 'c:\\Program Files\\dotnet\\sdk\\' 將會顯示。
 
-![顯示警告訊息 OneASP.NET 對話方塊的螢幕擷取畫面](troubleshoot/_static/both32and64bit.png)
-
 時，會出現這個警告 (x86) 32 位元和 64 位元 (x64) 版本的[.NET Core SDK](https://www.microsoft.com/net/download/all)安裝。 這兩個版本可能會安裝的常見原因包括：
 
 * 您原本下載.NET Core SDK 安裝程式使用 32 位元電腦，但然後複製其整個並安裝在 64 位元電腦上。
@@ -49,24 +47,28 @@ ms.locfileid: "58208839"
 
 > .NET Core SDK 會安裝在多個位置。 只有在已安裝的 SDK 範本 'c:\\Program Files\\dotnet\\sdk\\' 將會顯示。
 
-![顯示警告訊息 OneASP.NET 對話方塊的螢幕擷取畫面](troubleshoot/_static/multiplelocations.png)
-
 您以外的目錄中有至少一個安裝的.NET Core sdk 時，您會看到此訊息*c:\\Program Files\\dotnet\\sdk\\*。 通常這會使用複製/貼上，而不 MSI 安裝程式在機器上部署.NET Core SDK。
 
 解除安裝所有 32 位元.NET Core Sdk 和執行階段可避免這個警告。 從解除安裝**控制台中** > **程式和功能** > **解除安裝或變更程式**。 如果您了解警告的發生原因和其隱含意義，您可以忽略此警告。
 
 ### <a name="no-net-core-sdks-were-detected"></a>偵測到.NET Core Sdk
 
-在**新專案**對話方塊適用於 ASP.NET Core，您可能會看到下列警告：
+* 在 Visual Studio**新的專案**對話方塊適用於 ASP.NET Core 中，您可能會看到下列警告：
 
-> 偵測到.NET Core Sdk，請確定它們包含在環境變數 'PATH'。
+  > 偵測到任何.NET Core Sdk，請確定它們會包含在環境變數`PATH`。
 
-![顯示警告訊息 OneASP.NET 對話方塊的螢幕擷取畫面](troubleshoot/_static/NoNetCore.png)
+* 執行時`dotnet`命令時，警告會顯示為：
 
-時，會出現這個警告的環境變數`PATH`未指向任何電腦上的.NET Core Sdk (例如`C:\Program Files\dotnet\`和`C:\Program Files (x86)\dotnet\`)。 若要解決此問題：
+  > 無法找到任何已安裝的 dotnet Sdk。
 
-* 安裝或檢查已安裝.NET Core SDK。 取得最新的安裝程式，從[.NET 下載](https://dotnet.microsoft.com/download)。 
-* 確認`PATH`環境變數指向安裝 SDK 的位置。 安裝程式通常設定`PATH`。
+這些警告時顯示的環境變數`PATH`未指向任何電腦上的.NET Core Sdk。 若要解決此問題：
+
+* 安裝 .NET Core SDK。 取得最新的安裝程式，從[.NET 下載](https://dotnet.microsoft.com/download)。
+* 確認`PATH`環境變數指向安裝 SDK 的位置 (`C:\Program Files\dotnet\`針對 64 位元 x64 或`C:\Program Files (x86)\dotnet\`的 32 位元 x86)。 SDK 安裝程式通常設定`PATH`。 一律在相同電腦上安裝相同的位元 Sdk 和執行階段。
+
+### <a name="missing-sdk-after-installing-the-net-core-hosting-bundle"></a>安裝.NET Core 裝載套件組合之後遺漏 SDK
+
+安裝[.NET Core 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)修改`PATH`它會安裝.NET Core 執行階段，以指向 32 位元 (x86) 版本的.NET Core (`C:\Program Files (x86)\dotnet\`)。 這會導致遺漏 Sdk 時 32 位元 (x86) 的.NET Core`dotnet`使用命令 ([偵測到.NET Core Sdk](#no-net-core-sdks-were-detected))。 若要解決此問題，請移動`C:\Program Files\dotnet\`到之前的位置`C:\Program Files (x86)\dotnet\`上`PATH`。
 
 ## <a name="obtain-data-from-an-app"></a>從應用程式取得資料
 

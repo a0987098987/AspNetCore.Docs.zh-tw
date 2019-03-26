@@ -5,7 +5,7 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/26/2019
+ms.date: 03/23/2019
 uid: host-and-deploy/azure-apps/index
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
@@ -78,7 +78,17 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ## <a name="monitoring-and-logging"></a>監視與記錄
 
-部署到 App Service 的 ASP.NET Core 應用程式會自動接收 App Service 延伸模組 **ASP.NET Core 記錄延伸模組**。 延伸模組啟用了 Azure 監視功能。
+::: moniker range=">= aspnetcore-3.0"
+
+部署到 App Service 的 ASP.NET Core 應用程式會自動接收 App Service 延伸模組：**ASP.NET Core 記錄整合**。 延伸模組讓 Azure App Service 上的 ASP.NET Core 應用程式得以進行記錄整合。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+部署到 App Service 的 ASP.NET Core 應用程式會自動接收 App Service 延伸模組 **ASP.NET Core 記錄延伸模組**。 延伸模組讓 Azure App Service 上的 ASP.NET Core 應用程式得以進行記錄整合。
+
+::: moniker-end
 
 如需監視、記錄及疑難排解的資訊，請參閱下列文章：
 

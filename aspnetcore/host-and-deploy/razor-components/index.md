@@ -5,7 +5,7 @@ description: 了解如何使用 ASP.NET Core、內容傳遞網路 (CDN)、檔案
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/29/2019
+ms.date: 03/22/2019
 uid: host-and-deploy/razor-components/index
 ---
 # <a name="host-and-deploy-razor-components"></a>裝載和部署 Razor 元件
@@ -284,7 +284,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 使用[伺服器端裝載模型](xref:razor-components/hosting-models#server-side-hosting-model)，Razor 元件會從 ASP.NET Core 應用程式內在伺服器上執行。 UI 更新、事件處理及 JavaScript 呼叫會透過 SignalR 連線處理。
 
-應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以便兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 對於伺服器端部署，Visual Studio 包含 **Blazor (ASP.NET Core 中的伺服器端)** 專案範本 (使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazorserver` 範本)。
+應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以便兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 對於伺服器端部署，Visual Studio 會包含 **Razor Components**  專案範本 (在使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時為 `razorcomponents` 範本)。
 
 <!--
 

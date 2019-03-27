@@ -461,6 +461,8 @@ items:
     name: 搭配 ASP.NET Core 的 gRPC 服務
   - uid: grpc/migration
     name: 將 gRPC 服務從 C Core 移轉到 ASP.NET Core
+  - uid: grpc/comparison
+    name: 比較 gRPC 服務與 HTTP APIs
   - name: 教學課程
     items:
     - uid: tutorials/grpc/grpc-start
@@ -995,8 +997,11 @@ items:
   items:
   - uid: fundamentals/localization
     name: 總覽
+    displayName: globalization, localization
   - uid: fundamentals/portable-object-localization
     name: 可攜式物件當地語系化
+  - uid: fundamentals/troubleshoot-aspnet-core-localization
+    name: 疑難排解
 - name: 進階
   items:
   - uid: fundamentals/middleware/write
@@ -1076,9 +1081,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 41d79bdbcbe780a579273c55273c3a1e3679017b
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: 7cb263e7f65d0a7c8819312c24c3f61ca24fe649
+ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327442"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488763"

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: a128b7c19d544d1dd28ab16f7a208ceef680ce81
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: 817b7b3b420520992f18f1f207b412bc4555bdfa
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56743838"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327387"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -237,7 +237,7 @@ var host = new HostBuilder()
 
 ## <a name="container-configuration"></a>容器設定
 
-為支援插入其他容器，主機可以接受 <xref:Microsoft.Extensions.DependencyInjection.IServiceProviderFactory`1>。 提供處理站不是 DI 容器註冊的一部分，而是用來建立實體 DI 容器的主機內建功能。 [UseServiceProviderFactory(IServiceProviderFactory&lt;TContainerBuilder&gt;)](xref:Microsoft.Extensions.Hosting.HostBuilder.UseServiceProviderFactory*) 會覆寫用來建立應用程式服務提供者的預設處理站。
+為支援插入其他容器，主機可以接受 <xref:Microsoft.Extensions.DependencyInjection.IServiceProviderFactory%601>。 提供處理站不是 DI 容器註冊的一部分，而是用來建立實體 DI 容器的主機內建功能。 [UseServiceProviderFactory(IServiceProviderFactory&lt;TContainerBuilder&gt;)](xref:Microsoft.Extensions.Hosting.HostBuilder.UseServiceProviderFactory*) 會覆寫用來建立應用程式服務提供者的預設處理站。
 
 自訂容器組態由 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureContainer*> 方法管理。 `ConfigureContainer` 提供在基礎主機 API 上設定容器的強型別體驗。 `ConfigureContainer` 可以多次呼叫，其結果是累加的。
 

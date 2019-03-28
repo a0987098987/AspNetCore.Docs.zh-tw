@@ -5,12 +5,12 @@ description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記
 ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: 254c85ee9e74dc72170b19d27fbc5f1ae7ccd3dc
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 53d4dc608fbfd45bcc015a3af83f5d87f86c7f15
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264748"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327361"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -534,7 +534,7 @@ Razor 範本可讓您使用下列格式定義 UI 程式碼片段：
 @<tag>...</tag>
 ```
 
-下列範例說明如何以 <xref:System.Func`2> 的形式指定樣板化 Razor 委派。 該範例會指定 [dynamic 類型](/dotnet/csharp/programming-guide/types/using-type-dynamic)作為委派所封裝方法的參數。 並指定 [object 類型](/dotnet/csharp/language-reference/keywords/object)作為委派的傳回值。 此範本會搭配具有 `Name` 屬性之 `Pet` 的 <xref:System.Collections.Generic.List`1> 來使用。
+下列範例說明如何以 <xref:System.Func%602> 的形式指定樣板化 Razor 委派。 該範例會指定 [dynamic 類型](/dotnet/csharp/programming-guide/types/using-type-dynamic)作為委派所封裝方法的參數。 並指定 [object 類型](/dotnet/csharp/language-reference/keywords/object)作為委派的傳回值。 此範本會搭配具有 `Name` 屬性之 `Pet` 的 <xref:System.Collections.Generic.List%601> 來使用。
 
 ```csharp
 public class Pet
@@ -599,7 +599,7 @@ public class Pet
 
 使用先前範例中的寵物清單，呼叫 `Repeat` 方法並指定：
 
-* <xref:System.Collections.Generic.List`1> 的 `Pet`。
+* <xref:System.Collections.Generic.List%601> 的 `Pet`。
 * 每個寵物的重複次數。
 * 用於未排序清單中清單項目的內嵌範本。
 

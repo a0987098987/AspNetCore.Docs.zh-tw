@@ -5,14 +5,14 @@ description: 了解如何使用 ASP.NET Core 分散式快取來改善應用程�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/02/2019
+ms.date: 03/30/2019
 uid: performance/caching/distributed
-ms.openlocfilehash: a7850e317dfa3b54f1980902b3dcd6b096effa15
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: c3774c26116a4cb70386d0060f2244d224fec8e1
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346115"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750993"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>分散式快取的 ASP.NET Core
 
@@ -116,7 +116,7 @@ Table and index were created successfully.
 
 ::: moniker range=">= aspnetcore-2.2"
 
-應用程式會設定快取實作使用`RedisCache`執行個體 (`AddStackExchangeRedisCache`) 中的非開發環境中`Startup.ConfigureServices`:
+應用程式會設定快取實作使用<xref:Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache>執行個體 (<xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisCacheServiceCollectionExtensions.AddStackExchangeRedisCache*>) 中的非開發環境中`Startup.ConfigureServices`:
 
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_AddStackExchangeRedisCache)]
 

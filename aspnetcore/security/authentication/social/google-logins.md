@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 1/11/2019
 uid: security/authentication/google-logins
-ms.openlocfilehash: 5b6bfaafba68eaf15a60b7c512a9e7406e3112ee
-ms.sourcegitcommit: 6d8c362a3cb4c634e64cbb3d28069c36bc973581
+ms.openlocfilehash: 1328bcbce3e6e4786f9d410d1f28f309dc9d2722
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418662"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750541"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Google 外部登入設定
 
@@ -37,6 +37,8 @@ Google 開始在 2019 年 1 月[關閉](https://developers.google.com/+/api-shut
 dotnet user-secrets set "Authentication:Google:ClientId" "X.apps.googleusercontent.com"
 dotnet user-secrets set "Authentication:Google:ClientSecret" "<client secret>"
 ```
+
+[!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 您可以管理您的 API 認證和使用量[API 主控台](https://console.developers.google.com/apis/dashboard)。
 

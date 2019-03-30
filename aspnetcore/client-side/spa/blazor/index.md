@@ -5,7 +5,7 @@ description: 探索 ASP.NET Core Blazor，這是使用 .NET 建置互動式用�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/11/2019
+ms.date: 03/27/2019
 uid: spa/blazor/index
 ---
 # <a name="introduction-to-blazor"></a>Blazor 簡介
@@ -50,7 +50,7 @@ Blazor 支援大部分應用程式所需的核心功能，包括：
 
 透過[中繼語言 (IL) 連接器](xref:host-and-deploy/razor-components/configure-linker)發行時刪除應用程式未使用的程式碼，減少下載之應用程式的大小。
 
-Blazor 是 Razor 元件的用戶端裝載模型。 因為 Razor 元件解除了元件轉譯邏輯與 UI 更新套用方式的聯結，所以裝載 Razor 元件的方式具有彈性。 使用 ASP.NET Core Razor 元件，在 ASP.NET Core 應用程式裡將 Razor 元件裝載在伺服器上，使得透過 SignalR 連線處理所有的 UI 更新。 如需詳細資訊，請參閱<xref:razor-components/hosting-models#server-side-hosting-model>。 
+Blazor 是 Razor 元件的用戶端裝載模型。 因為 Razor 元件解除了元件轉譯邏輯與 UI 更新套用方式的聯結，所以裝載 Razor 元件的方式具有彈性。 使用 ASP.NET Core Razor 元件，在 ASP.NET Core 應用程式裡將 Razor 元件裝載在伺服器上，使得透過 SignalR 連線處理所有的 UI 更新。 如需詳細資訊，請參閱 <xref:razor-components/index> 與 <xref:razor-components/hosting-models#server-side-hosting-model>。 
 
 ## <a name="components"></a>元件
 

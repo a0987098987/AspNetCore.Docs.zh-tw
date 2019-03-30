@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 12/18/2018
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 66f895c7c8dcc00d991c0ea57535f2ed56431a77
-ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
+ms.openlocfilehash: 5fd40e7b42b17d4a3b858de15c8ed03fb64ce690
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735774"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751086"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Facebook 外部登入設定
 
@@ -59,6 +59,8 @@ ms.locfileid: "53735774"
 ## <a name="store-facebook-app-id-and-app-secret"></a>儲存 Facebook 應用程式識別碼和應用程式祕密
 
 連結機密設定，例如 Facebook`App ID`並`App Secret`至您的應用程式的組態使用[Secret Manager](xref:security/app-secrets)。 基於本教學課程的目的，名稱語彙基元`Authentication:Facebook:AppId`和`Authentication:Facebook:AppSecret`。
+
+[!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 執行下列命令，以安全地儲存`App ID`和`App Secret`使用 Secret Manager:
 

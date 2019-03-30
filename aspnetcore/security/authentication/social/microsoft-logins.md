@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 4909a0084994654777ad7a6ebda866ac727f0528
-ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
+ms.openlocfilehash: 1733d049d6752c24d7749b5b5ae2a4b866492358
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735748"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750999"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>使用 ASP.NET Core 的 Microsoft 帳戶外部登入設定
 
@@ -65,6 +65,8 @@ ms.locfileid: "53735748"
 ![新產生的密碼 對話方塊](index/_static/MicrosoftDevPassword.png)
 
 連結機密設定，例如 Microsoft`Application ID`並`Password`至您的應用程式的組態使用[Secret Manager](xref:security/app-secrets)。 基於本教學課程的目的，名稱語彙基元`Authentication:Microsoft:ApplicationId`和`Authentication:Microsoft:Password`。
+
+[!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 ## <a name="configure-microsoft-account-authentication"></a>設定 Microsoft 帳戶驗證
 

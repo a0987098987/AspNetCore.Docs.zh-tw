@@ -5,7 +5,7 @@ description: 探索 ASP.NET Core Razor 元件，這是在 ASP.NET Core 應用程
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/13/2019
+ms.date: 03/27/2019
 uid: razor-components/index
 ---
 # <a name="introduction-to-razor-components"></a>Razor 元件簡介
@@ -42,7 +42,7 @@ Razor 元件與瀏覽器通訊所使用的連線也會用來處理 JavaScript in
 
 如需詳細資訊，請參閱<xref:razor-components/hosting-models#server-side-hosting-model>。
 
-*Blazor* 是實驗性的 Razor 元件用戶端裝載模型。 Blazor 會在使用開放式 Web 標準，且不含任何外掛程式、任何程式碼轉譯的瀏覽器中，在 .NET 上執行。 如需詳細資訊，請參閱<xref:razor-components/hosting-models#client-side-hosting-model>。
+*Blazor* 是實驗性的 Razor 元件用戶端裝載模型。 Blazor 會在使用開放式 Web 標準，且不含任何外掛程式、任何程式碼轉譯的瀏覽器中，在 .NET 上執行。 如需詳細資訊，請參閱 <xref:spa/blazor/index> 與 <xref:razor-components/hosting-models#client-side-hosting-model>。
 
 ## <a name="components"></a>元件
 

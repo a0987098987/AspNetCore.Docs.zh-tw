@@ -5,14 +5,14 @@ description: 逐步建置 Razor 元件應用程式，並了解基本 Razor 元�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/14/2019
+ms.date: 03/24/2019
 uid: tutorials/first-razor-components-app
-ms.openlocfilehash: c0f7b27fdfc770f8001625ecb3bf8d50af517b99
-ms.sourcegitcommit: 10e14b85490f064395e9b2f423d21e3c2d39ed8b
+ms.openlocfilehash: 2a987b3f2e687cd9d4dffa2c573c938e68ea3cc8
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57978419"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419361"
 ---
 # <a name="build-your-first-razor-components-app"></a>建置您的第一個 Razor 元件應用程式
 
@@ -67,7 +67,7 @@ ms.locfileid: "57978419"
 
 使用類似 HTML 的語法將一個元件包含在另一個元件中。
 
-1. 藉由將 `<Counter />` 元素新增至「索引」元件，將「計數器」元件新增至應用程式的「索引」(首頁) 元件。
+1. 藉由將 `<Counter />` 元素新增至索引元件，將計數器元件新增至應用程式的索引 (首頁) 元件。
 
    如果您使用 Blazor 來進行此體驗，則「索引」元件中會有「問卷提示」元件 (`<SurveyPrompt>` 元素)。 請以 `<Counter>` 元素取代 `<SurveyPrompt>` 元素。
 
@@ -101,7 +101,7 @@ ms.locfileid: "57978419"
 
    [!code-cshtml[](build-your-first-razor-components-app/samples/3.x/RazorComponents/Components/Pages/Index.razor?highlight=7)]
 
-1. 重新載入頁面。 每次選取 [Click me] \(按我\) 按鈕時，首頁計數器都會以 10 遞增。 [計數器] 頁面上的計數器會以 1 遞增。
+1. 重新載入首頁。 每次選取 [Click me] \(按我\) 按鈕時，計數器都會以 10 遞增。 計數器頁面上的計數器會以 1 遞增。
 
 ## <a name="route-to-components"></a>路由到元件
 
@@ -111,29 +111,38 @@ ms.locfileid: "57978419"
 
 在應用程式服務容器中註冊的服務可透過[相依性插入 (DI)](xref:fundamentals/dependency-injection) 供元件使用。 請使用 `@inject` 指示詞將服務插入至元件。
 
-檢查 FetchData 元件的指示詞。 `@inject` 指示詞會用來將 `WeatherForecastService` 服務執行個體插入至元件：
+檢查範例應用程式中 FetchData 元件的指示詞。
 
-*Components/Pages/FetchData.razor* (Blazor 中的 *Pages/FetchData.cshtml*)：
+在 Razor 元件範例應用程式中，`WeatherForecastService` 服務會註冊為 [singleton](xref:fundamentals/dependency-injection#service-lifetimes)，讓一個服務執行個體可供整個應用程式使用。 `@inject` 指示詞會用來將 `WeatherForecastService` 服務的執行個體插入元件。
+
+*Components/Pages/FetchData.razor*:
 
 [!code-cshtml[](build-your-first-razor-components-app/samples_snapshot/3.x/FetchData1.razor?highlight=3)]
-
-`WeatherForecastService` 服務會註冊為[單一項目](xref:fundamentals/dependency-injection#service-lifetimes)，讓一個服務執行個體可供整個應用程式使用。
 
 FetchData 元件會使用插入的服務作為 `ForecastService`，以擷取 `WeatherForecast` 物件的陣列：
 
 [!code-cshtml[](build-your-first-razor-components-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-[@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) 迴圈會用來將每個預測執行個體轉譯為天氣資料表中的資料列：
+在 Blazor 版本的範例應用程式中，插入了 `HttpClient` 以取得來自 *wwwroot/sameple-data* 資料夾中 *weather.json* 檔案的天氣預報資料：
+
+*Pages/FetchData.cshtml*:
+
+[!code-cshtml[](build-your-first-razor-components-app/samples_snapshot/3.x/FetchData1.cshtml?highlight=7)]
+
+在這兩個範例應用程式中，[@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) 迴圈會用來將每個預測執行個體轉譯為天氣資料表中的資料列：
 
 [!code-cshtml[](build-your-first-razor-components-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
 
 ## <a name="build-a-todo-list"></a>組建待辦事項清單
 
-在實作簡單待辦事項清單的應用程式中新增頁面。
+在實作簡單待辦事項清單的應用程式中新增元件。
 
-1. 將名為 *Todo.razor* 的空白檔案新增至 [Components/Pages] 資料夾 (Blazor 中的 [Pages] 資料夾)。
+1. 在範例應用程式中新增空白檔案：
 
-1. 提供頁面的初始標記：
+   * 針對 Razor 元件體驗，請將 *Todo.razor* 檔案新增至 *Components/Pages* 資料夾。
+   * 針對 Blazor 體驗，請將 *Todo.cshtml* 檔案新增至 *Pages* 資料夾。
+
+1. 提供元件的初始標記：
 
    ```cshtml
    @page "/todo"
@@ -141,11 +150,11 @@ FetchData 元件會使用插入的服務作為 `ForecastService`，以擷取 `We
    <h1>Todo</h1>
    ```
 
-1. 將 [待辦事項] 頁面新增至導覽列。
+1. 將 Todo 元件新增至導覽列。
 
    NavMenu 元件 (*Components/Shared/NavMenu.razor* 或 Blazor 中的 *Shared/NavMenu.cshtml*) 會用於應用程式的版面配置。 版面配置是可讓您避免應用程式中內容重複的元件。 如需詳細資訊，請參閱<xref:razor-components/layouts>。
 
-   透過在 *Components/Shared/NavMenu.razor* (Blazor 中的 *Shared/NavMenu.cshtml*) 檔案中的現有清單項目底下新增下列清單項目標記，為 [待辦事項] 頁面新增 `<NavLink>`：
+   透過在 *Components/Shared/NavMenu.razor* (Blazor 中的 *Shared/NavMenu.cshtml*) 檔案中的現有清單項目下新增下列清單項目標記，為 Todo 元件新增 `<NavLink>`：
 
    ```cshtml
    <li class="nav-item px-3">
@@ -155,7 +164,7 @@ FetchData 元件會使用插入的服務作為 `ForecastService`，以擷取 `We
    </li>
    ```
 
-1. 重建並執行應用程式。 瀏覽新的 [待辦事項] 頁面，以確認 [待辦事項] 頁面的連結可以運作。
+1. 重建並執行應用程式。 瀏覽新的 [待辦事項] 頁面，以確認 Todo 元件的連結可以運作。
 
 1. 將 *TodoItem.cs* 檔案新增至專案的根目錄，以保存代表待辦事項的類別。 請使用下列 `TodoItem` 類別的 C# 程式碼：
 

@@ -5,14 +5,14 @@ description: 了解如何使用 IHostingStartup 實作，從外部組件增強 A
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 03/10/2019
+ms.date: 03/23/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 25564ecebf48f65a209ac48e77856ef36d897959
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: c174d658c84ada88eef17528c663735a91347ba7
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264987"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419442"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>在 ASP.NET Core 中使用裝載啟動組件
 
@@ -381,18 +381,7 @@ dotnet nuget locals all --clear
 **從部署在執行階段存放區的組件啟用**
 
 1. *StartupDiagnostics* 專案使用 [PowerShell](/powershell/scripting/powershell-scripting) 修改其 *StartupDiagnostics.deps.json* 檔案。 從 Windows 7 SP1 和 Windows Server 2008 R2 SP1 開始，會在 Windows 上預設安裝 PowerShell。 若要在其他平台上取得 PowerShell，請參閱[安裝 Windows PowerShell](/powershell/scripting/setup/installing-powershell#powershell-core)。
-1. 建置 *StartupDiagnostics* 專案。 專案建置後，即會自動在專案檔中建置目標：
-   * 觸發 PowerShell 指令碼來修改 *StartupDiagnostics.deps.json* 檔案。
-   * 將 *StartupDiagnostics.deps.json* 檔案移至使用者設定檔的 *additionalDeps* 資料夾。
-1. 在裝載啟動目錄中的命令提示字元執行 `dotnet store` 命令，將組件及其相依性儲存在使用者設定檔的執行階段存放區：
-
-   ```console
-   dotnet store --manifest StartupDiagnostics.csproj --runtime <RID>
-   ```
-
-   在 Windows，此命令會使用 `win7-x64` [執行階段識別碼 (RID)](/dotnet/core/rid-catalog)。 為不同的執行階段提供裝載啟動時，請替換成正確的 RID。
-1. 設定環境變數：
-   * 將 *StartupDiagnostics* 的組件名稱新增至 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` 環境變數。
-   * 在 Windows 中，將 `DOTNET_ADDITIONAL_DEPS` 環境變數設為 `%UserProfile%\.dotnet\x64\additionalDeps\StartupDiagnostics\`。 在 macOS/Linux 中，將 `DOTNET_ADDITIONAL_DEPS` 環境變數設為 `/Users/<USER>/.dotnet/x64/additionalDeps/StartupDiagnostics/`，其中 `<USER>` 是包含裝載啟動的使用者設定檔。
+1. 執行 *RuntimeStore* 資料夾中的 *build.ps1* 指令碼。 指令碼中的 `dotnet store` 命令會使用 `win7-x64` 的 [runtime identifier (RID) (執行階段識別碼 (RID))](/dotnet/core/rid-catalog) 作為部署至 Windows 的裝載啟動。 為不同的執行階段提供裝載啟動時，請替換成正確的 RID。
+1. 執行 *deployment* 資料夾中的 *deploy.ps1* 指令碼。
 1. 執行範例應用程式。
 1. 要求 `/services` 端點來查看應用程式的註冊服務。 要求 `/diag` 端點來查看診斷資訊。

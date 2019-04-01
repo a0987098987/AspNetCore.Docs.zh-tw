@@ -5,7 +5,7 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/23/2019
+ms.date: 03/30/2019
 uid: host-and-deploy/azure-apps/index
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
@@ -14,7 +14,7 @@ uid: host-and-deploy/azure-apps/index
 
 ## <a name="useful-resources"></a>實用資源
 
-Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教學課程、範例、使用說明指南及其他資源的首頁。 關於裝載 ASP.NET Core 應用程式，有兩個值得參考的教學課程：
+[App Service 文件](/azure/app-service/)是 Azure 應用程式文件、教學課程、範例、使用說明指南與其他資源的首頁。 關於裝載 ASP.NET Core 應用程式，有兩個值得參考的教學課程：
 
 [在 Azure 中建立 ASP.NET Core Web 應用程式](/azure/app-service/app-service-web-get-started-dotnet)  
 在 Windows 上使用 Visual Studio 建立 ASP.NET Core Web 應用程式並將其部署到 Azure App Service。
@@ -30,7 +30,7 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 <xref:host-and-deploy/azure-apps/azure-continuous-deployment>  
 了解如何使用 Visual Studio 建立 ASP.NET Core Web 應用程式，並透過 Git 持續部署將它部署到 Azure App Service。
 
-[使用 Azure Pipelines 建立您的第一個管線](/azure/devops/pipelines/get-started-yaml)  
+[建立您的第一個管線](/azure/devops/pipelines/get-started-yaml)  
 設定 ASP.NET Core 應用程式的 CI 組建，然後建立連續部署發行至 Azure App Service。
 
 [Azure Web 應用程式沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
@@ -92,10 +92,10 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 如需監視、記錄及疑難排解的資訊，請參閱下列文章：
 
-[如何：監視 Azure App Service 中的應用程式](/azure/app-service/web-sites-monitor)  
+[監視 Azure App Service 中的應用程式](/azure/app-service/web-sites-monitor)  
 了解如何檢閱應用程式和 App Service 方案的配額和計量。
 
-[為 Azure App Service 中的 Web 應用程式啟用診斷記錄](/azure/app-service/web-sites-enable-diagnostic-log)  
+[為 Azure App Service 中的應用程式啟用診斷記錄](/azure/app-service/web-sites-enable-diagnostic-log)  
 探索如何啟用及存取 HTTP 狀態碼、失敗要求和網頁伺服器活動的診斷記錄。
 
 <xref:fundamentals/error-handling>  
@@ -220,7 +220,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ## <a name="protocol-settings-https"></a>通訊協定設定 (HTTPS)
 
-安全通訊協定繫結可讓您指定透過 HTTPS 回應要求時要使用的憑證。 繫結需要針對特定主機名稱簽發的有效私密憑證 (*.pfx*)。 如需詳細資訊，請參閱[教學課程：將現有的自訂 SSL 憑證繫結至 Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl)。
+安全通訊協定繫結可讓您指定透過 HTTPS 回應要求時要使用的憑證。 繫結需要針對特定主機名稱簽發的有效私密憑證 (*.pfx*)。 如需詳細資訊，請參閱[教學課程：將現有的自訂 SSL 憑證繫結至 Azure App Service](/azure/app-service/app-service-web-tutorial-custom-ssl)。
 
 ## <a name="transform-webconfig"></a>轉換 web.config
 
@@ -228,7 +228,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Web Apps 概觀 (5 分鐘的概觀影片)](/azure/app-service/app-service-web-overview)
+* [App Service 概觀](/azure/app-service/app-service-web-overview)
 * [Azure App Service：裝載 .NET 應用程式的最佳平台 (55 分鐘的概觀影片)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
 * [Azure Friday：Azure App Service 診斷和疑難排解體驗 (12 分鐘的影片)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 * [Azure App Service 診斷概觀](/azure/app-service/app-service-diagnostics)
@@ -239,4 +239,4 @@ Windows Server 上的 Azure App Service 使用 [Internet Information Services (I
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
-* [Microsoft TechNet 文件庫：Windows Server](/windows-server/windows-server-versions)
+* [Windows Server - 適用於目前版本與先前版本的 IT 系統管理員內容](/windows-server/windows-server-versions)

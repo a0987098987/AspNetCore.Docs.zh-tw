@@ -973,6 +973,8 @@ items:
     name: 在應用程式間共用 Cookie
   - uid: security/ip-safelist
     name: IP 安全清單
+  - name: 應用程式安全性 - OWASP
+    href: https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/DotNet_Security_Cheat_Sheet.md
 - name: 效能
   items:
   - uid: performance/performance-best-practices
@@ -1081,9 +1083,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 7cb263e7f65d0a7c8819312c24c3f61ca24fe649
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.openlocfilehash: d9ab9beacab19a0e004878d2645b1106bf5dc0d6
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488763"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751099"

@@ -16,11 +16,11 @@ ms.locfileid: "56833692"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
-藉由[Scott Addie](https://twitter.com/Scott_Addie)和[Luke Latham](https://github.com/guardrex)
+作者：[Scott Addie](https://twitter.com/Scott_Addie) 和 [Luke Latham](https://github.com/guardrex)
 
-[Windows 驗證](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)可以設定與裝載的 ASP.NET Core 應用程式[IIS](xref:host-and-deploy/iis/index)或是[HTTP.sys](xref:fundamentals/servers/httpsys)。
+[Windows 驗證](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 可以在 [IIS](xref:host-and-deploy/iis/index) 或 [HTTP.sys](xref:fundamentals/servers/httpsys) 託管的 ASP.NET Core 應用程式進行設定。
 
-Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使用者。 使用 Active Directory 網域身分識別或 Windows 帳戶，來識別使用者在公司網路中執行您的伺服器時，您可以使用 Windows 驗證。 Windows 驗證最適合內部網路的環境，其中使用者、 用戶端應用程式，以及網頁伺服器都屬於相同 Windows 網域。
+Windows 驗證仰賴作業系統來驗證 ASP.NET Core 應用程式的使用者。當伺服器在公司網路運作，您可以透過 Active Directory 網域辨識進行 Windows 驗證或透過 Windows 帳號辨識使用者。 Windows 驗證最適合用於內部網路環境，其中使用者、用戶端應用程式以及網站伺服器皆屬於相同 Windows 網域。
 
 ## <a name="enable-windows-authentication-in-an-aspnet-core-app"></a>啟用 ASP.NET Core 應用程式中的 Windows 驗證
 

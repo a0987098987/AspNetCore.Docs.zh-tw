@@ -26,11 +26,11 @@ ms.locfileid: "48910521"
 
 2. HTML 項目內的不信任的資料之前，請先確認其為 HTML 編碼。 這類 HTML 編碼會採用字元&lt;變成安全的表單和&amp;l t;
 
-3. 將不受信任的資料放入 HTML 屬性之前，請先確認它是 HTML 編碼。 HTML 屬性編碼是 HTML 編碼的超集，例如將額外的字元編碼成"和 '。
+3. 將不受信任的資料放入 HTML 屬性之前，請先確認已對它進行 HTML 編碼。 HTML 屬性編碼是 HTML 編碼的超集，而且會將額外的字元 (例如 " 與 ') 編碼。
 
 4. 之前將不受信任的資料放入 JavaScript 將您在執行階段擷取其內容的 HTML 項目中的資料。 如果這不可行，請確定資料是 JavaScript 的編碼。 JavaScript 的編碼方式會適用於 JavaScript 的危險的字元，取代成其 hex，比方說&lt;會編碼為`\u003C`。
 
-5. 將不受信任的資料放入 URL 查詢字串之前，請先確認其為 URL 編碼。
+5. 將不受信任的資料放入 URL 查詢字串之前，請先確認已為它進行 URL 編碼。
 
 ## <a name="html-encoding-using-razor"></a>使用 Razor 的 HTML 編碼
 
@@ -53,7 +53,7 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
    ```
 
 >[!WARNING]
-> ASP.NET Core MVC 提供`HtmlString`類別可在輸出時不會自動編碼。 這永遠不應該用於具有不受信任的輸入組合，這將會公開 XSS 的安全性弱點。
+> ASP.NET Core MVC 提供 `HtmlString` 類別，它不會在輸出時自動編碼。這永遠不應該結合不受信任的輸入使用，因為這將會公開 XSS 弱點。
 
 ## <a name="javascript-encoding-using-razor"></a>使用 Razor JavaScript 編碼
 
@@ -176,7 +176,7 @@ var example = "\"Quoted Value with spaces and &\"";
 變數會包含編碼 encodedValue 之後`%22Quoted%20Value%20with%20spaces%20and%20%26%22`。 空格、 引號、 標點符號和其他不安全字元就是百分比編碼成其十六進位值，例如空格字元會變成 %20。
 
 >[!WARNING]
-> 請勿使用不受信任的輸入作為 URL 路徑的一部分。 一律傳遞不受信任的輸入作為查詢字串值。
+> 請勿使用不受信任的輸入作為 URL 路徑的一部分。一律傳遞不受信任的輸入作為查詢字串值。
 
 <a name="security-cross-site-scripting-customization"></a>
 

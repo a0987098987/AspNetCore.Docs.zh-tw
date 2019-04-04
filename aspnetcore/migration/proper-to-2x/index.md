@@ -5,6 +5,12 @@ description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 AS
 ms.author: scaddie
 ms.date: 12/11/2018
 uid: migration/proper-to-2x/index
+ms.openlocfilehash: 7b6aec621efa5e1400fcfd4396a2322733113ec1
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209132"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 

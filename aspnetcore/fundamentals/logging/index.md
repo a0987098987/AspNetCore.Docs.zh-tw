@@ -6,6 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/02/2019
 uid: fundamentals/logging/index
+ms.openlocfilehash: c6543ec1f2295c21c6a693ac8bd16ee07ec11381
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327403"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 

@@ -6,6 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/17/2019
 uid: fundamentals/middleware/index
+ms.openlocfilehash: bac121441d6856ca79affe1a3130e5cbc76debd9
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665385"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 

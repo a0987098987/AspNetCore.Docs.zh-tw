@@ -6,6 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/23/2019
 uid: host-and-deploy/iis/index
+ms.openlocfilehash: 477568dd64fb1442011abb4229299e7dece40da9
+ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488750"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a><span data-ttu-id="c6c52-103">在使用 IIS 的 Windows 上裝載 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="c6c52-103">Host ASP.NET Core on Windows with IIS</span></span>
 

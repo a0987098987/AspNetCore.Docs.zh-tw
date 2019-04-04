@@ -7,6 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/22/2019
 uid: host-and-deploy/razor-components/index
+ms.openlocfilehash: 236e8da27b80dbdb3e0ea885413b6cfd563dde60
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419416"
 ---
 # <a name="host-and-deploy-razor-components"></a><span data-ttu-id="cc5ed-103">裝載和部署 Razor 元件</span><span class="sxs-lookup"><span data-stu-id="cc5ed-103">Host and deploy Razor Components</span></span>
 

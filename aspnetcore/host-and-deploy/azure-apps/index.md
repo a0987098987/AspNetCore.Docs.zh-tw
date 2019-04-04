@@ -7,6 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2019
 uid: host-and-deploy/azure-apps/index
+ms.openlocfilehash: f9a74fdd94da4c913ac8822ee7bd58c85a9ce72c
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750929"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a><span data-ttu-id="a2d34-103">將 ASP.NET Core 應用程式部署至 Azure App Service</span><span class="sxs-lookup"><span data-stu-id="a2d34-103">Deploy ASP.NET Core apps to Azure App Service</span></span>
 

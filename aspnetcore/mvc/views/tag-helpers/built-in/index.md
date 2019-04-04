@@ -6,8 +6,13 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/Index
+ms.openlocfilehash: 9cca912f43159e778a4c9419e6171f06b4037b8b
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346007"
 ---
-
 # <a name="aspnet-core-built-in-tag-helpers"></a><span data-ttu-id="17f57-103">ASP.NET Core 內建的標記協助程式</span><span class="sxs-lookup"><span data-stu-id="17f57-103">ASP.NET Core built-in Tag Helpers</span></span>
 
 <span data-ttu-id="17f57-104">由 [Peter Kellner](http://peterkellner.net) 提供</span><span class="sxs-lookup"><span data-stu-id="17f57-104">By [Peter Kellner](http://peterkellner.net)</span></span>

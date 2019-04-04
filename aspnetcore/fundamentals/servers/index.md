@@ -6,6 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 02/14/2019
 uid: fundamentals/servers/index
+ms.openlocfilehash: 4fa32fb4fe1d482f1000cd803cd2d26cd9ff2341
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410530"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a><span data-ttu-id="0b15e-104">ASP.NET Core 中的網頁伺服器實作</span><span class="sxs-lookup"><span data-stu-id="0b15e-104">Web server implementations in ASP.NET Core</span></span>
 

@@ -6,6 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/12/2018
 uid: razor-pages/index
+ms.openlocfilehash: afdaa11c55b66366badf8facde62e3f215b6deb2
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264809"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a><span data-ttu-id="a3a21-103">ASP.NET Core 中的 Razor Pages 簡介</span><span class="sxs-lookup"><span data-stu-id="a3a21-103">Introduction to Razor Pages in ASP.NET Core</span></span>
 

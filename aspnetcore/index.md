@@ -6,6 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/14/2019
 uid: index
+ms.openlocfilehash: baf8557b29c30f6dbeb6a4ff5d50c83d07160a51
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320234"
 ---
 # <a name="introduction-to-aspnet-core"></a><span data-ttu-id="2701b-103">ASP.NET Core 簡介</span><span class="sxs-lookup"><span data-stu-id="2701b-103">Introduction to ASP.NET Core</span></span>
 

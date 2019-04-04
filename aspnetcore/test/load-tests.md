@@ -24,7 +24,7 @@ ms.locfileid: "58419377"
 * 高使用者負載 – 尖峰或逐漸增加。
 * 有限的運算資源。
 
-壓力的情況下，可以應用程式從失敗中復原並依正常程序傳回預期的行為？ 應用程式是在資源不足時*不*在正常情況下執行。
+在面臨壓力的情況下，應用程式是否可以從失敗中復原並優雅地回到預期的行為？在面臨壓力的情況下，應用程式並**不**是在正常情況下執行。
 
 Visual Studio 2019 將會是具有負載測試功能的最終 Visual Studio 版本。 針對需要負載測試工具的客戶，我們建議使用替代的負載測試工具，例如 Apache JMeter、Akamai CloudTest、Blazemeter。 如需詳細資訊，請參閱 < [Visual Studio 2019 Preview 版本資訊](/visualstudio/releases/2019/release-notes-preview#test-tools)。
 

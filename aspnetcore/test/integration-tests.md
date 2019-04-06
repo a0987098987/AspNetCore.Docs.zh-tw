@@ -20,7 +20,7 @@ ms.locfileid: "39410178"
 
 整合測試可確保應用程式的元件正確運作，其中包含應用程式的支援基礎結構，例如資料庫、 檔案系統和網路層級。 ASP.NET Core 支援使用測試 web 主機和記憶體測試伺服器中的單元測試架構的整合測試。
 
-本主題假設單元測試的基本知識。 如果熟悉測試概念，請參閱[.NET Core 和.NET Standard 中的單元測試](/dotnet/core/testing/)主題和其連結的內容。
+本主題假設對單元測試知識有基本了解。 如果熟悉測試概念，請參閱[.NET Core 和.NET Standard 中的單元測試](/dotnet/core/testing/)主題和其連結的內容。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
@@ -52,10 +52,10 @@ ms.locfileid: "39410178"
 因此，限制使用的最重要的基礎結構案例的整合測試。 如果可以使用單元測試或整合測試，測試行為，請選擇 單元測試。
 
 > [!TIP]
-> 不要撰寫每個可能的排列的資料與檔案存取資料庫和檔案系統的整合測試。 不論多少位數跨應用程式會與資料庫和檔案系統、 特定的一份讀取、 寫入、 更新和刪除的整合測試通常能夠適當測試資料庫和檔案系統元件互動。 使用單元測試的方法的邏輯與這些元件互動的例行性測試。 在單元測試中的基礎結構使用 fakes/模擬 （mock) 更快速的測試執行中的結果。
+> 不要撰寫每個可能的排列的資料與檔案存取資料庫和檔案系統的整合測試。 不論多少位數跨應用程式會與資料庫和檔案系統、 特定的一份讀取、 寫入、 更新和刪除的整合測試通常能夠適當測試資料庫和檔案系統元件互動。 使用單元測試的方法的邏輯與這些元件互動的例行性測試。 在單元測試中的基礎結構使用 fakes/模擬 (mock) 更快速的測試執行中的結果。
 
 > [!NOTE]
-> 在討論中的整合測試，測試的專案時經常會呼叫*待測系統*，或簡稱為 「 SUT"。
+> 在討論中的整合測試，測試的專案時經常會呼叫*待測系統*，或簡稱為「 SUT」。
 
 ## <a name="aspnet-core-integration-tests"></a>ASP.NET Core 整合測試
 
@@ -125,7 +125,7 @@ ASP.NET Core 中的整合測試需要下列各項：
 
 中的另一個測試`BasicTests`類別會檢查安全端點重新導向未驗證的使用者，應用程式的登入頁面。
 
-SUT，在`/SecurePage`頁面上使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)來套用慣例[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)至頁面。 如需詳細資訊，請參閱 < [Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
+SUT，在`/SecurePage`頁面上使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)來套用慣例[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)至頁面。 如需詳細資訊，請參閱  [Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
 
@@ -138,7 +138,7 @@ SUT，在`/SecurePage`頁面上使用[AuthorizePage](/dotnet/api/microsoft.exten
 * SUT 所傳回的狀態碼可以檢查對預期[HttpStatusCode.Redirect](/dotnet/api/system.net.httpstatuscode)結果，不登入頁面，會重新導向後的最終狀態程式碼[HttpStatusCode.OK](/dotnet/api/system.net.httpstatuscode).
 * `Location`回應標頭中的標頭值會檢查以確認它開頭`http://localhost/Identity/Account/Login`，不是最後登入頁面的回應，其中`Location`標頭不會出現。
 
-如需詳細資訊`WebApplicationFactoryClientOptions`，請參閱 <<c2> [ 用戶端選項](#client-options)一節。
+如需詳細資訊`WebApplicationFactoryClientOptions`，請參閱 <c2> [ 用戶端選項](#client-options)一節。
 
 ## <a name="customize-webapplicationfactory"></a>自訂 WebApplicationFactory
 
@@ -168,7 +168,7 @@ Web 主機組態可以建立獨立的測試類別，藉由繼承自`WebApplicati
 
 `SendAsync`協助程式的擴充方法 (*Helpers/HttpClientExtensions.cs*) 和`GetDocumentAsync`helper 方法 (*Helpers/HtmlHelpers.cs*) 中[的範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/)使用[AngleSharp](https://anglesharp.github.io/)剖析器來處理 antiforgery 檢查使用下列方法：
 
-* `GetDocumentAsync` &ndash; 接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回`IHtmlDocument`。 `GetDocumentAsync` 使用準備的處理站*虛擬回應*根據原始`HttpResponseMessage`。 如需詳細資訊，請參閱 < [AngleSharp 文件](https://github.com/AngleSharp/AngleSharp#documentation)。
+* `GetDocumentAsync` &ndash; 接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回`IHtmlDocument`。 `GetDocumentAsync` 使用準備的處理站*虛擬回應*根據原始`HttpResponseMessage`。 如需詳細資訊，請參閱 [AngleSharp 文件](https://github.com/AngleSharp/AngleSharp#documentation)。
 * `SendAsync` 擴充方法`HttpClient`compose [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)然後呼叫[SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_)提交要求給 SUT。 多載`SendAsync`接受 HTML 表單 (`IHtmlFormElement`) 和下列：
   - 提交按鈕的表單 (`IHtmlElement`)
   - 表單值集合 (`IEnumerable<KeyValuePair<string, string>>`)
@@ -304,7 +304,7 @@ SUT 應用程式執行時，會產生下列標記：
 
 ## <a name="disable-shadow-copying"></a>停用陰影複製
 
-陰影複製會導致在不同的輸出資料夾的資料夾中執行測試。 針對測試才能正常運作，陰影複製必須停用。 [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)xunit，並停用所包括的 xUnit 陰影複製*xunit.runner.json*檔案使用的是正確的組態設定。 如需詳細資訊，請參閱 <<c0> [ 設定使用 JSON 的 xUnit.net](https://xunit.github.io/docs/configuring-with-json.html)。
+陰影複製會導致在不同的輸出資料夾的資料夾中執行測試。 針對測試才能正常運作，陰影複製必須停用。 [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)xunit，並停用所包括的 xUnit 陰影複製*xunit.runner.json*檔案使用的是正確的組態設定。 如需詳細資訊，請參閱 <c0> [ 設定使用 JSON 的 xUnit.net](https://xunit.github.io/docs/configuring-with-json.html)。
 
 新增*xunit.runner.json*檔案根目錄的測試專案，使用下列內容：
 
@@ -342,7 +342,7 @@ SUT 是 Razor Pages 訊息系統具有下列特性：
 
 &#8224;EF 主題[使用 InMemory 進行測試](/ef/core/miscellaneous/testing/in-memory)，說明如何使用記憶體中資料庫的 mstest 執行測試。 本主題會使用[xUnit](https://xunit.github.io/)測試架構。 測試概念和跨不同的測試架構的測試實作都類似，但不是完全相同。
 
-雖然不會使用應用程式[儲存機制模式](xref:fundamentals/repository-pattern)並不是有效的範例[工作單位 (UoW) 模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)，Razor 頁面支援的開發這些模式。 如需詳細資訊，請參閱 <<c0> [ 設計基礎結構持續層](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)， [ASP.NET MVC 應用程式中實作存放庫和工作單元模式](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)，和[測試控制器邏輯](/aspnet/core/mvc/controllers/testing)（此範例會實作儲存機制模式）。
+雖然不會使用應用程式[儲存機制模式](xref:fundamentals/repository-pattern)並不是有效的範例[工作單位 (UoW) 模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)，Razor 頁面支援的開發這些模式。 如需詳細資訊，請參閱 <c0> [ 設計基礎結構持續層](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)， [ASP.NET MVC 應用程式中實作存放庫和工作單元模式](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)，和[測試控制器邏輯](/aspnet/core/mvc/controllers/testing)（此範例會實作儲存機制模式）。
 
 ### <a name="test-app-organization"></a>測試應用程式的組織
 

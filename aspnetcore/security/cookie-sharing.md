@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何共用的驗證 cookie 之間 ASP.NET 4.x 和 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/19/2017
+ms.date: 04/06/2019
 uid: security/cookie-sharing
-ms.openlocfilehash: 504d3369c908aabddeaa2fc3d1ef16a42b5cb771
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 7a049ed8787808e228859afc051b8697a6261c21
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208511"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068306"
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>使用 ASP.NET 和 ASP.NET Core 共用應用程式之間的 cookie
 
@@ -157,7 +157,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 當應用程式會使用 Katana cookie 驗證中介軟體時，它會呼叫`UseCookieAuthentication`中的專案*Startup.Auth.cs*檔案。 ASP.NET 4.x web 應用程式專案使用 Visual Studio 2013 建立和更新版本預設會使用 Katana cookie 驗證中介軟體。 雖然`UseCookieAuthentication`已過時，不支援 ASP.NET Core 應用程式，請呼叫`UseCookieAuthentication`中 ASP.NET 4.x 應用程式使用 Katana cookie 驗證中介軟體是否有效。
 
-ASP.NET 4.x 應用程式必須以.NET Framework 4.5.1 為目標或更高版本。 否則，無法安裝必要的 NuGet 套件。
+ASP.NET 4.x 應用程式必須為目標.NET Framework 4.5.1 或更新版本。 否則，無法安裝必要的 NuGet 套件。
 
 若要共用的 ASP.NET 4.x 應用程式和 ASP.NET Core 應用程式之間的驗證 cookie，如上所述，設定 ASP.NET Core 應用程式，然後執行下列步驟來設定 ASP.NET 4.x 應用程式：
 

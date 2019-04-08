@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何建立和使用授權原則的處理常式，以強制執行的 ASP.NET Core 應用程式中的授權需求。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2017
+ms.date: 04/05/2019
 uid: security/authorization/policies
-ms.openlocfilehash: e72f15c28fb7b62c671dd6475cc323cacce42de6
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: ea9d687d3810c104d5b3fa39033849c21569709b
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208317"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068166"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的原則為基礎的授權
 
@@ -33,7 +33,7 @@ ms.locfileid: "58208317"
 
 ## <a name="applying-policies-to-razor-pages"></a>將原則套用至 Razor Pages
 
-原則時，會套用至 Razor 頁面上，使用`[Authorize]`原則名稱的屬性。 例如: 
+原則時，會套用至 Razor 頁面上，使用`[Authorize]`原則名稱的屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
@@ -96,7 +96,10 @@ ms.locfileid: "58208317"
 
 * 若要保證失敗，即使其他要求處理常式會成功，呼叫`context.Fail`。
 
-當設定為`false`，則[InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure)屬性 （可在 ASP.NET Core 1.1 和更新版本） 的縮短處理常式執行時`context.Fail`呼叫。 `InvokeHandlersAfterFailure` 預設為`true`，在此情況下會呼叫所有的處理常式。 這可讓產生副作用，例如記錄，這一律會發生的需求即使`context.Fail`已在另一個處理常式中呼叫。
+如果處理常式會呼叫`context.Succeed`或`context.Fail`，仍會在所有其他的處理常式呼叫。 這可讓產生副作用，例如記錄，即使另一個處理常式已順利驗證或失敗的需求，會發生的需求。 當設定為`false`，則[InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure)屬性 （可在 ASP.NET Core 1.1 和更新版本） 的縮短處理常式執行時`context.Fail`呼叫。 `InvokeHandlersAfterFailure` 預設為`true`，在此情況下會呼叫所有的處理常式。
+
+> [!NOTE]
+> 即使驗證失敗，會呼叫授權處理常式。
 
 <a name="security-authorization-policies-based-multiple-handlers"></a>
 

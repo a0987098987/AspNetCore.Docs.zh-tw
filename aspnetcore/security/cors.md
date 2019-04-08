@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何為標準，以允許或拒絕在 ASP.NET Core 應用程式的跨原始要求的 CORS。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/27/2019
+ms.date: 04/07/2019
 uid: security/cors
-ms.openlocfilehash: 2cad26d0f61519f63888a2bc399bb7e8a0f1ee04
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: fe5b750c44e5fad9ba80efb2cc8116d0a64b1a17
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210128"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068293"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨源要求 (CORS)
 
@@ -57,7 +57,7 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會為指定�
 上述程式碼：
 
 * 若要設定的原則名稱"\_myAllowSpecificOrigins"。 原則名稱是任意的。
-* 呼叫<xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*>延伸模組方法，可讓核心。
+* 呼叫<xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*>啟用 CORS 的擴充方法。
 * 呼叫<xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*>具有[lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)。 Lambda 會採用<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder>物件。 [組態選項](#cors-policy-options)，例如`WithOrigins`，本文稍後所述。
 
 <xref:Microsoft.Extensions.DependencyInjection.MvcCorsMvcCoreBuilderExtensions.AddCors*>方法呼叫會將應用程式的服務容器中的 CORS 服務：
@@ -95,7 +95,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 注意:
 
-* `UseCors` 必須在 `UseMvc` 之前呼叫。
+* `UseCors` 之前必須先呼叫`UseMvc`。
 * URL 必須**未**包含斜線 (`/`)。 如果 URL 終止`/`，比較傳回`false`並傳回不含標頭。
 
 請參閱[測試 CORS](#test)如需有關測試上述程式碼。
@@ -182,7 +182,7 @@ to remove the ambiguous **This**.
 
 ### <a name="set-the-allowed-http-methods"></a>設定允許的 HTTP 方法
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>：
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>:
 
 * 可讓任何 HTTP 方法：
 * 會影響預檢要求，`Access-Control-Allow-Methods`標頭。 如需詳細資訊，請參閱 <<c0> [ 預檢要求](#preflight-requests)一節。
@@ -333,8 +333,8 @@ Content-Length: 0
 
 事前要求使用 HTTP OPTIONS; 方法。 它包含兩個特殊標頭：
 
-* `Access-Control-Request-Method`：將會用於實際要求的 HTTP 方法。
-* `Access-Control-Request-Headers`：在實際的要求設定的應用程式的要求標頭的清單。 如稍早所述，這不包含標頭，以瀏覽器設定，例如`User-Agent`。
+* `Access-Control-Request-Method`:將會用於實際要求的 HTTP 方法。
+* `Access-Control-Request-Headers`:在實際的要求設定的應用程式的要求標頭的清單。 如稍早所述，這不包含標頭，以瀏覽器設定，例如`User-Agent`。
 
 CORS 預檢要求可能包括`Access-Control-Request-Headers`標頭，會向伺服器指出傳送實際要求的標頭。
 

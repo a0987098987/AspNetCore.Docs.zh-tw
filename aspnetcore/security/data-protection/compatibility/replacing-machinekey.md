@@ -1,38 +1,38 @@
 ---
-title: 取代 ASP.NET machineKey 中 ASP.NET Core
+title: 取代 ASP.NET Core 中的 ASP.NET 電腦金鑰
 author: rick-anderson
-description: 了解如何取代 machineKey ASP.NET 為允許使用更安全的新資料保護系統中。
+description: 了解如何在 ASP.NET 中以允許新且更安全的資料保護系統使用 machineKey 的取代。
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 04/06/2019
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: 5f9e5cec02b66e1315548c4e7c18fe168ad161eb
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: ff36382d22a218a228b42a31ae4f8ad2eb2d5b5f
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278820"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068280"
 ---
-# <a name="replace-the-aspnet-machinekey-in-aspnet-core"></a>取代 ASP.NET machineKey 中 ASP.NET Core
+# <a name="replace-the-aspnet-machinekey-in-aspnet-core"></a>取代 ASP.NET Core 中的 ASP.NET 電腦金鑰
 
 <a name="compatibility-replacing-machinekey"></a>
 
-實作`<machineKey>`ASP.NET 中的項目[是可取代](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)。 這可讓大部分呼叫 ASP.NET 密碼編譯常式，以透過取代資料保護機制，包括新的資料保護系統進行路由。
+實作`<machineKey>`在 ASP.NET 中的項目[可取代](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)。 這可讓 ASP.NET 密碼編譯常式大部分呼叫會透過取代資料保護機制，包括新的資料保護系統路由。
 
 ## <a name="package-installation"></a>套件安裝
 
 > [!NOTE]
-> 新的資料保護系統只能安裝到現有的 ASP.NET 應用程式為目標.NET 4.5.1 或更新版本。 安裝將會失敗，如果應用程式的目標.NET 4.5 或降低。
+> 新的資料保護系統只能安裝到現有的 ASP.NET 應用程式目標為.NET 4.5.1 或更新版本。 安裝將會失敗，如果應用程式以.NET 4.5 為目標，或降低。
 
-若要安裝新的資料保護系統到現有的 ASP.NET 4.5.1+ 專案，請將封裝 Microsoft.AspNetCore.DataProtection.SystemWeb 安裝。 這會具現化的資料保護系統使用[預設組態](xref:security/data-protection/configuration/default-settings)設定。
+若要安裝新的資料保護系統，到現有的 ASP.NET 4.5.1+ 專案，安裝套件 Microsoft.AspNetCore.DataProtection.SystemWeb。 這會具現化的資料保護系統使用[預設組態](xref:security/data-protection/configuration/default-settings)設定。
 
-當您安裝封裝時，它會插入到行*Web.config*這會告知 ASP.NET，若要將其用於[最密碼編譯作業](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)，包括表單驗證、 檢視狀態和呼叫MachineKey.Protect。 插入的行讀取，如下所示。
+當您安裝封裝時，它會插入一行*Web.config*這會告知 ASP.NET，以將其用於[最密碼編譯作業](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)，包括表單驗證、 檢視狀態和呼叫MachineKey.Protect。 插入一行，如下所示。
 
 ```xml
 <machineKey compatibilityMode="Framework45" dataProtectorType="..." />
 ```
 
 >[!TIP]
-> 您可以知道新的資料保護系統是否作用中，藉由檢查欄位`__VIEWSTATE`，其中應該有"CfDJ8"如下列範例所示。 「 CfDJ8"會識別裝載受資料保護系統中的 magic"09 F0 C9 F0"標頭的 base64 表示法。
+> 您可以知道新的資料保護系統是否作用中，藉由檢查等欄位`__VIEWSTATE`，這應該如下列範例所示以"CfDJ8"開頭。 「 CfDJ8"是識別受資料保護系統的承載的 magic"09 F0 C9 F0"標頭的 base64 表示法。
 
 ```html
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="CfDJ8AWPr2EQPTBGs3L2GCZOpk..." />
@@ -40,9 +40,9 @@ ms.locfileid: "36278820"
 
 ## <a name="package-configuration"></a>封裝組態
 
-資料保護系統具現化，且預設零安裝程式組態。 不過，因為依照預設索引鍵會保存到本機檔案系統，這不會運作的應用程式的部署伺服器陣列中。 若要解決此問題，您可以藉由建立類型的子類別 DataProtectionStartup 提供組態，並覆寫其 ConfigureServices 方法。
+資料保護系統具現化使用預設的零設定組態。 不過，由於預設索引鍵會保存到本機檔案系統，這不適用於部署伺服器陣列中的應用程式。 若要解決此問題，您可以藉由建立類型的子類別 DataProtectionStartup 提供組態，並覆寫及其 ConfigureServices 方法。
 
-以下是自訂的資料保護啟動類型設定金鑰保存的位置和它們如何加密在靜止的範例。 它也會覆寫預設應用程式隔離原則藉由提供它自己的應用程式名稱。
+以下是自訂的資料保護啟動類型設定金鑰保存的位置和它們如何加密靜止的範例。 它也會覆寫預設應用程式隔離原則藉由提供它自己的應用程式名稱。
 
 ```csharp
 using System;
@@ -67,9 +67,9 @@ namespace DataProtectionDemo
 ```
 
 >[!TIP]
-> 您也可以使用`<machineKey applicationName="my-app" ... />`SetApplicationName 明確呼叫取代。 這是一個方便機制來避免強制開發人員建立 DataProtectionStartup 衍生型別，如果他們想要設定所有已設定應用程式名稱。
+> 您也可以使用`<machineKey applicationName="my-app" ... />`SetApplicationName 明確呼叫取代。 這是為了避免強制開發人員建立 DataProtectionStartup 衍生型別，如果他們想要設定所有已設定應用程式名稱的方便機制。
 
-若要啟用此自訂設定，請回到 Web.config，並尋找`<appSettings>`封裝安裝的元素加入至組態檔。 它看起來像下列標記：
+若要啟用此自訂的設定，請回到 Web.config，並尋找`<appSettings>`套件安裝新增至組態檔的元素。 它看起來像下列標記：
 
 ```xml
 <appSettings>
@@ -82,11 +82,11 @@ namespace DataProtectionDemo
 </appSettings>
 ```
 
-填入的空白值與您剛才建立的 DataProtectionStartup 衍生的類型的組件限定名稱。 如果應用程式的名稱是 DataProtectionDemo，這看起來會像下面。
+填寫您剛才建立的 DataProtectionStartup 衍生的類型的組件限定名稱空白的值。 如果應用程式的名稱是 DataProtectionDemo，這會看起來如下。
 
 ```xml
 <add key="aspnet:dataProtectionStartupType"
      value="DataProtectionDemo.MyDataProtectionStartup, DataProtectionDemo" />
 ```
 
-現在可以使用應用程式內的新設定好的資料保護系統。
+現在可供在應用程式內使用新設定的資料保護系統。

@@ -1,23 +1,23 @@
 ---
 title: ASP.NET Core 中的 Facebook 外部登入設定
 author: rick-anderson
-description: 本教學課程示範如何整合到現有的 ASP.NET Core 應用程式的 Facebook 帳戶使用者驗證。
+description: 程式碼範例來示範整合到現有的 ASP.NET Core 應用程式的 Facebook 帳戶使用者驗證的教學課程。
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 12/18/2018
+ms.date: 03/04/2019
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 5fd40e7b42b17d4a3b858de15c8ed03fb64ce690
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: b69a6f3955d59aaff273a965d8820862e187cd51
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58751086"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068205"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Facebook 外部登入設定
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程會示範如何讓使用者使用自己的 Facebook 帳戶使用範例 ASP.NET Core 2.0 專案上建立登入[上一頁](xref:security/authentication/social/index)。 我們先建立 Facebook 應用程式識別碼[官方步驟](https://developers.facebook.com)。
+本教學課程，程式碼範例示範如何讓使用者使用自己的 Facebook 帳戶使用範例 ASP.NET Core 2.0 專案上建立登入[上一頁](xref:security/authentication/social/index)。 我們先建立 Facebook 應用程式識別碼[官方步驟](https://developers.facebook.com)。
 
 ## <a name="create-the-app-in-facebook"></a>在 Facebook 中建立應用程式
 

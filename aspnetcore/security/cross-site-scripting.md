@@ -53,7 +53,7 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
    ```
 
 >[!WARNING]
-> ASP.NET Core MVC 提供 `HtmlString` 類別，它不會在輸出時自動編碼。這永遠不應該結合不受信任的輸入使用，因為這將會公開 XSS 弱點。
+> ASP.NET Core MVC 提供 `HtmlString` 類別，它不會在輸出時自動編碼。 這永遠不應該結合不受信任的輸入使用，因為這將會公開 XSS 弱點。
 
 ## <a name="javascript-encoding-using-razor"></a>使用 Razor JavaScript 編碼
 
@@ -176,7 +176,7 @@ var example = "\"Quoted Value with spaces and &\"";
 變數會包含編碼 encodedValue 之後`%22Quoted%20Value%20with%20spaces%20and%20%26%22`。 空格、 引號、 標點符號和其他不安全字元就是百分比編碼成其十六進位值，例如空格字元會變成 %20。
 
 >[!WARNING]
-> 請勿使用不受信任的輸入作為 URL 路徑的一部分。一律傳遞不受信任的輸入作為查詢字串值。
+> 請勿使用不受信任的輸入作為 URL 路徑的一部分。 一律傳遞不受信任的輸入作為查詢字串值。
 
 <a name="security-cross-site-scripting-customization"></a>
 

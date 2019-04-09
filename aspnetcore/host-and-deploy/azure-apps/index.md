@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: f9a74fdd94da4c913ac8822ee7bd58c85a9ce72c
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 009ee97d954a21f5fca1713b2b45218cac235e33
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750929"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012834"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -168,12 +168,13 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 > ```powershell
 > Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64\
 > ```
+>
 > 當已安裝 x64 預覽執行階段時，此命令會傳回 `True`。
 
 > [!NOTE]
 > **ASP.NET Core 延伸模組**可在 Azure 應用程式服務上提供適用於 ASP.NET Core 的其他功能，例如：提供 Azure 記錄。 若從 Visual Studio 部署，會自動安裝延伸模組。 若未安裝延伸模組，請為應用程式安裝。
 
-**搭配使用預覽網站延伸模組與 ARM 範本**
+**搭配 ARM 範本使用預覽網站延伸模組**
 
 如果您使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站延伸模組新增至 Web 應用程式。 例如：
 

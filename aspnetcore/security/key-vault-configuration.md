@@ -5,14 +5,14 @@ description: 了解如何使用 Azure 金鑰保存庫的組態提供者設定應
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/22/2019
+ms.date: 02/25/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 2188929d6f380327465e8ce0fd8ad659188416d3
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: 8fd1cca1803d3f1d44d80ec63c5cfc259cbdaf55
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56743981"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012691"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
 
@@ -34,13 +34,13 @@ ms.locfileid: "56743981"
 採用[管理 Azure 資源的身分識別](/azure/active-directory/managed-identities-azure-resources/overview)案例中，新增的套件參考[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)封裝。
 
 > [!NOTE]
-> 在本文撰寫之際，最新穩定版本`Microsoft.Azure.Services.AppAuthentication`，版本`1.0.3`，可讓您[系統指派給受控身分識別](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka)。 支援*指派使用者給受控身分識別*位於`1.0.2-preview`封裝。 本主題示範如何使用系統管理的身分識別，並提供的範例應用程式使用的版本`1.0.3`的`Microsoft.Azure.Services.AppAuthentication`封裝。
+> 在本文撰寫之際，最新穩定版本`Microsoft.Azure.Services.AppAuthentication`，版本`1.0.3`，可讓您[系統指派給受控身分識別](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka)。 支援*指派使用者給受控身分識別*位於`1.2.0-preview2`封裝。 本主題示範如何使用系統管理的身分識別，並提供的範例應用程式使用的版本`1.0.3`的`Microsoft.Azure.Services.AppAuthentication`封裝。
 
 ## <a name="sample-app"></a>範例應用程式
 
 範例應用程式執行所決定的兩種模式之一`#define`陳述式，在頂端*Program.cs*檔案：
 
-* `Basic` &ndash; 示範如何使用 Azure 金鑰保存庫的應用程式識別碼和密碼 （用戶端密碼） 來存取儲存在金鑰保存庫中的祕密。 部署`Basic`版本的任何主機能夠為 ASP.NET Core 應用程式範例。 請依照下列中的指導方針[使用應用程式識別碼和非 Azure 代管應用程式的用戶端祕密](#use-application-id-and-client-secret-for-non-azure-hosted-apps)一節。
+* `Certificate` &ndash; 示範如何使用 Azure Key Vault 中儲存的存取祕密的 Azure 金鑰保存庫用戶端識別碼和 X.509 憑證。 從任何位置，部署至 Azure App Service 或任何能夠為 ASP.NET Core 應用程式的主機，可以執行此版本的範例。
 * `Managed` &ndash; 示範如何使用[管理 Azure 資源的身分識別](/azure/active-directory/managed-identities-azure-resources/overview)驗證的應用程式至 Azure Key Vault 與 Azure AD 驗證不含認證儲存在應用程式的程式碼或組態。 當使用受管理的身分識別進行驗證，不需要的 Azure AD 應用程式識別碼和密碼 （用戶端祕密）。 `Managed`範例版本必須部署至 Azure。 請依照下列中的指導方針[適用於 Azure 資源使用受控身分識別](#use-managed-identities-for-azure-resources)一節。
 
 如需有關如何設定範例應用程式使用前置處理器指示詞 (`#define`)，請參閱<xref:index#preprocessor-directives-in-sample-code>。
@@ -113,15 +113,19 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 ## <a name="use-application-id-and-client-secret-for-non-azure-hosted-apps"></a>使用非 Azure 代管應用程式的應用程式識別碼和用戶端祕密
 
-設定 Azure AD、 Azure 金鑰保存庫和應用程式使用的應用程式識別碼和密碼 （用戶端密碼） 來驗證 key vault**當應用程式裝載在 Azure 之外**。
+設定 Azure AD、 Azure 金鑰保存庫和應用程式使用 Azure Active Directory 應用程式識別碼和 X.509 憑證來向 key vault**當應用程式裝載在 Azure 之外**。 如需詳細資訊，請參閱 <<c0> [ 關於金鑰、 祕密和憑證](/azure/key-vault/about-keys-secrets-and-certificates)。
 
 > [!NOTE]
-> 雖然在 Azure 中託管的應用程式支援使用應用程式識別碼和密碼 （用戶端秘密），我們建議您使用[管理 Azure 資源的身分識別](#use-managed-identities-for-azure-resources)裝載在 Azure 中的應用程式時。 受管理的身分識別並不需要將認證儲存在應用程式或其組態，因此被視為通常更安全的方法。
+> 雖然在 Azure 中託管的應用程式支援使用應用程式識別碼和 X.509 憑證，但我們建議您使用[管理 Azure 資源的身分識別](#use-managed-identities-for-azure-resources)裝載在 Azure 中的應用程式時。 受管理的身分識別不需要將憑證儲存在應用程式或開發環境。
 
-範例應用程式可使用的應用程式識別碼和密碼 （用戶端密碼） 時`#define`陳述式，在頂端*Program.cs*檔案設定為`Basic`。
+範例應用程式會使用的應用程式識別碼和 X.509 憑證的時機`#define`陳述式，在頂端*Program.cs*檔案設定為`Certificate`。
 
-1. 使用 Azure AD 註冊應用程式，並建立應用程式的身分識別的密碼 （用戶端祕密）。
-1. 在應用程式中儲存的金鑰保存庫名稱、 應用程式識別碼和密碼/用戶端祕密*appsettings.json*檔案。
+1. 使用 Azure AD 註冊應用程式 (**應用程式註冊**)。
+1. 上傳的公開金鑰：
+   1. 在 Azure AD 中選取的應用程式。
+   1. 瀏覽至**設定** > **金鑰**。
+   1. 選取 **上傳公開金鑰**來上傳包含公開金鑰的憑證。 除了使用 *.cer*， *.pem*，或 *.crt*憑證 *.pfx*可以上傳憑證。
+1. 應用程式中儲存的金鑰保存庫名稱和應用程式識別碼*appsettings.json*檔案。 將憑證放置在應用程式或應用程式的憑證存放區中根&dagger;。
 1. 瀏覽至**金鑰保存庫**在 Azure 入口網站中。
 1. 選取您在建立金鑰保存庫[生產環境使用 Azure Key Vault 中密碼的儲存體](#secret-storage-in-the-production-environment-with-azure-key-vault)一節。
 1. 選取 **存取原則**。
@@ -132,7 +136,9 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. 選取 [儲存]。
 1. 部署應用程式。
 
-`Basic`範例應用程式取得其組態值從`IConfigurationRoot`具有相同名稱與祕密名稱：
+&dagger;在範例應用程式中，憑證由直接從應用程式的根目錄中的實體的憑證檔案建立新`X509Certificate2`呼叫時`AddAzureKeyVault`。 另一個方法是允許 OS 管理的憑證。 如需詳細資訊，請參閱 <<c0> [ 允許 OS 管理的 X.509 憑證](#allow-the-os-to-manage-the-x509-certificate)一節。
+
+`Certificate`範例應用程式取得其組態值從`IConfigurationRoot`具有相同名稱與祕密名稱：
 
 * 非階層式的值：值`SecretName`取得`config["SecretName"]`。
 * （區段） 的階層式值：使用`:`（冒號） 標記法或`GetSection`擴充方法。 您可以使用任一種方法來取得組態值：
@@ -141,13 +147,12 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 應用程式呼叫`AddAzureKeyVault`所提供的值*appsettings.json*檔案：
 
-[!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet1&highlight=11-14)]
+[!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet1&highlight=12-15)]
 
 範例值：
 
 * 金鑰保存庫名稱： `contosovault`
 * 應用程式識別碼： `627e911e-43cc-61d4-992e-12db9c81b413`
-* 密碼： `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
 
 *appsettings.json*：
 
@@ -208,7 +213,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 * 金鑰保存庫名稱： `contosovault`
 * 應用程式識別碼： `627e911e-43cc-61d4-992e-12db9c81b413`
-* 密碼： `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
+* 密碼: `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
 
 `IKeyVaultSecretManager`實作回應組態中載入適當的祕密的祕密版本前置詞：
 
@@ -257,35 +262,51 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 > [!NOTE]
 > 您也可以提供您自己`KeyVaultClient`實作`AddAzureKeyVault`。 自訂用戶端會允許跨應用程式共用用戶端的單一執行個體。
 
-## <a name="authenticate-to-azure-key-vault-with-an-x509-certificate"></a>Azure 金鑰保存庫中的 X.509 憑證進行驗證
+## <a name="allow-the-os-to-manage-the-x509-certificate"></a>允許 OS 管理的 X.509 憑證
 
-在開發環境可支援憑證中的.NET Framework 應用程式時，您可以使用 X.509 憑證來驗證 Azure Key Vault。 X.509 憑證的私密金鑰是由 OS 管理。 如需詳細資訊，請參閱 <<c0> [ 使用而不是用戶端祕密憑證進行驗證](/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret)。 使用`AddAzureKeyVault`多載，接受`X509Certificate2`(`_env`在下列範例中：
+X.509 憑證可以由 OS 管理。 下列範例會使用`AddAzureKeyVault`多載，接受`X509Certificate2`從電腦的目前使用者憑證存放區和組態所提供的憑證指紋：
 
 ```csharp
-var builtConfig = config.Build();
+// using System.Linq;
+// using System.Security.Cryptography.X509Certificates;
+// using Microsoft.Extensions.Configuration;
 
-var store = new X509Store(StoreLocation.CurrentUser);
-store.Open(OpenFlags.ReadOnly);
-var cert = store.Certificates
-    .Find(X509FindType.FindByThumbprint, 
-        config["CertificateThumbprint"], false);
+WebHost.CreateDefaultBuilder(args)
+    .ConfigureAppConfiguration((context, config) =>
+    {
+        if (context.HostingEnvironment.IsProduction())
+        {
+            var builtConfig = config.Build();
 
-config.AddAzureKeyVault(
-    builtConfig["KeyVaultName"],
-    builtConfig["AzureADApplicationId"],
-    cert.OfType<X509Certificate2>().Single(),
-    new EnvironmentSecretManager(context.HostingEnvironment.ApplicationName));
+            using (var store = new X509Store(StoreName.My, 
+                StoreLocation.CurrentUser))
+            {
+                store.Open(OpenFlags.ReadOnly);
+                var certs = store.Certificates
+                    .Find(X509FindType.FindByThumbprint, 
+                        builtConfig["CertificateThumbprint"], false);
 
-store.Close();
+                config.AddAzureKeyVault(
+                    builtConfig["KeyVaultName"], 
+                    builtConfig["AzureADApplicationId"], 
+                    certs.OfType<X509Certificate2>().Single());
+
+                store.Close();
+            }
+        }
+    })
+    .UseStartup<Startup>();
 ```
+
+如需詳細資訊，請參閱 <<c0> [ 使用而不是用戶端祕密憑證進行驗證](/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret)。
 
 ## <a name="bind-an-array-to-a-class"></a>將陣列繫結到類別
 
 提供者可以讀入繫結到 POCO 陣列的陣列中的組態值。
 
-從允許包含冒號的索引鍵的組態來源讀取時 (`:`) 的數值索引鍵的區段分隔符號用來區別構成陣列的索引鍵 (`:0:`， `:1:`，... `:{n}:`)。 如需詳細資訊，請參閱[組態：將陣列繫結至類別](xref:fundamentals/configuration/index#bind-an-array-to-a-class)。
+從允許包含冒號的索引鍵的組態來源讀取時 (`:`) 的數值索引鍵的區段分隔符號用來區別構成陣列的索引鍵 (`:0:`， `:1:`，... `:{n}:`) 來存取它所儲存的值。 如需詳細資訊，請參閱[組態：將陣列繫結至類別](xref:fundamentals/configuration/index#bind-an-array-to-a-class)。
 
-Azure Key Vault 金鑰無法使用冒號做為分隔符號。 本主題中所述的方法會使用雙連字號 (`--`) 當作分隔符號 （區段） 的階層式值。 陣列索引鍵時，會儲存在 Azure 金鑰保存庫上，使用雙連字號和數值的重要片段 (`--0--`， `--1--`，... `--{n}--`)。
+Azure Key Vault 金鑰無法使用冒號做為分隔符號。 本主題中所述的方法會使用雙連字號 (`--`) 當作分隔符號 （區段） 的階層式值。 陣列索引鍵時，會儲存在 Azure 金鑰保存庫上，使用雙連字號和數值的重要片段 (`--0--`， `--1--`， &hellip; `--{n}--`)。
 
 檢查下列[Serilog](https://serilog.net/)記錄的 JSON 檔案所提供的提供者組態。 有兩個物件中定義的常值`WriteTo`陣列，其中會反映兩個 Serilog*接收*，可描述記錄輸出的目的地：
 
@@ -349,7 +370,9 @@ Configuration.Reload();
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:fundamentals/configuration/index>
-* [Microsoft Azure:金鑰保存庫](https://azure.microsoft.com/services/key-vault/)
-* [Microsoft Azure:Key Vault 文件](/azure/key-vault/)
+* [Microsoft Azure：金鑰保存庫](https://azure.microsoft.com/services/key-vault/)
+* [Microsoft Azure：Key Vault 文件](/azure/key-vault/)
 * [如何產生並傳輸受 HSM 保護金鑰的 Azure 金鑰保存庫](/azure/key-vault/key-vault-hsm-protected-keys)
 * [KeyVaultClient 類別](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
+* [快速入門：設定並從 Azure Key Vault 擷取密碼，利用.NET web 應用程式](/azure/key-vault/quick-create-net)
+* [教學課程：如何搭配 Azure Windows 虛擬機器在.NET 中使用 Azure 金鑰保存庫](/azure/key-vault/tutorial-net-windows-virtual-machine)

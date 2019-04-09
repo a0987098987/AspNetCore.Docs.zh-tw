@@ -5,14 +5,14 @@ description: 了解如何在 ASP.NET Core，使用 IIS Express、 IIS 和 HTTP.s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 02/25/2019
+ms.date: 04/03/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 15fc41efba77f88fc8129f875b85836ac1b5f886
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.openlocfilehash: 9b53f523cf579aeb0e7dd37ccf5f161269a54913
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833692"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068257"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
@@ -26,15 +26,19 @@ Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使�
 
 **Web 應用程式**可透過 Visual Studio 或.NET Core CLI 的範本可以設定為支援 Windows 驗證。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 ### <a name="use-the-windows-authentication-app-template-for-a-new-project"></a>新的專案中使用 Windows 驗證應用程式範本
 
 在 Visual Studio 中：
 
-1. 建立新**ASP.NET Core Web 應用程式**。
-1. 選取  **Web 應用程式**從範本清單。
-1. 選取 **變更驗證**按鈕，然後選取**Windows 驗證**。
+1. 建立新的專案。
+1. 選取 [ASP.NET Core Web 應用程式]。 選取 [下一步]。
+1. 提供的名稱**專案名稱**欄位。 確認**位置**項目是否正確，或提供專案的位置。 選取 [建立]。
+1. 選取 **變更**下方**驗證**。
+1. 在 **變更驗證**視窗中，選取**Windows 驗證**。 選取 [確定]。
+1. 選取 [Web 應用程式]。
+1. 選取 [建立]。
 
 執行應用程式。 使用者名稱會出現在呈現的應用程式使用者介面。
 
@@ -51,7 +55,7 @@ Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使�
 
 [!code-json[](windowsauth/sample_snapshot/launchSettings.json?highlight=2-3)]
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# [<a name="net-core-cli"></a>.NET Core CLI](#tab/netcore-cli)
 
 使用**Windows 驗證**應用程式範本。
 
@@ -195,4 +199,4 @@ ASP.NET Core 不會實作模擬。 應用程式執行的所有要求，使用應
 
 ### <a name="claims-transformations"></a>宣告轉換
 
-當 IIS 同處理序模式中，裝載<xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*>不在內部呼叫以初始化使用者。 因此，<xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation>用來轉換宣告之後每個驗證是不會啟動預設, 的實作。 如需裝載同處理序時，會啟用宣告轉換的程式碼範例和詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#in-process-hosting-model>。
+當 IIS 同處理序模式中，裝載<xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*>不在內部呼叫以初始化使用者。 因此，預設會在未啟動每個驗證之後，使用 <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> 實作來轉換宣告。 如需裝載同處理序時，會啟用宣告轉換的程式碼範例和詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#in-process-hosting-model>。

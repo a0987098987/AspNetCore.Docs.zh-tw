@@ -1,24 +1,24 @@
 ---
-title: Razor 元件簡介
+title: ASP.NET Core 中的 Razor 元件簡介
 author: guardrex
 description: 探索 ASP.NET Core Razor 元件，這是在 ASP.NET Core 應用程式中使用 .NET 建置互動式用戶端 Web UI 的方式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
-ms.custom: mvc
+ms.custom: seoapril2019
 ms.date: 03/27/2019
 uid: razor-components/index
-ms.openlocfilehash: 8b2e87fe856598a5ac231e3bc1d413957829b448
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 43d5cf1d752b66a531c8d974deeb5a5fc8e94b43
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58751009"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012652"
 ---
 # <a name="introduction-to-razor-components"></a>Razor 元件簡介
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
-*Razor 元件*是使用 .NET 建置互動式用戶端 Web UI 的一種方式：
+在 ASP.NET Core 3.0 (預覽) 中推出的*Razor 元件*，可以搭配 .NET 用來建置互動式用戶端 Web UI：
 
 * 使用 C# 而不是 JavaScript 建置豐富的互動式 UI。
 * 共用伺服器端與用戶端應用程式邏輯都是以 .NET 撰寫。

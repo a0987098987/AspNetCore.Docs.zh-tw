@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/02/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: c6543ec1f2295c21c6a693ac8bd16ee07ec11381
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: 065b2016d3a2dcc2243ec6869e027c5fabe4dad8
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327403"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068400"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -110,9 +110,9 @@ ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提�
 
 ### <a name="no-asynchronous-logger-methods"></a>無非同步記錄器方法
 
-記錄速度應該很快，不值得花費非同步程式碼的效能成本來處理。 若您的記錄資料存放區很慢，請不要直接寫入其中。 請考慮一開始將記錄寫入到快速的存放區，稍後再將它們移到慢速存放區。 例如，記錄至訊息佇列以供其他處理序讀取及保存至慢速儲存體。
+記錄速度應該很快，不值得花費非同步程式碼的效能成本來處理。 若您的記錄資料存放區很慢，請不要直接寫入其中。 請考慮一開始將記錄寫入到快速的存放區，稍後再將它們移到慢速存放區。 例如，如果您要登入 SQL Server，您不希望在 `Log` 方法中直接執行，因為 `Log` 方法是同步的。 相反地，以同步方式將記錄訊息新增到記憶體內佇列，並讓背景工作角色提取出佇列的訊息，藉此執行推送資料到 SQL Server 的非同步工作。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>設定
 
 記錄提供者設定是由一或多個記錄提供者提供：
 
@@ -148,7 +148,7 @@ ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提�
 
 `Logging` 下的 `LogLevel` 屬性會指定要針對所選類記錄的最小[層級](#log-level)。 在範例中，`System` 與d `Microsoft` 類別會在 `Information` 層級記錄，而所有其他記錄則會在 `Debug` 層級記錄。
 
-`Logging` 下的其他屬性可指定記錄提供者。 範例使用主控台提供者。 若提供者支援[記錄範圍](#log-scopes)，`IncludeScopes` 會指出是否已啟用記錄範圍。 提供者屬性 (例如範例中的 `Console`) 可能也會指定 `LogLevel` 屬性。 提供者下的 `LogLevel` 會指定提供者的記錄層級。
+`Logging` 下的其他屬性可指定記錄提供者。 範例使用主控台提供者。 若提供者支援[記錄範圍](#log-scopes)，`IncludeScopes` 會指出是否已啟用記錄範圍。 提供者屬性 (例如範例中的 `Console`) 可能也會指定 `LogLevel` 屬性。 `LogLevel` (在提供者底下) 會指定提供者的記錄層級。
 
 若已在 `Logging.{providername}.LogLevel` 中指定層級，它們會覆寫 `Logging.LogLevel` 中設定的所有項目。
 
@@ -168,7 +168,7 @@ ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提�
 }
 ```
 
-`LogLevel` 索引鍵代表記錄名稱。 `Default` 索引鍵會套用到未明確列出的記錄。 此值代表套用到指定記錄的[記錄層級](#log-level)。
+`LogLevel` 機碼代表記錄名稱。 `Default` 機碼會套用到未明確列出的記錄。 此值代表套用到指定記錄的[記錄層級](#log-level)。
 
 ::: moniker-end
 
@@ -249,7 +249,7 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 ::: moniker-end
 
-`ILogger<T>` 相當於使用 `T`的完整類型名稱來呼叫 `CreateLogger`。
+`ILogger<T>` 相當於使用 `T` 的完整類型名稱來呼叫 `CreateLogger`。
 
 ## <a name="log-level"></a>記錄層級
 
@@ -277,7 +277,7 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 追蹤 = 0
 
-  針對通常只對偵錯有價值的資訊。 這些訊息可能包含敏感性應用程式資料，因此不應該在生產環境中啟用。 預設為停用。
+  針對通常只對偵錯有價值的資訊。 這些訊息可能包含敏感性應用程式資料，因此不應該在生產環境中啟用。 *預設為停用。*
 
 * 偵錯 = 1
 
@@ -285,15 +285,15 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 資訊 = 2
 
-  針對一般應用程式流程的追蹤。 這些記錄通常有一些長期值。 範例：`Request received for path /api/todo`
+  針對一般應用程式流程的追蹤。 這些記錄通常有一些長期值。 範例： `Request received for path /api/todo`
 
 * 警告 = 3
 
-  針對應用程式流程中發生的異常或意外事件。 這些記錄可能包含不會造成應用程式停止，但可能需要進行調查的錯誤或其他狀況。 已處理的例外狀況即為使用 `Warning` 記錄層級的常見位置。 範例：`FileNotFoundException for file quotes.txt.`
+  針對應用程式流程中發生的異常或意外事件。 這些記錄可能包含不會造成應用程式停止，但可能需要進行調查的錯誤或其他狀況。 已處理的例外狀況即為使用 `Warning` 記錄層級的常見位置。 範例： `FileNotFoundException for file quotes.txt.`
 
 * 錯誤 = 4
 
-  發生無法處理的錯誤和例外狀況。 這些訊息指出目前活動或作業 (例如目前的 HTTP 要求) 中發生失敗，這不是整個應用程式的失敗。 範例記錄訊息：`Cannot insert record due to duplicate key violation.`
+  發生無法處理的錯誤和例外狀況。 這些訊息指出目前活動或作業 (例如目前的 HTTP 要求) 中發生失敗，這不是整個應用程式的失敗。 範例記錄訊息： `Cannot insert record due to duplicate key violation.`
 
 * 重大 = 5
 
@@ -610,7 +610,7 @@ warn: TodoApi.Controllers.TodoController[4000]
 
 ASP.NET Core 隨附下列提供者：
 
-* [Console](#console-provider)
+* [主控台](#console-provider)
 * [偵錯](#debug-provider)
 * [EventSource](#eventsource-provider)
 * [EventLog](#windows-eventlog-provider)
@@ -771,7 +771,7 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 如需 Azure 中的記錄相關資訊，請參閱以下各節：
 
 * [Azure App Service 提供者](#azure-app-service-provider)
-* [Azure 記錄串流](#azure-log-streaming)
+* [Azure 記錄資料流](#azure-log-streaming)
 
 ::: moniker range=">= aspnetcore-1.1"
 

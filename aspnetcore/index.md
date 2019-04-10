@@ -4,14 +4,14 @@ author: rick-anderson
 description: 取得 ASP.NET Core 的簡介，ASP.NET Core 是一種跨平台且高效能的開放原始碼架構，用於建置現代化、雲端式、網際網路連線的應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/14/2019
+ms.date: 04/07/2019
 uid: index
-ms.openlocfilehash: baf8557b29c30f6dbeb6a4ff5d50c83d07160a51
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: 944c8a93aff53b8d72fda03f5df9c5ba45990cbc
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320234"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068270"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -50,9 +50,9 @@ ASP.NET Core 無縫整合了一些熱門用戶端架構及程式庫，包括 [Ra
 
 ## <a name="aspnet-core-targeting-net-framework"></a>將目標指向 .NET Framework 的 ASP.NET Core
 
-ASP.NET Core 2.x 的目標可以是 NET Core 或 .NET Framework。 將目標指向 .NET Framework 的 ASP.NET Core 應用程式無法跨平台&mdash;而只能在 Windows 上執行。 ASP.NET Core 2.x 通常會包含 [.NET Standard](/dotnet/standard/net-standard) 程式庫。 以 .NET Standard 2.0 編寫的應用程式可在任何支援 .NET Standard 2.0 的位置執行。
+ASP.NET Core 2.x 的目標可以是 NET Core 或 .NET Framework。 將目標指向 .NET Framework 的 ASP.NET Core 應用程式無法跨平台&mdash;而只能在 Windows 上執行。 ASP.NET Core 2.x 通常會包含 [.NET Standard](/dotnet/standard/net-standard) 程式庫。 使用 .NET Standard 2.0 撰寫的程式庫可在[任何實作 .NET Standard 2.0 的 .NET 平台](/dotnet/standard/net-standard#net-implementation-support)上執行。
 
-與 .NET Standard 2.0 相容的 .NET Framework 版本支援 ASP.NET Core 2.x：
+實作 .NET Standard 2.0 的 .NET Framework 版本支援 ASP.NET Core 2.x：
 
 * 強烈建議使用 .NET Framework 4.7.1 和更新版本。
 * .NET Framework 4.6.1 和更新版本。
@@ -86,7 +86,7 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
    |情節  |教學課程  |
    |----------|----------|
-   | 針對全新開發        |[搭配 Entity Framework Core 的 Razor 頁面](xref:data/ef-rp/intro) |
+   | 針對全新開發        |[搭配 Entity Framework Core 的 Razor Pages](xref:data/ef-rp/intro) |
    | 針對維護 MVC 應用程式 |[搭配 Entity Framework Core 的 MVC](xref:data/ef-mvc/intro)
 
 1. 閱讀適用於所有應用程式類型的 ASP.NET Core 功能概觀：
@@ -148,7 +148,7 @@ WebHost.CreateDefaultBuilder(args)
 
 您可以放心忽略 (或移除) 程式碼周圍的 `#region` 與 `#endregion` 陳述式。 但若您打算執行主題中所述的範例情境，則請勿變更這些陳述式內的程式碼。 您可以在試驗其他案例時自由改變程式碼。
 
-如需詳細資訊，請參閱 [Contribute to the ASP.NET documentation:Code snippets](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets)。(參與 ASP.NET 文件：程式碼片段)。
+如需詳細資訊，請參閱 [Contribute to the ASP.NET documentation:Code snippets](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets) (參與 ASP.NET 文件：程式碼片段)。
 
 ## <a name="next-steps"></a>後續步驟
 

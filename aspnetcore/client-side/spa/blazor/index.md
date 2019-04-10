@@ -5,14 +5,14 @@ description: 探索 ASP.NET Core Blazor，這是使用 .NET 建置互動式用�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/27/2019
+ms.date: 03/28/2019
 uid: spa/blazor/index
-ms.openlocfilehash: c42363b0ce70a1a8edc19b1c428ee802a6eff3dd
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 87e294a975e4168add046166a95e02e485db131d
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750493"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068244"
 ---
 # <a name="introduction-to-blazor"></a>Blazor 簡介
 
@@ -54,7 +54,7 @@ Blazor 支援大部分應用程式所需的核心功能，包括：
 * 範本化
 * 階層式值
 
-透過[中繼語言 (IL) 連接器](xref:host-and-deploy/razor-components/configure-linker)發行時刪除應用程式未使用的程式碼，減少下載之應用程式的大小。
+為了減少下載之應用程式的大小，透過[中繼語言 (IL) 連接器](xref:host-and-deploy/razor-components-blazor/configure-linker)發行時會刪除應用程式未使用的程式碼。
 
 Blazor 是 Razor 元件的用戶端裝載模型。 因為 Razor 元件解除了元件轉譯邏輯與 UI 更新套用方式的聯結，所以裝載 Razor 元件的方式具有彈性。 使用 ASP.NET Core Razor 元件，在 ASP.NET Core 應用程式裡將 Razor 元件裝載在伺服器上，使得透過 SignalR 連線處理所有的 UI 更新。 如需詳細資訊，請參閱 <xref:razor-components/index> 與 <xref:razor-components/hosting-models#server-side-hosting-model>。 
 
@@ -92,7 +92,7 @@ Blazor 是 Razor 元件的用戶端裝載模型。 因為 Razor 元件解除了�
 
 ## <a name="code-sharing-and-net-standard"></a>程式碼共用和 .NET Standard
 
-應用程式可以參考並使用現有的 [.NET Standard](/dotnet/standard/net-standard) 程式庫。 .NET Standard 是所有 .NET 實作都具備的 .NET API 正式規格。 支援 .NET Standard 2.0 或更新版本。 網頁瀏覽器內不適用的 API (例如，存取檔案系統、開啟通訊端、執行緒作業和其他功能) 會擲回 <xref:System.PlatformNotSupportedException>。 .NET Standard 類別庫可以跨伺服端程式碼共用，以及在以瀏覽器為基礎的應用程式中共用。
+應用程式可以參考並使用現有的 [.NET Standard](/dotnet/standard/net-standard) 程式庫。 .NET Standard 是所有 .NET 實作都具備的 .NET API 正式規格。 Blazor 實作 .NET Standard 2.0。 網頁瀏覽器內不適用的 API (例如，存取檔案系統、開啟通訊端、執行緒作業和其他功能) 會擲回 <xref:System.PlatformNotSupportedException>。 .NET Standard 類別庫可跨不同的 .NET 平台 (例如 Blazor、.NET Framework、.NET Core、Xamarin、Mono 和 Unity) 進行共用。
 
 ## <a name="optimization"></a>最佳化
 

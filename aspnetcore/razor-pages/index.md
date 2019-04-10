@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: 了解 ASP.NET Core 中的 Razor Pages 如何使注重頁面的案例編碼變得更輕鬆，並增加生產力，達到比使用 MVC 更好的成效。
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 05/12/2018
+ms.date: 04/06/2019
 uid: razor-pages/index
-ms.openlocfilehash: 50db8cd9b0523239acb1d439b472ea5d3cb6cb7c
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.openlocfilehash: e79ce1e2ddfc0e1a4d72e3f67f702d6eb938b8d3
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59068374"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468691"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 簡介
 
@@ -98,7 +98,7 @@ Razor Pages 是在 *Startup.cs* 中啟用：
 | */Pages/Store/Contact.cshtml* | `/Store/Contact` |
 | */Pages/Store/Index.cshtml* | `/Store` 或 `/Store/Index` |
 
-注意：
+附註：
 
 * 執行階段預設會在 *Pages* 資料夾中尋找 Razor Pages 的檔案。
 * `Index` 是 URL 未包含頁面時的預設頁面。
@@ -157,7 +157,7 @@ DB 內容：
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_PageModel&highlight=10-11)]
 
-Razor Pages 預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可以減少您必須撰寫的程式碼數量。 透過使用相同的屬性呈現表單欄位 (`<input asp-for="Customer.Name" />`) 並接受輸入，繫結可以減少程式碼。
+Razor Pages 預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可以減少您必須撰寫的程式碼數量。 透過使用相同的屬性呈現表單欄位 (`<input asp-for="Customer.Name">`) 並接受輸入，繫結可以減少程式碼。
 
 [!INCLUDE[](~/includes/bind-get.md)]
 

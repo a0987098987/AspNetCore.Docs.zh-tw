@@ -7,20 +7,20 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 04/03/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 9b53f523cf579aeb0e7dd37ccf5f161269a54913
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.openlocfilehash: bd4ffa79c4d1e0070c820fa9c06b0a84c3aaae74
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59068257"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468649"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
-作者：[Scott Addie](https://twitter.com/Scott_Addie) 和 [Luke Latham](https://github.com/guardrex)
+藉由[Scott Addie](https://twitter.com/Scott_Addie)和[Luke Latham](https://github.com/guardrex)
 
-[Windows 驗證](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 可以針對 [IIS](xref:host-and-deploy/iis/index) 或 [HTTP.sys](xref:fundamentals/servers/httpsys) 上裝載的 ASP.NET Core 應用程式設定。
+[Windows 驗證](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)可以設定與裝載的 ASP.NET Core 應用程式[IIS](xref:host-and-deploy/iis/index)或是[HTTP.sys](xref:fundamentals/servers/httpsys)。
 
-Windows 驗證仰賴作業系統來驗證 ASP.NET Core 應用程式的使用者。當您的伺服器在公司網路上執行時，您可以透過 Active Directory 網域身分識別進行 Windows 驗證或透過 Windows 帳戶來識別使用者。Windows 驗證最適合用於使用者、用戶端應用程式與 Web 伺服器皆屬於相同 Windows 網域的內部網路環境。
+Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使用者。 使用 Active Directory 網域身分識別或 Windows 帳戶，來識別使用者在公司網路中執行您的伺服器時，您可以使用 Windows 驗證。 Windows 驗證最適合內部網路的環境，其中使用者、 用戶端應用程式，以及網頁伺服器都屬於相同 Windows 網域。
 
 ## <a name="enable-windows-authentication-in-an-aspnet-core-app"></a>啟用 ASP.NET Core 應用程式中的 Windows 驗證
 
@@ -167,7 +167,7 @@ IIS 管理員在採取這些動作，會修改應用程式的*web.config*檔案�
 在 ASP.NET Core 2.x 中，`[Authorize]`屬性需要額外的設定，在*Startup.cs*挑戰進行 Windows 驗證的匿名要求。 建議的設定會有些許出入所使用的 web 伺服器而有所不同。
 
 > [!NOTE]
-> 根據預設，缺少授權，才能存取頁面的使用者會看到空的 HTTP 403 回應。 [StatusCodePages 中介軟體](xref:fundamentals/error-handling#configure-status-code-pages)可以設定為使用者提供更好的 「 拒絕存取 」 體驗。
+> 根據預設，缺少授權，才能存取頁面的使用者會看到空的 HTTP 403 回應。 [StatusCodePages 中介軟體](xref:fundamentals/error-handling#usestatuscodepages)可以設定為使用者提供更好的 「 拒絕存取 」 體驗。
 
 #### <a name="iis"></a>IIS
 

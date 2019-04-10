@@ -5,12 +5,12 @@ description: 了解如何在 ASP.NET 中以允許新且更安全的資料保護�
 ms.author: riande
 ms.date: 04/06/2019
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: ff36382d22a218a228b42a31ae4f8ad2eb2d5b5f
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.openlocfilehash: 2317cb50cfe63226baf336ebfc5d681d1cebe5c6
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59068280"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468562"
 ---
 # <a name="replace-the-aspnet-machinekey-in-aspnet-core"></a>取代 ASP.NET Core 中的 ASP.NET 電腦金鑰
 
@@ -35,7 +35,7 @@ ms.locfileid: "59068280"
 > 您可以知道新的資料保護系統是否作用中，藉由檢查等欄位`__VIEWSTATE`，這應該如下列範例所示以"CfDJ8"開頭。 「 CfDJ8"是識別受資料保護系統的承載的 magic"09 F0 C9 F0"標頭的 base64 表示法。
 
 ```html
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="CfDJ8AWPr2EQPTBGs3L2GCZOpk..." />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="CfDJ8AWPr2EQPTBGs3L2GCZOpk...">
 ```
 
 ## <a name="package-configuration"></a>封裝組態

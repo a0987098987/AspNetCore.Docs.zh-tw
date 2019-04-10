@@ -5,14 +5,14 @@ description: 探索 ASP.NET Core Blazor，這是使用 .NET 建置互動式用�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/28/2019
+ms.date: 04/08/2019
 uid: spa/blazor/index
-ms.openlocfilehash: 87e294a975e4168add046166a95e02e485db131d
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.openlocfilehash: be8fdb7bcbf9ce8c80bc6e21be455dfbfcaf404b
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59068244"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468607"
 ---
 # <a name="introduction-to-blazor"></a>Blazor 簡介
 
@@ -72,7 +72,7 @@ Blazor 是 Razor 元件的用戶端裝載模型。 因為 Razor 元件解除了�
 <div>
     <h2>@Title</h2>
     @BodyContent
-    <button onclick=@OnOK>OK</button>
+    <button onclick="@OnOK">OK</button>
 </div>
 
 @functions {

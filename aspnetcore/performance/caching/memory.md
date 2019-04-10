@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何快取 ASP.NET Core 中的資料和記憶體。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/11/2019
+ms.date: 04/11/2019
 uid: performance/caching/memory
-ms.openlocfilehash: c115e43b9dd4f838ab9600c2e105d86732d857ad
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 6433df36023b79bc679186bee8b0a92371661dbe
+ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208263"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425045"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "58208263"
 
 ## <a name="caching-basics"></a>快取的基本概念
 
-快取可大幅改善的效能和延展性的應用程式藉由減少產生的內容所需的工作。 快取的運作最佳不常變更的資料。 快取會建立一份可以傳回大部分的資料比原始來源的更快。 您應該撰寫並測試您的應用程式永遠不會相依於快取的資料。
+快取可大幅改善的效能和延展性的應用程式藉由減少產生的內容所需的工作。 快取的運作最佳不常變更的資料。 快取會建立一份可以傳回大部分的資料比原始來源的更快。 應用程式應該撰寫並經過測試，以**從未**取決於快取的資料。
 
 ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache)，代表儲存在 web 伺服器的記憶體中快取。 在多部伺服器的伺服器陣列執行的應用程式應該確定使用記憶體中快取時，會自黏工作階段。 黏性工作階段中，請確定所有用戶端的後續要求，請移至相同的伺服器。 例如，Azure Web 應用程式會使用[應用程式要求路由](https://www.iis.net/learn/extensions/planning-for-arr)(ARR)，所有後續的要求路由至相同的伺服器。
 
@@ -43,7 +43,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 * 任何[.NET 實作](/dotnet/standard/net-standard#net-implementation-support)為目標的.NET Standard 2.0 或更新版本。 例如，ASP.NET Core 2.0 或更新版本。
 * .NET framework 4.5 或更新版本。
 
-[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` （如本主題所述） 建議`System.Runtime.Caching` / `MemoryCache`因為深入整合到 ASP.NET Core。 例如，`IMemoryCache`適用於原生 ASP.NET Core[相依性插入](xref:fundamentals/dependency-injection)。
+[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` （如本文所述） 建議`System.Runtime.Caching` / `MemoryCache`因為深入整合到 ASP.NET Core。 例如，`IMemoryCache`適用於原生 ASP.NET Core[相依性插入](xref:fundamentals/dependency-injection)。
 
 使用`System.Runtime.Caching` / `MemoryCache`橋樑相容性移植程式碼，從 ASP.NET 4.x 到 ASP.NET Core。
 
@@ -53,7 +53,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 * 快取佔用很少的資源時，記憶體。 限制快取增長：
   * 請勿**不**外部輸入做為快取索引鍵。
   * 您可以使用到期時間，限制快取成長。
-  * [使用 SetSize、 大小和 SizeLimit 限制快取大小](#use-setsize-size-and-sizelimit-to-limit-cache-size)
+  * [使用來限制快取大小的 SetSize、 大小和 SizeLimit](#use-setsize-size-and-sizelimit-to-limit-cache-size)。 ASP.NET Core 執行階段不會限制記憶體不足的壓力所根據的快取大小。 它是由開發人員快取大小限制時。
 
 ## <a name="using-imemorycache"></a>使用 IMemoryCache
 
@@ -93,7 +93,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 [!code-cshtml[](memory/sample/WebCache/Views/Home/Cache.cshtml)]
 
-快取`DateTime`內逾時期限 （和任何因記憶體壓力而收回） 要求時的值會保留在快取。 下圖顯示目前的時間和較舊的時間，從快取擷取：
+快取`DateTime`值會維持在快取逾時期間內沒有要求。 下圖顯示目前的時間和較舊的時間，從快取擷取：
 
 ![索引檢視，其中顯示兩個不同的時間](memory/_static/time.png)
 
@@ -122,7 +122,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 ## <a name="use-setsize-size-and-sizelimit-to-limit-cache-size"></a>使用 SetSize、 大小和 SizeLimit 限制快取大小
 
-A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制。 因為快取有沒有機制可測量的項目大小，則記憶體大小限制並沒有定義的測量單位。 如果設定的快取記憶體大小限制，所有項目必須指定大小。 指定的大小是以開發人員選擇的單位。
+A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制。 因為快取有沒有機制可測量的項目大小，則記憶體大小限制並沒有定義的測量單位。 如果設定的快取記憶體大小限制，所有項目必須指定大小。 ASP.NET Core 執行階段不會限制記憶體不足的壓力所根據的快取大小。 它是由開發人員快取大小限制時。 指定的大小是以開發人員選擇的單位。
 
 例如: 
 

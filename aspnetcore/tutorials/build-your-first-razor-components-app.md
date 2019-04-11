@@ -5,14 +5,14 @@ description: 逐步建置 Razor 元件應用程式，並了解基本 Razor 元�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/24/2019
+ms.date: 04/06/2019
 uid: tutorials/first-razor-components-app
-ms.openlocfilehash: 2a987b3f2e687cd9d4dffa2c573c938e68ea3cc8
-ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
+ms.openlocfilehash: 697c4659bcc9952ffe9868fe9b3c0d28019bc369
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419361"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468772"
 ---
 # <a name="build-your-first-razor-components-app"></a>建置您的第一個 Razor 元件應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "58419361"
 
 ## <a name="build-components"></a>組建元件
 
-1. 瀏覽至每個應用程式在 [Components/Pages] 資料夾 (Blazor 中的 [Pages]) 的三個頁面：首頁、計數器和擷取資料。 這些頁面會由下列 Razor 元件檔案實作：*Index.razor**Counter.razor* 及 *FetchData.razor*。 (Blazor 會繼續使用 *.cshtml* 副檔名：*Index.cshtml*、*Counter.cshtml*及 *FetchData.cshtml*)。
+1. 瀏覽至每個應用程式在 [Components/Pages] 資料夾 (Blazor 中的 [Pages]) 的三個頁面：首頁、計數器和擷取資料。 這些頁面會由下列 Razor 元件檔案實作：*Index.razor* *Counter.razor* 及 *FetchData.razor*。 (Blazor 會繼續使用 *.cshtml* 副檔名：*Index.cshtml*、*Counter.cshtml*及 *FetchData.cshtml*)。
 
 1. 在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 讓網頁中的計數器遞增通常需要撰寫 JavaScript，但 Razor 元件提供一個使用 C# 的更好方法。
 
@@ -194,7 +194,7 @@ FetchData 元件會使用插入的服務作為 `ForecastService`，以擷取 `We
    [!code-cshtml[](build-your-first-razor-components-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
 
    ```cshtml
-   <input placeholder="Something todo" bind="@newTodo" />
+   <input placeholder="Something todo" bind="@newTodo">
    ```
 
 1. 更新 `AddTodo` 方法，將 `TodoItem` 與指定的標題新增至清單。 請將 `newTodo` 設定為空字串，以清除文字輸入的值：
@@ -221,4 +221,4 @@ FetchData 元件會使用插入的服務作為 `ForecastService`，以擷取 `We
 
 ## <a name="publish-and-deploy-the-app"></a>發佈及部署應用程式
 
-若要發佈應用程式，請參閱 <xref:host-and-deploy/razor-components/index#publish-the-app>。
+若要發佈應用程式，請參閱 <xref:host-and-deploy/razor-components-blazor/index>。

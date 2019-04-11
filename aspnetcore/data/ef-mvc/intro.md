@@ -7,25 +7,20 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 31fca1b32942f9246e099c01669f77824edf521e
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 282af56eb911aea53a6ce945e7c1177c158fc342
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264841"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750587"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>教學課程：開始在 ASP.NET MVC Web 應用程式中使用 EF Core
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
-Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Core 2.0 和 Visual Studio 2017 來建立 ASP.NET Core 2.2 MVC Web 應用程式。
+Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Core 2.2 和 Visual Studio 2017 或 2019 建立 ASP.NET Core 2.2 MVC Web 應用程式。
 
 這個範例應用程式是虛構的 Contoso 大學網站。 其中包括的功能有學生入學許可、課程建立、教師指派。 這是說明如何從零開始建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
-
-EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需如何在 EF 6.x 和 EF Core 之間做選擇的詳細資訊，請參閱 [EF Core 與EF6.x](/ef/efcore-and-ef6/)。 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
-
-> [!NOTE]
-> 如需此教學課程的 ASP.NET Core 1.1 版本，請參閱[以 PDF 格式儲存之此教學課程的 VS 2017 Update 2 版本](https://webpifeed.blob.core.windows.net/webpifeed/Partners/efmvc1.1.pdf)。
 
 在本教學課程中，您已：
 
@@ -35,14 +30,17 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 > * 了解 EF Core NuGet 套件
 > * 建立資料模型
 > * 建立資料庫內容
-> * 註冊 SchoolContext
-> * 使用測試資料將 DB 初始化
+> * 為內容註冊相依性插入
+> * 使用測試資料將資料庫初始化
 > * 建立控制器和檢視
 > * 檢視資料庫
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [](~/includes/net-core-prereqs.md)]
+* [.NET Core SDK 2.2](https://www.microsoft.com/net/download)
+* 有下列工作負載的 [Visual Studio 2017 或 2019](https://visualstudio.microsoft.com/downloads/)：
+    * **ASP.NET 與網頁程式開發**工作負載
+    * **.NET Core 跨平台開發**工作負載
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -61,11 +59,9 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 ![Students [編輯] 頁面](intro/_static/student-edit.png)
 
-此網站的 UI 樣式與內建範本產生的相當類似，以使此教學課程能聚焦於如何使用 Entity Framework。
+## <a name="create-web-app"></a>建立 Web 應用程式
 
-## <a name="create-aspnet-core-mvc-web-app"></a>建立 ASP.NET Core MVC Web 應用程式
-
-開啟 Visual Studio，建立一個名為 "ContosoUniversity"的新 ASP.NET Core C# Web 專案。
+* 開啟 Visual Studio。
 
 * 從 [檔案] 功能表選取[新增] > [專案] 。
 
@@ -77,17 +73,15 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
   ![[新增專案] 對話](intro/_static/new-project2.png)
 
-* 等候 [新增 ASP.NET Core Web 應用程式 (.NET Core)] 對話方塊出現
+* 等候 [新增 ASP.NET Core Web 應用程式] 對話方塊出現。
 
-  ![[新增 ASP.NET Core 專案] 對話方塊](intro/_static/new-aspnet2.png)
-
-* 選取 [ASP.NET Core 2.2] 和 [Web 應用程式 (模型-檢視-控制器)] 範本。
-
-  **注意：** 本教學課程需要 ASP.NET Core 2.2 和 EF Core 2.0 或更新版本。
+* 選取 [.NET Core]、[ASP.NET Core 2.2] 和 [Web 應用程式 (Model-View-Controller)] 範本。
 
 * 確認 [驗證] 已設為 [No Authentication] (無驗證)。
 
-* 按一下 [確定] 
+* 選取 [確定]
+
+  ![[新增 ASP.NET Core 專案] 對話方塊](intro/_static/new-aspnet2.png)
 
 ## <a name="set-up-the-site-style"></a>設定網站樣式
 
@@ -101,7 +95,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 所做的變更已醒目標示。
 
-[!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,32-36,51)]
+[!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,37-48,63)]
 
 在 *Views/Home/Index.cshtml* 中用下列程式碼取代檔案內容，以使用關於此應用程式的文字來取代關於 ASP.NET 和 MVC 的文字：
 
@@ -113,9 +107,9 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 ## <a name="about-ef-core-nuget-packages"></a>關於 EF Core NuGet 套件
 
-若要將 EF Core 支援新增至專案，請安裝您欲使用之資料庫的提供者。 本教學課程使用 SQL Server，其提供者套件為 [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/)。 此套件包含在 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) 中；因此，如果您的應用程式具有 `Microsoft.AspNetCore.App` 套件的套件參考，則您不需要參考套件。
+若要將 EF Core 支援新增至專案，請安裝您欲使用之資料庫的提供者。 本教學課程使用 SQL Server，其提供者套件為 [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/)。 此套件包含在 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) 中，因此您不需要參考該套件。
 
-此套件及其相依性 (`Microsoft.EntityFrameworkCore` 及 `Microsoft.EntityFrameworkCore.Relational`) 提供了 EF 的執行階段支援。 您會在稍後的[移轉](migrations.md)教學課程中新增工具套件。
+EF SQL Server 套件及其相依性 (`Microsoft.EntityFrameworkCore` 及 `Microsoft.EntityFrameworkCore.Relational`) 提供了 EF 的執行階段支援。 您會在稍後的[移轉](migrations.md)教學課程中新增工具套件。
 
 如需其他 Entity Framework Core 可用之資料庫提供者的資訊，請參閱[資料庫提供者](/ef/core/providers/)。
 
@@ -197,7 +191,7 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 若要將 `SchoolContext` 註冊為服務，請開啟 *Startup.cs*，並將醒目標示的程式碼新增至 `ConfigureServices` 方法。
 
-[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=3-4)]
+[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=9-10)]
 
 連接字串的名稱，會透過呼叫 `DbContextOptionsBuilder` 物件上的方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
 
@@ -249,11 +243,6 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 * 在方案總管中的 **Controllers** 資料夾上以滑鼠右鍵按一下，然後選取 [新增] > [新增 Scaffold 項目]。
 
-如果出現 [新增 MVC 相依性] 對話方塊：
-
-* [將 Visual Studio 更新為最新版本](https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)。 15.5 之前的 Visual Studio 版本會顯示此對話方塊。
-* 如果您無法更新，請選取 [新增]，然後再次遵循新增控制器步驟進行。
-
 * 在 [新增 Scaffold] 對話方塊中：
 
   * 選取 [使用 Entity Framework 執行檢視的 MVC 控制器]。
@@ -292,7 +281,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 按 CTRL+F5 來執行專案，或從功能表選擇 [偵錯] > [啟動但不偵錯]。
 
-按一下 [Students] 索引標籤來查看 `DbInitializer.Initialize` 方法插入的測試資料。 取決於您瀏覽器視窗的寬度，您可能會在頁面的頂端看到 `Student` 索引標籤連結，或是按一下位於右上角的導覽圖示來查看連結。
+按一下 [Students] 索引標籤來查看 `DbInitializer.Initialize` 方法插入的測試資料。 取決於您瀏覽器視窗的寬度，您可能會在頁面的頂端看到 `Students` 索引標籤連結，或是按一下位於右上角的導覽圖示來查看連結。
 
 ![Contoso 大學首頁 (窄)](intro/_static/home-page-narrow.png)
 
@@ -385,6 +374,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 在接下來的教學課程中，您將學習到如何執行基本的 CRUD (建立、讀取、更新、刪除) 作業。
 
-若要了解如何執行基本的 CRUD (建立、讀取、更新、刪除) 作業，請前往下一篇文章。
+若要了解如何執行基本的 CRUD (建立、讀取、更新、刪除) 作業，請前往下一個教學課程。
+
 > [!div class="nextstepaction"]
 > [實作基本的 CRUD 功能](crud.md)

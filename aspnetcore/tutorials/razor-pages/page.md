@@ -5,12 +5,12 @@ description: 說明 Scaffolding 所產生的 Razor 頁面。
 ms.author: riande
 ms.date: 12/4/2018
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 9acb30bbed6aaed893b8a6373a210ef18e5ee60b
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: b654138231440a0c63492cae70f794da0151890d
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320130"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809298"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Scaffold Razor 頁面
 
@@ -87,7 +87,7 @@ changing in in the next step.
 
 ### <a name="update-the-layout"></a>更新配置
 
-變更 *Pages/Shared/_Layout.cshtml* 檔案中的 `<title>` 元素，以顯示 **Movie** 而不是 **RazorPagesMovie**。
+變更 *Pages/Shared/_Layout.cshtml* 檔案中的 `<title>` 項目，以顯示 **Movie** 而不是 **RazorPagesMovie**。
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 

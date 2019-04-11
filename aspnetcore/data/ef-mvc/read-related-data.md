@@ -3,15 +3,15 @@ title: 教學課程：讀取相關資料 - ASP.NET MVC 搭配 EF Core
 description: 在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 author: rick-anderson
 ms.author: tdykstra
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 73e225c2cd6d9f88079c54115cccad48f43d7d0c
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: a2ae878fd861b68a17de19af1b33b6ffbf5a268c
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103042"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751084"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>教學課程：讀取相關資料 - ASP.NET MVC 搭配 EF Core
 
@@ -23,7 +23,7 @@ ms.locfileid: "56103042"
 
 ![Instructors [索引] 頁面](read-related-data/_static/instructors-index.png)
 
-在本教學課程中，您會：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 了解如何載入相關資料
@@ -33,7 +33,7 @@ ms.locfileid: "56103042"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [使用 EF Core 為 ASP.NET Core MVC Web 應用程式建立更複雜的資料模型](complex-data-model.md)
+* [建立複雜的資料模型](complex-data-model.md)
 
 ## <a name="learn-how-to-load-related-data"></a>了解如何載入相關資料
 
@@ -257,6 +257,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 > * 建立 Instructors 頁面
 > * 了解明確載入
 
-若要了解如何更新相關資料，請前往下一篇文章。
+若要了解如何更新相關資料，請前往下一個教學課程。
+
 > [!div class="nextstepaction"]
 > [更新相關資料](update-related-data.md)

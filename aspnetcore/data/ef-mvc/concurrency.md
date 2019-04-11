@@ -4,15 +4,15 @@ description: 本教學課程會顯示如何在多位使用者同時更新相同�
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 7b18927d5d528ec2951087502e26b2b30214f389
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 668cdafc078091b65035ecad854d2ecc62555721
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103016"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750856"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>教學課程：處理並行 - ASP.NET MVC 搭配 EF Core
 
@@ -24,7 +24,7 @@ ms.locfileid: "56103016"
 
 ![Department [刪除] 頁面](concurrency/_static/delete-error.png)
 
-在本教學課程中，您會：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 了解並行衝突
@@ -39,7 +39,7 @@ ms.locfileid: "56103016"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [在 ASP.NET Core MVC Web 應用程式中使用 EF Core 來更新相關資料](update-related-data.md)
+* [更新相關資料](update-related-data.md)
 
 ## <a name="concurrency-conflicts"></a>並行衝突
 
@@ -148,7 +148,7 @@ Scaffolding 引擎會在 [索引] 檢視中建立 RowVersion 資料行，但該�
 
 在 HttpGet `Edit` 方法和 `Details` 方法中，新增 `AsNoTracking`。 在 HttpGet `Edit` 方法中，為系統管理員新增積極式載入。
 
-[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EagerLoading&highlight=2,3)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EagerLoading)]
 
 以下列程式碼取代 HttpPost `Edit` 方法的現有程式碼：
 
@@ -309,6 +309,7 @@ public async Task<IActionResult> Delete(Department department)
 > * 更新 [刪除] 頁面
 > * 更新 [詳細資料] 和 [建立] 檢視
 
-若要了解如何為 Instructor 和 Student 實體實作每個階層資料表的繼承，請前往下一篇文章。
+若要了解如何為 Instructor 和 Student 實體實作依階層建立資料表的繼承，請前往下一個教學課程。
+
 > [!div class="nextstepaction"]
-> [實作每個階層的資料表繼承](inheritance.md)
+> [下一步：實作依階層建立資料表的繼承](inheritance.md)

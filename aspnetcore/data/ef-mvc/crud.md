@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 83f5d4bdc3d5872109649818b61a6dbb656fd8be
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: cee521eec3172c04b4d9d93c12076c42c9adff18
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264827"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750599"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學課程：實作 CRUD 功能 - ASP.NET MVC 搭配 EF Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "58264827"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [開始在 ASP.NET Core MVC Web 應用程式中使用 EF Core](intro.md)
+* [開始使用 EF Core 和 ASP.NET Core MVC](intro.md)
 
 ## <a name="customize-the-details-page"></a>自訂 [詳細資料] 頁面
 
@@ -243,7 +243,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 請以下列程式碼取代 HttpPost `Delete` 動作方法 (名為 `DeleteConfirmed`)。此程式碼會執行實際的刪除作業並捕捉任何資料庫更新錯誤。
 
-[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6,8-11,13-14,18-23)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6-9,11-12,16-21)]
 
 此程式碼會擷取選取的實體，然後呼叫 `Remove` 方法來將實體的狀態設定為 `Deleted`。 當呼叫 `SaveChanges` 時，便會產生 SQL DELETE 命令。
 
@@ -306,6 +306,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 > * 更新 [刪除] 頁面
 > * 關閉資料庫連線
 
-若要了解如何藉由新增排序、篩選及分頁來擴充 [索引] 頁面的功能，請前往下一篇文章。
+若要了解如何藉由新增排序、篩選及分頁來擴充 [索引] 頁面的功能，請前往下一個教學課程。
+
 > [!div class="nextstepaction"]
-> [排序、篩選及分頁](sort-filter-page.md)
+> [下一步：排序、篩選及分頁](sort-filter-page.md)

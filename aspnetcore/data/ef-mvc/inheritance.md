@@ -4,15 +4,15 @@ description: 本教學課程將說明如何在 ASP.NET Core 應用程式中使�
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 0a5eb1aba43bc2adf746202772c7f98eff49b4ff
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: ba688b259206f21045376b6a38a266ad7528aec1
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103003"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750769"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>教學課程：實作繼承 - ASP.NET MVC 搭配 EF Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "56103003"
 
 在物件導向程式設計中，您可以使用繼承，以便重複使用程式碼。 在本教學課程中，您將變更 `Instructor` 和 `Student` 類別，讓它們衍生自 `Person` 基底類別，而此基底類別包含講師和學生通用的屬性，例如 `LastName`。 您不會新增或變更任何網頁，但是您將變更一些程式碼，這些變更將會自動反映在資料庫中。
 
-在本教學課程中，您會：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 將繼承對應至資料庫
@@ -32,7 +32,7 @@ ms.locfileid: "56103003"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [在 ASP.NET Core MVC Web 應用程式中使用 EF Core 來處理並行](concurrency.md)
+* [處理並行](concurrency.md)
 
 ## <a name="map-inheritance-to-database"></a>將繼承對應至資料庫
 
@@ -168,6 +168,7 @@ dotnet ef database update
 > * 建立及更新移轉
 > * 測試實作
 
-若要了解如何處理各種相對進階的 Entity Framework 案例，請前往下一篇文章。
+若要了解如何處理各種較進階的 Entity Framework 案例，請前往下一個教學課程。
+
 > [!div class="nextstepaction"]
-> [進階主題](advanced.md)
+> [下一步：進階主題](advanced.md)

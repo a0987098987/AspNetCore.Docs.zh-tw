@@ -6,30 +6,30 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: aspnetcore-2.2
-ms.openlocfilehash: 6dcdf71ec5271690718dd1fe750a9a74d498a0f8
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: cdc761b645b91777bdf6084c3ad4659fcea55039
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410332"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750944"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2 的新功能
 
-此文章重點說明 ASP.NET Core 2.2 最重要的變更，附有相關文件的連結。
+本文會重點說明 ASP.NET Core 2.2 最重要的變更，附有相關文件的連結。
 
-## <a name="open-api-analyzers--conventions"></a>Open API 分析器與慣例
+## <a name="openapi-analyzers--conventions"></a>OpenAPI 分析器與慣例
 
-Open API (也稱為 Swagger) 是用來描述 REST API 的語言無關規格。 Open API 生態系統中已有工具，可讓您使用此規格來探索、測試和產生用戶端程式碼。 您可以透過社群導向專案 (例如 [NSwag](https://github.com/RSuter/NSwag) 和 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore))，在 ASP.NET Core MVC 中產生和視覺化 Open API 文件。 ASP.NET Core 2.2 提供改良的工具和執行階段體驗來建立 Open API 文件。
+OpenAPI (之前稱為 Swagger) 是用來描述 REST API 的語言無關規格。 OpenAPI 生態系統中已有工具，可讓您使用此規格來探索、測試和產生用戶端程式碼。 您可以透過社群導向專案 (例如 [NSwag](https://github.com/RSuter/NSwag) 和 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore))，在 ASP.NET Core MVC 中產生和視覺化 OpenAPI 文件。 ASP.NET Core 2.2 提供改善的工具和執行階段體驗來建立 OpenAPI 文件。
 
 如需詳細資訊，請參閱下列資源：
 
 * <xref:web-api/advanced/analyzers>
 * <xref:web-api/advanced/conventions>
-* [ASP.NET Core 2.2.0-preview1:Open API Analyzers & Conventions](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/) (ASP.NET Core 2.2.0-preview1：Open API 分析器與慣例)
+* [ASP.NET Core 2.2.0-preview1:OpenAPI Analyzers & Conventions](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/) (ASP.NET Core 2.2.0-preview1：OpenAPI 分析器與慣例)
 
 ## <a name="problem-details-support"></a>問題詳細資料支援
 
-ASP.NET Core 2.1 引進了 `ProblemDetails`，它採用 [RFC 7807](https://tools.ietf.org/html/rfc7807) 規格在 HTTP 回應中包含錯誤的詳細資料。 在 2.2 中，`ProblemDetails` 是對具有 `ApiControllerAttribute` 屬性之控制器中用戶端錯誤碼的標準回應。 傳回用戶端錯誤狀態碼 (4xx) 的 `IActionResult` 現在會傳回 `ProblemDetails` 主體。 結果中也會包含相互關聯識別碼，可用來透過要求記錄檔與錯誤相互關聯。 對於用戶端錯誤，`ProducesResponseType` 預設會使用 `ProblemDetails` 作為回應類型。 這會記載於使用 NSwag 或 Swashbuckle.AspNetCore 產生的 Open API/Swagger 輸出中。
+ASP.NET Core 2.1 引進了 `ProblemDetails`，它採用 [RFC 7807](https://tools.ietf.org/html/rfc7807) 規格在 HTTP 回應中包含錯誤的詳細資料。 在 2.2 中，`ProblemDetails` 是對具有 `ApiControllerAttribute` 屬性之控制器中用戶端錯誤碼的標準回應。 傳回用戶端錯誤狀態碼 (4xx) 的 `IActionResult` 現在會傳回 `ProblemDetails` 主體。 結果中也會包含相互關聯識別碼，可用來透過要求記錄檔與錯誤相互關聯。 對於用戶端錯誤，`ProducesResponseType` 預設會使用 `ProblemDetails` 作為回應類型。 這會記載於使用 NSwag 或 Swashbuckle.AspNetCore 產生的 OpenAPI/Swagger 輸出中。
 
 ## <a name="endpoint-routing"></a>端點路由
 

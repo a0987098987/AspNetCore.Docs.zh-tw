@@ -3,15 +3,15 @@ title: 教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Cor
 description: 在本教學課程中，您要將排序、篩選和分頁功能新增至 Students 的 [索引] 頁面。 此外，還要建立將執行簡易群組的頁面。
 author: rick-anderson
 ms.author: tdykstra
-ms.date: 02/04/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 51b6b08d2410652f93427371aec299eb4c8789f1
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: dff5a5b1ba3c8ed07ccc8d134f8cfeb25b9f6689
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103055"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751042"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "56103055"
 
 ![Students [索引] 頁面](sort-filter-page/_static/paging.png)
 
-在本教學課程中，您會：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 新增資料行排序連結
@@ -33,7 +33,7 @@ ms.locfileid: "56103055"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [在 ASP.NET Core MVC Web 應用程式中使用 EF Core 來實作 CRUD 功能](crud.md)
+* [實作 CRUD 功能](crud.md)
 
 ## <a name="add-column-sort-links"></a>新增資料行排序連結
 
@@ -144,7 +144,7 @@ public async Task<IActionResult> Index(
     string sortOrder,
     string currentFilter,
     string searchString,
-    int? page)
+    int? pageNumber)
 ```
 
 第一次顯示頁面，或是使用者尚未按一下分頁或排序連結時，所有參數都會是 null。  如果按一下分頁連結，頁面變數將包含要顯示的頁碼。
@@ -158,7 +158,7 @@ public async Task<IActionResult> Index(
 ```csharp
 if (searchString != null)
 {
-    page = 1;
+    pageNumber = 1;
 }
 else
 {
@@ -169,10 +169,10 @@ else
 在 `Index` 方法的結尾處，`PaginatedList.CreateAsync` 方法會以支援分頁的集合類型，將學生查詢轉換成學生單一頁面。 該學生單一頁面接著會傳遞至檢視。
 
 ```csharp
-return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), page ?? 1, pageSize));
+return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
 ```
 
-`PaginatedList.CreateAsync` 方法會採用頁面數。 兩個問號代表 null 聯合運算子。 Null 聯合運算子將針對可為 Null 的型別定義預設值；`(page ?? 1)` 運算式表示在它含有值時會傳回值 `page`，或在 `page` 為 null 時傳回 1。
+`PaginatedList.CreateAsync` 方法會採用頁面數。 兩個問號代表 null 聯合運算子。 Null 聯合運算子將針對可為 Null 的型別定義預設值；`(pageNumber ?? 1)` 運算式表示在它含有值時會傳回值 `pageNumber`，或在 `pageNumber` 為 null 時傳回 1。
 
 ## <a name="add-paging-links"></a>新增分頁連結
 
@@ -193,7 +193,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 ```html
 <a asp-action="Index"
    asp-route-sortOrder="@ViewData["CurrentSort"]"
-   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    class="btn btn-default @prevDisabled">
    Previous
@@ -234,7 +234,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_AddContext&highlight=3,5,7)]
 
-以下列程式碼取代 `About` 方法：
+使用下列程式碼來新增 `About` 方法：
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
@@ -244,7 +244,7 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 ### <a name="modify-the-about-view"></a>修改 About 檢視
 
-以下列程式碼取代 *Views/Home/About.cshtml* 檔案中的程式碼：
+使用下列程式碼來新增 *Views/Home/About.cshtml* 檔案：
 
 [!code-html[](intro/samples/cu/Views/Home/About.cshtml)]
 
@@ -266,6 +266,7 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 > * 新增分頁連結
 > * 建立 [關於] 頁面
 
-若要了解如何使用移轉來處理資料模型變更，請前往下一篇文章。
+若要了解如何使用移轉來處理資料模型變更，請前往下一個教學課程。
+
 > [!div class="nextstepaction"]
-> [處理資料模型變更](migrations.md)
+> [下一步：處理資料模型變更](migrations.md)

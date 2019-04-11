@@ -4,15 +4,15 @@ description: 本教學課程介紹一些實用主題，這些主題超出開發 
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: c4804bd6614c7d5a2a30c8f59a645f603929ad52
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: c6255e2b4fc67c6174bab4458ec82035b1886002
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264590"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750622"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
 
@@ -33,7 +33,7 @@ ms.locfileid: "58264590"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [在 ASP.NET Core MVC Web 應用程式中使用 EF Core 來實作繼承](inheritance.md)
+* [實作繼承](inheritance.md)
 
 ## <a name="perform-raw-sql-queries"></a>執行原始 SQL 查詢
 
@@ -53,7 +53,7 @@ ms.locfileid: "58264590"
 
 在 *DepartmentsController.cs* 中，將 `Details` 方法中擷取部門的程式碼取代為 `FromSql` 方法呼叫，如下列醒目提顯示的程式碼所示：
 
-[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10,13)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10)]
 
 若要確認新的程式碼運作正常，請選取 [部門]  索引標籤，然後針對其中一個部門選取 [詳細資料] 。
 
@@ -276,6 +276,7 @@ dotnet ef database drop
 > * 了解 EF Core 原始程式碼和開發計劃
 > * 了解如何使用動態 LINQ 來簡化程式碼
 
-如此即完成本系列中在 ASP.NET Core MVC 應用程式中使用 Entity Framework Core 的教學課程。 如果您想要了解如何搭配 ASP.NET Core 使用 EF 6，請參閱下一篇文章。
+如此即完成本系列中在 ASP.NET Core MVC 應用程式中使用 Entity Framework Core 的教學課程。 這一系列教學課程使用了新的資料庫，您也可以從現有的資料庫反向建構模型。
+
 > [!div class="nextstepaction"]
-> [使用 ASP.NET Core 的 EF 6](../entity-framework-6.md)
+> [教學課程：在 MVC 中使用 EF Core，現有的資料庫](/ef/core/get-started/aspnetcore/new-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json)

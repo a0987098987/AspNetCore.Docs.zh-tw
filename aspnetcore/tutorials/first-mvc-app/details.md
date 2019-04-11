@@ -5,12 +5,12 @@ description: 了解基本 ASP.NET Core MVC 應用程式中的 Details 控制器�
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: f674ca1761f85ce127121603286c97d5936f6716
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.openlocfilehash: 056017ea4f4073fa0b1cd747d06775b2a33616cf
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236324"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012665"
 ---
 # <a name="examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>檢查 ASP.NET Core 應用程式的 Details 和 Delete 方法
 
@@ -46,6 +46,7 @@ EF 可讓您輕鬆使用 `FirstOrDefaultAsync` 方法來搜尋資料。 此方�
 
 ```csharp
 // POST: Movies/Delete/6
+[HttpPost]
 [ValidateAntiForgeryToken]
 public async Task<IActionResult> Delete(int id, bool notUsed)
 ```

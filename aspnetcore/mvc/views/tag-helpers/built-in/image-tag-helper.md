@@ -4,14 +4,14 @@ author: pkellner
 description: 示範如何使用影像標籤協助程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/10/2018
+ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: 5eb74a6698911a1c594d11573192cb1b9ed53b49
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 916a68c187cbf516a59d3c5d7578cdb6ada01b86
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325831"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468814"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>ASP.NET Core 的影像標籤協助程式
 
@@ -43,13 +43,13 @@ ms.locfileid: "49325831"
 下列範例使用影像標籤協助程式：
 
 ```cshtml
-<img src="~/images/asplogo.png" asp-append-version="true" />
+<img src="~/images/asplogo.png" asp-append-version="true">
 ```
 
 如果靜態檔案存在於 */wwwroot/images/* 目錄中，產生的 HTML 類似如下 (雜湊會不同)：
 
 ```html
-<img src="/images/asplogo.png?v=Kl_dqr9NVtnMdsM2MUg4qthUnWZm5T1fCEimBPWDNgM" />
+<img src="/images/asplogo.png?v=Kl_dqr9NVtnMdsM2MUg4qthUnWZm5T1fCEimBPWDNgM">
 ```
 
 指派給 `v` 參數的值是磁碟上 *asplogo.png* 檔案的雜湊值。 如果網頁伺服器無法取得靜態檔案讀取權限，就不會在轉譯標記中將 `v` 參數新增至 `src` 屬性。

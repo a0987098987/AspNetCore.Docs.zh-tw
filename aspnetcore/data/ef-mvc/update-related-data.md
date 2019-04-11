@@ -4,15 +4,15 @@ description: 在本教學課程中，您會藉由更新外部索引鍵欄位和�
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 1606b872df2df839266ef17efee1948065c4efae
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 6add725430380f0855fe660a70b90a4546ef0637
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209410"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750916"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關資料 - ASP.NET MVC 搭配 EF Core
 
@@ -35,7 +35,7 @@ ms.locfileid: "58209410"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [使用 EF Core 來讀取 ASP.NET Core MVC Web 應用程式的相關資料](read-related-data.md)
+* [讀取相關資料](read-related-data.md)
 
 ## <a name="customize-courses-pages"></a>自訂 Courses 頁面
 
@@ -123,7 +123,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 在 *InstructorsController.cs* 中，變更 HttpGet `Edit` 方法中的程式碼，使其載入 Instructor 實體的 `OfficeAssignment` 導覽屬性，並呼叫 `AsNoTracking`：
 
-[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=9,10&name=snippet_EditGetOA)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=8-11&name=snippet_EditGetOA)]
 
 使用下列程式碼取代 HttpPost `Edit` 方法來處理辦公室指派更新：
 
@@ -225,7 +225,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 <a id="notepad"></a>
 > [!NOTE]
-> 當您將程式碼貼至 Visual Studio 時，分行符號可能會產生變更使程式碼失效。 按 Ctrl+Z 來復原自動格式化。 這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 您可以在[這裡](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html)檢查此問題的狀態。
+> 當您將程式碼貼至 Visual Studio 時，分行符號可能會變更，而讓程式碼斷行。 如果程式碼在貼上之後看起來不同，請按 Ctrl+Z 一次以復原自動格式化。 這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 Visual Studio 2019 已修正這個問題。
 
 [!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
@@ -314,6 +314,7 @@ public ICollection<CourseAssignment> CourseAssignments
 > * 更新 [刪除] 頁面
 > * 將辦公室位置和課程新增至 [建立] 頁面
 
-若要了解如何處理並行衝突，請前往下一篇文章。
+若要了解如何處理並行衝突，請前往下一個教學課程。
+
 > [!div class="nextstepaction"]
 > [處理並行衝突](concurrency.md)

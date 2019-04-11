@@ -3,14 +3,15 @@ title: ASP.NET Core 中的金鑰管理擴充性
 author: rick-anderson
 description: 深入了解 ASP.NET Core 資料保護金鑰管理擴充性。
 ms.author: riande
-ms.date: 11/22/2017
+ms.custom: mvc, seodec18
+ms.date: 10/24/2018
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 965a7ed8ca2f72a66cfe093b5978a54fea5440fd
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 28932cbef1cc797338980f3e0de8b09caee324c0
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219312"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284600"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>ASP.NET Core 中的金鑰管理擴充性
 
@@ -60,7 +61,7 @@ ms.locfileid: "39219312"
 
 ## <a name="xmlkeymanager"></a>XmlKeyManager
 
-`XmlKeyManager`型別是內建的具體實作`IKeyManager`。 它提供數個實用的功能，包括金鑰委付和待用的金鑰加密。 在此系統中的索引鍵會表示為 XML 項目 (具體而言， [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview))。
+`XmlKeyManager`型別是內建的具體實作`IKeyManager`。 它提供數個實用的功能，包括金鑰委付和待用的金鑰加密。 在此系統中的索引鍵會表示為 XML 項目 (具體而言， [XElement](/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview))。
 
 `XmlKeyManager` 在完成其工作的過程中的數個其他元件而定：
 
@@ -130,10 +131,23 @@ ms.locfileid: "39219312"
 
 有四種內建的具象類型實作`IXmlRepository`:
 
+::: moniker range=">= aspnetcore-2.2"
+
+* [FileSystemXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.filesystemxmlrepository)
+* [RegistryXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository)
+* [AzureStorage.AzureBlobXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.azurestorage.azureblobxmlrepository)
+* [RedisXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.stackexchangeredis.redisxmlrepository)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
 * [FileSystemXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.filesystemxmlrepository)
 * [RegistryXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository)
 * [AzureStorage.AzureBlobXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.azurestorage.azureblobxmlrepository)
 * [RedisXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.redisxmlrepository)
+
+::: moniker-end
 
 請參閱[金鑰儲存提供者文件](xref:security/data-protection/implementation/key-storage-providers)如需詳細資訊。
 
@@ -161,7 +175,7 @@ services.AddSingleton<IXmlRepository>(new MyCustomXmlRepository());
 
 `IXmlEncryptor`介面代表一種類型，可以將加密的純文字 XML 項目。 它會公開單一的 API:
 
-* 加密 (XElement plaintextElement): EncryptedXmlInfo
+* Encrypt(XElement plaintextElement):EncryptedXmlInfo
 
 如果序列化`IAuthenticatedEncryptorDescriptor`包含任何項目，然後標示為 「 需要加密 」`XmlKeyManager`會透過已設定執行這些項目`IXmlEncryptor`的`Encrypt`方法，且其會保存已譯成密碼的項目而非以純文字項目`IXmlRepository`。 輸出`Encrypt`方法是`EncryptedXmlInfo`物件。 這個物件是其中包含已譯成密碼的這兩個結果的包裝函式`XElement`代表的類型和`IXmlDecryptor`這可用來解密對應的項目。
 
@@ -196,7 +210,7 @@ services.AddSingleton<IXmlEncryptor>(new MyCustomXmlEncryptor());
 
 `IXmlDecryptor`介面表示型別，以便將解密`XElement`會是已譯成密碼透過`IXmlEncryptor`。 它會公開單一的 API:
 
-* 解密 (XElement encryptedElement): XElement
+* 解密 (XElement encryptedElement):XElement
 
 `Decrypt`方法復原所執行的加密`IXmlEncryptor.Encrypt`。 一般而言，每個具體`IXmlEncryptor`實作會有相對應的具體`IXmlDecryptor`實作。
 

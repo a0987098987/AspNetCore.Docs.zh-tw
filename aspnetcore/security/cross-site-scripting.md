@@ -3,20 +3,20 @@ title: 防止跨網站指令碼 (XSS) ASP.NET Core 中
 author: rick-anderson
 description: 了解跨網站指令碼 (XSS) 和解決此一漏洞的 ASP.NET Core 應用程式中的技術。
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 10/02/2018
 uid: security/cross-site-scripting
-ms.openlocfilehash: 4784b1775d955f0ef00526e50b960fc873ea218d
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 50f0211a2c64708d9b788dd10ce9064e66014d55
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342207"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910521"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>防止跨網站指令碼 (XSS) ASP.NET Core 中
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-跨網站指令碼 (XSS) 是可讓攻擊者將用戶端指令碼 (通常是 JavaScript) 放入網頁的安全性弱點。 當其他使用者載入攻擊者的指令碼會執行受影響的頁面時，讓攻擊者竊取 cookie 和工作階段權杖變更透過 DOM 操作之 web 網頁內容，或瀏覽器重新導向至其他頁面。 應用程式接受使用者輸入，並將其輸出在頁面中，而不需要驗證、 編碼或逸出它時，通常會發生 XSS 弱點。
+跨網站指令碼 (XSS) 是可讓攻擊者將用戶端指令碼 (通常是 JavaScript) 放入網頁的安全性弱點。 當其他使用者載入攻擊者的指令碼會執行受影響的頁面時，讓攻擊者竊取 cookie 和工作階段權杖變更透過 DOM 操作之 web 網頁內容，或瀏覽器重新導向至其他頁面。 應用程式會接受使用者輸入，並將它輸出到頁面中，而不需要驗證、 編碼或逸出它時，通常會發生 XSS 弱點。
 
 ## <a name="protecting-your-application-against-xss"></a>保護您的應用程式免遭 XSS
 
@@ -26,19 +26,19 @@ ms.locfileid: "39342207"
 
 2. HTML 項目內的不信任的資料之前，請先確認其為 HTML 編碼。 這類 HTML 編碼會採用字元&lt;變成安全的表單和&amp;l t;
 
-3. 之前將不受信任的資料放入 HTML 屬性，請確定它是編碼的 HTML 屬性。 HTML 屬性編碼是 HTML 編碼的超集，例如將額外的字元編碼成"和 '。
+3. 將不受信任的資料放入 HTML 屬性之前，請先確認已對它進行 HTML 編碼。 HTML 屬性編碼是 HTML 編碼的超集，而且會將額外的字元 (例如 " 與 ') 編碼。
 
-4. 之前將不受信任的資料放入 JavaScript 將您在執行階段擷取其內容的 HTML 項目中的資料。 如果這不可行，請確定資料是 JavaScript 編碼。 JavaScript 的編碼方式會適用於 JavaScript 的危險的字元，取代成其 hex，比方說&lt;會編碼為`\u003C`。
+4. 之前將不受信任的資料放入 JavaScript 將您在執行階段擷取其內容的 HTML 項目中的資料。 如果這不可行，請確定資料是 JavaScript 的編碼。 JavaScript 的編碼方式會適用於 JavaScript 的危險的字元，取代成其 hex，比方說&lt;會編碼為`\u003C`。
 
-5. 將不受信任的資料放入的 URL 查詢字串之前，請先確認其為 URL 編碼。
+5. 將不受信任的資料放入 URL 查詢字串之前，請先確認已為它進行 URL 編碼。
 
 ## <a name="html-encoding-using-razor"></a>使用 Razor 的 HTML 編碼
 
-Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您真的很努力避免這種方式。 它會使用 HTML 編碼規則，每當您使用的屬性*@* 指示詞。 為 HTML 屬性編碼會是這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的 HTML 編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標籤協助程式也會將編碼的輸入您在 tag 參數中使用。
+Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您真的很努力避免這種方式。 它會使用 HTML 屬性編碼規則，每當您使用*@* 指示詞。 為 HTML 屬性編碼會是這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的 HTML 編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標籤協助程式也會將編碼的輸入您在 tag 參數中使用。
 
-採取下列 Razor 檢視中;
+採取下列 Razor 檢視：
 
-```none
+```cshtml
 @{
        var untrustedInput = "<\"123\">";
    }
@@ -53,13 +53,13 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
    ```
 
 >[!WARNING]
-> ASP.NET Core MVC 提供`HtmlString`類別可在輸出時不會自動編碼。 這應該永遠不會用於具有不受信任的輸入組合，這將會公開 XSS 的安全性弱點。
+> ASP.NET Core MVC 提供 `HtmlString` 類別，它不會在輸出時自動編碼。 這永遠不應該結合不受信任的輸入使用，因為這將會公開 XSS 弱點。
 
-## <a name="javascript-encoding-using-razor"></a>使用 Razor Javascript 編碼
+## <a name="javascript-encoding-using-razor"></a>使用 Razor JavaScript 編碼
 
 有時候可能會想要將值插入您的檢視中要處理的 JavaScript。 執行這項作業的方法有兩種。 將值插入最安全的方法是將值放在標記的資料屬性，並擷取在 JavaScript 中。 例如: 
 
-```none
+```cshtml
 @{
        var untrustedInput = "<\"123\">";
    }
@@ -107,16 +107,16 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
    </script>
    ```
 
-它執行時，會轉譯下列作業：
+它執行時，會轉譯下列：
 
 ```none
 <"123">
    <"123">
    ```
 
-您也可以直接呼叫 JavaScript 編碼器
+您也可以直接呼叫 JavaScript 編碼器：
 
-```none
+```cshtml
 @using System.Text.Encodings.Web;
    @inject JavaScriptEncoder encoder;
 
@@ -129,7 +129,7 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
    </script>
    ```
 
-這會如下所示; 呈現在瀏覽器
+這將瀏覽器中轉換，如下所示：
 
 ```html
 <script>
@@ -176,7 +176,7 @@ var example = "\"Quoted Value with spaces and &\"";
 變數會包含編碼 encodedValue 之後`%22Quoted%20Value%20with%20spaces%20and%20%26%22`。 空格、 引號、 標點符號和其他不安全字元就是百分比編碼成其十六進位值，例如空格字元會變成 %20。
 
 >[!WARNING]
-> 請勿使用不受信任的輸入的 URL 路徑的一部分。 一律傳遞不受信任的輸入作為查詢字串值。
+> 請勿使用不受信任的輸入作為 URL 路徑的一部分。 一律傳遞不受信任的輸入作為查詢字串值。
 
 <a name="security-cross-site-scripting-customization"></a>
 
@@ -225,4 +225,4 @@ services.AddSingleton<HtmlEncoder>(
 
 ## <a name="validation-as-an-xss-prevention-technique"></a>XSS 防護技術以及驗證
 
-驗證可以是一個有用的工具，在限制 XSS 攻擊。 例如，數字的字串，包含只有字元 0-9 不會觸發 XSS 攻擊。 驗證變得更複雜的是如果您想要接受使用者輸入層中的 HTML 剖析 HTML 輸入是很困難，不可能的。 MarkDown 和其他文字格式會是比較安全的選項為豐富的輸入。 您永遠不應該依賴單獨的驗證。 一律將編碼不受信任的輸入，輸出之前，無論何種驗證您已執行。
+驗證可以是一個有用的工具，在限制 XSS 攻擊。 例如，數字的字串，包含只有字元 0-9 不會觸發 XSS 攻擊。 接受使用者輸入中的 HTML 時，驗證將會變得更複雜。 剖析 HTML 輸入相當困難，不可能的。 搭配去除內嵌的 HTML，剖析器的 markdown，是比較安全的選項，以接受豐富的輸入。 絕不要依賴在單獨的驗證。 一律將編碼不受信任的輸入，輸出中，無論何種驗證或處理已執行前。

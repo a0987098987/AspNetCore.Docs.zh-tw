@@ -1,41 +1,46 @@
 ---
-title: ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
+title: 教學課程：開始在 ASP.NET MVC Web 應用程式中使用 EF Core
+description: 這是說明如何從零開始建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 author: rick-anderson
-description: ''
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 02/06/2019
+ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 4e0bcffd1162681aa4d31c4fe74acac5a7e981f1
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 282af56eb911aea53a6ce945e7c1177c158fc342
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38216308"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750587"
 ---
-# <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
+# <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>教學課程：開始在 ASP.NET MVC Web 應用程式中使用 EF Core
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
-Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (EF) Core 2.0 和 Visual Studio 2017 ASP.NET Core 2.0 MVC web 應用程式。
+Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Core 2.2 和 Visual Studio 2017 或 2019 建立 ASP.NET Core 2.2 MVC Web 應用程式。
 
 這個範例應用程式是虛構的 Contoso 大學網站。 其中包括的功能有學生入學許可、課程建立、教師指派。 這是說明如何從零開始建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+在本教學課程中，您已：
 
-EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需如何在 EF 6.x 和 EF Core 之間做選擇的詳細資訊，請參閱 [EF Core 與EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/)。 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
-
-> [!NOTE]
-> 如需此教學課程的 ASP.NET Core 1.1 版本，請參閱[以 PDF 格式儲存之此教學課程的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf)。
+> [!div class="checklist"]
+> * 建立 ASP.NET Core MVC Web 應用程式
+> * 設定網站樣式
+> * 了解 EF Core NuGet 套件
+> * 建立資料模型
+> * 建立資料庫內容
+> * 為內容註冊相依性插入
+> * 使用測試資料將資料庫初始化
+> * 建立控制器和檢視
+> * 檢視資料庫
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [](~/includes/net-core-prereqs.md) [](~/includes/net-core-prereqs.md)]
+* [.NET Core SDK 2.2](https://www.microsoft.com/net/download)
+* 有下列工作負載的 [Visual Studio 2017 或 2019](https://visualstudio.microsoft.com/downloads/)：
+    * **ASP.NET 與網頁程式開發**工作負載
+    * **.NET Core 跨平台開發**工作負載
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -44,7 +49,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 > [!TIP]
 > 這是 10 個教學的系列課程，當中的每一個課程都是建置於先前教學課程的成果上。 成功完成每一個教學課程後，請儲存專案的複本。 如果您遇到問題，您可以從上一個教學課程來重新開始，而不需從系列的一開始從頭來過。
 
-## <a name="the-contoso-university-web-application"></a>Contoso 大學 Web 應用程式
+## <a name="contoso-university-web-app"></a>Contoso 大學 Web 應用程式
 
 您在這些教學課程中會建置的應用程式為一個簡單的大學網站。
 
@@ -54,11 +59,9 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 ![Students [編輯] 頁面](intro/_static/student-edit.png)
 
-此網站的 UI 樣式與內建範本產生的相當類似，以使此教學課程能聚焦於如何使用 Entity Framework。
+## <a name="create-web-app"></a>建立 Web 應用程式
 
-## <a name="create-an-aspnet-core-mvc-web-application"></a>建立 ASP.NET Core MVC Web 應用程式
-
-開啟 Visual Studio，建立一個名為 "ContosoUniversity"的新 ASP.NET Core C# Web 專案。
+* 開啟 Visual Studio。
 
 * 從 [檔案] 功能表選取[新增] > [專案] 。
 
@@ -68,19 +71,17 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 * 輸入 **ContosoUniversity** 作為名稱，然後按一下 [確定]。
 
-  ![[新增專案] 對話](intro/_static/new-project.png)
+  ![[新增專案] 對話](intro/_static/new-project2.png)
 
-* 等候 [新增 ASP.NET Core Web 應用程式 (.NET Core)] 對話方塊出現
+* 等候 [新增 ASP.NET Core Web 應用程式] 對話方塊出現。
 
-* 選取 [ASP.NET Core 2.0] 及 [Web Application (Model-View-Controller] (Web 應用程式 (模型-檢視-控制器)) 範本。
-
-  **注意：** 本教學課程需要 ASP.NET Core 2.0 和 EF Core 2.0 或更新版本-請確認**ASP.NET Core 1.1**未選取。
+* 選取 [.NET Core]、[ASP.NET Core 2.2] 和 [Web 應用程式 (Model-View-Controller)] 範本。
 
 * 確認 [驗證] 已設為 [No Authentication] (無驗證)。
 
-* 按一下 [確定] 
+* 選取 [確定]
 
-  ![[新增 ASP.NET 專案] 對話方塊](intro/_static/new-aspnet.png)
+  ![[新增 ASP.NET Core 專案] 對話方塊](intro/_static/new-aspnet2.png)
 
 ## <a name="set-up-the-site-style"></a>設定網站樣式
 
@@ -90,11 +91,11 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 * 將每個出現的 "ContosoUniversity" 都變更為 "Contoso University"。 共出現三次。
 
-* 為 **Students**、**Courses**、**Instructors**、**Departments** 新增功能表項目，並刪除 **Contact** 功能表項目。
+* 為 **About**、**Students**、**Courses**、**Instructors** 及 **Departments** 新增功能表項目，並刪除 **Privacy** 功能表項目。
 
-所做的變更已醒目提示。
+所做的變更已醒目標示。
 
-[!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,30,36-39,48)]
+[!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,37-48,63)]
 
 在 *Views/Home/Index.cshtml* 中用下列程式碼取代檔案內容，以使用關於此應用程式的文字來取代關於 ASP.NET 和 MVC 的文字：
 
@@ -104,13 +105,13 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 ![Contoso 大學首頁](intro/_static/home-page.png)
 
-## <a name="entity-framework-core-nuget-packages"></a>Entity Framework Core NuGet 套件
+## <a name="about-ef-core-nuget-packages"></a>關於 EF Core NuGet 套件
 
-若要將 EF Core 支援新增至專案，請安裝您欲使用之資料庫的提供者。 本教學課程使用 SQL Server，其提供者套件為 [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/)。 此套件包含在 [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) 中繼套件內，因此您不需要安裝它。
+若要將 EF Core 支援新增至專案，請安裝您欲使用之資料庫的提供者。 本教學課程使用 SQL Server，其提供者套件為 [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/)。 此套件包含在 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) 中，因此您不需要參考該套件。
 
-此套件及其相依性 (`Microsoft.EntityFrameworkCore` 及 `Microsoft.EntityFrameworkCore.Relational`) 提供了 EF 的執行階段支援。 您會在稍後的[移轉](migrations.md)教學課程中新增工具套件。
+EF SQL Server 套件及其相依性 (`Microsoft.EntityFrameworkCore` 及 `Microsoft.EntityFrameworkCore.Relational`) 提供了 EF 的執行階段支援。 您會在稍後的[移轉](migrations.md)教學課程中新增工具套件。
 
-如需其他 Entity Framework Core 可用之資料庫提供者的資訊，請參閱[資料庫提供者](https://docs.microsoft.com/ef/core/providers/)。
+如需其他 Entity Framework Core 可用之資料庫提供者的資訊，請參閱[資料庫提供者](/ef/core/providers/)。
 
 ## <a name="create-the-data-model"></a>建立資料模型
 
@@ -132,7 +133,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 `ID` 屬性會成為資料庫資料表中的主索引鍵資料行，並對應至這個類別。 Entity Framework 預設會將名為 `ID` 或 `classnameID` 的屬性解譯為主索引鍵。
 
-`Enrollments` 屬性為導覽屬性。 導覽屬性會保留與此實體相關的其他實體。 在這個案例中，`Student entity` 的 `Enrollments` 屬性會保有與該 `Student` 實體相關的所有 `Enrollment` 實體。 換句話說，若資料庫中給定的學生資料列有兩個相關的 Enrollment 資料列 (包含該學生於其 StudentID 外部索引鍵資料行中主索引鍵值的資料列)，該 `Student` 實體的 `Enrollments` 導覽屬性便會包含這兩個 `Enrollment` 實體。
+`Enrollments` 屬性為[導覽屬性](/ef/core/modeling/relationships)。 導覽屬性會保留與此實體相關的其他實體。 在這個案例中，`Student entity` 的 `Enrollments` 屬性會保有與該 `Student` 實體相關的所有 `Enrollment` 實體。 換句話說，若資料庫中給定的學生資料列有兩個相關的 Enrollment 資料列 (包含該學生於其 StudentID 外部索引鍵資料行中主索引鍵值的資料列)，該 `Student` 實體的 `Enrollments` 導覽屬性便會包含這兩個 `Enrollment` 實體。
 
 若導覽屬性可保有多個實體 (例如在多對多或一對多關聯性中的情況)，其類型必須為一個清單，使得實體可以在該清單中新增、刪除或更新，例如 `ICollection<T>`。 您可以指定 `ICollection<T>` 或如 `List<T>` 或 `HashSet<T>` 等類型。 若您指定了 `ICollection<T>`，EF 會根據預設建立一個 `HashSet<T>` 集合。
 
@@ -184,13 +185,13 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_TableNames&highlight=16-21)]
 
-## <a name="register-the-context-with-dependency-injection"></a>使用相依性插入來註冊內容
+## <a name="register-the-schoolcontext"></a>註冊 SchoolContext
 
 根據預設，ASP.NET Core 會實作[相依性插入](../../fundamentals/dependency-injection.md)。 服務 (例如 EF 資料庫內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 MVC 控制器) 來提供服務。 您會在此教學課程的稍後看到取得內容執行個體的控制器建構函式。
 
 若要將 `SchoolContext` 註冊為服務，請開啟 *Startup.cs*，並將醒目標示的程式碼新增至 `ConfigureServices` 方法。
 
-[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=3-4)]
+[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=9-10)]
 
 連接字串的名稱，會透過呼叫 `DbContextOptionsBuilder` 物件上的方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
 
@@ -206,7 +207,7 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 連接字串會指定 SQL Server LocalDB 資料庫。 LocalDB 是輕量版的 SQL Server Express Database Engine，旨在用於應用程式開發，而不是生產用途。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 預設會在 `C:/Users/<user>` 目錄中建立 *.mdf* 資料庫檔案。
 
-## <a name="add-code-to-initialize-the-database-with-test-data"></a>新增程式碼來初始化含有測試資料的資料庫
+## <a name="initialize-db-with-test-data"></a>使用測試資料將 DB 初始化
 
 Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫一個方法，該方法會在資料庫建立之後呼叫，以將測試資料填入資料庫。
 
@@ -234,7 +235,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 現在在您首次執行應用程式時，資料庫便會建立並植入測試資料。 每當您變更您的資料模型時，您可以刪除資料庫、更新您的種子方法，然後依照相同的方法取得新的資料庫以重新開始。 在稍後的教學課程中，您會了解如何在資料模型變更時修改資料庫，而不需要刪除和重新建立它。
 
-## <a name="create-a-controller-and-views"></a>建立控制器和檢視
+## <a name="create-controller-and-views"></a>建立控制器和檢視
 
 接下來，您會使用 Visual Studio 中的 scaffolding 引擎來新增使用 EF 查詢和儲存資料的 MVC 控制器及檢視。
 
@@ -242,18 +243,13 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 * 在方案總管中的 **Controllers** 資料夾上以滑鼠右鍵按一下，然後選取 [新增] > [新增 Scaffold 項目]。
 
-如果出現 [新增 MVC 相依性] 對話方塊：
-
-* [將 Visual Studio 更新為最新版本](https://www.visualstudio.com/downloads/)。 15.5 之前的 Visual Studio 版本會顯示此對話方塊。
-* 如果您無法更新，請選取 [新增]，然後再次遵循新增控制器步驟進行。
-
 * 在 [新增 Scaffold] 對話方塊中：
 
   * 選取 [使用 Entity Framework 執行檢視的 MVC 控制器]。
 
-  * 按一下 [加入] 。
+  * 按一下 [加入] 。 [新增使用 Entity Framework 執行檢視的 MVC 控制器] 對話方塊隨即出現。
 
-* 在 [新增控制器] 對話方塊中：
+    ![Scaffold Student](intro/_static/scaffold-student2.png)
 
   * 在 [模型類別] 中，選取 [Student]。
 
@@ -263,8 +259,6 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
   * 按一下 [加入] 。
 
-  ![Scaffold Student](intro/_static/scaffold-student.png)
-
   當您按一下 [新增] 時，Visual Studio Scaffolding 引擎便會建立 *StudentsController.cs* 檔案及一組可以使用該控制器的檢視 (*.cshtml* 檔案)。
 
 (Scaffolding 引擎也可以在您沒有如本教學課程先前的操作一樣先手動建立時，為您建立資料庫內容。 您可以在 [新增控制器] 方塊中藉由按一下 [資料內容類別] 右側的加號來指定新的內容類別。  Visual Studio 接著便會建立您的 `DbContext` 類別及控制器和檢視。)
@@ -273,7 +267,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Context&highlight=5,7,9)]
 
-ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制器。 您可以在先前的 *Startup.cs* 檔案中設定它。
+ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制器。 您可以在先前的 *Startup.cs* 檔案中設定它。
 
 控制器含有一個 `Index` 動作方法，該方法會顯示資料庫中的所有學生。 方法會藉由讀取資料庫內容執行個體的 `Students` 屬性，來從 Students 實體集中取得學生的清單：
 
@@ -287,7 +281,7 @@ ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制�
 
 按 CTRL+F5 來執行專案，或從功能表選擇 [偵錯] > [啟動但不偵錯]。
 
-按一下 [Students] 索引標籤來查看 `DbInitializer.Initialize` 方法插入的測試資料。 取決於您瀏覽器視窗的寬度，您可能會在頁面的頂端看到 `Student` 索引標籤連結，或是按一下位於右上角的導覽圖示來查看連結。
+按一下 [Students] 索引標籤來查看 `DbInitializer.Initialize` 方法插入的測試資料。 取決於您瀏覽器視窗的寬度，您可能會在頁面的頂端看到 `Students` 索引標籤連結，或是按一下位於右上角的導覽圖示來查看連結。
 
 ![Contoso 大學首頁 (窄)](intro/_static/home-page-narrow.png)
 
@@ -311,7 +305,7 @@ ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制�
 
 ![SSOX 中的 Student 資料表](intro/_static/ssox-student-table.png)
 
-<em>.mdf</em> 和 <em>.ldf</em> 資料庫檔案位於 <em>C:\Users\\<yourusername></em> 資料夾中。
+*.mdf* 和 *.ldf* 資料庫檔案位於 *C:\Users\\\<您的使用者名稱>* 資料夾中。
 
 因為您在應用程式啟動時執行的初始設定式方法中呼叫了 `EnsureCreated`，您現在可以對 `Student` 類別進行變更、刪除資料庫、重新執行應用程式，資料庫會自動重新建立以符合您所作出的變更。 例如，若您將一個 `EmailAddress` 屬性新增到 `Student` 類別，您便會在重新建立的資料表中看到新的 `EmailAddress` 資料行。
 
@@ -325,7 +319,7 @@ ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制�
 
 * 命名為 ID 或 classnameID 的實體屬性，會辨識為主索引鍵屬性。
 
-* 如果屬性已命名為 *<navigation property name><primary key property name>* (例如，`StudentID` 為 `Student` 的導覽屬性，因為 `Student` 實體的主索引鍵是 `ID`)，會將屬性解譯為外部索引鍵屬性。 外部索引鍵屬性也可以簡單的命名為 *<primary key property name>* (例如 `EnrollmentID`，因為 `Enrollment` 實體的主索引鍵為 `EnrollmentID`)。
+* 如果屬性命名為*\<導覽屬性名稱>\<主索引鍵屬性名稱>*，系統就會將該屬性解譯為外部索引鍵屬性 (例如，若為 `Student` 導覽屬性，則為 `StudentID`，因為 `Student` 實體的主索引鍵是 `ID`)。 外部索引鍵屬性也可以直接命名為 *\<主索引鍵屬性名稱>* (例如 `EnrollmentID`，因為 `Enrollment` 實體的主索引鍵為 `EnrollmentID`)。
 
 慣例行為可以被覆寫。 例如，您可以明確指定資料表名稱，如稍早在本教學課程中您所見到的。 您可以設定資料行名稱以及將任何屬性設為主索引鍵或外部索引鍵，如同您在本系列[稍後的教學課程](complex-data-model.md)中所見。
 
@@ -357,13 +351,30 @@ ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制�
 
 * 若您想要充分利用非同步程式碼帶來的效能優點，請確保任何您正在使用的程式庫 (例如分頁) 也使用了非同步 (若它們有呼叫任何可能會傳送查詢到資料庫的 Entity Framework 方法的話)。
 
-如需在 .NET 中非同步程式設計的詳細資訊，請參閱[非同步總覽](https://docs.microsoft.com/dotnet/articles/standard/async)。
+如需在 .NET 中非同步程式設計的詳細資訊，請參閱[非同步總覽](/dotnet/articles/standard/async)。
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-現在您已建立了使用 Entity Framework Core 和 SQL Server Express LocalDB 的簡單應用程式，可用來儲存和顯示資料。 在接下來的教學課程中，您將學習到如何執行基本的 CRUD (建立、讀取、更新、刪除) 作業。
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>後續步驟
 
-> [!div class="step-by-step"]
-> [下一步](crud.md)
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 建立 ASP.NET Core MVC Web 應用程式
+> * 設定網站樣式
+> * 了解 EF Core NuGet 套件
+> * 建立資料模型
+> * 建立資料庫內容
+> * 註冊 SchoolContext
+> * 使用測試資料將 DB 初始化
+> * 建立控制器和檢視
+> * 檢視資料庫
+
+在接下來的教學課程中，您將學習到如何執行基本的 CRUD (建立、讀取、更新、刪除) 作業。
+
+若要了解如何執行基本的 CRUD (建立、讀取、更新、刪除) 作業，請前往下一個教學課程。
+
+> [!div class="nextstepaction"]
+> [實作基本的 CRUD 功能](crud.md)

@@ -1,18 +1,18 @@
 ---
 title: ASP.NET Core SignalR 簡介
-author: tdykstra
+author: bradygaster
 description: 了解 ASP.NET Core SignalR 程式庫如何簡化將即時功能新增至應用程式。
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/25/2018
 uid: signalr/introduction
-ms.openlocfilehash: 2fff24609caf7592bad763a077288990a29617aa
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 673efafce60dfa46cb99f9537fda2bca42bf9822
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342545"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836359"
 ---
 # <a name="introduction-to-aspnet-core-signalr"></a>ASP.NET Core SignalR 簡介
 
@@ -36,7 +36,7 @@ SignalR 提供的 API 來建立伺服器到用戶端[遠端程序呼叫 (RPC)](h
 * 將訊息傳送至特定的用戶端或群組的用戶端。
 * 可調整來處理增加的流量。
 
-來源裝載於[SignalR GitHub 上的存放庫](https://github.com/aspnet/signalr)。
+來源裝載於[SignalR GitHub 上的存放庫](https://github.com/aspnet/AspNetCore/tree/master/src/SignalR)。
 
 ## <a name="transports"></a>傳輸
 

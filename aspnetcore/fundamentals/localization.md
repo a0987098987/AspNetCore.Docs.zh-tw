@@ -5,16 +5,16 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 87df1b8cf57509ddf80ce845d85a9b3f30673c35
-ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
+ms.openlocfilehash: 3192ad150b914c00b315f38bd9fe077ebf402b37
+ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396230"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488698"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT)、[Damien Bowden](https://twitter.com/damien_bod)、[Bart Calixto](https://twitter.com/bartmax)、[Nadeem Afana](https://twitter.com/NadeemAfana) 和 [Hisham Bin Ateya](https://twitter.com/hishambinateya) 提供
+由 [Rick Anderson](https://twitter.com/RickAndMSFT)、[Damien Bowden](https://twitter.com/damien_bod)、[Bart Calixto](https://twitter.com/bartmax)、[Nadeem Afana](https://afana.me/) 和 [Hisham Bin Ateya](https://twitter.com/hishambinateya) 提供
 
 使用 ASP.NET Core 建立多語系網站時，可讓更廣大的群眾使用您的網站。 ASP.NET Core 提供服務與中介軟體，可將網站當地語系化成不同的語言與文化特性。
 
@@ -30,7 +30,7 @@ ms.locfileid: "39396230"
 
 3. 實作可依據每項要求選取語言/文化特性的策略
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>讓應用程式的內容可當地語系化
 
@@ -76,7 +76,7 @@ ASP.NET Core 中導入了 `IStringLocalizer` 和 `IStringLocalizer<T>`，其設�
 
 | Key | 值 |
 | ----- | ------ |
-| `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b> ` |
+| `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 轉譯的檢視內容可能包含來自資源檔的 HTML 標記。
 
@@ -98,6 +98,7 @@ DataAnnotations 錯誤訊息會使用 `IStringLocalizer<T>` 來當地語系化�
 在 ASP.NET Core MVC 1.1.0 和更高版本中，系統會將非驗證屬性當地語系化。 ASP.NET Core MVC 1.0 **不會**查閱非驗證屬性的當地語系化字串。
 
 <a name="one-resource-string-multiple-classes"></a>
+
 ### <a name="using-one-resource-string-for-multiple-classes"></a>針對多個類別使用同一個資源字串
 
 下列程式碼會示範如何針對含有多個類別的驗證屬性使用同一個資源字串：
@@ -127,7 +128,7 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 1. 在方案總管中，以滑鼠右鍵按一下要放置資源檔的資料夾 > [新增] > [新增項目]。
 
-    ![巢狀特色選單：方案總管會開啟 [資源] 的特色選單， 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
+    ![巢狀快顯功能表：在 [方案總管] 中，會開啟 [資源] 的快顯功能表。 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
 
 2. 在 [Search installed templates] (搜尋已安裝的範本) 方塊中，輸入「資源」，並命名檔案。
 
@@ -172,7 +173,7 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 如果 `RootNamespace` 與 `AssemblyName` 不同，請將下列內容納入 *AssemblyInfo.cs* (參數值取代為實際值)：
 
-```Csharp
+```csharp
 using System.Reflection;
 using Microsoft.Extensions.Localization;
 
@@ -206,9 +207,9 @@ using Microsoft.Extensions.Localization;
 
 ### <a name="configure-localization"></a>設定當地語系化
 
-您可以在 `ConfigureServices` 方法中設定當地語系化：
+您可以在 `Startup.ConfigureServices` 方法中設定當地語系化：
 
-[!code-csharp[](localization/sample/Localization/Program.cs?name=snippet1)]
+[!code-csharp[](localization/sample/Localization/Startup.cs?name=snippet1)]
 
 * `AddLocalization` 可將當地語系化服務新增至服務容器。 上方的程式碼也會將資源路徑設為 "Resources"。
 
@@ -218,9 +219,9 @@ using Microsoft.Extensions.Localization;
 
 ### <a name="localization-middleware"></a>當地語系化中介軟體
 
-您可以在當地語系化[中介軟體](xref:fundamentals/middleware/index)中，設定要求目前的文化特性。 已在 `Configure` 方法中啟用當地語系化中介軟體。 您必須在可能檢查要求文化特性的任何中介軟體之前，設定當地語系化中介軟體 (例如 `app.UseMvcWithDefaultRoute()`)。
+您可以在當地語系化[中介軟體](xref:fundamentals/middleware/index)中，設定要求目前的文化特性。 已在 `Startup.Configure` 方法中啟用當地語系化中介軟體。 您必須在可能檢查要求文化特性的任何中介軟體之前，設定當地語系化中介軟體 (例如 `app.UseMvcWithDefaultRoute()`)。
 
-[!code-csharp[](localization/sample/Localization/Program.cs?name=snippet2)]
+[!code-csharp[](localization/sample/Localization/Startup.cs?name=snippet2)]
 
 `UseRequestLocalization` 會初始化 `RequestLocalizationOptions` 物件。 在每次要求時，系統會列舉 `RequestLocalizationOptions` 中的 `RequestCultureProvider` 清單，並使用能成功判斷要求的文化特性的第一個提供者。 預設的提供者是來自 `RequestLocalizationOptions` 類別：
 
@@ -305,7 +306,6 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 [GitHub](https://github.com/aspnet/entropy) 上的這個範例 **Localization.StarterWeb** 專案包含可設定 `Culture` 的 UI。 *Views/Shared/_SelectLanguagePartial.cshtml* 檔可讓您從支援的文化特性清單中選取文化特性：
 
-
 [!code-cshtml[](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 系統會將 *Views/Shared/_SelectLanguagePartial.cshtml* 檔案新增至配置檔案的 `footer` 區段，以供所有檢視使用：
@@ -331,17 +331,20 @@ services.Configure<RequestLocalizationOptions>(options =>
 詞彙：
 
 * 全球化 (G11N)：讓應用程式支援不同語言和區域的程序。
-* 當地語系化 (L10N)：針對特定語言和區域，自訂應用程式的程序。
-* 國際化 (I18N)：包含全球化和當地語系化這兩部分的描述。
-* 文化特性：它是一種語言和/或地區。
-* 中性文化特性：具有指定的語言但不限地區的文化特性  (例如 "en"、"es")。
-* 特定文化特性：具有指定的語言和地區的文化特性  (例如 "en-US"、"en-GB"、"es-CL")。
-* 父文化特性：包含特定文化特性的中性文化特性  (例如，"en" 是 "en-US" 和 "en-GB" 的父文化特性)。
+* 當地語系化 (L10N)：針對特定語言和區域自訂應用程式的程序。
+* 國際化 (I18N)：描述全球化和當地語系化。
+* 文化特性：它是一種語言和選擇性的區域。
+* 中性文化特性：具有指定的語言但不限地區的文化特性。 (例如 "en"、"es")。
+* 特定文化特性：具有指定的語言與區域的文化特性。 (例如 "en-US"、"en-GB"、"es-CL")。
+* 父文化特性：包含特定文化特性的中性文化特性。 (例如，"en" 是 "en-US" 和 "en-GB" 的父文化特性)。
 * 地區設定：地區設定與文化特性相同。
+
+[!INCLUDE[](~/includes/currency.md)]
 
 ## <a name="additional-resources"></a>其他資源
 
-* 本文使用的 [Localization.StarterWeb 專案](https://github.com/aspnet/entropy)。
-* [Visual Studio 中的資源檔](/cpp/windows/resource-files-visual-studio)
+* <xref:fundamentals/troubleshoot-aspnet-core-localization>
+* 本文使用的 [Localization.StarterWeb 專案](https://github.com/aspnet/Entropy/tree/master/samples/Localization.StarterWeb)。
+* [全球化與當地語系化 .NET 應用程式](/dotnet/standard/globalization-localization/index)
 * [.resx 檔案中的資源](/dotnet/framework/resources/working-with-resx-files-programmatically)
 * [Microsoft 多語應用程式工具組](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)

@@ -4,20 +4,20 @@ author: scottaddie
 description: 了解在 ASP.NET Core Web API 中使用各種控制器動作方法傳回型別。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 07/23/2018
+ms.date: 01/04/2019
 uid: web-api/action-return-types
-ms.openlocfilehash: 82d18d866d4d18613cccb950b2f30ae81bd749de
-ms.sourcegitcommit: 6425baa92cec4537368705f8d27f3d0e958e43cd
+ms.openlocfilehash: 98d70e0379d353cff98a6d7a13f2dd00eb4da206
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39220608"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098728"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的控制器動作傳回型別
 
 作者：[Scott Addie](https://github.com/scottaddie)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/action-return-types/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/action-return-types/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ASP.NET Core 提供下列 Web API 控制器動作傳回型別選項：
 
@@ -68,13 +68,18 @@ ASP.NET Core 提供下列 Web API 控制器動作傳回型別選項：
 
 [!code-csharp[](../web-api/action-return-types/samples/WebApiSample.Api.Pre21/Controllers/ProductsController.cs?name=snippet_CreateAsync&highlight=8,13)]
 
-在上述動作中，當模型驗證失敗時並叫用 [BadRequest](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.badrequest) 協助程式方法時，會傳回 400 狀態碼。 例如，下列模型指出，要求必須提供 `Name` 屬性和值。 因此，無法在要求中提供適當的 `Name` 會導致模型驗證失敗。
+在上述程式碼中：
 
-[!code-csharp[](../web-api/action-return-types/samples/WebApiSample.DataAccess/Models/Product.cs?name=snippet_ProductClass&highlight=5-6)]
+* 當產品描述包含 "XYZ Widget" 時，ASP.NET Core 執行階段會傳回 400 狀態碼 ([BadRequest](xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*))。
+* 當建立產品時，[CreatedAtAction](xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*) 方法會產生 201 狀態碼。 在此程式碼路徑中，會傳回 `Product` 物件。
 
-上述動作的其他已知傳回碼為 201，由 [CreatedAtAction](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdataction) 協助程式方法產生。 在此路徑中，會傳回 `Product` 物件。
+例如，下列模型指出要求必須包含 `Name` 和 `Description` 屬性。 因此，若無法在要求中提供 `Name` 和 `Description`，就會導致模型驗證失敗。
+
+[!code-csharp[](../web-api/action-return-types/samples/WebApiSample.DataAccess/Models/Product.cs?name=snippet_ProductClass&highlight=5-6,8-9)]
 
 ::: moniker range=">= aspnetcore-2.1"
+
+如果套用 ASP.NET Core 2.1 或更新版本中的 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) 屬性，則模型驗證錯誤會導致產生 400 狀態碼。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。
 
 ## <a name="actionresultt-type"></a>ActionResult\<T> 類型
 
@@ -85,13 +90,13 @@ ASP.NET Core 2.1 為 Web API 控制器動作引入了 [ActionResult\<T>](/dotnet
 
 C# 不支援介面上的隱含轉換運算子。 因此，必須將介面轉換為具象型別才能使用 `ActionResult<T>`。 例如，在下列範例中使用 `IEnumerable` 將無法運作：
 
-    ```csharp
-    [HttpGet]
-    public ActionResult<IEnumerable<Product>> Get()
-    {
-        return _repository.GetProducts();
-    }
-    ```
+```csharp
+[HttpGet]
+public ActionResult<IEnumerable<Product>> Get()
+{
+    return _repository.GetProducts();
+}
+```
 
 修正上述程式碼的其中一個選項是傳回 `_repository.GetProducts().ToList();`。
 
@@ -114,7 +119,12 @@ C# 不支援介面上的隱含轉換運算子。 因此，必須將介面轉換�
 
 [!code-csharp[](../web-api/action-return-types/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_CreateAsync&highlight=8,13)]
 
-如果模型驗證失敗，即叫用 [BadRequest](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.badrequest#Microsoft_AspNetCore_Mvc_ControllerBase_BadRequest_Microsoft_AspNetCore_Mvc_ModelBinding_ModelStateDictionary_) 以傳回 400 狀態碼。 包含特定驗證錯誤的 [ModelState](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.modelstate) 屬性會傳送給它。 如果模型驗證成功，則會在資料庫中建立產品。 傳回 201 狀態碼。
+在上述程式碼中：
+
+* 在下列情況下，ASP.NET Core 執行階段會傳回 400 狀態碼 ([BadRequest](xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*))：
+  * 已套用 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) 屬性，而模型驗證失敗。
+  * 產品描述包含 "XYZ Widget"。
+* 當建立產品時，[CreatedAtAction](xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*) 方法會產生 201 狀態碼。 在此程式碼路徑中，會傳回 `Product` 物件。
 
 > [!TIP]
 > 自 ASP.NET Core 2.1 開始，使用 `[ApiController]` 屬性裝飾控制器類別時，會啟用動作參數繫結來源推斷。 複雜類型參數會使用要求本文自動繫結。 因此，不會以 [[FromBody]](/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute) 屬性明確標註上述動作的 `product` 參數。

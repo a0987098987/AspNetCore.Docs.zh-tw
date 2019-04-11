@@ -5,12 +5,12 @@ description: 探索與個別使用者帳戶建立的 ASP.NET Core 專案為基�
 ms.author: riande
 ms.date: 11/30/2017
 uid: security/authentication/individual
-ms.openlocfilehash: f7fb9e8cd1b5c4cc3283ddd7606a0bbd30f554d5
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: f9c1be16386da935382275815bb5fd5c72894b1c
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274423"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265427"
 ---
 # <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>個別使用者帳戶建立的 ASP.NET Core 專案為基礎的發行項
 
@@ -22,11 +22,8 @@ ASP.NET Core 識別隨附於 Visual Studio 中的專案範本與 「 個別使�
 
 ```console
 dotnet new mvc -au Individual
-dotnet new webapi -au Individual
 dotnet new webapp -au Individual
 ```
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
 
 ::: moniker-end
 
@@ -34,11 +31,33 @@ dotnet new webapp -au Individual
 
 ```console
 dotnet new mvc -au Individual
-dotnet new webapi -au Individual
 dotnet new razor -au Individual
 ```
 
 ::: moniker-end
+
+請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/5833)web API 驗證。
+
+<a name="no"></a>
+
+## <a name="no-authentication"></a>沒有驗證
+
+在.NET Core CLI，以指定驗證`-au`選項。 在 Visual Studio 中，**變更驗證**對話是適用於新的 web 應用程式。 在 Visual Studio 中的新 web 應用程式的預設值是**不需要驗證**。
+
+沒有驗證所建立的專案：
+
+* 不包含 web 網頁和登入和登出的 UI。
+* 不包含驗證碼。
+
+<a name="win"></a>
+
+## <a name="windows-authentication"></a>Windows 驗證
+
+指定 Windows 驗證用於新的 web 應用程式中使用.NET Core CLI`-au Windows`選項。 在 Visual Studio 中，**變更驗證** 對話方塊提供**Windows 驗證**選項。
+
+如果已選取 Windows 驗證，應用程式已設定為使用[Windows 驗證的 IIS 模組](xref:host-and-deploy/iis/modules)。 Windows 驗證適用於內部網路網站。
+
+## <a name="additional-resources"></a>其他資源
 
 下列文件顯示如何使用 ASP.NET Core 範本使用個別的使用者帳戶中產生的程式碼：
 

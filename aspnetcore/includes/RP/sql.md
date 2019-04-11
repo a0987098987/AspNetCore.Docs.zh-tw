@@ -2,9 +2,11 @@
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-`MovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 檔案的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
+`MovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 檔案的 `ConfigureServices` 方法中，向[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器登錄資料庫內容：
 
 [!code-csharp[](code/Startup.cs?name=snippet2&highlight=6-8)]
+
+如需搭配使用 `DbContext` 與 DI 的詳細資訊，請參閱[搭配使用 DbContext 與 DI](/ef/core/miscellaneous/configuring-dbcontext#using-dbcontext-with-dependency-injection)。
 
 ## <a name="sqlite"></a>SQLite
 

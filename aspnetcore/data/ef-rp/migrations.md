@@ -5,12 +5,12 @@ description: 在本教學課程中，您將開始使用 EF Core 移轉功能來�
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 2051f55bfa7a9582486df78ec91315f0b03cb1e8
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: 1803c6d3956121e4e7091f4f951917425e87c335
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938374"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419468"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 
@@ -61,7 +61,7 @@ Drop-Database
  dotnet ef database drop
  ```
 
-------
+---
 
 ## <a name="create-an-initial-migration-and-update-the-db"></a>建立初始移轉並更新資料庫
 
@@ -81,7 +81,7 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-------
+---
 
 ### <a name="examine-the-up-and-down-methods"></a>檢查 Up 和 Down 方法
 
@@ -110,7 +110,7 @@ EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 �
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-移除移轉
+Remove-Migration
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -120,7 +120,7 @@ dotnet ef migrations remove
 
 如需詳細資訊，請參閱 [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)。
 
-------
+---
 
 remove migrations 命令會刪除移轉，並確保正確地重設快照集。
 
@@ -133,7 +133,7 @@ remove migrations 命令會刪除移轉，並確保正確地重設快照集。
 * 「無法」與移轉搭配使用。
 * 設計用來測試或快速原型化經常卸除並重新建立資料庫的位置。
 
-從 `DbInitializer` 移除下列各行：
+移除 `EnsureCreated`：
 
 ```csharp
 context.Database.EnsureCreated();
@@ -171,10 +171,11 @@ The login failed.
 Login failed for user 'user name'.
 ```
 
-解決方案：執行 `dotnet ef database update`
+解決方案:執行 `dotnet ef database update`
 
 ### <a name="additional-resources"></a>其他資源
 
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=OWSUuMLKTJo)
 * [.NET Core CLI](/ef/core/miscellaneous/cli/dotnet)。
 * [套件管理員主控台 (Visual Studio)](/ef/core/miscellaneous/cli/powershell)
 

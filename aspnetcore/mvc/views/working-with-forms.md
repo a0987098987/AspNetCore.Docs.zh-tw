@@ -3,21 +3,21 @@ title: ASP.NET Core 表單中的標籤協助程式
 author: rick-anderson
 description: 描述搭配表單使用的內建標籤協助程式。
 ms.author: riande
-ms.custom: H1Hack27Feb2017
-ms.date: 02/14/2017
+ms.custom: mvc
+ms.date: 02/27/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 34a553c7ff8a18c367bf5e8079e2ea71f968bf3b
-ms.sourcegitcommit: 75bf5fdbfdcb6a7cfe8fe207b9ff37655ccbacd4
+ms.openlocfilehash: 2d5168ed4b1e14e507262361de9fa959924b82f6
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39219416"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209553"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Dave Paquette](https://twitter.com/Dave_Paquette)和 [Jerrie Pelser](https://github.com/jerriep)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[N. Taylor Mullen](https://github.com/NTaylorMullen)、[Dave Paquette](https://twitter.com/Dave_Paquette) 和 [Jerrie Pelser](https://github.com/jerriep)
 
-本文件示範使用表單和常用在表單上的 HTML 項目。 HTML [表單](https://www.w3.org/TR/html401/interact/forms.html)項目提供用來將資料張貼回伺服器的主要機制 Web 應用程式。 本文件的大部分在描述[標籤協助程式](tag-helpers/intro.md)，以及它們如何協助您有效率地建立強大的 HTML 表單。 我們建議您先閱讀[標籤協助程式簡介](tag-helpers/intro.md)，然後才閱讀這份文件。
+此文件示範使用表單和常用在表單上的 HTML 項目。 HTML [表單](https://www.w3.org/TR/html401/interact/forms.html)項目提供用來將資料張貼回伺服器的主要機制 Web 應用程式。 此文件的大部分在描述[標籤協助程式](tag-helpers/intro.md)，以及它們如何協助您有效率地建立強大的 HTML 表單。 我們建議您先閱讀[標籤協助程式簡介](tag-helpers/intro.md)，然後才閱讀這份文件。
 
 在許多情況下，HTML 協助程式都會提供特定標籤協助程式的替代方式，但請務必辨識標籤協助程式未取代 HTML 協助程式，而且每個 HTML 協助程式都沒有標籤協助程式。 有 HTML 協助程式替代存在時，便會予以提及。
 
@@ -29,7 +29,7 @@ ms.locfileid: "39219416"
 
 * 產生 MVC 控制器動作或具名路由的 HTML [\<FORM>](https://www.w3.org/TR/html401/interact/forms.html) `action` 屬性值
 
-* 產生隱藏的[要求驗證權杖](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)，以防止跨站台要求偽造 (搭配 HTTP Post 動作方法中的 `[ValidateAntiForgeryToken]` 屬性使用時)
+* 產生隱藏的[要求驗證權杖](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)，以防止跨站台要求偽造 (搭配 HTTP Post 動作方法中的 `[ValidateAntiForgeryToken]` 屬性使用時)
 
 * 提供 `asp-route-<Parameter Name>` 屬性，其中 `<Parameter Name>` 新增至路由值。 `Html.BeginForm` 和 `Html.BeginRouteForm` 的 `routeValues` 參數提供類似的功能。
 
@@ -48,7 +48,7 @@ ms.locfileid: "39219416"
 </form>
 ```
 
-MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-action` 產生 `action` 屬性值。 表單標籤協助程式也會產生隱藏的[要求驗證權杖](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)，以防止跨站台要求偽造 (搭配 HTTP Post 動作方法中的 `[ValidateAntiForgeryToken]` 屬性使用時)。 保護純粹的 HTML 表單抵禦跨站台要求偽造很困難，而表單標籤協助程式為您提供此服務。
+MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-action` 產生 `action` 屬性值。 表單標籤協助程式也會產生隱藏的[要求驗證權杖](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)，以防止跨站台要求偽造 (搭配 HTTP Post 動作方法中的 `[ValidateAntiForgeryToken]` 屬性使用時)。 保護純粹的 HTML 表單抵禦跨站台要求偽造很困難，而表單標籤協助程式為您提供此服務。
 
 ### <a name="using-a-named-route"></a>使用具名路由
 
@@ -66,6 +66,98 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 
 >[!NOTE]
 >使用內建的範本，`returnUrl` 只會在您嘗試存取授權的資源，但未經過驗證或授權時才自動填入。 當您嘗試未經授權的存取時，安全性中介軟體會將您重新導向到登入頁面，並設定 `returnUrl`。
+
+## <a name="the-form-action-tag-helper"></a>表單動作標記協助程式
+
+表單動作標記協助程式會在產生的 `<button ...>` 或 `<input type="image" ...>` 標記上產生 `formaction` 屬性。 `formaction` 屬性可讓您控制表單提交其資料的位置。 它會繫結至類型 `image` 的 [\<input>](https://www.w3.org/wiki/HTML/Elements/input) 元素和 [\<button>](https://www.w3.org/wiki/HTML/Elements/button) 元素。 表單動作標記協助程式允許使用多個 [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) `asp-` 屬性來控制會為相應元素產生哪個 `formaction` 連結。
+
+支援 [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) 屬性來控制 `formaction` 的值：
+
+|屬性|說明|
+|---|---|
+|[asp-controller](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-controller)|控制器的名稱。|
+|[asp-action](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-action)|動作方法的名稱。|
+|[asp-area](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-area)|區域的名稱。|
+|[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|Razor 頁面的名稱。|
+|[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Razor 頁面處理常式的名稱。|
+|[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|路由的名稱。|
+|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|單一 URL 路由值。 例如，`asp-route-id="1234"`。|
+|[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|所有路由值。|
+|[asp-fragment](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-fragment)|URL 片段。|
+
+### <a name="submit-to-controller-example"></a>提交至控制器範例
+
+輸入或選取按鈕時，下列標記會將表單提交到 `HomeController` 的 `Index` 動作：
+
+```cshtml
+<form method="post">
+    <button asp-controller="Home" asp-action="Index">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-controller="Home" 
+                                asp-action="Index" />
+</form>
+```
+
+上述標記會產生下列 HTML：
+
+```html
+<form method="post">
+    <button formaction="/Home">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/Home" />
+</form>
+```
+
+### <a name="submit-to-page-example"></a>提交至頁面範例
+
+下列標記會將表單提交到 `About` Razor 頁面：
+
+```cshtml
+<form method="post">
+    <button asp-page="About">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-page="About" />
+</form>
+```
+
+上述標記會產生下列 HTML：
+
+```html
+<form method="post">
+    <button formaction="/About">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/About" />
+</form>
+```
+
+### <a name="submit-to-route-example"></a>提交至路由範例
+
+請考量 `/Home/Test` 端點：
+
+```csharp
+public class HomeController : Controller
+{
+    [Route("/Home/Test", Name = "Custom")]
+    public string Test()
+    {
+        return "This is the test page";
+    }
+}
+```
+
+下列標記會將表單提交到 `/Home/Test` 端點。
+
+```cshtml
+<form method="post">
+    <button asp-route="Custom">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-route="Custom" />
+</form>
+```
+
+上述標記會產生下列 HTML：
+
+```html
+<form method="post">
+    <button formaction="/Home/Test">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/Home/Test" />
+</form>
+```
 
 ## <a name="the-input-tag-helper"></a>輸入標籤協助程式
 
@@ -106,27 +198,24 @@ Type expected
 
 |.NET 型別|輸入類型|
 |---|---|
-|Bool|type=”checkbox”|
-|String|type=”text”|
-|DateTime|type=”datetime”|
-|Byte|type=”number”|
-|Int|type=”number”|
-|Single、Double|type=”number”|
-
+|Bool|type="checkbox"|
+|String|type="text"|
+|DateTime|type=["datetime-local"](https://developer.mozilla.org/docs/Web/HTML/Element/input/datetime-local)|
+|Byte|type="number"|
+|Int|type="number"|
+|Single、Double|type="number"|
 
 下表顯示輸入標籤協助程式將對應至特定的輸入類型的一些常見[資料註解](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性 (不是每個驗證屬性都列出)：
 
-
 |屬性|輸入類型|
 |---|---|
-|[EmailAddress]|type=”email”|
-|[Url]|type=”url”|
-|[HiddenInput]|type=”hidden”|
-|[Phone]|type=”tel”|
-|[DataType(DataType.Password)]| type=”password”|
-|[DataType(DataType.Date)]| type=”date”|
-|[DataType(DataType.Time)]| type=”time”|
-
+|[EmailAddress]|type="email"|
+|[Url]|type="url"|
+|[HiddenInput]|type="hidden"|
+|[Phone]|type="tel"|
+|[DataType(DataType.Password)]|type="password"|
+|[DataType(DataType.Date)]|type="date"|
+|[DataType(DataType.Time)]|type="time"|
 
 範例：
 
@@ -245,9 +334,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
-
->[!NOTE]
->一律使用 `for` (且「不要」使用 `foreach`) 來逐一查看清單。 評估 LINQ 運算式中的索引子可能成本高昂，應該降到最低。
+當值將在 `asp-for` 或 `Html.DisplayFor` 相當內容中使用時，應該使用 `foreach` (如果可能的話)。 一般而言，`for` 比 `foreach` 好 (若案例允許的話)，因為它不需要配置列舉程式；不過，評估 LINQ 運算式中的索引子可能成本高昂且應該儘可能避免。
 
 &nbsp;
 
@@ -288,7 +375,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ## <a name="the-label-tag-helper"></a>標籤標籤協助程式
 
-* 會針對運算式名稱產生標籤標題和 [<label>](https://www.w3.org/wiki/HTML/Elements/label) 項目的 `for` 屬性
+* 會針對運算式名稱產生 [\<label>](https://www.w3.org/wiki/HTML/Elements/label)元素的相關標籤標題和 `for` 屬性
 
 * HTML 協助程式替代：`Html.LabelFor`。
 
@@ -403,7 +490,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * 有 HTML 協助程式的替代 `Html.DropDownListFor` 和 `Html.ListBoxFor`
 
-`Select Tag Helper` `asp-for` 指定 [select](https://www.w3.org/wiki/HTML/Elements/select) 項目的模型屬性名稱，而 `asp-items` 指定 [option](https://www.w3.org/wiki/HTML/Elements/option) 項目。  例如: 
+`Select Tag Helper` `asp-for` 指定 [select](https://www.w3.org/wiki/HTML/Elements/select) 項目的模型屬性名稱，而 `asp-items` 指定 [option](https://www.w3.org/wiki/HTML/Elements/option) 項目。  例如：
 
 [!code-HTML[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
@@ -413,7 +500,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 `Index` 方法會初始化 `CountryViewModel`、設定選取的國家/地區，並將其傳遞給 `Index` 檢視。
 
-[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
+[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=8-13)]
 
 HTTP POST `Index` 方法會顯示選取項目：
 
@@ -574,10 +661,10 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 ## <a name="additional-resources"></a>其他資源
 
-* [標記協助程式](xref:mvc/views/tag-helpers/intro)
+* <xref:mvc/views/tag-helpers/intro>
 * [HTML 表單項目](https://www.w3.org/TR/html401/interact/forms.html)
 * [要求驗證權杖](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
-* [模型繫結](xref:mvc/models/model-binding)
-* [模型驗證](xref:mvc/models/validation)
+* <xref:mvc/models/model-binding>
+* <xref:mvc/models/validation>
 * [IAttributeAdapter 介面](/dotnet/api/Microsoft.AspNetCore.Mvc.DataAnnotations.IAttributeAdapter)
 * [此文件的程式碼片段](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/working-with-forms/sample/final)

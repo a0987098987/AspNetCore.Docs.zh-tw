@@ -3,14 +3,14 @@ title: 從 ASP.NET 移轉至 ASP.NET Core
 author: isaac2004
 description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 ASP.NET Core.web 的指導
 ms.author: scaddie
-ms.date: 08/27/2017
+ms.date: 12/11/2018
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 2f42ca6f9da8d9941e5bab40afc36c95360c3550
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 7b6aec621efa5e1400fcfd4396a2322733113ec1
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342181"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209132"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "39342181"
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
+[.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download)
 
 ## <a name="target-frameworks"></a>目標 Framework
 
@@ -28,15 +28,15 @@ ASP.NET Core 專案為開發人員提供了彈性，能以 .NET Core、.NET Fram
 
 以 .NET Framework 為目標時，專案需要參考個別的 NuGet 套件。
 
-以 .NET Core 為目標，借助 ASP.NET Core [中繼套件](xref:fundamentals/metapackage)，可讓您消除許多明確的套件參考。 在您的專案中安裝 `Microsoft.AspNetCore.All` 中繼套件：
+以 .NET Core 為目標，借助 ASP.NET Core [中繼套件](xref:fundamentals/metapackage-app)，可讓您消除許多明確的套件參考。 在您的專案中安裝 `Microsoft.AspNetCore.App` 中繼套件：
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+   <PackageReference Include="Microsoft.AspNetCore.App" />
 </ItemGroup>
 ```
 
-使用中繼套件時，不使用應用程式部署中繼套件中參考的任何套件。 .NET Core 執行階段存放區包含這些資產，而且它們會先行編譯以改善效能。 如需詳細資料，請參閱 [ASP.NET Core 2.x 的 Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)。
+使用中繼套件時，不使用應用程式部署中繼套件中參考的任何套件。 .NET Core 執行階段存放區包含這些資產，而且它們會先行編譯以改善效能。 如需詳細資訊，請參閱 [ASP.NET Core 的 Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
 
 ## <a name="project-structure-differences"></a>專案結構差異
 
@@ -54,7 +54,7 @@ ASP.NET Core 導入了啟動應用程式的新機制。 ASP.NET 應用程式的�
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
-這個方法是以會影響到實作的方式，將應用程式和其部署所在的伺服器結合在一起。 為將它們分開，引進了 [OWIN](http://owin.org/) 以提供簡潔的方式，同時使用多個架構。 OWIN 提供的管線只新增所需的模組。 裝載環境採用 [Startup](xref:fundamentals/startup) 函式，設定服務和應用程式的要求管線。 `Startup` 向應用程式註冊一組中介軟體。 對於每項要求，應用程式會使用現有處理常式集合連結清單的標頭指標，呼叫每個中介軟體元件。 每個中介軟體元件都可以在要求處理管線新增一或多個處理常式。 此作業是透過將參考傳回處理常式所完成，而此處理常式為清單的新標頭。 每個處理常式都負責記住和叫用清單中的下一個處理常式。 使用 ASP.NET Core，應用程式的進入點是 `Startup`，對 *Global.asax* 不會再有相依性。 使用 OWIN 和 .NET Framework 時，請將類似下列的項目當成管線使用：
+這個方法是以會影響到實作的方式，將應用程式和其部署所在的伺服器結合在一起。 為將它們分開，引進了 [OWIN](http://owin.org/) 以提供簡潔的方式，同時使用多個架構。 OWIN 提供的管線只新增所需的模組。 裝載環境採用 [Startup](xref:fundamentals/startup) 函式，設定服務和應用程式的要求管線。 `Startup` 向應用程式註冊一組中介軟體。 對於每項要求，應用程式會使用現有處理常式集合連結清單的標頭指標，呼叫每個中介軟體元件。 每個中介軟體元件都可以在要求處理管線新增一或多個處理常式。 這項作業是透過將參考傳回處理常式所完成，而此處理常式為清單的新標頭。 每個處理常式都負責記住和叫用清單中的下一個處理常式。 使用 ASP.NET Core，應用程式的進入點是 `Startup`，對 *Global.asax* 不會再有相依性。 使用 OWIN 和 .NET Framework 時，請將類似下列的項目當成管線使用：
 
 [!code-csharp[](samples/webapi-owin.cs)]
 
@@ -64,15 +64,14 @@ ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 相反地
 
 [!code-csharp[](samples/program.cs)]
 
-`Startup` 必須包含 `Configure` 方法。 在 `Configure` 中將必要的中介軟體新增至管線。 在下列範例中 (從預設的網站範本)，會使用數個擴充方法設定管線，以支援：
+`Startup` 必須包含 `Configure` 方法。 在 `Configure` 中將必要的中介軟體新增至管線。 在下列範例 (來自從預設的網站範本) 中，擴充方法會使用對下列項目的支援來設定管線：
 
-* [BrowserLink](http://vswebessentials.com/features/browserlink)
-* 錯誤頁面
-* 靜態檔案
-* ASP.NET Core MVC
-* 身分識別
+- 錯誤頁面
+- HTTP 嚴格的傳輸安全性
+- HTTP 重新導向 到 HTTPS
+- ASP.NET Core MVC
 
-[!code-csharp[](../../common/samples/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,21&start=58&end=84)]
+[!code-csharp[](samples/startup.cs)]
 
 主機與應用程式已分離，這讓您未來可以彈性移至不同的平台。
 
@@ -119,15 +118,15 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 使用 Unity 設定相依性插入的範例，是實作包裝 `UnityContainer` 的 `IDependencyResolver`：
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample8.cs)]
+[!code-csharp[](samples/sample8.cs)]
 
 建立您 `UnityContainer` 的執行個體、註冊您的服務，以及為容器設定 `UnityResolver` 新執行個體的 `HttpConfiguration` 相依性解析程式：
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample9.cs)]
+[!code-csharp[](samples/sample9.cs)]
 
 在需要的位置插入 `IProductRepository`：
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample5.cs)]
+[!code-csharp[](samples/sample5.cs)]
 
 因為相依性插入是 ASP.NET Core 的一部分，所以您可以在 *Startup.cs* 的 `ConfigureServices` 方法中新增服務：
 

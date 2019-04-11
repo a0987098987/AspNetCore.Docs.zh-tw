@@ -3,20 +3,20 @@ title: ASP.NET Core 中的路由至控制器動作
 author: rick-anderson
 description: 了解 ASP.NET Core MVC 如何使用路由中介軟體來比對內送要求的 URL，並將這些 URL 對應至動作。
 ms.author: riande
-ms.date: 03/14/2017
+ms.date: 01/24/2019
 uid: mvc/controllers/routing
-ms.openlocfilehash: 0d328d930ecb932c22fec524babb1c856b656b95
-ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
+ms.openlocfilehash: f5104bc53581a41fa8c25d8c67e08e038c275391
+ms.sourcegitcommit: c6db8b14521814f1f7e528d7aa06e474e4c04a1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514774"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "55065005"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core 中的路由至控制器動作
 
 作者：[Ryan Nowak](https://github.com/rynowak) 與 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core MVC 使用路由[中介軟體](xref:fundamentals/middleware/index)來比對內送要求的 URL，並將這些 URL 對應至動作。 路由是在啟動程式碼或屬性中定義。 路由描述 URL 路徑應該如何與動作進行比對。 路由也可用來產生回應中所送出的連結 URL。 
+ASP.NET Core MVC 使用路由[中介軟體](xref:fundamentals/middleware/index)來比對內送要求的 URL，並將這些 URL 對應至動作。 路由是在啟動程式碼或屬性中定義。 路由描述 URL 路徑應該如何與動作進行比對。 路由也可用來產生回應中所送出的連結 URL。
 
 動作可以使用慣例路由或屬性路由。 將路由放在控制器或動作上，即可讓它使用屬性路由。 如需詳細資訊，請參閱[混合路由](#routing-mixed-ref-label)。
 
@@ -165,7 +165,7 @@ app.UseMvc(routes =>
 
 ### <a name="disambiguating-actions"></a>釐清動作
 
-若透過路由符合兩個動作，MVC 必須釐清並選擇「最佳」候選項目，否則會擲回例外狀況。 例如: 
+若透過路由符合兩個動作，MVC 必須釐清並選擇「最佳」候選項目，否則會擲回例外狀況。 例如：
 
 ```csharp
 public class ProductsController : Controller
@@ -190,7 +190,6 @@ public class ProductsController : Controller
 ### <a name="route-names"></a>路由名稱
 
 下列範例中的字串 `"blog"` 和 `"default"` 是路由名稱：
-
 
 ```csharp
 app.UseMvc(routes =>
@@ -339,7 +338,7 @@ public class ProductsApiController : Controller
 
 在此範例中，URL 路徑 `/products` 可能符合 `ProductsApi.ListProducts`，而 URL 路徑 `/products/5` 可能符合 `ProductsApi.GetProduct(int)`。 由於這兩種動作是以 `HttpGetAttribute` 裝飾，因此只會符合 HTTP `GET`。
 
-套用至開頭為 `/` 之動作的路由範本，無法與套用至控制器的路由範本合併。 此範例會比對一組類似於「預設路由」的 URL 路徑。
+套用至開頭為 `/` 或 `~/` 之動作的路由範本，無法與套用至控制器的路由範本合併。 此範例會比對一組類似於「預設路由」的 URL 路徑。
 
 ```csharp
 [Route("Home")]
@@ -377,11 +376,13 @@ public class HomeController : Controller
 > [!TIP]
 > 請避免依賴 `Order`。 如果您的 URL 空間需要明確的順序值才能正確地路由，則同樣也可能會使用戶端混淆。 一般而言，屬性路由會透過 URL 比對來選取正確的路由。 如果用於 URL 產生的預設順序無效，使用路由名稱作為覆寫通常會比套用 `Order` 屬性更簡單。
 
+Razor Pages 路由和 MVC 控制器路由會共用實作。 如需 Razor Pages 主題中路由順序的資訊，請參閱 [Razor Pages 路由和應用程式慣例：路由順序](xref:razor-pages/razor-pages-conventions#route-order)。
+
 <a name="routing-token-replacement-templates-ref-label"></a>
 
 ## <a name="token-replacement-in-route-templates-controller-action-area"></a>路由範本中的語彙基元取代 ([controller]、[action]、[area])
 
-為了方便起見，屬性路由支援以方括號 (`[`、`]`) 括住語彙基元的「語彙基元取代」。 語彙基元 `[action]`、`[area]` 和 `[controller]` 會分別以定義路由之動作的動作名稱值、區域名稱值和控制器名稱值來取代。 在此範例中，動作可能符合註解中所述的 URL 路徑：
+為了方便起見，屬性路由支援以方括號 (`[`、`]`) 括住語彙基元的「語彙基元取代」。 語彙基元 `[action]`、`[area]` 與 `[controller]` 會分別以定義路由之動作的動作名稱值、區域名稱值和控制器名稱值來取代。 在下列範例中，動作會符合註解中所述的 URL 路徑：
 
 [!code-csharp[](routing/sample/main/Controllers/ProductsController.cs?range=7-11,13-17,20-22)]
 
@@ -408,6 +409,53 @@ public class ProductsController : MyBaseController
 語彙基元取代也適用於屬性路由所定義的路由名稱。 `[Route("[controller]/[action]", Name="[controller]_[action]")]` 會針對每個動作產生唯一的路由名稱。
 
 若要比對常值語彙基元取代分隔符號 `[` 或 `]`，請重複字元 (`[[` 或 `]]`) 來將它逸出。
+
+::: moniker range=">= aspnetcore-2.2"
+
+<a name="routing-token-replacement-transformers-ref-label"></a>
+
+### <a name="use-a-parameter-transformer-to-customize-token-replacement"></a>使用參數轉換程式自訂語彙基元取代
+
+可以使用參數轉換程式自訂語彙基元取代。 參數轉換程式會實作 `IOutboundParameterTransformer` 並轉換參數值。 例如，自訂 `SlugifyParameterTransformer` 參數轉換器會將 `SubscriptionManagement` 路由值變更為 `subscription-management`。
+
+`RouteTokenTransformerConvention` 是一個應用程式模型慣例，它會：
+
+* 將參數轉換程式套用到應用程式中的所有屬性路由。
+* 在取代屬性路由語彙基元值時自訂它們。
+
+```csharp
+public class SubscriptionManagementController : Controller
+{
+    [HttpGet("[controller]/[action]")] // Matches '/subscription-management/list-all'
+    public IActionResult ListAll() { ... }
+}
+```
+
+`RouteTokenTransformerConvention` 會在 `ConfigureServices` 中註冊為選項。
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc(options =>
+    {
+        options.Conventions.Add(new RouteTokenTransformerConvention(
+                                     new SlugifyParameterTransformer()));
+    });
+}
+
+public class SlugifyParameterTransformer : IOutboundParameterTransformer
+{
+    public string TransformOutbound(object value)
+    {
+        if (value == null) { return null; }
+
+        // Slugify value
+        return Regex.Replace(value.ToString(), "([a-z])([A-Z])", "$1-$2").ToLower();
+    }
+}
+```
+
+::: moniker-end
 
 <a name="routing-multiple-routes-ref-label"></a>
 
@@ -508,6 +556,10 @@ MVC 應用程式可以混用慣例路由與屬性路由。 控制器通常會使
 
 > [!NOTE]
 > 這兩種路由系統的區別在於 URL 符合某個路由範本之後所套用的程序。 在慣例路由中，會使用相符項目中的路由值，從所有慣例路由動作的查閱資料表中選擇動作和控制器。 在屬性路由中，每個範本已與一個動作建立關聯，因此不需要進一步查閱。
+
+## <a name="complex-segments"></a>複雜區段
+
+複雜區段 (例如，`[Route("/dog{token}cat")]`) 會透過以非窮盡的方式，由右至左比對常值來處理。 如需說明，請參閱[原始程式碼](https://github.com/aspnet/Routing/blob/9cea167cfac36cf034dbb780e3f783114ef94780/src/Microsoft.AspNetCore.Routing/Patterns/RoutePatternMatcher.cs#L296)。 如需詳細資訊，請參閱[此問題](https://github.com/aspnet/Docs/issues/8197)。
 
 <a name="routing-url-gen-ref-label"></a>
 

@@ -1,26 +1,20 @@
 ---
-title: ASP.NET Core MVC 與 EF Core - 更新相關資料 - 7/10
-author: rick-anderson
+title: 教學課程：更新相關資料 - ASP.NET MVC 搭配 EF Core
 description: 在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
+author: rick-anderson
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 03/27/2019
+ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: ef8cb3916e5d1542e4d36cad694351462b94ed32
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 6add725430380f0855fe660a70b90a4546ef0637
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38126722"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750916"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---update-related-data---7-of-10"></a>ASP.NET Core MVC 與 EF Core - 更新相關資料 - 7/10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+# <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關資料 - ASP.NET MVC 搭配 EF Core
 
 在先前的教學課程中，您顯示了相關資料。在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
 
@@ -30,7 +24,20 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 ![Instructor [編輯] 頁面](update-related-data/_static/instructor-edit-courses.png)
 
-## <a name="customize-the-create-and-edit-pages-for-courses"></a>自訂 Courses 的 [建立] 和 [編輯] 頁面
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 自訂 Courses 頁面
+> * 新增 Instructors [編輯] 頁面
+> * 將課程新增至 [編輯] 頁面
+> * 更新 [刪除] 頁面
+> * 將辦公室位置和課程新增至 [建立] 頁面
+
+## <a name="prerequisites"></a>必要條件
+
+* [讀取相關資料](read-related-data.md)
+
+## <a name="customize-courses-pages"></a>自訂 Courses 頁面
 
 當新的課程實體建立時，其必須要與現有的部門具有關聯性。 若要達成此目的，Scaffold 程式碼包含了控制器方法和 [建立] 和 [編輯] 檢視，當中包含了一個可選取部門的下拉式清單。 下拉式清單會設定 `Course.DepartmentID` 外部索引鍵屬性，以讓 Entity Framework 使用適當的 Department 實體載入 `Department` 導覽屬性。 您將使用 Scaffold 程式碼，但會稍微對其進行一些變更以新增錯誤處理及排序下拉式清單。
 
@@ -102,7 +109,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 變更頁面上的資料，然後按一下 [儲存]。 Courses [索引] 頁面便會顯示，並且清單中已有更新的課程資料。
 
-## <a name="add-an-edit-page-for-instructors"></a>為 Instructors 新增 [編輯 ] 頁面
+## <a name="add-instructors-edit-page"></a>新增 Instructors [編輯] 頁面
 
 當您編輯講師記錄時，您可能會想要更新講師的辦公室指派。 Instructor 實體與 OfficeAssignment 實體具有一對零或一關聯性，表示您的程式碼必須處理下列狀況：
 
@@ -116,7 +123,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 在 *InstructorsController.cs* 中，變更 HttpGet `Edit` 方法中的程式碼，使其載入 Instructor 實體的 `OfficeAssignment` 導覽屬性，並呼叫 `AsNoTracking`：
 
-[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=9,10&name=snippet_EditGetOA)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=8-11&name=snippet_EditGetOA)]
 
 使用下列程式碼取代 HttpPost `Edit` 方法來處理辦公室指派更新：
 
@@ -124,11 +131,11 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 程式碼會執行下列操作：
 
--  將方法名稱變更為 `EditPost`，因為簽章目前與 HttpGet `Edit` 方法相同 (`ActionName` 屬性指出 `/Edit/` URL 仍在使用中)。
+* 將方法名稱變更為 `EditPost`，因為簽章目前與 HttpGet `Edit` 方法相同 (`ActionName` 屬性指出 `/Edit/` URL 仍在使用中)。
 
--  針對 `OfficeAssignment` 導覽屬性使用積極式載入從資料庫中取得目前的 Instructor 實體。 這與您在 HttpGet `Edit` 方法中所做的事情一樣。
+* 針對 `OfficeAssignment` 導覽屬性使用積極式載入從資料庫中取得目前的 Instructor 實體。 這與您在 HttpGet `Edit` 方法中所做的事情一樣。
 
--  使用從模型繫結器取得的值更新擷取的 Instructor 實體。 `TryUpdateModel` 多載可讓您將要包含的屬性加入允許清單中。 這可防止大量指派，如同在[第二個教學課程](crud.md)中所解釋的。
+* 使用從模型繫結器取得的值更新擷取的 Instructor 實體。 `TryUpdateModel` 多載可讓您將要包含的屬性加入允許清單中。 這可防止大量指派，如同在[第二個教學課程](crud.md)中所解釋的。
 
     <!-- Snippets don't play well with <ul> [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
@@ -139,7 +146,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
         i => i.FirstMidName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
     ```
 
--   若辦公室位置為空白，將 Instructor.OfficeAssignment 屬性設為 Null，以刪除在 OfficeAssignment 資料表中的相關資料列。
+* 若辦公室位置為空白，將 Instructor.OfficeAssignment 屬性設為 Null，以刪除在 OfficeAssignment 資料表中的相關資料列。
 
     <!-- Snippets don't play well with <ul>  "intro/samples/cu/Controllers/InstructorsController.cs"} -->
 
@@ -150,7 +157,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
     }
     ```
 
-- 將變更儲存到資料庫。
+* 將變更儲存到資料庫。
 
 ### <a name="update-the-instructor-edit-view"></a>更新 Instructor [編輯] 檢視
 
@@ -162,7 +169,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 ![Instructor [編輯] 頁面](update-related-data/_static/instructor-edit-office.png)
 
-## <a name="add-course-assignments-to-the-instructor-edit-page"></a>將 Course 指派新增到 Instructor [編輯] 頁面
+## <a name="add-courses-to-edit-page"></a>將課程新增至 [編輯] 頁面
 
 講師可教授任何數量的課程。 現在您將藉由使用核取方塊群組，新增變更課程指派的能力來強化 Instructor [編輯] 頁面，如以下螢幕擷取畫面所示：
 
@@ -218,7 +225,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 <a id="notepad"></a>
 > [!NOTE]
-> 當您將程式碼貼至 Visual Studio 時，分行符號可能會產生變更使程式碼失效。  按 Ctrl+Z 來復原自動格式化。  這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 您可以在[這裡](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html)檢查此問題的狀態。
+> 當您將程式碼貼至 Visual Studio 時，分行符號可能會變更，而讓程式碼斷行。 如果程式碼在貼上之後看起來不同，請按 Ctrl+Z 一次以復原自動格式化。 這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 Visual Studio 2019 已修正這個問題。
 
 [!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
@@ -235,7 +242,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 > [!NOTE]
 > 這裡所用來編輯講師課程資料的方法在課程的數量有限時運作相當良好。 針對更大的集合，將需要不同的 UI 和不同的更新方法。
 
-## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
+## <a name="update-delete-page"></a>更新 [刪除] 頁面
 
 在 *InstructorsController.cs* 中，刪除 `DeleteConfirmed` 方法並在相同位置插入下列程式碼。
 
@@ -243,11 +250,11 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 此程式碼會進行下列變更：
 
-* 為 `CourseAssignments` 導覽屬性進行積極式載入。  您必須包含這個，否則 EF 將無法得知相關 `CourseAssignment` 而無法刪除他們。  若要避免在此讀取他們，您可以在資料庫中設定串聯刪除。
+* 為 `CourseAssignments` 導覽屬性進行積極式載入。 您必須包含這個，否則 EF 將無法得知相關 `CourseAssignment` 而無法刪除他們。 若要避免在此讀取他們，您可以在資料庫中設定串聯刪除。
 
-* 若要刪除的講師已指派為任何部門的系統管理員，請先從部門中移除講師的指派。
+* 若要刪除的講師已指派為任何部門的系統管理員，請先從這些部門中移除講師的指派。
 
-## <a name="add-office-location-and-courses-to-the-create-page"></a>將辦公室位置和課程新增至 [新增] 頁面
+## <a name="add-office-location-and-courses-to-create-page"></a>將辦公室位置和課程新增至 [建立] 頁面
 
 在 *InstructosController.cs* 中，刪除 HttpGet 和 HttpPost `Create` 方法，然後在相同位置新增下列程式碼：
 
@@ -290,14 +297,24 @@ public ICollection<CourseAssignment> CourseAssignments
 
 ## <a name="handling-transactions"></a>處理交易
 
-如同在 [CRUD 教學課程](crud.md)中所述，Entity Framework 隱含實作了交易。 針對您需要更多控制的案例 -- 例如，若您想要在一個交易中包含在 Entity Framework 之外完成的作業 -- 請參閱[交易](https://docs.microsoft.com/ef/core/saving/transactions)。
+如同在 [CRUD 教學課程](crud.md)中所述，Entity Framework 隱含實作了交易。 針對您需要更多控制的案例 -- 例如，若您想要在一個交易中包含在 Entity Framework 之外完成的作業 -- 請參閱[交易](/ef/core/saving/transactions)。
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-現在您已完成了操作相關資料的簡介。 在下一個教學課程中，您會了解到如何處理並行衝突。
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>後續步驟
 
-> [!div class="step-by-step"]
-> [上一頁](read-related-data.md)
-> [下一頁](concurrency.md)
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 自訂 Courses 頁面
+> * 新增 Instructors [編輯] 頁面
+> * 將課程新增至 [編輯] 頁面
+> * 更新 [刪除] 頁面
+> * 將辦公室位置和課程新增至 [建立] 頁面
+
+若要了解如何處理並行衝突，請前往下一個教學課程。
+
+> [!div class="nextstepaction"]
+> [處理並行衝突](concurrency.md)

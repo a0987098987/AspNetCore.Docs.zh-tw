@@ -1,50 +1,50 @@
 ---
-title: 其他驗證提供者的簡短問卷調查
+title: 外部 OAuth 驗證提供者
 author: rick-anderson
+description: 探索 ASP.NET Core 應用程式所使用的外部 OAuth 驗證提供者。
 ms.author: riande
-ms.date: 11/03/2016
+ms.custom: mvc
+ms.date: 11/11/2018
 uid: security/authentication/otherlogins
-ms.openlocfilehash: 9c2ce02f4613fddbe0e767724019d80ac056bf7b
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: b69c366ec1bf12ccf434991fc8a79eaf8c09da3d
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274049"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708461"
 ---
-# <a name="short-survey-of-other-authentication-providers"></a>其他驗證提供者的簡短問卷調查
+# <a name="external-oauth-authentication-providers"></a>外部 OAuth 驗證提供者
 
-<a name="security-authentication-other-logins"></a>
+藉由[Rick Anderson](https://twitter.com/RickAndMSFT)，[請參閱 Pranav Rastogi](https://github.com/rustd)，和[Valeriy Novytskyy](https://github.com/01binary)
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Pranav Rastogi](https://github.com/rustd)，和[Valeriy Novytskyy](https://github.com/01binary)
+下列清單包含常見外部 OAuth 驗證提供者可搭配 ASP.NET Core 應用程式。 第三方 NuGet 套件，例如所維護的項目[aspnet contrib](https://www.nuget.org/packages?q=owners%3Aaspnet-contrib+title%3AOAuth)，可用來補充由 ASP.NET Core 小組實作的驗證提供者。
 
-以下是設定一些其他常見的 OAuth 提供者的指示。 例如維護所適用的協力廠商 NuGet 封裝[aspnet contrib](https://www.nuget.org/packages?q=owners%3Aaspnet-contrib+title%3AOAuth)可補充由 ASP.NET Core 小組實作的驗證提供者。
+* [LinkedIn](https://www.linkedin.com/developer/apps) ([指示](https://developer.linkedin.com/docs/oauth2))
 
-* 設定**LinkedIn**登入： [ https://www.linkedin.com/developer/apps ](https://www.linkedin.com/developer/apps)。 請參閱[官方步驟](https://developer.linkedin.com/docs/oauth2)。
+* [Instagram](https://www.instagram.com/developer/register/) ([指示](https://www.instagram.com/developer/authentication/))
 
-* 設定**Instagram**登入： [ https://www.instagram.com/developer/register/ ](https://www.instagram.com/developer/register/)。 請參閱[官方步驟](https://www.instagram.com/developer/authentication/)。
+* [Reddit](https://www.reddit.com/login?dest=https%3A%2F%2Fwww.reddit.com%2Fprefs%2Fapps) ([指示](https://github.com/reddit/reddit/wiki/OAuth2-Quick-Start-Example))
 
-* 設定**Reddit**登入： [ https://www.reddit.com/login?dest=https%3A%2F%2Fwww.reddit.com%2Fprefs%2Fapps ](https://www.reddit.com/login?dest=https%3A%2F%2Fwww.reddit.com%2Fprefs%2Fapps)。 請參閱[官方步驟](https://github.com/reddit/reddit/wiki/OAuth2-Quick-Start-Example)。
+* [Github](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsettings%2Fapplications%2Fnew) ([指示](https://developer.github.com/v3/oauth/))
 
-* 設定**Github**登入： [ https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsettings%2Fapplications%2Fnew ](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsettings%2Fapplications%2Fnew)。 請參閱[官方步驟](https://developer.github.com/v3/oauth/)。
+* [Yahoo](https://login.yahoo.com/config/login?src=devnet&.done=http%3A%2F%2Fdeveloper.yahoo.com%2Fapps%2Fcreate%2F) ([指示](https://developer.yahoo.com/bbauth/user.html))
 
-* 設定**Yahoo**登入： [ https://login.yahoo.com/config/login?src=devnet&.done=http%3A%2F%2Fdeveloper.yahoo.com%2Fapps%2Fcreate%2F ](https://login.yahoo.com/config/login?src=devnet&.done=http%3A%2F%2Fdeveloper.yahoo.com%2Fapps%2Fcreate%2F)。 請參閱[官方步驟](https://developer.yahoo.com/bbauth/user.html)。
+* [Tumblr](https://www.tumblr.com/oauth/apps) ([指示](https://www.tumblr.com/docs/api/v2#auth))
 
-* 設定**Tumblr**登入： [ https://www.tumblr.com/oauth/apps ](https://www.tumblr.com/oauth/apps)。 請參閱[官方步驟](https://www.tumblr.com/docs/api/v2#auth)。
+* [Pinterest](https://www.pinterest.com/login/?next=http%3A%2F%2Fdevsite%2Fapps%2F) ([指示](https://developers.pinterest.com/docs/api/overview/?))
 
-* 設定**Pinterest**登入： [ https://www.pinterest.com/login/?next=http%3A%2F%2Fdevsite%2Fapps%2F ](https://www.pinterest.com/login/?next=http%3A%2F%2Fdevsite%2Fapps%2F)。 請參閱[官方步驟](https://developers.pinterest.com/docs/api/overview/?)。
+* [Pocket](https://getpocket.com/developer/apps/new) ([指示](https://getpocket.com/developer/docs/authentication))
 
-* 設定**Pocket**登入： [ https://getpocket.com/developer/apps/new ](https://getpocket.com/developer/apps/new)。 請參閱[官方步驟](https://getpocket.com/developer/docs/authentication)。
+* [Flickr](https://www.flickr.com/services/apps/create) ([指示](https://www.flickr.com/services/api/auth.oauth.html))
 
-* 設定**Flickr**登入： [ https://www.flickr.com/services/apps/create ](https://www.flickr.com/services/apps/create)。 請參閱[官方步驟](https://www.flickr.com/services/api/auth.oauth.html)。
+* [Dribble](https://dribbble.com/signup) ([指示](http://developer.dribbble.com/v1/oauth/))
 
-* 設定**Dribble**登入： [ https://dribbble.com/signup ](https://dribbble.com/signup)。 請參閱[官方步驟](http://developer.dribbble.com/v1/oauth/)。
+* [Vimeo](https://vimeo.com/join) ([指示](https://developer.vimeo.com/api/authentication))
 
-* 設定**Vimeo**登入： [ https://vimeo.com/join ](https://vimeo.com/join)。 請參閱[官方步驟](https://developer.vimeo.com/api/authentication)。
+* [SoundCloud](https://soundcloud.com/you/apps/new) ([指示](https://developers.soundcloud.com/blog/we-love-oauth-2))
 
-* 設定**SoundCloud**登入： [ https://soundcloud.com/you/apps/new ](https://soundcloud.com/you/apps/new)。 請參閱[官方步驟](https://developers.soundcloud.com/blog/we-love-oauth-2)。
+* [VK](https://vk.com/apps?act=manage) ([指示](https://vk.com/pages?oid=-17680044&p=Authorizing_Sites))
 
-* 設定**VK**登入： [ https://vk.com/apps?act=manage ](https://vk.com/apps?act=manage)。 請參閱[官方步驟](https://vk.com/pages?oid=-17680044&p=Authorizing_Sites)。
+[!INCLUDE[Multiple authentication providers](includes/chain-auth-providers.md)]
 
-## <a name="multiple-authentication-providers"></a>多個驗證提供者
-
-[!INCLUDE[](~/includes/chain-auth-providers.md)]
+[!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]

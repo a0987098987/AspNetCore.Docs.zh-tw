@@ -4,14 +4,14 @@ author: shirhatti
 description: 了解當 ASP.NET Core 應用程式在 Windows Server 上的 IIS 後方執行時，對其提供的偵錯支援。
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/14/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: eb8b4369d6d5434adbac187f59b18d7a2b80055c
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 44570bb28451ce4c5fde12ec77e3856fb5bd3062
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277650"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637660"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
@@ -54,7 +54,7 @@ IIS 的網站必須含有下列設定：
 ## <a name="enable-development-time-iis-support-in-visual-studio"></a>在 Visual Studio 中啟用開發階段 IIS 支援
 
 1. 啟動 Visual Studio 安裝程式。
-1. 選取 [開發階段 IIS 支援] 元件。 此元件在 [ASP.NET 與網頁程式開發] 工作負載的 [摘要] 面板中，會列為選擇性元件。 此元件會安裝 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，這是在反向 Proxy 設定中，於 IIS 後方執行 ASP.NET Core 應用程式所需的原生 IIS 模組。
+1. 選取 [開發階段 IIS 支援] 元件。 此元件在 [ASP.NET 與網頁程式開發] 工作負載的 [摘要] 面板中，會列為選擇性元件。 此元件會安裝 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)，這是搭配 IIS 執行 ASP.NET Core 應用程式所需的原生 IIS 模組。
 
 ![修改 Visual Studio 功能：選取 [工作負載] 索引標籤。 在 [Web and Cloud]\(Web 與雲端\) 區段中，選取 [ASP.NET 與網頁程式開發] 面板。 在右側 [摘要] 面板的 [選擇性] 區域中，有 [開發階段 IIS 支援] 的核取方塊。](development-time-iis-support/_static/development_time_support.png)
 
@@ -129,17 +129,23 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="run-the-project"></a>執行專案
 
-在 VS UI 中，將 [執行] 按鈕設定為 **IIS** 設定檔，然後選取該按鈕來啟動應用程式：
+在 Visual Studio 中：
 
-![已設定為 [IIS] 設定檔的 VS 工具列 [執行] 按鈕。](development-time-iis-support/_static/toolbar.png)
+* 確認建置設定下拉式清單已設定為 [偵錯]。
+* 將 [執行] 按鈕設定為 **IIS** 設定檔，然後選取該按鈕來啟動應用程式。
+
+![VS 工具列中的 [執行] 按鈕已設定為 IIS 設定檔，而且建置設定下拉式清單已設定為 [發行]。](development-time-iis-support/_static/toolbar.png)
 
 如果不是以系統管理員身分執行，Visual Studio 可能會提示您重新啟動。 若收到提示，請重新啟動 Visual Studio。
 
 如果使用未受信任的開發憑證，瀏覽器可能會要求您針對未受信任的憑證建立例外。
 
+> [!NOTE]
+> 使用 [Just My Code](/visualstudio/debugger/just-my-code) 與編譯器最佳化針對發行建置設定進行偵錯會導致體驗變差。 例如，不會碰到中斷點。
+
 ## <a name="additional-resources"></a>其他資源
 
 * [使用 IIS 在 Windows 上裝載 ASP.NET](xref:host-and-deploy/iis/index)
-* [ASP.NET Core 模組簡介](xref:fundamentals/servers/aspnet-core-module)
+* [ASP.NET Core 模組簡介](xref:host-and-deploy/aspnet-core-module)
 * [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
 * [強制使用 HTTPS](xref:security/enforcing-ssl)

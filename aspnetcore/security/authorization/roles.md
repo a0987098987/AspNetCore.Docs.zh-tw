@@ -5,25 +5,18 @@ description: 了解如何將角色傳遞至 Authorize 屬性來限制 ASP.NET Co
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/roles
-ms.openlocfilehash: 59753b90d3196b0bc16d4963f45b995f5108bc8b
-ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
+ms.openlocfilehash: 0e01e1976e2721ca64720a67c6341661f646395c
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39356671"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209092"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的角色為基礎的授權
 
 <a name="security-authorization-role-based"></a>
 
 建立身分識別時它可能屬於一個或多個角色。 比方說，Tracy 可能隸屬於系統管理員和使用者角色中，儘管 Scott 可能只屬於使用者角色。 建立及管理這些角色的方式取決於備份存放區的授權程序。 角色會公開給開發人員逐步[IsInRole](/dotnet/api/system.security.principal.genericprincipal.isinrole)方法[ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal)類別。
-
-::: moniker range=">= aspnetcore-2.0"
-
-> [!IMPORTANT]
-> 本主題**不**適用於 Razor 頁面。 Razor Pages 支援[IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter)並[IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter)。 如需詳細資訊，請參閱 [Razor 頁面的篩選條件方法](xref:razor-pages/filter)。
-
-::: moniker-end
 
 ## <a name="adding-role-checks"></a>新增角色檢查
 
@@ -95,6 +88,27 @@ public class ControlPanelController : Controller
 }
 ```
 
+::: moniker range=">= aspnetcore-2.0"
+
+Razor 頁面`AuthorizeAttribute`可以透過下列方式套用：
+
+* 使用[慣例](xref:razor-pages/razor-pages-conventions#page-model-action-conventions)，或
+* 套用`AuthorizeAttribute`至`PageModel`執行個體：
+
+```csharp
+[Authorize(Policy = "RequireAdministratorRole")]
+public class UpdateModel : PageModel
+{
+    public ActionResult OnPost()
+    {
+    }
+}
+```
+
+> [!IMPORTANT]
+> 篩選屬性，包括`AuthorizeAttribute`只能套用至 PageModel，無法套用至特定頁面處理常式方法。
+::: moniker-end
+
 <a name="security-authorization-role-policy"></a>
 
 ## <a name="policy-based-role-checks"></a>原則為基礎的角色檢查
@@ -108,7 +122,8 @@ public void ConfigureServices(IServiceCollection services)
 
     services.AddAuthorization(options =>
     {
-        options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
+        options.AddPolicy("RequireAdministratorRole",
+             policy => policy.RequireRole("Administrator"));
     });
 }
 ```
@@ -131,3 +146,9 @@ options.AddPolicy("ElevatedRights", policy =>
 ```
 
 此範例會授權使用者屬於`Administrator`，`PowerUser`或`BackupAdministrator`角色。
+
+### <a name="add-role-services-to-identity"></a>將角色服務新增到 身分識別
+
+附加[AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1)來新增角色服務：
+
+[!code-csharp[](roles/samples/Startup.cs?name=snippet&highlight=7)]

@@ -1,10 +1,10 @@
 {
   "build": {
-    "markdownEngineName": "markdig",
     "content": [
       {
         "files": [
-          "**/*.md"
+          "**/*.md",
+          "**/*.yml"
         ],
         "exclude": [
           "**/obj/**",
@@ -13,7 +13,9 @@
           "aspnet/**",
           "**/includes/**",
           "**/aspnet-core-conceptual/**",
-          "_site/**"
+          "_site/**",
+          "***/readme.md",
+          "***/license.md"
         ],
         "group": "group1",
         "src": "."
@@ -23,7 +25,9 @@
       {
         "files": [
           "**/*.png",
-          "**/*.jpg"
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.pdf"
         ],
         "exclude": [
           "**/obj/**",
@@ -37,21 +41,87 @@
     ],
     "overwrite": [],
     "externalReference": [],
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
     "globalMetadata": {
-      "bilingual_type": "hover over",
-      "breadcrumb_path": "/aspnet/breadcrumb/toc.json",
       "_navPath": "/foo",
       "_navRel": "/foo",
-      "searchScope": ["ASP.NET Core"]
+      "breadcrumb_path": "/aspnet/breadcrumb/toc.json",
+      "feedback_github_repo": "aspnet/docs.zh-tw",
+      "feedback_product_url": "https://github.com/aspnet/Home/blob/master/CONTRIBUTING.md",
+      "feedback_system": "GitHub",
+      "ms.prod": "aspnet-core",
+      "searchScope": [
+        "ASP.NET Core"
+      ]
     },
-    "fileMetadata": {},
+    "fileMetadata": {
+      "open_to_public_contributors": {
+        "azure/**/**.md": false,
+        "client-side/**/**.md": false,
+        "grpc/**/**.md": false,
+        "migration/**/**.md": false,
+        "performance/**/**.md": false,
+        "razor-components/**/**.md": false,
+        "razor-pages/**/**.md": false,
+        "release-notes/**/**.md": false,
+        "ecurity/**/**.md": false,
+        "signalr/**/**.md": false,
+        "test/**/**.md": false
+      },
+      "ms.technology": {
+        "azure/**/**.md": "aspnetcore-azure",
+        "client-side/**/**.md": "aspnetcore-clientside",
+        "client-side/spa/blazor/**.md": "aspnetcore-blazor",
+        "data/**/**.md": "aspnetcore-data",
+        "fundamentals/**/**.md": "aspnetcore-fundamentals",
+        "getting-started/**/**.md": "aspnetcore-getstarted",
+        "host-and-deploy/**/**.md": "aspnetcore-hostdeploy",
+        "index.md": "aspnetcore",
+        "migration/**/**.md": "aspnetcore-migration",
+        "mobile/**/**.md": "aspnetcore-mobile",
+        "mvc/**/**.md": "aspnetcore-mvc",
+        "performance/**/**.md": "aspnetcore-performance",
+        "razor-components/**/**.md": "aspnetcore-razorcomponents",
+        "razor-pages/**/**.md": "aspnetcore-razorpages",
+        "release-notes/**/**.md": "aspnetcore-releasenotes",
+        "security/**/**.md": "aspnetcore-security",
+        "signalr/**/**.md": "aspnetcore-signalr",
+        "test/**/**.md": "aspnetcore-test",
+        "tutorials/**/**.md": "aspnetcore-tutorials",
+        "web-api/**/**.md": "aspnetcore-webapi"
+      },
+      "ms.topic": {
+        "azure/**/**.md": "conceptual",
+        "client-side/**/**.md": "conceptual",
+        "data/**/**.md": "conceptual",
+        "fundamentals/**/**.md": "conceptual",
+        "getting-started/**/**.md": "tutorial",
+        "host-and-deploy/**/**.md": "conceptual",
+        "index.md": "conceptual",
+        "migration/**/**.md": "conceptual",
+        "mobile/**/**.md": "conceptual",
+        "mvc/**/**.md": "conceptual",
+        "performance/**/**.md": "conceptual",
+        "razor-components/**/**.md": "conceptual",
+        "razor-pages/**/**.md": "conceptual",
+        "release-notes/**/**.md": "conceptual",
+        "security/**/**.md": "conceptual",
+        "signalr/**/**.md": "conceptual",
+        "test/**/**.md": "conceptual",
+        "tutorials/**/**.md": "tutorial",
+        "web-api/**/**.md": "conceptual"
+      }
+    },
     "template": [],
     "dest": "_site",
+    "markdownEngineName": "markdig",
     "groups": {
       "group1": {
         "dest": "group1-dest",
         "moniker_range": ">= aspnetcore-1.0"
       }
-    }  
+    } 
   }
 }

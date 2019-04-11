@@ -2,225 +2,311 @@
 title: 在 Windows 服務上裝載 ASP.NET Core
 author: guardrex
 description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 06/04/2018
+ms.date: 03/08/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: b156cd0755d7918d5f8433fcbe5c870ad04ac13e
-ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
+ms.openlocfilehash: ecc7f3a8cd813c2803d03294e38d726905eeb1b8
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396217"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841419"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
 作者：[Luke Latham](https://github.com/guardrex) 和 [Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作為 [Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications)。 以 Windows 服務的形式裝載時，應用程式可以在重新開機和當機後自動啟動，而無須人為介入。
+ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications)，不需要使用 IIS。 當裝載為 Windows 服務時，應用程式將會在重新開機後自動啟動。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="get-started"></a>開始使用
+## <a name="prerequisites"></a>必要條件
 
-至少需要變更下列內容，才能設定現有的 ASP.NET Core 專案在服務中執行：
+* [PowerShell 6](https://github.com/PowerShell/PowerShell)
 
-1. 在專案檔中：
+## <a name="deployment-type"></a>部署類型
 
-   1. 確認有執行階段識別碼，或將它新增至包含目標 Framework 的 **\<PropertyGroup>**：
+您可以建立架構相依或自封式 Windows 服務部署。 如需詳細資訊與部署案例建議，請參閱 [.NET Core 應用程式部署](/dotnet/core/deploying/)。
 
-      ::: moniker range=">= aspnetcore-2.1"
+### <a name="framework-dependent-deployment"></a>與 Framework 相依的部署
 
-      ```xml
-      <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
-        <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
-      </PropertyGroup>
-      ```
+架構相依部署 (FDD) 仰賴存在於目標系統上的全系統共用 .NET Core 版本。 搭配 ASP.NET Core Windows 服務應用程式使用 FDD 案例時，SDK 會產生可執行檔 (*\*.exe*)，稱為架構相依可執行檔。
 
-      ::: moniker-end
+### <a name="self-contained-deployment"></a>自封式部署
 
-      ::: moniker range="= aspnetcore-2.0"
+自封式部署 (SCD) 不仰賴任何存在於目標系統上的共用元件。 執行階段與應用程式的相依性會隨著應用程式部署到裝載系統。
 
-      ```xml
-      <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
-        <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
-      </PropertyGroup>
-      ```
+## <a name="convert-a-project-into-a-windows-service"></a>將專案轉換成 Windows 服務
 
-      ::: moniker-end
+對現有的 ASP.NET Core 專進行下列變更，以服務形式執行應用程式：
 
-      ::: moniker range="< aspnetcore-2.0"
+### <a name="project-file-updates"></a>專案檔更新
 
-      ```xml
-      <PropertyGroup>
-        <TargetFramework>netcoreapp1.1</TargetFramework>
-        <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
-      </PropertyGroup>
-      ```
+視您選擇的[部署類型](#deployment-type)而定，更新專案檔：
 
-      ::: moniker-end
+#### <a name="framework-dependent-deployment-fdd"></a>架構相依部署 (FDD)
 
-   1. 新增 [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices/) 的套件參考。
+將 Windows [執行階段識別碼 (RID)](/dotnet/core/rid-catalog) 新增至包含目標 Framework 的 `<PropertyGroup>`。 在下列範例中，RID 已設定為 `win7-x64`。 新增 `<SelfContained>` 屬性集到 `false`。 這些屬性會指示 SDK 產生適用於 Windows 的可執行檔 (*.exe*)。
 
-1. 在 `Program.Main` 中進行下列變更：
+針對 Windows Services 應用程式，不需要 *web.config* 檔案 (發行 ASP.NET Core 應用程式時通常會產生此檔案)。 若要停用 *web.config* 檔案的建立，請新增 `<IsTransformWebConfigDisabled>` 屬性集到 `true`。
 
-   * 呼叫 [host.RunAsService](/dotnet/api/microsoft.aspnetcore.hosting.windowsservices.webhostwindowsserviceextensions.runasservice)，而非 `host.Run`。
+::: moniker range=">= aspnetcore-2.2"
 
-   * 呼叫 [UseContentRoot](xref:fundamentals/host/web-host#content-root) 並使用應用程式發佈位置的路徑，不要使用 `Directory.GetCurrentDirectory()`。
-
-     ::: moniker range=">= aspnetcore-2.0"
-
-     [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=ServiceOnly&highlight=8-9,12)]
-
-     ::: moniker-end
-
-     ::: moniker range="< aspnetcore-2.0"
-
-     [!code-csharp[](windows-service/samples_snapshot/1.x/AspNetCoreService/Program.cs?name=ServiceOnly&highlight=3-4,8,13)]
-
-     ::: moniker-end
-
-1. 發行應用程式。 使用 [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) 或 [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)。 使用 Visual Studio 時，請選取 [FolderProfile]。
-
-   若要從命令列發佈範例應用程式，請在專案資料夾的主控台視窗中執行下列命令：
-
-   ```console
-   dotnet publish --configuration Release
-   ```
-
-1. 使用 [sc.exe](https://technet.microsoft.com/library/bb490995) 命令列工具建立服務。 `binPath` 值是應用程式可執行檔的路徑，其中包括可執行檔的檔案名稱。 **等號和路徑開頭的引號字元之間需要有間距。**
-
-   ```console
-   sc create <SERVICE_NAME> binPath= "<PATH_TO_SERVICE_EXECUTABLE>"
-   ```
-
-   對於在專案資料夾中發行的服務，請使用 *publish* 資料夾的路徑來建立服務。 在以下範例中：
-
-   * 專案位於 `c:\my_services\AspNetCoreService` 資料夾。
-   * 專案是以 `Release` 設定所發行。
-   * 目標 Framework Moniker (TFM) 是 `netcoreapp2.1`。
-   * 執行階段識別碼 (RID) 是 `win7-x64`。
-   * 應用程式可執行檔的名稱是 *AspNetCoreService.exe*。
-   * 服務的名稱是 **MyService**。
-
-   範例：
-
-   ```console
-   sc create MyService binPath= "c:\my_services\AspNetCoreService\bin\Release\netcoreapp2.1\win7-x64\publish\AspNetCoreService.exe"
-   ```
-   
-   > [!IMPORTANT]
-   > 確定 `binPath=` 引數與其值之間具有間距。
-   
-   若要從不同的資料夾發行並啟動服務：
-   
-      1. 在 `dotnet publish` 命令上使用 [--output &lt;OUTPUT_DIRECTORY&gt;](/dotnet/core/tools/dotnet-publish#options) 選項。 若使用 Visual Studio，選取 [發行] 按鈕之前，請先選取 [FolderProfile] 發行屬性頁面中的 [目標位置]。
-   1. 使用 `sc.exe` 命令搭配輸出資料夾路徑來建立服務。 在提供給 `binPath` 的路徑中包含服務的可執行檔名稱。
-
-1. 以 `sc start <SERVICE_NAME>` 命令啟動服務。
-
-   請使用下列命令啟動範例應用程式服務：
-
-   ```console
-   sc start MyService
-   ```
-
-   此命令需要幾秒鐘啓動服務。
-
-1. `sc query <SERVICE_NAME>` 命令可以用來檢查服務的狀態以判斷其狀態：
-
-   * `START_PENDING`
-   * `RUNNING`
-   * `STOP_PENDING`
-   * `STOPPED`
-
-   使用下列命令來檢查範例應用程式服務的狀態：
-
-   ```console
-   sc query MyService
-   ```
-
-1. 當服務處於 `RUNNING` 狀態，且若服務是 Web 應用程式時，請在其路徑瀏覽應用程式 (預設為 `http://localhost:5000`，使用 [HTTPS 重新導向中介軟體](xref:security/enforcing-ssl)時會重新導向至 `https://localhost:5001`)。
-
-   範例應用程式服務請瀏覽位於 `http://localhost:5000` 的應用程式。
-
-1. 以 `sc stop <SERVICE_NAME>` 命令停止服務。
-
-   下列命令會停止範例應用程式服務：
-
-   ```console
-   sc stop MyService
-   ```
-
-1. 在停止服務的短暫延遲之後，請以 `sc delete <SERVICE_NAME>` 命令解除安裝服務。
-
-   檢查範例應用程式服務的狀態：
-
-   ```console
-   sc query MyService
-   ```
-
-   當範例應用程式服務處於 `STOPPED` 狀態時，請使用下列命令來解除安裝範例應用程式服務：
-
-   ```console
-   sc delete MyService
-   ```
-
-## <a name="provide-a-way-to-run-outside-of-a-service"></a>提供一個在服務外執行的方式
-
-在服務外執行時較容易進行測試和偵錯，因此習慣上只有在特定情況下，才會新增呼叫 `RunAsService` 的程式碼。 例如，使用 `--console` 命令列引數或連結偵錯工具，即可讓應用程式以主控台應用程式的形式執行：
-
-::: moniker range=">= aspnetcore-2.0"
-
-[!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=ServiceOrConsole)]
-
-因為 ASP.NET Core 組態需要命令列引數成對的名稱和數值，所以會先移除 `--console` 參數，再將引數傳遞至 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder)。
-
-> [!NOTE]
-> 因為 `CreateWebHostBuilder` 的簽章必須為 `CreateWebHostBuilder(string[])`，[整合測試](xref:test/integration-tests)才可正常運作，所以不會將 `isService` 從 `Main` 傳遞至 `CreateWebHostBuilder`。
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp2.2</TargetFramework>
+  <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
+  <SelfContained>false</SelfContained>
+  <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+</PropertyGroup>
+```
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.0"
+::: moniker range="= aspnetcore-2.1"
 
-[!code-csharp[](windows-service/samples_snapshot/1.x/AspNetCoreService/Program.cs?name=ServiceOrConsole)]
+新增 `<UseAppHost>` 屬性集到 `true`。 此屬性為服務提供 FDD 的啟用路徑 (可執行檔 *.exe*)。
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp2.1</TargetFramework>
+  <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
+  <UseAppHost>true</UseAppHost>
+  <SelfContained>false</SelfContained>
+  <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+</PropertyGroup>
+```
 
 ::: moniker-end
 
-## <a name="handle-stopping-and-starting-events"></a>處理停止和啟動事件
+#### <a name="self-contained-deployment-scd"></a>自封式部署 (SCD)
 
-請執行下列額外變更，以處理 [OnStarting](/dotnet/api/microsoft.aspnetcore.hosting.windowsservices.webhostservice.onstarting)、[OnStarted](/dotnet/api/microsoft.aspnetcore.hosting.windowsservices.webhostservice.onstarted) 和 [OnStopping](/dotnet/api/microsoft.aspnetcore.hosting.windowsservices.webhostservice.onstopping) 事件：
+確認有 Windows [執行階段識別碼 (RID)](/dotnet/core/rid-catalog)，或將 RID 新增至包含目標 Framework 的 `<PropertyGroup>`。 透過新增 `<IsTransformWebConfigDisabled>` 屬性集到 `true`，以停用 *web.config* 檔案的建立。
 
-1. 建立衍生自 [WebHostService](/dotnet/api/microsoft.aspnetcore.hosting.windowsservices.webhostservice) 的類別：
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp2.2</TargetFramework>
+  <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
+  <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+</PropertyGroup>
+```
 
-   [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/CustomWebHostService.cs?name=NoLogging)]
+發行多個 RID：
 
-2. 為將自訂的 `WebHostService` 傳遞給 [ServiceBase.Run](/dotnet/api/system.serviceprocess.servicebase.run) 的 [IWebHost](/dotnet/api/microsoft.aspnetcore.hosting.iwebhost) 建立擴充方法：
+* 以分號分隔的清單提供 RID。
+* 使用屬性名稱 `<RuntimeIdentifiers>` (複數)。
+
+  如需詳細資訊，請參閱 [.NET Core RID 目錄](/dotnet/core/rid-catalog)。
+
+新增 [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices) 的套件參考。
+
+若要啟用 Windows 事件記錄的記錄功能，請加入對 [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog) 的套件參考。
+
+如需詳細資訊，請參閱[處理開始與停止事件](#handle-starting-and-stopping-events)一節。
+
+### <a name="programmain-updates"></a>Program.Main 更新
+
+在 `Program.Main` 中進行下列變更：
+
+* 若要在於服務外執行時測試及偵錯，請新增程式碼以判斷應用程式是以服務形式執行或以主控台應用程式形式執行。 檢查偵錯工具是否已附加或 `--console` 命令列引數是否存在。
+
+  若任一條件為真 (應用程式不是以服務形式執行)，請呼叫 Web 主機上的 <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*>。
+
+  若條件為偽 (應用程式是以服務形式執行)：
+
+  * 呼叫 <xref:System.IO.Directory.SetCurrentDirectory*> 並使用應用程式發佈位置的路徑。 請勿呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 來取得路徑，因為當呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 時，Windows 服務應用程式會傳回 *C:\\WINDOWS\\system32* 資料夾。 如需詳細資訊，請參閱[目前目錄與內容根目錄](#current-directory-and-content-root)一節。
+  * 呼叫 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> 以服務形式執行應用程式。
+
+  因為[命令列設定提供者](xref:fundamentals/configuration/index#command-line-configuration-provider) 需要命令列引數的名稱值組，在 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 收到引數之前，`--console` 切換參數就會從引數移除。
+
+* 若要寫入 Windows 事件記錄檔，請新增 EventLog 提供者到 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>。 使用 *appsettings.Production.json* 檔案中的 `Logging:LogLevel:Default` 機碼設定記錄層級。 針對示範與測試用途，範例應用程式的生產設定檔案會將記錄層級設定為 `Information`。 在生產環境中，該值一般會設定為 `Error`。 如需詳細資訊，請參閱<xref:fundamentals/logging/index#windows-eventlog-provider>。
+
+[!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=snippet_Program)]
+
+## <a name="publish-the-app"></a>發行應用程式
+
+使用 [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) (這是一個 [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)) 或 Visual Studio Code 來發行應用程式。 使用 Visual Studio 時，請選取 [FolderProfile] 並設定 [目標位置]，再選取 [發行] 按鈕。
+
+若要使用命令列介面 (CLI) 工具發佈應用程式，請在將發行設定傳遞到 [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) 選項的情況下從專案資料夾的命令提示字元中執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令。 搭配路徑使用 [-o|--output](/dotnet/core/tools/dotnet-publish#options) 選項以發行到應用程式以外的資料夾。
+
+### <a name="publish-a-framework-dependent-deployment-fdd"></a>發行架構相依部署 (FDD)
+
+在下列範例中，應用程式是發行到 *c:\\svc* 資料夾：
+
+```console
+dotnet publish --configuration Release --output c:\svc
+```
+
+### <a name="publish-a-self-contained-deployment-scd"></a>發行自封式部署 (SCD)
+
+必須在 `<RuntimeIdenfifier>` (或 `<RuntimeIdentifiers>`) 中指定 RID 專案檔的屬性。 提供執行階段給 `dotnet publish` 命令的 [-r|--runtime](/dotnet/core/tools/dotnet-publish#options) 選項。
+
+在下列範例中，應用程式是針對 `win7-x64` 執行階段發行到 *c:\\svc* 資料夾：
+
+```console
+dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
+```
+
+## <a name="create-a-user-account"></a>建立使用者帳戶
+
+透過系統管理 PowerShell 6 命令殼層使用 `net user` 命令，為服務建立使用者帳戶：
+
+```powershell
+net user {USER ACCOUNT} {PASSWORD} /add
+```
+
+預設的密碼到期期限是六週。
+
+針對範例應用程式，建立名為 `ServiceUser` 的使用者帳戶與密碼。 在下列命令中，將 `{PASSWORD}` 取代為[強式密碼](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)。
+
+```powershell
+net user ServiceUser {PASSWORD} /add
+```
+
+若需要將使用者新增到某個群組，請使用 `net localgroup` 命令，其中 `{GROUP}` 是群組的名稱：
+
+```powershell
+net localgroup {GROUP} {USER ACCOUNT} /add
+```
+
+如需詳細資訊，請參閱[服務使用者帳戶](/windows/desktop/services/service-user-accounts)。
+
+使用 Active Directory 時有一個管理使用者的替代方法，就是使用「受控服務帳戶」。 如需詳細資訊，請參閱[群組受控服務帳戶概觀](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)。
+
+## <a name="set-permission-log-on-as-a-service"></a>設定權限：以服務方式登入
+
+使用 [icacls](/windows-server/administration/windows-commands/icacls) 命令授與對應用程式資料夾的寫入/讀取/執行存取權：
+
+```powershell
+icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
+```
+
+* `{PATH}` &ndash; 應用程式資料夾的路徑。
+* `{USER ACCOUNT}` &ndash; 使用者帳戶 (SID)。
+* `(OI)` &ndash;「物件繼承旗標會將權限傳播到次級檔案。
+* `(CI)` &ndash;「物件繼承旗標會將權限傳播到次級檔案。
+* `{PERMISSION FLAGS}` &ndash; 設定應用程式的存取權限。
+  * 寫入 (`W`)
+  * 讀取 (`R`)
+  * 執行 (`X`)
+  * 完整 (`F`)
+  * 修改 (`M`)
+* `/t` &ndash; 套用遞迴到現有的次級資料夾與檔案。
+
+針對發行到 *c:\\svc* 資料夾的範例應用程式與具有寫入/讀取/執行權限的 `ServiceUser` 帳戶，請使用下列命令：
+
+```powershell
+icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
+```
+
+如需詳細資訊，請參閱 [icacls](/windows-server/administration/windows-commands/icacls)。
+
+## <a name="create-the-service"></a>建立服務
+
+使用 [RegisterService.ps1](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts) 的 PowerShell 指令碼註冊服務。 透過系統管理 PowerShell 6 命令提示字元，執行下列命令：
+
+```powershell
+.\RegisterService.ps1 
+    -Name {NAME} 
+    -DisplayName "{DISPLAY NAME}" 
+    -Description "{DESCRIPTION}" 
+    -Path "{PATH}" 
+    -Exe {ASSEMBLY}.exe 
+    -User {DOMAIN\USER}
+```
+
+在範例應用程式的下列範例中：
+
+* 服務的名稱是 **MyService**。
+* 已發行的服務位於 *c:\\svc* 資料夾。 應用程式可執行檔名稱是 *SampleApp.exe*。
+* 服務是以 `ServiceUser` 帳戶執行。 下列範例中，本機電腦名稱為 `Desktop-PC`。
+
+```powershell
+.\RegisterService.ps1 
+    -Name MyService 
+    -DisplayName "My Cool Service" 
+    -Description "This is the Sample App service." 
+    -Path "c:\svc" 
+    -Exe SampleApp.exe 
+    -User Desktop-PC\ServiceUser
+```
+
+## <a name="manage-the-service"></a>管理服務
+
+### <a name="start-the-service"></a>啟動服務
+
+以 `Start-Service -Name {NAME}` 的 PowerShell 6 命令啟動服務。
+
+請使用下列命令啟動範例應用程式服務：
+
+```powershell
+Start-Service -Name MyService
+```
+
+此命令需要幾秒鐘啓動服務。
+
+### <a name="determine-the-service-status"></a>判斷服務狀態
+
+若要檢查服務狀態，請使用 `Get-Service -Name {NAME}` 的 PowerShell 6 命令。 狀態會回報為下列值之一：
+
+* `Starting`
+* `Running`
+* `Stopping`
+* `Stopped`
+
+使用下列命令來檢查範例應用程式服務的狀態：
+
+```powershell
+Get-Service -Name MyService
+```
+
+### <a name="browse-a-web-app-service"></a>瀏覽 Web 應用程式服務
+
+當服務處於 `RUNNING` 狀態，且若服務是 Web 應用程式時，請在其路徑瀏覽應用程式 (預設為 `http://localhost:5000`，使用 [HTTPS 重新導向中介軟體](xref:security/enforcing-ssl)時會重新導向至 `https://localhost:5001`)。
+
+範例應用程式服務請瀏覽位於 `http://localhost:5000` 的應用程式。
+
+### <a name="stop-the-service"></a>停止服務
+
+以 `Stop-Service -Name {NAME}` 的 PowerShell 6 命令停止服務。
+
+下列命令會停止範例應用程式服務：
+
+```powershell
+Stop-Service -Name MyService
+```
+
+### <a name="remove-the-service"></a>移除服務
+
+在停止服務的短暫延遲之後，請以 `Remove-Service -Name {NAME}` 的 Powershell 6 命令移除服務。
+
+檢查範例應用程式服務的狀態：
+
+```powershell
+Remove-Service -Name MyService
+```
+
+## <a name="handle-starting-and-stopping-events"></a>處理開始與停止事件
+
+若要處理 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarting*>、<xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarted*> 與 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStopping*> 事件，請進行下列額外變更：
+
+1. 使用 `OnStarting`、`OnStarted` 與 `OnStopping` 方法建立衍生自 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService> 的類別：
+
+   [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/CustomWebHostService.cs?name=snippet_CustomWebHostService)]
+
+2. 為 <xref:Microsoft.AspNetCore.Hosting.IWebHost> 建立一個會將 `CustomWebHostService` 傳遞給 <xref:System.ServiceProcess.ServiceBase.Run*> 的擴充方法：
 
    [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/WebHostServiceExtensions.cs?name=ExtensionsClass)]
 
-3. 在 `Program.Main` 中，呼叫新的擴充方法 `RunAsCustomService`，而不是呼叫 [RunAsService](/dotnet/api/microsoft.aspnetcore.hosting.windowsservices.webhostwindowsserviceextensions.runasservice)：
+3. 在 `Program.Main` 中，呼叫 `RunAsCustomService` 擴充方法，而不是呼叫 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>：
 
-   ::: moniker range=">= aspnetcore-2.0"
+   ```csharp
+   host.RunAsCustomService();
+   ```
 
-   [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=HandleStopStart&highlight=14)]
-
-   > [!NOTE]
-   > 因為 `CreateWebHostBuilder` 的簽章必須為 `CreateWebHostBuilder(string[])`，[整合測試](xref:test/integration-tests)才可正常運作，所以不會將 `isService` 從 `Main` 傳遞至 `CreateWebHostBuilder`。
-
-   ::: moniker-end
-
-   ::: moniker range="< aspnetcore-2.0"
-
-   [!code-csharp[](windows-service/samples_snapshot/1.x/AspNetCoreService/Program.cs?name=HandleStopStart&highlight=27)]
-
-   ::: moniker-end
-
-如果自訂的 `WebHostService` 程式碼需要一個來自相依性插入的服務 (例如記錄器)，請從 [IWebHost.Services](/dotnet/api/microsoft.aspnetcore.hosting.iwebhost.services) 屬性取得該服務：
-
-[!code-csharp[](windows-service/samples/2.x/AspNetCoreService/CustomWebHostService.cs?name=Logging&highlight=7-8)]
+   若要查看 `Program.Main` 中的 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> 位置，請參閱[將專案轉換為 Windows 服務](#convert-a-project-into-a-windows-service)一節中的範例程式碼。
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
@@ -228,9 +314,40 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
 
 ## <a name="configure-https"></a>設定 HTTPS
 
-指定 [Kestrel 伺服器 HTTPS 端點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)。
+使用安全端點來設定服務：
+
+1. 使用您平台的憑證取得與部署機制來建立將用於裝載系統的 X.509 憑證。
+
+1. 指定 [Kestrel 伺服器 HTTPS 端點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)以使用憑證。
+
+不支援使用 ASP.NET Core HTTPS 開發憑證來保護服務端點。
+
+## <a name="current-directory-and-content-root"></a>目前目錄和內容根目錄
+
+針對 Windows 服務呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 所傳回的目前工作目錄為 *C:\\WINDOWS\\system32* 資料夾。 *System32* 資料夾不是儲存服務檔案 (例如，設定檔) 的合適位置。 使用下列其中一個方式來維護及存取服務的資產與設定檔。
+
+### <a name="set-the-content-root-path-to-the-apps-folder"></a>將內容根目錄路徑設定到應用程式的資料夾
+
+<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> 與建立服務時提供給 `binPath` 引數的路徑相同。 請搭配應用程式內容根目錄的路徑呼叫 <xref:System.IO.Directory.SetCurrentDirectory*>，而不要呼叫 `GetCurrentDirectory` 來建立設定檔的路徑。
+
+在 `Program.Main` 中，判斷服務可執行檔資料夾的路徑，然後使用該路徑來建立應用程式的內容根目錄：
+
+```csharp
+var pathToExe = Process.GetCurrentProcess().MainModule.FileName;
+var pathToContentRoot = Path.GetDirectoryName(pathToExe);
+Directory.SetCurrentDirectory(pathToContentRoot);
+
+CreateWebHostBuilder(args)
+    .Build()
+    .RunAsService();
+```
+
+### <a name="store-the-services-files-in-a-suitable-location-on-disk"></a>將服務的檔案儲存在磁碟上的適當位置
+
+使用包含檔案的 <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> 資料夾，使用 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 來指定絕對路徑。
 
 ## <a name="additional-resources"></a>其他資源
 
 * [Kestrel 端點組態](xref:fundamentals/servers/kestrel#endpoint-configuration) (包括 HTTPS 組態與 SNI 支援)
 * <xref:fundamentals/host/web-host>
+* <xref:test/troubleshoot>

@@ -1,26 +1,19 @@
 ---
-title: ASP.NET Core MVC 與 EF Core - 排序、篩選、分頁 - 3/10
+title: 教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Core
+description: 在本教學課程中，您要將排序、篩選和分頁功能新增至 Students 的 [索引] 頁面。 此外，還要建立將執行簡易群組的頁面。
 author: rick-anderson
-description: 在本教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選、分頁功能新增至頁面。
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.date: 03/27/2019
+ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 1f80faf0e36332c28e8337ddc331cc8b4c4970d7
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: dff5a5b1ba3c8ed07ccc8d134f8cfeb25b9f6689
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38193945"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751042"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---sort-filter-paging---3-of-10"></a>ASP.NET Core MVC 與 EF Core - 排序、篩選、分頁 - 3/10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+# <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Core
 
 在上一個教學課程中，您已針對學生實體的基本 CRUD 作業實作一組網頁。 在本教學課程中，您要將排序、篩選和分頁功能新增至 Students 的 [索引] 頁面。 此外，還要建立將執行簡易群組的頁面。
 
@@ -28,7 +21,21 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 ![Students [索引] 頁面](sort-filter-page/_static/paging.png)
 
-## <a name="add-column-sort-links-to-the-students-index-page"></a>將資料行排序連結新增至 Students 的 [索引] 頁面
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 新增資料行排序連結
+> * 新增 [搜尋] 方塊
+> * 為 Students 索引新增分頁
+> * 為 Index 方法新增分頁
+> * 新增分頁連結
+> * 建立 [關於] 頁面
+
+## <a name="prerequisites"></a>必要條件
+
+* [實作 CRUD 功能](crud.md)
+
+## <a name="add-column-sort-links"></a>新增資料行排序連結
 
 若要將排序新增至學生的 [索引] 頁面，您要變更 Students 控制器的 `Index` 方法，並將程式碼新增至學生的 [索引] 檢視。
 
@@ -71,7 +78,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 ![以姓名順序排列的 Students [索引] 頁面](sort-filter-page/_static/name-order.png)
 
-## <a name="add-a-search-box-to-the-students-index-page"></a>將搜尋方塊新增至 Students 的 [索引] 頁面
+## <a name="add-a-search-box"></a>新增 [搜尋] 方塊
 
 若要將篩選新增至 Students 的 [索引] 頁面，您要將文字方塊和提交按鈕新增至檢視，並在 `Index` 方法中進行對應的變更。 文字方塊可讓您輸入要在名字和姓氏欄位中搜尋的字串。
 
@@ -86,7 +93,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 > [!NOTE]
 > 在這裡，您可以在 `IQueryable` 物件上呼叫 `Where` 方法，而篩選將會在伺服器上處理。 在某些情況下，您可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 (例如，假設您變更了 `_context.Students` 的參考，以便它參考傳回 `IEnumerable` 集合的存放庫方法，而不是參考 EF `DbSet`)。結果通常都是一樣的，但在某些情況下可能會不同。
 >
->例如，.NET Framework 實作的 `Contains` 方法預設會執行區分大小寫的比較，但在 SQL Server 中，這取決於 SQL Server 執行個體的定序設定。 該設定預設為不區分大小寫。 您可以呼叫 `ToUpper` 方法，使測試明確地不區分大小寫：*Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*。 如果您稍後變更程式碼，以使用傳回 `IEnumerable` 集合 (而不是 `IQueryable` 物件) 的存放庫，這會確保結果保持不變。 (當您在 `IEnumerable` 集合上呼叫 `Contains` 方法時，將取得 .NET Framework 實作；當您在 `IQueryable` 物件上呼叫它時，則會取得資料庫提供者實作。)不過，此解決方案會對效能帶來負面影響。 `ToUpper` 程式碼會將一個函式置於 TSQL SELECT 陳述式的 WHERE 子句中。 這會防止最佳化工具使用索引。 假設 SQL 大部分安裝為不區分大小寫，最好避免使用 `ToUpper` 程式碼，直到您移轉至區分大小寫的資料存放區為止。
+>例如，.NET Framework 實作的 `Contains` 方法預設會執行區分大小寫的比較，但在 SQL Server 中，這取決於 SQL Server 執行個體的定序設定。 該設定預設為不區分大小寫。 您可以呼叫 `ToUpper` 方法以使測試明確不區分大小寫：*Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*。 如果您稍後變更程式碼，以使用傳回 `IEnumerable` 集合 (而不是 `IQueryable` 物件) 的存放庫，這會確保結果保持不變。 (當您在 `IEnumerable` 集合上呼叫 `Contains` 方法時，將取得 .NET Framework 實作；當您在 `IQueryable` 物件上呼叫它時，則會取得資料庫提供者實作。)不過，此解決方案會對效能帶來負面影響。 `ToUpper` 程式碼會將一個函式置於 TSQL SELECT 陳述式的 WHERE 子句中。 這會防止最佳化工具使用索引。 假設 SQL 大部分安裝為不區分大小寫，最好避免使用 `ToUpper` 程式碼，直到您移轉至區分大小寫的資料存放區為止。
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>將搜尋方塊新增至學生的 [索引] 檢視
 
@@ -110,7 +117,7 @@ http://localhost:5813/Students?SearchString=an
 
 在這個階段，如果您按一下資料行標題排序連結，將會遺失您在 [搜尋] 方塊中輸入的篩選值。 您將在下節修正該問題。
 
-## <a name="add-paging-functionality-to-the-students-index-page"></a>將分頁功能新增至 Students 的 [索引] 頁面
+## <a name="add-paging-to-students-index"></a>為 Students 索引新增分頁
 
 若要將分頁新增至 Students 的 [索引] 頁面，您要建立使用 `Skip` 和 `Take` 陳述式的 `PaginatedList` 類別來篩選伺服器上的資料，而不是一直擷取資料表的所有資料列。 然後，您要在 `Index` 方法中進行其他變更，並將分頁按鈕新增至 `Index` 檢視。 下圖顯示分頁按鈕。
 
@@ -124,7 +131,7 @@ http://localhost:5813/Students?SearchString=an
 
 `CreateAsync` 方法用來建立 `PaginatedList<T>` 物件而不是建構函式，因為建構函式無法執行非同步程式碼。
 
-## <a name="add-paging-functionality-to-the-index-method"></a>將分頁功能新增至 Index 方法
+## <a name="add-paging-to-index-method"></a>為 Index 方法新增分頁
 
 在 *StudentsController.cs* 中，以下列程式碼取代 `Index` 方法。
 
@@ -137,7 +144,7 @@ public async Task<IActionResult> Index(
     string sortOrder,
     string currentFilter,
     string searchString,
-    int? page)
+    int? pageNumber)
 ```
 
 第一次顯示頁面，或是使用者尚未按一下分頁或排序連結時，所有參數都會是 null。  如果按一下分頁連結，頁面變數將包含要顯示的頁碼。
@@ -151,7 +158,7 @@ public async Task<IActionResult> Index(
 ```csharp
 if (searchString != null)
 {
-    page = 1;
+    pageNumber = 1;
 }
 else
 {
@@ -162,12 +169,12 @@ else
 在 `Index` 方法的結尾處，`PaginatedList.CreateAsync` 方法會以支援分頁的集合類型，將學生查詢轉換成學生單一頁面。 該學生單一頁面接著會傳遞至檢視。
 
 ```csharp
-return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), page ?? 1, pageSize));
+return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
 ```
 
-`PaginatedList.CreateAsync` 方法會採用頁面數。 兩個問號代表 null 聯合運算子。 Null 聯合運算子將針對可為 Null 的型別定義預設值；`(page ?? 1)` 運算式表示在它含有值時會傳回值 `page`，或在 `page` 為 null 時傳回 1。
+`PaginatedList.CreateAsync` 方法會採用頁面數。 兩個問號代表 null 聯合運算子。 Null 聯合運算子將針對可為 Null 的型別定義預設值；`(pageNumber ?? 1)` 運算式表示在它含有值時會傳回值 `pageNumber`，或在 `pageNumber` 為 null 時傳回 1。
 
-## <a name="add-paging-links-to-the-student-index-view"></a>將分頁連結新增至學生 [索引] 檢視
+## <a name="add-paging-links"></a>新增分頁連結
 
 在 *Views/Students/Index.cshtml* 中，以下列程式碼取代現有程式碼。 所做的變更已醒目提示。
 
@@ -186,7 +193,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 ```html
 <a asp-action="Index"
    asp-route-sortOrder="@ViewData["CurrentSort"]"
-   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    class="btn btn-default @prevDisabled">
    Previous
@@ -199,7 +206,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 以不同排序次序按一下分頁連結，以確定分頁運作正常。 然後輸入搜尋字串並再次嘗試分頁，以確認分頁的排序和篩選能正確運作。
 
-## <a name="create-an-about-page-that-shows-student-statistics"></a>建立顯示學生統計資料的 About 頁面
+## <a name="create-an-about-page"></a>建立 [關於] 頁面
 
 對於 Contoso 大學網站的 **About** 頁面，您將顯示每個註冊日期已有多少學生註冊。 這需要對群組進行分組和簡單計算。 若要完成此工作，您需要執行下列作業：
 
@@ -227,7 +234,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_AddContext&highlight=3,5,7)]
 
-以下列程式碼取代 `About` 方法：
+使用下列程式碼來新增 `About` 方法：
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
@@ -237,20 +244,29 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 ### <a name="modify-the-about-view"></a>修改 About 檢視
 
-以下列程式碼取代 *Views/Home/About.cshtml* 檔案中的程式碼：
+使用下列程式碼來新增 *Views/Home/About.cshtml* 檔案：
 
 [!code-html[](intro/samples/cu/Views/Home/About.cshtml)]
 
 執行應用程式並移至 About 頁面。 每個註冊日期的學生人數將會顯示在資料表中。
 
-![About 頁面](sort-filter-page/_static/about.png)
+## <a name="get-the-code"></a>取得程式碼
 
-## <a name="summary"></a>總結
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-在本教學課程中，您已了解如何執行排序、篩選、分頁和群組。 在下一個教學課程中，您將學習如何使用移轉來處理資料模型變更。
+## <a name="next-steps"></a>後續步驟
 
-::: moniker-end
+在本教學課程中，您已：
 
-> [!div class="step-by-step"]
-> [上一頁](crud.md)
-> [下一頁](migrations.md)
+> [!div class="checklist"]
+> * 新增資料行排序連結
+> * 新增 [搜尋] 方塊
+> * 為 Students 索引新增分頁
+> * 為 Index 方法新增分頁
+> * 新增分頁連結
+> * 建立 [關於] 頁面
+
+若要了解如何使用移轉來處理資料模型變更，請前往下一個教學課程。
+
+> [!div class="nextstepaction"]
+> [下一步：處理資料模型變更](migrations.md)

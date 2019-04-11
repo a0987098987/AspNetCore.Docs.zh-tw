@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何使用 Visual Studio 建立 ASP.NET Core Web 應用程式，並透過 Git 持續部署將它部署到 Azure App Service。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/14/2016
+ms.date: 12/06/2018
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 0a9a2d9d0de25a4eaab704680c627c1216d146e3
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: e12c2ee0b78db105b431770e8644e7d19d915765
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275479"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284420"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Visual Studio 與 Git 持續部署至 Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "36275479"
 
 本教學課程說明如何使用 Visual Studio 建立 ASP.NET Core Web 應用程式，並透過持續部署將它從 Visual Studio 部署到 Azure App Service。
 
-另請參閱 [Use VSTS to Build and Publish to an Azure Web App with Continuous Deployment](/vsts/build-release/archive/apps/aspnet/aspnet-4-ci-cd-azure-automatic) (使用 VSTS 來建立 Azure Web 應用程式，並透過連續部署來發行)，其中說明如何使用 Visual Studio Team Services 來設定 [Azure App Service](/azure/app-service/app-service-web-overview) 的持續傳遞 (CD) 工作流程。 Team Services 中的 Azure 持續傳遞功能可輕鬆設定強大的部署管道，以便為裝載於 Azure App Service 中的應用程式發行更新。 您可以透過 Azure 入口網站設定這個管道，以建置，執行測試，部署到預備位置，然後再部署到實際執行環境。
+另請參閱[使用 Azure Pipelines 建立您的第一個管線](/azure/devops/pipelines/get-started-yaml)，顯示如何使用 Azure DevOps Services，為 [Azure App Service](/azure/app-service/app-service-web-overview) 設定持續傳遞 (CD) 工作流程。 Azure Pipelines (一種 Azure DevOps Services 服務) 可輕鬆設定強大的部署管線，為託管於 Azure App Service 的應用程式發佈更新。 您可以透過 Azure 入口網站設定這個管道，以建置，執行測試，部署到預備位置，然後再部署到實際執行環境。
 
 > [!NOTE]
 > 若要完成本教學課程，您需要 Microsoft Azure 帳戶。 若要取得帳戶，請[啟動 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F)或[註冊免費試用](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -46,7 +46,7 @@ ms.locfileid: "36275479"
 
 1. 在 [新增 ASP.NET Core 專案] 對話方塊中，選取 ASP.NET Core 的 [空白] 範本，然後按一下 [確定]。
 
-   ![[新增 ASP.NET 專案] 對話方塊](azure-continuous-deployment/_static/02-web-site-template.png)
+   ![[新增 ASP.NET Core 專案] 對話方塊](azure-continuous-deployment/_static/02-web-site-template.png)
 
 > [!NOTE]
 > .NET Core 的最新版本為 2.0。
@@ -71,7 +71,7 @@ ms.locfileid: "36275479"
 
 1. 選取 [Web + 行動] > [Web 應用程式]。
 
-   ![Microsoft Azure 入口網站：新按鈕：Marketplace 下方的 [Web + 行動]：[精選 App] 下方的 [Web 應用程式] 按鈕](azure-continuous-deployment/_static/05-azure-newwebapp.png)
+   ![Microsoft Azure 入口網站：[新增] 按鈕：[Marketplace] 下的 [Web + 行動]：[精選應用程式] 下的 [Web 應用程式] 按鈕](azure-continuous-deployment/_static/05-azure-newwebapp.png)
 
 1. 在 [Web 應用程式] 刀鋒視窗中，為 [App Service 名稱] 輸入唯一值。
 
@@ -228,5 +228,6 @@ Git 是一種分散式版本控制系統，可用來部署 Azure App Service Web
 
 ## <a name="additional-resources"></a>其他資源
 
-* [使用 VSTS 搭配持續部署來建置及發行至 Azure Web 應用程式](/vsts/build-release/archive/apps/aspnet/aspnet-4-ci-cd-azure-automatic)
+* [使用 Azure Pipelines 建立您的第一個管線](/azure/devops/pipelines/get-started-yaml)
 * [專案 Kudu](https://github.com/projectkudu/kudu/wiki)
+* <xref:host-and-deploy/visual-studio-publish-profiles>

@@ -1,18 +1,18 @@
 ---
 title: 發佈 ASP.NET Core SignalR 應用程式至 Azure Web 應用程式
-author: tdykstra
+author: bradygaster
 description: 發佈 ASP.NET Core SignalR 應用程式至 Azure Web 應用程式
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/20/2018
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: b0126771a9ba3a28a7af14adf5b5959c7591e5fb
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 66fa855590c49c4284e4b42cae57f3d4d81dd0fc
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095290"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837672"
 ---
 # <a name="publish-an-aspnet-core-signalr-app-to-an-azure-web-app"></a>發佈 ASP.NET Core SignalR 應用程式，為 Azure Web 應用程式
 
@@ -23,7 +23,7 @@ ms.locfileid: "39095290"
 
 ## <a name="publish-the-app"></a>發行應用程式
 
-Visual Studio 會提供內建工具發行至 Azure Web 應用程式。 Visual Studio Code 使用者可以使用[Azure CLI](/cli/azure)命令，以將應用程式發佈至 Azure。 本文涵蓋發行 Visual Studio 中使用的工具。 若要發行應用程式使用 Azure CLI，請參閱[使用命令列工具將 ASP.NET Core 應用程式發佈至 Azure](xref:tutorials/publish-to-azure-webapp-using-cli)。
+Visual Studio 會提供內建工具發行至 Azure Web 應用程式。 Visual Studio Code 使用者可以使用[Azure CLI](/cli/azure)命令，以將應用程式發佈至 Azure。 本文涵蓋發行 Visual Studio 中使用的工具。 若要發行應用程式使用 Azure CLI，請參閱[使用命令列工具將 ASP.NET Core 應用程式發佈至 Azure](/azure/app-service/app-service-web-get-started-dotnet)。
 
 中的專案上按一下滑鼠右鍵**方案總管**，然後選取**發佈**。 確認**新建**簽入**挑選發行目標**對話方塊中，然後選取**發行**。
 
@@ -63,6 +63,6 @@ ASP.NET Core SignalR 應用程式的已發行的 Azure Web 應用程式就必須
 
 ## <a name="related-resources"></a>相關資源
 
-* [使用命令列工具將 ASP.NET Core 應用程式發佈至 Azure](xref:tutorials/publish-to-azure-webapp-using-cli?tabs=windows)
+* [使用命令列工具將 ASP.NET Core 應用程式發佈至 Azure](/azure/app-service/app-service-web-get-started-dotnet)
 * [將 ASP.NET Core 應用程式發佈至 Azure 與 Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)
 * [裝載和部署在 Azure 上的 ASP.NET Core 預覽應用程式](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service)

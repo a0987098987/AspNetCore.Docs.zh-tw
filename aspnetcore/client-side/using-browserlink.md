@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 09/22/2017
 uid: client-side/using-browserlink
-ms.openlocfilehash: 5ab15c841c472e6c9d47bad70fcf5e0c6dc3010f
-ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
+ms.openlocfilehash: 452ba5149563c186750466f471c7b950f0017614
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37894175"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833487"
 ---
 # <a name="browser-link-in-aspnet-core"></a>ASP.NET Core 中的瀏覽器連結
 
@@ -91,11 +91,11 @@ if (env.IsDevelopment())
 
 ## <a name="refresh-the-web-app-in-several-browsers-at-once"></a>一次重新整理在數個瀏覽器中的 web 應用程式
 
-若要選擇單一的 web 瀏覽器啟動啟動專案時，使用下拉式選單中的，在**偵錯目標**工具列控制項：
+若要選擇啟動專案時要啟動的單一網頁瀏覽器，請使用 [偵錯目標] 工具列控制項中的下拉式選單：
 
 ![F5 下拉式選單](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-若要一次開啟多個瀏覽器，請選擇**瀏覽...** 從相同的下拉式清單。 按住 CTRL 鍵以選取您想要瀏的覽器，然後按一下 **瀏覽**:
+若要一次開啟多個瀏覽器，請從相同的下拉式清單選擇 [瀏覽] 。 按住 CTRL 鍵以選取您想要的瀏覽器，然後按一下 [瀏覽]：
 
 ![一次開啟許多瀏覽器](using-browserlink/_static/open-many-browsers-at-once.png)
 
@@ -103,11 +103,11 @@ if (env.IsDevelopment())
 
 ![同步處理兩個瀏覽器範例](using-browserlink/_static/sync-with-two-browsers-example.png)
 
-若要查看連接到專案的瀏覽器的瀏覽器連結 工具列控制項將滑鼠停留：
+將滑鼠游標停留在 [瀏覽器連結] 工具列控制項上方以查看連結到專案的瀏覽器：
 
 ![暫留時的秘訣](using-browserlink/_static/hoover-tip.png)
 
-變更索引 檢視中，並按一下 瀏覽器連結 的 重新整理 按鈕時，系統會更新所有連線的瀏覽器：
+變更 Index 檢視，當您按一下 [瀏覽器連結] 重新整理按鈕時，將更新所有連結的瀏覽器：
 
 ![瀏覽器-同步處理-至-變更](using-browserlink/_static/browsers-sync-to-changes.png)
 
@@ -139,7 +139,7 @@ if (env.IsDevelopment())
 
 ## <a name="how-it-works"></a>它的運作方式
 
-瀏覽器連結會使用 SignalR 來建立 Visual Studio 和瀏覽器之間的通訊通道。 啟用瀏覽器連結時，Visual Studio 就會作為多個用戶端 （瀏覽器） 可以連線到 SignalR 伺服器。 瀏覽器連結也會註冊在 ASP.NET 要求管線的中介軟體元件。 此元件會插入特殊`<script>`到每一個網頁要求從伺服器中的參考。 您可以選取，以查看指令碼參考**檢視原始檔**在瀏覽器，並向下捲動到結尾`<body>`標記的內容：
+瀏覽器連結會使用 SignalR 來建立 Visual Studio 和瀏覽器之間的通訊通道。 啟用瀏覽器連結時，Visual Studio 就會作為多個用戶端 （瀏覽器） 可以連線到 SignalR 伺服器。 瀏覽器連結也會註冊在 ASP.NET Core 要求管線的中介軟體元件。 此元件會插入特殊`<script>`到每一個網頁要求從伺服器中的參考。 您可以選取，以查看指令碼參考**檢視原始檔**在瀏覽器，並向下捲動到結尾`<body>`標記的內容：
 
 ```html
     <!-- Visual Studio Browser Link -->

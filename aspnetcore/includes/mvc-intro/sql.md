@@ -37,10 +37,15 @@ if (context.Movie.Any())
 在 *Program.cs* 檔案中，將種子初始設定式新增至 `Main` 方法：
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Program.cs)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Program.cs?highlight=6,16-32)]
+
 ::: moniker-end
 
 ### <a name="test-the-app"></a>測試應用程式

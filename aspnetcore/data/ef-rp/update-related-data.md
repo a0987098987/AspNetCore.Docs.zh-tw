@@ -5,12 +5,12 @@ description: 在本教學課程中，您會藉由更新外部索引鍵欄位和�
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: e987971f60e5c5a9fb79e30440c7c986df64447e
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: e1407048157fccdbfdd854071a6fbf9785356026
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38189298"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208605"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 更新相關資料 - 7/8
 
@@ -18,32 +18,32 @@ ms.locfileid: "38189298"
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-本教學課程將示範如何更新相關資料。 若您遭遇到無法解決的問題，請下載[此階段的完整應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part7)。
+本教學課程將示範如何更新相關資料。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
 下圖顯示一些完成的頁面。
 
 ![課程 [編輯] 頁面](update-related-data/_static/course-edit.png)
 ![講師 [編輯] 頁面](update-related-data/_static/instructor-edit-courses.png)
 
-檢查並測試 [建立] 與 [編輯] 課程頁面。 建立新的課程。 部門是依照其主索引鍵 (整數) 來進行選取，而不是它的名稱。 編輯新的課程。 當您完成測試時，請刪除新的課程。
+檢查並測試 *Create* 與 *Edit* 課程頁面。 建立新的課程。 部門是依照其主索引鍵 (整數) 來進行選取，而不是它的名稱。 編輯新的課程。 當您完成測試時，請刪除新的課程。
 
 ## <a name="create-a-base-class-to-share-common-code"></a>建立要共用通用程式碼的基底類別
 
-[課程]/[建立] 和 [課程]/[編輯] 頁面每個都需要部門名稱的清單。 請針對 [建立] 和 [編輯] 頁面建立 *Pages/Courses/DepartmentNamePageModel.cshtml.cs* 基底類別：
+`Courses/Create` 和 `Courses/Edit` 頁面每個都需要部門名稱的清單。 請針對 *Create* 和 *Edit* 頁面建立 *Pages/Courses/DepartmentNamePageModel.cshtml.cs* 基底類別：
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
 
 上述程式碼會建立 [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) 以包含部門名稱的清單。 如果指定了 `selectedDepartment`，就會在 `SelectList` 中選取該部門。
 
-[建立] 和 [編輯] 頁面模型類別將衍生自 `DepartmentNamePageModel`。
+*Create* 和 *Edit* 頁面模型類別將衍生自 `DepartmentNamePageModel`。
 
 ## <a name="customize-the-courses-pages"></a>自訂 [課程] 頁面
 
-當新的課程實體建立時，其必須要與現有的部門具有關聯性。 為了在建立課程新增部門，[建立] 和 [編輯] 的基底類別包含用來選取部門的下拉式清單。 下拉式清單會設定 `Course.DepartmentID` 外部索引鍵 (FK) 屬性。 EF Core 則使用 `Course.DepartmentID` FK 來載入 `Department` 導覽屬性。
+當新的課程實體建立時，其必須要與現有的部門具有關聯性。 為了在建立課程新增部門，*Create* 和 *Edit* 的基底類別包含用來選取部門的下拉式清單。 下拉式清單會設定 `Course.DepartmentID` 外部索引鍵 (FK) 屬性。 EF Core 則使用 `Course.DepartmentID` FK 來載入 `Department` 導覽屬性。
 
 ![建立課程](update-related-data/_static/ddl.png)
 
-以下列程式碼更新 [建立] 頁面模型：
+以下列程式碼更新 *Create* 頁面模型：
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Create.cshtml.cs?highlight=7,18,32-999)]
 
@@ -55,7 +55,7 @@ ms.locfileid: "38189298"
 
 `ViewData["DepartmentID"]` 已取代為強型別的 `DepartmentNameSL`。 強型別的模型優先於弱型別。 如需詳細資訊，請參閱[弱型別資料 (ViewData 和 ViewBag)](xref:mvc/views/overview#VD_VB)。
 
-### <a name="update-the-courses-create-page"></a>更新 Courses 的 [建立] 頁面
+### <a name="update-the-courses-create-page"></a>更新 Courses 的 *Create* 頁面
 
 以下列標記更新 *Pages/Courses/Create.cshtml*：
 
@@ -72,15 +72,15 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 [!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?range=28-35&highlight=3-6)]
 
-測試 [建立] 頁面。 [建立] 頁面會顯示部門名稱，而不是部門識別碼。
+測試 *Create* 頁面。 *Create* 頁面會顯示部門名稱，而不是部門識別碼。
 
-### <a name="update-the-courses-edit-page"></a>更新 Courses 的 [編輯] 頁面。
+### <a name="update-the-courses-edit-page"></a>更新 Courses 的 *Edit* 頁面。
 
-以下列程式碼更新 [編輯] 頁面模型：
+以下列程式碼更新 *Edit* 頁面模型：
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40,47-999)]
 
-這些變更類似於 [建立] 頁面模型中所做的變更。 在上述程式碼中，`PopulateDepartmentsDropDownList` 會傳入部門識別碼，以選取下拉式清單中指定的部門。
+這些變更類似於 *Create* 頁面模型中所做的變更。 在上述程式碼中，`PopulateDepartmentsDropDownList` 會傳入部門識別碼，以選取下拉式清單中指定的部門。
 
 以下列標記更新 *Pages/Courses/Edit.cshtml*：
 
@@ -96,9 +96,9 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 測試更新過的程式碼。 建立、編輯和刪除課程。
 
-## <a name="add-asnotracking-to-the-details-and-delete-page-models"></a>將 AsNoTracking 新增至 [詳細資料] 和 [刪除] 頁面模型
+## <a name="add-asnotracking-to-the-details-and-delete-page-models"></a>將 AsNoTracking 新增至 *Details* 和 *Delete* 頁面模型
 
-不需要追蹤時，[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) 可以改善效能。 將 `AsNoTracking` 新增至 [刪除] 和 [詳細資料] 頁面模型。 下列程式碼顯示已更新的 [刪除] 頁面模型：
+不需要追蹤時，[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) 可以改善效能。 將 `AsNoTracking` 新增至 *Delete* 和 *Details* 頁面模型。 下列程式碼顯示已更新的 *Delete* 頁面模型：
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 
@@ -106,13 +106,13 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
 
-### <a name="modify-the-delete-and-details-pages"></a>修改 [刪除] 和 [詳細資料] 頁面
+### <a name="modify-the-delete-and-details-pages"></a>修改 *Delete* 和 *Details* 頁面
 
 以下列標記更新 [刪除 Razor] 頁面：
 
 [!code-cshtml[](intro/samples/cu/Pages/Courses/Delete.cshtml?highlight=15-20)]
 
-對 [詳細資料] 頁面進行相同的變更。
+對 *Details* 頁面進行相同的變更。
 
 ### <a name="test-the-course-pages"></a>測試 [課程] 頁面
 
@@ -136,9 +136,9 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 上述程式碼：
 
-- 針對 `OfficeAssignment` 導覽屬性使用積極式載入從資料庫中取得目前的 `Instructor` 實體。
-- 使用從模型繫結器取得的值更新擷取的 `Instructor` 實體。 `TryUpdateModel` 會防止[大量指派](xref:data/ef-rp/crud#overposting) (overposting)。
-- 如果辦公室位置為空白，請將 `Instructor.OfficeAssignment` 設定為 Null。 當 `Instructor.OfficeAssignment` 為 Null 時，將會刪除 `OfficeAssignment` 資料表中的相關資料列。
+* 針對 `OfficeAssignment` 導覽屬性使用積極式載入從資料庫中取得目前的 `Instructor` 實體。
+* 使用從模型繫結器取得的值更新擷取的 `Instructor` 實體。 `TryUpdateModel` 會防止[大量指派](xref:data/ef-rp/crud#overposting) (overposting)。
+* 如果辦公室位置為空白，請將 `Instructor.OfficeAssignment` 設定為 Null。 當 `Instructor.OfficeAssignment` 為 Null 時，將會刪除 `OfficeAssignment` 資料表中的相關資料列。
 
 ### <a name="update-the-instructor-edit-page"></a>更新講師 [編輯] 頁面
 
@@ -161,7 +161,7 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 * 您可能會使用不同的使用者介面來顯示課程。
 * 操作聯結實體來建立或刪除關聯性的方法不會變更。
 
-### <a name="add-classes-to-support-create-and-edit-instructor-pages"></a>新增類別來支援 [建立] 和 [編輯] 講師頁面
+### <a name="add-classes-to-support-create-and-edit-instructor-pages"></a>新增類別來支援 *Create* 和 *Edit* 講師頁面
 
 以下列程式碼建立 *SchoolViewModels/AssignedCourseData.cs*：
 
@@ -173,9 +173,9 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/InstructorCoursesPageModel.cshtml.cs)]
 
-`InstructorCoursesPageModel` 是您將用於 [編輯] 和 [建立] 頁面模型的基底類別。 `PopulateAssignedCourseData` 會讀取所有 `Course` 實體來擴展 `AssignedCourseDataList`。 對於每個課程，此程式碼設定 `CourseID`、標題以及是否將講師指派給課程。 [HashSet](/dotnet/api/system.collections.generic.hashset-1) 用來建立有效查閱。
+`InstructorCoursesPageModel` 是您將用於 *Edit* 和 *Create* 頁面模型的基底類別。 `PopulateAssignedCourseData` 會讀取所有 `Course` 實體來擴展 `AssignedCourseDataList`。 對於每個課程，此程式碼設定 `CourseID`、標題以及是否將講師指派給課程。 [HashSet](/dotnet/api/system.collections.generic.hashset-1) 用來建立有效查閱。
 
-### <a name="instructors-edit-page-model"></a>講師 [編輯] 頁面模型
+### <a name="instructors-edit-page-model"></a>講師 *Edit* 頁面模型
 
 以下列程式碼更新講師 [編輯] 頁面模型：
 
@@ -197,11 +197,11 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 執行應用程式，並測試已更新的講師 [編輯] 頁面。 變更一些課程指派。 所做的變更會反映在 [索引] 頁面上。
 
-注意：這裡所用來編輯講師課程資料的方法在課程的數量有限時運作相當良好。 針對更大的集合，不同的 UI 和不同的更新方法可能更有用且更有效率。
+注意:這裡所用來編輯講師課程資料的方法在課程的數量有限時運作相當良好。 針對更大的集合，不同的 UI 和不同的更新方法可能更有用且更有效率。
 
-### <a name="update-the-instructors-create-page"></a>更新講師 [建立] 頁面
+### <a name="update-the-instructors-create-page"></a>更新講師 *Create* 頁面
 
-以下列程式碼更新講師 [建立] 頁面模型：
+以下列程式碼更新講師 *Create* 頁面模型：
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Create.cshtml.cs)]
 
@@ -211,11 +211,11 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 [!code-cshtml[](intro/samples/cu/Pages/Instructors/Create.cshtml?highlight=32-62)]
 
-測試講師 [建立] 頁面。
+測試講師 *Create* 頁面。
 
-## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
+## <a name="update-the-delete-page"></a>更新 *Delete* 頁面
 
-以下列程式碼更新 [刪除] 頁面模型：
+以下列程式碼更新 *Delete* 頁面模型：
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Delete.cshtml.cs?highlight=5,40-999)]
 
@@ -224,6 +224,11 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 * 為 `CourseAssignments` 導覽屬性使用積極式載入。 必須包含 `CourseAssignments`，否則刪除講師時不會刪除它們。 若要避免需要讀取們，您可以在資料庫中設定串聯刪除。
 
 * 若要刪除的講師已指派為任何部門的系統管理員，請先從這些部門中移除講師的指派。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本 (第 1 部分)](https://www.youtube.com/watch?v=Csh6gkmwc9E)
+* [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=mOAankB_Zgc)
 
 > [!div class="step-by-step"]
 > [上一頁](xref:data/ef-rp/read-related-data)

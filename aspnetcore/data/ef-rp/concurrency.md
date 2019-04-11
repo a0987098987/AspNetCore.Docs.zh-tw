@@ -3,14 +3,15 @@ title: ASP.NET Core 中的 Razor 頁面與 EF Core - 並行 - 8/8
 author: rick-anderson
 description: 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 ms.author: riande
-ms.date: 11/15/2017
+ms.custom: mvc
+ms.date: 12/07/2018
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: a010e2ed660bea56b112799e850f2fb0ff37579e
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 213794398e1188e38b0bf3522c73207988615f9b
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219390"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320169"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 並行 - 8/8
 
@@ -18,7 +19,7 @@ ms.locfileid: "39219390"
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-本教學課程會顯示如何在多位使用者同時並行更新實體時處理衝突。 若您遭遇到無法解決的問題，請下載[此階段的完整應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part8)。
+本教學課程會顯示如何在多位使用者同時並行更新實體時處理衝突。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
 ## <a name="concurrency-conflicts"></a>並行衝突
 
@@ -72,7 +73,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 ## <a name="handling-concurrency"></a>處理並行 
 
-當屬性已設定為[並行權杖](https://docs.microsoft.com/ef/core/modeling/concurrency)時：
+當屬性已設定為[並行權杖](/ef/core/modeling/concurrency)時：
 
 * EF Core 會驗證屬性在擷取之後尚未被修改。 該檢查會在呼叫 [SaveChanges](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) 或 [SaveChangesAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) 時發生。
 * 若屬性在擷取之後已遭修改，則系統便會擲回 [DbUpdateConcurrencyException](/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0)。 
@@ -94,9 +95,9 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 資料庫會產生一個循序 `rowversion` 數字，每一次資料列更新時該數字都會遞增。 在 `Update` 或 `Delete` 命令中，`Where` 子句會包含 `rowversion` 的擷取值。 如果更新的資料列已變更：
 
- * `rowversion` 便不會符合擷取的值。
- * `Update` 或 `Delete` 命令便會找不到資料列，因為 `Where` 子句包含了擷取的 `rowversion`。
- * 於是便會擲回 `DbUpdateConcurrencyException`。
+* `rowversion` 便不會符合擷取的值。
+* `Update` 或 `Delete` 命令便會找不到資料列，因為 `Where` 子句包含了擷取的 `rowversion`。
+* 於是便會擲回 `DbUpdateConcurrencyException`。
 
 在 EF Core 中，當 `Update` 或 `Delete` 命令沒有更新任何資料列時，系統便會擲回並行例外狀況。
 
@@ -151,6 +152,7 @@ dotnet ef database update
 * 執行移轉，以更新資料庫。
 
 <a name="scaffold"></a>
+
 ## <a name="scaffold-the-departments-model"></a>Scaffold Departments 模型
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
@@ -165,7 +167,7 @@ dotnet ef database update
   dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
   ```
 
-------
+---
 
 上述命令會 Scaffold `Department` 模型。 在 Visual Studio 中開啟專案。
 
@@ -201,7 +203,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=9,18)]
 
-下列程式碼會為每個資料庫中的值與 POST 到 `OnPostAsync` 的值不同的資料行新增一個自訂錯誤訊息：
+下列程式碼會為每個資料庫中的值與發佈到 `OnPostAsync` 的值不同的資料行新增一個自訂錯誤訊息：
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_err)]
 
@@ -270,8 +272,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 使用下列程式碼更新 *ges/Departments/Delete.cshtml*：
 
-[!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,36,51)]
-
+[!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
 
 上述標記會進行下列變更：
 
@@ -305,6 +306,9 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 * [EF Core 中的並行權杖](/ef/core/modeling/concurrency)
 * [在 EF Core 中處理並行](/ef/core/saving/concurrency)
+* [這個教學課程的 YouTube 版本 (處理並行存取衝突)](https://youtu.be/EosxHTFgYps)
+* [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=kcxERLnaGO0)
+* [這個教學課程的 YouTube 版本 (第 3 部分)](https://www.youtube.com/watch?v=d4RbpfvELRs)
 
 > [!div class="step-by-step"]
 > [上一步](xref:data/ef-rp/update-related-data)

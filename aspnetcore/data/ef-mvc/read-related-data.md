@@ -1,26 +1,19 @@
 ---
-title: ASP.NET Core MVC 與 EF Core - 讀取相關資料 - 6/10
-author: rick-anderson
+title: 教學課程：讀取相關資料 - ASP.NET MVC 搭配 EF Core
 description: 在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
+author: rick-anderson
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.date: 03/27/2019
+ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: a310c9e4b9cec6e2ab2477461f395c9bbd3fa364
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: a2ae878fd861b68a17de19af1b33b6ffbf5a268c
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063282"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751084"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---read-related-data---6-of-10"></a>ASP.NET Core MVC 與 EF Core - 讀取相關資料 - 6/10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+# <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>教學課程：讀取相關資料 - ASP.NET MVC 搭配 EF Core
 
 在上一個教學課程中，您已完成 School 資料模型。 在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 
@@ -30,7 +23,19 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 ![Instructors [索引] 頁面](read-related-data/_static/instructors-index.png)
 
-## <a name="eager-explicit-and-lazy-loading-of-related-data"></a>相關資料的積極式、明確式和消極式載入
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 了解如何載入相關資料
+> * 建立 Courses 頁面
+> * 建立 Instructors 頁面
+> * 了解明確載入
+
+## <a name="prerequisites"></a>必要條件
+
+* [建立複雜的資料模型](complex-data-model.md)
+
+## <a name="learn-how-to-load-related-data"></a>了解如何載入相關資料
 
 Entity Framework 等物件關聯式對應 (ORM) 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
@@ -42,7 +47,7 @@ Entity Framework 等物件關聯式對應 (ORM) 有幾種方式可以將相關�
 
   ![個別查詢範例](read-related-data/_static/separate-queries.png)
 
-* 明確式載入。 第一次讀取實體時，不會擷取相關資料。 您可以撰寫程式碼，以擷取需要的相關資料。 如同使用個別查詢的積極式載入，明確式載入會導致多個查詢傳送至資料庫。 不同之處在於，使用明確式載入時，程式碼會指定要載入的導覽屬性。 在 Entity Framework Core 1.1 中，您可以使用 `Load` 方法以執行明確式載入。 例如: 
+* 明確式載入。 第一次讀取實體時，不會擷取相關資料。 您可以撰寫程式碼，以擷取需要的相關資料。 如同使用個別查詢的積極式載入，明確式載入會導致多個查詢傳送至資料庫。 不同之處在於，使用明確式載入時，程式碼會指定要載入的導覽屬性。 在 Entity Framework Core 1.1 中，您可以使用 `Load` 方法以執行明確式載入。 例如：
 
   ![明確式載入範例](read-related-data/_static/explicit-loading.png)
 
@@ -54,7 +59,7 @@ Entity Framework 等物件關聯式對應 (ORM) 有幾種方式可以將相關�
 
 相反地，在某些案例中，個別查詢更有效率。 在單一查詢中進行所有相關資料的積極式載入時，可能會導致產生非常複雜的聯結，SQL Server 無法有效率地進行處理。 或者，如果您只需要針對所處理之實體集的子集存取實體的導覽屬性，則執行個別查詢可能會更好；因為預先進行所有項目的積極式載入可能會擷取比您所需更多的資料。 如果效能嚴重不足，最好先測試這兩種方式的效能，才能做出最好的選擇。
 
-## <a name="create-a-courses-page-that-displays-department-name"></a>建立顯示部門名稱的 Courses 頁面
+## <a name="create-a-courses-page"></a>建立 Courses 頁面
 
 Course 實體包括一個導覽屬性，其中包含已指派課程之部門的 Department 實體。 若要在課程清單中顯示所指派部門的名稱，您需要從位於 `Course.Department` 導覽屬性的 Department 實體中取得 Name 屬性。
 
@@ -88,7 +93,7 @@ Course 實體包括一個導覽屬性，其中包含已指派課程之部門的 
 
 ![Courses [索引] 頁面](read-related-data/_static/courses-index.png)
 
-## <a name="create-an-instructors-page-that-shows-courses-and-enrollments"></a>建立顯示課程和註冊的 Instructors 頁面
+## <a name="create-an-instructors-page"></a>建立 Instructors 頁面
 
 在本節中，您將建立 Instructor 實體的控制器和檢視，以顯示 Instructors 頁面：
 
@@ -226,7 +231,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 ![Instructors [索引] 頁面已選取講師和課程](read-related-data/_static/instructors-index.png)
 
-## <a name="explicit-loading"></a>明確式載入
+## <a name="about-explicit-loading"></a>關於明確載入
 
 當您在 *InstructorsController.cs* 中擷取講師清單時，已針對 `CourseAssignments` 導覽屬性指定積極式載入。
 
@@ -238,12 +243,21 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 執行應用程式，並立即移至 Instructors [索引] 頁面；雖然您已變更資料的擷取方式，但您會發現頁面上顯示的內容沒有任何差異。
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-您現在已使用積極式載入搭配一個查詢與多個查詢，將相關資料讀取到導覽屬性。 在下一個教學課程中，您將了解如何更新相關資料。
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>後續步驟
 
->[!div class="step-by-step"]
->[上一頁](complex-data-model.md)
->[下一頁](update-related-data.md)
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 了解如何載入相關資料
+> * 建立 Courses 頁面
+> * 建立 Instructors 頁面
+> * 了解明確載入
+
+若要了解如何更新相關資料，請前往下一個教學課程。
+
+> [!div class="nextstepaction"]
+> [更新相關資料](update-related-data.md)

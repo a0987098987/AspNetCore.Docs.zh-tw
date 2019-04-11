@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/27/2018
 uid: fundamentals/httpcontext
-ms.openlocfilehash: ee185cd30af51fa6ee9a4d23ea60a56ec1b76c8d
-ms.sourcegitcommit: 506a199274e9fe5fb4070b273ba94f29f14cb619
+ms.openlocfilehash: 373c036e0839ce51259e23f8503fbe4691b48751
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2018
-ms.locfileid: "39332284"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209592"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>存取 ASP.NET Core 中的 HttpContext
 
@@ -109,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-在上述範例中：
+在以下範例中：
 
 * `UserRepository` 宣告其對 `IHttpContextAccessor` 的相依性。
 * 當相依性插入解析相依性鏈結並建立 `UserRepository` 的實例時，將提供相依性。
@@ -131,3 +131,35 @@ public class UserRepository : IUserRepository
     }
 }
 ```
+
+## <a name="httpcontext-access-from-a-background-thread"></a>從背景執行緒存取 HttpContext
+
+`HttpContext` 不是安全執行緒。 在處理要求之外讀取或寫入 `HttpContext` 的屬性，可能會導致 `NullReferenceException`。
+
+> [!NOTE]
+> 在處理要求之外使用 `HttpContext`，通常會導致 `NullReferenceException`。 如果您的應用程式偶爾會產生 `NullReferenceException`，請檢閱啟動背景處理的程式碼部分，或在要求完成之後繼續處理的部分。 尋找錯誤，例如，將控制器方法定義為 `async void`。
+
+使用 `HttpContext` 資料安全地執行背景工作：
+
+* 在要求處理期間複製所需的資料。
+* 將複製的資料傳遞至背景工作。
+
+為了避免不安全的程式碼，絕對不會將 `HttpContext` 傳遞至執行背景工作的方法，而是改為傳遞您所需的資料。
+
+```csharp
+public class EmailController
+{
+    public ActionResult SendEmail(string email)
+    {
+        var correlationId = HttpContext.Request.Headers["x-correlation-id"].ToString();
+
+        // Starts sending an email, but doesn't wait for it to complete
+        _ = SendEmailCore(correlationId);
+        return View();
+    }
+
+    private async Task SendEmailCore(string correlationId)
+    {
+        // send the email
+    }
+}

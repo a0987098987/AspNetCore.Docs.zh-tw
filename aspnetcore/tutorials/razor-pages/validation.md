@@ -2,16 +2,16 @@
 title: 將驗證新增至 ASP.NET Core Razor 頁面
 author: rick-anderson
 description: 了解如何將驗證新增至 ASP.NET Core 中的 Razor 頁面。
-monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 08/07/2017
+ms.custom: mvc
+ms.date: 12/5/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: ea3f26f9377715ea27f19908932d2dcf3cfcbea6
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: e9214139c0e6e958445feb13b6350bad376a0152
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202597"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208235"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -21,30 +21,24 @@ ms.locfileid: "39202597"
 
 ## <a name="validation"></a>驗證
 
-軟體開發的核心原則稱為 [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself)("**D**on't **R**epeat **Y**ourself", 不重複原則)。 Razor 頁面可促進開發，只要指定功能一次，就能在整個應用程式中運用。 DRY 有助於降低應用程式中的程式碼數量。 DRY 可使程式碼較少出現錯誤，而且更容易進行測試和維護。
+軟體開發的核心原則稱為 [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself)("**D**on't **R**epeat **Y**ourself", 不重複原則)。 Razor Pages可促進開發，只要指定功能一次，就能在整個應用程式中運用。 DRY 有助於：
 
-Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
+* 降低應用程式中的程式碼數量。
+* 使程式碼較少出現錯誤，而且更容易進行測試和維護。
+
+Razor Pages 和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
 
 ### <a name="adding-validation-rules-to-the-movie-model"></a>將驗證規則新增至電影模型
 
-開啟 *Movie.cs* 檔案。 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 提供一組內建的驗證屬性 (attribute)，其以宣告方式套用至類別或屬性 (property)。 DataAnnotations 也包含格式化屬性 (如 `DataType`)，可協助進行格式化，但不提供驗證。
+開啟 *Models/Movie.cs* 檔案。 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 提供一組內建的驗證屬性 (attribute)，其以宣告方式套用至類別或屬性 (property)。 DataAnnotations 也包含格式化屬性 (例如 `DataType`)，可協助進行格式化，但不提供驗證。
 
 更新 `Movie` 類別，以充分利用 `Required`、`StringLength`、`RegularExpression` 和 `Range` 驗證屬性。
 
-::: moniker range="= aspnetcore-2.0"
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDA.cs?name=snippet1)]
-
-::: moniker-end
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDA.cs?name=snippet1)]
 
 驗證屬性 (attribute) 會指定對模型屬性 (property) 強制執行的行為：
 
-* `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須具有值。 不過，使用者可以輸入空白字元以滿足可為 Null 之類型的驗證條件約束。 不可為 Null 的[實值類型](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types) (如 `decimal`、`int`、`float` 和 `DateTime`) 原本就是必要項目，而且不需要 `Required` 屬性。
+* `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須具有值。 不過，使用者可以輸入空白字元以滿足可為 Null 之類型的驗證條件約束。 不可為 Null 的[實值類型](/dotnet/csharp/language-reference/keywords/value-types) (如 `decimal`、`int`、`float` 和 `DateTime`) 原本就是必要項目，而且不需要 `Required` 屬性。
 * `RegularExpression` 屬性會限制使用者可以輸入的字元數目。 在上述程式碼中，`Genre` 必須以一個以上的大寫字母開頭，並在後面加上零個以上的字母、單引號或雙引號、空格字元或連字號。 `Rating` 必須以一個以上的大寫字母開頭，並在後面加上零個以上的字母、數字、單引號或雙引號、空格字元或連字號。
 * `Range` 屬性會將值限制在指定的範圍內。
 * `StringLength` 屬性可設定字串的最大長度，並選擇性地設定最小長度。 
@@ -59,8 +53,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 ![有多個 jQuery 用戶端驗證錯誤的電影檢視表單](validation/_static/val.png)
 
-> [!NOTE]
-> 您可能無法在 `Price` 欄位中輸入小數點或逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 如需詳細資訊，請參閱[其他資源](#additional-resources)。 現在，只要輸入如 10 之類的整數。
+[!INCLUDE[](~/includes/currency.md)]
 
 請注意表單在包含無效值的每個欄位中自動呈現驗證錯誤訊息的方式。 用戶端 (使用 JavaScript 和 jQuery) 與伺服器端 (當使用者已停用 JavaScript 時) 都會強制執行這些錯誤。
 
@@ -78,7 +71,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 選擇性地測試伺服器端驗證：
 
-* 在瀏覽器中停用 JavaScript。 如果您無法在該瀏覽器中停用 JavaScript，請嘗試另一個瀏覽器。
+* 在瀏覽器中停用 JavaScript。 您可以使用瀏覽器的開發人員工具來執行此作業。 如果您無法在該瀏覽器中停用 JavaScript，請嘗試另一個瀏覽器。
 * 在 Create 或 Edit 頁面的 `OnPostAsync` 方法中設定中斷點。
 * 提交含有驗證錯誤的表單。
 * 確認模型狀態無效：
@@ -94,7 +87,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
-[輸入標記協助程式](xref:mvc/views/working-with-forms)會使用 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
+[輸入標記協助程式](xref:mvc/views/working-with-forms)會使用 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
 
 Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中才能指定驗證規則和錯誤字串。 這些驗證規則會自動套用至編輯 `Movie` 模型的 Razor 頁面。
 
@@ -112,9 +105,7 @@ Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中
 
 `DataType.Date` 未指定顯示日期的格式。 根據預設，將依據以伺服器 `CultureInfo` 為基礎的預設格式顯示資料欄位。
 
-::: moniker range=">= aspnetcore-2.1"
 `[Column(TypeName = "decimal(18, 2)")]` 資料註解為必要項，因此 Entity Framework Core 可將 `Price` 正確對應到資料庫中的貨幣。 如需詳細資訊，請參閱[資料類型](/ef/core/modeling/relational/data-types)。
-::: moniker-end
 
 `DisplayFormat` 屬性用來明確指定日期格式：
 
@@ -141,30 +132,23 @@ public DateTime ReleaseDate { get; set; }
 
 下列程式碼會顯示一行上的結合屬性：
 
-::: moniker range="= aspnetcore-2.0"
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDAmult.cs?name=snippet1)]
-
-::: moniker-end
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
 [Razor Pages 和 EF Core 使用者入門](xref:data/ef-rp/intro)說明使用 Razor Pages 執行進階 EF Core 作業。
 
 ### <a name="publish-to-azure"></a>發佈至 Azure
 
-如需將此應用程式發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。
+如需部署至 Azure 的資訊，請參閱[教學課程：使用 SQL Database 在 Azure 中建置 ASP.NET 應用程式](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)。 這些指示適用於 ASP.NET 應用程式，而不是 ASP.NET Core 應用程式，但是步驟都相同。
 
-感謝您看完這份 Razor Pages 簡介。 感謝您提供意見反應。 完成本教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
+感謝您看完這份 Razor Pages 簡介。 完成本教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [使用表單](xref:mvc/views/working-with-forms)
-* [全球化和當地語系化](xref:fundamentals/localization)
-* [標記協助程式簡介](xref:mvc/views/tag-helpers/intro)
-* [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
+* <xref:mvc/views/working-with-forms>
+* <xref:fundamentals/localization>
+* <xref:mvc/views/tag-helpers/intro>
+* <xref:mvc/views/tag-helpers/authoring>
+* [這個教學課程的 YouTube 版本](https://youtu.be/b63m66eu7us)
 
 > [!div class="step-by-step"]
 > [上一步：新增欄位](xref:tutorials/razor-pages/new-field)

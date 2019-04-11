@@ -3,14 +3,14 @@ title: ASP.NET Core 中的自訂模型繫結
 author: ardalis
 description: 了解模型繫結如何讓控制器動作直接使用 ASP.NET Core 中的模型類型。
 ms.author: riande
-ms.date: 04/10/2017
+ms.date: 11/13/2018
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: f5bd9a3eefb1fd9c1534e8767ad8e8af37514adb
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 33551c9fc22561b992b4a09a4c7187ade136c09c
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275389"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410241"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>ASP.NET Core 中的自訂模型繫結
 
@@ -22,7 +22,7 @@ ms.locfileid: "36275389"
 
 ## <a name="default-model-binder-limitations"></a>預設模型繫結器限制
 
-預設模型繫結器支援大多數常見的 .NET Core 資料類型，因此應該符合大部分開發人員的需求。 這些開發人員希望能夠將要求中以文字為主的輸入直接繫結至模型類型。 輸入可能需要進行轉換才能繫結。 例如，當您有可用來查詢模型資料的索引鍵時， 您可以使用自訂模型繫結器，根據索引鍵來擷取資料。
+預設模型繫結器支援大多數的常見 .NET Core 資料類型，因此應該符合大部分開發人員的需求。 這些開發人員希望能夠將要求中以文字為主的輸入直接繫結至模型類型。 輸入可能需要進行轉換才能繫結。 例如，當您有可用來查詢模型資料的索引鍵時， 您可以使用自訂模型繫結器，根據索引鍵來擷取資料。
 
 ## <a name="model-binding-review"></a>模型繫結檢閱
 
@@ -42,7 +42,7 @@ Base64 編碼字串可用來代表二進位資料。 例如，下列影像可編
 
 請遵循[範例的讀我檔案](https://github.com/aspnet/Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/sample/CustomModelBindingSample/README.md)中的指示，將 Base64 編碼字串轉換成檔案。
 
-ASP.NET Core MVC 接受 Base64 編碼字串，並使用 `ByteArrayModelBinder` 將它轉換成位元組陣列。 實作 [IModelBinderProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.imodelbinderprovider) 的 [ByteArrayModelBinderProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.binders.bytearraymodelbinderprovider) 會將 `byte[]` 引數對應至 `ByteArrayModelBinder`：
+ASP.NET Core MVC 接受 Base64 編碼字串，並使用 `ByteArrayModelBinder` 將其轉換成位元組陣列。 實作 [IModelBinderProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.imodelbinderprovider) 的 [ByteArrayModelBinderProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.binders.bytearraymodelbinderprovider) 會將 `byte[]` 引數對應至 `ByteArrayModelBinder`：
 
 ```csharp
 public IModelBinder GetBinder(ModelBinderProviderContext context)
@@ -87,11 +87,14 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Data/Author.cs?highlight=10)]
 
-在上述程式碼中，`ModelBinder` 屬性指定應該用來繫結 `Author` 動作參數的 `IModelBinder` 類型。 
+在上述程式碼中，`ModelBinder` 屬性指定應該用來繫結 `Author` 動作參數的 `IModelBinder` 類型。
 
-`AuthorEntityBinder` 可用來繫結 `Author` 參數，做法是使用 Entity Framework Core 和 `authorId` 從資料來源擷取實體：
+下列 `AuthorEntityBinder` 類別可繫結 `Author` 參數，做法是使用 Entity Framework Core 和 `authorId` 從資料來源擷取實體：
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinder.cs?name=demo)]
+
+> [!NOTE]
+> 上述 `AuthorEntityBinder` 類別會說明自訂模型繫結器。 此類別不會說明查閱情節的最佳做法。 若要進行查閱，請繫結 `authorId`，並在動作方法中查詢資料庫。 此方法會將模型繫結失敗從 `NotFound` 案例中分離。
 
 下列程式碼示範如何在動作方法中使用 `AuthorEntityBinder`：
 
@@ -101,17 +104,17 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
 
-在此範例中，由於引數名稱不是預設的 `authorId`，因此會使用 `ModelBinder` 屬性在參數上指定。 請注意，控制器和動作方法相較於查詢動作方法中的實體，都更為簡化。 使用 Entity Framework Core 擷取作者的邏輯已移至模型繫結器。 當您有數個繫結至作者模型的方法時，這樣做明顯簡化許多，而且可協助您遵循 [DRY 原則](http://deviq.com/don-t-repeat-yourself/)。
+在此範例中，由於引數名稱不是預設的 `authorId`，因此會使用 `ModelBinder` 屬性在參數上指定。 請注意，控制器和動作方法相較於查詢動作方法中的實體，都更為簡化。 使用 Entity Framework Core 擷取作者的邏輯已移至模型繫結器。 當您有數個繫結至 `Author` 模型的方法時，這樣做會明顯簡化許多。
 
 您可以將 `ModelBinder` 屬性套用至個別模型屬性 (例如在 ViewModel 上) 或動作方法參數，只指定該類型或動作的特定模型繫結器或模型名稱。
 
 ### <a name="implementing-a-modelbinderprovider"></a>實作 ModelBinderProvider
 
-除了套用屬性，您還可以實作 `IModelBinderProvider`。 這是內建架構繫結器的實作方式。 當您指定繫結器的作業類型時，您會指定其所產生的引數類型，而**不是**繫結器接受的輸入。 下列繫結器提供者可搭配 `AuthorEntityBinder` 使用。 當它新增 MVC 的提供者集合時，您不需要在 `Author` 或 `Author` 類型參數上使用 `ModelBinder` 屬性。
+除了套用屬性，您還可以實作 `IModelBinderProvider`。 這是內建架構繫結器的實作方式。 當您指定繫結器的作業類型時，您會指定其所產生的引數類型，而**不是**繫結器接受的輸入。 下列繫結器提供者可搭配 `AuthorEntityBinder` 使用。 當它新增至提供者的 MVC 集合時，您不需要在 `Author` 或 `Author` 型別參數上使用 `ModelBinder` 屬性。
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinderProvider.cs?highlight=17-20)]
 
-> 注意：上述程式碼會傳回 `BinderTypeModelBinder`。 `BinderTypeModelBinder` 會作為模型繫結器的 Factory，並提供相依性插入 (DI)。 `AuthorEntityBinder` 需要 DI 能夠存取 EF Core。 如果您的模型繫結器需要來自 DI 的服務，請使用 `BinderTypeModelBinder`。
+> 注意:上述程式碼會傳回 `BinderTypeModelBinder`。 `BinderTypeModelBinder` 會作為模型繫結器的 Factory，並提供相依性插入 (DI)。 `AuthorEntityBinder` 需要 DI 能夠存取 EF Core。 如果您的模型繫結器需要來自 DI 的服務，請使用 `BinderTypeModelBinder`。
 
 若要使用自訂模型繫結器提供者，將它新增 `ConfigureServices`：
 
@@ -130,6 +133,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 ## <a name="recommendations-and-best-practices"></a>建議與最佳做法
 
 自訂模型繫結器：
+
 - 不應該嘗試設定狀態碼或傳回結果 (例如 404 找不到)。 如果模型繫結失敗，[動作篩選](xref:mvc/controllers/filters)或動作方法本身內的邏輯應該會處理失敗。
 - 最適合用來排除動作方法中的重複程式碼和交叉關注。
 - 一般而言，不應該用來將字串轉換成自訂類型，[`TypeConverter`](/dotnet/api/system.componentmodel.typeconverter) 通常是較好的選擇。

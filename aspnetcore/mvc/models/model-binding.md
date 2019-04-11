@@ -4,14 +4,14 @@ author: tdykstra
 description: 了解 ASP.NET Core MVC 中的模型繫結如何將 HTTP 要求中的資料對應至動作方法參數。
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: tdykstra
-ms.date: 01/22/2018
+ms.date: 11/13/2018
 uid: mvc/models/model-binding
-ms.openlocfilehash: 200e2c22e02ec9e24b7cdb3883cf6f2f93f2f4b7
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 1dc9b41328ed78440622acc1865b6f088d394403
+ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095729"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597780"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core 中的資料繫結
 
@@ -55,7 +55,7 @@ The link works but generates an error when building with DocFX
 
 到目前為止，範例會使用簡單類型。 在 MVC 中，簡單類型是任何 .NET 基本類型或是包含字串類型轉換子的類型。 如果動作方法的參數是類別 (例如將簡單和複雜類型包含為屬性的 `Movie` 類型)，則仍會妥善地處理 MVC 的模型繫結。 它會使用反映和遞迴以周遊尋找相符項目之複雜類型的屬性。 模型繫結會尋找模式 *parameter_name.property_name*，以將值繫結至屬性。 如果找不到此表單的相符值，則會嘗試只使用屬性名稱進行繫結。 針對這些類型 (例如 `Collection` 類型)，模型繫結會尋找 *parameter_name[index]* 或只尋找 *[index]* 的相符項目。 模型繫結會以同樣地方式處理 `Dictionary` 類型，並要求 *parameter_name[key]* 或只要求 *[key]*，只要索引鍵是簡單類型即可。 所支援的索引鍵符合針對相同模型類型所產生的欄位名稱 HTML 和標籤協助程式。 這會啟用反覆存取值，讓表單欄位持續填入使用者輸入，以方便使用；例如，從建立或編輯所繫結的資料未通過驗證時。
 
-若要進行繫結，類別必須具有公用預設建構函式，而要繫結的成員必須是公用可寫入屬性。 發生模型繫結時，只會使用公用預設建構函式來具現化此類別，接著可以設定屬性。
+若要讓模型繫結可行，類別必須具有要繫結的公用預設建構函式及公用可寫入屬性。 發生模型繫結時，會使用公用預設建構函式將此類別具現化，接著可以設定屬性。
 
 繫結參數時，模型繫結會停止尋找具有該名稱的值，並繼續繫結下一個參數。 否則，預設模型繫結行為會將參數設定為其預設值 (視其類型而定)：
 
@@ -99,6 +99,31 @@ MVC 會包含數個屬性，可用來將其預設模型繫結行為導向至不�
 
 當您需要覆寫模型繫結的預設行為時，屬性是很有幫助的工具。
 
+## <a name="customize-model-binding-and-validation-globally"></a>全域自訂模型繫結和驗證
+
+模型繫結和驗證系統的行為是由描述下列內容的 [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) 所驅動：
+
+* 如何繫結模型。
+* 如何對類型和其屬性進行驗證。
+
+藉由將詳細資料提供者新增至 [MvcOptions.ModelMetadataDetailsProviders](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions.modelmetadatadetailsproviders#Microsoft_AspNetCore_Mvc_MvcOptions_ModelMetadataDetailsProviders)，即可全域設定系統行為的各個層面。 MVC 有一些內建的詳細資料提供者，其允許設定如停用特定類型的模型繫結或驗證等行為。
+
+若要對特定類型的所有模型停用模型繫結，請在 `Startup.ConfigureServices` 中新增 [ExcludeBindingMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.excludebindingmetadataprovider)。 例如，若要對類型為 `System.Version` 的所有模型停用模型繫結：
+
+```csharp
+services.AddMvc().AddMvcOptions(options =>
+    options.ModelMetadataDetailsProviders.Add(
+        new ExcludeBindingMetadataProvider(typeof(System.Version))));
+```
+
+若要對特定類型的屬性停用驗證，請在 `Startup.ConfigureServices` 中新增 [SuppressChildValidationMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.suppresschildvalidationmetadataprovider)。 例如，若要針對類型為 `System.Guid` 的屬性停用驗證：
+
+```csharp
+services.AddMvc().AddMvcOptions(options =>
+    options.ModelMetadataDetailsProviders.Add(
+        new SuppressChildValidationMetadataProvider(typeof(System.Guid))));
+```
+
 ## <a name="bind-formatted-data-from-the-request-body"></a>繫結要求本文中的格式化資料
 
 要求資料可以有各種不同的格式，包括 JSON、XML 及其他項目。 當您使用 [FromBody] 屬性指出您想要將參數繫結至要求本文中的資料時，MVC 會使用一組已設定的格式器，以根據其內容類型來處理要求資料。 根據預設，MVC 包括 `JsonInputFormatter` 類別來處理 JSON 資料，但是您可以新增其他格式器來處理 XML 及其他自訂格式。
@@ -109,7 +134,7 @@ MVC 會包含數個屬性，可用來將其預設模型繫結行為導向至不�
 > [!NOTE]
 > `JsonInputFormatter` 是預設格式器，並且根據 [Json.NET](https://www.newtonsoft.com/json)。
 
-除非另外套用屬性，否則 ASP.NET 會根據 [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) 標頭和參數類型來選取輸入格式器。 如果您想要使用 XML 或另一種格式，則必須在 *Startup.cs* 檔案中設定它，但您可能需要先使用 NuGet 來取得 `Microsoft.AspNetCore.Mvc.Formatters.Xml` 的參考。 啟動程式碼應該如下：
+除非另外指定套用屬性，否則 ASP.NET Core 會根據 [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) 標頭和參數類型來選取輸入格式器。 如果您想要使用 XML 或另一種格式，則必須在 *Startup.cs* 檔案中設定它，但您可能需要先使用 NuGet 來取得 `Microsoft.AspNetCore.Mvc.Formatters.Xml` 的參考。 啟動程式碼應該如下：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -119,7 +144,7 @@ public void ConfigureServices(IServiceCollection services)
    }
 ```
 
-*Startup.cs* 檔案中的程式碼包含具有 `services` 引數的 `ConfigureServices` 方法，以用來建置 ASP.NET 應用程式的服務。 在範例中，我們會將 XML 格式器新增為 MVC 針對此應用程式所提供的服務。 傳入 `AddMvc` 方法的 `options` 引數，可讓您在應用程式啟動時從 MVC 新增和管理篩選、格式器以及其他系統選項。 然後將 `Consumes` 屬性套用至控制器類別或動作方法，以使用您想要的格式。
+*Startup.cs* 檔案中的程式碼包含具有 `services` 引數的 `ConfigureServices` 方法，可用來建置 ASP.NET Core 應用程式的服務。 在範例中，我們會將 XML 格式器新增為 MVC 針對此應用程式所提供的服務。 傳入 `AddMvc` 方法的 `options` 引數，可讓您在應用程式啟動時從 MVC 新增和管理篩選、格式器以及其他系統選項。 然後將 `Consumes` 屬性套用至控制器類別或動作方法，以使用您想要的格式。
 
 ### <a name="custom-model-binding"></a>自訂模型繫結
 

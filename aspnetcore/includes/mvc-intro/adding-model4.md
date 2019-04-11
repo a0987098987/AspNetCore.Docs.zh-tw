@@ -4,11 +4,12 @@
 
 <!-- l.. Make copy of Movies controller because we comment out the initial index method and update it later  -->
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_1)] 
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_1)] 
 
 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將資料庫內容 (`MvcMovieContext `) 插入到控制器中。 控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。
 
 <a name="strongly-typed-models-keyword-label"></a>
+<a name="strongly-typed-models-and-the--keyword"></a>
 
 ## <a name="strongly-typed-models-and-the-model-keyword"></a>強型別模型和 @model 關鍵字
 
@@ -18,7 +19,18 @@ MVC 也提供將強型別模型物件傳遞至檢視的能力。 強型別方法
 
 檢查 *Controllers/MoviesController.cs* 檔案中產生的 `Details` 方法：
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MoviesController.cs?name=snippet_details)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
+
+::: moniker-end
+
 
 `id` 參數通常會傳遞為路由資料。 例如，`http://localhost:5000/movies/details/1` 設定：
 
@@ -32,12 +44,31 @@ MVC 也提供將強型別模型物件傳遞至檢視的能力。 強型別方法
 
 若未提供識別碼值，`id` 參數會定義為[可為 Null 的型別](/dotnet/csharp/programming-guide/nullable-types/index) (`int?`)。
 
+
+
+::: moniker range=">= aspnetcore-2.1"
+
+[Lambda 運算式](/dotnet/articles/csharp/programming-guide/statements-expressions-operators/lambda-expressions)會傳遞至 `FirstOrDefaultAsync`，以選取符合路由資料或查詢字串值的電影實體。
+
+```csharp
+var movie = await _context.Movie
+    .FirstOrDefaultAsync(m => m.ID == id);
+```
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
 [Lambda 運算式](/dotnet/articles/csharp/programming-guide/statements-expressions-operators/lambda-expressions)會傳遞至 `SingleOrDefaultAsync`，以選取符合路由資料或查詢字串值的電影實體。
 
 ```csharp
 var movie = await _context.Movie
     .SingleOrDefaultAsync(m => m.ID == id);
 ```
+
+::: moniker-end
+
+
 
 如果找到電影，則 `Movie` 模型的執行個體會傳遞至 `Details` 檢視：
 
@@ -47,7 +78,7 @@ return View(movie);
 
 檢查 *Views/Movies/Details.cshtml* 檔案的內容：
 
-[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/DetailsOriginal.cshtml)]
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/DetailsOriginal.cshtml)]
 
 藉由在檢視檔案的最上方包含 `@model` 陳述式，您可以指定檢視預期要有的物件類型。 當您建立電影控制器時，Visual Studio 會在 *Details.cshtml* 檔案的最上方自動包含下列 `@model` 陳述式：
 
@@ -59,16 +90,16 @@ return View(movie);
 
 檢查電影控制器中的 *Index.cshtml* 檢視和 `Index` 方法。 請注意程式碼如何在呼叫 `View` 方法時建立 `List` 物件。 此程式碼會從 `Index` 動作方法將 `Movies` 清單傳遞至檢視：
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_index)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_index)]
 
 當您建立電影控制器時，Scaffolding 會在 *Index.cshtml* 檔案的最上方自動包含下列 `@model` 陳述式：
 
 <!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
-[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?range=1)]
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?range=1)]
 
 `@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影清單。 例如，在 *Index.cshtml* 檢視中，程式碼會透過強型別 `Model` 物件的 `foreach` 陳述式循環存取電影：
 
-[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
 因為 `Model` 物件是強型別 (作為 `IEnumerable<Movie>` 物件)，所以迴圈中每個項目的類型為 `Movie`。 撇開其他優點，這表示您會進行程式碼編譯時期檢查：

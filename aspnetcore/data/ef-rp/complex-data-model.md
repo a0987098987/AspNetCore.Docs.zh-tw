@@ -3,14 +3,15 @@ title: ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 author: rick-anderson
 description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
 ms.author: riande
-ms.date: 6/31/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 88d727b0545f1dacb56ea889e45b02f947867b19
-ms.sourcegitcommit: 6425baa92cec4537368705f8d27f3d0e958e43cd
+ms.openlocfilehash: 311f72699b6291996a43d56247bd3d2bfab596e6
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39220595"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320244"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -46,7 +47,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)�
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供了許多資料類型，例如　Date、Time、PhoneNumber、Currency、EmailAddress 等。`DataType` 屬性也可以讓應用程式自動提供限定於某些類型的功能。 例如: 
+[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供了許多資料類型，例如　Date、Time、PhoneNumber、Currency、EmailAddress 等。`DataType` 屬性也可以讓應用程式自動提供限定於某些類型的功能。 例如：
 
 * `DataType.EmailAddress` 會自動建立 `mailto:` 連結。
 * `DataType.Date` 在大多數的瀏覽器中都會提供日期選取器。
@@ -121,6 +122,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)�
 ```SQL
 SqlException: Invalid column name 'FirstName'.
 ```
+
 若要更新資料庫：
 
 * 建置專案。
@@ -140,7 +142,7 @@ dotnet ef migrations add ColumnFirstName
 dotnet ef database update
 ```
 
-------
+---
 
 `migrations add ColumnFirstName` 命令會產生下列警告訊息：
 
@@ -157,7 +159,7 @@ Please review the migration for accuracy.
 
 ![移轉之後 SSOX 中的 Students 資料表](complex-data-model/_static/ssox-after-migration.png)
 
-在移轉套用之前，名稱資料行的類型為 [nvarchar(MAX)](https://docs.microsoft.com/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)。 名稱資料行現在為 `nvarchar(50)`。 資料行的名稱已從 `FirstMidName` 變更為 `FirstName`。
+在移轉套用之前，名稱資料行的類型為 [nvarchar(MAX)](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)。 名稱資料行現在為 `nvarchar(50)`。 資料行的名稱已從 `FirstMidName` 變更為 `FirstName`。
 
 > [!Note]
 > 在下節中，在某些階段建置應用程式會產生編譯錯誤。 指令會指定何時應建置應用程式。
@@ -221,8 +223,8 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 導覽屬性類型包括：
 
 * `ICollection<T>`
-*  `List<T>`
-*  `HashSet<T>`
+* `List<T>`
+* `HashSet<T>`
 
 若已指定 `ICollection<T>`，EF Core 會根據預設建立一個 `HashSet<T>` 集合。
 
@@ -266,7 +268,6 @@ public int InstructorID { get; set; }
 * 參考型別 (例如類別可為 Null)。
 * 講師可能沒有辦公室指派。
 
-
 `OfficeAssignment` 實體有不可為 Null 的`Instructor` 導覽屬性，因為：
 
 * `InstructorID` 不可為 Null。
@@ -295,7 +296,7 @@ public Instructor Instructor { get; set; }
 
 當資料模型針對相關實體有一個導覽屬性時，EF Core 不需要針對該模型具備 FK 屬性。
 
-EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](https://docs.microsoft.com/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
+EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
 
 * 若沒有明確載入，`Department` 實體將為 Null。
 * 若要更新課程實體，必須先擷取 `Department` 實體。
@@ -314,7 +315,7 @@ public int CourseID { get; set; }
 
 根據預設，EF Core 會假設 PK 值都是由資料庫產生的。 由資料庫產生 PK 值通常都是最佳做法。 針對 `Course` 實體，使用者指定了 PK。 例如，課程號碼 1000 系列表示數學部門的課程，2000 系列則為英文部門的課程。
 
-`DatabaseGenerated` 屬性也可用於產生預設值。 例如，資料庫會自動產生日期欄位來記錄資料列建立或更新的日期。 如需詳細資訊，請參閱[產生的屬性](https://docs.microsoft.com/ef/core/modeling/generated-properties)。
+`DatabaseGenerated` 屬性也可用於產生預設值。 例如，資料庫會自動產生日期欄位來記錄資料列建立或更新的日期。 如需詳細資訊，請參閱[產生的屬性](/ef/core/modeling/generated-properties)。
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵及導覽屬性
 
@@ -382,7 +383,7 @@ public Instructor Administrator { get; set; }
 public ICollection<Course> Courses { get; set; }
 ```
 
-注意：根據慣例，EF Core 會為不可為 Null 的 FK 和多對多關聯性啟用串聯刪除。 串聯刪除可能會導致循環的串聯刪除規則。 循環串聯刪除規則會在新增移轉時造成例外狀況。
+注意:根據慣例，EF Core 會為不可為 Null 的 FK 和多對多關聯性啟用串聯刪除。 串聯刪除可能會導致循環的串聯刪除規則。 循環串聯刪除規則會在新增移轉時造成例外狀況。
 
 例如，若 `Department.InstructorID` 屬性並未定義為可為 Null：
 
@@ -432,7 +433,7 @@ public Student Student { get; set; }
 
 在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
 
-下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表是使用 EF 6.x 的 EF Power Tools 產生的。 建立圖表並不是此教學課程的一部分)。
+下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表是使用 EF 6.x 的 [EF Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition) 產生的。 建立圖表並不是此教學課程的一部分)。
 
 ![學生-課程多對多關聯性](complex-data-model/_static/student-course.png)
 
@@ -442,7 +443,7 @@ public Student Student { get; set; }
 
 `Instructor` 和 `Course` 實體具有使用了純聯結資料表的多對多關聯性。
 
-注意：EF 6.x 支援多對多關聯性的隱含聯結資料表，但 EF Core 並不支援。 如需詳細資訊，請參閱 [Many-to-many relationships in EF Core 2.0](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/) (EF Core 2.0 中的多對多關聯性)。
+注意:EF 6.x 支援多對多關聯性的隱含聯結資料表，但 EF Core 並不支援。 如需詳細資訊，請參閱 [Many-to-many relationships in EF Core 2.0](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/) (EF Core 2.0 中的多對多關聯性)。
 
 ## <a name="the-courseassignment-entity"></a>CourseAssignment 實體
 
@@ -478,7 +479,7 @@ FK 不可為 Null。 `CourseAssignment` (`InstructorID` 及 `CourseID`) 中的�
 由於 `Enrollment` 聯結實體定義了其自身的 PK，因此這種種類的重複項目是可能的。 若要防止這類重複項目：
 
 * 在 FK 欄位中新增一個唯一的索引，或
-* 為 `Enrollment` 設定一個主複合索引鍵，與 `CourseAssignment` 相似。 如需詳細資訊，請參閱[索引](https://docs.microsoft.com/ef/core/modeling/indexes)。
+* 為 `Enrollment` 設定一個主複合索引鍵，與 `CourseAssignment` 相似。 如需詳細資訊，請參閱[索引](/ef/core/modeling/indexes)。
 
 ## <a name="update-the-db-context"></a>更新資料庫內容
 
@@ -490,7 +491,7 @@ FK 不可為 Null。 `CourseAssignment` (`InstructorID` 及 `CourseID`) 中的�
 
 ## <a name="fluent-api-alternative-to-attributes"></a>屬性的 Fluent API 替代項目
 
-上述程式碼中的 `OnModelCreating` 方法使用了 *Fluent API* 設定 EF Core 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式。 [下列程式碼](https://docs.microsoft.com/ef/core/modeling/#methods-of-configuration)為 Fluent API 的其中一個範例：
+上述程式碼中的 `OnModelCreating` 方法使用了 *Fluent API* 設定 EF Core 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式。 [下列程式碼](/ef/core/modeling/#methods-of-configuration)為 Fluent API 的其中一個範例：
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -516,7 +517,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 * 僅 EF Core 組態 (例如，`HasKey`)。
 * 驗證及 EF Core 組態 (例如，`[StringLength(50)]`)。
 
-如需屬性與 Fluent API 的詳細資訊，請參閱[方法](https://docs.microsoft.com/ef/core/modeling/#methods-of-configuration)。
+如需屬性與 Fluent API 的詳細資訊，請參閱[方法](/ef/core/modeling/#methods-of-configuration)。
 
 ## <a name="entity-diagram-showing-relationships"></a>顯示關聯性的實體圖表
 
@@ -536,10 +537,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Final)]
 
-上述程式碼為新的實體提供了種子資料。 此程式碼中的大部分主要用於建立新的實體物件並載入範例資料。 範例資料主要用於測試。 上述程式碼會建立下列多對多關聯性：
-
-* `Enrollments`
-* `CourseAssignment`
+上述程式碼為新的實體提供了種子資料。 此程式碼中的大部分主要用於建立新的實體物件並載入範例資料。 範例資料主要用於測試。 如需如何植入多對多聯結資料表的範例，請參閱 `Enrollments` 和 `CourseAssignments`。
 
 ## <a name="add-a-migration"></a>新增移轉
 
@@ -557,7 +555,7 @@ Add-Migration ComplexDataModel
 dotnet ef migrations add ComplexDataModel
 ```
 
-------
+---
 
 上述命令會顯示關於可能發生資料遺失的警告。
 
@@ -574,9 +572,16 @@ The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_dbo.Cou
 database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 ```
 
-當使用現有的資料執行移轉作業時，某些 FK 條件約束可能會無法透過現有資料滿足。 針對此教學課程，由於您建立了新的資料庫，因此不會發生違反 FK 條件約束的情況。 請參閱[使用舊資料修正外部索引鍵條件約束](#fk)，以取得修正目前資料庫上發生之 FK 違規的說明。
+## <a name="apply-the-migration"></a>套用移轉
 
-### <a name="drop-and-update-the-database"></a>卸除並更新資料庫
+現在您有了現有的資料庫，您需要思考如何對其套用未來變更。 本教學課程示範兩種方法：
+
+* [卸除並重新建立資料庫](#drop)
+* [將移轉套用至現有資料庫](#applyexisting)。 雖然這個方法更複雜且耗時，卻是實際生產環境的慣用方法。 **注意**：這是本教學課程的選擇性章節。 您可以執行卸除並重新建立步驟，然後略過本節。 如果您希望遵循本章節中的步驟，請不要執行卸除並重新建立的步驟。 
+
+<a name="drop"></a>
+
+### <a name="drop-and-re-create-the-database"></a>卸除並重新建立資料庫
 
 更新的 `DbInitializer` 中的程式碼會為新的實體新增種子資料。 若要強制 EF Core 建立新的資料庫，請卸除並更新資料庫：
 
@@ -602,14 +607,14 @@ Update-Database
 dotnet ef database update
  ```
 
-------
+---
 
 執行應用程式。 執行應用程式會執行 `DbInitializer.Initialize` 方法。 `DbInitializer.Initialize` 會填入新的資料庫。
 
 在 SSOX 中開啟資料庫：
 
 * 若先前已開啟過 SSOX，按一下 [重新整理] 按鈕。
-* 展開 [資料表] 節點。 建立的資料表便會顯示。
+* 展開 **Tables** 節點。 建立的資料表便會顯示。
 
 ![SSOX 中的資料表](complex-data-model/_static/ssox-tables.png)
 
@@ -620,11 +625,11 @@ dotnet ef database update
 
 ![SSOX 中的 CourseAssignment 資料](complex-data-model/_static/ssox-ci-data.png)
 
-<a name="fk"></a>
+<a name="applyexisting"></a>
 
-## <a name="fixing-foreign-key-constraints-with-legacy-data"></a>使用舊資料修正外部索引鍵條件約束
+### <a name="apply-the-migration-to-the-existing-database"></a>將移轉套用至現有資料庫
 
-本節為選擇性。
+本節為選擇性。 只有當您略過先前[卸除並重新建立資料庫](#drop)一節，這些步驟才有效。
 
 當使用現有的資料執行移轉作業時，某些 FK 條件約束可能會無法透過現有資料滿足。 當您使用的是生產資料時，您必須進行幾個步驟才能移轉現有資料。 本節提供了修正 FK 條件約束違規的範例。 請不要在沒有備份的情況下進行這些程式碼變更。 若您已完成了先前的章節並已更新資料庫，請不要進行這些程式碼變更。
 
@@ -639,7 +644,7 @@ dotnet ef database update
 * 變更程式碼，以給予新資料行 (`DepartmentID`) 一個新的預設值。
 * 建立一個名為 "Temp" 的假部門以作為預設部門之用。
 
-### <a name="fix-the-foreign-key-constraints"></a>修正外部索引鍵條件約束
+#### <a name="fix-the-foreign-key-constraints"></a>修正外部索引鍵條件約束
 
 更新 `ComplexDataModel` 類別 `Up` 方法：
 
@@ -648,7 +653,9 @@ dotnet ef database update
 
 [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
 
-新增下列醒目提示程式碼。 新的程式碼應位於 `.CreateTable( name: "Department"` 區塊之後：[!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
+新增下列醒目提示程式碼。 新的程式碼位於 `.CreateTable( name: "Department"` 區塊後方：
+
+ [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
 藉由上述的變更，現有的 `Course` 資料列便會在執行 `ComplexDataModel``Up` 方法後與 "Temp" 部門產生關聯。
 
@@ -658,6 +665,11 @@ dotnet ef database update
 * 不使用 "Temp" 部門或 `Course.DepartmentID` 的預設值。
 
 下一個教學課程會涵蓋相關資料。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本 (第 1 部分)](https://www.youtube.com/watch?v=0n2f0ObgCoA)
+* [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=Je0Z5K1TNmY)
 
 ::: moniker-end
 

@@ -5,14 +5,14 @@ description: 了解整合測試如何確保應用程式的元件在基礎結構�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/30/2018
+ms.date: 02/25/2019
 uid: test/integration-tests
-ms.openlocfilehash: 8d304397fb7f218b395374c2b8c696fef9d9f8ad
-ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
+ms.openlocfilehash: 11a8f4296e1b0b229c736645f1aa598307b88ec4
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39410178"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320182"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -22,13 +22,16 @@ ms.locfileid: "39410178"
 
 本主題假設您對單元測試知識有基本了解。如果不熟悉測試概念，請參閱 [.NET Core 與 .NET Standard 中的單元測試](/dotnet/core/testing/)主題和其連結的內容。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 範例應用程式是 Razor 頁面應用程式，並假設 Razor 頁面的基本知識。 如果不熟悉使用 Razor 頁面，請參閱下列主題：
 
 * [Razor 頁面簡介](xref:razor-pages/index)
 * [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Razor 頁面單元測試](xref:test/razor-pages-tests)
+
+> [!NOTE]
+> 進行測試的 Spa，我們建議工具這類[Selenium](https://www.seleniumhq.org/)，它可以自動在瀏覽器。
 
 ## <a name="introduction-to-integration-tests"></a>整合測試的簡介
 
@@ -69,9 +72,9 @@ ASP.NET Core 中的整合測試需要下列各項：
 
 1. SUT 的 web 主機已設定。
 1. 測試伺服器用戶端會提交要求給應用程式。
-1. *排列*測試步驟執行： 測試應用程式會準備要求。
-1. *Act*測試步驟執行： 用戶端送出要求並接收回應。
-1. *Assert*測試步驟執行：*實際*做為驗證回應*傳遞*或*失敗*根據*預期*回應。
+1. *排列*測試步驟執行：測試應用程式會準備要求。
+1. *Act*測試步驟執行：用戶端會提交要求，並接收回應。
+1. *Assert*測試步驟執行：*實際*回應會驗證為*傳遞*或是*失敗*根據*預期*回應。
 1. 處理程序會繼續直到所有的測試會執行。
 1. 報告測試結果。
 
@@ -88,7 +91,7 @@ ASP.NET Core 中的整合測試需要下列各項：
 [單元測試](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)文件說明如何設定測試專案和測試執行器，以及如何執行測試和建議方法，名稱測試和測試類別的詳細指示。
 
 > [!NOTE]
-> 建立測試專案的應用程式時，分開的單元測試整合測試分成不同的專案。 這有助於確保，測試基礎結構的元件不小心包含在單元測試。 區隔單元和整合測試也可讓控制哪些資料集的測試的執行。
+> 建立測試專案的應用程式時，分開的單元測試整合測試分成不同的專案。 這有助於確保測試基礎結構的元件意外不包含在單元測試。 區隔單元和整合測試也可讓控制哪些資料集的測試的執行。
 
 沒有幾乎任何的 Razor Pages 應用程式的測試組態和 MVC 應用程式之間的差異。 唯一的差別是在測試命名的方式。 在 Razor 頁面應用程式中測試的頁面端點通常命名為之後的頁面模型類別 (例如`IndexPageTests`來測試索引頁面的元件整合)。 在 MVC 應用程式中，測試會通常依控制器類別並命名這些測試的控制站 (例如`HomeControllerTests`測試針對 Home 控制器元件整合)。
 
@@ -97,8 +100,8 @@ ASP.NET Core 中的整合測試需要下列各項：
 測試專案必須：
 
 * 請參考下列套件：
-  - [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
-  - [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
+  * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
+  * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * 專案檔中指定 Web SDK (`<Project Sdk="Microsoft.NET.Sdk.Web">`)。 Web SDK 時，必須參考[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
 
 這些必要條件中所見[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/)。 檢查*tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*檔案。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
@@ -107,11 +110,15 @@ ASP.NET Core 中的整合測試需要下列各項：
 * [xunit.runner.visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
 * [AngleSharp](https://www.nuget.org/packages/AngleSharp/)
 
+## <a name="sut-environment"></a>SUT 環境
+
+如果 SUT[環境](xref:fundamentals/environments)未設定，則環境會預設為開發。
+
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>預設值 WebApplicationFactory 的基本測試
 
 [WebApplicationFactory&lt;TEntryPoint&gt; ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1)用來建立[TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)整合測試。 `TEntryPoint` 通常是 SUT 的進入點類別`Startup`類別。
 
-測試類別會實作*類別的裝置*介面 (`IClassFixture`) 以指出包含測試類別，且提供共用的物件執行個體的類別中的測試。
+測試類別會實作*類別的裝置*介面 ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) 以指出包含測試類別，且提供共用的物件執行個體的類別中的測試。
 
 ### <a name="basic-test-of-app-endpoints"></a>基本測試的應用程式端點
 
@@ -148,7 +155,7 @@ Web 主機組態可以建立獨立的測試類別，藉由繼承自`WebApplicati
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   在植入的資料庫[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)由執行`InitializeDbForTests`方法。 此方法所述[整合測試範例： 測試應用程式的組織](#test-app-organization)一節。
+   在植入的資料庫[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)由執行`InitializeDbForTests`方法。 中所述的方法是[整合測試的範例：測試應用程式組織](#test-app-organization)一節。
 
 2. 使用自訂`CustomWebApplicationFactory`測試類別中。 下列範例會使用中的處理站`IndexPageTests`類別：
 
@@ -170,9 +177,9 @@ Web 主機組態可以建立獨立的測試類別，藉由繼承自`WebApplicati
 
 * `GetDocumentAsync` &ndash; 接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回`IHtmlDocument`。 `GetDocumentAsync` 使用準備的處理站*虛擬回應*根據原始`HttpResponseMessage`。 如需詳細資訊，請參閱 [AngleSharp 文件](https://github.com/AngleSharp/AngleSharp#documentation)。
 * `SendAsync` 擴充方法`HttpClient`compose [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)然後呼叫[SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_)提交要求給 SUT。 多載`SendAsync`接受 HTML 表單 (`IHtmlFormElement`) 和下列：
-  - 提交按鈕的表單 (`IHtmlElement`)
-  - 表單值集合 (`IEnumerable<KeyValuePair<string, string>>`)
-  - 提交按鈕 (`IHtmlElement`)，從而形成值 (`IEnumerable<KeyValuePair<string, string>>`)
+  * 提交按鈕的表單 (`IHtmlElement`)
+  * 表單值集合 (`IEnumerable<KeyValuePair<string, string>>`)
+  * 提交按鈕 (`IHtmlElement`)，從而形成值 (`IEnumerable<KeyValuePair<string, string>>`)
 
 > [!NOTE]
 > [AngleSharp](https://anglesharp.github.io/)第三方剖析供示範之用，本主題中的範例應用程式的程式庫。 AngleSharp 不支援，或整合測試的 ASP.NET Core 應用程式所需。 其他剖析器可以使用，例如[Html 靈活度組件 (HAP)](http://html-agility-pack.net/)。 另一種方法是撰寫程式碼來直接處理防偽系統的要求驗證語彙基元和防偽 cookie。
@@ -229,7 +236,7 @@ _client = _factory.CreateClient(clientOptions);
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet2)]
 
-*Pages/Index.cshtml.cs*:
+*Pages/Index.cshtml.cs*：
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml.cs?name=snippet1&highlight=4,9,20,26)]
 
@@ -314,6 +321,10 @@ SUT 應用程式執行時，會產生下列標記：
 }
 ```
 
+## <a name="disposal-of-objects"></a>物件的處置
+
+在測試後`IClassFixture`實作會執行， [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)並[HttpClient](/dotnet/api/system.net.http.httpclient) xUnit 處置時進行處置[WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1). 如果物件具現化開發人員需要處置，處置它們在`IClassFixture`實作。 如需詳細資訊，請參閱 <<c0> [ 實作 Dispose 方法](/dotnet/standard/garbage-collection/implementing-dispose)。
+
 ## <a name="integration-tests-sample"></a>整合測試範例
 
 [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)是兩個應用程式所組成：
@@ -342,7 +353,7 @@ SUT 是 Razor Pages 訊息系統具有下列特性：
 
 &#8224;EF 主題[使用 InMemory 進行測試](/ef/core/miscellaneous/testing/in-memory)，說明如何使用記憶體中資料庫的 mstest 執行測試。 本主題會使用[xUnit](https://xunit.github.io/)測試架構。 測試概念和跨不同的測試架構的測試實作都類似，但不是完全相同。
 
-雖然不會使用應用程式[儲存機制模式](xref:fundamentals/repository-pattern)並不是有效的範例[工作單位 (UoW) 模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)，Razor 頁面支援的開發這些模式。 如需詳細資訊，請參閱 <c0> [ 設計基礎結構持續層](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)， [ASP.NET MVC 應用程式中實作存放庫和工作單元模式](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)，和[測試控制器邏輯](/aspnet/core/mvc/controllers/testing)（此範例會實作儲存機制模式）。
+雖然應用程式不會使用儲存機制模式，而且不是有效的範例[工作單位 (UoW) 模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)，Razor 頁面支援的開發這些模式。 如需詳細資訊，請參閱 <<c0> [ 設計基礎結構持續層](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)並[測試控制器邏輯](/aspnet/core/mvc/controllers/testing)（此範例會實作儲存機制模式）。
 
 ### <a name="test-app-organization"></a>測試應用程式的組織
 

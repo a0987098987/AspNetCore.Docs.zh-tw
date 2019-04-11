@@ -1,36 +1,42 @@
 ---
-title: ASP.NET Core MVC 與 Visual Studio 使用者入門
+title: ASP.NET Core MVC 使用者入門
 author: rick-anderson
-description: 了解如何開始使用 ASP.NET Core MVC 與 Visual Studio。
+description: 了解如何開始使用 ASP.NET Core MVC。
 ms.author: riande
-ms.date: 10/07/2017
+ms.date: 12/12/2018
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 1fb3947023843341403f4355c6ae1e61d7e4f6b1
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: dbc07558d7d7672e60e8834dc3e4e9d8aab437e3
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38217974"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265280"
 ---
-# <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>ASP.NET Core MVC 與 Visual Studio 使用者入門
+# <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [!INCLUDE [consider RP](~/includes/razor.md)]
 
-本教學課程有 3 個版本：
+本教學課程將教導您建置 ASP.NET Core MVC Web 應用程式的基本概念。
 
-* macOS：[使用 Visual Studio for Mac 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app-mac/start-mvc)
-* Windows：[使用 Visual Studio 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app/start-mvc)
-* macOS、Linux 和 Windows：[使用 Visual Studio Code 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app-xplat/start-mvc)
+此應用程式會管理電影標題的資料庫。 您將學習如何：
 
-## <a name="install-visual-studio-and-net-core"></a>安裝 Visual Studio 和 .NET Core
+> [!div class="checklist"]
+> * 建立 Web 應用程式。
+> * 新增並建構模型。
+> * 使用資料庫。
+> * 新增搜尋和驗證。
 
-::: moniker range=">= aspnetcore-2.1"
+結束時，您將會有一個可管理及顯示電影資料的應用程式。
 
-[!INCLUDE [](~/includes/net-core-prereqs-windows.md) [](~/includes/net-core-prereqs-windows.md)]
+[!INCLUDE[](~/includes/mvc-intro/download.md)]
+
+[!INCLUDE[](~/includes/net-core-prereqs-all-2.2.md)]
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 從 Visual Studio 中，選取 [檔案] > [新增] > [專案]。
 
@@ -38,132 +44,107 @@ ms.locfileid: "38217974"
 
 完成 [新增專案] 對話方塊：
 
-* 在左窗格中，點選 [.NET Core]。
-* 在中央窗格中，點選 [ASP.NET Core Web 應用程式 (.NET Core)]。
+* 在左窗格中，選取 [.NET Core]
+* 在中央窗格中，選取 [ASP.NET Core Web 應用程式 (.NET Core)]
 * 將專案命名為 "MvcMovie" (請務必將專案命名為 "MvcMovie"，以便複製程式碼時命名空間相符)。
-* 點選 [確定]。
+* 選取 [確定]
 
-![[新增專案] 對話方塊, 左窗格中的 .Net core, ASP.NET Core Web ](start-mvc/_static/new_project2-21.png)
+![[新增專案] 對話方塊、左窗格中的 [.Net Core]、ASP.NET Core Web ](start-mvc/_static/new_project2-21.png)
 
 完成 [新增 ASP.NET Core Web 應用程式 (.NET Core) - MvcMovie] 對話方塊：
 
-* 在版本選取器下拉式清單方塊中，選取 [ASP.NET Core 2.1]
-* 選取 [Web 應用程式(模型檢視控制器)]。
-* 點選 [確定]。
+* 在版本選取器下拉式清單方塊中，選取 [ASP.NET Core 2.2]
+* 選取 [Web 應用程式 (模型-檢視-控制器)]
+* 選取 [確定]
 
-![[新增專案] 對話方塊, 左窗格中的 .Net core, ASP.NET Core Web ](start-mvc/_static/new_project22-21.png)
+![[新增專案] 對話方塊、左窗格中的 [.Net Core]、ASP.NET Core Web ](start-mvc/_static/new_project22-21.png)
 
-Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只要輸入專案名稱，然後選取幾個選項，就立刻會有工作中的應用程式。 這是基本的入門專案，是個好開始。
+Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只要輸入專案名稱，然後選取幾個選項，就立刻會有工作中的應用程式。 這是基本的入門專案，讓我們從這裡開始吧。
 
-點選 **F5** 在偵錯模式中執行應用程式，或 **Ctrl-F5** 在非偵錯模式中執行。
-<!-- These images are also used by uid: tutorials/first-mvc-app-xplat/start-mvc -->
-![執行中的應用程式](start-mvc/_static/1.png)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行您的應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 在上圖中，連接埠號碼為 5000。 瀏覽器中的 URL 顯示`localhost:5000`。 當您執行應用程式時，會看到不同的連接埠編號。
-* 使用 **Ctrl + F5** (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
-* 您可以從 [偵錯] 功能表項目的偵錯或非偵錯模式中啟動應用程式：
+本教學課程假設您熟悉 VS Code。 如需詳細資訊，請參閱 [VS Code 使用者入門](https://code.visualstudio.com/docs)和 [Visual Studio Code 說明](#visual-studio-code-help)。
 
-![[偵錯] 功能表](start-mvc/_static/debug_menu.png)
+* 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
+* 將目錄 (`cd`) 變更為其中包含專案的資料夾。
+* 執行下列命令：
 
-* 您可以點選 [IIS Express] 按鈕偵錯應用程式
+   ```console
+   dotnet new mvc -o MvcMovie
+   code -r MvcMovie
+   ```
 
-![IIS Express](start-mvc/_static/iis_express.png)
+  * 對話方塊隨即顯示，並指出 **'MvcMovie' 中遺漏了建置和偵錯的必要資產。新增它們嗎？**  選取 [是]
 
-預設範本提供您作用中的**首頁、關於**和**連絡人**連結。 上圖的瀏覽器不會顯示這些連結。 根據瀏覽器大小，您可能需要按一下巡覽圖示來顯示連結。
+  * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
+  * `code -r MvcMovie`：在 Visual Studio Code 中載入 *MvcMovie.csproj* 專案檔。
 
-![右上角的瀏覽圖示](start-mvc/_static/2.png)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-如果您在偵錯模式中執行，請點選 **Shift + F5** 停止偵錯。
+* 選取 [檔案] > [新增方案]。
 
-在本教學課程的下一個部分中，我們會了解 MVC，並開始撰寫一些程式碼。
+  ![macOS 新增方案](~/tutorials/first-web-api-mac/_static/sln.png)
 
-::: moniker-end
+* 選取 [.NET Core 應用程式] > [ASP.NET Core] > [ASP.NET Core Web 應用程式 (MVC)] > [下一步]。
 
-::: moniker range="<= aspnetcore-2.0"
+  ![macOS [新增專案] 對話方塊](~/tutorials/first-mvc-app-mac/start-mvc/1.png)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+* 在 [設定您的新 ASP.NET Core Web API] 對話方塊中，接受 [目標 Framework] 的預設 **.NET Core 2.2*。
 
-[!INCLUDE [](~/includes/net-core-prereqs.md) [](~/includes/net-core-prereqs.md)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-安裝 Visual Studio Community 2017。 選取要下載的社群。 如已安裝 Visual Studio 2017 請跳過此步驟。
-
-* [Visual Studio 2017 首頁的安裝程式](https://www.visualstudio.com/)
-
-執行安裝程式並選取下列工作負載：
-
-* **ASP.NET 與網頁程式開發** (位在 [Web & Cloud] (Web 與雲端) 下)
-* **.NET Core 跨平台開發** (位在 [其他工具組] 下)
-
-![**ASP.NET 與網頁程式開發** (位在 [Web & Cloud] (Web 與雲端)**** 下)](start-mvc/_static/web_workload.png)
-
-![**.NET Core 跨平台開發** (位在 [其他工具組]**** 下)](start-mvc/_static/x_plat_wl.png)
+* 將專案命名為 **MvcMovie**，然後選取 [建立]。
 
 ---
 
-## <a name="create-a-web-app"></a>建立 Web 應用程式
+### <a name="run-the-app"></a>執行應用程式
 
-從 Visual Studio 中，選取 [檔案] > [新增] > [專案]。
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-![[檔案] > [新增] > [專案]](start-mvc/_static/alt_new_project.png)
+選取 **Ctrl-F5** 以非偵錯模式執行應用程式。
 
-完成 [新增專案] 對話方塊：
+[!INCLUDE[](~/includes/trustCertVS.md)]
 
-* 在左窗格中，點選 [.NET Core]。
-* 在中央窗格中，點選 [ASP.NET Core Web 應用程式 (.NET Core)]。
-* 將專案命名為 "MvcMovie" (請務必將專案命名為 "MvcMovie"，以便複製程式碼時命名空間相符)。
-* 點選 [確定]。
+* Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。
+* 使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
+* 您可以從 [偵錯] 功能表項目的偵錯或非偵錯模式中啟動應用程式：
 
-![[新增專案] 對話方塊, 左窗格中的 .Net core, ASP.NET Core Web ](start-mvc/_static/new_project2.png)
+  ![[偵錯] 功能表](start-mvc/_static/debug_menu.png)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+* 您可以選取 [IIS Express] 按鈕偵錯應用程式
 
-完成 [新增 ASP.NET Core Web 應用程式 (.NET Core) - MvcMovie] 對話方塊：
+  ![IIS Express](start-mvc/_static/iis_express.png)
 
-* 在版本選取器下拉式清單方塊中，選取 [ASP.NET Core 2.-]。
-* 選取 [Web 應用程式(模型檢視控制器)]。
-* 點選 [確定]。
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-![[新增專案] 對話方塊, 左窗格中的 .Net core, ASP.NET Core Web ](start-mvc/_static/new_project22.png)
+按 Ctrl+F5 即可執行而不使用偵錯工具。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+[!INCLUDE[](~/includes/trustCertVSC.md)]
 
-完成 [新增 ASP.NET Core Web 應用程式 (.NET Core) - MvcMovie] 對話方塊：
+  Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後瀏覽至 `https://localhost:5001`。 位址列會顯示 `localhost:port:5001`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
 
-* 在版本選取器下拉式清單方塊中，點選 [ASP.NET Core 1.1]。
-* 點選 [Web 應用程式]
-* 保留預設值 [No Authentication] (無驗證)
-* 點選 [確定]。
+  使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式來重新整理頁面並檢視變更。
 
-![新的 ASP.NET Core Web 應用程式](start-mvc/_static/p3.png)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
+
+[!INCLUDE[](~/includes/trustCertMac.md)]
+
+* 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 當您執行應用程式時，會看到不同的連接埠編號。
+* 您可以從 [執行] 功能表的偵錯或非偵錯模式中啟動應用程式。
 
 ---
 
-Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只要輸入專案名稱，然後選取幾個選項，就立刻會有工作中的應用程式。 這是基本的入門專案，是個好開始。
+* 選取 [接受] 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
-點選 **F5** 在偵錯模式中執行應用程式，或 **Ctrl-F5** 在非偵錯模式中執行。
-<!-- These images are also used by uid: tutorials/first-mvc-app-xplat/start-mvc -->
-![執行中的應用程式](start-mvc/_static/1.png)
+  ![Home 或 Index 頁面](start-mvc/_static/privacy.png)
 
-* Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行您的應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 在上圖中，連接埠號碼為 5000。 瀏覽器中的 URL 顯示`localhost:5000`。 當您執行應用程式時，會看到不同的連接埠編號。
-* 使用 **Ctrl + F5** (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
-* 您可以從 [偵錯] 功能表項目的偵錯或非偵錯模式中啟動應用程式：
+  下圖顯示接受追蹤之後的應用程式：
 
-![[偵錯] 功能表](start-mvc/_static/debug_menu.png)
+  ![Home 或 Index 頁面](start-mvc/_static/home2.2.png)
 
-* 您可以點選 [IIS Express] 按鈕偵錯應用程式
+[!INCLUDE[](~/includes/vs-vsc-vsmac-help.md)]
 
-![IIS Express](start-mvc/_static/iis_express.png)
+在本教學課程的下一個部分中，您會了解 MVC，並開始撰寫一些程式碼。
 
-預設範本提供您作用中的**首頁、關於**和**連絡人**連結。 上圖的瀏覽器不會顯示這些連結。 根據瀏覽器大小，您可能需要按一下巡覽圖示來顯示連結。
-
-![右上角的瀏覽圖示](start-mvc/_static/2.png)
-
-如果您在偵錯模式中執行，請點選 **Shift + F5** 停止偵錯。
-
-在本教學課程的下一個部分中，我們會了解 MVC，並開始撰寫一些程式碼。
-
-::: moniker-end
 > [!div class="step-by-step"]
-> [下一步](adding-controller.md)  
+> [下一步](adding-controller.md)

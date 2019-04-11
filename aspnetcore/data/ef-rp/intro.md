@@ -3,14 +3,15 @@ title: ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 
 author: rick-anderson
 description: 示範如何建立使用 Entity Framework Core 的 Razor 頁面應用程式
 ms.author: riande
-ms.date: 6/31/2017
+ms.custom: seodec18
+ms.date: 11/22/2018
 uid: data/ef-rp/intro
-ms.openlocfilehash: b954c1ab4774ceab3ac0ebb190b162b112ff1307
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: 7723f7ca6c5f9a21b2628933c6e7dabde20c3af6
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39655332"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320195"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -24,7 +25,7 @@ Contoso 大學的 Web 應用程式範例將示範如何以 Entity Framework (EF)
 
 這個範例應用程式是虛構的 Contoso 大學網站。 其中包括的功能有學生入學許可、課程建立、教師指派。 此頁面是說明如何建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:tutorials/index#how-to-download-a-sample)。
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -36,7 +37,7 @@ Contoso 大學的 Web 應用程式範例將示範如何以 Entity Framework (EF)
 
 [!INCLUDE [](~/includes/2.1-SDK.md)]
 
-------
+---
 
 熟悉 [Razor 頁面](xref:razor-pages/index)。 新進程式設計人員應先完成[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)，再開始此系列。
 
@@ -64,7 +65,7 @@ Contoso 大學的 Web 應用程式範例將示範如何以 Entity Framework (EF)
 * 建立新的 ASP.NET Core Web 應用程式。 將專案命名為 **ContosoUniversity**。 請務必將專案命名為 *ContosoUniversity*，當您複製/貼上程式碼時，命名空間才會相符。
 * 在下拉式清單中選取 [ASP.NET Core 2.1]，然後選取 [Web 應用程式]。
 
-如需上述步驟的影像，請參閱[ 建立 Razor Web 應用程式](xref:tutorials/razor-pages/razor-pages-start#create-a-razor-web-app)。
+如需上述步驟的影像，請參閱[ 建立 Razor Web 應用程式](xref:tutorials/razor-pages/razor-pages-start#create-a-razor-pages-web-app)。
 執行應用程式。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
@@ -75,7 +76,7 @@ cd ContosoUniversity
 dotnet run
 ```
 
-------
+---
 
 ## <a name="set-up-the-site-style"></a>設定網站樣式
 
@@ -113,7 +114,7 @@ dotnet run
 
 `ID` 屬性會成為資料庫 (DB) 資料表中的主索引鍵資料行，並對應至這個類別。 EF Core 預設會解譯名為 `ID` 或 `classnameID` 作為主索引鍵的屬性。 在 `classnameID` 中，`classname` 是類別的名稱。 另一個自動識別的主索引鍵是上述範例中的 `StudentID`。
 
-`Enrollments` 屬性為導覽屬性。 導覽屬性會連結至與此實體相關的其他實體。 在這個案例中，`Student entity` 中的 `Enrollments` 屬性會保有與 `Student` 相關的所有 `Enrollment` 實體。 例如，如果資料庫中 Student 資料列有兩個相關的 Enrollment 資料列，則 `Enrollments` 導覽屬性會包含這兩個 `Enrollment` 實體。 相關的 `Enrollment` 資料列，包含該學生在 `StudentID` 資料行中的主索引鍵值。 例如，假設 student with ID=1 在 `Enrollment` 資料表中有兩個資料列。 `Enrollment` 資料表有兩個包含 `StudentID`=1 的資料列。 `StudentID` 為 `Enrollment` 資料表中的外部索引鍵，會指定在 `Student` 資料表中的學生。
+`Enrollments` 屬性為[導覽屬性](/ef/core/modeling/relationships)。 導覽屬性會連結至與此實體相關的其他實體。 在這個案例中，`Student entity` 中的 `Enrollments` 屬性會保有與 `Student` 相關的所有 `Enrollment` 實體。 例如，如果資料庫中 Student 資料列有兩個相關的 Enrollment 資料列，則 `Enrollments` 導覽屬性會包含這兩個 `Enrollment` 實體。 相關的 `Enrollment` 資料列，包含該學生在 `StudentID` 資料行中的主索引鍵值。 例如，假設 student with ID=1 在 `Enrollment` 資料表中有兩個資料列。 `Enrollment` 資料表有兩個包含 `StudentID`=1 的資料列。 `StudentID` 為 `Enrollment` 資料表中的外部索引鍵，會指定在 `Student` 資料表中的學生。
 
 如果導覽屬性可以保存多個實體，該導覽屬性必然是清單類型，例如 `ICollection<T>`。 您可以指定 `ICollection<T>`，或是如 `List<T>`、`HashSet<T>` 的類型。 如使用 `ICollection<T>`，EF Core 預設將建立 `HashSet<T>` 集合。 保存多個實體的導覽屬性，來自多對多和一對多關聯性。
 
@@ -176,9 +177,11 @@ dotnet run
 
 ```console
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
-dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Models.SchoolContext -udl -outDir Pages\Students --referenceScriptLibraries
+dotnet tool install --global dotnet-aspnet-codegenerator
+dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Models.SchoolContext -udl -outDir Pages/Students --referenceScriptLibraries
 ```
-------
+
+---
 
 隨即建立 Scaffold 處理序並變更下列檔案：
 
@@ -187,9 +190,9 @@ dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Models.Sc
 * *Pages/Students* 建立、刪除、詳細資料、編輯、索引。
 * *Data/SchoolContext.cs*
 
-### <a name="files-updates"></a>檔案更新
+### <a name="file-updates"></a>檔案更新
 
-* *Startup.cs*：這個檔案的變更會於下一節中詳述。
+* *Startup.cs*：這個檔案的變更會於下一節詳述。
 * *appsettings.json*：已新增用來連線到本機資料庫的連接字串。
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
@@ -261,6 +264,8 @@ EF Core 會建立空白資料庫。 在本節中，會寫入 `Initialize` 方法
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Intro)]
 
+注意:上述程式碼針對命名空間 (`namespace ContosoUniversity.Models`) 使用 `Models`，而不是使用 `Data`。 `Models` 與產生框架的程式碼一致。 如需詳細資訊，請參閱[此 GitHub Scaffolding 問題](https://github.com/aspnet/Scaffolding/issues/822)。
+
 程式碼會檢查資料庫中是否有任何學生。 如果資料庫中沒有學生，則會使用測試資料初始化資料庫。 它會將測試資料載入陣列之中，而非 `List<T>` 集合，以最佳化效能。
 
 `EnsureCreated` 方法會自動為資料庫內容建立資料庫。 如果資料庫已存在，則 `EnsureCreated` 將會傳回而不修改該資料庫。
@@ -306,10 +311,15 @@ EF Core 會建立空白資料庫。 在本節中，會寫入 `Initialize` 方法
 * EF Core 內容在執行緒中並不安全：不要嘗試執行多個平行作業。
 * 若要利用非同步程式碼的效能優勢，請確認程式庫套件 (例如分頁) 在呼叫將查詢傳送至資料庫的 EF Core 方法時是使用非同步。
 
-如需非同步方法的詳細資訊，請參閱 [Async 概觀](/dotnet/articles/standard/async)和[使用 Async 和 Await 設計非同步程式](/dotnet/csharp/programming-guide/concepts/async/)。
+如需非同步方法的詳細資訊，請參閱 [Async 概觀](/dotnet/standard/async)和[使用 Async 和 Await 設計非同步程式](/dotnet/csharp/programming-guide/concepts/async/)。
 
 在下一個教學課程中，將會檢視基本的 CRUD (建立、讀取、更新、刪除) 作業。
+
 ::: moniker-end
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=P7iTtQnkrNs)
 
 > [!div class="step-by-step"]
 > [下一步](xref:data/ef-rp/crud)

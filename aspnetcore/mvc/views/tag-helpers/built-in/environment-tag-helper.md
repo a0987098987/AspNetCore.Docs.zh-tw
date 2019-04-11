@@ -3,60 +3,67 @@ title: ASP.NET Core 中的環境標籤協助程式
 author: pkellner
 description: 定義了 ASP.NET Core 環境標籤協助程式，包括所有屬性
 ms.author: riande
-ms.date: 07/14/2017
+ms.custom: mvc
+ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: 4a283a3a03aa6cac228ec6effd02e3f1095be260
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 379f58ed37329f047d53adf1dcfdfd2ad6a6ca4e
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342220"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325233"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的環境標籤協助程式
 
-作者：[Peter Kellner](http://peterkellner.net) 和 [Hisham Bin Ateya](https://twitter.com/hishambinateya)
+作者：[Peter Kellner](http://peterkellner.net)、[Hisham Bin Ateya](https://twitter.com/hishambinateya) 和 [Luke Latham](https://github.com/guardrex)
 
-環境標籤協助程式依據目前的主控環境，有條件地呈現含括內容。 其單一屬性 `names` 是以逗號分隔的環境名稱清單，如果有任一項符合目前的環境，將會觸發呈現含括的內容。
+環境標籤協助程式依據目前的[主控環境](xref:fundamentals/environments)，有條件地轉譯含括內容。 環境標籤協助程式的單一屬性 `names`，是以逗號分隔的環境名稱清單。 如果任何提供的環境名稱符合目前環境，則會轉譯含括的內容。
+
+如需標籤協助程式的概觀，請參閱 <xref:mvc/views/tag-helpers/intro>。
 
 ## <a name="environment-tag-helper-attributes"></a>環境標籤協助程式屬性
 
 ### <a name="names"></a>名稱
 
-接受單一主控環境名稱或以逗號分隔的主控環境名稱清單，這些名稱會觸發呈現含括的內容。
+`names` 會接受單一主控環境名稱或以逗號分隔的主控環境名稱清單，這些名稱會觸發轉譯含括的內容。
 
-這些值會與從 ASP.NET Core 靜態屬性 `HostingEnvironment.EnvironmentName` 傳回的目前值進行比較。  這個值可以是下列其中一項：**Staging**、**Development** 或 **Production**。 比較會忽略大小寫。
+環境值會與 [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*) 所傳回的目前值比較。 比較會忽略大小寫。
 
-有效的 `environment` 標籤協助程式範例為：
+下列範例使用環境標籤協助程式。 如果主控環境為「暫存」或「生產」，將會轉譯內容：
 
 ```cshtml
 <environment names="Staging,Production">
-  <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
+    <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
 </environment>
 ```
+
+::: moniker range=">= aspnetcore-2.0"
 
 ## <a name="include-and-exclude-attributes"></a>include 和 exclude 屬性
 
-ASP.NET Core 2.x 新增了 `include`  &  `exclude` 屬性。 這些屬性會依據包含或排除的主控環境名稱來控制含括內容的呈現。
+`include` & `exclude` 屬性會依據包含或排除的主控環境名稱，來控制含括內容的轉譯。
 
-### <a name="include-aspnet-core-20-and-later"></a>include - ASP.NET Core 2.0 和更新版本
+### <a name="include"></a>include
 
-`include` 屬性的行為類似於 ASP.NET Core 1.0 中的 `names` 屬性。
+`include` 屬性會表現出類似 `names` 屬性的行為。 `include` 屬性值中列出的環境，必須與應用程式的主控環境 ([IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*)) 相符，才能轉譯 `<environment>` 標籤的內容。
 
 ```cshtml
 <environment include="Staging,Production">
-  <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
+    <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
 </environment>
 ```
 
-### <a name="exclude-aspnet-core-20-and-later"></a>exclude - ASP.NET Core 2.0 和更新版本
+### <a name="exclude"></a>exclude
 
-相較之下，`exclude` 屬性可讓 `EnvironmentTagHelper` 呈現所有主控環境名稱 (除了您指定的主控環境名稱之外) 的含括內容。
+與 `include` 屬性相反，當主控環境與 `exclude` 屬性值中列出的環境不相符時，將轉譯 `<environment>` 標記的內容。
 
 ```cshtml
 <environment exclude="Development">
-  <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
+    <strong>HostingEnvironment.EnvironmentName is not Development</strong>
 </environment>
 ```
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>其他資源
 

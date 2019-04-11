@@ -1,17 +1,18 @@
 ---
-title: 加入、 下載及刪除身分識別的 ASP.NET Core 專案的自訂使用者資料
+title: 加入、 下載及刪除身分識別的 ASP.NET Core 專案中的使用者資料
 author: rick-anderson
 description: 了解如何在 ASP.NET Core 專案中加入身分識別的自訂使用者資料。 刪除每 GDPR 的資料。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 6/16/2018
+ms.custom: seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: 6f583d65460803c816bf1ccd314216952710cd55
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: 529aa0bf369f8a635bd8d39948585cf2a530e2d9
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39378611"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208482"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>加入、 下載及刪除身分識別的 ASP.NET Core 專案的自訂使用者資料
 
@@ -24,7 +25,7 @@ ms.locfileid: "39378611"
 
 Razor 頁面 web 應用程式，從建立專案範例，但 ASP.NET Core MVC web 應用程式的指示如下。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/authentication/add-user-data/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/authentication/add-user-data/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -46,8 +47,6 @@ Razor 頁面 web 應用程式，從建立專案範例，但 ASP.NET Core MVC web
 dotnet new webapp -o WebApp1
 ```
 
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
-
 ---
 
 ## <a name="run-the-identity-scaffolder"></a>執行身分識別框架
@@ -67,7 +66,7 @@ dotnet new webapp -o WebApp1
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-如果之前尚未安裝 ASP.NET scaffolder，請立即安裝：
+如果之前尚未安裝 ASP.NET Core scaffolder，請立即安裝：
 
 ```cli
 dotnet tool install -g dotnet-aspnet-codegenerator
@@ -92,7 +91,7 @@ dotnet aspnet-codegenerator identity -h
 dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account.Manage.Index
 ```
 
--------------
+---
 
 請依照下列中的指示[移轉、 UseAuthentication 和版面配置](xref:security/authentication/scaffold-identity#efm)來執行下列步驟：
 
@@ -157,7 +156,7 @@ dotnet ef migrations add CustomUserData
 dotnet ef database update
 ```
 
-------
+---
 
 ## <a name="test-create-view-download-delete-custom-user-data"></a>測試建立、 檢視、 下載、 刪除自訂使用者資料
 

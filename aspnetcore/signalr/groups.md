@@ -1,26 +1,26 @@
 ---
 title: 管理使用者和 signalr 的群組
-author: tdykstra
+author: bradygaster
 description: ASP.NET Core SignalR 使用者和群組管理的概觀。
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: bradyg
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/groups
-ms.openlocfilehash: d54ab2a113345f98e26425a88cad165d67b8d456
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 45f2bb44e03a586b7fc186525fdd3a2645c820d5
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095017"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667748"
 ---
 # <a name="manage-users-and-groups-in-signalr"></a>管理使用者和 signalr 的群組
 
-藉由[brennan 第瑜吉](https://github.com/BrennanConroy)
+由[brennan Conroy](https://github.com/BrennanConroy)提供
 
 SignalR 可讓訊息傳送至特定使用者相關聯的所有連線以及具名群組的連線。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
 
 ## <a name="users-in-signalr"></a>SignalR 中的使用者
 
@@ -31,21 +31,7 @@ SignalR 可讓您將訊息傳送至特定使用者相關聯的所有連線。 �
 > [!NOTE]
 > 使用者識別碼會區分大小寫。
 
-```csharp
-public Task SendPrivateMessage(string user, string message)
-{
-    return Clients.User(user).SendAsync("ReceiveMessage", message);
-}
-```
-
-可以藉由建立自訂的使用者識別碼`IUserIdProvider`，並註冊在`ConfigureServices`。
-
-[!code-csharp[UserIdProvider](groups/sample/customuseridprovider.cs?range=4-10)]
-
-[!code-csharp[Configure service](groups/sample/startup.cs?range=21-22,39-42)]
-
-> [!NOTE]
-> 註冊您的自訂 SignalR 服務之前，必須呼叫 AddSignalR。
+[!code-csharp[Configure service](groups/sample/hubs/chathub.cs?range=29-32)]
 
 ## <a name="groups-in-signalr"></a>Signalr 的群組
 
@@ -54,6 +40,8 @@ public Task SendPrivateMessage(string user, string message)
 [!code-csharp[Hub methods](groups/sample/hubs/chathub.cs?range=15-27)]
 
 重新連線時，不會保存群組成員資格。 連接必須重新建立時，重新加入群組。 您不可能來計算群組的成員，因為這項資訊不提供，如果應用程式調整為多部伺服器。
+
+若要保護資源的存取權，使用群組時，使用[驗證和授權](xref:signalr/authn-and-authz)ASP.NET Core 中的功能。 如果您只將使用者新增至群組的認證適用於該群組時，傳送至該群組的訊息將只會移至授權的使用者。 不過，群組不是一項安全性功能。 驗證宣告有群組未這麼做，例如到期及撤銷的功能。 如果已撤銷使用者的權限存取群組，您必須以手動方式偵測，並從群組中移除。
 
 > [!NOTE]
 > 群組名稱會區分大小寫。

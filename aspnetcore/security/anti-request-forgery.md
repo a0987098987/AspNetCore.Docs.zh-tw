@@ -4,14 +4,14 @@ author: steve-smith
 description: 了解如何防止攻擊，惡意網站可能會影響用戶端瀏覽器與應用程式之間的互動的 web 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/19/2018
+ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 6a30e1e2321ca3a81d6e1a320d1d87dddb3033c7
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 88a2d127407378b9e83df7f48b1938ed081f9bb2
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208524"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>ASP.NET Core 中的防止跨網站要求偽造 (XSRF/CSRF) 攻擊
 
@@ -106,8 +106,8 @@ CSRF 攻擊是可能對 web 應用程式使用 cookie 進行驗證，因為：
 
 自動產生的防偽語彙基元的 HTML 表單項目發生時`<form>`標記包含`method="post"`屬性和下列其中一項條件成立：
 
-  * 動作屬性是空的 (`action=""`)。
-  * 未提供的 action 屬性 (`<form method="post">`)。
+* 動作屬性是空的 (`action=""`)。
+* 未提供的 action 屬性 (`<form method="post">`)。
 
 您可以停用自動產生的防偽語彙基元，為 HTML 表單項目：
 
@@ -179,6 +179,31 @@ ASP.NET Core 包含三個[篩選器](xref:mvc/controllers/filters)使用防偽�
 
 來自訂[antiforgery 選項](/dotnet/api/Microsoft.AspNetCore.Antiforgery.AntiforgeryOptions)在`Startup.ConfigureServices`:
 
+::: moniker range=">= aspnetcore-2.0"
+
+```csharp
+services.AddAntiforgery(options => 
+{
+    // Set Cookie properties using CookieBuilder properties†.
+    options.FormFieldName = "AntiforgeryFieldname";
+    options.HeaderName = "X-CSRF-TOKEN-HEADERNAME";
+    options.SuppressXFrameOptionsHeader = false;
+});
+```
+
+&dagger;設定 antiforgery`Cookie`屬性使用的屬性[CookieBuilder](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder)類別。
+
+| 選項 | 描述 |
+| ------ | ----------- |
+| [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | 決定用來建立防偽 cookie 的設定。 |
+| [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | 防偽系統用來呈現檢視中的防偽語彙基元的隱藏的表單欄位名稱。 |
+| [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | 防偽系統所使用的標頭名稱。 如果`null`，系統會考慮只表單資料。 |
+| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | 指定是否要隱藏產生`X-Frame-Options`標頭。 根據預設，標頭會產生含有"Sameorigin 所"的值。 預設值為 `false`。 |
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
 ```csharp
 services.AddAntiforgery(options => 
 {
@@ -200,8 +225,10 @@ services.AddAntiforgery(options =>
 | [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | 在 cookie 上設定的路徑。 這個屬性已經過時，將在未來版本中移除。 建議的替代做法是 Cookie.Path。 |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | 防偽系統用來呈現檢視中的防偽語彙基元的隱藏的表單欄位名稱。 |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | 防偽系統所使用的標頭名稱。 如果`null`，系統會考慮只表單資料。 |
-| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | 指定是否需要 SSL，則防偽系統。 如果`true`，非 SSL 要求會失敗。 預設值為 `false`。 這個屬性已經過時，將在未來版本中移除。 建議的替代做法是將 Cookie.SecurePolicy。 |
+| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | 指定防偽系統是否需要 HTTPS。 如果`true`，非 HTTPS 的要求會失敗。 預設值為 `false`。 這個屬性已經過時，將在未來版本中移除。 建議的替代做法是將 Cookie.SecurePolicy。 |
 | [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | 指定是否要隱藏產生`X-Frame-Options`標頭。 根據預設，標頭會產生含有"Sameorigin 所"的值。 預設值為 `false`。 |
+
+::: moniker-end
 
 如需詳細資訊，請參閱 < [CookieAuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.CookieAuthenticationOptions)。
 
@@ -385,18 +412,43 @@ xhttp.send(JSON.stringify({ "newPassword": "ReallySecurePassword999$$$" }));
 
 ### <a name="angularjs"></a>AngularJS
 
-AngularJS 使用位址 CSRF 慣例。 如果伺服器會傳送具有名稱的 cookie `XSRF-TOKEN`，AngularJS`$http`服務將 cookie 的值加入標頭將要求傳送到伺服器時。 此程序是自動的。 標頭不需要明確設定。 標頭名稱`X-XSRF-TOKEN`。 伺服器應該偵測此標頭，並驗證其內容。
+AngularJS 使用位址 CSRF 慣例。 如果伺服器會傳送具有名稱的 cookie `XSRF-TOKEN`，AngularJS`$http`服務將 cookie 的值加入標頭將要求傳送到伺服器時。 此程序是自動的。 標頭不需要明確設定的用戶端中。 標頭名稱`X-XSRF-TOKEN`。 伺服器應該偵測此標頭，並驗證其內容。
 
-適用於 ASP.NET Core API 會使用此慣例︰
+ASP.NET Core api，才能使用此慣例，在您的應用程式啟動：
 
 * 設定您的應用程式提供的權杖在 cookie 中稱為`XSRF-TOKEN`。
 * 將 antiforgery 服務設定為尋找標頭`X-XSRF-TOKEN`。
 
 ```csharp
-services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
+public void Configure(IApplicationBuilder app, IAntiforgery antiforgery)
+{
+    app.Use(next => context =>
+    {
+        string path = context.Request.Path.Value;
+
+        if (
+            string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase))
+        {
+            // The request token can be sent as a JavaScript-readable cookie, 
+            // and Angular uses it by default.
+            var tokens = antiforgery.GetAndStoreTokens(context);
+            context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken, 
+                new CookieOptions() { HttpOnly = false });
+        }
+
+        return next(context);
+    });
+}
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // Angular's default header name for sending the XSRF token.
+    services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
+}
 ```
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="extend-antiforgery"></a>擴充 antiforgery
 

@@ -2,26 +2,19 @@
 title: 搭配 ASP.NET Core 使用 Angular 專案範本
 author: SteveSandersonMS
 description: 了解如何開始使用適用於 Angular 與 Angular CLI 的 ASP.NET Core 單頁應用程式 (SPA) 專案範本。
-monikerRange: '>= aspnetcore-2.0'
-ms.author: scaddie
+monikerRange: '>= aspnetcore-2.1'
+ms.author: stevesa
 ms.custom: mvc
-ms.date: 02/21/2018
+ms.date: 03/07/2019
 uid: spa/angular
-ms.openlocfilehash: 811e28af2b67c356ff038d8d673e2164bb56578e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 6d0107ef52d63a0f6f5713c518ddc54ac4230d53
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291461"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665596"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Angular 專案範本
-
-::: moniker range="= aspnetcore-2.0"
-
-> [!NOTE]
-> 本文件與包含於 ASP.NET Core 2.0 中的 Angular 專案範本無關。 其內容是關於您可以手動更新的新版 Angular 範本。 ASP.NET Core 2.1 預設會包含此範本。
-
-::: moniker-end
 
 更新的 Angular 專案範本很適合作為 ASP.NET Core 應用程式的建置起點，並利用 Angular 和 Angular CLI 來實作功能豐富的用戶端使用者介面 (UI)。
 
@@ -29,16 +22,7 @@ ms.locfileid: "36291461"
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
-::: moniker range="= aspnetcore-2.0"
-
-如果使用 ASP.NET Core 2.0，請確定您已經[安裝更新的 React 專案範本](xref:spa/index#installation)。
-
-::: moniker-end
-::: moniker range=">= aspnetcore-2.1"
-
-如果您有安裝 ASP.NET Core 2.1，沒有需要安裝角度的專案範本。
-
-::: moniker-end
+如已安裝 ASP.NET Core 2.1，就沒有必要安裝 Angular 專案範本。
 
 進入命令提示字元，然後在空目錄中使用 `dotnet new angular` 命令以建立新的專案。 例如，下列命令會在 *my-new-app* 目錄中建立應用程式並切換到該目錄：
 
@@ -69,7 +53,7 @@ Now listening on: http://localhost:<port>
 
 在瀏覽器中開啟這個 URL。
 
-應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 系統會記錄一則類似下列的訊息：*NG Live Development Server is listening on localhost:&lt;otherport&gt;, open your browser on http://localhost:&lt;otherport&gt;/*. 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
+應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 系統會記錄一則類似下面的訊息：*NG Live 程式開發伺服器在 localhost 上接聽：&lt;otherport&gt;，開啟您的瀏覽器 http://localhost:&lt; otherport&gt;/*。 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
 
 ---
 
@@ -106,7 +90,7 @@ npm install --save <package_name>
 
 在開發時，應用程式會以方便開發人員操作的模式執行。 例如，JavaScript 組合會包含來源對應 (以便在偵錯時，您可以看到原始的 TypeScript 程式碼)。 應用程式會監看磁碟上的 TypeScript、HTML 和 CSS 檔案變更，並在發現檔案變更時，自動重新編譯並重新載入。
 
-在實際執行環境中，請提供具有最佳效能的應用程式版本。 這是設定為自動進行的。 當您發行時，組建組態會發出精簡、預先 (AoT) 編譯的用戶端程式碼組建。 不同於開發組建，實際執行組建不需要在伺服器上安裝 Node.js (除非您已啟用[伺服器端預先轉譯](#server-side-rendering))。
+在實際執行環境中，請提供具有最佳效能的應用程式版本。 這是設定為自動進行的。 當您發行時，組建組態會發出精簡、預先 (AoT) 編譯的用戶端程式碼組建。 不同開發組建中，於生產環境的組建並不需要 （除非您已啟用伺服器端轉譯 (SSR)），在伺服器上安裝 Node.js。
 
 您可以使用標準 [ASP.NET Core 裝載和部署方法](xref:host-and-deploy/index)。
 
@@ -133,51 +117,6 @@ npm install --save <package_name>
     ```
 
 當您啟動 ASP.NET Core 應用程式時，它並不會啟動 Angular CLI 伺服器。 而是改為使用您手動啟動的執行個體。 這樣可以加快它的啟動和重新啟動速度。 它再也不必每次都得等候 Angular CLI 重建您的用戶端應用程式。
-
-## <a name="server-side-rendering"></a>伺服器端轉譯
-
-作為效能功能，您可以選擇在伺服器上預先轉譯 Angular 應用程式，以及在用戶端上執行它。 這表示瀏覽器接收到代表應用程式起始 UI 的 HTML 標記，因此瀏覽器會在下載及執行您的 JavaScript 組合之前先顯示 UI。 這些實作大部分是來自稱為 [Angular Universal](https://universal.angular.io/) \(英文\) 的 Angular 功能。
-
-> [!TIP]
-> 啟用伺服器端轉譯 (SSR) 會在開發和部署期間引入數個額外的複雜性。 請參閱 [SSR 的缺點 ](#drawbacks-of-ssr) 以判斷 SSR 是否適合您的需求。
-
-若要啟用 SSR，您必須對專案進行數個額外的處理。
-
-在 *Startup* 類別中，在設定 `spa.Options.SourcePath` 的行*之後*，以及在呼叫 `UseAngularCliServer` 或 `UseProxyToSpaDevelopmentServer` 的行*之前*，新增下列內容：
-
-[!code-csharp[](sample/AngularServerSideRendering/Startup.cs?name=snippet_Call_UseSpa&highlight=5-12)]
-
-在開發模式中，此程式碼會嘗試透過執行指令碼 `build:ssr` (於 *ClientApp\package.json* 中定義) 來建置 SSR 組合。 這會建置名為 `ssr`的 Angular 應用程式 (其尚未定義)。
-
-在 *ClientApp/.angular-cli.json* 的 `apps` 陣列尾端，定義名稱為 `ssr` 的額外應用程式。 使用下列選項：
-
-[!code-json[](sample/AngularServerSideRendering/ClientApp/.angular-cli.json?range=24-41)]
-
-這個已啟用 SSR 的新應用程式組態需要兩個額外的檔案：*tsconfig.server.json* 和 *main.server.ts*。 *tsconfig.server.json* 檔案會指定 TypeScript 編譯選項。 *main.server.ts* 檔案會在 SSR 期間作為程式碼進入點。
-
-在 *ClientApp/src* 內新增名為 *tsconfig.server.json* (伴隨現有的 *tsconfig.app.json*)，其中包含下列項目：
-
-[!code-json[](sample/AngularServerSideRendering/ClientApp/src/tsconfig.server.json)]
-
-此檔案會設定 Angular 的 AoT 編譯器，以尋找名為 `app.server.module` 的模組。 透過在 *ClientApp/src/app/app.server.module.ts* 建立新檔案 (伴隨現有的 *app.module.ts*) 並包含下列項目來新增它：
-
-[!code-typescript[](sample/AngularServerSideRendering/ClientApp/src/app/app.server.module.ts)]
-
-此模組會繼承自您的用戶端 `app.module`，並定義 SSR 期間可用的額外 Angular 模組。
-
-回想 *.angular-cli.json* 中的新 `ssr` 項目，有參考名為 *main.server.ts* 的進入點檔案。 您尚未新增該檔案，現在就是新增它的時機。 在 *ClientApp/src/main.server.ts* 建立新檔案 (伴隨現有的 *main.ts*)，其中包含下列項目：
-
-[!code-typescript[](sample/AngularServerSideRendering/ClientApp/src/main.server.ts)]
-
-此檔案的程式碼便是在 ASP.NET Core 執行您新增至 *Startup* 類別的 `UseSpaPrerendering` 中介軟體時，會針對每個要求執行的程式碼。 它負責處理接收來自 .NET 程式碼的 `params` (例如要求的 URL)，以及呼叫 Angular SSR API 來取得產生的 HTML。
-
-嚴格來說，這已足夠在開發模式中啟用 SSR。 請務必做出最後一項變更，以確保應用程式能在發行時正常執行。 在應用程式的主要 *.csproj* 檔案中，將 `BuildServerSideRenderer` 屬性值設定為 `true`：
-
-[!code-xml[](sample/AngularServerSideRendering/AngularServerSideRendering.csproj?name=snippet_EnableBuildServerSideRenderer)]
-
-這樣會設定建置流程以在發行期間執行 `build:ssr`，並將 SSR 檔案部署至伺服器。 如果您未啟用此功能，SSR 將會在實際執行時失敗。
-
-當您的應用程式於開發或實際執行模式中執行時，Angular 程式碼會預先在伺服器上轉譯為 HTML。 用戶端程式碼會以一般的方式執行。
 
 ### <a name="pass-data-from-net-code-into-typescript-code"></a>將資料從.NET 程式碼傳遞至 TypeScript 程式碼
 
@@ -208,3 +147,7 @@ options.SupplyData = (context, data) =>
         // Call browser-specific APIs here
     }
     ```
+
+## <a name="additional-resources"></a>其他資源
+
+* <xref:security/authentication/identity/spa>

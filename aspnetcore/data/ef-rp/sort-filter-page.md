@@ -3,14 +3,15 @@ title: ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 
 author: rick-anderson
 description: 在本教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選、分頁功能新增至頁面。
 ms.author: riande
-ms.date: 6/31/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: ee5a0dae41ba0afba518f0bd6fbd379fdbbfb1c1
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: 162586059e3115bc15efaa63a9a0652e09872f1b
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202610"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209961"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
 
@@ -51,7 +52,7 @@ Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` �
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=3-4)]
 
-下列程式碼包含 C# 條件式 [?: 運算子](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/conditional-operator)：
+下列程式碼包含 C# 條件式 [?: 運算子](/dotnet/csharp/language-reference/operators/conditional-operator)：
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_Ternary)]
 
@@ -97,9 +98,9 @@ Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` �
 
 若要更深入了解這個程式碼：
 
-* 在 *Student/Index.cshtml.cs* 中的 `switch (sortOrder)` 上，設定中斷點。
+* 在 *Students/Index.cshtml.cs* 的 `switch (sortOrder)` 上，設定中斷點。
 * 為 `NameSort` 和 `DateSort` 新增監看式。
-* 在 *Student/Index.cshtml* 中的 `@Html.DisplayNameFor(model => model.Student[0].LastName)` 上，設定中斷點。
+* 在 *Students/Index.cshtml* 的 `@Html.DisplayNameFor(model => model.Student[0].LastName)` 上，設定中斷點。
 
 逐步執行偵錯工具。
 
@@ -121,13 +122,13 @@ Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` �
 * 將 `searchString` 參數新增至 `OnGetAsync` 方法。 從文字方塊中接收搜尋字串值文字方塊會在下一節新增。
 * 將 `Where` 子句新增至 LINQ 陳述式。 `Where` 子句只會選取名字或姓氏包含搜尋字串的學生。 有可以搜尋的值，LINQ 陳述式才會執行。
 
-注意：上述程式碼會在 `IQueryable` 物件上呼叫 `Where` 方法，而篩選是由伺服器處理。 在某些情況下，應用程式可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 例如，假設 `_context.Students` 從 EF Core `DbSet` 變為傳回 `IEnumerable` 集合的儲存機制方法。 結果通常都是一樣的，但在某些情況下可能會不同。
+注意:上面的程式碼會呼叫 `IQueryable` 物件上的 `Where` 方法，而且會在伺服器上處理篩選。 在某些情況下，應用程式可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 例如，假設 `_context.Students` 從 EF Core `DbSet` 變為傳回 `IEnumerable` 集合的儲存機制方法。 結果通常都是一樣的，但在某些情況下可能會不同。
 
 例如，.NET Framework 的 `Contains` 實作，預設會執行區分大小寫的比較。 在 SQL Server，`Contains` 區分大小寫取決於 SQL Server 執行個體的定序設定。 SQL Server 預設為不區分大小寫。 可以使用 `ToUpper` 使測試明確不區分大小寫：
 
 `Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
-如果程式碼變更為使用 `IEnumerable`，則上述程式碼會確保結果不區分大小寫。 在 `IEnumerable` 集合上呼叫 `Contains` 時，會使用 .NET Core 實作。 在 `IQueryable` 物件上呼叫 `Contains` 時，會使用資料庫實作。 從儲存機制中傳回 `IEnumerable` 時，效能可能會顯著損失：
+如果程式碼變更為使用 `IEnumerable`，則上述程式碼會確保結果不區分大小寫。 在 `IEnumerable` 集合上呼叫 `Contains` 時，會使用 .NET Core 實作。 在 `IQueryable` 物件上呼叫 `Contains` 時，會使用資料庫實作。 從存放庫傳回 `IEnumerable` 可能對效能產生明顯的負面影響：
 
 1. 所有列都會從資料庫伺服器傳回。
 1. 在應用程式中，傳回的所有資料列都會套用篩選。
@@ -235,9 +236,9 @@ http://localhost:5000/Students?SearchString=an
 
 若要更深入了解這個程式碼：
 
-* 在 *Student/Index.cshtml.cs* 的 `switch (sortOrder)` 上，設定中斷點。
+* 在 *Students/Index.cshtml.cs* 的 `switch (sortOrder)` 上，設定中斷點。
 * 為 `NameSort`、`DateSort`、`CurrentSort`、`Model.Student.PageIndex` 新增監看式。
-* 在 *Student/Index.cshtml* 的 `@Html.DisplayNameFor(model => model.Student[0].LastName)` 上，設定中斷點。
+* 在 *Students/Index.cshtml* 的 `@Html.DisplayNameFor(model => model.Student[0].LastName)` 上，設定中斷點。
 
 逐步執行偵錯工具。
 
@@ -257,6 +258,8 @@ http://localhost:5000/Students?SearchString=an
 [!code-csharp[](intro/samples/cu21/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
 ### <a name="update-the-about-page-model"></a>更新 About 頁面模型
+
+ASP.NET Core 2.2 中的 Web 範本不包括 [關於] 頁面。 若您使用 ASP.NET Core 2.2，請建立 [關於 Razor Page] 頁面。
 
 以下列程式碼更新 *Pages/About.cshtml.cs* 檔案：
 
@@ -279,8 +282,10 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 ## <a name="additional-resources"></a>其他資源
 
 * [偵錯 ASP.NET Core 2.x 原始檔](https://github.com/aspnet/Docs/issues/4155)
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=MDs7PFpoMqI)
 
 在下一個教學課程中，應用程式將會使用移轉來更新資料模型。
+
 ::: moniker-end
 
 > [!div class="step-by-step"]

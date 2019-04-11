@@ -5,18 +5,18 @@ description: 了解如何使用 ASP.NET Core MVC 建立後端服務，以支援�
 ms.author: riande
 ms.date: 10/14/2016
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 27051cd3c4e2c3aa1ebf6d5510db4645651120e8
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 13149dd4b877b8c17d33d428779ad31d8c51ae9e
+ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276122"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488724"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>使用 ASP.NET Core 建立原生行動應用程式的後端服務
 
 作者：[Steve Smith](https://ardalis.com/)
 
-行動裝置應用程式可以輕鬆的與 ASP.NET Core 後端服務進行通訊。
+行動裝置應用程式可以與 ASP.NET Core 後端服務通訊。 如需如何從 iOS 模擬器和 Android 模擬器連線到本機 Web 服務的指示，請參閱[從 iOS 模擬器和 Android 模擬器連線到本機 Web 服務](/xamarin/cross-platform/deploy-test/connect-to-local-web-services)。
 
 [檢視或下載簡易後端服務程式碼範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
 
@@ -151,3 +151,7 @@ API 方法需要一些方式才能操作資料。 使用原始 Xamarin 範本使
 當您為您的應用程式開發後端服務時，您可能會想要想出一個一致的慣例組或原則來處理跨領域關注。 例如，在上述的服務中，要求找不到的特定記錄會讓使用者接收到 `NotFound` 回應，而非 `BadRequest` 回應。 同樣地，傳送到此服務的命令在傳遞到模型繫結類型時，也會檢查 `ModelState.IsValid`並針對無效的模型類型傳回 `BadRequest`。
 
 當您找到了適用於您 API 的常見原則時，您通常可以在[篩選條件](../mvc/controllers/filters.md)中封裝它。 深入了解[如何在 ASP.NET Core MVC 應用程式中封裝常見的 API 原則](https://msdn.microsoft.com/magazine/mt767699.aspx)。
+
+## <a name="additional-resources"></a>其他資源
+
+* [驗證與授權](/xamarin/xamarin-forms/enterprise-application-patterns/authentication-and-authorization)

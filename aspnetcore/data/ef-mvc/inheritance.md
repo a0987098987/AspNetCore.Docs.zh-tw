@@ -1,32 +1,40 @@
 ---
-title: ASP.NET Core MVC 與 EF Core - 繼承 - 9/10
-author: rick-anderson
+title: 教學課程：實作繼承 - ASP.NET MVC 搭配 EF Core
 description: 本教學課程將說明如何在 ASP.NET Core 應用程式中使用 Entity Framework Core，以實作資料模型中的繼承。
+author: rick-anderson
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 03/27/2019
+ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: a71954297f44f936893a7f1e9d3b0685f81378b9
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: ba688b259206f21045376b6a38a266ad7528aec1
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38126700"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750769"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---inheritance---9-of-10"></a>ASP.NET Core MVC 與 EF Core - 繼承 - 9/10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+# <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>教學課程：實作繼承 - ASP.NET MVC 搭配 EF Core
 
 在上一個教學課程中，您已處理並行存取例外狀況。 本教學課程將示範如何在資料模型中實作繼承。
 
 在物件導向程式設計中，您可以使用繼承，以便重複使用程式碼。 在本教學課程中，您將變更 `Instructor` 和 `Student` 類別，讓它們衍生自 `Person` 基底類別，而此基底類別包含講師和學生通用的屬性，例如 `LastName`。 您不會新增或變更任何網頁，但是您將變更一些程式碼，這些變更將會自動反映在資料庫中。
 
-## <a name="options-for-mapping-inheritance-to-database-tables"></a>將繼承對應至資料庫資料表的選項
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 將繼承對應至資料庫
+> * 建立 Person 類別
+> * 更新 Instructor 和 Student
+> * 將 Person 新增至模型
+> * 建立及更新移轉
+> * 測試實作
+
+## <a name="prerequisites"></a>必要條件
+
+* [處理並行](concurrency.md)
+
+## <a name="map-inheritance-to-database"></a>將繼承對應至資料庫
 
 School 資料模型中的 `Instructor` 和 `Student` 類別有數個完全相同的屬性：
 
@@ -63,7 +71,7 @@ School 資料模型中的 `Instructor` 和 `Student` 類別有數個完全相同
 
 [!code-csharp[](intro/samples/cu/Models/Person.cs)]
 
-## <a name="make-student-and-instructor-classes-inherit-from-person"></a>使 Student 和 Instructor 類別繼承自 Person 類別
+## <a name="update-instructor-and-student"></a>更新 Instructor 和 Student
 
 在 *Instructor.cs* 中，從 Person 類別衍生 Instructor 類別，並移除索引鍵和名稱欄位。 程式碼看起來應該如下列範例所示：
 
@@ -73,7 +81,7 @@ School 資料模型中的 `Instructor` 和 `Student` 類別有數個完全相同
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
 
-## <a name="add-the-person-entity-type-to-the-data-model"></a>將 Person 實體類型新增至資料模型
+## <a name="add-person-to-the-model"></a>將 Person 新增至模型
 
 將 Person 實體類型新增至 *SchoolContext.cs*。 新增的行已醒目提示。
 
@@ -81,9 +89,9 @@ School 資料模型中的 `Instructor` 和 `Student` 類別有數個完全相同
 
 這就是 Entity Framework 為了設定單表繼承而必須執行的所有工作。 如您所見，當資料庫更新時，會有一個 Person 資料表來替代 Student 和 Instructor 資料表。
 
-## <a name="create-and-customize-migration-code"></a>建立和自訂移轉程式碼
+## <a name="create-and-update-migrations"></a>建立及更新移轉
 
-儲存您的變更，並建置專案。 然後，在專案資料夾中開啟命令視窗，並輸入下列命令：
+儲存您的變更並建置專案。 然後，在專案資料夾中開啟命令視窗，並輸入下列命令：
 
 ```console
 dotnet ef migrations add Inheritance
@@ -128,7 +136,7 @@ dotnet ef database update
 > [!NOTE]
 > 在具有現有資料的資料庫中進行結構描述變更時，可能會收到其他錯誤。 如果收到無法解決的移轉錯誤，您可以變更連接字串中的資料庫名稱，或刪除該資料庫。 使用新資料庫時，沒有可移轉的資料，因此 update-database 命令更可能會在沒有錯誤的情況下完成。 若要刪除資料庫，請使用 SSOX 或執行 `database drop` CLI 命令。
 
-## <a name="test-with-inheritance-implemented"></a>使用實作的繼承進行測試
+## <a name="test-the-implementation"></a>測試實作
 
 執行應用程式，然後嘗試各種頁面。 一切項目的運作與之前一樣。
 
@@ -140,12 +148,27 @@ dotnet ef database update
 
 ![SSOX 中的 Person 資料 - 資料表資料](inheritance/_static/ssox-person-data.png)
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-您已針對 `Person`、`Student` 和 `Instructor` 類別實作單表繼承。 如需 Entity Framework Core 中有關繼承的詳細資訊，請參閱[繼承](https://docs.microsoft.com/ef/core/modeling/inheritance)。 在下一個教學課程中，您將了解如何處理各種相對進階的 Entity Framework 案例。
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="additional-resources"></a>其他資源
 
-> [!div class="step-by-step"]
-> [上一頁](concurrency.md)
-> [下一頁](advanced.md)
+如需 Entity Framework Core 中有關繼承的詳細資訊，請參閱[繼承](/ef/core/modeling/inheritance)。
+
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 將繼承對應至資料庫
+> * 建立 Person 類別
+> * 更新 Instructor 和 Student
+> * 將 Person 新增至模型
+> * 建立及更新移轉
+> * 測試實作
+
+若要了解如何處理各種較進階的 Entity Framework 案例，請前往下一個教學課程。
+
+> [!div class="nextstepaction"]
+> [下一步：進階主題](advanced.md)

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何共用的驗證 cookie 之間 ASP.NET 4.x 和 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/19/2017
+ms.date: 04/06/2019
 uid: security/cookie-sharing
-ms.openlocfilehash: ed3496db3f7a63a704f0e57faef6b2f6c085a8bd
-ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
+ms.openlocfilehash: 7a049ed8787808e228859afc051b8697a6261c21
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228594"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068306"
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>使用 ASP.NET 和 ASP.NET Core 共用應用程式之間的 cookie
 
@@ -19,7 +19,7 @@ ms.locfileid: "39228594"
 
 網站通常會組成個別的 web 應用程式一起使用。 若要提供單一登入 (SSO) 體驗，在站台內的 web 應用程式必須共用驗證 cookie。 若要支援此案例中，資料保護堆疊可讓共用 Katana 的 cookie 驗證和 ASP.NET Core cookie 驗證票證。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 此範例會說明在使用 cookie 驗證的三個應用程式之間共用的 cookie:
 
@@ -43,7 +43,7 @@ ms.locfileid: "39228594"
 
 當使用 ASP.NET Core 身分識別：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 在 `ConfigureServices`方法，請使用[ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie)設定 cookie 的資料保護服務的擴充方法。
 
@@ -57,9 +57,11 @@ ms.locfileid: "39228594"
 options.Cookie.Domain = ".contoso.com";
 ```
 
-請參閱*CookieAuthWithIdentity.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
+請參閱*CookieAuthWithIdentity.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:index#how-to-download-a-sample))。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 在 `Configure`方法，請使用[CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions)設定：
 
@@ -87,11 +89,11 @@ app.AddIdentity<ApplicationUser, IdentityRole>(options =>
 });
 ```
 
----
+::: moniker-end
 
 當直接使用 cookie:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](cookie-sharing/sample/CookieAuth.Core/Startup.cs?name=snippet1)]
 
@@ -103,9 +105,11 @@ app.AddIdentity<ApplicationUser, IdentityRole>(options =>
 options.Cookie.Domain = ".contoso.com";
 ```
 
-請參閱*CookieAuth.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
+請參閱*CookieAuth.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:index#how-to-download-a-sample))。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -116,20 +120,22 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 });
 ```
 
----
+::: moniker-end
 
 ## <a name="encrypting-data-protection-keys-at-rest"></a>加密待用資料保護金鑰
 
 針對生產環境部署，設定`DataProtectionProvider`來加密 DPAPI 或 X509Certificate 待用的金鑰。 請參閱[加密的金鑰在 Rest](xref:security/data-protection/implementation/key-encryption-at-rest)如需詳細資訊。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 services.AddDataProtection()
     .ProtectKeysWithCertificate("thumbprint");
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -143,7 +149,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 });
 ```
 
----
+::: moniker-end
 
 ## <a name="sharing-authentication-cookies-between-aspnet-4x-and-aspnet-core-apps"></a>共用的驗證 cookie 之間 ASP.NET 4.x 和 ASP.NET Core 應用程式
 
@@ -151,7 +157,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 當應用程式會使用 Katana cookie 驗證中介軟體時，它會呼叫`UseCookieAuthentication`中的專案*Startup.Auth.cs*檔案。 ASP.NET 4.x web 應用程式專案使用 Visual Studio 2013 建立和更新版本預設會使用 Katana cookie 驗證中介軟體。 雖然`UseCookieAuthentication`已過時，不支援 ASP.NET Core 應用程式，請呼叫`UseCookieAuthentication`中 ASP.NET 4.x 應用程式使用 Katana cookie 驗證中介軟體是否有效。
 
-ASP.NET 4.x 應用程式必須以.NET Framework 4.5.1 為目標或更高版本。 否則，無法安裝必要的 NuGet 套件。
+ASP.NET 4.x 應用程式必須為目標.NET Framework 4.5.1 或更新版本。 否則，無法安裝必要的 NuGet 套件。
 
 若要共用的 ASP.NET 4.x 應用程式和 ASP.NET Core 應用程式之間的驗證 cookie，如上所述，設定 ASP.NET Core 應用程式，然後執行下列步驟來設定 ASP.NET 4.x 應用程式：
 
@@ -161,7 +167,7 @@ ASP.NET 4.x 應用程式必須以.NET Framework 4.5.1 為目標或更高版本�
 
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/App_Start/Startup.Auth.cs?name=snippet1)]
 
-請參閱*CookieAuthWithIdentity.NETFramework*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
+請參閱*CookieAuthWithIdentity.NETFramework*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:index#how-to-download-a-sample))。
 
 驗證類型時產生的使用者身分識別，必須符合中定義的類型`AuthenticationType`設有`UseCookieAuthentication`。
 

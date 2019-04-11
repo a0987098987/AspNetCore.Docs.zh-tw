@@ -3,14 +3,15 @@ title: ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 author: rick-anderson
 description: 在此教學課程中，您可以讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 ms.author: riande
-ms.date: 11/05/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: bb1d087a5449c6e26c40e572d161dd9644ac2323
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 4b564e9e407dcb6b7fd71d0a6c41596269ed5e09
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219338"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320117"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -20,7 +21,7 @@ ms.locfileid: "39219338"
 
 在本教學課程中，將會讀取和顯示相關資料。 相關資料是 EF Core 載入到導覽屬性的資料。
 
-若您遭遇到無法解決的問題，請下載[此階段的完整應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part6-related)。
+若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
 下圖顯示本教學課程的已完成頁面：
 
@@ -32,7 +33,7 @@ ms.locfileid: "39219338"
 
 EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
-* [積極式載入](https://docs.microsoft.com/ef/core/querying/related-data#eager-loading)。 積極式載入是指某一類型實體的查詢同時也會載入相關實體。 讀取實體時，將會擷取其相關資料。 這通常會導致單一聯結查詢，其可擷取所有需要的資料。 EF Core 將針對某些類型的積極式載入發出多個查詢。 相較於 EF6 中的某些查詢只有單一查詢的情況，發出多個查詢可能更有效率。 積極式載入是使用 `Include` 和 `ThenInclude` 方法加以指定。
+* [積極式載入](/ef/core/querying/related-data#eager-loading)。 積極式載入是指某一類型實體的查詢同時也會載入相關實體。 讀取實體時，將會擷取其相關資料。 這通常會導致單一聯結查詢，其可擷取所有需要的資料。 EF Core 將針對某些類型的積極式載入發出多個查詢。 相較於 EF6 中的某些查詢只有單一查詢的情況，發出多個查詢可能更有效率。 積極式載入是使用 `Include` 和 `ThenInclude` 方法加以指定。
 
   ![積極式載入範例](read-related-data/_static/eager-loading.png)
  
@@ -45,17 +46,17 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   ![個別查詢範例](read-related-data/_static/separate-queries.png)
 
-  注意：EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
+  注意:EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
 
-* [明確式載入](https://docs.microsoft.com/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如: 
+* [明確式載入](/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如：
 
   ![明確式載入範例](read-related-data/_static/explicit-loading.png)
 
-* [消極式載入](https://docs.microsoft.com/ef/core/querying/related-data#lazy-loading)。 [EF Core 目前不支援消極式載入](https://github.com/aspnet/EntityFrameworkCore/issues/3797)。 第一次讀取實體時，不會擷取相關資料。 第一次存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 每當第一次存取導覽屬性時，查詢會傳送至資料庫。
+* [消極式載入](/ef/core/querying/related-data#lazy-loading)。 [EF Core 已在 2.1 版中新增消極式載入](/ef/core/querying/related-data#lazy-loading)。 第一次讀取實體時，不會擷取相關資料。 第一次存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 每當第一次存取導覽屬性時，查詢會傳送至資料庫。
 
 * `Select` 運算子只會載入所需的相關資料。
 
-## <a name="create-a-courses-page-that-displays-department-name"></a>建立顯示部門名稱的 Courses 頁面
+## <a name="create-a-course-page-that-displays-department-name"></a>建立顯示部門名稱的 Course 頁面
 
 Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Department` 實體包含已指派課程的部門。
 
@@ -64,9 +65,10 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 * 從 `Department` 實體取得 `Name` 屬性。
 * `Department` 實體來自 `Course.Department` 導覽屬性。
 
-![ourse.Department](read-related-data/_static/dep-crs.png)
+![Course.Department](read-related-data/_static/dep-crs.png)
 
 <a name="scaffold"></a>
+
 ### <a name="scaffold-the-course-model"></a>Scaffold Course 模型
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
@@ -81,7 +83,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
   ```
 
-------
+---
 
 上述命令會 Scaffold `Course` 模型。 在 Visual Studio 中開啟專案。
 
@@ -114,6 +116,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 ![Courses [索引] 頁面](read-related-data/_static/courses-index.png)
 
 <a name="select"></a>
+
 ### <a name="loading-related-data-with-select"></a>使用 Select 載入相關資料
 
 `OnGetAsync` 方法使用 `Include` 方法載入相關資料：
@@ -167,7 +170,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
   ```
 
-------
+---
 
 上述命令會 Scaffold `Instructor` 模型。 執行應用程式並巡覽至講師頁面。
 
@@ -183,9 +186,8 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 查詢具有兩個 Include：
 
-* `OfficeAssignment`：顯示在 [Instructors 檢視](#IP)。
+* `OfficeAssignment`：顯示在 [Instructors 檢視](#IP)中。
 * `CourseAssignments`：它顯示所教授的課程。
-
 
 ### <a name="update-the-instructors-index-page"></a>更新 Instructors [索引] 頁面
 
@@ -197,11 +199,11 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 * 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int?}"`。 `"{id:int?}"` 是路由範本。 路由範本將 URL 中的整數查詢字串變更為路由資料。 例如，只有在 `@page` 指示詞產生如下的 URL 時，按一下講師的 [選取] 連結：
 
-    `http://localhost:1234/Instructors?id=2`
+  `http://localhost:1234/Instructors?id=2`
 
-    頁面指示詞是 `@page "{id:int?}"` 時，先前的 URL 為：
+  頁面指示詞是 `@page "{id:int?}"` 時，先前的 URL 為：
 
-    `http://localhost:1234/Instructors/2`
+  `http://localhost:1234/Instructors/2`
 
 * 頁面標題是 **Instructors**。
 * 新增 [辦公室] 資料行，該資料行只有在 `item.OfficeAssignment` 不是 Null 時才會顯示 `item.OfficeAssignment.Location`。 因為這是一對零或一關聯性，所有可能沒有相關的 OfficeAssignment 實體。
@@ -329,6 +331,11 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 測試應用程式。 就使用者的觀點而言，應用程式行為與之前的版本相同。
 
 下一個教學課程會示範如何更新相關資料。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本 (第 1 部分)](https://www.youtube.com/watch?v=PzKimUDmrvE)
+* [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=xvDDrIHv5ko)
 
 >[!div class="step-by-step"]
 >[上一頁](xref:data/ef-rp/complex-data-model)

@@ -4,14 +4,15 @@ author: rick-anderson
 description: 了解如何建立 ASP.NET Core 專案中的身分識別。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 5/16/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 07163941d0bd1fea6f9b3d9867536580d8a9e9d8
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: d86d3cab91e8f927db30767097a89a08cf358f06
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063269"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410163"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>ASP.NET Core 專案中的 scaffold 身分識別
 
@@ -26,6 +27,9 @@ ASP.NET Core 2.1 和更新版本可[ASP.NET Core Identity](xref:security/authent
 執行身分識別框架時， *ScaffoldingReadme.txt*專案目錄中建立檔案。 *ScaffoldingReadme.txt*檔案包含需要的完成識別 scaffolding 更新內容的一般指示。 本文件包含更詳細的說明，比*ScaffoldingReadme.txt*檔案。
 
 我們建議使用顯示檔案的差異，並可讓您將變更原始檔控制系統。 執行身分識別 scaffolder 之後檢查所做的變更。
+
+> [!NOTE]
+> 使用時，服務不需要[雙因素驗證](xref:security/authentication/identity-enable-qrcodes)，[帳戶確認和密碼復原](xref:security/authentication/accconfirm)，以及其他與身分識別的安全性功能。 Scaffolding 身分識別時，不會產生服務或服務虛設常式。 若要啟用這些功能的服務必須手動加入。 例如，請參閱[需要電子郵件確認](xref:security/authentication/accconfirm#require-email-confirmation)。
 
 ## <a name="scaffold-identity-into-an-empty-project"></a>Scaffold 的身分識別至空專案
 
@@ -69,7 +73,7 @@ dotnet ef database update
 
 ### <a name="enable-authentication"></a>啟用驗證
 
-在 `Configure`方法`Startup`類別中，呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
+在 `Configure`方法`Startup`類別中，呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
 
 [!code-csharp[](scaffold-identity/sample/StartupRPnoAuth.cs?name=snippet1&highlight=29)]
 
@@ -77,7 +81,7 @@ dotnet ef database update
 
 ### <a name="layout-changes"></a>版面配置變更
 
-選擇性： 新增部分登入 (`_LoginPartial`) 和配置檔案：
+選擇項：加入部分的登入 (`_LoginPartial`) 和配置檔案：
 
 [!code-html[Main](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
@@ -86,15 +90,17 @@ dotnet ef database update
 <!--
 Use >=2.1: dotnet new webapp -au Individual -o RPauth
 Use = 2.0: dotnet new razor -au Individual -o RPauth
+uld option: Use Local DB, not SQLite
+
+dotnet new webapp -au Individual -uld -o RPauth
 cd RPauth
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files Account.Register
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
 -->
 
-[!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)] 中所設定的一些身分識別選項*Areas/Identity/IdentityHostingStartup.cs*。 如需詳細資訊，請參閱 < [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。
+[!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
+中所設定的一些身分識別選項*Areas/Identity/IdentityHostingStartup.cs*。 如需詳細資訊，請參閱 < [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。
 
 ## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>MVC 專案中現有的授權而成的 scaffold 身分識別
 
@@ -114,7 +120,7 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-選擇性： 新增部分登入 (`_LoginPartial`) 來*Views/Shared/_Layout.cshtml*檔案：
+選擇項：加入部分的登入 (`_LoginPartial`) 來*Views/Shared/_Layout.cshtml*檔案：
 
 [!code-html[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
 
@@ -124,7 +130,7 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
+呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
 
 [!code-csharp[](scaffold-identity/sample/StartupMvcNoAuth.cs?name=snippet1&highlight=23)]
 
@@ -165,3 +171,9 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --fil
 註冊`IEmailSender`實作，例如：
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet4)]
+
+[!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet)]
+
+## <a name="additional-resources"></a>其他資源
+
+* [變更用於 ASP.NET Core 2.1 和更新版本的驗證程式碼](xref:migration/20_21#changes-to-authentication-code)

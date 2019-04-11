@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 資料保護金鑰的儲存格式的實作詳�
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/key-storage-format
-ms.openlocfilehash: bca19ad001dd20b5d02ae5470f7d928082496037
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 81df124f3dd0cadf8fd895ab55f66eec6415705f
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219273"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208014"
 ---
 # <a name="key-storage-format-in-aspnet-core"></a>ASP.NET Core 中的金鑰儲存體格式
 
@@ -65,7 +65,7 @@ ms.locfileid: "39219273"
 
 **&lt;EncryptedSecret&gt;** 項目，其中包含加密的形式的祕密金鑰的內容可能會存在於如果[加密靜止的祕密已啟用](xref:security/data-protection/implementation/key-encryption-at-rest)。 屬性`decryptorType`是實作型別組件限定名稱[IXmlDecryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmldecryptor)。 此類型是負責讀取內部 **&lt;encryptedKey&gt;** 項目和解密來復原原始的純文字。
 
-如同\<描述元 >，特定的格式<encryptedSecret>項目取決於使用中的待用加密機制。 在上述範例中，為每個註解中使用 Windows DPAPI 加密主要金鑰。
+如同`<descriptor>`，特定的格式`<encryptedSecret>`項目取決於使用中的待用加密機制。 在上述範例中，為每個註解中使用 Windows DPAPI 加密主要金鑰。
 
 ## <a name="the-revocation-element"></a>\<撤銷 > 項目
 

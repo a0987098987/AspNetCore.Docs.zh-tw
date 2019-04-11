@@ -3,45 +3,80 @@ title: 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 author: rick-anderson
 description: 了解如何使用 Entity Framework Core (EF Core)，新增用來管理資料庫中電影的類別。
 ms.author: riande
-ms.date: 05/30/2018
+ms.date: 02/12/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 9e0fd0ee98c84bb2336749640b2a3c103e4639b6
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: b4f14241d50383ad4d1c1d8c9d00ca439f371b7d
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938322"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265024"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
-::: moniker range=">= aspnetcore-2.1"
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE [model1](~/includes/RP/model1.md)]
+[!INCLUDE[](~/includes/rp/download.md)]
+
+在本節中，您可以新增類別來管理資料庫中的電影。 搭配 [Entity Framework Core](/ef/core) (EF Core) 使用這些類別，即可使用資料庫。 EF Core 是一種物件關聯式對應 (ORM) 架構，可簡化資料存取程式碼。
+
+模型類別稱為 POCO 類別 (來自「簡單的 CLR 物件」)，因為它們對 EF Core 沒有任何相依性。 它們會定義資料儲存在資料庫中的屬性。
+
+[檢視或下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start)範例。
 
 ## <a name="add-a-data-model"></a>新增資料模型
 
-在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie** 並新增下列屬性：
+以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
 
-以下列程式碼取代 `Movie` 類別的內容：
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie**。
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie21/Models/Movie1.cs?name=snippet)]
+[!INCLUDE [model 1b](~/includes/RP/model1b.md)]
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+* 新增名為 *Models* 的資料夾。
+* 將類別新增至名為 *Movie.cs* 的 *Models* 資料夾。
+
+[!INCLUDE [model 1b](~/includes/RP/model1b.md)]
+
+[!INCLUDE [model 2](~/includes/RP/model2.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+* 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [新增檔案]。
+* 在 [新增檔案] 對話方塊中：
+
+  * 在左窗格中選取 [一般]。
+  * 在中央窗格中選取 [類別是空的]。
+  * 將類別命名為 **Movie**，然後選取 [新增]。
+
+[!INCLUDE [model 1b](~/includes/RP/model1b.md)]
+
+[!INCLUDE [model 2](~/includes/RP/model2.md)]
+
+---
+
+建置專案，以確認沒有任何編譯錯誤。
 
 ## <a name="scaffold-the-movie-model"></a>Scaffold 影片模型
 
 在本節中會 scaffold 影片模型。 亦即 Scaffolding 工具會產生影片模型的建立、讀取、更新和刪除 (CRUD) 作業頁面。
 
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
 建立 *Pages/Movies* 資料夾：
 
-* 在 [方案總管] 中，以滑鼠右鍵按一下 *Pages* 資料夾 > [新增] > [新增資料夾]。
+* 以滑鼠右鍵按一下 *Pages* 資料夾 > [新增] > [新增資料夾]。
 * 將資料夾命名為 *Movies*
 
-在 [方案總管] 中，以滑鼠右鍵按一下 *Pages/Movies* 資料夾 > [新增] > [新增 Scaffold 項目]。
+以滑鼠右鍵按一下 *Pages/Movies* 資料夾 > [新增] > [新增 Scaffolded 項目]。
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold] 對話方塊中，選取 [Razor Pages using Entity Framework (CRUD)] \(使用 Entity Framework 的 Razor Pages (CRUD)\) > [新增]。
+在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)] > [新增]。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
@@ -49,43 +84,75 @@ ms.locfileid: "37938322"
 
 * 在 [模型類別] 下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)。
 * 在 [資料內容類別] 列中選取 [+] (加號)，並接受產生的名稱 **RazorPagesMovie.Models.RazorPagesMovieContext**。
-* 在 [資料內容類別] 下拉式清單中，選取 [RazorPagesMovie.Models.RazorPagesMovieContext]
 * 選取 [新增]。
 
 ![前述指示中的圖片。](model/_static/arp.png)
 
-隨即建立 Scaffold 處理序並變更下列檔案：
+*appsettings.json* 檔案會隨即更新用來連線到本機資料庫的連接字串。
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+<!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
+-->
+
+* 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
+* 安裝 Scaffolding 工具：
+
+  ```console
+   dotnet tool install --global dotnet-aspnet-codegenerator
+   ```
+
+* **針對 Windows**：執行下列命令：
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
+  ```
+
+* **針對 macOS 與 Linux**：執行下列命令：
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
+  ```
+
+[!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+* 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
+* 安裝 Scaffolding 工具：
+
+  ```console
+   dotnet tool install --global dotnet-aspnet-codegenerator
+   ```
+
+* 執行下列命令：
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
+  ```
+
+[!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
+
+---
+
+隨即建立 Scaffold 處理序並更新下列檔案：
 
 ### <a name="files-created"></a>建立的檔案
 
-* *Pages/Movies* 建立、刪除、詳細資料、編輯、索引。 下一個教學課程會詳述這些頁面。
+* *Pages/Movies*：Create、Delete、Details、Edit 和 Index。
 * *Data/RazorPagesMovieContext.cs*
 
-### <a name="files-updates"></a>檔案更新
+### <a name="file-updated"></a>檔案已更新
 
-* *Startup.cs*：這個檔案的變更會於下一節中詳述。
-* *appsettings.json*：已新增用來連線到本機資料庫的連接字串。
+* *Startup.cs*
 
-## <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
-
-ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
-
-Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
-
-檢查 `Startup.ConfigureServices` 方法。 Scaffolder 已新增醒目標示行：
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Startup.cs?name=snippet_ConfigureServices&highlight=12-13)]
-
-為給定的資料模型協調 EF Core 功能的主要類別是資料庫內容類別。 資料內容衍生自 [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)。 資料內容會指定資料模型包含哪些實體。 在此專案中，類別命名為 `RazorPagesMovieContext`。
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Data/RazorPagesMovieContext.cs)]
-
-上述程式碼會建立實體集的 [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
-
-連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
+下一節將說明所建立和更新的檔案。
 
 <a name="pmc"></a>
-## <a name="perform-initial-migration"></a>執行初始移轉
+
+## <a name="initial-migration"></a>初始移轉
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在本節中，您可以使用套件管理員主控台 (PMC) 進行下列作業：
 
@@ -103,125 +170,84 @@ Add-Migration Initial
 Update-Database
 ```
 
-或者，您可以使用下列 .NET Core CLI 命令：
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-```console
-dotnet ef migrations add Initial
-dotnet ef database update
-```
+[!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
-請略過下列警告訊息，您將在接下來的教學課程中修正該問題：
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-`Microsoft.EntityFrameworkCore.Model.Validation[30000]`
+[!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
-      *No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'.*
+---
 
-`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選擇描述移轉的名稱。 如需詳細資訊，請參閱[移轉簡介](xref:data/ef-mvc/migrations#introduction-to-migrations)。
+上述命令會產生下列警告：「實體類型 'Movie' 上的十進位資料行 'Price' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
 
-`Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
+您可以忽略該警告，稍後的教學課程中將修正此問題。
 
-如果您收到錯誤：
+`ef migrations add InitialCreate` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (在 *RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
 
-SqlException：無法開啟登入要求的 "RazorPagesMovieContext-GUID" 資料庫。 登入失敗。
-使用者 'User-name' 登入失敗。
+`ef database update` 命令會執行 *Migrations/\<時間戳記>_InitialCreate.cs* 檔案中的 `Up` 方法。 `Up` 方法會建立資料庫。
 
-您遺失了[移轉步驟](#pmc)。
-::: moniker-end
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-::: moniker range="= aspnetcore-2.0"
+### <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
-[!INCLUDE [model1](~/includes/RP/model1.md)]
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
 
-## <a name="add-a-data-model"></a>新增資料模型
+Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
-在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+檢查 `Startup.ConfigureServices` 方法。 Scaffolder 已新增醒目標示行：
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie** 並新增下列屬性：
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
-[!INCLUDE [model 2](~/includes/RP/model2.md)]
+`RazorPagesMovieContext` 會協調 `Movie` 模型的 EF Core 功能 (建立、更新、刪除等)。 資料內容 (`RazorPagesMovieContext`) 衍生自 [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)。 資料內容會指定資料模型包含哪些實體。
 
-<a name="cs"></a>
-### <a name="add-a-database-connection-string"></a>新增資料庫連線字串
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
-將連線字串新增到 *appsettings.json* 檔案中。
+上述程式碼會建立實體集的 [`DbSet<Movie>`](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
 
-[!code-json[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=8-10)]
+連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
 
-<a name="reg"></a>
-###  <a name="register-the-database-context"></a>登錄資料庫內容
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-用 [Startup 類別的 ConfigureServices 方法](xref:fundamentals/startup#the-startup-class) (*Startup.cs*) 向[相依性插入](xref:fundamentals/dependency-injection)容器註冊資料庫內容：
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=3-5,7-9)]
+---
 
-請建置專案，以確認您沒有任何錯誤。
-
-<a name="pmc"></a>
-## <a name="add-scaffold-tooling-and-perform-initial-migration"></a>新增 Scaffold 工具並執行初始移轉
-
-在本節中，您可以使用套件管理員主控台 (PMC) 進行下列作業：
-
-* 新增 Visual Studio Web 程式碼產生套件。 執行 Scaffolding 引擎需要此套件。
-* 新增初始移轉。
-* 以初始移轉更新資料庫。
-
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
-
-  ![PMC 功能表](../first-mvc-app/adding-model/_static/pmc.png)
-
-在 PMC 中，輸入下列命令：
-
-```powershell
-Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design -Version 2.0.3
-Add-Migration Initial
-Update-Database
-```
-
-或者，您可以使用下列 .NET Core CLI 命令：
-
-```console
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-dotnet ef migrations add Initial
-dotnet ef database update
-```
-
-請略過下列訊息：
-
-    `Microsoft.EntityFrameworkCore.Model.Validation[30000]`
-
-      *No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'*
-
-您將在接下來的教學課程中修正該問題。
-
-`Install-Package` 命令會安裝執行 Scaffolding 引擎所需的工具。
-
-`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (位在 *Models/MovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選擇描述移轉的名稱。 如需詳細資訊，請參閱[移轉簡介](xref:data/ef-mvc/migrations#introduction-to-migrations)。
+`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
 
 `Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
-
-[!INCLUDE [model 4windows](~/includes/RP/model4Win.md)]
-
-[!INCLUDE [model 4](~/includes/RP/model4tbl.md)]
-
-::: moniker-end
 
 <a name="test"></a>
 
 ### <a name="test-the-app"></a>測試應用程式
 
 * 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL ( `http://localhost:port/movies` )。
+
+如果您收到錯誤：
+
+```console
+SqlException: Cannot open database "RazorPagesMovieContext-GUID" requested by the login. The login failed.
+Login failed for user 'User-name'.
+```
+
+您遺失了[移轉步驟](#pmc)。
+
 * 測試 **Create** 連結。
 
-  ![建立頁面](../../tutorials/razor-pages/model/_static/conan.png)
+  ![建立頁面](model/_static/conan.png)
 
-<a name="scaffold"></a>
+  > [!NOTE]
+  > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，則必須將應用程式全球化。 如需全球化指示，請參閱[此 GitHub 問題](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420) \(英文\)。
 
 * 測試 **Edit**、**Details** 和 **Delete** 連結。
 
-如果您收到 SQL 例外狀況，請確認您已執行移轉並更新資料庫。
-
 下一個教學課程說明 Scaffolding 所建立的檔案。
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=sFVIsdR_RcM)
 
 > [!div class="step-by-step"]
 > [上一步：開始使用](xref:tutorials/razor-pages/razor-pages-start)
-> [下一步：Scaffold Razor 頁面](xref:tutorials/razor-pages/page)
+> [下一步：Scaffolded Razor 頁面](xref:tutorials/razor-pages/page)

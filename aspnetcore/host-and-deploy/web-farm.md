@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何在 Web 伺服陣列環境中裝載具有共用資源之 ASP.NET Core 應用程式的多個執行個體。
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/16/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 2435c24bc205486331c828337ca81c43e6e60448
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 4873665e6174a6acf885e1ebb41fb005d646bd1f
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39096084"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450667"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>在 Web 伺服陣列上裝載 ASP.NET Core
 
@@ -67,6 +67,8 @@ ms.locfileid: "39096084"
 
 ## <a name="troubleshoot"></a>疑難排解
 
+### <a name="data-protection-and-caching"></a>資料保護和快取
+
 如果未為 Web 伺服陣列環境設定資料保護或快取，則在處理要求時，會發生間歇性的錯誤。 發生這種情況是因為節點不會共用相同的資源，且使用者的要求並不是一律路由傳送回相同的節點。
 
 假設使用者使用 cookie 驗證來登入應用程式。 使用者在某個 Web 伺服陣列節點上登入應用程式。 如果使用者的下一個要求抵達他們登入的相同節點，則應用程式將能夠解密驗證 cookie，並允許存取應用程式的資源。 如果使用者的下一個要求抵達不同的節點，則應用程式無法解密來自使用者登入節點的驗證 cookie，且針對所請求資源的授權會失敗。
@@ -81,3 +83,7 @@ ms.locfileid: "39096084"
 * POST 失敗 &ndash; 防偽檢查失敗。
 
 如需有關 Web 伺服陣列部署的資料保護設定詳細資訊，請參閱 <xref:security/data-protection/configuration/overview>。 如需有關 Web 伺服陣列部署的快取設定詳細資訊，請參閱 <xref:performance/caching/distributed>。
+
+## <a name="obtain-data-from-apps"></a>從應用程式取得資料
+
+若 Web 伺服器陣列應用程式能夠回應要求、請使用終端機內嵌中介軟體從應用程式取得要求、連線與額外資料。 如如需詳細資訊與範例程式碼，請參閱 <xref:test/troubleshoot#obtain-data-from-an-app>。

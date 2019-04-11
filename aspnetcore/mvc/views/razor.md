@@ -3,14 +3,14 @@ title: ASP.NET Core 的 Razor 語法參考
 author: rick-anderson
 description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記語法。
 ms.author: riande
-ms.date: 10/18/2017
+ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: d0f4d59cb605cc3cc7cdfa84bfc65399699e475a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 53d4dc608fbfd45bcc015a3af83f5d87f86c7f15
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272684"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327361"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -69,9 +69,9 @@ Razor 隱含運算式會以 `@` 開頭，後面接著 C# 程式碼：
 
 上述程式碼會產生類似下列其中一項的編譯器錯誤：
 
- * "Int" 項目未關閉。 所有項目都必須自行結束或具有相對應的結束標籤。
- *  無法將方法群組 'GenericMethod' 轉換成非委派類型 'type'。 您是否想要叫用方法？ 
- 
+* "Int" 項目未關閉。 所有項目都必須自行結束或具有相對應的結束標籤。
+* 無法將方法群組 'GenericMethod' 轉換成非委派類型 'type'。 您是否想要叫用方法？
+
 泛型方法呼叫必須包裝在 [Razor 明確運算式](#explicit-razor-expressions)或 [Razor 程式碼區塊](#razor-code-blocks)中。
 
 ## <a name="explicit-razor-expressions"></a>Razor 明確運算式
@@ -199,7 +199,7 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 
 **\<text>** 標籤可用來控制轉譯內容時的空白字元：
 
-* **\<text>** 標籤之間的內容會轉譯。 
+* **\<text>** 標籤之間的內容會轉譯。
 * **\<text>** 標籤前後不能有空白字元出現在 HTML 輸出中。
 
 ### <a name="explicit-line-transition-with-"></a>使用 @ 的明確行轉換：
@@ -337,7 +337,6 @@ else
 
 在 C# 中，`using` 陳述式可用來確保物件經過處置。 在 Razor 中，使用相同的機制來建立 HTML 協助程式，以包含其他內容。 在下列程式碼中，HTML 協助程式使用 `@using` 陳述式來轉譯表單標籤：
 
-
 ```cshtml
 @using (Html.BeginForm())
 {
@@ -404,7 +403,7 @@ Razor 指示詞是以隱含運算式表示，這些運算式具有保留關鍵�
 
 了解 Razor 如何針對檢視產生程式碼，可讓您更容易了解指示詞的運作方式。
 
-[!code-html[](razor/sample/Views/Home/Contact8.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact8.cshtml)]
 
 程式碼會產生類似如下的類別：
 
@@ -422,9 +421,10 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 }
 ```
 
-本文稍後的[檢視針對檢視所產生的 Razor C# 類別](#viewing-the-razor-c-class-generated-for-a-view)一節將說明如何檢視此產生的類別。
+本文稍後在[檢查針對檢視所產生的 Razor C# 類別](#inspect-the-razor-c-class-generated-for-a-view)一節中說明如何檢視這個產生的類別。
 
 <a name="using"></a>
+
 ### <a name="using"></a>@using
 
 `@using` 指示詞會將 C# `using` 指示詞新增至產生的檢視：
@@ -498,7 +498,6 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 ### <a name="inject"></a>@inject
 
-
 `@inject` 指示詞可讓 Razor Page 從[服務容器](xref:fundamentals/dependency-injection)將服務插入至檢視。 如需詳細資訊，請參閱[在檢視中插入相依性](xref:mvc/views/dependency-injection)。
 
 ### <a name="functions"></a>@functions
@@ -509,7 +508,7 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 @functions { // C# Code }
 ```
 
-例如: 
+例如：
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -526,6 +525,105 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 ### <a name="section"></a>@section
 
 `@section` 指示詞可搭配[配置](xref:mvc/views/layout)使用，讓檢視可以轉譯 HTML 頁面中不同部分的內容。 如需詳細資訊，請參閱[區段](xref:mvc/views/layout#layout-sections-label)。
+
+## <a name="templated-razor-delegates"></a>樣板化 Razor 委派
+
+Razor 範本可讓您使用下列格式定義 UI 程式碼片段：
+
+```cshtml
+@<tag>...</tag>
+```
+
+下列範例說明如何以 <xref:System.Func%602> 的形式指定樣板化 Razor 委派。 該範例會指定 [dynamic 類型](/dotnet/csharp/programming-guide/types/using-type-dynamic)作為委派所封裝方法的參數。 並指定 [object 類型](/dotnet/csharp/language-reference/keywords/object)作為委派的傳回值。 此範本會搭配具有 `Name` 屬性之 `Pet` 的 <xref:System.Collections.Generic.List%601> 來使用。
+
+```csharp
+public class Pet
+{
+    public string Name { get; set; }
+}
+```
+
+```cshtml
+@{
+    Func<dynamic, object> petTemplate = @<p>You have a pet named <strong>@item.Name</strong>.</p>;
+
+    var pets = new List<Pet>
+    {
+        new Pet { Name = "Rin Tin Tin" },
+        new Pet { Name = "Mr. Bigglesworth" },
+        new Pet { Name = "K-9" }
+    };
+}
+```
+
+此範本使用 `foreach` 陳述式所提供的 `pets` 進行轉譯：
+
+```cshtml
+@foreach (var pet in pets)
+{
+    @petTemplate(pet)
+}
+```
+
+轉譯輸出：
+
+```html
+<p>You have a pet named <strong>Rin Tin Tin</strong>.</p>
+<p>You have a pet named <strong>Mr. Bigglesworth</strong>.</p>
+<p>You have a pet named <strong>K-9</strong>.</p>
+```
+
+您也可以提供內嵌 Razor 範本作為方法的引數。 在下列範例中，`Repeat` 方法會接收 Razor 範本。 此方法使用範本來產生 HTML 內容，並重複出現清單所提供的項目：
+
+```cshtml
+@using Microsoft.AspNetCore.Html
+
+@functions {
+    public static IHtmlContent Repeat(IEnumerable<dynamic> items, int times,
+        Func<dynamic, IHtmlContent> template)
+    {
+        var html = new HtmlContentBuilder();
+
+        foreach (var item in items)
+        {
+            for (var i = 0; i < times; i++)
+            {
+                html.AppendHtml(template(item));
+            }
+        }
+
+        return html;
+    }
+}
+```
+
+使用先前範例中的寵物清單，呼叫 `Repeat` 方法並指定：
+
+* <xref:System.Collections.Generic.List%601> 的 `Pet`。
+* 每個寵物的重複次數。
+* 用於未排序清單中清單項目的內嵌範本。
+
+```cshtml
+<ul>
+    @Repeat(pets, 3, @<li>@item.Name</li>)
+</ul>
+```
+
+轉譯輸出：
+
+```html
+<ul>
+    <li>Rin Tin Tin</li>
+    <li>Rin Tin Tin</li>
+    <li>Rin Tin Tin</li>
+    <li>Mr. Bigglesworth</li>
+    <li>Mr. Bigglesworth</li>
+    <li>Mr. Bigglesworth</li>
+    <li>K-9</li>
+    <li>K-9</li>
+    <li>K-9</li>
+</ul>
+```
 
 ## <a name="tag-helpers"></a>標籤協助程式
 
@@ -553,7 +651,7 @@ Razor 關鍵字會使用 `@(Razor Keyword)` (例如 `@(functions)`) 逸出。
 
 ### <a name="c-razor-keywords"></a>C# Razor 關鍵字
 
-* 大小寫
+* case
 * do
 * default
 * for
@@ -565,7 +663,7 @@ Razor 關鍵字會使用 `@(Razor Keyword)` (例如 `@(functions)`) 逸出。
 * try
 * catch
 * finally
-* 使用
+* using
 * while
 
 C# Razor 關鍵字必須使用 `@(@C# Razor Keyword)` (例如 `@(@case)`) 雙重逸出。 第一個 `@` 會將 Razor 剖析器逸出。 第二個 `@` 會將 C# 剖析器逸出。
@@ -574,32 +672,76 @@ C# Razor 關鍵字必須使用 `@(@C# Razor Keyword)` (例如 `@(@case)`) 雙重
 
 * Class - 類別
 
-## <a name="viewing-the-razor-c-class-generated-for-a-view"></a>檢視針對檢視所產生的 Razor C# 類別
+## <a name="inspect-the-razor-c-class-generated-for-a-view"></a>檢查針對檢視所產生的 Razor C# 類別
+
+::: moniker range=">= aspnetcore-2.1"
+
+使用 .NET Core SDK 2.1 或更新版本，[Razor SDK](xref:razor-pages/sdk) 會處理 Razor 檔案的編譯。 建置專案時，Razor SDK 會在專案根目錄中產生 *obj/<build_configuration>/<target_framework_moniker>/Razor* 目錄。 *Razor* 目錄內的目錄結構會鏡像專案目錄結構。
+
+請考慮將目標設為 .NET Core 2.1 之 ASP.NET Core 2.1 Razor Pages 專案中的下列目錄結構：
+
+* **Areas/**
+  * **Admin/**
+    * **Pages/**
+      * *Index.cshtml*
+      * *Index.cshtml.cs*
+* **Pages/**
+  * **Shared/**
+    * *_Layout.cshtml*
+  * *_ViewImports.cshtml*
+  * *_ViewStart.cshtml*
+  * *Index.cshtml*
+  * *Index.cshtml.cs*
+
+在 *Debug* 設定中建置專案會產生下列 *obj* 目錄：
+
+* **obj/**
+  * **Debug/**
+    * **netcoreapp2.1/**
+      * **Razor/**
+        * **Areas/**
+          * **Admin/**
+            * **Pages/**
+              * *Index.g.cshtml.cs*
+        * **Pages/**
+          * **Shared/**
+            * *_Layout.g.cshtml.cs*
+          * *_ViewImports.g.cshtml.cs*
+          * *_ViewStart.g.cshtml.cs*
+          * *Index.g.cshtml.cs*
+
+若要檢視針對 *Pages/Index.cshtml* 所產生的類別，請開啟 *obj/Debug/netcoreapp2.1/Razor/Pages/Index.g.cshtml.cs*。
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
 
 請將下列類別新增至 ASP.NET Core MVC 專案：
 
 [!code-csharp[](razor/sample/Utilities/CustomTemplateEngine.cs)]
 
-以 `CustomTemplateEngine` 類別覆寫 MVC 所新增的 `RazorTemplateEngine`：
+在 `Startup.ConfigureServices` 中，將 MVC 所新增的 `RazorTemplateEngine` 覆寫為 `CustomTemplateEngine` 類別：
 
 [!code-csharp[](razor/sample/Startup.cs?highlight=4&range=10-14)]
 
-在 `CustomTemplateEngine` 的 `return csharpDocument` 陳述式上設定中斷點。 當程式在中斷點停止執行時，請檢視 `generatedCode` 的值。
+在 `CustomTemplateEngine` 的 `return csharpDocument;` 陳述式上設定中斷點。 當程式在中斷點停止執行時，請檢視 `generatedCode` 的值。
 
 ![generatedCode 的文字視覺化檢視](razor/_static/tvr.png)
+
+::: moniker-end
 
 ## <a name="view-lookups-and-case-sensitivity"></a>檢視查閱和區分大小寫
 
 Razor 檢視引擎會針對檢視執行區分大小寫的查閱。 不過，實際查閱則取決於基礎檔案系統：
 
-* 檔案式來源： 
+* 檔案式來源：
   * 在具有不區分大小寫之檔案系統的作業系統上 (例如 Windows)，實體檔案提供者查閱不會區分大小寫。 例如，`return View("Test")` 針對 */Views/Home/Test.cshtml* 和 */Views/home/test.cshtml* (以及任何其他大小寫變體) 會有相符的結果。
   * 在區分大小寫的檔案系統上 (例如 Linux、OSX 及使用 `EmbeddedFileProvider`)，查閱會區分大小寫。 例如，`return View("Test")` 會明確符合 */Views/Home/Test.cshtml*。
 * 先行編譯的檢視：在 ASP.NET Core 2.0 和更新版本中，在所有作業系統上查閱先行編譯的檢視不會區分大小寫。 此行為與 Windows 上之實體檔案提供者的行為相同。 如果兩個先行編譯的檢視只有大小寫不同，查閱的結果不會由此決定。
 
 建議開發人員比對檔案和目錄的大小寫以及下列項目的大小寫：
 
-    * 區域、控制器和動作名稱。 
-    * Razor Pages。
-    
+* 區域、控制器和動作名稱。
+* Razor Pages。
+
 比對大小寫可確保不論基礎檔案系統為何，部署作業都能夠找到其值。

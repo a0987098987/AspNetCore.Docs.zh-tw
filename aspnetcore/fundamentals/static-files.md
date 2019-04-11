@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何在 ASP.NET Core Web 應用程式中提供靜態檔案、保護其安全，並設定靜態檔案裝載中介軟體的行為。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/18/2018
+ms.date: 12/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 7ecbcc81423af20f8da79ebc026b1ac01a250b90
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 114fee0795977043f3a74a81a15923a8bf5faf6b
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208631"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -19,7 +19,7 @@ ms.locfileid: "36279213"
 
 HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用程式直接提供給用戶端的資產。 您需要進行一些設定，才能提供這些檔案。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="serve-static-files"></a>提供靜態檔案
 
@@ -27,19 +27,21 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 您必須讓應用程式的 Web 主機記住內容根目錄。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 `WebHost.CreateDefaultBuilder` 方法可將內容根目錄設定為目前的目錄：
 
 [!code-csharp[](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=9)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 您可以叫用 `Program.Main` 內的 [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseContentRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_)，以將內容根目錄設定為目前的目錄：
 
 [!code-csharp[](static-files/samples/1x/Program.cs?name=snippet_ProgramClass&highlight=7)]
 
----
+::: moniker-end
 
 您可透過 Web 根目錄的相對路徑來存取靜態檔案。 例如，**Web 應用程式**專案範本的 *wwwroot* 資料夾內包含數個資料夾：
 
@@ -50,15 +52,23 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 若要存取 *images* 子資料夾的檔案，其 URI 格式為 http://\<伺服器位址>/images/\<影像檔名稱>。 例如，*http://localhost:9189/images/banner3.svg*。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.1"
 
-如以 .NET Framework 為目標，請將 [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) 套件新增至您的專案。 如以 .NET Core 為目標，[Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)會包含此套件。
+如以 .NET Framework 為目標，請將 [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) 套件新增至您的專案。 如以 .NET Core 為目標，[Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage-app)會包含此套件。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+如以 .NET Framework 為目標，請將 [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) 套件新增至您的專案。 如以 .NET Framework 為目標，[Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)會包含此套件。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 將 [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) 套件新增至您的專案。
 
----
+::: moniker-end
 
 設定[中介軟體](xref:fundamentals/middleware/index)以提供靜態檔案。
 
@@ -72,6 +82,8 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 [!code-cshtml[](static-files/samples/1x/Views/Home/Index.cshtml?name=snippet_static_file_wwwroot)]
 
+在上述程式碼中，波浪字元 `~/` 會指向 Web 根目錄。 如需詳細資訊，請參閱 [Web 根目錄](xref:fundamentals/index#web-root)。
+
 ### <a name="serve-files-outside-of-web-root"></a>提供 Web 根目錄外的檔案
 
 請考慮使用目錄階層，以提供不位於 Web 根目錄的靜態檔案：
@@ -82,9 +94,9 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
   * **js**
 * **MyStaticFiles**
   * **images**
-      * *banner1.svg*
+    * *banner1.svg*
 
-您可以設定靜態檔案中介軟體，以讓要求存取 *banner1.svg* 檔案，如下所示：
+透過設定靜態檔案中介軟體，可讓要求存取 *banner1.svg* 檔案，如下所示：
 
 [!code-csharp[](static-files/samples/1x/StartupTwoStaticFiles.cs?name=snippet_ConfigureMethod&highlight=5-10)]
 
@@ -102,7 +114,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 [HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) 方法存在於 [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/) 套件中。
 
-檔案已設為可公開快取 10 分鐘 (600 秒)：
+檔案已在開發環境中設為可公開快取 10 分鐘 (600 秒)：
 
 ![已新增顯示「快取控制」標頭的回應標頭](static-files/_static/add-header.png)
 
@@ -110,10 +122,10 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 靜態檔案中介軟體不提供授權檢查。 其提供的所有檔案，包括在 *wwwroot* 下的檔案，皆可公開存取。 若要依據授權來提供檔案：
 
-* 請將它們儲存在 *wwwroot* 外部和可存取靜態檔案中介軟體的任何目錄，**並**
+* 請將它們儲存在 *wwwroot* 外部和可存取靜態檔案中介軟體的任何目錄。
 * 透過動作方法，將它們提供給已套用授權的目標。 傳回 [FileResult](/dotnet/api/microsoft.aspnetcore.mvc.fileresult) 物件：
 
-[!code-csharp[](static-files/samples/1x/Controllers/HomeController.cs?name=snippet_BannerImageAction)]
+  [!code-csharp[](static-files/samples/1x/Controllers/HomeController.cs?name=snippet_BannerImageAction)]
 
 ## <a name="enable-directory-browsing"></a>啟用目錄瀏覽
 
@@ -181,7 +193,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
   * **js**
 * **MyStaticFiles**
   * **images**
-      * *banner1.svg*
+    * *banner1.svg*
   * *default.html*
 
 下列程式碼可啟用靜態檔案、預設檔案和 `MyStaticFiles` 的目錄瀏覽功能：
@@ -199,7 +211,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 | http://\<伺服器位址>/StaticFiles/images/banner1.svg    |      MyStaticFiles/images/banner1.svg |
 | http://\<伺服器位址>/StaticFiles             |     MyStaticFiles/default.html |
 
-如果 *MyStaticFiles* 目錄中不存在預設名稱的檔案，http://\<伺服器位址>/StaticFiles 會傳回含有可點按連結的目錄清單：
+如果 *MyStaticFiles* 目錄中不存在預設名稱的檔案， http://\<伺服器位址>/StaticFiles 會傳回含有可點按連結的目錄清單：
 
 ![靜態檔案清單](static-files/_static/db2.png)
 
@@ -216,7 +228,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 ## <a name="non-standard-content-types"></a>非標準的內容類型
 
-靜態檔案中介軟體可理解幾乎 400 種已知的檔案內容類型。 如果使用者要求未知檔案類型的檔案時，靜態檔案中介軟體會傳回 HTTP 404 (找不到) 的回應。 如果啟用目錄瀏覽功能，則會顯示檔案的連結。 URI 會傳回 HTTP 404 錯誤。
+靜態檔案中介軟體可理解幾乎 400 種已知的檔案內容類型。 如果使用者要求具有未知檔案類型的檔案，則靜態檔案中介軟體會將該要求傳遞至管線中的下一個中介軟體。 如果沒有中介軟體處理要求，則會傳回「404 找不到」回應。 如果啟用目錄瀏覽功能，則會在目錄清單中顯示檔案的連結。
 
 下列程式碼可讓您提供未知的類型，並會將未知的檔案轉譯為影像：
 
@@ -234,7 +246,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 * 使用 `UseDirectoryBrowser` 和 `UseStaticFiles` 公開內容的 URL 可能有區分大小寫，並受限於基礎檔案系統的字元限制。 例如，Windows 不區分大小寫&mdash;macOS 和 Linux 則區分大小寫。
 
-* 裝載於 IIS 中的 ASP.NET Core 應用程式會使用 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，將所有要求轉送給應用程式 (包括靜態檔案要求)， 而不會使用 IIS 靜態檔案處理常式。 因此，上述處理常式不可能在模組處理要求之前處理要求。
+* 裝載於 IIS 中的 ASP.NET Core 應用程式會使用 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)，將所有要求轉送給應用程式 (包括靜態檔案要求)， 而不會使用 IIS 靜態檔案處理常式。 因此，上述處理常式不可能在模組處理要求之前處理要求。
 
 * 請完成 IIS 管理員中的下列步驟，以移除伺服器或網站層級的 IIS 靜態檔案處理常式：
     1. 巡覽至 [模組] 功能。

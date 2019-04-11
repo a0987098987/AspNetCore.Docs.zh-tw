@@ -5,12 +5,12 @@ description: ''
 ms.author: riande
 ms.date: 07/03/2017
 uid: mvc/controllers/actions
-ms.openlocfilehash: 3f3f565021d484b69401a3e03a2a966c92764a49
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 952e4dbb2c4343ca87ace1535e4a5968faf088cf
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275654"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209011"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>在 ASP.NET Core MVC 中處理控制器要求
 
@@ -33,7 +33,7 @@ ms.locfileid: "36275654"
 
 控制器類別不得具有相關聯的 `[NonController]` 屬性。
 
-控制器應該遵循[明確相依性準則](http://deviq.com/explicit-dependencies-principle/)。 有幾種方法可以實作此準則。 如果多個控制器動作需要相同的服務，請考慮使用[建構函式插入](xref:mvc/controllers/dependency-injection#constructor-injection)來要求這些相依性。 如果只有單一動作方法需要服務，請考慮使用[動作插入](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices)來要求相依性。
+控制器應該遵循[明確相依性準則](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)。 有幾種方法可以實作此準則。 如果多個控制器動作需要相同的服務，請考慮使用[建構函式插入](xref:mvc/controllers/dependency-injection#constructor-injection)來要求這些相依性。 如果只有單一動作方法需要服務，請考慮使用[動作插入](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices)來要求相依性。
 
 在**模型檢視控制器**模式內，控制器負責初始處理要求和模型具現化。 一般而言，應該在模型內執行商業決策。
 
@@ -57,7 +57,7 @@ ms.locfileid: "36275654"
 
 因為回應本文缺少要描述的內容，所以未包括 `Content-Type` HTTP 回應標頭。
 
-此類別內有兩種結果類型：「重新導向」和「HTTP 狀態碼」。
+此類別內有兩種結果類型：重新導向與 HTTP 狀態碼。
 
 * **HTTP 狀態碼**
 
@@ -73,7 +73,7 @@ ms.locfileid: "36275654"
 
 此類別中的大多數協助程式方法包括 `ContentType` 屬性，可讓您設定 `Content-Type` 回應標頭來描述回應本文。
 
-此類別內有兩種結果類型：[檢視](xref:mvc/views/overview)和[格式化回應](xref:web-api/advanced/formatting)。
+此類別內有兩種結果類型：[檢視](xref:mvc/views/overview)與 [格式化回應](xref:web-api/advanced/formatting).
 
 * **檢視**
 
@@ -83,7 +83,7 @@ ms.locfileid: "36275654"
 
     此類型會傳回 JSON 或類似的資料交換格式，以特定方式來代表物件。 例如，`return Json(customer);` 會將所提供的物件序列化為 JSON 格式。
     
-    此類型的其他通用方法包括 `File`、`PhysicalFile` 和 `VirtualFile`。 例如，`return PhysicalFile(customerFilePath, "text/xml");` 會傳回 `Content-Type` 回應標頭值 "text/xml" 所描述的 XML 檔案。
+    此類型的其他通用方法包括 `File` 與 `PhysicalFile`。 例如，`return PhysicalFile(customerFilePath, "text/xml");` 會傳回 [PhysicalFileResult](/dotnet/api/microsoft.aspnetcore.mvc.physicalfileresult)。
 
 #### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3.方法，導致使用與用戶端交涉之內容類型格式化的非空白回應本文
 
@@ -93,12 +93,12 @@ ms.locfileid: "36275654"
 
 ### <a name="cross-cutting-concerns"></a>跨領域關注
 
-應用程式通常會共用其工作流程的各部分。 範例包括需要驗證購物車存取權的應用程式，或快取某些頁面上資料的應用程式。 若要在動作方法之前或之後執行邏輯，請使用 *filter*。 對跨領域關注使用[篩選](xref:mvc/controllers/filters)可以減少重複，讓它們遵循[不重複 (DRY) 原則](http://deviq.com/don-t-repeat-yourself/)。
+應用程式通常會共用其工作流程的各部分。 範例包括需要驗證購物車存取權的應用程式，或快取某些頁面上資料的應用程式。 若要在動作方法之前或之後執行邏輯，請使用 *filter*。 在交叉關注上使用[篩選](xref:mvc/controllers/filters)可減少重複。
 
 大部分的篩選屬性 (例如 `[Authorize]`) 可以套用至控制器或動作層級 (視所需的細微性層級而定)。
 
 錯誤處理和回應快取通常是跨領域關注：
-   * [處理錯誤](xref:mvc/controllers/filters#exception-filters)
-   * [回應快取](xref:performance/caching/response)
+* [處理錯誤](xref:mvc/controllers/filters#exception-filters)
+* [回應快取](xref:performance/caching/response)
 
 許多跨領域關注都可以使用篩選或自訂[中介軟體](xref:fundamentals/middleware/index)進行處理。

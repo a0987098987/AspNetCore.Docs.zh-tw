@@ -1,26 +1,26 @@
 ---
 title: 使用 ASP.NET Core 設定可攜式物件當地語系化
 author: sebastienros
-description: 本文介紹可攜式物件檔案，並概述在具有 Orchard Core 架構的 ASP.NET Core 應用程式中使用它們的步驟。
+description: 此文件介紹可攜式物件檔案，並概述在具有 Orchard Core 架構的 ASP.NET Core 應用程式中使用它們的步驟。
 ms.author: scaddie
 ms.date: 09/26/2017
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 0baa8dbb1f42cdc30185108fe90937f89d0d42bf
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 466759b30e756a7cac8abab7352025df0462bb6f
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275781"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58210089"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>使用 ASP.NET Core 設定可攜式物件當地語系化
 
 作者：[Sébastien Ros](https://github.com/sebastienros) 和 [Scott Addie](https://twitter.com/Scott_Addie)
 
-本文將逐步說明在具有 [Orchard Core](https://github.com/OrchardCMS/OrchardCore) 架構的 ASP.NET Core 應用程式中使用可攜式物件 (PO) 檔案的步驟。
+此文件將逐步說明在具有 [Orchard Core](https://github.com/OrchardCMS/OrchardCore) 架構的 ASP.NET Core 應用程式中使用可攜式物件 (PO) 檔案的步驟。
 
 **注意：** Orchard Core 不是 Microsoft 產品。 因此，Microsoft 不提供這項功能的支援。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>什麼是 PO 檔案？
 
@@ -67,7 +67,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="referencing-the-package"></a>參考套件
 
-將參考新增至 `OrchardCore.Localization.Core` NuGet 套件。 它可在 [MyGet](https://www.myget.org/) 的下列套件來源中取得：https://www.myget.org/F/orchardcore-preview/api/v3/index.json
+將參考新增至 `OrchardCore.Localization.Core` NuGet 套件。 它可在 [MyGet](https://www.myget.org/) 的下列套件來源中取得： https://www.myget.org/F/orchardcore-preview/api/v3/index.json
 
 *.csproj* 檔案現在包含與下列內容類似的一行 (版本號碼可能不同)：
 
@@ -91,7 +91,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="creating-a-po-file"></a>建立 PO 檔案
 
-在應用程式根資料夾中建立名為 *<culture code>.po* 的檔案。 在此範例中，檔案名稱是 *fr.po*，因為使用法文語言：
+在應用程式根資料夾中建立名為 *\<culture code>.po* 的檔案。 在此範例中，檔案名稱是 *fr.po*，因為使用法文語言：
 
 [!code-text[](localization/sample/POLocalization/fr.po)]
 

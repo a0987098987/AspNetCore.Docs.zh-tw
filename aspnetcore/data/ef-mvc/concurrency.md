@@ -1,26 +1,20 @@
 ---
-title: ASP.NET Core MVC 與 EF Core - 並行 - 8/10
-author: rick-anderson
+title: 教學課程：處理並行 - ASP.NET MVC 搭配 EF Core
 description: 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
+author: rick-anderson
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 03/27/2019
+ms.topic: tutorial
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 9bf65621213c9657232dfff1701c9937d5105a9c
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 668cdafc078091b65035ecad854d2ecc62555721
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38186633"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750856"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---concurrency---8-of-10"></a>ASP.NET Core MVC 與 EF Core - 並行 - 8/10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+# <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>教學課程：處理並行 - ASP.NET MVC 搭配 EF Core
 
 在先前的教學課程中，您學會了如何更新資料。 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 
@@ -29,6 +23,23 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 ![Department [編輯] 頁面](concurrency/_static/edit-error.png)
 
 ![Department [刪除] 頁面](concurrency/_static/delete-error.png)
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 了解並行衝突
+> * 新增追蹤屬性
+> * 建立 Departments 控制器和檢視
+> * 更新 [索引] 檢視
+> * 更新 [編輯] 方法
+> * 更新 [編輯] 檢視
+> * 測試並行衝突
+> * 更新 *Delete* 頁面
+> * 更新 [詳細資料] 及 [建立] 檢視
+
+## <a name="prerequisites"></a>必要條件
+
+* [更新相關資料](update-related-data.md)
 
 ## <a name="concurrency-conflicts"></a>並行衝突
 
@@ -86,7 +97,7 @@ Jana 先按了一下 [儲存]，並且在瀏覽器返回 [索引] 頁面時看�
 
 在本教學課程的其餘部分，您會將一個 `rowversion` 追蹤屬性新增到 Department 實體，建立控制器和檢視，然後進行測試以驗證一切都運作正常。
 
-## <a name="add-a-tracking-property-to-the-department-entity"></a>將追蹤屬性新增到 Department 實體
+## <a name="add-a-tracking-property"></a>新增追蹤屬性
 
 在 *Models/Department.cs* 中，新增一個名為 RowVersion 的追蹤屬性：
 
@@ -113,7 +124,7 @@ dotnet ef migrations add RowVersion
 dotnet ef database update
 ```
 
-## <a name="create-a-departments-controller-and-views"></a>建立 Departments 控制器和檢視
+## <a name="create-departments-controller-and-views"></a>建立 Departments 控制器和檢視
 
 Scaffold Departments 控制器和檢視，如同您先前為 Students、Courses 和 Instructors 所做的。
 
@@ -123,7 +134,7 @@ Scaffold Departments 控制器和檢視，如同您先前為 Students、Courses 
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_Dropdown)]
 
-## <a name="update-the-departments-index-view"></a>更新 Departments [索引] 檢視
+## <a name="update-index-view"></a>更新 [索引] 檢視
 
 Scaffolding 引擎會在 [索引] 檢視中建立 RowVersion 資料行，但該欄位不應該顯示出來。
 
@@ -133,11 +144,11 @@ Scaffolding 引擎會在 [索引] 檢視中建立 RowVersion 資料行，但該�
 
 這會將標題變更為"Departments"，刪除 RowVersion 資料行，並為系統管理員顯示完整的名稱而非只有名字。
 
-## <a name="update-the-edit-methods-in-the-departments-controller"></a>更新 Departments 控制器中的 Edit 方法
+## <a name="update-edit-methods"></a>更新 [編輯] 方法
 
 在 HttpGet `Edit` 方法和 `Details` 方法中，新增 `AsNoTracking`。 在 HttpGet `Edit` 方法中，為系統管理員新增積極式載入。
 
-[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EagerLoading&highlight=2,3)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EagerLoading)]
 
 以下列程式碼取代 HttpPost `Edit` 方法的現有程式碼：
 
@@ -171,7 +182,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 `ModelState.Remove` 陳述式是必須的，因為 `ModelState` 具有舊的 `RowVersion` 值。 在檢視中，當兩者同時存在時，欄位的 `ModelState` 值會優先於模型屬性值。
 
-## <a name="update-the-department-edit-view"></a>更新 Department [編輯] 檢視
+## <a name="update-edit-view"></a>更新 [編輯] 檢視
 
 在 *Views/Departments/Edit.cshtml* 中，進行下列變更：
 
@@ -181,7 +192,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 [!code-html[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
 
-## <a name="test-concurrency-conflicts-in-the-edit-page"></a>在 [編輯] 頁面上測試並行衝突
+## <a name="test-concurrency-conflicts"></a>測試並行衝突
 
 執行應用程式，移至 Departments [索引] 頁面。 以滑鼠右鍵按一下 English 部門的**編輯** 超連結，然後選取 [開啟新的索引標籤]，然後按一下 English 部門的**編輯**超連結。 兩個瀏覽器索引標籤現在會顯示相同的資訊。
 
@@ -218,7 +229,6 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeletePost&highlight=1,3,5-8,11-18)]
 
 在您剛剛取代的 Scaffold 程式碼中，此方法僅會接受一個記錄識別碼：
-
 
 ```csharp
 public async Task<IActionResult> DeleteConfirmed(int id)
@@ -276,12 +286,30 @@ public async Task<IActionResult> Delete(Department department)
 
 [!code-html[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-如此即完成了處理並行衝突的簡介。 如需如何在 EF Core 中處理並行的詳細資訊，請參閱[並行衝突](https://docs.microsoft.com/ef/core/saving/concurrency)。 下一個教學課程會顯示如何為 Instructor 和 Student 實體實作每個階層資料表的繼承。
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="additional-resources"></a>其他資源
 
-> [!div class="step-by-step"]
-> [上一頁](update-related-data.md)
-> [下一頁](inheritance.md)
+ 如需如何在 EF Core 中處理並行的詳細資訊，請參閱[並行衝突](/ef/core/saving/concurrency)。
+
+## <a name="next-steps"></a>後續步驟
+
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 了解並行衝突
+> * 新增追蹤屬性
+> * 建立 Departments 控制器和檢視
+> * 更新 [索引] 檢視
+> * 更新 [編輯] 方法
+> * 更新 [編輯] 檢視
+> * 測試並行衝突
+> * 更新 [刪除] 頁面
+> * 更新 [詳細資料] 和 [建立] 檢視
+
+若要了解如何為 Instructor 和 Student 實體實作依階層建立資料表的繼承，請前往下一個教學課程。
+
+> [!div class="nextstepaction"]
+> [下一步：實作依階層建立資料表的繼承](inheritance.md)

@@ -1,239 +1,288 @@
 ---
 title: ASP.NET Core 基本概念
 author: rick-anderson
-description: 探索用於建置 ASP.NET Core 應用程式的基本概念。
+description: 了解建置 ASP.NET Core 應用程式的基本概念。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.custom: H1Hack27Feb2017
-ms.date: 07/02/2018
+ms.custom: mvc
+ms.date: 03/31/2019
 uid: fundamentals/index
-ms.openlocfilehash: 8e0198e2975192e6522c4821741aacc7a844000b
-ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
+ms.openlocfilehash: a1fed574db0baab391ebb9cfc44664ceddbfa69b
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39410087"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809285"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
-ASP.NET Core 應用程式是一種主控台應用程式，可使用其 `Main` 方法建立網頁伺服器：
+此文章是了解如何開發 ASP.NET Core 應用程式的關鍵主題概觀。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+## <a name="the-startup-class"></a>Startup 類別
 
-[!code-csharp[](../getting-started/sample/aspnetcoreapp/Program2x.cs)]
+`Startup` 類別是：
 
-`Main` 方法會叫用 `WebHost.CreateDefaultBuilder`，這會遵循產生器模式來建立 Web 應用程式主機。 產生器具有定義網頁伺服器 (例如，`UseKestrel`) 和啟動類別 (`UseStartup`) 的方法。 以前述範例而言，會自動配置 [Kestrel](xref:fundamentals/servers/kestrel) 網頁伺服器。 ASP.NET Core 的 Web 主機會嘗試在 IIS 上執行 (如果有的話)。 其他網頁伺服器 (例如 [HTTP.sys](xref:fundamentals/servers/httpsys)) 則可透過叫用適當的擴充方法來使用。 `UseStartup` 將於下一節進一步說明。
+* 設定任何應用程式所需服務的位置。
+* 定義要求處理管線的位置。
 
-`IWebHostBuilder` 是 `WebHost.CreateDefaultBuilder` 叫用的傳回型別，提供了許多選擇性方法。 其中某些方法包括用來在 HTTP.sys 中裝載應用程式的 `UseHttpSys`，以及用於指定根內容目錄的 `UseContentRoot`。 `Build` 與 `Run` 方法則會建置 `IWebHost` 物件，裝載應用程式並開始接聽 HTTP 要求。
+* 設定 (或「註冊」) 服務的程式碼會新增至 `Startup.ConfigureServices` 方法。 「服務」是應用程式所使用的元件。 例如，Entity Framework Core 內容物件便是一項服務。
+* 設定要求處理管線的程式碼會新增至 `Startup.Configure` 方法。 管線是由一系列「中介軟體」元件所組成。 例如，中介軟體可能會處理靜態檔案的要求，或是將 HTTP 要求重新導向至 HTTPS。 每個中介軟體會在 `HttpContext` 上執行非同步操作，然後叫用管線中下一個中介軟體或終止要求。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+以下是 `Startup` 類別範例：
 
-[!code-csharp[](../getting-started/sample/aspnetcoreapp/Program.cs)]
+[!code-csharp[](index/snapshots/2.x/Startup1.cs?highlight=3,12)]
 
-`Main` 方法會使用 `WebHostBuilder`，這會遵循產生器模式來建立 Web 應用程式主機。 產生器具有定義網頁伺服器 (例如，`UseKestrel`) 和啟動類別 (`UseStartup`) 的方法。 在上述範例中，會使用 [Kestrel](xref:fundamentals/servers/kestrel) 網頁伺服器。 其他網頁伺服器 (例如 [WebListener](xref:fundamentals/servers/weblistener)) 則可透過叫用適當的擴充方法來使用。 `UseStartup` 將於下一節進一步說明。
-
-`WebHostBuilder` 提供許多選擇性方法，包括用來裝載於 IIS 和 IIS Express 中的 `UseIISIntegration`，以及用於指定根內容目錄的 `UseContentRoot`。 `Build` 與 `Run` 方法則會建置 `IWebHost` 物件，裝載應用程式並開始接聽 HTTP 要求。
-
----
-
-## <a name="startup"></a>啟動
-
-`WebHostBuilder` 上的 `UseStartup` 方法可為應用程式指定 `Startup` 類別：
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
-
-[!code-csharp[](../getting-started/sample/aspnetcoreapp/Program2x.cs?highlight=10&range=6-17)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-[!code-csharp[](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=7&range=6-17)]
-
----
-
-`Startup` 類別是您用來定義要求處理管線以及設定應用程式所需之所有服務的位置。 `Startup` 必須是公用類別，而且包含下列方法：
-
-```csharp
-public class Startup
-{
-    // This method gets called by the runtime. Use this method
-    // to add services to the container.
-    public void ConfigureServices(IServiceCollection services)
-    {
-    }
-
-    // This method gets called by the runtime. Use this method
-    // to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app)
-    {
-    }
-}
-```
-
-`ConfigureServices` 會定義應用程式所使用的[服務](#dependency-injection-services) (例如 ASP.NET Core MVC、Entity Framework Core、Identity 等)。 `Configure` 則會定義要求管線的[中介軟體](xref:fundamentals/middleware/index)。
-
-如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
-
-## <a name="content-root"></a>內容根目錄
-
-內容根目錄是應用程式所使用的任何內容的基底路徑，例如檢視、[Razor 頁面](xref:razor-pages/index)，以及靜態資產。 根據預設，內容根目錄會與裝載應用程式之可執行檔的應用程式基底路徑相同。
-
-## <a name="web-root"></a>Web 根目錄
-
-應用程式的 Web 根目錄是專案中包含公用、靜態資源 (例如 CSS、JavaScript 和影像檔) 的目錄。
+如需詳細資訊，請參閱<xref:fundamentals/startup>。
 
 ## <a name="dependency-injection-services"></a>相依性插入 (服務)
 
-服務是一種在應用程式中常用的元件。 服務可透過[相依性插入 (DI)](xref:fundamentals/dependency-injection) 提供。 ASP.NET Core 包含原生逆轉控制 (IoC) 容器，根據預設，其會支援[建構函式插入](xref:mvc/controllers/dependency-injection#constructor-injection)。 您可視需要取代掉預設的原生容器。 DI 除了具有鬆散結合的優點之外，還能夠讓整個應用程式皆可使用服務。(例如：[記錄](xref:fundamentals/logging/index))。
+ASP.NET Core 具有內建的相依性插入 (DI) 架構，可讓應用程式的類別使用所設定服務。 取得類別中一項服務執行個體的其中一種方式，便是使用所需類型的參數來建立建構函式。 參數可以是服務類型或是介面。 DI 系統會在執行階段提供服務。
 
-如需詳細資訊，請參閱[相依性插入](xref:fundamentals/dependency-injection)。
+以下是使用 DI 取得 Entity Framework Core 內容物件的類別。 醒目提示的那一行便是建構函式插入的範例：
+
+[!code-csharp[](index/snapshots/2.x/Index.cshtml.cs?highlight=5)]
+
+雖然 DI 為內建，但其設計用於讓您插入協力廠商的控制反轉 (IoC) 容器 (若您想要的話)。
+
+如需詳細資訊，請參閱<xref:fundamentals/dependency-injection>。
 
 ## <a name="middleware"></a>中介軟體
 
-在 ASP.NET Core 中，您可以使用[中介軟體](xref:fundamentals/middleware/index)來撰寫要求管線。 ASP.NET Core 中介軟體會對 `HttpContext` 執行非同步邏輯，然後叫用序列中的下一個中介軟體或直接終止要求。 透過在 `Configure` 方法中叫用 `UseXYZ` 擴充方法，新增稱為 "XYZ" 的中介軟體元件。
+要求處理管線是以一系列中介軟體元件組成。 每個元件會在 `HttpContext` 上執行非同步操作，然後叫用管線中下一個中介軟體或終止要求。
 
-ASP.NET Core 內含一組豐富的內建中介軟體：
+依照慣例，中介軟體元件會透過叫用其 `Startup.Configure` 方法中的 `Use...` 延伸模組方法來新增至管線。 例如，若要啟用靜態檔案轉譯，請呼叫 `UseStaticFiles`。
 
-* [靜態檔案](xref:fundamentals/static-files)
-* [路由傳送](xref:fundamentals/routing)
-* [驗證](xref:security/authentication/index)
-* [回應壓縮中介軟體](xref:performance/response-compression)
-* [URL 重寫中介軟體](xref:fundamentals/url-rewriting)
+下列範例中醒目提示的程式碼會設定要求處理管線：
 
-ASP.NET Core 應用程式可使用以 [OWIN](http://owin.org) 為基礎的中介軟體，您也可以自行撰寫自訂的中介軟體。
+[!code-csharp[](index/snapshots/2.x/Startup1.cs?highlight=14-16)]
 
-如需詳細資訊，請參閱[中介軟體](xref:fundamentals/middleware/index)和 [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin)。
+ASP.NET Core 包含一組豐富的內建中介軟體，您也可以撰寫自訂中介軟體。
 
-::: moniker range=">= aspnetcore-2.1"
+如需詳細資訊，請參閱<xref:fundamentals/middleware/index>。
 
-## <a name="initiate-http-requests"></a>初始化 HTTP 要求
+<a id="host"/>
 
-如需使用 `IHttpClientFactory` 來存取 `HttpClient` 執行個體以發出 HTTP 要求的詳細資訊，請參閱[初始化 HTTP 要求](xref:fundamentals/http-requests)。
+## <a name="the-host"></a>主機
+
+ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封裝所有應用程式資源的物件，例如：
+
+* HTTP 伺服器實作
+* 中介軟體元件
+* 記錄
+* DI
+* Configuration
+
+在單一物件中包含所有應用程式相互依存資源的主要理由便是生命週期管理：控制應用程式的啟動及順利關機。
+
+建立主機的程式碼位於 `Program.Main` 中，並遵循 [builder pattern](https://wikipedia.org/wiki/Builder_pattern) (產生器模式)。 會呼叫方法來設定每個作為主機一部分的資源。 此外還會呼叫產生器方法，一起具現化主機物件。
+
+::: moniker range=">= aspnetcore-3.0"
+
+在 ASP.NET Core 3.0 或更新版本中，您可以在 Web 應用程式中使用一般 Web 主機 (`Host` 類別) 或 Web 主機 (`WebHost` 類別)。 建議您使用一般主機，Web 主機則適用於回溯相容性。
+
+架構會提供 `CreateDefaultBuilder` 和 `ConfigureWebHostDefaults` 方法來設定具有常用選項的主機，例如下列項目：
+
+* 使用 [Kestrel](#servers) 作為網頁伺服器，並啟用 IIS 整合。
+* 從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。
+* 將記錄輸出傳送到主控台及偵錯提供者。
+
+以下是建置主機的範例程式碼。 使用常用選項設定主機的方法已在其中醒目提示：
+
+[!code-csharp[](index/snapshots/3.x/Program1.cs?highlight=9-10)]
+
+如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與 <xref:fundamentals/host/web-host>。
 
 ::: moniker-end
 
-## <a name="environments"></a>環境
+::: moniker range="< aspnetcore-3.0"
 
-如「開發」與「生產」等環境是 ASP.NET Core 中的第一級概念，可使用環境變數加以設定。
+ASP.NET Core 2.x 會針對 Web 應用程式使用 Web 主機 (`WebHost` 類別)。 架構會提供 `CreateDefaultBuilder` 來設定具有常用選項的主機，例如下列項目：
 
-如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments)。
+* 使用 [Kestrel](#servers) 作為網頁伺服器，並啟用 IIS 整合。
+* 從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。
+* 將記錄輸出傳送到主控台及偵錯提供者。
 
-## <a name="configuration"></a>Configuration
+以下是建置主機的範例程式碼：
 
-ASP.NET Core 會使用以成對的名稱/值為基礎的組態模型。 而非以 `System.Configuration` 或 *web.config* 為基礎的組態模型。組態會從組態提供者經排序的集合中取得設定。 內建的組態提供者支援各種檔案格式 (XML、JSON、INI) 和環境變數，可啟用以環境為基礎的組態。 您也可以撰寫您自己的自訂組態提供者。
+[!code-csharp[](index/snapshots/2.x/Program1.cs?highlight=9)]
 
-如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
+如需詳細資訊，請參閱<xref:fundamentals/host/web-host>。
 
-## <a name="logging"></a>記錄
+::: moniker-end
 
-ASP.NET Core 支援可搭配各種記錄提供者的記錄 API。 內建提供者支援將記錄檔傳送至一或多個目的地。 可以使用協力廠商記錄架構。
+### <a name="advanced-host-scenarios"></a>進階主機案例
 
-如需詳細資訊，請參閱[記錄](xref:fundamentals/logging/index)
+::: moniker range=">= aspnetcore-3.0"
 
-## <a name="error-handling"></a>錯誤處理
+一般主機可供任何 .NET Core 應用程式使用 &mdash; 而非僅限 ASP.NET Core 應用程式。 一般主機 (`Host` 類別) 允許其他類型的應用程式使用交叉剪輯架構延伸模組，例如記錄、DI、設定與應用程式存留期管理。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
 
-ASP.NET CoreASP.NET Core 具有內建功能，可處理應用程式中的錯誤，包括開發人員例外狀況頁面、自訂錯誤頁面、靜態狀態字碼頁，以及啟動例外狀況處理。
+::: moniker-end
 
-如需詳細資訊，請參閱[如何處理錯誤](xref:fundamentals/error-handling)。
+::: moniker range="< aspnetcore-3.0"
 
-## <a name="routing"></a>路由
+Web 主機設計為包含 HTTP 伺服器實作，但在其他類型的 .NET 應用程式中並不需要這類實作。 從 ASP.NET Core 2.1 開始，一般主機 (`Host` 類別) 可供任何 .NET Core 應用程式使用 &mdash; 而非僅限 ASP.NET Core 應用程式。 一般主機允許其他類型的應用程式使用交叉剪輯架構延伸模組，例如記錄、DI、設定與應用程式存留期管理。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
 
-ASP.NET Core 提供用來將應用程式要求路由至路由處理常式的功能。
+::: moniker-end
 
-如需詳細資訊，請參閱[路由](xref:fundamentals/routing)。
-
-## <a name="file-providers"></a>檔案提供者
-
-ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化，而檔案提供者則提供通用介面，讓您可跨平台使用檔案。
-
-如需詳細資訊，請參閱[檔案提供者](xref:fundamentals/file-providers)。
-
-## <a name="static-files"></a>靜態檔案
-
-靜態檔案中介軟體負責提供靜態檔案，例如 HTML、CSS、影像和 JavaScript。
-
-如需詳細資訊，請參閱[靜態檔案](xref:fundamentals/static-files)。
-
-## <a name="hosting"></a>裝載
-
-ASP.NET Core 應用程式會設定並啟動*主機*，其負責啟動應用程式以及管理存留期。
-
-如需詳細資訊，請參閱[在 ASP.NET 中代管](xref:fundamentals/host/index)。
-
-## <a name="session-and-app-state"></a>工作階段和應用程式狀態
-
-ASP.NET Core 提供數種方法，可在使用者瀏覽 Web 應用程式時保留工作階段與狀態。
-
-如需詳細資訊，請參閱[工作階段與應用程式狀態](xref:fundamentals/app-state)。
+您也可以使用主機來執行背景工作。 如需詳細資訊，請參閱<xref:fundamentals/host/hosted-services>。
 
 ## <a name="servers"></a>伺服器
 
-ASP.NET Core 裝載模型不會直接接聽要求。 裝載模型需透過 HTTP 伺服器實作，才可將要求轉寄至應用程式。 轉寄的要求會包裝成一組可透過介面來存取的功能物件。 ASP.NET Core 包含一個受管理的跨平台網頁伺服器，稱為 [Kestrel](xref:fundamentals/servers/kestrel)。 Kestrel 通常會在生產 Web 伺服器 (例如 [IIS](https://www.iis.net/) 或 [Nginx](http://nginx.org)) 背後執行。 Kestrel 可執行為 Edge Server。
+ASP.NET Core 應用程式使用 HTTP 伺服器實作來接聽 HTTP 要求。 伺服器會把向應用程式發出的要求作為一組[要求功能](xref:fundamentals/request-features)，合併成一個 `HttpContext`。
 
-如需詳細資訊，請參閱[伺服器](xref:fundamentals/servers/index)及下列主題：
+::: moniker range=">= aspnetcore-2.2"
 
-* [Kestrel](xref:fundamentals/servers/kestrel)
-* [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)
-* [HTTP.sys](xref:fundamentals/servers/httpsys) (先前稱為 [WebListener](xref:fundamentals/servers/weblistener))
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-## <a name="globalization-and-localization"></a>全球化和當地語系化
+ASP.NET Core 隨附下列伺服器實作：
 
-使用 ASP.NET Core 建立多語系網站，讓更廣大的群眾得以使用您的網站。 ASP.NET Core 提供服務與中介軟體，可將網站當地語系化成不同的語言與文化特性。
+* *Kestrel* 是跨平台的網頁伺服器。 Kestrel 通常會使用 [IIS](https://www.iis.net/)在反向 Proxy 設定中執行。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。
+* *IIS HTTP 伺服器*則是適用於使用 IIS Windows 的伺服器。 透過此伺服器，ASP.NET Core 應用程式及 IIS 便可以在相同處理序中執行。
+* *HTTP.sys* 則是適用於並未搭配 IIS 使用 Windows 的伺服器。
 
-如需詳細資訊，請參閱[全球化與當地語系化](xref:fundamentals/localization)。
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-## <a name="request-features"></a>要求功能
+ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。 Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。
 
-有關 HTTP 要求和回應的網頁伺服器實作詳細資料，定義於介面中。 伺服器實作與中介軟體會使用這些介面，建立及修改應用程式的裝載管線。
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-如需詳細資訊，請參閱[要求功能](xref:fundamentals/request-features)。
+ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。 Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。
 
-## <a name="background-tasks"></a>背景工作
-
-背景工作會實作為*託管服務*。 託管服務是具有背景工作邏輯的類別，能夠實作 [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice) 介面。
-
-如需詳細資訊，請參閱[搭配託管服務的背景工作](xref:fundamentals/host/hosted-services)。
-
-## <a name="access-httpcontext"></a>存取 HttpContext
-
-透過 [IHttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor) 介面與其預設實作 [HttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.httpcontextaccessor) 來存取 `HttpContext`。
-
-如需詳細資訊，請參閱<xref:fundamentals/httpcontext>。
-
-## <a name="open-web-interface-for-net-owin"></a>Open Web Interface for .NET (OWIN)
-
-ASP.NET Core 支援Open Web Interface for .NET (OWIN)。 OWIN 可讓 Web 應用程式獨立於網頁伺服器。
-
-如需詳細資訊，請參閱 [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin)。
-
-## <a name="websockets"></a>WebSockets
-
-[WebSocket](https://wikipedia.org/wiki/WebSocket) 為通訊協定，其可在 TCP 連線下啟用雙向的持續性通訊通道。 其可用於像是聊天、股票行情、遊戲等應用程式，以及您希望在 Web 應用程式中使用即時功能的任何位置。 ASP.NET Core 支援網路通訊端功能。
-
-如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
-
-::: moniker range=">= aspnetcore-2.1"
-## <a name="microsoftaspnetcoreapp-metapackage"></a>Microsoft.AspNetCore.App 中繼套件
-
-[Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) 中繼套件可簡化套件管理。 如需詳細資訊，請參閱 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
+---
 
 ::: moniker-end
-::: moniker range="= aspnetcore-2.0"
-## <a name="microsoftaspnetcoreall-metapackage"></a>Microsoft.AspNetCore.All 中繼套件
 
-ASP.NET Core 的 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) 中繼套件包括：
+::: moniker range="< aspnetcore-2.2"
 
-* 所有由 ASP.NET Core 小組支援的套件。
-* Entity Framework Core 支援的所有套件。
-* ASP.NET Core 與 Entity Framework Core 所使用的內部與第三人相依性。
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-如需詳細資訊，請參閱 [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)。
+ASP.NET Core 隨附下列伺服器實作：
+
+* *Kestrel* 是跨平台的網頁伺服器。 Kestrel 通常會使用 [IIS](https://www.iis.net/)在反向 Proxy 設定中執行。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。
+* *HTTP.sys* 則是適用於並未搭配 IIS 使用 Windows 的伺服器。
+
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+
+ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。 Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。 Kestrel 通常會使用 [Nginx](http://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。
+
+---
+
 ::: moniker-end
 
-## <a name="net-core-vs-net-framework-runtime"></a>.NET Core 與 .NET Framework 執行階段
+如需詳細資訊，請參閱<xref:fundamentals/servers/index>。
 
-ASP.NET Core 應用程式可將目標設為 .NET Core 或 .NET Framework 執行階段。
+## <a name="configuration"></a>Configuration
 
-如需詳細資訊，請參閱[在 .NET Core 和 .NET Framework 之間進行選擇](/dotnet/articles/standard/choosing-core-framework-server)。
+ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，以成對名稱和數值的形式取得設定。 您可以使用各種來源的內建組態提供者，例如 *.json* 檔案、*.xml* 檔案、環境變數及命令列引數。 您也可以撰寫自訂組態提供者。
 
-## <a name="choose-between-aspnet-core-and-aspnet"></a>在 ASP.NET Core 與 ASP.NET 之間選擇
+例如，您可以指定組態來自 *appsettings.json* 和環境變數。 然後當要求 *ConnectionString* 的值時，架構便會先在 *appsettings.json* 檔案中尋找。 若有找到值，但在環境變數中也存在該值，則會優先使用來自環境變數的值。
 
-如需在 ASP.NET Core 與 ASP.NET 之間選擇的詳細資訊，請參閱[在 ASP.NET Core 與 ASP.NET 之間選擇](xref:fundamentals/choose-between-aspnet-and-aspnetcore)。
+針對管理保密組態資料 (例如密碼)，ASP.NET Core 提供[祕密管理員工具](xref:security/app-secrets)。 針對生產祕密，我們建議使用 [Azure Key Vault](xref:security/key-vault-configuration)。
+
+如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
+
+## <a name="options"></a>選項
+
+在可能的情況下，ASP.NET Core 會遵循「選項模式」來儲存及擷取組態值。 選項模式使用類別來代表一組相關的設定。
+
+例如，下列程式碼會設定 WebSocket 選項：
+
+```csharp
+var options = new WebSocketOptions  
+{  
+   KeepAliveInterval = TimeSpan.FromSeconds(120),  
+   ReceiveBufferSize = 4096
+};  
+app.UseWebSockets(options);
+```
+
+如需詳細資訊，請參閱<xref:fundamentals/configuration/options>。
+
+## <a name="environments"></a>環境
+
+執行環境 (例如「開發」、「預備」及「生產」) 是 ASP.NET Core 中的第一級概念。 您可以透過設定 `ASPNETCORE_ENVIRONMENT` 環境變數，指定應用程式執行的環境。 ASP.NET Core 會在應用程式啟動時讀取環境變數，然後將值儲存在 `IHostingEnvironment` 實作中。 環境物件可在應用程式中的任何位置，透過 DI 使用。
+
+下列 `Startup` 類別的範例程式碼會設定應用程式，只在於「開發」環境中執行時提供詳細的錯誤資訊：
+
+[!code-csharp[](index/snapshots/2.x/Startup2.cs?highlight=3-6)]
+
+如需詳細資訊，請參閱<xref:fundamentals/environments>。
+
+## <a name="logging"></a>記錄
+
+ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提供者搭配使用。 可用的提供者包括如下：
+
+* 主控台
+* 偵錯
+* Windows 上的事件追蹤
+* Windows 事件記錄檔
+* TraceSource
+* Azure App Service
+* Azure Application Insights
+
+透過從 DI 取得 `ILogger` 物件並呼叫記錄方法，從應用程式程式碼中的任何位置寫入記錄。
+
+以下是使用 `ILogger` 物件的範例程式碼，其中建構函式插入及記錄方法呼叫都已醒目提示。
+
+[!code-csharp[](index/snapshots/2.x/TodoController.cs?highlight=5,13,17)]
+
+`ILogger` 介面可讓您將任何數量的欄位傳遞給記錄提供者。 欄位常用於建構訊息字串，但提供者也可以將它們作為個別欄位，傳送至資料存放區。 這項功能可讓記錄提供者實作 [semantic logging (語意記錄)，又稱為 structured logging (結構化記錄)](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
+
+如需詳細資訊，請參閱<xref:fundamentals/logging/index>。
+
+## <a name="routing"></a>路由
+
+「路由」是一種對應到處理常式的 URL 模式。 處理常式通常是 Razor 頁面、MVC 控制器中的動作方法，或是中介軟體。 ASP.NET Core 路由可讓您控制您應用程式使用的 URL。
+
+如需詳細資訊，請參閱<xref:fundamentals/routing>。
+
+## <a name="error-handling"></a>錯誤處理
+
+ASP.NET Core 具有處理錯誤的內建功能，例如：
+
+* 開發人員例外狀況頁面
+* 自訂錯誤頁面
+* 靜態狀態碼頁面
+* 啟動例外狀況處理
+
+如需詳細資訊，請參閱<xref:fundamentals/error-handling>。
+
+## <a name="make-http-requests"></a>發出 HTTP 要求
+
+`IHttpClientFactory` 的實作可用於建立 `HttpClient` 執行個體。 Factory：
+
+* 提供一個集中位置以便命名和設定邏輯 `HttpClient` 執行個體。 例如，您可以註冊 *github* 並設定用戶端以存取 GitHub。 預設用戶端可以註冊用於其他用途。
+* 支援註冊及多個委派處理常式的鏈結，以用於建置傳出要求中介軟體管線。 此模式與 ASP.NET Core 中的輸入中介軟體管線相似。 模式提供一個機制來管理 HTTP 要求的跨領域關注，包括快取、錯誤處理、序列化和記錄。
+* 與 *Polly* 整合，Polly 是一種熱門的協力廠商程式庫，用於進行暫時性的錯誤處理。
+* 管理基礎 `HttpClientMessageHandler` 執行個體的共用和存留期，以避免在手動管理 `HttpClient` 存留期時，發生的常見 DNS 問題。
+* 針對透過處理站所建立之用戶端傳送的所有要求，新增可設定的記錄體驗 (透過 `ILogger`)。
+
+如需詳細資訊，請參閱<xref:fundamentals/http-requests>。
+
+## <a name="content-root"></a>內容根目錄
+
+內容根是指向任何由應用程式所使用私人內容的基礎路徑，例如其 Razor 檔案。 根據預設，內容根是裝載應用程式可執行檔的基礎路徑。 您可以在[建置主機](#host)時指定替代位置。
+
+::: moniker range=">= aspnetcore-3.0"
+
+如需詳細資訊，請參閱[內容根](xref:fundamentals/host/generic-host#content-root)。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+如需詳細資訊，請參閱[內容根](xref:fundamentals/host/web-host#content-root)。
+
+::: moniker-end
+
+## <a name="web-root"></a>Web 根目錄
+
+Web 根目錄 (也稱為 *webroot*) 是公用、靜態資源 (例如 CSS、JavaScript 和影像檔) 的基礎路徑。 根據預設，靜態檔案中介軟體只會提供來自 Web 根目錄 (及其子目錄) 的檔案。 Web 根目錄路徑預設為 *{內容根}/wwwroot*，但您可以在[建置主機](#host)時指定不同的位置。
+
+在 Razor (*.cshtml*) 檔案中，波狀符號與正斜線 `~/` 會指向 Web 根目錄。 開頭為 `~/` 的路徑稱為虛擬路徑。
+
+如需詳細資訊，請參閱<xref:fundamentals/static-files>。

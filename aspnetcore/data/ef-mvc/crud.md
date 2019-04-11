@@ -1,41 +1,38 @@
 ---
-title: ASP.NET Core MVC 和 EF Core - CRUD - 2/10
+title: 教學課程：實作 CRUD 功能 - ASP.NET MVC 搭配 EF Core
+description: 在本教學課程中，您將檢閱並自訂 MVC Scaffolding 自動為您在控制器及檢視中建立的 CRUD (建立、讀取、更新、刪除) 程式碼。
 author: rick-anderson
-description: ''
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 02/04/2019
+ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 1c724da918640c514acbc24c390de4e735f8bf49
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: cee521eec3172c04b4d9d93c12076c42c9adff18
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342428"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750599"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC 和 EF Core - CRUD - 2/10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+# <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學課程：實作 CRUD 功能 - ASP.NET MVC 搭配 EF Core
 
 在前一個教學課程中，您建立了一個使用 Entity Framework 及 SQL Server LocalDB 來儲存及顯示資料的 MVC 應用程式。 在本教學課程中，您將檢閱並自訂 MVC Scaffolding 自動為您在控制器及檢視中建立的 CRUD (建立、讀取、更新、刪除) 程式碼。
 
 > [!NOTE]
-> 實作[存放庫模式](xref:fundamentals/repository-pattern)，以在您的控制器及資料存取層之間建立抽象層是一種非常常見的做法。 為了使這些教學課程維持簡單，並聚焦於教導如何使用 Entity Framework，課程中將不會使用存放庫。 如需存放庫的詳細資訊，請參閱[本系列的最後一個教學課程](advanced.md)。
+> 實作儲存機制模式，以在您的控制器及資料存取層之間建立抽象層是一種非常常見的做法。 為了使這些教學課程維持簡單，並聚焦於教導如何使用 Entity Framework，課程中將不會使用儲存機制。 如需儲存機制的詳細資訊，請參閱[本系列的最後一個教學課程](advanced.md)。
 
-在本教學課程中，您將使用下列網頁：
+在本教學課程中，您已：
 
-![Student [詳細資料] 頁面](crud/_static/student-details.png)
+> [!div class="checklist"]
+> * 自訂 [詳細資料] 頁面
+> * 更新 [建立] 頁面
+> * 更新 [編輯] 頁面
+> * 更新 *Delete* 頁面
+> * 關閉資料庫連線
 
-![Student [建立] 頁面](crud/_static/student-create.png)
+## <a name="prerequisites"></a>必要條件
 
-![Student [編輯] 頁面](crud/_static/student-edit.png)
-
-![Student [刪除] 頁面](crud/_static/student-delete.png)
+* [開始使用 EF Core 和 ASP.NET Core MVC](intro.md)
 
 ## <a name="customize-the-details-page"></a>自訂 [詳細資料] 頁面
 
@@ -91,7 +88,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 <a href="/Students/Edit?studentID=6">Edit</a>
 ```
 
-如需標籤協助程式的詳細資訊，請參閱 [ASP.NET Core 中的標籤協助程式](xref:mvc/views/tag-helpers/intro)。
+如需標籤協助程式的詳細資訊，請參閱 <xref:mvc/views/tag-helpers/intro>。
 
 ### <a name="add-enrollments-to-the-details-view"></a>將註冊新增至 [詳細資料] 檢視中
 
@@ -117,15 +114,16 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
-這段程式碼會將 ASP.NET MVC 模型繫結器建立的 Student 實體新增至 Student 實體組，然後將變更儲存至資料庫。 (模型繫結器指的是可讓您在操作由表單送出之資料上變得更為簡單的 ASP.NET MVC 功能。模型繫結器會將以 POST 方式送出之表單的值轉換為 CLR 類型，然後傳遞給參數中的動作方法。 在此案例中，模型繫結器會使用來自表單 (Form) 集合的屬性值，為您執行個體化 Student 實體。)
+此程式碼會將 ASP.NET Core MVC 模型繫結器建立的 Student 實體新增至 Student 實體集，然後將變更儲存至資料庫。 (模型繫結器指的是 ASP.NET Core MVC 功能，它可讓您更輕鬆地操作由表單送出的資料；模型繫結器會將以 POST 方式送出的表單值轉換為 CLR 類型，然後傳遞給參數中的動作方法。 在此案例中，模型繫結器會使用來自表單 (Form) 集合的屬性值，為您執行個體化 Student 實體。)
 
 您從 `Bind` 屬性移除了 `ID`，因為該識別碼是 SQL Server 在插入該資料列時自動為其建立的主索引鍵值。 使用者輸入的內容不會設定識別碼值。
 
-除了 `Bind` 屬性外，try-catch 區塊是您對 Scaffold 程式碼進行的唯一變更。 若在儲存變更時捕捉到衍生自 `DbUpdateException` 的例外狀況，則會顯示一般錯誤訊息。 `DbUpdateException` 例外狀況有時候是因為某些外部因素造成的，而非程式設計上的錯誤，因此系統會建議使用者再試一次。 雖然在此範例中並未實作，但生產環境品質的應用程式應記錄例外狀況。 如需詳細資訊，請參閱[監視及遙測 (使用 Azure 建置現實世界的雲端應用程式)](https://docs.microsoft.com/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)中的**深入解析記錄檔**一節。
+除了 `Bind` 屬性外，try-catch 區塊是您對 Scaffold 程式碼進行的唯一變更。 若在儲存變更時捕捉到衍生自 `DbUpdateException` 的例外狀況，則會顯示一般錯誤訊息。 `DbUpdateException` 例外狀況有時候是因為某些外部因素造成的，而非程式設計上的錯誤，因此系統會建議使用者再試一次。 雖然在此範例中並未實作，但生產環境品質的應用程式應記錄例外狀況。 如需詳細資訊，請參閱[監視及遙測 (使用 Azure 建置現實世界的雲端應用程式)](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)中的**深入解析記錄檔**一節。
 
 `ValidateAntiForgeryToken` 屬性可協助防止跨網站偽造要求 (CSRF) 攻擊。 [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) 會自動將權杖插入檢視中，並在使用者提交表單時包含在內。 權杖會由 `ValidateAntiForgeryToken` 屬性進行驗證。 如需 CSRF 的詳細資訊，請參閱[防偽要求](../../security/anti-request-forgery.md)。
 
 <a id="overpost"></a>
+
 ### <a name="security-note-about-overposting"></a>關於大量指派 (overposting) 的安全性注意事項
 
 Scaffold 程式碼在 `Create` 方法上包含的 `Bind` 屬性是在建立案例中防止大量指派 (overposting) 的一種方法。 例如，假設 Student 實體包含了一個 `Secret` 屬性，而您不希望這個網頁設定這個屬性。
@@ -171,7 +169,7 @@ public class Student
 
 在 *StudentController.cs* 中，HttpGet `Edit` 方法 (沒有 `HttpPost` 屬性的方法) 會使用 `SingleOrDefaultAsync` 方法來擷取選取的 Student 實體，如同您在 `Details` 方法中所看到的。 您不需要變更這個方法。
 
-### <a name="recommended-httppost-edit-code-read-and-update"></a>建議的 HttpPost Edit 程式碼：讀取及更新
+### <a name="recommended-httppost-edit-code-read-and-update"></a>建議的 HttpPost Edit 程式碼：讀取和更新
 
 將 HttpPost Edit 動作方法以下列程式碼取代。
 
@@ -185,7 +183,7 @@ public class Student
 
 作為這些變更的結果，HttpPost `Edit` 方法的方法簽章會與 HttpGet `Edit` 方法的簽章一樣；因此，您已將方法重新命名為 `EditPost`。
 
-### <a name="alternative-httppost-edit-code-create-and-attach"></a>HttpPost Edit 程式碼的替代方案：建立及連結
+### <a name="alternative-httppost-edit-code-create-and-attach"></a>替代的 HttpPost Edit 程式碼：建立並連結
 
 建議的 HttpPost Edit 程式碼可確保只有受到變更的資料行會獲得更新，並且會保留您不想要在資料繫結中包含之屬性內的資料。 然而，讀取優先的方法會需要額外的資料庫讀取，因此可能導致需要更多複雜的程式碼來處理並行衝突。 其替代方案便是將模型繫結器建立的實體連結到 EF 內容，並將其標示為已修改。 (請不要使用此程式碼更新您的專案。此程式碼僅作為展示選擇性的方法之用。)
 
@@ -215,7 +213,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 在 Web 應用程式中，初始讀取實體並顯示其資料以供編輯之用的 `DbContext` 會在頁面轉譯之後遭到處置。 當呼叫 HttpPost `Edit` 動作方法時，會發出新的 Web 要求，並且您便會擁有一個新的 `DbContext` 執行個體。 當您在新的內容中重新讀取時，您便會模擬桌面處理流程。
 
-但若您不想要進行額外的讀取作業，則您必須使用由模型繫結器建立的實體物件。  完成此作業最簡單的方式，便是將實體狀態設定為「已修改」(Modified)，作為先前顯示之 HttpPost Edit 程式碼的替代方案。 則當您呼叫 `SaveChanges` 時，Entity Framework 會更新資料庫資料列中所有的資料行，因為內容無法得知您變更的屬性為何。
+但若您不想要進行額外的讀取作業，則您必須使用由模型繫結器建立的實體物件。  完成這項作業最簡單的方式，便是將實體狀態設定為「已修改」(Modified)，作為先前顯示之 HttpPost Edit 程式碼的替代方案。 則當您呼叫 `SaveChanges` 時，Entity Framework 會更新資料庫資料列中所有的資料行，因為內容無法得知您變更的屬性為何。
 
 若您想要避免讀取優先的方法，但又想要 SQL UPDATE 陳述式僅更新使用者實際變更的欄位，則程式碼會變得更為複雜。 您必須先以某種方式儲存原始的值 (例如使用隱藏欄位)，使得在呼叫 HttpPost `Edit` 方法時仍可以使用那些值。 然後您便可以使用原始的值建立 Student 實體，使用原始版本的實體呼叫 `Attach` 方法，將實體的值更新為新的值，然後呼叫 `SaveChanges`。
 
@@ -245,7 +243,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 請以下列程式碼取代 HttpPost `Delete` 動作方法 (名為 `DeleteConfirmed`)。此程式碼會執行實際的刪除作業並捕捉任何資料庫更新錯誤。
 
-[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6,8-11,13-14,18-23)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6-9,11-12,16-21)]
 
 此程式碼會擷取選取的實體，然後呼叫 `Remove` 方法來將實體的狀態設定為 `Deleted`。 當呼叫 `SaveChanges` 時，便會產生 SQL DELETE 命令。
 
@@ -269,21 +267,21 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 按一下 [刪除]。 顯示的 [索引] 頁面將不會包含遭刪除的學生。 (您會在並行教學課程中看到錯誤處理程式碼範例的實際情況。)
 
-## <a name="closing-database-connections"></a>關閉資料庫連線
+## <a name="close-database-connections"></a>關閉資料庫連線
 
-若要釋放資料庫連線保留的資源，您必須在完成作業並不再需要內容執行個體時盡快處置它。 ASP.NET Core 內建的[相依性插入](../../fundamentals/dependency-injection.md)會為您完成此工作。
+若要釋放資料庫連線保留的資源，您必須在完成作業並不再需要內容執行個體時盡快處置它。 ASP.NET Core 內建的[相依性插入](../../fundamentals/dependency-injection.md)會為您完成這項工作。
 
-在 *Startup.cs* 中，您會呼叫 [AddDbContext 擴充方法](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) 來在 ASP.NET DI 容器中佈建 `DbContext` 類別。 根據預設，該方法會將服務存留期設定為 `Scoped`。 `Scoped` 表示內容物件的存留期會與 Web 要求的存留期保持一致，並且在 Web 要求結束時會自動呼叫 `Dispose` 方法。
+在 *Startup.cs* 中，您會呼叫 [AddDbContext 擴充方法](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) 來在 ASP.NET Core DI 容器中佈建 `DbContext` 類別。 根據預設，該方法會將服務存留期設定為 `Scoped`。 `Scoped` 表示內容物件的存留期會與 Web 要求的存留期保持一致，並且在 Web 要求結束時會自動呼叫 `Dispose` 方法。
 
-## <a name="handling-transactions"></a>處理交易
+## <a name="handle-transactions"></a>處理交易
 
-根據預設，Entity Framework 隱含性的實作了交易。 在您對多個資料列或資料表進行變更，然後呼叫 `SaveChanges` 的案例下，Entity Framework 會自動確認您所有的變更都已成功或是失敗。 若有些變更已先完成，之後卻發生錯誤，則這些變更都會自動進行復原。 針對您需要更多控制的案例 -- 例如，若您想要在一個交易中包含在 Entity Framework 之外完成的作業 -- 請參閱[交易](https://docs.microsoft.com/ef/core/saving/transactions)。
+根據預設，Entity Framework 隱含性的實作了交易。 在您對多個資料列或資料表進行變更，然後呼叫 `SaveChanges` 的案例下，Entity Framework 會自動確認您所有的變更都已成功或是失敗。 若有些變更已先完成，之後卻發生錯誤，則這些變更都會自動進行復原。 針對您需要更多控制的案例 -- 例如，若您想要在一個交易中包含在 Entity Framework 之外完成的作業 -- 請參閱[交易](/ef/core/saving/transactions)。
 
 ## <a name="no-tracking-queries"></a>無追蹤查詢
 
 當資料庫內容擷取資料表資料列並建立代表他們的實體物件時，根據預設，它會追蹤在記憶體中的實體是否與資料庫中的內容保持同步。 記憶體中的資料所扮演的角色是一個快取，並會在您更新實體時使用。 這個快取通常在 Web 應用程式當中是不需要的，因為內容執行個體通常壽命都很短 (每次要求都會建立一個新的並進行處置)，並且通常讀取實體的內容都會在實體重新獲得利用前遭到處置。
 
-您可以藉由呼叫 `AsNoTracking` 方法來停用追蹤記憶體中的實體物件。 您會想要進行此操作的常見案例包括下列情況：
+您可以藉由呼叫 `AsNoTracking` 方法來停用追蹤記憶體中的實體物件。 您會想要進行這項操作的常見案例包括下列情況：
 
 * 在內容的存留期間，您不需要更新任何實體，並且您也不需要 EF [使用透過個別查詢擷取的實體自動載入導覽屬性](read-related-data.md)。 控制器中的 HttpGet 動作方法常常會符合這些條件。
 
@@ -291,14 +289,24 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 * 您想要連結到一個實體以更新它，但稍早之前您才為了不同的目的擷取過相同的實體。 由於實體已由資料庫內容進行追蹤，您無法連結到您想要變更的實體。 處理這種情況的一種方法，便是在稍早之前的查詢中呼叫 `AsNoTracking`。
 
-如需詳細資訊，請參閱[追蹤與不追蹤](https://docs.microsoft.com/ef/core/querying/tracking)。
+如需詳細資訊，請參閱[追蹤與不追蹤](/ef/core/querying/tracking)。
 
-## <a name="summary"></a>總結
+## <a name="get-the-code"></a>取得程式碼
 
-您現在已有完整的頁面組，可為 Student 實體進行簡易的 CRUD 作業。 在下一個教學課程中，您會將 [索引] 頁面的功能進行拓展，新增排序、篩選和分頁功能。
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>後續步驟
 
-> [!div class="step-by-step"]
-> [上一頁](intro.md)
-> [下一頁](sort-filter-page.md)
+在本教學課程中，您已：
+
+> [!div class="checklist"]
+> * 自訂 [詳細資料] 頁面
+> * 更新 [建立] 頁面
+> * 更新 [編輯] 頁面
+> * 更新 [刪除] 頁面
+> * 關閉資料庫連線
+
+若要了解如何藉由新增排序、篩選及分頁來擴充 [索引] 頁面的功能，請前往下一個教學課程。
+
+> [!div class="nextstepaction"]
+> [下一步：排序、篩選及分頁](sort-filter-page.md)

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 648ed8087c64eaf80fd055fa7dd08041ab9a8752
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320275"
+---
 執行身分識別框架：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
@@ -11,7 +19,7 @@
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-如果之前尚未安裝 ASP.NET scaffolder，請立即安裝：
+如果之前尚未安裝 ASP.NET Core scaffolder，請立即安裝：
 
 ```cli
 dotnet tool install -g dotnet-aspnet-codegenerator
@@ -36,4 +44,4 @@ dotnet aspnet-codegenerator identity -h
 dotnet aspnet-codegenerator identity --useDefaultUI
 ```
 
--------------
+---

@@ -3,14 +3,15 @@ title: 從 ASP.NET 遷移至 ASP.NET Core 2.0
 author: isaac2004
 description: 收到現有 ASP.NET MVC 或 Web API 應用程式移轉至 ASP.NET Core 2.0 的指導的方針。
 ms.author: scaddie
-ms.date: 08/27/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: migration/mvc2
-ms.openlocfilehash: d8a3f76bb5125a1ec76d0435ff3317f939a4ec67
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 7f048f2f95f1a51a0b6ce3d36665420ff28ec26f
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342253"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208469"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>從 ASP.NET 遷移至 ASP.NET Core 2.0
 
@@ -20,7 +21,7 @@ ms.locfileid: "39342253"
 
 ## <a name="prerequisites"></a>必要條件
 
-安裝**一個**的 從下列[.NET 下載： Windows](https://www.microsoft.com/net/download/windows):
+安裝**一個**從以下的[.NET 下載：Windows](https://www.microsoft.com/net/download/windows):
 
 * .NET Core SDK
 * Visual Studio for Windows
@@ -28,7 +29,8 @@ ms.locfileid: "39342253"
   * **.NET Core 跨平台開發**工作負載
 
 ## <a name="target-frameworks"></a>目標 Framework
-ASP.NET Core 2.0 專案讓開發人員能夠彈性以 .NET Core、.NET Framework 或兩者為目標。 請參閱[針對伺服器應用程式在 .NET Core 和 .NET Framework 之間進行選擇](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)，判斷哪些目標架構最適合。
+
+ASP.NET Core 2.0 專案讓開發人員能夠彈性以 .NET Core、.NET Framework 或兩者為目標。 請參閱[針對伺服器應用程式在 .NET Core 和 .NET Framework 之間進行選擇](/dotnet/standard/choosing-core-framework-server)，判斷哪些目標架構最適合。
 
 以 .NET Framework 為目標時，專案需要參考個別的 NuGet 套件。
 
@@ -36,21 +38,24 @@ ASP.NET Core 2.0 專案讓開發人員能夠彈性以 .NET Core、.NET Framework
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
 </ItemGroup>
 ```
 
-使用中繼套件時，不使用應用程式部署中繼套件中參考的任何套件。 .NET Core 執行階段存放區包含這些資產，而且它們會先行編譯以改善效能。 如需詳細資料，請參閱 [ASP.NET Core 2.x 的 Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)。
+使用中繼套件時，不使用應用程式部署中繼套件中參考的任何套件。 .NET Core 執行階段存放區包含這些資產，而且它們會先行編譯以改善效能。 請參閱<xref:fundamentals/metapackage>如需詳細資訊。
 
 ## <a name="project-structure-differences"></a>專案結構差異
-ASP.NET Core 中已簡化 *.csproj* 檔案格式。 值得注意的變更包括：
-- 檔案不需要明確包含也會被視為專案的一部分。 在處理大型小組時，這會減少 XML 合併衝突的風險。
-- 其他專案沒有可改善檔案可讀性之以 GUID 為基礎的參考。
-- 您可以編輯檔案，卻不用在 Visual Studio 中卸載它：
 
-    ![在 Visual Studio 2017 中編輯 CSPROJ 操作功能表選項](_static/EditProjectVs2017.png)
+ASP.NET Core 中已簡化 *.csproj* 檔案格式。 值得注意的變更包括：
+
+* 檔案不需要明確包含也會被視為專案的一部分。 在處理大型小組時，這會減少 XML 合併衝突的風險。
+* 其他專案沒有可改善檔案可讀性之以 GUID 為基礎的參考。
+* 您可以編輯檔案，卻不用在 Visual Studio 中卸載它：
+
+  ![在 Visual Studio 2017 中編輯 CSPROJ 操作功能表選項](_static/EditProjectVs2017.png)
 
 ## <a name="globalasax-file-replacement"></a>取代 Global.asax 檔案
+
 ASP.NET Core 導入了啟動應用程式的新機制。 ASP.NET 應用程式的進入點是 *Global.asax* 檔案。 路由組態和篩選器和區域登錄等工作，會在 *Global.asax* 檔案中處理。
 
 [!code-csharp[](samples/globalasax-sample.cs)]
@@ -77,9 +82,10 @@ ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 相反地
 
 主機與應用程式已分離，這讓您未來可以彈性移至不同的平台。
 
-**注意：** 如需 ASP.NET Core 啟動和中介軟體的深入參考，請參閱 [ASP.NET Core 中的啟動](xref:fundamentals/startup)。
+ASP.NET Core 啟動和中介軟體的更深入參考，請參閱<xref:fundamentals/startup>。
 
 ## <a name="storing-configurations"></a>正在儲存組態
+
 ASP.NET 支援儲存設定。 例如，這些設定是用來支援要部署應用程式的環境。 過去的常見做法是將所有自訂機碼值組儲存在 *Web.config* 檔案的 `<appSettings>` 區段中：
 
 [!code-xml[](samples/webconfig-sample.xml)]
@@ -107,7 +113,7 @@ ASP.NET Core 可將應用程式的組態資料儲存在任何檔案中，將它�
 services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
 ````
 
-**注意：** 如需 ASP.NET Core 組態的更深入參考，請參閱 [ASP.NET Core 的組態](xref:fundamentals/configuration/index)。
+**注意：** 如需 ASP.NET Core 組態更深入參考，請參閱<xref:fundamentals/configuration/index>。
 
 ## <a name="native-dependency-injection"></a>原生相依性插入
 
@@ -117,15 +123,15 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 設定使用 Unity 的相依性插入的範例實作`IDependencyResolver`包裝`UnityContainer`:
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample8.cs)]
+[!code-csharp[](samples/sample8.cs)]
 
 建立您 `UnityContainer` 的執行個體、註冊您的服務，以及為容器設定 `UnityResolver` 新執行個體的 `HttpConfiguration` 相依性解析程式：
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample9.cs)]
+[!code-csharp[](samples/sample9.cs)]
 
 在需要的位置插入 `IProductRepository`：
 
-[!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample5.cs)]
+[!code-csharp[](samples/sample5.cs)]
 
 因為相依性插入是 ASP.NET Core 的一部分，您可以新增您的服務中`Startup.ConfigureServices`:
 
@@ -133,7 +139,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 存放庫可插入任何位置，就像以前的 Unity 一樣。
 
-如需有關在 ASP.NET Core 中的相依性插入的詳細資訊，請參閱[相依性插入](xref:fundamentals/dependency-injection)。
+如需有關在 ASP.NET Core 中的相依性插入的詳細資訊，請參閱<xref:fundamentals/dependency-injection>。
 
 ## <a name="serving-static-files"></a>提供靜態檔案
 
@@ -149,7 +155,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 例如，位在 `http://<app>/images/<imageFileName>` 等位置的瀏覽器可存取 *wwwroot/images* 資料夾中的影像資產。
 
-**注意︰** 提供 ASP.NET Core 中的靜態檔案的更深入參考，請參閱 <<c2> [ 靜態檔案](xref:fundamentals/static-files)。
+**注意：** 提供 ASP.NET Core 中的靜態檔案的更深入參考，請參閱<xref:fundamentals/static-files>。
 
 ## <a name="additional-resources"></a>其他資源
 

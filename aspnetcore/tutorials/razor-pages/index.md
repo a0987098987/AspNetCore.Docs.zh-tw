@@ -1,29 +1,38 @@
 ---
-title: 使用 ASP.NET Core 建立 Razor Pages Web 應用程式
+title: 教學課程：使用 ASP.NET Core 建立 Razor Pages Web 應用程式
 author: rick-anderson
 description: 使用 Visual Studio、ASP.NET Core 及 EF Core 在 Windows 上建立 Razor Pages Web 應用程式。
-monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/08/2017
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: 9d32a7becb291697313dc28925ab94b452385fc7
-ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
+ms.openlocfilehash: c3dcc18844f2a12a2a116b11cb007cb833203dc3
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992837"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345596"
 ---
-# <a name="create-a-razor-pages-web-app-with-aspnet-core"></a>使用 ASP.NET Core 建立 Razor Pages Web 應用程式
+# <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Razor Pages Web 應用程式
 
-本系列會說明使用 Visual Studio 的 ASP.NET Core 來建置 Razor Pages Web 應用程式的基本概念。 此系列的其他版本包括 [macOS 版本](xref:tutorials/razor-pages-mac/index)與 [Visual Studio Code 版本](xref:tutorials/razor-pages-vsc/index)。
+本系列教學課程說明建置 Razor Pages Web 應用程式的基本概念。 
 
-1. [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
+[!INCLUDE[](~/includes/advancedRP.md)]
+
+本系列包含下列教學課程：
+
+1. [建立 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages/razor-pages-start)
 1. [將模型新增至 Razor 頁面應用程式](xref:tutorials/razor-pages/model)
-1. [包含 Scaffold 的 Razor Pages](xref:tutorials/razor-pages/page)
-1. [使用 SQL Server LocalDB](xref:tutorials/razor-pages/sql)
-1. [更新頁面](xref:tutorials/razor-pages/da1)
+1. [Scaffold (產生) Razor 頁面](xref:tutorials/razor-pages/page)
+1. [使用資料庫](xref:tutorials/razor-pages/sql)
+1. [更新 Razor 頁面](xref:tutorials/razor-pages/da1)
 1. [新增搜尋](xref:tutorials/razor-pages/search)
 1. [新增欄位](xref:tutorials/razor-pages/new-field)
 1. [新增驗證](xref:tutorials/razor-pages/validation)
 
-完成教學課程之後，若要新增檔案上傳功能至範例應用程式，請參閱 <xref:razor-pages/upload-files>。
+最後，您會擁有一個能夠顯示及管理電影資料庫的應用程式。
+
+![範例應用程式的範例頁面](index/_static/sample-page.png)
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=F0SP7Ry4flQ&feature=youtu.be)

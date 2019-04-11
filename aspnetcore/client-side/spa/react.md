@@ -2,26 +2,19 @@
 title: React 專案範本與 ASP.NET Core 搭配使用
 author: SteveSandersonMS
 description: 了解如何開始使用 React 和 create-react-app 適用的 ASP.NET Core 單頁應用程式 (SPA) 專案範本。
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/21/2018
+ms.date: 03/07/2019
 uid: spa/react
-ms.openlocfilehash: 721ea1d4197ddd17dde657924f12dee2a6858d97
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 91a71498574d6d96c2c06e896283fed801e8adb3
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291501"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265234"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>React 專案範本與 ASP.NET Core 搭配使用
-
-::: moniker range="= aspnetcore-2.0"
-
-> [!NOTE]
-> 本文件與 ASP.NET Core 2.0 包含的 React 專案範本無關， 而是討論您可以手動更新的新版 React 範本。 ASP.NET Core 2.1 預設會包含此範本。
-
-::: moniker-end
 
 更新的 React 專案範本可利用 React 和 [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA) 慣例來實作功能多樣的用戶端使用者介面 (UI)，適合作為 ASP.NET Core 應用程式入門。
 
@@ -29,16 +22,7 @@ ms.locfileid: "36291501"
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
-::: moniker range="= aspnetcore-2.0"
-
-如果使用 ASP.NET Core 2.0，請確定您已經[安裝更新的 React 專案範本](xref:spa/index#installation)。
-
-::: moniker-end
-::: moniker range=">= aspnetcore-2.1"
-
-如果您有安裝 ASP.NET Core 2.1，沒有需要安裝 React 專案範本。
-
-::: moniker-end
+如已安裝 ASP.NET Core 2.1，就沒有必要安裝 React 專案範本。
 
 進入命令提示字元，然後在空目錄中使用 `dotnet new react` 命令以建立新的專案。 例如，下列命令會在 *my-new-app* 目錄中建立應用程式並切換到該目錄：
 
@@ -96,17 +80,32 @@ npm install --save <package_name>
 
 此預設設定有一個缺點。 每當您修改 C# 程式碼後，需要重新啟動 ASP.NET Core 應用程式，CRA 伺服器才會重新啟動。 大約幾秒鐘時間，才會開始備份。 如果您經常編輯 C# 程式碼，且不想要等候 CRA 伺服器重新啟動，可以在外部執行 CRA 伺服器，與 ASP.NET Core 程序獨立開來。 方法如下：
 
-1. 在命令提示字元中，切換至 *ClientApp* 子目錄，然後啟動 CRA 程式開發伺服器：
+1. 新增 *.env*的檔案*ClientApp*子目錄，使用下列設定：
+
+    ```
+    BROWSER=none
+    ```
+
+    啟動 CRA 伺服器外部時，這會導致無法開啟網頁瀏覽器。
+
+2. 在命令提示字元中，切換至 *ClientApp* 子目錄，然後啟動 CRA 程式開發伺服器：
 
     ```console
     cd ClientApp
     npm start
     ```
 
-2. 修改您的 ASP.NET Core 應用程式來使用外部的 CRA 伺服器執行個體，而不是啟動它自己的一個執行個體。 在 *Startup* 類別中，將 `spa.UseReactDevelopmentServer` 引動過程取代為：
+3. 修改您的 ASP.NET Core 應用程式來使用外部的 CRA 伺服器執行個體，而不是啟動它自己的一個執行個體。 在 *Startup* 類別中，將 `spa.UseReactDevelopmentServer` 引動過程取代為：
 
     ```csharp
     spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
     ```
 
 當您啟動 ASP.NET Core 應用程式，它並不會啟動 CRA 伺服器。 而是改為使用您手動啟動的執行個體。 這樣可以加快它的啟動和重新啟動速度。 不用每一次都要等候 React 應用程式來重新建置。
+
+> [!IMPORTANT]
+> 「 伺服器端轉譯 」 不支援的功能，此範本。 我們使用此範本的目標是符合 「 建立 react-應用程式 」 使用的同位檢查。 因此，案例和功能不包含在 「 建立 react-應用程式 」 專案 （例如 SSR) 中不支援，而且會留給您作為練習使用者。
+
+## <a name="additional-resources"></a>其他資源
+
+* <xref:security/authentication/identity/spa>

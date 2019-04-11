@@ -20,7 +20,7 @@ ms.locfileid: "39410178"
 
 整合測試可確保應用程式的元件正確運作，其中包含應用程式的支援基礎結構，例如資料庫、 檔案系統和網路層級。 ASP.NET Core 支援使用測試 web 主機和記憶體測試伺服器中的單元測試架構的整合測試。
 
-本主題假設對單元測試知識有基本了解。 如果熟悉測試概念，請參閱[.NET Core 和.NET Standard 中的單元測試](/dotnet/core/testing/)主題和其連結的內容。
+本主題假設您對單元測試知識有基本了解。如果不熟悉測試概念，請參閱 [.NET Core 與 .NET Standard 中的單元測試](/dotnet/core/testing/)主題和其連結的內容。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 

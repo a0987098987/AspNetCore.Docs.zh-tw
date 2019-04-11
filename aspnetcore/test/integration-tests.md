@@ -20,7 +20,7 @@ ms.locfileid: "58320182"
 
 整合測試可確保應用程式的元件正確運作，其中包含應用程式的支援基礎結構，例如資料庫、 檔案系統和網路層級。 ASP.NET Core 支援使用測試 web 主機和記憶體測試伺服器中的單元測試架構的整合測試。
 
-本主題假設單元測試的基本知識。 如果熟悉測試概念，請參閱[.NET Core 和.NET Standard 中的單元測試](/dotnet/core/testing/)主題和其連結的內容。
+本主題假設您對單元測試知識有基本了解。如果不熟悉測試概念，請參閱 [.NET Core 與 .NET Standard 中的單元測試](/dotnet/core/testing/)主題和其連結的內容。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -132,7 +132,7 @@ ASP.NET Core 中的整合測試需要下列各項：
 
 中的另一個測試`BasicTests`類別會檢查安全端點重新導向未驗證的使用者，應用程式的登入頁面。
 
-SUT，在`/SecurePage`頁面上使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)來套用慣例[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)至頁面。 如需詳細資訊，請參閱 < [Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
+SUT，在`/SecurePage`頁面上使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)來套用慣例[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)至頁面。 如需詳細資訊，請參閱  [Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
 
@@ -145,7 +145,7 @@ SUT，在`/SecurePage`頁面上使用[AuthorizePage](/dotnet/api/microsoft.exten
 * SUT 所傳回的狀態碼可以檢查對預期[HttpStatusCode.Redirect](/dotnet/api/system.net.httpstatuscode)結果，不登入頁面，會重新導向後的最終狀態程式碼[HttpStatusCode.OK](/dotnet/api/system.net.httpstatuscode).
 * `Location`回應標頭中的標頭值會檢查以確認它開頭`http://localhost/Identity/Account/Login`，不是最後登入頁面的回應，其中`Location`標頭不會出現。
 
-如需詳細資訊`WebApplicationFactoryClientOptions`，請參閱 <<c2> [ 用戶端選項](#client-options)一節。
+如需詳細資訊`WebApplicationFactoryClientOptions`，請參閱 <c2> [ 用戶端選項](#client-options)一節。
 
 ## <a name="customize-webapplicationfactory"></a>自訂 WebApplicationFactory
 
@@ -175,7 +175,7 @@ Web 主機組態可以建立獨立的測試類別，藉由繼承自`WebApplicati
 
 `SendAsync`協助程式的擴充方法 (*Helpers/HttpClientExtensions.cs*) 和`GetDocumentAsync`helper 方法 (*Helpers/HtmlHelpers.cs*) 中[的範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/)使用[AngleSharp](https://anglesharp.github.io/)剖析器來處理 antiforgery 檢查使用下列方法：
 
-* `GetDocumentAsync` &ndash; 接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回`IHtmlDocument`。 `GetDocumentAsync` 使用準備的處理站*虛擬回應*根據原始`HttpResponseMessage`。 如需詳細資訊，請參閱 < [AngleSharp 文件](https://github.com/AngleSharp/AngleSharp#documentation)。
+* `GetDocumentAsync` &ndash; 接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回`IHtmlDocument`。 `GetDocumentAsync` 使用準備的處理站*虛擬回應*根據原始`HttpResponseMessage`。 如需詳細資訊，請參閱 [AngleSharp 文件](https://github.com/AngleSharp/AngleSharp#documentation)。
 * `SendAsync` 擴充方法`HttpClient`compose [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)然後呼叫[SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_)提交要求給 SUT。 多載`SendAsync`接受 HTML 表單 (`IHtmlFormElement`) 和下列：
   * 提交按鈕的表單 (`IHtmlElement`)
   * 表單值集合 (`IEnumerable<KeyValuePair<string, string>>`)

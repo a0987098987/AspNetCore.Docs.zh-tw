@@ -1,17 +1,18 @@
 ---
 title: 在 Linux 上使用 Nginx 裝載 ASP.NET Core
-author: rick-anderson
+author: guardrex
 description: 了解如何在 Ubuntu 16.04 上將 Nginx 設定為反向 Proxy，以將 HTTP 流量轉送至在 Kestrel 上執行的 ASP.NET Core Web 應用程式。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/27/2019
+ms.date: 03/31/2019
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 11754279d18a2449451364b4aaba723b7afb06d5
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 1a299cbd5fb9d971176d7d440efdad68e3780231
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345920"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809337"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -19,7 +20,7 @@ ms.locfileid: "57345920"
 
 本指南說明在 Ubuntu 16.04 伺服器上設定生產環境就緒的 ASP.NET Core 環境。 這些指示可能使用較新版本的 Ubuntu，但未經測試。
 
-如需有關 ASP.NET Core 支援之其他 Linux 發行版本的資訊，請參閱 [Linux 上 .NET Core 的先決條件](/dotnet/core/linux-prerequisites)。
+如需有關 ASP.NET Core 支援之其他 Linux 發行版本的資訊，請參閱 [Linux 上 .NET Core 的必要條件](/dotnet/core/linux-prerequisites)。
 
 > [!NOTE]
 > 針對 Ubuntu 14.04，建議使用 *supervisord*作為監視 Kestrel 處理序的解決方案。 在 Ubuntu 14.04 上無法使用 *systemd*。 如需 Ubuntu 14.04 指示，請參閱[本主題前一版本](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)。
@@ -31,7 +32,7 @@ ms.locfileid: "57345920"
 * 確保 Web 應用程式在啟動時以精靈的形式執行。
 * 設定程序管理工具以協助重新啟動 Web 應用程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器。
 1. 在伺服器上安裝 .NET Core 執行階段。
@@ -43,6 +44,11 @@ ms.locfileid: "57345920"
 ## <a name="publish-and-copy-over-the-app"></a>跨應用程式發佈與複製
 
 為[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)設定應用程式。
+
+如果應用程式在本機執行且未設定為進行安全連線 (HTTPS)，請採用下列任一方法：
+
+* 設定應用程式以處理安全的本機連線。 如需詳細資訊，請參閱＜HTTPS 組態＞[](#https-configuration)一節。
+* 從 *Properties/launchSettings.json* 檔案中的 `applicationUrl` 屬性移除 `https://localhost:5001` (如果有的話)。
 
 從開發環境執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 將應用程式封裝到可在伺服器上執行的目錄 (例如，*bin/Release/&lt;target_framework_moniker&gt;/publish*)：
 
@@ -76,8 +82,6 @@ Kestrel 非常適用於從 ASP.NET Core 提供動態內容。 不過，Web 服�
 
 任何依賴配置的元件，例如驗證、連結產生、重新導向和地理位置，都必須在叫用轉送的標頭中介軟體後放置。 轉送的標頭中介軟體是一般規則，應該先於診斷和錯誤處理中介軟體以外的其他中介軟體執行。 這種排序可確保依賴轉送標頭資訊的中介軟體可以耗用用於處理的標頭值。
 
-::: moniker range=">= aspnetcore-2.0"
-
 請先在 `Startup.Configure` 中叫用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 方法，再呼叫 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 或類似的驗證配置中介軟體。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
 
 ```csharp
@@ -88,28 +92,6 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.UseAuthentication();
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-請先在 `Startup.Configure` 中叫用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 方法，再呼叫 <xref:Microsoft.AspNetCore.Builder.BuilderExtensions.UseIdentity*> 和 <xref:Microsoft.AspNetCore.Builder.FacebookAppBuilderExtensions.UseFacebookAuthentication*> 或類似的驗證配置中介軟體。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
-
-```csharp
-app.UseForwardedHeaders(new ForwardedHeadersOptions
-{
-    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-});
-
-app.UseIdentity();
-app.UseFacebookAuthentication(new FacebookOptions()
-{
-    AppId = Configuration["Authentication:Facebook:AppId"],
-    AppSecret = Configuration["Authentication:Facebook:AppSecret"]
-});
-```
-
-::: moniker-end
 
 如果未將任何 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 指定給中介軟體，則要轉送的預設標頭會是 `None`。
 
@@ -237,6 +219,12 @@ Linux 的檔案系統會區分大小寫。 將 ASPNETCORE_ENVIRONMENT 設定為 
 systemd-escape "<value-to-escape>"
 ```
 
+環境變數名稱不支援冒號 (`:`) 分隔符號。 請使用雙底線 (`__`) 來取代冒號。 [環境變數組態提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)會在將環境變數讀入組態時，將雙底線轉換為冒號。 在下列範例中，連接字串索引鍵 `ConnectionStrings:DefaultConnection` 會設定為服務定義檔中的 `ConnectionStrings__DefaultConnection`：
+
+```
+Environment=ConnectionStrings__DefaultConnection={Connection String}
+```
+
 儲存檔案並啟用服務。
 
 ```bash
@@ -351,6 +339,17 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 #### <a name="https-configuration"></a>HTTPS 設定
 
+**設定應用程式以進行安全的本機連線 (HTTPS)**
+
+[dotnet run](/dotnet/core/tools/dotnet-run) 命令使用應用程式的 *Properties/launchSettings.json* 檔案，其設定應用程式在 `applicationUrl` 屬性所提供的 URL 上接聽 (例如 `https://localhost:5001;http://localhost:5000`)。
+
+使用下列其中一種方法，設定應用程式將憑證用在針對 `dotnet run` 命令的開發，或用在開發環境 (F5，若在 Visual Studio Code 中則為 Ctrl+F5)：
+
+* [取代組態中的預設憑證](xref:fundamentals/servers/kestrel#configuration) (建議使用)
+* [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
+
+**設定反向 Prooxy 以進行安全的用戶端連線 (HTTPS)**
+
 * 藉由指定由受信任憑證授權單位 (CA) 核發的有效憑證，將伺服器設定成在連接埠 `443` 上接聽 HTTPS 流量。
 
 * 採用以下 */etc/nginx/nginx.conf* 檔案所述的一些做法來強化安全性。 範例包括選擇更強的加密，重新導向 HTTPS 到 HTTP 的所有流量。
@@ -397,7 +396,7 @@ sudo nano /etc/nginx/nginx.conf
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Linux 上 .NET Core 的先決條件](/dotnet/core/linux-prerequisites)
+* [Linux 上 .NET Core 的必要條件](/dotnet/core/linux-prerequisites)
 * [Nginx：Binary Releases:Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (二進位版本：官方 Debian/Ubuntu 套件)
 * <xref:test/troubleshoot>
 * <xref:host-and-deploy/proxy-load-balancer>

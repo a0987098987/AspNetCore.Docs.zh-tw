@@ -1,17 +1,18 @@
 ---
 title: 在 Linux 上使用 Apache 裝載 ASP.NET Core
+author: guardrex
 description: 了解如何在 CentOS 上將 Apache 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 Kestrel 上執行的 ASP.NET Core Web 應用程式。
-author: spboyer
+monikerRange: '>= aspnetcore-2.1'
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 02/27/2019
+ms.date: 03/31/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 69026997b2c269a4fb56ed2a79fa42ae218368e1
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 34da0653ff29acf3044e69e032307d1a3da7044a
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345933"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809272"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -19,7 +20,7 @@ ms.locfileid: "57345933"
 
 使用本指南來了解如何在 [CentOS 7](https://www.centos.org/) 上將 [Apache](https://httpd.apache.org/) 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器上執行的 ASP.NET Core Web 應用程式。 [mod_proxy 延伸模組](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html)和相關的模組會建立伺服器的反向 Proxy。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 執行 CentOS 7 的伺服器搭配具有 sudo 權限的標準使用者帳戶。
 * 在伺服器上安裝 .NET Core 執行階段。
@@ -31,6 +32,11 @@ ms.locfileid: "57345933"
 ## <a name="publish-and-copy-over-the-app"></a>跨應用程式發佈與複製
 
 為[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)設定應用程式。
+
+如果應用程式在本機執行且未設定為進行安全連線 (HTTPS)，請採用下列任一方法：
+
+* 設定應用程式以處理安全的本機連線。 如需詳細資訊，請參閱＜HTTPS 組態＞[](#https-configuration)一節。
+* 從 *Properties/launchSettings.json* 檔案中的 `applicationUrl` 屬性移除 `https://localhost:5001` (如果有的話)。
 
 從開發環境執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 將應用程式封裝到可在伺服器上執行的目錄 (例如，*bin/Release/&lt;target_framework_moniker&gt;/publish*)：
 
@@ -55,8 +61,6 @@ Proxy 伺服器則是會將用戶端要求轉送至另一部伺服器，而不�
 
 任何依賴配置的元件，例如驗證、連結產生、重新導向和地理位置，都必須在叫用轉送的標頭中介軟體後放置。 轉送的標頭中介軟體是一般規則，應該先於診斷和錯誤處理中介軟體以外的其他中介軟體執行。 這種排序可確保依賴轉送標頭資訊的中介軟體可以耗用用於處理的標頭值。
 
-::: moniker range=">= aspnetcore-2.0"
-
 請先在 `Startup.Configure` 中叫用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 方法，再呼叫 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 或類似的驗證配置中介軟體。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
 
 ```csharp
@@ -67,28 +71,6 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.UseAuthentication();
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-請先在 `Startup.Configure` 中叫用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 方法，再呼叫 <xref:Microsoft.AspNetCore.Builder.BuilderExtensions.UseIdentity*> 和 <xref:Microsoft.AspNetCore.Builder.FacebookAppBuilderExtensions.UseFacebookAuthentication*> 或類似的驗證配置中介軟體。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
-
-```csharp
-app.UseForwardedHeaders(new ForwardedHeadersOptions
-{
-    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-});
-
-app.UseIdentity();
-app.UseFacebookAuthentication(new FacebookOptions()
-{
-    AppId = Configuration["Authentication:Facebook:AppId"],
-    AppSecret = Configuration["Authentication:Facebook:AppSecret"]
-});
-```
-
-::: moniker-end
 
 如果未將任何 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 指定給中介軟體，則要轉送的預設標頭會是 `None`。
 
@@ -228,6 +210,12 @@ TimeoutStopSec=90
 systemd-escape "<value-to-escape>"
 ```
 
+環境變數名稱不支援冒號 (`:`) 分隔符號。 請使用雙底線 (`__`) 來取代冒號。 [環境變數組態提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)會在將環境變數讀入組態時，將雙底線轉換為冒號。 在下列範例中，連接字串索引鍵 `ConnectionStrings:DefaultConnection` 會設定為服務定義檔中的 `ConnectionStrings__DefaultConnection`：
+
+```
+Environment=ConnectionStrings__DefaultConnection={Connection String}
+```
+
 儲存檔案並啟用服務：
 
 ```bash
@@ -325,6 +313,17 @@ rich rules:
 ```
 
 ### <a name="https-configuration"></a>HTTPS 設定
+
+**設定應用程式以進行安全的本機連線 (HTTPS)**
+
+[dotnet run](/dotnet/core/tools/dotnet-run) 命令使用應用程式的 *Properties/launchSettings.json* 檔案，其設定應用程式在 `applicationUrl` 屬性所提供的 URL 上接聽 (例如 `https://localhost:5001;http://localhost:5000`)。
+
+使用下列其中一種方法，設定應用程式將憑證用在針對 `dotnet run` 命令的開發，或用在開發環境 (F5，若在 Visual Studio Code 中則為 Ctrl+F5)：
+
+* [取代組態中的預設憑證](xref:fundamentals/servers/kestrel#configuration) (建議使用)
+* [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
+
+**設定反向 Prooxy 以進行安全的用戶端連線 (HTTPS)**
 
 為了設定適用於 HTTPS 的 Apache，會使用 *mod_ssl* 模組。 安裝 *httpd* 模組時，已一併安裝 *mod_ssl* 模組。 如果未安裝該模組，請使用 `yum` 將它新增到設定中。
 
@@ -492,6 +491,6 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Linux 上 .NET Core 的先決條件](/dotnet/core/linux-prerequisites)
+* [Linux 上 .NET Core 的必要條件](/dotnet/core/linux-prerequisites)
 * <xref:test/troubleshoot>
 * <xref:host-and-deploy/proxy-load-balancer>

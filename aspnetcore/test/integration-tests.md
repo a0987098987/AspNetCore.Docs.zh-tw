@@ -311,7 +311,7 @@ SUT 應用程式執行時，會產生下列標記：
 
 ## <a name="disable-shadow-copying"></a>停用陰影複製
 
-陰影複製會導致在不同的輸出資料夾的資料夾中執行測試。 針對測試才能正常運作，陰影複製必須停用。 [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)xunit，並停用所包括的 xUnit 陰影複製*xunit.runner.json*檔案使用的是正確的組態設定。 如需詳細資訊，請參閱 <<c0> [ 使用 JSON 設定 xUnit](https://xunit.github.io/docs/configuring-with-json.html)。
+陰影複製會導致在不同的輸出資料夾的資料夾中執行測試。 針對測試才能正常運作，陰影複製必須停用。 [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)xunit，並停用所包括的 xUnit 陰影複製*xunit.runner.json*檔案使用的是正確的組態設定。 如需詳細資訊，請參閱 <c0> [ 設定使用 JSON 的 xUnit.net](https://xunit.github.io/docs/configuring-with-json.html)。
 
 新增*xunit.runner.json*檔案根目錄的測試專案，使用下列內容：
 

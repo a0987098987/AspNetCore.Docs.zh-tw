@@ -2,17 +2,16 @@
 title: 加入、 下載及刪除身分識別的 ASP.NET Core 專案中的使用者資料
 author: rick-anderson
 description: 了解如何在 ASP.NET Core 專案中加入身分識別的自訂使用者資料。 刪除每 GDPR 的資料。
-monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 6/16/2018
 ms.custom: seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: 529aa0bf369f8a635bd8d39948585cf2a530e2d9
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 8c0413a16d92b717619387748ee78f0d14d6c852
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208482"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516205"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>加入、 下載及刪除身分識別的 ASP.NET Core 專案的自訂使用者資料
 
@@ -25,11 +24,11 @@ ms.locfileid: "58208482"
 
 Razor 頁面 web 應用程式，從建立專案範例，但 ASP.NET Core MVC web 應用程式的指示如下。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/authentication/add-user-data/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/authentication/add-user-data) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [](~/includes/2.1-SDK.md)]
+[!INCLUDE [](~/includes/2.2-SDK.md)]
 
 ## <a name="create-a-razor-web-app"></a>建立 Razor Web 應用程式
 
@@ -37,7 +36,7 @@ Razor 頁面 web 應用程式，從建立專案範例，但 ASP.NET Core MVC web
 
 * 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案] 。 將專案命名為**WebApp1**如果您要符合的命名空間[下載範例](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/authentication/add-user-data/sample)程式碼。
 * 選取  **ASP.NET Core Web 應用程式** > **確定**
-* 選取  **ASP.NET Core 2.1**下拉式清單中
+* 選取  **ASP.NET Core 2.2**下拉式清單中
 * 選取  **Web 應用程式**  > **確定**
 * 建置並執行專案。
 
@@ -109,7 +108,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 更新`IdentityUser`衍生的類別具有自訂屬性。 如果您名為 WebApp1 的專案，檔案會命名為*Areas/Identity/Data/WebApp1User.cs*。 使用下列程式碼中更新檔案：
 
-[!code-csharp[Main](add-user-data/sample/Areas/Identity/Data/WebApp1User.cs)]
+[!code-csharp[Main](add-user-data/sample-2.2/Areas/Identity/Data/WebApp1User.cs)]
 
 以屬性裝飾[PersonalData](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute?view=aspnetcore-2.1)屬性：
 
@@ -120,21 +119,21 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 更新`InputModel`中*Areas/Identity/Pages/Account/Manage/Index.cshtml.cs*下列醒目標示的程式碼：
 
-[!code-csharp[Main](add-user-data/sample/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs?name=snippet&highlight=28-36,63-64,87-95,120)]
+[!code-csharp[Main](add-user-data/sample-2.2/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs?name=snippet&highlight=28-36,63-64,98-106,119)]
 
 更新*Areas/Identity/Pages/Account/Manage/Index.cshtml*下列反白顯示的標記：
 
-[!code-html[Main](add-user-data/sample/Areas/Identity/Pages/Account/Manage/Index.cshtml?highlight=34-41)]
+[!code-html[Main](add-user-data/sample-2.2/Areas/Identity/Pages/Account/Manage/Index.cshtml?highlight=35-42)]
 
 ### <a name="update-the-accountregistercshtml-page"></a>更新 Account/Register.cshtml 頁面
 
 更新`InputModel`中*Areas/Identity/Pages/Account/Register.cshtml.cs*下列醒目標示的程式碼：
 
-[!code-csharp[Main](add-user-data/sample/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=8-16,43,44)]
+[!code-csharp[Main](add-user-data/sample-2.2/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=28-36,67,66)]
 
 更新*Areas/Identity/Pages/Account/Register.cshtml*下列反白顯示的標記：
 
-[!code-html[Main](add-user-data/sample/Areas/Identity/Pages/Account/Register.cshtml?highlight=16-25)]
+[!code-html[Main](add-user-data/sample-2.2/Areas/Identity/Pages/Account/Register.cshtml?highlight=16-25)]
 
 建置專案。
 

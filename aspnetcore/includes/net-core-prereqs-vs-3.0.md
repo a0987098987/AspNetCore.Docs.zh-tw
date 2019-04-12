@@ -1,2 +1,10 @@
-* [Visual Studio 2019 Preview](https://visualstudio.microsoft.com/vs/preview/)具有**ASP.NET 和 web 開發**工作負載
+---
+ms.openlocfilehash: 68adb4a8070706f15c68e86aafde9e0c7e75d5c0
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59532843"
+---
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)具有**ASP.NET 和 web 開發**工作負載
 * [.NET core SDK 3.0 預覽](https://dotnet.microsoft.com/download/dotnet-core/3.0)

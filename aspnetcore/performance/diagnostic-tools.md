@@ -4,14 +4,14 @@ author: mjrousos
 description: 適用於診斷 ASP.NET Core 應用程式中的效能問題的有用工具。
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
-ms.date: 12/07/2018
+ms.date: 04/11/2019
 uid: performance/diagnostic-tools
-ms.openlocfilehash: 0fb9944d1082090f4f58f641a26ee96286920456
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 66676b5a2b95b87bfbbd50022e279e35a12b9793
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209998"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516218"
 ---
 # <a name="performance-diagnostic-tools"></a>效能診斷工具
 
@@ -32,7 +32,7 @@ ms.locfileid: "58209998"
 Azure Application Insights 提供多種方法來提供受監視的應用程式的深入資訊：
 
 - [應用程式對應](/azure/application-insights/app-insights-app-map)– 所有元件的分散式應用程式，幫助找出效能瓶頸或熱點失敗-點。
-- [在 Application Insights 入口網站中的 [計量] 刀鋒視窗](/azure/application-insights/app-insights-metrics-explorer?toc=/azure/azure-monitor/toc.json)顯示測量值和事件計數。
+- [Azure 計量瀏覽器](/azure/azure-monitor/platform/metrics-getting-started)是可讓您繪製圖表，以視覺方式串連趨勢，Microsoft Azure 入口網站的元件，並調查尖峰和下降中計量的值。
 - [在 Application Insights 入口網站中的 [效能] 刀鋒視窗](/azure/application-insights/app-insights-tutorial-performance):
 
   - 顯示受監視的應用程式中的不同作業的效能詳細資料。

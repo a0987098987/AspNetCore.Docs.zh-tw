@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何設定 ASP.NET Core 中的資料保護。
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/08/2019
+ms.date: 04/11/2019
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 36a06246513215ec29891df02688d113db11f914
-ms.sourcegitcommit: 32bc00435767189fa3ae5fb8a91a307bf889de9d
+ms.openlocfilehash: ee43427fa1e82a365d49df50567b4ca7afb5a5d3
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57733488"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516244"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>設定 ASP.NET Core 資料保護
 
@@ -44,7 +44,7 @@ public void ConfigureServices(IServiceCollection services)
 
 設定金鑰環儲存體位置 (例如[PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage))。 必須設定的位置，因為呼叫`ProtectKeysWithAzureKeyVault`會實作[IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor)停用自動的資料保護設定，包括 keyring 存放區位置。 上述範例會使用 Azure Blob 儲存體，以保存 keyring。 如需詳細資訊，請參閱[金鑰儲存提供者：Azure 與 Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis)。 您也可以保存在本機使用 keyring [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system)。
 
-`keyIdentifier`是用於金鑰加密的金鑰保存庫金鑰識別碼 (例如`https://contosokeyvault.vault.azure.net/keys/dataprotection/`)。
+`keyIdentifier`是用於金鑰加密的金鑰保存庫金鑰識別碼。 例如，建立名為金鑰保存庫中的索引鍵`dataprotection`中`contosokeyvault`具有金鑰識別碼`https://contosokeyvault.vault.azure.net/keys/dataprotection/`。 提供應用程式與**解除包裝金鑰**並**包裝金鑰**到 key vault 的權限。
 
 `ProtectKeysWithAzureKeyVault` 多載：
 
@@ -154,7 +154,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="disableautomatickeygeneration"></a>DisableAutomaticKeyGeneration
 
-您可能會有您不想要自動彙總 （建立新的金鑰） 的索引鍵，因為他們接近到期的應用程式的案例。 這其中一個範例可能是應用程式設定中的主要/次要關聯性，其中主要應用程式必須負責針對金鑰管理問題，而次要應用程式只需要金鑰環的唯讀檢視。 次要的應用程式可以設定將 keyring 視為唯讀，藉由設定系統[DisableAutomaticKeyGeneration](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.disableautomatickeygeneration):
+您可能會有您不想要自動彙總 （建立新的金鑰） 的索引鍵，因為他們接近到期的應用程式的案例。 這其中一個範例可能是應用程式設定中的主要/次要關聯性，其中主要應用程式必須負責針對金鑰管理問題，而次要應用程式只需要金鑰環的唯讀檢視。 可以設定次要應用程式，將視為唯讀的金鑰環，藉由設定與系統<xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.DisableAutomaticKeyGeneration*>:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -166,13 +166,12 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="per-application-isolation"></a>每個應用程式隔離
 
-ASP.NET Core 主機所提供資料保護系統時，它會自動隔離應用程式不會彼此，即使這些應用程式相同的背景工作處理序帳戶下執行，並使用相同的主要金鑰材料。 這是有點類似 IsolateApps 修飾詞將來自 System.Web 的 **\<machineKey >** 項目。
+ASP.NET Core 主機所提供資料保護系統時，它會自動隔離應用程式不會彼此，即使這些應用程式相同的背景工作處理序帳戶下執行，並使用相同的主要金鑰材料。 這是有點類似 IsolateApps 修飾詞將來自 System.Web 的`<machineKey>`項目。
 
-隔離機制的運作方式是為唯一的租用戶，考慮在本機電腦上的每個應用程式，因此[IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) root 破解的任何指定的應用程式會自動包含為鑑別子的應用程式識別碼。 應用程式的唯一識別碼來自兩個地方的其中一個：
+隔離機制的運作方式是為唯一的租用戶，考慮在本機電腦上的每個應用程式，因此<xref:Microsoft.AspNetCore.DataProtection.IDataProtector>root 破解的任何指定的應用程式會自動包含為鑑別子的應用程式識別碼。 應用程式的唯一識別碼是應用程式的實體路徑：
 
-1. 如果應用程式裝載在 IIS 中，唯一的識別碼會是應用程式的組態路徑。 如果應用程式部署在 web 伺服陣列環境中，這個值應該是穩定，假設 IIS 環境 web 伺服陣列中的所有電腦上設定方式均類似。
-
-2. 如果未在 IIS 中裝載應用程式，唯一的識別碼會是應用程式的實體路徑。
+* 針對應用程式裝載於[IIS](xref:fundamentals/servers/index#iis-http-server)，唯一的識別碼是應用程式的 IIS 實體路徑。 如果應用程式部署在 web 伺服陣列環境中，這個值是穩定假設 IIS 環境 web 伺服陣列中的所有電腦上設定方式均類似。
+* 上執行的自我裝載應用程式[Kestrel 伺服器](xref:fundamentals/servers/index#kestrel)，唯一的識別碼是在磁碟上的應用程式的實體路徑。
 
 唯一識別項設計來重設之後存留下來&mdash;個別的應用程式和的電腦本身。
 

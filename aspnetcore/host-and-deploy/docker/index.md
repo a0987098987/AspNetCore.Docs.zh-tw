@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/08/2018
 uid: host-and-deploy/docker/index
-ms.openlocfilehash: 272bd0a0dad2fb62c33dcedd1ce8430eefb2c238
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: e56f90ec7272ce0411651ee6f8e7c754ae44b78d
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276084"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516257"
 ---
 # <a name="host-aspnet-core-in-docker-containers"></a>在 Docker 容器中裝載 ASP.NET Core
 
@@ -28,9 +28,6 @@ ms.locfileid: "36276084"
 
 [Docker 容器、影像和登錄](/dotnet/standard/microservices-architecture/container-docker-introduction/docker-containers-images-registries)  
 了解 Docker 容器映像儲存在映像登錄的方式，取得跨環境部署的一致性。
-
-[建置 .NET Core 應用程式的 Docker 映像](/dotnet/articles/core/docker/building-net-docker-images)  
-了解如何建置和 Docker 化 ASP.NET Core 應用程式。 瀏覽 Microsoft 維護的 Docker 映像，並檢查使用案例。
 
 [Visual Studio Tools for Docker](xref:host-and-deploy/docker/visual-studio-tools-for-docker)  
 探索 Visual Studio 2017 如何在 Docker for Windows 上支援建置、偵錯和執行以 .NET Framework 或 .NET Core 為目標的 ASP.NET Core 應用程式。 同時支援 Windows 和 Linux 容器。

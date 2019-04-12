@@ -1,7 +1,7 @@
 items:
 - name: ASP.NET Core 文件
   href: /aspnet/#pivot=core
-- name: 概觀
+- name: 總覽
   items:
   - uid: index
     name: 關於 ASP.NET Core
@@ -29,7 +29,7 @@ items:
       displayName: tutorial
       items:
       - uid: tutorials/razor-pages/index
-        name: 概觀
+        name: 總覽
       - uid: tutorials/razor-pages/razor-pages-start
         name: 開始使用
       - uid: tutorials/razor-pages/model
@@ -50,7 +50,7 @@ items:
       displayName: tutorial
       items:
       - uid: tutorials/first-mvc-app/index
-        name: 概觀
+        name: 總覽
       - uid: tutorials/first-mvc-app/start-mvc
         name: 開始使用
       - uid: tutorials/first-mvc-app/adding-controller
@@ -100,7 +100,7 @@ items:
       displayName: tutorial
       items:
       - uid: data/ef-rp/index
-        name: 概觀
+        name: 總覽
       - uid: data/ef-rp/intro
         name: 開始使用
       - uid: data/ef-rp/crud
@@ -126,7 +126,7 @@ items:
     - name: 使用 MVC 的 EF Core，10 堂教學課程
       items:
       - uid: data/ef-mvc/index
-        name: 概觀
+        name: 總覽
       - uid: data/ef-mvc/intro
         name: 開始使用
       - uid: data/ef-mvc/crud
@@ -147,10 +147,10 @@ items:
         name: 繼承
       - uid: data/ef-mvc/advanced
         name: 進階主題
-- name: 基礎概念
+- name: Fundamentals
   items:
   - uid: fundamentals/index
-    name: 概觀
+    name: 總覽
   - uid: fundamentals/startup
     name: Startup 類別
   - uid: fundamentals/dependency-injection
@@ -166,7 +166,7 @@ items:
   - uid: fundamentals/servers/index
     name: 伺服器
   - uid: fundamentals/configuration/index
-    name: 設定
+    name: Configuration
   - uid: fundamentals/configuration/options
     name: 選項
   - uid: fundamentals/environments
@@ -191,7 +191,7 @@ items:
     - name: 教學課程
       items:
       - uid: tutorials/razor-pages/index
-        name: 概觀
+        name: 總覽
       - uid: tutorials/razor-pages/razor-pages-start
         name: 開始使用
       - uid: tutorials/razor-pages/model
@@ -221,7 +221,7 @@ items:
   - name: MVC
     items:
     - uid: mvc/overview
-      name: 概觀
+      name: 總覽
     - uid: tutorials/first-mvc-app/index
       name: 教學課程
       items:
@@ -250,7 +250,7 @@ items:
     - uid: mvc/views/partial
       name: 部分檢視
     - uid: mvc/controllers/actions
-      name: 控制器
+      name: Controllers
     - uid: mvc/controllers/routing
       name: 路由
     - uid: mvc/models/file-uploads
@@ -268,7 +268,7 @@ items:
   - name: 標籤協助程式
     items:
     - uid: mvc/views/tag-helpers/intro
-      name: 概觀
+      name: 總覽
     - uid: mvc/views/tag-helpers/authoring
       name: 建立標記協助程式
     - uid: mvc/views/working-with-forms
@@ -288,13 +288,13 @@ items:
       - name: 表單
         href: mvc/views/working-with-forms.md#the-form-tag-helper
       - uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-        name: 影像
+        name: Image
       - name: 輸入
         href: mvc/views/working-with-forms.md#the-input-tag-helper
       - name: 標籤
         href: mvc/views/working-with-forms.md#the-label-tag-helper
       - uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-        name: 部分
+        name: Partial
       - name: 選用版
         href: mvc/views/working-with-forms.md#the-select-tag-helper
       - name: 文字區域
@@ -332,7 +332,7 @@ items:
 - name: Web API 應用程式
   items:
   - uid: web-api/index
-    name: 概觀
+    name: 總覽
   - name: 教學課程
     items:
     - uid: tutorials/first-web-api
@@ -342,7 +342,7 @@ items:
   - name: Swagger / OpenAPI
     items:
     - uid: tutorials/web-api-help-pages-using-swagger
-      name: 概觀
+      name: 總覽
     - uid: tutorials/get-started-with-swashbuckle
       name: 開始使用 Swashbuckle
     - uid: tutorials/get-started-with-nswag
@@ -417,7 +417,7 @@ items:
     displayName: signalr
     items:
     - uid: signalr/scale
-      name: 概觀
+      name: 總覽
       displayName: signalr
     - name: Azure SignalR Service
       displayName: signalr
@@ -428,7 +428,7 @@ items:
     - uid: signalr/background-services
       name: 具備背景服務的 SignalR
   - uid: signalr/configuration
-    name: 設定
+    name: Configuration
     displayName: signalr
   - uid: signalr/authn-and-authz
     name: 驗證與授權
@@ -496,7 +496,7 @@ items:
     - name: 使用 Razor Pages 的 EF Core
       items:
       - uid: data/ef-rp/index
-        name: 概觀
+        name: 總覽
       - uid: data/ef-rp/intro
         name: 開始使用
       - uid: data/ef-rp/crud
@@ -520,7 +520,7 @@ items:
     - name: 使用 MVC 的 EF Core，10 堂教學課程
       items:
       - uid: data/ef-mvc/index
-        name: 概觀
+        name: 總覽
       - uid: data/ef-mvc/intro
         name: 開始使用
       - uid: data/ef-mvc/crud
@@ -558,7 +558,7 @@ items:
   - name: Razor 元件
     items:
     - uid: razor-components/index
-      name: 概觀
+      name: 總覽
     - uid: razor-components/get-started
       name: 開始使用
     - uid: razor-components/hosting-models
@@ -584,7 +584,7 @@ items:
     - name: 裝載和部署
       items:
       - uid: host-and-deploy/razor-components-blazor/index
-        name: 概觀
+        name: 總覽
       - uid: host-and-deploy/razor-components-blazor/razor-components
         name: Razor 元件
   - name: 單頁應用程式
@@ -592,7 +592,7 @@ items:
     - name: Blazor
       items:
       - uid: spa/blazor/index
-        name: 概觀
+        name: 總覽
       - uid: spa/blazor/get-started
         name: 開始使用
       - uid: razor-components/hosting-models
@@ -618,7 +618,7 @@ items:
       - name: 裝載和部署
         items:
         - uid: host-and-deploy/razor-components-blazor/index
-          name: 概觀
+          name: 總覽
         - uid: host-and-deploy/razor-components-blazor/blazor
           name: Blazor
         - uid: host-and-deploy/razor-components-blazor/configure-linker
@@ -634,7 +634,7 @@ items:
   - name: LibMan
     items:
     - uid: client-side/libman/index
-      name: 概觀
+      name: 總覽
     - uid: client-side/libman/libman-cli
       name: CLI
     - uid: client-side/libman/libman-vs
@@ -653,13 +653,13 @@ items:
   displayName: publish
   items:
   - uid: host-and-deploy/index
-    name: 概觀
+    name: 總覽
     displayName: azure, deploy, publish
   - name: 裝載於 Azure App Service
     displayName: deploy, publish
     items:
     - uid: host-and-deploy/azure-apps/index
-      name: 概觀
+      name: 總覽
       displayName: azure, deploy, publish
     - uid: tutorials/publish-to-azure-webapp-using-vs
       name: 使用 Visual Studio 發佈
@@ -688,7 +688,7 @@ items:
   - name: DevOps
     items:
     - uid: azure/devops/index
-      name: 概觀
+      name: 總覽
       displayName: azure, deploy, publish
     - uid: azure/devops/tools-and-downloads
       name: 工具及下載
@@ -709,7 +709,7 @@ items:
     displayName: deploy, publish
     items:
     - uid: host-and-deploy/iis/index
-      name: 概觀
+      name: 總覽
       displayName: deploy, publish
     - uid: host-and-deploy/aspnet-core-module
       name: ASP.NET Core 模組
@@ -748,11 +748,8 @@ items:
     displayName: deploy, publish
     items:
     - uid: host-and-deploy/docker/index
-      name: 概觀
+      name: 總覽
       displayName: deploy, publish, docker
-    - name: 建置 Docker 映像
-      displayName: deploy, publish, docker
-      href: /dotnet/core/docker/building-net-docker-images
     - uid: host-and-deploy/docker/visual-studio-tools-for-docker
       name: Visual Studio Tools
       displayName: deploy, publish, docker
@@ -783,7 +780,7 @@ items:
   - name: Razor 元件/Blazor
     items:
     - uid: host-and-deploy/razor-components-blazor/index
-      name: 概觀
+      name: 總覽
     - uid: host-and-deploy/razor-components-blazor/blazor
       name: Blazor
     - uid: host-and-deploy/razor-components-blazor/razor-components
@@ -794,7 +791,7 @@ items:
   displayName: authentication, authorization
   items:
   - uid: security/index
-    name: 概觀
+    name: 總覽
   - name: 驗證
     items:
     - uid: security/authentication/identity
@@ -820,7 +817,7 @@ items:
     - name: Google、Facebook...
       items:
       - uid: security/authentication/social/index
-        name: 概觀
+        name: 總覽
       - uid: security/authentication/google-logins
         name: Google 驗證
       - uid: security/authentication/facebook-logins
@@ -848,7 +845,7 @@ items:
     - name: Azure Active Directory
       items:
       - uid: security/authentication/azure-active-directory/index
-        name: 概觀
+        name: 總覽
       - name: 將 Azure AD 整合到 Web 應用程式中
         href: https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/
       - uid: security/authentication/azure-ad-b2c
@@ -868,7 +865,7 @@ items:
   - name: 授權
     items:
     - uid: security/authorization/introduction
-      name: 概觀
+      name: 總覽
     - uid: security/authorization/secure-data
       name: 建立具有授權的 Web 應用程式
     - uid: security/authorization/razor-pages-authorization
@@ -895,13 +892,13 @@ items:
     displayName: encryption
     items:
     - uid: security/data-protection/introduction
-      name: 概觀
+      name: 總覽
     - uid: security/data-protection/using-data-protection
       name: 資料保護 API
     - name: 取用者 API
       items:
       - uid: security/data-protection/consumer-apis/overview
-        name: 概觀
+        name: 總覽
       - uid: security/data-protection/consumer-apis/purpose-strings
         name: 目的字串
       - uid: security/data-protection/consumer-apis/purpose-strings-multitenancy
@@ -912,10 +909,10 @@ items:
         name: 限制受保護承載的存留期
       - uid: security/data-protection/consumer-apis/dangerous-unprotect
         name: 取消金鑰已被撤銷之承載的保護
-    - name: 設定
+    - name: Configuration
       items:
       - uid: security/data-protection/configuration/index
-        name: 概觀
+        name: 總覽
       - uid: security/data-protection/configuration/overview
         name: 設定資料保護
       - uid: security/data-protection/configuration/default-settings
@@ -927,7 +924,7 @@ items:
     - name: 擴充性 API
       items:
       - uid: security/data-protection/extensibility/index
-        name: 概觀
+        name: 總覽
       - uid: security/data-protection/extensibility/core-crypto
         name: 核心加密擴充性
       - uid: security/data-protection/extensibility/key-management
@@ -937,7 +934,7 @@ items:
     - name: 實作
       items:
       - uid: security/data-protection/implementation/index
-        name: 概觀
+        name: 總覽
       - uid: security/data-protection/implementation/authenticated-encryption-details
         name: 已驗證的加密詳細資料
       - uid: security/data-protection/implementation/subkeyderivation
@@ -959,7 +956,7 @@ items:
     - name: 相容性
       items:
       - uid: security/data-protection/compatibility/index
-        name: 概觀
+        name: 總覽
       - uid: security/data-protection/compatibility/replacing-machinekey
         name: 取代 ASP.NET 中的 machineKey
   - uid: security/app-secrets
@@ -988,11 +985,11 @@ items:
 - name: 效能
   items:
   - uid: performance/performance-best-practices
-    name: 概觀
+    name: 總覽
   - name: 回應快取
     items:
     - uid: performance/caching/response
-      name: 概觀
+      name: 總覽
     - uid: performance/caching/memory
       name: 記憶體內部快取
     - uid: performance/caching/distributed
@@ -1008,7 +1005,7 @@ items:
 - name: 全球化和當地語系化
   items:
   - uid: fundamentals/localization
-    name: 概觀
+    name: 總覽
     displayName: globalization, localization
   - uid: fundamentals/portable-object-localization
     name: 可攜式物件當地語系化
@@ -1064,20 +1061,20 @@ items:
     displayName: migrate, migration
     items:
     - uid: migration/1x-to-2x/index
-      name: 概觀
+      name: 總覽
     - uid: migration/1x-to-2x/identity-2x
       name: 驗證和身分識別
   - name: ASP.NET 至 ASP.NET Core
     displayName: migrate, migration
     items:
     - uid: migration/proper-to-2x/index
-      name: 概觀
+      name: 總覽
     - uid: migration/mvc
       name: MVC
     - uid: migration/webapi
       name: Web API
     - uid: migration/configuration
-      name: 設定
+      name: Configuration
     - uid: migration/identity
       name: 驗證和身分識別
     - uid: migration/claimsprincipal-current
@@ -1093,9 +1090,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 0065707eeaf77327e553b3c43b65e11063edd7e0
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.openlocfilehash: e788460a2de31aa570907b4561d30ad0da2ca854
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59068387"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516270"

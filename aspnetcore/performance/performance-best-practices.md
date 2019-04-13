@@ -54,7 +54,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 * **請勿**集區使用的緩衝區[ `ArrayPool<T>` ](/dotnet/api/system.buffers.arraypool-1)來儲存大型陣列。
 * **不這麼做**許多較短期的大型物件配置的[經常性存取程式碼路徑](#hot)。
 
-記憶體問題，例如前面可以藉由檢閱中的記憶體回收 (gc) 統計資料來診斷[PerfView](https://github.com/Microsoft/perfview)並檢查：
+記憶體問題，例如前面可以藉由檢閱中的記憶體回收 (GC) 統計資料來診斷[PerfView](https://github.com/Microsoft/perfview)並檢查：
 
 * 記憶體回收暫停時間。
 * 在記憶體回收花費的處理器時間百分比。
@@ -150,4 +150,4 @@ Maybe skip this TBD link as each version will have perf improvements -->
 * **請勿**邏輯納入應用程式，以偵測和處理會造成例外狀況的條件。
 * **請勿**擲回或攔截例外狀況異常或非預期的狀況。
 
-應用程式 （例如 Application Insights) 的診斷工具可協助識別可能會影響效能的應用程式中的常見例外狀況。
+應用程式 (例如 Application Insights) 的診斷工具可協助識別可能會影響效能的應用程式中的常見例外狀況。

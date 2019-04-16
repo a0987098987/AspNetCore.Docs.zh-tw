@@ -4,14 +4,14 @@ author: rick-anderson
 description: 本教學課程示範如何搭配使用 OAuth 2.0 與外部驗證提供者，建立 ASP.NET Core 2.x 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/19/2019
+ms.date: 4/19/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 48dd8b772234ff18158423a36ed1716102bc2f31
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: 61482481358256dc9ddd1a0a894541040a8a452f
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396138"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516322"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
@@ -23,14 +23,60 @@ ms.locfileid: "54396138"
 
 ![Facebook、Twitter、Google+ 和 Windows 的社交媒體圖示](index/_static/social.png)
 
-若使用者可以利用其現有的認證登入，一方面對使用者來說十分方便，另一方面則可將管理登入程序的許多複雜工作轉移給協力廠商。 如需社交登入如何帶動流量和客戶轉換的範例，請參閱 [Facebook](https://www.facebook.com/unsupportedbrowser) 和 [Twitter](https://dev.twitter.com/resources/case-studies) 的案例研究。
+讓使用者透過現有認證登入：
+* 對使用者而言十分方便。
+* 可將複雜的登入程序管理作業轉移至協力廠商。 
+
+如需社交登入如何帶動流量和客戶轉換的範例，請參閱 [Facebook](https://www.facebook.com/unsupportedbrowser) 和 [Twitter](https://dev.twitter.com/resources/case-studies) 的案例研究。
 
 ## <a name="create-a-new-aspnet-core-project"></a>建立新的 ASP.NET Core 專案
 
-* 在 Visual Studio 2017 中，從起始頁面建立新專案，或透過 [檔案] > [新增] >  [專案]。
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 選取在 [Visual C#] > [.NET Core] 類別中提供的 [ASP.NET Core Web 應用程式] 範本：
+* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案] 。
+* 建立新的 ASP.NET Core Web 應用程式。
+* 在下拉式清單中選取 [ASP.NET Core 2.2]，然後選取 [Web 應用程式]。
 * 選取 [變更驗證]，然後將驗證設定為 [個別使用者帳戶]。
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+* 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
+
+* 將目錄 (`cd`) 變更為其中包含專案的資料夾。
+
+* 執行下列命令：
+
+  ```console
+  dotnet new webapp -o WebApp1
+  code -r WebApp1
+  ```
+
+  * `dotnet new` 命令會在 [WebApp1] 資料夾中建立新的 Razor Pages 專案。
+  * `code` 命令會在新的 Visual Studio Code 執行個體中開啟 [WebApp1] 資料夾。
+
+  對話方塊隨即顯示，並指出 **'WebApp1' 中遺漏了建置和偵錯的必要資產。新增它們嗎？**
+
+* 選取 [是]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+從終端機執行下列命令：
+
+<!-- TODO: update these instruction once mac support 2.2 projects -->
+
+```console
+dotnet new webapp -o WebApp1
+```
+
+上述命令使用 [.NET Core CLI](/dotnet/core/tools/dotnet) 來建立 Razor Pages 專案。
+
+## <a name="open-the-project"></a>開啟專案
+
+從 Visual Studio 中，選取 [檔案] > [開啟]，然後選取 *WebApp1.csproj* 檔案。
+
+<!-- End of VS tabs -->
+
+---
 
 ## <a name="apply-migrations"></a>套用移轉
 
@@ -67,7 +113,7 @@ ms.locfileid: "54396138"
 
 若要建立密碼，並使用您在外部提供者登入程序期間所設的電子郵件進行登入：
 
-* 選取右上角的 [Hello &lt;電子郵件別名&gt;] 連結以巡覽至 [管理] 檢視。
+* 選取右上角的 [Hello &lt;電子郵件別名&gt;] 連結以瀏覽至 [管理] 檢視。
 
 ![Web 應用程式的 [管理] 檢視](index/_static/pass1a.png)
 

@@ -74,7 +74,7 @@
       "ms.technology": {
         "azure/**/**.md": "aspnetcore-azure",
         "client-side/**/**.md": "aspnetcore-clientside",
-        "client-side/spa/blazor/**.md": "aspnetcore-blazor",
+        "blazor/**/**.md": "aspnetcore-blazor",
         "data/**/**.md": "aspnetcore-data",
         "fundamentals/**/**.md": "aspnetcore-fundamentals",
         "getting-started/**/**.md": "aspnetcore-getstarted",
@@ -84,7 +84,6 @@
         "mobile/**/**.md": "aspnetcore-mobile",
         "mvc/**/**.md": "aspnetcore-mvc",
         "performance/**/**.md": "aspnetcore-performance",
-        "razor-components/**/**.md": "aspnetcore-razorcomponents",
         "razor-pages/**/**.md": "aspnetcore-razorpages",
         "release-notes/**/**.md": "aspnetcore-releasenotes",
         "security/**/**.md": "aspnetcore-security",
@@ -95,6 +94,7 @@
       },
       "ms.topic": {
         "azure/**/**.md": "conceptual",
+        "blazor/**/**.md": "conceptual",
         "client-side/**/**.md": "conceptual",
         "data/**/**.md": "conceptual",
         "fundamentals/**/**.md": "conceptual",
@@ -105,7 +105,6 @@
         "mobile/**/**.md": "conceptual",
         "mvc/**/**.md": "conceptual",
         "performance/**/**.md": "conceptual",
-        "razor-components/**/**.md": "conceptual",
         "razor-pages/**/**.md": "conceptual",
         "release-notes/**/**.md": "conceptual",
         "security/**/**.md": "conceptual",
@@ -123,6 +122,6 @@
         "dest": "group1-dest",
         "moniker_range": ">= aspnetcore-1.0"
       }
-    } 
+    }
   }
 }

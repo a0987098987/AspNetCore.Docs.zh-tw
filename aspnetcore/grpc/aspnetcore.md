@@ -6,11 +6,11 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/08/2019
 uid: grpc/aspnetcore
-ms.openlocfilehash: 387c3134efc04bec740fc66a5ca4b84715264d35
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: c99a499fad824c3ac026f6f390c826c0418fc069
+ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59515398"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>搭配 ASP.NET Core 的 gRPC 服務
@@ -45,11 +45,11 @@ gRPC 需要下列封裝：
 
 使用啟用 gRPC`AddGrpc`方法：
 
-[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcStart/GrpcGreeter.Server/Startup.cs?name=snippet&highlight=5)]
+[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Startup.cs?name=snippet&highlight=5)]
 
 每個 gRPC 服務新增至路由的管線透過`MapGrpcService`方法：
 
-[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcStart/GrpcGreeter.Server/Startup.cs?name=snippet&highlight=16-19)]
+[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Startup.cs?name=snippet&highlight=21)]
 
 ASP.NET Core 中介軟體和功能共用路由的管線，因此可以設定應用程式提供額外的要求處理常式。 與設定的 gRPC 服務的同時處理其他要求處理常式，例如 MVC 控制器。
 
@@ -72,11 +72,11 @@ public class GreeterService : Greeter.GreeterBase
 
 GRPC API 提供存取某些 HTTP/2 訊息資料，例如方法、 主機、 標頭和結尾。 存取是透過`ServerCallContext`引數傳遞至每個 gRPC 方法：
 
-[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcStart/GrpcGreeter.Server/Services/GreeterService.cs?highlight=3-4&name=snippet)]
+[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Services/GreeterService.cs?highlight=3-4&name=snippet)]
 
 `ServerCallContext` 不會提供完整存取權`HttpContext`中所有的 ASP.NET Api。 `GetHttpContext`擴充方法提供的完整存取權`HttpContext`表示 ASP.NET Api 中的基礎 HTTP/2 訊息：
 
-[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcStart/GrpcGreeter.Server/Services/GreeterService.cs?name=snippet1)]
+[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Services/GreeterService.cs?name=snippet1)]
 
 ### <a name="request-body-data-rate-limit"></a>要求主體資料速率限制
 

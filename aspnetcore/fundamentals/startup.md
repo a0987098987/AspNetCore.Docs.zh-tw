@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 9556ec076fce3500115cf0e934202f11b175ccd3
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 362186be6feeeefeca3c56688ee6420de5fb9659
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750790"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468620"
 ---
 # <a name="app-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -27,7 +27,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 * 選擇性地包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法來設定應用程式的服務。 服務的定義是可提供應用程式功能的可重複使用元件。 服務會在 `ConfigureServices`中經過設定&mdash;也會受描述為「已註冊」&mdash;且會透過 [ 相依性插入 (DI)](xref:fundamentals/dependency-injection) 或 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*> 在應用程式間受取用。
 * 包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> 方法來建立應用程式的要求處理管線。
 
-應用程式啟動時，執行階段就會呼叫 `ConfigureServices` 和 `Configure`：
+`ConfigureServices` 和 `Configure` 會在應用程式啟動時由執行階段呼叫：
 
 [!code-csharp[](startup/sample_snapshot/Startup1.cs?highlight=4,10)]
 
@@ -40,7 +40,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 將[相依性插入](xref:fundamentals/dependency-injection)至 `Startup` 類別的常見用法是插入：
 
 * <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> 來根據環境設定服務。
-* <xref:Microsoft.Extensions.Configuration.IConfiguration> 來讀取組態。
+* <xref:Microsoft.Extensions.Configuration.IConfiguration> 來讀取設定。
 * <xref:Microsoft.Extensions.Logging.ILoggerFactory> 來在 `Startup.ConfigureServices` 中建立記錄器。
 
 [!code-csharp[](startup/sample_snapshot/Startup2.cs?highlight=7-8)]
@@ -63,9 +63,11 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 對於需要大量安裝的功能，可從 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> 上取得 `Add{Service}` 擴充方法。 適用於 Entity Framework、身分識別和 MVC 的典型 ASP.NET Core 應用程式註冊服務：
 
-[!code-csharp[](startup/sample_snapshot/Startup3.cs?highlight=4,7,11)]
+[!code-csharp[](startup/sample_snapshot/Startup3.cs)]
 
 將服務新增至服務容器，使其可在應用程式和 `Configure` 方法內使用。 服務可透過[相依性插入](xref:fundamentals/dependency-injection)或從 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*> 獲得解析。
+
+請參閱 [SetCompatibilityVersion](xref:mvc/compatibility-version) 以取得 `SetCompatibilityVersion` 的詳細資訊。
 
 ## <a name="the-configure-method"></a>Configure 方法
 
@@ -74,7 +76,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 [ASP.NET Core 範本](/dotnet/core/tools/dotnet-new)會以下列支援設定管線：
 
 * [開發人員例外狀況頁面](xref:fundamentals/error-handling#developer-exception-page)
-* [例外處理常式](xref:fundamentals/error-handling#configure-a-custom-exception-handling-page)
+* [例外處理常式](xref:fundamentals/error-handling#exception-handler-page)
 * [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [HTTPS 重新導向](xref:security/enforcing-ssl)
 * [靜態檔案](xref:fundamentals/static-files)

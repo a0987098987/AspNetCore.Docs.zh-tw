@@ -4,20 +4,20 @@ author: rick-anderson
 description: 描述搭配表單使用的內建標籤協助程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/27/2019
+ms.date: 04/06/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 2d5168ed4b1e14e507262361de9fa959924b82f6
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 6eff3bf03e650e154b5c767c9bcdd915e7db8b47
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209553"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468798"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[N. Taylor Mullen](https://github.com/NTaylorMullen)、[Dave Paquette](https://twitter.com/Dave_Paquette) 和 [Jerrie Pelser](https://github.com/jerriep)
 
-此文件示範使用表單和常用在表單上的 HTML 項目。 HTML [表單](https://www.w3.org/TR/html401/interact/forms.html)項目提供用來將資料張貼回伺服器的主要機制 Web 應用程式。 此文件的大部分在描述[標籤協助程式](tag-helpers/intro.md)，以及它們如何協助您有效率地建立強大的 HTML 表單。 我們建議您先閱讀[標籤協助程式簡介](tag-helpers/intro.md)，然後才閱讀這份文件。
+本文件示範使用表單和常用在表單上的 HTML 項目。 HTML [表單](https://www.w3.org/TR/html401/interact/forms.html)項目提供用來將資料張貼回伺服器的主要機制 Web 應用程式。 本文件的大部分在描述[標籤協助程式](tag-helpers/intro.md)，以及它們如何協助您有效率地建立強大的 HTML 表單。 我們建議您先閱讀[標籤協助程式簡介](tag-helpers/intro.md)，然後才閱讀這份文件。
 
 在許多情況下，HTML 協助程式都會提供特定標籤協助程式的替代方式，但請務必辨識標籤協助程式未取代 HTML 協助程式，而且每個 HTML 協助程式都沒有標籤協助程式。 有 HTML 協助程式替代存在時，便會予以提及。
 
@@ -44,7 +44,7 @@ ms.locfileid: "58209553"
 ```HTML
 <form method="post" action="/Demo/Register">
     <!-- Input and Submit elements -->
-    <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+    <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
 </form>
 ```
 
@@ -93,7 +93,7 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 <form method="post">
     <button asp-controller="Home" asp-action="Index">Click Me</button>
     <input type="image" src="..." alt="Or Click Me" asp-controller="Home" 
-                                asp-action="Index" />
+                                asp-action="Index">
 </form>
 ```
 
@@ -102,7 +102,7 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 ```html
 <form method="post">
     <button formaction="/Home">Click Me</button>
-    <input type="image" src="..." alt="Or Click Me" formaction="/Home" />
+    <input type="image" src="..." alt="Or Click Me" formaction="/Home">
 </form>
 ```
 
@@ -113,7 +113,7 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 ```cshtml
 <form method="post">
     <button asp-page="About">Click Me</button>
-    <input type="image" src="..." alt="Or Click Me" asp-page="About" />
+    <input type="image" src="..." alt="Or Click Me" asp-page="About">
 </form>
 ```
 
@@ -122,7 +122,7 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 ```html
 <form method="post">
     <button formaction="/About">Click Me</button>
-    <input type="image" src="..." alt="Or Click Me" formaction="/About" />
+    <input type="image" src="..." alt="Or Click Me" formaction="/About">
 </form>
 ```
 
@@ -146,7 +146,7 @@ public class HomeController : Controller
 ```cshtml
 <form method="post">
     <button asp-route="Custom">Click Me</button>
-    <input type="image" src="..." alt="Or Click Me" asp-route="Custom" />
+    <input type="image" src="..." alt="Or Click Me" asp-route="Custom">
 </form>
 ```
 
@@ -155,7 +155,7 @@ public class HomeController : Controller
 ```html
 <form method="post">
     <button formaction="/Home/Test">Click Me</button>
-    <input type="image" src="..." alt="Or Click Me" formaction="/Home/Test" />
+    <input type="image" src="..." alt="Or Click Me" formaction="/Home/Test">
 </form>
 ```
 
@@ -166,7 +166,7 @@ public class HomeController : Controller
 語法：
 
 ```HTML
-<input asp-for="<Expression Name>" />
+<input asp-for="<Expression Name>">
 ```
 
 輸入標籤協助程式：
@@ -227,17 +227,17 @@ Type expected
 
 ```HTML
   <form method="post" action="/Demo/RegisterInput">
-       Email:
-       <input type="email" data-val="true"
-              data-val-email="The Email Address field is not a valid email address."
-              data-val-required="The Email Address field is required."
-              id="Email" name="Email" value="" /> <br>
-       Password:
-       <input type="password" data-val="true"
-              data-val-required="The Password field is required."
-              id="Password" name="Password" /><br>
-       <button type="submit">Register</button>
-     <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+      Email:
+      <input type="email" data-val="true"
+             data-val-email="The Email Address field is not a valid email address."
+             data-val-required="The Email Address field is required."
+             id="Email" name="Email" value=""><br>
+      Password:
+      <input type="password" data-val="true"
+             data-val-required="The Password field is required."
+             id="Password" name="Password"><br>
+      <button type="submit">Register</button>
+      <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
    </form>
 ```
 
@@ -245,11 +245,11 @@ Type expected
 
 ### <a name="html-helper-alternatives-to-input-tag-helper"></a>輸入標籤協助程式的 HTML 標記替代
 
-`Html.TextBox`、`Html.TextBoxFor`、`Html.Editor` 和 `Html.EditorFor` 具有與輸入標籤協助程式重疊的功能。 輸入標籤協助程式將會自動設定 `type` 屬性；而 `Html.TextBox` 和 `Html.TextBoxFor` 不會。 `Html.Editor` 和 `Html.EditorFor` 會處理集合、複雜的物件和範本；而輸入標籤協助程式不會。 輸入標籤協助程式、`Html.EditorFor` 和 `Html.TextBoxFor` 為強型別 (它們使用 Lambda 運算式)；而 `Html.TextBox` 和 `Html.Editor` 不是 (它們使用運算式名稱)。
+`Html.TextBox`、`Html.TextBoxFor`、`Html.Editor` 和 `Html.EditorFor` 皆具有與輸入標籤協助程式重疊的功能。 輸入標籤協助程式將會自動設定 `type` 屬性；而 `Html.TextBox` 和 `Html.TextBoxFor` 不會。 `Html.Editor` 和 `Html.EditorFor` 會處理集合、複雜的物件和範本；而輸入標籤協助程式不會。 輸入標籤協助程式、`Html.EditorFor` 和 `Html.TextBoxFor` 為強型別 (它們使用 Lambda 運算式)；而 `Html.TextBox` 和 `Html.Editor` 不是 (它們使用運算式名稱)。
 
 ### <a name="htmlattributes"></a>HtmlAttributes
 
-`@Html.Editor()` 和 `@Html.EditorFor()` 執行它們的預設範本時，使用特殊的 `ViewDataDictionary` 項目，名為 `htmlAttributes`。 此行為會選擇性地使用 `additionalViewData` 參數來增強。 索引鍵 "htmlAttributes" 不區分大小寫。 索引鍵 "htmlAttributes" 的處理方式類似於傳遞給輸入協助程式 (例如 `@Html.TextBox()`)的 `htmlAttributes` 物件。
+`@Html.Editor()` 和 `@Html.EditorFor()` 執行它們的預設範本時，會使用特殊的 `ViewDataDictionary` 項目，名為 `htmlAttributes`。 此行為會選擇性地使用 `additionalViewData` 參數來增強。 索引鍵 "htmlAttributes" 不區分大小寫。 索引鍵 "htmlAttributes" 的處理方式類似於傳遞給輸入協助程式 (例如 `@Html.TextBox()`)的 `htmlAttributes` 物件。
 
 ```HTML
 @Html.EditorFor(model => model.YourProperty, 
@@ -264,20 +264,20 @@ Type expected
 @{
        var joe = "Joe";
    }
-   <input asp-for="@joe" />
+   <input asp-for="@joe">
 ```
 
 產生下列內容：
 
 ```HTML
-<input type="text" id="joe" name="joe" value="Joe" />
+<input type="text" id="joe" name="joe" value="Joe">
 ```
 
 搭配集合屬性，當 `i` 的值為 `23` 時，`asp-for="CollectionProperty[23].Member"` 會產生與 `asp-for="CollectionProperty[i].Member"` 相同的名稱。
 
-當 ASP.NET Core MVC 計算 `ModelExpression` 的值時，會檢查幾個來源，其中包括`ModelState`。 請考慮 `<input type="text" asp-for="@Name" />`。 導出的 `value` 屬性是第一個非 null 的值，來自：
+當 ASP.NET Core MVC 計算 `ModelExpression` 的值時，會檢查幾個來源，其中包括`ModelState`。 請考慮 `<input type="text" asp-for="@Name">`。 導出的 `value` 屬性是第一個非 null 的值，來自：
 
-* 索引鍵為 "Name" 的 `ModelState` 項目。
+* `ModelState` 項目，具有索引鍵 "Name"。
 * 運算式 `Model.Name` 的結果。
 
 ### <a name="navigating-child-properties"></a>巡覽子屬性
@@ -295,7 +295,7 @@ Type expected
 會為 `Address.AddressLine1` 產生下列 HTML：
 
 ```HTML
-<input type="text" id="Address_AddressLine1" name="Address.AddressLine1" value="" />
+<input type="text" id="Address_AddressLine1" name="Address.AddressLine1" value="">
 ```
 
 ### <a name="expression-names-and-collections"></a>運算式名稱和集合
@@ -334,7 +334,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
-當值將在 `asp-for` 或 `Html.DisplayFor` 相當內容中使用時，應該使用 `foreach` (如果可能的話)。 一般而言，`for` 比 `foreach` 好 (若案例允許的話)，因為它不需要配置列舉程式；不過，評估 LINQ 運算式中的索引子可能成本高昂且應該儘可能避免。
+`foreach` 應該在值將在 `asp-for` 或 `Html.DisplayFor` 的相當內容中使用的情況下使用 (如果可能的話)。 一般而言，`for` 比 `foreach` 好 (若案例允許的話)，因為它不需要配置列舉程式；不過，評估 LINQ 運算式中的索引子可能成本高昂且應該儘可能避免。
 
 &nbsp;
 
@@ -349,7 +349,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * 提供強型別。
 
-* HTML 協助程式替代：`Html.TextAreaFor`
+* HTML 協助程式替代： `Html.TextAreaFor`
 
 範例：
 
@@ -369,7 +369,7 @@ public IActionResult Edit(int id, int colorIndex)
    id="Description" name="Description">
   </textarea>
   <button type="submit">Test</button>
-  <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+  <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
 </form>
 ```
 
@@ -411,7 +411,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * 也會在伺服器上發生驗證。 用戶端可能停用 JavaScript，而一些驗證只能在伺服器端進行。
 
-* HTML 協助程式替代：`Html.ValidationMessageFor`
+* HTML 協助程式替代： `Html.ValidationMessageFor`
 
 `Validation Message Tag Helper` 與 HTML [span](https://developer.mozilla.org/docs/Web/HTML/Element/span) 項目上的 `asp-validation-for` 屬性搭配使用。
 
@@ -445,7 +445,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * 使用 `asp-validation-summary` 屬性設定 `<div>` 項目的目標
 
-* HTML 協助程式替代：`@Html.ValidationSummary`
+* HTML 協助程式替代： `@Html.ValidationSummary`
 
 `Validation Summary Tag Helper` 用來顯示驗證訊息的摘要。 `asp-validation-summary` 屬性值可以是下列任一項：
 
@@ -472,7 +472,7 @@ public IActionResult Edit(int id, int colorIndex)
   Email:  <input name="Email" id="Email" type="email" value=""
    data-val-required="The Email field is required."
    data-val-email="The Email field is not a valid email address."
-   data-val="true"> <br>
+   data-val="true"><br>
   <span class="field-validation-valid" data-valmsg-replace="true"
    data-valmsg-for="Email"></span><br>
   Password: <input name="Password" id="Password" type="password"
@@ -480,7 +480,7 @@ public IActionResult Edit(int id, int colorIndex)
   <span class="field-validation-valid" data-valmsg-replace="true"
    data-valmsg-for="Password"></span><br>
   <button type="submit">Register</button>
-  <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+  <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
 </form>
 ```
 
@@ -520,7 +520,7 @@ HTTP POST `Index` 方法會顯示選取項目：
        <option value="US">USA</option>
      </select>
        <br /><button type="submit">Register</button>
-     <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+     <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
    </form>
 ```
 
@@ -563,7 +563,7 @@ HTTP POST `Index` 方法會顯示選取項目：
              <option selected="selected" value="5">Spain</option>
          </select>
          <br /><button type="submit">Register</button>
-         <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+         <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
     </form>
 ```
 
@@ -596,7 +596,7 @@ HTTP POST `Index` 方法會顯示選取項目：
           </optgroup>
       </select>
       <br /><button type="submit">Register</button>
-      <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+      <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
  </form>
 ```
 
@@ -624,7 +624,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 <option value="DE">Germany</option>
 </select>
     <br /><button type="submit">Register</button>
-  <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+  <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
 </form>
 ```
 
@@ -655,14 +655,14 @@ HTTP POST `Index` 方法會顯示選取項目：
           <option value="US">USA</option>
       </select>
       <br /><button type="submit">Register</button>
-   <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+   <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
  </form>
  ```
 
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:mvc/views/tag-helpers/intro>
-* [HTML 表單項目](https://www.w3.org/TR/html401/interact/forms.html)
+* [HTML 表單元素](https://www.w3.org/TR/html401/interact/forms.html)
 * [要求驗證權杖](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
 * <xref:mvc/models/model-binding>
 * <xref:mvc/models/validation>

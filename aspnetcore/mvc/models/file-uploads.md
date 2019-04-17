@@ -4,14 +4,14 @@ author: ardalis
 description: 如何使用模型繫結和資料流在 ASP.NET Core MVC 上傳檔案。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 04/06/2019
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 5e6e2cd5fac25e2abe27915c2f4caa64b13e90bd
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 831f0c84f0ff062e9e24ccbf4ca81b7143c66e66
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56409979"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468549"
 ---
 # <a name="file-uploads-in-aspnet-core"></a>ASP.NET Core 的檔案上傳
 
@@ -30,12 +30,12 @@ ASP.NET MVC 動作支援上傳一或多個檔案，方法是針對較小的檔�
     <div class="form-group">
         <div class="col-md-10">
             <p>Upload one or more files using this form:</p>
-            <input type="file" name="files" multiple />
+            <input type="file" name="files" multiple>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            <input type="submit" value="Upload" />
+            <input type="submit" value="Upload">
         </div>
     </div>
 </form>

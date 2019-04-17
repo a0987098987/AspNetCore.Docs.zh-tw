@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: seodec18
 ms.date: 11/22/2018
 uid: data/ef-rp/intro
-ms.openlocfilehash: 7723f7ca6c5f9a21b2628933c6e7dabde20c3af6
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: aff62d760cf0899983cf841f6715f2658b113f82
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320195"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012678"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -29,11 +29,11 @@ Contoso 大學的 Web 應用程式範例將示範如何以 Entity Framework (EF)
 
 ## <a name="prerequisites"></a>必要條件
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 [!INCLUDE [](~/includes/net-core-prereqs-windows.md)]
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# [<a name="net-core-cli"></a>.NET Core CLI](#tab/netcore-cli)
 
 [!INCLUDE [](~/includes/2.1-SDK.md)]
 
@@ -59,7 +59,7 @@ Contoso 大學的 Web 應用程式範例將示範如何以 Entity Framework (EF)
 
 ## <a name="create-the-contosouniversity-razor-pages-web-app"></a>建立 ContosoUniversity Razor Pages Web 應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 * 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案]。
 * 建立新的 ASP.NET Core Web 應用程式。 將專案命名為 **ContosoUniversity**。 請務必將專案命名為 *ContosoUniversity*，當您複製/貼上程式碼時，命名空間才會相符。
@@ -68,7 +68,7 @@ Contoso 大學的 Web 應用程式範例將示範如何以 Entity Framework (EF)
 如需上述步驟的影像，請參閱[ 建立 Razor Web 應用程式](xref:tutorials/razor-pages/razor-pages-start#create-a-razor-pages-web-app)。
 執行應用程式。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# [<a name="net-core-cli"></a>.NET Core CLI](#tab/netcore-cli)
 
 ```CLI
 dotnet new webapp -o ContosoUniversity
@@ -114,9 +114,9 @@ dotnet run
 
 `ID` 屬性會成為資料庫 (DB) 資料表中的主索引鍵資料行，並對應至這個類別。 EF Core 預設會解譯名為 `ID` 或 `classnameID` 作為主索引鍵的屬性。 在 `classnameID` 中，`classname` 是類別的名稱。 另一個自動識別的主索引鍵是上述範例中的 `StudentID`。
 
-`Enrollments` 屬性為[導覽屬性](/ef/core/modeling/relationships)。 導覽屬性會連結至與此實體相關的其他實體。 在這個案例中，`Student entity` 中的 `Enrollments` 屬性會保有與 `Student` 相關的所有 `Enrollment` 實體。 例如，如果資料庫中 Student 資料列有兩個相關的 Enrollment 資料列，則 `Enrollments` 導覽屬性會包含這兩個 `Enrollment` 實體。 相關的 `Enrollment` 資料列，包含該學生在 `StudentID` 資料行中的主索引鍵值。 例如，假設 student with ID=1 在 `Enrollment` 資料表中有兩個資料列。 `Enrollment` 資料表有兩個包含 `StudentID`=1 的資料列。 `StudentID` 為 `Enrollment` 資料表中的外部索引鍵，會指定在 `Student` 資料表中的學生。
+`Enrollments` 屬性為[導覽屬性](/ef/core/modeling/relationships)。 導覽屬性會連結至與此實體相關的其他實體。 在這個案例中，`Student entity` 中的 `Enrollments` 屬性會保有與 `Student` 相關的所有 `Enrollment` 實體。 例如，如果資料庫中 Student 資料列有兩個相關的 Enrollment 資料列，則 `Enrollments` 導覽屬性會包含這兩個 `Enrollment` 實體。 相關的 `Enrollment` 資料列，包含該學生在 `StudentID` 資料行中的主索引鍵值。 例如，假設 student with ID=1 在 `Enrollment` 資料表中有兩個資料列。 `Enrollment` 資料表有兩個包含 `StudentID`=1 的資料列。 `StudentID` 為 `Enrollment` 資料表中的外部索引鍵，其會指定 `Student` 資料表中的學生。
 
-如果導覽屬性可以保存多個實體，該導覽屬性必然是清單類型，例如 `ICollection<T>`。 您可以指定 `ICollection<T>`，或是如 `List<T>`、`HashSet<T>` 的類型。 如使用 `ICollection<T>`，EF Core 預設將建立 `HashSet<T>` 集合。 保存多個實體的導覽屬性，來自多對多和一對多關聯性。
+如果導覽屬性可以保存多個實體，該導覽屬性必然是清單類型，例如 `ICollection<T>`。 `ICollection<T>` 可以被指定，或是指定如 `List<T>` 或 `HashSet<T>` 的類型。 如使用 `ICollection<T>`，EF Core 預設將建立 `HashSet<T>` 集合。 保存多個實體的導覽屬性，來自多對多和一對多關聯性。
 
 ### <a name="the-enrollment-entity"></a>Enrollment 實體
 
@@ -155,7 +155,7 @@ dotnet run
 * 建置專案。
 * 建立 *Pages/Students* 資料夾。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 * 在 [方案總管] 中，以滑鼠右鍵按一下 *Pages/Students* 資料夾 > [新增] > [新增 Scaffold 項目]。
 * 在 [新增 Scaffold] 對話方塊中，選取 [Razor Pages using Entity Framework (CRUD)] \(使用 Entity Framework 的 Razor Pages (CRUD)\) > [新增]。
@@ -171,7 +171,7 @@ dotnet run
 
 如果您有上一個步驟的問題，請參閱 [Scaffold 影片模型](xref:tutorials/razor-pages/model#scaffold-the-movie-model)。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# [<a name="net-core-cli"></a>.NET Core CLI](#tab/netcore-cli)
 
 執行下列命令來 Scaffold 學生模型。
 
@@ -228,7 +228,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 * 執行應用程式。
 * `EnsureCreated` 會建立包含 `EmailAddress` 資料行的資料庫。
 
-在開發初期，結構描述快速發展之時，`EnsureCreated` 很方便。 稍後在本教學課程中，會刪除資料庫並使用移轉。
+`EnsureCreated` 在開發初期當結構描述快速發展之時很方便。 稍後在本教學課程中，會刪除資料庫並使用移轉。
 
 ### <a name="test-the-app"></a>測試應用程式
 
@@ -264,7 +264,7 @@ EF Core 會建立空白資料庫。 在本節中，會寫入 `Initialize` 方法
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Intro)]
 
-注意:上述程式碼針對命名空間 (`namespace ContosoUniversity.Models`) 使用 `Models`，而不是使用 `Data`。 `Models` 與產生框架的程式碼一致。 如需詳細資訊，請參閱[此 GitHub Scaffolding 問題](https://github.com/aspnet/Scaffolding/issues/822)。
+注意:上述程式碼針對命名空間 (`namespace ContosoUniversity.Models`) 使用 `Models`，而不是使用 `Data`。 `Models` 與框架產生的程式碼一致。 如需詳細資訊，請參閱[此 GitHub Scaffolding 問題](https://github.com/aspnet/Scaffolding/issues/822)。
 
 程式碼會檢查資料庫中是否有任何學生。 如果資料庫中沒有學生，則會使用測試資料初始化資料庫。 它會將測試資料載入陣列之中，而非 `List<T>` 集合，以最佳化效能。
 
@@ -278,8 +278,9 @@ EF Core 會建立空白資料庫。 在本節中，會寫入 `Initialize` 方法
 
 ## <a name="view-the-db"></a>檢視資料庫
 
+資料庫名稱是以您稍早所提供的內容名稱加上虛線和 GUID 所產生。 因此，資料庫名稱將會是 "SchoolContext-{GUID}"。 GUID 針對每個使用者都將不同。
 從 Visual Studio 中的 **View** 功能表開啟 **SQL Server 物件總管** (SSOX)。
-在 SSOX 中，按一下 **(localdb) \MSSQLLocalDB > Databases > ContosoUniversity1**。
+在 SSOX 中，按一下 **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}**。
 
 展開 **Tables** 節點。
 

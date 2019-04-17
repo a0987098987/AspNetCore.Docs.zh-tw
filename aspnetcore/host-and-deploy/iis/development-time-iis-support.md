@@ -1,37 +1,36 @@
 ---
 title: Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
-author: shirhatti
-description: 了解當 ASP.NET Core 應用程式在 Windows Server 上的 IIS 後方執行時，對其提供的偵錯支援。
+author: guardrex
+description: 了解在 Windows Server 上搭配 IIS 執行 ASP.NET Core 應用程式時，對該應用程式所提供的偵錯支援。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 04/08/2019
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 44570bb28451ce4c5fde12ec77e3856fb5bd3062
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 6f555858239b4432d252f8b3ac7add5c3e8bfe62
+ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637660"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425097"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
 作者：[Sourabh Shirhatti](https://twitter.com/sshirhatti) 和 [Luke Latham](https://github.com/guardrex)
 
-本文針對在 Windows Server 上 IIS 後方執行的 ASP.NET Core 應用程式，說明 [Visual Studio](https://www.visualstudio.com/vs/) 的偵錯支援。 本主題會逐步解說如何啟用這項功能及設定專案。
+本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://www.visualstudio.com/vs/) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
 ## <a name="prerequisites"></a>必要條件
 
-* [Visual Studio (適用於 Windows)](https://www.microsoft.com/net/download/windows)
+* [適用於 Windows 的 Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
 * **.NET Core 跨平台開發**工作負載
-* X.509 安全性憑證
+* X.509 安全性憑證 (以取得 HTTPS 支援)
 
 ## <a name="enable-iis"></a>啟用 IIS
 
-1. 瀏覽至控制台 > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] (畫面左側)。
-1. 選取 [Internet Information Services] 核取方塊。
-
-![[Windows 功能] 會以黑色方塊 (而非勾選記號) 顯示選取的 [Internet Information Services] 核取方塊，表示已啟用部分 IIS 功能](development-time-iis-support/_static/enable_iis.png)
+1. 在 Windows 中，瀏覽至 [控制台] > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] (畫面左側)。
+1. 選取 [Internet Information Services] 核取方塊。 選取 [確定]。
 
 安裝 IIS 可能需要重新啟動系統。
 
@@ -39,70 +38,77 @@ ms.locfileid: "53637660"
 
 IIS 的網站必須含有下列設定：
 
-* 與應用程式啟動設定檔 URL 主機名稱相符的主機名稱。
-* 搭配所指派憑證的連接埠 443 繫結。
-
-例如，所新增網站的 [主機名稱] 會設定為 "localhost" (啟動設定檔稍後在本主題中也會使用 "localhost")。 連接埠會設定為 "443" (HTTPS)。 已將 [IIS Express 開發憑證] 指派給網站，但可使用任何有效的憑證：
-
-![IIS 中的 [新增網站] 視窗，其中顯示具有已指派的憑證並在連接埠 443 上 localhost 的繫結集合。](development-time-iis-support/_static/add-website-window.png)
-
-如果 IIS 安裝已經有主機名稱與應用程式啟動設定檔 URL 主機名稱相符的「預設網站」：
-
-* 為連接埠 443 (HTTPS) 新增連接埠繫結。
-* 指派一個有效的憑證給網站。
+* **主機名稱** &ndash; 通常，[預設網站] 會搭配 [主機名稱] 或 `localhost` 使用。 不過，任何具有唯一主機名稱的有效 IIS 網站皆適用。
+* **網站繫結**
+  * 針對需要 HTTPS 的應用程式，請搭配憑證針對連接埠 443 建立繫結。 通常會使用 [IIS Express 開發憑證]，但可使用任何有效的憑證。
+  * 針對使用 HTTP 的應用程式，請確認已存在針對連接埠 80 的繫結，或是為新網站建立針對連接埠 80 的繫結。
+  * 需針對 HTTP 或 HTTPS 使用單一繫結。 **不支援同時針對 HTTP 和 HTTPS 連接埠的繫結。**
 
 ## <a name="enable-development-time-iis-support-in-visual-studio"></a>在 Visual Studio 中啟用開發階段 IIS 支援
 
 1. 啟動 Visual Studio 安裝程式。
-1. 選取 [開發階段 IIS 支援] 元件。 此元件在 [ASP.NET 與網頁程式開發] 工作負載的 [摘要] 面板中，會列為選擇性元件。 此元件會安裝 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)，這是搭配 IIS 執行 ASP.NET Core 應用程式所需的原生 IIS 模組。
+1. 針對您打算用於 IIS 開發階段支援的 Visual Studio 安裝，選取 [修改]。
+1. 針對 [ASP.NET 與網頁程式開發] 工作負載，尋找並安裝 [開發時間的 IIS 支援] 元件。
 
-![修改 Visual Studio 功能：選取 [工作負載] 索引標籤。 在 [Web and Cloud]\(Web 與雲端\) 區段中，選取 [ASP.NET 與網頁程式開發] 面板。 在右側 [摘要] 面板的 [選擇性] 區域中，有 [開發階段 IIS 支援] 的核取方塊。](development-time-iis-support/_static/development_time_support.png)
+   該元件會列於工作負載右側 [安裝詳細資料] 中 [開發時間的 IIS 支援] 底下的 [選擇性] 區段中。 此元件會安裝 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)，這是搭配 IIS 執行 ASP.NET Core 應用程式所需的原生 IIS 模組。
 
 ## <a name="configure-the-project"></a>設定專案
 
 ### <a name="https-redirection"></a>HTTPS 重新導向
 
-針對新的專案，請在 [新增 ASP.NET Core Web 應用程式] 視窗中，選取 [針對 HTTPS 進行設定] 核取方塊：
+針對需要 HTTPS 的新專案，請在 [建立新的 ASP.NET Core Web 應用程式] 視窗中，選取 [針對 HTTPS 進行設定] 核取方塊。 選取該核取方塊會在建立應用程式時，將 [HTTPS 重新導向和 HSTS 中介軟體](xref:security/enforcing-ssl)加入該應用程式。
 
-![已選取 [針對 HTTPS 進行設定] 核取方塊的 [新增 ASP.NET Core Web 應用程式] 視窗。](development-time-iis-support/_static/new-app.png)
+針對需要 HTTPS 的現有專案，請使用 `Startup.Configure`中的 HTTPS 重新導向和 HSTS 中介軟體。 如需詳細資訊，請參閱<xref:security/enforcing-ssl>。
 
-在現有的專案中，請在 `Startup.Configure` 中透過呼叫 [UseHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpspolicybuilderextensions.usehttpsredirection) 擴充方法來使用「HTTPS 重新導向中介軟體」：
-
-```csharp
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-    if (env.IsDevelopment())
-    {
-        app.UseDeveloperExceptionPage();
-    }
-    else
-    {
-        app.UseExceptionHandler("/Error");
-        app.UseHsts();
-    }
-
-    app.UseHttpsRedirection();
-    app.UseStaticFiles();
-    app.UseCookiePolicy();
-
-    app.UseMvc();
-}
-```
+針對使用 HTTP 的專案，[HTTPS 重新導向和 HSTS 中介軟體](xref:security/enforcing-ssl)並不會被加入至應用程式。 您不需要進行任何應用程式設定。
 
 ### <a name="iis-launch-profile"></a>IIS 啟動設定檔
 
 建立新的啟動設定檔，以新增開發階段 IIS 支援：
 
+::: moniker range=">= aspnetcore-3.0"
+
+1. 以滑鼠右鍵按一下 [方案總管] 中的專案。 選取 [屬性]。 開啟 [偵錯] 索引標籤。
 1. 針對 [設定檔]，選取 [新增] 按鈕。 在快顯示窗中，將設定檔命名為 "IIS"。 選取 [確定] 以建立設定檔。
 1. 針對 [啟動] 設定，從清單中選取 [IIS]。
-1. 選取 [啟動瀏覽器] 的核取方塊並提供端點 URL。 使用 HTTPS 通訊協定。 這個範例會使用 `https://localhost/WebApplication1`。
-1. 在 [環境變數] 區段中，選取 [新增] 按鈕。 提供一個索引鍵為 `ASPNETCORE_ENVIRONMENT` 且值為 `Development` 的環境變數。
-1. 在 [Web 伺服器設定] 區域中，設定 [應用程式 URL]。 這個範例會使用 `https://localhost/WebApplication1`。
+1. 選取 [啟動瀏覽器] 的核取方塊並提供端點 URL。
+
+   當應用程式需要 HTTPS 時，請使用 HTTPS 端點 (`https://`)。 針對 HTTP，請使用 HTTP (`http://`) 端點。
+
+   提供相同的主機名稱和連接埠作為 [IIS 設定所指定的早期用途](#configure-iis)，其通常是 `localhost`。
+
+   在 URL 結尾提供應用程式的名稱。
+
+   例如，`https://localhost/WebApplication1` (HTTPS) 或 `http://localhost/WebApplication1` (HTTP) 皆為有效的端點 URL。
+1. 在 [環境變數] 區段中，選取 [新增] 按鈕。 提供 [名稱] 為 `ASPNETCORE_ENVIRONMENT` 且 [值] 為 `Development` 的環境變數。
+1. 在 [Web 伺服器設定] 區域中，將 [應用程式 URL] 設定為用於 [啟動瀏覽器] 端點 URL 的相同值。
+1. 針對 Visual Studio 2019 或更新版本中的 [裝載模型]，請選取 [預設] 以使用專案所使用的裝載模型。 如果專案在其專案檔中已設定 `<AspNetCoreHostingModel>` 屬性，則會使用該屬性的值 (`InProcess` 或 `OutOfProcess`)。 如果該屬性不存在，便會使用應用程式的預設裝載模型，其為內部處理序。 如果應用程式需要與應用程式一般裝載模型不同的明確裝載模型設定，請視需要將 [裝載模型] 設定為 `In Process` 或 `Out Of Process`。
 1. 儲存設定檔。
 
-![在 [專案屬性] 視窗中選取 [偵錯] 索引標籤。 [設定檔] 與 [啟動] 的設定皆設為 [IIS]。 [啟動瀏覽器] 功能已啟用且位址為 https://localhost/WebApplication1。 在 [Web 伺服器設定] 區域的 [應用程式 URL] 欄位中也提供了相同的位址。](development-time-iis-support/_static/project_properties.png)
+::: moniker-end
 
-或者，您也可以手動將啟動設定檔新增至應用程式中的 [launchSettings.json](http://json.schemastore.org/launchsettings) 檔案：
+::: moniker range="< aspnetcore-3.0"
+
+1. 以滑鼠右鍵按一下 [方案總管] 中的專案。 選取 [屬性]。 開啟 [偵錯] 索引標籤。
+1. 針對 [設定檔]，選取 [新增] 按鈕。 在快顯示窗中，將設定檔命名為 "IIS"。 選取 [確定] 以建立設定檔。
+1. 針對 [啟動] 設定，從清單中選取 [IIS]。
+1. 選取 [啟動瀏覽器] 的核取方塊並提供端點 URL。
+
+   當應用程式需要 HTTPS 時，請使用 HTTPS 端點 (`https://`)。 針對 HTTP，請使用 HTTP (`http://`) 端點。
+
+   提供相同的主機名稱和連接埠作為 [IIS 設定所指定的早期用途](#configure-iis)，其通常是 `localhost`。
+
+   在 URL 結尾提供應用程式的名稱。
+
+   例如，`https://localhost/WebApplication1` (HTTPS) 或 `http://localhost/WebApplication1` (HTTP) 皆為有效的端點 URL。
+1. 在 [環境變數] 區段中，選取 [新增] 按鈕。 提供 [名稱] 為 `ASPNETCORE_ENVIRONMENT` 且 [值] 為 `Development` 的環境變數。
+1. 在 [Web 伺服器設定] 區域中，將 [應用程式 URL] 設定為用於 [啟動瀏覽器] 端點 URL 的相同值。
+1. 針對 Visual Studio 2019 或更新版本中的 [裝載模型]，請選取 [預設] 以使用專案所使用的裝載模型。 如果專案在其專案檔中已設定 `<AspNetCoreHostingModel>` 屬性，則會使用該屬性的值 (`InProcess` 或 `OutOfProcess`)。 如果該屬性不存在，便會使用應用程式的預設裝載模型，其為外部處理序。 如果應用程式需要與應用程式一般裝載模型不同的明確裝載模型設定，請視需要將 [裝載模型] 設定為 `In Process` 或 `Out Of Process`。
+1. 儲存設定檔。
+
+::: moniker-end
+
+不使用 Visual Studio 時，請手動將啟動設定檔新增至 *Properties* 資料夾中的 [launchSettings.json](http://json.schemastore.org/launchsettings) \(英文\) 檔案。 下列範例會將專案設定為使用 HTTPS 通訊協定：
 
 ```json
 {
@@ -127,14 +133,14 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
+請確認 `applicationUrl` 和 `launchUrl` 端點相符，並使用和 IIS 繫結設定相同的通訊協定 (HTTP 或 HTTPS)。
+
 ## <a name="run-the-project"></a>執行專案
 
-在 Visual Studio 中：
+以系統管理員身分執行 Visual Studio：
 
 * 確認建置設定下拉式清單已設定為 [偵錯]。
 * 將 [執行] 按鈕設定為 **IIS** 設定檔，然後選取該按鈕來啟動應用程式。
-
-![VS 工具列中的 [執行] 按鈕已設定為 IIS 設定檔，而且建置設定下拉式清單已設定為 [發行]。](development-time-iis-support/_static/toolbar.png)
 
 如果不是以系統管理員身分執行，Visual Studio 可能會提示您重新啟動。 若收到提示，請重新啟動 Visual Studio。
 
@@ -145,7 +151,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="additional-resources"></a>其他資源
 
-* [使用 IIS 在 Windows 上裝載 ASP.NET](xref:host-and-deploy/iis/index)
+* [IIS 中的 IIS 管理員使用者入門](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
+* [在使用 IIS 的 Windows 上裝載 ASP.NET Core](xref:host-and-deploy/iis/index)
 * [ASP.NET Core 模組簡介](xref:host-and-deploy/aspnet-core-module)
-* [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
+* [ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)
 * [強制使用 HTTPS](xref:security/enforcing-ssl)

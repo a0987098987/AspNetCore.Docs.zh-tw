@@ -4,14 +4,14 @@ author: mjrousos
 description: 了解如何在 ASP.NET Core 應用程式中使用自訂 IAuthorizationPolicyProvider，來動態產生的授權原則。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/21/2019
+ms.date: 04/15/2019
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: ca57a9fd8e3c11f15fe14bbe4538bc748c4c84b6
-ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
+ms.openlocfilehash: e17372bb0ec9091c385a70b1e907eaa3cff24003
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54444151"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614405"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>在 ASP.NET Core 中使用 IAuthorizationPolicyProvider 的自訂授權原則提供者 
 
@@ -119,12 +119,32 @@ internal class MinimumAgePolicyProvider : IAuthorizationPolicyProvider
 
 ## <a name="multiple-authorization-policy-providers"></a>多個授權原則提供者
 
-當使用自訂`IAuthorizationPolicyProvider`實作，請記住，ASP.NET Core 只會使用一個執行個體`IAuthorizationPolicyProvider`。 如果自訂提供者不能提供所有的原則名稱的授權原則，它應該改為備份的提供者。 原則名稱可能包含來自預設原則`[Authorize]`沒有名稱的屬性。
+當使用自訂`IAuthorizationPolicyProvider`實作，請記住，ASP.NET Core 只會使用一個執行個體`IAuthorizationPolicyProvider`。 如果自訂提供者不能為所有的原則名稱將用於提供授權原則，它應該改為備份的提供者。 
 
-例如，請考慮應用程式需要自訂的存留期原則和更傳統的以角色為基礎的原則抓取。 這類應用程式可以使用自訂授權原則提供者的：
+例如，假設應用程式需要自訂的存留期原則和更傳統的以角色為基礎的原則抓取。 這類應用程式可以使用自訂授權原則提供者的：
 
 * 嘗試剖析原則名稱。 
 * 呼叫不同的原則提供者 (例如`DefaultAuthorizationPolicyProvider`) 如果原則名稱未包含的年齡。
+
+此範例`IAuthorizationPolicyProvider`如上所示的實作，請更新為使用`DefaultAuthorizationPolicyProvider`藉由建立一個後援的原則提供者其建構函式中 （使用原則名稱不符合其預期的模式 'MinimumAge' + 年齡）。
+
+```csharp
+private DefaultAuthorizationPolicyProvider FallbackPolicyProvider { get; }
+
+public MinimumAgePolicyProvider(IOptions<AuthorizationOptions> options)
+{
+    // ASP.NET Core only uses one authorization policy provider, so if the custom implementation
+    // doesn't handle all policies it should fall back to an alternate provider.
+    FallbackPolicyProvider = new DefaultAuthorizationPolicyProvider(options);
+}
+```
+
+然後，`GetPolicyAsync`方法，請更新為使用`FallbackPolicyProvider`而不是傳回 null:
+
+```csharp
+...
+return FallbackPolicyProvider.GetPolicyAsync(policyName);
+```
 
 ## <a name="default-policy"></a>預設原則
 
@@ -137,10 +157,18 @@ public Task<AuthorizationPolicy> GetDefaultPolicyAsync() =>
     Task.FromResult(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build());
 ```
 
-使用自訂的所有層面`IAuthorizationPolicyProvider`，您可以視需要自訂。 在某些情況下：
+使用自訂的所有層面`IAuthorizationPolicyProvider`，您可以視需要自訂。 在某些情況下，可能會想要預設的原則擷取後援`IAuthorizationPolicyProvider`。
 
-* 可能不會使用預設的授權原則。
-* 擷取預設的原則可以委派給後援`IAuthorizationPolicyProvider`。
+## <a name="required-policy"></a>必要的原則
+
+自訂`IAuthorizationPolicyProvider`需要實作`GetRequiredPolicyAsync`若要選擇性地提供的原則，一律為必要項。 如果`GetRequiredPolicyAsync`傳回非 null 原則，該原則會結合 （具名或預設） 任何其他要求的原則。
+
+如果不需要任何必要的原則，提供者只會傳回 null 或延後至後援的提供者：
+
+```csharp
+public Task<AuthorizationPolicy> GetRequiredPolicyAsync() => 
+    Task.FromResult<AuthorizationPolicy>(null);
+```
 
 ## <a name="use-a-custom-iauthorizationpolicyprovider"></a>使用自訂 IAuthorizationPolicyProvider
 

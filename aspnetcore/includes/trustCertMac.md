@@ -1,19 +1,29 @@
 ---
-ms.openlocfilehash: 33772d3ad8bbb1ffc54792f8c31834849d0f9567
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 2ec079606cb48670dbc3852482fd8d401e7db44b
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57964090"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59472309"
 ---
-Visual Studio for Mac 會顯示一個含有下列訊息的對話方塊：
+* 藉由執行下列命令來信任 HTTPS 開發憑證：
 
-*此專案設定為使用 SSL。為避免瀏覽器中的 SSL 警告，您可以選擇信任自我簽署憑證。您要信任 IIS Express SSL 憑證嗎？*
+    ```console
+    dotnet dev-certs https --trust
+    ```
 
-選取 [是]，此時會顯示下列對話方塊：
+* 上述命令會顯示以下輸出：
 
-![安全性警告對話方塊](~/getting-started/_static/cert.png)
+    ```console
+    Trusting the HTTPS development certificate was requested. If the certificate 
+    is not already trusted we will run the following command:
+    'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain 
+    <<certificate>>'
+    This command might prompt you for your password to install the certificate on the 
+    system keychain.
+    The HTTPS developer certificate was generated successfully.
+    ```
 
-若您同意信任開發憑證，請選取 [是]。
+* 出現提示時，請輸入系統管理員使用者名稱和密碼。  該憑證現在將會被安裝且受到信任。
 
-如需詳細資訊，請參閱[信任 ASP.NET Core HTTPS 開發憑證](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)。
+    如需詳細資訊，請參閱[信任 ASP.NET Core HTTPS 開發憑證](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)。

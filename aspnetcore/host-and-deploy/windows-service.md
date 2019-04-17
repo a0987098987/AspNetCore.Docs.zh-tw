@@ -5,14 +5,14 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 03/08/2019
+ms.date: 04/04/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: ecc7f3a8cd813c2803d03294e38d726905eeb1b8
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 544eefa87898e82ec2bf8f9f61ce4e26dd554bb7
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841419"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068332"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -20,11 +20,19 @@ ms.locfileid: "57841419"
 
 ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications)，不需要使用 IIS。 當裝載為 Windows 服務時，應用程式將會在重新開機後自動啟動。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 
-* [PowerShell 6](https://github.com/PowerShell/PowerShell)
+* [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
+
+> [!NOTE]
+> 針對早於 Windows 10 2018 年 10 月更新 (1809 版/組建 10.0.17763) 的 Windows OS，必須使用 [WindowsCompatibility module](https://github.com/PowerShell/WindowsCompatibility) \(英文\) 來匯入 [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts) 模組，以存取用於[建立使用者帳戶](#create-a-user-account)一節中的 [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) Cmdlet：
+>
+> ```powershell
+> Install-Module WindowsCompatibility -Scope CurrentUser
+> Import-WinModule Microsoft.PowerShell.LocalAccounts
+> ```
 
 ## <a name="deployment-type"></a>部署類型
 
@@ -129,7 +137,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 使用 [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) (這是一個 [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)) 或 Visual Studio Code 來發行應用程式。 使用 Visual Studio 時，請選取 [FolderProfile] 並設定 [目標位置]，再選取 [發行] 按鈕。
 
-若要使用命令列介面 (CLI) 工具發佈應用程式，請在將發行設定傳遞到 [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) 選項的情況下從專案資料夾的命令提示字元中執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令。 搭配路徑使用 [-o|--output](/dotnet/core/tools/dotnet-publish#options) 選項以發行到應用程式以外的資料夾。
+若要使用命令列介面 (CLI) 工具來發佈範例應用程式，請從專案資料夾在 Windows 命令殼層中執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，同時搭配將發行設定傳遞至 [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) 選項。 搭配路徑使用 [-o|--output](/dotnet/core/tools/dotnet-publish#options) 選項以發行到應用程式以外的資料夾。
 
 ### <a name="publish-a-framework-dependent-deployment-fdd"></a>發行架構相依部署 (FDD)
 
@@ -151,42 +159,38 @@ dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
 
 ## <a name="create-a-user-account"></a>建立使用者帳戶
 
-透過系統管理 PowerShell 6 命令殼層使用 `net user` 命令，為服務建立使用者帳戶：
+從系統管理 PowerShell 6 命令殼層使用 [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) Cmdlet，為服務建立使用者帳戶：
 
 ```powershell
-net user {USER ACCOUNT} {PASSWORD} /add
+New-LocalUser -Name {NAME}
 ```
 
-預設的密碼到期期限是六週。
+在系統提示時提供[強式密碼](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)。
 
-針對範例應用程式，建立名為 `ServiceUser` 的使用者帳戶與密碼。 在下列命令中，將 `{PASSWORD}` 取代為[強式密碼](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)。
+針對範例應用程式，建立名為 `ServiceUser` 的使用者帳戶。
 
 ```powershell
-net user ServiceUser {PASSWORD} /add
+New-LocalUser -Name ServiceUser
 ```
 
-若需要將使用者新增到某個群組，請使用 `net localgroup` 命令，其中 `{GROUP}` 是群組的名稱：
+除非搭配過期 <xref:System.DateTime> 將 `-AccountExpires` 參數提供給 [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) Cmdlet，否則該帳戶將不會過期。
 
-```powershell
-net localgroup {GROUP} {USER ACCOUNT} /add
-```
-
-如需詳細資訊，請參閱[服務使用者帳戶](/windows/desktop/services/service-user-accounts)。
+如需詳細資訊，請參閱 [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) 和[服務使用者帳戶](/windows/desktop/services/service-user-accounts)。
 
 使用 Active Directory 時有一個管理使用者的替代方法，就是使用「受控服務帳戶」。 如需詳細資訊，請參閱[群組受控服務帳戶概觀](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)。
 
 ## <a name="set-permission-log-on-as-a-service"></a>設定權限：以服務方式登入
 
-使用 [icacls](/windows-server/administration/windows-commands/icacls) 命令授與對應用程式資料夾的寫入/讀取/執行存取權：
+在系統管理 PowerShell 6 命令殼層中使用 [icacls](/windows-server/administration/windows-commands/icacls) 命令，授與對應用程式資料夾的寫入/讀取/執行存取權。
 
 ```powershell
-icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
+icacls "{PATH}" /grant "{USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS}" /t
 ```
 
 * `{PATH}` &ndash; 應用程式資料夾的路徑。
 * `{USER ACCOUNT}` &ndash; 使用者帳戶 (SID)。
-* `(OI)` &ndash;「物件繼承旗標會將權限傳播到次級檔案。
-* `(CI)` &ndash;「物件繼承旗標會將權限傳播到次級檔案。
+* `(OI)` &ndash; 物件繼承旗標會將權限傳播到次級檔案。
+* `(CI)` &ndash; 容器繼承旗標會將權限傳播到次級資料夾。
 * `{PERMISSION FLAGS}` &ndash; 設定應用程式的存取權限。
   * 寫入 (`W`)
   * 讀取 (`R`)
@@ -195,25 +199,24 @@ icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
   * 修改 (`M`)
 * `/t` &ndash; 套用遞迴到現有的次級資料夾與檔案。
 
-針對發行到 *c:\\svc* 資料夾的範例應用程式與具有寫入/讀取/執行權限的 `ServiceUser` 帳戶，請使用下列命令：
+針對發行到 *c:\\svc* 資料夾的範例應用程式，以及具有寫入/讀取/執行權限的 `ServiceUser` 帳戶，請在系統管理 PowerShell 6 命令殼層中使用下列命令。
 
 ```powershell
-icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
+icacls "c:\svc" /grant "ServiceUser:(OI)(CI)WRX" /t
 ```
 
 如需詳細資訊，請參閱 [icacls](/windows-server/administration/windows-commands/icacls)。
 
 ## <a name="create-the-service"></a>建立服務
 
-使用 [RegisterService.ps1](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts) 的 PowerShell 指令碼註冊服務。 透過系統管理 PowerShell 6 命令提示字元，執行下列命令：
+使用 [RegisterService.ps1](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts) 的 PowerShell 指令碼註冊服務。 從系統管理 PowerShell 6 命令殼層，搭配下列命令執行指令碼：
 
 ```powershell
 .\RegisterService.ps1 
     -Name {NAME} 
     -DisplayName "{DISPLAY NAME}" 
     -Description "{DESCRIPTION}" 
-    -Path "{PATH}" 
-    -Exe {ASSEMBLY}.exe 
+    -Exe "{PATH TO EXE}\{ASSEMBLY NAME}.exe" 
     -User {DOMAIN\USER}
 ```
 
@@ -221,15 +224,14 @@ icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
 
 * 服務的名稱是 **MyService**。
 * 已發行的服務位於 *c:\\svc* 資料夾。 應用程式可執行檔名稱是 *SampleApp.exe*。
-* 服務是以 `ServiceUser` 帳戶執行。 下列範例中，本機電腦名稱為 `Desktop-PC`。
+* 服務是以 `ServiceUser` 帳戶執行。 下列範例命令中，本機電腦名稱為 `Desktop-PC`。 將 `Desktop-PC` 取代為您系統的電腦名稱或網域。
 
 ```powershell
 .\RegisterService.ps1 
     -Name MyService 
     -DisplayName "My Cool Service" 
     -Description "This is the Sample App service." 
-    -Path "c:\svc" 
-    -Exe SampleApp.exe 
+    -Exe "c:\svc\SampleApp.exe" 
     -User Desktop-PC\ServiceUser
 ```
 

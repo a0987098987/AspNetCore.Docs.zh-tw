@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 8a14ada241330ca33811b7cce70daf26ff8fc13a
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 3d2ae12bf8eda4f7997008758d4d29434a8371a7
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750637"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012600"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>教學課程：使用移轉功能 - ASP.NET MVC 搭配 EF Core
 
@@ -54,6 +54,7 @@ ms.locfileid: "58750637"
 > ```console
 > dotnet ef database drop
 > ```
+>
 > 下節說明如何執行 CLI 命令。
 
 ## <a name="create-an-initial-migration"></a>建立初始移轉
@@ -103,7 +104,7 @@ Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。
 
 移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照集」。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
 
-刪除移轉時，請使用 [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) 命令。 `dotnet ef migrations remove` 會刪除移轉，並確保正確地重設快照集。
+刪除移轉時，請使用 [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) 命令。 `dotnet ef migrations remove` 會刪除移轉，並確保能正確地重設快照集。
 
 如需如何使用快照集檔案的詳細資訊，請參閱[小組環境中的 EF Core 移轉](/ef/core/managing-schemas/migrations/teams)。
 

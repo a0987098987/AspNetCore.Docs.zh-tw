@@ -5,12 +5,12 @@ description: 本教學課程會示範如何在 ASP.NET Core 應用程式中安�
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: f1e0d91b27df4af7cbfb6f2547c94c0370c65d0d
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 40ecca1c6f9d519b24649d0c28946d95b820c07c
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207498"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068192"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>使用檔案監看員開發 ASP.NET Core 應用程式
 
@@ -27,6 +27,9 @@ ms.locfileid: "54207498"
 ```console
 dotnet run
 ```
+
+> [!NOTE]
+> 您可以使用 `dotnet run --project <PROJECT>` 來指定要執行的專案。 例如，從範例應用程式的根目錄執行 `dotnet run --project WebApp` 同時也會執行 *WebApp* 專案。
 
 主控台輸出會顯示類似如下的訊息 (指出應用程式正在執行，並等待要求)：
 
@@ -77,6 +80,9 @@ Application started. Press Ctrl+C to shut down.
 
 執行 *WebApp* 資料夾中的 `dotnet watch run`。 主控台輸出指出 `watch` 已啟動。
 
+> [!NOTE]
+> 您可以使用 `dotnet watch --project <PROJECT>` 來指定要監看的專案。 例如，從範例應用程式的根目錄執行 `dotnet watch --project WebApp run` 同時也會執行並監看 *WebApp* 專案。
+
 ## <a name="make-changes-with-dotnet-watch"></a>以 `dotnet watch` 進行變更
 
 請確認 `dotnet watch` 正在執行。
@@ -86,7 +92,7 @@ Application started. Press Ctrl+C to shut down.
 ```csharp
 public static int Product(int a, int b)
 {
-  return a * b;
+    return a * b;
 }
 ```
 
@@ -108,7 +114,7 @@ public static int Product(int a, int b)
 
 1. 修正 `Product` 方法程式碼，使其傳回產品。 儲存檔案。
 
-`dotnet watch` 會偵測檔案變更，並重新執行測試。 主控台輸出指出測試成功。
+`dotnet watch` 會偵測檔案變更並重新執行測試。 主控台輸出指出測試成功。
 
 ## <a name="customize-files-list-to-watch"></a>自訂要監看的檔案清單
 
@@ -129,7 +135,7 @@ public static int Product(int a, int b)
 
 ## <a name="opt-out-of-files-to-be-watched"></a>選擇不使用要監看的檔案
 
-`dotnet-watch` 可以設定成忽略其預設設定。 若要忽略特定的檔案，請將 `Watch="false"` 屬性新增至 *.csproj* 檔案的項目定義：
+`dotnet-watch` 可以被設定成忽略其預設設定。 若要忽略特定的檔案，請將 `Watch="false"` 屬性新增至 *.csproj* 檔案的項目定義：
 
 ```xml
 <ItemGroup>
@@ -146,7 +152,7 @@ public static int Product(int a, int b)
 
 ## <a name="custom-watch-projects"></a>自訂監看式專案
 
-`dotnet-watch` 不限制為 C# 專案。 您可以建立自訂的監看式專案來處理不同的案例。 請考慮下列專案配置：
+`dotnet-watch` 不限於 C# 專案。 您可以建立自訂的監看式專案來處理不同的案例。 請考慮下列專案配置：
 
 * **test/**
   * *UnitTests/UnitTests.csproj*
@@ -179,4 +185,4 @@ dotnet watch msbuild /t:Test
 
 ## <a name="dotnet-watch-in-github"></a>GitHub 中的 `dotnet-watch`
 
-`dotnet-watch` 是 GitHub [aspnet/AspNetCore 存放庫](https://github.com/aspnet/AspNetCore/tree/master/src/Tools/dotnet-watch)的一部分。
+`dotnet-watch` 是 GitHub [aspnet/AspNetCore 存放庫](https://github.com/aspnet/AspNetCore/tree/master/src/Tools/dotnet-watch) \(英文\) 的一部分。

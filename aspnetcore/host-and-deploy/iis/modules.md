@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: de740775e124298f7c3d3be0c6f5a7311174116d
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 9770801b527829b131257da7c6e670bd33c23634
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58265486"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468869"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 
@@ -30,7 +30,7 @@ ms.locfileid: "58265486"
 | **用戶端憑證對應驗證**<br>`CertificateMappingAuthenticationModule`      | 是 | |
 | **CGI**<br>`CgiModule`                                                                           | 否  | |
 | **設定驗證**<br>`ConfigurationValidationModule`                                  | 是 | |
-| **HTTP 錯誤**<br>`CustomErrorModule`                                                           | 否  | [狀態碼頁面中介軟體](xref:fundamentals/error-handling#configure-status-code-pages) |
+| **HTTP 錯誤**<br>`CustomErrorModule`                                                           | 否  | [狀態碼頁面中介軟體](xref:fundamentals/error-handling#usestatuscodepages) |
 | **自訂記錄**<br>`CustomLoggingModule`                                                      | 是 | |
 | **預設文件**<br>`DefaultDocumentModule`                                                  | 否  | [預設檔案中介軟體](xref:fundamentals/static-files#serve-a-default-document) |
 | **摘要式驗證**<br>`DigestAuthenticationModule`                                        | 是 | |
@@ -47,7 +47,7 @@ ms.locfileid: "58265486"
 | **ISAPI 篩選器**<br>`IsapiFilterModule`                                                         | 是 | [中介軟體](xref:fundamentals/middleware/index) |
 | **ISAPI**<br>`IsapiModule`                                                                       | 是 | [中介軟體](xref:fundamentals/middleware/index) |
 | **通訊協定支援**<br>`ProtocolSupportModule`                                                  | 是 | |
-| **要求篩選**<br>`RequestFilteringModule`                                                | 是 | [URL 重寫中介軟體`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
+| **要求篩選**<br>`RequestFilteringModule`                                                | 是 | [URL 重寫中介軟體 `IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **要求監視器**<br>`RequestMonitorModule`                                                    | 是 | |
 | **URL 重新寫入**&#8224;<br>`RewriteModule`                                                      | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **伺服器端包含**<br>`ServerSideIncludeModule`                                            | 否  | |

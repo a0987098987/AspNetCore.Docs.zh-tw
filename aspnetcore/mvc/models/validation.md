@@ -4,14 +4,15 @@ author: tdykstra
 description: 了解 ASP.NET Core MVC 和 Razor Pages 中的模型驗證。
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/01/2019
+ms.date: 04/06/2019
+monikerRange: '>= aspnetcore-2.1'
 uid: mvc/models/validation
-ms.openlocfilehash: b766d47f296745ba4be6ea8cb6335db9c3e2d975
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.openlocfilehash: 1ae3c20478b02d6f654e65fdf34c88e1ffb837f8
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58809311"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468733"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和 Razor Pages 中的模型驗證
 
@@ -23,23 +24,11 @@ ms.locfileid: "58809311"
 
 模型狀態代表來自兩個子系統的錯誤：模型繫結和模型驗證。 源自[模型繫結](model-binding.md)的錯誤通常是資料轉換錯誤 (例如在必須輸入整數的欄位中輸入 "x")。 模型驗證發生於模型繫結之後，並會在資料不符合商務規則時回報錯誤 (例如在必須輸入 1 到 5 之間評等的欄位中輸入 0)。
 
-::: moniker range=">= aspnetcore-2.1"
-
-模型繫結和驗證會在執行控制器動作或 Razor Pages 處理常式方法之前進行。 此應用程式的責任為檢查 `ModelState.IsValid` 並做出適當回應。 Web 應用程式通常會重新顯示頁面，並出現錯誤訊息：
-
-[!code-csharp[](validation/sample_snapshot/Create.cshtml.cs?name=snippet&highlight=3-6)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
 模型繫結和驗證會在執行控制器動作或 Razor Pages 處理常式方法之前進行。 針對 Web 應用程式，此應用程式的責任為檢查 `ModelState.IsValid` 並做出適當回應。 Web 應用程式通常會重新顯示頁面，並出現錯誤訊息：
 
 [!code-csharp[](validation/sample_snapshot/Create.cshtml.cs?name=snippet&highlight=3-6)]
 
 如果 Web API 控制器具有 `[ApiController]` 屬性，則該控制器就不需要檢查 `ModelState.IsValid`。 在此情況下，當模型狀態無效時，會自動傳回 HTTP 400 回應並包含問題的詳細資料。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。
-
-::: moniker-end
 
 ## <a name="rerun-validation"></a>重新執行驗證
 
@@ -57,16 +46,16 @@ ms.locfileid: "58809311"
 
 下列是部分內建驗證屬性：
 
-* `[CreditCard]`：驗證屬性是否具有信用卡格式。
-* `[Compare]`：驗證模型比對中的兩個屬性。
-* `[EmailAddress]`：驗證屬性是否具有電子郵件格式。
-* `[Phone]`：驗證屬性是否具有電話號碼格式。
-* `[Range]`：驗證屬性值是否落在指定的範圍內。
-* `[RegularExpression]`：驗證屬性值是否符合指定的規則運算式。
-* `[Required]`：驗證欄位不是 Null。 請參閱 [[必要] 屬性](#required-attribute)以取得此屬性行為的詳細資料。
-* `[StringLength]`：驗證字串屬性值未超過指定的長度上限。
-* `[Url]`：驗證屬性是否具有 URL 格式。
-* `[Remote]`：藉由在伺服器上呼叫動作方法來驗證用戶端上的輸入。 請參閱 [[遠端] 屬性](#remote-attribute)以取得此屬性行為的詳細資料。
+* `[CreditCard]`:驗證屬性是否具有信用卡格式。
+* `[Compare]`:驗證模型比對中的兩個屬性。
+* `[EmailAddress]`:驗證屬性是否具有電子郵件格式。
+* `[Phone]`:驗證屬性是否具有電話號碼格式。
+* `[Range]`:驗證屬性值是否落在指定的範圍內。
+* `[RegularExpression]`:驗證屬性值是否符合指定的規則運算式。
+* `[Required]`:驗證欄位不是 Null。 請參閱 [[必要] 屬性](#required-attribute)以取得此屬性行為的詳細資料。
+* `[StringLength]`:驗證字串屬性值未超過指定的長度上限。
+* `[Url]`:驗證屬性是否具有 URL 格式。
+* `[Remote]`:藉由在伺服器上呼叫動作方法來驗證用戶端上的輸入。 請參閱 [[遠端] 屬性](#remote-attribute)以取得此屬性行為的詳細資料。
 
 您可以在 [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations) 命名空間中找到驗證屬性的完整清單。
 
@@ -140,7 +129,7 @@ ms.locfileid: "58809311"
 
 [!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserNameProperties)]
 
-`AdditionalFields` 可能已明確設定為 `"FirstName"` 和 `"LastName"` 字串，但使用 [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) 運算子可簡化稍後的重構。 這項驗證的動作方法必須接受名字和姓氏引數：
+`AdditionalFields` 可以被明確設定為 `"FirstName"` 和 `"LastName"` 字串，但使用 [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) 運算子可簡化稍後的重構。 這項驗證的動作方法必須接受名字和姓氏引數：
 
 [!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -153,7 +142,7 @@ ms.locfileid: "58809311"
 public string MiddleName { get; set; }
 ```
 
-如同所有屬性引數，`AdditionalFields` 必須是常數運算式。 因此，請勿使用[內插字串](/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫 <xref:System.String.Join*> 來初始化 `AdditionalFields`。
+`AdditionalFields`如同所有屬性引數，必須是常數運算式。 因此，請勿使用[內插字串](/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫 <xref:System.String.Join*> 來初始化 `AdditionalFields`。
 
 ## <a name="alternatives-to-built-in-attributes"></a>內建屬性的替代項目
 
@@ -161,7 +150,6 @@ public string MiddleName { get; set; }
 
 * [建立自訂屬性](#custom-attributes)。
 * [實作 IValidatableObject](#ivalidatableobject)。
-
 
 ## <a name="custom-attributes"></a>自訂屬性
 
@@ -180,8 +168,6 @@ public string MiddleName { get; set; }
 上述範例僅適用於 `Movie` 型別。 類別層級驗證的另一個選項，是在模型類別中實作 `IValidatableObject`，如下列範例所示：
 
 [!code-csharp[](validation/sample/Models/MovieIValidatable.cs?name=snippet&highlight=1,26-34)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="top-level-node-validation"></a>最上層節點驗證
 
@@ -210,15 +196,11 @@ public string MiddleName { get; set; }
 
 [!code-csharp[](validation/sample_snapshot/Startup.cs?name=snippet_AddMvc&highlight=4)]
 
-::: moniker-end
-
 ## <a name="maximum-errors"></a>最大錯誤數
 
 達到最大錯誤數 (預設為 200) 時，就會停止驗證。 您可以在 `Startup.ConfigureServices` 中使用下列程式碼來設定此數目：
 
 [!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=3)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="maximum-recursion"></a>最大遞迴
 
@@ -227,8 +209,6 @@ public string MiddleName { get; set; }
 ## <a name="automatic-short-circuit"></a>自動最少運算
 
 如果模型圖形不需要驗證，則驗證會自動進行最少運算 (略過)。 執行階段會略過驗證的物件，包含基本集合 (例如 `byte[]`、`string[]`、`Dictionary<string, string>`) 和沒有任何驗證程式的複雜物件圖形。
-
-::: moniker-end
 
 ## <a name="disable-validation"></a>停用驗證
 
@@ -270,7 +250,7 @@ public string MiddleName { get; set; }
             <div class="col-md-10">
                 <input class="form-control" type="datetime"
                 data-val="true" data-val-required="The ReleaseDate field is required."
-                id="ReleaseDate" name="ReleaseDate" value="" />
+                id="ReleaseDate" name="ReleaseDate" value="">
                 <span class="text-danger field-validation-valid"
                 data-valmsg-for="ReleaseDate" data-valmsg-replace="true"></span>
             </div>
@@ -308,7 +288,7 @@ $.get({
 
 ### <a name="add-validation-to-dynamic-controls"></a>將驗證新增至動態控制項
 
-`$.validator.unobtrusive.parse()` 方法適用於整個表單，而非動態產生的個別控制項 (例如 `<input/>` 和 `<select/>`)。 若要重新剖析表單，請移除先前剖析表單時新增的驗證資料，如下列範例所示：
+`$.validator.unobtrusive.parse()` 方法適用於整個表單，而非動態產生的個別控制項 (例如 `<input>` 和 `<select/>`)。 若要重新剖析表單，請移除先前剖析表單時新增的驗證資料，如下列範例所示：
 
 ```js
 $.get({
@@ -349,7 +329,7 @@ $.get({
     data-val-classicmovie1="Classic movies must have a release year earlier than 1960."
     data-val-classicmovie1-year="1960"
     data-val-required="The ReleaseDate field is required."
-    id="ReleaseDate" name="ReleaseDate" value="" />
+    id="ReleaseDate" name="ReleaseDate" value="">
 ```
 
 如前文所述，[標記協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview) 使用來自驗證屬性的資訊來轉譯 `data-` 屬性。 有二個選項可撰寫用於建立自訂 `data-` HTML 屬性的程式碼：

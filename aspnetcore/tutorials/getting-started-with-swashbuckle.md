@@ -4,14 +4,14 @@ author: zuckerthoben
 description: 了解如何將 Swashbuckle 新增至 ASP.NET Core Web API 專案，以整合 Swagger UI。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/06/2019
+ms.date: 04/04/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 9239a46889691135dce5c99f8fc9b8c7b38ab457
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
+ms.openlocfilehash: 31d45eaa684118ab78d1b3ecac594e95712f631f
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854415"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068345"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -31,7 +31,7 @@ Swashbuckle 有三個主要元件：
 
 可使用下列方法新增 Swashbuckle：
 
-### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+### [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 * 從 [套件管理員主控台] 視窗中：
   * 移至 [檢視] > [其他視窗] > [套件管理員主控台]
@@ -48,14 +48,14 @@ Swashbuckle 有三個主要元件：
   * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
   * 從 [瀏覽] 索引標籤中選取 "Swashbuckle.AspNetCore" 套件，並按一下 [安裝]
 
-### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+### [<a name="visual-studio-for-mac"></a>Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在 [Solution Pad] > [新增套件...] 中，以滑鼠右鍵按一下 *Packages* 資料夾
 * 將 [新增套件] 視窗的 [來源] 下拉式清單設定為 "nuget.org"
 * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
 * 從結果窗格中選取 "Swashbuckle.AspNetCore" 套件，並按一下 [新增套件]
 
-### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+### [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
 
 從 [整合式終端機] 執行下列命令：
 
@@ -63,7 +63,7 @@ Swashbuckle 有三個主要元件：
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
 ```
 
-### <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+### [<a name="net-core-cli"></a>.NET Core CLI](#tab/netcore-cli)
 
 執行下列命令：
 
@@ -128,7 +128,7 @@ Swagger UI 會顯示版本資訊：
 
 XML 註解可以使用下列方式啟用：
 
-#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+#### [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -146,7 +146,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker-end
 
-#### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+#### [<a name="visual-studio-for-mac"></a>Visual Studio for Mac](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -164,7 +164,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker-end
 
-#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+#### [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
 
 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
@@ -180,7 +180,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker-end
 
-#### <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+#### [<a name="net-core-cli"></a>.NET Core CLI](#tab/netcore-cli)
 
 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
@@ -238,7 +238,7 @@ namespace TodoApi
 }
 ```
 
-設定 Swagger 來使用產生的 XML 檔案。 對於 Linux 或非 Windows 作業系統，檔案名稱和路徑可以區分大小寫。 例如，*TodoApi.XML* 檔案在 Windows 上有效，但在 CentOS 上則無效。
+設定 Swagger 以使用先前指示所產生的 XML 檔案。 對於 Linux 或非 Windows 作業系統，檔案名稱和路徑可以區分大小寫。 例如，*TodoApi.XML* 檔案在 Windows 上有效，但在 CentOS 上則無效。
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -258,7 +258,7 @@ namespace TodoApi
 
 ::: moniker-end
 
-在上述程式碼中，[Reflection](/dotnet/csharp/programming-guide/concepts/reflection) 用來建置與 Web API 專案名稱相符的 XML 檔案名稱。 [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory*) 屬性用來建構 XML 檔案的路徑。
+在上述程式碼中，[Reflection](/dotnet/csharp/programming-guide/concepts/reflection) 用來建置與 Web API 專案名稱相符的 XML 檔案名稱。 [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory*) 屬性用來建構 XML 檔案的路徑。 某些 Swagger 功能 (例如輸入參數的結構描述，或來自相對應屬性的 HTTP 方法和回應碼) 能在不使用 XML 文件檔案的情況下運作。 對於大部分的功能 (也就是方法摘要，以及參數和回應碼的描述) 而言，皆必須使用 XML 檔案。
 
 將三斜線註解新增至動作，即可透過將描述新增至區段標頭來增強 Swagger UI。 在 `Delete` 動作上方新增 [\<summary>](/dotnet/csharp/programming-guide/xmldoc/summary) 項目：
 

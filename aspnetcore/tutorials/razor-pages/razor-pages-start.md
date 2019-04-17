@@ -5,12 +5,12 @@ description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中�
 ms.author: riande
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 88449a0064dad42d8d2bf9fbdd67078e4c2ba8de
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 1d264ca4a605d8291e273a8f054c92e7eefa5548
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210050"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468843"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
@@ -39,7 +39,7 @@ ms.locfileid: "58210050"
 
 ## <a name="create-a-razor-pages-web-app"></a>建立 Razor 頁面 Web 應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 * 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案] 。
 
@@ -55,7 +55,7 @@ ms.locfileid: "58210050"
 
   ![底下提供說明，包括方案總管](razor-pages-start/_static/se2.2.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
 
 * 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
 
@@ -75,7 +75,7 @@ ms.locfileid: "58210050"
 
 * 選取 [是]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# [<a name="visual-studio-for-mac"></a>Visual Studio for Mac](#tab/visual-studio-mac)
 
 從終端機中，執行下列命令：
 
@@ -83,7 +83,6 @@ ms.locfileid: "58210050"
 
 ```console
 dotnet new webapp -o RazorPagesMovie
-cd RazorPagesMovie
 ```
 
 上述命令使用 [.NET Core CLI](/dotnet/core/tools/dotnet) 來建立 Razor Pages 專案。
@@ -98,31 +97,13 @@ cd RazorPagesMovie
 
 ## <a name="run-the-app"></a>執行應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 * 按 Ctrl+F5 即可執行而不使用偵錯工具。
 
   [!INCLUDE[](~/includes/trustCertVS.md)]
 
   Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。
-  
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-* 按 **Ctrl-F5** 即可執行而不使用偵錯工具。
-
-  [!INCLUDE[](~/includes/trustCertVSC.md)]
-
-  Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後瀏覽至 `http://localhost:5001`。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
-  
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
-
-選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)啟動瀏覽器，然後巡覽至 `http://localhost:5001`。
-
-[!INCLUDE[](~/includes/trustCertMac.md)]
-
-<!-- End of VS tabs -->
-
----
 
 * 在應用程式的首頁上，選取 [接受] 同意追蹤。
 
@@ -133,6 +114,46 @@ cd RazorPagesMovie
   下圖顯示您同意追蹤之後的應用程式：
 
   ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
+  
+# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
+
+  [!INCLUDE[](~/includes/trustCertVSC.md)]
+
+* 按 **Ctrl-F5** 即可執行而不使用偵錯工具。
+
+  Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後瀏覽至 `http://localhost:5001`。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
+
+* 在應用程式的首頁上，選取 [接受] 同意追蹤。
+
+  此應用程式不會追蹤個人資訊，但專案範本會包含同意功能，以防您需要同意才符合歐盟的[一般資料保護規定 (GDPR)](xref:security/gdpr)。
+
+  ![Home 或 Index 頁面](razor-pages-start/_static/homeGDPR2.2.png)
+
+  下圖顯示您同意追蹤之後的應用程式：
+
+  ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
+  
+# [<a name="visual-studio-for-mac"></a>Visual Studio for Mac](#tab/visual-studio-mac)
+
+  [!INCLUDE[](~/includes/trustCertMac.md)]
+
+* 按 **Cmd-Opt-F5** 以在不使用偵錯工具的情況下執行。
+
+  Visual Studio 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)啟動瀏覽器，然後巡覽至 `http://localhost:5001`。
+
+* 在應用程式的首頁上，選取 [接受] 同意追蹤。
+
+  此應用程式不會追蹤個人資訊，但專案範本會包含同意功能，以防您需要同意才符合歐盟的[一般資料保護規定 (GDPR)](xref:security/gdpr)。
+
+  ![Home 或 Index 頁面](razor-pages-start/_static/homeGDPR2.2_safari.png)
+
+  下圖顯示您同意追蹤之後的應用程式：
+
+  ![Home 或 Index 頁面](razor-pages-start/_static/home2.2_safari.png)
+
+<!-- End of VS tabs -->
+
+---
 
 ## <a name="examine-the-project-files"></a>檢查專案檔
 

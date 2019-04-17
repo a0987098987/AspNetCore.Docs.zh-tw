@@ -5,12 +5,12 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 02/25/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 224b8d7622b691df65e217fc9b963c0ba64c8baf
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: 08d8e9679bfee11f03e61cb4b9ae9b5b36186049
+ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320078"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59012821"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
@@ -26,13 +26,13 @@ ms.locfileid: "58320078"
 
 ## <a name="add-a-data-model-class"></a>新增資料模型類別
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 以滑鼠右鍵按一下 *Models* 資料夾 > [新增] > [類別]。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/mvc-intro/model1b.md)]
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+# [<a name="visual-studio-code--visual-studio-for-mac"></a>Visual Studio Code/Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * 將類別新增至名為 *Movie.cs* 的 *Models* 資料夾。
 
@@ -45,7 +45,7 @@ ms.locfileid: "58320078"
 
 在本節中會 scaffold 影片模型。 亦即 Scaffolding 工具會產生影片模型的建立、讀取、更新和刪除 (CRUD) 作業頁面。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 在 [方案總管] 中以滑鼠右鍵按一下 *Controllers* 資料夾 > [新增] > [新增 Scaffold 項目]。
 
@@ -76,7 +76,7 @@ Visual Studio 會建立：
 
 自動建立資料庫內容與 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (建立、讀取、更新和刪除) 動作方法和檢視稱為 *Scaffolding*。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
 
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
@@ -98,7 +98,7 @@ Visual Studio 會建立：
 
 <!-- Mac -------------------------->
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# [<a name="visual-studio-for-mac"></a>Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 * 安裝 Scaffolding 工具：
@@ -141,7 +141,7 @@ System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity id
 * 新增初始移轉。
 * 以初始移轉更新資料庫。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 1. 從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台] (PMC)。
 
@@ -160,7 +160,7 @@ System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity id
 
    `Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+# [<a name="visual-studio-code--visual-studio-for-mac"></a>Visual Studio Code/Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
@@ -174,7 +174,7 @@ System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity id
 
 ASP.NET Core 內建[相依性插入 (DI)](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 會在應用程式啟動期間使用 DI 來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 Scaffolding 工具會自動建立 DB 內容，並向 DI 容器註冊該內容。
 
@@ -190,7 +190,7 @@ Scaffolding 工具會自動建立 DB 內容，並向 DI 容器註冊該內容。
 
 連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+# [<a name="visual-studio-code--visual-studio-for-mac"></a>Visual Studio Code/Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 您已建立 DB 內容，並向 DI 容器註冊該內容。
 
@@ -211,7 +211,7 @@ Login failed for user 'User-name'.
 
 您遺失了[移轉步驟](#pmc)。
 
-* 測試 **Create** 連結。
+* 測試 **Create** 連結。 輸入並提交資料。
 
   > [!NOTE]
   > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，則必須將應用程式全球化。 如需全球化指示，請參閱[此 GitHub 問題](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420) \(英文\)。
@@ -224,8 +224,8 @@ Login failed for user 'User-name'.
 
 上述醒目提示的程式碼會顯示要新增至[相依性插入](xref:fundamentals/dependency-injection)容器的電影資料庫內容：
 
-* `services.AddDbContext<MvcMovieContext>(options =>` 指定要使用的資料庫和連線字串。
-* `=>` 是 [Lambda 運算子](/dotnet/articles/csharp/language-reference/operators/lambda-operator)
+* `services.AddDbContext<MvcMovieContext>(options =>` 會指定要使用的資料庫和連接字串。
+* `=>` 為 [Lambda 運算子](/dotnet/articles/csharp/language-reference/operators/lambda-operator)
 
 開啟 *Controllers/MoviesController.cs* 檔案，並檢查建構函式：
 
@@ -303,7 +303,7 @@ return View(movie);
 
 ## <a name="additional-resources"></a>其他資源
 
-* [標記協助程式](xref:mvc/views/tag-helpers/intro)
+* [標籤協助程式](xref:mvc/views/tag-helpers/intro)
 * [全球化和當地語系化](xref:fundamentals/localization)
 
 > [!div class="step-by-step"]

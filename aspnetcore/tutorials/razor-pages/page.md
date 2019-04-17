@@ -3,14 +3,14 @@ title: ASP.NET Core 中的 Scaffold Razor 頁面
 author: rick-anderson
 description: 說明 Scaffolding 所產生的 Razor 頁面。
 ms.author: riande
-ms.date: 12/4/2018
+ms.date: 04/06/2019
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: b654138231440a0c63492cae70f794da0151890d
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.openlocfilehash: 2b8b9cde5a37a0754ca177cfc80163e2ffd2925b
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58809298"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468785"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Scaffold Razor 頁面
 
@@ -28,7 +28,7 @@ ms.locfileid: "58809298"
 
 Razor 頁面衍生自 `PageModel`。 依照慣例，`PageModel` 衍生的類別稱為 `<PageName>Model`。 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將 `RazorPagesMovieContext` 新增至頁面中。 所有 Scaffold 頁面都遵循這個模式。 如需使用 Entity Framework 進行非同步程式設計的詳細資訊，請參閱[非同步程式碼](xref:data/ef-rp/intro#asynchronous-code)。
 
-當針對頁面提出要求時，`OnGetAsync` 方法會將電影清單傳回 Razor 頁面。 在 Razor 頁面上會呼叫 `OnGetAsync` 或 `OnGet` 來初始化頁面的狀態。 在此情況下，`OnGetAsync` 會取得電影清單並加以顯示。
+當針對頁面提出要求時，`OnGetAsync` 方法會將電影清單傳回 Razor 頁面。 `OnGetAsync` 或 `OnGet` 會在 Razor 頁面上被呼叫，來初始化頁面的狀態。 在此情況下，`OnGetAsync` 會取得電影清單並加以顯示。
 
 當 `OnGet` 傳回 `void` 或 `OnGetAsync` 傳回 `Task` 時，並未使用任何傳回方法。 當傳回型別是 `IActionResult` 或 `Task<IActionResult>` 時，必須提供傳回陳述式。 例如，*Pages/Movies/Create.cshtml.cs* `OnPostAsync` 方法：
 
@@ -142,17 +142,17 @@ changing in in the next step.
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml)]
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 Visual Studio 會以特別的粗體字型顯示 `<form method="post">` 標籤，用於標籤協助程式：
 
 ![Create.cshtml 頁面的 VS17 檢視](page/_static/th.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
 
 如需標籤協助程式 (例如 `<form method="post">`) 的詳細資訊，請參閱 [ASP.NET Core 中的標籤協助程式](xref:mvc/views/tag-helpers/intro)。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# [<a name="visual-studio-for-mac"></a>Visual Studio for Mac](#tab/visual-studio-mac)
 
 Visual Studio for Mac 會以特別的粗體字型顯示 `<form method="post">` 標籤，用於標籤協助程式。
 
@@ -168,7 +168,7 @@ Scaffolding 引擎會在模型中建立每個欄位的 Razor 標記 (除了識�
 
 [標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper) (`<label asp-for="Movie.Title" class="control-label"></label>`) 會產生 `Title` 屬性 (property) 的標籤標題和 `for` 屬性 (attribute)。
 
-[輸入標記協助程式](xref:mvc/views/working-with-forms) (`<input asp-for="Movie.Title" class="form-control" />`) 會使用[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。
+[輸入標記協助程式](xref:mvc/views/working-with-forms) (`<input asp-for="Movie.Title" class="form-control">`) 會使用[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。
 
 ## <a name="additional-resources"></a>其他資源
 

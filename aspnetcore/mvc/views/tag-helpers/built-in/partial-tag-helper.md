@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 部分標記協助程式和其每個屬性在�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 07/25/2018
+ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: d56df549d845b1f83ec4a5ec97ce6b44438f725a
-ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
+ms.openlocfilehash: 116fce7af5dc138fbbb0351a4f38f59e88c8f338
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55428430"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468678"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>ASP.NET Core 的部分標記協助程式
 

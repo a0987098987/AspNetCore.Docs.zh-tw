@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/31/2019
 uid: grpc/migration
-ms.openlocfilehash: ffe5ccbd99c6920e093eddc00fc60a9f66aab527
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.openlocfilehash: 4d489b5aecf2e15fbbe3ac472b991a4365cd47c1
+ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "59515407"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59672615"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>從 C 核心移轉的 gRPC 服務，ASP.NET core
 
@@ -27,7 +27,7 @@ ms.locfileid: "59515407"
 
 * 服務實作的新執行個體的建構針對每個要求。
 * 您無法透過執行個體上的實作類型的成員要求間共用狀態。
-* 預期是儲存在 DI 容器中的單一服務中的共用的狀態。 GRPC 服務實作的建構函式中，會解析預存的共用的狀態。 
+* 預期是儲存在 DI 容器中的單一服務中的共用的狀態。 GRPC 服務實作的建構函式中，會解析預存的共用的狀態。
 
 如需有關服務生命週期的詳細資訊，請參閱<xref:fundamentals/dependency-injection#service-lifetimes>。
 

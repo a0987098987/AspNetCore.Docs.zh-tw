@@ -33,12 +33,12 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 常見的效能問題，ASP.NET Core 應用程式中的封鎖可能是非同步的呼叫。 許多同步封鎖呼叫會導致[執行緒集區耗盡](https://blogs.msdn.microsoft.com/vancem/2018/10/16/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall/)且降低回應時間。
 
-**不這麼做**:
+**不建議**：
 
 * 封鎖呼叫的非同步執行[Task.Wait](/dotnet/api/system.threading.tasks.task.wait)或是[Task.Result](/dotnet/api/system.threading.tasks.task-1.result)。
 * 取得常見的程式碼路徑中的鎖定。 ASP.NET Core 應用程式是架構以平行方式執行程式碼時的最有效。
 
-**請勿**:
+**建議**：
 
 * 製作[經常性存取程式碼路徑](#hot)非同步。
 * 以非同步方式呼叫資料存取和長時間執行作業的 Api。

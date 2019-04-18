@@ -8,15 +8,15 @@ ms.custom: mvc
 ms.date: 03/31/2019
 uid: fundamentals/index
 ms.openlocfilehash: a1fed574db0baab391ebb9cfc44664ceddbfa69b
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "58809285"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
-此文章是了解如何開發 ASP.NET Core 應用程式的關鍵主題概觀。
+本文是了解如何開發 ASP.NET Core 應用程式的關鍵主題概觀。
 
 ## <a name="the-startup-class"></a>Startup 類別
 

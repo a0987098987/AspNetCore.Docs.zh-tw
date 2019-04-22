@@ -1,18 +1,18 @@
 ---
 ms.openlocfilehash: 41021e30ae85dd0ae42cbe6f1606727e21bd7707
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58809371"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705519"
 ---
-# <a name="aspnet-core-middleware-extensibility-sample"></a><span data-ttu-id="f4a9b-101">ASP.NET Core 中介軟體擴充性範例</span><span class="sxs-lookup"><span data-stu-id="f4a9b-101">ASP.NET Core Middleware Extensibility Sample</span></span>
+# <a name="aspnet-core-middleware-extensibility-sample"></a><span data-ttu-id="72e6f-101">ASP.NET Core 中介軟體擴充性範例</span><span class="sxs-lookup"><span data-stu-id="72e6f-101">ASP.NET Core Middleware Extensibility Sample</span></span>
 
-<span data-ttu-id="f4a9b-102">這個範例會示範 [ASP.NET Core 的 Factory 中介軟體啟用](https://docs.microsoft.com/aspnet/core/fundamentals/middleware/middleware-extensibility)中所述案例。</span><span class="sxs-lookup"><span data-stu-id="f4a9b-102">This sample demonstrates the scenarios described in [Factory-based middleware activation in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/middleware/middleware-extensibility).</span></span>
+<span data-ttu-id="72e6f-102">這個範例會示範 [ASP.NET Core 的 Factory 中介軟體啟用](https://docs.microsoft.com/aspnet/core/fundamentals/middleware/middleware-extensibility)中所述案例。</span><span class="sxs-lookup"><span data-stu-id="72e6f-102">This sample demonstrates the scenarios described in [Factory-based middleware activation in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/middleware/middleware-extensibility).</span></span>
 
-<span data-ttu-id="f4a9b-103">範例應用程式會示範如何依據下列條件來啟用中介軟體：</span><span class="sxs-lookup"><span data-stu-id="f4a9b-103">The sample app demonstrates middleware activated by:</span></span>
+<span data-ttu-id="72e6f-103">範例應用程式會示範如何依據下列條件來啟用中介軟體：</span><span class="sxs-lookup"><span data-stu-id="72e6f-103">The sample app demonstrates middleware activated by:</span></span>
 
-* <span data-ttu-id="f4a9b-104">慣例。</span><span class="sxs-lookup"><span data-stu-id="f4a9b-104">Convention.</span></span> <span data-ttu-id="f4a9b-105">如需傳統中介軟體啟用的詳細資訊，請參閱[中介軟體](https://docs.microsoft.com/aspnet/core/fundamentals/middleware/)主題。</span><span class="sxs-lookup"><span data-stu-id="f4a9b-105">For more information on conventional middleware activation, see the [Middleware](https://docs.microsoft.com/aspnet/core/fundamentals/middleware/) topic.</span></span>
-* <span data-ttu-id="f4a9b-106">[IMiddleware](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.imiddleware) 實作。</span><span class="sxs-lookup"><span data-stu-id="f4a9b-106">An [IMiddleware](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.imiddleware) implementation.</span></span> <span data-ttu-id="f4a9b-107">預設的 [IMiddlewareFactory](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.imiddlewarefactory) 類別會啟動中介軟體。</span><span class="sxs-lookup"><span data-stu-id="f4a9b-107">The default [IMiddlewareFactory](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.imiddlewarefactory) class activates the middleware.</span></span>
+* <span data-ttu-id="72e6f-104">慣例。</span><span class="sxs-lookup"><span data-stu-id="72e6f-104">Convention.</span></span> <span data-ttu-id="72e6f-105">如需傳統中介軟體啟用的詳細資訊，請參閱[中介軟體](https://docs.microsoft.com/aspnet/core/fundamentals/middleware/)主題。</span><span class="sxs-lookup"><span data-stu-id="72e6f-105">For more information on conventional middleware activation, see the [Middleware](https://docs.microsoft.com/aspnet/core/fundamentals/middleware/) topic.</span></span>
+* <span data-ttu-id="72e6f-106">[IMiddleware](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.imiddleware) 實作。</span><span class="sxs-lookup"><span data-stu-id="72e6f-106">An [IMiddleware](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.imiddleware) implementation.</span></span> <span data-ttu-id="72e6f-107">預設的 [IMiddlewareFactory](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.imiddlewarefactory) 類別會啟動中介軟體。</span><span class="sxs-lookup"><span data-stu-id="72e6f-107">The default [IMiddlewareFactory](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.imiddlewarefactory) class activates the middleware.</span></span>
 
-<span data-ttu-id="f4a9b-108">中介軟體實作運作方式都相同，並會記錄查詢字串參數 (`key`) 所提供的值。</span><span class="sxs-lookup"><span data-stu-id="f4a9b-108">The middleware implementations function identically and record the value provided by a query string parameter (`key`).</span></span> <span data-ttu-id="f4a9b-109">中介軟體會使用插入的資料庫內容 (範圍服務)，以記錄記憶體中資料庫的查詢字串值。</span><span class="sxs-lookup"><span data-stu-id="f4a9b-109">The middlewares use an injected database context (a scoped service) to record the query string value in an in-memory database.</span></span>
+<span data-ttu-id="72e6f-108">中介軟體實作運作方式都相同，並會記錄查詢字串參數 (`key`) 所提供的值。</span><span class="sxs-lookup"><span data-stu-id="72e6f-108">The middleware implementations function identically and record the value provided by a query string parameter (`key`).</span></span> <span data-ttu-id="72e6f-109">中介軟體會使用插入的資料庫內容 (範圍服務)，以記錄記憶體中資料庫的查詢字串值。</span><span class="sxs-lookup"><span data-stu-id="72e6f-109">The middlewares use an injected database context (a scoped service) to record the query string value in an in-memory database.</span></span>

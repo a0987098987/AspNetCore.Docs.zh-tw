@@ -529,8 +529,12 @@ items:
     name: 比較 gRPC 服務與 HTTP APIs
   - name: 教學課程
     items:
-    - uid: tutorials/grpc/grpc-start
+    - uid: tutorials/grpc/index
       name: 開始在 ASP.NET Core 中使用 gRPC 服務
+    - uid: tutorials/grpc/grpc-start
+      name: 建立 ASP.NET Core gRPC Greeter 服務
+    - uid: tutorials/grpc/grpc-client
+      name: 建立 .NET Core gRPC 用戶端
 - name: 測試、偵錯及疑難排解
   items:
   - name: 單元測試
@@ -930,12 +934,12 @@ items:
   - uid: security/app-secrets
     name: 在開發過程中保護祕密
     displayName: password
+  - uid: security/key-vault-configuration
+    name: Azure Key Vault 組態提供者
   - uid: security/enforcing-ssl
     name: 強制使用 HTTPS
   - uid: security/gdpr
     name: EU 一般資料保護規定 (GDPR) 支援
-  - uid: security/key-vault-configuration
-    name: Azure Key Vault 組態提供者
   - uid: security/anti-request-forgery
     name: 防偽要求
   - uid: security/preventing-open-redirects
@@ -1058,9 +1062,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 1863125cec772262c41884af343f66ec8fcb53ad
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: 721fb2d1042307c23e0858a7a1bf71a0b24d57ab
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614294"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705558"

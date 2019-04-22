@@ -3,14 +3,14 @@ title: ASP.NET Core 中的身分識別模型自訂
 author: ajcvickers
 description: 本文說明如何自訂 ASP.NET Core 識別為基礎的 Entity Framework Core 資料模型。
 ms.author: avickers
-ms.date: 09/24/2018
+ms.date: 04/24/2019
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 0aa7448ac37a97a4d09a04caf365f641f22f5997
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: ae5f4567a8921ce277cd6153f37a5558bcf4e261
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327297"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59982781"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>ASP.NET Core 中的身分識別模型自訂
 
@@ -34,7 +34,7 @@ ASP.NET Core 身分識別可供管理和儲存在 ASP.NET Core 應用程式中�
 * .NET Core CLI 如果使用命令列。 如需詳細資訊，請參閱 < [EF Core.NET 命令列工具](/ef/core/miscellaneous/cli/dotnet)。
 * 按一下 **套用移轉**在應用程式執行時，錯誤 頁面上的按鈕。
 
-ASP.NET Core 具有開發階段的錯誤頁面處理常式。 執行應用程式時，處理常式可以套用移轉。 針對生產環境應用程式，經常會適用於從移轉產生 SQL 指令碼，並將資料庫變更部署為受控制的應用程式和資料庫部署的一部分。
+ASP.NET Core 具有開發階段的錯誤頁面處理常式。 執行應用程式時，處理常式可以套用移轉。 生產環境應用程式通常會產生 SQL 指令碼從移轉和部署資料庫變更為受控制的應用程式和資料庫部署的一部分。
 
 建立新的應用程式，使用身分識別時，已經完成上述步驟 1 和 2。 也就是初始資料模型已存在，並已新增至專案的初始移轉。 初始移轉仍然需要套用至資料庫。 透過下列方法之一，您可以套用初始移轉：
 
@@ -300,6 +300,16 @@ public abstract class IdentityUserContext<
 
 ### <a name="custom-user-data"></a>自訂使用者資料
 
+<!--
+set projNam=WebApp1
+dotnet new webapp -o %projNam%
+cd %projNam%
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design 
+dotnet aspnet-codegenerator identity  -dc ApplicationDbContext --useDefaultUI 
+dotnet ef migrations add CreateIdentitySchema
+dotnet ef database update
+ -->
+
 [自訂使用者資料](xref:security/authentication/add-user-data)支援藉由繼承自`IdentityUser`。 按照慣例命名此類型`ApplicationUser`:
 
 ```csharp
@@ -318,14 +328,26 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         : base(options)
     {
     }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+    }
 }
 ```
 
 不需要覆寫`OnModelCreating`在`ApplicationDbContext`類別。 EF Core 會將對應`CustomTag`依照慣例的屬性。 不過，資料庫必須建立新更新`CustomTag`資料行。 若要建立資料行，新增移轉時，，然後更新資料庫中所述[身分識別和 EF Core 移轉](#identity-and-ef-core-migrations)。
 
-更新`Startup.ConfigureServices`以使用新`ApplicationUser`類別：
+更新*Pages/Shared/_LoginPartial.cshtml* ，並取代`IdentityUser`使用`ApplicationUser`:
 
-::: moniker range=">= aspnetcore-2.1"
+```
+@using Microsoft.AspNetCore.Identity
+@using WebApp1.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+```
+
+更新*Areas/Identity/IdentityHostingStartup.cs*或是`Startup.ConfigureServices`，並取代`IdentityUser`使用`ApplicationUser`。
 
 ```csharp
 services.AddDefaultIdentity<ApplicationUser>()
@@ -337,28 +359,6 @@ services.AddDefaultIdentity<ApplicationUser>()
 
 * [Scaffold 身分識別](xref:security/authentication/scaffold-identity)
 * [加入、 下載及刪除身分識別的自訂使用者資料](xref:security/authentication/add-user-data)
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-```csharp
-services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext>()
-        .AddDefaultTokenProviders();
-```
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-1.1"
-
-```csharp
-services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext, Guid>()
-        .AddDefaultTokenProviders();
-```
-
-::: moniker-end
 
 ### <a name="change-the-primary-key-type"></a>變更主索引鍵類型
 

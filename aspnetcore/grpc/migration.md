@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/31/2019
 uid: grpc/migration
-ms.openlocfilehash: 4d489b5aecf2e15fbbe3ac472b991a4365cd47c1
-ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
+ms.openlocfilehash: 47d74edd821124f0c8390d704ca7931b7eb6c4cd
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59672615"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59982597"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>從 C 核心移轉的 gRPC 服務，ASP.NET core
 
@@ -49,26 +49,19 @@ public void ConfigureServices(IServiceCollection services)
 
 在 C 核心為基礎的應用程式，設定，例如`grpc.max_receive_message_length`並`grpc.max_send_message_length`設有`ChannelOption`時[建構的伺服器執行個體](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server__ctor_System_Collections_Generic_IEnumerable_Grpc_Core_ChannelOption__)。
 
-ASP.NET Core 中`GrpcServiceOptions`可用來設定這些設定。 可以全域套用設定，所有 gRPC 服務或個別的服務實作型別。 指定為個別的服務實作類型的選項會覆寫設定的全域設定。
+ASP.NET Core 中 gRPC 提供透過設定`GrpcServiceOptions`型別。 比方說，gRPC 服務的連入訊息大小上限可以透過設定`AddGrpc`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services
-        .AddGrpc(globalOptions =>
-        {
-            // Global settings
-            globalOptions.SendMaxMessageSize = 4096
-            globalOptions.ReceiveMaxMessageSize = 4096
-        })
-        .AddServiceOptions<GreeterService>(greeterOptions =>
-        {
-            // GreeterService settings. These will override global settings
-            globalOptions.SendMaxMessageSize = 2048
-            globalOptions.ReceiveMaxMessageSize = 2048
-        })
+    services.AddGrpc(options =>
+    {
+        options.ReceiveMaxMessageSize = 16384; // 16 MB
+    });
 }
 ```
+
+如需有關組態的詳細資訊，請參閱<xref:grpc/configuration>。
 
 ## <a name="logging"></a>記錄
 

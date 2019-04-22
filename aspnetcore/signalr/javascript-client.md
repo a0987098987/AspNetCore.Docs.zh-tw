@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/17/2019
 uid: signalr/javascript-client
-ms.openlocfilehash: e58015221497a9f962edf9f9fdba7ea3025d7694
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: f1f072e63928502fa1bad62e808ff035e57f2fd3
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59705600"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59983009"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 
@@ -66,6 +66,13 @@ JavaScript 用戶端會透過 [HubConnection](/javascript/api/%40aspnet/signalr/
 
 > [!NOTE]
 > 如果您使用 Azure SignalR 服務中*無伺服器模式*，您無法從用戶端呼叫中樞方法。 如需詳細資訊，請參閱 < [SignalR 服務文件](/azure/azure-signalr/signalr-concept-serverless-development-config)。
+
+`invoke`方法會傳回 JavaScript[承諾](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)。 `Promise`解決的傳回值 （如果有的話） 的伺服器上的此方法傳回時。 如果在伺服器上的方法擲回錯誤，`Promise`拒絕並出現錯誤訊息。 使用`then`並`catch`上的方法`Promise`本身來處理這些情況下 (或`await`語法)。
+
+`send`方法會傳回 JavaScript `Promise`。 `Promise`解決伺服器傳送此訊息。 如果沒有傳送訊息時，出現錯誤`Promise`拒絕並出現錯誤訊息。 使用`then`並`catch`上的方法`Promise`本身來處理這些情況下 (或`await`語法)。
+
+> [!NOTE]
+> 使用`send`不等候，直到伺服器收到的訊息。 因此，不可能從伺服器傳回的資料或錯誤。
 
 ## <a name="call-client-methods-from-hub"></a>用戶端方法呼叫來自中樞
 

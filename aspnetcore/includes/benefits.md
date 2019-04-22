@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: d794058f533c4b617f641fa3cb3e6d63fd807c2d
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615371"
+---
 ASP.NET Core 提供下列優點：
 
 * 用於建置 Web UI 和 Web API 的統一劇本。
@@ -5,7 +13,7 @@ ASP.NET Core 提供下列優點：
 * [Razor Pages](xref:razor-pages/index) 更容易撰寫以頁面為焦點的案例程式碼，也更具生產力。
 * 能夠在 Windows、macOS 和 Linux 上開發並執行。
 * 開放原始碼和[社群導向](https://live.asp.net/) \(英文\)。
-* 整合[現代化用戶端架構](xref:razor-components/index)和開發工作流程。
+* 整合[現代化用戶端架構](xref:blazor/index)和開發工作流程。
 * 雲端就緒、以環境為基礎的[組態系統](xref:fundamentals/configuration/index)。
 * 內建的[相依性插入](xref:fundamentals/dependency-injection)。
 * 輕量型、[高效能](https://github.com/aspnet/benchmarks) \(英文\) 且模組化的 HTTP 要求管線。

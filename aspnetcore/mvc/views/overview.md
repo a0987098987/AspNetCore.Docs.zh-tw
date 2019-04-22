@@ -6,10 +6,10 @@ ms.author: riande
 ms.date: 04/03/2019
 uid: mvc/views/overview
 ms.openlocfilehash: 766996645bc6ef2b6be42d729baf5d57f55b6ddd
-ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59012795"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
@@ -192,7 +192,7 @@ namespace WebApplication1.ViewModels
 
 ### <a name="weakly-typed-data-viewdata-viewdata-attribute-and-viewbag"></a>弱型別資料 (ViewData、ViewData 屬性與 ViewBag)
 
-`ViewBag` *未在 Razor Pages 中提供。*
+Razor 頁面中沒有 `ViewBag`。
 
 除了強型別檢視之外，檢視還可以存取*弱型別* (也稱為*鬆散型別*) 資料集合。 與強式型別不同，「弱式型別」 (或「鬆散型別」) 表示您未明確宣告所使用資料的類型。 您可以使用弱型別資料的集合，對控制器與檢視傳遞將少量的資料進出。
 
@@ -204,7 +204,7 @@ namespace WebApplication1.ViewModels
 
 此集合可以透過控制器和檢視上的 `ViewData` 或 `ViewBag` 屬性進行參考。 `ViewData` 屬性是弱型別物件的字典。 `ViewBag` 屬性是 `ViewData` 中提供基礎 `ViewData` 集合之動態屬性的包裝函式。 注意:`ViewData` 和 `ViewBag` 的索引鍵查閱皆不區分大小寫。
 
-`ViewData` 和 `ViewBag` 都會在執行階段動態解析。 因為它們未提供編譯時間類型檢查，所以兩者通常會比使用 viewmodel 更容易發生錯誤。 因此，有些開發人員會盡量少使用或不使用 `ViewData` 和 `ViewBag`。
+`ViewData` 和 `ViewBag` 是在執行階段動態解析。 因為它們未提供編譯時間類型檢查，所以兩者通常會比使用 viewmodel 更容易發生錯誤。 因此，有些開發人員會盡量少使用或不使用 `ViewData` 和 `ViewBag`。
 
 <a name="VD"></a>
 
@@ -292,7 +292,7 @@ public class HomeController : Controller
 
 **ViewBag**
 
-`ViewBag` *未在 Razor Pages 中提供。*
+Razor 頁面中沒有 `ViewBag`。
 
 `ViewBag` 是可動態存取 `ViewData` 中所儲存物件的 [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata) 物件。 `ViewBag` 的使用更為方便，因為它不需要進行轉換。 下列範例示範如何使用 `ViewBag`，而其結果與上方使用 `ViewData` 相同：
 
@@ -325,7 +325,7 @@ public IActionResult SomeAction()
 
 **同時使用 ViewData 和 ViewBag**
 
-`ViewBag` *未在 Razor Pages 中提供。*
+Razor 頁面中沒有 `ViewBag`。
 
 因為 `ViewData` 和 `ViewBag` 參照相同的基礎 `ViewData` 集合，所以您可以同時使用 `ViewData` 和 `ViewBag`，並在讀取和寫入值時於其間混合使用和比對。
 
@@ -365,17 +365,17 @@ public IActionResult SomeAction()
 
 **ViewData 與 ViewBag 之間的差異摘要**
 
- `ViewBag` 未在 Razor Pages 中提供。
+ Razor 頁面中沒有 `ViewBag`。
 
 * `ViewData`
   * 衍生自 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)，因此它的字典屬性十分有用，例如 `ContainsKey`、`Add`、`Remove` 和 `Clear`。
-  * 字典中的索引鍵是字串，因此允許空白字元。 範例： `ViewData["Some Key With Whitespace"]`
+  * 字典中的索引鍵是字串，因此允許空白字元。 範例：`ViewData["Some Key With Whitespace"]`
   * 在檢視中必須轉換任何 `string` 以外的類型，才能使用 `ViewData`。
 * `ViewBag`
   * 衍生自 [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)，因此允許使用點標記法 (`@ViewBag.SomeKey = <value or object>`) 來建立動態屬性，而不需要轉換。 `ViewBag` 的語法可以更快速地新增至控制器和檢視。
-  * 檢查 Null 值更簡單。 範例： `@ViewBag.Person?.Name`
+  * 檢查 Null 值更簡單。 範例：`@ViewBag.Person?.Name`
 
-**使用 ViewData 或 ViewBag 的時機**
+**何時使用 ViewData 或 ViewBag**
 
 `ViewData` 和 `ViewBag` 是同樣有效的方式，都可以在控制器與檢視之間傳遞少量資料。 根據喜好設定來選擇使用哪一個。 您可以混合使用與比對 `ViewData` 和 `ViewBag` 物件；不過，使用一致的方法，較容易讀取和維護程式碼。 這兩種方法是在執行階段動態解析，因此容易導致執行階段錯誤。 有些開發小組會避免使用它們。
 

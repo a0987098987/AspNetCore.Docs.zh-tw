@@ -261,10 +261,82 @@ items:
       name: 相依性插入 - 檢視
     - uid: mvc/controllers/testing
       name: 單元測試
-  - uid: razor-components/index
-    name: Razor 元件
+  - name: Blazor
+    items:
+    - uid: blazor/index
+      name: 總覽
+    - uid: blazor/get-started
+      name: 開始使用
+    - uid: blazor/hosting-models
+      name: 裝載模型
+    - uid: tutorials/first-blazor-app
+      name: 建置您的第一個應用程式
+    - uid: blazor/components
+      name: 元件
+    - uid: blazor/forms-validation
+      name: 表單和驗證
+    - uid: blazor/class-libraries
+      name: 元件程式庫
+    - uid: blazor/layouts
+      name: 版面配置
+    - uid: blazor/dependency-injection
+      name: 相依性插入
+    - uid: blazor/routing
+      name: 路由
+    - uid: blazor/javascript-interop
+      name: JavaScript Interop
+    - uid: blazor/debug
+      name: 偵錯
+    - name: 裝載和部署
+      items:
+      - uid: host-and-deploy/blazor/index
+        name: 總覽
+      - uid: host-and-deploy/blazor/client-side
+        name: 用戶端
+      - uid: host-and-deploy/blazor/server-side
+        name: 伺服器端
+      - uid: host-and-deploy/blazor/configure-linker
+        name: 設定連結器
+  - name: 用戶端開發
+    items:
+    - name: 單頁應用程式
+      items:
+      - uid: spa/angular
+        name: Angular
+      - uid: spa/react
+        name: React
+      - uid: spa/react-with-redux
+        name: 使用 Redux 的 React
+      - uid: client-side/spa-services
+        name: JavaScriptServices
+    - name: LibMan
+      items:
+      - uid: client-side/libman/index
+        name: 總覽
+      - uid: client-side/libman/libman-cli
+        name: CLI
+      - uid: client-side/libman/libman-vs
+        name: Visual Studio
+    - uid: client-side/using-gulp
+      name: Gulp
+    - uid: client-side/using-grunt
+      name: Grunt
+    - uid: client-side/bower
+      name: Bower
+    - uid: client-side/bundling-and-minification
+      name: 配套並縮小
+    - uid: client-side/using-browserlink
+      name: 瀏覽器連結
   - uid: fundamentals/app-state
     name: 工作階段和應用程式狀態
+  - uid: mvc/views/layout
+    name: 配置
+  - uid: mvc/models/model-binding
+    name: 模型繫結
+  - uid: mvc/models/validation
+    name: 模型驗證
+  - uid: mvc/views/razor
+    name: Razor 語法
   - name: 標籤協助程式
     items:
     - uid: mvc/views/tag-helpers/intro
@@ -303,14 +375,6 @@ items:
         href: mvc/views/working-with-forms.md#the-validation-message-tag-helper
       - name: 驗證摘要
         href: mvc/views/working-with-forms.md#the-validation-summary-tag-helper
-  - uid: mvc/views/layout
-    name: 配置
-  - uid: mvc/models/model-binding
-    name: 模型繫結
-  - uid: mvc/models/validation
-    name: 模型驗證
-  - uid: mvc/views/razor
-    name: Razor 語法
   - name: 進階
     items:
     - uid: mvc/views/view-components
@@ -553,102 +617,6 @@ items:
       href: /azure/visual-studio/vs-storage-aspnet5-getting-started-queues?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
     - name: 資料表儲存體
       href: /azure/visual-studio/vs-storage-aspnet5-getting-started-tables?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-- name: 用戶端開發
-  items:
-  - name: Razor 元件
-    items:
-    - uid: razor-components/index
-      name: 總覽
-    - uid: razor-components/get-started
-      name: 開始使用
-    - uid: razor-components/hosting-models
-      name: 裝載模型
-    - uid: tutorials/first-razor-components-app
-      name: 建置您的第一個應用程式
-    - uid: razor-components/components
-      name: 元件
-    - uid: razor-components/forms-validation
-      name: 表單和驗證
-    - uid: razor-components/class-libraries
-      name: 元件程式庫
-    - uid: razor-components/layouts
-      name: 版面配置
-    - uid: razor-components/dependency-injection
-      name: 相依性插入
-    - uid: razor-components/routing
-      name: 路由
-    - uid: razor-components/javascript-interop
-      name: JavaScript Interop
-    - uid: razor-components/debug
-      name: 偵錯
-    - name: 裝載和部署
-      items:
-      - uid: host-and-deploy/razor-components-blazor/index
-        name: 總覽
-      - uid: host-and-deploy/razor-components-blazor/razor-components
-        name: Razor 元件
-  - name: 單頁應用程式
-    items:
-    - name: Blazor
-      items:
-      - uid: spa/blazor/index
-        name: 總覽
-      - uid: spa/blazor/get-started
-        name: 開始使用
-      - uid: razor-components/hosting-models
-        name: 裝載模型
-      - uid: tutorials/first-razor-components-app
-        name: 建置您的第一個應用程式
-      - uid: razor-components/components
-        name: 元件
-      - uid: razor-components/forms-validation
-        name: 表單和驗證
-      - uid: razor-components/class-libraries
-        name: 元件程式庫
-      - uid: razor-components/layouts
-        name: 版面配置
-      - uid: razor-components/dependency-injection
-        name: 相依性插入
-      - uid: razor-components/routing
-        name: 路由
-      - uid: razor-components/javascript-interop
-        name: JavaScript Interop
-      - uid: razor-components/debug
-        name: 偵錯
-      - name: 裝載和部署
-        items:
-        - uid: host-and-deploy/razor-components-blazor/index
-          name: 總覽
-        - uid: host-and-deploy/razor-components-blazor/blazor
-          name: Blazor
-        - uid: host-and-deploy/razor-components-blazor/configure-linker
-          name: 設定連結器
-    - uid: spa/angular
-      name: Angular
-    - uid: spa/react
-      name: React
-    - uid: spa/react-with-redux
-      name: 使用 Redux 的 React
-    - uid: client-side/spa-services
-      name: JavaScriptServices
-  - name: LibMan
-    items:
-    - uid: client-side/libman/index
-      name: 總覽
-    - uid: client-side/libman/libman-cli
-      name: CLI
-    - uid: client-side/libman/libman-vs
-      name: Visual Studio
-  - uid: client-side/using-gulp
-    name: Gulp
-  - uid: client-side/using-grunt
-    name: Grunt
-  - uid: client-side/bower
-    name: Bower
-  - uid: client-side/bundling-and-minification
-    name: 配套並縮小
-  - uid: client-side/using-browserlink
-    name: 瀏覽器連結
 - name: 裝載及部署
   displayName: publish
   items:
@@ -777,15 +745,15 @@ items:
   - uid: host-and-deploy/health-checks
     name: 健康狀態檢查
     displayName: deploy, publish
-  - name: Razor 元件/Blazor
+  - name: Blazor
     items:
-    - uid: host-and-deploy/razor-components-blazor/index
+    - uid: host-and-deploy/blazor/index
       name: 總覽
-    - uid: host-and-deploy/razor-components-blazor/blazor
-      name: Blazor
-    - uid: host-and-deploy/razor-components-blazor/razor-components
-      name: Razor 元件
-    - uid: host-and-deploy/razor-components-blazor/configure-linker
+    - uid: host-and-deploy/blazor/client-side
+      name: 用戶端
+    - uid: host-and-deploy/blazor/server-side
+      name: 伺服器端
+    - uid: host-and-deploy/blazor/configure-linker
       name: 設定連結器
 - name: 安全性及身分識別
   displayName: authentication, authorization
@@ -1090,9 +1058,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: e788460a2de31aa570907b4561d30ad0da2ca854
-ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
+ms.openlocfilehash: 1863125cec772262c41884af343f66ec8fcb53ad
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59516270"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614294"

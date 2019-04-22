@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: index
-ms.openlocfilehash: 944c8a93aff53b8d72fda03f5df9c5ba45990cbc
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.openlocfilehash: 9cb598c4068586e4e960ec40743c4f54f09995ad
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59068270"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614369"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -44,7 +44,7 @@ ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/first-web-api) 和 [We
 
 ## <a name="client-side-development"></a>用戶端開發
 
-ASP.NET Core 無縫整合了一些熱門用戶端架構及程式庫，包括 [Razor 元件](xref:razor-components/index)、[Angular](xref:spa/angular)、[React](xref:spa/react) 及 [Bootstrap](https://getbootstrap.com/)。 如需詳細資訊，請參閱 [Razor 元件](xref:razor-components/index)及*用戶端開發*下的相關主題。
+ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Blazor](xref:blazor/index)、[Angular](xref:spa/angular)、[React](xref:spa/react) 與 [Bootstrap](https://getbootstrap.com/)。 如需詳細資訊，請參閱 <xref:blazor/index> 及*用戶端開發*下的相關主題。
 
 <a name="target-framework"></a>
 
@@ -86,7 +86,7 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
    |情節  |教學課程  |
    |----------|----------|
-   | 針對全新開發        |[搭配 Entity Framework Core 的 Razor Pages](xref:data/ef-rp/intro) |
+   | 針對全新開發        |[搭配 Entity Framework Core 的 Razor 頁面](xref:data/ef-rp/intro) |
    | 針對維護 MVC 應用程式 |[搭配 Entity Framework Core 的 MVC](xref:data/ef-mvc/intro)
 
 1. 閱讀適用於所有應用程式類型的 ASP.NET Core 功能概觀：
@@ -148,7 +148,7 @@ WebHost.CreateDefaultBuilder(args)
 
 您可以放心忽略 (或移除) 程式碼周圍的 `#region` 與 `#endregion` 陳述式。 但若您打算執行主題中所述的範例情境，則請勿變更這些陳述式內的程式碼。 您可以在試驗其他案例時自由改變程式碼。
 
-如需詳細資訊，請參閱 [Contribute to the ASP.NET documentation:Code snippets](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets) (參與 ASP.NET 文件：程式碼片段)。
+如需詳細資訊，請參閱 [Contribute to the ASP.NET documentation:Code snippets](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets)。(參與 ASP.NET 文件：程式碼片段)。
 
 ## <a name="next-steps"></a>後續步驟
 

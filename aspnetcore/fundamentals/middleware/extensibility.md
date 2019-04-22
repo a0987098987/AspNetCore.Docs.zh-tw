@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 03/31/2019
 uid: fundamentals/middleware/extensibility
 ms.openlocfilehash: 9305616ce3f2ef49cf9dfcab719f673c0fb4b51e
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "58809162"
 ---
 # <a name="factory-based-middleware-activation-in-aspnet-core"></a>ASP.NET Core 的 Factory 中介軟體啟用

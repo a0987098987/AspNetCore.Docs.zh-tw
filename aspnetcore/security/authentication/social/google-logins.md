@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 1/11/2019
 uid: security/authentication/google-logins
-ms.openlocfilehash: 1328bcbce3e6e4786f9d410d1f28f309dc9d2722
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 44c79b3279db7946b6d89a726bd3f5acfb5f51af
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750541"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705587"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Google 外部登入設定
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Google 開始在 2019 年 1 月[關閉](https://developers.google.com/+/api-shutdown)Google + 登入和開發人員必須將移至新的 Google 登系統中的年 3 月。 ASP.NET Core 2.1 和 2.2 Google 驗證的封裝將會更新在 2 月的變更。 如需詳細資訊和 ASP.NET core 的暫存緩和措施，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/6486)。 本教學課程已更新新的安裝程序。
+[自於 2019 年 3 月 7 日起已關閉舊版 Google + Api](https://developers.google.com/+/api-shutdown)。 Google + 登入，並開發人員必須在系統中移動至新的 Google 登。 Google 驗證的 ASP.NET Core 2.1 和 2.2 套件已更新的變更。 如需詳細資訊和 ASP.NET core 的暫存緩和措施，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/6486)。 本教學課程已更新新的安裝程序。
 
 本教學課程會示範如何讓使用者使用其使用 ASP.NET Core 2.2 專案上建立的 Google 帳戶登入[上一頁](xref:security/authentication/social/index)。
 

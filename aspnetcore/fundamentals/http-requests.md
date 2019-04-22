@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 03/30/2019
 uid: fundamentals/http-requests
 ms.openlocfilehash: 270727443f091306ac3e4ce4e2ceb99b88bbc609
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "58809204"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>在 ASP.NET Core 中使用 IHttpClientFactory 發出 HTTP 要求

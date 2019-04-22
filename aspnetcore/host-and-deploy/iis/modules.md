@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/iis/modules
 ms.openlocfilehash: 9770801b527829b131257da7c6e670bd33c23634
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468869"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
@@ -47,7 +47,7 @@ ms.locfileid: "59468869"
 | **ISAPI 篩選器**<br>`IsapiFilterModule`                                                         | 是 | [中介軟體](xref:fundamentals/middleware/index) |
 | **ISAPI**<br>`IsapiModule`                                                                       | 是 | [中介軟體](xref:fundamentals/middleware/index) |
 | **通訊協定支援**<br>`ProtocolSupportModule`                                                  | 是 | |
-| **要求篩選**<br>`RequestFilteringModule`                                                | 是 | [URL 重寫中介軟體 `IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
+| **要求篩選**<br>`RequestFilteringModule`                                                | 是 | [URL 重寫中介軟體`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **要求監視器**<br>`RequestMonitorModule`                                                    | 是 | |
 | **URL 重新寫入**&#8224;<br>`RewriteModule`                                                      | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **伺服器端包含**<br>`ServerSideIncludeModule`                                            | 否  | |

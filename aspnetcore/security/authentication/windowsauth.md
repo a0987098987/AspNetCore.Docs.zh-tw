@@ -8,25 +8,25 @@ ms.custom: mvc, seodec18
 ms.date: 04/03/2019
 uid: security/authentication/windowsauth
 ms.openlocfilehash: bd4ffa79c4d1e0070c820fa9c06b0a84c3aaae74
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468649"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
-藉由[Scott Addie](https://twitter.com/Scott_Addie)和[Luke Latham](https://github.com/guardrex)
+作者：[Scott Addie](https://twitter.com/Scott_Addie) 和 [Luke Latham](https://github.com/guardrex)
 
-[Windows 驗證](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)可以設定與裝載的 ASP.NET Core 應用程式[IIS](xref:host-and-deploy/iis/index)或是[HTTP.sys](xref:fundamentals/servers/httpsys)。
+[Windows 驗證](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 可以針對 [IIS](xref:host-and-deploy/iis/index) 或 [HTTP.sys](xref:fundamentals/servers/httpsys) 上裝載的 ASP.NET Core 應用程式設定。
 
-Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使用者。 使用 Active Directory 網域身分識別或 Windows 帳戶，來識別使用者在公司網路中執行您的伺服器時，您可以使用 Windows 驗證。 Windows 驗證最適合內部網路的環境，其中使用者、 用戶端應用程式，以及網頁伺服器都屬於相同 Windows 網域。
+Windows 驗證仰賴作業系統來驗證 ASP.NET Core 應用程式的使用者。 當您的伺服器在公司網路上執行時，您可以透過 Active Directory 網域身分識別進行 Windows 驗證或透過 Windows 帳戶來識別使用者。 Windows 驗證最適合用於使用者、用戶端應用程式與 Web 伺服器皆屬於相同 Windows 網域的內部網路環境。
 
 ## <a name="enable-windows-authentication-in-an-aspnet-core-app"></a>啟用 ASP.NET Core 應用程式中的 Windows 驗證
 
 **Web 應用程式**可透過 Visual Studio 或.NET Core CLI 的範本可以設定為支援 Windows 驗證。
 
-# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="use-the-windows-authentication-app-template-for-a-new-project"></a>新的專案中使用 Windows 驗證應用程式範本
 
@@ -55,7 +55,7 @@ Windows 驗證會仰賴作業系統來驗證的 ASP.NET Core 應用程式的使�
 
 [!code-json[](windowsauth/sample_snapshot/launchSettings.json?highlight=2-3)]
 
-# [<a name="net-core-cli"></a>.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 使用**Windows 驗證**應用程式範本。
 

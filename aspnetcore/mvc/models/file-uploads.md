@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/models/file-uploads
 ms.openlocfilehash: 831f0c84f0ff062e9e24ccbf4ca81b7143c66e66
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468549"
 ---
 # <a name="file-uploads-in-aspnet-core"></a>ASP.NET Core 的檔案上傳

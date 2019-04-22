@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/partial
 ms.openlocfilehash: 65da78d6df3f179df9bdfa3a32af8736b71bbac5
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468704"
 ---
 # <a name="partial-views-in-aspnet-core"></a>ASP.NET Core 中的部分檢視
@@ -74,7 +74,7 @@ ms.locfileid: "59468704"
 
 在標記檔案中，您可以使用數種方法參考部分檢視。 我們建議應用程式使用下列其中一個非同步轉譯方法：
 
-* [Partial 標籤協助程式](#partial-tag-helper)
+* [部分標記協助程式](#partial-tag-helper)
 * [非同步 HTML 協助程式](#asynchronous-html-helper)
 
 ::: moniker-end
@@ -110,7 +110,7 @@ ms.locfileid: "59468704"
 
 下列範例會從應用程式根目錄參考部分檢視。 開頭為波狀符號斜線 (`~/`) 或斜線 (`/`) 的路徑表示應用程式根目錄：
 
-**Razor Pages**
+**Razor 頁面**
 
 ```cshtml
 <partial name="~/Pages/Folder/_PartialName.cshtml" />
@@ -152,7 +152,7 @@ ms.locfileid: "59468704"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**Razor Pages**
+**Razor 頁面**
 
 ```cshtml
 @await Html.PartialAsync("~/Pages/Folder/_PartialName.cshtml")
@@ -203,7 +203,7 @@ ms.locfileid: "59468704"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**Razor Pages**
+**Razor 頁面**
 
 1. 目前正在執行頁面的資料夾
 1. 頁面資料夾上方的目錄圖表
@@ -243,7 +243,7 @@ ms.locfileid: "59468704"
 
 ## <a name="access-data-from-partial-views"></a>從部分檢視存取資料
 
-將部分檢視具現化時，會收到父檢視 `ViewData` 字典的*複本*。 父檢視不會保存部分檢視內的資料更新。 `ViewData` 變更 (位於部分檢視中) 會在傳回部分檢視時遺失。
+將部分檢視具現化時，會收到父檢視 `ViewData` 字典的*複本*。 父檢視不會保存部分檢視內的資料更新。 傳回部分檢視時，部分檢視內的 `ViewData` 變更會遺失。
 
 下列範例示範如何將 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 的執行個體傳遞給部分檢視：
 
@@ -259,7 +259,7 @@ ms.locfileid: "59468704"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**Razor Pages**
+**Razor 頁面**
 
 範例應用程式中的下列標記來自 *Pages/ArticlesRP/ReadRP.cshtml* 頁面。 此頁面包含兩個部分檢視。 第二個部分檢視將模型和 `ViewData` 傳入部分檢視。 `ViewDataDictionary` 建構函式多載用於傳遞新的 `ViewData` 字典，同時保留現有的 `ViewData` 字典。
 

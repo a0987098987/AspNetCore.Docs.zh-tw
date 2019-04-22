@@ -8,10 +8,10 @@ ms.date: 04/06/2019
 monikerRange: '>= aspnetcore-2.1'
 uid: mvc/models/validation
 ms.openlocfilehash: 1ae3c20478b02d6f654e65fdf34c88e1ffb837f8
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468733"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和 Razor Pages 中的模型驗證
@@ -46,16 +46,16 @@ ms.locfileid: "59468733"
 
 下列是部分內建驗證屬性：
 
-* `[CreditCard]`:驗證屬性是否具有信用卡格式。
-* `[Compare]`:驗證模型比對中的兩個屬性。
-* `[EmailAddress]`:驗證屬性是否具有電子郵件格式。
-* `[Phone]`:驗證屬性是否具有電話號碼格式。
-* `[Range]`:驗證屬性值是否落在指定的範圍內。
-* `[RegularExpression]`:驗證屬性值是否符合指定的規則運算式。
-* `[Required]`:驗證欄位不是 Null。 請參閱 [[必要] 屬性](#required-attribute)以取得此屬性行為的詳細資料。
-* `[StringLength]`:驗證字串屬性值未超過指定的長度上限。
-* `[Url]`:驗證屬性是否具有 URL 格式。
-* `[Remote]`:藉由在伺服器上呼叫動作方法來驗證用戶端上的輸入。 請參閱 [[遠端] 屬性](#remote-attribute)以取得此屬性行為的詳細資料。
+* `[CreditCard]`：驗證屬性是否具有信用卡格式。
+* `[Compare]`：驗證模型比對中的兩個屬性。
+* `[EmailAddress]`：驗證屬性是否具有電子郵件格式。
+* `[Phone]`：驗證屬性是否具有電話號碼格式。
+* `[Range]`：驗證屬性值是否落在指定的範圍內。
+* `[RegularExpression]`：驗證屬性值是否符合指定的規則運算式。
+* `[Required]`：驗證欄位不是 Null。 請參閱 [[必要] 屬性](#required-attribute)以取得此屬性行為的詳細資料。
+* `[StringLength]`：驗證字串屬性值未超過指定的長度上限。
+* `[Url]`：驗證屬性是否具有 URL 格式。
+* `[Remote]`：藉由在伺服器上呼叫動作方法來驗證用戶端上的輸入。 請參閱 [[遠端] 屬性](#remote-attribute)以取得此屬性行為的詳細資料。
 
 您可以在 [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations) 命名空間中找到驗證屬性的完整清單。
 
@@ -129,7 +129,7 @@ ms.locfileid: "59468733"
 
 [!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserNameProperties)]
 
-`AdditionalFields` 可以被明確設定為 `"FirstName"` 和 `"LastName"` 字串，但使用 [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) 運算子可簡化稍後的重構。 這項驗證的動作方法必須接受名字和姓氏引數：
+`AdditionalFields` 可能已明確設定為 `"FirstName"` 和 `"LastName"` 字串，但使用 [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) 運算子可簡化稍後的重構。 這項驗證的動作方法必須接受名字和姓氏引數：
 
 [!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -142,7 +142,7 @@ ms.locfileid: "59468733"
 public string MiddleName { get; set; }
 ```
 
-`AdditionalFields`如同所有屬性引數，必須是常數運算式。 因此，請勿使用[內插字串](/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫 <xref:System.String.Join*> 來初始化 `AdditionalFields`。
+如同所有屬性引數，`AdditionalFields` 必須是常數運算式。 因此，請勿使用[內插字串](/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫 <xref:System.String.Join*> 來初始化 `AdditionalFields`。
 
 ## <a name="alternatives-to-built-in-attributes"></a>內建屬性的替代項目
 

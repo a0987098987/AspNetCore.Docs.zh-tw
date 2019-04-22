@@ -7,10 +7,10 @@ ms.date: 6/16/2018
 ms.custom: seodec18
 uid: security/authentication/add-user-data
 ms.openlocfilehash: 8c0413a16d92b717619387748ee78f0d14d6c852
-ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59516205"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>加入、 下載及刪除身分識別的 ASP.NET Core 專案的自訂使用者資料

@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/11/2019
 uid: performance/caching/memory
 ms.openlocfilehash: 6433df36023b79bc679186bee8b0a92371661dbe
-ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59425045"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core

@@ -5,14 +5,14 @@ description: 了解在 ASP.NET Core 應用程式中如何跨多個環境控制�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/30/2019
+ms.date: 04/10/2019
 uid: fundamentals/environments
-ms.openlocfilehash: 4fc43935aa058efc4497d3d9eb607df6c0899443
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.openlocfilehash: f14c29030d96b530ea4af054cfa195d44db43679
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58809233"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59516348"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>在 ASP.NET Core 中使用多個環境
 
@@ -234,7 +234,7 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 
 **web.config**
 
-若要使用 *web.config* 設定 `ASPNETCORE_ENVIRONMENT` 環境變數，請參閱 <xref:host-and-deploy/aspnet-core-module#setting-environment-variables> 的＜設定環境變數＞一節。 當使用 *web.config*設定 `ASPNETCORE_ENVIRONMENT` 環境變數時，其值會覆寫系統層級的設定。
+若要使用 *web.config* 設定 `ASPNETCORE_ENVIRONMENT` 環境變數，請參閱 <xref:host-and-deploy/aspnet-core-module#setting-environment-variables> 的＜設定環境變數＞一節。
 
 ::: moniker range=">= aspnetcore-2.2"
 

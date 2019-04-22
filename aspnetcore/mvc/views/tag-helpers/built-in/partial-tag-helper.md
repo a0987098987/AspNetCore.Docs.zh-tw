@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
 ms.openlocfilehash: 116fce7af5dc138fbbb0351a4f38f59e88c8f338
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468678"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>ASP.NET Core 的部分標記協助程式

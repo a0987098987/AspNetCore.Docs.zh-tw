@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/working-with-forms
 ms.openlocfilehash: 6eff3bf03e650e154b5c767c9bcdd915e7db8b47
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468798"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
@@ -245,11 +245,11 @@ Type expected
 
 ### <a name="html-helper-alternatives-to-input-tag-helper"></a>輸入標籤協助程式的 HTML 標記替代
 
-`Html.TextBox`、`Html.TextBoxFor`、`Html.Editor` 和 `Html.EditorFor` 皆具有與輸入標籤協助程式重疊的功能。 輸入標籤協助程式將會自動設定 `type` 屬性；而 `Html.TextBox` 和 `Html.TextBoxFor` 不會。 `Html.Editor` 和 `Html.EditorFor` 會處理集合、複雜的物件和範本；而輸入標籤協助程式不會。 輸入標籤協助程式、`Html.EditorFor` 和 `Html.TextBoxFor` 為強型別 (它們使用 Lambda 運算式)；而 `Html.TextBox` 和 `Html.Editor` 不是 (它們使用運算式名稱)。
+`Html.TextBox`、`Html.TextBoxFor`、`Html.Editor` 和 `Html.EditorFor` 具有與輸入標籤協助程式重疊的功能。 輸入標籤協助程式將會自動設定 `type` 屬性；而 `Html.TextBox` 和 `Html.TextBoxFor` 不會。 `Html.Editor` 和 `Html.EditorFor` 會處理集合、複雜的物件和範本；而輸入標籤協助程式不會。 輸入標籤協助程式、`Html.EditorFor` 和 `Html.TextBoxFor` 為強型別 (它們使用 Lambda 運算式)；而 `Html.TextBox` 和 `Html.Editor` 不是 (它們使用運算式名稱)。
 
 ### <a name="htmlattributes"></a>HtmlAttributes
 
-`@Html.Editor()` 和 `@Html.EditorFor()` 執行它們的預設範本時，會使用特殊的 `ViewDataDictionary` 項目，名為 `htmlAttributes`。 此行為會選擇性地使用 `additionalViewData` 參數來增強。 索引鍵 "htmlAttributes" 不區分大小寫。 索引鍵 "htmlAttributes" 的處理方式類似於傳遞給輸入協助程式 (例如 `@Html.TextBox()`)的 `htmlAttributes` 物件。
+`@Html.Editor()` 和 `@Html.EditorFor()` 執行它們的預設範本時，使用特殊的 `ViewDataDictionary` 項目，名為 `htmlAttributes`。 此行為會選擇性地使用 `additionalViewData` 參數來增強。 索引鍵 "htmlAttributes" 不區分大小寫。 索引鍵 "htmlAttributes" 的處理方式類似於傳遞給輸入協助程式 (例如 `@Html.TextBox()`)的 `htmlAttributes` 物件。
 
 ```HTML
 @Html.EditorFor(model => model.YourProperty, 
@@ -277,7 +277,7 @@ Type expected
 
 當 ASP.NET Core MVC 計算 `ModelExpression` 的值時，會檢查幾個來源，其中包括`ModelState`。 請考慮 `<input type="text" asp-for="@Name">`。 導出的 `value` 屬性是第一個非 null 的值，來自：
 
-* `ModelState` 項目，具有索引鍵 "Name"。
+* 索引鍵為 "Name" 的 `ModelState` 項目。
 * 運算式 `Model.Name` 的結果。
 
 ### <a name="navigating-child-properties"></a>巡覽子屬性
@@ -334,7 +334,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
-`foreach` 應該在值將在 `asp-for` 或 `Html.DisplayFor` 的相當內容中使用的情況下使用 (如果可能的話)。 一般而言，`for` 比 `foreach` 好 (若案例允許的話)，因為它不需要配置列舉程式；不過，評估 LINQ 運算式中的索引子可能成本高昂且應該儘可能避免。
+當值將在 `asp-for` 或 `Html.DisplayFor` 相當內容中使用時，應該使用 `foreach` (如果可能的話)。 一般而言，`for` 比 `foreach` 好 (若案例允許的話)，因為它不需要配置列舉程式；不過，評估 LINQ 運算式中的索引子可能成本高昂且應該儘可能避免。
 
 &nbsp;
 
@@ -349,7 +349,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * 提供強型別。
 
-* HTML 協助程式替代： `Html.TextAreaFor`
+* HTML 協助程式替代：`Html.TextAreaFor`
 
 範例：
 
@@ -411,7 +411,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * 也會在伺服器上發生驗證。 用戶端可能停用 JavaScript，而一些驗證只能在伺服器端進行。
 
-* HTML 協助程式替代： `Html.ValidationMessageFor`
+* HTML 協助程式替代：`Html.ValidationMessageFor`
 
 `Validation Message Tag Helper` 與 HTML [span](https://developer.mozilla.org/docs/Web/HTML/Element/span) 項目上的 `asp-validation-for` 屬性搭配使用。
 
@@ -445,7 +445,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * 使用 `asp-validation-summary` 屬性設定 `<div>` 項目的目標
 
-* HTML 協助程式替代： `@Html.ValidationSummary`
+* HTML 協助程式替代：`@Html.ValidationSummary`
 
 `Validation Summary Tag Helper` 用來顯示驗證訊息的摘要。 `asp-validation-summary` 屬性值可以是下列任一項：
 
@@ -662,7 +662,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:mvc/views/tag-helpers/intro>
-* [HTML 表單元素](https://www.w3.org/TR/html401/interact/forms.html)
+* [HTML 表單項目](https://www.w3.org/TR/html401/interact/forms.html)
 * [要求驗證權杖](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
 * <xref:mvc/models/model-binding>
 * <xref:mvc/models/validation>

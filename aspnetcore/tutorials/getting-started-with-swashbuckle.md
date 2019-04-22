@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/04/2019
 uid: tutorials/get-started-with-swashbuckle
 ms.openlocfilehash: 31d45eaa684118ab78d1b3ecac594e95712f631f
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068345"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
@@ -31,7 +31,7 @@ Swashbuckle 有三個主要元件：
 
 可使用下列方法新增 Swashbuckle：
 
-### [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
+### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 從 [套件管理員主控台] 視窗中：
   * 移至 [檢視] > [其他視窗] > [套件管理員主控台]
@@ -48,14 +48,14 @@ Swashbuckle 有三個主要元件：
   * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
   * 從 [瀏覽] 索引標籤中選取 "Swashbuckle.AspNetCore" 套件，並按一下 [安裝]
 
-### [<a name="visual-studio-for-mac"></a>Visual Studio for Mac](#tab/visual-studio-mac)
+### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在 [Solution Pad] > [新增套件...] 中，以滑鼠右鍵按一下 *Packages* 資料夾
 * 將 [新增套件] 視窗的 [來源] 下拉式清單設定為 "nuget.org"
 * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
 * 從結果窗格中選取 "Swashbuckle.AspNetCore" 套件，並按一下 [新增套件]
 
-### [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
+### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 從 [整合式終端機] 執行下列命令：
 
@@ -63,7 +63,7 @@ Swashbuckle 有三個主要元件：
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
 ```
 
-### [<a name="net-core-cli"></a>.NET Core CLI](#tab/netcore-cli)
+### <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 執行下列命令：
 
@@ -128,7 +128,7 @@ Swagger UI 會顯示版本資訊：
 
 XML 註解可以使用下列方式啟用：
 
-#### [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
+#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -146,7 +146,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker-end
 
-#### [<a name="visual-studio-for-mac"></a>Visual Studio for Mac](#tab/visual-studio-mac)
+#### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -164,7 +164,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker-end
 
-#### [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
+#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
@@ -180,7 +180,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker-end
 
-#### [<a name="net-core-cli"></a>.NET Core CLI](#tab/netcore-cli)
+#### <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 

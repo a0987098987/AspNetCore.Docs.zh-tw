@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 03/30/2019
 uid: fundamentals/file-providers
 ms.openlocfilehash: 2ce40ea0d576d08a6b42c3eb6693754f2a0bddce
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "58809217"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者

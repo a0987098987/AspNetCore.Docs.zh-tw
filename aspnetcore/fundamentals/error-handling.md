@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 04/07/2019
 uid: fundamentals/error-handling
 ms.openlocfilehash: cbb9462a3c6010e074dc391aa128ac2cbb901456
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59468746"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705574"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>處理 ASP.NET Core 中的錯誤
 

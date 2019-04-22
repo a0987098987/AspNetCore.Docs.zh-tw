@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 02/25/2019
 uid: security/key-vault-configuration
 ms.openlocfilehash: 8fd1cca1803d3f1d44d80ec63c5cfc259cbdaf55
-ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59012691"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
@@ -213,7 +213,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 * 金鑰保存庫名稱： `contosovault`
 * 應用程式識別碼： `627e911e-43cc-61d4-992e-12db9c81b413`
-* 密碼: `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
+* 密碼： `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
 
 `IKeyVaultSecretManager`實作回應組態中載入適當的祕密的祕密版本前置詞：
 
@@ -304,7 +304,7 @@ WebHost.CreateDefaultBuilder(args)
 
 提供者可以讀入繫結到 POCO 陣列的陣列中的組態值。
 
-從允許包含冒號的索引鍵的組態來源讀取時 (`:`) 的數值索引鍵的區段分隔符號用來區別構成陣列的索引鍵 (`:0:`， `:1:`，... `:{n}:`) 來存取它所儲存的值。 如需詳細資訊，請參閱[組態：將陣列繫結至類別](xref:fundamentals/configuration/index#bind-an-array-to-a-class)。
+從允許包含冒號的索引鍵的組態來源讀取時 (`:`) 的數值索引鍵的區段分隔符號用來區別構成陣列的索引鍵 (`:0:`， `:1:`，... `:{n}:`)。 如需詳細資訊，請參閱[組態：將陣列繫結至類別](xref:fundamentals/configuration/index#bind-an-array-to-a-class)。
 
 Azure Key Vault 金鑰無法使用冒號做為分隔符號。 本主題中所述的方法會使用雙連字號 (`--`) 當作分隔符號 （區段） 的階層式值。 陣列索引鍵時，會儲存在 Azure 金鑰保存庫上，使用雙連字號和數值的重要片段 (`--0--`， `--1--`， &hellip; `--{n}--`)。
 
@@ -370,8 +370,8 @@ Configuration.Reload();
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:fundamentals/configuration/index>
-* [Microsoft Azure：金鑰保存庫](https://azure.microsoft.com/services/key-vault/)
-* [Microsoft Azure：Key Vault 文件](/azure/key-vault/)
+* [Microsoft Azure:金鑰保存庫](https://azure.microsoft.com/services/key-vault/)
+* [Microsoft Azure:Key Vault 文件](/azure/key-vault/)
 * [如何產生並傳輸受 HSM 保護金鑰的 Azure 金鑰保存庫](/azure/key-vault/key-vault-hsm-protected-keys)
 * [KeyVaultClient 類別](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
 * [快速入門：設定並從 Azure Key Vault 擷取密碼，利用.NET web 應用程式](/azure/key-vault/quick-create-net)

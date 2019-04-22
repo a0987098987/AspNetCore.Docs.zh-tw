@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/05/2019
 uid: security/authorization/policies
 ms.openlocfilehash: ea9d687d3810c104d5b3fa39033849c21569709b
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068166"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的原則為基礎的授權
@@ -27,13 +27,13 @@ ms.locfileid: "59068166"
 
 如果您使用 Razor 頁面，請參閱[將原則套用至 Razor Pages](#applying-policies-to-razor-pages)本文件中。
 
-原則會套用至控制器使用`[Authorize]`原則名稱的屬性。 例如: 
+原則會套用至控制器使用`[Authorize]`原則名稱的屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
 ## <a name="applying-policies-to-razor-pages"></a>將原則套用至 Razor Pages
 
-原則時，會套用至 Razor 頁面上，使用`[Authorize]`原則名稱的屬性。 例如：
+原則時，會套用至 Razor 頁面上，使用`[Authorize]`原則名稱的屬性。 例如: 
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 

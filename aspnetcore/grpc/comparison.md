@@ -7,10 +7,10 @@ ms.author: jamesnk
 ms.date: 03/31/2019
 uid: grpc/comparison
 ms.openlocfilehash: 0e9ef0e7ca8fb6d847b45f6dd7bd0aaa35fd149f
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59515426"
 ---
 # <a name="comparing-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP APIs

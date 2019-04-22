@@ -5,14 +5,14 @@ description: ASP.NET Core SignalR JavaScript 用戶端的概觀。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 03/14/2019
+ms.date: 04/17/2019
 uid: signalr/javascript-client
-ms.openlocfilehash: a0980dca2eb8d483a9d9f1c5667fb74ee06364f0
-ms.sourcegitcommit: d913bca90373c07f89b1d1df01af5fc01fc908ef
+ms.openlocfilehash: e58015221497a9f962edf9f9fdba7ea3025d7694
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57978338"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705600"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 
@@ -104,7 +104,140 @@ SignalR 透過比對 `SendAsync` 與 `connection.on` 中定義的方法名稱與
 
 ## <a name="reconnect-clients"></a>重新連線用戶端
 
-SignalR 的 JavaScript 用戶端不會自動重新連線。 您必須撰寫程式碼會以手動方式重新連接您的用戶端。 下列程式碼示範一個典型的重新連線的方法：
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="automatically-reconnect"></a>自動重新連線
+
+SignalR 的 JavaScript 用戶端可以設定為使用自動重新`withAutomaticReconnect`方法[HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder)。 它不會依預設會自動重新連線。
+
+```javascript
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .withAutomaticReconnect()
+    .build();
+```
+
+如果沒有任何參數，`withAutomaticReconnect()`設定用戶端一直等候 0、 2、 10 和 30 秒，分別是然後再嘗試每次重新連接嘗試，四個失敗的嘗試之後停止。
+
+開始任何重新連接嘗試之前`HubConnection`會轉為`HubConnectionState.Reconnecting`狀態，並引發其`onreconnecting`回呼，而不是轉換為`Disconnected`狀態，並觸發其`onclose`回呼喜歡`HubConnection`未自動重新連線設定。 這便有機會時警告使用者的連線已遺失，並在停用 UI 項目。
+
+```javascript
+connection.onreconnecting((error) => {
+  console.assert(connection.state === signalR.HubConnectionState.Reconnecting);
+
+  document.getElementById("messageInput").disabled = true;
+
+  const li = document.createElement("li");
+  li.textContent = `Connection lost due to error "${error}". Reconnecting.`;
+  document.getElementById("messagesList").appendChild(li);
+});
+```
+
+如果用戶端順利重新連線內的前四個的試`HubConnection`就會轉換回`Connected`狀態，並引發其`onreconnected`回呼。 這便有機會以通知的使用者已重新建立連線。
+
+連線看起來完全新增到伺服器，因為新`connectionId`將提供給`onreconnected`回呼。
+
+> [!WARNING]
+> `onreconnected`回呼的`connectionId`參數將會是未定義，如果`HubConnection`已設定為[略過交涉](xref:signalr/configuration#configure-client-options)。
+
+```javascript
+connection.onreconnected((connectionId) => {
+  console.assert(connection.state === signalR.HubConnectionState.Connected);
+
+  document.getElementById("messageInput").disabled = false;
+
+  const li = document.createElement("li");
+  li.textContent = `Connection reestablished. Connected with connectionId "${connectionId}".`;
+  document.getElementById("messagesList").appendChild(li);
+});
+```
+
+`withAutomaticReconnect()` 不會設定`HubConnection`重試初始啟動時失敗，因此需要手動處理啟動失敗：
+
+```javascript
+async function start() {
+    try {
+        await connection.start();
+        console.assert(connection.state === signalR.HubConnectionState.Connected);
+        console.log("connected");
+    } catch (err) {
+        console.assert(connection.state === signalR.HubConnectionState.Disconnected);
+        console.log(err);
+        setTimeout(() => start(), 5000);
+    }
+};
+```
+
+如果用戶端不會成功地重新連接內的前四個的試`HubConnection`會轉為`Disconnected`狀態，並引發其[onclose](/javascript/api/%40aspnet/signalr/hubconnection#onclose)回呼。 這讓您有機會通知的使用者此連接已經永久遺失，並建議重新整理頁面：
+
+```javascript
+connection.onclose((error) => {
+  console.assert(connection.state === signalR.HubConnectionState.Disconnected);
+
+  document.getElementById("messageInput").disabled = true;
+
+  const li = document.createElement("li");
+  li.textContent = `Connection closed due to error "${error}". Try refreshing this page to restart the connection.`;
+  document.getElementById("messagesList").appendChild(li);
+})
+```
+
+若要設定自訂的數字的中斷連線之前重新連接嘗試，或變更重新連線延遲時間，`withAutomaticReconnect`接受代表數字以毫秒為單位的延遲開始每次重新連接嘗試之前等候的陣列。
+
+```javascript
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .withAutomaticReconnect([0, 0, 10000])
+    .build();
+
+    // .withAutomaticReconnect([0, 2000, 10000, 30000]) yields the default behavior
+```
+
+上述範例會設定`HubConnection`啟動連線將會中斷之後，立即嘗試重新連線。 這也是預設組態，則為 true。
+
+如果第一次重新連接嘗試失敗，第二次重新連接嘗試將也會立即開始而不是等到 2 秒，像是在預設組態中。
+
+如果第二次重新連接嘗試失敗，第三次重新連接嘗試就會啟動在 10 秒，這又是預設組態類似。
+
+自訂行為然後分離一次的預設行為藉由停止之後第三個重新連接嘗試失敗，而不是嘗試其中一個更重新連接嘗試中像是在預設組態中的另一個 30 秒。
+
+如果您想要更進一步控制時間和數字的自動重新連線嘗試`withAutomaticReconnect`物件，實作會接受`IReconnectPolicy`介面，其具有單一方法，名為`nextRetryDelayInMilliseconds`。
+
+`nextRetryDelayInMilliseconds` 接受兩個引數，`previousRetryCount`和`elapsedMilliseconds`，這是兩個數字。 第一次重新連接嘗試中前, 兩者`previousRetryCount`和`elapsedMilliseconds`會是零。 在每次失敗的重試之後,`previousRetryCount`會遞增 1 和`elapsedMilliseconds`將會更新以反映所花費的時間重新連線到目前為止，以毫秒為單位。
+
+`nextRetryDelayInMilliseconds` 必須傳回任一數字表示的毫秒數下一次重新連接嘗試之前要等待或`null`如果`HubConnection`應該停止重新連線。
+
+```javascript
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .withAutomaticReconnect({
+        nextRetryDelayInMilliseconds: (previousRetryCount, elapsedMilliseconds) => {
+          if (elapsedMilliseconds < 60000) {
+            // If we've been reconnecting for less than 60 seconds so far,
+            // wait between 0 and 10 seconds before the next reconnect attempt.
+            return Math.random() * 10000;
+          } else {
+            // If we've been reconnecting for more than 60 seconds so far, stop reconnecting.
+            return null;
+          }
+        })
+    .build();
+```
+
+或者，您可以在其中撰寫程式碼所示的手動將重新連線您的用戶端[以手動方式重新連線](#manually-reconnect)。
+
+::: moniker-end
+
+### <a name="manually-reconnect"></a>以手動方式重新連線
+
+::: moniker range="< aspnetcore-3.0"
+
+> [!WARNING]
+> 在 3.0 之前，SignalR 的 JavaScript 用戶端不會自動重新連線。 您必須撰寫程式碼會以手動方式重新連接您的用戶端。
+
+::: moniker-end
+
+下列程式碼示範一個典型的手動重新連線的方法：
 
 1. 函式 (在此情況下，`start`函式) 建立以啟動的連線。
 1. 呼叫`start`函式中的連線`onclose`事件處理常式。

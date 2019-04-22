@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 41021e30ae85dd0ae42cbe6f1606727e21bd7707
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58809371"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705519"
 ---
 # <a name="aspnet-core-middleware-extensibility-sample"></a>ASP.NET Core 中介軟體擴充性範例
 

@@ -49,7 +49,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 ## <a name="minimize-large-object-allocations"></a>最小化大型物件配置
 
 <!-- TODO review Bill - replaced original .NET language below with .NET Core since this targets .NET Core -->
-[.NET Core 記憶體回收行程](/dotnet/standard/garbage-collection/)管理配置和釋放的記憶體會自動在 ASP.NET Core 應用程式。 自動記憶體回收通常表示開發人員不需要擔心如何或何時會釋放記憶體。 不過，清除未參考的物件會使用 CPU 時間，讓開發人員應該盡可能減少中配置的物件[經常性存取程式碼路徑](#hot)。 記憶體回收更是惡夢，在大型物件 （> 85 個位元組為單位）。 大型物件儲存在[大型物件堆積](/dotnet/standard/garbage-collection/large-object-heap)，而且需要完整 （第 2 代） 來清除記憶體回收。 不同於層代 0 和層代 1 回收，層代 2 回收會需要應用程式執行暫時的暫停。 常見的配置和取消配置的大型物件可能會導致不一致的效能。
+[.NET Core 記憶體回收行程](/dotnet/standard/garbage-collection/)會自動管理 ASP.NET Core 應用程式中的記憶體配置與釋放。 自動記憶體回收通常表示開發人員不需要擔心如何或何時釋放記憶體。 不過，清除未參考的物件會占用 CPU 時間，因此開發人員應該盡可能減少在[經常性存取程式碼路徑](#hot)中配置物件的情況。 在大型物件 (> 85,000 個位元組) 上執行記憶體回收特別耗費成本。 大型物件儲存在[大型物件堆積](/dotnet/standard/garbage-collection/large-object-heap)中，而且需要完整 (第 2 代) 記憶體回收來清除。 不同於第 0 代與第 1 代回收，第 2 代回收需要暫時停止應用程式執行。 常見的大型物件配置與取消配置可能會導致不一致的效能。
 
 建議：
 

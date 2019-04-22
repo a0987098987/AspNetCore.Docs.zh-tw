@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
 ms.openlocfilehash: 362186be6feeeefeca3c56688ee6420de5fb9659
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468620"
 ---
 # <a name="app-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
@@ -27,7 +27,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 * 選擇性地包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法來設定應用程式的服務。 服務的定義是可提供應用程式功能的可重複使用元件。 服務會在 `ConfigureServices`中經過設定&mdash;也會受描述為「已註冊」&mdash;且會透過 [ 相依性插入 (DI)](xref:fundamentals/dependency-injection) 或 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*> 在應用程式間受取用。
 * 包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> 方法來建立應用程式的要求處理管線。
 
-`ConfigureServices` 和 `Configure` 會在應用程式啟動時由執行階段呼叫：
+應用程式啟動時，執行階段就會呼叫 `ConfigureServices` 和 `Configure`：
 
 [!code-csharp[](startup/sample_snapshot/Startup1.cs?highlight=4,10)]
 
@@ -40,7 +40,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 將[相依性插入](xref:fundamentals/dependency-injection)至 `Startup` 類別的常見用法是插入：
 
 * <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> 來根據環境設定服務。
-* <xref:Microsoft.Extensions.Configuration.IConfiguration> 來讀取設定。
+* <xref:Microsoft.Extensions.Configuration.IConfiguration> 來讀取組態。
 * <xref:Microsoft.Extensions.Logging.ILoggerFactory> 來在 `Startup.ConfigureServices` 中建立記錄器。
 
 [!code-csharp[](startup/sample_snapshot/Startup2.cs?highlight=7-8)]

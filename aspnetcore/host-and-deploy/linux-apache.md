@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 03/31/2019
 uid: host-and-deploy/linux-apache
 ms.openlocfilehash: 34da0653ff29acf3044e69e032307d1a3da7044a
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "58809272"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
@@ -35,7 +35,7 @@ ms.locfileid: "58809272"
 
 如果應用程式在本機執行且未設定為進行安全連線 (HTTPS)，請採用下列任一方法：
 
-* 設定應用程式以處理安全的本機連線。 如需詳細資訊，請參閱＜HTTPS 組態＞[](#https-configuration)一節。
+* 設定應用程式以處理安全的本機連線。 如需詳細資訊，請參閱 [HTTPS 組態](#https-configuration)一節。
 * 從 *Properties/launchSettings.json* 檔案中的 `applicationUrl` 屬性移除 `https://localhost:5001` (如果有的話)。
 
 從開發環境執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 將應用程式封裝到可在伺服器上執行的目錄 (例如，*bin/Release/&lt;target_framework_moniker&gt;/publish*)：
@@ -316,7 +316,7 @@ rich rules:
 
 **設定應用程式以進行安全的本機連線 (HTTPS)**
 
-[dotnet run](/dotnet/core/tools/dotnet-run) 命令使用應用程式的 *Properties/launchSettings.json* 檔案，其設定應用程式在 `applicationUrl` 屬性所提供的 URL 上接聽 (例如 `https://localhost:5001;http://localhost:5000`)。
+[dotnet run](/dotnet/core/tools/dotnet-run) 命令使用應用程式的 *Properties/launchSettings.json* 檔案，其設定應用程式在 `applicationUrl` 屬性所提供的 URL 上接聽 (例如 `https://localhost:5001; http://localhost:5000`)。
 
 使用下列其中一種方法，設定應用程式將憑證用在針對 `dotnet run` 命令的開發，或用在開發環境 (F5，若在 Visual Studio Code 中則為 Ctrl+F5)：
 

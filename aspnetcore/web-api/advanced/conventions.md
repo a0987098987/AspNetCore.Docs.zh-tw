@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 64be4984779724eb60af3b70d4f52b22eae32213
-ms.sourcegitcommit: 10e14b85490f064395e9b2f423d21e3c2d39ed8b
+ms.openlocfilehash: 25e8d5209f02683c533ef7c316b91d447f1b20ba
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58142310"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705454"
 ---
 # <a name="use-web-api-conventions"></a>使用 Web API 慣例
 
@@ -45,9 +45,9 @@ ASP.NET Core MVC 2.2 和更新版本在 <xref:Microsoft.AspNetCore.Mvc.DefaultAp
 
     ```csharp
     [ProducesDefaultResponseType]
-    [ProducesResponseType(204)]
-    [ProducesResponseType(404)]
-    [ProducesResponseType(400)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     ```
 
 如需有關 `[ProducesDefaultResponseType]`,的詳細資訊，請參閱[預設回應](https://swagger.io/docs/specification/describing-responses/#default) \(英文\)。
@@ -78,8 +78,8 @@ ASP.NET Core MVC 2.2 和更新版本在 <xref:Microsoft.AspNetCore.Mvc.DefaultAp
 ```csharp
 public static class MyAppConventions
 {
-    [ProducesResponseType(200)]
-    [ProducesResponseType(404)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public static void Find(int id)
     {
     }
@@ -96,8 +96,8 @@ public static class MyAppConventions
 您可以將 `[ApiConventionNameMatch]` 和 `[ApiConventionTypeMatch]` 屬性套用至會決定其套用動作的慣例方法。 例如：
 
 ```csharp
-[ProducesResponseType(200)]
-[ProducesResponseType(404)]
+[ProducesResponseType(StatusCodes.Status200OK)]
+[ProducesResponseType(StatusCodes.Status404NotFound)]
 [ApiConventionNameMatch(ApiConventionNameMatchBehavior.Prefix)]
 public static void Find(
     [ApiConventionNameMatch(ApiConventionNameMatchBehavior.Suffix)]

@@ -5,12 +5,12 @@ description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記
 ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: 53d4dc608fbfd45bcc015a3af83f5d87f86c7f15
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: 7f97be651c067e94f29eef4956c10d87ec031bed
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327361"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614281"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -171,6 +171,31 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 <p>The future depends on what you do today. - Mahatma Gandhi</p>
 <p>Hate cannot drive out hate, only love can do that. - Martin Luther King, Jr.</p>
 ```
+
+::: moniker range=">= aspnetcore-3.0"
+
+在程式碼區塊中，使用標記宣告[區域函式](/dotnet/csharp/programming-guide/classes-and-structs/local-functions)作為樣板化方法：
+
+```cshtml
+@{
+    void RenderName(string name)
+    {
+        <p>Name: <strong>@name</strong></p>
+    }
+
+    RenderName("Mahatma Gandhi");
+    RenderName("Martin Luther King, Jr.");
+}
+```
+
+程式碼會轉譯下列 HTML：
+
+```html
+<p>Name: <strong>Mahatma Gandhi</strong></p>
+<p>Name: <strong>Martin Luther King, Jr.</strong></p>
+```
+
+::: moniker-end
 
 ### <a name="implicit-transitions"></a>隱含轉換
 
@@ -521,6 +546,33 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 下列程式碼是產生的 Razor C# 類別：
 
 [!code-csharp[](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
+
+::: moniker range=">= aspnetcore-3.0"
+
+具有標記時，`@functions` 方法會作為樣板化方法：
+
+```cshtml
+@{
+    RenderName("Mahatma Gandhi");
+    RenderName("Martin Luther King, Jr.");
+}
+
+@functions {
+    private void RenderName(string name)
+    {
+        <p>Name: <strong>@name</strong></p>
+    }
+}
+```
+
+程式碼會轉譯下列 HTML：
+
+```html
+<p>Name: <strong>Mahatma Gandhi</strong></p>
+<p>Name: <strong>Martin Luther King, Jr.</strong></p>
+```
+
+::: moniker-end
 
 ### <a name="section"></a>@section
 

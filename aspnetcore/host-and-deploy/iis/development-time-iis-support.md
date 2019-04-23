@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 04/08/2019
 uid: host-and-deploy/iis/development-time-iis-support
 ms.openlocfilehash: 6f555858239b4432d252f8b3ac7add5c3e8bfe62
-ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59425097"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
@@ -22,7 +22,7 @@ ms.locfileid: "59425097"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [適用於 Windows 的 Visual Studio](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio (適用於 Windows)](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
 * **.NET Core 跨平台開發**工作負載
 * X.509 安全性憑證 (以取得 HTTPS 支援)
@@ -152,7 +152,7 @@ IIS 的網站必須含有下列設定：
 ## <a name="additional-resources"></a>其他資源
 
 * [IIS 中的 IIS 管理員使用者入門](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
-* [在使用 IIS 的 Windows 上裝載 ASP.NET Core](xref:host-and-deploy/iis/index)
+* [使用 IIS 在 Windows 上裝載 ASP.NET](xref:host-and-deploy/iis/index)
 * [ASP.NET Core 模組簡介](xref:host-and-deploy/aspnet-core-module)
-* [ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)
+* [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
 * [強制使用 HTTPS](xref:security/enforcing-ssl)

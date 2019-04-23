@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/08/2019
 uid: fundamentals/static-files
 ms.openlocfilehash: 12c7b39bee462ff83188a5a0f10b133ca273863b
-ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59425058"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
@@ -154,7 +154,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 [!code-csharp[](static-files/samples/1x/StartupEmpty.cs?name=snippet_ConfigureMethod&highlight=3)]
 
 > [!IMPORTANT]
-> `UseDefaultFiles` 必須在 `UseStaticFiles` 之前呼叫以提供預設檔案。 `UseDefaultFiles` 是 URL 重寫器，其無法實際提供檔案。 透過 `UseStaticFiles` 啟用靜態檔案中介軟體以提供檔案。
+> 您必須在 `UseStaticFiles` 之前先呼叫 `UseDefaultFiles`，才能提供預設的檔案。 `UseDefaultFiles` 是 URL 重寫器，並非實際提供檔案。 透過 `UseStaticFiles` 啟用靜態檔案中介軟體以提供檔案。
 
 使用 `UseDefaultFiles` 要求以搜尋資料夾：
 
@@ -200,7 +200,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureMethod&highlight=5-11)]
 
-`AddDirectoryBrowser` 必須在 `EnableDirectoryBrowsing` 屬性值為 `true` 時呼叫：
+當 `EnableDirectoryBrowsing` 屬性值是 `true` 時，必須呼叫 `AddDirectoryBrowser`：
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureServicesMethod)]
 
@@ -208,15 +208,15 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 | URI            |                             回應  |
 | ------- | ------|
-| *http://\<server_address>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
-| *http://\<server_address>/StaticFiles*             |     MyStaticFiles/default.html |
+| http://\<伺服器位址>/StaticFiles/images/banner1.svg    |      MyStaticFiles/images/banner1.svg |
+| http://\<伺服器位址>/StaticFiles             |     MyStaticFiles/default.html |
 
 如果 *MyStaticFiles* 目錄中不存在預設名稱的檔案， http://\<伺服器位址>/StaticFiles 會傳回含有可點按連結的目錄清單：
 
 ![靜態檔案清單](static-files/_static/db2.png)
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles*> 且 <xref:Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser*> 會從 `http://{SERVER ADDRESS}/StaticFiles` (不含尾端斜線) 執行用戶端重新導向至 `http://{SERVER ADDRESS}/StaticFiles/` (含尾端斜線)。 *StaticFiles* 目錄內的相對 URL 若未含尾端斜線則會被視為無效。
+> <xref:Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles*> 和 <xref:Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser*> 會從 `http://{SERVER ADDRESS}/StaticFiles` (不含尾端斜線) 執行用戶端重新導向至 `http://{SERVER ADDRESS}/StaticFiles/` (含尾端斜線)。 *StaticFiles* 目錄內的相對 URL 若未含尾端斜線則會被視為無效。
 
 ## <a name="fileextensioncontenttypeprovider"></a>FileExtensionContentTypeProvider
 
@@ -242,7 +242,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 ### <a name="considerations"></a>考量
 
 > [!WARNING]
-> `UseDirectoryBrowser` 和 `UseStaticFiles` 可能會導致祕密洩漏。 強烈建議您在生產環境中停用目錄瀏覽功能。 透過 `UseStaticFiles` 或 `UseDirectoryBrowser`，仔細檢閱要啟用哪些目錄。 因為整個目錄和其子目錄都可供公開存取。 將檔案存放在專門公開提供的目錄，例如 *\<content_root>/wwwroot*。 將這些檔案與 MVC 檢視、Razor 頁面 (僅限 2.x)、設定檔等區隔開來。
+> `UseDirectoryBrowser` 和 `UseStaticFiles` 可能會導致洩漏祕密。 強烈建議您在生產環境中停用目錄瀏覽功能。 透過 `UseStaticFiles` 或 `UseDirectoryBrowser`，仔細檢閱要啟用哪些目錄。 因為整個目錄和其子目錄都可供公開存取。 將檔案存放在專門公開提供的目錄，例如 *\<content_root>/wwwroot*。 將這些檔案與 MVC 檢視、Razor 頁面 (僅限 2.x)、設定檔等區隔開來。
 
 * 使用 `UseDirectoryBrowser` 和 `UseStaticFiles` 公開內容的 URL 可能有區分大小寫，並受限於基礎檔案系統的字元限制。 例如，Windows 不區分大小寫&mdash;macOS 和 Linux 則區分大小寫。
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2018
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: b2b5a155d0dff28e471af449731da787f19d1faf
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 98dea9cfbafb53de8ba82ef06f4885d9fbf50123
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208353"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705613"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure
 
@@ -68,7 +68,7 @@ Visual Studio 會建立解決方案。
 
 * 選取 [註冊] 並註冊新的使用者。 您可以使用虛構的電子郵件地址。 提交時，頁面會顯示下列錯誤：
 
-    *「內部伺服器錯誤：處理要求時資料庫作業失敗。SQL 例外狀況：無法開啟資料庫。為應用程式資料庫內容套用現有的移轉可能會解決此問題。」*
+    *「內部伺服器錯誤：處理要求時資料庫作業失敗。SQL 例外狀況：無法開啟資料庫。為應用程式資料庫內容套用現有的移轉可能會解決此問題。」
 * 選取 [套用移轉]，並在頁面更新後重新整理頁面。
 
 ![內部伺服器錯誤：處理要求時資料庫作業失敗。 SQL 例外狀況：無法開啟資料庫。 為應用程式資料庫內容套用現有的移轉可能會解決此問題。](publish-to-azure-webapp-using-vs/_static/mig.png)
@@ -186,6 +186,7 @@ Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟
 
 ## <a name="additional-resources"></a>其他資源
 
+* 針對 Visual Studio Code，請參閱[發佈設定檔](xref:host-and-deploy/visual-studio-publish-profiles#publish-profiles)。
 * [Azure App Service](/azure/app-service/app-service-web-overview)
 * [Azure 資源群組](/azure/azure-resource-manager/resource-group-overview#resource-groups)
 * [Azure SQL Database](/azure/sql-database/)

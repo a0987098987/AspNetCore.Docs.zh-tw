@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 04/04/2019
 uid: host-and-deploy/windows-service
 ms.openlocfilehash: 544eefa87898e82ec2bf8f9f61ce4e26dd554bb7
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068332"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
@@ -189,8 +189,8 @@ icacls "{PATH}" /grant "{USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS}" /t
 
 * `{PATH}` &ndash; 應用程式資料夾的路徑。
 * `{USER ACCOUNT}` &ndash; 使用者帳戶 (SID)。
-* `(OI)` &ndash; 物件繼承旗標會將權限傳播到次級檔案。
-* `(CI)` &ndash; 容器繼承旗標會將權限傳播到次級資料夾。
+* `(OI)` &ndash;「物件繼承旗標會將權限傳播到次級檔案。
+* `(CI)` &ndash;「物件繼承旗標會將權限傳播到次級檔案。
 * `{PERMISSION FLAGS}` &ndash; 設定應用程式的存取權限。
   * 寫入 (`W`)
   * 讀取 (`R`)

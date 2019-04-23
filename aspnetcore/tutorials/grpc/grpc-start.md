@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 2/26/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 5f7a2f6b57804b3295b23c322dcbac553b05528b
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: a67050331cc8563b1baf5312b92910c1bbdfbd69
+ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320052"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59672563"
 ---
 # <a name="tutorial-get-started-with-grpc-service-in-aspnet-core"></a>教學課程：開始在 ASP.NET Core 中使用 gRPC 服務
 
@@ -27,7 +27,7 @@ ms.locfileid: "58320052"
 
 > [!div class="checklist"]
 > * 建立 gRPC 服務。
-> * 執行服務。
+> * 執行 gRPC 服務。
 > * 檢查專案檔。
 
 [!INCLUDE[](~/includes/net-core-prereqs-all-3.0.md)]
@@ -83,31 +83,23 @@ ms.locfileid: "58320052"
 
 ---
 
-### <a name="test-the-service"></a>測試服務
+### <a name="run-the-service"></a>執行服務
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 確定 **GrpcGreeter.Server** 已設定為「啟始專案」，然後按 Ctrl+F5 來執行服務，但不執行偵錯工具。
+* 按 Ctrl+F5 執行 gRPC 服務，而不啟動偵錯工具。
 
   Visual Studio 會在命令提示字元中執行服務。 記錄會顯示服務已開始在 `http://localhost:50051` 進行接聽。
 
   ![新增 ASP.NET Core Web 應用程式](grpc-start/_static/server_start.png)
 
-* 在服務開始執行之後，將 **GrpcGreeter.Client** 設定為「啟始專案」，然後按 Ctrl+F5 來執行用戶端，但不執行偵錯工具。
-
-  用戶端會以包含其名稱 "GreeterClient" 的訊息向服務傳送問候語。 服務會傳送 "Hello GreeterClient" 訊息作為在命令提示字元中顯示的回應。
-
-  ![新增 ASP.NET Core Web 應用程式](grpc-start/_static/client.png)
-
-  服務會將成功呼叫的詳細資料記錄在寫入至命令提示字元的記錄中。
-
-  ![新增 ASP.NET Core Web 應用程式](grpc-start/_static/server_complete.png)
-
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* 使用 `dotnet run` 從命令列執行伺服器專案 GrpcGreeter.Server。 記錄會顯示服務已開始在 `http://localhost:50051` 進行接聽。
+* 使用 `dotnet run` 從命令列執行 gRPC 專案 GrpcGreeter。 記錄會顯示服務已開始在 `http://localhost:50051` 進行接聽。
 
 ```console
+dbug: Grpc.AspNetCore.Server.Internal.GrpcServiceBinder[1]
+      Added gRPC method 'SayHello' to service 'Greet.Greeter'. Method type: 'Unary', route pattern: '/Greet.Greeter/SayHello'.
 info: Microsoft.Hosting.Lifetime[0]
       Now listening on: http://localhost:50051
 info: Microsoft.Hosting.Lifetime[0]
@@ -115,58 +107,35 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Development
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\example\GrpcGreeter\GrpcGreeter.Server
-```
-
-* 使用 `dotnet run` 從個別的命令列執行用戶端專案 GrpcGreeter.Client。
-
-用戶端會以包含其名稱 "GreeterClient" 的訊息向服務傳送問候語。 服務會傳送 "Hello GreeterClient" 訊息作為在命令提示字元中顯示的回應。
-
-```console
-Greeting: Hello GreeterClient
-Press any key to exit...
-```
-
-服務會將成功呼叫的詳細資料記錄在寫入至命令提示字元的記錄中。
-
-```console
-info: Microsoft.Hosting.Lifetime[0]
-      Now listening on: http://localhost:50051
-info: Microsoft.Hosting.Lifetime[0]
-      Application started. Press Ctrl+C to shut down.
-info: Microsoft.Hosting.Lifetime[0]
-      Hosting environment: Development
-info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\gh\tp\GrpcGreeter\GrpcGreeter.Server
-info: Microsoft.AspNetCore.Hosting.Internal.GenericWebHostService[1]
-      Request starting HTTP/2 POST http://localhost:50051/Greet.Greeter/SayHello application/grpc
-info: Microsoft.AspNetCore.Hosting.Internal.GenericWebHostService[2]
-      Request finished in 107.46730000000001ms 200 application/grpc
+      Content root path: C:\gh\Docs\aspnetcore\tutorials\grpc\grpc-start\samples\GrpcGreeter
 ```
 
 <!-- End of combined VS/Mac tabs -->
 
 ---
 
+下一個教學課程將示範如何建置 gRPC 用戶端，這是測試 Greeter 服務所必要的。
+
 ### <a name="examine-the-project-files-of-the-grpc-project"></a>檢查 gRPC 專案的專案檔
 
-GrpcGreeter.Server 檔案：
+GrpcGreeter 檔案：
 
 * greet.proto：*Protos/greet.proto* 檔案會定義 `Greeter` gRPC，並會用來產生 gRPC 伺服器資產。 如需詳細資訊，請參閱<xref:grpc/index>。
 * *Services* 資料夾：包含 `Greeter` 服務的實作。
 * *appSettings.json*：包含設定資料，例如 Kestrel 所使用的通訊協定。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
 * *Program.cs*：包含 gRPC 服務的進入點。 如需詳細資訊，請參閱<xref:fundamentals/host/web-host>。
-* Startup.cs
+* Startup.cs：包含設定應用程式行為的程式碼。 如需詳細資訊，請參閱<xref:fundamentals/startup>。
 
-包含設定應用程式行為的程式碼。 如需詳細資訊，請參閱<xref:fundamentals/startup>。
+### <a name="test-the-service"></a>測試服務
 
-gRPC 用戶端 GrpcGreeter.Client 檔案：
-
-*Program.cs* 包含 gRPC 用戶端的進入點和邏輯。
+## <a name="additional-resources"></a>其他資源
 
 在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 建立 gRPC 服務。
-> * 執行服務和用戶端來測試服務。
+> * 執行 gRPC 服務。
 > * 檢查專案檔。
+
+> [!div class="step-by-step"]
+> [下一步：建立 .NET Core gRPC 用戶端](xref:tutorials/grpc/grpc-client)

@@ -8,10 +8,10 @@ ms.custom: mvc, seodec18
 ms.date: 04/06/2019
 uid: fundamentals/configuration/platform-specific-configuration
 ms.openlocfilehash: c2a2e1fbd288ff292c6759d03fae51876cdb5704
-ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59425071"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>在 ASP.NET Core 中使用裝載啟動組件
@@ -66,7 +66,7 @@ ms.locfileid: "59425071"
 
 [程式碼範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/)包含 Razor Pages 應用程式 *HostingStartupApp* 和類別庫 *HostingStartupLibrary*。 類別庫：
 
-* 包含主機啟動類別 `ServiceKeyInjection`，其會實作 `IHostingStartup`。 `ServiceKeyInjection` 會使用記憶體內部組態提供者 ([AddInMemoryCollection](/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection))，將成對的服務字串新增至應用程式的設定。
+* 包含主機啟動類別 `ServiceKeyInjection`，其會實作 `IHostingStartup`。 `ServiceKeyInjection` 使用記憶體內部組態提供者 ([AddInMemoryCollection](/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection))，將成對的服務字串新增至應用程式的組態。
 * 包含 `HostingStartup` 屬性，可識別裝載啟動的命名空間和類別。
 
 `ServiceKeyInjection` 類別的 [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) 方法使用 [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)，將增強功能新增至應用程式中。
@@ -83,7 +83,7 @@ ms.locfileid: "59425071"
 
 [程式碼範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/)也包含提供另一個主機啟動 (*HostingStartupPackage*) 的 NuGet 套件專案。 此套件特性與前文所述之類別庫相同。 套件：
 
-* 包含主機啟動類別 `ServiceKeyInjection`，其會實作 `IHostingStartup`。 `ServiceKeyInjection` 將成對的服務字串新增到應用程式的設定。
+* 包含主機啟動類別 `ServiceKeyInjection`，其會實作 `IHostingStartup`。 `ServiceKeyInjection` 將成對的服務字串新增到應用程式組態。
 * 包含 `HostingStartup` 屬性。
 
 *HostingStartupPackage/ServiceKeyInjection.cs*：
@@ -98,7 +98,7 @@ ms.locfileid: "59425071"
 
 ### <a name="console-app-without-an-entry-point"></a>沒有進入點的主控台應用程式
 
-*這個方法僅適用於 .NET Core 應用程式，不適用於 .NET Framework。*
+這個方法僅適用於 .NET Core 應用程式，不適用於 .NET Framework。
 
 在沒有包含 `HostingStartup` 屬性之進入點的主控台應用程式中，可以提供不需要啟用編譯時間參考的動態裝載啟動增強功能。 發佈主控台應用程式會產生裝載啟動組件，這些組件可從執行階段存放區取用。
 
@@ -124,7 +124,7 @@ ms.locfileid: "59425071"
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet1)]
 
-類別會實作 `IHostingStartup`。 此類別的 [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) 方法使用 [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) 將增強功能新增至應用程式中。 `IHostingStartup.Configure` (位於裝載啟動組件中) 會先被執行階段呼叫，然後才會呼叫使用者程式碼中的 `Startup.Configure`，這可讓使用者程式碼覆寫裝載啟動組件提供的所有設定。
+類別會實作 `IHostingStartup`。 此類別的 [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) 方法使用 [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) 將增強功能新增至應用程式中。 執行階段會先呼叫裝載啟動組件中的 `IHostingStartup.Configure`，再呼叫使用者程式碼中的 `Startup.Configure`，這可讓使用者程式碼覆寫裝載啟動組件提供的所有組態。
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
@@ -313,8 +313,8 @@ NuGet 套件可以提供裝載啟動的增強功能。 此套件具有 `HostingS
 
 如需有關 NuGet 套件和執行階段存放區的詳細資訊，請參閱下列主題：
 
-* [如何使用跨平台工具建立 NuGet 封裝](/dotnet/core/deploying/creating-nuget-packages)
-* [發行套件](/nuget/create-packages/publish-a-package)
+* [如何使用跨平台工具建立 NuGet 套件](/dotnet/core/deploying/creating-nuget-packages)
+* [發佈套件](/nuget/create-packages/publish-a-package)
 * [執行階段套件存放區](/dotnet/core/deploying/runtime-store)
 
 ### <a name="project-bin-folder"></a>專案 bin 資料夾
@@ -387,7 +387,7 @@ dotnet nuget locals all --clear
    * 在 *additionalDeps/shared/Microsoft.AspNetCore.App/{共用架構版本}/* 資料夾中產生 `StartupDiagnostics` 的 `additionalDeps`。
    * 將 *deploy.ps1* 檔案置於 *deployment* 資料夾中。
 1. 執行 *deployment* 資料夾中的 *deploy.ps1* 指令碼。 該指令碼會附加至：
-   * `StartupDiagnostics` `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` 環境變數。
+   * `StartupDiagnostics` 至 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` 環境變數。
    * 針對 `DOTNET_ADDITIONAL_DEPS` 環境變數的裝載啟動相依性。
    * 針對 `DOTNET_SHARED_STORE` 環境變數的執行階段存放區路徑。
 1. 執行範例應用程式。

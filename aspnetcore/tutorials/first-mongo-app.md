@@ -7,10 +7,10 @@ ms.custom: mvc, seodec18
 ms.date: 01/31/2019
 uid: tutorials/first-mongo-app
 ms.openlocfilehash: 95a5f8bdb4b302d6bdae7b5809b54f1b263e6ee4
-ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59012860"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
@@ -31,20 +31,20 @@ ms.locfileid: "59012860"
 
 ## <a name="prerequisites"></a>必要條件
 
-# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download/all)
 * [Visual Studio 2017 15.9 版或更新版本](https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)，包含 **ASP.NET 與網頁程式開發**工作負載
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
-# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download/all)
 * [Visual Studio Code](https://code.visualstudio.com/download)
-* [適用於 Visual Studio Code 的 C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
-# [<a name="visual-studio-for-mac"></a>Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * [.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download/all)
 * [Visual Studio for Mac 7.7 版或更新版本](https://www.visualstudio.com/downloads/)
@@ -140,7 +140,7 @@ ms.locfileid: "59012860"
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>建立 ASP.NET Core Web API 專案
 
-# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 移至 [檔案] > [新增] > [專案]。
 1. 選取 [ASP.NET Core Web 應用程式]、將專案命名為 *BooksApi*，然後按一下 [確定]。
@@ -151,7 +151,7 @@ ms.locfileid: "59012860"
     Install-Package MongoDB.Driver -Version {VERSION}
     ```
 
-# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. 在命令殼層中執行下列命令：
 
@@ -169,7 +169,7 @@ ms.locfileid: "59012860"
     dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
     ```
 
-# [<a name="visual-studio-for-mac"></a>Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 1. 移至 [檔案] > [新增解決方案] > [.NET Core] > [應用程式]。
 1. 選取 **ASP.NET Core Web API** C# 專案範本，然後按一下 [下一步]。
@@ -227,10 +227,10 @@ ms.locfileid: "59012860"
 
 `GetCollection<T>(collection)` 會傳回代表集合的 `MongoCollection` 物件。 在此教學課程中，會在集合上叫用下列方法：
 
-* `Find<T>` &ndash; 會傳回集合中符合所提供搜尋條件的所有文件。
-* `InsertOne` &ndash; 會插入提供的物件作為集合中的新文件。
-* `ReplaceOne` &ndash; 會使用提供的物件取代符合所提供搜尋條件的單一文件。
-* `DeleteOne` &ndash; 會刪除符合所提供搜尋條件的單一文件。
+* `Find<T>` &ndash; 傳回集合中符合所提供搜尋條件的所有文件。
+* `InsertOne` &ndash; 插入提供的物件做為集合中的新文件。
+* `ReplaceOne` &ndash; 使用提供的物件取代符合所提供搜尋條件的單一文件。
+* `DeleteOne` &ndash; 刪除符合所提供搜尋條件的單一文件。
 
 ## <a name="add-a-controller"></a>新增控制器
 

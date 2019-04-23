@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何在 ASP.NET Core 中編寫標籤協助程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 04/12/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: ddfd7cb8c67e28709b8ce75d5a4d0a8c0c0cc43c
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 19b7df1abc8765cb9a77487e39c4365fdacf2b65
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210076"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614418"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
@@ -51,8 +51,7 @@ ms.locfileid: "58210076"
 
    * 標籤協助程式使用以根類別名稱的項目為目標的命名慣例 (去掉類別名稱的 *TagHelper* 部分)。 在此範例中，**EmailTagHelper** 的根名稱是 *email*，因此將會以 `<email>` 標籤為目標。 此命名慣例應該適用於大部分的標籤協助程式，稍後將示範如何行覆寫它。
 
-   * 
-  `EmailTagHelper` 類別衍生自 `TagHelper`。 `TagHelper` 類別提供撰寫標籤協助程式的方法和屬性。
+   * `EmailTagHelper` 類別衍生自 `TagHelper`。 `TagHelper` 類別提供撰寫標籤協助程式的方法和屬性。
 
    * 覆寫的 `Process` 方法控制標籤協助程式在其執行時的作用。 `TagHelper` 類別也會使用相同的參數來提供非同步版本 (`ProcessAsync`)。
 
@@ -66,7 +65,9 @@ ms.locfileid: "58210076"
    public class Email : TagHelper
    ```
 
-1. 若要讓 `EmailTagHelper` 類別可供所有 Razor 檢視使用，請將 `addTagHelper` 指示詞新增至 *Views/_ViewImports.cshtml* 檔案：[!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
+1. 若要讓 `EmailTagHelper` 類別可供所有 Razor 檢視使用，請將 `addTagHelper` 指示詞新增至 *Views/_ViewImports.cshtml* 檔案：
+
+   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
 
    上述程式碼使用萬用字元語法，指定將使用組件中的所有標籤協助程式。 `@addTagHelper` 後面的第一個字串指定要載入的標籤協助程式 (使用 "*" 表示所有標籤協助程式)，而第二個字串 "AuthoringTagHelpers" 指定標籤協助程式所在的組件。 另請注意，第二行使用萬用字元語法帶入 ASP.NET Core MVC 標籤協助程式 ([標籤協助程式簡介](intro.md)會討論這些協助程式)。它是 `@addTagHelper` 指示詞，讓標籤協助程式可供 Razor 檢視使用。 或者，您可以提供標籤協助程式的完整名稱 (FQN)，如下所示：
 

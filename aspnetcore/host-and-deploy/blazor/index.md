@@ -5,14 +5,14 @@ description: 探索如何裝載和部署 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/15/2019
+ms.date: 04/18/2019
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: a7739e2b240d7fd6c85e68105892c802228ebeb5
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: 774fbb6fdaab14a015db4fb39de2e1ea73a1837b
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614566"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59982636"
 ---
 # <a name="host-and-deploy-blazor"></a>裝載和部署 Blazor
 

@@ -49,7 +49,7 @@
       "_navPath": "/foo",
       "_navRel": "/foo",
       "breadcrumb_path": "/aspnet/breadcrumb/toc.json",
-      "feedback_github_repo": "aspnet/docs.zh-tw",
+      "feedback_github_repo": "aspnet/AspNetDocs.zh-tw",
       "feedback_product_url": "https://github.com/aspnet/Home/blob/master/CONTRIBUTING.md",
       "feedback_system": "GitHub",
       "ms.prod": "aspnet-core",

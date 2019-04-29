@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何使用受保護的授權的使用者資料建立 Razor 頁面應用程式。 包含 HTTPS、 驗證、 安全性、 ASP.NET Core 身分識別。
 ms.author: riande
 ms.date: 12/18/2018
-ms.custom: seodec18
+ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 748de9264a1b22b50e0832fdd350e06eeefd5cb3
-ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
-ms.translationtype: MT
+ms.openlocfilehash: 9b01aca0cb2b33f5561193ffdce4aa4950485fce
+ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419455"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60165234"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 

@@ -4,14 +4,14 @@ author: CamSoper
 description: 持續整合及 DevOps 中的部署使用 ASP.NET Core 和 Azure
 ms.author: scaddie
 ms.date: 10/24/2018
-ms.custom: seodec18
+ms.custom: mvc, seodec18
 uid: azure/devops/cicd
-ms.openlocfilehash: 676620b5dd151c9cd009d7cb278ed2c2b122c83f
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
-ms.translationtype: MT
+ms.openlocfilehash: 5fdf52235b49119503885f92c370dc588e809ffe
+ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264876"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60165262"
 ---
 # <a name="continuous-integration-and-deployment"></a>持續整合和部署
 

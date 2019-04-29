@@ -4,14 +4,14 @@ author: CamSoper
 description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式，建置 DevOps 管線的完整指導。
 ms.author: casoper
 ms.date: 08/07/2018
-ms.custom: seodec18
+ms.custom: mvc, seodec18
 uid: azure/devops/index
-ms.openlocfilehash: 6b6f17fd917f32b9e0682414febee10643cf3d13
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: f45bb2a5dd4b3d1a820085ede7ce3219045ed80b
+ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121189"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60165172"
 ---
 # <a name="devops-with-aspnet-core-and-azure"></a>ASP.NET Core 與 Azure 的 DevOps
 

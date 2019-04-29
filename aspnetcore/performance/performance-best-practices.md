@@ -8,7 +8,7 @@ ms.date: 04/13/2019
 uid: performance/performance-best-practices
 ms.openlocfilehash: 095db38cf3102f6e18930efdbbaeeb90dffad8af
 ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2019
 ms.locfileid: "59614444"
@@ -78,7 +78,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 * **請勿**使用[無追蹤查詢](/ef/core/querying/tracking#no-tracking-queries)進行唯讀存取資料時，Entity Framework Core 中。 EF Core 可以更有效率地傳回無追蹤查詢的結果。
 * **請勿**篩選和彙總的 LINQ 查詢 (與`.Where`， `.Select`，或`.Sum`例如陳述式)，讓篩選由資料庫執行。
 * **請勿**考慮 EF Core 會解析有些查詢運算子，在用戶端，可能會沒有效率的查詢執行。 如需詳細資訊，請參閱 <c0> [ 用戶端評估效能問題](/ef/core/querying/client-eval#client-evaluation-performance-issues)。
-* **不這麼做**使用投影查詢集合，可能會導致執行 「 N + 1"上 SQL 查詢。 如需詳細資訊，請參閱 <c0> [ 相互關聯子查詢的最佳化](/ef/core/what-is-new/ef-core-2.1#optimization-of-correlated-subqueries)。
+* **不這麼做**使用投影查詢集合，可能會導致執行 "N+1"上 SQL 查詢。 如需詳細資訊，請參閱 [相互關聯子查詢的最佳化](/ef/core/what-is-new/ef-core-2.1#optimization-of-correlated-subqueries)。
 
 請參閱[EF 高效能](/ef/core/what-is-new/ef-core-2.0#explicitly-compiled-queries)如可改善高級別應用程式的效能的解決方法：
 

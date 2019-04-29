@@ -5,14 +5,14 @@ description: 了解如何將檔案上傳至 Razor Pages 使用 FileUpload 類別
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 11/10/2018
-ms.custom: seodec18
+ms.custom: mvc, seodec18
 uid: razor-pages/upload-files
-ms.openlocfilehash: 80929c6c1a95b46b942958def1540ac8ed5abc81
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
-ms.translationtype: MT
+ms.openlocfilehash: a12653e5dc99ad731de63e151af6dbdbe38ffefc
+ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121397"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60165218"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor 頁面
 
@@ -113,7 +113,7 @@ public async Task<IActionResult> OnPostAsync()
 > 程式碼範例不提供防禦惡意檔案上傳的任何伺服器端保護。 如需在接受來自使用者的檔案時減少攻擊介面區的資訊，請參閱下列資源：
 >
 > * [不受限制的檔案上傳](https://www.owasp.org/index.php/Unrestricted_File_Upload)
-> * [Azure 安全性：請確保在接受來自使用者的檔案時，適當的控制項已就緒](/azure/security/azure-security-threat-modeling-tool-input-validation#controls-users)
+> * [Azure 安全性：請確定接受來自使用者的檔案時已備妥適當的控制](/azure/security/azure-security-threat-modeling-tool-input-validation#controls-users)
 
 ### <a name="save-the-file-to-azure-blob-storage"></a>將檔案儲存至 Azure Blob 儲存體
 
@@ -159,7 +159,7 @@ public async Task<IActionResult> OnPostAsync()
 
 ## <a name="add-the-schedule-table-to-the-database"></a>將 Schedule 資料表新增至資料庫
 
-開啟 [套件管理員主控台] (PMC)：[工具] > [NuGet 套件管理員] > [套件管理員主控台]。
+開啟 套件管理員主控台 (PMC):**工具** > **NuGet 套件管理員** > **Package Manager Console**。
 
 ![PMC 功能表](upload-files/_static/pmc.png)
 
@@ -345,4 +345,4 @@ Update-Database
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如需疑難排解資訊`IFormFile`上傳，請參閱[ASP.NET Core 的檔案上傳： 疑難排解](xref:mvc/models/file-uploads#troubleshooting)。
+如需疑難排解資訊`IFormFile`上傳，請參閱[ASP.NET Core 的檔案上傳：疑難排解](xref:mvc/models/file-uploads#troubleshooting)。

@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/12/2019
 uid: signalr/streaming
-ms.openlocfilehash: 83bbb231482d9c1606be3c5bbbeb1cc3b8efcf7d
-ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
-ms.translationtype: MT
+ms.openlocfilehash: d185056d3bdda089eaa46ae9b8e13ab7a4354f93
+ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59982652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60165072"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>使用資料流在 ASP.NET Core SignalR
 
@@ -36,13 +36,13 @@ ASP.NET Core SignalR 支援資料流的伺服器方法的傳回值。 這是適�
 
 ::: moniker range=">= aspnetcore-3.0"
 
-中樞的方法會自動變成資料流處理的中樞方法傳回時<xref:System.Threading.Channels.ChannelReader`1>， `IAsyncEnumerable<T>`， `Task<ChannelReader<T>>`，或`Task<IAsyncEnumerable<T>>`。
+中樞的方法會自動變成資料流處理的中樞方法傳回時<xref:System.Threading.Channels.ChannelReader%601>， `IAsyncEnumerable<T>`， `Task<ChannelReader<T>>`，或`Task<IAsyncEnumerable<T>>`。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-中樞的方法會自動變成資料流處理的中樞方法傳回時<xref:System.Threading.Channels.ChannelReader`1>或`Task<ChannelReader<T>>`。
+中樞的方法會自動變成資料流處理的中樞方法傳回時<xref:System.Threading.Channels.ChannelReader%601>或`Task<ChannelReader<T>>`。
 
 ::: moniker-end
 
@@ -58,7 +58,7 @@ ASP.NET Core SignalR 支援資料流的伺服器方法的傳回值。 這是適�
 
 ::: moniker-end
 
-下列範例顯示資料串流到用戶端會使用通道的基本的概念。 每當物件寫入<xref:System.Threading.Channels.ChannelWriter`1>，該物件會立即傳送至用戶端。 在結束時，`ChannelWriter`完成告知用戶端的資料流已關閉。
+下列範例顯示資料串流到用戶端會使用通道的基本的概念。 每當物件寫入<xref:System.Threading.Channels.ChannelWriter%601>，該物件會立即傳送至用戶端。 在結束時，`ChannelWriter`完成告知用戶端的資料流已關閉。
 
 > [!NOTE]
 > 寫入`ChannelWriter<T>`在背景執行緒，然後傳回`ChannelReader`儘速。 其他中樞叫用會封鎖直到`ChannelReader`會傳回。

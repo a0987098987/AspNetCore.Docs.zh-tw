@@ -8,7 +8,7 @@ ms.date: 10/11/2018
 uid: security/anti-request-forgery
 ms.openlocfilehash: 88a2d127407378b9e83df7f48b1938ed081f9bb2
 ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58208524"
@@ -134,7 +134,7 @@ CSRF 攻擊是可能對 web 應用程式使用 cookie 進行驗證，因為：
   ```
 
 > [!NOTE]
-> [Razor 頁面](xref:razor-pages/index)從 XSRF/CSRF 會自動施以保護。 如需詳細資訊，請參閱 < [XSRF/CSRF 和 Razor Pages](xref:razor-pages/index#xsrf)。
+> [Razor 頁面](xref:razor-pages/index)從 XSRF/CSRF 會自動施以保護。 如需詳細資訊，請參閱 [XSRF/CSRF 和 Razor Pages](xref:razor-pages/index#xsrf)。
 
 對抗 CSRF 攻擊的最常見方法是使用*同步器 Token 模式*(spanning tree Protocol)。 當使用者要求包含表單資料的頁面時，會使用 spanning tree Protocol:
 
@@ -230,7 +230,7 @@ services.AddAntiforgery(options =>
 
 ::: moniker-end
 
-如需詳細資訊，請參閱 < [CookieAuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.CookieAuthenticationOptions)。
+如需詳細資訊，請參閱 [CookieAuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.CookieAuthenticationOptions)。
 
 ## <a name="configure-antiforgery-features-with-iantiforgery"></a>使用 IAntiforgery 設定 antiforgery 功能
 

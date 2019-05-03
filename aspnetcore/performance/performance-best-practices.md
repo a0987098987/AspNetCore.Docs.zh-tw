@@ -53,9 +53,9 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 建議：
 
-* **請勿**考慮快取經常使用的大型物件。 快取大型物件，可避免耗費資源的配置。
-* **請勿**集區使用的緩衝區[ `ArrayPool<T>` ](/dotnet/api/system.buffers.arraypool-1)來儲存大型陣列。
-* **不這麼做**許多較短期的大型物件配置的[經常性存取程式碼路徑](#hot)。
+* **請**考慮快取經常使用的大型物件。 快取大型物件，可避免耗費資源的配置。
+* **請**集區使用的緩衝區[ `ArrayPool<T>` ](/dotnet/api/system.buffers.arraypool-1)來儲存大型陣列。
+* **請勿**許多較短期的大型物件配置的[經常性存取程式碼路徑](#hot)。
 
 藉由檢閱中的記憶體回收 (GC) 統計資料，您可以診斷記憶體問題，例如先前所述， [PerfView](https://github.com/Microsoft/perfview)並檢查：
 
@@ -71,14 +71,14 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 建議：
 
-* **請勿**以非同步方式呼叫所有的資料存取 Api。
-* **不這麼做**擷取更多超出所需的資料。 撰寫查詢來傳回只是目前的 HTTP 要求所需的資料。
-* **請勿**考慮快取經常存取接受稍微過期的資料時，從資料庫或遠端服務擷取的資料。 根據案例中，使用[MemoryCache](xref:performance/caching/memory)或是[DistributedCache](xref:performance/caching/distributed)。 如需詳細資訊，請參閱<xref:performance/caching/response>。
-* **請勿**降到最低的網路往返。 目標是要擷取的單一呼叫，而不是數個呼叫所需的資料。
-* **請勿**使用[無追蹤查詢](/ef/core/querying/tracking#no-tracking-queries)進行唯讀存取資料時，Entity Framework Core 中。 EF Core 可以更有效率地傳回無追蹤查詢的結果。
-* **請勿**篩選和彙總的 LINQ 查詢 (與`.Where`， `.Select`，或`.Sum`例如陳述式)，讓篩選由資料庫執行。
-* **請勿**考慮 EF Core 會解析有些查詢運算子，在用戶端，可能會沒有效率的查詢執行。 如需詳細資訊，請參閱 <c0> [ 用戶端評估效能問題](/ef/core/querying/client-eval#client-evaluation-performance-issues)。
-* **不這麼做**使用投影查詢集合，可能會導致執行 "N+1"上 SQL 查詢。 如需詳細資訊，請參閱 [相互關聯子查詢的最佳化](/ef/core/what-is-new/ef-core-2.1#optimization-of-correlated-subqueries)。
+* **請**以非同步方式呼叫所有的資料存取 Api。
+* **請勿**擷取更多超出所需的資料。 撰寫查詢來傳回只是目前的 HTTP 要求所需的資料。
+* **請**考慮快取經常存取接受稍微過期的資料時，從資料庫或遠端服務擷取的資料。 根據案例中，使用[MemoryCache](xref:performance/caching/memory)或是[DistributedCache](xref:performance/caching/distributed)。 如需詳細資訊，請參閱<xref:performance/caching/response>。
+* **請**降到最低的網路往返。 目標是要擷取的單一呼叫，而不是數個呼叫所需的資料。
+* **請**使用[無追蹤查詢](/ef/core/querying/tracking#no-tracking-queries)進行唯讀存取資料時，Entity Framework Core 中。 EF Core 可以更有效率地傳回無追蹤查詢的結果。
+* **請**篩選和彙總的 LINQ 查詢 (與`.Where`， `.Select`，或`.Sum`例如陳述式)，讓篩選由資料庫執行。
+* **請**考慮 EF Core 會解析有些查詢運算子，在用戶端，可能會沒有效率的查詢執行。 如需詳細資訊，請參閱 <c0> [ 用戶端評估效能問題](/ef/core/querying/client-eval#client-evaluation-performance-issues)。
+* **請勿**使用投影查詢集合，可能會導致執行 "N+1"上 SQL 查詢。 如需詳細資訊，請參閱 [相互關聯子查詢的最佳化](/ef/core/what-is-new/ef-core-2.1#optimization-of-correlated-subqueries)。
 
 請參閱[EF 高效能](/ef/core/what-is-new/ef-core-2.0#explicitly-compiled-queries)如可改善高級別應用程式的效能的解決方法：
 
@@ -95,8 +95,8 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 建議：
 
-* **不這麼做**建立和處置`HttpClient`直接執行個體。
-* **請勿**使用[HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)擷取`HttpClient`執行個體。 如需詳細資訊，請參閱 <c0> [ 實作具有恢復功能的 HTTP 要求使用 HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)。
+* **請勿**建立和處置`HttpClient`直接執行個體。
+* **請**使用[HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)擷取`HttpClient`執行個體。 如需詳細資訊，請參閱 <c0> [ 實作具有恢復功能的 HTTP 要求使用 HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)。
 
 ## <a name="keep-common-code-paths-fast"></a>快速的常見程式碼路徑
 
@@ -107,8 +107,8 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 建議：
 
-* **不這麼做**長時間執行的工作搭配使用自訂中介軟體元件。
-* **請勿**並使用程式碼剖析工具，例如效能[Visual Studio 診斷工具](/visualstudio/profiling/profiling-feature-tour)或[PerfView](https://github.com/Microsoft/perfview))，以識別[經常性存取程式碼路徑](#hot)。
+* **請勿**長時間執行的工作搭配使用自訂中介軟體元件。
+* **請**並使用程式碼剖析工具，例如效能[Visual Studio 診斷工具](/visualstudio/profiling/profiling-feature-tour)或[PerfView](https://github.com/Microsoft/perfview))，以識別[經常性存取程式碼路徑](#hot)。
 
 ## <a name="complete-long-running-tasks-outside-of-http-requests"></a>完成長時間執行的工作以外的 HTTP 要求
 
@@ -116,9 +116,9 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 建議：
 
-* **不這麼做**等候長時間執行工作，以完成一般的 HTTP 要求處理的一部分。
-* **請勿**處理長時間執行的要求，請考慮[背景服務](xref:fundamentals/host/hosted-services)或跨處理序，與[Azure Function](/azure/azure-functions/)。 完成工作流程外是需要大量 CPU 的工作特別有幫助的。
-* **請勿**使用的即時通訊選項，例如[SignalR](xref:signalr/introduction)，以非同步方式與用戶端通訊。
+* **請勿**等候長時間執行工作，以完成一般的 HTTP 要求處理的一部分。
+* **請**處理長時間執行的要求，請考慮[背景服務](xref:fundamentals/host/hosted-services)或跨處理序，與[Azure Function](/azure/azure-functions/)。 完成工作流程外是需要大量 CPU 的工作特別有幫助的。
+* **請**使用的即時通訊選項，例如[SignalR](xref:signalr/introduction)，以非同步方式與用戶端通訊。
 
 ## <a name="minify-client-assets"></a>縮短用戶端資產
 
@@ -129,8 +129,8 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 建議：
 
-* **請勿**使用 ASP.NET Core[內建支援](xref:client-side/bundling-and-minification)包裝和縮小用戶端資產。
-* **請勿**請考慮其他協力廠商工具，例如[Gulp](xref:client-side/using-gulp)或是[Webpack](https://webpack.js.org/)針對複雜的用戶端資產管理。
+* **請**使用 ASP.NET Core[內建支援](xref:client-side/bundling-and-minification)包裝和縮小用戶端資產。
+* **請**請考慮其他協力廠商工具，例如[Gulp](xref:client-side/using-gulp)或是[Webpack](https://webpack.js.org/)針對複雜的用戶端資產管理。
 
 ## <a name="compress-responses"></a>壓縮回應
 
@@ -149,8 +149,8 @@ Maybe skip this TBD link as each version will have perf improvements -->
 
 建議：
 
-* **不這麼做**擲回或攔截例外狀況做為一般程式流程，尤其是在使用[經常性存取程式碼路徑](#hot)。
-* **請勿**邏輯納入應用程式，以偵測和處理會造成例外狀況的條件。
-* **請勿**擲回或攔截例外狀況異常或非預期的狀況。
+* **請勿**擲回或攔截例外狀況做為一般程式流程，尤其是在使用[經常性存取程式碼路徑](#hot)。
+* **請**邏輯納入應用程式，以偵測和處理會造成例外狀況的條件。
+* **請**擲回或攔截例外狀況異常或非預期的狀況。
 
 應用程式診斷工具，例如 Application Insights 可協助識別可能會影響效能的應用程式中的常見例外狀況。

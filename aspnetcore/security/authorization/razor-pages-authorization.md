@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2019
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: 040d33eba7eaf7a3aece2eedcdef7343e52972af
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: ff061f96f30cd893b903403de760a172c924cf06
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345495"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64895415"
 ---
 # <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>ASP.NET Core 中的 razor Pages 授權慣例
 
@@ -20,7 +20,7 @@ ms.locfileid: "57345495"
 
 控制 Razor Pages 應用程式中的存取的一個方式是在啟動時使用授權慣例。 這些慣例可讓您授權的使用者，並允許匿名使用者存取個別頁面的資料夾。 自動在本主題中所述的慣例套用[授權篩選條件](xref:mvc/controllers/filters#authorization-filters)來控制存取。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 範例應用程式會使用[沒有 ASP.NET Core 身分識別的 cookie 驗證](xref:security/authentication/cookie)。 本主題所示的範例與概念同樣適用於使用 ASP.NET Core 身分識別的應用程式。 若要使用 ASP.NET Core 身分識別，請依照下列中的指導方針<xref:security/authentication/identity>。
 

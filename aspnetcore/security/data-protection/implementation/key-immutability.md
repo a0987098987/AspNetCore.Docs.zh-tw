@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/key-immutability
 ms.openlocfilehash: 7796cb102c0f6f03809704016fd36b28c7a82438
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219299"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64892285"
 ---
 # <a name="key-immutability-and-key-settings-in-aspnet-core"></a>金鑰的不變性和 ASP.NET Core 中的機碼設定
 

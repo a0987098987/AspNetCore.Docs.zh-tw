@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/19/2018
 uid: security/data-protection/implementation/key-storage-providers
 ms.openlocfilehash: d6dabc9e4581e0891d1dd14f73e086d50b45bba4
-ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735735"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897445"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core 中的金鑰儲存提供者
 

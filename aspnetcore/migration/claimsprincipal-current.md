@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 03/26/2019
 uid: migration/claimsprincipal-current
 ms.openlocfilehash: 526cc3cf3a58a656e2a1b162cfaccacc7694dc51
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488638"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894785"
 ---
 # <a name="migrate-from-claimsprincipalcurrent"></a>移轉 ClaimsPrincipal.Current 從
 

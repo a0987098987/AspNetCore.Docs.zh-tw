@@ -8,11 +8,11 @@ ms.custom: signalr
 ms.date: 02/27/2019
 uid: signalr/diagnostics
 ms.openlocfilehash: b6bd21314ed183488999bcff3553e53493537a11
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400913"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64896885"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>記錄和診斷在 ASP.NET Core SignalR
 

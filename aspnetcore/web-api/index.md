@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/11/2019
 uid: web-api/index
-ms.openlocfilehash: 334e5732269921a62356e7854824deccc051c291
-ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
+ms.openlocfilehash: d804a7f1b4f0e89f433a3674116c97804705f7cc
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60165168"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64882953"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建立 Web API
 
@@ -20,7 +20,7 @@ ms.locfileid: "60165168"
 
 ASP.NET Core 支援使用 C# 建立 RESTful 服務，也稱為 Web API。 若要處理要求，Web API 會使用控制器。 Web API 中的「控制器」都衍生自類別 `ControllerBase`。 此文章說明如何使用控制器來處理 API 要求。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/index/samples)。 ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/index/samples)。 ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="controllerbase-class"></a>ControllerBase 類別
 
@@ -36,7 +36,7 @@ Web API 有一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase> 
 
  以下是 `ControllerBase` 提供的一些其他方法範例。
 
-|方法  |附註  |
+|方法  |注意  |
 |---------|---------|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*>| 傳回 400 狀態碼。|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*> |傳回 404 狀態碼。|
@@ -54,7 +54,7 @@ Web API 有一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase> 
 
 以下是一些其他可用的屬性範例。
 
-|屬性|附註|
+|屬性|注意|
 |---------|-----|
 |[[Route]](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |指定控制器或動作的 URL 模式。|
 |[[Bind]](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |指定模型繫結要包含的前置詞和屬性。|

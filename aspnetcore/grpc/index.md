@@ -7,11 +7,11 @@ ms.author: johluo
 ms.date: 02/26/2019
 uid: grpc/index
 ms.openlocfilehash: dd1c42744bfda965df91ea1fcc0b71814317b969
-ms.sourcegitcommit: a467828b5e4eaae291d961ffe2279a571900de23
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58142411"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65085544"
 ---
 # <a name="introduction-to-grpc-on-aspnet-core"></a>ASP.NET Core 上的 gRPC 簡介
 

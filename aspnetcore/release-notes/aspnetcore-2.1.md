@@ -4,14 +4,14 @@ author: isaac2004
 description: 了解 ASP.NET Core 2.1 的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 04/30/2019
 uid: aspnetcore-2.1
-ms.openlocfilehash: 8299af819f86d3d2371650ce3d87deb817f0feb8
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 359f961db768b9048427c8ab296ee3e035879408
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248169"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086398"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>ASP.NET Core 2.1 的新功能
 
@@ -28,7 +28,7 @@ SignalR 已針對 ASP.NET Core 2.1 改寫。 ASP.NET Core SignalR 包含數項�
 * 新的資料流處理回應模型。
 * 支援以裸機 WebSockets 為基礎的用戶端。
 
-如需詳細資訊，請參閱 [ASP.NET Core SignalR](xref:signalr/index)。
+如需詳細資訊，請參閱 [ASP.NET Core SignalR](xref:signalr/introduction)。
 
 ## <a name="razor-class-libraries"></a>Razor 類別庫
 
@@ -75,7 +75,7 @@ Web 應用程式通常需要同時接聽 HTTP 和 HTTPS，然後將所有 HTTP �
 
 ## <a name="gdpr"></a>GDPR
 
-ASP.NET Core 提供 API 和範本以利符合某些 [EU General Data Protection Regulation (GDPR)](https://www.eugdpr.org/) (EU 一般資料保護規定 (GDPR)) 需求。 如需詳細資訊，請參閱 [ASP.NET Core 的 GDPR 支援](xref:security/gdpr)。 [範例應用程式](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr/sample)示範如何使用及讓您測試新增至 ASP.NET Core 2.1 範本的大部分 GDPR 擴充點和 API。
+ASP.NET Core 提供 API 和範本以利符合某些 [EU General Data Protection Regulation (GDPR)](https://www.eugdpr.org/) (EU 一般資料保護規定 (GDPR)) 需求。 如需詳細資訊，請參閱 [ASP.NET Core 的 GDPR 支援](xref:security/gdpr)。 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)示範如何使用及讓您測試新增至 ASP.NET Core 2.1 範本的大部分 GDPR 擴充點和 API。
 
 ## <a name="integration-tests"></a>整合測試
 

@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/consumer-apis/password-hashing
 ms.openlocfilehash: 70301ffffbaaf3c5ff0642b19b80e40be83aa438
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010958"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64896645"
 ---
 # <a name="hash-passwords-in-aspnet-core"></a>ASP.NET Core 中的雜湊密碼
 

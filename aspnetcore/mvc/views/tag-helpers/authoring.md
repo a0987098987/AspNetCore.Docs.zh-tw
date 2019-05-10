@@ -4,20 +4,20 @@ author: rick-anderson
 description: 了解如何在 ASP.NET Core 中編寫標籤協助程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/12/2019
+ms.date: 04/29/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 19b7df1abc8765cb9a77487e39c4365fdacf2b65
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: 37e39ac93e7b67184dfc238d58e12c2be8d84f91
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614418"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087334"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started-with-tag-helpers"></a>開始使用標籤協助程式
 
@@ -108,7 +108,9 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 只要 attributes 集合中目前沒有 "href" 屬性，該方法就適用於 "href" 屬性。 您也可以使用 `output.Attributes.Add` 方法，將標籤協助程式屬性新增至標籤屬性集合結尾。
 
-1. 使用下列變更來更新 *Views/Home/Contact.cshtml* 檔案中的標記：[!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
+1. 使用下列變更來更新 *Views/Home/Contact.cshtml* 檔案中的標記：
+
+   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
 
 1. 執行應用程式，並驗證它會產生正確的連結。
 

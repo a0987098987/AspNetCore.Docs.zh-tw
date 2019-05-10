@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 7768dd45bdbe40c16176d57a76823cbb9dd0b91b
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 11d2914b5797735fb6a262a31bdb49f58391579f
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264611"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64884053"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式
 
@@ -159,7 +159,7 @@ IntelliSense 陳述式完成可讓您輸入 Tab 鍵，來完成具有所選取�
 
 ![影像](intro/_static/stmtcomplete.png)
 
-只要輸入標籤協助程式屬性，標籤和屬性字型就會變更。 使用預設 Visual Studio "Blue" 或 "Light" 色彩佈景主題，而且字型為粗體紫色。 如果要使用 "Dark" 佈景主題，則字型是粗體藍綠色。 此文件中的影像是使用預設佈景主題所取得。
+只要輸入標籤協助程式屬性，標籤和屬性字型就會變更。 使用預設 Visual Studio "Blue" 或 "Light" 色彩佈景主題，而且字型為粗體紫色。 如果要使用 "Dark" 佈景主題，則字型是粗體藍綠色。 本文件中的影像是使用預設佈景主題所取得。
 
 ![影像](intro/_static/labelaspfor2.png)
 
@@ -248,6 +248,8 @@ Visual Studio 編輯器可協助您撰寫註冊表單之標籤 (tag) 協助程�
 您可以從 [工具] > [選項] > [環境][字型和色彩] >  來自訂字型和顏色標示：
 
 ![影像](intro/_static/fontoptions2.png)
+
+[!INCLUDE[](~/includes/built-in-TH.md)]
 
 ## <a name="additional-resources"></a>其他資源
 

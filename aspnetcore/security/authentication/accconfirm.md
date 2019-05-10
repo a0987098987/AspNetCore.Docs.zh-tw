@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 3/11/2019
 uid: security/authentication/accconfirm
 ms.openlocfilehash: 59041bcf11f7deb351a2f0bb075ed80c8af5e12b
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320210"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64891675"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
@@ -87,7 +87,7 @@ dotnet run
 
 #### <a name="configure-sendgrid-user-secrets"></a>設定 SendGrid 使用者祕密
 
-設定`SendGridUser`並`SendGridKey`具有[secret manager 工具](xref:security/app-secrets)。 例如: 
+設定`SendGridUser`並`SendGridKey`具有[secret manager 工具](xref:security/app-secrets)。 例如：
 
 ```console
 C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT

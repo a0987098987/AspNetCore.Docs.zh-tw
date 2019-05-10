@@ -5,12 +5,12 @@ description: 了解如何使用變更權杖來追蹤變更。
 ms.author: riande
 ms.date: 11/10/2017
 uid: fundamentals/change-tokens
-ms.openlocfilehash: 7ad580a7e999a4eae006ce5dd07cca0cbdbe9ab6
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: f7dad52fc19b6dc5c8668ad852e69acd65a72162
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206415"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64886873"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>在 ASP.NET Core 中使用變更權杖來偵測變更
 
@@ -18,7 +18,7 @@ ms.locfileid: "50206415"
 
 「變更權杖」是用來追蹤變更的一般用途低階建置組塊。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/change-tokens/sample/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/sample/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>IChangeToken 介面
 

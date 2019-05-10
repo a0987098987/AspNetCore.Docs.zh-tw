@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 11/20/2018
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: 5d5f0aadb7740c9b2b959d12a585cd8c91758ce8
-ms.sourcegitcommit: 4225e2c49a0081e6ac15acff673587201f54b4aa
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282132"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894295"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>配套並縮短在 ASP.NET Core 中的靜態資產
 
@@ -53,7 +53,7 @@ ms.locfileid: "52282132"
 
 下表概述個別載入資產和使用統合和縮製之間的差異：
 
-動作 | B/m | 沒有 B/分鐘 | 變更
+動作 | B/m | Without B/M | 變更
 --- | :---: | :---: | :---:
 提出要求  | 7   | 18     | 157%
 傳送的 KB | 156 | 264.68 | 70%
@@ -85,16 +85,16 @@ MVC 和 Razor 頁面專案範本提供統合和縮製 JSON 組態檔所組成的
 
 設定選項包括：
 
-* `outputFileName`: 套件組合檔案名稱輸出。 可以包含相對路徑*bundleconfig.json*檔案。 **所需**
-* `inputFiles`： 陣列的項目組合在一起的檔案。 這些是在組態檔的相對路徑。 **選擇性**，* 空的輸出檔案中的值是空的結果。 [萬用字元](http://www.tldp.org/LDP/abs/html/globbingref.html)支援模式。
-* `minify`： 輸出類型支援縮製選項。 **選擇性**，*預設值- `minify: { enabled: true }`*
+* `outputFileName`：組合檔案輸出名稱。 可以包含相對路徑*bundleconfig.json*檔案。 **required**
+* `inputFiles`：要組合在一起的檔案陣列。 這些是在組態檔的相對路徑。 **選擇性**，* 空的輸出檔案中的值是空的結果。 [萬用字元](http://www.tldp.org/LDP/abs/html/globbingref.html)支援模式。
+* `minify`：輸出類型縮製的選項。 **選擇性**，*預設值- `minify: { enabled: true }`*
   * 每個輸出檔案類型有組態選項。
     * [CSS 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [JavaScript 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [HTML 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`： 旗標表示是否要將產生的檔案新增至專案檔。 **選擇性**，*預設為 false*
-* `sourceMap`： 指出是否要產生搭售檔案的來源對應的旗標。 **選擇性**，*預設為 false*
-* `sourceMapRootPath`： 用於儲存產生的來源對應檔的根路徑。
+* `includeInProject`：旗標表示是否要將產生的檔案新增至專案檔。 **選擇性**，*預設為 false*
+* `sourceMap`：旗標，指出是否要產生搭售檔案的來源對應。 **選擇性**，*預設為 false*
+* `sourceMapRootPath`：用於儲存產生的來源對應檔的根路徑。
 
 ## <a name="build-time-execution-of-bundling-and-minification"></a>統合和縮製的建置時間執行
 

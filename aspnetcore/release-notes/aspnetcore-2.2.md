@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 12/18/2018
 uid: aspnetcore-2.2
 ms.openlocfilehash: cdc761b645b91777bdf6084c3ad4659fcea55039
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750944"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64883203"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2 的新功能
 

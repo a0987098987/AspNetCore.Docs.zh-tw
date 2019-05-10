@@ -8,11 +8,11 @@ ms.custom: mvc, seodec18
 ms.date: 10/25/2018
 uid: razor-pages/sdk
 ms.openlocfilehash: de51c9443e639cd64c234b6975cf7252bb7a2b9a
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58751022"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64895295"
 ---
 # <a name="aspnet-core-razor-sdk"></a>ASP.NET Core Razor SDK
 

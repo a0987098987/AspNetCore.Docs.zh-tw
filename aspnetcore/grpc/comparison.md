@@ -6,18 +6,18 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 03/31/2019
 uid: grpc/comparison
-ms.openlocfilehash: 0e9ef0e7ca8fb6d847b45f6dd7bd0aaa35fd149f
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: 8f4cefe1dedcf4cfd9650e73e6a1ba30dbbfeffa
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59515426"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087404"
 ---
 # <a name="comparing-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP APIs
 
 藉由[James 牛頓國王](https://twitter.com/jamesnk)
 
-這篇文章說明如何[gRPC services](https://grpc.io/docs/guides/)比較的 HTTP Api (包括 ASP.NET Core [Web Api](xref: web-api/index))。 用來提供的 API 應用程式的技術是很重要的選擇，和 gRPC 提供獨特的優點，相較於 HTTP Api。 這篇文章討論 gRPC 的優缺點，並建議使用 gRPC 透過其他技術的案例。
+這篇文章說明如何[gRPC services](https://grpc.io/docs/guides/)比較的 HTTP Api (包括 ASP.NET Core [Web Api](xref:web-api/index))。 用來提供的 API 應用程式的技術是很重要的選擇，和 gRPC 提供獨特的優點，相較於 HTTP Api。 這篇文章討論 gRPC 的優缺點，並建議使用 gRPC 透過其他技術的案例。
 
 #### <a name="overview"></a>總覽
 

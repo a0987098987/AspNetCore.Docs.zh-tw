@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: ccd56d0c15639e1ad29094e947f8055702ee2264
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.openlocfilehash: 5a0797fcfe93d49b941b61688ae8f58a1b5d7614
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833666"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086353"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -19,11 +19,11 @@ ms.locfileid: "56833666"
 
 ASP.NET Core Identity 是可延伸的系統，可讓您建立自訂的儲存體提供者，並將它連接到您的應用程式。 本主題描述如何建立 ASP.NET Core 身分識別的自訂儲存體提供者。 它涵蓋建立自己的儲存體提供者的重要概念，但不需逐步解說。
 
-[從 GitHub 檢視或下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample)。
+[從 GitHub 檢視或下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample)。
 
 ## <a name="introduction"></a>簡介
 
-根據預設，ASP.NET Core 身分識別系統會將使用者資訊儲存在 SQL Server 資料庫中使用 Entity Framework Core。 對於許多應用程式，這種方法非常適合。 不過，您也可能會想要使用不同的持續性機制或資料結構描述。 例如: 
+根據預設，ASP.NET Core 身分識別系統會將使用者資訊儲存在 SQL Server 資料庫中使用 Entity Framework Core。 對於許多應用程式，這種方法非常適合。 不過，您也可能會想要使用不同的持續性機制或資料結構描述。 例如：
 
 * 您使用[Azure 表格儲存體](/azure/storage/)或其他資料存放區。
 * 資料庫資料表有不同的結構。 
@@ -139,7 +139,7 @@ ASP.NET Core Identity 是由名為管理員和存放區的類別所組成。 *�
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)
 * [IUserLockoutStore](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)
 
-選擇性的介面繼承自`IUserStore<TUser>`。 您可以看到部分實作的範例使用者存放[範例應用程式](https://github.com/aspnet/Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)。
+選擇性的介面繼承自`IUserStore<TUser>`。 您可以看到部分實作的範例使用者存放[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)。
 
 內`UserStore`類別，您會使用您建立用來執行作業的資料存取類別。 這些會傳入使用相依性插入。 例如，SQL Server 中使用 Dapper 實作時，`UserStore`類別具有`CreateAsync`方法使用的執行個體`DapperUsersTable`插入新的記錄：
 

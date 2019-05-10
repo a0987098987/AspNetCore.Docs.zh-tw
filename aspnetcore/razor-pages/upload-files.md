@@ -7,24 +7,24 @@ ms.author: riande
 ms.date: 11/10/2018
 ms.custom: mvc, seodec18
 uid: razor-pages/upload-files
-ms.openlocfilehash: a12653e5dc99ad731de63e151af6dbdbe38ffefc
-ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
-ms.translationtype: HT
+ms.openlocfilehash: 07457d57b7d3b444c8cea818149569407f1dd8e8
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60165218"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65085722"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor 頁面
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-本主題為建置基礎[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample)在<xref:tutorials/razor-pages/razor-pages-start>。
+本主題為建置基礎[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample)在<xref:tutorials/razor-pages/razor-pages-start>。
 
 本主題說明如何使用簡單的模型繫結檔案上, 傳適用於上傳小型檔案。 如需串流大型檔案的資訊，請參閱[使用串流上傳大型檔案](xref:mvc/models/file-uploads#uploading-large-files-with-streaming)。
 
 在下列步驟中，電影排程檔案上傳功能會新增至範例應用程式。 電影排程是由 `Schedule` 類別表示。 此類別包含兩個版本的排程。 `PublicSchedule` 為提供給客戶的版本， 而另一個 `PrivateSchedule` 版本則用於公司員工。 每個版本都會以個別的檔案上傳。 本教學課程示範如何使用單一 POST 將兩個檔案從頁面上傳到伺服器。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/upload-files/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/upload-files/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>安全性考量
 

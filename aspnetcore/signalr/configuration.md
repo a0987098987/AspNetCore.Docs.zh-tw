@@ -5,14 +5,14 @@ description: 了解如何設定 ASP.NET Core SignalR 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 02/07/2019
+ms.date: 04/15/2019
 uid: signalr/configuration
-ms.openlocfilehash: 2c1bb8d5e317813d1fdb8d474b7d7d892e6f67ec
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 703357fd52805e01515e5bac3b1a364ce7fe00f0
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264578"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087657"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 組態
 
@@ -167,6 +167,31 @@ let connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Information)
     .build();
 ```
+
+::: moniker range=">= aspnetcore-3.0"
+
+而不是`LogLevel`值，您也可以提供`string`值，表示記錄層級的名稱。 設定記錄在環境中的 SignalR 中並沒有存取權時，這是很有用`LogLevel`常數。
+
+```javascript
+let connection = new signalR.HubConnectionBuilder()
+    .withUrl("/myhub")
+    .configureLogging("warn")
+    .build();
+```
+
+下表列出可用的記錄層級。 您所提供的值`configureLogging`設定**最小**記錄所記錄的層級。 在此層級，記錄的訊息 **，或之後它列出資料表中的層級**，將會記錄。
+
+| 字串 | LogLevel |
+| - | - |
+| `"trace"` | `LogLevel.Trace` |
+| `"debug"` | `LogLevel.Debug` |
+| `"info"` **或** `"information"` | `LogLevel.Information` |
+| `"warn"` **或** `"warning"` | `LogLevel.Warning` |
+| `"error"` | `LogLevel.Error` |
+| `"critical"` | `LogLevel.Critical` |
+| `"none"` | `LogLevel.None` |
+
+::: moniker-end
 
 > [!NOTE]
 > 若要停用整個記錄，請指定`signalR.LogLevel.None`在`configureLogging`方法。

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/08/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: 4fe04cde2a234302845b2cbded106f1e809842bc
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: f357df0bbc51e881132e36ccb20f4ffdc3035032
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209290"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64883463"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -27,7 +27,7 @@ ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定
 
 可以建立自訂篩選條件來處理跨領域關注。 篩選條件可以避免在動作之間複製程式碼。 例如，錯誤處理例外狀況篩選條件中可以合併錯誤處理。
 
-[從 GitHub 檢視或下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)。
+[從 GitHub 檢視或下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)。
 
 ## <a name="how-filters-work"></a>篩選條件如何運作
 
@@ -425,4 +425,4 @@ public class UnprocessableResultFilter : Attribute, IAlwaysRunResultFilter
 ## <a name="next-actions"></a>後續動作
 
 * 請參閱[Razor Pages 的篩選方法](xref:razor-pages/filter)
-* 若要嘗試使用篩選條件，請[下載、測試及修改 Github 範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)。
+* 若要嘗試使用篩選條件，請[下載、測試及修改 Github 範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample)。

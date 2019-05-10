@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 04/05/2019
 uid: security/authorization/policies
 ms.openlocfilehash: ea9d687d3810c104d5b3fa39033849c21569709b
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59068166"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64891825"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的原則為基礎的授權
 

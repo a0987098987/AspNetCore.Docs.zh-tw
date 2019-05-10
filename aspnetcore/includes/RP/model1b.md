@@ -1,4 +1,5 @@
-<!-- THIS INCLUDE USED BY MVC AND RP --> 將下列屬性新增至 `Movie` 類別：
+<!-- THIS INCLUDE USED BY MVC AND RP -->
+將下列屬性新增至 `Movie` 類別：
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/Movie.cs?name=snippet1)]
 

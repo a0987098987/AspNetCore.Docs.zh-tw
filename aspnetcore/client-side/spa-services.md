@@ -7,11 +7,11 @@ ms.custom: H1Hack27Feb2017
 ms.date: 08/02/2017
 uid: client-side/spa-services
 ms.openlocfilehash: ee772e67ef14608bcc6e3498ade00424ff6090e5
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121372"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893945"
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>使用 JavaScriptServices 單一頁面應用程式建立 ASP.NET Core
 
@@ -67,7 +67,7 @@ SpaServices 提供有用的基礎結構如下所示：
     node -v && npm -v
     ```
 
-注意： 如果您要部署至 Azure 網站，您不需要執行以下任何動作&mdash;Node.js 已安裝並可在伺服器環境中。
+注意:如果您要部署至 Azure 網站，您不需要執行以下任何動作&mdash;Node.js 已安裝並可在伺服器環境中。
 
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 
@@ -123,7 +123,7 @@ ASP.NET Core[標籤協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
-注意： 在標籤協助程式中傳遞的屬性名稱以表示**PascalCase**標記法。 Javascript 中，相同的屬性名稱以表示的相反**camelCase**。 預設值的 JSON 序列化組態會負責這項差異。
+注意:標籤協助程式中傳遞的屬性名稱以表示**PascalCase**標記法。 Javascript 中，相同的屬性名稱以表示的相反**camelCase**。 預設值的 JSON 序列化組態會負責這項差異。
 
 若要展開在前述的程式碼範例時，資料可以傳遞從伺服器至檢視的 hydrating`globals`屬性提供給`resolve`函式：
 
@@ -225,7 +225,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 
 [!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_MvcRoutingTable&highlight=7-9)]
 
-提示： 他們已設定的順序評估路由。 因此，`default`進行模式比對第一次使用上述的程式碼範例中的路由。
+提示：路由會評估已設定的順序。 因此，`default`進行模式比對第一次使用上述的程式碼範例中的路由。
 
 <a name="new-project-creation"></a>
 

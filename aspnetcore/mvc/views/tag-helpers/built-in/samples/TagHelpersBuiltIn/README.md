@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 3113220696eb3e3cb8c126cd1287e60203d96378
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208330"
----
 # <a name="aspnet-core-built-in-tag-helpers-sample"></a>ASP.NET Core 內建的標記協助程式範例
 
 此範例說明搭配 MVC 和 Razor 頁面使用內建標籤協助程式的各種變化：

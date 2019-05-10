@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: fdad4ae367245cd3beabaf90587c1fe5e9162afe
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: 777bbcca3d1c2f03f386fa62df2a2e0b00409318
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59468591"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64889733"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式元件
 
@@ -21,7 +21,7 @@ ms.locfileid: "59468591"
 
 ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 這兩個標籤協助程式元件位於 <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers> 命名空間，可用於 MVC 和 Razor Pages。 標籤協助程式元件不需要在 *_ViewImports.cshtml* 中註冊應用程式。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="use-cases"></a>使用案例
 

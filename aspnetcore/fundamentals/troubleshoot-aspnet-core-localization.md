@@ -2,14 +2,15 @@
 title: 針對 ASP.NET Core 當地語系化進行疑難排解
 author: hishamco
 description: 了解如何診斷 ASP.NET Core 應用程式的當地語系化問題。
+ms.author: riande
 ms.date: 01/24/2019
 uid: fundamentals/troubleshoot-aspnet-core-localization
-ms.openlocfilehash: 73405f539c89d79096e7b536407cd9730679d478
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.openlocfilehash: c76732c1a0389818f8f9efae8fe384ca0f9ca308
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488989"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087397"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>針對 ASP.NET Core 當地語系化進行疑難排解
 
@@ -49,7 +50,7 @@ ASP.NET Core 已為當地語系化資源檔命名預先定義了規則與方針�
 - 某些語言的 `resx` 中缺少這項資源，但其他語言則有。
 - 如果您仍持續發生問題，請查看當地語系化記錄訊息 (在 `Debug` 記錄層級)，以獲取所缺少資源的詳細資料。
 
-**提示：** 當使用 `CookieRequestCultureProvider` 時，請確認當地語系化 Cookie 值中的文化特性 (Culture) 未使用單引號。例如，`c='en-UK'|uic='en-US'` 是無效的 Cookie 值，而 `c=en-UK|uic=en-US` 則有效。
+**提示：** 當使用 `CookieRequestCultureProvider` 時，請確認當地語系化 Cookie 值中的文化特性 (Culture) 未使用單引號。例如，`c='en-UK'|uic='en-US'` 是無效的 Cookie 值，而 `c=en-UK|uic=en-US` 則有效。_
 
 ## <a name="resources--class-libraries-issues"></a>資源與類別庫的問題
 

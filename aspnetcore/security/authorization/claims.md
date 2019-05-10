@@ -1,34 +1,34 @@
 ---
-title: ASP.NET Core 中宣告型授權
+title: ASP.NET Core 中的宣告型授權
 author: rick-anderson
-description: 了解如何加入 ASP.NET Core 應用程式中的宣告授權檢查。
+description: 了解如何在 ASP.NET Core 應用程式中新增宣告授權檢查。
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/claims
 ms.openlocfilehash: 6b60ae5515819b017ab577f655ed91ee4d8ed0dd
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275223"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086158"
 ---
-# <a name="claims-based-authorization-in-aspnet-core"></a>ASP.NET Core 中宣告型授權
+# <a name="claims-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的宣告型授權
 
 <a name="security-authorization-claims-based"></a>
 
-建立身分識別時它可能會指派一個或多個受信任的合作對象所發出的宣告。 宣告是代表什麼主體名稱值組，則為，沒有什麼主體可以。 例如，您可能駕駛執照，推動授權本機的授權單位所核發。 您的驅動程式授權上有您的出生日期。 在此情況下會宣告名稱`DateOfBirth`，宣告值會是您的日期的生日，例如`8th June 1970`簽發者就會推動授權授權單位。 在最簡單的宣告式授權會檢查宣告的值，並允許值為基礎的資源存取。 例如，如果您想要存取晚上社團授權程序可能會是：
+建立身分識別時可能會將它指派一個或多個受信任的合作對象所發出的宣告。 宣告會表示哪些主體名稱值組，沒有什麼主體可以。 例如，您可能必須駕照，由本機駕駛授權單位發出。 您的驅動程式授權上有出生日期。 在此情況下會宣告名稱`DateOfBirth`，宣告值會是您生日，例如`8th June 1970`簽發者就是推動的 「 授權 」 授權單位。 宣告型授權，簡單來說，會檢查宣告的值，並可讓根據該值資源的存取權。 例如，如果您想要存取晚上 club 授權程序可能是：
 
-媒體櫃門的安全主管有關會評估您的生日的宣告，以及其是否彼此信任的簽發者 （推動 「 授權 」 授權） 授與您存取之前的日期值。
+門安全性主管會評估您的生日的宣告，以及其是否信任簽發者 （駕駛 「 授權 」 授權） 授與您存取之前的日期值。
 
-身分識別可包含具有多個值的多個宣告，且可以包含多個相同類型的宣告。
+身分識別可以包含具有多個值的多個宣告，而且可以包含多個宣告型別相同。
 
 ## <a name="adding-claims-checks"></a>新增宣告檢查
 
-宣告型的授權檢查是宣告式-開發人員會內嵌它們對控制器或動作中控制站，其程式碼內指定的宣告，而目前的使用者必須擁有，按住選擇性地宣告的值必須可存取要求的資源。 需求會原則為基礎的宣告，開發人員必須建置和註冊表示宣告需求的原則。
+宣告型的授權檢查都是宣告式-開發人員將其內嵌控制器或動作的控制器內的程式碼內指定宣告也必須擁有目前的使用者，並選擇性地宣告的值必須維持一致的存取要求的資源。 宣告需求為基礎的原則、 開發人員必須建置和註冊原則，表示宣告需求。
 
-最簡單的類型宣告的宣告存在的原則看起來，並不會檢查值。
+最簡單的類型宣告的宣告存在的原則看起來並不會檢查值。
 
-首先您必須建置和註冊的原則。 這會以授權服務組態的一部分，其通常參與方式進行`ConfigureServices()`中您*Startup.cs*檔案。
+首先您要建置和註冊原則。 這會以授權服務組態的一部分，其通常會參與方式進行`ConfigureServices()`在您*Startup.cs*檔案。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -44,7 +44,7 @@ public void ConfigureServices(IServiceCollection services)
 
 在此情況下`EmployeeOnly`原則會檢查是否有`EmployeeNumber`上目前的身分識別宣告。
 
-接著，您套用原則使用`Policy`屬性`AuthorizeAttribute`屬性來指定原則名稱。
+您接著套用原則使用`Policy`屬性上的`AuthorizeAttribute`屬性來指定原則名稱;
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -54,7 +54,7 @@ public IActionResult VacationBalance()
 }
 ```
 
-`AuthorizeAttribute`屬性可以套用至整個控制站，這個執行個體中，只識別比對原則會控制站上允許的存取權的任何動作。
+`AuthorizeAttribute`屬性可以套用至整個控制器，這個執行個體中，只比對原則的身分識別會在控制站上允許任何動作的存取權。
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -66,7 +66,7 @@ public class VacationController : Controller
 }
 ```
 
-如果您有受保護的控制器`AuthorizeAttribute`屬性，但是想要允許匿名存取您所套用的特定動作`AllowAnonymousAttribute`屬性。
+如果您有受保護的控制器`AuthorizeAttribute`屬性，但想要允許匿名存取您所套用的特定動作`AllowAnonymousAttribute`屬性。
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -83,7 +83,7 @@ public class VacationController : Controller
 }
 ```
 
-大部分的宣告會隨附的值。 建立原則時，您可以指定允許值的清單。 下列範例會只有成功的員工的員工數目是 1、 2、 3、 4 或 5。
+大部分的宣告會隨附的值。 建立原則時，您可以指定一份允許的值。 下列範例會只有成功的員工的員工編號是 1、 2、 3、 4 或 5。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -98,13 +98,13 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="add-a-generic-claim-check"></a>加入泛型宣告檢查
+### <a name="add-a-generic-claim-check"></a>新增泛型宣告檢查
 
-如果宣告值不是單一值或不需要轉換，使用[RequireAssertion](/dotnet/api/microsoft.aspnetcore.authorization.authorizationpolicybuilder.requireassertion)。 如需詳細資訊，請參閱[符合原則中使用 func](xref:security/authorization/policies#using-a-func-to-fulfill-a-policy)。
+如果宣告值不是單一值，或需要轉換，請使用[RequireAssertion](/dotnet/api/microsoft.aspnetcore.authorization.authorizationpolicybuilder.requireassertion)。 如需詳細資訊，請參閱 <<c0> [ 滿足原則使用 func](xref:security/authorization/policies#using-a-func-to-fulfill-a-policy)。
 
 ## <a name="multiple-policy-evaluation"></a>多個原則評估
 
-如果您將多個原則套用至控制器或動作，然後必須通過所有原則，才可取得存取。 例如: 
+如果您將多個原則套用至控制器或動作，然後必須通過所有原則，才能在授與存取權。 例如: 
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -121,6 +121,6 @@ public class SalaryController : Controller
 }
 ```
 
-在上述範例中，可滿足任何身分識別`EmployeeOnly`原則可以存取`Payslip`控制站上的動作與該原則會強制執行。 不過若要呼叫`UpdateSalary`身分識別必須達到的動作*兩者*`EmployeeOnly`原則和`HumanResources`原則。
+在上述範例中，可滿足任何身分識別`EmployeeOnly`原則可以存取`Payslip`控制器上強制執行與該原則的動作。 不過若要呼叫`UpdateSalary`動作的身分識別必須滿足*兩者*`EmployeeOnly`原則和`HumanResources`原則。
 
-如果您想更複雜的原則，例如使日期的生日的宣告，計算年齡從它，然後檢查年齡 21 或更舊版本則需要撰寫[自訂原則的處理常式](xref:security/authorization/policies)。
+如果您想更複雜的原則，例如使生日的宣告的日期，計算從該年齡，然後檢查年齡是 21 歲，則您需要撰寫[自訂原則的處理常式](xref:security/authorization/policies)。

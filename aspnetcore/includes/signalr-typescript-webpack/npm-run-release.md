@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: c82571d3cfa57ccd6e7c83f654f119bdd8991486
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210437"
----
 ```console
 npm run release
 ```

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/13/2019
 uid: performance/performance-best-practices
-ms.openlocfilehash: 095db38cf3102f6e18930efdbbaeeb90dffad8af
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
-ms.translationtype: HT
+ms.openlocfilehash: 28dc7fb40c1b60f643108dcb44593a08942a1650
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614444"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087491"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>ASP.NET Core 效能最佳做法
 
@@ -25,7 +25,7 @@ ms.locfileid: "59614444"
 
 ## <a name="cache-aggressively"></a>積極地快取
 
-快取會討論這份文件的幾個部分。 如需詳細資訊，請參閱<xref:performance/caching/response>。
+快取會討論這份文件的幾個部分。 如需詳細資訊，請參閱 <xref:performance/caching/response>。
 
 ## <a name="avoid-blocking-calls"></a>避免封鎖呼叫
 
@@ -44,7 +44,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 * 以非同步方式呼叫資料存取和長時間執行作業的 Api。
 * 請控制站/Razor 頁面動作非同步。 在整個呼叫堆疊是為了受益於非同步[非同步/等候](/dotnet/csharp/programming-guide/concepts/async/)模式。
 
-程式碼剖析工具，例如[PerfView](https://github.com/Microsoft/perfview)，可用來尋找執行緒不斷新增到[執行緒集區](/windows/desktop/procthread/thread-pool)。 `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start`事件表示加入至執行緒集區的執行緒。 <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc  -->
+程式碼剖析工具，例如[PerfView](https://github.com/Microsoft/perfview)，可用來尋找執行緒不斷新增到[執行緒集區](/windows/desktop/procthread/thread-pools)。 `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start`事件表示加入至執行緒集區的執行緒。 <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc  -->
 
 ## <a name="minimize-large-object-allocations"></a>最小化大型物件配置
 
@@ -72,13 +72,13 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 建議：
 
 * **請**以非同步方式呼叫所有資料存取 API。
-* **請勿**擷取比所需資料多的資料。撰寫查詢來只傳回目前的 HTTP 要求所需的資料。
-* **請**考將擷取自資料庫或遠端服務的頻繁存取資料放入快取 (若可接受稍微過時的資料)。視案例而定，使用 [MemoryCache](xref:performance/caching/memory) 或 [DistributedCache](xref:performance/caching/distributed)。如需詳細資訊，請參閱 <xref:performance/caching/response>。
-* **請**將網路來回行程降到最低。目標是在單一呼叫中而非數個呼叫擷取所需的資料。
-* **請**使用 Entity Framework Core 中的[無追蹤查詢](/ef/core/querying/tracking#no-tracking-queries) (針對唯讀目的存取資料時)。EF Core 能以更有效率的方式傳回無追蹤查詢的結果。
+* **請勿**擷取比所需資料多的資料。 撰寫查詢來只傳回目前的 HTTP 要求所需的資料。
+* **請**考將擷取自資料庫或遠端服務的頻繁存取資料放入快取 (若可接受稍微過時的資料)。 視案例而定，使用 [MemoryCache](xref:performance/caching/memory) 或 [DistributedCache](xref:performance/caching/distributed)。 如需詳細資訊，請參閱 <xref:performance/caching/response>。
+* **請**將網路來回行程降到最低。 目標是在單一呼叫中而非數個呼叫擷取所需的資料。
+* **請**使用 Entity Framework Core 中的[無追蹤查詢](/ef/core/querying/tracking#no-tracking-queries) (針對唯讀目的存取資料時)。 EF Core 能以更有效率的方式傳回無追蹤查詢的結果。
 * **請**篩選及彙總 LINQ 查詢 (例如，使用 `.Where`、`.Select` 或 `.Sum` 陳述式)，讓篩選由資料庫執行。
-* **請**考慮 EF Core 會解析用戶端上的一些查詢運算子，這可能會導致沒有效率的查詢執行。如需詳細資訊，請參閱[用戶端評估效能問題](/ef/core/querying/client-eval#client-evaluation-performance-issues)。
-* **請勿**在集合上使用投影查詢，這可能會導致執行 "N+1" 個 SQL 查詢。如需詳細資訊，請參閱[相互關聯子查詢的最佳化](/ef/core/what-is-new/ef-core-2.1#optimization-of-correlated-subqueries)。
+* **請勿**考慮 EF Core 會解析有些查詢運算子，在用戶端，可能會沒有效率的查詢執行。 如需詳細資訊，請參閱 <c0> [ 用戶端評估效能問題](/ef/core/querying/client-eval#client-evaluation-performance-issues)。
+* **請勿**在集合上使用投影查詢，這可能會導致執行 "N+1" 個 SQL 查詢。 如需詳細資訊，請參閱[相互關聯子查詢的最佳化](/ef/core/what-is-new/ef-core-2.1#optimization-of-correlated-subqueries)。
 
 請參閱[EF 高效能](/ef/core/what-is-new/ef-core-2.0#explicitly-compiled-queries)如可改善高級別應用程式的效能的解決方法：
 
@@ -96,7 +96,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 建議：
 
 * **請勿**直接建立及處置 `HttpClient` 執行個體。
-* **請**使用 [HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests) 來擷取 `HttpClient` 執行個體。如需詳細資訊，請參閱[使用 HttpClientFactory 實作具有恢復功能的 HTTP 要求](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)。
+* **請勿**使用[HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)擷取`HttpClient`執行個體。 如需詳細資訊，請參閱 <c0> [ 實作具有恢復功能的 HTTP 要求使用 HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)。
 
 ## <a name="keep-common-code-paths-fast"></a>快速的常見程式碼路徑
 
@@ -116,9 +116,9 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 建議：
 
-* **請勿**等候長時間執行工作，以完成一般的 HTTP 要求處理的一部分。
-* **請**處理長時間執行的要求，請考慮[背景服務](xref:fundamentals/host/hosted-services)或跨處理序，與[Azure Function](/azure/azure-functions/)。 完成工作流程外是需要大量 CPU 的工作特別有幫助的。
-* **請**使用的即時通訊選項，例如[SignalR](xref:signalr/introduction)，以非同步方式與用戶端通訊。
+* **請勿**等候長時間執行的工作在一般 HTTP 要求處理期間完成。
+* **請**考慮透過[背景服務](xref:fundamentals/host/hosted-services)或透過 [Azure Function](/azure/azure-functions/) 在處理序外處理長時間執行的要求。 對於需要大量 CPU 的工作，在處理序外完成工作特別有幫助。
+* **請**使用即時通訊選項 (例如 [SignalR](xref:signalr/introduction))，以非同步方式與用戶端通訊。
 
 ## <a name="minify-client-assets"></a>縮短用戶端資產
 

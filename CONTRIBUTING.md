@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 98a03118954baa85b093a0514e1ac6f0fb6353e8
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320104"
----
 # <a name="contribute-to-the-aspnet-core-documentation"></a>參與 ASP.NET Core 文件
 
 本文件涵蓋參與 [ASP.NET 文件網站](https://docs.microsoft.com/aspnet/)所裝載文章和程式碼範例的程序。 歡迎您加入修正錯字和新增文章的行列。

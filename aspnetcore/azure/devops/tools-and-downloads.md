@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: 0c64e723f1b912323103f201a66c1edaeccdcc2d
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: ae4827f735274405021e5ee539d1029b7ddb9553
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284341"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64891985"
 ---
 # <a name="tools-and-downloads"></a>工具和下載
 
@@ -38,7 +38,7 @@ Azure 有數個介面，來佈建和管理資源，例如[Azure 入口網站](ht
 
 ## <a name="recommended-tools-windows-only"></a>建議的工具 (僅 Windows)
 
-* [Visual Studio](https://www.visualstudio.com/)的功能強大的 Azure 工具提供 GUI 來執行大部分的本指南中所述的功能。 任何版本的 Visual Studio 將會運作，包括免費的 Visual Studio Community Edition。 教學課程會示範使用和不使用 Visual Studio 的開發、 部署及 DevOps 寫入。
+* [Visual Studio](https://visualstudio.microsoft.com)的功能強大的 Azure 工具提供 GUI 來執行大部分的本指南中所述的功能。 任何版本的 Visual Studio 將會運作，包括免費的 Visual Studio Community Edition。 教學課程會示範使用和不使用 Visual Studio 的開發、 部署及 DevOps 寫入。
 
   確認 Visual Studio 具有下列[工作負載](/visualstudio/install/modify-visual-studio)安裝：
 

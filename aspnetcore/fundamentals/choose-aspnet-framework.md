@@ -3,15 +3,15 @@ title: 在 ASP.NET 4.x 和 ASP.NET Core 之間進行選擇
 author: rick-anderson
 description: 說明 ASP.NET Core 與ASP.NET 4.x，以及如何在兩者之間進行選擇。
 ms.author: riande
-ms.custom: seodec18
+ms.custom: mvc, seodec18
 ms.date: 09/11/2018
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: eb216bdac7dd029c3d985f2edd9e70eb91f42883
-ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
+ms.openlocfilehash: 454f1021520f8f22eb2b0417a958b78690f89cef
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335336"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64886963"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>在 ASP.NET 4.x 和 ASP.NET Core 之間進行選擇
 
@@ -36,7 +36,7 @@ ASP.NET 4.x 是一個成熟的架構，其提供在 Windows 上建置企業級�
 |為 Windows、macOS 或 Linux 建置|為 Windows 建置|
 |從 ASP.NET Core 2.x 開始，[Razor 頁面](xref:razor-pages/index)是建立 Web UI 的建議方法。 另請參閱 [MVC](xref:mvc/overview)、[Web API](xref:tutorials/first-web-api) 和 [SignalR](xref:signalr/introduction)。|使用 [Web Forms](/aspnet/web-forms)、[SignalR](/aspnet/signalr)、[MVC](/aspnet/mvc)、[Web API](/aspnet/web-api/)、[WebHooks](/aspnet/webhooks/) 或 [Web Pages](/aspnet/web-pages)|
 |每部電腦多個版本|每部電腦一個版本|
-|在 Visual Studio、[Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/) 或 [Visual Studio Code](https://code.visualstudio.com/) 中使用 C# 或 F# 進行開發|在 Visual Studio 中使用 C#、VB 或 F# 進行開發|
+|在 Visual Studio、[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) 或 [Visual Studio Code](https://code.visualstudio.com/) 中使用 C# 或 F# 進行開發|在 Visual Studio 中使用 C#、VB 或 F# 進行開發|
 |效能比 ASP.NET 4.x 更高|效能良好|
 |[選擇 .NET Framework 或.NET Core 執行階段](/dotnet/standard/choosing-core-framework-server)|使用 .NET Framework 執行階段|
 

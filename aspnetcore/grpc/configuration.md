@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 04/09/2019
 uid: grpc/configuration
 ms.openlocfilehash: 66dfb9ec136616f10c1b7aaad766e18813b87de4
-ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59983130"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087333"
 ---
 # <a name="grpc-for-aspnet-core-configuration"></a>ASP.NET Core 組態 gRPC
 

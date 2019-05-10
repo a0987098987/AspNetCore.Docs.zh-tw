@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 02/14/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 4fa32fb4fe1d482f1000cd803cd2d26cd9ff2341
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: da5be57fa728a4bc075a580cb9b57301046b4132
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410530"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64882493"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -210,9 +210,9 @@ HTTP.sys 也可用於只公開到內部網路的應用程式。
 
 伺服器會在整合式開發環境 (IDE) 或編輯器啟動應用程式時啟動：
 
-* [Visual Studio](https://www.visualstudio.com/vs/) &ndash; 您可以使用啟動設定檔搭配 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)/[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)或主控台來啟動應用程式和伺服器。
+* [Visual Studio](https://visualstudio.microsoft.com) &ndash; 您可以使用啟動設定檔搭配 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)/[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)或主控台來啟動應用程式和伺服器。
 * [Visual Studio Code](https://code.visualstudio.com/) &ndash; 應用程式和伺服器會由 [Omnisharp](https://github.com/OmniSharp/omnisharp-vscode) 啟動，這也可啟動 CoreCLR 偵錯工具。
-* [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/) &ndash; 應用程式和伺服器會由 [Mono Soft-Mode 偵錯工具](https://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/)啟動。
+* [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) &ndash; 應用程式和伺服器會由 [Mono Soft-Mode 偵錯工具](https://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/)啟動。
 
 當您在專案資料夾中使用命令提示字元啟動應用程式時，[dotnet run](/dotnet/core/tools/dotnet-run) 會啟動應用程式和伺服器 (僅限 Kestrel 和 HTTP.sys)。 組態是由 `-c|--configuration` 選項指定，會設為 `Debug` (預設值) 或 `Release`。 如果 launchSettings.json 檔案中出現啟動設定檔，請使用 `--launch-profile <NAME>` 選項來設定啟動設定檔 (例如，`Development` 或 `Production`)。 如需詳細資訊，請參閱 [dotnet run](/dotnet/core/tools/dotnet-run) 和 [.NET Core 發佈封裝](/dotnet/core/build/distribution-packaging)。
 
@@ -230,14 +230,14 @@ HTTP.sys 也可用於只公開到內部網路的應用程式。
   * 目標 Framework：.NET Core 2.2 或更新版本
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
   * Windows Server 2016/Windows 10 或更新版本
-  * 目標 Framework:不適用於 HTTP.sys 部署。
+  * 目標 Framework：不適用於 HTTP.sys 部署。
 * [IIS (同處理序)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
   * 目標 Framework：.NET Core 2.2 或更新版本
 * [IIS (跨處理序)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
   * 公眾對應 Edge Server 連線使用 HTTP/2，但是對 Kestrel 的反向 Proxy 連線使用 HTTP/1.1。
-  * 目標 Framework:不適用於 IIS 跨處理序部署。
+  * 目標 Framework：不適用於 IIS 跨處理序部署。
 
 &dagger;Kestrel 在 Windows Server 2012 R2 與 Windows 8.1 對 HTTP/2 的支援有限。 支援有限的原因是這些作業系統上的支援 TLS 密碼編譯套件清單有限。 可能需要使用橢圓曲線數位簽章演算法 (ECDSA) 產生的憑證來保護 TLS 連線。
 
@@ -247,11 +247,11 @@ HTTP.sys 也可用於只公開到內部網路的應用程式。
 
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
   * Windows Server 2016/Windows 10 或更新版本
-  * 目標 Framework:不適用於 HTTP.sys 部署。
+  * 目標 Framework：不適用於 HTTP.sys 部署。
 * [IIS (跨處理序)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 或更新版本；IIS 10 或更新版本
   * 公眾對應 Edge Server 連線使用 HTTP/2，但是對 Kestrel 的反向 Proxy 連線使用 HTTP/1.1。
-  * 目標 Framework:不適用於 IIS 跨處理序部署。
+  * 目標 Framework：不適用於 IIS 跨處理序部署。
 
 ::: moniker-end
 

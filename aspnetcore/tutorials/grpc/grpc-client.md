@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 4/10/2019
 uid: tutorials/grpc/grpc-client
-ms.openlocfilehash: 031afbfaf097c518a85400b0b6abbc135c1bc611
-ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
+ms.openlocfilehash: ec6bf5072c76de640a78b2c3f13dd1fc552b9d04
+ms.sourcegitcommit: b508b115107e0f8d7f62b25cfcc8ad45e1373459
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59674130"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65212645"
 ---
 # <a name="tutorial-create-a-net-core-grpc-client"></a>教學課程：建立 .NET Core gRPC 用戶端
 
@@ -36,15 +36,15 @@ ms.locfileid: "59674130"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-請遵循[此處](https://docs.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio)的指示，建立名為 *GrpcGreeterClient* 的主控台應用程式。
+請遵循[此處](/dotnet/core/tutorials/with-visual-studio)的指示，建立名為 *GrpcGreeterClient* 的主控台應用程式。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-請遵循[此處](https://docs.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code)的指示，建立名為 *GrpcGreeterClient* 的主控台應用程式。
+請遵循[此處](/dotnet/core/tutorials/with-visual-studio-code)的指示，建立名為 *GrpcGreeterClient* 的主控台應用程式。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-請遵循[此處](https://docs.microsoft.com/en-us/dotnet/core/tutorials/using-on-mac-vs-full-solution)的指示，建立名為 *GrpcGreeterClient* 的主控台應用程式。
+請遵循[此處](/dotnet/core/tutorials/using-on-mac-vs-full-solution)的指示，建立名為 *GrpcGreeterClient* 的主控台應用程式。
 
 <!-- End of VS tabs -->
 
@@ -89,7 +89,7 @@ ms.locfileid: "59674130"
 從 [整合式終端機] 執行下列命令：
 
 ```console
-dotnet add TodoApi.csproj package Grpc.Core
+dotnet add GrpcGreeterClient.csproj package Grpc.Core
 ```
 
 為 Google.Protobuf 和 Grpc.Tools 重複進行

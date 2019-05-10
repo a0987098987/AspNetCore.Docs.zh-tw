@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/18/2018
 uid: aspnetcore-1.1
 ms.openlocfilehash: a21b2b82bfefb5b24898cf58ef97284a143e2e4a
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637595"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086421"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>ASP.NET Core 1.1 的新功能
 

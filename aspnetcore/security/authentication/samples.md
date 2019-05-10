@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 01/31/2019
 uid: security/authentication/samples
 ms.openlocfilehash: 7b3c911d60ad4737ebd12ce6f7628ad624b11658
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236670"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897155"
 ---
 # <a name="authentication-samples-for-aspnet-core"></a>ASP.NET Core 的驗證範例
 

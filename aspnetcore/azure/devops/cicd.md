@@ -7,11 +7,11 @@ ms.date: 10/24/2018
 ms.custom: mvc, seodec18
 uid: azure/devops/cicd
 ms.openlocfilehash: 5fdf52235b49119503885f92c370dc588e809ffe
-ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
-ms.translationtype: HT
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60165262"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893995"
 ---
 # <a name="continuous-integration-and-deployment"></a>持續整合和部署
 

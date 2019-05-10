@@ -1,6 +1,6 @@
 # <a name="response-compression-sample-application-aspnet-core-2x"></a>回應壓縮範例應用程式 (ASP.NET Core 2.x)
 
-此範例說明如何使用 ASP.NET Core 2.x 壓縮 HTTP 回應的回應壓縮中介軟體。 此範例示範 Gzip、 Brotli 和自訂壓縮提供者的文字和影像的回應，並示範如何加入壓縮的 MIME 類型。 如需 ASP.NET Core 1.x 範例，請參閱[回應壓縮範例應用程式 (ASP.NET Core 1.x)](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples/1.x)。
+此範例說明如何使用 ASP.NET Core 2.x 壓縮 HTTP 回應的回應壓縮中介軟體。 此範例示範 Gzip、 Brotli 和自訂壓縮提供者的文字和影像的回應，並示範如何加入壓縮的 MIME 類型。 如需 ASP.NET Core 1.x 範例，請參閱[回應壓縮範例應用程式 (ASP.NET Core 1.x)](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples/1.x)。
 
 ## <a name="examples-in-this-sample"></a>這個範例中的範例
 

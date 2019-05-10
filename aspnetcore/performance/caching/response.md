@@ -6,18 +6,18 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 02/28/2019
 uid: performance/caching/response
-ms.openlocfilehash: efcf443b1487827fe6cf4d43b6dda69adf4d61fb
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 2e247dcff2cbaa3711a9206d7237a061ae351e1d
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345742"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64892465"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core 中的回應快取
 
 藉由[John Luo](https://github.com/JunTaoLuo)， [Rick Anderson](https://twitter.com/RickAndMSFT)， [Steve Smith](https://ardalis.com/)，和[Luke Latham](https://github.com/guardrex)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/response/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 回應快取可減少用戶端或 proxy 會向 web 伺服器提出的要求數目。 回應快取也可以減少 web 伺服器執行產生回應的工作。 回應快取是由指定您想用戶端、 proxy 和中的介軟體來快取回應標頭來控制。
 
@@ -39,7 +39,7 @@ ms.locfileid: "57345742"
 
 其他扮演的角色中快取的快取標頭會顯示下表中。
 
-| 頁首                                                     | 功能 |
+| 標頭                                                     | 功能 |
 | ---------------------------------------------------------- | -------- |
 | [存留期](https://tools.ietf.org/html/rfc7234#section-5.1)     | 估計的秒數之後產生回應，或在原始伺服器已成功驗證的時間量。 |
 | [Expires](https://tools.ietf.org/html/rfc7234#section-5.3) | 之後，回應會被視為過時時間。 |
@@ -60,25 +60,25 @@ ms.locfileid: "57345742"
 
 記憶體中快取會使用伺服器記憶體儲存快取的資料。 這種類型的快取是適用於單一伺服器或多部伺服器，使用*黏性工作階段*。 黏性工作階段，表示用戶端的要求會一律路由傳送至相同的伺服器進行處理。
 
-如需詳細資訊，請參閱<xref:performance/caching/memory>。
+如需詳細資訊，請參閱 <xref:performance/caching/memory>。
 
 ### <a name="distributed-cache"></a>分散式快取
 
 若要將資料儲存在記憶體中，應用程式裝載在雲端或伺服器的伺服器陣列時使用分散式快取。 處理要求的伺服器之間共用快取。 用戶端可以提交的要求，如果用戶端快取的資料可用，由群組中的任何伺服器。 ASP.NET Core 提供 SQL Server 和分散式的 Redis 快取。
 
-如需詳細資訊，請參閱<xref:performance/caching/distributed>。
+如需詳細資訊，請參閱 <xref:performance/caching/distributed>。
 
 ### <a name="cache-tag-helper"></a>快取標籤協助程式
 
 使用快取標籤協助程式會快取中的 MVC 檢視或 Razor 頁面的內容。 快取標籤協助程式會使用記憶體中快取來儲存資料。
 
-如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>。
 
 ### <a name="distributed-cache-tag-helper"></a>分散式快取標籤協助程式
 
 快取中的 MVC 檢視或 Razor 頁面的內容，在分散式雲端或 web 伺服陣列案例中，使用分散式快取標籤協助程式。 分散式快取標籤協助程式會使用 SQL Server 或 Redis 來儲存資料。
 
-如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>。
 
 ## <a name="responsecache-attribute"></a>ResponseCache 屬性
 
@@ -105,7 +105,7 @@ ms.locfileid: "57345742"
 * 寫出在設定的屬性為根據適當的標頭<xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute>。
 * 更新快取 HTTP 功能，如果回應<xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys>設定。
 
-### <a name="vary"></a>而有所不同
+### <a name="vary"></a>Vary
 
 此標頭，才會寫入時<xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByHeader>屬性設定。 將屬性設定為`Vary`屬性的值。 下列範例會使用<xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByHeader>屬性：
 

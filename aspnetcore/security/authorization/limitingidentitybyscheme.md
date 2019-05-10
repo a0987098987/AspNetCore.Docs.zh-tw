@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/22/2018
 uid: security/authorization/limitingidentitybyscheme
 ms.openlocfilehash: 778bb61f472ab2e76f85da5999d3c79238188f19
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248195"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897335"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>ASP.NET Core 中的特定結構描述的授權
 
@@ -18,7 +18,7 @@ ms.locfileid: "56248195"
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-驗證服務設定期間驗證時，名為一種驗證配置。 例如: 
+驗證服務設定期間驗證時，名為一種驗證配置。 例如：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -43,7 +43,7 @@ public void ConfigureServices(IServiceCollection services)
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-在驗證期間設定驗證中介軟體時，會命名為驗證配置。 例如: 
+在驗證期間設定驗證中介軟體時，會命名為驗證配置。 例如：
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -77,7 +77,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 ## <a name="selecting-the-scheme-with-the-authorize-attribute"></a>選取 Authorize 屬性結構描述
 
-在 授權應用程式會指出要使用的處理常式。 選取與應用程式會藉由傳遞以逗號分隔清單中的驗證配置授權的處理常式`[Authorize]`。 `[Authorize]`屬性會指定驗證配置，或是不論預設值設定使用的配置。 例如: 
+在 授權應用程式會指出要使用的處理常式。 選取與應用程式會藉由傳遞以逗號分隔清單中的驗證配置授權的處理常式`[Authorize]`。 `[Authorize]`屬性會指定驗證配置，或是不論預設值設定使用的配置。 例如：
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -182,7 +182,7 @@ public void ConfigureServices(IServiceCollection services)
 > [!NOTE]
 > 只有一個 JWT 持有人驗證已註冊的預設驗證配置`JwtBearerDefaults.AuthenticationScheme`。 註冊以唯一的驗證配置需要額外的驗證。
 
-下一個步驟是更新預設的授權原則，以接受兩個驗證配置。 例如: 
+下一個步驟是更新預設的授權原則，以接受兩個驗證配置。 例如：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

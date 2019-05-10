@@ -5,12 +5,12 @@ description: 深入了解 ASP.NET Core 2.0 的新功能。
 ms.author: riande
 ms.date: 07/10/2017
 uid: aspnetcore-2.0
-ms.openlocfilehash: 60e44e64bd1cfada0143e374f6f51dec0e4e84f8
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 07e490fd844f0f9044afce37651ef680ed0c894d
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209881"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64883093"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
@@ -47,7 +47,7 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 
 `IConfiguration` 執行個體預設新增至 ASP.NET Core 2.0 的服務容器中。 服務容器中的 `IConfiguration` 可讓應用程式從容器輕鬆擷取組態值。
 
-如需已規劃文件狀態的相關資訊，請參閱 [GitHub 問題](https://github.com/aspnet/Docs/issues/3387)。
+如需已規劃文件狀態的相關資訊，請參閱 [GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/3387)。
 
 ## <a name="logging-update"></a>記錄更新
 
@@ -61,7 +61,7 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 
 新範本可用於為使用 [Azure AD B2C] 之 Web 應用程式及 Web API 設定驗證 (https://azure.microsoft.com/services/active-directory-b2c/)。
 
-如需已規劃文件狀態的資訊，請參閱 [GitHub 問題](https://github.com/aspnet/Docs/issues/3054)。
+如需已規劃文件狀態的資訊，請參閱 [GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/3054)。
 
 ## <a name="identity-update"></a>身分識別更新
 
@@ -113,7 +113,7 @@ return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNo
 
 在 ASP.NET Core 2.0 中，在 Visual Studio 中偵錯以及 (加入後) 在 Azure 應用程式服務中執行時，此功能可用來自動啟用 Application Insights 診斷。 如此一來，專案範本預設不會再新增 Application Insights 套件和程式碼。
 
-如需已規劃文件狀態的資訊，請參閱 [GitHub 問題](https://github.com/aspnet/Docs/issues/3389)。
+如需已規劃文件狀態的資訊，請參閱 [GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/3389)。
 
 ## <a name="automatic-use-of-anti-forgery-tokens"></a>自動使用防偽權杖
 

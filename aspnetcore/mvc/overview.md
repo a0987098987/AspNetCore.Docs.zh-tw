@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 01/08/2018
 uid: mvc/overview
 ms.openlocfilehash: eb636616ab952f506993ae5f4692e5e966bb20f4
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59516296"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087312"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 

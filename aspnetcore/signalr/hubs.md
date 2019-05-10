@@ -7,18 +7,18 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/20/2018
 uid: signalr/hubs
-ms.openlocfilehash: f037c1f6fd7ef773b8e7b2fd4fdf6e28222c441a
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: eb87aab2b7f3a58c6cec80f48f7616749f0809e2
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327257"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897075"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR 中樞
 
 藉由[Rachel Appel](https://twitter.com/rachelappel)和[Kevin Griffin](https://twitter.com/1kevgriff)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [（如何下載）](xref:index#how-to-download-a-sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [（如何下載）](xref:index#how-to-download-a-sample)
 
 ## <a name="what-is-a-signalr-hub"></a>什麼是 SignalR 中樞
 
@@ -160,7 +160,7 @@ public interface IClient
 
 [!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
-如果您的中樞擲回例外狀況，不關閉連線。 根據預設，SignalR 會傳回給用戶端的一般錯誤訊息。 例如: 
+如果您的中樞擲回例外狀況，不關閉連線。 根據預設，SignalR 會傳回給用戶端的一般錯誤訊息。 例如：
 
 ```
 Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking 'MethodName' on the server.

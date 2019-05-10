@@ -6,11 +6,11 @@ ms.author: avickers
 ms.date: 04/24/2019
 uid: security/authentication/customize_identity_model
 ms.openlocfilehash: ae5f4567a8921ce277cd6153f37a5558bcf4e261
-ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59982781"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897855"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>ASP.NET Core 中的身分識別模型自訂
 
@@ -209,7 +209,7 @@ builder.Entity<TUserRole>(b =>
 
 而不是直接使用這些類型，類型可以作為基底類別的應用程式本身的類型。 `DbContext`身分識別所定義的類別是泛型，使不同的 CLR 型別可以用一或多個模型中的實體類型。 這些泛型型別也允許`User`變更主索引鍵 (PK) 資料類型。
 
-針對角色，使用支援的身分識別時<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>應該使用類別。 例如: 
+針對角色，使用支援的身分識別時<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>應該使用類別。 例如：
 
 ```csharp
 // Uses all the built-in Identity types
@@ -355,7 +355,7 @@ services.AddDefaultIdentity<ApplicationUser>()
         .AddDefaultUI();
 ```
 
-在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱<xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。 如需詳細資訊，請參閱:
+在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。 如需詳細資訊，請參閱:
 
 * [Scaffold 身分識別](xref:security/authentication/scaffold-identity)
 * [加入、 下載及刪除身分識別的自訂使用者資料](xref:security/authentication/add-user-data)
@@ -465,7 +465,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     主索引鍵的資料型別推斷藉由分析<xref:Microsoft.EntityFrameworkCore.DbContext>物件。
 
-    在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱<xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。
+    在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。
 
     ::: moniker-end
 
@@ -509,7 +509,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     主索引鍵的資料型別推斷藉由分析<xref:Microsoft.EntityFrameworkCore.DbContext>物件。
 
-    在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱<xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。
+    在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。
 
     ::: moniker-end
 
@@ -942,7 +942,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ### <a name="map-to-a-different-schema"></a>對應到不同的結構描述
 
-結構描述的行為會跨資料庫提供者。 SQL Server 的預設值是建立中的所有資料表*dbo*結構描述。 可以在不同的結構描述中建立資料表。 例如: 
+結構描述的行為會跨資料庫提供者。 SQL Server 的預設值是建立中的所有資料表*dbo*結構描述。 可以在不同的結構描述中建立資料表。 例如：
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)

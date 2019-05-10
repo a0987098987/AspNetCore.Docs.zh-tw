@@ -5,12 +5,12 @@ description: 示範如何將搜尋新增至基本 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: 41d7494b77edaddbf719cab087142f0132dd3ed6
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: ca3b0baeddd31e10243689091d435767079bb979
+ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087289"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65450855"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>將搜尋新增至 ASP.NET Core MVC 應用程式
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: c160d93e22fc5b3511ba4e5539cce8576346898b
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 4e07b5803adbce94982584212fa65afbfd427b64
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665536"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893505"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面路由和應用程式慣例
 
@@ -26,7 +26,7 @@ ms.locfileid: "57665536"
 
 有不能作為路由區段或參數名稱的保留的字。 如需詳細資訊，請參閱[路由：保留的路由名稱](xref:fundamentals/routing#reserved-routing-names)。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 | 情節 | 範例會示範 ... |
 | -------- | --------------------------- |
@@ -94,7 +94,7 @@ Razor Pages 路由和 MVC 控制器路由會共用實作。 在 MVC 主題中的
 
 可能的話，不需要設定`Order`，這會導致`Order = 0`。 依賴路由來選取正確的路由。
 
-Razor 頁面選項，例如新增<xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>，會新增至服務集合中新增 MVC 時`Startup.ConfigureServices`。 如需範例，請參閱[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)。
+Razor 頁面選項，例如新增<xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>，會新增至服務集合中新增 MVC 時`Startup.ConfigureServices`。 如需範例，請參閱[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)。
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 

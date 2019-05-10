@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 07/16/2018
 uid: security/data-protection/implementation/key-encryption-at-rest
 ms.openlocfilehash: 52c3137dbe467096364b42430c92aecc7c15e313
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219286"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64892305"
 ---
 # <a name="key-encryption-at-rest-in-aspnet-core"></a>ASP.NET Core 中的待用的金鑰加密
 
@@ -34,7 +34,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-如需詳細資訊，請參閱 <<c0> [ 設定 ASP.NET Core 資料保護： ProtectKeysWithAzureKeyVault](xref:security/data-protection/configuration/overview#protectkeyswithazurekeyvault)。
+如需詳細資訊，請參閱[設定 ASP.NET Core 資料保護：ProtectKeysWithAzureKeyVault](xref:security/data-protection/configuration/overview#protectkeyswithazurekeyvault)。
 
 ::: moniker-end
 
@@ -82,7 +82,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-## <a name="windows-dpapi-ng"></a>Windows DPAPI NG
+## <a name="windows-dpapi-ng"></a>Windows DPAPI-NG
 
 **這項機制是僅適用於 Windows 8/Windows Server 2012 或更新版本。**
 

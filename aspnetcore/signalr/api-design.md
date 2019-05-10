@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 11/06/2018
 uid: signalr/api-design
 ms.openlocfilehash: 3f17bf055b793e8fc91fbcc15f668928ca261f77
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571548"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897805"
 ---
 # <a name="signalr-api-design-considerations"></a>SignalR 的 API 設計考量
 
@@ -32,7 +32,7 @@ JavaScript 用戶端會呼叫此方法使用`invoke`，如下所示：
 
 [!code-typescript[CallWithOneParameter](api-design/sample/Samples.ts?name=CallWithOneParameter)]
 
-如果您稍後會將第二個參數新增至伺服器方法，較舊的用戶端不會提供此參數值。 例如: 
+如果您稍後會將第二個參數新增至伺服器方法，較舊的用戶端不會提供此參數值。 例如：
 
 [!code-csharp[ParameterBasedNewVersion](api-design/sample/Samples.cs?name=ParameterBasedNewVersion)]
 

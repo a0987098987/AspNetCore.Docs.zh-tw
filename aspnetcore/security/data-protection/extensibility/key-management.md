@@ -7,11 +7,11 @@ ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: security/data-protection/extensibility/key-management
 ms.openlocfilehash: 28932cbef1cc797338980f3e0de8b09caee324c0
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284600"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64896905"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>ASP.NET Core 中的金鑰管理擴充性
 
@@ -210,7 +210,7 @@ services.AddSingleton<IXmlEncryptor>(new MyCustomXmlEncryptor());
 
 `IXmlDecryptor`介面表示型別，以便將解密`XElement`會是已譯成密碼透過`IXmlEncryptor`。 它會公開單一的 API:
 
-* 解密 (XElement encryptedElement):XElement
+* Decrypt(XElement encryptedElement) :XElement
 
 `Decrypt`方法復原所執行的加密`IXmlEncryptor.Encrypt`。 一般而言，每個具體`IXmlEncryptor`實作會有相對應的具體`IXmlDecryptor`實作。
 

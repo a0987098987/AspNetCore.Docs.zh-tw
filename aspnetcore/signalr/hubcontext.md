@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/01/2018
 uid: signalr/hubcontext
-ms.openlocfilehash: 73cf2c9d30ed5e409a75827fdab1f22b20427884
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 7ec52d4711fc191dcb83120cf54b1dc28c41f947
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837932"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894475"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>傳送來自外部中樞訊息
 
@@ -20,7 +20,7 @@ ms.locfileid: "54837932"
 
 SignalR 中樞會將訊息傳送至用戶端連線到 SignalR 伺服器的核心概念。 您也可從您的應用程式使用中的其他地方將訊息傳送`IHubContext`服務。 這篇文章說明如何存取 SignalR`IHubContext`來傳送通知給從中樞以外的用戶端。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
 
 ## <a name="get-an-instance-of-ihubcontext"></a>取得 IHubContext 的執行個體
 

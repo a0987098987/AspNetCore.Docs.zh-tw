@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
 ms.openlocfilehash: 7f97be651c067e94f29eef4956c10d87ec031bed
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614281"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887903"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 

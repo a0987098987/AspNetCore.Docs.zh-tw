@@ -5,12 +5,12 @@ description: 了解如何建立和使用 ASP.NET Core 中的 Web API 自訂格�
 ms.author: tdykstra
 ms.date: 02/08/2017
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: 611840defd1da3b57b365c99deaf1c67f1568227
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: ece60b47f345235a084faacf8e59b792856614d2
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264624"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887053"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的自訂格式器
 
@@ -18,7 +18,7 @@ ms.locfileid: "58264624"
 
 ASP.NET Core MVC 內建支援在 Web API 中使用 JSON 或 XML 的資料交換。 本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-custom-formatters"></a>自訂格式器的使用時機
 
@@ -51,7 +51,7 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON 或 XML 的資料交換�
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=classdef)]
 
-若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 如需二進位類型，請從 [InputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.inputformatter) 或 [OutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformatter) 基底類別來衍生。
 
@@ -61,7 +61,7 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON 或 XML 的資料交換�
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=ctor&highlight=3,5-6)]
 
-若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 > [!NOTE]
 > 您無法在格式器類別中執行建構函式的相依性插入。 舉例來說，您無法藉由將記錄器參數新增至建構函式，而取得記錄器。 若要存取服務，您必須使用可傳入方法的內容物件。 [下列](#read-write)程式碼範例會示範這項操作。
@@ -72,7 +72,7 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON 或 XML 的資料交換�
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=canwritetype)]
 
-若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 #### <a name="the-canwriteresult-method"></a>CanWriteResult 方法
 
@@ -92,7 +92,7 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON 或 XML 的資料交換�
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=writeresponse&highlight=3-4)]
 
-若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 ## <a name="how-to-configure-mvc-to-use-a-custom-formatter"></a>如何設定 MVC 以使用自訂格式器
 
@@ -105,7 +105,7 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON 或 XML 的資料交換�
 ## <a name="next-steps"></a>後續步驟
 
 * [GitHub 上的純文字格式器範例程式碼。](https://github.com/aspnet/Entropy/tree/master/samples/Mvc.Formatters)
-* [此文件的範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)，其會實作簡單的 vCard 輸入和輸出格式器。 應用程式會讀取並寫入 vCard，如下範例所示：
+* [此文件的範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)，其會實作簡單的 vCard 輸入和輸出格式器。 應用程式會讀取並寫入 vCard，如下範例所示：
 
 ```
 BEGIN:VCARD

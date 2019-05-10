@@ -7,11 +7,11 @@ ms.custom: mvc, seodec18
 ms.date: 1/11/2019
 uid: security/authentication/google-logins
 ms.openlocfilehash: 44c79b3279db7946b6d89a726bd3f5acfb5f51af
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59705587"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64895535"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Google 外部登入設定
 

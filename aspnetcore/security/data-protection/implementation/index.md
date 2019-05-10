@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/index
 ms.openlocfilehash: a21738ee2c092a9d14b7d448f7d3c7694f456ca8
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273819"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64882683"
 ---
 # <a name="aspnet-core-data-protection-implementation"></a>ASP.NET Core 資料保護實作
 

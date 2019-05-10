@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/iis/modules
 ms.openlocfilehash: 9770801b527829b131257da7c6e670bd33c23634
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59468869"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64884143"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 

@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
 ms.openlocfilehash: a5b33451a763c297c6d7885855a321c43435abb4
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325207"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64890453"
 ---
 # <a name="distributed-cache-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的分散式快取標籤協助程式
 
@@ -60,7 +60,7 @@ ms.locfileid: "49325207"
 
 ## <a name="distributed-cache-tag-helper-idistributedcache-implementations"></a>分散式快取標記協助程式 IDistributedCache 實作
 
-ASP.NET Core 內建兩個 <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> 實作。 其中一個是以 SQL Server 為基礎，另一項是以 Redis 為基礎。 如需這些實作的詳細資料，請參閱<xref:performance/caching/distributed>。 這兩個實作都涉及在 `Startup` 的 `IDistributedCache` 中設定執行個體。
+ASP.NET Core 內建兩項 <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> 實作。 其中一個是以 SQL Server 為基礎，另一項是以 Redis 為基礎。 如需這些實作的詳細資料，請參閱<xref:performance/caching/distributed>。 這兩個實作都涉及在 `Startup` 的 `IDistributedCache` 中設定執行個體。
 
 沒有特別與使用 `IDistributedCache` 的任何特定實作建立關聯的標籤屬性。
 

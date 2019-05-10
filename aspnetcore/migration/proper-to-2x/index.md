@@ -6,11 +6,11 @@ ms.author: scaddie
 ms.date: 12/11/2018
 uid: migration/proper-to-2x/index
 ms.openlocfilehash: 7b6aec621efa5e1400fcfd4396a2322733113ec1
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209132"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64882903"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 

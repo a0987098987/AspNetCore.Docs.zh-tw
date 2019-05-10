@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
 ms.openlocfilehash: 916a68c187cbf516a59d3c5d7578cdb6ada01b86
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59705506"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887663"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>ASP.NET Core 的影像標籤協助程式
 

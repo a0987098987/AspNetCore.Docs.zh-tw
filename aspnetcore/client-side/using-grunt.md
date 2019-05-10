@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: client-side/using-grunt
 ms.openlocfilehash: fc912974fb6ed3c65bb46a7d616d9e531587d946
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208875"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894635"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>在 ASP.NET Core 中使用 Grunt
 

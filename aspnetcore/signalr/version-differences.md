@@ -7,11 +7,11 @@ ms.author: bradyg
 ms.date: 11/14/2018
 uid: signalr/version-differences
 ms.openlocfilehash: 091fc44fccf820a394e7c6f775700c85bebc9101
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836658"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64892025"
 ---
 # <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>ASP.NET SignalR 及 ASP.NET Core SignalR 之間的差異
 

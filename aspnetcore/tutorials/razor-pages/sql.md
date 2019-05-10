@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/07/2017
 uid: tutorials/razor-pages/sql
 ms.openlocfilehash: 6cef55382d8c77e95280ea4eea2dbc2af1c81987
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58265570"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64885203"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>使用資料庫和 ASP.NET Core
 

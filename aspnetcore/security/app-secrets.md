@@ -6,18 +6,18 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/13/2019
 uid: security/app-secrets
-ms.openlocfilehash: 18313f8284e81d196cbe786f494a607ee97a299f
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 195901e466262020fd1217bd9dfb6162910bb861
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750977"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893215"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>在 ASP.NET Core 開發的應用程式祕密的安全儲存體
 
 藉由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Daniel Roth](https://github.com/danroth27)，和[Scott Addie](https://github.com/scottaddie)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/app-secrets/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/app-secrets/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 本文件說明針對儲存和擷取機密資料的 ASP.NET Core 應用程式開發期間的技術。 永遠不會將密碼或其他機密資料儲存在原始程式碼中。 不應使用生產環境祕密進行開發或測試。 您可以透過 [Azure Key Vault 設定提供者](xref:security/key-vault-configuration)儲存及保護 Azure 測試與生產祕密。
 
@@ -168,7 +168,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 
 在上述範例中，在冒號表示`Movies`是一種物件常值與`ServiceApiKey`屬性。
 
-可以從其他目錄太使用 Secret Manager 工具。 使用`--project`選項來提供檔案系統路徑，處 *.csproj*檔案是否存在。 例如: 
+可以從其他目錄太使用 Secret Manager 工具。 使用`--project`選項來提供檔案系統路徑，處 *.csproj*檔案是否存在。 例如：
 
 ```console
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -176,7 +176,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ### <a name="json-structure-flattening-in-visual-studio"></a>在 Visual Studio 中扁平化的 JSON 結構
 
-Visual Studio**管理使用者祕密**軌跡會開啟*secrets.json*在文字編輯器中的檔案。 內容取代*secrets.json*與儲存的索引鍵 / 值組。 例如: 
+Visual Studio**管理使用者祕密**軌跡會開啟*secrets.json*在文字編輯器中的檔案。 內容取代*secrets.json*與儲存的索引鍵 / 值組。 例如：
 
 ```json
 {
@@ -299,7 +299,7 @@ Visual Studio**管理使用者祕密**軌跡會開啟*secrets.json*在文字編�
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-移除`Password`連接字串中的索引鍵-值配對*appsettings.json*。 例如: 
+移除`Password`連接字串中的索引鍵-值配對*appsettings.json*。 例如：
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 

@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 11/06/2018
 uid: signalr/security
 ms.openlocfilehash: 6e9f849ed856cf1cbf989b8b16cab5209c465471
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56743783"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64892045"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中的安全性考量
 
@@ -70,7 +70,7 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 
 ## <a name="access-token-logging"></a>存取權杖的記錄
 
-使用 WebSockets 或 Server-Sent 事件時，瀏覽器用戶端會查詢字串中傳送存取權杖。 接收存取權杖，透過查詢字串是使用標準通常一樣安全`Authorization`標頭。 您應該一律使用 HTTPS，若要確保安全的端對端連線的用戶端與伺服器之間。 許多網頁伺服器會記錄每個要求，包括查詢字串的 URL。 記錄的 Url 可能會記錄的存取權杖。 ASP.NET Core 記錄每個要求的 URL，根據預設，會包含查詢字串。 例如: 
+使用 WebSockets 或 Server-Sent 事件時，瀏覽器用戶端會查詢字串中傳送存取權杖。 接收存取權杖，透過查詢字串是使用標準通常一樣安全`Authorization`標頭。 您應該一律使用 HTTPS，若要確保安全的端對端連線的用戶端與伺服器之間。 許多網頁伺服器會記錄每個要求，包括查詢字串的 URL。 記錄的 Url 可能會記錄的存取權杖。 ASP.NET Core 記錄每個要求的 URL，根據預設，會包含查詢字串。 例如：
 
 ```
 info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]

@@ -7,11 +7,11 @@ ms.author: johluo
 ms.date: 03/31/2019
 uid: grpc/migration
 ms.openlocfilehash: 47d74edd821124f0c8390d704ca7931b7eb6c4cd
-ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59982597"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64895235"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>從 C 核心移轉的 gRPC 服務，ASP.NET core
 

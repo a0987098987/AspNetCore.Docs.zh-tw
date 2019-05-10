@@ -5,12 +5,12 @@ description: 了解如何使用 ASP.NET Core MVC 建立後端服務，以支援�
 ms.author: riande
 ms.date: 10/14/2016
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 13149dd4b877b8c17d33d428779ad31d8c51ae9e
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.openlocfilehash: b50d2593d7dc4b89472033898373e3a22fc9a7a3
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488724"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64883953"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>使用 ASP.NET Core 建立原生行動應用程式的後端服務
 
@@ -18,7 +18,7 @@ ms.locfileid: "58488724"
 
 行動裝置應用程式可以與 ASP.NET Core 後端服務通訊。 如需如何從 iOS 模擬器和 Android 模擬器連線到本機 Web 服務的指示，請參閱[從 iOS 模擬器和 Android 模擬器連線到本機 Web 服務](/xamarin/cross-platform/deploy-test/connect-to-local-web-services)。
 
-[檢視或下載簡易後端服務程式碼範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
+[檢視或下載簡易後端服務程式碼範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
 
 ## <a name="the-sample-native-mobile-app"></a>原生行動應用程式範例
 

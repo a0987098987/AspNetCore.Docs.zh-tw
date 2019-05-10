@@ -5,12 +5,12 @@ description: 說明的使用沒有 ASP.NET Core 身分識別的 cookie 驗證
 ms.author: riande
 ms.date: 02/25/2019
 uid: security/authentication/cookie
-ms.openlocfilehash: c6cba588abb003ee677d8f1753b73a1ced1414b0
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 2bc3e16b1b32816b14ad5bb4ca905ae5ed51ab87
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209371"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897745"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>使用沒有 ASP.NET Core 身分識別的 cookie 驗證
 
@@ -18,7 +18,7 @@ ms.locfileid: "58209371"
 
 當您在先前的驗證主題中所見[ASP.NET Core Identity](xref:security/authentication/identity)是完整且功能完整的驗證提供者來建立及維護的登入。 不過，您可能要使用您自己的自訂驗證邏輯使用有時 cookie 型驗證。 您可以使用以 cookie 為基礎的驗證作為獨立驗證提供者沒有 ASP.NET Core 身分識別。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/cookie/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 基於示範目的，範例應用程式中，假設使用者林麗莉 Rodriguez 的使用者帳戶會是硬式編碼到應用程式。 使用電子郵件使用者名稱 」maria.rodriguez@contoso.com」 和任何登入使用者的密碼。 使用者通過驗證`AuthenticateUser`方法中的*Pages/Account/Login.cshtml.cs*檔案。 在真實世界範例中，您會驗證使用者，對資料庫。
 
@@ -40,7 +40,7 @@ ms.locfileid: "58209371"
 
 應用程式的驗證配置與不同應用程式的 cookie 驗證配置。 當 cookie 驗證配置不提供給<xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*>，它會使用[CookieAuthenticationDefaults.AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme) ("Cookie")。
 
-驗證 cookie<xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential>屬性設定為`true`預設。 當網站訪客未同意資料收集時，允許驗證 cookie。 如需詳細資訊，請參閱<xref:security/gdpr#essential-cookies>。
+驗證 cookie<xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential>屬性設定為`true`預設。 當網站訪客未同意資料收集時，允許驗證 cookie。 如需詳細資訊，請參閱 <xref:security/gdpr#essential-cookies>。
 
 在 `Configure`方法，請使用`UseAuthentication`方法來叫用設定驗證中介軟體`HttpContext.User`屬性。 呼叫`UseAuthentication`方法之前呼叫`UseMvcWithDefaultRoute`或`UseMvc`:
 

@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 08/30/2018
 uid: client-side/libman/libman-cli
 ms.openlocfilehash: 5667f79648a60b8fd9496f8041ef08891ab766af
-ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47402081"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894755"
 ---
 # <a name="use-the-libman-command-line-interface-cli-with-aspnet-core"></a>使用 ASP.NET Core 使用 LibMan 命令列介面 (CLI)
 

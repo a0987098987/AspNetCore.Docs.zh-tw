@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/configuration/default-settings
 ms.openlocfilehash: 2f022a4c7519485fe629ce47c27d214c8c27d5bc
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159207"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897275"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>資料保護的金鑰管理和 ASP.NET Core 中的存留期
 

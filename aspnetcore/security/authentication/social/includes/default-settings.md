@@ -1,11 +1,4 @@
----
-ms.openlocfilehash: 2fe12027e7a5233cf01e6c412f7ee536d479facd
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665780"
----
-<!--Don't update this for 2.2, use the 2.2 version --> 若要在呼叫[AddDefaultIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionuiextensions.adddefaultidentity)設定的預設配置設定。 [AddAuthentication(String)](/dotnet/api/microsoft.extensions.dependencyinjection.authenticationservicecollectionextensions.addauthentication#Microsoft_Extensions_DependencyInjection_AuthenticationServiceCollectionExtensions_AddAuthentication_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_)多載集[DefaultScheme](/dotnet/api/microsoft.aspnetcore.authentication.authenticationoptions.defaultscheme)屬性。 [AddAuthentication (動作&lt;AuthenticationOptions&gt;)](/dotnet/api/microsoft.extensions.dependencyinjection.authenticationservicecollectionextensions.addauthentication#Microsoft_Extensions_DependencyInjection_AuthenticationServiceCollectionExtensions_AddAuthentication_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_AuthenticationOptions__)多載可讓設定驗證選項，可用來設定預設的驗證配置，針對不同用途。 後續呼叫`AddAuthentication`先前設定的覆寫[AuthenticationOptions](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions)屬性。
+<!--Don't update this for 2.2, use the 2.2 version -->
+若要在呼叫[AddDefaultIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionuiextensions.adddefaultidentity)設定的預設配置設定。 [AddAuthentication(String)](/dotnet/api/microsoft.extensions.dependencyinjection.authenticationservicecollectionextensions.addauthentication#Microsoft_Extensions_DependencyInjection_AuthenticationServiceCollectionExtensions_AddAuthentication_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_)多載集[DefaultScheme](/dotnet/api/microsoft.aspnetcore.authentication.authenticationoptions.defaultscheme)屬性。 [AddAuthentication (動作&lt;AuthenticationOptions&gt;)](/dotnet/api/microsoft.extensions.dependencyinjection.authenticationservicecollectionextensions.addauthentication#Microsoft_Extensions_DependencyInjection_AuthenticationServiceCollectionExtensions_AddAuthentication_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_AuthenticationOptions__)多載可讓設定驗證選項，可用來設定預設的驗證配置，針對不同用途。 後續呼叫`AddAuthentication`先前設定的覆寫[AuthenticationOptions](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions)屬性。
 
 [AuthenticationBuilder](/dotnet/api/microsoft.aspnetcore.authentication.authenticationbuilder)註冊驗證處理常式的擴充方法可能 lze volat pouze jednou 每個驗證配置。 多載的存在可供設定的配置內容、 結構描述名稱，以及顯示名稱。

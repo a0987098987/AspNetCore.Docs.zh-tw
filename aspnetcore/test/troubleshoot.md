@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 03/13/2019
 uid: test/troubleshoot
 ms.openlocfilehash: 3d755b2f0c509d65dea86bbe719e42935d87d546
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488737"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64895325"
 ---
 # <a name="troubleshoot-aspnet-core-projects"></a>疑難排解 ASP.NET Core 專案
 

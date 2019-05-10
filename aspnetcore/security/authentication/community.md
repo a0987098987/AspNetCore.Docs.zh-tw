@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 02/15/2019
 uid: security/authentication/community
 ms.openlocfilehash: e25df794bdff8f904382e7a299755ae4c23b892e
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410280"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64891745"
 ---
 # <a name="community-oss-authentication-options-for-aspnet-core"></a>ASP.NET Core 的社群 OSS 驗證選項
 

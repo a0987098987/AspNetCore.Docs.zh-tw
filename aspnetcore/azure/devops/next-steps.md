@@ -7,11 +7,11 @@ ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/next-steps
 ms.openlocfilehash: a775dc42551a43bcce72b5f9ca364ed00b1dc4e6
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284456"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64892005"
 ---
 # <a name="next-steps"></a>後續步驟
 

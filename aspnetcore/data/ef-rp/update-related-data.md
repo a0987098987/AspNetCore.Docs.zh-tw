@@ -5,12 +5,12 @@ description: 在本教學課程中，您會藉由更新外部索引鍵欄位和�
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: e1407048157fccdbfdd854071a6fbf9785356026
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: b996e7f9c8e422060f6378a6004a53906e2af7c7
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208605"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087089"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 更新相關資料 - 7/8
 
@@ -18,7 +18,7 @@ ms.locfileid: "58208605"
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-本教學課程將示範如何更新相關資料。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
+本教學課程將示範如何更新相關資料。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
 下圖顯示一些完成的頁面。
 

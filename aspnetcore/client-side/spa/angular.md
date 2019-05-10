@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 03/07/2019
 uid: spa/angular
 ms.openlocfilehash: 6d0107ef52d63a0f6f5713c518ddc54ac4230d53
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665596"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893665"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Angular 專案範本
 
@@ -79,7 +79,7 @@ cd ClientApp
 
 ## <a name="install-npm-packages"></a>安裝 npm 套件
 
-若要安裝協力廠商 npm 套件，請在 *ClientApp* 子目錄中使用命令提示字元。 例如: 
+若要安裝協力廠商 npm 套件，請在 *ClientApp* 子目錄中使用命令提示字元。 例如：
 
 ```console
 cd ClientApp

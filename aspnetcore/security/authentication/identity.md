@@ -5,12 +5,12 @@ description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如�
 ms.author: riande
 ms.date: 03/26/2019
 uid: security/authentication/identity
-ms.openlocfilehash: efe8119c2d18db50dce3df57fa0e300d0d0df2cd
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.openlocfilehash: d813fa364bb733185baa7b2cd2d95f8b4ff570e2
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488669"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894325"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -20,7 +20,7 @@ ASP.NET Core Identity 是將登入功能加入至 ASP.NET Core 應用程式的�
 
 可以使用 SQL Server 資料庫來儲存使用者名稱、 密碼和設定檔資料，設定身分識別。 或者，另一個持續性存放區可用，例如 Azure 資料表儲存體。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/)([如何下載)](xref:index#how-to-download-a-sample))。
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/)([如何下載)](xref:index#how-to-download-a-sample))。
 
 本主題中，您將了解如何使用身分識別來註冊、 登入，並登出使用者。 如需有關建立使用身分識別的應用程式的詳細指示，請參閱本文結尾 「 後續步驟 」 一節。
 
@@ -47,7 +47,7 @@ ASP.NET Core Identity 是將登入功能加入至 ASP.NET Core 應用程式的�
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 [檔案]  >  [新增]  >  [專案]。
-* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1**將專案下載相同的命名空間。 按一下 [確定 **Deploying Office Solutions**]。
+* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1**將專案下載相同的命名空間。 按一下 [確定] 。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取**變更驗證**。
 * 選取 **個別使用者帳戶**然後按一下**確定**。
 
@@ -59,7 +59,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-產生的專案提供[ASP.NET Core Identity](xref:security/authentication/identity)作為[Razor 類別庫](xref:razor-pages/ui-class)。 身分識別 Razor 類別庫會公開端點`Identity`區域。 例如: 
+產生的專案提供[ASP.NET Core Identity](xref:security/authentication/identity)作為[Razor 類別庫](xref:razor-pages/ui-class)。 身分識別 Razor 類別庫會公開端點`Identity`區域。 例如：
 
 * / 身分識別/帳戶/登入
 * / 身分識別/帳戶/登出
@@ -189,7 +189,7 @@ PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，�
 
    [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-   基底`Controller`類別會公開`User`屬性，您可以從控制器方法存取。 比方說，您可以列舉`User.Claims`並進行授權決策。 如需詳細資訊，請參閱<xref:security/authorization/introduction>。
+   基底`Controller`類別會公開`User`屬性，您可以從控制器方法存取。 比方說，您可以列舉`User.Claims`並進行授權決策。 如需詳細資訊，請參閱 <xref:security/authorization/introduction>。
 
 ::: moniker-end
 

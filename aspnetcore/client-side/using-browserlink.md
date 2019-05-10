@@ -7,11 +7,11 @@ ms.custom: H1Hack27Feb2017
 ms.date: 09/22/2017
 uid: client-side/using-browserlink
 ms.openlocfilehash: 452ba5149563c186750466f471c7b950f0017614
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833487"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894705"
 ---
 # <a name="browser-link-in-aspnet-core"></a>ASP.NET Core 中的瀏覽器連結
 
@@ -83,7 +83,7 @@ if (env.IsDevelopment())
 
 * 重新整理 web 應用程式在數個瀏覽器中的一次。
 * 開啟**瀏覽器連結儀表板**。
-* 啟用或停用**瀏覽器連結**。 注意： 根據預設，Visual Studio 2017 (15.3) 中，停用瀏覽器連結。
+* 啟用或停用**瀏覽器連結**。 注意:在 Visual Studio 2017 (15.3) 中的預設會停用瀏覽器連結。
 * 啟用或停用[CSS 自動同步](#enable-or-disable-css-auto-sync)。
 
 > [!NOTE]
@@ -117,7 +117,7 @@ if (env.IsDevelopment())
 
 從瀏覽器連結 下拉式功能表來管理連線開啟的瀏覽器中開啟瀏覽器連結儀表板：
 
-![開啟-browserslink 儀表板](using-browserlink/_static/open-browserlink-dashboard.png)
+![open-browserslink-dashboard](using-browserlink/_static/open-browserlink-dashboard.png)
 
 如果連線沒有瀏覽器，您可以選取來啟動非偵錯工作階段*瀏覽器中的檢視*連結：
 

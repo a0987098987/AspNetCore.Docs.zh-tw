@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: security/cors
-ms.openlocfilehash: fe5b750c44e5fad9ba80efb2cc8116d0a64b1a17
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: 655d9be894c677f8adf0fecc2b465d5ae7af2b61
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59068293"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897465"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨源要求 (CORS)
 
@@ -28,7 +28,7 @@ ms.locfileid: "59068293"
 * 可讓以明確允許某些跨源要求，並拒絕其他的伺服器。
 * 是更安全和更有彈性，比早期的技術，例如[JSONP](/dotnet/framework/wcf/samples/jsonp)。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/2.2-stage-samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="same-origin"></a>相同原始來源
 
@@ -425,13 +425,13 @@ Test message
 
 若要測試 CORS:
 
-1. [建立 API 專案](xref:tutorials/first-web-api)。 或者，您可以[下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cors/sample/Cors)。
+1. [建立 API 專案](xref:tutorials/first-web-api)。 或者，您可以[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors)。
 1. 啟用 CORS，本文件中使用其中一種方法。 例如: 
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 
   > [!WARNING]
-  > `WithOrigins("https://localhost:<port>");` 應該只用於測試的範例應用程式類似於[下載範例程式碼](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/cors/sample/Cors)。
+  > `WithOrigins("https://localhost:<port>");` 應該只用於測試的範例應用程式類似於[下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/sample/Cors)。
 
 1. 建立 web 應用程式專案 （Razor 頁面或 MVC）。 此範例會使用 Razor 頁面。 您可以在相同的方案，為 API 專案中建立 web 應用程式。
 1. 將下列反白顯示的程式碼，加入*Index.cshtml*檔案：

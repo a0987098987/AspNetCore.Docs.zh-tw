@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/25/2019
 uid: test/integration-tests
-ms.openlocfilehash: 11a8f4296e1b0b229c736645f1aa598307b88ec4
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: 46c3b227ca0b3def5ab7d527a2f6ef2497d55f83
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320182"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64892065"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -22,7 +22,7 @@ ms.locfileid: "58320182"
 
 本主題假設您對單元測試知識有基本了解。 如果不熟悉測試概念，請參閱 [.NET Core 與 .NET Standard 中的單元測試](/dotnet/core/testing/)主題和其連結的內容。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 範例應用程式是 Razor 頁面應用程式，並假設 Razor 頁面的基本知識。 如果不熟悉使用 Razor 頁面，請參閱下列主題：
 
@@ -104,7 +104,7 @@ ASP.NET Core 中的整合測試需要下列各項：
   * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * 專案檔中指定 Web SDK (`<Project Sdk="Microsoft.NET.Sdk.Web">`)。 Web SDK 時，必須參考[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
 
-這些必要條件中所見[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/)。 檢查*tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*檔案。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
+這些必要條件中所見[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)。 檢查*tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*檔案。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
 
 * [xunit](https://www.nuget.org/packages/xunit/)
 * [xunit.runner.visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
@@ -155,7 +155,7 @@ Web 主機組態可以建立獨立的測試類別，藉由繼承自`WebApplicati
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   在植入的資料庫[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)由執行`InitializeDbForTests`方法。 中所述的方法是[整合測試的範例：測試應用程式組織](#test-app-organization)一節。
+   在植入的資料庫[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)由執行`InitializeDbForTests`方法。 中所述的方法是[整合測試的範例：測試應用程式組織](#test-app-organization)一節。
 
 2. 使用自訂`CustomWebApplicationFactory`測試類別中。 下列範例會使用中的處理站`IndexPageTests`類別：
 
@@ -173,7 +173,7 @@ Web 主機組態可以建立獨立的測試類別，藉由繼承自`WebApplicati
 1. 剖析的防偽 cookie 和回應的要求驗證權杖。
 1. 在位置進行 POST 要求，使用防偽 cookie 和要求驗證權杖。
 
-`SendAsync`協助程式的擴充方法 (*Helpers/HttpClientExtensions.cs*) 和`GetDocumentAsync`helper 方法 (*Helpers/HtmlHelpers.cs*) 中[的範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/)使用[AngleSharp](https://anglesharp.github.io/)剖析器來處理 antiforgery 檢查使用下列方法：
+`SendAsync`協助程式的擴充方法 (*Helpers/HttpClientExtensions.cs*) 和`GetDocumentAsync`helper 方法 (*Helpers/HtmlHelpers.cs*) 中[的範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)使用[AngleSharp](https://anglesharp.github.io/)剖析器來處理 antiforgery 檢查使用下列方法：
 
 * `GetDocumentAsync` &ndash; 接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回`IHtmlDocument`。 `GetDocumentAsync` 使用準備的處理站*虛擬回應*根據原始`HttpResponseMessage`。 如需詳細資訊，請參閱 [AngleSharp 文件](https://github.com/AngleSharp/AngleSharp#documentation)。
 * `SendAsync` 擴充方法`HttpClient`compose [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)然後呼叫[SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_)提交要求給 SUT。 多載`SendAsync`接受 HTML 表單 (`IHtmlFormElement`) 和下列：
@@ -188,7 +188,7 @@ Web 主機組態可以建立獨立的測試類別，藉由繼承自`WebApplicati
 
 在測試方法中，需要額外的設定時[WithWebHostBuilder](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder)新建`WebApplicationFactory`具有[IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) ，進一步自訂組態。
 
-`Post_DeleteMessageHandler_ReturnsRedirectToRoot`測試方法[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)示範如何使用`WithWebHostBuilder`。 這項測試觸發 SUT 中的送出表單，在資料庫中執行記錄刪除。
+`Post_DeleteMessageHandler_ReturnsRedirectToRoot`測試方法[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)示範如何使用`WithWebHostBuilder`。 這項測試觸發 SUT 中的送出表單，在資料庫中執行記錄刪除。
 
 因為另一個測試中`IndexPageTests`類別執行作業會刪除所有資料庫中的記錄，並可能執行之前`Post_DeleteMessageHandler_ReturnsRedirectToRoot`方法中，資料庫就會在這個測試方法，以確保有一筆記錄的刪除 SUT 植入。 選取`deleteBtn1`按鈕的`messages`SUT 中的表單模擬 SUT 的要求中：
 
@@ -311,7 +311,7 @@ SUT 應用程式執行時，會產生下列標記：
 
 ## <a name="disable-shadow-copying"></a>停用陰影複製
 
-陰影複製會導致在不同的輸出資料夾的資料夾中執行測試。 針對測試才能正常運作，陰影複製必須停用。 [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)xunit，並停用所包括的 xUnit 陰影複製*xunit.runner.json*檔案使用的是正確的組態設定。 如需詳細資訊，請參閱 <c0> [ 設定使用 JSON 的 xUnit.net](https://xunit.github.io/docs/configuring-with-json.html)。
+陰影複製會導致在不同的輸出資料夾的資料夾中執行測試。 針對測試才能正常運作，陰影複製必須停用。 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)xunit，並停用所包括的 xUnit 陰影複製*xunit.runner.json*檔案使用的是正確的組態設定。 如需詳細資訊，請參閱 <c0> [ 設定使用 JSON 的 xUnit.net](https://xunit.github.io/docs/configuring-with-json.html)。
 
 新增*xunit.runner.json*檔案根目錄的測試專案，使用下列內容：
 
@@ -327,14 +327,14 @@ SUT 應用程式執行時，會產生下列標記：
 
 ## <a name="integration-tests-sample"></a>整合測試範例
 
-[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples)是兩個應用程式所組成：
+[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是兩個應用程式所組成：
 
 | 應用程式 | 專案資料夾 | 描述 |
 | --- | -------------- | ----------- |
 | 訊息應用程式 (SUT) | *src/RazorPagesProject* | 允許使用者加入、 刪除其中一個、 全部刪除，以及分析訊息。 |
 | 測試應用程式 | *tests/RazorPagesProject.Tests* | 用來整合測試 SUT。 |
 
-可以使用內建的測試功能的 IDE，例如執行測試[Visual Studio](https://www.visualstudio.com/vs/)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列中，執行下列命令在命令提示字元中*tests/RazorPagesProject.Tests*資料夾：
+可以使用內建的測試功能的 IDE，例如執行測試[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列中，執行下列命令在命令提示字元中*tests/RazorPagesProject.Tests*資料夾：
 
 ```console
 dotnet test

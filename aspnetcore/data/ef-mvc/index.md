@@ -6,11 +6,11 @@ ms.author: tdykstra
 ms.date: 03/27/2017
 uid: data/ef-mvc/index
 ms.openlocfilehash: 4a7b79faccdc76f090192e80d0450ca01ed8b58a
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750681"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64882183"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---tutorial-series"></a>ASP.NET Core MVC 與 EF Core - 教學課程系列
 

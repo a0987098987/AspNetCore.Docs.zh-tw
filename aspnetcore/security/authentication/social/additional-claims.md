@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: 49c323fab64bd4ea52dd1d8cf2e43a79d4d0d0dc
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: 37c7a51217576669bcaed79d4a212e6412aa8945
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327348"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897665"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>保存其他的宣告與 ASP.NET Core 中的外部提供者的權杖
 
@@ -20,11 +20,11 @@ ms.locfileid: "58327348"
 
 將 ASP.NET Core 應用程式可以建立額外的宣告和外部驗證提供者，例如 Facebook、 Google、 Microsoft 及 Twitter 的語彙基元。 每個提供者會顯示其平台上，使用者的不同資訊但接收，以及將使用者資料轉換成其他宣告的模式相同。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 
-決定哪些應用程式中支援的外部驗證提供者。 每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端祕密。 如需詳細資訊，請參閱<xref:security/authentication/social/index>。 [範例應用程式](#sample-app-instructions)會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
+決定哪些應用程式中支援的外部驗證提供者。 每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端祕密。 如需詳細資訊，請參閱 <xref:security/authentication/social/index>。 [範例應用程式](#sample-app-instructions)會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
 
 ## <a name="set-the-client-id-and-client-secret"></a>設定用戶端識別碼和用戶端祕密
 
@@ -106,7 +106,7 @@ OAuth 驗證提供者會建立信任關係，使用用戶端識別碼和用戶�
 
 若要使用範例應用程式：
 
-1. 註冊應用程式，並取得有效的用戶端識別碼和 Google 驗證的用戶端祕密。 如需詳細資訊，請參閱<xref:security/authentication/google-logins>。
+1. 註冊應用程式，並取得有效的用戶端識別碼和 Google 驗證的用戶端祕密。 如需詳細資訊，請參閱 <xref:security/authentication/google-logins>。
 1. 提供用戶端識別碼和應用程式中的用戶端祕密<xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions>的`Startup.ConfigureServices`。
 1. 執行應用程式，並要求我宣告頁面。 當使用者未登入時，應用程式重新導向至 Google。 使用 Google 登入。 Google 使用者重新導向回到應用程式 (`/Home/MyClaims`)。 使用者經過驗證，而且我的宣告頁面載入。 性別宣告是底下**使用者宣告**從 Google 取得的值。 存取權杖會出現在**驗證屬性**。
 

@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: performance/response-compression
-ms.openlocfilehash: e87480ebb81791ed233f3e2308e35e21e081824f
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: e312d43fb62106f6ecb98367c29daa377bb227c9
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248364"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893345"
 ---
 # <a name="response-compression-in-aspnet-core"></a>ASP.NET Core 中的回應壓縮
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 網路頻寬是有限的資源。 減少回應的大小通常應用程式的回應速度通常會大幅增加。 減少承載大小的方法之一是壓縮應用程式的回應。
 
@@ -74,7 +74,7 @@ ms.locfileid: "56248364"
 
 中介軟體可讓您新增額外的壓縮提供者的自訂`Accept-Encoding`標頭值。 如需詳細資訊，請參閱 <<c0> [ 自訂提供者](#custom-providers)如下。
 
-中介軟體可以回應的品質值 (qvalue， `q`) 加權時由用戶端傳送到設定優先權的壓縮配置。 如需詳細資訊，請參閱[RFC 7231:接受編碼](https://tools.ietf.org/html/rfc7231#section-5.3.4)。
+中介軟體可以回應的品質值 (qvalue， `q`) 加權時由用戶端傳送到設定優先權的壓縮配置。 如需詳細資訊，請參閱[RFC 7231：接受編碼](https://tools.ietf.org/html/rfc7231#section-5.3.4)。
 
 壓縮演算法受限於壓縮速度與壓縮的效能之間取捨。 *有效性*在此內容中是指輸出的大小在壓縮後的。 最小的大小之後，即可最*最佳*壓縮。
 
@@ -89,7 +89,7 @@ ms.locfileid: "56248364"
 | `Content-Type`     | 指定內容的 MIME 類型。 每個回應應該指定其`Content-Type`。 中介軟體會檢查此值，以判斷應該將壓縮的回應。 中介軟體會指定一組[預設 MIME 類型](#mime-types)即可進行編碼，但您可以取代或新增 MIME 類型。 |
 | `Vary`             | 值是伺服器所傳送`Accept-Encoding`用戶端和 proxy`Vary`標頭會指出用戶端或 proxy，應快取 （而有所不同） 回應為基礎的值`Accept-Encoding`要求標頭。 傳回內容的結果`Vary: Accept-Encoding`標頭時，壓縮和未壓縮的回應會分別快取。 |
 
-瀏覽的功能與回應壓縮中介軟體[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples)。 此範例會說明：
+瀏覽的功能與回應壓縮中介軟體[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples)。 此範例會說明：
 
 * 使用 Gzip 和自訂壓縮提供者的應用程式回應的壓縮。
 * 如何將 MIME 類型加入至壓縮的 MIME 類型的預設清單。
@@ -350,7 +350,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Nginx 背後時的中介軟體問題的反向 proxy
 
-當要求 proxy 處理的 Nginx`Accept-Encoding`標頭移除。 移除`Accept-Encoding`標頭會防止從壓縮回應的中介軟體。 如需詳細資訊，請參閱[NGINX:壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)。 此問題會追蹤[找出 nginx 傳遞壓縮 (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123)。
+當要求 proxy 處理的 Nginx`Accept-Encoding`標頭移除。 移除`Accept-Encoding`標頭會防止從壓縮回應的中介軟體。 如需詳細資訊，請參閱 [NGINX：壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)。 此問題會追蹤[找出 nginx 傳遞壓縮 (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123)。
 
 ## <a name="working-with-iis-dynamic-compression"></a>使用 IIS 動態壓縮
 

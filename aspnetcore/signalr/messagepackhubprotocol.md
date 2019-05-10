@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 02/27/2019
 uid: signalr/messagepackhubprotocol
 ms.openlocfilehash: 7742f6f8bb53fb3c299ff98ae52a0da519ff396c
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400667"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64896515"
 ---
 # <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR MessagePack 中樞通訊協定
 
@@ -115,7 +115,7 @@ public class ChatMessage
 }
 ```
 
-當從 JavaScript 用戶端傳送，您必須使用`PascalCased`屬性的名稱，因為大小寫必須符合C#完全類別。 例如: 
+當從 JavaScript 用戶端傳送，您必須使用`PascalCased`屬性的名稱，因為大小寫必須符合C#完全類別。 例如：
 
 ```javascript
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });

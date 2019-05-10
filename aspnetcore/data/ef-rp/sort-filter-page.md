@@ -6,18 +6,14 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 162586059e3115bc15efaa63a9a0652e09872f1b
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 06de728096b91b128c6bc3eb7791609d2161cd9b
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209961"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517003"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
-
-[!INCLUDE[2.0 version](~/includes/RP-EF/20-pdf.md)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 作者：[Tom Dykstra](https://github.com/tdykstra)、[Rick Anderson](https://twitter.com/RickAndMSFT)、[Jon P Smith](https://twitter.com/thereformedprog)
 
@@ -29,7 +25,7 @@ ms.locfileid: "58209961"
 
 ![Students [索引] 頁面](sort-filter-page/_static/paging.png)
 
-若您遇到無法解決的問題，請下載[完整應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
+若您遇到無法解決的問題，請下載[完整應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
 
 ## <a name="add-sorting-to-the-index-page"></a>將排序新增至索引頁面
 
@@ -275,18 +271,18 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 執行應用程式並巡覽至 About 頁面。 每個註冊日期的學生人數將會顯示在資料表中。
 
-如果您遇到無法解決的問題，請下載[此階段完成的應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting)。
+如果您遇到無法解決的問題，請下載[此階段完成的應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting)。
 
 ![About 頁面](sort-filter-page/_static/about.png)
 
 ## <a name="additional-resources"></a>其他資源
 
-* [偵錯 ASP.NET Core 2.x 原始檔](https://github.com/aspnet/Docs/issues/4155)
+* [偵錯 ASP.NET Core 2.x 原始檔](https://github.com/aspnet/AspNetCore.Docs/issues/4155)
 * [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=MDs7PFpoMqI)
 
 在下一個教學課程中，應用程式將會使用移轉來更新資料模型。
 
-::: moniker-end
+
 
 > [!div class="step-by-step"]
 > [上一頁](xref:data/ef-rp/crud)

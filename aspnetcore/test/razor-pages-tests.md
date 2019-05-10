@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/27/2017
 uid: test/razor-pages-tests
-ms.openlocfilehash: 5116ec3c3d6c27f9b0e098f82c82dd7b7337b8f6
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: f1526b8803f43ec8cbe77c1d2c100d9daf6cd316
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207494"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893715"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>在 ASP.NET Core razor 頁面單元測試
 
@@ -30,16 +30,16 @@ ASP.NET Core 支援 Razor 網頁應用程式的單元的測試。 測試資料�
 * [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [單元測試 C# 中使用 dotnet 測試和 xUnit.NET Core](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 範例專案是由兩個應用程式所組成：
 
 | 應用程式         | 專案資料夾                        | 描述 |
 | ----------- | ------------------------------------- | ----------- |
 | 訊息應用程式 | *src/RazorPagesTestSample*            | 允許使用者加入、 刪除其中一個、 全部刪除，以及分析訊息。 |
-| 測試應用程式    | *tests/RazorPagesTestSample.Tests*    | 使用單元測試的訊息應用程式： 資料存取層 (DAL) 和索引 頁面模型。 |
+| 測試應用程式    | *tests/RazorPagesTestSample.Tests*    | 使用單元測試的訊息應用程式：資料存取層 (DAL) 和索引 頁面模型。 |
 
-可以使用內建的測試功能的 IDE，例如執行測試[Visual Studio](https://www.visualstudio.com/vs/)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列中，執行下列命令在命令提示字元中*tests/RazorPagesTestSample.Tests*資料夾：
+可以使用內建的測試功能的 IDE，例如執行測試[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列中，執行下列命令在命令提示字元中*tests/RazorPagesTestSample.Tests*資料夾：
 
 ```console
 dotnet test
@@ -108,9 +108,9 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 
 在每個測試方法`DataAccessLayerTest`類別 (*UnitTests/DataAccessLayerTest.cs*) 都遵循類似的排列 Act Assert 模式：
 
-1. 排列： 資料庫已設定測試和/或定義預期的結果。
-1. Act： 執行測試。
-1. 判斷提示： 若要判斷測試結果是否順利進行判斷提示。
+1. 排列：資料庫已針對測試和/或定義預期的結果。
+1. 動作：執行測試。
+1. 判斷提示：若要判斷測試結果是否成功都會判斷提示。
 
 例如，`DeleteMessageAsync`方法會負責移除單一訊息可由其`Id`(*src/RazorPagesTestSample/Data/AppDbContext.cs*):
 
@@ -124,7 +124,7 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/DataAccessLayerTest.cs?name=snippet1)]
 
-方法是：`DeleteMessageAsync`方法會執行傳入`recId`的`1`:
+方法的行為：`DeleteMessageAsync`方法會執行傳入`recId`的`1`:
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/DataAccessLayerTest.cs?name=snippet2)]
 
@@ -167,7 +167,7 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 
 當`OnGetAsync`方法執行動作步驟中，它會呼叫頁面模型的`GetMessagesAsync`方法。
 
-單元測試的動作步驟 (*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*):
+Unit test Act step (*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs?name=snippet2)]
 

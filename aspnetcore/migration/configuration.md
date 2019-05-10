@@ -5,12 +5,12 @@ description: 了解如何將組態從 ASP.NET MVC 專案移轉至 ASP.NET Core M
 ms.author: riande
 ms.date: 10/14/2016
 uid: migration/configuration
-ms.openlocfilehash: 5a1c4d0cbbdf74a00073c654e78a05f44948caae
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: c379f1f64dc5ab8aeb48055124e86e4e60d93785
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50205908"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894925"
 ---
 # <a name="migrate-configuration-to-aspnet-core"></a>將設定移轉到 ASP.NET Core
 
@@ -18,7 +18,7 @@ ms.locfileid: "50205908"
 
 在上一篇文章中，我們已開始[將 ASP.NET MVC 專案移轉至 ASP.NET Core MVC](xref:migration/mvc)。 在本文中，我們可以移轉設定。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/configuration/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/migration/configuration/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="setup-configuration"></a>設定組態
 

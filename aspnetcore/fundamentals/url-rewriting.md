@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: d2dd5e9b7f196bcbd1940f7ef58331dabd2367a1
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 72d5b2e902a95442ccffb7a149b917c50373775b
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637803"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64889923"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core 的 URL 重寫中介軟體
 
@@ -38,7 +38,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 > [!NOTE]
 > URL 重寫可能會降低應用程式的效能。 如果可行的話，請限制規則的數目與複雜程度。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>URL 重新導向和 URL 重寫
 
@@ -68,7 +68,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
 ## <a name="url-rewriting-sample-app"></a>URL 重寫範例應用程式
 
-您可以利用[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)，來探索 URL 重寫中介軟體的功能。 範例應用程式會套用重新導向與重寫規則，還會示範多種情況下的重新導向或重寫 URL。
+您可以利用[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)，來探索 URL 重寫中介軟體的功能。 範例應用程式會套用重新導向與重寫規則，還會示範多種情況下的重新導向或重寫 URL。
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>URL 重寫中介軟體的使用時機
 
@@ -324,7 +324,7 @@ public void Configure(IApplicationBuilder app)
 
 | `RewriteContext.Result`              | 動作                                                           |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `RuleResult.ContinueRules` (預設值) | 繼續套用規則。                                         |
+| `RuleResult.ContinueRules` (預設) | 繼續套用規則。                                         |
 | `RuleResult.EndResponse`             | 停止套用規則，並傳送回應。                       |
 | `RuleResult.SkipRemainingRules`      | 停止套用規則，並將內容傳送至下一個中介軟體。 |
 

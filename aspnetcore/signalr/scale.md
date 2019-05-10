@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/scale
 ms.openlocfilehash: 4ac4509acc89d0091a3757c7cfbc9981614f29ad
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836918"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64895075"
 ---
 # <a name="aspnet-core-signalr-hosting-and-scaling"></a>ASP.NET Core SignalR 裝載和擴充
 
@@ -46,7 +46,7 @@ An attempt was made to access a socket in a way forbidden by its access permissi
 
 解決此問題的選項都會[Azure SignalR 服務](#azure-signalr-service)並[Redis 後擋板](#redis-backplane)。
 
-## <a name="azure-signalr-service"></a>Azure SignalR 服務
+## <a name="azure-signalr-service"></a>Azure SignalR Service
 
 Azure SignalR 服務是 proxy，而不是後擋板。 用戶端啟動連線到伺服器，每次用戶端重新導向連線到服務。 下圖說明這個程序：
 

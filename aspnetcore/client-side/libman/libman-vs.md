@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: 727bd80b7f37f6ebd9d37b7aab1aa6c33b85678c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 41a5a41c8921b04290784d26441ecb46aea753e7
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206723"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894965"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>使用 Visual Studio 中的 ASP.NET Core 使用 LibMan
 
@@ -24,7 +24,7 @@ Visual Studio 的內建支援[LibMan](xref:client-side/libman/index)在 ASP.NET 
 * 尋找程式庫及將檔案新增至專案的 [搜尋] 對話方塊。
 * 編輯支援*libman.json*&mdash;LibMan 資訊清單檔案。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/libman/samples/) [（如何下載）](xref:index#how-to-download-a-sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/client-side/libman/samples/) [（如何下載）](xref:index#how-to-download-a-sample)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -64,9 +64,9 @@ Visual Studio 的內建支援[LibMan](xref:client-side/libman/index)在 ASP.NET 
   
   |啟動位置                           |建議的資料夾      |
   |------------------------------------------|----------------------|
-  |專案根目錄 (如果*wwwroot*存在)        |*wwwroot/lib/jquery /* |
-  |專案根目錄 (如果*wwwroot*不存在) |*lib/jquery /*         |
-  |*頁面*專案中的資料夾                 |*頁面/jquery /*       |
+  |專案根目錄 (如果*wwwroot*存在)        |*wwwroot/lib/jquery/* |
+  |專案根目錄 (如果*wwwroot*不存在) |*lib/jquery/*         |
+  |*頁面*專案中的資料夾                 |*Pages/jquery/*       |
 
 * 按一下 [**安裝**] 按鈕，下載的檔案，每個在組態*libman.json*。
 * 檢閱**程式庫管理員**摘要**輸出**安裝詳細資料 視窗。 例如: 
@@ -185,7 +185,7 @@ LibMan 可以還原的已定義的程式庫檔案做為建置程序的一部分�
 當正在執行清除的作業：
 
 * Visual Studio 的 [狀態] 列 TSC 圖示項目建立動畫，並將讀取*用戶端程式庫作業啟動*。 按一下圖示即可開啟列出的已知的背景工作的工具提示。
-* 訊息會傳送至 [狀態] 列與**程式庫管理員**摘要**輸出**視窗。 例如: 
+* 訊息會傳送至 [狀態] 列與**程式庫管理員**摘要**輸出**視窗。 例如：
 
 ```console
 Clean libraries operation started...

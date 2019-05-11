@@ -5,12 +5,12 @@ description: 本文說明如何自訂 ASP.NET Core 識別為基礎的 Entity Fra
 ms.author: avickers
 ms.date: 04/24/2019
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: ae5f4567a8921ce277cd6153f37a5558bcf4e261
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 53ce77e20722f3ba3282ff4455a0b70d30e635b0
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897855"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65536014"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>ASP.NET Core 中的身分識別模型自訂
 
@@ -209,7 +209,7 @@ builder.Entity<TUserRole>(b =>
 
 而不是直接使用這些類型，類型可以作為基底類別的應用程式本身的類型。 `DbContext`身分識別所定義的類別是泛型，使不同的 CLR 型別可以用一或多個模型中的實體類型。 這些泛型型別也允許`User`變更主索引鍵 (PK) 資料類型。
 
-針對角色，使用支援的身分識別時<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>應該使用類別。 例如：
+針對角色，使用支援的身分識別時<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>應該使用類別。 例如: 
 
 ```csharp
 // Uses all the built-in Identity types
@@ -340,7 +340,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
 更新*Pages/Shared/_LoginPartial.cshtml* ，並取代`IdentityUser`使用`ApplicationUser`:
 
-```
+```cshtml
 @using Microsoft.AspNetCore.Identity
 @using WebApp1.Areas.Identity.Data
 @inject SignInManager<ApplicationUser> SignInManager
@@ -493,7 +493,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     ::: moniker-end
 
-5. 如果自訂`ApplicationRole`類別正在使用中，更新類別繼承自`IdentityRole<TKey>`。 例如: 
+5. 如果自訂`ApplicationRole`類別正在使用中，更新類別繼承自`IdentityRole<TKey>`。 例如：
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Data/ApplicationRole.cs?name=snippet_ApplicationRole&highlight=4)]
 

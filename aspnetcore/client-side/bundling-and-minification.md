@@ -4,14 +4,14 @@ author: scottaddie
 description: 了解如何藉由套用統合和縮製技術最佳化的 ASP.NET Core web 應用程式中的靜態資源。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/20/2018
+ms.date: 05/10/2019
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 5d5f0aadb7740c9b2b959d12a585cd8c91758ce8
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ba01d365a25dfbd13fed89263d7489b2ce2a8771
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894295"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65535923"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>配套並縮短在 ASP.NET Core 中的靜態資產
 
@@ -63,7 +63,7 @@ ms.locfileid: "64894295"
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>選擇統合和縮製的策略
 
-MVC 和 Razor 頁面專案範本提供統合和縮製 JSON 組態檔所組成的立即可用的解決方案。 第三方工具，例如[Gulp](xref:client-side/using-gulp)並[Grunt](xref:client-side/using-grunt)工作執行器中，完成更多的複雜度與相同的工作。 第三方工具時，非常適合您的開發工作流程需要處理超過統合和縮製&mdash;linting 和映像最佳化等。 藉由使用的設計階段統合和縮製，縮短的檔案會在應用程式的部署之前建立。 統合及縮小部署之前提供的優點是減少的伺服器負載。 不過，務必要辨識該設計階段統合和縮製增組建的複雜度，並僅適用於靜態檔案。
+MVC 和 Razor 頁面專案範本提供統合和縮製 JSON 組態檔所組成的立即可用的解決方案。 第三方工具，例如[Grunt](xref:client-side/using-grunt)工作執行器中，完成更多的複雜度與相同的工作。 第三方工具時，非常適合您的開發工作流程需要處理超過統合和縮製&mdash;linting 和映像最佳化等。 藉由使用的設計階段統合和縮製，縮短的檔案會在應用程式的部署之前建立。 統合及縮小部署之前提供的優點是減少的伺服器負載。 不過，務必要辨識該設計階段統合和縮製增組建的複雜度，並僅適用於靜態檔案。
 
 ## <a name="configure-bundling-and-minification"></a>設定統合和縮製
 
@@ -325,11 +325,9 @@ npm i -g gulp-cli
 ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 ```
 
-或者，可能會使用 Visual Studio 的 Task Runner explorer，繫結至特定的 Visual Studio 事件的 Gulp 工作。 請參閱[執行預設工作](xref:client-side/using-gulp#running-default-tasks)如需有關這麼做。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [使用 Gulp](xref:client-side/using-gulp)
 * [使用 Grunt](xref:client-side/using-grunt)
 * [使用多重環境](xref:fundamentals/environments)
 * [標記協助程式](xref:mvc/views/tag-helpers/intro)

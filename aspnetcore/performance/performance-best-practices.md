@@ -4,14 +4,14 @@ author: mjrousos
 description: ASP.NET Core 應用程式中的效能和避免常見效能問題的秘訣。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 04/13/2019
+ms.date: 05/10/2019
 uid: performance/performance-best-practices
-ms.openlocfilehash: 28dc7fb40c1b60f643108dcb44593a08942a1650
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 7651dff18f98c60057660c8946c3daa66d272f6a
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087491"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65536075"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>ASP.NET Core 效能最佳做法
 
@@ -77,7 +77,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 * **請**將網路來回行程降到最低。 目標是在單一呼叫中而非數個呼叫擷取所需的資料。
 * **請**使用 Entity Framework Core 中的[無追蹤查詢](/ef/core/querying/tracking#no-tracking-queries) (針對唯讀目的存取資料時)。 EF Core 能以更有效率的方式傳回無追蹤查詢的結果。
 * **請**篩選及彙總 LINQ 查詢 (例如，使用 `.Where`、`.Select` 或 `.Sum` 陳述式)，讓篩選由資料庫執行。
-* **請勿**考慮 EF Core 會解析有些查詢運算子，在用戶端，可能會沒有效率的查詢執行。 如需詳細資訊，請參閱 <c0> [ 用戶端評估效能問題](/ef/core/querying/client-eval#client-evaluation-performance-issues)。
+* **請**考慮 EF Core 會解析用戶端上的一些查詢運算子，這可能會導致沒有效率的查詢執行。 如需詳細資訊，請參閱[用戶端評估效能問題](/ef/core/querying/client-eval#client-evaluation-performance-issues)。
 * **請勿**在集合上使用投影查詢，這可能會導致執行 "N+1" 個 SQL 查詢。 如需詳細資訊，請參閱[相互關聯子查詢的最佳化](/ef/core/what-is-new/ef-core-2.1#optimization-of-correlated-subqueries)。
 
 請參閱[EF 高效能](/ef/core/what-is-new/ef-core-2.0#explicitly-compiled-queries)如可改善高級別應用程式的效能的解決方法：
@@ -96,7 +96,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 建議：
 
 * **請勿**直接建立及處置 `HttpClient` 執行個體。
-* **請勿**使用[HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)擷取`HttpClient`執行個體。 如需詳細資訊，請參閱 <c0> [ 實作具有恢復功能的 HTTP 要求使用 HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)。
+* **請**使用 [HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests) 來擷取 `HttpClient` 執行個體。 如需詳細資訊，請參閱[使用 HttpClientFactory 實作具有恢復功能的 HTTP 要求](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)。
 
 ## <a name="keep-common-code-paths-fast"></a>快速的常見程式碼路徑
 
@@ -130,7 +130,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 建議：
 
 * **請**使用 ASP.NET Core 的[內建支援](xref:client-side/bundling-and-minification)來包裝及縮小用戶端資產。
-* **請**考慮使用其他協力廠商工具 (例如 [Gulp](xref:client-side/using-gulp) 或 [Webpack](https://webpack.js.org/)) 進行複雜的用戶端資產管理。
+* **請勿**請考慮其他協力廠商工具，例如[Webpack](https://webpack.js.org/)，針對複雜的用戶端資產管理。
 
 ## <a name="compress-responses"></a>壓縮回應
 

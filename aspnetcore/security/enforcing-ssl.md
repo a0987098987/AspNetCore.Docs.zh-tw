@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: ab407436afb16687fa285a836b608ad2e6a4802f
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: e27e0c31b128cbd7d71bf7b83a2d33cc89ea3ab1
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894555"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610435"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制使用 ASP.NET Core 中的 HTTPS
 
@@ -256,6 +256,17 @@ dotnet dev-certs https --help
 請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/6199)。
 
 ::: moniker-end
+
+<a name="wsl"></a>
+
+## <a name="trust-https-certificate-from-windows-subsystem-for-linux"></a>信任適用於 Linux 的 Windows 子系統的 HTTPS 憑證
+
+Windows for Linux 子系統 (WSL) 會產生 HTTPS 的自我簽署的憑證。若要設定信任 WSL 憑證的 Windows 憑證存放區：
+
+* 執行下列命令以匯出 WSL 產生憑證： `dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p <cryptic-password>`
+* 在 WSL 視窗中，執行下列命令： `ASPNETCORE_Kestrel__Certificates__Default__Password="<cryptic-password>" ASPNETCORE_Kestrel__Certificates__Default__Path=/mnt/c/Users/user-name/.aspnet/https/aspnetapp.pfx dotnet watch run`
+
+  上述命令會設定環境變數，因此 Linux 會使用 Windows 信任的憑證。
 
 ## <a name="additional-information"></a>其他資訊
 

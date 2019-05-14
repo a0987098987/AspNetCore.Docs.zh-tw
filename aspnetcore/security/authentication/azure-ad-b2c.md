@@ -5,12 +5,12 @@ description: 了解如何設定 Azure Active Directory B2C 使用 ASP.NET Core �
 ms.date: 02/27/2019
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 86be999e02cfe34193bd594dcf89e8872590cca5
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 46654e38c780cfc9c44e7ba479419320ee684b76
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64898015"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610693"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>使用 Azure Active Directory B2C 在 ASP.NET Core 中的雲端驗證
 
@@ -34,7 +34,7 @@ ms.locfileid: "64898015"
 在此逐步解說需要下列條件：
 
 * [Microsoft Azure 訂用帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) （任何版本）
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>建立 Azure Active Directory B2C 租用戶
 
@@ -62,7 +62,7 @@ ms.locfileid: "64898015"
 
 沒有項目更多可以設定 Azure AD B2C 租用戶中，在此階段中，但將瀏覽器視窗保持開啟。 建立 ASP.NET Core 應用程式之後，沒有更多的設定。
 
-## <a name="create-an-aspnet-core-app-in-visual-studio-2017"></a>Visual Studio 2017 中建立 ASP.NET Core 應用程式
+## <a name="create-an-aspnet-core-app-in-visual-studio"></a>在 Visual Studio 中建立 ASP.NET Core 應用程式
 
 Visual Studio Web 應用程式範本可以設定要用於驗證的 Azure AD B2C 租用戶。
 

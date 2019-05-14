@@ -3,20 +3,20 @@ title: 在 ASP.NET Core 中使用 Grunt
 author: rick-anderson
 description: ''
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 05/10/2019
 uid: client-side/using-grunt
-ms.openlocfilehash: fc912974fb6ed3c65bb46a7d616d9e531587d946
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 73b7704726db9d93588dddd3f3b05a23fb3425b3
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894635"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65535944"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>在 ASP.NET Core 中使用 Grunt
 
 作者：[Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)
 
-Grunt 是一個 JavaScript 工作執行器，它會會自動化指令碼縮製、TypeScript 編譯、程式碼品質 "lint" 工具、CSS 前置處理器，以及支援用戶端開發所需的任何重複性工作。 Grunt 在 Visual Studio 中受到完整的支援，雖然 ASP.NET 專案範本預設使用 Gulp (請參閱[使用 Gulp](using-gulp.md))。
+Grunt 是一個 JavaScript 工作執行器，它會會自動化指令碼縮製、TypeScript 編譯、程式碼品質 "lint" 工具、CSS 前置處理器，以及支援用戶端開發所需的任何重複性工作。 Grunt 完全支援 Visual Studio 中。
 
 這個範例會使用空的 ASP.NET Core 專案做為起點，展示如何從頭開始自動化用戶端建置程序。
 
@@ -286,7 +286,3 @@ grunt.loadNpmTasks('grunt-contrib-watch');
 ## <a name="summary"></a>總結
 
 Grunt 是功能強大的工作執行器，可用來將大部分的用戶端組建工作自動化。 Grunt 運用 NPM 提供其套件和工具與 Visual Studio 整合的功能。 Visual Studio 的 Task Runner explorer 會偵測到組態檔的變更，並提供方便的介面，以執行工作、 檢視執行中的工作，並將工作繫結至 Visual Studio 事件。
-
-## <a name="additional-resources"></a>其他資源
-
-* [使用 Gulp](using-gulp.md)

@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 09/21/2018
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 00e7c9a438260ef8e12e567e521fc44b2ffa9cca
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 0eb8b533f44a1f72cfc3c4ec5ec060adb37eed6c
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086337"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610363"
 ---
 # <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>在 web Api 與 Azure Active Directory B2C 在 ASP.NET Core 中的驗證
 
@@ -37,7 +37,7 @@ Web Api 都沒有使用者介面，因為它們無法將使用者重新導向至
 在此逐步解說需要下列條件：
 
 * [Microsoft Azure 訂用帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) （任何版本）
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 * [Postman](https://www.getpostman.com/postman)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>建立 Azure Active Directory B2C 租用戶
@@ -65,7 +65,7 @@ API 使用新建立的 Azure AD B2C 租用戶中註冊[文件中的步驟](/azur
 
 註冊 API 之後，會顯示租用戶中的應用程式和 Api 清單。 選取先前登錄的 API。 選取**複製**右邊的圖示**APPLICATION-ID**欄位，以將它複製到剪貼簿。 選取 **發佈的範圍**，並確認預設*user_impersonation*範圍會存在。
 
-## <a name="create-an-aspnet-core-app-in-visual-studio-2017"></a>Visual Studio 2017 中建立 ASP.NET Core 應用程式
+## <a name="create-an-aspnet-core-app-in-visual-studio"></a>在 Visual Studio 中建立 ASP.NET Core 應用程式
 
 Visual Studio Web 應用程式範本可以設定要用於驗證的 Azure AD B2C 租用戶。
 

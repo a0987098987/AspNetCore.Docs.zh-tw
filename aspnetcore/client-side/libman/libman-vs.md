@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: 41a5a41c8921b04290784d26441ecb46aea753e7
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: d0494b96447ad2b256acbde7748209ff430ae7c1
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894965"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610180"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>使用 Visual Studio 中的 ASP.NET Core 使用 LibMan
 
@@ -28,7 +28,7 @@ Visual Studio 的內建支援[LibMan](xref:client-side/libman/index)在 ASP.NET 
 
 ## <a name="prerequisites"></a>必要條件
 
-* Visual Studio 2017 版 15.8 或更新版本以及**ASP.NET 和 web 開發**工作負載
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)具有**ASP.NET 和 web 開發**工作負載
 
 ## <a name="add-library-files"></a>新增程式庫檔案
 
@@ -185,7 +185,7 @@ LibMan 可以還原的已定義的程式庫檔案做為建置程序的一部分�
 當正在執行清除的作業：
 
 * Visual Studio 的 [狀態] 列 TSC 圖示項目建立動畫，並將讀取*用戶端程式庫作業啟動*。 按一下圖示即可開啟列出的已知的背景工作的工具提示。
-* 訊息會傳送至 [狀態] 列與**程式庫管理員**摘要**輸出**視窗。 例如：
+* 訊息會傳送至 [狀態] 列與**程式庫管理員**摘要**輸出**視窗。 例如: 
 
 ```console
 Clean libraries operation started...

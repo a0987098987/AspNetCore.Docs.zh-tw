@@ -5,14 +5,14 @@ description: 了解如何使用 Azure 金鑰保存庫的組態提供者設定應
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/25/2019
+ms.date: 05/13/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 45eca05b5eb41815924ca48f60c3b00046c6bdaf
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 78c63cf135ca92f0b5f6c6828b2ae34a44a7b36c
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894985"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621004"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
 
@@ -111,7 +111,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "Section--SecretName" --value "secret_value_2_prod"
    ```
 
-## <a name="use-application-id-and-client-secret-for-non-azure-hosted-apps"></a>使用非 Azure 代管應用程式的應用程式識別碼和用戶端祕密
+## <a name="use-application-id-and-x509-certificate-for-non-azure-hosted-apps"></a>使用非 Azure 代管應用程式的應用程式識別碼和 X.509 憑證
 
 設定 Azure AD、 Azure 金鑰保存庫和應用程式使用 Azure Active Directory 應用程式識別碼和 X.509 憑證來向 key vault**當應用程式裝載在 Azure 之外**。 如需詳細資訊，請參閱 <<c0> [ 關於金鑰、 祕密和憑證](/azure/key-vault/about-keys-secrets-and-certificates)。
 
@@ -120,12 +120,15 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 範例應用程式會使用的應用程式識別碼和 X.509 憑證的時機`#define`陳述式，在頂端*Program.cs*檔案設定為`Certificate`。
 
+1. 建立 PKCS #12 封存 (*.pfx*) 憑證。 建立憑證的選項包括[在 Windows 上的 MakeCert](/windows/desktop/seccrypto/makecert)並[OpenSSL](https://www.openssl.org/)。
+1. 將憑證安裝到目前使用者的個人憑證存放區。 將金鑰標示為可匯出是選擇性的。 請注意憑證的指紋，這將會稍後在此程序。
+1. 匯出 PKCS #12 封存 (*.pfx*) 做為 DER 編碼的憑證的憑證 (*.cer*)。
 1. 使用 Azure AD 註冊應用程式 (**應用程式註冊**)。
-1. 上傳的公開金鑰：
+1. 上傳 DER 編碼的憑證 (*.cer*) 至 Azure AD:
    1. 在 Azure AD 中選取的應用程式。
-   1. 瀏覽至**設定** > **金鑰**。
-   1. 選取 **上傳公開金鑰**來上傳包含公開金鑰的憑證。 除了使用 *.cer*， *.pem*，或 *.crt*憑證 *.pfx*可以上傳憑證。
-1. 應用程式中儲存的金鑰保存庫名稱和應用程式識別碼*appsettings.json*檔案。 將憑證放置在應用程式或應用程式的憑證存放區中根&dagger;。
+   1. 瀏覽至**憑證與祕密**。
+   1. 選取 **上傳憑證**來上傳包含公開金鑰的憑證。 A *.cer*， *.pem*，或 *.crt*是可接受的憑證。
+1. 在應用程式中儲存的金鑰保存庫名稱、 應用程式識別碼和憑證指紋*appsettings.json*檔案。
 1. 瀏覽至**金鑰保存庫**在 Azure 入口網站中。
 1. 選取您在建立金鑰保存庫[生產環境使用 Azure Key Vault 中密碼的儲存體](#secret-storage-in-the-production-environment-with-azure-key-vault)一節。
 1. 選取 **存取原則**。
@@ -136,8 +139,6 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. 選取 [儲存]。
 1. 部署應用程式。
 
-&dagger;在範例應用程式中，憑證由直接從應用程式的根目錄中的實體的憑證檔案建立新`X509Certificate2`呼叫時`AddAzureKeyVault`。 另一個方法是允許 OS 管理的憑證。 如需詳細資訊，請參閱 <<c0> [ 允許 OS 管理的 X.509 憑證](#allow-the-os-to-manage-the-x509-certificate)一節。
-
 `Certificate`範例應用程式取得其組態值從`IConfigurationRoot`具有相同名稱與祕密名稱：
 
 * 非階層式的值：值`SecretName`取得`config["SecretName"]`。
@@ -145,14 +146,15 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-應用程式呼叫`AddAzureKeyVault`所提供的值*appsettings.json*檔案：
+X.509 憑證是由 OS 管理。 應用程式呼叫`AddAzureKeyVault`所提供的值*appsettings.json*檔案：
 
-[!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet1&highlight=12-15)]
+[!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet1&highlight=20-23)]
 
 範例值：
 
 * 金鑰保存庫名稱： `contosovault`
 * 應用程式識別碼： `627e911e-43cc-61d4-992e-12db9c81b413`
+* 憑證指紋： `fe14593dd66b2406c5269d742d04b6e1ab03adb1`
 
 *appsettings.json*：
 
@@ -203,17 +205,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 `AddAzureKeyVault` 自訂呼叫`IKeyVaultSecretManager`:
 
-[!code-csharp[](key-vault-configuration/sample_snapshot/Program.cs?name=snippet1&highlight=22)]
-
-金鑰保存庫名稱、 應用程式識別碼和密碼 （用戶端祕密） 的值由*appsettings.json*檔案：
-
-[!code-json[](key-vault-configuration/sample/appsettings.json)]
-
-範例值：
-
-* 金鑰保存庫名稱： `contosovault`
-* 應用程式識別碼： `627e911e-43cc-61d4-992e-12db9c81b413`
-* 密碼： `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
+[!code-csharp[](key-vault-configuration/sample_snapshot/Program.cs?highlight=30-34)]
 
 `IKeyVaultSecretManager`實作回應組態中載入適當的祕密的祕密版本前置詞：
 
@@ -261,44 +253,6 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 > [!NOTE]
 > 您也可以提供您自己`KeyVaultClient`實作`AddAzureKeyVault`。 自訂用戶端會允許跨應用程式共用用戶端的單一執行個體。
-
-## <a name="allow-the-os-to-manage-the-x509-certificate"></a>允許 OS 管理的 X.509 憑證
-
-X.509 憑證可以由 OS 管理。 下列範例會使用`AddAzureKeyVault`多載，接受`X509Certificate2`從電腦的目前使用者憑證存放區和組態所提供的憑證指紋：
-
-```csharp
-// using System.Linq;
-// using System.Security.Cryptography.X509Certificates;
-// using Microsoft.Extensions.Configuration;
-
-WebHost.CreateDefaultBuilder(args)
-    .ConfigureAppConfiguration((context, config) =>
-    {
-        if (context.HostingEnvironment.IsProduction())
-        {
-            var builtConfig = config.Build();
-
-            using (var store = new X509Store(StoreName.My, 
-                StoreLocation.CurrentUser))
-            {
-                store.Open(OpenFlags.ReadOnly);
-                var certs = store.Certificates
-                    .Find(X509FindType.FindByThumbprint, 
-                        builtConfig["CertificateThumbprint"], false);
-
-                config.AddAzureKeyVault(
-                    builtConfig["KeyVaultName"], 
-                    builtConfig["AzureADApplicationId"], 
-                    certs.OfType<X509Certificate2>().Single());
-
-                store.Close();
-            }
-        }
-    })
-    .UseStartup<Startup>();
-```
-
-如需詳細資訊，請參閱 <<c0> [ 使用而不是用戶端祕密憑證進行驗證](/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret)。
 
 ## <a name="bind-an-array-to-a-class"></a>將陣列繫結到類別
 
@@ -358,13 +312,12 @@ Configuration.Reload();
 
 當應用程式無法載入組態使用的提供者時，錯誤訊息會寫入[ASP.NET Core 記錄基礎結構](xref:fundamentals/logging/index)。 在下列情況會造成無法載入組態：
 
-* 應用程式未正確設定 Azure Active Directory 中。
+* 應用程式或憑證未正確設定 Azure Active Directory 中。
 * 金鑰保存庫不存在於 Azure 金鑰保存庫。
 * 應用程式未獲授權存取金鑰保存庫。
 * 存取原則不包含`Get`和`List`權限。
 * 在金鑰保存庫中，設定資料 （名稱 / 值組） 錯誤命名為，遺漏，停用，或已過期。
-* 應用程式有錯誤的金鑰保存庫名稱 (`KeyVaultName`)，Azure AD 應用程式識別碼 (`AzureADApplicationId`)，或 Azure AD 密碼 （用戶端祕密） (`AzureADPassword`)。
-* Azure AD 密碼 （用戶端祕密） (`AzureADPassword`) 已過期。
+* 應用程式有錯誤的金鑰保存庫名稱 (`KeyVaultName`)，Azure AD 應用程式識別碼 (`AzureADApplicationId`)，或 Azure AD 憑證指紋 (`AzureADCertThumbprint`)。
 * 不正確的值，您想要載入的應用程式中設定金鑰 （名稱）。
 
 ## <a name="additional-resources"></a>其他資源

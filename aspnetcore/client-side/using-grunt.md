@@ -1,16 +1,16 @@
 ---
 title: 在 ASP.NET Core 中使用 Grunt
 author: rick-anderson
-description: ''
+description: 在 ASP.NET Core 中使用 Grunt
 ms.author: riande
 ms.date: 05/10/2019
 uid: client-side/using-grunt
-ms.openlocfilehash: 73b7704726db9d93588dddd3f3b05a23fb3425b3
-ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
-ms.translationtype: MT
+ms.openlocfilehash: 718a1358c0474711b05bb2c90dc86ec9edacbf1e
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65535944"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610227"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>在 ASP.NET Core 中使用 Grunt
 

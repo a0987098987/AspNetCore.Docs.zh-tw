@@ -1,27 +1,27 @@
 ---
 title: ASP.NET Core 使用者入門
 author: rick-anderson
-description: 使用 ASP.NET Core 建立並執行簡單 Hello World 應用程式的快速教學課程。
+description: 此教學課程時間不長，會使用 ASP.NET Core 建立及執行基本的 Hello World 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 5/15/2019
 uid: getting-started
-ms.openlocfilehash: 76728c484368a8b63130c259a9663473970846d3
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 9227dcfbc84376d9d73bc6fc0dd76085779acae1
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209472"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610318"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
-本教學課程示範如何使用 .NET Core 命令列介面來建立 ASP.NET Core Web 應用程式。
+此教學課程示範如何使用.NET Core 命令列介面建立及執行 ASP.NET Core Web 應用程式。
 
 您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web 應用程式專案。
-> * 啟用本機 HTTPS。
+> * 信任開發憑證。
 > * 執行應用程式。
 > * 編輯 Razor 頁面。
 
@@ -41,7 +41,7 @@ ms.locfileid: "58209472"
 dotnet new webapp -o aspnetcoreapp
 ```
 
-## <a name="enable-local-https"></a>啟用本機 HTTPS
+### <a name="trust-the-development-certificate"></a>信任開發憑證
 
 信任 HTTPS 開發憑證：
 
@@ -70,6 +70,8 @@ dotnet dev-certs https --trust
 此命令可能會提示您提供密碼，以在系統金鑰鏈上安裝憑證。 若您同意信任開發憑證，請輸入您的密碼。
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+若是適用於 Linux 的 Windows 子系統，請參閱[信任來自適用於 Linux 的 Windows 子系統的 HTTPS 憑證](xref:security/enforcing-ssl#wsl)。
 
 請參閱您 Linux 發行版本的文件，來了解如何信任 HTTPS 開發憑證。
 
@@ -102,7 +104,7 @@ dotnet run
 
 > [!div class="checklist"]
 > * 建立 Web 應用程式專案。
-> * 啟用本機 HTTPS。
+> * 信任開發憑證。
 > * 執行專案。
 > * 進行變更。
 

@@ -5,14 +5,14 @@ description: 了解建置 ASP.NET Core 應用程式的基本概念。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/31/2019
+ms.date: 05/11/2019
 uid: fundamentals/index
-ms.openlocfilehash: a1fed574db0baab391ebb9cfc44664ceddbfa69b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9c7bc25d813ad17825ef03f5176882993cc2dd63
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882623"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610323"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -78,6 +78,8 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 
 ::: moniker range=">= aspnetcore-3.0"
 
+`CreateHostBuilder` 是特殊名稱，建立器方法可藉此向外部元件 (例如 [Entity Framework](/ef/core/)) 表明其身分。
+
 在 ASP.NET Core 3.0 或更新版本中，您可以在 Web 應用程式中使用一般 Web 主機 (`Host` 類別) 或 Web 主機 (`WebHost` 類別)。 建議您使用一般主機，Web 主機則適用於回溯相容性。
 
 架構會提供 `CreateDefaultBuilder` 和 `ConfigureWebHostDefaults` 方法來設定具有常用選項的主機，例如下列項目：
@@ -95,6 +97,8 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
+
+`CreateWebHostBuilder` 是特殊名稱，建立器方法可藉此向外部元件 (例如 [Entity Framework](/ef/core/)) 表明其身分。
 
 ASP.NET Core 2.x 會針對 Web 應用程式使用 Web 主機 (`WebHost` 類別)。 架構會提供 `CreateDefaultBuilder` 來設定具有常用選項的主機，例如下列項目：
 

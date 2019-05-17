@@ -92,7 +92,11 @@
     - name: 遠端程序呼叫應用程式
       items:
         - name: 開始在 ASP.NET Core 中使用 gRPC 服務
+          uid: tutorials/grpc/index
+        - name: 建立 ASP.NET Core gRPC Greeter 服務
           uid: tutorials/grpc/grpc-start
+        - name: 建立 .NET Core gRPC 用戶端
+          uid: tutorials/grpc/grpc-client
     - name: 資料存取
       items:
         - name: 使用 Razor Pages 的 EF Core
@@ -230,8 +234,9 @@
         - name: 總覽
           uid: mvc/overview
         - name: 教學課程
-          uid: tutorials/first-mvc-app/index
           items:
+            - name: 總覽
+              uid: tutorials/first-mvc-app/index
             - name: 開始使用
               uid: tutorials/first-mvc-app/start-mvc
             - name: 新增控制器
@@ -324,8 +329,6 @@
               uid: client-side/libman/libman-cli
             - name: Visual Studio
               uid: client-side/libman/libman-vs
-        - name: Gulp
-          uid: client-side/using-gulp
         - name: Grunt
           uid: client-side/using-grunt
         - name: Bower
@@ -338,13 +341,10 @@
       uid: fundamentals/app-state
     - name: 配置
       uid: mvc/views/layout
-    - name: 模型繫結
-      uid: mvc/models/model-binding
-    - name: 模型驗證
-      uid: mvc/models/validation
     - name: Razor 語法
       uid: mvc/views/razor
     - name: 標籤協助程式
+      uid: mvc/views/tag-helpers/builtin-th/Index
       items:
         - name: 總覽
           uid: mvc/views/tag-helpers/intro
@@ -374,7 +374,7 @@
               href: 'mvc/views/working-with-forms.md#the-label-tag-helper'
             - name: Partial
               uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-            - name: 選用版
+            - name: Select
               href: 'mvc/views/working-with-forms.md#the-select-tag-helper'
             - name: 文字區域
               href: 'mvc/views/working-with-forms.md#the-textarea-tag-helper'
@@ -396,10 +396,6 @@
           uid: mvc/controllers/areas
         - name: 應用程式組件
           uid: mvc/extensibility/app-parts
-        - name: 自訂模型繫結
-          uid: mvc/advanced/custom-model-binding
-        - name: 相容性版本
-          uid: mvc/compatibility-version
 - name: Web API 應用程式
   items:
     - name: 總覽
@@ -1000,6 +996,14 @@
       uid: fundamentals/troubleshoot-aspnet-core-localization
 - name: 進階
   items:
+    - name: 模型繫結
+      uid: mvc/models/model-binding
+    - name: 自訂模型繫結
+      uid: mvc/advanced/custom-model-binding
+    - name: 模型驗證
+      uid: mvc/models/validation
+    - name: 相容性版本
+      uid: mvc/compatibility-version
     - name: 撰寫中介軟體
       uid: fundamentals/middleware/write
     - name: 要求和回應作業
@@ -1076,4 +1080,4 @@
 - name: 應用程式開發介面參考
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
-  href: 'https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md'
+  href: 'https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md'

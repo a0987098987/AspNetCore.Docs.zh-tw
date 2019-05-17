@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: f5bd2bc9862a7487658125e14837798886efad11
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: fb6157205ab5280eb982a61e834eea5074864830
+ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882793"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65450961"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>從 ASP.NET Core 1.x 遷移至 2.0
 
@@ -41,6 +41,8 @@ ms.locfileid: "64882793"
 
 > [!NOTE]
 > .NET Core 2.0 提供了比 .NET Core 1.x 更大的介面區。 如果您只是因為 .NET Core 1.x 中遺漏了 API 而以 .NET Framework 為目標，以 .NET Core 2.0 為目標可能有效。
+
+如果專案檔包含 `<RuntimeFrameworkVersion>1.{sub-version}</RuntimeFrameworkVersion>`，請參閱[這個 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/3221#issuecomment-413094268) \(英文\)。
 
 <a name="global-json"></a>
 

@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 11/26/2018
 uid: host-and-deploy/web-farm
 ms.openlocfilehash: 4873665e6174a6acf885e1ebb41fb005d646bd1f
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450667"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64884153"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>在 Web 伺服陣列上裝載 ASP.NET Core
 
@@ -62,7 +62,7 @@ ms.locfileid: "52450667"
 | 驗證 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱 <xref:security/authentication/cookie> 與 <xref:security/cookie-sharing>。 |
 | 身分識別 | 驗證及資料庫設定。<br><br>如需詳細資訊，請參閱<xref:security/authentication/identity>。 |
 | 工作階段 | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 和快取 (請參閱 <xref:performance/caching/distributed>)。<br><br>如需詳細資訊，請參閱[工作階段與應用程式狀態：工作階段狀態](xref:fundamentals/app-state#session-state)。 |
-| TempData | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 或工作階段 (請參閱[工作階段與應用程式狀態：工作階段狀態](xref:fundamentals/app-state#session-state))。<br><br>如需詳細資訊，請參閱[工作階段與應用程式狀態：TempData](xref:fundamentals/app-state#tempdata)。 |
+| TempData | 資料保護 (加密的 Cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 或工作階段 (請參閱[工作階段與應用程式狀態：工作階段狀態](xref:fundamentals/app-state#session-state))。<br><br>如需詳細資訊，請參閱[工作階段與應用程式狀態：TempData](xref:fundamentals/app-state#tempdata)。 |
 | 防偽 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱<xref:security/anti-request-forgery>。 |
 
 ## <a name="troubleshoot"></a>疑難排解

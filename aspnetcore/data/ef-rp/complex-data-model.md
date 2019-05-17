@@ -6,18 +6,14 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 311f72699b6291996a43d56247bd3d2bfab596e6
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: a65543f805b197031bd46ef1974d4d4a5018b2d1
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320244"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65516908"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
-
-[!INCLUDE[2.0 version](~/includes/RP-EF/20-pdf.md)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -33,7 +29,7 @@ ms.locfileid: "58320244"
 ![實體圖表](complex-data-model/_static/diagram.png)
 
 若您遇到無法解決的問題，請下載[完整應用程式](
-https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
+https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
 
 ## <a name="customize-the-data-model-with-attributes"></a>使用屬性自訂資料模型
 
@@ -385,19 +381,18 @@ public ICollection<Course> Courses { get; set; }
 
 注意:根據慣例，EF Core 會為不可為 Null 的 FK 和多對多關聯性啟用串聯刪除。 串聯刪除可能會導致循環的串聯刪除規則。 循環串聯刪除規則會在新增移轉時造成例外狀況。
 
-例如，若 `Department.InstructorID` 屬性並未定義為可為 Null：
+例如，若已將 `Department.InstructorID` 屬性定義為不可為 Null：
 
-* EF Core 會在部門遭到刪除時設定串聯刪除規則，以刪除講師。
-* 在刪除部門時刪除講師並非預期的行為。
+* EF Core 會設定串聯刪除規則，以便在刪除講師時刪除部門。
+* 在刪除講師時刪除部門並非預期的行為。
+* 下列 Fluent API 會設定限制規則而非串聯。
 
-若商務規則要求 `InstructorID` 屬性為不可為 Null，則請使用下列 Fluent API 陳述式：
-
- ```csharp
- modelBuilder.Entity<Department>()
-    .HasOne(d => d.Administrator)
-    .WithMany()
-    .OnDelete(DeleteBehavior.Restrict)
- ```
+   ```csharp
+   modelBuilder.Entity<Department>()
+      .HasOne(d => d.Administrator)
+      .WithMany()
+      .OnDelete(DeleteBehavior.Restrict)
+  ```
 
 上述的程式碼會在部門-講師關聯性上停用串聯刪除。
 
@@ -671,7 +666,7 @@ dotnet ef database update
 * [這個教學課程的 YouTube 版本 (第 1 部分)](https://www.youtube.com/watch?v=0n2f0ObgCoA)
 * [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=Je0Z5K1TNmY)
 
-::: moniker-end
+
 
 > [!div class="step-by-step"]
 > [上一頁](xref:data/ef-rp/migrations)

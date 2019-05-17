@@ -4,14 +4,14 @@ author: tdykstra
 description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 03/02/2019
+ms.date: 05/01/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 8a2e310b47e32e9015b0c127ed79d8f6bdf2e44d
-ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
+ms.openlocfilehash: ee7d4b2ae04b5f6c262acc5da0f86f90ab50585f
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59982849"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65085662"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -19,7 +19,7 @@ ms.locfileid: "59982849"
 
 ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提供者搭配使用。 此文章說明如何搭配內建提供者使用 API。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/logging/index/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="add-providers"></a>新增提供者
 
@@ -54,7 +54,7 @@ ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提�
 ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提供 `ILoggerFactory` 執行個體。 `AddConsole` 和 `AddDebug` 擴充方法定義於 [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/) 和 [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/) 套件中。 每個擴充方法會呼叫 `ILoggerFactory.AddProvider` 方法，並傳入提供者的執行個體。
 
 > [!NOTE]
-> [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/samples/1.x)會在 `Startup.Configure` 方法中新增記錄提供者。 若要從先前執行的程式碼取得記錄輸出，請在 `Startup` 類別建構函式中新增記錄提供者。
+> [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/logging/index/samples/1.x)會在 `Startup.Configure` 方法中新增記錄提供者。 若要從先前執行的程式碼取得記錄輸出，請在 `Startup` 類別建構函式中新增記錄提供者。
 
 ::: moniker-end
 
@@ -496,11 +496,12 @@ System.Exception: Item not found exception.
 
 * 主控台
 * 偵錯
+* EventSource
 * EventLog
+* TraceSource
 * AzureAppServicesFile
 * AzureAppServicesBlob
-* TraceSource
-* EventSource
+* ApplicationInsights
 
 ### <a name="default-minimum-level"></a>預設最低層級
 
@@ -616,8 +617,9 @@ ASP.NET Core 隨附下列提供者：
 * [EventSource](#eventsource-provider)
 * [EventLog](#windows-eventlog-provider)
 * [TraceSource](#tracesource-provider)
-
-此文章稍後將說明 [Azure 中的記錄](#logging-in-azure)選項。
+* [AzureAppServicesFile](#azure-app-service-provider)
+* [AzureAppServicesBlob](#azure-app-service-provider)
+* [ApplicationInsights](#azure-application-insights-trace-logging)
 
 如需關於 stdout 記錄的資訊，請參閱<xref:host-and-deploy/iis/troubleshoot#aspnet-core-module-stdout-log>與<xref:host-and-deploy/azure-apps/troubleshoot#aspnet-core-module-stdout-log>。
 
@@ -767,19 +769,6 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 ::: moniker-end
 
-## <a name="logging-in-azure"></a>Azure 中的記錄
-
-如需 Azure 中的記錄相關資訊，請參閱以下各節：
-
-* [Azure App Service 提供者](#azure-app-service-provider)
-* [Azure 記錄串流](#azure-log-streaming)
-
-::: moniker range=">= aspnetcore-1.1"
-
-* [Azure Application Insights 追蹤記錄](#azure-application-insights-trace-logging)
-
-::: moniker-end
-
 ### <a name="azure-app-service-provider"></a>Azure App Service 提供者
 
 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 提供者套件會將記錄寫入至 Azure App Service 應用程式檔案系統中的文字檔，並寫入至 Azure 儲存體帳戶中的 [Blob 儲存體](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage)。 提供者套件適用於以 .NET Core 1.1 或更新版本為目標的應用程式。
@@ -842,7 +831,7 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 此提供者僅適用於專案在 Azure 環境中執行的情況。 若在本機執行專案，不會有任何作用，即它不會寫入本機檔案或 blob 的本機開發儲存體。
 
-### <a name="azure-log-streaming"></a>Azure 記錄資料流
+#### <a name="azure-log-streaming"></a>Azure 記錄資料流
 
 Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 
@@ -865,14 +854,23 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 
 ### <a name="azure-application-insights-trace-logging"></a>Azure Application Insights 追蹤記錄
 
-Application Insights SDK 可以收集及回報由 ASP.NET Core 記錄基礎結構所產生的記錄。 如需詳細資訊，請參閱下列資源：
+[Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) \(英文\) 提供者套件會將記錄寫入至 Azure Application Insights。 Application Insights 是可監視 Web 應用程式的服務，並提供可用來查詢及分析遙測資料的工具。 如果您使用此提供者，就可以使用 Application Insights 工具來查詢及分析記錄。
+
+記錄提供者會以 [Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) \(英文\) 的相依性形式隨附，這是針對 ASP.NET Core 提供所有可用遙測的套件。 如果您使用此套件，就不需安裝提供者套件。
+
+不要使用 [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) \(英文\) 套件&mdash;該套件適用於 ASP.NET 4.x。
+
+如需詳細資訊，請參閱下列資源：
 
 * [Application Insights 概觀](/azure/application-insights/app-insights-overview)
-* [Application Insights for ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
+* [適用於 ASP.NET Core 應用程式的 Application Insights](/azure/azure-monitor/app/asp-net-core-no-visualstudio)：如果您想要實作完整範圍的 Application Insights 遙測以及記錄，請從這裡開始。
+* [適用於 .NET Core ILogger 記錄的 ApplicationInsightsLoggerProvider](/azure/azure-monitor/app/ilogger)：如果您想要實作記錄提供者，而不需要 Application Insights 遙測的其餘部分，請從這裡開始。
 * [Application Insights logging adapters](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/blob/develop/README.md) (Application Insights 記錄配接器)。
-* [Application Insights ILogger 實作範例](/azure/azure-monitor/app/ilogger)
-
+* [安裝、設定及初始化 Application Insights SDK](/learn/modules/instrument-web-app-code-with-application-insights)：Microsoft Learn 網站上的互動式教學課程。
 ::: moniker-end
+
+> [!NOTE]
+> 自 5/1/2019 起，標題為[適用於 ASP.NET Core 的 Application Insights](/azure/azure-monitor/app/asp-net-core) 的文章已過時，因此教學課程步驟已不適用。 請改為參閱[適用於 ASP.NET Core 應用程式的 Application Insights](/azure/azure-monitor/app/asp-net-core-no-visualstudio)。 我們已知道此問題且正致力於更正它。
 
 ## <a name="third-party-logging-providers"></a>協力廠商記錄提供者
 
@@ -885,7 +883,7 @@ Application Insights SDK 可以收集及回報由 ASP.NET Core 記錄基礎結�
 * [Loggr](http://loggr.net/) ([GitHub 存放庫](https://github.com/imobile3/Loggr.Extensions.Logging))
 * [NLog](http://nlog-project.org/) ([GitHub 存放庫](https://github.com/NLog/NLog.Extensions.Logging))
 * [Sentry](https://sentry.io/welcome/) ([GitHub 存放庫](https://github.com/getsentry/sentry-dotnet))
-* [Serilog](https://serilog.net/) ([GitHub 存放庫](https://github.com/serilog/serilog-extensions-logging))
+* [Serilog](https://serilog.net/) ([GitHub 存放庫](https://github.com/serilog/serilog-aspnetcore))
 * [Stackdriver](https://cloud.google.com/dotnet/docs/stackdriver#logging) ([Github 存放庫](https://github.com/googleapis/google-cloud-dotnet))
 
 某些協力廠商架構可以執行[語意記錄 (也稱為結構化記錄)](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging) \(英文\)。

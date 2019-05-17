@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: dff5a5b1ba3c8ed07ccc8d134f8cfeb25b9f6689
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 921e27bf56587813f835357c9090c91a155c087b
+ms.sourcegitcommit: b508b115107e0f8d7f62b25cfcc8ad45e1373459
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58751042"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65212557"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Core
 
@@ -211,10 +211,8 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 對於 Contoso 大學網站的 **About** 頁面，您將顯示每個註冊日期已有多少學生註冊。 這需要對群組進行分組和簡單計算。 若要完成此工作，您需要執行下列作業：
 
 * 針對您需要傳遞至檢視的資料，建立檢視模型類別。
-
-* 修改 Home 控制器中的 About 方法。
-
-* 修改 About 檢視。
+* 在 Home 控制器中建立 About 方法。
+* 建立 About 檢視。
 
 ### <a name="create-the-view-model"></a>建立檢視模型
 
@@ -239,10 +237,8 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
 LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組中的實體數目、將結果儲存在 `EnrollmentDateGroup` 檢視模型物件的集合中。
-> [!NOTE]
-> 在 Entity Framework Core 1.0 版中，整個結果集會傳回到用戶端，並且在用戶端上完成群組作業。 在某些情況下，這可能會造成效能問題。 請務必使用生產環境數量的資料來測試效能，如有必要，請使用原始 SQL 在伺服器上執行群組作業。 如需如何使用原始 SQL 的資訊，請參閱[本系列的最後一個教學課程](advanced.md)。
 
-### <a name="modify-the-about-view"></a>修改 About 檢視
+### <a name="create-the-about-view"></a>建立 About 檢視
 
 使用下列程式碼來新增 *Views/Home/About.cshtml* 檔案：
 
@@ -252,7 +248,7 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>後續步驟
 

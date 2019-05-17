@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: index
-ms.openlocfilehash: 9cb598c4068586e4e960ec40743c4f54f09995ad
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: 6dd722b3b78d2af81497bde9e0519feb9af84748
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614369"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086143"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -24,7 +24,7 @@ ASP.NET Core 是一種跨平台且高效能的[開放原始碼](https://github.c
 * 部署到雲端或在內部部署。
 * 在 [.NET Core 或 .NET Framework](/dotnet/articles/standard/choosing-core-framework-server) 上執行。
 
-## <a name="why-to-use-aspnet-core"></a>使用 ASP.NET Core 的理由
+## <a name="why-choose-aspnet-core"></a>為什麼要選擇 ASP.NET Core？
 
 數百萬的開發人員已使用 (並持續使用) [ASP.NET 4.x](/aspnet/overview) 來建立 Web 應用程式。 ASP.NET Core 是 ASP.NET 4.x 的重新設計，其架構變更可產生更為精簡且更加模組化的架構。
 
@@ -101,7 +101,7 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
 許多文章及教學課程都有包含範例程式碼的連結。
 
-1. [下載 ASP.NET 存放庫 ZIP 檔案](https://codeload.github.com/aspnet/Docs/zip/master)。
+1. [下載 ASP.NET 存放庫 ZIP 檔案](https://codeload.github.com/aspnet/AspNetCore.Docs/zip/master)。
 1. 解壓縮 *Docs-master.zip* 檔案。
 1. 使用範例連結中的 URL，協助您巡覽至範例目錄。
 
@@ -148,7 +148,7 @@ WebHost.CreateDefaultBuilder(args)
 
 您可以放心忽略 (或移除) 程式碼周圍的 `#region` 與 `#endregion` 陳述式。 但若您打算執行主題中所述的範例情境，則請勿變更這些陳述式內的程式碼。 您可以在試驗其他案例時自由改變程式碼。
 
-如需詳細資訊，請參閱 [Contribute to the ASP.NET documentation:Code snippets](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets)。(參與 ASP.NET 文件：程式碼片段)。
+如需詳細資訊，請參閱 [Contribute to the ASP.NET documentation:Code snippets](https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md#code-snippets)。(參與 ASP.NET 文件：程式碼片段)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,11 +7,11 @@ ms.author: tdykstra
 ms.date: 11/13/2018
 uid: mvc/models/model-binding
 ms.openlocfilehash: 1dc9b41328ed78440622acc1865b6f088d394403
-ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597780"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64883143"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core 中的資料繫結
 
@@ -33,11 +33,11 @@ MVC 在收到 HTTP 要求時，會將它路由至控制器的特定動作方法�
 public IActionResult Edit(int? id)
    ```
 
-注意：URL 路由中的字串不區分大小寫。
+注意:URL 路由中的字串不區分大小寫。
 
 MVC 會嘗試依名稱將要求資料繫結至動作參數。 MVC 會使用參數名稱以及其公用 settable 屬性的名稱來尋找每個參數的值。 在上述範例中，唯一的動作參數命名為 `id`，而 MVC 會繫結至路由值中同名的值。 除了路由值之外，MVC 會繫結要求各部分的資料，並且依設定的順序執行。 以下是資料來源清單，而其順序就是模型繫結查看它們的順序：
 
-1. `Form values`：這些是使用 POST 方法查看 HTTP 要求的表單值  (包括 jQuery POST 要求)。
+1. `Form values`：這些是使用 POST 方法查看 HTTP 要求的表單值 (包括 jQuery POST 要求)。
 
 2. `Route values`：[路由](xref:fundamentals/routing)所提供的一組路由值
 
@@ -49,7 +49,7 @@ The link works but generates an error when building with DocFX
 [Routing](xref:fundamentals/routing)
 -->
 
-注意：表單值、路由資料和查詢字串都是儲存為名稱/值組。
+注意:表單值、路由資料和查詢字串全都會儲存為名稱/值組。
 
 因為模型繫結要求名為 `id` 的索引鍵，而且表單值中沒有名為 `id` 的項目，所以會繼續尋找該索引鍵的路由值。 在我們的範例中，它是相符項目。 進行繫結，並且將值轉換成整數 2。 使用 Edit(string id) 的相同要求會轉換成字串 "2"。
 
@@ -59,17 +59,17 @@ The link works but generates an error when building with DocFX
 
 繫結參數時，模型繫結會停止尋找具有該名稱的值，並繼續繫結下一個參數。 否則，預設模型繫結行為會將參數設定為其預設值 (視其類型而定)：
 
-* `T[]`：繫結會將類型 `T[]` 的參數設定為 `Array.Empty<T>()`，但類型 `byte[]` 陣列除外。 類型 `byte[]` 陣列會設定為 `null`。
+* `T[]`：繫結會將型別 `T[]` 的參數設定為 `Array.Empty<T>()`，但型別 `byte[]` 的陣列除外。 類型 `byte[]` 陣列會設定為 `null`。
 
-* 參考類型：繫結會建立具有預設建構函式的類別執行個體，但未設定屬性。 不過，模型繫結會將 `string` 參數設定為 `null`。
+* 參考型別：繫結會使用預設的建構函式來建立類別的執行個體，而不需設定屬性。 不過，模型繫結會將 `string` 參數設定為 `null`。
 
-* 可為 Null 的類型：可為 Null 的類型設定為 `null`。 在上述範例中，模型繫結會將 `id` 設定為 `null`，因為它的類型為 `int?`。
+* 可為 Null 的型別：可為 Null 的型別會設定為 `null`。 在上述範例中，模型繫結會將 `id` 設定為 `null`，因為它的類型為 `int?`。
 
-* 實值型別：類型為 `T` 的不可為 Null 的實值型別會設定為 `default(T)`。 例如，模型繫結會將參數 `int id` 設定為 0。 請考慮使用模型驗證或可為 Null 的類型，而不要依賴預設值。
+* 實值型別：型別為 `T` 的不可為 Null 的實值型別會設定為 `default(T)`。 例如，模型繫結會將參數 `int id` 設定為 0。 請考慮使用模型驗證或可為 Null 的類型，而不要依賴預設值。
 
 如果繫結失敗，則 MVC 不會擲回錯誤。 接受使用者輸入的每一個動作都應該檢查 `ModelState.IsValid` 屬性。
 
-注意：控制器 `ModelState` 屬性中的每個項目都是包含 `Errors` 屬性的 `ModelStateEntry`。 很少需要自行查詢此集合。 請改用 `ModelState.IsValid`。
+注意:控制器 `ModelState` 屬性中的每個項目都是包含 `Errors` 屬性的 `ModelStateEntry`。 很少需要自行查詢此集合。 請改用 `ModelState.IsValid`。
 
 此外，MVC 必須在執行模型繫結時考量一些特殊資料類型：
 
@@ -91,11 +91,11 @@ MVC 會包含數個屬性，可用來將其預設模型繫結行為導向至不�
 
 * `[FromHeader]`、`[FromQuery]`、`[FromRoute]`、`[FromForm]`：使用這些來指定您想要套用的確切繫結來源。
 
-* `[FromServices]`：此屬性會使用[相依性插入](../../fundamentals/dependency-injection.md)，以從服務繫結參數。
+* `[FromServices]`：此屬性會使用[相依性插入](../../fundamentals/dependency-injection.md)，從服務繫結參數。
 
-* `[FromBody]`：使用已設定的格式器，來繫結要求本文中的資料。 格式器是根據要求的內容類型進行選取。
+* `[FromBody]`：使用已設定的格式器來繫結要求本文中的資料。 格式器是根據要求的內容類型進行選取。
 
-* `[ModelBinder]`：用來覆寫預設模型繫結器、繫結來源及名稱。
+* `[ModelBinder]`：用來覆寫預設的模型繫結器、繫結來源及名稱。
 
 當您需要覆寫模型繫結的預設行為時，屬性是很有幫助的工具。
 

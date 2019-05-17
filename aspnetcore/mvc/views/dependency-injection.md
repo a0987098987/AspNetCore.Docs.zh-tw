@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 如何支援 MVC 檢視中的相依性插入。
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 940e237fd73a864d9fd59f5447fe486f93648f62
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: b411b164bfea81f82c5c9fc1052e0ecfe65f0bc2
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087474"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517055"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>ASP.NET Core 檢視中的相依性插入
 
@@ -20,13 +20,38 @@ ASP.NET Core 支援檢視中的[相依性插入](xref:fundamentals/dependency-in
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="a-simple-example"></a>簡單範例
+## <a name="configuration-injection"></a>插入組態
 
-您可以使用 `@inject` 指示詞，將服務插入至檢視。 您可以將 `@inject` 視為將屬性新增至檢視，並使用 DI 來填入屬性。
+*appsettings.json* 值可以直接插入至檢視。
+
+*appsettings.json* 檔案的範例：
+
+```json
+{
+   "root": {
+      "parent": {
+         "child": "myvalue"
+      }
+   }
+}
+```
 
 `@inject` 的語法：`@inject <type> <name>`
 
-運作中 `@inject` 範例：
+使用 `@inject` 的範例：
+
+```csharp
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+   string myValue = Configuration["root:parent:child"];
+   ...
+}
+```
+
+## <a name="service-injection"></a>插入服務
+
+使用 `@inject` 指示詞，可將服務插入至檢視。 您可以將 `@inject` 視為將屬性新增至檢視，並使用 DI 來填入屬性。
 
 [!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 

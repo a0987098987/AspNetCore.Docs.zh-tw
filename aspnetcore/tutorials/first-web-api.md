@@ -6,20 +6,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/4/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 24c87f2ad0446aef51f9d648fd20c181cbeaed2e
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: dce2926e3cb19d6ac8d2af0e9b96c31dee1d92fd
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346461"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087515"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>教學課程：使用 ASP.NET Core MVC 建立 Web API
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Mike Wasson](https://github.com/mikewasson) 提供
 
-此教學課程將教導您使用 ASP.NET Core 建立 Web API 的基本概念。
+本教學課程將教導您使用 ASP.NET Core 建立 Web API 的基本概念。
 
-在此教學課程中，您將了解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web API 專案。
@@ -37,7 +37,7 @@ ms.locfileid: "57346461"
 
 ## <a name="overview"></a>總覽
 
-此教學課程會建立以下 API：
+本教學課程會建立以下 API：
 
 |API | 說明 | 要求本文 | 回應本文 |
 |--- | ---- | ---- | ---- |
@@ -216,7 +216,7 @@ ms.locfileid: "57346461"
 上述程式碼：
 
 * 定義不含方法的 API 控制器類別。
-* 使用 [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) 屬性來裝飾類別。 這個屬性表示控制器會回應 Web API 要求。 如需屬性所啟用特定行為的資訊，請參閱[以 ApiController 屬性標註](xref:web-api/index#annotation-with-apicontroller-attribute)。
+* 使用 [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) 屬性來裝飾類別。 這個屬性表示控制器會回應 Web API 要求。 如需屬性所啟用之特定行為的相關資訊，請參閱 <xref:web-api/index>。
 * 使用 DI 將資料庫內容 (`TodoContext`) 插入到控制器中。 控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。
 * 如果資料庫是空的，請將名為 `Item1` 的項目新增至資料庫。 此程式碼是在建構函式中，因此每次執行都會有新的 HTTP 要求。 如果您刪除所有項目，則建構函式會在下次呼叫 API 方法時重新建立 `Item1`。 因此看起來雖然像是刪除失敗，但實際為成功。
 
@@ -274,7 +274,7 @@ ms.locfileid: "57346461"
 
 ## <a name="test-the-gettodoitems-method"></a>測試 GetTodoItems 方法
 
-此教學課程使用 Postman 來測試 Web API。
+本教學課程使用 Postman 來測試 Web API。
 
 * 安裝 [Postman](https://www.getpostman.com/apps)
 * 啟動 Web 應用程式。
@@ -443,7 +443,7 @@ JQuery [ajax](https://api.jquery.com/jquery.ajax/) 函式會將 `GET` 要求傳�
 
 ## <a name="additional-resources"></a>其他資源
 
-[檢視或下載此教學課程的範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/samples)。 請參閱[如何下載](xref:index#how-to-download-a-sample)。
+[檢視或下載本教學課程的範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples)。 請參閱[如何下載](xref:index#how-to-download-a-sample)。
 
 如需詳細資訊，請參閱下列資源：
 
@@ -458,7 +458,7 @@ JQuery [ajax](https://api.jquery.com/jquery.ajax/) 函式會將 `GET` 要求傳�
 
 ## <a name="next-steps"></a>後續步驟
 
-在此教學課程中，您將了解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web API 專案。

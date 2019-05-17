@@ -7,12 +7,12 @@ ms.author: pranavkm
 ms.custom: mvc
 ms.date: 12/14/2018
 uid: web-api/advanced/analyzers
-ms.openlocfilehash: 7558552586d3056c43d8bfd9ef74cbcb3396726f
-ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
+ms.openlocfilehash: bcc89f856e0aeef80c46a44f76f86b4c09ac6746
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53425090"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64890823"
 ---
 # <a name="use-web-api-analyzers"></a>使用 Web API 分析器
 
@@ -74,8 +74,10 @@ OpenAPI 文件包含動作可能傳回的狀態碼及回應類型。 在 ASP.NET
 
 上述動作記載 HTTP 200 成功傳回型別，但未記載 HTTP 404 失敗狀態碼。 分析器會回報缺少文件的 HTTP 404 狀態碼作為警告。 提供修正問題的選項。
 
+![報告警告的分析器](conventions/_static/Analyzer.gif)
+
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:web-api/advanced/conventions>
 * <xref:tutorials/web-api-help-pages-using-swagger>
-* [使用 ApiController 屬性的註釋](xref:web-api/index#annotation-with-apicontroller-attribute)
+* <xref:web-api/index>

@@ -4,14 +4,14 @@ author: pkellner
 description: 探索 ASP.NET Core 錨點標籤協助程式屬性，以及各屬性在 HTML 錨點標籤的延伸行為中所扮演的角色。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 4/18/2019
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 60fa0c00e40878a8227ca2bc8bdb0bc2bf9f8336
-ms.sourcegitcommit: ea215df889e89db44037a6ac2f01baede0450da9
+ms.openlocfilehash: de45c99194d4825c1e404aa193b0f076ba659748
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53595337"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64883423"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的錨點標籤協助程式
 
@@ -21,15 +21,15 @@ ms.locfileid: "53595337"
 
 如需標籤協助程式的概觀，請參閱 <xref:mvc/views/tag-helpers/intro>。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 這整份文件的範例皆使用 *SpeakerController*：
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
 
-`asp-` 屬性如下所列。
+## <a name="anchor-tag-helper-attributes"></a>錨點標籤協助程式屬性
 
-## <a name="asp-controller"></a>asp-controller
+### <a name="asp-controller"></a>asp-controller
 
 [asp-controller](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Controller*) 屬性指派用於產生 URL 的控制器。 下列標記列出所有喇叭：
 
@@ -63,7 +63,7 @@ ms.locfileid: "53595337"
 
 若 `asp-action` 屬性值為 `Index`，就不會將任何動作附加至 URL，而導致引動預設的 `Index` 動作。 指定的動作 (或預設的動作) 必須存在於 `asp-controller` 所參考的控制器中。
 
-## <a name="asp-route-value"></a>asp-route-{value}
+### <a name="asp-route-value"></a>asp-route-{value}
 
 [asp-route-{value}](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) 屬性可使用萬用字元路由首碼。 任何佔用 `{value}` 預留位置的值都會解譯為潛在的路由參數。 如果找不到預設路由，則會將此路由首碼附加至產生的 `href` 屬性，作為要求參數與值。 否則會在路由範本中加以取代。
 
@@ -117,7 +117,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 如果未指定 `asp-controller` 或 `asp-action`，則會遵循與 `asp-route` 屬性中相同的預設處理。
 
-## <a name="asp-route"></a>asp-route
+### <a name="asp-route"></a>asp-route
 
 [asp-route](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Route*) 屬性用於建立直接連結至具名路由的 URL。 使用[路由屬性](xref:mvc/controllers/routing#attribute-routing)，路由可以如 `SpeakerController` 中所示命名並用於其 `Evaluations` 動作：
 
@@ -155,7 +155,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 若字典中有任何機碼符合路由參數，這些值在路由中會受到適當地取代。 其他不相符的值則產生作為要求參數。
 
-## <a name="asp-fragment"></a>asp-fragment
+### <a name="asp-fragment"></a>asp-fragment
 
 [asp-fragment](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Fragment*) 屬性定義要附加至 URL 的 URL 片段。 錨點標籤協助程式會新增雜湊字元 (#)。 請考慮下列標記：
 
@@ -169,7 +169,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 雜湊標籤在建置用戶端應用程式時很實用。 例如，您可以使用這些標籤在 JavaScript 中輕鬆標記和搜尋。
 
-## <a name="asp-area"></a>asp-area
+### <a name="asp-area"></a>asp-area
 
 [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) 屬性設定區域名稱，用以設定合適的路由。 下列範例描述了 `asp-area` 屬性如何造成路由重新對應。
 
@@ -239,7 +239,7 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 >
 > [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
-## <a name="asp-protocol"></a>asp-protocol
+### <a name="asp-protocol"></a>asp-protocol
 
 [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) 屬性用於在您的 URL 中指定通訊協定 (例如 `https`)。 例如：
 
@@ -253,7 +253,7 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 
 此範本中的主機名稱為 localhost。 錨點標籤協助程式使用網站的公用網域來產生 URL。
 
-## <a name="asp-host"></a>asp-host
+### <a name="asp-host"></a>asp-host
 
 [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) 屬性用於在您的 URL 中指定主機名稱。 例如：
 
@@ -265,7 +265,7 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 <a href="https://microsoft.com/Home/About">About</a>
 ```
 
-## <a name="asp-page"></a>asp-page
+### <a name="asp-page"></a>asp-page
 
 [asp-page](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) 屬性與 Razor 頁面搭配使用。 您可用其將錨點標籤的 `href` 屬性值設定為特定頁面。 在頁面名稱的開頭加上正斜線 ("/") 即可建立 URL。
 
@@ -289,7 +289,7 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 <a href="/Attendee?attendeeid=10">View Attendee</a>
 ```
 
-## <a name="asp-page-handler"></a>asp-page-handler
+### <a name="asp-page-handler"></a>asp-page-handler
 
 [asp-page-handler](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) 屬性與 Razor 頁面搭配使用。 其用途為建立特定頁面處理常式的連結。
 

@@ -4,15 +4,15 @@ description: 在本教學課程中，請新增更多實體和關聯性，並透�
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 5ab893dd77ff2cc9a735702eb3a547ed8bcb2197
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 2776e3357941d0e7932882c39af121f85d037d62
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264853"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887243"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>教學課程：建立複雜的資料模型 - ASP.NET MVC 搭配 EF Core
 
@@ -40,7 +40,7 @@ ms.locfileid: "58264853"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [在 MVC Web 應用程式中使用 ASP.NET Core 的 EF Core 移轉功能](migrations.md)
+* [使用 EF Core 移轉](migrations.md)
 
 ## <a name="customize-the-data-model"></a>自訂資料模型
 
@@ -320,7 +320,7 @@ public ICollection<Course> Courses { get; set; }
 ```
 
 > [!NOTE]
-> 根據慣例，Entity Framework 會為不可為 Null 的外部索引鍵和多對多關聯性啟用串聯刪除。 這可能會導致循環串聯刪除規則，並在您嘗試新增移轉時造成例外狀況。 例如，若您沒有將 Department.InstructorID 屬性定義為可為 Null，EF 便會設定串聯刪除規則，以在您刪除部門時刪除講師。這可能是您不願意見到的情況。 若您的商務規則要求 `InstructorID` 屬性不可為 Null，則您將必須使用 Fluent API 陳述式來在關聯性上停用串聯刪除：
+> 根據慣例，Entity Framework 會為不可為 Null 的外部索引鍵和多對多關聯性啟用串聯刪除。 這可能會導致循環串聯刪除規則，並在您嘗試新增移轉時造成例外狀況。 例如，若您未將 Department.InstructorID 屬性定義成可為 Null，EF 就會設定串聯刪除規則，在您刪除講師時刪除部門，而這可能是您不願見到的情況。 若您的商務規則要求 `InstructorID` 屬性不可為 Null，則您將必須使用 Fluent API 陳述式來在關聯性上停用串聯刪除：
 >
 > ```csharp
 > modelBuilder.Entity<Department>()
@@ -509,7 +509,7 @@ dotnet ef database update
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[下載或檢視已完成的應用程式。](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -529,6 +529,7 @@ dotnet ef database update
 > * 變更連接字串
 > * 更新資料庫
 
-若要深入了解如何存取相關資料，請前往下一篇文章。
+若要深入了解如何存取相關資料，請前往下個教學課程。
+
 > [!div class="nextstepaction"]
-> [存取相關資料](read-related-data.md)
+> [下一步：存取相關資料](read-related-data.md)

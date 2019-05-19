@@ -2,17 +2,17 @@
 title: 保存其他的宣告與 ASP.NET Core 中的外部提供者的權杖
 author: guardrex
 description: 了解如何建立額外的宣告並從外部提供者的權杖。
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 05/14/2019
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: 37c7a51217576669bcaed79d4a212e6412aa8945
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: e18287e5a4171b3f7a6daa122111448b8447c1da
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897665"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874849"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>保存其他的宣告與 ASP.NET Core 中的外部提供者的權杖
 
@@ -24,7 +24,7 @@ ms.locfileid: "64897665"
 
 ## <a name="prerequisites"></a>必要條件
 
-決定哪些應用程式中支援的外部驗證提供者。 每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端祕密。 如需詳細資訊，請參閱 <xref:security/authentication/social/index>。 [範例應用程式](#sample-app-instructions)會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
+決定哪些應用程式中支援的外部驗證提供者。 每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端祕密。 如需詳細資訊，請參閱 <xref:security/authentication/social/index>。 範例應用程式會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
 
 ## <a name="set-the-client-id-and-client-secret"></a>設定用戶端識別碼和用戶端祕密
 
@@ -39,7 +39,7 @@ OAuth 驗證提供者會建立信任關係，使用用戶端識別碼和用戶�
 
 範例應用程式設定 Google 驗證提供者用戶端識別碼和由 Google 提供的用戶端祕密：
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=4,6)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=4,9)]
 
 ## <a name="establish-the-authentication-scope"></a>建立驗證範圍
 
@@ -48,27 +48,39 @@ OAuth 驗證提供者會建立信任關係，使用用戶端識別碼和用戶�
 | 提供者  | 範圍                                                            |
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
-| Google    | `https://www.googleapis.com/auth/plus.login`                     |
+| Google    | `https://www.googleapis.com/auth/userinfo.profile`               |
 | Microsoft | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
 | Twitter   | `https://api.twitter.com/oauth/authenticate`                     |
 
-範例應用程式會新增 Google`plus.login`要求 Google + 登入權限的範圍：
+在範例應用程式，Google`userinfo.profile`由架構自動新增範圍時<xref:Microsoft.Extensions.DependencyInjection.GoogleExtensions.AddGoogle*>上呼叫<xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder>。 如果應用程式需要其他範圍，請將它們加入選項。 在下列範例中，Google`https://www.googleapis.com/auth/user.birthday.read`以擷取使用者的生日新增範圍：
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=7)]
+```csharp
+options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
+```
 
 ## <a name="map-user-data-keys-and-create-claims"></a>將使用者資料的索引鍵對應，並建立宣告
 
-在 提供者的選項，指定<xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.MapJsonKey*>每個索引鍵的外部提供者的 JSON 使用者資料，來讀取登入的應用程式身分識別。 如需有關宣告類型的詳細資訊，請參閱<xref:System.Security.Claims.ClaimTypes>。
+在 提供者的選項，指定<xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.MapJsonKey*>或<xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.MapJsonSubKey*>每個索引鍵/子機碼的外部提供者的 JSON 使用者資料，來讀取登入的應用程式身分識別。 如需有關宣告類型的詳細資訊，請參閱<xref:System.Security.Claims.ClaimTypes>。
 
-範例應用程式會建立<xref:System.Security.Claims.ClaimTypes.Gender>來自宣告`gender`Google 使用者資料中的索引鍵：
+範例應用程式會建立地區設定 (`urn:google:locale`) 和圖片 (`urn:google:picture`) 來自宣告`locale`和`picture`Google 使用者資料中的索引鍵：
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=8)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=13-14)]
 
 在  <xref:Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync*>，則<xref:Microsoft.AspNetCore.Identity.IdentityUser>(`ApplicationUser`) 登入應用程式與<xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*>。 登入程序期間<xref:Microsoft.AspNetCore.Identity.UserManager%601>可以儲存`ApplicationUser`宣告的使用者資料可從<xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*>。
 
-範例應用程式中`OnPostConfirmationAsync`(*Account/ExternalLogin.cshtml.cs*) 建立<xref:System.Security.Claims.ClaimTypes.Gender>宣告為帶正負號的`ApplicationUser`:
+範例應用程式中`OnPostConfirmationAsync`(*Account/ExternalLogin.cshtml.cs*) 建立地區設定 (`urn:google:locale`) 和圖片 (`urn:google:picture`) 為帶正負號的宣告中`ApplicationUser`，包括宣告<xref:System.Security.Claims.ClaimTypes.GivenName>:
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=30-31)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=35-51)]
+
+根據預設，使用者的宣告會儲存在驗證 cookie。 如果驗證 cookie 太大，它可能會造成失敗，因為應用程式：
+
+* 瀏覽器偵測到的 cookie 標頭太長。
+* 太大而要求的整體大小。
+
+如果需要處理使用者要求大量的使用者資料：
+
+* 限制只有 app 所需的處理要求的使用者宣告的大小與數量。
+* 使用自訂<xref:Microsoft.AspNetCore.Authentication.Cookies.ITicketStore>Cookie 驗證中介軟體的<xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions.SessionStore>跨要求儲存身分識別。 保留大量的伺服器上的身分識別資訊，同時只傳送給用戶端的小型工作階段識別碼索引鍵。
 
 ## <a name="save-the-access-token"></a>儲存存取權杖
 
@@ -76,70 +88,72 @@ OAuth 驗證提供者會建立信任關係，使用用戶端識別碼和用戶�
 
 範例應用程式設定的值`SaveTokens`要`true`在<xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions>:
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=9)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=15)]
 
 當`OnPostConfirmationAsync`執行時，儲存的存取權杖 ([ExternalLoginInfo.AuthenticationTokens](xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.AuthenticationTokens*)) 從外部提供者`ApplicationUser`的`AuthenticationProperties`。
 
-範例應用程式會將儲存存取權杖：
+範例應用程式會將儲存存取權杖`OnPostConfirmationAsync`（新的使用者註冊） 和`OnGetCallbackAsync`（先前已註冊的使用者） 中*Account/ExternalLogin.cshtml.cs*:
 
-* `OnPostConfirmationAsync` &ndash; 執行新的使用者註冊。
-* `OnGetCallbackAsync` &ndash; 當先前已註冊的使用者登入應用程式時執行。
-
-*Account/ExternalLogin.cshtml.cs*:
-
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=34-35)]
-
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnGetCallbackAsync&highlight=31-32)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=54-56)]
 
 ## <a name="how-to-add-additional-custom-tokens"></a>如何新增額外的自訂權杖
 
 若要示範如何新增自訂權杖，它會儲存為一部分`SaveTokens`，範例應用程式會新增<xref:Microsoft.AspNetCore.Authentication.AuthenticationToken>與目前<xref:System.DateTime>如[AuthenticationToken.Name](xref:Microsoft.AspNetCore.Authentication.AuthenticationToken.Name*)的`TicketCreated`:
 
-[!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=10-21)]
+[!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=17-28)]
 
-## <a name="sample-app-instructions"></a>範例應用程式的指示
+## <a name="creating-and-adding-claims"></a>建立並新增宣告
 
-範例應用程式示範如何：
+此架構提供常見的動作和建立，並將宣告新增至集合的擴充方法。 如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions> 和 <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionUniqueExtensions>。
 
-* 從 Google 取得使用者的性別和儲存性別宣告的值。
-* 將 Google 存取權杖儲存在使用者的`AuthenticationProperties`。
+使用者可以定義自訂動作，藉由衍生自<xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction>並實作抽象<xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.Run*>方法。
 
-若要使用範例應用程式：
+如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>。
 
-1. 註冊應用程式，並取得有效的用戶端識別碼和 Google 驗證的用戶端祕密。 如需詳細資訊，請參閱 <xref:security/authentication/google-logins>。
-1. 提供用戶端識別碼和應用程式中的用戶端祕密<xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions>的`Startup.ConfigureServices`。
-1. 執行應用程式，並要求我宣告頁面。 當使用者未登入時，應用程式重新導向至 Google。 使用 Google 登入。 Google 使用者重新導向回到應用程式 (`/Home/MyClaims`)。 使用者經過驗證，而且我的宣告頁面載入。 性別宣告是底下**使用者宣告**從 Google 取得的值。 存取權杖會出現在**驗證屬性**。
+## <a name="removal-of-claim-actions-and-claims"></a>移除宣告動作和宣告
+
+[ClaimActionCollection.Remove(String)](xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimActionCollection.Remove*)移除所有宣告的動作指定<xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType>從集合。 [（ClaimActionCollection，String） ClaimActionCollectionMapExtensions.DeleteClaim](xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*)刪除之宣告的指定<xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType>來自身分識別。 <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*> 主要搭配[OpenID Connect (OIDC)](/azure/active-directory/develop/v2-protocols-oidc)移除通訊協定產生宣告。
+
+## <a name="sample-app-output"></a>範例應用程式輸出
 
 ```
 User Claims
 
 http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier
-    b36a7b09-9135-4810-b7a5-78697ff23e99
+    9b342344f-7aab-43c2-1ac1-ba75912ca999
 http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name
-    username@gmail.com
+    someone@gmail.com
 AspNet.Identity.SecurityStamp
-    29G2TB881ATCUQFJSRFG1S0QJ0OOAWVT
-http://schemas.xmlsoap.org/ws/2005/05/identity/claims/gender
-    female
-http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod
-    Google
+    7D4312MOWRYYBFI1KXRPHGOSTBVWSFDE
+http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    Judy
+urn:google:locale
+    en
+urn:google:picture
+    https://lh4.googleusercontent.com/-XXXXXX/XXXXXX/XXXXXX/XXXXXX/photo.jpg
 
 Authentication Properties
 
 .Token.access_token
-    bv42.Dgw...GQMv9ArLPs
+    yc23.AlvoZqz56...1lxltXV7D-ZWP9
 .Token.token_type
     Bearer
 .Token.expires_at
-    2018-08-27T19:08:00.0000000+00:00
+    2019-04-11T22:14:51.0000000+00:00
 .Token.TicketCreated
-    8/27/2018 6:08:00 PM
+    4/11/2019 9:14:52 PM
 .TokenNames
     access_token;token_type;expires_at;TicketCreated
+.persistent
 .issued
-    Mon, 27 Aug 2018 18:08:05 GMT
+    Thu, 11 Apr 2019 20:51:06 GMT
 .expires
-    Mon, 10 Sep 2018 18:08:05 GMT
+    Thu, 25 Apr 2019 20:51:06 GMT
+
 ```
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
+
+## <a name="additional-resources"></a>其他資源
+
+* [工程 SocialSample app aspnet/AspNetCore](https://github.com/aspnet/AspNetCore/tree/master/src/Security/Authentication/samples/SocialSample) &ndash;連結的範例應用程式位於[aspnet/AspNetCore GitHub 存放庫的](https://github.com/aspnet/AspNetCore)`master`工程的分支。 `master`分支包含 ASP.NET Core 的下一個版本進行開發的程式碼。 若要查看範例應用程式的 ASP.NET Core 的發行版本的版本，請使用**分支**下拉式清單來選取發行分支 (例如`release/2.2`)。

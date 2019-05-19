@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: e9214139c0e6e958445feb13b6350bad376a0152
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 38e1fff9c7a212af992951dbf57e124cae69d36f
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884163"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874981"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -28,24 +28,9 @@ ms.locfileid: "64884163"
 
 Razor Pages 和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
 
-### <a name="adding-validation-rules-to-the-movie-model"></a>將驗證規則新增至電影模型
+[!INCLUDE[](~/includes/RP-MVC/validation.md)]
 
-開啟 *Models/Movie.cs* 檔案。 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 提供一組內建的驗證屬性 (attribute)，其以宣告方式套用至類別或屬性 (property)。 DataAnnotations 也包含格式化屬性 (例如 `DataType`)，可協助進行格式化，但不提供驗證。
-
-更新 `Movie` 類別，以充分利用 `Required`、`StringLength`、`RegularExpression` 和 `Range` 驗證屬性。
-
-[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDA.cs?name=snippet1)]
-
-驗證屬性 (attribute) 會指定對模型屬性 (property) 強制執行的行為：
-
-* `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須具有值。 不過，使用者可以輸入空白字元以滿足可為 Null 之類型的驗證條件約束。 不可為 Null 的[實值類型](/dotnet/csharp/language-reference/keywords/value-types) (如 `decimal`、`int`、`float` 和 `DateTime`) 原本就是必要項目，而且不需要 `Required` 屬性。
-* `RegularExpression` 屬性會限制使用者可以輸入的字元數目。 在上述程式碼中，`Genre` 必須以一個以上的大寫字母開頭，並在後面加上零個以上的字母、單引號或雙引號、空格字元或連字號。 `Rating` 必須以一個以上的大寫字母開頭，並在後面加上零個以上的字母、數字、單引號或雙引號、空格字元或連字號。
-* `Range` 屬性會將值限制在指定的範圍內。
-* `StringLength` 屬性可設定字串的最大長度，並選擇性地設定最小長度。 
-
-擁有 ASP.NET Core 自動強制執行的驗證規則有助於讓應用程式更穩固。 對模型的自動驗證可協助保護應用程式，因為您不需要在新增新程式碼時記得加以套用。
-
-### <a name="validation-error-ui-in-razor-pages"></a>Razor 頁面中的驗證錯誤 UI
+### <a name="validation-error-ui-in-razor-pages"></a>Razor Pages 中的驗證錯誤 UI
 
 執行應用程式，並巡覽至 Pages/Movies。
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 本教學課程示範如何搭配使用 OAuth 2.0 與外部驗證提供者，建立 ASP.NET Core 2.x 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 4/19/2019
+ms.date: 05/10/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: e2d68ac93bdcfa2fc015e8447ea38626787cdb02
-ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
+ms.openlocfilehash: 8dac8a8a2276388414b6bb1211e970617b001637
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65451051"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874814"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
@@ -33,10 +33,12 @@ ms.locfileid: "65451051"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案] 。
-* 建立新的 ASP.NET Core Web 應用程式。
-* 在下拉式清單中選取 [ASP.NET Core 2.2]，然後選取 [Web 應用程式]。
-* 選取 [變更驗證]，然後將驗證設定為 [個別使用者帳戶]。
+* 建立新的專案。
+* 選取 [ASP.NET Core Web 應用程式] 和 [下一步]。
+* 提供**專案名稱**並確認或變更**位置**。 選取 [建立]。
+* 選取下拉式清單中的 [ASP.NET Core 2.2]。 選取範本清單中的 [Web 應用程式]。
+* 選取 [驗證] 下的 [變更]，並將驗證設定為 [個別使用者帳戶]。 選取 [確定]。
+* 在 [建立新的 ASP.NET Core Web 應用程式] 視窗中選取 [建立]。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -56,27 +58,14 @@ ms.locfileid: "65451051"
   * `-au Individual` 會建立程式碼以進行個別驗證。
   * `code` 命令會在新的 Visual Studio Code 執行個體中開啟 [WebApp1] 資料夾。
 
-  對話方塊隨即顯示，並指出 **'WebApp1' 中遺漏了建置和偵錯的必要資產。新增它們嗎？**
-
-* 選取 [是]
+* 對話方塊隨即顯示，並指出 **'WebApp1' 中遺漏了建置和偵錯的必要資產。新增它們嗎？** 選取 [是]。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-從終端機執行下列命令：
-
-<!-- TODO: update these instruction once mac support 2.2 projects -->
-
-```console
-dotnet new webapp -o WebApp1 -au Individual
-```
-
-上述命令使用 [.NET Core CLI](/dotnet/core/tools/dotnet) 來建立 Razor Pages 專案。
-
-## <a name="open-the-project"></a>開啟專案
-
-從 Visual Studio 中，選取 [檔案] > [開啟]，然後選取 *WebApp1.csproj* 檔案。
-
-<!-- End of VS tabs -->
+* 選取 [檔案] > [新增方案]。
+* 選取提要欄位中的 [.NET Core] > [應用程式]。 選取 [Web 應用程式] 範本。 選取 [下一步]。
+* 將 [目標 Framework] 下拉式清單設定為 [.NET Core 2.2]。 選取 [下一步]。
+* 提供**專案名稱**。 確認或變更**位置**。 選取 [建立]。
 
 ---
 

@@ -5,12 +5,12 @@ description: 如何將驗證新增至 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 04/13/2017
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: 49db8d7c1d3e54f416c66685c19b3a2e3b14251c
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 6c59d0188f67872c7dd5599967551d7d390bfdcf
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665440"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65875058"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>將驗證新增至 ASP.NET Core MVC 應用程式
 
@@ -27,25 +27,9 @@ MVC 的設計原則之一是[DRY](https://wikipedia.org/wiki/Don%27t_repeat_your
 
 MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DRY 準則的絶佳範例。 您可以宣告方式在單一位置指定驗證規則 (在模型類別中) ，而規則可在應用程式的任何位置強制執行。
 
-## <a name="adding-validation-rules-to-the-movie-model"></a>將驗證規則新增至電影模型
+[!INCLUDE[](~/includes/RP-MVC/validation.md)]
 
-開啟 *Movie.cs* 檔案。 DataAnnotations 提供一組內建的驗證屬性 (attribute)，您可以宣告方式將其套用至類別或屬性 (property)。 (它也包含如 `DataType` 的格式化屬性，可協助進行格式化，但不提供驗證。)
-
-更新 `Movie` 類別，以充分利用內建的 `Required`、`StringLength`、`RegularExpression` 和 `Range` 驗證屬性。
-
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie22/Models/MovieDateRatingDA.cs?name=snippet1)]
-
-驗證屬性會指定您想要對套用目標模型屬性強制執行的行為：
-
-* `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須是值；但無法防止使用者輸入空格以滿足此驗證。 
-* `RegularExpression` 屬性則用來限制可輸入的字元。 上述程式碼中的 `Genre` 和 `Rating` 必須只使用字母 (第一個字母大寫，不允許使用空格、數字和特殊字元)。
-* `Range` 屬性會將值限制在指定的範圍內。 
-* `StringLength` 屬性可讓您設定字串屬性的最大長度，並選擇性設定其最小長度。 
-* 實值型別 (如`decimal`、`int`、`float`、`DateTime`) 原本就是必要項目，而且不需要 `[Required]` 屬性。
-
-擁有 ASP.NET Core 自動強制執行的驗證規則有助於讓您的應用程式更穩固。 它也確保您不會忘記要驗證某些項目，不小心讓不正確的資料進入資料庫。
-
-## <a name="validation-error-ui-in-mvc"></a>MVC 中的驗證錯誤 UI
+## <a name="validation-error-ui"></a>驗證錯誤 UI
 
 執行應用程式並巡覽至電影控制器。
 

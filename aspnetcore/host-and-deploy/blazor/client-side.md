@@ -5,24 +5,22 @@ description: 了解如何使用 ASP.NET Core、內容傳遞網路 (CDN)、檔案
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/15/2019
+ms.date: 05/13/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: 01a612029f415f583908c3bf2adc2e6d35167acb
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: ea8ece266809913e32ac212bc55cb3c2499c234f
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614661"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874979"
 ---
 # <a name="host-and-deploy-blazor-client-side"></a>裝載和部署 Blazor 用戶端
 
 作者：[Luke Latham](https://github.com/guardrex)、[Rainer Stropek](https://www.timecockpit.com) 和 [Daniel Roth](https://github.com/danroth27)
 
-[!INCLUDE[](~/includes/razor-components-preview-notice.md)]
-
 ## <a name="host-configuration-values"></a>主機組態值
 
-使用[用戶端裝載模型](xref:blazor/hosting-models#client-side-hosting-model)的 Blazor 應用程式，可以在開發環境中，在執行時接受下列主機組態值作為命令列引數。
+使用[用戶端裝載模型](xref:blazor/hosting-models#client-side)的 Blazor 應用程式，可以在開發環境中，在執行時接受下列主機組態值作為命令列引數。
 
 ### <a name="content-root"></a>內容根目錄
 
@@ -95,7 +93,7 @@ ms.locfileid: "59614661"
 
 ## <a name="deployment"></a>部署
 
-使用[用戶端裝載模型](xref:blazor/hosting-models#client-side-hosting-model)：
+使用[用戶端裝載模型](xref:blazor/hosting-models#client-side)：
 
 * Blazor 應用程式、其相依性，和 .NET 執行階段會下載至瀏覽器中。
 * 應用程式會直接在瀏覽器 UI 執行緒上執行。 支援下列策略之一：
@@ -110,15 +108,15 @@ Blazor 在每個組建上執行中繼語言 (IL) 連結，以從輸出組件移�
 
 用戶端應用程式中的頁面元件傳送要求，並不只是將要求傳送到伺服器端的裝載應用程式那麼簡單。 請考慮具有兩個頁面的用戶端應用程式：
 
-* **_Main.cshtml_** &ndash; 在應用程式根目錄載入，並包含 [關於] 頁面的連結 (`href="About"`)。
-* **_About.cshtml_** &ndash; [關於] 頁面。
+* **_Main.razor** &ndash; 載入應用程式根目錄，同時包含 [關於] 頁面 (`href="About"`) 的連結。
+* **_About.razor** &ndash; [關於] 頁面。
 
 使用瀏覽器的網址列要求應用程式預設文件時 (例如 `https://www.contoso.com/`)：
 
 1. 瀏覽器提出要求。
 1. 傳回預設頁面，這通常是 *index.html*。
 1. *index.html* 啟動載入應用程式。
-1. 這會載入 Blazor 的路由器，且 Razor 主頁面 (*Main.cshtml*) 隨即出現。
+1. 會載入 Blazor 的路由器，同時會顯示 Razor 主頁面 (*Main.razor*)。
 
 在主頁面上，選取 [關於] 頁面的連結會載入 [關於] 頁面。 選取您用戶端上適用的 [關於] 頁面連結，因為 Blazor 路由器會停止瀏覽器，使其不從網際網路對 `www.contoso.com` 提出針對 `About` 的要求，並自行提供 [關於] 頁面。 對於「用戶端應用程式內」內部頁面的所有要求運作方式相同：要求不會對於網際網路上伺服器裝載的資源，觸發以瀏覽器為基礎的要求。 路由器會在內部處理要求。
 
@@ -128,13 +126,19 @@ Blazor 在每個組建上執行中繼語言 (IL) 連結，以從輸出組件移�
 
 ## <a name="app-base-path"></a>應用程式基底路徑
 
-「應用程式基底路徑」是伺服器上的虛擬應用程式根路徑。 例如，對於位於 Contoso 伺服器虛擬資料夾 `/CoolApp/` 的應用程式，能使用 `https://www.contoso.com/CoolApp` 到達它，且具有 `/CoolApp/` 虛擬基底路徑。 藉由將應用程式基底路徑設為 `CoolApp/`，應用程式會察覺它虛擬地位於伺服器上何處。 應用程式可以使用應用程式基底路徑，從不在根目錄中之元件建構相對於應用程式根目錄的 URL。 這可讓存在於不同目錄結構層級的元件，建置連結以連至應用程式內所有位置的其他資源。 應用程式基底路徑也會用來攔截超連結點擊，其中連結的 `href` 目標是在應用程式基底路徑 URI 空間內&mdash;Blazor 路由器會處理內部瀏覽。
+「應用程式基底路徑」是伺服器上的虛擬應用程式根路徑。 例如，對於位於 Contoso 伺服器虛擬資料夾 `/CoolApp/` 的應用程式，能使用 `https://www.contoso.com/CoolApp` 到達它，且具有 `/CoolApp/` 虛擬基底路徑。 對虛擬路徑 (`<base href="/CoolApp/">`) 設定應用程式的基底路徑，應用程式即可得知其虛擬位於伺服器的何處。 應用程式可以使用應用程式基底路徑，從不在根目錄中之元件建構相對於應用程式根目錄的 URL。 這可讓存在於不同目錄結構層級的元件，建置連結以連至應用程式內所有位置的其他資源。 應用程式基底路徑也會用來攔截超連結點擊，其中連結的 `href` 目標是在應用程式基底路徑 URI 空間內&mdash;Blazor 路由器會處理內部瀏覽。
 
-在許多裝載案例中，應用程式之伺服器虛擬路徑是應用程式的根目錄。 在這些情況中，應用程式基底路徑是正斜線 (`<base href="/" />`)，這是應用程式的預設組態。 在其他裝載案例中，例如 GitHub Pages 和 IIS 虛擬目錄或子應用程式，應用程式基底路徑必須設定為應用程式的伺服器虛擬路徑。 若要設定應用程式的基底路徑，請在 *index.html* 中新增或更新 `<base>` 標籤，這可在 `<head>` 標籤項目內找到。 將 `href` 屬性值設為 `virtual-path/` (尾端的斜線為必要)，其中 `virtual-path/` 是應用程式伺服器上的完整虛擬應用程式根路徑。 在上述範例中，虛擬路徑設為 `CoolApp/`: `<base href="CoolApp/">`。
+在許多裝載案例中，應用程式之伺服器虛擬路徑是應用程式的根目錄。 在這些情況中，應用程式基底路徑是正斜線 (`<base href="/" />`)，這是應用程式的預設組態。 在其他裝載案例中，例如 GitHub Pages 和 IIS 虛擬目錄或子應用程式，應用程式基底路徑必須設定為應用程式的伺服器虛擬路徑。 若要設定應用程式的基底路徑，請更新 *wwwroot/index.html* 檔案 `<head>` 標籤項目內的 `<base>` 標籤。 將 `href` 屬性值設為 `/virtual-path/` (尾端的斜線為必要)，其中 `/virtual-path/` 是應用程式伺服器上的完整虛擬應用程式根路徑。 在上述範例中，虛擬路徑設為 `/CoolApp/`: `<base href="/CoolApp/">`。
 
-對於已設定非根目錄虛擬路徑的應用程式 (例如 `<base href="CoolApp/">`)，應用程式「在本機執行時」無法找到它的資源。 若要在本機開發和測試期間解決這個問題，您可以提供「基底路徑」引數，讓它在執行時符合 `<base>` 標籤的 `href` 值。
+對於已設定非根目錄虛擬路徑的應用程式 (例如 `<base href="/CoolApp/">`)，應用程式「在本機執行時」無法找到它的資源。 若要在本機開發和測試期間解決這個問題，您可以提供「基底路徑」引數，讓它在執行時符合 `<base>` 標籤的 `href` 值。
 
-若要在本機執行應用程式時傳遞路徑基底引數與根路徑 (`/`)，請從應用程式的目錄執行下列命令：
+若要在本機執行應用程式期間，傳遞路徑基底引數與根路徑 (`/`)，請從應用程式的目錄執行 `dotnet run` 命令，同時設定 `--pathbase` 選項：
+
+```console
+dotnet run --pathbase=/{Virtual Path (no trailing slash)}
+```
+
+若是虛擬基底路徑為 `/CoolApp/` (`<base href="/CoolApp/">`) 的應用程式，命令為：
 
 ```console
 dotnet run --pathbase=/CoolApp
@@ -144,7 +148,7 @@ dotnet run --pathbase=/CoolApp
 
 如需詳細資訊，請參閱[路徑基底主機設定值](#path-base)一節。
 
-如果應用程式使用[用戶端裝載模型](xref:blazor/hosting-models#client-side-hosting-model) (根據 **Blazor** 專案範本)，且裝載為 ASP.NET Core 應用程式中的 IIS 子應用程式，請務必停用繼承的 ASP.NET Core 模組處理常式，或是確定 *web.config* 檔案中，根 (父系) 應用程式的 `<handlers>` 區段不由子應用程式繼承。
+如果應用程式使用[用戶端裝載模型](xref:blazor/hosting-models#client-side) (根據 **Blazor** 專案範本、使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazor` 範本)，且裝載為 ASP.NET Core 應用程式中的 IIS 子應用程式，請務必停用繼承的 ASP.NET Core 模組處理常式，或是確定子應用程式並未繼承 *web.config* 檔案中根 (父系) 應用程式的 `<handlers>` 區段。
 
 移除應用程式已發佈 *web.config* 檔案中的處理常式，方法是新增 `<handlers>` 區段到檔案：
 

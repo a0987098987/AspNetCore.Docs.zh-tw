@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 362186be6feeeefeca3c56688ee6420de5fb9659
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 7e1741d2bed15f36a967713a2f9bd0d93801c8d0
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884503"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874944"
 ---
 # <a name="app-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -27,7 +27,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 * 選擇性地包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法來設定應用程式的服務。 服務的定義是可提供應用程式功能的可重複使用元件。 服務會在 `ConfigureServices`中經過設定&mdash;也會受描述為「已註冊」&mdash;且會透過 [ 相依性插入 (DI)](xref:fundamentals/dependency-injection) 或 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*> 在應用程式間受取用。
 * 包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> 方法來建立應用程式的要求處理管線。
 
-應用程式啟動時，執行階段就會呼叫 `ConfigureServices` 和 `Configure`：
+應用程式啟動時，ASP.NET Core 執行階段會呼叫 `ConfigureServices` 與 `Configure`：
 
 [!code-csharp[](startup/sample_snapshot/Startup1.cs?highlight=4,10)]
 

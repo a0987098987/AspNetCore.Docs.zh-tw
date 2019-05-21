@@ -5,14 +5,14 @@ description: 逐步建置 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/18/2019
+ms.date: 05/14/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: d235fec4e128ad8622a06d301eeac15c4862c159
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: c1b142ebdbd85eb10ddf8c8b70edd9782732a4f1
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087740"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621099"
 ---
 # <a name="build-your-first-blazor-app"></a>組建第一個 Blazor 應用程式
 
@@ -151,6 +151,14 @@ FetchData 元件會使用插入的服務作為 `ForecastService`，以擷取 `We
    ```
 
 1. 重建並執行應用程式。 瀏覽新的 [待辦事項] 頁面，以確認 Todo 元件的連結可以運作。
+
+1. 若為建置 Blazor 伺服器端應用程式，請將應用程式的命名空間新增至 *\_Imports.razor* 檔案。 下列 `@using` 陳述式會假設應用程式的命名空間是 `WebApplication`：
+
+   ```cshtml
+   @using WebApplication
+   ```
+   
+   Blazor 用戶端應用程式根據預設會在 *\_Imports.razor* 檔案中包含應用程式的命名空間。
 
 1. 將 *TodoItem.cs* 檔案新增至專案的根目錄，以保存代表待辦事項的類別。 請使用下列 `TodoItem` 類別的 C# 程式碼：
 

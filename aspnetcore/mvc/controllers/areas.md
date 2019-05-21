@@ -3,14 +3,14 @@ title: ASP.NET Core 中的區域
 author: rick-anderson
 description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功能組織成群組，作為個別命名空間 (適用於路由) 和資料夾結構 (適用於檢視)。
 ms.author: riande
-ms.date: 05/06/2019
+ms.date: 05/10/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 35c7682861f7392b0bcda7326e4d7f5ccc356bda
-ms.sourcegitcommit: b508b115107e0f8d7f62b25cfcc8ad45e1373459
+ms.openlocfilehash: f3a75bc307a206e43241b421f448b09011868d08
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65212585"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65535962"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
@@ -169,9 +169,9 @@ ms.locfileid: "65212585"
 
 ### <a name="import-namespace-and-tag-helpers-with-viewimports-file"></a>使用 _ViewImports 檔案匯入命名空間和標記協助程式
 
-可以將 *_ViewImports* 檔案新增至每個區域 *Pages* 資料夾，以將命名空間和標記協助程式匯入到資料夾中的每個 Razor 頁面。
+可以將 *_ViewImports.cshtml* 檔案新增至每個區域 *Pages* 資料夾，以將命名空間和標記協助程式匯入到資料夾中的每個 Razor 頁面。
 
-請考慮範例程式碼的 *Services* 區域，該區域不包含 *_ViewImports* 檔案。 下列標記示範 */Services/Manage/About* Razor頁面：
+請考慮範例程式碼的 *Services* 區域，該區域不包含 *_ViewImports.cshtml* 檔案。 下列標記示範 */Services/Manage/About* Razor頁面：
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Services/Pages/Manage/About.cshtml)]
 
@@ -180,7 +180,7 @@ ms.locfileid: "65212585"
 * 必須使用完整的網域名稱來指定此模型 (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`)。
 * [標記協助程式](xref:mvc/views/tag-helpers/intro)由 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` 啟用
 
-在範例下載中，Products 區域包含下列 *_ViewImports* 檔案：
+在範例下載中，Products 區域包含下列 *_ViewImports.cshtml* 檔案：
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/_ViewImports.cshtml)]
 
@@ -198,4 +198,4 @@ ms.locfileid: "65212585"
 
 ### <a name="publishing-areas"></a>發行區域
 
-.csproj* 檔案中包含 `<Project Sdk="Microsoft.NET.Sdk.Web">` 時，所有 `*.cshtml` 和 `wwwroot/**` 檔案都會發行至輸出。
+當 *.csproj 檔案中包含 `<Project Sdk="Microsoft.NET.Sdk.Web">` 時，會將所有 *.cshtml 檔案及 *wwwroot* 目錄內的檔案發佈至輸出。

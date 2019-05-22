@@ -277,6 +277,8 @@
       items:
         - name: 總覽
           uid: blazor/index
+        - name: 支援的平台
+          uid: blazor/supported-platforms
         - name: 開始使用
           uid: blazor/get-started
         - name: 裝載模型

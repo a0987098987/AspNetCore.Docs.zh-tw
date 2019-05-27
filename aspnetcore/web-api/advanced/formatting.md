@@ -4,14 +4,14 @@ author: ardalis
 description: 了解如何在 ASP.NET Core Web API 中格式化回應資料。
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 10/14/2016
+ms.date: 05/21/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 04f5b3c544cf3fc47c8321c8233535400fcf55f4
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: bd86015773068b6f75f64a0599d710281f7d4d60
+ms.sourcegitcommit: e67356f5e643a5d43f6d567c5c998ce6002bdeb4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890763"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66004959"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 
@@ -101,30 +101,49 @@ services.AddMvc(options =>
 
 如果您的應用程式需要支援 JSON 預設值以外的其他格式，則可以新增 NuGet 套件，並設定 MVC 來支援它們。 輸入和輸出有個別的格式器。 [模型繫結](xref:mvc/models/model-binding)會使用輸入格式器；輸出格式器是用來格式化回應。 您也可以設定[自訂格式器](xref:web-api/advanced/custom-formatters)。
 
-### <a name="adding-xml-format-support"></a>新增 XML 格式支援
+::: moniker range=">= aspnetcore-3.0"
 
-若要新增 XML 格式支援，請安裝 `Microsoft.AspNetCore.Mvc.Formatters.Xml` NuGet 套件。
+### <a name="configure-systemtextjson-based-formatters"></a>設定 System.Text.Json-based 格式器
 
-將 XmlSerializerFormatters 新增至 *Startup.cs* 中的 MVC 組態：
-
-[!code-csharp[](./formatting/sample/Startup.cs?name=snippet1&highlight=2)]
-
-或者，您可以只新增輸出格式器：
+`System.Text.Json` 型格式器可以使用 `Microsoft.AspNetCore.Mvc.MvcOptions.SerializerOptions` 來設定。
 
 ```csharp
 services.AddMvc(options =>
 {
-    options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+    options.SerializerOptions.WriterSettings.Indented = true;
 });
 ```
 
-這兩種方法將使用 `System.Xml.Serialization.XmlSerializer` 來序列化結果。 如果想要的話，可以新增其相關聯的格式器來使用 `System.Runtime.Serialization.DataContractSerializer`：
+### <a name="add-newtonsoftjson-based-json-format-support"></a>新增 Newtonsoft.Json 型 JSON 格式支援
+
+在 ASP.NET Core 3.0 之前，MVC 預設為使用以 `Newtonsoft.Json` 套件實作的 JSON 格式器。 在 ASP.NET Core 3.0 或更新版本中，預設 JSON 格式器是以 `System.Text.Json` 為基礎。 對 `Newtonsoft.Json` 型格式器與功能的支援可透過安裝 [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet 套件並在 `Startup.ConfigureServices` 中設定它來取得。
 
 ```csharp
-services.AddMvc(options =>
-{
-    options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
-});
+services.AddMvc()
+    .AddNewtonsoftJson();
+```
+
+某些功能可能無法搭配`System.Text.Json` 型格式器使用，而且需要對 ASP.NET Core 3.0 版本之 `Newtonsoft.Json` 型格式器的參考。 若您的 ASP.NET Core 3.0 或更新版本應用程式符合下列條件，請繼續使用 `Newtonsoft.Json` 型格式器：
+
+* 使用 `Newtonsoft.Json` 屬性 (例如 `[JsonProperty]` 或 `[JsonIgnore]`) 自訂序列化設定，或仰賴 `Newtonsoft.Json` 所提供的功能。
+* 設定 `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`。 在 ASP.NET Core 3.0 版之前，`JsonResult.SerializerSettings` 接受 `Newtonsoft.Json` 專屬的 `JsonSerializerSettings` 執行個體。
+* 產生 [OpenAPI](<xref:tutorials/web-api-help-pages-using-swagger>) 文件。
+
+::: moniker-end
+
+### <a name="add-xml-format-support"></a>新增 XML 格式支援
+
+若要新增 XML 格式支援，請安裝 [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/) NuGet 套件。
+
+使用 `System.Xml.Serialization.XmlSerializer` 實作的 XML 格式器可以在 `Startup.ConfigureServices` 中設定，如下所示：
+
+[!code-csharp[](./formatting/sample/Startup.cs?name=snippet1&highlight=2)]
+
+或者，使用 `System.Runtime.Serialization.DataContractSerializer` 實作的 XML 格式器可以在 `Startup.ConfigureServices` 中設定，如下所示：
+
+```csharp
+services.AddMvc()
+    .AddXmlDataContractSerializerFormatters();
 ```
 
 新增 XML 格式支援之後，控制器方法應該會根據要求的 `Accept` 標頭來傳回適當的格式，如這個 Fiddler 範例所示範：

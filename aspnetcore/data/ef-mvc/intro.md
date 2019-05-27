@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 8cad650cacd0b467a45a13c7dde0410aa41fdb32
-ms.sourcegitcommit: b508b115107e0f8d7f62b25cfcc8ad45e1373459
+ms.openlocfilehash: a93d5af314f1ff679a8df636297a0d5849ebdb8d
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65212559"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610205"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>教學課程：開始在 ASP.NET MVC Web 應用程式中使用 EF Core
 
@@ -38,7 +38,7 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 ## <a name="prerequisites"></a>必要條件
 
 * [.NET Core SDK 2.2](https://www.microsoft.com/net/download)
-* 有下列工作負載的 [Visual Studio 2017 或 2019](https://visualstudio.microsoft.com/downloads/)：
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) 和下列工作負載：
   * **ASP.NET 與網頁程式開發**工作負載
   * **.NET Core 跨平台開發**工作負載
 
@@ -289,7 +289,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 ## <a name="view-the-database"></a>檢視資料庫
 
-當您啟動應用程式時，`DbInitializer.Initialize` 方法會呼叫 `EnsureCreated`。 EF 看到不存在任何資料庫，於是便建立了一個資料庫，接著 `Initialize` 方法程式碼的剩餘部分便會將資料填入資料庫。 您可以使用 SQL Server 物件總管 (SSOX) 來在 Visual Studio 中檢視資料庫。
+當您啟動應用程式時，`DbInitializer.Initialize` 方法會呼叫 `EnsureCreated`。 EF 看到不存在任何資料庫，於是便建立了一個資料庫，接著 `Initialize` 方法程式碼的剩餘部分便會將資料填入資料庫。 您可以使用 [SQL Server 物件總管 (SSOX) 來在 Visual Studio 中檢視資料庫。
 
 關閉瀏覽器。
 

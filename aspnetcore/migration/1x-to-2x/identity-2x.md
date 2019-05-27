@@ -5,12 +5,12 @@ description: 本文概述了最常見的步驟移轉 ASP.NET Core 1.x 驗證和�
 ms.author: scaddie
 ms.date: 12/18/2018
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: d11d41c82236436096660a24df81a3df4da0fb8e
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 086deac51af186012315d5b6a1236c92c8980037
+ms.sourcegitcommit: 5d384db2fa9373a93b5d15e985fb34430e49ad7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64892205"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66039246"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>將驗證和身分識別移轉至 ASP.NET Core 2.0
 
@@ -162,6 +162,15 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
     });
     ```
 
+- 取代`PostLogoutRedirectUri`中的屬性`OpenIdConnectOptions`動作`SignedOutRedirectUri`:
+
+    ```csharp
+    .AddOpenIdConnect(options =>
+    {
+        options.SignedOutRedirectUri = "https://contoso.com";
+    });
+    ```
+    
 ### <a name="facebook-authentication"></a>Facebook 驗證
 
 在變更下列*Startup.cs*:

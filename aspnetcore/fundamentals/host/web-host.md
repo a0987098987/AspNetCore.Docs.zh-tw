@@ -4,14 +4,14 @@ author: guardrex
 description: 了解 ASP.NET Core 中的 Web 主機，其負責啟動應用程式及管理存留期。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 05/11/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: b391b5e514e750f64f30d33cf4eb91e489242eba
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 48f3b664d901bdfb27cdf9e798fa60c0587d1def
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888973"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610284"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
@@ -39,7 +39,9 @@ ASP.NET Core 應用程式會設定並啟動「主機」。 主機負責應用程
 
 ## <a name="set-up-a-host"></a>設定主機
 
-使用 ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)) 的執行個體建立主機。 這通常在應用程式的進入點執行，也就是 `Main` 方法。 在專案範本中，`Main` 位於 *Program.cs*。 一般 *Program.cs* 會呼叫 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 以開始設定主機：
+使用 ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)) 的執行個體建立主機。 這通常在應用程式的進入點執行，也就是 `Main` 方法。 產生器方法名稱 `CreateWebHostBuilder`，是為外部元件 (例如 [Entity Framework](/ef/core/)) 識別產生器方法的特殊名稱。
+
+在專案範本中，`Main` 位於 *Program.cs*。 一般的應用程式會呼叫 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 來開始設定主機：
 
 ```csharp
 public class Program
@@ -310,7 +312,7 @@ WebHost.CreateDefaultBuilder(args)
 
 **索引鍵**：urls  
 **類型**：*string*  
-**預設值**： http://localhost:5000  
+**預設值**：http://localhost:5000  
 **設定使用**：`UseUrls`  
 **環境變數**：`ASPNETCORE_URLS`
 

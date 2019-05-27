@@ -2,16 +2,17 @@
 title: 裝載及部署 ASP.NET Core
 author: guardrex
 description: 了解如何設定裝載環境及部署 ASP.NET Core 應用程式。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/06/2018
+ms.date: 05/12/2019
 uid: host-and-deploy/index
-ms.openlocfilehash: f443a8ee28a859b5075a8bb03016407af9a3ddb1
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 068c5f357b8010d78493a78a10c353e3317f3867
+ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882103"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969890"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>裝載及部署 ASP.NET Core
 
@@ -46,19 +47,9 @@ ASP.NET Core 應用程式是一種主控台應用程式，必須在伺服器開�
 
 ## <a name="set-up-a-reverse-proxy"></a>設定反向 Proxy
 
-::: moniker range=">= aspnetcore-2.0"
-
 如果應用程式使用 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器，反向 Proxy 伺服器可用 [Nginx](xref:host-and-deploy/linux-nginx)、[Apache](xref:host-and-deploy/linux-apache) 或 [IIS](xref:host-and-deploy/iis/index)。 反向 Proxy 伺服器會從網際網路接收 HTTP 要求，然後轉送到 Kestrel。
 
-不論設定是否具有反向 Proxy 伺服器，對於 ASP.NET Core 2.0 或更新版本的應用程式來說，都是支援的裝載設定。 如需詳細資訊，請參閱[何時搭配使用 Kestrel 與反向 Proxy](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-如果應用程式使用 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器並會向網際網路公開，則使用 [Nginx](xref:host-and-deploy/linux-nginx)、[Apache](xref:host-and-deploy/linux-apache)或 [IIS](xref:host-and-deploy/iis/index) 當作反向 Proxy 伺服器。 反向 Proxy 伺服器會從網際網路接收 HTTP 要求，然後轉送到 Kestrel。 使用反向 Proxy 的主要原因是安全性。 如需詳細資訊，請參閱[何時搭配使用 Kestrel 與反向 Proxy](xref:fundamentals/servers/kestrel?tabs=aspnetcore1x#when-to-use-kestrel-with-a-reverse-proxy)。
-
-::: moniker-end
+不論設定是否具有反向 Proxy 伺服器，任一設定都是支援的裝載設定。 如需詳細資訊，請參閱[何時搭配使用 Kestrel 與反向 Proxy](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)。
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 

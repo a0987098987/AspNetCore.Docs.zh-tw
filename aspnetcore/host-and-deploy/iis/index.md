@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: aff4b857394c554e94dd8929dca809eb1a4387f2
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
+ms.openlocfilehash: 6ba4da913ef712ef897a4c8418263e3060ea85ac
+ms.sourcegitcommit: e67356f5e643a5d43f6d567c5c998ce6002bdeb4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65970039"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66004971"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -33,11 +33,13 @@ ms.locfileid: "65970039"
 
 ## <a name="supported-platforms"></a>支援的平台
 
-支援針對 32 位元 (x86) 與 64 位元 (x64) 部署發行的應用程式。 除非應用程式符合下列條件，否則請部署 32 位元應用程式：
+支援針對 32 位元 (x86) 或 64 位元 (x64) 部署發行的應用程式。 使用 32 位元 (x86) .NET Core SDK 部署 32 位元應用程式，除非應用程式：
 
 * 需要提供給 64 位元應用程式使用的較大虛擬記憶體位址空間。
 * 需要較大的 IIS 堆疊大小。
 * 有 64 位元原生相依性。
+
+使用 64 位元 (x64) .NET Core SDK 來發行 64 位元應用程式。 主機系統上必須有 64 位元執行階段存在。
 
 ## <a name="application-configuration"></a>應用程式組態
 

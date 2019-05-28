@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 04/03/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: bd4ffa79c4d1e0070c820fa9c06b0a84c3aaae74
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 46c9e054b6e9228a709f93c6b73772708f6c6eb0
+ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64896985"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66251232"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
@@ -33,12 +33,12 @@ Windows 驗證仰賴作業系統來驗證 ASP.NET Core 應用程式的使用者�
 在 Visual Studio 中：
 
 1. 建立新的專案。
-1. 選取 [ASP.NET Core Web 應用程式]。 選取 [下一步]。
-1. 提供的名稱**專案名稱**欄位。 確認**位置**項目是否正確，或提供專案的位置。 選取 [建立]。
+1. 選取 [ASP.NET Core Web 應用程式]  。 選取 [下一步]  。
+1. 提供的名稱**專案名稱**欄位。 確認**位置**項目是否正確，或提供專案的位置。 選取 [建立]  。
 1. 選取 **變更**下方**驗證**。
-1. 在 **變更驗證**視窗中，選取**Windows 驗證**。 選取 [確定]。
-1. 選取 [Web 應用程式]。
-1. 選取 [建立]。
+1. 在 **變更驗證**視窗中，選取**Windows 驗證**。 選取 [確定]  。
+1. 選取 [Web 應用程式]  。
+1. 選取 [建立]  。
 
 執行應用程式。 使用者名稱會出現在呈現的應用程式使用者介面。
 
@@ -47,7 +47,7 @@ Windows 驗證仰賴作業系統來驗證 ASP.NET Core 應用程式的使用者�
 專案的屬性可讓您以啟用 Windows 驗證並停用匿名驗證：
 
 1. 在 Visual Studio 的專案上按一下滑鼠右鍵**方案總管**，然後選取**屬性**。
-1. 選取 [偵錯] 索引標籤。
+1. 選取 [偵錯]  索引標籤。
 1. 清除核取方塊**啟用匿名驗證**。
 1. 選取核取方塊**啟用 Windows 驗證**。
 
@@ -82,7 +82,7 @@ IIS 會使用[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)主�
 
 啟用 Windows 驗證的 IIS 角色服務。 如需詳細資訊，請參閱 <<c0> [ 啟用 IIS 角色服務 （請參閱步驟 2） 中的 Windows 驗證](xref:host-and-deploy/iis/index#iis-configuration)。
 
-根據預設，IIS Integration 中介軟體會設定來自動驗證要求。 如需詳細資訊，請參閱[裝載 ASP.NET Core 與 IIS 的 Windows 上：IIS 選項 (AutomaticAuthentication)](xref:host-and-deploy/iis/index#iis-options)。
+[IIS Integration 中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)預設設定來自動驗證要求。 如需詳細資訊，請參閱[裝載 ASP.NET Core 與 IIS 的 Windows 上：IIS 選項 (AutomaticAuthentication)](xref:host-and-deploy/iis/index#iis-options)。
 
 ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙基元。 如需詳細資訊，請參閱[ASP.NET Core 模組組態參考：AspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
 

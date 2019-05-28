@@ -4,14 +4,14 @@ author: rick-anderson
 description: 說明 ASP.NET Core 與ASP.NET 4.x，以及如何在兩者之間進行選擇。
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 09/11/2018
+ms.date: 05/02/2019
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 454f1021520f8f22eb2b0417a958b78690f89cef
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: a51d9946c9e65bd1665c610153f724c6087c9f7f
+ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886963"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66251373"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>在 ASP.NET 4.x 和 ASP.NET Core 之間進行選擇
 
@@ -44,7 +44,6 @@ ASP.NET 4.x 是一個成熟的架構，其提供在 Windows 上建置企業級�
 
 ## <a name="aspnet-core-scenarios"></a>ASP.NET Core 案例
 
-* 從 ASP.NET Core 2.x 開始，[Razor 頁面](xref:razor-pages/index)是建立 Web UI 的建議方法。
 * [網站](xref:tutorials/first-mvc-app/index)
 * [API](xref:tutorials/first-web-api)
 * [即時](xref:signalr/index)

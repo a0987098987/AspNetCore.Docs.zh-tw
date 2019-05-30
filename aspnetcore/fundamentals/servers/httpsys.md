@@ -5,14 +5,14 @@ description: 深入了解 HTTP.sys，這是 Windows 上的 ASP.NET Core 網頁�
 monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/21/2019
+ms.date: 05/27/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 7ba27b404cd10752ff9e304cd0a272eff7fa627a
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: d91a0f7b83fb073147978319edfbed0bda9a1c44
+ms.sourcegitcommit: 06c4f2910dd54ded25e1b8750e09c66578748bc9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087049"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66395960"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 
@@ -143,7 +143,7 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
    在 Windows 上，請使用 [New-SelfSignedCertificate PowerShell Cmdlet](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 如需不支援的範例，請參閱 [UpdateIISExpressSSLForChrome.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1) \(英文\)。
 
-   將自我簽署的憑證或 CA 簽署的憑證安裝在伺服器的 [本機電腦] > 個人 存放區中。
+   將自我簽署的憑證或 CA 簽署的憑證安裝在伺服器的 [本機電腦]   > 個人  存放區中。
 
 1. 如果應用程式是[與架構相依的部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)，請安裝 .NET Core、.NET Framework 或兩者 (如果應用程式是以 .NET Framework 為目標的 .NET Core 應用程式)。
 
@@ -184,7 +184,7 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
    netsh http add urlacl url=<URL> user=<USER>
    ```
 
-   * `<URL>` &ndash; 完整的「統一資源定位器」(URL)。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。
+   * `<URL>` &ndash; 完整的「統一資源定位器」(URL)。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。 
    * `<USER>` &ndash; 會指定使用者或「使用者-群組」名稱。
 
    在以下範例中，伺服器的本機 IP 位址是 `10.0.0.4`：
@@ -217,9 +217,9 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
    為了便於參考，請將 GUID 以套件標記的形式儲存在應用程式中：
 
    * 在 Visual Studio 中：
-     * 在 [方案總管] 中的專案上按一下滑鼠右鍵，然後選取 [屬性]，以開啟應用程式的專案屬性。
-     * 選取 [套件] 索引標籤。
-     * 輸入您在 [標記] 欄位中建立的 GUID。
+     * 在 [方案總管]  中的專案上按一下滑鼠右鍵，然後選取 [屬性]  ，以開啟應用程式的專案屬性。
+     * 選取 [套件]  索引標籤。
+     * 輸入您在 [標記]  欄位中建立的 GUID。
    * 不是使用 Visual Studio 時：
      * 開啟應用程式的專案檔。
      * 將 `<PackageTags>` 屬性搭配您所建立的 GUID 新增至新的或現有的 `<PropertyGroup>`：
@@ -271,7 +271,7 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
 ## <a name="additional-resources"></a>其他資源
 
-* [使用 HTTP.sys 來啟用 Windows 驗證](xref:security/authentication/windowsauth#enable-windows-authentication-with-httpsys) \(機器翻譯\)
+* [使用 HTTP.sys 來啟用 Windows 驗證](xref:security/authentication/windowsauth#httpsys) \(機器翻譯\)
 * [HTTP 伺服器 API](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx) \(英文\)
 * [aspnet/HttpSysServer GitHub 存放庫 (原始程式碼)](https://github.com/aspnet/HttpSysServer/) \(英文\)
 * [主機](xref:fundamentals/index#host)

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/31/2019
 uid: grpc/basics
-ms.openlocfilehash: 7c5ecf21124414b21f5c36b76e90bde67ac1f958
-ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
+ms.openlocfilehash: 5a88bd0e9f789058b3606691c5ebd9a74325ac9b
+ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59672667"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66376350"
 ---
 # <a name="grpc-services-with-c"></a>使用 c# 的 gRPC 服務\#
 
@@ -32,13 +32,13 @@ gRPC 使用合約優先方法 API 的開發。 依預設會以介面設計語言
 * `Greeter`服務會定義`SayHello`呼叫。
 * `SayHello` 傳送`HelloRequest`訊息，並接收`HelloResponse`訊息：
 
-[!code-proto[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Protos/greet.proto)]
+[!code-proto[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/Protos/greet.proto)]
 
 ## <a name="add-a-proto-file-to-a-c-app"></a>將.proto 檔案新增至 C\#應用程式
 
 *.Proto*檔案包含在專案中將它加入至`<Protobuf>`項目群組：
 
-[!code-xml[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-11)]
+[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-11)]
 
 ## <a name="c-tooling-support-for-proto-files"></a>C#.Proto 檔案的工具支援
 
@@ -50,9 +50,9 @@ gRPC 使用合約優先方法 API 的開發。 依預設會以介面設計語言
 
 此套件所需的伺服器和用戶端專案中。 `Grpc.Tools` 您可以加入 Visual Studio 中使用封裝管理員，或新增`<PackageReference>`souboru projektu:
 
-[!code-xml[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/GrpcGreeter.csproj?highlight=1&range=17)]
+[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=1&range=17)]
 
-工具套件並不需要在執行階段，因此相依性會標示`PrivateAssets="All"`。
+執行階段不需要工具套件，因此相依性會標示為 `PrivateAssets="All"`。
 
 ## <a name="generated-c-assets"></a>產生C#資產
 
@@ -60,15 +60,15 @@ gRPC 使用合約優先方法 API 的開發。 依預設會以介面設計語言
 
 針對伺服器端資產產生服務的抽象基底型別。 基底型別包含所有 gRPC 呼叫中所包含的定義 *.proto*檔案。 建立衍生自這個基底型別並實作 gRPC 呼叫的邏輯實體的服務實作。 針對`greet.proto`，範例先前所述，抽象`GreeterBase`型別，包含虛擬`SayHello`方法產生。 具象實作`GreeterService`覆寫方法，並實作處理 gRPC 呼叫的邏輯。
 
-[!code-csharp[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Services/GreeterService.cs?name=snippet)]
+[!code-csharp[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/Services/GreeterService.cs?name=snippet)]
 
 針對用戶端資產產生實體的用戶端類型。 在中，呼叫 gRPC *.proto*檔案會轉譯成具象類型，可呼叫的方法。 針對`greet.proto`，範例先前所述，具體`GreeterClient`會產生型別。 呼叫`GreeterClient.SayHello`起始 gRPC 呼叫給伺服器。
 
-[!code-csharp[](~/tutorials/grpc/grpc-start/samples/GrpcGreeterClient/Program.cs?highlight=5-8&name=snippet)]
+[!code-csharp[](~/tutorials//grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?highlight=5-8&name=snippet)]
 
 根據預設，為每個產生伺服器和用戶端的資產 *.proto*檔案中包含`<Protobuf>`項目群組。 若要確保只有伺服器資產在伺服器專案中，產生`GrpcServices`屬性設為`Server`。
 
-[!code-xml[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-11)]
+[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-11)]
 
 同樣地，此屬性設為`Client`用戶端專案中。
 

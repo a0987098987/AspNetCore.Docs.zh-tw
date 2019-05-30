@@ -5,14 +5,14 @@ description: 了解如何使用 ASP.NET Core、內容傳遞網路 (CDN)、檔案
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/13/2019
+ms.date: 05/21/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: ea8ece266809913e32ac212bc55cb3c2499c234f
-ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
+ms.openlocfilehash: b572067e688d7e7f7c654a7a25703009c1a7e855
+ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2019
-ms.locfileid: "65874979"
+ms.lasthandoff: 05/25/2019
+ms.locfileid: "66223193"
 ---
 # <a name="host-and-deploy-blazor-client-side"></a>裝載和部署 Blazor 用戶端
 
@@ -232,6 +232,17 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
 如果收到「500 - 內部伺服器錯誤」，且 IIS 管理員在嘗試存取網站設定時擲回錯誤，請確認是否已安裝 URL Rewrite 模組。 未安裝此模組時，IIS 無法剖析 *web.config* 檔案。 這導致 IIS 管理員無法載入網站的組態，且網站無法提供 Blazor 的靜態檔案。
 
 如需針對部署至 IIS 進行疑難排解的詳細資訊，請參閱 <xref:host-and-deploy/iis/troubleshoot>。
+
+### <a name="azure-storage"></a>Azure 儲存體
+
+Azure 儲存體靜態檔案裝載允許無伺服器的 Blazor 應用程式裝載。 支援自訂網域名稱、Azure 內容傳遞網路 (CDN) 及 HTTPS。
+
+當 Blob 服務針對儲存體帳戶上的靜態網站裝載啟用時：
+
+* 將 [索引文件名稱] 設定為 `index.html`。
+* 將 [錯誤文件路徑] 設定為 `index.html`。 Razor 元件和其他非檔案端點不會位於由 Blob 服務所存放之靜態內容中的實體路徑上。 當系統接收到針對這些資源之一，且應由 Blazor 路由器處理的要求時，由 Blob 服務所產生的「404 - 找不到」錯誤會將要求路由至**錯誤文件路徑**。 系統會傳回 *index.html* Blob，且 Blazor 路由器會載入並處理該路徑。
+
+如需詳細資訊，請參閱[Azure 儲存體中的靜態網站代管](/azure/storage/blobs/storage-blob-static-website)。
 
 ### <a name="nginx"></a>Nginx
 

@@ -5,14 +5,14 @@ description: 了解如何在 ASP.NET Core 中開始使用 WebSocket。
 monikerRange: '>= aspnetcore-1.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 05/10/2019
 uid: fundamentals/websockets
-ms.openlocfilehash: 1b62dc91453437518e4b8f6f8dd0915977130766
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: bba9cf051deaf57efdd82ca2fb1318fce79bd6cc
+ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888243"
+ms.lasthandoff: 05/25/2019
+ms.locfileid: "66223212"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core 中的 WebSockets 支援
 
@@ -122,6 +122,15 @@ ms.locfileid: "64888243"
 ::: moniker-end
 
 WebSocket 要求可以傳入任何 URL，但此範例程式碼只接受 `/ws` 的要求。
+
+使用 WebSocket 時，您**必須**確保中介軟體管線會在連線期間內持續執行。 如果您嘗試在中介軟體管線結束後傳送或接收 WebSocket 訊息，便可能會收到類似下列的例外狀況：
+
+```
+System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake. ---> System.ObjectDisposedException: Cannot write to the response body, the response has completed.
+Object name: 'HttpResponseStream'.
+```
+
+如果您是使用背景服務來將資料寫入 WebSocket，請務必使中介軟體管線持續執行。 請使用 <xref:System.Threading.Tasks.TaskCompletionSource%601> 來這麼做。 將 `TaskCompletionSource` 傳遞至您的背景服務，並讓它在您完成使用 WebSocket 時呼叫 <xref:System.Threading.Tasks.TaskCompletionSource%601.TrySetResult%2A>。 然後在要求期間對 <xref:System.Threading.Tasks.TaskCompletionSource%601.Task> 參數使用 `await`。
 
 ### <a name="send-and-receive-messages"></a>傳送和接收訊息
 

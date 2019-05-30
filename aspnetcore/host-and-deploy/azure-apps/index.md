@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 009ee97d954a21f5fca1713b2b45218cac235e33
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 8ce969739d9d98941d4d7670395c74e0e25c92a7
+ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882313"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66251392"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -72,7 +72,7 @@ Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執�
 
 Azure 入口網站中的應用程式設定允許您為應用程式設定環境變數。 環境變數可由[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)取用。
 
-在 Azure 入口網站中建立或修改應用程式設定並選取 [儲存] 按鈕後，即會重新啟動 Azure 應用程式。 當服務重新啟動之後，環境變數便可供應用程式使用。
+在 Azure 入口網站中建立或修改應用程式設定並選取 [儲存]  按鈕後，即會重新啟動 Azure 應用程式。 當服務重新啟動之後，環境變數便可供應用程式使用。
 
 當應用程式使用 [Web 主機](xref:fundamentals/host/web-host)並使用會將主機設定為使用 `ASPNETCORE_` 前置詞的 [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 環境變數來建置主機。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
 
@@ -80,7 +80,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
-用來設定轉送標頭中介軟體及 ASP.NET Core 模組的 IIS Integration 中介軟體會設定為轉送配置 (HTTP/HTTPS) 及發出要求的遠端 IP 位址。 其他 Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
+[IIS 整合中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components) (當裝載[處理序外](xref:fundamentals/servers/index#out-of-process-hosting-model)時會設定轉送標頭中介軟體) 與 ASP.NET Core 模組會設定為轉送配置 (HTTP/HTTPS) 與發出要求的遠端 IP 位址。 其他 Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
 
 ## <a name="monitoring-and-logging"></a>監視與記錄
 
@@ -141,17 +141,17 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 1. 從 Azure 入口網站瀏覽至 App Service。
 1. 選取 Web 應用程式。
 1. 在搜尋方塊中鍵入 "ex" 來篩選 "Extensions"，也可往下捲動管理工具的清單。
-1. 選取 [擴充功能]。
-1. 選取 [新增]。
-1. 從清單選取 [ASP.NET Core {X.Y} ({x64|x86}) 執行階段] 延伸模組，其中 `{X.Y}` 是 ASP.NET Core 預覽版本，而 `{x64|x86}` 則指定平台。
-1. 選取 [確定] 以接受法律條款。
-1. 選取 [確定] 安裝延伸模組。
+1. 選取 [擴充功能]  。
+1. 選取 [新增]  。
+1. 從清單選取 [ASP.NET Core {X.Y} ({x64|x86}) 執行階段]  延伸模組，其中 `{X.Y}` 是 ASP.NET Core 預覽版本，而 `{x64|x86}` 則指定平台。
+1. 選取 [確定]  以接受法律條款。
+1. 選取 [確定]  安裝延伸模組。
 
 當作業完成後，會安裝最新的 .NET Core 預覽。 確認安裝：
 
-1. 選取 [進階工具]。
-1. 在 [進階工具] 中選取 [移至]。
-1. 選取 [偵錯主控台] > [PowerShell] 功能表項目。
+1. 選取 [進階工具]  。
+1. 在 [進階工具]  中選取 [移至]  。
+1. 選取 [偵錯主控台]   > [PowerShell]  功能表項目。
 1. 在 PowerShell 提示執行下列命令。 在命令中使用 ASP.NET Core 執行階段版本取代 `{X.Y}`，並以平台取代 `{PLATFORM}`：
 
    ```powershell
@@ -161,7 +161,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    當已安裝 x64 預覽執行階段時，此命令會傳回 `True`。
 
 > [!NOTE]
-> 對於裝載於 A 系列計算或更高裝載層的應用程式，應用程式服務應用程式的平台架構 (x86/x64) 會設定在 Azure 入口網站中應用程式的設定內。 如果在同處理序模式中執行應用程式，且平台架構設定為適用於 64 位元 (x64)，ASP.NET Core 模組會使用 64 位元預覽執行階段 (如果有)。 請安裝 [ASP.NET Core {X.Y} (x64) 執行階段] 延伸模組。
+> 對於裝載於 A 系列計算或更高裝載層的應用程式，應用程式服務應用程式的平台架構 (x86/x64) 會設定在 Azure 入口網站中應用程式的設定內。 如果在同處理序模式中執行應用程式，且平台架構設定為適用於 64 位元 (x64)，ASP.NET Core 模組會使用 64 位元預覽執行階段 (如果有)。 請安裝 [ASP.NET Core {X.Y} (x64) 執行階段]  延伸模組。
 >
 > 在安裝 x64 預覽執行階段後，請在 Kudu PowerShell 命令視窗中執行下列命令，以確認安裝。 在命令中使用 ASP.NET Core 執行階段版本取代 `{X.Y}`：
 >
@@ -191,15 +191,15 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 #### <a name="publish-from-visual-studio"></a>從 Visual Studio 發佈
 
-1. 從 Visual Studio 工具列中選取 [建置] > [發佈 {應用程式名稱}]。
-1. 在 [挑選發佈目標] 對話方塊中，確認已選取 [App Service]。
-1. 選取 [進階]。 [發佈] 對話方塊隨即開啟。
-1. 在 [發行] 對話方塊中：
-   * 確認已選取 [發行] 設定。
-   * 開啟 [部署模式] 下拉式清單，然後選取 [獨立式]。
-   * 從 [目標執行階段] 下拉式清單中選取目標執行階段。 預設為 `win-x86`。
-   * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項] 並選取核取方塊，以移除目的地的其他檔案。
-   * 選取 [儲存]。
+1. 從 Visual Studio 工具列中選取 [建置]   > [發佈 {應用程式名稱}]  。
+1. 在 [挑選發佈目標]  對話方塊中，確認已選取 [App Service]  。
+1. 選取 [進階]  。 [發佈]  對話方塊隨即開啟。
+1. 在 [發行]  對話方塊中：
+   * 確認已選取 [發行]  設定。
+   * 開啟 [部署模式]  下拉式清單，然後選取 [獨立式]  。
+   * 從 [目標執行階段]  下拉式清單中選取目標執行階段。 預設為 `win-x86`。
+   * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項]  並選取核取方塊，以移除目的地的其他檔案。
+   * 選取 [儲存]  。
 1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
 
 #### <a name="publish-using-command-line-interface-cli-tools"></a>使用命令列介面 (CLI) 工具發佈
@@ -219,7 +219,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    dotnet publish --configuration Release --runtime win-x86
    ```
 
-1. 將 bin/Release/{目標 FRAMEWORK}/{執行階段識別碼}/publish 目錄的內容移至 App Service 中的網站。
+1. 將 bin/Release/{目標 FRAMEWORK}/{執行階段識別碼}/publish  目錄的內容移至 App Service 中的網站。
 
 ### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器
 
@@ -227,7 +227,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ## <a name="protocol-settings-https"></a>通訊協定設定 (HTTPS)
 
-安全通訊協定繫結可讓您指定透過 HTTPS 回應要求時要使用的憑證。 繫結需要針對特定主機名稱簽發的有效私密憑證 (*.pfx*)。 如需詳細資訊，請參閱[教學課程：將現有的自訂 SSL 憑證繫結至 Azure App Service](/azure/app-service/app-service-web-tutorial-custom-ssl)。
+安全通訊協定繫結可讓您指定透過 HTTPS 回應要求時要使用的憑證。 繫結需要針對特定主機名稱簽發的有效私密憑證 ( *.pfx*)。 如需詳細資訊，請參閱[教學課程：將現有的自訂 SSL 憑證繫結至 Azure App Service](/azure/app-service/app-service-web-tutorial-custom-ssl)。
 
 ## <a name="transform-webconfig"></a>轉換 web.config
 

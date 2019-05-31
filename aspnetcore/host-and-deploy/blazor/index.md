@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/23/2019
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 5def0356d13975211dd234f6a6a9f5a993d003b7
-ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
+ms.openlocfilehash: 0fc7643c65b93a63d7a594d35e4013eab76e9db8
+ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2019
-ms.locfileid: "66223172"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66376377"
 ---
 # <a name="host-and-deploy-blazor"></a>裝載和部署 Blazor
 
@@ -28,7 +28,6 @@ ms.locfileid: "66223172"
 1. 選取「發佈目標」  。 若要在本機發佈，請選取 [資料夾]  。
 1. 接受 [選擇資料夾]  欄位中的預設位置，或指定不同的位置。 選取 [發行]  按鈕。
 
-
 # <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code / .NET Core CLI](#tab/visual-studio-code+netcore-cli)
 
 使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，搭配發行組態來發佈應用程式：
@@ -41,7 +40,7 @@ dotnet publish -c Release
 
 發佈應用程式會觸發專案相依性的[還原](/dotnet/core/tools/dotnet-restore)並[建置](/dotnet/core/tools/dotnet-build)專案，然後才會建立資產以供部署。 在建置程序中，會移除未使用的方法和組件，減少應用程式的下載大小和載入時間。
 
-Blazor 用戶端應用程式會發佈至 */bin/Release/{目標 FRAMEWORK}/dist* 資料夾。 Blazor 伺服器端應用程式會發佈至 */bin/Release/{目標 FRAMEWORK}/publish* 資料夾。
+Blazor 用戶端應用程式會發佈至 /bin/Release/{目標 FRAMEWORK}/publish/{組件名稱}/dist  資料夾。 Blazor 伺服器端應用程式會發佈至 */bin/Release/{目標 FRAMEWORK}/publish* 資料夾。
 
 該資料夾中的資產均會部署至 Web 伺服器。 部署可能是手動或自動的程序，視使用中的開發工具而定。
 

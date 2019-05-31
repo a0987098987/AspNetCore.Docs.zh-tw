@@ -92,7 +92,7 @@
     - name: 遠端程序呼叫應用程式
       items:
         - name: 開始在 ASP.NET Core 中使用 gRPC 服務
-          uid: tutorials/grpc/grpc-client
+          uid: tutorials/grpc/grpc-start
     - name: 資料存取
       items:
         - name: 使用 Razor Pages 的 EF Core
@@ -530,8 +530,6 @@
       uid: grpc/migration
     - name: 比較 gRPC 服務與 HTTP APIs
       uid: grpc/comparison
-    - name: 建立 gRPC 用戶端及伺服器
-      uid: tutorials/grpc/grpc-client
 - name: 測試、偵錯及疑難排解
   items:
     - name: 單元測試

@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 4498bd88e7188ea6c0063aeec054bc20e13ed5f1
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: a32e0e2dbd7fab95562a562cb88767d4c1e8049d
+ms.sourcegitcommit: c5339594101d30b189f61761275b7d310e80d18a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086434"
+ms.lasthandoff: 06/02/2019
+ms.locfileid: "66458493"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>ASP.NET Core 中的防止跨網站要求偽造 (XSRF/CSRF) 攻擊
 
 藉由[Steve Smith](https://ardalis.com/)， [Fiyaz Hasan](https://twitter.com/FiyazBinHasan)，和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-跨網站偽造要求 (也稱為 XSRF 或 CSRF，唸成 *，請參閱上網*) 會讓惡意的 web 應用程式可能會影響用戶端瀏覽器和信任的 web 應用程式之間的互動的 web 應用程式對抗攻擊瀏覽器。 這些攻擊可能會因為網頁瀏覽器會將某些類型的驗證權杖會自動隨著每個要求傳送至網站。 這種形式的攻擊，也就是*單鍵攻擊*或是*工作階段乘載*因為攻擊會利用使用者先前的驗證工作階段。
+跨網站偽造要求 （也稱為 XSRF 或 CSRF） 攻擊會將對 web 裝載的應用程式讓惡意的 web 應用程式可能會影響用戶端瀏覽器與 web 應用程式信任該瀏覽器之間的互動。 這些攻擊可能會因為網頁瀏覽器會將某些類型的驗證權杖會自動隨著每個要求傳送至網站。 這種形式的攻擊，也就是*單鍵攻擊*或是*工作階段乘載*因為攻擊會利用使用者先前的驗證工作階段。
 
 CSRF 攻擊的範例：
 

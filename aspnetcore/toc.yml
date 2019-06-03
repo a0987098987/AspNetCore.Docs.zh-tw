@@ -91,7 +91,7 @@
           uid: tutorials/signalr-typescript-webpack
     - name: 遠端程序呼叫應用程式
       items:
-        - name: 開始在 ASP.NET Core 中使用 gRPC 服務
+        - name: 開始使用 gRPC 服務
           uid: tutorials/grpc/grpc-start
     - name: 資料存取
       items:

@@ -5,14 +5,14 @@ description: 了解在 ASP.NET Core 應用程式中發生 Razor 檔案編譯的�
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/02/2019
+ms.date: 05/30/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: df25c9ad03ff52c43aac1a761462772547b3b954
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: b78831dd95a721e35d4bf5b44cdd8823472f6aa2
+ms.sourcegitcommit: 06c4f2910dd54ded25e1b8750e09c66578748bc9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610138"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66395883"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>ASP.NET Core 中 Razor 檔案的先行編譯
 
@@ -45,7 +45,7 @@ Razor 檔案會在建置和發佈階段使用 [Razor SDK](xref:razor-pages/sdk) 
 ## <a name="razor-compilation"></a>Razor 編譯
 
 ::: moniker range=">= aspnetcore-3.0"
-Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 啟用時，執行階段編譯將補充建置時間編譯，以允許更新 Razor 檔案 (如果檔案已經過編輯)。
+Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 啟用時，執行階段編譯會補充建置時間編譯，以允許更新 Razor 檔案 (如果該檔案已被編輯)。
 
 ::: moniker-end
 

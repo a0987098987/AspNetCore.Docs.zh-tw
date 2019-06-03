@@ -3,14 +3,15 @@ title: ASP.NET Core 2.0 的新功能
 author: rick-anderson
 description: 深入了解 ASP.NET Core 2.0 的新功能。
 ms.author: riande
-ms.date: 07/10/2017
+ms.custom: mvc
+ms.date: 05/28/2019
 uid: aspnetcore-2.0
-ms.openlocfilehash: 07e490fd844f0f9044afce37651ef680ed0c894d
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 5cf7b9aa7ccf86f1a89e6145cfc185c5ef803e66
+ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883093"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66376404"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
@@ -75,7 +76,7 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 
 ## <a name="spa-templates"></a>SPA 範本
 
-有具有 Redux 的 Angular、Aurelia、Knockout.js、React.js 和 React.js 單一頁面應用程式 (SPA) 專案範本可用。 Angular 範本已更新至 Angular 4。 根據預設將會提供 Angular 與 React 範本。如需如何取得其他範本的資訊，請參閱[建立新的 SPA 專案](xref:client-side/spa-services#creating-a-new-project)。 如需如何在 ASP.NET Core 中建置 SPA 的資訊，請參閱[使用 JavaScriptServices 建立單一頁面的應用程式](xref:client-side/spa-services)。
+有具有 Redux 的 Angular、Aurelia、Knockout.js、React.js 和 React.js 單一頁面應用程式 (SPA) 專案範本可用。 Angular 範本已更新至 Angular 4。 根據預設將會提供 Angular 與 React 範本。如需如何取得其他範本的資訊，請參閱[建立新的 SPA 專案](xref:client-side/spa-services#create-a-new-project)。 如需有關如何在 ASP.NET Core 中建置 SPA 的資訊，請參閱 <xref:client-side/spa-services>。
 
 ## <a name="kestrel-improvements"></a>Kestrel 改善
 

@@ -4,14 +4,14 @@ author: ardalis
 description: 了解如何在 ASP.NET Core Web API 中格式化回應資料。
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 05/21/2019
+ms.date: 05/29/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: bd86015773068b6f75f64a0599d710281f7d4d60
-ms.sourcegitcommit: e67356f5e643a5d43f6d567c5c998ce6002bdeb4
+ms.openlocfilehash: 7628565d8646c0a057e28aa54dc9ce9198750c15
+ms.sourcegitcommit: 9ae1fd11f39b0a72b2ae42f0b450345e6e306bc0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66004959"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66415673"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 
@@ -63,7 +63,7 @@ ASP.NET Core MVC 具有使用固定格式或回應用戶端規格的內建回應
 
 [!code-csharp[](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=8,10&range=28-38)]
 
-除非要求另一種格式，而且伺服器可以傳回所要求的格式，否則會傳回 JSON 格式的回應。 您可以使用 [Fiddler](http://www.telerik.com/fiddler) 這類工具建立包含 Accept 標頭的要求，以及指定另一種格式。 在此情況下，如果伺服器的「格式器」可以使用所要求的格式產生回應，則會以用戶端慣用的格式傳回結果。
+除非要求另一種格式，而且伺服器可以傳回所要求的格式，否則會傳回 JSON 格式的回應。 您可以使用 [Fiddler](http://www.telerik.com/fiddler) 這類工具建立包含 Accept 標頭的要求，以及指定另一種格式。 在此情況下，如果伺服器的「格式器」  可以使用所要求的格式產生回應，則會以用戶端慣用的格式傳回結果。
 
 ![Fiddler 主控台，顯示 Accept 標頭值為 application/xml 的手動建立 GET 要求](formatting/_static/fiddler-composer.png)
 
@@ -79,7 +79,7 @@ ASP.NET Core MVC 具有使用固定格式或回應用戶端規格的內建回應
 
 ### <a name="content-negotiation-process"></a>內容交涉程序
 
-只有在 `Accept` 標頭出現在要求中時，才會進行「內容交涉」。 要求包含 Accept 標頭時，架構會依喜好設定順序來列舉 Accept 標頭中的媒體類型，並嘗試尋找可產生回應的格式器，而回應的格式為 Accept 標頭所指定的其中一種格式。 如果找不到可滿足用戶端要求的格式器，架構會嘗試尋找第一個可產生回應的格式器 (除非開發人員已在 `MvcOptions` 上設定選項，改為傳回「406 無法接受」)。 如果要求指定 XML，但尚未設定 XML 格式器，則會使用 JSON 格式器。 更常見地是，如果未設定格式器來提供所要求的格式，則會使用可格式化物件的第一個格式器。 如果未指定標頭，則會使用可處理要傳回之物件的第一個格式器來序列化回應。 在此情況下，無法進行任何交涉，伺服器將會判斷所使用的格式。
+只有在 `Accept` 標頭出現在要求中時，才會進行「內容交涉」  。 要求包含 Accept 標頭時，架構會依喜好設定順序來列舉 Accept 標頭中的媒體類型，並嘗試尋找可產生回應的格式器，而回應的格式為 Accept 標頭所指定的其中一種格式。 如果找不到可滿足用戶端要求的格式器，架構會嘗試尋找第一個可產生回應的格式器 (除非開發人員已在 `MvcOptions` 上設定選項，改為傳回「406 無法接受」)。 如果要求指定 XML，但尚未設定 XML 格式器，則會使用 JSON 格式器。 更常見地是，如果未設定格式器來提供所要求的格式，則會使用可格式化物件的第一個格式器。 如果未指定標頭，則會使用可處理要傳回之物件的第一個格式器來序列化回應。 在此情況下，無法進行任何交涉，伺服器將會判斷所使用的格式。
 
 > [!NOTE]
 > 如果 Accept 標頭包含 `*/*`，則除非 `MvcOptions` 上的 `RespectBrowserAcceptHeader` 設定為 true，否則會忽略標頭。
@@ -133,13 +133,17 @@ services.AddMvc()
 
 ### <a name="add-xml-format-support"></a>新增 XML 格式支援
 
-若要新增 XML 格式支援，請安裝 [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/) NuGet 套件。
+::: moniker range="<= aspnetcore-2.2"
 
-使用 `System.Xml.Serialization.XmlSerializer` 實作的 XML 格式器可以在 `Startup.ConfigureServices` 中設定，如下所示：
+若要在 ASP.NET Core 2.2 或更早版本中新增 XML 格式支援，請安裝 [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/) \(英文\) NuGet 套件。
+
+::: moniker-end
+
+使用 `System.Xml.Serialization.XmlSerializer` 實作的 XML 格式器可以透過呼叫 `Startup.ConfigureServices` 中的 <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlSerializerFormatters*> 來設定：
 
 [!code-csharp[](./formatting/sample/Startup.cs?name=snippet1&highlight=2)]
 
-或者，使用 `System.Runtime.Serialization.DataContractSerializer` 實作的 XML 格式器可以在 `Startup.ConfigureServices` 中設定，如下所示：
+或者，使用 `System.Runtime.Serialization.DataContractSerializer` 實作的 XML 格式器可以透過呼叫 `Startup.ConfigureServices` 中的 <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlDataContractSerializerFormatters*> 來設定：
 
 ```csharp
 services.AddMvc()

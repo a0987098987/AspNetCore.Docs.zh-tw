@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/21/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: b572067e688d7e7f7c654a7a25703009c1a7e855
-ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
+ms.openlocfilehash: b50516b4dce28a6b105b2ab8b9386060d5392983
+ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2019
-ms.locfileid: "66223193"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66376396"
 ---
 # <a name="host-and-deploy-blazor-client-side"></a>裝載和部署 Blazor 用戶端
 
@@ -38,7 +38,7 @@ ms.locfileid: "66223193"
   "commandLineArgs": "--contentroot=/content-root-path"
   ```
 
-* 在 Visual Studio 中，在 [屬性] > [偵錯] > [應用程式引數] 中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
+* 在 Visual Studio 中，在 [屬性]   > [偵錯]   > [應用程式引數]  中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
 
   ```console
   --contentroot=/content-root-path
@@ -63,7 +63,7 @@ ms.locfileid: "66223193"
   "commandLineArgs": "--pathbase=/virtual-path"
   ```
 
-* 在 Visual Studio 中，在 [屬性] > [偵錯] > [應用程式引數] 中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
+* 在 Visual Studio 中，在 [屬性]   > [偵錯]   > [應用程式引數]  中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
 
   ```console
   --pathbase=/virtual-path
@@ -85,7 +85,7 @@ ms.locfileid: "66223193"
   "commandLineArgs": "--urls=http://127.0.0.1:0"
   ```
 
-* 在 Visual Studio 中，在 [屬性] > [偵錯] > [應用程式引數] 中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
+* 在 Visual Studio 中，在 [屬性]   > [偵錯]   > [應用程式引數]  中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
 
   ```console
   --urls=http://127.0.0.1:0
@@ -118,19 +118,19 @@ Blazor 在每個組建上執行中繼語言 (IL) 連結，以從輸出組件移�
 1. *index.html* 啟動載入應用程式。
 1. 會載入 Blazor 的路由器，同時會顯示 Razor 主頁面 (*Main.razor*)。
 
-在主頁面上，選取 [關於] 頁面的連結會載入 [關於] 頁面。 選取您用戶端上適用的 [關於] 頁面連結，因為 Blazor 路由器會停止瀏覽器，使其不從網際網路對 `www.contoso.com` 提出針對 `About` 的要求，並自行提供 [關於] 頁面。 對於「用戶端應用程式內」內部頁面的所有要求運作方式相同：要求不會對於網際網路上伺服器裝載的資源，觸發以瀏覽器為基礎的要求。 路由器會在內部處理要求。
+在主頁面上，選取 [關於] 頁面的連結會載入 [關於] 頁面。 選取您用戶端上適用的 [關於] 頁面連結，因為 Blazor 路由器會停止瀏覽器，使其不從網際網路對 `www.contoso.com` 提出針對 `About` 的要求，並自行提供 [關於] 頁面。 對於「用戶端應用程式內」  內部頁面的所有要求運作方式相同：要求不會對於網際網路上伺服器裝載的資源，觸發以瀏覽器為基礎的要求。 路由器會在內部處理要求。
 
-如果使用瀏覽器之網址列提出對 `www.contoso.com/About` 的要求，則要求會失敗。 在應用程式的網際網路主機上沒有這類資源存在，因此會傳回「404 - 找不到」的回應。
+如果使用瀏覽器之網址列提出對 `www.contoso.com/About` 的要求，則要求會失敗。 在應用程式的網際網路主機上沒有這類資源存在，因此會傳回「404 - 找不到」  的回應。
 
 因為瀏覽器會提出要求給以網際網路為基礎的主機以取得用戶端頁面，所以網頁伺服器和裝載服務必須針對實際上不在伺服器上資源，將所有要求重新撰寫至 *index.html* 頁面。 傳回 *index.html* 時，應用程式的用戶端路由器會接管，並以正確的資源回應。
 
 ## <a name="app-base-path"></a>應用程式基底路徑
 
-「應用程式基底路徑」是伺服器上的虛擬應用程式根路徑。 例如，對於位於 Contoso 伺服器虛擬資料夾 `/CoolApp/` 的應用程式，能使用 `https://www.contoso.com/CoolApp` 到達它，且具有 `/CoolApp/` 虛擬基底路徑。 對虛擬路徑 (`<base href="/CoolApp/">`) 設定應用程式的基底路徑，應用程式即可得知其虛擬位於伺服器的何處。 應用程式可以使用應用程式基底路徑，從不在根目錄中之元件建構相對於應用程式根目錄的 URL。 這可讓存在於不同目錄結構層級的元件，建置連結以連至應用程式內所有位置的其他資源。 應用程式基底路徑也會用來攔截超連結點擊，其中連結的 `href` 目標是在應用程式基底路徑 URI 空間內&mdash;Blazor 路由器會處理內部瀏覽。
+「應用程式基底路徑」  是伺服器上的虛擬應用程式根路徑。 例如，對於位於 Contoso 伺服器虛擬資料夾 `/CoolApp/` 的應用程式，能使用 `https://www.contoso.com/CoolApp` 到達它，且具有 `/CoolApp/` 虛擬基底路徑。 對虛擬路徑 (`<base href="/CoolApp/">`) 設定應用程式的基底路徑，應用程式即可得知其虛擬位於伺服器的何處。 應用程式可以使用應用程式基底路徑，從不在根目錄中之元件建構相對於應用程式根目錄的 URL。 這可讓存在於不同目錄結構層級的元件，建置連結以連至應用程式內所有位置的其他資源。 應用程式基底路徑也會用來攔截超連結點擊，其中連結的 `href` 目標是在應用程式基底路徑 URI 空間內&mdash;Blazor 路由器會處理內部瀏覽。
 
 在許多裝載案例中，應用程式之伺服器虛擬路徑是應用程式的根目錄。 在這些情況中，應用程式基底路徑是正斜線 (`<base href="/" />`)，這是應用程式的預設組態。 在其他裝載案例中，例如 GitHub Pages 和 IIS 虛擬目錄或子應用程式，應用程式基底路徑必須設定為應用程式的伺服器虛擬路徑。 若要設定應用程式的基底路徑，請更新 *wwwroot/index.html* 檔案 `<head>` 標籤項目內的 `<base>` 標籤。 將 `href` 屬性值設為 `/virtual-path/` (尾端的斜線為必要)，其中 `/virtual-path/` 是應用程式伺服器上的完整虛擬應用程式根路徑。 在上述範例中，虛擬路徑設為 `/CoolApp/`: `<base href="/CoolApp/">`。
 
-對於已設定非根目錄虛擬路徑的應用程式 (例如 `<base href="/CoolApp/">`)，應用程式「在本機執行時」無法找到它的資源。 若要在本機開發和測試期間解決這個問題，您可以提供「基底路徑」引數，讓它在執行時符合 `<base>` 標籤的 `href` 值。
+對於已設定非根目錄虛擬路徑的應用程式 (例如 `<base href="/CoolApp/">`)，應用程式「在本機執行時」  無法找到它的資源。 若要在本機開發和測試期間解決這個問題，您可以提供「基底路徑」  引數，讓它在執行時符合 `<base>` 標籤的 `href` 值。
 
 若要在本機執行應用程式期間，傳遞路徑基底引數與根路徑 (`/`)，請從應用程式的目錄執行 `dotnet run` 命令，同時設定 `--pathbase` 選項：
 
@@ -178,7 +178,7 @@ dotnet run --pathbase=/CoolApp
 
 ## <a name="hosted-deployment-with-aspnet-core"></a>搭配 ASP.NET Core 的已裝載部署
 
-「裝載部署」會將用戶端 Blazor 應用程式，從伺服器上執行的 [ASP.NET Core 應用程式](xref:index)，提供給瀏覽器。
+「裝載部署」  會將用戶端 Blazor 應用程式，從伺服器上執行的 [ASP.NET Core 應用程式](xref:index)，提供給瀏覽器。
 
 Blazor 應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以便兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 對於裝載部署，Visual Studio 包含 **Blazor (已裝載 ASP.NET Core)** 專案範本 (使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazorhosted` 範本)。
 
@@ -188,7 +188,9 @@ Blazor 應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以�
 
 ## <a name="standalone-deployment"></a>獨立部署
 
-「獨立部署」會以一組直接由用戶端要求的靜態檔案來提供服務給用戶端 Blazor 應用程式。 網頁伺服器不用來提供服務給 Blazor 應用程式。
+「獨立部署」  會以一組直接由用戶端要求的靜態檔案來提供服務給用戶端 Blazor 應用程式。 所有靜態檔案伺服器都能夠支援 Blazor 應用程式。
+
+獨立式部署資產會發佈至 [bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist]  資料夾。
 
 ### <a name="iis"></a>IIS
 
@@ -210,26 +212,26 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
   * `application/octet-stream`
   * `application/wasm`
 * 建立 URL Rewrite Module 規則：
-  * 提供應用程式靜態資產所在的子目錄 (*{組件名稱}/dist/{要求的路徑}*)。
-  * 建立 SPA 後援路由，讓非檔案資產要求重新導向至其靜態資產資料夾中的應用程式預設文件 (*{組件名稱}/dist/index.html*)。
+  * 提供應用程式靜態資產所在的子目錄 ( *{組件名稱}/dist/{要求的路徑}* )。
+  * 建立 SPA 後援路由，讓非檔案資產要求重新導向至其靜態資產資料夾中的應用程式預設文件 ( *{組件名稱}/dist/index.html*)。
 
 #### <a name="install-the-url-rewrite-module"></a>安裝 URL Rewrite 模組
 
 需要 [URL Rewrite Module](https://www.iis.net/downloads/microsoft/url-rewrite)，才可重寫 URL。 預設不會安裝此模組，且其無法用來安裝為網頁伺服器 (IIS) 角色服務功能。 必須從 IIS 網站下載模組。 請使用 Web Platform Installer 安裝模組：
 
-1. 在本機上，巡覽至 [URL Rewrite Module 下載頁面](https://www.iis.net/downloads/microsoft/url-rewrite#additionalDownloads)。 如需英文版，請選取 [WebPI] 下載 WebPI 安裝程式。 如需其他語言，請選取適當的伺服器架構 (x86 x64) 來下載安裝程式。
-1. 將安裝程式複製到伺服器。 執行安裝程式。 選取 [安裝] 按鈕，並接受授權條款。 安裝完成之後，不需要重新啟動伺服器。
+1. 在本機上，巡覽至 [URL Rewrite Module 下載頁面](https://www.iis.net/downloads/microsoft/url-rewrite#additionalDownloads)。 如需英文版，請選取 [WebPI]  下載 WebPI 安裝程式。 如需其他語言，請選取適當的伺服器架構 (x86 x64) 來下載安裝程式。
+1. 將安裝程式複製到伺服器。 執行安裝程式。 選取 [安裝]  按鈕，並接受授權條款。 安裝完成之後，不需要重新啟動伺服器。
 
 #### <a name="configure-the-website"></a>設定網站
 
-將網站的 [實體路徑] 設為應用程式的資料夾。 此資料夾包含：
+將網站的 [實體路徑]  設為應用程式的資料夾。 此資料夾包含：
 
 * IIS 用來設定網站的 *web.config* 檔，包括必要的重新導向規則和檔案內容類型。
 * 應用程式的靜態資產資料夾。
 
 #### <a name="troubleshooting"></a>疑難排解
 
-如果收到「500 - 內部伺服器錯誤」，且 IIS 管理員在嘗試存取網站設定時擲回錯誤，請確認是否已安裝 URL Rewrite 模組。 未安裝此模組時，IIS 無法剖析 *web.config* 檔案。 這導致 IIS 管理員無法載入網站的組態，且網站無法提供 Blazor 的靜態檔案。
+如果收到「500 - 內部伺服器錯誤」  ，且 IIS 管理員在嘗試存取網站設定時擲回錯誤，請確認是否已安裝 URL Rewrite 模組。 未安裝此模組時，IIS 無法剖析 *web.config* 檔案。 這導致 IIS 管理員無法載入網站的組態，且網站無法提供 Blazor 的靜態檔案。
 
 如需針對部署至 IIS 進行疑難排解的詳細資訊，請參閱 <xref:host-and-deploy/iis/troubleshoot>。
 
@@ -239,8 +241,8 @@ Azure 儲存體靜態檔案裝載允許無伺服器的 Blazor 應用程式裝載
 
 當 Blob 服務針對儲存體帳戶上的靜態網站裝載啟用時：
 
-* 將 [索引文件名稱] 設定為 `index.html`。
-* 將 [錯誤文件路徑] 設定為 `index.html`。 Razor 元件和其他非檔案端點不會位於由 Blob 服務所存放之靜態內容中的實體路徑上。 當系統接收到針對這些資源之一，且應由 Blazor 路由器處理的要求時，由 Blob 服務所產生的「404 - 找不到」錯誤會將要求路由至**錯誤文件路徑**。 系統會傳回 *index.html* Blob，且 Blazor 路由器會載入並處理該路徑。
+* 將 [索引文件名稱]  設定為 `index.html`。
+* 將 [錯誤文件路徑]  設定為 `index.html`。 Razor 元件和其他非檔案端點不會位於由 Blob 服務所存放之靜態內容中的實體路徑上。 當系統接收到針對這些資源之一，且應由 Blazor 路由器處理的要求時，由 Blob 服務所產生的「404 - 找不到」  錯誤會將要求路由至**錯誤文件路徑**。 系統會傳回 *index.html* Blob，且 Blazor 路由器會載入並處理該路徑。
 
 如需詳細資訊，請參閱[Azure 儲存體中的靜態網站代管](/azure/storage/blobs/storage-blob-static-website)。
 

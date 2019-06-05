@@ -5,14 +5,14 @@ description: 了解整合測試如何確保應用程式的元件在基礎結構�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/25/2019
+ms.date: 06/05/2019
 uid: test/integration-tests
-ms.openlocfilehash: 46c3b227ca0b3def5ab7d527a2f6ef2497d55f83
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 3af2a1f7c6a65d7ff42597972ee151a50fc95fb6
+ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64892065"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66716373"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -84,7 +84,7 @@ ASP.NET Core 中的整合測試需要下列各項：
 
 `Microsoft.AspNetCore.Mvc.Testing`封裝處理下列工作：
 
-* 將相依性檔案複製 (*\*.deps*) 從到測試專案的 SUT *bin*資料夾。
+* 將相依性檔案複製 ( *\*.deps*) 從到測試專案的 SUT *bin*目錄。
 * 設定 SUT 專案根目錄的內容根目錄，因此，靜態檔案和頁面/檢視表位於測試執行時。
 * 提供[WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1)類別來簡化啟動程序與 SUT `TestServer`。
 
@@ -127,6 +127,8 @@ ASP.NET Core 中的整合測試需要下列各項：
 [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient)建立的執行個體`HttpClient`，會自動遵循重新導向，並會處理 cookie。
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet1)]
+
+根據預設，不會保留非必要 cookie 的要求時[GDPR 同意原則](xref:security/gdpr)已啟用。 若要保留非必要的 cookie，例如所使用的 TempData 提供者，請將它們標示為在測試中不可或缺。 如需標示為基本的 cookie 的指示，請參閱 <<c0> [ 不可或缺的 cookie](xref:security/gdpr#essential-cookies)。
 
 ### <a name="test-a-secure-endpoint"></a>測試安全的端點
 
@@ -270,7 +272,7 @@ SUT 應用程式執行時，會產生下列標記：
 
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>如何測試基礎結構會推斷的應用程式內容根路徑
 
-`WebApplicationFactory`建構函式會藉由搜尋來推斷應用程式內容根路徑[WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute)等於索引鍵包含整合測試的組件上`TEntryPoint`的組件`System.Reflection.Assembly.FullName`. 如果找不到具有正確金鑰的屬性，`WebApplicationFactory`回到搜尋解決方案檔案 (*\*.sln*)，並將附加`TEntryPoint`的方案目錄的組件名稱。 應用程式根目錄 （內容根路徑） 用來探索檢視和內容檔案。
+`WebApplicationFactory`建構函式會藉由搜尋來推斷應用程式內容根路徑[WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute)等於索引鍵包含整合測試的組件上`TEntryPoint`的組件`System.Reflection.Assembly.FullName`. 如果找不到具有正確金鑰的屬性，`WebApplicationFactory`回到搜尋解決方案檔案 ( *\*.sln*)，並將附加`TEntryPoint`的方案目錄的組件名稱。 應用程式根目錄 （內容根路徑） 用來探索檢視和內容檔案。
 
 在大部分情況下，不需要明確地將應用程式內容根目錄設定，因為通常在執行階段尋找正確的內容根目錄的搜尋邏輯。 未找到的內容根目錄的特殊案例中使用內建的搜尋演算法，內容可以指定根目錄，明確或使用自訂的邏輯應用程式。 若要設定應用程式的內容根目錄，在這些情況下，呼叫`UseSolutionRelativeContentRoot`擴充方法，從[Microsoft.AspNetCore.TestHost](https://www.nuget.org/packages/Microsoft.AspNetCore.TestHost)封裝。 提供方案的相對路徑和選擇性的方案檔案名稱或 glob 模式 (預設 = `*.sln`)。
 
@@ -311,7 +313,7 @@ SUT 應用程式執行時，會產生下列標記：
 
 ## <a name="disable-shadow-copying"></a>停用陰影複製
 
-陰影複製會導致在不同的輸出資料夾的資料夾中執行測試。 針對測試才能正常運作，陰影複製必須停用。 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)xunit，並停用所包括的 xUnit 陰影複製*xunit.runner.json*檔案使用的是正確的組態設定。 如需詳細資訊，請參閱 <c0> [ 設定使用 JSON 的 xUnit.net](https://xunit.github.io/docs/configuring-with-json.html)。
+陰影複製會導致在不同的目錄，比輸出目錄中執行測試。 針對測試才能正常運作，陰影複製必須停用。 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)xunit，並停用所包括的 xUnit 陰影複製*xunit.runner.json*檔案使用的是正確的組態設定。 如需詳細資訊，請參閱 <c0> [ 設定使用 JSON 的 xUnit.net](https://xunit.github.io/docs/configuring-with-json.html)。
 
 新增*xunit.runner.json*檔案根目錄的測試專案，使用下列內容：
 
@@ -329,12 +331,12 @@ SUT 應用程式執行時，會產生下列標記：
 
 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是兩個應用程式所組成：
 
-| 應用程式 | 專案資料夾 | 描述 |
-| --- | -------------- | ----------- |
+| 應用程式 | 專案目錄 | 描述 |
+| --- | ----------------- | ----------- |
 | 訊息應用程式 (SUT) | *src/RazorPagesProject* | 允許使用者加入、 刪除其中一個、 全部刪除，以及分析訊息。 |
 | 測試應用程式 | *tests/RazorPagesProject.Tests* | 用來整合測試 SUT。 |
 
-可以使用內建的測試功能的 IDE，例如執行測試[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列中，執行下列命令在命令提示字元中*tests/RazorPagesProject.Tests*資料夾：
+可以使用內建的測試功能的 IDE，例如執行測試[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列中，執行下列命令在命令提示字元中*tests/RazorPagesProject.Tests*目錄：
 
 ```console
 dotnet test
@@ -357,10 +359,10 @@ SUT 是 Razor Pages 訊息系統具有下列特性：
 
 ### <a name="test-app-organization"></a>測試應用程式的組織
 
-測試應用程式是主控台應用程式內*tests/RazorPagesProject.Tests*資料夾。
+測試應用程式是主控台應用程式內*tests/RazorPagesProject.Tests*目錄。
 
-| 測試應用程式資料夾 | 描述 |
-| --------------- | ----------- |
+| 測試應用程式目錄 | 描述 |
+| ------------------ | ----------- |
 | *BasicTests* | *BasicTests.cs*包含路由、 存取安全的頁面未驗證的使用者，並取得 GitHub 使用者設定檔和檢查設定檔的使用者登入的測試方法。 |
 | *IntegrationTests* | *IndexPageTests.cs*包含 [索引] 頁面使用自訂的整合測試`WebApplicationFactory`類別。 |
 | *協助程式/公用程式* | <ul><li>*Utilities.cs*包含`InitializeDbForTests`方法用來植入測試資料的資料庫。</li><li>*HtmlHelpers.cs*提供方法來傳回 AngleSharp`IHtmlDocument`以供測試方法。</li><li>*HttpClientExtensions.cs*提供的多載`SendAsync`提交要求給 SUT。</li></ul> |

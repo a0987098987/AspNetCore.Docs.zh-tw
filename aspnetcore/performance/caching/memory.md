@@ -49,9 +49,9 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 ## <a name="cache-guidelines"></a>快取指引
 
-* 程式碼，應一律具有擷取資料的後援選項及**不**取決於快取的值，可供使用。
+* 程式碼取得資料方式**不**應該僅依賴於快取的資料，需要有備用計畫。
 * 快取佔用很少的資源時，記憶體。 限制快取增長：
-  * 請勿**不**外部輸入做為快取索引鍵。
+  * 請**勿**使用外部輸入做為快取索引鍵。
   * 您可以使用到期時間，限制快取成長。
   * [使用來限制快取大小的 SetSize、 大小和 SizeLimit](#use-setsize-size-and-sizelimit-to-limit-cache-size)。 ASP.NET Core 執行階段不會限制記憶體不足的壓力所根據的快取大小。 它是由開發人員快取大小限制時。
 
@@ -153,7 +153,7 @@ A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例示範如何過期的快取項目，如果相依項目到期。 A`CancellationChangeToken`新增至快取的項目。 當`Cancel`上呼叫`CancellationTokenSource`，收回這兩個快取項目。
+下列範例示範如何過期的快取項目，如果相依項目到期。 `CancellationChangeToken`新增至快取的項目。 當`Cancel`上呼叫`CancellationTokenSource`，收回這兩個快取項目。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 

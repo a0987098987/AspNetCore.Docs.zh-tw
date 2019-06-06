@@ -5,14 +5,14 @@ description: 了解如何存取 ASP.NET Core web 應用程式中的 GDPR 擴充�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 06/05/2019
 uid: security/gdpr
-ms.openlocfilehash: c5c13dbd1006d10aba0f54b0b9d72b527ee98945
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 967f3246836c93a1af56f7109edb056220606b58
+ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894105"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66716344"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>ASP.NET Core 中的歐盟一般資料保護規定 (GDPR) 支援
 
@@ -30,13 +30,13 @@ ASP.NET Core 提供 Api 和範本，以協助符合某些[歐盟一般資料保�
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>ASP.NET Core 範本中的 GDPR 支援產生的程式碼
+## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>在範本產生的程式碼中的 ASP.NET Core GDPR 支援
 
 Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 
-* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)並[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)中所設定`Startup`。
-* *_CookieConsentPartial.cshtml* [部分檢視](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)。
-* *Pages/Privacy.cshtml*頁面或*Views/Home/Privacy.cshtml*檢視會提供頁面的詳細說明您網站的隱私權原則。 *_CookieConsentPartial.cshtml*檔案會產生 [隱私權] 頁面的連結。
+* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)並[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)中所設定`Startup`類別。
+* *\_CookieConsentPartial.cshtml* [部分檢視](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)。 **接受**按鈕包含在這個檔案。 當使用者按一下**接受**按鈕，同意將 cookie 提供。
+* *Pages/Privacy.cshtml*頁面或*Views/Home/Privacy.cshtml*檢視會提供頁面的詳細說明您網站的隱私權原則。 *\_CookieConsentPartial.cshtml*檔案會產生 [隱私權] 頁面的連結。
 * 使用個別使用者帳戶建立的應用程式，[管理] 頁面會提供連結來下載並刪除[使用者個人資料](#pd)。
 
 ### <a name="cookiepolicyoptions-and-usecookiepolicy"></a>CookiePolicyOptions 和 UseCookiePolicy
@@ -49,29 +49,29 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 
 [!code-csharp[](gdpr/sample/Startup.cs?name=snippet1&highlight=51)]
 
-### <a name="cookieconsentpartialcshtml-partial-view"></a>_CookieConsentPartial.cshtml partial view
+### <a name="cookieconsentpartialcshtml-partial-view"></a>\_CookieConsentPartial.cshtml partial view
 
-*_CookieConsentPartial.cshtml*部分檢視：
+*\_CookieConsentPartial.cshtml*部分檢視：
 
 [!code-html[](gdpr/sample/RP/Pages/Shared/_CookieConsentPartial.cshtml)]
 
 這個部分中：
 
-* 取得使用者追蹤的狀態。 如果應用程式設定為需要同意，使用者必須同意之前可以追蹤 cookie。 如果需要同意的話，cookie 同意不固定在所建立的導覽列頂端 *_Layout.cshtml*檔案。
+* 取得使用者追蹤的狀態。 如果應用程式設定為需要同意，使用者必須同意之前可以追蹤 cookie。 如果需要同意的話，cookie 同意不固定在所建立的導覽列頂端 *\_Layout.cshtml*檔案。
 * 提供 HTML`<p>`項目，以摘述您的隱私權與 cookie 使用的原則。
 * 提供隱私權頁面或檢視，其中詳細說明您網站的隱私權原則的連結。
 
 ## <a name="essential-cookies"></a>基本的 cookie
 
-如果尚未被授與同意，就會標示為重要的 cookie 傳送至瀏覽器。 下列程式碼可讓您基本的 cookie:
+如果同意將 cookie 未提供，標示為重要的 cookie 傳送至瀏覽器。 下列程式碼可讓您基本的 cookie:
 
 [!code-csharp[Main](gdpr/sample/RP/Pages/Cookie.cshtml.cs?name=snippet1&highlight=5)]
 
 <a name="tempdata"></a>
 
-## <a name="tempdata-provider-and-session-state-cookies-are-not-essential"></a>Tempdata 提供者和工作階段狀態的 cookie 不重要
+### <a name="tempdata-provider-and-session-state-cookies-arent-essential"></a>TempData 提供者和工作階段狀態的 cookie 並不一定
 
-[Tempdata 提供者](xref:fundamentals/app-state#tempdata)cookie 不必要的元素。 如果已停用追蹤，Tempdata 提供者將無法運作。 若要停用追蹤時，請啟用 Tempdata 提供者，將 TempData cookie 標示為以`Startup.ConfigureServices`:
+[TempData 提供者](xref:fundamentals/app-state#tempdata)cookie 不必要的元素。 如果已停用追蹤，TempData 提供者將無法運作。 若要停用追蹤時，請啟用 TempData 提供者，將 TempData cookie 標示為以`Startup.ConfigureServices`:
 
 [!code-csharp[Main](gdpr/sample/RP/Startup.cs?name=snippet1)]
 
@@ -105,16 +105,16 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 * 是最簡單且最安全的選項。
 * 讓資料庫可管理金鑰和加密。
 
-例如: 
+例如：
 
 * Microsoft SQL 和 Azure SQL 提供[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption)(TDE)。
 * [SQL Azure 會將預設加密資料庫](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
 * [預設加密 azure Blob、 檔案、 資料表和佇列儲存體](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
 
-不會提供內建的加密靜止的資料庫，您可以使用磁碟加密來提供相同的保護。 例如: 
+不會提供內建的加密靜止的資料庫，您可以使用磁碟加密來提供相同的保護。 例如:
 
 * [BitLocker for Windows Server](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
-* Linux:
+* Linux：
   * [eCryptfs](https://launchpad.net/ecryptfs)
   * [EncFS](https://github.com/vgough/encfs)。
 

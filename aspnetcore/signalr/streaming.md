@@ -5,14 +5,14 @@ description: 了解如何在用戶端與伺服器之間的資料串流。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 04/12/2019
+ms.date: 06/05/2019
 uid: signalr/streaming
-ms.openlocfilehash: 8f39fdfa45766b5bbec572970f009abefefdc419
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: a75156f398e113393ddb891d16eec3f09de80c09
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897195"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750191"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>使用資料流在 ASP.NET Core SignalR
 
@@ -36,7 +36,7 @@ ASP.NET Core SignalR 支援資料流的伺服器方法的傳回值。 這是適�
 
 ::: moniker range=">= aspnetcore-3.0"
 
-中樞的方法會自動變成資料流處理的中樞方法傳回時<xref:System.Threading.Channels.ChannelReader%601>， `IAsyncEnumerable<T>`， `Task<ChannelReader<T>>`，或`Task<IAsyncEnumerable<T>>`。
+中樞的方法會自動變成資料流處理的中樞方法傳回時<xref:System.Collections.Generic.IAsyncEnumerable`1>， <xref:System.Threading.Channels.ChannelReader%601>， `Task<IAsyncEnumerable<T>>`，或`Task<ChannelReader<T>>`。
 
 ::: moniker-end
 
@@ -93,9 +93,23 @@ ASP.NET Core SignalR 支援資料流的伺服器方法的傳回值。 這是適�
 
 ### <a name="client-to-server-streaming"></a>用戶端-伺服器串流處理
 
-中樞的方法會自動變成用戶端-伺服器串流處理中樞方法，當它接受一或多個<xref:System.Threading.Channels.ChannelReader`1>s。 下列範例示範讀取從用戶端傳送的資料流處理資料的基本概念。 每當用戶端會寫入<xref:System.Threading.Channels.ChannelWriter`1>，將資料寫入到`ChannelReader`中樞方法讀取伺服器上。
+中樞方法會自動變成用戶端-伺服器串流處理中樞方法，它會接受一或多個物件的型別時<xref:System.Threading.Channels.ChannelReader%601>或<xref:System.Collections.Generic.IAsyncEnumerable%601>。 下列範例示範讀取從用戶端傳送的資料流處理資料的基本概念。 每當用戶端會寫入<xref:System.Threading.Channels.ChannelWriter%601>，將資料寫入到`ChannelReader`從中讀取中樞方法的伺服器上。
 
 [!code-csharp[Streaming upload hub method](streaming/samples/3.0/Hubs/StreamHub.cs?name=snippet2)]
+
+<xref:System.Collections.Generic.IAsyncEnumerable%601>遵循版本的方法。
+
+[!INCLUDE[](~/includes/csharp-8-required.md)]
+
+```csharp
+public async Task UploadStream(IAsyncEnumerable<Stream> stream) 
+{
+    await foreach (var item in stream)
+    {
+        Console.WriteLine(item);
+    }
+}
+```
 
 ::: moniker-end
 
@@ -103,9 +117,55 @@ ASP.NET Core SignalR 支援資料流的伺服器方法的傳回值。 這是適�
 
 ### <a name="server-to-client-streaming"></a>伺服器到用戶端串流
 
-`StreamAsChannelAsync`方法`HubConnection`用來叫用伺服器到用戶端的串流處理方式。 將中樞方法的名稱和定義中的中樞方法的引數傳遞`StreamAsChannelAsync`。 泛型參數上的`StreamAsChannelAsync<T>`指定的資料流的方法所傳回的物件類型。 A`ChannelReader<T>`傳回的資料流的引動過程，和代表用戶端上的資料流。
+
+::: moniker range=">= aspnetcore-3.0"
+
+`StreamAsync`並`StreamAsChannelAsync`上的方法`HubConnection`用來叫用伺服器到用戶端資料流的方法。 將中樞方法的名稱和定義中的中樞方法的引數傳遞給`StreamAsync`或`StreamAsChannelAsync`。 泛型參數`StreamAsync<T>`和`StreamAsChannelAsync<T>`指定的資料流的方法所傳回的物件類型。 型別的物件`IAsyncEnumerable<T>`或`ChannelReader<T>`傳回的資料流的引動過程，和代表用戶端上的資料流。
+
+A`StreamAsync`傳回的範例`IAsyncEnumerable<int>`:
+
+```csharp
+// Call "Cancel" on this CancellationTokenSource to send a cancellation message to
+// the server, which will trigger the corresponding token in the hub method.
+var cancellationTokenSource = new CancellationTokenSource();
+var stream = await hubConnection.StreamAsync<int>(
+    "Counter", 10, 500, cancellationTokenSource.Token);
+
+await foreach (var count in stream)
+{
+    Console.WriteLine($"{count}");
+}
+
+Console.WriteLine("Streaming completed");
+```
+
+相對應`StreamAsChannelAsync`傳回的範例`ChannelReader<int>`:
+
+```csharp
+// Call "Cancel" on this CancellationTokenSource to send a cancellation message to
+// the server, which will trigger the corresponding token in the hub method.
+var cancellationTokenSource = new CancellationTokenSource();
+var channel = await hubConnection.StreamAsChannelAsync<int>(
+    "Counter", 10, 500, cancellationTokenSource.Token);
+
+// Wait asynchronously for data to become available
+while (await channel.WaitToReadAsync())
+{
+    // Read all currently available data synchronously, before waiting for more data
+    while (channel.TryRead(out var count))
+    {
+        Console.WriteLine($"{count}");
+    }
+}
+
+Console.WriteLine("Streaming completed");
+```
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.2"
+
+`StreamAsChannelAsync`方法`HubConnection`用來叫用伺服器到用戶端的串流處理方式。 將中樞方法的名稱和定義中的中樞方法的引數傳遞`StreamAsChannelAsync`。 泛型參數上的`StreamAsChannelAsync<T>`指定的資料流的方法所傳回的物件類型。 A`ChannelReader<T>`傳回的資料流的引動過程，和代表用戶端上的資料流。
 
 ```csharp
 // Call "Cancel" on this CancellationTokenSource to send a cancellation message to
@@ -131,6 +191,8 @@ Console.WriteLine("Streaming completed");
 
 ::: moniker range="= aspnetcore-2.1"
 
+`StreamAsChannelAsync`方法`HubConnection`用來叫用伺服器到用戶端的串流處理方式。 將中樞方法的名稱和定義中的中樞方法的引數傳遞`StreamAsChannelAsync`。 泛型參數上的`StreamAsChannelAsync<T>`指定的資料流的方法所傳回的物件類型。 A`ChannelReader<T>`傳回的資料流的引動過程，和代表用戶端上的資料流。
+
 ```csharp
 var channel = await hubConnection
     .StreamAsChannelAsync<int>("Counter", 10, 500, CancellationToken.None);
@@ -154,11 +216,29 @@ Console.WriteLine("Streaming completed");
 
 ### <a name="client-to-server-streaming"></a>用戶端-伺服器串流處理
 
-若要叫用用戶端-伺服器串流處理中樞方法從.NET 用戶端，建立`Channel`，並傳遞`ChannelReader`做為引數`SendAsync`， `InvokeAsync`，或`StreamAsChannelAsync`，取決於叫用中樞方法。
+有兩種方式，叫用戶端-伺服器串流處理中樞方法從.NET 用戶端。 您可以請傳入`IAsyncEnumerable<T>`或`ChannelReader`做為引數`SendAsync`， `InvokeAsync`，或`StreamAsChannelAsync`，取決於叫用中樞方法。
 
-每當資料寫入`ChannelWriter`，在伺服器上的中樞方法從用戶端接收資料的新項目。
+每當資料寫入`IAsyncEnumerable`或`ChannelWriter`物件，在伺服器上的中樞方法從用戶端接收資料的新項目。
 
-若要結束資料流，完成與通道`channel.Writer.Complete()`。
+如果使用`IAsyncEnumerable`物件，方法傳回資料流項目結束後的資料流結束。
+
+[!INCLUDE[](~/includes/csharp-8-required.md)]
+
+```csharp
+async IAsyncEnumerable<string> clientStreamData()
+{
+    for (var i = 0; i < 5; i++)
+    {
+        var data = await FetchSomeData();
+        yield return data;
+    }
+    //After the for loop has completed and the local function exits the stream completion will be sent.
+}
+
+await connection.SendAsync("UploadStream", clientStreamData());
+```
+
+如果您使用`ChannelWriter`，在您完成使用的通道`channel.Writer.Complete()`:
 
 ```csharp
 var channel = Channel.CreateBounded<string>(10);

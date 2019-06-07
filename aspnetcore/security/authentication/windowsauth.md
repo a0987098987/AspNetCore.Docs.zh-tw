@@ -5,14 +5,14 @@ description: 了解如何設定 ASP.NET Core 中的 Windows 驗證的 IIS 和 HT
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 05/29/2019
+ms.date: 06/05/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 9dfff5dcba409ddca7e05c771b864ab121e0ea85
-ms.sourcegitcommit: 06c4f2910dd54ded25e1b8750e09c66578748bc9
+ms.openlocfilehash: 900bbf5f14b1876ad537b2b77e4ba07d7aa168f2
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66395932"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750170"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
@@ -22,9 +22,17 @@ ms.locfileid: "66395932"
 
 Windows 驗證仰賴作業系統來驗證 ASP.NET Core 應用程式的使用者。 當您的伺服器在公司網路上執行時，您可以透過 Active Directory 網域身分識別進行 Windows 驗證或透過 Windows 帳戶來識別使用者。 Windows 驗證最適合用於使用者、用戶端應用程式與 Web 伺服器皆屬於相同 Windows 網域的內部網路環境。
 
-## <a name="launch-settings-debugger"></a>啟動設定 （偵錯工具）
+## <a name="iisiis-express"></a>IIS/IIS Express
 
-啟動設定的設定只會影響*Properties/launchSettings.json*檔案，並不會將 IIS 或 HTTP.sys 伺服器設定為 Windows 驗證。 伺服器的設定會說明[啟用的驗證服務的 IIS 或 HTTP.sys](#authentication-services-for-iis-or-httpsys)一節。
+加入驗證服務所叫用<xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*>(<xref:Microsoft.AspNetCore.Server.IISIntegration?displayProperty=fullName>命名空間) 中`Startup.ConfigureServices`:
+
+```csharp
+services.AddAuthentication(IISDefaults.AuthenticationScheme);
+```
+
+### <a name="launch-settings-debugger"></a>啟動設定 （偵錯工具）
+
+啟動設定的設定只會影響*Properties/launchSettings.json*適用於 IIS Express 檔案，並不會設定 IIS 的 Windows 驗證。 伺服器組態中會說明[IIS](#iis)一節。
 
 **Web 應用程式**可透過 Visual Studio 或.NET Core CLI 的範本可以設定為支援 Windows 驗證，這會更新*Properties/launchSettings.json*檔案自動的。
 
@@ -76,17 +84,7 @@ dotnet new webapp --auth Windows
 
 當修改現有的專案，請確認專案檔包含的套件參考[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)**或是** [Microsoft.AspNetCore.Authentication](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication/) NuGet 套件。
 
-## <a name="authentication-services-for-iis-or-httpsys"></a>IIS 或 HTTP.sys 的驗證服務
-
-根據裝載的案例，請依照下列中的指導方針**任一** [IIS](#iis)區段**或是** [HTTP.sys](#httpsys)一節。
-
 ### <a name="iis"></a>IIS
-
-加入驗證服務所叫用<xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*>(<xref:Microsoft.AspNetCore.Server.IISIntegration?displayProperty=fullName>命名空間) 中`Startup.ConfigureServices`:
-
-```csharp
-services.AddAuthentication(IISDefaults.AuthenticationScheme);
-```
 
 IIS 會使用[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)主機 ASP.NET Core 應用程式。 Windows 驗證針對透過 IIS *web.config*檔案。 下列各節將示範如何：
 
@@ -127,9 +125,9 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
   * 使用 IIS 管理員中的設定重設*web.config*檔案之後部署上覆寫該檔案。
   * 新增*web.config 檔案*應用程式在本機使用的設定。
 
-### <a name="httpsys"></a>HTTP.sys
+## <a name="httpsys"></a>HTTP.sys
 
-雖然[Kestrel](xref:fundamentals/servers/kestrel)不支援 Windows 驗證，您可以使用[HTTP.sys](xref:fundamentals/servers/httpsys)支援在 Windows 上的自我裝載的案例。
+在自我裝載案例中， [Kestrel](xref:fundamentals/servers/kestrel)不支援 Windows 驗證，但是您可以使用[HTTP.sys](xref:fundamentals/servers/httpsys)。
 
 加入驗證服務所叫用<xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*>(<xref:Microsoft.AspNetCore.Server.HttpSys?displayProperty=fullName>命名空間) 中`Startup.ConfigureServices`:
 

@@ -49,9 +49,9 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 ## <a name="cache-guidelines"></a>快取指引
 
-* 程式碼，應一律具有擷取資料的後援選項及**不**取決於快取的值，可供使用。
+* 程式碼應該一律要有可用於擷取資料的後援選項，而**不**應該依賴快取的值。
 * 快取佔用很少的資源時，記憶體。 限制快取增長：
-  * 請勿**不**外部輸入做為快取索引鍵。
+  * 請**勿**使用外部輸入作為快取索引鍵。
   * 您可以使用到期時間，限制快取成長。
   * [使用來限制快取大小的 SetSize、 大小和 SizeLimit](#use-setsize-size-and-sizelimit-to-limit-cache-size)。 ASP.NET Core 執行階段不會限制記憶體不足的壓力所根據的快取大小。 它是由開發人員快取大小限制時。
 
@@ -124,7 +124,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制。 因為快取有沒有機制可測量的項目大小，則記憶體大小限制並沒有定義的測量單位。 如果設定的快取記憶體大小限制，所有項目必須指定大小。 ASP.NET Core 執行階段不會限制記憶體不足的壓力所根據的快取大小。 它是由開發人員快取大小限制時。 指定的大小是以開發人員選擇的單位。
 
-例如: 
+例如:
 
 * 如果 web 應用程式的主要快取字串，每個快取項目大小可能是字串的長度。
 * 應用程式可以指定成 1 的所有項目的大小和大小上限是項目計數。
@@ -153,7 +153,7 @@ A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例示範如何過期的快取項目，如果相依項目到期。 A`CancellationChangeToken`新增至快取的項目。 當`Cancel`上呼叫`CancellationTokenSource`，收回這兩個快取項目。
+下列範例示範如何在相依項目過期時將快取項目設定為過期。 `CancellationChangeToken` 會新增至快取的項目。 當在 `CancellationTokenSource` 上呼叫 `Cancel` 時，會撤出兩個快取項目。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 

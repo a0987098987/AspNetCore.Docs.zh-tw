@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/04/2019
 uid: web-api/action-return-types
-ms.openlocfilehash: 180d76c2c2e53dbf64b8fcc5cdc6d2b6f4dab6eb
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: b89ead55cd46ef62a3bc28b1cfc9077d3ce9aba2
+ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887113"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66470404"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的控制器動作傳回型別
 
@@ -106,7 +106,7 @@ public ActionResult<IEnumerable<Product>> Get()
 
 請考慮有兩個可能傳回型別的同步動作：
 
-[!code-csharp[](../web-api/action-return-types/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_GetById&highlight=8,11)]
+[!code-csharp[](../web-api/action-return-types/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_GetById&highlight=7,10)]
 
 在上述程式碼中，當資料庫中無產品時，會傳回 404 狀態碼。 如果產品不存在，就會傳回對應的 `Product` 物件。 ASP.NET Core 2.1 前的 `return product;` 行可能是 `return Ok(product);`。
 

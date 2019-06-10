@@ -153,7 +153,7 @@ A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例示範如何在相依項目過期時將快取項目設定為過期。 `CancellationChangeToken` 會新增至快取的項目。 當在 `CancellationTokenSource` 上呼叫 `Cancel` 時，會撤出兩個快取項目。
+下列範例示範如何在相依項目過期時將快取項目設定為過期。`CancellationChangeToken` 會新增至快取的項目。當在 `CancellationTokenSource` 上呼叫 `Cancel` 時，會撤出兩個快取項目。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 

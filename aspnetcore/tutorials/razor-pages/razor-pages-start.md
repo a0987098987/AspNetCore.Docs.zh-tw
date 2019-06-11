@@ -3,14 +3,14 @@ title: 教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 author: rick-anderson
 description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中的 Razor Pages。 了解如何建立模型、產生 Razor Pages 的程式碼、使用 Entity Framework Core 和 SQL Server 進行資料存取、新增搜尋功能、新增輸入驗證以及使用移轉來更新模型。
 ms.author: riande
-ms.date: 05/30/2019
+ms.date: 6/3/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: e9f11f68aa138ab74a0ffbbd0e32067bc984606d
-ms.sourcegitcommit: 9ae1fd11f39b0a72b2ae42f0b450345e6e306bc0
+ms.openlocfilehash: d843e47ccb5180fab34b4c4c4a4b5cbda21289bf
+ms.sourcegitcommit: a1364109d11d414121a6337b611bee61d6e489e9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66415671"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66491215"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
@@ -43,13 +43,17 @@ ms.locfileid: "66415671"
 
 * 從 Visual Studio 的 [檔案]  功能表中，選取 [新增]   > [專案]  。
 
-* 建立新的 ASP.NET Core Web 應用程式。 將專案命名為 **RazorPagesMovie**。 請務必將專案命名為 *RazorPagesMovie*，以便在您複製並貼上程式碼時，名稱空間會相符。
+* 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]  。
 
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2.1.png)
 
-* 在下拉式清單中選取 [ASP.NET Core 2.2]  ，然後選取 [Web 應用程式]  。
+* 將專案命名為 **RazorPagesMovie**。 請務必將專案命名為 *RazorPagesMovie*，以便在您複製並貼上程式碼時，名稱空間會相符。
 
-  ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2_2.2.png)
+  ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/config.png)
+
+* 在下拉式清單中選取 [ASP.NET Core 2.2]  ，然後選取 [Web 應用程式]  及 [建立]  。
+
+![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2_2.2.png)
 
   下列起始專案會隨即建立：
 
@@ -71,7 +75,7 @@ ms.locfileid: "66415671"
   * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問「'RazorPagesMovie' 中遺漏了建置和偵錯的必要資產。  新增它們嗎？」 選取 [是]  。
+* 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問「'RazorPagesMovie' 中遺漏了建置和偵錯的必要資產。**新增它們嗎？** 選取 [是]  。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 

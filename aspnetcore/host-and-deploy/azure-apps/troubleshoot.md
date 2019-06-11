@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 36c2bdfa585a0fd54ca93bf4c0edb4cf6f7d934a
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 7a0bb7df27ebbea0eac79771452295846fad563a
+ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886903"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66470450"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>針對 Azure App Service 上的 ASP.NET Core 進行疑難排解
 
@@ -27,7 +27,7 @@ ms.locfileid: "64886903"
 
 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)嘗試啟動背景工作處理序，但無法啟動。 檢查「應用程式事件記錄檔」通常有助於針對這類問題進行疑難排解。 [應用程式事件記錄檔](#application-event-log)一節說明了如何存取此記錄檔。
 
-當設定錯誤的應用程式造成背景工作處理序發生失敗時，會傳回 [502.5 處理序失敗] 錯誤頁面：
+當設定錯誤的應用程式造成背景工作處理序發生失敗時，會傳回 [502.5 處理序失敗]  錯誤頁面：
 
 ![顯示 [502.5 處理序失敗] 頁面的瀏覽器視窗](troubleshoot/_static/process-failure-page.png)
 
@@ -35,11 +35,104 @@ ms.locfileid: "64886903"
 
 應用程式啟動，但有錯誤導致伺服器無法完成要求。
 
-此錯誤是在啟動或建立回應時，在應用程式的程式碼內發生。 回應可能未包含任何內容，或是回應可能在瀏覽器中以「500 內部伺服器錯誤」的形式出現。 「應用程式事件記錄檔」通常會指出該應用程式已正常啟動。 從伺服器的觀點來看，這是正確的。 應用程式已啟動，但無法產生有效的回應。 請[在 Kudu 主控台中執行應用程式](#run-the-app-in-the-kudu-console)或[啟用 ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)，以針對問題進行疑難排解。
+此錯誤是在啟動或建立回應時，在應用程式的程式碼內發生。 回應可能未包含任何內容，或是回應可能在瀏覽器中以「500 內部伺服器錯誤」  的形式出現。 「應用程式事件記錄檔」通常會指出該應用程式已正常啟動。 從伺服器的觀點來看，這是正確的。 應用程式已啟動，但無法產生有效的回應。 請[在 Kudu 主控台中執行應用程式](#run-the-app-in-the-kudu-console)或[啟用 ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)，以針對問題進行疑難排解。
+
+::: moniker range="= aspnetcore-2.2"
+
+### <a name="50030-in-process-startup-failure"></a>500.30 同處理序啟動失敗
+
+背景工作處理序失敗。 應用程式未啟動。
+
+ASP.NET Core 模組嘗試啟動 .NET Core CLR 同處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="50031-ancm-failed-to-find-native-dependencies"></a>500.31 ANCM 找不到原生相依性
+
+背景工作處理序失敗。 應用程式未啟動。
+
+ASP.NET Core 模組嘗試啟動 .NET Core 執行階段同處理序，但無法啟動。 此啟動失敗的最常見原因是當 `Microsoft.NETCore.App` 或 `Microsoft.AspNetCore.App` 執行階段未安裝時。 如果應用程式部署至目標 ASP.NET Core 3.0，但電腦上無該版本，就會發生此錯誤。 範例錯誤訊息如下：
+
+```
+The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
+  - The following frameworks were found:
+      2.2.1 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview5-27626-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27713-13 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27714-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27723-08 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+```
+
+錯誤訊息會列出所有已安裝 .NET Core 版本和應用程式所要求的版本。 若要修正此錯誤，請使用以下其中一種方法：
+
+* 在電腦上安裝適當的 .NET Core 版本。
+* 將應用程式的目標 .NET Core 版本變更為電腦上版本。
+* 將應用程式發佈為[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)。
+
+在開發過程中執行時 (`ASPNETCORE_ENVIRONMENT` 環境變數設定為 `Development`)，特定的錯誤會寫入至 HTTP 回應。 處理序啟動失敗的原因也會列在[應用程式事件記錄檔](#application-event-log)中。
+
+### <a name="50032-ancm-failed-to-load-dll"></a>500.32 ANCM 無法載入 dll
+
+背景工作處理序失敗。 應用程式未啟動。
+
+此錯誤最常見原因是針對不相容的處理器架構發佈應用程式。 如果背景工作處理序執行為 32 位元應用程式，而此應用程式已發佈至目標 64 位元，就會發生此錯誤。
+
+若要修正此錯誤，請使用以下其中一種方法：
+
+* 針對相同的處理器架構，將應用程式重新發佈為背景工作處理序。
+* 將應用程式發佈為[架構相依部署](/dotnet/core/deploying/#framework-dependent-executables-fde)。
+
+### <a name="50033-ancm-request-handler-load-failure"></a>500.33 ANCM 要求處理常式載入失敗
+
+背景工作處理序失敗。 應用程式未啟動。
+
+應用程式未參考 `Microsoft.AspNetCore.App` 架構。 ASP.NET Core 模組只裝載以 `Microsoft.AspNetCore.App` 架構為目標的應用程式。
+
+若要修正這個錯誤，請確認應用程式以 `Microsoft.AspNetCore.App` 架構為目標。 檢查 `.runtimeconfig.json` 以驗證應用程式是否以該架構為目標。
+
+### <a name="50034-ancm-mixed-hosting-models-not-supported"></a>500.34 ANCM 不支援混合式裝載模型
+
+背景工作處理序無法在相同的程序中執行同處理序應用程式和跨處理序應用程式。
+
+若要修正這個錯誤，請在不同的 IIS 應用程式集區中執行應用程式。
+
+### <a name="50035-ancm-multiple-in-process-applications-in-same-process"></a>500.35 ANCM 同一程序中有多個同處理序應用程式
+
+背景工作處理序無法在相同的程序中執行同處理序應用程式和跨處理序應用程式。
+
+若要修正這個錯誤，請在不同的 IIS 應用程式集區中執行應用程式。
+
+### <a name="50036-ancm-out-of-process-handler-load-failure"></a>500.36 ANCM 跨處理序處理常式載入失敗
+
+跨處理序要求處理常式 *aspnetcorev2_outofprocess.dll* 不在 *aspnetcorev2.dll* 檔案旁邊。 這表示 ASP.NET Core 模組安裝損毀。
+
+若要修正這個錯誤，請修復 [.NET Core 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle) (適用於 IIS) 或 Visual Studio (適用於 IIS Express) 安裝。
+
+### <a name="50037-ancm-failed-to-start-within-startup-time-limit"></a>500.37 ANCM 無法在啟動時間限制內啟動
+
+ANCM 無法在提供的啟動時間限制內啟動。 根據預設，逾時值為 120 秒。
+
+在同一部電腦上啟動大量的應用程式時，就會發生此錯誤。 檢查伺服器在啟動期間是否出現 CPU/記憶體的使用量尖峰。 多個應用程式的啟動程序可能需要交錯進行。
+
+### <a name="50030-in-process-startup-failure"></a>500.30 同處理序啟動失敗
+
+背景工作處理序失敗。 應用程式未啟動。
+
+ASP.NET Core 模組嘗試啟動 .NET Core 執行階段同處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。
+
+### <a name="5000-in-process-handler-load-failure"></a>500.0 同處理序處理常式載入失敗
+
+背景工作處理序失敗。 應用程式未啟動。
+
+處理序啟動失敗的原因也會列在[應用程式事件記錄檔](#application-event-log)中。
+
+::: moniker-end
 
 **連線重設**
 
-如果是在傳送標頭之後才發生錯誤，則當發生錯誤時，伺服器已來不及傳送「500 內部伺服器錯誤」。 通常是在將回應的複雜物件序列化的期間發生錯誤時，會發生此錯誤。 這類錯誤會在用戶端上顯示為「連線重設」錯誤。 [應用程式記錄](xref:fundamentals/logging/index)可協助針對這些類型的錯誤進行疑難排解。
+如果是在傳送標頭之後才發生錯誤，則當發生錯誤時，伺服器已來不及傳送「500 內部伺服器錯誤」  。 通常是在將回應的複雜物件序列化的期間發生錯誤時，會發生此錯誤。 這類錯誤會在用戶端上顯示為「連線重設」  錯誤。 [應用程式記錄](xref:fundamentals/logging/index)可協助針對這些類型的錯誤進行疑難排解。
 
 ## <a name="default-startup-limits"></a>預設啟動限制
 
@@ -49,19 +142,19 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 ### <a name="application-event-log"></a>應用程式事件記錄檔
 
-若要存取「應用程式事件記錄檔」，請使用 Azure 入口網站中的 [診斷並解決問題] 刀鋒視窗：
+若要存取「應用程式事件記錄檔」，請使用 Azure 入口網站中的 [診斷並解決問題]  刀鋒視窗：
 
-1. 在 Azure 入口網站的 [應用程式服務] 中，開啟應用程式。
-1. 選取 [診斷並解決問題]。
-1. 選取 [診斷工具] 標題。
-1. 在 [支援工具] 下，選取 [應用程式事件] 按鈕。
-1. 檢查 [來源] 資料行中 *IIS AspNetCoreModule* 或 *IIS AspNetCoreModule V2* 項目所提供的最新錯誤。
+1. 在 Azure 入口網站的 [應用程式服務]  中，開啟應用程式。
+1. 選取 [診斷並解決問題]  。
+1. 選取 [診斷工具]  標題。
+1. 在 [支援工具]  下，選取 [應用程式事件]  按鈕。
+1. 檢查 [來源]  資料行中 *IIS AspNetCoreModule* 或 *IIS AspNetCoreModule V2* 項目所提供的最新錯誤。
 
-除了使用 [診斷並解決問題] 刀鋒視窗之外，也可以使用 [Kudu](https://github.com/projectkudu/kudu/wiki) 來直接檢查「應用程式事件記錄檔」：
+除了使用 [診斷並解決問題]  刀鋒視窗之外，也可以使用 [Kudu](https://github.com/projectkudu/kudu/wiki) 來直接檢查「應用程式事件記錄檔」：
 
-1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
-1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
-1. 開啟 [LogFiles] 資料夾。
+1. 在 [開發工具]  區域中，開啟 [進階工具]  。 選取 [執行&rarr;]  按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]  ，然後選取 [CMD]  。
+1. 開啟 [LogFiles]  資料夾。
 1. 選取 *eventlog.xml* 檔案旁邊的鉛筆圖示。
 1. 檢查記錄檔。 捲動至記錄檔的底部以查看最新事件。
 
@@ -69,8 +162,8 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 許多啟動錯誤不會在「應用程式事件記錄檔」中產生實用的資訊。 您可以在 [Kudu](https://github.com/projectkudu/kudu/wiki)「遠端執行主控台」中執行應用程式來探索錯誤：
 
-1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
-1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
+1. 在 [開發工具]  區域中，開啟 [進階工具]  。 選取 [執行&rarr;]  按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]  ，然後選取 [CMD]  。
 
 #### <a name="test-a-32-bit-x86-app"></a>測試 32 位元 (x86) 應用程式
 
@@ -127,25 +220,25 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄檔」中所沒有的實用訊息。 啟用及檢視 stdout 記錄檔：
 
-1. 在 Azure 入口網站中，瀏覽至 [診斷並解決問題] 刀鋒視窗。
-1. 在 [選取問題類別] 底下，選取 [Web 應用程式停止運作] 按鈕。
-1. 在 [建議的解決方案] > [啟用 Stdout 記錄檔重新導向] 底下，選取用來**開啟 Kudu 主控台以編輯 Web.Config** 的按鈕。
-1. 在 Kudu [診斷主控台] 中，將資料夾開啟至路徑 [site] > [wwwroot]。 向下捲動以顯露位於清單底部的 *web.config* 檔案。
+1. 在 Azure 入口網站中，瀏覽至 [診斷並解決問題]  刀鋒視窗。
+1. 在 [選取問題類別]  底下，選取 [Web 應用程式停止運作]  按鈕。
+1. 在 [建議的解決方案]   > [啟用 Stdout 記錄檔重新導向]  底下，選取用來**開啟 Kudu 主控台以編輯 Web.Config** 的按鈕。
+1. 在 Kudu [診斷主控台]  中，將資料夾開啟至路徑 [site]   > [wwwroot]  。 向下捲動以顯露位於清單底部的 *web.config* 檔案。
 1. 按一下 *web.config* 檔案旁邊的鉛筆圖示。
 1. 將 **stdoutLogEnabled** 設定為 `true`，並將 **stdoutLogFile** 路徑變更為：`\\?\%home%\LogFiles\stdout`。
-1. 選取 [儲存] 以儲存已更新的 *web.config* 檔案。
+1. 選取 [儲存]  以儲存已更新的 *web.config* 檔案。
 1. 對應用程式發出要求。
-1. 返回 Azure 入口網站。 選取 [開發工具] 區域中的 [進階工具] 刀鋒視窗。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
-1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
-1. 選取 [LogFiles] 資料夾。
-1. 檢查 [修改時間] 資料行，然後選取鉛筆圖示來編輯修改日期最新的 stdout 記錄檔。
+1. 返回 Azure 入口網站。 選取 [開發工具]  區域中的 [進階工具]  刀鋒視窗。 選取 [執行&rarr;]  按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]  ，然後選取 [CMD]  。
+1. 選取 [LogFiles]  資料夾。
+1. 檢查 [修改時間]  資料行，然後選取鉛筆圖示來編輯修改日期最新的 stdout 記錄檔。
 1. 當記錄檔開啟時，會顯示錯誤。
 
 完成疑難排解時，請停用 stdout 記錄：
 
-1. 在 Kudu [診斷主控台] 中，返回路徑 [site] > [wwwroot] 以顯露 *web.config* 檔案。 再次選取鉛筆圖示來開啟 **web.config** 檔案。
+1. 在 Kudu [診斷主控台]  中，返回路徑 [site]   > [wwwroot]  以顯露 *web.config* 檔案。 再次選取鉛筆圖示來開啟 **web.config** 檔案。
 1. 將 **stdoutLogEnabled** 設定為 `false`。
-1. 選取 [儲存] 以儲存檔案。
+1. 選取 [儲存]  以儲存檔案。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用 stdout 記錄。
@@ -161,12 +254,12 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 若要啟用增強型診斷記錄，請執行下列任一動作：
    * 遵循[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中的指示，來設定應用程式進行增強型診斷記錄。 重新部署應用程式。
    * 使用 Kudu 主控台，將[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所顯示的 `<handlerSettings>` 新增至即時應用程式的 *web.config* 檔案：
-     1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
-     1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
-     1. 將資料夾開啟至路徑 [site] > [wwwroot]。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存] 按鈕。
-1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
-1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
-1. 將資料夾開啟至路徑 [site] > [wwwroot]。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
+     1. 在 [開發工具]  區域中，開啟 [進階工具]  。 選取 [執行&rarr;]  按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+     1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]  ，然後選取 [CMD]  。
+     1. 將資料夾開啟至路徑 [site]   > [wwwroot]  。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]  按鈕。
+1. 在 [開發工具]  區域中，開啟 [進階工具]  。 選取 [執行&rarr;]  按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]  ，然後選取 [CMD]  。
+1. 將資料夾開啟至路徑 [site]   > [wwwroot]  。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
 1. 使用檔案名稱旁的鉛筆圖示來開啟記錄檔。
 
 完成疑難排解時，請停用偵錯記錄：
@@ -210,29 +303,29 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 請確認已安裝 ASP.NET Core 延伸模組。 如果未安裝這些延伸模組，請手動安裝：
 
-1. 在 [開發工具] 刀鋒視窗區段中，選取 [延伸模組] 刀鋒視窗。
-1. [ASP.NET Core 延伸模組] 應該會出現在清單中。
-1. 如果未安裝這些延伸模組，請選取 [新增] 按鈕。
-1. 從清單中選擇 [ASP.NET Core 延伸模組]。
-1. 選取 [確定] 以接受法律條款。
-1. 在 [新增延伸模組] 刀鋒視窗上，選取 [確定]。
+1. 在 [開發工具]  刀鋒視窗區段中，選取 [延伸模組]  刀鋒視窗。
+1. [ASP.NET Core 延伸模組]  應該會出現在清單中。
+1. 如果未安裝這些延伸模組，請選取 [新增]  按鈕。
+1. 從清單中選擇 [ASP.NET Core 延伸模組]  。
+1. 選取 [確定]  以接受法律條款。
+1. 在 [新增延伸模組]  刀鋒視窗上，選取 [確定]  。
 1. 成功安裝延伸模組時，會有資訊快顯訊息提供指示。
 
 如果未啟用 stdout 記錄，請依照下列步驟進行操作：
 
-1. 在 Azure 入口網站中，選取 [開發工具] 區域中的 [進階工具] 刀鋒視窗。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
-1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
-1. 將資料夾開啟至路徑 [site] > [wwwroot]，然後向下捲動以顯露位於清單底部的 *web.config* 檔案。
+1. 在 Azure 入口網站中，選取 [開發工具]  區域中的 [進階工具]  刀鋒視窗。 選取 [執行&rarr;]  按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]  ，然後選取 [CMD]  。
+1. 將資料夾開啟至路徑 [site]   > [wwwroot]  ，然後向下捲動以顯露位於清單底部的 *web.config* 檔案。
 1. 按一下 *web.config* 檔案旁邊的鉛筆圖示。
 1. 將 **stdoutLogEnabled** 設定為 `true`，並將 **stdoutLogFile** 路徑變更為：`\\?\%home%\LogFiles\stdout`。
-1. 選取 [儲存] 以儲存已更新的 *web.config* 檔案。
+1. 選取 [儲存]  以儲存已更新的 *web.config* 檔案。
 
 繼續接著啟用診斷記錄：
 
-1. 在 Azure 入口網站中，選取 [診斷記錄檔] 刀鋒視窗。
-1. 選取 [應用程式記錄 (檔案系統)] 和 [詳細錯誤訊息].的 [開啟] 開關。 選取刀鋒視窗頂端的 [儲存] 按鈕。
-1. 若要包含失敗要求追蹤 (也稱為「失敗要求事件緩衝處理」(FREB) 記錄)，請選取 [失敗要求的追蹤] 的 [開啟] 開關。
-1. 選取 [記錄資料流] 刀鋒視窗 (列在入口網站中緊接在 [診斷記錄檔] 刀鋒視窗之下)。
+1. 在 Azure 入口網站中，選取 [診斷記錄檔]  刀鋒視窗。
+1. 選取 [應用程式記錄 (檔案系統)]  和 [詳細錯誤訊息]  .的 [開啟]  開關。 選取刀鋒視窗頂端的 [儲存]  按鈕。
+1. 若要包含失敗要求追蹤 (也稱為「失敗要求事件緩衝處理」(FREB) 記錄)，請選取 [失敗要求的追蹤]  的 [開啟]  開關。
+1. 選取 [記錄資料流]  刀鋒視窗 (列在入口網站中緊接在 [診斷記錄檔]  刀鋒視窗之下)。
 1. 對應用程式發出要求。
 1. 在記錄資料流資料內，會指出錯誤的原因。
 
@@ -240,8 +333,8 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 檢視失敗要求追蹤記錄檔 (FREB 記錄檔)：
 
-1. 在 Azure 入口網站中，瀏覽至 [診斷並解決問題] 刀鋒視窗。
-1. 從資訊看板的 [支援工具] 區域中，選取 [失敗要求追蹤記錄檔]。
+1. 在 Azure 入口網站中，瀏覽至 [診斷並解決問題]  刀鋒視窗。
+1. 從資訊看板的 [支援工具]  區域中，選取 [失敗要求追蹤記錄檔]  。
 
 如需詳細資訊，請參閱[＜在 Azure App Service 中針對 Web 應用程式啟用診斷記錄功能＞主題的＜失敗要求追蹤＞一節](/azure/app-service/web-sites-enable-diagnostic-log#failed-request-traces)和 [Azure Web 應用程式的應用程式效能常見問題集：如何開啟失敗要求追蹤](/azure/app-service/app-service-web-availability-performance-application-issues-faq#how-do-i-turn-on-failed-request-tracing)。
 

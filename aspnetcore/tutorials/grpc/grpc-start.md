@@ -4,14 +4,14 @@ author: juntaoluo
 description: 此教學課程會示範如何在 ASP.NET Core 上，建立 gRPC 服務與 gRPC 用戶端。 了解如何建立 gRPC 服務專案、編輯通訊協定檔案，以及新增雙工資料流呼叫。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 5/30/2019
+ms.date: 06/05/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 2b4325d2413e335a3061a7695def88a1b23ee52b
-ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
+ms.openlocfilehash: 71e3321819eb7169f0896abe3e07849f59ea6fc7
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66376376"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692526"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端與伺服器
 
@@ -161,7 +161,7 @@ code -r GrpcGreeterClient
 
 使用套件管理員主控台 (PMC) 或 管理 NuGet 套件來安裝套件
 
-####  <a name="pmc-option-to-install-packages"></a>安裝套件的 PMC 選項
+#### <a name="pmc-option-to-install-packages"></a>安裝套件的 PMC 選項
 
 * 從 Visual Studio 選取 [工具]   > [NuGet 套件管理員]   > [套件管理員主控台] 
 * 從 [套件管理員主控台]  視窗巡覽至 *GrpcGreeterClient.csproj* 檔案所在的目錄。
@@ -169,7 +169,7 @@ code -r GrpcGreeterClient
 
  ```powershell
 Install-Package Grpc.Core
-Install-Package Grpc.Protobuf
+Install-Package Google.Protobuf
 Install-Package Grpc.Tools
 ```
 
@@ -218,7 +218,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
   以滑鼠右鍵按一下專案，然後選取 [工具] > [編輯檔案]  。
 
-  ------
+  ---
 
 * 將 **greet.proto** 檔案新增至 GrpcGreeterClient 專案檔的 `<Protobuf>` 項目群組：
 
@@ -230,7 +230,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
 建置用戶端專案以觸發 C# 用戶端資產的產生。
 
-### <a name="create-the-greater-client"></a>建立更大的用戶端
+### <a name="create-the-greeter-client"></a>建立 Greeter 用戶端
 
 建置專案，以在 [Greeter] 命名空間中建立類型  。 `Greeter` 類型會自動由建置處理序產生。
 
@@ -240,14 +240,14 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
 *Program.cs* 包含 gRPC 用戶端的進入點和邏輯。
 
-以下項目會建立更大的用戶端：
+Greeter 用戶端建立者：
 
 * 具現化包含建立與 gRPC 服務連線資訊的 `Channel`。
-* 使用 `Channel` 建構更大的用戶端：
+* 使用 `Channel` 建構 Greeter 用戶端：
 
 [!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=4-6)]
 
-更大的用戶端會呼叫非同步 `SayHello` 方法。 顯示 `SayHello` 呼叫的結果：
+Greeter 用戶端會呼叫非同步的 `SayHello` 方法。 顯示 `SayHello` 呼叫的結果：
 
 [!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=7-9)]
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/07/2018
+ms.date: 05/31/2019
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 17ce0c111daabe2c7bbf4795b658856568c85158
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 8430f8e720870a7b541655ea8bcfe2f67c942bb3
+ms.sourcegitcommit: c5339594101d30b189f61761275b7d310e80d18a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886173"
+ms.lasthandoff: 06/02/2019
+ms.locfileid: "66458422"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 並行 - 8/8
 
@@ -39,15 +39,15 @@ ms.locfileid: "64886173"
 
 ![將預算變更為 0](concurrency/_static/change-budget.png)
 
-在 Jane 按一下 [儲存] 前，John 造訪了相同的頁面並將 [開始日期] 欄位從 2007/9/1 變更為 2013/9/1。
+在 Jane 按一下 [儲存]  前，John 造訪了相同的頁面並將 [開始日期] 欄位從 2007/9/1 變更為 2013/9/1。
 
 ![將開始日期變更為 2013 年](concurrency/_static/change-date.png)
 
-Jane 先按了一下 [儲存]，並且在瀏覽器顯示 [索引] 頁面時看到她作出的變更。
+Jane 先按了一下 [儲存]  ，並且在瀏覽器顯示 [索引] 頁面時看到她作出的變更。
 
 ![預算已變更為 0](concurrency/_static/budget-zero.png)
 
-John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 [儲存]。 接下來發生的情況便是由您處理並行衝突的方式決定。
+John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 [儲存]  。 接下來發生的情況便是由您處理並行衝突的方式決定。
 
 開放式並行存取包含下列選項：
 
@@ -61,7 +61,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 * 您可以讓 John 的變更覆寫 Jane 的變更。
 
-  下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」或「最後寫入為準 (Last in Wins)」案例。 (所有來自用戶端的值都會優先於資料存放區中的資料。)若您沒有針對並行處理撰寫任何程式碼，便會自動發生「用戶端獲勝 (Client Wins)」的情況。
+  下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」  或「最後寫入為準 (Last in Wins)」  案例。 (所有來自用戶端的值都會優先於資料存放區中的資料。)若您沒有針對並行處理撰寫任何程式碼，便會自動發生「用戶端獲勝 (Client Wins)」的情況。
 
 * 您可以防止 John 的變更更新到資料庫中。 一般而言，應用程式會：
 
@@ -69,7 +69,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
   * 顯示資料的目前狀態。
   * 允許使用者重新套用變更。
 
-  這稱之為「存放區獲勝 (Store Wins)」案例。 (資料存放區的值會優先於用戶端所提交的值。)您會在此教學課程中實作存放區獲勝案例。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
+  這稱之為「存放區獲勝 (Store Wins)」  案例。 (資料存放區的值會優先於用戶端所提交的值。)您會在此教學課程中實作存放區獲勝案例。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
 
 ## <a name="handling-concurrency"></a>處理並行 
 
@@ -189,7 +189,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 ### <a name="update-the-edit-page-model"></a>更新 [編輯] 頁面模型
 
-使用下列程式碼更新 *pages\departments\edit.cshtml.cs*：
+使用下列程式碼更新 *Pages\Departments\Edit.cshtml.cs*：
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet)]
 
@@ -207,7 +207,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_err)]
 
-下列醒目提示程式碼會將 `RowVersion` 的值設為從資料庫取得的新值。 下一次當使用者按一下 [儲存] 時，只有在上一次顯示 [編輯] 頁面之後發生的並行錯誤會被捕捉到。
+下列醒目提示程式碼會將 `RowVersion` 的值設為從資料庫取得的新值。 下一次當使用者按一下 [儲存]  時，只有在上一次顯示 [編輯] 頁面之後發生的並行錯誤會被捕捉到。
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=23)]
 
@@ -231,12 +231,12 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 開啟兩個英文部門上 [編輯] 頁面的瀏覽器執行個體：
 
 * 執行應用程式並選取 Departments。
-* 以滑鼠右鍵按一下英文部門的**編輯**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)。
+* 以滑鼠右鍵按一下英文部門的**編輯**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)  。
 * 在第一個索引標籤中，按一下英文部門的**編輯**超連結。
 
 兩個瀏覽器索引標籤會顯示相同的資訊。
 
-在第一個瀏覽器索引標籤中變更名稱，然後按一下 [儲存]。
+在第一個瀏覽器索引標籤中變更名稱，然後按一下 [儲存]  。
 
 ![變更之後的 Department [編輯] 頁面 1](concurrency/_static/edit-after-change-1.png)
 
@@ -246,7 +246,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 ![變更之後的 Department [編輯] 頁面 2](concurrency/_static/edit-after-change-2.png)
 
-按一下 [儲存] 。 您會看到所有不符合資料庫值之欄位的錯誤訊息：
+按一下 [儲存]  。 您會看到所有不符合資料庫值之欄位的錯誤訊息：
 
 ![Department [編輯] 頁面錯誤訊息](concurrency/_static/edit-error.png)
 
@@ -254,7 +254,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 ![Department [編輯] 頁面錯誤訊息](concurrency/_static/cv.png)
 
-再按一下 [儲存]。 您在第二個瀏覽器索引標籤中輸入的值已儲存。 您會在 [索引] 頁面中看到儲存的值。
+再按一下 [儲存]  。 您在第二個瀏覽器索引標籤中輸入的值已儲存。 您會在 [索引] 頁面中看到儲存的值。
 
 ## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
 
@@ -278,7 +278,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 * 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int}"`。
 * 新增錯誤訊息。
-* 在 [系統管理員] 欄位中將 FirstMidName 取代為 FullName。
+* 在 [系統管理員]  欄位中將 FirstMidName 取代為 FullName。
 * 變更 `RowVersion` 以顯示最後一個位元組。
 * 新增一個隱藏的資料列版本。 您必須新增 `RowVersion`，以讓回傳繫結值。
 
@@ -289,16 +289,16 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 開啟兩個測試部門上 [刪除] 頁面的瀏覽器執行個體：
 
 * 執行應用程式並選取 Departments。
-* 以滑鼠右鍵按一下測試部門的**刪除**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)。
+* 以滑鼠右鍵按一下測試部門的**刪除**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)  。
 * 按一下測試部門的**編輯**超連結。
 
 兩個瀏覽器索引標籤會顯示相同的資訊。
 
-在第一個瀏覽器索引標籤中變更預算，然後按一下 [儲存]。
+在第一個瀏覽器索引標籤中變更預算，然後按一下 [儲存]  。
 
 瀏覽器會顯示 [索引] 頁面，當中包含了變更之後的值和更新後的 rowVersion 指標。 請注意更新後的 rowVersion 指標。它會顯示在另一個索引標籤中的第二個回傳上。
 
-從第二個索引標籤刪除測試部門。系統會使用從資料庫取得之目前的值顯示並行錯誤。 按一下 [刪除] 會刪除實體，除非 `RowVersion` 已更新。部門已刪除。
+從第二個索引標籤刪除測試部門。系統會使用從資料庫取得之目前的值顯示並行錯誤。 按一下 [刪除]  會刪除實體，除非 `RowVersion` 已更新。部門已刪除。
 
 請參閱[繼承](xref:data/ef-mvc/inheritance)以了解如何繼承資料模型。
 

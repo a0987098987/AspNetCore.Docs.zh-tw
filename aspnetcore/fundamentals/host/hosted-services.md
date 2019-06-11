@@ -5,20 +5,20 @@ description: 了解如何在 ASP.NET Core 中使用託管服務實作背景工�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/25/2019
+ms.date: 06/03/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 613227cdead1d0b62a0dead2fca9fab68fd534cc
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 2dbb1a84a380ab06a4be7ecf628799a070afc9e3
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889003"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692510"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-在 ASP.NET Core 中，背景工作可實作為「託管服務」。 託管服務是具有背景工作邏輯的類別，可實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。 本主題提供三個託管服務範例：
+在 ASP.NET Core 中，背景工作可實作為「託管服務」  。 託管服務是具有背景工作邏輯的類別，可實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。 本主題提供三個託管服務範例：
 
 * 在計時器上執行的背景工作。
 * 啟動[具範圍服務](xref:fundamentals/dependency-injection#service-lifetimes)的託管服務。 範圍服務可以使用相依性插入。
@@ -30,6 +30,32 @@ ms.locfileid: "64889003"
 
 * Web 主機 &ndash; Web 主機對於裝載 Web 應用程式非常有用。 本主題中顯示的範例程式碼是來自 Web 主機版本的範例。 如需詳細資訊，請參閱 [Web 主機](xref:fundamentals/host/web-host)主題。
 * 泛型主機 &ndash; 泛型主機是 ASP.NET Core 2.1 的新功能。 如需詳細資訊，請參閱[泛型主機](xref:fundamentals/host/generic-host)主題。
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="worker-service-template"></a>背景工作服務範本
+
+ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式的起點。 使用範本作為裝載服務應用程式的基礎：
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+1. 建立新的專案。
+1. 選取 [ASP.NET Core Web 應用程式]  。 選取 [下一步]  。
+1. 在 [專案名稱]  欄位中提供專案名稱，或接受預設專案名稱。 選取 [建立]  。
+1. 在 [建立新的 ASP.NET Core Web 應用程式]  對話方塊中，確認選取 [.NET Core]  和 [ASP.NET Core 3.0]  。
+1. 選取 [背景工作服務]  範本。 選取 [建立]  。
+
+# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code / .NET Core CLI](#tab/visual-studio-code+netcore-cli)
+
+從命令殼層以 [dotnet new](/dotnet/core/tools/dotnet-new) 命令使用背景工作服務 (`worker`) 範本。 在下列範例中，已建立名為 `ContosoWorkerService` 的背景工作服務應用程式。 當命令執行時，會自動建立 `ContosoWorkerService` 應用程式的資料夾。
+
+```console
+dotnet new worker -o ContosoWorkerService
+```
+
+---
+
+::: moniker-end
 
 ## <a name="package"></a>Package
 
@@ -106,7 +132,7 @@ ms.locfileid: "64889003"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Pages/Index.cshtml.cs?name=snippet1)]
 
-在索引頁面上選取 [新增工作] 按鈕時，就會執行 `OnPostAddTask` 方法。 將會呼叫 `QueueBackgroundWorkItem` 以從佇列清除工作項目：
+在索引頁面上選取 [新增工作]  按鈕時，就會執行 `OnPostAddTask` 方法。 將會呼叫 `QueueBackgroundWorkItem` 以從佇列清除工作項目：
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Pages/Index.cshtml.cs?name=snippet2)]
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/12/2019
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 80994cb84e9e0658ee90198b6bf992e5b374bf3c
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
+ms.openlocfilehash: e4c93459f2030c7c0a55ea90e0cc8c8d30b76c51
+ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65970025"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66470455"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>針對 IIS 上的 ASP.NET Core 進行疑難排解
 
@@ -22,13 +22,13 @@ ms.locfileid: "65970025"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 在本機偵錯時發生的「502.5 - 處理序失敗」或「500.30 - 啟動失敗」可以使用本主題中的建議在該位置進行疑難排解。
+在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 在本機偵錯時發生的「502.5 - 處理序失敗」  或「500.30 - 啟動失敗」  可以使用本主題中的建議在該位置進行疑難排解。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 在本機偵錯時發生的「502.5 處理序失敗」可以使用本主題中的建議來進行疑難排解。
+在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 在本機偵錯時發生的「502.5 處理序失敗」  可以使用本主題中的建議來進行疑難排解。
 
 ::: moniker-end
 
@@ -50,13 +50,13 @@ ms.locfileid: "65970025"
 
 ASP.NET Core 模組嘗試啟動後端 dotnet 處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。
 
-因為目標 ASP.NET Core 共用架構的版本不存在，導致應用程式設定錯誤是常見的失敗狀況。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。 「共用的架構」是一組安裝於電腦上且由 `Microsoft.AspNetCore.App` 之類的中繼套件所參考的組件 (*.dll* 檔案)。 中繼套件參考可以指定最低必要版本。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
+因為目標 ASP.NET Core 共用架構的版本不存在，導致應用程式設定錯誤是常見的失敗狀況。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。 「共用的架構」  是一組安裝於電腦上且由 `Microsoft.AspNetCore.App` 之類的中繼套件所參考的組件 ( *.dll* 檔案)。 中繼套件參考可以指定最低必要版本。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
 
-當裝載或應用程式設定錯誤造成背景工作處理序發生失敗時，會傳回 [502.5 處理序失敗] 錯誤頁面：
+當裝載或應用程式設定錯誤造成背景工作處理序發生失敗時，會傳回 [502.5 處理序失敗]  錯誤頁面：
 
 ![顯示 [502.5 處理序失敗] 頁面的瀏覽器視窗](troubleshoot/_static/process-failure-page.png)
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker range="= aspnetcore-2.2"
 
 ### <a name="50030-in-process-startup-failure"></a>500.30 同處理序啟動失敗
 
@@ -83,11 +83,98 @@ ASP.NET Core 模組找不到跨處理序裝載要求處理常式。 請確定 *a
 
 ::: moniker-end
 
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="50031-ancm-failed-to-find-native-dependencies"></a>500.31 ANCM 找不到原生相依性
+
+背景工作處理序失敗。 應用程式未啟動。
+
+ASP.NET Core 模組嘗試啟動 .NET Core 執行階段同處理序，但無法啟動。 此啟動失敗的最常見原因是當 `Microsoft.NETCore.App` 或 `Microsoft.AspNetCore.App` 執行階段未安裝時。 如果應用程式部署至目標 ASP.NET Core 3.0，但電腦上無該版本，就會發生此錯誤。 範例錯誤訊息如下：
+
+```
+The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
+  - The following frameworks were found:
+      2.2.1 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview5-27626-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27713-13 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27714-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27723-08 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+```
+
+錯誤訊息會列出所有已安裝 .NET Core 版本和應用程式所要求的版本。 若要修正此錯誤，請使用以下其中一種方法：
+
+* 在電腦上安裝適當的 .NET Core 版本。
+* 將應用程式的目標 .NET Core 版本變更為電腦上版本。
+* 將應用程式發佈為[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)。
+
+在開發過程中執行時 (`ASPNETCORE_ENVIRONMENT` 環境變數設定為 `Development`)，特定的錯誤會寫入至 HTTP 回應。 處理序啟動失敗的原因也會列在[應用程式事件記錄檔](#application-event-log)中。
+
+### <a name="50032-ancm-failed-to-load-dll"></a>500.32 ANCM 無法載入 dll
+
+背景工作處理序失敗。 應用程式未啟動。
+
+此錯誤最常見原因是針對不相容的處理器架構發佈應用程式。 如果背景工作處理序執行為 32 位元應用程式，而此應用程式已發佈至目標 64 位元，就會發生此錯誤。
+
+若要修正此錯誤，請使用以下其中一種方法：
+
+* 針對相同的處理器架構，將應用程式重新發佈為背景工作處理序。
+* 將應用程式發佈為[架構相依部署](/dotnet/core/deploying/#framework-dependent-executables-fde)。
+
+### <a name="50033-ancm-request-handler-load-failure"></a>500.33 ANCM 要求處理常式載入失敗
+
+背景工作處理序失敗。 應用程式未啟動。
+
+應用程式未參考 `Microsoft.AspNetCore.App` 架構。 ASP.NET Core 模組只裝載以 `Microsoft.AspNetCore.App` 架構為目標的應用程式。
+
+若要修正這個錯誤，請確認應用程式以 `Microsoft.AspNetCore.App` 架構為目標。 檢查 `.runtimeconfig.json` 以驗證應用程式是否以該架構為目標。
+
+### <a name="50034-ancm-mixed-hosting-models-not-supported"></a>500.34 ANCM 不支援混合式裝載模型
+
+背景工作處理序無法在相同的程序中執行同處理序應用程式和跨處理序應用程式。
+
+若要修正這個錯誤，請在不同的 IIS 應用程式集區中執行應用程式。
+
+### <a name="50035-ancm-multiple-in-process-applications-in-same-process"></a>500.35 ANCM 同一程序中有多個同處理序應用程式
+
+背景工作處理序無法在相同的程序中執行同處理序應用程式和跨處理序應用程式。
+
+若要修正這個錯誤，請在不同的 IIS 應用程式集區中執行應用程式。
+
+### <a name="50036-ancm-out-of-process-handler-load-failure"></a>500.36 ANCM 跨處理序處理常式載入失敗
+
+跨處理序要求處理常式 *aspnetcorev2_outofprocess.dll* 不在 *aspnetcorev2.dll* 檔案旁邊。 這表示 ASP.NET Core 模組安裝損毀。
+
+若要修正這個錯誤，請修復 [.NET Core 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle) (適用於 IIS) 或 Visual Studio (適用於 IIS Express) 安裝。
+
+### <a name="50037-ancm-failed-to-start-within-startup-time-limit"></a>500.37 ANCM 無法在啟動時間限制內啟動
+
+ANCM 無法在提供的啟動時間限制內啟動。 根據預設，逾時值為 120 秒。
+
+在同一部電腦上啟動大量的應用程式時，就會發生此錯誤。 檢查伺服器在啟動期間是否出現 CPU/記憶體的使用量尖峰。 多個應用程式的啟動程序可能需要交錯進行。
+
+### <a name="50030-in-process-startup-failure"></a>500.30 同處理序啟動失敗
+
+背景工作處理序失敗。 應用程式未啟動。
+
+ASP.NET Core 模組嘗試啟動 .NET Core 執行階段同處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。
+
+### <a name="5000-in-process-handler-load-failure"></a>500.0 同處理序處理常式載入失敗
+
+背景工作處理序失敗。 應用程式未啟動。
+
+載入 ASP.NET Core 模組元件時發生未知的錯誤。 採取下列其中一個動作：
+
+* 連絡 [Microsoft 支援服務](https://support.microsoft.com/oas/default.aspx?prid=15832) (依序選取 [開發人員工具]  和 [ASP.NET Core]  )。
+* 在 Stack Overflow 上詢問問題。
+* 在我們的 [GitHub 存放庫](https://github.com/aspnet/AspNetCore)提出問題。
+
+::: moniker-end
+
 ### <a name="500-internal-server-error"></a>500 內部伺服器錯誤
 
 應用程式啟動，但有錯誤導致伺服器無法完成要求。
 
-此錯誤是在啟動或建立回應時，在應用程式的程式碼內發生。 回應可能未包含任何內容，或是回應可能在瀏覽器中以「500 內部伺服器錯誤」的形式出現。 「應用程式事件記錄檔」通常會指出該應用程式已正常啟動。 從伺服器的觀點來看，這是正確的。 應用程式已啟動，但無法產生有效的回應。 請在伺服器上[於命令提示字元中執行應用程式](#run-the-app-at-a-command-prompt)或[啟用 ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)，以針對問題進行疑難排解。
+此錯誤是在啟動或建立回應時，在應用程式的程式碼內發生。 回應可能未包含任何內容，或是回應可能在瀏覽器中以「500 內部伺服器錯誤」  的形式出現。 「應用程式事件記錄檔」通常會指出該應用程式已正常啟動。 從伺服器的觀點來看，這是正確的。 應用程式已啟動，但無法產生有效的回應。 請在伺服器上[於命令提示字元中執行應用程式](#run-the-app-at-a-command-prompt)或[啟用 ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)，以針對問題進行疑難排解。
 
 ### <a name="failed-to-start-application-errorcode-0x800700c1"></a>無法啟動應用程式 (ErrorCode '0x800700c1')
 
@@ -97,21 +184,21 @@ Source: IIS AspNetCore Module V2
 Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 ```
 
-應用程式無法啟動，因為無法載入應用程式的組件 (*.dll*)。
+應用程式無法啟動，因為無法載入應用程式的組件 ( *.dll*)。
 
 當已發行的應用程式與 w3wp/iisexpress 處理序之間出現位元不符的情況時，就會發生此錯誤。
 
 確認應用程式集區的 32 位元設定正確：
 
-1. 在 IIS 管理員的 [應用程式集區] 中，選取應用程式集區。
-1. 在 [動作] 面板中，選取 [編輯應用程式集區] 下的 [進階設定]。
-1. 設定 [啟用 32 位元應用程式]：
+1. 在 IIS 管理員的 [應用程式集區]  中，選取應用程式集區。
+1. 在 [動作]  面板中，選取 [編輯應用程式集區]  下的 [進階設定]  。
+1. 設定 [啟用 32 位元應用程式]  ：
    * 如果部署 32 位元 (x86) 應用程式，請將值設定為 `True`。
    * 如果部署 64 位元 (x64) 應用程式，請將值設定為 `False`。
 
 ### <a name="connection-reset"></a>連線重設
 
-如果是在傳送標頭之後才發生錯誤，則當發生錯誤時，伺服器已來不及傳送「500 內部伺服器錯誤」。 通常是在將回應的複雜物件序列化的期間發生錯誤時，會發生此錯誤。 這類錯誤會在用戶端上顯示為「連線重設」錯誤。 [應用程式記錄](xref:fundamentals/logging/index)可協助針對這些類型的錯誤進行疑難排解。
+如果是在傳送標頭之後才發生錯誤，則當發生錯誤時，伺服器已來不及傳送「500 內部伺服器錯誤」  。 通常是在將回應的複雜物件序列化的期間發生錯誤時，會發生此錯誤。 這類錯誤會在用戶端上顯示為「連線重設」  錯誤。 [應用程式記錄](xref:fundamentals/logging/index)可協助針對這些類型的錯誤進行疑難排解。
 
 ## <a name="default-startup-limits"></a>預設啟動限制
 
@@ -138,10 +225,10 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 存取「應用程式事件記錄檔」：
 
-1. 開啟 [開始] 功能表，搜尋**事件檢視器**，然後選取 [事件檢視器]應用程式。
-1. 在 [事件檢視器] 中，開啟 [Windows 記錄] 節點。
-1. 選取 [應用程式] 以開啟「應用程式事件記錄檔」。
-1. 搜尋與失敗應用程式相關的錯誤。 錯誤在 [來源] 資料行中的值會是 *IIS AspNetCore Module* 或 *IIS Express AspNetCore Module*。
+1. 開啟 [開始] 功能表，搜尋**事件檢視器**，然後選取 [事件檢視器]  應用程式。
+1. 在 [事件檢視器]  中，開啟 [Windows 記錄]  節點。
+1. 選取 [應用程式]  以開啟「應用程式事件記錄檔」。
+1. 搜尋與失敗應用程式相關的錯誤。 錯誤在 [來源]  資料行中的值會是 *IIS AspNetCore Module* 或 *IIS Express AspNetCore Module*。
 
 ### <a name="run-the-app-at-a-command-prompt"></a>在命令提示字元中執行應用程式
 
@@ -168,12 +255,12 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 啟用及檢視 stdout 記錄檔：
 
 1. 瀏覽至主控系統上網站的部署資料夾。
-1. 如果 [logs] 資料夾不存在，請建立該資料夾。 如需有關如何讓 MSBuild 在部署中自動建立 [logs] 資料夾的指示，請參閱[目錄結構](xref:host-and-deploy/directory-structure)主題。
-1. 編輯 *web.config* 檔案。 將 **stdoutLogEnabled** 設定為 `true`，並將 **stdoutLogFile** 路徑變更為指向 [logs] 資料夾 (例如 `.\logs\stdout`)。 路徑中的 `stdout` 是記錄檔名稱前置詞。 建立記錄檔時，系統會自動新增時間戳記、處理序識別碼及副檔名。 使用 `stdout` 作為檔案名稱前置詞時，一般記錄檔會命名為 *stdout_20180205184032_5412.log*。
+1. 如果 [logs]  資料夾不存在，請建立該資料夾。 如需有關如何讓 MSBuild 在部署中自動建立 [logs]  資料夾的指示，請參閱[目錄結構](xref:host-and-deploy/directory-structure)主題。
+1. 編輯 *web.config* 檔案。 將 **stdoutLogEnabled** 設定為 `true`，並將 **stdoutLogFile** 路徑變更為指向 [logs]  資料夾 (例如 `.\logs\stdout`)。 路徑中的 `stdout` 是記錄檔名稱前置詞。 建立記錄檔時，系統會自動新增時間戳記、處理序識別碼及副檔名。 使用 `stdout` 作為檔案名稱前置詞時，一般記錄檔會命名為 *stdout_20180205184032_5412.log*。
 1. 請確定您的應用程式集區身分識別具有 *logs* 資料夾的寫入權限。
 1. 儲存已更新的 *web.config* 檔案。
 1. 對應用程式發出要求。
-1. 瀏覽至 [logs] 資料夾。 尋找並開啟最新的 stdout 記錄檔。
+1. 瀏覽至 [logs]  資料夾。 尋找並開啟最新的 stdout 記錄檔。
 1. 研究記錄檔以了解錯誤。
 
 > [!IMPORTANT]
@@ -235,7 +322,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 ## <a name="create-a-dump"></a>建立傾印
 
-「傾印」是系統記憶體的快照集，可協助您判斷應用程式損毀、啟動失敗或應用程式緩慢的原因。
+「傾印」  是系統記憶體的快照集，可協助您判斷應用程式損毀、啟動失敗或應用程式緩慢的原因。
 
 ### <a name="app-crashes-or-encounters-an-exception"></a>應用程式損毀或發生例外狀況
 
@@ -276,7 +363,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 ### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>應用程式停止回應、在啟動期間失敗，或正常執行
 
-當應用程式「停止回應」(停止回應但未損毀)、在啟動期間失敗，或正常執行時，請參閱[使用者模式傾印檔案：選擇最適合的工具](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)，選取適當的工具來產生傾印。
+當應用程式「停止回應」  (停止回應但未損毀)、在啟動期間失敗，或正常執行時，請參閱[使用者模式傾印檔案：選擇最適合的工具](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)，選取適當的工具來產生傾印。
 
 ### <a name="analyze-the-dump"></a>分析傾印
 
@@ -294,7 +381,7 @@ ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預
 
 有時，在升級開發電腦上的 .NET Core SDK 或應用程式內的套件版本之後，正常運作的應用程式便立即發生失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
 
-1. 刪除 [bin] 和 [obj] 資料夾。
+1. 刪除 [bin]  和 [obj]  資料夾。
 1. 清除位於 *%UserProfile%\\.nuget\\packages* 和 *%LocalAppData%\\Nuget\\v3-cache*的套件快取。
 1. 還原並重建專案。
 1. 先確認已將伺服器上先前的部署完全刪除，再重新部署應用程式。

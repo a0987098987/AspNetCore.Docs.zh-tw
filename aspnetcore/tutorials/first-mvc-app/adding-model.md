@@ -5,22 +5,22 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 02/25/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 0580c2cb7717a89d0d16cd3f431a63db78fa27cb
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 0de1b7e69298af8299e0ca6c8ebd3c2b995b7471
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887423"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692493"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Ryan Nowak](https://github.com/tdykstra)
 
-在本節中，您可以新增類別來管理資料庫中的電影。 這些類別是 **MVC** 應用程式的「模型」部分。
+在本節中，您可以新增類別來管理資料庫中的電影。 這些類別是 **MVC** 應用程式的「模型」  部分。
 
 搭配 [Entity Framework Core](/ef/core) (EF Core) 使用這些類別，即可使用資料庫。 EF Core 是一種物件關聯式對應 (ORM) 架構，可簡化您必須撰寫的資料存取程式碼。
 
-您所建立的模型類別稱為 POCO 類別 (來自「純舊 CLR 物件」)，因為它們對 EF Core 沒有任何相依性。 它們只會定義資料庫將儲存之資料的屬性。
+您所建立的模型類別稱為 POCO 類別 (來自「純舊 CLR 物件」     )，因為它們對 EF Core 沒有任何相依性。 它們只會定義資料庫將儲存之資料的屬性。
 
 在本教學課程中，您首先要撰寫模型類別，而 EF Core 會建立資料庫。 本文未提及的替代方法是從現有的資料庫產生模型類別。 如需該方法的資訊，請參閱 [ASP.NET Core - 現有的資料庫](/ef/core/get-started/aspnetcore/existing-db)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "64887423"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-以滑鼠右鍵按一下 *Models* 資料夾 > [新增] > [類別]。 將類別命名為 **Movie**。
+以滑鼠右鍵按一下 *Models* 資料夾 > [新增]   > [類別]  。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/mvc-intro/model1b.md)]
 
@@ -47,15 +47,15 @@ ms.locfileid: "64887423"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [方案總管] 中以滑鼠右鍵按一下 *Controllers* 資料夾 > [新增] > [新增 Scaffold 項目]。
+在 [方案總管]  中以滑鼠右鍵按一下 *Controllers* 資料夾 > [新增] > [新增 Scaffold 項目]  。
 
 ![上方步驟的檢視](adding-model/_static/add_controller21.png)
 
-在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 執行檢視的 MVC 控制器] > [新增]。
+在 [新增 Scaffold]  對話方塊中，選取 [使用 Entity Framework 執行檢視的 MVC 控制器] > [新增]  。
 
 ![[新增 Scaffold] 對話方塊](adding-model/_static/add_scaffold21.png)
 
-完成 [新增控制器] 對話方塊：
+完成 [新增控制器]  對話方塊：
 
 * **模型類別：** Movie (MvcMovie.Models) 
 * **資料內容類別：** 選取 **+** 圖示並新增預設的 **MvcMovie.Models.MvcMovieContext**
@@ -64,7 +64,7 @@ ms.locfileid: "64887423"
 
 * **檢視：** 保持核取預設的每一個選項
 * **控制器名稱：** 保留預設 *MoviesController*
-* 選取 [新增]
+* 選取 [新增] 
 
 ![[新增控制器] 對話方塊](adding-model/_static/add_controller2.png)
 
@@ -143,7 +143,7 @@ System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity id
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台] (PMC)。
+1. 從 [工具]  功能表中，選取 [NuGet 套件管理員]   > [套件管理員主控台]  (PMC)。
 
    ![PMC 功能表](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 
@@ -156,7 +156,7 @@ System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity id
 
    `Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。
 
-   資料庫結構描述會以 `MvcMovieContext` 類別 (在 *Data/MvcMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
+   資料庫結構描述是以 `MvcMovieContext` 類別為基礎。 `Initial` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
 
    `Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
 

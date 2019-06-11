@@ -1,17 +1,17 @@
 ---
-title: 使用 ASP.NET Core 與 MongoDB 建置 Web API
+title: 使用 ASP.NET Core 與 MongoDB 建立 Web API
 author: prkhandelwal
-description: 此教學課程示範如何使用 MongoDB NoSQL 資料庫建置 ASP.NET Core Web API。
+description: 此教學課程示範如何使用 MongoDB NoSQL 資料庫建立 ASP.NET Core Web API。
 ms.author: scaddie
 ms.custom: mvc, seodec18
-ms.date: 01/31/2019
+ms.date: 06/04/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: f593a8d2d06897736b12f49f25c6049ea994a88a
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: 6a8c5d75f562b38015101e039a2f5d96a5491595
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610614"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692558"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
 
@@ -142,10 +142,11 @@ ms.locfileid: "65610614"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 移至 [檔案] > [新增] > [專案]。
-1. 選取 [ASP.NET Core Web 應用程式]、將專案命名為 *BooksApi*，然後按一下 [確定]。
-1. 選取 [.NET Core] 目標架構與 [ASP.NET Core 2.2]。 選取 [API] 專案範本，然後按一下 [確定]：
-1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 在 [套件管理員主控台] 視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 移至 [檔案]   > [新增]   > [專案]  。
+1. 選取 [ASP.NET Core Web 應用程式]  專案類型，然後選取 [下一步]  。
+1. 將專案命名為 *BooksApi*，然後選取 [建立]  。
+1. 選取 [.NET Core]  目標架構與 [ASP.NET Core 2.2]  。 選取 [API]  專案範本，然後選取 [確定]  。
+1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 在 [套件管理員主控台]  視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
     ```powershell
     Install-Package MongoDB.Driver -Version {VERSION}
@@ -162,8 +163,8 @@ ms.locfileid: "65610614"
 
     會產生以 .NET Core 為目標的新 ASP.NET Core Web API 專案，並在 Visual Studio Code 中開啟。
 
-1. 當 ['BooksApi' 中缺少要建置及偵錯的必要資產。是否要新增它們?] 通知出現時，請按一下 [是]。
-1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 開啟 [整合式終端機] 並瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問 **'BooksApi' 中是否遺漏了建置和偵錯的必要資產。要新增它們嗎？** 選取 [是]  。
+1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 開啟 [整合式終端機]  並瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
     ```console
     dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
@@ -171,80 +172,109 @@ ms.locfileid: "65610614"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-1. 移至 [檔案] > [新增解決方案] > [.NET Core] > [應用程式]。
-1. 選取 **ASP.NET Core Web API** C# 專案範本，然後按一下 [下一步]。
-1. 從 [目標 Framework] 下拉式清單選取 [.NET Core 2.2]，然後按一下 [下一步]。
-1. 在 [專案名稱] 中輸入 *BooksApi*，然後按一下 [建立]。
-1. 在 [方案] 台中，以滑鼠右鍵按一下專案的 [相依性] 節點並選取 [新增封裝]。
-1. 在搜尋方塊中輸入 *MongoDB.Driver*、選取 *MongoDB.Driver* 套件，然後按一下 [新增封裝]。
-1. 按一下 [授權接受] 對話方塊中的 [接受] 按鈕。
+1. 移至 [檔案]   > [新增解決方案]   > [.NET Core]   > [應用程式]  。
+1. 選取 [ASP.NET Core Web API]  C# 專案範本，然後選取 [下一步]  。
+1. 從 [目標 Framework]  下拉式清單選取 [.NET Core 2.2]  ，然後選取 [下一步]  。
+1. 在 [專案名稱]  中輸入 *BooksApi*，然後選取 [建立]  。
+1. 在 [方案]  台中，以滑鼠右鍵按一下專案的 [相依性]  節點並選取 [新增封裝]  。
+1. 在搜尋方塊中輸入 *MongoDB.Driver*，然後依序選取 *MongoDB.Driver* 套件和 [新增套件]  。
+1. 選取 [授權接受]  對話方塊中的 [接受]  按鈕。
 
 ---
 
-## <a name="add-a-model"></a>新增模型
+## <a name="add-an-entity-model"></a>新增實體模型
 
 1. 新增 *Models* 目錄到專案根目錄。
 1. 新增具有下列程式碼的 `Book` 類別到 *Models* 目錄：
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Models/Book.cs)]
 
-在上面的類別中，需要 `Id` 屬性：
+    在上面的類別中，需要 `Id` 屬性：
+    
+    * 才能將通用語言執行平台 (CLR) 物件對應到 MongoDB 集合。
+    * 使用 [[BsonId]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) 加上附註以指定此屬性作為文件的主索引鍵。
+    * 使用 [[BsonRepresentation(BsonType.ObjectId)]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) 加上附註讓參數傳遞為類型 `string`，而非 [ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm) 結構。 Mongo 會處理從 `string` 轉換到 `ObjectId` 的作業。
+    
+    該類別中的其他屬性是使用 [[BsonElement]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm) 屬性加上註解。 屬性的值代表 MongoDB 集合中的屬性名稱。
 
-* 才能將通用語言執行平台 (CLR) 物件對應到 MongoDB 集合。
-* 使用 `[BsonId]` 加上附註以指定此屬性做為文件的主要機碼。
-* 使用 `[BsonRepresentation(BsonType.ObjectId)]` 加上附註以允許將參數傳遞為類型 `string` 而非 `ObjectId`。 Mongo 會處理從 `string` 轉換到 `ObjectId` 的作業。
+## <a name="add-a-configuration-model"></a>新增組態模型
 
-該類別中的其他屬性是使用 `[BsonElement]` 屬性加上註解。 屬性的值代表 MongoDB 集合中的屬性名稱。
+1. 將下列資料庫組態值新增至 *appsettings.json*：
 
-## <a name="add-a-crud-operations-class"></a>新增 CRUD 作業類別
+    [!code-json[](first-mongo-app/sample/BooksApi/appsettings.json?highlight=2-6)]
+
+1. 使用下列程式碼將 *BookstoreDatabaseSettings.cs* 檔案新增至 *Models* 目錄：
+
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Models/BookstoreDatabaseSettings.cs)]
+
+    上述 `BookstoreDatabaseSettings` 類別用來儲存 *appsettings.json* 檔案的 `BookstoreDatabaseSettings` 屬性值。 JSON 和 C# 屬性名稱以相同方式命名，以簡化對應程序。
+
+1. 在呼叫 `AddMvc` 之前，將下列程式碼新增至 `Startup.ConfigureServices`：
+
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_ConfigureDatabaseSettings)]
+
+    在上述程式碼中：
+
+    * *appsettings.json* 檔案之 `BookstoreDatabaseSettings` 區段所繫結的組態執行個體，是在相依性插入 (DI) 容器中註冊。 例如，`BookstoreDatabaseSettings` 物件的 `ConnectionString` 屬性會填入 *appsettings.json* 中的 `BookstoreDatabaseSettings:ConnectionString` 屬性。
+    * `IBookstoreDatabaseSettings` 介面使用 singleton [服務存留期](xref:fundamentals/dependency-injection#service-lifetimes)在 DI 中註冊。 插入時，介面執行個體會解析成 `BookstoreDatabaseSettings` 物件。
+
+1. 在 *Startup.cs* 的頂端新增下列程式碼，以解析 `BookstoreDatabaseSettings` 和 `IBookstoreDatabaseSettings` 參考：
+
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_UsingBooksApiModels)]
+
+## <a name="add-a-crud-operations-service"></a>新增 CRUD 作業服務
 
 1. 新增 *Services* 目錄到專案根目錄。
 1. 新增具有下列程式碼的 `BookService` 類別到 *Services* 目錄：
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Services/BookService.cs?name=snippet_BookServiceClass)]
 
-1. 新增 MongoDB 連接字串到 *appsettings.json*：
+    在上述程式碼中，透過建構函式插入從 DI 擷取 `IBookstoreDatabaseSettings` 執行個體。 這項技術可讓您存取[新增組態模型](#add-a-configuration-model)一節中已新增的 *appsettings.json* 組態值。
 
-    [!code-csharp[](first-mongo-app/sample/BooksApi/appsettings.json?highlight=2-4)]
+1. 在 `Startup.ConfigureServices` 中，向 DI 註冊 `BookService` 類別：
 
-    上面的 `BookstoreDb` 屬性是在 `BookService` 類別建構函式中存取的。
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_ConfigureServices&highlight=9)]
 
-1. 在 `Startup.ConfigureServices` 中，向相依性插入系統註冊 `BookService` 類別：
+    在上述程式碼中，`BookService` 類別要向 DI 註冊才能在取用類別中支援建構函式插入。 因為 `BookService` 直接依存於 `MongoClient`，所以 Singleton 服務存留期最適合。 依照正式的 [Mongo 用戶端重複使用指導方針](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)，`MongoClient` 應該在 DI 註冊 Singleton 服務存留期。
 
-    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_ConfigureServices&highlight=3)]
+1. 在 *Startup.cs* 的頂端新增下列程式碼，以解析 `BookService` 參考：
 
-    必須完成上面的服務註冊，才能在取用資源的類別中支援建構函式插入。
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_UsingBooksApiServices)]
 
 `BookService` 類別使用下列 `MongoDB.Driver` 成員來對資料庫執行 CRUD 作業：
 
-* `MongoClient` &ndash; 讀取用於執行資料庫作業的伺服器執行個體。 此類別的建構函式是使用 MongoDB 連接字串提供：
+* [MongoClient](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoClient.htm) &ndash; 讀取用於執行資料庫作業的伺服器執行個體。 此類別的建構函式是使用 MongoDB 連接字串提供：
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Services/BookService.cs?name=snippet_BookServiceConstructor&highlight=3)]
 
-* `IMongoDatabase` &ndash; 代表用於執行作業的 Mongo 資料庫。 此教學課程使用介面上的一般 `GetCollection<T>(collection)` 方法來存取特定集合中的資料。 呼叫此方法之後，CRUD 作業可針對集合執行。 在 `GetCollection<T>(collection)` 方法呼叫中：
+* [IMongoDatabase](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_IMongoDatabase.htm) &ndash; 代表用於執行作業的 Mongo 資料庫。 本教學課程在介面中使用一般的 [GetCollection<TDocument>(collection)](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoDatabase_GetCollection__1.htm) 方法來存取特定集合中的資料。 呼叫此方法之後，針對集合執行 CRUD 作業。 在 `GetCollection<TDocument>(collection)` 方法呼叫中：
   * `collection` 代表集合名稱。
-  * `T` 代表儲存在集合中的 CLR 物件類型。
+  * `TDocument` 代表儲存在集合中的 CLR 物件類型。
 
-`GetCollection<T>(collection)` 會傳回代表集合的 `MongoCollection` 物件。 在此教學課程中，會在集合上叫用下列方法：
+`GetCollection<TDocument>(collection)` 傳回代表集合的 [MongoCollection](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoCollection.htm) 物件。 在此教學課程中，會在集合上叫用下列方法：
 
-* `Find<T>` &ndash; 傳回集合中符合所提供搜尋條件的所有文件。
-* `InsertOne` &ndash; 插入提供的物件做為集合中的新文件。
-* `ReplaceOne` &ndash; 使用提供的物件取代符合所提供搜尋條件的單一文件。
-* `DeleteOne` &ndash; 刪除符合所提供搜尋條件的單一文件。
+* [DeleteOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_DeleteOne.htm) &ndash; 會刪除符合所提供搜尋條件的單一文件。
+* [Find\<TDocument>](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollectionExtensions_Find__1_1.htm) &ndash; 傳回集合中符合所提供搜尋條件的所有文件。
+* [InsertOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm) &ndash; 插入所提供物件作為集合中的新文件。
+* [ReplaceOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm) &ndash; 使用所提供物件取代符合所提供搜尋條件的單一文件。
 
 ## <a name="add-a-controller"></a>新增控制器
 
-1. 新增具有下列程式碼的 `BooksController` 類別到 *Controllers* 目錄：
+新增具有下列程式碼的 `BooksController` 類別到 *Controllers* 目錄：
 
-    [!code-csharp[](first-mongo-app/sample/BooksApi/Controllers/BooksController.cs)]
+[!code-csharp[](first-mongo-app/sample/BooksApi/Controllers/BooksController.cs)]
 
-    上述 Web API 控制器會：
+上述 Web API 控制器會：
 
-    * 使用 `BookService` 類別來執行 CRUD 作業。
-    * 包含動作方法以支援 GET、POST、PUT 與 DELETE HTTP 要求。
-    * <xref:System.Web.Http.ApiController.CreatedAtRoute*> 方法會傳回 201 回應，這是 HTTP POST 方法的標準回應，可在伺服器上建立新的資源。 `CreatedAtRoute` 也會將位置標頭新增至回應。 位置標頭指定新建立之待辦事項的 URI。 請參閱 [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (10.2.2 201 已建立)。
+* 使用 `BookService` 類別來執行 CRUD 作業。
+* 包含動作方法以支援 GET、POST、PUT 與 DELETE HTTP 要求。
+* 在 `Create` 動作方法中呼叫 <xref:System.Web.Http.ApiController.CreatedAtRoute*>，以傳回 [HTTP 201](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 回應。 對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是狀態碼 201。 `CreatedAtRoute` 也會將 `Location` 標頭新增至回應。 `Location` 標頭指定新建活頁簿的 URI。
+
+## <a name="test-the-web-api"></a>測試 Web API
+
 1. 建置和執行應用程式。
-1. 在您的瀏覽器中瀏覽到 `http://localhost:<port>/api/books`。 會顯示下列 JSON 回應：
+
+1. 巡覽至 `http://localhost:<port>/api/books`，測試控制器的無參數 `Get` 動作方法。 會顯示下列 JSON 回應：
 
     ```json
     [
@@ -263,6 +293,18 @@ ms.locfileid: "65610614"
         "author":"Robert C. Martin"
       }
     ]
+    ```
+
+1. 巡覽至 `http://localhost:<port>/api/books/5bfd996f7b8e48dc15ff215e`，測試控制器的多載 `Get` 動作方法。 會顯示下列 JSON 回應：
+
+    ```json
+    {
+      "id":"5bfd996f7b8e48dc15ff215e",
+      "bookName":"Clean Code",
+      "price":43.15,
+      "category":"Computers",
+      "author":"Robert C. Martin"
+    }
     ```
 
 ## <a name="next-steps"></a>後續步驟

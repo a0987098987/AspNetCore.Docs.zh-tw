@@ -5,14 +5,14 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/21/2019
+ms.date: 06/03/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: ab36bc1b2827c80bb1e7b9e8cee558b346a991f8
-ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
+ms.openlocfilehash: 4cfca4b38543ff073bb98dc09b483d96096928ae
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66251423"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692565"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -26,6 +26,35 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="worker-service-template"></a>背景工作服務範本
+
+ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式的起點。 使用範本作為 Windows 服務應用程式的基礎：
+
+1. 從 .NET Core 範本建立背景工作服務應用程式。
+1. 請遵循[應用程式組態](#app-configuration)一節中的指導方針，更新背景工作服務應用程式，以便其執行為 Windows 服務。
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+1. 建立新的專案。
+1. 選取 [ASP.NET Core Web 應用程式]  。 選取 [下一步]  。
+1. 在 [專案名稱]  欄位中提供專案名稱，或接受預設專案名稱。 選取 [建立]  。
+1. 在 [建立新的 ASP.NET Core Web 應用程式]  對話方塊中，確認選取 [.NET Core]  和 [ASP.NET Core 3.0]  。
+1. 選取**背景工作服務**範本。 選取 [建立]  。
+
+# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code / .NET Core CLI](#tab/visual-studio-code+netcore-cli)
+
+從命令殼層以 [dotnet new](/dotnet/core/tools/dotnet-new) 命令使用背景工作服務 (`worker`) 範本。 在下列範例中，已建立名為 `ContosoWorkerService` 的背景工作服務應用程式。 當命令執行時，會自動建立 `ContosoWorkerService` 應用程式的資料夾。
+
+```console
+dotnet new worker -o ContosoWorkerService
+```
+
+---
+
+::: moniker-end
 
 ## <a name="app-configuration"></a>應用程式設定
 

@@ -3,14 +3,14 @@ title: ASP.NET Core 的取用者 Api 概觀
 author: rick-anderson
 description: 收到不同的取用者 Api ASP.NET Core 資料保護的文件庫中可用的簡短概觀。
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 06/11/2019
 uid: security/data-protection/consumer-apis/overview
-ms.openlocfilehash: b0d11d097ee2d448b6781f6fa84445f6400fbc76
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: ff9badb55813cae0aa72d3a95dc53792332f109b
+ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087543"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837372"
 ---
 # <a name="consumer-apis-overview-for-aspnet-core"></a>ASP.NET Core 的取用者 Api 概觀
 
@@ -32,7 +32,7 @@ ms.locfileid: "65087543"
 
 ## <a name="consuming-these-interfaces"></a>使用這些介面
 
-DI 感知的元件，預定的使用方式是，此元件需要`IDataProtectionProvider`其建構函式中的參數和元件具現化時，DI 系統會自動提供這項服務。
+如需 DI 感知的元件，預定的使用方式是元件會`IDataProtectionProvider`其建構函式中的參數和元件具現化時，DI 系統會自動提供這項服務。
 
 > [!NOTE]
 > 有些應用程式 （例如主控台應用程式或 ASP.NET 4.x 應用程式） 可能無法 DI 感知因此這裡不能使用所述的機制。 如這些案例，請參閱[非 DI 感知案例](xref:security/data-protection/configuration/non-di-scenarios)如需取得的執行個體的詳細資訊的文件`IDataProtection`不透過 DI 提供者。

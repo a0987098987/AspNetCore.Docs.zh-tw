@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/05/2019
 uid: security/authorization/policies
-ms.openlocfilehash: ea9d687d3810c104d5b3fa39033849c21569709b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 67337c847ba71df3fe61250996ec944632ad5d57
+ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891825"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837346"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>ASP.NET Core 中的原則為基礎的授權
 
@@ -23,17 +23,98 @@ ms.locfileid: "64891825"
 
 在上述範例中，會建立 「 AtLeast21 」 原則。 它有一個需求&mdash;的最短使用期限，做為參數的需求，提供。
 
+## <a name="iauthorizationservice"></a>IAuthorizationService 
+
+在判斷授權是否成功的主要服務<xref:Microsoft.AspNetCore.Authorization.IAuthorizationService>:
+
+[!code-csharp[](policies/samples/stubs/copy_of_IAuthorizationService.cs?highlight=24-25,48-49&name=snippet)]
+
+上述程式碼會反白顯示兩種[IAuthorizationService](https://github.com/aspnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationService.cs)。
+
+<xref:Microsoft.AspNetCore.Authorization.IAuthorizationRequirement> 是標記服務有沒有任何方法，以及追蹤授權是否成功的機制。
+
+每個<xref:Microsoft.AspNetCore.Authorization.IAuthorizationHandler>負責檢查是否符合需求：
+<!--The following code is a copy/paste from 
+https://github.com/aspnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationHandler.cs -->
+
+```csharp
+/// <summary>
+/// Classes implementing this interface are able to make a decision if authorization
+/// is allowed.
+/// </summary>
+public interface IAuthorizationHandler
+{
+    /// <summary>
+    /// Makes a decision if authorization is allowed.
+    /// </summary>
+    /// <param name="context">The authorization information.</param>
+    Task HandleAsync(AuthorizationHandlerContext context);
+}
+```
+
+<xref:Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext>類別是處理常式使用標記是否已符合需求：
+
+```csharp
+ context.Succeed(requirement)
+```
+
+下列程式碼顯示的簡化 （和註解標註） 預設實作授權服務：
+
+```csharp
+public async Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user, 
+             object resource, IEnumerable<IAuthorizationRequirement> requirements)
+{
+    // Create a tracking context from the authorization inputs.
+    var authContext = _contextFactory.CreateContext(requirements, user, resource);
+
+    // By default this returns an IEnumerable<IAuthorizationHandlers> from DI.
+    var handlers = await _handlers.GetHandlersAsync(authContext);
+
+    // Invoke all handlers.
+    foreach (var handler in handlers)
+    {
+        await handler.HandleAsync(authContext);
+    }
+
+    // Check the context, by default success is when all requirements have been met.
+    return _evaluator.Evaluate(authContext);
+}
+```
+
+下列程式碼示範典型`ConfigureServices`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add all of your handlers to DI.
+    services.AddSingleton<IAuthorizationHandler, MyHandler1>();
+    // MyHandler2, ...
+
+    services.AddSingleton<IAuthorizationHandler, MyHandlerN>();
+
+    // Configure your policies
+    services.AddAuthorization(options =>
+          options.AddPolicy("Something",
+          policy => policy.RequireClaim("Permission", "CanViewPage", "CanViewAnything")));
+
+
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+}
+```
+
+使用<xref:Microsoft.AspNetCore.Authorization.IAuthorizationService>或`[Authorize(Policy = "Something"]`進行授權。
+
 ## <a name="applying-policies-to-mvc-controllers"></a>將原則套用至 MVC 控制器
 
 如果您使用 Razor 頁面，請參閱[將原則套用至 Razor Pages](#applying-policies-to-razor-pages)本文件中。
 
-原則會套用至控制器使用`[Authorize]`原則名稱的屬性。 例如：
+原則會套用至控制器使用`[Authorize]`原則名稱的屬性。 例如:
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
 ## <a name="applying-policies-to-razor-pages"></a>將原則套用至 Razor Pages
 
-原則時，會套用至 Razor 頁面上，使用`[Authorize]`原則名稱的屬性。 例如: 
+原則時，會套用至 Razor 頁面上，使用`[Authorize]`原則名稱的屬性。 例如:
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
@@ -80,7 +161,7 @@ ms.locfileid: "64891825"
 
 ### <a name="handler-registration"></a>處理常式註冊
 
-在設定期間的服務集合中註冊處理常式。 例如: 
+在設定期間的服務集合中註冊處理常式。 例如:
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,62-63,66)]
 

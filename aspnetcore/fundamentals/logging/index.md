@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/01/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: ee7d4b2ae04b5f6c262acc5da0f86f90ab50585f
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 435f06b85af4a1a5a78a870c2add3e15ff1ffe89
+ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085662"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837268"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -66,13 +66,13 @@ ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提�
 
 ::: moniker range=">= aspnetcore-2.0"
 
-下列控制器範例會建立 `Information` 與 `Warning` 記錄。 「類別」是 `TodoApiSample.Controllers.TodoController` (範例應用程式中 `TodoController` 的完整類別名稱)：
+下列控制器範例會建立 `Information` 與 `Warning` 記錄。 「類別」  是 `TodoApiSample.Controllers.TodoController` (範例應用程式中 `TodoController` 的完整類別名稱)：
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_LoggerDI&highlight=4,7)]
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
 
-下鎳 Razor Pages 範例會建立記錄，其中「層級」*l* 為 `Information` 且「類別」 為 `TodoApiSample.Pages.AboutModel`：
+下鎳 Razor Pages 範例會建立記錄，其中「層級」*l* 為 `Information` 且「類別」  為 `TodoApiSample.Pages.AboutModel`：
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Pages/About.cshtml.cs?name=snippet_LoggerDI&highlight=3, 7)]
 
@@ -86,11 +86,11 @@ ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提�
 
 [!code-csharp[](index/samples/1.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
 
-前述範例會建立記錄，其中「層級」 為 `Information` 與 `Warning` 且「類別」為 `TodoController`類別。 
+前述範例會建立記錄，其中「層級」  為 `Information` 與 `Warning` 且「類別」  為 `TodoController`類別。 
 
 ::: moniker-end
 
-記錄「層級」 指出已記錄事件的嚴重性。 記錄「類別」是與每個記錄關聯的字串。 `ILogger<T>` 執行個體會建立使用類型 `T` 做為類別之完整名稱的記錄。 此文章稍後將詳細說明[層級](#log-level)與[類別](#log-category)。 
+記錄「層級」  指出已記錄事件的嚴重性。 記錄「類別」  是與每個記錄關聯的字串。 `ILogger<T>` 執行個體會建立使用類型 `T` 做為類別之完整名稱的記錄。 此文章稍後將詳細說明[層級](#log-level)與[類別](#log-category)。 
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -219,7 +219,7 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 ## <a name="log-category"></a>記錄類別
 
-建立 `ILogger` 物件時，會為它指定「類別」。 該類別會包含在每個由該 `ILogger` 執行個體所產生的記錄訊息中。 類別可以是任意字串，但慣例是使用類別名稱，例如 "TodoApi.Controllers.TodoController"。
+建立 `ILogger` 物件時，會為它指定「類別」  。 該類別會包含在每個由該 `ILogger` 執行個體所產生的記錄訊息中。 類別可以是任意字串，但慣例是使用類別名稱，例如 "TodoApi.Controllers.TodoController"。
 
 使用 `ILogger<T>` 來取得`ILogger` 執行個體，它使用 `T` 的完整類型名稱做為類別：
 
@@ -277,7 +277,7 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 追蹤 = 0
 
-  針對通常只對偵錯有價值的資訊。 這些訊息可能包含敏感性應用程式資料，因此不應該在生產環境中啟用。 預設為停用。
+  針對通常只對偵錯有價值的資訊。 這些訊息可能包含敏感性應用程式資料，因此不應該在生產環境中啟用。 預設為停用。 
 
 * 偵錯 = 1
 
@@ -339,7 +339,7 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
 
 ## <a name="log-event-id"></a>記錄事件識別碼
 
-每個記錄都可以指定「事件識別碼」。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行此動作：
+每個記錄都可以指定「事件識別碼」  。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行此動作：
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -492,7 +492,7 @@ System.Exception: Item not found exception.
 
 ### <a name="provider-aliases"></a>提供者別名
 
-每個提供者都會定義「別名」，可在設定中用來取代完整類型名稱。  針對內建提供者，請使用下列別名：
+每個提供者都會定義「別名」  ，可在設定中用來取代完整類型名稱。  針對內建提供者，請使用下列別名：
 
 * 主控台
 * 偵錯
@@ -557,7 +557,7 @@ System.Exception: Item not found exception.
 
 ## <a name="log-scopes"></a>記錄範圍
 
- 「範圍」可用來將邏輯作業組成群組。 此分組功能可用來將相同的資料附加到已建立為集合之一部分的每個記錄。 例如，在處理邀交易時建立的每個記錄都可以包括該交易識別碼。
+ 「範圍」  可用來將邏輯作業組成群組。 此分組功能可用來將相同的資料附加到已建立為集合之一部分的每個記錄。 例如，在處理邀交易時建立的每個記錄都可以包括該交易識別碼。
 
 範圍是 <xref:Microsoft.Extensions.Logging.ILogger.BeginScope*> 方法所傳回的 `IDisposable` 類型，並會持續到被處置為止。 透過將記錄器呼叫封裝在 `using` 區塊中以使用範圍：
 
@@ -711,7 +711,7 @@ loggerFactory.AddEventSourceLogger();
 
 收集及檢視記錄的一個好方法是使用 [PerfView 公用程式](https://github.com/Microsoft/perfview)。 此外還有一些其他工具可檢視 ETW 記錄，但 PerfView 提供處理 ASP.NET 所發出之 ETW 事件的最佳體驗。
 
-若要設定 PerfView 以收集此提供者所記錄的事件，請將字串 `*Microsoft-Extensions-Logging` 新增至 [其他提供者] 清單 (請勿遺漏字串開頭的星號)。
+若要設定 PerfView 以收集此提供者所記錄的事件，請將字串 `*Microsoft-Extensions-Logging` 新增至 [其他提供者]  清單 (請勿遺漏字串開頭的星號)。
 
 ![PerfView 的其他提供者](index/_static/perfview-additional-providers.png)
 
@@ -823,9 +823,10 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 ::: moniker-end
 
-當您部署到 App Service 應用程式時，應用程式會接受 Azure 入口網站的 [App Service] 頁面之[診斷記錄](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag)區段中的設定。 當更新這些設定時，變更會立即生效，而不需要重新啟動或重新部署應用程式。
+當您部署到 App Service 應用程式時，應用程式會遵循 Azure 入口網站 [App Service]  頁面中 [App Service 記錄](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag)區段的設定。 當下列設定更新時，變更會立即生效，而不需要重新啟動或重新部署應用程式。
 
-![Azure 記錄設定](index/_static/azure-logging-settings.png)
+* **應用程式記錄 (檔案系統)**
+* **應用程式記錄 (Blob)**
 
 記錄檔的預設位置為 *D:\\home\\LogFiles\\Application* 資料夾，而預設檔案名稱為 *diagnostics-yyyymmdd.txt*。 預設檔案大小限制為 10 MB，而預設保留的檔案數目上限為 2。 預設 Blob 名稱為 *{app-name}{timestamp}/yyyy/mm/dd/hh/{guid}-applicationLog.txt*。
 
@@ -841,14 +842,11 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 
 若要設定 Azure 記錄資料流：
 
-* 從您應用程式的入口網站頁面瀏覽到 [診斷記錄]。
-* 將 [應用程式記錄 (檔案系統)] 設定為 [開啟]。
+* 從您應用程式的入口網站頁面瀏覽到 [App Service 記錄]  。
+* 將 [應用程式記錄 (檔案系統)]  設定為 [開啟]  。
+* 選擇記錄 [層級]  。
 
-![Azure 入口網站的 [診斷記錄] 頁面](index/_static/azure-diagnostic-logs.png)
-
-瀏覽到 [記錄串流] 頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面產生的訊息。
-
-![Azure 入口網站應用程式的 [記錄資料流]](index/_static/azure-log-streaming.png)
+瀏覽到 [記錄資料流]  頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面產生的訊息。
 
 ::: moniker range=">= aspnetcore-1.1"
 

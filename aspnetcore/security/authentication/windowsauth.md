@@ -5,22 +5,35 @@ description: 了解如何設定 ASP.NET Core 中的 Windows 驗證的 IIS 和 HT
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 06/05/2019
+ms.date: 06/12/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 900bbf5f14b1876ad537b2b77e4ba07d7aa168f2
-ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
+ms.openlocfilehash: 93f833adff95f25d570947cd1a9035d652f522c2
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66750170"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034946"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
 作者：[Scott Addie](https://twitter.com/Scott_Addie) 和 [Luke Latham](https://github.com/guardrex)
 
-[Windows 驗證](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 可以針對 [IIS](xref:host-and-deploy/iis/index) 或 [HTTP.sys](xref:fundamentals/servers/httpsys) 上裝載的 ASP.NET Core 應用程式設定。
+::: moniker range=">= aspnetcore-3.0"
+
+Windows 驗證 （也稱為交涉、 Kerberos 或 NTLM 驗證） 可以設定與裝載的 ASP.NET Core 應用程式[IIS](xref:host-and-deploy/iis/index)， [Kestrel](xref:fundamentals/servers/kestrel)，或[HTTP.sys](xref:fundamentals/servers/httpsys).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Windows 驗證 （也稱為交涉、 Kerberos 或 NTLM 驗證） 可以設定與裝載的 ASP.NET Core 應用程式[IIS](xref:host-and-deploy/iis/index)或是[HTTP.sys](xref:fundamentals/servers/httpsys)。
+
+::: moniker-end
 
 Windows 驗證仰賴作業系統來驗證 ASP.NET Core 應用程式的使用者。 當您的伺服器在公司網路上執行時，您可以透過 Active Directory 網域身分識別進行 Windows 驗證或透過 Windows 帳戶來識別使用者。 Windows 驗證最適合用於使用者、用戶端應用程式與 Web 伺服器皆屬於相同 Windows 網域的內部網路環境。
+
+> [!NOTE]
+> 使用 HTTP/2，不支援 Windows 驗證。 可以傳送 HTTP/2 回應的驗證挑戰，但用戶端驗證之前，必須降級為 HTTP/1.1。
 
 ## <a name="iisiis-express"></a>IIS/IIS Express
 
@@ -125,9 +138,65 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
   * 使用 IIS 管理員中的設定重設*web.config*檔案之後部署上覆寫該檔案。
   * 新增*web.config 檔案*應用程式在本機使用的設定。
 
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="kestrel"></a>Kestrel
+
+ [Microsoft.AspNetCore.Authentication.Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) NuGet 套件可以搭配[Kestrel](xref:fundamentals/servers/kestrel)以支援在 Windows、 Linux 和 macOS 上使用 Negotiate、 Kerberos 和 NTLM Windows 驗證。
+
+> [!WARNING]
+> 認證可以保存在連接上的要求。 *交涉驗證必須不使用 proxy 使用，除非 proxy 會使用 Kestrel 的 1 對 1 連接同質 （持續連線）。* 這表示交涉驗證必須未使用的 IIS 背後有 Kestrel [ASP.NET Core 模組 (ANCM) 流程外](xref:host-and-deploy/iis/index#out-of-process-hosting-model)。
+
+ 加入驗證服務所叫用<xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*>(`Microsoft.AspNetCore.Authentication.Negotiate`命名空間) 和`AddNegotitate`(`Microsoft.AspNetCore.Authentication.Negotiate`命名空間) 中`Startup.ConfigureServices`:
+
+ ```csharp
+services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
+    .AddNegotiate();
+```
+
+新增驗證中介軟體，藉由呼叫<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>在`Startup.Configure`:
+
+ ```csharp
+app.UseAuthentication();
+
+app.UseMvc();
+```
+
+如需有關中介軟體的詳細資訊，請參閱<xref:fundamentals/middleware/index>。
+
+允許匿名要求。 使用[ASP.NET Core 授權](xref:security/authorization/introduction)挑戰驗證的匿名要求。
+
+### <a name="windows-environment-configuration"></a>Windows 環境設定
+
+[Microsoft.AspNetCore.Authentication.Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate)元件會執行使用者模式驗證。 服務主體名稱 (Spn) 必須將執行服務，而不是電腦帳戶的使用者帳戶。 執行`setspn -S HTTP/mysrevername.mydomain.com myuser`在系統管理命令介面中。
+
+### <a name="linux-and-macos-environment-configuration"></a>Linux 和 macOS 的環境設定
+
+加入 Windows 網域中的 Linux 或 macOS 機器的指示位於[到 SQL Server 使用 Windows 驗證 Kerberos 連接 Azure Data Studio](/sql/azure-data-studio/enable-kerberos?view=sql-server-2017#join-your-os-to-the-active-directory-domain-controller)文章。 指示在網域上建立的 Linux 機器的機器帳戶。 Spn 必須新增至該電腦帳戶。
+
+> [!NOTE]
+> 遵循中的指導方針時[到 SQL Server 使用 Windows 驗證 Kerberos 連接 Azure Data Studio](/sql/azure-data-studio/enable-kerberos?view=sql-server-2017#join-your-os-to-the-active-directory-domain-controller)文章中，取代`python-software-properties`使用`python3-software-properties`如有需要。
+
+一旦在 Linux 或 macOS 機器已加入網域，需要額外的步驟，以提供[keytab 檔案](https://blogs.technet.microsoft.com/pie/2018/01/03/all-you-need-to-know-about-keytab-files/)利用 Spn:
+
+* 在網域控制站，用電腦帳戶來加入新的 web 服務的 Spn:
+  * `setspn -S HTTP/mywebservice.mydomain.com mymachine`
+  * `setspn -S HTTP/mywebservice@MYDOMAIN.COM mymachine`
+* 使用[ktpass](/windows-server/administration/windows-commands/ktpass)產生 keytab 檔案：
+  * `ktpass -princ HTTP/mywebservice.mydomain.com@MYDOMAIN.COM -pass myKeyTabFilePassword -mapuser MYDOMAIN\mymachine$ -pType KRB5_NT_PRINCIPAL -out c:\temp\mymachine.HTTP.keytab -crypto AES256-SHA1`
+  * 某些欄位中必須指定大寫所示。
+* 將 keytab 檔案複製到 Linux 或 macOS 電腦。
+* 選取透過環境變數的 keytab 檔案： `export KRB5_KTNAME=/tmp/mymachine.HTTP.keytab`
+* 叫用`klist`以顯示目前可供使用的 Spn。
+
+> [!NOTE]
+> Keytab 檔案包含網域存取認證，而且必須據此加以保護。
+
+::: moniker-end
+
 ## <a name="httpsys"></a>HTTP.sys
 
-在自我裝載案例中， [Kestrel](xref:fundamentals/servers/kestrel)不支援 Windows 驗證，但是您可以使用[HTTP.sys](xref:fundamentals/servers/httpsys)。
+[HTTP.sys](xref:fundamentals/servers/httpsys)支援使用 Negotiate、 NTLM、 或基本驗證的核心模式 Windows 驗證。
 
 加入驗證服務所叫用<xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*>(<xref:Microsoft.AspNetCore.Server.HttpSys?displayProperty=fullName>命名空間) 中`Startup.ConfigureServices`:
 
@@ -177,6 +246,12 @@ ASP.NET Core 不會實作模擬。 應用程式執行的所有要求，使用應
 [!code-csharp[](windowsauth/sample_snapshot/Startup.cs?highlight=10-19)]
 
 `RunImpersonated` 不支援非同步作業，而不應該用於複雜的案例。 比方說，包裝整個要求或中介軟體鏈結不支援或建議。
+
+::: moniker range=">= aspnetcore-3.0"
+
+雖然[Microsoft.AspNetCore.Authentication.Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate)套件會啟用 Windows 驗證，Windows 才支援 Linux 和 macOS 的模擬。
+
+::: moniker-end
 
 ## <a name="claims-transformations"></a>宣告轉換
 

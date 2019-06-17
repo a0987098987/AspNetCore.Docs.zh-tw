@@ -5,14 +5,14 @@ description: 逐步建置 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2019
+ms.date: 06/12/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: d48b891127f4db929b631c0ddf199c07658e604c
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
+ms.openlocfilehash: df27dad17133f287b1c73dc308b4cc69426e0a63
+ms.sourcegitcommit: 739a3d7ca4fd2908ea0984940eca589a96359482
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65970128"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67040719"
 ---
 # <a name="build-your-first-blazor-app"></a>組建第一個 Blazor 應用程式
 
@@ -26,7 +26,7 @@ ms.locfileid: "65970128"
 
 1. 在 *Pages* 資料夾中瀏覽至每個應用程式的三個頁面：首頁、計數器和擷取資料。 這些頁面會透過 Razor 元件檔案 *Index.razor*、*Counter.razor* 及 *FetchData.razor* 來實作。
 
-1. 在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 讓網頁中的計數器遞增通常需要撰寫 JavaScript，但 Blazor 提供更好的 C# 使用方法。
+1. 在 [計數器] 頁面上，選取 [按我]  按鈕以在不重新整理頁面的情況下讓計數器遞增。 讓網頁中的計數器遞增通常需要撰寫 JavaScript，但 Blazor 提供更好的 C# 使用方法。
 
 1. 檢查 *Counter.razor* 檔案中「計數器」元件的實作。
 
@@ -36,9 +36,9 @@ ms.locfileid: "65970128"
 
    「計數器」元件的 UI 是使用 HTML 來定義的。 動態轉譯邏輯 (例如迴圈、條件、運算式) 是使用內嵌的 C# 語法 (稱為 [Razor](xref:mvc/views/razor)) 來新增的。 HTML 標記和 C# 轉譯邏輯會在組建時轉換為元件類別。 所產生 .NET 類別的名稱會與檔案名稱相符。
 
-   元件類別的成員均定義於 `@functions` 區塊中。 在 `@functions` 區塊中，會指定元件狀態 (屬性、欄位) 來處理事件或定義其他元件邏輯。 然後會使用這些成員作為元件轉譯邏輯的一部分，並用於處理事件。
+   元件類別的成員均定義於 `@code` 區塊中。 在 `@code` 區塊中，會指定元件狀態 (屬性、欄位) 來處理事件或定義其他元件邏輯。 然後會使用這些成員作為元件轉譯邏輯的一部分，並用於處理事件。
 
-   選取 [Click me] \(按我\) 按鈕時：
+   選取 [Click me] \(按我\)  按鈕時：
 
    * 會呼叫「計數器」元件的已註冊 `onclick` 處理常式 (`IncrementCount` 方法)。
    * 「計數器」元件會重新產生其轉譯樹狀結構。
@@ -49,7 +49,7 @@ ms.locfileid: "65970128"
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Counter2.razor?highlight=14)]
 
-1. 重建並執行應用程式以查看變更。 選取 [按我] 按鈕。 計數器會遞增二。
+1. 重建並執行應用程式以查看變更。 選取 [按我]  按鈕。 計數器會遞增二。
 
 ## <a name="use-components"></a>使用元件
 
@@ -69,7 +69,7 @@ ms.locfileid: "65970128"
 
 元件也可以有參數。 定義元件參數時，是在元件類別上使用以 `[Parameter]` 裝飾的非公開屬性來定義。 使用這些屬性來指定標記中元件的引數。
 
-1. 更新元件的 `@functions` C# 程式碼：
+1. 更新元件的 `@code` C# 程式碼：
 
    * 新增以 `[Parameter]` 屬性裝飾的 `IncrementAmount` 屬性。
    * 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
@@ -89,7 +89,7 @@ ms.locfileid: "65970128"
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
-1. 重新載入索引元件。 每次選取 [Click me] \(按我\) 按鈕時，計數器都會以 10 遞增。 計數器元件中的計數器會繼續遞增一。
+1. 重新載入索引元件。 每次選取 [Click me] \(按我\)  按鈕時，計數器都會以 10 遞增。 計數器元件中的計數器會繼續遞增一。
 
 ## <a name="route-to-components"></a>路由到元件
 
@@ -152,21 +152,13 @@ FetchData 元件會使用插入的服務作為 `ForecastService`，以擷取 `We
 
 1. 重建並執行應用程式。 瀏覽新的 [待辦事項] 頁面，以確認 Todo 元件的連結可以運作。
 
-1. 若為建置 Blazor 伺服器端應用程式，請將應用程式的命名空間新增至 *\_Imports.razor* 檔案。 下列 `@using` 陳述式會假設應用程式的命名空間是 `WebApplication`：
-
-   ```cshtml
-   @using WebApplication
-   ```
-   
-   Blazor 用戶端應用程式根據預設會在 *\_Imports.razor* 檔案中包含應用程式的命名空間。
-
 1. 將 *TodoItem.cs* 檔案新增至專案的根目錄，以保存代表待辦事項的類別。 請使用下列 `TodoItem` 類別的 C# 程式碼：
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/TodoItem.cs)]
 
 1. 返回待辦事項元件 (*Pages/Todo.razor*)：
 
-   * 在 `@functions` 區塊中新增待辦事項的欄位。 「待辦事項」元件會使用此欄位來維護待辦事項清單的狀態。
+   * 在 `@code` 區塊中新增待辦事項的欄位。 「待辦事項」元件會使用此欄位來維護待辦事項清單的狀態。
    * 新增未排序的清單標記和 `foreach` 迴圈，將每個待辦事項轉譯為清單項目。
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo4.razor?highlight=5-10,12-14)]
@@ -175,9 +167,9 @@ FetchData 元件會使用插入的服務作為 `ForecastService`，以擷取 `We
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo5.razor?highlight=12-13)]
 
-1. 重建並執行應用程式。 選取 [Add todo] \(新增待辦事項\) 按鈕時，不會發生任何情況，因為事件處理常式並未連接至這個按鈕。
+1. 重建並執行應用程式。 選取 [Add todo] \(新增待辦事項\)  按鈕時，不會發生任何情況，因為事件處理常式並未連接至這個按鈕。
 
-1. 將 `AddTodo` 方法新增至「待辦事項」元件，然後使用 `onclick` 屬性將它註冊用於按鈕點選：
+1. 將 `AddTodo` 方法新增至「待辦事項」元件，然後使用 `@onclick` 屬性將它註冊用於按鈕點選：
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo6.razor?highlight=2,7-10)]
 
@@ -188,7 +180,7 @@ FetchData 元件會使用插入的服務作為 `ForecastService`，以擷取 `We
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
 
    ```cshtml
-   <input placeholder="Something todo" bind="@newTodo" />
+   <input placeholder="Something todo" @bind="@newTodo" />
    ```
 
 1. 更新 `AddTodo` 方法，將 `TodoItem` 與指定的標題新增至清單。 請將 `newTodo` 設定為空字串，以清除文字輸入的值：

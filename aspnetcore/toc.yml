@@ -166,10 +166,10 @@
       uid: fundamentals/middleware/index
     - name: 主機
       items:
-        - name: Web 主機
-          uid: fundamentals/host/web-host
         - name: 一般主機
           uid: fundamentals/host/generic-host
+        - name: Web 主機
+          uid: fundamentals/host/web-host
     - name: 伺服器
       uid: fundamentals/servers/index
     - name: Configuration

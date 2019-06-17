@@ -5,12 +5,12 @@ description: 示範如何以 EF Core 來建立、讀取、更新、刪除
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: 43d133c61c0387ebcb4bcb2d22c800588d8534c3
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: ec22c82b3b70399017b5b9aa61896440db647062
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65516913"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750020"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 
@@ -64,7 +64,7 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index1.cshtml?name=snippet)]
 
-執行應用程式並選取 [詳細資料] 連結。 URL 的格式為 `http://localhost:5000/Students/Details?id=2` 。 使用 (`?id=2`) 查詢字串來傳遞 Student ID。
+執行應用程式並選取 [詳細資料]  連結。 URL 的格式為 `http://localhost:5000/Students/Details?id=2` 。 使用 (`?id=2`) 查詢字串來傳遞 Student ID。
 
 更新 [編輯]、[詳細資料] 和 [刪除] Razor 頁面，以使用 `"{id:int}"` 路由範本。 將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。
 
@@ -102,7 +102,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 上述程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 針對每個註冊，會顯示課程標題及成績。 課程標題會從儲存於 Enrollments 實體之 `Course` 導覽屬性中的課程 (Course) 實體擷取。
 
-執行應用程式，選取 [Students] 索引標籤，然後按一下學生的 [詳細資料] 連結。 將會顯示所選取學生的課程及成績清單。
+執行應用程式，選取 [Students]  索引標籤，然後按一下學生的 [詳細資料]  連結。 將會顯示所選取學生的課程及成績清單。
 
 ## <a name="update-the-create-page"></a>更新 [建立] 頁面
 
@@ -123,7 +123,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 在上述範例中：
 
 * 第二個引數 (`"student", // Prefix`) 是使用來查閱值的前置詞。 不區分大小寫。
-* 已張貼的表單值會使用[模型繫結](xref:mvc/models/model-binding#how-model-binding-works)轉換至 `Student` 模型中的類型。
+* 已張貼的表單值會使用[模型繫結](xref:mvc/models/model-binding)轉換至 `Student` 模型中的類型。
 
 <a id="overpost"></a>
 

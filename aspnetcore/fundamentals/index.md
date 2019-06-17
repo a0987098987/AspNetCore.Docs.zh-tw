@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/11/2019
 uid: fundamentals/index
-ms.openlocfilehash: 9c7bc25d813ad17825ef03f5176882993cc2dd63
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: 3cf311f8e6be4ed12c79ceecc15ccc1babfb0117
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610323"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034867"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -22,11 +22,12 @@ ms.locfileid: "65610323"
 
 `Startup` 類別是：
 
-* 設定任何應用程式所需服務的位置。
+* 已設定應用程式所需的服務。
 * 定義要求處理管線的位置。
 
-* 設定 (或「註冊」) 服務的程式碼會新增至 `Startup.ConfigureServices` 方法。 「服務」是應用程式所使用的元件。 例如，Entity Framework Core 內容物件便是一項服務。
-* 設定要求處理管線的程式碼會新增至 `Startup.Configure` 方法。 管線是由一系列「中介軟體」元件所組成。 例如，中介軟體可能會處理靜態檔案的要求，或是將 HTTP 要求重新導向至 HTTPS。 每個中介軟體會在 `HttpContext` 上執行非同步操作，然後叫用管線中下一個中介軟體或終止要求。
+「服務」  是應用程式所使用的元件。 例如，記錄元件即為一項服務。 設定 (或「註冊」  ) 服務的程式碼會新增至 `Startup.ConfigureServices` 方法。
+
+要求處理管線由一系列*中介軟體*元件所組成。 例如，中介軟體可能會處理靜態檔案的要求，或是將 HTTP 要求重新導向至 HTTPS。 每個中介軟體會在 `HttpContext` 上執行非同步操作，然後叫用管線中下一個中介軟體或終止要求。 設定要求處理管線的程式碼會新增至 `Startup.Configure` 方法。
 
 以下是 `Startup` 類別範例：
 
@@ -60,11 +61,9 @@ ASP.NET Core 包含一組豐富的內建中介軟體，您也可以撰寫自訂�
 
 如需詳細資訊，請參閱<xref:fundamentals/middleware/index>。
 
-<a id="host"/>
+## <a name="host"></a>主機
 
-## <a name="the-host"></a>主機
-
-ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封裝所有應用程式資源的物件，例如：
+ASP.NET Core 應用程式會在啟動時建置一個「主機」  。 主機是封裝所有應用程式資源的物件，例如：
 
 * HTTP 伺服器實作
 * 中介軟體元件
@@ -74,61 +73,45 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 
 在單一物件中包含所有應用程式相互依存資源的主要理由便是生命週期管理：控制應用程式的啟動及順利關機。
 
-建立主機的程式碼位於 `Program.Main` 中，並遵循 [builder pattern](https://wikipedia.org/wiki/Builder_pattern) (產生器模式)。 會呼叫方法來設定每個作為主機一部分的資源。 此外還會呼叫產生器方法，一起具現化主機物件。
-
 ::: moniker range=">= aspnetcore-3.0"
 
-`CreateHostBuilder` 是特殊名稱，建立器方法可藉此向外部元件 (例如 [Entity Framework](/ef/core/)) 表明其身分。
+可以使用兩種主機：一般主機與 Web 主機。 建議您使用一般主機，Web 主機只適用於回溯相容性。
 
-在 ASP.NET Core 3.0 或更新版本中，您可以在 Web 應用程式中使用一般 Web 主機 (`Host` 類別) 或 Web 主機 (`WebHost` 類別)。 建議您使用一般主機，Web 主機則適用於回溯相容性。
+建立主機的程式碼位於 `Program.Main` 中：
 
-架構會提供 `CreateDefaultBuilder` 和 `ConfigureWebHostDefaults` 方法來設定具有常用選項的主機，例如下列項目：
+[!code-csharp[](index/snapshots/3.x/Program1.cs)]
+
+`CreateDefaultBuilder` 和 `ConfigureWebHostDefaults` 方法會設定具備一般常用選項的主機，如下所示：
 
 * 使用 [Kestrel](#servers) 作為網頁伺服器，並啟用 IIS 整合。
 * 從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。
 * 將記錄輸出傳送到主控台及偵錯提供者。
 
-以下是建置主機的範例程式碼。 使用常用選項設定主機的方法已在其中醒目提示：
-
-[!code-csharp[](index/snapshots/3.x/Program1.cs?highlight=9-10)]
-
-如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與 <xref:fundamentals/host/web-host>。
+如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-`CreateWebHostBuilder` 是特殊名稱，建立器方法可藉此向外部元件 (例如 [Entity Framework](/ef/core/)) 表明其身分。
+可以使用兩種主機：Web 主機與一般主機。 在 ASP.NET Core 2.x 中，一般主機僅適用於非 Web 案例。
 
-ASP.NET Core 2.x 會針對 Web 應用程式使用 Web 主機 (`WebHost` 類別)。 架構會提供 `CreateDefaultBuilder` 來設定具有常用選項的主機，例如下列項目：
+建立主機的程式碼位於 `Program.Main` 中：
+
+[!code-csharp[](index/snapshots/2.x/Program1.cs)]
+
+`CreateDefaultBuilder` 方法會設定具備一般常用選項的主機，如下所示：
 
 * 使用 [Kestrel](#servers) 作為網頁伺服器，並啟用 IIS 整合。
 * 從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。
 * 將記錄輸出傳送到主控台及偵錯提供者。
-
-以下是建置主機的範例程式碼：
-
-[!code-csharp[](index/snapshots/2.x/Program1.cs?highlight=9)]
 
 如需詳細資訊，請參閱<xref:fundamentals/host/web-host>。
 
 ::: moniker-end
 
-### <a name="advanced-host-scenarios"></a>進階主機案例
+### <a name="non-web-scenarios"></a>非 Web 案例
 
-::: moniker range=">= aspnetcore-3.0"
-
-一般主機可供任何 .NET Core 應用程式使用 &mdash; 而非僅限 ASP.NET Core 應用程式。 一般主機 (`Host` 類別) 允許其他類型的應用程式使用交叉剪輯架構延伸模組，例如記錄、DI、設定與應用程式存留期管理。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-Web 主機設計為包含 HTTP 伺服器實作，但在其他類型的 .NET 應用程式中並不需要這類實作。 從 ASP.NET Core 2.1 開始，一般主機 (`Host` 類別) 可供任何 .NET Core 應用程式使用 &mdash; 而非僅限 ASP.NET Core 應用程式。 一般主機允許其他類型的應用程式使用交叉剪輯架構延伸模組，例如記錄、DI、設定與應用程式存留期管理。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
-
-::: moniker-end
-
-您也可以使用主機來執行背景工作。 如需詳細資訊，請參閱<xref:fundamentals/host/hosted-services>。
+一般主機允許其他類型的應用程式，使用交叉剪輯架構延伸模組，例如記錄、相依性插入 (DI)、設定與應用程式存留期管理。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與 <xref:fundamentals/host/hosted-services>。
 
 ## <a name="servers"></a>伺服器
 
@@ -181,7 +164,7 @@ ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 �
 
 ## <a name="configuration"></a>Configuration
 
-ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，以成對名稱和數值的形式取得設定。 您可以使用各種來源的內建組態提供者，例如 *.json* 檔案、*.xml* 檔案、環境變數及命令列引數。 您也可以撰寫自訂組態提供者。
+ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，以成對名稱和數值的形式取得設定。 您可以使用各種來源的內建組態提供者，例如 *.json* 檔案、 *.xml* 檔案、環境變數及命令列引數。 您也可以撰寫自訂組態提供者。
 
 例如，您可以指定組態來自 *appsettings.json* 和環境變數。 然後當要求 *ConnectionString* 的值時，架構便會先在 *appsettings.json* 檔案中尋找。 若有找到值，但在環境變數中也存在該值，則會優先使用來自環境變數的值。
 
@@ -191,7 +174,7 @@ ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，�
 
 ## <a name="options"></a>選項
 
-在可能的情況下，ASP.NET Core 會遵循「選項模式」來儲存及擷取組態值。 選項模式使用類別來代表一組相關的設定。
+在可能的情況下，ASP.NET Core 會遵循「選項模式」  來儲存及擷取組態值。 選項模式使用類別來代表一組相關的設定。
 
 例如，下列程式碼會設定 WebSocket 選項：
 
@@ -208,7 +191,7 @@ app.UseWebSockets(options);
 
 ## <a name="environments"></a>環境
 
-執行環境 (例如「開發」、「預備」及「生產」) 是 ASP.NET Core 中的第一級概念。 您可以透過設定 `ASPNETCORE_ENVIRONMENT` 環境變數，指定應用程式執行的環境。 ASP.NET Core 會在應用程式啟動時讀取環境變數，然後將值儲存在 `IHostingEnvironment` 實作中。 環境物件可在應用程式中的任何位置，透過 DI 使用。
+執行環境 (例如「開發」  、「預備」  及「生產」  ) 是 ASP.NET Core 中的第一級概念。 您可以透過設定 `ASPNETCORE_ENVIRONMENT` 環境變數，指定應用程式執行的環境。 ASP.NET Core 會在應用程式啟動時讀取環境變數，然後將值儲存在 `IHostingEnvironment` 實作中。 環境物件可在應用程式中的任何位置，透過 DI 使用。
 
 下列 `Startup` 類別的範例程式碼會設定應用程式，只在於「開發」環境中執行時提供詳細的錯誤資訊：
 
@@ -240,7 +223,7 @@ ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提�
 
 ## <a name="routing"></a>路由
 
-「路由」是一種對應到處理常式的 URL 模式。 處理常式通常是 Razor 頁面、MVC 控制器中的動作方法，或是中介軟體。 ASP.NET Core 路由可讓您控制您應用程式使用的 URL。
+「路由」  是一種對應到處理常式的 URL 模式。 處理常式通常是 Razor 頁面、MVC 控制器中的動作方法，或是中介軟體。 ASP.NET Core 路由可讓您控制您應用程式使用的 URL。
 
 如需詳細資訊，請參閱<xref:fundamentals/routing>。
 
@@ -287,6 +270,6 @@ ASP.NET Core 具有處理錯誤的內建功能，例如：
 
 Web 根目錄 (也稱為 *webroot*) 是公用、靜態資源 (例如 CSS、JavaScript 和影像檔) 的基礎路徑。 根據預設，靜態檔案中介軟體只會提供來自 Web 根目錄 (及其子目錄) 的檔案。 Web 根目錄路徑預設為 *{內容根}/wwwroot*，但您可以在[建置主機](#host)時指定不同的位置。
 
-在 Razor (*.cshtml*) 檔案中，波狀符號與正斜線 `~/` 會指向 Web 根目錄。 開頭為 `~/` 的路徑稱為虛擬路徑。
+在 Razor ( *.cshtml*) 檔案中，波狀符號與正斜線 `~/` 會指向 Web 根目錄。 開頭為 `~/` 的路徑稱為虛擬路徑。
 
 如需詳細資訊，請參閱<xref:fundamentals/static-files>。

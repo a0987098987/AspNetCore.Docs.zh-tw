@@ -5,12 +5,12 @@ description: 深入了解 ASP.NET Core，以及如何設定金鑰的儲存體位
 ms.author: riande
 ms.date: 06/11/2019
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 49b068480fe7ba0a9b338aa5f5b7fc19fb98528f
-ms.sourcegitcommit: f5762967df3be8b8c868229e679301f2f7954679
+ms.openlocfilehash: 19d51399e24d085f7c34f70098ca02cbba7a888f
+ms.sourcegitcommit: 28a2874765cefe9eaa068dceb989a978ba2096aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048095"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67167034"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core 中的金鑰儲存提供者
 
@@ -37,7 +37,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [Microsoft.AspNetCore.DataProtection.AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/)套件可讓在 Azure Blob 儲存體中儲存的資料保護金鑰。 可以跨數個執行個體的 web 應用程式共用金鑰。 應用程式可以共用驗證 cookie 或 CSRF 防護，在多部伺服器。
 
-若要設定 Azure Blob 儲存體提供者，呼叫其中一種[PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)多載。 
+若要設定 Azure Blob 儲存體提供者，呼叫其中一種[PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)多載。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -47,7 +47,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-如果 web 應用程式正在執行的 Azure 服務，驗證權杖可以自動使用來建立[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)。 
+如果 web 應用程式正在執行的 Azure 服務，驗證權杖可以自動使用來建立[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)。
 
 ```csharp
 var tokenProvider = new AzureServiceTokenProvider();
@@ -149,7 +149,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[Main](key-storage-providers/sample/MyKeysContext.cs)]
 
-建立`DataProtectionKeys`資料表。 
+建立`DataProtectionKeys`資料表。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 

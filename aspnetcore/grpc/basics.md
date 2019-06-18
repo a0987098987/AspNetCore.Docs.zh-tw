@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/31/2019
 uid: grpc/basics
-ms.openlocfilehash: 5a88bd0e9f789058b3606691c5ebd9a74325ac9b
-ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
+ms.openlocfilehash: 00772144cb484b78a256f178642463577d316be2
+ms.sourcegitcommit: 516f166c5f7cec54edf3d9c71e6e2ba53fb3b0e5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66376350"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67196354"
 ---
 # <a name="grpc-services-with-c"></a>使用 c# 的 gRPC 服務\#
 
@@ -38,7 +38,7 @@ gRPC 使用合約優先方法 API 的開發。 依預設會以介面設計語言
 
 *.Proto*檔案包含在專案中將它加入至`<Protobuf>`項目群組：
 
-[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-11)]
+[!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
 
 ## <a name="c-tooling-support-for-proto-files"></a>C#.Proto 檔案的工具支援
 
@@ -50,7 +50,7 @@ gRPC 使用合約優先方法 API 的開發。 依預設會以介面設計語言
 
 此套件所需的伺服器和用戶端專案中。 `Grpc.Tools` 您可以加入 Visual Studio 中使用封裝管理員，或新增`<PackageReference>`souboru projektu:
 
-[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=1&range=17)]
+[!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=1&range=15)]
 
 執行階段不需要工具套件，因此相依性會標示為 `PrivateAssets="All"`。
 
@@ -68,7 +68,7 @@ gRPC 使用合約優先方法 API 的開發。 依預設會以介面設計語言
 
 根據預設，為每個產生伺服器和用戶端的資產 *.proto*檔案中包含`<Protobuf>`項目群組。 若要確保只有伺服器資產在伺服器專案中，產生`GrpcServices`屬性設為`Server`。
 
-[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-11)]
+[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
 
 同樣地，此屬性設為`Client`用戶端專案中。
 

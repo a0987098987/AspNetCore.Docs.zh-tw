@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/08/2019
 uid: grpc/aspnetcore
-ms.openlocfilehash: 190004de8b70a463f9f58a25164d5a86ecc266d6
-ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
+ms.openlocfilehash: ca06478e6168c59d9abf43d99213fa8a7091e178
+ms.sourcegitcommit: 756114cab5e24e99ec23de62b0c1c16b15197ac2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66376359"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67169524"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>搭配 ASP.NET Core 的 gRPC 服務
 
@@ -45,11 +45,11 @@ gRPC 需要下列封裝：
 
 使用啟用 gRPC`AddGrpc`方法：
 
-[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Startup.cs?name=snippet&highlight=5)]
+[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Startup.cs?name=snippet&highlight=7)]
 
 每個 gRPC 服務新增至路由的管線透過`MapGrpcService`方法：
 
-[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Startup.cs?name=snippet&highlight=21)]
+[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Startup.cs?name=snippet&highlight=24)]
 
 ASP.NET Core 中介軟體和功能共用路由的管線，因此可以設定應用程式提供額外的要求處理常式。 與設定的 gRPC 服務的同時處理其他要求處理常式，例如 MVC 控制器。
 
@@ -76,7 +76,7 @@ GRPC API 提供存取某些 HTTP/2 訊息資料，例如方法、 主機、 標�
 
 `ServerCallContext` 不會提供完整存取權`HttpContext`中所有的 ASP.NET Api。 `GetHttpContext`擴充方法提供的完整存取權`HttpContext`表示 ASP.NET Api 中的基礎 HTTP/2 訊息：
 
-[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Services/GreeterService.cs?name=snippet1)]
+[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Services/GreeterService.cs?name=snippet)]
 
 ## <a name="additional-resources"></a>其他資源
 

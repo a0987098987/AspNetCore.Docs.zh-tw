@@ -3,20 +3,26 @@ title: 將驗證和身分識別移轉至 ASP.NET Core 2.0
 author: scottaddie
 description: 本文概述了最常見的步驟移轉 ASP.NET Core 1.x 驗證和身分識別為 ASP.NET Core 2.0。
 ms.author: scaddie
-ms.date: 12/18/2018
+ms.date: 06/13/2019
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 086deac51af186012315d5b6a1236c92c8980037
-ms.sourcegitcommit: 5d384db2fa9373a93b5d15e985fb34430e49ad7a
+ms.openlocfilehash: 3e8bc75b87a85159c9668b52eea32bb7d700be6c
+ms.sourcegitcommit: 516f166c5f7cec54edf3d9c71e6e2ba53fb3b0e5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66039246"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67196375"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>將驗證和身分識別移轉至 ASP.NET Core 2.0
 
 藉由[Scott Addie](https://github.com/scottaddie)和[Hao 是一隻](https://github.com/HaoK)
 
-ASP.NET Core 2.0 具有新的模型來驗證和[識別](xref:security/authentication/identity)可簡化使用服務的組態。 使用驗證或識別的 ASP.NET Core 1.x 應用程式可以更新為使用新的模型，如下所述。
+ASP.NET Core 2.0 具有新的模型進行驗證並[識別](xref:security/authentication/identity)，可簡化使用服務組態。 使用驗證或識別的 ASP.NET Core 1.x 應用程式可以更新為使用新的模型，如下所述。
+
+## <a name="update-namespaces"></a>更新命名空間
+
+在 1.x 中，類別這類`IdentityRole`並`IdentityUser`中找不到`Microsoft.AspNetCore.Identity.EntityFrameworkCore`命名空間。
+
+在 2.0 中，<xref:Microsoft.AspNetCore.Identity>命名空間成為數個這類類別的新家。 使用預設的身分識別程式碼，包括受影響的類別`ApplicationUser`和`Startup`。 調整您`using`陳述式來解析受影響的參考。
 
 <a name="auth-middleware"></a>
 
@@ -68,7 +74,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 }
 ```
 
-`UseAuthentication`方法會將單一驗證中介軟體元件，負責自動驗證和遠端驗證要求的處理。 它會取代所有個別的中介軟體元件的單一、 共同的中介軟體元件。
+`UseAuthentication`方法會將單一驗證中介軟體元件，也就是負責自動驗證和遠端驗證要求的處理。 它會取代所有個別的中介軟體元件的單一、 共同的中介軟體元件。
 
 以下是每個主要的驗證配置的 2.0 移轉指示。
 
@@ -309,15 +315,15 @@ services.AddAuthentication(options =>
 services.AddAuthentication(IISDefaults.AuthenticationScheme);
 ```
 
-若未設定的預設配置據以防止授權要求，要求無法運作。
+若要設定的預設配置失敗可防止授權要求，要求無法運作。
 
 <a name="identity-cookie-options"></a>
 
 ## <a name="identitycookieoptions-instances"></a>IdentityCookieOptions 執行個體
 
-2.0 變更的副作用是切換到使用名為選項，而不是 cookie 選項執行個體。 不再能夠自訂身分識別的 cookie 配置名稱。
+2\.0 變更的副作用是切換到使用名為選項，而不是 cookie 選項執行個體。 不再能夠自訂身分識別的 cookie 配置名稱。
 
-比方說，1.x 專案使用[建構函式插入](xref:mvc/controllers/dependency-injection#constructor-injection)傳遞`IdentityCookieOptions`參數插入*AccountController.cs*。 從提供的執行個體來存取外部的 cookie 驗證配置：
+比方說，1.x 專案使用[建構函式插入](xref:mvc/controllers/dependency-injection#constructor-injection)傳遞`IdentityCookieOptions`參數插入*AccountController.cs*並*ManageController.cs*。 從提供的執行個體來存取外部的 cookie 驗證配置：
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor&highlight=4,11)]
 
@@ -325,9 +331,17 @@ services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor)]
 
-`IdentityConstants.ExternalScheme`常數可以直接使用：
+1.x 專案中使用`_externalCookieScheme`欄位，如下所示：
+
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
+
+在 2.0 專案中，以下列內容取代上述程式碼。 `IdentityConstants.ExternalScheme`常數可以直接使用。
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
+
+解決新增`SignOutAsync`呼叫匯入下列命名空間：
+
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationImport)]
 
 <a name="navigation-properties"></a>
 
@@ -389,21 +403,21 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 ## <a name="replace-getexternalauthenticationschemes"></a>取代 GetExternalAuthenticationSchemes
 
-同步方法`GetExternalAuthenticationSchemes`移除是因為希望的非同步版本。 1.x 專案中有下列的程式碼*ManageController.cs*:
+同步方法`GetExternalAuthenticationSchemes`移除是因為希望的非同步版本。 1.x 專案中有下列的程式碼*Controllers/ManageController.cs*:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemes)]
 
-這個方法會出現在*Login.cshtml*太：
+這個方法會出現在*Views/Account/Login.cshtml*太：
 
-[!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Account/Login.cshtml?range=62,75-84)]
+[!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Account/Login.cshtml?name=snippet_GetExtAuthNSchemes&highlight=2)]
 
-在 2.0 專案中，使用`GetExternalAuthenticationSchemesAsync`方法：
+在 2.0 專案中，使用<xref:Microsoft.AspNetCore.Identity.SignInManager`1.GetExternalAuthenticationSchemesAsync*>方法。 中的變更*ManageController.cs*類似下列的程式碼：
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemesAsync)]
 
 在  *Login.cshtml*，則`AuthenticationScheme`中存取屬性`foreach`迴圈變更為`Name`:
 
-[!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Views/Account/Login.cshtml?range=62,75-84)]
+[!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Views/Account/Login.cshtml?name=snippet_GetExtAuthNSchemesAsync&highlight=2,19)]
 
 <a name="property-change"></a>
 
@@ -421,4 +435,4 @@ A`ManageLoginsViewModel`中使用物件`ManageLogins`動作*ManageController.cs*
 
 ## <a name="additional-resources"></a>其他資源
 
-如需其他詳細資料和討論，請參閱[Auth 2.0 討論](https://github.com/aspnet/Security/issues/1338)GitHub 上的提出問題。
+如需詳細資訊，請參閱 < [Auth 2.0 討論](https://github.com/aspnet/Security/issues/1338)GitHub 上的提出問題。

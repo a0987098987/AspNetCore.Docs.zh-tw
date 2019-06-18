@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/redis-backplane
-ms.openlocfilehash: 9d2a942dba6abe669126efee7f2b3cdd6560658e
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: adf9bbce1353fd811a4044e173533f76bc4193de
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087658"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152914"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>設定 ASP.NET Core SignalR 向外延展 Redis 後擋板
 
@@ -184,9 +184,9 @@ services.AddSignalR()
 
 ::: moniker-end
 
-## <a name="clustering"></a>群集
+## <a name="redis-clustering"></a>Redis 叢集
 
-叢集是使用多個 Redis 伺服器達到高可用性的方法。 叢集未正式支援，但可能會運作。
+[Redis 叢集](https://redis.io/topics/cluster-spec)是使用多個 Redis 伺服器達到高可用性的方法。 叢集未正式支援，但可能會運作。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -4,14 +4,14 @@ author: scottaddie
 description: 了解如何藉由套用統合和縮製技術最佳化的 ASP.NET Core web 應用程式中的靜態資源。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/10/2019
+ms.date: 06/17/2019
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: ba01d365a25dfbd13fed89263d7489b2ce2a8771
-ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
+ms.openlocfilehash: c3ec67d9f5c2b8eb44b5ced911ccfd0fa40a52a7
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65535923"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152777"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>配套並縮短在 ASP.NET Core 中的靜態資產
 
@@ -265,7 +265,7 @@ Visual Studio [Bundler & Minifier](https://marketplace.visualstudio.com/items?it
 > [!NOTE]
 > Microsoft 提供不支援的 GitHub 上的社群導向專案所屬 Bundler & Minifier 延伸模組。 問題應該提報[此處](https://github.com/madskristensen/BundlerMinifier/issues)。
 
-以滑鼠右鍵按一下*bundleconfig.json*方案總管 中的檔案，然後選取**Bundler & Minifier** > **轉換至 Gulp...**:
+以滑鼠右鍵按一下*bundleconfig.json*方案總管 中的檔案，然後選取**Bundler & Minifier** > **轉換至 Gulp...** :
 
 ![轉換至 Gulp 的操作功能表項目](../client-side/bundling-and-minification/_static/convert-to-gulp.png)
 
@@ -286,6 +286,9 @@ npm i -g gulp-cli
 如果 Visual Studio 和/或 Bundler & Minifier 擴充功能無法使用，以手動方式將轉換。
 
 新增*package.json*檔案，以下列`devDependencies`，至專案根目錄：
+
+> [!WARNING]
+> `gulp-uglify`模組不支援 ECMAScript (ES) 2015年 / ES6 和更新版本。 安裝[gulp terser](https://www.npmjs.com/package/gulp-terser)而不是`gulp-uglify`使用 ES2015 / ES6 或更新版本。
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/package.json?range=5-13)]
 

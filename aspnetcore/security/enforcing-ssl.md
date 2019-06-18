@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: 8d48877153d6d75348e29299c669125904236de8
-ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
+ms.openlocfilehash: 08ce50775d1b5348cb0528a1724cec2e5c72dae2
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692599"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152902"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制使用 ASP.NET Core 中的 HTTPS
 
@@ -24,11 +24,32 @@ ms.locfileid: "66692599"
 
 沒有可用的 API 可以防止用戶端第一次要求中傳送機密資料。
 
+::: moniker range="< aspnetcore-3.0"
+
 > [!WARNING]
+> ## <a name="api-projects"></a>API 專案
+>
 > 請勿**未**使用[RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute)接收機密資訊的 Web Api 上。 `RequireHttpsAttribute` 若要從 HTTP 至 HTTPS 的瀏覽器重新導向，會使用 HTTP 狀態碼。 API 用戶端可能不了解，或是遵循從 HTTP 重新導向至 HTTPS。 此類用戶端可能會透過 HTTP 傳送資訊。 Web Api 應執行下列之一：
 >
 > * 不在 HTTP 上接聽。
 > * 關閉與狀態碼 400 （不正確的要求） 的連線，並不會提供要求。
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+> [!WARNING]
+> ## <a name="api-projects"></a>API 專案
+>
+> 請勿**未**使用[RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute)接收機密資訊的 Web Api 上。 `RequireHttpsAttribute` 若要從 HTTP 至 HTTPS 的瀏覽器重新導向，會使用 HTTP 狀態碼。 API 用戶端可能不了解，或是遵循從 HTTP 重新導向至 HTTPS。 此類用戶端可能會透過 HTTP 傳送資訊。 Web Api 應執行下列之一：
+>
+> * 不在 HTTP 上接聽。
+> * 關閉與狀態碼 400 （不正確的要求） 的連線，並不會提供要求。
+>
+> ## <a name="hsts-and-api-projects"></a>HSTS 和 API 專案
+>
+> 預設 API 專案不包含[HSTS](#hsts)因為 HSTS 通常是瀏覽器的唯一指令。 其他呼叫端，例如電話或桌面應用程式，請勿**不**遵循指示。 甚至在瀏覽器中，呼叫一次驗證透過 HTTP API 會在不安全的網路上有風險。 安全的方法是設定為只接聽及回應透過 HTTPS 的 API 專案。
+
+::: moniker-end
 
 ## <a name="require-https"></a>需要 HTTPS
 
@@ -159,6 +180,8 @@ public void ConfigureServices(IServiceCollection services)
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
+
+<a name="hsts"></a>
 
 ## <a name="http-strict-transport-security-protocol-hsts"></a>HTTP Strict Transport 安全性通訊協定 (HSTS)
 

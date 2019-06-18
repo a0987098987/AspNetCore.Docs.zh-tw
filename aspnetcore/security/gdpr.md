@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/05/2019
 uid: security/gdpr
-ms.openlocfilehash: 967f3246836c93a1af56f7109edb056220606b58
-ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
+ms.openlocfilehash: 1580187afef56e8e2f5be7a4bae32912e6305c5a
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66716344"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152857"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>ASP.NET Core 中的歐盟一般資料保護規定 (GDPR) 支援
 
@@ -32,7 +32,17 @@ ASP.NET Core 提供 Api 和範本，以協助符合某些[歐盟一般資料保�
 
 ## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>在範本產生的程式碼中的 ASP.NET Core GDPR 支援
 
+::: moniker range="< aspnetcore-2.2"
+
+Razor Pages 和 MVC 專案範本建立的專案具有 GDPR 或 cookie 同意不支援。 若要新增 GDPR，複製 ASP.NET Core 2.2 範本中產生的程式碼。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
 Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
+
+::: moniker-end
 
 * [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)並[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)中所設定`Startup`類別。
 * *\_CookieConsentPartial.cshtml* [部分檢視](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)。 **接受**按鈕包含在這個檔案。 當使用者按一下**接受**按鈕，同意將 cookie 提供。
@@ -105,7 +115,7 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 * 是最簡單且最安全的選項。
 * 讓資料庫可管理金鑰和加密。
 
-例如：
+例如:
 
 * Microsoft SQL 和 Azure SQL 提供[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption)(TDE)。
 * [SQL Azure 會將預設加密資料庫](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)

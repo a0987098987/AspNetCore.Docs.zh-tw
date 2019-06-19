@@ -4,14 +4,14 @@ author: juntaoluo
 description: 此教學課程會示範如何在 ASP.NET Core 上，建立 gRPC 服務與 gRPC 用戶端。 了解如何建立 gRPC 服務專案、編輯通訊協定檔案，以及新增雙工資料流呼叫。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 06/05/2019
+ms.date: 06/12/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 71e3321819eb7169f0896abe3e07849f59ea6fc7
-ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
+ms.openlocfilehash: 919db3f31310342657c89100a6e25e8293648a9f
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692526"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034814"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端與伺服器
 
@@ -86,13 +86,13 @@ ms.locfileid: "66692526"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 按 Ctrl+F5 執行 gRPC 服務，而不啟動偵錯工具。
+* 按 `Ctrl+F5` 執行 gRPC 服務，但不啟動偵錯工具。
 
   Visual Studio 會在命令提示字元中執行服務。
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* 使用 `dotnet run` 從命令列執行 gRPC 專案 GrpcGreeter。
+* 使用 `dotnet run` 從命令列執行 gRPC Greeter 專案 *GrpcGreeter*。
 
 <!-- End of combined VS/Mac tabs -->
 
@@ -112,7 +112,7 @@ info: Microsoft.Hosting.Lifetime[0]
 
 ### <a name="examine-the-project-files"></a>檢查專案檔
 
-GrpcGreeter 檔案：
+*GrpcGreeter* 專案檔：
 
 * *greet.proto*：*Protos/greet.proto* 檔案會定義 `Greeter` gRPC，並會用來產生 gRPC 伺服器資產。 如需詳細資訊，請參閱 [gRPC 簡介](xref:grpc/index)。
 * *Services* 資料夾：包含 `Greeter` 服務的實作。
@@ -153,13 +153,13 @@ code -r GrpcGreeterClient
 
 將下列套件新增至 gRPC 用戶端專案：
 
-* [Grpc.Core](https://www.nuget.org/packages/Grpc.Core)，包含 C 核心用戶端的 C# API。
+* [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client)，包含 .NET Core 用戶端。
 * [Google.Protobuf](https://www.nuget.org/packages/Google.Protobuf/)，包含 C# 的 protobuf 訊息 API。
 * [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/)，包含 protobuf 檔案的 C# 工具支援。 執行階段不需要工具套件，因此相依性會標示為 `PrivateAssets="All"`。
 
 ### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-使用套件管理員主控台 (PMC) 或 管理 NuGet 套件來安裝套件
+使用套件管理員主控台 (PMC) 或管理 NuGet 套件來安裝套件。
 
 #### <a name="pmc-option-to-install-packages"></a>安裝套件的 PMC 選項
 
@@ -168,7 +168,7 @@ code -r GrpcGreeterClient
 * 執行下列命令：
 
  ```powershell
-Install-Package Grpc.Core
+Install-Package Grpc.Net.Client
 Install-Package Google.Protobuf
 Install-Package Grpc.Tools
 ```
@@ -186,7 +186,7 @@ Install-Package Grpc.Tools
 從 [整合式終端]  執行下列命令：
 
 ```console
-dotnet add GrpcGreeterClient.csproj package Grpc.Core
+dotnet add GrpcGreeterClient.csproj package Grpc.Net.Client
 dotnet add GrpcGreeterClient.csproj package Google.Protobuf
 dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 ```
@@ -194,8 +194,8 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在 [Solution Pad]   > [新增套件]  中，以滑鼠右鍵按一下 [套件]  資料夾
-* 在搜尋方塊中輸入 **Grpc.Core**。
-* 從結果窗格中選取 [Grpc.Core]  套件，然後選取 [新增套件] 
+* 在搜尋方塊中輸入 **Grpc.Net.Client**。
+* 從結果窗格中選取 [Grpc.Net.Client]  套件，然後選取 [新增套件] 
 * 對 `Google.Protobuf` 與 `Grpc.Tools` 重複進行。
 
 ---
@@ -242,23 +242,21 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
 Greeter 用戶端建立者：
 
-* 具現化包含建立與 gRPC 服務連線資訊的 `Channel`。
-* 使用 `Channel` 建構 Greeter 用戶端：
+* 具現化包含建立 gRPC 服務連線資訊的 `HttpClient`。
+* 使用 `HttpClient` 建構 Greeter 用戶端：
 
-[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=4-6)]
+[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=3-9)]
 
 Greeter 用戶端會呼叫非同步的 `SayHello` 方法。 顯示 `SayHello` 呼叫的結果：
 
-[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=7-9)]
-
-當作業完成釋放所有資源時，關閉用戶端所使用的 `Channel`。
+[!code-cs[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=10-12)]
 
 ## <a name="test-the-grpc-client-with-the-grpc-greeter-service"></a>使用 gRPC Greeter 服務測試 gRPC 用戶端
 
 ### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 Greeter 服務中按下 Ctrl + F5 鍵，在不進行偵錯工具的情況下啟動伺服器。
-* 在 GrpcGreeterClient 專案中按下 Ctrl + F5 鍵，在不進行偵錯工具的情況下啟動伺服器。
+* 在 Greeter 服務中按下 `Ctrl+F5`，在不啟動偵錯工具的情況下啟動伺服器。
+* 在 `GrpcGreeterClient` 專案中按下 `Ctrl+F5`，在不啟動偵錯工具的情況下啟動伺服器。
 
 ### <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 

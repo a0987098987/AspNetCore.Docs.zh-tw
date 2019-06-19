@@ -4,24 +4,24 @@ author: ardalis
 description: 了解如何使用部分檢視來分割大型的標記檔案，並減少 ASP.NET Core 應用程式中跨 Web 網頁一般標記的重複。
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/06/2019
+ms.date: 06/12/2019
 uid: mvc/views/partial
-ms.openlocfilehash: e13b2ea974697bb12c121d1a70fb5079d6aadb2d
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 901fd52f89969141713e443890781a77308bd901
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887463"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034911"
 ---
 # <a name="partial-views-in-aspnet-core"></a>ASP.NET Core 中的部分檢視
 
 作者：[Steve Smith](https://ardalis.com/)、[Luke Latham](https://github.com/guardrex)、[Maher JENDOUBI](https://twitter.com/maherjend)、[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Scott Sauber](https://twitter.com/scottsauber)
 
-部分檢視是 [Razor](xref:mvc/views/razor) 標記檔案 (*.cshtml*)，可在另一個標記檔案的轉譯輸出*內*轉譯 HTML 輸出。
+部分檢視是 [Razor](xref:mvc/views/razor) 標記檔案 ( *.cshtml*)，可在另一個標記檔案的轉譯輸出*內*轉譯 HTML 輸出。
 
 ::: moniker range=">= aspnetcore-2.1"
 
-字詞「部分檢視」在開發 MVC 應用程式時使用，其中標記檔案稱為「檢視」；或是 Razor Pages 應用程式，其中標記檔案稱為「頁面」。 本主題一般將 MVC 檢視和 Razor Pages 頁面稱為「標記檔案」。
+字詞「部分檢視」  在開發 MVC 應用程式時使用，其中標記檔案稱為「檢視」  ；或是 Razor Pages 應用程式，其中標記檔案稱為「頁面」  。 本主題一般將 MVC 檢視和 Razor Pages 頁面稱為「標記檔案」  。
 
 ::: moniker-end
 
@@ -46,9 +46,9 @@ ms.locfileid: "64887463"
 
 ::: moniker range=">= aspnetcore-2.0"
 
-部分檢視是在「檢視」資料夾 (MVC) 或「頁面」資料夾 (Razor Pages) 中維護的 *.cshtml* 標記檔案。
+部分檢視是在「檢視」  資料夾 (MVC) 或「頁面」  資料夾 (Razor Pages) 中維護的 *.cshtml* 標記檔案。
 
-在 ASP.NET Core MVC 中，控制器的 <xref:Microsoft.AspNetCore.Mvc.ViewResult> 能夠傳回檢視或部分檢視。 已為 ASP.NET Core 2.2 中的 Razor Pages 規劃類似的功能。 在 Razor Pages 中，<xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 可以傳回 <xref:Microsoft.AspNetCore.Mvc.PartialViewResult>。 [參考部分檢視](#reference-a-partial-view)一節介紹參考和轉譯部分檢視。
+在 ASP.NET Core MVC 中，控制器的 <xref:Microsoft.AspNetCore.Mvc.ViewResult> 能夠傳回檢視或部分檢視。 在 Razor Pages 中，<xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 可能會傳回部分檢視，其以 <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> 物件表示。 [參考部分檢視](#reference-a-partial-view)一節介紹參考和轉譯部分檢視。
 
 不同於 MVC 檢視或網頁轉譯，部分檢視不會執行 *_ViewStart.cshtml*。 如需 *_ViewStart.cshtml* 的詳細資訊，請參閱 <xref:mvc/views/layout>。
 
@@ -58,9 +58,9 @@ ms.locfileid: "64887463"
 
 ::: moniker range="< aspnetcore-2.0"
 
-部分檢視是在「檢視」資料夾中維護的 *.cshtml* 標記檔案。
+部分檢視是在「檢視」  資料夾中維護的 *.cshtml* 標記檔案。
 
-控制器的 <xref:Microsoft.AspNetCore.Mvc.ViewResult> 能夠傳回檢視或部分檢視。
+控制器的 <xref:Microsoft.AspNetCore.Mvc.ViewResult> 能夠傳回檢視或部分檢視。 [參考部分檢視](#reference-a-partial-view)一節介紹參考和轉譯部分檢視。
 
 不同於 MVC 檢視轉譯，部分檢視不會執行 *_ViewStart.cshtml*。 如需 *_ViewStart.cshtml* 的詳細資訊，請參閱 <xref:mvc/views/layout>。
 
@@ -69,6 +69,33 @@ ms.locfileid: "64887463"
 ::: moniker-end
 
 ## <a name="reference-a-partial-view"></a>參考部分檢視
+
+::: moniker range=">= aspnetcore-2.0"
+
+### <a name="use-a-partial-view-in-a-razor-pages-pagemodel"></a>在 Razor Pages PageModel 中使用部分檢視
+
+在 ASP.NET Core 2.0 或 2.1 中，下列處理常式方法會轉譯回應的 *\_AuthorPartialRP.cshtml* 部分檢視：
+
+```csharp
+public IActionResult OnGetPartial() =>
+    new PartialViewResult
+    {
+        ViewName = "_AuthorPartialRP",
+        ViewData = ViewData,
+    };
+```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+在 ASP.NET Core 2.2 或更新版本中，處理常式方法也可以呼叫 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageBase.Partial*> 方法來產生 `PartialViewResult` 物件：
+
+[!code-csharp[](partial/sample/PartialViewsSample/Pages/DiscoveryRP.cshtml.cs?name=snippet_OnGetPartial)]
+
+::: moniker-end
+
+### <a name="use-a-partial-view-in-a-markup-file"></a>在標記檔案中使用部分檢視
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -235,8 +262,8 @@ ms.locfileid: "64887463"
 部分檢視探索適用於下列慣例：
 
 * 當部分檢視位於不同的資料夾中時，可允許使用具有相同檔案名稱的不同部分檢視。
-* 當以不含檔案副檔名的名稱參考部分檢視，且部分檢視出現在呼叫者的資料夾和*共用*資料夾中時，呼叫者資料夾中的部分檢視會提供部分檢視。 如果呼叫者資料夾中不存在部分檢視，則會從「共用」資料夾中提供部分檢視。 「共用」資料夾中的部分檢視稱為「共用部分檢視」或「預設部分檢視」。
-* 可鏈結部分檢視&mdash;如果呼叫未形成循環參考，則部分檢視可以呼叫另一個部分檢視。 相對路徑一律相對於目前的檔案，而不是相對於檔案的根目錄或父檔案。
+* 當以不含檔案副檔名的名稱參考部分檢視，且部分檢視出現在呼叫者的資料夾和*共用*資料夾中時，呼叫者資料夾中的部分檢視會提供部分檢視。 如果呼叫者資料夾中不存在部分檢視，則會從「共用」  資料夾中提供部分檢視。 「共用」  資料夾中的部分檢視稱為「共用部分檢視」  或「預設部分檢視」  。
+* 可鏈結部分檢視  &mdash;如果呼叫未形成循環參考，則部分檢視可以呼叫另一個部分檢視。 相對路徑一律相對於目前的檔案，而不是相對於檔案的根目錄或父檔案。
 
 > [!NOTE]
 > 父標記檔案不會顯示在部分視圖中定義的 [Razor](xref:mvc/views/razor) `section`。 `section` 只會顯示在具有其定義的部分檢視。
@@ -263,7 +290,7 @@ ms.locfileid: "64887463"
 
 範例應用程式中的下列標記來自 *Pages/ArticlesRP/ReadRP.cshtml* 頁面。 此頁面包含兩個部分檢視。 第二個部分檢視將模型和 `ViewData` 傳入部分檢視。 `ViewDataDictionary` 建構函式多載用於傳遞新的 `ViewData` 字典，同時保留現有的 `ViewData` 字典。
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-19)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-20)]
 
 *Pages/Shared/_AuthorPartialRP.cshtml* 是由 *ReadRP.cshtml* 標記檔案參考的第一個部分檢視：
 
@@ -279,7 +306,7 @@ ms.locfileid: "64887463"
 
 範例應用程式中的下列標記顯示 *Views/Articles/Read.cshtml* 檢視。 此檢視包含兩個部分檢視。 第二個部分檢視將模型和 `ViewData` 傳入部分檢視。 `ViewDataDictionary` 建構函式多載用於傳遞新的 `ViewData` 字典，同時保留現有的 `ViewData` 字典。
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-19)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-20)]
 
 *Views/Shared/_AuthorPartial.cshtml* 是由 *ReadRP.cshtml* 標記檔案參考的第一個部分檢視：
 

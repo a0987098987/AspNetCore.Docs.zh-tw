@@ -3,14 +3,14 @@ title: ASP.NET Core 的 Razor 語法參考
 author: rick-anderson
 description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記語法。
 ms.author: riande
-ms.date: 10/26/2018
+ms.date: 06/12/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 7f97be651c067e94f29eef4956c10d87ec031bed
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 87c5b97a653c139b8b79f4270e0d9d0081815433
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887903"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034934"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -61,7 +61,7 @@ Razor 隱含運算式會以 `@` 開頭，後面接著 C# 程式碼：
 <p>@await DoSomething("hello", "world")</p>
 ```
 
-隱含運算式「不能」包含 C# 泛型，因為括弧 (`<>`) 內的字元會解譯為 HTML 標籤。 下列程式碼**無效**：
+隱含運算式「不能」  包含 C# 泛型，因為括弧 (`<>`) 內的字元會解譯為 HTML 標籤。 下列程式碼**無效**：
 
 ```cshtml
 <p>@GenericMethod<int>()</p>
@@ -574,9 +574,39 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 ::: moniker-end
 
+### <a name="attribute"></a>@attribute
+
+`@attribute` 指示詞會將指定屬性新增至所產生頁面或檢視的類別。 下列範例會新增 `[Authorize]` 屬性：
+
+```cshtml
+@attribute [Authorize]
+```
+
+> [!WARNING]
+> ASP.NET Core 3.0 Preview 6 版本中的已知問題：`@attribute` 指示詞在 *\_Imports.razor* 和 *\_ViewImports.cshtml* 檔案中沒有作用。 Preview 7 版本會解決此問題。
+
+### <a name="namespace"></a>@namespace
+
+`@namespace` 指示詞會設定所產生頁面或檢視類別的命名空間：
+
+```cshtml
+@namespace Your.Namespace.Here
+```
+
+如果頁面或檢視匯入具有 `@namespace` 指示詞的 API，則原始檔案的命名空間會設定為相對於該命名空間。 
+
+如果 *MyApp/Pages/\_ViewImports.cshtml* 包含 `@namespace Hello.World`，則匯入 `Hello.World` 命名空間的網頁或檢視命名空間會如下表設定。
+
+| 頁面 (或檢視)                     | 命名空間               |
+| ---------------------------------- | ----------------------- |
+| *MyApp/Pages/Index.cshtml*         | `Hello.World`           |
+| *MyApp/Pages/MorePages/Bar.cshtml* | `Hello.World.MorePages` |
+
+如果多個匯入檔案都有 `@namespace` 指示詞，則會使用目錄鏈結中最接近網頁或檢視的檔案。
+
 ### <a name="section"></a>@section
 
-`@section` 指示詞可搭配[配置](xref:mvc/views/layout)使用，讓檢視可以轉譯 HTML 頁面中不同部分的內容。 如需詳細資訊，請參閱[區段](xref:mvc/views/layout#layout-sections-label)。
+`@section` 指示詞可搭配[配置](xref:mvc/views/layout)使用，讓網頁或檢視可以轉譯 HTML 頁面中不同部分中的內容。 如需詳細資訊，請參閱[區段](xref:mvc/views/layout#layout-sections-label)。
 
 ## <a name="templated-razor-delegates"></a>樣板化 Razor 委派
 

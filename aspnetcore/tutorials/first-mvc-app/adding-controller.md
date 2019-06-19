@@ -5,12 +5,12 @@ description: 了解如何將控制器新增至簡單的 ASP.NET Core MVC 應用�
 ms.author: riande
 ms.date: 02/28/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: dad9262e544fc216ddc694b11b0dfb88b58db9cd
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9dbfb52109260dbfe0c6c094a7ac4edae47d24e7
+ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887283"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837343"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>將控制器新增至 ASP.NET Core MVC 應用程式
 
@@ -26,33 +26,33 @@ Model-View-Controller (MVC) 架構模式可將一個應用程式劃分成三個�
 
 MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 (輸入邏輯、商務邏輯和 UI 邏輯)，同時提供這些項目之間的鬆散結合。 此模式指定每一種邏輯應該位於應用程式中的位置。 UI 邏輯位於檢視。 輸入邏輯位於控制器。 商務邏輯則位於模型。 這項隔離可協助您管理建置應用程式時的複雜度，因為它可讓您一次處理實作的其中一個層面，而不影響另一個層面的程式碼。 例如，您可以處理檢視程式碼，而不需要根據商務邏輯程式碼。
 
-本教學課程系列中涵蓋了這些概念，並且顯示如何使用它們來建置電影應用程式。 MVC 專案包含｢控制器｣和｢檢視｣的資料夾。
+本教學課程系列中涵蓋了這些概念，並且顯示如何使用它們來建置電影應用程式。 MVC 專案包含｢控制器｣  和｢檢視｣  的資料夾。
 
 ## <a name="add-a-controller"></a>新增控制器
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [方案總管] 中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]
+* 在 [方案總管]  中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]  
   ![操作功能表](adding-controller/_static/add_controller.png)
 
-* 在 [新增 Scaffold] 對話方塊中，選取 [MVC 控制器 - 空白]
+* 在 [新增 Scaffold]  對話方塊中，選取 [MVC 控制器 - 空白] 
 
   ![新增 MVC 控制器並將其命名](adding-controller/_static/ac.png)
 
-* 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\) 對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]。
+* 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\)  對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]  。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]，將新檔案命名為 *HelloWorldController.cs*。
+選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]  ，將新檔案命名為 *HelloWorldController.cs*。
 
   ![操作功能表](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-在方案總管中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]。
+在方案總管  中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]  。
 ![操作功能表](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-選取 [ASP.NET Core] 和 [MVC 控制器類別]。
+選取 [ASP.NET Core]  和 [MVC 控制器類別]  。
 
 將控制器命名為 **HelloWorldController**。
 

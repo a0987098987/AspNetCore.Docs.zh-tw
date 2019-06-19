@@ -4,14 +4,14 @@ author: scottaddie
 description: 了解何謂標籤協助程式元件，以及如何在 ASP.NET Core 中使用。
 monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
-ms.date: 04/06/2019
+ms.date: 06/12/2019
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: 777bbcca3d1c2f03f386fa62df2a2e0b00409318
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: b5b3abea6492cfaa7d6acd0e54073a8db12eb2a5
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889733"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034760"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式元件
 
@@ -62,9 +62,16 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 
 標籤協助程式元件必須新增至應用程式的標籤協助程式元件集合中。 有三種方式可新增至集合：
 
-1. [透過服務容器註冊](#registration-via-services-container)
-1. [透過 Razor 檔案註冊](#registration-via-razor-file)
-1. [透過頁面模型或控制器註冊](#registration-via-page-model-or-controller)
+* [ASP.NET Core 中的標籤協助程式元件](#tag-helper-components-in-aspnet-core)
+  * [使用案例](#use-cases)
+    * [插入 HTML 標頭項目](#inject-into-html-head-element)
+    * [插入 HTML 本文項目](#inject-into-html-body-element)
+  * [註冊元件](#register-a-component)
+    * [透過服務容器註冊](#registration-via-services-container)
+    * [透過 Razor 檔案註冊](#registration-via-razor-file)
+    * [透過頁面模型或控制器註冊](#registration-via-page-model-or-controller)
+  * [建立元件](#create-a-component)
+  * [其他資源](#additional-resources)
 
 ### <a name="registration-via-services-container"></a>透過服務容器註冊
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: cf8bb67703b564a711105123117498c94ab44e68
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 45506d071c90c91a61e6912ff51350b43e8ae136
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889713"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034790"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>將欄位新增至 ASP.NET Core MVC 應用程式
 
@@ -25,7 +25,7 @@ ms.locfileid: "64889713"
 使用 EF Code First 自動建立資料庫時，Code First 會：
 
 * 將資料表新增至資料庫，以追蹤資料庫的結構描述。
-* 確認資料庫與其產生的來源模型類別同步。 如果未同步，EF 會擲回例外狀況。 這可讓您更輕鬆地找出不一致的資料庫/程式碼問題。
+* 驗證資料庫與其產生來源的模型類別同步。 如果未同步，EF 會擲回例外狀況。 這可讓您更輕鬆地找出不一致的資料庫/程式碼問題。
 
 ## <a name="add-a-rating-property-to-the-movie-model"></a>將 Rating 屬性新增至電影模型
 
@@ -83,7 +83,7 @@ ms.locfileid: "64889713"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+從 [工具]  功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]  。
 
   ![PMC 功能表](adding-model/_static/pmc.png)
 

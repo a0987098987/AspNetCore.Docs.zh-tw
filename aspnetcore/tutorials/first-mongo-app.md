@@ -4,14 +4,14 @@ author: prkhandelwal
 description: 此教學課程示範如何使用 MongoDB NoSQL 資料庫建立 ASP.NET Core Web API。
 ms.author: scaddie
 ms.custom: mvc, seodec18
-ms.date: 06/04/2019
+ms.date: 06/10/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 6a8c5d75f562b38015101e039a2f5d96a5491595
-ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
+ms.openlocfilehash: 5e3bdb10f0e192ba98df442959ceb68dc7c7adc5
+ms.sourcegitcommit: 9691b742134563b662948b0ed63f54ef7186801e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692558"
+ms.lasthandoff: 06/10/2019
+ms.locfileid: "66824780"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
 
@@ -26,6 +26,7 @@ ms.locfileid: "66692558"
 > * 建立 MongoDB 資料庫
 > * 定義 MongoDB 集合與結構描述
 > * 從 Web API 執行 MongoDB CRUD 作業
+> * 自訂 JSON 序列化
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -187,7 +188,29 @@ ms.locfileid: "66692558"
 1. 新增 *Models* 目錄到專案根目錄。
 1. 新增具有下列程式碼的 `Book` 類別到 *Models* 目錄：
 
-    [!code-csharp[](first-mongo-app/sample/BooksApi/Models/Book.cs)]
+    ```csharp
+    using MongoDB.Bson;
+    using MongoDB.Bson.Serialization.Attributes;
+    
+    namespace BooksApi.Models
+    {
+        public class Book
+        {
+            [BsonId]
+            [BsonRepresentation(BsonType.ObjectId)]
+            public string Id { get; set; }
+    
+            [BsonElement("Name")]
+            public string BookName { get; set; }
+    
+            public decimal Price { get; set; }
+    
+            public string Category { get; set; }
+    
+            public string Author { get; set; }
+        }
+    }
+    ```
 
     在上面的類別中，需要 `Id` 屬性：
     
@@ -195,7 +218,7 @@ ms.locfileid: "66692558"
     * 使用 [[BsonId]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) 加上附註以指定此屬性作為文件的主索引鍵。
     * 使用 [[BsonRepresentation(BsonType.ObjectId)]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) 加上附註讓參數傳遞為類型 `string`，而非 [ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm) 結構。 Mongo 會處理從 `string` 轉換到 `ObjectId` 的作業。
     
-    該類別中的其他屬性是使用 [[BsonElement]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm) 屬性加上註解。 屬性的值代表 MongoDB 集合中的屬性名稱。
+    使用 [[BsonElement]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm) 屬性標註 `BookName` 屬性。 `Name` 的屬性值代表 MongoDB 集合中的屬性名稱。
 
 ## <a name="add-a-configuration-model"></a>新增組態模型
 
@@ -209,9 +232,9 @@ ms.locfileid: "66692558"
 
     上述 `BookstoreDatabaseSettings` 類別用來儲存 *appsettings.json* 檔案的 `BookstoreDatabaseSettings` 屬性值。 JSON 和 C# 屬性名稱以相同方式命名，以簡化對應程序。
 
-1. 在呼叫 `AddMvc` 之前，將下列程式碼新增至 `Startup.ConfigureServices`：
+1. 將下列醒目提示的程式碼新增至 `Startup.ConfigureServices`：
 
-    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_ConfigureDatabaseSettings)]
+    [!code-csharp[](first-mongo-app/sample_snapshot/BooksApi/Startup.ConfigureServices.AddDbSettings.cs?highlight=3-7)]
 
     在上述程式碼中：
 
@@ -231,9 +254,9 @@ ms.locfileid: "66692558"
 
     在上述程式碼中，透過建構函式插入從 DI 擷取 `IBookstoreDatabaseSettings` 執行個體。 這項技術可讓您存取[新增組態模型](#add-a-configuration-model)一節中已新增的 *appsettings.json* 組態值。
 
-1. 在 `Startup.ConfigureServices` 中，向 DI 註冊 `BookService` 類別：
+1. 將下列醒目提示的程式碼新增至 `Startup.ConfigureServices`：
 
-    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_ConfigureServices&highlight=9)]
+    [!code-csharp[](first-mongo-app/sample_snapshot/BooksApi/Startup.ConfigureServices.AddSingletonService.cs?highlight=9)]
 
     在上述程式碼中，`BookService` 類別要向 DI 註冊才能在取用類別中支援建構函式插入。 因為 `BookService` 直接依存於 `MongoClient`，所以 Singleton 服務存留期最適合。 依照正式的 [Mongo 用戶端重複使用指導方針](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)，`MongoClient` 應該在 DI 註冊 Singleton 服務存留期。
 
@@ -306,6 +329,33 @@ ms.locfileid: "66692558"
       "author":"Robert C. Martin"
     }
     ```
+
+## <a name="configure-json-serialization-options"></a>設定 JSON 序列化選項
+
+[測試 Web API](#test-the-web-api) 區段中傳回的 JSON 回應，有兩個詳細資訊要變更：
+
+* 屬性名稱的預設駝峰式命名法大小寫應予變更，使其符合CLR 物件屬性名稱的 Pascal 命名法大小寫。
+* `bookName` 屬性應傳回為 `Name`。
+
+為滿足上述需求，請進行下列變更：
+
+1. 在 `Startup.ConfigureServices` 中，將下列醒目提示的程式碼鏈結至 `AddMvc` 方法呼叫：
+
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Startup.cs?name=snippet_ConfigureServices&highlight=12)]
+
+    完成前述變更後，Web API 序列化 JSON 回應中屬性名稱即符合其對應的 CLR 物件類型屬性名稱。 例如，`Book` 類別的 `Author` 屬性會序列化為 `Author`。
+
+1. 在 *Models/Book.cs* 中，以下列 [[JsonProperty]](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) 屬性標註 `BookName` 屬性：
+
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
+
+    `[JsonProperty]` 的屬性值 `Name` 代表 Web API 序列化 JSON 回應中的屬性名稱。
+
+1. 在 *Models/Book.cs* 的頂端新增下列程式碼，以解析 `[JsonProperty]` 屬性參考：
+
+    [!code-csharp[](first-mongo-app/sample/BooksApi/Models/Book.cs?name=snippet_NewtonsoftJsonImport)]
+
+1. 重複[測試 Web API](#test-the-web-api) 一節中定義的步驟。 請注意 JSON 屬性名稱中的差異。
 
 ## <a name="next-steps"></a>後續步驟
 

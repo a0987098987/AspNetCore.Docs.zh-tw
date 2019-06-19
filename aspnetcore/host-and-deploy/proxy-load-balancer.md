@@ -5,14 +5,14 @@ description: 了解裝載在 Proxy 伺服器和負載平衡器 (通常會遮蔽�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/24/2019
+ms.date: 06/11/2019
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: 2423b5bed760ad879d1c47c5e64b0f815b50397e
-ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
+ms.openlocfilehash: ab48d80c9cb1c09b5164ed732e76a59687683e97
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66251387"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034725"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>設定 ASP.NET Core 以與 Proxy 伺服器和負載平衡器搭配運作
 
@@ -53,11 +53,11 @@ ms.locfileid: "66251387"
 
 ## <a name="iisiis-express-and-aspnet-core-module"></a>IIS/IIS Express 和 ASP.NET Core 模組
 
-當應用程式是在 IIS 和 ASP.NET Core 模組的後方進行[處理序外](xref:fundamentals/servers/index#out-of-process-hosting-model)裝載時，[IIS 整合中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)預設會啟用「轉送的標頭中介軟體」。 由於有與轉送標頭相關的信任考量 (例如 [IP 詐騙](https://www.iplocation.net/ip-spoofing))，因此「轉送的標頭中介軟體」在啟用後會先在中介軟體管線中搭配 ASP.NET Core 模組限定的設定來執行。 中介軟體會經設定來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭，並限制成單一 localhost Proxy。 如果需要額外的設定，請參閱[轉送的標頭中介軟體選項](#forwarded-headers-middleware-options)。
+當應用程式是在 IIS 和 ASP.NET Core 模組的後方進行[處理序外](xref:host-and-deploy/iis/index#out-of-process-hosting-model)裝載時，[IIS 整合中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)預設會啟用「轉送的標頭中介軟體」。 由於有與轉送標頭相關的信任考量 (例如 [IP 詐騙](https://www.iplocation.net/ip-spoofing))，因此「轉送的標頭中介軟體」在啟用後會先在中介軟體管線中搭配 ASP.NET Core 模組限定的設定來執行。 中介軟體會經設定來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭，並限制成單一 localhost Proxy。 如果需要額外的設定，請參閱[轉送的標頭中介軟體選項](#forwarded-headers-middleware-options)。
 
 ## <a name="other-proxy-server-and-load-balancer-scenarios"></a>其他 Proxy 伺服器和負載平衡器案例
 
-除了在[處理序外](xref:fundamentals/servers/index#out-of-process-hosting-model)裝載時使用 [IIS 整合](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)之外，都未預設啟用「轉送的標頭中介軟體」。 必須啟用「轉送的標頭中介軟體」，應用程式才能使用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 來處理轉送的標頭。 啟用此中介軟體之後，如果未將任何 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 指定給中介軟體，則預設的 [ForwardedHeadersOptions.ForwardedHeaders](xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardedHeaders) 會是 [ForwardedHeaders.None](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders)。
+除了在[處理序外](xref:host-and-deploy/iis/index#out-of-process-hosting-model)裝載時使用 [IIS 整合](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)之外，都未預設啟用「轉送的標頭中介軟體」。 必須啟用「轉送的標頭中介軟體」，應用程式才能使用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 來處理轉送的標頭。 啟用此中介軟體之後，如果未將任何 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 指定給中介軟體，則預設的 [ForwardedHeadersOptions.ForwardedHeaders](xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardedHeaders) 會是 [ForwardedHeaders.None](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders)。
 
 搭配 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 設定中介軟體，以在 `Startup.ConfigureServices` 中轉送 `X-Forwarded-For` 與 `X-Forwarded-Proto` 標頭。 在呼叫其他中介軟體之前，請先在 `Startup.Configure` 中叫用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 方法：
 
@@ -226,6 +226,38 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+
+## <a name="forward-the-scheme-for-linux-and-non-iis-reverse-proxies"></a>轉送 Linux 和非 IIS 反向 Proxy 的配置
+
+.NET Core 範本呼叫 <xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*> 和 <xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>。 如果部署至 Azure Linux App Service、Azure Linux 虛擬機器 (VM)，或 IIS 之外的任何其他反向 Proxy 後端，則這些方法會將站台放入無限迴圈中。 反向 Proxy 會終止 TLS，且正確的要求配置不知道有 Kestrel。 OAuth 和 OIDC 在此組態中也失敗，因為它們會產生不正確的重新導向。 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> 在 IIS 後端執行時，會新增並設定轉送標頭中介軟體，但沒有相符的 Linux (Apache 或 Nginx 整合) 自動組態。
+
+若要從非 IIS 案例的 Proxy 轉送配置，請新增並設定轉送標頭中介軟體。 在 `Startup.ConfigureServices` 中，使用下列程式碼：
+
+```csharp
+// using Microsoft.AspNetCore.HttpOverrides;
+
+if (string.Equals(
+    Environment.GetEnvironmentVariable("ASPNETCORE_FORWARDEDHEADERS_ENABLED"), 
+    "true", StringComparison.OrdinalIgnoreCase))
+{
+    services.Configure<ForwardedHeadersOptions>(options =>
+    {
+        options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | 
+            ForwardedHeaders.XForwardedProto;
+        // Only loopback proxies are allowed by default.
+        // Clear that restriction because forwarders are enabled by explicit 
+        // configuration.
+        options.KnownNetworks.Clear();
+        options.KnownProxies.Clear();
+    });
+}
+```
+
+在 Azure 中提供新的容器映像前，您都必須針對設為 `true` 的 `ASPNETCORE_FORWARDEDHEADERS_ENABLED` 建立應用程式設定 (環境變數)。 如需詳細資訊，請參閱 [Templates do not work in Antares Linux due to missing scheme forwarders (aspnet/AspNetCore #4135)](https://github.com/aspnet/AspNetCore/issues/4135) (因為遺漏配置轉寄站，所以範本在 Antares Linux 中不作用 (aspnet/AspNetCore #4135))。
+
+::: moniker-end
+
 ## <a name="troubleshoot"></a>疑難排解
 
 當標頭未如預期般傳送時，請啟用[記錄功能](xref:fundamentals/logging/index)。 如果記錄提供的資訊不足，無法針對問題進行疑難排解，則請列舉伺服器所收到的要求標頭。 使用內嵌中介軟體將要求標頭寫入應用程式回應或記錄標頭。 
@@ -310,6 +342,53 @@ services.Configure<ForwardedHeadersOptions>(options =>
 
 > [!IMPORTANT]
 > 只允許信任的 Proxy 以及網路轉送標頭。 否則，[IP 詐騙](https://www.iplocation.net/ip-spoofing)攻擊有可能發生。
+
+## <a name="certificate-forwarding"></a>憑證轉送 
+
+### <a name="on-azure"></a>在 Azure 上
+
+請參閱 [Azure 文件](/azure/app-service/app-service-web-configure-tls-mutual-auth)以設定 Azure Web Apps。 在您應用程式的 `Startup.Configure` 方法中，於 `app.UseAuthentication();` 呼叫的前面新增下列程式碼：
+
+```csharp
+app.UseCertificateForwarding();
+```
+
+您也需要設定憑證轉送中介軟體以指定 Azure 使用的標頭名稱。 在您應用程式的 `Startup.ConfigureServices` 方法中，新增下列程式碼以設定標頭，中介軟體會在其中建置憑證：
+
+```csharp
+services.AddCertificateForwarding(options =>
+    options.CertificateHeader = "X-ARR-ClientCert");
+```
+
+### <a name="with-other-web-proxies"></a>搭配其他 Web Proxy
+
+如果您使用的 Proxy 不是 IIS 或 Azure Web Apps 應用程式要求路由，請設定您的 Proxy 轉送它在 HTTP 標頭中收到的憑證。 在您應用程式的 `Startup.Configure` 方法中，於 `app.UseAuthentication();` 呼叫的前面新增下列程式碼：
+
+```csharp
+app.UseCertificateForwarding();
+```
+
+您也需要設定憑證轉送中介軟體以指定標頭名稱。 在您應用程式的 `Startup.ConfigureServices` 方法中，新增下列程式碼以設定標頭，中介軟體會在其中建置憑證：
+
+```csharp
+services.AddCertificateForwarding(options =>
+    options.CertificateHeader = "YOUR_CERTIFICATE_HEADER_NAME");
+```
+
+最後，如果 Proxy 不是使用 base64 編碼憑證 (和 Nginx 一樣)，則請設定 `HeaderConverter` 選項。 請考慮 `Startup.ConfigureServices` 中的下列範例：
+
+```csharp
+services.AddCertificateForwarding(options =>
+{
+    options.CertificateHeader = "YOUR_CUSTOM_HEADER_NAME";
+    options.HeaderConverter = (headerValue) => 
+    {
+        var clientCertificate = 
+           /* some conversion logic to create an X509Certificate2 */
+        return clientCertificate;
+    }
+});
+```
 
 ## <a name="additional-resources"></a>其他資源
 

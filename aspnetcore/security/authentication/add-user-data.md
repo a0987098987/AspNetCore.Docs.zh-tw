@@ -3,15 +3,15 @@ title: 加入、 下載及刪除身分識別的 ASP.NET Core 專案中的使用�
 author: rick-anderson
 description: 了解如何在 ASP.NET Core 專案中加入身分識別的自訂使用者資料。 刪除每 GDPR 的資料。
 ms.author: riande
-ms.date: 6/16/2018
+ms.date: 06/18/2019
 ms.custom: mvc, seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: d704041f73a7d4773c3da9a23f120b07a03d64ac
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: c219500b7595fd8d200e4e5e742b1e1fda836ba3
+ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086496"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67207743"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>加入、 下載及刪除身分識別的 ASP.NET Core 專案的自訂使用者資料
 
@@ -20,11 +20,11 @@ ms.locfileid: "65086496"
 本文說明如何：
 
 * 新增至 ASP.NET Core web 應用程式的自訂使用者資料。
-* 裝飾具有自訂使用者資料模型[PersonalData](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute?view=aspnetcore-2.1)屬性，讓它自動可供下載和刪除。 無法下載及刪除資料可協助符合[GDPR](xref:security/gdpr)需求。
+* 裝飾具有自訂使用者資料模型<xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute>屬性，讓它自動可供下載和刪除。 無法下載及刪除資料可協助符合[GDPR](xref:security/gdpr)需求。
 
 Razor 頁面 web 應用程式，從建立專案範例，但 ASP.NET Core MVC web 應用程式的指示如下。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -34,7 +34,7 @@ Razor 頁面 web 應用程式，從建立專案範例，但 ASP.NET Core MVC web
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案] 。 將專案命名為**WebApp1**如果您要符合的命名空間[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data/sample)程式碼。
+* 從 Visual Studio 的 [檔案]  功能表中，選取 [新增]   > [專案]  。 將專案命名為**WebApp1**如果您要符合的命名空間[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data)程式碼。
 * 選取  **ASP.NET Core Web 應用程式** > **確定**
 * 選取  **ASP.NET Core 2.2**下拉式清單中
 * 選取  **Web 應用程式**  > **確定**

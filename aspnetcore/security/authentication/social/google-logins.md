@@ -4,14 +4,14 @@ author: rick-anderson
 description: 本教學課程示範如何整合到現有的 ASP.NET Core 應用程式的 Google 帳戶使用者驗證。
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 1/11/2019
+ms.date: 06/19/2019
 uid: security/authentication/google-logins
-ms.openlocfilehash: 44c79b3279db7946b6d89a726bd3f5acfb5f51af
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: b0edac411e73cd2eec7c4e212b99971577f59cfb
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895535"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316456"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Google 外部登入設定
 
@@ -25,7 +25,7 @@ ms.locfileid: "64895535"
 
 * 瀏覽至[整合 Google 登入到您的 web 應用程式](https://developers.google.com/identity/sign-in/web/devconsole-project)，然後選取**設定專案**。
 * 在 **設定您的 OAuth 用戶端**對話方塊中，選取**Web 伺服器**。
-* 在 **授權重新導向 Uri**文字方塊項目中，設定重新導向 URI。 例如： `https://localhost:5001/signin-google` 
+* 在 **授權重新導向 Uri**文字方塊項目中，設定重新導向 URI。 例如： `https://localhost:5001/signin-google`
 * 儲存**用戶端識別碼**並**用戶端祕密**。
 * 當部署的網站，註冊新的公用 url，從**Google 主控台**。
 
@@ -44,7 +44,9 @@ dotnet user-secrets set "Authentication:Google:ClientSecret" "<client secret>"
 
 ## <a name="configure-google-authentication"></a>設定 Google 驗證
 
-新增 Google 服務，以`Startup.ConfigureServices`。
+新增 Google 服務，以`Startup.ConfigureServices`:
+
+[!code-csharp[](~/security/authentication/social/social-code/StartupGoogle.cs?name=snippet_ConfigureServices&highlight=10-18)]
 
 [!INCLUDE [default settings configuration](includes/default-settings2-2.md)]
 
@@ -58,7 +60,7 @@ dotnet user-secrets set "Authentication:Google:ClientSecret" "<client secret>"
 
 [!INCLUDE[](includes/chain-auth-providers.md)]
 
-請參閱[GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions) API 參考，如需有關 Google 驗證所支援的組態選項。 這可用來要求不同使用者的相關資訊。
+請參閱<xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions>API 參考，如需有關 Google 驗證所支援的組態選項。 這可用來要求不同使用者的相關資訊。
 
 ## <a name="change-the-default-callback-uri"></a>變更預設的回呼 URI
 
@@ -68,7 +70,7 @@ URI 區段`/signin-google`會設定為 Google 驗證提供者的預設回呼。 
 
 * 如果登入無法運作，而且您未收到任何錯誤，切換到開發模式，以便讓您更輕鬆地偵錯問題。
 * 如果身分識別未設定藉由呼叫`services.AddIdentity`中`ConfigureServices`，嘗試驗證會導致*ArgumentException:必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這麼做。
-* 如果尚未套用初始移轉建立站台資料庫，您會收到*處理要求時資料庫作業失敗*時發生錯誤。 點選**套用移轉**建立資料庫，並重新整理 以忽略錯誤繼續執行。
+* 如果尚未套用初始移轉建立站台資料庫，您會收到*處理要求時資料庫作業失敗*時發生錯誤。 選取 **套用移轉**建立資料庫，並重新整理頁面，即可忽略錯誤繼續執行。
 
 ## <a name="next-steps"></a>後續步驟
 

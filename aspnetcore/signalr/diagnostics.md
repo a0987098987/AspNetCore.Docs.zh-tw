@@ -5,14 +5,14 @@ description: 了解如何從您的 ASP.NET Core SignalR 應用程式收集診斷
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: signalr
-ms.date: 02/27/2019
+ms.date: 06/19/2019
 uid: signalr/diagnostics
-ms.openlocfilehash: b6bd21314ed183488999bcff3553e53493537a11
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 69dbd057b3dcadeb3ca5d94ede1234530fb447db
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64896885"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313702"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>記錄和診斷在 ASP.NET Core SignalR
 
@@ -29,23 +29,23 @@ SignalR 是 ASP.NET Core 的一部分，因為它會使用 ASP.NET Core 記錄�
 
 SignalR 使用兩個記錄器類別：
 
-* `Microsoft.AspNetCore.SignalR` -為與中樞通訊協定相關的記錄檔，啟用 中樞、 叫用方法和其他中樞相關的活動。
-* `Microsoft.AspNetCore.Http.Connections` -傳輸，例如 WebSockets、 長時間輪詢和 Server-Sent 事件以及低階 SignalR infrastructure 相關的記錄檔。
+* `Microsoft.AspNetCore.SignalR` &ndash; 為與中樞通訊協定相關的記錄檔，啟用中樞叫用方法和其他中樞相關的活動。
+* `Microsoft.AspNetCore.Http.Connections` &ndash; 記錄檔傳輸 WebSockets、 等長輪詢和 Server-Sent 事件低階 SignalR infrastructure 相關。
 
-若要啟用詳細的記錄檔從 SignalR，設定這兩個上述的前置詞`Debug`層級中您`appsettings.json`檔案中的新增下列項目，以`LogLevel`子區段中`Logging`:
+若要啟用詳細的記錄檔從 SignalR，設定這兩個上述的前置詞`Debug`層級中您*appsettings.json*檔案中的新增下列項目以`LogLevel`子區段中`Logging`:
 
-[!code-json[Configuring logging](diagnostics/logging-config.json?highlight=7-8)]
+[!code-json[](diagnostics/logging-config.json?highlight=7-8)]
 
 您也可以設定此程式碼中您`CreateWebHostBuilder`方法：
 
-[!code-csharp[Configuring logging in code](diagnostics/logging-config-code.cs?highlight=5-6)]
+[!code-csharp[](diagnostics/logging-config-code.cs?highlight=5-6)]
 
 如果您未使用 JSON 為基礎的組態，設定下列設定值，組態系統中：
 
 * `Logging:LogLevel:Microsoft.AspNetCore.SignalR` = `Debug`
 * `Logging:LogLevel:Microsoft.AspNetCore.Http.Connections` = `Debug`
 
-請檢查您的組態系統，以判斷如何指定巢狀的組態值的文件。 例如，當使用環境變數，兩個`_`字元來取代`:`(例如： `Logging__LogLevel__Microsoft.AspNetCore.SignalR`)。
+請檢查您的組態系統，以判斷如何指定巢狀的組態值的文件。 例如，當使用環境變數，兩個`_`字元來取代`:`(比方說， `Logging__LogLevel__Microsoft.AspNetCore.SignalR`)。
 
 我們建議使用`Debug`收集更詳細的診斷您的應用程式時，層級。 `Trace`層級會產生非常低層級的診斷和很少會需要診斷應用程式中的問題。
 
@@ -63,11 +63,11 @@ Visual Studio 會顯示中的記錄輸出**輸出**視窗。 選取  **ASP.NET C
 
 ### <a name="azure-app-service"></a>Azure App Service
 
-啟用 Azure App Service 入口網站的 [診斷記錄] 區段中的 「 應用程式記錄 （檔案系統） 」 選項及設定的層級`Verbose`。 記錄檔應該可從 「 記錄檔資料流 」 服務，以及與您的 App Service 的檔案系統上的記錄檔。 如需詳細資訊，請參閱文件上[Azure 記錄資料流](xref:fundamentals/logging/index#azure-log-streaming)。
+啟用**應用程式記錄 （檔案系統）** 選項**診斷記錄檔**Azure App Service 入口網站的區段，並設定**層級**至`Verbose`。 記錄檔應該會出現**記錄資料流**服務，並在 App service 在檔案系統上的記錄檔中。 如需詳細資訊，請參閱 < [Azure 記錄資料流](xref:fundamentals/logging/index#azure-log-streaming)。
 
 ### <a name="other-environments"></a>其他環境
 
-如果您在另一個執行環境 （Docker、 Kubernetes、 Windows 服務等），請參閱完整的文件上[ASP.NET Core 記錄](xref:fundamentals/logging/index)如需有關如何設定記錄提供者適合您的環境。
+如果應用程式部署到另一個環境 （例如 Docker、 Kubernetes 或 Windows 服務），請參閱<xref:fundamentals/logging/index>如需有關如何設定適用於環境的記錄提供者。
 
 ## <a name="javascript-client-logging"></a>JavaScript 用戶端記錄
 
@@ -76,7 +76,7 @@ Visual Studio 會顯示中的記錄輸出**輸出**視窗。 選取  **ASP.NET C
 
 使用 JavaScript 用戶端時，您可以設定使用的記錄選項`configureLogging`方法`HubConnectionBuilder`:
 
-[!code-javascript[Configuring logging in the JavaScript client](diagnostics/logging-config-js.js?highlight=3)]
+[!code-javascript[](diagnostics/logging-config-js.js?highlight=3)]
 
 若要停用整個記錄，請指定`signalR.LogLevel.None`在`configureLogging`方法。
 
@@ -94,9 +94,9 @@ Visual Studio 會顯示中的記錄輸出**輸出**視窗。 選取  **ASP.NET C
 
 一旦您設定的詳細資訊，記錄檔會寫入瀏覽器主控台 （或 NodeJS 應用程式中的標準輸出）。
 
-如果您想要將記錄傳送至自訂的記錄系統，您可以提供 JavaScript 物件，實作`ILogger`介面。 必須實作的唯一方法是`log`，它會接受事件的層級和訊息事件相關聯。 例如: 
+如果您想要將記錄傳送至自訂的記錄系統，您可以提供 JavaScript 物件，實作`ILogger`介面。 必須實作的唯一方法是`log`，它會接受事件的層級和訊息事件相關聯。 例如:
 
-[!code-typescript[Creating a custom logger](diagnostics/custom-logger.ts?highlight=3-7,13)]
+[!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
 
 ## <a name="net-client-logging"></a>.NET 用戶端記錄
 
@@ -109,19 +109,19 @@ Visual Studio 會顯示中的記錄輸出**輸出**視窗。 選取  **ASP.NET C
 
 若要讓主控台記錄，新增[Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console)封裝。 然後，使用`AddConsole`方法來設定主控台記錄器：
 
-[!code-csharp[Configuring console logging in .NET client](diagnostics/net-client-console-log.cs?highlight=6)]
+[!code-csharp[](diagnostics/net-client-console-log.cs?highlight=6)]
 
 ### <a name="debug-output-window-logging"></a>偵錯輸出視窗中的記錄
 
 您也可以設定記錄移至**輸出**Visual Studio 中的視窗。 安裝[Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug)封裝，然後使用`AddDebug`方法：
 
-[!code-csharp[Configuring debug output window logging in .NET client](diagnostics/net-client-debug-log.cs?highlight=6)]
+[!code-csharp[](diagnostics/net-client-debug-log.cs?highlight=6)]
 
 ### <a name="other-logging-providers"></a>其他的記錄提供者
 
 SignalR 支援其他的記錄提供者，例如 Serilog、 Seq、 NLog 或任何其他的記錄系統與整合`Microsoft.Extensions.Logging`。 如果您的記錄系統提供`ILoggerProvider`，您也可以將它註冊`AddProvider`:
 
-[!code-csharp[Configuring a custom logging provider in .NET client](diagnostics/net-client-custom-log.cs?highlight=6)]
+[!code-csharp[](diagnostics/net-client-custom-log.cs?highlight=6)]
 
 ### <a name="control-verbosity"></a>控制項的詳細資訊
 
@@ -144,7 +144,7 @@ Fiddler 是功能強大的工具，來收集 HTTP 追蹤。 安裝從[telerik.co
 
 如果您使用 HTTPS 連線，有一些額外的步驟，以確保 Fiddler 可以解密 HTTPS 流量。 如需詳細資訊，請參閱 < [Fiddler 文件](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)。
 
-一旦您已收集追蹤，您可以選擇匯出追蹤**檔案** > **儲存** > **所有工作階段...** 從功能表列。
+一旦您已收集追蹤，您可以選擇匯出追蹤**檔案** > **儲存** > **所有工作階段**從功能表列。
 
 ![Fiddler 從匯出的所有工作階段](diagnostics/fiddler-export.png)
 
@@ -200,7 +200,7 @@ tcpdump -i [interface] -w trace.pcap
 您可以將診斷檔案附加至 GitHub 問題重新命名，以便讓他們自己`.txt`延伸模組，然後拖曳和置放即可入問題。
 
 > [!NOTE]
-> 請不要貼上網路追蹤或記錄檔的內容 GitHub 問題。 這些記錄檔和追蹤可能會相當大，GitHub 會通常它們截斷。
+> 請不要將網路追蹤或記錄檔的內容貼入 GitHub 問題。 這些記錄檔和追蹤可能相當大，而且 GitHub 通常截斷。
 
 ![拖曳到 GitHub 問題的記錄檔](diagnostics/attaching-diagnostics-files.png)
 

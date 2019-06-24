@@ -3,14 +3,14 @@ title: 將驗證和身分識別移轉至 ASP.NET Core 2.0
 author: scottaddie
 description: 本文概述了最常見的步驟移轉 ASP.NET Core 1.x 驗證和身分識別為 ASP.NET Core 2.0。
 ms.author: scaddie
-ms.date: 06/13/2019
+ms.date: 06/21/2019
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 3e8bc75b87a85159c9668b52eea32bb7d700be6c
-ms.sourcegitcommit: 516f166c5f7cec54edf3d9c71e6e2ba53fb3b0e5
+ms.openlocfilehash: c83356e12fa5ae581b369265b9d857b08445ed51
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67196375"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313737"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>將驗證和身分識別移轉至 ASP.NET Core 2.0
 
@@ -304,18 +304,31 @@ services.AddAuthentication(options =>
 ## <a name="windows-authentication-httpsys--iisintegration"></a>Windows 驗證 (HTTP.sys / IISIntegration)
 
 有兩種變化的 Windows 驗證：
-1. 主應用程式只允許已驗證的使用者
-2. 主機允許匿名和已驗證的使用者
 
-上述第一種變化不會受到 2.0 的變更。
+* 主應用程式只允許已驗證的使用者。 這項差異不會受到 2.0 的變更。
+* 主機允許匿名和已驗證的使用者。 這項差異會影響 2.0 的變更。 例如，應用程式應該允許匿名使用者[IIS](xref:host-and-deploy/iis/index)或是[HTTP.sys](xref:fundamentals/servers/httpsys)圖層，但是授權在控制器層級的使用者。 在此案例中，請在中設定的預設配置`Startup.ConfigureServices`方法。
 
-上述第二種變化會受到 2.0 的變更。 例如，您可能會允許匿名使用者到您的應用程式在 IIS 或[HTTP.sys](xref:fundamentals/servers/httpsys)層但授權的使用者，在控制器層級。 在此案例中，設定為預設配置`IISDefaults.AuthenticationScheme`在`Startup.ConfigureServices`方法：
+  針對[Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/)，若要設定的預設配置`IISDefaults.AuthenticationScheme`:
 
-```csharp
-services.AddAuthentication(IISDefaults.AuthenticationScheme);
-```
+  ```csharp
+  using Microsoft.AspNetCore.Server.IISIntegration;
 
-若要設定的預設配置失敗可防止授權要求，要求無法運作。
+  services.AddAuthentication(IISDefaults.AuthenticationScheme);
+  ```
+
+  針對[Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/)，若要設定的預設配置`HttpSysDefaults.AuthenticationScheme`:
+
+  ```csharp
+  using Microsoft.AspNetCore.Server.HttpSys;
+
+  services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
+  ```
+
+  若要設定的預設配置失敗可防止授權 （挑戰） 要求使用下列的例外狀況：
+
+  > `System.InvalidOperationException`：指定沒有 authenticationScheme，並沒有找到任何 DefaultChallengeScheme。
+
+如需詳細資訊，請參閱 <xref:security/authentication/windowsauth>。
 
 <a name="identity-cookie-options"></a>
 

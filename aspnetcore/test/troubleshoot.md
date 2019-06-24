@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: 了解 ASP.NET Core 專案的相關警告和錯誤，並為其進行疑難排解。
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/13/2019
+ms.date: 06/19/2019
 uid: test/troubleshoot
-ms.openlocfilehash: 3d755b2f0c509d65dea86bbe719e42935d87d546
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: bcec8a55a5111e1f3acf53ae2f57b45e6e609d25
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895325"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313679"
 ---
 # <a name="troubleshoot-aspnet-core-projects"></a>疑難排解 ASP.NET Core 專案
 
@@ -27,11 +27,11 @@ ms.locfileid: "64895325"
 
 ## <a name="net-core-sdk-warnings"></a>.NET core SDK 警告
 
-### <a name="both-the-32-bit-and-64-bit-versions-of-the-net-core-sdk-are-installed"></a>會安裝 32 位元和 64 位元版本的.NET Core SDK
+### <a name="both-the-32-bit-and-64-bit-versions-of-the-net-core-sdk-are-installed"></a>安裝.NET Core SDK 的 32 位元和 64 位元版本
 
 在**新專案**對話方塊適用於 ASP.NET Core，您可能會看到下列警告：
 
-> 會安裝 32 和 64 位元版本的.NET Core sdk。 只有從安裝在 64 位元版本的範本 'c:\\Program Files\\dotnet\\sdk\\' 將會顯示。
+> 會安裝 32 位元和 64 位元版本的.NET Core SDK。 只有從安裝在 64 位元版本的範本 'c:\\Program Files\\dotnet\\sdk\\' 會顯示。
 
 時，會出現這個警告 (x86) 32 位元和 64 位元 (x64) 版本的[.NET Core SDK](https://www.microsoft.com/net/download/all)安裝。 這兩個版本可能會安裝的常見原因包括：
 
@@ -45,9 +45,9 @@ ms.locfileid: "64895325"
 
 在**新專案**對話方塊適用於 ASP.NET Core，您可能會看到下列警告：
 
-> .NET Core SDK 會安裝在多個位置。 只有在已安裝的 SDK 範本 'c:\\Program Files\\dotnet\\sdk\\' 將會顯示。
+> .NET Core SDK 會安裝在多個位置。 只有在已安裝的 Sdk 的範本 'c:\\Program Files\\dotnet\\sdk\\' 會顯示。
 
-您以外的目錄中有至少一個安裝的.NET Core sdk 時，您會看到此訊息*c:\\Program Files\\dotnet\\sdk\\*。 通常這會使用複製/貼上，而不 MSI 安裝程式在機器上部署.NET Core SDK。
+您以外的目錄中有至少一個安裝的.NET Core sdk 時，您會看到此訊息*c:\\Program Files\\dotnet\\sdk\\* 。 通常這會使用複製/貼上，而不 MSI 安裝程式在機器上部署.NET Core SDK。
 
 解除安裝所有 32 位元.NET Core Sdk 和執行階段可避免這個警告。 從解除安裝**控制台中** > **程式和功能** > **解除安裝或變更程式**。 如果您了解警告的發生原因和其隱含意義，您可以忽略此警告。
 

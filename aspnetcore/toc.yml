@@ -298,6 +298,8 @@
           uid: blazor/javascript-interop
         - name: 偵錯
           uid: blazor/debug
+        - name: 呼叫 Web API
+          uid: blazor/call-web-api
         - name: 裝載和部署
           items:
             - name: 總覽

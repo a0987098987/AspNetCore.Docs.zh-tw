@@ -220,8 +220,6 @@
               uid: tutorials/razor-pages/validation
         - name: 篩選條件
           uid: razor-pages/filter
-        - name: Razor 類別庫
-          uid: razor-pages/ui-class
         - name: 路由及應用程式慣例
           uid: razor-pages/razor-pages-conventions
         - name: 上傳檔案
@@ -344,6 +342,8 @@
       uid: mvc/views/layout
     - name: Razor 語法
       uid: mvc/views/razor
+    - name: Razor 類別庫
+      uid: razor-pages/ui-class
     - name: 標籤協助程式
       uid: mvc/views/tag-helpers/builtin-th/Index
       items:

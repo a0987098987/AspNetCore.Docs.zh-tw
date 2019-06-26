@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/27/2017
 uid: test/razor-pages-tests
-ms.openlocfilehash: f1526b8803f43ec8cbe77c1d2c100d9daf6cd316
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: f0e47f975579dc114eaeda375028ec62696f58ed
+ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893715"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67394731"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>在 ASP.NET Core razor 頁面單元測試
 
@@ -66,7 +66,7 @@ dotnet test
 | 測試應用程式資料夾 | 描述 |
 | --------------- | ----------- |
 | *UnitTests*     | <ul><li>*DataAccessLayerTest.cs* DAL 包含單元測試。</li><li>*IndexPageTests.cs*包含 [索引] 頁面模型的單元測試。</li></ul> |
-| *公用程式*     | 包含`TestingDbContextOptions`用來建立新資料庫的每個 DAL 單元測試的內容選項，使資料庫重設為其基準條件，針對每個測試方法。 |
+| *公用程式*     | 包含`TestDbContextOptions`用來建立新資料庫的每個 DAL 單元測試的內容選項，使資料庫重設為其基準條件，針對每個測試方法。 |
 
 測試架構[xUnit](https://xunit.github.io/)。 模擬 (mock) 架構的物件是[Moq](https://github.com/moq/moq4)。
 
@@ -93,14 +93,14 @@ using (var db = new AppDbContext(optionsBuilder.Options))
 }
 ```
 
-此方法的問題是，每項測試會接收資料庫中任何狀態之前的測試，維持不變。 嘗試寫入不會干擾彼此的不可部分完成的單元測試時，這可能會造成問題。 若要強制`AppDbContext`若要針對每個測試中使用新的資料庫內容，提供`DbContextOptions`根據新的服務提供者的執行個體。 測試應用程式示範如何執行這項操作使用其`Utilities`類別方法`TestingDbContextOptions`(*tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs*):
+此方法的問題是，每項測試會接收資料庫中任何狀態之前的測試，維持不變。 嘗試寫入不會干擾彼此的不可部分完成的單元測試時，這可能會造成問題。 若要強制`AppDbContext`若要針對每個測試中使用新的資料庫內容，提供`DbContextOptions`根據新的服務提供者的執行個體。 測試應用程式示範如何執行這項操作使用其`Utilities`類別方法`TestDbContextOptions`(*tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs?name=snippet1)]
 
 使用`DbContextOptions`DAL 單元測試可讓每個測試，以使用最新的資料庫執行個體以不可分割方式執行：
 
 ```csharp
-using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
+using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 {
     // Use the db here in the unit test.
 }

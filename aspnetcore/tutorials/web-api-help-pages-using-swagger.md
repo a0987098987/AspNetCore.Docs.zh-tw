@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/20/2018
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: d7a6ed158dcb464bb80c83773ed7d455b25ce44b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: fb65b84b781b5c19040b559f0d7635ceb00cf4a0
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887723"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316569"
 ---
 # <a name="aspnet-core-web-api-help-pages-with-swagger--openapi"></a>使用 Swagger/OpenAPI 的 ASP.NET Core Web API 說明頁面
 
@@ -19,7 +19,7 @@ ms.locfileid: "64887723"
 
 使用 Web API 時，了解其各種不同的方法對開對發人員來說可能是一項挑戰。 [Swagger](https://swagger.io/) (也稱為 [Open API](https://www.openapis.org/)) 解決為 Web API 產生有用文件與說明頁面的問題。 它提供如互動式文件、用戶端 SDK 產生作業和 API 發現性等優點。
 
-在本文中，展示了 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) 和 [NSwag](https://github.com/RSuter/NSwag) .NET Swagger 實作：
+在本文中，展示了 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) 和 [NSwag](https://github.com/RicoSuter/NSwag) .NET Swagger 實作：
 
 * **Swashbuckle.AspNetCore** 是用來為 ASP.NET Core Web API 產生 Swagger 文件的開放原始碼專案。
 
@@ -108,7 +108,7 @@ Swagger 流程的核心是 Swagger 規格&mdash;根據預設，文件名為 *swa
 
 ![Swagger UI](web-api-help-pages-using-swagger/_static/swagger-ui.png)
 
-控制器中的每個公用動作方法都可以從 UI 進行測試。 按一下方法名稱以展開該區段。 新增任何必要的參數，然後按一下 [試試看！]。
+控制器中的每個公用動作方法都可以從 UI 進行測試。 按一下方法名稱以展開該區段。 新增任何必要的參數，然後按一下 [試試看！]  。
 
 ![範例 Swagger GET 測試](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
 

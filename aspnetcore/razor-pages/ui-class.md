@@ -4,15 +4,15 @@ author: Rick-Anderson
 description: 說明如何建立可重複使用 Razor UI，使用 ASP.NET Core 中的類別庫中的部分檢視。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 06/24/2019
+ms.date: 06/28/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 96ef8fc055a6b92cd0808d02031d917b8446f305
-ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
+ms.openlocfilehash: d59f643a23b48ccbddf498ef534ee8432b010f40
+ms.sourcegitcommit: 6d9cf728465cdb0de1037633a8b7df9a8989cccb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67394749"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67463261"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>建立可重複使用 UI 在 ASP.NET Core 中使用 Razor 類別庫專案
 
@@ -228,6 +228,8 @@ dotnet run
 </body>
 ```
 
+::: moniker range=">= aspnetcore-3.0"
+
 ## <a name="create-an-rcl-with-static-assets"></a>使用靜態資產建立 RCL
 
 RCL 可能需要的 RCL 使用的應用程式可以參考的附屬靜態資產。 ASP.NET Core 可讓您建立包含可供使用的應用程式靜態資產的 RCLs。
@@ -254,3 +256,5 @@ RCL 可能需要的 RCL 使用的應用程式可以參考的附屬靜態資產�
 ### <a name="publish"></a>發行
 
 發行應用程式時，所有參考的專案和套件隨附資產會複製到*wwwroot*資料夾的已發佈的應用程式下`_content/{LIBRARY NAME}/`。
+
+::: moniker-end

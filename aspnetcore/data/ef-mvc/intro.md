@@ -63,23 +63,23 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 
 * 開啟 Visual Studio。
 
-* 從 [檔案] 功能表選取[新增] > [專案] 。
+* 從 [檔案]  功能表選取[新增] > [專案]  。
 
-* 從左側窗格中，選取 [已安裝] > [Visual C#] > [Web]。
+* 從左側窗格中，選取 [已安裝] > [Visual C#] > [Web]  。
 
-* 選取 [ASP.NET Core Web 應用程式] 專案範本。
+* 選取 [ASP.NET Core Web 應用程式]  專案範本。
 
-* 輸入 **ContosoUniversity** 作為名稱，然後按一下 [確定]。
+* 輸入 **ContosoUniversity** 作為名稱，然後按一下 [確定]  。
 
   ![[新增專案] 對話](intro/_static/new-project2.png)
 
-* 等候 [新增 ASP.NET Core Web 應用程式] 對話方塊出現。
+* 等候 [新增 ASP.NET Core Web 應用程式]  對話方塊出現。
 
-* 選取 [.NET Core]、[ASP.NET Core 2.2] 和 [Web 應用程式 (Model-View-Controller)] 範本。
+* 選取 [.NET Core]  、[ASP.NET Core 2.2]  和 [Web 應用程式 (Model-View-Controller)]  範本。
 
-* 確認 [驗證] 已設為 [No Authentication] (無驗證)。
+* 確認 [驗證]  已設為 [No Authentication] (無驗證)  。
 
-* 選取 [確定]
+* 選取 [確定] 
 
   ![[新增 ASP.NET Core 專案] 對話方塊](intro/_static/new-aspnet2.png)
 
@@ -101,7 +101,7 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 
 [!code-cshtml[](intro/samples/cu/Views/Home/Index.cshtml)]
 
-按 CTRL+F5 來執行專案，或從功能表選擇 [偵錯] > [啟動但不偵錯]。 您會看到在這些教學課程中，您將建立之頁面的索引標籤和首頁。
+按 CTRL+F5 來執行專案，或從功能表選擇 [偵錯] > [啟動但不偵錯]  。 您會看到在這些教學課程中，您將建立之頁面的索引標籤和首頁。
 
 ![Contoso 大學首頁](intro/_static/home-page.png)
 
@@ -241,27 +241,27 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 自動建立 CRUD 動作方法和檢視稱為 Scaffolding。 Scaffolding 與產生程式碼不同。Scaffold 程式碼是一個開始點，使得您可以修改它以符合您的需求，然而您通常不會去修改產生的程式碼。 當您需要自訂產生的程式碼時，您會使用部分類別，或者您會在事務變更時重新產生程式碼。
 
-* 在方案總管中的 **Controllers** 資料夾上以滑鼠右鍵按一下，然後選取 [新增] > [新增 Scaffold 項目]。
+* 在方案總管  中的 **Controllers** 資料夾上以滑鼠右鍵按一下，然後選取 [新增] > [新增 Scaffold 項目]  。
 
-* 在 [新增 Scaffold] 對話方塊中：
+* 在 [新增 Scaffold]  對話方塊中：
 
-  * 選取 [使用 Entity Framework 執行檢視的 MVC 控制器]。
+  * 選取 [使用 Entity Framework 執行檢視的 MVC 控制器]  。
 
-  * 按一下 [加入] 。 [新增使用 Entity Framework 執行檢視的 MVC 控制器] 對話方塊隨即出現。
+  * 按一下 [加入]  。 [新增使用 Entity Framework 執行檢視的 MVC 控制器]  對話方塊隨即出現。
 
     ![Scaffold Student](intro/_static/scaffold-student2.png)
 
-  * 在 [模型類別] 中，選取 [Student]。
+  * 在 [模型類別]  中，選取 [Student]  。
 
-  * 在 [資料內容類別] 中，選取 [SchoolContext]。
+  * 在 [資料內容類別]  中，選取 [SchoolContext]  。
 
   * 接受預設的 **StudentsController** 作為名稱。
 
-  * 按一下 [加入] 。
+  * 按一下 [加入]  。
 
-  當您按一下 [新增] 時，Visual Studio Scaffolding 引擎便會建立 *StudentsController.cs* 檔案及一組可以使用該控制器的檢視 (*.cshtml* 檔案)。
+  當您按一下 [新增]  時，Visual Studio Scaffolding 引擎便會建立 *StudentsController.cs* 檔案及一組可以使用該控制器的檢視 ( *.cshtml* 檔案)。
 
-(Scaffolding 引擎也可以在您沒有如本教學課程先前的操作一樣先手動建立時，為您建立資料庫內容。 您可以在 [新增控制器] 方塊中藉由按一下 [資料內容類別] 右側的加號來指定新的內容類別。  Visual Studio 接著便會建立您的 `DbContext` 類別及控制器和檢視。)
+(Scaffolding 引擎也可以在您沒有如本教學課程先前的操作一樣先手動建立時，為您建立資料庫內容。 您可以在 [新增控制器]  方塊中藉由按一下 [資料內容類別]  右側的加號來指定新的內容類別。  Visual Studio 接著便會建立您的 `DbContext` 類別及控制器和檢視。)
 
 您會發現控制器會接受 `SchoolContext` 作為建構函式的參數。
 
@@ -279,7 +279,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Index1.cshtml)]
 
-按 CTRL+F5 來執行專案，或從功能表選擇 [偵錯] > [啟動但不偵錯]。
+按 CTRL+F5 來執行專案，或從功能表選擇 [偵錯] > [啟動但不偵錯]  。
 
 按一下 [Students] 索引標籤來查看 `DbInitializer.Initialize` 方法插入的測試資料。 取決於您瀏覽器視窗的寬度，您可能會在頁面的頂端看到 `Students` 索引標籤連結，或是按一下位於右上角的導覽圖示來查看連結。
 
@@ -289,19 +289,19 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 ## <a name="view-the-database"></a>檢視資料庫
 
-當您啟動應用程式時，`DbInitializer.Initialize` 方法會呼叫 `EnsureCreated`。 EF 看到不存在任何資料庫，於是便建立了一個資料庫，接著 `Initialize` 方法程式碼的剩餘部分便會將資料填入資料庫。 您可以使用 [SQL Server 物件總管 (SSOX) 來在 Visual Studio 中檢視資料庫。
+當您啟動應用程式時，`DbInitializer.Initialize` 方法會呼叫 `EnsureCreated`。 EF 看到不存在任何資料庫，於是便建立了一個資料庫，接著 `Initialize` 方法程式碼的剩餘部分便會將資料填入資料庫。 您可以使用 SQL Server 物件總管  (SSOX) 來在 Visual Studio 中檢視資料庫。
 
 關閉瀏覽器。
 
-若 SSOX 視窗尚未開啟，請從 Visual Studio 中的 [檢視] 功能表選取它。
+若 SSOX 視窗尚未開啟，請從 Visual Studio 中的 [檢視]  功能表選取它。
 
 在 SSOX 中，按一下 **(localdb)\MSSQLLocalDB > Databases**，然後按一下位於您 *appsettings.json* 檔案中連接字串內資料庫名稱的項目。
 
-展開 [資料表] 節點以查看您資料庫中的資料表。
+展開 [資料表]  節點以查看您資料庫中的資料表。
 
 ![SSOX 中的資料表](intro/_static/ssox-tables.png)
 
-以滑鼠右鍵按一下 **Students** 資料表，並按一下 [檢視資料] 查看建立的資料行及插入資料表中的資料列。
+以滑鼠右鍵按一下 **Students** 資料表，並按一下 [檢視資料]  查看建立的資料行及插入資料表中的資料列。
 
 ![SSOX 中的 Student 資料表](intro/_static/ssox-student-table.png)
 
@@ -319,7 +319,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 * 命名為 ID 或 classnameID 的實體屬性，會辨識為主索引鍵屬性。
 
-* 如果屬性命名為*\<導覽屬性名稱>\<主索引鍵屬性名稱>*，系統就會將該屬性解譯為外部索引鍵屬性 (例如，若為 `Student` 導覽屬性，則為 `StudentID`，因為 `Student` 實體的主索引鍵是 `ID`)。 外部索引鍵屬性也可以直接命名為 *\<主索引鍵屬性名稱>* (例如 `EnrollmentID`，因為 `Enrollment` 實體的主索引鍵為 `EnrollmentID`)。
+* 如果屬性命名為 *\<導覽屬性名稱>\<主索引鍵屬性名稱>* ，系統就會將該屬性解譯為外部索引鍵屬性 (例如，若為 `Student` 導覽屬性，則為 `StudentID`，因為 `Student` 實體的主索引鍵是 `ID`)。 外部索引鍵屬性也可以直接命名為 *\<主索引鍵屬性名稱>* (例如 `EnrollmentID`，因為 `Enrollment` 實體的主索引鍵為 `EnrollmentID`)。
 
 慣例行為可以被覆寫。 例如，您可以明確指定資料表名稱，如稍早在本教學課程中您所見到的。 您可以設定資料行名稱以及將任何屬性設為主索引鍵或外部索引鍵，如同您在本系列[稍後的教學課程](complex-data-model.md)中所見。
 

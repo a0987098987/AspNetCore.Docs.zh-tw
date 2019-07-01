@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/03/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 4cfca4b38543ff073bb98dc09b483d96096928ae
-ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
+ms.openlocfilehash: 3a254af4d56cb4abc7004a67b0d0b42de2b878b1
+ms.sourcegitcommit: 47cc13ab90913af9a2887cef0896bb4e9aba4dd5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692565"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67399107"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -42,7 +42,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 1. 選取 [ASP.NET Core Web 應用程式]  。 選取 [下一步]  。
 1. 在 [專案名稱]  欄位中提供專案名稱，或接受預設專案名稱。 選取 [建立]  。
 1. 在 [建立新的 ASP.NET Core Web 應用程式]  對話方塊中，確認選取 [.NET Core]  和 [ASP.NET Core 3.0]  。
-1. 選取**背景工作服務**範本。 選取 [建立]  。
+1. 選取 [背景工作服務]  範本。 選取 [建立]  。
 
 # <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code / .NET Core CLI](#tab/visual-studio-code+netcore-cli)
 
@@ -211,7 +211,7 @@ powershell -Command "New-LocalUser -Name {NAME}"
 
 若要為服務使用者帳戶建立「以服務方式登入」  權限：
 
-1. 執行 *secpool.msc* 來開啟 [本機安全性原則編輯器]。
+1. 執行 *secpol.msc* 來開啟 [本機安全性原則編輯器]。
 1. 展開 [本機原則]  節點，然後選取 [使用者權限指派]  。
 1. 開啟 [以服務方式登入]  原則。
 1. 選取 [新增使用者或群組]  。
@@ -310,7 +310,7 @@ Remove-Service -Name {NAME}
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
-服務如果會與來自網際網路或公司網路的要求進行互動，並且位於 Proxy 或負載平衡器後方，可能會需要額外的設定。 如需詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
+服務如果會與來自網際網路或公司網路的要求進行互動，並且位於 Proxy 或負載平衡器後方，可能會需要額外的設定。 如需詳細資訊，請參閱 <xref:host-and-deploy/proxy-load-balancer>。
 
 ## <a name="configure-https"></a>設定 HTTPS
 

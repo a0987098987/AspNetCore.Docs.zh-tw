@@ -4,14 +4,14 @@ author: zuckerthoben
 description: 了解如何使用 NSwag 來產生 ASP.NET Core Web API 的文件和說明頁面。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/30/2018
+ms.date: 06/21/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 787f51629b044e638d2790b3dda8723c2644c2d8
-ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
+ms.openlocfilehash: c5b2dc47328d6d3c271a87579fa8c300109bd734
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66470437"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316549"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>NSwag 與 ASP.NET Core 使用者入門
 
@@ -43,7 +43,7 @@ NSwag 提供下列功能：
 * 為實作的 Web API 產生 Swagger 規格。
 * 提供 Swagger UI 以瀏覽並測試 Web API。
 
-若要使用 [NSwag](https://github.com/RSuter/NSwag) ASP.NET Core 中介軟體，請安裝 [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet 套件。 此套件包含用以產生並提供 Swagger 規格、Swagger UI (v2 和 v3) 及 [ReDoc UI](https://github.com/Rebilly/ReDoc) 的中介軟體。
+若要使用 [NSwag](https://github.com/RicoSuter/NSwag) ASP.NET Core 中介軟體，請安裝 [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet 套件。 此套件包含用以產生並提供 Swagger 規格、Swagger UI (v2 和 v3) 及 [ReDoc UI](https://github.com/Rebilly/ReDoc) 的中介軟體。
 
 請使用下列其中一種方法來安裝 NSwag NuGet 套件：
 
@@ -91,17 +91,13 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 ## <a name="add-and-configure-swagger-middleware"></a>新增和設定 Swagger 中介軟體
 
- 請在 `Startup` 類別中執行下列步驟，以在 ASP.NET Core 應用程式中新增和設定 Swagger：
+請執行下列步驟，以在您的 ASP.NET Core 應用程式中新增及設定 Swagger：
 
-* 匯入下列命名空間：
-
-[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_StartupConfigureImports)]
-
-* 在 `ConfigureServices` 方法中，註冊所需的 Swagger 服務：
+* 在 `Startup.ConfigureServices` 方法中，註冊所需的 Swagger 服務：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_ConfigureServices&highlight=8)]
 
-* 在 `Configure` 方法中，啟用中介軟體為產生的 Swagger 規格和 SwaggerUI 提供服務：
+* 在 `Startup.Configure` 方法中，啟用中介軟體為產生的 Swagger 規格和 SwaggerUI 提供服務：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_Configure&highlight=6-7)]
 
@@ -113,15 +109,15 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 您可以選擇下列其中一個選項來利用 NSwag 的程式碼產生功能：
 
-* [NSwagStudio](https://github.com/NSwag/NSwag/wiki/NSwagStudio) &ndash; 一個能夠以 C# 或 TypeScript 產生 API 用戶端程式碼的 Windows 傳統型應用程式。
+* [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) &ndash; 一個能夠以 C# 或 TypeScript 產生 API 用戶端程式碼的 Windows 傳統型應用程式。
 * 可在您專案內產生程式碼的 [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) 或 [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) NuGet 套件。
-* 從[命令列](https://github.com/NSwag/NSwag/wiki/CommandLine)使用 NSwag。
-* [NSwag.MSBuild](https://github.com/NSwag/NSwag/wiki/MSBuild) NuGet 套件。
+* 從[命令列](https://github.com/RicoSuter/NSwag/wiki/CommandLine)使用 NSwag。
+* [NSwag.MSBuild](https://github.com/RicoSuter/NSwag/wiki/MSBuild) NuGet 套件。
 * [Unchase OpenAPI (Swagger) Connected Service](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; 以 C# 或 TypeScript 產生 API 用戶端程式碼的 Visual Studio 已連線服務。 也會使用 NSwag 產生用於 OpenAPI 服務的 C# 控制器。
 
 ### <a name="generate-code-with-nswagstudio"></a>使用 NSwagStudio 來產生程式碼
 
-* 依照 [NSwagStudio GitHub 存放庫](https://github.com/RSuter/NSwag/wiki/NSwagStudio) \(英文\) 的指示來安裝 NSwagStudio。
+* 依照 [NSwagStudio GitHub 存放庫](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) \(英文\) 的指示來安裝 NSwagStudio。
 * 啟動 NSwagStudio，然後在 [Swagger Specification URL] \(Swagger 規格 URL\)  文字方塊中輸入 *swagger.json* 檔案 URL。 例如， *http://localhost:44354/swagger/v1/swagger.json* 。
 * 按一下 [Create local Copy] \(建立本機複本\)  按鈕，以產生 Swagger 規格的 JSON 表示法。
 
@@ -277,7 +273,7 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker range=">= aspnetcore-2.1"
 
- 由於 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而針對 Web API 動作建議使用的傳回型別是 [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult%601)，因此它只能推斷 `T` 所定義的傳回型別。 您無法自動推斷其他可能的傳回型別。 
+ 由於 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而針對 Web API 動作建議使用的傳回型別是 [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult%601)，因此它只能推斷 `T` 所定義的傳回型別。 您無法自動推斷其他可能的傳回型別。
 
 參考下列範例：
 
@@ -287,7 +283,7 @@ Swagger UI 會顯示版本資訊：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
-在 ASP.NET Core 2.2 或更新版本中，您可以使用慣例，而不使用 `[ProducesResponseType]` 來明確地裝飾個別動作。 如需詳細資訊，請參閱<xref:web-api/advanced/conventions>。
+在 ASP.NET Core 2.2 或更新版本中，您可以使用慣例，而不使用 `[ProducesResponseType]` 來明確地裝飾個別動作。 如需詳細資訊，請參閱 <xref:web-api/advanced/conventions>。
 
 ::: moniker-end
 

@@ -1,18 +1,18 @@
 ---
-title: 裝載和部署 Blazor 伺服器端
+title: 裝載及部署 ASP.NET Core Blazor 伺服器端
 author: guardrex
 description: 了解如何使用 ASP.NET Core 來裝載和部署 Blazor 伺服器端應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/26/2019
+ms.date: 06/11/2019
 uid: host-and-deploy/blazor/server-side
-ms.openlocfilehash: 8e44be09a4cceba2509f3e86abf3ce5fd2d077bd
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 8b332c2fb439e9832d604ed26f972b266eed2507
+ms.sourcegitcommit: 9bb29f9ba6f0645ee8b9cabda07e3a5aa52cd659
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887763"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67406127"
 ---
 # <a name="host-and-deploy-blazor-server-side"></a>裝載和部署 Blazor 伺服器端
 
@@ -28,19 +28,19 @@ ms.locfileid: "64887763"
 
 需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。 Visual Studio 會包含 **Blazor (伺服器端)** 專案範本 (使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時為 `blazorserverside` 範本)。
 
-<!--
+## <a name="connection-scale-out"></a>連線相應放大
 
-**INSERT: Concerns are the same as publishing an ASP.NET Core SignalR app**
+針對每個使用者，Blazor 伺服器端應用程式需要一個有效的 SignalR 連線。 生產 Blazor 伺服器端部署需要一個解決方案以支援應用程式所需的同時連線數目。 [Azure SignalR Service](/azure/azure-signalr/) 會處理連線的規模調整，而且我們建議您使用它來作為 Blazor 伺服器端應用程式的規模調整解決方案。 如需詳細資訊，請參閱 <xref:signalr/publish-to-azure-web-app>。
 
-**INSERT: Content on the Azure SignalR Service**
+## <a name="signalr-configuration"></a>SignalR 設定
 
-**INSERT: Manually turn on WebSockets support**
-
--->
+SignalR 是由 ASP.NET Core 針對大部分的常見 Blazor 伺服器端案例設定的。 針對自訂與進階案例，請參閱[其他資源](#additional-resources) 區段中的 SignalR 文章。
 
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:signalr/introduction>
+* [Azure SignalR Service 文件](/azure/azure-signalr/)
+* [快速入門：使用 SignalR Service 建立聊天室](/azure/azure-signalr/signalr-quickstart-dotnet-core)
 * <xref:host-and-deploy/index>
 * <xref:tutorials/publish-to-azure-webapp-using-vs>
 * [將 ASP.NET Core 預覽版本部署至 Azure App Service](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service)

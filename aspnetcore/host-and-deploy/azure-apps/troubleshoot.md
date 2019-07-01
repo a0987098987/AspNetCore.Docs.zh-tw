@@ -4,14 +4,14 @@ author: guardrex
 description: 了解如何診斷 ASP.NET Core Azure App Service 部署的問題。
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/06/2019
+ms.date: 06/19/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 7a0bb7df27ebbea0eac79771452295846fad563a
-ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
+ms.openlocfilehash: d78499c1a82a011239f6b62b546f304a5d5017e2
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66470450"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313751"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>針對 Azure App Service 上的 ASP.NET Core 進行疑難排解
 
@@ -21,122 +21,14 @@ ms.locfileid: "66470450"
 
 本文說明如何使用 Azure App Service 診斷工具來診斷 ASP.NET Core 應用程式啟動問題。 如需其他疑難排解建議，請參閱 Azure 文件中的 [Azure App Service 診斷概觀](/azure/app-service/app-service-diagnostics)和[如何：監視 Azure App Service 中的應用程式](/azure/app-service/web-sites-monitor)。
 
-## <a name="app-startup-errors"></a>應用程式啟動錯誤
+其他疑難排解主題：
 
-**502.5 處理序失敗** 背景工作處理序失敗。 應用程式未啟動。
+* IIS 也會使用 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)來裝載應用程式。 如需有關 IIS 的疑難排解資訊，請參閱 <xref:host-and-deploy/iis/troubleshoot>。
+* <xref:fundamentals/error-handling> 涵蓋在本機系統上進行開發時，如何處理 ASP.NET Core 應用程式中的錯誤。
+* [了解如何使用 Visual Studio 進行偵錯](/visualstudio/debugger/getting-started-with-the-debugger)介紹 Visual Studio 偵錯工具的功能。
+* [使用 Visual Studio Code 進行偵錯](https://code.visualstudio.com/docs/editor/debugging) \(英文\) 說明 Visual Studio Code 中內建的偵錯支援。
 
-[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)嘗試啟動背景工作處理序，但無法啟動。 檢查「應用程式事件記錄檔」通常有助於針對這類問題進行疑難排解。 [應用程式事件記錄檔](#application-event-log)一節說明了如何存取此記錄檔。
-
-當設定錯誤的應用程式造成背景工作處理序發生失敗時，會傳回 [502.5 處理序失敗]  錯誤頁面：
-
-![顯示 [502.5 處理序失敗] 頁面的瀏覽器視窗](troubleshoot/_static/process-failure-page.png)
-
-**500 內部伺服器錯誤**
-
-應用程式啟動，但有錯誤導致伺服器無法完成要求。
-
-此錯誤是在啟動或建立回應時，在應用程式的程式碼內發生。 回應可能未包含任何內容，或是回應可能在瀏覽器中以「500 內部伺服器錯誤」  的形式出現。 「應用程式事件記錄檔」通常會指出該應用程式已正常啟動。 從伺服器的觀點來看，這是正確的。 應用程式已啟動，但無法產生有效的回應。 請[在 Kudu 主控台中執行應用程式](#run-the-app-in-the-kudu-console)或[啟用 ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)，以針對問題進行疑難排解。
-
-::: moniker range="= aspnetcore-2.2"
-
-### <a name="50030-in-process-startup-failure"></a>500.30 同處理序啟動失敗
-
-背景工作處理序失敗。 應用程式未啟動。
-
-ASP.NET Core 模組嘗試啟動 .NET Core CLR 同處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0"
-
-### <a name="50031-ancm-failed-to-find-native-dependencies"></a>500.31 ANCM 找不到原生相依性
-
-背景工作處理序失敗。 應用程式未啟動。
-
-ASP.NET Core 模組嘗試啟動 .NET Core 執行階段同處理序，但無法啟動。 此啟動失敗的最常見原因是當 `Microsoft.NETCore.App` 或 `Microsoft.AspNetCore.App` 執行階段未安裝時。 如果應用程式部署至目標 ASP.NET Core 3.0，但電腦上無該版本，就會發生此錯誤。 範例錯誤訊息如下：
-
-```
-The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
-  - The following frameworks were found:
-      2.2.1 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
-      3.0.0-preview5-27626-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
-      3.0.0-preview6-27713-13 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
-      3.0.0-preview6-27714-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
-      3.0.0-preview6-27723-08 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
-```
-
-錯誤訊息會列出所有已安裝 .NET Core 版本和應用程式所要求的版本。 若要修正此錯誤，請使用以下其中一種方法：
-
-* 在電腦上安裝適當的 .NET Core 版本。
-* 將應用程式的目標 .NET Core 版本變更為電腦上版本。
-* 將應用程式發佈為[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)。
-
-在開發過程中執行時 (`ASPNETCORE_ENVIRONMENT` 環境變數設定為 `Development`)，特定的錯誤會寫入至 HTTP 回應。 處理序啟動失敗的原因也會列在[應用程式事件記錄檔](#application-event-log)中。
-
-### <a name="50032-ancm-failed-to-load-dll"></a>500.32 ANCM 無法載入 dll
-
-背景工作處理序失敗。 應用程式未啟動。
-
-此錯誤最常見原因是針對不相容的處理器架構發佈應用程式。 如果背景工作處理序執行為 32 位元應用程式，而此應用程式已發佈至目標 64 位元，就會發生此錯誤。
-
-若要修正此錯誤，請使用以下其中一種方法：
-
-* 針對相同的處理器架構，將應用程式重新發佈為背景工作處理序。
-* 將應用程式發佈為[架構相依部署](/dotnet/core/deploying/#framework-dependent-executables-fde)。
-
-### <a name="50033-ancm-request-handler-load-failure"></a>500.33 ANCM 要求處理常式載入失敗
-
-背景工作處理序失敗。 應用程式未啟動。
-
-應用程式未參考 `Microsoft.AspNetCore.App` 架構。 ASP.NET Core 模組只裝載以 `Microsoft.AspNetCore.App` 架構為目標的應用程式。
-
-若要修正這個錯誤，請確認應用程式以 `Microsoft.AspNetCore.App` 架構為目標。 檢查 `.runtimeconfig.json` 以驗證應用程式是否以該架構為目標。
-
-### <a name="50034-ancm-mixed-hosting-models-not-supported"></a>500.34 ANCM 不支援混合式裝載模型
-
-背景工作處理序無法在相同的程序中執行同處理序應用程式和跨處理序應用程式。
-
-若要修正這個錯誤，請在不同的 IIS 應用程式集區中執行應用程式。
-
-### <a name="50035-ancm-multiple-in-process-applications-in-same-process"></a>500.35 ANCM 同一程序中有多個同處理序應用程式
-
-背景工作處理序無法在相同的程序中執行同處理序應用程式和跨處理序應用程式。
-
-若要修正這個錯誤，請在不同的 IIS 應用程式集區中執行應用程式。
-
-### <a name="50036-ancm-out-of-process-handler-load-failure"></a>500.36 ANCM 跨處理序處理常式載入失敗
-
-跨處理序要求處理常式 *aspnetcorev2_outofprocess.dll* 不在 *aspnetcorev2.dll* 檔案旁邊。 這表示 ASP.NET Core 模組安裝損毀。
-
-若要修正這個錯誤，請修復 [.NET Core 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle) (適用於 IIS) 或 Visual Studio (適用於 IIS Express) 安裝。
-
-### <a name="50037-ancm-failed-to-start-within-startup-time-limit"></a>500.37 ANCM 無法在啟動時間限制內啟動
-
-ANCM 無法在提供的啟動時間限制內啟動。 根據預設，逾時值為 120 秒。
-
-在同一部電腦上啟動大量的應用程式時，就會發生此錯誤。 檢查伺服器在啟動期間是否出現 CPU/記憶體的使用量尖峰。 多個應用程式的啟動程序可能需要交錯進行。
-
-### <a name="50030-in-process-startup-failure"></a>500.30 同處理序啟動失敗
-
-背景工作處理序失敗。 應用程式未啟動。
-
-ASP.NET Core 模組嘗試啟動 .NET Core 執行階段同處理序，但無法啟動。 通常從[應用程式事件記錄檔](#application-event-log)和 [ASP.NET Core 模組 stdout 記錄檔](#aspnet-core-module-stdout-log)中的項目，即可判斷啟動失敗的原因。
-
-### <a name="5000-in-process-handler-load-failure"></a>500.0 同處理序處理常式載入失敗
-
-背景工作處理序失敗。 應用程式未啟動。
-
-處理序啟動失敗的原因也會列在[應用程式事件記錄檔](#application-event-log)中。
-
-::: moniker-end
-
-**連線重設**
-
-如果是在傳送標頭之後才發生錯誤，則當發生錯誤時，伺服器已來不及傳送「500 內部伺服器錯誤」  。 通常是在將回應的複雜物件序列化的期間發生錯誤時，會發生此錯誤。 這類錯誤會在用戶端上顯示為「連線重設」  錯誤。 [應用程式記錄](xref:fundamentals/logging/index)可協助針對這些類型的錯誤進行疑難排解。
-
-## <a name="default-startup-limits"></a>預設啟動限制
-
-ASP.NET Core 模組上已設定預設的 *startupTimeLimit* 120 秒。 保留預設值時，在模組記錄處理序失敗之前，應用程式最多可花費兩分鐘來進行啟動。 如需有關設定模組的資訊，請參閱 [aspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
+[!INCLUDE[](~/includes/azure-iis-startup-errors.md)]
 
 ## <a name="troubleshoot-app-startup-errors"></a>針對應用程式啟動錯誤進行疑難排解
 

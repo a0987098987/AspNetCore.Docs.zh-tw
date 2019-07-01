@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: aspnetcore-2.2
-ms.openlocfilehash: cdc761b645b91777bdf6084c3ad4659fcea55039
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ad7b5ecc4f03d845375b1612150da183df9ec0d9
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883203"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316586"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2 的新功能
 
@@ -19,7 +19,7 @@ ms.locfileid: "64883203"
 
 ## <a name="openapi-analyzers--conventions"></a>OpenAPI 分析器與慣例
 
-OpenAPI (之前稱為 Swagger) 是用來描述 REST API 的語言無關規格。 OpenAPI 生態系統中已有工具，可讓您使用此規格來探索、測試和產生用戶端程式碼。 您可以透過社群導向專案 (例如 [NSwag](https://github.com/RSuter/NSwag) 和 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore))，在 ASP.NET Core MVC 中產生和視覺化 OpenAPI 文件。 ASP.NET Core 2.2 提供改善的工具和執行階段體驗來建立 OpenAPI 文件。
+OpenAPI (之前稱為 Swagger) 是用來描述 REST API 的語言無關規格。 OpenAPI 生態系統中已有工具，可讓您使用此規格來探索、測試和產生用戶端程式碼。 您可以透過社群導向專案 (例如 [NSwag](https://github.com/RicoSuter/NSwag) 和 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore))，在 ASP.NET Core MVC 中產生和視覺化 OpenAPI 文件。 ASP.NET Core 2.2 提供改善的工具和執行階段體驗來建立 OpenAPI 文件。
 
 如需詳細資訊，請參閱下列資源：
 
@@ -33,12 +33,12 @@ ASP.NET Core 2.1 引進了 `ProblemDetails`，它採用 [RFC 7807](https://tools
 
 ## <a name="endpoint-routing"></a>端點路由
 
-ASP.NET Core 2.2 使用新的「端點路由」系統來改善要求的分派。 其變更包括新的連結產生 API 成員和路由參數轉換器。
+ASP.NET Core 2.2 使用新的「端點路由」  系統來改善要求的分派。 其變更包括新的連結產生 API 成員和路由參數轉換器。
 
 如需詳細資訊，請參閱下列資源：
 
 * [Endpoint routing in 2.2](https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/) (2.2 中的端點路由)
-* [路由參數轉換器](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (請參閱＜Routing＞(路由) 一節)
+* [路由參數轉換器](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (請參閱＜Routing＞(路由)  一節)
 * [IRouter 路由與端點路由之間的差異](xref:fundamentals/routing?view=aspnetcore-2.2#differences-from-earlier-versions-of-routing)
 
 ## <a name="health-checks"></a>健康狀態檢查
@@ -53,7 +53,7 @@ ASP.NET Core 2.2 使用新的「端點路由」系統來改善要求的分派。
 
 ## <a name="http2-in-kestrel"></a>Kestrel 中的 HTTP/2
 
-ASP.NET Core 2.2 新增 HTTP/2 支援。 
+ASP.NET Core 2.2 新增 HTTP/2 支援。
 
 HTTP/2 是 HTTP 通訊協定的主要版本。 一些值得注意的 HTTP/2 功能包括支援標頭壓縮，以及透過單一連線進行完全多工的資料流。 雖然 HTTP/2 會保留 HTTP 的語意 (HTTP 標頭、方法等)，但它是自 HTTP/1.x 以來的重大變更，對於此資料如何進行框架處理及透過網路傳送皆有所著墨。
 

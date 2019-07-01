@@ -5,14 +5,14 @@ description: 了解在 ASP.NET Core 應用程式中發生 Razor 檔案編譯的�
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/30/2019
+ms.date: 06/20/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: b78831dd95a721e35d4bf5b44cdd8823472f6aa2
-ms.sourcegitcommit: 06c4f2910dd54ded25e1b8750e09c66578748bc9
+ms.openlocfilehash: ff66148fc9aad2871f9f55ce76b5a0dacb0ad10c
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66395883"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313777"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>ASP.NET Core 中 Razor 檔案的先行編譯
 
@@ -125,17 +125,13 @@ dotnet publish -c Release
 使用 `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation` 封裝來啟用執行階段編譯。 若要啟用執行階段編譯，應用程式必須：
 
 * 安裝 [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 套件。
-* 更新應用程式的 `ConfigureServices` 以包含對 `AddMvcRazorRuntimeCompilation` 的呼叫：
+* 更新專案的 `Startup.ConfigureServices` 方法以包括對 `AddRazorRuntimeCompilation` 的呼叫：
 
   ```csharp
   services
-      .AddMvc()
-      .AddRazorRuntimeCompilation()
+      .AddControllersWithViews()
+      .AddRazorRuntimeCompilation();
   ```
-
-針對要在部署時運作的執行階段編譯，應用程式必須修改其專案檔，以將 `PreserveCompilationReferences` 設定為 `true`：
-
-[!code-xml[](view-compilation/sample/RuntimeCompilation.csproj?highlight=4)]
 
 ::: moniker-end
 

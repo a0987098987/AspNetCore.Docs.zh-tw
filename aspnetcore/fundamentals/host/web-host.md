@@ -4,42 +4,36 @@ author: guardrex
 description: 了解 ASP.NET Core 中的 Web 主機，其負責啟動應用程式及管理存留期。
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/11/2019
+ms.date: 06/14/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 48f3b664d901bdfb27cdf9e798fa60c0587d1def
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: c5d5b723b31a5c211a47e378e50be858fda0b2bd
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610284"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313790"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-ASP.NET Core 應用程式會設定並啟動「主機」。 主機負責應用程式啟動和存留期管理。 至少，主機會設定伺服器和要求處理管線。 主機也可以設定記錄、相依性插入和設定。
+ASP.NET Core 應用程式會設定並啟動「主機」  。 主機負責應用程式啟動和存留期管理。 至少，主機會設定伺服器和要求處理管線。 主機也可以設定記錄、相依性插入和設定。
 
-::: moniker range="<= aspnetcore-1.1"
+::: moniker range=">= aspnetcore-3.0"
 
-如需此主題的 1.1 版，請下載 [ASP.NET Core Web 主機 (1.1 版，PDF)](https://webpifeed.blob.core.windows.net/webpifeed/Partners/Web-Host_1.1.pdf)。
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
-
-本文所涵蓋的 ASP.NET Core Web 主機 (<xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder>) 適用於裝載 Web 應用程式。 如需 .NET 泛型主機 ([IHostBuilder](/dotnet/api/microsoft.extensions.hosting.ihostbuilder)) 的相關資訊，請參閱 <xref:fundamentals/host/generic-host>。
+此文章涵蓋 Web 主機，而且我們僅因為回溯相容性而繼續提供它。 建議為所有應用程式類型使用[一般主機](xref:fundamentals/host/generic-host)。
 
 ::: moniker-end
 
-::: moniker range="> aspnetcore-2.2"
+::: moniker range="<= aspnetcore-2.2"
 
-本文涵蓋 ASP.NET Core Web 主機 ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder))。 在 ASP.NET Core 3.0 中，泛型主機會取代 Web 主機。 如需詳細資訊，請參閱[主機](xref:fundamentals/index#host)。
+此文章涵蓋 Web 主機，它適用於裝載 Web 應用程式。 針對其他類型的應用程式，請使用[一般主機](xref:fundamentals/host/generic-host)。
 
 ::: moniker-end
 
 ## <a name="set-up-a-host"></a>設定主機
 
-使用 ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)) 的執行個體建立主機。 這通常在應用程式的進入點執行，也就是 `Main` 方法。 產生器方法名稱 `CreateWebHostBuilder`，是為外部元件 (例如 [Entity Framework](/ef/core/)) 識別產生器方法的特殊名稱。
+使用 ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)) 的執行個體建立主機。 這通常在應用程式的進入點執行，也就是 `Main` 方法。
 
 在專案範本中，`Main` 位於 *Program.cs*。 一般的應用程式會呼叫 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 來開始設定主機：
 
@@ -56,6 +50,8 @@ public class Program
             .UseStartup<Startup>();
 }
 ```
+
+呼叫 `CreateDefaultBuilder` 的程式碼位於名為 `CreateWebHostBuilder` 的方法中，這將它與 `Main` 中呼叫產生器物件上之 `Run` 的方法分開。 若您使用e [Entity Framework Core 工具](/ef/core/miscellaneous/cli/)，則此分開是必要的。 工具預期找到它們可以在設計階段呼叫的 `CreateWebHostBuilder` 方法，以在不執行應用程式的情況下設定主機。 替代方式是實作 `IDesignTimeDbContextFactory`。 如需詳細資訊，請參閱[設計階段 DbContext 建立](/ef/core/miscellaneous/cli/dbcontext-creation)。
 
 `CreateDefaultBuilder` 會執行下列工作：
 
@@ -126,14 +122,14 @@ public class Program
 
 ::: moniker-end
 
-「內容根目錄」會決定主機搜尋內容檔案 (例如 MVC 檢視檔案) 的位置。 從專案的根資料夾啟動應用程式時，會使用專案的根資料夾作為內容根目錄。 這是 [Visual Studio](https://visualstudio.microsoft.com) 和 [dotnet 新範本](/dotnet/core/tools/dotnet-new)中使用的預設值。
+「內容根目錄」  會決定主機搜尋內容檔案 (例如 MVC 檢視檔案) 的位置。 從專案的根資料夾啟動應用程式時，會使用專案的根資料夾作為內容根目錄。 這是 [Visual Studio](https://visualstudio.microsoft.com) 和 [dotnet 新範本](/dotnet/core/tools/dotnet-new)中使用的預設值。
 
 如需應用程式組態的詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 
 > [!NOTE]
-> 作為使用靜態 `CreateDefaultBuilder` 方法的替代做法，ASP.NET Core 2.x 支援從 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 建立主機的方法。 如需詳細資訊，請參閱 ASP.NET Core 1.x 索引標籤。
+> 作為使用靜態 `CreateDefaultBuilder` 方法的替代做法，ASP.NET Core 2.x 支援從 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 建立主機的方法。
 
-設定主機時，可以提供 [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure?view=aspnetcore-1.1) 和 [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices?view=aspnetcore-1.1) 方法。 如果指定 `Startup` 類別，它必須定義 `Configure` 方法。 如需詳細資訊，請參閱<xref:fundamentals/startup>。 多次呼叫 `ConfigureServices` 會彼此附加。 對 `WebHostBuilder` 多次呼叫 `Configure` 或 `UseStartup` 則會取代先前的設定。
+設定主機時，可以提供 [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure) 和 [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices) 方法。 如果指定 `Startup` 類別，它必須定義 `Configure` 方法。 如需詳細資訊，請參閱 <xref:fundamentals/startup>。 多次呼叫 `ConfigureServices` 會彼此附加。 對 `WebHostBuilder` 多次呼叫 `Configure` 或 `UseStartup` 則會取代先前的設定。
 
 ## <a name="host-configuration-values"></a>主機組態值
 
@@ -221,7 +217,7 @@ WebHost.CreateDefaultBuilder(args)
 **設定使用**：`UseEnvironment`  
 **環境變數**：`ASPNETCORE_ENVIRONMENT`
 
-環境可以設定為任何值。 架構定義的值包括 `Development`、`Staging` 和 `Production`。 值不區分大小寫。 根據預設，*Environment* 是從 `ASPNETCORE_ENVIRONMENT` 環境變數讀取。 使用 [Visual Studio](https://visualstudio.microsoft.com) 時，可能會在 *launchSettings.json* 檔案設定環境變數。 如需詳細資訊，請參閱<xref:fundamentals/environments>。
+環境可以設定為任何值。 架構定義的值包括 `Development`、`Staging` 和 `Production`。 值不區分大小寫。 根據預設，*Environment* 是從 `ASPNETCORE_ENVIRONMENT` 環境變數讀取。 使用 [Visual Studio](https://visualstudio.microsoft.com) 時，可能會在 *launchSettings.json* 檔案設定環境變數。 如需詳細資訊，請參閱 <xref:fundamentals/environments>。
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -293,7 +289,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="prevent-hosting-startup"></a>防止裝載啟動
 
-可防止自動載入裝載啟動組件，包括應用程式組件所設定的裝載啟動組件。 如需詳細資訊，請參閱<xref:fundamentals/configuration/platform-specific-configuration>。
+可防止自動載入裝載啟動組件，包括應用程式組件所設定的裝載啟動組件。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration>。
 
 **索引鍵**preventHostingStartup  
 **類型**：*bool* (`true` 或 `1`)  
@@ -312,7 +308,7 @@ WebHost.CreateDefaultBuilder(args)
 
 **索引鍵**：urls  
 **類型**：*string*  
-**預設值**：http://localhost:5000  
+**預設值**： http://localhost:5000  
 **設定使用**：`UseUrls`  
 **環境變數**：`ASPNETCORE_URLS`
 
@@ -323,7 +319,7 @@ WebHost.CreateDefaultBuilder(args)
     .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
 ```
 
-Kestrel 有它自己的端點設定 API。 如需詳細資訊，請參閱<xref:fundamentals/servers/kestrel#endpoint-configuration>。
+Kestrel 有它自己的端點設定 API。 如需詳細資訊，請參閱 <xref:fundamentals/servers/kestrel#endpoint-configuration>。
 
 ### <a name="shutdown-timeout"></a>關機逾時
 
@@ -661,7 +657,7 @@ public class Startup
 ```
 
 > [!NOTE]
-> 除了 `IsDevelopment` 擴充方法，`IHostingEnvironment` 也提供 `IsStaging`、`IsProduction` 和 `IsEnvironment(string environmentName)` 方法。 如需詳細資訊，請參閱<xref:fundamentals/environments>。
+> 除了 `IsDevelopment` 擴充方法，`IHostingEnvironment` 也提供 `IsStaging`、`IsProduction` 和 `IsEnvironment(string environmentName)` 方法。 如需詳細資訊，請參閱 <xref:fundamentals/environments>。
 
 `IHostingEnvironment` 服務也可直接插入至 `Configure` 方法，以便設定處理管線：
 

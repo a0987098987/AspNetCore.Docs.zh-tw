@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: index
-ms.openlocfilehash: 6dd722b3b78d2af81497bde9e0519feb9af84748
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: ec2b5b72eeff21d183397284b0d538681282d45b
+ms.sourcegitcommit: 47cc13ab90913af9a2887cef0896bb4e9aba4dd5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086143"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67399165"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -54,7 +54,7 @@ ASP.NET Core 2.x 的目標可以是 NET Core 或 .NET Framework。 將目標指�
 
 實作 .NET Standard 2.0 的 .NET Framework 版本支援 ASP.NET Core 2.x：
 
-* 強烈建議使用 .NET Framework 4.7.1 和更新版本。
+* 強烈建議使用最新版本的 .NET Framework。
 * .NET Framework 4.6.1 和更新版本。
 
 ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更的詳細資料，請參閱[A first look at changes coming in ASP.NET Core 3.0](https://blogs.msdn.microsoft.com/webdev/2018/10/29/a-first-look-at-changes-coming-in-asp-net-core-3-0/) (搶先看 ASP.NET Core 3.0 的變更)。

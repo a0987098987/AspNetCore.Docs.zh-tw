@@ -4,14 +4,14 @@ author: zuckerthoben
 description: 了解如何將 Swashbuckle 新增至 ASP.NET Core Web API 專案，以整合 Swagger UI。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 04/04/2019
+ms.date: 06/21/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: ebbdfa4cfeb3013cd961167439dd261f2e058a4b
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 033f2dda9942f91f23158cf2d986062157a3b69e
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087618"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316600"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -33,34 +33,34 @@ Swashbuckle 有三個主要元件：
 
 ### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 [套件管理員主控台] 視窗中：
-  * 移至 [檢視] > [其他視窗] > [套件管理員主控台]
+* 從 [套件管理員主控台]  視窗中：
+  * 移至 [檢視]   > [其他視窗]   > [套件管理員主控台] 
   * 巡覽至 *TodoApi.csproj* 檔案所在目錄
   * 執行下列命令：
 
     ```powershell
-    Install-Package Swashbuckle.AspNetCore
+    Install-Package Swashbuckle.AspNetCore -Version 5.0.0-rc2
     ```
 
-* 從 [管理 NuGet 套件] 對話方塊中：
-  * 在 [方案總管] > [管理 NuGet 套件] 中，以滑鼠右鍵按一下專案
-  * 將 [套件來源] 設定為 "nuget.org"
+* 從 [管理 NuGet 套件]  對話方塊中：
+  * 在 [方案總管]   > [管理 NuGet 套件]  中，以滑鼠右鍵按一下專案
+  * 將 [套件來源]  設定為 "nuget.org"
   * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
-  * 從 [瀏覽] 索引標籤中選取 "Swashbuckle.AspNetCore" 套件，並按一下 [安裝]
+  * 從 [瀏覽]  索引標籤中選取 "Swashbuckle.AspNetCore" 套件，並按一下 [安裝] 
 
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在 [Solution Pad] > [新增套件...] 中，以滑鼠右鍵按一下 *Packages* 資料夾
-* 將 [新增套件] 視窗的 [來源] 下拉式清單設定為 "nuget.org"
+* 在 [Solution Pad]   > [新增套件...]  中，以滑鼠右鍵按一下 *Packages* 資料夾
+* 將 [新增套件]  視窗的 [來源]  下拉式清單設定為 "nuget.org"
 * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
-* 從結果窗格中選取 "Swashbuckle.AspNetCore" 套件，並按一下 [新增套件]
+* 從結果窗格中選取 "Swashbuckle.AspNetCore" 套件，並按一下 [新增套件] 
 
 ### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-從 [整合式終端機] 執行下列命令：
+從 [整合式終端機]  執行下列命令：
 
 ```console
-dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc2
 ```
 
 ### <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
@@ -68,14 +68,14 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
 執行下列命令：
 
 ```console
-dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc2
 ```
 
 ---
 
 ## <a name="add-and-configure-swagger-middleware"></a>新增和設定 Swagger 中介軟體
 
-匯入下列命名空間以使用 `Info` 類別：
+在 `Startup` 類別中，匯入下列命名空間以使用 `OpenApiInfo` 類別：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup2.cs?name=snippet_InfoClassNamespace)]
 
@@ -132,7 +132,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* 以滑鼠右鍵按一下 [方案總管] 中的專案，然後選取 [編輯 <專案名稱>.csproj]。
+* 以滑鼠右鍵按一下 [方案總管]  中的專案，然後選取 [編輯 <專案名稱>.csproj]  。
 * 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
@@ -141,8 +141,8 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* 以滑鼠右鍵按一下 [方案總管] 中的專案，然後選取 [屬性]。
-* 核取 [組建] 索引標籤之 [輸出] 區段下方的 [XML 文件檔] 方塊。
+* 以滑鼠右鍵按一下 [方案總管]  中的專案，然後選取 [屬性]  。
+* 核取 [組建]  索引標籤之 [輸出]  區段下方的 [XML 文件檔]  方塊。
 
 ::: moniker-end
 
@@ -150,7 +150,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* 從 [Solution Pad] 中，按下 [控制項]，然後按一下專案名稱。 巡覽至 [工具] > [編輯檔案]。
+* 從 [Solution Pad]  中，按下 [控制項]  ，然後按一下專案名稱。 巡覽至 [工具]   > [編輯檔案]  。
 * 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
@@ -159,8 +159,8 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* 開啟 [專案選項] 對話方塊 > [組建] >[編譯器]
-* 核取 [一般選項] 區段下方的 [產生 XML 文件] 方塊
+* 開啟 [專案選項]  對話方塊 > [組建]  >[編譯器] 
+* 核取 [一般選項]  區段下方的 [產生 XML 文件]  方塊
 
 ::: moniker-end
 
@@ -363,7 +363,7 @@ UI 是由產生的 JSON 結構描述所驅動：
 
 ::: moniker-end
 
-[回應內容類型] 下拉式清單會選取此內容類型，作為控制器 GET 動作的預設值：
+[回應內容類型]  下拉式清單會選取此內容類型，作為控制器 GET 動作的預設值：
 
 ![含有預設回應內容類型的 Swagger UI](web-api-help-pages-using-swagger/_static/json-response-content-type.png)
 
@@ -393,7 +393,7 @@ UI 是由產生的 JSON 結構描述所驅動：
 
 ::: moniker range=">= aspnetcore-2.2"
 
-在 ASP.NET Core 2.2 或更新版本中，慣例可作為使用 `[ProducesResponseType]` 明確裝飾個別動作的替代方案。 如需詳細資訊，請參閱<xref:web-api/advanced/conventions>。
+在 ASP.NET Core 2.2 或更新版本中，慣例可作為使用 `[ProducesResponseType]` 明確裝飾個別動作的替代方案。 如需詳細資訊，請參閱 <xref:web-api/advanced/conventions>。
 
 ::: moniker-end
 
@@ -425,7 +425,7 @@ UI 是由產生的 JSON 結構描述所驅動：
 
 [!code-html[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/wwwroot/swagger/ui/index.html?name=snippet_SwaggerUiCss&highlight=3)]
 
-瀏覽至 `http://localhost:<port>/swagger/ui/index.html` 上的 *index.html* 頁面。 在標頭的文字方塊中輸入 `http://localhost:<port>/swagger/v1/swagger.json`，然後按一下 [瀏覽] 按鈕。 結果頁面如下所示：
+瀏覽至 `http://localhost:<port>/swagger/ui/index.html` 上的 *index.html* 頁面。 在標頭的文字方塊中輸入 `http://localhost:<port>/swagger/v1/swagger.json`，然後按一下 [瀏覽]  按鈕。 結果頁面如下所示：
 
 ![含有自訂標頭標題的 Swagger UI](web-api-help-pages-using-swagger/_static/custom-header.png)
 

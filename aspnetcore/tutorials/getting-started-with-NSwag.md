@@ -4,84 +4,84 @@ author: zuckerthoben
 description: 了解如何使用 NSwag 來產生 ASP.NET Core Web API 的文件和說明頁面。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/30/2018
+ms.date: 06/21/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 787f51629b044e638d2790b3dda8723c2644c2d8
-ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
+ms.openlocfilehash: c5b2dc47328d6d3c271a87579fa8c300109bd734
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66470437"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316549"
 ---
-# <a name="get-started-with-nswag-and-aspnet-core"></a><span data-ttu-id="36395-103">NSwag 與 ASP.NET Core 使用者入門</span><span class="sxs-lookup"><span data-stu-id="36395-103">Get started with NSwag and ASP.NET Core</span></span>
+# <a name="get-started-with-nswag-and-aspnet-core"></a><span data-ttu-id="8482e-103">NSwag 與 ASP.NET Core 使用者入門</span><span class="sxs-lookup"><span data-stu-id="8482e-103">Get started with NSwag and ASP.NET Core</span></span>
 
-<span data-ttu-id="36395-104">作者：[Christoph Nienaber](https://twitter.com/zuckerthoben)、[Rico Suter](https://rsuter.com) 及 [Dave Brock](https://twitter.com/daveabrock)</span><span class="sxs-lookup"><span data-stu-id="36395-104">By [Christoph Nienaber](https://twitter.com/zuckerthoben), [Rico Suter](https://rsuter.com), and [Dave Brock](https://twitter.com/daveabrock)</span></span>
+<span data-ttu-id="8482e-104">作者：[Christoph Nienaber](https://twitter.com/zuckerthoben)、[Rico Suter](https://rsuter.com) 及 [Dave Brock](https://twitter.com/daveabrock)</span><span class="sxs-lookup"><span data-stu-id="8482e-104">By [Christoph Nienaber](https://twitter.com/zuckerthoben), [Rico Suter](https://rsuter.com), and [Dave Brock](https://twitter.com/daveabrock)</span></span>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="36395-105">[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="36395-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="8482e-105">[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="8482e-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.0"
 
-<span data-ttu-id="36395-106">[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="36395-106">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="8482e-106">[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="8482e-106">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
 ::: moniker-end
 
-<span data-ttu-id="36395-107">NSwag 提供下列功能：</span><span class="sxs-lookup"><span data-stu-id="36395-107">NSwag offers the following capabilities:</span></span>
+<span data-ttu-id="8482e-107">NSwag 提供下列功能：</span><span class="sxs-lookup"><span data-stu-id="8482e-107">NSwag offers the following capabilities:</span></span>
 
-* <span data-ttu-id="36395-108">能夠運用 Swagger UI 和 Swagger 產生器。</span><span class="sxs-lookup"><span data-stu-id="36395-108">The ability to utilize the Swagger UI and Swagger generator.</span></span>
-* <span data-ttu-id="36395-109">彈性的程式碼產生功能。</span><span class="sxs-lookup"><span data-stu-id="36395-109">Flexible code generation capabilities.</span></span>
+* <span data-ttu-id="8482e-108">能夠運用 Swagger UI 和 Swagger 產生器。</span><span class="sxs-lookup"><span data-stu-id="8482e-108">The ability to utilize the Swagger UI and Swagger generator.</span></span>
+* <span data-ttu-id="8482e-109">彈性的程式碼產生功能。</span><span class="sxs-lookup"><span data-stu-id="8482e-109">Flexible code generation capabilities.</span></span>
 
-<span data-ttu-id="36395-110">使用 NSwag 時，您不需要有現有的 API &mdash; 您可以使用包含 Swagger 的協力廠商 API，然後產生用戶端實作。</span><span class="sxs-lookup"><span data-stu-id="36395-110">With NSwag, you don't need an existing API&mdash;you can use third-party APIs that incorporate Swagger and generate a client implementation.</span></span> <span data-ttu-id="36395-111">NSwag 可讓您加速開發週期，並輕鬆地因應 API 變更進行調整。</span><span class="sxs-lookup"><span data-stu-id="36395-111">NSwag allows you to expedite the development cycle and easily adapt to API changes.</span></span>
+<span data-ttu-id="8482e-110">使用 NSwag 時，您不需要有現有的 API &mdash; 您可以使用包含 Swagger 的協力廠商 API，然後產生用戶端實作。</span><span class="sxs-lookup"><span data-stu-id="8482e-110">With NSwag, you don't need an existing API&mdash;you can use third-party APIs that incorporate Swagger and generate a client implementation.</span></span> <span data-ttu-id="8482e-111">NSwag 可讓您加速開發週期，並輕鬆地因應 API 變更進行調整。</span><span class="sxs-lookup"><span data-stu-id="8482e-111">NSwag allows you to expedite the development cycle and easily adapt to API changes.</span></span>
 
-## <a name="register-the-nswag-middleware"></a><span data-ttu-id="36395-112">註冊 NSwag 中介軟體</span><span class="sxs-lookup"><span data-stu-id="36395-112">Register the NSwag middleware</span></span>
+## <a name="register-the-nswag-middleware"></a><span data-ttu-id="8482e-112">註冊 NSwag 中介軟體</span><span class="sxs-lookup"><span data-stu-id="8482e-112">Register the NSwag middleware</span></span>
 
-<span data-ttu-id="36395-113">註冊 NSwag 中介軟體來：</span><span class="sxs-lookup"><span data-stu-id="36395-113">Register the NSwag middleware to:</span></span>
+<span data-ttu-id="8482e-113">註冊 NSwag 中介軟體來：</span><span class="sxs-lookup"><span data-stu-id="8482e-113">Register the NSwag middleware to:</span></span>
 
-* <span data-ttu-id="36395-114">為實作的 Web API 產生 Swagger 規格。</span><span class="sxs-lookup"><span data-stu-id="36395-114">Generate the Swagger specification for the implemented web API.</span></span>
-* <span data-ttu-id="36395-115">提供 Swagger UI 以瀏覽並測試 Web API。</span><span class="sxs-lookup"><span data-stu-id="36395-115">Serve the Swagger UI to browse and test the web API.</span></span>
+* <span data-ttu-id="8482e-114">為實作的 Web API 產生 Swagger 規格。</span><span class="sxs-lookup"><span data-stu-id="8482e-114">Generate the Swagger specification for the implemented web API.</span></span>
+* <span data-ttu-id="8482e-115">提供 Swagger UI 以瀏覽並測試 Web API。</span><span class="sxs-lookup"><span data-stu-id="8482e-115">Serve the Swagger UI to browse and test the web API.</span></span>
 
-<span data-ttu-id="36395-116">若要使用 [NSwag](https://github.com/RSuter/NSwag) ASP.NET Core 中介軟體，請安裝 [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="36395-116">To use the [NSwag](https://github.com/RSuter/NSwag) ASP.NET Core middleware, install the [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet package.</span></span> <span data-ttu-id="36395-117">此套件包含用以產生並提供 Swagger 規格、Swagger UI (v2 和 v3) 及 [ReDoc UI](https://github.com/Rebilly/ReDoc) 的中介軟體。</span><span class="sxs-lookup"><span data-stu-id="36395-117">This package contains the middleware to generate and serve the Swagger specification, Swagger UI (v2 and v3), and [ReDoc UI](https://github.com/Rebilly/ReDoc).</span></span>
+<span data-ttu-id="8482e-116">若要使用 [NSwag](https://github.com/RicoSuter/NSwag) ASP.NET Core 中介軟體，請安裝 [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="8482e-116">To use the [NSwag](https://github.com/RicoSuter/NSwag) ASP.NET Core middleware, install the [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet package.</span></span> <span data-ttu-id="8482e-117">此套件包含用以產生並提供 Swagger 規格、Swagger UI (v2 和 v3) 及 [ReDoc UI](https://github.com/Rebilly/ReDoc) 的中介軟體。</span><span class="sxs-lookup"><span data-stu-id="8482e-117">This package contains the middleware to generate and serve the Swagger specification, Swagger UI (v2 and v3), and [ReDoc UI](https://github.com/Rebilly/ReDoc).</span></span>
 
-<span data-ttu-id="36395-118">請使用下列其中一種方法來安裝 NSwag NuGet 套件：</span><span class="sxs-lookup"><span data-stu-id="36395-118">Use one of the following approaches to install the NSwag NuGet package:</span></span>
+<span data-ttu-id="8482e-118">請使用下列其中一種方法來安裝 NSwag NuGet 套件：</span><span class="sxs-lookup"><span data-stu-id="8482e-118">Use one of the following approaches to install the NSwag NuGet package:</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="36395-119">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="36395-119">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="8482e-119">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="8482e-119">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="36395-120">從 [套件管理員主控台]  視窗中：</span><span class="sxs-lookup"><span data-stu-id="36395-120">From the **Package Manager Console** window:</span></span>
-  * <span data-ttu-id="36395-121">移至 [檢視]   > [其他視窗]   > [套件管理員主控台] </span><span class="sxs-lookup"><span data-stu-id="36395-121">Go to **View** > **Other Windows** > **Package Manager Console**</span></span>
-  * <span data-ttu-id="36395-122">巡覽至 *TodoApi.csproj* 檔案所在目錄</span><span class="sxs-lookup"><span data-stu-id="36395-122">Navigate to the directory in which the *TodoApi.csproj* file exists</span></span>
-  * <span data-ttu-id="36395-123">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="36395-123">Execute the following command:</span></span>
+* <span data-ttu-id="8482e-120">從 [套件管理員主控台]  視窗中：</span><span class="sxs-lookup"><span data-stu-id="8482e-120">From the **Package Manager Console** window:</span></span>
+  * <span data-ttu-id="8482e-121">移至 [檢視]   > [其他視窗]   > [套件管理員主控台] </span><span class="sxs-lookup"><span data-stu-id="8482e-121">Go to **View** > **Other Windows** > **Package Manager Console**</span></span>
+  * <span data-ttu-id="8482e-122">巡覽至 *TodoApi.csproj* 檔案所在目錄</span><span class="sxs-lookup"><span data-stu-id="8482e-122">Navigate to the directory in which the *TodoApi.csproj* file exists</span></span>
+  * <span data-ttu-id="8482e-123">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="8482e-123">Execute the following command:</span></span>
 
     ```powershell
     Install-Package NSwag.AspNetCore
     ```
 
-* <span data-ttu-id="36395-124">從 [管理 NuGet 套件]  對話方塊中：</span><span class="sxs-lookup"><span data-stu-id="36395-124">From the **Manage NuGet Packages** dialog:</span></span>
-  * <span data-ttu-id="36395-125">在 [方案總管]   > [管理 NuGet 套件]  中，以滑鼠右鍵按一下專案</span><span class="sxs-lookup"><span data-stu-id="36395-125">Right-click the project in **Solution Explorer** > **Manage NuGet Packages**</span></span>
-  * <span data-ttu-id="36395-126">將 [套件來源]  設定為 "nuget.org"</span><span class="sxs-lookup"><span data-stu-id="36395-126">Set the **Package source** to "nuget.org"</span></span>
-  * <span data-ttu-id="36395-127">在搜尋方塊中輸入 "NSwag.AspNetCore"</span><span class="sxs-lookup"><span data-stu-id="36395-127">Enter "NSwag.AspNetCore" in the search box</span></span>
-  * <span data-ttu-id="36395-128">從 [瀏覽]  索引標籤中選取 "NSwag.AspNetCore" 套件，並按一下 [安裝] </span><span class="sxs-lookup"><span data-stu-id="36395-128">Select the "NSwag.AspNetCore" package from the **Browse** tab and click **Install**</span></span>
+* <span data-ttu-id="8482e-124">從 [管理 NuGet 套件]  對話方塊中：</span><span class="sxs-lookup"><span data-stu-id="8482e-124">From the **Manage NuGet Packages** dialog:</span></span>
+  * <span data-ttu-id="8482e-125">在 [方案總管]   > [管理 NuGet 套件]  中，以滑鼠右鍵按一下專案</span><span class="sxs-lookup"><span data-stu-id="8482e-125">Right-click the project in **Solution Explorer** > **Manage NuGet Packages**</span></span>
+  * <span data-ttu-id="8482e-126">將 [套件來源]  設定為 "nuget.org"</span><span class="sxs-lookup"><span data-stu-id="8482e-126">Set the **Package source** to "nuget.org"</span></span>
+  * <span data-ttu-id="8482e-127">在搜尋方塊中輸入 "NSwag.AspNetCore"</span><span class="sxs-lookup"><span data-stu-id="8482e-127">Enter "NSwag.AspNetCore" in the search box</span></span>
+  * <span data-ttu-id="8482e-128">從 [瀏覽]  索引標籤中選取 "NSwag.AspNetCore" 套件，並按一下 [安裝] </span><span class="sxs-lookup"><span data-stu-id="8482e-128">Select the "NSwag.AspNetCore" package from the **Browse** tab and click **Install**</span></span>
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="36395-129">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="36395-129">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="8482e-129">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="8482e-129">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="36395-130">在 [Solution Pad]   > [新增套件...]  中，以滑鼠右鍵按一下 *Packages* 資料夾</span><span class="sxs-lookup"><span data-stu-id="36395-130">Right-click the *Packages* folder in **Solution Pad** > **Add Packages...**</span></span>
-* <span data-ttu-id="36395-131">將 [新增套件]  視窗的 [來源]  下拉式清單設定為 "nuget.org"</span><span class="sxs-lookup"><span data-stu-id="36395-131">Set the **Add Packages** window's **Source** drop-down to "nuget.org"</span></span>
-* <span data-ttu-id="36395-132">在搜尋方塊中輸入 "NSwag.AspNetCore"</span><span class="sxs-lookup"><span data-stu-id="36395-132">Enter "NSwag.AspNetCore" in the search box</span></span>
-* <span data-ttu-id="36395-133">從結果窗格中選取 "NSwag.AspNetCore" 套件，並按一下 [新增套件] </span><span class="sxs-lookup"><span data-stu-id="36395-133">Select the "NSwag.AspNetCore" package from the results pane and click **Add Package**</span></span>
+* <span data-ttu-id="8482e-130">在 [Solution Pad]   > [新增套件...]  中，以滑鼠右鍵按一下 *Packages* 資料夾</span><span class="sxs-lookup"><span data-stu-id="8482e-130">Right-click the *Packages* folder in **Solution Pad** > **Add Packages...**</span></span>
+* <span data-ttu-id="8482e-131">將 [新增套件]  視窗的 [來源]  下拉式清單設定為 "nuget.org"</span><span class="sxs-lookup"><span data-stu-id="8482e-131">Set the **Add Packages** window's **Source** drop-down to "nuget.org"</span></span>
+* <span data-ttu-id="8482e-132">在搜尋方塊中輸入 "NSwag.AspNetCore"</span><span class="sxs-lookup"><span data-stu-id="8482e-132">Enter "NSwag.AspNetCore" in the search box</span></span>
+* <span data-ttu-id="8482e-133">從結果窗格中選取 "NSwag.AspNetCore" 套件，並按一下 [新增套件] </span><span class="sxs-lookup"><span data-stu-id="8482e-133">Select the "NSwag.AspNetCore" package from the results pane and click **Add Package**</span></span>
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="36395-134">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="36395-134">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="8482e-134">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="8482e-134">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<span data-ttu-id="36395-135">從 [整合式終端機]  執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="36395-135">Run the following command from the **Integrated Terminal**:</span></span>
+<span data-ttu-id="8482e-135">從 [整合式終端機]  執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="8482e-135">Run the following command from the **Integrated Terminal**:</span></span>
 
 ```console
 dotnet add TodoApi.csproj package NSwag.AspNetCore
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="36395-136">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="36395-136">.NET Core CLI</span></span>](#tab/netcore-cli)
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="8482e-136">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="8482e-136">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-<span data-ttu-id="36395-137">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="36395-137">Run the following command:</span></span>
+<span data-ttu-id="8482e-137">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="8482e-137">Run the following command:</span></span>
 
 ```console
 dotnet add TodoApi.csproj package NSwag.AspNetCore
@@ -89,46 +89,42 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 ---
 
-## <a name="add-and-configure-swagger-middleware"></a><span data-ttu-id="36395-138">新增和設定 Swagger 中介軟體</span><span class="sxs-lookup"><span data-stu-id="36395-138">Add and configure Swagger middleware</span></span>
+## <a name="add-and-configure-swagger-middleware"></a><span data-ttu-id="8482e-138">新增和設定 Swagger 中介軟體</span><span class="sxs-lookup"><span data-stu-id="8482e-138">Add and configure Swagger middleware</span></span>
 
- <span data-ttu-id="36395-139">請在 `Startup` 類別中執行下列步驟，以在 ASP.NET Core 應用程式中新增和設定 Swagger：</span><span class="sxs-lookup"><span data-stu-id="36395-139">Add and configure Swagger in your ASP.NET Core app by performing the following steps in the `Startup` class:</span></span>
+<span data-ttu-id="8482e-139">請執行下列步驟，以在您的 ASP.NET Core 應用程式中新增及設定 Swagger：</span><span class="sxs-lookup"><span data-stu-id="8482e-139">Add and configure Swagger in your ASP.NET Core app by performing the following steps:</span></span>
 
-* <span data-ttu-id="36395-140">匯入下列命名空間：</span><span class="sxs-lookup"><span data-stu-id="36395-140">Import the following namespaces:</span></span>
-
-[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_StartupConfigureImports)]
-
-* <span data-ttu-id="36395-141">在 `ConfigureServices` 方法中，註冊所需的 Swagger 服務：</span><span class="sxs-lookup"><span data-stu-id="36395-141">In the `ConfigureServices` method, register the required Swagger services:</span></span>
+* <span data-ttu-id="8482e-140">在 `Startup.ConfigureServices` 方法中，註冊所需的 Swagger 服務：</span><span class="sxs-lookup"><span data-stu-id="8482e-140">In the `Startup.ConfigureServices` method, register the required Swagger services:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_ConfigureServices&highlight=8)]
 
-* <span data-ttu-id="36395-142">在 `Configure` 方法中，啟用中介軟體為產生的 Swagger 規格和 SwaggerUI 提供服務：</span><span class="sxs-lookup"><span data-stu-id="36395-142">In the `Configure` method, enable the middleware for serving the generated Swagger specification and the Swagger UI:</span></span>
+* <span data-ttu-id="8482e-141">在 `Startup.Configure` 方法中，啟用中介軟體為產生的 Swagger 規格和 SwaggerUI 提供服務：</span><span class="sxs-lookup"><span data-stu-id="8482e-141">In the `Startup.Configure` method, enable the middleware for serving the generated Swagger specification and the Swagger UI:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_Configure&highlight=6-7)]
 
-* <span data-ttu-id="36395-143">啟動應用程式。</span><span class="sxs-lookup"><span data-stu-id="36395-143">Launch the app.</span></span> <span data-ttu-id="36395-144">瀏覽至：</span><span class="sxs-lookup"><span data-stu-id="36395-144">Navigate to:</span></span>
-  * <span data-ttu-id="36395-145">`http://localhost:<port>/swagger` 以檢視 Swagger UI。</span><span class="sxs-lookup"><span data-stu-id="36395-145">`http://localhost:<port>/swagger` to view the Swagger UI.</span></span>
-  * <span data-ttu-id="36395-146">`http://localhost:<port>/swagger/v1/swagger.json` 以檢視 Swagger 規格。</span><span class="sxs-lookup"><span data-stu-id="36395-146">`http://localhost:<port>/swagger/v1/swagger.json` to view the Swagger specification.</span></span>
+* <span data-ttu-id="8482e-142">啟動應用程式。</span><span class="sxs-lookup"><span data-stu-id="8482e-142">Launch the app.</span></span> <span data-ttu-id="8482e-143">瀏覽至：</span><span class="sxs-lookup"><span data-stu-id="8482e-143">Navigate to:</span></span>
+  * <span data-ttu-id="8482e-144">`http://localhost:<port>/swagger` 以檢視 Swagger UI。</span><span class="sxs-lookup"><span data-stu-id="8482e-144">`http://localhost:<port>/swagger` to view the Swagger UI.</span></span>
+  * <span data-ttu-id="8482e-145">`http://localhost:<port>/swagger/v1/swagger.json` 以檢視 Swagger 規格。</span><span class="sxs-lookup"><span data-stu-id="8482e-145">`http://localhost:<port>/swagger/v1/swagger.json` to view the Swagger specification.</span></span>
 
-## <a name="code-generation"></a><span data-ttu-id="36395-147">程式碼產生</span><span class="sxs-lookup"><span data-stu-id="36395-147">Code generation</span></span>
+## <a name="code-generation"></a><span data-ttu-id="8482e-146">程式碼產生</span><span class="sxs-lookup"><span data-stu-id="8482e-146">Code generation</span></span>
 
-<span data-ttu-id="36395-148">您可以選擇下列其中一個選項來利用 NSwag 的程式碼產生功能：</span><span class="sxs-lookup"><span data-stu-id="36395-148">You can take advantage of NSwag's code generation capabilities by choosing one of the following options:</span></span>
+<span data-ttu-id="8482e-147">您可以選擇下列其中一個選項來利用 NSwag 的程式碼產生功能：</span><span class="sxs-lookup"><span data-stu-id="8482e-147">You can take advantage of NSwag's code generation capabilities by choosing one of the following options:</span></span>
 
-* <span data-ttu-id="36395-149">[NSwagStudio](https://github.com/NSwag/NSwag/wiki/NSwagStudio) &ndash; 一個能夠以 C# 或 TypeScript 產生 API 用戶端程式碼的 Windows 傳統型應用程式。</span><span class="sxs-lookup"><span data-stu-id="36395-149">[NSwagStudio](https://github.com/NSwag/NSwag/wiki/NSwagStudio) &ndash; a Windows desktop app for generating API client code in C# or TypeScript.</span></span>
-* <span data-ttu-id="36395-150">可在您專案內產生程式碼的 [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) 或 [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="36395-150">The [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) or [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) NuGet packages for code generation inside your project.</span></span>
-* <span data-ttu-id="36395-151">從[命令列](https://github.com/NSwag/NSwag/wiki/CommandLine)使用 NSwag。</span><span class="sxs-lookup"><span data-stu-id="36395-151">NSwag from the [command line](https://github.com/NSwag/NSwag/wiki/CommandLine).</span></span>
-* <span data-ttu-id="36395-152">[NSwag.MSBuild](https://github.com/NSwag/NSwag/wiki/MSBuild) NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="36395-152">The [NSwag.MSBuild](https://github.com/NSwag/NSwag/wiki/MSBuild) NuGet package.</span></span>
-* <span data-ttu-id="36395-153">[Unchase OpenAPI (Swagger) Connected Service](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; 以 C# 或 TypeScript 產生 API 用戶端程式碼的 Visual Studio 已連線服務。</span><span class="sxs-lookup"><span data-stu-id="36395-153">The [Unchase OpenAPI (Swagger) Connected Service](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; a Visual Studio Connected Service for generating API client code in C# or TypeScript.</span></span> <span data-ttu-id="36395-154">也會使用 NSwag 產生用於 OpenAPI 服務的 C# 控制器。</span><span class="sxs-lookup"><span data-stu-id="36395-154">Also generates C# controllers for OpenAPI services with NSwag.</span></span>
+* <span data-ttu-id="8482e-148">[NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) &ndash; 一個能夠以 C# 或 TypeScript 產生 API 用戶端程式碼的 Windows 傳統型應用程式。</span><span class="sxs-lookup"><span data-stu-id="8482e-148">[NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) &ndash; a Windows desktop app for generating API client code in C# or TypeScript.</span></span>
+* <span data-ttu-id="8482e-149">可在您專案內產生程式碼的 [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) 或 [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="8482e-149">The [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) or [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) NuGet packages for code generation inside your project.</span></span>
+* <span data-ttu-id="8482e-150">從[命令列](https://github.com/RicoSuter/NSwag/wiki/CommandLine)使用 NSwag。</span><span class="sxs-lookup"><span data-stu-id="8482e-150">NSwag from the [command line](https://github.com/RicoSuter/NSwag/wiki/CommandLine).</span></span>
+* <span data-ttu-id="8482e-151">[NSwag.MSBuild](https://github.com/RicoSuter/NSwag/wiki/MSBuild) NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="8482e-151">The [NSwag.MSBuild](https://github.com/RicoSuter/NSwag/wiki/MSBuild) NuGet package.</span></span>
+* <span data-ttu-id="8482e-152">[Unchase OpenAPI (Swagger) Connected Service](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; 以 C# 或 TypeScript 產生 API 用戶端程式碼的 Visual Studio 已連線服務。</span><span class="sxs-lookup"><span data-stu-id="8482e-152">The [Unchase OpenAPI (Swagger) Connected Service](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; a Visual Studio Connected Service for generating API client code in C# or TypeScript.</span></span> <span data-ttu-id="8482e-153">也會使用 NSwag 產生用於 OpenAPI 服務的 C# 控制器。</span><span class="sxs-lookup"><span data-stu-id="8482e-153">Also generates C# controllers for OpenAPI services with NSwag.</span></span>
 
-### <a name="generate-code-with-nswagstudio"></a><span data-ttu-id="36395-155">使用 NSwagStudio 來產生程式碼</span><span class="sxs-lookup"><span data-stu-id="36395-155">Generate code with NSwagStudio</span></span>
+### <a name="generate-code-with-nswagstudio"></a><span data-ttu-id="8482e-154">使用 NSwagStudio 來產生程式碼</span><span class="sxs-lookup"><span data-stu-id="8482e-154">Generate code with NSwagStudio</span></span>
 
-* <span data-ttu-id="36395-156">依照 [NSwagStudio GitHub 存放庫](https://github.com/RSuter/NSwag/wiki/NSwagStudio) \(英文\) 的指示來安裝 NSwagStudio。</span><span class="sxs-lookup"><span data-stu-id="36395-156">Install NSwagStudio by following the instructions at the [NSwagStudio GitHub repository](https://github.com/RSuter/NSwag/wiki/NSwagStudio).</span></span>
-* <span data-ttu-id="36395-157">啟動 NSwagStudio，然後在 [Swagger Specification URL] \(Swagger 規格 URL\)  文字方塊中輸入 *swagger.json* 檔案 URL。</span><span class="sxs-lookup"><span data-stu-id="36395-157">Launch NSwagStudio and enter the *swagger.json* file URL in the **Swagger Specification URL** text box.</span></span> <span data-ttu-id="36395-158">例如， *http://localhost:44354/swagger/v1/swagger.json* 。</span><span class="sxs-lookup"><span data-stu-id="36395-158">For example, *http://localhost:44354/swagger/v1/swagger.json*.</span></span>
-* <span data-ttu-id="36395-159">按一下 [Create local Copy] \(建立本機複本\)  按鈕，以產生 Swagger 規格的 JSON 表示法。</span><span class="sxs-lookup"><span data-stu-id="36395-159">Click the **Create local Copy** button to generate a JSON representation of your Swagger specification.</span></span>
+* <span data-ttu-id="8482e-155">依照 [NSwagStudio GitHub 存放庫](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) \(英文\) 的指示來安裝 NSwagStudio。</span><span class="sxs-lookup"><span data-stu-id="8482e-155">Install NSwagStudio by following the instructions at the [NSwagStudio GitHub repository](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio).</span></span>
+* <span data-ttu-id="8482e-156">啟動 NSwagStudio，然後在 [Swagger Specification URL] \(Swagger 規格 URL\)  文字方塊中輸入 *swagger.json* 檔案 URL。</span><span class="sxs-lookup"><span data-stu-id="8482e-156">Launch NSwagStudio and enter the *swagger.json* file URL in the **Swagger Specification URL** text box.</span></span> <span data-ttu-id="8482e-157">例如， *http://localhost:44354/swagger/v1/swagger.json* 。</span><span class="sxs-lookup"><span data-stu-id="8482e-157">For example, *http://localhost:44354/swagger/v1/swagger.json*.</span></span>
+* <span data-ttu-id="8482e-158">按一下 [Create local Copy] \(建立本機複本\)  按鈕，以產生 Swagger 規格的 JSON 表示法。</span><span class="sxs-lookup"><span data-stu-id="8482e-158">Click the **Create local Copy** button to generate a JSON representation of your Swagger specification.</span></span>
 
   ![建立 Swagger 規格的本機複本](web-api-help-pages-using-swagger/_static/CreateLocalCopy-NSwagStudio.PNG)
 
-* <span data-ttu-id="36395-161">在 [Outputs] \(輸出\)  區域中，按一下 [CSharp Client] \(CSharp 用戶端\)  核取方塊。</span><span class="sxs-lookup"><span data-stu-id="36395-161">In the **Outputs** area, click the **CSharp Client** check box.</span></span> <span data-ttu-id="36395-162">視您的專案而定，您也可以選擇 [TypeScript Client] \(TypeScript 用戶端\)  或 [CSharp Web API Controller] \(CSharp Web API 控制器\)  。</span><span class="sxs-lookup"><span data-stu-id="36395-162">Depending on your project, you can also choose **TypeScript Client** or **CSharp Web API Controller**.</span></span> <span data-ttu-id="36395-163">如果您選取 [CSharp Web API Controller] \(CSharp Web API 控制器\)  ，服務規格會重建服務，作為反向產生。</span><span class="sxs-lookup"><span data-stu-id="36395-163">If you select **CSharp Web API Controller**, a service specification rebuilds the service, serving as a reverse generation.</span></span>
-* <span data-ttu-id="36395-164">按一下 [Generate Outputs] \(產生輸出\)  ，以產生 *TodoApi.NSwag* 專案 的完整 C# 用戶端實作。</span><span class="sxs-lookup"><span data-stu-id="36395-164">Click **Generate Outputs** to produce a complete C# client implementation of the *TodoApi.NSwag* project.</span></span> <span data-ttu-id="36395-165">若要查看所產生的用戶端程式碼，請按一下 [CSharp Client] \(CSharp 用戶端\)  索引標籤：</span><span class="sxs-lookup"><span data-stu-id="36395-165">To see the generated client code, click the **CSharp Client** tab:</span></span>
+* <span data-ttu-id="8482e-160">在 [Outputs] \(輸出\)  區域中，按一下 [CSharp Client] \(CSharp 用戶端\)  核取方塊。</span><span class="sxs-lookup"><span data-stu-id="8482e-160">In the **Outputs** area, click the **CSharp Client** check box.</span></span> <span data-ttu-id="8482e-161">視您的專案而定，您也可以選擇 [TypeScript Client] \(TypeScript 用戶端\)  或 [CSharp Web API Controller] \(CSharp Web API 控制器\)  。</span><span class="sxs-lookup"><span data-stu-id="8482e-161">Depending on your project, you can also choose **TypeScript Client** or **CSharp Web API Controller**.</span></span> <span data-ttu-id="8482e-162">如果您選取 [CSharp Web API Controller] \(CSharp Web API 控制器\)  ，服務規格會重建服務，作為反向產生。</span><span class="sxs-lookup"><span data-stu-id="8482e-162">If you select **CSharp Web API Controller**, a service specification rebuilds the service, serving as a reverse generation.</span></span>
+* <span data-ttu-id="8482e-163">按一下 [Generate Outputs] \(產生輸出\)  ，以產生 *TodoApi.NSwag* 專案 的完整 C# 用戶端實作。</span><span class="sxs-lookup"><span data-stu-id="8482e-163">Click **Generate Outputs** to produce a complete C# client implementation of the *TodoApi.NSwag* project.</span></span> <span data-ttu-id="8482e-164">若要查看所產生的用戶端程式碼，請按一下 [CSharp Client] \(CSharp 用戶端\)  索引標籤：</span><span class="sxs-lookup"><span data-stu-id="8482e-164">To see the generated client code, click the **CSharp Client** tab:</span></span>
 
 ```csharp
 //----------------------
@@ -169,10 +165,10 @@ namespace MyNamespace
 ```
 
 > [!TIP]
-> <span data-ttu-id="36395-166">C# 用戶端程式碼會根據 [Settings] \(設定\)  索引標籤中的選取項目來產生。修改設定以執行工作，例如重新命名預設的命名空間和產生同步方法。</span><span class="sxs-lookup"><span data-stu-id="36395-166">The C# client code is generated based on selections in the **Settings** tab. Modify the settings to perform tasks such as default namespace renaming and synchronous method generation.</span></span>
+> <span data-ttu-id="8482e-165">C# 用戶端程式碼會根據 [Settings] \(設定\)  索引標籤中的選取項目來產生。修改設定以執行工作，例如重新命名預設的命名空間和產生同步方法。</span><span class="sxs-lookup"><span data-stu-id="8482e-165">The C# client code is generated based on selections in the **Settings** tab. Modify the settings to perform tasks such as default namespace renaming and synchronous method generation.</span></span>
 
-* <span data-ttu-id="36395-167">將產生的 C# 程式碼複製到將取用 API 的用戶端專案中檔案。</span><span class="sxs-lookup"><span data-stu-id="36395-167">Copy the generated C# code into a file in the client project that will consume the API.</span></span>
-* <span data-ttu-id="36395-168">開始取用 Web API：</span><span class="sxs-lookup"><span data-stu-id="36395-168">Start consuming the web API:</span></span>
+* <span data-ttu-id="8482e-166">將產生的 C# 程式碼複製到將取用 API 的用戶端專案中檔案。</span><span class="sxs-lookup"><span data-stu-id="8482e-166">Copy the generated C# code into a file in the client project that will consume the API.</span></span>
+* <span data-ttu-id="8482e-167">開始取用 Web API：</span><span class="sxs-lookup"><span data-stu-id="8482e-167">Start consuming the web API:</span></span>
 
 ```csharp
  var todoClient = new TodoClient();
@@ -187,30 +183,30 @@ var createdTodo = await todoClient.CreateAsync(new TodoItem());
 var foundTodo = await todoClient.GetByIdAsync(1);
 ```
 
-## <a name="customize-api-documentation"></a><span data-ttu-id="36395-169">自訂 API 文件</span><span class="sxs-lookup"><span data-stu-id="36395-169">Customize API documentation</span></span>
+## <a name="customize-api-documentation"></a><span data-ttu-id="8482e-168">自訂 API 文件</span><span class="sxs-lookup"><span data-stu-id="8482e-168">Customize API documentation</span></span>
 
-<span data-ttu-id="36395-170">Swagger 提供選項來記錄物件模型，以簡化 Web API 的取用作業。</span><span class="sxs-lookup"><span data-stu-id="36395-170">Swagger provides options for documenting the object model to ease consumption of the web API.</span></span>
+<span data-ttu-id="8482e-169">Swagger 提供選項來記錄物件模型，以簡化 Web API 的取用作業。</span><span class="sxs-lookup"><span data-stu-id="8482e-169">Swagger provides options for documenting the object model to ease consumption of the web API.</span></span>
 
-### <a name="api-info-and-description"></a><span data-ttu-id="36395-171">API 資訊與描述</span><span class="sxs-lookup"><span data-stu-id="36395-171">API info and description</span></span>
+### <a name="api-info-and-description"></a><span data-ttu-id="8482e-170">API 資訊與描述</span><span class="sxs-lookup"><span data-stu-id="8482e-170">API info and description</span></span>
 
-<span data-ttu-id="36395-172">在 `Startup.ConfigureServices` 方法中，傳遞至 `AddSwaggerDocument` 方法的組態動作會新增作者、授權和描述等資訊：</span><span class="sxs-lookup"><span data-stu-id="36395-172">In the `Startup.ConfigureServices` method, a configuration action passed to the `AddSwaggerDocument` method adds information such as the author, license, and description:</span></span>
+<span data-ttu-id="8482e-171">在 `Startup.ConfigureServices` 方法中，傳遞至 `AddSwaggerDocument` 方法的組態動作會新增作者、授權和描述等資訊：</span><span class="sxs-lookup"><span data-stu-id="8482e-171">In the `Startup.ConfigureServices` method, a configuration action passed to the `AddSwaggerDocument` method adds information such as the author, license, and description:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup2.cs?name=snippet_AddSwaggerDocument)]
 
-<span data-ttu-id="36395-173">Swagger UI 會顯示版本資訊：</span><span class="sxs-lookup"><span data-stu-id="36395-173">The Swagger UI displays the version's information:</span></span>
+<span data-ttu-id="8482e-172">Swagger UI 會顯示版本資訊：</span><span class="sxs-lookup"><span data-stu-id="8482e-172">The Swagger UI displays the version's information:</span></span>
 
 ![含有版本資訊的 Swagger UI](web-api-help-pages-using-swagger/_static/custom-info-nswag.png)
 
-### <a name="xml-comments"></a><span data-ttu-id="36395-175">XML 註解</span><span class="sxs-lookup"><span data-stu-id="36395-175">XML comments</span></span>
+### <a name="xml-comments"></a><span data-ttu-id="8482e-174">XML 註解</span><span class="sxs-lookup"><span data-stu-id="8482e-174">XML comments</span></span>
 
-<span data-ttu-id="36395-176">若要啟用 XML 註解，請執行下列步驟：</span><span class="sxs-lookup"><span data-stu-id="36395-176">To enable XML comments, perform the following steps:</span></span>
+<span data-ttu-id="8482e-175">若要啟用 XML 註解，請執行下列步驟：</span><span class="sxs-lookup"><span data-stu-id="8482e-175">To enable XML comments, perform the following steps:</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="36395-177">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="36395-177">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="8482e-176">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="8482e-176">Visual Studio</span></span>](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* <span data-ttu-id="36395-178">以滑鼠右鍵按一下 [方案總管]  中的專案，然後選取 [編輯 <專案名稱>.csproj]  。</span><span class="sxs-lookup"><span data-stu-id="36395-178">Right-click the project in **Solution Explorer** and select **Edit <project_name>.csproj**.</span></span>
-* <span data-ttu-id="36395-179">將醒目提示的程式碼行手動新增至 *.csproj* 檔案：</span><span class="sxs-lookup"><span data-stu-id="36395-179">Manually add the highlighted lines to the *.csproj* file:</span></span>
+* <span data-ttu-id="8482e-177">以滑鼠右鍵按一下 [方案總管]  中的專案，然後選取 [編輯 <專案名稱>.csproj]  。</span><span class="sxs-lookup"><span data-stu-id="8482e-177">Right-click the project in **Solution Explorer** and select **Edit <project_name>.csproj**.</span></span>
+* <span data-ttu-id="8482e-178">將醒目提示的程式碼行手動新增至 *.csproj* 檔案：</span><span class="sxs-lookup"><span data-stu-id="8482e-178">Manually add the highlighted lines to the *.csproj* file:</span></span>
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
 
@@ -218,17 +214,17 @@ var foundTodo = await todoClient.GetByIdAsync(1);
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* <span data-ttu-id="36395-180">以滑鼠右鍵按一下方案總管  中的專案，然後選取 [屬性] </span><span class="sxs-lookup"><span data-stu-id="36395-180">Right-click the project in **Solution Explorer** and select **Properties**</span></span>
-* <span data-ttu-id="36395-181">核取 [組建]  索引標籤的 [輸出]  區段下方的 [XML 文件檔]  方塊</span><span class="sxs-lookup"><span data-stu-id="36395-181">Check the **XML documentation file** box under the **Output** section of the **Build** tab</span></span>
+* <span data-ttu-id="8482e-179">以滑鼠右鍵按一下方案總管  中的專案，然後選取 [屬性] </span><span class="sxs-lookup"><span data-stu-id="8482e-179">Right-click the project in **Solution Explorer** and select **Properties**</span></span>
+* <span data-ttu-id="8482e-180">核取 [組建]  索引標籤的 [輸出]  區段下方的 [XML 文件檔]  方塊</span><span class="sxs-lookup"><span data-stu-id="8482e-180">Check the **XML documentation file** box under the **Output** section of the **Build** tab</span></span>
 
 ::: moniker-end
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="36395-182">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="36395-182">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="8482e-181">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="8482e-181">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* <span data-ttu-id="36395-183">從 [Solution Pad]  中，按下 [控制項]  ，然後按一下專案名稱。</span><span class="sxs-lookup"><span data-stu-id="36395-183">From the *Solution Pad*, press **control** and click the project name.</span></span> <span data-ttu-id="36395-184">巡覽至 [工具]   > [編輯檔案]  。</span><span class="sxs-lookup"><span data-stu-id="36395-184">Navigate to **Tools** > **Edit File**.</span></span>
-* <span data-ttu-id="36395-185">將醒目提示的程式碼行手動新增至 *.csproj* 檔案：</span><span class="sxs-lookup"><span data-stu-id="36395-185">Manually add the highlighted lines to the *.csproj* file:</span></span>
+* <span data-ttu-id="8482e-182">從 [Solution Pad]  中，按下 [控制項]  ，然後按一下專案名稱。</span><span class="sxs-lookup"><span data-stu-id="8482e-182">From the *Solution Pad*, press **control** and click the project name.</span></span> <span data-ttu-id="8482e-183">巡覽至 [工具]   > [編輯檔案]  。</span><span class="sxs-lookup"><span data-stu-id="8482e-183">Navigate to **Tools** > **Edit File**.</span></span>
+* <span data-ttu-id="8482e-184">將醒目提示的程式碼行手動新增至 *.csproj* 檔案：</span><span class="sxs-lookup"><span data-stu-id="8482e-184">Manually add the highlighted lines to the *.csproj* file:</span></span>
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
 
@@ -236,14 +232,14 @@ var foundTodo = await todoClient.GetByIdAsync(1);
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* <span data-ttu-id="36395-186">開啟 [專案選項]  對話方塊 > [組建]  >[編譯器] </span><span class="sxs-lookup"><span data-stu-id="36395-186">Open the **Project Options** dialog > **Build** > **Compiler**</span></span>
-* <span data-ttu-id="36395-187">核取 [一般選項]  區段下方的 [產生 XML 文件]  方塊</span><span class="sxs-lookup"><span data-stu-id="36395-187">Check the **Generate xml documentation** box under the **General Options** section</span></span>
+* <span data-ttu-id="8482e-185">開啟 [專案選項]  對話方塊 > [組建]  >[編譯器] </span><span class="sxs-lookup"><span data-stu-id="8482e-185">Open the **Project Options** dialog > **Build** > **Compiler**</span></span>
+* <span data-ttu-id="8482e-186">核取 [一般選項]  區段下方的 [產生 XML 文件]  方塊</span><span class="sxs-lookup"><span data-stu-id="8482e-186">Check the **Generate xml documentation** box under the **General Options** section</span></span>
 
 ::: moniker-end
 
-# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[<span data-ttu-id="36395-188">Visual Studio Code / .NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="36395-188">Visual Studio Code / .NET Core CLI</span></span>](#tab/visual-studio-code+netcore-cli)
+# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[<span data-ttu-id="8482e-187">Visual Studio Code / .NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="8482e-187">Visual Studio Code / .NET Core CLI</span></span>](#tab/visual-studio-code+netcore-cli)
 
-<span data-ttu-id="36395-189">將醒目提示的程式碼行手動新增至 *.csproj* 檔案：</span><span class="sxs-lookup"><span data-stu-id="36395-189">Manually add the highlighted lines to the *.csproj* file:</span></span>
+<span data-ttu-id="8482e-188">將醒目提示的程式碼行手動新增至 *.csproj* 檔案：</span><span class="sxs-lookup"><span data-stu-id="8482e-188">Manually add the highlighted lines to the *.csproj* file:</span></span>
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -259,17 +255,17 @@ var foundTodo = await todoClient.GetByIdAsync(1);
 
 ---
 
-### <a name="data-annotations"></a><span data-ttu-id="36395-190">資料註解</span><span class="sxs-lookup"><span data-stu-id="36395-190">Data annotations</span></span>
+### <a name="data-annotations"></a><span data-ttu-id="8482e-189">資料註解</span><span class="sxs-lookup"><span data-stu-id="8482e-189">Data annotations</span></span>
 
 ::: moniker range="<= aspnetcore-2.0"
 
-<span data-ttu-id="36395-191">由於 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而針對 Web API 動作建議使用的傳回型別是 [IActionResult](xref:Microsoft.AspNetCore.Mvc.IActionResult)，因此它無法推斷您動作的執行內容和傳回內容。</span><span class="sxs-lookup"><span data-stu-id="36395-191">Because NSwag uses [Reflection](/dotnet/csharp/programming-guide/concepts/reflection), and the recommended return type for web API actions is [IActionResult](xref:Microsoft.AspNetCore.Mvc.IActionResult), it can't infer what your action is doing and what it returns.</span></span>
+<span data-ttu-id="8482e-190">由於 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而針對 Web API 動作建議使用的傳回型別是 [IActionResult](xref:Microsoft.AspNetCore.Mvc.IActionResult)，因此它無法推斷您動作的執行內容和傳回內容。</span><span class="sxs-lookup"><span data-stu-id="8482e-190">Because NSwag uses [Reflection](/dotnet/csharp/programming-guide/concepts/reflection), and the recommended return type for web API actions is [IActionResult](xref:Microsoft.AspNetCore.Mvc.IActionResult), it can't infer what your action is doing and what it returns.</span></span>
 
-<span data-ttu-id="36395-192">參考下列範例：</span><span class="sxs-lookup"><span data-stu-id="36395-192">Consider the following example:</span></span>
+<span data-ttu-id="8482e-191">參考下列範例：</span><span class="sxs-lookup"><span data-stu-id="8482e-191">Consider the following example:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-<span data-ttu-id="36395-193">上述動作會傳回 `IActionResult`，但在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*) 或 [BadRequest](xref:System.Web.Http.ApiController.BadRequest*)。</span><span class="sxs-lookup"><span data-stu-id="36395-193">The preceding action returns `IActionResult`, but inside the action it's returning either [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*) or [BadRequest](xref:System.Web.Http.ApiController.BadRequest*).</span></span> <span data-ttu-id="36395-194">請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="36395-194">Use data annotations to tell clients which HTTP status codes this action is known to return.</span></span> <span data-ttu-id="36395-195">使用下列屬性裝飾動作：</span><span class="sxs-lookup"><span data-stu-id="36395-195">Decorate the action with the following attributes:</span></span>
+<span data-ttu-id="8482e-192">上述動作會傳回 `IActionResult`，但在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*) 或 [BadRequest](xref:System.Web.Http.ApiController.BadRequest*)。</span><span class="sxs-lookup"><span data-stu-id="8482e-192">The preceding action returns `IActionResult`, but inside the action it's returning either [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*) or [BadRequest](xref:System.Web.Http.ApiController.BadRequest*).</span></span> <span data-ttu-id="8482e-193">請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="8482e-193">Use data annotations to tell clients which HTTP status codes this action is known to return.</span></span> <span data-ttu-id="8482e-194">使用下列屬性裝飾動作：</span><span class="sxs-lookup"><span data-stu-id="8482e-194">Decorate the action with the following attributes:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
@@ -277,20 +273,20 @@ var foundTodo = await todoClient.GetByIdAsync(1);
 
 ::: moniker range=">= aspnetcore-2.1"
 
- <span data-ttu-id="36395-196">由於 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而針對 Web API 動作建議使用的傳回型別是 [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult%601)，因此它只能推斷 `T` 所定義的傳回型別。</span><span class="sxs-lookup"><span data-stu-id="36395-196">Because NSwag uses [Reflection](/dotnet/csharp/programming-guide/concepts/reflection), and the recommended return type for web API actions is [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult%601), it can only infer the return type defined by `T`.</span></span> <span data-ttu-id="36395-197">您無法自動推斷其他可能的傳回型別。</span><span class="sxs-lookup"><span data-stu-id="36395-197">You can't automatically infer other possible return types.</span></span> 
+ <span data-ttu-id="8482e-195">由於 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而針對 Web API 動作建議使用的傳回型別是 [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult%601)，因此它只能推斷 `T` 所定義的傳回型別。</span><span class="sxs-lookup"><span data-stu-id="8482e-195">Because NSwag uses [Reflection](/dotnet/csharp/programming-guide/concepts/reflection), and the recommended return type for web API actions is [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult%601), it can only infer the return type defined by `T`.</span></span> <span data-ttu-id="8482e-196">您無法自動推斷其他可能的傳回型別。</span><span class="sxs-lookup"><span data-stu-id="8482e-196">You can't automatically infer other possible return types.</span></span>
 
-<span data-ttu-id="36395-198">參考下列範例：</span><span class="sxs-lookup"><span data-stu-id="36395-198">Consider the following example:</span></span>
+<span data-ttu-id="8482e-197">參考下列範例：</span><span class="sxs-lookup"><span data-stu-id="8482e-197">Consider the following example:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-<span data-ttu-id="36395-199">上述動作會傳回 `ActionResult<T>`。</span><span class="sxs-lookup"><span data-stu-id="36395-199">The preceding action returns `ActionResult<T>`.</span></span> <span data-ttu-id="36395-200">在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*)。</span><span class="sxs-lookup"><span data-stu-id="36395-200">Inside the action, it's returning [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*).</span></span> <span data-ttu-id="36395-201">由於控制器是以 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) 屬性裝飾，因此也可能傳回 [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) 回應。</span><span class="sxs-lookup"><span data-stu-id="36395-201">Since the controller is decorated with the [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) attribute, a [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) response is possible, too.</span></span> <span data-ttu-id="36395-202">如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。</span><span class="sxs-lookup"><span data-stu-id="36395-202">For more information, see [Automatic HTTP 400 responses](xref:web-api/index#automatic-http-400-responses).</span></span> <span data-ttu-id="36395-203">請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="36395-203">Use data annotations to tell clients which HTTP status codes this action is known to return.</span></span> <span data-ttu-id="36395-204">使用下列屬性裝飾動作：</span><span class="sxs-lookup"><span data-stu-id="36395-204">Decorate the action with the following attributes:</span></span>
+<span data-ttu-id="8482e-198">上述動作會傳回 `ActionResult<T>`。</span><span class="sxs-lookup"><span data-stu-id="8482e-198">The preceding action returns `ActionResult<T>`.</span></span> <span data-ttu-id="8482e-199">在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*)。</span><span class="sxs-lookup"><span data-stu-id="8482e-199">Inside the action, it's returning [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*).</span></span> <span data-ttu-id="8482e-200">由於控制器是以 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) 屬性裝飾，因此也可能傳回 [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) 回應。</span><span class="sxs-lookup"><span data-stu-id="8482e-200">Since the controller is decorated with the [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) attribute, a [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) response is possible, too.</span></span> <span data-ttu-id="8482e-201">如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。</span><span class="sxs-lookup"><span data-stu-id="8482e-201">For more information, see [Automatic HTTP 400 responses](xref:web-api/index#automatic-http-400-responses).</span></span> <span data-ttu-id="8482e-202">請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="8482e-202">Use data annotations to tell clients which HTTP status codes this action is known to return.</span></span> <span data-ttu-id="8482e-203">使用下列屬性裝飾動作：</span><span class="sxs-lookup"><span data-stu-id="8482e-203">Decorate the action with the following attributes:</span></span>
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
-<span data-ttu-id="36395-205">在 ASP.NET Core 2.2 或更新版本中，您可以使用慣例，而不使用 `[ProducesResponseType]` 來明確地裝飾個別動作。</span><span class="sxs-lookup"><span data-stu-id="36395-205">In ASP.NET Core 2.2 or later, you can use conventions instead of explicitly decorating individual actions with `[ProducesResponseType]`.</span></span> <span data-ttu-id="36395-206">如需詳細資訊，請參閱<xref:web-api/advanced/conventions>。</span><span class="sxs-lookup"><span data-stu-id="36395-206">For more information, see <xref:web-api/advanced/conventions>.</span></span>
+<span data-ttu-id="8482e-204">在 ASP.NET Core 2.2 或更新版本中，您可以使用慣例，而不使用 `[ProducesResponseType]` 來明確地裝飾個別動作。</span><span class="sxs-lookup"><span data-stu-id="8482e-204">In ASP.NET Core 2.2 or later, you can use conventions instead of explicitly decorating individual actions with `[ProducesResponseType]`.</span></span> <span data-ttu-id="8482e-205">如需詳細資訊，請參閱 <xref:web-api/advanced/conventions>。</span><span class="sxs-lookup"><span data-stu-id="8482e-205">For more information, see <xref:web-api/advanced/conventions>.</span></span>
 
 ::: moniker-end
 
-<span data-ttu-id="36395-207">Swagger 產生器現在可以正確描述此動作，而產生的用戶端會知道呼叫端點時它們所接收的內容。</span><span class="sxs-lookup"><span data-stu-id="36395-207">The Swagger generator can now accurately describe this action, and generated clients know what they receive when calling the endpoint.</span></span> <span data-ttu-id="36395-208">建議做法是，使用這些屬性來裝飾所有動作。</span><span class="sxs-lookup"><span data-stu-id="36395-208">As a recommendation, decorate all actions with these attributes.</span></span>
+<span data-ttu-id="8482e-206">Swagger 產生器現在可以正確描述此動作，而產生的用戶端會知道呼叫端點時它們所接收的內容。</span><span class="sxs-lookup"><span data-stu-id="8482e-206">The Swagger generator can now accurately describe this action, and generated clients know what they receive when calling the endpoint.</span></span> <span data-ttu-id="8482e-207">建議做法是，使用這些屬性來裝飾所有動作。</span><span class="sxs-lookup"><span data-stu-id="8482e-207">As a recommendation, decorate all actions with these attributes.</span></span>
 
-<span data-ttu-id="36395-209">如需 API 動作應該傳回哪些 HTTP 回應的指導方針，請參閱 [RFC 7231 規格](https://tools.ietf.org/html/rfc7231#section-4.3)。</span><span class="sxs-lookup"><span data-stu-id="36395-209">For guidelines on what HTTP responses your API actions should return, see the [RFC 7231 specification](https://tools.ietf.org/html/rfc7231#section-4.3).</span></span>
+<span data-ttu-id="8482e-208">如需 API 動作應該傳回哪些 HTTP 回應的指導方針，請參閱 [RFC 7231 規格](https://tools.ietf.org/html/rfc7231#section-4.3)。</span><span class="sxs-lookup"><span data-stu-id="8482e-208">For guidelines on what HTTP responses your API actions should return, see the [RFC 7231 specification](https://tools.ietf.org/html/rfc7231#section-4.3).</span></span>

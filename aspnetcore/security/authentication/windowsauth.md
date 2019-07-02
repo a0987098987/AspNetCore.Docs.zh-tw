@@ -5,14 +5,14 @@ description: 了解如何設定 ASP.NET Core 中的 Windows 驗證的 IIS 和 HT
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 06/12/2019
+ms.date: 07/01/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 93f833adff95f25d570947cd1a9035d652f522c2
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 30f1f554a29412ed6b84115d457d2da1aba91c17
+ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034946"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67500508"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
@@ -145,7 +145,10 @@ ASP.NET Core 模組預設設定為轉送至應用程式的 Windows 驗證語彙�
  [Microsoft.AspNetCore.Authentication.Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) NuGet 套件可以搭配[Kestrel](xref:fundamentals/servers/kestrel)以支援在 Windows、 Linux 和 macOS 上使用 Negotiate、 Kerberos 和 NTLM Windows 驗證。
 
 > [!WARNING]
-> 認證可以保存在連接上的要求。 *交涉驗證必須不使用 proxy 使用，除非 proxy 會使用 Kestrel 的 1 對 1 連接同質 （持續連線）。* 這表示交涉驗證必須未使用的 IIS 背後有 Kestrel [ASP.NET Core 模組 (ANCM) 流程外](xref:host-and-deploy/iis/index#out-of-process-hosting-model)。
+> 認證可以保存在連接上的要求。 *交涉驗證必須不使用 proxy 使用，除非 proxy 會使用 Kestrel 的 1 對 1 連接同質 （持續連線）。*
+
+> [!NOTE]
+> 如果基礎伺服器以原生方式支援 Windows 驗證，而且如果已啟用，會偵測到的交涉處理常式。 如果伺服器支援 Windows 驗證，但已停用，詢問是否要啟用伺服器實作擲回錯誤。 在伺服器中啟用 Windows 驗證時，Negotiate 處理常式無障礙地轉送給它。
 
  加入驗證服務所叫用<xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*>(`Microsoft.AspNetCore.Authentication.Negotiate`命名空間) 和`AddNegotitate`(`Microsoft.AspNetCore.Authentication.Negotiate`命名空間) 中`Startup.ConfigureServices`:
 
@@ -255,7 +258,17 @@ ASP.NET Core 不會實作模擬。 應用程式執行的所有要求，使用應
 
 ## <a name="claims-transformations"></a>宣告轉換
 
+::: moniker range=">= aspnetcore-3.0"
+
+當使用 IIS 時，裝載<xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*>不在內部呼叫以初始化使用者。 因此，預設會在未啟動每個驗證之後，使用 <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> 實作來轉換宣告。 如需宣告轉換就會啟動的程式碼範例和詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#in-process-hosting-model>。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 當 IIS 同處理序模式中，裝載<xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*>不在內部呼叫以初始化使用者。 因此，預設會在未啟動每個驗證之後，使用 <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> 實作來轉換宣告。 如需裝載同處理序時，會啟用宣告轉換的程式碼範例和詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#in-process-hosting-model>。
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>其他資源
 

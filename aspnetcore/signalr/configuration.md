@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 06/03/2019
 uid: signalr/configuration
-ms.openlocfilehash: 6c7bd602e621917c491bfb1e26ff0fcfc3a565b0
-ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
+ms.openlocfilehash: 662565e537fa0eb13ed80e558949740739a63558
+ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66470363"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67500386"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 組態
 
@@ -74,11 +74,22 @@ var connection = new HubConnectionBuilder()
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="= aspnetcore-2.2"
 
 | 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
 | `ClientTimeoutInterval` | 30 秒 | 伺服器會考慮在用戶端已中斷連線，如果它未在此時間間隔中收到訊息 （包括為 keep-alive）。 可能需要超過用戶端實際上會標示為已中斷連線，因為這如何實作此逾時間隔。 建議的值是雙精度浮點`KeepAliveInterval`值。|
+| `HandshakeTimeout` | 15 秒 | 如果用戶端不在此時間間隔內傳送初始信號交換訊息，就會關閉連線。 這是應該只在交握逾時錯誤是因嚴重的網路延遲而未發生才修改進階的設定。 如需詳細的交握程序的詳細資訊，請參閱[SignalR 中樞的通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
+| `KeepAliveInterval` | 15 秒 | 如果伺服器尚未在此間隔內傳送一則訊息，是自動的 ping 訊息傳送至保持開啟的連接。 變更時`KeepAliveInterval`，變更`ServerTimeout` / `serverTimeoutInMilliseconds`設定用戶端上。 建議`ServerTimeout` / `serverTimeoutInMilliseconds`的值是雙精度浮點`KeepAliveInterval`值。  |
+| `SupportedProtocols` | 所有已安裝的通訊協定 | 此中樞支援的通訊協定。 根據預設，在伺服器上註冊的所有通訊協定，但可以從這個清單，以停用個別的中樞的特定通訊協定中移除通訊協定。 |
+| `EnableDetailedErrors` | `false` | 如果`true`詳細例外狀況訊息傳回給用戶端中樞方法中擲回例外狀況時。 預設值是`false`，因為這些例外狀況訊息可以包含機密資訊。 |
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
+
+| 選項 | 預設值 | 描述 |
+| ------ | ------------- | ----------- |
 | `HandshakeTimeout` | 15 秒 | 如果用戶端不在此時間間隔內傳送初始信號交換訊息，就會關閉連線。 這是應該只在交握逾時錯誤是因嚴重的網路延遲而未發生才修改進階的設定。 如需詳細的交握程序的詳細資訊，請參閱[SignalR 中樞的通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
 | `KeepAliveInterval` | 15 秒 | 如果伺服器尚未在此間隔內傳送一則訊息，是自動的 ping 訊息傳送至保持開啟的連接。 變更時`KeepAliveInterval`，變更`ServerTimeout` / `serverTimeoutInMilliseconds`設定用戶端上。 建議`ServerTimeout` / `serverTimeoutInMilliseconds`的值是雙精度浮點`KeepAliveInterval`值。  |
 | `SupportedProtocols` | 所有已安裝的通訊協定 | 此中樞支援的通訊協定。 根據預設，在伺服器上註冊的所有通訊協定，但可以從這個清單，以停用個別的中樞的特定通訊協定中移除通訊協定。 |

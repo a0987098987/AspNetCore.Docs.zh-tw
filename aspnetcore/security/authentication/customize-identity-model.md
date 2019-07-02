@@ -3,14 +3,14 @@ title: ASP.NET Core 中的身分識別模型自訂
 author: ajcvickers
 description: 本文說明如何自訂 ASP.NET Core 識別為基礎的 Entity Framework Core 資料模型。
 ms.author: avickers
-ms.date: 04/24/2019
+ms.date: 07/01/2019
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 53ce77e20722f3ba3282ff4455a0b70d30e635b0
-ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
+ms.openlocfilehash: f549fdff4a416b5fadcb2b1078b051bbab8e402e
+ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65536014"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67500481"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>ASP.NET Core 中的身分識別模型自訂
 
@@ -72,7 +72,7 @@ ASP.NET Core 具有開發階段的錯誤頁面處理常式。 執行應用程式
 
 ### <a name="default-model-configuration"></a>預設模型組態
 
-識別定義許多*內容類別*繼承自<xref:Microsoft.EntityFrameworkCore.DbContext>若要設定及使用模型。 此組態是使用[EF Core Code First Fluent API](/ef/core/modeling/)在<xref:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating*>內容類別的方法。 預設設定是：
+識別定義許多*內容類別*繼承自[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)若要設定及使用模型。 此組態完成使用[EF Core 程式碼 First fluent 應用程式開發介面](/ef/core/modeling/)中[OnModelCreating](/dotnet/api/microsoft.entityframeworkcore.dbcontext.onmodelcreating)內容類別的方法。 預設設定是：
 
 ```csharp
 builder.Entity<TUser>(b =>
@@ -209,7 +209,7 @@ builder.Entity<TUserRole>(b =>
 
 而不是直接使用這些類型，類型可以作為基底類別的應用程式本身的類型。 `DbContext`身分識別所定義的類別是泛型，使不同的 CLR 型別可以用一或多個模型中的實體類型。 這些泛型型別也允許`User`變更主索引鍵 (PK) 資料類型。
 
-針對角色，使用支援的身分識別時<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>應該使用類別。 例如: 
+針對角色，使用支援的身分識別時<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>應該使用類別。 例如:
 
 ```csharp
 // Uses all the built-in Identity types
@@ -425,7 +425,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     ::: moniker-end
 
-4. 如果自訂`ApplicationUser`類別正在使用中，更新類別繼承自`IdentityUser`。 例如: 
+4. 如果自訂`ApplicationUser`類別正在使用中，更新類別繼承自`IdentityUser`。 例如:
 
     ::: moniker range="<= aspnetcore-1.1"
 
@@ -463,7 +463,7 @@ services.AddDefaultIdentity<ApplicationUser>()
             .AddDefaultTokenProviders();
     ```
 
-    主索引鍵的資料型別推斷藉由分析<xref:Microsoft.EntityFrameworkCore.DbContext>物件。
+    藉由分析的主索引鍵的資料型別推斷[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件。
 
     在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。
 
@@ -477,7 +477,7 @@ services.AddDefaultIdentity<ApplicationUser>()
             .AddDefaultTokenProviders();
     ```
 
-    主索引鍵的資料型別推斷藉由分析<xref:Microsoft.EntityFrameworkCore.DbContext>物件。
+    藉由分析的主索引鍵的資料型別推斷[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件。
 
     ::: moniker-end
 
@@ -493,7 +493,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     ::: moniker-end
 
-5. 如果自訂`ApplicationRole`類別正在使用中，更新類別繼承自`IdentityRole<TKey>`。 例如：
+5. 如果自訂`ApplicationRole`類別正在使用中，更新類別繼承自`IdentityRole<TKey>`。 例如:
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Data/ApplicationRole.cs?name=snippet_ApplicationRole&highlight=4)]
 
@@ -507,7 +507,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=13-16)]
 
-    主索引鍵的資料型別推斷藉由分析<xref:Microsoft.EntityFrameworkCore.DbContext>物件。
+    藉由分析的主索引鍵的資料型別推斷[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件。
 
     在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。
 
@@ -521,7 +521,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     [!code-csharp[](customize-identity-model/samples/2.0/RazorPagesSampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=7-9)]
 
-    主索引鍵的資料型別推斷藉由分析<xref:Microsoft.EntityFrameworkCore.DbContext>物件。
+    藉由分析的主索引鍵的資料型別推斷[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件。
 
     ::: moniker-end
 
@@ -942,7 +942,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ### <a name="map-to-a-different-schema"></a>對應到不同的結構描述
 
-結構描述的行為會跨資料庫提供者。 SQL Server 的預設值是建立中的所有資料表*dbo*結構描述。 可以在不同的結構描述中建立資料表。 例如：
+結構描述的行為會跨資料庫提供者。 SQL Server 的預設值是建立中的所有資料表*dbo*結構描述。 可以在不同的結構描述中建立資料表。 例如:
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -962,7 +962,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 實體類型可以進行適用於數種方式的消極式載入中所述[EF Core 文件集](/ef/core/querying/related-data#lazy-loading)。 為了簡單起見，使用消極式載入 proxy，而這需要：
 
 * 安裝[Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/)封裝。
-* 呼叫<xref:Microsoft.EntityFrameworkCore.ProxiesExtensions.UseLazyLoadingProxies*>內<xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*>。
+* 呼叫<xref:Microsoft.EntityFrameworkCore.ProxiesExtensions.UseLazyLoadingProxies*>內[AddDbContext\<TContext >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)。
 * 公開的實體類型與`public virtual`導覽屬性。
 
 下列範例示範如何呼叫`UseLazyLoadingProxies`在`Startup.ConfigureServices`:

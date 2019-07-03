@@ -1,20 +1,20 @@
 ---
-title: 裝載和部署 Blazor 用戶端
+title: 裝載及部署 ASP.NET Core Blazor 用戶端
 author: guardrex
 description: 了解如何使用 ASP.NET Core、內容傳遞網路 (CDN)、檔案伺服器和 GitHub Pages 來裝載和部署 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/21/2019
+ms.date: 06/14/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: b50516b4dce28a6b105b2ab8b9386060d5392983
-ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
+ms.openlocfilehash: 7567473ae8acd9e1072954907f0fe9c7beea29ad
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66376396"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67153182"
 ---
-# <a name="host-and-deploy-blazor-client-side"></a>裝載和部署 Blazor 用戶端
+# <a name="host-and-deploy-aspnet-core-blazor-client-side"></a>裝載及部署 ASP.NET Core Blazor 用戶端
 
 作者：[Luke Latham](https://github.com/guardrex)、[Rainer Stropek](https://www.timecockpit.com) 和 [Daniel Roth](https://github.com/danroth27)
 
@@ -102,7 +102,7 @@ ms.locfileid: "66376396"
 
 ## <a name="configure-the-linker"></a>設定連結器
 
-Blazor 在每個組建上執行中繼語言 (IL) 連結，以從輸出組件移除不必要的 IL。 組件連結可在組建上控制。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/configure-linker>。
+Blazor 在每個組建上執行中繼語言 (IL) 連結，以從輸出組件移除不必要的 IL。 組件連結可在組建上控制。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/configure-linker>。
 
 ## <a name="rewrite-urls-for-correct-routing"></a>重寫 URL 以便正確地路由
 

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 06/12/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 919db3f31310342657c89100a6e25e8293648a9f
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 6aef56ecd61ad71e166c03c12b28b25b931cdd88
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034814"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152931"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端與伺服器
 
@@ -116,14 +116,15 @@ info: Microsoft.Hosting.Lifetime[0]
 
 * *greet.proto*：*Protos/greet.proto* 檔案會定義 `Greeter` gRPC，並會用來產生 gRPC 伺服器資產。 如需詳細資訊，請參閱 [gRPC 簡介](xref:grpc/index)。
 * *Services* 資料夾：包含 `Greeter` 服務的實作。
-* *appSettings.json*：包含組態資料，例如 Kestrel 所使用的通訊協定。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
-* *Program.cs*：包含 gRPC 服務的進入點。 如需詳細資訊，請參閱<xref:fundamentals/host/web-host>。
+* *appSettings.json*：包含組態資料，例如 Kestrel 所使用的通訊協定。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
+* *Program.cs*：包含 gRPC 服務的進入點。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host>。
 * *Startup.cs*：包含設定應用程式行為的程式碼。 如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
 
 ## <a name="create-the-grpc-client-in-a-net-console-app"></a>在 .NET 主控台應用程式中建立 gRPC 用戶端
 
 ## <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
+* 開啟 Visual Studio 的第二個執行個體。
 * 從功能表列中選取 [檔案]   >  [新增]   >  [專案]  。
 * 在 [建立新專案]  對話方塊中，選取 [主控台應用程式 (.NET Core)]  。
 * 選取 [下一步] 
@@ -151,7 +152,7 @@ code -r GrpcGreeterClient
 
 ### <a name="add-required-packages"></a>新增必要套件
 
-將下列套件新增至 gRPC 用戶端專案：
+gRPC 用戶端專案需要下列套件：
 
 * [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client)，包含 .NET Core 用戶端。
 * [Google.Protobuf](https://www.nuget.org/packages/Google.Protobuf/)，包含 C# 的 protobuf 訊息 API。
@@ -208,7 +209,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
   # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
-  以滑鼠右鍵按一下該專案，然後選取 [編輯 GrpcGreeterClient.csproj]  。
+  以滑鼠右鍵按一下專案，然後選取 [編輯專案檔]  。
 
   # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
 
@@ -220,7 +221,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
   ---
 
-* 將 **greet.proto** 檔案新增至 GrpcGreeterClient 專案檔的 `<Protobuf>` 項目群組：
+* 新增具有代表 **greet.proto** 檔案之 `<Protobuf>` 元素的項目群組：
 
   ```XML
   <ItemGroup>
@@ -228,11 +229,9 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
   </ItemGroup>
   ```
 
-建置用戶端專案以觸發 C# 用戶端資產的產生。
-
 ### <a name="create-the-greeter-client"></a>建立 Greeter 用戶端
 
-建置專案，以在 [Greeter] 命名空間中建立類型  。 `Greeter` 類型會自動由建置處理序產生。
+建置專案，以便在 `GrpcGreeter` 命名空間中建立類型。 `GrpcGreeter` 類型會自動由建置處理序產生。
 
 利用下列程式碼，更新 gRPC 用戶端 *Program.cs* 檔案：
 

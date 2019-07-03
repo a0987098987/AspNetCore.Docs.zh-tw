@@ -5,14 +5,14 @@ description: 了解如何在 Visual Studio 中建立發行設定檔，並使用�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/12/2019
+ms.date: 06/18/2019
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: be5d1a79b7f4437d04586ae4ce24df94547d8a3c
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
+ms.openlocfilehash: ac243a3898553b2e14a6c15d311afaf62f112a24
+ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969982"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67207819"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔
 
@@ -20,64 +20,17 @@ ms.locfileid: "65969982"
 
 本文將焦點放在使用 Visual Studio 2017 或更新版本來建立及使用發行設定檔。 使用 Visual Studio 建立的發行設定檔，可從 MSBuild 和 Visual Studio 執行。 如需發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。
 
-以下是使用 `dotnet new mvc`命令來建立的專案檔：
-
-::: moniker range=">= aspnetcore-2.2"
+`dotnet new mvc` 命令會產生包含下列最上層 `<Project>` 元素的專案檔：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
+    <!-- omitted for brevity -->
 </Project>
 ```
 
-::: moniker-end
+上述 `<Project>` 元素的 `Sdk` 屬性會從 *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.props* 和 *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.targets*，分別匯入 MSBuild[屬性](/visualstudio/msbuild/msbuild-properties)和[目標](/visualstudio/msbuild/msbuild-targets)。 `$(MSBuildSDKsPath)` (與 Visual Studio 2019 Enterprise) 的預設位置在 *%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Sdks* 資料夾。
 
-::: moniker range="< aspnetcore-2.2"
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-</Project>
-```
-
-::: moniker-end
-
-`<Project>` 元素的 `Sdk` 屬性會完成下列工作：
-
-* 一開始會從 *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.Props* 匯入屬性檔案。
-* 從結尾的 *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.targets* 匯入目標檔案。
-
-`MSBuildSDKsPath` (與 Visual Studio 2017 Enterprise) 的預設位置在 *%programfiles(x86)%\Microsoft Visual Studio\2017\Enterprise\MSBuild\Sdks* 資料夾。
-
-`Microsoft.NET.Sdk.Web` SDK 依存於：
-
-* *Microsoft.NET.Sdk.Web.ProjectSystem*
-* *Microsoft.NET.Sdk.Publish*
-
-這會導致匯入下列屬性和目標：
-
-* *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web.ProjectSystem\Sdk\Sdk.Props*
-* *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web.ProjectSystem\Sdk\Sdk.targets*
-* *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Publish\Sdk\Sdk.Props*
-* *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Publish\Sdk\Sdk.targets*
-
-發佈目標會根據所使用的發佈方法，匯入一組正確的目標。
+`Microsoft.NET.Sdk.Web` (Web SDK) 相依於其他 SDK，包括 `Microsoft.NET.Sdk` (.NET Core SDK) 和 `Microsoft.NET.Sdk.Razor` ([Razor SDK](xref:razor-pages/sdk))。 系統會匯入與每個相依 SDK 相關聯的 MSBuild 屬性和目標。 發佈目標會根據所使用的發佈方法，匯入一組適當的目標。
 
 當 MSBuild 或 Visual Studio 載入專案時，會執行下列高階動作：
 
@@ -87,11 +40,25 @@ ms.locfileid: "65969982"
 
 ## <a name="compute-project-items"></a>計算專案項目
 
-載入專案時，會計算專案項目 (檔案)。 `item type` 屬性會決定如何處理檔案。 根據預設，*.cs* 檔案會包含在 `Compile` 項目清單中。 `Compile` 項目清單中的檔案會予以編譯。
+載入專案時，會計算 [MSBuild 專案項目](/visualstudio/msbuild/common-msbuild-project-items) (檔案)。 項目類型會決定如何處理檔案。 根據預設， *.cs* 檔案會包含在 `Compile` 項目清單中。 `Compile` 項目清單中的檔案會予以編譯。
 
-`Content` 項目清單包含除了組建輸出之外還會另行發佈的檔案。 符合 `wwwroot/**` 模式的檔案預設會包含在 `Content` 項目中。 `wwwroot/\*\*` [萬用字元模式](https://gruntjs.com/configuring-tasks#globbing-patterns)會比對 [wwwroot] 資料夾**和**子資料夾中的所有檔案。 若要明確地將檔案新增至發佈清單，請直接在 *.csproj* 檔案中新增檔案，如[包含檔案](#include-files)中所示。
+`Content` 項目清單包含除了組建輸出之外還會另行發佈的檔案。 符合 `wwwroot\**`、`**\*.config` 和 `**\*.json` 模式的檔案預設會包含在 `Content` 項目清單中。 例如，`wwwroot\**` [萬用字元模式](https://gruntjs.com/configuring-tasks#globbing-patterns)會比對 *wwwroot* 資料夾**及**其子資料夾中的所有檔案。
 
-在 Visual Studio 中選取 [發佈] 按鈕，或從命令列發佈時：
+::: moniker range=">= aspnetcore-3.0"
+
+Web SDK 會匯入[Razor SDK](xref:razor-pages/sdk)。 因此，符合 `**\*.cshtml` 和 `**\*.razor` 模式的檔案也會包含在 `Content` 項目清單中。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+
+Web SDK 會匯入[Razor SDK](xref:razor-pages/sdk)。 因此，符合 `**\*.cshtml` 模式的檔案也會包含在 `Content` 項目清單中。
+
+::: moniker-end
+
+若要明確地將檔案新增至發佈清單，請直接在 *.csproj* 檔案中新增檔案，如[包含檔案](#include-files)一節中所示。
+
+在 Visual Studio 中選取 [發佈]  按鈕，或從命令列發佈時：
 
 * 會計算屬性/項目 (需要建置的檔案)。
 * **僅限 Visual Studio**：會還原 NuGet 套件。 (CLI 的使用者要明確還原。)
@@ -103,7 +70,7 @@ ms.locfileid: "65969982"
 
 ## <a name="basic-command-line-publishing"></a>基本命令列發佈
 
-命令列發佈適用於所有 .NET Core 支援的平台，而不需要 Visual Studio。 在下列範例中，是從專案目錄 (其中包含 *.csproj* 檔案) 執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令。 如果不在專案資料夾中，請以明確方式傳入專案檔路徑。 例如：
+命令列發佈適用於所有 .NET Core 支援的平台，而不需要 Visual Studio。 在下列範例中，[dotnet publish](/dotnet/core/tools/dotnet-publish) 命令是從專案目錄 (其中包含 *.csproj* 檔案) 執行的。 如果不在專案資料夾中，請以明確方式傳入專案檔路徑。 例如：
 
 ```console
 dotnet publish C:\Webs\Web1
@@ -120,10 +87,12 @@ dotnet publish
 
 ```console
 C:\Webs\Web1>dotnet publish
-Microsoft (R) Build Engine version 15.3.409.57025 for .NET Core
+Microsoft (R) Build Engine version {version} for .NET Core
 Copyright (C) Microsoft Corporation. All rights reserved.
 
+  Restore completed in 36.81 ms for C:\Webs\Web1\Web1.csproj.
   Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp{X.Y}\Web1.dll
+  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp{X.Y}\Web1.Views.dll
   Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp{X.Y}\publish\
 ```
 
@@ -148,7 +117,7 @@ dotnet publish -c Release -o C:\MyWebs\test
 
 `dotnet publish -c Release /p:PublishDir=//r8/release/AdminWeb`
 
-網路共用以正斜線 (*//r8/*) 指定，適用於所有 .NET Core 支援的平台。
+網路共用以正斜線 ( *//r8/* ) 指定，適用於所有 .NET Core 支援的平台。
 
 確認部署的已發佈應用程式未在執行中。 當應用程式執行時，會鎖定 *publish* 資料夾中的檔案。 因為無法複製鎖定的檔案，所以無法執行部署。
 
@@ -158,16 +127,16 @@ dotnet publish -c Release -o C:\MyWebs\test
 
 發行設定檔可以簡化發佈程序，且設定檔數目並無限制。 請在 Visual Studio 中選擇下列其中一個路徑來建立設定檔：
 
-* 在 [方案總管] 中的專案上按一下滑鼠右鍵，然後選取 [發佈]。
-* 從 [建置] 功能表選取 [發佈 {專案名稱}]。
+* 在 [方案總管]  中以滑鼠右鍵按一下專案，再選取 [發佈]  。
+* 從 [建置]  功能表選取 [發佈 {專案名稱}]  。
 
-應用程式容量頁面的 [發佈] 索引標籤隨即顯示。 如果專案缺少發行設定檔，則會顯示下列頁面：
+應用程式容量頁面的 [發佈]  索引標籤隨即顯示。 如果專案缺少發行設定檔，則會顯示下列頁面：
 
 ![應用程式容量頁面的 [發佈] 索引標籤](visual-studio-publish-profiles/_static/az.png)
 
-選取 [資料夾] 時，請指定要用來儲存所發佈資產的資料夾路徑。 預設的資料夾是 *bin\Release\PublishOutput*。 請按一下 [建立設定檔] 按鈕來完成操作。
+選取 [資料夾]  時，請指定要用來儲存所發佈資產的資料夾路徑。 預設的資料夾是 *bin\Release\PublishOutput*。 請按一下 [建立設定檔]  按鈕來完成操作。
 
-建立發行設定檔之後，[發佈] 索引標籤就會變更。 新建立的設定檔會出現在下拉式清單中。 按一下 [建立新設定檔] 即可建立另一個新的設定檔。
+建立發行設定檔之後，[發佈]  索引標籤就會變更。 新建立的設定檔會出現在下拉式清單中。 按一下 [建立新設定檔]  即可建立另一個新的設定檔。
 
 ![顯示 FolderProfile 的應用程式容量頁面 [發佈] 索引標籤](visual-studio-publish-profiles/_static/create_new.png)
 
@@ -183,11 +152,11 @@ dotnet publish -c Release -o C:\MyWebs\test
 
 使用 Visual Studio 來建立發行設定檔時，會建立 *Properties/PublishProfiles/{設定檔名稱}.pubxml* MSBuild 檔案。 此 *.pubxml* 檔案是一個 MSBuild 檔案，而且包含發佈組態設定。 您可以變更這個檔案以自訂建置和發佈程序。 發佈程序會讀取這個檔案。 `<LastUsedBuildConfiguration>` 很特殊，因為它是全域屬性，不應該在組建中所匯入的任何檔案中。 如需詳細資訊，請參閱 [MSBuild：如何設定組態屬性](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx) \(英文\)。
 
-發佈到 Azure 目標時，*.pubxml* 檔案會包含您的 Azure 訂用帳戶識別碼。 使用該目標類型時，不建議將此檔案新增至原始檔控制。 發佈到非 Azure 目標時，可放心簽入 *.pubxml* 檔案。
+發佈到 Azure 目標時， *.pubxml* 檔案會包含您的 Azure 訂用帳戶識別碼。 使用該目標類型時，不建議將此檔案新增至原始檔控制。 發佈到非 Azure 目標時，可放心簽入 *.pubxml* 檔案。
 
 機密資訊 (例如發佈密碼) 會依每個使用者/電腦加密。 其儲存位置是在 *Properties/PublishProfiles/{設定檔名稱}.pubxml.user* 檔案中。 由於此檔案可以儲存機密資訊，因此不應該將它簽入至原始檔控制。
 
-如需如何在 ASP.NET Core 上發佈 Web 應用程式的概觀，請參閱[裝載及部署](xref:host-and-deploy/index)。 發佈 ASP.NET Core 應用程式所需的 MSBuild 工作和目標是可從 https://github.com/aspnet/websdk 取得的開放原始碼。
+如需如何在 ASP.NET Core 上發佈 Web 應用程式的概觀，請參閱[裝載及部署](xref:host-and-deploy/index)。 發佈 ASP.NET Core 應用程式所需的 MSBuild 工作和目標是 [aspnet/websdk repository](https://github.com/aspnet/websdk) 的開放原始碼。
 
 `dotnet publish` 可以使用資料夾、MSDeploy 及 [Kudu](https://github.com/projectkudu/kudu/wiki) 發行設定檔：
 
@@ -209,7 +178,7 @@ MSDeploy 套件 (目前僅適用於 Windows，因為 MSDeploy 無法跨平台運
 dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployPackageProfileName>
 ```
 
-在先前的範例中，請「不要」將 `deployonbuild` 傳遞給 `dotnet publish`。
+在先前的範例中，請不要將 `deployonbuild` 傳遞給 `dotnet publish`。
 
 如需詳細資訊，請參閱 [Microsoft.NET.Sdk.Publish](https://github.com/aspnet/websdk#microsoftnetsdkpublish)\(英文\)。
 
@@ -272,7 +241,7 @@ MSBuild file.
 </Project>
 ```
 
-請注意，`<LastUsedBuildConfiguration>` 設定為 `Release`。 從 Visual Studio 發佈時，會使用發佈程序開始時的值來設定 `<LastUsedBuildConfiguration>` 組態屬性值。 `<LastUsedBuildConfiguration>` 組態屬性很特殊，不應該在匯入的 MSBuild 檔案中被覆寫。 您可以從命令列覆寫此屬性。
+在先前的範例中，`<LastUsedBuildConfiguration>` 設定為 `Release`。 從 Visual Studio 發佈時，會使用發佈程序開始時的值來設定 `<LastUsedBuildConfiguration>` 組態屬性值。 `<LastUsedBuildConfiguration>` 組態屬性很特殊，不應該在匯入的 MSBuild 檔案中被覆寫。 您可以從命令列覆寫此屬性。
 
 使用 .NET Core CLI：
 
@@ -290,7 +259,7 @@ msbuild /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderP
 
 下列範例使用由 Visual Studio 建立的 ASP.NET Core Web 應用程式，名為 *AzureWebApp*。 並使用 Visual Studio 新增了一個 Azure 應用程式發行設定檔。 如需如何建立設定檔的詳細資訊，請參閱[發行設定檔](#publish-profiles)一節。
 
-若要使用發行設定檔部署應用程式，請從 **Visual Studio 開發人員命令提示字元**執行 `msbuild` 命令。 您可以從 Windows 工作列 [開始] 功能表的 [Visual Studio] 資料夾中存取此命令提示字元。 為方便存取，您可以將命令提示字元新增至 Visual Studio 的 [工具] 功能表。 如需詳細資訊，請參閱[適用於 Visual Studio 的開發人員命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs#run-the-command-prompt-from-inside-visual-studio)。
+若要使用發行設定檔部署應用程式，請從 **Visual Studio 開發人員命令提示字元**執行 `msbuild` 命令。 您可以從 Windows 工作列 [開始]  功能表的 [Visual Studio]  資料夾中存取此命令提示字元。 為方便存取，您可以將命令提示字元新增至 Visual Studio 的 [工具]  功能表。 如需詳細資訊，請參閱[適用於 Visual Studio 的開發人員命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs#run-the-command-prompt-from-inside-visual-studio)。
 
 MSBuild 使用下列命令語法：
 
@@ -306,8 +275,8 @@ msbuild {PATH}
 * {PROFILE} &ndash; 發行設定檔的名稱。
 * {USERNAME} &ndash; MSDeploy 使用者名稱。 {USERNAME} 可以在發行設定檔中找到。
 * {PASSWORD} &ndash; MSDeploy 密碼。 您可以從 *{PROFILE}.PublishSettings* 檔案取得 {PASSWORD}。 從下列其中一個位置下載 *.PublishSettings* 檔案：
-  * 方案總管：選取 [檢視] > [Cloud Explorer]。 連線到您的 Azure 訂用帳戶。 開啟 [應用程式服務]。 以滑鼠右鍵按一下應用程式。 選取 [下載發行設定檔]。
-  * Azure 入口網站：在 Web 應用程式的 [概觀] 面板中，選取 [取得發行設定檔]。
+  * 方案總管：選取 [檢視]   > [Cloud Explorer]  。 連線到您的 Azure 訂用帳戶。 開啟 [應用程式服務]  。 以滑鼠右鍵按一下應用程式。 選取 [下載發行設定檔]  。
+  * Azure 入口網站：在 Web 應用程式的 [概觀]  面板中，選取 [取得發行設定檔]  。
 
 下列範例使用名為 *AzureWebApp - Web Deploy* 的發行設定檔：
 
@@ -334,7 +303,7 @@ dotnet msbuild "AzureWebApp.csproj"
 
 ## <a name="set-the-environment"></a>設定環境
 
-在發行設定檔 (*.pubxml*) 或專案檔中包括 `<EnvironmentName>` 屬性，以設定應用程式的[環境](xref:fundamentals/environments)：
+在發行設定檔 ( *.pubxml*) 或專案檔中包括 `<EnvironmentName>` 屬性，以設定應用程式的[環境](xref:fundamentals/environments)：
 
 ```xml
 <PropertyGroup>
@@ -346,7 +315,15 @@ dotnet msbuild "AzureWebApp.csproj"
 
 ## <a name="exclude-files"></a>排除檔案
 
-發佈 ASP.NET Core Web 應用程式時，會包含 *wwwroot* 資料夾的組建成品和內容。 `msbuild` 支援[通用慣例模式](https://gruntjs.com/configuring-tasks#globbing-patterns)。 例如，下列 `<Content>` 元素會排除 *wwwroot/content* 資料夾及其所有子資料夾中的所有文字檔 (*.txt*)。
+發佈 ASP.NET Core Web 應用程式時，下列資產會包含在內：
+
+* 組建成品
+* 符合下列萬用字元模式的資料夾和檔案：
+  * `**\*.config` (例如，*web.config*)
+  * `**\*.json` (例如，*appsettings.json*)
+  * `wwwroot\**`
+
+MSBuild 支援[萬用字元模式](https://gruntjs.com/configuring-tasks#globbing-patterns)。 例如，下列 `<Content>` 元素會抑制在 *wwwroot/content* 資料夾及其子資料夾中複製文字檔 ( *.txt*)：
 
 ```xml
 <ItemGroup>
@@ -356,7 +333,7 @@ dotnet msbuild "AzureWebApp.csproj"
 
 您可以將上述標記新增至發行設定檔或 *.csproj* 檔案。 當新增至 *.csproj* 檔案時，此規則會新增至專案中的所有發行設定檔。
 
-下列 `<MsDeploySkipRules>` 元素會排除 *wwwroot/content* 資料夾中的所有檔案：
+下列 `<MsDeploySkipRules>` 元素會排除 *wwwroot\content* 資料夾中的所有檔案：
 
 ```xml
 <ItemGroup>
@@ -367,7 +344,7 @@ dotnet msbuild "AzureWebApp.csproj"
 </ItemGroup>
 ```
 
-`<MsDeploySkipRules>` 不會從部署網站刪除「略過」目標。 這會從部署網站刪除 `<Content>` 鎖定目標的檔案和資料夾。 例如，假設所部署的 Web 應用程式包含下列檔案：
+`<MsDeploySkipRules>` 不會從部署網站刪除「略過」  目標。 這會從部署網站刪除 `<Content>` 鎖定目標的檔案和資料夾。 例如，假設所部署的 Web 應用程式包含下列檔案：
 
 * *Views/Home/About1.cshtml*
 * *Views/Home/About2.cshtml*
@@ -394,7 +371,7 @@ dotnet msbuild "AzureWebApp.csproj"
 </ItemGroup>
 ```
 
-上述 `<MsDeploySkipRules>` 元素會防止部署「已略過」的檔案。 如果已部署這些檔案，它並不會將它們刪除。
+上述 `<MsDeploySkipRules>` 元素會防止部署「已略過」  的檔案。 如果已部署這些檔案，它並不會將它們刪除。
 
 下列 `<Content>` 元素會刪除部署網站上已鎖定目標的檔案：
 
@@ -425,7 +402,10 @@ Done Building Project "C:\Webs\Web1\Web1.csproj" (default targets).
 
 ## <a name="include-files"></a>Include 檔案
 
-下列標記會將專案目錄外的 [images] 資料夾包 含在發佈網站的 *wwwroot/images* 資料夾中：
+下列標記：
+
+* 會將專案目錄外的 *images* 資料夾包含到發佈網站的 *wwwroot/images* 資料夾中。
+* 可以新增至 *.csproj* 檔案或發行設定檔。 如果將它新增至 *.csproj* 檔案，它就會包含在專案的每個發行設定檔中。
 
 ```xml
 <ItemGroup>
@@ -435,8 +415,6 @@ Done Building Project "C:\Webs\Web1\Web1.csproj" (default targets).
   </DotnetPublishFiles>
 </ItemGroup>
 ```
-
-標記可以新增至 *.csproj* 檔案或發行設定檔。 如果將它新增至 *.csproj* 檔案，它就會包含在專案的每個發行設定檔中。
 
 下列反白顯示的標記會示範如何：
 
@@ -477,7 +455,7 @@ MSBuild file.
 </Project>
 ```
 
-如需更多的部署範例，請參閱 [WebSDK 讀我檔案](https://github.com/aspnet/websdk)。
+如需其他部署範例，請參閱 [Web SDK 存放庫讀我檔案](https://github.com/aspnet/websdk)。
 
 ## <a name="run-a-target-before-or-after-publishing"></a>在發佈之前或之後執行目標
 
@@ -516,6 +494,6 @@ MSBuild file.
 ## <a name="additional-resources"></a>其他資源
 
 * [Web Deploy](https://www.iis.net/downloads/microsoft/web-deploy) (MSDeploy) 可簡化對 IIS 伺服器的 Web 應用程式和網站部署。
-* [https://github.com/aspnet/websdk](https://github.com/aspnet/websdk/issues)：針對部署提出問題及要求功能。
+* [Web SDK GitHub 存放庫](https://github.com/aspnet/websdk/issues)：針對部署提出問題及要求功能。
 * [從 Visual Studio 將 ASP.NET Web 應用程式發佈至 Azure VM](/azure/virtual-machines/windows/publish-web-app-from-visual-studio)
 * <xref:host-and-deploy/iis/transform-webconfig>

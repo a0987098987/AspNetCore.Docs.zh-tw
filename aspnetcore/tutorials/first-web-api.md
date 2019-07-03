@@ -1,19 +1,19 @@
 ---
-title: 教學課程：使用 ASP.NET Core MVC 建立 Web API
+title: 教學課程：使用 ASP.NET Core 建立 Web API
 author: rick-anderson
-description: 使用 ASP.NET Core MVC 建立 Web API
+description: 了解如何使用 ASP.NET Core 建置 Web API。
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/4/2019
+ms.date: 06/18/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: dce2926e3cb19d6ac8d2af0e9b96c31dee1d92fd
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 17e8ee08fca775b8fccc3f2e6cd6067caca9c79f
+ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087515"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67207773"
 ---
-# <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>教學課程：使用 ASP.NET Core MVC 建立 Web API
+# <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Mike Wasson](https://github.com/mikewasson) 提供
 
@@ -41,11 +41,11 @@ ms.locfileid: "65087515"
 
 |API | 說明 | 要求本文 | 回應本文 |
 |--- | ---- | ---- | ---- |
-|GET /api/todo | 取得所有待辦事項 | 無 | 待辦事項的陣列|
-|GET /api/todo/{id} | 依識別碼取得項目 | 無 | 待辦事項|
+|GET /api/todo | 取得所有待辦事項 | None | 待辦事項的陣列|
+|GET /api/todo/{id} | 依識別碼取得項目 | None | 待辦事項|
 |POST /api/todo | 新增記錄 | 待辦事項 | 待辦事項 |
-|PUT /api/todo/{id} | 更新現有的項目 &nbsp; | 待辦事項 | 無 |
-|DELETE /api/todo/{id} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | 無 | 無|
+|PUT /api/todo/{id} | 更新現有的項目 &nbsp; | 待辦事項 | None |
+|DELETE /api/todo/{id} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | None | None|
 
 下圖顯示應用程式的設計。
 
@@ -57,9 +57,9 @@ ms.locfileid: "65087515"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 [檔案] 功能表選取 [新增] > [專案]。
-* 選取 [ASP.NET Core Web 應用程式] 範本。 將專案命名為 *TodoApi*，然後按一下 [確定]。
-* 在 [新增 ASP.NET Core Web 應用程式 - TodoApi] 對話方塊中，選擇 ASP.NET Core 版本。 選取 [API] 範本，然後按一下 [確定]。 請**勿**選取 [Enable Docker Support] (啟用 Docker 支援)。
+* 從 [檔案]  功能表選取 [新增]   > [專案]  。
+* 選取 [ASP.NET Core Web 應用程式]  範本。 將專案命名為 *TodoApi*，然後按一下 [確定]  。
+* 在 [新增 ASP.NET Core Web 應用程式 - TodoApi]  對話方塊中，選擇 ASP.NET Core 版本。 選取 [API]  範本，然後按一下 [確定]  。 請**勿**選取 [Enable Docker Support] (啟用 Docker 支援)  。
 
 ![VS 新增專案對話方塊](first-web-api/_static/vs.png)
 
@@ -76,21 +76,21 @@ ms.locfileid: "65087515"
 
   這些命令會建立新的 Web API 專案，並開啟新專案資料夾中的新 Visual Studio Code 執行個體。
 
-* 當出現對話方塊詢問您是否要將所需的資產新增至專案時，選取 [是]。
+* 當出現對話方塊詢問您是否要將所需的資產新增至專案時，選取 [是]  。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 [檔案] > [新增方案]。
+* 選取 [檔案]   > [新增方案]  。
 
   ![macOS 新增方案](first-web-api-mac/_static/sln.png)
 
-* 選取 [.NET Core 應用程式] > [ASP.NET Core Web API] > [下一步]。
+* 選取 [.NET Core 應用程式]   > [ASP.NET Core Web API]   > [下一步]  。
 
   ![macOS [新增專案] 對話方塊](first-web-api-mac/_static/1.png)
   
-* 在 [設定您的新 ASP.NET Core Web API] 對話方塊中，接受 [目標 Framework] 的預設 **.NET Core 2.2*。
+* 在 [設定您的新 ASP.NET Core Web API]  對話方塊中，接受 [目標 Framework]  的預設 * *.NET Core 2.2*。
 
-* 針對 [專案名稱] 輸入 *TodoApi*，然後選取 [建立]。
+* 針對 [專案名稱]  輸入 *TodoApi*，然後選取 [建立]  。
 
   ![設定對話方塊](first-web-api-mac/_static/2.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "65087515"
 
 按 Ctrl+F5 執行應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `https://localhost:<port>/api/values`，其中 `<port>` 是隨機選擇的通訊埠編號。
 
-如果出現對話方塊詢問您是否應該信任 IIS Express 憑證，請選取 [是]。 在接著出現的 [安全性警告] 對話方塊中，選取 [是]。
+如果出現對話方塊詢問您是否應該信任 IIS Express 憑證，請選取 [是]  。 在接著出現的 [安全性警告]  對話方塊中，選取 [是]  。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -112,7 +112,7 @@ ms.locfileid: "65087515"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-選取 [執行] > [啟動並偵錯] 來啟動應用程式。 Visual Studio for Mac 會啟動瀏覽器並巡覽至 `https://localhost:<port>`，其中 `<port>` 是隨機選擇的連接埠號碼。 傳回 HTTP 404 (找不到) 錯誤。 將 `/api/values` 附加至 URL (將 URL 變更為 `https://localhost:<port>/api/values`)。
+選取 [執行]   > [啟動並偵錯]  來啟動應用程式。 Visual Studio for Mac 會啟動瀏覽器並巡覽至 `https://localhost:<port>`，其中 `<port>` 是隨機選擇的連接埠號碼。 傳回 HTTP 404 (找不到) 錯誤。 將 `/api/values` 附加至 URL (將 URL 變更為 `https://localhost:<port>/api/values`)。
 
 ---
 
@@ -124,13 +124,13 @@ ms.locfileid: "65087515"
 
 ## <a name="add-a-model-class"></a>新增模型類別
 
-「模型」是代表應用程式所管理資料的一組類別。 此應用程式的模型是單一 `TodoItem` 類別。
+「模型」  是代表應用程式所管理資料的一組類別。 此應用程式的模型是單一 `TodoItem` 類別。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [方案總管] 中，以滑鼠右鍵按一下專案。 選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+* 在 [方案總管]  中，以滑鼠右鍵按一下專案。 選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
 
-* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [類別]。 將類別命名為 *TodoItem*，然後選取 [新增]。
+* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]   > [類別]  。 將類別命名為 *TodoItem*，然後選取 [新增]  。
 
 * 使用下列程式碼取代範本程式碼：
 
@@ -142,13 +142,13 @@ ms.locfileid: "65087515"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 以滑鼠右鍵按一下專案。 選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+* 以滑鼠右鍵按一下專案。 選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
 
   ![新增資料夾](first-web-api-mac/_static/folder.png)
 
-* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [新增檔案] > [一般] > [空類別]。
+* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]   > [新增檔案]   > [一般]   > [空類別]  。
 
-* 將類別命名為 *TodoItem*，然後按一下 [新增]。
+* 將類別命名為 *TodoItem*，然後按一下 [新增]  。
 
 * 使用下列程式碼取代範本程式碼：
 
@@ -162,11 +162,11 @@ ms.locfileid: "65087515"
 
 ## <a name="add-a-database-context"></a>新增資料庫內容
 
-「資料庫內容」是為資料模型協調 Entity Framework 功能的主要類別。 此類別是透過衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別來建立。
+「資料庫內容」  是為資料模型協調 Entity Framework 功能的主要類別。 此類別是透過衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別來建立。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [類別]。 將類別命名為 *TodoContext*，然後按一下 [新增]。
+* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]   > [類別]  。 將類別命名為 *TodoContext*，然後按一下 [新增]  。
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -197,9 +197,9 @@ ms.locfileid: "65087515"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 以滑鼠右鍵按一下 *Controllers* 資料夾。
-* 選取 [新增] > [新增項目]。
-* 在 [新增項目] 對話方塊中，選取 [API 控制器類別] 範本。
-* 將類別命名為 *TodoController*，然後選取 [新增]。
+* 選取 [新增]   > [新增項目]  。
+* 在 [新增項目]  對話方塊中，選取 [API 控制器類別]  範本。
+* 將類別命名為 *TodoController*，然後選取 [新增]  。
 
   ![在搜尋方塊中輸入 controller 且已選取 Web API 控制器的 [新增項目] 對話方塊](first-web-api/_static/new_controller.png)
 
@@ -276,20 +276,20 @@ ms.locfileid: "65087515"
 
 本教學課程使用 Postman 來測試 Web API。
 
-* 安裝 [Postman](https://www.getpostman.com/apps)
+* 安裝 [Postman](https://www.getpostman.com/downloads/)
 * 啟動 Web 應用程式。
 * 啟動 Postman。
-* 停用 [SSL certificate verification] \(SSL 憑證驗證\)
+* 停用 [SSL certificate verification] \(SSL 憑證驗證\) 
   
-  * 從 [檔案] > [設定] (**[一般]* 索引標籤)，停用 [SSL certificate verification] \(SSL 憑證驗證\)。
+  * 從 [檔案] > [設定]  (* *[一般]* 索引標籤)，停用 [SSL certificate verification] \(SSL 憑證驗證\)  。
     > [!WARNING]
     > 在測試控制器之後，請重新啟用 [SSL certificate verification] \(SSL 憑證驗證\)。
 
 * 建立新的要求。
   * 將 HTTP 方法設定為 **GET**。
   * 將要求 URL 設定為 `https://localhost:<port>/api/todo`。 例如，`https://localhost:5001/api/todo`。
-* 在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)。
-* 選取 [傳送]。
+* 在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)  。
+* 選取 [傳送]  。
 
 ![Postman 與 GET 要求](first-web-api/_static/2pv.png)
 
@@ -313,9 +313,9 @@ ms.locfileid: "65087515"
 
 * 建置專案。
 * 在 Postman 中，將 HTTP 方法設定為 `POST`。
-* 選取 [本文] 索引標籤。
-* 選取 [原始] 選項按鈕。
-* 將類型設定為 **JSON (application/json)**。
+* 選取 [本文]  索引標籤。
+* 選取 [原始]  選項按鈕。
+* 將類型設定為 **JSON (application/json)** 。
 * 在要求本文中，針對待辦項目輸入 JSON：
 
     ```json
@@ -325,7 +325,7 @@ ms.locfileid: "65087515"
     }
     ```
 
-* 選取 [傳送]。
+* 選取 [傳送]  。
 
   ![Postman 與建立要求](first-web-api/_static/create.png)
 
@@ -333,14 +333,14 @@ ms.locfileid: "65087515"
 
 ### <a name="test-the-location-header-uri"></a>測試位置標頭 URI
 
-* 在 [回應] 窗格中選取 [標頭] 索引標籤。
-* 複製 [位置] 標頭值：
+* 在 [回應]  窗格中選取 [標頭]  索引標籤。
+* 複製 [位置]  標頭值：
 
   ![Postman 主控台的 [標頭] 索引標籤](first-web-api/_static/pmc2.png)
 
 * 將方法設定為 GET。
 * 貼上 URI (例如 `https://localhost:5001/api/Todo/2`)
-* 選取 [傳送]。
+* 選取 [傳送]  。
 
 ## <a name="add-a-puttodoitem-method"></a>新增 PutTodoItem 方法
 
@@ -384,7 +384,7 @@ ms.locfileid: "65087515"
 
 * 將方法設定為 `DELETE`。
 * 設定要刪除的物件 URI，例如 `https://localhost:5001/api/todo/1`
-* 選取 [傳送]
+* 選取 [傳送] 
 
 範例應用程式可讓您刪除所有項目，但刪除最後一個項目之後，模型類別建構函式就會在下次呼叫 API 時建立新的項目。
 

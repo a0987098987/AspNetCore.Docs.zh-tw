@@ -3,15 +3,15 @@ title: 在 ASP.NET Core 中設定憑證驗證
 author: blowdart
 description: 了解如何設定 ASP.NET Core 中的憑證驗證的 IIS 和 HTTP.sys。
 monikerRange: '>= aspnetcore-3.0'
-ms.author: barry.dorrans
+ms.author: bdorrans
 ms.date: 06/11/2019
 uid: security/authentication/certauth
-ms.openlocfilehash: 37567128531187bfe7dd6c9f5aa990226e70f35f
-ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
+ms.openlocfilehash: 8609c58265340da1d618135795915d6c49e750a3
+ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66837535"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538726"
 ---
 # <a name="overview"></a>總覽
 
@@ -89,7 +89,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * `OnAuthenticationFailed` &ndash; 如果在驗證期間發生例外狀況，並可讓您回應，呼叫。
 * `OnCertificateValidated` &ndash; 憑證經過驗證，通過驗證，且已建立預設的主體後，就會呼叫。 此事件可讓您執行您自己的驗證和擴充或取代主體。 如需範例包括：
   * 判斷您的服務是否已知憑證。
-  * 建構您自己的主體。 下列範例中的，請考慮`Startup.ConfigureServices`:
+  * 建構您自己的主體。 請考慮 `Startup.ConfigureServices` 中的下列範例：
 
 ```csharp
 services.AddAuthentication(
@@ -125,7 +125,7 @@ services.AddAuthentication(
 
 如果您發現輸入的憑證不符合您額外的驗證，請呼叫`context.Fail("failure reason")`包含失敗原因。
 
-實際的功能，您可能需要以呼叫服務，在連接到資料庫或其他類型的使用者存放區的相依性插入中註冊。 使用內容傳遞至您的委派，以存取您的服務。 下列範例中的，請考慮`Startup.ConfigureServices`:
+實際的功能，您可能需要以呼叫服務，在連接到資料庫或其他類型的使用者存放區的相依性插入中註冊。 使用內容傳遞至您的委派，以存取您的服務。 請考慮 `Startup.ConfigureServices` 中的下列範例：
 
 ```csharp
 services.AddAuthentication(

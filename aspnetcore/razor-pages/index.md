@@ -6,230 +6,244 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 04/06/2019
 uid: razor-pages/index
-ms.openlocfilehash: 93796fa1edfa316790794d3775342147ea28ae2e
-ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
+ms.openlocfilehash: 419355d670536fef1a38fbcb8ce1fd880c0e9b0d
+ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692536"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67555736"
 ---
-# <a name="introduction-to-razor-pages-in-aspnet-core"></a><span data-ttu-id="6607b-103">ASP.NET Core 中的 Razor Pages 簡介</span><span class="sxs-lookup"><span data-stu-id="6607b-103">Introduction to Razor Pages in ASP.NET Core</span></span>
+# <a name="introduction-to-razor-pages-in-aspnet-core"></a><span data-ttu-id="ed4c9-103">ASP.NET Core 中的 Razor Pages 簡介</span><span class="sxs-lookup"><span data-stu-id="ed4c9-103">Introduction to Razor Pages in ASP.NET Core</span></span>
 
-<span data-ttu-id="6607b-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Ryan Nowak](https://github.com/rynowak)</span><span class="sxs-lookup"><span data-stu-id="6607b-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Ryan Nowak](https://github.com/rynowak)</span></span>
+<span data-ttu-id="ed4c9-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Ryan Nowak](https://github.com/rynowak)</span><span class="sxs-lookup"><span data-stu-id="ed4c9-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Ryan Nowak](https://github.com/rynowak)</span></span>
 
-<span data-ttu-id="6607b-105">Razor Pages 是 ASP.NET Core MVC 新的部分，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。</span><span class="sxs-lookup"><span data-stu-id="6607b-105">Razor Pages is a new aspect of ASP.NET Core MVC that makes coding page-focused scenarios easier and more productive.</span></span>
+<span data-ttu-id="ed4c9-105">Razor Pages 是 ASP.NET Core MVC 新的部分，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-105">Razor Pages is a new aspect of ASP.NET Core MVC that makes coding page-focused scenarios easier and more productive.</span></span>
 
-<span data-ttu-id="6607b-106">如果您在尋找使用模型檢視控制器方法的教學課程，請參閱[開始使用 ASP.NET Core MVC](xref:tutorials/first-mvc-app/start-mvc)。</span><span class="sxs-lookup"><span data-stu-id="6607b-106">If you're looking for a tutorial that uses the Model-View-Controller approach, see [Get started with ASP.NET Core MVC](xref:tutorials/first-mvc-app/start-mvc).</span></span>
+<span data-ttu-id="ed4c9-106">如果您在尋找使用模型檢視控制器方法的教學課程，請參閱[開始使用 ASP.NET Core MVC](xref:tutorials/first-mvc-app/start-mvc)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-106">If you're looking for a tutorial that uses the Model-View-Controller approach, see [Get started with ASP.NET Core MVC](xref:tutorials/first-mvc-app/start-mvc).</span></span>
 
-<span data-ttu-id="6607b-107">本文件提供 Razor Pages 簡介。</span><span class="sxs-lookup"><span data-stu-id="6607b-107">This document provides an introduction to Razor Pages.</span></span> <span data-ttu-id="6607b-108">它不是逐步教學課程。</span><span class="sxs-lookup"><span data-stu-id="6607b-108">It's not a step by step tutorial.</span></span> <span data-ttu-id="6607b-109">如果您發現某些章節很難遵循，請參閱[9開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。</span><span class="sxs-lookup"><span data-stu-id="6607b-109">If you find some of the sections too advanced, see [Get started with Razor Pages](xref:tutorials/razor-pages/razor-pages-start).</span></span> <span data-ttu-id="6607b-110">如需 ASP.NET Core 的概觀，請參閱[ASP.NET Core 簡介](xref:index)。</span><span class="sxs-lookup"><span data-stu-id="6607b-110">For an overview of ASP.NET Core, see the [Introduction to ASP.NET Core](xref:index).</span></span>
+<span data-ttu-id="ed4c9-107">本文件提供 Razor Pages 簡介。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-107">This document provides an introduction to Razor Pages.</span></span> <span data-ttu-id="ed4c9-108">它不是逐步教學課程。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-108">It's not a step by step tutorial.</span></span> <span data-ttu-id="ed4c9-109">如果您發現某些章節很難遵循，請參閱[9開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-109">If you find some of the sections too advanced, see [Get started with Razor Pages](xref:tutorials/razor-pages/razor-pages-start).</span></span> <span data-ttu-id="ed4c9-110">如需 ASP.NET Core 的概觀，請參閱[ASP.NET Core 簡介](xref:index)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-110">For an overview of ASP.NET Core, see the [Introduction to ASP.NET Core](xref:index).</span></span>
 
-[!INCLUDE[](~/includes/net-core-prereqs-all-2.2.md)]
+## <a name="prerequisites"></a><span data-ttu-id="ed4c9-111">必要條件</span><span class="sxs-lookup"><span data-stu-id="ed4c9-111">Prerequisites</span></span>
+
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="ed4c9-112">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="ed4c9-112">Visual Studio</span></span>](#tab/visual-studio)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="ed4c9-113">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="ed4c9-113">Visual Studio Code</span></span>](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="ed4c9-114">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="ed4c9-114">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+
+[!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
+
+---
 
 <a name="rpvs17"></a>
 
-## <a name="create-a-razor-pages-project"></a><span data-ttu-id="6607b-111">建立 Razor Pages 專案</span><span class="sxs-lookup"><span data-stu-id="6607b-111">Create a Razor Pages project</span></span>
+## <a name="create-a-razor-pages-project"></a><span data-ttu-id="ed4c9-115">建立 Razor Pages 專案</span><span class="sxs-lookup"><span data-stu-id="ed4c9-115">Create a Razor Pages project</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="6607b-112">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6607b-112">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="ed4c9-116">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="ed4c9-116">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="6607b-113">如需如何建立 Razor Pages 專案的詳細說明，請參閱[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。</span><span class="sxs-lookup"><span data-stu-id="6607b-113">See [Get started with Razor Pages](xref:tutorials/razor-pages/razor-pages-start) for detailed instructions on how to create a Razor Pages project.</span></span>
+<span data-ttu-id="ed4c9-117">如需如何建立 Razor Pages 專案的詳細說明，請參閱[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-117">See [Get started with Razor Pages](xref:tutorials/razor-pages/razor-pages-start) for detailed instructions on how to create a Razor Pages project.</span></span>
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="6607b-114">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="6607b-114">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="ed4c9-118">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="ed4c9-118">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="6607b-115">從命令列執行 `dotnet new webapp`。</span><span class="sxs-lookup"><span data-stu-id="6607b-115">Run `dotnet new webapp` from the command line.</span></span>
+<span data-ttu-id="ed4c9-119">從命令列執行 `dotnet new webapp`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-119">Run `dotnet new webapp` from the command line.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-<span data-ttu-id="6607b-116">從命令列執行 `dotnet new razor`。</span><span class="sxs-lookup"><span data-stu-id="6607b-116">Run `dotnet new razor` from the command line.</span></span>
+<span data-ttu-id="ed4c9-120">從命令列執行 `dotnet new razor`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-120">Run `dotnet new razor` from the command line.</span></span>
 
 ::: moniker-end
 
-<span data-ttu-id="6607b-117">從 Visual Studio for Mac 開啟已產生的 *.csproj* 檔案。</span><span class="sxs-lookup"><span data-stu-id="6607b-117">Open the generated *.csproj* file from Visual Studio for Mac.</span></span>
+<span data-ttu-id="ed4c9-121">從 Visual Studio for Mac 開啟已產生的 *.csproj* 檔案。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-121">Open the generated *.csproj* file from Visual Studio for Mac.</span></span>
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="6607b-118">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="6607b-118">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="ed4c9-122">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="ed4c9-122">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="6607b-119">從命令列執行 `dotnet new webapp`。</span><span class="sxs-lookup"><span data-stu-id="6607b-119">Run `dotnet new webapp` from the command line.</span></span>
+<span data-ttu-id="ed4c9-123">從命令列執行 `dotnet new webapp`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-123">Run `dotnet new webapp` from the command line.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-<span data-ttu-id="6607b-120">從命令列執行 `dotnet new razor`。</span><span class="sxs-lookup"><span data-stu-id="6607b-120">Run `dotnet new razor` from the command line.</span></span>
+<span data-ttu-id="ed4c9-124">從命令列執行 `dotnet new razor`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-124">Run `dotnet new razor` from the command line.</span></span>
 
 ::: moniker-end
 
 ---
 
-## <a name="razor-pages"></a><span data-ttu-id="6607b-121">Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="6607b-121">Razor Pages</span></span>
+## <a name="razor-pages"></a><span data-ttu-id="ed4c9-125">Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="ed4c9-125">Razor Pages</span></span>
 
-<span data-ttu-id="6607b-122">Razor Pages 是在 *Startup.cs* 中啟用：</span><span class="sxs-lookup"><span data-stu-id="6607b-122">Razor Pages is enabled in *Startup.cs*:</span></span>
+<span data-ttu-id="ed4c9-126">Razor Pages 是在 *Startup.cs* 中啟用：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-126">Razor Pages is enabled in *Startup.cs*:</span></span>
 
 [!code-cs[](index/sample/RazorPagesIntro/Startup.cs?name=snippet_Startup)]
 
-<span data-ttu-id="6607b-123">請考慮使用基本頁面：<a name="OnGet"></a></span><span class="sxs-lookup"><span data-stu-id="6607b-123">Consider a basic page: <a name="OnGet"></a></span></span>
+<span data-ttu-id="ed4c9-127">請考慮使用基本頁面：<a name="OnGet"></a></span><span class="sxs-lookup"><span data-stu-id="ed4c9-127">Consider a basic page: <a name="OnGet"></a></span></span>
 
 [!code-cshtml[](index/sample/RazorPagesIntro/Pages/Index.cshtml)]
 
-<span data-ttu-id="6607b-124">上述程式碼看起來很像用於 ASP.NET Core 應用程式的 [Razor 檢視檔案](xref:tutorials/first-mvc-app/adding-view)，含有控制器和檢視。</span><span class="sxs-lookup"><span data-stu-id="6607b-124">The preceding code looks a lot like a [Razor view file](xref:tutorials/first-mvc-app/adding-view) used in an ASP.NET Core app with controllers and views.</span></span> <span data-ttu-id="6607b-125">讓它不同的是 `@page` 指示詞。</span><span class="sxs-lookup"><span data-stu-id="6607b-125">What makes it different is the `@page` directive.</span></span> <span data-ttu-id="6607b-126">`@page` 會將檔案轉換成 MVC 動作，這表示它會直接處理要求，不用透過控制器。</span><span class="sxs-lookup"><span data-stu-id="6607b-126">`@page` makes the file into an MVC action - which means that it handles requests directly, without going through a controller.</span></span> <span data-ttu-id="6607b-127">`@page` 必須是頁面上的第一個 Razor 指示詞。</span><span class="sxs-lookup"><span data-stu-id="6607b-127">`@page` must be the first Razor directive on a page.</span></span> <span data-ttu-id="6607b-128">`@page` 會影響其他的 Razor 建構行為。</span><span class="sxs-lookup"><span data-stu-id="6607b-128">`@page` affects the behavior of other Razor constructs.</span></span>
+<span data-ttu-id="ed4c9-128">上述程式碼看起來很像用於 ASP.NET Core 應用程式的 [Razor 檢視檔案](xref:tutorials/first-mvc-app/adding-view)，含有控制器和檢視。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-128">The preceding code looks a lot like a [Razor view file](xref:tutorials/first-mvc-app/adding-view) used in an ASP.NET Core app with controllers and views.</span></span> <span data-ttu-id="ed4c9-129">讓它不同的是 `@page` 指示詞。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-129">What makes it different is the `@page` directive.</span></span> <span data-ttu-id="ed4c9-130">`@page` 會將檔案轉換成 MVC 動作，這表示它會直接處理要求，不用透過控制器。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-130">`@page` makes the file into an MVC action - which means that it handles requests directly, without going through a controller.</span></span> <span data-ttu-id="ed4c9-131">`@page` 必須是頁面上的第一個 Razor 指示詞。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-131">`@page` must be the first Razor directive on a page.</span></span> <span data-ttu-id="ed4c9-132">`@page` 會影響其他的 Razor 建構行為。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-132">`@page` affects the behavior of other Razor constructs.</span></span>
 
-<span data-ttu-id="6607b-129">使用`PageModel`類別的類似頁面，顯示於下列兩個檔案中。</span><span class="sxs-lookup"><span data-stu-id="6607b-129">A similar page, using a `PageModel` class, is shown in the following two files.</span></span> <span data-ttu-id="6607b-130">*Pages/Index2.cshtml* 檔案：</span><span class="sxs-lookup"><span data-stu-id="6607b-130">The *Pages/Index2.cshtml* file:</span></span>
+<span data-ttu-id="ed4c9-133">使用`PageModel`類別的類似頁面，顯示於下列兩個檔案中。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-133">A similar page, using a `PageModel` class, is shown in the following two files.</span></span> <span data-ttu-id="ed4c9-134">*Pages/Index2.cshtml* 檔案：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-134">The *Pages/Index2.cshtml* file:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesIntro/Pages/Index2.cshtml)]
 
-<span data-ttu-id="6607b-131">*Pages/Index2.cshtml.cs* 頁面模型：</span><span class="sxs-lookup"><span data-stu-id="6607b-131">The *Pages/Index2.cshtml.cs* page model:</span></span>
+<span data-ttu-id="ed4c9-135">*Pages/Index2.cshtml.cs* 頁面模型：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-135">The *Pages/Index2.cshtml.cs* page model:</span></span>
 
 [!code-cs[](index/sample/RazorPagesIntro/Pages/Index2.cshtml.cs)]
 
-<span data-ttu-id="6607b-132">依照慣例，`PageModel` 類別檔和附加 *.cs* 檔名的 Razor Page 檔案名稱相同。</span><span class="sxs-lookup"><span data-stu-id="6607b-132">By convention, the `PageModel` class file has the same name as the Razor Page file with *.cs* appended.</span></span> <span data-ttu-id="6607b-133">例如，前一個 Razor Page 是 *Pages/Index2.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="6607b-133">For example, the previous Razor Page is *Pages/Index2.cshtml*.</span></span> <span data-ttu-id="6607b-134">包含 `PageModel` 類別的檔案名為 *Pages/Index2.cshtml.cs*。</span><span class="sxs-lookup"><span data-stu-id="6607b-134">The file containing the `PageModel` class is named *Pages/Index2.cshtml.cs*.</span></span>
+<span data-ttu-id="ed4c9-136">依照慣例，`PageModel` 類別檔和附加 *.cs* 檔名的 Razor Page 檔案名稱相同。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-136">By convention, the `PageModel` class file has the same name as the Razor Page file with *.cs* appended.</span></span> <span data-ttu-id="ed4c9-137">例如，前一個 Razor Page 是 *Pages/Index2.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-137">For example, the previous Razor Page is *Pages/Index2.cshtml*.</span></span> <span data-ttu-id="ed4c9-138">包含 `PageModel` 類別的檔案名為 *Pages/Index2.cshtml.cs*。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-138">The file containing the `PageModel` class is named *Pages/Index2.cshtml.cs*.</span></span>
 
-<span data-ttu-id="6607b-135">頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。</span><span class="sxs-lookup"><span data-stu-id="6607b-135">The associations of URL paths to pages are determined by the page's location in the file system.</span></span> <span data-ttu-id="6607b-136">下表顯示 Razor 頁面路徑和相符的 URL：</span><span class="sxs-lookup"><span data-stu-id="6607b-136">The following table shows a Razor Page path and the matching URL:</span></span>
+<span data-ttu-id="ed4c9-139">頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-139">The associations of URL paths to pages are determined by the page's location in the file system.</span></span> <span data-ttu-id="ed4c9-140">下表顯示 Razor 頁面路徑和相符的 URL：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-140">The following table shows a Razor Page path and the matching URL:</span></span>
 
-| <span data-ttu-id="6607b-137">檔案名稱和路徑</span><span class="sxs-lookup"><span data-stu-id="6607b-137">File name and path</span></span>               | <span data-ttu-id="6607b-138">比對 URL</span><span class="sxs-lookup"><span data-stu-id="6607b-138">matching URL</span></span> |
+| <span data-ttu-id="ed4c9-141">檔案名稱和路徑</span><span class="sxs-lookup"><span data-stu-id="ed4c9-141">File name and path</span></span>               | <span data-ttu-id="ed4c9-142">比對 URL</span><span class="sxs-lookup"><span data-stu-id="ed4c9-142">matching URL</span></span> |
 | ----------------- | ------------ |
-| <span data-ttu-id="6607b-139">*/Pages/Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="6607b-139">*/Pages/Index.cshtml*</span></span> | <span data-ttu-id="6607b-140">`/` 或 `/Index`</span><span class="sxs-lookup"><span data-stu-id="6607b-140">`/` or `/Index`</span></span> |
-| <span data-ttu-id="6607b-141">*/Pages/Contact.cshtml*</span><span class="sxs-lookup"><span data-stu-id="6607b-141">*/Pages/Contact.cshtml*</span></span> | `/Contact` |
-| <span data-ttu-id="6607b-142">*/Pages/Store/Contact.cshtml*</span><span class="sxs-lookup"><span data-stu-id="6607b-142">*/Pages/Store/Contact.cshtml*</span></span> | `/Store/Contact` |
-| <span data-ttu-id="6607b-143">*/Pages/Store/Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="6607b-143">*/Pages/Store/Index.cshtml*</span></span> | <span data-ttu-id="6607b-144">`/Store` 或 `/Store/Index`</span><span class="sxs-lookup"><span data-stu-id="6607b-144">`/Store` or `/Store/Index`</span></span> |
+| <span data-ttu-id="ed4c9-143">*/Pages/Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-143">*/Pages/Index.cshtml*</span></span> | <span data-ttu-id="ed4c9-144">`/` 或 `/Index`</span><span class="sxs-lookup"><span data-stu-id="ed4c9-144">`/` or `/Index`</span></span> |
+| <span data-ttu-id="ed4c9-145">*/Pages/Contact.cshtml*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-145">*/Pages/Contact.cshtml*</span></span> | `/Contact` |
+| <span data-ttu-id="ed4c9-146">*/Pages/Store/Contact.cshtml*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-146">*/Pages/Store/Contact.cshtml*</span></span> | `/Store/Contact` |
+| <span data-ttu-id="ed4c9-147">*/Pages/Store/Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-147">*/Pages/Store/Index.cshtml*</span></span> | <span data-ttu-id="ed4c9-148">`/Store` 或 `/Store/Index`</span><span class="sxs-lookup"><span data-stu-id="ed4c9-148">`/Store` or `/Store/Index`</span></span> |
 
-<span data-ttu-id="6607b-145">附註：</span><span class="sxs-lookup"><span data-stu-id="6607b-145">Notes:</span></span>
+<span data-ttu-id="ed4c9-149">附註：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-149">Notes:</span></span>
 
-* <span data-ttu-id="6607b-146">執行階段預設會在 *Pages* 資料夾中尋找 Razor Pages 的檔案。</span><span class="sxs-lookup"><span data-stu-id="6607b-146">The runtime looks for Razor Pages files in the *Pages* folder by default.</span></span>
-* <span data-ttu-id="6607b-147">`Index` 是 URL 未包含頁面時的預設頁面。</span><span class="sxs-lookup"><span data-stu-id="6607b-147">`Index` is the default page when a URL doesn't include a page.</span></span>
+* <span data-ttu-id="ed4c9-150">執行階段預設會在 *Pages* 資料夾中尋找 Razor Pages 的檔案。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-150">The runtime looks for Razor Pages files in the *Pages* folder by default.</span></span>
+* <span data-ttu-id="ed4c9-151">`Index` 是 URL 未包含頁面時的預設頁面。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-151">`Index` is the default page when a URL doesn't include a page.</span></span>
 
-## <a name="write-a-basic-form"></a><span data-ttu-id="6607b-148">撰寫基本表單</span><span class="sxs-lookup"><span data-stu-id="6607b-148">Write a basic form</span></span>
+## <a name="write-a-basic-form"></a><span data-ttu-id="ed4c9-152">撰寫基本表單</span><span class="sxs-lookup"><span data-stu-id="ed4c9-152">Write a basic form</span></span>
 
-<span data-ttu-id="6607b-149">Razor Pages 設計用於製作一般的模式，可搭配網頁瀏覽器一起使用，在建置應用程式時能易於實作。</span><span class="sxs-lookup"><span data-stu-id="6607b-149">Razor Pages is designed to make common patterns used with web browsers easy to implement when building an app.</span></span> <span data-ttu-id="6607b-150">[模型繫結](xref:mvc/models/model-binding)、[標記協助程式](xref:mvc/views/tag-helpers/intro)和 HTML 協助程式搭配 Razor Page 類別中定義的屬性「就這麼簡單」  。</span><span class="sxs-lookup"><span data-stu-id="6607b-150">[Model binding](xref:mvc/models/model-binding), [Tag Helpers](xref:mvc/views/tag-helpers/intro), and HTML helpers all *just work* with the properties defined in a Razor Page class.</span></span> <span data-ttu-id="6607b-151">`Contact` 模型請考慮實作基本的「與我們連絡」格式頁面：</span><span class="sxs-lookup"><span data-stu-id="6607b-151">Consider a page that implements a basic "contact us" form for the `Contact` model:</span></span>
+<span data-ttu-id="ed4c9-153">Razor Pages 設計用於製作一般的模式，可搭配網頁瀏覽器一起使用，在建置應用程式時能易於實作。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-153">Razor Pages is designed to make common patterns used with web browsers easy to implement when building an app.</span></span> <span data-ttu-id="ed4c9-154">[模型繫結](xref:mvc/models/model-binding)、[標記協助程式](xref:mvc/views/tag-helpers/intro)和 HTML 協助程式搭配 Razor Page 類別中定義的屬性「就這麼簡單」  。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-154">[Model binding](xref:mvc/models/model-binding), [Tag Helpers](xref:mvc/views/tag-helpers/intro), and HTML helpers all *just work* with the properties defined in a Razor Page class.</span></span> <span data-ttu-id="ed4c9-155">`Contact` 模型請考慮實作基本的「與我們連絡」格式頁面：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-155">Consider a page that implements a basic "contact us" form for the `Contact` model:</span></span>
 
-<span data-ttu-id="6607b-152">本文件中的範例，會在 [Startup.cs](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16) 檔案中初始化 `DbContext`。</span><span class="sxs-lookup"><span data-stu-id="6607b-152">For the samples in this document, the `DbContext` is initialized in the [Startup.cs](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16) file.</span></span>
+<span data-ttu-id="ed4c9-156">本文件中的範例，會在 [Startup.cs](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16) 檔案中初始化 `DbContext`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-156">For the samples in this document, the `DbContext` is initialized in the [Startup.cs](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16) file.</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/Startup.cs?highlight=15-16)]
 
-<span data-ttu-id="6607b-153">資料模型：</span><span class="sxs-lookup"><span data-stu-id="6607b-153">The data model:</span></span>
+<span data-ttu-id="ed4c9-157">資料模型：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-157">The data model:</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/Data/Customer.cs)]
 
-<span data-ttu-id="6607b-154">DB 內容：</span><span class="sxs-lookup"><span data-stu-id="6607b-154">The db context:</span></span>
+<span data-ttu-id="ed4c9-158">DB 內容：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-158">The db context:</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/Data/AppDbContext.cs)]
 
-<span data-ttu-id="6607b-155">*Pages/Create.cshtml* 檢視檔案：</span><span class="sxs-lookup"><span data-stu-id="6607b-155">The *Pages/Create.cshtml* view file:</span></span>
+<span data-ttu-id="ed4c9-159">*Pages/Create.cshtml* 檢視檔案：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-159">The *Pages/Create.cshtml* view file:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts/Pages/Create.cshtml)]
 
-<span data-ttu-id="6607b-156">*Pages/Create.cshtml.cs* 頁面模型：</span><span class="sxs-lookup"><span data-stu-id="6607b-156">The *Pages/Create.cshtml.cs* page model:</span></span>
+<span data-ttu-id="ed4c9-160">*Pages/Create.cshtml.cs* 頁面模型：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-160">The *Pages/Create.cshtml.cs* page model:</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_ALL)]
 
-<span data-ttu-id="6607b-157">依照慣例，`PageModel` 類別稱之為 `<PageName>Model`，與頁面位於相同的命名空間。</span><span class="sxs-lookup"><span data-stu-id="6607b-157">By convention, the `PageModel` class is called `<PageName>Model` and is in the same namespace as the page.</span></span>
+<span data-ttu-id="ed4c9-161">依照慣例，`PageModel` 類別稱之為 `<PageName>Model`，與頁面位於相同的命名空間。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-161">By convention, the `PageModel` class is called `<PageName>Model` and is in the same namespace as the page.</span></span>
 
-<span data-ttu-id="6607b-158">`PageModel` 類別可以分離頁面邏輯與頁面展示。</span><span class="sxs-lookup"><span data-stu-id="6607b-158">The `PageModel` class allows separation of the logic of a page from its presentation.</span></span> <span data-ttu-id="6607b-159">此類別會定義頁面的處理常式，以處理傳送至頁面的要求與用於轉譯頁面的資料。</span><span class="sxs-lookup"><span data-stu-id="6607b-159">It defines page handlers for requests sent to the page and the data used to render the page.</span></span> <span data-ttu-id="6607b-160">分離頁面邏輯與頁面展示可讓您透過[相依性插入](xref:fundamentals/dependency-injection)來管理頁面相依性，以及針對頁面進行[單元測試](xref:test/razor-pages-tests)。</span><span class="sxs-lookup"><span data-stu-id="6607b-160">This separation allows you to manage page dependencies through [dependency injection](xref:fundamentals/dependency-injection) and to [unit test](xref:test/razor-pages-tests) the pages.</span></span>
+<span data-ttu-id="ed4c9-162">`PageModel` 類別可以分離頁面邏輯與頁面展示。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-162">The `PageModel` class allows separation of the logic of a page from its presentation.</span></span> <span data-ttu-id="ed4c9-163">此類別會定義頁面的處理常式，以處理傳送至頁面的要求與用於轉譯頁面的資料。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-163">It defines page handlers for requests sent to the page and the data used to render the page.</span></span> <span data-ttu-id="ed4c9-164">分離頁面邏輯與頁面展示可讓您透過[相依性插入](xref:fundamentals/dependency-injection)來管理頁面相依性，以及針對頁面進行[單元測試](xref:test/razor-pages-tests)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-164">This separation allows you to manage page dependencies through [dependency injection](xref:fundamentals/dependency-injection) and to [unit test](xref:test/razor-pages-tests) the pages.</span></span>
 
-<span data-ttu-id="6607b-161">在 `POST` 要求上執行的頁面具有 `OnPostAsync`「處理常式方法」  (當使用者張貼表單時)。</span><span class="sxs-lookup"><span data-stu-id="6607b-161">The page has an `OnPostAsync` *handler method*, which runs on `POST` requests (when a user posts the form).</span></span> <span data-ttu-id="6607b-162">您可以新增任何 HTTP 指令動詞的處理常式方法。</span><span class="sxs-lookup"><span data-stu-id="6607b-162">You can add handler methods for any HTTP verb.</span></span> <span data-ttu-id="6607b-163">最常見的處理常式包括：</span><span class="sxs-lookup"><span data-stu-id="6607b-163">The most common handlers are:</span></span>
+<span data-ttu-id="ed4c9-165">在 `POST` 要求上執行的頁面具有 `OnPostAsync`「處理常式方法」  (當使用者張貼表單時)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-165">The page has an `OnPostAsync` *handler method*, which runs on `POST` requests (when a user posts the form).</span></span> <span data-ttu-id="ed4c9-166">您可以新增任何 HTTP 指令動詞的處理常式方法。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-166">You can add handler methods for any HTTP verb.</span></span> <span data-ttu-id="ed4c9-167">最常見的處理常式包括：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-167">The most common handlers are:</span></span>
 
-* <span data-ttu-id="6607b-164">`OnGet`，初始化頁所需要的狀態。</span><span class="sxs-lookup"><span data-stu-id="6607b-164">`OnGet` to initialize state needed for the page.</span></span> <span data-ttu-id="6607b-165">[OnGet](#OnGet) 範例。</span><span class="sxs-lookup"><span data-stu-id="6607b-165">[OnGet](#OnGet) sample.</span></span>
-* <span data-ttu-id="6607b-166">`OnPost`，處理表單提交作業。</span><span class="sxs-lookup"><span data-stu-id="6607b-166">`OnPost` to handle form submissions.</span></span>
+* <span data-ttu-id="ed4c9-168">`OnGet`，初始化頁所需要的狀態。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-168">`OnGet` to initialize state needed for the page.</span></span> <span data-ttu-id="ed4c9-169">[OnGet](#OnGet) 範例。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-169">[OnGet](#OnGet) sample.</span></span>
+* <span data-ttu-id="ed4c9-170">`OnPost`，處理表單提交作業。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-170">`OnPost` to handle form submissions.</span></span>
 
-<span data-ttu-id="6607b-167">`Async` 命名尾碼是選擇性的，但依照慣例通常用於非同步函式。</span><span class="sxs-lookup"><span data-stu-id="6607b-167">The `Async` naming suffix is optional but is often used by convention for asynchronous functions.</span></span> <span data-ttu-id="6607b-168">上例中的 `OnPostAsync` 程式碼看起來類似您一般在控制器中撰寫的內容。</span><span class="sxs-lookup"><span data-stu-id="6607b-168">The `OnPostAsync` code in the preceding example looks similar to what you would normally write in a controller.</span></span> <span data-ttu-id="6607b-169">上述程式碼一般用於 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="6607b-169">The preceding code is typical for Razor Pages.</span></span> <span data-ttu-id="6607b-170">大部分的基本 MVC，像是[模型繫結](xref:mvc/models/model-binding)、[驗證](xref:mvc/models/validation)和動作結果都是共用的。</span><span class="sxs-lookup"><span data-stu-id="6607b-170">Most of the MVC primitives like [model binding](xref:mvc/models/model-binding), [validation](xref:mvc/models/validation), and action results are shared.</span></span>  <!-- Review: Ryan, can we get a list of what is shared and what isn't? -->
+<span data-ttu-id="ed4c9-171">`Async` 命名尾碼是選擇性的，但依照慣例通常用於非同步函式。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-171">The `Async` naming suffix is optional but is often used by convention for asynchronous functions.</span></span> <span data-ttu-id="ed4c9-172">上例中的 `OnPostAsync` 程式碼看起來類似您一般在控制器中撰寫的內容。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-172">The `OnPostAsync` code in the preceding example looks similar to what you would normally write in a controller.</span></span> <span data-ttu-id="ed4c9-173">上述程式碼一般用於 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-173">The preceding code is typical for Razor Pages.</span></span> <span data-ttu-id="ed4c9-174">大部分的基本 MVC，像是[模型繫結](xref:mvc/models/model-binding)、[驗證](xref:mvc/models/validation)和動作結果都是共用的。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-174">Most of the MVC primitives like [model binding](xref:mvc/models/model-binding), [validation](xref:mvc/models/validation), and action results are shared.</span></span>  <!-- Review: Ryan, can we get a list of what is shared and what isn't? -->
 
-<span data-ttu-id="6607b-171">前一個 `OnPostAsync` 方法：</span><span class="sxs-lookup"><span data-stu-id="6607b-171">The previous `OnPostAsync` method:</span></span>
+<span data-ttu-id="ed4c9-175">前一個 `OnPostAsync` 方法：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-175">The previous `OnPostAsync` method:</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
-<span data-ttu-id="6607b-172">`OnPostAsync` 的基本流程：</span><span class="sxs-lookup"><span data-stu-id="6607b-172">The basic flow of `OnPostAsync`:</span></span>
+<span data-ttu-id="ed4c9-176">`OnPostAsync` 的基本流程：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-176">The basic flow of `OnPostAsync`:</span></span>
 
-<span data-ttu-id="6607b-173">檢查驗證錯誤。</span><span class="sxs-lookup"><span data-stu-id="6607b-173">Check for validation errors.</span></span>
+<span data-ttu-id="ed4c9-177">檢查驗證錯誤。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-177">Check for validation errors.</span></span>
 
-* <span data-ttu-id="6607b-174">如果沒有任何錯誤，會儲存資料並重新導向。</span><span class="sxs-lookup"><span data-stu-id="6607b-174">If there are no errors, save the data and redirect.</span></span>
-* <span data-ttu-id="6607b-175">如果有錯誤，會再次顯示有驗證訊息的頁面。</span><span class="sxs-lookup"><span data-stu-id="6607b-175">If there are errors, show the page again with validation messages.</span></span> <span data-ttu-id="6607b-176">用戶端驗證和傳統的 ASP.NET Core MVC 應用程式完全相同。</span><span class="sxs-lookup"><span data-stu-id="6607b-176">Client-side validation is identical to traditional ASP.NET Core MVC applications.</span></span> <span data-ttu-id="6607b-177">在許多情況下，用戶端會偵測到驗證錯誤，但從不提交給伺服器。</span><span class="sxs-lookup"><span data-stu-id="6607b-177">In many cases, validation errors would be detected on the client, and never submitted to the server.</span></span>
+* <span data-ttu-id="ed4c9-178">如果沒有任何錯誤，會儲存資料並重新導向。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-178">If there are no errors, save the data and redirect.</span></span>
+* <span data-ttu-id="ed4c9-179">如果有錯誤，會再次顯示有驗證訊息的頁面。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-179">If there are errors, show the page again with validation messages.</span></span> <span data-ttu-id="ed4c9-180">用戶端驗證和傳統的 ASP.NET Core MVC 應用程式完全相同。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-180">Client-side validation is identical to traditional ASP.NET Core MVC applications.</span></span> <span data-ttu-id="ed4c9-181">在許多情況下，用戶端會偵測到驗證錯誤，但從不提交給伺服器。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-181">In many cases, validation errors would be detected on the client, and never submitted to the server.</span></span>
 
-<span data-ttu-id="6607b-178">成功輸入資料後，`OnPostAsync` 處理常式方法會呼叫 `RedirectToPage` 協助程式方法，傳回 `RedirectToPageResult` 的執行個體。</span><span class="sxs-lookup"><span data-stu-id="6607b-178">When the data is entered successfully, the `OnPostAsync` handler method calls the `RedirectToPage` helper method to return an instance of `RedirectToPageResult`.</span></span> <span data-ttu-id="6607b-179">`RedirectToPage` 是新的動作結果，類似於 `RedirectToAction` 或 `RedirectToRoute`，但會針對頁面自訂。</span><span class="sxs-lookup"><span data-stu-id="6607b-179">`RedirectToPage` is a new action result, similar to `RedirectToAction` or `RedirectToRoute`, but customized for pages.</span></span> <span data-ttu-id="6607b-180">在上述範例中，它會重新導向至根索引頁面 (`/Index`)。</span><span class="sxs-lookup"><span data-stu-id="6607b-180">In the preceding sample, it redirects to the root Index page (`/Index`).</span></span> <span data-ttu-id="6607b-181">[產生頁面 URL](#url_gen)一節會詳細說明 `RedirectToPage`。</span><span class="sxs-lookup"><span data-stu-id="6607b-181">`RedirectToPage` is detailed in the [URL generation for Pages](#url_gen) section.</span></span>
+<span data-ttu-id="ed4c9-182">成功輸入資料後，`OnPostAsync` 處理常式方法會呼叫 `RedirectToPage` 協助程式方法，傳回 `RedirectToPageResult` 的執行個體。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-182">When the data is entered successfully, the `OnPostAsync` handler method calls the `RedirectToPage` helper method to return an instance of `RedirectToPageResult`.</span></span> <span data-ttu-id="ed4c9-183">`RedirectToPage` 是新的動作結果，類似於 `RedirectToAction` 或 `RedirectToRoute`，但會針對頁面自訂。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-183">`RedirectToPage` is a new action result, similar to `RedirectToAction` or `RedirectToRoute`, but customized for pages.</span></span> <span data-ttu-id="ed4c9-184">在上述範例中，它會重新導向至根索引頁面 (`/Index`)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-184">In the preceding sample, it redirects to the root Index page (`/Index`).</span></span> <span data-ttu-id="ed4c9-185">[產生頁面 URL](#url_gen)一節會詳細說明 `RedirectToPage`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-185">`RedirectToPage` is detailed in the [URL generation for Pages](#url_gen) section.</span></span>
 
-<span data-ttu-id="6607b-182">當提交的表單有驗證錯誤時 (傳遞至伺服器)，`OnPostAsync` 處理常式方法會呼叫 `Page` 協助程式方法。</span><span class="sxs-lookup"><span data-stu-id="6607b-182">When the submitted form has validation errors (that are passed to the server), the`OnPostAsync` handler method calls the `Page` helper method.</span></span> <span data-ttu-id="6607b-183">`Page` 傳回 `PageResult` 的執行個體。</span><span class="sxs-lookup"><span data-stu-id="6607b-183">`Page` returns an instance of `PageResult`.</span></span> <span data-ttu-id="6607b-184">傳回 `Page` 類似於控制站中的動作傳回 `View`。</span><span class="sxs-lookup"><span data-stu-id="6607b-184">Returning `Page` is similar to how actions in controllers return `View`.</span></span> <span data-ttu-id="6607b-185">`PageResult` 處理常式方法</span><span class="sxs-lookup"><span data-stu-id="6607b-185">`PageResult` is the default</span></span> <!-- Review  --> <span data-ttu-id="6607b-186">的預設傳回型別。</span><span class="sxs-lookup"><span data-stu-id="6607b-186">return type for a handler method.</span></span> <span data-ttu-id="6607b-187">傳回 `void` 的處理常式方法會呈現頁面。</span><span class="sxs-lookup"><span data-stu-id="6607b-187">A handler method that returns `void` renders the page.</span></span>
+<span data-ttu-id="ed4c9-186">當提交的表單有驗證錯誤時 (傳遞至伺服器)，`OnPostAsync` 處理常式方法會呼叫 `Page` 協助程式方法。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-186">When the submitted form has validation errors (that are passed to the server), the`OnPostAsync` handler method calls the `Page` helper method.</span></span> <span data-ttu-id="ed4c9-187">`Page` 傳回 `PageResult` 的執行個體。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-187">`Page` returns an instance of `PageResult`.</span></span> <span data-ttu-id="ed4c9-188">傳回 `Page` 類似於控制站中的動作傳回 `View`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-188">Returning `Page` is similar to how actions in controllers return `View`.</span></span> <span data-ttu-id="ed4c9-189">`PageResult` 處理常式方法</span><span class="sxs-lookup"><span data-stu-id="ed4c9-189">`PageResult` is the default</span></span> <!-- Review  --> <span data-ttu-id="ed4c9-190">的預設傳回型別。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-190">return type for a handler method.</span></span> <span data-ttu-id="ed4c9-191">傳回 `void` 的處理常式方法會呈現頁面。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-191">A handler method that returns `void` renders the page.</span></span>
 
-<span data-ttu-id="6607b-188">`Customer` 屬性 (property) 使用 `[BindProperty]` 屬性 (attribute) 加入模型繫結。</span><span class="sxs-lookup"><span data-stu-id="6607b-188">The `Customer` property uses `[BindProperty]` attribute to opt in to model binding.</span></span>
+<span data-ttu-id="ed4c9-192">`Customer` 屬性 (property) 使用 `[BindProperty]` 屬性 (attribute) 加入模型繫結。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-192">The `Customer` property uses `[BindProperty]` attribute to opt in to model binding.</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_PageModel&highlight=10-11)]
 
-<span data-ttu-id="6607b-189">Razor Pages 預設只繫結屬性和非 GET 指令動詞。</span><span class="sxs-lookup"><span data-stu-id="6607b-189">Razor Pages, by default, bind properties only with non-GET verbs.</span></span> <span data-ttu-id="6607b-190">繫結至屬性可以減少您必須撰寫的程式碼數量。</span><span class="sxs-lookup"><span data-stu-id="6607b-190">Binding to properties can reduce the amount of code you have to write.</span></span> <span data-ttu-id="6607b-191">透過使用相同的屬性呈現表單欄位 (`<input asp-for="Customer.Name">`) 並接受輸入，繫結可以減少程式碼。</span><span class="sxs-lookup"><span data-stu-id="6607b-191">Binding reduces code by using the same property to render form fields (`<input asp-for="Customer.Name">`) and accept the input.</span></span>
+<span data-ttu-id="ed4c9-193">Razor Pages 預設只繫結屬性和非 GET 指令動詞。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-193">Razor Pages, by default, bind properties only with non-GET verbs.</span></span> <span data-ttu-id="ed4c9-194">繫結至屬性可以減少您必須撰寫的程式碼數量。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-194">Binding to properties can reduce the amount of code you have to write.</span></span> <span data-ttu-id="ed4c9-195">透過使用相同的屬性呈現表單欄位 (`<input asp-for="Customer.Name">`) 並接受輸入，繫結可以減少程式碼。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-195">Binding reduces code by using the same property to render form fields (`<input asp-for="Customer.Name">`) and accept the input.</span></span>
 
 [!INCLUDE[](~/includes/bind-get.md)]
 
-<span data-ttu-id="6607b-192">首頁 (*Index.cshtml*)：</span><span class="sxs-lookup"><span data-stu-id="6607b-192">The home page (*Index.cshtml*):</span></span>
+<span data-ttu-id="ed4c9-196">首頁 (*Index.cshtml*)：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-196">The home page (*Index.cshtml*):</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts/Pages/Index.cshtml)]
 
-<span data-ttu-id="6607b-193">已建立關聯的 `PageModel` 類別 (*Index.cshtml.cs*)：</span><span class="sxs-lookup"><span data-stu-id="6607b-193">The associated `PageModel` class (*Index.cshtml.cs*):</span></span>
+<span data-ttu-id="ed4c9-197">已建立關聯的 `PageModel` 類別 (*Index.cshtml.cs*)：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-197">The associated `PageModel` class (*Index.cshtml.cs*):</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs)]
 
-<span data-ttu-id="6607b-194">*Index.cshtml* 檔案包含下列標記可為每個連絡人建立編輯連結：</span><span class="sxs-lookup"><span data-stu-id="6607b-194">The *Index.cshtml* file contains the following markup to create an edit link for each contact:</span></span>
+<span data-ttu-id="ed4c9-198">*Index.cshtml* 檔案包含下列標記可為每個連絡人建立編輯連結：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-198">The *Index.cshtml* file contains the following markup to create an edit link for each contact:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=21)]
 
-<span data-ttu-id="6607b-195">[錨定標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)過去使用 `asp-route-{value}` 屬性產生 [編輯] 頁面的連結。</span><span class="sxs-lookup"><span data-stu-id="6607b-195">The [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) used the `asp-route-{value}` attribute to generate a link to the Edit page.</span></span> <span data-ttu-id="6607b-196">該連結包含路由資料和連絡人識別碼。</span><span class="sxs-lookup"><span data-stu-id="6607b-196">The link contains route data with the contact ID.</span></span> <span data-ttu-id="6607b-197">例如，`http://localhost:5000/Edit/1`。</span><span class="sxs-lookup"><span data-stu-id="6607b-197">For example, `http://localhost:5000/Edit/1`.</span></span> <span data-ttu-id="6607b-198">使用 `asp-area` 屬性來指定區域。</span><span class="sxs-lookup"><span data-stu-id="6607b-198">Use the `asp-area` attribute to specify an area.</span></span> <span data-ttu-id="6607b-199">如需詳細資訊，請參閱<xref:mvc/controllers/areas>。</span><span class="sxs-lookup"><span data-stu-id="6607b-199">For more information, see <xref:mvc/controllers/areas>.</span></span>
+<span data-ttu-id="ed4c9-199">[錨定標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)過去使用 `asp-route-{value}` 屬性產生 [編輯] 頁面的連結。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-199">The [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) used the `asp-route-{value}` attribute to generate a link to the Edit page.</span></span> <span data-ttu-id="ed4c9-200">該連結包含路由資料和連絡人識別碼。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-200">The link contains route data with the contact ID.</span></span> <span data-ttu-id="ed4c9-201">例如，`http://localhost:5000/Edit/1`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-201">For example, `http://localhost:5000/Edit/1`.</span></span> <span data-ttu-id="ed4c9-202">使用 `asp-area` 屬性來指定區域。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-202">Use the `asp-area` attribute to specify an area.</span></span> <span data-ttu-id="ed4c9-203">如需詳細資訊，請參閱 <xref:mvc/controllers/areas>。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-203">For more information, see <xref:mvc/controllers/areas>.</span></span>
 
-<span data-ttu-id="6607b-200">*Pages/Edit.cshtml* 檔案：</span><span class="sxs-lookup"><span data-stu-id="6607b-200">The *Pages/Edit.cshtml* file:</span></span>
+<span data-ttu-id="ed4c9-204">*Pages/Edit.cshtml* 檔案：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-204">The *Pages/Edit.cshtml* file:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts/Pages/Edit.cshtml?highlight=1)]
 
-<span data-ttu-id="6607b-201">第一行包含 `@page "{id:int}"` 指示詞。</span><span class="sxs-lookup"><span data-stu-id="6607b-201">The first line contains the `@page "{id:int}"` directive.</span></span> <span data-ttu-id="6607b-202">路由條件約束 `"{id:int}"` 通知頁面接受包含 `int` 路由資料的頁面要求。</span><span class="sxs-lookup"><span data-stu-id="6607b-202">The routing constraint`"{id:int}"` tells the page to accept requests to the page that contain `int` route data.</span></span> <span data-ttu-id="6607b-203">如果頁面要求不包含可以轉換成 `int` 的路由資料，執行階段會傳回 HTTP 404 (找不到) 錯誤。</span><span class="sxs-lookup"><span data-stu-id="6607b-203">If a request to the page doesn't contain route data that can be converted to an `int`, the runtime returns an HTTP 404 (not found) error.</span></span> <span data-ttu-id="6607b-204">若要使識別碼成為選擇性，請將 `?` 附加至路由條件約束：</span><span class="sxs-lookup"><span data-stu-id="6607b-204">To make the ID optional, append `?` to the route constraint:</span></span>
+<span data-ttu-id="ed4c9-205">第一行包含 `@page "{id:int}"` 指示詞。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-205">The first line contains the `@page "{id:int}"` directive.</span></span> <span data-ttu-id="ed4c9-206">路由條件約束 `"{id:int}"` 通知頁面接受包含 `int` 路由資料的頁面要求。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-206">The routing constraint`"{id:int}"` tells the page to accept requests to the page that contain `int` route data.</span></span> <span data-ttu-id="ed4c9-207">如果頁面要求不包含可以轉換成 `int` 的路由資料，執行階段會傳回 HTTP 404 (找不到) 錯誤。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-207">If a request to the page doesn't contain route data that can be converted to an `int`, the runtime returns an HTTP 404 (not found) error.</span></span> <span data-ttu-id="ed4c9-208">若要使識別碼成為選擇性，請將 `?` 附加至路由條件約束：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-208">To make the ID optional, append `?` to the route constraint:</span></span>
 
  ```cshtml
 @page "{id:int?}"
 ```
 
-<span data-ttu-id="6607b-205">*Pages/Edit.cshtml.cs* 檔案：</span><span class="sxs-lookup"><span data-stu-id="6607b-205">The *Pages/Edit.cshtml.cs* file:</span></span>
+<span data-ttu-id="ed4c9-209">*Pages/Edit.cshtml.cs* 檔案：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-209">The *Pages/Edit.cshtml.cs* file:</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Edit.cshtml.cs)]
 
-<span data-ttu-id="6607b-206">*Index.cshtml* 檔案也包含能夠為每個客戶連絡人建立刪除按鈕的標記：</span><span class="sxs-lookup"><span data-stu-id="6607b-206">The *Index.cshtml* file also contains markup to create a delete button for each customer contact:</span></span>
+<span data-ttu-id="ed4c9-210">*Index.cshtml* 檔案也包含能夠為每個客戶連絡人建立刪除按鈕的標記：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-210">The *Index.cshtml* file also contains markup to create a delete button for each customer contact:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=22-23)]
 
-<span data-ttu-id="6607b-207">使用 HTML 轉譯刪除按鈕時，其 `formaction` 會包含下列項目的參數：</span><span class="sxs-lookup"><span data-stu-id="6607b-207">When the delete button is rendered in HTML, its `formaction` includes parameters for:</span></span>
+<span data-ttu-id="ed4c9-211">使用 HTML 轉譯刪除按鈕時，其 `formaction` 會包含下列項目的參數：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-211">When the delete button is rendered in HTML, its `formaction` includes parameters for:</span></span>
 
-* <span data-ttu-id="6607b-208">`asp-route-id` 屬性指定的客戶連絡人識別碼。</span><span class="sxs-lookup"><span data-stu-id="6607b-208">The customer contact ID specified by the `asp-route-id` attribute.</span></span>
-* <span data-ttu-id="6607b-209">`asp-page-handler` 屬性指定的 `handler`。</span><span class="sxs-lookup"><span data-stu-id="6607b-209">The `handler` specified by the `asp-page-handler` attribute.</span></span>
+* <span data-ttu-id="ed4c9-212">`asp-route-id` 屬性指定的客戶連絡人識別碼。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-212">The customer contact ID specified by the `asp-route-id` attribute.</span></span>
+* <span data-ttu-id="ed4c9-213">`asp-page-handler` 屬性指定的 `handler`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-213">The `handler` specified by the `asp-page-handler` attribute.</span></span>
 
-<span data-ttu-id="6607b-210">以下是轉譯的刪除按鈕範例，內含客戶連絡人識別碼 `1`：</span><span class="sxs-lookup"><span data-stu-id="6607b-210">Here is an example of a rendered delete button with a customer contact ID of `1`:</span></span>
+<span data-ttu-id="ed4c9-214">以下是轉譯的刪除按鈕範例，內含客戶連絡人識別碼 `1`：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-214">Here is an example of a rendered delete button with a customer contact ID of `1`:</span></span>
 
 ```html
 <button type="submit" formaction="/?id=1&amp;handler=delete">delete</button>
 ```
 
-<span data-ttu-id="6607b-211">選取按鈕時，表單 `POST` 要求會傳送至伺服器。</span><span class="sxs-lookup"><span data-stu-id="6607b-211">When the button is selected, a form `POST` request is sent to the server.</span></span> <span data-ttu-id="6607b-212">依照慣例，會依據配置 `OnPost[handler]Async`，按 `handler` 參數的值來選取處理常式方法。</span><span class="sxs-lookup"><span data-stu-id="6607b-212">By convention, the name of the handler method is selected based on the value of the `handler` parameter according to the scheme `OnPost[handler]Async`.</span></span>
+<span data-ttu-id="ed4c9-215">選取按鈕時，表單 `POST` 要求會傳送至伺服器。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-215">When the button is selected, a form `POST` request is sent to the server.</span></span> <span data-ttu-id="ed4c9-216">依照慣例，會依據配置 `OnPost[handler]Async`，按 `handler` 參數的值來選取處理常式方法。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-216">By convention, the name of the handler method is selected based on the value of the `handler` parameter according to the scheme `OnPost[handler]Async`.</span></span>
 
-<span data-ttu-id="6607b-213">在此範例中，因為 `handler` 為 `delete`，所以會使用 `OnPostDeleteAsync` 處理常式方法來處理 `POST` 要求。</span><span class="sxs-lookup"><span data-stu-id="6607b-213">Because the `handler` is `delete` in this example, the `OnPostDeleteAsync` handler method is used to process the `POST` request.</span></span> <span data-ttu-id="6607b-214">若 `asp-page-handler` 設為其他值 (例如 `remove`)，則會選取名為 `OnPostRemoveAsync` 的頁面處理常式。</span><span class="sxs-lookup"><span data-stu-id="6607b-214">If the `asp-page-handler` is set to a different value, such as `remove`, a page handler method with the name `OnPostRemoveAsync` is selected.</span></span>
+<span data-ttu-id="ed4c9-217">在此範例中，因為 `handler` 為 `delete`，所以會使用 `OnPostDeleteAsync` 處理常式方法來處理 `POST` 要求。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-217">Because the `handler` is `delete` in this example, the `OnPostDeleteAsync` handler method is used to process the `POST` request.</span></span> <span data-ttu-id="ed4c9-218">若 `asp-page-handler` 設為其他值 (例如 `remove`)，則會選取名為 `OnPostRemoveAsync` 的頁面處理常式。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-218">If the `asp-page-handler` is set to a different value, such as `remove`, a page handler method with the name `OnPostRemoveAsync` is selected.</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs?range=26-37)]
 
-<span data-ttu-id="6607b-215">`OnPostDeleteAsync` 方法：</span><span class="sxs-lookup"><span data-stu-id="6607b-215">The `OnPostDeleteAsync` method:</span></span>
+<span data-ttu-id="ed4c9-219">`OnPostDeleteAsync` 方法：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-219">The `OnPostDeleteAsync` method:</span></span>
 
-* <span data-ttu-id="6607b-216">接受查詢字串的 `id`。</span><span class="sxs-lookup"><span data-stu-id="6607b-216">Accepts the `id` from the query string.</span></span>
-* <span data-ttu-id="6607b-217">使用 `FindAsync` 在資料庫中查詢客戶連絡人。</span><span class="sxs-lookup"><span data-stu-id="6607b-217">Queries the database for the customer contact with `FindAsync`.</span></span>
-* <span data-ttu-id="6607b-218">若找到客戶連絡人，會從客戶連絡人清單中予以移除。</span><span class="sxs-lookup"><span data-stu-id="6607b-218">If the customer contact is found, they're removed from the list of customer contacts.</span></span> <span data-ttu-id="6607b-219">資料庫隨即更新。</span><span class="sxs-lookup"><span data-stu-id="6607b-219">The database is updated.</span></span>
-* <span data-ttu-id="6607b-220">呼叫 `RedirectToPage` 以重新導向至根索引頁 (`/Index`)。</span><span class="sxs-lookup"><span data-stu-id="6607b-220">Calls `RedirectToPage` to redirect to the root Index page (`/Index`).</span></span>
+* <span data-ttu-id="ed4c9-220">接受查詢字串的 `id`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-220">Accepts the `id` from the query string.</span></span>
+* <span data-ttu-id="ed4c9-221">使用 `FindAsync` 在資料庫中查詢客戶連絡人。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-221">Queries the database for the customer contact with `FindAsync`.</span></span>
+* <span data-ttu-id="ed4c9-222">若找到客戶連絡人，會從客戶連絡人清單中予以移除。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-222">If the customer contact is found, they're removed from the list of customer contacts.</span></span> <span data-ttu-id="ed4c9-223">資料庫隨即更新。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-223">The database is updated.</span></span>
+* <span data-ttu-id="ed4c9-224">呼叫 `RedirectToPage` 以重新導向至根索引頁 (`/Index`)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-224">Calls `RedirectToPage` to redirect to the root Index page (`/Index`).</span></span>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-## <a name="mark-page-properties-as-required"></a><span data-ttu-id="6607b-221">將頁面屬性標示為必要</span><span class="sxs-lookup"><span data-stu-id="6607b-221">Mark page properties as required</span></span>
+## <a name="mark-page-properties-as-required"></a><span data-ttu-id="ed4c9-225">將頁面屬性標示為必要</span><span class="sxs-lookup"><span data-stu-id="ed4c9-225">Mark page properties as required</span></span>
 
-<span data-ttu-id="6607b-222">`PageModel` 上的屬性可以裝飾以 [Required](/dotnet/api/system.componentmodel.dataannotations.requiredattribute) 屬性：</span><span class="sxs-lookup"><span data-stu-id="6607b-222">Properties on a `PageModel` can be decorated with the [Required](/dotnet/api/system.componentmodel.dataannotations.requiredattribute) attribute:</span></span>
+<span data-ttu-id="ed4c9-226">`PageModel` 上的屬性可以裝飾以 [Required](/dotnet/api/system.componentmodel.dataannotations.requiredattribute) 屬性：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-226">Properties on a `PageModel` can be decorated with the [Required](/dotnet/api/system.componentmodel.dataannotations.requiredattribute) attribute:</span></span>
 
 [!code-cs[](index/sample/Create.cshtml.cs?highlight=3,15-16)]
 
-<span data-ttu-id="6607b-223">如需詳細資訊，請參閱[模型驗證](xref:mvc/models/validation)。</span><span class="sxs-lookup"><span data-stu-id="6607b-223">For more information, see [Model validation](xref:mvc/models/validation).</span></span>
+<span data-ttu-id="ed4c9-227">如需詳細資訊，請參閱[模型驗證](xref:mvc/models/validation)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-227">For more information, see [Model validation](xref:mvc/models/validation).</span></span>
 
-## <a name="manage-head-requests-with-the-onget-handler"></a><span data-ttu-id="6607b-224">使用 OnGet 處理常式管理 HEAD 要求</span><span class="sxs-lookup"><span data-stu-id="6607b-224">Manage HEAD requests with the OnGet handler</span></span>
+## <a name="manage-head-requests-with-the-onget-handler"></a><span data-ttu-id="ed4c9-228">使用 OnGet 處理常式管理 HEAD 要求</span><span class="sxs-lookup"><span data-stu-id="ed4c9-228">Manage HEAD requests with the OnGet handler</span></span>
 
-<span data-ttu-id="6607b-225">HEAD 要求可讓您擷取特定資源的標頭。</span><span class="sxs-lookup"><span data-stu-id="6607b-225">HEAD requests allow you to retrieve the headers for a specific resource.</span></span> <span data-ttu-id="6607b-226">不同於 GET 要求，HEAD 要求不會傳回回應主體。</span><span class="sxs-lookup"><span data-stu-id="6607b-226">Unlike GET requests, HEAD requests don't return a response body.</span></span>
+<span data-ttu-id="ed4c9-229">HEAD 要求可讓您擷取特定資源的標頭。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-229">HEAD requests allow you to retrieve the headers for a specific resource.</span></span> <span data-ttu-id="ed4c9-230">不同於 GET 要求，HEAD 要求不會傳回回應主體。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-230">Unlike GET requests, HEAD requests don't return a response body.</span></span>
 
-<span data-ttu-id="6607b-227">一般來說，HEAD 要求會建立 HEAD 處理常式並加以呼叫：</span><span class="sxs-lookup"><span data-stu-id="6607b-227">Ordinarily, a HEAD handler is created and called for HEAD requests:</span></span> 
+<span data-ttu-id="ed4c9-231">一般來說，HEAD 要求會建立 HEAD 處理常式並加以呼叫：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-231">Ordinarily, a HEAD handler is created and called for HEAD requests:</span></span> 
 
 ```csharp
 public void OnHead()
@@ -238,18 +252,18 @@ public void OnHead()
 }
 ```
 
-<span data-ttu-id="6607b-228">如果沒有定義 HEAD 處理常式 (`OnHead`)，Razor 頁面會轉而呼叫 ASP.NET Core 2.1 或更新版本中的 GET 頁面處理常式 (`OnGet`)。</span><span class="sxs-lookup"><span data-stu-id="6607b-228">If no HEAD handler (`OnHead`) is defined, Razor Pages falls back to calling the GET page handler (`OnGet`) in ASP.NET Core 2.1 or later.</span></span> <span data-ttu-id="6607b-229">在 ASP.NET Core 2.1 和 2.2 中，此行為會發生於 `Startup.Configure` 中的 [SetCompatibilityVersion](xref:mvc/compatibility-version)：</span><span class="sxs-lookup"><span data-stu-id="6607b-229">In ASP.NET Core 2.1 and 2.2, this behavior occurs with the [SetCompatibilityVersion](xref:mvc/compatibility-version) in `Startup.Configure`:</span></span>
+<span data-ttu-id="ed4c9-232">如果沒有定義 HEAD 處理常式 (`OnHead`)，Razor 頁面會轉而呼叫 ASP.NET Core 2.1 或更新版本中的 GET 頁面處理常式 (`OnGet`)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-232">If no HEAD handler (`OnHead`) is defined, Razor Pages falls back to calling the GET page handler (`OnGet`) in ASP.NET Core 2.1 or later.</span></span> <span data-ttu-id="ed4c9-233">在 ASP.NET Core 2.1 和 2.2 中，此行為會發生於 `Startup.Configure` 中的 [SetCompatibilityVersion](xref:mvc/compatibility-version)：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-233">In ASP.NET Core 2.1 and 2.2, this behavior occurs with the [SetCompatibilityVersion](xref:mvc/compatibility-version) in `Startup.Configure`:</span></span>
 
 ```csharp
 services.AddMvc()
     .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 ```
 
-<span data-ttu-id="6607b-230">預設範本會在 ASP.NET Core 2.1 和 2.2 中產生 `SetCompatibilityVersion` 呼叫。</span><span class="sxs-lookup"><span data-stu-id="6607b-230">The default templates generate the `SetCompatibilityVersion` call in ASP.NET Core 2.1 and 2.2.</span></span>
+<span data-ttu-id="ed4c9-234">預設範本會在 ASP.NET Core 2.1 和 2.2 中產生 `SetCompatibilityVersion` 呼叫。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-234">The default templates generate the `SetCompatibilityVersion` call in ASP.NET Core 2.1 and 2.2.</span></span>
 
-<span data-ttu-id="6607b-231">`SetCompatibilityVersion` 實際上是將 Razor 頁面選項 `AllowMappingHeadRequestsToGetHandler` 設為 `true`。</span><span class="sxs-lookup"><span data-stu-id="6607b-231">`SetCompatibilityVersion` effectively sets the Razor Pages option `AllowMappingHeadRequestsToGetHandler` to `true`.</span></span>
+<span data-ttu-id="ed4c9-235">`SetCompatibilityVersion` 實際上是將 Razor 頁面選項 `AllowMappingHeadRequestsToGetHandler` 設為 `true`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-235">`SetCompatibilityVersion` effectively sets the Razor Pages option `AllowMappingHeadRequestsToGetHandler` to `true`.</span></span>
 
-<span data-ttu-id="6607b-232">您可以明確選擇特定行為，而無須選擇 `SetCompatibilityVersion` 所有 2.1 的行為。</span><span class="sxs-lookup"><span data-stu-id="6607b-232">Rather than opting into all 2.1 behaviors with `SetCompatibilityVersion`, you can explicitly opt-in to specific behaviors.</span></span> <span data-ttu-id="6607b-233">下列程式碼選擇將 HEAD 要求對應到 GET 處理常式。</span><span class="sxs-lookup"><span data-stu-id="6607b-233">The following code opts into the mapping HEAD requests to the GET handler.</span></span>
+<span data-ttu-id="ed4c9-236">您可以明確選擇特定行為，而無須選擇 `SetCompatibilityVersion` 所有 2.1 的行為。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-236">Rather than opting into all 2.1 behaviors with `SetCompatibilityVersion`, you can explicitly opt-in to specific behaviors.</span></span> <span data-ttu-id="ed4c9-237">下列程式碼選擇將 HEAD 要求對應到 GET 處理常式。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-237">The following code opts into the mapping HEAD requests to the GET handler.</span></span>
 
 ```csharp
 services.AddMvc()
@@ -263,156 +277,156 @@ services.AddMvc()
 
 <a name="xsrf"></a>
 
-## <a name="xsrfcsrf-and-razor-pages"></a><span data-ttu-id="6607b-234">XSRF/CSRF 和 Razor Pages</span><span class="sxs-lookup"><span data-stu-id="6607b-234">XSRF/CSRF and Razor Pages</span></span>
+## <a name="xsrfcsrf-and-razor-pages"></a><span data-ttu-id="ed4c9-238">XSRF/CSRF 和 Razor Pages</span><span class="sxs-lookup"><span data-stu-id="ed4c9-238">XSRF/CSRF and Razor Pages</span></span>
 
-<span data-ttu-id="6607b-235">您不必撰寫任何[防偽驗證](xref:security/anti-request-forgery)程式碼。</span><span class="sxs-lookup"><span data-stu-id="6607b-235">You don't have to write any code for [antiforgery validation](xref:security/anti-request-forgery).</span></span> <span data-ttu-id="6607b-236">防偽權杖的產生和驗證會自動包含在 Razor 頁面中。</span><span class="sxs-lookup"><span data-stu-id="6607b-236">Antiforgery token generation and validation are automatically included in Razor Pages.</span></span>
+<span data-ttu-id="ed4c9-239">您不必撰寫任何[防偽驗證](xref:security/anti-request-forgery)程式碼。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-239">You don't have to write any code for [antiforgery validation](xref:security/anti-request-forgery).</span></span> <span data-ttu-id="ed4c9-240">防偽權杖的產生和驗證會自動包含在 Razor 頁面中。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-240">Antiforgery token generation and validation are automatically included in Razor Pages.</span></span>
 
 <a name="layout"></a>
 
-## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a><span data-ttu-id="6607b-237">搭配 Razor Pages 使用版面配置、部分、範本和標記協助程式。</span><span class="sxs-lookup"><span data-stu-id="6607b-237">Using Layouts, partials, templates, and Tag Helpers with Razor Pages</span></span>
+## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a><span data-ttu-id="ed4c9-241">搭配 Razor Pages 使用版面配置、部分、範本和標記協助程式。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-241">Using Layouts, partials, templates, and Tag Helpers with Razor Pages</span></span>
 
-<span data-ttu-id="6607b-238">Pages 可搭配 Razor 檢視引擎的所有功能一起使用。</span><span class="sxs-lookup"><span data-stu-id="6607b-238">Pages work with all the capabilities of the Razor view engine.</span></span> <span data-ttu-id="6607b-239">版面配置、部分、範本、標記協助程式、 *_ViewStart.cshtml*、 *_ViewImports.cshtml* 運作方式一如它們在傳統 Razor 檢視中的方式。</span><span class="sxs-lookup"><span data-stu-id="6607b-239">Layouts, partials, templates, Tag Helpers, *_ViewStart.cshtml*, *_ViewImports.cshtml* work in the same way they do for conventional Razor views.</span></span>
+<span data-ttu-id="ed4c9-242">Pages 可搭配 Razor 檢視引擎的所有功能一起使用。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-242">Pages work with all the capabilities of the Razor view engine.</span></span> <span data-ttu-id="ed4c9-243">版面配置、部分、範本、標記協助程式、 *_ViewStart.cshtml*、 *_ViewImports.cshtml* 運作方式一如它們在傳統 Razor 檢視中的方式。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-243">Layouts, partials, templates, Tag Helpers, *_ViewStart.cshtml*, *_ViewImports.cshtml* work in the same way they do for conventional Razor views.</span></span>
 
-<span data-ttu-id="6607b-240">可利用這些功能的一部分來整理這個頁面。</span><span class="sxs-lookup"><span data-stu-id="6607b-240">Let's declutter this page by taking advantage of some of those capabilities.</span></span>
+<span data-ttu-id="ed4c9-244">可利用這些功能的一部分來整理這個頁面。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-244">Let's declutter this page by taking advantage of some of those capabilities.</span></span>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="6607b-241">將[版面配置頁面](xref:mvc/views/layout)新增至 *Pages/Shared/_Layout.cshtml*：</span><span class="sxs-lookup"><span data-stu-id="6607b-241">Add a [layout page](xref:mvc/views/layout) to *Pages/Shared/_Layout.cshtml*:</span></span>
+<span data-ttu-id="ed4c9-245">將[版面配置頁面](xref:mvc/views/layout)新增至 *Pages/Shared/_Layout.cshtml*：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-245">Add a [layout page](xref:mvc/views/layout) to *Pages/Shared/_Layout.cshtml*:</span></span>
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-<span data-ttu-id="6607b-242">將[版面配置頁面](xref:mvc/views/layout)新增至 *Pages/_Layout.cshtml*：</span><span class="sxs-lookup"><span data-stu-id="6607b-242">Add a [layout page](xref:mvc/views/layout) to *Pages/_Layout.cshtml*:</span></span>
+<span data-ttu-id="ed4c9-246">將[版面配置頁面](xref:mvc/views/layout)新增至 *Pages/_Layout.cshtml*：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-246">Add a [layout page](xref:mvc/views/layout) to *Pages/_Layout.cshtml*:</span></span>
 
 ::: moniker-end
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_LayoutSimple.cshtml)]
 
-<span data-ttu-id="6607b-243">[配置](xref:mvc/views/layout)：</span><span class="sxs-lookup"><span data-stu-id="6607b-243">The [Layout](xref:mvc/views/layout):</span></span>
+<span data-ttu-id="ed4c9-247">[配置](xref:mvc/views/layout)：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-247">The [Layout](xref:mvc/views/layout):</span></span>
 
-* <span data-ttu-id="6607b-244">控制每個頁面的版面配置 (除非頁面退出版面配置)。</span><span class="sxs-lookup"><span data-stu-id="6607b-244">Controls the layout of each page (unless the page opts out of layout).</span></span>
-* <span data-ttu-id="6607b-245">匯入 HTML 結構，例如 JavaScript 和樣式表。</span><span class="sxs-lookup"><span data-stu-id="6607b-245">Imports HTML structures such as JavaScript and stylesheets.</span></span>
+* <span data-ttu-id="ed4c9-248">控制每個頁面的版面配置 (除非頁面退出版面配置)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-248">Controls the layout of each page (unless the page opts out of layout).</span></span>
+* <span data-ttu-id="ed4c9-249">匯入 HTML 結構，例如 JavaScript 和樣式表。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-249">Imports HTML structures such as JavaScript and stylesheets.</span></span>
 
-<span data-ttu-id="6607b-246">如需詳細資訊，請參閱[版面配置頁面](xref:mvc/views/layout)。</span><span class="sxs-lookup"><span data-stu-id="6607b-246">See [layout page](xref:mvc/views/layout) for more information.</span></span>
+<span data-ttu-id="ed4c9-250">如需詳細資訊，請參閱[版面配置頁面](xref:mvc/views/layout)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-250">See [layout page](xref:mvc/views/layout) for more information.</span></span>
 
-<span data-ttu-id="6607b-247">[版面配置](xref:mvc/views/layout#specifying-a-layout)屬性是在 *Pages/_ViewStart.cshtml* 中設定：</span><span class="sxs-lookup"><span data-stu-id="6607b-247">The [Layout](xref:mvc/views/layout#specifying-a-layout) property is set in *Pages/_ViewStart.cshtml*:</span></span>
+<span data-ttu-id="ed4c9-251">[版面配置](xref:mvc/views/layout#specifying-a-layout)屬性是在 *Pages/_ViewStart.cshtml* 中設定：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-251">The [Layout](xref:mvc/views/layout#specifying-a-layout) property is set in *Pages/_ViewStart.cshtml*:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_ViewStart.cshtml)]
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="6607b-248">版面配置位於 *Pages/Shared* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="6607b-248">The layout is in the *Pages/Shared* folder.</span></span> <span data-ttu-id="6607b-249">頁面會以階層方式尋找其他檢視 (版面配置、範本、部分)，從目前頁面的相同資料夾開始。</span><span class="sxs-lookup"><span data-stu-id="6607b-249">Pages look for other views (layouts, templates, partials) hierarchically, starting in the same folder as the current page.</span></span> <span data-ttu-id="6607b-250">您可以從任何 Razor 頁面中的 *Pages* 資料夾下，使用 *Pages/Shared* 資料夾中的版面配置。</span><span class="sxs-lookup"><span data-stu-id="6607b-250">A layout in the *Pages/Shared* folder can be used from any Razor page under the *Pages* folder.</span></span>
+<span data-ttu-id="ed4c9-252">版面配置位於 *Pages/Shared* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-252">The layout is in the *Pages/Shared* folder.</span></span> <span data-ttu-id="ed4c9-253">頁面會以階層方式尋找其他檢視 (版面配置、範本、部分)，從目前頁面的相同資料夾開始。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-253">Pages look for other views (layouts, templates, partials) hierarchically, starting in the same folder as the current page.</span></span> <span data-ttu-id="ed4c9-254">您可以從任何 Razor 頁面中的 *Pages* 資料夾下，使用 *Pages/Shared* 資料夾中的版面配置。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-254">A layout in the *Pages/Shared* folder can be used from any Razor page under the *Pages* folder.</span></span>
 
-<span data-ttu-id="6607b-251">版面配置頁面應位於 *Pages/Shared* 資料夾中。</span><span class="sxs-lookup"><span data-stu-id="6607b-251">The layout file should go in the *Pages/Shared* folder.</span></span>
+<span data-ttu-id="ed4c9-255">版面配置頁面應位於 *Pages/Shared* 資料夾中。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-255">The layout file should go in the *Pages/Shared* folder.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-<span data-ttu-id="6607b-252">此配置位於 *Pages* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="6607b-252">The layout is in the *Pages* folder.</span></span> <span data-ttu-id="6607b-253">頁面會以階層方式尋找其他檢視 (版面配置、範本、部分)，從目前頁面的相同資料夾開始。</span><span class="sxs-lookup"><span data-stu-id="6607b-253">Pages look for other views (layouts, templates, partials) hierarchically, starting in the same folder as the current page.</span></span> <span data-ttu-id="6607b-254">您可以從任何 Razor 頁面下的 *Pages* 資料夾中，使用 *Pages* 資料夾中的版面配置。</span><span class="sxs-lookup"><span data-stu-id="6607b-254">A layout in the *Pages* folder can be used from any Razor page under the *Pages* folder.</span></span>
+<span data-ttu-id="ed4c9-256">此配置位於 *Pages* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-256">The layout is in the *Pages* folder.</span></span> <span data-ttu-id="ed4c9-257">頁面會以階層方式尋找其他檢視 (版面配置、範本、部分)，從目前頁面的相同資料夾開始。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-257">Pages look for other views (layouts, templates, partials) hierarchically, starting in the same folder as the current page.</span></span> <span data-ttu-id="ed4c9-258">您可以從任何 Razor 頁面下的 *Pages* 資料夾中，使用 *Pages* 資料夾中的版面配置。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-258">A layout in the *Pages* folder can be used from any Razor page under the *Pages* folder.</span></span>
 
 ::: moniker-end
 
-<span data-ttu-id="6607b-255">我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="6607b-255">We recommend you **not** put the layout file in the *Views/Shared* folder.</span></span> <span data-ttu-id="6607b-256">*Views/Shared* 是 MVC 檢視模式。</span><span class="sxs-lookup"><span data-stu-id="6607b-256">*Views/Shared* is an MVC views pattern.</span></span> <span data-ttu-id="6607b-257">Razor 頁面應該要依賴資料夾階層，不是路徑慣例。</span><span class="sxs-lookup"><span data-stu-id="6607b-257">Razor Pages are meant to rely on folder hierarchy, not path conventions.</span></span>
+<span data-ttu-id="ed4c9-259">我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-259">We recommend you **not** put the layout file in the *Views/Shared* folder.</span></span> <span data-ttu-id="ed4c9-260">*Views/Shared* 是 MVC 檢視模式。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-260">*Views/Shared* is an MVC views pattern.</span></span> <span data-ttu-id="ed4c9-261">Razor 頁面應該要依賴資料夾階層，不是路徑慣例。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-261">Razor Pages are meant to rely on folder hierarchy, not path conventions.</span></span>
 
-<span data-ttu-id="6607b-258">Razor 頁面的檢視搜尋包括 *Pages* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="6607b-258">View search from a Razor Page includes the *Pages* folder.</span></span> <span data-ttu-id="6607b-259">搭配 MVC 控制器使用的版面配置、範本和部分以及傳統的 Razor 檢視「就這麼簡單」  。</span><span class="sxs-lookup"><span data-stu-id="6607b-259">The layouts, templates, and partials you're using with MVC controllers and conventional Razor views *just work*.</span></span>
+<span data-ttu-id="ed4c9-262">Razor 頁面的檢視搜尋包括 *Pages* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-262">View search from a Razor Page includes the *Pages* folder.</span></span> <span data-ttu-id="ed4c9-263">搭配 MVC 控制器使用的版面配置、範本和部分以及傳統的 Razor 檢視「就這麼簡單」  。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-263">The layouts, templates, and partials you're using with MVC controllers and conventional Razor views *just work*.</span></span>
 
-<span data-ttu-id="6607b-260">新增 *Pages/_ViewImports.cshtml* 檔案：</span><span class="sxs-lookup"><span data-stu-id="6607b-260">Add a *Pages/_ViewImports.cshtml* file:</span></span>
+<span data-ttu-id="ed4c9-264">新增 *Pages/_ViewImports.cshtml* 檔案：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-264">Add a *Pages/_ViewImports.cshtml* file:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_ViewImports.cshtml)]
 
-<span data-ttu-id="6607b-261">本教學課程稍後會說明 `@namespace`。</span><span class="sxs-lookup"><span data-stu-id="6607b-261">`@namespace` is explained later in the tutorial.</span></span> <span data-ttu-id="6607b-262">`@addTagHelper` 指示詞會將[內建標記協助程式](xref:mvc/views/tag-helpers/builtin-th/Index)帶入 *Pages* 資料夾中的所有頁面。</span><span class="sxs-lookup"><span data-stu-id="6607b-262">The `@addTagHelper` directive brings in the [built-in Tag Helpers](xref:mvc/views/tag-helpers/builtin-th/Index) to all the pages in the *Pages* folder.</span></span>
+<span data-ttu-id="ed4c9-265">本教學課程稍後會說明 `@namespace`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-265">`@namespace` is explained later in the tutorial.</span></span> <span data-ttu-id="ed4c9-266">`@addTagHelper` 指示詞會將[內建標記協助程式](xref:mvc/views/tag-helpers/builtin-th/Index)帶入 *Pages* 資料夾中的所有頁面。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-266">The `@addTagHelper` directive brings in the [built-in Tag Helpers](xref:mvc/views/tag-helpers/builtin-th/Index) to all the pages in the *Pages* folder.</span></span>
 
 <a name="namespace"></a>
 
-<span data-ttu-id="6607b-263">在頁面上明確使用 `@namespace` 指示詞時：</span><span class="sxs-lookup"><span data-stu-id="6607b-263">When the `@namespace` directive is used explicitly on a page:</span></span>
+<span data-ttu-id="ed4c9-267">在頁面上明確使用 `@namespace` 指示詞時：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-267">When the `@namespace` directive is used explicitly on a page:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesIntro/Pages/Customers/Namespace2.cshtml?highlight=2)]
 
-<span data-ttu-id="6607b-264">指示詞會設定頁面的命名空間。</span><span class="sxs-lookup"><span data-stu-id="6607b-264">The directive sets the namespace for the page.</span></span> <span data-ttu-id="6607b-265">`@model` 指示詞不需要包含命名空間。</span><span class="sxs-lookup"><span data-stu-id="6607b-265">The `@model` directive doesn't need to include the namespace.</span></span>
+<span data-ttu-id="ed4c9-268">指示詞會設定頁面的命名空間。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-268">The directive sets the namespace for the page.</span></span> <span data-ttu-id="ed4c9-269">`@model` 指示詞不需要包含命名空間。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-269">The `@model` directive doesn't need to include the namespace.</span></span>
 
-<span data-ttu-id="6607b-266">當 `@namespace` 指示詞包含在 *_ViewImports.cshtml* 中時，指定的命名空間會在匯入 `@namespace` 指示詞的頁面中提供所產生之命名空間的前置詞。</span><span class="sxs-lookup"><span data-stu-id="6607b-266">When the `@namespace` directive is contained in *_ViewImports.cshtml*, the specified namespace supplies the prefix for the generated namespace in the Page that imports the `@namespace` directive.</span></span> <span data-ttu-id="6607b-267">所產生命名空間的其餘部分 (後置字元部分) 是包含 *_ViewImports.cshtml* 的資料夾和包含頁面的資料夾之間，以句點分隔的相對路徑。</span><span class="sxs-lookup"><span data-stu-id="6607b-267">The rest of the generated namespace (the suffix portion) is the dot-separated relative path between the folder containing *_ViewImports.cshtml* and the folder containing the page.</span></span>
+<span data-ttu-id="ed4c9-270">當 `@namespace` 指示詞包含在 *_ViewImports.cshtml* 中時，指定的命名空間會在匯入 `@namespace` 指示詞的頁面中提供所產生之命名空間的前置詞。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-270">When the `@namespace` directive is contained in *_ViewImports.cshtml*, the specified namespace supplies the prefix for the generated namespace in the Page that imports the `@namespace` directive.</span></span> <span data-ttu-id="ed4c9-271">所產生命名空間的其餘部分 (後置字元部分) 是包含 *_ViewImports.cshtml* 的資料夾和包含頁面的資料夾之間，以句點分隔的相對路徑。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-271">The rest of the generated namespace (the suffix portion) is the dot-separated relative path between the folder containing *_ViewImports.cshtml* and the folder containing the page.</span></span>
 
-<span data-ttu-id="6607b-268">例如，`PageModel` 類別 *Pages/Customers/Edit.cshtml.cs* 會明確地設定命名空間：</span><span class="sxs-lookup"><span data-stu-id="6607b-268">For example, the `PageModel` class *Pages/Customers/Edit.cshtml.cs* explicitly sets the namespace:</span></span>
+<span data-ttu-id="ed4c9-272">例如，`PageModel` 類別 *Pages/Customers/Edit.cshtml.cs* 會明確地設定命名空間：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-272">For example, the `PageModel` class *Pages/Customers/Edit.cshtml.cs* explicitly sets the namespace:</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts2/Pages/Customers/Edit.cshtml.cs?name=snippet_namespace)]
 
-<span data-ttu-id="6607b-269">*Pages/_ViewImports.cshtml* 檔案會設定下列命名空間：</span><span class="sxs-lookup"><span data-stu-id="6607b-269">The *Pages/_ViewImports.cshtml* file sets the following namespace:</span></span>
+<span data-ttu-id="ed4c9-273">*Pages/_ViewImports.cshtml* 檔案會設定下列命名空間：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-273">The *Pages/_ViewImports.cshtml* file sets the following namespace:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_ViewImports.cshtml?highlight=1)]
 
-<span data-ttu-id="6607b-270">為 *Pages/Customers/Edit.cshtml* Razor 頁面產生的命名空間和 `PageModel` 類別相同。</span><span class="sxs-lookup"><span data-stu-id="6607b-270">The generated namespace for the *Pages/Customers/Edit.cshtml* Razor Page is the same as the `PageModel` class.</span></span>
+<span data-ttu-id="ed4c9-274">為 *Pages/Customers/Edit.cshtml* Razor 頁面產生的命名空間和 `PageModel` 類別相同。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-274">The generated namespace for the *Pages/Customers/Edit.cshtml* Razor Page is the same as the `PageModel` class.</span></span>
 
-<span data-ttu-id="6607b-271">`@namespace`  *也適用於傳統的 Razor 檢視。*</span><span class="sxs-lookup"><span data-stu-id="6607b-271">`@namespace` *also works with conventional Razor views.*</span></span>
+<span data-ttu-id="ed4c9-275">`@namespace`  *也適用於傳統的 Razor 檢視。*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-275">`@namespace` *also works with conventional Razor views.*</span></span>
 
-<span data-ttu-id="6607b-272">原始的 *Pages/Create.cshtml* 檢視檔案：</span><span class="sxs-lookup"><span data-stu-id="6607b-272">The original *Pages/Create.cshtml* view file:</span></span>
+<span data-ttu-id="ed4c9-276">原始的 *Pages/Create.cshtml* 檢視檔案：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-276">The original *Pages/Create.cshtml* view file:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts/Pages/Create.cshtml?highlight=2)]
 
-<span data-ttu-id="6607b-273">更新的 *Pages/Create.cshtml* 檢視檔案：</span><span class="sxs-lookup"><span data-stu-id="6607b-273">The updated *Pages/Create.cshtml* view file:</span></span>
+<span data-ttu-id="ed4c9-277">更新的 *Pages/Create.cshtml* 檢視檔案：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-277">The updated *Pages/Create.cshtml* view file:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/Create.cshtml?highlight=2)]
 
-<span data-ttu-id="6607b-274">[Razor Pages 入門專案](#rpvs17)包含 *Pages/_ValidationScriptsPartial.cshtml*，連結用戶端驗證。</span><span class="sxs-lookup"><span data-stu-id="6607b-274">The [Razor Pages starter project](#rpvs17) contains the *Pages/_ValidationScriptsPartial.cshtml*, which hooks up client-side validation.</span></span>
+<span data-ttu-id="ed4c9-278">[Razor Pages 入門專案](#rpvs17)包含 *Pages/_ValidationScriptsPartial.cshtml*，連結用戶端驗證。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-278">The [Razor Pages starter project](#rpvs17) contains the *Pages/_ValidationScriptsPartial.cshtml*, which hooks up client-side validation.</span></span>
 
-<span data-ttu-id="6607b-275">如需部分檢視的詳細資訊，請參閱 <xref:mvc/views/partial>。</span><span class="sxs-lookup"><span data-stu-id="6607b-275">For more information on partial views, see <xref:mvc/views/partial>.</span></span>
+<span data-ttu-id="ed4c9-279">如需部分檢視的詳細資訊，請參閱 <xref:mvc/views/partial>。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-279">For more information on partial views, see <xref:mvc/views/partial>.</span></span>
 
 <a name="url_gen"></a>
 
-## <a name="url-generation-for-pages"></a><span data-ttu-id="6607b-276">產生頁面 URL</span><span class="sxs-lookup"><span data-stu-id="6607b-276">URL generation for Pages</span></span>
+## <a name="url-generation-for-pages"></a><span data-ttu-id="ed4c9-280">產生頁面 URL</span><span class="sxs-lookup"><span data-stu-id="ed4c9-280">URL generation for Pages</span></span>
 
-<span data-ttu-id="6607b-277">前面出現過的 `Create` 頁面使用 `RedirectToPage`：</span><span class="sxs-lookup"><span data-stu-id="6607b-277">The `Create` page, shown previously, uses `RedirectToPage`:</span></span>
+<span data-ttu-id="ed4c9-281">前面出現過的 `Create` 頁面使用 `RedirectToPage`：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-281">The `Create` page, shown previously, uses `RedirectToPage`:</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=10)]
 
-<span data-ttu-id="6607b-278">應用程式有下列檔案/資料夾結構：</span><span class="sxs-lookup"><span data-stu-id="6607b-278">The app has the following file/folder structure:</span></span>
+<span data-ttu-id="ed4c9-282">應用程式有下列檔案/資料夾結構：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-282">The app has the following file/folder structure:</span></span>
 
-* <span data-ttu-id="6607b-279">*/Pages*</span><span class="sxs-lookup"><span data-stu-id="6607b-279">*/Pages*</span></span>
+* <span data-ttu-id="ed4c9-283">*/Pages*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-283">*/Pages*</span></span>
 
-  * <span data-ttu-id="6607b-280">*Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="6607b-280">*Index.cshtml*</span></span>
-  * <span data-ttu-id="6607b-281">*/Customers*</span><span class="sxs-lookup"><span data-stu-id="6607b-281">*/Customers*</span></span>
+  * <span data-ttu-id="ed4c9-284">*Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-284">*Index.cshtml*</span></span>
+  * <span data-ttu-id="ed4c9-285">*/Customers*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-285">*/Customers*</span></span>
 
-    * <span data-ttu-id="6607b-282">*Create.cshtml*</span><span class="sxs-lookup"><span data-stu-id="6607b-282">*Create.cshtml*</span></span>
-    * <span data-ttu-id="6607b-283">*Edit.cshtml*</span><span class="sxs-lookup"><span data-stu-id="6607b-283">*Edit.cshtml*</span></span>
-    * <span data-ttu-id="6607b-284">*Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="6607b-284">*Index.cshtml*</span></span>
+    * <span data-ttu-id="ed4c9-286">*Create.cshtml*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-286">*Create.cshtml*</span></span>
+    * <span data-ttu-id="ed4c9-287">*Edit.cshtml*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-287">*Edit.cshtml*</span></span>
+    * <span data-ttu-id="ed4c9-288">*Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-288">*Index.cshtml*</span></span>
 
-<span data-ttu-id="6607b-285">*Pages/Customers/Create.cshtml* 和 *Pages/Customers/Edit.cshtml* 頁面在成功後會重新導向至 *Pages/Index.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="6607b-285">The *Pages/Customers/Create.cshtml* and *Pages/Customers/Edit.cshtml* pages redirect to *Pages/Index.cshtml* after success.</span></span> <span data-ttu-id="6607b-286">字串 `/Index` 為 URI 的一部分，可存取前一個頁面。</span><span class="sxs-lookup"><span data-stu-id="6607b-286">The string `/Index` is part of the URI to access the preceding page.</span></span> <span data-ttu-id="6607b-287">字串 `/Index` 可以用來產生 *Pages/Index.cshtml* 頁面的 URI。</span><span class="sxs-lookup"><span data-stu-id="6607b-287">The string `/Index` can be used to generate URIs to the *Pages/Index.cshtml* page.</span></span> <span data-ttu-id="6607b-288">例如：</span><span class="sxs-lookup"><span data-stu-id="6607b-288">For example:</span></span>
+<span data-ttu-id="ed4c9-289">*Pages/Customers/Create.cshtml* 和 *Pages/Customers/Edit.cshtml* 頁面在成功後會重新導向至 *Pages/Index.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-289">The *Pages/Customers/Create.cshtml* and *Pages/Customers/Edit.cshtml* pages redirect to *Pages/Index.cshtml* after success.</span></span> <span data-ttu-id="ed4c9-290">字串 `/Index` 為 URI 的一部分，可存取前一個頁面。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-290">The string `/Index` is part of the URI to access the preceding page.</span></span> <span data-ttu-id="ed4c9-291">字串 `/Index` 可以用來產生 *Pages/Index.cshtml* 頁面的 URI。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-291">The string `/Index` can be used to generate URIs to the *Pages/Index.cshtml* page.</span></span> <span data-ttu-id="ed4c9-292">例如：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-292">For example:</span></span>
 
 * `Url.Page("/Index", ...)`
 * `<a asp-page="/Index">My Index Page</a>`
 * `RedirectToPage("/Index")`
 
-<span data-ttu-id="6607b-289">頁面名稱是從根 */Pages* 資料夾到該頁面的路徑 (包括前置的 `/`，例如 `/Index`)。</span><span class="sxs-lookup"><span data-stu-id="6607b-289">The page name is the path to the page from the root */Pages* folder including a leading `/` (for example, `/Index`).</span></span> <span data-ttu-id="6607b-290">上述 URL 產生範例，透過硬式編碼的 URL 提供更加優異的選項與功能。</span><span class="sxs-lookup"><span data-stu-id="6607b-290">The preceding URL generation samples offer enhanced options and functional capabilities over hardcoding a URL.</span></span> <span data-ttu-id="6607b-291">URL 產生使用[路由](xref:mvc/controllers/routing)，可以根據路由在目的地路徑中定義的方式，產生並且編碼參數。</span><span class="sxs-lookup"><span data-stu-id="6607b-291">URL generation uses [routing](xref:mvc/controllers/routing) and can generate and encode parameters according to how the route is defined in the destination path.</span></span>
+<span data-ttu-id="ed4c9-293">頁面名稱是從根 */Pages* 資料夾到該頁面的路徑 (包括前置的 `/`，例如 `/Index`)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-293">The page name is the path to the page from the root */Pages* folder including a leading `/` (for example, `/Index`).</span></span> <span data-ttu-id="ed4c9-294">上述 URL 產生範例，透過硬式編碼的 URL 提供更加優異的選項與功能。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-294">The preceding URL generation samples offer enhanced options and functional capabilities over hardcoding a URL.</span></span> <span data-ttu-id="ed4c9-295">URL 產生使用[路由](xref:mvc/controllers/routing)，可以根據路由在目的地路徑中定義的方式，產生並且編碼參數。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-295">URL generation uses [routing](xref:mvc/controllers/routing) and can generate and encode parameters according to how the route is defined in the destination path.</span></span>
 
-<span data-ttu-id="6607b-292">產生頁面 URL 支援相關的名稱。</span><span class="sxs-lookup"><span data-stu-id="6607b-292">URL generation for pages supports relative names.</span></span> <span data-ttu-id="6607b-293">下表顯示從 *Pages/Customers/Create.cshtml* 以不同的 `RedirectToPage` 參數選取的索引頁：</span><span class="sxs-lookup"><span data-stu-id="6607b-293">The following table shows which Index page is selected with different `RedirectToPage` parameters from *Pages/Customers/Create.cshtml*:</span></span>
+<span data-ttu-id="ed4c9-296">產生頁面 URL 支援相關的名稱。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-296">URL generation for pages supports relative names.</span></span> <span data-ttu-id="ed4c9-297">下表顯示從 *Pages/Customers/Create.cshtml* 以不同的 `RedirectToPage` 參數選取的索引頁：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-297">The following table shows which Index page is selected with different `RedirectToPage` parameters from *Pages/Customers/Create.cshtml*:</span></span>
 
-| <span data-ttu-id="6607b-294">RedirectToPage(x)</span><span class="sxs-lookup"><span data-stu-id="6607b-294">RedirectToPage(x)</span></span>| <span data-ttu-id="6607b-295">頁面</span><span class="sxs-lookup"><span data-stu-id="6607b-295">Page</span></span> |
+| <span data-ttu-id="ed4c9-298">RedirectToPage(x)</span><span class="sxs-lookup"><span data-stu-id="ed4c9-298">RedirectToPage(x)</span></span>| <span data-ttu-id="ed4c9-299">頁面</span><span class="sxs-lookup"><span data-stu-id="ed4c9-299">Page</span></span> |
 | ----------------- | ------------ |
-| <span data-ttu-id="6607b-296">RedirectToPage("/Index")</span><span class="sxs-lookup"><span data-stu-id="6607b-296">RedirectToPage("/Index")</span></span> | <span data-ttu-id="6607b-297">*Pages/Index*</span><span class="sxs-lookup"><span data-stu-id="6607b-297">*Pages/Index*</span></span> |
-| <span data-ttu-id="6607b-298">RedirectToPage("./Index");</span><span class="sxs-lookup"><span data-stu-id="6607b-298">RedirectToPage("./Index");</span></span> | <span data-ttu-id="6607b-299">*Pages/Customers/Index*</span><span class="sxs-lookup"><span data-stu-id="6607b-299">*Pages/Customers/Index*</span></span> |
-| <span data-ttu-id="6607b-300">RedirectToPage("../Index")</span><span class="sxs-lookup"><span data-stu-id="6607b-300">RedirectToPage("../Index")</span></span> | <span data-ttu-id="6607b-301">*Pages/Index*</span><span class="sxs-lookup"><span data-stu-id="6607b-301">*Pages/Index*</span></span> |
-| <span data-ttu-id="6607b-302">RedirectToPage("Index")</span><span class="sxs-lookup"><span data-stu-id="6607b-302">RedirectToPage("Index")</span></span>  | <span data-ttu-id="6607b-303">*Pages/Customers/Index*</span><span class="sxs-lookup"><span data-stu-id="6607b-303">*Pages/Customers/Index*</span></span> |
+| <span data-ttu-id="ed4c9-300">RedirectToPage("/Index")</span><span class="sxs-lookup"><span data-stu-id="ed4c9-300">RedirectToPage("/Index")</span></span> | <span data-ttu-id="ed4c9-301">*Pages/Index*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-301">*Pages/Index*</span></span> |
+| <span data-ttu-id="ed4c9-302">RedirectToPage("./Index");</span><span class="sxs-lookup"><span data-stu-id="ed4c9-302">RedirectToPage("./Index");</span></span> | <span data-ttu-id="ed4c9-303">*Pages/Customers/Index*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-303">*Pages/Customers/Index*</span></span> |
+| <span data-ttu-id="ed4c9-304">RedirectToPage("../Index")</span><span class="sxs-lookup"><span data-stu-id="ed4c9-304">RedirectToPage("../Index")</span></span> | <span data-ttu-id="ed4c9-305">*Pages/Index*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-305">*Pages/Index*</span></span> |
+| <span data-ttu-id="ed4c9-306">RedirectToPage("Index")</span><span class="sxs-lookup"><span data-stu-id="ed4c9-306">RedirectToPage("Index")</span></span>  | <span data-ttu-id="ed4c9-307">*Pages/Customers/Index*</span><span class="sxs-lookup"><span data-stu-id="ed4c9-307">*Pages/Customers/Index*</span></span> |
 
-<span data-ttu-id="6607b-304">`RedirectToPage("Index")`、`RedirectToPage("./Index")` 和 `RedirectToPage("../Index")` 是「相對名稱」  。</span><span class="sxs-lookup"><span data-stu-id="6607b-304">`RedirectToPage("Index")`, `RedirectToPage("./Index")`, and `RedirectToPage("../Index")`  are *relative names*.</span></span> <span data-ttu-id="6607b-305">`RedirectToPage` 參數「結合」  了目前頁面的路徑，以計算目的地頁面的名稱。</span><span class="sxs-lookup"><span data-stu-id="6607b-305">The `RedirectToPage` parameter is *combined* with the path of the current page to compute the name of the destination page.</span></span>  <!-- Review: Original had The provided string is combined with the page name of the current page to compute the name of the destination page.  page name, not page path -->
+<span data-ttu-id="ed4c9-308">`RedirectToPage("Index")`、`RedirectToPage("./Index")` 和 `RedirectToPage("../Index")` 是「相對名稱」  。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-308">`RedirectToPage("Index")`, `RedirectToPage("./Index")`, and `RedirectToPage("../Index")`  are *relative names*.</span></span> <span data-ttu-id="ed4c9-309">`RedirectToPage` 參數「結合」  了目前頁面的路徑，以計算目的地頁面的名稱。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-309">The `RedirectToPage` parameter is *combined* with the path of the current page to compute the name of the destination page.</span></span>  <!-- Review: Original had The provided string is combined with the page name of the current page to compute the name of the destination page.  page name, not page path -->
 
-<span data-ttu-id="6607b-306">相對名稱連結在以複雜結構建置網站時很有用。</span><span class="sxs-lookup"><span data-stu-id="6607b-306">Relative name linking is useful when building sites with a complex structure.</span></span> <span data-ttu-id="6607b-307">如果您使用相對名稱連結資料夾中的頁面，您可以重新命名該資料夾。</span><span class="sxs-lookup"><span data-stu-id="6607b-307">If you use relative names to link between pages in a folder, you can rename that folder.</span></span> <span data-ttu-id="6607b-308">所有連結仍可運作 (因為它們不包含資料夾名稱)。</span><span class="sxs-lookup"><span data-stu-id="6607b-308">All the links still work (because they didn't include the folder name).</span></span>
+<span data-ttu-id="ed4c9-310">相對名稱連結在以複雜結構建置網站時很有用。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-310">Relative name linking is useful when building sites with a complex structure.</span></span> <span data-ttu-id="ed4c9-311">如果您使用相對名稱連結資料夾中的頁面，您可以重新命名該資料夾。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-311">If you use relative names to link between pages in a folder, you can rename that folder.</span></span> <span data-ttu-id="ed4c9-312">所有連結仍可運作 (因為它們不包含資料夾名稱)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-312">All the links still work (because they didn't include the folder name).</span></span>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="6607b-309">若要重新導向到不同[區域](xref:mvc/controllers/areas)中的頁面，請指定區域：</span><span class="sxs-lookup"><span data-stu-id="6607b-309">To redirect to a page in a different [Area](xref:mvc/controllers/areas), specify the area:</span></span>
+<span data-ttu-id="ed4c9-313">若要重新導向到不同[區域](xref:mvc/controllers/areas)中的頁面，請指定區域：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-313">To redirect to a page in a different [Area](xref:mvc/controllers/areas), specify the area:</span></span>
 
 ```csharp
 RedirectToPage("/Index", new { area = "Services" });
 ```
 
-<span data-ttu-id="6607b-310">如需詳細資訊，請參閱<xref:mvc/controllers/areas>。</span><span class="sxs-lookup"><span data-stu-id="6607b-310">For more information, see <xref:mvc/controllers/areas>.</span></span>
+<span data-ttu-id="ed4c9-314">如需詳細資訊，請參閱 <xref:mvc/controllers/areas>。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-314">For more information, see <xref:mvc/controllers/areas>.</span></span>
 
-## <a name="viewdata-attribute"></a><span data-ttu-id="6607b-311">ViewData 屬性</span><span class="sxs-lookup"><span data-stu-id="6607b-311">ViewData attribute</span></span>
+## <a name="viewdata-attribute"></a><span data-ttu-id="ed4c9-315">ViewData 屬性</span><span class="sxs-lookup"><span data-stu-id="ed4c9-315">ViewData attribute</span></span>
 
-<span data-ttu-id="6607b-312">資料可以傳遞至具有 [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute) 的頁面。</span><span class="sxs-lookup"><span data-stu-id="6607b-312">Data can be passed to a page with [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute).</span></span> <span data-ttu-id="6607b-313">控制器或 Razor 頁面模型上裝飾以 `[ViewData]` 的屬性會將其值儲存在 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 並從中載入。</span><span class="sxs-lookup"><span data-stu-id="6607b-313">Properties on controllers or Razor Page models decorated with `[ViewData]` have their values stored and loaded from the [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary).</span></span>
+<span data-ttu-id="ed4c9-316">資料可以傳遞至具有 [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute) 的頁面。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-316">Data can be passed to a page with [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute).</span></span> <span data-ttu-id="ed4c9-317">控制器或 Razor 頁面模型上裝飾以 `[ViewData]` 的屬性會將其值儲存在 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 並從中載入。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-317">Properties on controllers or Razor Page models decorated with `[ViewData]` have their values stored and loaded from the [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary).</span></span>
 
-<span data-ttu-id="6607b-314">在下列範例中，`AboutModel` 包含裝飾以 `[ViewData]` 的 `Title`屬性。</span><span class="sxs-lookup"><span data-stu-id="6607b-314">In the following example, the `AboutModel` contains a `Title` property decorated with `[ViewData]`.</span></span> <span data-ttu-id="6607b-315">`Title` 屬性會設定為 [關於] 頁面的標題：</span><span class="sxs-lookup"><span data-stu-id="6607b-315">The `Title` property is set to the title of the About page:</span></span>
+<span data-ttu-id="ed4c9-318">在下列範例中，`AboutModel` 包含裝飾以 `[ViewData]` 的 `Title`屬性。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-318">In the following example, the `AboutModel` contains a `Title` property decorated with `[ViewData]`.</span></span> <span data-ttu-id="ed4c9-319">`Title` 屬性會設定為 [關於] 頁面的標題：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-319">The `Title` property is set to the title of the About page:</span></span>
 
 ```csharp
 public class AboutModel : PageModel
@@ -426,13 +440,13 @@ public class AboutModel : PageModel
 }
 ```
 
-<span data-ttu-id="6607b-316">在 [關於] 頁面上，存取 `Title` 屬性作為模型屬性：</span><span class="sxs-lookup"><span data-stu-id="6607b-316">In the About page, access the `Title` property as a model property:</span></span>
+<span data-ttu-id="ed4c9-320">在 [關於] 頁面上，存取 `Title` 屬性作為模型屬性：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-320">In the About page, access the `Title` property as a model property:</span></span>
 
 ```cshtml
 <h1>@Model.Title</h1>
 ```
 
-<span data-ttu-id="6607b-317">在此配置中，標題會從 ViewData 字典中讀取：</span><span class="sxs-lookup"><span data-stu-id="6607b-317">In the layout, the title is read from the ViewData dictionary:</span></span>
+<span data-ttu-id="ed4c9-321">在此配置中，標題會從 ViewData 字典中讀取：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-321">In the layout, the title is read from the ViewData dictionary:</span></span>
 
 ```cshtml
 <!DOCTYPE html>
@@ -444,90 +458,90 @@ public class AboutModel : PageModel
 
 ::: moniker-end
 
-## <a name="tempdata"></a><span data-ttu-id="6607b-318">TempData</span><span class="sxs-lookup"><span data-stu-id="6607b-318">TempData</span></span>
+## <a name="tempdata"></a><span data-ttu-id="ed4c9-322">TempData</span><span class="sxs-lookup"><span data-stu-id="ed4c9-322">TempData</span></span>
 
-<span data-ttu-id="6607b-319">ASP.NET Core 公開[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)上的 [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) 屬性。</span><span class="sxs-lookup"><span data-stu-id="6607b-319">ASP.NET Core exposes the [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) property on a [controller](/dotnet/api/microsoft.aspnetcore.mvc.controller).</span></span> <span data-ttu-id="6607b-320">這個屬性會儲存資料，直到讀取為止。</span><span class="sxs-lookup"><span data-stu-id="6607b-320">This property stores data until it's read.</span></span> <span data-ttu-id="6607b-321">`Keep` 和 `Peek` 方法可以用來檢查資料，不用刪除。</span><span class="sxs-lookup"><span data-stu-id="6607b-321">The `Keep` and `Peek` methods can be used to examine the data without deletion.</span></span> <span data-ttu-id="6607b-322">當有多個要求需要資料時，`TempData` 對重新導向很有幫助。</span><span class="sxs-lookup"><span data-stu-id="6607b-322">`TempData` is  useful for redirection, when data is needed for more than a single request.</span></span>
+<span data-ttu-id="ed4c9-323">ASP.NET Core 公開[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)上的 [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) 屬性。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-323">ASP.NET Core exposes the [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) property on a [controller](/dotnet/api/microsoft.aspnetcore.mvc.controller).</span></span> <span data-ttu-id="ed4c9-324">這個屬性會儲存資料，直到讀取為止。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-324">This property stores data until it's read.</span></span> <span data-ttu-id="ed4c9-325">`Keep` 和 `Peek` 方法可以用來檢查資料，不用刪除。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-325">The `Keep` and `Peek` methods can be used to examine the data without deletion.</span></span> <span data-ttu-id="ed4c9-326">當有多個要求需要資料時，`TempData` 對重新導向很有幫助。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-326">`TempData` is  useful for redirection, when data is needed for more than a single request.</span></span>
 
-<span data-ttu-id="6607b-323">`[TempData]` 是 ASP.NET Core 2.0 的新屬性，在控制站和頁面都受支援。</span><span class="sxs-lookup"><span data-stu-id="6607b-323">The `[TempData]` attribute is new in ASP.NET Core 2.0 and is supported on controllers and pages.</span></span>
+<span data-ttu-id="ed4c9-327">`[TempData]` 是 ASP.NET Core 2.0 的新屬性，在控制站和頁面都受支援。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-327">The `[TempData]` attribute is new in ASP.NET Core 2.0 and is supported on controllers and pages.</span></span>
 
-<span data-ttu-id="6607b-324">下列程式碼會設定使用 `TempData` 的 `Message` 值：</span><span class="sxs-lookup"><span data-stu-id="6607b-324">The following code sets the value of `Message` using `TempData`:</span></span>
+<span data-ttu-id="ed4c9-328">下列程式碼會設定使用 `TempData` 的 `Message` 值：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-328">The following code sets the value of `Message` using `TempData`:</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts2/Pages/Customers/CreateDot.cshtml.cs?highlight=10-11,25&name=snippet_Temp)]
 
-<span data-ttu-id="6607b-325">*Pages/Customers/Index.cshtml* 檔案中的下列標記會顯示使用 `TempData` 的 `Message` 值。</span><span class="sxs-lookup"><span data-stu-id="6607b-325">The following markup in the *Pages/Customers/Index.cshtml* file displays the value of `Message` using `TempData`.</span></span>
+<span data-ttu-id="ed4c9-329">*Pages/Customers/Index.cshtml* 檔案中的下列標記會顯示使用 `TempData` 的 `Message` 值。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-329">The following markup in the *Pages/Customers/Index.cshtml* file displays the value of `Message` using `TempData`.</span></span>
 
 ```cshtml
 <h3>Msg: @Model.Message</h3>
 ```
 
-<span data-ttu-id="6607b-326">*Pages/Customers/Index.cshtml.cs* 頁面模型會將 `[TempData]` 屬性 (attribute) 套用到 `Message` 屬性 (property)。</span><span class="sxs-lookup"><span data-stu-id="6607b-326">The *Pages/Customers/Index.cshtml.cs* page model applies the `[TempData]` attribute to the `Message` property.</span></span>
+<span data-ttu-id="ed4c9-330">*Pages/Customers/Index.cshtml.cs* 頁面模型會將 `[TempData]` 屬性 (attribute) 套用到 `Message` 屬性 (property)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-330">The *Pages/Customers/Index.cshtml.cs* page model applies the `[TempData]` attribute to the `Message` property.</span></span>
 
 ```cs
 [TempData]
 public string Message { get; set; }
 ```
 
-<span data-ttu-id="6607b-327">如需詳細資訊，請參閱 [TempData](xref:fundamentals/app-state#tempdata)。</span><span class="sxs-lookup"><span data-stu-id="6607b-327">For more information, see [TempData](xref:fundamentals/app-state#tempdata) .</span></span>
+<span data-ttu-id="ed4c9-331">如需詳細資訊，請參閱 [TempData](xref:fundamentals/app-state#tempdata)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-331">For more information, see [TempData](xref:fundamentals/app-state#tempdata) .</span></span>
 
 <a name="mhpp"></a>
 
-## <a name="multiple-handlers-per-page"></a><span data-ttu-id="6607b-328">每頁面有多個處理常式</span><span class="sxs-lookup"><span data-stu-id="6607b-328">Multiple handlers per page</span></span>
+## <a name="multiple-handlers-per-page"></a><span data-ttu-id="ed4c9-332">每頁面有多個處理常式</span><span class="sxs-lookup"><span data-stu-id="ed4c9-332">Multiple handlers per page</span></span>
 
-<span data-ttu-id="6607b-329">下列頁面會使用 `asp-page-handler` 標記協助程式為兩個頁面處理常式產生標記：</span><span class="sxs-lookup"><span data-stu-id="6607b-329">The following page generates markup for two page handlers using the `asp-page-handler` Tag Helper:</span></span>
+<span data-ttu-id="ed4c9-333">下列頁面會使用 `asp-page-handler` 標記協助程式為兩個頁面處理常式產生標記：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-333">The following page generates markup for two page handlers using the `asp-page-handler` Tag Helper:</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?highlight=12-13)]
 
 <!-- Review: the FormActionTagHelper applies to all <form /> elements on a Razor page, even when there's no `asp-` attribute   -->
 
-<span data-ttu-id="6607b-330">上例中的表單有兩個提交按鈕，每一個都使用 `FormActionTagHelper` 提交至不同的 URL。</span><span class="sxs-lookup"><span data-stu-id="6607b-330">The form in the preceding example has two submit buttons, each using the `FormActionTagHelper` to submit to a different URL.</span></span> <span data-ttu-id="6607b-331">`asp-page-handler` 屬性附隨於 `asp-page`。</span><span class="sxs-lookup"><span data-stu-id="6607b-331">The `asp-page-handler` attribute is a companion to `asp-page`.</span></span> <span data-ttu-id="6607b-332">`asp-page-handler` 產生的 URL 會提交至頁面所定義的每一個處理常式方法。</span><span class="sxs-lookup"><span data-stu-id="6607b-332">`asp-page-handler` generates URLs that submit to each of the handler methods defined by a page.</span></span> <span data-ttu-id="6607b-333">因為範例連結至目前的頁面，所以未指定 `asp-page`。</span><span class="sxs-lookup"><span data-stu-id="6607b-333">`asp-page` isn't specified because the sample is linking to the current page.</span></span>
+<span data-ttu-id="ed4c9-334">上例中的表單有兩個提交按鈕，每一個都使用 `FormActionTagHelper` 提交至不同的 URL。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-334">The form in the preceding example has two submit buttons, each using the `FormActionTagHelper` to submit to a different URL.</span></span> <span data-ttu-id="ed4c9-335">`asp-page-handler` 屬性附隨於 `asp-page`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-335">The `asp-page-handler` attribute is a companion to `asp-page`.</span></span> <span data-ttu-id="ed4c9-336">`asp-page-handler` 產生的 URL 會提交至頁面所定義的每一個處理常式方法。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-336">`asp-page-handler` generates URLs that submit to each of the handler methods defined by a page.</span></span> <span data-ttu-id="ed4c9-337">因為範例連結至目前的頁面，所以未指定 `asp-page`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-337">`asp-page` isn't specified because the sample is linking to the current page.</span></span>
 
-<span data-ttu-id="6607b-334">頁面模型：</span><span class="sxs-lookup"><span data-stu-id="6607b-334">The page model:</span></span>
+<span data-ttu-id="ed4c9-338">頁面模型：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-338">The page model:</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml.cs?highlight=20,32)]
 
-<span data-ttu-id="6607b-335">上述程式碼使用「具名的處理常式方法」  。</span><span class="sxs-lookup"><span data-stu-id="6607b-335">The preceding code uses *named handler methods*.</span></span> <span data-ttu-id="6607b-336">具名的處理常式方法的建立方式是採用名稱中在 `On<HTTP Verb>` 後面、`Async` 之前 (如有) 的文字。</span><span class="sxs-lookup"><span data-stu-id="6607b-336">Named handler methods are created by taking the text in the name after `On<HTTP Verb>` and before `Async` (if present).</span></span> <span data-ttu-id="6607b-337">在上例中，頁面方法是 OnPost**JoinList**Async 和 OnPost**JoinListUC**Async。</span><span class="sxs-lookup"><span data-stu-id="6607b-337">In the preceding example, the page methods are OnPost**JoinList**Async and OnPost**JoinListUC**Async.</span></span> <span data-ttu-id="6607b-338">移除 *OnPost* 和 *Async*，處理常式名稱就是 `JoinList` 和 `JoinListUC`。</span><span class="sxs-lookup"><span data-stu-id="6607b-338">With *OnPost* and *Async* removed, the handler names are `JoinList` and `JoinListUC`.</span></span>
+<span data-ttu-id="ed4c9-339">上述程式碼使用「具名的處理常式方法」  。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-339">The preceding code uses *named handler methods*.</span></span> <span data-ttu-id="ed4c9-340">具名的處理常式方法的建立方式是採用名稱中在 `On<HTTP Verb>` 後面、`Async` 之前 (如有) 的文字。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-340">Named handler methods are created by taking the text in the name after `On<HTTP Verb>` and before `Async` (if present).</span></span> <span data-ttu-id="ed4c9-341">在上例中，頁面方法是 OnPost**JoinList**Async 和 OnPost**JoinListUC**Async。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-341">In the preceding example, the page methods are OnPost**JoinList**Async and OnPost**JoinListUC**Async.</span></span> <span data-ttu-id="ed4c9-342">移除 *OnPost* 和 *Async*，處理常式名稱就是 `JoinList` 和 `JoinListUC`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-342">With *OnPost* and *Async* removed, the handler names are `JoinList` and `JoinListUC`.</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?range=12-13)]
 
-<span data-ttu-id="6607b-339">使用上述程式碼，提交至 `OnPostJoinListAsync` 的 URL 路徑是 `http://localhost:5000/Customers/CreateFATH?handler=JoinList`。</span><span class="sxs-lookup"><span data-stu-id="6607b-339">Using the preceding code, the URL path that submits to `OnPostJoinListAsync` is `http://localhost:5000/Customers/CreateFATH?handler=JoinList`.</span></span> <span data-ttu-id="6607b-340">提交至 `OnPostJoinListUCAsync` 的 URL 路徑是 `http://localhost:5000/Customers/CreateFATH?handler=JoinListUC`。</span><span class="sxs-lookup"><span data-stu-id="6607b-340">The URL path that submits to `OnPostJoinListUCAsync` is `http://localhost:5000/Customers/CreateFATH?handler=JoinListUC`.</span></span>
+<span data-ttu-id="ed4c9-343">使用上述程式碼，提交至 `OnPostJoinListAsync` 的 URL 路徑是 `http://localhost:5000/Customers/CreateFATH?handler=JoinList`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-343">Using the preceding code, the URL path that submits to `OnPostJoinListAsync` is `http://localhost:5000/Customers/CreateFATH?handler=JoinList`.</span></span> <span data-ttu-id="ed4c9-344">提交至 `OnPostJoinListUCAsync` 的 URL 路徑是 `http://localhost:5000/Customers/CreateFATH?handler=JoinListUC`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-344">The URL path that submits to `OnPostJoinListUCAsync` is `http://localhost:5000/Customers/CreateFATH?handler=JoinListUC`.</span></span>
 
-## <a name="custom-routes"></a><span data-ttu-id="6607b-341">自訂路由</span><span class="sxs-lookup"><span data-stu-id="6607b-341">Custom routes</span></span>
+## <a name="custom-routes"></a><span data-ttu-id="ed4c9-345">自訂路由</span><span class="sxs-lookup"><span data-stu-id="ed4c9-345">Custom routes</span></span>
 
-<span data-ttu-id="6607b-342">使用 `@page` 指示詞，可以：</span><span class="sxs-lookup"><span data-stu-id="6607b-342">Use the `@page` directive to:</span></span>
+<span data-ttu-id="ed4c9-346">使用 `@page` 指示詞，可以：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-346">Use the `@page` directive to:</span></span>
 
-* <span data-ttu-id="6607b-343">指定頁面的自訂路由。</span><span class="sxs-lookup"><span data-stu-id="6607b-343">Specify a custom route to a page.</span></span> <span data-ttu-id="6607b-344">例如，[關於] 頁面的路由可使用 `@page "/Some/Other/Path"` 設為 `/Some/Other/Path`。</span><span class="sxs-lookup"><span data-stu-id="6607b-344">For example, the route to the About page can be set to `/Some/Other/Path` with `@page "/Some/Other/Path"`.</span></span>
-* <span data-ttu-id="6607b-345">將區段附加到頁面的預設路由。</span><span class="sxs-lookup"><span data-stu-id="6607b-345">Append segments to a page's default route.</span></span> <span data-ttu-id="6607b-346">例如，使用 `@page "item"` 可將 "item" 區段新增到頁面的預設路由。</span><span class="sxs-lookup"><span data-stu-id="6607b-346">For example, an "item" segment can be added to a page's default route with `@page "item"`.</span></span>
-* <span data-ttu-id="6607b-347">將參數附加到頁面的預設路由。</span><span class="sxs-lookup"><span data-stu-id="6607b-347">Append parameters to a page's default route.</span></span> <span data-ttu-id="6607b-348">例如，具有 `@page "{id}"` 的頁面可要求識別碼參數 `id`。</span><span class="sxs-lookup"><span data-stu-id="6607b-348">For example, an ID parameter, `id`, can be required for a page with `@page "{id}"`.</span></span>
+* <span data-ttu-id="ed4c9-347">指定頁面的自訂路由。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-347">Specify a custom route to a page.</span></span> <span data-ttu-id="ed4c9-348">例如，[關於] 頁面的路由可使用 `@page "/Some/Other/Path"` 設為 `/Some/Other/Path`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-348">For example, the route to the About page can be set to `/Some/Other/Path` with `@page "/Some/Other/Path"`.</span></span>
+* <span data-ttu-id="ed4c9-349">將區段附加到頁面的預設路由。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-349">Append segments to a page's default route.</span></span> <span data-ttu-id="ed4c9-350">例如，使用 `@page "item"` 可將 "item" 區段新增到頁面的預設路由。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-350">For example, an "item" segment can be added to a page's default route with `@page "item"`.</span></span>
+* <span data-ttu-id="ed4c9-351">將參數附加到頁面的預設路由。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-351">Append parameters to a page's default route.</span></span> <span data-ttu-id="ed4c9-352">例如，具有 `@page "{id}"` 的頁面可要求識別碼參數 `id`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-352">For example, an ID parameter, `id`, can be required for a page with `@page "{id}"`.</span></span>
 
-<span data-ttu-id="6607b-349">支援在路徑開頭以波狀符號 (`~`) 指定根相對路徑。</span><span class="sxs-lookup"><span data-stu-id="6607b-349">A root-relative path designated by a tilde (`~`) at the beginning of the path is supported.</span></span> <span data-ttu-id="6607b-350">例如，`@page "~/Some/Other/Path"` 與 `@page "/Some/Other/Path"` 相同。</span><span class="sxs-lookup"><span data-stu-id="6607b-350">For example, `@page "~/Some/Other/Path"` is the same as `@page "/Some/Other/Path"`.</span></span>
+<span data-ttu-id="ed4c9-353">支援在路徑開頭以波狀符號 (`~`) 指定根相對路徑。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-353">A root-relative path designated by a tilde (`~`) at the beginning of the path is supported.</span></span> <span data-ttu-id="ed4c9-354">例如，`@page "~/Some/Other/Path"` 與 `@page "/Some/Other/Path"` 相同。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-354">For example, `@page "~/Some/Other/Path"` is the same as `@page "/Some/Other/Path"`.</span></span>
 
-<span data-ttu-id="6607b-351">您可以藉由指定路由範本 `@page "{handler?}"`，將 URL 中的查詢字串 `?handler=JoinList` 變更為路由區段 `/JoinList`。</span><span class="sxs-lookup"><span data-stu-id="6607b-351">You can change the query string `?handler=JoinList` in the URL to a route segment `/JoinList` by specifying the route template `@page "{handler?}"`.</span></span>
+<span data-ttu-id="ed4c9-355">您可以藉由指定路由範本 `@page "{handler?}"`，將 URL 中的查詢字串 `?handler=JoinList` 變更為路由區段 `/JoinList`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-355">You can change the query string `?handler=JoinList` in the URL to a route segment `/JoinList` by specifying the route template `@page "{handler?}"`.</span></span>
 
-<span data-ttu-id="6607b-352">如果您不喜歡 URL 有查詢字串 `?handler=JoinList`，您可以變更路由，將處理常式名稱置於 URL 的路徑部分。</span><span class="sxs-lookup"><span data-stu-id="6607b-352">If you don't like the query string `?handler=JoinList` in the URL, you can change the route to put the handler name in the path portion of the URL.</span></span> <span data-ttu-id="6607b-353">您可以新增路由範本，在 `@page` 指示詞後面用雙引號括住，以自訂路由。</span><span class="sxs-lookup"><span data-stu-id="6607b-353">You can customize the route by adding a route template enclosed in double quotes after the `@page` directive.</span></span>
+<span data-ttu-id="ed4c9-356">如果您不喜歡 URL 有查詢字串 `?handler=JoinList`，您可以變更路由，將處理常式名稱置於 URL 的路徑部分。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-356">If you don't like the query string `?handler=JoinList` in the URL, you can change the route to put the handler name in the path portion of the URL.</span></span> <span data-ttu-id="ed4c9-357">您可以新增路由範本，在 `@page` 指示詞後面用雙引號括住，以自訂路由。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-357">You can customize the route by adding a route template enclosed in double quotes after the `@page` directive.</span></span>
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/CreateRoute.cshtml?highlight=1)]
 
-<span data-ttu-id="6607b-354">使用上述程式碼，提交至 `OnPostJoinListAsync` 的 URL 路徑是 `http://localhost:5000/Customers/CreateFATH/JoinList`。</span><span class="sxs-lookup"><span data-stu-id="6607b-354">Using the preceding code, the URL path that submits to `OnPostJoinListAsync` is `http://localhost:5000/Customers/CreateFATH/JoinList`.</span></span> <span data-ttu-id="6607b-355">提交至 `OnPostJoinListUCAsync` 的 URL 路徑是 `http://localhost:5000/Customers/CreateFATH/JoinListUC`。</span><span class="sxs-lookup"><span data-stu-id="6607b-355">The URL path that submits to `OnPostJoinListUCAsync` is `http://localhost:5000/Customers/CreateFATH/JoinListUC`.</span></span>
+<span data-ttu-id="ed4c9-358">使用上述程式碼，提交至 `OnPostJoinListAsync` 的 URL 路徑是 `http://localhost:5000/Customers/CreateFATH/JoinList`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-358">Using the preceding code, the URL path that submits to `OnPostJoinListAsync` is `http://localhost:5000/Customers/CreateFATH/JoinList`.</span></span> <span data-ttu-id="ed4c9-359">提交至 `OnPostJoinListUCAsync` 的 URL 路徑是 `http://localhost:5000/Customers/CreateFATH/JoinListUC`。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-359">The URL path that submits to `OnPostJoinListUCAsync` is `http://localhost:5000/Customers/CreateFATH/JoinListUC`.</span></span>
 
-<span data-ttu-id="6607b-356">跟在 `handler` 後面的 `?` 表示路由參數為選擇性。</span><span class="sxs-lookup"><span data-stu-id="6607b-356">The `?` following `handler` means the route parameter is optional.</span></span>
+<span data-ttu-id="ed4c9-360">跟在 `handler` 後面的 `?` 表示路由參數為選擇性。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-360">The `?` following `handler` means the route parameter is optional.</span></span>
 
-## <a name="configuration-and-settings"></a><span data-ttu-id="6607b-357">組態與設定</span><span class="sxs-lookup"><span data-stu-id="6607b-357">Configuration and settings</span></span>
+## <a name="configuration-and-settings"></a><span data-ttu-id="ed4c9-361">組態與設定</span><span class="sxs-lookup"><span data-stu-id="ed4c9-361">Configuration and settings</span></span>
 
-<span data-ttu-id="6607b-358">若要設定進階選項，請在 MVC 產生器上使用擴充方法 `AddRazorPagesOptions`：</span><span class="sxs-lookup"><span data-stu-id="6607b-358">To configure advanced options, use the extension method `AddRazorPagesOptions` on the MVC builder:</span></span>
+<span data-ttu-id="ed4c9-362">若要設定進階選項，請在 MVC 產生器上使用擴充方法 `AddRazorPagesOptions`：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-362">To configure advanced options, use the extension method `AddRazorPagesOptions` on the MVC builder:</span></span>
 
 [!code-cs[](index/sample/RazorPagesContacts/StartupAdvanced.cs?name=snippet_1)]
 
-<span data-ttu-id="6607b-359">目前可以使用 `RazorPagesOptions` 設定頁面的根目錄，或新增頁面的應用程式模型慣例。</span><span class="sxs-lookup"><span data-stu-id="6607b-359">Currently you can use the `RazorPagesOptions` to set the root directory for pages, or add application model conventions for pages.</span></span> <span data-ttu-id="6607b-360">我們將在未來以這種方式獲得更多的擴充性。</span><span class="sxs-lookup"><span data-stu-id="6607b-360">We'll enable more extensibility this way in the future.</span></span>
+<span data-ttu-id="ed4c9-363">目前可以使用 `RazorPagesOptions` 設定頁面的根目錄，或新增頁面的應用程式模型慣例。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-363">Currently you can use the `RazorPagesOptions` to set the root directory for pages, or add application model conventions for pages.</span></span> <span data-ttu-id="ed4c9-364">我們將在未來以這種方式獲得更多的擴充性。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-364">We'll enable more extensibility this way in the future.</span></span>
 
-<span data-ttu-id="6607b-361">若要先行編譯檢視，請參閱 [Razor 檢視編譯](xref:mvc/views/view-compilation)。</span><span class="sxs-lookup"><span data-stu-id="6607b-361">To precompile views, see [Razor view compilation](xref:mvc/views/view-compilation) .</span></span>
+<span data-ttu-id="ed4c9-365">若要先行編譯檢視，請參閱 [Razor 檢視編譯](xref:mvc/views/view-compilation)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-365">To precompile views, see [Razor view compilation](xref:mvc/views/view-compilation) .</span></span>
 
-<span data-ttu-id="6607b-362">[下載或檢視範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/sample)。</span><span class="sxs-lookup"><span data-stu-id="6607b-362">[Download or view sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/sample).</span></span>
+<span data-ttu-id="ed4c9-366">[下載或檢視範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/sample)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-366">[Download or view sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/sample).</span></span>
 
-<span data-ttu-id="6607b-363">請參閱根據本簡介編纂的[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。</span><span class="sxs-lookup"><span data-stu-id="6607b-363">See [Get started with Razor Pages](xref:tutorials/razor-pages/razor-pages-start), which builds on this introduction.</span></span>
+<span data-ttu-id="ed4c9-367">請參閱根據本簡介編纂的[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-367">See [Get started with Razor Pages](xref:tutorials/razor-pages/razor-pages-start), which builds on this introduction.</span></span>
 
-### <a name="specify-that-razor-pages-are-at-the-content-root"></a><span data-ttu-id="6607b-364">指定 Razor Pages 位於內容根目錄</span><span class="sxs-lookup"><span data-stu-id="6607b-364">Specify that Razor Pages are at the content root</span></span>
+### <a name="specify-that-razor-pages-are-at-the-content-root"></a><span data-ttu-id="ed4c9-368">指定 Razor Pages 位於內容根目錄</span><span class="sxs-lookup"><span data-stu-id="ed4c9-368">Specify that Razor Pages are at the content root</span></span>
 
-<span data-ttu-id="6607b-365">根據預設，Razor Pages 位於 */Pages* 根目錄。</span><span class="sxs-lookup"><span data-stu-id="6607b-365">By default, Razor Pages are rooted in the */Pages* directory.</span></span> <span data-ttu-id="6607b-366">將 [WithRazorPagesAtContentRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.withrazorpagesatcontentroot) 新增至 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 可指定 Razor Pages 位於應用程式的內容根目錄 ([ContentRootPath](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.contentrootpath))：</span><span class="sxs-lookup"><span data-stu-id="6607b-366">Add [WithRazorPagesAtContentRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.withrazorpagesatcontentroot) to [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) to specify that your Razor Pages are at the content root ([ContentRootPath](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.contentrootpath)) of the app:</span></span>
+<span data-ttu-id="ed4c9-369">根據預設，Razor Pages 位於 */Pages* 根目錄。</span><span class="sxs-lookup"><span data-stu-id="ed4c9-369">By default, Razor Pages are rooted in the */Pages* directory.</span></span> <span data-ttu-id="ed4c9-370">將 [WithRazorPagesAtContentRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.withrazorpagesatcontentroot) 新增至 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 可指定 Razor Pages 位於應用程式的內容根目錄 ([ContentRootPath](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.contentrootpath))：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-370">Add [WithRazorPagesAtContentRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.withrazorpagesatcontentroot) to [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) to specify that your Razor Pages are at the content root ([ContentRootPath](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.contentrootpath)) of the app:</span></span>
 
 ```csharp
 services.AddMvc()
@@ -538,9 +552,9 @@ services.AddMvc()
     .WithRazorPagesAtContentRoot();
 ```
 
-### <a name="specify-that-razor-pages-are-at-a-custom-root-directory"></a><span data-ttu-id="6607b-367">指定 Razor Pages 位於自訂根目錄</span><span class="sxs-lookup"><span data-stu-id="6607b-367">Specify that Razor Pages are at a custom root directory</span></span>
+### <a name="specify-that-razor-pages-are-at-a-custom-root-directory"></a><span data-ttu-id="ed4c9-371">指定 Razor Pages 位於自訂根目錄</span><span class="sxs-lookup"><span data-stu-id="ed4c9-371">Specify that Razor Pages are at a custom root directory</span></span>
 
-<span data-ttu-id="6607b-368">將 [WithRazorPagesRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvccorebuilderextensions.withrazorpagesroot) 新增至 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 可指定 Razor Pages 位於應用程式的自訂根目錄 (提供相對路徑)：</span><span class="sxs-lookup"><span data-stu-id="6607b-368">Add [WithRazorPagesRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvccorebuilderextensions.withrazorpagesroot) to [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) to specify that your Razor Pages are at a custom root directory in the app (provide a relative path):</span></span>
+<span data-ttu-id="ed4c9-372">將 [WithRazorPagesRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvccorebuilderextensions.withrazorpagesroot) 新增至 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 可指定 Razor Pages 位於應用程式的自訂根目錄 (提供相對路徑)：</span><span class="sxs-lookup"><span data-stu-id="ed4c9-372">Add [WithRazorPagesRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvccorebuilderextensions.withrazorpagesroot) to [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) to specify that your Razor Pages are at a custom root directory in the app (provide a relative path):</span></span>
 
 ```csharp
 services.AddMvc()
@@ -551,7 +565,7 @@ services.AddMvc()
     .WithRazorPagesRoot("/path/to/razor/pages");
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="6607b-369">其他資源</span><span class="sxs-lookup"><span data-stu-id="6607b-369">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="ed4c9-373">其他資源</span><span class="sxs-lookup"><span data-stu-id="ed4c9-373">Additional resources</span></span>
 
 * <xref:index>
 * <xref:mvc/views/razor>

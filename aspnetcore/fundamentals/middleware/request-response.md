@@ -3,16 +3,16 @@ title: ASP.NET Core 中的要求和回應作業
 author: jkotalik
 description: 了解如何在 ASP.NET Core 中讀取要求本文及寫入回應本文。
 monikerRange: '>= aspnetcore-3.0'
-ms.author: jkotalik
+ms.author: jukotali
 ms.custom: mvc
 ms.date: 02/26/2019
 uid: fundamentals/middleware/request-response
-ms.openlocfilehash: b6e3cd4b79e0c062b271c65cd5ecbdb4ef80c3a1
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 0c321dad256e239b61907980c09d2c088c1407ff
+ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085501"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538579"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>ASP.NET Core 中的要求和回應作業
 
@@ -76,7 +76,7 @@ ms.locfileid: "65085501"
 
 ## <a name="startasync"></a>StartAsync
 
-3.0 中 `HttpResponse.StartAsync` 是新的。 它可以用來指示標題是不可修改的，以及執行 `OnStarting` 回撥。 在 3.0-preview3 中，您必須先呼叫 `StartAsync` 再使用 `HttpRequest.BodyPipe`，而且在未來版本中，它將會是一個建議。 使用 Kestrel 作為伺服器時，請先呼叫 StartAsync 再使用 `PipeReader`，以保證 `GetMemory` 傳回的記憶體將屬於 Kestrel 的內部 <xref:System.IO.Pipelines.Pipe>，而不是外部緩衝區。
+3\.0 中 `HttpResponse.StartAsync` 是新的。 它可以用來指示標題是不可修改的，以及執行 `OnStarting` 回撥。 在 3.0-preview3 中，您必須先呼叫 `StartAsync` 再使用 `HttpRequest.BodyPipe`，而且在未來版本中，它將會是一個建議。 使用 Kestrel 作為伺服器時，請先呼叫 StartAsync 再使用 `PipeReader`，以保證 `GetMemory` 傳回的記憶體將屬於 Kestrel 的內部 <xref:System.IO.Pipelines.Pipe>，而不是外部緩衝區。
 
 ## <a name="additional-resources"></a>其他資源
 

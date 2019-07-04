@@ -5,12 +5,12 @@ description: 使用 Facebook、 Google、 Twitter 等帳戶使用者驗證，而
 ms.author: riande
 ms.date: 07/04/2019
 uid: security/authentication/social/social-without-identity
-ms.openlocfilehash: e67da513fef1ce453110c465b08e9c7965e71df5
-ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
+ms.openlocfilehash: 1e7124e8b07c0faf2d005ec3ef55c0414a697d64
+ms.sourcegitcommit: f6e6730872a7d6f039f97d1df762f0d0bd5e34cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67557647"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561573"
 ---
 # <a name="use-social-sign-in-provider-authentication-without-aspnet-core-identity"></a>使用沒有 ASP.NET Core Identity 的社交登入提供者驗證
 
@@ -47,7 +47,7 @@ ms.locfileid: "67557647"
 
 若要深入了解驗證配置和 cookie 驗證，請參閱<xref:security/authentication/cookie>。
 
-## <a name="applying-basic-authorization"></a>套用基本授權
+## <a name="applying-authorization"></a>套用授權
 
 測試應用程式的驗證設定，藉由套用`AuthorizeAttribute`屬性加入控制器、 動作或頁面。 下列程式碼會限制存取權*隱私權*給已驗證的使用者 頁面：
 

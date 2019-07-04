@@ -6,12 +6,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/30/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 9a77460cfd8201ca357aad3415725d4b9a30b187
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9a4296550a17ac2c348f2406e9f5b39877b02b59
+ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64885043"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67555923"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
@@ -30,21 +30,35 @@ ms.locfileid: "64885043"
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([如何下載](xref:index#how-to-download-a-sample))。
 
-[!INCLUDE [|Prerequisites](~/includes/net-core-prereqs-all-2.2.md)]
+## <a name="prerequisites"></a>必要條件
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vs2017-2.2.md)]
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+[!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
+
+---
 
 ## <a name="create-a-web-project"></a>建立 Web 專案
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* 從功能表中選取 [檔案] > [新增專案] 。
+* 從功能表中選取 [檔案] > [新增專案]  。
 
-* 在 [新增專案] 對話方塊中，選取 [已安裝] > [Visual C++] > [Web] > [ASP.NET Core Web 應用程式]。 將專案命名為 *SignalRChat*。
+* 在 [新增專案]  對話方塊中，選取 [已安裝] > [Visual C++] > [Web] > [ASP.NET Core Web 應用程式]  。 將專案命名為 *SignalRChat*。
 
   ![Visual Studio 的 [新增專案] 對話方塊](signalr/_static/signalr-new-project-dialog.png)
 
-* 選取 [Web 應用程式] 建立使用 Razor Pages 的專案。
+* 選取 [Web 應用程式]  建立使用 Razor Pages 的專案。
 
-* 選取 **.NET Core** 作為目標 Framework、選取 [ASP.NET Core 2.2]，然後按一下 [確定]。
+* 選取 **.NET Core** 作為目標 Framework、選取 [ASP.NET Core 2.2]  ，然後按一下 [確定]  。
 
   ![Visual Studio 的 [新增專案] 對話方塊](signalr/_static/signalr-new-project-choose-type.png)
 
@@ -61,13 +75,13 @@ ms.locfileid: "64885043"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 從功能表中選取 [檔案] > [新增方案] 。
+* 從功能表中選取 [檔案] > [新增方案]  。
 
-* 選取 [.NET Core] > [應用程式] > [ASP.NET Core Web 應用程式] (不要選取 [ASP.NET Core Web 應用程式 (MVC)])。
+* 選取 [.NET Core] > [應用程式] > [ASP.NET Core Web 應用程式]  (不要選取 [ASP.NET Core Web 應用程式 (MVC)]  )。
 
-* 選取 [下一步]。
+* 選取 [下一步]  。
 
-* 將專案命名為 *SignalRChat*，然後選取 [建立]。
+* 將專案命名為 *SignalRChat*，然後選取 [建立]  。
 
 ---
 
@@ -77,17 +91,17 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增] > [用戶端程式庫]。
+* 在 [方案總管]  中，以滑鼠右鍵按一下專案，然後選取 [新增]   > [用戶端程式庫]  。
 
-* 在 [新增用戶端程式庫] 對話方塊中，針對 [提供者] 選取 [unpkg]。
+* 在 [新增用戶端程式庫]  對話方塊中，針對 [提供者]  選取 [unpkg]  。
 
-* 針對 [程式庫]，輸入 `@aspnet/signalr@1`，然後選取非預覽版的最新版本。
+* 針對 [程式庫]  ，輸入 `@aspnet/signalr@1`，然後選取非預覽版的最新版本。
 
   ![[新增用戶端程式庫] 對話方塊 - 選取程式庫](signalr/_static/libman1.png)
 
-* 選取 [選擇特定檔案]、展開 [散發者/瀏覽器] 資料夾，然後選取 *signalr.js* 與 *signalr.min.js*。
+* 選取 [選擇特定檔案]  、展開 [散發者/瀏覽器]  資料夾，然後選取 *signalr.js* 與 *signalr.min.js*。
 
-* 將 [目標位置] 設定為 *wwwroot/lib/signalr/*，然後選取 [安裝]。
+* 將 [目標位置]  設定為 *wwwroot/lib/signalr/* ，然後選取 [安裝]  。
 
   ![[新增用戶端程式庫] 對話方塊 - 選取檔案與目的地](signalr/_static/libman2.png)
 
@@ -122,7 +136,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在 [終端機] 中執行下列命令以安裝 LibMan。
+* 在 [終端機]  中執行下列命令以安裝 LibMan。
 
   ```console
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
@@ -213,13 +227,13 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 從功能表中選取 [執行] > [啟動但不偵錯]。
+* 從功能表中選取 [執行] > [啟動但不偵錯]  。
 
 ---
 
 * 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
-* 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送訊息] 按鈕。
+* 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送訊息]  按鈕。
 
   名稱和訊息會立即顯示在兩個頁面上。
 

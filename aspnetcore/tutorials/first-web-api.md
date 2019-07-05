@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何使用 ASP.NET Core 建置 Web API。
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/18/2019
+ms.date: 06/23/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 17e8ee08fca775b8fccc3f2e6cd6067caca9c79f
-ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
+ms.openlocfilehash: a53f7019c1079296f073e743ddbf9d90fc5abad3
+ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207773"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67555880"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -49,24 +49,39 @@ ms.locfileid: "67207773"
 
 下圖顯示應用程式的設計。
 
-![左側方塊所代表的用戶端會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](first-web-api/_static/architecture.png)
+![左側方塊代表用戶端。 它會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](first-web-api/_static/architecture.png)
 
-[!INCLUDE[](~/includes/net-core-prereqs-all-2.2.md)]
+## <a name="prerequisites"></a>必要條件
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+[!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
+
+---
 
 ## <a name="create-a-web-project"></a>建立 Web 專案
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 從 [檔案]  功能表選取 [新增]   > [專案]  。
-* 選取 [ASP.NET Core Web 應用程式]  範本。 將專案命名為 *TodoApi*，然後按一下 [確定]  。
-* 在 [新增 ASP.NET Core Web 應用程式 - TodoApi]  對話方塊中，選擇 ASP.NET Core 版本。 選取 [API]  範本，然後按一下 [確定]  。 請**勿**選取 [Enable Docker Support] (啟用 Docker 支援)  。
+* 選取 **ASP.NET Core Web 應用程式**範本，然後按一下 [下一步]  。
+* 將專案命名為 *TodoApi*，然後按一下 [建立]  。
+* 在 [建立新的 ASP.NET Core Web 應用程式]  對話方塊中，確認選取 [.NET Core]  和 [ASP.NET Core 2.2]  。 選取 **API** 範本，然後按一下 [建立]  。 請**勿**選取 [Enable Docker Support] \(啟用 Docker 支援\)  。
 
 ![VS 新增專案對話方塊](first-web-api/_static/vs.png)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
-* 將目錄 (`cd`) 變更為其中包含專案資料夾的資料夾。
+* 將目錄 (`cd`) 變更為包含專案資料夾的資料夾。
 * 執行下列命令：
 
    ```console
@@ -350,11 +365,11 @@ ms.locfileid: "67207773"
 
 `PutTodoItem` 類似於 `PostTodoItem`，但是會使用 HTTP PUT。 回應是 [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (204 (沒有內容))。 根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是變更。 若要支援部分更新，請使用 [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)。
 
-如果您在呼叫 `PutTodoItem` 時發生錯誤，請呼叫 `GET` 以確保資料庫中有項目。
+如果在呼叫 `PutTodoItem` 時發生錯誤，請呼叫 `GET` 以確保資料庫中有項目。
 
 ### <a name="test-the-puttodoitem-method"></a>測試 PutTodoItem 方法
 
-此範例使用在每次應用程式啟動都必須起始的記憶體內部資料庫。 資料庫中必須有項目，您才能進行 PUT 呼叫。 在進行 PUT 呼叫之前，請先呼叫 GET 以確保資料庫中有項目。
+此範例使用在每次應用程式啟動都必須起始的記憶體內部資料庫。 資料庫中必須有項目，您才能進行 PUT 呼叫。 在發出 PUT 呼叫之前，請先呼叫 GET 以確保資料庫中有項目。
 
 更新識別碼為 1 的待辦事項，並將其名稱設定為 "feed fish"：
 
@@ -386,13 +401,13 @@ ms.locfileid: "67207773"
 * 設定要刪除的物件 URI，例如 `https://localhost:5001/api/todo/1`
 * 選取 [傳送] 
 
-範例應用程式可讓您刪除所有項目，但刪除最後一個項目之後，模型類別建構函式就會在下次呼叫 API 時建立新的項目。
+範例應用程式可讓您刪除所有項目。 但刪除最後一個項目之後，模型類別建構函式會在下次呼叫 API 時建立新的項目。
 
 ## <a name="call-the-api-with-jquery"></a>使用 jQuery 呼叫 API
 
 在本節中，將會新增 HTML 網頁，以使用 jQuery 來呼叫 Web API。 jQuery 會起始要求，並使用來自 API 回應的詳細資料更新頁面。
 
-請設定應用程式來[提供靜態檔案](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)，並[啟用預設檔案對應](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)：
+藉由使用下列反白顯示的程式碼更新 *Startup.cs*，來設定應用程式[提供靜態檔案](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)並[啟用預設檔案對應](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)：
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Startup.cs?highlight=14-15&name=snippet_configure)]
 

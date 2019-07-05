@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 06/12/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 6aef56ecd61ad71e166c03c12b28b25b931cdd88
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 8507c3dcefeb61a4dd34a1ff967c082d287cf646
+ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152931"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67555886"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端與伺服器
 
@@ -30,7 +30,21 @@ ms.locfileid: "67152931"
 > * 建立 gRPC 用戶端。
 > * 利用 gRPC Greeter 服務來測試 gRPC 用戶端。
 
-[!INCLUDE[](~/includes/net-core-prereqs-all-3.0.md)]
+## <a name="prerequisites"></a>必要條件
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+
+---
 
 ## <a name="create-a-grpc-service"></a>建立 gRPC 服務
 

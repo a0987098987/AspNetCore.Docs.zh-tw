@@ -3,16 +3,16 @@ title: 在 Linux 上使用 Apache 裝載 ASP.NET Core
 author: guardrex
 description: 了解如何在 CentOS 上將 Apache 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 Kestrel 上執行的 ASP.NET Core Web 應用程式。
 monikerRange: '>= aspnetcore-2.1'
-ms.author: spboyer
+ms.author: shboyer
 ms.custom: mvc
 ms.date: 03/31/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 34da0653ff29acf3044e69e032307d1a3da7044a
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 0b523627f8236d79dfc61f0693309d6f4d715e7e
+ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889243"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538701"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.locfileid: "64889243"
 * 執行 CentOS 7 的伺服器搭配具有 sudo 權限的標準使用者帳戶。
 * 在伺服器上安裝 .NET Core 執行階段。
    1. 請前往 [.NET Core 的 All Downloads (下載區)](https://www.microsoft.com/net/download/all) 頁面。
-   1. 在 [執行階段] 下的清單中選取最新的非預覽執行階段。
+   1. 在 [執行階段]  下的清單中選取最新的非預覽執行階段。
    1. 選取並遵循 CentOS/Oracle 的指示。
 * 現有的 ASP.NET Core 應用程式。
 
@@ -83,7 +83,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-如需詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/proxy-load-balancer>。
 
 ### <a name="install-apache"></a>安裝 Apache
 
@@ -320,7 +320,7 @@ rich rules:
 
 使用下列其中一種方法，設定應用程式將憑證用在針對 `dotnet run` 命令的開發，或用在開發環境 (F5，若在 Visual Studio Code 中則為 Ctrl+F5)：
 
-* [取代組態中的預設憑證](xref:fundamentals/servers/kestrel#configuration) (建議使用)
+* [取代組態中的預設憑證](xref:fundamentals/servers/kestrel#configuration) (建議使用  )
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **設定反向 Prooxy 以進行安全的用戶端連線 (HTTPS)**
@@ -391,7 +391,7 @@ sudo yum install mod_headers
 
 #### <a name="secure-apache-from-clickjacking-attacks"></a>保護 Apache 免於點閱綁架攻擊
 
-[點閱綁架](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger)(也稱為「UI 偽裝攻擊」) 是一種惡意攻擊，會誘騙網站訪客點選與其目前所瀏覽頁面不同的頁面上連結或按鈕。 請使用 `X-FRAME-OPTIONS` 來保護網站安全。
+[點閱綁架](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger)(也稱為「UI 偽裝攻擊」  ) 是一種惡意攻擊，會誘騙網站訪客點選與其目前所瀏覽頁面不同的頁面上連結或按鈕。 請使用 `X-FRAME-OPTIONS` 來保護網站安全。
 
 減輕點擊劫持攻擊：
 
@@ -407,7 +407,7 @@ sudo yum install mod_headers
 
 #### <a name="mime-type-sniffing"></a>MIME 類型探查
 
-`X-Content-Type-Options` 標頭可防止 Internet Explorer 執行「MIME 探查」 (從檔案的內容判斷檔案的 `Content-Type`)。 如果伺服器將 `Content-Type` 標頭設定為 `text/html` 並搭配設定 `nosniff` 選項，則不論檔案內容為何，Internet Explorer 都會將該內容轉譯為 `text/html`。
+`X-Content-Type-Options` 標頭可防止 Internet Explorer 執行「MIME 探查」  (從檔案的內容判斷檔案的 `Content-Type`)。 如果伺服器將 `Content-Type` 標頭設定為 `text/html` 並搭配設定 `nosniff` 選項，則不論檔案內容為何，Internet Explorer 都會將該內容轉譯為 `text/html`。
 
 編輯 *httpd.conf* 檔案：
 

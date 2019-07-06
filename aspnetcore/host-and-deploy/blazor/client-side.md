@@ -5,14 +5,14 @@ description: 了解如何使用 ASP.NET Core、內容傳遞網路 (CDN)、檔案
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/14/2019
+ms.date: 07/02/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: 7567473ae8acd9e1072954907f0fe9c7beea29ad
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 46c99364098557557bff0c38cab5a91ee2d3979b
+ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67153182"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538639"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-client-side"></a>裝載及部署 ASP.NET Core Blazor 用戶端
 
@@ -106,19 +106,19 @@ Blazor 在每個組建上執行中繼語言 (IL) 連結，以從輸出組件移�
 
 ## <a name="rewrite-urls-for-correct-routing"></a>重寫 URL 以便正確地路由
 
-用戶端應用程式中的頁面元件傳送要求，並不只是將要求傳送到伺服器端的裝載應用程式那麼簡單。 請考慮具有兩個頁面的用戶端應用程式：
+用戶端應用程式中的頁面元件傳送要求，並不只是將要求傳送到伺服器端的裝載應用程式那麼簡單。 請考慮具有兩個元件的用戶端應用程式：
 
-* **_Main.razor** &ndash; 載入應用程式根目錄，同時包含 [關於] 頁面 (`href="About"`) 的連結。
-* **_About.razor** &ndash; [關於] 頁面。
+* *Main.razor* &ndash; 載入應用程式根目錄，同時包含 `About` 元件 (`href="About"`) 的連結。
+* *About.razor* &ndash; `About` 元件。
 
 使用瀏覽器的網址列要求應用程式預設文件時 (例如 `https://www.contoso.com/`)：
 
 1. 瀏覽器提出要求。
 1. 傳回預設頁面，這通常是 *index.html*。
 1. *index.html* 啟動載入應用程式。
-1. 會載入 Blazor 的路由器，同時會顯示 Razor 主頁面 (*Main.razor*)。
+1. Blazor 的路由器會載入，且會轉譯 Razor `Main` 元件。
 
-在主頁面上，選取 [關於] 頁面的連結會載入 [關於] 頁面。 選取您用戶端上適用的 [關於] 頁面連結，因為 Blazor 路由器會停止瀏覽器，使其不從網際網路對 `www.contoso.com` 提出針對 `About` 的要求，並自行提供 [關於] 頁面。 對於「用戶端應用程式內」  內部頁面的所有要求運作方式相同：要求不會對於網際網路上伺服器裝載的資源，觸發以瀏覽器為基礎的要求。 路由器會在內部處理要求。
+在主頁面中，選取用戶端 `About` 元件的連結有用，因為 Blazor 路由器會停止瀏覽器，使其不再從網際網路對 `www.contoso.com` 提出針對 `About` 的要求，並自行提供轉譯的 `About` 元件。 對於「用戶端應用程式內」  內部端點的所有要求運作方式相同：要求不會對於網際網路上伺服器裝載的資源，觸發以瀏覽器為基礎的要求。 路由器會在內部處理要求。
 
 如果使用瀏覽器之網址列提出對 `www.contoso.com/About` 的要求，則要求會失敗。 在應用程式的網際網路主機上沒有這類資源存在，因此會傳回「404 - 找不到」  的回應。
 
@@ -148,7 +148,7 @@ dotnet run --pathbase=/CoolApp
 
 如需詳細資訊，請參閱[路徑基底主機設定值](#path-base)一節。
 
-如果應用程式使用[用戶端裝載模型](xref:blazor/hosting-models#client-side) (根據 **Blazor** 專案範本、使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazor` 範本)，且裝載為 ASP.NET Core 應用程式中的 IIS 子應用程式，請務必停用繼承的 ASP.NET Core 模組處理常式，或是確定子應用程式並未繼承 *web.config* 檔案中根 (父系) 應用程式的 `<handlers>` 區段。
+如果應用程式使用[用戶端裝載模型](xref:blazor/hosting-models#client-side) (根據 **Blazor (用戶端)** 專案範本、使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazor` 範本)，且裝載為 ASP.NET Core 應用程式中的 IIS 子應用程式，請務必停用繼承的 ASP.NET Core 模組處理常式，或是確定子應用程式並未繼承 *web.config* 檔案中根 (父系) 應用程式的 `<handlers>` 區段。
 
 移除應用程式已發佈 *web.config* 檔案中的處理常式，方法是新增 `<handlers>` 區段到檔案：
 
@@ -178,7 +178,7 @@ dotnet run --pathbase=/CoolApp
 
 ## <a name="hosted-deployment-with-aspnet-core"></a>搭配 ASP.NET Core 的已裝載部署
 
-「裝載部署」  會將用戶端 Blazor 應用程式，從伺服器上執行的 [ASP.NET Core 應用程式](xref:index)，提供給瀏覽器。
+「裝載部署」  會將 Blazor 用戶端應用程式從 Web 伺服器上執行的 [ASP.NET Core 應用程式](xref:index)提供給瀏覽器。
 
 Blazor 應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以便兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 對於裝載部署，Visual Studio 包含 **Blazor (已裝載 ASP.NET Core)** 專案範本 (使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazorhosted` 範本)。
 
@@ -188,7 +188,7 @@ Blazor 應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以�
 
 ## <a name="standalone-deployment"></a>獨立部署
 
-「獨立部署」  會以一組直接由用戶端要求的靜態檔案來提供服務給用戶端 Blazor 應用程式。 所有靜態檔案伺服器都能夠支援 Blazor 應用程式。
+「獨立部署」  會以一組直接由用戶端要求的靜態檔案來提供服務給 Blazor 用戶端應用程式。 所有靜態檔案伺服器都能夠支援 Blazor 應用程式。
 
 獨立式部署資產會發佈至 [bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist]  資料夾。
 

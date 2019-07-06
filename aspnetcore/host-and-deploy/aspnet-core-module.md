@@ -5,14 +5,14 @@ description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/17/2019
+ms.date: 07/01/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: d5392ff6b15eeb3a4502df578665538b936aae6f
-ms.sourcegitcommit: 28a2874765cefe9eaa068dceb989a978ba2096aa
+ms.openlocfilehash: 4a360023cc7fab2f066d490f7f368fc35815703a
+ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67167063"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67500448"
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
@@ -108,6 +108,29 @@ ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線以便：
 
 * 設定伺服器在 ASP.NET Core 模組後方執行時應該接聽的連接埠和基底路徑。
 * 設定主機以擷取啟動錯誤。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+以非同處理序裝載時，不會內部呼叫 <xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*> 來將使用者初始化。 因此，預設會在未啟動每個驗證之後，使用 <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> 實作來轉換宣告。 使用 <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> 實作來轉換宣告時，請呼叫 <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> 來新增入驗證服務：
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
+    services.AddAuthentication(IISDefaults.AuthenticationScheme);
+}
+
+public void Configure(IApplicationBuilder app)
+{
+    app.UseAuthentication();
+}
+```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
 
 ### <a name="hosting-model-changes"></a>裝載模型變更
 

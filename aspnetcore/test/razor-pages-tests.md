@@ -2,16 +2,17 @@
 title: 在 ASP.NET Core razor 頁面單元測試
 author: guardrex
 description: 了解如何建立 Razor 頁面應用程式的單元測試。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/27/2017
+ms.date: 07/07/2017
 uid: test/razor-pages-tests
-ms.openlocfilehash: f0e47f975579dc114eaeda375028ec62696f58ed
-ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
+ms.openlocfilehash: f89b4fcb0065e725f70deec7859e373f9158b4bd
+ms.sourcegitcommit: 91cc1f07ef178ab709ea42f8b3a10399c970496e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67394731"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622783"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>在 ASP.NET Core razor 頁面單元測試
 
@@ -26,20 +27,20 @@ ASP.NET Core 支援 Razor 網頁應用程式的單元的測試。 測試資料�
 
 本主題假設您有基本了解 Razor Pages 應用程式和單元測試。 如果您不熟悉搭配 Razor 頁面應用程式或測試概念，請參閱下列主題：
 
-* [Razor 頁面簡介](xref:razor-pages/index)
-* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
+* <xref:razor-pages/index>
+* <xref:tutorials/razor-pages/razor-pages-start>
 * [單元測試 C# 中使用 dotnet 測試和 xUnit.NET Core](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 範例專案是由兩個應用程式所組成：
 
-| 應用程式         | 專案資料夾                        | 描述 |
-| ----------- | ------------------------------------- | ----------- |
-| 訊息應用程式 | *src/RazorPagesTestSample*            | 允許使用者加入、 刪除其中一個、 全部刪除，以及分析訊息。 |
-| 測試應用程式    | *tests/RazorPagesTestSample.Tests*    | 使用單元測試的訊息應用程式：資料存取層 (DAL) 和索引 頁面模型。 |
+| 應用程式         | 專案資料夾                     | 描述 |
+| ----------- | ---------------------------------- | ----------- |
+| 訊息應用程式 | *src/RazorPagesTestSample*         | 可讓使用者將訊息新增、 刪除一個訊息、 刪除所有訊息，並分析 （尋找字組，每個訊息的平均數目） 的訊息。 |
+| 測試應用程式    | *tests/RazorPagesTestSample.Tests* | 用於單元測試 DAL 和索引頁面模型的訊息應用程式。 |
 
-可以使用內建的測試功能的 IDE，例如執行測試[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列中，執行下列命令在命令提示字元中*tests/RazorPagesTestSample.Tests*資料夾：
+可以使用內建的測試功能的 IDE，例如執行測試[Visual Studio](/visualstudio/test/unit-test-your-code)或是[Visual Studio for Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列中，執行下列命令在命令提示字元中*tests/RazorPagesTestSample.Tests*資料夾：
 
 ```console
 dotnet test
@@ -47,17 +48,17 @@ dotnet test
 
 ## <a name="message-app-organization"></a>訊息應用程式的組織
 
-訊息應用程式是簡單的 Razor Pages 訊息系統具有下列特性：
+訊息應用程式是 Razor Pages 訊息系統具有下列特性：
 
-* 應用程式的 [索引] 頁面 (*pages/Index.cshtml*並*Pages/Index.cshtml.cs*) 提供 UI 和頁面模型的方法，來控制新增、 刪除和分析的訊息 （每個訊息的平均字）.
+* 應用程式的 [索引] 頁面 (*pages/Index.cshtml*並*Pages/Index.cshtml.cs*) 提供 UI 和頁面模型的方法，來控制新增、 刪除和分析的訊息 （尋找平均數目每個字訊息）。
 * 所描述的訊息`Message`類別 (*Data/Message.cs*) 使用兩個屬性： `Id` （索引鍵） 和`Text`（訊息）。 `Text`屬性是必要的且限制為 200 個字元。
 * 使用儲存的訊息[Entity Framework 的記憶體中的資料庫](/ef/core/providers/in-memory/)&#8224;。
-* 應用程式在其資料庫內容類別中，包含資料存取層 (DAL) `AppDbContext` (*Data/AppDbContext.cs*)。 DAL 方法標示為`virtual`，可讓模擬 (mock) 的測試中使用的方法。
+* 應用程式包含在其資料庫內容類別中，DAL `AppDbContext` (*Data/AppDbContext.cs*)。 DAL 方法標示為`virtual`，可讓模擬 (mock) 的測試中使用的方法。
 * 如果資料庫是空的應用程式啟動時，就會使用三個訊息初始化訊息存放區。 這些*植入訊息*也會用於測試。
 
 &#8224;EF 主題[使用 InMemory 進行測試](/ef/core/miscellaneous/testing/in-memory)，說明如何使用記憶體中資料庫的 mstest 執行測試。 本主題會使用[xUnit](https://xunit.github.io/)測試架構。 測試概念和跨不同的測試架構的測試實作都類似，但不是完全相同。
 
-雖然應用程式不會使用儲存機制模式，而且不是有效的範例[工作單位 (UoW) 模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)，Razor 頁面支援的開發這些模式。 如需詳細資訊，請參閱 <<c0> [ 設計基礎結構持續層](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)並[測試控制器邏輯](/aspnet/core/mvc/controllers/testing)（此範例會實作儲存機制模式）。
+雖然範例應用程式不會使用儲存機制模式，而且不是有效的範例[工作單位 (UoW) 模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)，Razor 頁面支援的開發這些模式。 如需詳細資訊，請參閱 <<c0> [ 設計基礎結構持續層](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)和<xref:mvc/controllers/testing>（此範例會實作儲存機制模式）。
 
 ## <a name="test-app-organization"></a>測試應用程式的組織
 
@@ -81,7 +82,7 @@ dotnet test
 | `DeleteAllMessagesAsync` | 刪除所有`Message`資料庫的項目。                           |
 | `DeleteMessageAsync`     | 會刪除單一`Message`從資料庫`Id`。                      |
 
-需要單元測試的 DAL [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions)時建立新`AppDbContext`針對每個測試。 若要建立的其中一個方法`DbContextOptions`每項測試是使用[DbContextOptionsBuilder](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder):
+需要單元測試的 DAL<xref:Microsoft.EntityFrameworkCore.DbContextOptions>時建立新`AppDbContext`針對每個測試。 若要建立的其中一個方法`DbContextOptions`每項測試是使用<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder>:
 
 ```csharp
 var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>()
@@ -148,15 +149,15 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 | 頁面模型方法 | 功能 |
 | ----------------- | -------- |
 | `OnGetAsync` | 取得訊息從 UI 使用 DAL`GetMessagesAsync`方法。 |
-| `OnPostAddMessageAsync` | 如果`ModelState`有效，但呼叫`AddMessageAsync`將訊息新增至資料庫。 |
+| `OnPostAddMessageAsync` | 如果[ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)有效，但呼叫`AddMessageAsync`將訊息新增至資料庫。 |
 | `OnPostDeleteAllMessagesAsync` | 呼叫`DeleteAllMessagesAsync`刪除所有資料庫中的訊息。 |
 | `OnPostDeleteMessageAsync` | 執行`DeleteMessageAsync`若要刪除的訊息`Id`指定。 |
 | `OnPostAnalyzeMessagesAsync` | 如果一或多個訊息都位於資料庫中，會計算每個訊息的字組的平均數目。 |
 
 頁面模型的方法使用中的七個測試進行測試`IndexPageTests`類別 (*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*)。 測試使用熟悉的排列判斷提示動作模式。 這些測試著重於：
 
-* 決定是否方法均遵循正確的行為時`ModelState`無效。
-* 確認方法會產生正確`IActionResult`。
+* 決定是否方法均遵循正確的行為時[ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)無效。
+* 確認方法會產生正確<xref:Microsoft.AspNetCore.Mvc.IActionResult>。
 * 檢查屬性值的設定正確進行。
 
 測試這個群組通常會模擬 DAL 以產生預期的資料，頁面模型方法執行所在的動作步驟的方法。 例如，`GetMessagesAsync`方法的`AppDbContext`模擬以產生輸出。 當頁面模型方法執行這個方法時，mock 就會傳回結果。 資料並不是來自資料庫。 這會建立在頁面模型測試中使用 DAL 的可預測、 可靠的測試條件。
@@ -181,17 +182,18 @@ Unit test Act step (*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.c
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs?name=snippet3)]
 
-其他測試，此群組中的建立的頁面模型物件，其中包含`DefaultHttpContext`，則`ModelStateDictionary`，則`ActionContext`來建立`PageContext`、 `ViewDataDictionary`，和`PageContext`。 這些是用於執行測試。 例如，訊息應用程式會建立`ModelState`錯誤`AddModelError`以確認有效`PageResult`時，會傳回`OnPostAddMessageAsync`執行：
+其他測試，此群組中的建立的頁面模型物件，其中包含<xref:Microsoft.AspNetCore.Http.DefaultHttpContext>，則<xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary>，則<xref:Microsoft.AspNetCore.Mvc.ActionContext>來建立`PageContext`、 `ViewDataDictionary`，和`PageContext`。 這些是用於執行測試。 例如，訊息應用程式會建立`ModelState`錯誤<xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.AddModelError*>以確認有效<xref:Microsoft.AspNetCore.Mvc.RazorPages.PageResult>時，會傳回`OnPostAddMessageAsync`執行：
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs?name=snippet4&highlight=11,26,29,32)]
 
 ## <a name="additional-resources"></a>其他資源
 
 * [單元測試 C# 中使用 dotnet 測試和 xUnit.NET Core](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
-* [測試控制器](xref:mvc/controllers/testing)
+* <xref:mvc/controllers/testing>
 * [您的程式碼進行單元測試](/visualstudio/test/unit-test-your-code)(Visual Studio)
-* [整合測試](xref:test/integration-tests)
+* <xref:test/integration-tests>
 * [xUnit.net](https://xunit.github.io/)
-* [開始使用 xUnit.net （.NET Core/ASP.NET Core）](https://xunit.github.io/docs/getting-started-dotnet-core)
+* [使用 Visual Studio for Mac 在 macOS 上建置完整的 .NET Core 方案](/dotnet/core/tutorials/using-on-mac-vs-full-solution)
+* [開始使用 xUnit.net:使用.NET SDK 命令列使用.NET Core](https://xunit.github.io/docs/getting-started-dotnet-core)
 * [Moq](https://github.com/moq/moq4)
 * [Moq 快速入門](https://github.com/Moq/moq4/wiki/Quickstart)

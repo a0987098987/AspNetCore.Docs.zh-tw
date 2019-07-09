@@ -5,20 +5,20 @@ description: 了解使用 ASP.NET Core 建立 Web API 的基本概念。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/07/2019
+ms.date: 07/08/2019
 uid: web-api/index
-ms.openlocfilehash: 593fd33babc81cddfc4db2150a37e5ec3bc1a0be
-ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
+ms.openlocfilehash: 4f9c334f74dd2a8b7c31c7a42703fa361ccf9139
+ms.sourcegitcommit: 91cc1f07ef178ab709ea42f8b3a10399c970496e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65450845"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622789"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建立 Web API
 
 作者：[Scott Addie](https://github.com/scottaddie) 與 [Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core 支援使用 C# 建立 RESTful 服務，也稱為 Web API。 若要處理要求，Web API 會使用控制器。 Web API 中的「控制器」都衍生自類別 `ControllerBase`。 此文章說明如何使用控制器來處理 API 要求。
+ASP.NET Core 支援使用 C# 建立 RESTful 服務，也稱為 Web API。 若要處理要求，Web API 會使用控制器。 Web API 中的「控制器」  都衍生自類別 `ControllerBase`。 此文章說明如何使用控制器來處理 API 要求。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/index/samples)。 ([如何下載](xref:index#how-to-download-a-sample))。
 
@@ -28,7 +28,7 @@ Web API 有一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase> 
 
 [!code-csharp[](index/samples/2.x/Controllers/ValuesController.cs?name=snippet_Signature&highlight=3)]
 
-請不要從 <xref:Microsoft.AspNetCore.Mvc.Controller> 基底類別衍生以建立 Web API 控制器。 `Controller` 衍生自 `ControllerBase` 並會新增檢視支援，以供處理網頁，而不是 Web API 要求。  此規則的例外：如果您打算為檢視和 API 使用相同的控制器，請從 `Controller` 衍生該控制器。
+請不要從 <xref:Microsoft.AspNetCore.Mvc.Controller> 類別衍生以建立 Web API 控制器。 `Controller` 衍生自 `ControllerBase` 並會新增檢視支援，以供處理網頁，而不是 Web API 要求。  此規則的例外：如果您打算為檢視和 API 使用相同的控制器，請從 `Controller` 衍生該控制器。
 
 `ControllerBase` 類別提供許多處理 HTTP 要求的實用屬性和方法。 例如，`ControllerBase.CreatedAtAction` 會傳回 201 狀態碼：
 

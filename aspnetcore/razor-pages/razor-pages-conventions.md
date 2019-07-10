@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 4e07b5803adbce94982584212fa65afbfd427b64
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 59c8af648b50deb51f3762c14348d08acd48886e
+ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893505"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724457"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面路由和應用程式慣例
 
@@ -270,7 +270,7 @@ Contact 頁面也可以透過其預設路由在 `/Contact` 上連線。
 
 使用頁面應用程式模型，可針對指向 *OtherPages* 資料夾內 Page2 頁面的區段檢查相對路徑。 如果通過條件，則會新增標頭。 如果沒有，則會套用 `EmptyFilter`。
 
-`EmptyFilter` 是[動作篩選條件](xref:mvc/controllers/filters#action-filters)。 由於 Razor Pages 會忽略動作篩選條件，因此如果路徑未包含 `OtherPages/Page2`，則 `EmptyFilter` 不會如預期般生效。
+`EmptyFilter` 是[動作篩選條件](xref:mvc/controllers/filters#action-filters)。 由於 Razor Pages 會忽略動作篩選條件`EmptyFilter`沒有任何作用，如預期般如果路徑未包含`OtherPages/Page2`。
 
 在 `localhost:5000/OtherPages/Page2` 上要求範例的 Page2 頁面，並檢查標頭來檢視結果：
 

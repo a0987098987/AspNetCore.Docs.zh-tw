@@ -26,6 +26,7 @@
         "files": [
           "**/*.png",
           "**/*.jpg",
+          "**/*.gif",
           "**/*.svg",
           "**/*.pdf"
         ],
@@ -53,6 +54,7 @@
       "feedback_product_url": "https://github.com/aspnet/Home/blob/master/CONTRIBUTING.md",
       "feedback_system": "GitHub",
       "ms.prod": "aspnet-core",
+      "uhfHeaderId": "MSDocsHeader-DotNet",
       "searchScope": [
         "ASP.NET Core"
       ],
@@ -87,6 +89,7 @@
         "data/**/**.md": "conceptual",
         "fundamentals/**/**.md": "conceptual",
         "getting-started/**/**.md": "tutorial",
+        "grpc/**/**.md": "conceptual",
         "host-and-deploy/**/**.md": "conceptual",
         "index.md": "conceptual",
         "migration/**/**.md": "conceptual",

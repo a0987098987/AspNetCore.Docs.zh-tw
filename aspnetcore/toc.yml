@@ -981,6 +981,8 @@
           uid: performance/caching/distributed
         - name: 回應快取中介軟體
           uid: performance/caching/middleware
+        - name: 使用 ObjectPool 重複使用物件
+          uid: performance/ObjectPool
     - name: 回應壓縮
       uid: performance/response-compression
     - name: 診斷工具

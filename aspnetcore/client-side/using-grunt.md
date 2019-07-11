@@ -5,12 +5,12 @@ description: 在 ASP.NET Core 中使用 Grunt
 ms.author: riande
 ms.date: 06/18/2019
 uid: client-side/using-grunt
-ms.openlocfilehash: 851ce3b50e88fee597518aef23276800f4b50f06
-ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
+ms.openlocfilehash: f3832bd1fe5721fbda114103ac11a8d55312bcb2
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207756"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813556"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>在 ASP.NET Core 中使用 Grunt
 
@@ -94,7 +94,7 @@ Grunt 是一個 JavaScript 工作執行器，它會會自動化指令碼縮製�
     ![grunt Intellisense](using-grunt/_static/devdependencies-grunt.png)
 
     > [!NOTE]
-    > 使用 NPM[語意版本設定](http://semver.org/)組織相依性。 語意版本設定，也就是 SemVer 識別套件的編號配置\<主要 >。\<次要 >。\<修補程式 >。 Intellisense 會顯示只有幾個常見的選擇，以簡化語意版本設定。 在 [Intellisense] 清單 (在上述範例中的 0.4.5) 頂端的項目會被視為封裝的最新穩定版本。 插入號 (^) 符號符合最新的主要版本和波狀符號 （~） 比對的最新的次要版本。 請參閱[NPM semver 版本剖析器參考](https://www.npmjs.com/package/semver)做為 SemVer 提供的完整表現度的指南。
+    > 使用 NPM[語意版本設定](https://semver.org/)組織相依性。 語意版本設定，也就是 SemVer 識別套件的編號配置\<主要 >。\<次要 >。\<修補程式 >。 Intellisense 會顯示只有幾個常見的選擇，以簡化語意版本設定。 在 [Intellisense] 清單 (在上述範例中的 0.4.5) 頂端的項目會被視為封裝的最新穩定版本。 插入號 (^) 符號符合最新的主要版本和波狀符號 （~） 比對的最新的次要版本。 請參閱[NPM semver 版本剖析器參考](https://www.npmjs.com/package/semver)做為 SemVer 提供的完整表現度的指南。
 
 3. 如下列範例所示，新增更多的相依性以針對 *clean*、*jshint*、*concat*、*uglify* 與 *watch* 載入 grunt-contrib-\* 套件。 版本不需要與範例相符。
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 此教學課程時間不長，會使用 ASP.NET Core 建立及執行基本的 Hello World 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 5/15/2019
+ms.date: 05/15/2019
 uid: getting-started
-ms.openlocfilehash: 9227dcfbc84376d9d73bc6fc0dd76085779acae1
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: c35251a0e49fbbffee7b8f5ea6905322b9042261
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610318"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814942"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
@@ -55,7 +55,7 @@ dotnet dev-certs https --trust
 
 ![安全性警告對話方塊](~/getting-started/_static/cert.png)
 
-若您同意信任開發憑證，請選取 [是]。
+若您同意信任開發憑證，請選取 [是]  。
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
@@ -88,7 +88,7 @@ cd aspnetcoreapp
 dotnet run
 ```
 
-命令殼層指出應用程式已啟動之後，瀏覽到 [https://localhost:5001](https://localhost:5001)。 按一下 [接受] 以接受隱私權與 Cookie 原則。 此應用程式不會保留個人資訊。
+命令殼層指出應用程式已啟動之後，瀏覽到 [https://localhost:5001](https://localhost:5001)。 按一下 [接受]  以接受隱私權與 Cookie 原則。 此應用程式不會保留個人資訊。
 
 ## <a name="edit-a-razor-page"></a>編輯 Razor 頁面
 

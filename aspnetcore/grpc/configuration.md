@@ -5,14 +5,14 @@ description: 了解如何設定 gRPC 的 ASP.NET Core 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 5/30/2019
+ms.date: 05/30/2019
 uid: grpc/configuration
-ms.openlocfilehash: 1f8250dc9aa8b82da384ee28287011baa19dc11f
-ms.sourcegitcommit: a1364109d11d414121a6337b611bee61d6e489e9
+ms.openlocfilehash: e269d701f45c0b852a9006107f0162cc5af2c38a
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66491240"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814917"
 ---
 # <a name="grpc-for-aspnet-core-configuration"></a>ASP.NET Core 組態 gRPC
 

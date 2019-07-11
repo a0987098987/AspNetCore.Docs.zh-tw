@@ -5,12 +5,12 @@ description: 了解跨網站指令碼 (XSS) 和解決此一漏洞的 ASP.NET Cor
 ms.author: riande
 ms.date: 10/02/2018
 uid: security/cross-site-scripting
-ms.openlocfilehash: 50f0211a2c64708d9b788dd10ce9064e66014d55
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 1e9e988be68313cfd493832519c1be89335d6e48
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895345"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815215"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>防止跨網站指令碼 (XSS) ASP.NET Core 中
 
@@ -57,7 +57,7 @@ Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您
 
 ## <a name="javascript-encoding-using-razor"></a>使用 Razor JavaScript 編碼
 
-有時候可能會想要將值插入您的檢視中要處理的 JavaScript。 執行這項作業的方法有兩種。 將值插入最安全的方法是將值放在標記的資料屬性，並擷取在 JavaScript 中。 例如: 
+有時候可能會想要將值插入您的檢視中要處理的 JavaScript。 執行這項作業的方法有兩種。 將值插入最安全的方法是將值放在標記的資料屬性，並擷取在 JavaScript 中。 例如:
 
 ```cshtml
 @{
@@ -214,7 +214,7 @@ services.AddSingleton<HtmlEncoder>(
 <p>This link text is in Chinese: <a href="/">汉语/漢語</a></p>
    ```
 
-安全清單範圍指定為 Unicode 字碼圖表，不是語言。 [Unicode 標準](http://unicode.org/)有一份[程式碼圖表](http://www.unicode.org/charts/index.html)可用來尋找圖表，其中包含您的字元。 每個編碼器、 Html、 JavaScript 和 Url，必須個別設定。
+安全清單範圍指定為 Unicode 字碼圖表，不是語言。 [Unicode 標準](https://unicode.org/)有一份[程式碼圖表](https://www.unicode.org/charts/index.html)可用來尋找圖表，其中包含您的字元。 每個編碼器、 Html、 JavaScript 和 Url，必須個別設定。
 
 > [!NOTE]
 > 自訂安全清單只會影響透過 DI 取得資料來源的編碼器。 如果您直接存取透過編碼器`System.Text.Encodings.Web.*Encoder.Default`然後預設值、 基本拉丁文將用於只安全清單。

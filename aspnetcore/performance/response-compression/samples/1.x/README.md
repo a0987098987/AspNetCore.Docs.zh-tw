@@ -17,6 +17,6 @@
 
 ## <a name="using-the-sample"></a>使用範例
 
-1. 請要求，使用[Fiddler](http://www.telerik.com/fiddler)， [Firebug](http://getfirebug.com/)，或[Postman](https://www.getpostman.com/)應用程式，而不需要`Accept-Encoding`標頭，並記下回應承載，回應大小和回應標頭。
+1. 請要求，使用[Fiddler](https://www.telerik.com/fiddler)， [Firebug](https://getfirebug.com/)，或[Postman](https://www.getpostman.com/)應用程式，而不需要`Accept-Encoding`標頭，並記下回應承載，回應大小和回應標頭。
 1. 新增`Accept-Encoding: gzip`標頭，並記下 壓縮的回應大小和回應標頭。 您會看到回應大小卸除，而`Content-Encoding: gzip`回應標頭會包含範例應用程式。 當您查看回應內文 Lorem Ipsum 或**testfile1kb.txt**回應，您會看到文字是壓縮的而且無法讀取。
 1. 新增`Accept-Encoding: mycustomcompression`標頭，並記下回應標頭。 `CustomCompressionProvider`是空的實作，並不實際壓縮回應，但您可以建立自訂的壓縮資料流包裝函式`CreateStream()`方法。

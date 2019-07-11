@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/17/2019
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: c3ec67d9f5c2b8eb44b5ced911ccfd0fa40a52a7
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 6254a74fd0a11669706a2a89b156a3223e300d1c
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152777"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813501"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>配套並縮短在 ASP.NET Core 中的靜態資產
 
@@ -86,7 +86,7 @@ MVC 和 Razor 頁面專案範本提供統合和縮製 JSON 組態檔所組成的
 設定選項包括：
 
 * `outputFileName`：組合檔案輸出名稱。 可以包含相對路徑*bundleconfig.json*檔案。 **required**
-* `inputFiles`：要組合在一起的檔案陣列。 這些是在組態檔的相對路徑。 **選擇性**，* 空的輸出檔案中的值是空的結果。 [萬用字元](http://www.tldp.org/LDP/abs/html/globbingref.html)支援模式。
+* `inputFiles`：要組合在一起的檔案陣列。 這些是在組態檔的相對路徑。 **選擇性**，* 空的輸出檔案中的值是空的結果。 [萬用字元](https://www.tldp.org/LDP/abs/html/globbingref.html)支援模式。
 * `minify`：輸出類型縮製的選項。 **選擇性**，*預設值- `minify: { enabled: true }`*
   * 每個輸出檔案類型有組態選項。
     * [CSS 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)

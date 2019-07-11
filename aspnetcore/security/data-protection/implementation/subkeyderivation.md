@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 資料保護實作詳細資料子機碼衍生�
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: 37e7b01700e8a6b755b5ed16a9d7d75a9eeb970e
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: bbfde378755b09cd5b1217b8cf66249b9fa1d6ad
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891835"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814380"
 ---
 # <a name="subkey-derivation-and-authenticated-encryption-in-aspnet-core"></a>子機碼衍生和驗證的加密，在 ASP.NET Core
 
@@ -37,7 +37,7 @@ AAD 是針對所有三個元件的元組唯一的因為我們可以使用它從�
 
 ( K_E, K_H ) = SP800_108_CTR_HMACSHA512(K_M, AAD, contextHeader || keyModifier)
 
-在這裡，我們正在撥打 NIST SP800 108 KDF 計數器模式中 (請參閱[NIST SP800 108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)，sec 5.1) 使用下列參數：
+在這裡，我們正在撥打 NIST SP800 108 KDF 計數器模式中 (請參閱[NIST SP800 108](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)，sec 5.1) 使用下列參數：
 
 * 金鑰衍生金鑰 (KDK) = K_M
 

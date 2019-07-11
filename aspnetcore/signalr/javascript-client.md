@@ -7,16 +7,16 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/17/2019
 uid: signalr/javascript-client
-ms.openlocfilehash: 1565aa38a69113781d7c272a1710298cccc1f045
-ms.sourcegitcommit: 3eedd6180fbbdcb81a8e1ebdbeb035bf4f2feb92
+ms.openlocfilehash: 8b645304b597db0c37fb9cd8814c493ca1c6ee62
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67284510"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814968"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 
-作者：[Rachel Appel](http://twitter.com/rachelappel)
+作者：[Rachel Appel](https://twitter.com/rachelappel)
 
 ASP.NET Core SignalR JavaScript 用戶端程式庫可讓開發人員呼叫伺服器端中樞的程式碼。
 
@@ -57,7 +57,7 @@ npm 會將套件內容安裝在 *node_modules\\@aspnet\signalr\dist\browser* 資
 
 ## <a name="call-hub-methods-from-client"></a>從用戶端呼叫中樞方法
 
-JavaScript 用戶端會透過 [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection) [invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) 方法呼叫中樞的公用方法。 `invoke` 方法接受兩個引數：
+JavaScript 用戶端會透過 [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection)[invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) 方法呼叫中樞的公用方法。           `invoke` 方法接受兩個引數：
 
 * 中樞方法的名稱。 在下列範例中，在中樞的方法名稱是`SendMessage`。
 * 中樞的方法中定義的任何引數。 在下列範例中，引數名稱是`message`。 範例程式碼會使用目前版本的 Internet Explorer 以外的所有主要瀏覽器都支援的箭號函式語法。

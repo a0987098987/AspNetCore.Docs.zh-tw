@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc
 ms.date: 02/27/2019
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 3cb878aff7bf0c6c8efe7f3f0c0f06c74acef477
-ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
+ms.openlocfilehash: 54117bf0dd45305d060eef5fecfb98ed45f8ecdb
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538735"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815294"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>使用 Azure Active Directory B2C 在 ASP.NET Core 中的雲端驗證
 
@@ -43,7 +43,7 @@ ms.locfileid: "67538735"
 
 ## <a name="register-the-app-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊應用程式
 
-在新建立的 Azure AD B2C 租用戶中註冊您的應用程式使用[文件中的步驟](/azure/active-directory-b2c/active-directory-b2c-app-registration#register-a-web-app)下方**註冊 web 應用程式**一節。 在停止**建立 web 應用程式用戶端祕密**一節。 本教學課程中，不需要用戶端祕密。 
+在新建立的 Azure AD B2C 租用戶中註冊您的應用程式使用[文件中的步驟](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application)下方**註冊 web 應用程式**一節。 在停止**建立 web 應用程式用戶端祕密**一節。 本教學課程中，不需要用戶端祕密。 
 
 使用下列值：
 
@@ -57,7 +57,7 @@ ms.locfileid: "67538735"
 | **包含原生用戶端**     | 否                        |                                                                                                                                                                                                    |
 
 > [!WARNING]
-> 如果設定非 localhost 回覆 URL，留意[條件約束 [回覆 URL] 清單中允許的項目](/azure/active-directory-b2c/active-directory-b2c-app-registration#choosing-a-web-app-or-api-reply-url)。 
+> 如果設定非 localhost 回覆 URL，留意[條件約束 [回覆 URL] 清單中允許的項目](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application)。 
 
 註冊 app 之後，會顯示租用戶中的應用程式清單。 選取剛剛已註冊的應用程式。 選取**複製**右邊的圖示**APPLICATION-ID**欄位，以將它複製到剪貼簿。
 
@@ -101,7 +101,7 @@ Visual Studio Web 應用程式範本可以設定要用於驗證的 Azure AD B2C 
 
 ## <a name="configure-policies"></a>設定原則
 
-使用 Azure AD B2C 文件中的步驟[建立註冊或登入原則](/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-sign-up-or-sign-in-policy)，然後[建立密碼重設原則](/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-password-reset-policy)。 使用提供的文件中的範例值**身分識別提供者**，**註冊屬性**，並**應用程式宣告**。 使用**立即執行**是選擇性的按鈕來測試原則，文件中所述。
+使用 Azure AD B2C 文件中的步驟[建立註冊或登入原則](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)，然後[建立密碼重設原則](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)。 使用提供的文件中的範例值**身分識別提供者**，**註冊屬性**，並**應用程式宣告**。 使用**立即執行**是選擇性的按鈕來測試原則，文件中所述。
 
 > [!WARNING]
 > 請確定 原則名稱，文件中所述完全是因為這些原則所使用的**變更驗證**Visual Studio 中的對話方塊。 中可驗證的原則名稱*appsettings.json*。
@@ -142,7 +142,7 @@ services.Configure<JwtBearerOptions>(
 
 已成功登入之後，瀏覽器重新導向至 web 應用程式。
 
-![成功](./azure-ad-b2c/_static/success.png)
+![Success](./azure-ad-b2c/_static/success.png)
 
 ## <a name="next-steps"></a>後續步驟
 

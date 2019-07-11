@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/13/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 78c63cf135ca92f0b5f6c6828b2ae34a44a7b36c
-ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
+ms.openlocfilehash: be176ed612be0773c4a5b52607c023da3856ac14
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65621004"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815322"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
 
@@ -27,14 +27,14 @@ ms.locfileid: "65621004"
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="packages"></a>封裝
+## <a name="packages"></a>Packages
 
 若要使用 Azure 金鑰保存庫的組態提供者，將新增的套件參考[Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/)封裝。
 
 採用[管理 Azure 資源的身分識別](/azure/active-directory/managed-identities-azure-resources/overview)案例中，新增的套件參考[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)封裝。
 
 > [!NOTE]
-> 在本文撰寫之際，最新穩定版本`Microsoft.Azure.Services.AppAuthentication`，版本`1.0.3`，可讓您[系統指派給受控身分識別](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka)。 支援*指派使用者給受控身分識別*位於`1.2.0-preview2`封裝。 本主題示範如何使用系統管理的身分識別，並提供的範例應用程式使用的版本`1.0.3`的`Microsoft.Azure.Services.AppAuthentication`封裝。
+> 在本文撰寫之際，最新穩定版本`Microsoft.Azure.Services.AppAuthentication`，版本`1.0.3`，可讓您[系統指派給受控身分識別](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)。 支援*指派使用者給受控身分識別*位於`1.2.0-preview2`封裝。 本主題示範如何使用系統管理的身分識別，並提供的範例應用程式使用的版本`1.0.3`的`Microsoft.Azure.Services.AppAuthentication`封裝。
 
 ## <a name="sample-app"></a>範例應用程式
 
@@ -120,11 +120,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 範例應用程式會使用的應用程式識別碼和 X.509 憑證的時機`#define`陳述式，在頂端*Program.cs*檔案設定為`Certificate`。
 
-1. 建立 PKCS #12 封存 (*.pfx*) 憑證。 建立憑證的選項包括[在 Windows 上的 MakeCert](/windows/desktop/seccrypto/makecert)並[OpenSSL](https://www.openssl.org/)。
+1. 建立 PKCS #12 封存 ( *.pfx*) 憑證。 建立憑證的選項包括[在 Windows 上的 MakeCert](/windows/desktop/seccrypto/makecert)並[OpenSSL](https://www.openssl.org/)。
 1. 將憑證安裝到目前使用者的個人憑證存放區。 將金鑰標示為可匯出是選擇性的。 請注意憑證的指紋，這將會稍後在此程序。
-1. 匯出 PKCS #12 封存 (*.pfx*) 做為 DER 編碼的憑證的憑證 (*.cer*)。
+1. 匯出 PKCS #12 封存 ( *.pfx*) 做為 DER 編碼的憑證的憑證 ( *.cer*)。
 1. 使用 Azure AD 註冊應用程式 (**應用程式註冊**)。
-1. 上傳 DER 編碼的憑證 (*.cer*) 至 Azure AD:
+1. 上傳 DER 編碼的憑證 ( *.cer*) 至 Azure AD:
    1. 在 Azure AD 中選取的應用程式。
    1. 瀏覽至**憑證與祕密**。
    1. 選取 **上傳憑證**來上傳包含公開金鑰的憑證。 A *.cer*， *.pem*，或 *.crt*是可接受的憑證。
@@ -135,8 +135,8 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. 選取 **新增**。
 1. 選取 **選取主體**依名稱選取的已註冊的應用程式。 選取 [**選取**] 按鈕。
 1. 開啟**祕密權限**，並提供應用程式與**取得**並**清單**權限。
-1. 選取 [確定]。
-1. 選取 [儲存]。
+1. 選取 [確定]  。
+1. 選取 [儲存]  。
 1. 部署應用程式。
 
 `Certificate`範例應用程式取得其組態值從`IConfigurationRoot`具有相同名稱與祕密名稱：

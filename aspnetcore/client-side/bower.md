@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 08/09/2018
 uid: client-side/bower
-ms.openlocfilehash: 08e6daa537c6c6f92a1cf80d70745e8ef606f580
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 1292b75bdfe1cea56d9c8bc282b0dd90fc945a33
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64892995"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813522"
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>用戶端使用管理套件在 ASP.NET Core 中的 Bower
 
@@ -22,9 +22,9 @@ ms.locfileid: "64892995"
 >
 > Webpack 使用 yarn 是一個常見的方法，為其[移轉指示](https://bower.io/blog/2017/how-to-migrate-away-from-bower/)可用。
 
-[Bower](https://bower.io/)呼叫其本身的 「 web 的套件管理員 」。 在.NET 生態系統，它會填滿 NuGet 無法傳遞靜態內容的檔案所留下的 void。 針對 ASP.NET Core 專案，這些靜態檔案會將用戶端程式庫，例如原本就[jQuery](http://jquery.com/)並[Bootstrap](http://getbootstrap.com/)。 針對.NET 程式庫，您仍然使用[NuGet](https://www.nuget.org/)封裝管理員。
+[Bower](https://bower.io/)呼叫其本身的 「 web 的套件管理員 」。 在.NET 生態系統，它會填滿 NuGet 無法傳遞靜態內容的檔案所留下的 void。 針對 ASP.NET Core 專案，這些靜態檔案會將用戶端程式庫，例如原本就[jQuery](https://jquery.com/)並[Bootstrap](https://getbootstrap.com/)。 針對.NET 程式庫，您仍然使用[NuGet](https://www.nuget.org/)封裝管理員。
 
-以設定用戶端的 ASP.NET Core 專案範本建立的專案建置程序。 [jQuery](http://jquery.com/)並[Bootstrap](http://getbootstrap.com/)安裝之後，而且 Bower 支援。
+以設定用戶端的 ASP.NET Core 專案範本建立的專案建置程序。 [jQuery](https://jquery.com/)並[Bootstrap](https://getbootstrap.com/)安裝之後，而且 Bower 支援。
 
 用戶端套件都會列入*bower.json*檔案。 ASP.NET Core 專案範本會設定*bower.json* jQuery、 jQuery 驗證與啟動程序。
 
@@ -50,7 +50,7 @@ ms.locfileid: "64892995"
 
 ![bower 版本 IntelliSense](bower/_static/version-intelliSense.png)
 
-Bower 用法[語意版本設定](http://semver.org/)組織相依性。 語意版本設定，也就是 SemVer 識別套件的編號配置\<主要 >。\<次要 >。\<修補程式 >。 IntelliSense 會顯示只有幾個常見的選擇，以簡化語意版本設定。 在 [IntelliSense] 清單 (在上述範例中的 4.6.3) 頂端的項目會被視為封裝的最新穩定版本。 插入號 (^) 符號符合最新的主要版本和波狀符號 （~） 比對的最新的次要版本。
+Bower 用法[語意版本設定](https://semver.org/)組織相依性。 語意版本設定，也就是 SemVer 識別套件的編號配置\<主要 >。\<次要 >。\<修補程式 >。 IntelliSense 會顯示只有幾個常見的選擇，以簡化語意版本設定。 在 [IntelliSense] 清單 (在上述範例中的 4.6.3) 頂端的項目會被視為封裝的最新穩定版本。 插入號 (^) 符號符合最新的主要版本和波狀符號 （~） 比對的最新的次要版本。
 
 儲存*bower.json*檔案。 Visual Studio 會監看*bower.json*變更的檔案。 在儲存時， *bower 安裝*執行命令。 請參閱 [輸出] 視窗**Bower/npm**檢視執行的確切命令。
 

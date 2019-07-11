@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/11/2019
 uid: performance/caching/memory
-ms.openlocfilehash: 1474dd397f2a8f83c7a1b0ead511b7f5751865bb
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ffd21f014c02f46d19364a7a54686b8d5c95dc1a
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894345"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815021"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -97,7 +97,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取為基礎[IMemoryC
 
 ![索引檢視，其中顯示兩個不同的時間](memory/_static/time.png)
 
-下列程式碼會使用[GetOrCreate](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__)並[GetOrCreateAsync](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___)快取資料。
+下列程式碼會使用[GetOrCreate](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.getorcreate#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__)並[GetOrCreateAsync](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.getorcreateasync#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___)快取資料。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet2&highlight=3-7,14-19)]
 
@@ -153,7 +153,7 @@ A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例示範如何在相依項目過期時將快取項目設定為過期。`CancellationChangeToken` 會新增至快取的項目。當在 `CancellationTokenSource` 上呼叫 `Cancel` 時，會撤出兩個快取項目。
+下列範例示範如何在相依項目過期時將快取項目設定為過期。           `CancellationChangeToken` 會新增至快取的項目。 當在 `CancellationTokenSource` 上呼叫 `Cancel` 時，會撤出兩個快取項目。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 

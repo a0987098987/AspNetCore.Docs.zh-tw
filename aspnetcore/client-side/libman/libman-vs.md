@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: d0494b96447ad2b256acbde7748209ff430ae7c1
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: ebfb405516d968bf5d5b8cff956a9892457027f2
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610180"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813465"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>使用 Visual Studio 中的 ASP.NET Core 使用 LibMan
 
@@ -28,7 +28,7 @@ Visual Studio 的內建支援[LibMan](xref:client-side/libman/index)在 ASP.NET 
 
 ## <a name="prerequisites"></a>必要條件
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)具有**ASP.NET 和 web 開發**工作負載
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) 和 **ASP.NET 與 Web 開發**工作負載
 
 ## <a name="add-library-files"></a>新增程式庫檔案
 
@@ -69,7 +69,7 @@ Visual Studio 的內建支援[LibMan](xref:client-side/libman/index)在 ASP.NET 
   |*頁面*專案中的資料夾                 |*Pages/jquery/*       |
 
 * 按一下 [**安裝**] 按鈕，下載的檔案，每個在組態*libman.json*。
-* 檢閱**程式庫管理員**摘要**輸出**安裝詳細資料 視窗。 例如: 
+* 檢閱**程式庫管理員**摘要**輸出**安裝詳細資料 視窗。 例如：
 
   ```console
   Restore operation started...
@@ -94,13 +94,13 @@ Visual Studio 的內建支援[LibMan](xref:client-side/libman/index)在 ASP.NET 
 
 **&#8224;** 如果*libman.json*檔案不存在的專案根目錄中，將會使用預設項目範本內容建立。
 
-Visual Studio 提供豐富編輯支援，像是顏色標示、 格式、 IntelliSense 和結構描述驗證的 JSON。 LibMan 資訊清單的 JSON 結構描述位於[ http://json.schemastore.org/libman ](http://json.schemastore.org/libman)。
+Visual Studio 提供豐富編輯支援，像是顏色標示、 格式、 IntelliSense 和結構描述驗證的 JSON。 LibMan 資訊清單的 JSON 結構描述位於[ https://json.schemastore.org/libman ](https://json.schemastore.org/libman)。
 
 下列資訊清單檔案時，LibMan 擷取檔案中定義的組態每`libraries`屬性。 物件常值中定義的說明`libraries`遵循：
 
 * 子集[jQuery](https://jquery.com/) 3.3.1 版會從 CDNJS 提供者。 中所定義的子集`files`屬性&mdash;*jquery.min.js*， *jquery.js*，以及*jquery.min.map*。 檔案會放在專案的*wwwroot/lib/jquery*資料夾。
 * 將整個[Bootstrap](https://getbootstrap.com/) 4.1.3 版會擷取並放置於*wwwroot/lib/啟動程序*資料夾。 物件常值`provider`屬性會覆寫`defaultProvider`屬性值。 LibMan 擷取 unpkg 提供者的啟動程序的檔案。
-* 子集[Lodash](https://lodash.com/)已核准的組織內的控管主體。 *Lodash.js*並*lodash.min.js*檔案會從本機檔案系統中擷取*c:\\temp\\lodash\\*。 檔案會複製到專案的*wwwroot/lib/lodash*資料夾。
+* 子集[Lodash](https://lodash.com/)已核准的組織內的控管主體。 *Lodash.js*並*lodash.min.js*檔案會從本機檔案系統中擷取*c:\\temp\\lodash\\* 。 檔案會複製到專案的*wwwroot/lib/lodash*資料夾。
 
 [!code-json[](samples/LibManSample/libman.json)]
 
@@ -160,7 +160,7 @@ LibMan 可以還原的已定義的程式庫檔案做為建置程序的一部分�
 雖然還原作業正在執行：
 
 * 在 Visual Studio 的 [狀態] 列上的工作狀態中心 (TSC) 圖示會變成動畫，以及將讀取*還原作業已開始*。 按一下圖示即可開啟列出的已知的背景工作的工具提示。
-* 會將訊息傳送至 [狀態] 列與**程式庫管理員**摘要**輸出**視窗。 例如: 
+* 會將訊息傳送至 [狀態] 列與**程式庫管理員**摘要**輸出**視窗。 例如：
 
   ```console
   Restore operation started...
@@ -185,7 +185,7 @@ LibMan 可以還原的已定義的程式庫檔案做為建置程序的一部分�
 當正在執行清除的作業：
 
 * Visual Studio 的 [狀態] 列 TSC 圖示項目建立動畫，並將讀取*用戶端程式庫作業啟動*。 按一下圖示即可開啟列出的已知的背景工作的工具提示。
-* 訊息會傳送至 [狀態] 列與**程式庫管理員**摘要**輸出**視窗。 例如: 
+* 訊息會傳送至 [狀態] 列與**程式庫管理員**摘要**輸出**視窗。 例如：
 
 ```console
 Clean libraries operation started...
@@ -201,7 +201,7 @@ Clean libraries operation completed
 
 * 開啟*libman.json*。
 * 放置在對應的插入號`libraries`物件常值。
-* 按一下左邊界中，會出現燈泡圖示，然後選取**解除安裝\<library_name > @\<library_version >**:
+* 按一下左邊界中，會出現燈泡圖示，然後選取**解除安裝\<library_name > @\<library_version >** :
 
   ![解除安裝程式庫操作功能表選項](_static/uninstall-menu-option.png)
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: performance/response-compression
-ms.openlocfilehash: e312d43fb62106f6ecb98367c29daa377bb227c9
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: d5d2da3dc0a8a452de97d98161d429389d2f7638
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893345"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815608"
 ---
 # <a name="response-compression-in-aspnet-core"></a>ASP.NET Core 中的回應壓縮
 
@@ -30,7 +30,7 @@ ms.locfileid: "64893345"
 
 * 無法使用下列伺服器為基礎的壓縮技術：
   * [IIS 動態壓縮模組](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
-  * [Apache mod_deflate 模組](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
+  * [Apache mod_deflate 模組](https://httpd.apache.org/docs/current/mod/mod_deflate.html)
   * [Nginx 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * 直接在裝載：
   * [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys)（先前稱為 WebListener）
@@ -70,7 +70,7 @@ ms.locfileid: "64893345"
 
 ::: moniker-end
 
-如需詳細資訊，請參閱 < [IANA 官方內容撰寫程式碼清單](http://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry)。
+如需詳細資訊，請參閱 < [IANA 官方內容撰寫程式碼清單](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry)。
 
 中介軟體可讓您新增額外的壓縮提供者的自訂`Accept-Encoding`標頭值。 如需詳細資訊，請參閱 <<c0> [ 自訂提供者](#custom-providers)如下。
 
@@ -146,7 +146,7 @@ public class Startup
 附註：
 
 * `app.UseResponseCompression` 必須在 `app.UseMvc` 之前呼叫。
-* 使用一種工具，例如[Fiddler](http://www.telerik.com/fiddler)， [Firebug](http://getfirebug.com/)，或[Postman](https://www.getpostman.com/)設`Accept-Encoding`要求標頭，然後研究回應標頭、 大小和主體。
+* 使用一種工具，例如[Fiddler](https://www.telerik.com/fiddler)， [Firebug](https://getfirebug.com/)，或[Postman](https://www.getpostman.com/)設`Accept-Encoding`要求標頭，然後研究回應標頭、 大小和主體。
 
 將要求提交到範例應用程式，而不需要`Accept-Encoding`標頭，並觀察回應是未壓縮。 `Content-Encoding`和`Vary`標頭不存在的回應。
 
@@ -385,4 +385,4 @@ public void ConfigureServices(IServiceCollection services)
 * [Mozilla 開發人員網路：Accept-Encoding](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
 * [RFC 7231 節 3.1.2.1:內容 Codings](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
 * [第 4.2.3 RFC 7230 節：Gzip 編碼](https://tools.ietf.org/html/rfc7230#section-4.2.3)
-* [GZIP 檔案格式規格 4.3 版](http://www.ietf.org/rfc/rfc1952.txt)
+* [GZIP 檔案格式規格 4.3 版](https://www.ietf.org/rfc/rfc1952.txt)

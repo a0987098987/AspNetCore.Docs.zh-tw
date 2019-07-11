@@ -7,16 +7,16 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 05/28/2019
 uid: client-side/spa-services
-ms.openlocfilehash: c7cd35865c5bddf0e5efaa9e616832b6755d9227
-ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
+ms.openlocfilehash: 19710b58bca606d21feda9069ad00edd1e4f72e9
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66750125"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813478"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>使用 JavaScript 服務來建立 ASP.NET Core 中的單一頁面應用程式
 
-藉由[Scott Addie](https://github.com/scottaddie)和[Fiyaz Hasan](http://fiyazhasan.me/)
+藉由[Scott Addie](https://github.com/scottaddie)和[Fiyaz Hasan](https://fiyazhasan.me/)
 
 單一頁面應用程式 (SPA) 是熱門的 web 應用程式，因為其本身的豐富使用者經驗類型。 整合用戶端 SPA 架構或程式庫，例如[Angular](https://angular.io/)或是[React](https://facebook.github.io/react/)，伺服器端架構，例如 ASP.NET Core 可能很困難。 若要減少摩擦整合程序中的開發 JavaScript 服務。 它可讓不同的用戶端和伺服器技術堆疊之間的無縫式作業。
 
@@ -96,7 +96,7 @@ npm i -S aspnet-prerendering
 
 ### <a name="asp-prerender-module-tag-helper"></a>asp prerender 模組標籤協助程式
 
-`asp-prerender-module`標籤協助程式，用於上述程式碼範例中，執行*ClientApp/dist/main-server.js*上透過 Node.js 伺服器。 為了清楚起見*主要 server.js*檔案是中的 TypeScript-JavaScript 的轉譯工作的成品[Webpack](http://webpack.github.io/)建置程序。 Webpack 定義的項目點別名`main-server`; 並在開始此別名的相依性圖形周遊*ClientApp/開機-server.ts*檔案：
+`asp-prerender-module`標籤協助程式，用於上述程式碼範例中，執行*ClientApp/dist/main-server.js*上透過 Node.js 伺服器。 為了清楚起見*主要 server.js*檔案是中的 TypeScript-JavaScript 的轉譯工作的成品[Webpack](https://webpack.github.io/)建置程序。 Webpack 定義的項目點別名`main-server`; 並在開始此別名的相依性圖形周遊*ClientApp/開機-server.ts*檔案：
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=53)]
 

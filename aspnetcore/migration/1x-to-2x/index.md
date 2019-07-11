@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: fb6157205ab5280eb982a61e834eea5074864830
-ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
+ms.openlocfilehash: 056930f3c586153d13555bbb6036f46587e2352d
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65450961"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815094"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>從 ASP.NET Core 1.x 遷移至 2.0
 
@@ -31,7 +31,7 @@ ms.locfileid: "65450961"
 
 ## <a name="update-target-framework-moniker-tfm"></a>更新 Target Framework Moniker (TFM)
 
-以 .NET Core 為目標的專案應該使用版本大於或等於 .NET Core 2.0 的 [TFM](/dotnet/standard/frameworks#referring-to-frameworks)。 在 *.csproj* 檔案中搜尋 `<TargetFramework>` 節點，並以 `netcoreapp2.0` 取代其內部文字：
+以 .NET Core 為目標的專案應該使用版本大於或等於 .NET Core 2.0 的 [TFM](/dotnet/standard/frameworks)。 在 *.csproj* 檔案中搜尋 `<TargetFramework>` 節點，並以 `netcoreapp2.0` 取代其內部文字：
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=3)]
 
@@ -56,9 +56,9 @@ ms.locfileid: "65450961"
 
 ## <a name="update-package-references"></a>更新套件參考
 
-1.x 專案中的 *.csproj* 檔案列出專案所使用的每個 NuGet 套件。
+1\.x 專案中的 *.csproj* 檔案列出專案所使用的每個 NuGet 套件。
 
-在以 .NET Core 2.0 為目標的 ASP.NET Core 2.0 專案中，*.csproj* 檔案中的單一[中繼套件](xref:fundamentals/metapackage) metapackage 參考會取代套件的集合：
+在以 .NET Core 2.0 為目標的 ASP.NET Core 2.0 專案中， *.csproj* 檔案中的單一[中繼套件](xref:fundamentals/metapackage) metapackage 參考會取代套件的集合：
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=8-10)]
 
@@ -84,7 +84,7 @@ ms.locfileid: "65450961"
 
 ## <a name="rename-package-target-fallback-property"></a>重新命名套件目標後援屬性
 
-1.x 專案的 *.csproj* 檔案使用 `PackageTargetFallback` 節點和變數：
+1\.x 專案的 *.csproj* 檔案使用 `PackageTargetFallback` 節點和變數：
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=5)]
 
@@ -186,7 +186,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
     [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Shared/_Layout.cshtml?range=1,19&dedent=4)]
 
-如果您要直接使用 Application Insights SDK，請繼續執行這項操作。 2.0 [中繼套件](xref:fundamentals/metapackage)含有最新版本的 Application Insights，因此如果您參考的是較舊的版本，就會出現套件降級錯誤。
+如果您要直接使用 Application Insights SDK，請繼續執行這項操作。 2\.0 [中繼套件](xref:fundamentals/metapackage)含有最新版本的 Application Insights，因此如果您參考的是較舊的版本，就會出現套件降級錯誤。
 
 <a name="auth-and-identity"></a>
 

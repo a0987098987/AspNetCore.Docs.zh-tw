@@ -4,14 +4,14 @@ author: rick-anderson
 description: 增加使用 ObjectPool 的 ASP.NET Core 應用程式中的效能的秘訣。
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
-ms.date: 4/11/2019
+ms.date: 04/11/2019
 uid: performance/ObjectPool
-ms.openlocfilehash: 92106d5add7dbda36e451614429baa0db420f0e8
-ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
+ms.openlocfilehash: 771f19e54a908b8b2cd85ff72f368f16e94a2310
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724832"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815517"
 ---
 # <a name="object-reuse-with-objectpool-in-aspnet-core"></a>使用 ASP.NET Core 中的 ObjectPool 物件重複使用
 

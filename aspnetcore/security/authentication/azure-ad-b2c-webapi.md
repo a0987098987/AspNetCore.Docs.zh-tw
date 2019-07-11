@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 09/21/2018
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 0eb8b533f44a1f72cfc3c4ec5ec060adb37eed6c
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: c917a5130857165716bd801ac19dad0f53a7d214
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610363"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815374"
 ---
 # <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>在 web Api 與 Azure Active Directory B2C 在 ASP.NET Core 中的驗證
 
@@ -46,11 +46,11 @@ Web Api 都沒有使用者介面，因為它們無法將使用者重新導向至
 
 ## <a name="configure-a-sign-up-or-sign-in-policy"></a>設定註冊或登入原則
 
-使用 Azure AD B2C 文件中的步驟[建立註冊或登入原則](/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-sign-up-or-sign-in-policy)。 命名原則**SiUpIn**。  使用提供的文件中的範例值**身分識別提供者**，**註冊屬性**，並**應用程式宣告**。 使用**立即執行**是選擇性的按鈕來測試原則，文件中所述。
+使用 Azure AD B2C 文件中的步驟[建立註冊或登入原則](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)。 命名原則**SiUpIn**。  使用提供的文件中的範例值**身分識別提供者**，**註冊屬性**，並**應用程式宣告**。 使用**立即執行**是選擇性的按鈕來測試原則，文件中所述。
 
 ## <a name="register-the-api-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 API
 
-API 使用新建立的 Azure AD B2C 租用戶中註冊[文件中的步驟](/azure/active-directory-b2c/active-directory-b2c-app-registration#register-a-web-api)下方**註冊 web API**一節。
+API 使用新建立的 Azure AD B2C 租用戶中註冊[文件中的步驟](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application)下方**註冊 web API**一節。
 
 使用下列值：
 
@@ -106,7 +106,7 @@ Visual Studio 建立 web API，具有名為控制器*ValuesController.cs*傳回�
 
 ### <a name="register-postman-as-a-web-app"></a>註冊為 web 應用程式的 Postman
 
-Postman 會模擬來自 Azure AD B2C 租用戶取得權杖的 web 應用程式，因為它必須註冊租用戶中為 web 應用程式。 註冊使用 Postman[文件中的步驟](/azure/active-directory-b2c/active-directory-b2c-app-registration#register-a-web-app)下方**註冊 web 應用程式**一節。 在停止**建立 web 應用程式用戶端祕密**一節。 本教學課程中，不需要用戶端祕密。 
+Postman 會模擬來自 Azure AD B2C 租用戶取得權杖的 web 應用程式，因為它必須註冊租用戶中為 web 應用程式。 註冊使用 Postman[文件中的步驟](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application)下方**註冊 web 應用程式**一節。 在停止**建立 web 應用程式用戶端祕密**一節。 本教學課程中，不需要用戶端祕密。 
 
 使用下列值：
 

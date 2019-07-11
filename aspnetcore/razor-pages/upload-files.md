@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 11/10/2018
 ms.custom: mvc, seodec18
 uid: razor-pages/upload-files
-ms.openlocfilehash: 07457d57b7d3b444c8cea818149569407f1dd8e8
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 14d10424951e8ec3c7909d001c6f86e5fcb45d26
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085722"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815036"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor 頁面
 
@@ -46,7 +46,7 @@ ms.locfileid: "65085722"
 
 ## <a name="add-a-fileupload-class"></a>新增 FileUpload 類別
 
-您可以建立 Razor Page 來處理一對檔案上傳。 新增 `FileUpload` 類別，以繫結至頁面並取得排程資料。 以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **FileUpload** 並新增下列屬性：
+您可以建立 Razor Page 來處理一對檔案上傳。 新增 `FileUpload` 類別，以繫結至頁面並取得排程資料。 以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增]   > [類別]  。 將類別命名為 **FileUpload** 並新增下列屬性：
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -64,7 +64,7 @@ ms.locfileid: "65085722"
 
 ## <a name="add-a-helper-method-to-upload-files"></a>新增可上傳檔案的 Helper 方法
 
-若要避免處理已上傳之排程檔案的程式碼有所重複，您可以新增靜態 Helper 方法。 在應用程式中，建立 *Utilities* 資料夾，並使用下列內容新增 *FileHelpers.cs* 檔案。 `ProcessFormFile` Helper 方法會採用 [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) 和 [ModelStateDictionary](/api/microsoft.aspnetcore.mvc.modelbinding.modelstatedictionary)，並傳回包含檔案大小及內容的字串。 系統會檢查內容類型和長度。 如果檔案未通過驗證檢查，`ModelState` 就會新增一項錯誤。
+若要避免處理已上傳之排程檔案的程式碼有所重複，您可以新增靜態 Helper 方法。 在應用程式中，建立 *Utilities* 資料夾，並使用下列內容新增 *FileHelpers.cs* 檔案。 `ProcessFormFile` Helper 方法會採用 [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) 和 [ModelStateDictionary](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelstatedictionary)，並傳回包含檔案大小及內容的字串。 系統會檢查內容類型和長度。 如果檔案未通過驗證檢查，`ModelState` 就會新增一項錯誤。
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -105,7 +105,7 @@ public async Task<IActionResult> OnPostAsync()
 背景工作處理序必須具備 `filePath` 指定之位置的寫入權限。
 
 > [!NOTE]
-> `filePath`「必須」包含檔案名稱。 如果未提供檔案名稱，則會在執行階段擲回 [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception)。
+> `filePath`「必須」  包含檔案名稱。 如果未提供檔案名稱，則會在執行階段擲回 [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception)。
 
 > [!WARNING]
 > 永遠不要將上傳的檔案保存在與應用程式相同的目錄樹狀結構中。
@@ -117,11 +117,11 @@ public async Task<IActionResult> OnPostAsync()
 
 ### <a name="save-the-file-to-azure-blob-storage"></a>將檔案儲存至 Azure Blob 儲存體
 
-若要將檔案內容上傳至 Azure Blob 儲存體，請參閱[以 .NET 開始使用 Azure Blob 儲存體](/azure/storage/blobs/storage-dotnet-how-to-use-blobs)。 本主題會示範如何使用 [UploadFromStream](/dotnet/api/microsoft.windowsazure.storage.file.cloudfile.uploadfromstreamasync) 將 [FileStream](/dotnet/api/system.io.filestream) 儲存至 Blob 儲存體。
+若要將檔案內容上傳至 Azure Blob 儲存體，請參閱[以 .NET 開始使用 Azure Blob 儲存體](/azure/storage/blobs/storage-dotnet-how-to-use-blobs)。 本主題會示範如何使用 [UploadFromStream](/dotnet/api/microsoft.azure.storage.file.cloudfile.uploadfromstreamasync) 將 [FileStream](/dotnet/api/system.io.filestream) 儲存至 Blob 儲存體。
 
 ## <a name="add-the-schedule-class"></a>新增 Schedule 類別
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Schedule** 並新增下列屬性：
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增]   > [類別]  。 將類別命名為 **Schedule** 並新增下列屬性：
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -186,9 +186,9 @@ Update-Database
 
 ::: moniker-end
 
-每個表單群組都包含 **\<標籤 >**，其會顯示每個類別屬性的名稱。 `FileUpload` 模型中的 `Display` 屬性提供標籤的顯示值。 例如，系統會將 `UploadPublicSchedule` 屬性的顯示名稱設為 `[Display(Name="Public Schedule")]`，因此當表單呈現時會顯示 "Public Schedule"。
+每個表單群組都包含 **\<標籤 >** ，其會顯示每個類別屬性的名稱。 `FileUpload` 模型中的 `Display` 屬性提供標籤的顯示值。 例如，系統會將 `UploadPublicSchedule` 屬性的顯示名稱設為 `[Display(Name="Public Schedule")]`，因此當表單呈現時會顯示 "Public Schedule"。
 
-每個表單群組包含驗證 **\<範圍>**。 如果使用者的輸入不符合 `FileUpload` 類別中所設的內容屬性，或若有任何 `ProcessFormFile` 方法的檔案驗證檢查失敗，則模型驗證會失敗。 模型驗證失敗時，系統會顯示對使用者很有幫助的驗證訊息。 例如，系統會將 `Title` 屬性附註 `[Required]` 和 `[StringLength(60, MinimumLength = 3)]`。 如果使用者未提供標題，則會收到訊息，指出該值為必要項目。 如果使用者輸入的值少於 3 個字元或超過 60 個字元，則會收到訊息，指出該值的長度有誤。 如果提供的檔案沒有任何內容，則會顯示訊息，指出檔案為空白。
+每個表單群組包含驗證 **\<範圍>** 。 如果使用者的輸入不符合 `FileUpload` 類別中所設的內容屬性，或若有任何 `ProcessFormFile` 方法的檔案驗證檢查失敗，則模型驗證會失敗。 模型驗證失敗時，系統會顯示對使用者很有幫助的驗證訊息。 例如，系統會將 `Title` 屬性附註 `[Required]` 和 `[StringLength(60, MinimumLength = 3)]`。 如果使用者未提供標題，則會收到訊息，指出該值為必要項目。 如果使用者輸入的值少於 3 個字元或超過 60 個字元，則會收到訊息，指出該值的長度有誤。 如果提供的檔案沒有任何內容，則會顯示訊息，指出檔案為空白。
 
 ## <a name="add-the-page-model"></a>新增頁面模型
 
@@ -329,19 +329,19 @@ Update-Database
 
 ![初始載入的排程 Razor 頁面，其中不含任何驗證錯誤和空白欄位](upload-files/_static/browser1.png)
 
-如果任何欄位未填妥就選取 [上傳] 按鈕，即會違反模型上的 `[Required]` 屬性。 `ModelState` 無效。 使用者會看到驗證錯誤訊息：
+如果任何欄位未填妥就選取 [上傳]  按鈕，即會違反模型上的 `[Required]` 屬性。 `ModelState` 無效。 使用者會看到驗證錯誤訊息：
 
 ![每個輸入控制項旁會出現驗證錯誤訊息](upload-files/_static/browser2.png)
 
-在 [標題] 欄位中鍵入兩個字母。 驗證訊息會變更為指出標題必須介於 3-60 個字元：
+在 [標題]  欄位中鍵入兩個字母。 驗證訊息會變更為指出標題必須介於 3-60 個字元：
 
 ![標題驗證訊息已變更](upload-files/_static/browser3.png)
 
-當上傳一或多個排程時，[Loaded Schedules] (載入排程) 區段會顯示載入的排程：
+當上傳一或多個排程時，[Loaded Schedules] (載入排程)  區段會顯示載入的排程：
 
 ![載入的排程表，其中顯示每個排程的標題、上傳日期 (UTC)、公用版本的檔案大小和私用版本的檔案大小](upload-files/_static/browser4.png)
 
-當使用者按一下這裡的 [刪除] 連結時，可前往刪除確認檢視，以選擇確認或取消刪除作業。
+當使用者按一下這裡的 [刪除]  連結時，可前往刪除確認檢視，以選擇確認或取消刪除作業。
 
 ## <a name="troubleshooting"></a>疑難排解
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 這個範例會示範整合到現有的 ASP.NET Core 應用程式的 Microsoft 帳戶使用者驗證。
 ms.author: riande
 ms.custom: mvc
-ms.date: 5/11/2019
+ms.date: 05/11/2019
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 16ec2d5f2bccc59958b884869ef42af9cfa13df0
-ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
+ms.openlocfilehash: 2c690e5bd8465806d42091616917cfdd747ef8f0
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67316594"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815567"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>使用 ASP.NET Core 的 Microsoft 帳戶外部登入設定
 

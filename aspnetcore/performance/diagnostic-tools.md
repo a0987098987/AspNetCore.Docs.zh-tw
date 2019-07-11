@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 04/11/2019
 uid: performance/diagnostic-tools
-ms.openlocfilehash: 66676b5a2b95b87bfbbd50022e279e35a12b9793
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: d273897b9ad26d57eb94b196b58f14019a96d07d
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894185"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815627"
 ---
 # <a name="performance-diagnostic-tools"></a>效能診斷工具
 
@@ -53,7 +53,7 @@ Application Insights 可以用於各種環境中：
 
 [PerfView](https://github.com/Microsoft/perfview)是一種效能分析工具，專為診斷.NET 效能問題的.NET 團隊所建立。 PerfView 可讓分析 CPU 使用量、 記憶體和 GC 的行為、 效能事件，以及時鐘時間。
 
-您可以深入了解 PerfView，以及如何開始使用[PerfView 的影片教學課程](http://channel9.msdn.com/Series/PerfView-Tutorial)或閱讀工具中可用的使用者指南或[在 GitHub 上](https://github.com/Microsoft/perfview)。
+您可以深入了解 PerfView，以及如何開始使用[PerfView 的影片教學課程](https://channel9.msdn.com/Series/PerfView-Tutorial)或閱讀工具中可用的使用者指南或[在 GitHub 上](https://github.com/Microsoft/perfview)。
 
 ## <a name="windows-performance-toolkit"></a>Windows 效能工具組
 

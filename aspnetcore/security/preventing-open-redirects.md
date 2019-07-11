@@ -5,12 +5,12 @@ description: 示範如何防止開啟重新導向攻擊將 ASP.NET Core 應用�
 ms.author: riande
 ms.date: 07/07/2017
 uid: security/preventing-open-redirects
-ms.openlocfilehash: 0896189d2caaccb19647eb7c6d57f29dfc0290dd
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9d8cac8708fe9aeadba5af1287362a20df7f6bfe
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891615"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815492"
 ---
 # <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>防止 ASP.NET Core 中的開啟重新導向攻擊
 
@@ -58,7 +58,7 @@ public IActionResult SomeAction(string redirectUrl)
 
 ### <a name="islocalurl"></a>IsLocalUrl
 
-使用[IsLocalUrl](/dotnet/api/Microsoft.AspNetCore.Mvc.IUrlHelper?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_)之前，先測試 Url 重新導向的方法：
+使用[IsLocalUrl](/dotnet/api/Microsoft.AspNetCore.Mvc.IUrlHelper.islocalurl#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_)之前，先測試 Url 重新導向的方法：
 
 下列範例示範如何檢查 URL 是否本機，再重新導向。
 

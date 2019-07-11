@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 06/03/2019
 uid: signalr/configuration
-ms.openlocfilehash: 662565e537fa0eb13ed80e558949740739a63558
-ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
+ms.openlocfilehash: 8c9fcaecb04555718f5da6a42a8e56c258e795af
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67500386"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813445"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 組態
 
@@ -159,7 +159,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 WebSocket 傳輸具有您可以使用設定的其他選項`WebSockets`屬性：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `CloseTimeout` | 5 秒 | 伺服器關閉，如果用戶端無法在此時間間隔內關閉後，會結束連接。 |
 | `SubProtocolSelector` | `null` | 委派，可以用來設定`Sec-WebSocket-Protocol`為某個自訂值的標頭。 委派會接收要求的用戶端，做為輸入值，並預期會傳回所需的值。 |
@@ -313,7 +313,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-SignalR Java 用戶端，在中，您可以設定要用於驗證所提供的存取語彙基元 factory，以持有人權杖[HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java)。 使用[withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__)提供[RxJava](https://github.com/ReactiveX/RxJava) [單一\<字串 >](http://reactivex.io/documentation/single.html)。 藉由呼叫[Single.defer](http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)，您可以撰寫邏輯，以針對您的用戶端產生存取權杖。
+SignalR Java 用戶端，在中，您可以設定要用於驗證所提供的存取語彙基元 factory，以持有人權杖[HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java)。 使用[withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__)提供[RxJava](https://github.com/ReactiveX/RxJava) [單一\<字串 >](https://reactivex.io/documentation/single.html)。 藉由呼叫[Single.defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)，您可以撰寫邏輯，以針對您的用戶端產生存取權杖。
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/myhub")
@@ -329,7 +329,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ServerTimeout` | 30 秒 （30,000 毫秒） | 伺服器活動的逾時。 如果伺服器未傳送訊息，此時間間隔中，用戶端會視為中斷連線的 server 和觸發程序`Closed`事件 (`onclose`在 JavaScript 中)。 此值必須夠大，從伺服器傳送的 ping 訊息**和**逾時間隔內收到用戶端。 建議的值是數字在至少兩倍的伺服器的`KeepAliveInterval`值，以允許 ping 抵達的時間。 |
 | `HandshakeTimeout` | 15 秒 | 初始伺服器交握的逾時。 如果伺服器不會傳送交握回應此時間間隔中，用戶端便會取消交握和觸發程序`Closed`事件 (`onclose`在 JavaScript 中)。 這是應該只在交握逾時錯誤是因嚴重的網路延遲而未發生才修改進階的設定。 如需詳細的交握程序的詳細資訊，請參閱[SignalR 中樞的通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -338,7 +338,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `serverTimeoutInMilliseconds` | 30 秒 （30,000 毫秒） | 伺服器活動的逾時。 如果伺服器未傳送訊息，此時間間隔中，用戶端會視為中斷連線的 server 和觸發程序`onclose`事件。 此值必須夠大，從伺服器傳送的 ping 訊息**和**逾時間隔內收到用戶端。 建議的值是數字在至少兩倍的伺服器的`KeepAliveInterval`值，以允許 ping 抵達的時間。 |
 

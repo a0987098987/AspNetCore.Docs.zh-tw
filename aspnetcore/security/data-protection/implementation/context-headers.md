@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 資料保護的內容標頭的實作詳細資�
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 2b8fd594672bf623d38bfae90d05a984f92ce6a3
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 518423f5df93924d3df144994e4beb1755cd0bfc
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087556"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814020"
 ---
 # <a name="context-headers-in-aspnet-core"></a>ASP.NET Core 中的內容標頭
 
@@ -48,7 +48,7 @@ ms.locfileid: "65087556"
 
 在理想情況下，我們可以 K_E 和 K_H 來傳遞所有零的向量。 不過，我們想要避免這種情況其中的基礎演算法檢查存在的弱式金鑰再執行任何作業 （尤其是 DES 和 3DES），無法讓您使用簡單或可重複的模式，例如全 0 的向量。
 
-相反地，我們使用 NIST SP800 108 KDF 計數器模式中 (請參閱[NIST SP800 108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)，sec 5.1) 使用長度為零的索引鍵、 標籤和內容和為基礎的 PRF HMACSHA512。 我們 |K_E |+ |K_H |位元組的輸出，然後分解成結果 K_E 和 K_H 本身。 以數學方式，這表示，如下所示。
+相反地，我們使用 NIST SP800 108 KDF 計數器模式中 (請參閱[NIST SP800 108](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)，sec 5.1) 使用長度為零的索引鍵、 標籤和內容和為基礎的 PRF HMACSHA512。 我們 |K_E |+ |K_H |位元組的輸出，然後分解成結果 K_E 和 K_H 本身。 以數學方式，這表示，如下所示。
 
 ( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")
 

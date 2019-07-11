@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/05/2019
 uid: test/integration-tests
-ms.openlocfilehash: 3af2a1f7c6a65d7ff42597972ee151a50fc95fb6
-ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
+ms.openlocfilehash: a4e22e53b4658a7c6da3c9e15671a355b212f559
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66716373"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815359"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -184,7 +184,7 @@ Web 主機組態可以建立獨立的測試類別，藉由繼承自`WebApplicati
   * 提交按鈕 (`IHtmlElement`)，從而形成值 (`IEnumerable<KeyValuePair<string, string>>`)
 
 > [!NOTE]
-> [AngleSharp](https://anglesharp.github.io/)第三方剖析供示範之用，本主題中的範例應用程式的程式庫。 AngleSharp 不支援，或整合測試的 ASP.NET Core 應用程式所需。 其他剖析器可以使用，例如[Html 靈活度組件 (HAP)](http://html-agility-pack.net/)。 另一種方法是撰寫程式碼來直接處理防偽系統的要求驗證語彙基元和防偽 cookie。
+> [AngleSharp](https://anglesharp.github.io/)第三方剖析供示範之用，本主題中的範例應用程式的程式庫。 AngleSharp 不支援，或整合測試的 ASP.NET Core 應用程式所需。 其他剖析器可以使用，例如[Html 靈活度組件 (HAP)](https://html-agility-pack.net/)。 另一種方法是撰寫程式碼來直接處理防偽系統的要求驗證語彙基元和防偽 cookie。
 
 ## <a name="customize-the-client-with-withwebhostbuilder"></a>自訂 WithWebHostBuilder 的用戶端
 
@@ -331,7 +331,7 @@ SUT 應用程式執行時，會產生下列標記：
 
 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是兩個應用程式所組成：
 
-| 應用程式 | 專案目錄 | 描述 |
+| App | 專案目錄 | 描述 |
 | --- | ----------------- | ----------- |
 | 訊息應用程式 (SUT) | *src/RazorPagesProject* | 允許使用者加入、 刪除其中一個、 全部刪除，以及分析訊息。 |
 | 測試應用程式 | *tests/RazorPagesProject.Tests* | 用來整合測試 SUT。 |

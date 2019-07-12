@@ -7,16 +7,16 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 4afc9ac0a3c54b452c6a1b23e4de31d7e2fc5284
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 302a5e10a70e40e75ab9fe4b3e5a98c4e847b822
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894145"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815224"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Spa 的驗證和授權
 
-3.0 或更新版本的 ASP.NET Core 可提供在單一頁面應用程式 (Spa) 中的驗證 API 授權使用的支援。 針對驗證和儲存使用者的 ASP.NET Core Identity 結合[IdentityServer](https://identityserver.io/)實作 Open ID Connect。
+3\.0 或更新版本的 ASP.NET Core 可提供在單一頁面應用程式 (Spa) 中的驗證 API 授權使用的支援。 針對驗證和儲存使用者的 ASP.NET Core Identity 結合[IdentityServer](https://identityserver.io/)實作 Open ID Connect。
 
 驗證參數已新增至**Angular**並**React**專案範本中的驗證參數的類似**Web 應用程式 （模型-檢視-控制器）** (MVC) 和**Web 應用程式**（Razor 頁面） 專案範本。 允許的參數值為**無**並**個別**。 **React.js 與 Redux**專案範本不支援這一次的驗證參數。
 
@@ -251,7 +251,7 @@ async populateWeatherData() {
 
 若要部署至 Azure 網站，部署應用程式中的步驟[將應用程式部署至 Azure](xref:tutorials/publish-to-azure-webapp-using-vs#deploy-the-app-to-azure)建立所需的 Azure 資源，並將應用程式部署至生產環境。
 
-遵循先前的指示之後, 應用程式部署至 Azure，但尚無法運作。 應用程式所使用的憑證仍然需要進行設定。 找出要使用憑證的指紋，並遵循所述的步驟[載入您的憑證](/azure/app-service/app-service-web-ssl-cert-load#load-your-certificates)。
+遵循先前的指示之後, 應用程式部署至 Azure，但尚無法運作。 應用程式所使用的憑證仍然需要進行設定。 找出要使用憑證的指紋，並遵循所述的步驟[載入您的憑證](/azure/app-service/app-service-web-ssl-cert-load#load-the-certificate-in-code)。
 
 雖然這些步驟提到 SSL，則**私用憑證**入口網站中的一節，您可以上傳要與應用程式所使用的佈建的憑證。
 

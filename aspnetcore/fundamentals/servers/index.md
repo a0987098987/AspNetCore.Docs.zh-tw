@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/01/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 6b4debdaf386bb596c600d3216e78c0cd0380f93
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 10876a61d40679b1a022ce9c58329bf53c36c1bb
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034853"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67855972"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -30,7 +30,7 @@ Kestrel 是內含於 ASP.NET Core 專案範本中的預設網頁伺服器。
 
   ![Kestrel 不使用反向 Proxy 伺服器直接與網際網路通訊](kestrel/_static/kestrel-to-internet2.png)
 
-* 搭配「反向 Proxy 伺服器」  使用，例如 [Internet Information Services (IIS)](https://www.iis.net/)、[Nginx](http://nginx.org) 或 [Apache](https://httpd.apache.org/)。 反向 Proxy 伺服器會從網際網路接收 HTTP 要求，然後轉送到 Kestrel。
+* 搭配「反向 Proxy 伺服器」  使用，例如 [Internet Information Services (IIS)](https://www.iis.net/)、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)。 反向 Proxy 伺服器會從網際網路接收 HTTP 要求，然後轉送到 Kestrel。
 
   ![Kestrel 透過 IIS、Nginx 或 Apache 等反向 Proxy 伺服器間接與網際網路通訊](kestrel/_static/kestrel-to-internet.png)
 
@@ -53,7 +53,7 @@ ASP.NET Core 隨附下列項目：
 * 位於與 IIS HTTP 伺服器的 IIS 背景工作處理序 ([同處理序代管模型](#hosting-models)) 相同的處理序中。 「同處理序」  是建議的設定。
 * 從 IIS 背景工作處理序中分離出的處理序 ([跨處理序裝載模型](#hosting-models))，並搭配 [Kestrel 伺服器](#kestrel)。
 
-[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)是一種原生 IIS 模組，可處理 IIS 與同處理序 IIS HTTP 伺服器或 Kestrel 之間的原生 IIS 要求。 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)是一種原生 IIS 模組，可處理 IIS 與同處理序 IIS HTTP 伺服器或 Kestrel 之間的原生 IIS 要求。 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module>。
 
 ## <a name="hosting-models"></a>裝載模型
 
@@ -128,7 +128,7 @@ ASP.NET Core 隨附 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)，這
 
 ## <a name="httpsys"></a>HTTP.sys
 
-如果您在 Windows 上執行 ASP.NET Core 應用程式，則 HTTP.sys 是 Kestrel 的替代方案。 通常建議使用 Kestrel 以達到最佳效能。 HTTP.sys 可以用於下列情況：應用程式公開到網際網路，且必要功能是由 HTTP.sys 而非 Kestrel 支援。 如需詳細資訊，請參閱<xref:fundamentals/servers/httpsys>。
+如果您在 Windows 上執行 ASP.NET Core 應用程式，則 HTTP.sys 是 Kestrel 的替代方案。 通常建議使用 Kestrel 以達到最佳效能。 HTTP.sys 可以用於下列情況：應用程式公開到網際網路，且必要功能是由 HTTP.sys 而非 Kestrel 支援。 如需詳細資訊，請參閱 <xref:fundamentals/servers/httpsys>。
 
 ![HTTP.sys 直接與網際網路通訊](httpsys/_static/httpsys-to-internet.png)
 

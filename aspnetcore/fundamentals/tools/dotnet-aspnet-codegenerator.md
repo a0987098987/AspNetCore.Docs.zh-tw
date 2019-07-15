@@ -1,16 +1,17 @@
 ---
 title: dotnet aspnet-codegenerator 命令
 author: rick-anderson
+description: dotnet aspnet-codegenerator 命令會架起 ASP.NET Core 專案。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-description: dotnet aspnet-codegenerator 命令會架起 ASP.NET Core 專案
 ms.date: 07/04/2019
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: 55b592d9d203970777c84438e210519957abb35d
-ms.sourcegitcommit: f6e6730872a7d6f039f97d1df762f0d0bd5e34cf
+ms.openlocfilehash: c96362f320efd84c35dc07294a2968a2c687ee94
+ms.sourcegitcommit: b9e914ef274b5ec359582f299724af6234dce135
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561681"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67596131"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -18,20 +19,20 @@ ms.locfileid: "67561681"
 
 `dotnet aspnet-codegenerator` - 執行 ASP.NET Core Scaffolding 引擎。 從命令列進行支架處理時才需要 `dotnet aspnet-codegenerator`，在 Visual Studio 中不需要進行 Scaffolding。
 
-此文章適用於 [.NET Core 2.2 SDK](https://dotnet.microsoft.com/download/dotnet-core/2.2) 與更新版本。
+本文適用於 [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/2.1) 與更新版本。
 
 ## <a name="installing-aspnet-codegenerator"></a>Installing aspnet-codegenerator
 
-`aspnet-codegenerator` 是必須安裝的[全域工具](/dotnet/core/tools/global-tools)。 下列命令會安裝 `aspnet-codegenerator` 工具的最新穩定版本：
+`dotnet-aspnet-codegenerator` 是必須安裝的[全域工具](/dotnet/core/tools/global-tools)。 下列命令會安裝 `dotnet-aspnet-codegenerator` 工具的最新穩定版本：
 
 ```console
-dotnet tool install -g aspnet-codegenerator
+dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
-下列命令會將 `aspnet-codegenerator` 更新到可從已安裝之 .NET Core SDK 中取得的最新穩定版本：
+下列命令會將 `dotnet-aspnet-codegenerator` 更新到可從已安裝之 .NET Core SDK 中取得的最新穩定版本：
 
 ```console
-dotnet tool update -g aspnet-codegenerator
+dotnet tool update -g dotnet-aspnet-codegenerator
 ```
 
 ## <a name="synopsis"></a>概要
@@ -43,7 +44,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 ## <a name="description"></a>說明
 
-`dotnet aspnet-codegenerator ` 全域命令會執行 ASP.NET Core 程式碼產生器與 Scaffolding 引擎。
+`dotnet aspnet-codegenerator` 全域命令會執行 ASP.NET Core 程式碼產生器與 Scaffolding 引擎。
 
 ## <a name="arguments"></a>引數
 
@@ -51,13 +52,13 @@ dotnet aspnet-codegenerator [-h|--help]
 
 要執行的程式碼產生器。 可用產生器如下︰
 
-| 產生器 | 運算 |
+| Generator | 運算 |
 | ----------------- | ------------ | 
 | 區域      | [架起區域](/aspnet/core/mvc/controllers/areas) |
   控制器| [架起控制器](/aspnet/core/tutorials/first-mvc-app/adding-model) |
   身分識別  | [架起身分識別](/aspnet/core/security/authentication/scaffold-identity) |
   razorpage | [架起 Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
-  檢視      | [架起檢視](/aspnet/core/mvc/views/overview) |
+  view      | [架起檢視](/aspnet/core/mvc/views/overview) |
 
 ## <a name="options"></a>選項
 
@@ -93,7 +94,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 以下各節詳細說明支援之產生器的可用選項：
 
-* 區域
+* 區域圖
 * 控制器
 * 身分識別  
 * Razorpage

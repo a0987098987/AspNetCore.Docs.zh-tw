@@ -4,14 +4,14 @@ author: prkhandelwal
 description: 此教學課程示範如何使用 MongoDB NoSQL 資料庫建立 ASP.NET Core Web API。
 ms.author: scaddie
 ms.custom: mvc, seodec18
-ms.date: 06/10/2019
+ms.date: 07/10/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 426b4c0dee290153b9b1bf83deec14fa728183cb
-ms.sourcegitcommit: f5762967df3be8b8c868229e679301f2f7954679
+ms.openlocfilehash: c64f6e69a19e294a18cc72c860af0a03ef70d444
+ms.sourcegitcommit: 357a7120632b20465801c093e4e5bd4a315496a8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048090"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67649198"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
 
@@ -109,6 +109,9 @@ ms.locfileid: "67048090"
       ]
     }
     ```
+  
+  > [!NOTE]
+  > 您執行此範例時的識別碼，將不同於本文中顯示的識別碼。
 
 1. 使用下列命令檢視資料庫中的文件：
 
@@ -318,11 +321,11 @@ ms.locfileid: "67048090"
     ]
     ```
 
-1. 巡覽至 `http://localhost:<port>/api/books/5bfd996f7b8e48dc15ff215e`，測試控制器的多載 `Get` 動作方法。 會顯示下列 JSON 回應：
+1. 巡覽至 `http://localhost:<port>/api/books/{id here}`，測試控制器的多載 `Get` 動作方法。 會顯示下列 JSON 回應：
 
     ```json
     {
-      "id":"5bfd996f7b8e48dc15ff215e",
+      "id":"{ID}",
       "bookName":"Clean Code",
       "price":43.15,
       "category":"Computers",

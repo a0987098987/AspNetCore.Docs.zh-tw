@@ -6,4 +6,4 @@
 
 使用轉送標頭中介軟體，使應用程式能夠使用原始要求資訊來處理要求。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/proxy-load-balancer>。

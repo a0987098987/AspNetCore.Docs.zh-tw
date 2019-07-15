@@ -44,7 +44,7 @@ dotnet aspnet-codegenerator identity -h
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files Account.Register
 ```
 
-PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，逸出分號區隔，在檔案清單，或置於雙引號括住的檔案清單。 例如: 
+PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，逸出分號區隔，在檔案清單，或置於雙引號括住的檔案清單。 例如：
 
 ```console
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"

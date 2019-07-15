@@ -9,6 +9,6 @@
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-有許多您可以下載的第三方工具來管理和檢視 SQLite 資料庫中，例如[SQLite 的資料庫瀏覽器](http://sqlitebrowser.org/)。
+有許多您可以下載的第三方工具來管理和檢視 SQLite 資料庫中，例如[SQLite 的資料庫瀏覽器](https://sqlitebrowser.org/)。
 
 ---

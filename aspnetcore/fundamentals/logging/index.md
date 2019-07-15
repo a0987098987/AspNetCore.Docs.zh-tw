@@ -4,14 +4,14 @@ author: tdykstra
 description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 03d494706fb18a28792fa2cfb93bed4c73791873
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 51433cbf35e434300fbefae29f33594e765bcc7b
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815107"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67855918"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -51,7 +51,7 @@ ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提�
 
 若要使用提供者，請安裝其 NuGet 套件，並在 <xref:Microsoft.Extensions.Logging.ILoggerFactory> 的執行個體上呼叫該提供者的擴充方法：
 
-[!code-csharp[](index/samples/1.x/TodoApiSample//Startup.cs?name=snippet_AddConsoleAndDebug&highlight=3,5-7)]
+[!code-csharp[](index/samples/1.x/TodoApiSample/Startup.cs?name=snippet_AddConsoleAndDebug&highlight=3,5-7)]
 
 ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提供 `ILoggerFactory` 執行個體。 `AddConsole` 和 `AddDebug` 擴充方法定義於 [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/) 和 [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/) 套件中。 每個擴充方法會呼叫 `ILoggerFactory.AddProvider` 方法，並傳入提供者的執行個體。
 
@@ -645,6 +645,8 @@ loggerFactory.AddConsole();
 
 [AddConsole 多載](xref:Microsoft.Extensions.Logging.ConsoleLoggerExtensions)可讓您傳入最低記錄層級、篩選函式，以及指出是否支援範圍的布林值。 另一個選項是傳入可指定範圍支援和記錄層級的 `IConfiguration` 物件。
 
+如需主控台提供者選項，請參閱 <xref:Microsoft.Extensions.Logging.Console.ConsoleLoggerOptions>。
+
 主控台提供者對效能有重大影響，因此通常不適合在生產環境中使用。
 
 當您在 Visual Studio 中建立新的專案時，`AddConsole` 方法看起來像這樣：
@@ -655,7 +657,7 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 此程式碼會參考 *appSettings.json* 檔案的 `Logging` 區段：
 
-[!code-json[](index/samples/1.x/TodoApiSample//appsettings.json)]
+[!code-json[](index/samples/1.x/TodoApiSample/appsettings.json)]
 
 上述設定會將架構記錄限制為警告，同時讓應用程式在偵錯層級記錄，如[記錄篩選](#log-filtering)一節中所述。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 

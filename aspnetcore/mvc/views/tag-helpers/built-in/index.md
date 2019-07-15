@@ -6,59 +6,22 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 9cca912f43159e778a4c9419e6171f06b4037b8b
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: f19cfa5b843bde8a8633ce778562707e566bebb9
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346007"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856100"
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>ASP.NET Core 內建的標記協助程式
 
-由 [Peter Kellner](http://peterkellner.net) 提供
+由 [Peter Kellner](https://peterkellner.net) 提供
 
 如需標籤協助程式的概觀，請參閱 <xref:mvc/views/tag-helpers/intro>。
 
-> [!NOTE]
-> 有一些內建標籤協助程式未在本文件中加以描述。 這些標籤協助程式供 [Razor](xref:mvc/views/razor) 檢視引擎在內部使用。 這包括 `~` (波狀符號) 字元的標籤協助程式，其可將範圍擴展到網站的根路徑。
+有一些內建標籤協助程式未列於本文件中。 未列出者是 [Razor](xref:mvc/views/razor) 檢視引擎在內部使用的標籤協助程式。 `~` (波狀符號) 字元的標籤協助程式並未列出。 波狀符號標籤協助程式會擴展到網站的根路徑。
 
-## <a name="built-in-aspnet-core-tag-helpers"></a>內建的 ASP.NET Core 標記協助程式
-
-**[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)**
-
-**[快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)**
-
-**[分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)**
-
-**[環境標記協助程式](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)**
-
-[comment]: **[FormActionTagHelper](xref:mvc/views/tag-helpers/builtin-th/form-action-tag-helper)**
-
-**[表單標記協助程式](xref:mvc/views/working-with-forms#the-form-tag-helper)**
-
-**[表單動作標記協助程式](xref:mvc/views/working-with-forms#the-form-action-tag-helper)**
-
-**[影像標記協助程式](xref:mvc/views/tag-helpers/builtin-th/image-tag-helper)**
-
-**[輸入標記協助程式](xref:mvc/views/working-with-forms#the-input-tag-helper)**
-
-**[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper)**
-
-[comment]: **[LinkTagHelper](xref:mvc/views/tag-helpers/builtin-th/link-tag-helper)**
-
-[comment]: **[OptionTagHelper](xref:mvc/views/tag-helpers/builtin-th/option-tag-helper)**
-
-[comment]: **[ScriptTagHelper](xref:mvc/views/tag-helpers/builtin-th/script-tag-helper)**
-
-**[部分標記協助程式](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)**
-
-**[選取標記協助程式](xref:mvc/views/working-with-forms#the-select-tag-helper)**
-
-**[Textarea 標記協助程式](xref:mvc/views/working-with-forms#the-textarea-tag-helper)**
-
-**[驗證訊息標記協助程式](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)**
-
-**[驗證摘要標記協助程式](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)**
+[!INCLUDE[](~/includes/built-in-TH.md)]
 
 ## <a name="additional-resources"></a>其他資源
 

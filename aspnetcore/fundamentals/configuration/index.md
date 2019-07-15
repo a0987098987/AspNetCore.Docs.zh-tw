@@ -5,14 +5,14 @@ description: 了解如何使用組態 API 設定 ASP.NET Core 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/24/2019
+ms.date: 07/11/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 81820e8161965fcca2f97d00708df5a29df668de
-ms.sourcegitcommit: 9691b742134563b662948b0ed63f54ef7186801e
+ms.openlocfilehash: 3351ab743ce38b78b1c5857e52020fdeda12cbe7
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2019
-ms.locfileid: "66824835"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67855821"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -21,6 +21,7 @@ ms.locfileid: "66824835"
 ASP.NET Core 中的應用程式設定是以由*設定提供者*所建立的機碼值組為基礎。 設定提供者會從各種設定來源將設定資料讀取到機碼值組中：
 
 * Azure Key Vault
+* Azure 應用程式組態
 * 命令列引數
 * 自訂提供者 (已安裝或已建立)
 * 目錄檔案
@@ -38,7 +39,7 @@ using Microsoft.Extensions.Configuration;
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="host-vs-app-configuration"></a>主機與應用程式設定的比較
+## <a name="host-versus-app-configuration"></a>主機與應用程式組態的比較
 
 設定及啟動應用程式之前，會先設定及啟動「主機」  。 主機負責應用程式啟動和存留期管理。 應用程式與主機都是使用此主題中所述的設定提供者來設定的。 主機設定機碼值組會成為應用程式全域設定的一部分。 如需建置主機時如何使用組態提供者，以及組態來源如何影響主機組態的詳細資訊，請參閱[主機](xref:fundamentals/index#host)。
 
@@ -68,7 +69,7 @@ using Microsoft.Extensions.Configuration;
 
 深入了解[如何使用多個環境](xref:fundamentals/environments)及[使用祕密管理員管理開發中的應用程式祕密安全儲存體](xref:security/app-secrets) (包括有關使用環境變數來存放敏感性資料的建議)。 「祕密管理員」使用「檔案設定提供者」以 JSON 檔案在本機系統上存放使用者祕密。 此主題稍後將說明「檔案設定提供者」。
 
-[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 是安全儲存應用程式祕密的一個選項。 如需詳細資訊，請參閱<xref:security/key-vault-configuration>。
+[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 是安全儲存應用程式祕密的一個選項。 如需詳細資訊，請參閱 <xref:security/key-vault-configuration>。
 
 ## <a name="hierarchical-configuration-data"></a>階層式設定資料
 
@@ -145,6 +146,7 @@ public class IndexModel : PageModel
 | 提供者 | 從&hellip;提供設定 |
 | -------- | ----------------------------------- |
 | [Azure Key Vault 設定提供者](xref:security/key-vault-configuration) (*安全性*主題) | Azure Key Vault |
+| [Azure 應用程式組態提供者](/azure/azure-app-configuration/quickstart-aspnet-core-app) (Azure 文件) | Azure 應用程式組態 |
 | [命令列設定提供者](#command-line-configuration-provider) | 命令列參數 |
 | [自訂設定提供者](#custom-configuration-provider) | 自訂來源 |
 | [環境變數設定提供者](#environment-variables-configuration-provider) | 環境變數 |
@@ -331,7 +333,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 [Azure App Service](https://azure.microsoft.com/services/app-service/) 允許您在 Azure 入口網站中設定環境變數，以使用「環境變數設定提供者」覆寫應用程式設定。 如需詳細資訊，請參閱 [Azure App：使用 Azure 入口網站覆寫應用程式設定](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal)。
 
-初始化新的 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 時，可使用 `AddEnvironmentVariables` 為[主機組態](#host-vs-app-configuration)載入字首為 `ASPNETCORE_` 的環境變數。 如需詳細資訊，請參閱 [Web 主機：設定主機](xref:fundamentals/host/web-host#set-up-a-host)。
+初始化新的 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 時，可使用 `AddEnvironmentVariables` 為[主機組態](#host-versus-app-configuration)載入字首為 `ASPNETCORE_` 的環境變數。 如需詳細資訊，請參閱 [Web 主機：設定主機](xref:fundamentals/host/web-host#set-up-a-host)。
 
 `CreateDefaultBuilder` 也會載入：
 
@@ -945,7 +947,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 ## <a name="bind-to-a-class"></a>繫結到類別
 
-設定可以繫結到類別，以使用*選項模式*代表相關設定的群組。 如需詳細資訊，請參閱<xref:fundamentals/configuration/options>。
+設定可以繫結到類別，以使用*選項模式*代表相關設定的群組。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/options>。
 
 設定值是以字串傳回，但是呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 會啟用 [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) 物件的建構。 `Bind` 在 [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
 
@@ -966,7 +968,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 | starship:class        | Constitution                                      |
 | starship:length       | 304.8                                             |
 | starship:commissioned | False                                             |
-| trademark             | Paramount Pictures Corp. http://www.paramount.com |
+| trademark             | Paramount Pictures Corp. https://www.paramount.com |
 
 範例應用程式使用 `starship` 機碼呼叫 `GetSection`。 `starship` 機碼值組會被隔離。 會在子區段上呼叫 `Bind` 方法，並傳入 `Starship` 類別的執行個體。 繫結執行個體值之後，執行個體會被指派給屬性以用於轉譯：
 
@@ -1232,7 +1234,7 @@ public class Startup
 
 ## <a name="add-configuration-from-an-external-assembly"></a>從外部組件新增設定
 
-<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱<xref:fundamentals/configuration/platform-specific-configuration>。
+<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration>。
 
 ## <a name="additional-resources"></a>其他資源
 

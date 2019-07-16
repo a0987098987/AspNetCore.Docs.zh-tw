@@ -1,3 +1,3 @@
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [.NET Core SDK 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-* [適用於 Visual Studio Code 1.17.1 版或更新版本的 C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [Visual Studio Code](https://code.visualstudio.com/download)
+* [.NET Core SDK 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) \(英文\)
+* [適用於 Visual Studio Code (最新版本) 的 C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)

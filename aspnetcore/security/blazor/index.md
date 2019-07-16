@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/26/2019
 uid: security/blazor/index
-ms.openlocfilehash: b3bca26e7088a8353084a065f9b9593c9d8e08e6
-ms.sourcegitcommit: 9bb29f9ba6f0645ee8b9cabda07e3a5aa52cd659
+ms.openlocfilehash: 097a747f68729109922af5c68dfd918024ee6146
+ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67406181"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67893621"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
 
@@ -41,7 +41,7 @@ Blazor 伺服器端專案範本可以在專案建立時為您設定驗證。
 
 請遵循 <xref:blazor/get-started> 一文中的 Visual Studio 指導方針，來建立具有驗證機制的新 Blazor 伺服器端專案。
 
-在 [建立新的 ASP.NET Core Web 應用程式]  對話方塊中選擇 [Blazor (伺服器端)]  範本之後，請選取 [驗證]  下的 [變更]  。
+在 [建立新的 ASP.NET Core Web 應用程式]  對話方塊中選擇 [Blazor 伺服器應用程式]  範本之後，請選取 [驗證]  下的 [變更]  。
 
 對話方塊隨即開啟，並提供可供其他 ASP.NET Core 專案使用的相同驗證機制集合：
 
@@ -64,7 +64,7 @@ dotnet new blazorserverside -o {APP NAME} -au {AUTHENTICATION}
 
 | 驗證機制                                                                 | `{AUTHENTICATION}` 值 |
 | ---------------------------------------------------------------------------------------- | :----------------------: |
-| 無驗證                                                                        | `None`                   |
+| 不需要驗證                                                                        | `None`                   |
 | 個人<br>搭配 ASP.NET Core 身分識別儲存在應用程式中的使用者。                        | `Individual`             |
 | 個人<br>儲存在 [Azure AD B2C](xref:security/authentication/azure-ad-b2c) 中的使用者。 | `IndividualB2C`          |
 | 公司或學校帳戶<br>適用於單一租用戶的組織驗證。            | `SingleOrg`              |

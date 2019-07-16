@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: cfbb50ea33ae3af577f13b00bccc75fe0be57f79
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ca05989efabea3a71c6912e98055a6746e0f5966
+ms.sourcegitcommit: 1bf80f4acd62151ff8cce517f03f6fa891136409
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64898145"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68223925"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>適用於 ASP.NET Core 的用戶端 IP 安全清單
 
@@ -23,7 +23,7 @@ ms.locfileid: "64898145"
 * 若要檢查遠端 IP 位址的要求特定的控制器或動作方法的動作篩選條件。
 * Razor 頁面的篩選條件來檢查遠端 IP 位址的 Razor 頁面的要求。
 
-範例應用程式說明這兩種方法。 在每個案例中，包含已核准的用戶端 IP 位址的字串會儲存在應用程式設定。 中介軟體或篩選器會將字串剖析成清單，並檢查 遠端 IP 是否在清單中。 如果沒有，則會傳回 HTTP 403 禁止狀態碼。
+在每個案例中，包含已核准的用戶端 IP 位址的字串會儲存在應用程式設定。 中介軟體或篩選器會將字串剖析成清單，並檢查 遠端 IP 是否在清單中。 如果沒有，則會傳回 HTTP 403 禁止狀態碼。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples/2.x/ClientIpAspNetCore) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -37,7 +37,7 @@ ms.locfileid: "64898145"
 
 `Configure`方法新增中介軟體，並在建構函式參數傳遞給它的安全清單的字串。
 
-[!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Startup.cs?name=snippet_Configure&highlight=7)]
+[!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Startup.cs?name=snippet_Configure&highlight=10)]
 
 中介軟體會將字串剖析成陣列，並尋找陣列中的遠端 IP 位址。 如果找不到的遠端 IP 位址中, 介軟體會傳回 HTTP 401 禁止。 HTTP Get 要求，會略過此驗證程序。
 

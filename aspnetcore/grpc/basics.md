@@ -6,73 +6,73 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/31/2019
 uid: grpc/basics
-ms.openlocfilehash: 00772144cb484b78a256f178642463577d316be2
-ms.sourcegitcommit: 516f166c5f7cec54edf3d9c71e6e2ba53fb3b0e5
+ms.openlocfilehash: 78d744d641396c449a142375c69730333f8183cd
+ms.sourcegitcommit: 1bf80f4acd62151ff8cce517f03f6fa891136409
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67196354"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68223877"
 ---
-# <a name="grpc-services-with-c"></a><span data-ttu-id="ed58d-103">使用 c# 的 gRPC 服務\#</span><span class="sxs-lookup"><span data-stu-id="ed58d-103">gRPC services with C\#</span></span>
+# <a name="grpc-services-with-c"></a><span data-ttu-id="7d311-103">使用 c# 的 gRPC 服務\#</span><span class="sxs-lookup"><span data-stu-id="7d311-103">gRPC services with C\#</span></span>
 
-<span data-ttu-id="ed58d-104">本文件概述撰寫所需的概念[gRPC](https://grpc.io/docs/guides/)中的應用程式C#。</span><span class="sxs-lookup"><span data-stu-id="ed58d-104">This document outlines the concepts needed to write [gRPC](https://grpc.io/docs/guides/) apps in C#.</span></span> <span data-ttu-id="ed58d-105">本主題同時適用於[C core](https://grpc.io/blog/grpc-stacks)-根據和 ASP.NET Core 為基礎的 gRPC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="ed58d-105">The topics covered here apply to both [C-core](https://grpc.io/blog/grpc-stacks)-based and ASP.NET Core-based gRPC apps.</span></span>
+<span data-ttu-id="7d311-104">本文件概述撰寫所需的概念[gRPC](https://grpc.io/docs/guides/)中的應用程式C#。</span><span class="sxs-lookup"><span data-stu-id="7d311-104">This document outlines the concepts needed to write [gRPC](https://grpc.io/docs/guides/) apps in C#.</span></span> <span data-ttu-id="7d311-105">本主題同時適用於[C core](https://grpc.io/blog/grpc-stacks)-根據和 ASP.NET Core 為基礎的 gRPC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="7d311-105">The topics covered here apply to both [C-core](https://grpc.io/blog/grpc-stacks)-based and ASP.NET Core-based gRPC apps.</span></span>
 
-## <a name="proto-file"></a><span data-ttu-id="ed58d-106">proto 檔案</span><span class="sxs-lookup"><span data-stu-id="ed58d-106">proto file</span></span>
+## <a name="proto-file"></a><span data-ttu-id="7d311-106">proto 檔案</span><span class="sxs-lookup"><span data-stu-id="7d311-106">proto file</span></span>
 
-<span data-ttu-id="ed58d-107">gRPC 使用合約優先方法 API 的開發。</span><span class="sxs-lookup"><span data-stu-id="ed58d-107">gRPC uses a contract-first approach to API development.</span></span> <span data-ttu-id="ed58d-108">依預設會以介面設計語言 (IDL) 為使用通訊協定緩衝區 (protobuf)。</span><span class="sxs-lookup"><span data-stu-id="ed58d-108">Protocol buffers (protobuf) are used as the Interface Design Language (IDL) by default.</span></span> <span data-ttu-id="ed58d-109">*.Proto*檔案包含：</span><span class="sxs-lookup"><span data-stu-id="ed58d-109">The *.proto* file contains:</span></span>
+<span data-ttu-id="7d311-107">gRPC 使用合約優先方法 API 的開發。</span><span class="sxs-lookup"><span data-stu-id="7d311-107">gRPC uses a contract-first approach to API development.</span></span> <span data-ttu-id="7d311-108">依預設會以介面設計語言 (IDL) 為使用通訊協定緩衝區 (protobuf)。</span><span class="sxs-lookup"><span data-stu-id="7d311-108">Protocol buffers (protobuf) are used as the Interface Design Language (IDL) by default.</span></span> <span data-ttu-id="7d311-109">*.Proto*檔案包含：</span><span class="sxs-lookup"><span data-stu-id="7d311-109">The *.proto* file contains:</span></span>
 
-* <span data-ttu-id="ed58d-110">GRPC 服務的定義。</span><span class="sxs-lookup"><span data-stu-id="ed58d-110">The definition of the gRPC service.</span></span>
-* <span data-ttu-id="ed58d-111">用戶端與伺服器之間傳送的訊息。</span><span class="sxs-lookup"><span data-stu-id="ed58d-111">The messages sent between clients and servers.</span></span>
+* <span data-ttu-id="7d311-110">GRPC 服務的定義。</span><span class="sxs-lookup"><span data-stu-id="7d311-110">The definition of the gRPC service.</span></span>
+* <span data-ttu-id="7d311-111">用戶端與伺服器之間傳送的訊息。</span><span class="sxs-lookup"><span data-stu-id="7d311-111">The messages sent between clients and servers.</span></span>
 
-<span data-ttu-id="ed58d-112">如需詳細的語法 protobuf 檔案的詳細資訊，請參閱[官方文件 (protobuf)](https://developers.google.com/protocol-buffers/docs/proto3)。</span><span class="sxs-lookup"><span data-stu-id="ed58d-112">For more information on the syntax of protobuf files, see the [official documentation (protobuf)](https://developers.google.com/protocol-buffers/docs/proto3).</span></span>
+<span data-ttu-id="7d311-112">如需詳細的語法 protobuf 檔案的詳細資訊，請參閱[官方文件 (protobuf)](https://developers.google.com/protocol-buffers/docs/proto3)。</span><span class="sxs-lookup"><span data-stu-id="7d311-112">For more information on the syntax of protobuf files, see the [official documentation (protobuf)](https://developers.google.com/protocol-buffers/docs/proto3).</span></span>
 
-<span data-ttu-id="ed58d-113">例如，請考慮*greet.proto*中所使用的檔案[開始使用 gRPC service](xref:tutorials/grpc/grpc-start):</span><span class="sxs-lookup"><span data-stu-id="ed58d-113">For example, consider the *greet.proto* file used in [Get started with gRPC service](xref:tutorials/grpc/grpc-start):</span></span>
+<span data-ttu-id="7d311-113">例如，請考慮*greet.proto*中所使用的檔案[開始使用 gRPC service](xref:tutorials/grpc/grpc-start):</span><span class="sxs-lookup"><span data-stu-id="7d311-113">For example, consider the *greet.proto* file used in [Get started with gRPC service](xref:tutorials/grpc/grpc-start):</span></span>
 
-* <span data-ttu-id="ed58d-114">定義`Greeter`服務。</span><span class="sxs-lookup"><span data-stu-id="ed58d-114">Defines a `Greeter` service.</span></span>
-* <span data-ttu-id="ed58d-115">`Greeter`服務會定義`SayHello`呼叫。</span><span class="sxs-lookup"><span data-stu-id="ed58d-115">The `Greeter` service defines a `SayHello` call.</span></span>
-* <span data-ttu-id="ed58d-116">`SayHello` 傳送`HelloRequest`訊息，並接收`HelloResponse`訊息：</span><span class="sxs-lookup"><span data-stu-id="ed58d-116">`SayHello` sends a `HelloRequest` message and receives a `HelloResponse` message:</span></span>
+* <span data-ttu-id="7d311-114">定義`Greeter`服務。</span><span class="sxs-lookup"><span data-stu-id="7d311-114">Defines a `Greeter` service.</span></span>
+* <span data-ttu-id="7d311-115">`Greeter`服務會定義`SayHello`呼叫。</span><span class="sxs-lookup"><span data-stu-id="7d311-115">The `Greeter` service defines a `SayHello` call.</span></span>
+* <span data-ttu-id="7d311-116">`SayHello` 傳送`HelloRequest`訊息，並接收`HelloReply`訊息：</span><span class="sxs-lookup"><span data-stu-id="7d311-116">`SayHello` sends a `HelloRequest` message and receives a `HelloReply` message:</span></span>
 
-[!code-proto[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/Protos/greet.proto)]
+[!code-protobuf[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/Protos/greet.proto)]
 
-## <a name="add-a-proto-file-to-a-c-app"></a><span data-ttu-id="ed58d-117">將.proto 檔案新增至 C\#應用程式</span><span class="sxs-lookup"><span data-stu-id="ed58d-117">Add a .proto file to a C\# app</span></span>
+## <a name="add-a-proto-file-to-a-c-app"></a><span data-ttu-id="7d311-117">將.proto 檔案新增至 C\#應用程式</span><span class="sxs-lookup"><span data-stu-id="7d311-117">Add a .proto file to a C\# app</span></span>
 
-<span data-ttu-id="ed58d-118">*.Proto*檔案包含在專案中將它加入至`<Protobuf>`項目群組：</span><span class="sxs-lookup"><span data-stu-id="ed58d-118">The *.proto* file is included in a project by adding it to the `<Protobuf>` item group:</span></span>
+<span data-ttu-id="7d311-118">*.Proto*檔案包含在專案中將它加入至`<Protobuf>`項目群組：</span><span class="sxs-lookup"><span data-stu-id="7d311-118">The *.proto* file is included in a project by adding it to the `<Protobuf>` item group:</span></span>
 
 [!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
 
-## <a name="c-tooling-support-for-proto-files"></a><span data-ttu-id="ed58d-119">C#.Proto 檔案的工具支援</span><span class="sxs-lookup"><span data-stu-id="ed58d-119">C# Tooling support for .proto files</span></span>
+## <a name="c-tooling-support-for-proto-files"></a><span data-ttu-id="7d311-119">C#.Proto 檔案的工具支援</span><span class="sxs-lookup"><span data-stu-id="7d311-119">C# Tooling support for .proto files</span></span>
 
-<span data-ttu-id="ed58d-120">工具套件[Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/)才能產生C#中的資產 *.proto*檔案。</span><span class="sxs-lookup"><span data-stu-id="ed58d-120">The tooling package [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/) is required to generate the C# assets from *.proto* files.</span></span> <span data-ttu-id="ed58d-121">產生的資產 （檔案）：</span><span class="sxs-lookup"><span data-stu-id="ed58d-121">The generated assets (files):</span></span>
+<span data-ttu-id="7d311-120">工具套件[Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/)才能產生C#中的資產 *.proto*檔案。</span><span class="sxs-lookup"><span data-stu-id="7d311-120">The tooling package [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/) is required to generate the C# assets from *.proto* files.</span></span> <span data-ttu-id="7d311-121">產生的資產 （檔案）：</span><span class="sxs-lookup"><span data-stu-id="7d311-121">The generated assets (files):</span></span>
 
-* <span data-ttu-id="ed58d-122">會產生可視需要在每次建置專案。</span><span class="sxs-lookup"><span data-stu-id="ed58d-122">Are generated on an as-needed basis each time the project is built.</span></span>
-* <span data-ttu-id="ed58d-123">不會加入至專案，或簽入原始檔控制。</span><span class="sxs-lookup"><span data-stu-id="ed58d-123">Aren't added to the project or checked into source control.</span></span>
-* <span data-ttu-id="ed58d-124">會包含在組建成品*obj*目錄。</span><span class="sxs-lookup"><span data-stu-id="ed58d-124">Are a build artifact contained in the *obj* directory.</span></span>
+* <span data-ttu-id="7d311-122">會產生可視需要在每次建置專案。</span><span class="sxs-lookup"><span data-stu-id="7d311-122">Are generated on an as-needed basis each time the project is built.</span></span>
+* <span data-ttu-id="7d311-123">不會加入至專案，或簽入原始檔控制。</span><span class="sxs-lookup"><span data-stu-id="7d311-123">Aren't added to the project or checked into source control.</span></span>
+* <span data-ttu-id="7d311-124">會包含在組建成品*obj*目錄。</span><span class="sxs-lookup"><span data-stu-id="7d311-124">Are a build artifact contained in the *obj* directory.</span></span>
 
-<span data-ttu-id="ed58d-125">此套件所需的伺服器和用戶端專案中。</span><span class="sxs-lookup"><span data-stu-id="ed58d-125">This package is required by both the server and client projects.</span></span> <span data-ttu-id="ed58d-126">`Grpc.Tools` 您可以加入 Visual Studio 中使用封裝管理員，或新增`<PackageReference>`souboru projektu:</span><span class="sxs-lookup"><span data-stu-id="ed58d-126">`Grpc.Tools` can be added by using the Package Manager in Visual Studio or adding a `<PackageReference>` to the project file:</span></span>
+<span data-ttu-id="7d311-125">此套件所需的伺服器和用戶端專案中。</span><span class="sxs-lookup"><span data-stu-id="7d311-125">This package is required by both the server and client projects.</span></span> <span data-ttu-id="7d311-126">`Grpc.Tools` 您可以加入 Visual Studio 中使用封裝管理員，或新增`<PackageReference>`souboru projektu:</span><span class="sxs-lookup"><span data-stu-id="7d311-126">`Grpc.Tools` can be added by using the Package Manager in Visual Studio or adding a `<PackageReference>` to the project file:</span></span>
 
 [!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=1&range=15)]
 
-<span data-ttu-id="ed58d-127">執行階段不需要工具套件，因此相依性會標示為 `PrivateAssets="All"`。</span><span class="sxs-lookup"><span data-stu-id="ed58d-127">The tooling package isn't required at runtime, so the dependency is marked with `PrivateAssets="All"`.</span></span>
+<span data-ttu-id="7d311-127">執行階段不需要工具套件，因此相依性會標示為 `PrivateAssets="All"`。</span><span class="sxs-lookup"><span data-stu-id="7d311-127">The tooling package isn't required at runtime, so the dependency is marked with `PrivateAssets="All"`.</span></span>
 
-## <a name="generated-c-assets"></a><span data-ttu-id="ed58d-128">產生C#資產</span><span class="sxs-lookup"><span data-stu-id="ed58d-128">Generated C# assets</span></span>
+## <a name="generated-c-assets"></a><span data-ttu-id="7d311-128">產生C#資產</span><span class="sxs-lookup"><span data-stu-id="7d311-128">Generated C# assets</span></span>
 
-<span data-ttu-id="ed58d-129">工具套件會產生C#類型代表的定義中包含的訊息 *.proto*檔案。</span><span class="sxs-lookup"><span data-stu-id="ed58d-129">The tooling package generates the C# types representing the messages defined in the included *.proto* files.</span></span>
+<span data-ttu-id="7d311-129">工具套件會產生C#類型代表的定義中包含的訊息 *.proto*檔案。</span><span class="sxs-lookup"><span data-stu-id="7d311-129">The tooling package generates the C# types representing the messages defined in the included *.proto* files.</span></span>
 
-<span data-ttu-id="ed58d-130">針對伺服器端資產產生服務的抽象基底型別。</span><span class="sxs-lookup"><span data-stu-id="ed58d-130">For server-side assets, an abstract service base type is generated.</span></span> <span data-ttu-id="ed58d-131">基底型別包含所有 gRPC 呼叫中所包含的定義 *.proto*檔案。</span><span class="sxs-lookup"><span data-stu-id="ed58d-131">The base type contains the definitions of all the gRPC calls contained in the *.proto* file.</span></span> <span data-ttu-id="ed58d-132">建立衍生自這個基底型別並實作 gRPC 呼叫的邏輯實體的服務實作。</span><span class="sxs-lookup"><span data-stu-id="ed58d-132">Create a concrete service implementation that derives from this base type and implements the logic for the gRPC calls.</span></span> <span data-ttu-id="ed58d-133">針對`greet.proto`，範例先前所述，抽象`GreeterBase`型別，包含虛擬`SayHello`方法產生。</span><span class="sxs-lookup"><span data-stu-id="ed58d-133">For the `greet.proto`, the example described previously, an abstract `GreeterBase` type that contains a virtual `SayHello` method is generated.</span></span> <span data-ttu-id="ed58d-134">具象實作`GreeterService`覆寫方法，並實作處理 gRPC 呼叫的邏輯。</span><span class="sxs-lookup"><span data-stu-id="ed58d-134">A concrete implementation `GreeterService` overrides the method and implements the logic handling the gRPC call.</span></span>
+<span data-ttu-id="7d311-130">針對伺服器端資產產生服務的抽象基底型別。</span><span class="sxs-lookup"><span data-stu-id="7d311-130">For server-side assets, an abstract service base type is generated.</span></span> <span data-ttu-id="7d311-131">基底型別包含所有 gRPC 呼叫中所包含的定義 *.proto*檔案。</span><span class="sxs-lookup"><span data-stu-id="7d311-131">The base type contains the definitions of all the gRPC calls contained in the *.proto* file.</span></span> <span data-ttu-id="7d311-132">建立衍生自這個基底型別並實作 gRPC 呼叫的邏輯實體的服務實作。</span><span class="sxs-lookup"><span data-stu-id="7d311-132">Create a concrete service implementation that derives from this base type and implements the logic for the gRPC calls.</span></span> <span data-ttu-id="7d311-133">針對`greet.proto`，範例先前所述，抽象`GreeterBase`型別，包含虛擬`SayHello`方法產生。</span><span class="sxs-lookup"><span data-stu-id="7d311-133">For the `greet.proto`, the example described previously, an abstract `GreeterBase` type that contains a virtual `SayHello` method is generated.</span></span> <span data-ttu-id="7d311-134">具象實作`GreeterService`覆寫方法，並實作處理 gRPC 呼叫的邏輯。</span><span class="sxs-lookup"><span data-stu-id="7d311-134">A concrete implementation `GreeterService` overrides the method and implements the logic handling the gRPC call.</span></span>
 
 [!code-csharp[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/Services/GreeterService.cs?name=snippet)]
 
-<span data-ttu-id="ed58d-135">針對用戶端資產產生實體的用戶端類型。</span><span class="sxs-lookup"><span data-stu-id="ed58d-135">For client-side assets, a concrete client type is generated.</span></span> <span data-ttu-id="ed58d-136">在中，呼叫 gRPC *.proto*檔案會轉譯成具象類型，可呼叫的方法。</span><span class="sxs-lookup"><span data-stu-id="ed58d-136">The gRPC calls in the *.proto* file are translated into methods on the concrete type, which can be called.</span></span> <span data-ttu-id="ed58d-137">針對`greet.proto`，範例先前所述，具體`GreeterClient`會產生型別。</span><span class="sxs-lookup"><span data-stu-id="ed58d-137">For the `greet.proto`, the example described previously, a concrete `GreeterClient` type is generated.</span></span> <span data-ttu-id="ed58d-138">呼叫`GreeterClient.SayHello`起始 gRPC 呼叫給伺服器。</span><span class="sxs-lookup"><span data-stu-id="ed58d-138">Call `GreeterClient.SayHello` to initiate a gRPC call to the server.</span></span>
+<span data-ttu-id="7d311-135">針對用戶端資產產生實體的用戶端類型。</span><span class="sxs-lookup"><span data-stu-id="7d311-135">For client-side assets, a concrete client type is generated.</span></span> <span data-ttu-id="7d311-136">在中，呼叫 gRPC *.proto*檔案會轉譯成具象類型，可呼叫的方法。</span><span class="sxs-lookup"><span data-stu-id="7d311-136">The gRPC calls in the *.proto* file are translated into methods on the concrete type, which can be called.</span></span> <span data-ttu-id="7d311-137">針對`greet.proto`，範例先前所述，具體`GreeterClient`會產生型別。</span><span class="sxs-lookup"><span data-stu-id="7d311-137">For the `greet.proto`, the example described previously, a concrete `GreeterClient` type is generated.</span></span> <span data-ttu-id="7d311-138">呼叫`GreeterClient.SayHello`起始 gRPC 呼叫給伺服器。</span><span class="sxs-lookup"><span data-stu-id="7d311-138">Call `GreeterClient.SayHello` to initiate a gRPC call to the server.</span></span>
 
 [!code-csharp[](~/tutorials//grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?highlight=5-8&name=snippet)]
 
-<span data-ttu-id="ed58d-139">根據預設，為每個產生伺服器和用戶端的資產 *.proto*檔案中包含`<Protobuf>`項目群組。</span><span class="sxs-lookup"><span data-stu-id="ed58d-139">By default, server and client assets are generated for each *.proto* file included in the `<Protobuf>` item group.</span></span> <span data-ttu-id="ed58d-140">若要確保只有伺服器資產在伺服器專案中，產生`GrpcServices`屬性設為`Server`。</span><span class="sxs-lookup"><span data-stu-id="ed58d-140">To ensure only the server assets are generated in a server project, the `GrpcServices` attribute is set to `Server`.</span></span>
+<span data-ttu-id="7d311-139">根據預設，為每個產生伺服器和用戶端的資產 *.proto*檔案中包含`<Protobuf>`項目群組。</span><span class="sxs-lookup"><span data-stu-id="7d311-139">By default, server and client assets are generated for each *.proto* file included in the `<Protobuf>` item group.</span></span> <span data-ttu-id="7d311-140">若要確保只有伺服器資產在伺服器專案中，產生`GrpcServices`屬性設為`Server`。</span><span class="sxs-lookup"><span data-stu-id="7d311-140">To ensure only the server assets are generated in a server project, the `GrpcServices` attribute is set to `Server`.</span></span>
 
 [!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
 
-<span data-ttu-id="ed58d-141">同樣地，此屬性設為`Client`用戶端專案中。</span><span class="sxs-lookup"><span data-stu-id="ed58d-141">Similarly, the attribute is set to `Client` in client projects.</span></span>
+<span data-ttu-id="7d311-141">同樣地，此屬性設為`Client`用戶端專案中。</span><span class="sxs-lookup"><span data-stu-id="7d311-141">Similarly, the attribute is set to `Client` in client projects.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="ed58d-142">其他資源</span><span class="sxs-lookup"><span data-stu-id="ed58d-142">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="7d311-142">其他資源</span><span class="sxs-lookup"><span data-stu-id="7d311-142">Additional resources</span></span>
 
 * <xref:grpc/index>
 * <xref:tutorials/grpc/grpc-start>

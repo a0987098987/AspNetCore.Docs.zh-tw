@@ -5,14 +5,14 @@ description: 了解如何在 Windows Server Internet Information Services (IIS) 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/28/2019
+ms.date: 07/16/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 2dab8b4839d6778d5dc6a3daf96c1719eecfe0fb
-ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
+ms.openlocfilehash: 644d84f9adba650b3ef10ba69cc75c22845be211
+ms.sourcegitcommit: 7e00e8236ca4eabf058f07020a5a3882daf7564f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67394629"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68239255"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -338,7 +338,7 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="create-the-iis-site"></a>建立 IIS 網站
 
-1. 在主控系統上，請建立資料夾以容納應用程式的已發行資料夾和檔案。 應用程式的部署配置已詳述於[目錄結構](xref:host-and-deploy/directory-structure)主題。
+1. 在主控系統上，請建立資料夾以容納應用程式的已發行資料夾和檔案。 在下列步驟中，您提供資料夾路徑給 IIS，作為應用程式的實體路徑。 如需應用程式之部署資料夾和檔案配置的詳細資訊，請參閱 <xref:host-and-deploy/directory-structure>。
 
 1. 在 [IIS 管理員] 中，於 [連線]  面板中開啟伺服器的節點。 以滑鼠右鍵按一下 [網站]  資料夾。 從操作功能表選取 [新增網站]  。
 
@@ -372,11 +372,11 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="deploy-the-app"></a>部署應用程式
 
-將應用程式部署至在主控系統上建立的資料夾。 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) 是建議的部署機制。
+將應用程式部署至在[建立 IIS 網站](#create-the-iis-site)一節中所建立的 IIS **實體路徑**資料夾。 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) 是建議的部署機制，但有數個選項可將應用程式從專案的 [publish]  資料夾移動至主機系統的部署資料夾。
 
 ### <a name="web-deploy-with-visual-studio"></a>使用 Visual Studio 的 Web Deploy
 
-請參閱[適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles#publish-profiles)主題，了解如何建立搭配 Web Deploy 使用的發行設定檔。 如果裝載提供者提供或支援建立發行設定檔，請下載其設定檔，並使用 Visual Studio 的 [發行]  對話方塊匯入其設定檔。
+請參閱[適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles#publish-profiles)主題，了解如何建立搭配 Web Deploy 使用的發行設定檔。 如果主機服務提供者提供或支援建立發行設定檔，請下載其設定檔，並使用 Visual Studio 的 [發行]  對話方塊匯入其設定檔：
 
 ![[發佈] 對話方塊頁](index/_static/pub-dialog.png)
 
@@ -386,11 +386,15 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="alternatives-to-web-deploy"></a>Web Deploy 的替代項目
 
-使用數種方法的其中一種將應用程式移到主控系統，例如手動複製、Xcopy、Robocopy 或 PowerShell。
+使用數種方法的其中一種將應用程式移到主機系統，例如手動複製、[Xcopy](/windows-server/administration/windows-commands/xcopy)、[Robocopy](/windows-server/administration/windows-commands/robocopy) 或 [PowerShell](/powershell/)。
 
 如需 IIS 的 ASP.NET Core 部署詳細資訊，請參閱 [IIS 系統管理員的部署資源](#deployment-resources-for-iis-administrators)一節。
 
 ## <a name="browse-the-website"></a>瀏覽網站
+
+應用程式部署到主機系統之後，請向其中一個應用程式的公用端點發出要求。
+
+在下列範例中，網站繫結至 IIS 上的**連接埠** `80`，其**主機名稱**為 `www.mysite.com`。 對 `http://www.mysite.com` 發出要求：
 
 ![Microsoft Edge 瀏覽器已載入 IIS 啟動頁面。](index/_static/browsewebsite.png)
 

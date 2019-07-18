@@ -3,14 +3,14 @@ title: 將搜尋新增至 ASP.NET Core Razor 頁面
 author: rick-anderson
 description: 示範如何將搜尋新增至 ASP.NET Core Razor 頁面
 ms.author: riande
-ms.date: 12/3/2018
+ms.date: 12/03/2018
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: d0ce13e87c3f5e66008f308f6258403ea37b8847
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 5fc262f92b6a8de68ca8499a4647a9d2fb1450dd
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884573"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815631"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>將搜尋新增至 ASP.NET Core Razor 頁面
 
@@ -18,7 +18,7 @@ ms.locfileid: "64884573"
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-在下列各節中，會新增依「內容類型」或「名稱」搜尋電影。
+在下列各節中，會新增依「內容類型」  或「名稱」  搜尋電影。
 
 將下列反白顯示的屬性新增至 *Pages/Movies/Index.cshtml.cs*：
 
@@ -43,7 +43,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-這時候，系統只會「定義」查詢，而尚**未**對資料庫執行查詢。
+這時候，系統只會「定義」查詢  ，而尚**未**對資料庫執行查詢。
 
 如果 `SearchString` 屬性不是 Null 或空白，則會修改電影查詢來篩選搜尋字串：
 
@@ -51,7 +51,7 @@ var movies = from m in _context.Movie
 
 `s => s.Title.Contains()` 程式碼是一種 [Lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)。 在以方法為基礎的 [LINQ](/dotnet/csharp/programming-guide/concepts/linq/) 查詢中，會將 Lambda 作為標準查詢運算子方法的引數，例如 [Where](/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) 方法或 `Contains` (用於上述程式碼)。 定義 LINQ 查詢或藉由呼叫像是 `Where`、`Contains` 或 `OrderBy` 等方法進行修改時，並不會加以執行。 而會延後執行查詢。 這表示系統會延遲評估運算式，直到該運算式的實現值受到逐一查看，或呼叫 `ToListAsync` 方法為止。 如需詳細資訊，請參閱[查詢執行](/dotnet/framework/data/adonet/ef/language-reference/query-execution)。
 
-**注意：**[Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 方法是在資料庫上執行，而不是在 C# 程式碼中執行。 查詢是否區分大小寫取決於資料庫和定序。 在 SQL Server 上，`Contains` 對應至 [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql)，因此不區分大小寫。 而在 SQLlite 中，由於使用預設定序，因此會區分大小寫。
+**注意：** [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 方法是在資料庫上執行，而不是在 C# 程式碼中執行。 查詢是否區分大小寫取決於資料庫和定序。 在 SQL Server 上，`Contains` 對應至 [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql)，因此不區分大小寫。 而在 SQLlite 中，由於使用預設定序，因此會區分大小寫。
 
 巡覽至 Movies 頁面，並將 `?searchString=Ghost` 這類查詢字串附加至 URL (例如，`https://localhost:5001/Movies?searchString=Ghost`)。 隨即顯示篩選過的電影。
 

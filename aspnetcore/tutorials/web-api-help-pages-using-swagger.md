@@ -6,16 +6,16 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/20/2018
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: fb65b84b781b5c19040b559f0d7635ceb00cf4a0
-ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
+ms.openlocfilehash: 06a942ca213c7c0a58932494be0ed23cb6896d48
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67316569"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856097"
 ---
 # <a name="aspnet-core-web-api-help-pages-with-swagger--openapi"></a>使用 Swagger/OpenAPI 的 ASP.NET Core Web API 說明頁面
 
-作者：[Christoph Nienaber](https://twitter.com/zuckerthoben) 和 [Rico Suter](http://rsuter.com)
+作者：[Christoph Nienaber](https://twitter.com/zuckerthoben) 和 [Rico Suter](https://blog.rsuter.com/)
 
 使用 Web API 時，了解其各種不同的方法對開對發人員來說可能是一項挑戰。 [Swagger](https://swagger.io/) (也稱為 [Open API](https://www.openapis.org/)) 解決為 Web API 產生有用文件與說明頁面的問題。 它提供如互動式文件、用戶端 SDK 產生作業和 API 發現性等優點。
 
@@ -113,7 +113,7 @@ Swagger 流程的核心是 Swagger 規格&mdash;根據預設，文件名為 *swa
 ![範例 Swagger GET 測試](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
 
 > [!NOTE]
-> 用於螢幕擷取畫面的 Swagger UI 版本為第 2 版。 如需第 3 版的範例，請參閱 [Petstore 範例](http://petstore.swagger.io/)。
+> 用於螢幕擷取畫面的 Swagger UI 版本為第 2 版。 如需第 3 版的範例，請參閱 [Petstore 範例](https://petstore.swagger.io/)。
 
 ## <a name="next-steps"></a>後續步驟
 

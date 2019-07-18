@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 04/06/2019
 monikerRange: '>= aspnetcore-2.1'
 uid: mvc/models/validation
-ms.openlocfilehash: 9737e45729b4e5abd9a33824c4d6610ca21681c0
-ms.sourcegitcommit: c5339594101d30b189f61761275b7d310e80d18a
+ms.openlocfilehash: 43b69e9b7588ad575f203200c5bc59a4272d0066
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2019
-ms.locfileid: "66458483"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814104"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和 Razor Pages 中的模型驗證
 
@@ -315,7 +315,7 @@ $.get({
 
 [!code-javascript[](validation/sample/wwwroot/js/classicMovieValidator.js?name=snippet_UnobtrusiveValidation)]
 
-如需如何撰寫配接器的資訊，請參閱 [jQuery 驗證文件](http://jqueryvalidation.org/documentation/)。
+如需如何撰寫配接器的資訊，請參閱 [jQuery 驗證文件](https://jqueryvalidation.org/documentation/)。
 
 用於指定欄位之配接器的使用，是由 `data-` 屬性觸發，因此會：
 

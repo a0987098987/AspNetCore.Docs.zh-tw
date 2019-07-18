@@ -5,22 +5,22 @@ description: 了解如何使用應用程式組件 (也就是應用程式資源�
 ms.author: riande
 ms.date: 01/04/2017
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 5d5e79d3afe0eee6d0b126d4642ccd5f61bff409
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9d0b4b5fadcc287172f23fa36c421f04ca2ade4a
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888133"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815487"
 ---
 # <a name="application-parts-in-aspnet-core"></a>ASP.NET Core 的應用程式組件
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-「應用程式組件」是應用程式資源的抽象概念，其中您可以探索到控制器、檢視元件或標籤協助程式等 MVC 功能。 應用程式組件的其中一個範例是 AssemblyPart，其會封裝組件參考，並將類型與編譯參考公開。 「功能提供者」會使用應用程式組件，來填入 ASP.NET Core MVC 應用程式的功能。 應用程式組件的主要使用案例是讓您設定應用程式，以探索 (或避免載入) 組件中的 MVC 功能。
+「應用程式組件」  是應用程式資源的抽象概念，其中您可以探索到控制器、檢視元件或標籤協助程式等 MVC 功能。 應用程式組件的其中一個範例是 AssemblyPart，其會封裝組件參考，並將類型與編譯參考公開。 「功能提供者」  會使用應用程式組件，來填入 ASP.NET Core MVC 應用程式的功能。 應用程式組件的主要使用案例是讓您設定應用程式，以探索 (或避免載入) 組件中的 MVC 功能。
 
 ## <a name="introducing-application-parts"></a>應用程式組件簡介
 
-MVC 應用程式會從[應用程式組件](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart)載入其功能。 值得注意的是，[AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) 類別代表組件所支援的應用程式組件。 您可以使用這些類別來探索及載入 MVC 功能，例如控制器、檢視元件、標籤協助程式和 Razor 編譯來源。 [ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) 負責追蹤適用於 MVC 應用程式的應用程式組件和功能提供者。 您可以在設定 MVC 時與 `Startup` 中的 `ApplicationPartManager` 互動：
+MVC 應用程式會從[應用程式組件](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart)載入其功能。 值得注意的是，[AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart) 類別代表組件所支援的應用程式組件。 您可以使用這些類別來探索及載入 MVC 功能，例如控制器、檢視元件、標籤協助程式和 Razor 編譯來源。 [ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) 負責追蹤適用於 MVC 應用程式的應用程式組件和功能提供者。 您可以在設定 MVC 時與 `Startup` 中的 `ApplicationPartManager` 互動：
 
 ```csharp
 // create an assembly part from a class's assembly
@@ -37,7 +37,7 @@ services.AddMvc()
 
 MVC 預設會搜尋相依性樹狀結構，並尋找控制器 (即使位於其他組件中)。 您可以使用應用程式組件，來載入任意組件 (例如來自未於編譯時期參考的外掛程式)。
 
-您可以使用應用程式組件，來「避免」尋找特定組件或位置中的控制器。 藉由修改 `ApplicationPartManager` 的 `ApplicationParts` 集合，您可以控制要提供給應用程式哪些組件。 `ApplicationParts` 集合中的項目順序並不重要。 請務必完全設定 `ApplicationPartManager` 之後，再用它來設定容器中的服務。 例如，您應該完全設定 `ApplicationPartManager` 之後，再叫用 `AddControllersAsServices`。 如果您沒有這麼做，於呼叫該方法之後才新增的應用程式組件控制器就不會受到影響 (亦無法註冊為服務)，而這可能會造成應用程式的行為異常。
+您可以使用應用程式組件，來「避免」  尋找特定組件或位置中的控制器。 藉由修改 `ApplicationPartManager` 的 `ApplicationParts` 集合，您可以控制要提供給應用程式哪些組件。 `ApplicationParts` 集合中的項目順序並不重要。 請務必完全設定 `ApplicationPartManager` 之後，再用它來設定容器中的服務。 例如，您應該完全設定 `ApplicationPartManager` 之後，再叫用 `AddControllersAsServices`。 如果您沒有這麼做，於呼叫該方法之後才新增的應用程式組件控制器就不會受到影響 (亦無法註冊為服務)，而這可能會造成應用程式的行為異常。
 
 如果組件包含您不想使用的控制器，請將它從 `ApplicationPartManager` 移除：
 

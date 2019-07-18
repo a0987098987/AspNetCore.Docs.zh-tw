@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 02/12/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 44e6f53d517b0470c5e6fa785a4061e59cda9ce6
-ms.sourcegitcommit: 20ca93d72cb0b3998637724b44523e57b089c8fd
+ms.openlocfilehash: be9f515178d0169a69487f917c7d39c6f11f1292
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473602"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815055"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -28,9 +28,9 @@ ms.locfileid: "65473602"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie**。
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增]   > [類別]  。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -45,13 +45,13 @@ ms.locfileid: "65473602"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
-* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [新增檔案]。
-* 在 [新增檔案] 對話方塊中：
+* 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
+* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]   > [新增檔案]  。
+* 在 [新增檔案]  對話方塊中：
 
-  * 在左窗格中選取 [一般]。
-  * 在中央窗格中選取 [類別是空的]。
-  * 將類別命名為 **Movie**，然後選取 [新增]。
+  * 在左窗格中選取 [一般]  。
+  * 在中央窗格中選取 [類別是空的]  。
+  * 將類別命名為 **Movie**，然後選取 [新增]  。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -69,22 +69,26 @@ ms.locfileid: "65473602"
 
 建立 *Pages/Movies* 資料夾：
 
-* 以滑鼠右鍵按一下 *Pages* 資料夾 > [新增] > [新增資料夾]。
+* 以滑鼠右鍵按一下 *Pages* 資料夾 > [新增]   > [新增資料夾]  。
 * 將資料夾命名為 *Movies*
 
-以滑鼠右鍵按一下 *Pages/Movies* 資料夾 > [新增] > [新增 Scaffolded 項目]。
+以滑鼠右鍵按一下 *Pages/Movies* 資料夾 > [新增]   > [新增 Scaffolded 項目]  。
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)] > [新增]。
+在 [新增 Scaffold]  對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)]   > [新增]  。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
-完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\) 對話方塊：
+完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)  對話方塊：
+<!-- In the next section, change 
+(plus) sign and accept the generated name 
+to use Data, it should not use models. That will make the namespace the same for the VS version and the CLI version
+-->
 
-* 在 [模型類別] 下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)。
-* 在 [資料內容類別] 列中選取 [+] (加號)，並接受產生的名稱 **RazorPagesMovie.Models.RazorPagesMovieContext**。
-* 選取 [新增]。
+* 在 [模型類別]  下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)  。
+* 在 [資料內容類別]  列中選取 [+]  (加號)，並接受產生的名稱 **RazorPagesMovie.Models.RazorPagesMovieContext**。
+* 選取 [新增]  。
 
 ![前述指示中的圖片。](model/_static/arp.png)
 
@@ -159,7 +163,7 @@ ms.locfileid: "65473602"
 * 新增初始移轉。
 * 以初始移轉更新資料庫。
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+從 [工具]  功能表中，選取 [NuGet 套件管理員]   > [套件管理員主控台]  。
 
   ![PMC 功能表](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -218,7 +222,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 
 ---
 
-`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
+`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱 <xref:data/ef-mvc/migrations>。
 
 `Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
 

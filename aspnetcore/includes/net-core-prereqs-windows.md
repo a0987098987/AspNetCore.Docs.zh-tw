@@ -1,4 +1,4 @@
-[Visual Studio 2017 15.7.3 版或更新版本](https://visualstudio.microsoft.com/downloads/)具有下列工作負載：
+[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) 和下列工作負載：
 
 * **ASP.NET 與網頁程式開發**
 * **.NET Core 跨平台開發**

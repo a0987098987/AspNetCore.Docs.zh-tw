@@ -3,14 +3,14 @@ title: ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 author: rick-anderson
 description: 在本教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。
 ms.author: riande
-ms.date: 6/31/2017
+ms.date: 06/30/2017
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 406b94d74a99dcec3b2ce01a5eb3313c48819148
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: 54225a8126e04eb4ff3a6a0cde9d305249299887
+ms.sourcegitcommit: 1bf80f4acd62151ff8cce517f03f6fa891136409
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65517007"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68223872"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 
@@ -35,11 +35,11 @@ https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 ## <a name="drop-the-database"></a>卸除資料庫
 
-使用 [SQL Server 物件總管] (SSOX) 或 `database drop` 命令：
+使用 [SQL Server 物件總管]  (SSOX) 或 `database drop` 命令：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [套件管理員主控台] (PMC) 中，執行下列命令：
+在 [套件管理員主控台]  (PMC) 中，執行下列命令：
 
 ```PMC
 Drop-Database
@@ -81,7 +81,7 @@ dotnet ef database update
 
 ### <a name="examine-the-up-and-down-methods"></a>檢查 Up 和 Down 方法
 
-EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 此移轉程式碼位於 Migrations\<時間戳記>_InitialCreate.cs 檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
+EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 此移轉程式碼位於 Migrations\<時間戳記>_InitialCreate.cs  檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
 
 [!code-csharp[](intro/samples/cu21/Migrations/20180626224812_InitialCreate.cs?range=7-24,77-88)]
 
@@ -100,7 +100,7 @@ EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 �
 
 ### <a name="the-data-model-snapshot"></a>資料模型快照集
 
-移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照」。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
+移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照」  。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
 
 若要刪除移轉，請使用下列命令：
 
@@ -126,7 +126,7 @@ remove migrations 命令會刪除移轉，並確保正確地重設快照集。
 
 * 略過移轉，並建立資料庫和結構描述。
 * 不會建立移轉資料表。
-* 「無法」與移轉搭配使用。
+* 「無法」  與移轉搭配使用。
 * 設計用來測試或快速原型化經常卸除並重新建立資料庫的位置。
 
 移除 `EnsureCreated`：

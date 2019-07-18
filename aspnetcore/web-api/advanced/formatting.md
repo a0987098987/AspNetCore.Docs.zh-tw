@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 05/29/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 7628565d8646c0a057e28aa54dc9ce9198750c15
-ms.sourcegitcommit: 9ae1fd11f39b0a72b2ae42f0b450345e6e306bc0
+ms.openlocfilehash: b050011aa38743353fb2a7d133abcdca0b8c6d33
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66415673"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814821"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 
@@ -63,7 +63,7 @@ ASP.NET Core MVC 具有使用固定格式或回應用戶端規格的內建回應
 
 [!code-csharp[](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=8,10&range=28-38)]
 
-除非要求另一種格式，而且伺服器可以傳回所要求的格式，否則會傳回 JSON 格式的回應。 您可以使用 [Fiddler](http://www.telerik.com/fiddler) 這類工具建立包含 Accept 標頭的要求，以及指定另一種格式。 在此情況下，如果伺服器的「格式器」  可以使用所要求的格式產生回應，則會以用戶端慣用的格式傳回結果。
+除非要求另一種格式，而且伺服器可以傳回所要求的格式，否則會傳回 JSON 格式的回應。 您可以使用 [Fiddler](https://www.telerik.com/fiddler) 這類工具建立包含 Accept 標頭的要求，以及指定另一種格式。 在此情況下，如果伺服器的「格式器」  可以使用所要求的格式產生回應，則會以用戶端慣用的格式傳回結果。
 
 ![Fiddler 主控台，顯示 Accept 標頭值為 application/xml 的手動建立 GET 要求](formatting/_static/fiddler-composer.png)
 

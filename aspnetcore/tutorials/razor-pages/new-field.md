@@ -4,14 +4,14 @@ author: rick-anderson
 description: 示範如何使用 Entity Framework Core 將新欄位新增至 Razor Pages
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/5/2018
+ms.date: 12/05/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: f73af673afebe0531f228dc0041dc708ba794047
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 904207ed775cc689c36953c29d202788580d8f60
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887613"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815316"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
@@ -79,7 +79,7 @@ ms.locfileid: "64887613"
 
 ### <a name="add-a-migration-for-the-rating-field"></a>新增評等欄位的移轉
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+從 [工具]  功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]  。
 在 PMC 中，輸入下列命令：
 
 ```powershell
@@ -103,9 +103,9 @@ Update-Database
 另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要在 SSOX 中刪除資料庫：
 
 * 在 SSOX 中選取資料庫。
-* 以滑鼠右鍵按一下資料庫，然後選取 [刪除]。
-* 核取 [關閉現有的連接]。
-* 選取 [確定]。
+* 以滑鼠右鍵按一下資料庫，然後選取 [刪除]  。
+* 核取 [關閉現有的連接]  。
+* 選取 [確定]  。
 * 在 [PMC](xref:tutorials/razor-pages/new-field#pmc) 中，更新資料庫：
 
   ```powershell

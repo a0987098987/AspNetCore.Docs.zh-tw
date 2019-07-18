@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 72d5b2e902a95442ccffb7a149b917c50373775b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 5be53baf4b9eb8774501fbf7f781370f7f687d0c
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889923"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814944"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core 的 URL 重寫中介軟體
 
@@ -42,25 +42,25 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
 ## <a name="url-redirect-and-url-rewrite"></a>URL 重新導向和 URL 重寫
 
-乍看之下，「URL 重新導向」和「URL 重寫」在用語上的差異不太明顯，但卻對提供資源給用戶端方面有重要的影響。 ASP.NET Core 的 URL 重寫中介軟體可以同時滿足這兩種需求。
+乍看之下，「URL 重新導向」  和「URL 重寫」  在用語上的差異不太明顯，但卻對提供資源給用戶端方面有重要的影響。 ASP.NET Core 的 URL 重寫中介軟體可以同時滿足這兩種需求。
 
-「URL 重新導向」牽涉有關用戶端的作業，其會指示用戶端到其他位址存取資源，而非用戶端原本要求的位址。 這項作業需要伺服器的來回行程。 當用戶端提出新的資源要求時，系統會將重新導向 URL 傳回給用戶端，並顯示在瀏覽器的網址列中。
+「URL 重新導向」  牽涉有關用戶端的作業，其會指示用戶端到其他位址存取資源，而非用戶端原本要求的位址。 這項作業需要伺服器的來回行程。 當用戶端提出新的資源要求時，系統會將重新導向 URL 傳回給用戶端，並顯示在瀏覽器的網址列中。
 
-若 `/resource` 重新導向 至 `/different-resource`，則伺服器會回應用戶端應前往 `/different-resource` 取得資源，並提供狀態碼，指出重新導向為暫時性或永久性。
+若 `/resource` 重新導向  至 `/different-resource`，則伺服器會回應用戶端應前往 `/different-resource` 取得資源，並提供狀態碼，指出重新導向為暫時性或永久性。
 
 ![伺服器上的 WebAPI 服務端點已暫時從第 1 版 (v1) 變更為第 2 版 (v2)。 用戶端在第 1 版的 /v1/api 路徑提出服務要求。 伺服器會在第 2 版的 /v2/api 新服務暫存路徑傳回 302 (已找到) 回應。 用戶端即會在重新導向 URL 處提出第二個服務要求。 伺服器會回應 200 (確定) 狀態碼。](url-rewriting/_static/url_redirect.png)
 
 將要求重新導向至不同的 URL 時，可以透過指定具狀態的回應，來指出該重新導向為永久性或暫時性：
 
-* 如果資源具有新的永久 URL，且您希望告知用戶端所有未來的資源要求皆應使用這個新 URL，請使用 301 (已永久移動) 狀態碼。 用戶端收到 301 狀態碼時，可能會快取並重複使用回應。
+* 如果資源具有新的永久 URL，且您希望告知用戶端所有未來的資源要求皆應使用這個新 URL，請使用 301 (已永久移動)  狀態碼。 用戶端收到 301 狀態碼時，可能會快取並重複使用回應。 
 
-* 若重新導向為暫時性或很有可能變更時，請使用 302 (已找到) 狀態碼。 302 狀態碼會指示用戶端不要儲存 URL 並在之後使用。
+* 若重新導向為暫時性或很有可能變更時，請使用 302 (已找到)  狀態碼。 302 狀態碼會指示用戶端不要儲存 URL 並在之後使用。
 
 如需狀態碼的詳細資訊，請參閱 [RFC 2616：Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (狀態碼定義)。
 
-「URL 重寫」伺服器端作業，會從用戶端要求以外的其他資源位址提供資源。 重寫 URL 並不需要伺服器的來回行程。 系統不會將重寫的 URL 傳回用戶端，也不會顯示在瀏覽器的網址列中。
+「URL 重寫」  伺服器端作業，會從用戶端要求以外的其他資源位址提供資源。 重寫 URL 並不需要伺服器的來回行程。 系統不會將重寫的 URL 傳回用戶端，也不會顯示在瀏覽器的網址列中。
 
-若 `/resource`「重寫」至 `/different-resource`，則伺服器會於「內部」擷取資源，並在 `/different-resource` 傳回資源。
+若 `/resource`「重寫」  至 `/different-resource`，則伺服器會於「內部」  擷取資源，並在 `/different-resource` 傳回資源。
 
 雖然用戶端或許可以在重寫的 URL 處擷取資源，但用戶端並不會在提出要求與接收回應時得知資源位於重寫的 URL 處。
 
@@ -111,36 +111,36 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
 ### <a name="url-redirect"></a>URL 重新導向
 
-使用 <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> 將要求重新導向。 第一個參數會包含您的 Regex，以比對傳入的 URL 路徑。 第二個參數是取代字串。 第三個參數 (如果有的話) 會指定狀態碼。 如果您未指定狀態碼，則狀態碼會預設為 302 (已找到)，表示已暫時移動或取代資源。
+使用 <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> 將要求重新導向。 第一個參數會包含您的 Regex，以比對傳入的 URL 路徑。 第二個參數是取代字串。 第三個參數 (如果有的話) 會指定狀態碼。 如果您未指定狀態碼，則狀態碼會預設為 302 (已找到)  ，表示已暫時移動或取代資源。
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=9)]
 
-在啟用開發人員工具的瀏覽器中，使用 `/redirect-rule/1234/5678` 路徑提出範例應用程式的要求。 Regex 會比對 `redirect-rule/(.*)` 上的要求路徑，並會將路徑取代為 `/redirected/1234/5678`。 系統會將重新導向 URL 與 302 (已找到) 狀態碼傳回給用戶端。 瀏覽器在重新導向 URL 處提出新要求，該 URL 也會顯示在瀏覽器的網址列中。 因為範例應用程式與重新導向 URL 沒有任何相符規則：
+在啟用開發人員工具的瀏覽器中，使用 `/redirect-rule/1234/5678` 路徑提出範例應用程式的要求。 Regex 會比對 `redirect-rule/(.*)` 上的要求路徑，並會將路徑取代為 `/redirected/1234/5678`。 系統會將重新導向 URL 與 302 (已找到)  狀態碼傳回給用戶端。 瀏覽器在重新導向 URL 處提出新要求，該 URL 也會顯示在瀏覽器的網址列中。 因為範例應用程式與重新導向 URL 沒有任何相符規則：
 
-* 第二個要求會從應用程式收到 200 (確定) 回應。
+* 第二個要求會從應用程式收到 200 (確定)  回應。
 * 回應的本文會顯示重新導向 URL。
 
-「重新導向」URL 時，會對伺服器進行來回行程。
+「重新導向」  URL 時，會對伺服器進行來回行程。
 
 > [!WARNING]
-> 建立重新導向規則時，請務必謹慎。 每向應用程式提出要求時 (包括重新導向後)，請評估您的重新導向規則。 因為您有可能會不小心建立無限重新導向迴圈。
+> 建立重新導向規則時，請務必謹慎。 每向應用程式提出要求時 (包括重新導向後)，請評估您的重新導向規則。 因為您有可能會不小心建立無限重新導向迴圈  。
 
 原始要求：`/redirect-rule/1234/5678`
 
 ![瀏覽器視窗，其中的開發人員工具會追蹤要求和回應](url-rewriting/_static/add_redirect.png)
 
-括弧內所含的運算式部分稱為「擷取群組」。 運算式的點 (`.`) 表示「比對任何字元」。 星號 (`*`) 表示「比對前置字元零或多次」。 因此，擷取群組 `(.*)` 會擷取 URL 的 `1234/5678` 最後這兩個路徑區段。 這個單一擷取群組會擷取您在要求 URL 中的 `redirect-rule/` 之後所提供的任何值。
+括弧內所含的運算式部分稱為「擷取群組」  。 運算式的點 (`.`) 表示「比對任何字元」  。 星號 (`*`) 表示「比對前置字元零或多次」  。 因此，擷取群組 `(.*)` 會擷取 URL 的 `1234/5678` 最後這兩個路徑區段。 這個單一擷取群組會擷取您在要求 URL 中的 `redirect-rule/` 之後所提供的任何值。
 
 系統會將擷取的群組以貨幣符號 (`$`) 後接擷取序號的形式，插入取代字串中。 使用 `$1` 可取得第一個擷取群組值、使用 `$2` 則會取得第二個，依您的 Regex 擷取群組順序以此類推。 在範例應用程式中，重新導向規則 Regex 只有一個擷取的群組，因此在取代字串中只有 `$1` 這一個插入的群組。 套用規則時，URL 會變成 `/redirected/1234/5678`。
 
 ### <a name="url-redirect-to-a-secure-endpoint"></a>將 URL 重新導向至安全端點
 
-使用 <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttps*> 將 HTTP 要求重新導向至使用 HTTPS 通訊協定的相同主機與路徑。 如果未提供狀態碼，中介軟體會預設為 302 (已找到)。 若未提供連接埠：
+使用 <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttps*> 將 HTTP 要求重新導向至使用 HTTPS 通訊協定的相同主機與路徑。 如果未提供狀態碼，中介軟體會預設為 302 (已找到)  。 若未提供連接埠：
 
 * 中介軟體會預設為 `null`。
 * 配置會變更為 `https` (HTTPS 通訊協定)，且用戶端會在連接埠 443 上存取資源。
 
-下列範例示範了如何將狀態碼設為 301 (已永久移動)，並將連接埠變更為 5001。
+下列範例示範了如何將狀態碼設為 301 (已永久移動)  ，並將連接埠變更為 5001。
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -152,7 +152,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-使用 <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttpsPermanent*> 將不安全的要求重新導向至使用安全 HTTPS 通訊協定 (在連接埠 443 上) 的相同主機與路徑。 中介軟體會將狀態碼設定為 301 (已永久移動)。
+使用 <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttpsPermanent*> 將不安全的要求重新導向至使用安全 HTTPS 通訊協定 (在連接埠 443 上) 的相同主機與路徑。 中介軟體會將狀態碼設定為 301 (已永久移動)  。
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -205,9 +205,9 @@ public void Configure(IApplicationBuilder app)
 | `/my-cool-rewrite-rule/1234/5678` | 否    |
 | `/anotherrewrite-rule/1234/5678`  | 否    |
 
-運算式的 `^rewrite-rule/` 部分之後，有 `(\d+)/(\d+)` 這兩個擷取群組。 `\d` 表示「比對數字」。 加號 (`+`) 表示「比對一或多個前置字元」。 因此，URL 必須包含某個數字，後接斜線與另一個數字。 這些擷取群組會以 `$1` 和 `$2` 形式插入重寫的 URL。 重寫規則的取代字串會將擷取的群組放入查詢字串中。 系統會重寫 `/rewrite-rule/1234/5678` 的要求路徑，以取得位於 `/rewritten?var1=1234&var2=5678` 的資源。 如果原始要求上有查詢字串，則會在重寫 URL 時予以保留。
+運算式的 `^rewrite-rule/` 部分之後，有 `(\d+)/(\d+)` 這兩個擷取群組。 `\d` 表示「比對數字」  。 加號 (`+`) 表示「比對一或多個前置字元」  。 因此，URL 必須包含某個數字，後接斜線與另一個數字。 這些擷取群組會以 `$1` 和 `$2` 形式插入重寫的 URL。 重寫規則的取代字串會將擷取的群組放入查詢字串中。 系統會重寫 `/rewrite-rule/1234/5678` 的要求路徑，以取得位於 `/rewritten?var1=1234&var2=5678` 的資源。 如果原始要求上有查詢字串，則會在重寫 URL 時予以保留。
 
-這麼做就不需要伺服器的來回行程，即可取得資源。 如果資源存在，就會擷取該資源，並傳回 200 (確定) 狀態碼給用戶端。 因為系統並未重新導向用戶端，因此瀏覽器網址列中的 URL 不會變更。 用戶端也無法偵測到伺服器上發生 URL 重寫作業。
+這麼做就不需要伺服器的來回行程，即可取得資源。 如果資源存在，就會擷取該資源，並傳回 200 (確定)  狀態碼給用戶端。 因為系統並未重新導向用戶端，因此瀏覽器網址列中的 URL 不會變更。 用戶端也無法偵測到伺服器上發生 URL 重寫作業。
 
 > [!NOTE]
 > 因為比對規則是計算繁複的程序，且會增加應用程式的回應時間，所以請盡可能使用 `skipRemainingRules: true`。 如需最快速的應用程式回應：
@@ -223,7 +223,7 @@ public void Configure(IApplicationBuilder app)
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=3-4,12)]
 
-範例應用程式會將要求從 `/apache-mod-rules-redirect/(.\*)` 重新導向至 `/redirected?id=$1`。 回應狀態碼為 302 (已找到)。
+範例應用程式會將要求從 `/apache-mod-rules-redirect/(.\*)` 重新導向至 `/redirected?id=$1`。 回應狀態碼為 302 (已找到)  。
 
 [!code[](url-rewriting/samples/2.x/SampleApp/ApacheModRewrite.txt)]
 
@@ -271,7 +271,7 @@ public void Configure(IApplicationBuilder app)
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=5-6,13)]
 
-範例應用程式會將要求從 `/iis-rules-rewrite/(.*)` 重寫至 `/rewritten?id=$1`。 系統會將回應與 200 (確定) 狀態碼傳送給用戶端。
+範例應用程式會將要求從 `/iis-rules-rewrite/(.*)` 重寫至 `/rewritten?id=$1`。 系統會將回應與 200 (確定)  狀態碼傳送給用戶端。
 
 [!code-xml[](url-rewriting/samples/2.x/SampleApp/IISUrlRewrite.xml)]
 
@@ -330,7 +330,7 @@ public void Configure(IApplicationBuilder app)
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=14)]
 
-範例應用程式會示範一個方法，以重新導向對 *.xml* 結尾之路徑的要求。 若要求是針對 `/file.xml` 發出，則要求會重新導向至 `/xmlfiles/file.xml`。 狀態碼會設定為 301 (已永久移動)。 當瀏覽器針對 */xmlfiles/file.xml*發出新的要求時，靜態檔案中介軟體會從 *wwwroot/xmlfiles* 資料夾將檔案提供給用戶端。 若要重新導向，請明確設定回應的狀態碼。 否則會傳回 200 (確定) 狀態碼，用戶端上也不會發生重新導向。
+範例應用程式會示範一個方法，以重新導向對 *.xml* 結尾之路徑的要求。 若要求是針對 `/file.xml` 發出，則要求會重新導向至 `/xmlfiles/file.xml`。 狀態碼會設定為 301 (已永久移動)  。 當瀏覽器針對 */xmlfiles/file.xml*發出新的要求時，靜態檔案中介軟體會從 *wwwroot/xmlfiles* 資料夾將檔案提供給用戶端。 若要重新導向，請明確設定回應的狀態碼。 否則會傳回 200 (確定)  狀態碼，用戶端上也不會發生重新導向。
 
 *RewriteRules.cs*：
 
@@ -350,7 +350,7 @@ public void Configure(IApplicationBuilder app)
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=16-17)]
 
-為了滿足若干條件，系統會檢查範例應用程式中的 `extension` 和 `newPath` 參數值。 `extension` 必須包含值，而且值必須是 *.png*、*.jpg* 或 *.gif*。 如果 `newPath` 無效，就會擲回 <xref:System.ArgumentException>。 若要求是針對 *image.png* 發出，則要求會重新導向至 `/png-images/image.png`。 若要求是針對 *image.jpg* 發出，則要求會重新導向至 `/jpg-images/image.jpg`。 狀態碼會設定為 301 (已永久移動)，而 `context.Result` 會設定為停止處理規則，並傳送回應。
+為了滿足若干條件，系統會檢查範例應用程式中的 `extension` 和 `newPath` 參數值。 `extension` 必須包含值，而且值必須是 *.png*、 *.jpg* 或 *.gif*。 如果 `newPath` 無效，就會擲回 <xref:System.ArgumentException>。 若要求是針對 *image.png* 發出，則要求會重新導向至 `/png-images/image.png`。 若要求是針對 *image.jpg* 發出，則要求會重新導向至 `/jpg-images/image.jpg`。 狀態碼會設定為 301 (已永久移動)  ，而 `context.Result` 會設定為停止處理規則，並傳送回應。
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RedirectImageRequests)]
 
@@ -384,5 +384,5 @@ public void Configure(IApplicationBuilder app)
 * [URL Rewrite Module Configuration Reference](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference) (URL Rewrite Module 組態參考)
 * [IIS URL Rewrite Module 論壇](https://forums.iis.net/1152.aspx)
 * [Keep a simple URL structure](https://support.google.com/webmasters/answer/76329?hl=en) (保持精簡的 URL 結構)
-* [10 URL Rewriting Tips and Tricks](http://ruslany.net/2009/04/10-url-rewriting-tips-and-tricks/) (10 個重寫 URL 的祕訣與技巧)
+* [10 URL Rewriting Tips and Tricks](https://ruslany.net/2009/04/10-url-rewriting-tips-and-tricks/) (10 個重寫 URL 的祕訣與技巧)
 * [To slash or not to slash](https://webmasters.googleblog.com/2010/04/to-slash-or-not-to-slash.html) (是否要使用斜線)

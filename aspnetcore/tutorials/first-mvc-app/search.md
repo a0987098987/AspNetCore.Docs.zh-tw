@@ -5,18 +5,18 @@ description: 示範如何將搜尋新增至基本 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: ca3b0baeddd31e10243689091d435767079bb979
-ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
+ms.openlocfilehash: fbec03d71e247c58fb5968290c4baf6b28120e1c
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65450855"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815061"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>將搜尋新增至 ASP.NET Core MVC 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-在本節中，您會將搜尋功能新增至 `Index` 動作方法，讓您依據「內容類型」或「名稱」搜尋電影。
+在本節中，您會將搜尋功能新增至 `Index` 動作方法，讓您依據「內容類型」  或「名稱」  搜尋電影。
 
 以下列程式碼更新 `Index` 方法：
 
@@ -29,7 +29,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-查詢｢只｣會在此時定義，它尚**未**對資料庫執行。
+查詢｢只｣  會在此時定義，它尚**未**對資料庫執行。
 
 如果 `searchString` 參數包含字串，則會修改電影查詢來篩選搜尋字串的值：
 
@@ -85,7 +85,7 @@ HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with
 
 ![應用程式回應為 "From HttpPost Index: filter on ghost" 的瀏覽器視窗](~/tutorials/first-mvc-app/search/_static/fo.png)
 
-不過，即使您新增這個 `[HttpPost]` 版本的 `Index` 方法，在如何全部實作此方法方面仍然有其限制。 假設您想要將特定的搜尋加為書籤，或者想要傳送連結給朋友，讓他們可以點選來查看相同的電影篩選清單。 請注意，HTTP POST 要求的 URL 與 GET 要求的 URL (localhost:xxxxx/Movies/Index) 相同 -- 在 URL 中沒有搜尋資訊。 搜尋字串資訊會以[表單欄位值](https://developer.mozilla.org/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data)的形式傳送至伺服器。 您可以使用瀏覽器開發人員工具或絕佳的 [Fiddler 工具](http://www.telerik.com/fiddler)來進行確認。 下圖顯示 Chrome 瀏覽器開發人員工具：
+不過，即使您新增這個 `[HttpPost]` 版本的 `Index` 方法，在如何全部實作此方法方面仍然有其限制。 假設您想要將特定的搜尋加為書籤，或者想要傳送連結給朋友，讓他們可以點選來查看相同的電影篩選清單。 請注意，HTTP POST 要求的 URL 與 GET 要求的 URL (localhost:xxxxx/Movies/Index) 相同 -- 在 URL 中沒有搜尋資訊。 搜尋字串資訊會以[表單欄位值](https://developer.mozilla.org/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data)的形式傳送至伺服器。 您可以使用瀏覽器開發人員工具或絕佳的 [Fiddler 工具](https://www.telerik.com/fiddler)來進行確認。 下圖顯示 Chrome 瀏覽器開發人員工具：
 
 ![顯示 searchString 值為 ghost 之要求本文的 Microsoft Edge 開發人員工具的 [網路] 索引標籤](~/tutorials/first-mvc-app/search/_static/f12_rb.png)
 

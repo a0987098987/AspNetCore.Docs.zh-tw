@@ -5,12 +5,12 @@ description: 將檢視新增至簡易的 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 03/04/2017
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 70c96b4838b37ea2c193c328f00a410642338369
-ms.sourcegitcommit: 28a2874765cefe9eaa068dceb989a978ba2096aa
+ms.openlocfilehash: c86e5aba6dbd1e39460cc3d2c266ce704282ee09
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67167074"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815426"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
 
@@ -164,7 +164,7 @@ ms.locfileid: "67167074"
 
 ![顯示一個 Welcome 標籤和顯示四次的片語 Hello Rick 的 Privacy 檢視](~/tutorials/first-mvc-app/adding-view/_static/rick2.png)
 
-在上述範例中，使用了 `ViewData` 字典將資料從控制器傳遞至檢視。 稍後在教學課程中，會使用檢視模型將控制器中的資料傳遞至檢視。 傳遞資料的檢視模型方法通常比 `ViewData` 字典方法較為慣用。 如需詳細資訊，請參閱[何時應該使用 ViewBag、ViewData 或 TempData ](http://www.rachelappel.com/when-to-use-viewbag-viewdata-or-tempdata-in-asp-net-mvc-3-applications/) \(英文\)。
+在上述範例中，使用了 `ViewData` 字典將資料從控制器傳遞至檢視。 稍後在教學課程中，會使用檢視模型將控制器中的資料傳遞至檢視。 傳遞資料的檢視模型方法通常比 `ViewData` 字典方法較為慣用。 如需詳細資訊，請參閱[何時應該使用 ViewBag、ViewData 或 TempData ](https://www.rachelappel.com/when-to-use-viewbag-viewdata-or-tempdata-in-asp-net-mvc-3-applications/) \(英文\)。
 
 在下一個教學課程中，將會建立電影資料庫。
 

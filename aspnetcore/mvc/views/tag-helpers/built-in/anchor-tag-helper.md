@@ -4,18 +4,18 @@ author: pkellner
 description: 探索 ASP.NET Core 錨點標籤協助程式屬性，以及各屬性在 HTML 錨點標籤的延伸行為中所扮演的角色。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 4/18/2019
+ms.date: 04/18/2019
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: de45c99194d4825c1e404aa193b0f076ba659748
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 44fc4ff6334e33630974181021aa1a6880a89917
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883423"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856216"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的錨點標籤協助程式
 
-由 [Peter Kellner](http://peterkellner.net) 與 [Scott Addie](https://github.com/scottaddie) 撰寫
+由 [Peter Kellner](https://peterkellner.net) 與 [Scott Addie](https://github.com/scottaddie) 撰寫
 
 [錨點標籤協助程式](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper)藉由新增新的屬性，來增強標準 HTML 錨點 (`<a ... ></a>`) 標籤。 依照慣例，屬性名稱的開頭會加上 `asp-`。 所轉譯錨點元素的 `href` 屬性值取決於 `asp-` 屬性的值。
 
@@ -41,7 +41,7 @@ ms.locfileid: "64883423"
 <a href="/Speaker">All Speakers</a>
 ```
 
-若僅指定 `asp-controller` 屬性而未指定 `asp-action`，則預設的 `asp-action` 值即為與目前所執行之檢視相關的控制器動作。 若在上述的標記中省略 `asp-action`，且在 *HomeController*'s *Index* 檢視 (*/Home*) 使用錨點標籤協助程式，則產生的 HTML 即為：
+若僅指定 `asp-controller` 屬性而未指定 `asp-action`，則預設的 `asp-action` 值即為與目前所執行之檢視相關的控制器動作。 若在上述的標記中省略 `asp-action`，且在 *HomeController*'s *Index* 檢視 ( */Home*) 使用錨點標籤協助程式，則產生的 HTML 即為：
 
 ```html
 <a href="/Home">All Speakers</a>

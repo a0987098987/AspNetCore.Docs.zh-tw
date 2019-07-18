@@ -5,18 +5,18 @@ description: 了解如何讀取及操作應用程式模型，來修改 ASP.NET C
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/application-model
-ms.openlocfilehash: 6b0591a877c0d82e0ee6ab002eb6a6650753677b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: f7f64c8b3a63ec66936772e724edb57037654059
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890993"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815501"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>在 ASP.NET Core 中使用應用程式模型
 
 作者：[Steve Smith](https://ardalis.com/)
 
-ASP.NET Core MVC 定義了一個「應用程式模型」，代表 MVC 應用程式的元件。 您可以讀取及操作此模型來修改 MVC 項目的行為。 根據預設，MVC 遵循特定慣例來判斷哪些類別會被視為控制器、對這些類別的哪些方法是動作，以及參數和路由的行為方式。 您可以自訂此行為，以符合您的應用程式需求，方法是建立自己的慣例，並將其全域套用或作為屬性來套用。
+ASP.NET Core MVC 定義了一個「應用程式模型」  ，代表 MVC 應用程式的元件。 您可以讀取及操作此模型來修改 MVC 項目的行為。 根據預設，MVC 遵循特定慣例來判斷哪些類別會被視為控制器、對這些類別的哪些方法是動作，以及參數和路由的行為方式。 您可以自訂此行為，以符合您的應用程式需求，方法是建立自己的慣例，並將其全域套用或作為屬性來套用。
 
 ## <a name="models-and-providers"></a>模型和提供者
 
@@ -63,7 +63,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 * 將動作方法參數新增至內容
 * 套用路由和其他屬性
 
-某些內建行為由 `DefaultApplicationModelProvider` 實作。 此提供者負責建構 [`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel)，而它則會參考 [`ActionModel` ](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ActionModel)、[`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) 和 [`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ParameterModel) 執行個體。 `DefaultApplicationModelProvider` 類別是內部架構實作詳細資料，未來將會變更。 
+某些內建行為由 `DefaultApplicationModelProvider` 實作。 此提供者負責建構 [`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel)，而它則會參考 [`ActionModel` ](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel)、[`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) 和 [`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel) 執行個體。 `DefaultApplicationModelProvider` 類別是內部架構實作詳細資料，未來將會變更。 
 
 `AuthorizationApplicationModelProvider` 負責套用與 `AuthorizeFilter` 和 `AllowAnonymousFilter` 屬性建立關聯的行為。 [進一步了解這些屬性](xref:security/authorization/simple)。
 
@@ -130,7 +130,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 
 ### <a name="sample-modifying-the-actionmodel-name"></a>範例：修改 ActionModel 名稱
 
-下列慣例會修改 `ActionModel` 以更新其所套用之動作的「名稱」。 新的名稱會當作傳給屬性的參數。 這個新名稱由路由使用，因此它會影響用來連線到此動作方法的路由。
+下列慣例會修改 `ActionModel` 以更新其所套用之動作的「名稱」  。 新的名稱會當作傳給屬性的參數。 這個新名稱由路由使用，因此它會影響用來連線到此動作方法的路由。
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/CustomActionNameAttribute.cs)]
 

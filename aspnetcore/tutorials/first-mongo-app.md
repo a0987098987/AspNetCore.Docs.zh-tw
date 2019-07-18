@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 07/10/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: c64f6e69a19e294a18cc72c860af0a03ef70d444
-ms.sourcegitcommit: 357a7120632b20465801c093e4e5bd4a315496a8
+ms.openlocfilehash: 99b28407a249a5c0bc6a0cf3a285c04f1d6187a7
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67649198"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815658"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
 
@@ -294,7 +294,7 @@ ms.locfileid: "67649198"
 
 * 使用 `BookService` 類別來執行 CRUD 作業。
 * 包含動作方法以支援 GET、POST、PUT 與 DELETE HTTP 要求。
-* 在 `Create` 動作方法中呼叫 <xref:System.Web.Http.ApiController.CreatedAtRoute*>，以傳回 [HTTP 201](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 回應。 對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是狀態碼 201。 `CreatedAtRoute` 也會將 `Location` 標頭新增至回應。 `Location` 標頭指定新建活頁簿的 URI。
+* 在 `Create` 動作方法中呼叫 <xref:System.Web.Http.ApiController.CreatedAtRoute*>，以傳回 [HTTP 201](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 回應。 對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是狀態碼 201。 `CreatedAtRoute` 也會將 `Location` 標頭新增至回應。 `Location` 標頭指定新建活頁簿的 URI。
 
 ## <a name="test-the-web-api"></a>測試 Web API
 

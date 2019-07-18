@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/24/2019
 uid: web-api/jsonpatch
-ms.openlocfilehash: 14710e6431a2a7ce60fa7f190bef184da85281a0
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 97264903d85dbb397e85fdbf7b070e2aaae74bc8
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888413"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815546"
 ---
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的 JsonPatch
 
@@ -25,7 +25,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 ## <a name="json-patch"></a>JSON Patch
 
-[JSON Patch](https://tools.ietf.org/html/rfc6902) \(英文\) 是一種格式，可用來指定要套用至資源的更新。 JSON Patch 文件具有一個「作業」陣列。 每個作業都會識別特定類型的變更，例如，加入陣列元素或取代屬性值。
+[JSON Patch](https://tools.ietf.org/html/rfc6902) \(英文\) 是一種格式，可用來指定要套用至資源的更新。 JSON Patch 文件具有一個「作業」  陣列。 每個作業都會識別特定類型的變更，例如，加入陣列元素或取代屬性值。
 
 例如，下列 JSON 文件代表一個資源、一份適用於該資源的 JSON 修補文件，以及套用修補作業的結果。
 
@@ -71,7 +71,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 ## <a name="path-syntax"></a>路徑語法
 
-作業物件的 [path](http://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。 例如，`"/address/zipCode"`。
+作業物件的 [path](https://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。 例如，`"/address/zipCode"`。
 
 以零為起始的索引可用來指定陣列元素。 `addresses` 陣列的第一個元素會在 `/addresses/0` 上。 若要 `add` 到陣列結尾處，請使用連字號 (-) 而不是索引號碼：`/addresses/-`。
 
@@ -221,6 +221,6 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 * [IETF RFC 5789 PATCH 方法規格](https://tools.ietf.org/html/rfc5789) \(英文\)
 * [IETF RFC 6902 JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\)
-* [IETF RFC 6901 JSON Patch 路徑格式規格](http://tools.ietf.org/html/rfc6901) \(英文\)
-* [JSON Patch 文件](http://jsonpatch.com/) \(英文\)。 包含用於建立 JSON Patch 文件的資源連結。
+* [IETF RFC 6901 JSON Patch 路徑格式規格](https://tools.ietf.org/html/rfc6901) \(英文\)
+* [JSON Patch 文件](https://jsonpatch.com/) \(英文\)。 包含用於建立 JSON Patch 文件的資源連結。
 * [ASP.NET Core JSON Patch 原始程式碼](https://github.com/aspnet/AspNetCore/tree/master/src/Features/JsonPatch/src)

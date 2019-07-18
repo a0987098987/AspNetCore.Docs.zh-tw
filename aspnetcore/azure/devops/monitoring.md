@@ -4,14 +4,14 @@ author: CamSoper
 description: 監視和 DevOps 解決方案偵錯您的程式碼，使用 ASP.NET Core 和 Azure
 ms.author: casoper
 ms.custom: mvc, seodec18
-ms.date: 10/24/2018
+ms.date: 07/10/2019
 uid: azure/devops/monitor
-ms.openlocfilehash: 00489bd92dfff8fd80bd24c2e60193d32031d7c4
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 1d8ed99f4387dbc99929164c558cc2ce14bd9ea0
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893065"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68307951"
 ---
 # <a name="monitor-and-debug"></a>監視和偵錯
 
@@ -37,11 +37,11 @@ App Service web 應用程式輕鬆地即時監視。 Azure 入口網站將呈現
 
     ![螢幕擷取畫面顯示概觀面板](./media/monitoring/overview.png)
 
-    * **Http 5xx**:伺服器端錯誤，通常是 ASP.NET Core 程式碼中的例外狀況的計數。
-    * **中的資料**:進入您的 web 應用程式的資料輸入。
-    * **資料輸出**:從您的 web 應用程式資料輸出至用戶端。
+    * **Http 5xx**:伺服器端錯誤的計數, 通常是 ASP.NET Core 程式碼中的例外狀況。
+    * **中的資料**:資料輸入進入您的 web 應用程式。
+    * **資料輸出**:從您的 web 應用程式到用戶端的資料輸出。
     * **要求**:HTTP 要求的計數。
-    * **平均回應時間**:Web 應用程式，以回應 HTTP 要求的平均時間。
+    * **平均回應時間**:Web 應用程式回應 HTTP 要求的平均時間。
 
     此頁面上，也會找到自助服務的數個工具，適用於疑難排解和最佳化。
 
@@ -69,7 +69,7 @@ App Service web 應用程式輕鬆地即時監視。 Azure 入口網站將呈現
     ![Application Insights 安裝程式](./media/monitoring/new-app-insights.png)
 
 1. 針對**執行階段/架構**，選取**ASP.NET Core**。 接受預設設定。
-1. 選取 [確定]。 如果系統提示您確認時，選取**繼續**。
+1. 選取 [確定]  。 如果系統提示您確認時，選取**繼續**。
 1. 在建立資源之後，請按一下 Application Insights 資源，直接瀏覽到 Application Insights 頁面的名稱。
 
     ![新的 Application Insights 資源已準備就緒](./media/monitoring/new-app-insights-done.png)
@@ -89,10 +89,10 @@ Application Insights 會提供有用的伺服器端資訊，不需要額外的�
 
     ![診斷記錄 連結](./media/monitoring/logging.png)
 
-1. 開啟**應用程式記錄 （檔案系統）**。 如果出現提示，請按一下此方塊可安裝的擴充功能，讓登入 web 應用程式的應用程式。
+1. 開啟**應用程式記錄 （檔案系統）** 。 如果出現提示，請按一下此方塊可安裝的擴充功能，讓登入 web 應用程式的應用程式。
 1. 設定**Web 伺服器記錄**要**檔案系統**。
 1. 請輸入**保留期限**以天為單位。 例如，30。
-1. 按一下 [儲存] 。
+1. 按一下 [儲存]  。
 
 ASP.NET Core 與 web 伺服器 (App Service) 記錄檔會產生 web 應用程式。 他們可以使用顯示的 FTP/FTPS 資訊進行下載。 在本指南稍早建立的部署認證相同的密碼。 記錄檔可以是[串流處理到您使用 PowerShell 或 Azure CLI 的本機電腦直接](/azure/app-service/web-sites-enable-diagnostic-log#download)。 記錄檔也可以[Application Insights 中檢視](/azure/app-service/web-sites-enable-diagnostic-log#how-to-view-logs-in-application-insights)。
 
@@ -111,7 +111,7 @@ ASP.NET Core 與 web 伺服器 (App Service) 記錄檔會產生 web 應用程式
 
 Azure 監視器 」 也提供[即時警示](/azure/monitoring-and-diagnostics/insights-alerts-portal)根據計量、 系統管理事件及其他準則。
 
-> *注意：目前 web 應用程式計量的警示僅供以警示 （傳統） 服務。*
+> *注意：目前只有在警示 (傳統) 服務中才會提供 web 應用程式計量的警示。*
 
 [警示 （傳統） 服務](/azure/monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal)您可以在 Azure 監視器中或之下找到**監視**的 App Service 設定 區段。
 
@@ -135,7 +135,7 @@ Azure 監視器 」 也提供[即時警示](/azure/monitoring-and-diagnostics/in
 
 ## <a name="additional-reading"></a>其他閱讀資料
 
-* <xref:host-and-deploy/azure-apps/troubleshoot>
+* <xref:test/troubleshoot-azure-iis>
 * <xref:host-and-deploy/azure-iis-errors-reference>
 * [監視 Azure web 應用程式效能，使用 Application Insights](/azure/application-insights/app-insights-azure-web-apps)
 * [為 Azure App Service 中的 Web 應用程式啟用診斷記錄](/azure/app-service/web-sites-enable-diagnostic-log)

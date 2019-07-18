@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/16/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 644d84f9adba650b3ef10ba69cc75c22845be211
-ms.sourcegitcommit: 7e00e8236ca4eabf058f07020a5a3882daf7564f
+ms.openlocfilehash: a3d8c87fdb1cbc3b8b11b15f797190d626edad59
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68239255"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308055"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -734,10 +734,10 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 [目錄結構](xref:host-and-deploy/directory-structure)
 
 探索 ASP.NET Core 應用程式的使用中和非使用中 IIS 模組，管理 IIS 模組的方式。  
-[IIS 模組](xref:host-and-deploy/iis/troubleshoot)
+[IIS 模組](xref:host-and-deploy/iis/modules)
 
 了解如何診斷 ASP.NET Core 應用程式的 IIS 部署問題。  
-[疑難排解](xref:host-and-deploy/iis/troubleshoot)
+[疑難排解](xref:test/troubleshoot-azure-iis)
 
 區分在 IIS 上裝載 ASP.NET Core 應用程式時的常見錯誤。  
 [Azure App Service 和 IIS 常見的錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)

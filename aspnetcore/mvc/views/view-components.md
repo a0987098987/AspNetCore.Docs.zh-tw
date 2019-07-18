@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何檢視 ASP.NET Core 中使用的元件，以及如何將這些元件新增到應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 5/14/2019
+ms.date: 05/14/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: 17fd7aa977868d522df9f27e0c23d07b016bfb7c
-ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
+ms.openlocfilehash: ff84abf9e0c682d22196a0a0f5f377990c80a6ae
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65621079"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815269"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
@@ -42,7 +42,7 @@ ms.locfileid: "65621079"
 
 檢視元件是由兩個部分所組成：類別 (通常衍生自 [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) 以及它所傳回的結果 (通常是檢視)。 與控制器類似，檢視元件可以是 POCO，但大部分開發人員會想要利用透過衍生自 `ViewComponent` 而取得的方法和屬性。
 
-當不確定檢視元件是否符合應用程式的規格時，您可以考慮改用 Razor 元件。 Razor 元件同樣會結合標記與 C# 程式碼，來產生可重複使用的 UI 單元。 Razor 元件是為提升開發人員提供用戶端 UI 邏輯和組合時的生產力所設計。 如需詳細資訊，請參閱<xref:blazor/components>。
+當不確定檢視元件是否符合應用程式的規格時，您可以考慮改用 Razor 元件。 Razor 元件同樣會結合標記與 C# 程式碼，來產生可重複使用的 UI 單元。 Razor 元件是為提升開發人員提供用戶端 UI 邏輯和組合時的生產力所設計。 如需詳細資訊，請參閱 <xref:blazor/components>。
 
 ## <a name="creating-a-view-component"></a>建立檢視元件
 

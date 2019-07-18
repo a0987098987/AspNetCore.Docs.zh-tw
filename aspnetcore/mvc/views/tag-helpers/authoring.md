@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/29/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: d7a5656131189ffafb60a7b1db0b8d93a3787ae2
-ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
+ms.openlocfilehash: c13e63725298975fc882aa45c4e75de53e1d66a8
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65621043"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815163"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
@@ -27,7 +27,7 @@ ms.locfileid: "65621043"
 
 1. 建立稱為 **AuthoringTagHelpers** 的新 ASP.NET Core 專案。 您不需要驗證此專案。
 
-1. 建立資料夾以保存稱為 *TagHelpers* 的標籤協助程式。 *TagHelpers* 資料夾「不」是必要的，但是為合理的慣例。 現在開始撰寫一些簡單的標籤協助程式。
+1. 建立資料夾以保存稱為 *TagHelpers* 的標籤協助程式。 *TagHelpers* 資料夾「不」  是必要的，但是為合理的慣例。 現在開始撰寫一些簡單的標籤協助程式。
 
 ## <a name="a-minimal-tag-helper"></a>最精簡的標籤協助程式
 
@@ -59,7 +59,7 @@ ms.locfileid: "65621043"
 
    * `Process` (和 `ProcessAsync`) 的輸出參數包含具狀態 HTML 項目，以呈現用來產生 HTML 標籤和內容的原始來源。
 
-   * 類別名稱的尾碼為 **TagHelper**，這「不」是必要的，但視為最佳做法慣例。 您可以將類別宣告為：
+   * 類別名稱的尾碼為 **TagHelper**，這「不」  是必要的，但視為最佳做法慣例。 您可以將類別宣告為：
 
    ```csharp
    public class Email : TagHelper
@@ -193,7 +193,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
-   * 如前所述，標籤協助程式會將標籤協助程式依照 Pascal 大小寫 C# 命名法大小寫慣例的類別名稱和屬性轉譯成[小寫 kebab](http://wiki.c2.com/?KebabCase)。 因此，若要在 Razor 中使用 `WebsiteInformationTagHelper`，您將撰寫 `<website-information />`。
+   * 如前所述，標籤協助程式會將標籤協助程式依照 Pascal 大小寫 C# 命名法大小寫慣例的類別名稱和屬性轉譯成[小寫 kebab](https://wiki.c2.com/?KebabCase)。 因此，若要在 Razor 中使用 `WebsiteInformationTagHelper`，您將撰寫 `<website-information />`。
 
    * 您未明確識別具有 `[HtmlTargetElement]` 屬性的目標項目，因此會將預設值 `website-information` 設為目標。 如果您已套用下列屬性 (請注意，它不是 Kebab 大小寫，但符合類別名稱)：
 
@@ -207,7 +207,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    [HtmlTargetElement("Website-Information")]
    ```
 
-   * 自我結尾項目沒有內容。 在此範例中，Razor 標記 (markup) 將使用自我結尾標籤 (tag)，但標籤 (tag) 協助程式將會建立 [section](http://www.w3.org/TR/html5/sections.html#the-section-element) 項目 (此項目不是自我結尾的，而且您將在 `section` 項目內撰寫內容)。 因此，您需要將 `TagMode` 設定為 `StartTagAndEndTag`，才能撰寫輸出。 或者，您可以將設定 `TagMode` 的行設定為註解，並撰寫含結尾標籤 (tag) 的標籤 (markup)  (本教學課程稍後會提供範例標記)。
+   * 自我結尾項目沒有內容。 在此範例中，Razor 標記 (markup) 將使用自我結尾標籤 (tag)，但標籤 (tag) 協助程式將會建立 [section](https://www.w3.org/TR/html5/sections.html#the-section-element) 項目 (此項目不是自我結尾的，而且您將在 `section` 項目內撰寫內容)。 因此，您需要將 `TagMode` 設定為 `StartTagAndEndTag`，才能撰寫輸出。 或者，您可以將設定 `TagMode` 的行設定為註解，並撰寫含結尾標籤 (tag) 的標籤 (markup) (本教學課程稍後會提供範例標記)。
 
    * 下行中的 `$` (貨幣符號) 使用[插入字串](/dotnet/csharp/language-reference/keywords/interpolated-strings)：
 

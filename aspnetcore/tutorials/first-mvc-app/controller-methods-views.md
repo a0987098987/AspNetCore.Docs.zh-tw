@@ -5,12 +5,12 @@ description: 了解如何在 ASP.NET Core 中使用控制器方法、檢視和 D
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 36c8141ba5827366572dabcfd0fdf9600c745706
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 6d960da5acecbb95893bd339b4391560bedffb3d
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889763"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815422"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>ASP.NET Core 中的控制器方法和檢視
 
@@ -36,7 +36,7 @@ ms.locfileid: "64889763"
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
-[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從控制器動作方法和路由識別碼動態產生 HTML `href` 屬性值。從您最喜愛的瀏覽器中使用 [檢視原始檔] 或使用開發工具來檢查產生的標記。 產生的 HTML 部分如下所示：
+[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從控制器動作方法和路由識別碼動態產生 HTML `href` 屬性值。從您最喜愛的瀏覽器中使用 [檢視原始檔]  或使用開發工具來檢查產生的標記。 產生的 HTML 部分如下所示：
 
 ```html
  <td>
@@ -76,7 +76,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 
 ::: moniker-end
 
-`[Bind]` 屬性是一種防止[過度發佈](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost)的方式。 您應該只在想要變更的 `[Bind]` 屬性 (attribute) 中包含屬性 ( property)。 如需詳細資訊，請參閱[保護控制器避免過度發佈](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)。 [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) 提供防止過度發佈的替代方法。
+`[Bind]` 屬性是一種防止[過度發佈](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost)的方式。 您應該只在想要變更的 `[Bind]` 屬性 (attribute) 中包含屬性 ( property)。 如需詳細資訊，請參閱[保護控制器避免過度發佈](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)。 [ViewModels](https://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) 提供防止過度發佈的替代方法。
 
 請注意，第二個 `Edit` 動作方法的前面是 `[HttpPost]` 屬性。
 
@@ -92,7 +92,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 
 ::: moniker-end
 
-`HttpPost` 屬性指定「只」能為 `POST` 要求叫用這個 `Edit` 方法。 您可以將 `[HttpGet]` 屬性套用至第一個編輯方法，但不需要執行此動作，因為 `[HttpGet]` 是預設值。
+`HttpPost` 屬性指定「只」  能為 `POST` 要求叫用這個 `Edit` 方法。 您可以將 `[HttpGet]` 屬性套用至第一個編輯方法，但不需要執行此動作，因為 `[HttpGet]` 是預設值。
 
 `ValidateAntiForgeryToken` 屬性是用來[防範要求偽造](xref:security/anti-request-forgery)，並與編輯檢視檔案 (*Views/Movies/Edit.cshtml*) 所產生的防偽語彙基元成對。 編輯檢視檔案使用[表單標記協助程式](xref:mvc/views/working-with-forms)產生防偽語彙基元。
 
@@ -151,7 +151,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 * [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
 * [防偽要求](xref:security/anti-request-forgery)
 * 保護控制器避免[過度發佈](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
-* [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
+* [ViewModels](https://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
 * [表單標記協助程式](xref:mvc/views/working-with-forms)
 * [輸入標記協助程式](xref:mvc/views/working-with-forms)
 * [標籤標記協助程式](xref:mvc/views/working-with-forms)

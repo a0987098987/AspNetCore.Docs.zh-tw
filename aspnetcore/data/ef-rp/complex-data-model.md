@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: a65543f805b197031bd46ef1974d4d4a5018b2d1
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: f995f3f74da4910de518af875eb89349a8457573
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65516908"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813704"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -88,12 +88,12 @@ https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 執行應用程式：
 
 * 巡覽至 Students 頁面。
-* 選取 [新建]，然後輸入超過 50 個字元的名稱。
-* 選取 [建立]，用戶端驗證便會顯示錯誤訊息。
+* 選取 [新建]  ，然後輸入超過 50 個字元的名稱。
+* 選取 [建立]  ，用戶端驗證便會顯示錯誤訊息。
 
 ![顯示字元長度錯誤的 Students [索引] 頁面](complex-data-model/_static/string-length-errors.png)
 
-在 [SQL Server 物件總管] (SSOX) 中，按兩下 [Student] 資料表來開啟 Student 資料表設計工具。
+在 [SQL Server 物件總管]  (SSOX) 中，按兩下 [Student]  資料表來開啟 Student 資料表設計工具。
 
 ![移轉之前於 SSOX 中的 Students 資料表](complex-data-model/_static/ssox-before-migration.png)
 
@@ -292,7 +292,7 @@ public Instructor Instructor { get; set; }
 
 當資料模型針對相關實體有一個導覽屬性時，EF Core 不需要針對該模型具備 FK 屬性。
 
-EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
+EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」  包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
 
 * 若沒有明確載入，`Department` 實體將為 Null。
 * 若要更新課程實體，必須先擷取 `Department` 實體。
@@ -426,7 +426,7 @@ public Student Student { get; set; }
 
 ## <a name="many-to-many-relationships"></a>多對多關聯性
 
-在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
+在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」  的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
 
 下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表是使用 EF 6.x 的 [EF Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition) 產生的。 建立圖表並不是此教學課程的一部分)。
 
@@ -486,7 +486,7 @@ FK 不可為 Null。 `CourseAssignment` (`InstructorID` 及 `CourseID`) 中的�
 
 ## <a name="fluent-api-alternative-to-attributes"></a>屬性的 Fluent API 替代項目
 
-上述程式碼中的 `OnModelCreating` 方法使用了 *Fluent API* 設定 EF Core 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式。 [下列程式碼](/ef/core/modeling/#methods-of-configuration)為 Fluent API 的其中一個範例：
+上述程式碼中的 `OnModelCreating` 方法使用了 *Fluent API* 設定 EF Core 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式。 [下列程式碼](/ef/core/modeling/#use-fluent-api-to-configure-a-model)為 Fluent API 的其中一個範例：
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -512,7 +512,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 * 僅 EF Core 組態 (例如，`HasKey`)。
 * 驗證及 EF Core 組態 (例如，`[StringLength(50)]`)。
 
-如需屬性與 Fluent API 的詳細資訊，請參閱[方法](/ef/core/modeling/#methods-of-configuration)。
+如需屬性與 Fluent API 的詳細資訊，請參閱[方法](/ef/core/modeling/)。
 
 ## <a name="entity-diagram-showing-relationships"></a>顯示關聯性的實體圖表
 
@@ -582,7 +582,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [套件管理員主控台] (PMC) 中，執行下列命令：
+在 [套件管理員主控台]  (PMC) 中，執行下列命令：
 
 ```PMC
 Drop-Database
@@ -608,14 +608,14 @@ dotnet ef database update
 
 在 SSOX 中開啟資料庫：
 
-* 若先前已開啟過 SSOX，按一下 [重新整理] 按鈕。
+* 若先前已開啟過 SSOX，按一下 [重新整理]  按鈕。
 * 展開 **Tables** 節點。 建立的資料表便會顯示。
 
 ![SSOX 中的資料表](complex-data-model/_static/ssox-tables.png)
 
 檢查 **CourseAssignment** 資料表：
 
-* 以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]。
+* 以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]  。
 * 驗證 **CourseAssignment** 資料表中是否包含資料。
 
 ![SSOX 中的 CourseAssignment 資料](complex-data-model/_static/ssox-ci-data.png)

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 11d2914b5797735fb6a262a31bdb49f58391579f
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 870ce2eb28f384b380cc1178842325dc28199f09
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884053"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814982"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式
 
@@ -19,7 +19,7 @@ ms.locfileid: "64884053"
 
 ## <a name="what-are-tag-helpers"></a>什麼是標籤協助程式
 
-標籤協助程式可讓伺服器端程式碼參與建立和轉譯 Razor 檔案中的 HTML 項目。 例如，內建 `ImageTagHelper` 可以將版本號碼附加至映像名稱。 只要映像變更，伺服器就會產生映像的新唯一版本，以保證用戶端可以取得最新的映像 (而不是過期的快取映像)。 有許多適用於一般工作 (例如建立表單和連結、載入資產等) 的內建標籤協助程式，還有更多位於公用 GitHub 存放庫及作為 NuGet 套件來提供。 標籤協助程式是以 C# 編寫，並根據項目名稱、屬性名稱或上層標籤來設定目標 HTML 項目。 例如，套用 `LabelTagHelper` 屬性時，內建 `LabelTagHelper` 可以將目標設為 HTML `<label>` 項目。 如果您熟悉 [HTML 協助程式](http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers)，則標籤協助程式可減少 Razor 檢視中 HTML 與 C# 之間的明確轉換。 在許多情況下，HTML 協助程式都會提供特定標籤協助程式的替代方式，但請務必辨識標籤協助程式未取代 HTML 協助程式，而且每個 HTML 協助程式都沒有標籤協助程式。 [標籤協助程式與 HTML 協助程式的比較](#tag-helpers-compared-to-html-helpers)會詳述差異。
+標籤協助程式可讓伺服器端程式碼參與建立和轉譯 Razor 檔案中的 HTML 項目。 例如，內建 `ImageTagHelper` 可以將版本號碼附加至映像名稱。 只要映像變更，伺服器就會產生映像的新唯一版本，以保證用戶端可以取得最新的映像 (而不是過期的快取映像)。 有許多適用於一般工作 (例如建立表單和連結、載入資產等) 的內建標籤協助程式，還有更多位於公用 GitHub 存放庫及作為 NuGet 套件來提供。 標籤協助程式是以 C# 編寫，並根據項目名稱、屬性名稱或上層標籤來設定目標 HTML 項目。 例如，套用 `LabelTagHelper` 屬性時，內建 `LabelTagHelper` 可以將目標設為 HTML `<label>` 項目。 如果您熟悉 [HTML 協助程式](https://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers)，則標籤協助程式可減少 Razor 檢視中 HTML 與 C# 之間的明確轉換。 在許多情況下，HTML 協助程式都會提供特定標籤協助程式的替代方式，但請務必辨識標籤協助程式未取代 HTML 協助程式，而且每個 HTML 協助程式都沒有標籤協助程式。 [標籤協助程式與 HTML 協助程式的比較](#tag-helpers-compared-to-html-helpers)會詳述差異。
 
 ## <a name="what-tag-helpers-provide"></a>標籤協助程式所提供的內容
 
@@ -29,7 +29,7 @@ ms.locfileid: "64884053"
 
 **讓您更具生產力，而且可以只使用伺服器上的可用資訊來產生更強固、可靠和易維護的程式碼**：例如，在過去，更新映像的目的是要在您變更映像時變更映像名稱。 基於效能考量，應該主動快取影像，而且除非您變更影像的名稱，否則用戶端會有取得過時複本的風險。 在過去，編輯映像之後，必須變更名稱，而且需要更新 Web 應用程式中映像的每個參考。 這不只十分耗人力，也很容易發生錯誤 (您可能遺漏參考、不小心地輸入錯誤字串，依此類推)內建 `ImageTagHelper` 可以自動執行這項作業。 `ImageTagHelper` 可以將版本號碼附加到映像名稱後面；因此，只要映像變更，伺服器就會自動產生映像的新唯一版本。 用戶端保證會取得目前的映像。 使用 `ImageTagHelper`，此健全性和人力節省基本上是免費的。
 
-大部分的內建的標籤協助程式都可以在標準的 HTML 元素中使用，可為元素提供伺服器端的屬性。 例如，在 [檢視/帳戶] 資料夾內許多檢視中所使用的 `<input>` 元素會包含 `asp-for` 屬性。 此屬性會擷取指定之模型屬性的名稱，並將其放入轉譯的 HTML 中。 請考慮下列模型的 Razor 檢視：
+大部分的內建的標籤協助程式都可以在標準的 HTML 元素中使用，可為元素提供伺服器端的屬性。 例如，在 [檢視/帳戶]  資料夾內許多檢視中所使用的 `<input>` 元素會包含 `asp-for` 屬性。 此屬性會擷取指定之模型屬性的名稱，並將其放入轉譯的 HTML 中。 請考慮下列模型的 Razor 檢視：
 
 ```csharp
 public class Movie
@@ -111,7 +111,7 @@ public class Movie
 <!span asp-validation-for="Email" class="text-danger"></!span>
 ```
 
-您必須將標籤協助程式退出字元套用至開頭和結尾標籤  (將退出字元新增至開頭標籤時，Visual Studio 編輯器會將退出字元自動新增至結尾標籤)。 在您新增退出字元之後，就不會再以特殊字型顯示項目和標籤協助程式屬性。
+您必須將標籤協助程式退出字元套用至開頭和結尾標籤 (將退出字元新增至開頭標籤時，Visual Studio 編輯器會將退出字元自動新增至結尾標籤)。 在您新增退出字元之後，就不會再以特殊字型顯示項目和標籤協助程式屬性。
 
 <a name="prefix-razor-directives-label"></a>
 
@@ -175,7 +175,7 @@ IntelliSense 會列出頁面上模型可用的屬性和方法。 豐富的 Intel
 
 ## <a name="tag-helpers-compared-to-html-helpers"></a>標籤協助程式與 HTML 協助程式的比較
 
-標籤協助程式會附加至 Razor 檢視中的 HTML 項目，而 [HTML 協助程式](http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers) 會叫用為與 Razor 檢視中的 HTML 顛倒的方法。 請考慮下列 Razor 標記，以建立具有 CSS 類別 "caption" 的 HTML 標籤：
+標籤協助程式會附加至 Razor 檢視中的 HTML 項目，而 [HTML 協助程式](https://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers) 會叫用為與 Razor 檢視中的 HTML 顛倒的方法。 請考慮下列 Razor 標記，以建立具有 CSS 類別 "caption" 的 HTML 標籤：
 
 ```cshtml
 @Html.Label("FirstName", "First Name:", new {@class="caption"})
@@ -245,7 +245,7 @@ Visual Studio 編輯器可協助您撰寫註冊表單之標籤 (tag) 協助程�
 
 ## <a name="customizing-the-tag-helper-element-font"></a>自訂標籤協助程式項目字型
 
-您可以從 [工具] > [選項] > [環境][字型和色彩] >  來自訂字型和顏色標示：
+您可以從 [工具]   > [選項]   > [環境]  [字型和色彩] >   來自訂字型和顏色標示：
 
 ![影像](intro/_static/fontoptions2.png)
 
@@ -255,4 +255,4 @@ Visual Studio 編輯器可協助您撰寫註冊表單之標籤 (tag) 協助程�
 
 * [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
 * [使用表單](xref:mvc/views/working-with-forms)
-* [GitHub 上的 TagHelperSamples](https://github.com/dpaquette/TagHelperSamples) 包含使用[啟動程序](http://getbootstrap.com/) 的標籤協助程式範例。
+* [GitHub 上的 TagHelperSamples](https://github.com/dpaquette/TagHelperSamples) 包含使用[啟動程序](https://getbootstrap.com/) 的標籤協助程式範例。

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 380d47d33706b3197dba3b9f7e3e1f186e27115f
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: a07bb4f539c8bd38b08402c598924e14c748921d
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890813"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815241"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
@@ -56,7 +56,7 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 
 [!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
-*Views/Account* 資料夾 (當您建立具有「個別使用者帳戶」的新 Web 應用程式時產生) 中的許多檢視表，包含 [asp-route-returnurl](xref:mvc/views/working-with-forms) 屬性：
+*Views/Account* 資料夾 (當您建立具有「個別使用者帳戶」  的新 Web 應用程式時產生) 中的許多檢視表，包含 [asp-route-returnurl](xref:mvc/views/working-with-forms) 屬性：
 
 ```cshtml
 <form asp-controller="Account" asp-action="Login"
@@ -453,7 +453,7 @@ public IActionResult Edit(int id, int colorIndex)
 |--- |--- |
 |ValidationSummary.All|屬性和模型層級|
 |ValidationSummary.ModelOnly|型號|
-|ValidationSummary.None|無|
+|ValidationSummary.None|None|
 
 ### <a name="sample"></a>範例
 
@@ -602,7 +602,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 ### <a name="multiple-select"></a>多重選項
 
-選取標籤協助程式會自動產生 [multiple = "multiple"](http://w3c.github.io/html-reference/select.html) 屬性，如果 `asp-for` 屬性中指定的屬性是 `IEnumerable`。 例如，假設有以下的模型：
+選取標籤協助程式會自動產生 [multiple = "multiple"](https://w3c.github.io/html-reference/select.html) 屬性，如果 `asp-for` 屬性中指定的屬性是 `IEnumerable`。 例如，假設有以下的模型：
 
 [!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
 
@@ -638,7 +638,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
-新增 HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) 項目並不限於「沒有選取項目」的案例。 例如，下列檢視和動作方法會產生類似於上述程式碼的 HTML：
+新增 HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) 項目並不限於「沒有選取項目」  的案例。 例如，下列檢視和動作方法會產生類似於上述程式碼的 HTML：
 
 [!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
 

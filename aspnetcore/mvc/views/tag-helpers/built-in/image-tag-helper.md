@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: 916a68c187cbf516a59d3c5d7578cdb6ada01b86
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 964072ad276f7e3e411ee41cb03a2efb9d05c585
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887663"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856120"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>ASP.NET Core 的影像標籤協助程式
 
-由 [Peter Kellner](http://peterkellner.net) 提供
+由 [Peter Kellner](https://peterkellner.net) 提供
 
 影像標籤協助程式會強化 `<img>` 標記，為靜態影像檔案提供快取破壞行為。
 

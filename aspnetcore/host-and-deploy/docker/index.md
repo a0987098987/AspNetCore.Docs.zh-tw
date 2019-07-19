@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/08/2018
 uid: host-and-deploy/docker/index
-ms.openlocfilehash: 9189e1fbb21abcc8c8bdea947e672ee53b59bc4f
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: cb5f774db5fab46a57f8ca4bbbca148f20f371ba
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085483"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308053"
 ---
 # <a name="host-aspnet-core-in-docker-containers"></a>在 Docker 容器中裝載 ASP.NET Core
 
@@ -31,11 +31,11 @@ ms.locfileid: "65085483"
 
 <xref:host-and-deploy/docker/building-net-docker-images> 了解如何建置和 Docker 化 ASP.NET Core 應用程式。 瀏覽 Microsoft 維護的 Docker 映像，並檢查使用案例。
 
-[Visual Studio Tools for Docker](xref:host-and-deploy/docker/visual-studio-tools-for-docker)  
-探索 Visual Studio 2017 如何在 Docker for Windows 上支援建置、偵錯和執行以 .NET Framework 或 .NET Core 為目標的 ASP.NET Core 應用程式。 同時支援 Windows 和 Linux 容器。
+[Visual Studio 容器工具](xref:host-and-deploy/docker/visual-studio-tools-for-docker)  
+探索 Visual Studio 如何在 Docker for Windows 上支援建置、偵錯和執行以 .NET Framework 或 .NET Core 為目標的 ASP.NET Core 應用程式。 同時支援 Windows 和 Linux 容器。
 
-[發行至 Docker 映像](/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)  
-了解如何使用 Visual Studio Tools for Docker 延伸模組，將 ASP.NET Core 應用程式部署到使用 PowerShell 的 Azure Docker 主機。
+[發佈到 Azure Container Registry](/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)  
+了解如何使用 Visual Studio Container Tools 延伸模組，透過PowerShell 將 ASP.NET Core 應用程式部署到 Azure 上的 Docker 主機。
 
 [設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)  
 Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 透過 Proxy 傳遞要求通常會遮住原始要求的相關資訊，例如配置和用戶端 IP。 可能必須以手動方式將一些關於要求的資訊轉送至應用程式。

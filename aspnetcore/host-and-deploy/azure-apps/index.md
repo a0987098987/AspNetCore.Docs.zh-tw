@@ -5,14 +5,14 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/28/2019
+ms.date: 07/16/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 5daefde13310ebeb232ef4c8886b12ad78182e50
-ms.sourcegitcommit: f5762967df3be8b8c868229e679301f2f7954679
+ms.openlocfilehash: bbdb3e92b6b8afb44d9c0c95c240002c7b7c17db
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048237"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308148"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -48,7 +48,7 @@ ms.locfileid: "67048237"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執行階段。 App Service 可使用的 [.NET Core SDK](/dotnet/core/sdk) 為 32 位元，但您可以使用 [Kudu](https://github.com/projectkudu/kudu/wiki) 主控台，或透過[具有 Visual Studio 發行設定檔或 CLI 命令的 MSDeploy](xref:host-and-deploy/visual-studio-publish-profiles) 部署 64 位元的應用程式。
+Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執行階段。 App Service 提供的 [.NET Core SDK](/dotnet/core/sdk) 為 32 位元，但您可以使用 [Kudu](https://github.com/projectkudu/kudu/wiki) 主控台或 Visual Studio 中的發佈處理序，部署在本機建置的 64 位元應用程式。 如需詳細資訊，請參閱[發佈與部署應用程式](#publish-and-deploy-the-app)一節。
 
 ::: moniker-end
 
@@ -57,6 +57,8 @@ Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執�
 對於具有原生相依性的應用程式而言，Azure App Service 具有 32 位元 (x86) 應用程式的執行階段。 App Service 可使用的 [.NET Core SDK](/dotnet/core/sdk) 為 32 位元。
 
 ::: moniker-end
+
+如需 .NET Core 架構元件與發佈方法的詳細資訊，例如 .NET Core 執行階段和 .NET Core SDK 的相關資訊，請參閱[關於 .NET Core：組合](/dotnet/core/about#composition)。
 
 ### <a name="packages"></a>package
 
@@ -80,7 +82,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.0 <= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
 當應用程式使用 [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 建置主機時，環境變數會將主機設定為使用 `ASPNETCORE_`前置詞。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
 
@@ -115,7 +117,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 <xref:fundamentals/error-handling>  
 了解處理 ASP.NET Core 應用程式錯誤的常見方法。
 
-<xref:host-and-deploy/azure-apps/troubleshoot>  
+<xref:test/troubleshoot-azure-iis>  
 了解如何診斷使用 ASP.NET Core 應用程式部署 Azure App Service 的問題。
 
 <xref:host-and-deploy/azure-iis-errors-reference>  
@@ -132,14 +134,14 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 * SQL 存放區
 * Redis 快取
 
-如需詳細資訊，請參閱<xref:security/data-protection/implementation/key-storage-providers>。
+如需詳細資訊，請參閱 <xref:security/data-protection/implementation/key-storage-providers>。
 
 ## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>將 ASP.NET Core 預覽版本部署至 Azure App Service
 
-請使用下列的其中一個方法：
+如果應用程式仰賴 .NET Core 的預覽版本，請使用下列其中一種方法：
 
 * [安裝預覽網站延伸模組](#install-the-preview-site-extension)。
-* [部署獨立式應用程式](#deploy-the-app-self-contained).
+* [部署獨立式預覽應用程式](#deploy-a-self-contained-preview-app)。
 * [將具有 Web Apps 的 Docker 用於容器](#use-docker-with-web-apps-for-containers)。
 
 ### <a name="install-the-preview-site-extension"></a>安裝預覽網站延伸模組
@@ -188,7 +190,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 [!code-json[](index/sample/arm.json?highlight=2)]
 
-### <a name="deploy-the-app-self-contained"></a>部署獨立式應用程式
+### <a name="deploy-a-self-contained-preview-app"></a>部署獨立式預覽應用程式
 
 以預覽執行階段為目標的[獨立式部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) 會在部署中包含預覽執行階段。
 
@@ -197,9 +199,59 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 * Azure App Service 中的網站不需要[預覽網站延伸模組](#install-the-preview-site-extension)。
 * 應用程式發佈必須遵循不同於針對 [Framework 相依部署 (FDD)](/dotnet/core/deploying#framework-dependent-deployments-fdd) 發佈時使用的方法。
 
-#### <a name="publish-from-visual-studio"></a>從 Visual Studio 發佈
+請遵循[部署獨立式應用程式](#deploy-the-app-self-contained)一節。
 
-1. 從 Visual Studio 工具列中選取 [建置]   > [發佈 {應用程式名稱}]  。
+### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器
+
+[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) 包含最新的預覽 Docker 映像。 這些映像可用作為基底映像。 請使用映像，並以一般的方式將其部署至容器的 Web 應用程式。
+
+## <a name="publish-and-deploy-the-app"></a>發佈及部署應用程式
+
+### <a name="deploy-the-app-framework-dependent"></a>部署依架構不同的應用程式
+
+::: moniker range=">= aspnetcore-2.2"
+
+若是 64 位元[依架構不同的部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)：
+
+* 請使用 64 位元 .NET Core SDK 來建置 64 位元應用程式。
+* 在 App Service 的 [組態]   > [一般設定]  中，將 [平台]  設為 [64 位元]  。 應用程式必須使用基本或更高的服務方案，才能選擇平台位元。
+
+::: moniker-end
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+1. 從 Visual Studio 工具列選取 [建置]   > [發佈 {應用程式名稱}]  ，或在 [方案總管]  中以滑鼠右鍵按一下專案，然後選取 [發佈]  。
+1. 在 [挑選發佈目標]  對話方塊中，確認已選取 [App Service]  。
+1. 選取 [進階]  。 [發佈]  對話方塊隨即開啟。
+1. 在 [發行]  對話方塊中：
+   * 確認已選取 [發行]  設定。
+   * 開啟 [部署模式]  下拉式清單，然後選取 [依架構不同]  。
+   * 將 [目標執行階段]  選取為 [可攜式]  。
+   * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項]  並選取核取方塊，以移除目的地的其他檔案。
+   * 選取 [儲存]  。
+1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+
+1. 在專案檔中，請勿指定[執行階段識別碼 (RID)](/dotnet/core/rid-catalog)。
+
+1. 從命令殼層使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，以發行組態來發佈應用程式。 在下列範例中，應用程式會發佈為依架構不同的應用程式：
+
+   ```console
+   dotnet publish --configuration Release
+   ```
+
+1. 將 bin/Release/{目標 FRAMEWORK}/publish  目錄的內容移到 App Service 中的網站。 若要在 [Kudu](https://github.com/projectkudu/kudu/wiki) 主控台將 *publish* 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
+
+---
+
+### <a name="deploy-the-app-self-contained"></a>部署獨立式應用程式
+
+若是[獨立式部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd)，請使用 Visual Studio 或命令列介面 (CLI) 工具。
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+1. 從 Visual Studio 工具列選取 [建置]   > [發佈 {應用程式名稱}]  ，或在 [方案總管]  中以滑鼠右鍵按一下專案，然後選取 [發佈]  。
 1. 在 [挑選發佈目標]  對話方塊中，確認已選取 [App Service]  。
 1. 選取 [進階]  。 [發佈]  對話方塊隨即開啟。
 1. 在 [發行]  對話方塊中：
@@ -210,13 +262,13 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    * 選取 [儲存]  。
 1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
 
-#### <a name="publish-using-command-line-interface-cli-tools"></a>使用命令列介面 (CLI) 工具發佈
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
 1. 在專案檔中，指定一或多個[執行階段識別碼 (RID)](/dotnet/core/rid-catalog)。 針對單一 RID 使用 `<RuntimeIdentifier>` (單數)，或者使用 `<RuntimeIdentifiers>` (複數) 來提供以分號分隔的 RID 清單。 在下列範例中已指定 `win-x86`：
 
    ```xml
    <PropertyGroup>
-     <TargetFramework>netcoreapp2.1</TargetFramework>
+     <TargetFramework>{TARGET FRAMEWORK}</TargetFramework>
      <RuntimeIdentifier>win-x86</RuntimeIdentifier>
    </PropertyGroup>
    ```
@@ -227,11 +279,9 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    dotnet publish --configuration Release --runtime win-x86
    ```
 
-1. 將 bin/Release/{目標 FRAMEWORK}/{執行階段識別碼}/publish  目錄的內容移至 App Service 中的網站。
+1. 將 bin/Release/{目標 FRAMEWORK}/{執行階段識別碼}/publish  目錄的內容移至 App Service 中的網站。 若要在 Kudu 主控台將 *publish* 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
 
-### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器
-
-[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) 包含最新的預覽 Docker 映像。 這些映像可用作為基底映像。 請使用映像，並以一般的方式將其部署至容器的 Web 應用程式。
+---
 
 ## <a name="protocol-settings-https"></a>通訊協定設定 (HTTPS)
 

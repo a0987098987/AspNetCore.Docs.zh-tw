@@ -41,10 +41,10 @@ ms.locfileid: "64892465"
 
 | 標頭                                                     | 功能 |
 | ---------------------------------------------------------- | -------- |
-| [存留期](https://tools.ietf.org/html/rfc7234#section-5.1)     | 估計的秒數之後產生回應，或在原始伺服器已成功驗證的時間量。 |
+| [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | 估計的秒數之後產生回應，或在原始伺服器已成功驗證的時間量。 |
 | [Expires](https://tools.ietf.org/html/rfc7234#section-5.3) | 之後，回應會被視為過時時間。 |
 | [Pragma](https://tools.ietf.org/html/rfc7234#section-5.4)  | 回溯相容性，使用 HTTP/1.0 會在快取設定存在`no-cache`行為。 如果`Cache-Control`標頭已存在，`Pragma`標頭被忽略。 |
-| [而有所不同](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | 指定快取的回應必須不傳送除非所有的`Vary`快取回的應的原始要求和新的要求中符合的標頭欄位。 |
+| [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | 指定快取的回應必須不傳送除非所有的`Vary`快取回的應的原始要求和新的要求中符合的標頭欄位。 |
 
 ## <a name="http-based-caching-respects-request-cache-control-directives"></a>以 HTTP 為基礎的快取方面要求快取控制指示詞
 

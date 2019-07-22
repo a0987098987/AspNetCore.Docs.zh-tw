@@ -7,18 +7,18 @@ ms.author: shboyer
 ms.custom: mvc
 ms.date: 03/31/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 0b523627f8236d79dfc61f0693309d6f4d715e7e
-ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
+ms.openlocfilehash: 1a092a302bbffa74fa7a861901046ebda1998989
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538701"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813379"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
 作者：[Shayne Boyer](https://github.com/spboyer)
 
-使用本指南來了解如何在 [CentOS 7](https://www.centos.org/) 上將 [Apache](https://httpd.apache.org/) 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器上執行的 ASP.NET Core Web 應用程式。 [mod_proxy 延伸模組](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html)和相關的模組會建立伺服器的反向 Proxy。
+使用本指南來了解如何在 [CentOS 7](https://www.centos.org/) 上將 [Apache](https://httpd.apache.org/) 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器上執行的 ASP.NET Core Web 應用程式。 [mod_proxy 延伸模組](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html)和相關的模組會建立伺服器的反向 Proxy。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -316,7 +316,7 @@ rich rules:
 
 **設定應用程式以進行安全的本機連線 (HTTPS)**
 
-[dotnet run](/dotnet/core/tools/dotnet-run) 命令使用應用程式的 *Properties/launchSettings.json* 檔案，其設定應用程式在 `applicationUrl` 屬性所提供的 URL 上接聽 (例如 `https://localhost:5001; http://localhost:5000`)。
+[dotnet run](/dotnet/core/tools/dotnet-run) 命令使用應用程式的 *Properties/launchSettings.json* 檔案，其設定應用程式在 `applicationUrl` 屬性所提供的 URL 上接聽 (例如 `https://localhost:5001;http://localhost:5000`)。
 
 使用下列其中一種方法，設定應用程式將憑證用在針對 `dotnet run` 命令的開發，或用在開發環境 (F5，若在 Visual Studio Code 中則為 Ctrl+F5)：
 

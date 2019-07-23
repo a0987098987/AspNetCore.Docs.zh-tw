@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: cdb5cad2302cc8ec02107021005b8590efce7533
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 4fe677e69478284db2ccab655c35b5744b6f63f9
+ms.sourcegitcommit: 059ab380744fa3be3b69aa90d431b563c57092cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308212"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68410920"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -865,14 +865,11 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 如需詳細資訊，請參閱下列資源：
 
 * [Application Insights 概觀](/azure/application-insights/app-insights-overview)
-* [適用於 ASP.NET Core 應用程式的 Application Insights](/azure/azure-monitor/app/asp-net-core-no-visualstudio)：如果您想要實作完整範圍的 Application Insights 遙測以及記錄，請從這裡開始。
+* [適用於 ASP.NET Core 應用程式的 Application Insights](/azure/azure-monitor/app/asp-net-core)：如果您想要實作完整範圍的 Application Insights 遙測以及記錄，請從這裡開始。
 * [適用於 .NET Core ILogger 記錄的 ApplicationInsightsLoggerProvider](/azure/azure-monitor/app/ilogger)：如果您想要實作記錄提供者，而不需要 Application Insights 遙測的其餘部分，請從這裡開始。
-* [Application Insights logging adapters](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/blob/develop/README.md) (Application Insights 記錄配接器)。
+* [Application Insights logging adapters](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-trace-logs) (Application Insights 記錄配接器)。
 * [安裝、設定及初始化 Application Insights SDK](/learn/modules/instrument-web-app-code-with-application-insights)：Microsoft Learn 網站上的互動式教學課程。
 ::: moniker-end
-
-> [!NOTE]
-> 自 5/1/2019 起，標題為[適用於 ASP.NET Core 的 Application Insights](/azure/azure-monitor/app/asp-net-core) 的文章已過時，因此教學課程步驟已不適用。 請改為參閱[適用於 ASP.NET Core 應用程式的 Application Insights](/azure/azure-monitor/app/asp-net-core-no-visualstudio)。 我們已知道此問題且正致力於更正它。
 
 ## <a name="third-party-logging-providers"></a>協力廠商記錄提供者
 

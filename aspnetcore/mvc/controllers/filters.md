@@ -4,14 +4,14 @@ author: ardalis
 description: 了解篩選條件的運作方式，以及如何在 ASP.NET Core 中使用它們。
 ms.author: riande
 ms.custom: mvc
-ms.date: 5/08/2019
+ms.date: 05/08/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: cdf121b97396cb23103d49cd141b9ef19b8c0cc6
-ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
+ms.openlocfilehash: 50b199744f32ad19335080da406db69665ec1ae9
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2019
-ms.locfileid: "66223027"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856151"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -259,7 +259,7 @@ DI 會提供記錄器。 不過，請避免僅針對記錄目的建立並使用�
 
 [!code-csharp[](./filters/sample/FiltersSample/Controllers/HomeController.cs?name=snippet_ServiceFilter&highlight=1)]
 
-[ServiceFilterAttribute.IsReusable](xref:Microsoft.AspNetCore.Mvc.ServiceFilterAttribute.IsReusable)：
+使用 `ServiceFilterAttribute` 時，設定 [ServiceFilterAttribute.IsReusable](xref:Microsoft.AspNetCore.Mvc.ServiceFilterAttribute.IsReusable)：
 
 * 能提供篩選條件執行個體「可能」可以在其建立的要求範圍之外重複使用的提示。 ASP.NET Core 執行階段並不保證：
 
@@ -279,7 +279,10 @@ DI 會提供記錄器。 不過，請避免僅針對記錄目的建立並使用�
 * 使用 `TypeFilterAttribute` 參考的類型不需要向 DI 容器註冊。  不過它們的相依性會由 DI 容器滿足。
 * `TypeFilterAttribute` 可以選擇性地接受類型的建構函式引數。
 
-使用 `TypeFilterAttribute` 時，設定 `IsReusable` 是一個提示，篩選條件執行個體「可能」會在其建立的要求範圍之外重複使用。 ASP.NET Core 執行階段不保證將建立篩選條件的單一執行個體。 `IsReusable` 不應該搭配仰賴具有非單一資料庫存留期之服務的篩選條件使用。
+使用 `TypeFilterAttribute` 時，設定 [TypeFilterAttribute.IsReusable](xref:Microsoft.AspNetCore.Mvc.TypeFilterAttribute.IsReusable)：
+* 能提供篩選條件執行個體「可能」可以在其建立的要求範圍之外重複使用的提示。 ASP.NET Core 執行階段不保證將建立篩選條件的單一執行個體。
+
+* 不應該搭配仰賴具有非單一資料庫存留期之服務的篩選條件使用。
 
 下列範例示範如何使用 `TypeFilterAttribute` 將引數傳遞至類型：
 

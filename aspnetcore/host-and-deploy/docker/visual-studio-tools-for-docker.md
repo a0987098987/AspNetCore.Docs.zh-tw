@@ -1,19 +1,19 @@
 ---
-title: 搭配 ASP.NET Core 使用 Visual Studio Tools for Docker
+title: Visual Studio 容器工具搭配 ASP.NET Core
 author: spboyer
-description: 了解如何使用適用於 Windows 的 Visual Studio 2017 工具和 Docker 對 ASP.NET Core 應用程式進行容器化。
+description: 了解如何使用適用於 Windows 的 Visual Studio 工具和 Docker 對 ASP.NET Core 應用程式進行容器化。
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: b0d884fe2fe56f267ad70c388a08cd3fe6256364
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: 5faf0be19448d8272901bf018357da63bbe22d4b
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610375"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308079"
 ---
-# <a name="visual-studio-tools-for-docker-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Visual Studio Tools for Docker
+# <a name="visual-studio-container-tools-with-aspnet-core"></a>Visual Studio 容器工具搭配 ASP.NET Core
 
 Visual Studio 2017 及更新版本支援建置、偵錯和執行以 .NET Core 為目標的容器化 ASP.NET Core 應用程式。 同時支援 Windows 和 Linux 容器。
 
@@ -56,7 +56,7 @@ Docker for Windows 中的 **[Shared Drives](https://docs.docker.com/docker-for-w
 * 選取 [專案] 功能表的 [Docker 支援]。
 * 以滑鼠右鍵按一下**方案總管**中的專案，然後選取 [新增] > [Docker 支援]。
 
-Visual Studio Tools for Docker 不支援將 Docker 新增至以 .NET Framework 為目標的現有 ASP.NET Core 專案。
+Visual Studio 容器工具不支援將 Docker 新增至以 .NET Framework 為目標的現有 ASP.NET Core 專案。
 
 ## <a name="dockerfile-overview"></a>Dockerfile 概觀
 
@@ -88,7 +88,7 @@ Visual Studio 2017 版本 15.8 或更新版本只有在指示進行時，才會�
 
 ### <a name="docker-compose"></a>Docker Compose
 
-Visual Studio Tools for Docker 會將 *docker-compose* 專案，新增至包含下列檔案的解決方案：
+Visual Studio 容器工具會將 *docker-compose* 專案新增至包含下列檔案的解決方案：
 
 * *docker-compose.dcproj* &ndash; 代表專案的檔案。 包含 `<DockerTargetOS>` 項目，指定要使用的 OS。
 * *.dockerignore* &ndash; 列出在產生組建內容時，要排除的檔案與目錄模式。
@@ -116,7 +116,7 @@ Visual Studio Tools for Docker 會將 *docker-compose* 專案，新增至包含�
 
 Service Fabric 不支援在 Windows 上的本機開發叢集中執行 Linux 容器。 如果專案已在使用 Linux 容器，Visual Studio 會提示您切換至 Windows 容器。
 
-Visual Studio Tools for Docker 會執行下列工作：
+Visual Studio 容器工具會執行下列工作：
 
 * 將 *&lt;project_name&gt;應用程式* **Service Fabric 應用程式**專案，新增至解決方案。
 * 將 *Dockerfile* 與 *.dockerignore* 檔案，新增至 ASP.NET Core 專案。 如果 ASP.NET Core 專案中已存在 *Dockerfile*，則會重新命名為 *Dockerfile.original*。 會建立類似如下的新 *Dockerfile*：
@@ -194,7 +194,7 @@ baf9a678c88d        hellodockertools:dev   "C:\\remote_debugge..."   10 minutes 
 
 ## <a name="publish-docker-images"></a>發行 Docker 映像
 
-當應用程式的開發和偵錯循環完畢之後，Visual Studio Tools for Docker 就會協助建立應用程式的實際執行映像。 將組態下拉式清單變更為 [發行] 並建置應用程式。 工具會從 Docker Hub (若尚未在快取中) 取得編譯/發行映像。 映像會使用*最新*的標籤產生，其可推送至私人登錄或 Docker Hub。
+當應用程式的開發和偵錯循環完畢之後，Visual Studio 容器工具就會協助建立應用程式的實際執行映像。 將組態下拉式清單變更為 [發行] 並建置應用程式。 工具會從 Docker Hub (若尚未在快取中) 取得編譯/發行映像。 映像會使用*最新*的標籤產生，其可推送至私人登錄或 Docker Hub。
 
 在 PMC 中執行 `docker images` 命令，可查看映像清單。 會顯示類似下列的輸出：
 
@@ -234,5 +234,5 @@ microsoft/aspnetcore        2.0     c69d39472da9  13 days ago     347MB
 * [使用 Visual Studio 進行容器開發](/visualstudio/containers)
 * [Azure Service Fabric：準備您的開發環境](/azure/service-fabric/service-fabric-get-started)
 * [將 Windows 容器中的 .NET 應用程式部署至 Azure Service Fabric](/azure/service-fabric/service-fabric-host-app-in-a-container)
-* [使用 Docker 針對 Visual Studio 2017 開發進行疑難排解](/azure/vs-azure-tools-docker-troubleshooting-docker-errors)
-* [Visual Studio Tools for Docker GitHub 存放庫](https://github.com/Microsoft/DockerTools)
+* [對使用 Docker 的 Visual Studio 開發進行疑難排解](/azure/vs-azure-tools-docker-troubleshooting-docker-errors)
+* [GitHub 存放庫上的 Visual Studio 容器工具](https://github.com/Microsoft/DockerTools)

@@ -5,14 +5,14 @@ description: 了解如何為 ASP.NET Core 基礎結構 (例如應用程式和資
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/23/2019
+ms.date: 07/11/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 5119267a8da5c950989b14b7c2e818aa22806506
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 43b6c3b55170eaf3a989d0f2779edac5290df823
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887923"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67855916"
 ---
 # <a name="health-checks-in-aspnet-core"></a>ASP.NET Core 中的健康狀態檢查
 
@@ -684,3 +684,20 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 > [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) \(英文\) 隨附數個系統的發行者，包括 [Application Insights](/azure/application-insights/app-insights-overview)。
 >
 > [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) \(英文\) 是 [BeatPulse](https://github.com/xabaril/beatpulse) 的連接埠，不受 Microsoft 維護或支援。
+
+## <a name="restrict-health-checks-with-mapwhen"></a>利用 MapWhen 限制健康情況檢查
+
+使用 <xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*> 來有條件地將健康情況檢查端點的要求管線分支。
+
+在以下範例中，如果針對 `api/HealthCheck` 端點收到了 GET 要求，則 `MapWhen` 會將要求管線分支來啟用健康情況檢查中介軟體：
+
+```csharp
+app.MapWhen(
+    context => context.Request.Method == HttpMethod.Get.Method && 
+        context.Request.Path.StartsWith("/api/HealthCheck"),
+    builder => builder.UseHealthChecks());
+
+app.UseMvc();
+```
+
+如需詳細資訊，請參閱 <xref:fundamentals/middleware/index#use-run-and-map>。

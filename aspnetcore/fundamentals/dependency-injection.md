@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/09/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 1455aa9ce4ea24eaeb396134f91b6d089b346c17
-ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
+ms.openlocfilehash: 9293de38dcca1c0672f9cc3defa8d3c1b0b13d5a
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724435"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67855903"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -26,7 +26,7 @@ ASP.NET Core 支援相依性插入 (DI) 軟體設計模式，這是用來在類�
 
 ## <a name="overview-of-dependency-injection"></a>相依性插入概觀
 
-「相依性」  是另一個物件所需的任何物件。 檢查具有 `WriteMessage` 方法的下列 `MyDependency` 物件，應用程式中的其他類別相依於此物件：
+「相依性」是另一個物件所需的任何物件。 檢查具有 `WriteMessage` 方法的下列 `MyDependency` 物件，應用程式中的其他類別相依於此物件：
 
 ```csharp
 public class MyDependency
@@ -70,7 +70,7 @@ public class IndexModel : PageModel
 
 * 使用介面或基底類別來將相依性資訊抽象化。
 * 在服務容器中註冊相依性。 ASP.NET Core 提供內建服務容器 <xref:System.IServiceProvider>。 服務會在應用程式的 `Startup.ConfigureServices` 方法中註冊。
-* 將服務「插入」  到服務使用位置之類別的建構函式。 架構會負責建立相依性的執行個體，並在不再需要時將它捨棄。
+* 將服務「插入」到服務使用位置之類別的建構函式。 架構會負責建立相依性的執行個體，並在不再需要時將它捨棄。
 
 在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples)中，`IMyDependency` 介面定義了服務提供給應用程式的方法：
 
@@ -80,7 +80,7 @@ public class IndexModel : PageModel
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
 
-`MyDependency` 在其建構函式中會要求 <xref:Microsoft.Extensions.Logging.ILogger`1>。 以鏈結方式使用相依性插入並非不尋常。 每個要求的相依性接著會要求其自己的相依性。 容器會解決圖形中的相依性，並傳回完全解析的服務。 必須先解析的相依性集合組通常稱為「相依性樹狀結構」  、「相依性圖形」  或「物件圖形」  。
+`MyDependency` 在其建構函式中會要求 <xref:Microsoft.Extensions.Logging.ILogger`1>。 以鏈結方式使用相依性插入並非不尋常。 每個要求的相依性接著會要求其自己的相依性。 容器會解決圖形中的相依性，並傳回完全解析的服務。 必須先解析的相依性集合組通常稱為「相依性樹狀結構」、「相依性圖形」或「物件圖形」。
 
 `IMyDependency` 與 `ILogger<TCategoryName>` 必須在服務容器中註冊。 `IMyDependency` 是在 `Startup.ConfigureServices` 中註冊。 `ILogger<TCategoryName>` 是由記錄抽象基礎結構所註冊，所以它是預設由架構所註冊的[架構提供的服務](#framework-provided-services)。
 
@@ -95,7 +95,7 @@ services.AddSingleton(typeof(ILogger<T>), typeof(Logger<T>));
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
 
 > [!NOTE]
-> 每個 `services.Add{SERVICE_NAME}` 擴充方法都會新增 (並且可能會設定) 服務。 例如，`services.AddMvc()` 會新增 Razor Pages 與 MVC 要求的服務。 建議應用程式遵循此慣例。 在 <xref:Microsoft.Extensions.DependencyInjection?displayProperty=fullName> 命名空間中放置擴充方法，以封裝服務註冊群組。
+> 每個 `services.Add{SERVICE_NAME}` 擴充方法都會新增 (並且可能會設定) 服務。 例如，`services.AddMvc()` 會新增 Razor Pages 與 MVC 要求的服務。 建議應用程式遵循此慣例。 在 [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) 命名空間中放置擴充方法，以封裝服務註冊群組。
 
 如果服務的建構函式需要[內建類型](/dotnet/csharp/language-reference/keywords/built-in-types-table)，例如 `string`，可以使用[組態](xref:fundamentals/configuration/index)或[選項模式](xref:fundamentals/configuration/options)插入該類型：
 
@@ -140,7 +140,7 @@ public class MyDependency : IMyDependency
 | <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> | 單一 |
 | <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> | 單一 |
 
-當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 下列程式碼範例示範如何使用擴充方法 <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*>、<xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*> 和 <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> 將額外服務新增至容器：
+當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 下列程式碼範例示範如何使用擴充方法 [AddDbContext\<TContext>](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)、<xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*> 和 <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> 將額外服務新增到容器中：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -211,7 +211,7 @@ services.TryAddSingleton<IMyDependency, DifferentDependency>();
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddScoped*>
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddSingleton*>
 
-如果還沒有「相同類型的」  實作，則 [TryAddEnumerable(ServiceDescriptor)](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*) 方法只會註冊服務。 多個服務會透過 `IEnumerable<{SERVICE}>` 解析。 註冊服務時，如果尚未新增相同類型的執行個體，則開發人員只會希望新增執行個體。 程式庫作者通常會使用此方法來避免註冊容器中某個執行個體的兩個複本。
+如果還沒有「相同類型的」實作，則 [TryAddEnumerable(ServiceDescriptor)](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*) 方法只會註冊服務。 多個服務會透過 `IEnumerable<{SERVICE}>` 解析。 註冊服務時，如果尚未新增相同類型的執行個體，則開發人員只會希望新增執行個體。 程式庫作者通常會使用此方法來避免註冊容器中某個執行個體的兩個複本。
 
 在下列範例中，第一行會為 `IMyDep1` 註冊 `MyDep`。 第二行會為 `IMyDep2` 註冊 `MyDep`。 第三行則沒有任何作用，因為 `IMyDep1` 已具有 `MyDep` 的已註冊實作：
 
@@ -242,7 +242,7 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 ## <a name="entity-framework-contexts"></a>Entity Framework 內容
 
-因為一般會將 Web 應用程式資料庫作業範圍設定為用戶端要求，所以通常會使用[具範圍存留期](#service-lifetimes)將 Entity Framework 內容新增至服務容器。 註冊資料庫內容時，如果 <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*> 多載未指定留存期，則會將範圍設定為預設存留期。 指定存留期的服務不應該使用存留期比服務還短的資料庫內容。
+因為一般會將 Web 應用程式資料庫作業範圍設定為用戶端要求，所以通常會使用[具範圍存留期](#service-lifetimes)將 Entity Framework 內容新增至服務容器。 註冊資料庫內容時，如果 [AddDbContext\<TContext>](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) 多載未指定留存期，則會將範圍設定為預設存留期。 指定存留期的服務不應該使用存留期比服務還短的資料庫內容。
 
 ## <a name="lifetime-and-registration-options"></a>留期和註冊選項
 
@@ -308,9 +308,9 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 觀察哪些 `OperationId` 值在要求內以及要求之間不同：
 
-* 「暫時性」  物件一律不同。 第一個與第二個用戶端要求的暫時性 `OperationId` 值在兩個 `OperationService` 作業之間與各用戶端要求之間都不同。 新執行個體會提供給每個服務要求以及用戶端要求。
-* 「具範圍」  物件在同一個用戶端要求內皆相同，但在不同的用戶端要求之間則不同。
-* 「單一資料庫」  物件對於每個物件與每個要求都相同 (不論 `Operation` 執行個體是否提供於 `Startup.ConfigureServices`)。
+* 「暫時性」 物件一律不同。 第一個與第二個用戶端要求的暫時性 `OperationId` 值在兩個 `OperationService` 作業之間與各用戶端要求之間都不同。 新執行個體會提供給每個服務要求以及用戶端要求。
+* 「具範圍」物件在同一個用戶端要求內皆相同，但在不同的用戶端要求之間則不同。
+* 「單一資料庫」物件對於每個物件與每個要求都相同 (不論 `Operation` 執行個體是否提供於 `Startup.ConfigureServices`)。
 
 ## <a name="call-services-from-main"></a>從主要呼叫服務
 
@@ -469,7 +469,7 @@ public void ConfigureServices(IServiceCollection services)
 
 * 避免以靜態方式存取服務 (例如，以靜態方式設定 [IApplicationBuilder.ApplicationServices](xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices) 型別以四處使用)。
 
-* 避免使用「服務定位器模式」  。 例如，當您可以改用 DI 時，請勿叫用 <xref:System.IServiceProvider.GetService*> 來取得服務執行個體：
+* 避免使用「服務定位器模式」。 例如，當您可以改用 DI 時，請勿叫用 <xref:System.IServiceProvider.GetService*> 來取得服務執行個體：
 
   **不正確：**
 
@@ -508,7 +508,7 @@ public void ConfigureServices(IServiceCollection services)
 
 就像所有的建議集，您可能會遇到需要忽略建議的情況。 例外狀況很少見&mdash;大部分是架構本身內的特殊案例。
 
-DI 是靜態/全域物件存取模式的「替代」  選項。 如果您將 DI 與靜態物件存取混合，則可能無法實現 DI 的優點。
+DI 是靜態/全域物件存取模式的「替代」選項。 如果您將 DI 與靜態物件存取混合，則可能無法實現 DI 的優點。
 
 ## <a name="additional-resources"></a>其他資源
 

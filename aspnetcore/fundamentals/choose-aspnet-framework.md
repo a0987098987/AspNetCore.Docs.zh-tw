@@ -4,14 +4,14 @@ author: rick-anderson
 description: 說明 ASP.NET Core 與ASP.NET 4.x，以及如何在兩者之間進行選擇。
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 05/02/2019
+ms.date: 07/15/2019
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 97d65df8df1e27694d818098958288874e8ab92e
-ms.sourcegitcommit: 47cc13ab90913af9a2887cef0896bb4e9aba4dd5
+ms.openlocfilehash: 9e093e83a1f6367cbb244076a8351644244f9874
+ms.sourcegitcommit: 7e00e8236ca4eabf058f07020a5a3882daf7564f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67399170"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68239215"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>在 ASP.NET 4.x 和 ASP.NET Core 之間進行選擇
 
@@ -38,7 +38,7 @@ ASP.NET 4.x 是一個成熟的架構，其提供在 Windows 上建置企業級�
 |每部電腦多個版本|每部電腦一個版本|
 |在 [Visual Studio](https://visualstudio.microsoft.com/vs/)、[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) 或 [Visual Studio Code](https://code.visualstudio.com/) 中使用 C# 或 F# 進行開發|在 [Visual Studio](https://visualstudio.microsoft.com/vs/) 中使用 C#、VB 或 F# 進行開發|
 |效能比 ASP.NET 4.x 更高|效能良好|
-|[選擇 .NET Framework 或.NET Core 執行階段](/dotnet/standard/choosing-core-framework-server)|使用 .NET Framework 執行階段|
+|[使用 .NET Core 執行階段](/dotnet/standard/choosing-core-framework-server)|使用 .NET Framework 執行階段|
 
 如需 .NET Framework 上的 ASP.NET Core 2.x 支援資訊，請參閱[將目標指向 .NET Framework 的 ASP.NET Core](xref:index#target-framework)。
 

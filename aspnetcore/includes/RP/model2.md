@@ -2,7 +2,7 @@
 
 ### <a name="add-a-database-context-class"></a>新增資料庫內容類別
 
-將下列 `RazorPagesMovieContext` 類別新增至 *Models* 資料夾：
+將下列 `RazorPagesMovieContext` 類別新增至 *ata* 資料夾：
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
@@ -12,7 +12,7 @@
 
 ### <a name="add-a-database-connection-string"></a>新增資料庫連線字串
 
-將連接字串新增到 *appsettings.json* 檔案：
+將連接字串新增至 *appsettings* 檔案，如下列反白顯示的程式碼所示：
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 

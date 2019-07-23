@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/11/2019
 uid: host-and-deploy/blazor/server-side
-ms.openlocfilehash: 8b332c2fb439e9832d604ed26f972b266eed2507
-ms.sourcegitcommit: 9bb29f9ba6f0645ee8b9cabda07e3a5aa52cd659
+ms.openlocfilehash: 56a03ff583bf85497e2b3bacc70123845a046e3d
+ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67406127"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67892702"
 ---
 # <a name="host-and-deploy-blazor-server-side"></a>裝載和部署 Blazor 伺服器端
 
@@ -26,7 +26,7 @@ ms.locfileid: "67406127"
 
 使用[伺服器端裝載模型](xref:blazor/hosting-models#server-side)，Blazor 會從 ASP.NET Core 應用程式內在伺服器上執行。 UI 更新、事件處理及 JavaScript 呼叫會透過 [SignalR](xref:signalr/introduction) 連線處理。
 
-需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。 Visual Studio 會包含 **Blazor (伺服器端)** 專案範本 (使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時為 `blazorserverside` 範本)。
+需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。 Visual Studio 會包含 **Blazor 伺服器應用程式**專案範本 (使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時為 `blazorserverside` 範本)。
 
 ## <a name="connection-scale-out"></a>連線相應放大
 

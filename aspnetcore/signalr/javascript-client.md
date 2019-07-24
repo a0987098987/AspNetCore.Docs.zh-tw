@@ -5,14 +5,14 @@ description: ASP.NET Core SignalR JavaScript 用戶端的概觀。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 04/17/2019
+ms.date: 06/28/2019
 uid: signalr/javascript-client
-ms.openlocfilehash: 8b645304b597db0c37fb9cd8814c493ca1c6ee62
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: f314e1fe0ef0ea73a28b332404a09f2956524132
+ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67814968"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68412376"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 
@@ -26,12 +26,27 @@ ASP.NET Core SignalR JavaScript 用戶端程式庫可讓開發人員呼叫伺服
 
 SignalR JavaScript 用戶端程式庫會以[npm](https://www.npmjs.com/)套件形式傳遞。 如果您使用 Visual Studio，可以在**Package Manager Console**的根資料夾中執行`npm install`。 如果您使用 Visual Studio Code，請從**整合式終端機**中執行命令。
 
+::: moniker range=">= aspnetcore-3.0"
+
+  ```console
+  npm init -y
+  npm install @microsoft/signalr
+  ```
+
+npm 會將套件內容安裝在 *node_modules\\@microsoft\signalr\dist\browser* 資料夾中。 在 *wwwroot\\lib* 資料夾下，建立名為 *signalr* 的新資料夾。 將 *signalr.js* 檔案複製到 *wwwroot\lib\signalr* 資料夾中。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
   ```console
   npm init -y
   npm install @aspnet/signalr
   ```
 
 npm 會將套件內容安裝在 *node_modules\\@aspnet\signalr\dist\browser* 資料夾中。 在 *wwwroot\\lib* 資料夾下，建立名為 *signalr* 的新資料夾。 將 *signalr.js* 檔案複製到 *wwwroot\lib\signalr* 資料夾中。
+
+::: moniker-end
 
 ## <a name="use-the-signalr-javascript-client"></a>使用 SignalR JavaScript 用戶端
 
@@ -60,19 +75,19 @@ npm 會將套件內容安裝在 *node_modules\\@aspnet\signalr\dist\browser* 資
 JavaScript 用戶端會透過 [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection)[invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) 方法呼叫中樞的公用方法。           `invoke` 方法接受兩個引數：
 
 * 中樞方法的名稱。 在下列範例中，在中樞的方法名稱是`SendMessage`。
-* 中樞的方法中定義的任何引數。 在下列範例中，引數名稱是`message`。 範例程式碼會使用目前版本的 Internet Explorer 以外的所有主要瀏覽器都支援的箭號函式語法。
+* 中樞的方法中定義的任何引數。 在下列範例中，引數名稱是`message`。 範例程式碼使用箭號函式語法, 在 Internet Explorer 以外的所有主要瀏覽器的目前版本中都受到支援。
 
   [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
 
 > [!NOTE]
-> 如果您使用 Azure SignalR 服務中*無伺服器模式*，您無法從用戶端呼叫中樞方法。 如需詳細資訊，請參閱 < [SignalR 服務文件](/azure/azure-signalr/signalr-concept-serverless-development-config)。
+> 如果您使用*無伺服器模式*中的 Azure SignalR Service, 就無法從用戶端呼叫中樞方法。 如需詳細資訊, 請參閱[SignalR Service 檔](/azure/azure-signalr/signalr-concept-serverless-development-config)。
 
-`invoke`方法會傳回 JavaScript[承諾](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)。 `Promise`解決的傳回值 （如果有的話） 的伺服器上的此方法傳回時。 如果在伺服器上的方法擲回錯誤，`Promise`拒絕並出現錯誤訊息。 使用`then`並`catch`上的方法`Promise`本身來處理這些情況下 (或`await`語法)。
+方法會傳回 JavaScript[承諾。](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) `invoke` 當伺服器上的方法傳回時,會使用傳回值(如果有的話)來解析。`Promise` 如果伺服器上的方法擲回錯誤, `Promise`則會拒絕並顯示錯誤訊息。 在本身上`catch`使用和方法來處理這些案例 (或`await`語法)。 `then` `Promise`
 
-`send`方法會傳回 JavaScript `Promise`。 `Promise`解決伺服器傳送此訊息。 如果沒有傳送訊息時，出現錯誤`Promise`拒絕並出現錯誤訊息。 使用`then`並`catch`上的方法`Promise`本身來處理這些情況下 (或`await`語法)。
+方法會傳回 JavaScript `Promise`。 `send` 當訊息已傳送到伺服器時,就會解決。`Promise` 如果傳送訊息時發生錯誤, `Promise`則會拒絕, 並顯示錯誤訊息。 在本身上`catch`使用和方法來處理這些案例 (或`await`語法)。 `then` `Promise`
 
 > [!NOTE]
-> 使用`send`不等候，直到伺服器收到的訊息。 因此，不可能從伺服器傳回的資料或錯誤。
+> 使用`send`並不會等到伺服器收到訊息為止。 因此, 不可能從伺服器傳回資料或錯誤。
 
 ## <a name="call-client-methods-from-hub"></a>用戶端方法呼叫來自中樞
 
@@ -115,7 +130,7 @@ SignalR 透過比對 `SendAsync` 與 `connection.on` 中定義的方法名稱與
 
 ### <a name="automatically-reconnect"></a>自動重新連線
 
-SignalR 的 JavaScript 用戶端可以設定為使用自動重新`withAutomaticReconnect`方法[HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder)。 它不會依預設會自動重新連線。
+適用于 SignalR 的 JavaScript 用戶端可以設定為使用[HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder)上`withAutomaticReconnect`的方法自動重新連線。 根據預設, 它不會自動重新連線。
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -124,9 +139,9 @@ const connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-如果沒有任何參數，`withAutomaticReconnect()`設定用戶端一直等候 0、 2、 10 和 30 秒，分別是然後再嘗試每次重新連接嘗試，四個失敗的嘗試之後停止。
+如果沒有任何參數`withAutomaticReconnect()` , 則會先將用戶端設定為等待0、2、10和30秒, 再嘗試重新連線嘗試, 並在四次失敗嘗試之後停止。
 
-開始任何重新連接嘗試之前`HubConnection`會轉為`HubConnectionState.Reconnecting`狀態，並引發其`onreconnecting`回呼，而不是轉換為`Disconnected`狀態，並觸發其`onclose`回呼喜歡`HubConnection`未自動重新連線設定。 這便有機會時警告使用者的連線已遺失，並在停用 UI 項目。
+開始任何重新連線嘗試之前, `HubConnection`會轉換`HubConnectionState.Reconnecting`成狀態並引發其`onreconnecting`回呼, 而不是轉換為`Disconnected`狀態並觸發其`onclose`回呼, 例如`HubConnection`未設定自動重新連線。 這會讓使用者有機會警告連接已遺失, 並停用 UI 元素。
 
 ```javascript
 connection.onreconnecting((error) => {
@@ -140,12 +155,12 @@ connection.onreconnecting((error) => {
 });
 ```
 
-如果用戶端順利重新連線內的前四個的試`HubConnection`就會轉換回`Connected`狀態，並引發其`onreconnected`回呼。 這便有機會以通知的使用者已重新建立連線。
+如果用戶端在前四次嘗試中成功重新連接`HubConnection` , 將會轉換回`Connected`狀態並引發其`onreconnected`回呼。 這讓您有機會通知使用者已重新建立連接。
 
-連線看起來完全新增到伺服器，因為新`connectionId`將提供給`onreconnected`回呼。
+由於連接看起來就是伺服器的全新連線, 因此`connectionId`會提供新的`onreconnected`給回呼。
 
 > [!WARNING]
-> `onreconnected`回呼的`connectionId`參數將會是未定義，如果`HubConnection`已設定為[略過交涉](xref:signalr/configuration#configure-client-options)。
+> 如果設定為`connectionId` [略過協商](xref:signalr/configuration#configure-client-options),回呼的參數將會是未定義的。`onreconnected` `HubConnection`
 
 ```javascript
 connection.onreconnected((connectionId) => {
@@ -159,7 +174,7 @@ connection.onreconnected((connectionId) => {
 });
 ```
 
-`withAutomaticReconnect()` 不會設定`HubConnection`重試初始啟動時失敗，因此需要手動處理啟動失敗：
+`withAutomaticReconnect()`不會將`HubConnection`設定為重試初始啟動失敗, 因此必須手動處理啟動失敗:
 
 ```javascript
 async function start() {
@@ -175,7 +190,7 @@ async function start() {
 };
 ```
 
-如果用戶端不會成功地重新連接內的前四個的試`HubConnection`會轉為`Disconnected`狀態，並引發其[onclose](/javascript/api/%40aspnet/signalr/hubconnection#onclose)回呼。 這讓您有機會通知的使用者此連接已經永久遺失，並建議重新整理頁面：
+如果用戶端在前四次嘗試中未成功重新連接`HubConnection` , 將會轉換`Disconnected`成狀態並引發其[onclose](/javascript/api/%40aspnet/signalr/hubconnection#onclose)回呼。 這讓您有機會通知使用者連線已永久遺失, 並建議重新整理頁面:
 
 ```javascript
 connection.onclose((error) => {
@@ -189,7 +204,7 @@ connection.onclose((error) => {
 });
 ```
 
-若要設定自訂的數字的中斷連線之前重新連接嘗試，或變更重新連線延遲時間，`withAutomaticReconnect`接受代表數字以毫秒為單位的延遲開始每次重新連接嘗試之前等候的陣列。
+為了在中斷連線或變更重新連線時間之前設定自訂的重新連線嘗試次數`withAutomaticReconnect` , 會接受代表在開始每次重新連線嘗試之前等待的延遲 (以毫秒為單位) 的數位陣列。
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -200,52 +215,51 @@ const connection = new signalR.HubConnectionBuilder()
     // .withAutomaticReconnect([0, 2000, 10000, 30000]) yields the default behavior
 ```
 
-上述範例會設定`HubConnection`啟動連線將會中斷之後，立即嘗試重新連線。 這也是預設組態，則為 true。
+上述範例`HubConnection`會將設定為, 以便在連接中斷之後立即開始嘗試重新連接。 這也適用于預設設定。
 
-如果第一次重新連接嘗試失敗，第二次重新連接嘗試將也會立即開始而不是等到 2 秒，像是在預設組態中。
+如果第一次重新連線嘗試失敗, 第二次重新連線嘗試也會立即開始, 而不是等待2秒, 就像在預設設定中一樣。
 
-如果第二次重新連接嘗試失敗，第三次重新連接嘗試就會啟動在 10 秒，這又是預設組態類似。
+如果第二次重新連線嘗試失敗, 第三次重新連線嘗試會在10秒內啟動, 這再次是預設設定。
 
-自訂行為然後分離一次的預設行為藉由停止之後第三個重新連接嘗試失敗，而不是嘗試其中一個更重新連接嘗試中像是在預設組態中的另一個 30 秒。
+然後, 自訂行為會在第三次重新連線嘗試失敗之後停止, 而不是在另一個30秒嘗試重新連線嘗試, 就會再次從預設行為分歧, 而不是在預設設定中再試一次。
 
-如果您想要更進一步控制時間和數字的自動重新連線嘗試`withAutomaticReconnect`物件，實作會接受`IReconnectPolicy`介面，其具有單一方法，名為`nextRetryDelayInMilliseconds`。
+如果您想要更充分掌控自動重新連線嘗試的時間和數目, `withAutomaticReconnect`則會接受一個物件`IRetryPolicy`來執行介面, 此介面具有名`nextRetryDelayInMilliseconds`為的單一方法。
 
-`nextRetryDelayInMilliseconds` 接受兩個引數，`previousRetryCount`和`elapsedMilliseconds`，這是兩個數字。 第一次重新連接嘗試中前, 兩者`previousRetryCount`和`elapsedMilliseconds`會是零。 在每次失敗的重試之後,`previousRetryCount`會遞增 1 和`elapsedMilliseconds`將會更新以反映所花費的時間重新連線到目前為止，以毫秒為單位。
+`nextRetryDelayInMilliseconds`接受具有類型`RetryContext`的單一引數。 `previousRetryCount` `retryReason` 有三`Error`個屬性: `elapsedMilliseconds`、和分別為、`number`和。 `number` `RetryContext` 第一次重新連線嘗試之前`previousRetryCount` , `elapsedMilliseconds`和都`retryReason`是零, 而且會是造成連接遺失的錯誤。 每次重試`previousRetryCount`失敗之後, 將會遞增一次, 將會更新, `elapsedMilliseconds`以反映到目前為止的重新連線時間量 ( `retryReason`以毫秒為單位), 而且將會是導致上次重新連線嘗試失敗的錯誤。無法.
 
-`nextRetryDelayInMilliseconds` 必須傳回任一數字表示的毫秒數下一次重新連接嘗試之前要等待或`null`如果`HubConnection`應該停止重新連線。
+`nextRetryDelayInMilliseconds`必須傳回數位, 代表下一次重新連接嘗試之前要等候的毫秒數, `null`或者, `HubConnection`如果應該停止重新連接, 則為。
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
     .withUrl("/chatHub")
     .withAutomaticReconnect({
-        nextRetryDelayInMilliseconds: (previousRetryCount, elapsedMilliseconds) => {
-            if (elapsedMilliseconds < 60000) {
-                // If we've been reconnecting for less than 60 seconds so far,
-                // wait between 0 and 10 seconds before the next reconnect attempt.
-                return Math.random() * 10000;
-            } else {
-                // If we've been reconnecting for more than 60 seconds so far, stop reconnecting.
-                return null;
-            }
-        }
-    })
+        nextRetryDelayInMilliseconds: retryContext => {
+          if (retryContext.elapsedMilliseconds < 60000) {
+            // If we've been reconnecting for less than 60 seconds so far,
+            // wait between 0 and 10 seconds before the next reconnect attempt.
+            return Math.random() * 10000;
+          } else {
+            // If we've been reconnecting for more than 60 seconds so far, stop reconnecting.
+            return null;
+          }
+        })
     .build();
 ```
 
-或者，您可以在其中撰寫程式碼所示的手動將重新連線您的用戶端[以手動方式重新連線](#manually-reconnect)。
+或者, 您可以撰寫程式碼, 以手動方式重新連線用戶端, 如[手動重新](#manually-reconnect)連線中所示。
 
 ::: moniker-end
 
-### <a name="manually-reconnect"></a>以手動方式重新連線
+### <a name="manually-reconnect"></a>手動重新連線
 
 ::: moniker range="< aspnetcore-3.0"
 
 > [!WARNING]
-> 在 3.0 之前，SignalR 的 JavaScript 用戶端不會自動重新連線。 您必須撰寫程式碼會以手動方式重新連接您的用戶端。
+> 在3.0 之前, SignalR 的 JavaScript 用戶端不會自動重新連線。 您必須撰寫程式碼會以手動方式重新連接您的用戶端。
 
 ::: moniker-end
 
-下列程式碼示範一個典型的手動重新連線的方法：
+下列程式碼示範一般手動重新連接方法:
 
 1. 函式 (在此情況下，`start`函式) 建立以啟動的連線。
 1. 呼叫`start`函式中的連線`onclose`事件處理常式。
@@ -263,4 +277,4 @@ const connection = new signalR.HubConnectionBuilder()
 * [.NET 用戶端](xref:signalr/dotnet-client)
 * [發佈至 Azure](xref:signalr/publish-to-azure-web-app)
 * [跨原始來源要求 (CORS)](xref:security/cors)
-* [Azure SignalR 服務的無伺服器文件](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [Azure SignalR Service 無伺服器檔](/azure/azure-signalr/signalr-concept-serverless-development-config)

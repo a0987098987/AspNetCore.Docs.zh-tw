@@ -1,30 +1,30 @@
 ---
-title: ASP.NET Core SignalR 中驗證和授權
+title: ASP.NET Core SignalR 中的驗證和授權
 author: bradygaster
-description: 了解如何在 ASP.NET Core SignalR 使用驗證和授權。
+description: 瞭解如何在 ASP.NET Core SignalR 中使用驗證和授權。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 05/09/2019
+ms.date: 07/15/2019
 uid: signalr/authn-and-authz
-ms.openlocfilehash: e8f9dc48be780fb91bdec6ea4d579f5e4f16197b
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: e7e7a9fd537ba89b64c15594652a290357a00038
+ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65516946"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68412539"
 ---
-# <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中驗證和授權
+# <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中的驗證和授權
 
-藉由[Andrew Stanton-nurse](https://twitter.com/anurse)
+[Andrew Stanton-護士](https://twitter.com/anurse)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
+[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/)[(如何下載)](xref:index#how-to-download-a-sample)
 
 ## <a name="authenticate-users-connecting-to-a-signalr-hub"></a>驗證連接到 SignalR 中樞的使用者
 
-SignalR 可以搭配[ASP.NET Core 驗證](xref:security/authentication/identity)使用者相關聯的每個連線。 在中樞中，驗證資料可以從存取[ `HubConnectionContext.User` ](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user)屬性。 驗證可讓與使用者相關聯的所有連接上呼叫方法的中樞 (請參閱[管理使用者和群組 signalr](xref:signalr/groups)如需詳細資訊)。 多個連接可能會與單一使用者相關聯。
+SignalR 可與[ASP.NET Core 驗證](xref:security/authentication/identity)搭配使用, 以將使用者與每個連線建立關聯。 在中樞中, 可以從[`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user)屬性存取驗證資料。 驗證可讓中樞在與使用者相關聯的所有連線上呼叫方法 (如需詳細資訊, 請參閱[在 SignalR 中管理使用者和群組](xref:signalr/groups))。 多個連接可能會與單一使用者相關聯。
 
-以下是範例`Startup.Configure`使用 SignalR 和 ASP.NET Core 的驗證：
+以下是使用 SignalR 和 ASP.NET Core `Startup.Configure`驗證的範例:
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -48,25 +48,25 @@ public void Configure(IApplicationBuilder app)
 ```
 
 > [!NOTE]
-> 您可以在其中註冊 SignalR 及 ASP.NET Core 驗證中介軟體的順序很重要。 請務必呼叫`UseAuthentication`之前`UseSignalR`使 SignalR 具有使用者`HttpContext`。
+> 您註冊 SignalR 和 ASP.NET Core authentication 中介軟體的順序很重要。 請一律`UseAuthentication`在`UseSignalR`之前呼叫, 讓 SignalR `HttpContext`具有上的使用者。
 
 ### <a name="cookie-authentication"></a>Cookie 驗證
 
-在瀏覽器為基礎的應用程式中的 cookie 驗證可讓您現有的使用者認證，以自動流向 SignalR 連線。 使用瀏覽器用戶端時，不需要進行其他設定。 如果使用者登入您的應用程式，SignalR 連線會自動繼承此驗證。
+在以瀏覽器為基礎的應用程式中, cookie 驗證可讓您現有的使用者認證自動流向 SignalR 連線。 使用瀏覽器用戶端時, 不需要進行其他設定。 如果使用者已登入您的應用程式, SignalR 連接會自動繼承此驗證。
 
-Cookie 是瀏覽器特定的方式，傳送存取權杖，但非瀏覽器用戶端可以傳送給他們。 使用時[.NET 用戶端](xref:signalr/dotnet-client)，則`Cookies`屬性可以設定在`.WithUrl`呼叫，以提供 cookie。 不過，使用 cookie 驗證，從.NET 用戶端需要應用程式提供 API，以交換驗證 cookie 的資料。
+Cookie 是用來傳送存取權杖的瀏覽器特定方式, 但非瀏覽器用戶端可以傳送它們。 使用[.net 用戶端](xref:signalr/dotnet-client)時, `Cookies`可以在`.WithUrl`呼叫中設定屬性, 以便提供 cookie。 不過, 若要從 .NET 用戶端使用 cookie 驗證, 應用程式必須提供 API 來交換 cookie 的驗證資料。
 
 ### <a name="bearer-token-authentication"></a>持有人權杖驗證
 
-用戶端可以提供存取權杖，而不是使用 cookie。 伺服器會驗證權杖，並使用它來識別使用者。 只有在建立連線時，才完成這項驗證。 連接的期間，伺服器不會自動重新驗證權杖撤銷檢查。
+用戶端可以提供存取權杖, 而不是使用 cookie。 伺服器會驗證權杖, 並使用它來識別使用者。 只有在建立連接時, 才會執行此驗證。 在連接的生命週期內, 伺服器不會自動重新驗證以檢查權杖撤銷。
 
-在伺服器上，持有人權杖驗證使用設定[JWT Bearer 中介軟體](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer)。
+在伺服器上, 持有人權杖驗證是使用[JWT 持有人中介軟體](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer)來設定。
 
-在 JavaScript 用戶端，語彙基元，可供使用[accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication)選項。
+在 JavaScript 用戶端中, 可以使用[accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication)選項來提供權杖。
 
 [!code-typescript[Configure Access Token](authn-and-authz/sample/wwwroot/js/chat.ts?range=63-65)]
 
-在.NET 用戶端，沒有類似[AccessTokenProvider](xref:signalr/configuration#configure-bearer-authentication)可用來設定權杖的屬性：
+在 .NET 用戶端中, 有一個類似的[AccessTokenProvider](xref:signalr/configuration#configure-bearer-authentication)屬性可用於設定權杖:
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -78,30 +78,30 @@ var connection = new HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> 您提供的存取語彙基元函式之前，會呼叫**每個**SignalR 所提出的 HTTP 要求。 如果您需要更新權杖，才能讓連線保持作用中 （因為它可能會在連線期間過期），此函式中進行的並傳回更新的權杖。
+> 您提供的存取權杖函式會在 SignalR 所提出的**每個**HTTP 要求之前呼叫。 如果您需要更新權杖, 以便讓連線保持作用中 (因為它可能會在連線期間過期), 請從這個函式中執行此動作, 並傳回更新的權杖。
 
-在標準的 web Api，持有人權杖會傳送 HTTP 標頭。 不過，SignalR 是無法使用某些傳輸時，在瀏覽器中設定這些標頭。 使用 WebSockets 和 Server-Sent 事件時，權杖會傳送做為查詢字串參數。 若要支援此伺服器上，則需要其他組態：
+在標準 web Api 中, 會以 HTTP 標頭傳送持有人權杖。 不過, 使用某些傳輸時, SignalR 無法在瀏覽器中設定這些標頭。 使用 Websocket 和伺服器傳送事件時, 權杖會以查詢字串參數的形式傳送。 為了在伺服器上支援此功能, 需要進行其他設定:
 
 [!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?name=snippet)]
 
-### <a name="cookies-vs-bearer-tokens"></a>持有人權杖與 cookie 
+### <a name="cookies-vs-bearer-tokens"></a>Cookie 和持有人權杖 
 
-因為 cookie 特有的瀏覽器，從其他種類的用戶端傳送會增加複雜度，相較於傳送持有人權杖。 基於這個理由，不建議 cookie 驗證，除非應用程式只需要從瀏覽器用戶端驗證使用者。 使用非瀏覽器用戶端的用戶端時，持有人權杖驗證是建議的方法。
+由於 cookie 是瀏覽器特有的, 因此從其他類型的用戶端傳送它們會增加複雜性, 相較于傳送持有人權杖。 基於這個理由, 除非應用程式只需要從瀏覽器用戶端驗證使用者, 否則不建議使用 cookie 驗證。 使用瀏覽器用戶端以外的用戶端時, 持有人權杖驗證是建議的方法。
 
 ### <a name="windows-authentication"></a>Windows 驗證
 
-如果[Windows 驗證](xref:security/authentication/windowsauth)已在您的應用程式，SignalR 可以使用該身分識別保護中樞。 不過，為了將訊息傳送給個別使用者，您需要新增自訂的使用者識別碼提供者。 這是因為 Windows 驗證系統並不提供 「 名稱識別碼 」 宣告 SignalR 用來判斷使用者名稱。
+如果您的應用程式中已設定[Windows 驗證](xref:security/authentication/windowsauth), SignalR 可以使用該身分識別來保護中樞。 不過, 若要將訊息傳送給個別使用者, 您需要新增自訂使用者識別碼提供者。 這是因為 Windows 驗證系統並未提供 SignalR 用來判斷使用者名稱的「名稱識別碼」宣告。
 
-加入新的類別可實作`IUserIdProvider`和其中一個宣告擷取使用者做為識別碼。 例如，若要使用"Name"宣告 (這是在表單中的 Windows 使用者名稱`[Domain]\[Username]`)，建立下列類別：
+加入新的類別, `IUserIdProvider`以執行並抓取其中一個來自使用者的宣告, 做為識別碼。 例如, 若要使用 "Name" 宣告 (這是格式`[Domain]\[Username]`的 Windows 使用者名稱), 請建立下列類別:
 
 [!code-csharp[Name based provider](authn-and-authz/sample/nameuseridprovider.cs?name=NameUserIdProvider)]
 
-而非`ClaimTypes.Name`，您可以使用的任何值`User`（例如 Windows SID 識別項等）。
+您可以使用 (例如 Windows SID 識別碼等) `User`中的任何值,而不是。`ClaimTypes.Name`
 
 > [!NOTE]
-> 在您的系統中，您所選擇的值必須是所有使用者之間唯一的。 否則，最後適用於一位使用者的訊息可能會移至不同的使用者。
+> 您選擇的值在系統中的所有使用者之間必須是唯一的。 否則, 適用于某位使用者的訊息最後可能會到達不同的使用者。
 
-註冊此元件，在您`Startup.ConfigureServices`方法。
+在您`Startup.ConfigureServices`的方法中註冊此元件。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -113,7 +113,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-在.NET 用戶端，必須啟用 Windows 驗證設定[UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials)屬性：
+在 .NET 用戶端中, 必須藉由設定[UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials)屬性來啟用 Windows 驗證:
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -124,24 +124,24 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-使用 Microsoft Internet Explorer 或 Microsoft Edge 時，瀏覽器用戶端只會支援 Windows 驗證。
+只有在使用 Microsoft Internet Explorer 或 Microsoft Edge 時, 瀏覽器用戶端才支援 Windows 驗證。
 
-### <a name="use-claims-to-customize-identity-handling"></a>使用自訂識別處理的宣告
+### <a name="use-claims-to-customize-identity-handling"></a>使用宣告來自訂身分識別處理
 
-驗證使用者的應用程式可以衍生自使用者宣告的 SignalR 使用者識別碼。 若要指定 SignalR 建立使用者識別碼的方式，實作`IUserIdProvider`和註冊的實作。
+驗證使用者的應用程式可以從使用者宣告衍生 SignalR 的使用者識別碼。 若要指定 SignalR 如何建立使用者識別碼, `IUserIdProvider`請執行並註冊該執行。
 
-在 程式碼範例示範如何使用以選取使用者的電子郵件地址作為識別屬性的 宣告。 
+範例程式碼示範如何使用宣告來選取使用者的電子郵件地址做為識別屬性。 
 
 > [!NOTE]
-> 在您的系統中，您所選擇的值必須是所有使用者之間唯一的。 否則，最後適用於一位使用者的訊息可能會移至不同的使用者。
+> 您選擇的值在系統中的所有使用者之間必須是唯一的。 否則, 適用于某位使用者的訊息最後可能會到達不同的使用者。
 
 [!code-csharp[Email provider](authn-and-authz/sample/EmailBasedUserIdProvider.cs?name=EmailBasedUserIdProvider)]
 
-註冊帳戶加入類型宣告`ClaimsTypes.Email`ASP.NET 身分識別資料庫。
+帳戶註冊會將類型`ClaimsTypes.Email`為的宣告新增至 ASP.NET identity database。
 
 [!code-csharp[Adding the email to the ASP.NET identity claims](authn-and-authz/sample/pages/account/Register.cshtml.cs?name=AddEmailClaim)]
 
-註冊此元件，在您`Startup.ConfigureServices`。
+在您`Startup.ConfigureServices`的中註冊此元件。
 
 ```csharp
 services.AddSingleton<IUserIdProvider, EmailBasedUserIdProvider>();
@@ -149,24 +149,24 @@ services.AddSingleton<IUserIdProvider, EmailBasedUserIdProvider>();
 
 ## <a name="authorize-users-to-access-hubs-and-hub-methods"></a>授權使用者存取中樞和中樞方法
 
-根據預設，在中樞中的所有方法都可以都呼叫未經驗證的使用者。 需要驗證，才能套用[授權](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute)屬性至中樞：
+根據預設, 中樞內的所有方法都可以由未經驗證的使用者呼叫。 若要要求驗證, 請將[授權](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute)屬性套用至中樞:
 
 [!code-csharp[Restrict a hub to only authorized users](authn-and-authz/sample/Hubs/ChatHub.cs?range=8-10,32)]
 
-您可以使用的建構函式引數和屬性`[Authorize]`屬性來限制只有符合特定的使用者存取[授權原則](xref:security/authorization/policies)。 例如，如果您有自訂授權原則呼叫`MyAuthorizationPolicy`您可以確保只有符合該原則的使用者可以存取使用下列程式碼的中樞：
+您可以使用`[Authorize]`屬性的「函式引數」和「屬性」, 限制只有符合特定[授權原則](xref:security/authorization/policies)的使用者才能存取。 例如, 如果您有一個稱為`MyAuthorizationPolicy`的自訂授權原則, 您可以確保只有符合該原則的使用者可以使用下列程式碼來存取中樞:
 
 ```csharp
 [Authorize("MyAuthorizationPolicy")]
-public class ChatHub: Hub
+public class ChatHub : Hub
 {
 }
 ```
 
-個別的中樞的方法可以有`[Authorize]`以及套用的屬性。 如果目前的使用者不符合原則套用至方法，錯誤會傳回給呼叫者：
+個別的`[Authorize]`中樞方法也可以套用屬性。 如果目前的使用者不符合套用至方法的原則, 則會將錯誤傳回給呼叫者:
 
 ```csharp
 [Authorize]
-public class ChatHub: Hub
+public class ChatHub : Hub
 {
     public async Task Send(string message)
     {
@@ -181,6 +181,81 @@ public class ChatHub: Hub
 }
 ```
 
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="use-authorization-handlers-to-customize-hub-method-authorization"></a>使用授權處理常式自訂中樞方法授權
+
+當中樞方法需要授權時, SignalR 會提供自訂資源給授權處理常式。 資源是的實例`HubInvocationContext`。 `HubInvocationContext` 包含、所叫用之中樞方法的名稱,以及中樞`HubCallerContext`方法的引數。
+
+請考慮允許多個組織透過 Azure Active Directory 登入的聊天室範例。 具有 Microsoft 帳戶的任何人都可以登入交談, 但只有擁有組織的成員才能夠禁止使用者或觀看使用者的聊天記錄。 此外, 我們可能會想要限制特定使用者的特定功能。 使用 ASP.NET Core 3.0 中的更新功能, 這是完全可行的。 請注意, `DomainRestrictedRequirement`如何作為自訂`IAuthorizationRequirement`。 現在, 資源參數已傳入, 內部邏輯可以檢查正在呼叫中樞的內容, 並決定是否要讓使用者執行個別的中樞方法。 `HubInvocationContext`
+
+```csharp
+[Authorize]
+public class ChatHub : Hub
+{
+    public void SendMessage(string message)
+    {
+    }
+
+    [Authorize("DomainRestricted")]
+    public void BanUser(string username)
+    {
+    }
+
+    [Authorize("DomainRestricted")]
+    public void ViewUserHistory(string username)
+    {
+    }
+}
+
+public class DomainRestrictedRequirement : 
+    AuthorizationHandler<DomainRestrictedRequirement, HubInvocationContext>, 
+    IAuthorizationRequirement
+{
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
+        DomainRestrictedRequirement requirement, 
+        HubInvocationContext resource)
+    {
+        if (IsUserAllowedToDoThis(resource.HubMethodName, context.User.Identity.Name) && 
+            context.User.Identity.Name.EndsWith("@microsoft.com"))
+        {
+            context.Succeed(requirement);
+        }
+        return Task.CompletedTask;
+    }
+
+    private bool IsUserAllowedToDoThis(string hubMethodName,
+        string currentUsername)
+    {
+        return !(currentUsername.Equals("asdf42@microsoft.com") && 
+            hubMethodName.Equals("banUser", StringComparison.OrdinalIgnoreCase));
+    }
+}
+```
+
+在`Startup.ConfigureServices`中, 新增新的原則, 並提供`DomainRestrictedRequirement`自訂需求做為參數來`DomainRestricted`建立原則。
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // ... other services ...
+
+    services
+        .AddAuthorization(options =>
+        {
+            options.AddPolicy("DomainRestricted", policy =>
+            {
+                policy.Requirements.Add(new DomainRestrictedRequirement());
+            });
+        });
+}
+```
+
+在上述範例中, `DomainRestrictedRequirement`類別`IAuthorizationRequirement`既是, 也是其本身`AuthorizationHandler`的需求。 將這兩個元件分割成不同的類別是可接受的, 以因應不同的考慮。 範例方法的優點是, 不需要在啟動`AuthorizationHandler`期間插入, 因為需求和處理常式是相同的。
+
+::: moniker-end
+
 ## <a name="additional-resources"></a>其他資源
 
 * [ASP.NET Core 中的持有人權杖驗證](https://blogs.msdn.microsoft.com/webdev/2016/10/27/bearer-token-authentication-in-asp-net-core/)
+* [以資源為基礎的授權](xref:security/authorization/resourcebased)

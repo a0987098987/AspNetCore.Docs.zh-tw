@@ -192,8 +192,6 @@
       uid: fundamentals/http-requests
     - name: 靜態檔案
       uid: fundamentals/static-files
-    - name: aspnet-codegenerator
-      uid: fundamentals/tools/dotnet-aspnet-codegenerator
 - name: Web 應用程式
   items:
     - name: Razor Pages
@@ -403,6 +401,8 @@
           uid: mvc/controllers/areas
         - name: 應用程式組件
           uid: mvc/extensibility/app-parts
+        - name: aspnet-codegenerator
+          uid: fundamentals/tools/dotnet-aspnet-codegenerator
 - name: Web API 應用程式
   items:
     - name: 總覽

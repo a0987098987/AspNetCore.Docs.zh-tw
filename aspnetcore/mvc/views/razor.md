@@ -5,12 +5,12 @@ description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記
 ms.author: riande
 ms.date: 06/12/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 87c5b97a653c139b8b79f4270e0d9d0081815433
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 634623aa6df860a2ff728da4e65d277326db37e2
+ms.sourcegitcommit: 051f068c78931432e030b60094c38376d64d013e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034934"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68440361"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -581,9 +581,6 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 ```cshtml
 @attribute [Authorize]
 ```
-
-> [!WARNING]
-> ASP.NET Core 3.0 Preview 6 版本中的已知問題：`@attribute` 指示詞在 *\_Imports.razor* 和 *\_ViewImports.cshtml* 檔案中沒有作用。 Preview 7 版本會解決此問題。
 
 ### <a name="namespace"></a>@namespace
 

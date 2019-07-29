@@ -5,14 +5,14 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/16/2019
+ms.date: 07/28/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: bbdb3e92b6b8afb44d9c0c95c240002c7b7c17db
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 5035a31526e0290964e0fdee05753aeaf6cb3790
+ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308148"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602435"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -41,6 +41,9 @@ ms.locfileid: "68308148"
 
 [Azure Web 應用程式沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
 探索 Azure 應用程式平台強制實施的 Azure App Service 執行階段執行限制。
+
+<xref:test/troubleshoot>  
+了解 ASP.NET Core 專案的相關警告和錯誤，並為其進行疑難排解。
 
 ## <a name="application-configuration"></a>應用程式組態
 

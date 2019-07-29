@@ -4,14 +4,14 @@ author: jamesnk
 description: 瞭解如何在 gRPC 中使用驗證和授權來 ASP.NET Core。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 06/07/2019
+ms.date: 07/26/2019
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 49024295e4db7976924397bb24567d92d6298562
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 34f7f8a5a22159329b3d6c4524943434c460c7fb
+ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308771"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602433"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>ASP.NET Core 的 gRPC 中的驗證和授權
 
@@ -106,12 +106,25 @@ public Ticketer.TicketerClient CreateClientWithCert(
 
 ### <a name="other-authentication-mechanisms"></a>其他驗證機制
 
-除了持有人權杖和用戶端憑證驗證之外, 所有 ASP.NET Core 支援的驗證機制 (例如 OAuth、OpenID 和 Negotiate) 都應該與 gRPC 搭配使用。 如需在伺服器端設定驗證的詳細資訊, 請造訪[ASP.NET Core 驗證](xref:security/authentication/identity)。
+許多 ASP.NET Core 支援的驗證機制可與 gRPC 搭配使用:
 
-用戶端設定將取決於您所使用的驗證機制。 先前的持有人權杖和用戶端憑證驗證範例顯示 gRPC 用戶端可設定為使用 gRPC 呼叫來傳送驗證中繼資料的幾種方式:
+* Azure Active Directory
+* 用戶端憑證
+* IdentityServer
+* JWT 權杖
+* OAuth 2。0
+* OpenID Connect
+* WS-Federation
+
+如需有關在伺服器上設定驗證的詳細資訊, 請參閱[ASP.NET Core 驗證](xref:security/authentication/identity)。
+
+將 gRPC 用戶端設定為使用驗證, 將取決於您所使用的驗證機制。 先前的持有人權杖和用戶端憑證範例顯示 gRPC 用戶端可設定為使用 gRPC 呼叫來傳送驗證中繼資料的幾種方式:
 
 * 強型別 gRPC 客戶`HttpClient`端會在內部使用。 您可以在上[`HttpClientHandler`](/dotnet/api/system.net.http.httpclienthandler)設定驗證, 或藉由將自訂`HttpClient` [`HttpMessageHandler`](/dotnet/api/system.net.http.httpmessagehandler)實例新增至。
 * 每個 gRPC 呼叫都有`CallOptions`一個選擇性引數。 您可以使用選項的標頭集合來傳送自訂標頭。
+
+> [!NOTE]
+> Windows 驗證 (NTLM/Kerberos/Negotiate) 無法與 gRPC 搭配使用。 gRPC 需要 HTTP/2, 而且 HTTP/2 不支援 Windows 驗證。
 
 ## <a name="authorize-users-to-access-services-and-service-methods"></a>授權使用者存取服務和服務方法
 

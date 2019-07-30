@@ -193,7 +193,7 @@ tcpdump -i [interface] -w trace.pcap
 3. （如有需要），請重新整理頁面並重現問題
 4. 以滑鼠右鍵按一下清單中的要求的任何位置，然後選擇 「 儲存所有為 HAR"
 
-![Mozilla Firefox 開發人員工具網路] 索引標籤中的 [儲存所有為 HAR 」 選項](diagnostics/firefox-har-export.png)
+![Mozilla Firefox 開發人員工具網路 索引標籤中的 儲存所有為 HAR 」 選項](diagnostics/firefox-har-export.png)
 
 ## <a name="attach-diagnostics-files-to-github-issues"></a>將診斷檔案附加至 GitHub 問題
 

@@ -3,26 +3,26 @@ title: 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 author: rick-anderson
 description: 了解如何使用 Entity Framework Core (EF Core)，新增用來管理資料庫中電影的類別。
 ms.author: riande
-ms.date: 02/12/2019
+ms.date: 07/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: be9f515178d0169a69487f917c7d39c6f11f1292
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: b7f77cfa51f8d86504939e31eade0dfda8a6b1c9
+ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815055"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371936"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE[](~/includes/rp/download.md)]
+::: moniker range=">= aspnetcore-3.0"
 
-在本節中，您可以新增類別來管理資料庫中的電影。 搭配 [Entity Framework Core](/ef/core) (EF Core) 使用這些類別，即可使用資料庫。 EF Core 是一種物件關聯式對應 (ORM) 架構，可簡化資料存取程式碼。
+在本節中，您可以新增類別來管理資料庫中的電影。 搭配 [Entity Framework Core](/ef/core) (EF Core) 使用這些類別，即可使用資料庫。 EF Core 是一種物件關聯式對應 (ORM) 架構，可簡化資料存取。
 
 模型類別稱為 POCO 類別 (來自「簡單的 CLR 物件」)，因為它們對 EF Core 沒有任何相依性。 它們會定義資料儲存在資料庫中的屬性。
 
-[檢視或下載](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start)範例。
+[!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
 ## <a name="add-a-data-model"></a>新增資料模型
 
@@ -46,7 +46,7 @@ ms.locfileid: "67815055"
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
-* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]   > [新增檔案]  。
+* 以滑鼠右鍵按一下 [Models]  資料夾，然後選取 [新增]  > [新增檔案]  。
 * 在 [新增檔案]  對話方塊中：
 
   * 在左窗格中選取 [一般]  。
@@ -69,14 +69,255 @@ ms.locfileid: "67815055"
 
 建立 *Pages/Movies* 資料夾：
 
-* 以滑鼠右鍵按一下 *Pages* 資料夾 > [新增]   > [新增資料夾]  。
+* 以滑鼠右鍵按一下 [Pages]  資料夾 > [新增]  > [新增資料夾]  。
 * 將資料夾命名為 *Movies*
 
-以滑鼠右鍵按一下 *Pages/Movies* 資料夾 > [新增]   > [新增 Scaffolded 項目]  。
+以滑鼠右鍵按一下 [Pages]/[Movies]  資料夾 > [新增]  > [新增 Scaffolded 項目]  。
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold]  對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)]   > [新增]  。
+在 [新增 Scaffold]  對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)]  > [新增]  。
+
+![前述指示中的圖片。](model/_static/add_scaffold.png)
+
+完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)  對話方塊：
+
+* 在 [模型類別]  下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)  。
+* 在 [資料內容類別]  列中選取 [+]  \(加號\)，並將產生的名稱 RazorPagesMovie.**Models**.RazorPagesMovieContext 變更為 RazorPagesMovie.**Data**.RazorPagesMovieContext。 這不是必要的[變更](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) \(英文\)。 它會使用正確的命名空間來建立資料庫內容類別。
+* 選取 [新增]  。
+
+![前述指示中的圖片。](model/_static/3/arp.png)
+
+*appsettings.json* 檔案會隨即更新用來連線到本機資料庫的連接字串。
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+<!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
+-->
+
+* 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
+* 安裝 Scaffolding 工具：
+
+  ```console
+   dotnet tool install --global dotnet-aspnet-codegenerator
+   ```
+
+* **針對 Windows**：執行下列命令：
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
+  ```
+
+* **針對 macOS 與 Linux**：執行下列命令：
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
+  ```
+
+[!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+* 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
+* 安裝 Scaffolding 工具：
+
+  ```console
+   dotnet tool install --global dotnet-aspnet-codegenerator
+   ```
+
+* 執行下列命令：
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
+  ```
+
+[!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
+
+---
+
+隨即建立 Scaffold 處理序並更新下列檔案：
+
+### <a name="files-created"></a>建立的檔案
+
+* *Pages/Movies*：Create、Delete、Details、Edit 和 Index。
+* *Data/RazorPagesMovieContext.cs*
+
+### <a name="file-updated"></a>檔案已更新
+
+* *Startup.cs*
+
+下一節將說明所建立和更新的檔案。
+
+<a name="pmc"></a>
+
+## <a name="initial-migration"></a>初始移轉
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+在本節中，您可以使用套件管理員主控台 (PMC) 進行下列作業：
+
+* 新增初始移轉。
+* 以初始移轉更新資料庫。
+
+從 [工具]  功能表中，選取 [NuGet 套件管理員]  > [套件管理員主控台]  。
+
+  ![PMC 功能表](../first-mvc-app/adding-model/_static/pmc.png)
+
+在 PMC 中，輸入下列命令：
+
+```PMC
+Add-Migration Initial
+Update-Database
+```
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+[!INCLUDE [initial migration](~/includes/RP/model3.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+[!INCLUDE [initial migration](~/includes/RP/model3.md)]
+
+---
+
+上述命令會產生下列警告：「實體類型 'Movie' 上的十進位資料行 'Price' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
+
+您可以忽略該警告，稍後的教學課程中將修正此問題。
+
+`ef migrations add InitialCreate` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (在 *RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
+
+`ef database update` 命令會執行 *Migrations/\<時間戳記>_InitialCreate.cs* 檔案中的 `Up` 方法。 `Up` 方法會建立資料庫。
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+### <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
+
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
+
+Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
+
+檢查 `Startup.ConfigureServices` 方法。 Scaffolder 已新增醒目標示行：
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
+
+`RazorPagesMovieContext` 會協調 `Movie` 模型的 EF Core 功能 (建立、更新、刪除等)。 資料內容 (`RazorPagesMovieContext`) 衍生自 [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)。 資料內容會指定資料模型包含哪些實體。
+
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
+
+上述程式碼會建立實體集的 [`DbSet<Movie>`](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
+
+連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+檢查 `Up` 方法。
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+檢查 `Up` 方法。
+
+---
+
+`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱 <xref:data/ef-mvc/migrations>。
+
+`Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
+
+<a name="test"></a>
+
+### <a name="test-the-app"></a>測試應用程式
+
+* 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL ( `http://localhost:port/movies` )。
+
+如果您收到錯誤：
+
+```console
+SqlException: Cannot open database "RazorPagesMovieContext-GUID" requested by the login. The login failed.
+Login failed for user 'User-name'.
+```
+
+您遺失了[移轉步驟](#pmc)。
+
+* 測試 **Create** 連結。
+
+  ![建立頁面](model/_static/conan.png)
+
+  > [!NOTE]
+  > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，則必須將應用程式全球化。 如需全球化指示，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) \(英文\)。
+
+* 測試 **Edit**、**Details** 和 **Delete** 連結。
+
+下一個教學課程說明 Scaffolding 所建立的檔案。
+
+## <a name="additional-resources"></a>其他資源
+
+> [!div class="step-by-step"]
+> [上一步：開始使用](xref:tutorials/razor-pages/razor-pages-start)
+> [下一步：Scaffolded Razor 頁面](xref:tutorials/razor-pages/page)
+
+::: moniker-end
+
+<!--  ::: moniker previous version   -->
+::: moniker range="< aspnetcore-3.0"
+
+在本節中，您可以新增類別來管理資料庫中的電影。 搭配 [Entity Framework Core](/ef/core) (EF Core) 使用這些類別，即可使用資料庫。 EF Core 是一種物件關聯式對應 (ORM) 架構，可簡化資料存取程式碼。
+
+模型類別稱為 POCO 類別 (來自「簡單的 CLR 物件」)，因為它們對 EF Core 沒有任何相依性。 它們會定義資料儲存在資料庫中的屬性。
+
+[!INCLUDE[](~/includes/rp/download.md)]
+
+## <a name="add-a-data-model"></a>新增資料模型
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
+
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增]   > [類別]  。 將類別命名為 **Movie**。
+
+[!INCLUDE [model 1b](~/includes/RP/model1b.md)]
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+* 新增名為 *Models* 的資料夾。
+* 將類別新增至名為 *Movie.cs* 的 *Models* 資料夾。
+
+[!INCLUDE [model 1b](~/includes/RP/model1b.md)]
+
+[!INCLUDE [model 2](~/includes/RP/model2.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+* 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
+* 以滑鼠右鍵按一下 [Models]  資料夾，然後選取 [新增]  > [新增檔案]  。
+* 在 [新增檔案]  對話方塊中：
+
+  * 在左窗格中選取 [一般]  。
+  * 在中央窗格中選取 [類別是空的]  。
+  * 將類別命名為 **Movie**，然後選取 [新增]  。
+
+[!INCLUDE [model 1b](~/includes/RP/model1b.md)]
+
+[!INCLUDE [model 2](~/includes/RP/model2.md)]
+
+---
+
+建置專案，以確認沒有任何編譯錯誤。
+
+## <a name="scaffold-the-movie-model"></a>Scaffold 影片模型
+
+在本節中會 scaffold 影片模型。 亦即 Scaffolding 工具會產生影片模型的建立、讀取、更新和刪除 (CRUD) 作業頁面。
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+建立 *Pages/Movies* 資料夾：
+
+* 以滑鼠右鍵按一下 [Pages]  資料夾 > [新增]  > [新增資料夾]  。
+* 將資料夾命名為 *Movies*
+
+以滑鼠右鍵按一下 [Pages/Movies]  資料夾 > [新增]  > [新增 Scaffolded 項目]  。
+
+![前述指示中的圖片。](model/_static/sca.png)
+
+在 [新增 Scaffold]  對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)]  > [新增]  。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
@@ -163,7 +404,7 @@ to use Data, it should not use models. That will make the namespace the same for
 * 新增初始移轉。
 * 以初始移轉更新資料庫。
 
-從 [工具]  功能表中，選取 [NuGet 套件管理員]   > [套件管理員主控台]  。
+從 [工具]  功能表中，選取 [NuGet 套件管理員]  > [套件管理員主控台]  。
 
   ![PMC 功能表](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -254,8 +495,8 @@ Login failed for user 'User-name'.
 
 ## <a name="additional-resources"></a>其他資源
 
-* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=sFVIsdR_RcM)
-
 > [!div class="step-by-step"]
 > [上一步：開始使用](xref:tutorials/razor-pages/razor-pages-start)
 > [下一步：Scaffolded Razor 頁面](xref:tutorials/razor-pages/page)
+
+::: moniker-end

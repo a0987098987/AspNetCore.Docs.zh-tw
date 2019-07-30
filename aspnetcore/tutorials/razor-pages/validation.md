@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何將驗證新增至 ASP.NET Core 中的 Razor 頁面。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2018
+ms.date: 7/23/2019
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 8495849c89ca3d6fd2b2006b61ce2ec75ff504a5
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: d6d45dc7154bf415c3b098299d066b6fb37cf64d
+ms.sourcegitcommit: 16502797ea749e2690feaa5e652a65b89c007c89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815669"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68483282"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -56,9 +56,9 @@ Razor Pages 和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 選擇性地測試伺服器端驗證：
 
-* 在瀏覽器中停用 JavaScript。 您可以使用瀏覽器的開發人員工具來執行此作業。 如果您無法在該瀏覽器中停用 JavaScript，請嘗試另一個瀏覽器。
+* 在瀏覽器中停用 JavaScript。 您可以使用瀏覽器的開發人員工具來停用 JavaScript。 如果您無法在該瀏覽器中停用 JavaScript，請嘗試另一個瀏覽器。
 * 在 Create 或 Edit 頁面的 `OnPostAsync` 方法中設定中斷點。
-* 提交含有驗證錯誤的表單。
+* 提交含有無效資料的表單。
 * 確認模型狀態無效：
 
   ```csharp
@@ -68,7 +68,7 @@ Razor Pages 和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
    }
   ```
 
-下列程式碼顯示您稍早在本教學課程中包含 Scaffold 的部分 *Create.cshtml* 頁面。 Create 和 Edit 頁面會使用它來顯示初始表單，以及在發生錯誤時重新顯示格式。
+下列程式碼顯示稍早在此教學課程中包含 Scaffold 的部分 *Create.cshtml* 頁面。 Create 和 Edit 頁面會使用它來顯示初始表單，以及在發生錯誤時重新顯示格式。
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
@@ -117,13 +117,72 @@ public DateTime ReleaseDate { get; set; }
 
 下列程式碼會顯示一行上的結合屬性：
 
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
 [Razor Pages 和 EF Core 使用者入門](xref:data/ef-rp/intro)說明使用 Razor Pages 執行進階 EF Core 作業。
 
+### <a name="apply-migrations"></a>套用移轉
+
+套用至類別的 DataAnnotations 會變更結構描述。 例如，套用至 `Title` 欄位的 DataAnnotations：
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDA.cs?name=snippet11)]
+
+* 將字元限制為 60 個。
+* 不允許 `null` 值。
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+`Movie` 資料表目前具有下列結構描述：
+
+``` sql
+CREATE TABLE [dbo].[Movie] (
+    [ID]          INT             IDENTITY (1, 1) NOT NULL,
+    [Title]       NVARCHAR (MAX)  NULL,
+    [ReleaseDate] DATETIME2 (7)   NOT NULL,
+    [Genre]       NVARCHAR (MAX)  NULL,
+    [Price]       DECIMAL (18, 2) NOT NULL,
+    [Rating]      NVARCHAR (MAX)  NULL,
+    CONSTRAINT [PK_Movie] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+```
+
+上述結構描述變更不會造成 EF 擲回例外狀況。 不過，請建立移轉，讓結構描述與模型一致。
+
+從 [工具]  功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]  。
+在 PMC 中，輸入下列命令：
+
+```powershell
+Add-Migration New_DataAnnotations
+Update-Database
+```
+
+`Update-Database` 會執行 `New_DataAnnotations` 類別的 `Up` 方法。 檢查 `Up` 方法：
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Migrations/20190724163003_New_DataAnnotations.cs?name=snippet)]
+
+已更新的 `Movie` 資料表具有下列結構描述：
+
+``` sql
+CREATE TABLE [dbo].[Movie] (
+    [ID]          INT             IDENTITY (1, 1) NOT NULL,
+    [Title]       NVARCHAR (60)   NOT NULL,
+    [ReleaseDate] DATETIME2 (7)   NOT NULL,
+    [Genre]       NVARCHAR (30)   NOT NULL,
+    [Price]       DECIMAL (18, 2) NOT NULL,
+    [Rating]      NVARCHAR (5)    NOT NULL,
+    CONSTRAINT [PK_Movie] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+```
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+
+SQLite 不需要移轉。
+
+---
+
 ### <a name="publish-to-azure"></a>發佈至 Azure
 
-如需部署至 Azure 的資訊，請參閱[教學課程：使用 SQL Database 在 Azure 中建置 ASP.NET 應用程式](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)。 這些指示適用於 ASP.NET 應用程式，而不是 ASP.NET Core 應用程式，但是步驟都相同。
+如需部署至 Azure 的資訊，請參閱[教學課程：使用 SQL Database 在 Azure 中建置 ASP.NET Core 應用程式](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)。
 
 感謝您看完這份 Razor Pages 簡介。 完成本教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
 

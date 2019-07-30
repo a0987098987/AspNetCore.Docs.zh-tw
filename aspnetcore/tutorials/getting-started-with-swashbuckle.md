@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/21/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 033f2dda9942f91f23158cf2d986062157a3b69e
-ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
+ms.openlocfilehash: 0ffd437bbb48ef1c7a9159fbf3ac41441613f434
+ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67316600"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372056"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -45,15 +45,17 @@ Swashbuckle 有三個主要元件：
 * 從 [管理 NuGet 套件]  對話方塊中：
   * 在 [方案總管]   > [管理 NuGet 套件]  中，以滑鼠右鍵按一下專案
   * 將 [套件來源]  設定為 "nuget.org"
+  * 請確定已啟用 [包含發行前版本] 選項
   * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
-  * 從 [瀏覽]  索引標籤中選取 "Swashbuckle.AspNetCore" 套件，並按一下 [安裝] 
+  * 從 [瀏覽]  索引標籤中選取最新的 "Swashbuckle.AspNetCore" 套件，並按一下 [安裝] 
 
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在 [Solution Pad]   > [新增套件...]  中，以滑鼠右鍵按一下 *Packages* 資料夾
+* 在 [Solution Pad]   > [新增套件]  中，以滑鼠右鍵按一下 *Packages* 資料夾
 * 將 [新增套件]  視窗的 [來源]  下拉式清單設定為 "nuget.org"
+* 請確定已啟用 [選定發行前版本的套件] 選項
 * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
-* 從結果窗格中選取 "Swashbuckle.AspNetCore" 套件，並按一下 [新增套件] 
+* 從結果窗格中選取最新的 "Swashbuckle.AspNetCore" 套件，並按一下 [新增套件] 
 
 ### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

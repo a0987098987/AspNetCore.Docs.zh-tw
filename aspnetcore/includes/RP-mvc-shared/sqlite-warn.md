@@ -4,13 +4,14 @@
 >
 >SQLite 限制的因應措施是手動撰寫移轉程式碼，以在資料表有所變更時執行資料表重建。 重建資料表包含：
 >
->* 重新命名現有的資料表。
 >* 建立新的資料表。
 >* 將資料從舊的資料表複製到新的資料表。
 >* 卸除舊的資料表。
+>* 重新命名新資料表。
 >
 >如需詳細資訊，請參閱下列資源：
 >
 > * [SQLite EF Core 資料庫提供者限制](/ef/core/providers/sqlite/limitations)
 > * [自訂移轉程式碼](/ef/core/managing-schemas/migrations/#customize-migration-code)
 > * [資料植入](/ef/core/modeling/data-seeding)
+  * [SQLite ALTER TABLE 陳述式](https://sqlite.org/lang_altertable.html) \(英文\)

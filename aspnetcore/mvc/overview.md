@@ -3,14 +3,14 @@ title: ASP.NET Core MVC 概觀
 author: ardalis
 description: 了解 ASP.NET Core MVC 何以是建置使用模型檢視控制器設計模式之 Web 應用程式和 API 的豐富架構。
 ms.author: riande
-ms.date: 01/08/2018
+ms.date: 08/01/2019
 uid: mvc/overview
-ms.openlocfilehash: 819bc93a7580626bf586b984b0ce169306df56d9
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 7f09751850cbfa7bb3dc79656d4530445a9767b1
+ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815348"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707813"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -88,11 +88,11 @@ routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id
 [Route("api/[controller]")]
 public class ProductsController : Controller
 {
-  [HttpGet("{id}")]
-  public IActionResult GetProduct(int id)
-  {
-    ...
-  }
+    [HttpGet("{id}")]
+    public IActionResult GetProduct(int id)
+    {
+      ...
+    }
 }
 ```
 
@@ -102,7 +102,7 @@ ASP.NET Core MVC [模型繫結](models/model-binding.md)會將用戶端要求資
 
 ```csharp
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
-   ```
+```
 
 ### <a name="model-validation"></a>模型驗證
 
@@ -149,6 +149,7 @@ ASP.NET Core 內建[相依性插入 (DI)](../fundamentals/dependency-injection.m
 
 ```cshtml
 @inject SomeService ServiceName
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -189,11 +190,11 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 
 [ASP.NET Core MVC 檢視](views/overview.md)使用 [Razor 檢視引擎](views/razor.md)來呈現檢視。 Razor 是簡潔、易懂且流暢的範本標記語言，使用內嵌 C# 程式碼來定義檢視。 Razor 可用來動態產生伺服器上的 Web 內容。 您可以完全混合伺服端程式碼以及用戶端內容和程式碼。
 
-```text
+```cshtml
 <ul>
-  @for (int i = 0; i < 5; i++) {
-    <li>List item @i</li>
-  }
+    @for (int i = 0; i < 5; i++) {
+        <li>List item @i</li>
+    }
 </ul>
 ```
 

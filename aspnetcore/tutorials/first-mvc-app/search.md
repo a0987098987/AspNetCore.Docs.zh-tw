@@ -5,12 +5,12 @@ description: 示範如何將搜尋新增至基本 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: fbec03d71e247c58fb5968290c4baf6b28120e1c
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: ed6c7a095143670b7d06e43db3a428dec9bf97ad
+ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815061"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707836"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>將搜尋新增至 ASP.NET Core MVC 應用程式
 
@@ -18,7 +18,7 @@ ms.locfileid: "67815061"
 
 在本節中，您會將搜尋功能新增至 `Index` 動作方法，讓您依據「內容類型」  或「名稱」  搜尋電影。
 
-以下列程式碼更新 `Index` 方法：
+使用下列程式碼更新在 *Controllers/MoviesController.cs* 中找到的 `Index` 方法：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_1stSearch)]
 
@@ -91,7 +91,7 @@ HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with
 
 您可以在要求本文中看到搜尋參數和 [XSRF](xref:security/anti-request-forgery) 語彙基元。 請注意，如先前的教學課程中所述，[表單標記協助程式](xref:mvc/views/working-with-forms)會產生 [XSRF](xref:security/anti-request-forgery) 防偽語彙基元。 我們不會修改資料，因此不需要驗證控制器方法中的語彙基元。
 
-由於搜尋參數是在要求本文而不是 URL 中，因此您無法擷取該搜尋資訊以加為書籤或與其他人共用。 請指定要求應該是 `HTTP GET` 來修正此問題：
+由於搜尋參數是在要求本文而不是 URL 中，因此您無法擷取該搜尋資訊以加為書籤或與其他人共用。 指定要求應為在 *Views/Movies/Index.cshtml* 檔案中找到的 `HTTP GET`，來修正此問題。
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGet.cshtml?highlight=12&range=1-23)]
 
@@ -132,7 +132,7 @@ HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with
 
 ## <a name="add-search-by-genre-to-the-index-view"></a>將依內容類型搜尋新增至 Index 檢視
 
-如下所示更新 `Index.cshtml`：
+更新在 *Views/Movies/* 中找到的 `Index.cshtml`，如下所示：
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexFormGenreNoRating.cshtml?highlight=1,15,16,17,19,28,31,34,37,43)]
 

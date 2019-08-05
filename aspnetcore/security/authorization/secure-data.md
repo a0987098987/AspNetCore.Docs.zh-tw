@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 222ae1d6212b838e5c70f831960fa23a9924a0ae
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
+ms.openlocfilehash: 4b94cc53777308deb26521a079d8a1c2742744db
+ms.sourcegitcommit: 4fe3ae892f54dc540859bff78741a28c2daa9a38
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856146"
+ms.lasthandoff: 08/04/2019
+ms.locfileid: "68776750"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -37,13 +37,13 @@ ms.locfileid: "67856146"
 * **管理員**可以核准或拒絕連絡人資料。 只有已核准的連絡人會對使用者顯示。
 * **系統管理員**可以核准/拒絕並編輯/刪除任何資料。
 
-這份文件中的映像完全不符合最新的範本。
+本檔中的影像完全不符合最新的範本。
 
 在下圖中，使用者 Rick (`rick@example.com`) 登入。 Rick 只能檢視已核准的連絡人和**編輯**/**刪除**/**新建**他連絡人的連結。 只有最後一筆記錄，由 Rick，顯示**編輯**並**刪除**連結。 其他使用者不會看到最後一筆記錄，直到管理員或系統管理員的狀態變更為 「 Approved 」。
 
 ![螢幕擷取畫面顯示 Rick 登入](secure-data/_static/rick.png)
 
-在下圖中，`manager@contoso.com`登入，並在管理員的角色：
+在下圖中, `manager@contoso.com`已登入並以管理員的角色執行:
 
 ![螢幕擷取畫面顯示manager@contoso.com登入](secure-data/_static/manager1.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "67856146"
 
 **核准**並**拒絕**按鈕只會顯示為管理員和系統管理員。
 
-在下圖中，`admin@contoso.com`登入，並在系統管理員的角色：
+在下圖中, `admin@contoso.com`已登入, 並以系統管理員角色:
 
 ![螢幕擷取畫面顯示admin@contoso.com登入](secure-data/_static/admin.png)
 
@@ -65,9 +65,9 @@ ms.locfileid: "67856146"
 
 此範例包含下列 「 授權 」 處理常式：
 
-* `ContactIsOwnerAuthorizationHandler`：可確保使用者只能編輯其資料。
-* `ContactManagerAuthorizationHandler`：允許經理核准或拒絕連絡人。
-* `ContactAdministratorsAuthorizationHandler`：可讓系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。
+* `ContactIsOwnerAuthorizationHandler`：確保使用者只能編輯其資料。
+* `ContactManagerAuthorizationHandler`：可讓管理員核准或拒絕連絡人。
+* `ContactAdministratorsAuthorizationHandler`：允許系統管理員核准或拒絕連絡人, 以及編輯/刪除連絡人。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -122,7 +122,7 @@ dotnet ef database update
 
  您可以選擇退出的 Razor 頁面、 控制器或動作方法層級的驗證`[AllowAnonymous]`屬性。 設定預設的驗證原則，以要求使用者進行驗證，可保護新加入的 Razor 頁面和控制站。 具有預設值所需的驗證會比依賴新的控制器和 Razor 頁面，以包含更安全`[Authorize]`屬性。
 
-新增[AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute)索引和隱私權的頁面讓匿名使用者可以取得站台的相關資訊，才能註冊。
+將[AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute)新增至 [索引] 和 [隱私權] 頁面, 讓匿名使用者可以在註冊之前取得網站的相關資訊。
 
 [!code-csharp[](secure-data/samples/final3/Pages/Index.cshtml.cs?highlight=1,7)]
 
@@ -159,7 +159,7 @@ dotnet user-secrets set SeedUserPW <PW>
 `ContactIsOwnerAuthorizationHandler`呼叫[內容。成功](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_)目前已驗證的使用者是否連絡擁有者。 授權的處理常式通常：
 
 * 傳回`context.Succeed`時符合的需求。
-* 傳回`Task.CompletedTask`時不符合需求。 `Task.CompletedTask` 不是成功或失敗&mdash;它允許執行的其他授權處理常式。
+* 傳回`Task.CompletedTask`時不符合需求。 `Task.CompletedTask`不是成功或失敗&mdash;, 它允許其他授權處理常式執行。
 
 如果您需要明確地使失敗，傳回[內容。失敗](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail)。
 
@@ -242,7 +242,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 目前，UI 顯示編輯和刪除的使用者無法修改的連絡人的連結。
 
-插入中的授權服務*pages/_viewimports.cshtml*檔案，以便它可供所有檢視：
+將授權服務插入*Pages/_ViewImports*檔案中, 以供所有視圖使用:
 
 [!code-cshtml[](secure-data/samples/final3/Pages/_ViewImports.cshtml?highlight=6-99)]
 
@@ -269,14 +269,14 @@ dotnet user-secrets set SeedUserPW <PW>
 
 請參閱[本期](https://github.com/aspnet/AspNetCore.Docs/issues/8502)有關：
 
-* 移除使用者的權限。 比方說，靜音交談應用程式中的使用者。
+* 移除使用者的權限。 例如, 將聊天應用程式中的使用者靜音。
 * 若要新增權限。
 
 ## <a name="test-the-completed-app"></a>測試已完成的應用程式
 
 如果您尚未設定植入的使用者帳戶的密碼，使用[Secret Manager 工具](xref:security/app-secrets#secret-manager)設定密碼：
 
-* 選擇強式密碼：使用八個或多個字元和至少一個大寫字元、 數字和符號。 比方說，`Passw0rd!`符合強式密碼需求。
+* 選擇強式密碼:請使用八個或更多個字元, 且至少要有一個大寫字元、數位和符號。 比方說，`Passw0rd!`符合強式密碼需求。
 * 執行下列命令，從專案的資料夾，其中`<PW>`的密碼：
 
   ```console
@@ -314,7 +314,7 @@ dotnet user-secrets set SeedUserPW <PW>
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* 新增*Models/Contact.cs*:
+* 新增*模型/連絡人 .cs*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
@@ -330,9 +330,9 @@ dotnet ef migrations add initial
 dotnet ef database update
   ```
 
-如果您遇到 bug`dotnet aspnet-codegenerator razorpage`命令，請參閱[此 GitHub 問題](https://github.com/aspnet/Scaffolding/issues/984)。
+如果您遇到`dotnet aspnet-codegenerator razorpage`命令的錯誤, 請參閱[此 GitHub 問題](https://github.com/aspnet/Scaffolding/issues/984)。
 
-* 更新**ContactManager**中的錨點*Pages/Shared/_Layout.cshtml*檔案：
+* 更新*Pages/Shared/_Layout*檔案中的**ContactManager**錨點:
 
  ```cshtml
 <a class="navbar-brand" asp-area="" asp-page="/Contacts/Index">ContactManager</a>
@@ -342,7 +342,7 @@ dotnet ef database update
 
 ### <a name="seed-the-database"></a>植入資料庫
 
-新增[SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs)類別，即可*資料*資料夾：
+將[SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs)類別新增至 [*資料*] 資料夾:
 
 [!code-csharp[](secure-data/samples/starter3/Data/SeedData.cs)]
 
@@ -366,7 +366,7 @@ dotnet ef database update
 
 ![螢幕擷取畫面顯示 Rick 登入](secure-data/_static/rick.png)
 
-在下圖中，`manager@contoso.com`登入，並在管理員的角色：
+在下圖中, `manager@contoso.com`已登入並以管理員的角色執行:
 
 ![螢幕擷取畫面顯示manager@contoso.com登入](secure-data/_static/manager1.png)
 
@@ -376,7 +376,7 @@ dotnet ef database update
 
 **核准**並**拒絕**按鈕只會顯示為管理員和系統管理員。
 
-在下圖中，`admin@contoso.com`登入，並在系統管理員的角色：
+在下圖中, `admin@contoso.com`已登入, 並以系統管理員角色:
 
 ![螢幕擷取畫面顯示admin@contoso.com登入](secure-data/_static/admin.png)
 
@@ -388,9 +388,9 @@ dotnet ef database update
 
 此範例包含下列 「 授權 」 處理常式：
 
-* `ContactIsOwnerAuthorizationHandler`：可確保使用者只能編輯其資料。
-* `ContactManagerAuthorizationHandler`：允許經理核准或拒絕連絡人。
-* `ContactAdministratorsAuthorizationHandler`：可讓系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。
+* `ContactIsOwnerAuthorizationHandler`：確保使用者只能編輯其資料。
+* `ContactManagerAuthorizationHandler`：可讓管理員核准或拒絕連絡人。
+* `ContactAdministratorsAuthorizationHandler`：允許系統管理員核准或拒絕連絡人, 以及編輯/刪除連絡人。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -482,7 +482,7 @@ dotnet user-secrets set SeedUserPW <PW>
 `ContactIsOwnerAuthorizationHandler`呼叫[內容。成功](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_)目前已驗證的使用者是否連絡擁有者。 授權的處理常式通常：
 
 * 傳回`context.Succeed`時符合的需求。
-* 傳回`Task.CompletedTask`時不符合需求。 `Task.CompletedTask` 不是成功或失敗&mdash;它允許執行的其他授權處理常式。
+* 傳回`Task.CompletedTask`時不符合需求。 `Task.CompletedTask`不是成功或失敗&mdash;, 它允許其他授權處理常式執行。
 
 如果您需要明確地使失敗，傳回[內容。失敗](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail)。
 
@@ -592,25 +592,26 @@ dotnet user-secrets set SeedUserPW <PW>
 
 請參閱[本期](https://github.com/aspnet/AspNetCore.Docs/issues/8502)有關：
 
-* 移除使用者的權限。 比方說，靜音交談應用程式中的使用者。
+* 移除使用者的權限。 例如, 將聊天應用程式中的使用者靜音。
 * 若要新增權限。
 
 ## <a name="test-the-completed-app"></a>測試已完成的應用程式
 
 如果您尚未設定植入的使用者帳戶的密碼，使用[Secret Manager 工具](xref:security/app-secrets#secret-manager)設定密碼：
 
-* 選擇強式密碼：使用八個或多個字元和至少一個大寫字元、 數字和符號。 比方說，`Passw0rd!`符合強式密碼需求。
+* 選擇強式密碼:請使用八個或更多個字元, 且至少要有一個大寫字元、數位和符號。 比方說，`Passw0rd!`符合強式密碼需求。
 * 執行下列命令，從專案的資料夾，其中`<PW>`的密碼：
 
   ```console
   dotnet user-secrets set SeedUserPW <PW>
   ```
 
-* 卸除並更新資料庫
+* 卸載並更新資料庫
+
     ```console
      dotnet ef database drop -f
      dotnet ef database update  
-```
+     ```
 
 * 重新啟動植入資料庫的應用程式。
 
@@ -640,7 +641,7 @@ dotnet user-secrets set SeedUserPW <PW>
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* 新增*Models/Contact.cs*:
+* 新增*模型/連絡人 .cs*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 

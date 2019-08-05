@@ -3,14 +3,14 @@ title: ASP.NET Core 中的配置
 author: ardalis
 description: 了解如何先使用通用配置、共用指示詞，以及執行通用程式碼，再轉譯 ASP.NET 應用程式中的檢視。
 ms.author: riande
-ms.date: 02/26/2019
+ms.date: 07/30/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 7a60ee15e688d6f0e531302457604fa759213758
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 6bd9dfc65c026ee524277aaaa21333d299c8981e
+ms.sourcegitcommit: 7001657c00358b082734ba4273693b9b3ed35d2a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899238"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68670036"
 ---
 # <a name="layout-in-aspnet-core"></a>ASP.NET Core 中的配置
 
@@ -35,15 +35,15 @@ ms.locfileid: "56899238"
 
 應用程式內的許多頁面也經常使用指令碼和樣式表這類一般 HTML 結構。 所有這些共用項目可能都定義在 *layout* 檔案中，而之後應用程式內使用的任何檢視都可以參考該檔案。 配置可減少檢視中的重複程式碼。
 
-依照慣例，ASP.NET Core 應用程式的預設配置命名為 *_Layout.cshtml*。 使用範本建立的新 ASP.NET Core 專案配置檔案：
+依照慣例，ASP.NET Core 應用程式的預設配置命名為 *_Layout.cshtml*。 使用範本建立的新 ASP.NET Core 專案配置檔案為：
 
 * Razor Pages：*Pages/Shared/_Layout.cshtml*
 
-  ![方案總管中的 pages 資料夾](layout/_static/rp-web-project-views.png)
+  ![方案總管中的 Pages 資料夾](layout/_static/rp-web-project-views.png)
 
 * 具有檢視的控制器：*Views/Shared/_Layout.cshtml*
 
- ![方案總管中的 views 資料夾](layout/_static/mvc-web-project-views.png)
+  ![方案總管中的 Views 資料夾](layout/_static/mvc-web-project-views.png)
 
 此配置會定義應用程式中檢視的最上層範本。 應用程式不需要配置。 應用程式可以定義數個配置，即不同的檢視指定不同的配置。
 
@@ -65,7 +65,7 @@ Razor 檢視具有 `Layout` 屬性。 個別檢視透過設定此屬性來指定
 
 ### <a name="sections"></a>章節
 
-配置可以選擇性地呼叫 `RenderSection`，以參考一或多個「區段」。 區段提供一種方式，來組織特定頁面項目應放置的位置。 每次呼叫 `RenderSection`，都可以指定該區段是必要區段或是選擇性區段：
+配置可以選擇性地呼叫 `RenderSection`，以參考一或多個「區段」  。 區段提供一種方式，來組織特定頁面項目應放置的位置。 每次呼叫 `RenderSection`，都可以指定該區段是必要區段或是選擇性區段：
 
 ```html
 @section Scripts {
@@ -147,7 +147,7 @@ ASP.NET Core MVC 應用程式的 *_ViewImports.cshtml* 檔案通常會放在 *Pa
 
 ## <a name="running-code-before-each-view"></a>在每個檢視之前執行程式碼
 
-需要在每個檢視或頁面之前執行的程式碼應放在 *_ViewStart.cshtml* 檔案中。 依照慣例，*_ViewStart.cshtml* 檔案會位於*頁面* (或*檢視*) 資料夾中。 *_ViewStart.cshtml* 中所列的陳述式會在每個完整檢視之前執行 (不是配置，也不是部分檢視)。 與 [ViewImports.cshtml](xref:mvc/views/layout#viewimports) 類似，*_ViewStart.cshtml* 是階層式的。 如果 *_ViewStart.cshtml* 檔案是定義於檢視或頁面資料夾中，則會在 *Pages* (或 *Views*) 資料夾 (如果有的話) 根目錄中所定義的檔案後面執行。
+需要在每個檢視或頁面之前執行的程式碼應放在 *_ViewStart.cshtml* 檔案中。 依照慣例， *_ViewStart.cshtml* 檔案會位於*頁面* (或*檢視*) 資料夾中。 *_ViewStart.cshtml* 中所列的陳述式會在每個完整檢視之前執行 (不是配置，也不是部分檢視)。 與 [ViewImports.cshtml](xref:mvc/views/layout#viewimports) 類似， *_ViewStart.cshtml* 是階層式的。 如果 *_ViewStart.cshtml* 檔案是定義於檢視或頁面資料夾中，則會在 *Pages* (或 *Views*) 資料夾 (如果有的話) 根目錄中所定義的檔案後面執行。
 
 範例 *_ViewStart.cshtml* 檔案：
 

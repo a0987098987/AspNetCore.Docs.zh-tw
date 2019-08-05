@@ -5,14 +5,14 @@ description: 了解如何使用 HTTP REPL .NET Core 全域工具來瀏覽和測�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 07/23/2019
+ms.date: 07/25/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 1ceda6182c62bb1be06cd95f14e6a46a1809253e
-ms.sourcegitcommit: 059ab380744fa3be3b69aa90d431b563c57092cf
+ms.openlocfilehash: e719d599545810d723840b0800cd6a2b4f96b123
+ms.sourcegitcommit: fbc66827e319d28bebed678ea5fd42f582fe3c34
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68410882"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68493577"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -21,7 +21,8 @@ ms.locfileid: "68410882"
 HTTP「讀取、求值、輸出」迴圈 (REPL) 是：
 
 * 輕量型的跨平台命令列工具，其支援需求和 .NET Core 相同。
-* 可用來提出 HTTP 要求來測試 ASP.NET Core web API 並檢視其結果。
+* 用來提出 HTTP 要求來測試 ASP.NET Core Web API (及非 ASP.NET Core 的 Web API) 並檢視其結果。
+* 能夠測試裝載於任何環境中的 Web API，包括 localhost 和 Azure App Service。
 
 支援的 [HTTP 動詞命令](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)如下：
 
@@ -44,7 +45,7 @@ HTTP「讀取、求值、輸出」迴圈 (REPL) 是：
 若要安裝 HTTP REPL，請執行下列命令：
 
 ```console
-dotnet tool install -g Microsoft.dotnet-httprepl --version 3.0.0-*
+dotnet tool install -g Microsoft.dotnet-httprepl --version "3.0.0-*"
 ```
 
 會從 [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) \(英文\) NuGet 套件安裝 [.NET Core 全域工具](/dotnet/core/tools/global-tools#install-a-global-tool)。

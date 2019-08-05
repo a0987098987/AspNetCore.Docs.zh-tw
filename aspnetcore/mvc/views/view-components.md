@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/14/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: ff84abf9e0c682d22196a0a0f5f377990c80a6ae
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: e6990368519857a27b291d7d565c09072f23f1b0
+ms.sourcegitcommit: 7001657c00358b082734ba4273693b9b3ed35d2a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815269"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68670091"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
@@ -326,6 +326,14 @@ public class PriorityList : ViewComponent
 ::: moniker-end
 
 `PriorityList.Invoke` 的方法簽章為同步，但 Razor 會在標記檔案中找到並使用 `Component.InvokeAsync` 呼叫該方法。
+
+## <a name="all-view-component-parameters-are-required"></a>所有檢視元件參數均為必要參數
+
+檢視元件中的每個參數都是必要屬性。 請參閱[這個 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/5011)。 若省略了任何參數：
+
+* `InvokeAsync` 方法簽章即不相符，因此系統不會執行此方法。
+* ViewComponent 不會轉譯任何標記。
+* 系統不會擲回任何錯誤。
 
 ## <a name="additional-resources"></a>其他資源
 

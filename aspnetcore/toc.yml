@@ -1009,6 +1009,8 @@
       uid: fundamentals/localization
     - name: 可攜式物件當地語系化
       uid: fundamentals/portable-object-localization
+    - name: 擴充性
+      uid: fundamentals/localization-extensibility
     - name: 疑難排解
       uid: fundamentals/troubleshoot-aspnet-core-localization
 - name: 進階

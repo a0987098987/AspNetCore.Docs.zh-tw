@@ -301,6 +301,8 @@
           uid: blazor/javascript-interop
         - name: 安全性及身分識別
           uid: security/blazor/index
+        - name: 處理錯誤
+          uid: blazor/handle-errors
         - name: 偵錯
           uid: blazor/debug
         - name: 呼叫 Web API

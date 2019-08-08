@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 07/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: b7f77cfa51f8d86504939e31eade0dfda8a6b1c9
-ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
+ms.openlocfilehash: 6132f7b907014b4f57bb9ae0300e00b6ecb23f1a
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371936"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68820076"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -72,7 +72,7 @@ ms.locfileid: "68371936"
 * 以滑鼠右鍵按一下 [Pages]  資料夾 > [新增]  > [新增資料夾]  。
 * 將資料夾命名為 *Movies*
 
-以滑鼠右鍵按一下 [Pages]/[Movies]  資料夾 > [新增]  > [新增 Scaffolded 項目]  。
+以滑鼠右鍵按一下 [Pages/Movies]  資料夾 > [新增]  > [新增 Scaffolded 項目]  。
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "68371936"
 * 安裝 Scaffolding 工具：
 
   ```console
-   dotnet tool install --global dotnet-aspnet-codegenerator
+   dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
    ```
 
 * **針對 Windows**：執行下列命令：
@@ -122,7 +122,7 @@ ms.locfileid: "68371936"
 * 安裝 Scaffolding 工具：
 
   ```console
-   dotnet tool install --global dotnet-aspnet-codegenerator
+   dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
    ```
 
 * 執行下列命令：
@@ -166,7 +166,7 @@ ms.locfileid: "68371936"
 在 PMC 中，輸入下列命令：
 
 ```PMC
-Add-Migration Initial
+Add-Migration InitialCreate
 Update-Database
 ```
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/14/2019
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 8a5ac5c58e7ceab07e55da8b61ebb01f7ac984bc
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: d18abbf33c71dca5130bfc6b503b46c1d5bce537
+ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67153198"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68913931"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor"></a>裝載及部署 ASP.NET Core Blazor
 
@@ -28,7 +28,7 @@ ms.locfileid: "67153198"
 1. 選取「發佈目標」  。 若要在本機發佈，請選取 [資料夾]  。
 1. 接受 [選擇資料夾]  欄位中的預設位置，或指定不同的位置。 選取 [發行]  按鈕。
 
-# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code / .NET Core CLI](#tab/visual-studio-code+netcore-cli)
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，搭配發行組態來發佈應用程式：
 

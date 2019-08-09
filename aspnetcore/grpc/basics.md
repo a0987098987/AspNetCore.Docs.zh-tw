@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 07/03/2019
 uid: grpc/basics
-ms.openlocfilehash: 700fe9463317f9ee30dfe4ebf5201c7b9c0c5ad6
-ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
+ms.openlocfilehash: b236fe6914cf7b780a9d02398ec9c92660dc1063
+ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68412478"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68862862"
 ---
 # <a name="grpc-services-with-c"></a>使用 C gRPC 服務\#
 
@@ -52,9 +52,9 @@ gRPC 會使用合約優先的方法來開發 API。 通訊協定緩衝區 (proto
 
 [!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=1&range=12)]
 
-用戶端專案應`Grpc.Tools`直接參考。 執行時間不需要工具套件, 因此會以下列方式`PrivateAssets="All"`標記相依性:
+用戶端專案應直接`Grpc.Tools`與使用 gRPC 用戶端所需的其他套件一起參考。 執行時間不需要工具套件, 因此會以下列方式`PrivateAssets="All"`標記相依性:
 
-[!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/GrpcGreeterClient.csproj?highlight=1&range=11)]
+[!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/GrpcGreeterClient.csproj?highlight=3&range=9-11)]
 
 ## <a name="generated-c-assets"></a>產生C#的資產
 
@@ -64,7 +64,7 @@ gRPC 會使用合約優先的方法來開發 API。 通訊協定緩衝區 (proto
 
 [!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Services/GreeterService.cs?name=snippet)]
 
-針對用戶端資產, 會產生具體的用戶端類型。 在*proto*檔案中的 gRPC 呼叫會轉譯為具象型別上的方法, 可以呼叫。 針對, 先前所述的範例會產生具體`GreeterClient`類型。 `greet.proto` 呼叫`GreeterClient.SayHello`以起始對伺服器的 gRPC 呼叫。
+針對用戶端資產, 會產生具體的用戶端類型。 在*proto*檔案中的 gRPC 呼叫會轉譯為具象型別上的方法, 可以呼叫。 針對, 先前所述的範例會產生具體`GreeterClient`類型。 `greet.proto` 呼叫`GreeterClient.SayHelloAsync`以起始對伺服器的 gRPC 呼叫。
 
 [!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?highlight=3-6&name=snippet)]
 

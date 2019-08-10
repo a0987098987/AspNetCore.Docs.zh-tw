@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 08/05/2019
 uid: signalr/configuration
-ms.openlocfilehash: 4706a1e2774fa9f6fb40085da944e8a82476ef05
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: 475d9664c588c06bfcd816959be8a425ee01c023
+ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820041"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68915074"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 設定
 
@@ -71,12 +71,13 @@ MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet
 | `SupportedProtocols` | 所有已安裝的通訊協定 | 此中樞支援的通訊協定。 根據預設, 允許在伺服器上註冊的所有通訊協定, 但是可以從這份清單中移除通訊協定, 以停用個別中樞的特定通訊協定。 |
 | `EnableDetailedErrors` | `false` | 如果`true`為, 當中樞方法擲回例外狀況時, 會將詳細的例外狀況訊息傳回給用戶端。 預設值為`false`, 因為這些例外狀況訊息可能包含機密資訊。 |
 | `StreamBufferCapacity` | `10` | 可以針對用戶端上傳資料流程進行緩衝處理的專案數上限。 若達到此限制, 則在伺服器處理資料流程專案之前, 會封鎖調用的處理。|
+| `MaximumReceiveMessageSize` | 32 KB | 單一傳入中樞訊息的大小上限。 |
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.2"
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ClientTimeoutInterval` | 30 秒 | 如果用戶端未在此間隔內收到訊息 (包括 keep-alive), 伺服器會將它視為已中斷連線。 這可能需要比此逾時間隔更長的時間, 讓用戶端實際被標示為已中斷連線, 因為這是如何實行的。 建議的值為值的`KeepAliveInterval`雙精度浮點數。|
 | `HandshakeTimeout` | 15 秒 | 如果用戶端未在此時間間隔內傳送初始交握訊息, 連接就會關閉。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時, 才應該修改的「高級」設定。 如需交握程式的詳細資訊, 請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -142,18 +143,35 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 下表說明設定 ASP.NET Core SignalR 的 advanced HTTP 選項的選項:
 
-| 選項 | 預設值 | 說明 |
+::: moniker range=">= aspnetcore-3.0"
+
+| 選項 | 預設值 | 描述 |
+| ------ | ------------- | ----------- |
+| `ApplicationMaxBufferSize` | 32 KB | 在套用背壓之前, 伺服器會緩衝的用戶端接收的最大位元組數目。 增加此值可讓伺服器更快速地接收較大的訊息, 而不需套用背壓, 但可能會增加記憶體耗用量。 |
+| `AuthorizationData` | 從套用至中樞類別`Authorize`的屬性自動收集的資料。 | 用來判斷是否授權用戶端連線到中樞的[IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata)物件清單。 |
+| `TransportMaxBufferSize` | 32 KB | 在觀察到背壓之前, 伺服器會緩衝的應用程式所傳送的最大位元組數目。 增加此值可讓伺服器更快速地緩衝較大的訊息, 而不需等待背壓, 但可能會增加記憶體耗用量。 |
+| `Transports` | 所有傳輸都已啟用。 | `HttpTransportType`值的位旗標列舉, 可以限制用戶端可用來連接的傳輸。 |
+| `LongPolling` | 請參閱下方。 | 長輪詢傳輸特定的其他選項。 |
+| `WebSockets` | 請參閱下方。 | Websocket 傳輸特定的其他選項。 |
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+| 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
 | `ApplicationMaxBufferSize` | 32 KB | 從用戶端接收伺服器緩衝區的最大位元組數目。 增加這個值可讓伺服器接收較大的訊息, 但可能會對記憶體耗用量造成負面影響。 |
 | `AuthorizationData` | 從套用至中樞類別`Authorize`的屬性自動收集的資料。 | 用來判斷是否授權用戶端連線到中樞的[IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata)物件清單。 |
 | `TransportMaxBufferSize` | 32 KB | 由伺服器所緩衝的應用程式所傳送的最大位元組數目。 增加這個值可讓伺服器傳送較大的訊息, 但可能會對記憶體耗用量造成負面影響。 |
-| `Transports` | 所有傳輸都已啟用。 | `HttpTransportType`值的位元遮罩, 可以限制用戶端可用來連接的傳輸。 |
+| `Transports` | 所有傳輸都已啟用。 | `HttpTransportType`值的位旗標列舉, 可以限制用戶端可用來連接的傳輸。 |
 | `LongPolling` | 請參閱下方。 | 長輪詢傳輸特定的其他選項。 |
 | `WebSockets` | 請參閱下方。 | Websocket 傳輸特定的其他選項。 |
 
+::: moniker-end
+
 長輪詢傳輸具有其他選項, 可以使用`LongPolling`屬性來設定:
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `PollTimeout` | 90秒 | 在終止單一輪詢要求之前, 伺服器等候訊息傳送至用戶端的最大時間量。 降低此值會導致用戶端更頻繁地發出新的輪詢要求。 |
 
@@ -342,14 +360,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `serverTimeoutInMilliseconds` | 30秒 (30000 毫秒) | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息, 用戶端會將伺服器視為已中斷連線, `onclose`並觸發事件。 這個值必須夠大, 才能從伺服器傳送 ping 訊息 **, 並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器`KeepAliveInterval`值的數位, 以允許時間到達 ping。 |
 | `keepAliveIntervalInMilliseconds` | 15秒 (15000 毫秒) | 決定用戶端傳送 ping 訊息的間隔。 從用戶端傳送任何訊息時, 會將計時器重設為間隔的開始。 如果用戶端未在伺服器上的`ClientTimeoutInterval`集合中傳送訊息, 伺服器會將用戶端視為已中斷連線。 |
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-| 選項 | 預設值 | 說明 |
+| 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
 | `getServerTimeout` / `setServerTimeout` | 30秒 (30000 毫秒) | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息, 用戶端會將伺服器視為已中斷連線, `onClose`並觸發事件。 這個值必須夠大, 才能從伺服器傳送 ping 訊息 **, 並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器`KeepAliveInterval`值的數位, 以允許時間到達 ping。 |
 | `withHandshakeResponseTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應, 用戶端會取消交握並觸發`onClose`事件。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時, 才應該修改的「高級」設定。 如需交握程式的詳細資訊, 請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -376,7 +394,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `getServerTimeout` / `setServerTimeout` | 30秒 (30000 毫秒) | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息, 用戶端會將伺服器視為已中斷連線, `onClose`並觸發事件。 這個值必須夠大, 才能從伺服器傳送 ping 訊息 **, 並**在逾時間隔內接收用戶端。 建議的值是至少為伺服器`KeepAliveInterval`值的兩個數字, 以允許時間到達 ping。 |
 | `withHandshakeResponseTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應, 用戶端會取消交握並觸發`onClose`事件。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時, 才應該修改的「高級」設定。 如需交握程式的詳細資訊, 請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -407,14 +425,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-| JavaScript 選項 | 預設值 | 描述 |
+| JavaScript 選項 | 預設值 | 說明 |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | 傳回字串的函式, 在 HTTP 要求中提供為持有人驗證權杖。 |
 | `skipNegotiation` | `false` | 將此設`true`為以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure SignalR Service 時, 無法啟用此設定。 |
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-| JAVA 選項 | 預設值 | 描述 |
+| JAVA 選項 | 預設值 | 說明 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | 傳回字串的函式, 在 HTTP 要求中提供為持有人驗證權杖。 |
 | `shouldSkipNegotiate` | `false` | 將此設`true`為以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure SignalR Service 時, 無法啟用此設定。 |

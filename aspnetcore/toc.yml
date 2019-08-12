@@ -104,8 +104,6 @@
         - name: 使用 Razor Pages 的 EF Core
           displayName: tutorial
           items:
-            - name: 總覽
-              uid: data/ef-rp/index
             - name: 開始使用
               uid: data/ef-rp/intro
             - name: 建立、讀取、更新及刪除
@@ -581,8 +579,6 @@
       items:
         - name: 使用 Razor Pages 的 EF Core
           items:
-            - name: 總覽
-              uid: data/ef-rp/index
             - name: 開始使用
               uid: data/ef-rp/intro
             - name: 建立、讀取、更新及刪除
@@ -701,6 +697,8 @@
         - name: 總覽
           displayName: 'deploy, publish'
           uid: host-and-deploy/iis/index
+        - name: 發佈至 IIS 教學課程
+          uid: tutorials/publish-to-iis
         - name: ASP.NET Core 模組
           displayName: 'deploy, publish'
           uid: host-and-deploy/aspnet-core-module

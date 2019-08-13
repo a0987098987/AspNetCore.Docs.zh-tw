@@ -3,20 +3,20 @@ title: ASP.NET Core 的 Razor 語法參考
 author: rick-anderson
 description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記語法。
 ms.author: riande
-ms.date: 06/12/2019
+ms.date: 08/05/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 634623aa6df860a2ff728da4e65d277326db37e2
-ms.sourcegitcommit: 051f068c78931432e030b60094c38376d64d013e
+ms.openlocfilehash: 75bf0e792ff7975f03e0f7c2fa6a71ed74d813e1
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68440361"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68819791"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Luke Latham](https://github.com/guardrex)、[Taylor Mullen](https://twitter.com/ntaylormullen) 與 [Dan Vicarel](https://github.com/Rabadash8820)
 
-Razor 是將伺服器架構程式碼內嵌到網頁中的標記語法。 Razor 語法是由 Razor 標記、C# 和 HTML 所組成。 含有 Razor 的檔案通常具有 *.cshtml* 副檔名。
+Razor 是將伺服器架構程式碼內嵌到網頁中的標記語法。 Razor 語法是由 Razor 標記、C# 和 HTML 所組成。 含有 Razor 的檔案通常具有 *.cshtml* 副檔名。 Razor 也可以在 [Razor 元件](xref:blazor/components)檔案 ( *.razor*) 中找到。
 
 ## <a name="rendering-html"></a>轉譯 HTML
 
@@ -210,7 +210,7 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 
 ### <a name="explicit-delimited-transition"></a>明確分隔的轉換
 
-若要定義程式碼區塊中應該轉譯 HTML 的子區段，請使用 Razor **\<text>** 標籤括住要轉譯的字元：
+若要定義程式碼區塊中應轉譯 HTML 的子區段，請使用 Razor `<text>` 標籤括住要轉譯的字元：
 
 ```cshtml
 @for (var i = 0; i < people.Length; i++)
@@ -222,12 +222,12 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 
 使用此方法可轉譯未以 HTML 標籤括住的 HTML。 若沒有 HTML 或 Razor 標籤，就會發生 Razor 執行階段錯誤。
 
-**\<text>** 標籤可用來控制轉譯內容時的空白字元：
+`<text>` 標籤可在轉譯內容時用來控制空白字元：
 
-* **\<text>** 標籤之間的內容會轉譯。
-* **\<text>** 標籤前後不能有空白字元出現在 HTML 輸出中。
+* 只會轉譯 `<text>` 標籤之間的內容。
+* 在 HTML 輸出中，`<text>` 標籤前後都不能出現任何空白字元。
 
-### <a name="explicit-line-transition-with-"></a>使用 @ 的明確行轉換：
+### <a name="explicit-line-transition-with-colon"></a>使用 \@&colon; 進行明確的行轉換
 
 若要將一整行的其餘部分轉譯為程式碼區塊內的 HTML，請使用 `@:` 語法：
 
@@ -241,13 +241,13 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 
 若程式碼中沒有 `@:`，就會產生 Razor 執行階段錯誤。
 
-警告：Razor 檔案中的額外 `@` 字元可能會導致稍後在區塊的陳述式中發生編譯器錯誤。 這些編譯器錯誤可能很難了解，因為實際錯誤發生在回報的錯誤之前。 將多個明確/隱含運算式合併成單一程式碼區塊之後，經常會出現此錯誤。
+Razor 檔案中的額外 `@` 字元可能會導致稍後在區塊的陳述式中發生編譯器錯誤。 這些編譯器錯誤可能很難了解，因為實際錯誤發生在回報的錯誤之前。 將多個明確/隱含運算式合併成單一程式碼區塊之後，經常會出現此錯誤。
 
 ## <a name="control-structures"></a>控制結構
 
 控制結構是程式碼區塊的延伸。 程式碼區塊的所有層面 (轉換成標記、內嵌 C#) 也適用於下列結構：
 
-### <a name="conditionals-if-else-if-else-and-switch"></a>條件式 @if、else if、else 和 @switch
+### <a name="conditionals-if-else-if-else-and-switch"></a>條件式 \@if、else if、else 和 \@switch
 
 `@if` 控制何時執行程式碼：
 
@@ -292,7 +292,7 @@ else
 }
 ```
 
-### <a name="looping-for-foreach-while-and-do-while"></a>迴圈 @for、@foreach、@while 和 @do while
+### <a name="looping-for-foreach-while-and-do-while"></a>迴圈 \@for、\@foreach、\@while 和 \@do while
 
 樣板化 HTML 可以透過迴圈控制陳述式轉譯。 若要轉譯人員清單：
 
@@ -358,30 +358,27 @@ else
 } while (i < people.Length);
 ```
 
-### <a name="compound-using"></a>複合 @using
+### <a name="compound-using"></a>複合 \@using
 
-在 C# 中，`using` 陳述式可用來確保物件經過處置。 在 Razor 中，使用相同的機制來建立 HTML 協助程式，以包含其他內容。 在下列程式碼中，HTML 協助程式使用 `@using` 陳述式來轉譯表單標籤：
+在 C# 中，`using` 陳述式可用來確保物件經過處置。 在 Razor 中，使用相同的機制來建立 HTML 協助程式，以包含其他內容。 在下列程式碼中，HTML 協助程式會使用 `@using` 陳述式來轉譯 `<form>` 標籤：
 
 ```cshtml
 @using (Html.BeginForm())
 {
     <div>
-        email:
-        <input type="email" id="Email" value="">
+        Email: <input type="email" id="Email" value="">
         <button>Register</button>
     </div>
 }
 ```
 
-範圍層級動作可以透過[標籤協助程式](xref:mvc/views/tag-helpers/intro)來執行。
-
-### <a name="try-catch-finally"></a>@try、catch、finally
+### <a name="try-catch-finally"></a>\@try、catch、finally
 
 例外狀況處理會類似於 C#：
 
 [!code-cshtml[](razor/sample/Views/Home/Contact7.cshtml)]
 
-### <a name="lock"></a>@lock
+### <a name="lock"></a>\@lock
 
 Razor 可以使用 lock 陳述式來保護關鍵區段：
 
@@ -448,90 +445,47 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 本文稍後在[檢查針對檢視所產生的 Razor C# 類別](#inspect-the-razor-c-class-generated-for-a-view)一節中說明如何檢視這個產生的類別。
 
-<a name="using"></a>
+### <a name="attribute"></a>\@attribute
 
-### <a name="using"></a>@using
-
-`@using` 指示詞會將 C# `using` 指示詞新增至產生的檢視：
-
-[!code-cshtml[](razor/sample/Views/Home/Contact9.cshtml)]
-
-### <a name="model"></a>@model
-
-`@model` 指示詞會指定傳遞至檢視的模型類型：
+`@attribute` 指示詞會將指定屬性新增至所產生頁面或檢視的類別。 下列範例會新增 `[Authorize]` 屬性：
 
 ```cshtml
-@model TypeNameOfModel
+@attribute [Authorize]
 ```
 
-在使用個別使用者帳戶建立的 ASP.NET Core MVC 應用程式中，*Views/Account/Login.cshtml* 檢視包含下列模型宣告：
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="code"></a>\@code
+
+此案例僅適用於 Razor 元件 (.razor)。 
+
+`@code` 區塊會啟用 [Razor 元件](xref:blazor/components)，來將 C# 成員 (欄位、屬性和方法) 新增至元件：
 
 ```cshtml
-@model LoginViewModel
+@code {
+    // C# members (fields, properties, and methods)
+}
 ```
 
-產生的類別繼承自 `RazorPage<dynamic>`：
+針對 Razor 元件，`@code` 是 [@functions](#functions) 的別名，建議透過 `@functions` 使用。 允許一個以上的 `@code` 區塊。
 
-```csharp
-public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
-```
+::: moniker-end
 
-Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
+### <a name="functions"></a>\@functions
+
+`@functions` 指示詞能夠將 C# 成員 (欄位、屬性和方法) 新增至產生的類別：
 
 ```cshtml
-<div>The Login Email: @Model.Email</div>
+@functions {
+    // C# members (fields, properties, and methods)
+}
 ```
 
-`@model` 指示詞會指定此屬性的類型。 該指示詞會將 `RazorPage<T>` 中的 `T` 指定為檢視從中衍生的產生類別。 若未指定 `@model` 指示詞，`Model` 屬性的類型為 `dynamic`。 模型的值會從控制器傳遞至檢視。 如需詳細資訊，請參閱[強型別模型和 &commat;model 關鍵字](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-and-the--keyword)。
+::: moniker range=">= aspnetcore-3.0"
 
-### <a name="inherits"></a>@inherits
+在 [Razor 元件](xref:blazor/components)中，透過 `@functions` 使用 `@code` 來新增 C# 成員。
 
-`@inherits` 指示詞可讓您完全控制檢視所繼承的類別：
-
-```cshtml
-@inherits TypeNameOfClassToInheritFrom
-```
-
-下列程式碼是自訂 Razor Page 類型：
-
-[!code-csharp[](razor/sample/Classes/CustomRazorPage.cs)]
-
-`CustomText` 會顯示在檢視中：
-
-[!code-cshtml[](razor/sample/Views/Home/Contact10.cshtml)]
-
-程式碼會轉譯下列 HTML：
-
-```html
-<div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
-```
-
- `@model` 和 `@inherits` 可用於相同的檢視。 `@inherits` 可能位於檢視匯入的 *_ViewImports.cshtml* 檔案中：
-
-[!code-cshtml[](razor/sample/Views/_ViewImportsModel.cshtml)]
-
-下列程式碼是強型別檢視的範例：
-
-[!code-cshtml[](razor/sample/Views/Home/Login1.cshtml)]
-
-如果模型中傳遞了 "rick@contoso.com"，檢視會產生下列 HTML 標記：
-
-```html
-<div>The Login Email: rick@contoso.com</div>
-<div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
-```
-
-### <a name="inject"></a>@inject
-
-`@inject` 指示詞可讓 Razor Page 從[服務容器](xref:fundamentals/dependency-injection)將服務插入至檢視。 如需詳細資訊，請參閱[在檢視中插入相依性](xref:mvc/views/dependency-injection)。
-
-### <a name="functions"></a>@functions
-
-`@functions` 指示詞可讓 Razor 頁面將 C# 程式碼區塊新增至檢視：
-
-```cshtml
-@functions { // C# Code }
-```
+::: moniker-end
 
 例如：
 
@@ -572,38 +526,220 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 <p>Name: <strong>Martin Luther King, Jr.</strong></p>
 ```
 
-::: moniker-end
+### <a name="implements"></a>\@implements
 
-### <a name="attribute"></a>@attribute
+`@implements` 指示詞會針對產生的類別實作介面。
 
-`@attribute` 指示詞會將指定屬性新增至所產生頁面或檢視的類別。 下列範例會新增 `[Authorize]` 屬性：
+下列範例會實作 <xref:System.IDisposable?displayProperty=fullName>，如此便能呼叫 <xref:System.IDisposable.Dispose*> 方法：
 
 ```cshtml
-@attribute [Authorize]
+@implements IDisposable
+
+<h1>Example</h1>
+
+@functions {
+    private bool _isDisposed;
+
+    ...
+
+    public void Dispose() => _isDisposed = true;
+}
 ```
 
-### <a name="namespace"></a>@namespace
+::: moniker-end
 
-`@namespace` 指示詞會設定所產生頁面或檢視類別的命名空間：
+### <a name="inherits"></a>\@inherits
+
+`@inherits` 指示詞可讓您完全控制檢視所繼承的類別：
+
+```cshtml
+@inherits TypeNameOfClassToInheritFrom
+```
+
+下列程式碼是自訂 Razor Page 類型：
+
+[!code-csharp[](razor/sample/Classes/CustomRazorPage.cs)]
+
+`CustomText` 會顯示在檢視中：
+
+[!code-cshtml[](razor/sample/Views/Home/Contact10.cshtml)]
+
+程式碼會轉譯下列 HTML：
+
+```html
+<div>
+    Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping
+    a slop bucket on the street below.
+</div>
+```
+
+ `@model` 和 `@inherits` 可用於相同的檢視。 `@inherits` 可能位於檢視匯入的 *_ViewImports.cshtml* 檔案中：
+
+[!code-cshtml[](razor/sample/Views/_ViewImportsModel.cshtml)]
+
+下列程式碼是強型別檢視的範例：
+
+[!code-cshtml[](razor/sample/Views/Home/Login1.cshtml)]
+
+如果模型中傳遞了 "rick@contoso.com"，檢視會產生下列 HTML 標記：
+
+```html
+<div>The Login Email: rick@contoso.com</div>
+<div>
+    Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping
+    a slop bucket on the street below.
+</div>
+```
+
+### <a name="inject"></a>\@inject
+
+`@inject` 指示詞可讓 Razor Page 從[服務容器](xref:fundamentals/dependency-injection)將服務插入至檢視。 如需詳細資訊，請參閱[在檢視中插入相依性](xref:mvc/views/dependency-injection)。
+
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="layout"></a>\@layout
+
+此案例僅適用於 Razor 元件 (.razor)。 
+
+`@layout` 指示詞會指定 Razor 元件的版面配置。 版面配置元件可用來避免程式碼重複和不一致。 如需詳細資訊，請參閱 <xref:blazor/layouts>。
+
+::: moniker-end
+
+### <a name="model"></a>\@model
+
+此案例僅適用於 MVC 檢視和 Razor Pages (.cshtml)。 
+
+`@model` 指示詞會指定傳遞至檢視或頁面的模型類型：
+
+```cshtml
+@model TypeNameOfModel
+```
+
+在使用個別使用者帳戶建立的 ASP.NET Core MVC 或 Razor Pages 應用程式中，*Views/Account/Login.cshtml* 檢視會包含下列模型宣告：
+
+```cshtml
+@model LoginViewModel
+```
+
+產生的類別繼承自 `RazorPage<dynamic>`：
+
+```csharp
+public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
+```
+
+Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
+
+```cshtml
+<div>The Login Email: @Model.Email</div>
+```
+
+`@model` 指示詞會指定 `Model` 屬性的類型。 該指示詞會將 `RazorPage<T>` 中的 `T` 指定為檢視從中衍生的產生類別。 若未指定 `@model` 指示詞，`Model` 屬性的類型為 `dynamic`。 如需詳細資訊，請參閱[強型別模型和 @model 關鍵字](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-and-the--keyword)。
+
+### <a name="namespace"></a>\@namespace
+
+`@namespace` 指示詞：
+
+* 設定所產生 Razor 頁面、MVC 檢視或 Razor 元件之類別的命名空間。
+* 從目錄樹狀結構中最接近的匯入檔案 *_ViewImports.cshtml* (檢視或頁面) 或 *_Imports.razor* (Razor 元件)，設定頁面、檢視或元件類別的根衍生命名空間。
 
 ```cshtml
 @namespace Your.Namespace.Here
 ```
 
-如果頁面或檢視匯入具有 `@namespace` 指示詞的 API，則原始檔案的命名空間會設定為相對於該命名空間。 
+針對下表所示的 Razor Pages 範例：
 
-如果 *MyApp/Pages/\_ViewImports.cshtml* 包含 `@namespace Hello.World`，則匯入 `Hello.World` 命名空間的網頁或檢視命名空間會如下表設定。
+* 每個頁面都會匯入 *Pages/_ViewImports.cshtml*。
+* *Pages/_ViewImports.cshtml* 包含 `@namespace Hello.World`。
+* 每個頁面都有 `Hello.World` 作為其命名空間的根目錄。
 
-| 頁面 (或檢視)                     | 命名空間               |
-| ---------------------------------- | ----------------------- |
-| *MyApp/Pages/Index.cshtml*         | `Hello.World`           |
-| *MyApp/Pages/MorePages/Bar.cshtml* | `Hello.World.MorePages` |
+| 頁面                                        | 命名空間                             |
+| ------------------------------------------- | ------------------------------------- |
+| *Pages/Index.cshtml*                        | `Hello.World`                         |
+| *Pages/MorePages/Page.cshtml*               | `Hello.World.MorePages`               |
+| *Pages/MorePages/EvenMorePages/Page.cshtml* | `Hello.World.MorePages.EvenMorePages` |
 
-如果多個匯入檔案都有 `@namespace` 指示詞，則會使用目錄鏈結中最接近網頁或檢視的檔案。
+前述關聯性適用於匯入與 MVC 檢視和 Razor 元件搭配使用的檔案。
 
-### <a name="section"></a>@section
+當多個匯入檔案具有 `@namespace` 指示詞時，會使用目錄樹狀結構中最接近頁面、檢視或元件的檔案來設定根命名空間。
 
-`@section` 指示詞可搭配[配置](xref:mvc/views/layout)使用，讓網頁或檢視可以轉譯 HTML 頁面中不同部分中的內容。 如需詳細資訊，請參閱[區段](xref:mvc/views/layout#layout-sections-label)。
+如果上述範例中的 *EvenMorePages* 資料夾具備含 `@namespace Another.Planet` 的匯入檔案 (或者 *Pages/MorePages/EvenMorePages/Page.cshtml* 檔案包含 `@namespace Another.Planet`)，則結果如下表所示。
+
+| 頁面                                        | 命名空間               |
+| ------------------------------------------- | ----------------------- |
+| *Pages/Index.cshtml*                        | `Hello.World`           |
+| *Pages/MorePages/Page.cshtml*               | `Hello.World.MorePages` |
+| *Pages/MorePages/EvenMorePages/Page.cshtml* | `Another.Planet`        |
+
+### <a name="page"></a>\@page
+
+::: moniker range=">= aspnetcore-3.0"
+
+`@page` 指示詞會根據其出現的檔案類型而有不同的效果。 指示詞：
+
+* *.cshtml* 檔案中的 in 表示檔案是 Razor 頁面。 如需詳細資訊，請參閱 <xref:razor-pages/index>。
+* 指定 Razor 元件應該直接處理要求。 如需詳細資訊，請參閱 <xref:blazor/routing>。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+位於 *.cshtml* 檔案第一行的 `@page` 指示詞指出該檔案是 Razor 頁面。 如需詳細資訊，請參閱 <xref:razor-pages/index>。
+
+::: moniker-end
+
+### <a name="section"></a>\@section
+
+此案例僅適用於 MVC 檢視和 Razor Pages (.cshtml)。 
+
+`@section` 指示詞會與 [MVC 和 Razor Pages 版面配置](xref:mvc/views/layout)搭配使用，讓檢視或頁面可以轉譯 HTML 頁面不同部分中的內容。 如需詳細資訊，請參閱 <xref:mvc/views/layout>。
+
+### <a name="using"></a>\@using
+
+`@using` 指示詞會將 C# `using` 指示詞新增至產生的檢視：
+
+[!code-cshtml[](razor/sample/Views/Home/Contact9.cshtml)]
+
+::: moniker range=">= aspnetcore-3.0"
+
+在 [Razor 元件](xref:blazor/components)中，`@using` 也會控制哪些元件位於範圍內。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="directive-attributes"></a>指示詞屬性
+
+### <a name="attributes"></a>\@attributes
+
+此案例僅適用於 Razor 元件 (.razor)。 
+
+`@attributes` 允許元件轉譯非宣告的屬性。 如需詳細資訊，請參閱 <xref:blazor/components#attribute-splatting-and-arbitrary-parameters>。
+
+### <a name="bind"></a>\@bind
+
+此案例僅適用於 Razor 元件 (.razor)。 
+
+元件中的資料繫結會使用 `@bind` 屬性來完成。 如需詳細資訊，請參閱 <xref:blazor/components#data-binding>。
+
+### <a name="onevent"></a>\@on{event}
+
+此案例僅適用於 Razor 元件 (.razor)。 
+
+Razor 提供元件的事件處理功能。 如需詳細資訊，請參閱 <xref:blazor/components#event-handling>。
+
+### <a name="key"></a>\@key
+
+此案例僅適用於 Razor 元件 (.razor)。 
+
+`@key` 指示詞屬性導致元件差異比較演算法會根據索引鍵的值來保證元素或元件的保留。 如需詳細資訊，請參閱 <xref:blazor/components#use-key-to-control-the-preservation-of-elements-and-components>。
+
+### <a name="ref"></a>\@ref
+
+此案例僅適用於 Razor 元件 (.razor)。 
+
+元件參考 (`@ref`) 提供一種方式來參考元件執行個體，讓您可以對該執行個體發出命令。 如需詳細資訊，請參閱 <xref:blazor/components#capture-references-to-components>。
+
+::: moniker-end
 
 ## <a name="templated-razor-delegates"></a>樣板化 Razor 委派
 
@@ -706,19 +842,21 @@ public class Pet
 
 ## <a name="tag-helpers"></a>標籤協助程式
 
+此案例僅適用於 MVC 檢視和 Razor Pages (.cshtml)。 
+
 [標籤協助程式](xref:mvc/views/tag-helpers/intro)有三個相關的指示詞。
 
 | 指示詞 | 功能 |
 | --------- | -------- |
-| [&commat;addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | 使標籤協助程式可供檢視。 |
-| [&commat;removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 移除先前從檢視新增的標籤協助程式。 |
-| [&commat;tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | 指定標籤前置字元，以啟用標籤協助程式支援，並將標籤協助程式使用方式設為明確。 |
+| [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | 使標籤協助程式可供檢視。 |
+| [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 移除先前從檢視新增的標籤協助程式。 |
+| [@tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | 指定標籤前置字元，以啟用標籤協助程式支援，並將標籤協助程式使用方式設為明確。 |
 
 ## <a name="razor-reserved-keywords"></a>Razor 保留關鍵字
 
 ### <a name="razor-keywords"></a>Razor 關鍵字
 
-* page (需要 ASP.NET Core 2.0 和更新版本)
+* page (需要 ASP.NET Core 2.1 或更新版本)
 * namespace
 * 函式
 * 繼承

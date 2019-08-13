@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: e98f6dddc727bb78a411fbd0a5014bcee87c7aeb
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 93fbb4741f476368d75d23162d6e2597de7b263e
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887803"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68819912"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -46,7 +46,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   ![個別查詢範例](read-related-data/_static/separate-queries.png)
 
-  注意:EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
+  注意:EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」  明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
 
 * [明確式載入](/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如：
 
@@ -104,7 +104,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 已對包含 Scaffold 的程式碼進行下列變更：
 
 * 已將標題從 Index 變更為 Courses。
-* 新增顯示 `CourseID` 屬性值的 [編號] 資料行。 主索引鍵預設不會進行 Scaffold，因為它們對終端使用者通常沒有任何意義。 不過，在此情況下，主索引鍵有意義。
+* 新增顯示 `CourseID` 屬性值的 [編號]  資料行。 主索引鍵預設不會進行 Scaffold，因為它們對終端使用者通常沒有任何意義。 不過，在此情況下，主索引鍵有意義。
 * 變更 [部門]  資料行來顯示部門名稱。 此程式碼會顯示已載入到 `Department` 導覽屬性之 `Department` 實體的 `Name` 屬性：
 
   ```html
@@ -197,7 +197,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 上述標記會進行下列變更：
 
-* 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int?}"`。 `"{id:int?}"` 是路由範本。 路由範本將 URL 中的整數查詢字串變更為路由資料。 例如，只有在 `@page` 指示詞產生如下的 URL 時，按一下講師的 [選取] 連結：
+* 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int?}"`。 `"{id:int?}"` 是路由範本。 路由範本將 URL 中的整數查詢字串變更為路由資料。 例如，只有在 `@page` 指示詞產生如下的 URL 時，按一下講師的 [選取]  連結：
 
   `http://localhost:1234/Instructors?id=2`
 
@@ -206,7 +206,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
   `http://localhost:1234/Instructors/2`
 
 * 頁面標題是 **Instructors**。
-* 新增 [辦公室] 資料行，該資料行只有在 `item.OfficeAssignment` 不是 Null 時才會顯示 `item.OfficeAssignment.Location`。 因為這是一對零或一關聯性，所有可能沒有相關的 OfficeAssignment 實體。
+* 新增 [辦公室]  資料行，該資料行只有在 `item.OfficeAssignment` 不是 Null 時才會顯示 `item.OfficeAssignment.Location`。 因為這是一對零或一關聯性，所有可能沒有相關的 OfficeAssignment 實體。
 
   ```html
   @if (item.OfficeAssignment != null)
@@ -215,7 +215,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
   }
   ```
 
-* 新增 課程 資料行，以顯示每位講師所教授課程。 如需此 Razor 語法的詳細資訊，請參閱[使用 `@:` 的明確行轉換](xref:mvc/views/razor#explicit-line-transition-with-)。
+* 新增 [課程]  資料行，以顯示每位講師所教授的課程。 若要深入了解此 Razor 語法，請參閱[使用 `@:` 進行明確的行轉換](xref:mvc/views/razor#explicit-line-transition-with-)。
 
 * 新增程式碼，將 `class="success"` 動態新增至所選取講師的 `tr` 項目。 這會使用啟動程序類別設定所選取資料列的背景色彩。
 
@@ -234,7 +234,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 
-執行應用程式並選取 [Instructors] 索引標籤。此頁面會顯示來自相關 `OfficeAssignment` 實體的 `Location` (辦公室)。 如果 OfficeAssignment 是 Null，就會顯示空的資料表資料格。
+執行應用程式並選取 [Instructors]  索引標籤。此頁面會顯示來自相關 `OfficeAssignment` 實體的 `Location` (辦公室)。 如果 OfficeAssignment 是 Null，就會顯示空的資料表資料格。
 
 ![Instructors [索引] 頁面未選取任何項目](read-related-data/_static/instructors-index-no-selection.png)
 

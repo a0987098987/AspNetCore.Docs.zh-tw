@@ -5,14 +5,14 @@ description: 了解如何使用 IHostingStartup 實作，從外部組件增強 A
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 04/06/2019
+ms.date: 08/02/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: df078a2a2a50538a070bb0b49ff3853682cb17df
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 3be036d9b4fc6c9898faf14e8a60a8cc7a8683b7
+ms.sourcegitcommit: b5e63714afc26e94be49a92619586df5189ed93a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889053"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68739552"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>在 ASP.NET Core 中使用裝載啟動組件
 
@@ -98,7 +98,7 @@ ms.locfileid: "64889053"
 
 ### <a name="console-app-without-an-entry-point"></a>沒有進入點的主控台應用程式
 
-這個方法僅適用於 .NET Core 應用程式，不適用於 .NET Framework。
+這個方法僅適用於 .NET Core 應用程式，不適用於 .NET Framework。 
 
 在沒有包含 `HostingStartup` 屬性之進入點的主控台應用程式中，可以提供不需要啟用編譯時間參考的動態裝載啟動增強功能。 發佈主控台應用程式會產生裝載啟動組件，這些組件可從執行階段存放區取用。
 
@@ -128,7 +128,7 @@ ms.locfileid: "64889053"
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
-建置 `IHostingStartup` 專案時，相依性檔案 (*\*.deps.json*) 會將組件的 `runtime` 位置設定為 *bin* 資料夾：
+建置 `IHostingStartup` 專案時，相依性檔案 ( *.deps.json*) 會將組件的 `runtime` 位置設定為 *bin* 資料夾：
 
 [!code-json[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement1.deps.json?range=2-13&highlight=8)]
 
@@ -219,13 +219,13 @@ dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./depl
 
 若要在沒有對加強功能之套件參考的情況下啟用加強功能，請使用 `additionalDeps` 指定對執行階段的額外相依性。 `additionalDeps` 可讓您：
 
-* 透過提供一組額外的 *\*.deps.json* 檔案在啟動時與應用程式的自有 *\*.deps.json* 檔案合併，以延伸應用程式的程式庫圖表。
+* 提供一組額外的 *.deps.json* 檔案，在啟動時與應用程式擁有的 *.deps.json* 檔案合併，藉以擴充應用程式的程式庫圖表。
 * 讓裝載啟動組件可供探索且可載入。
 
 用於產生額外相依性的建議方法是：
 
  1. 在上一節參考的執行階段存放區資訊清單檔上執行 `dotnet publish`。
- 1. 從程式庫與產生之 *\*deps.json* 檔案的 `runtime` 區段移除資訊清單參考。
+ 1. 從程式庫及所產生 *.deps.json* 檔案的 `runtime` 區段中移除資訊清單參考。
 
 在範例專案中，`store.manifest/1.0.0` 屬已從 `targets` 與 `libraries` 區段移除：
 
@@ -273,7 +273,7 @@ dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./depl
 }
 ```
 
-將 *\*.deps.json* 檔案放到下列位置：
+將 *.deps.json* 檔案放到下列位置：
 
 ```
 {ADDITIONAL DEPENDENCIES PATH}/shared/{SHARED FRAMEWORK NAME}/{SHARED FRAMEWORK VERSION}/{ENHANCEMENT ASSEMBLY NAME}.deps.json
@@ -308,7 +308,7 @@ additionalDeps/shared/Microsoft.AspNetCore.App/2.1.0/StartupDiagnostics.deps.jso
 
 NuGet 套件可以提供裝載啟動的增強功能。 此套件具有 `HostingStartup` 屬性。 使用下列兩種方法的任一方法，套件提供的裝載啟動類型即可提供應用程式使用：
 
-* 增強應用程式的專案檔會在應用程式專案檔 (編譯時間參考) 中建立裝載啟動的套件參考。 當編譯時間參考就定位時，裝載啟動組件及其所有相依性都會併入應用程式的相依性檔案 (*\*.deps.json*)。 這種方法適用於發佈至 [nuget.org](https://www.nuget.org/) 的裝載啟動組件套件。
+* 增強應用程式的專案檔會在應用程式專案檔 (編譯時間參考) 中建立裝載啟動的套件參考。 當編譯時間參考就定位時，裝載啟動組件及其所有相依性都會併入應用程式的相依性檔案 ( *.deps.json*)。 這種方法適用於發佈至 [nuget.org](https://www.nuget.org/) 的裝載啟動組件套件。
 * 裝載啟動的相依性檔案可提供增強應用程式使用，如[執行階段存放區](#runtime-store) 區段 (沒有編譯時間參考)。
 
 如需有關 NuGet 套件和執行階段存放區的詳細資訊，請參閱下列主題：
@@ -319,10 +319,15 @@ NuGet 套件可以提供裝載啟動的增強功能。 此套件具有 `HostingS
 
 ### <a name="project-bin-folder"></a>專案 bin 資料夾
 
-部署在增強應用程式 *bin* 下的組件可提供裝載啟動增強功能。 使用下列兩種方法的任一方法，組件提供的裝載啟動類型即可提供應用程式使用：
+部署在增強應用程式 *bin* 下的組件可提供裝載啟動增強功能。 您可以使用下列任一種方法，讓應用程式能夠使用組件所提供的裝載啟動類型：
 
-* 增強應用程式的專案檔會建立裝載啟動的組件參考 (編譯時間參考)。 當編譯時間參考就定位時，裝載啟動組件及其所有相依性都會併入應用程式的相依性檔案 (*\*.deps.json*)。 當部署案例要求將已編譯裝載啟動程式庫的組件 (DLL 檔案) 移至取用專案或取用專案可存取的位置，且已為裝載啟動組件建立編譯時間參考時，即適用這種方法。
+* 增強應用程式的專案檔會建立裝載啟動的組件參考 (編譯時間參考)。 當編譯時間參考就定位時，裝載啟動組件及其所有相依性都會併入應用程式的相依性檔案 ( *.deps.json*)。 當部署案例呼叫以建立裝載啟動組件 ( *.dll* 檔案) 的編譯時間參考，並將組件移至下列其中一項時，適用此方法：
+  * 取用專案。
+  * 取用專案可存取的位置。
 * 裝載啟動的相依性檔案可提供增強應用程式使用，如[執行階段存放區](#runtime-store) 區段 (沒有編譯時間參考)。
+* 以 .NET Framework 為目標時，可在預設載入內容中載入組件，在 .NET Framework 上，這表示組件位於下列其中一個位置：
+  * 應用程式基底路徑 &ndash; 應用程式可執行檔 ( *.exe*) 所在的 *bin* 資料夾。
+  * 全域組件快取 (GAC) &ndash; GAC 會儲存數個 .NET Framework 應用程式共用的組件。 如需詳細資訊，請參閱[如何：將組件安裝到全域組件快取](/dotnet/framework/app-domains/how-to-install-an-assembly-into-the-gac) (位於 .NET Framework 文件)。
 
 ## <a name="sample-code"></a>範例程式碼
 
@@ -344,7 +349,7 @@ NuGet 套件可以提供裝載啟動的增強功能。 此套件具有 `HostingS
 
 1. 使用 [dotnet pack](/dotnet/core/tools/dotnet-pack) 命令編譯 *HostingStartupPackage* 套件。
 1. 將 *HostingStartupPackage* 的套件組件名稱新增至 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` 環境變數。
-1. 編譯並執行應用程式。 增強的應用程式中有套件參考 (編譯時間參考)。 應用程式專案檔中的 `<PropertyGroup>` 會指定套件專案的輸出 (*../HostingStartupPackage/bin/Debug*) 為套件來源。 這可讓應用程式使用套件，卻不用將套件上傳至 [nuget.org](https://www.nuget.org/)。如需詳細資訊，請參閱 HostingStartupApp 專案檔中的資訊。
+1. 編譯並執行應用程式。 增強的應用程式中有套件參考 (編譯時間參考)。 應用程式專案檔中的 `<PropertyGroup>` 會指定套件專案的輸出 ( *../HostingStartupPackage/bin/Debug*) 為套件來源。 這可讓應用程式使用套件，卻不用將套件上傳至 [nuget.org](https://www.nuget.org/)。如需詳細資訊，請參閱 HostingStartupApp 專案檔中的資訊。
 
    ```xml
    <PropertyGroup>
@@ -365,7 +370,7 @@ dotnet nuget locals all --clear
 1. 使用 [dotnet build](/dotnet/core/tools/dotnet-build) 命令編譯 *HostingStartupLibrary* 類別庫。
 1. 將 *HostingStartupLibrary* 的類別庫組件名稱新增至 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` 環境變數。
 1. 將 *HostingStartupLibrary.dll* 檔案從類別庫的編譯輸出複製到應用程式的 *bin/Debug* 資料夾，在應用程式的 *bin* 下部署類別庫組件。
-1. 編譯並執行應用程式。 應用程式專案檔中的 `<ItemGroup>` 參考類別庫的組件 (*.\bin\Debug\netcoreapp2.1\HostingStartupLibrary.dll*) (編譯時間參考)。 如需詳細資訊，請參閱 HostingStartupApp 專案檔中的資訊。
+1. 編譯並執行應用程式。 應用程式專案檔中的 `<ItemGroup>` 參考類別庫的組件 ( *.\bin\Debug\netcoreapp2.1\HostingStartupLibrary.dll*) (編譯時間參考)。 如需詳細資訊，請參閱 HostingStartupApp 專案檔中的資訊。
 
    ```xml
    <ItemGroup>

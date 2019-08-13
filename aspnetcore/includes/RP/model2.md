@@ -2,7 +2,7 @@
 
 ### <a name="add-a-database-context-class"></a>新增資料庫內容類別
 
-將下列 `RazorPagesMovieContext` 類別新增至 *ata* 資料夾：
+在 RazorPagesMovie 專案中，建立名為 *Data* 的新資料夾。 將下列 `RazorPagesMovieContext` 類別新增至 *ata* 資料夾：
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
@@ -18,18 +18,19 @@
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/appsettings_SQLite.json?highlight=10-12)]
 
-### <a name="add-required-nuget-packages"></a>新增必要的 NuGet 封裝
+### <a name="add-nuget-packages-and-ef-tools"></a>新增 NuGet 套件和 EF 工具
 
-執行下列 .NET Core CLI 命令，以將 SQLite、Entity Framework Core 與 CodeGeneration.Design 新增到專案：
+開啟 RazorPagesMovie 專案的終端機。  在設計/版面配置列中以滑鼠右鍵按一下專案名稱，然後在終端機中移至 [工具] > [開啟]  。 在終端機中，執行下列 .NET Core CLI 命令：
 
 ```console
+dotnet tool install --global dotnet-ef --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
 ```
 
-需要 `Microsoft.VisualStudio.Web.CodeGeneration.Design` 封裝，才能進行 Scaffolding。
+上述命令會將適用於 .NET CLI 的 Entity Framework Core 工具和數個套件新增至專案。 需要 `Microsoft.VisualStudio.Web.CodeGeneration.Design` 封裝，才能進行 Scaffolding。
 
 <a name="reg"></a>
 

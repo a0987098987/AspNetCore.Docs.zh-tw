@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何使用 ASP.NET Core 建置 Web API。
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/11/2019
+ms.date: 08/05/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 60235af56077127093ac1d77338bc228a6edf073
-ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
+ms.openlocfilehash: 855d05fa2b9c1a7572212c40adbe61bb396f4bac
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602508"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68819830"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -728,6 +728,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * 如果沒有項目符合所要求的識別碼，方法會傳回 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) 錯誤碼。
 * 否則，方法會傳回 200 與 JSON 回應本文。 傳回 `item` 會導致 HTTP 200 回應。
 
+
 ## <a name="test-the-gettodoitems-method"></a>測試 GetTodoItems 方法
 
 本教學課程使用 Postman 來測試 Web API。
@@ -736,10 +737,19 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * 啟動 Web 應用程式。
 * 啟動 Postman。
 * 停用 [SSL certificate verification] \(SSL 憑證驗證\) 
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* 從 [檔案]  > [設定]  ([一般]  索引標籤)，停用 [SSL 憑證驗證]  。
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+
+* 從 [Postman]   >  [喜好設定]  ([一般]  索引標籤)，停用 [SSL 憑證驗證]  。 或者，選取扳手並選取 [設定]  ，然後停用 [SSL 憑證驗證]。
+
+---
   
-  * 從 [檔案] > [設定]  (* *[一般]* 索引標籤)，停用 [SSL certificate verification] \(SSL 憑證驗證\)  。
-    > [!WARNING]
-    > 在測試控制器之後，請重新啟用 [SSL certificate verification] \(SSL 憑證驗證\)。
+> [!WARNING]
+> 在測試控制器之後，請重新啟用 [SSL certificate verification] \(SSL 憑證驗證\)。
 
 * 建立新的要求。
   * 將 HTTP 方法設定為 **GET**。
@@ -751,7 +761,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="add-a-create-method"></a>新增 Create 方法
 
-新增以下 `PostTodoItem` 方法：
+在 *Controllers/TodoController.cs* 內部新增下列 `PostTodoItem` 方法： 
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 

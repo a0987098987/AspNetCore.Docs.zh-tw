@@ -5,14 +5,14 @@ description: 了解如何設定和使用 ASP.NET Core 中的回應快取中介�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/08/2019
+ms.date: 08/09/2019
 uid: performance/caching/middleware
-ms.openlocfilehash: 6371f42b100f70c6042064a6372c7b9e41fd5c73
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 838a08c12316d218501f26d5905f9e31ab93dfc9
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914983"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994233"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core 中的回應快取中介軟體
 
@@ -24,57 +24,57 @@ By [Luke Latham](https://github.com/guardrex)和[John 羅文](https://github.com
 
 ## <a name="configuration"></a>組態
 
-使用[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app), 或將套件參考新增至[AspNetCore. ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/)套件。
+::: moniker range=">= aspnetcore-3.0"
+
+回應快取中介軟體是由[AspNetCore ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/)套件所可用, 此封裝會隱含地新增至 ASP.NET Core 應用程式。
 
 在`Startup.ConfigureServices`中, 將回應快取中介軟體新增至服務集合:
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](middleware/samples/3.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=3)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=3)]
-
-::: moniker-end
 
 將應用程式設定為使用中介軟體<xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching*>搭配擴充方法, 這會將中介軟體新增至中`Startup.Configure`的要求處理管線:
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](middleware/samples/3.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=16)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=14)]
-
-::: moniker-end
 
 範例應用程式會新增標頭, 以在後續要求中控制快取:
 
 * [Cache-控制項](https://tools.ietf.org/html/rfc7234#section-5.2)&ndash;快取最多10秒的快取回應。
 * [差異](https://tools.ietf.org/html/rfc7231#section-7.1.4)只有在後續要求的[`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4)標頭符合原始要求的標題時, 才會設定中介軟體來提供快取的回應。 &ndash;
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](middleware/samples_snippets/3.x/AddHeaders.cs)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](middleware/samples_snippets/2.x/AddHeaders.cs)]
-
-::: moniker-end
 
 回應快取中介軟體只會快取產生 200 (沒問題) 狀態碼的伺服器回應。 中介軟體會忽略任何其他回應，包括[錯誤頁面](xref:fundamentals/error-handling)。
 
 > [!WARNING]
 > 包含已驗證用戶端內容的回應必須標示為無法快取, 以防止中介軟體儲存和提供這些回應。 如需中介軟體如何判斷回應是否可快取的詳細資訊, 請參閱快取的[條件](#conditions-for-caching)。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+使用[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app), 或將套件參考新增至[AspNetCore. ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/)套件。
+
+在`Startup.ConfigureServices`中, 將回應快取中介軟體新增至服務集合:
+
+[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=3)]
+
+將應用程式設定為使用中介軟體<xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching*>搭配擴充方法, 這會將中介軟體新增至中`Startup.Configure`的要求處理管線:
+
+[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=14)]
+
+範例應用程式會新增標頭, 以在後續要求中控制快取:
+
+* [Cache-控制項](https://tools.ietf.org/html/rfc7234#section-5.2)&ndash;快取最多10秒的快取回應。
+* [差異](https://tools.ietf.org/html/rfc7231#section-7.1.4)只有在後續要求的[`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4)標頭符合原始要求的標題時, 才會設定中介軟體來提供快取的回應。 &ndash;
+
+[!code-csharp[](middleware/samples_snippets/2.x/AddHeaders.cs)]
+
+回應快取中介軟體只會快取產生 200 (沒問題) 狀態碼的伺服器回應。 中介軟體會忽略任何其他回應，包括[錯誤頁面](xref:fundamentals/error-handling)。
+
+> [!WARNING]
+> 包含已驗證用戶端內容的回應必須標示為無法快取, 以防止中介軟體儲存和提供這些回應。 如需中介軟體如何判斷回應是否可快取的詳細資訊, 請參閱快取的[條件](#conditions-for-caching)。
+
+::: moniker-end
 
 ## <a name="options"></a>選項
 

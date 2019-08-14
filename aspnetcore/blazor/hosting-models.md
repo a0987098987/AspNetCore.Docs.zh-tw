@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/01/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 9dd96ff6e3539bf1c3e932b33776b16d0fbb2d34
-ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
+ms.openlocfilehash: 64393e826cb17550085f468f5916fca55973908f
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68948288"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68993395"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -28,10 +28,9 @@ Blazor 的主要裝載模型是在 WebAssembly 的瀏覽器中執行用戶端。
 
 ![Blazor 用戶端:Blazor 應用程式會在瀏覽器內的 UI 執行緒上執行。](hosting-models/_static/client-side.png)
 
-若要使用用戶端裝載模型來建立 Blazor 應用程式, 請使用下列其中一個範本:
+若要使用用戶端裝載模型來建立 Blazor 應用程式, 請使用**Blazor WebAssembly 應用程式**範本 ([dotnet new blazorwasm](/dotnet/core/tools/dotnet-new))。
 
-* **Blazor (用戶端)** ([dotnet new blazor](/dotnet/core/tools/dotnet-new))&ndash;部署為一組靜態檔案。
-* **Blazor (ASP.NET Core 託管)** ([dotnet new blazorhosted](/dotnet/core/tools/dotnet-new))&ndash;由 ASP.NET Core 伺服器主控。 ASP.NET Core 應用程式會將 Blazor 應用程式提供給用戶端。 Blazor 用戶端應用程式可以使用 Web API 呼叫或[SignalR](xref:signalr/introduction), 透過網路與伺服器互動。
+選取 [ **Blazor WebAssembly 應用程式**] 範本之後, 您可以選擇將應用程式設定為使用 ASP.NET Core 後端, 方法是選取 [ **ASP.NET Core**裝載] 核取方塊 ([dotnet] [[新增 blazorwasm-](/dotnet/core/tools/dotnet-new)裝載)]。 ASP.NET Core 應用程式會將 Blazor 應用程式提供給用戶端。 Blazor 用戶端應用程式可以使用 Web API 呼叫或[SignalR](xref:signalr/introduction), 透過網路與伺服器互動。
 
 這些範本包含處理下列內容的*blazor. webassembly*腳本:
 
@@ -58,7 +57,7 @@ Blazor 的主要裝載模型是在 WebAssembly 的瀏覽器中執行用戶端。
 
 ![瀏覽器會透過 SignalR 連線, 與伺服器上的應用程式互動 (裝載于 ASP.NET Core 應用程式內)。](hosting-models/_static/server-side.png)
 
-若要使用伺服器端裝載模型來建立 Blazor 應用程式, 請使用 ASP.NET Core **Blazor 伺服器應用程式**範本 ([dotnet new blazorserverside](/dotnet/core/tools/dotnet-new))。 ASP.NET Core 應用程式會裝載伺服器端應用程式, 並建立用戶端連接的 SignalR 端點。
+若要使用伺服器端裝載模型來建立 Blazor 應用程式, 請使用 ASP.NET Core **Blazor 伺服器應用程式**範本 ([dotnet new blazorserver](/dotnet/core/tools/dotnet-new))。 ASP.NET Core 應用程式會裝載伺服器端應用程式, 並建立用戶端連接的 SignalR 端點。
 
 ASP.NET Core 應用程式會參考要新增`Startup`的應用程式類別:
 

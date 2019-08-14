@@ -4,14 +4,14 @@ author: jamesnk
 description: 瞭解如何在 gRPC 中使用驗證和授權來 ASP.NET Core。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 07/26/2019
+ms.date: 08/13/2019
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 34f7f8a5a22159329b3d6c4524943434c460c7fb
-ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
+ms.openlocfilehash: 19018c4ffae1228055a4858b496f135d015625b4
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602433"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68993279"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>ASP.NET Core 的 gRPC 中的驗證和授權
 
@@ -42,6 +42,8 @@ public void Configure(IApplicationBuilder app)
 
 > [!NOTE]
 > 您註冊 ASP.NET Core authentication 中介軟體的順序很重要。 一律在`UseAuthentication` `UseAuthorization` 前後`UseEndpoints`呼叫和`UseRouting` 。
+
+需要設定您的應用程式在呼叫期間所使用的驗證機制。 會在中`Startup.ConfigureServices`新增驗證設定, 而且會根據您的應用程式所使用的驗證機制而有所不同。 如需如何保護 ASP.NET Core 應用程式的範例, 請參閱[驗證範例](xref:security/authentication/samples)。
 
 一旦設定好驗證之後, 就可以透過 gRPC 服務方法`ServerCallContext`來存取使用者。
 

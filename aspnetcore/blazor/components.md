@@ -5,14 +5,14 @@ description: 瞭解如何建立和使用 Razor 元件, 包括如何系結至資�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/02/2019
+ms.date: 08/13/2019
 uid: blazor/components
-ms.openlocfilehash: 43457bffd748ebba68cc86d33fdeb98dc419704b
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: a95c186d30eaf342f10ecbe6f7add242d4679a0f
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68948428"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68993421"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -26,7 +26,9 @@ Blazor 應用程式是使用*元件*所建立。 「元件」 (component) 是一
 
 元件會使用C#和 HTML 標籤的組合, 在[razor](xref:mvc/views/razor)元件檔案 (*razor*) 中執行。 Blazor 中的元件正式稱為*Razor 元件*。
 
-元件可以使用 *.* # 副檔名來撰寫。 請使用`_RazorComponentInclude`專案檔中的 MSBuild 屬性來識別 component 檔案 。 例如, 指定*Pages*資料夾下所有 *. cshtml*檔案的應用程式, 都應該視為 Razor 元件檔案:
+元件的名稱必須以大寫字元開頭。 例如, *MyCoolComponent*有效, 而*MyCoolComponent*則無效。
+
+只要使用`_RazorComponentInclude` MSBuild 屬性將檔案識別為 Razor 元件檔案, 就可以使用 *. cshtml*副檔名來撰寫元件。 例如, 指定*Pages*資料夾下所有 *. cshtml*檔案的應用程式, 都應該視為 Razor 元件檔案:
 
 ```xml
 <PropertyGroup>
@@ -36,7 +38,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」 (component) 是一
 
 元件的 UI 是使用 HTML 定義的。 動態轉譯邏輯 (例如迴圈、條件、運算式) 是使用內嵌的 C# 語法 (稱為 [Razor](xref:mvc/views/razor)) 來新增的。 編譯應用程式時, 會將 HTML 標籤和C#轉譯邏輯轉換成元件類別。 產生的類別名稱與檔案的名稱相符。
 
-元件類別的成員均定義於 `@code` 區塊中。 `@code`在區塊中, 會使用事件處理或定義其他元件邏輯的方法來指定元件狀態 (屬性、欄位)。 允許一個`@code`以上的區塊。
+元件類別的成員均定義於 `@code` 區塊中。 `@code`在區塊中, 會使用事件處理或定義其他元件邏輯的方法來指定元件狀態 (屬性、欄位)。 允許一個以上的 `@code` 區塊。
 
 > [!NOTE]
 > 在 ASP.NET Core 3.0 的先前預覽中`@functions` , 區塊用於與 Razor 元件中的`@code`區塊相同的用途。 `@functions`區塊會繼續在 Razor 元件中運作, 但我們建議使用`@code` ASP.NET Core 3.0 Preview 6 或更新版本中的區塊。
@@ -79,9 +81,11 @@ Blazor 應用程式是使用*元件*所建立。 「元件」 (component) 是一
 
 如需有關如何呈現元件, 以及如何在 Blazor 伺服器端應用程式中管理元件狀態的詳細資訊<xref:blazor/hosting-models> , 請參閱一文。
 
-## <a name="using-components"></a>使用元件
+## <a name="use-components"></a>使用元件
 
 元件可以包含其他元件, 方法是使用 HTML 專案語法來宣告它們。 使用元件的標記看起來像是 HTML 標籤，其中標籤名稱是元件類型。
+
+屬性系結會區分大小寫。 例如, `@bind`是有效的, 而且`@Bind`無效。
 
 在*Index*中的下列標記會呈現`HeadingComponent`實例:
 
@@ -91,9 +95,11 @@ Blazor 應用程式是使用*元件*所建立。 「元件」 (component) 是一
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Components/HeadingComponent.razor)]
 
+如果元件包含的 HTML 專案具有大寫的第一個字母, 但不符合元件名稱, 則會發出警告, 指出該元素有未預期的名稱。 為元件的命名空間加入語句,可讓元件可用,這會移除警告。`@using`
+
 ## <a name="component-parameters"></a>元件參數
 
-元件可以具有*元件參數*, 其使用屬性 (通常*是非公用*) 在元件`[Parameter]`類別上以屬性定義。 使用這些屬性來指定標記中元件的引數。
+元件可以具有*元件參數*, 其定義方式是在元件類別上使用具有`[Parameter]`屬性的公用屬性。 使用這些屬性來指定標記中元件的引數。
 
 *Components/ChildComponent. razor*:
 
@@ -142,19 +148,19 @@ Blazor 應用程式是使用*元件*所建立。 「元件」 (component) 是一
 
 @code {
     [Parameter]
-    private string Maxlength { get; set; } = "10";
+    public string Maxlength { get; set; } = "10";
 
     [Parameter]
-    private string Placeholder { get; set; } = "Input placeholder text";
+    public string Placeholder { get; set; } = "Input placeholder text";
 
     [Parameter]
-    private string Required { get; set; } = "required";
+    public string Required { get; set; } = "required";
 
     [Parameter]
-    private string Size { get; set; } = "50";
+    public string Size { get; set; } = "50";
 
     [Parameter]
-    private Dictionary<string, object> InputAttributes { get; set; } =
+    public Dictionary<string, object> InputAttributes { get; set; } =
         new Dictionary<string, object>()
         {
             { "maxlength", "10" },
@@ -187,8 +193,8 @@ Blazor 應用程式是使用*元件*所建立。 「元件」 (component) 是一
 
 ```cshtml
 @code {
-    [Parameter(CaptureUnmatchedValues = true)]
-    private Dictionary<string, object> InputAttributes { get; set; }
+    [Parameter(CaptureUnmatchedAttributes = true)]
+    public Dictionary<string, object> InputAttributes { get; set; }
 }
 ```
 
@@ -224,6 +230,33 @@ Blazor 應用程式是使用*元件*所建立。 「元件」 (component) 是一
 
 不同`onchange`于當元素失去`oninput`焦點時引發的, 會在文字方塊的值變更時引發。
 
+**全球化**
+
+`@bind`系統會使用目前文化特性的規則, 將值格式化以顯示和剖析。
+
+您可以從<xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName>屬性存取目前的文化特性。
+
+[InvariantCulture](xref:System.Globalization.CultureInfo.InvariantCulture)用於下欄欄位類型 (`<input type="{TYPE}" />`):
+
+* `date`
+* `number`
+
+前面的欄位類型:
+
+* 會使用其適當的瀏覽器格式規則來顯示。
+* 不能包含自由格式的文字。
+* 根據瀏覽器的執行方式提供使用者互動特性。
+
+下欄欄位類型具有特定的格式需求, 而且目前不受 Blazor 支援, 因為並非所有主要瀏覽器都支援:
+
+* `datetime-local`
+* `month`
+* `week`
+
+`@bind`支援參數, 以提供用於剖析和格式化值的。 <xref:System.Globalization.CultureInfo?displayProperty=fullName> `@bind:culture` 使用`date`和欄位類型時, `number`不建議指定文化特性。 `date`和`number`具有提供必要文化特性的內建 Blazor 支援。
+
+如需如何設定使用者文化特性的詳細資訊, 請參閱[當地語系化](#localization)一節。
+
 **格式字串**
 
 資料系結會使用來[@bind:format](xref:mvc/views/razor#bind)處理格式字串。<xref:System.DateTime> 目前無法使用其他格式運算式, 例如貨幣或數位格式。
@@ -233,11 +266,20 @@ Blazor 應用程式是使用*元件*所建立。 「元件」 (component) 是一
 
 @code {
     [Parameter]
-    private DateTime StartDate { get; set; } = new DateTime(2020, 1, 1);
+    public DateTime StartDate { get; set; } = new DateTime(2020, 1, 1);
 }
 ```
 
+在上述程式碼中, `<input>`元素的欄位類型 (`type`) 預設為`text`。 `@bind:format`支援系結下列 .NET 類型:
+
+* <xref:System.DateTime?displayProperty=fullName>
+* <xref:System.DateTime?displayProperty=fullName>?
+* <xref:System.DateTimeOffset?displayProperty=fullName>
+* <xref:System.DateTimeOffset?displayProperty=fullName>?
+
 屬性會指定要套用`value`至`<input>`元素之的日期格式。 `@bind:format` 當發生`onchange`事件時, 也會使用此格式來剖析值。
+
+不建議指定`date`欄位類型的格式, 因為 Blazor 具有格式日期的內建支援。
 
 **元件參數**
 
@@ -252,10 +294,10 @@ Binding 可辨識元件參數, `@bind-{property}`其中可以跨元件系結屬�
 
 @code {
     [Parameter]
-    private int Year { get; set; }
+    public int Year { get; set; }
 
     [Parameter]
-    private EventCallback<int> YearChanged { get; set; }
+    public EventCallback<int> YearChanged { get; set; }
 }
 ```
 
@@ -278,7 +320,7 @@ Binding 可辨識元件參數, `@bind-{property}`其中可以跨元件系結屬�
 
 @code {
     [Parameter]
-    private int ParentYear { get; set; } = 1978;
+    public int ParentYear { get; set; } = 1978;
 
     private void ChangeTheYear()
     {
@@ -516,7 +558,7 @@ await callback.InvokeAsync(arg);
 
 @code {
     [Parameter]
-    private IEnumerable<Person> People { get; set; }
+    public IEnumerable<Person> People { get; set; }
 }
 ```
 
@@ -532,7 +574,7 @@ await callback.InvokeAsync(arg);
 
 @code {
     [Parameter]
-    private IEnumerable<Person> People { get; set; }
+    public IEnumerable<Person> People { get; set; }
 }
 ```
 
@@ -574,7 +616,7 @@ await callback.InvokeAsync(arg);
 * 模型物件實例 (例如, 如先前`Person`範例所示的實例)。 這可確保根據物件參考的相等性進行保留。
 * 唯一識別碼 (例如,、或`int` `Guid`類型`string`的主要索引鍵值)。
 
-避免提供可能會意外衝突的值。 如果`@key="@someObject.GetHashCode()"`已提供, 可能會發生未預期的衝突, 因為不相關物件的雜湊碼可以相同。 如果在`@key`同一個父系中要求衝突值, 則`@key`不會接受這些值。
+請確定用於`@key`的值不會造成衝突。 如果在相同的父元素中偵測到衝突值, Blazor 會擲回例外狀況, 因為它無法以決定性的方式將舊專案或元件對應到新的專案或元件。 只使用不同的值, 例如物件實例或主鍵值。
 
 ## <a name="lifecycle-methods"></a>生命週期方法
 
@@ -765,7 +807,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為`false`或`
 
 @code {
     [Parameter]
-    private bool IsCompleted { get; set; }
+    public bool IsCompleted { get; set; }
 }
 ```
 
@@ -1063,7 +1105,7 @@ private PermInfo Permissions { get; set; }
 @code
 {
     [Parameter]
-    private string PetDetailsQuote { get; set; }
+    public string PetDetailsQuote { get; set; }
 }
 ```
 
@@ -1191,3 +1233,123 @@ builder.AddContent(seq++, "Second");
 * 請勿撰寫長時間區塊的手動執行`RenderTreeBuilder`邏輯。 偏好`.razor`使用檔案, 並允許編譯器處理序號。
 * 如果序號已硬式編碼, 則 diff 演算法只會要求序號增加值。 起始值和間距無關。 一個合法的選項是使用程式程式碼號做為序號, 或從零開始, 並以一個或數百個 (或任何慣用的間隔) 來增加。 
 * Blazor 會使用序號, 而其他樹狀結構比較的 UI 架構則不會使用它們。 使用序號時, 比較速度會更快, 而且 Blazor 具有可自動處理序號的編譯步驟, 讓開發人員撰寫`.razor`檔案。
+
+## <a name="localization"></a>當地語系化
+
+Blazor 伺服器端應用程式是使用[當地語系化中介軟體](xref:fundamentals/localization#localization-middleware)來當地語系化。 中介軟體會為從應用程式要求資源的使用者選取適當的文化特性。
+
+您可以使用下列其中一種方法來設定文化特性:
+
+* [Cookie](#cookies)
+* [提供 UI 以選擇文化特性](#provide-ui-to-choose-the-culture)
+
+如需詳細資訊與範例，請參閱<xref:fundamentals/localization>。
+
+### <a name="cookies"></a>Cookie
+
+當地語系化文化特性 cookie 可以保存使用者的文化特性。 Cookie 是由`OnGet`應用程式的主機頁面 (*Pages/主機. cshtml .cs*) 的方法所建立。 當地語系化中介軟體會在後續要求中讀取 cookie, 以設定使用者的文化特性。 
+
+使用 cookie 可確保 WebSocket 連接可以正確地傳播文化特性。 如果當地語系化架構是以 URL 路徑或查詢字串為基礎, 配置可能無法使用 Websocket, 因而無法保存文化特性。 因此, 建議的方法是使用當地語系化文化特性 cookie。
+
+如果文化特性保存在當地語系化 cookie 中, 任何技術都可以用來指派文化特性。 如果應用程式已建立伺服器端 ASP.NET Core 的當地語系化配置, 請繼續使用應用程式的現有當地語系化基礎結構, 並在應用程式的配置內設定當地語系化文化特性 cookie。
+
+下列範例顯示如何在可由當地語系化中介軟體讀取的 cookie 中設定目前的文化特性。 在 Blazor 伺服器端應用程式中, 使用下列內容建立*Pages/主機. cshtml*檔案:
+
+```csharp
+public class HostModel : PageModel
+{
+    public void OnGet()
+    {
+        HttpContext.Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(
+                new RequestCulture(
+                    CultureInfo.CurrentCulture,
+                    CultureInfo.CurrentUICulture)));
+    }
+}
+```
+
+當地語系化會在應用程式中處理:
+
+1. 瀏覽器會將初始 HTTP 要求傳送至應用程式。
+1. 文化特性是由當地語系化中介軟體所指派。
+1. _Host `OnGet`中的方法會在 cookie 中保存文化特性, 做為回應的一部分。
+1. 瀏覽器會開啟 WebSocket 連線, 以建立互動式 Blazor 伺服器端會話。
+1. 當地語系化中介軟體會讀取 cookie 並指派文化特性。
+1. Blazor 伺服器端會話的開頭是正確的文化特性。
+
+## <a name="provide-ui-to-choose-the-culture"></a>提供 UI 以選擇文化特性
+
+為了提供允許使用者選取文化特性的 UI, 建議使用以重新*導向為基礎的方法*。 此程式類似于在使用者嘗試存取安全資源&mdash;時, 會將使用者重新導向至登入頁面, 然後重新導向至原始資源的情況下, 在 web 應用程式中發生的情況。 
+
+應用程式會透過重新導向至控制器的方式, 來保存使用者選取的文化特性。 控制器會將使用者選取的文化特性設定為 cookie, 並將使用者重新導向回到原始 URI。
+
+在伺服器上建立 HTTP 端點, 以在 cookie 中設定使用者選取的文化特性, 並執行重新導向回到原始 URI:
+
+```csharp
+[Route("[controller]/[action]")]
+public class CultureController : Controller
+{
+    public IActionResult SetCulture(string culture, string redirectUri)
+    {
+        if (culture != null)
+        {
+            HttpContext.Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(
+                    new RequestCulture(culture)));
+        }
+
+        return LocalRedirect(redirectUri);
+    }
+}
+```
+
+> [!WARNING]
+> `LocalRedirect`使用動作結果來防止開啟重新導向攻擊。 如需詳細資訊，請參閱 <xref:security/preventing-open-redirects>。
+
+下列元件顯示當使用者選取文化特性時, 如何執行初始重新導向的範例:
+
+```cshtml
+@inject IUriHelper UriHelper
+
+<h3>Select your language</h3>
+
+<select @onchange="OnSelected">
+    <option>Select...</option>
+    <option value="en-US">English</option>
+    <option value="fr-FR">Français</option>
+</select>
+
+@code {
+    private double textNumber;
+
+    private void OnSelected(UIChangeEventArgs e)
+    {
+        var culture = (string)e.Value;
+        var uri = new Uri(UriHelper.GetAbsoluteUri())
+            .GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+        var query = $"?culture={Uri.EscapeDataString(culture)}&" +
+            $"redirectUri={Uri.EscapeDataString(uri)}";
+
+        UriHelper.NavigateTo("/Culture/SetCulture" + query, forceLoad: true);
+    }
+}
+```
+
+### <a name="use-net-localization-scenarios-in-blazor-apps"></a>在 Blazor apps 中使用 .NET 當地語系化案例
+
+在 Blazor apps 中, 可以使用下列 .NET 當地語系化和全球化案例:
+
+* .NET 的資源系統
+* 特定文化特性的數位和日期格式
+
+Blazor 的`@bind`功能會根據使用者目前的文化特性來執行全球化。 如需詳細資訊, 請參閱[資料](#data-binding)系結一節。
+
+目前支援一組有限的 ASP.NET Core 當地語系化案例:
+
+* `IStringLocalizer<>`Blazor 應用程式*支援*。
+* `IHtmlLocalizer<>`、 `IViewLocalizer<>`和資料批註當地語系化 ASP.NET Core MVC 案例中, 而且**不支援**Blazor 應用程式。
+
+如需詳細資訊，請參閱 <xref:fundamentals/localization>。

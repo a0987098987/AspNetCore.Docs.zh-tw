@@ -5,14 +5,14 @@ description: 使用您選擇的工具來建立 Blazor 應用程式, 以開始使
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/23/2019
+ms.date: 08/13/2019
 uid: blazor/get-started
-ms.openlocfilehash: b4609858be43acf9d1b2d8be5eff4879fd56f49f
-ms.sourcegitcommit: 051f068c78931432e030b60094c38376d64d013e
+ms.openlocfilehash: 1358a2e92af9d9104e565718692b1ca1940b9d9e
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68948328"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68993396"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -25,7 +25,7 @@ ms.locfileid: "68948328"
 1. 在命令 shell 中執行下列命令, 以安裝 Blazor 範本:
 
    ```console
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview7.19365.7
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview8.19405.7
    ```
 
 1. 遵循您選擇的工具的指導方針:
@@ -40,12 +40,12 @@ ms.locfileid: "68948328"
 
    4 \。 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確, 或提供專案的 [位置]。 選取 [建立]。
 
-   5 \。 如需 Blazor 用戶端體驗, 請選擇 [ **Blazor (用戶端)** ] 範本。 如需 Blazor 伺服器端的體驗, 請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需伺服器端和用戶端的兩個 Blazor 裝載模型的詳細資訊, 請<xref:blazor/hosting-models>參閱。
+   5 \。 如需 Blazor 用戶端體驗, 請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器端的體驗, 請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需伺服器端和用戶端的兩個 Blazor 裝載模型的詳細資訊, 請<xref:blazor/hosting-models>參閱。
 
    6。 按下 **F5** 即可執行應用程式。
 
    > [!NOTE]
-   > 如果您已安裝 ASP.NET Core Blazor (Preview 6 或更早版本) 先前預覽版本的 Blazor Visual Studio 延伸模組, 您可以在 Preview 7 上卸載此擴充功能。 在命令介面中安裝 Blazor 範本, 現在已足以在 Visual Studio 中呈現範本。
+   > 如果您已安裝 ASP.NET Core Blazor (Preview 6 或更早版本) 先前預覽版本的 Blazor Visual Studio 延伸模組, 則可以卸載擴充功能。 在命令介面中安裝 Blazor 範本, 現在已足以在 Visual Studio 中呈現範本。
 
    # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -56,13 +56,13 @@ ms.locfileid: "68948328"
    3 \。 如需 Blazor 用戶端體驗, 請在命令 shell 中執行下列命令:
 
       ```console
-      dotnet new blazor -o WebApplication1
+      dotnet new blazorwasm -o WebApplication1
       ```
 
       如需 Blazor 伺服器端的體驗, 請在命令 shell 中執行下列命令:
 
       ```console
-      dotnet new blazorserverside -o WebApplication1
+      dotnet new blazorserver -o WebApplication1
       ```
 
       如需伺服器端和用戶端的兩個 Blazor 裝載模型的詳細資訊, 請<xref:blazor/hosting-models>參閱。
@@ -85,7 +85,7 @@ ms.locfileid: "68948328"
 
    3\. In the sidebar, select **.NET Core** > **App**.
 
-   4\. For a Blazor server-side experience, select the **ASP.NET Core Blazor Server App** template. For a Blazor client-side experience, select the **ASP.NET Core Blazor WebAssembly App** template. Select **Next**. For information on the two Blazor hosting models, server-side and client-side, see <xref:blazor/hosting-models>.
+   4\. For a Blazor server-side experience, select the **Blazor Server App** template. For a Blazor client-side experience, select the **Blazor WebAssembly App** template. Select **Next**. For information on the two Blazor hosting models, server-side and client-side, see <xref:blazor/hosting-models>.
 
    5\. The **Target Framework** defaults to **.NET Core 3.0**. Select **Next**.
 
@@ -100,7 +100,7 @@ ms.locfileid: "68948328"
    如需 Blazor 用戶端體驗, 請在命令 shell 中執行下列命令:
 
    ```console
-   dotnet new blazor -o WebApplication1
+   dotnet new blazorwasm -o WebApplication1
    cd WebApplication1
    dotnet run
    ```
@@ -108,7 +108,7 @@ ms.locfileid: "68948328"
    如需 Blazor 伺服器端的體驗, 請在命令 shell 中執行下列命令:
 
    ```console
-   dotnet new blazorserverside -o WebApplication1
+   dotnet new blazorserver -o WebApplication1
    cd WebApplication1
    dotnet run
    ```
@@ -152,7 +152,7 @@ ms.locfileid: "68948328"
 
 元件參數是使用屬性或[子內容](xref:blazor/components#child-content)所指定, 可讓您設定子元件上的屬性。 若要將參數新增至`Counter`元件, 請更新元件的`@code`區塊:
 
-* `IncrementAmount`使用屬性加入的屬性。`[Parameter]`
+* `IncrementAmount`使用屬性加入的公用屬性。`[Parameter]`
 * 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
 
 *Pages/Counter.razor*：

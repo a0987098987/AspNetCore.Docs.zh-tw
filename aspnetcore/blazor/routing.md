@@ -5,14 +5,14 @@ description: 瞭解如何在應用程式中路由傳送要求, 以及關於 NavL
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/02/2019
+ms.date: 08/13/2019
 uid: blazor/routing
-ms.openlocfilehash: 70cae6b3a21fe3537d6841a6716398a5fc45db62
-ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
+ms.openlocfilehash: 197b1a91b3540d21639c3ee775b2c490da7b23fe
+ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68948308"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030395"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -118,11 +118,23 @@ ASP.NET Core 3.0 Preview 中的 Blazor 應用程式不支援選擇性參數。 �
 
 在上述`NavLink`範例中, home `href=""`會符合 home `active` URL, 而且只會在應用程式的預設基底路徑 URL (例如, `https://localhost:5001/`) 接收 CSS 類別。 第二`NavLink`個會`active`在使用者`MyComponent`造訪具有前置詞的任何 URL 時收到類別 (例如`https://localhost:5001/MyComponent` , `https://localhost:5001/MyComponent/AnotherSegment`和)。
 
+其他`NavLink`元件屬性會傳遞至呈現的錨點標記。 在下列範例中, `NavLink`元件`target`包含屬性:
+
+```cshtml
+<NavLink href="my-page" target="_blank">My page</NavLink>
+```
+
+會轉譯下列 HTML 標籤:
+
+```html
+<a href="my-page" target="_blank" rel="noopener noreferrer">My page</a>
+```
+
 ## <a name="uri-and-navigation-state-helpers"></a>URI 和流覽狀態協助程式
 
 用`Microsoft.AspNetCore.Components.IUriHelper`來處理常式代碼中C#的 uri 和導覽。 `IUriHelper`提供下表所示的事件和方法。
 
-| 成員 | 描述 |
+| 成員 | 說明 |
 | ------ | ----------- |
 | `GetAbsoluteUri` | 取得目前的絕對 URI。 |
 | `GetBaseUri` | 取得可在相對 URI 路徑前面加上的基底 URI (含尾端斜線), 以產生絕對 URI。 `href` `<base>`通常會對應至wwwroot/index.html(Blazor用戶端)或Pages/_Host(Blazor伺服器端)中檔元素上的屬性。`GetBaseUri` |

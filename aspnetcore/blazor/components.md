@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/components
-ms.openlocfilehash: a95c186d30eaf342f10ecbe6f7add242d4679a0f
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
+ms.openlocfilehash: 8cb2dc4c3cd22fe71fe15c22762948f9dcd3c08f
+ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68993421"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030361"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -519,7 +519,10 @@ await callback.InvokeAsync(arg);
 
 ## <a name="capture-references-to-components"></a>捕獲元件的參考
 
-元件參考提供參考元件實例的方法, 讓您可以對該實例發出命令, 例如`Show`或。 `Reset` 若要捕捉元件參考, 請將[@ref](xref:mvc/views/razor#ref)屬性新增至子元件, 然後使用與子元件相同的名稱和相同的類型來定義欄位。
+元件參考提供參考元件實例的方法, 讓您可以對該實例發出命令, 例如`Show`或。 `Reset` 若要捕捉元件參考:
+
+* [@ref](xref:mvc/views/razor#ref)將屬性加入至子元件。
+* 定義與子元件類型相同的欄位。
 
 ```cshtml
 <MyLoginDialog @ref="loginDialog" ... />
@@ -538,6 +541,30 @@ await callback.InvokeAsync(arg);
 
 > [!IMPORTANT]
 > 只有在轉譯元件之後才會填入`MyLoginDialog` 變數,而且其輸出會包含元素。`loginDialog` 直到該點為止, 沒有任何可參考的內容。 若要在元件完成呈現之後操作元件參考, 請使用`OnAfterRenderAsync`或`OnAfterRender`方法。
+
+<!-- HOLD https://github.com/aspnet/AspNetCore.Docs/pull/13818
+Component references provide a way to reference a component instance so that you can issue commands to that instance, such as `Show` or `Reset`.
+
+The Razor compiler automatically generates a backing field for element and component references when using [@ref](xref:mvc/views/razor#ref). In the following example, there's no need to create a `myLoginDialog` field for the `LoginDialog` component:
+
+```cshtml
+<LoginDialog @ref="myLoginDialog" ... />
+
+@code {
+    private void OnSomething()
+    {
+        myLoginDialog.Show();
+    }
+}
+```
+
+When the component is rendered, the generated `myLoginDialog` field is populated with the `LoginDialog` component instance. You can then invoke .NET methods on the component instance.
+
+In some cases, a backing field is required. For example, declare a backing field when referencing generic components. To suppress backing field generation, specify the `@ref:suppressField` parameter.
+
+> [!IMPORTANT]
+> The generated `myLoginDialog` variable is only populated after the component is rendered and its output includes the `LoginDialog` element. Until that point, there's nothing to reference. To manipulate components references after the component has finished rendering, use the `OnAfterRenderAsync` or `OnAfterRender` methods.
+-->
 
 雖然捕捉元件參考使用類似的語法來[捕捉元素參考](xref:blazor/javascript-interop#capture-references-to-elements), 但它並不是[JavaScript interop](xref:blazor/javascript-interop)功能。 元件參考不會傳遞至 JavaScript&mdash;程式碼, 而只會在 .net 程式碼中使用。
 
@@ -620,19 +647,19 @@ await callback.InvokeAsync(arg);
 
 ## <a name="lifecycle-methods"></a>生命週期方法
 
-`OnInitAsync`並`OnInit`執行程式碼, 以初始化元件。 若要執行非同步作業, 請`OnInitAsync`在作業`await`上使用和關鍵字:
+`OnInitializedAsync`並`OnInitialized`執行程式碼, 以初始化元件。 若要執行非同步作業, 請`OnInitializedAsync`在作業`await`上使用和關鍵字:
 
 ```csharp
-protected override async Task OnInitAsync()
+protected override async Task OnInitializedAsync()
 {
     await ...
 }
 ```
 
-如需同步操作, 請`OnInit`使用:
+如需同步操作, 請`OnInitialized`使用:
 
 ```csharp
-protected override void OnInit()
+protected override void OnInitialized()
 {
     ...
 }
@@ -674,7 +701,7 @@ protected override void OnAfterRender()
 
 在呈現元件之前, 在生命週期事件中執行的非同步動作可能尚未完成。 當生命週期`null`方法正在執行時, 物件可能會或未完全填入資料。 提供轉譯邏輯, 以確認物件已初始化。 當物件為`null`時, 呈現預留位置 UI 專案 (例如, 載入訊息)。
 
-在 Blazor 範本的`OnInitAsync` `forecasts`元件中, 會覆寫為 asychronously 接收預測資料 ()。 `FetchData` 當`forecasts` 為`null`時, 會向使用者顯示載入訊息。 在所`Task` `OnInitAsync`傳回的完成之後, 元件會以更新的狀態重新顯示。
+在 Blazor 範本的`OnInitializedAsync` `forecasts`元件中, 會覆寫為 asychronously 接收預測資料 ()。 `FetchData` 當`forecasts` 為`null`時, 會向使用者顯示載入訊息。 在所`Task` `OnInitializedAsync`傳回的完成之後, 元件會以更新的狀態重新顯示。
 
 *Pages/FetchData.razor*：
 
@@ -685,7 +712,7 @@ protected override void OnAfterRender()
 `SetParameters`在設定參數之前, 可以覆寫以執行程式碼:
 
 ```csharp
-public override void SetParameters(ParameterCollection parameters)
+public override void SetParameters(ParameterView parameters)
 {
     ...
 

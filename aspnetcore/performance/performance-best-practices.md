@@ -42,7 +42,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 * 製作[經常性存取程式碼路徑](#hot)非同步。
 * 以非同步方式呼叫資料存取和長時間執行作業的 Api。
-* 讓控制站/Razor 頁面動作非同步。整個呼叫堆疊為了受益於[非同步/等候](/dotnet/csharp/programming-guide/concepts/async/)模式，因此是非同步的。
+* 讓控制站/Razor 頁面動作非同步。 整個呼叫堆疊為了受益於[非同步/等候](/dotnet/csharp/programming-guide/concepts/async/)模式，因此是非同步的。
 
 程式碼剖析工具，例如[PerfView](https://github.com/Microsoft/perfview)，可用來尋找執行緒不斷新增到[執行緒集區](/windows/desktop/procthread/thread-pools)。 `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start`事件表示加入至執行緒集區的執行緒。 <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc  -->
 
@@ -134,7 +134,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 ## <a name="compress-responses"></a>壓縮回應
 
- 減少回應的大小通常可大幅提升應用程式的回應速度。減少承載大小的其中一個方法是壓縮應用程式的回應。如需詳細資訊，請參閱<c0>[ 回應壓縮](xref:performance/response-compression)。
+ 減少回應的大小通常應用程式的回應速度通常會大幅增加。 減少承載大小的方法之一是壓縮應用程式的回應。 如需詳細資訊，請參閱 <c0> [ 回應壓縮](xref:performance/response-compression)。
 
 ## <a name="use-the-latest-aspnet-core-release"></a>使用最新的 ASP.NET Core 版本
 

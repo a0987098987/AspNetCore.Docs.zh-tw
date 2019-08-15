@@ -5,14 +5,14 @@ description: 探索如何將元件包含在來自外部元件程式庫的 Blazor
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/02/2019
+ms.date: 08/13/2019
 uid: blazor/class-libraries
-ms.openlocfilehash: 402b7b072554f63f85e7cf5e55336104d235a071
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 6e93d48bbc684845952c3db8935ccc8b190044b7
+ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68948438"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030348"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
 
@@ -33,10 +33,9 @@ ms.locfileid: "68948438"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 建立新的專案。
-1. 選取 [ASP.NET Core Web 應用程式]。 選取 [下一步]。
+1. 選取 [ **Razor 類別庫**]。 選取 [下一步]。
+1. 在 [**建立新的 Razor 類別庫**] 對話方塊中, 選取 [**建立**]。
 1. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 本主題中的範例會使用專案名稱`MyComponentLib1`。 選取 [建立]。
-1. 在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中，確認選取 [.NET Core] 和 [ASP.NET Core 3.0]。
-1. 選取 [ **Razor 類別庫**] 範本。 選取 [建立]。
 1. 將 RCL 新增至方案:
    1. 以滑鼠右鍵按一下方案。 選取 [**加入** > **現有專案**]。
    1. 流覽至 RCL 的專案檔。

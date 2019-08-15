@@ -547,6 +547,8 @@
       uid: grpc/migration
     - name: 比較 gRPC 服務與 HTTP APIs
       uid: grpc/comparison
+    - name: 疑難排解
+      uid: grpc/troubleshoot
 - name: 測試、偵錯及疑難排解
   items:
     - name: 單元測試

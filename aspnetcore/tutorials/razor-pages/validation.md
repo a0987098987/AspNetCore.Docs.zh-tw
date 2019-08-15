@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: d6d45dc7154bf415c3b098299d066b6fb37cf64d
-ms.sourcegitcommit: 16502797ea749e2690feaa5e652a65b89c007c89
+ms.openlocfilehash: 5c5419eb6ccfbd9ddd8d6fadb24d688966d76c10
+ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68483282"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69022396"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -28,7 +28,32 @@ ms.locfileid: "68483282"
 
 Razor Pages 和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
 
-[!INCLUDE[](~/includes/RP-MVC/validation.md)]
+## <a name="add-validation-rules-to-the-movie-model"></a>將驗證規則新增至電影模型
+
+DataAnnotations 命名空間提供一組內建的驗證屬性 (attribute)，其以宣告方式套用至類別或屬性 (property)。 DataAnnotations 也包含格式化屬性 (如 `DataType`)，可協助進行格式化，但不提供任何驗證。
+
+更新 `Movie` 類別，以充分利用內建的 `Required`、`StringLength`、`RegularExpression` 和 `Range` 驗證屬性。
+
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDA.cs?name=snippet1)]
+
+驗證屬性會指定您想要對套用目標模型屬性強制執行的行為：
+
+* `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須是值；但無法防止使用者輸入空格以滿足此驗證。
+* `RegularExpression` 屬性則用來限制可輸入的字元。 在上述程式碼中，"Genre"：
+
+  * 必須指使用字母。
+  * 第一個字母必須是大寫。 不允許使用空格、數字和特殊字元。
+
+* `RegularExpression` "Rating"：
+
+  * 第一個字元必須為大寫字母。
+  * 允許後續空格中的特殊字元和數位。 "PG-13" 對分級而言有效，但不適用於 "Genre"。
+
+* `Range` 屬性會將值限制在指定的範圍內。
+* `StringLength` 屬性可讓您設定字串屬性的最大長度，並選擇性設定其最小長度。
+* 實值型別 (如`decimal`、`int`、`float`、`DateTime`) 原本就是必要項目，而且不需要 `[Required]` 屬性。
+
+擁有 ASP.NET Core 自動強制執行的驗證規則有助於讓您的應用程式更穩固。 它也確保您不會忘記要驗證某些項目，不小心讓不正確的資料進入資料庫。
 
 ### <a name="validation-error-ui-in-razor-pages"></a>Razor Pages 中的驗證錯誤 UI
 

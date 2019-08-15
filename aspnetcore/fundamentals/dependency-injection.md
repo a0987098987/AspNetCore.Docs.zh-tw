@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 如何實作相依性插入以及如何使用�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/06/2019
+ms.date: 08/14/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 27ae8ac979c267c666d6d63f4d1dd862ff20edba
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: a984bb766e6876db4f8ed4c850a1984ba87d627d
+ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819857"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69022281"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -171,7 +171,7 @@ public void ConfigureServices(IServiceCollection services)
 具範圍存留期服務 (<xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped*>) 會在每次用戶端要求 (連線) 時建立一次。
 
 > [!WARNING]
-> 在中介軟體中使用具範圍服務時，請將該服務插入 `Invoke` 或 `InvokeAsync` 方法中。 因為其會強制服務執行單一服務的行為，所以請勿透過建構函式插入進行插入。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/index>。
+> 在中介軟體中使用具範圍服務時，請將該服務插入 `Invoke` 或 `InvokeAsync` 方法中。 因為其會強制服務執行單一服務的行為，所以請勿透過建構函式插入進行插入。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/write#per-request-middleware-dependencies>。
 
 ### <a name="singleton"></a>單一
 
@@ -184,7 +184,7 @@ public void ConfigureServices(IServiceCollection services)
 
 每個服務註冊擴充方法都提供在特定案例中相當有用的多載。
 
-| 方法 | 自動<br>object<br>處置 | 多個<br>實作 | 傳遞引數 |
+| 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddScoped<IMyDep, MyDep>();` | 是 | 是 | 否 |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>例如：<br>`services.AddScoped<IMyDep>(sp => new MyDep());`<br>`services.AddScoped<IMyDep>(sp => new MyDep("A string!"));` | 是 | [是] | 是 |

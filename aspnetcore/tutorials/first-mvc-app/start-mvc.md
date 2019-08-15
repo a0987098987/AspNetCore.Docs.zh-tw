@@ -5,12 +5,12 @@ description: 了解如何開始使用 ASP.NET Core MVC。
 ms.author: riande
 ms.date: 08/05/2019
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: f6a92423546ebd9d4c8e1a92fb81b6b72f847f61
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: 36f4811f876a6e35440445103a1f86ae06b31b6a
+ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820095"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69022513"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 
@@ -126,7 +126,6 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   ![IIS Express](start-mvc/_static/iis_express.png)
 
-
   下圖顯示應用程式：
 
   ![Home 或 Index 頁面](start-mvc/_static/home2.2.png)
@@ -140,12 +139,6 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
   Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後瀏覽至 `https://localhost:5001`。 位址列會顯示 `localhost:port:5001`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
 
   使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式來重新整理頁面並檢視變更。
-
-* 選取 [接受]  同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
-
-  ![Home 或 Index 頁面](start-mvc/_static/privacy.png)
-
-  下圖顯示接受追蹤之後的應用程式：
 
   ![Home 或 Index 頁面](start-mvc/_static/home2.2.png)
 

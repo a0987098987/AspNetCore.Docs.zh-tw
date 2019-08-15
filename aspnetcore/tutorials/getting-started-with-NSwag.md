@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/21/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: c5b2dc47328d6d3c271a87579fa8c300109bd734
-ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
+ms.openlocfilehash: af8e2a266e54364857f0b49cc78a54683dff9de4
+ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67316549"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68915099"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>NSwag 與 ASP.NET Core 使用者入門
 
@@ -70,14 +70,6 @@ NSwag 提供下列功能：
 * 將 [新增套件]  視窗的 [來源]  下拉式清單設定為 "nuget.org"
 * 在搜尋方塊中輸入 "NSwag.AspNetCore"
 * 從結果窗格中選取 "NSwag.AspNetCore" 套件，並按一下 [新增套件] 
-
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-從 [整合式終端機]  執行下列命令：
-
-```console
-dotnet add TodoApi.csproj package NSwag.AspNetCore
-```
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -237,7 +229,7 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker-end
 
-# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code / .NET Core CLI](#tab/visual-studio-code+netcore-cli)
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 

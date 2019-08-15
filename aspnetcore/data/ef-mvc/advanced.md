@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: caa821d36c192a06891a7b3d47c47436aea25a30
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 7b25ccad560d00801c1f6cb93d86163a8212bc12
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886003"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68993447"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
 
@@ -55,7 +55,7 @@ ms.locfileid: "64886003"
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10)]
 
-若要確認新的程式碼運作正常，請選取 [部門]  索引標籤，然後針對其中一個部門選取 [詳細資料] 。
+若要確認新的程式碼運作正常，請選取 [部門]  索引標籤，然後針對其中一個部門選取 [詳細資料]  。
 
 ![部門詳細資料](advanced/_static/department-details.png)
 
@@ -89,11 +89,11 @@ ms.locfileid: "64886003"
 
 當控制器處理 HttpGet 要求時，不會在 `ViewData["RowsAffected"]` 中傳回任何項目，而檢視會顯示空白的文字方塊和提交按鈕，如上圖所示。
 
-按一下 [更新] 按鈕後，會呼叫 HttpPost 方法，而乘數具有在文字方塊中輸入的值。 程式碼接著執行的 SQL 會更新課程，並將受影響的資料列數目傳回至 `ViewData` 中的檢視。 當檢視取得 `RowsAffected` 值時，它會顯示更新的資料列數目。
+按一下 [更新]  按鈕後，會呼叫 HttpPost 方法，而乘數具有在文字方塊中輸入的值。 程式碼接著執行的 SQL 會更新課程，並將受影響的資料列數目傳回至 `ViewData` 中的檢視。 當檢視取得 `RowsAffected` 值時，它會顯示更新的資料列數目。
 
-在方案總管中，以滑鼠右鍵按一下 *Views/Courses* 資料夾，然後按一下 [新增] > [新增項目]。
+在方案總管  中，以滑鼠右鍵按一下 *Views/Courses* 資料夾，然後按一下 [新增] > [新增項目]  。
 
-在 [加入新項目] 對話方塊中，按一下左窗格中 [已安裝] 底下的 [ASP.NET Core]，按一下 [Razor 檢視]，然後將新的檢視命名為 *UpdateCourseCredits.cshtml*。
+在 [加入新項目]  對話方塊中，按一下左窗格中 [已安裝]  底下的 [ASP.NET Core]  ，按一下 [Razor 檢視]  ，然後將新的檢視命名為 *UpdateCourseCredits.cshtml*。
 
 在 *Views/Courses/UpdateCourseCredits.cshtml* 中，以下列程式碼取代範本程式碼：
 
@@ -103,11 +103,11 @@ ms.locfileid: "64886003"
 
 ![更新課程學分數頁面](advanced/_static/update-credits.png)
 
-按一下 [更新] 。 您會看到受影響的資料列數目：
+按一下 [更新]  。 您會看到受影響的資料列數目：
 
 ![更新課程學分數頁面之受影響的資料列](advanced/_static/update-credits-rows-affected.png)
 
-按一下 [回到清單]，以查看課程與已修訂學分數的清單。
+按一下 [回到清單]  ，以查看課程與已修訂學分數的清單。
 
 請注意，生產環境程式碼可確保更新一律會產生有效的資料。 此處顯示的簡化程式碼會增加足夠的學分數而使其數目大於 5。 (`Credits` 屬性具有 `[Range(0, 5)]` 屬性。)更新查詢可正常運作，但是無效的資料可能會導致系統的其他部分假設學分數為 5 或更少，進而發生非預期的結果。
 
@@ -213,7 +213,7 @@ Tom Dykstra 和 Rick Anderson (Twitter @RickAndMSFT) 撰寫了本教學課程。
 
 解決方案:
 
-停止 IIS Express 中的網站。 移至 Windows 系統匣中，尋找 IIS Express 並以滑鼠右鍵按一下其圖示，選取 Contoso 大學網站，然後按一下 [停止網站]。
+停止 IIS Express 中的網站。 移至 Windows 系統匣中，尋找 IIS Express 並以滑鼠右鍵按一下其圖示，選取 Contoso 大學網站，然後按一下 [停止網站]  。
 
 ### <a name="migration-scaffolded-with-no-code-in-up-and-down-methods"></a>Up 和 Down 方法中沒有程式碼的 Scaffold 移轉
 
@@ -231,7 +231,7 @@ EF CLI 命令不會自動關閉並儲存程式碼檔案。 如果您有未儲存
 
 最簡單的方法是在 *appsettings.json* 中重新命名資料庫。 下次您執行 `database update` 時，就會建立新的資料庫。
 
-若要刪除 SSOX 中的資料庫，請以滑鼠右鍵按一下該資料庫，按一下 [刪除]，然後在 [刪除資料庫] 對話方塊中選取 [關閉現有的連線]，並按一下 [確定]。
+若要刪除 SSOX 中的資料庫，請以滑鼠右鍵按一下該資料庫，按一下 [刪除]  ，然後在 [刪除資料庫]  對話方塊中選取 [關閉現有的連線]  ，並按一下 [確定]  。
 
 若要使用 CLI 來刪除資料庫，請執行 `database drop` CLI 命令：
 
@@ -279,4 +279,4 @@ dotnet ef database drop
 如此即完成本系列中在 ASP.NET Core MVC 應用程式中使用 Entity Framework Core 的教學課程。 這一系列教學課程使用了新的資料庫，您也可以從現有的資料庫反向建構模型。
 
 > [!div class="nextstepaction"]
-> [教學課程：在 MVC 中使用 EF Core，現有的資料庫](/ef/core/get-started/aspnetcore/new-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json)
+> [教學課程：在 MVC 中使用 EF Core，現有的資料庫](/ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json)

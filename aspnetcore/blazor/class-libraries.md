@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/class-libraries
-ms.openlocfilehash: 6e93d48bbc684845952c3db8935ccc8b190044b7
-ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
+ms.openlocfilehash: b5857f2cf22bde801deeeaf227817fdf99862f4a
+ms.sourcegitcommit: 4cb0c7e74355f2e87c60e2a196f842b937247a99
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030348"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69545780"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
 
@@ -60,16 +60,6 @@ ms.locfileid: "69030348"
 
 ---
 
-## <a name="rcls-not-supported-for-client-side-apps"></a>用戶端應用程式不支援 RCLs
-
-在目前的 ASP.NET Core 3.0 Preview 中, Razor 類別庫與 Blazor 用戶端應用程式不相容。 針對 Blazor 用戶端應用程式, 請在命令介面中使用範本所`blazorlib`建立的 Blazor 元件程式庫:
-
-```console
-dotnet new blazorlib -o MyComponentLib1
-```
-
-使用範本的`blazorlib`元件庫可以包含靜態檔案, 例如影像、JavaScript 和樣式表單。 在建立期間, 靜態檔案會內嵌到建立的元件檔 ( *.dll*) 中, 以允許取用元件, 而不必擔心如何包含其資源。 包含在`content`目錄中的任何檔案都會標示為內嵌資源。
-
 ## <a name="consume-a-library-component"></a>使用程式庫元件
 
 若要使用另一個專案中的程式庫中所定義的元件, 請使用下列其中一種方法:
@@ -116,8 +106,6 @@ dotnet pack
 ```console
 dotnet nuget publish
 ```
-
-使用`blazorlib`範本時, 靜態資源會包含在 NuGet 套件中。 程式庫取用者會自動接收腳本和樣式表單, 因此取用者不需要手動安裝資源。
 
 ## <a name="create-a-razor-components-class-library-with-static-assets"></a>建立具有靜態資產的 Razor 元件類別庫
 

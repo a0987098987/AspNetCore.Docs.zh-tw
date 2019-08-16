@@ -1,23 +1,32 @@
 ---
-title: ASP.NET Core 中的記錄
+title: 登入 .NET Core 與 ASP.NET Core
 author: tdykstra
-description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。
+description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提供的記錄架構。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 4fe677e69478284db2ccab655c35b5744b6f63f9
-ms.sourcegitcommit: 059ab380744fa3be3b69aa90d431b563c57092cf
+ms.openlocfilehash: 4e2aa1e18c3e3119e22452d5ca9b838581efbfd8
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68410920"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994114"
 ---
-# <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
+# <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
-作者：[Steve Smith](https://ardalis.com/) 和 [Tom Dykstra](https://github.com/tdykstra)
+作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Steve Smith](https://ardalis.com/)
 
-ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提供者搭配使用。 此文章說明如何搭配內建提供者使用 API。
+.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提供者搭配使用。 此文章說明如何搭配內建提供者使用 API。
+
+::: moniker range=">= aspnetcore-3.0"
+
+本文中顯示的大部分程式碼範例都來自 ASP.NET Core 應用程式。 這些程式碼片段的記錄特定部分，適用於任何使用[一般主機](xref:fundamentals/host/generic-host)的 .NET Core 應用程式。 如需如何在非 Web 主控台應用程式中使用一般主機的資訊，請參閱[託管服務](xref:fundamentals/host/hosted-services)。
+
+不含一般主機的應用程式記錄程式碼，會因[新增提供者](#add-providers)和[建立記錄器](#create-logs)的方式而有所不同。 非主機程式碼範例顯示於本文的這些章節中。
+
+::: moniker-end
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/logging/index/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -25,7 +34,32 @@ ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提�
 
 記錄提供者會顯示或儲存記錄。 例如，主控台提供者會在主控台上顯示記錄，而 Azure Application Insights 提供者則會將記錄儲存在 Azure Application Insights 中。 您可以透過新增多個提供者的方式來將記錄傳送到多個目的地。
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-3.0"
+
+若要在使用一般主機的應用程式中新增提供者，請在 *Program.cs* 中呼叫提供者的 `Add{provider name}` 擴充方法：
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_AddProvider&highlight=6)]
+
+在非主機主控台應用程式中，於建立 `LoggerFactory` 時呼叫提供者的 `Add{provider name}` 擴充方法：
+
+[!code-csharp[](index/samples/3.x/LoggingConsoleApp/Program.cs?name=snippet_LoggerFactory&highlight=1,7)]
+
+`LoggerFactory` 和 `AddConsole` 需要 `Microsoft.Extensions.Logging` 的 `using` 陳述式。
+
+預設 ASP.NET Core 專案範本會呼叫 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A> 新增下列記錄提供者：
+
+* 主控台
+* 偵錯
+* EventSource
+* EventLog (僅當在 Windows 上執行時)
+
+您可以使用您想要的提供者來取代預設提供者。 呼叫 <xref:Microsoft.Extensions.Logging.LoggingBuilderExtensions.ClearProviders%2A> 並新增您要的提供者。
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_AddProvider&highlight=5)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0 "
 
 若要新增提供者，請在 *Program.cs* 中呼叫提供者的 `Add{provider name}` 擴充方法：
 
@@ -47,54 +81,80 @@ ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提�
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.0"
-
-若要使用提供者，請安裝其 NuGet 套件，並在 <xref:Microsoft.Extensions.Logging.ILoggerFactory> 的執行個體上呼叫該提供者的擴充方法：
-
-[!code-csharp[](index/samples/1.x/TodoApiSample/Startup.cs?name=snippet_AddConsoleAndDebug&highlight=3,5-7)]
-
-ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提供 `ILoggerFactory` 執行個體。 `AddConsole` 和 `AddDebug` 擴充方法定義於 [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/) 和 [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/) 套件中。 每個擴充方法會呼叫 `ILoggerFactory.AddProvider` 方法，並傳入提供者的執行個體。
-
-> [!NOTE]
-> [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/logging/index/samples/1.x)會在 `Startup.Configure` 方法中新增記錄提供者。 若要從先前執行的程式碼取得記錄輸出，請在 `Startup` 類別建構函式中新增記錄提供者。
-
-::: moniker-end
-
 在此文章中深入了解[內建記錄提供者](#built-in-logging-providers)與[第三方記錄提供者](#third-party-logging-providers)。
 
 ## <a name="create-logs"></a>建立記錄
 
-從 DI 取得 <xref:Microsoft.Extensions.Logging.ILogger%601> 物件。
+若要建立記錄，請使用 <xref:Microsoft.Extensions.Logging.ILogger%601> 物件。 在 Web 應用程式或託管服務中，從相依性插入 (DI) 取得 `ILogger`。 在非主機主控台應用程式中，使用 `LoggerFactory` 來建立 `ILogger`。
 
-::: moniker range=">= aspnetcore-2.0"
+下列 ASP.NET Core 範例會建立以 `TodoApiSample.Pages.AboutModel` 作為類別的記錄器。 記錄「類別」  是與每個記錄關聯的字串。 由 DI 提供的 `ILogger<T>` 執行個體，會建立使用型別 `T` 作為類別的完整名稱記錄。 
 
-下列控制器範例會建立 `Information` 與 `Warning` 記錄。 「類別」  是 `TodoApiSample.Controllers.TodoController` (範例應用程式中 `TodoController` 的完整類別名稱)：
+::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_LoggerDI&highlight=4,7)]
+[!code-csharp[](index/samples/3.x/TodoApiSample/Pages/About.cshtml.cs?name=snippet_LoggerDI&highlight=3,5,7)]
 
-[!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
+下列非主機主控台應用程式範例會建立以 `LoggingConsoleApp.Program` 作為類別的記錄器。
 
-下鎳 Razor Pages 範例會建立記錄，其中「層級」*l* 為 `Information` 且「類別」  為 `TodoApiSample.Pages.AboutModel`：
+[!code-csharp[](index/samples/3.x/LoggingConsoleApp/Program.cs?name=snippet_LoggerFactory&highlight=10)]
 
-[!code-csharp[](index/samples/2.x/TodoApiSample/Pages/About.cshtml.cs?name=snippet_LoggerDI&highlight=3, 7)]
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+[!code-csharp[](index/samples/2.x/TodoApiSample/Pages/About.cshtml.cs?name=snippet_LoggerDI&highlight=3,5,7)]
+
+::: moniker-end
+
+在下列 ASP.NET Core 和主控台應用程式範例中，記錄器會用於以 `Information` 作為層級來建立記錄。 記錄「層級」  指出已記錄事件的嚴重性。 
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Pages/About.cshtml.cs?name=snippet_CallLogMethods&highlight=4)]
+
+[!code-csharp[](index/samples/3.x/LoggingConsoleApp/Program.cs?name=snippet_LoggerFactory&highlight=11)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Pages/About.cshtml.cs?name=snippet_CallLogMethods&highlight=4)]
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.0"
+此文章稍後將詳細說明[層級](#log-level)與[類別](#log-category)。 
 
-[!code-csharp[](index/samples/1.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_LoggerDI&highlight=7)]
+::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](index/samples/1.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
+### <a name="create-logs-in-the-program-class"></a>在 Program 類別中建立記錄
 
-前述範例會建立記錄，其中「層級」  為 `Information` 與 `Warning` 且「類別」  為 `TodoController`類別。 
+若要在 ASP.NET Core 應用程式的 `Program` 類別中寫入記錄，請在建立主機之後從 DI 取得 `ILogger` 執行個體：
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
+
+### <a name="create-logs-in-the-startup-class"></a>在 Startup 類別中建立記錄
+
+若要在 ASP.NET Core 應用程式的 `Startup.Configure` 方法中寫入記錄，請在方法簽章中包含 `ILogger` 參數：
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Startup.cs?name=snippet_Configure&highlight=1,5)]
+
+在以 `Startup.ConfigureServices` 方法完成 DI 容器設定之前，不支援寫入記錄檔：
+
+* 不支援將記錄器插入 `Startup` 建構函式。
+* 不支援將記錄器插入 `Startup.ConfigureServices` 方法簽章
+
+這項限制的原因是記錄相依於 DI 和組態，而後者相依於 DI。 在 `ConfigureServices` 完成後才會設定 DI 容器。
+
+記錄器的建構函式插入 `Startup` 適用於舊版 ASP.NET Core，因為會為 Web 主機建立個別的 DI 容器。 如需為何只為一般主機建立一個容器的資訊，請參閱[重大變更公告](https://github.com/aspnet/Announcements/issues/353)。
+
+如果您需要設定相依於 `ILogger<T>` 的服務，您仍然可以使用建構函式插入或提供 Factory 方法來執行此動作。 只有在沒有其他選項時，才建議使用 Factory 方法。 例如，假設您需要使用 DI 的服務來填入屬性：
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
+
+前面的醒目提示程式碼是 `Func`，會在 DI 容器第一次需要建立 `MyService` 的執行個體時執行。 您可以用此方式存取任何已註冊的服務。
 
 ::: moniker-end
 
-記錄「層級」  指出已記錄事件的嚴重性。 記錄「類別」  是與每個記錄關聯的字串。 `ILogger<T>` 執行個體會建立使用類型 `T` 做為類別之完整名稱的記錄。 此文章稍後將詳細說明[層級](#log-level)與[類別](#log-category)。 
-
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range="< aspnetcore-3.0"
 
 ### <a name="create-logs-in-startup"></a>在啟動中建立記錄
 
@@ -102,7 +162,7 @@ ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提�
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Startup.cs?name=snippet_Startup&highlight=3,5,8,20,27)]
 
-### <a name="create-logs-in-program"></a>在程式中建立記錄
+### <a name="create-logs-in-the-program-class"></a>在 Program 類別中建立記錄
 
 若要在 `Program` 類別中寫入記錄，請從 DI 取得 `ILogger` 執行個體：
 
@@ -156,29 +216,36 @@ ASP.NET Core [相依性插入 (DI)](xref:fundamentals/dependency-injection) 提�
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.1"
-
-```json
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Debug",
-      "System": "Information",
-      "Microsoft": "Information"
-    }
-  }
-}
-```
-
-`LogLevel` 索引鍵代表記錄名稱。 `Default` 索引鍵會套用到未明確列出的記錄。 此值代表套用到指定記錄的[記錄層級](#log-level)。
-
-::: moniker-end
-
 如需有關如何實作設定提供者的詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 
 ## <a name="sample-logging-output"></a>範例記錄輸出
 
 使用上一節中顯示的範例程式碼時，當從命令列執行應用程式時，記錄會出現在主控台中。 主控台輸出範例如下：
+
+::: moniker range=">= aspnetcore-3.0"
+
+```console
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost:5000/api/todo/0
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 84.26180000000001ms 307
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:5001/api/todo/0
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'TodoApiSample.Controllers.TodoController.GetById (TodoApiSample)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+      Route matched with {action = "GetById", controller = "Todo", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetById(System.String) on controller TodoApiSample.Controllers.TodoController (TodoApiSample).
+info: TodoApiSample.Controllers.TodoController[1002]
+      Getting item 0
+warn: TodoApiSample.Controllers.TodoController[4000]
+      GetById(0) NOT FOUND
+info: Microsoft.AspNetCore.Mvc.StatusCodeResult[1]
+      Executing HttpStatusCodeResult, setting HTTP status code 404
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 ```console
 info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
@@ -197,9 +264,31 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
       Request finished in 148.889ms 404
 ```
 
+::: moniker-end
+
 上述記錄是透過向位於 `http://localhost:5000/api/todo/0` 的範例應用程式建立 HTTP Get 要求所產生。
 
 以下是您在 Visual Studio 中執行相同應用程式時，出現在 [偵錯] 視窗中的相同記錄範例：
+
+::: moniker range=">= aspnetcore-3.0"
+
+```console
+Microsoft.AspNetCore.Hosting.Diagnostics: Information: Request starting HTTP/2.0 GET https://localhost:44328/api/todo/0  
+Microsoft.AspNetCore.Routing.EndpointMiddleware: Information: Executing endpoint 'TodoApiSample.Controllers.TodoController.GetById (TodoApiSample)'
+Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker: Information: Route matched with {action = "GetById", controller = "Todo", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetById(System.String) on controller TodoApiSample.Controllers.TodoController (TodoApiSample).
+TodoApiSample.Controllers.TodoController: Information: Getting item 0
+TodoApiSample.Controllers.TodoController: Warning: GetById(0) NOT FOUND
+Microsoft.AspNetCore.Mvc.StatusCodeResult: Information: Executing HttpStatusCodeResult, setting HTTP status code 404
+Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker: Information: Executed action TodoApiSample.Controllers.TodoController.GetById (TodoApiSample) in 34.167ms
+Microsoft.AspNetCore.Routing.EndpointMiddleware: Information: Executed endpoint 'TodoApiSample.Controllers.TodoController.GetById (TodoApiSample)'
+Microsoft.AspNetCore.Hosting.Diagnostics: Information: Request finished in 98.41300000000001ms 404
+```
+
+這些透過上一節中所示 `ILogger` 呼叫所建立的記錄是以 "TodoApiSample" 為開頭。 開頭為 "Microsoft" 類別的記錄則是來自 ASP.NET Core 架構程式碼。 ASP.NET Core 與應用程式程式碼會使用相同的記錄 API 與提供者。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 ```console
 Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request starting HTTP/1.1 GET http://localhost:53104/api/todo/0  
@@ -211,7 +300,9 @@ Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker:Information: Executed 
 Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 316.3195ms 404
 ```
 
-這些透過上一節中所示的 `ILogger` 呼叫建立的記錄是以 "TodoApi.Controllers.TodoController" 為開頭。 開頭為 "Microsoft" 類別的記錄則是來自 ASP.NET Core 架構程式碼。 ASP.NET Core 與應用程式程式碼會使用相同的記錄 API 與提供者。
+這些透過上一節中所示 `ILogger` 呼叫所建立的記錄是以 "TodoApi" 為開頭。 開頭為 "Microsoft" 類別的記錄則是來自 ASP.NET Core 架構程式碼。 ASP.NET Core 與應用程式程式碼會使用相同的記錄 API 與提供者。
+
+::: moniker-end
 
 本文的其餘部分將說明記錄的一些詳細資料和選項。
 
@@ -225,29 +316,29 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 使用 `ILogger<T>` 來取得`ILogger` 執行個體，它使用 `T` 的完整類型名稱做為類別：
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_LoggerDI&highlight=7)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_LoggerDI&highlight=7)]
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_LoggerDI&highlight=7)]
-
-::: moniker-end
-
 若要明確指定類別，請呼叫 `ILoggerFactory.CreateLogger`：
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CreateLogger&highlight=7,10)]
+[!code-csharp[](index/samples/3.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CreateLogger&highlight=7,10)]
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.0"
+::: moniker range="< aspnetcore-3.0"
 
-[!code-csharp[](index/samples/1.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CreateLogger&highlight=7,10)]
+[!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CreateLogger&highlight=7,10)]
 
 ::: moniker-end
 
@@ -259,15 +350,15 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 下列程式碼會建立 `Information` 與 `Warning` 記錄：
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
+[!code-csharp[](index/samples/3.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.0"
+::: moniker range="< aspnetcore-3.0"
 
-[!code-csharp[](index/samples/1.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
+[!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
 
 ::: moniker-end
 
@@ -310,6 +401,51 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 ASP.NET Core 會寫入架構事件的記錄。 此文章稍早的記錄範例已排除 `Information` 層級以下的記錄，因此未建立 `Debug` 或 `Trace` 層級的任何記錄。 以下是透過執行設定為顯示 `Debug` 記錄之範例應用程式所產生的主控台記錄範例：
 
+::: moniker range=">= aspnetcore-3.0"
+
+```console
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+      Route matched with {action = "GetById", controller = "Todo", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetById(System.String) on controller TodoApiSample.Controllers.TodoController (TodoApiSample).
+dbug: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[1]
+      Execution plan of authorization filters (in the following order): None
+dbug: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[1]
+      Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter
+dbug: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[1]
+      Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Filters.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)
+dbug: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[1]
+      Execution plan of exception filters (in the following order): None
+dbug: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[1]
+      Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter
+dbug: Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder[22]
+      Attempting to bind parameter 'id' of type 'System.String' ...
+dbug: Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinder[44]
+      Attempting to bind parameter 'id' of type 'System.String' using the name 'id' in request data ...
+dbug: Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinder[45]
+      Done attempting to bind parameter 'id' of type 'System.String'.
+dbug: Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder[23]
+      Done attempting to bind parameter 'id' of type 'System.String'.
+dbug: Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder[26]
+      Attempting to validate the bound parameter 'id' of type 'System.String' ...
+dbug: Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder[27]
+      Done attempting to validate the bound parameter 'id' of type 'System.String'.
+info: TodoApiSample.Controllers.TodoController[1002]
+      Getting item 0
+warn: TodoApiSample.Controllers.TodoController[4000]
+      GetById(0) NOT FOUND
+info: Microsoft.AspNetCore.Mvc.StatusCodeResult[1]
+      Executing HttpStatusCodeResult, setting HTTP status code 404
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+      Executed action TodoApiSample.Controllers.TodoController.GetById (TodoApiSample) in 32.690400000000004ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'TodoApiSample.Controllers.TodoController.GetById (TodoApiSample)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 176.9103ms 404
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 ```console
 info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
       Request starting HTTP/1.1 GET http://localhost:62555/api/todo/0
@@ -339,23 +475,25 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
       Request finished in 2.7286ms 404
 ```
 
+::: moniker-end
+
 ## <a name="log-event-id"></a>記錄事件識別碼
 
 每個記錄都可以指定「事件識別碼」  。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行此動作：
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Core/LoggingEvents.cs?name=snippet_LoggingEvents)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Core/LoggingEvents.cs?name=snippet_LoggingEvents)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
-
-[!code-csharp[](index/samples/1.x/TodoApiSample/Core/LoggingEvents.cs?name=snippet_LoggingEvents)]
 
 ::: moniker-end
 
@@ -374,15 +512,15 @@ warn: TodoApi.Controllers.TodoController[4000]
 
 每個記錄都會指定訊息範本。 訊息範本可以包含有關提供哪個引數的預留位置。 使用名稱而非數字做為預留位置。
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
+[!code-csharp[](index/samples/3.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.0"
+::: moniker range="< aspnetcore-3.0"
 
-[!code-csharp[](index/samples/1.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
+[!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
 
 ::: moniker-end
 
@@ -396,7 +534,7 @@ _logger.LogInformation("Parameter values: {p2}, {p1}", p1, p2);
 
 此程式碼會使用依順序的參數值建立記錄訊息：
 
-```
+```text
 Parameter values: parm1, parm2
 ```
 
@@ -412,30 +550,28 @@ _logger.LogInformation("Getting item {ID} at {RequestTime}", id, DateTime.Now);
 
 記錄器方法具有多載，可讓您傳入例外狀況，如下列範例所示：
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_LogException&highlight=3)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_LogException&highlight=3)]
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](index/samples/1.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_LogException&highlight=3)]
-
-::: moniker-end
-
 不同提供者處理例外狀況資訊的方式會不同。 以下是來自上述程式碼中的偵錯提供者輸出範例。
 
-```
-TodoApi.Controllers.TodoController:Warning: GetById(036dd898-fb01-47e8-9a65-f92eb73cf924) NOT FOUND
+```text
+TodoApiSample.Controllers.TodoController: Warning: GetById(55) NOT FOUND
 
 System.Exception: Item not found exception.
- at TodoApi.Controllers.TodoController.GetById(String id) in C:\logging\sample\src\TodoApi\Controllers\TodoController.cs:line 226
+   at TodoApiSample.Controllers.TodoController.GetById(String id) in C:\TodoApiSample\Controllers\TodoController.cs:line 226
 ```
 
 ## <a name="log-filtering"></a>記錄篩選
-
-::: moniker range=">= aspnetcore-2.0"
 
 您可以指定特定提供者和類別的最低記錄層級，也可以指定所有提供者或所有類別的最低記錄層級。 最低層級以下的任何記錄都不會傳遞給該提供者，因此不會顯示或儲存。
 
@@ -443,13 +579,21 @@ System.Exception: Item not found exception.
 
 ### <a name="create-filter-rules-in-configuration"></a>在組態中建立篩選規則
 
-專案範本程式碼會呼叫 `CreateDefaultBuilder` 以設定主控台與偵錯提供者的記錄。 `CreateDefaultBuilder` 方法也會使用如下所示的程式碼，將記錄設定為尋找 `Logging` 區段中的組態：
-
-[!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_ExpandDefault&highlight=17)]
+專案範本程式碼會呼叫 `CreateDefaultBuilder` 以設定主控台與偵錯提供者的記錄。 `CreateDefaultBuilder` 方法會設定記錄以尋找 `Logging` 區段中的組態，如[本文先前所述](#configuration)。
 
 組態資料會依提供者和類別指定最低記錄層級，如下列範例所示：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-json[](index/samples/3.x/TodoApiSample/appsettings.json)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-json[](index/samples/2.x/TodoApiSample/appsettings.json)]
+
+::: moniker-end
 
 此 JSON 會建立六個篩選規則：一個適用於偵錯提供者、四個適用於主控台提供者，一個適用於所有提供者。 建立 `ILogger` 物件時，會為每個提供者選取一個規則。
 
@@ -457,7 +601,17 @@ System.Exception: Item not found exception.
 
 下列範例說明如何在程式碼中註冊篩選規則：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_FilterInCode&highlight=4-5)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_FilterInCode&highlight=4-5)]
+
+::: moniker-end
 
 第二個 `AddFilter` 會使用其類型名稱來指定偵錯提供者。 第一個 `AddFilter` 由於未指定提供者類型，因此適用於所有提供者。
 
@@ -509,7 +663,17 @@ System.Exception: Item not found exception.
 
 只有組態或程式碼中沒有適用於指定提供者和類別的規則時，最低層級設定才會生效。 下列範例示範如何設定最低層級：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_MinLevel&highlight=3)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_MinLevel&highlight=3)]
+
+::: moniker-end
 
 如果您未明確設定最低層級，預設值為 `Information`，這表示會略過 `Trace` 和 `Debug` 記錄。
 
@@ -517,27 +681,15 @@ System.Exception: Item not found exception.
 
 針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如：
 
-[!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_FilterFunction&highlight=5-13)]
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_FilterFunction&highlight=3-11)]
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.0"
+::: moniker range="< aspnetcore-3.0"
 
-某些記錄提供者可讓您指定何時應該將記錄寫入儲存媒體，何時應該根據記錄層級和類別加以略過。
-
-`AddConsole` 與 `AddDebug` 擴充方法提供多載，可接受篩選條件。 下列範例程式碼會使主控台提供者略過 `Warning` 層級以下的記錄，而偵錯提供者則會略過架構所建立的記錄。
-
-[!code-csharp[](index/samples/1.x/TodoApiSample/Startup.cs?name=snippet_AddConsoleAndDebugWithFilter&highlight=6-7)]
-
-`AddEventLog` 方法具有接受 `EventLogSettings` 執行個體的多載，其 `Filter` 屬性中可能包含篩選函式。 TraceSource 提供者未提供上述任何多載，因為其記錄層級和其他參數會根據其所使用的 `SourceSwitch` 和 `TraceListener`。
-
-若要為已向 `ILoggerFactory` 執行個體註冊的所有提供者設定篩選規則，請使用 `WithFilter` 擴充方法。 下列範例會將架構記錄 (開頭為 "Microsoft" 或 "System" 的類別) 限制為警告，同時在偵錯層級記錄由應用程式程式碼所建立的記錄。
-
-[!code-csharp[](index/samples/1.x/TodoApiSample/Startup.cs?name=snippet_FactoryFilter&highlight=6-11)]
-
-若要防止寫入任何記錄，請指定 `LogLevel.None` 做為最低記錄層級。 `LogLevel.None` 的整數值為 6，高於 `LogLevel.Critical` (5)。
-
-`WithFilter` 擴充方法是由 [Microsoft.Extensions.Logging.Filter](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Filter) NuGet 套件提供。 此方法會傳回新的 `ILoggerFactory` 執行個體，這會篩選傳遞至用它來註冊之所有記錄器提供者的記錄訊息。 它不會影響任何其他 `ILoggerFactory` 執行個體，包括原始 `ILoggerFactory` 執行個體。
+[!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_FilterFunction&highlight=5-13)]
 
 ::: moniker-end
 
@@ -563,50 +715,47 @@ System.Exception: Item not found exception.
 
 範圍是 <xref:Microsoft.Extensions.Logging.ILogger.BeginScope*> 方法所傳回的 `IDisposable` 類型，並會持續到被處置為止。 透過將記錄器呼叫封裝在 `using` 區塊中以使用範圍：
 
-[!code-csharp[](index/samples/1.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_Scopes&highlight=4-5,13)]
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_Scopes&highlight=4-5,13)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+[!code-csharp[](index/samples/2.x/TodoApiSample/Controllers/TodoController.cs?name=snippet_Scopes&highlight=4-5,13)]
+
+::: moniker-end
 
 下列程式碼會啟用主控台提供者的範圍：
 
-::: moniker range="> aspnetcore-2.0"
-
 *Program.cs*：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_Scopes&highlight=6)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_Scopes&highlight=4)]
+
+::: moniker-end
 
 > [!NOTE]
 > 您必須設定 `IncludeScopes` 主控台記錄器選項才能啟用範圍記錄。
 >
 > 如需有關設定的詳細資訊，請參閱[設定](#configuration)一節。
 
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-*Program.cs*：
-
-[!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_Scopes&highlight=4)]
-
-> [!NOTE]
-> 您必須設定 `IncludeScopes` 主控台記錄器選項才能啟用範圍記錄。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-*Startup.cs*：
-
-[!code-csharp[](index/samples/1.x/TodoApiSample/Startup.cs?name=snippet_Scopes&highlight=6)]
-
-::: moniker-end
-
 每個記錄訊息包含範圍資訊：
 
 ```
-info: TodoApi.Controllers.TodoController[1002]
-      => RequestId:0HKV9C49II9CK RequestPath:/api/todo/0 => TodoApi.Controllers.TodoController.GetById (TodoApi) => Message attached to logs created in the using block
+info: TodoApiSample.Controllers.TodoController[1002]
+      => RequestId:0HKV9C49II9CK RequestPath:/api/todo/0 => TodoApiSample.Controllers.TodoController.GetById (TodoApi) => Message attached to logs created in the using block
       Getting item 0
-warn: TodoApi.Controllers.TodoController[4000]
-      => RequestId:0HKV9C49II9CK RequestPath:/api/todo/0 => TodoApi.Controllers.TodoController.GetById (TodoApi) => Message attached to logs created in the using block
+warn: TodoApiSample.Controllers.TodoController[4000]
+      => RequestId:0HKV9C49II9CK RequestPath:/api/todo/0 => TodoApiSample.Controllers.TodoController.GetById (TodoApi) => Message attached to logs created in the using block
       GetById(0) NOT FOUND
 ```
 
@@ -629,39 +778,9 @@ ASP.NET Core 隨附下列提供者：
 
 [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) 提供者套件會將記錄輸出傳送至主控台。 
 
-::: moniker range=">= aspnetcore-2.0"
-
 ```csharp
 logging.AddConsole();
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```csharp
-loggerFactory.AddConsole();
-```
-
-[AddConsole 多載](xref:Microsoft.Extensions.Logging.ConsoleLoggerExtensions)可讓您傳入最低記錄層級、篩選函式，以及指出是否支援範圍的布林值。 另一個選項是傳入可指定範圍支援和記錄層級的 `IConfiguration` 物件。
-
-如需主控台提供者選項，請參閱 <xref:Microsoft.Extensions.Logging.Console.ConsoleLoggerOptions>。
-
-主控台提供者對效能有重大影響，因此通常不適合在生產環境中使用。
-
-當您在 Visual Studio 中建立新的專案時，`AddConsole` 方法看起來像這樣：
-
-```csharp
-loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-```
-
-此程式碼會參考 *appSettings.json* 檔案的 `Logging` 區段：
-
-[!code-json[](index/samples/1.x/TodoApiSample/appsettings.json)]
-
-上述設定會將架構記錄限制為警告，同時讓應用程式在偵錯層級記錄，如[記錄篩選](#log-filtering)一節中所述。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
-
-::: moniker-end
 
 若要查看主控台記錄輸出，請在專案資料夾中開啟命令提示字元，然後執行下列命令：
 
@@ -675,45 +794,19 @@ dotnet run
 
 在 Linux 上，此提供者會將記錄寫入至 */var/log/message*。
 
-::: moniker range=">= aspnetcore-2.0"
-
 ```csharp
 logging.AddDebug();
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```csharp
-loggerFactory.AddDebug();
-```
-
-[AddDebug 多載](xref:Microsoft.Extensions.Logging.DebugLoggerFactoryExtensions)可讓您傳入最低記錄層級或篩選函式。
-
-::: moniker-end
 
 ### <a name="eventsource-provider"></a>EventSource 提供者
 
 針對以 ASP.NET Core 1.1.0 或更新版本為目標的應用程式，[Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource) 提供者套件可以實作事件追蹤。 在 Windows 上，它會使用 [ETW](https://msdn.microsoft.com/library/windows/desktop/bb968803)。 提供者可以跨平台，但目前沒有適用於 Linux 或 macOS 的事件收集和顯示工具。
 
-::: moniker range=">= aspnetcore-2.0"
-
 ```csharp
 logging.AddEventSourceLogger();
 ```
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```csharp
-loggerFactory.AddEventSourceLogger();
-```
-
-::: moniker-end
-
-收集及檢視記錄的一個好方法是使用 [PerfView 公用程式](https://github.com/Microsoft/perfview)。 此外還有一些其他工具可檢視 ETW 記錄，但 PerfView 提供處理 ASP.NET 所發出之 ETW 事件的最佳體驗。
+收集及檢視記錄的一個好方法是使用 [PerfView 公用程式](https://github.com/Microsoft/perfview)。 此外還有一些其他工具可檢視 ETW 記錄，但 PerfView 提供處理 ASP.NET Core 所發出 ETW 事件的最佳體驗。
 
 若要設定 PerfView 以收集此提供者所記錄的事件，請將字串 `*Microsoft-Extensions-Logging` 新增至 [其他提供者]  清單 (請勿遺漏字串開頭的星號)。
 
@@ -723,107 +816,63 @@ loggerFactory.AddEventSourceLogger();
 
 [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog) 提供者套件會將記錄輸出傳送至 Windows 事件記錄檔。
 
-::: moniker range=">= aspnetcore-2.0"
-
 ```csharp
 logging.AddEventLog();
 ```
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```csharp
-loggerFactory.AddEventLog();
-```
-
-[AddEventLog 多載](xref:Microsoft.Extensions.Logging.EventLoggerFactoryExtensions)可讓您傳入 `EventLogSettings` 或最低記錄層級。
-
-::: moniker-end
+[AddEventLog 多載](xref:Microsoft.Extensions.Logging.EventLoggerFactoryExtensions)可讓您傳入 <xref:Microsoft.Extensions.Logging.EventLog.EventLogSettings>。
 
 ### <a name="tracesource-provider"></a>TraceSource 提供者
 
 [Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource) 提供者套件使用 <xref:System.Diagnostics.TraceSource> 程式庫與提供者。
 
-::: moniker range=">= aspnetcore-2.0"
-
 ```csharp
 logging.AddTraceSource(sourceSwitchName);
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```csharp
-loggerFactory.AddTraceSource(sourceSwitchName);
-```
-
-::: moniker-end
 
 [AddTraceSource 多載](xref:Microsoft.Extensions.Logging.TraceSourceFactoryExtensions)可讓您傳入來源參數和追蹤接聽項。
 
 若要使用此提供者，應用程式必須在 .NET Framework (而非 .NET Core) 上執行。 該提供者可讓您將訊息路由傳送到種不同的[接聽程式](/dotnet/framework/debug-trace-profile/trace-listeners)，例如範例應用程式中所使用的 <xref:System.Diagnostics.TextWriterTraceListener>。
 
-::: moniker range="< aspnetcore-2.0"
-
-下列範例會設定 `TraceSource` 提供者，將 `Warning` 和更高層級訊息記錄至主控台視窗。
-
-[!code-csharp[](index/samples/1.x/TodoApiSample/Startup.cs?name=snippet_TraceSource&highlight=9-12)]
-
-::: moniker-end
-
 ### <a name="azure-app-service-provider"></a>Azure App Service 提供者
 
-[Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 提供者套件會將記錄寫入至 Azure App Service 應用程式檔案系統中的文字檔，並寫入至 Azure 儲存體帳戶中的 [Blob 儲存體](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage)。 提供者套件適用於以 .NET Core 1.1 或更新版本為目標的應用程式。
-
-::: moniker range=">= aspnetcore-2.0"
-
-若以 .NET Core 為目標，請注意下列幾點：
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-* ASP.NET Core [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)包含提供者套件。
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
-* [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)未包含提供者套件。 若要使用提供者，請安裝套件。
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.0"
-
-若以 .NET Framework 為目標，或是參考 `Microsoft.AspNetCore.App` 中繼套件，請將提供者套件新增至專案。 叫用 `AddAzureWebAppDiagnostics`：
+[Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 提供者套件會將記錄寫入至 Azure App Service 應用程式檔案系統中的文字檔，並寫入至 Azure 儲存體帳戶中的 [Blob 儲存體](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage)。
 
 ```csharp
 logging.AddAzureWebAppDiagnostics();
 ```
 
-::: moniker-end
+::: moniker range=">= aspnetcore-3.0"
 
-::: moniker range="= aspnetcore-1.1"
-
-```csharp
-loggerFactory.AddAzureWebAppDiagnostics();
-```
+該提供者套件並未包含在共用架構中。 若要使用提供者，請將提供者套件新增至專案。
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
-<xref:Microsoft.Extensions.Logging.AzureAppServicesLoggerFactoryExtensions.AddAzureWebAppDiagnostics*> 多載可讓您傳入 <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureAppServicesDiagnosticsSettings>。 設定物件可覆寫預設設定，例如記錄輸出範本、Blob 名稱與檔案大小限制。 (*輸出範本*是訊息範本，它除了會套用到 `ILogger` 方法呼叫所提供的記錄之外，還會套用到所有記錄。)
+[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)未包含提供者套件。 當以 .NET Framework 為目標或是參考 `Microsoft.AspNetCore.App` 中繼套件時，請將提供者套件新增至專案。 
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-3.0"
+
+如果要進行提供者設定，請使用 <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureFileLoggerOptions> 和 <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureBlobLoggerOptions>，如以下範例中所示：
+
+[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_AzLogOptions&highlight=17-28)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
 
 如果要進行提供者設定，請使用 <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureFileLoggerOptions> 和 <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureBlobLoggerOptions>，如以下範例中所示：
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_AzLogOptions&highlight=19-27)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
+
+<xref:Microsoft.Extensions.Logging.AzureAppServicesLoggerFactoryExtensions.AddAzureWebAppDiagnostics*> 多載可讓您傳入 <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureAppServicesDiagnosticsSettings>。 設定物件可覆寫預設設定，例如記錄輸出範本、Blob 名稱與檔案大小限制。 (*輸出範本*是訊息範本，它除了會套用到 `ILogger` 方法呼叫所提供的記錄之外，還會套用到所有記錄。)
 
 ::: moniker-end
 
@@ -852,8 +901,6 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 
 瀏覽到 [記錄資料流]  頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面產生的訊息。
 
-::: moniker range=">= aspnetcore-1.1"
-
 ### <a name="azure-application-insights-trace-logging"></a>Azure Application Insights 追蹤記錄
 
 [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) \(英文\) 提供者套件會將記錄寫入至 Azure Application Insights。 Application Insights 是可監視 Web 應用程式的服務，並提供可用來查詢及分析遙測資料的工具。 如果您使用此提供者，就可以使用 Application Insights 工具來查詢及分析記錄。
@@ -869,7 +916,6 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 * [適用於 .NET Core ILogger 記錄的 ApplicationInsightsLoggerProvider](/azure/azure-monitor/app/ilogger)：如果您想要實作記錄提供者，而不需要 Application Insights 遙測的其餘部分，請從這裡開始。
 * [Application Insights logging adapters](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-trace-logs) (Application Insights 記錄配接器)。
 * [安裝、設定及初始化 Application Insights SDK](/learn/modules/instrument-web-app-code-with-application-insights)：Microsoft Learn 網站上的互動式教學課程。
-::: moniker-end
 
 ## <a name="third-party-logging-providers"></a>協力廠商記錄提供者
 

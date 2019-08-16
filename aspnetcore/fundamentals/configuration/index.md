@@ -5,14 +5,14 @@ description: 了解如何使用組態 API 設定 ASP.NET Core 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/11/2019
+ms.date: 08/12/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 3351ab743ce38b78b1c5857e52020fdeda12cbe7
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
+ms.openlocfilehash: 5723295c70f8d893f758ca5dc87180c6b707f493
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67855821"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994139"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -29,23 +29,62 @@ ASP.NET Core 中的應用程式設定是以由*設定提供者*所建立的機�
 * 記憶體內部 .NET 物件
 * 設定檔
 
-一般設定提供者案例的設定套件包含在 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) 中。 下列程式碼範例與範例應用程式中的程式碼範例使用 <xref:Microsoft.Extensions.Configuration> 命名空間：
+::: moniker range=">= aspnetcore-3.0"
+
+一般組態提供者案例 ([Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/)) 的組態套件會以隱含方式包含在架構中。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+一般組態提供者案例 ([microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/)) 的組態套件包含在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)中。
+
+::: moniker-end
+
+下列程式碼範例與範例應用程式中的程式碼範例使用 <xref:Microsoft.Extensions.Configuration> 命名空間：
 
 ```csharp
 using Microsoft.Extensions.Configuration;
 ```
 
-*選項模式*是此主題中所述之設定概念的延伸。 選項使用類別來代表一組相關的設定。 如需使用選項模式的詳細資訊，請參閱 <xref:fundamentals/configuration/options>。
+*選項模式*是此主題中所述之設定概念的延伸。 選項使用類別來代表一組相關的設定。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/options>。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="host-versus-app-configuration"></a>主機與應用程式組態的比較
 
-設定及啟動應用程式之前，會先設定及啟動「主機」  。 主機負責應用程式啟動和存留期管理。 應用程式與主機都是使用此主題中所述的設定提供者來設定的。 主機設定機碼值組會成為應用程式全域設定的一部分。 如需建置主機時如何使用組態提供者，以及組態來源如何影響主機組態的詳細資訊，請參閱[主機](xref:fundamentals/index#host)。
+設定及啟動應用程式之前，會先設定及啟動「主機」  。 主機負責應用程式啟動和存留期管理。 應用程式與主機都是使用此主題中所述的設定提供者來設定的。 主機組態機碼/值組也會包含在應用程式的組態中。 如需有關當建置主機時如何使用設定提供者的詳細資訊，以及設定來源如何影響主機設定的詳細資訊，請參閱 <xref:fundamentals/index#host>。
 
 ## <a name="default-configuration"></a>預設的組態
 
-以 ASP.NET Core [dotnet new](/dotnet/core/tools/dotnet-new) 範本為基礎的 Web 應用程式，會在建置主機時呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>。 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 會以下列順序提供應用程式的預設組態：
+::: moniker range=">= aspnetcore-3.0"
+
+以 ASP.NET Core [dotnet new](/dotnet/core/tools/dotnet-new) 範本為基礎的 Web 應用程式，會在建置主機時呼叫 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*>。 `CreateDefaultBuilder` 會以下列順序提供應用程式的預設組態：
+
+下列項目適用於使用[一般主機](xref:fundamentals/host/generic-host)的應用程式。 如需使用 [Web 主機](xref:fundamentals/host/web-host)時預設組態的詳細資料，請參閱[本主題的 ASP.NET Core 2.2 版本](/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.2)。
+
+* 主機組態的提供來源：
+  * 使用[環境變數組態提供者](#environment-variables-configuration-provider)且以 `DOTNET_` 為前置詞 (例如 `DOTNET_ENVIRONMENT`) 的環境變數。 載入設定機碼值組時，會移除前置詞 (`DOTNET_`)。
+  * 使用[命令列組態提供者](#command-line-configuration-provider)的命令列引數。
+* 已建立 Web 主機預設組態 (`ConfigureWebHostDefaults`)：
+  * Kestrel 會用作為網頁伺服器，並使用應用程式的組態提供者來設定。
+  * 新增主機篩選中介軟體。
+  * 如果 `ASPNETCORE_FORWARDEDHEADERS_ENABLED` 環境變數設定為 `true`，則會新增轉接的標頭中介軟體。
+  * 啟用 IIS 整合。
+* 應用程式設定的提供來源：
+  * 使用[檔案組態提供者](#file-configuration-provider)的 *appsettings.json*。
+  * 使用[檔案組態提供者](#file-configuration-provider)的 *appsettings.{Environment}.json*。
+  * 應用程式在使用項目組件之 `Development` 環境中執行時的[秘密管理員](xref:security/app-secrets)。
+  * 使用[環境變數組態提供者](#environment-variables-configuration-provider)的環境變數。
+  * 使用[命令列組態提供者](#command-line-configuration-provider)的命令列引數。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+以 ASP.NET Core [dotnet new](/dotnet/core/tools/dotnet-new) 範本為基礎的 Web 應用程式，會在建置主機時呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>。 `CreateDefaultBuilder` 會以下列順序提供應用程式的預設組態：
+
+下列項目適用於使用 [Web 主機](xref:fundamentals/host/web-host)的應用程式。 如需使用[一般主機](xref:fundamentals/host/generic-host)時預設組態的詳細資料，請參閱[本主題的最新版本](xref:fundamentals/configuration/index)。
 
 * 主機組態的提供來源：
   * 使用[環境變數組態提供者](#environment-variables-configuration-provider)且以 `ASPNETCORE_` 為前置詞 (例如 `ASPNETCORE_ENVIRONMENT`) 的環境變數。 載入設定機碼值組時，會移除前置詞 (`ASPNETCORE_`)。
@@ -54,22 +93,25 @@ using Microsoft.Extensions.Configuration;
   * 使用[檔案組態提供者](#file-configuration-provider)的 *appsettings.json*。
   * 使用[檔案組態提供者](#file-configuration-provider)的 *appsettings.{Environment}.json*。
   * 應用程式在使用項目組件之 `Development` 環境中執行時的[秘密管理員](xref:security/app-secrets)。
-  * 使用[環境變數組態提供者](#environment-variables-configuration-provider)的環境變數。 如果使用自訂的前置詞 (例如，`PREFIX_` 和 `.AddEnvironmentVariables(prefix: "PREFIX_")`)，則在載入設定機碼值組時會移除前置詞。
+  * 使用[環境變數組態提供者](#environment-variables-configuration-provider)的環境變數。
   * 使用[命令列組態提供者](#command-line-configuration-provider)的命令列引數。
 
-此主題稍後將說明組態提供者。 如需主機和 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 的詳細資訊，請參閱 <xref:fundamentals/host/web-host#set-up-a-host>。
+::: moniker-end
 
 ## <a name="security"></a>安全性
 
-採用下列最佳做法：
+採用下列做法來保護敏感性組態資料：
 
 * 永遠不要將密碼或其他敏感性資料儲存在設定提供者程式碼或純文字設定檔中。
 * 不要在開發或測試環境中使用生產環境祕密。
 * 請在專案外部指定祕密，以防止其意外認可至開放原始碼存放庫。
 
-深入了解[如何使用多個環境](xref:fundamentals/environments)及[使用祕密管理員管理開發中的應用程式祕密安全儲存體](xref:security/app-secrets) (包括有關使用環境變數來存放敏感性資料的建議)。 「祕密管理員」使用「檔案設定提供者」以 JSON 檔案在本機系統上存放使用者祕密。 此主題稍後將說明「檔案設定提供者」。
+如需詳細資訊，請參閱下列主題：
 
-[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 是安全儲存應用程式祕密的一個選項。 如需詳細資訊，請參閱 <xref:security/key-vault-configuration>。
+* <xref:fundamentals/environments>
+* <xref:security/app-secrets> &ndash; 包含使用環境變數來儲存敏感性資料的建議。 「祕密管理員」使用「檔案設定提供者」以 JSON 檔案在本機系統上存放使用者祕密。 此主題稍後將說明「檔案設定提供者」。
+
+[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可安全地儲存 ASP.NET Core 應用程式的應用程式祕密。 如需詳細資訊，請參閱 <xref:security/key-vault-configuration>。
 
 ## <a name="hierarchical-configuration-data"></a>階層式設定資料
 
@@ -97,9 +139,11 @@ using Microsoft.Extensions.Configuration;
 * section1:key0
 * section1:key1
 
-<xref:Microsoft.Extensions.Configuration.ConfigurationSection.GetSection*> 與 <xref:Microsoft.Extensions.Configuration.IConfiguration.GetChildren*> 方法可用來在設定資料中隔離區段與區段的子系。 [GetSection,、 GetChildren 與 Exists](#getsection-getchildren-and-exists) 中說明這些方法。 `GetSection` 在 [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
+<xref:Microsoft.Extensions.Configuration.ConfigurationSection.GetSection*> 與 <xref:Microsoft.Extensions.Configuration.IConfiguration.GetChildren*> 方法可用來在設定資料中隔離區段與區段的子系。 [GetSection,、 GetChildren 與 Exists](#getsection-getchildren-and-exists) 中說明這些方法。
 
 ## <a name="conventions"></a>慣例
+
+### <a name="sources-and-providers"></a>來源和提供者
 
 在應用程式啟動時，會依照設定來源的設定提供者的指定順序讀入設定來源。
 
@@ -124,15 +168,19 @@ public class IndexModel : PageModel
 
 設定提供者無法使用 DI，因為當它們由主機設定時，它無法使用。
 
+### <a name="keys"></a>按鍵
+
 設定機碼會採用下列慣例：
 
 * 機碼區分大小寫。 例如，`ConnectionString` 與 `connectionstring` 會被視為相等的機碼。
 * 若相同機碼的值是由相同或不同設定提供者設定，在機碼上設定的最後一個值是所使用的值。
 * 階層式機碼
   * 在設定 API 內，冒號分隔字元 (`:`) 可在所有平台上運作。
-  * 在環境變數中，冒號分隔字元可能無法在所有平台上運作。 所有平台都支援雙底線 (`__`)，而且它會被轉換為冒號。
+  * 在環境變數中，冒號分隔字元可能無法在所有平台上運作。 所有平台都支援雙底線 (`__`)，且會自動轉換為冒號。
   * 在 Azure Key Vault 中，階層式機碼使用 `--` (兩個破折號) 來做為分隔符號。 您必須提供程式碼，在祕密載入到應用程式的設定時將破折號取代為冒號。
 * <xref:Microsoft.Extensions.Configuration.ConfigurationBinder> 支援在設定機碼中使用陣列索引將陣列繫結到物件。 [將陣列繫結到類別](#bind-an-array-to-a-class)一節說明陣列繫結。
+
+### <a name="values"></a>值
 
 設定值會採用下列慣例：
 
@@ -165,17 +213,95 @@ public class IndexModel : PageModel
 1. 環境變數
 1. 命令列引數
 
-將命令列設定提供者放在提供者序列結尾是常見作法，因為這樣可以讓命令列引數覆寫由其它提供者所設定的設定。
+將命令列組態提供者放在提供者序列結尾是常見做法，因為這樣可以讓命令列引數覆寫由其他提供者所設定的組態。
 
-當您使用 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>初始化新的 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 時，就會有這個提供者順序。 如需詳細資訊，請參閱 [Web 主機：設定主機](xref:fundamentals/host/web-host#set-up-a-host)。
+當您使用 `CreateDefaultBuilder` 初始化新的主機建立器時，會使用上述的提供者序列。 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="configure-the-host-builder-with-configurehostconfiguration"></a>使用 ConfigureHostConfiguration 設定主機建立器
+
+若要設定主機建立器，請呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureHostConfiguration*> 並提供組態。 `ConfigureHostConfiguration` 用於初始化 <xref:Microsoft.Extensions.Hosting.IHostEnvironment>，以便稍後在建置程序中使用。 `ConfigureHostConfiguration` 可以多次呼叫，其結果是累加的。
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureHostConfiguration((hostingContext, config) =>
+        {
+            var dict = new Dictionary<string, string>
+            {
+                {"MemoryCollectionKey1", "value1"},
+                {"MemoryCollectionKey2", "value2"}
+            };
+
+            config.AddInMemoryCollection(dict);
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+## <a name="configure-the-host-builder-with-useconfiguration"></a>使用 UseConfiguration 設定主機建立器
+
+若要設定主機建立器，請使用該組態在主機建立器上呼叫 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>。
+
+```csharp
+public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+{
+    var dict = new Dictionary<string, string>
+    {
+        {"MemoryCollectionKey1", "value1"},
+        {"MemoryCollectionKey2", "value2"}
+    };
+
+    var config = new ConfigurationBuilder()
+        .AddInMemoryCollection(dict)
+        .Build();
+
+    return WebHost.CreateDefaultBuilder(args)
+        .UseConfiguration(config)
+        .UseStartup<Startup>();
+}
+```
+
+::: moniker-end
 
 ## <a name="configureappconfiguration"></a>ConfigureAppConfiguration
 
-建置主機時呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 以指定應用程式的設定提供者，以及由 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 自動新增的設定提供者：
+建置主機時呼叫 `ConfigureAppConfiguration` 以指定應用程式的設定提供者，以及由 `CreateDefaultBuilder` 自動新增的設定提供者：
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=20)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=20)]
 
-應用程式啟動期間，可以使用 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 中為應用程式提供的組態，包括 `Startup.ConfigureServices`。 如需詳細資訊，請參閱[在啟動期間存取組態](#access-configuration-during-startup)一節。
+::: moniker-end
+
+### <a name="override-previous-configuration-with-command-line-arguments"></a>使用命令列引數覆寫先前的組態
+
+若要提供可使用命令列引數覆寫的應用程式組態，請最後呼叫 `AddCommandLine`：
+
+```csharp
+.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    // Call other providers here
+    config.AddCommandLine(args);
+})
+```
+
+### <a name="consume-configuration-during-app-startup"></a>在應用程式啟動期間使用組態
+
+應用程式啟動期間，可以使用 `ConfigureAppConfiguration` 中為應用程式提供的組態，包括 `Startup.ConfigureServices`。 如需詳細資訊，請參閱[在啟動期間存取組態](#access-configuration-during-startup)一節。
 
 ## <a name="command-line-configuration-provider"></a>命令列設定提供者
 
@@ -183,54 +309,26 @@ public class IndexModel : PageModel
 
 為了啟用命令列設定，<xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> 延伸模組方法會在 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 的執行個體上呼叫。
 
-當您使用 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 初始化新的 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 時，會自動呼叫 `AddCommandLine`。 如需詳細資訊，請參閱 [Web 主機：設定主機](xref:fundamentals/host/web-host#set-up-a-host)。
+呼叫 `CreateDefaultBuilder(string [])` 時，會自動呼叫 `AddCommandLine`。 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
 
 `CreateDefaultBuilder` 也會載入：
 
-* 從 *appsettings.json* 與 *appsettings.{Environment}.json* 載入其他選擇性設定。
-* [使用者祕密 (祕密管理員)](xref:security/app-secrets) (在開發環境中)。
+* 從 *appsettings.json* 與 *appsettings.{Environment}.json* 檔案載入其他選擇性組態。
+* 開發環境中的[使用者祕密 (祕密管理員)](xref:security/app-secrets)。
 * 環境變數。
 
 `CreateDefaultBuilder` 會最後才新增命令列設定提供者。 在執行階段傳遞的命令列引數會覆寫由其它提供者所設定的設定。
 
 `CreateDefaultBuilder` 會在建構主機時執行作業。 因此，由`CreateDefaultBuilder` 啟用的命令列設定可以影響主機的設定方式。
 
-建置主機時呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 以指定應用程式的設定。
-
-`CreateDefaultBuilder` 已經呼叫 `AddCommandLine`。 如果您需要提供應用程式設定並仍要能夠使用命令列引數覆寫該設定，請在 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 中呼叫應用程式的其他提供者，最後呼叫 `AddCommandLine`。
+針對以 ASP.NET Core 範本為基礎的應用程式，`AddCommandLine` 已由 `CreateDefaultBuilder` 呼叫。 若要新增其他組態提供者並維持能夠使用命令列引數覆寫這些提供者組態的能力，請在 `ConfigureAppConfiguration` 中呼叫應用程式的其他提供者，且最後呼叫 `AddCommandLine`。
 
 ```csharp
-public class Program
+.ConfigureAppConfiguration((hostingContext, config) =>
 {
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                // Call other providers here and call AddCommandLine last.
-                config.AddCommandLine(args);
-            })
-            .UseStartup<Startup>();
-}
-```
-
-建立 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 目錄時，請使用下列設定呼叫 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>：
-
-```csharp
-var config = new ConfigurationBuilder()
-    // Call additional providers here as needed.
-    // Call AddCommandLine last to allow arguments to override other configuration.
-    .AddCommandLine(args)
-    .Build();
-
-var host = new WebHostBuilder()
-    .UseConfiguration(config)
-    .UseKestrel()
-    .UseStartup<Startup>();
+    // Call other providers here
+    config.AddCommandLine(args);
+})
 ```
 
 **範例**
@@ -244,7 +342,7 @@ var host = new WebHostBuilder()
 
 ### <a name="arguments"></a>引數
 
-當值後面接著空格時，值必須接著等號 (`=`)，或機碼必須有前置詞 (`--` 或 `/`)。 若使用等號 (例如 `CommandLineKey=`)，值可以是 Null。
+當值後面接著空格時，值必須接著等號 (`=`)，或機碼必須有前置詞 (`--` 或 `/`)。 如果使用等號 (例如 `CommandLineKey=`)，則不需要此值。
 
 | 索引鍵前置字元               | 範例                                                |
 | ------------------------ | ------------------------------------------------------ |
@@ -273,35 +371,27 @@ dotnet run CommandLineKey1= CommandLineKey2=value2
 * 切換必須以單虛線 (`-`) 或雙虛線 (`--`) 開頭。
 * 切換對應字典不能包含重複索引鍵。
 
-建置主機時呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 以指定應用程式的設定：
+建立切換對應字典。 下列範例會建立兩個切換對應：
 
 ```csharp
-public class Program
-{
-    public static readonly Dictionary<string, string> _switchMappings = 
-        new Dictionary<string, string>
-        {
-            { "-CLKey1", "CommandLineKey1" },
-            { "-CLKey2", "CommandLineKey2" }
-        };
-
-    public static void Main(string[] args)
+public static readonly Dictionary<string, string> _switchMappings = 
+    new Dictionary<string, string>
     {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    // Do not pass the args to CreateDefaultBuilder
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder()
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                config.AddCommandLine(args, _switchMappings);
-            })
-            .UseStartup<Startup>();
-}
+        { "-CLKey1", "CommandLineKey1" },
+        { "-CLKey2", "CommandLineKey2" }
+    };
 ```
 
-如上面的範例所示，當使用切換對應時，對 `CreateDefaultBuilder` 的呼叫不應該傳遞引數。 `CreateDefaultBuilder` 方法的 `AddCommandLine` 呼叫不包括對應的切換，而且沒有任何方式可以將切換對應字典傳遞給 `CreateDefaultBuilder`。 若對應切換中包含引數且已傳遞給 `CreateDefaultBuilder`，其 `AddCommandLine` 提供者會無法使用 <xref:System.FormatException> 來初始化。 解決方案並非將引數傳遞給 `CreateDefaultBuilder`，而是允許 `ConfigurationBuilder` 方法的 `AddCommandLine` 方法同時處理引數與切換對應字典。
+建立主機時，請使用切換對應字典呼叫 `AddCommandLine`：
+
+```csharp
+.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    config.AddCommandLine(args, _switchMappings);
+})
+```
+
+針對使用切換對應的應用程式，呼叫 `CreateDefaultBuilder` 不應傳遞引數。 `CreateDefaultBuilder` 方法的 `AddCommandLine` 呼叫不包括對應的切換，且沒有任何方式可以將切換對應字典傳遞給 `CreateDefaultBuilder`。 解決方案並非將引數傳遞給 `CreateDefaultBuilder`，而是允許 `ConfigurationBuilder` 方法的 `AddCommandLine` 方法同時處理引數與切換對應字典。
 
 建立切換對應字典之後，它會包含下表中所示的資料。
 
@@ -333,54 +423,39 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 [Azure App Service](https://azure.microsoft.com/services/app-service/) 允許您在 Azure 入口網站中設定環境變數，以使用「環境變數設定提供者」覆寫應用程式設定。 如需詳細資訊，請參閱 [Azure App：使用 Azure 入口網站覆寫應用程式設定](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal)。
 
-初始化新的 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 時，可使用 `AddEnvironmentVariables` 為[主機組態](#host-versus-app-configuration)載入字首為 `ASPNETCORE_` 的環境變數。 如需詳細資訊，請參閱 [Web 主機：設定主機](xref:fundamentals/host/web-host#set-up-a-host)。
+::: moniker range=">= aspnetcore-3.0"
+
+使用[一般主機](xref:fundamentals/host/generic-host)初始化新的主機建立器並呼叫 `CreateDefaultBuilder` 時，可使用 `AddEnvironmentVariables` 為[主機組態](#host-versus-app-configuration)載入字首為 `DOTNET_` 的環境變數。 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+使用 [Web 主機](xref:fundamentals/host/web-host)初始化新的主機建立器並呼叫 `CreateDefaultBuilder` 時，可使用 `AddEnvironmentVariables` 為[主機組態](#host-versus-app-configuration)載入字首為 `ASPNETCORE_` 的環境變數。 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
+
+::: moniker-end
 
 `CreateDefaultBuilder` 也會載入：
 
 * 來自無首碼之環境變數的應用程式組態 (在未提供首碼的情況下呼叫 `AddEnvironmentVariables`)。
-* 從 *appsettings.json* 與 *appsettings.{Environment}.json* 載入其他選擇性設定。
-* [使用者祕密 (祕密管理員)](xref:security/app-secrets) (在開發環境中)。
+* 從 *appsettings.json* 與 *appsettings.{Environment}.json* 檔案載入其他選擇性組態。
+* 開發環境中的[使用者祕密 (祕密管理員)](xref:security/app-secrets)。
 * 命令列引數。
 
 從使用者祕密與 *appsettings* 檔案建立設定之後，會呼叫「環境變數設定提供者」。 在此位置呼叫提供者可讓系統在執行階段讀取環境變數，以覆寫由使用者祕密與 *appsettings* 檔案所設定的設定。
 
-建置主機時呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 以指定應用程式的設定。
-
-如果您需要從其他環境變數提供應用程式設定，請呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 中的應用程式其他提供者，並呼叫具有該前置詞的 `AddEnvironmentVariables`。
+如果您需要從其他環境變數提供應用程式設定，請呼叫 `ConfigureAppConfiguration` 中的應用程式其他提供者，並呼叫具有該前置詞的 `AddEnvironmentVariables`。
 
 ```csharp
-public class Program
+.ConfigureAppConfiguration((hostingContext, config) =>
 {
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                // Call additional providers here as needed.
-                // Call AddEnvironmentVariables last if you need to allow
-                // environment variables to override values from other 
-                // providers.
-                config.AddEnvironmentVariables(prefix: "PREFIX_");
-            })
-            .UseStartup<Startup>();
+    // Call additional providers here as needed.
+    // Call AddEnvironmentVariables last if you need to allow
+    // environment variables to override values from other 
+    // providers.
+    config.AddEnvironmentVariables(prefix: "PREFIX_");
+})
 }
-```
-
-建立 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 目錄時，請使用下列設定呼叫 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>：
-
-```csharp
-var config = new ConfigurationBuilder()
-    .AddEnvironmentVariables()
-    .Build();
-
-var host = new WebHostBuilder()
-    .UseConfiguration(config)
-    .UseKestrel()
-    .UseStartup<Startup>();
 ```
 
 **範例**
@@ -390,16 +465,7 @@ var host = new WebHostBuilder()
 1. 執行範例應用程式。 開啟瀏覽器以瀏覽位於 `http://localhost:5000` 的應用程式。
 1. 觀察輸出是否包含環境變數 `ENVIRONMENT` 的機碼值組。 值反映應用程式執行所在環境，在本機執行時，通常是 `Development`。
 
-為縮短由應用程式轉譯的環境變數清單，應用程式會篩選開頭如下的環境變數：
-
-* ASPNETCORE_
-* urls
-* 記錄
-* 環境
-* contentRoot
-* AllowedHosts
-* applicationName
-* CommandLine
+為縮短由應用程式轉譯的環境變數清單，應用程式會篩選環境變數。 請參閱範例應用程式的 *Pages/Index.cshtml.cs* 檔案。
 
 若想要將所有環境變數公開給應用程式使用，請將 *Pages/Index.cshtml.cs* 中的 `FilteredConfiguration` 變更為下面這樣：
 
@@ -419,7 +485,7 @@ var config = new ConfigurationBuilder()
 
 建立設定機碼值組時，會移除前置詞。
 
-靜態方便方法 `CreateDefaultBuilder` 會建立 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 以建立應用程式的主機。 當 `WebHostBuilder` 建立時，它會在前置詞為 `ASPNETCORE_` 的環境變數中尋找其主機設定。
+建立主機建立器時，主機組態由環境變數提供。 如需這些環境變數所用前置詞的詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
 
 **連接字串前置詞**
 
@@ -466,45 +532,18 @@ var config = new ConfigurationBuilder()
 * 檔案變更時是否要重新載入設定。
 * <xref:Microsoft.Extensions.FileProviders.IFileProvider> 是用於存取該檔案。
 
-建置主機時呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 以指定應用程式的設定：
+建置主機時呼叫 `ConfigureAppConfiguration` 以指定應用程式的設定：
 
 ```csharp
-public class Program
+.ConfigureAppConfiguration((hostingContext, config) =>
 {
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddIniFile(
-                    "config.ini", optional: true, reloadOnChange: true);
-            })
-            .UseStartup<Startup>();
-}
+    config.SetBasePath(Directory.GetCurrentDirectory());
+    config.AddIniFile(
+        "config.ini", optional: true, reloadOnChange: true);
+})
 ```
 
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。 `SetBasePath` 在 [Microsoft.Extensions.Configuration FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
-
-建立 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 目錄時，請使用下列設定呼叫 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>：
-
-```csharp
-var config = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddIniFile("config.ini", optional: true, reloadOnChange: true)
-    .Build();
-
-var host = new WebHostBuilder()
-    .UseConfiguration(config)
-    .UseKestrel()
-    .UseStartup<Startup>();
-```
-
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。 `SetBasePath` 在 [Microsoft.Extensions.Configuration FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
+透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。
 
 INI 設定檔的一般範例：
 
@@ -543,60 +582,33 @@ key=value
 * 檔案變更時是否要重新載入設定。
 * <xref:Microsoft.Extensions.FileProviders.IFileProvider> 是用於存取該檔案。
 
-當您使用 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 初始化新的 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 時，會自動呼叫 `AddJsonFile` 兩次。 會呼叫此方法以從下列位置載入設定：
+當您使用 `CreateDefaultBuilder` 初始化新的主機建立器時，會自動呼叫 `AddJsonFile` 兩次。 會呼叫此方法以從下列位置載入設定：
 
 * *appsettings.json* &ndash; 會先讀取此檔案。 檔案的環境版本可以覆寫由 *appsettings.json* 檔案提供的值。
 * *appsettings.{Environment}.json* &ndash; 檔案的環境版本是根據 [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*) 來載入的。
 
-如需詳細資訊，請參閱 [Web 主機：設定主機](xref:fundamentals/host/web-host#set-up-a-host)。
+如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
 
 `CreateDefaultBuilder` 也會載入：
 
 * 環境變數。
-* [使用者祕密 (祕密管理員)](xref:security/app-secrets) (在開發環境中)。
+* 開發環境中的[使用者祕密 (祕密管理員)](xref:security/app-secrets)。
 * 命令列引數。
 
 會先建立 JSON 設定提供者。 因此，使用者祕密、環境變數與命令列引數會覆寫由 *appsettings* 檔案設定的設定。
 
-在建置主機時，呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 以指定檔案 (除了 *appsettings.json* 和  *appsettings.{Environment}.json* 以外) 的應用程式設定：
+在建置主機時，呼叫 `ConfigureAppConfiguration` 以指定檔案 (除了 *appsettings.json* 和  *appsettings.{Environment}.json* 以外) 的應用程式設定：
 
 ```csharp
-public class Program
+.ConfigureAppConfiguration((hostingContext, config) =>
 {
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddJsonFile(
-                    "config.json", optional: true, reloadOnChange: true);
-            })
-            .UseStartup<Startup>();
-}
+    config.SetBasePath(Directory.GetCurrentDirectory());
+    config.AddJsonFile(
+        "config.json", optional: true, reloadOnChange: true);
+})
 ```
 
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。 `SetBasePath` 在 [Microsoft.Extensions.Configuration FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
-
-建立 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 目錄時，請使用下列設定呼叫 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>：
-
-```csharp
-var config = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("config.json", optional: true, reloadOnChange: true)
-    .Build();
-
-var host = new WebHostBuilder()
-    .UseConfiguration(config)
-    .UseKestrel()
-    .UseStartup<Startup>();
-```
-
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。 `SetBasePath` 在 [Microsoft.Extensions.Configuration FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
+透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。
 
 **範例**
 
@@ -626,45 +638,18 @@ var host = new WebHostBuilder()
 
 建立設定機碼值組時，會忽略設定檔案的根節點。 請勿在檔案中指定文件類型定義 (DTD) 或命名空間。
 
-建置主機時呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 以指定應用程式的設定：
+建置主機時呼叫 `ConfigureAppConfiguration` 以指定應用程式的設定：
 
 ```csharp
-public class Program
+.ConfigureAppConfiguration((hostingContext, config) =>
 {
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddXmlFile(
-                    "config.xml", optional: true, reloadOnChange: true);
-            })
-            .UseStartup<Startup>();
-}
+    config.SetBasePath(Directory.GetCurrentDirectory());
+    config.AddXmlFile(
+        "config.xml", optional: true, reloadOnChange: true);
+})
 ```
 
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。 `SetBasePath` 在 [Microsoft.Extensions.Configuration FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
-
-建立 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 目錄時，請使用下列設定呼叫 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>：
-
-```csharp
-var config = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddXmlFile("config.xml", optional: true, reloadOnChange: true)
-    .Build();
-
-var host = new WebHostBuilder()
-    .UseConfiguration(config)
-    .UseKestrel()
-    .UseStartup<Startup>();
-```
-
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。 `SetBasePath` 在 [Microsoft.Extensions.Configuration FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
+透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。
 
 XML 設定檔可以針對重複的區段使用相異元素名稱：
 
@@ -742,44 +727,19 @@ XML 設定檔可以針對重複的區段使用相異元素名稱：
 
 雙底線 (`__`) 是做為檔案名稱中的設定金鑰分隔符號使用。 例如，檔案名稱 `Logging__LogLevel__System` 會產生設定金鑰 `Logging:LogLevel:System`。
 
-建置主機時呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 以指定應用程式的設定：
+建置主機時呼叫 `ConfigureAppConfiguration` 以指定應用程式的設定：
 
 ```csharp
-public class Program
+.ConfigureAppConfiguration((hostingContext, config) =>
 {
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                config.SetBasePath(Directory.GetCurrentDirectory());
-                var path = Path.Combine(
-                    Directory.GetCurrentDirectory(), "path/to/files");
-                config.AddKeyPerFile(directoryPath: path, optional: true);
-            })
-            .UseStartup<Startup>();
-}
+    config.SetBasePath(Directory.GetCurrentDirectory());
+    var path = Path.Combine(
+        Directory.GetCurrentDirectory(), "path/to/files");
+    config.AddKeyPerFile(directoryPath: path, optional: true);
+})
 ```
 
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。 `SetBasePath` 在 [Microsoft.Extensions.Configuration FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
-
-建立 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 目錄時，請使用下列設定呼叫 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>：
-
-```csharp
-var path = Path.Combine(Directory.GetCurrentDirectory(), "path/to/files");
-var config = new ConfigurationBuilder()
-    .AddKeyPerFile(directoryPath: path, optional: true)
-    .Build();
-
-var host = new WebHostBuilder()
-    .UseConfiguration(config)
-    .UseKestrel()
-    .UseStartup<Startup>();
-```
+透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。
 
 ## <a name="memory-configuration-provider"></a>記憶體設定提供者
 
@@ -789,55 +749,31 @@ var host = new WebHostBuilder()
 
 設定提供者可以使用 `IEnumerable<KeyValuePair<String,String>>` 來初始化。
 
-建置主機時呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 以指定應用程式的設定：
+建置主機時呼叫 `ConfigureAppConfiguration` 以指定應用程式的設定。
+
+下列範例會建立組態字典：
 
 ```csharp
-public class Program
-{
-    public static readonly Dictionary<string, string> _dict = 
-        new Dictionary<string, string>
-        {
-            {"MemoryCollectionKey1", "value1"},
-            {"MemoryCollectionKey2", "value2"}
-        };
-
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                config.AddInMemoryCollection(_dict);
-            })
-            .UseStartup<Startup>();
-}
-```
-
-建立 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> 目錄時，請使用下列設定呼叫 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>：
-
-```csharp
-var dict = new Dictionary<string, string>
+public static readonly Dictionary<string, string> _dict = 
+    new Dictionary<string, string>
     {
         {"MemoryCollectionKey1", "value1"},
         {"MemoryCollectionKey2", "value2"}
     };
+```
 
-var config = new ConfigurationBuilder()
-    .AddInMemoryCollection(dict)
-    .Build();
+字典會與 `AddInMemoryCollection` 的呼叫搭配使用以提供組態：
 
-var host = new WebHostBuilder()
-    .UseConfiguration(config)
-    .UseKestrel()
-    .UseStartup<Startup>();
+```csharp
+.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    config.AddInMemoryCollection(_dict);
+})
 ```
 
 ## <a name="getvalue"></a>GetValue
 
-[ConfigurationBinder.GetValue&lt;T&gt;](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) 會從具有所指定機碼的設定擷取值，並將它轉換為指定的型別。 若找不到機碼，多載允許您提供預設值。
+[ConfigurationBinder.GetValue\<T>](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) 會從具有所指定機碼的組態擷取值，並將其轉換為指定的型別。 若找不到機碼，多載允許您提供預設值。
 
 下列範例：
 
@@ -902,7 +838,7 @@ public class IndexModel : PageModel
 
 ### <a name="getsection"></a>GetSection
 
-[IConfiguration.GetSection](xref:Microsoft.Extensions.Configuration.IConfiguration.GetSection*) 會擷取具有所指定子區段機碼的設定子區段。 `GetSection` 在 [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
+[IConfiguration.GetSection](xref:Microsoft.Extensions.Configuration.IConfiguration.GetSection*) 會擷取具有所指定子區段機碼的設定子區段。
 
 若要傳回 `section1` 中只包含一個機碼值組的 <xref:Microsoft.Extensions.Configuration.IConfigurationSection>，請呼叫 `GetSection` 並提供區段名稱：
 
@@ -949,15 +885,35 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 設定可以繫結到類別，以使用*選項模式*代表相關設定的群組。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/options>。
 
-設定值是以字串傳回，但是呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 會啟用 [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) 物件的建構。 `Bind` 在 [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
+設定值是以字串傳回，但是呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 會啟用 [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) 物件的建構。
 
 範例應用程式包含 `Starship` 模型 (*Models/Starship.cs*)：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Models/Starship.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/Starship.cs?name=snippet1)]
+
+::: moniker-end
 
 當範例應用程式使用 JSON 設定提供者來載入設定時，*starship.json* 檔案的 `starship` 區段會建立設定：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-json[](index/samples/3.x/ConfigurationSample/starship.json)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-json[](index/samples/2.x/ConfigurationSample/starship.json)]
+
+::: moniker-end
 
 會建立下列設定機碼值組：
 
@@ -972,21 +928,49 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 範例應用程式使用 `starship` 機碼呼叫 `GetSection`。 `starship` 機碼值組會被隔離。 會在子區段上呼叫 `Bind` 方法，並傳入 `Starship` 類別的執行個體。 繫結執行個體值之後，執行個體會被指派給屬性以用於轉譯：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_starship)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_starship)]
 
-`GetSection` 在 [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
+::: moniker-end
 
 ## <a name="bind-to-an-object-graph"></a>繫結至物件圖形
 
-<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 可以繫結整個 POCO 物件圖形。 `Bind` 在 [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 可以繫結整個 POCO 物件圖形。
 
 範例包含 `TvShow` 模型，其物件圖形包括 `Metadata` 與 `Actors` 類別 (*Models/TvShow.cs*)：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Models/TvShow.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/TvShow.cs?name=snippet1)]
+
+::: moniker-end
 
 範例應用程式有 *tvshow.xml* 檔案，其中包含設定資料：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-xml[](index/samples/3.x/ConfigurationSample/tvshow.xml)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-xml[](index/samples/2.x/ConfigurationSample/tvshow.xml)]
+
+::: moniker-end
 
 設定會被繫結到整個 `TvShow` 物件 (使用 `Bind` 方法)。 已繫結的執行個體會被指派給屬性以用於轉譯：
 
@@ -996,17 +980,25 @@ _config.GetSection("tvshow").Bind(tvShow);
 TvShow = tvShow;
 ```
 
-[ConfigurationBinder.Get&lt;T&gt;](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) 會繫結並傳回所指定型別。 `Get<T>` 比使用 `Bind` 更方便。 下列程式碼顯示如何根據上面的範例使用 `Get<T>`，這可讓您直接將已繫結的執行個體指派給屬性以用於轉譯：
+[ConfigurationBinder.Get\<T>](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) 會繫結並傳回所指定型別。 `Get<T>` 比使用 `Bind` 更方便。 下列程式碼顯示如何根據上面的範例使用 `Get<T>`，這可讓您直接將已繫結的執行個體指派給屬性以用於轉譯：
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_tvshow)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_tvshow)]
 
-<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*> 在 [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。 ASP.NET Core 1.1 或更新版本中提供了 `Get<T>`。 `GetSection` 在 [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
+::: moniker-end
 
 ## <a name="bind-an-array-to-a-class"></a>將陣列繫結到類別
 
 範例應用程式示範此節中解釋的概念。 
 
-<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 支援在設定機碼中使用陣列索引將陣列繫結到物件。 任何公開數值機碼區段 (`:0:`、`:1:`、&hellip; `:{n}:`) 的陣列格式都能繫結到POCO 類別陣列。 `Bind`` 在 [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/) 套件中，該套件在 [Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) 中繼套件內。
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 支援在設定機碼中使用陣列索引將陣列繫結到物件。 任何公開數值機碼區段 (`:0:`、`:1:`、&hellip; `:{n}:`) 的陣列格式都能繫結到POCO 類別陣列。
 
 > [!NOTE]
 > 繫結是由慣例提供。 自訂設定提供者不需要實作陣列繫結。
@@ -1025,13 +1017,33 @@ TvShow = tvShow;
 
 這些機碼與值是使用「記憶體設定提供者」在範例應用程式中載入：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,23)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,23)]
+
+::: moniker-end
 
 陣列會跳過索引 &num;3 的值。 設定繫結程式無法繫結 Null 值或在已繫結的物件中建立 Null 項目，這在示範繫結此陣列的結果到某物件的時候已經很清楚。
 
 在範例應用程式中，POCO 類別可用來存放繫結設定資料：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Models/ArrayExample.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/ArrayExample.cs?name=snippet1)]
+
+::: moniker-end
 
 設定資料已繫結到物件：
 
@@ -1040,11 +1052,19 @@ var arrayExample = new ArrayExample();
 _config.GetSection("array").Bind(arrayExample);
 ```
 
-`GetSection` 在 [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/) 套件中，該套件在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)內。
+也可以使用 [ConfigurationBinder.Get\<T>](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) 語法，其會產生更精簡的程式碼：
 
-[ConfigurationBinder.Get&lt;T&gt;](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) 語法也可以使用，這會產生更精簡的程式碼：
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_array)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_array)]
+
+::: moniker-end
 
 繫結物件 (`ArrayExample`的執行個體) 會從設定接收陣列資料。
 
@@ -1068,10 +1088,11 @@ _config.GetSection("array").Bind(arrayExample);
 }
 ```
 
-在 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>中：
+在 `ConfigureAppConfiguration`中：
 
 ```csharp
-config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false);
+config.AddJsonFile(
+    "missing_value.json", optional: false, reloadOnChange: false);
 ```
 
 表格中顯示的機碼值組會載入到設定中。
@@ -1095,7 +1116,17 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 若 JSON 檔案包含陣列，會為具有以零為基礎之區段索引的陣列元素建立設定機碼。 在下列設定檔中，`subsection` 是陣列：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-json[](index/samples/3.x/ConfigurationSample/json_array.json)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-json[](index/samples/2.x/ConfigurationSample/json_array.json)]
+
+::: moniker-end
 
 「JSON 設定提供者」會將設定資料讀入到下列機碼值組：
 
@@ -1108,7 +1139,17 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 在範例應用程式中，下列 POCO 類別可用來繫結設定機碼值組：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Models/JsonArrayExample.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/JsonArrayExample.cs?name=snippet1)]
+
+::: moniker-end
 
 在繫結之後，`JsonArrayExample.Key` 會存放值 `valueA`。 子區段值會存放在 POCO 陣列屬性 `Subsection` 中。
 
@@ -1129,6 +1170,44 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 * 未實作變更時重新載入，因此在應用程式啟動後更新資料庫對應用程式設定沒有影響。
 
 定義 `EFConfigurationValue` 實體來在資料庫中存放設定值。
+
+::: moniker range=">= aspnetcore-3.0"
+
+*Models/EFConfigurationValue.cs*：
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Models/EFConfigurationValue.cs?name=snippet1)]
+
+新增 `EFConfigurationContext` 以存放及存取已設定的值。
+
+*EFConfigurationProvider/EFConfigurationContext.cs*：
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationContext.cs?name=snippet1)]
+
+建立會實作 <xref:Microsoft.Extensions.Configuration.IConfigurationSource> 的類別。
+
+*EFConfigurationProvider/EFConfigurationSource.cs*：
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationSource.cs?name=snippet1)]
+
+透過繼承自 <xref:Microsoft.Extensions.Configuration.ConfigurationProvider> 來建立自訂設定提供者。 若資料庫是空的，設定提供者會初始化資料庫。
+
+*EFConfigurationProvider/EFConfigurationProvider.cs*：
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationProvider.cs?name=snippet1)]
+
+`AddEFConfiguration` 擴充方法允許新增設定來源到 `ConfigurationBuilder`。
+
+*Extensions/EntityFrameworkExtensions.cs*:
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
+
+下列程式碼顯示如何在 *Program.cs* 中使用自訂 `EFConfigurationProvider`：
+
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=30-31)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 *Models/EFConfigurationValue.cs*：
 
@@ -1161,6 +1240,8 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 下列程式碼顯示如何在 *Program.cs* 中使用自訂 `EFConfigurationProvider`：
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=30-31)]
+
+::: moniker-end
 
 ## <a name="access-configuration-during-startup"></a>在啟動期間存取組態
 
@@ -1239,4 +1320,3 @@ public class Startup
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:fundamentals/configuration/options>
-* [深入了解 Microsoft 設定](https://www.paraesthesia.com/archive/2018/06/20/microsoft-extensions-configuration-deep-dive/)

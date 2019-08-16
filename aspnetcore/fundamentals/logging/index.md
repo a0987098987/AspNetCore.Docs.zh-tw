@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
 ms.openlocfilehash: 4e2aa1e18c3e3119e22452d5ca9b838581efbfd8
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
+ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "68994114"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: ffd25fe0288159681f7fc052fc09e1f6fc425404
-ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
-ms.translationtype: HT
+ms.openlocfilehash: 00ea14ca95c328b5f8779785a92aa0720a96eb05
+ms.sourcegitcommit: 7a46973998623aead757ad386fe33602b1658793
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030302"
+ms.locfileid: "69487573"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
@@ -125,11 +125,12 @@ JavaScript 程式碼 (如上述範例所示的程式碼) 也可以從 JavaScript
 
 * `@ref`將屬性加入至 HTML 元素。
 * 定義類型`ElementReference`的欄位, 其名稱符合`@ref`屬性的值。
+* `@ref:suppressField`提供參數, 以隱藏支援欄位產生。 如需詳細資訊, 請參閱[3.0.0-preview9 中@ref的移除自動支援欄位支援](https://github.com/aspnet/Announcements/issues/381)。
 
 下列範例顯示如何`username` `<input>`捕捉專案的參考:
 
 ```cshtml
-<input @ref="username" ... />
+<input @ref="username" @ref:suppressField ... />
 
 @code {
     ElementReference username;
@@ -158,7 +159,7 @@ window.exampleJsFunctions = {
 ```cshtml
 @inject IJSRuntime JSRuntime
 
-<input @ref="username" />
+<input @ref="username" @ref:suppressField />
 <button @onclick="SetFocus">Set focus on username</button>
 
 @code {
@@ -188,7 +189,7 @@ public static Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
 @inject IJSRuntime JSRuntime
 @using JsInteropClasses
 
-<input @ref="username" />
+<input @ref="username" @ref:suppressField />
 <button @onclick="SetFocus">Set focus on username</button>
 
 @code {

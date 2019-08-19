@@ -134,7 +134,7 @@ ASP.NET Core 應用程式應該可同時處理許多要求。 非同步 Api 可�
 
 ## <a name="compress-responses"></a>壓縮回應
 
- 減少回應的大小通常應用程式的回應速度通常會大幅增加。 減少承載大小的方法之一是壓縮應用程式的回應。 如需詳細資訊，請參閱 <c0> [ 回應壓縮](xref:performance/response-compression)。
+ 減少回應的大小通常可大幅提升應用程式的回應速度。 減少承載大小的其中一個方法是壓縮應用程式的回應。 如需詳細資訊，請參閱 <c0> [ 回應壓縮](xref:performance/response-compression)。
 
 ## <a name="use-the-latest-aspnet-core-release"></a>使用最新的 ASP.NET Core 版本
 

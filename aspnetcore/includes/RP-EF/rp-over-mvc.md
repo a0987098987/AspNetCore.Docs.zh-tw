@@ -1,7 +1,12 @@
-本教學課程可讓您了解具有控制器和檢視的 ASP.NET Core MVC 和 Entity Framework Core。 Razor 頁面是 ASP.NET Core 2.0 中的新替代方案，它是以頁面為基礎的程式設計模型，可讓建置 Web UI 更容易且更具工作效率。 建議您參閱 [Razor 頁面](xref:data/ef-rp/intro)教學課程，其較 MVC 版本佳。 Razor 頁面教學課程：
+此教學課程可讓您了解具有控制器和檢視的 ASP.NET Core MVC 和 Entity Framework Core。 [Razor Pages](xref:razor-pages/index) 是在 ASP.NET Core 2.0 中引進的替代程式設計模型。 針對新的開發，我們建議您搭配控制器與檢視在 MVC 上使用 Razor Pages。 這是此教學課程的 [Razor Pages](xref:data/ef-rp/intro) 版本。 每個教學課程都涵蓋其他教學課程為涵蓋的一些內容：
 
-* 比較容易學習。
-* 提供更多 EF Core 最佳做法。
-* 使用更有效率的查詢。
-* 具有最新的 API。
-* 涵蓋更多功能。
+此 MVC 教學課程中的一些內容具有 Razor Pages 教學課程未包含的內容：
+
+* 在資料模型中實作繼承
+* 執行原始 SQL 查詢
+* 使用動態 LINQ 來簡化程式碼
+ 
+Razor Pages 教學課程中的一些內容具有此教學課程未包含的內容：
+
+* 使用 Select 方法來載入相關資料
+* 適用於 ASP.NET Core 3.0 的可用版本

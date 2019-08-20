@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/05/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 6b8818cc89a87e66ecec445ff8071348aacde64a
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: cb51df0267a5eabd4a2694727e9c896d0554265e
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819928"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583604"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Spa 的驗證和授權
 
@@ -93,9 +93,9 @@ dotnet new react -o <output_directory_name> -au Individual
 
 此 helper 方法會將應用程式的原則配置設定為預設驗證處理常式。 原則會設定為讓身分識別處理路由傳送至身分識別 URL 空間 "/Identity" 中任何子路徑的所有要求。 會`JwtBearerHandler`處理所有其他要求。 此外, 此方法會向`<<ApplicationName>>API` IdentityServer 註冊具有預設範圍的`<<ApplicationName>>API` API 資源, 並設定 JWT 持有人權杖中介軟體, 以驗證 IdentityServer 針對應用程式所簽發的權杖。
 
-### <a name="sampledatacontroller"></a>SampleDataController
+### <a name="weatherforecastcontroller"></a>WeatherForecastController
 
-在*Controllers\SampleDataController.cs*檔案中, 請注意`[Authorize]`套用至類別的屬性, 表示使用者必須根據預設原則來存取資源。 預設的授權原則會設定為使用預設的驗證配置, 而這是由`AddIdentityServerJwt`先前所述的原則配置所設定, `JwtBearerHandler`讓這類 helper 方法為預設的處理常式設定對應用程式的要求。
+在*Controllers\WeatherForecastController.cs*檔案中, 請注意`[Authorize]`套用至類別的屬性, 表示使用者必須根據預設原則來存取資源。 預設的授權原則會設定為使用預設的驗證配置, 而這是由`AddIdentityServerJwt`先前所述的原則配置所設定, `JwtBearerHandler`讓這類 helper 方法為預設的處理常式設定對應用程式的要求。
 
 ### <a name="applicationdbcontext"></a>ApplicationDbContext
 

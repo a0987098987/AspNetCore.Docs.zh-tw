@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/components
-ms.openlocfilehash: 5361c506f112cbb74865c3819f0b3bd578a1705a
-ms.sourcegitcommit: 38cac2552029fc19428722bb204ff9e16eb94225
+ms.openlocfilehash: e1afae730d61463d31c8a1698fc31904a3fc8f0e
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2019
-ms.locfileid: "69573093"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583098"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -193,7 +193,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」 (component) 是一
 
 ```cshtml
 @code {
-    [Parameter(CaptureUnmatchedAttributes = true)]
+    [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> InputAttributes { get; set; }
 }
 ```

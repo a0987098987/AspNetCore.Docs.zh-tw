@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何使用 ASP.NET Core 建置 Web API。
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/05/2019
+ms.date: 08/14/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 855d05fa2b9c1a7572212c40adbe61bb396f4bac
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: 99985e9fb1134c2ba808434f8d24c4a768773268
+ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819830"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69022599"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -111,6 +111,15 @@ ms.locfileid: "68819830"
 * 針對 [專案名稱]  輸入 *TodoApi*，然後選取 [建立]  。
 
   ![設定對話方塊](first-web-api-mac/_static/2.png)
+
+[!INCLUDE[](~/includes/mac-terminal-access.md)]
+
+在專案資料夾中開啟命令終端機，然後執行下列命令：
+
+   ```console
+   dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
+   dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 3.0.0-*
+   ```
 
 ---
 
@@ -915,7 +924,7 @@ JQuery [ajax](https://api.jquery.com/jquery.ajax/) 函式會將 `GET` 要求傳�
 
 * <xref:web-api/index>
 * <xref:tutorials/web-api-help-pages-using-swagger>
-* <xref:data/ef-rp/index>
+* <xref:data/ef-rp/intro>
 * <xref:mvc/controllers/routing>
 * <xref:web-api/action-return-types>
 * <xref:host-and-deploy/azure-apps/index>

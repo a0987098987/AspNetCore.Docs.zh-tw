@@ -1,0 +1,1 @@
+如需 EF Core CLI 工具的詳細資訊，請參閱 [.Net CLI 的 EF Core 工具參考](/ef/core/miscellaneous/cli/dotnet)。

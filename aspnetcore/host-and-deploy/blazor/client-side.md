@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: be6b6c245440cb085a1a6b115f4f087306f7cc83
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: e9a42bd4e8511d426761746047fed2d4f7dfc6dd
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308092"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994082"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-client-side"></a>裝載及部署 ASP.NET Core Blazor 用戶端
 
@@ -148,7 +148,7 @@ dotnet run --pathbase=/CoolApp
 
 如需詳細資訊，請參閱[路徑基底主機設定值](#path-base)一節。
 
-如果應用程式使用[用戶端裝載模型](xref:blazor/hosting-models#client-side) (根據 **Blazor (用戶端)** 專案範本、使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazor` 範本)，且裝載為 ASP.NET Core 應用程式中的 IIS 子應用程式，請務必停用繼承的 ASP.NET Core 模組處理常式，或是確定子應用程式並未繼承 *web.config* 檔案中根 (父系) 應用程式的 `<handlers>` 區段。
+如果應用程式使用[用戶端裝載模型](xref:blazor/hosting-models#client-side) (根據 **Blazor WebAssembly 應用程式**專案範本、使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazorwasm` 範本)，且裝載為 ASP.NET Core 應用程式中的 IIS 子應用程式，請務必停用繼承的 ASP.NET Core 模組處理常式，或確定子應用程式並未繼承 *web.config* 檔案中根 (父系) 應用程式的 `<handlers>` 區段。
 
 移除應用程式已發佈 *web.config* 檔案中的處理常式，方法是新增 `<handlers>` 區段到檔案：
 
@@ -180,7 +180,7 @@ dotnet run --pathbase=/CoolApp
 
 「裝載部署」  會將 Blazor 用戶端應用程式從 Web 伺服器上執行的 [ASP.NET Core 應用程式](xref:index)提供給瀏覽器。
 
-Blazor 應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以便兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 對於裝載部署，Visual Studio 包含 **Blazor (已裝載 ASP.NET Core)** 專案範本 (使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazorhosted` 範本)。
+Blazor 應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以便兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 針對裝載部署，Visual Studio 包含 **Blazor WebAssembly 應用程式**專案範本 (使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazorwasm` 範本)，並已選取 [已裝載]  選項。
 
 如需 ASP.NET Core 應用程式裝載和部署的詳細資訊，請參閱 <xref:host-and-deploy/index>。
 

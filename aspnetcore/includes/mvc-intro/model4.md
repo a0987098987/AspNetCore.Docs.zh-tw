@@ -5,7 +5,7 @@
 | -m  | 模型的名稱。 |
 | -dc  | 資料內容。 |
 | -udl | 使用預設的配置。 |
-| --relativeFolderPath | 要建立檢視的相對輸出資料夾路徑。 |
+| --relativeFolderPath | 要建立檔案的相對輸出資料夾路徑。 |
 | --useDefaultLayout | 應針對檢視使用預設的配置。 |
 | --referenceScriptLibraries | 將 `_ValidationScriptsPartial` 新增至 Edit 和 Create 頁面 |
 
@@ -14,3 +14,5 @@
 ```console
 dotnet aspnet-codegenerator controller -h
 ```
+
+如需詳細資訊，請參閱 [dotnet aspnet-codegenerator](xref:fundamentals/tools/dotnet-aspnet-codegenerator)

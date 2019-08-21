@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/21/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 0ffd437bbb48ef1c7a9159fbf3ac41441613f434
-ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
+ms.openlocfilehash: 606be317318eafa170d926aaace1f752d3a25510
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372056"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994295"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -51,7 +51,7 @@ Swashbuckle 有三個主要元件：
 
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在 [Solution Pad]   > [新增套件]  中，以滑鼠右鍵按一下 *Packages* 資料夾
+* 在 [Solution Pad]   > [新增套件...]  中，以滑鼠右鍵按一下 *Packages* 資料夾
 * 將 [新增套件]  視窗的 [來源]  下拉式清單設定為 "nuget.org"
 * 請確定已啟用 [選定發行前版本的套件] 選項
 * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
@@ -115,6 +115,8 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc2
 ## <a name="customize-and-extend"></a>自訂與擴充
 
 Swagger 提供用來記載物件模型和自訂 UI 以符合佈景主題的選項。
+
+在 Startup 類別中新增下列命名空間：[!code-csharp[](~/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup2.cs?name=snippet_PreReqNamespaces)]
 
 ### <a name="api-info-and-description"></a>API 資訊與描述
 
@@ -423,11 +425,11 @@ UI 是由產生的 JSON 結構描述所驅動：
 
 [!code-css[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/wwwroot/swagger/ui/custom.css)]
 
-在 *index.html* 檔案中的其他任何 CSS 檔案之後，參考 *custom.css*：
+在 ui 資料夾內 *index.html* 檔案中的其他任何 CSS 檔案之後，參考 *custom.css*：
 
 [!code-html[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/wwwroot/swagger/ui/index.html?name=snippet_SwaggerUiCss&highlight=3)]
 
-瀏覽至 `http://localhost:<port>/swagger/ui/index.html` 上的 *index.html* 頁面。 在標頭的文字方塊中輸入 `http://localhost:<port>/swagger/v1/swagger.json`，然後按一下 [瀏覽]  按鈕。 結果頁面如下所示：
+瀏覽至 `http://localhost:<port>/swagger/ui/index.html` 上的 *index.html* 頁面。 在標頭的文字方塊中輸入 `https://localhost:<port>/swagger/v1/swagger.json`，然後按一下 [瀏覽]  按鈕。 結果頁面如下所示：
 
 ![含有自訂標頭標題的 Swagger UI](web-api-help-pages-using-swagger/_static/custom-header.png)
 

@@ -3,6 +3,8 @@
   ```console
   dotnet dev-certs https --trust
   ```
+  
+  上述命令無法在 Linux 上使用。 如需信任憑證的資訊，請參閱您的 Linux 發行版本文件。
 
   上述命令會顯示以下對話方塊：
 

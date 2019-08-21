@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 07/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 6132f7b907014b4f57bb9ae0300e00b6ecb23f1a
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: 39e2a38e0b91b7dbecf05c084ca0be5e312dcb0d
+ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820076"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68862877"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -135,18 +135,30 @@ ms.locfileid: "68820076"
 
 ---
 
-隨即建立 Scaffold 處理序並更新下列檔案：
-
 ### <a name="files-created"></a>建立的檔案
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+隨即建立 Scaffold 處理序並更新下列檔案：
 
 * *Pages/Movies*：Create、Delete、Details、Edit 和 Index。
 * *Data/RazorPagesMovieContext.cs*
 
-### <a name="file-updated"></a>檔案已更新
+### <a name="updated"></a>已更新
 
 * *Startup.cs*
 
 下一節將說明所建立和更新的檔案。
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+
+Scaffold 處理序會建立下列檔案：
+
+* *Pages/Movies*：Create、Delete、Details、Edit 和 Index。
+
+下一節將說明所建立的檔案。
+
+---
 
 <a name="pmc"></a>
 

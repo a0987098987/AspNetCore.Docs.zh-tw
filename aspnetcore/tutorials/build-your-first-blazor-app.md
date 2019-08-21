@@ -5,14 +5,14 @@ description: 逐步建置 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/01/2019
+ms.date: 07/26/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: d592c5bac1eb9822843a1ad1513a15fdfd6b1032
-ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
+ms.openlocfilehash: 88999350b9c7631e15ba9d0242da5880c8ae71ff
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67500314"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994217"
 ---
 # <a name="build-your-first-blazor-app"></a>組建第一個 Blazor 應用程式
 
@@ -67,7 +67,7 @@ ms.locfileid: "67500314"
 
 ## <a name="component-parameters"></a>元件參數
 
-元件也可以有參數。 定義元件參數時，是在元件類別上使用以 `[Parameter]` 裝飾的非公開屬性來定義。 使用這些屬性來指定標記中元件的引數。
+元件也可以有參數。 定義元件參數時，是在元件類別上使用以 `[Parameter]` 裝飾的公開屬性來定義。 使用這些屬性來指定標記中元件的引數。
 
 1. 更新元件的 `@code` C# 程式碼：
 

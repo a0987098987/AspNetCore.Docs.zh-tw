@@ -1,0 +1,1 @@
+<span data-ttu-id="2461f-101">如需 EF Core PMC 工具的詳細資訊，請參閱 [EF Core 工具參考 - Visual Studio 中的 PMC](/ef/core/miscellaneous/cli/powershell)。</span><span class="sxs-lookup"><span data-stu-id="2461f-101">For more information on the PMC tools for EF Core, see [EF Core tools reference - PMC in Visual Studio](/ef/core/miscellaneous/cli/powershell).</span></span>

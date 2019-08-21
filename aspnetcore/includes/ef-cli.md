@@ -1,0 +1,1 @@
+<span data-ttu-id="0b7c6-101">如需 EF Core CLI 工具的詳細資訊，請參閱 [.Net CLI 的 EF Core 工具參考](/ef/core/miscellaneous/cli/dotnet)。</span><span class="sxs-lookup"><span data-stu-id="0b7c6-101">For more information on the CLI tools for EF Core, see [EF Core tools reference for .Net CLI](/ef/core/miscellaneous/cli/dotnet).</span></span>

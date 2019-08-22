@@ -1,18 +1,18 @@
 ---
 title: 教學課程：更新相關資料 - ASP.NET MVC 搭配 EF Core
 description: 在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
-author: rick-anderson
+author: tdykstra
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: e8aa2c6e33968a6cbc05591e4e5017ea9eac691d
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 4bf444d3334f32ff80a6e21607b250c00e0dc7ca
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64885673"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583424"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關資料 - ASP.NET MVC 搭配 EF Core
 
@@ -77,17 +77,17 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 ### <a name="modify-the-course-views"></a>修改 Course 檢視
 
-在 *Views/Courses/Create.cshtml* 中，將一個「選取部門」選項新增至 [部門] 下拉式清單，將標題從 **DepartmentID** 變更為 **Department**，然後新增一個驗證訊息。
+在 *Views/Courses/Create.cshtml* 中，將一個「選取部門」選項新增至 [部門]  下拉式清單，將標題從 **DepartmentID** 變更為 **Department**，然後新增一個驗證訊息。
 
 [!code-html[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
 
 在 *Views/Courses/Edit.cshtml* 中，為 [部門] 欄位進行您剛剛為 *Create.cshtml* 進行的相同變更。
 
-同樣的，在 *Views/Courses/Edit.cshtml* 中，在 [標題] 欄位之前新增一個課程號碼欄位。 由於課程號碼是主索引鍵，雖然會顯示，但您無法變更它。
+同樣的，在 *Views/Courses/Edit.cshtml* 中，在 [標題]  欄位之前新增一個課程號碼欄位。 由於課程號碼是主索引鍵，雖然會顯示，但您無法變更它。
 
 [!code-html[](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
 
-在 [編輯] 檢視中已有一個針對課程號碼的隱藏欄位 (`<input type="hidden">`)。 新增 `<label>` 標籤協助程式無法消除隱藏欄位的必要，因為它無法讓課程號碼包含在使用者按一下位於 [編輯] 頁面上的 [儲存] 時以 Post 方式提交的資料中。
+在 [編輯] 檢視中已有一個針對課程號碼的隱藏欄位 (`<input type="hidden">`)。 新增 `<label>` 標籤協助程式無法消除隱藏欄位的必要，因為它無法讓課程號碼包含在使用者按一下位於 [編輯]  頁面上的 [儲存]  時以 Post 方式提交的資料中。
 
 在 *Views/Courses/Delete.cshtml* 中，在頂端新增一個課程號碼欄位，並將部門識別碼變更為部門名稱。
 
@@ -97,17 +97,17 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 ### <a name="test-the-course-pages"></a>測試 Course 頁面
 
-執行應用程式，選取 [Course] 索引標籤，按一下 [新建]，並輸入新的課程資料：
+執行應用程式，選取 [Course]  索引標籤，按一下 [新建]  ，並輸入新的課程資料：
 
 ![Course [建立] 頁面](update-related-data/_static/course-create.png)
 
-按一下 [建立] 。 Courses [索引] 頁面便會顯示，並且清單中已有新建立的課程。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
+按一下 [建立]  。 Courses [索引] 頁面便會顯示，並且清單中已有新建立的課程。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
 
-按一下 Courses [索引] 頁面中課程的 [編輯]。
+按一下 Courses [索引] 頁面中課程的 [編輯]  。
 
 ![Course [編輯] 頁面](update-related-data/_static/course-edit.png)
 
-變更頁面上的資料，然後按一下 [儲存]。 Courses [索引] 頁面便會顯示，並且清單中已有更新的課程資料。
+變更頁面上的資料，然後按一下 [儲存]  。 Courses [索引] 頁面便會顯示，並且清單中已有更新的課程資料。
 
 ## <a name="add-instructors-edit-page"></a>新增 Instructors [編輯] 頁面
 
@@ -161,11 +161,11 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 ### <a name="update-the-instructor-edit-view"></a>更新 Instructor [編輯] 檢視
 
-在 *Views/Instructors/Edit.cshtml* 中，在 [儲存] 按鈕前的結尾處新增一個用於編輯辦公室位置的欄位：
+在 *Views/Instructors/Edit.cshtml* 中，在 [儲存]  按鈕前的結尾處新增一個用於編輯辦公室位置的欄位：
 
 [!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
-執行應用程式，選取 [Instructor] 索引標籤，然後在講師上按一下 [編輯]。 變更 [辦公室位置]，然後按一下 [儲存]。
+執行應用程式，選取 [Instructor]  索引標籤，然後在講師上按一下 [編輯]  。 變更 [辦公室位置]  ，然後按一下 [儲存]  。
 
 ![Instructor [編輯] 頁面](update-related-data/_static/instructor-edit-office.png)
 
@@ -195,7 +195,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 `PopulateAssignedCourseData` 方法中的程式碼會讀取所有的 Course 實體以使用檢視模型類別載入課程清單。 針對每個課程，程式碼會檢查課程是否存在於講師的 `Courses` 導覽屬性中。 為了在檢查課程是否已指派給講師的過程中更有效率，指派給講師的課程會放入一個 `HashSet` 集合中。 `Assigned` 屬性會針對已指派給講師的課程設定為 true。 檢視會使用這個屬性，來判斷哪一個核取方塊必須顯示為已選取。 最後，清單會傳遞至位於 `ViewData` 的檢視中。
 
-接下來，新增當使用者按一下 [儲存] 時要執行的程式碼。 使用下列程式碼取代 `EditPost` 方法，然後新增一個方法，該方法會更新 Instructor 實體的 `Courses` 導覽屬性。
+接下來，新增當使用者按一下 [儲存]  時要執行的程式碼。 使用下列程式碼取代 `EditPost` 方法，然後新增一個方法，該方法會更新 Instructor 實體的 `Courses` 導覽屬性。
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=1,3,12,13,25,39-40&name=snippet_EditPostCourses)]
 
@@ -221,7 +221,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 ### <a name="update-the-instructor-views"></a>更新 Instructor 檢視
 
-在 *Views/Instructors/Edit.cshtml* 中，藉由將下列程式碼新增到 [辦公室] 欄位的 `div` 項目後及 [儲存] 按鈕的 `div` 項目前，來新增 [課程 ] 欄位與核取方塊陣列。
+在 *Views/Instructors/Edit.cshtml* 中，藉由將下列程式碼新增到 [辦公室]  欄位的 `div` 項目後及 [儲存]  按鈕的 `div` 項目前，來新增 [課程 ]  欄位與核取方塊陣列。
 
 <a id="notepad"></a>
 > [!NOTE]
@@ -233,7 +233,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 核取方塊一開始呈現時，已指派給該名講師的課程便會帶有 Checked 屬性，使其顯示為已選取狀態。
 
-執行應用程式，選取 [Instructor] 索引標籤，然後按一下講師上的 [編輯] 以查看 [編輯] 頁面。
+執行應用程式，選取 [Instructor]  索引標籤，然後按一下講師上的 [編輯]  以查看 [編輯]  頁面。
 
 ![Instructor [編輯] 頁面與課程](update-related-data/_static/instructor-edit-courses.png)
 

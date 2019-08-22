@@ -1,17 +1,17 @@
 ---
 title: 教學課程：讀取相關資料 - ASP.NET MVC 搭配 EF Core
 description: 在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
-author: rick-anderson
+author: tdykstra
 ms.author: tdykstra
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 20f801e23f3e75d7915bcb7c095060b68d9cb03f
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: 43d05d0a5f938e60cdb54a0025d8bc277059c2e3
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819783"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583425"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>教學課程：讀取相關資料 - ASP.NET MVC 搭配 EF Core
 

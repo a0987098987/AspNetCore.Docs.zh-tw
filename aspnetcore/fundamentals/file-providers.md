@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2019
 uid: fundamentals/file-providers
-ms.openlocfilehash: 93eb48d81a853061a874641e84b4875849690a93
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: b93b2df7fad7c173f43ad69aec865f09de6c9c34
+ms.sourcegitcommit: 7a46973998623aead757ad386fe33602b1658793
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886613"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69487583"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
@@ -107,7 +107,7 @@ var physicalProvider = _env.ContentRootFileProvider;
 
 若要產生內嵌檔案的資訊清單，請將 `<GenerateEmbeddedFilesManifest>` 屬性設定為 `true`。 使用 [&lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) 來指定要內嵌的檔案：
 
-[!code-csharp[](file-providers/samples/2.x/FileProviderSample/FileProviderSample.csproj?highlight=5,13)]
+[!code-csharp[](file-providers/samples/2.x/FileProviderSample/FileProviderSample.csproj?highlight=6,14)]
 
 使用 [Glob 模式](#glob-patterns)來指定一或多個要內嵌到組件中的檔案。
 
@@ -172,7 +172,7 @@ var manifestEmbeddedProvider =
 符合特定目錄中具有 *.txt* 副檔名的所有檔案。
 
 **`directory/*/appsettings.json`**  
-符合「目錄」資料夾下一層級之目錄中的所有 `appsettings.json` 檔案。
+符合「目錄」  資料夾下一層級之目錄中的所有 `appsettings.json` 檔案。
 
 **`directory/**/*.txt`**  
-符合在「目錄」資料夾下之任何地方所找到的具有 *.txt* 副檔名的所有檔案。
+符合在「目錄」  資料夾下之任何地方所找到的具有 *.txt* 副檔名的所有檔案。

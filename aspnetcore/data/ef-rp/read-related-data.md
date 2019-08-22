@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
-author: rick-anderson
+author: tdykstra
 description: 在此教學課程中，您可以讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: a4864a749ed9c839c2a22f179759a3f28db525ee
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: c9da404b1bbd072d3e033f18a7366169082dac06
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914191"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583543"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -75,7 +75,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   * 建立 *Pages/Courses* 資料夾。
   * 使用 `Course` 作為模型類別。
-  * 使用現有的內容類別，而非建立新的類別。
+  * 使用現有內容類別，而非建立新的類別。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -172,7 +172,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   * 建立 *Pages/Instructors* 資料夾。
   * 使用 `Instructor` 作為模型類別。
-  * 使用現有的內容類別，而非建立新的類別。
+  * 使用現有內容類別，而非建立新的類別。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

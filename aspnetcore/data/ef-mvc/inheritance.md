@@ -1,18 +1,18 @@
 ---
 title: 教學課程：實作繼承 - ASP.NET MVC 搭配 EF Core
 description: 本教學課程將說明如何在 ASP.NET Core 應用程式中使用 Entity Framework Core，以實作資料模型中的繼承。
-author: rick-anderson
+author: tdykstra
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: f80de595fd23cc9c1065e5257ad1d2376ea40cf3
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 0d46d7238b4e6f79b17564db213047738629a467
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886293"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583489"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>教學課程：實作繼承 - ASP.NET MVC 搭配 EF Core
 
@@ -99,7 +99,7 @@ dotnet ef migrations add Inheritance
 
 還不要執行 `database update` 命令。 該命令將導致資料遺失，因為它會卸除 Instructor 資料表，然後將 Student 資料表重新命名為 Person。 您必須提供自訂程式碼來保留現有的資料。
 
-開啟 Migrations/\<時間戳記>_Inheritance.cs，並以下列程式碼取代 `Up` 方法：
+開啟 Migrations/\<時間戳記>_Inheritance.cs  ，並以下列程式碼取代 `Up` 方法：
 
 [!code-csharp[](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
 
@@ -140,11 +140,11 @@ dotnet ef database update
 
 執行應用程式，然後嘗試各種頁面。 一切項目的運作與之前一樣。
 
-在 [SQL Server 物件總管] 中，展開 [資料連線/SchoolContext]，然後展開 [資料表]，您會看到 Person 資料表已取代 Student 和 Instructor 資料表。 開啟 Person 資料表設計工具，您會看到它包含了過去位在 Student 和 Instructor 資料表中的所有資料行。
+在 [SQL Server 物件總管]  中，展開 [資料連線/SchoolContext]  ，然後展開 [資料表]  ，您會看到 Person 資料表已取代 Student 和 Instructor 資料表。 開啟 Person 資料表設計工具，您會看到它包含了過去位在 Student 和 Instructor 資料表中的所有資料行。
 
 ![SSOX 中的 Person 資料表](inheritance/_static/ssox-person-table.png)
 
-以滑鼠右鍵按一下 Person 資料表，然後按一下 [顯示資料表資料] 以查看鑑別子資料行。
+以滑鼠右鍵按一下 Person 資料表，然後按一下 [顯示資料表資料]  以查看鑑別子資料行。
 
 ![SSOX 中的 Person 資料 - 資料表資料](inheritance/_static/ssox-person-data.png)
 

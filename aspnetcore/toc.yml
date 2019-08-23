@@ -158,7 +158,10 @@
     - name: 資料存取
       displayName: 'tutorial, ef, entity framework'
       href: /learn/modules/persist-data-ef-core/
-- name: Fundamentals
+    - name: Web 應用程式安全性
+      displayName: 'tutorial, identity'
+      href: /learn/modules/secure-aspnet-core-identity/
+- name: 基礎
   items:
     - name: 概觀
       uid: fundamentals/index
@@ -176,7 +179,7 @@
           uid: fundamentals/host/web-host
     - name: 伺服器
       uid: fundamentals/servers/index
-    - name: Configuration
+    - name: 設定
       uid: fundamentals/configuration/index
     - name: 選項
       uid: fundamentals/configuration/options
@@ -259,7 +262,7 @@
           uid: mvc/views/overview
         - name: 部分檢視
           uid: mvc/views/partial
-        - name: Controllers
+        - name: 控制器
           uid: mvc/controllers/actions
         - name: 路由
           uid: mvc/controllers/routing
@@ -376,7 +379,7 @@
               uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
             - name: 表單
               href: 'mvc/views/working-with-forms.md#the-form-tag-helper'
-            - name: Image
+            - name: 影像
               uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
             - name: 輸入
               href: 'mvc/views/working-with-forms.md#the-input-tag-helper'
@@ -505,7 +508,7 @@
           uid: signalr/redis-backplane
         - name: 具備背景服務的 SignalR
           uid: signalr/background-services
-    - name: Configuration
+    - name: 設定
       uid: signalr/configuration
       displayName: signalr
     - name: 驗證與授權
@@ -537,7 +540,7 @@
       uid: grpc/basics
     - name: 搭配 ASP.NET Core 的 gRPC 服務
       uid: grpc/aspnetcore
-    - name: Configuration
+    - name: 設定
       uid: grpc/configuration
     - name: 驗證與授權
       uid: grpc/authn-and-authz
@@ -906,7 +909,7 @@
               uid: security/data-protection/consumer-apis/limited-lifetime-payloads
             - name: 取消金鑰已被撤銷之承載的保護
               uid: security/data-protection/consumer-apis/dangerous-unprotect
-        - name: Configuration
+        - name: 設定
           items:
             - name: 概觀
               uid: security/data-protection/configuration/index
@@ -1089,7 +1092,7 @@
           uid: migration/mvc
         - name: Web API
           uid: migration/webapi
-        - name: Configuration
+        - name: 設定
           uid: migration/configuration
         - name: 驗證和身分識別
           uid: migration/identity

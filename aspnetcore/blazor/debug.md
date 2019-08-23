@@ -5,14 +5,14 @@ description: 瞭解如何調試 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/31/2019
+ms.date: 08/22/2019
 uid: blazor/debug
-ms.openlocfilehash: 37c6009727a4f62b61793adca0d83cdd53be4b9a
-ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
+ms.openlocfilehash: c3188a1fe1b699b787f7a95630f3918d295d0f68
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68948368"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69974902"
 ---
 # <a name="debug-aspnet-core-blazor"></a>Debug ASP.NET Core Blazor
 
@@ -51,6 +51,10 @@ ms.locfileid: "68948368"
 1. 在瀏覽器中存取應用程式。
 1. 將鍵盤焦點放在應用程式, 而不是 [開發人員工具] 面板。 起始調試時, 可以關閉開發人員工具面板。
 1. 選取下列 Blazor 特定的鍵盤快速鍵:
+   * `Shift+Alt+D`在 Windows/Linux 上
+   * `Shift+Cmd+D`在 macOS 上
+1. 依照畫面上所列的步驟, 在啟用遠端偵測的情況下重新開機瀏覽器。
+1. 再次選取下列 Blazor 特定的鍵盤快速鍵, 以啟動 [debug] 會話:
    * `Shift+Alt+D`在 Windows/Linux 上
    * `Shift+Cmd+D`在 macOS 上
 

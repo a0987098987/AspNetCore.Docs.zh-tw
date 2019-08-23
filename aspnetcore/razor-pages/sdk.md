@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 06/18/2019
 uid: razor-pages/sdk
-ms.openlocfilehash: fa69e4840377e0c1c8291c7ba9305a27bd3e6b82
-ms.sourcegitcommit: 516f166c5f7cec54edf3d9c71e6e2ba53fb3b0e5
+ms.openlocfilehash: 1dc001c7c5fe320629835e06fe6db7fadabff94d
+ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67196368"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69985399"
 ---
 # <a name="aspnet-core-razor-sdk"></a>ASP.NET Core Razor SDK
 
@@ -22,18 +22,26 @@ ms.locfileid: "67196368"
 
 [!INCLUDE[](~/includes/2.1-SDK.md)]包含`Microsoft.NET.Sdk.Razor`MSBuild SDK (Razor SDK)。 Razor SDK：
 
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 * 標準化關於建置、封裝和發行專案 (包含 ASP.NET Core MVC 架構專案的 [Razor](xref:mvc/views/razor) 檔案) 的體驗。
 * 包含一組預先定義的目標、屬性和項目，可讓您自訂 Razor 檔案的編譯作業。
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+* 需要建立、封裝和發行包含[Razor](xref:mvc/views/razor)檔案的專案, 以用於 ASP.NET Core MVC 專案或[Blazor](xref:blazor/index)專案
+* 包含一組預先定義的目標、屬性和專案, 可讓您自訂 Razor (cshtml 或 Razor) 檔案的編譯。
+::: moniker-end
+
 
 ::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
-Razor SDK 包含`<Content>`具有項目`Include`屬性設為`**\*.cshtml`glob 模式。 比對的檔案會發行。
+Razor SDK 包含一個`<Content>`專案`Include` , 其屬性設定為`**\*.cshtml`萬用字元模式。 已發行相符的檔案。
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Razor SDK 包含`<Content>`項目`Include`屬性設為`**\*.cshtml`和`**\*.razor`萬用字元模式。 比對的檔案會發行。
+Razor `<Content>` SDK 包含`Include`屬性設定為`**\*.cshtml`和`**\*.razor`通配模式的元素。 已發行相符的檔案。
 
 ::: moniker-end
 
@@ -45,6 +53,7 @@ Razor SDK 包含`<Content>`項目`Include`屬性設為`**\*.cshtml`和`**\*.razo
 
 大部分的 web 應用程式不需要明確參考 Razor SDK。
 
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 若要使用 Razor SDK 來建置包含 Razor 檢視或 Razor 頁面的類別庫：
 
 * 使用 `Microsoft.NET.Sdk.Razor` 來取代 `Microsoft.NET.Sdk`：
@@ -66,6 +75,13 @@ Razor SDK 包含`<Content>`項目`Include`屬性設為`**\*.cshtml`和`**\*.razo
   `Microsoft.AspNetCore.Mvc` 中包含上述套件。 下列標記會顯示使用 Razor SDK 來建置 ASP.NET Core Razor 頁面應用程式的 Razor 檔案的專案檔：
     
   [!code-xml[](sdk/sample/RazorSDK.csproj)]
+  
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+若要使用 Razor SDK 來建立包含 Razor views 或 Razor Pages 的類別庫, 建議您從 Razor 類別庫專案範本開始。 用來建立 Blazor (razor) 檔案的 Razor 類別庫至少需要`Microsoft.AspNetCore.Components`封裝的參考。 用來建立 razor views 或 pages (cshtml 檔案) 的 razor 類別庫, 將需要目標`netcoreapp3.0`或更新版本, 並`FrameworkReference`擁有`Microsoft.AspNetCore.App`。
+
+::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
@@ -83,10 +99,17 @@ Razor SDK 包含`<Content>`項目`Include`屬性設為`**\*.cshtml`和`**\*.razo
 
 下表中的項目與屬性用來設定輸入和輸出至 Razor SDK。
 
+::: moniker range=">= aspnetcore-3.0"
+> [!WARNING]
+從 ASP.NET Core 3.0 開始, 如果`RazorCompileOnBuild`或`RazorCompileOnPublish`已停用, 則預設不會提供 MVC Views 或 Razor Pages。 應用程式必須加入`Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`封裝的明確參考, 以加入執行時間編譯的支援 (如果它們依賴執行時間編譯來處理 cshtml 檔案)。
+::: moniker-end
+
+
 | 項目 | 描述 |
 | ----- | ----------- |
-| `RazorGenerate` | 其為程式碼產生目標輸入的項目元素 ( *.cshtml* 檔案)。 |
-| `RazorCompile` | Item 項目 ( *.cs*檔案)，是 Razor 編譯目標的輸入。 使用此`ItemGroup`來指定要編譯至 Razor 組件的其他檔案。 |
+| `RazorGenerate` | 屬於程式碼產生之輸入的專案元素 ( *. cshtml*檔案)。 |
+| `RazorComponent` | 做為元件程式碼產生之輸入的專案元素 (*razor*檔案)。
+| `RazorCompile` | 做為 Razor 編譯目標輸入的專案元素 ( *.cs*檔案)。 使用此`ItemGroup`來指定要編譯成 Razor 元件的其他檔案。 |
 | `RazorTargetAssemblyAttribute` | 用於 Razor 組件的程式碼產生屬性的項目元素。 例如:  <br>`RazorAssemblyAttribute`<br>`Include="System.Reflection.AssemblyMetadataAttribute"`<br>`_Parameter1="BuildSource" _Parameter2="https://docs.microsoft.com/">` |
 | `RazorEmbeddedResource` | 加入做為內嵌資源產生的 Razor 組件的項目。 |
 
@@ -95,7 +118,7 @@ Razor SDK 包含`<Content>`項目`Include`屬性設為`**\*.cshtml`和`**\*.razo
 | `RazorTargetName` | Razor 所產生組件的檔案名稱 (不含副檔名)。 | 
 | `RazorOutputPath` | Razor 輸出目錄。 |
 | `RazorCompileToolset` | 用來判斷可用來建置 Razor 組件的工具組。 有效值為 `Implicit`、`RazorSDK` 及 `PrecompilationTool`。 |
-| [EnableDefaultContentItems](https://github.com/aspnet/websdk/blob/rel-2.0.0/src/ProjectSystem/Microsoft.NET.Sdk.Web.ProjectSystem.Targets/netstandard1.0/Microsoft.NET.Sdk.Web.ProjectSystem.targets#L21) | 預設為 `true`。 當`true`，包括*web.config*， *.json*，和 *.cshtml*檔案做為專案中的內容。 透過參考時`Microsoft.NET.Sdk.Web`，檔案底下*wwwroot*和組態檔也會包含在內。 |
+| [EnableDefaultContentItems](https://github.com/aspnet/websdk/blob/rel-2.0.0/src/ProjectSystem/Microsoft.NET.Sdk.Web.ProjectSystem.Targets/netstandard1.0/Microsoft.NET.Sdk.Web.ProjectSystem.targets#L21) | 預設為 `true`。 當`true`時, 會包含*web.config*、 *. json*和*cshtml*檔案做為專案中的內容。 透過參考時`Microsoft.NET.Sdk.Web`，檔案底下*wwwroot*和組態檔也會包含在內。 |
 | `EnableDefaultRazorGenerateItems` | 如果是 `true`，請包括來自 `RazorGenerate` 項目之 `Content` 項目的 *.cshtml* 檔案。 |
 | `GenerateRazorTargetAssemblyInfo` | 當`true`，會產生 *.cs*檔案，其中包含指定屬性`RazorAssemblyAttribute`和包含編譯輸出中的檔案。 |
 | `EnableDefaultRazorTargetAssemblyInfoAttributes` | 如果是 `true`，請將一組預設的組件屬性新增至 `RazorAssemblyAttribute`。 |
@@ -104,6 +127,7 @@ Razor SDK 包含`<Content>`項目`Include`屬性設為`**\*.cshtml`和`**\*.razo
 | `IncludeRazorContentInPack` | 當`true`，所有 Razor 內容項目 ( *.cshtml*檔案) 會標示為要包含在產生的 NuGet 套件。 預設值為 `false`。 |
 | `EmbedRazorGenerateSources` | 如果是 `true`，請將 RazorGenerate ( *.cshtml*) 項目當作內嵌檔案新增至產生的 Razor 組件。 預設值為 `false`。 |
 | `UseRazorBuildServer` | 如果是 `true`，請使用持續性組建伺服器處理序來卸載程式碼產生工作。 預設值為 `UseSharedCompilation`。 |
+| `GenerateMvcApplicationPartsAssemblyAttributes` | 當`true`時, SDK 會在執行時間產生 MVC 用來執行應用程式元件探索的其他屬性。 |
 
 如需有關屬性的詳細資訊，請參閱 [MSBuild 屬性](/visualstudio/msbuild/msbuild-properties)。
 
@@ -113,6 +137,7 @@ Razor SDK 會定義兩個主要目標：
 
 * `RazorGenerate` &ndash; 程式碼會產生 *.cs*從檔案`RazorGenerate`item 項目。 請使用 `RazorGenerateDependsOn` 屬性來指定可在此目標之前或之後執行的其他目標。
 * `RazorCompile` &ndash; 編譯會產生 *.cs* Razor 組件中的檔案。 請使用 `RazorCompileDependsOn` 屬性來指定可在此目標之前或之後執行的其他目標。
+* `RazorComponentGenerate`程式碼會產生專案元素`RazorComponent`的 .cs 檔案。 &ndash; 請使用 `RazorComponentGenerateDependsOn` 屬性來指定可在此目標之前或之後執行的其他目標。
 
 ### <a name="runtime-compilation-of-razor-views"></a>Razor 檢視的執行階段編譯
 
@@ -122,13 +147,15 @@ Razor SDK 會定義兩個主要目標：
 
 ## <a name="razor-language-version"></a>Razor 語言版本
 
-為目標時`Microsoft.NET.Sdk.Web`SDK 中，從推斷 Razor 語言版本的應用程式的目標 framework 版本。 如為目標的專案`Microsoft.NET.Sdk.Razor`SDK 或在少數情況下，應用程式需要不同的 Razor 語言版本比推斷的值，可以設定的版本設定`<RazorLangVersion>`應用程式的專案檔中的屬性：
+以`Microsoft.NET.Sdk.Web` SDK 為目標時, 會從應用程式的目標 framework 版本推斷 Razor 語言版本。 針對以 SDK 為`Microsoft.NET.Sdk.Razor`目標的專案, 或在罕見的情況下, 應用程式需要比推斷值不同的 Razor 語言版本, 您可以在應用程式`<RazorLangVersion>`的專案檔中設定屬性來設定版本:
 
 ```xml
 <PropertyGroup>
   <RazorLangVersion>{VERSION}</RazorLangVersion>
 </PropertyGroup>
 ```
+
+Razor 的語言版本與所建立之執行時間的版本緊密整合。 不支援以不是針對執行時間設計的語言版本為目標, 而且可能會產生組建錯誤。
 
 ## <a name="additional-resources"></a>其他資源
 

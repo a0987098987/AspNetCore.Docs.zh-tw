@@ -5,12 +5,12 @@ description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中�
 ms.author: riande
 ms.date: 07/25/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 57a10895c718c539ece280afcb27cb4033c7fb45
-ms.sourcegitcommit: 979dbfc5e9ce09b9470789989cddfcfb57079d94
+ms.openlocfilehash: 67a5fcee0a37861fd39a018443edbc0b9e513213
+ms.sourcegitcommit: 7a46973998623aead757ad386fe33602b1658793
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68682798"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69487690"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
@@ -92,15 +92,22 @@ ms.locfileid: "68682798"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-從終端機執行下列命令：
+* 選取 [檔案]  > [新增解決方案]  。
 
-<!-- TODO: update these instruction once mac support 2.2 projects -->
+![macOS 新增方案](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-```console
-dotnet new webapp -o RazorPagesMovie
-```
+* 選取 [.NET Core]  > [應用程式]  > [Web 應用程式]  > [下一步]  。
 
-上述命令使用 [.NET Core CLI](/dotnet/core/tools/dotnet) 來建立 Razor Pages 專案。
+  ![macOS [新增專案] 對話方塊](razor-pages-start/_static/webapp.png)
+
+* 在 [設定您的新 ASP.NET Core Web API]  對話方塊中，為 [.NET Core 3.0]  設定 [目標 Framework]  。
+
+  ![macOS .NET Core 3.0 選取項目](razor-pages-start/_static/targetframework3.png)
+
+* 將專案命名為 **RazorPagesMovie**，然後選取 [建立]  。
+
+  ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
+
 
 ## <a name="open-the-project"></a>開啟專案
 

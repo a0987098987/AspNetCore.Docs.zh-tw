@@ -3,14 +3,14 @@ title: ASP.NET Core 中的區域
 author: rick-anderson
 description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功能組織成群組，作為個別命名空間 (適用於路由) 和資料夾結構 (適用於檢視)。
 ms.author: riande
-ms.date: 08/07/2019
+ms.date: 08/16/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: e44c726c47caa3dd0c8c92e3a2502a590bee82d1
-ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
+ms.openlocfilehash: d0af3092776ee09469c879fffd3047c50b1a59b4
+ms.sourcegitcommit: 4cb0c7e74355f2e87c60e2a196f842b937247a99
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68862788"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69545801"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
@@ -136,7 +136,7 @@ ms.locfileid: "68862788"
 
 ## <a name="areas-with-razor-pages"></a>使用 Razor Pages 的區域
 
-使用 Razor Pages 的區域需要應用程式根目錄中的 *Areas/&lt;區域名稱&gt;/Pages* 資料夾。 下列資料夾結構是搭配[範例下載](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)一起使用的
+使用 Razor Pages 的區域，在應用程式的根目錄中需要有 *Areas/<area name>/Pages* 資料夾。 下列資料夾結構搭配[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)一起使用：
 
 * Project name
   * 區域

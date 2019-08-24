@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 4b94cc53777308deb26521a079d8a1c2742744db
-ms.sourcegitcommit: 4fe3ae892f54dc540859bff78741a28c2daa9a38
+ms.openlocfilehash: 225d0e3aa51745253d03e614b1c8568b3a6ba731
+ms.sourcegitcommit: 983b31449fe398e6e922eb13e9eb6f4287ec91e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2019
-ms.locfileid: "68776750"
+ms.lasthandoff: 08/24/2019
+ms.locfileid: "70017488"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -37,7 +37,7 @@ ms.locfileid: "68776750"
 * **管理員**可以核准或拒絕連絡人資料。 只有已核准的連絡人會對使用者顯示。
 * **系統管理員**可以核准/拒絕並編輯/刪除任何資料。
 
-本檔中的影像完全不符合最新的範本。
+本檔中的影像不完全符合最新的範本。
 
 在下圖中，使用者 Rick (`rick@example.com`) 登入。 Rick 只能檢視已核准的連絡人和**編輯**/**刪除**/**新建**他連絡人的連結。 只有最後一筆記錄，由 Rick，顯示**編輯**並**刪除**連結。 其他使用者不會看到最後一筆記錄，直到管理員或系統管理員的狀態變更為 「 Approved 」。
 

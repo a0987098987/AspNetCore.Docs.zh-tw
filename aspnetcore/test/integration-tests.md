@@ -5,14 +5,14 @@ description: 了解整合測試如何確保應用程式的元件在基礎結構�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/05/2019
+ms.date: 08/23/2019
 uid: test/integration-tests
-ms.openlocfilehash: a86bf2b183a81f0b903a12f9d1660fb32faa6c03
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: 195acd3e03f3de63ebd61767f2c86d1c0f38fca5
+ms.sourcegitcommit: 983b31449fe398e6e922eb13e9eb6f4287ec91e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819938"
+ms.lasthandoff: 08/24/2019
+ms.locfileid: "70017439"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -284,6 +284,16 @@ _client = _factory.CreateClient(clientOptions);
 {
   "shadowCopy": false
 }
+```
+
+如果使用 Visual Studio, 請將檔案的 [**複製到輸出目錄**] 屬性設定為 [**永遠複製**]。 如果未使用 Visual Studio, 請將`Content`目標新增至測試應用程式的專案檔:
+
+```xml
+<ItemGroup>
+  <Content Update="xunit.runner.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Content>
+</ItemGroup>
 ```
 
 ## <a name="disposal-of-objects"></a>物件的處置

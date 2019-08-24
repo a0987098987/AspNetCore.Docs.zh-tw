@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 中的 Razor Pages 如何使注重頁面的案�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 06/18/2019
+ms.date: 08/23/2019
 uid: razor-pages/sdk
-ms.openlocfilehash: 1dc001c7c5fe320629835e06fe6db7fadabff94d
-ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
+ms.openlocfilehash: 81025c14ba68971ca5d3cfc9387c2f50dd247654
+ms.sourcegitcommit: 983b31449fe398e6e922eb13e9eb6f4287ec91e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69985399"
+ms.lasthandoff: 08/24/2019
+ms.locfileid: "70017403"
 ---
 # <a name="aspnet-core-razor-sdk"></a>ASP.NET Core Razor SDK
 
@@ -22,26 +22,21 @@ ms.locfileid: "69985399"
 
 [!INCLUDE[](~/includes/2.1-SDK.md)]包含`Microsoft.NET.Sdk.Razor`MSBuild SDK (Razor SDK)。 Razor SDK：
 
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-3.0"
+
+* 需要建立、封裝和發行包含[Razor](xref:mvc/views/razor)檔案的專案, 以用於 ASP.NET Core MVC 或[Blazor](xref:blazor/index)專案。
+* 包含一組預先定義的目標、屬性和專案, 可讓您自訂 Razor (*cshtml*或*Razor*) 檔案的編譯。
+
+Razor `Content` SDK 包含`Include`屬性設定為`**\*.cshtml`和`**\*.razor`通配模式的專案。 已發行相符的檔案。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 * 標準化關於建置、封裝和發行專案 (包含 ASP.NET Core MVC 架構專案的 [Razor](xref:mvc/views/razor) 檔案) 的體驗。
 * 包含一組預先定義的目標、屬性和項目，可讓您自訂 Razor 檔案的編譯作業。
-::: moniker-end
 
-::: moniker range=">= aspnetcore-3.0"
-* 需要建立、封裝和發行包含[Razor](xref:mvc/views/razor)檔案的專案, 以用於 ASP.NET Core MVC 專案或[Blazor](xref:blazor/index)專案
-* 包含一組預先定義的目標、屬性和專案, 可讓您自訂 Razor (cshtml 或 Razor) 檔案的編譯。
-::: moniker-end
-
-
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
-
-Razor SDK 包含一個`<Content>`專案`Include` , 其屬性設定為`**\*.cshtml`萬用字元模式。 已發行相符的檔案。
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0"
-
-Razor `<Content>` SDK 包含`Include`屬性設定為`**\*.cshtml`和`**\*.razor`通配模式的元素。 已發行相符的檔案。
+Razor SDK 包含一個`Content`專案`Include` , 並將屬性設定為`**\*.cshtml`萬用字元模式。 已發行相符的檔案。
 
 ::: moniker-end
 
@@ -53,7 +48,14 @@ Razor `<Content>` SDK 包含`Include`屬性設定為`**\*.cshtml`和`**\*.razor`
 
 大部分的 web 應用程式不需要明確參考 Razor SDK。
 
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-3.0"
+
+若要使用 Razor SDK 來建立包含 Razor views 或 Razor Pages 的類別庫, 建議您從 Razor 類別庫 (RCL) 專案範本開始。 用來建立 Blazor (*razor*) 檔案的 RCL, 最少需要[AspNetCore 元件](https://www.nuget.org/packages/Microsoft.AspNetCore.Components)套件的參考。 用來建立 Razor views 或 pages (*cshtml*檔案) 的 RCL, 至少需要`netcoreapp3.0` `FrameworkReference`以或更新版本為目標, 並在其專案檔中具有[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 若要使用 Razor SDK 來建置包含 Razor 檢視或 Razor 頁面的類別庫：
 
 * 使用 `Microsoft.NET.Sdk.Razor` 來取代 `Microsoft.NET.Sdk`：
@@ -78,11 +80,6 @@ Razor `<Content>` SDK 包含`Include`屬性設定為`**\*.cshtml`和`**\*.razor`
   
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-3.0"
-若要使用 Razor SDK 來建立包含 Razor views 或 Razor Pages 的類別庫, 建議您從 Razor 類別庫專案範本開始。 用來建立 Blazor (razor) 檔案的 Razor 類別庫至少需要`Microsoft.AspNetCore.Components`封裝的參考。 用來建立 razor views 或 pages (cshtml 檔案) 的 razor 類別庫, 將需要目標`netcoreapp3.0`或更新版本, 並`FrameworkReference`擁有`Microsoft.AspNetCore.App`。
-
-::: moniker-end
-
 ::: moniker range="= aspnetcore-2.1"
 
 > [!WARNING]
@@ -100,15 +97,16 @@ Razor `<Content>` SDK 包含`Include`屬性設定為`**\*.cshtml`和`**\*.razor`
 下表中的項目與屬性用來設定輸入和輸出至 Razor SDK。
 
 ::: moniker range=">= aspnetcore-3.0"
-> [!WARNING]
-從 ASP.NET Core 3.0 開始, 如果`RazorCompileOnBuild`或`RazorCompileOnPublish`已停用, 則預設不會提供 MVC Views 或 Razor Pages。 應用程式必須加入`Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`封裝的明確參考, 以加入執行時間編譯的支援 (如果它們依賴執行時間編譯來處理 cshtml 檔案)。
-::: moniker-end
 
+> [!WARNING]
+> 從 ASP.NET Core 3.0 開始, 如果專案檔中的`RazorCompileOnBuild`或`RazorCompileOnPublish` MSBuild 屬性已停用, 則預設不會提供 MVC Views 或 Razor Pages。 如果應用程式依賴執行時間編譯來處理*cshtml*檔案, 則應用程式必須新增[microsoft.aspnetcore.mvc.razor.runtimecompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation)封裝的明確參考。
+
+::: moniker-end
 
 | 項目 | 描述 |
 | ----- | ----------- |
 | `RazorGenerate` | 屬於程式碼產生之輸入的專案元素 ( *. cshtml*檔案)。 |
-| `RazorComponent` | 做為元件程式碼產生之輸入的專案元素 (*razor*檔案)。
+| `RazorComponent` | 做為 Razor 元件程式碼產生輸入的專案元素 (*razor*檔案)。 |
 | `RazorCompile` | 做為 Razor 編譯目標輸入的專案元素 ( *.cs*檔案)。 使用此`ItemGroup`來指定要編譯成 Razor 元件的其他檔案。 |
 | `RazorTargetAssemblyAttribute` | 用於 Razor 組件的程式碼產生屬性的項目元素。 例如:  <br>`RazorAssemblyAttribute`<br>`Include="System.Reflection.AssemblyMetadataAttribute"`<br>`_Parameter1="BuildSource" _Parameter2="https://docs.microsoft.com/">` |
 | `RazorEmbeddedResource` | 加入做為內嵌資源產生的 Razor 組件的項目。 |
@@ -135,9 +133,9 @@ Razor `<Content>` SDK 包含`Include`屬性設定為`**\*.cshtml`和`**\*.razor`
 
 Razor SDK 會定義兩個主要目標：
 
-* `RazorGenerate` &ndash; 程式碼會產生 *.cs*從檔案`RazorGenerate`item 項目。 請使用 `RazorGenerateDependsOn` 屬性來指定可在此目標之前或之後執行的其他目標。
-* `RazorCompile` &ndash; 編譯會產生 *.cs* Razor 組件中的檔案。 請使用 `RazorCompileDependsOn` 屬性來指定可在此目標之前或之後執行的其他目標。
-* `RazorComponentGenerate`程式碼會產生專案元素`RazorComponent`的 .cs 檔案。 &ndash; 請使用 `RazorComponentGenerateDependsOn` 屬性來指定可在此目標之前或之後執行的其他目標。
+* `RazorGenerate` &ndash; 程式碼會產生 *.cs*從檔案`RazorGenerate`item 項目。 `RazorGenerateDependsOn`使用屬性來指定可在此目標之前或之後執行的其他目標。
+* `RazorCompile` &ndash; 編譯會產生 *.cs* Razor 組件中的檔案。 `RazorCompileDependsOn`使用來指定可在此目標之前或之後執行的其他目標。
+* `RazorComponentGenerate`程式碼會產生專案元素`RazorComponent`的 .cs 檔案。 &ndash; `RazorComponentGenerateDependsOn`使用屬性來指定可在此目標之前或之後執行的其他目標。
 
 ### <a name="runtime-compilation-of-razor-views"></a>Razor 檢視的執行階段編譯
 

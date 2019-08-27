@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/22/2019
 uid: performance/caching/memory
-ms.openlocfilehash: 3005adec9ffe41859d05a3f61c7c45b8e7bfeefc
-ms.sourcegitcommit: bdaee0e8c657fe7546fd6b7990db9c03c2af04df
+ms.openlocfilehash: 1519abbca6430063f037372a4927f5818f160457
+ms.sourcegitcommit: 776598f71da0d1e4c9e923b3b395d3c3b5825796
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69908379"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70024792"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>ASP.NET Core 中的記憶體快取
 
@@ -85,15 +85,15 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取, 以�
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet99)]
 
-具有滑動到期日的快取專案集, 因為沒有任何已系結到其到期日而變得過時的風險。 使用具有滑動期限的絕對到期時間, 以確保快取的專案不會比絕對到期日更過時。 當絕對到期時間與滑動結合時, 絕對到期時間會將上限設定為可快取專案的時間長度。 與絕對到期時間不同的是, 如果未在滑動到期時間間隔內從快取要求專案, 則會從快取中收回專案。 當指定絕對和滑動期限時, 會以邏輯方式 ORed 到期日。
+只有具有滑動期限的快取專案集, 才會有過時的風險。 如果存取的頻率高於滑動到期時間間隔, 專案將永遠不會過期。 結合滑動期限與絕對到期日, 以保證專案在其絕對到期時間通過後到期。 絕對到期時間會設定專案可快取的時間上限, 但如果在滑動到期時間間隔內未要求, 仍然允許專案提早過期。 當同時指定絕對和滑動期限時, 會以邏輯方式 ORed 到期日。 如果滑動到期間隔*或*絕對到期時間經過, 則會從快取中收回專案。
 
-下列程式碼會取得或建立具有滑動和絕對到期的快取專案:
+下列程式碼會取得或建立具有滑動*和*絕對到期的快取專案:
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet9)]
 
 上述程式碼可確保資料不會快取超過絕對時間。
 
-<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>、 <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*> <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions> <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>和<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.Get*>是類別的擴充方法, 可延伸的功能。 如需其他快取方法的說明, 請參閱[IMemoryCache 方法](/dotnet/api/microsoft.extensions.caching.memory.imemorycache)和[CacheExtensions 方法](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions)。
+<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>、 <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*> <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions>和<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.Get*>是類別中的擴充方法。 這些方法會擴充的功能<xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>。
 
 ## <a name="memorycacheentryoptions"></a>MemoryCacheEntryOptions
 

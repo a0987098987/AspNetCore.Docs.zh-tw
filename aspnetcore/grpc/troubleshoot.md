@@ -5,18 +5,20 @@ description: 針對在 .NET Core 上使用 gRPC 時的錯誤進行疑難排解�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 08/17/2019
+ms.date: 08/26/2019
 uid: grpc/troubleshoot
-ms.openlocfilehash: 7621266dfe26b7126d1607e195dd5dcaab4efa55
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
+ms.openlocfilehash: 49bde2792f0fd7910de02d75f5f443000916dec7
+ms.sourcegitcommit: de17150e5ec7507d7114dde0e5dbc2e45a66ef53
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886484"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70112746"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>針對 .NET Core 上的 gRPC 進行疑難排解
 
 依[James 牛頓-王](https://twitter.com/jamesnk)
+
+本檔討論在 .NET 上開發 gRPC 應用程式時經常遇到的問題。
 
 ## <a name="mismatch-between-client-and-service-ssltls-configuration"></a>用戶端與服務 SSL/TLS 設定不相符
 
@@ -47,6 +49,30 @@ static async Task Main(string[] args)
 
 所有 gRPC 用戶端都支援 TLS。 從其他語言 gRPC 用戶端時, 通常需要使用`SslCredentials`設定的通道。 `SslCredentials`指定用戶端將使用的憑證, 而且必須使用它來取代不安全的認證。 如需將不同的 gRPC 用戶端執行設定為使用 TLS 的範例, 請參閱[GRPC Authentication](https://www.grpc.io/docs/guides/auth/)。
 
+## <a name="call-a-grpc-service-with-an-untrustedinvalid-certificate"></a>使用不受信任/不正確憑證呼叫 gRPC 服務
+
+.NET gRPC 用戶端要求服務必須具有受信任的憑證。 呼叫沒有受信任憑證的 gRPC 服務時, 會傳回下列錯誤訊息:
+
+> 未處理的例外狀況。 System.net.HTTP.HTTPrequestexception:無法建立 SSL 連線, 請參閱內部例外狀況。
+> ---> AuthenticationException:根據驗證程式, 遠端憑證無效。
+
+如果您要在本機測試您的應用程式, 而且 ASP.NET Core HTTPS 開發憑證不受信任, 您可能會看到此錯誤。 如需修正此問題的指示, 請參閱[信任 Windows 和 macOS 上的 ASP.NET CORE HTTPS 開發憑證](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)。
+
+如果您是在另一部電腦上呼叫 gRPC 服務, 而無法信任憑證, 則可以將 gRPC 用戶端設定為忽略不正確憑證。 下列程式碼會使用[HttpClientHandler](/dotnet/api/system.net.http.httpclienthandler.servercertificatecustomvalidationcallback)來允許沒有受信任憑證的呼叫:
+
+```csharp
+var httpClientHandler = new HttpClientHandler();
+// Return `true` to allow certificates that are untrusted/invalid
+httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
+
+var httpClient = new HttpClient(httpClientHandler);
+httpClient.BaseAddress = new Uri("https://localhost:5001");
+var client = GrpcClient.Create<Greeter.GreeterClient>(httpClient);
+```
+
+> [!WARNING]
+> 不受信任的憑證應該只在應用程式開發期間使用。 生產應用程式應該一律使用有效的憑證。
+
 ## <a name="call-insecure-grpc-services-with-net-core-client"></a>使用 .NET Core 用戶端呼叫不安全的 gRPC 服務
 
 需要其他設定, 才能使用 .NET Core 用戶端呼叫不安全的 gRPC 服務。 GRPC 用戶端必須將`System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport`參數設定為`true` , 並在伺服器位址中使用: `http`
@@ -56,7 +82,7 @@ static async Task Main(string[] args)
 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
 var httpClient = new HttpClient();
-// The port number(5000) must match the port of the gRPC server.
+// The address starts with "http://"
 httpClient.BaseAddress = new Uri("http://localhost:5000");
 var client = GrpcClient.Create<Greeter.GreeterClient>(httpClient);
 ```

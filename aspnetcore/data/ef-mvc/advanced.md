@@ -2,17 +2,17 @@
 title: 教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
 description: 本教學課程介紹一些實用主題，這些主題超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念。
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 0cb9b00cafde6e003311940ff4c70086e18bac10
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 913511948def86cb2065459a3fcf5f16362a92d5
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583256"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975037"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
 

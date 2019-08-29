@@ -2,17 +2,17 @@
 title: 教學課程：更新相關資料 - ASP.NET MVC 搭配 EF Core
 description: 在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 4bf444d3334f32ff80a6e21607b250c00e0dc7ca
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 85849cfbb6f453103c4013ce49be4afbf506d7b5
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583424"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975158"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關資料 - ASP.NET MVC 搭配 EF Core
 

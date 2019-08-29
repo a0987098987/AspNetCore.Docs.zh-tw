@@ -2,17 +2,17 @@
 title: 教學課程：處理並行 - ASP.NET MVC 搭配 EF Core
 description: 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: d4b83bd269b067ab6fa9e8666109bacc602589bd
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 0a42a8adbe485f47853fa05fb500f4480f06e3f5
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583248"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975107"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>教學課程：處理並行 - ASP.NET MVC 搭配 EF Core
 

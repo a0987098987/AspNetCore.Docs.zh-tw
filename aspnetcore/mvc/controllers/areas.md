@@ -5,12 +5,12 @@ description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功
 ms.author: riande
 ms.date: 08/16/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: d0af3092776ee09469c879fffd3047c50b1a59b4
-ms.sourcegitcommit: 4cb0c7e74355f2e87c60e2a196f842b937247a99
+ms.openlocfilehash: 9065aa23a537add5a9376472e4f4478e9d4149bd
+ms.sourcegitcommit: 776598f71da0d1e4c9e923b3b395d3c3b5825796
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69545801"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70024735"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
@@ -72,9 +72,7 @@ ms.locfileid: "69545801"
 /Areas/<Area-Name>/Views/Shared/<Action-Name>.cshtml
 /Views/Shared/<Action-Name>.cshtml
 /Pages/Shared/<Action-Name>.cshtml
-   ```
-
-非檢視資料夾的位置 (例如「控制站」  和「模型」  ) 並**不**重要。 例如，「控制站」  和「模型」  資料夾並非必要項。 「控制器」  和「模型」  的內容都是要編譯為 .dll 的程式碼。 「檢視」  的內容要在向該檢視發出要求之後才會編譯。
+```
 
 <a name="attribute"></a>
 

@@ -1,18 +1,18 @@
 ---
 title: 處理 ASP.NET Core 中的錯誤
-author: tdykstra
+author: rick-anderson
 description: 了解如何處理 ASP.NET Core 應用程式中的錯誤。
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: fundamentals/error-handling
-ms.openlocfilehash: f9f91455b273b99608ca6f1524df6cb748a26669
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 652a97a6b7fbe4c8cc678b86a92eea59937e809c
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308199"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975575"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>處理 ASP.NET Core 中的錯誤
 
@@ -24,7 +24,7 @@ ms.locfileid: "68308199"
 
 ## <a name="developer-exception-page"></a>開發人員例外狀況頁面
 
-「開發人員例外狀況頁面」會顯示要求例外狀況的詳細資訊。 該頁面是由 [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) \(英文\) 套件所提供，其位於 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)中。 當應用程式在開發[環境](xref:fundamentals/environments)中執行時，新增程式碼到 `Startup.Configure` 方法以啟用頁面：
+「開發人員例外狀況頁面」  會顯示要求例外狀況的詳細資訊。 該頁面是由 [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) \(英文\) 套件所提供，其位於 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)中。 當應用程式在開發[環境](xref:fundamentals/environments)中執行時，新增程式碼到 `Startup.Configure` 方法以啟用頁面：
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=1-4)]
 
@@ -40,7 +40,7 @@ ms.locfileid: "68308199"
 * Cookie (如果有的話)
 * 頁首
 
-若要在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) \(英文\) 中查看開發人員例外狀況頁面，請使用 `DevEnvironment` 前置處理器指示詞，並選取首頁上的 [觸發例外狀況]。
+若要在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) \(英文\) 中查看開發人員例外狀況頁面，請使用 `DevEnvironment` 前置處理器指示詞，並選取首頁上的 [觸發例外狀況]  。
 
 ## <a name="exception-handler-page"></a>例外處理常式頁面
 
@@ -75,7 +75,7 @@ public IActionResult Error()
 > [!WARNING]
 > 請**勿**提供敏感性的錯誤資訊給用戶端。 提供錯誤有安全性風險。
 
-若要在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) \(英文\) 中查看例外狀況處理頁面，請使用 `ProdEnvironment` 和 `ErrorHandlerPage` 前置處理器指示詞，並選取首頁上的 [觸發例外狀況]。
+若要在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) \(英文\) 中查看例外狀況處理頁面，請使用 `ProdEnvironment` 和 `ErrorHandlerPage` 前置處理器指示詞，並選取首頁上的 [觸發例外狀況]  。
 
 ## <a name="exception-handler-lambda"></a>例外處理常式 Lambda
 
@@ -88,11 +88,11 @@ public IActionResult Error()
 > [!WARNING]
 > 請**勿**從 <xref:Microsoft.AspNetCore.Diagnostics.IExceptionHandlerFeature> 或 <xref:Microsoft.AspNetCore.Diagnostics.IExceptionHandlerPathFeature> 提供錯誤資訊給用戶端。 提供錯誤有安全性風險。
 
-若要在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) \(英文\) 中查看例外狀況處理 Lambda 的結果，請使用 `ProdEnvironment` 和 `ErrorHandlerLambda` 前置處理器指示詞，並選取首頁上的 [觸發例外狀況]。
+若要在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) \(英文\) 中查看例外狀況處理 Lambda 的結果，請使用 `ProdEnvironment` 和 `ErrorHandlerLambda` 前置處理器指示詞，並選取首頁上的 [觸發例外狀況]  。
 
 ## <a name="usestatuscodepages"></a>UseStatusCodePages
 
-根據預設，ASP.NET Core 應用程式不會提供 HTTP 狀態碼 (例如「404 - 找不到」) 等狀態碼頁面。 應用程式會傳回狀態碼和空白回應主體。 若要提供狀態碼頁面，請使用狀態碼頁面中介軟體。
+根據預設，ASP.NET Core 應用程式不會提供 HTTP 狀態碼 (例如「404 - 找不到」  ) 等狀態碼頁面。 應用程式會傳回狀態碼和空白回應主體。 若要提供狀態碼頁面，請使用狀態碼頁面中介軟體。
 
 該中介軟體是由 [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) \(英文\) 套件所提供，其位於 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)中。
 
@@ -108,7 +108,7 @@ public IActionResult Error()
 Status Code: 404; Not Found
 ```
 
-若要在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) \(英文\) 中查看其中一種狀態碼頁面格式，請使用其中一個以 `StatusCodePages` 為前置處理器指示詞，並選取首頁上的 [觸發 404]。
+若要在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) \(英文\) 中查看其中一種狀態碼頁面格式，請使用其中一個以 `StatusCodePages` 為前置處理器指示詞，並選取首頁上的 [觸發 404]  。
 
 ## <a name="usestatuscodepages-with-format-string"></a>具格式字串的 UseStatusCodePages
 
@@ -126,7 +126,7 @@ Status Code: 404; Not Found
 
 <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePagesWithRedirects*> 擴充方法：
 
-* 傳送「302 - 已找到」狀態碼傳送給用戶端。
+* 傳送「302 - 已找到」  狀態碼傳送給用戶端。
 * 將用戶端重新導向到 URL 範本中提供的位置。
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
@@ -192,7 +192,7 @@ if (statusCodePagesFeature != null)
 
 ## <a name="server-exception-handling"></a>伺服器例外狀況處理
 
-除了應用程式中的例外狀況處理邏輯之外，[HTTP 伺服器實作](xref:fundamentals/servers/index)也可以處理一些例外狀況。 如果伺服器在回應標頭傳送之前攔截到例外狀況，伺服器會傳送「500 - 內部伺服器錯誤」回應，且沒有回應本文。 如果伺服器在回應標頭傳送之後攔截到例外狀況，伺服器會關閉連線。 應用程式未處理的要求會由伺服器來處理。 當伺服器處理要求時，任何發生的例外狀況均由伺服器的例外狀況處理功能來處理。 應用程式的自訂錯誤頁面、例外狀況處理中介軟體或篩選條件並不會影響此行為。
+除了應用程式中的例外狀況處理邏輯之外，[HTTP 伺服器實作](xref:fundamentals/servers/index)也可以處理一些例外狀況。 如果伺服器在回應標頭傳送之前攔截到例外狀況，伺服器會傳送「500 - 內部伺服器錯誤」  回應，且沒有回應本文。 如果伺服器在回應標頭傳送之後攔截到例外狀況，伺服器會關閉連線。 應用程式未處理的要求會由伺服器來處理。 當伺服器處理要求時，任何發生的例外狀況均由伺服器的例外狀況處理功能來處理。 應用程式的自訂錯誤頁面、例外狀況處理中介軟體或篩選條件並不會影響此行為。
 
 ## <a name="startup-exception-handling"></a>啟動例外狀況處理
 

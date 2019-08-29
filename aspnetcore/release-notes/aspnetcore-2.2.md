@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core 2.2 的新功能
-author: tdykstra
+author: rick-anderson
 description: 了解 ASP.NET Core 2.2 的新功能。
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: aspnetcore-2.2
-ms.openlocfilehash: ad7b5ecc4f03d845375b1612150da183df9ec0d9
-ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
+ms.openlocfilehash: 88a202d85c4d4ed7a395dba78feea29ef4637732
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67316586"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975717"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2 的新功能
 

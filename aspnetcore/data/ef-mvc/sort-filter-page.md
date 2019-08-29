@@ -2,16 +2,16 @@
 title: 教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Core
 description: 在本教學課程中，您要將排序、篩選和分頁功能新增至 Students 的 [索引] 頁面。 此外，還要建立將執行簡易群組的頁面。
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 4e52a3d3f56c4cf6f396ee9ff1c18061a2364c77
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 7a5f617b00cceb007f37ca1e585c4c7ff1831b56
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583398"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975215"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Core
 

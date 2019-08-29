@@ -3,16 +3,16 @@ title: ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 author: guardrex
 description: 深入了解 HTTP.sys，這是 Windows 上的 ASP.NET Core 網頁伺服器。 HTTP.sys 建置在 HTTP.sys 核心模式驅動程式之上，是 Kestrel 的替代方式，可以用來直接連線到網際網路而不使用 IIS。
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 06/20/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 3f48cda8f89d3f3dcce220cad4e405472b510df4
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 5ee866c862f16c2c22539bf880b5a93415504fb1
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67814882"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975510"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 

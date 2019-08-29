@@ -3,16 +3,16 @@ title: ASP.NET Core 中的 WebSockets 支援
 author: rick-anderson
 description: 了解如何在 ASP.NET Core 中開始使用 WebSocket。
 monikerRange: '>= aspnetcore-1.1'
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 05/10/2019
 uid: fundamentals/websockets
-ms.openlocfilehash: 4c49a5349c0718e5c59f30e6d51caf7a43fa0454
-ms.sourcegitcommit: c5339594101d30b189f61761275b7d310e80d18a
+ms.openlocfilehash: 5d4d9b02bd45e6650aa56448a3663cad06b3b45e
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2019
-ms.locfileid: "66458454"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975448"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core 中的 WebSockets 支援
 
@@ -47,7 +47,7 @@ ms.locfileid: "66458454"
 
   * Windows 8 / Windows Server 2012 或更新版本
 
-* 如需支援的瀏覽器，請請參閱 https://caniuse.com/#feat=websockets。
+* 如需支援的瀏覽器，請請參閱 https://caniuse.com/#feat=websockets 。
 
 ::: moniker range="< aspnetcore-2.1"
 
@@ -145,7 +145,7 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 
 不過，瀏覽器會在發出 WebSocket 要求時，傳送 `Origin` 標頭。 應設定應用程式驗證這些標頭，以確保只允許來自預期來源的 WebSocket。
 
-若您在 "https://server.com" 上裝載伺服器，且在 "https://client.com" 上裝載用戶端，請將 "https://client.com" 新增至 `AllowedOrigins` 清單中，以讓 WebSockets 進行驗證。
+若您在 "https://server.com " 上裝載伺服器，且在 "https://client.com" 上裝載用戶端，請將 "https://client.com" 新增至 `AllowedOrigins` 清單中，以讓 WebSockets 進行驗證。
 
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSocketsOptionsAO&highlight=6-7)]
 
@@ -198,7 +198,7 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 
 ## <a name="sample-app"></a>範例應用程式
 
-本文附帶的[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples)是回應應用程式。 其具有一個進行 WebSocket 連線的網頁，而伺服器會將其接收的任何訊息重新傳送回用戶端。 請從命令提示字元執行應用程式 (它未設定為從 Visual Studio 搭配 IIS Express 執行)，並巡覽至 http://localhost:5000。 網頁會在左上方顯示連線狀態：
+本文附帶的[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples)是回應應用程式。 其具有一個進行 WebSocket 連線的網頁，而伺服器會將其接收的任何訊息重新傳送回用戶端。 請從命令提示字元執行應用程式 (它未設定為從 Visual Studio 搭配 IIS Express 執行)，並巡覽至 http://localhost:5000 。 網頁會在左上方顯示連線狀態：
 
 ![網頁的初始狀態](websockets/_static/start.png)
 

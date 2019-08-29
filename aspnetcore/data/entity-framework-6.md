@@ -2,16 +2,16 @@
 title: ASP.NET Core 與 Entity Framework 6 使用者入門
 author: rick-anderson
 description: 本文示範如何在 ASP.NET Core 應用程式中使用 Entity Framework 6。
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/entity-framework-6
-ms.openlocfilehash: 50f51a72341cbad017872df581da214211b9920a
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ace937e72efa2343e50b11d52ebc0a2530505758
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886933"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975589"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>ASP.NET Core 與 Entity Framework 6 使用者入門
 
@@ -67,12 +67,12 @@ ms.locfileid: "64886933"
 
 * 建立方案。
 
-* [新增] > [新專案] > [Web] > [ASP.NET Core Web 應用程式]
+* [新增]   > [新專案]   > [Web]   > [ASP.NET Core Web 應用程式] 
   * 在專案範本選取項目對話方塊中，選取下拉式清單中的 API 和.NET Framework
 
-* [新增] > [新增專案] > [Windows Desktop] > [類別庫 (.NET Framework)]
+* [新增]   > [新增專案]   > [Windows Desktop]   > [類別庫 (.NET Framework)] 
 
-* 在這兩個專案的 [套件管理員主控台] (PMC) 中，執行 `Install-Package Entityframework` 命令。
+* 在這兩個專案的 [套件管理員主控台]  (PMC) 中，執行 `Install-Package Entityframework` 命令。
 
 * 在類別庫專案中，建立資料模型類別和內容類別，以及 `IDbContextFactory` 的實作。
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/components
-ms.openlocfilehash: e1afae730d61463d31c8a1698fc31904a3fc8f0e
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 07e9153ccfdc78d1da57b815d33220f7fa597cc7
+ms.sourcegitcommit: 4b00e77f9984ce76356e829cfe7f75f0f61a7a8f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583098"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70145730"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -436,7 +436,7 @@ Razor 元件提供事件處理功能。 針對名為`on{event}`的 HTML 專案�
 | 進度 | `UIProgressEventArgs` |
 | 觸控 | `UITouchEventArgs`&ndash; 代表觸控裝置上`UITouchPoint`的單一連絡人點。 |
 
-如需上表中事件的屬性和事件處理行為的詳細資訊, 請參閱[參考來源中的 EventArgs 類別](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview8/src/Components/Web/src)。
+如需上表中事件的屬性和事件處理行為的詳細資訊, 請參閱[參考來源中的 EventArgs 類別 (aspnet/AspNetCore release/3.0-preview9 分支)](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src)。
 
 ### <a name="lambda-expressions"></a>Lambda 運算式
 

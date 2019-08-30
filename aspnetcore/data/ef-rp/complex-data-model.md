@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 8a1c0759453b02f4ce1c45471a8f93da626f8261
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 34b977f70f3e7e58e4ab6fcf3d8f69800896a65d
+ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583294"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70059115"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -134,13 +134,16 @@ public string FirstMidName { get; set; }
 
 `Required` 屬性會讓名稱屬性成為必要欄位。 針對不可為 Null 型別的實值型別 (例如 `DateTime`、`int` 和 `double`)，`Required` 屬性並非必要項目。 不可為 Null 的類型會自動視為必要欄位。
 
-`Required` 屬性可由 `StringLength` 屬性中的最小長度參數取代：
+`Required` 屬性必須搭配 `MinimumLength` 使用，才能強制執行 `MinimumLength`。
 
 ```csharp
 [Display(Name = "Last Name")]
-[StringLength(50, MinimumLength=1)]
+[Required]
+[StringLength(50, MinimumLength=2)]
 public string LastName { get; set; }
 ```
+
+`MinimumLength` 與 `Required` 允許空白字元以滿足驗證。 使用 `RegularExpression` 屬性來完全控制字串。
 
 ### <a name="the-display-attribute"></a>Display 屬性
 
@@ -1353,7 +1356,7 @@ dotnet ef database update
 
 新增下列醒目提示程式碼。 新的程式碼位於 `.CreateTable( name: "Department"` 區塊後方：
 
- [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
+[!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
 藉由上述的變更，現有的 `Course` 資料列便會在執行 `ComplexDataModel``Up` 方法後與 "Temp" 部門產生關聯。
 
@@ -1368,8 +1371,6 @@ dotnet ef database update
 
 * [這個教學課程的 YouTube 版本 (第 1 部分)](https://www.youtube.com/watch?v=0n2f0ObgCoA)
 * [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=Je0Z5K1TNmY)
-
-
 
 > [!div class="step-by-step"]
 > [上一頁](xref:data/ef-rp/migrations)

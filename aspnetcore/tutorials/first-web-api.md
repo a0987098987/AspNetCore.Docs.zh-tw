@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何使用 ASP.NET Core 建置 Web API。
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/14/2019
+ms.date: 08/27/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 99985e9fb1134c2ba808434f8d24c4a768773268
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
+ms.openlocfilehash: 25bfccb136d875b454034bd011828c9f3b6cd3d8
+ms.sourcegitcommit: de17150e5ec7507d7114dde0e5dbc2e45a66ef53
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022599"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113291"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -32,7 +32,7 @@ ms.locfileid: "69022599"
 
 結束時，您會有一個 Web API，可以管理儲存在資料庫中的「待辦事項」。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程會建立以下 API：
 
@@ -48,7 +48,7 @@ ms.locfileid: "69022599"
 
 ![左側方塊代表用戶端。 它會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -462,9 +462,9 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * 設定要刪除的物件 URI，例如 `https://localhost:5001/api/TodoItems/1`
 * 選取 [傳送] 
 
-## <a name="call-the-api-from-jquery"></a>從 jQuery 呼叫 API
+## <a name="call-the-web-api-with-javascript"></a>使用 JavaScript 呼叫 Web API
 
-請參閱[教學課程：使用 jQuery 呼叫 ASP.NET Core Web API](xref:tutorials/web-api-jquery)。
+請參閱[教學課程：使用 JavaScript 呼叫 ASP.NET Core Web API](xref:tutorials/web-api-javascript)。
 
 ::: moniker-end
 
@@ -480,26 +480,27 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 > * 設定路由和 URL 路徑。
 > * 指定傳回值。
 > * 使用 Postman 呼叫 Web API。
-> * 使用 jQuery 呼叫 Web API。
+> * 使用 JavaScript 呼叫 Web API。
 
 結束時，您將會有一個可管理關聯式資料庫中所儲存「待辦事項」的 Web API。
-## <a name="overview"></a>總覽
+
+## <a name="overview"></a>概觀
 
 本教學課程會建立以下 API：
 
 |API | 說明 | 要求本文 | 回應本文 |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | 取得所有待辦事項 | None | 待辦事項的陣列|
-|GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | None | 待辦事項|
+|GET /api/TodoItems | 取得所有待辦事項 | 無 | 待辦事項的陣列|
+|GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | 無 | 待辦事項|
 |POST /api/TodoItems | 新增記錄 | 待辦事項 | 待辦事項 |
-|PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | None |
-|DELETE /api/TodoItems/{識別碼} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | None | None|
+|PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | 無 |
+|DELETE /api/TodoItems/{識別碼} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | 無 | 無|
 
 下圖顯示應用程式的設計。
 
 ![左側方塊代表用戶端。 它會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -737,7 +738,6 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * 如果沒有項目符合所要求的識別碼，方法會傳回 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) 錯誤碼。
 * 否則，方法會傳回 200 與 JSON 回應本文。 傳回 `item` 會導致 HTTP 200 回應。
 
-
 ## <a name="test-the-gettodoitems-method"></a>測試 GetTodoItems 方法
 
 本教學課程使用 Postman 來測試 Web API。
@@ -863,9 +863,9 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 範例應用程式可讓您刪除所有項目。 但刪除最後一個項目之後，模型類別建構函式會在下次呼叫 API 時建立新的項目。
 
-## <a name="call-the-api-with-jquery"></a>使用 jQuery 呼叫 API
+## <a name="call-the-web-api-with-javascript"></a>使用 JavaScript 呼叫 Web API
 
-在本節中，將會新增 HTML 網頁，以使用 jQuery 來呼叫 Web API。 jQuery 會起始要求，並使用來自 API 回應的詳細資料更新頁面。
+在此節中，將會新增 HTML 網頁，以使用 JavaScript 來呼叫 Web API。 Fetch API 會起始要求。 JavaScript 會使用來自 Web API 回應的詳細資料來更新頁面。
 
 藉由使用下列反白顯示的程式碼更新 *Startup.cs*，來設定應用程式[提供靜態檔案](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)並[啟用預設檔案對應](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)：
 
@@ -886,19 +886,17 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * 開啟 *Properties\launchSettings.json*。
 * 移除 `launchUrl` 屬性，以強制應用程式於 *index.html* 處開啟 &mdash; 專案的預設檔案。
 
-您可以使用幾種方式來取得 jQuery。 在上述的程式碼片段中，從 CDN 載入程式庫。
-
-此範例會呼叫 API 的所有 CRUD 方法。 以下是關於呼叫 API 的說明。
+此範例會呼叫 Web API 的所有 CRUD 方法。 以下是關於呼叫 API 的說明。
 
 ### <a name="get-a-list-of-to-do-items"></a>取得待辦事項的清單
 
-JQuery [ajax](https://api.jquery.com/jquery.ajax/) 函式會將 `GET` 要求傳送至 API，API 則會傳回代表待辦事項陣列的 JSON。 如果要求成功，則會叫用 `success` 回呼函式。 在回呼中，DOM 已使用待辦事項資訊進行更新。
+Fetch 會將 HTTP GET 要求傳送至 Web API，API 則會傳回代表待辦事項陣列的 JSON。 如果要求成功，則會叫用 `success` 回呼函式。 在回呼中，DOM 已使用待辦事項資訊進行更新。
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_GetData)]
 
 ### <a name="add-a-to-do-item"></a>新增待辦事項
 
-[ajax](https://api.jquery.com/jquery.ajax/) 函式會傳送 `POST` 要求，並在要求本文中包含待辦事項。 `accepts` 和 `contentType` 選項都設定為 `application/json`，以指定接收和傳送的媒體類型。 待辦事項會使用 [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) 轉換成 JSON。 當 API 傳回成功狀態碼時，會叫用 `getData` 函式來更新 HTML 資料表。
+Fetch 會傳送 HTTP POST 要求，並在要求本文中包含待辦事項。 `accepts` 和 `contentType` 選項都設定為 `application/json`，以指定接收和傳送的媒體類型。 待辦事項會使用 [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) 轉換成 JSON。 當 API 傳回成功狀態碼時，會叫用 `getData` 函式來更新 HTML 資料表。
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AddItem)]
 

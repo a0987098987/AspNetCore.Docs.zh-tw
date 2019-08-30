@@ -2,19 +2,27 @@
 title: 教學課程：開始在 ASP.NET MVC Web 應用程式中使用 EF Core
 description: 這是說明如何從零開始建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 1b68c20ba206a5afe36f307525879f91d03d95d1
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 3450ac5b46e2a03b5d58c8760b78a52065343992
+ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583338"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69985365"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>教學課程：開始在 ASP.NET MVC Web 應用程式中使用 EF Core
+
+::: moniker range=">= aspnetcore-3.0"
+
+此教學課程**尚未**升級至 ASP.NET Core 3.0。 [Razor Pages 版本](xref:data/ef-rp/intro)已更新。 如需何時可能更新此資訊的詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/13920) \(英文\)。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
@@ -35,7 +43,7 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 > * 建立控制器和檢視
 > * 檢視資料庫
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [.NET Core SDK 2.2](https://www.microsoft.com/net/download)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) 和下列工作負載：
@@ -378,3 +386,5 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 > [!div class="nextstepaction"]
 > [實作基本的 CRUD 功能](crud.md)
+
+::: moniker-end

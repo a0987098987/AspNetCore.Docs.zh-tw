@@ -2,16 +2,16 @@
 title: 教學課程：讀取相關資料 - ASP.NET MVC 搭配 EF Core
 description: 在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 43d05d0a5f938e60cdb54a0025d8bc277059c2e3
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 2bf556dae5d30819c54ecc3f0dadfbd3316db1cc
+ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583425"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70059109"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>教學課程：讀取相關資料 - ASP.NET MVC 搭配 EF Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "69583425"
 > * 建立 Instructors 頁面
 > * 了解明確載入
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [建立複雜的資料模型](complex-data-model.md)
 
@@ -239,7 +239,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ExplicitLoading&highlight=23-29)]
 
-新的程式碼會從擷取 Instructor 實體的程式碼中，捨棄用於註冊資料的 *ThenInclude* 方法呼叫。 如果選取了講師和課程，醒示提示的程式碼就會針對所選取的課程擷取 Enrollment 實體，並針對每個 Enrollment 擷取 Student 實體。
+新的程式碼會從擷取 Instructor 實體的程式碼中，捨棄用於註冊資料的 *ThenInclude* 方法呼叫。 它也會捨棄 `AsNoTracking`。  如果選取了講師和課程，醒示提示的程式碼就會針對所選取的課程擷取 Enrollment 實體，並針對每個 Enrollment 擷取 Student 實體。
 
 執行應用程式，並立即移至 Instructors [索引] 頁面；雖然您已變更資料的擷取方式，但您會發現頁面上顯示的內容沒有任何差異。
 

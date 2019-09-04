@@ -4,14 +4,14 @@ author: juntaoluo
 description: 瞭解使用 ASP.NET Core 撰寫 gRPC 服務時的基本概念。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 08/28/2019
+ms.date: 09/03/2019
 uid: grpc/aspnetcore
-ms.openlocfilehash: 128f5b36eac9112460c33693db5537134a077476
-ms.sourcegitcommit: 23f79bd71d49c4efddb56377c1f553cc993d781b
+ms.openlocfilehash: 28e6b8589bbe0b6a3723b64736c723c883302571
+ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70130709"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70238158"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>搭配 ASP.NET Core 的 gRPC 服務
 
@@ -71,10 +71,9 @@ Kestrel gRPC 端點:
 
 #### <a name="http2"></a>HTTP/2
 
-Kestrel 支援大多數新式作業系統上的[HTTP/2](xref:fundamentals/servers/kestrel#http2-support) 。 根據預設, Kestrel 端點會設定為支援 HTTP/1.1 和 HTTP/2 連接。
+gRPC 需要 HTTP/2。 ASP.NET Core 的 gRPC 會驗證[HttpRequest。通訊協定](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*)為`HTTP/2`。
 
-> [!NOTE]
-> macOS 不支援具有[傳輸層安全性 (TLS)](https://tools.ietf.org/html/rfc5246)的 ASP.NET Core gRPC。 您需要額外的組態才能在 macOS 上成功執行 gRPC 服務。 如需詳細資訊，請參閱[無法在 macOS 上啟動 ASP.NET Core gRPC 應用程式](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos)。
+Kestrel 支援大多數新式作業系統上的[HTTP/2](xref:fundamentals/servers/kestrel#http2-support) 。 根據預設, Kestrel 端點會設定為支援 HTTP/1.1 和 HTTP/2 連接。
 
 #### <a name="https"></a>HTTPS
 
@@ -101,7 +100,7 @@ Kestrel 支援大多數新式作業系統上的[HTTP/2](xref:fundamentals/server
 }
 ```
 
-或者, 您也可以在*Program.cs*中設定 Kestrel endspoints:
+或者, 您也可以在*Program.cs*中設定 Kestrel 端點:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -122,7 +121,12 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
+設定 HTTP/2 端點而不使用 HTTPS 時, 端點的[listenoptions 來](xref:fundamentals/servers/kestrel#listenoptionsprotocols)必須設定為`HttpProtocols.Http2`。 `HttpProtocols.Http1AndHttp2`無法使用, 因為必須要有 HTTPS 才能協調 HTTP/2。 如果沒有 HTTPS, 與端點的所有連接都會預設為 HTTP/1.1, 而 gRPC 呼叫會失敗。
+
 如需使用 Kestrel 啟用 HTTP/2 和 HTTPS 的詳細資訊, 請參閱[Kestrel 端點](xref:fundamentals/servers/kestrel#endpoint-configuration)設定。
+
+> [!NOTE]
+> macOS 不支援具有[傳輸層安全性 (TLS)](https://tools.ietf.org/html/rfc5246)的 ASP.NET Core gRPC。 您需要額外的組態才能在 macOS 上成功執行 gRPC 服務。 如需詳細資訊，請參閱[無法在 macOS 上啟動 ASP.NET Core gRPC 應用程式](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos)。
 
 ## <a name="integration-with-aspnet-core-apis"></a>與 ASP.NET Core Api 整合
 

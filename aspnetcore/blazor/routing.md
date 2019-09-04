@@ -5,14 +5,14 @@ description: 瞭解如何在應用程式中路由傳送要求, 以及關於 NavL
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2019
+ms.date: 08/23/2019
 uid: blazor/routing
-ms.openlocfilehash: 197b1a91b3540d21639c3ee775b2c490da7b23fe
-ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
+ms.openlocfilehash: 067dad657c1e89a31fac45fdfa095cce4b10798d
+ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030395"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70238058"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -103,6 +103,21 @@ ASP.NET Core 3.0 Preview 中的 Blazor 應用程式不支援選擇性參數。 �
 > [!WARNING]
 > 確認 URL 可以轉換成 CLR 類型的路由條件約束 (例如 `int` 或 `DateTime`) 一律使用不因國別而異的文化特性。 這些條件約束假設 URL 不可當地語系化。
 
+### <a name="routing-with-urls-that-contain-dots"></a>包含點的 Url 路由
+
+在 Blazor 伺服器端應用程式中, *_Host*中的預設路由是`/` (`@page "/"`)。 包含點 (`.`) 的要求 URL 不符合預設路由, 因為 URL 會顯示要求檔案。 如果靜態檔案不存在, Blazor 應用程式會傳回*404-找不*到的回應。 若要使用包含點的路由, 請使用下列路由範本來設定 *_Host* :
+
+```cshtml
+@page "/{**path}"
+```
+
+此`"/{**path}"`範本包含:
+
+* 雙星號*catch-all*語法 (`**`) 可跨多個資料夾界限捕捉路徑, 而不需要編碼正`/`斜線 ()。
+* `path`路由參數名稱。
+
+如需詳細資訊，請參閱 <xref:fundamentals/routing>。
+
 ## <a name="navlink-component"></a>NavLink 元件
 
 建立導覽連結時, 請使用`<a>`元件來取代HTML超連結元素()。`NavLink` 元件`NavLink`的行為`<a>`類似元素`active` , 但它會根據其`href`是否符合目前的 URL 來切換 CSS 類別。 `active`類別可協助使用者瞭解在顯示的導覽連結中, 哪個頁面是使用中的頁面。
@@ -163,3 +178,4 @@ ASP.NET Core 3.0 Preview 中的 Blazor 應用程式不支援選擇性參數。 �
     }
 }
 ```
+

@@ -5,14 +5,14 @@ description: 了解如何使用 HTTP REPL .NET Core 全域工具來瀏覽和測�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 07/25/2019
+ms.date: 08/29/2019
 uid: web-api/http-repl
-ms.openlocfilehash: d2c5f774595e7a2223e84cc76eecdb9baa04adfe
-ms.sourcegitcommit: 776598f71da0d1e4c9e923b3b395d3c3b5825796
-ms.translationtype: HT
+ms.openlocfilehash: 7121670856da4b123b1c3e780a7952da0fb696a1
+ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70024796"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70238041"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -32,11 +32,11 @@ HTTP「讀取、求值、輸出」迴圈 (REPL) 是：
 * [OPTIONS](#test-http-options-requests)
 * [PATCH](#test-http-patch-requests)
 * [POST](#test-http-post-requests)
-* [PUT](#test-http-put-requests)
+* [提出](#test-http-put-requests)
 
 若要跟著做，[請檢視或下載範例 ASP.NET Core web API](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [!INCLUDE [2.1-SDK](~/includes/2.1-SDK.md)]
 
@@ -325,52 +325,6 @@ pref set formatting.json.indentSize 4
 ]
 ```
 
-### <a name="set-indentation-size"></a>設定縮排大小
-
-目前僅為 JSON 支援回應縮排大小自訂。 預設大小為兩個空格。 例如：
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Apple"
-  },
-  {
-    "id": 2,
-    "name": "Orange"
-  },
-  {
-    "id": 3,
-    "name": "Strawberry"
-  }
-]
-```
-
-若要變更預設大小，請設定 `formatting.json.indentSize` 機碼。 舉例來說，若要一律使用四個空格：
-
-```console
-pref set formatting.json.indentSize 4
-```
-
-後續回應皆會套用四個空格的設定：
-
-```json
-[
-    {
-        "id": 1,
-        "name": "Apple"
-    },
-    {
-        "id": 2,
-        "name": "Orange"
-    },
-    {
-        "id": 3,
-        "name": "Strawberry"
-    }
-]
-```
-
 ### <a name="set-the-default-text-editor"></a>設定預設文字編輯器
 
 根據預設，HTTP REPL 並未設定要使用的文字編輯器。 您必須設定預設文字編輯器，才能測試需要 HTTP 要求本文的 web API 方法。 HTTP REPL 工具會啟動設定的文字編輯器，僅針對撰寫要求本文的目的使用。 請執行以下命令，來將您偏好的文字編輯器設為預設：
@@ -419,7 +373,7 @@ pref set editor.command.default.arguments "--disable-extensions --new-window"
 若要在您的環境中使用一組不同的搜尋路徑，請設定 `swagger.searchPaths` 喜好設定。 此值必須是以管線分隔的相對路徑清單。 例如：
 
 ```console
-pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json
+pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
 ```
 
 ## <a name="test-http-get-requests"></a>測試 HTTP GET 要求

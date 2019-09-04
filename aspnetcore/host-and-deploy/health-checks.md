@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 43b6c3b55170eaf3a989d0f2779edac5290df823
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: cc2ee50cd887a14fba2141bee13d65e777c16232
+ms.sourcegitcommit: 4b00e77f9984ce76356e829cfe7f75f0f61a7a8f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67855916"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70145752"
 ---
 # <a name="health-checks-in-aspnet-core"></a>ASP.NET Core 中的健康狀態檢查
 
@@ -444,7 +444,7 @@ spec:
 
 範例應用程式示範透過自訂回應寫入器的記憶體健康狀態檢查。
 
-如果應用程式使用超過指定的記憶體閾值 (在範例應用程式中為 1 GB)，`MemoryHealthCheck` 會報告降級的狀態。 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> 包含應用程式的記憶體回收行程 (GC) 資訊 (*MemoryHealthCheck.cs*)：
+`MemoryHealthCheck`如果應用程式使用超過指定的記憶體閾值 (範例應用程式中為 1 GB), 會回報狀況不良的狀態。 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> 包含應用程式的記憶體回收行程 (GC) 資訊 (*MemoryHealthCheck.cs*)：
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 

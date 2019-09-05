@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 34b977f70f3e7e58e4ab6fcf3d8f69800896a65d
-ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
-ms.translationtype: HT
+ms.openlocfilehash: ab29cf687c80551d275cae69f28b7576016bfff6
+ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70059115"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70238131"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -101,7 +101,7 @@ ms.locfileid: "70059115"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [SQL Server 物件總管]  (SSOX) 中，按兩下 [Student]  資料表來開啟 Student 資料表設計工具。
+在 [SQL Server 物件總管] (SSOX) 中，按兩下 [Student] 資料表來開啟 Student 資料表設計工具。
 
 ![移轉之前於 SSOX 中的 Students 資料表](complex-data-model/_static/ssox-before-migration.png)
 
@@ -225,7 +225,7 @@ SqliteException: SQLite Error 1: 'no such column: s.FirstName'.
 
 * 執行應用程式並移至 Students 頁面。
 * 請注意時間並未輸入或和日期一同顯示。
-* 選取 [新建]  然後嘗試輸入超過 50 個字元的名稱。
+* 選取 [新建] 然後嘗試輸入超過 50 個字元的名稱。
 
 > [!Note]
 > 在下列各節中，在某些階段建置應用程式會產生編譯器錯誤。 指令會指定何時應建置應用程式。
@@ -301,7 +301,7 @@ public int InstructorID { get; set; }
 
 `Course` 實體具有外部索引鍵 (FK) 屬性`DepartmentID`。 `DepartmentID` 會指向相關的 `Department` 實體。 `Course` 實體具有一個 `Department` 導覽屬性。
 
-若模型針對相關實體已有導覽屬性，則 EF Core 針對資料模型便不需要外部索引鍵屬性。 EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 但是，在資料模型中明確包含 FK (外部索引鍵) 可讓更新更簡單且更有效率。 例如，假設有一個模型，當中「不」  包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
+若模型針對相關實體已有導覽屬性，則 EF Core 針對資料模型便不需要外部索引鍵屬性。 EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 但是，在資料模型中明確包含 FK (外部索引鍵) 可讓更新更簡單且更有效率。 例如，假設有一個模型，當中「不」包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
 
 * 若 `Department` 屬性未明確載入，則其為 Null。
 * 若要更新課程實體，必須先擷取 `Department` 實體。
@@ -390,7 +390,7 @@ public ICollection<Course> Courses { get; set; }
 
 根據慣例，EF Core 會為不可為 Null 的 FK 和多對多關聯性啟用串聯刪除。 此預設行為可能會導致循環串聯刪除規則。 循環串聯刪除規則會在新增移轉時造成例外狀況。
 
-例如，若 `Department.InstructorID` 屬性已定義成不可為 Null，EF Core 便會設定串聯刪除規則。 在這種情況下，若指派為部門管理員的講師遭到刪除，則會同時刪除部門。 在這種情況下，限制規則會更有意義。 下列 Fluent API 會設定限制規則並停用串聯刪除。
+例如，若 `Department.InstructorID` 屬性已定義成不可為 Null，EF Core 便會設定串聯刪除規則。 在這種情況下，若指派為部門管理員的講師遭到刪除，則會同時刪除部門。 在這種情況下，限制規則會更有意義。 下列[Fluent API](#fluent-api-alternative-to-attributes)會設定 [限制規則] 和 [停用串聯刪除]。
 
   ```csharp
   modelBuilder.Entity<Department>()
@@ -429,7 +429,7 @@ public Student Student { get; set; }
 
 ## <a name="many-to-many-relationships"></a>多對多關聯性
 
-在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」  的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
+在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
 
 下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表是使用 EF 6.x 的 [EF Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition) 產生的。 建立圖表並不是此教學課程的一部分)。
 
@@ -441,7 +441,7 @@ public Student Student { get; set; }
 
 `Instructor` 和 `Course` 實體具有使用了純聯結資料表的多對多關聯性。
 
-注意：EF 6.x 支援多對多關聯性的隱含聯結資料表，但 EF Core 並不支援。 如需詳細資訊，請參閱 [Many-to-many relationships in EF Core 2.0](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/) (EF Core 2.0 中的多對多關聯性)。
+注意:EF 6.x 支援多對多關聯性的隱含聯結資料表，但 EF Core 並不支援。 如需詳細資訊，請參閱 [Many-to-many relationships in EF Core 2.0](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/) (EF Core 2.0 中的多對多關聯性)。
 
 ## <a name="the-courseassignment-entity"></a>CourseAssignment 實體
 
@@ -593,7 +593,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [套件管理員主控台]  (PMC) 中，執行下列命令：
+* 在 [套件管理員主控台] (PMC) 中，執行下列命令：
 
   ```powershell
   Drop-Database
@@ -631,14 +631,14 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 在 SSOX 中開啟資料庫：
 
-* 若先前已開啟過 SSOX，按一下 [重新整理]  按鈕。
+* 若先前已開啟過 SSOX，按一下 [重新整理] 按鈕。
 * 展開 **Tables** 節點。 建立的資料表便會顯示。
 
   ![SSOX 中的資料表](complex-data-model/_static/ssox-tables.png)
 
 * 檢查 **CourseAssignment** 資料表：
 
-  * 以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]  。
+  * 以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]。
   * 驗證 **CourseAssignment** 資料表中是否包含資料。
 
   ![SSOX 中的 CourseAssignment 資料](complex-data-model/_static/ssox-ci-data.png)
@@ -693,7 +693,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [套件管理員主控台]  (PMC) 中，執行下列命令：
+* 在 [套件管理員主控台] (PMC) 中，執行下列命令：
 
   ```powershell
   Update-Database
@@ -794,12 +794,12 @@ https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 執行應用程式：
 
 * 巡覽至 Students 頁面。
-* 選取 [新建]  ，然後輸入超過 50 個字元的名稱。
-* 選取 [建立]  ，用戶端驗證便會顯示錯誤訊息。
+* 選取 [新建]，然後輸入超過 50 個字元的名稱。
+* 選取 [建立]，用戶端驗證便會顯示錯誤訊息。
 
 ![顯示字元長度錯誤的 Students [索引] 頁面](complex-data-model/_static/string-length-errors.png)
 
-在 [SQL Server 物件總管]  (SSOX) 中，按兩下 [Student]  資料表來開啟 Student 資料表設計工具。
+在 [SQL Server 物件總管] (SSOX) 中，按兩下 [Student] 資料表來開啟 Student 資料表設計工具。
 
 ![移轉之前於 SSOX 中的 Students 資料表](complex-data-model/_static/ssox-before-migration.png)
 
@@ -998,7 +998,7 @@ public Instructor Instructor { get; set; }
 
 當資料模型針對相關實體有一個導覽屬性時，EF Core 不需要針對該模型具備 FK 屬性。
 
-EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」  包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
+EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
 
 * 若沒有明確載入，`Department` 實體將為 Null。
 * 若要更新課程實體，必須先擷取 `Department` 實體。
@@ -1085,13 +1085,13 @@ public Instructor Administrator { get; set; }
 public ICollection<Course> Courses { get; set; }
 ```
 
-注意：根據慣例，EF Core 會為不可為 Null 的 FK 和多對多關聯性啟用串聯刪除。 串聯刪除可能會導致循環的串聯刪除規則。 循環串聯刪除規則會在新增移轉時造成例外狀況。
+注意:根據慣例，EF Core 會為不可為 Null 的 FK 和多對多關聯性啟用串聯刪除。 串聯刪除可能會導致循環的串聯刪除規則。 循環串聯刪除規則會在新增移轉時造成例外狀況。
 
 例如，若已將 `Department.InstructorID` 屬性定義為不可為 Null：
 
 * EF Core 會設定串聯刪除規則，以便在刪除講師時刪除部門。
 * 在刪除講師時刪除部門並非預期的行為。
-* 下列 Fluent API 會設定限制規則而非串聯。
+* 下列[Fluent API](#fluent-api-alternative-to-attributes)會設定限制規則, 而不是 cascade。
 
    ```csharp
    modelBuilder.Entity<Department>()
@@ -1132,7 +1132,7 @@ public Student Student { get; set; }
 
 ## <a name="many-to-many-relationships"></a>多對多關聯性
 
-在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」  的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
+在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
 
 下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表是使用 EF 6.x 的 [EF Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition) 產生的。 建立圖表並不是此教學課程的一部分)。
 
@@ -1144,7 +1144,7 @@ public Student Student { get; set; }
 
 `Instructor` 和 `Course` 實體具有使用了純聯結資料表的多對多關聯性。
 
-注意：EF 6.x 支援多對多關聯性的隱含聯結資料表，但 EF Core 並不支援。 如需詳細資訊，請參閱 [Many-to-many relationships in EF Core 2.0](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/) (EF Core 2.0 中的多對多關聯性)。
+注意:EF 6.x 支援多對多關聯性的隱含聯結資料表，但 EF Core 並不支援。 如需詳細資訊，請參閱 [Many-to-many relationships in EF Core 2.0](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/) (EF Core 2.0 中的多對多關聯性)。
 
 ## <a name="the-courseassignment-entity"></a>CourseAssignment 實體
 
@@ -1288,7 +1288,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [套件管理員主控台]  (PMC) 中，執行下列命令：
+在 [套件管理員主控台] (PMC) 中，執行下列命令：
 
 ```PMC
 Drop-Database
@@ -1314,14 +1314,14 @@ dotnet ef database update
 
 在 SSOX 中開啟資料庫：
 
-* 若先前已開啟過 SSOX，按一下 [重新整理]  按鈕。
+* 若先前已開啟過 SSOX，按一下 [重新整理] 按鈕。
 * 展開 **Tables** 節點。 建立的資料表便會顯示。
 
 ![SSOX 中的資料表](complex-data-model/_static/ssox-tables.png)
 
 檢查 **CourseAssignment** 資料表：
 
-* 以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]  。
+* 以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]。
 * 驗證 **CourseAssignment** 資料表中是否包含資料。
 
 ![SSOX 中的 CourseAssignment 資料](complex-data-model/_static/ssox-ci-data.png)

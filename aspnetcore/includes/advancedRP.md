@@ -1,1 +1,1 @@
-如需針對有經驗之開發人員說明的更進階簡介，請參閱 [Razor Pages 簡介](xref:razor-pages/index)。
+如需適用於熟悉控制器與檢視之開發人員的進階介紹，請參閱 [Razor Pages 簡介](xref:razor-pages/index)。

@@ -5,14 +5,14 @@ description: 了解 Blazor 驗證與授權案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/26/2019
+ms.date: 08/29/2019
 uid: security/blazor/index
-ms.openlocfilehash: 87d61a7ccda209243a62bc54467b8f02dad92c24
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
-ms.translationtype: HT
+ms.openlocfilehash: 8714acbeb6e8a00992a601030811b24f53426b82
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68994192"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310517"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
 
@@ -25,7 +25,7 @@ Blazor 伺服器端和用戶端應用程式之間的安全性案例會有所差�
 * 要提供給使用者的 UI 選項 (例如，使用者可以使用哪些功能表項目)。
 * 適用於應用程式和元件之特定區域的存取規則。
 
-Blazor 用戶端應用程式是在用戶端上執行。 授權「僅」  會被用來決定要顯示的 UI 選項。 由於用戶端檢查可以被使用者修改或略過，Blazor 用戶端應用程式並無法強制執行授權存取規則。
+Blazor 用戶端應用程式是在用戶端上執行。 授權「僅」會被用來決定要顯示的 UI 選項。 由於用戶端檢查可以被使用者修改或略過，Blazor 用戶端應用程式並無法強制執行授權存取規則。
 
 ## <a name="authentication"></a>驗證
 
@@ -41,7 +41,7 @@ Blazor 伺服器端專案範本可以在專案建立時為您設定驗證。
 
 請遵循 <xref:blazor/get-started> 一文中的 Visual Studio 指導方針，來建立具有驗證機制的新 Blazor 伺服器端專案。
 
-在 [建立新的 ASP.NET Core Web 應用程式]  對話方塊中選擇 [Blazor 伺服器應用程式]  範本之後，請選取 [驗證]  下的 [變更]  。
+在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中選擇 [Blazor 伺服器應用程式] 範本之後，請選取 [驗證] 下的 [變更]。
 
 對話方塊隨即開啟，並提供可供其他 ASP.NET Core 專案使用的相同驗證機制集合：
 
@@ -64,7 +64,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 | 驗證機制                                                                 | `{AUTHENTICATION}` 值 |
 | ---------------------------------------------------------------------------------------- | :----------------------: |
-| 不需要驗證                                                                        | `None`                   |
+| 無驗證                                                                        | `None`                   |
 | 個人<br>搭配 ASP.NET Core 身分識別儲存在應用程式中的使用者。                        | `Individual`             |
 | 個人<br>儲存在 [Azure AD B2C](xref:security/authentication/azure-ad-b2c) 中的使用者。 | `IndividualB2C`          |
 | 公司或學校帳戶<br>適用於單一租用戶的組織驗證。            | `SingleOrg`              |
@@ -219,35 +219,39 @@ public void ConfigureServices(IServiceCollection services)
 
 如果 `user.Identity.IsAuthenticated` 為 `true`，系統便可以列舉宣告，並評估角色中的成員資格。
 
-使用 `CascadingAuthenticationState` 元件設定 `Task<AuthenticationState>` 階層式參數：
+`Task<AuthenticationState>` 使用`AuthorizeRouteView`和元件設定串聯參數： `CascadingAuthenticationState`
 
 ```cshtml
-<CascadingAuthenticationState>
-    <Router AppAssembly="typeof(Startup).Assembly">
-        <NotFoundContent>
-            <h1>Sorry</h1>
-            <p>Sorry, there's nothing at this address.</p>
-        </NotFoundContent>
-    </Router>
-</CascadingAuthenticationState>
+<Router AppAssembly="@typeof(Program).Assembly">
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <CascadingAuthenticationState>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </CascadingAuthenticationState>
+    </NotFound>
+</Router>
 ```
 
-## <a name="authorization"></a>授權
+## <a name="authorization"></a>Authorization
 
-在使用者被驗證之後，系統便會套用「授權」  規則以控制使用者可以執行的動作。
+在使用者被驗證之後，系統便會套用「授權」規則以控制使用者可以執行的動作。
 
 存取權通常會依據下列情況來授與或拒絕：
 
 * 使用者已通過驗證 (已登入)。
-* 使用者屬於某個「角色」  。
-* 使用者具有「宣告」  。
-* 已滿足某個「原則」  。
+* 使用者屬於某個「角色」。
+* 使用者具有「宣告」。
+* 已滿足某個「原則」。
 
 上述概念皆和 ASP.NET Core MVC 或 Razor Pages 應用程式中的概念相同。 如需 ASP.NET Core 安全性的詳細資訊，請參閱 [ASP.NET Core 安全性與身分識別](xref:security/index)下的文章。
 
 ## <a name="authorizeview-component"></a>AuthorizeView 元件
 
-`AuthorizeView` 元件會根據使用者是否獲得授權以查看某個 UI 來選擇性地顯示該 UI。 此方法可讓您只需要向使用者「顯示」  資料，而不需要在程序性邏輯中使用該使用者的身分識別。
+`AuthorizeView` 元件會根據使用者是否獲得授權以查看某個 UI 來選擇性地顯示該 UI。 此方法可讓您只需要向使用者「顯示」資料，而不需要在程序性邏輯中使用該使用者的身分識別。
 
 該元件會公開 `AuthenticationState` 類型的 `context` 變數，您可以使用它來存取已登入使用者的相關資訊：
 
@@ -284,7 +288,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="role-based-and-policy-based-authorization"></a>角色型和原則型授權
 
-`AuthorizeView` 元件支援「角色型」  或「原則型」  授權。
+`AuthorizeView` 元件支援「角色型」或「原則型」授權。
 
 針對角色型授權，請使用 `Roles` 參數：
 
@@ -312,7 +316,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="content-displayed-during-asynchronous-authentication"></a>在非同步驗證期間所顯示的內容
 
-Blazor 允許以「非同步」  方式判斷驗證狀態。 此方法的主要案例是會向外部端點要求驗證的 Blazor 用戶端應用程式。
+Blazor 允許以「非同步」方式判斷驗證狀態。 此方法的主要案例是會向外部端點要求驗證的 Blazor 用戶端應用程式。
 
 在驗證期間，`AuthorizeView` 預設不會顯示任何內容。 若要在驗證發生時顯示內容，請使用 `<Authorizing>` 元素：
 
@@ -343,7 +347,7 @@ You can only see this if you're signed in.
 ```
 
 > [!IMPORTANT]
-> 請僅在透過 Blazor 路由器抵達的 `@page` 元件上使用 `[Authorize]`。 授權僅會以路由的層面執行，且「不」  適用於在頁面內轉譯的子元件。 若要授權在頁面內顯示特定組件，請改為使用 `AuthorizeView`。
+> 請僅在透過 Blazor 路由器抵達的 `@page` 元件上使用 `[Authorize]`。 授權僅會以路由的層面執行，且「不」適用於在頁面內轉譯的子元件。 若要授權在頁面內顯示特定組件，請改為使用 `AuthorizeView`。
 
 您可能需要將 `@using Microsoft.AspNetCore.Authorization` 加入元件或 *_Imports.razor* 檔案，使該元件能夠編譯。
 
@@ -372,7 +376,7 @@ You can only see this if you're signed in.
 
 ## <a name="customize-unauthorized-content-with-the-router-component"></a>搭配 Router 元件自訂未經授權的內容
 
-`Router` 元件在下列情況下允許應用程式指定自訂內容：
+`Router` 元件`AuthorizeRouteView`與元件結合，可讓應用程式在下列情況指定自訂內容：
 
 * 找不到內容。
 * 使用者無法滿足套用至元件的 `[Authorize]` 條件。 `[Authorize]` 屬性已涵蓋於 [[Authorize] 屬性](#authorize-attribute)一節。
@@ -381,28 +385,34 @@ You can only see this if you're signed in.
 在預設的 Blazor 伺服器端專案範本中，*App.razor* 檔案會示範如何設定自訂內容：
 
 ```cshtml
-<CascadingAuthenticationState>
-    <Router AppAssembly="typeof(Startup).Assembly">
-        <NotFoundContent>
-            <h1>Sorry</h1>
-            <p>Sorry, there's nothing at this address.</p>
-        </NotFoundContent>
-        <NotAuthorizedContent>
-            <h1>Sorry</h1>
-            <p>You're not authorized to reach this page.</p>
-            <p>You may need to log in as a different user.</p>
-        </NotAuthorizedContent>
-        <AuthorizingContent>
-            <h1>Authentication in progress</h1>
-            <p>Only visible while authentication is in progress.</p>
-        </AuthorizingContent>
-    </Router>
-</CascadingAuthenticationState>
+<Router AppAssembly="@typeof(Program).Assembly">
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+            <NotAuthorized>
+                <h1>Sorry</h1>
+                <p>You're not authorized to reach this page.</p>
+                <p>You may need to log in as a different user.</p>
+            </NotAuthorized>
+            <Authorizing>
+                <h1>Authentication in progress</h1>
+                <p>Only visible while authentication is in progress.</p>
+            </Authorizing>
+        </AuthorizeRouteView>
+    </Found>
+    <NotFound>
+        <CascadingAuthenticationState>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <h1>Sorry</h1>
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </CascadingAuthenticationState>
+    </NotFound>
+</Router>
 ```
 
-`<NotFoundContent>`、`<NotAuthorizedContent>` 及 `<AuthorizingContent>` 的內容可以包含任意項目，例如其他互動式元件。
+`<NotFound>`、`<NotAuthorized>` 及 `<Authorizing>` 的內容可以包含任意項目，例如其他互動式元件。
 
-如果未指定 `<NotAuthorizedContent>`，路由器會使用下列後援訊息：
+如果`<NotAuthorized>`未指定，則`<AuthorizeRouteView>`會使用下列回溯訊息：
 
 ```html
 Not authorized.
@@ -455,7 +465,7 @@ Not authorized.
 
 **請一律在由您用戶端應用程式所存取之任何 API 端點內的伺服器上執行授權檢查。**
 
-## <a name="troubleshoot-errors"></a>針對錯誤進行疑難排解
+## <a name="troubleshoot-errors"></a>疑難排解錯誤
 
 常見錯誤：
 
@@ -478,4 +488,5 @@ Not authorized.
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:security/index>
+* <xref:security/blazor/server-side>
 * <xref:security/authentication/windowsauth>

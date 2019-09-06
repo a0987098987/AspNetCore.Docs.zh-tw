@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/7/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 8866ee9210a91754d8050d0b91ff52c3d3fe0836
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 9407de4ee91ba43b2c95fa98f0cf479bf8539cab
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975443"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310502"
 ---
 # <a name="app-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -23,7 +23,7 @@ ms.locfileid: "69975443"
 
 ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startup`。 `Startup` 類別：
 
-* 選擇性地包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法來設定應用程式的服務  。 服務的定義是可提供應用程式功能的可重複使用元件。 服務會在 `ConfigureServices`中經過設定&mdash;也會受描述為「已註冊」  &mdash;且會透過 [ 相依性插入 (DI)](xref:fundamentals/dependency-injection) 或 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*> 在應用程式間受取用。
+* 選擇性地包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法來設定應用程式的服務。 服務的定義是可提供應用程式功能的可重複使用元件。 服務會在 `ConfigureServices`中經過設定&mdash;也會受描述為「已註冊」&mdash;且會透過 [ 相依性插入 (DI)](xref:fundamentals/dependency-injection) 或 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*> 在應用程式間受取用。
 * 包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> 方法來建立應用程式的要求處理管線。
 
 應用程式啟動時，ASP.NET Core 執行階段會呼叫 `ConfigureServices` 與 `Configure`：
@@ -80,15 +80,11 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 [!code-csharp[](startup/sample_snapshot/Startup2.cs?highlight=7-8)]
 
-::: moniker-end
-插入 `IWebHostEnvironment` 的替代方式是使用基於慣例的方法。
-::: moniker range=">= aspnetcore-3.0"
+在呼叫 `Configure` 方法之前，大部分的服務都無法使用。
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-3.0"
-插入 `IHostingEnvironment` 的替代方式是使用基於慣例的方法。
-::: moniker-end
+### <a name="multiple-startup"></a>多次啟動
 
 應用程式針對不同的環境定義個別的 `Startup` 類別 (例如 `StartupDevelopment`) 時，會在執行階段選取適當的 `Startup` 類別。 將優先使用其名稱尾碼符合目前環境的類別。 如果應用程式是在開發環境中執行，且同時包含 `Startup` 類別和 `StartupDevelopment` 類別，則會使用 `StartupDevelopment` 類別。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments#environment-based-startup-class-and-methods)。
 

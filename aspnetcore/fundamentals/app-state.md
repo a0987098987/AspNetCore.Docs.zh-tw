@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/12/2019
 uid: fundamentals/app-state
-ms.openlocfilehash: 4b02a9b5867559da493054bb128aabed4d920ace
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 578be568b58dc630e8aabf8cb355266766741b9e
+ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813615"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70384730"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>ASP.NET Core 中的工作階段與應用程式狀態
 
@@ -72,7 +72,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 
 記憶體中快取提供者會將工作階段資料存放在應用程式所在伺服器的記憶體中。 在伺服器陣列案例中：
 
-* 使用「黏性工作階段」  將每個工作階段繫結至個別伺服器上的特定應用程式執行個體。 [Azure App Service](https://azure.microsoft.com/services/app-service/) 預設會使用[應用程式要求路由 (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) 來強制執行自黏工作階段。 不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。 較好的方法是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。 如需詳細資訊，請參閱 <xref:performance/caching/distributed>。
+* 使用「黏性工作階段」將每個工作階段繫結至個別伺服器上的特定應用程式執行個體。 [Azure App Service](https://azure.microsoft.com/services/app-service/) 預設會使用[應用程式要求路由 (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) 來強制執行自黏工作階段。 不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。 較好的方法是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。 如需詳細資訊，請參閱 <xref:performance/caching/distributed>。
 * 工作階段 Cookie 是透過 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密。 必須正確設定資料保護，以閱讀每一部機器上的工作階段 Cookie。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>與[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。
 
 ### <a name="configure-session-state"></a>設定工作階段狀態
@@ -105,7 +105,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 
 若要覆寫工作階段的預設值，請使用 [SessionOptions](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions)。
 
-| 選項 | 說明 |
+| 選項 | 描述 |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookie) | 決定用來建立 Cookie 的設定。 [Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) 預設為 [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`)。 [Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) 預設為 [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`)。 [SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite) 預設為 [SameSiteMode.Lax](/dotnet/api/microsoft.aspnetcore.http.samesitemode) (`1`)。 [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) 預設為 `true`。 [IsEssential](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.isessential) 預設為 `false`。 |
 | [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) | `IdleTimeout` 指出工作階段可以閒置多久，之後才會放棄它的內容。 每個工作階段存取都會重設逾時。 此設定只適用於工作階段的內容，而非 Cookie。 預設值是 20 分鐘。 |
@@ -119,7 +119,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 
 應用程式會使用 [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) 屬性，判斷工作階段可以在放棄伺服器快取中的內容之前閒置多長時間。 這個屬性與 Cookie 到期日無關。 透過[工作階段中介軟體](/dotnet/api/microsoft.aspnetcore.session.sessionmiddleware)傳遞的每個要求都會重設逾時。
 
-工作階段狀態為「非鎖定」  。 如果兩個要求同時嘗試修改工作階段的內容，則最後一個要求會覆寫第一個要求。 `Session` 會實作為「一致性工作階段」  ，這表示所有內容會都儲存在一起。 當兩個要求試圖修改不同的工作階段值時，最後一個要求可能會覆寫第一個要求所做的工作階段變更。
+工作階段狀態為「非鎖定」。 如果兩個要求同時嘗試修改工作階段的內容，則最後一個要求會覆寫第一個要求。 `Session` 會實作為「一致性工作階段」，這表示所有內容會都儲存在一起。 當兩個要求試圖修改不同的工作階段值時，最後一個要求可能會覆寫第一個要求所做的工作階段變更。
 
 ### <a name="set-and-get-session-values"></a>設定和取得工作階段值
 
@@ -163,7 +163,29 @@ Name: @HttpContext.Session.GetString(IndexModel.SessionKeyName)
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core 會公開 [Razor Pages 頁面模型的 TempData 屬性](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.tempdata)或 [MVC 控制器的 TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata)。 這個屬性會儲存資料，直到讀取為止。 [Keep](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.itempdatadictionary.keep) 和 [Peek](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.itempdatadictionary.peek) 方法可以用來檢查資料，不用刪除。 當有多個要求需要資料時，TempData 對重新導向很有幫助。 TempData 是由 TempData 提供者使用 Cookie 或工作階段狀態來實作。
+ASP.NET Core 會公開 Razor Pages [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData)或控制器<xref:Microsoft.AspNetCore.Mvc.Controller.TempData>。 這個屬性會儲存資料，直到讀取另一個要求為止。 在要求結束時，可以使用[保留（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)和[查看（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*)方法來檢查資料，而不需要刪除。 [Keep （）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)會標示字典中的所有專案以進行保留。 `TempData`當需要多個單一要求的資料時，對於重新導向而言特別有用。 `TempData`是由使用`TempData` cookie 或會話狀態的提供者所執行。
+
+## <a name="tempdata-samples"></a>TempData 範例
+
+請考慮下列會建立客戶的頁面：
+
+[!code-csharp[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Create.cshtml.cs?name=snippet&highlight=15-16,30)]
+
+會顯示`TempData["Message"]`下列頁面：
+
+[!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexPeek.cshtml?range=1-14)]
+
+在上述標記中，在要求結束時，**不**會`TempData["Message"]`刪除，因為`Peek`會使用。 重新整理頁面會`TempData["Message"]`顯示。
+
+下列標記與上述程式碼類似，但會使用`Keep`來保留要求結尾的資料：
+
+[!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexKeep.cshtml?range=1-14)]
+
+在*IndexPeek*和*IndexKeep*頁面之間流覽並不`TempData["Message"]`會刪除。
+
+下列程式碼會`TempData["Message"]`顯示，但在要求結束時， `TempData["Message"]`會刪除：
+
+[!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Index.cshtml?range=1-14)]
 
 ### <a name="tempdata-providers"></a>TempData 提供者
 

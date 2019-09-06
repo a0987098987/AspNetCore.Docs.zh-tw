@@ -5,14 +5,14 @@ description: 深入了解 HTTP.sys，這是 Windows 上的 ASP.NET Core 網頁�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/20/2019
+ms.date: 08/27/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 5ee866c862f16c2c22539bf880b5a93415504fb1
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: b9adbdd83b3c4e1eeaadcf99fa3ee6cb41f67f8e
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975510"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310512"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 
@@ -38,7 +38,7 @@ HTTP.sys 支援下列功能：
 * Windows 7 或更新版本
 * Windows Server 2008 R2 或更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 
@@ -84,99 +84,100 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
 ### <a name="configure-the-aspnet-core-app-to-use-httpsys"></a>設定 ASP.NET Core 應用程式使用 HTTP.sys
 
-1. 使用 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app) ([nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) (ASP.NET Core 2.1 或更新版本) 時，專案檔中不需要套件參考。 若不是使用 `Microsoft.AspNetCore.App` 中繼套件，請將套件參考加入 [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/)。
+::: moniker range="< aspnetcore-3.0"
 
-2. 建置主機時，呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderHttpSysExtensions.UseHttpSys*> 擴充方法，並指定任何必要的 <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions>。 下列範例會將選項設定為它們的預設值：
+使用[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)（[nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)）時，不需要專案檔中的套件參考。 若不是使用 `Microsoft.AspNetCore.App` 中繼套件，請將套件參考加入 [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/)。
+
+::: moniker-end
+
+建置主機時，呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderHttpSysExtensions.UseHttpSys*> 擴充方法，並指定任何必要的 <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions>。 下列範例會將選項設定為它們的預設值：
 
 ::: moniker range=">= aspnetcore-3.0"
 
-   ```csharp
-   public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-      WebHost.CreateDefaultBuilder(args)
-          .UseStartup<Startup>()
-          .UseHttpSys(options =>
-          {
-              options.AllowSynchronousIO = false;
-              options.Authentication.Schemes = AuthenticationSchemes.None;
-              options.Authentication.AllowAnonymous = true;
-              options.MaxConnections = null;
-              options.MaxRequestBodySize = 30000000;
-              options.UrlPrefixes.Add("http://localhost:5000");
-          });
-   ```
+[!code-csharp[](httpsys/samples/3.x/SampleApp/Program.cs?name=snippet1&highlight=5-13)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-   [!code-csharp[](httpsys/sample/Program.cs?name=snippet1&highlight=4-12)]
+[!code-csharp[](httpsys/samples/2.x/SampleApp/Program.cs?name=snippet1&highlight=4-12)]
 
 ::: moniker-end
 
-   其他的 HTTP.sys 設定則透過[登錄設定](https://support.microsoft.com/help/820129/http-sys-registry-settings-for-windows)處理。
+其他的 HTTP.sys 設定則透過[登錄設定](https://support.microsoft.com/help/820129/http-sys-registry-settings-for-windows)處理。
 
    **HTTP.sys 選項**
 
 ::: moniker range=">= aspnetcore-3.0"
 
-   | 屬性 | 說明 | 預設 |
-   | -------- | ----------- | :-----: |
-   | [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `false` |
-   | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
-   | [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由 [AuthenticationSchemes enum](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes) 提供：`Basic`、`Kerberos`、`Negotiate`、`None` 和 `NTLM`。 | `None` |
-   | [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(無限制) |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | 指出若回應本文因為用戶端中斷連線而寫入失敗時，應擲回例外狀況或正常完成。 | `false`<br>(正常完成) |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.Timeouts> | 公開 HTTP.sys <xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager> 設定，這也可在登錄中設定。 API 連結可提供包括預設值在內每個設定的詳細資訊：<ul><li>[TimeoutManager.DrainEntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.DrainEntityBody) &ndash; HTTP 伺服器 API 清空持續連線上實體內容的允許時間。</li><li>[TimeoutManager.EntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.EntityBody) &ndash; 要求實體內容到達的允許時間。</li><li>[TimeoutManager.HeaderWait](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.HeaderWait) &ndash; HTTP 伺服器 API 剖析要求標頭的允許時間。</li><li>[TimeoutManager.IdleConnection](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.IdleConnection) &ndash; 允許連線閒置的時間。</li><li>[TimeoutManager.MinSendBytesPerSecond](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.MinSendBytesPerSecond) &ndash; 回應的最低傳送速率。</li><li>[TimeoutManager.RequestQueue](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.RequestQueue) &ndash; 在應用程式 擷取要求之前，將要求保留於要求佇列中的允許時間。</li></ul> |  |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.UrlPrefixes> | 指定 <xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection> 以向 HTTP.sys 註冊。 最實用的是 [UrlPrefixCollection.Add](xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection.Add*)，可用來將前置詞加入集合。 處置接聽程式之前可隨時修改這些內容。 |  |
+| 屬性 | 說明 | 預設 |
+| -------- | ----------- | :-----: |
+| [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `false` |
+| [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
+| [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由 [AuthenticationSchemes enum](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes) 提供：`Basic`、`Kerberos`、`Negotiate`、`None` 和 `NTLM`。 | `None` |
+| [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(無限制) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | 指出若回應本文因為用戶端中斷連線而寫入失敗時，應擲回例外狀況或正常完成。 | `false`<br>(正常完成) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.Timeouts> | 公開 HTTP.sys <xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager> 設定，這也可在登錄中設定。 API 連結可提供包括預設值在內每個設定的詳細資訊：<ul><li>[TimeoutManager.DrainEntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.DrainEntityBody) &ndash; HTTP 伺服器 API 清空持續連線上實體內容的允許時間。</li><li>[TimeoutManager.EntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.EntityBody) &ndash; 要求實體內容到達的允許時間。</li><li>[TimeoutManager.HeaderWait](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.HeaderWait) &ndash; HTTP 伺服器 API 剖析要求標頭的允許時間。</li><li>[TimeoutManager.IdleConnection](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.IdleConnection) &ndash; 允許連線閒置的時間。</li><li>[TimeoutManager.MinSendBytesPerSecond](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.MinSendBytesPerSecond) &ndash; 回應的最低傳送速率。</li><li>[TimeoutManager.RequestQueue](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.RequestQueue) &ndash; 在應用程式 擷取要求之前，將要求保留於要求佇列中的允許時間。</li></ul> |  |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.UrlPrefixes> | 指定 <xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection> 以向 HTTP.sys 註冊。 最實用的是 [UrlPrefixCollection.Add](xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection.Add*)，可用來將前置詞加入集合。 處置接聽程式之前可隨時修改這些內容。 |  |
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-   | 屬性 | 說明 | 預設 |
-   | -------- | ----------- | :-----: |
-   | [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `true` |
-   | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
-   | [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由 [AuthenticationSchemes enum](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes) 提供：`Basic`、`Kerberos`、`Negotiate`、`None` 和 `NTLM`。 | `None` |
-   | [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(無限制) |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | 指出若回應本文因為用戶端中斷連線而寫入失敗時，應擲回例外狀況或正常完成。 | `false`<br>(正常完成) |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.Timeouts> | 公開 HTTP.sys <xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager> 設定，這也可在登錄中設定。 API 連結可提供包括預設值在內每個設定的詳細資訊：<ul><li>[TimeoutManager.DrainEntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.DrainEntityBody) &ndash; HTTP 伺服器 API 清空持續連線上實體內容的允許時間。</li><li>[TimeoutManager.EntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.EntityBody) &ndash; 要求實體內容到達的允許時間。</li><li>[TimeoutManager.HeaderWait](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.HeaderWait) &ndash; HTTP 伺服器 API 剖析要求標頭的允許時間。</li><li>[TimeoutManager.IdleConnection](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.IdleConnection) &ndash; 允許連線閒置的時間。</li><li>[TimeoutManager.MinSendBytesPerSecond](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.MinSendBytesPerSecond) &ndash; 回應的最低傳送速率。</li><li>[TimeoutManager.RequestQueue](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.RequestQueue) &ndash; 在應用程式 擷取要求之前，將要求保留於要求佇列中的允許時間。</li></ul> |  |
-   | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.UrlPrefixes> | 指定 <xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection> 以向 HTTP.sys 註冊。 最實用的是 [UrlPrefixCollection.Add](xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection.Add*)，可用來將前置詞加入集合。 處置接聽程式之前可隨時修改這些內容。 |  |
+| 屬性 | 說明 | 預設 |
+| -------- | ----------- | :-----: |
+| [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `true` |
+| [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
+| [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由 [AuthenticationSchemes enum](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes) 提供：`Basic`、`Kerberos`、`Negotiate`、`None` 和 `NTLM`。 | `None` |
+| [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(無限制) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | 指出若回應本文因為用戶端中斷連線而寫入失敗時，應擲回例外狀況或正常完成。 | `false`<br>(正常完成) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.Timeouts> | 公開 HTTP.sys <xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager> 設定，這也可在登錄中設定。 API 連結可提供包括預設值在內每個設定的詳細資訊：<ul><li>[TimeoutManager.DrainEntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.DrainEntityBody) &ndash; HTTP 伺服器 API 清空持續連線上實體內容的允許時間。</li><li>[TimeoutManager.EntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.EntityBody) &ndash; 要求實體內容到達的允許時間。</li><li>[TimeoutManager.HeaderWait](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.HeaderWait) &ndash; HTTP 伺服器 API 剖析要求標頭的允許時間。</li><li>[TimeoutManager.IdleConnection](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.IdleConnection) &ndash; 允許連線閒置的時間。</li><li>[TimeoutManager.MinSendBytesPerSecond](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.MinSendBytesPerSecond) &ndash; 回應的最低傳送速率。</li><li>[TimeoutManager.RequestQueue](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.RequestQueue) &ndash; 在應用程式 擷取要求之前，將要求保留於要求佇列中的允許時間。</li></ul> |  |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.UrlPrefixes> | 指定 <xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection> 以向 HTTP.sys 註冊。 最實用的是 [UrlPrefixCollection.Add](xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection.Add*)，可用來將前置詞加入集合。 處置接聽程式之前可隨時修改這些內容。 |  |
 
 ::: moniker-end
 
-   <a name="maxrequestbodysize"></a>
+<a name="maxrequestbodysize"></a>
 
-   **MaxRequestBodySize**
+**MaxRequestBodySize**
 
-   任何要求所允許的大小上限 (以位元組為單位)。 當設定為 `null` 時，要求主體大小上限為無限制。 此限制對升級連線不會有任何影響，因為其一律為無限制。
+任何要求所允許的大小上限 (以位元組為單位)。 當設定為 `null` 時，要求主體大小上限為無限制。 此限制對升級連線不會有任何影響，因為其一律為無限制。
 
-   在 ASP.NET Core MVC 應用程式中針對單一 `IActionResult` 覆寫限制的建議方式，是在動作方法上使用 <xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> 屬性：
+在 ASP.NET Core MVC 應用程式中針對單一 `IActionResult` 覆寫限制的建議方式，是在動作方法上使用 <xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> 屬性：
 
-   ```csharp
-   [RequestSizeLimit(100000000)]
-   public IActionResult MyActionMethod()
-   ```
+```csharp
+[RequestSizeLimit(100000000)]
+public IActionResult MyActionMethod()
+```
 
-   如果應用程式已開始讀取要求之後，才嘗試設定要求的限制，則會擲回例外狀況。 `IsReadOnly` 屬性可用來指出 `MaxRequestBodySize` 屬性是否處於唯讀狀態，代表要設定限制已經太遲。
+如果應用程式已開始讀取要求之後，才嘗試設定要求的限制，則會擲回例外狀況。 `IsReadOnly` 屬性可用來指出 `MaxRequestBodySize` 屬性是否處於唯讀狀態，代表要設定限制已經太遲。
 
-   如果應用程式應該覆寫每個要求的 <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize>，請使用 <xref:Microsoft.AspNetCore.Http.Features.IHttpMaxRequestBodySizeFeature>：
+如果應用程式應該覆寫每個要求的 <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize>，請使用 <xref:Microsoft.AspNetCore.Http.Features.IHttpMaxRequestBodySizeFeature>：
 
-   [!code-csharp[](httpsys/sample/Startup.cs?name=snippet1&highlight=6-7)]
+::: moniker range=">= aspnetcore-3.0"
 
-3. 如果您使用 Visual Studio，請確定應用程式未設定為執行 IIS 或 IIS Express。
+[!code-csharp[](httpsys/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=6-7)]
 
-   在 Visual Studio 中，預設啟動設定檔適用於 IIS Express。 若要執行專案作為主控台應用程式，請手動變更選取的設定檔，如下列螢幕擷取畫面所示：
+::: moniker-end
 
-   ![選取主控台應用程式設定檔](httpsys/_static/vs-choose-profile.png)
+::: moniker range="< aspnetcore-3.0"
+
+[!code-csharp[](httpsys/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=6-7)]
+
+::: moniker-end
+
+如果您使用 Visual Studio，請確定應用程式未設定為執行 IIS 或 IIS Express。
+
+在 Visual Studio 中，預設啟動設定檔適用於 IIS Express。 若要執行專案作為主控台應用程式，請手動變更選取的設定檔，如下列螢幕擷取畫面所示：
+
+![選取主控台應用程式設定檔](httpsys/_static/vs-choose-profile.png)
 
 ### <a name="configure-windows-server"></a>設定 Windows Server
 
@@ -188,7 +189,7 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
    在 Windows 上，請使用 [New-SelfSignedCertificate PowerShell Cmdlet](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 如需不支援的範例，請參閱 [UpdateIISExpressSSLForChrome.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1) \(英文\)。
 
-   將自我簽署的憑證或 CA 簽署的憑證安裝在伺服器的 [本機電腦]   > 個人  存放區中。
+   將自我簽署的憑證或 CA 簽署的憑證安裝在伺服器的 [本機電腦] > 個人 存放區中。
 
 1. 如果應用程式是[與架構相依的部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)，請安裝 .NET Core、.NET Framework 或兩者 (如果應用程式是以 .NET Framework 為目標的 .NET Core 應用程式)。
 
@@ -208,7 +209,17 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
    下列程式碼範例示範如何使用 <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.UrlPrefixes> 搭配位於連接埠 443 的伺服器本機 IP 位址 `10.0.0.4`：
 
-   [!code-csharp[](httpsys/sample_snapshot/Program.cs?name=snippet1&highlight=6)]
+::: moniker range=">= aspnetcore-3.0"
+
+   [!code-csharp[](httpsys/samples_snapshot/3.x/Program.cs?highlight=7)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+   [!code-csharp[](httpsys/samples_snapshot/2.x/Program.cs?highlight=6)]
+
+::: moniker-end
 
    `UrlPrefixes` 的優點是針對錯誤格式的前置詞會立即產生錯誤訊息。
 
@@ -229,7 +240,7 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
    netsh http add urlacl url=<URL> user=<USER>
    ```
 
-   * `<URL>` &ndash; 完整的「統一資源定位器」(URL)。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。 
+   * `<URL>` &ndash; 完整的「統一資源定位器」(URL)。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。
    * `<USER>` &ndash; 會指定使用者或「使用者-群組」名稱。
 
    在以下範例中，伺服器的本機 IP 位址是 `10.0.0.4`：
@@ -262,9 +273,9 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
    為了便於參考，請將 GUID 以套件標記的形式儲存在應用程式中：
 
    * 在 Visual Studio 中：
-     * 在 [方案總管]  中的專案上按一下滑鼠右鍵，然後選取 [屬性]  ，以開啟應用程式的專案屬性。
-     * 選取 [套件]  索引標籤。
-     * 輸入您在 [標記]  欄位中建立的 GUID。
+     * 在 [方案總管] 中的專案上按一下滑鼠右鍵，然後選取 [屬性]，以開啟應用程式的專案屬性。
+     * 選取 [套件] 索引標籤。
+     * 輸入您在 [標記] 欄位中建立的 GUID。
    * 不是使用 Visual Studio 時：
      * 開啟應用程式的專案檔。
      * 將 `<PackageTags>` 屬性搭配您所建立的 GUID 新增至新的或現有的 `<PropertyGroup>`：

@@ -301,7 +301,11 @@
         - name: JavaScript Interop
           uid: blazor/javascript-interop
         - name: 安全性及身分識別
-          uid: security/blazor/index
+          items:
+            - name: 總覽
+              uid: security/blazor/index
+            - name: 伺服器端
+              uid: security/blazor/server-side
         - name: 狀態管理
           uid: blazor/state-management
         - name: 處理錯誤
@@ -540,13 +544,17 @@
       uid: grpc/basics
     - name: 搭配 ASP.NET Core 的 gRPC 服務
       uid: grpc/aspnetcore
+    - name: 使用 .NET 用戶端呼叫 gRPC 服務
+      uid: grpc/client
+    - name: gRPC 用戶端處理站整合
+      uid: grpc/clientfactory
     - name: Configuration
       uid: grpc/configuration
     - name: 驗證與授權
       uid: grpc/authn-and-authz
     - name: 安全性考量
       uid: grpc/security
-    - name: 將 gRPC 服務從 C Core 移轉到 ASP.NET Core
+    - name: 從 C Core 移轉 gRPC 服務
       uid: grpc/migration
     - name: 比較 gRPC 服務與 HTTP APIs
       uid: grpc/comparison
@@ -988,7 +996,11 @@
     - name: 應用程式安全性 - OWASP
       href: 'https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/DotNet_Security_Cheat_Sheet.md'
     - name: Blazor
-      uid: security/blazor/index
+      items:
+        - name: 總覽
+          uid: security/blazor/index
+        - name: 伺服器端
+          uid: security/blazor/server-side
 - name: 效能
   items:
     - name: 總覽

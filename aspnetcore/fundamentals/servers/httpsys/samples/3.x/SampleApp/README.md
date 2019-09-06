@@ -1,0 +1,3 @@
+# <a name="aspnet-core-httpsys-sample"></a><span data-ttu-id="2ab97-101">ASP.NET Core HTTP.sys 範例</span><span class="sxs-lookup"><span data-stu-id="2ab97-101">ASP.NET Core HTTP.sys Sample</span></span>
+
+<span data-ttu-id="2ab97-102">此範例說明如何使用 HTTP.sys。</span><span class="sxs-lookup"><span data-stu-id="2ab97-102">This sample illustrates the use of HTTP.sys.</span></span> <span data-ttu-id="2ab97-103">這個範例會示範 [HTTP.sys Web 伺服器實作](https://docs.microsoft.com/aspnet/core/fundamentals/servers/httpsys)主題中所述的功能。</span><span class="sxs-lookup"><span data-stu-id="2ab97-103">This sample demonstrates the features described in the [HTTP.sys web server implementation](https://docs.microsoft.com/aspnet/core/fundamentals/servers/httpsys) topic.</span></span>

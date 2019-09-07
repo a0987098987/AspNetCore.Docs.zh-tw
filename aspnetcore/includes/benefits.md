@@ -10,6 +10,6 @@ ASP.NET Core 提供下列優點：
 * 雲端就緒、以環境為基礎的[組態系統](xref:fundamentals/configuration/index)。
 * 內建的[相依性插入](xref:fundamentals/dependency-injection)。
 * 輕量型、[高效能](https://github.com/aspnet/benchmarks) \(英文\) 且模組化的 HTTP 要求管線。
-* 能夠在 [IIS](xref:host-and-deploy/iis/index)、[Nginx](xref:host-and-deploy/linux-nginx)、[Apache](xref:host-and-deploy/linux-apache)、[Docker](xref:host-and-deploy/docker/index) 上裝載，或自我裝載於您自己的處理序中。
-* 以 [.NET Core](/dotnet/articles/standard/choosing-core-framework-server) 為目標時，會有並存應用程式版本設定。
+* 能夠在[Kestrel](xref:fundamentals/servers/kestrel)、（[IIS](xref:host-and-deploy/iis/index)、 [Nginx](xref:host-and-deploy/linux-nginx)、 [Apache](xref:host-and-deploy/linux-apache)、 [Docker](xref:host-and-deploy/docker/index)或自我裝載）上裝載于您自己的進程中。
+* [並存版本控制](/dotnet/standard/choosing-core-framework-server#a-need-for-side-by-side-of-net-versions-per-application-level)。
 * 可簡化現代網頁程式開發的工具。

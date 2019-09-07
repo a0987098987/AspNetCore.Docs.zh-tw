@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/01/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 9f5ecc7840fc7ffd9432a3bb67d0418efb7e8fd6
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 261abae499a0d5f807a14aebd224949881067bc7
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975621"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773806"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -22,11 +22,11 @@ ms.locfileid: "69975621"
 
 ## <a name="whats-a-host"></a>什麼是主機？
 
-「主機」  是封裝所有應用程式資源的物件，例如：
+「主機」是封裝所有應用程式資源的物件，例如：
 
 * 相依性插入 (DI)
 * 記錄
-* Configuration
+* 組態
 * `IHostedService` 實作
 
 當啟動主機時，會在 DI 容器中找到的每個 `IHostedService.StartAsync` 實作上呼叫 <xref:Microsoft.Extensions.Hosting.IHostedService>。 在 Web 應用程式中，其中一個 `IHostedService` 實作是一種 Web 服務，負責啟動 [HTTP 伺服器實作](xref:fundamentals/index#servers)。
@@ -170,6 +170,8 @@ CreateDefaultBuilder 包含具有前置詞 `DOTNET_` 的環境變數提供者和
 
 本節列出適用於 HTTP 和非 HTTP 工作負載的主機設定。 根據預設，用來設定這些設定的環境變數可以具有 `DOTNET_` 或 `ASPNETCORE_` 前置詞。
 
+<!-- In the following sections, two spaces at end of line are used to force line breaks in the rendered page. -->
+
 ### <a name="applicationname"></a>ApplicationName
 
 [IHostEnvironment.ApplicationName](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ApplicationName*) 屬性是在主機建構期間從主機組態當中設定。
@@ -312,8 +314,9 @@ webBuilder.UseSetting(WebHostDefaults.HostingStartupExcludeAssembliesKey, "assem
 
 HTTPS 重新導向連接埠。 用於[強制 HTTPS](xref:security/enforcing-ssl)。
 
-**索引鍵**：https_port **類型**：*string*
-**預設**：未設定預設值。
+索引**鍵**： HTTPs_port  
+**類型**：*string*  
+**預設**：未設定預設值。  
 **環境變數**：`<PREFIX_>HTTPS_PORT`
 
 若要設定此值，請使用組態或呼叫 `UseSetting`：
@@ -356,7 +359,8 @@ webBuilder.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true");
 
 要搜尋 `Startup` 類別的組件。
 
-**索引鍵**：startupAssembly **類型**：*字串*  
+**索引鍵**：startupAssembly  
+**類型**：*string*  
 **預設**：應用程式的組件  
 **環境變數**：`<PREFIX_>STARTUPASSEMBLY`
 
@@ -372,11 +376,11 @@ webBuilder.UseStartup<Startup>();
 
 ### <a name="urls"></a>URL
 
-以分號分隔的 IP 位址或主機位址，包含伺服器應接聽要求的連接埠和通訊協定。 例如，`http://localhost:123`。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
+以分號分隔的 IP 位址或主機位址，包含伺服器應接聽要求的連接埠和通訊協定。 例如： `http://localhost:123` 。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
 
 **索引鍵**：urls  
 **類型**：*string*  
-**預設**：`http://localhost:5000` 和`https://localhost:5001`
+**預設**： `http://localhost:5000`和`https://localhost:5001`  
 **環境變數**：`<PREFIX_>URLS`
 
 若要設定此值，請使用環境變數或呼叫 `UseUrls`：
@@ -484,12 +488,12 @@ ASP.NET Core 應用程式會設定並啟動主機。 主機負責應用程式啟
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-在 [Visual Studio Code](https://code.visualstudio.com/) 中執行範例應用程式時，請使用「外部或整合式終端機」  。 請勿在 `internalConsole` 中執行範例。
+在 [Visual Studio Code](https://code.visualstudio.com/) 中執行範例應用程式時，請使用「外部或整合式終端機」。 請勿在 `internalConsole` 中執行範例。
 
 若要在 Visual Studio Code 中設定主控台：
 
 1. 開啟 *.vscode/launch.json* 檔案。
-1. 在 [.NET Core Launch (console)] \(.NET Core 啟動 (主控台)\)  設定中，尋找 **console** 項目。 將此值設定為 `externalTerminal` 或 `integratedTerminal`。
+1. 在 [.NET Core Launch (console)] \(.NET Core 啟動 (主控台)\) 設定中，尋找 **console** 項目。 將此值設定為 `externalTerminal` 或 `integratedTerminal`。
 
 ## <a name="introduction"></a>簡介
 

@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 中介軟體和要求管線。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/09/2019
+ms.date: 08/22/2019
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 89cd505810eefeeeb8f708ab82244bbd2e341f38
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
-ms.translationtype: HT
+ms.openlocfilehash: 674e89cd22ce113474dfbba44b57d9255446fc3e
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308180"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773786"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -25,7 +25,7 @@ ms.locfileid: "68308180"
 
 要求委派用於建置要求管線， 其會處理每個 HTTP 要求。
 
-要求委派的設定方式為使用 <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*>、<xref:Microsoft.AspNetCore.Builder.MapExtensions.Map*> 和 <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use*> 擴充方法。 您可將個別要求委派指定為內嵌匿名方法 (在內嵌中介軟體中呼叫)，或於可重複使用的類別中加以定義。 這些可重複使用的類別及內嵌匿名方法皆為「中介軟體」  ，也稱為「中介軟體元件」  。 要求管線中的每個中介軟體元件負責叫用管線中下一個元件，或對管線執行最少運算。 當中介軟體短路時，稱為「終端中介軟體」  ，因為它會防止接下來的中介軟體處理要求。
+要求委派的設定方式為使用 <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*>、<xref:Microsoft.AspNetCore.Builder.MapExtensions.Map*> 和 <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use*> 擴充方法。 您可將個別要求委派指定為內嵌匿名方法 (在內嵌中介軟體中呼叫)，或於可重複使用的類別中加以定義。 這些可重複使用的類別及內嵌匿名方法皆為「中介軟體」，也稱為「中介軟體元件」。 要求管線中的每個中介軟體元件負責叫用管線中下一個元件，或對管線執行最少運算。 當中介軟體短路時，稱為「終端中介軟體」，因為它會防止接下來的中介軟體處理要求。
 
 <xref:migration/http-modules> 說明 ASP.NET Core 和 ASP.NET 4.x 之間的要求管線差異，並提供更多中介軟體範例。
 
@@ -39,13 +39,13 @@ ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個�
 
 最簡潔的 ASP.NET Core 應用程式會設定單一要求委派來處理所有要求。 此情況不包含實際要求管線。 反之，系統會呼叫單一匿名函式來回應每個 HTTP 要求。
 
-[!code-csharp[](index/snapshot/Middleware/Startup.cs?name=snippet1)]
+[!code-csharp[](index/snapshot/Middleware/Startup.cs)]
 
 第一個 <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*> 委派會終止管線。
 
-將多個要求委派鏈結在一起的方法是使用 <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use*>。 `next` 參數代表管線中的下個委派。 您可以「不」  呼叫「下一個」  參數來對管線執行最少運算。 您通常可以在下個委派的前後執行動作，如下列範例所示：
+將多個要求委派鏈結在一起的方法是使用 <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use*>。 `next` 參數代表管線中的下個委派。 您可以「不」呼叫「下一個」參數來對管線執行最少運算。 您通常可以在下個委派的前後執行動作，如下列範例所示：
 
-[!code-csharp[](index/snapshot/Chain/Startup.cs?name=snippet1)]
+[!code-csharp[](index/snapshot/Chain/Startup.cs)]
 
 當委派不將要求傳遞到下一個委派時，這就是所謂*讓要求管線短路*。 因為最少運算可避免不必要的工作，所以經常使用。 例如，[靜態檔案中介軟體](xref:fundamentals/static-files)可以做為*終端中介軟體*使用，方式是處理靜態檔案的要求，並對剩餘的管線執行短路。 在中介軟體之前新增到管線且終結進一步處理的中介軟體在其 `next.Invoke` 陳述式之後仍然處理程式碼。 不過，查看下列有關嘗試寫入已傳送之回應的警告。
 
@@ -62,6 +62,82 @@ ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個�
 `Startup.Configure` 方法內中介軟體元件的新增順序可定義在要求時叫用中介軟體元件的順序及回應的反向順序。 對安全性、效能與功能性而言，此順序相當重要。
 
 下列 `Startup.Configure` 方法會新增適用於一般應用程式案例的中介軟體元件：
+
+::: moniker range=">= aspnetcore-3.0"
+
+1. 例外狀況/錯誤處理
+   * 當應用程式在開發環境中執行時：
+     * 開發人員例外狀況頁面中介軟體 (<xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage*>) 會回報應用程式執行階段錯誤。
+     * 資料錯誤頁面中介軟體 (<xref:Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage*>) 會回報資料庫執行階段錯誤。
+   * 當應用程式在生產環境中執行時：
+     * 例外狀況處理常式中介軟體 (<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*>) 會攔截在下列中介軟體中擲回的例外狀況。
+     * HTTP 靜態傳輸安全性通訊協定 (HSTS) 中介軟體 (<xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>) 會新增 `Strict-Transport-Security` 標頭。
+1. HTTPS 重新導向中介軟體 (<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>) 會將 HTTP 要求重新導向到 HTTPS。
+1. 靜態檔案中介軟體 (<xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>) 會傳回靜態檔案並縮短進一步的要求處理時間。
+1. Cookie 原則中介軟體 (<xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*>) 會使應用程式符合歐盟一般資料保護歸調 (GDPR) 法規。
+1. 路由中介軟體`UseRouting`（）以路由傳送要求。
+1. 驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>) 會嘗試在允許使用者存取安全資源之前先驗證使用者。
+1. 授權中介軟體`UseAuthorization`（）會授權使用者存取安全的資源。
+1. 工作階段中介軟體 (<xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession*>) 會建立並維護工作階段狀態。 若應用程式使用工作階段狀態，請在 Cookie 原則中介軟體之後、MVC 中介軟體之前呼叫工作階段中介軟體。
+1. 端點路由中介軟體`UseEndpoints` （ `MapRazorPages`含），以將 Razor Pages 端點新增至要求管線。
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+        app.UseDatabaseErrorPage();
+    }
+    else
+    {
+        app.UseExceptionHandler("/Error");
+        app.UseHsts();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+    app.UseCookiePolicy();
+    app.UseRouting();
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.UseSession();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapRazorPages();
+    });
+}
+```
+
+在上面的範例程式碼中，每個中介軟體擴充方法都會透過 <xref:Microsoft.AspNetCore.Builder?displayProperty=fullName> 命名空間在 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> 上公開。
+
+<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> 是第一個新增到管道的中介軟體元件。 因此，例外處理常式中介軟體會攔截後續呼叫中發生的所有例外狀況。
+
+靜態檔案中介軟體會提前在管線中呼叫，以便其無須逐一處理剩餘的元件，就能處理要求及執行最少運算。 靜態檔案中介軟體**不會**執行授權檢查。 靜態檔案中介軟體所提供的任何檔案（包括*wwwroot*底下的檔案）皆可公開使用。 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
+
+若靜態檔案中介軟體未處理要求，該要求會繼續傳遞給執行驗證的驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>)。 驗證不會對未經驗證的要求執行最少運算。 雖然驗證中介軟體會驗證要求，但只有在 MVC 選取特定 Razor 頁面或 MVC 控制器及動作後，才會進行驗證 (與拒絕)。
+
+下列範例示範靜態檔案中介軟體在回應壓縮中介軟體之前處理靜態檔案要求之前的靜態檔案順序。 靜態檔案並不會以此中介軟體順序壓縮。 Razor Pages 回應可以進行壓縮。
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    // Static files aren't compressed by Static File Middleware.
+    app.UseStaticFiles();
+
+    app.UseResponseCompression();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapRazorPages();
+    });
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 1. 例外狀況/錯誤處理
    * 當應用程式在開發環境中執行時：
@@ -104,7 +180,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> 是第一個新增到管道的中介軟體元件。 因此，例外處理常式中介軟體會攔截後續呼叫中發生的所有例外狀況。
 
-靜態檔案中介軟體會提前在管線中呼叫，以便其無須逐一處理剩餘的元件，就能處理要求及執行最少運算。 靜態檔案中介軟體**不會**執行授權檢查。 其提供的所有檔案，包括在 *wwwroot* 下的檔案，皆可公開使用。 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
+靜態檔案中介軟體會提前在管線中呼叫，以便其無須逐一處理剩餘的元件，就能處理要求及執行最少運算。 靜態檔案中介軟體**不會**執行授權檢查。 靜態檔案中介軟體所提供的任何檔案（包括*wwwroot*底下的檔案）皆可公開使用。 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
 
 若靜態檔案中介軟體未處理要求，該要求會繼續傳遞給執行驗證的驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>)。 驗證不會對未經驗證的要求執行最少運算。 雖然驗證中介軟體會驗證要求，但只有在 MVC 選取特定 Razor 頁面或 MVC 控制器及動作後，才會進行驗證 (與拒絕)。
 
@@ -113,12 +189,16 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ```csharp
 public void Configure(IApplicationBuilder app)
 {
-    // Static files not compressed by Static File Middleware.
+    // Static files aren't compressed by Static File Middleware.
     app.UseStaticFiles();
+
     app.UseResponseCompression();
+
     app.UseMvcWithDefaultRoute();
 }
 ```
+
+::: moniker-end
 
 ## <a name="use-run-and-map"></a>Use、Run 與 Map
 
@@ -126,7 +206,7 @@ public void Configure(IApplicationBuilder app)
 
 <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map*> 擴充方法則是用來分支管線的慣例。 `Map` 會依據指定要求路徑的相符項目將要求管線分支。 如果要求路徑以指定路徑為開頭，則會執行分支。
 
-[!code-csharp[](index/snapshot/Chain/StartupMap.cs?name=snippet1)]
+[!code-csharp[](index/snapshot/Chain/StartupMap.cs)]
 
 下表說明使用上述程式碼後，來自 `http://localhost:1234` 的要求及回應。
 
@@ -141,7 +221,7 @@ public void Configure(IApplicationBuilder app)
 
 <xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*> 會依據指定述詞的結果將要求管線分支。 `Func<HttpContext, bool>` 類型的任何述詞皆可用來將要求對應至管線的新分支。 下列範例會使用述詞來偵測查詢字串變數 `branch` 是否存在：
 
-[!code-csharp[](index/snapshot/Chain/StartupMapWhen.cs?name=snippet1)]
+[!code-csharp[](index/snapshot/Chain/StartupMapWhen.cs)]
 
 下表說明使用上述程式碼後，來自 `http://localhost:1234` 的要求及回應。
 
@@ -161,22 +241,22 @@ app.Map("/level1", level1App => {
         // "/level1/level2b" processing
     });
 });
-   ```
+```
 
 `Map` 也可以一次比對多個線段：
 
-[!code-csharp[](index/snapshot/Chain/StartupMultiSeg.cs?name=snippet1&highlight=13)]
+[!code-csharp[](index/snapshot/Chain/StartupMultiSeg.cs?highlight=13)]
 
 ## <a name="built-in-middleware"></a>內建的中介軟體
 
-ASP.NET Core 隨附下列中介軟體元件。 「順序」  欄說明 中介軟體在要求處理管線中的位置，以及中介軟體可終止要求處理的情況。 當中介軟體將要求處理管線短路並防止接下來的下游中介軟體處理要求時，這就是所謂的「終端中介軟體」  。 如需詳細資訊，請參閱[使用 IApplicationBuilder 建立中介軟體管線](#create-a-middleware-pipeline-with-iapplicationbuilder)。
+ASP.NET Core 隨附下列中介軟體元件。 「順序」欄說明 中介軟體在要求處理管線中的位置，以及中介軟體可終止要求處理的情況。 當中介軟體將要求處理管線短路並防止接下來的下游中介軟體處理要求時，這就是所謂的「終端中介軟體」。 如需詳細資訊，請參閱[使用 IApplicationBuilder 建立中介軟體管線](#create-a-middleware-pipeline-with-iapplicationbuilder)。
 
-| 中介軟體 | 說明 | 順序 |
+| 中介軟體 | 描述 | 順序 |
 | ---------- | ----------- | ----- |
 | [驗證](xref:security/authentication/identity) | 提供驗證支援。 | 在需要 `HttpContext.User` 之前。 OAuth 回呼的終端機。 |
 | [Cookie 原則](xref:security/gdpr) | 追蹤使用者對用於儲存個人資訊的同意，並強制執行 Cookie 欄位的最低標準，例如 `secure` 和 `SameSite`。 | 在發出 Cookie 的中介軟體之前。 例如：驗證、工作階段、MVC (TempData)。 |
 | [CORS](xref:security/cors) | 設定跨原始來源資源共用。 | 在使用 CORS 的元件之前。 |
-| [例外狀況處理](xref:fundamentals/error-handling) | 處理例外狀況。 | 在產生錯誤的元件之前。 |
+| [診斷](xref:fundamentals/error-handling) | 提供開發人員例外狀況頁面、例外狀況處理、狀態字碼頁，以及新應用程式的預設網頁的數個個別中介軟體。 | 在產生錯誤的元件之前。 終端機的例外狀況，或為新的應用程式提供預設的網頁。 |
 | [轉送標頭](xref:host-and-deploy/proxy-load-balancer) | 將設為 Proxy 的標頭轉送到目前要求。 | 在使用更新方法的欄位之前。 範例：配置、主機，用戶端 IP、方法。 |
 | [健康狀態檢查](xref:host-and-deploy/health-checks) | 檢查 ASP.NET Core 應用程式及其相依性的健康狀態，例如檢查資料庫可用性。 | 若某項要求與健康狀態檢查端點相符，則會是終端機。 |
 | [HTTP 方法覆寫](xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions) | 允許傳入的 POST 要求覆寫方法。 | 在使用更新方法的元件之前。 |
@@ -187,7 +267,7 @@ ASP.NET Core 隨附下列中介軟體元件。 「順序」  欄說明 中介軟
 | [回應快取](xref:performance/caching/middleware) | 提供快取回應的支援。 | 在需要快取的元件之前。 |
 | [回應壓縮](xref:performance/response-compression) | 提供壓縮回應的支援。 | 在需要壓縮的元件之前。 |
 | [要求當地語系化](xref:fundamentals/localization) | 提供當地語系化支援。 | 在偵測當地語系化的元件之前。 |
-| [路由傳送](xref:fundamentals/routing) | 定義並限制要求路由。 | 比對路由的終端機。 |
+| [端點路由](xref:fundamentals/routing) | 定義並限制要求路由。 | 比對路由的終端機。 |
 | [工作階段](xref:fundamentals/app-state) | 提供管理使用者工作階段的支援。 | 在需要工作階段的元件之前。 |
 | [靜態檔案](xref:fundamentals/static-files) | 支援靜態檔案的提供和目錄瀏覽。 | 若要求符合檔案則終止。 |
 | [URL 重寫](xref:fundamentals/url-rewriting) | 提供重寫 URL 及重新導向要求的支援。 | 在使用 URL 的元件之前。 |

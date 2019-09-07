@@ -5,12 +5,12 @@ description: 了解模型繫結如何讓控制器動作直接使用 ASP.NET Core
 ms.author: riande
 ms.date: 11/13/2018
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 3623a29976a2e2a7b1bdb22d35716b8a3b448958
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 27e19012b6f878f5e3d08846593a7513bd584a4c
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891223"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773503"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>ASP.NET Core 中的自訂模型繫結
 
@@ -104,7 +104,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
 
-在此範例中，由於引數名稱不是預設的 `authorId`，因此會使用 `ModelBinder` 屬性在參數上指定。 請注意，控制器和動作方法相較於查詢動作方法中的實體，都更為簡化。 使用 Entity Framework Core 擷取作者的邏輯已移至模型繫結器。 當您有數個繫結至 `Author` 模型的方法時，這樣做會明顯簡化許多。
+在此範例中，由於引數名稱不是預設的 `authorId`，因此會使用 `ModelBinder` 屬性在參數上指定。 相較于在動作方法中查閱實體，控制器和動作方法都已簡化。 使用 Entity Framework Core 擷取作者的邏輯已移至模型繫結器。 當您有數個繫結至 `Author` 模型的方法時，這樣做會明顯簡化許多。
 
 您可以將 `ModelBinder` 屬性套用至個別模型屬性 (例如在 ViewModel 上) 或動作方法參數，只指定該類型或動作的特定模型繫結器或模型名稱。
 
@@ -129,6 +129,12 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 將您的提供者新增集合結尾可能會導致在有機會呼叫自訂繫結器之前，即呼叫內建模型繫結器。 在此範例中，會將自訂提供者新增集合開頭，以確保其用於 `Author` 動作引數。
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Startup.cs?name=callout&highlight=5-9)]
+
+### <a name="polymorphic-model-binding"></a>多型模型系結
+
+系結至衍生類型的不同模型，稱為多型模型系結。 當要求值必須系結至特定衍生模型類型時，需要自訂模型系結。 除非需要此方法，否則建議您避免多型模型系結。 多型模型系結使其難以瞭解系結模型。 不過，如果應用程式需要多型模型系結，則執行看起來可能像下列程式碼：
+
+[!code-csharp[](custom-model-binding/3.0sample/PolymorphicModelBinding/ModelBinders/PolymorphicModelBinder.cs?name=snippet)]
 
 ## <a name="recommendations-and-best-practices"></a>建議與最佳做法
 

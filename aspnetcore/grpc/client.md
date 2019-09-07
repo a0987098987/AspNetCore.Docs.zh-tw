@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/21/2019
 uid: grpc/client
-ms.openlocfilehash: 5518a221c4641ba0d1da051a14750e3165944455
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 27e4b3e7307ae49bacb01a46fbc1b55b6967c7a0
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310671"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773698"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>使用 .NET 用戶端呼叫 gRPC 服務
 
@@ -85,7 +85,7 @@ using (var call = client.SayHellos(new HelloRequest { Name = "World" }))
     while (await call.ResponseStream.MoveNext())
     {
         Console.WriteLine("Greeting: " + call.ResponseStream.Current.Message);
-        // Greeting: Hello World" is streamed multiple times
+        // "Greeting: Hello World" is written multiple times
     }
 }
 ```
@@ -99,7 +99,7 @@ using (var call = client.SayHellos(new HelloRequest { Name = "World" }))
     await foreach (var response in call.ResponseStream.ReadAllAsync())
     {
         Console.WriteLine("Greeting: " + response.Message);
-        // "Greeting: Hello World" is streamed multiple times
+        // "Greeting: Hello World" is written multiple times
     }
 }
 ```

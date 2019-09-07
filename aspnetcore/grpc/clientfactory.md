@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/21/2019
 uid: grpc/clientfactory
-ms.openlocfilehash: a52fd397a7ed3e327938b0847af7f4e6a4a79400
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 5d719893e96ae017e2de0ee1744003d2d67a49c9
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310643"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773669"
 ---
 # <a name="grpc-client-factory-integration-in-net-core"></a>.NET Core 中的 gRPC 用戶端 factory 整合
 
@@ -30,7 +30,7 @@ Factory 提供下列優點：
 ```csharp
 services.AddGrpcClient<Greeter.GreeterClient>(o =>
 {
-    o.Address = new Uri("http://localhost:5001");
+    o.Address = new Uri("https://localhost:5001");
 });
 ```
 
@@ -69,7 +69,7 @@ public class AggregatorService : Aggregator.AggregatorBase
 services
     .AddGrpcClient<Greeter.GreeterClient>(o =>
     {
-        o.BaseAddress = new Uri("http://localhost:5001");
+        o.Address = new Uri("https://localhost:5001");
     })
     .ConfigurePrimaryHttpMessageHandler(() =>
     {
@@ -92,7 +92,7 @@ gRPC 特有的方法適用于：
 services
     .AddGrpcClient<Greeter.GreeterClient>(o =>
     {
-        o.Address = new Uri("http://localhost:5001");
+        o.Address = new Uri("https://localhost:5001");
     })
     .AddInterceptor(() => new LoggingInterceptor())
     .ConfigureChannel(o =>
@@ -111,7 +111,7 @@ services
 services
     .AddGrpcClient<Greeter.GreeterClient>(o =>
     {
-        o.Address = new Uri("http://localhost:5001");
+        o.Address = new Uri("https://localhost:5001");
     })
     .EnableCallContextPropagation();
 ```

@@ -5,14 +5,14 @@ description: 瞭解 Blazor apps 如何將服務插入元件中。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/02/2019
+ms.date: 09/06/2019
 uid: blazor/dependency-injection
-ms.openlocfilehash: a2bfa0cbe951e817ed6264f1a151d5a716cd795c
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 0b48cd0cbe14d2b07627f56ab78611bbd3209fa1
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310360"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800390"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
 
@@ -61,7 +61,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 存留期 | 描述 |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Blazor 用戶端目前沒有 DI 範圍的概念。 `Scoped`註冊的服務的行為`Singleton`就像服務一樣。 不過，伺服器端裝載模型支援`Scoped`存留期。 在 Razor 元件中，限定範圍的服務註冊的範圍是連接。 因此，即使目前的意圖是在瀏覽器中執行用戶端，使用範圍服務也適用于應該範圍設定為目前使用者的服務。 |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Blazor WebAssembly apps 目前不具有 DI 範圍的概念。 `Scoped`註冊的服務的行為`Singleton`就像服務一樣。 不過，伺服器端裝載模型支援`Scoped`存留期。 在 Blazor 伺服器應用程式中，限定範圍的服務註冊的範圍是*連接*。 因此，即使目前的意圖是在瀏覽器中執行用戶端，使用範圍服務也適用于應該範圍設定為目前使用者的服務。 |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI 會建立服務的*單一實例*。 所有需要`Singleton`服務的元件都會收到相同服務的實例。 |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | 每當元件從服務容器取得`Transient`服務的實例時，就會收到服務的*新實例*。 |
 
@@ -124,6 +124,29 @@ public class DataAccess : IDataAccess
 * 其中一個函式必須存在，且其引數可由 DI 完成。 如果指定預設值，則允許 DI 未涵蓋的其他參數。
 * 適用的函式必須是*公用*的。
 * 其中一個適用的函數必須存在。 如果發生不明確的情況，DI 會擲回例外狀況。
+
+## <a name="utility-base-component-classes-to-manage-a-di-scope"></a>用來管理 DI 範圍的公用程式基底元件類別
+
+在 ASP.NET Core 應用程式中，限域服務的範圍通常是目前的要求。 要求完成之後，DI 系統會處置任何範圍或暫時性的服務。 在 Blazor 伺服器應用程式中，要求範圍會持續存在用戶端連線的持續時間，這可能會導致暫時性和範圍內的服務存留得比預期的長。
+
+若要將服務的範圍設為元件的存留期， `OwningComponentBase`可以`OwningComponentBase<TService>`使用和基類。 這些基類會公開類型`ScopedServices` `IServiceProvider`的屬性，其會解析範圍設定為元件存留期的服務。 若要撰寫繼承自 Razor 基類的元件，請使用`@inherits`指示詞。
+
+```cshtml
+@page "/users"
+@attribute [Authorize]
+@inherits OwningComponentBase<Data.ApplicationDbContext>
+
+<h1>Users (@Service.Users.Count())</h1>
+<ul>
+    @foreach (var user in Service.Users)
+    {
+        <li>@user.UserName</li>
+    }
+</ul>
+```
+
+> [!NOTE]
+> 使用`@inject`或插入元件的`InjectAttribute`服務不會建立在元件的範圍內，而且會系結至要求範圍。
 
 ## <a name="additional-resources"></a>其他資源
 

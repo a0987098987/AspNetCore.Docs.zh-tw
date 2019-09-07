@@ -5,14 +5,14 @@ description: 探索 ASP.NET Core Blazor，這是在 ASP.NET Core 應用程式中
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 08/13/2019
+ms.date: 09/05/2019
 uid: blazor/index
-ms.openlocfilehash: b13446651603fe23c4595028272ba19ed7bbd5fd
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
-ms.translationtype: HT
+ms.openlocfilehash: 6b62eb372d642c1ad9df880a4b71e5d5a8e40b60
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68993373"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800321"
 ---
 # <a name="introduction-to-blazor"></a>Blazor 簡介
 
@@ -37,7 +37,7 @@ Blazor 是一個可使用 .NET 來建置互動式用戶端 Web UI 的架構：
 
 ## <a name="components"></a>元件
 
-Blazor 應用程式的基礎為「元件」  。 Blazor 中的元件為 UI 的元素，例如頁面、對話方塊或資料輸入表單。
+Blazor 應用程式的基礎為「元件」。 Blazor 中的元件為 UI 的元素，例如頁面、對話方塊或資料輸入表單。
 
 元件是內建在 .NET 組件中且具有下列功能的 .NET 類別：
 
@@ -46,7 +46,7 @@ Blazor 應用程式的基礎為「元件」  。 Blazor 中的元件為 UI 的�
 * 可以為巢狀結構，且可重複使用。
 * 能以 [Razor 類別庫](xref:razor-pages/ui-class)或 [NuGet 套件](/nuget/what-is-nuget)方式共用及散發。
 
-該元件類別通常使用副檔名為 *.razor* 的 [Razor](xref:mvc/views/razor) 標記頁面形式撰寫而成。 Blazor 中的元件正式稱為「Razor 元件」  。 Razor 是結合了 HTML 標記與 C# 程式碼的語法，專為開發人員的生產力而設計。 Razor 可讓您在同一個具有 [IntelliSense](/visualstudio/ide/using-intellisense) 支援的檔案中，於 HTML 標記和 C# 之間切換。 Razor Pages 和 MVC 也會使用 Razor。 不同於 Razor Pages 和 MVC，它們是圍繞著要求/回應模型而建置的，元件則是專門用來處理用戶端 UI 邏輯與組合。
+該元件類別通常使用副檔名為 *.razor* 的 [Razor](xref:mvc/views/razor) 標記頁面形式撰寫而成。 Blazor 中的元件正式稱為「Razor 元件」。 Razor 是結合了 HTML 標記與 C# 程式碼的語法，專為開發人員的生產力而設計。 Razor 可讓您在同一個具有 [IntelliSense](/visualstudio/ide/using-intellisense) 支援的檔案中，於 HTML 標記和 C# 之間切換。 Razor Pages 和 MVC 也會使用 Razor。 不同於 Razor Pages 和 MVC，它們是圍繞著要求/回應模型而建置的，元件則是專門用來處理用戶端 UI 邏輯與組合。
 
 下列 Razor 標記示範一個元件 (*Dialog.razor*)，此元件可巢狀於另一個元件內：
 
@@ -99,7 +99,7 @@ Welcome to your new app.
 
 在應用程式中使用此元件時，[Visual Studio](/visualstudio/ide/using-intellisense) 和 [Visual Studio Code](https://code.visualstudio.com/docs/editor/intellisense) \(英文\) 中的 IntelliSense 會藉由完成語法和參數來加快開發速度。
 
-元件會轉譯為瀏覽器文件物件模型 (DOM) 的記憶體內部表示法 (稱為「轉譯樹」  )，可用來以彈性且有效率的方式更新 UI。
+元件會轉譯為瀏覽器文件物件模型 (DOM) 的記憶體內部表示法 (稱為「轉譯樹」)，可用來以彈性且有效率的方式更新 UI。
 
 ## <a name="blazor-client-side"></a>Blazor 用戶端
 
@@ -107,7 +107,7 @@ Blazor 用戶端是單一頁面應用程式架構，可使用 .NET 來建置互�
 
 在網頁瀏覽器內執行 .NET 程式碼已可藉由 [WebAssembly](https://webassembly.org) (縮寫為 *wasm*) 達成。 WebAssembly 是一種精簡的位元組程式碼格式，針對快速下載和最快執行速度而最佳化。 WebAssembly 是開放式的 Web 標準，在不含外掛程式的網頁瀏覽器中支援。
 
-WebAssembly 程式碼可以透過 JavaScript 存取瀏覽器的完整功能，稱為 「JavaScript 互通性」  (或 *JavaScript Interop*)。 在瀏覽器中透過 WebAssembly 執行的 .NET 程式碼會在瀏覽器的 JavaScript 沙箱執行，且受沙箱所提供對用戶端電腦之惡意動作的保護。
+WebAssembly 程式碼可以透過 JavaScript 存取瀏覽器的完整功能，稱為 「JavaScript 互通性」(或 *JavaScript Interop*)。 在瀏覽器中透過 WebAssembly 執行的 .NET 程式碼會在瀏覽器的 JavaScript 沙箱執行，且受沙箱所提供對用戶端電腦之惡意動作的保護。
 
 ![Blazor 用戶端會透過 WebAssembly 在瀏覽器中執行 .NET 程式碼。](index/_static/blazor-client-side.png)
 
@@ -117,7 +117,7 @@ WebAssembly 程式碼可以透過 JavaScript 存取瀏覽器的完整功能，�
 * 組件和 .NET 執行階段會下載至瀏覽器中。
 * Blazor 用戶端會啟動 .NET 執行階段，並設定執行階段以載入應用程式的組件。 Blazor 用戶端執行階段會使用 JavaScript Interop 來處理 DOM 操作和瀏覽器 API 呼叫。
 
-發佈的應用程式大小 (它的「承載大小」  ) 是應用程式使用性的重要效能因素。 大型應用程式需要相對較長的時間才能下載至瀏覽器，這點會對使用者體驗造成傷害。 Blazor 會將承載調整成最佳大小，以縮短下載時間：
+發佈的應用程式大小 (它的「承載大小」) 是應用程式使用性的重要效能因素。 大型應用程式需要相對較長的時間才能下載至瀏覽器，這點會對使用者體驗造成傷害。 Blazor 會將承載調整成最佳大小，以縮短下載時間：
 
 * 若應用程式是透過[中繼語言 (IL) 連接器](xref:host-and-deploy/blazor/configure-linker)所發佈的，則會移除未使用的程式碼。
 * HTTP 回應會進行壓縮。

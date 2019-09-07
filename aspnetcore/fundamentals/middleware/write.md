@@ -5,14 +5,14 @@ description: 了解如何撰寫自訂的 ASP.NET Core 中介軟體。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/17/2019
+ms.date: 08/22/2019
 uid: fundamentals/middleware/write
-ms.openlocfilehash: 352db93dd7061070c76e34f6c03883f68e2041ee
-ms.sourcegitcommit: 28a2874765cefe9eaa068dceb989a978ba2096aa
-ms.translationtype: HT
+ms.openlocfilehash: e74bba9e1bd826d4f493b0ee642a198f984daada
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67167102"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773722"
 ---
 # <a name="write-custom-aspnet-core-middleware"></a>撰寫自訂的 ASP.NET Core 中介軟體
 
@@ -24,7 +24,7 @@ ms.locfileid: "67167102"
 
 中介軟體通常封裝在類別中，並以擴充方法公開。 請考慮下列中介軟體，其會為來自查詢字串的目前要求設定文化特性：
 
-[!code-csharp[](index/snapshot/Culture/StartupCulture.cs?name=snippet1)]
+[!code-csharp[](write/snapshot/StartupCulture.cs)]
 
 上述範例程式碼用於示範中介軟體元件的建立。 如需 ASP.NET Core 的內建當地語系化支援，請參閱 <xref:fundamentals/localization>。
 
@@ -32,7 +32,7 @@ ms.locfileid: "67167102"
 
 下列程式碼會將中介軟體委派移至類別：
 
-[!code-csharp[](index/snapshot/Culture/RequestCultureMiddleware.cs)]
+[!code-csharp[](write/snapshot/RequestCultureMiddleware.cs)]
 
 中介軟體類別必須包含：
 
@@ -45,13 +45,13 @@ ms.locfileid: "67167102"
 
 ## <a name="middleware-dependencies"></a>中介軟體相依性
 
-中介軟體應於其建構函式中公開其相依性，以遵循[明確的相依性原則](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)。 中介軟體會在每次「應用程式存留期」  就建構一次。 若您需要在要求內與中介軟體共用服務，請參閱[依要求的中介軟體相依性](#per-request-middleware-dependencies)一節。
+中介軟體應於其建構函式中公開其相依性，以遵循[明確的相依性原則](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)。 中介軟體會在每次「應用程式存留期」就建構一次。 若您需要在要求內與中介軟體共用服務，請參閱[依要求的中介軟體相依性](#per-request-middleware-dependencies)一節。
 
 中介軟體元件可透過建構函式參數，解析其來自[相依性插入 (DI)](xref:fundamentals/dependency-injection) 的相依性。 [UseMiddleware&lt;T&gt;](/dotnet/api/microsoft.aspnetcore.builder.usemiddlewareextensions.usemiddleware#Microsoft_AspNetCore_Builder_UseMiddlewareExtensions_UseMiddleware_Microsoft_AspNetCore_Builder_IApplicationBuilder_System_Type_System_Object___) 也可直接接受其它參數。
 
 ## <a name="per-request-middleware-dependencies"></a>依要求的中介軟體相依性
 
-因為中介軟體建構於應用程式啟動時，而非依要求建構，所以在每個要求期間，中介軟體建構函式使用的「已限定範圍」  存留期服務不會與其它插入相依性的類型共用。 如果您必須在中介軟體和其他類型間共用「已限定範圍」  的服務，請將這些服務新增至 `Invoke` 方法的簽章。 `Invoke` 方法可以接受 DI 所填入的其他參數：
+因為中介軟體建構於應用程式啟動時，而非依要求建構，所以在每個要求期間，中介軟體建構函式使用的「已限定範圍」存留期服務不會與其它插入相依性的類型共用。 如果您必須在中介軟體和其他類型間共用「已限定範圍」的服務，請將這些服務新增至 `Invoke` 方法的簽章。 `Invoke` 方法可以接受 DI 所填入的其他參數：
 
 ```csharp
 public class CustomMiddleware
@@ -76,11 +76,11 @@ public class CustomMiddleware
 
 下列擴充方法透過 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> 公開中介軟體：
 
-[!code-csharp[](index/snapshot/Culture/RequestCultureMiddlewareExtensions.cs)]
+[!code-csharp[](write/snapshot/RequestCultureMiddlewareExtensions.cs)]
 
 下列程式碼會從 `Startup.Configure` 呼叫中介軟體：
 
-[!code-csharp[](index/snapshot/Culture/Startup.cs?name=snippet1&highlight=5)]
+[!code-csharp[](write/snapshot/Startup.cs?highlight=5)]
 
 ## <a name="additional-resources"></a>其他資源
 

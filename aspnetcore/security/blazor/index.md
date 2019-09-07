@@ -5,14 +5,14 @@ description: 了解 Blazor 驗證與授權案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/29/2019
+ms.date: 09/05/2019
 uid: security/blazor/index
-ms.openlocfilehash: 8714acbeb6e8a00992a601030811b24f53426b82
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 2ba7b0612c2be50ae0797c50dc3cb0d63c0f0c2d
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310517"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800503"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
 
@@ -277,7 +277,7 @@ public void ConfigureServices(IServiceCollection services)
 </AuthorizeView>
 ```
 
-`<Authorized>` 和 `<NotAuthorized>` 的內容可以包含任意項目，例如其他互動式元件。
+`<Authorized>` 和`<NotAuthorized>`標記的內容可以包含任意專案，例如其他互動式元件。
 
 授權情況 (例如控制 UI 選項或存取的角色或原則) 已涵蓋於[授權](#authorization)一節。
 
@@ -410,9 +410,9 @@ You can only see this if you're signed in.
 </Router>
 ```
 
-`<NotFound>`、`<NotAuthorized>` 及 `<Authorizing>` 的內容可以包含任意項目，例如其他互動式元件。
+`<NotFound>` 、`<NotAuthorized>`和標記`<Authorizing>`的內容可以包含任意專案，例如其他互動式元件。
 
-如果`<NotAuthorized>`未指定，則`<AuthorizeRouteView>`會使用下列回溯訊息：
+如果未指定`AuthorizeRouteView`元素，會使用下列回溯訊息： `<NotAuthorized>`
 
 ```html
 Not authorized.

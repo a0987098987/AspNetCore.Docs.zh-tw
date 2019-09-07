@@ -5,14 +5,14 @@ description: 瞭解如何從 Blazor apps 中的 JavaScript，從 .NET 和 .NET �
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2019
+ms.date: 09/05/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: e578a8ad1484a2ef93bdc7470985937c4f28b7ed
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 4e2c979971f8f550af4aa9653880bfd1e5fae731
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310461"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800294"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 

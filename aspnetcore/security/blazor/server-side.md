@@ -5,14 +5,14 @@ description: 瞭解如何降低安全性威脅，以 Blazor 伺服器端應用�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/04/2019
+ms.date: 09/05/2019
 uid: security/blazor/server-side
-ms.openlocfilehash: eb8068354182f9e05411bf48232878911bae6af8
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 13bb4475b4beac78cf489d83fb59a3e0d6d8f2d9
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310699"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800490"
 ---
 # <a name="secure-aspnet-core-blazor-server-side-apps"></a>保護 ASP.NET Core Blazor 伺服器端應用程式
 
@@ -99,7 +99,7 @@ Blazor 用戶端會在每個會話建立單一連線，只要開啟瀏覽器視�
 | `CircuitOptions.MaxBufferedUnacknowledgedRenderBatches` | 伺服器在指定時間將每個線路保留在記憶體中的未認可轉譯批次數目上限，以支援健全的重新連接。 達到此限制之後，伺服器就會停止產生新的轉譯批次，直到用戶端認可一或多個批次為止。 | 10 |
 
 
-| SignalR 和 ASP.NET Core 限制             | 描述 | 預設 |
+| SignalR 和 ASP.NET Core 限制             | 說明 | 預設 |
 | ------------------------------------------ | ----------- | ------- |
 | `CircuitOptions.MaximumReceiveMessageSize` | 個別訊息的訊息大小。 | 32 KB |
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 2f0410eb75a6ef3f3d361c75bce7e79ae6d42a61
-ms.sourcegitcommit: 983b31449fe398e6e922eb13e9eb6f4287ec91e8
-ms.translationtype: HT
+ms.openlocfilehash: ea1111f43b6b8b4f47061056e8ad8d505f92dba6
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2019
-ms.locfileid: "70017508"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800485"
 ---
 # <a name="build-your-first-blazor-app"></a>組建第一個 Blazor 應用程式
 
@@ -26,7 +26,7 @@ ms.locfileid: "70017508"
 
 1. 在 *Pages* 資料夾中瀏覽至每個應用程式的三個頁面：首頁、計數器和擷取資料。 這些頁面會透過 Razor 元件檔案 *Index.razor*、*Counter.razor* 及 *FetchData.razor* 來實作。
 
-1. 在 [計數器] 頁面上，選取 [按我]  按鈕以在不重新整理頁面的情況下讓計數器遞增。 讓網頁中的計數器遞增通常需要撰寫 JavaScript，但 Blazor 提供更好的 C# 使用方法。
+1. 在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 讓網頁中的計數器遞增通常需要撰寫 JavaScript，但 Blazor 提供更好的 C# 使用方法。
 
 1. 檢查 *Counter.razor`Counter` 檔案中*  元件的實作。
 
@@ -38,7 +38,7 @@ ms.locfileid: "70017508"
 
    元件類別的成員均定義於 `@code` 區塊中。 在 `@code` 區塊中，會指定元件狀態 (屬性、欄位) 來處理事件或定義其他元件邏輯。 然後會使用這些成員作為元件轉譯邏輯的一部分，並用於處理事件。
 
-   選取 [Click me] \(按我\)  按鈕時：
+   選取 [Click me] \(按我\) 按鈕時：
 
    * 會呼叫 `Counter` 元件的已註冊 `onclick` 處理常式 (`IncrementCount` 方法)。
    * `Counter` 元件會重新產生其轉譯樹狀結構。
@@ -49,7 +49,7 @@ ms.locfileid: "70017508"
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Counter2.razor?highlight=14)]
 
-1. 重建並執行應用程式以查看變更。 選取 [按我]  按鈕。 計數器會遞增二。
+1. 重建並執行應用程式以查看變更。 選取 [按我] 按鈕。 計數器會遞增二。
 
 ## <a name="use-components"></a>使用元件
 
@@ -67,11 +67,11 @@ ms.locfileid: "70017508"
 
 ## <a name="component-parameters"></a>元件參數
 
-元件也可以有參數。 定義元件參數時，是在元件類別上使用以 `[Parameter]` 裝飾的公開屬性來定義。 使用這些屬性來指定標記中元件的引數。
+元件也可以有參數。 元件參數是在元件類別上使用具有`[Parameter]`屬性的公用屬性來定義。 使用這些屬性來指定標記中元件的引數。
 
 1. 更新元件的 `@code` C# 程式碼：
 
-   * 新增以 `[Parameter]` 屬性裝飾的 `IncrementAmount` 屬性。
+   * `IncrementAmount` 新增`[Parameter]`具有屬性的公用屬性。
    * 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
 
    *Pages/Counter.razor*：
@@ -89,7 +89,7 @@ ms.locfileid: "70017508"
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
-1. 重新載入 `Index` 元件。 每次選取 [Click me] \(按我\)  按鈕時，計數器都會以 10 遞增。 `Counter` 元件中的計數器會繼續遞增一。
+1. 重新載入 `Index` 元件。 每次選取 [Click me] \(按我\) 按鈕時，計數器都會以 10 遞增。 `Counter` 元件中的計數器會繼續遞增一。
 
 ## <a name="route-to-components"></a>路由到元件
 
@@ -167,7 +167,7 @@ ms.locfileid: "70017508"
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo5.razor?highlight=12-13)]
 
-1. 重建並執行應用程式。 選取 [Add todo] \(新增待辦事項\)  按鈕時，不會發生任何情況，因為事件處理常式並未連接至這個按鈕。
+1. 重建並執行應用程式。 選取 [Add todo] \(新增待辦事項\) 按鈕時，不會發生任何情況，因為事件處理常式並未連接至這個按鈕。
 
 1. 將 `AddTodo` 方法新增至 `Todo` 元件並註冊，以便使用 `@onclick` 屬性來進行按鈕選取。 當選取按鈕時，就會呼叫 `AddTodo` C# 方法：
 

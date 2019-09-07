@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: f22a90dd7662bfb34e2f7adb87fa611012d78533
-ms.sourcegitcommit: b5e63714afc26e94be49a92619586df5189ed93a
-ms.translationtype: HT
+ms.openlocfilehash: 538af8469cf28b145d466a869ca3ca689d637ac6
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68739588"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773911"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>將欄位新增至 ASP.NET Core MVC 應用程式
 
@@ -99,7 +99,7 @@ Command ⌘ + B
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-從 [工具]  功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]  。
+從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
 
   ![PMC 功能表](adding-model/_static/pmc.png)
 

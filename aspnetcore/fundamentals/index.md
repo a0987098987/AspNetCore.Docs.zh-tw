@@ -5,135 +5,135 @@ description: 了解建置 ASP.NET Core 應用程式的基本概念。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/02/2019
+ms.date: 09/06/2019
 uid: fundamentals/index
-ms.openlocfilehash: 7e2901919c8b0165d0f169abf74fe5bc0edd8be4
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: cff2afd62ed60648dc689d408dde56ecda18c261
+ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773748"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70815648"
 ---
-# <a name="aspnet-core-fundamentals"></a><span data-ttu-id="acc58-103">ASP.NET Core 基本概念</span><span class="sxs-lookup"><span data-stu-id="acc58-103">ASP.NET Core fundamentals</span></span>
+# <a name="aspnet-core-fundamentals"></a><span data-ttu-id="91c5b-103">ASP.NET Core 基本概念</span><span class="sxs-lookup"><span data-stu-id="91c5b-103">ASP.NET Core fundamentals</span></span>
 
-<span data-ttu-id="acc58-104">本文是了解如何開發 ASP.NET Core 應用程式的關鍵主題概觀。</span><span class="sxs-lookup"><span data-stu-id="acc58-104">This article is an overview of key topics for understanding how to develop ASP.NET Core apps.</span></span>
+<span data-ttu-id="91c5b-104">本文是了解如何開發 ASP.NET Core 應用程式的關鍵主題概觀。</span><span class="sxs-lookup"><span data-stu-id="91c5b-104">This article is an overview of key topics for understanding how to develop ASP.NET Core apps.</span></span>
 
-## <a name="the-startup-class"></a><span data-ttu-id="acc58-105">Startup 類別</span><span class="sxs-lookup"><span data-stu-id="acc58-105">The Startup class</span></span>
+## <a name="the-startup-class"></a><span data-ttu-id="91c5b-105">Startup 類別</span><span class="sxs-lookup"><span data-stu-id="91c5b-105">The Startup class</span></span>
 
-<span data-ttu-id="acc58-106">`Startup` 類別是：</span><span class="sxs-lookup"><span data-stu-id="acc58-106">The `Startup` class is where:</span></span>
+<span data-ttu-id="91c5b-106">`Startup` 類別是：</span><span class="sxs-lookup"><span data-stu-id="91c5b-106">The `Startup` class is where:</span></span>
 
-* <span data-ttu-id="acc58-107">已設定應用程式所需的服務。</span><span class="sxs-lookup"><span data-stu-id="acc58-107">Services required by the app are configured.</span></span>
-* <span data-ttu-id="acc58-108">定義要求處理管線的位置。</span><span class="sxs-lookup"><span data-stu-id="acc58-108">The request handling pipeline is defined.</span></span>
+* <span data-ttu-id="91c5b-107">已設定應用程式所需的服務。</span><span class="sxs-lookup"><span data-stu-id="91c5b-107">Services required by the app are configured.</span></span>
+* <span data-ttu-id="91c5b-108">定義要求處理管線的位置。</span><span class="sxs-lookup"><span data-stu-id="91c5b-108">The request handling pipeline is defined.</span></span>
 
-<span data-ttu-id="acc58-109">「服務」是應用程式所使用的元件。</span><span class="sxs-lookup"><span data-stu-id="acc58-109">*Services* are components that are used by the app.</span></span> <span data-ttu-id="acc58-110">例如，記錄元件即為一項服務。</span><span class="sxs-lookup"><span data-stu-id="acc58-110">For example, a logging component is a service.</span></span> <span data-ttu-id="acc58-111">設定 (或「註冊」) 服務的程式碼會新增至 `Startup.ConfigureServices` 方法。</span><span class="sxs-lookup"><span data-stu-id="acc58-111">Code to configure (or *register*) services is added to the `Startup.ConfigureServices` method.</span></span>
+<span data-ttu-id="91c5b-109">「服務」是應用程式所使用的元件。</span><span class="sxs-lookup"><span data-stu-id="91c5b-109">*Services* are components that are used by the app.</span></span> <span data-ttu-id="91c5b-110">例如，記錄元件即為一項服務。</span><span class="sxs-lookup"><span data-stu-id="91c5b-110">For example, a logging component is a service.</span></span> <span data-ttu-id="91c5b-111">設定 (或「註冊」) 服務的程式碼會新增至 `Startup.ConfigureServices` 方法。</span><span class="sxs-lookup"><span data-stu-id="91c5b-111">Code to configure (or *register*) services is added to the `Startup.ConfigureServices` method.</span></span>
 
-<span data-ttu-id="acc58-112">要求處理管線由一系列*中介軟體*元件所組成。</span><span class="sxs-lookup"><span data-stu-id="acc58-112">The request handling pipeline is composed as a series of *middleware* components.</span></span> <span data-ttu-id="acc58-113">例如，中介軟體可能會處理靜態檔案的要求，或是將 HTTP 要求重新導向至 HTTPS。</span><span class="sxs-lookup"><span data-stu-id="acc58-113">For example, a middleware might handle requests for static files or redirect HTTP requests to HTTPS.</span></span> <span data-ttu-id="acc58-114">每個中介軟體會在 `HttpContext` 上執行非同步操作，然後叫用管線中下一個中介軟體或終止要求。</span><span class="sxs-lookup"><span data-stu-id="acc58-114">Each middleware performs asynchronous operations on an `HttpContext` and then either invokes the next middleware in the pipeline or terminates the request.</span></span> <span data-ttu-id="acc58-115">設定要求處理管線的程式碼會新增至 `Startup.Configure` 方法。</span><span class="sxs-lookup"><span data-stu-id="acc58-115">Code to configure the request handling pipeline is added to the `Startup.Configure` method.</span></span>
+<span data-ttu-id="91c5b-112">要求處理管線由一系列*中介軟體*元件所組成。</span><span class="sxs-lookup"><span data-stu-id="91c5b-112">The request handling pipeline is composed as a series of *middleware* components.</span></span> <span data-ttu-id="91c5b-113">例如，中介軟體可能會處理靜態檔案的要求，或是將 HTTP 要求重新導向至 HTTPS。</span><span class="sxs-lookup"><span data-stu-id="91c5b-113">For example, a middleware might handle requests for static files or redirect HTTP requests to HTTPS.</span></span> <span data-ttu-id="91c5b-114">每個中介軟體會在 `HttpContext` 上執行非同步操作，然後叫用管線中下一個中介軟體或終止要求。</span><span class="sxs-lookup"><span data-stu-id="91c5b-114">Each middleware performs asynchronous operations on an `HttpContext` and then either invokes the next middleware in the pipeline or terminates the request.</span></span> <span data-ttu-id="91c5b-115">設定要求處理管線的程式碼會新增至 `Startup.Configure` 方法。</span><span class="sxs-lookup"><span data-stu-id="91c5b-115">Code to configure the request handling pipeline is added to the `Startup.Configure` method.</span></span>
 
-<span data-ttu-id="acc58-116">以下是 `Startup` 類別範例：</span><span class="sxs-lookup"><span data-stu-id="acc58-116">Here's a sample `Startup` class:</span></span>
+<span data-ttu-id="91c5b-116">以下是 `Startup` 類別範例：</span><span class="sxs-lookup"><span data-stu-id="91c5b-116">Here's a sample `Startup` class:</span></span>
 
 [!code-csharp[](index/snapshots/2.x/Startup1.cs?highlight=3,12)]
 
-<span data-ttu-id="acc58-117">如需詳細資訊，請參閱 <xref:fundamentals/startup>。</span><span class="sxs-lookup"><span data-stu-id="acc58-117">For more information, see <xref:fundamentals/startup>.</span></span>
+<span data-ttu-id="91c5b-117">如需詳細資訊，請參閱 <xref:fundamentals/startup>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-117">For more information, see <xref:fundamentals/startup>.</span></span>
 
-## <a name="dependency-injection-services"></a><span data-ttu-id="acc58-118">相依性插入 (服務)</span><span class="sxs-lookup"><span data-stu-id="acc58-118">Dependency injection (services)</span></span>
+## <a name="dependency-injection-services"></a><span data-ttu-id="91c5b-118">相依性插入 (服務)</span><span class="sxs-lookup"><span data-stu-id="91c5b-118">Dependency injection (services)</span></span>
 
-<span data-ttu-id="acc58-119">ASP.NET Core 具有內建的相依性插入 (DI) 架構，可讓應用程式的類別使用所設定服務。</span><span class="sxs-lookup"><span data-stu-id="acc58-119">ASP.NET Core has a built-in dependency injection (DI) framework that makes configured services available to an app's classes.</span></span> <span data-ttu-id="acc58-120">取得類別中一項服務執行個體的其中一種方式，便是使用所需類型的參數來建立建構函式。</span><span class="sxs-lookup"><span data-stu-id="acc58-120">One way to get an instance of a service in a class is to create a constructor with a parameter of the required type.</span></span> <span data-ttu-id="acc58-121">參數可以是服務類型或是介面。</span><span class="sxs-lookup"><span data-stu-id="acc58-121">The parameter can be the service type or an interface.</span></span> <span data-ttu-id="acc58-122">DI 系統會在執行階段提供服務。</span><span class="sxs-lookup"><span data-stu-id="acc58-122">The DI system provides the service at runtime.</span></span>
+<span data-ttu-id="91c5b-119">ASP.NET Core 具有內建的相依性插入 (DI) 架構，可讓應用程式的類別使用所設定服務。</span><span class="sxs-lookup"><span data-stu-id="91c5b-119">ASP.NET Core has a built-in dependency injection (DI) framework that makes configured services available to an app's classes.</span></span> <span data-ttu-id="91c5b-120">取得類別中一項服務執行個體的其中一種方式，便是使用所需類型的參數來建立建構函式。</span><span class="sxs-lookup"><span data-stu-id="91c5b-120">One way to get an instance of a service in a class is to create a constructor with a parameter of the required type.</span></span> <span data-ttu-id="91c5b-121">參數可以是服務類型或是介面。</span><span class="sxs-lookup"><span data-stu-id="91c5b-121">The parameter can be the service type or an interface.</span></span> <span data-ttu-id="91c5b-122">DI 系統會在執行階段提供服務。</span><span class="sxs-lookup"><span data-stu-id="91c5b-122">The DI system provides the service at runtime.</span></span>
 
-<span data-ttu-id="acc58-123">以下是使用 DI 取得 Entity Framework Core 內容物件的類別。</span><span class="sxs-lookup"><span data-stu-id="acc58-123">Here's a class that uses DI to get an Entity Framework Core context object.</span></span> <span data-ttu-id="acc58-124">醒目提示的那一行便是建構函式插入的範例：</span><span class="sxs-lookup"><span data-stu-id="acc58-124">The highlighted line is an example of constructor injection:</span></span>
+<span data-ttu-id="91c5b-123">以下是使用 DI 取得 Entity Framework Core 內容物件的類別。</span><span class="sxs-lookup"><span data-stu-id="91c5b-123">Here's a class that uses DI to get an Entity Framework Core context object.</span></span> <span data-ttu-id="91c5b-124">醒目提示的那一行便是建構函式插入的範例：</span><span class="sxs-lookup"><span data-stu-id="91c5b-124">The highlighted line is an example of constructor injection:</span></span>
 
 [!code-csharp[](index/snapshots/2.x/Index.cshtml.cs?highlight=5)]
 
-<span data-ttu-id="acc58-125">雖然 DI 為內建，但其設計用於讓您插入協力廠商的控制反轉 (IoC) 容器 (若您想要的話)。</span><span class="sxs-lookup"><span data-stu-id="acc58-125">While DI is built in, it's designed to let you plug in a third-party Inversion of Control (IoC) container if you prefer.</span></span>
+<span data-ttu-id="91c5b-125">雖然 DI 為內建，但其設計用於讓您插入協力廠商的控制反轉 (IoC) 容器 (若您想要的話)。</span><span class="sxs-lookup"><span data-stu-id="91c5b-125">While DI is built in, it's designed to let you plug in a third-party Inversion of Control (IoC) container if you prefer.</span></span>
 
-<span data-ttu-id="acc58-126">如需詳細資訊，請參閱 <xref:fundamentals/dependency-injection>。</span><span class="sxs-lookup"><span data-stu-id="acc58-126">For more information, see <xref:fundamentals/dependency-injection>.</span></span>
+<span data-ttu-id="91c5b-126">如需詳細資訊，請參閱 <xref:fundamentals/dependency-injection>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-126">For more information, see <xref:fundamentals/dependency-injection>.</span></span>
 
-## <a name="middleware"></a><span data-ttu-id="acc58-127">中介軟體</span><span class="sxs-lookup"><span data-stu-id="acc58-127">Middleware</span></span>
+## <a name="middleware"></a><span data-ttu-id="91c5b-127">中介軟體</span><span class="sxs-lookup"><span data-stu-id="91c5b-127">Middleware</span></span>
 
-<span data-ttu-id="acc58-128">要求處理管線是以一系列中介軟體元件組成。</span><span class="sxs-lookup"><span data-stu-id="acc58-128">The request handling pipeline is composed as a series of middleware components.</span></span> <span data-ttu-id="acc58-129">每個元件會在 `HttpContext` 上執行非同步操作，然後叫用管線中下一個中介軟體或終止要求。</span><span class="sxs-lookup"><span data-stu-id="acc58-129">Each component performs asynchronous operations on an `HttpContext` and then either invokes the next middleware in the pipeline or terminates the request.</span></span>
+<span data-ttu-id="91c5b-128">要求處理管線是以一系列中介軟體元件組成。</span><span class="sxs-lookup"><span data-stu-id="91c5b-128">The request handling pipeline is composed as a series of middleware components.</span></span> <span data-ttu-id="91c5b-129">每個元件會在 `HttpContext` 上執行非同步操作，然後叫用管線中下一個中介軟體或終止要求。</span><span class="sxs-lookup"><span data-stu-id="91c5b-129">Each component performs asynchronous operations on an `HttpContext` and then either invokes the next middleware in the pipeline or terminates the request.</span></span>
 
-<span data-ttu-id="acc58-130">依照慣例，中介軟體元件會透過叫用其 `Startup.Configure` 方法中的 `Use...` 延伸模組方法來新增至管線。</span><span class="sxs-lookup"><span data-stu-id="acc58-130">By convention, a middleware component is added to the pipeline by invoking its `Use...` extension method in the `Startup.Configure` method.</span></span> <span data-ttu-id="acc58-131">例如，若要啟用靜態檔案轉譯，請呼叫 `UseStaticFiles`。</span><span class="sxs-lookup"><span data-stu-id="acc58-131">For example, to enable rendering of static files, call `UseStaticFiles`.</span></span>
+<span data-ttu-id="91c5b-130">依照慣例，中介軟體元件會透過叫用其 `Startup.Configure` 方法中的 `Use...` 延伸模組方法來新增至管線。</span><span class="sxs-lookup"><span data-stu-id="91c5b-130">By convention, a middleware component is added to the pipeline by invoking its `Use...` extension method in the `Startup.Configure` method.</span></span> <span data-ttu-id="91c5b-131">例如，若要啟用靜態檔案轉譯，請呼叫 `UseStaticFiles`。</span><span class="sxs-lookup"><span data-stu-id="91c5b-131">For example, to enable rendering of static files, call `UseStaticFiles`.</span></span>
 
-<span data-ttu-id="acc58-132">下列範例中醒目提示的程式碼會設定要求處理管線：</span><span class="sxs-lookup"><span data-stu-id="acc58-132">The highlighted code in the following example configures the request handling pipeline:</span></span>
+<span data-ttu-id="91c5b-132">下列範例中醒目提示的程式碼會設定要求處理管線：</span><span class="sxs-lookup"><span data-stu-id="91c5b-132">The highlighted code in the following example configures the request handling pipeline:</span></span>
 
 [!code-csharp[](index/snapshots/2.x/Startup1.cs?highlight=14-16)]
 
-<span data-ttu-id="acc58-133">ASP.NET Core 包含一組豐富的內建中介軟體，您也可以撰寫自訂中介軟體。</span><span class="sxs-lookup"><span data-stu-id="acc58-133">ASP.NET Core includes a rich set of built-in middleware, and you can write custom middleware.</span></span>
+<span data-ttu-id="91c5b-133">ASP.NET Core 包含一組豐富的內建中介軟體，您也可以撰寫自訂中介軟體。</span><span class="sxs-lookup"><span data-stu-id="91c5b-133">ASP.NET Core includes a rich set of built-in middleware, and you can write custom middleware.</span></span>
 
-<span data-ttu-id="acc58-134">如需詳細資訊，請參閱 <xref:fundamentals/middleware/index>。</span><span class="sxs-lookup"><span data-stu-id="acc58-134">For more information, see <xref:fundamentals/middleware/index>.</span></span>
+<span data-ttu-id="91c5b-134">如需詳細資訊，請參閱 <xref:fundamentals/middleware/index>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-134">For more information, see <xref:fundamentals/middleware/index>.</span></span>
 
-## <a name="host"></a><span data-ttu-id="acc58-135">主機</span><span class="sxs-lookup"><span data-stu-id="acc58-135">Host</span></span>
+## <a name="host"></a><span data-ttu-id="91c5b-135">主機</span><span class="sxs-lookup"><span data-stu-id="91c5b-135">Host</span></span>
 
-<span data-ttu-id="acc58-136">ASP.NET Core 應用程式會在啟動時建置一個「主機」。</span><span class="sxs-lookup"><span data-stu-id="acc58-136">An ASP.NET Core app builds a *host* on startup.</span></span> <span data-ttu-id="acc58-137">主機是封裝所有應用程式資源的物件，例如：</span><span class="sxs-lookup"><span data-stu-id="acc58-137">The host is an object that encapsulates all of the app's resources, such as:</span></span>
+<span data-ttu-id="91c5b-136">ASP.NET Core 應用程式會在啟動時建置一個「主機」。</span><span class="sxs-lookup"><span data-stu-id="91c5b-136">An ASP.NET Core app builds a *host* on startup.</span></span> <span data-ttu-id="91c5b-137">主機是封裝所有應用程式資源的物件，例如：</span><span class="sxs-lookup"><span data-stu-id="91c5b-137">The host is an object that encapsulates all of the app's resources, such as:</span></span>
 
-* <span data-ttu-id="acc58-138">HTTP 伺服器實作</span><span class="sxs-lookup"><span data-stu-id="acc58-138">An HTTP server implementation</span></span>
-* <span data-ttu-id="acc58-139">中介軟體元件</span><span class="sxs-lookup"><span data-stu-id="acc58-139">Middleware components</span></span>
-* <span data-ttu-id="acc58-140">記錄</span><span class="sxs-lookup"><span data-stu-id="acc58-140">Logging</span></span>
-* <span data-ttu-id="acc58-141">DI</span><span class="sxs-lookup"><span data-stu-id="acc58-141">DI</span></span>
-* <span data-ttu-id="acc58-142">組態</span><span class="sxs-lookup"><span data-stu-id="acc58-142">Configuration</span></span>
+* <span data-ttu-id="91c5b-138">HTTP 伺服器實作</span><span class="sxs-lookup"><span data-stu-id="91c5b-138">An HTTP server implementation</span></span>
+* <span data-ttu-id="91c5b-139">中介軟體元件</span><span class="sxs-lookup"><span data-stu-id="91c5b-139">Middleware components</span></span>
+* <span data-ttu-id="91c5b-140">記錄</span><span class="sxs-lookup"><span data-stu-id="91c5b-140">Logging</span></span>
+* <span data-ttu-id="91c5b-141">DI</span><span class="sxs-lookup"><span data-stu-id="91c5b-141">DI</span></span>
+* <span data-ttu-id="91c5b-142">組態</span><span class="sxs-lookup"><span data-stu-id="91c5b-142">Configuration</span></span>
 
-<span data-ttu-id="acc58-143">在單一物件中包含所有應用程式相互依存資源的主要理由便是生命週期管理：控制應用程式的啟動及順利關機。</span><span class="sxs-lookup"><span data-stu-id="acc58-143">The main reason for including all of the app's interdependent resources in one object is lifetime management: control over app startup and graceful shutdown.</span></span>
+<span data-ttu-id="91c5b-143">在單一物件中包含所有應用程式相互依存資源的主要理由便是生命週期管理：控制應用程式的啟動及順利關機。</span><span class="sxs-lookup"><span data-stu-id="91c5b-143">The main reason for including all of the app's interdependent resources in one object is lifetime management: control over app startup and graceful shutdown.</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="acc58-144">可以使用兩種主機：一般主機與 Web 主機。</span><span class="sxs-lookup"><span data-stu-id="acc58-144">Two hosts are available: the Generic Host and the Web Host.</span></span> <span data-ttu-id="acc58-145">建議您使用一般主機，Web 主機只適用於回溯相容性。</span><span class="sxs-lookup"><span data-stu-id="acc58-145">The Generic Host is recommended, and the Web Host is available only for backwards compatibility.</span></span>
+<span data-ttu-id="91c5b-144">可以使用兩種主機：一般主機與 Web 主機。</span><span class="sxs-lookup"><span data-stu-id="91c5b-144">Two hosts are available: the Generic Host and the Web Host.</span></span> <span data-ttu-id="91c5b-145">建議您使用一般主機，Web 主機只適用於回溯相容性。</span><span class="sxs-lookup"><span data-stu-id="91c5b-145">The Generic Host is recommended, and the Web Host is available only for backwards compatibility.</span></span>
 
-<span data-ttu-id="acc58-146">建立主機的程式碼位於 `Program.Main` 中：</span><span class="sxs-lookup"><span data-stu-id="acc58-146">The code to create a host is in `Program.Main`:</span></span>
+<span data-ttu-id="91c5b-146">建立主機的程式碼位於 `Program.Main` 中：</span><span class="sxs-lookup"><span data-stu-id="91c5b-146">The code to create a host is in `Program.Main`:</span></span>
 
 [!code-csharp[](index/snapshots/3.x/Program1.cs)]
 
-<span data-ttu-id="acc58-147">`CreateDefaultBuilder` 和 `ConfigureWebHostDefaults` 方法會設定具備一般常用選項的主機，如下所示：</span><span class="sxs-lookup"><span data-stu-id="acc58-147">The `CreateDefaultBuilder` and `ConfigureWebHostDefaults` methods configure a host with commonly used options, such as the following:</span></span>
+<span data-ttu-id="91c5b-147">`CreateDefaultBuilder` 和 `ConfigureWebHostDefaults` 方法會設定具備一般常用選項的主機，如下所示：</span><span class="sxs-lookup"><span data-stu-id="91c5b-147">The `CreateDefaultBuilder` and `ConfigureWebHostDefaults` methods configure a host with commonly used options, such as the following:</span></span>
 
-* <span data-ttu-id="acc58-148">使用 [Kestrel](#servers) 作為網頁伺服器，並啟用 IIS 整合。</span><span class="sxs-lookup"><span data-stu-id="acc58-148">Use [Kestrel](#servers) as the web server and enable IIS integration.</span></span>
-* <span data-ttu-id="acc58-149">從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。</span><span class="sxs-lookup"><span data-stu-id="acc58-149">Load configuration from *appsettings.json*, *appsettings.{Environment Name}.json*, environment variables, command line arguments, and other configuration sources.</span></span>
-* <span data-ttu-id="acc58-150">將記錄輸出傳送到主控台及偵錯提供者。</span><span class="sxs-lookup"><span data-stu-id="acc58-150">Send logging output to the console and debug providers.</span></span>
+* <span data-ttu-id="91c5b-148">使用 [Kestrel](#servers) 作為網頁伺服器，並啟用 IIS 整合。</span><span class="sxs-lookup"><span data-stu-id="91c5b-148">Use [Kestrel](#servers) as the web server and enable IIS integration.</span></span>
+* <span data-ttu-id="91c5b-149">從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。</span><span class="sxs-lookup"><span data-stu-id="91c5b-149">Load configuration from *appsettings.json*, *appsettings.{Environment Name}.json*, environment variables, command line arguments, and other configuration sources.</span></span>
+* <span data-ttu-id="91c5b-150">將記錄輸出傳送到主控台及偵錯提供者。</span><span class="sxs-lookup"><span data-stu-id="91c5b-150">Send logging output to the console and debug providers.</span></span>
 
-<span data-ttu-id="acc58-151">如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host>。</span><span class="sxs-lookup"><span data-stu-id="acc58-151">For more information, see <xref:fundamentals/host/generic-host>.</span></span>
+<span data-ttu-id="91c5b-151">如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-151">For more information, see <xref:fundamentals/host/generic-host>.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="acc58-152">可以使用兩種主機：Web 主機與一般主機。</span><span class="sxs-lookup"><span data-stu-id="acc58-152">Two hosts are available: the Web Host and the Generic Host.</span></span> <span data-ttu-id="acc58-153">在 ASP.NET Core 2.x 中，一般主機僅適用於非 Web 案例。</span><span class="sxs-lookup"><span data-stu-id="acc58-153">In ASP.NET Core 2.x, the Generic Host is only for non-web scenarios.</span></span>
+<span data-ttu-id="91c5b-152">可以使用兩種主機：Web 主機與一般主機。</span><span class="sxs-lookup"><span data-stu-id="91c5b-152">Two hosts are available: the Web Host and the Generic Host.</span></span> <span data-ttu-id="91c5b-153">在 ASP.NET Core 2.x 中，一般主機僅適用於非 Web 案例。</span><span class="sxs-lookup"><span data-stu-id="91c5b-153">In ASP.NET Core 2.x, the Generic Host is only for non-web scenarios.</span></span>
 
-<span data-ttu-id="acc58-154">建立主機的程式碼位於 `Program.Main` 中：</span><span class="sxs-lookup"><span data-stu-id="acc58-154">The code to create a host is in `Program.Main`:</span></span>
+<span data-ttu-id="91c5b-154">建立主機的程式碼位於 `Program.Main` 中：</span><span class="sxs-lookup"><span data-stu-id="91c5b-154">The code to create a host is in `Program.Main`:</span></span>
 
 [!code-csharp[](index/snapshots/2.x/Program1.cs)]
 
-<span data-ttu-id="acc58-155">`CreateDefaultBuilder` 方法會設定具備一般常用選項的主機，如下所示：</span><span class="sxs-lookup"><span data-stu-id="acc58-155">The `CreateDefaultBuilder` method configures a host with commonly used options, such as the following:</span></span>
+<span data-ttu-id="91c5b-155">`CreateDefaultBuilder` 方法會設定具備一般常用選項的主機，如下所示：</span><span class="sxs-lookup"><span data-stu-id="91c5b-155">The `CreateDefaultBuilder` method configures a host with commonly used options, such as the following:</span></span>
 
-* <span data-ttu-id="acc58-156">使用 [Kestrel](#servers) 作為網頁伺服器，並啟用 IIS 整合。</span><span class="sxs-lookup"><span data-stu-id="acc58-156">Use [Kestrel](#servers) as the web server and enable IIS integration.</span></span>
-* <span data-ttu-id="acc58-157">從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。</span><span class="sxs-lookup"><span data-stu-id="acc58-157">Load configuration from *appsettings.json*, *appsettings.{Environment Name}.json*, environment variables, command line arguments, and other configuration sources.</span></span>
-* <span data-ttu-id="acc58-158">將記錄輸出傳送到主控台及偵錯提供者。</span><span class="sxs-lookup"><span data-stu-id="acc58-158">Send logging output to the console and debug providers.</span></span>
+* <span data-ttu-id="91c5b-156">使用 [Kestrel](#servers) 作為網頁伺服器，並啟用 IIS 整合。</span><span class="sxs-lookup"><span data-stu-id="91c5b-156">Use [Kestrel](#servers) as the web server and enable IIS integration.</span></span>
+* <span data-ttu-id="91c5b-157">從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。</span><span class="sxs-lookup"><span data-stu-id="91c5b-157">Load configuration from *appsettings.json*, *appsettings.{Environment Name}.json*, environment variables, command line arguments, and other configuration sources.</span></span>
+* <span data-ttu-id="91c5b-158">將記錄輸出傳送到主控台及偵錯提供者。</span><span class="sxs-lookup"><span data-stu-id="91c5b-158">Send logging output to the console and debug providers.</span></span>
 
-<span data-ttu-id="acc58-159">如需詳細資訊，請參閱 <xref:fundamentals/host/web-host>。</span><span class="sxs-lookup"><span data-stu-id="acc58-159">For more information, see <xref:fundamentals/host/web-host>.</span></span>
+<span data-ttu-id="91c5b-159">如需詳細資訊，請參閱 <xref:fundamentals/host/web-host>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-159">For more information, see <xref:fundamentals/host/web-host>.</span></span>
 
 ::: moniker-end
 
-### <a name="non-web-scenarios"></a><span data-ttu-id="acc58-160">非 Web 案例</span><span class="sxs-lookup"><span data-stu-id="acc58-160">Non-web scenarios</span></span>
+### <a name="non-web-scenarios"></a><span data-ttu-id="91c5b-160">非 Web 案例</span><span class="sxs-lookup"><span data-stu-id="91c5b-160">Non-web scenarios</span></span>
 
-<span data-ttu-id="acc58-161">一般主機允許其他類型的應用程式，使用交叉剪輯架構延伸模組，例如記錄、相依性插入 (DI)、設定與應用程式存留期管理。</span><span class="sxs-lookup"><span data-stu-id="acc58-161">The Generic Host allows other types of apps to use cross-cutting framework extensions, such as logging, dependency injection (DI), configuration, and app lifetime management.</span></span> <span data-ttu-id="acc58-162">如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與 <xref:fundamentals/host/hosted-services>。</span><span class="sxs-lookup"><span data-stu-id="acc58-162">For more information, see <xref:fundamentals/host/generic-host> and <xref:fundamentals/host/hosted-services>.</span></span>
+<span data-ttu-id="91c5b-161">一般主機允許其他類型的應用程式，使用交叉剪輯架構延伸模組，例如記錄、相依性插入 (DI)、設定與應用程式存留期管理。</span><span class="sxs-lookup"><span data-stu-id="91c5b-161">The Generic Host allows other types of apps to use cross-cutting framework extensions, such as logging, dependency injection (DI), configuration, and app lifetime management.</span></span> <span data-ttu-id="91c5b-162">如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與 <xref:fundamentals/host/hosted-services>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-162">For more information, see <xref:fundamentals/host/generic-host> and <xref:fundamentals/host/hosted-services>.</span></span>
 
-## <a name="servers"></a><span data-ttu-id="acc58-163">伺服器</span><span class="sxs-lookup"><span data-stu-id="acc58-163">Servers</span></span>
+## <a name="servers"></a><span data-ttu-id="91c5b-163">伺服器</span><span class="sxs-lookup"><span data-stu-id="91c5b-163">Servers</span></span>
 
-<span data-ttu-id="acc58-164">ASP.NET Core 應用程式使用 HTTP 伺服器實作來接聽 HTTP 要求。</span><span class="sxs-lookup"><span data-stu-id="acc58-164">An ASP.NET Core app uses an HTTP server implementation to listen for HTTP requests.</span></span> <span data-ttu-id="acc58-165">伺服器會把向應用程式發出的要求作為一組[要求功能](xref:fundamentals/request-features)，合併成一個 `HttpContext`。</span><span class="sxs-lookup"><span data-stu-id="acc58-165">The server surfaces requests to the app as a set of [request features](xref:fundamentals/request-features) composed into an `HttpContext`.</span></span>
+<span data-ttu-id="91c5b-164">ASP.NET Core 應用程式使用 HTTP 伺服器實作來接聽 HTTP 要求。</span><span class="sxs-lookup"><span data-stu-id="91c5b-164">An ASP.NET Core app uses an HTTP server implementation to listen for HTTP requests.</span></span> <span data-ttu-id="91c5b-165">伺服器會把向應用程式發出的要求作為一組[要求功能](xref:fundamentals/request-features)，合併成一個 `HttpContext`。</span><span class="sxs-lookup"><span data-stu-id="91c5b-165">The server surfaces requests to the app as a set of [request features](xref:fundamentals/request-features) composed into an `HttpContext`.</span></span>
 
 ::: moniker range=">= aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[<span data-ttu-id="acc58-166">Windows</span><span class="sxs-lookup"><span data-stu-id="acc58-166">Windows</span></span>](#tab/windows)
+# <a name="windowstabwindows"></a>[<span data-ttu-id="91c5b-166">Windows</span><span class="sxs-lookup"><span data-stu-id="91c5b-166">Windows</span></span>](#tab/windows)
 
-<span data-ttu-id="acc58-167">ASP.NET Core 隨附下列伺服器實作：</span><span class="sxs-lookup"><span data-stu-id="acc58-167">ASP.NET Core provides the following server implementations:</span></span>
+<span data-ttu-id="91c5b-167">ASP.NET Core 隨附下列伺服器實作：</span><span class="sxs-lookup"><span data-stu-id="91c5b-167">ASP.NET Core provides the following server implementations:</span></span>
 
-* <span data-ttu-id="acc58-168">*Kestrel* 是跨平台的網頁伺服器。</span><span class="sxs-lookup"><span data-stu-id="acc58-168">*Kestrel* is a cross-platform web server.</span></span> <span data-ttu-id="acc58-169">Kestrel 通常會使用 [IIS](https://www.iis.net/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-169">Kestrel is often run in a reverse proxy configuration using [IIS](https://www.iis.net/).</span></span> <span data-ttu-id="acc58-170">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-170">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span>
-* <span data-ttu-id="acc58-171">*IIS HTTP 伺服器*則是適用於使用 IIS Windows 的伺服器。</span><span class="sxs-lookup"><span data-stu-id="acc58-171">*IIS HTTP Server* is a server for windows that uses IIS.</span></span> <span data-ttu-id="acc58-172">透過此伺服器，ASP.NET Core 應用程式及 IIS 便可以在相同處理序中執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-172">With this server, the ASP.NET Core app and IIS run in the same process.</span></span>
-* <span data-ttu-id="acc58-173">*HTTP.sys* 則是適用於並未搭配 IIS 使用 Windows 的伺服器。</span><span class="sxs-lookup"><span data-stu-id="acc58-173">*HTTP.sys* is a server for Windows that isn't used with IIS.</span></span>
+* <span data-ttu-id="91c5b-168">*Kestrel* 是跨平台的網頁伺服器。</span><span class="sxs-lookup"><span data-stu-id="91c5b-168">*Kestrel* is a cross-platform web server.</span></span> <span data-ttu-id="91c5b-169">Kestrel 通常會使用 [IIS](https://www.iis.net/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-169">Kestrel is often run in a reverse proxy configuration using [IIS](https://www.iis.net/).</span></span> <span data-ttu-id="91c5b-170">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-170">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span>
+* <span data-ttu-id="91c5b-171">*IIS HTTP 伺服器*則是適用於使用 IIS Windows 的伺服器。</span><span class="sxs-lookup"><span data-stu-id="91c5b-171">*IIS HTTP Server* is a server for windows that uses IIS.</span></span> <span data-ttu-id="91c5b-172">透過此伺服器，ASP.NET Core 應用程式及 IIS 便可以在相同處理序中執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-172">With this server, the ASP.NET Core app and IIS run in the same process.</span></span>
+* <span data-ttu-id="91c5b-173">*HTTP.sys* 則是適用於並未搭配 IIS 使用 Windows 的伺服器。</span><span class="sxs-lookup"><span data-stu-id="91c5b-173">*HTTP.sys* is a server for Windows that isn't used with IIS.</span></span>
 
-# <a name="macostabmacos"></a>[<span data-ttu-id="acc58-174">macOS</span><span class="sxs-lookup"><span data-stu-id="acc58-174">macOS</span></span>](#tab/macos)
+# <a name="macostabmacos"></a>[<span data-ttu-id="91c5b-174">macOS</span><span class="sxs-lookup"><span data-stu-id="91c5b-174">macOS</span></span>](#tab/macos)
 
-<span data-ttu-id="acc58-175">ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。</span><span class="sxs-lookup"><span data-stu-id="acc58-175">ASP.NET Core provides the *Kestrel* cross-platform server implementation.</span></span> <span data-ttu-id="acc58-176">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-176">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span> <span data-ttu-id="acc58-177">Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-177">Kestrel is often run in a reverse proxy configuration with [Nginx](https://nginx.org) or [Apache](https://httpd.apache.org/).</span></span>
+<span data-ttu-id="91c5b-175">ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。</span><span class="sxs-lookup"><span data-stu-id="91c5b-175">ASP.NET Core provides the *Kestrel* cross-platform server implementation.</span></span> <span data-ttu-id="91c5b-176">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-176">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span> <span data-ttu-id="91c5b-177">Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-177">Kestrel is often run in a reverse proxy configuration with [Nginx](https://nginx.org) or [Apache](https://httpd.apache.org/).</span></span>
 
-# <a name="linuxtablinux"></a>[<span data-ttu-id="acc58-178">Linux</span><span class="sxs-lookup"><span data-stu-id="acc58-178">Linux</span></span>](#tab/linux)
+# <a name="linuxtablinux"></a>[<span data-ttu-id="91c5b-178">Linux</span><span class="sxs-lookup"><span data-stu-id="91c5b-178">Linux</span></span>](#tab/linux)
 
-<span data-ttu-id="acc58-179">ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。</span><span class="sxs-lookup"><span data-stu-id="acc58-179">ASP.NET Core provides the *Kestrel* cross-platform server implementation.</span></span> <span data-ttu-id="acc58-180">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-180">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span> <span data-ttu-id="acc58-181">Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-181">Kestrel is often run in a reverse proxy configuration with [Nginx](https://nginx.org) or [Apache](https://httpd.apache.org/).</span></span>
+<span data-ttu-id="91c5b-179">ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。</span><span class="sxs-lookup"><span data-stu-id="91c5b-179">ASP.NET Core provides the *Kestrel* cross-platform server implementation.</span></span> <span data-ttu-id="91c5b-180">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-180">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span> <span data-ttu-id="91c5b-181">Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-181">Kestrel is often run in a reverse proxy configuration with [Nginx](https://nginx.org) or [Apache](https://httpd.apache.org/).</span></span>
 
 ---
 
@@ -141,42 +141,42 @@ ms.locfileid: "70773748"
 
 ::: moniker range="< aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[<span data-ttu-id="acc58-182">Windows</span><span class="sxs-lookup"><span data-stu-id="acc58-182">Windows</span></span>](#tab/windows)
+# <a name="windowstabwindows"></a>[<span data-ttu-id="91c5b-182">Windows</span><span class="sxs-lookup"><span data-stu-id="91c5b-182">Windows</span></span>](#tab/windows)
 
-<span data-ttu-id="acc58-183">ASP.NET Core 隨附下列伺服器實作：</span><span class="sxs-lookup"><span data-stu-id="acc58-183">ASP.NET Core provides the following server implementations:</span></span>
+<span data-ttu-id="91c5b-183">ASP.NET Core 隨附下列伺服器實作：</span><span class="sxs-lookup"><span data-stu-id="91c5b-183">ASP.NET Core provides the following server implementations:</span></span>
 
-* <span data-ttu-id="acc58-184">*Kestrel* 是跨平台的網頁伺服器。</span><span class="sxs-lookup"><span data-stu-id="acc58-184">*Kestrel* is a cross-platform web server.</span></span> <span data-ttu-id="acc58-185">Kestrel 通常會使用 [IIS](https://www.iis.net/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-185">Kestrel is often run in a reverse proxy configuration using [IIS](https://www.iis.net/).</span></span> <span data-ttu-id="acc58-186">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-186">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span>
-* <span data-ttu-id="acc58-187">*HTTP.sys* 則是適用於並未搭配 IIS 使用 Windows 的伺服器。</span><span class="sxs-lookup"><span data-stu-id="acc58-187">*HTTP.sys* is a server for Windows that isn't used with IIS.</span></span>
+* <span data-ttu-id="91c5b-184">*Kestrel* 是跨平台的網頁伺服器。</span><span class="sxs-lookup"><span data-stu-id="91c5b-184">*Kestrel* is a cross-platform web server.</span></span> <span data-ttu-id="91c5b-185">Kestrel 通常會使用 [IIS](https://www.iis.net/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-185">Kestrel is often run in a reverse proxy configuration using [IIS](https://www.iis.net/).</span></span> <span data-ttu-id="91c5b-186">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-186">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span>
+* <span data-ttu-id="91c5b-187">*HTTP.sys* 則是適用於並未搭配 IIS 使用 Windows 的伺服器。</span><span class="sxs-lookup"><span data-stu-id="91c5b-187">*HTTP.sys* is a server for Windows that isn't used with IIS.</span></span>
 
-# <a name="macostabmacos"></a>[<span data-ttu-id="acc58-188">macOS</span><span class="sxs-lookup"><span data-stu-id="acc58-188">macOS</span></span>](#tab/macos)
+# <a name="macostabmacos"></a>[<span data-ttu-id="91c5b-188">macOS</span><span class="sxs-lookup"><span data-stu-id="91c5b-188">macOS</span></span>](#tab/macos)
 
-<span data-ttu-id="acc58-189">ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。</span><span class="sxs-lookup"><span data-stu-id="acc58-189">ASP.NET Core provides the *Kestrel* cross-platform server implementation.</span></span> <span data-ttu-id="acc58-190">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-190">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span> <span data-ttu-id="acc58-191">Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-191">Kestrel is often run in a reverse proxy configuration with [Nginx](https://nginx.org) or [Apache](https://httpd.apache.org/).</span></span>
+<span data-ttu-id="91c5b-189">ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。</span><span class="sxs-lookup"><span data-stu-id="91c5b-189">ASP.NET Core provides the *Kestrel* cross-platform server implementation.</span></span> <span data-ttu-id="91c5b-190">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-190">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span> <span data-ttu-id="91c5b-191">Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-191">Kestrel is often run in a reverse proxy configuration with [Nginx](https://nginx.org) or [Apache](https://httpd.apache.org/).</span></span>
 
-# <a name="linuxtablinux"></a>[<span data-ttu-id="acc58-192">Linux</span><span class="sxs-lookup"><span data-stu-id="acc58-192">Linux</span></span>](#tab/linux)
+# <a name="linuxtablinux"></a>[<span data-ttu-id="91c5b-192">Linux</span><span class="sxs-lookup"><span data-stu-id="91c5b-192">Linux</span></span>](#tab/linux)
 
-<span data-ttu-id="acc58-193">ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。</span><span class="sxs-lookup"><span data-stu-id="acc58-193">ASP.NET Core provides the *Kestrel* cross-platform server implementation.</span></span> <span data-ttu-id="acc58-194">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-194">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span> <span data-ttu-id="acc58-195">Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="acc58-195">Kestrel is often run in a reverse proxy configuration with [Nginx](https://nginx.org) or [Apache](https://httpd.apache.org/).</span></span>
+<span data-ttu-id="91c5b-193">ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。</span><span class="sxs-lookup"><span data-stu-id="91c5b-193">ASP.NET Core provides the *Kestrel* cross-platform server implementation.</span></span> <span data-ttu-id="91c5b-194">在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-194">In ASP.NET Core 2.0 or later, Kestrel can be run as a public-facing edge server exposed directly to the Internet.</span></span> <span data-ttu-id="91c5b-195">Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。</span><span class="sxs-lookup"><span data-stu-id="91c5b-195">Kestrel is often run in a reverse proxy configuration with [Nginx](https://nginx.org) or [Apache](https://httpd.apache.org/).</span></span>
 
 ---
 
 ::: moniker-end
 
-<span data-ttu-id="acc58-196">如需詳細資訊，請參閱 <xref:fundamentals/servers/index>。</span><span class="sxs-lookup"><span data-stu-id="acc58-196">For more information, see <xref:fundamentals/servers/index>.</span></span>
+<span data-ttu-id="91c5b-196">如需詳細資訊，請參閱 <xref:fundamentals/servers/index>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-196">For more information, see <xref:fundamentals/servers/index>.</span></span>
 
-## <a name="configuration"></a><span data-ttu-id="acc58-197">組態</span><span class="sxs-lookup"><span data-stu-id="acc58-197">Configuration</span></span>
+## <a name="configuration"></a><span data-ttu-id="91c5b-197">組態</span><span class="sxs-lookup"><span data-stu-id="91c5b-197">Configuration</span></span>
 
-<span data-ttu-id="acc58-198">ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，以成對名稱和數值的形式取得設定。</span><span class="sxs-lookup"><span data-stu-id="acc58-198">ASP.NET Core provides a configuration framework that gets settings as name-value pairs from an ordered set of configuration providers.</span></span> <span data-ttu-id="acc58-199">您可以使用各種來源的內建組態提供者，例如 *.json* 檔案、 *.xml* 檔案、環境變數及命令列引數。</span><span class="sxs-lookup"><span data-stu-id="acc58-199">There are built-in configuration providers for a variety of sources, such as *.json* files, *.xml* files, environment variables, and command-line arguments.</span></span> <span data-ttu-id="acc58-200">您也可以撰寫自訂組態提供者。</span><span class="sxs-lookup"><span data-stu-id="acc58-200">You can also write custom configuration providers.</span></span>
+<span data-ttu-id="91c5b-198">ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，以成對名稱和數值的形式取得設定。</span><span class="sxs-lookup"><span data-stu-id="91c5b-198">ASP.NET Core provides a configuration framework that gets settings as name-value pairs from an ordered set of configuration providers.</span></span> <span data-ttu-id="91c5b-199">您可以使用各種來源的內建組態提供者，例如 *.json* 檔案、 *.xml* 檔案、環境變數及命令列引數。</span><span class="sxs-lookup"><span data-stu-id="91c5b-199">There are built-in configuration providers for a variety of sources, such as *.json* files, *.xml* files, environment variables, and command-line arguments.</span></span> <span data-ttu-id="91c5b-200">您也可以撰寫自訂組態提供者。</span><span class="sxs-lookup"><span data-stu-id="91c5b-200">You can also write custom configuration providers.</span></span>
 
-<span data-ttu-id="acc58-201">例如，您可以指定組態來自 *appsettings.json* 和環境變數。</span><span class="sxs-lookup"><span data-stu-id="acc58-201">For example, you could specify that configuration comes from *appsettings.json* and environment variables.</span></span> <span data-ttu-id="acc58-202">然後當要求 *ConnectionString* 的值時，架構便會先在 *appsettings.json* 檔案中尋找。</span><span class="sxs-lookup"><span data-stu-id="acc58-202">Then when the value of *ConnectionString* is requested, the framework looks first in the *appsettings.json* file.</span></span> <span data-ttu-id="acc58-203">若有找到值，但在環境變數中也存在該值，則會優先使用來自環境變數的值。</span><span class="sxs-lookup"><span data-stu-id="acc58-203">If the value is found there but also in an environment variable, the value from the environment variable would take precedence.</span></span>
+<span data-ttu-id="91c5b-201">例如，您可以指定組態來自 *appsettings.json* 和環境變數。</span><span class="sxs-lookup"><span data-stu-id="91c5b-201">For example, you could specify that configuration comes from *appsettings.json* and environment variables.</span></span> <span data-ttu-id="91c5b-202">然後當要求 *ConnectionString* 的值時，架構便會先在 *appsettings.json* 檔案中尋找。</span><span class="sxs-lookup"><span data-stu-id="91c5b-202">Then when the value of *ConnectionString* is requested, the framework looks first in the *appsettings.json* file.</span></span> <span data-ttu-id="91c5b-203">若有找到值，但在環境變數中也存在該值，則會優先使用來自環境變數的值。</span><span class="sxs-lookup"><span data-stu-id="91c5b-203">If the value is found there but also in an environment variable, the value from the environment variable would take precedence.</span></span>
 
-<span data-ttu-id="acc58-204">針對管理保密組態資料 (例如密碼)，ASP.NET Core 提供[祕密管理員工具](xref:security/app-secrets)。</span><span class="sxs-lookup"><span data-stu-id="acc58-204">For managing confidential configuration data such as passwords, ASP.NET Core provides a [Secret Manager tool](xref:security/app-secrets).</span></span> <span data-ttu-id="acc58-205">針對生產祕密，我們建議使用 [Azure Key Vault](xref:security/key-vault-configuration)。</span><span class="sxs-lookup"><span data-stu-id="acc58-205">For production secrets, we recommend [Azure Key Vault](xref:security/key-vault-configuration).</span></span>
+<span data-ttu-id="91c5b-204">針對管理保密組態資料 (例如密碼)，ASP.NET Core 提供[祕密管理員工具](xref:security/app-secrets)。</span><span class="sxs-lookup"><span data-stu-id="91c5b-204">For managing confidential configuration data such as passwords, ASP.NET Core provides a [Secret Manager tool](xref:security/app-secrets).</span></span> <span data-ttu-id="91c5b-205">針對生產祕密，我們建議使用 [Azure Key Vault](xref:security/key-vault-configuration)。</span><span class="sxs-lookup"><span data-stu-id="91c5b-205">For production secrets, we recommend [Azure Key Vault](xref:security/key-vault-configuration).</span></span>
 
-<span data-ttu-id="acc58-206">如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。</span><span class="sxs-lookup"><span data-stu-id="acc58-206">For more information, see <xref:fundamentals/configuration/index>.</span></span>
+<span data-ttu-id="91c5b-206">如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-206">For more information, see <xref:fundamentals/configuration/index>.</span></span>
 
-## <a name="options"></a><span data-ttu-id="acc58-207">選項</span><span class="sxs-lookup"><span data-stu-id="acc58-207">Options</span></span>
+## <a name="options"></a><span data-ttu-id="91c5b-207">選項</span><span class="sxs-lookup"><span data-stu-id="91c5b-207">Options</span></span>
 
-<span data-ttu-id="acc58-208">在可能的情況下，ASP.NET Core 會遵循「選項模式」來儲存及擷取組態值。</span><span class="sxs-lookup"><span data-stu-id="acc58-208">Where possible, ASP.NET Core follows the *options pattern* for storing and retrieving configuration values.</span></span> <span data-ttu-id="acc58-209">選項模式使用類別來代表一組相關的設定。</span><span class="sxs-lookup"><span data-stu-id="acc58-209">The options pattern uses classes to represent groups of related settings.</span></span>
+<span data-ttu-id="91c5b-208">在可能的情況下，ASP.NET Core 會遵循「選項模式」來儲存及擷取組態值。</span><span class="sxs-lookup"><span data-stu-id="91c5b-208">Where possible, ASP.NET Core follows the *options pattern* for storing and retrieving configuration values.</span></span> <span data-ttu-id="91c5b-209">選項模式使用類別來代表一組相關的設定。</span><span class="sxs-lookup"><span data-stu-id="91c5b-209">The options pattern uses classes to represent groups of related settings.</span></span>
 
-<span data-ttu-id="acc58-210">例如，下列程式碼會設定 WebSocket 選項：</span><span class="sxs-lookup"><span data-stu-id="acc58-210">For example, the following code sets WebSockets options:</span></span>
+<span data-ttu-id="91c5b-210">例如，下列程式碼會設定 WebSocket 選項：</span><span class="sxs-lookup"><span data-stu-id="91c5b-210">For example, the following code sets WebSockets options:</span></span>
 
 ```csharp
 var options = new WebSocketOptions  
@@ -187,101 +187,101 @@ var options = new WebSocketOptions
 app.UseWebSockets(options);
 ```
 
-<span data-ttu-id="acc58-211">如需詳細資訊，請參閱 <xref:fundamentals/configuration/options>。</span><span class="sxs-lookup"><span data-stu-id="acc58-211">For more information, see <xref:fundamentals/configuration/options>.</span></span>
+<span data-ttu-id="91c5b-211">如需詳細資訊，請參閱 <xref:fundamentals/configuration/options>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-211">For more information, see <xref:fundamentals/configuration/options>.</span></span>
 
-## <a name="environments"></a><span data-ttu-id="acc58-212">環境</span><span class="sxs-lookup"><span data-stu-id="acc58-212">Environments</span></span>
+## <a name="environments"></a><span data-ttu-id="91c5b-212">環境</span><span class="sxs-lookup"><span data-stu-id="91c5b-212">Environments</span></span>
 
-<span data-ttu-id="acc58-213">執行環境 (例如「開發」、「預備」及「生產」) 是 ASP.NET Core 中的第一級概念。</span><span class="sxs-lookup"><span data-stu-id="acc58-213">Execution environments, such as *Development*, *Staging*, and *Production*, are a first-class notion in ASP.NET Core.</span></span> <span data-ttu-id="acc58-214">您可以透過設定 `ASPNETCORE_ENVIRONMENT` 環境變數，指定應用程式執行的環境。</span><span class="sxs-lookup"><span data-stu-id="acc58-214">You can specify the environment an app is running in by setting the `ASPNETCORE_ENVIRONMENT` environment variable.</span></span> <span data-ttu-id="acc58-215">ASP.NET Core 會在應用程式啟動時讀取環境變數，然後將值儲存在 `IHostingEnvironment` 實作中。</span><span class="sxs-lookup"><span data-stu-id="acc58-215">ASP.NET Core reads that environment variable at app startup and stores the value in an `IHostingEnvironment` implementation.</span></span> <span data-ttu-id="acc58-216">環境物件可在應用程式中的任何位置，透過 DI 使用。</span><span class="sxs-lookup"><span data-stu-id="acc58-216">The environment object is available anywhere in the app via DI.</span></span>
+<span data-ttu-id="91c5b-213">執行環境 (例如「開發」、「預備」及「生產」) 是 ASP.NET Core 中的第一級概念。</span><span class="sxs-lookup"><span data-stu-id="91c5b-213">Execution environments, such as *Development*, *Staging*, and *Production*, are a first-class notion in ASP.NET Core.</span></span> <span data-ttu-id="91c5b-214">您可以透過設定 `ASPNETCORE_ENVIRONMENT` 環境變數，指定應用程式執行的環境。</span><span class="sxs-lookup"><span data-stu-id="91c5b-214">You can specify the environment an app is running in by setting the `ASPNETCORE_ENVIRONMENT` environment variable.</span></span> <span data-ttu-id="91c5b-215">ASP.NET Core 會在應用程式啟動時讀取環境變數，然後將值儲存在 `IHostingEnvironment` 實作中。</span><span class="sxs-lookup"><span data-stu-id="91c5b-215">ASP.NET Core reads that environment variable at app startup and stores the value in an `IHostingEnvironment` implementation.</span></span> <span data-ttu-id="91c5b-216">環境物件可在應用程式中的任何位置，透過 DI 使用。</span><span class="sxs-lookup"><span data-stu-id="91c5b-216">The environment object is available anywhere in the app via DI.</span></span>
 
-<span data-ttu-id="acc58-217">下列 `Startup` 類別的範例程式碼會設定應用程式，只在於「開發」環境中執行時提供詳細的錯誤資訊：</span><span class="sxs-lookup"><span data-stu-id="acc58-217">The following sample code from the `Startup` class configures the app to provide detailed error information only when it runs in development:</span></span>
+<span data-ttu-id="91c5b-217">下列 `Startup` 類別的範例程式碼會設定應用程式，只在於「開發」環境中執行時提供詳細的錯誤資訊：</span><span class="sxs-lookup"><span data-stu-id="91c5b-217">The following sample code from the `Startup` class configures the app to provide detailed error information only when it runs in development:</span></span>
 
 [!code-csharp[](index/snapshots/2.x/Startup2.cs?highlight=3-6)]
 
-<span data-ttu-id="acc58-218">如需詳細資訊，請參閱 <xref:fundamentals/environments>。</span><span class="sxs-lookup"><span data-stu-id="acc58-218">For more information, see <xref:fundamentals/environments>.</span></span>
+<span data-ttu-id="91c5b-218">如需詳細資訊，請參閱 <xref:fundamentals/environments>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-218">For more information, see <xref:fundamentals/environments>.</span></span>
 
-## <a name="logging"></a><span data-ttu-id="acc58-219">記錄</span><span class="sxs-lookup"><span data-stu-id="acc58-219">Logging</span></span>
+## <a name="logging"></a><span data-ttu-id="91c5b-219">記錄</span><span class="sxs-lookup"><span data-stu-id="91c5b-219">Logging</span></span>
 
-<span data-ttu-id="acc58-220">ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提供者搭配使用。</span><span class="sxs-lookup"><span data-stu-id="acc58-220">ASP.NET Core supports a logging API that works with a variety of built-in and third-party logging providers.</span></span> <span data-ttu-id="acc58-221">可用的提供者包括如下：</span><span class="sxs-lookup"><span data-stu-id="acc58-221">Available providers include the following:</span></span>
+<span data-ttu-id="91c5b-220">ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提供者搭配使用。</span><span class="sxs-lookup"><span data-stu-id="91c5b-220">ASP.NET Core supports a logging API that works with a variety of built-in and third-party logging providers.</span></span> <span data-ttu-id="91c5b-221">可用的提供者包括如下：</span><span class="sxs-lookup"><span data-stu-id="91c5b-221">Available providers include the following:</span></span>
 
-* <span data-ttu-id="acc58-222">主控台</span><span class="sxs-lookup"><span data-stu-id="acc58-222">Console</span></span>
-* <span data-ttu-id="acc58-223">偵錯</span><span class="sxs-lookup"><span data-stu-id="acc58-223">Debug</span></span>
-* <span data-ttu-id="acc58-224">Windows 上的事件追蹤</span><span class="sxs-lookup"><span data-stu-id="acc58-224">Event Tracing on Windows</span></span>
-* <span data-ttu-id="acc58-225">Windows 事件記錄檔</span><span class="sxs-lookup"><span data-stu-id="acc58-225">Windows Event Log</span></span>
-* <span data-ttu-id="acc58-226">TraceSource</span><span class="sxs-lookup"><span data-stu-id="acc58-226">TraceSource</span></span>
-* <span data-ttu-id="acc58-227">Azure App Service</span><span class="sxs-lookup"><span data-stu-id="acc58-227">Azure App Service</span></span>
-* <span data-ttu-id="acc58-228">Azure Application Insights</span><span class="sxs-lookup"><span data-stu-id="acc58-228">Azure Application Insights</span></span>
+* <span data-ttu-id="91c5b-222">主控台</span><span class="sxs-lookup"><span data-stu-id="91c5b-222">Console</span></span>
+* <span data-ttu-id="91c5b-223">偵錯</span><span class="sxs-lookup"><span data-stu-id="91c5b-223">Debug</span></span>
+* <span data-ttu-id="91c5b-224">Windows 上的事件追蹤</span><span class="sxs-lookup"><span data-stu-id="91c5b-224">Event Tracing on Windows</span></span>
+* <span data-ttu-id="91c5b-225">Windows 事件記錄檔</span><span class="sxs-lookup"><span data-stu-id="91c5b-225">Windows Event Log</span></span>
+* <span data-ttu-id="91c5b-226">TraceSource</span><span class="sxs-lookup"><span data-stu-id="91c5b-226">TraceSource</span></span>
+* <span data-ttu-id="91c5b-227">Azure App Service</span><span class="sxs-lookup"><span data-stu-id="91c5b-227">Azure App Service</span></span>
+* <span data-ttu-id="91c5b-228">Azure Application Insights</span><span class="sxs-lookup"><span data-stu-id="91c5b-228">Azure Application Insights</span></span>
 
-<span data-ttu-id="acc58-229">透過從 DI 取得 `ILogger` 物件並呼叫記錄方法，從應用程式程式碼中的任何位置寫入記錄。</span><span class="sxs-lookup"><span data-stu-id="acc58-229">Write logs from anywhere in an app's code by getting an `ILogger` object from DI and calling log methods.</span></span>
+<span data-ttu-id="91c5b-229">透過從 DI 取得 `ILogger` 物件並呼叫記錄方法，從應用程式程式碼中的任何位置寫入記錄。</span><span class="sxs-lookup"><span data-stu-id="91c5b-229">Write logs from anywhere in an app's code by getting an `ILogger` object from DI and calling log methods.</span></span>
 
-<span data-ttu-id="acc58-230">以下是使用 `ILogger` 物件的範例程式碼，其中建構函式插入及記錄方法呼叫都已醒目提示。</span><span class="sxs-lookup"><span data-stu-id="acc58-230">Here's sample code that uses an `ILogger` object, with constructor injection and the logging method calls highlighted.</span></span>
+<span data-ttu-id="91c5b-230">以下是使用 `ILogger` 物件的範例程式碼，其中建構函式插入及記錄方法呼叫都已醒目提示。</span><span class="sxs-lookup"><span data-stu-id="91c5b-230">Here's sample code that uses an `ILogger` object, with constructor injection and the logging method calls highlighted.</span></span>
 
 [!code-csharp[](index/snapshots/2.x/TodoController.cs?highlight=5,13,17)]
 
-<span data-ttu-id="acc58-231">`ILogger` 介面可讓您將任何數量的欄位傳遞給記錄提供者。</span><span class="sxs-lookup"><span data-stu-id="acc58-231">The `ILogger` interface lets you pass any number of fields to the logging provider.</span></span> <span data-ttu-id="acc58-232">欄位常用於建構訊息字串，但提供者也可以將它們作為個別欄位，傳送至資料存放區。</span><span class="sxs-lookup"><span data-stu-id="acc58-232">The fields are commonly used to construct a message string, but the provider can also send them as separate fields to a data store.</span></span> <span data-ttu-id="acc58-233">這項功能可讓記錄提供者實作 [semantic logging (語意記錄)，又稱為 structured logging (結構化記錄)](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。</span><span class="sxs-lookup"><span data-stu-id="acc58-233">This feature makes it possible for logging providers to implement [semantic logging, also known as structured logging](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).</span></span>
+<span data-ttu-id="91c5b-231">`ILogger` 介面可讓您將任何數量的欄位傳遞給記錄提供者。</span><span class="sxs-lookup"><span data-stu-id="91c5b-231">The `ILogger` interface lets you pass any number of fields to the logging provider.</span></span> <span data-ttu-id="91c5b-232">欄位常用於建構訊息字串，但提供者也可以將它們作為個別欄位，傳送至資料存放區。</span><span class="sxs-lookup"><span data-stu-id="91c5b-232">The fields are commonly used to construct a message string, but the provider can also send them as separate fields to a data store.</span></span> <span data-ttu-id="91c5b-233">這項功能可讓記錄提供者實作 [semantic logging (語意記錄)，又稱為 structured logging (結構化記錄)](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。</span><span class="sxs-lookup"><span data-stu-id="91c5b-233">This feature makes it possible for logging providers to implement [semantic logging, also known as structured logging](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).</span></span>
 
-<span data-ttu-id="acc58-234">如需詳細資訊，請參閱 <xref:fundamentals/logging/index>。</span><span class="sxs-lookup"><span data-stu-id="acc58-234">For more information, see <xref:fundamentals/logging/index>.</span></span>
+<span data-ttu-id="91c5b-234">如需詳細資訊，請參閱 <xref:fundamentals/logging/index>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-234">For more information, see <xref:fundamentals/logging/index>.</span></span>
 
-## <a name="routing"></a><span data-ttu-id="acc58-235">路由</span><span class="sxs-lookup"><span data-stu-id="acc58-235">Routing</span></span>
+## <a name="routing"></a><span data-ttu-id="91c5b-235">路由</span><span class="sxs-lookup"><span data-stu-id="91c5b-235">Routing</span></span>
 
-<span data-ttu-id="acc58-236">「路由」是一種對應到處理常式的 URL 模式。</span><span class="sxs-lookup"><span data-stu-id="acc58-236">A *route* is a URL pattern that is mapped to a handler.</span></span> <span data-ttu-id="acc58-237">處理常式通常是 Razor 頁面、MVC 控制器中的動作方法，或是中介軟體。</span><span class="sxs-lookup"><span data-stu-id="acc58-237">The handler is typically a Razor page, an action method in an MVC controller, or a middleware.</span></span> <span data-ttu-id="acc58-238">ASP.NET Core 路由可讓您控制您應用程式使用的 URL。</span><span class="sxs-lookup"><span data-stu-id="acc58-238">ASP.NET Core routing gives you control over the URLs used by your app.</span></span>
+<span data-ttu-id="91c5b-236">「路由」是一種對應到處理常式的 URL 模式。</span><span class="sxs-lookup"><span data-stu-id="91c5b-236">A *route* is a URL pattern that is mapped to a handler.</span></span> <span data-ttu-id="91c5b-237">處理常式通常是 Razor 頁面、MVC 控制器中的動作方法，或是中介軟體。</span><span class="sxs-lookup"><span data-stu-id="91c5b-237">The handler is typically a Razor page, an action method in an MVC controller, or a middleware.</span></span> <span data-ttu-id="91c5b-238">ASP.NET Core 路由可讓您控制您應用程式使用的 URL。</span><span class="sxs-lookup"><span data-stu-id="91c5b-238">ASP.NET Core routing gives you control over the URLs used by your app.</span></span>
 
-<span data-ttu-id="acc58-239">如需詳細資訊，請參閱 <xref:fundamentals/routing>。</span><span class="sxs-lookup"><span data-stu-id="acc58-239">For more information, see <xref:fundamentals/routing>.</span></span>
+<span data-ttu-id="91c5b-239">如需詳細資訊，請參閱 <xref:fundamentals/routing>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-239">For more information, see <xref:fundamentals/routing>.</span></span>
 
-## <a name="error-handling"></a><span data-ttu-id="acc58-240">錯誤處理</span><span class="sxs-lookup"><span data-stu-id="acc58-240">Error handling</span></span>
+## <a name="error-handling"></a><span data-ttu-id="91c5b-240">錯誤處理</span><span class="sxs-lookup"><span data-stu-id="91c5b-240">Error handling</span></span>
 
-<span data-ttu-id="acc58-241">ASP.NET Core 具有處理錯誤的內建功能，例如：</span><span class="sxs-lookup"><span data-stu-id="acc58-241">ASP.NET Core has built-in features for handling errors, such as:</span></span>
+<span data-ttu-id="91c5b-241">ASP.NET Core 具有處理錯誤的內建功能，例如：</span><span class="sxs-lookup"><span data-stu-id="91c5b-241">ASP.NET Core has built-in features for handling errors, such as:</span></span>
 
-* <span data-ttu-id="acc58-242">開發人員例外狀況頁面</span><span class="sxs-lookup"><span data-stu-id="acc58-242">A developer exception page</span></span>
-* <span data-ttu-id="acc58-243">自訂錯誤頁面</span><span class="sxs-lookup"><span data-stu-id="acc58-243">Custom error pages</span></span>
-* <span data-ttu-id="acc58-244">靜態狀態碼頁面</span><span class="sxs-lookup"><span data-stu-id="acc58-244">Static status code pages</span></span>
-* <span data-ttu-id="acc58-245">啟動例外狀況處理</span><span class="sxs-lookup"><span data-stu-id="acc58-245">Startup exception handling</span></span>
+* <span data-ttu-id="91c5b-242">開發人員例外狀況頁面</span><span class="sxs-lookup"><span data-stu-id="91c5b-242">A developer exception page</span></span>
+* <span data-ttu-id="91c5b-243">自訂錯誤頁面</span><span class="sxs-lookup"><span data-stu-id="91c5b-243">Custom error pages</span></span>
+* <span data-ttu-id="91c5b-244">靜態狀態碼頁面</span><span class="sxs-lookup"><span data-stu-id="91c5b-244">Static status code pages</span></span>
+* <span data-ttu-id="91c5b-245">啟動例外狀況處理</span><span class="sxs-lookup"><span data-stu-id="91c5b-245">Startup exception handling</span></span>
 
-<span data-ttu-id="acc58-246">如需詳細資訊，請參閱 <xref:fundamentals/error-handling>。</span><span class="sxs-lookup"><span data-stu-id="acc58-246">For more information, see <xref:fundamentals/error-handling>.</span></span>
+<span data-ttu-id="91c5b-246">如需詳細資訊，請參閱 <xref:fundamentals/error-handling>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-246">For more information, see <xref:fundamentals/error-handling>.</span></span>
 
-## <a name="make-http-requests"></a><span data-ttu-id="acc58-247">發出 HTTP 要求</span><span class="sxs-lookup"><span data-stu-id="acc58-247">Make HTTP requests</span></span>
+## <a name="make-http-requests"></a><span data-ttu-id="91c5b-247">發出 HTTP 要求</span><span class="sxs-lookup"><span data-stu-id="91c5b-247">Make HTTP requests</span></span>
 
-<span data-ttu-id="acc58-248">`IHttpClientFactory` 的實作可用於建立 `HttpClient` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="acc58-248">An implementation of `IHttpClientFactory` is available for creating `HttpClient` instances.</span></span> <span data-ttu-id="acc58-249">Factory：</span><span class="sxs-lookup"><span data-stu-id="acc58-249">The factory:</span></span>
+<span data-ttu-id="91c5b-248">`IHttpClientFactory` 的實作可用於建立 `HttpClient` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="91c5b-248">An implementation of `IHttpClientFactory` is available for creating `HttpClient` instances.</span></span> <span data-ttu-id="91c5b-249">Factory：</span><span class="sxs-lookup"><span data-stu-id="91c5b-249">The factory:</span></span>
 
-* <span data-ttu-id="acc58-250">提供一個集中位置以便命名和設定邏輯 `HttpClient` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="acc58-250">Provides a central location for naming and configuring logical `HttpClient` instances.</span></span> <span data-ttu-id="acc58-251">例如，您可以註冊 *github* 並設定用戶端以存取 GitHub。</span><span class="sxs-lookup"><span data-stu-id="acc58-251">For example, a *github* client can be registered and configured to access GitHub.</span></span> <span data-ttu-id="acc58-252">預設用戶端可以註冊用於其他用途。</span><span class="sxs-lookup"><span data-stu-id="acc58-252">A default client can be registered for other purposes.</span></span>
-* <span data-ttu-id="acc58-253">支援註冊及多個委派處理常式的鏈結，以用於建置傳出要求中介軟體管線。</span><span class="sxs-lookup"><span data-stu-id="acc58-253">Supports registration and chaining of multiple delegating handlers to build an outgoing request middleware pipeline.</span></span> <span data-ttu-id="acc58-254">此模式與 ASP.NET Core 中的輸入中介軟體管線相似。</span><span class="sxs-lookup"><span data-stu-id="acc58-254">This pattern is similar to the inbound middleware pipeline in ASP.NET Core.</span></span> <span data-ttu-id="acc58-255">模式提供一個機制來管理 HTTP 要求的跨領域關注，包括快取、錯誤處理、序列化和記錄。</span><span class="sxs-lookup"><span data-stu-id="acc58-255">The pattern provides a mechanism to manage cross-cutting concerns around HTTP requests, including caching, error handling, serialization, and logging.</span></span>
-* <span data-ttu-id="acc58-256">與 *Polly* 整合，Polly 是一種熱門的協力廠商程式庫，用於進行暫時性的錯誤處理。</span><span class="sxs-lookup"><span data-stu-id="acc58-256">Integrates with *Polly*, a popular third-party library for transient fault handling.</span></span>
-* <span data-ttu-id="acc58-257">管理基礎 `HttpClientMessageHandler` 執行個體的共用和存留期，以避免在手動管理 `HttpClient` 存留期時，發生的常見 DNS 問題。</span><span class="sxs-lookup"><span data-stu-id="acc58-257">Manages the pooling and lifetime of underlying `HttpClientMessageHandler` instances to avoid common DNS problems that occur when manually managing `HttpClient` lifetimes.</span></span>
-* <span data-ttu-id="acc58-258">針對透過處理站所建立之用戶端傳送的所有要求，新增可設定的記錄體驗 (透過 `ILogger`)。</span><span class="sxs-lookup"><span data-stu-id="acc58-258">Adds a configurable logging experience (via `ILogger`) for all requests sent through clients created by the factory.</span></span>
+* <span data-ttu-id="91c5b-250">提供一個集中位置以便命名和設定邏輯 `HttpClient` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="91c5b-250">Provides a central location for naming and configuring logical `HttpClient` instances.</span></span> <span data-ttu-id="91c5b-251">例如，您可以註冊 *github* 並設定用戶端以存取 GitHub。</span><span class="sxs-lookup"><span data-stu-id="91c5b-251">For example, a *github* client can be registered and configured to access GitHub.</span></span> <span data-ttu-id="91c5b-252">預設用戶端可以註冊用於其他用途。</span><span class="sxs-lookup"><span data-stu-id="91c5b-252">A default client can be registered for other purposes.</span></span>
+* <span data-ttu-id="91c5b-253">支援註冊及多個委派處理常式的鏈結，以用於建置傳出要求中介軟體管線。</span><span class="sxs-lookup"><span data-stu-id="91c5b-253">Supports registration and chaining of multiple delegating handlers to build an outgoing request middleware pipeline.</span></span> <span data-ttu-id="91c5b-254">此模式與 ASP.NET Core 中的輸入中介軟體管線相似。</span><span class="sxs-lookup"><span data-stu-id="91c5b-254">This pattern is similar to the inbound middleware pipeline in ASP.NET Core.</span></span> <span data-ttu-id="91c5b-255">模式提供一個機制來管理 HTTP 要求的跨領域關注，包括快取、錯誤處理、序列化和記錄。</span><span class="sxs-lookup"><span data-stu-id="91c5b-255">The pattern provides a mechanism to manage cross-cutting concerns around HTTP requests, including caching, error handling, serialization, and logging.</span></span>
+* <span data-ttu-id="91c5b-256">與 *Polly* 整合，Polly 是一種熱門的協力廠商程式庫，用於進行暫時性的錯誤處理。</span><span class="sxs-lookup"><span data-stu-id="91c5b-256">Integrates with *Polly*, a popular third-party library for transient fault handling.</span></span>
+* <span data-ttu-id="91c5b-257">管理基礎 `HttpClientMessageHandler` 執行個體的共用和存留期，以避免在手動管理 `HttpClient` 存留期時，發生的常見 DNS 問題。</span><span class="sxs-lookup"><span data-stu-id="91c5b-257">Manages the pooling and lifetime of underlying `HttpClientMessageHandler` instances to avoid common DNS problems that occur when manually managing `HttpClient` lifetimes.</span></span>
+* <span data-ttu-id="91c5b-258">針對透過處理站所建立之用戶端傳送的所有要求，新增可設定的記錄體驗 (透過 `ILogger`)。</span><span class="sxs-lookup"><span data-stu-id="91c5b-258">Adds a configurable logging experience (via `ILogger`) for all requests sent through clients created by the factory.</span></span>
 
-<span data-ttu-id="acc58-259">如需詳細資訊，請參閱 <xref:fundamentals/http-requests>。</span><span class="sxs-lookup"><span data-stu-id="acc58-259">For more information, see <xref:fundamentals/http-requests>.</span></span>
+<span data-ttu-id="91c5b-259">如需詳細資訊，請參閱 <xref:fundamentals/http-requests>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-259">For more information, see <xref:fundamentals/http-requests>.</span></span>
 
-## <a name="content-root"></a><span data-ttu-id="acc58-260">內容根目錄</span><span class="sxs-lookup"><span data-stu-id="acc58-260">Content root</span></span>
+## <a name="content-root"></a><span data-ttu-id="91c5b-260">內容根目錄</span><span class="sxs-lookup"><span data-stu-id="91c5b-260">Content root</span></span>
 
-<span data-ttu-id="acc58-261">內容根是指向任何由應用程式所使用私人內容的基礎路徑，例如其 Razor 檔案。</span><span class="sxs-lookup"><span data-stu-id="acc58-261">The content root is the base path to any private content used by the app, such as its Razor files.</span></span> <span data-ttu-id="acc58-262">根據預設，內容根是裝載應用程式可執行檔的基礎路徑。</span><span class="sxs-lookup"><span data-stu-id="acc58-262">By default, the content root is the base path for the executable hosting the app.</span></span> <span data-ttu-id="acc58-263">您可以在[建置主機](#host)時指定替代位置。</span><span class="sxs-lookup"><span data-stu-id="acc58-263">An alternative location can be specified when [building the host](#host).</span></span>
+<span data-ttu-id="91c5b-261">內容根是指向任何由應用程式所使用私人內容的基礎路徑，例如其 Razor 檔案。</span><span class="sxs-lookup"><span data-stu-id="91c5b-261">The content root is the base path to any private content used by the app, such as its Razor files.</span></span> <span data-ttu-id="91c5b-262">根據預設，內容根是裝載應用程式可執行檔的基礎路徑。</span><span class="sxs-lookup"><span data-stu-id="91c5b-262">By default, the content root is the base path for the executable hosting the app.</span></span> <span data-ttu-id="91c5b-263">您可以在[建置主機](#host)時指定替代位置。</span><span class="sxs-lookup"><span data-stu-id="91c5b-263">An alternative location can be specified when [building the host](#host).</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="acc58-264">如需詳細資訊，請參閱[內容根](xref:fundamentals/host/generic-host#content-root)。</span><span class="sxs-lookup"><span data-stu-id="acc58-264">For more information, see [Content root](xref:fundamentals/host/generic-host#content-root).</span></span>
+<span data-ttu-id="91c5b-264">如需詳細資訊，請參閱[內容根](xref:fundamentals/host/generic-host#content-root)。</span><span class="sxs-lookup"><span data-stu-id="91c5b-264">For more information, see [Content root](xref:fundamentals/host/generic-host#content-root).</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="acc58-265">如需詳細資訊，請參閱[內容根](xref:fundamentals/host/web-host#content-root)。</span><span class="sxs-lookup"><span data-stu-id="acc58-265">For more information, see [Content root](xref:fundamentals/host/web-host#content-root).</span></span>
+<span data-ttu-id="91c5b-265">如需詳細資訊，請參閱[內容根](xref:fundamentals/host/web-host#content-root)。</span><span class="sxs-lookup"><span data-stu-id="91c5b-265">For more information, see [Content root](xref:fundamentals/host/web-host#content-root).</span></span>
 
 ::: moniker-end
 
-## <a name="web-root"></a><span data-ttu-id="acc58-266">Web 根目錄</span><span class="sxs-lookup"><span data-stu-id="acc58-266">Web root</span></span>
+## <a name="web-root"></a><span data-ttu-id="91c5b-266">Web 根目錄</span><span class="sxs-lookup"><span data-stu-id="91c5b-266">Web root</span></span>
 
-<span data-ttu-id="acc58-267">Web 根目錄 (也稱為 *webroot*) 是公用、靜態資源 (例如 CSS、JavaScript 和影像檔) 的基礎路徑。</span><span class="sxs-lookup"><span data-stu-id="acc58-267">The web root (also known as *webroot*) is the base path to public, static resources, such as CSS, JavaScript, and image files.</span></span> <span data-ttu-id="acc58-268">根據預設，靜態檔案中介軟體只會提供來自 Web 根目錄 (及其子目錄) 的檔案。</span><span class="sxs-lookup"><span data-stu-id="acc58-268">The static files middleware will only serve files from the web root directory (and sub-directories) by default.</span></span> <span data-ttu-id="acc58-269">Web 根目錄路徑預設為 *{內容根}/wwwroot*，但您可以在[建置主機](#host)時指定不同的位置。</span><span class="sxs-lookup"><span data-stu-id="acc58-269">The web root path defaults to *{Content Root}/wwwroot*, but a different location can be specified when [building the host](#host).</span></span>
+<span data-ttu-id="91c5b-267">Web 根目錄 (也稱為 *webroot*) 是公用、靜態資源 (例如 CSS、JavaScript 和影像檔) 的基礎路徑。</span><span class="sxs-lookup"><span data-stu-id="91c5b-267">The web root (also known as *webroot*) is the base path to public, static resources, such as CSS, JavaScript, and image files.</span></span> <span data-ttu-id="91c5b-268">根據預設，靜態檔案中介軟體只會提供來自 Web 根目錄 (及其子目錄) 的檔案。</span><span class="sxs-lookup"><span data-stu-id="91c5b-268">The static files middleware will only serve files from the web root directory (and sub-directories) by default.</span></span> <span data-ttu-id="91c5b-269">Web 根目錄路徑預設為 *{內容根}/wwwroot*，但您可以在[建置主機](#host)時指定不同的位置。</span><span class="sxs-lookup"><span data-stu-id="91c5b-269">The web root path defaults to *{Content Root}/wwwroot*, but a different location can be specified when [building the host](#host).</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="acc58-270">如需詳細資訊，請參閱[ContentRootPath](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#contentrootpath)</span><span class="sxs-lookup"><span data-stu-id="acc58-270">For more information, see [ContentRootPath](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#contentrootpath)</span></span>
+<span data-ttu-id="91c5b-270">如需詳細資訊，請參閱[WebRoot](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#webroot)</span><span class="sxs-lookup"><span data-stu-id="91c5b-270">For more information, see [WebRoot](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#webroot)</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="acc58-271">如需詳細資訊，請參閱 [Web 根目錄](/aspnet/core/fundamentals/host/web-host#webroot)。</span><span class="sxs-lookup"><span data-stu-id="acc58-271">For more information, see [Web root](/aspnet/core/fundamentals/host/web-host#webroot).</span></span>
+<span data-ttu-id="91c5b-271">如需詳細資訊，請參閱 [Web 根目錄](/aspnet/core/fundamentals/host/web-host#webroot)。</span><span class="sxs-lookup"><span data-stu-id="91c5b-271">For more information, see [Web root](/aspnet/core/fundamentals/host/web-host#webroot).</span></span>
 
 ::: moniker-end
 
-<span data-ttu-id="acc58-272">在 Razor ( *.cshtml*) 檔案中，波狀符號與正斜線 `~/` 會指向 Web 根目錄。</span><span class="sxs-lookup"><span data-stu-id="acc58-272">In Razor (*.cshtml*) files, the tilde-slash `~/` points to the web root.</span></span> <span data-ttu-id="acc58-273">開頭為 `~/` 的路徑稱為虛擬路徑。</span><span class="sxs-lookup"><span data-stu-id="acc58-273">Paths beginning with `~/` are referred to as virtual paths.</span></span>
+<span data-ttu-id="91c5b-272">在 Razor ( *.cshtml*) 檔案中，波狀符號與正斜線 `~/` 會指向 Web 根目錄。</span><span class="sxs-lookup"><span data-stu-id="91c5b-272">In Razor (*.cshtml*) files, the tilde-slash `~/` points to the web root.</span></span> <span data-ttu-id="91c5b-273">開頭為 `~/` 的路徑稱為虛擬路徑。</span><span class="sxs-lookup"><span data-stu-id="91c5b-273">Paths beginning with `~/` are referred to as virtual paths.</span></span>
 
-<span data-ttu-id="acc58-274">如需詳細資訊，請參閱 <xref:fundamentals/static-files>。</span><span class="sxs-lookup"><span data-stu-id="acc58-274">For more information, see <xref:fundamentals/static-files>.</span></span>
+<span data-ttu-id="91c5b-274">如需詳細資訊，請參閱 <xref:fundamentals/static-files>。</span><span class="sxs-lookup"><span data-stu-id="91c5b-274">For more information, see <xref:fundamentals/static-files>.</span></span>

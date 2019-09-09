@@ -5,14 +5,14 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/28/2019
+ms.date: 09/07/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 5035a31526e0290964e0fdee05753aeaf6cb3790
-ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
-ms.translationtype: HT
+ms.openlocfilehash: 5da32b5fd1026263f721db442b2676d45b239b8d
+ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602435"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70815596"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -47,7 +47,7 @@ ms.locfileid: "68602435"
 
 ## <a name="application-configuration"></a>應用程式組態
 
-### <a name="platform"></a>Platform
+### <a name="platform"></a>平台
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -63,7 +63,7 @@ Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執�
 
 如需 .NET Core 架構元件與發佈方法的詳細資訊，例如 .NET Core 執行階段和 .NET Core SDK 的相關資訊，請參閱[關於 .NET Core：組合](/dotnet/core/about#composition)。
 
-### <a name="packages"></a>package
+### <a name="packages"></a>Packages
 
 包含下列 NuGet 套件，為部署至 Azure App Service 的應用程式提供自動記錄功能：
 
@@ -77,7 +77,7 @@ Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執�
 
 Azure 入口網站中的應用程式設定允許您為應用程式設定環境變數。 環境變數可由[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)取用。
 
-在 Azure 入口網站中建立或修改應用程式設定並選取 [儲存]  按鈕後，即會重新啟動 Azure 應用程式。 當服務重新啟動之後，環境變數便可供應用程式使用。
+在 Azure 入口網站中建立或修改應用程式設定並選取 [儲存] 按鈕後，即會重新啟動 Azure 應用程式。 當服務重新啟動之後，環境變數便可供應用程式使用。
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -97,17 +97,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ## <a name="monitoring-and-logging"></a>監視與記錄
 
-::: moniker range=">= aspnetcore-3.0"
-
-部署到 App Service 的 ASP.NET Core 應用程式會自動接收 App Service 延伸模組：**ASP.NET Core 記錄整合**。 延伸模組讓 Azure App Service 上的 ASP.NET Core 應用程式得以進行記錄整合。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-部署到 App Service 的 ASP.NET Core 應用程式會自動接收 App Service 延伸模組 **ASP.NET Core 記錄延伸模組**。 延伸模組讓 Azure App Service 上的 ASP.NET Core 應用程式得以進行記錄整合。
-
-::: moniker-end
+Azure App Service 提供**ASP.NET Core 記錄延伸**模組，可啟用 ASP.NET Core 應用程式的記錄整合。 若要將延伸模組自動新增至 App Service，請使用 Visual Studio 的**發行**程式搭配**App Service**發行設定檔。 當不使用 Visual Studio 部署應用程式時，請透過 App Service 的 [**開發工具** > **擴充**功能] 對話方塊，在 Azure 入口網站中手動安裝此延伸模組。
 
 如需監視、記錄及疑難排解的資訊，請參閱下列文章：
 
@@ -154,17 +144,17 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 1. 從 Azure 入口網站瀏覽至 App Service。
 1. 選取 Web 應用程式。
 1. 在搜尋方塊中鍵入 "ex" 來篩選 "Extensions"，也可往下捲動管理工具的清單。
-1. 選取 [擴充功能]  。
-1. 選取 [新增]  。
-1. 從清單選取 [ASP.NET Core {X.Y} ({x64|x86}) 執行階段]  延伸模組，其中 `{X.Y}` 是 ASP.NET Core 預覽版本，而 `{x64|x86}` 則指定平台。
-1. 選取 [確定]  以接受法律條款。
-1. 選取 [確定]  安裝延伸模組。
+1. 選取 [擴充功能]。
+1. 選取 [新增]。
+1. 從清單選取 [ASP.NET Core {X.Y} ({x64|x86}) 執行階段] 延伸模組，其中 `{X.Y}` 是 ASP.NET Core 預覽版本，而 `{x64|x86}` 則指定平台。
+1. 選取 [確定] 以接受法律條款。
+1. 選取 [確定] 安裝延伸模組。
 
 當作業完成後，會安裝最新的 .NET Core 預覽。 確認安裝：
 
-1. 選取 [進階工具]  。
-1. 在 [進階工具]  中選取 [移至]  。
-1. 選取 [偵錯主控台]   > [PowerShell]  功能表項目。
+1. 選取 [進階工具]。
+1. 在 [進階工具] 中選取 [移至]。
+1. 選取 [偵錯主控台] > [PowerShell] 功能表項目。
 1. 在 PowerShell 提示執行下列命令。 在命令中使用 ASP.NET Core 執行階段版本取代 `{X.Y}`，並以平台取代 `{PLATFORM}`：
 
    ```powershell
@@ -174,7 +164,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    當已安裝 x64 預覽執行階段時，此命令會傳回 `True`。
 
 > [!NOTE]
-> 對於裝載於 A 系列計算或更高裝載層的應用程式，應用程式服務應用程式的平台架構 (x86/x64) 會設定在 Azure 入口網站中應用程式的設定內。 如果在同處理序模式中執行應用程式，且平台架構設定為適用於 64 位元 (x64)，ASP.NET Core 模組會使用 64 位元預覽執行階段 (如果有)。 請安裝 [ASP.NET Core {X.Y} (x64) 執行階段]  延伸模組。
+> 對於裝載於 A 系列計算或更高裝載層的應用程式，應用程式服務應用程式的平台架構 (x86/x64) 會設定在 Azure 入口網站中應用程式的設定內。 如果在同處理序模式中執行應用程式，且平台架構設定為適用於 64 位元 (x64)，ASP.NET Core 模組會使用 64 位元預覽執行階段 (如果有)。 請安裝 [ASP.NET Core {X.Y} (x64) 執行階段] 延伸模組。
 >
 > 在安裝 x64 預覽執行階段後，請在 Kudu PowerShell 命令視窗中執行下列命令，以確認安裝。 在命令中使用 ASP.NET Core 執行階段版本取代 `{X.Y}`：
 >
@@ -217,21 +207,21 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 若是 64 位元[依架構不同的部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)：
 
 * 請使用 64 位元 .NET Core SDK 來建置 64 位元應用程式。
-* 在 App Service 的 [組態]   > [一般設定]  中，將 [平台]  設為 [64 位元]  。 應用程式必須使用基本或更高的服務方案，才能選擇平台位元。
+* 在 App Service 的 [組態] > [一般設定] 中，將 [平台] 設為 [64 位元]。 應用程式必須使用基本或更高的服務方案，才能選擇平台位元。
 
 ::: moniker-end
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 從 Visual Studio 工具列選取 [建置]   > [發佈 {應用程式名稱}]  ，或在 [方案總管]  中以滑鼠右鍵按一下專案，然後選取 [發佈]  。
-1. 在 [挑選發佈目標]  對話方塊中，確認已選取 [App Service]  。
-1. 選取 [進階]  。 [發佈]  對話方塊隨即開啟。
-1. 在 [發行]  對話方塊中：
-   * 確認已選取 [發行]  設定。
-   * 開啟 [部署模式]  下拉式清單，然後選取 [依架構不同]  。
-   * 將 [目標執行階段]  選取為 [可攜式]  。
-   * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項]  並選取核取方塊，以移除目的地的其他檔案。
-   * 選取 [儲存]  。
+1. 從 Visual Studio 工具列選取 [建置] > [發佈 {應用程式名稱}]，或在 [方案總管] 中以滑鼠右鍵按一下專案，然後選取 [發佈]。
+1. 在 [挑選發佈目標] 對話方塊中，確認已選取 [App Service]。
+1. 選取 [進階]。 [發佈] 對話方塊隨即開啟。
+1. 在 [發行] 對話方塊中：
+   * 確認已選取 [發行] 設定。
+   * 開啟 [部署模式] 下拉式清單，然後選取 [依架構不同]。
+   * 將 [目標執行階段] 選取為 [可攜式]。
+   * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項] 並選取核取方塊，以移除目的地的其他檔案。
+   * 選取 [儲存]。
 1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
@@ -244,7 +234,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    dotnet publish --configuration Release
    ```
 
-1. 將 bin/Release/{目標 FRAMEWORK}/publish  目錄的內容移到 App Service 中的網站。 若要在 [Kudu](https://github.com/projectkudu/kudu/wiki) 主控台將 *publish* 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
+1. 將 bin/Release/{目標 FRAMEWORK}/publish 目錄的內容移到 App Service 中的網站。 若要在 [Kudu](https://github.com/projectkudu/kudu/wiki) 主控台將 *publish* 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
 
 ---
 
@@ -254,15 +244,15 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 從 Visual Studio 工具列選取 [建置]   > [發佈 {應用程式名稱}]  ，或在 [方案總管]  中以滑鼠右鍵按一下專案，然後選取 [發佈]  。
-1. 在 [挑選發佈目標]  對話方塊中，確認已選取 [App Service]  。
-1. 選取 [進階]  。 [發佈]  對話方塊隨即開啟。
-1. 在 [發行]  對話方塊中：
-   * 確認已選取 [發行]  設定。
-   * 開啟 [部署模式]  下拉式清單，然後選取 [獨立式]  。
-   * 從 [目標執行階段]  下拉式清單中選取目標執行階段。 預設為 `win-x86`。
-   * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項]  並選取核取方塊，以移除目的地的其他檔案。
-   * 選取 [儲存]  。
+1. 從 Visual Studio 工具列選取 [建置] > [發佈 {應用程式名稱}]，或在 [方案總管] 中以滑鼠右鍵按一下專案，然後選取 [發佈]。
+1. 在 [挑選發佈目標] 對話方塊中，確認已選取 [App Service]。
+1. 選取 [進階]。 [發佈] 對話方塊隨即開啟。
+1. 在 [發行] 對話方塊中：
+   * 確認已選取 [發行] 設定。
+   * 開啟 [部署模式] 下拉式清單，然後選取 [獨立式]。
+   * 從 [目標執行階段] 下拉式清單中選取目標執行階段。 預設為 `win-x86`。
+   * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項] 並選取核取方塊，以移除目的地的其他檔案。
+   * 選取 [儲存]。
 1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
@@ -282,7 +272,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    dotnet publish --configuration Release --runtime win-x86
    ```
 
-1. 將 bin/Release/{目標 FRAMEWORK}/{執行階段識別碼}/publish  目錄的內容移至 App Service 中的網站。 若要在 Kudu 主控台將 *publish* 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
+1. 將 bin/Release/{目標 FRAMEWORK}/{執行階段識別碼}/publish 目錄的內容移至 App Service 中的網站。 若要在 Kudu 主控台將 *publish* 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
 
 ---
 

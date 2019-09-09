@@ -5,14 +5,14 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/03/2019
+ms.date: 09/09/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 308a8bd10371cc70c431b8858ef7d82c1bb624da
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: c2a2941f2a4e27218c90cf47453c69149da8e766
+ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975423"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70815708"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -39,10 +39,10 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 建立新的專案。
-1. 選取 [ASP.NET Core Web 應用程式]  。 選取 [下一步]  。
-1. 在 [專案名稱]  欄位中提供專案名稱，或接受預設專案名稱。 選取 [建立]  。
-1. 在 [建立新的 ASP.NET Core Web 應用程式]  對話方塊中，確認選取 [.NET Core]  和 [ASP.NET Core 3.0]  。
-1. 選取 [背景工作服務]  範本。 選取 [建立]  。
+1. 選取 [ASP.NET Core Web 應用程式]。 選取 [下一步]。
+1. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 選取 [建立]。
+1. 在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中，確認選取 [.NET Core] 和 [ASP.NET Core 3.0]。
+1. 選取 [背景工作服務] 範本。 選取 [建立]。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -66,7 +66,7 @@ dotnet new worker -o ContosoWorkerService
 * 設定內容根目錄。
 * 啟用使用應用程式名稱作為預設來源名稱記錄至事件記錄檔。
   * 您可以使用 *appsettings.Production.json* 檔案中的 `Logging:LogLevel:Default` 機碼來設定記錄層級。
-  * 只有系統管理員才能建立新的事件來源。 如果無法使用應用程式名稱建立事件來源，則會向「應用程式」  來源記錄警告，並停用事件記錄檔。
+  * 只有系統管理員才能建立新的事件來源。 如果無法使用應用程式名稱建立事件來源，則會向「應用程式」來源記錄警告，並停用事件記錄檔。
 
 [!code-csharp[](windows-service/samples/3.x/AspNetCoreService/Program.cs?name=snippet_Program)]
 
@@ -97,7 +97,7 @@ dotnet new worker -o ContosoWorkerService
 
 ### <a name="framework-dependent-deployment-fdd"></a>架構相依部署 (FDD)
 
-架構相依部署 (FDD) 仰賴存在於目標系統上的全系統共用 .NET Core 版本。 依照此文章中的指導方針採用 FDD 案例時，SDK 會產生可執行檔 ( *.exe*)，稱為「架構相依可執行檔」  。
+架構相依部署 (FDD) 仰賴存在於目標系統上的全系統共用 .NET Core 版本。 依照此文章中的指導方針採用 FDD 案例時，SDK 會產生可執行檔 ( *.exe*)，稱為「架構相依可執行檔」。
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -209,16 +209,16 @@ powershell -Command "New-LocalUser -Name {NAME}"
 
 ## <a name="log-on-as-a-service-rights"></a>以服務方式登入權限
 
-若要為服務使用者帳戶建立「以服務方式登入」  權限：
+若要為服務使用者帳戶建立「以服務方式登入」權限：
 
 1. 執行 *secpol.msc* 來開啟 [本機安全性原則編輯器]。
-1. 展開 [本機原則]  節點，然後選取 [使用者權限指派]  。
-1. 開啟 [以服務方式登入]  原則。
-1. 選取 [新增使用者或群組]  。
+1. 展開 [本機原則] 節點，然後選取 [使用者權限指派]。
+1. 開啟 [以服務方式登入] 原則。
+1. 選取 [新增使用者或群組]。
 1. 使用下列其中一種方法提供物件名稱 (使用者帳戶)：
-   1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定]  將使用者新增至原則。
-   1. 選取 [進階]  。 選取 [立即尋找]  。 從清單中選取使用者帳戶。 選取 [確定]  。 再次選取 [確定]  將使用者新增至原則。
-1. 選取 [確定]  或 [套用]  以接受變更。
+   1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定] 將使用者新增至原則。
+   1. 選取 [進階]。 選取 [立即尋找]。 從清單中選取使用者帳戶。 選取 [確定]。 再次選取 [確定] 將使用者新增至原則。
+1. 選取 [確定] 或 [套用] 以接受變更。
 
 ## <a name="create-and-manage-the-windows-service"></a>建立及管理 Windows 服務
 
@@ -312,15 +312,17 @@ Remove-Service -Name {NAME}
 
 服務如果會與來自網際網路或公司網路的要求進行互動，並且位於 Proxy 或負載平衡器後方，可能會需要額外的設定。 如需詳細資訊，請參閱 <xref:host-and-deploy/proxy-load-balancer>。
 
-## <a name="configure-https"></a>設定 HTTPS
+## <a name="configure-endpoints"></a>設定端點
 
-使用安全端點來設定服務：
+ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URLS`環境變數，以設定 URL 和埠。
 
-1. 使用您平台的憑證取得與部署機制來建立將用於裝載系統的 X.509 憑證。
+如需其他 URL 和埠設定方法，包括 HTTPS 端點的支援，請參閱下列主題：
 
-1. 指定 [Kestrel 伺服器 HTTPS 端點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)以使用憑證。
+* <xref:fundamentals/servers/kestrel#endpoint-configuration>Kestrel
+* <xref:fundamentals/servers/httpsys#configure-windows-server>（Http.sys）
 
-不支援使用 ASP.NET Core HTTPS 開發憑證來保護服務端點。
+> [!NOTE]
+> 不支援使用 ASP.NET Core HTTPS 開發憑證來保護服務端點。
 
 ## <a name="current-directory-and-content-root"></a>目前目錄和內容根目錄
 

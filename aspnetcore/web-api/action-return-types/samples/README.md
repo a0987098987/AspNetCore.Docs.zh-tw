@@ -1,10 +1,11 @@
-# <a name="aspnet-core-web-api-sample"></a>ASP.NET Core Web API 範例
+# <a name="aspnet-core-web-api-samples"></a>ASP.NET Core Web API 範例
 
-下表提供範例解決方案各種組成資料夾的描述：
+下表提供組成範例方案的各種目錄描述：
 
-|              資料夾              |                                        用途                                        |
-|----------------------------------|---------------------------------------------------------------------------------------|
-|   *WebApiSample.Api.21*   |                         ASP.NET Core 2.1 Web API 專案。                          |
-| *WebApiSample.Api.Pre21*  |                         ASP.NET Core 2.0 Web API 專案。                          |
-| *WebApiSample.DataAccess* | 這兩個 Web API 專案使用的 .NET Standard 2.0 資料存取層專案。 |
-
+| 目錄                   | 用途 |
+|-----------------------------|------------------------------------------------------------|
+| *3倍速/Webapisample.api.21 30*    | ASP.NET Core 3.0 Web API 專案。                       |
+| *3倍/Webapisample.api.21. DataAccess*| ASP.NET Core 3.x Web API 專案所使用的 .NET Standard 2.1 資料存取層專案。|
+| *2x/Webapisample.api.21*    | ASP.NET Core 2.1 Web API 專案。                         |
+| *2x/Webapisample.api.21. Webapisample.api.pre21* | ASP.NET Core 2.0 Web API 專案。                         |
+| *2x/Webapisample.api.21. DataAccess*| ASP.NET Core 2.x Web API 專案所使用的 .NET Standard 2.0 資料存取層專案。|

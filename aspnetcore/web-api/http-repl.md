@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/29/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 7121670856da4b123b1c3e780a7952da0fb696a1
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: b93641c96ad093b40aaa887f19409d4c2e1490df
+ms.sourcegitcommit: efb9c16321b34f8ede802822b26eb983de16479b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238041"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70842273"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -55,24 +55,24 @@ dotnet tool install -g Microsoft.dotnet-httprepl --version "3.0.0-*"
 成功安裝工具後，請執行以下命令來啟動 HTTP REPL：
 
 ```console
-dotnet httprepl
+httprepl
 ```
 
 若要檢視可用的 HTTP REPL 命令，請執行以下其中一個命令：
 
 ```console
-dotnet httprepl -h
+httprepl -h
 ```
 
 ```console
-dotnet httprepl --help
+httprepl --help
 ```
 
 下列輸出隨即顯示：
 
 ```console
 Usage:
-  dotnet httprepl [<BASE_ADDRESS>] [options]
+  httprepl [<BASE_ADDRESS>] [options]
 
 Arguments:
   <BASE_ADDRESS> - The initial base address for the REPL.
@@ -131,13 +131,13 @@ HTTP REPL 提供命令完成。 按 <kbd>Tab</kbd> 鍵會逐一查看完成您�
 執行下列命令來連線至 web API：
 
 ```console
-dotnet httprepl <ROOT URI>
+httprepl <ROOT URI>
 ```
 
 `<ROOT URI>` 是 web API 的基底 URI。 例如：
 
 ```console
-dotnet httprepl https://localhost:5001
+httprepl https://localhost:5001
 ```
 
 或是在 HTTP REPL 執行期間執行以下命令：
@@ -928,7 +928,7 @@ Request echoing is off
 若要移除由 HTTP REPL 工具寫入命令殼層的所有輸出，請執行 `clear` 或 `cls` 命令。 為了說明，請參考包含以下輸出的命令殼層：
 
 ```console
-dotnet httprepl https://localhost:5001
+httprepl https://localhost:5001
 (Disconnected)~ set base "https://localhost:5001"
 Using swagger metadata from https://localhost:5001/swagger/v1/swagger.json
 

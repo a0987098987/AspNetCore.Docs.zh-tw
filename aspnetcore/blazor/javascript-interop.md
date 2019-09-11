@@ -5,14 +5,14 @@ description: 瞭解如何從 Blazor apps 中的 JavaScript，從 .NET 和 .NET �
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/05/2019
+ms.date: 09/07/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: 4e2c979971f8f550af4aa9653880bfd1e5fae731
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: fa485420c01e6a6d4181f733d6848de08ffca730
+ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800294"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70878363"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
@@ -249,3 +249,23 @@ JavaScript interop 程式碼可以包含在類別庫中，這可讓您在 NuGet 
 在應用程式的專案檔中參考的組建 NuGet 套件，與參考任何 NuGet 套件的方式相同。 還原套件之後，應用程式程式碼可以呼叫 JavaScript，就像是C#一樣。
 
 如需詳細資訊，請參閱 <xref:blazor/class-libraries>。
+
+## <a name="harden-js-interop-calls"></a>強化 JS interop 呼叫
+
+JS interop 可能會因為網路錯誤而失敗，而且應該視為不可靠。 根據預設，Blazor 伺服器應用程式會在一分鐘之後，將伺服器上的 JS interop 呼叫數倍。 如果應用程式可以容忍較積極的超時（例如10秒），請使用下列其中一種方法來設定超時時間：
+
+* 全域在`Startup.ConfigureServices`中，指定 [超時]：
+
+  ```csharp
+  services.AddServerSideBlazor(
+      options => options.JSInteropDefaultCallTimeout = TimeSpan.FromSeconds({SECONDS}));
+  ```
+
+* 在元件程式碼中的每個調用，單一呼叫可以指定 timeout：
+
+  ```csharp
+  var result = await JSRuntime.InvokeAsync<string>("MyJSOperation", 
+      TimeSpan.FromSeconds({SECONDS}), new[] { "Arg1" });
+  ```
+
+如需資源耗盡的詳細資訊， <xref:security/blazor/server-side>請參閱。

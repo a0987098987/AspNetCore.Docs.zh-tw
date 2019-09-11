@@ -5,14 +5,14 @@ description: 瞭解如何降低安全性威脅，以 Blazor 伺服器端應用�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/05/2019
+ms.date: 09/07/2019
 uid: security/blazor/server-side
-ms.openlocfilehash: 13bb4475b4beac78cf489d83fb59a3e0d6d8f2d9
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: d30f19bfbbcdb6c142f03a6e0cc6e1fc154c2091
+ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800490"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70878520"
 ---
 # <a name="secure-aspnet-core-blazor-server-side-apps"></a>保護 ASP.NET Core Blazor 伺服器端應用程式
 
@@ -91,7 +91,7 @@ Blazor 用戶端會在每個會話建立單一連線，只要開啟瀏覽器視�
 
 阻絕服務（DoS）攻擊牽涉到用戶端導致伺服器耗盡其一或多項資源，讓應用程式無法使用。 Blazor 伺服器端應用程式包含一些預設限制，並依賴其他 ASP.NET Core 和 SignalR 限制來防範 DoS 攻擊：
 
-| Blazor 伺服器端應用程式限制                            | 描述 | 預設 |
+| Blazor 伺服器端應用程式限制                            | 說明 | 預設 |
 | ------------------------------------------------------- | ----------- | ------- |
 | `CircuitOptions.DisconnectedCircuitMaxRetained`         | 給定伺服器一次保存在記憶體中的中斷連線線路數目上限。 | 100 |
 | `CircuitOptions.DisconnectedCircuitRetentionPeriod`     | 中斷連線的線路在損毀之前，保留在記憶體中的最大時間量。 | 3分鐘 |
@@ -115,7 +115,7 @@ Blazor 用戶端會在每個會話建立單一連線，只要開啟瀏覽器視�
 針對從 .NET 方法到 JavaScript 的呼叫：
 
 * 所有調用都有一個可設定的超時時間，在這<xref:System.OperationCanceledException>之後，會將傳回給呼叫者。
-  * 呼叫（`CircuitOptions.JSInteropDefaultCallTimeout`）的預設超時時間為一分鐘。
+  * 呼叫（`CircuitOptions.JSInteropDefaultCallTimeout`）的預設超時時間為一分鐘。 若要設定此限制， <xref:blazor/javascript-interop#harden-js-interop-calls>請參閱。
   * 可以提供解除標記來控制每個呼叫的取消。 如果提供解除標記，則依賴預設的呼叫超時時間（如果有的話，也可以呼叫用戶端）。
 * 無法信任 JavaScript 呼叫的結果。 在瀏覽器中執行的 Blazor 應用程式用戶端會搜尋 JavaScript 函數來叫用。 系統會叫用函式，並產生結果或錯誤。 惡意用戶端可以嘗試：
   * 從 JavaScript 函式傳回錯誤，導致應用程式發生問題。
@@ -200,6 +200,72 @@ Blazor 伺服器端事件是非同步，因此，您可以將多個事件分派�
 ```
 
 藉由在`if (count < 3) { ... }`處理常式內加入檢查，就會根據`count`目前的應用程式狀態來遞增決策。 這項決策不是以上一個範例中的 UI 狀態為基礎，這可能會暫時過時。
+
+### <a name="guard-against-multiple-dispatches"></a>防護多個分派
+
+如果事件回呼叫用長時間執行的作業（例如從外部服務或資料庫提取資料），請考慮使用「防護」。 此防護可以防止使用者在作業進行中時，使用視覺效果的意見反應來排入多個作業。 下列元件程式碼會`isLoading`將`true`設定`GetForecastAsync`為，同時從伺服器取得資料。 當`isLoading` 為`true`時，UI 中的按鈕會停用：
+
+```cshtml
+@page "/fetchdata"
+@using BlazorServerSample.Data
+@inject WeatherForecastService ForecastService
+
+<button disabled="@isLoading" @onclick="UpdateForecasts">Update</button>
+
+@code {
+    private bool isLoading;
+    private WeatherForecast[] forecasts;
+
+    private async Task UpdateForecasts()
+    {
+        if (!isLoading)
+        {
+            isLoading = true;
+            forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+            isLoading = false;
+        }
+    }
+}
+```
+
+### <a name="cancel-early-and-avoid-use-after-dispose"></a>及早取消並避免使用-處置後
+
+除了使用防護[多個分派](#guard-against-multiple-dispatches)一節中所述的防護以外，請考慮在處置<xref:System.Threading.CancellationToken>元件時，使用來取消長時間執行的作業。 這種方法的優點是避免在元件中*使用-dispose* ：
+
+```cshtml
+@implements IDisposable
+
+...
+
+@code {
+    private readonly CancellationTokenSource TokenSource = 
+        new CancellationTokenSource();
+
+    private async Task UpdateForecasts()
+    {
+        ...
+
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now, 
+            TokenSource.Token);
+
+        if (TokenSource.Token.IsCancellationRequested)
+        {
+           return;
+        }
+
+        ...
+    }
+
+    public void Dispose()
+    {
+        CancellationTokenSource.Cancel();
+    }
+}
+```
+
+### <a name="avoid-events-that-produce-large-amounts-of-data"></a>避免產生大量資料的事件
+
+某些 DOM 事件（例如`oninput`或`onscroll`）可能會產生大量資料。 避免在 Blazor 伺服器應用程式中使用這些事件。
 
 ## <a name="additional-security-guidance"></a>其他安全性指引
 
@@ -330,6 +396,9 @@ Blazor 伺服器端架構會採取下列步驟來防範先前的威脅：
 * 防止用戶端配置未系結的記憶體數量。
   * 元件中的資料。
   * `DotNetObject`傳回給用戶端的參考。
+* 針對多個分派進行防護。
+* 處置元件時，取消長時間執行的作業。
+* 避免產生大量資料的事件。
 * 如果無法`NavigationManager.Navigate`避免，請避免在的呼叫中使用使用者輸入，並在一組允許的原始來源驗證使用者輸入 url。
 * 請勿根據 UI 狀態（但僅從元件狀態）進行授權決策。
 * 請考慮使用[內容安全性原則（CSP）](https://developer.mozilla.org/docs/Web/HTTP/CSP)來防範 XSS 攻擊。

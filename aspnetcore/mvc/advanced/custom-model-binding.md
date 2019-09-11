@@ -5,12 +5,12 @@ description: 了解模型繫結如何讓控制器動作直接使用 ASP.NET Core
 ms.author: riande
 ms.date: 11/13/2018
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 64429d3d9a64219216f3432924dbd0977dd6e1bb
-ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
+ms.openlocfilehash: 91f42393ffee3249f9167e10eaea7b279a7cb70b
+ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815630"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70878406"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>ASP.NET Core 中的自訂模型繫結
 
@@ -133,6 +133,13 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 ### <a name="polymorphic-model-binding"></a>多型模型系結
 
 系結至衍生類型的不同模型，稱為多型模型系結。 當要求值必須系結至特定衍生模型類型時，需要自訂模型系結。 除非需要此方法，否則建議您避免多型模型系結。 多型模型系結使其難以瞭解系結模型。 不過，如果應用程式需要多型模型系結，則執行可能看起來像下列程式碼：
+
+系結至衍生類型的不同模型，稱為多型模型系結。 當要求值必須系結至特定衍生模型類型時，需要自訂模型系結。 多型模型系結：
+
+* 對於設計來與所有語言互通的 REST API 而言並不常見。
+* 使其難以瞭解系結模型的原因。
+
+不過，如果應用程式需要多型模型系結，則執行可能看起來像下列程式碼：
 
 [!code-csharp[](custom-model-binding/3.0sample/PolymorphicModelBinding/ModelBinders/PolymorphicModelBinder.cs?name=snippet)]
 

@@ -5,14 +5,14 @@ description: 瞭解 Blazor 用戶端和伺服器端裝載模型。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/05/2019
+ms.date: 09/07/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: f7a16d64e1f874a4f6b3c8db5217810b13c7c6ff
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: 7880affa59af1fa4fc47aee3dc98ae9aa53729af
+ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800437"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70878338"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -83,24 +83,68 @@ ASP.NET Core 應用程式會參考要新增`Startup`的應用程式類別：
 
 &dagger;*Blazor*腳本是從 ASP.NET Core 共用架構中的內嵌資源提供。
 
+### <a name="comparison-to-server-rendered-ui"></a>與伺服器呈現的 UI 比較
+
+瞭解 Blazor 伺服器應用程式的其中一種方式，就是了解它與傳統模型有何不同，可以使用 Razor views 或 Razor Pages ASP.NET Core 應用程式中呈現 UI。 這兩種模型都使用 Razor 語言來描述 HTML 內容，但在標記呈現的方式上有很大的差異。
+
+當 Razor 頁面或視圖呈現時，每一行 Razor 程式碼都會以文字格式發出 HTML。 呈現之後，伺服器會處置頁面或 view 實例，包括任何已產生的狀態。 當頁面的另一個要求發生時（例如，當伺服器驗證失敗且顯示驗證摘要時）：
+
+* 整個頁面會再次重新顯示為 HTML 文字。
+* 此頁面會傳送至用戶端。
+
+Blazor 應用程式是由可重複使用的 UI 元素（稱為「*元件*」）所組成。 元件包含C#程式碼、標記和其他元件。 呈現元件時，Blazor 會產生類似于 HTML 或 XML 檔物件模型（DOM）的內含元件圖形。 此圖表包含屬性和欄位中保留的元件狀態。 Blazor 會評估元件圖形，以產生標記的二進位標記法。 二進位格式可以是：
+
+* 已轉換成 HTML 文字（在預建期間）。
+* 用來在一般轉譯期間有效率地更新標記。
+
+Blazor 中的 UI 更新會由下列觸發：
+
+* 使用者互動，例如選取按鈕。
+* 應用程式觸發程式，例如計時器。
+
+圖形為重新顯示，且會計算 UI*差異*（差異）。 這項差異是更新用戶端上的 UI 所需的最小一組 DOM 編輯。 差異會以二進位格式傳送至用戶端，並由瀏覽器套用。
+
+元件會在使用者從用戶端導覽出去之後處置。 當使用者與元件互動時，元件的狀態（服務、資源）必須保留在伺服器的記憶體中。 因為許多元件的狀態可能會由伺服器同時維護，所以記憶體耗盡是必須解決的問題。 如需有關如何撰寫 Blazor 伺服器應用程式以確保最佳使用伺服器記憶體的指引，請參閱<xref:security/blazor/server-side>。
+
+### <a name="circuits"></a>獲得
+
+Blazor 伺服器應用程式建置於[ASP.NET Core SignalR](xref:signalr/introduction)之上。 每個用戶端會透過一或多個稱為*線路*的 SignalR 連線來與伺服器通訊。 線路是 Blazor 的抽象概念，SignalR 連線可容忍暫時的網路中斷。 當 Blazor 用戶端看到 SignalR 連線已中斷連線時，它會嘗試使用新的 SignalR 連線重新連線到伺服器。
+
+連線至 Blazor 伺服器應用程式的每個瀏覽器畫面（瀏覽器索引標籤或 iframe）都會使用 SignalR 連接。 相較于一般伺服器呈現的應用程式，這還是另一項重要的差異。 在伺服器呈現的應用程式中，在多個瀏覽器畫面中開啟相同的應用程式，通常不會轉譯成伺服器上的其他資源需求。 在 Blazor 伺服器應用程式中，每個瀏覽器畫面都需要個別的線路，且元件狀態的個別實例會由伺服器管理。
+
+Blazor 會考慮關閉瀏覽器索引標籤，或流覽至外部 URL 的*正常*終止。 在正常終止的事件中，會立即釋放線路和相關聯的資源。 用戶端也可能會因為網路中斷而無法正常地中斷連線。 Blazor 伺服器會儲存已中斷連線的線路，以取得可設定的間隔，以允許用戶端重新連線。 如需詳細資訊，請參閱重新[連接到相同的伺服器](#reconnection-to-the-same-server)一節。
+
+### <a name="ui-latency"></a>UI 延遲
+
+UI 延遲是從起始的動作到 UI 更新時間所花費的時間。 較小的 UI 延遲值是應用程式對使用者進行回應的必要行為。 在 Blazor 伺服器應用程式中，會將每個動作傳送至伺服器、進行處理，並傳回 UI 差異。 因此，UI 延遲是網路延遲和處理動作之伺服器延遲的總和。
+
+對於僅限於私人商業網路的企業營運應用程式，通常會 imperceptible 因網路延遲而對使用者的延遲所造成的影響。 對於透過網際網路部署的應用程式，使用者的延遲可能會很明顯，尤其是在地理位置廣泛散佈的使用者時。
+
+記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。 如需詳細資訊，請參閱 <xref:security/blazor/server-side>。
+
+Blazor 伺服器應用程式應該經過優化，藉由減少網路延遲和記憶體使用量，將 UI 延遲降到最低。 如需測量網路延遲的方法， <xref:host-and-deploy/blazor/server-side#measure-network-latency>請參閱。 如需 SignalR 和 Blazor 的詳細資訊，請參閱：
+
+* <xref:host-and-deploy/blazor/server-side>
+* <xref:security/blazor/server-side>
+
 ### <a name="reconnection-to-the-same-server"></a>重新連接到相同的伺服器
 
 Blazor 伺服器端應用程式需要伺服器的作用中 SignalR 連接。 如果連接中斷，應用程式會嘗試重新連線到伺服器。 只要用戶端的狀態仍在記憶體中，用戶端會話就會繼續，而不會失去狀態。
- 
+
 當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。 若要自訂 UI，請在 *_Host*的 [ `id` Razor 頁面] 中，以`components-reconnect-modal`做為它的來定義元素。 用戶端會根據連接的狀態，使用下列其中一個 CSS 類別來更新這個元素：
- 
+
 * `components-reconnect-show`&ndash;顯示 UI 以指出連線已中斷，而且用戶端正在嘗試重新連接。
 * `components-reconnect-hide`&ndash;用戶端具有使用中的連線，並隱藏 UI。
 * `components-reconnect-failed`&ndash;重新連接失敗。 若要再次嘗試重新連接`window.Blazor.reconnect()`，請呼叫。
 
 ### <a name="stateful-reconnection-after-prerendering"></a>預呈現後的具狀態重新連接
- 
+
 在建立伺服器的用戶端連接之前，預設會設定 Blazor 伺服器端應用程式，以預先呈現伺服器上的 UI。 這是在 *_Host* Razor 頁面中設定：
- 
+
 ```cshtml
 <body>
     <app>@(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))</app>
- 
+
     <script src="_framework/blazor.server.js"></script>
 </body>
 ```
@@ -117,11 +161,11 @@ Blazor 伺服器端應用程式需要伺服器的作用中 SignalR 連接。 如
 | `Static`            | 將元件轉譯為靜態 HTML。 支援參數。 |
 
 不支援從靜態 HTML 網頁轉譯伺服器元件。
- 
+
 用戶端會重新連線至伺服器，其狀態與用來呈現應用程式的狀態相同。 如果應用程式的狀態仍在記憶體中，則在建立 SignalR 連接之後，元件狀態不會重新顯示。
 
 ### <a name="render-stateful-interactive-components-from-razor-pages-and-views"></a>從 Razor 頁面和 views 轉譯具狀態的互動式元件
- 
+
 可設定狀態的互動式元件可以新增至 Razor 頁面或視圖。
 
 當頁面或視圖呈現時：
@@ -129,19 +173,19 @@ Blazor 伺服器端應用程式需要伺服器的作用中 SignalR 連接。 如
 * 此元件是使用頁面或視圖所資源清單。
 * 用來進行預呈現的初始元件狀態會遺失。
 * 建立 SignalR 連接時，會建立新的元件狀態。
- 
+
 下列 Razor 頁面會呈現`Counter`元件：
 
 ```cshtml
 <h1>My Razor Page</h1>
- 
+
 @(await Html.RenderComponentAsync<Counter>(RenderMode.ServerPrerendered))
 ```
 
 ### <a name="render-noninteractive-components-from-razor-pages-and-views"></a>從 Razor 頁面和 views 轉譯非互動式元件
 
 在下列 Razor 頁面中， `MyComponent`元件是使用以表單指定的初始值進行靜態轉譯：
- 
+
 ```cshtml
 <h1>My Razor Page</h1>
 
@@ -149,10 +193,10 @@ Blazor 伺服器端應用程式需要伺服器的作用中 SignalR 連接。 如
     <input type="number" asp-for="InitialValue" />
     <button type="submit">Set initial value</button>
 </form>
- 
+
 @(await Html.RenderComponentAsync<MyComponent>(RenderMode.Static, 
     new { InitialValue = InitialValue }))
- 
+
 @code {
     [BindProperty(SupportsGet=true)]
     public int InitialValue { get; set; }
@@ -162,18 +206,18 @@ Blazor 伺服器端應用程式需要伺服器的作用中 SignalR 連接。 如
 由於`MyComponent`是以靜態方式呈現，因此元件不能是互動式的。
 
 ### <a name="detect-when-the-app-is-prerendering"></a>偵測應用程式何時已進行預呈現
- 
+
 [!INCLUDE[](~/includes/blazor-prerendering.md)]
 
 ### <a name="configure-the-signalr-client-for-blazor-server-side-apps"></a>設定適用于 Blazor 伺服器端應用程式的 SignalR 用戶端
- 
+
 有時候，您需要設定 Blazor 伺服器端應用程式所使用的 SignalR 用戶端。 例如，您可能會想要在 SignalR 用戶端上設定記錄，以診斷連線問題。
- 
+
 在*Pages/_Host. cshtml*檔案中設定 SignalR 用戶端：
 
 * 將屬性新增`<script>`至 blazor 的標記。 `autostart="false"`
 * 呼叫`Blazor.start`並傳入指定 SignalR 產生器的設定物件。
- 
+
 ```html
 <script src="_framework/blazor.server.js" autostart="false"></script>
 <script>

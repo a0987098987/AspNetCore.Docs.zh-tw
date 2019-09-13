@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seoapril2019
 ms.date: 09/05/2019
 uid: blazor/index
-ms.openlocfilehash: 6b62eb372d642c1ad9df880a4b71e5d5a8e40b60
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: 767ec8f106bebb92cf13a10eb63fab4905715d3d
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800321"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964118"
 ---
 # <a name="introduction-to-blazor"></a>Blazor 簡介
 
@@ -101,37 +101,37 @@ Welcome to your new app.
 
 元件會轉譯為瀏覽器文件物件模型 (DOM) 的記憶體內部表示法 (稱為「轉譯樹」)，可用來以彈性且有效率的方式更新 UI。
 
-## <a name="blazor-client-side"></a>Blazor 用戶端
+## <a name="blazor-webassembly"></a>Blazor WebAssembly
 
-Blazor 用戶端是單一頁面應用程式架構，可使用 .NET 來建置互動式用戶端 Web 應用程式。 Blazor 用戶端會使用開放式 Web 標準，而不需外掛程式或程式碼轉譯，且適用於包括行動瀏覽器在內的所有新式網頁瀏覽器。
+Blazor WebAssembly 是單一頁面應用程式架構，可使用 .NET 建立互動式用戶端 web 應用程式。 Blazor WebAssembly 使用開放式 web 標準，而不需要外掛程式或程式碼轉譯，並可在所有新式網頁瀏覽器中運作，包括行動瀏覽器。
 
 在網頁瀏覽器內執行 .NET 程式碼已可藉由 [WebAssembly](https://webassembly.org) (縮寫為 *wasm*) 達成。 WebAssembly 是一種精簡的位元組程式碼格式，針對快速下載和最快執行速度而最佳化。 WebAssembly 是開放式的 Web 標準，在不含外掛程式的網頁瀏覽器中支援。
 
 WebAssembly 程式碼可以透過 JavaScript 存取瀏覽器的完整功能，稱為 「JavaScript 互通性」(或 *JavaScript Interop*)。 在瀏覽器中透過 WebAssembly 執行的 .NET 程式碼會在瀏覽器的 JavaScript 沙箱執行，且受沙箱所提供對用戶端電腦之惡意動作的保護。
 
-![Blazor 用戶端會透過 WebAssembly 在瀏覽器中執行 .NET 程式碼。](index/_static/blazor-client-side.png)
+![Blazor WebAssembly 會在瀏覽器中使用 WebAssembly 執行 .NET 程式碼。](index/_static/blazor-webassembly.png)
 
-當 Blazor 用戶端應用程式建置好並在瀏覽器中執行時：
+當 Blazor WebAssembly 應用程式在瀏覽器中建立並執行時：
 
 * C# 程式碼檔案和 Razor 檔案會編譯成 .NET 組件。
 * 組件和 .NET 執行階段會下載至瀏覽器中。
-* Blazor 用戶端會啟動 .NET 執行階段，並設定執行階段以載入應用程式的組件。 Blazor 用戶端執行階段會使用 JavaScript Interop 來處理 DOM 操作和瀏覽器 API 呼叫。
+* Blazor WebAssembly 會啟動 .NET 執行時間，並設定執行時間以載入應用程式的元件。 Blazor WebAssembly 執行時間會使用 JavaScript interop 來處理 DOM 操作和瀏覽器 API 呼叫。
 
-發佈的應用程式大小 (它的「承載大小」) 是應用程式使用性的重要效能因素。 大型應用程式需要相對較長的時間才能下載至瀏覽器，這點會對使用者體驗造成傷害。 Blazor 會將承載調整成最佳大小，以縮短下載時間：
+發佈的應用程式大小 (它的「承載大小」) 是應用程式使用性的重要效能因素。 大型應用程式需要相對較長的時間才能下載至瀏覽器，這點會對使用者體驗造成傷害。 Blazor WebAssembly 會優化承載大小以縮短下載時間：
 
 * 若應用程式是透過[中繼語言 (IL) 連接器](xref:host-and-deploy/blazor/configure-linker)所發佈的，則會移除未使用的程式碼。
 * HTTP 回應會進行壓縮。
 * .NET 執行階段與組件會在瀏覽器中進行快取。
 
-## <a name="blazor-server-side"></a>Blazor 伺服器端
+## <a name="blazor-server"></a>Blazor 伺服器
 
-Blazor 會將元件轉譯邏輯與套用 UI 更新的方式分隔。 Blazor 伺服器端提供從 ASP.NET Core 應用程式於伺服器上裝載 Razor 元件的支援。 UI 更新會透過 [SignalR](xref:signalr/introduction) 連線來處理。
+Blazor 會將元件轉譯邏輯與套用 UI 更新的方式分隔。 Blazor 伺服器提供在 ASP.NET Core 應用程式中將 Razor 元件裝載在伺服器上的支援。 UI 更新會透過 [SignalR](xref:signalr/introduction) 連線來處理。
 
 執行階段會處理將 UI 事件從瀏覽器傳送到伺服器，然後在執行元件之後，套用由伺服器傳送回瀏覽器的 UI 更新。
 
-Blazor 伺服器端用於與瀏覽器通訊的連線也會用於處理 JavaScript Interop 呼叫。
+Blazor 伺服器用來與瀏覽器通訊的連接也會用來處理 JavaScript interop 呼叫。
 
-![Blazor 伺服器端在伺服器上執行 .NET 程式碼，並經由 SignalR 連線與用戶端上的文件物件模型互動](index/_static/blazor-server-side.png)
+![Blazor 伺服器會在伺服器上執行 .NET 程式碼，並透過 SignalR 連接與用戶端上的檔物件模型互動](index/_static/blazor-server.png)
 
 ## <a name="javascript-interop"></a>JavaScript Interop
 

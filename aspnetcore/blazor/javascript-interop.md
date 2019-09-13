@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/07/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: fa485420c01e6a6d4181f733d6848de08ffca730
-ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
+ms.openlocfilehash: 1572b9ee646577d094409cc33dd621f2f73dc863
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70878363"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964206"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
@@ -28,15 +28,15 @@ Blazor 應用程式可以從 JavaScript 程式碼，叫用 .NET 和 .NET 方法�
 
 若要從 .net 呼叫 JavaScript，請使用`IJSRuntime`抽象概念。 `InvokeAsync<T>`方法會接受您想要叫用之 JavaScript 函數的識別碼，以及任何數目的 JSON 可序列化引數。 函數識別碼相對於全域範圍（`window`）。 如果您想要呼叫`window.someScope.someFunction`，識別碼會是`someScope.someFunction`。 在呼叫函式之前，不需要先註冊函式。 傳回型`T`別也必須是 JSON 可序列化。
 
-針對伺服器端應用程式：
+針對 Blazor 伺服器應用程式：
 
-* 伺服器端應用程式會處理多個使用者要求。 不要在`JSRuntime.Current`元件中呼叫以叫用 JavaScript 函數。
+* Blazor 伺服器應用程式會處理多個使用者要求。 不要在`JSRuntime.Current`元件中呼叫以叫用 JavaScript 函數。
 * `IJSRuntime`插入抽象概念，並使用插入的物件發出 JavaScript interop 呼叫。
 * 當 Blazor 應用程式預先呈現時，無法呼叫 JavaScript，因為尚未建立與瀏覽器的連接。 如需詳細資訊，請參閱偵測[Blazor 應用程式何時進行預呈現](#detect-when-a-blazor-app-is-prerendering)一節。
 
 下列範例是根據[TextDecoder](https://developer.mozilla.org/docs/Web/API/TextDecoder)，這是以實驗性 JavaScript 為基礎的解碼器。 此範例示範如何從C#方法叫用 JavaScript 函數。 JavaScript 函式會從C#方法接受位元組陣列、解碼陣列，然後將文字傳回給元件以供顯示。
 
-在 wwwroot/index.html `<head>` （Blazor用戶端）或*Pages/_Host*的元素中，提供用`TextDecoder`來解碼傳遞陣列的函式：
+在 wwwroot/index.html `<head>` （Blazor WebAssembly）或*Pages/_Host. cshtml* （Blazor Server）的元素內，提供用`TextDecoder`來解碼傳遞陣列的函式：
 
 [!code-html[](javascript-interop/samples_snapshot/index-script.html)]
 
@@ -70,7 +70,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
   IJSRuntime JSRuntime { get; set; }
   ```
 
-在本主題隨附的用戶端範例應用程式中，用戶端應用程式可使用兩個 JavaScript 函式來與 DOM 互動，以接收使用者輸入並顯示歡迎訊息：
+在本主題隨附的用戶端範例應用程式中，有兩個 JavaScript 函式可供與 DOM 互動的應用程式使用，以接收使用者輸入並顯示歡迎訊息：
 
 * `showPrompt`&ndash;產生提示以接受使用者輸入（使用者的名稱），並將名稱傳回給呼叫者。
 * `displayWelcome`將歡迎訊息從呼叫者指派給`id`具有之的`welcome`DOM 物件。 &ndash;
@@ -79,13 +79,13 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 [!code-javascript[](./common/samples/3.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
-將參考 JavaScript 檔案的 標記放在wwwroot/index.html檔案（Blazor用戶端）或Pages/_Host檔（Blazor伺服器端）`<script>`中。
+將參考 JavaScript 檔案的 標記放在wwwroot/index.html檔案（BlazorWebAssembly）或Pages/_Host.cshtml檔案（Blazor伺服器）`<script>`中。
 
-*wwwroot/index.html*（Blazor 用戶端）：
+*wwwroot/index.html*（Blazor WebAssembly）：
 
 [!code-html[](./common/samples/3.x/BlazorSample/wwwroot/index.html?highlight=15)]
 
-*Pages/_Host. cshtml*（Blazor 伺服器端）：
+*Pages/_Host. cshtml*（Blazor 伺服器）：
 
 [!code-cshtml[](javascript-interop/samples_snapshot/_Host.cshtml?highlight=29)]
 
@@ -93,7 +93,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 .NET 方法會藉由呼叫`IJSRuntime.InvokeAsync<T>`，與*exampleJsInterop*中的 JavaScript 函式進行 interop。
 
-`IJSRuntime`抽象概念是非同步，允許伺服器端案例。 如果應用程式執行用戶端，而您想要以同步方式叫用 JavaScript 函式`IJSInProcessRuntime` ，請`Invoke<T>`改為向下轉換並呼叫。 我們建議大部分的 JavaScript interop 程式庫都使用非同步 Api，以確保所有案例（用戶端或伺服器端）都有可用的程式庫。
+`IJSRuntime`抽象概念是非同步，可允許 Blazor 伺服器案例。 如果應用程式是 Blazor WebAssembly 應用程式，而且您想要以同步方式叫用 JavaScript 函`IJSInProcessRuntime`式， `Invoke<T>`請改為向下轉換並呼叫。 我們建議大部分的 JavaScript interop 程式庫都使用非同步 Api，以確保所有案例中都有可用的程式庫。
 
 範例應用程式包含一個可示範 JavaScript interop 的元件。 元件：
 
@@ -178,7 +178,7 @@ public static Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
 
 ### <a name="static-net-method-call"></a>靜態 .NET 方法呼叫
 
-若要從 JavaScript 叫用靜態 .net 方法，請`DotNet.invokeMethod`使用`DotNet.invokeMethodAsync`或函數。 傳入您想要呼叫之靜態方法的識別碼、包含函數的元件名稱，以及任何引數。 建議的非同步版本是為了支援伺服器端案例。 若要從 JavaScript 叫用 .net 方法，.net 方法必須是公用的、靜態的，而且`[JSInvokable]`具有屬性。 根據預設，方法識別碼是方法名稱，但您可以使用此`JSInvokableAttribute`函數來指定不同的識別碼。 目前不支援呼叫開放式泛型方法。
+若要從 JavaScript 叫用靜態 .net 方法，請`DotNet.invokeMethod`使用`DotNet.invokeMethodAsync`或函數。 傳入您想要呼叫之靜態方法的識別碼、包含函數的元件名稱，以及任何引數。 最好是非同步版本來支援 Blazor 伺服器案例。 若要從 JavaScript 叫用 .net 方法，.net 方法必須是公用的、靜態的，而且`[JSInvokable]`具有屬性。 根據預設，方法識別碼是方法名稱，但您可以使用此`JSInvokableAttribute`函數來指定不同的識別碼。 目前不支援呼叫開放式泛型方法。
 
 範例應用程式包含傳回C#之陣列的`int`方法。 `JSInvokable`屬性會套用至方法。
 
@@ -268,4 +268,4 @@ JS interop 可能會因為網路錯誤而失敗，而且應該視為不可靠。
       TimeSpan.FromSeconds({SECONDS}), new[] { "Arg1" });
   ```
 
-如需資源耗盡的詳細資訊， <xref:security/blazor/server-side>請參閱。
+如需資源耗盡的詳細資訊， <xref:security/blazor/server>請參閱。

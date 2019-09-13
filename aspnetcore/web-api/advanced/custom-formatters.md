@@ -5,24 +5,28 @@ description: 了解如何建立和使用 ASP.NET Core 中的 Web API 自訂格�
 ms.author: riande
 ms.date: 02/08/2017
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: 6fb7e192bf3e943eb9018b08fb87a833d3643208
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 122edfd4ccd06ed62e071691f421d2aeef8002b4
+ms.sourcegitcommit: 488cc779fc71377d9371e7a14356113e9c7eff17
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975674"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913505"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的自訂格式器
 
 作者：[Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core MVC 內建支援在 Web API 中使用 JSON 或 XML 的資料交換。 本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。
+ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料交換。 [模型](xref:mvc/models/model-binding)系結會使用輸入格式器。 輸出格式器是用來[格式化回應](xref:web-api/advanced/formatting)。
+
+架構會為 JSON 和 XML 提供內建的輸入和輸出格式器。 它會為純文字提供內建的輸出格式器，但不會提供純文字的輸入格式器。
+
+本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。 如需純文字的自訂輸入格式器範例，請參閱 GitHub 上的[TextPlainInputFormatter](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.Formatters/TextPlainInputFormatter.cs) 。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-custom-formatters"></a>自訂格式器的使用時機
 
-如果您希望[內容交涉](xref:web-api/advanced/formatting#content-negotiation)程序支援某些內容類型，但內建的格式器 (JSON 和 XML) 不支援這些內容類型時，即可使用自訂的格式器。
+當您想要讓[內容協調](xref:web-api/advanced/formatting#content-negotiation)流程支援內建格式器不支援的內容類型時，請使用自訂格式器。
 
 例如，您有些 Web API 用戶端可以處理 [Protobuf](https://github.com/google/protobuf) 格式，因此您希望搭配使用 Protobuf 與這些用戶端，以便更有效率。 或者，您可能會想要 Web API 以 [vCard](https://wikipedia.org/wiki/VCard) 格式 (其為交換連絡人資料的常用格式) 來傳送連絡人名稱和地址。 本文提供的範例應用程式會實作簡單的 vCard 格式器。
 
@@ -104,7 +108,6 @@ ASP.NET Core MVC 內建支援在 Web API 中使用 JSON 或 XML 的資料交換�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [GitHub 上的純文字格式器範例程式碼。](https://github.com/aspnet/Entropy/tree/master/samples/Mvc.Formatters)
 * [此文件的範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)，其會實作簡單的 vCard 輸入和輸出格式器。 應用程式會讀取並寫入 vCard，如下範例所示：
 
 ```

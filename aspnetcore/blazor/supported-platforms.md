@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/01/2019
 uid: blazor/supported-platforms
-ms.openlocfilehash: 01f3a55a8536feedf713e07ea3724a0bc51e7c63
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
+ms.openlocfilehash: 042fbb1b2c7f92b7dc6443319f3f195a12a55adc
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "68948248"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963888"
 ---
 # <a name="aspnet-core-blazor-supported-platforms"></a>ASP.NET Core Blazor 支援的平臺
 
@@ -20,29 +20,29 @@ ms.locfileid: "68948248"
 
 ## <a name="browser-requirements"></a>瀏覽器需求
 
-### <a name="blazor-client-side"></a>Blazor 用戶端
+### <a name="blazor-webassembly"></a>Blazor WebAssembly
 
-| 瀏覽器                          | 版本               |
+| Browser                          | Version               |
 | -------------------------------- | :-------------------: |
 | Microsoft Edge                   | 目前               |
 | Mozilla Firefox                  | 目前               |
-| Google Chrome, 包括 Android | 目前               |
-| Safari, 包括 iOS            | 目前               |
+| Google Chrome，包括 Android | 目前               |
+| Safari，包括 iOS            | 目前               |
 | Microsoft Internet Explorer      | 不受支援&dagger; |
 
 &dagger;Microsoft Internet Explorer 不支援[WebAssembly](https://webassembly.org)。
 
-### <a name="blazor-server-side"></a>Blazor 伺服器端
+### <a name="blazor-server"></a>Blazor 伺服器
 
-| 瀏覽器                          | 版本    |
+| Browser                          | Version    |
 | -------------------------------- | :--------: |
 | Microsoft Edge                   | 目前    |
 | Mozilla Firefox                  | 目前    |
-| Google Chrome, 包括 Android | 目前    |
-| Safari, 包括 iOS            | 目前    |
+| Google Chrome，包括 Android | 目前    |
+| Safari，包括 iOS            | 目前    |
 | Microsoft Internet Explorer      | 英寸&dagger; |
 
-&dagger;需要額外的 polyfills (例如, 可透過[Polyfill.io](https://polyfill.io/v3/)配套新增承諾)。
+&dagger;需要額外的 polyfills （例如，可透過[Polyfill.io](https://polyfill.io/v3/)配套新增承諾）。
 
 ## <a name="additional-resources"></a>其他資源
 

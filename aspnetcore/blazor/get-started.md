@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: blazor/get-started
-ms.openlocfilehash: 7bff1d38de77adfa1835ee37f4e5f8912ba629cc
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: e33ca421676caa20c823faf635442eda2a40ba65
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800319"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964018"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -40,7 +40,7 @@ ms.locfileid: "70800319"
 
    4 \。 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
-   5 \。 如需 Blazor 用戶端體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器端的體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需伺服器端和用戶端的兩個 Blazor 裝載模型的詳細資訊，請<xref:blazor/hosting-models>參閱。
+   5 \。 如需 Blazor 的 WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型的詳細資訊，請參閱<xref:blazor/hosting-models> *Blazor Server*和*Blazor WebAssembly*。
 
    6。 按下 **F5** 即可執行應用程式。
 
@@ -53,25 +53,25 @@ ms.locfileid: "70800319"
 
    2 \。 安裝[ C# Visual Studio Code 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)功能的最新版本。
 
-   3 \。 如需 Blazor 用戶端體驗，請在命令 shell 中執行下列命令：
+   3 \。 如需 Blazor 的 WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
       ```console
       dotnet new blazorwasm -o WebApplication1
       ```
 
-      如需 Blazor 伺服器端的體驗，請在命令 shell 中執行下列命令：
+      如需 Blazor 伺服器體驗，請在命令 shell 中執行下列命令：
 
       ```console
       dotnet new blazorserver -o WebApplication1
       ```
 
-      如需伺服器端和用戶端的兩個 Blazor 裝載模型的詳細資訊，請<xref:blazor/hosting-models>參閱。
+      如需這兩個 Blazor 裝載模型的詳細資訊，請參閱<xref:blazor/hosting-models> *Blazor Server*和*Blazor WebAssembly*。
 
    4 \。 在 Visual Studio Code 中開啟 [ *WebApplication1* ] 資料夾。
 
-   5 \。 若為 Blazor 伺服器端專案，IDE 會要求您新增資產以建立和對專案進行偵錯工具。 選取 [是]。
+   5 \。 若為 Blazor 伺服器專案，IDE 會要求您新增資產以建立和對專案進行偵錯工具。 選取 [是]。
 
-   6。 如果使用 Blazor 伺服器端應用程式，請使用 Visual Studio Code 偵錯工具來執行應用程式。 如果使用 Blazor 用戶端應用程式，請從`dotnet run`應用程式的專案資料夾執行。
+   6。 如果使用 Blazor 伺服器應用程式，請使用 Visual Studio Code 偵錯工具來執行應用程式。 如果使用 Blazor WebAssembly 應用程式，請`dotnet run`從應用程式的專案資料夾執行。
 
    7 \。 在瀏覽器中，巡覽至 `https://localhost:5001`。
 
@@ -85,7 +85,7 @@ ms.locfileid: "70800319"
 
    3\. In the sidebar, select **.NET Core** > **App**.
 
-   4\. For a Blazor server-side experience, select the **Blazor Server App** template. For a Blazor client-side experience, select the **Blazor WebAssembly App** template. Select **Next**. For information on the two Blazor hosting models, server-side and client-side, see <xref:blazor/hosting-models>.
+   4\. For a Blazor Server experience, select the **Blazor Server App** template. For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. For information on the two Blazor hosting models, *Blazor Server* and *Blazor WebAssembly*, see <xref:blazor/hosting-models>.
 
    5\. The **Target Framework** defaults to **.NET Core 3.0**. Select **Next**.
 
@@ -97,7 +97,7 @@ ms.locfileid: "70800319"
 
    # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
-   如需 Blazor 用戶端體驗，請在命令 shell 中執行下列命令：
+   如需 Blazor 的 WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
    ```console
    dotnet new blazorwasm -o WebApplication1
@@ -105,7 +105,7 @@ ms.locfileid: "70800319"
    dotnet run
    ```
 
-   如需 Blazor 伺服器端的體驗，請在命令 shell 中執行下列命令：
+   如需 Blazor 伺服器體驗，請在命令 shell 中執行下列命令：
 
    ```console
    dotnet new blazorserver -o WebApplication1
@@ -113,7 +113,7 @@ ms.locfileid: "70800319"
    dotnet run
    ```
 
-   如需伺服器端和用戶端的兩個 Blazor 裝載模型的詳細資訊，請<xref:blazor/hosting-models>參閱。
+   如需這兩個 Blazor 裝載模型的詳細資訊，請參閱<xref:blazor/hosting-models> *Blazor Server*和*Blazor WebAssembly*。
 
    在瀏覽器中，巡覽至 `https://localhost:5001`。
 

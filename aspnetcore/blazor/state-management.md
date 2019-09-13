@@ -1,24 +1,24 @@
 ---
 title: ASP.NET Core Blazor 狀態管理
 author: guardrex
-description: 瞭解如何在 Blazor 伺服器端應用程式中保存狀態。
+description: 瞭解如何在 Blazor 伺服器應用程式中保存狀態。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: blazor/state-management
-ms.openlocfilehash: 000736dde53670d1df76f41cc7cf4f95ef48800a
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: e1c3b030f466a820d49c36839d7ee26bb7cea4d3
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800348"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963858"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
 
-Blazor 伺服器端是可設定狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在伺服器的記憶體中。 
+Blazor 伺服器是可設定狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在伺服器的記憶體中。 
 
 保留給使用者線路的狀態範例包括：
 
@@ -27,7 +27,7 @@ Blazor 伺服器端是可設定狀態的應用程式架構。 在大部分的情
 * 保留在範圍為線路之相依性[插入（DI）](xref:fundamentals/dependency-injection)服務實例中的資料。
 
 > [!NOTE]
-> 本文解決 Blazor 伺服器端應用程式中的狀態持續性。 Blazor 用戶端應用程式可以利用[瀏覽器中的用戶端狀態持續](#client-side-in-the-browser)性，但需要的自訂解決方案或協力廠商套件超出本文的範圍。
+> 本文解決 Blazor 伺服器應用程式中的狀態持續性。 Blazor WebAssembly apps 可以利用[瀏覽器中的用戶端狀態持續](#client-side-in-the-browser)性，但需要的自訂解決方案或協力廠商套件超出本文的範圍。
 
 ## <a name="blazor-circuits"></a>Blazor 線路
 
@@ -62,7 +62,7 @@ Blazor 伺服器端是可設定狀態的應用程式架構。 在大部分的情
 
 ## <a name="where-to-persist-state"></a>保存狀態的位置
 
-有三個常見的位置存在於 Blazor 伺服器端應用程式中的保存狀態。 每個方法最適合不同的案例，而且有不同的注意事項：
+在 Blazor 伺服器應用程式中保存狀態有三個常見的位置。 每個方法最適合不同的案例，而且有不同的注意事項：
 
 * [資料庫中的伺服器端](#server-side-in-a-database)
 * [URL](#url)
@@ -100,7 +100,7 @@ Blazor 伺服器端是可設定狀態的應用程式架構。 在大部分的情
 對於使用者主動建立的暫時性資料，常見的備份存放區是瀏覽器的`localStorage`和`sessionStorage`集合。 若已放棄迴圈，則不需要應用程式來管理或清除已儲存的狀態，這是優於伺服器端儲存體的優點。
 
 > [!NOTE]
-> 本節中的「用戶端」指的是瀏覽器中的用戶端案例，而不是[Blazor 用戶端裝載模型](xref:blazor/hosting-models#client-side)。 `localStorage`和`sessionStorage`可以用在 Blazor 用戶端應用程式中，但只能透過撰寫自訂程式碼或使用協力廠商套件來使用。
+> 本節中的「用戶端」指的是瀏覽器中的用戶端案例，而不是[Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)。 `localStorage`和`sessionStorage`可以在 Blazor WebAssembly apps 中使用，但只能透過撰寫自訂程式碼或使用協力廠商套件。
 
 `localStorage`和`sessionStorage`的差異如下：
 
@@ -118,7 +118,7 @@ Blazor 伺服器端是可設定狀態的應用程式架構。 在大部分的情
 
 * 類似于使用伺服器端資料庫，載入和儲存資料是非同步。
 * 與伺服器端資料庫不同的是，預先呈現期間無法使用儲存體，因為在預先呈現階段期間，瀏覽器中不存在要求的頁面。
-* 儲存幾 kb 的資料可合理保存 Blazor 伺服器端應用程式。 除了幾 kb 以外，您還必須考慮效能上的影響，因為資料是透過網路載入和儲存。
+* 儲存幾 kb 的資料可合理保存 Blazor 伺服器應用程式。 除了幾 kb 以外，您還必須考慮效能上的影響，因為資料是透過網路載入和儲存。
 * 使用者可能會看到或篡改資料。 ASP.NET Core[資料保護](xref:security/data-protection/introduction)可以降低風險。
 
 ## <a name="third-party-browser-storage-solutions"></a>協力廠商瀏覽器儲存解決方案
@@ -138,7 +138,7 @@ Blazor 伺服器端是可設定狀態的應用程式架構。 在大部分的情
 
 若要安裝`Microsoft.AspNetCore.ProtectedBrowserStorage`套件：
 
-1. 在 Blazor 伺服器端應用程式專案中，新增[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)的套件參考。
+1. 在 Blazor 伺服器應用程式專案中，新增[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)的套件參考。
 1. 在最上層的 HTML 中（例如，在預設專案範本的*Pages/_Host. cshtml*檔案中），新增下列`<script>`標記：
 
    ```html

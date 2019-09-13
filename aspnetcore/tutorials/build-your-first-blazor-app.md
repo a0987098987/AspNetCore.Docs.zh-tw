@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: ea1111f43b6b8b4f47061056e8ad8d505f92dba6
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: ffbdf6991830d554fc508d1d2fe8e4b9586210df
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800485"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964183"
 ---
 # <a name="build-your-first-blazor-app"></a>組建第一個 Blazor 應用程式
 
@@ -57,7 +57,7 @@ ms.locfileid: "70800485"
 
 1. 透過將 `<Counter />` 元素新增至 `Index` 元件 (*Index.razor*)，來將 `Counter` 元件新增至應用程式的 `Index` 元件。
 
-   如果您使用 Blazor 用戶端應用程式來進行此體驗，`SurveyPrompt` 元件會由 `Index` 元件使用。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用 Blazor 伺服器端應用程式進行此體驗，請將 `<Counter />` 元素新增至 `Index` 元件：
+   如果您使用 Blazor WebAssembly 來進行這項體驗， `SurveyPrompt` `Index`元件會使用元件。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用 Blazor 伺服器應用程式來進行此體驗，請將`<Counter />`元素新增`Index`至元件：
 
    *Pages/Index.razor*：
 
@@ -101,7 +101,7 @@ ms.locfileid: "70800485"
 
 檢查 `FetchData` 元件的指示詞。
 
-如果使用 Razor 伺服器端應用程式，就會將 `WeatherForecastService` 服務註冊為 [singleton](xref:fundamentals/dependency-injection#service-lifetimes)，讓一個服務執行個體可供整個應用程式使用。 `@inject` 指示詞會用來將 `WeatherForecastService` 服務的執行個體插入元件。
+如果使用 Blazor 伺服器應用程式， `WeatherForecastService`服務會註冊為[singleton](xref:fundamentals/dependency-injection#service-lifetimes)，因此服務的一個實例可在整個應用程式中使用。 `@inject` 指示詞會用來將 `WeatherForecastService` 服務的執行個體插入元件。
 
 *Pages/FetchData.razor*：
 
@@ -111,7 +111,7 @@ ms.locfileid: "70800485"
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-如果使用 Blazor 用戶端應用程式，即會插入 `HttpClient` 以從 *wwwroot/sameple-data* 資料夾的 *weather.json* 檔案中取得天氣預報資料：
+如果使用 Blazor WebAssembly 應用程式， `HttpClient`則會插入以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料：
 
 *Pages/FetchData.razor*：
 

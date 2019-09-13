@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 5a56bbda5bb7727c7dbeaed7f2a91d0dcb6e7e71
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 26c8fcf56ab8ca68aeca93560785fc6c1144ab86
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773592"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963681"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor"></a>裝載及部署 ASP.NET Core Blazor
 
@@ -40,7 +40,7 @@ dotnet publish -c Release
 
 發佈應用程式會觸發專案相依性的[還原](/dotnet/core/tools/dotnet-restore)並[建置](/dotnet/core/tools/dotnet-build)專案，然後才會建立資產以供部署。 在建置程序中，會移除未使用的方法和組件，減少應用程式的下載大小和載入時間。
 
-Blazor 用戶端應用程式會發佈至 /bin/Release/{目標 FRAMEWORK}/publish/{組件名稱}/dist 資料夾。 Blazor 伺服器端應用程式會發佈至 */bin/Release/{目標 FRAMEWORK}/publish* 資料夾。
+Blazor WebAssembly 應用程式會發佈至 */BIN/RELEASE/{TARGET FRAMEWORK}/PUBLISH/{ASSEMBLY NAME}/dist*資料夾。 Blazor 伺服器應用程式會發佈至 */BIN/RELEASE/{TARGET FRAMEWORK}/publish*資料夾。
 
 該資料夾中的資產均會部署至 Web 伺服器。 部署可能是手動或自動的程序，視使用中的開發工具而定。
 
@@ -87,5 +87,5 @@ dotnet run --pathbase=/CoolApp
 
 如需部署指導方針，請參閱下列主題：
 
-* <xref:host-and-deploy/blazor/client-side>
-* <xref:host-and-deploy/blazor/server-side>
+* <xref:host-and-deploy/blazor/webassembly>
+* <xref:host-and-deploy/blazor/server>

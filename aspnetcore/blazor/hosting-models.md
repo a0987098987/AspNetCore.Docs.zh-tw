@@ -1,63 +1,63 @@
 ---
 title: ASP.NET Core Blazor 裝載模型
 author: guardrex
-description: 瞭解 Blazor 用戶端和伺服器端裝載模型。
+description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/07/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 7880affa59af1fa4fc47aee3dc98ae9aa53729af
-ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
+ms.openlocfilehash: 6e225e490e54e44877fa27573ff9b513c8dcd9a3
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70878338"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964050"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
 依[Daniel Roth](https://github.com/danroth27)
 
-Blazor 是一種 web 架構，設計用來在瀏覽器中以[WebAssembly](https://webassembly.org/)為基礎的 .net 執行時間（*Blazor 客戶*端）或伺服器端在 ASP.NET Core （*Blazor 伺服器端*）中執行用戶端。 無論裝載模型為何，應用程式和元件模型*都相同*。
+Blazor 是一種 web 架構，設計用來在瀏覽器中以[WebAssembly](https://webassembly.org/)為基礎的 .net 執行時間（*Blazor WebAssembly*）或伺服器端在 ASP.NET Core （*Blazor server*）中執行用戶端。 無論裝載模型為何，應用程式和元件模型*都相同*。
 
 若要為本文所述的主控模型建立專案，請參閱<xref:blazor/get-started>。
 
-## <a name="client-side"></a>用戶端
+## <a name="blazor-webassembly"></a>Blazor WebAssembly
 
 Blazor 的主要裝載模型是在 WebAssembly 的瀏覽器中執行用戶端。 Blazor 應用程式、其相依性，和 .NET 執行階段會下載至瀏覽器中。 應用程式會直接在瀏覽器 UI 執行緒上執行。 UI 更新和事件處理會在同一個進程中進行。 應用程式的資產會以靜態檔案的形式部署至 web 伺服器或服務，以提供靜態內容給用戶端。
 
-![Blazor 用戶端：Blazor 應用程式會在瀏覽器內的 UI 執行緒上執行。](hosting-models/_static/client-side.png)
+![Blazor WebAssembly：Blazor 應用程式會在瀏覽器內的 UI 執行緒上執行。](hosting-models/_static/blazor-webassembly.png)
 
 若要使用用戶端裝載模型來建立 Blazor 應用程式，請使用**Blazor WebAssembly 應用程式**範本（[dotnet new blazorwasm](/dotnet/core/tools/dotnet-new)）。
 
-選取 [ **Blazor WebAssembly 應用程式**] 範本之後，您可以選擇將應用程式設定為使用 ASP.NET Core 後端，方法是選取 [ **ASP.NET Core**裝載] 核取方塊（[dotnet] [[新增 blazorwasm-](/dotnet/core/tools/dotnet-new)裝載）]。 ASP.NET Core 應用程式會將 Blazor 應用程式提供給用戶端。 Blazor 用戶端應用程式可以使用 Web API 呼叫或[SignalR](xref:signalr/introduction)，透過網路與伺服器互動。
+選取 [ **Blazor WebAssembly 應用程式**] 範本之後，您可以選擇將應用程式設定為使用 ASP.NET Core 後端，方法是選取 [ **ASP.NET Core**裝載] 核取方塊（[dotnet] [[新增 blazorwasm-](/dotnet/core/tools/dotnet-new)裝載）]。 ASP.NET Core 應用程式會將 Blazor 應用程式提供給用戶端。 Blazor WebAssembly 應用程式可以使用 Web API 呼叫或[SignalR](xref:signalr/introduction)，透過網路與伺服器互動。
 
 這些範本包含處理下列內容的*blazor. webassembly*腳本：
 
 * 下載 .NET 執行時間、應用程式和應用程式的相依性。
 * 初始化執行時間以執行應用程式。
 
-用戶端裝載模型提供數個優點：
+Blazor WebAssembly 裝載模型提供數個優點：
 
 * 沒有 .NET 伺服器端相依性。 應用程式會在下載至用戶端之後完全正常運作。
 * 用戶端資源和功能都可以充分運用。
 * 工作會從伺服器卸載至用戶端。
 * 不需要 ASP.NET Core web 伺服器來裝載應用程式。 無伺服器部署案例可行（例如，從 CDN 提供應用程式）。
 
-用戶端裝載有缺點：
+Blazor WebAssembly 裝載有缺點：
 
 * 應用程式僅限於瀏覽器的功能。
 * 需要支援的用戶端硬體和軟體（例如 WebAssembly 支援）。
 * 下載大小較大，且應用程式需要較長的時間來載入。
 * .NET 執行時間和工具支援較不成熟。 例如， [.NET Standard](/dotnet/standard/net-standard)支援和偵錯工具中有限制。
 
-## <a name="server-side"></a>伺服器端
+## <a name="blazor-server"></a>Blazor 伺服器
 
-使用伺服器端裝載模型，應用程式會在伺服器上從 ASP.NET Core 應用程式中執行。 UI 更新、事件處理及 JavaScript 呼叫會透過 [SignalR](xref:signalr/introduction) 連線處理。
+透過 Blazor 伺服器裝載模型，應用程式會在伺服器上從 ASP.NET Core 應用程式中執行。 UI 更新、事件處理及 JavaScript 呼叫會透過 [SignalR](xref:signalr/introduction) 連線處理。
 
-![瀏覽器會透過 SignalR 連線，與伺服器上的應用程式互動（裝載于 ASP.NET Core 應用程式內）。](hosting-models/_static/server-side.png)
+![瀏覽器會透過 SignalR 連線，與伺服器上的應用程式互動（裝載于 ASP.NET Core 應用程式內）。](hosting-models/_static/blazor-server.png)
 
-若要使用伺服器端裝載模型來建立 Blazor 應用程式，請使用 ASP.NET Core **Blazor 伺服器應用程式**範本（[dotnet new blazorserver](/dotnet/core/tools/dotnet-new)）。 ASP.NET Core 應用程式會裝載伺服器端應用程式，並建立用戶端連接的 SignalR 端點。
+若要使用 Blazor 伺服器裝載模型來建立 Blazor 應用程式，請使用 ASP.NET Core **Blazor Server 應用程式**範本（[dotnet new blazorserver](/dotnet/core/tools/dotnet-new)）。 ASP.NET Core 應用程式會裝載 Blazor 伺服器應用程式，並建立用戶端連接的 SignalR 端點。
 
 ASP.NET Core 應用程式會參考要新增`Startup`的應用程式類別：
 
@@ -66,15 +66,15 @@ ASP.NET Core 應用程式會參考要新增`Startup`的應用程式類別：
 
 *Blazor*腳本&dagger;會建立用戶端連接。 應用程式會負責保存和還原所需的應用程式狀態（例如，萬一網路連線中斷時）。
 
-伺服器端裝載模型提供數個優點：
+Blazor 伺服器裝載模型提供數個優點：
 
-* 下載大小明顯小於用戶端應用程式，且應用程式載入速度會更快。
+* 下載大小明顯小於 Blazor WebAssembly 應用程式，而應用程式載入速度會更快。
 * 應用程式會充分利用伺服器功能，包括使用任何 .NET Core 相容的 Api。
 * 伺服器上的 .NET Core 是用來執行應用程式，因此現有的 .NET 工具（例如，「偵測」）會如預期般運作。
-* 支援瘦用戶端。 例如，伺服器端應用程式會使用不支援 WebAssembly 的瀏覽器，以及在資源限制的裝置上。
+* 支援瘦用戶端。 例如，Blazor 伺服器應用程式適用于不支援 WebAssembly 的瀏覽器，以及在資源受限的裝置上。
 * 應用程式的 .NET/C#程式碼基底（包括應用程式的元件代碼）不會提供給用戶端。
 
-伺服器端裝載有缺點：
+有 Blazor 伺服器裝載的缺點：
 
 * 通常會有較高的延遲。 每個使用者互動都牽涉到網路躍點。
 * 沒有離線支援。 如果用戶端連線失敗，應用程式就會停止運作。
@@ -104,7 +104,7 @@ Blazor 中的 UI 更新會由下列觸發：
 
 圖形為重新顯示，且會計算 UI*差異*（差異）。 這項差異是更新用戶端上的 UI 所需的最小一組 DOM 編輯。 差異會以二進位格式傳送至用戶端，並由瀏覽器套用。
 
-元件會在使用者從用戶端導覽出去之後處置。 當使用者與元件互動時，元件的狀態（服務、資源）必須保留在伺服器的記憶體中。 因為許多元件的狀態可能會由伺服器同時維護，所以記憶體耗盡是必須解決的問題。 如需有關如何撰寫 Blazor 伺服器應用程式以確保最佳使用伺服器記憶體的指引，請參閱<xref:security/blazor/server-side>。
+元件會在使用者從用戶端導覽出去之後處置。 當使用者與元件互動時，元件的狀態（服務、資源）必須保留在伺服器的記憶體中。 因為許多元件的狀態可能會由伺服器同時維護，所以記憶體耗盡是必須解決的問題。 如需有關如何撰寫 Blazor 伺服器應用程式以確保最佳使用伺服器記憶體的指引，請參閱<xref:security/blazor/server>。
 
 ### <a name="circuits"></a>獲得
 
@@ -120,16 +120,16 @@ UI 延遲是從起始的動作到 UI 更新時間所花費的時間。 較小的
 
 對於僅限於私人商業網路的企業營運應用程式，通常會 imperceptible 因網路延遲而對使用者的延遲所造成的影響。 對於透過網際網路部署的應用程式，使用者的延遲可能會很明顯，尤其是在地理位置廣泛散佈的使用者時。
 
-記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。 如需詳細資訊，請參閱 <xref:security/blazor/server-side>。
+記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。 如需詳細資訊，請參閱 <xref:security/blazor/server>。
 
-Blazor 伺服器應用程式應該經過優化，藉由減少網路延遲和記憶體使用量，將 UI 延遲降到最低。 如需測量網路延遲的方法， <xref:host-and-deploy/blazor/server-side#measure-network-latency>請參閱。 如需 SignalR 和 Blazor 的詳細資訊，請參閱：
+Blazor 伺服器應用程式應該經過優化，藉由減少網路延遲和記憶體使用量，將 UI 延遲降到最低。 如需測量網路延遲的方法， <xref:host-and-deploy/blazor/server#measure-network-latency>請參閱。 如需 SignalR 和 Blazor 的詳細資訊，請參閱：
 
-* <xref:host-and-deploy/blazor/server-side>
-* <xref:security/blazor/server-side>
+* <xref:host-and-deploy/blazor/server>
+* <xref:security/blazor/server>
 
 ### <a name="reconnection-to-the-same-server"></a>重新連接到相同的伺服器
 
-Blazor 伺服器端應用程式需要伺服器的作用中 SignalR 連接。 如果連接中斷，應用程式會嘗試重新連線到伺服器。 只要用戶端的狀態仍在記憶體中，用戶端會話就會繼續，而不會失去狀態。
+Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果連接中斷，應用程式會嘗試重新連線到伺服器。 只要用戶端的狀態仍在記憶體中，用戶端會話就會繼續，而不會失去狀態。
 
 當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。 若要自訂 UI，請在 *_Host*的 [ `id` Razor 頁面] 中，以`components-reconnect-modal`做為它的來定義元素。 用戶端會根據連接的狀態，使用下列其中一個 CSS 類別來更新這個元素：
 
@@ -139,7 +139,7 @@ Blazor 伺服器端應用程式需要伺服器的作用中 SignalR 連接。 如
 
 ### <a name="stateful-reconnection-after-prerendering"></a>預呈現後的具狀態重新連接
 
-在建立伺服器的用戶端連接之前，預設會設定 Blazor 伺服器端應用程式，以預先呈現伺服器上的 UI。 這是在 *_Host* Razor 頁面中設定：
+在建立伺服器的用戶端連接之前，預設會設定 Blazor 伺服器應用程式，以預先呈現伺服器上的 UI。 這是在 *_Host* Razor 頁面中設定：
 
 ```cshtml
 <body>
@@ -156,8 +156,8 @@ Blazor 伺服器端應用程式需要伺服器的作用中 SignalR 連接。 如
 
 | `RenderMode`        | 描述 |
 | ------------------- | ----------- |
-| `ServerPrerendered` | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器端應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 不支援參數。 |
-| `Server`            | 呈現 Blazor 伺服器端應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 不支援參數。 |
+| `ServerPrerendered` | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 不支援參數。 |
+| `Server`            | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 不支援參數。 |
 | `Static`            | 將元件轉譯為靜態 HTML。 支援參數。 |
 
 不支援從靜態 HTML 網頁轉譯伺服器元件。
@@ -209,9 +209,9 @@ Blazor 伺服器端應用程式需要伺服器的作用中 SignalR 連接。 如
 
 [!INCLUDE[](~/includes/blazor-prerendering.md)]
 
-### <a name="configure-the-signalr-client-for-blazor-server-side-apps"></a>設定適用于 Blazor 伺服器端應用程式的 SignalR 用戶端
+### <a name="configure-the-signalr-client-for-blazor-server-apps"></a>設定適用于 Blazor 伺服器應用程式的 SignalR 用戶端
 
-有時候，您需要設定 Blazor 伺服器端應用程式所使用的 SignalR 用戶端。 例如，您可能會想要在 SignalR 用戶端上設定記錄，以診斷連線問題。
+有時候，您需要設定 Blazor 伺服器應用程式所使用的 SignalR 用戶端。 例如，您可能會想要在 SignalR 用戶端上設定記錄，以診斷連線問題。
 
 在*Pages/_Host. cshtml*檔案中設定 SignalR 用戶端：
 

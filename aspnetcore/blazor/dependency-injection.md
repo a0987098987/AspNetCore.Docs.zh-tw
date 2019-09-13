@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/dependency-injection
-ms.openlocfilehash: 0b48cd0cbe14d2b07627f56ab78611bbd3209fa1
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: 6c01fdc390cc9150cf81673c717b73c4b10c31f1
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800390"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963972"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
 
@@ -61,7 +61,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 存留期 | 描述 |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Blazor WebAssembly apps 目前不具有 DI 範圍的概念。 `Scoped`註冊的服務的行為`Singleton`就像服務一樣。 不過，伺服器端裝載模型支援`Scoped`存留期。 在 Blazor 伺服器應用程式中，限定範圍的服務註冊的範圍是*連接*。 因此，即使目前的意圖是在瀏覽器中執行用戶端，使用範圍服務也適用于應該範圍設定為目前使用者的服務。 |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Blazor WebAssembly apps 目前不具有 DI 範圍的概念。 `Scoped`註冊的服務的行為`Singleton`就像服務一樣。 不過，Blazor 伺服器裝載模型支援`Scoped`存留期。 在 Blazor 伺服器應用程式中，限定範圍的服務註冊的範圍是*連接*。 因此，即使目前的意圖是在瀏覽器中執行用戶端，使用範圍服務也適用于應該範圍設定為目前使用者的服務。 |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI 會建立服務的*單一實例*。 所有需要`Singleton`服務的元件都會收到相同服務的實例。 |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | 每當元件從服務容器取得`Transient`服務的實例時，就會收到服務的*新實例*。 |
 

@@ -1,48 +1,62 @@
 ---
-title: ASP.NET Core SignalR.NET 用戶端
+title: ASP.NET Core SignalR .NET 用戶端
 author: bradygaster
-description: ASP.NET Core SignalR.NET 用戶端的相關資訊
+description: ASP.NET Core SignalR .NET 用戶端的相關資訊
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 04/17/2019
+ms.date: 09/13/2019
 uid: signalr/dotnet-client
-ms.openlocfilehash: 97c553874cb1e4b678fa0e5cd65074f135193861
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: d2755f652e734bad6447ddeb9a82345dcde25b28
+ms.sourcegitcommit: 805f625d16d74e77f02f5f37326e5aceafcb78e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67153119"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70985487"
 ---
-# <a name="aspnet-core-signalr-net-client"></a>ASP.NET Core SignalR.NET 用戶端
+# <a name="aspnet-core-signalr-net-client"></a>ASP.NET Core SignalR .NET 用戶端
 
-ASP.NET Core SignalR.NET 用戶端程式庫可讓您與 SignalR 中樞從.NET 應用程式進行通訊。
+ASP.NET Core SignalR .NET 用戶端程式庫可讓您從 .NET 應用程式與 SignalR 中樞進行通訊。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-這篇文章中的程式碼範例是使用 ASP.NET Core SignalR.NET 用戶端的 WPF 應用程式。
+本文中的程式碼範例是使用 ASP.NET Core SignalR .NET 用戶端的 WPF 應用程式。
 
-## <a name="install-the-signalr-net-client-package"></a>安裝 SignalR.NET 用戶端套件
+## <a name="install-the-signalr-net-client-package"></a>安裝 SignalR .NET 用戶端封裝
 
-`Microsoft.AspNetCore.SignalR.Client`封裝所需的.NET 用戶端連線到 SignalR 中樞。 若要安裝用戶端程式庫，請執行下列命令**Package Manager Console**視窗：
+.NET 用戶端必須要有[AspNetCore. SignalR. Client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)封裝，才能連接到 SignalR hub。
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+若要安裝用戶端程式庫，請在 [**套件管理員主控台**] 視窗中執行下列命令：
 
 ```powershell
 Install-Package Microsoft.AspNetCore.SignalR.Client
 ```
 
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+若要安裝用戶端程式庫，請在命令 shell 中執行下列命令：
+
+```console
+dotnet add package Microsoft.AspNetCore.SignalR.Client
+```
+
+---
+
 ## <a name="connect-to-a-hub"></a>連線至中樞
 
-若要建立連線，建立`HubConnectionBuilder`並呼叫`Build`。 中樞 URL、 通訊協定、 傳輸類型、 記錄層級、 標頭，以及其他選項可以在建立連接時設定。 設定任何所需的選項，插入的任何`HubConnectionBuilder`方法`Build`。 啟動與連線`StartAsync`。
+若要建立連接，請`HubConnectionBuilder`建立，並呼叫。 `Build` 建立連接時，可以設定中樞 URL、通訊協定、傳輸類型、記錄層級、標頭和其他選項。 將任何`HubConnectionBuilder` `Build`方法插入，以設定任何必要的選項。 開始與`StartAsync`的連接。
 
 [!code-csharp[Build hub connection](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_MainWindowClass&highlight=15-17,39)]
 
-## <a name="handle-lost-connection"></a>中斷連線的控制代碼
+## <a name="handle-lost-connection"></a>處理遺失的連接
 
 ::: moniker range=">= aspnetcore-3.0"
 
 ### <a name="automatically-reconnect"></a>自動重新連線
 
-<xref:Microsoft.AspNetCore.SignalR.Client.HubConnection>可以設定為自動重新連線使用`WithAutomaticReconnect`方法<xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>。 它不會依預設會自動重新連線。
+可以設定為使用上<xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>的`WithAutomaticReconnect`方法自動重新連接。 <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection> 根據預設, 它不會自動重新連線。
 
 ```csharp
 HubConnection connection= new HubConnectionBuilder()
@@ -51,9 +65,9 @@ HubConnection connection= new HubConnectionBuilder()
     .Build();
 ```
 
-如果沒有任何參數，`WithAutomaticReconnect()`設定用戶端一直等候 0、 2、 10 和 30 秒，分別是然後再嘗試每次重新連接嘗試，四個失敗的嘗試之後停止。
+如果沒有任何參數`WithAutomaticReconnect()` , 則會先將用戶端設定為等待0、2、10和30秒, 再嘗試重新連線嘗試, 並在四次失敗嘗試之後停止。
 
-開始任何重新連接嘗試之前`HubConnection`會轉為`HubConnectionState.Reconnecting`狀態，並引發`Reconnecting`事件。  這便有機會時警告使用者的連線已遺失，並在停用 UI 項目。 非互動式應用程式可以啟動佇列，或卸除訊息。
+開始任何重新連線嘗試之前， `HubConnection`會轉換`HubConnectionState.Reconnecting`成狀態並引發`Reconnecting`事件。  這會讓使用者有機會警告連接已遺失, 並停用 UI 元素。 非互動式應用程式可以開始佇列或卸載訊息。
 
 ```csharp
 connection.Reconnecting += error =>
@@ -67,12 +81,12 @@ connection.Reconnecting += error =>
 };
 ```
 
-如果用戶端順利重新連線內的前四個的試`HubConnection`就會轉換回`Connected`狀態，並引發`Reconnected`事件。 這便有機會以通知的使用者已重新建立連線，以及從佇列中清除任何已排入佇列的訊息。
+如果用戶端在前四次嘗試中成功重新連接`HubConnection` ，將會轉換回`Connected`狀態並引發`Reconnected`事件。 這讓您有機會通知使用者，已重新建立連線，並清除佇列的任何訊息。
 
-連線看起來完全新增到伺服器，因為新`ConnectionId`將提供給`Reconnected`事件處理常式。
+由於連接看起來就是伺服器的新連線，因此`ConnectionId`會提供`Reconnected`新的給事件處理常式。
 
 > [!WARNING]
-> `Reconnected`事件處理常式`connectionId`參數將為 null 如果`HubConnection`已設定為[略過交涉](xref:signalr/configuration#configure-client-options)。
+> 如果已設定為`connectionId` [略過協商](xref:signalr/configuration#configure-client-options)，事件處理常式的參數將會是null。`Reconnected` `HubConnection`
 
 ```csharp
 connection.Reconnected += connectionId =>
@@ -86,7 +100,7 @@ connection.Reconnected += connectionId =>
 };
 ```
 
-`WithAutomaticReconnect()` 不會設定`HubConnection`重試初始啟動時失敗，因此需要手動處理啟動失敗：
+`WithAutomaticReconnect()`不會將`HubConnection`設定為重試初始啟動失敗, 因此必須手動處理啟動失敗:
 
 ```csharp
 public static async Task<bool> ConnectWithRetryAsync(HubConnection connection, CancellationToken token)
@@ -114,7 +128,7 @@ public static async Task<bool> ConnectWithRetryAsync(HubConnection connection, C
 }
 ```
 
-如果用戶端不會成功地重新連接內的前四個的試`HubConnection`會轉為`Disconnected`狀態，並引發<xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed>事件。 這便有機會嘗試以手動方式重新連線，或通知使用者此連接已經永久遺失。
+如果用戶端在前四次嘗試中未成功重新連接`HubConnection` ，將會轉換`Disconnected`成狀態並引發<xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed>事件。 這可讓您手動嘗試重新開機連線，或通知使用者已永久失去連接。
 
 ```csharp
 connection.Closed += error =>
@@ -127,7 +141,7 @@ connection.Closed += error =>
 };
 ```
 
-若要設定自訂的數字的中斷連線之前重新連接嘗試，或變更重新連線延遲時間，`WithAutomaticReconnect`接受代表數字以毫秒為單位的延遲開始每次重新連接嘗試之前等候的陣列。
+為了在中斷連線或變更重新連線時間之前設定自訂的重新連線嘗試次數`WithAutomaticReconnect` , 會接受代表在開始每次重新連線嘗試之前等待的延遲 (以毫秒為單位) 的數位陣列。
 
 ```csharp
 HubConnection connection= new HubConnectionBuilder()
@@ -138,19 +152,19 @@ HubConnection connection= new HubConnectionBuilder()
     // .WithAutomaticReconnect(new[] { TimeSpan.Zero, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(30) }) yields the default behavior.
 ```
 
-上述範例會設定`HubConnection`啟動連線將會中斷之後，立即嘗試重新連線。 這也是預設組態，則為 true。
+上述範例`HubConnection`會將設定為, 以便在連接中斷之後立即開始嘗試重新連接。 這也適用于預設設定。
 
-如果第一次重新連接嘗試失敗，第二次重新連接嘗試將也會立即開始而不是等到 2 秒，像是在預設組態中。
+如果第一次重新連線嘗試失敗, 第二次重新連線嘗試也會立即開始, 而不是等待2秒, 就像在預設設定中一樣。
 
-如果第二次重新連接嘗試失敗，第三次重新連接嘗試就會啟動在 10 秒，這又是預設組態類似。
+如果第二次重新連線嘗試失敗, 第三次重新連線嘗試會在10秒內啟動, 這再次是預設設定。
 
-自訂行為然後分離一次的預設行為的第三個重新連接嘗試失敗之後停止。 在預設組態會是一個更重新連接嘗試在另一個 30 秒內。
+自訂行為接著會在第三次重新連線嘗試失敗之後停止，再次從預設行為分歧。 在預設設定中，會在另一個30秒內重新連線嘗試一次。
 
-如果您想要更進一步控制時間和數字的自動重新連線嘗試`WithAutomaticReconnect`物件，實作會接受`IRetryPolicy`介面，其具有單一方法，名為`NextRetryDelay`。
+如果您想要更充分掌控自動重新連線嘗試的時間和數目, `WithAutomaticReconnect`則會接受一個物件`IRetryPolicy`來執行介面, 此介面具有名`NextRetryDelay`為的單一方法。
 
-`NextRetryDelay` 接受單一引數與類型`RetryContext`。 `RetryContext`有三個屬性： `PreviousRetryCount`，`ElapsedTime`並`RetryReason`哪些是`long`，則`TimeSpan`和`Exception`分別。 第一次重新連接嘗試中前, 兩者`PreviousRetryCount`和`ElapsedTime`將會是零，和`RetryReason`會導致連接遺失的例外狀況。 每個失敗的重試嘗試之後， `PreviousRetryCount` ，將會遞增`ElapsedTime`將會更新以反映所花費的時間重新連線到目前為止，和`RetryReason`會導致上次重新連接嘗試失敗的例外狀況。
+`NextRetryDelay`接受具有類型`RetryContext`的單一引數。 `PreviousRetryCount` `RetryReason` 有三`Exception`個屬性: `ElapsedTime`、和分別為、`TimeSpan`和。 `long` `RetryContext` 第一次重新連線嘗試之前`PreviousRetryCount` ， `ElapsedTime`和都`RetryReason`是零，而且會是造成連接遺失的例外狀況。 每次重試`PreviousRetryCount`失敗之後，將會遞增一次， `ElapsedTime`將會更新以反映到目前為止的重新連接所花費的時間`RetryReason` ，而且將會是導致上次重新連線嘗試失敗的例外狀況。
 
-`NextRetryDelay` 必須傳回可能是 TimeSpan，代表時間等待下一次重新連接嘗試或`null`如果`HubConnection`應該停止重新連線。
+`NextRetryDelay`必須傳回代表下次重新連線嘗試之前等候時間的 TimeSpan，或`null`如果應該停止重新連接， `HubConnection`則為。
 
 ```csharp
 public class RandomRetryPolicy : IRetryPolicy
@@ -181,22 +195,22 @@ HubConnection connection = new HubConnectionBuilder()
     .Build();
 ```
 
-或者，您可以在其中撰寫程式碼所示的手動將重新連線您的用戶端[以手動方式重新連線](#manually-reconnect)。
+或者, 您可以撰寫程式碼, 以手動方式重新連線用戶端, 如[手動重新](#manually-reconnect)連線中所示。
 
 ::: moniker-end
 
-### <a name="manually-reconnect"></a>以手動方式重新連線
+### <a name="manually-reconnect"></a>手動重新連線
 
 ::: moniker range="< aspnetcore-3.0"
 
 > [!WARNING]
-> 在 3.0 之前，SignalR 的.NET 用戶端不會自動重新連線。 您必須撰寫程式碼會以手動方式重新連接您的用戶端。
+> 在3.0 之前，SignalR 的 .NET 用戶端不會自動重新連線。 您必須撰寫程式碼會以手動方式重新連接您的用戶端。
 
 ::: moniker-end
 
-使用<xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed>事件回應失去連線。 例如，您可能要自動重新連線。
+<xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed>使用事件來回應遺失的連接。 例如，您可能會想要自動重新連接。
 
-`Closed`事件要求委派，會傳回`Task`，可讓非同步程式碼執行，而不使用`async void`。 為了滿足中的委派簽章`Closed`執行以同步方式傳回的事件處理常式`Task.CompletedTask`:
+事件需要傳回的`Task`委派，這可讓非同步程式碼在不使用`async void`的情況下執行。 `Closed` 若要在同步執行的`Closed`事件處理常式中滿足委派簽章`Task.CompletedTask`，請傳回：
 
 ```csharp
 connection.Closed += (error) => {
@@ -205,38 +219,38 @@ connection.Closed += (error) => {
 };
 ```
 
-非同步支援的主要原因是，因此您可以重新連線。 正在開始連線是非同步動作。
+非同步支援的主要原因是為了讓您可以重新開機連接。 啟動連接是非同步動作。
 
-在 `Closed`連線，會重新啟動的處理常式考慮一些隨機的延遲，避免多載在伺服器上，等待，如下列範例所示：
+在重新開機連接的處理常式中，請考慮等候一些隨機延遲，以避免伺服器超載，如下列範例所示：`Closed`
 
 [!code-csharp[Use Closed event handler to automate reconnection](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_ClosedRestart)]
 
 ## <a name="call-hub-methods-from-client"></a>從用戶端呼叫中樞方法
 
-`InvokeAsync` 集線器上呼叫方法。 將中樞方法的名稱和任何定義於中樞方法的引數傳遞`InvokeAsync`。 SignalR 是非同步，因此請使用`async`和`await`時進行呼叫。
+`InvokeAsync`在中樞上呼叫方法。 將中樞方法名稱和 hub 方法中定義的任何引數傳遞`InvokeAsync`至。 SignalR 是非同步，因此`async`在`await`進行呼叫時，請使用和。
 
 [!code-csharp[InvokeAsync method](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_InvokeAsync)]
 
-`InvokeAsync`方法會傳回`Task`伺服器方法傳回時，其完成。 傳回值，如果有的話，可作為結果`Task`。 在伺服器上的方法所擲回任何例外狀況會產生錯誤`Task`。 使用`await`等待完成要求伺服器方法的語法和`try...catch`語法來處理錯誤。
+`InvokeAsync` 方法`Task`會傳回在伺服器方法傳回時完成的。 傳回值（如果有的話）會當做的結果`Task`提供。 伺服器上方法所擲回的任何例外狀況都會產生`Task`錯誤。 請`await`使用語法來等候伺服器方法完成，並`try...catch`使用語法來處理錯誤。
 
-`SendAsync`方法會傳回`Task`其完成，當訊息已傳送到伺服器。 未提供任何傳回的值，因為這`Task`不等候，直到伺服器在方法完成。 用戶端傳送訊息時擲回任何例外狀況會產生錯誤`Task`。 使用`await`和`try...catch`語法來處理將錯誤傳送。
+`SendAsync` 方法`Task`會傳回在訊息傳送至伺服器時完成的。 因為這`Task`不會等到伺服器方法完成，所以不會提供傳回值。 傳送訊息時，在用戶端擲回的任何例外狀況`Task`都會產生錯誤。 使用`await` 和`try...catch`語法來處理傳送錯誤。
 
 > [!NOTE]
-> 如果您使用 Azure SignalR 服務中*無伺服器模式*，您無法從用戶端呼叫中樞方法。 如需詳細資訊，請參閱 < [SignalR 服務文件](/azure/azure-signalr/signalr-concept-serverless-development-config)。
+> 如果您使用*無伺服器模式*中的 Azure SignalR Service, 就無法從用戶端呼叫中樞方法。 如需詳細資訊, 請參閱[SignalR Service 檔](/azure/azure-signalr/signalr-concept-serverless-development-config)。
 
 ## <a name="call-client-methods-from-hub"></a>用戶端方法呼叫來自中樞
 
-定義的方法使用呼叫中樞`connection.On`之後建置，但之前啟動連線。
+定義中樞在建立`connection.On`之後，但在開始連接之前所呼叫的方法。
 
 [!code-csharp[Define client methods](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_ConnectionOn)]
 
-在上述程式碼`connection.On`會在伺服器端程式碼會呼叫使用時執行`SendAsync`方法。
+當伺服器端程式`connection.On`代碼`SendAsync`使用方法呼叫它時，中的上述程式碼就會執行。
 
 [!code-csharp[Call client method](dotnet-client/sample/signalrchat/hubs/chathub.cs?name=snippet_SendMessage)]
 
 ## <a name="error-handling-and-logging"></a>錯誤處理和記錄
 
-處理錯誤的 try / catch 陳述式。 檢查`Exception`物件，以判斷發生錯誤之後所採取的適當動作。
+使用 try catch 語句來處理錯誤。 `Exception`檢查物件，以判斷錯誤發生後要採取的適當動作。
 
 [!code-csharp[Logging](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_ErrorHandling)]
 
@@ -245,4 +259,4 @@ connection.Closed += (error) => {
 * [中樞](xref:signalr/hubs)
 * [JavaScript 用戶端](xref:signalr/javascript-client)
 * [發佈至 Azure](xref:signalr/publish-to-azure-web-app)
-* [Azure SignalR 服務的無伺服器文件](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [Azure SignalR Service 無伺服器檔](/azure/azure-signalr/signalr-concept-serverless-development-config)

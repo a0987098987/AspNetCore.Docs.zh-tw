@@ -5,14 +5,14 @@ description: 瞭解如何在 Blazor 中使用表單和欄位驗證案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/04/2019
+ms.date: 09/15/2019
 uid: blazor/forms-validation
-ms.openlocfilehash: 4531ef44a7df3951f3bebdf88e597165fa75f06e
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 2fd76db90a53e328cd2ac8f452fba58365db0384
+ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310334"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71011064"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 
@@ -194,7 +194,7 @@ public class Starship
 
 ## <a name="validation-support"></a>驗證支援
 
-元件會使用資料批註，將驗證支援附加至`EditContext`串聯的。 `DataAnnotationsValidator` 目前需要使用資料批註來啟用驗證的支援，但我們正考慮將它設為您可以覆寫的預設行為。 若要使用不同于資料批註的驗證系統，請`DataAnnotationsValidator`將取代為自訂的執行。 ASP.NET Core 的執行可用於參考來源中的檢查：[DataAnnotationsValidator](https://github.com/aspnet/AspNetCore/blob/master/src/Components/Components/src/Forms/DataAnnotationsValidator.cs)/[AddDataAnnotationsValidation](https://github.com/aspnet/AspNetCore/blob/master/src/Components/Components/src/Forms/EditContextDataAnnotationsExtensions.cs)。 *ASP.NET Core 的執行會在預覽版本期間受到快速更新的需要。*
+元件會使用資料批註，將驗證支援附加至`EditContext`串聯的。 `DataAnnotationsValidator` 若要啟用使用資料批註進行驗證的支援，則需要這個明確的手勢。 若要使用不同于資料批註的驗證系統，請`DataAnnotationsValidator`將取代為自訂的執行。 ASP.NET Core 的執行可用於參考來源中的檢查：[DataAnnotationsValidator](https://github.com/aspnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs)/[AddDataAnnotationsValidation](https://github.com/aspnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs)。
 
 此`ValidationSummary`元件會摘要所有驗證訊息，類似于[驗證摘要](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)標籤協助程式。
 

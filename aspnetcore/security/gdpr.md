@@ -1,149 +1,151 @@
 ---
-title: 支援 ASP.NET Core 中的一般資料保護規定 (GDPR)
+title: ASP.NET Core 中的一般資料保護規定（GDPR）支援
 author: rick-anderson
-description: 了解如何存取 ASP.NET Core web 應用程式中的 GDPR 擴充點。
+description: 瞭解如何存取 ASP.NET Core web 應用程式中的 GDPR 擴充點。
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: security/gdpr
-ms.openlocfilehash: 01d2f8943c0995c1400122b89c4ca7c459a85279
-ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
+ms.openlocfilehash: 1086c22c2f3c27373d8cb779f4b1d8eb6792ec2e
+ms.sourcegitcommit: 2fa0ffe82a47c7317efc9ea908365881cbcb8ed7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724574"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69572881"
 ---
-# <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a><span data-ttu-id="c02c0-103">ASP.NET Core 中的歐盟一般資料保護規定 (GDPR) 支援</span><span class="sxs-lookup"><span data-stu-id="c02c0-103">EU General Data Protection Regulation (GDPR) support in ASP.NET Core</span></span>
+# <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a><span data-ttu-id="e4988-103">ASP.NET Core 中的 EU 一般資料保護規定（GDPR）支援</span><span class="sxs-lookup"><span data-stu-id="e4988-103">EU General Data Protection Regulation (GDPR) support in ASP.NET Core</span></span>
 
-<span data-ttu-id="c02c0-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="c02c0-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="e4988-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="e4988-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="c02c0-105">ASP.NET Core 提供 Api 和範本，以協助符合某些[歐盟一般資料保護規定 (GDPR)](https://www.eugdpr.org/)需求：</span><span class="sxs-lookup"><span data-stu-id="c02c0-105">ASP.NET Core provides APIs and templates to help meet some of the [EU General Data Protection Regulation (GDPR)](https://www.eugdpr.org/) requirements:</span></span>
+<span data-ttu-id="e4988-105">ASP.NET Core 提供 Api 和範本，以協助符合[歐盟一般資料保護規定（GDPR）](https://www.eugdpr.org/)需求：</span><span class="sxs-lookup"><span data-stu-id="e4988-105">ASP.NET Core provides APIs and templates to help meet some of the [EU General Data Protection Regulation (GDPR)](https://www.eugdpr.org/) requirements:</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* <span data-ttu-id="c02c0-106">專案範本包括擴充點以及附加虛設常式的標記，您可以使用您的隱私權與 cookie 的使用原則來取代。</span><span class="sxs-lookup"><span data-stu-id="c02c0-106">The project templates include extension points and stubbed markup that you can replace with your privacy and cookie use policy.</span></span>
-* <span data-ttu-id="c02c0-107">*Pages/Privacy.cshtml*頁面或*Views/Home/Privacy.cshtml*檢視會提供頁面的詳細說明您網站的隱私權原則。</span><span class="sxs-lookup"><span data-stu-id="c02c0-107">The *Pages/Privacy.cshtml* page or *Views/Home/Privacy.cshtml* view provides a page to detail your site's privacy policy.</span></span>
+* <span data-ttu-id="e4988-106">專案範本包括擴充點和 stub 標記，您可以將其取代為您的隱私權和 cookie 使用原則。</span><span class="sxs-lookup"><span data-stu-id="e4988-106">The project templates include extension points and stubbed markup that you can replace with your privacy and cookie use policy.</span></span>
+* <span data-ttu-id="e4988-107">[ *Pages/隱私權*] 頁面或 [ *Views/Home/隱私權*] 視圖會提供頁面，以詳細說明網站的隱私權原則。</span><span class="sxs-lookup"><span data-stu-id="e4988-107">The *Pages/Privacy.cshtml* page or *Views/Home/Privacy.cshtml* view provides a page to detail your site's privacy policy.</span></span>
 
-<span data-ttu-id="c02c0-108">若要啟用預設的 cookie 同意功能的中 ASP.NET Core 3.0 範本產生應用程式中的 ASP.NET Core 2.2 範本中找到：</span><span class="sxs-lookup"><span data-stu-id="c02c0-108">To enable the default cookie consent feature like that found in the ASP.NET Core 2.2 templates in an ASP.NET Core 3.0 template generated app:</span></span>
+<span data-ttu-id="e4988-108">若要啟用預設的 cookie 同意功能，例如在 ASP.NET Core 3.0 範本產生的應用程式的 ASP.NET Core 2.2 範本中找到：</span><span class="sxs-lookup"><span data-stu-id="e4988-108">To enable the default cookie consent feature like that found in the ASP.NET Core 2.2 templates in an ASP.NET Core 3.0 template generated app:</span></span>
 
-* <span data-ttu-id="c02c0-109">新增[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)太`Startup.ConfigureServices`並[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)至`Startup.Configure`:</span><span class="sxs-lookup"><span data-stu-id="c02c0-109">Add [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) too `Startup.ConfigureServices` and [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) to `Startup.Configure`:</span></span>
+* <span data-ttu-id="e4988-109">將`using Microsoft.AspNetCore.Http`加入 using 指示詞的清單。</span><span class="sxs-lookup"><span data-stu-id="e4988-109">Add `using Microsoft.AspNetCore.Http` to the list of using directives.</span></span>
+* <span data-ttu-id="e4988-110">將[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)新增`Startup.ConfigureServices`至，並`Startup.Configure`[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) 至：</span><span class="sxs-lookup"><span data-stu-id="e4988-110">Add [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) to `Startup.ConfigureServices` and [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) to `Startup.Configure`:</span></span>
 
   [!code-csharp[Main](gdpr/sample/RP3.0/Startup.cs?name=snippet1&highlight=12-19,38)]
 
-* <span data-ttu-id="c02c0-110">加入至 cookie 同意局部 *_Layout.cshtml*檔案：</span><span class="sxs-lookup"><span data-stu-id="c02c0-110">Add the cookie consent partial to the *_Layout.cshtml* file:</span></span>
+* <span data-ttu-id="e4988-111">將 cookie 同意部分新增至 *_Layout*檔案：</span><span class="sxs-lookup"><span data-stu-id="e4988-111">Add the cookie consent partial to the *_Layout.cshtml* file:</span></span>
 
   [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_Layout.cshtml?name=snippet&highlight=4)]
 
-* <span data-ttu-id="c02c0-111">新增 *\_CookieConsentPartial.cshtml*檔案加入專案：</span><span class="sxs-lookup"><span data-stu-id="c02c0-111">Add the *\_CookieConsentPartial.cshtml* file to the project:</span></span>
+* <span data-ttu-id="e4988-112">將 CookieConsentPartial 檔案新增至專案： *\_*</span><span class="sxs-lookup"><span data-stu-id="e4988-112">Add the *\_CookieConsentPartial.cshtml* file to the project:</span></span>
 
   [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_CookieConsentPartial.cshtml)]
 
-* <span data-ttu-id="c02c0-112">選取此文章以了解 cookie 同意功能的 ASP.NET Core 2.2 版本。</span><span class="sxs-lookup"><span data-stu-id="c02c0-112">Select the ASP.NET Core 2.2 version of this article to read about the cookie consent feature.</span></span>
+* <span data-ttu-id="e4988-113">選取本文的 ASP.NET Core 2.2 版本，以閱讀 cookie 同意功能的相關資訊。</span><span class="sxs-lookup"><span data-stu-id="e4988-113">Select the ASP.NET Core 2.2 version of this article to read about the cookie consent feature.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.2"
 
-* <span data-ttu-id="c02c0-113">專案範本包括擴充點以及附加虛設常式的標記，您可以使用您的隱私權與 cookie 的使用原則來取代。</span><span class="sxs-lookup"><span data-stu-id="c02c0-113">The project templates include extension points and stubbed markup that you can replace with your privacy and cookie use policy.</span></span>
-* <span data-ttu-id="c02c0-114">Cookie 同意功能可讓您要求 （和追蹤） 同意從您的使用者，用來儲存個人資訊。</span><span class="sxs-lookup"><span data-stu-id="c02c0-114">A cookie consent feature allows you to ask for (and track) consent from your users for storing personal information.</span></span> <span data-ttu-id="c02c0-115">如果使用者尚未同意資料收集，而且應用程式有[CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded)設定為`true`，非必要 cookie 不傳送至瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="c02c0-115">If a user hasn't consented to data collection and the app has [CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded) set to `true`, non-essential cookies aren't sent to the browser.</span></span>
-* <span data-ttu-id="c02c0-116">Cookie 可以標示為重要。</span><span class="sxs-lookup"><span data-stu-id="c02c0-116">Cookies can be marked as essential.</span></span> <span data-ttu-id="c02c0-117">基本的 cookie 會傳送至瀏覽器中，即使當使用者尚未同意，並已停用追蹤。</span><span class="sxs-lookup"><span data-stu-id="c02c0-117">Essential cookies are sent to the browser even when the user hasn't consented and tracking is disabled.</span></span>
-* <span data-ttu-id="c02c0-118">[TempData 和工作階段 cookie](#tempdata)追蹤已停用時不會運作。</span><span class="sxs-lookup"><span data-stu-id="c02c0-118">[TempData and Session cookies](#tempdata) aren't functional when tracking is disabled.</span></span>
-* <span data-ttu-id="c02c0-119">[身分識別管理](#pd)頁面提供連結讓您下載及刪除使用者資料。</span><span class="sxs-lookup"><span data-stu-id="c02c0-119">The [Identity manage](#pd) page provides a link to download and delete user data.</span></span>
+* <span data-ttu-id="e4988-114">專案範本包括擴充點和 stub 標記，您可以將其取代為您的隱私權和 cookie 使用原則。</span><span class="sxs-lookup"><span data-stu-id="e4988-114">The project templates include extension points and stubbed markup that you can replace with your privacy and cookie use policy.</span></span>
+* <span data-ttu-id="e4988-115">Cookie 同意功能可讓您向使用者要求（並追蹤）同意，以儲存個人資訊。</span><span class="sxs-lookup"><span data-stu-id="e4988-115">A cookie consent feature allows you to ask for (and track) consent from your users for storing personal information.</span></span> <span data-ttu-id="e4988-116">如果使用者尚未同意資料收集，而應用程式已將[CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded)設定為`true`，則不會將非必要的 cookie 傳送至瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="e4988-116">If a user hasn't consented to data collection and the app has [CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded) set to `true`, non-essential cookies aren't sent to the browser.</span></span>
+* <span data-ttu-id="e4988-117">Cookie 可以標示為必要。</span><span class="sxs-lookup"><span data-stu-id="e4988-117">Cookies can be marked as essential.</span></span> <span data-ttu-id="e4988-118">即使使用者尚未同意，也會將必要的 cookie 傳送至瀏覽器，而且會停用追蹤。</span><span class="sxs-lookup"><span data-stu-id="e4988-118">Essential cookies are sent to the browser even when the user hasn't consented and tracking is disabled.</span></span>
+* <span data-ttu-id="e4988-119">停用追蹤時[，TempData 和會話 cookie](#tempdata)無法正常運作。</span><span class="sxs-lookup"><span data-stu-id="e4988-119">[TempData and Session cookies](#tempdata) aren't functional when tracking is disabled.</span></span>
+* <span data-ttu-id="e4988-120">[身分[識別管理](#pd)] 頁面提供下載和刪除使用者資料的連結。</span><span class="sxs-lookup"><span data-stu-id="e4988-120">The [Identity manage](#pd) page provides a link to download and delete user data.</span></span>
 
-<span data-ttu-id="c02c0-120">[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)可讓您測試大部分的 GDPR 擴充點，而且 Api 新增至 ASP.NET Core 2.1 範本。</span><span class="sxs-lookup"><span data-stu-id="c02c0-120">The [sample app](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) allows you test most of the GDPR extension points and APIs added to the ASP.NET Core 2.1 templates.</span></span> <span data-ttu-id="c02c0-121">請參閱[讀我檔案](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)檔案以供測試的指示。</span><span class="sxs-lookup"><span data-stu-id="c02c0-121">See the [ReadMe](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) file for testing instructions.</span></span>
+<span data-ttu-id="e4988-121">[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)可讓您測試新增至 ASP.NET Core 2.1 範本的大部分 GDPR 擴充點和 api。</span><span class="sxs-lookup"><span data-stu-id="e4988-121">The [sample app](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) allows you test most of the GDPR extension points and APIs added to the ASP.NET Core 2.1 templates.</span></span> <span data-ttu-id="e4988-122">如需測試指示，請參閱[自述](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)檔。</span><span class="sxs-lookup"><span data-stu-id="e4988-122">See the [ReadMe](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) file for testing instructions.</span></span>
 
-<span data-ttu-id="c02c0-122">[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="c02c0-122">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="e4988-123">[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="e4988-123">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a><span data-ttu-id="c02c0-123">在範本產生的程式碼中的 ASP.NET Core GDPR 支援</span><span class="sxs-lookup"><span data-stu-id="c02c0-123">ASP.NET Core GDPR support in template-generated code</span></span>
+## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a><span data-ttu-id="e4988-124">在範本產生的程式碼中 ASP.NET Core GDPR 支援</span><span class="sxs-lookup"><span data-stu-id="e4988-124">ASP.NET Core GDPR support in template-generated code</span></span>
 
-<span data-ttu-id="c02c0-124">Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：</span><span class="sxs-lookup"><span data-stu-id="c02c0-124">Razor Pages and MVC projects created with the project templates include the following GDPR support:</span></span>
+<span data-ttu-id="e4988-125">使用專案範本建立的 Razor Pages 和 MVC 專案包含下列 GDPR 支援：</span><span class="sxs-lookup"><span data-stu-id="e4988-125">Razor Pages and MVC projects created with the project templates include the following GDPR support:</span></span>
 
-* <span data-ttu-id="c02c0-125">[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)並[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)中所設定`Startup`類別。</span><span class="sxs-lookup"><span data-stu-id="c02c0-125">[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) and [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) are set in the `Startup` class.</span></span>
-* <span data-ttu-id="c02c0-126">*\_CookieConsentPartial.cshtml* [部分檢視](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)。</span><span class="sxs-lookup"><span data-stu-id="c02c0-126">The *\_CookieConsentPartial.cshtml* [partial view](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper).</span></span> <span data-ttu-id="c02c0-127">**接受**按鈕包含在這個檔案。</span><span class="sxs-lookup"><span data-stu-id="c02c0-127">An **Accept** button is included in this file.</span></span> <span data-ttu-id="c02c0-128">當使用者按一下**接受**按鈕，同意將 cookie 提供。</span><span class="sxs-lookup"><span data-stu-id="c02c0-128">When the user clicks the **Accept** button, consent to store cookies is provided.</span></span>
-* <span data-ttu-id="c02c0-129">*Pages/Privacy.cshtml*頁面或*Views/Home/Privacy.cshtml*檢視會提供頁面的詳細說明您網站的隱私權原則。</span><span class="sxs-lookup"><span data-stu-id="c02c0-129">The *Pages/Privacy.cshtml* page or *Views/Home/Privacy.cshtml* view provides a page to detail your site's privacy policy.</span></span> <span data-ttu-id="c02c0-130">*\_CookieConsentPartial.cshtml*檔案會產生 [隱私權] 頁面的連結。</span><span class="sxs-lookup"><span data-stu-id="c02c0-130">The *\_CookieConsentPartial.cshtml* file generates a link to the Privacy page.</span></span>
-* <span data-ttu-id="c02c0-131">使用個別使用者帳戶建立的應用程式，[管理] 頁面會提供連結來下載並刪除[使用者個人資料](#pd)。</span><span class="sxs-lookup"><span data-stu-id="c02c0-131">For apps created with individual user accounts, the Manage page provides links to download and delete [personal user data](#pd).</span></span>
+* <span data-ttu-id="e4988-126">[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)和[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)是在`Startup`類別中設定。</span><span class="sxs-lookup"><span data-stu-id="e4988-126">[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) and [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) are set in the `Startup` class.</span></span>
+* <span data-ttu-id="e4988-127">*\_CookieConsentPartial*的[部分視圖](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)。</span><span class="sxs-lookup"><span data-stu-id="e4988-127">The *\_CookieConsentPartial.cshtml* [partial view](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper).</span></span> <span data-ttu-id="e4988-128">此檔案包含 [**接受**] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="e4988-128">An **Accept** button is included in this file.</span></span> <span data-ttu-id="e4988-129">當使用者按一下 [**接受**] 按鈕時，就會提供同意存放區 cookie。</span><span class="sxs-lookup"><span data-stu-id="e4988-129">When the user clicks the **Accept** button, consent to store cookies is provided.</span></span>
+* <span data-ttu-id="e4988-130">[ *Pages/隱私權*] 頁面或 [ *Views/Home/隱私權*] 視圖會提供頁面，以詳細說明網站的隱私權原則。</span><span class="sxs-lookup"><span data-stu-id="e4988-130">The *Pages/Privacy.cshtml* page or *Views/Home/Privacy.cshtml* view provides a page to detail your site's privacy policy.</span></span> <span data-ttu-id="e4988-131">CookieConsentPartial 會產生 [隱私權] 頁面的連結。 *\_*</span><span class="sxs-lookup"><span data-stu-id="e4988-131">The *\_CookieConsentPartial.cshtml* file generates a link to the Privacy page.</span></span>
+* <span data-ttu-id="e4988-132">針對使用個別使用者帳戶所建立的應用程式，[管理] 頁面會提供下載和刪除[個人使用者資料](#pd)的連結。</span><span class="sxs-lookup"><span data-stu-id="e4988-132">For apps created with individual user accounts, the Manage page provides links to download and delete [personal user data](#pd).</span></span>
 
-### <a name="cookiepolicyoptions-and-usecookiepolicy"></a><span data-ttu-id="c02c0-132">CookiePolicyOptions 和 UseCookiePolicy</span><span class="sxs-lookup"><span data-stu-id="c02c0-132">CookiePolicyOptions and UseCookiePolicy</span></span>
+### <a name="cookiepolicyoptions-and-usecookiepolicy"></a><span data-ttu-id="e4988-133">CookiePolicyOptions 和 UseCookiePolicy</span><span class="sxs-lookup"><span data-stu-id="e4988-133">CookiePolicyOptions and UseCookiePolicy</span></span>
 
-<span data-ttu-id="c02c0-133">[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)會初始化`Startup.ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="c02c0-133">[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) are initialized in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="e4988-134">[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)在中`Startup.ConfigureServices`初始化：</span><span class="sxs-lookup"><span data-stu-id="e4988-134">[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) are initialized in `Startup.ConfigureServices`:</span></span>
 
 [!code-csharp[Main](gdpr/sample/Startup.cs?name=snippet1&highlight=14-20)]
 
-<span data-ttu-id="c02c0-134">[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)呼叫`Startup.Configure`:</span><span class="sxs-lookup"><span data-stu-id="c02c0-134">[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) is called in `Startup.Configure`:</span></span>
+<span data-ttu-id="e4988-135">[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)是在中`Startup.Configure`呼叫：</span><span class="sxs-lookup"><span data-stu-id="e4988-135">[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) is called in `Startup.Configure`:</span></span>
 
 [!code-csharp[](gdpr/sample/Startup.cs?name=snippet1&highlight=51)]
 
-### <a name="cookieconsentpartialcshtml-partial-view"></a><span data-ttu-id="c02c0-135">\_CookieConsentPartial.cshtml partial view</span><span class="sxs-lookup"><span data-stu-id="c02c0-135">\_CookieConsentPartial.cshtml partial view</span></span>
+### <a name="_cookieconsentpartialcshtml-partial-view"></a><span data-ttu-id="e4988-136">\_CookieConsentPartial. cshtml 部分視圖</span><span class="sxs-lookup"><span data-stu-id="e4988-136">\_CookieConsentPartial.cshtml partial view</span></span>
 
-<span data-ttu-id="c02c0-136">*\_CookieConsentPartial.cshtml*部分檢視：</span><span class="sxs-lookup"><span data-stu-id="c02c0-136">The *\_CookieConsentPartial.cshtml* partial view:</span></span>
+<span data-ttu-id="e4988-137">*\_CookieConsentPartial*的部分視圖：</span><span class="sxs-lookup"><span data-stu-id="e4988-137">The *\_CookieConsentPartial.cshtml* partial view:</span></span>
 
 [!code-html[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
 
-<span data-ttu-id="c02c0-137">這個部分中：</span><span class="sxs-lookup"><span data-stu-id="c02c0-137">This partial:</span></span>
+<span data-ttu-id="e4988-138">這部分：</span><span class="sxs-lookup"><span data-stu-id="e4988-138">This partial:</span></span>
 
-* <span data-ttu-id="c02c0-138">取得使用者追蹤的狀態。</span><span class="sxs-lookup"><span data-stu-id="c02c0-138">Obtains the state of tracking for the user.</span></span> <span data-ttu-id="c02c0-139">如果應用程式設定為需要同意，使用者必須同意之前可以追蹤 cookie。</span><span class="sxs-lookup"><span data-stu-id="c02c0-139">If the app is configured to require consent, the user must consent before cookies can be tracked.</span></span> <span data-ttu-id="c02c0-140">如果需要同意的話，cookie 同意不固定在所建立的導覽列頂端 *\_Layout.cshtml*檔案。</span><span class="sxs-lookup"><span data-stu-id="c02c0-140">If consent is required, the cookie consent panel is fixed at top of the navigation bar created by the *\_Layout.cshtml* file.</span></span>
-* <span data-ttu-id="c02c0-141">提供 HTML`<p>`項目，以摘述您的隱私權與 cookie 使用的原則。</span><span class="sxs-lookup"><span data-stu-id="c02c0-141">Provides an HTML `<p>` element to summarize your privacy and cookie use policy.</span></span>
-* <span data-ttu-id="c02c0-142">提供隱私權頁面或檢視，其中詳細說明您網站的隱私權原則的連結。</span><span class="sxs-lookup"><span data-stu-id="c02c0-142">Provides a link to Privacy page or view where you can detail your site's privacy policy.</span></span>
+* <span data-ttu-id="e4988-139">取得使用者的追蹤狀態。</span><span class="sxs-lookup"><span data-stu-id="e4988-139">Obtains the state of tracking for the user.</span></span> <span data-ttu-id="e4988-140">如果應用程式已設定為需要同意，使用者必須先同意，才能追蹤 cookie。</span><span class="sxs-lookup"><span data-stu-id="e4988-140">If the app is configured to require consent, the user must consent before cookies can be tracked.</span></span> <span data-ttu-id="e4988-141">如果需要同意，cookie 同意面板會固定在配置 *\_. cshtml*檔案所建立的導覽列上方。</span><span class="sxs-lookup"><span data-stu-id="e4988-141">If consent is required, the cookie consent panel is fixed at top of the navigation bar created by the *\_Layout.cshtml* file.</span></span>
+* <span data-ttu-id="e4988-142">提供 HTML `<p>`元素來總結您的隱私權與 cookie 使用原則。</span><span class="sxs-lookup"><span data-stu-id="e4988-142">Provides an HTML `<p>` element to summarize your privacy and cookie use policy.</span></span>
+* <span data-ttu-id="e4988-143">提供 [隱私權] 頁面或 [流覽] 的連結，您可以在其中詳細說明網站的隱私權原則。</span><span class="sxs-lookup"><span data-stu-id="e4988-143">Provides a link to Privacy page or view where you can detail your site's privacy policy.</span></span>
 
-## <a name="essential-cookies"></a><span data-ttu-id="c02c0-143">基本的 cookie</span><span class="sxs-lookup"><span data-stu-id="c02c0-143">Essential cookies</span></span>
+## <a name="essential-cookies"></a><span data-ttu-id="e4988-144">基本 cookie</span><span class="sxs-lookup"><span data-stu-id="e4988-144">Essential cookies</span></span>
 
-<span data-ttu-id="c02c0-144">如果同意將 cookie 未提供，標示為重要的 cookie 傳送至瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="c02c0-144">If consent to store cookies hasn't been provided, only cookies marked essential are sent to the browser.</span></span> <span data-ttu-id="c02c0-145">下列程式碼可讓您基本的 cookie:</span><span class="sxs-lookup"><span data-stu-id="c02c0-145">The following code makes a cookie essential:</span></span>
+<span data-ttu-id="e4988-145">如果尚未提供同意存放區 cookie，則只會將標示為必要的 cookie 傳送至瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="e4988-145">If consent to store cookies hasn't been provided, only cookies marked essential are sent to the browser.</span></span> <span data-ttu-id="e4988-146">下列程式碼會讓 cookie 變得很重要：</span><span class="sxs-lookup"><span data-stu-id="e4988-146">The following code makes a cookie essential:</span></span>
 
 [!code-csharp[Main](gdpr/sample/RP2.2/Pages/Cookie.cshtml.cs?name=snippet1&highlight=5)]
 
 <a name="tempdata"></a>
 
-### <a name="tempdata-provider-and-session-state-cookies-arent-essential"></a><span data-ttu-id="c02c0-146">TempData 提供者和工作階段狀態的 cookie 並不一定</span><span class="sxs-lookup"><span data-stu-id="c02c0-146">TempData provider and session state cookies aren't essential</span></span>
+### <a name="tempdata-provider-and-session-state-cookies-arent-essential"></a><span data-ttu-id="e4988-147">TempData 提供者和會話狀態 cookie 不是必要的</span><span class="sxs-lookup"><span data-stu-id="e4988-147">TempData provider and session state cookies aren't essential</span></span>
 
-<span data-ttu-id="c02c0-147">[TempData 提供者](xref:fundamentals/app-state#tempdata)cookie 不必要的元素。</span><span class="sxs-lookup"><span data-stu-id="c02c0-147">The [TempData provider](xref:fundamentals/app-state#tempdata) cookie isn't essential.</span></span> <span data-ttu-id="c02c0-148">如果已停用追蹤，TempData 提供者將無法運作。</span><span class="sxs-lookup"><span data-stu-id="c02c0-148">If tracking is disabled, the TempData provider isn't functional.</span></span> <span data-ttu-id="c02c0-149">若要停用追蹤時，請啟用 TempData 提供者，將 TempData cookie 標示為以`Startup.ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="c02c0-149">To enable the TempData provider when tracking is disabled, mark the TempData cookie as essential in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="e4988-148">[TempData 提供者](xref:fundamentals/app-state#tempdata)cookie 並不重要。</span><span class="sxs-lookup"><span data-stu-id="e4988-148">The [TempData provider](xref:fundamentals/app-state#tempdata) cookie isn't essential.</span></span> <span data-ttu-id="e4988-149">如果停用追蹤，TempData 提供者就無法運作。</span><span class="sxs-lookup"><span data-stu-id="e4988-149">If tracking is disabled, the TempData provider isn't functional.</span></span> <span data-ttu-id="e4988-150">若要在停用追蹤時啟用 TempData 提供者，請在中將 TempData `Startup.ConfigureServices`cookie 標記為必要項：</span><span class="sxs-lookup"><span data-stu-id="e4988-150">To enable the TempData provider when tracking is disabled, mark the TempData cookie as essential in `Startup.ConfigureServices`:</span></span>
 
 [!code-csharp[Main](gdpr/sample/RP2.2/Startup.cs?name=snippet1)]
 
-<span data-ttu-id="c02c0-150">[工作階段狀態](xref:fundamentals/app-state)cookie 不重要。</span><span class="sxs-lookup"><span data-stu-id="c02c0-150">[Session state](xref:fundamentals/app-state) cookies are not essential.</span></span> <span data-ttu-id="c02c0-151">停用追蹤時，工作階段狀態未作用。</span><span class="sxs-lookup"><span data-stu-id="c02c0-151">Session state isn't functional when tracking is disabled.</span></span> <span data-ttu-id="c02c0-152">下列程式碼可讓工作階段 cookie 不可或缺：</span><span class="sxs-lookup"><span data-stu-id="c02c0-152">The following code makes session cookies essential:</span></span>
+<span data-ttu-id="e4988-151">[會話狀態](xref:fundamentals/app-state)cookie 並不重要。</span><span class="sxs-lookup"><span data-stu-id="e4988-151">[Session state](xref:fundamentals/app-state) cookies are not essential.</span></span> <span data-ttu-id="e4988-152">停用追蹤時，會話狀態無法運作。</span><span class="sxs-lookup"><span data-stu-id="e4988-152">Session state isn't functional when tracking is disabled.</span></span> <span data-ttu-id="e4988-153">下列程式碼會讓會話 cookie 變得很重要：</span><span class="sxs-lookup"><span data-stu-id="e4988-153">The following code makes session cookies essential:</span></span>
 
 [!code-csharp[](gdpr/sample/RP2.2/Startup.cs?name=snippet2)]
 
 <a name="pd"></a>
 
-## <a name="personal-data"></a><span data-ttu-id="c02c0-153">個人資料</span><span class="sxs-lookup"><span data-stu-id="c02c0-153">Personal data</span></span>
+## <a name="personal-data"></a><span data-ttu-id="e4988-154">個人資料</span><span class="sxs-lookup"><span data-stu-id="e4988-154">Personal data</span></span>
 
-<span data-ttu-id="c02c0-154">使用個別使用者帳戶建立的 ASP.NET Core 應用程式包含下載和刪除個人資料的程式碼。</span><span class="sxs-lookup"><span data-stu-id="c02c0-154">ASP.NET Core apps created with individual user accounts include code to download and delete personal data.</span></span>
+<span data-ttu-id="e4988-155">使用個別使用者帳戶所建立 ASP.NET Core 應用程式包含下載和刪除個人資料的程式碼。</span><span class="sxs-lookup"><span data-stu-id="e4988-155">ASP.NET Core apps created with individual user accounts include code to download and delete personal data.</span></span>
 
-<span data-ttu-id="c02c0-155">選取的使用者名稱，然後選取**個人資料**:</span><span class="sxs-lookup"><span data-stu-id="c02c0-155">Select the user name and then select **Personal data**:</span></span>
+<span data-ttu-id="e4988-156">選取使用者名稱，然後選取 [**個人資料**]：</span><span class="sxs-lookup"><span data-stu-id="e4988-156">Select the user name and then select **Personal data**:</span></span>
 
 ![管理個人資料頁面](gdpr/_static/pd.png)
 
-<span data-ttu-id="c02c0-157">附註：</span><span class="sxs-lookup"><span data-stu-id="c02c0-157">Notes:</span></span>
+<span data-ttu-id="e4988-158">附註：</span><span class="sxs-lookup"><span data-stu-id="e4988-158">Notes:</span></span>
 
-* <span data-ttu-id="c02c0-158">若要產生`Account/Manage`程式碼，請參閱 < [Scaffold 識別](xref:security/authentication/scaffold-identity)。</span><span class="sxs-lookup"><span data-stu-id="c02c0-158">To generate the `Account/Manage` code, see [Scaffold Identity](xref:security/authentication/scaffold-identity).</span></span>
-* <span data-ttu-id="c02c0-159">**刪除**並**下載**連結只會依據預設身分識別資料。</span><span class="sxs-lookup"><span data-stu-id="c02c0-159">The **Delete** and **Download** links only act on the default identity data.</span></span> <span data-ttu-id="c02c0-160">建立自訂使用者資料的應用程式必須延伸到 delete/下載自訂的使用者資料。</span><span class="sxs-lookup"><span data-stu-id="c02c0-160">Apps that create custom user data must be extended to delete/download the custom user data.</span></span> <span data-ttu-id="c02c0-161">如需詳細資訊，請參閱 <<c0> [ 加入、 下載及刪除身分識別的自訂使用者資料](xref:security/authentication/add-user-data)。</span><span class="sxs-lookup"><span data-stu-id="c02c0-161">For more information, see [Add, download, and delete custom user data to Identity](xref:security/authentication/add-user-data).</span></span>
-* <span data-ttu-id="c02c0-162">儲存使用者的身分識別資料庫資料表中儲存的語彙基元`AspNetUserTokens`串聯的 delete 行為，因為透過刪除使用者時，會刪除[外部索引鍵](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152)。</span><span class="sxs-lookup"><span data-stu-id="c02c0-162">Saved tokens for the user that are stored in the Identity database table `AspNetUserTokens` are deleted when the user is deleted via the cascading delete behavior due to the [foreign key](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152).</span></span>
-* <span data-ttu-id="c02c0-163">[外部提供者驗證](xref:security/authentication/social/index)，例如 Facebook 和 Google，無法使用之前接受 cookie 的原則。</span><span class="sxs-lookup"><span data-stu-id="c02c0-163">[External provider authentication](xref:security/authentication/social/index), such as Facebook and Google, isn't available before the cookie policy is accepted.</span></span>
+* <span data-ttu-id="e4988-159">若要產生`Account/Manage`程式碼，請參閱[Scaffold Identity](xref:security/authentication/scaffold-identity)。</span><span class="sxs-lookup"><span data-stu-id="e4988-159">To generate the `Account/Manage` code, see [Scaffold Identity](xref:security/authentication/scaffold-identity).</span></span>
+* <span data-ttu-id="e4988-160">[**刪除**] 和 [**下載**] 連結只會對預設身分識別資料採取行動。</span><span class="sxs-lookup"><span data-stu-id="e4988-160">The **Delete** and **Download** links only act on the default identity data.</span></span> <span data-ttu-id="e4988-161">建立自訂使用者資料的應用程式必須擴充，才能刪除/下載自訂使用者資料。</span><span class="sxs-lookup"><span data-stu-id="e4988-161">Apps that create custom user data must be extended to delete/download the custom user data.</span></span> <span data-ttu-id="e4988-162">如需詳細資訊，請參閱[將自訂使用者資料新增、下載及刪除至身分識別](xref:security/authentication/add-user-data)。</span><span class="sxs-lookup"><span data-stu-id="e4988-162">For more information, see [Add, download, and delete custom user data to Identity](xref:security/authentication/add-user-data).</span></span>
+* <span data-ttu-id="e4988-163">當使用者因為[外鍵](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152)而透過串聯刪除行為刪除時， `AspNetUserTokens`會刪除儲存在身分識別資料庫資料表中之使用者的已儲存權杖。</span><span class="sxs-lookup"><span data-stu-id="e4988-163">Saved tokens for the user that are stored in the Identity database table `AspNetUserTokens` are deleted when the user is deleted via the cascading delete behavior due to the [foreign key](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152).</span></span>
+* <span data-ttu-id="e4988-164">在接受 cookie 原則之前，無法使用[外部提供者驗證](xref:security/authentication/social/index)（例如 Facebook 和 Google）。</span><span class="sxs-lookup"><span data-stu-id="e4988-164">[External provider authentication](xref:security/authentication/social/index), such as Facebook and Google, isn't available before the cookie policy is accepted.</span></span>
 
 ::: moniker-end
 
-## <a name="encryption-at-rest"></a><span data-ttu-id="c02c0-164">待用加密</span><span class="sxs-lookup"><span data-stu-id="c02c0-164">Encryption at rest</span></span>
+## <a name="encryption-at-rest"></a><span data-ttu-id="e4988-165">待用加密</span><span class="sxs-lookup"><span data-stu-id="e4988-165">Encryption at rest</span></span>
 
-<span data-ttu-id="c02c0-165">某些資料庫和儲存機制允許進行待用加密。</span><span class="sxs-lookup"><span data-stu-id="c02c0-165">Some databases and storage mechanisms allow for encryption at rest.</span></span> <span data-ttu-id="c02c0-166">待用加密：</span><span class="sxs-lookup"><span data-stu-id="c02c0-166">Encryption at rest:</span></span>
+<span data-ttu-id="e4988-166">某些資料庫和儲存機制允許待用加密。</span><span class="sxs-lookup"><span data-stu-id="e4988-166">Some databases and storage mechanisms allow for encryption at rest.</span></span> <span data-ttu-id="e4988-167">待用加密：</span><span class="sxs-lookup"><span data-stu-id="e4988-167">Encryption at rest:</span></span>
 
-* <span data-ttu-id="c02c0-167">自動加密儲存的資料。</span><span class="sxs-lookup"><span data-stu-id="c02c0-167">Encrypts stored data automatically.</span></span>
-* <span data-ttu-id="c02c0-168">加密而不需要設定、 程式設計中或其他軟體，以存取資料的工作。</span><span class="sxs-lookup"><span data-stu-id="c02c0-168">Encrypts without configuration, programming, or other work for the software that accesses the data.</span></span>
-* <span data-ttu-id="c02c0-169">是最簡單且最安全的選項。</span><span class="sxs-lookup"><span data-stu-id="c02c0-169">Is the easiest and safest option.</span></span>
-* <span data-ttu-id="c02c0-170">讓資料庫可管理金鑰和加密。</span><span class="sxs-lookup"><span data-stu-id="c02c0-170">Allows the database to manage keys and encryption.</span></span>
+* <span data-ttu-id="e4988-168">自動加密儲存的資料。</span><span class="sxs-lookup"><span data-stu-id="e4988-168">Encrypts stored data automatically.</span></span>
+* <span data-ttu-id="e4988-169">針對存取資料的軟體，不需要設定、程式設計或其他工作即可進行加密。</span><span class="sxs-lookup"><span data-stu-id="e4988-169">Encrypts without configuration, programming, or other work for the software that accesses the data.</span></span>
+* <span data-ttu-id="e4988-170">是最簡單且最安全的選項。</span><span class="sxs-lookup"><span data-stu-id="e4988-170">Is the easiest and safest option.</span></span>
+* <span data-ttu-id="e4988-171">允許資料庫管理金鑰和加密。</span><span class="sxs-lookup"><span data-stu-id="e4988-171">Allows the database to manage keys and encryption.</span></span>
 
-<span data-ttu-id="c02c0-171">例如:</span><span class="sxs-lookup"><span data-stu-id="c02c0-171">For example:</span></span>
+<span data-ttu-id="e4988-172">例如：</span><span class="sxs-lookup"><span data-stu-id="e4988-172">For example:</span></span>
 
-* <span data-ttu-id="c02c0-172">Microsoft SQL 和 Azure SQL 提供[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption)(TDE)。</span><span class="sxs-lookup"><span data-stu-id="c02c0-172">Microsoft SQL and Azure SQL provide [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE).</span></span>
-* [<span data-ttu-id="c02c0-173">SQL Azure 會將預設加密資料庫</span><span class="sxs-lookup"><span data-stu-id="c02c0-173">SQL Azure encrypts the database by default</span></span>](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
-* <span data-ttu-id="c02c0-174">[預設加密 azure Blob、 檔案、 資料表和佇列儲存體](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。</span><span class="sxs-lookup"><span data-stu-id="c02c0-174">[Azure Blobs, Files, Table, and Queue Storage are encrypted by default](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).</span></span>
+* <span data-ttu-id="e4988-173">Microsoft SQL 和 Azure SQL 提供[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption)（TDE）。</span><span class="sxs-lookup"><span data-stu-id="e4988-173">Microsoft SQL and Azure SQL provide [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE).</span></span>
+* [<span data-ttu-id="e4988-174">SQL Azure 預設會加密資料庫</span><span class="sxs-lookup"><span data-stu-id="e4988-174">SQL Azure encrypts the database by default</span></span>](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
+* <span data-ttu-id="e4988-175">[預設會加密 Azure blob、檔案、資料表和佇列儲存體](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。</span><span class="sxs-lookup"><span data-stu-id="e4988-175">[Azure Blobs, Files, Table, and Queue Storage are encrypted by default](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).</span></span>
 
-<span data-ttu-id="c02c0-175">不會提供內建的加密靜止的資料庫，您可以使用磁碟加密來提供相同的保護。</span><span class="sxs-lookup"><span data-stu-id="c02c0-175">For databases that don't provide built-in encryption at rest, you may be able to use disk encryption to provide the same protection.</span></span> <span data-ttu-id="c02c0-176">例如:</span><span class="sxs-lookup"><span data-stu-id="c02c0-176">For example:</span></span>
+<span data-ttu-id="e4988-176">對於未提供內建靜態加密的資料庫，您可以使用磁片加密來提供相同的保護。</span><span class="sxs-lookup"><span data-stu-id="e4988-176">For databases that don't provide built-in encryption at rest, you may be able to use disk encryption to provide the same protection.</span></span> <span data-ttu-id="e4988-177">例如：</span><span class="sxs-lookup"><span data-stu-id="e4988-177">For example:</span></span>
 
-* [<span data-ttu-id="c02c0-177">BitLocker for Windows Server</span><span class="sxs-lookup"><span data-stu-id="c02c0-177">BitLocker for Windows Server</span></span>](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
-* <span data-ttu-id="c02c0-178">Linux：</span><span class="sxs-lookup"><span data-stu-id="c02c0-178">Linux:</span></span>
-  * [<span data-ttu-id="c02c0-179">eCryptfs</span><span class="sxs-lookup"><span data-stu-id="c02c0-179">eCryptfs</span></span>](https://launchpad.net/ecryptfs)
-  * <span data-ttu-id="c02c0-180">[EncFS](https://github.com/vgough/encfs)。</span><span class="sxs-lookup"><span data-stu-id="c02c0-180">[EncFS](https://github.com/vgough/encfs).</span></span>
+* [<span data-ttu-id="e4988-178">適用于 Windows Server 的 BitLocker</span><span class="sxs-lookup"><span data-stu-id="e4988-178">BitLocker for Windows Server</span></span>](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
+* <span data-ttu-id="e4988-179">Linux：</span><span class="sxs-lookup"><span data-stu-id="e4988-179">Linux:</span></span>
+  * [<span data-ttu-id="e4988-180">eCryptfs</span><span class="sxs-lookup"><span data-stu-id="e4988-180">eCryptfs</span></span>](https://launchpad.net/ecryptfs)
+  * <span data-ttu-id="e4988-181">[EncFS](https://github.com/vgough/encfs)。</span><span class="sxs-lookup"><span data-stu-id="e4988-181">[EncFS](https://github.com/vgough/encfs).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="c02c0-181">其他資源</span><span class="sxs-lookup"><span data-stu-id="c02c0-181">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="e4988-182">其他資源</span><span class="sxs-lookup"><span data-stu-id="e4988-182">Additional resources</span></span>
 
-* [<span data-ttu-id="c02c0-182">Microsoft.com/GDPR</span><span class="sxs-lookup"><span data-stu-id="c02c0-182">Microsoft.com/GDPR</span></span>](https://www.microsoft.com/trustcenter/Privacy/GDPR)
+* [<span data-ttu-id="e4988-183">Microsoft.com/GDPR</span><span class="sxs-lookup"><span data-stu-id="e4988-183">Microsoft.com/GDPR</span></span>](https://www.microsoft.com/trustcenter/Privacy/GDPR)
+* <span data-ttu-id="e4988-184">[GDPR-在 ASP.NET Core 中新增 [撤銷同意] 按鈕](https://www.joeaudette.com/blog/2018/08/28/gdpr---adding-a-revoke-consent-button-in-aspnet-core)</span><span class="sxs-lookup"><span data-stu-id="e4988-184">[GDPR - Adding a Revoke Consent Button in ASP.NET Core](https://www.joeaudette.com/blog/2018/08/28/gdpr---adding-a-revoke-consent-button-in-aspnet-core)</span></span>

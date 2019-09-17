@@ -1,105 +1,106 @@
 ---
-title: 支援 ASP.NET Core 中的一般資料保護規定 (GDPR)
+title: ASP.NET Core 中的一般資料保護規定（GDPR）支援
 author: rick-anderson
-description: 了解如何存取 ASP.NET Core web 應用程式中的 GDPR 擴充點。
+description: 瞭解如何存取 ASP.NET Core web 應用程式中的 GDPR 擴充點。
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: security/gdpr
-ms.openlocfilehash: 01d2f8943c0995c1400122b89c4ca7c459a85279
-ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
+ms.openlocfilehash: 1086c22c2f3c27373d8cb779f4b1d8eb6792ec2e
+ms.sourcegitcommit: 2fa0ffe82a47c7317efc9ea908365881cbcb8ed7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724574"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69572881"
 ---
-# <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>ASP.NET Core 中的歐盟一般資料保護規定 (GDPR) 支援
+# <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>ASP.NET Core 中的 EU 一般資料保護規定（GDPR）支援
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core 提供 Api 和範本，以協助符合某些[歐盟一般資料保護規定 (GDPR)](https://www.eugdpr.org/)需求：
+ASP.NET Core 提供 Api 和範本，以協助符合[歐盟一般資料保護規定（GDPR）](https://www.eugdpr.org/)需求：
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* 專案範本包括擴充點以及附加虛設常式的標記，您可以使用您的隱私權與 cookie 的使用原則來取代。
-* *Pages/Privacy.cshtml*頁面或*Views/Home/Privacy.cshtml*檢視會提供頁面的詳細說明您網站的隱私權原則。
+* 專案範本包括擴充點和 stub 標記，您可以將其取代為您的隱私權和 cookie 使用原則。
+* [ *Pages/隱私權*] 頁面或 [ *Views/Home/隱私權*] 視圖會提供頁面，以詳細說明網站的隱私權原則。
 
-若要啟用預設的 cookie 同意功能的中 ASP.NET Core 3.0 範本產生應用程式中的 ASP.NET Core 2.2 範本中找到：
+若要啟用預設的 cookie 同意功能，例如在 ASP.NET Core 3.0 範本產生的應用程式的 ASP.NET Core 2.2 範本中找到：
 
-* 新增[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)太`Startup.ConfigureServices`並[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)至`Startup.Configure`:
+* 將`using Microsoft.AspNetCore.Http`加入 using 指示詞的清單。
+* 將[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)新增`Startup.ConfigureServices`至，並`Startup.Configure`[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) 至：
 
   [!code-csharp[Main](gdpr/sample/RP3.0/Startup.cs?name=snippet1&highlight=12-19,38)]
 
-* 加入至 cookie 同意局部 *_Layout.cshtml*檔案：
+* 將 cookie 同意部分新增至 *_Layout*檔案：
 
   [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_Layout.cshtml?name=snippet&highlight=4)]
 
-* 新增 *\_CookieConsentPartial.cshtml*檔案加入專案：
+* 將 CookieConsentPartial 檔案新增至專案： *\_*
 
   [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_CookieConsentPartial.cshtml)]
 
-* 選取此文章以了解 cookie 同意功能的 ASP.NET Core 2.2 版本。
+* 選取本文的 ASP.NET Core 2.2 版本，以閱讀 cookie 同意功能的相關資訊。
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.2"
 
-* 專案範本包括擴充點以及附加虛設常式的標記，您可以使用您的隱私權與 cookie 的使用原則來取代。
-* Cookie 同意功能可讓您要求 （和追蹤） 同意從您的使用者，用來儲存個人資訊。 如果使用者尚未同意資料收集，而且應用程式有[CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded)設定為`true`，非必要 cookie 不傳送至瀏覽器。
-* Cookie 可以標示為重要。 基本的 cookie 會傳送至瀏覽器中，即使當使用者尚未同意，並已停用追蹤。
-* [TempData 和工作階段 cookie](#tempdata)追蹤已停用時不會運作。
-* [身分識別管理](#pd)頁面提供連結讓您下載及刪除使用者資料。
+* 專案範本包括擴充點和 stub 標記，您可以將其取代為您的隱私權和 cookie 使用原則。
+* Cookie 同意功能可讓您向使用者要求（並追蹤）同意，以儲存個人資訊。 如果使用者尚未同意資料收集，而應用程式已將[CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded)設定為`true`，則不會將非必要的 cookie 傳送至瀏覽器。
+* Cookie 可以標示為必要。 即使使用者尚未同意，也會將必要的 cookie 傳送至瀏覽器，而且會停用追蹤。
+* 停用追蹤時[，TempData 和會話 cookie](#tempdata)無法正常運作。
+* [身分[識別管理](#pd)] 頁面提供下載和刪除使用者資料的連結。
 
-[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)可讓您測試大部分的 GDPR 擴充點，而且 Api 新增至 ASP.NET Core 2.1 範本。 請參閱[讀我檔案](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)檔案以供測試的指示。
+[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)可讓您測試新增至 ASP.NET Core 2.1 範本的大部分 GDPR 擴充點和 api。 如需測試指示，請參閱[自述](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)檔。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>在範本產生的程式碼中的 ASP.NET Core GDPR 支援
+## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>在範本產生的程式碼中 ASP.NET Core GDPR 支援
 
-Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
+使用專案範本建立的 Razor Pages 和 MVC 專案包含下列 GDPR 支援：
 
-* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)並[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)中所設定`Startup`類別。
-* *\_CookieConsentPartial.cshtml* [部分檢視](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)。 **接受**按鈕包含在這個檔案。 當使用者按一下**接受**按鈕，同意將 cookie 提供。
-* *Pages/Privacy.cshtml*頁面或*Views/Home/Privacy.cshtml*檢視會提供頁面的詳細說明您網站的隱私權原則。 *\_CookieConsentPartial.cshtml*檔案會產生 [隱私權] 頁面的連結。
-* 使用個別使用者帳戶建立的應用程式，[管理] 頁面會提供連結來下載並刪除[使用者個人資料](#pd)。
+* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)和[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)是在`Startup`類別中設定。
+* *\_CookieConsentPartial*的[部分視圖](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)。 此檔案包含 [**接受**] 按鈕。 當使用者按一下 [**接受**] 按鈕時，就會提供同意存放區 cookie。
+* [ *Pages/隱私權*] 頁面或 [ *Views/Home/隱私權*] 視圖會提供頁面，以詳細說明網站的隱私權原則。 CookieConsentPartial 會產生 [隱私權] 頁面的連結。 *\_*
+* 針對使用個別使用者帳戶所建立的應用程式，[管理] 頁面會提供下載和刪除[個人使用者資料](#pd)的連結。
 
 ### <a name="cookiepolicyoptions-and-usecookiepolicy"></a>CookiePolicyOptions 和 UseCookiePolicy
 
-[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)會初始化`Startup.ConfigureServices`:
+[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions)在中`Startup.ConfigureServices`初始化：
 
 [!code-csharp[Main](gdpr/sample/Startup.cs?name=snippet1&highlight=14-20)]
 
-[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)呼叫`Startup.Configure`:
+[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)是在中`Startup.Configure`呼叫：
 
 [!code-csharp[](gdpr/sample/Startup.cs?name=snippet1&highlight=51)]
 
-### <a name="cookieconsentpartialcshtml-partial-view"></a>\_CookieConsentPartial.cshtml partial view
+### <a name="_cookieconsentpartialcshtml-partial-view"></a>\_CookieConsentPartial. cshtml 部分視圖
 
-*\_CookieConsentPartial.cshtml*部分檢視：
+*\_CookieConsentPartial*的部分視圖：
 
 [!code-html[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
 
-這個部分中：
+這部分：
 
-* 取得使用者追蹤的狀態。 如果應用程式設定為需要同意，使用者必須同意之前可以追蹤 cookie。 如果需要同意的話，cookie 同意不固定在所建立的導覽列頂端 *\_Layout.cshtml*檔案。
-* 提供 HTML`<p>`項目，以摘述您的隱私權與 cookie 使用的原則。
-* 提供隱私權頁面或檢視，其中詳細說明您網站的隱私權原則的連結。
+* 取得使用者的追蹤狀態。 如果應用程式已設定為需要同意，使用者必須先同意，才能追蹤 cookie。 如果需要同意，cookie 同意面板會固定在配置 *\_. cshtml*檔案所建立的導覽列上方。
+* 提供 HTML `<p>`元素來總結您的隱私權與 cookie 使用原則。
+* 提供 [隱私權] 頁面或 [流覽] 的連結，您可以在其中詳細說明網站的隱私權原則。
 
-## <a name="essential-cookies"></a>基本的 cookie
+## <a name="essential-cookies"></a>基本 cookie
 
-如果同意將 cookie 未提供，標示為重要的 cookie 傳送至瀏覽器。 下列程式碼可讓您基本的 cookie:
+如果尚未提供同意存放區 cookie，則只會將標示為必要的 cookie 傳送至瀏覽器。 下列程式碼會讓 cookie 變得很重要：
 
 [!code-csharp[Main](gdpr/sample/RP2.2/Pages/Cookie.cshtml.cs?name=snippet1&highlight=5)]
 
 <a name="tempdata"></a>
 
-### <a name="tempdata-provider-and-session-state-cookies-arent-essential"></a>TempData 提供者和工作階段狀態的 cookie 並不一定
+### <a name="tempdata-provider-and-session-state-cookies-arent-essential"></a>TempData 提供者和會話狀態 cookie 不是必要的
 
-[TempData 提供者](xref:fundamentals/app-state#tempdata)cookie 不必要的元素。 如果已停用追蹤，TempData 提供者將無法運作。 若要停用追蹤時，請啟用 TempData 提供者，將 TempData cookie 標示為以`Startup.ConfigureServices`:
+[TempData 提供者](xref:fundamentals/app-state#tempdata)cookie 並不重要。 如果停用追蹤，TempData 提供者就無法運作。 若要在停用追蹤時啟用 TempData 提供者，請在中將 TempData `Startup.ConfigureServices`cookie 標記為必要項：
 
 [!code-csharp[Main](gdpr/sample/RP2.2/Startup.cs?name=snippet1)]
 
-[工作階段狀態](xref:fundamentals/app-state)cookie 不重要。 停用追蹤時，工作階段狀態未作用。 下列程式碼可讓工作階段 cookie 不可或缺：
+[會話狀態](xref:fundamentals/app-state)cookie 並不重要。 停用追蹤時，會話狀態無法運作。 下列程式碼會讓會話 cookie 變得很重要：
 
 [!code-csharp[](gdpr/sample/RP2.2/Startup.cs?name=snippet2)]
 
@@ -107,39 +108,39 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 
 ## <a name="personal-data"></a>個人資料
 
-使用個別使用者帳戶建立的 ASP.NET Core 應用程式包含下載和刪除個人資料的程式碼。
+使用個別使用者帳戶所建立 ASP.NET Core 應用程式包含下載和刪除個人資料的程式碼。
 
-選取的使用者名稱，然後選取**個人資料**:
+選取使用者名稱，然後選取 [**個人資料**]：
 
 ![管理個人資料頁面](gdpr/_static/pd.png)
 
 附註：
 
-* 若要產生`Account/Manage`程式碼，請參閱 < [Scaffold 識別](xref:security/authentication/scaffold-identity)。
-* **刪除**並**下載**連結只會依據預設身分識別資料。 建立自訂使用者資料的應用程式必須延伸到 delete/下載自訂的使用者資料。 如需詳細資訊，請參閱 <<c0> [ 加入、 下載及刪除身分識別的自訂使用者資料](xref:security/authentication/add-user-data)。
-* 儲存使用者的身分識別資料庫資料表中儲存的語彙基元`AspNetUserTokens`串聯的 delete 行為，因為透過刪除使用者時，會刪除[外部索引鍵](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152)。
-* [外部提供者驗證](xref:security/authentication/social/index)，例如 Facebook 和 Google，無法使用之前接受 cookie 的原則。
+* 若要產生`Account/Manage`程式碼，請參閱[Scaffold Identity](xref:security/authentication/scaffold-identity)。
+* [**刪除**] 和 [**下載**] 連結只會對預設身分識別資料採取行動。 建立自訂使用者資料的應用程式必須擴充，才能刪除/下載自訂使用者資料。 如需詳細資訊，請參閱[將自訂使用者資料新增、下載及刪除至身分識別](xref:security/authentication/add-user-data)。
+* 當使用者因為[外鍵](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152)而透過串聯刪除行為刪除時， `AspNetUserTokens`會刪除儲存在身分識別資料庫資料表中之使用者的已儲存權杖。
+* 在接受 cookie 原則之前，無法使用[外部提供者驗證](xref:security/authentication/social/index)（例如 Facebook 和 Google）。
 
 ::: moniker-end
 
 ## <a name="encryption-at-rest"></a>待用加密
 
-某些資料庫和儲存機制允許進行待用加密。 待用加密：
+某些資料庫和儲存機制允許待用加密。 待用加密：
 
 * 自動加密儲存的資料。
-* 加密而不需要設定、 程式設計中或其他軟體，以存取資料的工作。
+* 針對存取資料的軟體，不需要設定、程式設計或其他工作即可進行加密。
 * 是最簡單且最安全的選項。
-* 讓資料庫可管理金鑰和加密。
+* 允許資料庫管理金鑰和加密。
 
-例如:
+例如：
 
-* Microsoft SQL 和 Azure SQL 提供[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption)(TDE)。
-* [SQL Azure 會將預設加密資料庫](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
-* [預設加密 azure Blob、 檔案、 資料表和佇列儲存體](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
+* Microsoft SQL 和 Azure SQL 提供[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption)（TDE）。
+* [SQL Azure 預設會加密資料庫](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
+* [預設會加密 Azure blob、檔案、資料表和佇列儲存體](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
 
-不會提供內建的加密靜止的資料庫，您可以使用磁碟加密來提供相同的保護。 例如:
+對於未提供內建靜態加密的資料庫，您可以使用磁片加密來提供相同的保護。 例如：
 
-* [BitLocker for Windows Server](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
+* [適用于 Windows Server 的 BitLocker](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
 * Linux：
   * [eCryptfs](https://launchpad.net/ecryptfs)
   * [EncFS](https://github.com/vgough/encfs)。
@@ -147,3 +148,4 @@ Razor Pages 和 MVC 專案範本建立的專案包含下列的 GDPR 支援：
 ## <a name="additional-resources"></a>其他資源
 
 * [Microsoft.com/GDPR](https://www.microsoft.com/trustcenter/Privacy/GDPR)
+* [GDPR-在 ASP.NET Core 中新增 [撤銷同意] 按鈕](https://www.joeaudette.com/blog/2018/08/28/gdpr---adding-a-revoke-consent-button-in-aspnet-core)

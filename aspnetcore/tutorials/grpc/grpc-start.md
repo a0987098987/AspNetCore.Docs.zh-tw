@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 8/26/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 7f80ead06f00037ae51b35d40dff9bc7f99bc5d8
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: f643ed786366fa6bdadadbc5d67fa2d40a195861
+ms.sourcegitcommit: 07cd66e367d080acb201c7296809541599c947d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310572"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71039277"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端與伺服器
 
@@ -51,7 +51,7 @@ ms.locfileid: "70310572"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 啟動 Visual Studio 並選取 [建立新專案]。 或者，從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案]。
-* 在 [建立新專案] 對話方塊中，選取 [gPRC 服務]，然後選取 [下一步]：
+* 在 [**建立新專案**] 對話方塊中，選取 [ **gRPC 服務**]，然後選取 **[下一步]** ：
 
   ![[建立新專案] 對話方塊](~/tutorials/grpc/grpc-start/static/cnp.png)
 

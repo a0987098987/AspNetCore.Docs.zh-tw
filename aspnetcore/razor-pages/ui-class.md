@@ -4,21 +4,21 @@ author: Rick-Anderson
 description: 說明如何建立可重複使用 Razor UI，使用 ASP.NET Core 中的類別庫中的部分檢視。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 06/28/2019
+ms.date: 08/22/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 77c7d4a318610fcd424da0485abd41d11e3fad6a
-ms.sourcegitcommit: fbc66827e319d28bebed678ea5fd42f582fe3c34
+ms.openlocfilehash: 5b83cb44302a5900ec7b2ccc049790b4c1ca57e5
+ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68493557"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69985387"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>在 ASP.NET Core 中使用 Razor 類別庫專案建立可重複使用的 UI
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Razor 視圖、頁面、控制器、頁面模型、 [razor 元件](xref:blazor/class-libraries)、[視圖元件](xref:mvc/views/view-components)和資料模型可以內建于 RAZOR 類別庫 (RCL) 中。 RCL 可以封裝和重複使用。 應用程式可以包括 RCL，以及覆寫它所包含的檢視和頁面。 在 Web 應用程式和 RCL 中發現檢視、部分檢視，或是 Razor 頁面時，以 Web 應用程式中的 Razor 標記 ( *.cshtml* 檔案) 為優先。
+Razor 視圖、頁面、控制器、頁面模型、 [razor 元件](xref:blazor/class-libraries)、[視圖元件](xref:mvc/views/view-components)和資料模型可以內建于 RAZOR 類別庫（RCL）中。 RCL 可以封裝和重複使用。 應用程式可以包括 RCL，以及覆寫它所包含的檢視和頁面。 在 Web 應用程式和 RCL 中發現檢視、部分檢視，或是 Razor 頁面時，以 Web 應用程式中的 Razor 標記 ( *.cshtml* 檔案) 為優先。
 
 這項功能需要 [!INCLUDE[](~/includes/2.1-SDK.md)]
 
@@ -34,7 +34,7 @@ Razor 視圖、頁面、控制器、頁面模型、 [razor 元件](xref:blazor/c
 * 確認已選取 **ASP.NET Core 2.1** 或更新版本。
 * 選取 [Razor 類別庫] > [確定]。
 
-RCL 具有下列專案檔:
+RCL 具有下列專案檔：
 
 [!code-xml[Main](ui-class/samples/cli/RazorUIClassLib/RazorUIClassLib.csproj)]
 
@@ -52,7 +52,7 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 新增 Razor 檔案至 RCL。
 
-ASP.NET Core 範本假設 RCL 內容位於*領域*資料夾。 請參閱[RCL 頁面配置](#afs), 以建立會在中`~/Pages`公開內容的 RCL, 而不是。 `~/Areas/Pages`
+ASP.NET Core 範本假設 RCL 內容位於*領域*資料夾。 請參閱[RCL 頁面配置](#afs)，以建立會在中`~/Pages`公開內容的 RCL，而不是。 `~/Areas/Pages`
 
 ## <a name="referencing-rcl-content"></a>參考 RCL 內容
 
@@ -61,7 +61,7 @@ RCL 可以由下列各項參考：
 * NuGet 套件。 請參閱[建立 NuGet 套件](/nuget/create-packages/creating-a-package)和 [dotnet add package](/dotnet/core/tools/dotnet-add-package) 和[建立和發佈 NuGet 套件](/nuget/quickstart/create-and-publish-a-package-using-visual-studio)。
 * *{ProjectName}.csproj*。 請參閱 [dotnet-add reference](/dotnet/core/tools/dotnet-add-reference)。
 
-## <a name="walkthrough-create-an-rcl-project-and-use-from-a-razor-pages-project"></a>逐步解說：建立 RCL 專案, 並從 Razor Pages 專案使用
+## <a name="walkthrough-create-an-rcl-project-and-use-from-a-razor-pages-project"></a>逐步解說：建立 RCL 專案，並從 Razor Pages 專案使用
 
 您可以下載[完整專案](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples)並測試它，而不是建立它。 下載範例包含額外的程式碼和連結，讓您輕鬆地測試專案。 您可以在[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/6098)留下意見反應以及您對下載範例與逐步指示的評論。
 
@@ -93,7 +93,7 @@ dotnet run
 
 ## <a name="create-an-rcl"></a>建立 RCL
 
-在本節中, 會建立 RCL。 會有 Razor 檔案新增至 RCL。
+在本節中，會建立 RCL。 會有 Razor 檔案新增至 RCL。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -174,7 +174,7 @@ dotnet build RazorUIClassLib
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-建立 Razor Pages web 應用程式, 以及包含 Razor Pages 應用程式和 RCL 的方案檔:
+建立 Razor Pages web 應用程式，以及包含 Razor Pages 應用程式和 RCL 的方案檔：
 
 ```console
 dotnet new webapp -o WebApp1
@@ -197,13 +197,13 @@ dotnet run
 
 ### <a name="test-webapp1"></a>測試 WebApp1
 
-確認 Razor UI 類別庫正在使用中:
+確認 Razor UI 類別庫正在使用中：
 
 * 瀏覽至 `/MyFeature/Page1`。
 
 ## <a name="override-views-partial-views-and-pages"></a>覆寫檢視、部分檢視和頁面
 
-在 Web 應用程式和 RCL 中發現檢視、部分檢視，或是 Razor 頁面時，以 Web 應用程式中的 Razor 標記 ( *.cshtml* 檔案) 為優先。 例如, 將*WebApp1/Areas/MyFeature/Pages/Page1. cshtml*新增到 WebApp1, WebApp1 中的 page1 會優先于 RCL 中的 page1。
+在 Web 應用程式和 RCL 中發現檢視、部分檢視，或是 Razor 頁面時，以 Web 應用程式中的 Razor 標記 ( *.cshtml* 檔案) 為優先。 例如，將*WebApp1/Areas/MyFeature/Pages/Page1. cshtml*新增到 WebApp1，WebApp1 中的 page1 會優先于 RCL 中的 page1。
 
 在下載範例中，將 *WebApp1/Areas/MyFeature2* 重新命名為 *WebApp1/Areas/MyFeature* 以測試優先順序。
 
@@ -234,27 +234,96 @@ dotnet run
 
 RCL 可能需要可供 RCL 取用應用程式參考的隨附靜態資產。 ASP.NET Core 可讓您建立包含可供取用應用程式使用之靜態資產的 RCLs。
 
-若要將隨附的資產納入為 RCL 的一部分, 請在類別庫中建立*wwwroot*資料夾, 並在該資料夾中包含任何必要的檔案。
+若要將隨附的資產納入為 RCL 的一部分，請在類別庫中建立*wwwroot*資料夾，並在該資料夾中包含任何必要的檔案。
 
-封裝 RCL 時, *wwwroot*資料夾中的所有附屬資產都會自動包含在套件中, 並可供參考該套件的應用程式使用。
+封裝 RCL 時， *wwwroot*資料夾中的所有附屬資產都會自動包含在套件中。
+
+### <a name="exclude-static-assets"></a>排除靜態資產
+
+若要排除靜態資產，請將所需的排除`$(DefaultItemExcludes)`路徑新增至專案檔中的屬性群組。 以分號（`;`）分隔專案。
+
+在下列範例中， *wwwroot*資料夾中的*lib .css*樣式不會被視為靜態資產，而且不會包含在已發行的 RCL 中：
+
+```xml
+<PropertyGroup>
+  <DefaultItemExcludes>$(DefaultItemExcludes);wwwroot\lib.css</DefaultItemExcludes>
+</PropertyGroup>
+```
+
+### <a name="typescript-integration"></a>Typescript 整合
+
+若要在 RCL 中包含 TypeScript 檔案：
+
+1. 將 TypeScript 檔案（ *. ts*）放在*wwwroot*資料夾外部。 例如，將檔案放在*用戶端*資料夾中。
+
+1. 設定 [ *wwwroot* ] 資料夾的 TypeScript 組建輸出。 在專案檔中的內`TypescriptOutDir` `PropertyGroup`設定屬性：
+
+   ```xml
+   <TypescriptOutDir>wwwroot</TypescriptOutDir>
+   ```
+
+1. 藉由`PropertyGroup`在專案檔中的內新增`ResolveCurrentProjectStaticWebAssets`下列目標，將 TypeScript 目標納入為目標的相依性：
+
+   ```xml
+   <ResolveCurrentProjectStaticWebAssetsInputsDependsOn>
+     TypeScriptCompile;
+     $(ResolveCurrentProjectStaticWebAssetsInputs)
+   </ResolveCurrentProjectStaticWebAssetsInputsDependsOn>
+   ```
 
 ### <a name="consume-content-from-a-referenced-rcl"></a>從參考的 RCL 取用內容
 
-RCL 的*wwwroot*資料夾中包含的檔案會公開給取用應用程式 (在前置`_content/{LIBRARY NAME}/`詞底下)。 例如, 名為 Razor. *.lib*的程式庫會產生的靜態內容`_content/Razor.Class.Lib/`路徑。
+RCL 的*wwwroot*資料夾中包含的檔案會公開給取用應用程式（在前置`_content/{LIBRARY NAME}/`詞底下）。 例如，名為 Razor. *.lib*的程式庫會產生的靜態內容`_content/Razor.Class.Lib/`路徑。
 
-取用應用程式會參考程式庫`<script>`所提供的靜態資產, 以及、 `<style>`、 `<img>`和其他 HTML 標籤。 取用應用程式必須啟用[靜態檔案支援](xref:fundamentals/static-files)。
+取用應用程式會參考程式庫`<script>`所提供的靜態資產，以及、 `<style>`、 `<img>`和其他 HTML 標籤。 取用應用程式必須在中`Startup.Configure`啟用[靜態檔案支援](xref:fundamentals/static-files)：
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    ...
+
+    app.UseStaticFiles();
+
+    ...
+}
+```
+
+從組建輸出（`dotnet run`）執行使用中的應用程式時，預設會在開發環境中啟用靜態 web 資產。 若要在從組建輸出執行時支援其他環境中的`UseStaticWebAssets`資產，請在*Program.cs*中的主機產生器上呼叫：
+
+```csharp
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStaticWebAssets();
+                webBuilder.UseStartup<Startup>();
+            });
+}
+```
+
+從`UseStaticWebAssets`已發行的輸出（`dotnet publish`）執行應用程式時，不需要呼叫。
 
 ### <a name="multi-project-development-flow"></a>多專案開發流程
 
-當使用中的應用程式執行時:
+當使用中的應用程式執行時：
 
 * RCL 中的資產會保留在其原始檔案夾中。 資產不會移至取用應用程式。
-* 重建 RCL 之後, RCL *wwwroot*資料夾內的任何變更都會反映在取用應用程式中, 而不需要重建取用應用程式。
+* 重建 RCL 之後，RCL *wwwroot*資料夾內的任何變更都會反映在取用應用程式中，而不需要重建取用應用程式。
 
-建立 RCL 時, 會產生描述靜態 web 資產位置的資訊清單。 取用應用程式會在執行時間讀取資訊清單, 以從參考的專案和套件取用資產。 將新資產新增至 RCL 時, 必須重建 RCL 以更新其資訊清單, 取用應用程式才能存取新資產。
+建立 RCL 時，會產生描述靜態 web 資產位置的資訊清單。 取用應用程式會在執行時間讀取資訊清單，以從參考的專案和套件取用資產。 將新資產新增至 RCL 時，必須重建 RCL 以更新其資訊清單，取用應用程式才能存取新資產。
 
 ### <a name="publish"></a>發行
 
-發佈應用程式時, 所有參考專案和套件中的附屬資產都會複製到底下已發佈應用程式`_content/{LIBRARY NAME}/`的 [wwwroot] 資料夾。
+發佈應用程式時，所有參考專案和套件中的附屬資產都會複製到底下已發佈應用程式`_content/{LIBRARY NAME}/`的 [wwwroot] 資料夾。
 
 ::: moniker-end

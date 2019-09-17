@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/components
-ms.openlocfilehash: bc9fa06e5acccb773717fe87bf4aabb971b8dee5
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: e51f6745f6e0c748e51d7f8a49193f3d81fd2a06
+ms.sourcegitcommit: 07cd66e367d080acb201c7296809541599c947d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963772"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71039174"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -229,6 +229,34 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 ```
 
 不同`onchange`于當元素失去`oninput`焦點時引發的，會在文字方塊的值變更時引發。
+
+**無法剖析的值**
+
+當使用者將無法剖析的值提供給資料系結元素時，會在觸發系結事件時，自動將無法剖析的值還原成先前的值。
+
+請考慮下列案例：
+
+* 元素會系結`int`至具有初始值的`123`類型： `<input>`
+
+  ```cshtml
+  <input @bind="MyProperty" />
+
+  @code {
+      [Parameter]
+      public int MyProperty { get; set; } = 123;
+  }
+  ```
+* 使用者會將專案的值更新為`123.45`頁面中的，並變更元素的焦點。
+
+在上述案例中，元素的值會還原成`123`。 當以的`123.45`原始`123`值拒絕值時，使用者瞭解其值不被接受。
+
+根據預設，系結會套用至元素`onchange`的事件`@bind="{PROPERTY OR FIELD}"`（）。 使用`@bind-value="{PROPERTY OR FIELD}" @bind-value:event={EVENT}`來設定不同的事件。 對於事件（`@bind-value:event="oninput"`），回復會在引入無法剖析值的任何擊鍵之後發生。 `oninput` 以系結`oninput`型別為目標的事件時，使用者無法輸入`.`字元。 `int` 系統會立即移除字元，讓使用者收到只允許整數的立即回應。`.` 在某些情況下，在`oninput`事件上還原值不是理想的情況，例如，當使用者應允許清除無法解析`<input>`的值時。 替代方案包括：
+
+* 請勿使用`oninput`事件。 使用預設`onchange`事件（`@bind="{PROPERTY OR FIELD}"`），在此情況下，除非元素失去焦點，否則不正確值不會還原。
+* 系結至可為 null 的型`int?`別`string`（例如或），並提供自訂邏輯來處理不正確專案。
+* 使用[表單驗證元件](xref:blazor/forms-validation)，例如`InputNumber`或`InputDate`。 表單驗證元件有內建支援，可管理不正確輸入。 表單驗證元件：
+  * 允許使用者在相關聯`EditContext`的上提供不正確輸入和接收驗證錯誤。
+  * 在 UI 中顯示驗證錯誤，而不幹擾使用者輸入其他 webform 資料。
 
 **全球化**
 
@@ -1389,14 +1417,14 @@ builder.AddContent(1, "Second");
 
 當程式碼第一次執行時，如果`someFlag`是`true`，則產生器會接收：
 
-| 序列 | 類型      | 資料   |
+| 序列 | Type      | Data   |
 | :------: | --------- | :----: |
 | 0        | Text node | 第一個  |
 | 1        | Text node | 第二個 |
 
 想像一下， `false`會變成，然後再次呈現標記。 `someFlag` 這次，產生器會接收：
 
-| 序列 | 類型       | 資料   |
+| 序列 | Type       | Data   |
 | :------: | ---------- | :----: |
 | 1        | Text node  | 第二個 |
 
@@ -1421,14 +1449,14 @@ builder.AddContent(seq++, "Second");
 
 現在，第一個輸出是：
 
-| 序列 | 類型      | 資料   |
+| 序列 | Type      | Data   |
 | :------: | --------- | :----: |
 | 0        | Text node | 第一個  |
 | 1        | Text node | 第二個 |
 
 此結果與先前的案例相同，因此不會有負面問題存在。 `someFlag``false`在第二個轉譯上，輸出為：
 
-| 序列 | 類型      | 資料   |
+| 序列 | Type      | Data   |
 | :------: | --------- | ------ |
 | 0        | Text node | 第二個 |
 

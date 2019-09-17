@@ -1,102 +1,102 @@
 ---
-title: 將 HTTP 處理常式和模組移轉至 ASP.NET Core 中介軟體
+title: 將 HTTP 處理常式和模組遷移至 ASP.NET Core 中介軟體
 author: rick-anderson
 description: ''
-ms.author: tdykstra
+ms.author: riande
 ms.date: 12/07/2016
 uid: migration/http-modules
-ms.openlocfilehash: 84381210910c66a7d121120b8c6b0f046cae8c4f
-ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
+ms.openlocfilehash: bdf27ccb742d4bc05bac71e6c96d71c38dcb4b62
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207811"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975484"
 ---
-# <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>將 HTTP 處理常式和模組移轉至 ASP.NET Core 中介軟體
+# <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>將 HTTP 處理常式和模組遷移至 ASP.NET Core 中介軟體
 
-本文說明如何移轉現有的 ASP.NET [HTTP 模組和處理常式 system.webserver](/iis/configuration/system.webserver/)至 ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)。
+本文說明如何將 ASP.NET[的現有 HTTP 模組和處理常式，從 system.webserver](/iis/configuration/system.webserver/)遷移至 ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)。
 
-## <a name="modules-and-handlers-revisited"></a>模組和第二次接觸的處理常式
+## <a name="modules-and-handlers-revisited"></a>已再次進行模組和處理常式
 
-ASP.NET Core 中介軟體之前，讓我們先複習一下 HTTP 模組和處理常式的運作方式：
+在繼續 ASP.NET Core 中介軟體之前，讓我們先回顧一下 HTTP 模組和處理常式的操作方式：
 
 ![模組處理常式](http-modules/_static/moduleshandlers.png)
 
 **處理常式包括：**
 
-* 類別實作[IHttpHandler](/dotnet/api/system.web.ihttphandler)
+* 執行[IHttpHandler](/dotnet/api/system.web.ihttphandler)的類別
 
-* 用來處理要求，以指定的檔案名稱或副檔名，例如 *.report*
+* 用來處理指定的檔案名或副檔名的要求，例如 *. report*
 
-* [設定](/iis/configuration/system.webserver/handlers/)在*Web.config*
+* *在 web.config*中[設定](/iis/configuration/system.webserver/handlers/)
 
-**模組有︰**
+**模組包括：**
 
-* 類別實作[IHttpModule](/dotnet/api/system.web.ihttpmodule)
+* 執行[IHttpModule](/dotnet/api/system.web.ihttpmodule)的類別
 
-* 叫用每個要求
+* 針對每個要求叫用
 
-* 能夠以最少運算 （停止進一步處理的要求）
+* 能夠短路（停止進一步處理要求）
 
-* 無法新增至 HTTP 回應，或自行建立
+* 能夠新增至 HTTP 回應，或自行建立
 
-* [設定](/iis/configuration/system.webserver/modules/)在*Web.config*
+* *在 web.config*中[設定](/iis/configuration/system.webserver/modules/)
 
-**模組中處理連入要求的順序取決於：**
+**模組處理傳入要求的順序取決於：**
 
-1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的系列事件：[BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest)， [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一或多個事件的處理常式。
+1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的一連串事件：[BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest)、 [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一個或多個事件的處理常式。
 
-2. 對於相同事件，也就是在已設定的順序*Web.config*。
+2. 針對相同的事件，這是在*web.config*中設定的順序。
 
-除了模組，您可以新增至生命週期事件的處理常式您*Global.asax.cs*檔案。 在 設定模組中的處理常式之後，執行這些處理常式。
+除了模組之外，您還可以將生命週期事件的處理常式新增至*Global.asax.cs*檔案。 這些處理常式會在已設定之模組中的處理常式之後執行。
 
 ## <a name="from-handlers-and-modules-to-middleware"></a>從處理常式和模組到中介軟體
 
-**中介軟體是 HTTP 模組和處理常式比簡單的：**
+**中介軟體比 HTTP 模組和處理常式簡單：**
 
-* 模組、 處理常式*Global.asax.cs*， *Web.config* （除了 IIS 組態） 和應用程式生命週期都不見了
+* 模組、處理常式、 *Global.asax.cs*、 *web.config （IIS*設定除外）和應用程式生命週期都已消失
 
-* 模組和處理常式的角色有接手的中介軟體
+* 中介軟體已接管模組和處理常式的角色
 
-* 中介軟體會設定為使用程式碼，而非在*Web.config*
+* 中介軟體是使用程式碼（而不*是 web.config）* 來設定
 
-* [管線分支](xref:fundamentals/middleware/index#use-run-and-map)可讓您將要求傳送至特定中介軟體，根據不僅同時也在要求標頭、 查詢字串等的 URL。
+* [管線分支](xref:fundamentals/middleware/index#use-run-and-map)可讓您將要求傳送至特定中介軟體，而不只是 URL，也會根據要求標頭、查詢字串等。
 
-**中介軟體是非常類似於模組：**
+**中介軟體非常類似模組：**
 
 * 在每個要求的主體中叫用
 
-* 能夠藉由將要求中，最少運算[不將要求傳遞至下一個中介軟體](#http-modules-shortcircuiting-middleware)
+* 無法將[要求傳遞至下一個中介軟體](#http-modules-shortcircuiting-middleware)，藉此縮短要求的路線
 
 * 能夠建立自己的 HTTP 回應
 
-**中介軟體和模組會處理不同的順序：**
+**中介軟體和模組會以不同的順序進行處理：**
 
-* 以這它們要插入至要求管線，而模組的順序主要是根據順序為基礎的中介軟體順序[應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)事件
+* 中介軟體的順序是根據它們插入要求管線的順序，而模組的順序則主要是根據[應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)事件
 
-* 回應的中介軟體順序是反向程序，從要求，而模組的順序是相同的要求和回應
+* 回應的中介軟體順序與要求相反，而模組的順序則與要求和回應相同
 
 * 請參閱[使用 IApplicationBuilder 建立中介軟體管線](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)
 
 ![中介軟體](http-modules/_static/middleware.png)
 
-請注意如何在上圖中，驗證中介軟體縮短，則要求。
+請注意，在上圖中，驗證中介軟體會簡短縮短要求。
 
-## <a name="migrating-module-code-to-middleware"></a>將模組程式碼移轉至中介軟體
+## <a name="migrating-module-code-to-middleware"></a>將模組程式碼遷移至中介軟體
 
-現有的 HTTP 模組會看起來像這樣：
+現有的 HTTP 模組看起來會像這樣：
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyModule.cs?highlight=6,8,24,31)]
 
-中所示[中介軟體](xref:fundamentals/middleware/index)頁面上，ASP.NET Core 中介軟體是公開的類別`Invoke`方法採用`HttpContext`，並傳回`Task`。 您新的中介軟體會看起來像這樣：
+如[中介軟體](xref:fundamentals/middleware/index)頁面所示，ASP.NET Core 中介軟體是一個類別，它會`Invoke`公開採用`HttpContext`並傳回的`Task`方法。 您的新中介軟體看起來會像這樣：
 
 <a name="http-modules-usemiddleware"></a>
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddleware.cs?highlight=9,13,20,24,28,30,32)]
 
-上一節中建立上述的中介軟體範本[寫入中介軟體](xref:fundamentals/middleware/write)。
+先前的中介軟體範本取自[撰寫中介軟體](xref:fundamentals/middleware/write)的一節。
 
-*MyMiddlewareExtensions*協助程式類別可讓您更輕鬆地設定您的中介軟體，在您`Startup`類別。 `UseMyMiddleware`方法會將您的中介軟體類別加入至要求管線。 中介軟體所需的服務取得插入中介軟體的建構函式中。
+*MyMiddlewareExtensions* helper 類別可讓您更輕鬆地在`Startup`類別中設定中介軟體。 `UseMyMiddleware`方法會將中介軟體類別新增至要求管線。 中介軟體所需的服務會插入中介軟體的函式中。
 
 <a name="http-modules-shortcircuiting-middleware"></a>
 
@@ -104,247 +104,247 @@ ASP.NET Core 中介軟體之前，讓我們先複習一下 HTTP 模組和處理�
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyTerminatingModule.cs?highlight=9,10,11,12,13&name=snippet_Terminate)]
 
-中介軟體會處理此不呼叫`Invoke`管線中的下一個中介軟體上。 記住這不會完全終止要求，因為前一個中介軟體將仍會叫用時的回應會回到管線。
+中介軟體會藉由不在`Invoke`管線中的下一個中介軟體上呼叫來處理這種情況。 請記住，這並不會完全終止要求，因為當回應透過管線回傳時，仍然會叫用先前的中介軟體。
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyTerminatingMiddleware.cs?highlight=7,8&name=snippet_Terminate)]
 
-當您將您的模組功能移轉到新中介軟體時，您可能會發現不編譯您的程式碼，因為`HttpContext`類別已大幅改變 ASP.NET Core 中。 [稍後在](#migrating-to-the-new-httpcontext)，您將了解如何移轉至新的 ASP.NET Core HttpContext。
+當您將模組的功能遷移至新的中介軟體時，您可能會發現程式碼不會`HttpContext`編譯，因為在 ASP.NET Core 中，類別已大幅變更。 [稍後](#migrating-to-the-new-httpcontext)，您將瞭解如何遷移至新的 ASP.NET Core HttpCoNtext。
 
-## <a name="migrating-module-insertion-into-the-request-pipeline"></a>移轉至要求管線的模組插入
+## <a name="migrating-module-insertion-into-the-request-pipeline"></a>將模組插入遷移至要求管線
 
-HTTP 模組通常會新增至要求管線，使用*Web.config*:
+HTTP 模組通常*會使用 web.config*新增至要求管線：
 
 [!code-xml[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32-33,36,43,50,101)]
 
-轉換所[新增您新的中介軟體](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)至要求管線中您`Startup`類別：
+將您的[新中介軟體新增](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)至`Startup`類別中的要求管線，以轉換此項：
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=16)]
 
-您可以在該處插入新中介軟體管線中的確切取決於它處理為模組的事件 (`BeginRequest`，`EndRequest`等) 和其在清單中的模組中的順序*Web.config*。
+管線中您插入新中介軟體的確切位置，取決於它*在 web.config 中*處理為模組的事件（`BeginRequest`、 `EndRequest`等）及其順序。
 
-如先前所述，有是 ASP.NET Core 中的任何應用程式生命週期和模組所使用的順序由中介軟體處理回應的順序不同。 這可能會使您訂購的決策更具挑戰性。
+如先前所述，ASP.NET Core 中沒有應用程式生命週期，中介軟體處理回應的順序與模組使用的順序不同。 這可能會讓您的訂購決策更具挑戰性。
 
-如果順序會變成問題，您可以將您的模組分割成多個可以獨立地排序的中介軟體元件。
+如果順序變成問題，您可以將模組分割成可獨立排序的多個中介軟體元件。
 
-## <a name="migrating-handler-code-to-middleware"></a>將處理常式程式碼移轉至中介軟體
+## <a name="migrating-handler-code-to-middleware"></a>將處理常式程式碼遷移至中介軟體
 
 HTTP 處理常式看起來像這樣：
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/HttpHandlers/ReportHandler.cs?highlight=5,7,13,14,15,16)]
 
-在 ASP.NET Core 專案中，您會將它轉譯成中介軟體如下所示：
+在您的 ASP.NET Core 專案中，您會將其轉譯為中介軟體，如下所示：
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/ReportHandlerMiddleware.cs?highlight=7,9,13,20,21,22,23,40,42,44)]
 
-此中介軟體是非常類似於對應模組到中介軟體。 唯一的真正差異在於，以下是不需要呼叫`_next.Invoke(context)`。 這很合理，因為處理常式結尾的要求管線，因此沒有下一個中介軟體來叫用。
+這個中介軟體非常類似于模組的對應中介軟體。 唯一的真正差異在於，這裡沒有對`_next.Invoke(context)`的呼叫。 這是合理的，因為處理常式是在要求管線的結尾，因此不會叫用下一個中介軟體。
 
-## <a name="migrating-handler-insertion-into-the-request-pipeline"></a>移轉的處理常式插入至要求管線
+## <a name="migrating-handler-insertion-into-the-request-pipeline"></a>將處理常式插入遷移至要求管線
 
-設定 HTTP 處理常式完成*Web.config* ，看起來像這樣：
+設定 HTTP 處理常式*是在 web.config*中完成，看起來像這樣：
 
 [!code-xml[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32,46-48,50,101)]
 
-您可以將此轉換加入至要求管線中的新處理常式中介軟體程式`Startup`類別，類似於從模組轉換的中介軟體。 該方法的問題是，它會將所有要求都傳送至新處理常式中介軟體。 不過，您只想具有特定副檔名的要求進入您的中介軟體。 就能得到相同的功能，您必須與您的 HTTP 處理常式。
+您可以將新的處理常式中介軟體新增至`Startup`類別中的要求管線，以進行轉換，類似于從模組轉換的中介軟體。 該方法的問題在於，它會將所有要求傳送至新的處理常式中介軟體。 不過，您只想要要求具有指定的延伸模組，才能到達您的中介軟體。 這會提供您與 HTTP 處理常式相同的功能。
 
-其中一個解決方案是分支的要求指定的擴充功能中，管線使用`MapWhen`擴充方法。 這麼做在同一個`Configure`您可在其中新增其他中介軟體的方法：
+其中一個解決方法是使用`MapWhen`擴充方法，將管線分支給具有給定延伸的要求。 您可以在新增其他中間`Configure`件的相同方法中執行此動作：
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=27-34)]
 
-`MapWhen` 採用這些參數：
+`MapWhen`會採用下列參數：
 
-1. 採用 lambda `HttpContext` ，並傳回`true`如果要求應該關閉分支。 這表示您可以分支不只是根據其延伸模組，而是根據在要求標頭、 查詢字串參數等的要求。
+1. 使用的`HttpContext` `true` lambda，如果要求應該在分支中，則會傳回。 這表示您不僅可以根據要求的延伸模組，也會根據要求標頭、查詢字串參數等來分支要求。
 
-2. 採用 lambda `IApplicationBuilder` ，並將新分支的所有中介軟體。 這表示您可以加入其他中介軟體至分支之前處理常式中介軟體。
+2. 採用`IApplicationBuilder`並新增分支之所有中介軟體的 lambda。 這表示您可以將其他中介軟體新增至處理常式中介軟體前方的分支。
 
-之前的分支將會叫用的所有要求; 新增至管線的中介軟體分支不會影響在其上。
+在所有要求上叫用分支之前，已將中介軟體新增至管線;分支不會對它們產生任何影響。
 
-## <a name="loading-middleware-options-using-the-options-pattern"></a>正在載入使用 「 選項 」 模式的中介軟體選項
+## <a name="loading-middleware-options-using-the-options-pattern"></a>使用選項模式載入中介軟體選項
 
-部分模組和處理常式已儲存在組態選項*Web.config*。不過，在 ASP.NET Core 中新的組態模型用來代替*Web.config*。
+有些模組和處理常式都有*儲存在 web.config*中的設定選項。不過，在 ASP.NET Core 會使用新的設定模型來取代*web.config*。
 
-新[組態系統](xref:fundamentals/configuration/index)提供您一個選項來解決這個問題：
+新的設定[系統](xref:fundamentals/configuration/index)會提供您下列選項來解決此問題：
 
-* 直接插入到中介軟體選項中所示[下一節](#loading-middleware-options-through-direct-injection)。
+* 將選項直接插入中介軟體，如下一[節](#loading-middleware-options-through-direct-injection)所示。
 
-* 使用[選項模式](xref:fundamentals/configuration/options):
+* 使用[選項模式](xref:fundamentals/configuration/options)：
 
-1. 建立類別以包裝您的中介軟體選項，例如：
+1. 建立類別來存放中介軟體選項，例如：
 
    [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Options)]
 
 2. 儲存選項值
 
-   組態系統，可讓您儲存選項任何地方您希望的值。 不過，在網站使用最*appsettings.json*，因此我們將該方法：
+   設定系統可讓您將選項值儲存在您想要的任何位置。 不過，大部分的網站都使用*appsettings*，所以我們會採用這種方法：
 
    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,14-18)]
 
-   *MyMiddlewareOptionsSection*以下是區段名稱。 它不一定要與您的選項類別的名稱相同。
+   這裡的*MyMiddlewareOptionsSection*是區段名稱。 它不一定要與選項類別的名稱相同。
 
-3. 選項類別相關聯的選項值
+3. 將選項值與選項類別產生關聯
 
-    「 選項 」 模式使用 ASP.NET Core 的相依性插入架構為建立關聯的選項類型 (例如`MyMiddlewareOptions`) 與`MyMiddlewareOptions`具有實際選項物件。
+    選項模式會使用 ASP.NET Core 的相依性插入架構，將選項類型（例如`MyMiddlewareOptions`） `MyMiddlewareOptions`與具有實際選項的物件產生關聯。
 
-    更新您`Startup`類別：
+    更新您`Startup`的類別：
 
-   1. 如果您使用*appsettings.json*，將它新增至組態產生器中`Startup`建構函式：
+   1. 如果您使用的 `Startup`是 appsettings，請將它新增至函式中的設定產生器：
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Ctor&highlight=5-6)]
 
-   2. 設定選項的服務：
+   2. 設定選項服務：
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_ConfigureServices&highlight=4)]
 
-   3. 您的選項類別相關聯的選項：
+   3. 將您的選項與選項類別產生關聯：
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_ConfigureServices&highlight=6-8)]
 
-4. 插入至中介軟體建構函式的選項。 這是類似於插入到控制器的選項。
+4. 將選項插入中介軟體的函式。 這類似于將選項插入控制器中。
 
    [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_MiddlewareWithParams&highlight=4,7,10,15-16)]
 
-   [UseMiddleware](#http-modules-usemiddleware)擴充方法，將它新增至中的介軟體`IApplicationBuilder`相依性插入會負責。
+   將中介軟體新增至的`IApplicationBuilder` [UseMiddleware](#http-modules-usemiddleware) 擴充方法會負責相依性插入。
 
-   這並不限於`IOptions`物件。 如此一來，可插入中介軟體所需要的任何其他物件。
+   這不限於`IOptions`物件。 中介軟體所需的任何其他物件都可以用這種方式插入。
 
-## <a name="loading-middleware-options-through-direct-injection"></a>正在載入透過直接插入中介軟體選項
+## <a name="loading-middleware-options-through-direct-injection"></a>透過直接插入來載入中介軟體選項
 
-「 選項 」 模式的優點是，它會建立鬆散耦合的選項值和其取用者之間。 一旦您已建立的選項類別關聯的實際選項值，任何其他類別可以取得存取權透過相依性插入架構的選項。 就不需要以傳遞選項的值。
+[選項] 模式的優點是它會在選項值及其取用者之間建立鬆散結合。 當您將 options 類別與實際的選項值建立關聯之後，任何其他類別都可以透過相依性插入架構取得選項的存取權。 不需要傳遞選項值。
 
-這會細分不過如果您想要使用不同選項兩次，使用相同的中介軟體。 例如授權中介軟體可讓不同角色的不同分支中使用。 您無法將兩個不同的選項物件關聯的一個選項類別。
+不過，如果您想要使用相同的中介軟體兩次，但有不同的選項，則會中斷。 例如，在允許不同角色的不同分支中使用的授權中介軟體。 您無法將兩個不同的選項物件與一個選項類別產生關聯。
 
-解決方法是取得使用中的實際選項值的選項物件您`Startup`類別，並將它們直接加入中介軟體的每個執行個體。
+解決方法是使用`Startup`類別中的實際選項值來取得 options 物件，並將它們直接傳遞至中介軟體的每個實例。
 
-1. 新增第二個碼*appsettings.json*
+1. 將第二個金鑰新增至*appsettings*
 
-   若要新增第二組選項，以*appsettings.json*檔案，請使用新的金鑰來唯一識別它：
+   若要將第二組選項新增至*appsettings* ，請使用新的金鑰來唯一識別它：
 
    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,10-18&highlight=2-5)]
 
-2. 擷取選項值，並將它們傳遞給中介軟體。 `Use...` （其會新增至管線的中介軟體） 的擴充方法是傳入的選項值的邏輯位置： 
+2. 取出選項值，並將它們傳遞至中介軟體。 `Use...`擴充方法（會將中介軟體新增至管線）是傳遞選項值的邏輯位置： 
 
    [!code-csharp[](http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=20-23)]
 
-3. 啟用中介軟體来採取的 options 參數。 提供的多載`Use...`擴充方法 (採用的 options 參數，並將它傳遞給`UseMiddleware`)。 當`UseMiddleware`稱為使用參數時，它會將參數傳遞至您的中介軟體建構函式中介軟體物件具現化時。
+3. 啟用中介軟體以接受選項參數。 提供擴充方法的多載（會採用 options 參數並將它傳遞給`UseMiddleware`）。 `Use...` 當`UseMiddleware`以參數呼叫時，它會在具現化中介軟體物件時，將參數傳遞至中介軟體的函式。
 
    [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Extensions&highlight=9-14)]
 
-   請注意這會在將選項物件的包裝`OptionsWrapper`物件。 這會實作`IOptions`，如預期般的中介軟體建構函式。
+   請注意，這會將選項物件包裝`OptionsWrapper`在物件中。 `IOptions`這會依照中介軟體函式的預期來執行。
 
-## <a name="migrating-to-the-new-httpcontext"></a>移轉至新的 HttpContext
+## <a name="migrating-to-the-new-httpcontext"></a>遷移至新的 HttpCoNtext
 
-您稍早所見，`Invoke`方法中介軟體中的使用的型別參數`HttpContext`:
+您稍早看到中間`Invoke`件中的方法採用類型`HttpContext`的參數：
 
 ```csharp
 public async Task Invoke(HttpContext context)
 ```
 
-`HttpContext` 已大幅改變 ASP.NET Core 中。 本節說明如何將最常使用的屬性轉譯[System.Web.HttpContext](/dotnet/api/system.web.httpcontext)新`Microsoft.AspNetCore.Http.HttpContext`。
+`HttpContext`在 ASP.NET Core 中已大幅變更。 本節說明如何將[system.web](/dotnet/api/system.web.httpcontext)的最常使用屬性轉譯為新`Microsoft.AspNetCore.Http.HttpContext`的。
 
 ### <a name="httpcontext"></a>HttpContext
 
-**HttpContext.Items**會轉譯成：
+**HttpCoNtext 的專案**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Items)]
 
-**唯一的要求識別碼 （沒有 System.Web.HttpContext 對應項目）**
+**唯一要求識別碼（不含 System.web. HttpCoNtext 對應）**
 
-針對每個要求，提供您的唯一識別碼。 要包含在您的記錄檔中非常有用。
+為每個要求提供唯一的識別碼。 在記錄中包含非常有用的。
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Trace)]
 
 ### <a name="httpcontextrequest"></a>HttpContext.Request
 
-**HttpContext.Request.HttpMethod**會轉譯成：
+**HttpMethod**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Method)]
 
-**HttpContext.Request.QueryString**會轉譯成：
+**HttpCoNtext**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Query)]
 
-**HttpContext.Request.Url**並**HttpContext.Request.RawUrl**轉譯成：
+**RawUrl**會轉譯為：（& i）
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Url)]
 
-**HttpContext.Request.IsSecureConnection**會轉譯成：
+**IsSecureConnection**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Secure)]
 
-**HttpContext.Request.UserHostAddress**會轉譯成：
+**UserHostAddress**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Host)]
 
-**HttpContext.Request.Cookies**會轉譯成：
+**HttpCoNtext**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Cookies)]
 
-**HttpContext.Request.RequestContext.RouteData**會轉譯成：
+**RequestCoNtext. RouteData**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Route)]
 
-**HttpContext.Request.Headers**會轉譯成：
+**HttpcoNtext.current**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Headers)]
 
-**HttpContext.Request.UserAgent**會轉譯成：
+**UserAgent**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Agent)]
 
-**HttpContext.Request.UrlReferrer**會轉譯成：
+**UrlReferrer**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Referrer)]
 
-**HttpContext.Request.ContentType**會轉譯成：
+**HttpCoNtext**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Type)]
 
-**HttpContext.Request.Form**會轉譯成：
+**HttpCoNtext**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Form)]
 
 > [!WARNING]
-> 讀取表單值的內容的子型別才*x-www-表單-urlencoded*或是*表單資料*。
+> 只有在 content 子類型為*x-www-表單 urlencoded*或*表單資料*時，才讀取表單值。
 
-**HttpContext.Request.InputStream**會轉譯成：
+**InputStream**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Input)]
 
 > [!WARNING]
-> 此程式碼只能用在處理常式型別中介軟體，在管線結尾處。
+> 請只在管線結尾的處理常式類型中介軟體中使用此程式碼。
 >
->每個要求一次如上所示，您可以閱讀原始的主體。 嘗試讀取主體，在第一次讀取之後的中介軟體會讀取空白主體。
+>您可以讀取每個要求只顯示一次的原始本文。 在第一次讀取之後嘗試讀取本文的中介軟體將會讀取空白主體。
 >
->這不適用於讀取表單，如先前所示因為完成從緩衝區。
+>這並不適用于讀取如先前所示的表單，因為這是從緩衝區完成的。
 
 ### <a name="httpcontextresponse"></a>HttpContext.Response
 
-**HttpContext.Response.Status**並**HttpContext.Response.StatusDescription**轉譯成：
+**StatusDescription**會轉譯為下列內容：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Status)]
 
-**HttpContext.Response.ContentEncoding**並**HttpContext.Response.ContentType**轉譯成：
+**ContentEncoding**和**HTTPcoNtext**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_RespType)]
 
-**HttpContext.Response.ContentType**上自己也會轉譯成：
+**HttpCoNtext**本身的 ContentType 也會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_RespTypeOnly)]
 
-**HttpContext.Response.Output**會轉譯成：
+**HttpCoNtext**會轉譯為：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Output)]
 
 **HttpContext.Response.TransmitFile**
 
-提供的檔案會討論[此處](../fundamentals/request-features.md#middleware-and-request-features)。
+[這裡](../fundamentals/request-features.md#middleware-and-request-features)會討論如何提供檔案。
 
 **HttpContext.Response.Headers**
 
-傳送回應標頭複雜，原因，如果您設定它們的任何項目寫入至回應主體之後，它們將不會傳送。
+傳送回應標頭很複雜，因為如果您在任何專案都已寫入回應主體之後設定它們，則不會將它們送出。
 
-解決方法是將設定寫入回應啟動之前將會直接呼叫的回呼方法。 最好的做法是在開頭`Invoke`中介軟體中的方法。 它是這個回呼方法，以設定您的回應標頭。
+解決方案是設定回呼方法，在寫入回應開始之前，會先呼叫它。 這是在中介軟體的`Invoke`方法開頭進行的最佳做法。 這是設定回應標頭的回呼方法。
 
-下列程式碼設定呼叫的回呼方法`SetHeaders`:
+下列程式碼會設定名`SetHeaders`為的回呼方法：
 
 ```csharp
 public async Task Invoke(HttpContext httpContext)
@@ -353,13 +353,13 @@ public async Task Invoke(HttpContext httpContext)
     httpContext.Response.OnStarting(SetHeaders, state: httpContext);
 ```
 
-`SetHeaders`回呼方法會看起來像這樣：
+`SetHeaders`回呼方法看起來會像這樣：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_SetHeaders)]
 
 **HttpContext.Response.Cookies**
 
-在瀏覽器的 cookie 移動*Set-cookie*回應標頭。 傳送回應標頭，將傳送 cookie 需要如此一來，所用相同的回呼：
+Cookie 會以*設定-Cookie*回應標頭傳送至瀏覽器。 因此，傳送 cookie 需要與用來傳送回應標頭相同的回呼：
 
 ```csharp
 public async Task Invoke(HttpContext httpContext)
@@ -369,13 +369,13 @@ public async Task Invoke(HttpContext httpContext)
     httpContext.Response.OnStarting(SetHeaders, state: httpContext);
 ```
 
-`SetCookies`回呼方法看起來如下所示：
+`SetCookies`回呼方法看起來會像下面這樣：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_SetCookies)]
 
 ## <a name="additional-resources"></a>其他資源
 
-* [HTTP 處理常式和 HTTP 模組概觀](/iis/configuration/system.webserver/)
+* [HTTP 處理常式和 HTTP 模組總覽](/iis/configuration/system.webserver/)
 * [組態](xref:fundamentals/configuration/index)
 * [應用程式啟動](xref:fundamentals/startup)
 * [中介軟體](xref:fundamentals/middleware/index)

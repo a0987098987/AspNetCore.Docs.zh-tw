@@ -6,14 +6,14 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 08/19/2019
 uid: security/authentication/certauth
-ms.openlocfilehash: ce7bcdbfb8ce0f1febf34b49786e92c917be139c
-ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
+ms.openlocfilehash: bb375cf380175daf2399f3b56f543819ee5692b8
+ms.sourcegitcommit: 07cd66e367d080acb201c7296809541599c947d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384841"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71039248"
 ---
-# <a name="overview"></a>總覽
+# <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
 `Microsoft.AspNetCore.Authentication.Certificate`包含類似于 ASP.NET Core 的[憑證驗證](https://tools.ietf.org/html/rfc5246#section-7.4.4)的執行。 憑證驗證會在 TLS 層級進行，長時間才會到達 ASP.NET Core。 更準確地說，這是驗證憑證的驗證處理常式，並提供您可將該憑證解析成的`ClaimsPrincipal`事件。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "70384841"
 
 如果驗證失敗，此處理程式`403 (Forbidden)`會傳迴響應， `401 (Unauthorized)`而不是，如您所預期。 其原因是必須在初始 TLS 連線期間進行驗證。 當它到達處理常式時，就太晚了。 沒有任何方法可將連接從匿名連接升級為具有憑證的連線。
 
-此外， `app.UseAuthentication();` `Startup.Configure`也會在方法中新增。 否則，HttpCoNtext 使用者將不會設定為`ClaimsPrincipal`從憑證建立。 例如：
+此外， `app.UseAuthentication();` `Startup.Configure`也會在方法中新增。 否則，HttpCoNtext 使用者將不會設定為`ClaimsPrincipal`從憑證建立。 例如:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

@@ -7,12 +7,12 @@ ms.author: stevesa
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: spa/angular
-ms.openlocfilehash: 6d0107ef52d63a0f6f5713c518ddc54ac4230d53
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 62654ca040be99de8063a63c7e4ac09cbb8564eb
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893665"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080408"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Angular 專案範本
 
@@ -26,7 +26,7 @@ ms.locfileid: "64893665"
 
 進入命令提示字元，然後在空目錄中使用 `dotnet new angular` 命令以建立新的專案。 例如，下列命令會在 *my-new-app* 目錄中建立應用程式並切換到該目錄：
 
-```console
+```dotnetcli
 dotnet new angular -o my-new-app
 cd my-new-app
 ```
@@ -53,7 +53,7 @@ Now listening on: http://localhost:<port>
 
 在瀏覽器中開啟這個 URL。
 
-應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 系統會記錄一則類似下面的訊息：*NG Live 程式開發伺服器在 localhost 上接聽：&lt;otherport&gt;，開啟您的瀏覽器 http://localhost:&lt; otherport&gt;/*。 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
+應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 系統會記錄一則類似下面的訊息：*NG Live 程式開發伺服器正在接聽&lt;localhost： otherport&gt;，開啟您的 http://localhost:&lt 瀏覽器; otherport&gt; /* 。 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
 
 ---
 
@@ -90,7 +90,7 @@ npm install --save <package_name>
 
 在開發時，應用程式會以方便開發人員操作的模式執行。 例如，JavaScript 組合會包含來源對應 (以便在偵錯時，您可以看到原始的 TypeScript 程式碼)。 應用程式會監看磁碟上的 TypeScript、HTML 和 CSS 檔案變更，並在發現檔案變更時，自動重新編譯並重新載入。
 
-在實際執行環境中，請提供具有最佳效能的應用程式版本。 這是設定為自動進行的。 當您發行時，組建組態會發出精簡、預先 (AoT) 編譯的用戶端程式碼組建。 不同開發組建中，於生產環境的組建並不需要 （除非您已啟用伺服器端轉譯 (SSR)），在伺服器上安裝 Node.js。
+在實際執行環境中，請提供具有最佳效能的應用程式版本。 這是設定為自動進行的。 當您發行時，組建組態會發出精簡、預先 (AoT) 編譯的用戶端程式碼組建。 不同于開發組建，生產組建不需要在伺服器上安裝 Node.js （除非您已啟用伺服器端呈現（SSR））。
 
 您可以使用標準 [ASP.NET Core 裝載和部署方法](xref:host-and-deploy/index)。
 

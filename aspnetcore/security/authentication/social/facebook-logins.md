@@ -1,23 +1,23 @@
 ---
 title: ASP.NET Core 中的 Facebook 外部登入設定
 author: rick-anderson
-description: 程式碼範例來示範整合到現有的 ASP.NET Core 應用程式的 Facebook 帳戶使用者驗證的教學課程。
+description: 教學課程中的程式碼範例示範如何將 Facebook 帳戶使用者驗證整合到現有的 ASP.NET Core 應用程式中。
 ms.author: riande
 ms.custom: seoapril2019, mvc, seodec18
 ms.date: 03/04/2019
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 84b891f6cee71a26726d49a9d42ae45007d2b429
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: f7b21de7e5fe9d77804588280c3d8be9df8afee5
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893585"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082541"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Facebook 外部登入設定
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程，程式碼範例示範如何讓使用者使用自己的 Facebook 帳戶使用範例 ASP.NET Core 2.0 專案上建立登入[上一頁](xref:security/authentication/social/index)。 我們先建立 Facebook 應用程式識別碼[官方步驟](https://developers.facebook.com)。
+本教學課程包含程式碼範例，說明如何讓使用者使用在[上一頁](xref:security/authentication/social/index)建立的範例 ASP.NET Core 2.0 專案，以其 Facebook 帳戶登入。 我們先建立 Facebook 應用程式識別碼[官方步驟](https://developers.facebook.com)。
 
 ## <a name="create-the-app-in-facebook"></a>在 Facebook 中建立應用程式
 
@@ -64,7 +64,7 @@ ms.locfileid: "64893585"
 
 執行下列命令，以安全地儲存`App ID`和`App Secret`使用 Secret Manager:
 
-```console
+```dotnetcli
 dotnet user-secrets set Authentication:Facebook:AppId <app-id>
 dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
 ```
@@ -123,7 +123,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 執行您的應用程式，然後按一下**登入**。 您會看到一個選項來使用 Facebook 登入。
 
-![Web 應用程式：未經驗證的使用者](index/_static/DoneFacebook.png)
+![Web 應用程式：使用者未通過驗證](index/_static/DoneFacebook.png)
 
 當您按一下**Facebook**，將您重新導向至 Facebook 進行驗證：
 
@@ -137,18 +137,18 @@ Facebook 驗證會要求預設公用設定檔和電子郵件地址：
 
 您現在用來登入您的 Facebook 認證：
 
-![Web 應用程式：已驗證的使用者](index/_static/Done.png)
+![Web 應用程式：使用者已驗證](index/_static/Done.png)
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="troubleshooting"></a>疑難排解
 
-* **ASP.NET Core 2.x 只有：** 如果身分識別未設定藉由呼叫`services.AddIdentity`中`ConfigureServices`，來驗證嘗試會導致*ArgumentException:必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這麼做。
+* **僅限 ASP.NET Core 2.x：** 如果未透過在中`services.AddIdentity` `ConfigureServices`呼叫*來設定身分識別，則嘗試進行驗證會導致 ArgumentException：必須提供*' SignInScheme ' 選項。 在本教學課程中使用的專案範本可確保，這麼做。
 * 如果尚未套用初始移轉建立站台資料庫，您會收到*處理要求時資料庫作業失敗*時發生錯誤。 點選**套用移轉**建立資料庫，並重新整理 以忽略錯誤繼續執行。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 新增[Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) NuGet 封裝加入您的專案進行進階的 Facebook 驗證案例。 此封裝不一定要將 Facebook 外部登入功能整合您的應用程式。 
+* 將[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) NuGet 套件新增至您的專案，以進行 advanced Facebook 驗證案例。 此套件不需要整合 Facebook 外部登入功能與您的應用程式。 
 
 * 本文說明如何您可以使用 Facebook 進行驗證。 您可以依照類似的方法，來驗證與列在其他提供者[上一頁](xref:security/authentication/social/index)。
 

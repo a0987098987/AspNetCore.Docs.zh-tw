@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/14/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 8474b8f12d3e08e47a4cc9b20543d2a9e6e91998
-ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
+ms.openlocfilehash: eafb06d181ca3f085cccb314749c8d4deba074fa
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71011081"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082565"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>在 ASP.NET Core 中強制使用 HTTPS
 
@@ -315,7 +315,7 @@ ASP.NET Core 2.1 和更新版本會使用`UseHsts`擴充方法來執行 HSTS。 
 
 使用 `--no-https` 選項。 例如：
 
-```console
+```dotnetcli
 dotnet new webapp --no-https
 ```
 
@@ -338,13 +338,13 @@ For more information on configuring HTTPS see https://go.microsoft.com/fwlink/?l
 
 安裝 .NET Core SDK 會將 ASP.NET Core HTTPS 開發憑證安裝至本機使用者憑證存放區。 憑證已安裝，但不受信任。 若要信任憑證，請執行 dotnet `dev-certs`工具的一次性步驟：
 
-```console
+```dotnetcli
 dotnet dev-certs https --trust
 ```
 
 下列命令會提供 `dev-certs` 工具的說明：
 
-```console
+```dotnetcli
 dotnet dev-certs https --help
 ```
 

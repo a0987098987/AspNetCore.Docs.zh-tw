@@ -5,12 +5,12 @@ description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中�
 ms.author: riande
 ms.date: 07/25/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 67a5fcee0a37861fd39a018443edbc0b9e513213
-ms.sourcegitcommit: 7a46973998623aead757ad386fe33602b1658793
-ms.translationtype: HT
+ms.openlocfilehash: 0cc00cb85b6054752417b82c783cfd4c306aeda5
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69487690"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082569"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
@@ -56,13 +56,13 @@ ms.locfileid: "69487690"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 Visual Studio 的 [檔案]  功能表中，選取 [新增]  > [專案]  。
-* 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]  。
+* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案]。
+* 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]。
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2.1.png)
 * 將專案命名為 **RazorPagesMovie**。 請務必將專案命名為 *RazorPagesMovie*，以便在您複製並貼上程式碼時，名稱空間會相符。
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/config.png)
 
-* 在下拉式清單中選取 [ASP.NET Core 3.0]  ，然後依序選取 [Web 應用程式]  及 [建立]  。
+* 在下拉式清單中選取 [ASP.NET Core 3.0]，然後依序選取 [Web 應用程式] 及 [建立]。
 
 ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/3/npx.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "69487690"
 
 * 執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o RazorPagesMovie
   code -r RazorPagesMovie
   ```
@@ -86,32 +86,32 @@ ms.locfileid: "69487690"
   * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問「'RazorPagesMovie' 中遺漏了建置和偵錯的必要資產。**新增它們嗎？** 選取 [是]  。
+* 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問「'RazorPagesMovie' 中遺漏了建置和偵錯的必要資產。**新增它們嗎？** 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 [檔案]  > [新增解決方案]  。
+* 選取 [檔案] > [新增解決方案]。
 
 ![macOS 新增方案](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* 選取 [.NET Core]  > [應用程式]  > [Web 應用程式]  > [下一步]  。
+* 選取 [.NET Core] > [應用程式] > [Web 應用程式] > [下一步]。
 
   ![macOS [新增專案] 對話方塊](razor-pages-start/_static/webapp.png)
 
-* 在 [設定您的新 ASP.NET Core Web API]  對話方塊中，為 [.NET Core 3.0]  設定 [目標 Framework]  。
+* 在 [設定您的新 ASP.NET Core Web API] 對話方塊中，為 [.NET Core 3.0] 設定 [目標 Framework]。
 
   ![macOS .NET Core 3.0 選取項目](razor-pages-start/_static/targetframework3.png)
 
-* 將專案命名為 **RazorPagesMovie**，然後選取 [建立]  。
+* 將專案命名為 **RazorPagesMovie**，然後選取 [建立]。
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 
 
 ## <a name="open-the-project"></a>開啟專案
 
-從 Visual Studio 中，選取 [檔案] > [開啟]  ，然後選取 *RazorPagesMovie.csproj* 檔案。
+從 Visual Studio 中，選取 [檔案] > [開啟]，然後選取 *RazorPagesMovie.csproj* 檔案。
 
 <!-- End of VS tabs -->
 
@@ -229,9 +229,9 @@ ms.locfileid: "69487690"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 Visual Studio 的 [檔案]  功能表中，選取 [新增]  > [專案]  。
+* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案]。
 
-* 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]  。
+* 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]。
 
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2.1.png)
 
@@ -239,7 +239,7 @@ ms.locfileid: "69487690"
 
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/config.png)
 
-* 在下拉式清單中選取 [ASP.NET Core 2.2]  ，然後選取 [Web 應用程式]  及 [建立]  。
+* 在下拉式清單中選取 [ASP.NET Core 2.2]，然後選取 [Web 應用程式] 及 [建立]。
 
 ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2_2.2.png)
 
@@ -255,7 +255,7 @@ ms.locfileid: "69487690"
 
 * 執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o RazorPagesMovie
   code -r RazorPagesMovie
   ```
@@ -263,7 +263,7 @@ ms.locfileid: "69487690"
   * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問「'RazorPagesMovie' 中遺漏了建置和偵錯的必要資產。**新增它們嗎？** 選取 [是]  。
+* 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問「'RazorPagesMovie' 中遺漏了建置和偵錯的必要資產。**新增它們嗎？** 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
@@ -273,7 +273,7 @@ ms.locfileid: "69487690"
 
 <!-- TODO: update these instruction once mac support 2.2 projects -->
 
-```console
+```dotnetcli
 dotnet new webapp -o RazorPagesMovie
 ```
 
@@ -281,7 +281,7 @@ dotnet new webapp -o RazorPagesMovie
 
 ## <a name="open-the-project"></a>開啟專案
 
-從 Visual Studio 中，選取 [檔案] > [開啟]  ，然後選取 *RazorPagesMovie.csproj* 檔案。
+從 Visual Studio 中，選取 [檔案] > [開啟]，然後選取 *RazorPagesMovie.csproj* 檔案。
 
 <!-- End of VS tabs -->
 
@@ -297,7 +297,7 @@ dotnet new webapp -o RazorPagesMovie
 
   Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。
 
-* 在應用程式的首頁上，選取 [接受]  同意追蹤。
+* 在應用程式的首頁上，選取 [接受] 同意追蹤。
 
   此應用程式不會追蹤個人資訊，但專案範本會包含同意功能，以防您需要同意才符合歐盟的[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
@@ -315,7 +315,7 @@ dotnet new webapp -o RazorPagesMovie
 
   Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後瀏覽至 `http://localhost:5001`。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
 
-* 在應用程式的首頁上，選取 [接受]  同意追蹤。
+* 在應用程式的首頁上，選取 [接受] 同意追蹤。
 
   此應用程式不會追蹤個人資訊，但專案範本會包含同意功能，以防您需要同意才符合歐盟的[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
@@ -333,7 +333,7 @@ dotnet new webapp -o RazorPagesMovie
 
   Visual Studio 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)啟動瀏覽器，然後巡覽至 `http://localhost:5001`。
 
-* 在應用程式的首頁上，選取 [接受]  同意追蹤。
+* 在應用程式的首頁上，選取 [接受] 同意追蹤。
 
   此應用程式不會追蹤個人資訊，但專案範本會包含同意功能，以防您需要同意才符合歐盟的[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 

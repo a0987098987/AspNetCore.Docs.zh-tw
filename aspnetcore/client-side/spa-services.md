@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 uid: client-side/spa-services
-ms.openlocfilehash: 16c9eb1d79bca792062d292795763c54dd02bd37
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 7aff46f739239246191763e0590046b2d9995922
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773408"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080501"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>使用 JavaScript 服務在 ASP.NET Core 中建立單一頁面應用程式
 
@@ -219,7 +219,7 @@ JavaScript 服務提供預先設定的應用程式範本。 SpaServices 用於�
 
 這些範本可以透過.NET Core CLI 安裝，執行下列命令：
 
-```console
+```dotnetcli
 dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 ```
 
@@ -233,7 +233,7 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 若要建立新專案使用其中一個 SPA 範本時，包含**簡短名稱**中的範本[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 下列命令會使用伺服器端設定的 ASP.NET Core MVC 建立 Angular 應用程式：
 
-```console
+```dotnetcli
 dotnet new angular
 ```
 
@@ -254,13 +254,13 @@ ASP.NET Core 會使用環境變數，名為`ASPNETCORE_ENVIRONMENT`來儲存組�
 
 在專案的根目錄執行下列命令來還原必要的 NuGet 和 npm 套件：
 
-```console
+```dotnetcli
 dotnet restore && npm i
 ```
 
 建置和執行應用程式：
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -303,7 +303,7 @@ MSBuild 目標須擔負下列責任：
 
 執行時，會叫用 MSBuild 目標：
 
-```console
+```dotnetcli
 dotnet publish -c Release
 ```
 

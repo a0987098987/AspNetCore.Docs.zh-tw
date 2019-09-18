@@ -6,18 +6,18 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 07/08/2019
 uid: tutorials/signalr
-ms.openlocfilehash: 53d3763a93cc72b6bcf85b64a706500299b3597f
-ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
-ms.translationtype: HT
+ms.openlocfilehash: 2dfa994b9763a0139cb70cbf9847ac3b02b568e4
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67893821"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081977"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
 ::: moniker range=">= aspnetcore-3.0"
 
-本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您將學習如何：
+本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web 專案。
@@ -50,7 +50,7 @@ ms.locfileid: "67893821"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* 從功能表中選取 [檔案] > [新增專案] 。
+* 從功能表中選取 [檔案] > [新增專案]。
 
 * 在 [建立新專案] 對話方塊中，選取 [ASP.NET Core Web 應用程式]，然後選取 [下一步]。
 
@@ -68,14 +68,14 @@ ms.locfileid: "67893821"
 
 * 執行下列命令：
 
-   ```console
+   ```dotnetcli
    dotnet new webapp -o SignalRChat
    code -r SignalRChat
    ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 從功能表中選取 [檔案] > [新增方案] 。
+* 從功能表中選取 [檔案] > [新增方案]。
 
 * 選取 [.NET Core] > [應用程式] > [Web 應用程式] (不選取 [Web 應用程式 (模型-檢視-控制器)])，然後選取 [下一步]。
 
@@ -91,7 +91,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增]>[用戶端程式庫]。
+* 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增] > [用戶端程式庫]。
 
 * 在 [新增用戶端程式庫] 對話方塊中，針對 [提供者] 選取 [unpkg]。
 
@@ -110,7 +110,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
 * 在整合式終端機中，執行下列命令以安裝 LibMan。
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -137,7 +137,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
 * 在 [終端機] 中執行下列命令以安裝 LibMan。
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -220,7 +220,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 * 在整合式終端機中，執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet run -p SignalRChat.csproj
   ```
 
@@ -242,7 +242,8 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 > * 如果應用程式無法運作，請開啟您的瀏覽器開發人員工具 (F12)，然後移至主控台。 您可能會看到與 HTML 和 JavaScript 程式碼相關的錯誤。 例如，假設您將 *signalr.js* 放置在與指示不同的資料夾中。 在此情況下，該檔案的參考無法運作，您會在主控台中看到 404 錯誤。
 >   ![signalr.js 找不到錯誤](signalr/_static/3.x/f12-console.png)
 > * 如果您在 Chrome 中收到 ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY 錯誤，或在 Firefox 中收到 NS_ERROR_NET_INADEQUATE_SECURITY 錯誤，請執行下列命令來更新您的開發憑證：
->   ```
+>
+>   ```dotnetcli
 >   dotnet dev-certs https --clean
 >   dotnet dev-certs https --trust
 >   ```
@@ -258,7 +259,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 ::: moniker range="< aspnetcore-3.0"
 
-本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您將學習如何：
+本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web 專案。
@@ -291,7 +292,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* 從功能表中選取 [檔案] > [新增專案] 。
+* 從功能表中選取 [檔案] > [新增專案]。
 
 * 在 [新增專案] 對話方塊中，選取 [已安裝] > [Visual C++] > [Web] > [ASP.NET Core Web 應用程式]。 將專案命名為 *SignalRChat*。
 
@@ -309,14 +310,14 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 * 執行下列命令：
 
-   ```console
+   ```dotnetcli
    dotnet new webapp -o SignalRChat
    code -r SignalRChat
    ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 從功能表中選取 [檔案] > [新增方案] 。
+* 從功能表中選取 [檔案] > [新增方案]。
 
 * 選取 [.NET Core] > [應用程式] > [ASP.NET Core Web 應用程式] (不要選取 [ASP.NET Core Web 應用程式 (MVC)])。
 
@@ -352,7 +353,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
 * 在整合式終端機中，執行下列命令以安裝 LibMan。
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -379,7 +380,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
 * 在 [終端機] 中執行下列命令以安裝 LibMan。
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -462,7 +463,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 * 在整合式終端機中，執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet run -p SignalRChat.csproj
   ```
 

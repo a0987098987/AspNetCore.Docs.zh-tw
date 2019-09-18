@@ -5,12 +5,12 @@ description: 本教學課程會示範如何在 ASP.NET Core 應用程式中安�
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 03b4f7f4ade5268915482a659890c7edc2d9a852
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 5462f89a3b5a257ed0a6a8439efb077653fb14f6
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889873"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082253"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>使用檔案監看員開發 ASP.NET Core 應用程式
 
@@ -24,7 +24,7 @@ ms.locfileid: "64889873"
 
 在命令殼層中，巡覽至 *WebApp* 資料夾。 執行下列命令：
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -61,7 +61,7 @@ Application started. Press Ctrl+C to shut down.
 
 1. 執行下列命令來安裝 `Microsoft.DotNet.Watcher.Tools` 套件：
 
-    ```console
+    ```dotnetcli
     dotnet restore
     ```
 
@@ -177,7 +177,7 @@ public static int Product(int a, int b)
 
 若要開始監看兩個專案的檔案，請變更至 *test* 資料夾。 執行下列命令：
 
-```console
+```dotnetcli
 dotnet watch msbuild /t:Test
 ```
 

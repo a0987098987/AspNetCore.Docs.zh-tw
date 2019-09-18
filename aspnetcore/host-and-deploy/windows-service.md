@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/09/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: c2a2941f2a4e27218c90cf47453c69149da8e766
-ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
+ms.openlocfilehash: 995fdd2bbba30ff983bc2055fcb97c14541e2ac6
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815708"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081487"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -48,7 +48,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 從命令殼層以 [dotnet new](/dotnet/core/tools/dotnet-new) 命令使用背景工作服務 (`worker`) 範本。 在下列範例中，已建立名為 `ContosoWorkerService` 的背景工作服務應用程式。 當命令執行時，會自動建立 `ContosoWorkerService` 應用程式的資料夾。
 
-```console
+```dotnetcli
 dotnet new worker -o ContosoWorkerService
 ```
 

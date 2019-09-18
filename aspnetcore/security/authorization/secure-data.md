@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: d95f44394d6ecc3c3896b45c5bebc73fa2d92445
-ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
+ms.openlocfilehash: d827f6f839c9e42e6d3d7b04fe8b24a1c9732aee
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71011193"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082446"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -103,7 +103,7 @@ ms.locfileid: "71011193"
 
 建立新的移轉，並更新資料庫：
 
-```console
+```dotnetcli
 dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
@@ -130,7 +130,7 @@ dotnet ef database update
 
 `SeedData`類別會建立兩個帳戶： 系統管理員和管理員。 使用[Secret Manager 工具](xref:security/app-secrets)設定這些帳戶的密碼。 設定密碼，從專案目錄 (目錄包含*Program.cs*):
 
-```console
+```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
 ```
 
@@ -279,7 +279,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * 選擇強式密碼：請使用八個或更多個字元，且至少要有一個大寫字元、數位和符號。 比方說，`Passw0rd!`符合強式密碼需求。
 * 執行下列命令，從專案的資料夾，其中`<PW>`的密碼：
 
-  ```console
+  ```dotnetcli
   dotnet user-secrets set SeedUserPW <PW>
   ```
 
@@ -310,7 +310,7 @@ dotnet user-secrets set SeedUserPW <PW>
   * 提供名稱"ContactManager"使命名空間符合此範例中使用的命名空間。
   * `-uld` 指定 LocalDB，而不是 SQLite
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
@@ -321,14 +321,14 @@ dotnet user-secrets set SeedUserPW <PW>
 * Scaffold`Contact`模型。
 * 建立初始移轉並更新資料庫：
 
-```console
+```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet tool install -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator razorpage -m Contact -udl -dc ApplicationDbContext -outDir Pages\Contacts --referenceScriptLibraries
 dotnet ef database drop -f
 dotnet ef migrations add initial
 dotnet ef database update
-  ```
+```
 
 如果您遇到`dotnet aspnet-codegenerator razorpage`命令的錯誤，請參閱[此 GitHub 問題](https://github.com/aspnet/Scaffolding/issues/984)。
 
@@ -426,7 +426,7 @@ dotnet ef database update
 
 建立新的移轉，並更新資料庫：
 
-```console
+```dotnetcli
 dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
@@ -453,7 +453,7 @@ dotnet ef database update
 
 `SeedData`類別會建立兩個帳戶： 系統管理員和管理員。 使用[Secret Manager 工具](xref:security/app-secrets)設定這些帳戶的密碼。 設定密碼，從專案目錄 (目錄包含*Program.cs*):
 
-```console
+```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
 ```
 
@@ -602,16 +602,16 @@ dotnet user-secrets set SeedUserPW <PW>
 * 選擇強式密碼：請使用八個或更多個字元，且至少要有一個大寫字元、數位和符號。 比方說，`Passw0rd!`符合強式密碼需求。
 * 執行下列命令，從專案的資料夾，其中`<PW>`的密碼：
 
-  ```console
+  ```dotnetcli
   dotnet user-secrets set SeedUserPW <PW>
   ```
 
 * 卸載並更新資料庫
 
-    ```console
-     dotnet ef database drop -f
-     dotnet ef database update  
-     ```
+  ```dotnetcli
+  dotnet ef database drop -f
+  dotnet ef database update  
+  ```
 
 * 重新啟動植入資料庫的應用程式。
 
@@ -637,7 +637,7 @@ dotnet user-secrets set SeedUserPW <PW>
   * 提供名稱"ContactManager"使命名空間符合此範例中使用的命名空間。
   * `-uld` 指定 LocalDB，而不是 SQLite
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
@@ -648,7 +648,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * Scaffold`Contact`模型。
 * 建立初始移轉並更新資料庫：
 
-  ```console
+  ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Contact -udl -dc ApplicationDbContext -outDir Pages\Contacts --referenceScriptLibraries
   dotnet ef database drop -f
   dotnet ef migrations add initial

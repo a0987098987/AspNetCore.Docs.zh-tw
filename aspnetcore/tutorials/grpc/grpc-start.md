@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 8/26/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: f643ed786366fa6bdadadbc5d67fa2d40a195861
-ms.sourcegitcommit: 07cd66e367d080acb201c7296809541599c947d1
+ms.openlocfilehash: 924aa3880fc7f2aa777d4ab2e5ea3bed38e227d4
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71039277"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081197"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端與伺服器
 
@@ -67,7 +67,7 @@ ms.locfileid: "71039277"
 * 將目錄 (`cd`) 變更為其中包含專案的資料夾。
 * 執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet new grpc -o GrpcGreeter
   code -r GrpcGreeter
   ```
@@ -82,9 +82,9 @@ ms.locfileid: "71039277"
 
 從終端機中，執行下列命令：
 
-```console
-  dotnet new grpc -o GrpcGreeter
-  cd GrpcGreeter
+```dotnetcli
+dotnet new grpc -o GrpcGreeter
+cd GrpcGreeter
 ```
 
 上述命令使用 [.NET Core CLI](/dotnet/core/tools/dotnet) 來建立 gRPC 服務。
@@ -153,7 +153,7 @@ info: Microsoft.Hosting.Lifetime[0]
 * 將目錄 (`cd`) 變更為其中包含專案的資料夾。
 * 執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet new console -o GrpcGreeterClient
   code -r GrpcGreeterClient
   ```
@@ -200,7 +200,7 @@ gRPC 用戶端專案需要下列套件：
 
 從 [整合式終端] 執行下列命令：
 
-```console
+```dotnetcli
 dotnet add GrpcGreeterClient.csproj package Grpc.Net.Client
 dotnet add GrpcGreeterClient.csproj package Google.Protobuf
 dotnet add GrpcGreeterClient.csproj package Grpc.Tools

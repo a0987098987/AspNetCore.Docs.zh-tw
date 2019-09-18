@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 06/18/2019
 ms.custom: mvc, seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: c219500b7595fd8d200e4e5e742b1e1fda836ba3
-ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
+ms.openlocfilehash: f5a47ffd2e068414268ed9037d4376bfd21ba1bb
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207743"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080802"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>加入、 下載及刪除身分識別的 ASP.NET Core 專案的自訂使用者資料
 
@@ -20,7 +20,7 @@ ms.locfileid: "67207743"
 本文說明如何：
 
 * 新增至 ASP.NET Core web 應用程式的自訂使用者資料。
-* 裝飾具有自訂使用者資料模型<xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute>屬性，讓它自動可供下載和刪除。 無法下載及刪除資料可協助符合[GDPR](xref:security/gdpr)需求。
+* 使用<xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute>屬性裝飾自訂使用者資料模型，使其自動可供下載和刪除。 無法下載及刪除資料可協助符合[GDPR](xref:security/gdpr)需求。
 
 Razor 頁面 web 應用程式，從建立專案範例，但 ASP.NET Core MVC web 應用程式的指示如下。
 
@@ -34,15 +34,15 @@ Razor 頁面 web 應用程式，從建立專案範例，但 ASP.NET Core MVC web
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 Visual Studio 的 [檔案]  功能表中，選取 [新增]   > [專案]  。 將專案命名為**WebApp1**如果您要符合的命名空間[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data)程式碼。
+* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案] 。 將專案命名為**WebApp1**如果您要符合的命名空間[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data)程式碼。
 * 選取  **ASP.NET Core Web 應用程式** > **確定**
-* 選取  **ASP.NET Core 2.2**下拉式清單中
+* 選取下拉式清單中的 [ **ASP.NET Core 2.2** ]
 * 選取  **Web 應用程式**  > **確定**
 * 建置並執行專案。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-```cli
+```dotnetcli
 dotnet new webapp -o WebApp1
 ```
 
@@ -67,26 +67,26 @@ dotnet new webapp -o WebApp1
 
 如果之前尚未安裝 ASP.NET Core scaffolder，請立即安裝：
 
-```cli
+```dotnetcli
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
 新增的套件參考[Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/)專案 (.csproj) 檔案。 在專案目錄中，執行下列命令：
 
-```cli
+```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 ```
 
 執行下列命令來列出識別 scaffolder 選項：
 
-```cli
+```dotnetcli
 dotnet aspnet-codegenerator identity -h
 ```
 
 在 [專案] 資料夾中，執行身分識別框架：
 
-```cli
+```dotnetcli
 dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account.Manage.Index
 ```
 
@@ -143,14 +143,14 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 在 Visual Studio **Package Manager Console**:
 
-```PMC
+```powershell
 Add-Migration CustomUserData
 Update-Database
 ```
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-```cli
+```dotnetcli
 dotnet ef migrations add CustomUserData
 dotnet ef database update
 ```

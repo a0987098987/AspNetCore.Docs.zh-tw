@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/08/2019
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: c31beae16f46153daac188ab1638e5530584ac88
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
-ms.translationtype: HT
+ms.openlocfilehash: 4ac7b3a2f738e443263dd888f556e0aff7c8099b
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927088"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082363"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>將 ASP.NET Core 應用程式發佈到 IIS
 
@@ -30,7 +30,7 @@ ms.locfileid: "68927088"
 ## <a name="prerequisites"></a>必要條件
 
 * 在部署電腦上安裝 [.NET Core SDK](/dotnet/core/sdk)。
-* 使用 **Web Server (IIS)** 伺服器角色設定的 Windows Server。 若您的伺服器並未設為使用 IIS 來裝載網站，請遵循 <xref:host-and-deploy/iis/index#iis-configuration> 一文中＜IIS 組態＞  一節內的指導，然後返回本教學課程。
+* 使用 **Web Server (IIS)** 伺服器角色設定的 Windows Server。 若您的伺服器並未設為使用 IIS 來裝載網站，請遵循 <xref:host-and-deploy/iis/index#iis-configuration> 一文中＜IIS 組態＞一節內的指導，然後返回本教學課程。
 
 > [!WARNING]
 > **IIS 組態和網站安全性涉及本教學課程並未涵蓋的概念。** 請諮詢 [Microsoft IIS 文件](https://www.iis.net/)和[使用 IIS 進行裝載的 ASP.NET Core 文章](xref:host-and-deploy/iis/index)，再於 IIS 上裝載生產應用程式。
@@ -57,9 +57,9 @@ ms.locfileid: "68927088"
 
 1. 在 IIS 伺服器上，建立資料夾以包含應用程式的發佈資料夾和檔案。 在下列步驟中，您提供資料夾路徑給 IIS，作為應用程式的實體路徑。
 
-1. 在 [IIS 管理員] 中，於 [連線]  面板中開啟伺服器的節點。 以滑鼠右鍵按一下 [網站]  資料夾。 從操作功能表選取 [新增網站]  。
+1. 在 [IIS 管理員] 中，於 [連線] 面板中開啟伺服器的節點。 以滑鼠右鍵按一下 [網站] 資料夾。 從操作功能表選取 [新增網站]。
 
-1. 提供**網站名稱**，並將**實體路徑**設定為您建立的應用程式部署資料夾。 提供**繫結**組態，然後選取 [確定]  來建立網站。
+1. 提供**網站名稱**，並將**實體路徑**設定為您建立的應用程式部署資料夾。 提供**繫結**組態，然後選取 [確定] 來建立網站。
 
 ## <a name="create-an-aspnet-core-razor-pages-app"></a>建立 ASP.NET Core Razor Pages 應用程式
 
@@ -67,16 +67,16 @@ ms.locfileid: "68927088"
 
 ## <a name="publish-and-deploy-the-app"></a>發佈及部署應用程式
 
-「發佈應用程式」  表示產生可由伺服器裝載的編譯應用程式。 「部署應用程式」  表示將發佈後的應用程式移動到裝載系統。 發佈步驟會由 [.NET Core SDK](/dotnet/core/sdk) 處理，部署步驟則是可以透過各種方式處理。 本教學課程採用「資料夾」  部署方法，其中：
+「發佈應用程式」表示產生可由伺服器裝載的編譯應用程式。 「部署應用程式」表示將發佈後的應用程式移動到裝載系統。 發佈步驟會由 [.NET Core SDK](/dotnet/core/sdk) 處理，部署步驟則是可以透過各種方式處理。 本教學課程採用「資料夾」部署方法，其中：
 
 * 應用程式會發佈到資料夾。
 * 資料夾內容會移動到 IIS 網站的資料夾 (指向 IIS 管理員中網站的**實體路徑**)。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 在 [方案總管]  中，以滑鼠右鍵按一下專案，然後選取 [發佈]  。
-1. 在 [挑選發佈目標]  對話方塊中，選取 [資料夾]  發佈選項。
-1. 設定 [資料夾或檔案共用]  路徑。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [發佈]。
+1. 在 [挑選發佈目標] 對話方塊中，選取 [資料夾] 發佈選項。
+1. 設定 [資料夾或檔案共用] 路徑。
    * 若您針對部署電腦上提供為網路共用的 IIS 網站建立資料夾，則請提供指向共用的路徑。 目前的使用者必須具備寫入存取權限才能發佈到共用。
    * 若您無法直接部署到 IIS 伺服器上的 IIS 網站資料夾，請發佈到抽取式媒體上資料夾並透過物理方式將所發佈應用程式實際移動到伺服器上的 IIS 網站資料夾，即 IIS 管理員中的**實體路徑**。 將 *bin/Release/{TARGET FRAMEWORK}/publish* 資料夾中內容移動到伺服器上的 IIS 網站資料夾，即 IIS 管理員中的**實體路徑**。
 
@@ -84,7 +84,7 @@ ms.locfileid: "68927088"
 
 1. 在命令殼層中，使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，以發行組態來發佈應用程式：
 
-   ```console
+   ```dotnetcli
    dotnet publish --configuration Release
    ```
 
@@ -92,8 +92,8 @@ ms.locfileid: "68927088"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-1. 在 [解決方案]  中按一下專案，然後選取 [發佈]   > [發佈到資料夾]  。
-1. 設定 [選取資料夾]  路徑。
+1. 在 [解決方案] 中按一下專案，然後選取 [發佈] > [發佈到資料夾]。
+1. 設定 [選取資料夾] 路徑。
    * 若您針對部署電腦上提供為網路共用的 IIS 網站建立資料夾，則請提供指向共用的路徑。 目前的使用者必須具備寫入存取權限才能發佈到共用。
    * 若您無法直接部署到 IIS 伺服器上的 IIS 網站資料夾，請發佈到抽取式媒體上資料夾並透過物理方式將所發佈應用程式實際移動到伺服器上的 IIS 網站資料夾，即 IIS 管理員中的**實體路徑**。 將 *bin/Release/{TARGET FRAMEWORK}/publish* 資料夾中內容移動到伺服器上的 IIS 網站資料夾，即 IIS 管理員中的**實體路徑**。
 

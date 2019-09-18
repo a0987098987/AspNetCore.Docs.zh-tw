@@ -6,12 +6,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/23/2019
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 628fbb9940ad14cb15e3abd88b8b6a524b24d70a
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 99628b4f52980e6d32c70d11bb0d8a770dac7f86
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773952"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081577"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
 
@@ -70,7 +70,7 @@ Visual Studio 組態已完成。 現在即可開始建立專案。
 
 在 [整合式終端機] 中執行下列命令：
 
-```console
+```dotnetcli
 dotnet new web -o SignalRWebPack
 ```
 
@@ -249,7 +249,7 @@ dotnet new web -o SignalRWebPack
 
 1. 在專案根目錄中執行下列命令，藉以建置並執行應用程式：
 
-    ```console
+    ```dotnetcli
     dotnet run
     ```
 
@@ -305,7 +305,7 @@ Visual Studio 組態已完成。 現在即可開始建立專案。
 
 在 [整合式終端機] 中執行下列命令：
 
-```console
+```dotnetcli
 dotnet new web -o SignalRWebPack
 ```
 
@@ -484,7 +484,7 @@ dotnet new web -o SignalRWebPack
 
 1. 在專案根目錄中執行下列命令，藉以建置並執行應用程式：
 
-    ```console
+    ```dotnetcli
     dotnet run
     ```
 

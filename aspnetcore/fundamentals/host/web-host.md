@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/14/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: c5d5b723b31a5c211a47e378e50be858fda0b2bd
-ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
-ms.translationtype: HT
+ms.openlocfilehash: d387098662cc832cc0e49b6a1636f0ebcc7308de
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313790"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081695"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-ASP.NET Core 應用程式會設定並啟動「主機」  。 主機負責應用程式啟動和存留期管理。 至少，主機會設定伺服器和要求處理管線。 主機也可以設定記錄、相依性插入和設定。
+ASP.NET Core 應用程式會設定並啟動「主機」。 主機負責應用程式啟動和存留期管理。 至少，主機會設定伺服器和要求處理管線。 主機也可以設定記錄、相依性插入和設定。
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -122,7 +122,7 @@ public class Program
 
 ::: moniker-end
 
-「內容根目錄」  會決定主機搜尋內容檔案 (例如 MVC 檢視檔案) 的位置。 從專案的根資料夾啟動應用程式時，會使用專案的根資料夾作為內容根目錄。 這是 [Visual Studio](https://visualstudio.microsoft.com) 和 [dotnet 新範本](/dotnet/core/tools/dotnet-new)中使用的預設值。
+「內容根目錄」會決定主機搜尋內容檔案 (例如 MVC 檢視檔案) 的位置。 從專案的根資料夾啟動應用程式時，會使用專案的根資料夾作為內容根目錄。 這是 [Visual Studio](https://visualstudio.microsoft.com) 和 [dotnet 新範本](/dotnet/core/tools/dotnet-new)中使用的預設值。
 
 如需應用程式組態的詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 
@@ -135,7 +135,7 @@ public class Program
 
 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 依賴下列方法來設定主機組態值：
 
-* 主機建立器組態，其中包含 `ASPNETCORE_{configurationKey}` 格式的環境變數。 例如，`ASPNETCORE_ENVIRONMENT`。
+* 主機建立器組態，其中包含 `ASPNETCORE_{configurationKey}` 格式的環境變數。 例如： `ASPNETCORE_ENVIRONMENT` 。
 * [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot) 和 [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) 之類的延伸模組 (請參閱[覆寫組態](#override-configuration)一節)。
 * [UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting) 和相關聯的索引鍵。 使用 `UseSetting` 設定值時，此值會設定為字串，而不論其類型為何。
 
@@ -312,7 +312,7 @@ WebHost.CreateDefaultBuilder(args)
 **設定使用**：`UseUrls`  
 **環境變數**：`ASPNETCORE_URLS`
 
-設定為伺服器應該回應的 URL 前置清單，並以分號 (;) 分隔。 例如，`http://localhost:123`。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
+設定為伺服器應該回應的 URL 前置清單，並以分號 (;) 分隔。 例如： `http://localhost:123` 。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -431,7 +431,7 @@ public class Program
 
 若要指定主機在特定 URL 上執行，所要的值可以在執行 [dotnet run](/dotnet/core/tools/dotnet-run) 時從命令提示字元傳入。 命令列引數會覆寫 *hostsettings.json* 檔案的 `urls` 值，且伺服器會接聽連接埠 8080：
 
-```console
+```dotnetcli
 dotnet run --urls "http://*:8080"
 ```
 

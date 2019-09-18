@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: fcb238c132a774200e9f54f1141f5ba79fa2f802
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 3ee95d9b648a90c90d06e33a30b568626a1eb0aa
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975171"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080827"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>教學課程：使用移轉功能 - ASP.NET MVC 搭配 EF Core
 
@@ -49,9 +49,9 @@ ms.locfileid: "69975171"
 這項變更會設定專案，以讓第一次移轉建立新的資料庫。 即使不採取上述動作，仍可開始進行移轉作業，但稍後您會了解這麼做的好處何在。
 
 > [!NOTE]
-> 如果您不想變更資料庫名稱，替代方法是刪除資料庫。 使用 [SQL Server 物件總管]  (SSOX) 或 `database drop` CLI 命令：
+> 如果您不想變更資料庫名稱，替代方法是刪除資料庫。 使用 [SQL Server 物件總管] (SSOX) 或 `database drop` CLI 命令：
 >
-> ```console
+> ```dotnetcli
 > dotnet ef database drop
 > ```
 >
@@ -61,7 +61,7 @@ ms.locfileid: "69975171"
 
 儲存您的變更，並建置專案。 接著，開啟命令視窗並巡覽至專案資料夾。 以下是執行這個動作的快速方法：
 
-* 在 [方案總管]  中，於專案上按一下滑鼠右鍵，然後從操作功能表中選擇 [在檔案總管中開啟資料夾]  。
+* 在 [方案總管] 中，於專案上按一下滑鼠右鍵，然後從操作功能表中選擇 [在檔案總管中開啟資料夾]。
 
   ![[在檔案總管中開啟] 功能表項目](migrations/_static/open-in-file-explorer.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "69975171"
 
 在命令視窗中輸入下列命令：
 
-```console
+```dotnetcli
 dotnet ef migrations add InitialCreate
 ```
 
@@ -84,13 +84,13 @@ Done. To undo this action, use 'ef migrations remove'
 ```
 
 > [!NOTE]
-> 如果您看到錯誤訊息：「找不到符合命令 "dotnet-ef" 的可執行檔」  ，請參閱[這篇部落格文章](https://thedatafarm.com/data-access/no-executable-found-matching-command-dotnet-ef/)以取得疑難排解說明。
+> 如果您看到錯誤訊息：「找不到符合命令 "dotnet-ef" 的可執行檔」，請參閱[這篇部落格文章](https://thedatafarm.com/data-access/no-executable-found-matching-command-dotnet-ef/)以取得疑難排解說明。
 
-如果您看到錯誤訊息：「無法存取檔案...  ContosoUniversity.dll，因為其他處理序正在使用此檔案。」請在 Windows 系統匣中尋找 IIS Express 圖示，以滑鼠右鍵按一下它，然後按一下 [ContosoUniversity] > [停止網站]  。
+如果您看到錯誤訊息：「無法存取檔案...ContosoUniversity.dll，因為其他處理序正在使用此檔案。」請在 Windows 系統匣中尋找 IIS Express 圖示，以滑鼠右鍵按一下它，然後按一下 [ContosoUniversity] > [停止網站]。
 
 ## <a name="examine-up-and-down-methods"></a>檢查 Up 和 Down 方法
 
-當您執行 `migrations add` 命令時，EF 產生的程式碼會從頭開始建立資料庫。 您可以在 *Migrations* 資料夾，名為 \<時間戳記>_InitialCreate.cs  的檔案中，找到這個程式碼。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表，而 `Down` 方法則會刪除它們，如下列範例所示。
+當您執行 `migrations add` 命令時，EF 產生的程式碼會從頭開始建立資料庫。 您可以在 *Migrations* 資料夾，名為 \<時間戳記>_InitialCreate.cs 的檔案中，找到這個程式碼。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表，而 `Down` 方法則會刪除它們，如下列範例所示。
 
 [!code-csharp[](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
@@ -102,7 +102,7 @@ Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。
 
 ## <a name="the-data-model-snapshot"></a>資料模型快照集
 
-移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照集」  。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
+移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照集」。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
 
 刪除移轉時，請使用 [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) 命令。 `dotnet ef migrations remove` 會刪除移轉，並確保正確地重設快照集。
 
@@ -112,7 +112,7 @@ Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。
 
 在命令視窗中輸入下列命令，以建立資料庫和其中的資料表。
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 
@@ -147,7 +147,7 @@ info: Microsoft.EntityFrameworkCore.Database.Command[20101]
 Done.
 ```
 
-按照第一個教學課程的做法，使用 [SQL Server 物件總管]  檢查資料庫。  您會發現新增 \_\_EFMigrationsHistory 資料表，其會持續追蹤哪些移轉已套用至資料庫。 檢視該資料表中的資料，您會看到其中一個資料列代表第一個移轉。 (上述 CLI 輸出範例中的最後一則記錄會顯示建立此資料列的 INSERT 陳述式。)
+按照第一個教學課程的做法，使用 [SQL Server 物件總管] 檢查資料庫。  您會發現新增 \_\_EFMigrationsHistory 資料表，其會持續追蹤哪些移轉已套用至資料庫。 檢視該資料表中的資料，您會看到其中一個資料列代表第一個移轉。 (上述 CLI 輸出範例中的最後一則記錄會顯示建立此資料列的 INSERT 陳述式。)
 
 執行應用程式，以驗證一切如往常般運作。
 
@@ -157,7 +157,7 @@ Done.
 
 ## <a name="compare-cli-and-pmc"></a>比較 CLI 與 PMC
 
-您可以透過 .NET Core CLI 命令或 Visual Studio [套件管理員主控台]  (PMC) 視窗中的 PowerShell Cmdlet，取得適用於管理移轉的 EF 工具。 本教學課程示範如何使用 CLI，但是您也可以視習慣使用 PMC。
+您可以透過 .NET Core CLI 命令或 Visual Studio [套件管理員主控台] (PMC) 視窗中的 PowerShell Cmdlet，取得適用於管理移轉的 EF 工具。 本教學課程示範如何使用 CLI，但是您也可以視習慣使用 PMC。
 
 適用於 PMC 命令的 EF 命令位於 [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools) 套件中。 此套件包含在 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) 中；因此，如果您的應用程式具有 `Microsoft.AspNetCore.App` 的套件參考，則您不需要新增套件參考。
 

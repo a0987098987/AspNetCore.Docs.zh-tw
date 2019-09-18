@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: blazor/get-started
-ms.openlocfilehash: cce91b6332295f77c639f881fe342b625fee7fca
-ms.sourcegitcommit: 92c901c7f32ee9efb335d99ec4c3add2cc9f3142
+ms.openlocfilehash: 58773ae6c605ddc7a3d85fb97eeae40d0bbe15fb
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71025510"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080516"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -24,7 +24,7 @@ ms.locfileid: "71025510"
 
 1. 在命令 shell 中執行下列命令，以安裝 Blazor 範本：
 
-   ```console
+   ```dotnetcli
    dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19457.4
    ```
 
@@ -55,13 +55,13 @@ ms.locfileid: "71025510"
 
    3 \。 如需 Blazor 的 WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
-      ```console
+      ```dotnetcli
       dotnet new blazorwasm -o WebApplication1
       ```
 
       如需 Blazor 伺服器體驗，請在命令 shell 中執行下列命令：
 
-      ```console
+      ```dotnetcli
       dotnet new blazorserver -o WebApplication1
       ```
 
@@ -99,7 +99,7 @@ ms.locfileid: "71025510"
 
    如需 Blazor 的 WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
-   ```console
+   ```dotnetcli
    dotnet new blazorwasm -o WebApplication1
    cd WebApplication1
    dotnet run
@@ -107,7 +107,7 @@ ms.locfileid: "71025510"
 
    如需 Blazor 伺服器體驗，請在命令 shell 中執行下列命令：
 
-   ```console
+   ```dotnetcli
    dotnet new blazorserver -o WebApplication1
    cd WebApplication1
    dotnet run

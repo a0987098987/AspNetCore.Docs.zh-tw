@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 26c8fcf56ab8ca68aeca93560785fc6c1144ab86
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 0ded2979b8576f10812e20ae3385c94fd29689c2
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963681"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081041"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor"></a>裝載及部署 ASP.NET Core Blazor
 
@@ -32,7 +32,7 @@ ms.locfileid: "70963681"
 
 使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，搭配發行組態來發佈應用程式：
 
-```console
+```dotnetcli
 dotnet publish -c Release
 ```
 
@@ -71,13 +71,13 @@ Blazor WebAssembly 應用程式會發佈至 */BIN/RELEASE/{TARGET FRAMEWORK}/PUB
 
 針對具有非根相對 URL 路徑的應用程式（ `<base href="/CoolApp/">`例如），在*本機執行時*，應用程式無法找到其資源。 若要在本機開發和測試期間解決這個問題，您可以提供「基底路徑」引數，讓它在執行時符合 `<base>` 標籤的 `href` 值。 若要在本機執行應用程式時傳遞 path base 引數， `dotnet run`請`--pathbase`使用下列選項從應用程式的目錄執行命令：
 
-```console
+```dotnetcli
 dotnet run --pathbase=/{RELATIVE URL PATH (no trailing slash)}
 ```
 
 針對具有（ `/CoolApp/` `<base href="/CoolApp/">`）之相對 URL 路徑的應用程式，命令為：
 
-```console
+```dotnetcli
 dotnet run --pathbase=/CoolApp
 ```
 

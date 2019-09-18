@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 08/22/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 5b83cb44302a5900ec7b2ccc049790b4c1ca57e5
-ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
+ms.openlocfilehash: 92c04c1ac4c70c6245accf272753bc914aaab860
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69985387"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081865"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>在 ASP.NET Core 中使用 Razor 類別庫專案建立可重複使用的 UI
 
@@ -42,7 +42,7 @@ RCL 具有下列專案檔：
 
 從命令列執行 `dotnet new razorclasslib`。 例如:
 
-```console
+```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
 ```
 
@@ -77,13 +77,13 @@ RCL 可以由下列各項參考：
 
 從命令提示字元中在 *cli* 目錄中，建置 RCL 和 Web 應用程式。
 
-```console
+```dotnetcli
 dotnet build
 ```
 
 移至 *WebApp1* 目錄並執行應用程式：
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -110,7 +110,7 @@ dotnet run
 
 從命令列執行下列命令：
 
-```console
+```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
 dotnet new page -n _Message -np -o RazorUIClassLib/Areas/MyFeature/Pages/Shared
 dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
@@ -138,7 +138,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 需要 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` 才能使用部分檢視 (`<partial name="_Message" />`)。 您可以新增 *_ViewImports.cshtml* 檔案，而不要包含 `@addTagHelper` 指示詞。 例如:
 
-```console
+```dotnetcli
 dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
 ```
 
@@ -146,7 +146,7 @@ dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
 
 * 建置類別庫，以確認沒有任何編譯器錯誤：
 
-```console
+```dotnetcli
 dotnet build RazorUIClassLib
 ```
 
@@ -176,7 +176,7 @@ dotnet build RazorUIClassLib
 
 建立 Razor Pages web 應用程式，以及包含 Razor Pages 應用程式和 RCL 的方案檔：
 
-```console
+```dotnetcli
 dotnet new webapp -o WebApp1
 dotnet new sln
 dotnet sln add WebApp1
@@ -186,7 +186,7 @@ dotnet add WebApp1 reference RazorUIClassLib
 
 建置和執行 Web 應用程式：
 
-```console
+```dotnetcli
 cd WebApp1
 dotnet run
 ```

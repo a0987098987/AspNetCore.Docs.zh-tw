@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 07/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 39e2a38e0b91b7dbecf05c084ca0be5e312dcb0d
-ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
-ms.translationtype: HT
+ms.openlocfilehash: 18cf9aea930a7989bb844bc6c40dfa1ce84b7b4d
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68862877"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082617"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -28,9 +28,9 @@ ms.locfileid: "68862877"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
+以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增]   > [類別]  。 將類別命名為 **Movie**。
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -45,13 +45,13 @@ ms.locfileid: "68862877"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
-* 以滑鼠右鍵按一下 [Models]  資料夾，然後選取 [新增]  > [新增檔案]  。
-* 在 [新增檔案]  對話方塊中：
+* 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+* 以滑鼠右鍵按一下 [Models] 資料夾，然後選取 [新增] > [新增檔案]。
+* 在 [新增檔案] 對話方塊中：
 
-  * 在左窗格中選取 [一般]  。
-  * 在中央窗格中選取 [類別是空的]  。
-  * 將類別命名為 **Movie**，然後選取 [新增]  。
+  * 在左窗格中選取 [一般]。
+  * 在中央窗格中選取 [類別是空的]。
+  * 將類別命名為 **Movie**，然後選取 [新增]。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -69,22 +69,22 @@ ms.locfileid: "68862877"
 
 建立 *Pages/Movies* 資料夾：
 
-* 以滑鼠右鍵按一下 [Pages]  資料夾 > [新增]  > [新增資料夾]  。
+* 以滑鼠右鍵按一下 [Pages] 資料夾 > [新增] > [新增資料夾]。
 * 將資料夾命名為 *Movies*
 
-以滑鼠右鍵按一下 [Pages/Movies]  資料夾 > [新增]  > [新增 Scaffolded 項目]  。
+以滑鼠右鍵按一下 [Pages/Movies] 資料夾 > [新增] > [新增 Scaffolded 項目]。
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold]  對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)]  > [新增]  。
+在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)] > [新增]。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
-完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)  對話方塊：
+完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\) 對話方塊：
 
-* 在 [模型類別]  下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)  。
-* 在 [資料內容類別]  列中選取 [+]  \(加號\)，並將產生的名稱 RazorPagesMovie.**Models**.RazorPagesMovieContext 變更為 RazorPagesMovie.**Data**.RazorPagesMovieContext。 這不是必要的[變更](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) \(英文\)。 它會使用正確的命名空間來建立資料庫內容類別。
-* 選取 [新增]  。
+* 在 [模型類別] 下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)。
+* 在 [資料內容類別] 列中選取 [+] \(加號\)，並將產生的名稱 RazorPagesMovie.**Models**.RazorPagesMovieContext 變更為 RazorPagesMovie.**Data**.RazorPagesMovieContext。 這不是必要的[變更](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) \(英文\)。 它會使用正確的命名空間來建立資料庫內容類別。
+* 選取 [新增]。
 
 ![前述指示中的圖片。](model/_static/3/arp.png)
 
@@ -98,19 +98,19 @@ ms.locfileid: "68862877"
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 * 安裝 Scaffolding 工具：
 
-  ```console
+  ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
    ```
 
 * **針對 Windows**：執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
 * **針對 macOS 與 Linux**：執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
   ```
 
@@ -121,13 +121,13 @@ ms.locfileid: "68862877"
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 * 安裝 Scaffolding 工具：
 
-  ```console
+  ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
    ```
 
 * 執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
   ```
 
@@ -171,7 +171,7 @@ Scaffold 處理序會建立下列檔案：
 * 新增初始移轉。
 * 以初始移轉更新資料庫。
 
-從 [工具]  功能表中，選取 [NuGet 套件管理員]  > [套件管理員主控台]  。
+從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
 
   ![PMC 功能表](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -281,9 +281,9 @@ Login failed for user 'User-name'.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
+以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增]   > [類別]  。 將類別命名為 **Movie**。
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -298,13 +298,13 @@ Login failed for user 'User-name'.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Models*。
-* 以滑鼠右鍵按一下 [Models]  資料夾，然後選取 [新增]  > [新增檔案]  。
-* 在 [新增檔案]  對話方塊中：
+* 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+* 以滑鼠右鍵按一下 [Models] 資料夾，然後選取 [新增] > [新增檔案]。
+* 在 [新增檔案] 對話方塊中：
 
-  * 在左窗格中選取 [一般]  。
-  * 在中央窗格中選取 [類別是空的]  。
-  * 將類別命名為 **Movie**，然後選取 [新增]  。
+  * 在左窗格中選取 [一般]。
+  * 在中央窗格中選取 [類別是空的]。
+  * 將類別命名為 **Movie**，然後選取 [新增]。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -322,26 +322,26 @@ Login failed for user 'User-name'.
 
 建立 *Pages/Movies* 資料夾：
 
-* 以滑鼠右鍵按一下 [Pages]  資料夾 > [新增]  > [新增資料夾]  。
+* 以滑鼠右鍵按一下 [Pages] 資料夾 > [新增] > [新增資料夾]。
 * 將資料夾命名為 *Movies*
 
-以滑鼠右鍵按一下 [Pages/Movies]  資料夾 > [新增]  > [新增 Scaffolded 項目]  。
+以滑鼠右鍵按一下 [Pages/Movies] 資料夾 > [新增] > [新增 Scaffolded 項目]。
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold]  對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)]  > [新增]  。
+在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)] > [新增]。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
-完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)  對話方塊：
+完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\) 對話方塊：
 <!-- In the next section, change 
 (plus) sign and accept the generated name 
 to use Data, it should not use models. That will make the namespace the same for the VS version and the CLI version
 -->
 
-* 在 [模型類別]  下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)  。
-* 在 [資料內容類別]  列中選取 [+]  (加號)，並接受產生的名稱 **RazorPagesMovie.Models.RazorPagesMovieContext**。
-* 選取 [新增]  。
+* 在 [模型類別] 下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)。
+* 在 [資料內容類別] 列中選取 [+] (加號)，並接受產生的名稱 **RazorPagesMovie.Models.RazorPagesMovieContext**。
+* 選取 [新增]。
 
 ![前述指示中的圖片。](model/_static/arp.png)
 
@@ -355,19 +355,19 @@ to use Data, it should not use models. That will make the namespace the same for
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 * 安裝 Scaffolding 工具：
 
-  ```console
+  ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
 * **針對 Windows**：執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
 * **針對 macOS 與 Linux**：執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
   ```
 
@@ -378,13 +378,13 @@ to use Data, it should not use models. That will make the namespace the same for
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 * 安裝 Scaffolding 工具：
 
-  ```console
+  ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
 * 執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
   ```
 
@@ -416,7 +416,7 @@ to use Data, it should not use models. That will make the namespace the same for
 * 新增初始移轉。
 * 以初始移轉更新資料庫。
 
-從 [工具]  功能表中，選取 [NuGet 套件管理員]  > [套件管理員主控台]  。
+從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
 
   ![PMC 功能表](../first-mvc-app/adding-model/_static/pmc.png)
 

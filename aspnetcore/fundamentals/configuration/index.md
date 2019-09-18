@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/12/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 5723295c70f8d893f758ca5dc87180c6b707f493
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
-ms.translationtype: HT
+ms.openlocfilehash: 0de2222e8072523ff0e5d261a9fe5ef8eb9a7606
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68994139"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081813"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -53,7 +53,7 @@ using Microsoft.Extensions.Configuration;
 
 ## <a name="host-versus-app-configuration"></a>主機與應用程式組態的比較
 
-設定及啟動應用程式之前，會先設定及啟動「主機」  。 主機負責應用程式啟動和存留期管理。 應用程式與主機都是使用此主題中所述的設定提供者來設定的。 主機組態機碼/值組也會包含在應用程式的組態中。 如需有關當建置主機時如何使用設定提供者的詳細資訊，以及設定來源如何影響主機設定的詳細資訊，請參閱 <xref:fundamentals/index#host>。
+設定及啟動應用程式之前，會先設定及啟動「主機」。 主機負責應用程式啟動和存留期管理。 應用程式與主機都是使用此主題中所述的設定提供者來設定的。 主機組態機碼/值組也會包含在應用程式的組態中。 如需有關當建置主機時如何使用設定提供者的詳細資訊，以及設定來源如何影響主機設定的詳細資訊，請參閱 <xref:fundamentals/index#host>。
 
 ## <a name="default-configuration"></a>預設的組態
 
@@ -354,7 +354,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 
 範例命令：
 
-```console
+```dotnetcli
 dotnet run CommandLineKey1=value1 --CommandLineKey2=value2 /CommandLineKey3=value3
 dotnet run --CommandLineKey1 value1 /CommandLineKey2 value2
 dotnet run CommandLineKey1= CommandLineKey2=value2
@@ -402,7 +402,7 @@ public static readonly Dictionary<string, string> _switchMappings =
 
 若啟動應用程式時使用切換對應機碼，設定會接收由字典提供之機碼上的設定值：
 
-```console
+```dotnetcli
 dotnet run -CLKey1=value1 -CLKey2=value2
 ```
 
@@ -619,9 +619,9 @@ key=value
 
 | Key                        | 開發值 | 生產值 |
 | -------------------------- | :---------------: | :--------------: |
-| Logging:LogLevel:System    | 資訊       | 資訊      |
-| Logging:LogLevel:Microsoft | 資訊       | 資訊      |
-| Logging:LogLevel:Default   | 偵錯             | 錯誤            |
+| Logging:LogLevel:System    | 內容       | 內容      |
+| Logging:LogLevel:Microsoft | 內容       | 內容      |
+| Logging:LogLevel:Default   | 偵錯             | Error            |
 | AllowedHosts               | *                 | *                |
 
 ### <a name="xml-configuration-provider"></a>XML 設定提供者
@@ -923,7 +923,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 | starship:registry     | NCC-1701                                          |
 | starship:class        | Constitution                                      |
 | starship:length       | 304.8                                             |
-| starship:commissioned | False                                             |
+| starship:commissioned | 偽                                             |
 | trademark             | Paramount Pictures Corp. https://www.paramount.com |
 
 範例應用程式使用 `starship` 機碼呼叫 `GetSection`。 `starship` 機碼值組會被隔離。 會在子區段上呼叫 `Bind` 方法，並傳入 `Starship` 類別的執行個體。 繫結執行個體值之後，執行個體會被指派給屬性以用於轉譯：
@@ -996,7 +996,7 @@ TvShow = tvShow;
 
 ## <a name="bind-an-array-to-a-class"></a>將陣列繫結到類別
 
-範例應用程式示範此節中解釋的概念。 
+範例應用程式示範此節中解釋的概念。
 
 <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 支援在設定機碼中使用陣列索引將陣列繫結到物件。 任何公開數值機碼區段 (`:0:`、`:1:`、&hellip; `:{n}:`) 的陣列格式都能繫結到POCO 類別陣列。
 

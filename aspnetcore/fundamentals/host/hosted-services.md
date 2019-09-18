@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/03/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 3d4279a291182da60c0cb2fbb93a3922ed673cde
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
-ms.translationtype: HT
+ms.openlocfilehash: 1db3ee1a9bcc0d41edf24df55bcd8d54fb0e9724
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914014"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081786"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-在 ASP.NET Core 中，背景工作可實作為「託管服務」  。 託管服務是具有背景工作邏輯的類別，可實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。 本主題提供三個託管服務範例：
+在 ASP.NET Core 中，背景工作可實作為「託管服務」。 託管服務是具有背景工作邏輯的類別，可實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。 本主題提供三個託管服務範例：
 
 * 在計時器上執行的背景工作。
 * 啟動[具範圍服務](xref:fundamentals/dependency-injection#service-lifetimes)的託管服務。 範圍服務可以使用相依性插入。
@@ -40,16 +40,16 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 建立新的專案。
-1. 選取 [ASP.NET Core Web 應用程式]  。 選取 [下一步]  。
-1. 在 [專案名稱]  欄位中提供專案名稱，或接受預設專案名稱。 選取 [建立]  。
-1. 在 [建立新的 ASP.NET Core Web 應用程式]  對話方塊中，確認選取 [.NET Core]  和 [ASP.NET Core 3.0]  。
-1. 選取 [背景工作服務]  範本。 選取 [建立]  。
+1. 選取 [ASP.NET Core Web 應用程式]。 選取 [下一步]。
+1. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 選取 [建立]。
+1. 在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中，確認選取 [.NET Core] 和 [ASP.NET Core 3.0]。
+1. 選取 [背景工作服務] 範本。 選取 [建立]。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 從命令殼層以 [dotnet new](/dotnet/core/tools/dotnet-new) 命令使用背景工作服務 (`worker`) 範本。 在下列範例中，已建立名為 `ContosoWorkerService` 的背景工作服務應用程式。 當命令執行時，會自動建立 `ContosoWorkerService` 應用程式的資料夾。
 
-```console
+```dotnetcli
 dotnet new worker -o ContosoWorkerService
 ```
 
@@ -57,7 +57,7 @@ dotnet new worker -o ContosoWorkerService
 
 ::: moniker-end
 
-## <a name="package"></a>Package
+## <a name="package"></a>套件
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) 套件的套件參考。
 
@@ -132,7 +132,7 @@ dotnet new worker -o ContosoWorkerService
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Pages/Index.cshtml.cs?name=snippet1)]
 
-在索引頁面上選取 [新增工作]  按鈕時，就會執行 `OnPostAddTask` 方法。 將會呼叫 `QueueBackgroundWorkItem` 以從佇列清除工作項目：
+在索引頁面上選取 [新增工作] 按鈕時，就會執行 `OnPostAddTask` 方法。 將會呼叫 `QueueBackgroundWorkItem` 以從佇列清除工作項目：
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Pages/Index.cshtml.cs?name=snippet2)]
 

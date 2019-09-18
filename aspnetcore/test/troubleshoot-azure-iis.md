@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/18/2019
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: deae568a6ba88c9a8365b9d7f2df629899bc64a1
-ms.sourcegitcommit: 16502797ea749e2690feaa5e652a65b89c007c89
+ms.openlocfilehash: 384ae6645ce083fba76a430dfc3bec3a59d3870e
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68483312"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081528"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>疑難排解 Azure App Service 和 IIS 上的 ASP.NET Core
 
@@ -51,28 +51,28 @@ By [Luke Latham](https://github.com/guardrex)和[Justin Kotalik](https://github.
 
 ### <a name="40314-forbidden"></a>403.14 禁止
 
-應用程式無法啟動。 會記錄下列錯誤:
+應用程式無法啟動。 會記錄下列錯誤：
 
 ```
 The Web server is configured to not list the contents of this directory.
 ```
 
-此錯誤通常是因為主控系統上的部署中斷所造成, 其中包括下列任何一種情況:
+此錯誤通常是因為主控系統上的部署中斷所造成，其中包括下列任何一種情況：
 
 * 應用程式會部署到裝載系統上錯誤的資料夾。
 * 部署進程無法將應用程式的所有檔案和資料夾移到主控系統上的部署資料夾。
-* 部署中遺漏*web.config*檔案, 或*web.config*檔案內容的格式不正確。
+* 部署中遺漏*web.config*檔案，或*web.config*檔案內容的格式不正確。
 
 請執行下列步驟:
 
 1. 刪除主控系統上部署資料夾中的所有檔案和資料夾。
-1. 使用一般部署方法 (例如 Visual Studio、PowerShell 或手動部署), 將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統:
-   * 請確認*web.config*檔案存在於部署中, 而且其內容正確。
-   * 在 Azure App Service 上裝載時, 請確認應用程式已部署至`D:\home\site\wwwroot`資料夾。
-   * 當應用程式由 IIS 裝載時, 請確認應用程式已部署到 iis**管理員**的 [**基本設定**] 中所顯示的 iis**實體路徑**。
-1. 藉由比較主控系統上的部署與專案 [*發行*] 資料夾的內容, 確認已部署所有應用程式的檔案和資料夾。
+1. 使用一般部署方法（例如 Visual Studio、PowerShell 或手動部署），將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統：
+   * 請確認*web.config*檔案存在於部署中，而且其內容正確。
+   * 在 Azure App Service 上裝載時，請確認應用程式已部署至`D:\home\site\wwwroot`資料夾。
+   * 當應用程式由 IIS 裝載時，請確認應用程式已部署到 iis**管理員**的 [**基本設定**] 中所顯示的 iis**實體路徑**。
+1. 藉由比較主控系統上的部署與專案 [*發行*] 資料夾的內容，確認已部署所有應用程式的檔案和資料夾。
 
-如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊, <xref:host-and-deploy/directory-structure>請參閱。 如需*web.config*檔案的詳細資訊, 請參閱<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>。
+如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊， <xref:host-and-deploy/directory-structure>請參閱。 如需*web.config*檔案的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>。
 
 ### <a name="500-internal-server-error"></a>500 內部伺服器錯誤
 
@@ -86,7 +86,7 @@ The Web server is configured to not list the contents of this directory.
 
 背景工作處理序失敗。 應用程式未啟動。
 
-[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)找不到 .NET Core CLR, 而且找不到同進程要求處理常式 (*aspnetcorev2_inprocess .dll*)。 請檢查︰
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)找不到 .NET Core CLR，而且找不到同進程要求處理常式（*aspnetcorev2_inprocess .dll*）。 請檢查︰
 
 * 應用程式以 [Microsoft.AspNetCore.Server.IIS](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IIS) NuGet 套件或 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)為目標。
 * 應用程式設為目標的 ASP.NET Core 共用架構版本有安裝在目標機器上。
@@ -265,7 +265,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. 執行應用程式：
    * 如果應用程式是[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)：
 
-     ```console
+     ```dotnetcli
      dotnet .\{ASSEMBLY NAME}.dll
      ```
 

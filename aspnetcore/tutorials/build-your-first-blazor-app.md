@@ -5,14 +5,14 @@ description: 逐步建置 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/23/2019
+ms.date: 09/15/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: ffbdf6991830d554fc508d1d2fe8e4b9586210df
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: b433d793ae615bc4ece7c63bebd72d349adf43ee
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964183"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081257"
 ---
 # <a name="build-your-first-blazor-app"></a>組建第一個 Blazor 應用程式
 
@@ -97,11 +97,11 @@ ms.locfileid: "70964183"
 
 ## <a name="dependency-injection"></a>相依性插入
 
-在應用程式服務容器中註冊的服務可透過[相依性插入 (DI)](xref:fundamentals/dependency-injection) 供元件使用。 請使用 `@inject` 指示詞將服務插入至元件。
+如果使用 Blazor 伺服器應用程式， `WeatherForecastService`服務會註冊為中`Startup.ConfigureServices`的[單一](xref:fundamentals/dependency-injection#service-lifetimes)。 服務的實例可透過相依性[插入（DI）](xref:fundamentals/dependency-injection)在整個應用程式中使用：
 
-檢查 `FetchData` 元件的指示詞。
+[!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-如果使用 Blazor 伺服器應用程式， `WeatherForecastService`服務會註冊為[singleton](xref:fundamentals/dependency-injection#service-lifetimes)，因此服務的一個實例可在整個應用程式中使用。 `@inject` 指示詞會用來將 `WeatherForecastService` 服務的執行個體插入元件。
+指示詞是用來將`WeatherForecastService`服務的實例插入`FetchData`元件中。 `@inject`
 
 *Pages/FetchData.razor*：
 
@@ -111,7 +111,7 @@ ms.locfileid: "70964183"
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-如果使用 Blazor WebAssembly 應用程式， `HttpClient`則會插入以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料：
+如果使用 Blazor WebAssembly 應用程式，則`HttpClient`會插入，以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料。
 
 *Pages/FetchData.razor*：
 
@@ -120,7 +120,6 @@ ms.locfileid: "70964183"
 [\@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) 迴圈會用來將每個預測執行個體轉譯為天氣資料表中的資料列：
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
-
 
 ## <a name="build-a-todo-list"></a>組建待辦事項清單
 

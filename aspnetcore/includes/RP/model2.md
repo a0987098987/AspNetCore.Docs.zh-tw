@@ -20,9 +20,9 @@
 
 ### <a name="add-nuget-packages-and-ef-tools"></a>新增 NuGet 套件和 EF 工具
 
-開啟 RazorPagesMovie 專案的終端機。  在設計/版面配置列中以滑鼠右鍵按一下專案名稱，然後在終端機中移至 [工具] > [開啟]  。 在終端機中，執行下列 .NET Core CLI 命令：
+開啟 RazorPagesMovie 專案的終端機。  在設計/版面配置列中以滑鼠右鍵按一下專案名稱，然後在終端機中移至 [工具] > [開啟]。 在終端機中，執行下列 .NET Core CLI 命令：
 
-```console
+```dotnetcli
 dotnet tool install --global dotnet-ef --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
@@ -57,11 +57,10 @@ using Microsoft.EntityFrameworkCore;
 
 執行下列 .NET Core CLI 命令，以將 SQLite 和 CodeGeneration.Design 新增到專案：
 
-```console
+```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.SQLite
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
-
 ```
 
 需要 `Microsoft.VisualStudio.Web.CodeGeneration.Design` 封裝，才能進行 Scaffolding。

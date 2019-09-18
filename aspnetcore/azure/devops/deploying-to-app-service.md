@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: e09d03f1d30f128b1db1588aa92b28ec3e4ae626
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: df41f296e9c4e1eff6e31d45b29ec30ee1e20cf4
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64892635"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080443"
 ---
 # <a name="deploy-an-app-to-app-service"></a>將應用程式部署至 App Service
 
@@ -35,7 +35,7 @@ ms.locfileid: "64892635"
 
 從命令殼層中，下載的程式碼、 建置專案，並執行它，如下所示。
 
-> *注意：Linux/macOS 使用者應變更適當的路徑，例如，使用正斜線 (`/`) 而不是反斜線 (`\`)。*
+> *注意：Linux/macOS 使用者應該對路徑進行適當的變更，例如，使用正斜線（`/`），而不是反`\`斜杠（）。*
 
 1. 複製程式碼到您的本機電腦上的資料夾。
 
@@ -51,13 +51,13 @@ ms.locfileid: "64892635"
 
 3. 還原套件，然後建置方案。
 
-    ```console
+    ```dotnetcli
     dotnet build
     ```
 
 4. 執行應用程式。
 
-    ```console
+    ```dotnetcli
     dotnet run
     ```
 
@@ -73,7 +73,7 @@ ms.locfileid: "64892635"
 
 若要部署應用程式，您必須建立 App Service [Web 應用程式](/azure/app-service/app-service-web-overview)。 在建立之後的 Web 應用程式，您將從本機電腦使用 Git 部署至它。
 
-1. 登入[Azure Cloud Shell](https://shell.azure.com/bash)。 注意:當您第一次登入時，Cloud Shell 會提示您建立組態檔的儲存體帳戶。 接受預設值，或提供唯一的名稱。
+1. 登入[Azure Cloud Shell](https://shell.azure.com/bash)。 注意:當您第一次登入時，Cloud Shell 會提示您建立設定檔的儲存體帳戶。 接受預設值，或提供唯一的名稱。
 
 2. 使用 Cloud Shell 中的下列步驟。
 
@@ -91,7 +91,7 @@ ms.locfileid: "64892635"
 
     `az`命令會叫用[Azure CLI](/cli/azure/)。 可以在本機執行 CLI，但在 Cloud Shell 中使用它可以節省時間與組態。
 
-    c.  在 S1 層中建立 App Service 方案。 App Service 方案是共用相同的定價層的 web 應用程式的群組。 S1 層不是免費的但它具有所需的暫存位置功能。
+    c. 在 S1 層中建立 App Service 方案。 App Service 方案是共用相同的定價層的 web 應用程式的群組。 S1 層不是免費的但它具有所需的暫存位置功能。
 
     ```azure-cli
     az appservice plan create --name $webappname --resource-group AzureTutorial --sku S1
@@ -141,7 +141,7 @@ ms.locfileid: "64892635"
 
 ## <a name="deployment-with-visual-studio"></a>使用 Visual Studio 部署
 
-> *注意：本節僅適用於 Windows。Linux 和 macOS 使用者應在下面的步驟 2 所述的變更。儲存檔案，並認可變更與本機存放庫`git commit`。最後，將變更推送`git push`，如所示的第一個區段。*
+> *注意：本節僅適用于 Windows。Linux 和 macOS 使用者應在下面的步驟 2 所述的變更。儲存檔案，並認可變更與本機存放庫`git commit`。最後，將變更推送`git push`，如所示的第一個區段。*
 
 從命令殼層已部署應用程式。 讓我們將更新部署至應用程式中使用 Visual Studio 的整合式的工具。 在幕後，Visual Studio 會完成同樣的工作命令列工具，但在 Visual Studio 的熟悉的 UI。
 
@@ -151,7 +151,7 @@ ms.locfileid: "64892635"
 4. 在 方案總管 中，以滑鼠右鍵按一下專案，然後按一下 **發佈**。
 
     ![螢幕擷取畫面顯示以滑鼠右鍵按一下，發行](./media/deploying-to-app-service/publish.png)
-5. Visual Studio 可以建立新的 App Service 資源，但這項更新將會發行透過現有的部署。 在 **挑選發行目標**對話方塊中，選取**App Service**從左邊的清單，然後選取**選取現有**。 按一下 [發行] 。
+5. Visual Studio 可以建立新的 App Service 資源，但這項更新將會發行透過現有的部署。 在 **挑選發行目標**對話方塊中，選取**App Service**從左邊的清單，然後選取**選取現有**。 按一下 [發行]。
 6. 在 [ **App Service** ] 對話方塊中，確認 Microsoft 或組織帳戶，用來建立您的 Azure 訂用帳戶會顯示在右上方。 如果不存在，請按一下下拉式清單，並將它新增。
 7. 確認已選取正確的 Azure**訂用帳戶**已選取。 針對**檢視**，選取**資源群組**。 依序展開**AzureTutorial**資源群組，然後選取現有的 web 應用程式。 按一下 [確定 **Deploying Office Solutions**]。
 
@@ -180,7 +180,7 @@ Visual Studio 會建置並部署至 Azure 的應用程式。 瀏覽至 web 應�
     echo Git deployment URL for staging: $(az webapp deployment source config-local-git --name $webappname --resource-group AzureTutorial --slot staging --query url --output tsv)
     ```
 
-    c.  顯示預備位置的 URL。 瀏覽至 URL 可以看到空白的預備位置。 **請注意此 URL 供稍後參考**。
+    c. 顯示預備位置的 URL。 瀏覽至 URL 可以看到空白的預備位置。 **請注意此 URL 供稍後參考**。
 
     ```console
     echo Staging web app URL: http://$webappname-staging.azurewebsites.net

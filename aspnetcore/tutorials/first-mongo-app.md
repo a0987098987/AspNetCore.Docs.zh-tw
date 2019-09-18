@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 08/17/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 2f7202945b3de03709b5f2e192a03549e55a04f7
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
-ms.translationtype: HT
+ms.openlocfilehash: acf2ded8b92a8f77678af7b772ac2a69264a642c
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583636"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082359"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
 
@@ -149,11 +149,11 @@ ms.locfileid: "69583636"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 前往 [檔案]  > [新增]  > [專案]  。
-1. 選取 [ASP.NET Core Web 應用程式]  專案類型，然後選取 [下一步]  。
-1. 將專案命名為 *BooksApi*，然後選取 [建立]  。
-1. 選取 [.NET Core]  目標架構與 [ASP.NET Core 3.0]  。 選取 [API]  專案範本，然後選取 [確定]  。
-1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 在 [套件管理員主控台]  視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 前往 [檔案] > [新增] > [專案]。
+1. 選取 [ASP.NET Core Web 應用程式] 專案類型，然後選取 [下一步]。
+1. 將專案命名為 *BooksApi*，然後選取 [建立]。
+1. 選取 [.NET Core] 目標架構與 [ASP.NET Core 3.0]。 選取 [API] 專案範本，然後選取 [確定]。
+1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 在 [套件管理員主控台] 視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
    ```powershell
    Install-Package MongoDB.Driver -Version {VERSION}
@@ -163,29 +163,29 @@ ms.locfileid: "69583636"
 
 1. 在命令殼層中執行下列命令：
 
-   ```console
+   ```dotnetcli
    dotnet new webapi -o BooksApi
    code BooksApi
    ```
 
    會產生以 .NET Core 為目標的新 ASP.NET Core Web API 專案，並在 Visual Studio Code 中開啟。
 
-1. 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問 **'BooksApi' 中是否遺漏了建置和偵錯的必要資產。要新增它們嗎？** 選取 [是]  。
-1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 開啟 [整合式終端機]  並瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問 **'BooksApi' 中是否遺漏了建置和偵錯的必要資產。要新增它們嗎？** 選取 [是]。
+1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 開啟 [整合式終端機] 並瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
-   ```console
+   ```dotnetcli
    dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
    ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-1. 前往 [檔案]  > [新增解決方案]  > [.NET Core]  > [應用程式]  。
-1. 選取 [ASP.NET Core Web API]  C# 專案範本，然後選取 [下一步]  。
-1. 從 [目標 Framework]  下拉式清單選取 [.NET Core 3.0]  ，然後選取 [下一步]  。
-1. 在 [專案名稱]  中輸入 *BooksApi*，然後選取 [建立]  。
-1. 在 [方案]  台中，以滑鼠右鍵按一下專案的 [相依性]  節點並選取 [新增封裝]  。
-1. 在搜尋方塊中輸入 *MongoDB.Driver*，然後依序選取 *MongoDB.Driver* 套件和 [新增套件]  。
-1. 選取 [授權接受]  對話方塊中的 [接受]  按鈕。
+1. 前往 [檔案] > [新增解決方案] > [.NET Core] > [應用程式]。
+1. 選取 [ASP.NET Core Web API] C# 專案範本，然後選取 [下一步]。
+1. 從 [目標 Framework] 下拉式清單選取 [.NET Core 3.0]，然後選取 [下一步]。
+1. 在 [專案名稱] 中輸入 *BooksApi*，然後選取 [建立]。
+1. 在 [方案] 台中，以滑鼠右鍵按一下專案的 [相依性] 節點並選取 [新增封裝]。
+1. 在搜尋方塊中輸入 *MongoDB.Driver*，然後依序選取 *MongoDB.Driver* 套件和 [新增套件]。
+1. 選取 [授權接受] 對話方塊中的 [接受] 按鈕。
 
 ---
 
@@ -499,11 +499,11 @@ ms.locfileid: "69583636"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 前往 [檔案]  > [新增]  > [專案]  。
-1. 選取 [ASP.NET Core Web 應用程式]  專案類型，然後選取 [下一步]  。
-1. 將專案命名為 *BooksApi*，然後選取 [建立]  。
-1. 選取 [.NET Core]  目標架構與 [ASP.NET Core 2.2]  。 選取 [API]  專案範本，然後選取 [確定]  。
-1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 在 [套件管理員主控台]  視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 前往 [檔案] > [新增] > [專案]。
+1. 選取 [ASP.NET Core Web 應用程式] 專案類型，然後選取 [下一步]。
+1. 將專案命名為 *BooksApi*，然後選取 [建立]。
+1. 選取 [.NET Core] 目標架構與 [ASP.NET Core 2.2]。 選取 [API] 專案範本，然後選取 [確定]。
+1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 在 [套件管理員主控台] 視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
    ```powershell
    Install-Package MongoDB.Driver -Version {VERSION}
@@ -513,29 +513,29 @@ ms.locfileid: "69583636"
 
 1. 在命令殼層中執行下列命令：
 
-   ```console
+   ```dotnetcli
    dotnet new webapi -o BooksApi
    code BooksApi
    ```
 
    會產生以 .NET Core 為目標的新 ASP.NET Core Web API 專案，並在 Visual Studio Code 中開啟。
 
-1. 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問 **'BooksApi' 中是否遺漏了建置和偵錯的必要資產。要新增它們嗎？** 選取 [是]  。
-1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 開啟 [整合式終端機]  並瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 在狀態列的 OmniSharp 火焰圖示變成綠色之後，螢幕會出現對話方塊並詢問 **'BooksApi' 中是否遺漏了建置和偵錯的必要資產。要新增它們嗎？** 選取 [是]。
+1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 開啟 [整合式終端機] 並瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
-   ```console
+   ```dotnetcli
    dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
    ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-1. 前往 [檔案]  > [新增解決方案]  > [.NET Core]  > [應用程式]  。
-1. 選取 [ASP.NET Core Web API]  C# 專案範本，然後選取 [下一步]  。
-1. 從 [目標 Framework]  下拉式清單選取 [.NET Core 2.2]  ，然後選取 [下一步]  。
-1. 在 [專案名稱]  中輸入 *BooksApi*，然後選取 [建立]  。
-1. 在 [方案]  台中，以滑鼠右鍵按一下專案的 [相依性]  節點並選取 [新增封裝]  。
-1. 在搜尋方塊中輸入 *MongoDB.Driver*，然後依序選取 *MongoDB.Driver* 套件和 [新增套件]  。
-1. 選取 [授權接受]  對話方塊中的 [接受]  按鈕。
+1. 前往 [檔案] > [新增解決方案] > [.NET Core] > [應用程式]。
+1. 選取 [ASP.NET Core Web API] C# 專案範本，然後選取 [下一步]。
+1. 從 [目標 Framework] 下拉式清單選取 [.NET Core 2.2]，然後選取 [下一步]。
+1. 在 [專案名稱] 中輸入 *BooksApi*，然後選取 [建立]。
+1. 在 [方案] 台中，以滑鼠右鍵按一下專案的 [相依性] 節點並選取 [新增封裝]。
+1. 在搜尋方塊中輸入 *MongoDB.Driver*，然後依序選取 *MongoDB.Driver* 套件和 [新增套件]。
+1. 選取 [授權接受] 對話方塊中的 [接受] 按鈕。
 
 ---
 

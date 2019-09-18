@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: a69f1fdd38fec35dec6bb8125bf29859a437a891
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 85a11ba082fc8f6b364019f6cefcd5b1fe5a9215
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975084"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080466"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>教學課程：建立複雜的資料模型 - ASP.NET MVC 搭配 EF Core
 
@@ -98,19 +98,19 @@ ms.locfileid: "69975084"
 
 儲存您的變更，並建置專案。 然後，在專案資料夾中開啟命令視窗，並輸入下列命令：
 
-```console
+```dotnetcli
 dotnet ef migrations add MaxLengthOnNames
 ```
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 
-`migrations add` 命令會警告可能發生資料遺失，因為該項變更縮短了兩個資料行的最大長度。  移轉會建立名為 \<時間戳記 >_MaxLengthOnNames.cs  的檔案。 此檔案包含了 `Up` 方法中的程式碼，可更新資料庫，使其符合目前的資料模型。 `database update` 命令執行了該程式碼。
+`migrations add` 命令會警告可能發生資料遺失，因為該項變更縮短了兩個資料行的最大長度。  移轉會建立名為 \<時間戳記 >_MaxLengthOnNames.cs 的檔案。 此檔案包含了 `Up` 方法中的程式碼，可更新資料庫，使其符合目前的資料模型。 `database update` 命令執行了該程式碼。
 
 Entity Framework 會使用移轉檔案名稱前置的時間戳記來排序移轉。 您可以在執行 update-database 命令前建立多個移轉，然後所有的移轉便會依照其建立的先後順序套用。
 
-請執行應用程式、選取 [Students]  索引標籤、按一下 [建立新項目]  ，然後嘗試輸入長度超過 50 個字元的名稱。 應用程式應該會防止您這麼做。 
+請執行應用程式、選取 [Students] 索引標籤、按一下 [建立新項目]，然後嘗試輸入長度超過 50 個字元的名稱。 應用程式應該會防止您這麼做。 
 
 ### <a name="the-column-attribute"></a>Column 屬性
 
@@ -126,15 +126,15 @@ Entity Framework 會使用移轉檔案名稱前置的時間戳記來排序移轉
 
 儲存您的變更並建置專案。 然後，在專案資料夾中開啟命令視窗，並輸入下列命令以建立另一個移轉：
 
-```console
+```dotnetcli
 dotnet ef migrations add ColumnFirstName
 ```
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 
-在 [SQL Server 物件總管]  中，按兩下 [Student]  資料表來開啟 Student 資料表設計工具。
+在 [SQL Server 物件總管] 中，按兩下 [Student] 資料表來開啟 Student 資料表設計工具。
 
 ![移轉之後 SSOX 中的 Students 資料表](complex-data-model/_static/ssox-after-migration.png)
 
@@ -434,7 +434,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 儲存您的變更並建置專案。 然後在專案資料夾中開啟命令視窗，並輸入 `migrations add` 命令 (請還不要執行 update-database 命令)：
 
-```console
+```dotnetcli
 dotnet ef migrations add ComplexDataModel
 ```
 
@@ -481,9 +481,9 @@ Done. To undo this action, use 'ef migrations remove'
 將您的變更儲存到 *appsettings.json*。
 
 > [!NOTE]
-> 如果您不想變更資料庫名稱，替代方法是刪除資料庫。 使用 [SQL Server 物件總管]  (SSOX) 或 `database drop` CLI 命令：
+> 如果您不想變更資料庫名稱，替代方法是刪除資料庫。 使用 [SQL Server 物件總管] (SSOX) 或 `database drop` CLI 命令：
 >
-> ```console
+> ```dotnetcli
 > dotnet ef database drop
 > ```
 
@@ -491,19 +491,19 @@ Done. To undo this action, use 'ef migrations remove'
 
 在您變更資料庫名稱或刪除資料庫之後，在命令視窗中執行 `database update` 命令以執行移轉。
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 
 執行應用程式以執行 `DbInitializer.Initialize` 方法並填入新資料庫。
 
-如同先前操作，在 SSOX 中開啟資料庫，展開 [資料表]  節點以查看所有已建立的資料表。 (若您先前開啟的 SSOX 還在，請按一下 [重新整理]  按鈕。)
+如同先前操作，在 SSOX 中開啟資料庫，展開 [資料表] 節點以查看所有已建立的資料表。 (若您先前開啟的 SSOX 還在，請按一下 [重新整理] 按鈕。)
 
 ![SSOX 中的資料表](complex-data-model/_static/ssox-tables.png)
 
 執行應用程式以觸發植入資料庫的初始設定式程式碼。
 
-以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]  以驗證其中已有資料。
+以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料] 以驗證其中已有資料。
 
 ![SSOX 中的 CourseAssignment 資料](complex-data-model/_static/ssox-ci-data.png)
 

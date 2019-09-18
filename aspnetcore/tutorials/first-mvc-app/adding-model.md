@@ -5,22 +5,22 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 8/15/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 038ea8cf7c72e4aaca6e06c0208d3dd1d5597577
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
-ms.translationtype: HT
+ms.openlocfilehash: b0efaf76cb2172f5b7568e42065b99b1259949de
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022482"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081988"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Ryan Nowak](https://github.com/tdykstra)
 
-在本節中，您可以新增類別來管理資料庫中的電影。 這些類別是 **MVC** 應用程式的「模型」  部分。
+在本節中，您可以新增類別來管理資料庫中的電影。 這些類別是 **MVC** 應用程式的「模型」部分。
 
 搭配 [Entity Framework Core](/ef/core) (EF Core) 使用這些類別，即可使用資料庫。 EF Core 是一種物件關聯式對應 (ORM) 架構，可簡化您必須撰寫的資料存取程式碼。
 
-您所建立的模型類別稱為 POCO 類別 (來自「純舊 CLR 物件」     )，因為它們對 EF Core 沒有任何相依性。 它們只會定義資料庫將儲存之資料的屬性。
+您所建立的模型類別稱為 POCO 類別 (來自「純舊 CLR 物件」)，因為它們對 EF Core 沒有任何相依性。 它們只會定義資料庫將儲存之資料的屬性。
 
 在本教學課程中，您首先要撰寫模型類別，而 EF Core 會建立資料庫。 本文未提及的替代方法是從現有的資料庫產生模型類別。 如需該方法的資訊，請參閱 [ASP.NET Core - 現有的資料庫](/ef/core/get-started/aspnetcore/existing-db)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "69022482"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-以滑鼠右鍵按一下 *Models* 資料夾 > [新增]   > [類別]  。 將檔案命名為 *Movie.cs*。
+以滑鼠右鍵按一下 *Models* 資料夾 > [新增] > [類別]。 將檔案命名為 *Movie.cs*。
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -55,7 +55,7 @@ ms.locfileid: "69022482"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-從 [工具]  功能表中，選取 [NuGet 套件管理員]  > [套件管理器主控台]  (PMC)。
+從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理器主控台] (PMC)。
 
 ![PMC 功能表](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 
@@ -71,7 +71,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer -IncludePrerelease
 
 執行下列 .NET Core CLI 命令：
 
-```console
+```dotnetcli
 dotnet tool install --global dotnet-ef --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
@@ -152,24 +152,24 @@ using Microsoft.EntityFrameworkCore;
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [方案總管]  中以滑鼠右鍵按一下 *Controllers* 資料夾 > [新增] > [新增 Scaffold 項目]  。
+在 [方案總管] 中以滑鼠右鍵按一下 *Controllers* 資料夾 > [新增] > [新增 Scaffold 項目]。
 
 ![上方步驟的檢視](adding-model/_static/add_controller21.png)
 
-在 [新增 Scaffold]  對話方塊中，選取 [使用 Entity Framework 執行檢視的 MVC 控制器] > [新增]  。
+在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 執行檢視的 MVC 控制器] > [新增]。
 
 ![[新增 Scaffold] 對話方塊](adding-model/_static/add_scaffold21.png)
 
-完成 [新增控制器]  對話方塊：
+完成 [新增控制器] 對話方塊：
 
-* **模型類別：** Movie (MvcMovie.Models) 
+* **模型類別：** Movie (MvcMovie.Models)
 * **資料內容類別：** *MvcMovieContext (MvcMovie.Data)*
 
 ![新增資料內容](adding-model/_static/dc3.png)
 
 * **檢視：** 保持核取預設的每一個選項
 * **控制器名稱：** 保留預設 *MoviesController*
-* 選取 [新增] 
+* 選取 [新增]
 
 Visual Studio 會建立：
 
@@ -190,8 +190,8 @@ Visual Studio 會建立：
 
 * 執行下列命令：
 
-  ```console
-     dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+  ```dotnetcli
+   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
   ```
 
   [!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
@@ -202,8 +202,8 @@ Visual Studio 會建立：
 
 * 執行下列命令：
 
-  ```console
-     dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+  ```dotnetcli
+   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
   ```
 
   [!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
@@ -212,7 +212,7 @@ Visual Studio 會建立：
 
 <!-- End of tabs                  -->
 
-您目前尚無法使用 scaffold 頁面，因為資料庫不存在。 若您執行應用程式並按一下 [影片應用程式]  連結，您會收到「無法開啟資料庫」  或「找不到資料表：  Movie」錯誤訊息。
+您目前尚無法使用 scaffold 頁面，因為資料庫不存在。 若您執行應用程式並按一下 [影片應用程式] 連結，您會收到「無法開啟資料庫」或「找不到資料表：Movie」錯誤訊息。
 
 <a name="migration"></a>
 
@@ -222,7 +222,7 @@ Visual Studio 會建立：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-從 [工具]  功能表中，選取 [NuGet 套件管理員]  > [套件管理器主控台]  (PMC)。
+從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理器主控台] (PMC)。
 
 在 PMC 中，輸入下列命令：
 
@@ -247,7 +247,7 @@ Update-Database
 
 執行下列 .NET Core CLI 命令：
 
-```console
+```dotnetcli
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
@@ -272,7 +272,7 @@ dotnet ef database update
 
 ## <a name="test-the-app"></a>測試應用程式
 
-* 執行應用程式，然後按一下 [影片應用程式]  連結。
+* 執行應用程式，然後按一下 [影片應用程式] 連結。
 
   若您收到與下列內容相似的例外狀況：
 
@@ -391,7 +391,7 @@ return View(movie);
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-以滑鼠右鍵按一下 *Models* 資料夾 > [新增]   > [類別]  。 將類別命名為 **Movie**。
+以滑鼠右鍵按一下 *Models* 資料夾 > [新增] > [類別]。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/mvc-intro/model1b.md)]
 
@@ -410,24 +410,24 @@ return View(movie);
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [方案總管]  中以滑鼠右鍵按一下 *Controllers* 資料夾 > [新增] > [新增 Scaffold 項目]  。
+在 [方案總管] 中以滑鼠右鍵按一下 *Controllers* 資料夾 > [新增] > [新增 Scaffold 項目]。
 
 ![上方步驟的檢視](adding-model/_static/add_controller21.png)
 
-在 [新增 Scaffold]  對話方塊中，選取 [使用 Entity Framework 執行檢視的 MVC 控制器] > [新增]  。
+在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 執行檢視的 MVC 控制器] > [新增]。
 
 ![[新增 Scaffold] 對話方塊](adding-model/_static/add_scaffold21.png)
 
-完成 [新增控制器]  對話方塊：
+完成 [新增控制器] 對話方塊：
 
-* **模型類別：** Movie (MvcMovie.Models) 
+* **模型類別：** Movie (MvcMovie.Models)
 * **資料內容類別：** 選取 **+** 圖示並新增預設的 **MvcMovie.Models.MvcMovieContext**
 
 ![新增資料內容](adding-model/_static/dc.png)
 
 * **檢視：** 保持核取預設的每一個選項
 * **控制器名稱：** 保留預設 *MoviesController*
-* 選取 [新增] 
+* 選取 [新增]
 
 ![[新增控制器] 對話方塊](adding-model/_static/add_controller2.png)
 
@@ -447,7 +447,7 @@ Visual Studio 會建立：
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 * 安裝 Scaffolding 工具：
 
-  ```console
+  ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
@@ -459,8 +459,8 @@ Visual Studio 會建立：
 
 * 執行下列命令：
 
-  ```console
-     dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+  ```dotnetcli
+   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
   ```
 
 [!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
@@ -472,14 +472,14 @@ Visual Studio 會建立：
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 * 安裝 Scaffolding 工具：
 
-  ```console
+  ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
 * 執行下列命令：
 
-  ```console
-     dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+  ```dotnetcli
+   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
   ```
 
 [!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
@@ -525,7 +525,7 @@ Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 從 [工具]  功能表中，選取 [NuGet 套件管理員]  > [套件管理器主控台]  (PMC)。
+1. 從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理器主控台] (PMC)。
 
    ![PMC 功能表](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 

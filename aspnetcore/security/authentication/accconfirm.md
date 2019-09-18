@@ -1,22 +1,22 @@
 ---
-title: 帳戶確認和 ASP.NET Core 中的密碼復原
+title: ASP.NET Core 中的帳戶確認和密碼復原
 author: rick-anderson
-description: 了解如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。
+description: 瞭解如何使用電子郵件確認和密碼重設來建立 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 03/11/2019
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 802ba446af04df6a35ac73187ad693b8ec80c654
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 8a515990be584aa1233fc3bf77811ae3784d9b1c
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67814841"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081553"
 ---
-# <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
+# <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>ASP.NET Core 中的帳戶確認和密碼復原
 
-藉由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Ponant](https://github.com/Ponant)，和[Joe Audette](https://twitter.com/joeaudette)
+依[Rick Anderson](https://twitter.com/RickAndMSFT)、 [Ponant](https://github.com/Ponant)和[Joe Audette](https://twitter.com/joeaudette)
 
-本教學課程會示範如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。 本教學課程**不**開頭主題。 您應該先熟悉：
+本教學課程說明如何使用電子郵件確認和密碼重設來建立 ASP.NET Core 應用程式。 本教學課程**不**是開始主題。 您應該先熟悉：
 
 * [ASP.NET Core](xref:tutorials/razor-pages/razor-pages-start)
 * [驗證](xref:security/authentication/identity)
@@ -26,7 +26,7 @@ ms.locfileid: "67814841"
 
 ::: moniker range="<= aspnetcore-2.0"
 
-請參閱[此 PDF 檔案](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf)ASP.NET Core 1.1 版本。
+請參閱[此 PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf)檔案以取得 ASP.NET Core 1.1 版本。
 
 ::: moniker-end
 
@@ -34,47 +34,47 @@ ms.locfileid: "67814841"
 
 ## <a name="prerequisites"></a>必要條件
 
-[.NET core 3.0 SDK 或更新版本](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+[.NET Core 3.0 SDK 或更新版本](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
-## <a name="create-and-test-a-web-app-with-authentication"></a>建立及測試與驗證的 web 應用程式
+## <a name="create-and-test-a-web-app-with-authentication"></a>使用驗證來建立及測試 web 應用程式
 
-執行下列命令來建立驗證的 web 應用程式。
+執行下列命令來建立具有驗證的 web 應用程式。
 
-```console
+```dotnetcli
 dotnet new webapp -au Individual -uld -o WebPWrecover
 cd WebPWrecover
 dotnet run
 ```
 
-執行應用程式，請選取**註冊**連結，並註冊的使用者。 註冊之後，將您重新導向至`/Identity/Account/RegisterConfirmation`其中包含模擬電子郵件確認連結的頁面：
+執行應用程式，選取 [**註冊**] 連結，然後註冊使用者。 註冊之後，系統會將您重新導向`/Identity/Account/RegisterConfirmation`至 [到] 頁面，其中包含用來模擬電子郵件確認的連結：
 
-* 選取`Click here to confirm your account`連結。
-* 選取 **登入**連結，並使用相同的認證登入。
-* 選取 `Hello YourEmail@provider.com!`連結，將您重新導向`/Identity/Account/Manage/PersonalData`頁面。
-* 選取 **資**左邊的索引標籤，然後選取**刪除**。
+* `Click here to confirm your account`選取連結。
+* 選取 [**登**入] 連結，並使用相同的認證進行登入。
+* 選取連結，將您重新導向`/Identity/Account/Manage/PersonalData`至頁面。 `Hello YourEmail@provider.com!`
+* 選取左側的 [**個人資料**] 索引標籤，然後選取 [**刪除**]。
 
 ### <a name="configure-an-email-provider"></a>設定電子郵件提供者
 
-在本教學課程中， [SendGrid](https://sendgrid.com)用來傳送電子郵件。 您需要的 SendGrid 帳戶和金鑰來傳送電子郵件。 您可以使用其他電子郵件提供者。 我們建議您可以使用 SendGrid 或另一個電子郵件服務傳送電子郵件。 SMTP 是難以保護，並正確設定。
+在本教學課程中， [SendGrid](https://sendgrid.com)是用來傳送電子郵件。 您需要 SendGrid 帳戶和金鑰，才能傳送電子郵件。 您可以使用其他電子郵件提供者。 建議您使用 SendGrid 或其他電子郵件服務來傳送電子郵件。 SMTP 很容易保護和設定正確。
 
-建立類別來擷取安全的電子郵件的金鑰。 此範例中，建立*Services/AuthMessageSenderOptions.cs*:
+建立類別來提取安全的電子郵件金鑰。 針對此範例，請建立*Services/AuthMessageSenderOptions .cs*：
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
-#### <a name="configure-sendgrid-user-secrets"></a>設定 SendGrid 使用者祕密
+#### <a name="configure-sendgrid-user-secrets"></a>設定 SendGrid 使用者秘密
 
-設定`SendGridUser`並`SendGridKey`具有[secret manager 工具](xref:security/app-secrets)。 例如：
+使用秘密[管理員工具](xref:security/app-secrets)設定`SendGridKey` 和。`SendGridUser` 例如：
 
-```console
+```dotnetcli
 dotnet user-secrets set SendGridUser RickAndMSFT
 dotnet user-secrets set SendGridKey <key>
 
 Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
-在 Windows、 Secret Manager 儲存中的索引鍵/值組*secrets.json*檔案中`%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`目錄。
+在 Windows 中，秘密管理員會將金鑰/值組儲存在`%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`目錄中的*秘密 json*檔案中。
 
-內容*secrets.json*檔案未加密。 下列標記示範*secrets.json*檔案。 `SendGridKey`已移除值。
+不會加密*秘密 json*檔案的內容。 下列標記顯示秘密的*json*檔案。 已`SendGridKey`移除此值。
 
 ```json
 {
@@ -83,85 +83,85 @@ Successfully saved SendGridUser = RickAndMSFT to the secret store.
 }
 ```
 
-如需詳細資訊，請參閱 <<c0> [ 選項模式](xref:fundamentals/configuration/options)並[組態](xref:fundamentals/configuration/index)。
+如需詳細資訊，請參閱[選項模式](xref:fundamentals/configuration/options)[和設定](xref:fundamentals/configuration/index)。
 
 ### <a name="install-sendgrid"></a>安裝 SendGrid
 
-本教學課程示範如何將透過電子郵件通知[SendGrid](https://sendgrid.com/)，但您可以傳送電子郵件使用 SMTP 和其他機制。
+本教學課程說明如何透過[SendGrid](https://sendgrid.com/)新增電子郵件通知，但您可以使用 SMTP 和其他機制來傳送電子郵件。
 
-安裝`SendGrid`NuGet 套件：
+`SendGrid`安裝 NuGet 套件：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-從 [套件管理員] 主控台中，輸入下列命令：
+從 [套件管理員主控台] 中，輸入下列命令：
 
-``` PMC
+```powershell
 Install-Package SendGrid
 ```
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-在主控台中，輸入下列命令：
+從主控台，輸入下列命令：
 
-```cli
+```dotnetcli
 dotnet add package SendGrid
 ```
 
 ---
 
-請參閱[免費開始使用 SendGrid](https://sendgrid.com/free/)報名免費的 SendGrid 帳戶。
+請參閱[免費開始使用 SendGrid](https://sendgrid.com/free/)來註冊免費的 SendGrid 帳戶。
 
-### <a name="implement-iemailsender"></a>實作 IEmailSender
+### <a name="implement-iemailsender"></a>執行 IEmailSender
 
-實作`IEmailSender`，建立*Services/EmailSender.cs*與下列類似的程式碼：
+若要`IEmailSender`執行，請使用與下列類似的程式碼來建立*服務/EmailSender* ：
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Services/EmailSender.cs)]
 
-### <a name="configure-startup-to-support-email"></a>設定啟動，以支援電子郵件
+### <a name="configure-startup-to-support-email"></a>設定啟動以支援電子郵件
 
-將下列程式碼加入`ConfigureServices`方法中的*Startup.cs*檔案：
+將下列程式碼新增至`ConfigureServices` *Startup.cs*檔案中的方法：
 
-* 新增`EmailSender`為暫時性的服務。
-* 註冊`AuthMessageSenderOptions`組態執行個體。
+* 新增`EmailSender`為暫時性服務。
+* `AuthMessageSenderOptions`註冊設定實例。
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Startup.cs?name=snippet1&highlight=11-15)]
 
-## <a name="register-confirm-email-and-reset-password"></a>註冊、 確認電子郵件，以及重設密碼
+## <a name="register-confirm-email-and-reset-password"></a>註冊、確認電子郵件和重設密碼
 
-執行 web 應用程式，並測試的帳戶確認和密碼復原流程。
+執行 web 應用程式，並測試帳戶確認和密碼復原流程。
 
 * 執行應用程式並註冊新的使用者
-* 請檢查您的帳戶確認連結的電子郵件。 請參閱[偵錯電子郵件](#debug)如果您沒有收到電子郵件。
-* 按一下連結，以確認您的電子郵件。
+* 檢查您的電子郵件以取得帳戶確認連結。 如果您沒有收到電子郵件，請參閱[Debug email](#debug) 。
+* 按一下連結以確認您的電子郵件。
 * 使用您的電子郵件和密碼登入。
 * 登出。
 
 ### <a name="test-password-reset"></a>測試密碼重設
 
-* 如果您已登入，請選取**登出**。
-* 選取 **登入**連結，然後選取**忘記密碼？** 連結。
+* 如果您已登入，請選取 [**登出**]。
+* 選取 [**登入**] 連結，然後選取 [**忘記密碼？** ] 連結。
 * 輸入您用來註冊帳戶的電子郵件。
-* 會傳送具有重設密碼連結的電子郵件。 請檢查您的電子郵件，然後按一下 重設密碼連結。 已成功重設您的密碼之後，您可以使用您的電子郵件和新密碼登入。
+* 系統會傳送一封電子郵件，其中包含重設密碼的連結。 檢查您的電子郵件，然後按一下連結以重設密碼。 成功重設密碼之後，您就可以使用您的電子郵件和新密碼來登入。
 
-## <a name="change-email-and-activity-timeout"></a>變更電子郵件和活動的逾時
+## <a name="change-email-and-activity-timeout"></a>變更電子郵件和活動超時
 
-預設閒置逾時為 14 天。 下列程式碼會設定為 5 天的閒置逾時：
+預設的無活動超時時間為14天。 下列程式碼會將非啟用時間設定為5天：
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/StartupAppCookie.cs?name=snippet1)]
 
-### <a name="change-all-data-protection-token-lifespans"></a>變更所有資料保護權杖的期限
+### <a name="change-all-data-protection-token-lifespans"></a>變更所有資料保護權杖壽命
 
-下列程式碼會變更為 3 小時內的所有資料保護權杖逾時期限：
+下列程式碼會將所有資料保護權杖超時時間變更為3小時：
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/StartupAllTokens.cs?name=snippet1&highlight=11-12)]
 
-內建在身分識別的使用者語彙基元 (請參閱[AspNetCore/src/Identity/Extensions.Core/src/TokenOptions.cs](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) ) 已[一天的逾時](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)。
+內建身分識別使用者權杖（請參閱[AspNetCore/src/Identity/Extensions. Core/src/TokenOptions](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) ）具有[一天的超時時間](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)。
 
-### <a name="change-the-email-token-lifespan"></a>變更的電子郵件的權杖存留時間
+### <a name="change-the-email-token-lifespan"></a>變更電子郵件權杖生命週期
 
-預設權杖存留時間[身分識別的使用者語彙基元](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs)是[有一天](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)。 本節說明如何變更的電子郵件的權杖存留時間。
+身分[識別使用者權杖](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs)的預設權杖存留期為[一天](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)。 本節說明如何變更電子郵件權杖的生命週期。
 
-新增自訂[DataProtectorTokenProvider\<TUser >](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1)和<xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:
+新增自訂[的\<DataProtectorTokenProvider TUser >](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1)和： <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/TokenProviders/CustomTokenProvider.cs?name=snippet1)]
 
@@ -171,47 +171,47 @@ dotnet add package SendGrid
 
 ### <a name="resend-email-confirmation"></a>重新傳送電子郵件確認
 
-請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/5410)。
+請參閱[這個 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/5410)。
 
 <a name="debug"></a>
 
-### <a name="debug-email"></a>偵錯電子郵件
+### <a name="debug-email"></a>Debug 電子郵件
 
-如果您無法收到電子郵件工作：
+如果您無法讓電子郵件正常運作：
 
-* 在 設定中斷點`EmailSender.Execute`若要確認`SendGridClient.SendEmailAsync`呼叫。
-* 建立[主控台應用程式以傳送電子郵件](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html)使用類似的程式碼以`EmailSender.Execute`。
-* 檢閱[電子郵件 」 活動](https://sendgrid.com/docs/User_Guide/email_activity.html)頁面。
-* 請檢查垃圾郵件資料夾。
-* 請嘗試不同的電子郵件提供者 （Microsoft、 Yahoo、 Gmail 等） 上的另一個電子郵件別名
-* 請嘗試傳送到不同的電子郵件帳戶。
+* 在中`EmailSender.Execute`設定中斷點，以`SendGridClient.SendEmailAsync`驗證是否已呼叫。
+* 建立[主控台應用程式，以](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html)使用類似的程式碼`EmailSender.Execute`將電子郵件傳送至。
+* 查看[電子郵件活動](https://sendgrid.com/docs/User_Guide/email_activity.html)頁面。
+* 檢查您的垃圾郵件資料夾。
+* 在不同的電子郵件提供者（Microsoft、Yahoo、Gmail 等）上嘗試另一個電子郵件別名
+* 嘗試傳送至不同的電子郵件帳戶。
 
-**安全性最佳作法**旨在**不**使用生產環境中開發和測試的祕密。 如果您將應用程式發佈至 Azure 時，請為 Azure Web 應用程式入口網站中的應用程式設定設定 SendGrid 祕密。 設定系統設定來讀取環境變數中的索引鍵。
+**安全性最佳做法**是**不要**在測試和開發中使用生產秘密。 如果您將應用程式發佈至 Azure，請在 Azure Web 應用程式入口網站中將 SendGrid 秘密設定為應用程式設定。 設定系統設定來讀取環境變數中的索引鍵。
 
-## <a name="combine-social-and-local-login-accounts"></a>結合社交和本機登入帳戶
+## <a name="combine-social-and-local-login-accounts"></a>合併社交和本機登入帳戶
 
-若要完成本節中，您必須先啟用外部驗證提供者。 請參閱[Facebook、 Google、 與外部提供者驗證](xref:security/authentication/social/index)。
+若要完成這一節，您必須先啟用外部驗證提供者。 請參閱[Facebook、Google 及外部提供者驗證](xref:security/authentication/social/index)。
 
-您可以結合本機和社交帳戶，按一下您的電子郵件連結。 依下列順序，"RickAndMSFT@gmail.com」 會先建立做為本機的登入; 不過，您可以為社交登入，請先建立帳戶，然後新增的本機登入。
+您可以按一下電子郵件連結，以合併本機和社交帳戶。 在下列順序中，會RickAndMSFT@gmail.com先將 "" 建立為本機登入; 不過，您可以先將帳戶建立為社交登入，然後再新增本機登入。
 
-![Web 應用程式：RickAndMSFT@gmail.com已驗證的使用者](accconfirm/_static/rick.png)
+![Web 應用程式RickAndMSFT@gmail.com ：使用者驗證](accconfirm/_static/rick.png)
 
-按一下 **管理**連結。 請注意 0 外部 （社交登入） 與此帳戶相關聯。
+按一下 [**管理**] 連結。 請注意與此帳戶相關聯的0外部（社交登入）。
 
 ![管理檢視](accconfirm/_static/manage.png)
 
-按一下連結至另一個登入服務並接受應用程式要求。 在下圖中，Facebook 會是外部驗證提供者：
+按一下另一個登入服務的連結，並接受應用程式要求。 在下圖中，Facebook 是外部驗證提供者：
 
-![管理您的外部登入檢視，列出 Facebook](accconfirm/_static/fb.png)
+![管理您的外部登入視圖清單 Facebook](accconfirm/_static/fb.png)
 
-已合併兩個帳戶。 您可以使用任一個帳戶登入。 您可能想要新增本機帳戶，以免其社交登入驗證服務已關閉，或它們可能比較無法存取其社交帳戶使用者。
+已合併這兩個帳戶。 您可以使用任一帳戶登入。 您可能想要讓使用者新增本機帳戶，以防其社交登入驗證服務關閉，或更有可能失去其社交帳戶的存取權。
 
-## <a name="enable-account-confirmation-after-a-site-has-users"></a>站台後為使用者啟用帳戶確認
+## <a name="enable-account-confirmation-after-a-site-has-users"></a>在網站有使用者之後啟用帳戶確認
 
-在網站上啟用的帳戶確認，使用者會鎖定所有現有的使用者。 現有使用者遭到鎖定中，這是因為未確認他們的帳戶。 若要解決現有的使用者鎖定，請使用下列方法之一：
+在網站上啟用帳戶確認，使用者會鎖定所有現有的使用者。 現有的使用者會被鎖定，因為他們的帳戶不會確認。 若要解決現有的使用者鎖定，請使用下列其中一種方法：
 
-* 更新將標示為正在確認所有現有的使用者資料庫。
-* 請確認現有的使用者。 例如，批次傳送電子郵件以確認連結。
+* 更新資料庫，將所有現有的使用者標示為已確認。
+* 確認現有的使用者。 例如，batch-傳送含有確認連結的電子郵件。
 
 ::: moniker-end
 
@@ -219,13 +219,13 @@ dotnet add package SendGrid
 
 ## <a name="prerequisites"></a>必要條件
 
-[.NET core 2.2 SDK 或更新版本](https://www.microsoft.com/net/download/all)
+[.NET Core 2.2 SDK 或更新版本](https://www.microsoft.com/net/download/all)
 
-## <a name="create-a-web--app-and-scaffold-identity"></a>建立 web 應用程式，並建立身分識別的結構
+## <a name="create-a-web--app-and-scaffold-identity"></a>建立 web 應用程式和 scaffold 身分識別
 
-執行下列命令來建立驗證的 web 應用程式。
+執行下列命令來建立具有驗證的 web 應用程式。
 
-```console
+```dotnetcli
 dotnet new webapp -au Individual -uld -o WebPWrecover
 cd WebPWrecover
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -239,48 +239,48 @@ dotnet run
 
 ## <a name="test-new-user-registration"></a>測試新的使用者註冊
 
-執行應用程式，請選取**註冊**連結，並註冊的使用者。 此時，唯一的驗證電子郵件是使用[[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute)屬性。 提交註冊之後, 您登入應用程式。 稍後在教學課程中，會將程式碼更新讓新的使用者無法登入，直到其電子郵件會進行驗證。
+執行應用程式，選取 [**註冊**] 連結，然後註冊使用者。 此時，電子郵件上的唯一驗證是使用[[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute)屬性。 提交註冊之後，您會登入應用程式。 稍後在本教學課程中，會更新程式碼，讓新使用者在驗證電子郵件之前無法登入。
 
 [!INCLUDE[](~/includes/view-identity-db.md)]
 
-請注意，資料表的`EmailConfirmed`欄位是`False`。
+請注意，資料表`EmailConfirmed`的欄位`False`是。
 
-您可能想要這封電子郵件一次的下一個步驟時使用的應用程式會傳送確認電子郵件。 以滑鼠右鍵按一下資料列，然後選取**刪除**。 刪除電子郵件別名更容易在下列步驟。
+當應用程式傳送確認電子郵件時，您可能會想要在下一個步驟中再次使用此電子郵件。 以滑鼠右鍵按一下資料列，然後選取 [**刪除**]。 刪除電子郵件別名可讓您更輕鬆地進行下列步驟。
 
 <a name="prevent-login-at-registration"></a>
 
 ## <a name="require-email-confirmation"></a>需要電子郵件確認
 
-您最好確認新的使用者註冊的電子郵件。 電子郵件確認可協助您確認它們無法模擬其他人 （也就是尚未註冊使用其他人的電子郵件）。 假設您有討論論壇，而且您想要防止 「yli@example.com"中註冊為 「nolivetto@contoso.com"。 而不需要電子郵件確認"nolivetto@contoso.com」 無法從您的應用程式收到不想要的電子郵件。 假設使用者不小心註冊為 「ylo@example.com"並還沒有發現..."yli 」 的拼字錯誤。 他們將無法使用密碼復原，因為應用程式沒有正確的電子郵件。 電子郵件確認 bot 提供有限的保護。 電子郵件確認不會提供保護，防範惡意使用者與許多電子郵件帳戶。
+最佳做法是確認新使用者註冊的電子郵件。 電子郵件確認有助於確認他們不會模擬他人（也就是他們尚未向他人的電子郵件登錄）。 假設您有討論論壇，而您想要防止yli@example.com「」註冊nolivetto@contoso.com為「」。 若未確認電子郵件nolivetto@contoso.com，"" 可能會從您的應用程式收到不必要的電子郵件。 假設使用者不小心註冊為 "ylo@example.com"，且未注意到 "yli" 拼錯的錯誤。 因為應用程式沒有正確的電子郵件，所以無法使用密碼復原。 電子郵件確認為 bot 提供了有限的保護。 電子郵件確認無法保護具有許多電子郵件帳戶的惡意使用者。
 
-您通常想要防止新使用者之前確認電子郵件張貼到您的網站的任何資料。
+您通常會想要防止新的使用者將任何資料張貼到您的網站，然後才會有已確認的電子郵件。
 
-更新`Startup.ConfigureServices`要求確認電子郵件：
+更新`Startup.ConfigureServices`以要求已確認的電子郵件：
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=8-11)]
 
-`config.SignIn.RequireConfirmedEmail = true;` 防止已註冊的使用者登入，直到確認其電子郵件。
+`config.SignIn.RequireConfirmedEmail = true;`防止已註冊的使用者登入，直到確認其電子郵件為止。
 
 ### <a name="configure-email-provider"></a>設定電子郵件提供者
 
-在本教學課程中， [SendGrid](https://sendgrid.com)用來傳送電子郵件。 您需要的 SendGrid 帳戶和金鑰來傳送電子郵件。 您可以使用其他電子郵件提供者。 ASP.NET Core 2.x 包含`System.Net.Mail`，可讓您從您的應用程式傳送電子郵件。 我們建議您可以使用 SendGrid 或另一個電子郵件服務傳送電子郵件。 SMTP 是難以保護，並正確設定。
+在本教學課程中， [SendGrid](https://sendgrid.com)是用來傳送電子郵件。 您需要 SendGrid 帳戶和金鑰，才能傳送電子郵件。 您可以使用其他電子郵件提供者。 ASP.NET Core 2.x 包含`System.Net.Mail`，可讓您從您的應用程式傳送電子郵件。 建議您使用 SendGrid 或其他電子郵件服務來傳送電子郵件。 SMTP 很容易保護和設定正確。
 
-建立類別來擷取安全的電子郵件的金鑰。 此範例中，建立*Services/AuthMessageSenderOptions.cs*:
+建立類別來提取安全的電子郵件金鑰。 針對此範例，請建立*Services/AuthMessageSenderOptions .cs*：
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
-#### <a name="configure-sendgrid-user-secrets"></a>設定 SendGrid 使用者祕密
+#### <a name="configure-sendgrid-user-secrets"></a>設定 SendGrid 使用者秘密
 
-設定`SendGridUser`並`SendGridKey`具有[secret manager 工具](xref:security/app-secrets)。 例如：
+使用秘密[管理員工具](xref:security/app-secrets)設定`SendGridKey` 和。`SendGridUser` 例如：
 
 ```console
 C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT
 info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
-在 Windows、 Secret Manager 儲存中的索引鍵/值組*secrets.json*檔案中`%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`目錄。
+在 Windows 中，秘密管理員會將金鑰/值組儲存在`%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`目錄中的*秘密 json*檔案中。
 
-內容*secrets.json*檔案未加密。 下列標記示範*secrets.json*檔案。 `SendGridKey`已移除值。
+不會加密*秘密 json*檔案的內容。 下列標記顯示秘密的*json*檔案。 已`SendGridKey`移除此值。
 
 ```json
 {
@@ -289,105 +289,105 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 }
 ```
 
-如需詳細資訊，請參閱 <<c0> [ 選項模式](xref:fundamentals/configuration/options)並[組態](xref:fundamentals/configuration/index)。
+如需詳細資訊，請參閱[選項模式](xref:fundamentals/configuration/options)[和設定](xref:fundamentals/configuration/index)。
 
 ### <a name="install-sendgrid"></a>安裝 SendGrid
 
-本教學課程示範如何將透過電子郵件通知[SendGrid](https://sendgrid.com/)，但您可以傳送電子郵件使用 SMTP 和其他機制。
+本教學課程說明如何透過[SendGrid](https://sendgrid.com/)新增電子郵件通知，但您可以使用 SMTP 和其他機制來傳送電子郵件。
 
-安裝`SendGrid`NuGet 套件：
+`SendGrid`安裝 NuGet 套件：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-從 [套件管理員] 主控台中，輸入下列命令：
+從 [套件管理員主控台] 中，輸入下列命令：
 
-``` PMC
+```powershell
 Install-Package SendGrid
 ```
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-在主控台中，輸入下列命令：
+從主控台，輸入下列命令：
 
-```cli
+```dotnetcli
 dotnet add package SendGrid
 ```
 
 ---
 
-請參閱[免費開始使用 SendGrid](https://sendgrid.com/free/)報名免費的 SendGrid 帳戶。
+請參閱[免費開始使用 SendGrid](https://sendgrid.com/free/)來註冊免費的 SendGrid 帳戶。
 
-### <a name="implement-iemailsender"></a>實作 IEmailSender
+### <a name="implement-iemailsender"></a>執行 IEmailSender
 
-實作`IEmailSender`，建立*Services/EmailSender.cs*與下列類似的程式碼：
+若要`IEmailSender`執行，請使用與下列類似的程式碼來建立*服務/EmailSender* ：
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Services/EmailSender.cs)]
 
-### <a name="configure-startup-to-support-email"></a>設定啟動，以支援電子郵件
+### <a name="configure-startup-to-support-email"></a>設定啟動以支援電子郵件
 
-將下列程式碼加入`ConfigureServices`方法中的*Startup.cs*檔案：
+將下列程式碼新增至`ConfigureServices` *Startup.cs*檔案中的方法：
 
-* 新增`EmailSender`為暫時性的服務。
-* 註冊`AuthMessageSenderOptions`組態執行個體。
+* 新增`EmailSender`為暫時性服務。
+* `AuthMessageSenderOptions`註冊設定實例。
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=15-99)]
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>啟用帳戶確認和密碼復原
 
-範本會將程式碼進行帳戶確認和密碼復原。 尋找`OnPostAsync`方法中的*Areas/Identity/Pages/Account/Register.cshtml.cs*。
+此範本具有帳戶確認和密碼復原的程式碼。 尋找區域`OnPostAsync` /身分*識別/頁面/帳戶/* 暫存器 .cs 中的方法。
 
-防止新註冊的使用者自動登入註解下面這一行：
+將下列這行批註化，以防止新註冊的使用者自動登入：
 
 ```csharp
 await _signInManager.SignInAsync(user, isPersistent: false);
 ```
 
-使用已變更反白顯示的列，會顯示完整的方法：
+會顯示完整的方法，並反白顯示已變更的行：
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Areas/Identity/Pages/Account/Register.cshtml.cs?highlight=22&name=snippet_Register)]
 
-## <a name="register-confirm-email-and-reset-password"></a>註冊、 確認電子郵件，以及重設密碼
+## <a name="register-confirm-email-and-reset-password"></a>註冊、確認電子郵件和重設密碼
 
-執行 web 應用程式，並測試的帳戶確認和密碼復原流程。
+執行 web 應用程式，並測試帳戶確認和密碼復原流程。
 
 * 執行應用程式並註冊新的使用者
-* 請檢查您的帳戶確認連結的電子郵件。 請參閱[偵錯電子郵件](#debug)如果您沒有收到電子郵件。
-* 按一下連結，以確認您的電子郵件。
+* 檢查您的電子郵件以取得帳戶確認連結。 如果您沒有收到電子郵件，請參閱[Debug email](#debug) 。
+* 按一下連結以確認您的電子郵件。
 * 使用您的電子郵件和密碼登入。
 * 登出。
 
-### <a name="view-the-manage-page"></a>檢視 [管理] 頁面
+### <a name="view-the-manage-page"></a>查看 [管理] 頁面
 
-在瀏覽器中，選取您的使用者名稱：![瀏覽器視窗中的使用使用者名稱](accconfirm/_static/un.png)
+在瀏覽器中選取您的使用者![名稱：瀏覽器視窗，並使用使用者名稱](accconfirm/_static/un.png)
 
-[管理] 頁面會顯示**設定檔**選取的索引標籤。 **電子郵件**顯示核取方塊，指出電子郵件已確認。
+[管理] 頁面隨即顯示，並選取 [**設定檔**] 索引標籤。 此**電子郵件**會顯示一個核取方塊，指出已確認電子郵件。
 
 ### <a name="test-password-reset"></a>測試密碼重設
 
-* 如果您已登入，請選取**登出**。
-* 選取 **登入**連結，然後選取**忘記密碼？** 連結。
+* 如果您已登入，請選取 [**登出**]。
+* 選取 [**登入**] 連結，然後選取 [**忘記密碼？** ] 連結。
 * 輸入您用來註冊帳戶的電子郵件。
-* 會傳送具有重設密碼連結的電子郵件。 請檢查您的電子郵件，然後按一下 重設密碼連結。 已成功重設您的密碼之後，您可以使用您的電子郵件和新密碼登入。
+* 系統會傳送一封電子郵件，其中包含重設密碼的連結。 檢查您的電子郵件，然後按一下連結以重設密碼。 成功重設密碼之後，您就可以使用您的電子郵件和新密碼來登入。
 
-## <a name="change-email-and-activity-timeout"></a>變更電子郵件和活動的逾時
+## <a name="change-email-and-activity-timeout"></a>變更電子郵件和活動超時
 
-預設閒置逾時為 14 天。 下列程式碼會設定為 5 天的閒置逾時：
+預設的無活動超時時間為14天。 下列程式碼會將非啟用時間設定為5天：
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/StartupAppCookie.cs?name=snippet1)]
 
-### <a name="change-all-data-protection-token-lifespans"></a>變更所有資料保護權杖的期限
+### <a name="change-all-data-protection-token-lifespans"></a>變更所有資料保護權杖壽命
 
-下列程式碼會變更為 3 小時內的所有資料保護權杖逾時期限：
+下列程式碼會將所有資料保護權杖超時時間變更為3小時：
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/StartupAllTokens.cs?name=snippet1&highlight=15-16)]
 
-內建在身分識別的使用者語彙基元 (請參閱[AspNetCore/src/Identity/Extensions.Core/src/TokenOptions.cs](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) ) 已[一天的逾時](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)。
+內建身分識別使用者權杖（請參閱[AspNetCore/src/Identity/Extensions. Core/src/TokenOptions](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) ）具有[一天的超時時間](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)。
 
-### <a name="change-the-email-token-lifespan"></a>變更的電子郵件的權杖存留時間
+### <a name="change-the-email-token-lifespan"></a>變更電子郵件權杖生命週期
 
-預設權杖存留時間[身分識別的使用者語彙基元](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs)是[有一天](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)。 本節說明如何變更的電子郵件的權杖存留時間。
+身分[識別使用者權杖](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs)的預設權杖存留期為[一天](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs)。 本節說明如何變更電子郵件權杖的生命週期。
 
-新增自訂[DataProtectorTokenProvider\<TUser >](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1)和<xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:
+新增自訂[的\<DataProtectorTokenProvider TUser >](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1)和： <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/TokenProviders/CustomTokenProvider.cs?name=snippet1)]
 
@@ -397,46 +397,46 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 ### <a name="resend-email-confirmation"></a>重新傳送電子郵件確認
 
-請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/5410)。
+請參閱[這個 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/5410)。
 
 <a name="debug"></a>
 
-### <a name="debug-email"></a>偵錯電子郵件
+### <a name="debug-email"></a>Debug 電子郵件
 
-如果您無法收到電子郵件工作：
+如果您無法讓電子郵件正常運作：
 
-* 在 設定中斷點`EmailSender.Execute`若要確認`SendGridClient.SendEmailAsync`呼叫。
-* 建立[主控台應用程式以傳送電子郵件](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html)使用類似的程式碼以`EmailSender.Execute`。
-* 檢閱[電子郵件 」 活動](https://sendgrid.com/docs/User_Guide/email_activity.html)頁面。
-* 請檢查垃圾郵件資料夾。
-* 請嘗試不同的電子郵件提供者 （Microsoft、 Yahoo、 Gmail 等） 上的另一個電子郵件別名
-* 請嘗試傳送到不同的電子郵件帳戶。
+* 在中`EmailSender.Execute`設定中斷點，以`SendGridClient.SendEmailAsync`驗證是否已呼叫。
+* 建立[主控台應用程式，以](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html)使用類似的程式碼`EmailSender.Execute`將電子郵件傳送至。
+* 查看[電子郵件活動](https://sendgrid.com/docs/User_Guide/email_activity.html)頁面。
+* 檢查您的垃圾郵件資料夾。
+* 在不同的電子郵件提供者（Microsoft、Yahoo、Gmail 等）上嘗試另一個電子郵件別名
+* 嘗試傳送至不同的電子郵件帳戶。
 
-**安全性最佳作法**旨在**不**使用生產環境中開發和測試的祕密。 如果您將應用程式發佈至 Azure 時，您可以為 Azure Web 應用程式入口網站中的應用程式設定來設定 SendGrid 祕密。 設定系統設定來讀取環境變數中的索引鍵。
+**安全性最佳做法**是**不要**在測試和開發中使用生產秘密。 如果您將應用程式發行至 Azure，您可以在 Azure Web 應用程式入口網站中將 SendGrid 秘密設定為應用程式設定。 設定系統設定來讀取環境變數中的索引鍵。
 
-## <a name="combine-social-and-local-login-accounts"></a>結合社交和本機登入帳戶
+## <a name="combine-social-and-local-login-accounts"></a>合併社交和本機登入帳戶
 
-若要完成本節中，您必須先啟用外部驗證提供者。 請參閱[Facebook、 Google、 與外部提供者驗證](xref:security/authentication/social/index)。
+若要完成這一節，您必須先啟用外部驗證提供者。 請參閱[Facebook、Google 及外部提供者驗證](xref:security/authentication/social/index)。
 
-您可以結合本機和社交帳戶，按一下您的電子郵件連結。 依下列順序，"RickAndMSFT@gmail.com」 會先建立做為本機的登入; 不過，您可以為社交登入，請先建立帳戶，然後新增的本機登入。
+您可以按一下電子郵件連結，以合併本機和社交帳戶。 在下列順序中，會RickAndMSFT@gmail.com先將 "" 建立為本機登入; 不過，您可以先將帳戶建立為社交登入，然後再新增本機登入。
 
-![Web 應用程式：RickAndMSFT@gmail.com已驗證的使用者](accconfirm/_static/rick.png)
+![Web 應用程式RickAndMSFT@gmail.com ：使用者驗證](accconfirm/_static/rick.png)
 
-按一下 **管理**連結。 請注意 0 外部 （社交登入） 與此帳戶相關聯。
+按一下 [**管理**] 連結。 請注意與此帳戶相關聯的0外部（社交登入）。
 
 ![管理檢視](accconfirm/_static/manage.png)
 
-按一下連結至另一個登入服務並接受應用程式要求。 在下圖中，Facebook 會是外部驗證提供者：
+按一下另一個登入服務的連結，並接受應用程式要求。 在下圖中，Facebook 是外部驗證提供者：
 
-![管理您的外部登入檢視，列出 Facebook](accconfirm/_static/fb.png)
+![管理您的外部登入視圖清單 Facebook](accconfirm/_static/fb.png)
 
-已合併兩個帳戶。 您可以使用任一個帳戶登入。 您可能想要新增本機帳戶，以免其社交登入驗證服務已關閉，或它們可能比較無法存取其社交帳戶使用者。
+已合併這兩個帳戶。 您可以使用任一帳戶登入。 您可能想要讓使用者新增本機帳戶，以防其社交登入驗證服務關閉，或更有可能失去其社交帳戶的存取權。
 
-## <a name="enable-account-confirmation-after-a-site-has-users"></a>站台後為使用者啟用帳戶確認
+## <a name="enable-account-confirmation-after-a-site-has-users"></a>在網站有使用者之後啟用帳戶確認
 
-在網站上啟用的帳戶確認，使用者會鎖定所有現有的使用者。 現有使用者遭到鎖定中，這是因為未確認他們的帳戶。 若要解決現有的使用者鎖定，請使用下列方法之一：
+在網站上啟用帳戶確認，使用者會鎖定所有現有的使用者。 現有的使用者會被鎖定，因為他們的帳戶不會確認。 若要解決現有的使用者鎖定，請使用下列其中一種方法：
 
-* 更新將標示為正在確認所有現有的使用者資料庫。
-* 請確認現有的使用者。 例如，批次傳送電子郵件以確認連結。
+* 更新資料庫，將所有現有的使用者標示為已確認。
+* 確認現有的使用者。 例如，batch-傳送含有確認連結的電子郵件。
 
 ::: moniker-end

@@ -1,6 +1,6 @@
 下表詳細列出 ASP.NET Core 程式碼產生器參數：
 
-| 參數               | 說明|
+| 參數               | 描述|
 | ----------------- | ------------ |
 | -m  | 模型的名稱。 |
 | -dc  | 資料內容。 |
@@ -11,7 +11,7 @@
 
 使用 `h` 參數取得 `aspnet-codegenerator controller` 命令的說明：
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator controller -h
 ```
 

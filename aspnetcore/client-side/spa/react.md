@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: spa/react
-ms.openlocfilehash: 91a71498574d6d96c2c06e896283fed801e8adb3
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 0e61c5b3e31a0b050d356b8f8e16306dc1e2a7f3
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893695"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080420"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>React 專案範本與 ASP.NET Core 搭配使用
 
@@ -26,7 +26,7 @@ ms.locfileid: "64893695"
 
 進入命令提示字元，然後在空目錄中使用 `dotnet new react` 命令以建立新的專案。 例如，下列命令會在 *my-new-app* 目錄中建立應用程式並切換到該目錄：
 
-```console
+```dotnetcli
 dotnet new react -o my-new-app
 cd my-new-app
 ```
@@ -59,7 +59,7 @@ cd my-new-app
 
 ## <a name="install-npm-packages"></a>安裝 npm 套件
 
-若要安裝協力廠商 npm 套件，請在 *ClientApp* 子目錄中使用命令提示字元。 例如: 
+若要安裝協力廠商 npm 套件，請在 *ClientApp* 子目錄中使用命令提示字元。 例如：
 
 ```console
 cd ClientApp
@@ -80,13 +80,13 @@ npm install --save <package_name>
 
 此預設設定有一個缺點。 每當您修改 C# 程式碼後，需要重新啟動 ASP.NET Core 應用程式，CRA 伺服器才會重新啟動。 大約幾秒鐘時間，才會開始備份。 如果您經常編輯 C# 程式碼，且不想要等候 CRA 伺服器重新啟動，可以在外部執行 CRA 伺服器，與 ASP.NET Core 程序獨立開來。 方法如下：
 
-1. 新增 *.env*的檔案*ClientApp*子目錄，使用下列設定：
+1. 使用下列設定，將*env*檔案新增至*ClientApp*子目錄：
 
     ```
     BROWSER=none
     ```
 
-    啟動 CRA 伺服器外部時，這會導致無法開啟網頁瀏覽器。
+    這會防止您的網頁瀏覽器在外部啟動 CRA 伺服器時開啟。
 
 2. 在命令提示字元中，切換至 *ClientApp* 子目錄，然後啟動 CRA 程式開發伺服器：
 
@@ -104,7 +104,7 @@ npm install --save <package_name>
 當您啟動 ASP.NET Core 應用程式，它並不會啟動 CRA 伺服器。 而是改為使用您手動啟動的執行個體。 這樣可以加快它的啟動和重新啟動速度。 不用每一次都要等候 React 應用程式來重新建置。
 
 > [!IMPORTANT]
-> 「 伺服器端轉譯 」 不支援的功能，此範本。 我們使用此範本的目標是符合 「 建立 react-應用程式 」 使用的同位檢查。 因此，案例和功能不包含在 「 建立 react-應用程式 」 專案 （例如 SSR) 中不支援，而且會留給您作為練習使用者。
+> 「伺服器端轉譯」不是此範本支援的功能。 此範本的目標是要符合與「建立-回應應用程式」的同位檢查。 因此，不支援「建立-回應應用程式」專案（例如 SSR）中未包含的案例和功能，而且會保留為使用者的練習。
 
 ## <a name="additional-resources"></a>其他資源
 

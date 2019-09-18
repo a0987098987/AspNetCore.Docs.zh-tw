@@ -6,12 +6,12 @@ ms.author: riserrad
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vscode
-ms.openlocfilehash: 97e8fcb1e5470245c80fad0875abb5fdace7853c
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
-ms.translationtype: HT
+ms.openlocfilehash: a5d92775d6245494c34bfe691d7ade663b2078d5
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308323"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082399"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio-code"></a>使用 Visual Studio Code 將 ASP.NET Core 應用程式發佈至 Azure
 
@@ -37,8 +37,8 @@ ms.locfileid: "68308323"
 
 使用終端機巡覽至您希望在其上建立專案的資料夾，並使用下列命令：
 
-```cmd
-> dotnet new mvc
+```dotnetcli
+dotnet new mvc
 ```
 
 您會擁有類似如下所示的資料夾結構：

@@ -5,12 +5,12 @@ description: 將身分識別與 ASP.NET Core 應用程式搭配使用。 瞭解�
 ms.author: riande
 ms.date: 03/26/2019
 uid: security/authentication/identity
-ms.openlocfilehash: 325a61e6038e79b9a0db72c8360a5cbff2c8ddae
-ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
+ms.openlocfilehash: 979681cfc196aca9fb5097583d99a086e1c597ba
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71011211"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082456"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET Core 上的身分識別簡介
 
@@ -47,13 +47,13 @@ ASP.NET Core 身分識別是將登入功能新增至 ASP.NET Core 應用程式�
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 [檔案]  >  [新增]  >  [專案]。
-* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定 **Deploying Office Solutions**]。
+* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]** 。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-```cli
+```dotnetcli
 dotnet new webapp --auth Individual -o WebApp1
 ```
 
@@ -77,7 +77,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-```cli
+```dotnetcli
 dotnet ef database update
 ```
 
@@ -145,7 +145,7 @@ dotnet ef database update
 
 如果您已建立名為**WebApp1**的專案，請執行下列命令。 否則，請使用正確的命名空間`ApplicationDbContext`：
 
-```cli
+```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
 ```

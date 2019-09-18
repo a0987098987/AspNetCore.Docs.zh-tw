@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/31/2019
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: d9db2a251820d0dab26f8a6bd2eb755090154165
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: b71bc0464892f15ef8db0324a8e66a28a6192577
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813338"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080866"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -37,7 +37,7 @@ ms.locfileid: "67813338"
 1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器。
 1. 在伺服器上安裝 .NET Core 執行階段。
    1. 請前往 [.NET Core 的 All Downloads (下載區)](https://www.microsoft.com/net/download/all) 頁面。
-   1. 在 [執行階段]  下的清單中選取最新的非預覽執行階段。
+   1. 在 [執行階段] 下的清單中選取最新的非預覽執行階段。
    1. 選取並遵循符合伺服器 Ubuntu 版本的 Ubuntu 指示。
 1. 現有的 ASP.NET Core 應用程式。
 
@@ -52,7 +52,7 @@ ms.locfileid: "67813338"
 
 從開發環境執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 將應用程式封裝到可在伺服器上執行的目錄 (例如，*bin/Release/&lt;target_framework_moniker&gt;/publish*)：
 
-```console
+```dotnetcli
 dotnet publish --configuration Release
 ```
 
@@ -341,11 +341,11 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 **設定應用程式以進行安全的本機連線 (HTTPS)**
 
-[dotnet run](/dotnet/core/tools/dotnet-run) 命令使用應用程式的 *Properties/launchSettings.json* 檔案，其設定應用程式在 `applicationUrl` 屬性所提供的 URL 上接聽 (例如 `https://localhost:5001;http://localhost:5000`)。
+[dotnet run](/dotnet/core/tools/dotnet-run) 命令使用應用程式的 *Properties/launchSettings.json* 檔案，其設定應用程式在 `applicationUrl` 屬性所提供的 URL 上接聽 (例如 `https://localhost:5001; http://localhost:5000`)。
 
 使用下列其中一種方法，設定應用程式將憑證用在針對 `dotnet run` 命令的開發，或用在開發環境 (F5，若在 Visual Studio Code 中則為 Ctrl+F5)：
 
-* [取代組態中的預設憑證](xref:fundamentals/servers/kestrel#configuration) (建議使用  )
+* [取代組態中的預設憑證](xref:fundamentals/servers/kestrel#configuration) (建議使用)
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **設定反向 Prooxy 以進行安全的用戶端連線 (HTTPS)**
@@ -368,7 +368,7 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 #### <a name="secure-nginx-from-clickjacking"></a>保護 Nginx 免於點閱綁架
 
-[點閱綁架](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger)(也稱為「UI 偽裝攻擊」  ) 是一種惡意攻擊，會誘騙網站訪客點選與其目前所瀏覽頁面不同的頁面上連結或按鈕。 請使用 `X-FRAME-OPTIONS` 來保護網站安全。
+[點閱綁架](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger)(也稱為「UI 偽裝攻擊」) 是一種惡意攻擊，會誘騙網站訪客點選與其目前所瀏覽頁面不同的頁面上連結或按鈕。 請使用 `X-FRAME-OPTIONS` 來保護網站安全。
 
 減輕點擊劫持攻擊：
 

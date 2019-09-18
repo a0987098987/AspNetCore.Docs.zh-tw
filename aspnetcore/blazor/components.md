@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/components
-ms.openlocfilehash: e51f6745f6e0c748e51d7f8a49193f3d81fd2a06
-ms.sourcegitcommit: 07cd66e367d080acb201c7296809541599c947d1
+ms.openlocfilehash: 521421ac413218c1f04dd9feade2a49dc1f7b918
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71039174"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080538"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -1417,14 +1417,14 @@ builder.AddContent(1, "Second");
 
 當程式碼第一次執行時，如果`someFlag`是`true`，則產生器會接收：
 
-| 序列 | Type      | Data   |
+| 序列 | 類型      | 資料   |
 | :------: | --------- | :----: |
 | 0        | Text node | 第一個  |
 | 1        | Text node | 第二個 |
 
 想像一下， `false`會變成，然後再次呈現標記。 `someFlag` 這次，產生器會接收：
 
-| 序列 | Type       | Data   |
+| 序列 | 類型       | 資料   |
 | :------: | ---------- | :----: |
 | 1        | Text node  | 第二個 |
 
@@ -1449,14 +1449,14 @@ builder.AddContent(seq++, "Second");
 
 現在，第一個輸出是：
 
-| 序列 | Type      | Data   |
+| 序列 | 類型      | 資料   |
 | :------: | --------- | :----: |
 | 0        | Text node | 第一個  |
 | 1        | Text node | 第二個 |
 
 此結果與先前的案例相同，因此不會有負面問題存在。 `someFlag``false`在第二個轉譯上，輸出為：
 
-| 序列 | Type      | Data   |
+| 序列 | 類型      | 資料   |
 | :------: | --------- | ------ |
 | 0        | Text node | 第二個 |
 
@@ -1473,7 +1473,7 @@ builder.AddContent(seq++, "Second");
 
 * 如果序號是動態產生的，應用程式效能會受到影響。
 * 架構無法在執行時間自動建立自己的序號，因為必要的資訊不存在，除非是在編譯時期加以捕捉。
-* 請勿撰寫長時間區塊的手動執行`RenderTreeBuilder`邏輯。 偏好`.razor`使用檔案，並允許編譯器處理序號。
+* 請勿撰寫長時間區塊的手動執行`RenderTreeBuilder`邏輯。 偏好`.razor`使用檔案，並允許編譯器處理序號。 如果您`RenderTreeBuilder`無法避免手動邏輯，請將長塊的程式碼分割成較小的片段，以`OpenRegion` / `CloseRegion`呼叫。 每個區域都有自己的序號個別空間，因此您可以在每個區域內從零（或任何其他任一數字）重新開機。
 * 如果序號已硬式編碼，則 diff 演算法只會要求序號增加值。 起始值和間距無關。 一個合法的選項是使用程式程式碼號做為序號，或從零開始，並以一個或數百個（或任何慣用的間隔）來增加。 
 * Blazor 會使用序號，而其他樹狀結構比較的 UI 架構則不會使用它們。 使用序號時，比較速度會更快，而且 Blazor 具有可自動處理序號的編譯步驟，讓開發人員撰寫`.razor`檔案。
 

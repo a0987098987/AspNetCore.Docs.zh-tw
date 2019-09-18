@@ -5,12 +5,12 @@ description: 在本教學課程中，您將開始使用 EF Core 移轉功能來�
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 110ffa8ecea1fe6e55a2f979a4ce851ed59e1807
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
-ms.translationtype: HT
+ms.openlocfilehash: 8a4929a905c6a488231d7d29e1101f6fd887477f
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583503"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082074"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 
@@ -44,7 +44,7 @@ Drop-Database
 
 * 請在命令提示字元執行下列命令以安裝 EF CLI 工具：
 
-  ```console
+  ```dotnetcli
   dotnet tool install --global dotnet-ef --version 3.0.0-*
   ```
 
@@ -52,7 +52,7 @@ Drop-Database
 
 * 刪除 *CU.db* 檔案，或執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet ef database drop --force
   ```
 
@@ -73,7 +73,7 @@ Update-Database
 
 請確認命令提示字元位於專案資料夾中，然後執行下列命令：
 
-```console
+```dotnetcli
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
@@ -82,7 +82,7 @@ dotnet ef database update
 
 ## <a name="up-and-down-methods"></a>Up 和 Down 方法
 
-EF Core `migrations add` 命令已產生用來建立資料庫的程式碼。 此移轉程式碼位於 Migrations\<時間戳記>_InitialCreate.cs  檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
+EF Core `migrations add` 命令已產生用來建立資料庫的程式碼。 此移轉程式碼位於 Migrations\<時間戳記>_InitialCreate.cs 檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
 
 [!code-csharp[](intro/samples/cu30/Migrations/20190731193522_InitialCreate.cs)]
 
@@ -102,7 +102,7 @@ EF Core `migrations add` 命令已產生用來建立資料庫的程式碼。 此
 
 ## <a name="the-data-model-snapshot"></a>資料模型快照集
 
-移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料模型的「快照集」  。 當您新增移轉時，EF 會比較目前資料模型與快照集檔案，以判斷變更的內容。
+移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料模型的「快照集」。 當您新增移轉時，EF 會比較目前資料模型與快照集檔案，以判斷變更的內容。
 
 由於快照集檔案會追蹤資料模型的狀態，您無法藉由刪除 `<timestamp>_<migrationname>.cs` 檔案來刪除移轉。 若要退出最新的移轉，您必須使用 `migrations remove` 命令。 該命令會刪除移轉，並確保能正確地重設快照集。 如需詳細資訊，請參閱 [dotnet ef 移轉移除](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)。
 
@@ -174,11 +174,11 @@ https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 ## <a name="drop-the-database"></a>卸除資料庫
 
-使用 [SQL Server 物件總管]  (SSOX) 或 `database drop` 命令：
+使用 [SQL Server 物件總管] (SSOX) 或 `database drop` 命令：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [套件管理員主控台]  (PMC) 中，執行下列命令：
+在 [套件管理員主控台] (PMC) 中，執行下列命令：
 
 ```PMC
 Drop-Database
@@ -192,7 +192,7 @@ Drop-Database
 
 在命令視窗中輸入下列命令：
 
- ```console
+ ```dotnetcli
  dotnet ef database drop
  ```
 
@@ -211,7 +211,7 @@ Update-Database
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-```console
+```dotnetcli
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
@@ -220,7 +220,7 @@ dotnet ef database update
 
 ### <a name="examine-the-up-and-down-methods"></a>檢查 Up 和 Down 方法
 
-EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 此移轉程式碼位於 Migrations\<時間戳記>_InitialCreate.cs  檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
+EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 此移轉程式碼位於 Migrations\<時間戳記>_InitialCreate.cs 檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
 
 [!code-csharp[](intro/samples/cu21/Migrations/20180626224812_InitialCreate.cs?range=7-24,77-88)]
 
@@ -239,7 +239,7 @@ EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 �
 
 ### <a name="the-data-model-snapshot"></a>資料模型快照集
 
-移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照」  。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
+移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照」。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
 
 若要刪除移轉，請使用下列命令：
 
@@ -249,11 +249,11 @@ Remove-Migration
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-```console
+```dotnetcli
 dotnet ef migrations remove
 ```
 
-如需詳細資訊，請參閱 [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)。
+如需詳細資訊，請參閱 [dotnet ef 移轉移除](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)。
 
 ---
 
@@ -265,7 +265,7 @@ remove migrations 命令會刪除移轉，並確保正確地重設快照集。
 
 * 略過移轉，並建立資料庫和結構描述。
 * 不會建立移轉資料表。
-* 「無法」  與移轉搭配使用。
+* 「無法」與移轉搭配使用。
 * 設計用來測試或快速原型化經常卸除並重新建立資料庫的位置。
 
 移除 `EnsureCreated`：

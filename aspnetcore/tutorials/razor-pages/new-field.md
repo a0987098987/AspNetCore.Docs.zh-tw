@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 4af41422288847c5e77057215390b901d1074c88
-ms.sourcegitcommit: 7001657c00358b082734ba4273693b9b3ed35d2a
-ms.translationtype: HT
+ms.openlocfilehash: 0629605f4d5597a9694cb20ce00b91ff4a768468
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68670093"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082474"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
@@ -81,7 +81,7 @@ ms.locfileid: "68670093"
 
 ### <a name="add-a-migration-for-the-rating-field"></a>新增評等欄位的移轉
 
-從 [工具]  功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]  。
+從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
 在 PMC 中，輸入下列命令：
 
 ```powershell
@@ -105,9 +105,9 @@ Update-Database
 另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要在 SSOX 中刪除資料庫：
 
 * 在 SSOX 中選取資料庫。
-* 以滑鼠右鍵按一下資料庫，然後選取 [刪除]  。
-* 核取 [關閉現有的連接]  。
-* 選取 [確定]  。
+* 以滑鼠右鍵按一下資料庫，然後選取 [刪除]。
+* 核取 [關閉現有的連接]。
+* 選取 [確定]。
 * 在 [PMC](xref:tutorials/razor-pages/new-field#pmc) 中，更新資料庫：
 
   ```powershell
@@ -122,7 +122,7 @@ Update-Database
 
 刪除移轉資料夾。  使用下列命令重新建立資料庫。
 
-```console
+```dotnetcli
 dotnet ef database drop
 dotnet ef migrations add InitialCreate
 dotnet ef database update
@@ -206,7 +206,7 @@ dotnet ef database update
 
 ### <a name="add-a-migration-for-the-rating-field"></a>新增評等欄位的移轉
 
-從 [工具]  功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]  。
+從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
 在 PMC 中，輸入下列命令：
 
 ```powershell
@@ -230,9 +230,9 @@ Update-Database
 另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要在 SSOX 中刪除資料庫：
 
 * 在 SSOX 中選取資料庫。
-* 以滑鼠右鍵按一下資料庫，然後選取 [刪除]  。
-* 核取 [關閉現有的連接]  。
-* 選取 [確定]  。
+* 以滑鼠右鍵按一下資料庫，然後選取 [刪除]。
+* 核取 [關閉現有的連接]。
+* 選取 [確定]。
 * 在 [PMC](xref:tutorials/razor-pages/new-field#pmc) 中，更新資料庫：
 
   ```powershell
@@ -247,7 +247,7 @@ Update-Database
 
 刪除資料庫並使用移轉重新建立資料庫。 若要刪除資料庫，請刪除資料庫檔案 (*MvcMovie.db*)。 然後執行 `ef database update` 命令：
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 

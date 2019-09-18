@@ -1,6 +1,6 @@
 <a name="codegenerator"></a> 下表詳細列出 ASP.NET Core 程式碼產生器參數：
 
-| 參數               | 說明|
+| 參數               | 描述|
 | ----------------- | ------------ |
 | -m  | 模型的名稱。 |
 | -dc  | 要使用的 `DbContext` 類別。 |
@@ -10,7 +10,7 @@
 
 使用 `h` 參數取得 `aspnet-codegenerator razorpage` 命令的說明：
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator razorpage -h
 ```
 

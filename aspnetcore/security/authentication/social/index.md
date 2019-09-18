@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/10/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 8dac8a8a2276388414b6bb1211e970617b001637
-ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
-ms.translationtype: HT
+ms.openlocfilehash: edaf9eeaf02879b2f7816bab0eb373a7de640c05
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2019
-ms.locfileid: "65874814"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082510"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
@@ -48,7 +48,7 @@ ms.locfileid: "65874814"
 
 * 執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld
   code -r WebApp1
   ```
@@ -120,4 +120,4 @@ ms.locfileid: "65874814"
 
 * 請參考提供者的特定頁面，以設定應用程式所需的提供者登入項目。
 
-* 您想要保存有關使用者與其存取和重新整理權杖的額外資料。 如需詳細資訊，請參閱<xref:security/authentication/social/additional-claims>。
+* 您想要保存有關使用者與其存取和重新整理權杖的額外資料。 如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims>。

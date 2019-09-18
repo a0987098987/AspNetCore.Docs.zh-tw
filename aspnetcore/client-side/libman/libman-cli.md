@@ -1,23 +1,23 @@
 ---
-title: 使用 ASP.NET Core 使用 LibMan 命令列介面 (CLI)
+title: 搭配 ASP.NET Core 使用 LibMan 命令列介面（CLI）
 author: scottaddie
-description: 了解如何在 ASP.NET Core 專案中使用 LibMan 命令列介面 (CLI)。
+description: 瞭解如何在 ASP.NET Core 專案中使用 LibMan 命令列介面（CLI）。
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/30/2018
 uid: client-side/libman/libman-cli
-ms.openlocfilehash: 5667f79648a60b8fd9496f8041ef08891ab766af
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: cf61bab2f0c3fc33d293968b8ac380cb56958d29
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894755"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080626"
 ---
-# <a name="use-the-libman-command-line-interface-cli-with-aspnet-core"></a>使用 ASP.NET Core 使用 LibMan 命令列介面 (CLI)
+# <a name="use-the-libman-command-line-interface-cli-with-aspnet-core"></a>搭配 ASP.NET Core 使用 LibMan 命令列介面（CLI）
 
 作者：[Scott Addie](https://twitter.com/Scott_Addie)
 
-[LibMan](xref:client-side/libman/index) CLI 是一種跨平台工具，支援.NET Core 支援的每個地方。
+[LibMan](xref:client-side/libman/index) CLI 是一種跨平臺工具，支援 .net Core 的任何位置。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -25,37 +25,37 @@ ms.locfileid: "64894755"
 
 ## <a name="installation"></a>安裝
 
-若要安裝 LibMan CLI:
+若要安裝 LibMan CLI：
 
-```console
+```dotnetcli
 dotnet tool install -g Microsoft.Web.LibraryManager.Cli
 ```
 
-A [.NET Core 全域工具](/dotnet/core/tools/global-tools#install-a-global-tool)從安裝[Microsoft.Web.LibraryManager.Cli](https://www.nuget.org/packages/Microsoft.Web.LibraryManager.Cli/) NuGet 套件。
+[.Net Core 通用工具](/dotnet/core/tools/global-tools#install-a-global-tool)是從[LibraryManager](https://www.nuget.org/packages/Microsoft.Web.LibraryManager.Cli/)安裝而來。
 
-若要從特定的 NuGet 套件來源安裝 LibMan CLI:
+若要從特定的 NuGet 套件來源安裝 LibMan CLI：
 
-```console
+```dotnetcli
 dotnet tool install -g Microsoft.Web.LibraryManager.Cli --version 1.0.94-g606058a278 --add-source C:\Temp\
 ```
 
-在上述範例中，從本機的 Windows 電腦安裝.NET Core 全域工具*C:\Temp\Microsoft.Web.LibraryManager.Cli.1.0.94-g606058a278.nupkg*檔案。
+在上述範例中，.NET Core 通用工具是從本機 Windows 電腦的*C:\Temp\Microsoft.Web.LibraryManager.Cli.1.0.94-g606058a278.nupkg*檔案進行安裝。
 
 ## <a name="usage"></a>使用量
 
-安裝成功後的 cli，您可以使用下列命令：
+成功安裝 CLI 之後，您可以使用下列命令：
 
 ```console
 libman
 ```
 
-若要檢視已安裝的 CLI 版本：
+若要查看已安裝的 CLI 版本：
 
 ```console
 libman --version
 ```
 
-若要檢視可用的 CLI 命令：
+若要查看可用的 CLI 命令：
 
 ```console
 libman --help
@@ -88,11 +88,11 @@ Commands:
 Use "libman [command] --help" for more information about a command.
 ```
 
-下列各節說明可用的 CLI 命令。
+下列各節將概述可用的 CLI 命令。
 
-## <a name="initialize-libman-in-the-project"></a>在專案中初始化 LibMan
+## <a name="initialize-libman-in-the-project"></a>初始化專案中的 LibMan
 
-`libman init`命令會建立*libman.json*檔案如果不存在。 建立檔案是使用預設項目範本內容。
+此`libman init`命令會建立*libman*檔案（如果不存在的話）。 使用預設專案範本內容建立檔案。
 
 ### <a name="synopsis"></a>概要
 
@@ -103,15 +103,15 @@ libman init [-h|--help]
 
 ### <a name="options"></a>選項
 
-下列選項可供`libman init`命令：
+以下是使用 `libman init` 命令時可用的選項：
 
 * `-d|--default-destination <PATH>`
 
-  相對於目前的資料夾路徑。 如果沒有，將會安裝在此位置的程式庫檔案`destination`屬性定義在程式庫*libman.json*。 `<PATH>`值會寫入至`defaultDestination`屬性*libman.json*。
+  相對於目前資料夾的路徑。 如果未針對*libman*中的程式庫定義`destination`任何屬性，則會在此位置安裝程式庫檔案。 此`<PATH>`值會寫入至*libman*的`defaultDestination`屬性。
 
 * `-p|--default-provider <PROVIDER>`
 
-  如果沒有提供者已定義特定的程式庫所使用的提供者。 `<PROVIDER>`值會寫入至`defaultProvider`屬性*libman.json*。 取代`<PROVIDER>`具有下列值之一：
+  未針對指定的程式庫定義提供者時，所要使用的提供者。 此`<PROVIDER>`值會寫入至*libman*的`defaultProvider`屬性。 取代`<PROVIDER>`為下列其中一個值：
 
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
@@ -119,22 +119,22 @@ libman init [-h|--help]
 
 ### <a name="examples"></a>範例
 
-若要建立*libman.json* ASP.NET Core 專案中的檔案：
+若要在 ASP.NET Core 專案中建立*libman json*檔案：
 
-* 瀏覽至專案根目錄。
+* 流覽至專案根目錄。
 * 執行下列命令：
 
   ```console
   libman init
   ```
 
-* 輸入名稱的預設提供者或按`Enter`使用預設 CDNJS 提供者。 有效值包括：
+* 輸入預設提供者的名稱，或按`Enter`以使用預設的 CDNJS 提供者。 有效值包括：
 
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
   ![libman init 命令-預設提供者](_static/libman-init-provider.png)
 
-A *libman.json*檔案新增至專案根目錄中，以下列內容：
+*Libman*會使用下列內容新增至專案根目錄：
 
 ```json
 {
@@ -146,7 +146,7 @@ A *libman.json*檔案新增至專案根目錄中，以下列內容：
 
 ## <a name="add-library-files"></a>新增程式庫檔案
 
-`libman install`命令會下載並安裝至專案的程式庫檔案。 A *libman.json*檔案會新增，如果不存在。 *Libman.json*檔案遭到修改儲存的程式庫檔案的組態詳細資料。
+命令`libman install`會將程式庫檔案下載並安裝到專案中。 如果*libman*檔案不存在，則會新增它。 已修改*libman*檔案以儲存程式庫檔案的設定詳細資料。
 
 ### <a name="synopsis"></a>概要
 
@@ -159,33 +159,33 @@ libman install [-h|--help]
 
 `LIBRARY`
 
-若要安裝的程式庫名稱。 此名稱可能包含版本號碼的標記法 (例如`@1.2.0`)。
+要安裝之程式庫的名稱。 此名稱可能包含版本號碼標記法（例如`@1.2.0`）。
 
 ### <a name="options"></a>選項
 
-下列選項可供`libman install`命令：
+以下是使用 `libman install` 命令時可用的選項：
 
 * `-d|--destination <PATH>`
 
-  要安裝的程式庫的位置。 如果未指定，則會使用預設位置。 如果沒有`defaultDestination`屬性中指定*libman.json*，這是必要選項。
+  要安裝程式庫的位置。 如果未指定，則會使用預設位置。 如果在`defaultDestination` *libman*中未指定任何屬性，則此為必要選項。
 
 * `--files <FILE>`
 
-  指定要從程式庫安裝的檔案名稱。 如果未指定，從程式庫的所有檔案會都安裝。 提供一個`--files`安裝每個檔案的選項。 也支援相對路徑。 例如：`--files dist/browser/signalr.js`。
+  指定要從程式庫安裝的檔案名。 如果未指定，則會安裝媒體櫃中的所有檔案。 針對要`--files`安裝的每個檔案提供一個選項。 也支援相對路徑。 例如：`--files dist/browser/signalr.js`。
 
 * `-p|--provider <PROVIDER>`
 
-  若要使用程式庫取得提供者的名稱。 取代`<PROVIDER>`具有下列值之一：
+  要用於取得程式庫的提供者名稱。 取代`<PROVIDER>`為下列其中一個值：
   
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-  如果未指定，`defaultProvider`中的屬性*libman.json*用。 如果沒有`defaultProvider`屬性中指定*libman.json*，這是必要選項。
+  如果未指定，則`defaultProvider`會使用*libman*中的屬性。 如果在`defaultProvider` *libman*中未指定任何屬性，則此為必要選項。
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
 ### <a name="examples"></a>範例
 
-請考慮下列*libman.json*檔案：
+請考慮下列*libman json*檔案：
 
 ```json
 {
@@ -195,13 +195,13 @@ libman install [-h|--help]
 }
 ```
 
-若要安裝的 jQuery 版本 3.2.1 *jquery.min.js*的檔案*wwwroot/指令碼/jquery*使用 CDNJS 提供者的資料夾：
+若要使用 CDNJS 提供者，將 jQuery 版本 3.2.1 *jquery. min .js*檔案安裝至*wwwroot/scripts/jQuery*資料夾：
 
 ```console
 libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquery --files jquery.min.js
 ```
 
-*Libman.json*檔案如下所示：
+*Libman*類似下列內容：
 
 ```json
 {
@@ -219,20 +219,20 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 }
 ```
 
-若要安裝*calendar.js*並*calendar.css*從檔案*c:\\temp\\contosoCalendar\\* 使用檔案系統提供者：
+若要使用檔案系統提供者，從*C：\\temp\\ \\ contosoCalendar*安裝行事*曆*和*calendar*檔案：
 
   ```console
   libman install C:\temp\contosoCalendar\ --provider filesystem --files calendar.js --files calendar.css
   ```
 
-有兩個原因，顯示下列提示：
+有兩個原因會出現下列提示：
 
-* *Libman.json*檔案未包含`defaultDestination`屬性。
-* `libman install`命令不包含`-d|--destination`選項。
+* *Libman*不包含`defaultDestination`屬性。
+* 此`libman install`命令不`-d|--destination`包含選項。
 
-![libman 安裝命令-目的地](_static/libman-install-destination.png)
+![libman install 命令-目的地](_static/libman-install-destination.png)
 
-接受預設的目的地之後, *libman.json*檔案如下所示：
+接受預設目的地之後， *libman*會如下所示：
 
 ```json
 {
@@ -259,13 +259,13 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 }
 ```
 
-## <a name="restore-library-files"></a>將程式庫檔案還原
+## <a name="restore-library-files"></a>還原程式庫檔案
 
-`libman restore`命令會在安裝程式庫檔案中定義*libman.json*。 可套用下列規則：
+命令會安裝 libman 中定義的程式庫檔案。 `libman restore` 可套用下列規則：
 
-* 如果沒有*libman.json*檔案位於專案根目錄，則會傳回錯誤。
-* 如果程式庫指定提供者，`defaultProvider`中的屬性*libman.json*會被忽略。
-* 如果程式庫指定目的地`defaultDestination`中的屬性*libman.json*會被忽略。
+* 如果專案根目錄中沒有*libman*檔案存在，則會傳回錯誤。
+* 如果程式庫指定了提供者， `defaultProvider`則會忽略*libman*中的屬性。
+* 如果程式庫指定了目的地，則`defaultDestination`會忽略*libman*中的屬性。
 
 ### <a name="synopsis"></a>概要
 
@@ -276,13 +276,13 @@ libman restore [-h|--help]
 
 ### <a name="options"></a>選項
 
-下列選項可供`libman restore`命令：
+以下是使用 `libman restore` 命令時可用的選項：
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
 ### <a name="examples"></a>範例
 
-若要還原程式庫檔案中定義*libman.json*:
+若要還原*libman*中定義的程式庫檔案：
 
 ```console
 libman restore
@@ -290,7 +290,7 @@ libman restore
 
 ## <a name="delete-library-files"></a>刪除程式庫檔案
 
-`libman clean`命令會刪除先前還原透過 LibMan 的程式庫檔案。 這項作業後會變成空的資料夾被刪除。 相關聯的程式庫檔案中的組態`libraries`的屬性*libman.json*不會被移除。
+`libman clean`命令會刪除先前透過 LibMan 還原的程式庫檔案。 刪除此作業後變成空白的資料夾。 程式庫檔案在`libraries` *libman*的屬性中的關聯設定不會被移除。
 
 ### <a name="synopsis"></a>概要
 
@@ -301,7 +301,7 @@ libman clean [-h|--help]
 
 ### <a name="options"></a>選項
 
-下列選項可供`libman clean`命令：
+以下是使用 `libman clean` 命令時可用的選項：
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
@@ -313,19 +313,19 @@ libman clean [-h|--help]
 libman clean
 ```
 
-## <a name="uninstall-library-files"></a>解除安裝程式庫檔案
+## <a name="uninstall-library-files"></a>卸載程式庫檔案
 
 `libman uninstall`命令：
 
-* 刪除指定的程式庫中的目的地從相關聯的所有檔案*libman.json*。
-* 移除相關聯的文件庫設定*libman.json*。
+* 從*libman*中的目的地，刪除與指定的程式庫相關聯的所有檔案。
+* 從*libman*移除相關聯的程式庫設定。
 
-發生錯誤時：
+當下列情況發生錯誤：
 
-* 否*libman.json*檔案位於專案根目錄。
+* 專案根目錄中沒有*libman*檔案存在。
 * 指定的程式庫不存在。
 
-如果已安裝具有相同名稱的多個程式庫，系統會提示您選擇其中一個。
+如果安裝了多個具有相同名稱的程式庫，系統會提示您選擇其中一個。
 
 ### <a name="synopsis"></a>概要
 
@@ -338,21 +338,21 @@ libman uninstall [-h|--help]
 
 `LIBRARY`
 
-若要解除安裝程式庫的名稱。 此名稱可能包含版本號碼的標記法 (例如`@1.2.0`)。
+要卸載之程式庫的名稱。 此名稱可能包含版本號碼標記法（例如`@1.2.0`）。
 
 ### <a name="options"></a>選項
 
-下列選項可供`libman uninstall`命令：
+以下是使用 `libman uninstall` 命令時可用的選項：
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
 ### <a name="examples"></a>範例
 
-請考慮下列*libman.json*檔案：
+請考慮下列*libman json*檔案：
 
 [!code-json[](samples/LibManSample/libman.json)]
 
-* 若要解除安裝 jQuery，其中一個下列的命令會成功：
+* 若要卸載 jQuery，下列任一命令都會成功：
 
   ```console
   libman uninstall jquery
@@ -362,7 +362,7 @@ libman uninstall [-h|--help]
   libman uninstall jquery@3.3.1
   ```
 
-* 若要解除安裝安裝透過 Lodash 檔案`filesystem`提供者：
+* 若要卸載透過`filesystem`提供者安裝的 lodash 所檔案：
 
   ```console
   libman uninstall C:\temp\lodash\
@@ -370,14 +370,14 @@ libman uninstall [-h|--help]
 
 ## <a name="update-library-version"></a>更新程式庫版本
 
-`libman update`命令會更新文件庫透過 LibMan 安裝至指定的版本。
+`libman update`命令會將透過 LibMan 安裝的程式庫更新為指定的版本。
 
-發生錯誤時：
+當下列情況發生錯誤：
 
-* 否*libman.json*檔案位於專案根目錄。
+* 專案根目錄中沒有*libman*檔案存在。
 * 指定的程式庫不存在。
 
-如果已安裝具有相同名稱的多個程式庫，系統會提示您選擇其中一個。
+如果安裝了多個具有相同名稱的程式庫，系統會提示您選擇其中一個。
 
 ### <a name="synopsis"></a>概要
 
@@ -390,11 +390,11 @@ libman update [-h|--help]
 
 `LIBRARY`
 
-要更新的程式庫名稱。
+要更新之程式庫的名稱。
 
 ### <a name="options"></a>選項
 
-下列選項可供`libman update`命令：
+以下是使用 `libman update` 命令時可用的選項：
 
 * `-pre`
 
@@ -408,19 +408,19 @@ libman update [-h|--help]
 
 ### <a name="examples"></a>範例
 
-* 若要更新為最新版本的 jQuery:
+* 若要將 jQuery 更新為最新版本：
 
   ```console
   libman update jquery
   ```
 
-* 若要更新 jQuery 版本 3.3.1:
+* 若要將 jQuery 更新為版本3.3.1：
 
   ```console
   libman update jquery --to 3.3.1
   ```
 
-* 若要更新為最新的發行前版本的 jQuery:
+* 若要將 jQuery 更新為最新的發行前版本：
 
   ```console
   libman update jquery -pre
@@ -428,7 +428,7 @@ libman update [-h|--help]
 
 ## <a name="manage-library-cache"></a>管理程式庫快取
 
-`libman cache`命令管理 LibMan 程式庫快取。 `filesystem`提供者不使用程式庫快取。
+`libman cache`命令會管理 LibMan 程式庫快取。 `filesystem`提供者不會使用程式庫快取。
 
 ### <a name="synopsis"></a>概要
 
@@ -442,27 +442,27 @@ libman cache [-h|--help]
 
 `PROVIDER`
 
-僅能搭配`clean`命令。 指定提供者快取清除。 有效值包括：
+僅搭配`clean`命令使用。 指定要清除的提供者快取。 有效值包括：
 
 [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
 ### <a name="options"></a>選項
 
-下列選項可供`libman cache`命令：
+以下是使用 `libman cache` 命令時可用的選項：
 
 * `--files`
 
-  列出快取的檔案的名稱。
+  列出快取的檔案名稱。
 
 * `--libraries`
 
-  列出快取程式庫名稱。
+  列出快取的程式庫名稱。
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
 ### <a name="examples"></a>範例
 
-* 若要檢視每個提供者的快取程式庫名稱，使用下列命令之一：
+* 若要查看每個提供者的快取程式庫名稱，請使用下列其中一個命令：
 
   ```console
   libman cache list
@@ -489,7 +489,7 @@ libman cache [-h|--help]
       react
   ```
 
-* 若要檢視每個提供者的快取程式庫檔案的名稱：
+* 若要查看每個提供者的快取程式庫檔案的名稱：
 
   ```console
   libman cache list --files
@@ -538,7 +538,7 @@ libman cache [-h|--help]
           metadata.json
   ```
 
-  請注意上述的輸出顯示的 jQuery 版本 3.2.1 和 3.3.1 CDNJS 提供者下快取。
+  請注意，上述輸出顯示 jQuery 版本3.2.1 和3.3.1 會在 CDNJS 提供者底下快取。
 
 * 若要清空 CDNJS 提供者的程式庫快取：
 
@@ -546,7 +546,7 @@ libman cache [-h|--help]
   libman cache clean cdnjs
   ```
 
-  之後清空 CDNJS 提供者快取，`libman cache list`命令會顯示下列：
+  清空 CDNJS 提供者快取之後， `libman cache list`此命令會顯示下列內容：
 
   ```console
   Cache contents:
@@ -559,13 +559,13 @@ libman cache [-h|--help]
       (empty)
   ```
 
-* 若要清空快取所有支援的提供者：
+* 若要清空所有支援之提供者的快取：
 
   ```console
   libman cache clean
   ```
 
-  之後清空所有提供者快取，`libman cache list`命令會顯示下列：
+  清空所有提供者快取之後`libman cache list` ，此命令會顯示下列內容：
 
   ```console
   Cache contents:
@@ -578,6 +578,6 @@ libman cache [-h|--help]
 
 ## <a name="additional-resources"></a>其他資源
 
-* [安裝的通用工具](/dotnet/core/tools/global-tools#install-a-global-tool)
+* [安裝通用工具](/dotnet/core/tools/global-tools#install-a-global-tool)
 * <xref:client-side/libman/libman-vs>
 * [LibMan GitHub 存放庫](https://github.com/aspnet/LibraryManager)

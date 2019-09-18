@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 08/02/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 3be036d9b4fc6c9898faf14e8a60a8cc7a8683b7
-ms.sourcegitcommit: b5e63714afc26e94be49a92619586df5189ed93a
-ms.translationtype: HT
+ms.openlocfilehash: f20f8c4e9b1089acca6689d14cdf84bef648d461
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68739552"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081749"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>在 ASP.NET Core 中使用裝載啟動組件
 
@@ -98,7 +98,7 @@ ms.locfileid: "68739552"
 
 ### <a name="console-app-without-an-entry-point"></a>沒有進入點的主控台應用程式
 
-這個方法僅適用於 .NET Core 應用程式，不適用於 .NET Framework。 
+這個方法僅適用於 .NET Core 應用程式，不適用於 .NET Framework。
 
 在沒有包含 `HostingStartup` 屬性之進入點的主控台應用程式中，可以提供不需要啟用編譯時間參考的動態裝載啟動增強功能。 發佈主控台應用程式會產生裝載啟動組件，這些組件可從執行階段存放區取用。
 
@@ -203,13 +203,13 @@ HostingStartupLibrary;HostingStartupPackage;StartupDiagnostics
 
 建置裝載啟動之後，會使用資訊清單專案檔與 [dotnet store](/dotnet/core/tools/dotnet-store) 命令來產生執行階段存放區。
 
-```console
+```dotnetcli
 dotnet store --manifest {MANIFEST FILE} --runtime {RUNTIME IDENTIFIER} --output {OUTPUT LOCATION} --skip-optimization
 ```
 
 在範例應用程式 (*RuntimeStore* 專案) 中，我們使用下列命令：
 
-``` console
+```dotnetcli
 dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./deployment/store --skip-optimization
 ```
 
@@ -361,7 +361,7 @@ NuGet 套件可以提供裝載啟動的增強功能。 此套件具有 `HostingS
 
 如果您變更並重新編譯 *HostingStartupPackage* 專案，請清除本機的 NuGet 套件快取，以確保 *HostingStartupApp* 從本機快取接收更新的套件，而非過時的套件。 若要清除本機 NuGet 快取，請執行下列 [dotnet nuget locals](/dotnet/core/tools/dotnet-nuget-locals) 命令：
 
-```console
+```dotnetcli
 dotnet nuget locals all --clear
 ```
 

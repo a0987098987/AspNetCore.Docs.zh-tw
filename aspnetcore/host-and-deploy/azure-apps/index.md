@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/07/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 5da32b5fd1026263f721db442b2676d45b239b8d
-ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
+ms.openlocfilehash: 7736888c43aafd2f64e3d7b079f2099fe548a825
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815596"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081079"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -230,7 +230,7 @@ Azure App Service 提供**ASP.NET Core 記錄延伸**模組，可啟用 ASP.NET 
 
 1. 從命令殼層使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，以發行組態來發佈應用程式。 在下列範例中，應用程式會發佈為依架構不同的應用程式：
 
-   ```console
+   ```dotnetcli
    dotnet publish --configuration Release
    ```
 
@@ -268,7 +268,7 @@ Azure App Service 提供**ASP.NET Core 記錄延伸**模組，可啟用 ASP.NET 
 
 1. 從命令殼層中使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，針對主機執行階段以 [發行] 設定來發佈應用程式。 在下列範例中，將針對 `win-x86` RID發佈應用程式。 提供給 `--runtime` 選項的 RID 必須在專案檔的 `<RuntimeIdentifier>` (或 `<RuntimeIdentifiers>`) 屬性中提供。
 
-   ```console
+   ```dotnetcli
    dotnet publish --configuration Release --runtime win-x86
    ```
 

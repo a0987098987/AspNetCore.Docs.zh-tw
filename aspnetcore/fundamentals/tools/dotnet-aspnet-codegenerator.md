@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 07/04/2019
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: c2c815735ad1b4dcec761b26ea3992a4effebe62
-ms.sourcegitcommit: 979dbfc5e9ce09b9470789989cddfcfb57079d94
-ms.translationtype: HT
+ms.openlocfilehash: 1043a578f66d5bb57f4a81e9fe21afa5e3c37cb8
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68682696"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081501"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -25,13 +25,13 @@ ms.locfileid: "68682696"
 
 `dotnet-aspnet-codegenerator` 是必須安裝的[全域工具](/dotnet/core/tools/global-tools)。 下列命令會安裝 `dotnet-aspnet-codegenerator` 工具的最新穩定版本：
 
-```console
+```dotnetcli
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
 下列命令會將 `dotnet-aspnet-codegenerator` 更新到可從已安裝之 .NET Core SDK 中取得的最新穩定版本：
 
-```console
+```dotnetcli
 dotnet tool update -g dotnet-aspnet-codegenerator
 ```
 
@@ -56,7 +56,7 @@ dotnet aspnet-codegenerator [-h|--help]
 | ----------------- | ------------ | 
 | 區域      | [架起區域](/aspnet/core/mvc/controllers/areas) |
   控制器| [架起控制器](/aspnet/core/tutorials/first-mvc-app/adding-model) |
-  身分識別  | [架起身分識別](/aspnet/core/security/authentication/scaffold-identity) |
+  識別  | [架起身分識別](/aspnet/core/security/authentication/scaffold-identity) |
   razorpage | [架起 Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
   view      | [架起檢視](/aspnet/core/mvc/views/overview) |
 
@@ -72,7 +72,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 `-tfm|--target-framework`
 
-要使用的目標 [Framework](/dotnet/standard/frameworks)。 例如，`net46`。
+要使用的目標 [Framework](/dotnet/standard/frameworks)。 例如： `net46` 。
 
 `-b|--build-base-path`
 
@@ -94,7 +94,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 以下各節詳細說明支援之產生器的可用選項：
 
-* 區域圖
+* 區域
 * 控制器
 * 身分識別  
 * Razorpage
@@ -127,7 +127,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 下表列出 `aspnet-codegenerator controller` 的專用選項：
 
-| 選項               | 說明|
+| 選項               | 描述|
 | ----------------- | ------------ |
 | --controllerName 或 -name | 控制器的名稱。 |
 | --useAsyncActions 或 -async | 產生非同步控制器動作。 |
@@ -137,7 +137,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 使用 `-h` 參數取得 `aspnet-codegenerator controller` 命令的說明：
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator controller -h
 ```
 
@@ -158,7 +158,7 @@ dotnet aspnet-codegenerator controller -h
 
 例如，下列命令會使用「編輯」範本來產生 *MyEdit.cshtml* 與 *MyEdit.cshtml.cs*：
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc RazorPagesMovieContext -outDir Pages/Movies
 ```
 
@@ -184,7 +184,7 @@ dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc RazorPagesMovieCo
 
 使用 `-h` 參數取得 `aspnet-codegenerator razorpage` 命令的說明：
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator razorpage -h
 ```
 

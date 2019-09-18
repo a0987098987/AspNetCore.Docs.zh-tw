@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 60d97137fbc6a08152b7b8a631b7a32940875b38
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 8e092ac47b2fd5fb6f3a0524bf1c559b7c3935c4
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975094"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080430"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>教學課程：實作繼承 - ASP.NET MVC 搭配 EF Core
 
@@ -93,13 +93,13 @@ School 資料模型中的 `Instructor` 和 `Student` 類別有數個完全相同
 
 儲存您的變更並建置專案。 然後，在專案資料夾中開啟命令視窗，並輸入下列命令：
 
-```console
+```dotnetcli
 dotnet ef migrations add Inheritance
 ```
 
 還不要執行 `database update` 命令。 該命令將導致資料遺失，因為它會卸除 Instructor 資料表，然後將 Student 資料表重新命名為 Person。 您必須提供自訂程式碼來保留現有的資料。
 
-開啟 Migrations/\<時間戳記>_Inheritance.cs  ，並以下列程式碼取代 `Up` 方法：
+開啟 Migrations/\<時間戳記>_Inheritance.cs，並以下列程式碼取代 `Up` 方法：
 
 [!code-csharp[](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
 
@@ -127,7 +127,7 @@ dotnet ef migrations add Inheritance
 
 執行 `database update` 命令：
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 
@@ -140,11 +140,11 @@ dotnet ef database update
 
 執行應用程式，然後嘗試各種頁面。 一切項目的運作與之前一樣。
 
-在 [SQL Server 物件總管]  中，展開 [資料連線/SchoolContext]  ，然後展開 [資料表]  ，您會看到 Person 資料表已取代 Student 和 Instructor 資料表。 開啟 Person 資料表設計工具，您會看到它包含了過去位在 Student 和 Instructor 資料表中的所有資料行。
+在 [SQL Server 物件總管] 中，展開 [資料連線/SchoolContext]，然後展開 [資料表]，您會看到 Person 資料表已取代 Student 和 Instructor 資料表。 開啟 Person 資料表設計工具，您會看到它包含了過去位在 Student 和 Instructor 資料表中的所有資料行。
 
 ![SSOX 中的 Person 資料表](inheritance/_static/ssox-person-table.png)
 
-以滑鼠右鍵按一下 Person 資料表，然後按一下 [顯示資料表資料]  以查看鑑別子資料行。
+以滑鼠右鍵按一下 Person 資料表，然後按一下 [顯示資料表資料] 以查看鑑別子資料行。
 
 ![SSOX 中的 Person 資料 - 資料表資料](inheritance/_static/ssox-person-data.png)
 

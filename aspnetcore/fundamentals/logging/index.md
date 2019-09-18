@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 21e7ee144bdf0355cac8bd8a7706f100c15342da
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 03734addcc0e063c2c216b26b59762d27d35d47c
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975499"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081151"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
@@ -87,7 +87,7 @@ ms.locfileid: "69975499"
 
 若要建立記錄，請使用 <xref:Microsoft.Extensions.Logging.ILogger%601> 物件。 在 Web 應用程式或託管服務中，從相依性插入 (DI) 取得 `ILogger`。 在非主機主控台應用程式中，使用 `LoggerFactory` 來建立 `ILogger`。
 
-下列 ASP.NET Core 範例會建立以 `TodoApiSample.Pages.AboutModel` 作為類別的記錄器。 記錄「類別」  是與每個記錄關聯的字串。 由 DI 提供的 `ILogger<T>` 執行個體，會建立使用型別 `T` 作為類別的完整名稱記錄。 
+下列 ASP.NET Core 範例會建立以 `TodoApiSample.Pages.AboutModel` 作為類別的記錄器。 記錄「類別」是與每個記錄關聯的字串。 由 DI 提供的 `ILogger<T>` 執行個體，會建立使用型別 `T` 作為類別的完整名稱記錄。 
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -105,7 +105,7 @@ ms.locfileid: "69975499"
 
 ::: moniker-end
 
-在下列 ASP.NET Core 和主控台應用程式範例中，記錄器會用於以 `Information` 作為層級來建立記錄。 記錄「層級」  指出已記錄事件的嚴重性。 
+在下列 ASP.NET Core 和主控台應用程式範例中，記錄器會用於以 `Information` 作為層級來建立記錄。 記錄「層級」 指出已記錄事件的嚴重性。 
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -174,7 +174,7 @@ ms.locfileid: "69975499"
 
 記錄速度應該很快，不值得花費非同步程式碼的效能成本來處理。 若您的記錄資料存放區很慢，請不要直接寫入其中。 請考慮一開始將記錄寫入到快速的存放區，稍後再將它們移到慢速存放區。 例如，如果您要登入 SQL Server，您不希望在 `Log` 方法中直接執行，因為 `Log` 方法是同步的。 相反地，以同步方式將記錄訊息新增到記憶體內佇列，並讓背景工作角色提取出佇列的訊息，藉此執行推送資料到 SQL Server 的非同步工作。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>組態
 
 記錄提供者設定是由一或多個記錄提供者提供：
 
@@ -312,7 +312,7 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 ## <a name="log-category"></a>記錄類別
 
-建立 `ILogger` 物件時，會為它指定「類別」  。 該類別會包含在每個由該 `ILogger` 執行個體所產生的記錄訊息中。 類別可以是任意字串，但慣例是使用類別名稱，例如 "TodoApi.Controllers.TodoController"。
+建立 `ILogger` 物件時，會為它指定「類別」。 該類別會包含在每個由該 `ILogger` 執行個體所產生的記錄訊息中。 類別可以是任意字串，但慣例是使用類別名稱，例如 "TodoApi.Controllers.TodoController"。
 
 使用 `ILogger<T>` 來取得`ILogger` 執行個體，它使用 `T` 的完整類型名稱做為類別：
 
@@ -370,7 +370,7 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 追蹤 = 0
 
-  針對通常只對偵錯有價值的資訊。 這些訊息可能包含敏感性應用程式資料，因此不應該在生產環境中啟用。 預設為停用。 
+  針對通常只對偵錯有價值的資訊。 這些訊息可能包含敏感性應用程式資料，因此不應該在生產環境中啟用。 預設為停用。
 
 * 偵錯 = 1
 
@@ -479,7 +479,7 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
 
 ## <a name="log-event-id"></a>記錄事件識別碼
 
-每個記錄都可以指定「事件識別碼」  。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行此動作：
+每個記錄都可以指定「事件識別碼」。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行此動作：
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -621,11 +621,11 @@ System.Exception: Item not found exception.
 
 | number | 提供者      | 開頭如下的類別...          | 最低記錄層級 |
 | :----: | ------------- | --------------------------------------- | ----------------- |
-| 1      | 偵錯         | 所有類別                          | 資訊       |
+| 1      | 偵錯         | 所有類別                          | 內容       |
 | 2      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Internal | 警告           |
 | 3      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Razor    | 偵錯             |
-| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | 錯誤             |
-| 5      | 主控台       | 所有類別                          | 資訊       |
+| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
+| 5      | 主控台       | 所有類別                          | 內容       |
 | 6      | 所有提供者 | 所有類別                          | 偵錯             |
 | 7      | 所有提供者 | 系統                                  | 偵錯             |
 | 8      | 偵錯         | Microsoft                               | 追蹤             |
@@ -648,7 +648,7 @@ System.Exception: Item not found exception.
 
 ### <a name="provider-aliases"></a>提供者別名
 
-每個提供者都會定義「別名」  ，可在設定中用來取代完整類型名稱。  針對內建提供者，請使用下列別名：
+每個提供者都會定義「別名」，可在設定中用來取代完整類型名稱。  針對內建提供者，請使用下列別名：
 
 * 主控台
 * 偵錯
@@ -697,7 +697,7 @@ System.Exception: Item not found exception.
 
 以下是由 ASP.NET Core 與 Entity Framework Core 所使用的一些類別，以及有關它們可傳回哪些記錄的附註：
 
-| 分類                            | 注意 |
+| Category                            | 注意 |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | 一般 ASP.NET Core 診斷。 |
 | Microsoft.AspNetCore.DataProtection | 已考慮、發現及使用哪些金鑰。 |
@@ -711,7 +711,7 @@ System.Exception: Item not found exception.
 
 ## <a name="log-scopes"></a>記錄範圍
 
- 「範圍」  可用來將邏輯作業組成群組。 此分組功能可用來將相同的資料附加到已建立為集合之一部分的每個記錄。 例如，在處理邀交易時建立的每個記錄都可以包括該交易識別碼。
+ 「範圍」可用來將邏輯作業組成群組。 此分組功能可用來將相同的資料附加到已建立為集合之一部分的每個記錄。 例如，在處理邀交易時建立的每個記錄都可以包括該交易識別碼。
 
 範圍是 <xref:Microsoft.Extensions.Logging.ILogger.BeginScope*> 方法所傳回的 `IDisposable` 類型，並會持續到被處置為止。 透過將記錄器呼叫封裝在 `using` 區塊中以使用範圍：
 
@@ -784,7 +784,7 @@ logging.AddConsole();
 
 若要查看主控台記錄輸出，請在專案資料夾中開啟命令提示字元，然後執行下列命令：
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -808,7 +808,7 @@ logging.AddEventSourceLogger();
 
 收集及檢視記錄的一個好方法是使用 [PerfView 公用程式](https://github.com/Microsoft/perfview)。 此外還有一些其他工具可檢視 ETW 記錄，但 PerfView 提供處理 ASP.NET Core 所發出 ETW 事件的最佳體驗。
 
-若要設定 PerfView 以收集此提供者所記錄的事件，請將字串 `*Microsoft-Extensions-Logging` 新增至 [其他提供者]  清單 (請勿遺漏字串開頭的星號)。
+若要設定 PerfView 以收集此提供者所記錄的事件，請將字串 `*Microsoft-Extensions-Logging` 新增至 [其他提供者] 清單 (請勿遺漏字串開頭的星號)。
 
 ![PerfView 的其他提供者](index/_static/perfview-additional-providers.png)
 
@@ -876,7 +876,7 @@ logging.AddAzureWebAppDiagnostics();
 
 ::: moniker-end
 
-當您部署到 App Service 應用程式時，應用程式會遵循 Azure 入口網站 [App Service]  頁面中 [App Service 記錄](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag)區段的設定。 當下列設定更新時，變更會立即生效，而不需要重新啟動或重新部署應用程式。
+當您部署到 App Service 應用程式時，應用程式會遵循 Azure 入口網站 [App Service] 頁面中 [App Service 記錄](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag)區段的設定。 當下列設定更新時，變更會立即生效，而不需要重新啟動或重新部署應用程式。
 
 * **應用程式記錄 (檔案系統)**
 * **應用程式記錄 (Blob)**
@@ -895,11 +895,11 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 
 若要設定 Azure 記錄資料流：
 
-* 從您應用程式的入口網站頁面瀏覽到 [App Service 記錄]  。
-* 將 [應用程式記錄 (檔案系統)]  設定為 [開啟]  。
-* 選擇記錄 [層級]  。
+* 從您應用程式的入口網站頁面瀏覽到 [App Service 記錄]。
+* 將 [應用程式記錄 (檔案系統)] 設定為 [開啟]。
+* 選擇記錄 [層級]。
 
-瀏覽到 [記錄資料流]  頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面產生的訊息。
+瀏覽到 [記錄資料流] 頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面產生的訊息。
 
 ### <a name="azure-application-insights-trace-logging"></a>Azure Application Insights 追蹤記錄
 

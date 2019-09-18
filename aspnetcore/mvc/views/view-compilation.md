@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/20/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: ff66148fc9aad2871f9f55ce76b5a0dacb0ad10c
-ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
-ms.translationtype: HT
+ms.openlocfilehash: 0aa632bce32ef44f65d92639284c64c1d00e952e
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313777"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080819"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>ASP.NET Core 中 Razor 檔案的先行編譯
 
@@ -89,7 +89,7 @@ Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 在建�
 
 使用 [.NET Core CLI 發行命令](/dotnet/core/tools/dotnet-publish)針對[框架相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)準備該應用程式。 例如，在專案的根目錄下執行下列命令：
 
-```console
+```dotnetcli
 dotnet publish -c Release
 ```
 

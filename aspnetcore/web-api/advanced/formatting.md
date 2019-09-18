@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 05/29/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: e3417c9bfd3824133b86de2fe74f5f71367e1560
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
-ms.translationtype: HT
+ms.openlocfilehash: 8bee4efdae5341ddab5bd3aec278ecfef37f0c08
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886525"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082353"
 ---
 <!-- DO NOT EDIT BEFORE https://github.com/aspnet/AspNetCore.Docs/pull/12077 MERGES -->
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
@@ -64,7 +64,7 @@ ASP.NET Core MVC 具有使用固定格式或回應用戶端規格的內建回應
 
 [!code-csharp[](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=8,10&range=28-38)]
 
-除非要求另一種格式，而且伺服器可以傳回所要求的格式，否則會傳回 JSON 格式的回應。 您可以使用 [Fiddler](https://www.telerik.com/fiddler) 這類工具建立包含 Accept 標頭的要求，以及指定另一種格式。 在此情況下，如果伺服器的「格式器」  可以使用所要求的格式產生回應，則會以用戶端慣用的格式傳回結果。
+除非要求另一種格式，而且伺服器可以傳回所要求的格式，否則會傳回 JSON 格式的回應。 您可以使用 [Fiddler](https://www.telerik.com/fiddler) 這類工具建立包含 Accept 標頭的要求，以及指定另一種格式。 在此情況下，如果伺服器的「格式器」可以使用所要求的格式產生回應，則會以用戶端慣用的格式傳回結果。
 
 ![Fiddler 主控台，顯示 Accept 標頭值為 application/xml 的手動建立 GET 要求](formatting/_static/fiddler-composer.png)
 
@@ -80,7 +80,7 @@ ASP.NET Core MVC 具有使用固定格式或回應用戶端規格的內建回應
 
 ### <a name="content-negotiation-process"></a>內容交涉程序
 
-只有在 `Accept` 標頭出現在要求中時，才會進行「內容交涉」  。 要求包含 Accept 標頭時，架構會依喜好設定順序來列舉 Accept 標頭中的媒體類型，並嘗試尋找可產生回應的格式器，而回應的格式為 Accept 標頭所指定的其中一種格式。 如果找不到可滿足用戶端要求的格式器，架構會嘗試尋找第一個可產生回應的格式器 (除非開發人員已在 `MvcOptions` 上設定選項，改為傳回「406 無法接受」)。 如果要求指定 XML，但尚未設定 XML 格式器，則會使用 JSON 格式器。 更常見地是，如果未設定格式器來提供所要求的格式，則會使用可格式化物件的第一個格式器。 如果未指定標頭，則會使用可處理要傳回之物件的第一個格式器來序列化回應。 在此情況下，無法進行任何交涉，伺服器將會判斷所使用的格式。
+只有在 `Accept` 標頭出現在要求中時，才會進行「內容交涉」。 要求包含 Accept 標頭時，架構會依喜好設定順序來列舉 Accept 標頭中的媒體類型，並嘗試尋找可產生回應的格式器，而回應的格式為 Accept 標頭所指定的其中一種格式。 如果找不到可滿足用戶端要求的格式器，架構會嘗試尋找第一個可產生回應的格式器 (除非開發人員已在 `MvcOptions` 上設定選項，改為傳回「406 無法接受」)。 如果要求指定 XML，但尚未設定 XML 格式器，則會使用 JSON 格式器。 更常見地是，如果未設定格式器來提供所要求的格式，則會使用可格式化物件的第一個格式器。 如果未指定標頭，則會使用可處理要傳回之物件的第一個格式器來序列化回應。 在此情況下，無法進行任何交涉，伺服器將會判斷所使用的格式。
 
 > [!NOTE]
 > 如果 Accept 標頭包含 `*/*`，則除非 `MvcOptions` 上的 `RespectBrowserAcceptHeader` 設定為 true，否則會忽略標頭。
@@ -106,13 +106,29 @@ services.AddMvc(options =>
 
 ### <a name="configure-systemtextjson-based-formatters"></a>設定 System.Text.Json-based 格式器
 
-`System.Text.Json` 型格式器可以使用 `Microsoft.AspNetCore.Mvc.MvcOptions.SerializerOptions` 來設定。
+`System.Text.Json` 型格式器可以使用 `Microsoft.AspNetCore.Mvc.JsonOptions.SerializerOptions` 來設定。
 
 ```csharp
-services.AddMvc(options =>
+services.AddControllers().AddJsonOptions(options =>
 {
-    options.SerializerOptions.WriterSettings.Indented = true;
+    // Use the default property (Pascal) casing.
+    options.SerializerOptions.PropertyNamingPolicy = null;
+
+    // Configure a custom converter.
+    options.SerializerOptions.Converters.Add(new MyCustomJsonConverter());
 });
+```
+
+以每個動作為基礎的輸出序列化選項，可以使用`JsonResult`進行設定。 例如：
+
+```csharp
+public IActionResult Get()
+{
+    return Json(model, new JsonSerializerOptions
+    {
+        options.WriteIndented = true,
+    });
+}
 ```
 
 ### <a name="add-newtonsoftjson-based-json-format-support"></a>新增 Newtonsoft.Json 型 JSON 格式支援
@@ -120,7 +136,7 @@ services.AddMvc(options =>
 在 ASP.NET Core 3.0 之前，MVC 預設為使用以 `Newtonsoft.Json` 套件實作的 JSON 格式器。 在 ASP.NET Core 3.0 或更新版本中，預設 JSON 格式器是以 `System.Text.Json` 為基礎。 對 `Newtonsoft.Json` 型格式器與功能的支援可透過安裝 [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet 套件並在 `Startup.ConfigureServices` 中設定它來取得。
 
 ```csharp
-services.AddMvc()
+services.AddControllers()
     .AddNewtonsoftJson();
 ```
 
@@ -129,6 +145,31 @@ services.AddMvc()
 * 使用 `Newtonsoft.Json` 屬性 (例如 `[JsonProperty]` 或 `[JsonIgnore]`) 自訂序列化設定，或仰賴 `Newtonsoft.Json` 所提供的功能。
 * 設定 `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`。 在 ASP.NET Core 3.0 版之前，`JsonResult.SerializerSettings` 接受 `Newtonsoft.Json` 專屬的 `JsonSerializerSettings` 執行個體。
 * 產生 [OpenAPI](<xref:tutorials/web-api-help-pages-using-swagger>) 文件。
+
+您可以使用`Newtonsoft.Json` `Microsoft.AspNetCore.Mvc.MvcNewtonsoftJsonOptions.SerializerSettings`來設定以為基礎之格式器的功能：
+
+```csharp
+services.AddControllers().AddNewtonsoftJson(options =>
+{
+    // Use the default property (Pascal) casing
+    options.SerializerSettings.ContractResolver = new DefautlContractResolver();
+
+    // Configure a custom converter
+    options.SerializerOptions.Converters.Add(new MyCustomJsonConverter());
+});
+```
+
+以每個動作為基礎的輸出序列化選項，可以使用`JsonResult`進行設定。 例如：
+
+```csharp
+public IActionResult Get()
+{
+    return Json(model, new JsonSerializerSettings
+    {
+        options.Formatting = Formatting.Indented,
+    });
+}
+```
 
 ::: moniker-end
 

@@ -545,6 +545,10 @@
   items:
     - name: gRPC 服務簡介
       uid: grpc/index
+    - name: 教學課程
+      items:
+        - name: 開始使用 gRPC 服務
+          uid: tutorials/grpc/grpc-start
     - name: '搭配 C# 的 gRPC 服務'
       uid: grpc/basics
     - name: 搭配 ASP.NET Core 的 gRPC 服務
@@ -563,6 +567,8 @@
       uid: grpc/migration
     - name: 比較 gRPC 服務與 HTTP APIs
       uid: grpc/comparison
+    - name: 範例
+      href: 'https://github.com/grpc/grpc-dotnet/tree/master/examples'
     - name: 疑難排解
       uid: grpc/troubleshoot
 - name: 測試、偵錯及疑難排解
@@ -999,7 +1005,7 @@
     - name: IP 安全清單
       uid: security/ip-safelist
     - name: 應用程式安全性 - OWASP
-      href: 'https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/DotNet_Security_Cheat_Sheet.md'
+      href: 'https://cheatsheetseries.owasp.org/cheatsheets/DotNet_Security_Cheat_Sheet.html'
     - name: Blazor
       items:
         - name: 總覽

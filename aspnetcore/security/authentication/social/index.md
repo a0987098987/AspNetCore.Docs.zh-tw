@@ -6,118 +6,118 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/10/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 8dac8a8a2276388414b6bb1211e970617b001637
-ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
-ms.translationtype: HT
+ms.openlocfilehash: edaf9eeaf02879b2f7816bab0eb373a7de640c05
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2019
-ms.locfileid: "65874814"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082510"
 ---
-# <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a><span data-ttu-id="da274-103">ASP.NET Core 中的 Facebook、Google 及外部提供者驗證</span><span class="sxs-lookup"><span data-stu-id="da274-103">Facebook, Google, and external provider authentication in ASP.NET Core</span></span>
+# <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a><span data-ttu-id="6b811-103">ASP.NET Core 中的 Facebook、Google 及外部提供者驗證</span><span class="sxs-lookup"><span data-stu-id="6b811-103">Facebook, Google, and external provider authentication in ASP.NET Core</span></span>
 
-<span data-ttu-id="da274-104">作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="da274-104">By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="6b811-104">作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="6b811-104">By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="da274-105">本教學課程會示範如何建置 ASP.NET Core 2.2 應用程式，讓使用者可使用 OAuth 2.0 以外部驗證提供者提供的認證登入。</span><span class="sxs-lookup"><span data-stu-id="da274-105">This tutorial demonstrates how to build an ASP.NET Core 2.2 app that enables users to sign in using OAuth 2.0 with credentials from external authentication providers.</span></span>
+<span data-ttu-id="6b811-105">本教學課程會示範如何建置 ASP.NET Core 2.2 應用程式，讓使用者可使用 OAuth 2.0 以外部驗證提供者提供的認證登入。</span><span class="sxs-lookup"><span data-stu-id="6b811-105">This tutorial demonstrates how to build an ASP.NET Core 2.2 app that enables users to sign in using OAuth 2.0 with credentials from external authentication providers.</span></span>
 
-<span data-ttu-id="da274-106">下列各節涵蓋 [Facebook](xref:security/authentication/facebook-logins)、[Twitter](xref:security/authentication/twitter-logins)、[Google](xref:security/authentication/google-logins) 和 [Microsoft](xref:security/authentication/microsoft-logins) 的提供者。</span><span class="sxs-lookup"><span data-stu-id="da274-106">[Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins), and [Microsoft](xref:security/authentication/microsoft-logins) providers are covered in the following sections.</span></span> <span data-ttu-id="da274-107">您可透過 [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) 和 [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers) 這類協力廠商套件，取得其他提供者。</span><span class="sxs-lookup"><span data-stu-id="da274-107">Other providers are available in third-party packages such as [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) and [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).</span></span>
+<span data-ttu-id="6b811-106">下列各節涵蓋 [Facebook](xref:security/authentication/facebook-logins)、[Twitter](xref:security/authentication/twitter-logins)、[Google](xref:security/authentication/google-logins) 和 [Microsoft](xref:security/authentication/microsoft-logins) 的提供者。</span><span class="sxs-lookup"><span data-stu-id="6b811-106">[Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins), and [Microsoft](xref:security/authentication/microsoft-logins) providers are covered in the following sections.</span></span> <span data-ttu-id="6b811-107">您可透過 [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) 和 [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers) 這類協力廠商套件，取得其他提供者。</span><span class="sxs-lookup"><span data-stu-id="6b811-107">Other providers are available in third-party packages such as [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) and [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).</span></span>
 
 ![Facebook、Twitter、Google+ 和 Windows 的社交媒體圖示](index/_static/social.png)
 
-<span data-ttu-id="da274-109">讓使用者透過現有認證登入：</span><span class="sxs-lookup"><span data-stu-id="da274-109">Enabling users to sign in with their existing credentials:</span></span>
-* <span data-ttu-id="da274-110">對使用者而言十分方便。</span><span class="sxs-lookup"><span data-stu-id="da274-110">Is convenient for the users.</span></span>
-* <span data-ttu-id="da274-111">可將複雜的登入程序管理作業轉移至協力廠商。</span><span class="sxs-lookup"><span data-stu-id="da274-111">Shifts many of the complexities of managing the sign-in process onto a third party.</span></span> 
+<span data-ttu-id="6b811-109">讓使用者透過現有認證登入：</span><span class="sxs-lookup"><span data-stu-id="6b811-109">Enabling users to sign in with their existing credentials:</span></span>
+* <span data-ttu-id="6b811-110">對使用者而言十分方便。</span><span class="sxs-lookup"><span data-stu-id="6b811-110">Is convenient for the users.</span></span>
+* <span data-ttu-id="6b811-111">可將複雜的登入程序管理作業轉移至協力廠商。</span><span class="sxs-lookup"><span data-stu-id="6b811-111">Shifts many of the complexities of managing the sign-in process onto a third party.</span></span> 
 
-<span data-ttu-id="da274-112">如需社交登入如何帶動流量和客戶轉換的範例，請參閱 [Facebook](https://www.facebook.com/unsupportedbrowser) 和 [Twitter](https://dev.twitter.com/resources/case-studies) 的案例研究。</span><span class="sxs-lookup"><span data-stu-id="da274-112">For examples of how social logins can drive traffic and customer conversions, see case studies by [Facebook](https://www.facebook.com/unsupportedbrowser) and [Twitter](https://dev.twitter.com/resources/case-studies).</span></span>
+<span data-ttu-id="6b811-112">如需社交登入如何帶動流量和客戶轉換的範例，請參閱 [Facebook](https://www.facebook.com/unsupportedbrowser) 和 [Twitter](https://dev.twitter.com/resources/case-studies) 的案例研究。</span><span class="sxs-lookup"><span data-stu-id="6b811-112">For examples of how social logins can drive traffic and customer conversions, see case studies by [Facebook](https://www.facebook.com/unsupportedbrowser) and [Twitter](https://dev.twitter.com/resources/case-studies).</span></span>
 
-## <a name="create-a-new-aspnet-core-project"></a><span data-ttu-id="da274-113">建立新的 ASP.NET Core 專案</span><span class="sxs-lookup"><span data-stu-id="da274-113">Create a New ASP.NET Core Project</span></span>
+## <a name="create-a-new-aspnet-core-project"></a><span data-ttu-id="6b811-113">建立新的 ASP.NET Core 專案</span><span class="sxs-lookup"><span data-stu-id="6b811-113">Create a New ASP.NET Core Project</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="da274-114">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="da274-114">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="6b811-114">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6b811-114">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="da274-115">建立新的專案。</span><span class="sxs-lookup"><span data-stu-id="da274-115">Create a new project.</span></span>
-* <span data-ttu-id="da274-116">選取 [ASP.NET Core Web 應用程式] 和 [下一步]。</span><span class="sxs-lookup"><span data-stu-id="da274-116">Select **ASP.NET Core Web Application** and **Next**.</span></span>
-* <span data-ttu-id="da274-117">提供**專案名稱**並確認或變更**位置**。</span><span class="sxs-lookup"><span data-stu-id="da274-117">Provide a **Project name** and confirm or change the **Location**.</span></span> <span data-ttu-id="da274-118">選取 [建立]。</span><span class="sxs-lookup"><span data-stu-id="da274-118">Select **Create**.</span></span>
-* <span data-ttu-id="da274-119">選取下拉式清單中的 [ASP.NET Core 2.2]。</span><span class="sxs-lookup"><span data-stu-id="da274-119">Select **ASP.NET Core 2.2** in the drop down.</span></span> <span data-ttu-id="da274-120">選取範本清單中的 [Web 應用程式]。</span><span class="sxs-lookup"><span data-stu-id="da274-120">Select **Web Application** in the template list.</span></span>
-* <span data-ttu-id="da274-121">選取 [驗證] 下的 [變更]，並將驗證設定為 [個別使用者帳戶]。</span><span class="sxs-lookup"><span data-stu-id="da274-121">Under **Authentication**, select **Change** and set the authentication to **Individual User Accounts**.</span></span> <span data-ttu-id="da274-122">選取 [確定]。</span><span class="sxs-lookup"><span data-stu-id="da274-122">Select **OK**.</span></span>
-* <span data-ttu-id="da274-123">在 [建立新的 ASP.NET Core Web 應用程式] 視窗中選取 [建立]。</span><span class="sxs-lookup"><span data-stu-id="da274-123">In the **Create a new ASP.NET Core Web Application** window, select **Create**.</span></span>
+* <span data-ttu-id="6b811-115">建立新的專案。</span><span class="sxs-lookup"><span data-stu-id="6b811-115">Create a new project.</span></span>
+* <span data-ttu-id="6b811-116">選取 [ASP.NET Core Web 應用程式] 和 [下一步]。</span><span class="sxs-lookup"><span data-stu-id="6b811-116">Select **ASP.NET Core Web Application** and **Next**.</span></span>
+* <span data-ttu-id="6b811-117">提供**專案名稱**並確認或變更**位置**。</span><span class="sxs-lookup"><span data-stu-id="6b811-117">Provide a **Project name** and confirm or change the **Location**.</span></span> <span data-ttu-id="6b811-118">選取 [建立]。</span><span class="sxs-lookup"><span data-stu-id="6b811-118">Select **Create**.</span></span>
+* <span data-ttu-id="6b811-119">選取下拉式清單中的 [ASP.NET Core 2.2]。</span><span class="sxs-lookup"><span data-stu-id="6b811-119">Select **ASP.NET Core 2.2** in the drop down.</span></span> <span data-ttu-id="6b811-120">選取範本清單中的 [Web 應用程式]。</span><span class="sxs-lookup"><span data-stu-id="6b811-120">Select **Web Application** in the template list.</span></span>
+* <span data-ttu-id="6b811-121">選取 [驗證] 下的 [變更]，並將驗證設定為 [個別使用者帳戶]。</span><span class="sxs-lookup"><span data-stu-id="6b811-121">Under **Authentication**, select **Change** and set the authentication to **Individual User Accounts**.</span></span> <span data-ttu-id="6b811-122">選取 [確定]。</span><span class="sxs-lookup"><span data-stu-id="6b811-122">Select **OK**.</span></span>
+* <span data-ttu-id="6b811-123">在 [建立新的 ASP.NET Core Web 應用程式] 視窗中選取 [建立]。</span><span class="sxs-lookup"><span data-stu-id="6b811-123">In the **Create a new ASP.NET Core Web Application** window, select **Create**.</span></span>
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="da274-124">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="da274-124">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="6b811-124">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="6b811-124">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="da274-125">開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。</span><span class="sxs-lookup"><span data-stu-id="da274-125">Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span></span>
+* <span data-ttu-id="6b811-125">開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。</span><span class="sxs-lookup"><span data-stu-id="6b811-125">Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span></span>
 
-* <span data-ttu-id="da274-126">將目錄 (`cd`) 變更為其中包含專案的資料夾。</span><span class="sxs-lookup"><span data-stu-id="da274-126">Change directories (`cd`) to a folder which will contain the project.</span></span>
+* <span data-ttu-id="6b811-126">將目錄 (`cd`) 變更為其中包含專案的資料夾。</span><span class="sxs-lookup"><span data-stu-id="6b811-126">Change directories (`cd`) to a folder which will contain the project.</span></span>
 
-* <span data-ttu-id="da274-127">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="da274-127">Run the following commands:</span></span>
+* <span data-ttu-id="6b811-127">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="6b811-127">Run the following commands:</span></span>
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld
   code -r WebApp1
   ```
 
-  * <span data-ttu-id="da274-128">`dotnet new` 命令會在 [WebApp1] 資料夾中建立新的 Razor Pages 專案。</span><span class="sxs-lookup"><span data-stu-id="da274-128">The `dotnet new` command creates a new Razor Pages project in the *WebApp1* folder.</span></span>
-  * <span data-ttu-id="da274-129">`-uld` 會使用 LocalDB，而不是 SQLite。</span><span class="sxs-lookup"><span data-stu-id="da274-129">`-uld` uses LocalDB instead of SQLite.</span></span> <span data-ttu-id="da274-130">省略 `-uld` 以使用 SQLite。</span><span class="sxs-lookup"><span data-stu-id="da274-130">Omit `-uld` to use SQLite.</span></span>
-  * <span data-ttu-id="da274-131">`-au Individual` 會建立程式碼以進行個別驗證。</span><span class="sxs-lookup"><span data-stu-id="da274-131">`-au Individual` creates the code for Individual authentication.</span></span>
-  * <span data-ttu-id="da274-132">`code` 命令會在新的 Visual Studio Code 執行個體中開啟 [WebApp1] 資料夾。</span><span class="sxs-lookup"><span data-stu-id="da274-132">The `code` command opens the *WebApp1* folder in a new instance of Visual Studio Code.</span></span>
+  * <span data-ttu-id="6b811-128">`dotnet new` 命令會在 [WebApp1] 資料夾中建立新的 Razor Pages 專案。</span><span class="sxs-lookup"><span data-stu-id="6b811-128">The `dotnet new` command creates a new Razor Pages project in the *WebApp1* folder.</span></span>
+  * <span data-ttu-id="6b811-129">`-uld` 會使用 LocalDB，而不是 SQLite。</span><span class="sxs-lookup"><span data-stu-id="6b811-129">`-uld` uses LocalDB instead of SQLite.</span></span> <span data-ttu-id="6b811-130">省略 `-uld` 以使用 SQLite。</span><span class="sxs-lookup"><span data-stu-id="6b811-130">Omit `-uld` to use SQLite.</span></span>
+  * <span data-ttu-id="6b811-131">`-au Individual` 會建立程式碼以進行個別驗證。</span><span class="sxs-lookup"><span data-stu-id="6b811-131">`-au Individual` creates the code for Individual authentication.</span></span>
+  * <span data-ttu-id="6b811-132">`code` 命令會在新的 Visual Studio Code 執行個體中開啟 [WebApp1] 資料夾。</span><span class="sxs-lookup"><span data-stu-id="6b811-132">The `code` command opens the *WebApp1* folder in a new instance of Visual Studio Code.</span></span>
 
-* <span data-ttu-id="da274-133">對話方塊隨即顯示，並指出 **'WebApp1' 中遺漏了建置和偵錯的必要資產。新增它們嗎？**</span><span class="sxs-lookup"><span data-stu-id="da274-133">A dialog box appears with **Required assets to build and debug are missing from 'WebApp1'. Add them?**</span></span> <span data-ttu-id="da274-134">選取 [是]。</span><span class="sxs-lookup"><span data-stu-id="da274-134">Select **Yes**.</span></span>
+* <span data-ttu-id="6b811-133">對話方塊隨即顯示，並指出 **'WebApp1' 中遺漏了建置和偵錯的必要資產。新增它們嗎？**</span><span class="sxs-lookup"><span data-stu-id="6b811-133">A dialog box appears with **Required assets to build and debug are missing from 'WebApp1'. Add them?**</span></span> <span data-ttu-id="6b811-134">選取 [是]。</span><span class="sxs-lookup"><span data-stu-id="6b811-134">Select **Yes**.</span></span>
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="da274-135">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="da274-135">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="6b811-135">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="6b811-135">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="da274-136">選取 [檔案] > [新增方案]。</span><span class="sxs-lookup"><span data-stu-id="da274-136">Select **File** > **New Solution**.</span></span>
-* <span data-ttu-id="da274-137">選取提要欄位中的 [.NET Core] > [應用程式]。</span><span class="sxs-lookup"><span data-stu-id="da274-137">Select **.NET Core** > **App** in the sidebar.</span></span> <span data-ttu-id="da274-138">選取 [Web 應用程式] 範本。</span><span class="sxs-lookup"><span data-stu-id="da274-138">Select the **Web Application** template.</span></span> <span data-ttu-id="da274-139">選取 [下一步]。</span><span class="sxs-lookup"><span data-stu-id="da274-139">Select **Next**.</span></span>
-* <span data-ttu-id="da274-140">將 [目標 Framework] 下拉式清單設定為 [.NET Core 2.2]。</span><span class="sxs-lookup"><span data-stu-id="da274-140">Set the **Target Framework** drop down to **.NET Core 2.2**.</span></span> <span data-ttu-id="da274-141">選取 [下一步]。</span><span class="sxs-lookup"><span data-stu-id="da274-141">Select **Next**.</span></span>
-* <span data-ttu-id="da274-142">提供**專案名稱**。</span><span class="sxs-lookup"><span data-stu-id="da274-142">Provide a **Project Name**.</span></span> <span data-ttu-id="da274-143">確認或變更**位置**。</span><span class="sxs-lookup"><span data-stu-id="da274-143">Confirm or change the **Location**.</span></span> <span data-ttu-id="da274-144">選取 [建立]。</span><span class="sxs-lookup"><span data-stu-id="da274-144">Select **Create**.</span></span>
+* <span data-ttu-id="6b811-136">選取 [檔案] > [新增方案]。</span><span class="sxs-lookup"><span data-stu-id="6b811-136">Select **File** > **New Solution**.</span></span>
+* <span data-ttu-id="6b811-137">選取提要欄位中的 [.NET Core] > [應用程式]。</span><span class="sxs-lookup"><span data-stu-id="6b811-137">Select **.NET Core** > **App** in the sidebar.</span></span> <span data-ttu-id="6b811-138">選取 [Web 應用程式] 範本。</span><span class="sxs-lookup"><span data-stu-id="6b811-138">Select the **Web Application** template.</span></span> <span data-ttu-id="6b811-139">選取 [下一步]。</span><span class="sxs-lookup"><span data-stu-id="6b811-139">Select **Next**.</span></span>
+* <span data-ttu-id="6b811-140">將 [目標 Framework] 下拉式清單設定為 [.NET Core 2.2]。</span><span class="sxs-lookup"><span data-stu-id="6b811-140">Set the **Target Framework** drop down to **.NET Core 2.2**.</span></span> <span data-ttu-id="6b811-141">選取 [下一步]。</span><span class="sxs-lookup"><span data-stu-id="6b811-141">Select **Next**.</span></span>
+* <span data-ttu-id="6b811-142">提供**專案名稱**。</span><span class="sxs-lookup"><span data-stu-id="6b811-142">Provide a **Project Name**.</span></span> <span data-ttu-id="6b811-143">確認或變更**位置**。</span><span class="sxs-lookup"><span data-stu-id="6b811-143">Confirm or change the **Location**.</span></span> <span data-ttu-id="6b811-144">選取 [建立]。</span><span class="sxs-lookup"><span data-stu-id="6b811-144">Select **Create**.</span></span>
 
 ---
 
-## <a name="apply-migrations"></a><span data-ttu-id="da274-145">套用移轉</span><span class="sxs-lookup"><span data-stu-id="da274-145">Apply migrations</span></span>
+## <a name="apply-migrations"></a><span data-ttu-id="6b811-145">套用移轉</span><span class="sxs-lookup"><span data-stu-id="6b811-145">Apply migrations</span></span>
 
-* <span data-ttu-id="da274-146">執行應用程式並選取 [登錄] 連結。</span><span class="sxs-lookup"><span data-stu-id="da274-146">Run the app and select the **Register** link.</span></span>
-* <span data-ttu-id="da274-147">輸入新帳戶的電子郵件和密碼，然後選取 [註冊]。</span><span class="sxs-lookup"><span data-stu-id="da274-147">Enter the email and password for the new account, and then select **Register**.</span></span>
-* <span data-ttu-id="da274-148">遵循指示以套用移轉。</span><span class="sxs-lookup"><span data-stu-id="da274-148">Follow the instructions to apply migrations.</span></span>
+* <span data-ttu-id="6b811-146">執行應用程式並選取 [登錄] 連結。</span><span class="sxs-lookup"><span data-stu-id="6b811-146">Run the app and select the **Register** link.</span></span>
+* <span data-ttu-id="6b811-147">輸入新帳戶的電子郵件和密碼，然後選取 [註冊]。</span><span class="sxs-lookup"><span data-stu-id="6b811-147">Enter the email and password for the new account, and then select **Register**.</span></span>
+* <span data-ttu-id="6b811-148">遵循指示以套用移轉。</span><span class="sxs-lookup"><span data-stu-id="6b811-148">Follow the instructions to apply migrations.</span></span>
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
-## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a><span data-ttu-id="da274-149">使用 SecretManager 來儲存登入提供者指派的權杖</span><span class="sxs-lookup"><span data-stu-id="da274-149">Use SecretManager to store tokens assigned by login providers</span></span>
+## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a><span data-ttu-id="6b811-149">使用 SecretManager 來儲存登入提供者指派的權杖</span><span class="sxs-lookup"><span data-stu-id="6b811-149">Use SecretManager to store tokens assigned by login providers</span></span>
 
-<span data-ttu-id="da274-150">社交登入提供者會在註冊程序期間指派**應用程式識別碼**和**應用程式密碼**權杖。</span><span class="sxs-lookup"><span data-stu-id="da274-150">Social login providers assign **Application Id** and **Application Secret** tokens during the registration process.</span></span> <span data-ttu-id="da274-151">確切權杖名稱會依提供者而有所不同。</span><span class="sxs-lookup"><span data-stu-id="da274-151">The exact token names vary by provider.</span></span> <span data-ttu-id="da274-152">這些權杖代表您的應用程式用來存取其 API 的認證。</span><span class="sxs-lookup"><span data-stu-id="da274-152">These tokens represent the credentials your app uses to access their API.</span></span> <span data-ttu-id="da274-153">這些權杖會組成「祕密」，在[祕密管理員](xref:security/app-secrets#secret-manager)的協助下連結到您的應用程式設定。</span><span class="sxs-lookup"><span data-stu-id="da274-153">The tokens constitute the "secrets" that can be linked to your app configuration with the help of [Secret Manager](xref:security/app-secrets#secret-manager).</span></span> <span data-ttu-id="da274-154">相較於在設定檔 (例如 *appsettings.json*) 中儲存權杖，祕密管理員是較安全的替代方案。</span><span class="sxs-lookup"><span data-stu-id="da274-154">Secret Manager is a more secure alternative to storing the tokens in a configuration file, such as *appsettings.json*.</span></span>
+<span data-ttu-id="6b811-150">社交登入提供者會在註冊程序期間指派**應用程式識別碼**和**應用程式密碼**權杖。</span><span class="sxs-lookup"><span data-stu-id="6b811-150">Social login providers assign **Application Id** and **Application Secret** tokens during the registration process.</span></span> <span data-ttu-id="6b811-151">確切權杖名稱會依提供者而有所不同。</span><span class="sxs-lookup"><span data-stu-id="6b811-151">The exact token names vary by provider.</span></span> <span data-ttu-id="6b811-152">這些權杖代表您的應用程式用來存取其 API 的認證。</span><span class="sxs-lookup"><span data-stu-id="6b811-152">These tokens represent the credentials your app uses to access their API.</span></span> <span data-ttu-id="6b811-153">這些權杖會組成「祕密」，在[祕密管理員](xref:security/app-secrets#secret-manager)的協助下連結到您的應用程式設定。</span><span class="sxs-lookup"><span data-stu-id="6b811-153">The tokens constitute the "secrets" that can be linked to your app configuration with the help of [Secret Manager](xref:security/app-secrets#secret-manager).</span></span> <span data-ttu-id="6b811-154">相較於在設定檔 (例如 *appsettings.json*) 中儲存權杖，祕密管理員是較安全的替代方案。</span><span class="sxs-lookup"><span data-stu-id="6b811-154">Secret Manager is a more secure alternative to storing the tokens in a configuration file, such as *appsettings.json*.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="da274-155">祕密管理員僅供用於開發用途。</span><span class="sxs-lookup"><span data-stu-id="da274-155">Secret Manager is for development purposes only.</span></span> <span data-ttu-id="da274-156">您可以透過 [Azure Key Vault 設定提供者](xref:security/key-vault-configuration)儲存及保護 Azure 測試與生產祕密。</span><span class="sxs-lookup"><span data-stu-id="da274-156">You can store and protect Azure test and production secrets with the [Azure Key Vault configuration provider](xref:security/key-vault-configuration).</span></span>
+> <span data-ttu-id="6b811-155">祕密管理員僅供用於開發用途。</span><span class="sxs-lookup"><span data-stu-id="6b811-155">Secret Manager is for development purposes only.</span></span> <span data-ttu-id="6b811-156">您可以透過 [Azure Key Vault 設定提供者](xref:security/key-vault-configuration)儲存及保護 Azure 測試與生產祕密。</span><span class="sxs-lookup"><span data-stu-id="6b811-156">You can store and protect Azure test and production secrets with the [Azure Key Vault configuration provider](xref:security/key-vault-configuration).</span></span>
 
-<span data-ttu-id="da274-157">請遵循 [Safe storage of app secrets in development in ASP.NET Core](xref:security/app-secrets) (在 ASP.NET Core 開發過程中安全地儲存應用程式祕密) 主題中的步驟，儲存下方各個登入提供者指派的權杖。</span><span class="sxs-lookup"><span data-stu-id="da274-157">Follow the steps in [Safe storage of app secrets in development in ASP.NET Core](xref:security/app-secrets) topic to store tokens assigned by each login provider below.</span></span>
+<span data-ttu-id="6b811-157">請遵循 [Safe storage of app secrets in development in ASP.NET Core](xref:security/app-secrets) (在 ASP.NET Core 開發過程中安全地儲存應用程式祕密) 主題中的步驟，儲存下方各個登入提供者指派的權杖。</span><span class="sxs-lookup"><span data-stu-id="6b811-157">Follow the steps in [Safe storage of app secrets in development in ASP.NET Core](xref:security/app-secrets) topic to store tokens assigned by each login provider below.</span></span>
 
-## <a name="setup-login-providers-required-by-your-application"></a><span data-ttu-id="da274-158">設定應用程式所需的登入提供者</span><span class="sxs-lookup"><span data-stu-id="da274-158">Setup login providers required by your application</span></span>
+## <a name="setup-login-providers-required-by-your-application"></a><span data-ttu-id="6b811-158">設定應用程式所需的登入提供者</span><span class="sxs-lookup"><span data-stu-id="6b811-158">Setup login providers required by your application</span></span>
 
-<span data-ttu-id="da274-159">若要將應用程式設定為使用相應的提供者，請使用下列主題：</span><span class="sxs-lookup"><span data-stu-id="da274-159">Use the following topics to configure your application to use the respective providers:</span></span>
+<span data-ttu-id="6b811-159">若要將應用程式設定為使用相應的提供者，請使用下列主題：</span><span class="sxs-lookup"><span data-stu-id="6b811-159">Use the following topics to configure your application to use the respective providers:</span></span>
 
-* <span data-ttu-id="da274-160">[Facebook](xref:security/authentication/facebook-logins) 指示</span><span class="sxs-lookup"><span data-stu-id="da274-160">[Facebook](xref:security/authentication/facebook-logins) instructions</span></span>
-* <span data-ttu-id="da274-161">[Twitter](xref:security/authentication/twitter-logins) 指示</span><span class="sxs-lookup"><span data-stu-id="da274-161">[Twitter](xref:security/authentication/twitter-logins) instructions</span></span>
-* <span data-ttu-id="da274-162">[Google](xref:security/authentication/google-logins) 指示</span><span class="sxs-lookup"><span data-stu-id="da274-162">[Google](xref:security/authentication/google-logins) instructions</span></span>
-* <span data-ttu-id="da274-163">[Microsoft](xref:security/authentication/microsoft-logins) 指示</span><span class="sxs-lookup"><span data-stu-id="da274-163">[Microsoft](xref:security/authentication/microsoft-logins) instructions</span></span>
-* <span data-ttu-id="da274-164">[其他提供者](xref:security/authentication/otherlogins)指示</span><span class="sxs-lookup"><span data-stu-id="da274-164">[Other provider](xref:security/authentication/otherlogins) instructions</span></span>
+* <span data-ttu-id="6b811-160">[Facebook](xref:security/authentication/facebook-logins) 指示</span><span class="sxs-lookup"><span data-stu-id="6b811-160">[Facebook](xref:security/authentication/facebook-logins) instructions</span></span>
+* <span data-ttu-id="6b811-161">[Twitter](xref:security/authentication/twitter-logins) 指示</span><span class="sxs-lookup"><span data-stu-id="6b811-161">[Twitter](xref:security/authentication/twitter-logins) instructions</span></span>
+* <span data-ttu-id="6b811-162">[Google](xref:security/authentication/google-logins) 指示</span><span class="sxs-lookup"><span data-stu-id="6b811-162">[Google](xref:security/authentication/google-logins) instructions</span></span>
+* <span data-ttu-id="6b811-163">[Microsoft](xref:security/authentication/microsoft-logins) 指示</span><span class="sxs-lookup"><span data-stu-id="6b811-163">[Microsoft](xref:security/authentication/microsoft-logins) instructions</span></span>
+* <span data-ttu-id="6b811-164">[其他提供者](xref:security/authentication/otherlogins)指示</span><span class="sxs-lookup"><span data-stu-id="6b811-164">[Other provider](xref:security/authentication/otherlogins) instructions</span></span>
 
 [!INCLUDE[](includes/chain-auth-providers.md)]
 
-## <a name="optionally-set-password"></a><span data-ttu-id="da274-165">選擇性地設定密碼</span><span class="sxs-lookup"><span data-stu-id="da274-165">Optionally set password</span></span>
+## <a name="optionally-set-password"></a><span data-ttu-id="6b811-165">選擇性地設定密碼</span><span class="sxs-lookup"><span data-stu-id="6b811-165">Optionally set password</span></span>
 
-<span data-ttu-id="da274-166">當您使用外部登入提供者註冊時，您並未向應用程式註冊密碼。</span><span class="sxs-lookup"><span data-stu-id="da274-166">When you register with an external login provider, you don't have a password registered with the app.</span></span> <span data-ttu-id="da274-167">這樣可以減輕您建立網站密碼與記住密碼的壓力，但這也會讓您依賴外部登入提供者。</span><span class="sxs-lookup"><span data-stu-id="da274-167">This alleviates you from creating and remembering a password for the site, but it also makes you dependent on the external login provider.</span></span> <span data-ttu-id="da274-168">如果無法使用外部登入提供者，您就無法登入網站。</span><span class="sxs-lookup"><span data-stu-id="da274-168">If the external login provider is unavailable, you won't be able to sign in to the web site.</span></span>
+<span data-ttu-id="6b811-166">當您使用外部登入提供者註冊時，您並未向應用程式註冊密碼。</span><span class="sxs-lookup"><span data-stu-id="6b811-166">When you register with an external login provider, you don't have a password registered with the app.</span></span> <span data-ttu-id="6b811-167">這樣可以減輕您建立網站密碼與記住密碼的壓力，但這也會讓您依賴外部登入提供者。</span><span class="sxs-lookup"><span data-stu-id="6b811-167">This alleviates you from creating and remembering a password for the site, but it also makes you dependent on the external login provider.</span></span> <span data-ttu-id="6b811-168">如果無法使用外部登入提供者，您就無法登入網站。</span><span class="sxs-lookup"><span data-stu-id="6b811-168">If the external login provider is unavailable, you won't be able to sign in to the web site.</span></span>
 
-<span data-ttu-id="da274-169">若要建立密碼，並使用您在外部提供者登入程序期間所設的電子郵件進行登入：</span><span class="sxs-lookup"><span data-stu-id="da274-169">To create a password and sign in using your email that you set during the sign in process with external providers:</span></span>
+<span data-ttu-id="6b811-169">若要建立密碼，並使用您在外部提供者登入程序期間所設的電子郵件進行登入：</span><span class="sxs-lookup"><span data-stu-id="6b811-169">To create a password and sign in using your email that you set during the sign in process with external providers:</span></span>
 
-* <span data-ttu-id="da274-170">選取右上角的 [Hello &lt;電子郵件別名&gt;] 連結以瀏覽至 [管理] 檢視。</span><span class="sxs-lookup"><span data-stu-id="da274-170">Select the **Hello &lt;email alias&gt;** link at the top-right corner to navigate to the **Manage** view.</span></span>
+* <span data-ttu-id="6b811-170">選取右上角的 [Hello &lt;電子郵件別名&gt;] 連結以瀏覽至 [管理] 檢視。</span><span class="sxs-lookup"><span data-stu-id="6b811-170">Select the **Hello &lt;email alias&gt;** link at the top-right corner to navigate to the **Manage** view.</span></span>
 
 ![Web 應用程式的 [管理] 檢視](index/_static/pass1a.png)
 
-* <span data-ttu-id="da274-172">選取 [建立]</span><span class="sxs-lookup"><span data-stu-id="da274-172">Select **Create**</span></span>
+* <span data-ttu-id="6b811-172">選取 [建立]</span><span class="sxs-lookup"><span data-stu-id="6b811-172">Select **Create**</span></span>
 
 ![[設定密碼] 頁面](index/_static/pass2a.png)
 
-* <span data-ttu-id="da274-174">設定有效的密碼，以便使用此密碼與電子郵件進行登入。</span><span class="sxs-lookup"><span data-stu-id="da274-174">Set a valid password and you can use this to sign in with your email.</span></span>
+* <span data-ttu-id="6b811-174">設定有效的密碼，以便使用此密碼與電子郵件進行登入。</span><span class="sxs-lookup"><span data-stu-id="6b811-174">Set a valid password and you can use this to sign in with your email.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="da274-175">後續步驟</span><span class="sxs-lookup"><span data-stu-id="da274-175">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="6b811-175">後續步驟</span><span class="sxs-lookup"><span data-stu-id="6b811-175">Next steps</span></span>
 
-* <span data-ttu-id="da274-176">本文介紹了外部驗證，並說明將外部登入新增至 ASP.NET Core 應用程式所需的必要條件。</span><span class="sxs-lookup"><span data-stu-id="da274-176">This article introduced external authentication and explained the prerequisites required to add external logins to your ASP.NET Core app.</span></span>
+* <span data-ttu-id="6b811-176">本文介紹了外部驗證，並說明將外部登入新增至 ASP.NET Core 應用程式所需的必要條件。</span><span class="sxs-lookup"><span data-stu-id="6b811-176">This article introduced external authentication and explained the prerequisites required to add external logins to your ASP.NET Core app.</span></span>
 
-* <span data-ttu-id="da274-177">請參考提供者的特定頁面，以設定應用程式所需的提供者登入項目。</span><span class="sxs-lookup"><span data-stu-id="da274-177">Reference provider-specific pages to configure logins for the providers required by your app.</span></span>
+* <span data-ttu-id="6b811-177">請參考提供者的特定頁面，以設定應用程式所需的提供者登入項目。</span><span class="sxs-lookup"><span data-stu-id="6b811-177">Reference provider-specific pages to configure logins for the providers required by your app.</span></span>
 
-* <span data-ttu-id="da274-178">您想要保存有關使用者與其存取和重新整理權杖的額外資料。</span><span class="sxs-lookup"><span data-stu-id="da274-178">You may want to persist additional data about the user and their access and refresh tokens.</span></span> <span data-ttu-id="da274-179">如需詳細資訊，請參閱<xref:security/authentication/social/additional-claims>。</span><span class="sxs-lookup"><span data-stu-id="da274-179">For more information, see <xref:security/authentication/social/additional-claims>.</span></span>
+* <span data-ttu-id="6b811-178">您想要保存有關使用者與其存取和重新整理權杖的額外資料。</span><span class="sxs-lookup"><span data-stu-id="6b811-178">You may want to persist additional data about the user and their access and refresh tokens.</span></span> <span data-ttu-id="6b811-179">如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims>。</span><span class="sxs-lookup"><span data-stu-id="6b811-179">For more information, see <xref:security/authentication/social/additional-claims>.</span></span>

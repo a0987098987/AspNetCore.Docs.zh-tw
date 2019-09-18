@@ -6,680 +6,680 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: d95f44394d6ecc3c3896b45c5bebc73fa2d92445
-ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
+ms.openlocfilehash: d827f6f839c9e42e6d3d7b04fe8b24a1c9732aee
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71011193"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082446"
 ---
-# <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a><span data-ttu-id="068f6-104">建立 ASP.NET Core 應用程式與受保護的授權的使用者資料</span><span class="sxs-lookup"><span data-stu-id="068f6-104">Create an ASP.NET Core app with user data protected by authorization</span></span>
+# <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a><span data-ttu-id="94aa9-104">建立 ASP.NET Core 應用程式與受保護的授權的使用者資料</span><span class="sxs-lookup"><span data-stu-id="94aa9-104">Create an ASP.NET Core app with user data protected by authorization</span></span>
 
-<span data-ttu-id="068f6-105">作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette)</span><span class="sxs-lookup"><span data-stu-id="068f6-105">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Joe Audette](https://twitter.com/joeaudette)</span></span>
+<span data-ttu-id="94aa9-105">作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette)</span><span class="sxs-lookup"><span data-stu-id="94aa9-105">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Joe Audette](https://twitter.com/joeaudette)</span></span>
 
 ::: moniker range="<= aspnetcore-1.1"
 
-<span data-ttu-id="068f6-106">請參閱[此 PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) ASP.NET Core MVC 版本。</span><span class="sxs-lookup"><span data-stu-id="068f6-106">See [this PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) for the ASP.NET Core MVC version.</span></span> <span data-ttu-id="068f6-107">本教學課程中的 ASP.NET Core 1.1 版本處於[這](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data)資料夾。</span><span class="sxs-lookup"><span data-stu-id="068f6-107">The ASP.NET Core 1.1 version of this tutorial is in [this](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data) folder.</span></span> <span data-ttu-id="068f6-108">範例 ASP.NET Core 1.1[範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2)。</span><span class="sxs-lookup"><span data-stu-id="068f6-108">The 1.1 ASP.NET Core sample is in the [samples](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2).</span></span>
+<span data-ttu-id="94aa9-106">請參閱[此 PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) ASP.NET Core MVC 版本。</span><span class="sxs-lookup"><span data-stu-id="94aa9-106">See [this PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) for the ASP.NET Core MVC version.</span></span> <span data-ttu-id="94aa9-107">本教學課程中的 ASP.NET Core 1.1 版本處於[這](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data)資料夾。</span><span class="sxs-lookup"><span data-stu-id="94aa9-107">The ASP.NET Core 1.1 version of this tutorial is in [this](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data) folder.</span></span> <span data-ttu-id="94aa9-108">範例 ASP.NET Core 1.1[範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-108">The 1.1 ASP.NET Core sample is in the [samples](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2).</span></span>
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-<span data-ttu-id="068f6-109">請參閱[此 pdf](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_July16_18.pdf)</span><span class="sxs-lookup"><span data-stu-id="068f6-109">See [this pdf](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_July16_18.pdf)</span></span>
+<span data-ttu-id="94aa9-109">請參閱[此 pdf](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_July16_18.pdf)</span><span class="sxs-lookup"><span data-stu-id="94aa9-109">See [this pdf](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_July16_18.pdf)</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="068f6-110">本教學課程會示範如何建立 ASP.NET Core web 應用程式與受保護的授權的使用者資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-110">This tutorial shows how to create an ASP.NET Core web app with user data protected by authorization.</span></span> <span data-ttu-id="068f6-111">它會顯示已驗證 （登錄） 的使用者的連絡人清單中已建立。</span><span class="sxs-lookup"><span data-stu-id="068f6-111">It displays a list of contacts that authenticated (registered) users have created.</span></span> <span data-ttu-id="068f6-112">有三個安全性群組：</span><span class="sxs-lookup"><span data-stu-id="068f6-112">There are three security groups:</span></span>
+<span data-ttu-id="94aa9-110">本教學課程會示範如何建立 ASP.NET Core web 應用程式與受保護的授權的使用者資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-110">This tutorial shows how to create an ASP.NET Core web app with user data protected by authorization.</span></span> <span data-ttu-id="94aa9-111">它會顯示已驗證 （登錄） 的使用者的連絡人清單中已建立。</span><span class="sxs-lookup"><span data-stu-id="94aa9-111">It displays a list of contacts that authenticated (registered) users have created.</span></span> <span data-ttu-id="94aa9-112">有三個安全性群組：</span><span class="sxs-lookup"><span data-stu-id="94aa9-112">There are three security groups:</span></span>
 
-* <span data-ttu-id="068f6-113">**已註冊的使用者**可以檢視所有已認可的資料並可以編輯/刪除他們自己的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-113">**Registered users** can view all the approved data and can edit/delete their own data.</span></span>
-* <span data-ttu-id="068f6-114">**管理員**可以核准或拒絕連絡人資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-114">**Managers** can approve or reject contact data.</span></span> <span data-ttu-id="068f6-115">只有已核准的連絡人會對使用者顯示。</span><span class="sxs-lookup"><span data-stu-id="068f6-115">Only approved contacts are visible to users.</span></span>
-* <span data-ttu-id="068f6-116">**系統管理員**可以核准/拒絕並編輯/刪除任何資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-116">**Administrators** can approve/reject and edit/delete any data.</span></span>
+* <span data-ttu-id="94aa9-113">**已註冊的使用者**可以檢視所有已認可的資料並可以編輯/刪除他們自己的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-113">**Registered users** can view all the approved data and can edit/delete their own data.</span></span>
+* <span data-ttu-id="94aa9-114">**管理員**可以核准或拒絕連絡人資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-114">**Managers** can approve or reject contact data.</span></span> <span data-ttu-id="94aa9-115">只有已核准的連絡人會對使用者顯示。</span><span class="sxs-lookup"><span data-stu-id="94aa9-115">Only approved contacts are visible to users.</span></span>
+* <span data-ttu-id="94aa9-116">**系統管理員**可以核准/拒絕並編輯/刪除任何資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-116">**Administrators** can approve/reject and edit/delete any data.</span></span>
 
-<span data-ttu-id="068f6-117">本檔中的影像不完全符合最新的範本。</span><span class="sxs-lookup"><span data-stu-id="068f6-117">The images in this document don't exactly match the latest templates.</span></span>
+<span data-ttu-id="94aa9-117">本檔中的影像不完全符合最新的範本。</span><span class="sxs-lookup"><span data-stu-id="94aa9-117">The images in this document don't exactly match the latest templates.</span></span>
 
-<span data-ttu-id="068f6-118">在下圖中，使用者 Rick (`rick@example.com`) 登入。</span><span class="sxs-lookup"><span data-stu-id="068f6-118">In the following image, user Rick (`rick@example.com`) is signed in.</span></span> <span data-ttu-id="068f6-119">Rick 只能檢視已核准的連絡人和**編輯**/**刪除**/**新建**他連絡人的連結。</span><span class="sxs-lookup"><span data-stu-id="068f6-119">Rick can only view approved contacts and **Edit**/**Delete**/**Create New** links for his contacts.</span></span> <span data-ttu-id="068f6-120">只有最後一筆記錄，由 Rick，顯示**編輯**並**刪除**連結。</span><span class="sxs-lookup"><span data-stu-id="068f6-120">Only the last record, created by Rick, displays **Edit** and **Delete** links.</span></span> <span data-ttu-id="068f6-121">其他使用者不會看到最後一筆記錄，直到管理員或系統管理員的狀態變更為 「 Approved 」。</span><span class="sxs-lookup"><span data-stu-id="068f6-121">Other users won't see the last record until a manager or administrator changes the status to "Approved".</span></span>
+<span data-ttu-id="94aa9-118">在下圖中，使用者 Rick (`rick@example.com`) 登入。</span><span class="sxs-lookup"><span data-stu-id="94aa9-118">In the following image, user Rick (`rick@example.com`) is signed in.</span></span> <span data-ttu-id="94aa9-119">Rick 只能檢視已核准的連絡人和**編輯**/**刪除**/**新建**他連絡人的連結。</span><span class="sxs-lookup"><span data-stu-id="94aa9-119">Rick can only view approved contacts and **Edit**/**Delete**/**Create New** links for his contacts.</span></span> <span data-ttu-id="94aa9-120">只有最後一筆記錄，由 Rick，顯示**編輯**並**刪除**連結。</span><span class="sxs-lookup"><span data-stu-id="94aa9-120">Only the last record, created by Rick, displays **Edit** and **Delete** links.</span></span> <span data-ttu-id="94aa9-121">其他使用者不會看到最後一筆記錄，直到管理員或系統管理員的狀態變更為 「 Approved 」。</span><span class="sxs-lookup"><span data-stu-id="94aa9-121">Other users won't see the last record until a manager or administrator changes the status to "Approved".</span></span>
 
 ![螢幕擷取畫面顯示 Rick 登入](secure-data/_static/rick.png)
 
-<span data-ttu-id="068f6-123">在下圖中， `manager@contoso.com`已登入並以管理員的角色執行：</span><span class="sxs-lookup"><span data-stu-id="068f6-123">In the following image, `manager@contoso.com` is signed in and in the manager's role:</span></span>
+<span data-ttu-id="94aa9-123">在下圖中， `manager@contoso.com`已登入並以管理員的角色執行：</span><span class="sxs-lookup"><span data-stu-id="94aa9-123">In the following image, `manager@contoso.com` is signed in and in the manager's role:</span></span>
 
 ![螢幕擷取畫面顯示manager@contoso.com登入](secure-data/_static/manager1.png)
 
-<span data-ttu-id="068f6-125">下圖顯示之管理員的連絡詳細資料檢視：</span><span class="sxs-lookup"><span data-stu-id="068f6-125">The following image shows the managers details view of a contact:</span></span>
+<span data-ttu-id="94aa9-125">下圖顯示之管理員的連絡詳細資料檢視：</span><span class="sxs-lookup"><span data-stu-id="94aa9-125">The following image shows the managers details view of a contact:</span></span>
 
 ![連絡人的管理員的檢視](secure-data/_static/manager.png)
 
-<span data-ttu-id="068f6-127">**核准**並**拒絕**按鈕只會顯示為管理員和系統管理員。</span><span class="sxs-lookup"><span data-stu-id="068f6-127">The **Approve** and **Reject** buttons are only displayed for managers and administrators.</span></span>
+<span data-ttu-id="94aa9-127">**核准**並**拒絕**按鈕只會顯示為管理員和系統管理員。</span><span class="sxs-lookup"><span data-stu-id="94aa9-127">The **Approve** and **Reject** buttons are only displayed for managers and administrators.</span></span>
 
-<span data-ttu-id="068f6-128">在下圖中， `admin@contoso.com`已登入，並以系統管理員角色：</span><span class="sxs-lookup"><span data-stu-id="068f6-128">In the following image, `admin@contoso.com` is signed in and in the administrator's role:</span></span>
+<span data-ttu-id="94aa9-128">在下圖中， `admin@contoso.com`已登入，並以系統管理員角色：</span><span class="sxs-lookup"><span data-stu-id="94aa9-128">In the following image, `admin@contoso.com` is signed in and in the administrator's role:</span></span>
 
 ![螢幕擷取畫面顯示admin@contoso.com登入](secure-data/_static/admin.png)
 
-<span data-ttu-id="068f6-130">系統管理員將擁有所有權限。</span><span class="sxs-lookup"><span data-stu-id="068f6-130">The administrator has all privileges.</span></span> <span data-ttu-id="068f6-131">她可以讀取/編輯/刪除的任何連絡人，並變更連絡人的狀態。</span><span class="sxs-lookup"><span data-stu-id="068f6-131">She can read/edit/delete any contact and change the status of contacts.</span></span>
+<span data-ttu-id="94aa9-130">系統管理員將擁有所有權限。</span><span class="sxs-lookup"><span data-stu-id="94aa9-130">The administrator has all privileges.</span></span> <span data-ttu-id="94aa9-131">她可以讀取/編輯/刪除的任何連絡人，並變更連絡人的狀態。</span><span class="sxs-lookup"><span data-stu-id="94aa9-131">She can read/edit/delete any contact and change the status of contacts.</span></span>
 
-<span data-ttu-id="068f6-132">藉由建立應用程式[scaffolding](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model)下列`Contact`模型：</span><span class="sxs-lookup"><span data-stu-id="068f6-132">The app was created by [scaffolding](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model) the following `Contact` model:</span></span>
+<span data-ttu-id="94aa9-132">藉由建立應用程式[scaffolding](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model)下列`Contact`模型：</span><span class="sxs-lookup"><span data-stu-id="94aa9-132">The app was created by [scaffolding](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model) the following `Contact` model:</span></span>
 
 [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
-<span data-ttu-id="068f6-133">此範例包含下列 「 授權 」 處理常式：</span><span class="sxs-lookup"><span data-stu-id="068f6-133">The sample contains the following authorization handlers:</span></span>
+<span data-ttu-id="94aa9-133">此範例包含下列 「 授權 」 處理常式：</span><span class="sxs-lookup"><span data-stu-id="94aa9-133">The sample contains the following authorization handlers:</span></span>
 
-* <span data-ttu-id="068f6-134">`ContactIsOwnerAuthorizationHandler`：確保使用者只能編輯其資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-134">`ContactIsOwnerAuthorizationHandler`: Ensures that a user can only edit their data.</span></span>
-* <span data-ttu-id="068f6-135">`ContactManagerAuthorizationHandler`：可讓管理員核准或拒絕連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-135">`ContactManagerAuthorizationHandler`: Allows managers to approve or reject contacts.</span></span>
-* <span data-ttu-id="068f6-136">`ContactAdministratorsAuthorizationHandler`：允許系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-136">`ContactAdministratorsAuthorizationHandler`: Allows administrators to approve or reject contacts and to edit/delete contacts.</span></span>
+* <span data-ttu-id="94aa9-134">`ContactIsOwnerAuthorizationHandler`：確保使用者只能編輯其資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-134">`ContactIsOwnerAuthorizationHandler`: Ensures that a user can only edit their data.</span></span>
+* <span data-ttu-id="94aa9-135">`ContactManagerAuthorizationHandler`：可讓管理員核准或拒絕連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-135">`ContactManagerAuthorizationHandler`: Allows managers to approve or reject contacts.</span></span>
+* <span data-ttu-id="94aa9-136">`ContactAdministratorsAuthorizationHandler`：允許系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-136">`ContactAdministratorsAuthorizationHandler`: Allows administrators to approve or reject contacts and to edit/delete contacts.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="068f6-137">必要條件</span><span class="sxs-lookup"><span data-stu-id="068f6-137">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="94aa9-137">必要條件</span><span class="sxs-lookup"><span data-stu-id="94aa9-137">Prerequisites</span></span>
 
-<span data-ttu-id="068f6-138">本教學課程會前進。</span><span class="sxs-lookup"><span data-stu-id="068f6-138">This tutorial is advanced.</span></span> <span data-ttu-id="068f6-139">您應該先熟悉：</span><span class="sxs-lookup"><span data-stu-id="068f6-139">You should be familiar with:</span></span>
+<span data-ttu-id="94aa9-138">本教學課程會前進。</span><span class="sxs-lookup"><span data-stu-id="94aa9-138">This tutorial is advanced.</span></span> <span data-ttu-id="94aa9-139">您應該先熟悉：</span><span class="sxs-lookup"><span data-stu-id="94aa9-139">You should be familiar with:</span></span>
 
-* [<span data-ttu-id="068f6-140">ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="068f6-140">ASP.NET Core</span></span>](xref:tutorials/first-mvc-app/start-mvc)
-* [<span data-ttu-id="068f6-141">驗證</span><span class="sxs-lookup"><span data-stu-id="068f6-141">Authentication</span></span>](xref:security/authentication/identity)
-* [<span data-ttu-id="068f6-142">帳戶確認和密碼復原</span><span class="sxs-lookup"><span data-stu-id="068f6-142">Account Confirmation and Password Recovery</span></span>](xref:security/authentication/accconfirm)
-* [<span data-ttu-id="068f6-143">授權</span><span class="sxs-lookup"><span data-stu-id="068f6-143">Authorization</span></span>](xref:security/authorization/introduction)
-* [<span data-ttu-id="068f6-144">Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="068f6-144">Entity Framework Core</span></span>](xref:data/ef-mvc/intro)
+* [<span data-ttu-id="94aa9-140">ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="94aa9-140">ASP.NET Core</span></span>](xref:tutorials/first-mvc-app/start-mvc)
+* [<span data-ttu-id="94aa9-141">驗證</span><span class="sxs-lookup"><span data-stu-id="94aa9-141">Authentication</span></span>](xref:security/authentication/identity)
+* [<span data-ttu-id="94aa9-142">帳戶確認和密碼復原</span><span class="sxs-lookup"><span data-stu-id="94aa9-142">Account Confirmation and Password Recovery</span></span>](xref:security/authentication/accconfirm)
+* [<span data-ttu-id="94aa9-143">授權</span><span class="sxs-lookup"><span data-stu-id="94aa9-143">Authorization</span></span>](xref:security/authorization/introduction)
+* [<span data-ttu-id="94aa9-144">Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="94aa9-144">Entity Framework Core</span></span>](xref:data/ef-mvc/intro)
 
-## <a name="the-starter-and-completed-app"></a><span data-ttu-id="068f6-145">Starter 和已完成的應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-145">The starter and completed app</span></span>
+## <a name="the-starter-and-completed-app"></a><span data-ttu-id="94aa9-145">Starter 和已完成的應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-145">The starter and completed app</span></span>
 
-<span data-ttu-id="068f6-146">[下載](xref:index#how-to-download-a-sample)[完成](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples)應用程式。</span><span class="sxs-lookup"><span data-stu-id="068f6-146">[Download](xref:index#how-to-download-a-sample) the [completed](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) app.</span></span> <span data-ttu-id="068f6-147">[測試](#test-the-completed-app)已完成的應用程式，讓您熟悉其安全性功能。</span><span class="sxs-lookup"><span data-stu-id="068f6-147">[Test](#test-the-completed-app) the completed app so you become familiar with its security features.</span></span>
+<span data-ttu-id="94aa9-146">[下載](xref:index#how-to-download-a-sample)[完成](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples)應用程式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-146">[Download](xref:index#how-to-download-a-sample) the [completed](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) app.</span></span> <span data-ttu-id="94aa9-147">[測試](#test-the-completed-app)已完成的應用程式，讓您熟悉其安全性功能。</span><span class="sxs-lookup"><span data-stu-id="94aa9-147">[Test](#test-the-completed-app) the completed app so you become familiar with its security features.</span></span>
 
-### <a name="the-starter-app"></a><span data-ttu-id="068f6-148">入門應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-148">The starter app</span></span>
+### <a name="the-starter-app"></a><span data-ttu-id="94aa9-148">入門應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-148">The starter app</span></span>
 
-<span data-ttu-id="068f6-149">[下載](xref:index#how-to-download-a-sample) [starter](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/)應用程式。</span><span class="sxs-lookup"><span data-stu-id="068f6-149">[Download](xref:index#how-to-download-a-sample) the [starter](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) app.</span></span>
+<span data-ttu-id="94aa9-149">[下載](xref:index#how-to-download-a-sample) [starter](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/)應用程式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-149">[Download](xref:index#how-to-download-a-sample) the [starter](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) app.</span></span>
 
-<span data-ttu-id="068f6-150">執行應用程式中，點選**ContactManager**連結，並確認您可以建立、 編輯和刪除連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-150">Run the app, tap the **ContactManager** link, and verify you can create, edit, and delete a contact.</span></span>
+<span data-ttu-id="94aa9-150">執行應用程式中，點選**ContactManager**連結，並確認您可以建立、 編輯和刪除連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-150">Run the app, tap the **ContactManager** link, and verify you can create, edit, and delete a contact.</span></span>
 
-## <a name="secure-user-data"></a><span data-ttu-id="068f6-151">保護使用者資料</span><span class="sxs-lookup"><span data-stu-id="068f6-151">Secure user data</span></span>
+## <a name="secure-user-data"></a><span data-ttu-id="94aa9-151">保護使用者資料</span><span class="sxs-lookup"><span data-stu-id="94aa9-151">Secure user data</span></span>
 
-<span data-ttu-id="068f6-152">下列各節會有所有主要的步驟，來建立安全的使用者資料的應用程式。</span><span class="sxs-lookup"><span data-stu-id="068f6-152">The following sections have all the major steps to create the secure user data app.</span></span> <span data-ttu-id="068f6-153">您可能會發現它已完成的專案參考很有幫助。</span><span class="sxs-lookup"><span data-stu-id="068f6-153">You may find it helpful to refer to the completed project.</span></span>
+<span data-ttu-id="94aa9-152">下列各節會有所有主要的步驟，來建立安全的使用者資料的應用程式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-152">The following sections have all the major steps to create the secure user data app.</span></span> <span data-ttu-id="94aa9-153">您可能會發現它已完成的專案參考很有幫助。</span><span class="sxs-lookup"><span data-stu-id="94aa9-153">You may find it helpful to refer to the completed project.</span></span>
 
-### <a name="tie-the-contact-data-to-the-user"></a><span data-ttu-id="068f6-154">將繫結至使用者的連絡人資料</span><span class="sxs-lookup"><span data-stu-id="068f6-154">Tie the contact data to the user</span></span>
+### <a name="tie-the-contact-data-to-the-user"></a><span data-ttu-id="94aa9-154">將繫結至使用者的連絡人資料</span><span class="sxs-lookup"><span data-stu-id="94aa9-154">Tie the contact data to the user</span></span>
 
-<span data-ttu-id="068f6-155">使用 ASP.NET[識別](xref:security/authentication/identity)使用者識別碼，以確保使用者可以編輯其資料，但不是其他使用者資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-155">Use the ASP.NET [Identity](xref:security/authentication/identity) user ID to ensure users can edit their data, but not other users data.</span></span> <span data-ttu-id="068f6-156">新增`OwnerID`並`ContactStatus`到`Contact`模型：</span><span class="sxs-lookup"><span data-stu-id="068f6-156">Add `OwnerID` and `ContactStatus` to the `Contact` model:</span></span>
+<span data-ttu-id="94aa9-155">使用 ASP.NET[識別](xref:security/authentication/identity)使用者識別碼，以確保使用者可以編輯其資料，但不是其他使用者資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-155">Use the ASP.NET [Identity](xref:security/authentication/identity) user ID to ensure users can edit their data, but not other users data.</span></span> <span data-ttu-id="94aa9-156">新增`OwnerID`並`ContactStatus`到`Contact`模型：</span><span class="sxs-lookup"><span data-stu-id="94aa9-156">Add `OwnerID` and `ContactStatus` to the `Contact` model:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
-<span data-ttu-id="068f6-157">`OwnerID` 是來自使用者的識別碼`AspNetUser`資料表中[身分識別](xref:security/authentication/identity)資料庫。</span><span class="sxs-lookup"><span data-stu-id="068f6-157">`OwnerID` is the user's ID from the `AspNetUser` table in the [Identity](xref:security/authentication/identity) database.</span></span> <span data-ttu-id="068f6-158">`Status`欄位可讓您判斷是否可供一般使用者檢視連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-158">The `Status` field determines if a contact is viewable by general users.</span></span>
+<span data-ttu-id="94aa9-157">`OwnerID` 是來自使用者的識別碼`AspNetUser`資料表中[身分識別](xref:security/authentication/identity)資料庫。</span><span class="sxs-lookup"><span data-stu-id="94aa9-157">`OwnerID` is the user's ID from the `AspNetUser` table in the [Identity](xref:security/authentication/identity) database.</span></span> <span data-ttu-id="94aa9-158">`Status`欄位可讓您判斷是否可供一般使用者檢視連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-158">The `Status` field determines if a contact is viewable by general users.</span></span>
 
-<span data-ttu-id="068f6-159">建立新的移轉，並更新資料庫：</span><span class="sxs-lookup"><span data-stu-id="068f6-159">Create a new migration and update the database:</span></span>
+<span data-ttu-id="94aa9-159">建立新的移轉，並更新資料庫：</span><span class="sxs-lookup"><span data-stu-id="94aa9-159">Create a new migration and update the database:</span></span>
 
-```console
+```dotnetcli
 dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-identity"></a><span data-ttu-id="068f6-160">將角色服務新增到 身分識別</span><span class="sxs-lookup"><span data-stu-id="068f6-160">Add Role services to Identity</span></span>
+### <a name="add-role-services-to-identity"></a><span data-ttu-id="94aa9-160">將角色服務新增到 身分識別</span><span class="sxs-lookup"><span data-stu-id="94aa9-160">Add Role services to Identity</span></span>
 
-<span data-ttu-id="068f6-161">附加[AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1)來新增角色服務：</span><span class="sxs-lookup"><span data-stu-id="068f6-161">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) to add Role services:</span></span>
+<span data-ttu-id="94aa9-161">附加[AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1)來新增角色服務：</span><span class="sxs-lookup"><span data-stu-id="94aa9-161">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) to add Role services:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet2&highlight=9)]
 
-### <a name="require-authenticated-users"></a><span data-ttu-id="068f6-162">需要已驗證的使用者</span><span class="sxs-lookup"><span data-stu-id="068f6-162">Require authenticated users</span></span>
+### <a name="require-authenticated-users"></a><span data-ttu-id="94aa9-162">需要已驗證的使用者</span><span class="sxs-lookup"><span data-stu-id="94aa9-162">Require authenticated users</span></span>
 
-<span data-ttu-id="068f6-163">設定預設的驗證原則，以要求使用者進行驗證：</span><span class="sxs-lookup"><span data-stu-id="068f6-163">Set the default authentication policy to require users to be authenticated:</span></span>
+<span data-ttu-id="94aa9-163">設定預設的驗證原則，以要求使用者進行驗證：</span><span class="sxs-lookup"><span data-stu-id="94aa9-163">Set the default authentication policy to require users to be authenticated:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=15-99)] 
 
- <span data-ttu-id="068f6-164">您可以選擇退出的 Razor 頁面、 控制器或動作方法層級的驗證`[AllowAnonymous]`屬性。</span><span class="sxs-lookup"><span data-stu-id="068f6-164">You can opt out of authentication at the Razor Page, controller, or action method level with the `[AllowAnonymous]` attribute.</span></span> <span data-ttu-id="068f6-165">設定預設的驗證原則，以要求使用者進行驗證，可保護新加入的 Razor 頁面和控制站。</span><span class="sxs-lookup"><span data-stu-id="068f6-165">Setting the default authentication policy to require users to be authenticated protects newly added Razor Pages and controllers.</span></span> <span data-ttu-id="068f6-166">具有預設值所需的驗證會比依賴新的控制器和 Razor 頁面，以包含更安全`[Authorize]`屬性。</span><span class="sxs-lookup"><span data-stu-id="068f6-166">Having authentication required by default is more secure than relying on new controllers and Razor Pages to include the `[Authorize]` attribute.</span></span>
+ <span data-ttu-id="94aa9-164">您可以選擇退出的 Razor 頁面、 控制器或動作方法層級的驗證`[AllowAnonymous]`屬性。</span><span class="sxs-lookup"><span data-stu-id="94aa9-164">You can opt out of authentication at the Razor Page, controller, or action method level with the `[AllowAnonymous]` attribute.</span></span> <span data-ttu-id="94aa9-165">設定預設的驗證原則，以要求使用者進行驗證，可保護新加入的 Razor 頁面和控制站。</span><span class="sxs-lookup"><span data-stu-id="94aa9-165">Setting the default authentication policy to require users to be authenticated protects newly added Razor Pages and controllers.</span></span> <span data-ttu-id="94aa9-166">具有預設值所需的驗證會比依賴新的控制器和 Razor 頁面，以包含更安全`[Authorize]`屬性。</span><span class="sxs-lookup"><span data-stu-id="94aa9-166">Having authentication required by default is more secure than relying on new controllers and Razor Pages to include the `[Authorize]` attribute.</span></span>
 
-<span data-ttu-id="068f6-167">將[AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute)新增至 [索引] 和 [隱私權] 頁面，讓匿名使用者可以在註冊之前取得網站的相關資訊。</span><span class="sxs-lookup"><span data-stu-id="068f6-167">Add [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) to the Index and Privacy pages so anonymous users can get information about the site before they register.</span></span>
+<span data-ttu-id="94aa9-167">將[AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute)新增至 [索引] 和 [隱私權] 頁面，讓匿名使用者可以在註冊之前取得網站的相關資訊。</span><span class="sxs-lookup"><span data-stu-id="94aa9-167">Add [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) to the Index and Privacy pages so anonymous users can get information about the site before they register.</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Index.cshtml.cs?highlight=1,7)]
 
-### <a name="configure-the-test-account"></a><span data-ttu-id="068f6-168">設定測試帳戶</span><span class="sxs-lookup"><span data-stu-id="068f6-168">Configure the test account</span></span>
+### <a name="configure-the-test-account"></a><span data-ttu-id="94aa9-168">設定測試帳戶</span><span class="sxs-lookup"><span data-stu-id="94aa9-168">Configure the test account</span></span>
 
-<span data-ttu-id="068f6-169">`SeedData`類別會建立兩個帳戶： 系統管理員和管理員。</span><span class="sxs-lookup"><span data-stu-id="068f6-169">The `SeedData` class creates two accounts: administrator and manager.</span></span> <span data-ttu-id="068f6-170">使用[Secret Manager 工具](xref:security/app-secrets)設定這些帳戶的密碼。</span><span class="sxs-lookup"><span data-stu-id="068f6-170">Use the [Secret Manager tool](xref:security/app-secrets) to set a password for these accounts.</span></span> <span data-ttu-id="068f6-171">設定密碼，從專案目錄 (目錄包含*Program.cs*):</span><span class="sxs-lookup"><span data-stu-id="068f6-171">Set the password from the project directory (the directory containing *Program.cs*):</span></span>
+<span data-ttu-id="94aa9-169">`SeedData`類別會建立兩個帳戶： 系統管理員和管理員。</span><span class="sxs-lookup"><span data-stu-id="94aa9-169">The `SeedData` class creates two accounts: administrator and manager.</span></span> <span data-ttu-id="94aa9-170">使用[Secret Manager 工具](xref:security/app-secrets)設定這些帳戶的密碼。</span><span class="sxs-lookup"><span data-stu-id="94aa9-170">Use the [Secret Manager tool](xref:security/app-secrets) to set a password for these accounts.</span></span> <span data-ttu-id="94aa9-171">設定密碼，從專案目錄 (目錄包含*Program.cs*):</span><span class="sxs-lookup"><span data-stu-id="94aa9-171">Set the password from the project directory (the directory containing *Program.cs*):</span></span>
 
-```console
+```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
 ```
 
-<span data-ttu-id="068f6-172">如果未指定強式密碼，則會擲回例外狀況時`SeedData.Initialize`呼叫。</span><span class="sxs-lookup"><span data-stu-id="068f6-172">If a strong password is not specified, an exception is thrown when `SeedData.Initialize` is called.</span></span>
+<span data-ttu-id="94aa9-172">如果未指定強式密碼，則會擲回例外狀況時`SeedData.Initialize`呼叫。</span><span class="sxs-lookup"><span data-stu-id="94aa9-172">If a strong password is not specified, an exception is thrown when `SeedData.Initialize` is called.</span></span>
 
-<span data-ttu-id="068f6-173">更新`Main`使用測試密碼：</span><span class="sxs-lookup"><span data-stu-id="068f6-173">Update `Main` to use the test password:</span></span>
+<span data-ttu-id="94aa9-173">更新`Main`使用測試密碼：</span><span class="sxs-lookup"><span data-stu-id="94aa9-173">Update `Main` to use the test password:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Program.cs?name=snippet)]
 
-### <a name="create-the-test-accounts-and-update-the-contacts"></a><span data-ttu-id="068f6-174">建立測試帳戶和更新連絡人</span><span class="sxs-lookup"><span data-stu-id="068f6-174">Create the test accounts and update the contacts</span></span>
+### <a name="create-the-test-accounts-and-update-the-contacts"></a><span data-ttu-id="94aa9-174">建立測試帳戶和更新連絡人</span><span class="sxs-lookup"><span data-stu-id="94aa9-174">Create the test accounts and update the contacts</span></span>
 
-<span data-ttu-id="068f6-175">更新`Initialize`方法中的`SeedData`類別來建立測試帳戶：</span><span class="sxs-lookup"><span data-stu-id="068f6-175">Update the `Initialize` method in the `SeedData` class to create the test accounts:</span></span>
+<span data-ttu-id="94aa9-175">更新`Initialize`方法中的`SeedData`類別來建立測試帳戶：</span><span class="sxs-lookup"><span data-stu-id="94aa9-175">Update the `Initialize` method in the `SeedData` class to create the test accounts:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Data/SeedData.cs?name=snippet_Initialize)]
 
-<span data-ttu-id="068f6-176">新增系統管理員使用者識別碼和`ContactStatus`連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-176">Add the administrator user ID and `ContactStatus` to the contacts.</span></span> <span data-ttu-id="068f6-177">讓其中一個 「 連絡人 」 已提交 」 和一個 「 已拒絕 」。</span><span class="sxs-lookup"><span data-stu-id="068f6-177">Make one of the contacts "Submitted" and one "Rejected".</span></span> <span data-ttu-id="068f6-178">加入所有連絡人的使用者識別碼和狀態。</span><span class="sxs-lookup"><span data-stu-id="068f6-178">Add the user ID and status to all the contacts.</span></span> <span data-ttu-id="068f6-179">只有一個連絡人所示：</span><span class="sxs-lookup"><span data-stu-id="068f6-179">Only one contact is shown:</span></span>
+<span data-ttu-id="94aa9-176">新增系統管理員使用者識別碼和`ContactStatus`連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-176">Add the administrator user ID and `ContactStatus` to the contacts.</span></span> <span data-ttu-id="94aa9-177">讓其中一個 「 連絡人 」 已提交 」 和一個 「 已拒絕 」。</span><span class="sxs-lookup"><span data-stu-id="94aa9-177">Make one of the contacts "Submitted" and one "Rejected".</span></span> <span data-ttu-id="94aa9-178">加入所有連絡人的使用者識別碼和狀態。</span><span class="sxs-lookup"><span data-stu-id="94aa9-178">Add the user ID and status to all the contacts.</span></span> <span data-ttu-id="94aa9-179">只有一個連絡人所示：</span><span class="sxs-lookup"><span data-stu-id="94aa9-179">Only one contact is shown:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Data/SeedData.cs?name=snippet1&highlight=17,18)]
 
-## <a name="create-owner-manager-and-administrator-authorization-handlers"></a><span data-ttu-id="068f6-180">建立擁有者 」、 「 管理員 」 和 「 系統管理員授權的處理常式</span><span class="sxs-lookup"><span data-stu-id="068f6-180">Create owner, manager, and administrator authorization handlers</span></span>
+## <a name="create-owner-manager-and-administrator-authorization-handlers"></a><span data-ttu-id="94aa9-180">建立擁有者 」、 「 管理員 」 和 「 系統管理員授權的處理常式</span><span class="sxs-lookup"><span data-stu-id="94aa9-180">Create owner, manager, and administrator authorization handlers</span></span>
 
-<span data-ttu-id="068f6-181">建立`ContactIsOwnerAuthorizationHandler`類別內*授權*資料夾。</span><span class="sxs-lookup"><span data-stu-id="068f6-181">Create a `ContactIsOwnerAuthorizationHandler` class in the *Authorization* folder.</span></span> <span data-ttu-id="068f6-182">`ContactIsOwnerAuthorizationHandler`確認處理資源的使用者擁有的資源。</span><span class="sxs-lookup"><span data-stu-id="068f6-182">The `ContactIsOwnerAuthorizationHandler` verifies that the user acting on a resource owns the resource.</span></span>
+<span data-ttu-id="94aa9-181">建立`ContactIsOwnerAuthorizationHandler`類別內*授權*資料夾。</span><span class="sxs-lookup"><span data-stu-id="94aa9-181">Create a `ContactIsOwnerAuthorizationHandler` class in the *Authorization* folder.</span></span> <span data-ttu-id="94aa9-182">`ContactIsOwnerAuthorizationHandler`確認處理資源的使用者擁有的資源。</span><span class="sxs-lookup"><span data-stu-id="94aa9-182">The `ContactIsOwnerAuthorizationHandler` verifies that the user acting on a resource owns the resource.</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Authorization/ContactIsOwnerAuthorizationHandler.cs)]
 
-<span data-ttu-id="068f6-183">`ContactIsOwnerAuthorizationHandler`呼叫[內容。成功](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_)目前已驗證的使用者是否連絡擁有者。</span><span class="sxs-lookup"><span data-stu-id="068f6-183">The `ContactIsOwnerAuthorizationHandler` calls [context.Succeed](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) if the current authenticated user is the contact owner.</span></span> <span data-ttu-id="068f6-184">授權的處理常式通常：</span><span class="sxs-lookup"><span data-stu-id="068f6-184">Authorization handlers generally:</span></span>
+<span data-ttu-id="94aa9-183">`ContactIsOwnerAuthorizationHandler`呼叫[內容。成功](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_)目前已驗證的使用者是否連絡擁有者。</span><span class="sxs-lookup"><span data-stu-id="94aa9-183">The `ContactIsOwnerAuthorizationHandler` calls [context.Succeed](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) if the current authenticated user is the contact owner.</span></span> <span data-ttu-id="94aa9-184">授權的處理常式通常：</span><span class="sxs-lookup"><span data-stu-id="94aa9-184">Authorization handlers generally:</span></span>
 
-* <span data-ttu-id="068f6-185">傳回`context.Succeed`時符合的需求。</span><span class="sxs-lookup"><span data-stu-id="068f6-185">Return `context.Succeed` when the requirements are met.</span></span>
-* <span data-ttu-id="068f6-186">傳回`Task.CompletedTask`時不符合需求。</span><span class="sxs-lookup"><span data-stu-id="068f6-186">Return `Task.CompletedTask` when requirements aren't met.</span></span> <span data-ttu-id="068f6-187">`Task.CompletedTask`不是成功或失敗&mdash;，它允許其他授權處理常式執行。</span><span class="sxs-lookup"><span data-stu-id="068f6-187">`Task.CompletedTask` is not success or failure&mdash;it allows other authorization handlers to run.</span></span>
+* <span data-ttu-id="94aa9-185">傳回`context.Succeed`時符合的需求。</span><span class="sxs-lookup"><span data-stu-id="94aa9-185">Return `context.Succeed` when the requirements are met.</span></span>
+* <span data-ttu-id="94aa9-186">傳回`Task.CompletedTask`時不符合需求。</span><span class="sxs-lookup"><span data-stu-id="94aa9-186">Return `Task.CompletedTask` when requirements aren't met.</span></span> <span data-ttu-id="94aa9-187">`Task.CompletedTask`不是成功或失敗&mdash;，它允許其他授權處理常式執行。</span><span class="sxs-lookup"><span data-stu-id="94aa9-187">`Task.CompletedTask` is not success or failure&mdash;it allows other authorization handlers to run.</span></span>
 
-<span data-ttu-id="068f6-188">如果您需要明確地使失敗，傳回[內容。失敗](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail)。</span><span class="sxs-lookup"><span data-stu-id="068f6-188">If you need to explicitly fail, return [context.Fail](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).</span></span>
+<span data-ttu-id="94aa9-188">如果您需要明確地使失敗，傳回[內容。失敗](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-188">If you need to explicitly fail, return [context.Fail](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).</span></span>
 
-<span data-ttu-id="068f6-189">此應用程式會允許連絡人的擁有者可以編輯/刪除/建立自己的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-189">The app allows contact owners to edit/delete/create their own data.</span></span> <span data-ttu-id="068f6-190">`ContactIsOwnerAuthorizationHandler` 不需要檢查傳入的要求參數的作業。</span><span class="sxs-lookup"><span data-stu-id="068f6-190">`ContactIsOwnerAuthorizationHandler` doesn't need to check the operation passed in the requirement parameter.</span></span>
+<span data-ttu-id="94aa9-189">此應用程式會允許連絡人的擁有者可以編輯/刪除/建立自己的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-189">The app allows contact owners to edit/delete/create their own data.</span></span> <span data-ttu-id="94aa9-190">`ContactIsOwnerAuthorizationHandler` 不需要檢查傳入的要求參數的作業。</span><span class="sxs-lookup"><span data-stu-id="94aa9-190">`ContactIsOwnerAuthorizationHandler` doesn't need to check the operation passed in the requirement parameter.</span></span>
 
-### <a name="create-a-manager-authorization-handler"></a><span data-ttu-id="068f6-191">建立管理員授權的處理常式</span><span class="sxs-lookup"><span data-stu-id="068f6-191">Create a manager authorization handler</span></span>
+### <a name="create-a-manager-authorization-handler"></a><span data-ttu-id="94aa9-191">建立管理員授權的處理常式</span><span class="sxs-lookup"><span data-stu-id="94aa9-191">Create a manager authorization handler</span></span>
 
-<span data-ttu-id="068f6-192">建立`ContactManagerAuthorizationHandler`類別內*授權*資料夾。</span><span class="sxs-lookup"><span data-stu-id="068f6-192">Create a `ContactManagerAuthorizationHandler` class in the *Authorization* folder.</span></span> <span data-ttu-id="068f6-193">`ContactManagerAuthorizationHandler`確認處理資源的使用者是管理員。</span><span class="sxs-lookup"><span data-stu-id="068f6-193">The `ContactManagerAuthorizationHandler` verifies the user acting on the resource is a manager.</span></span> <span data-ttu-id="068f6-194">只有經理可以核准或拒絕內容變更 （新增或變更）。</span><span class="sxs-lookup"><span data-stu-id="068f6-194">Only managers can approve or reject content changes (new or changed).</span></span>
+<span data-ttu-id="94aa9-192">建立`ContactManagerAuthorizationHandler`類別內*授權*資料夾。</span><span class="sxs-lookup"><span data-stu-id="94aa9-192">Create a `ContactManagerAuthorizationHandler` class in the *Authorization* folder.</span></span> <span data-ttu-id="94aa9-193">`ContactManagerAuthorizationHandler`確認處理資源的使用者是管理員。</span><span class="sxs-lookup"><span data-stu-id="94aa9-193">The `ContactManagerAuthorizationHandler` verifies the user acting on the resource is a manager.</span></span> <span data-ttu-id="94aa9-194">只有經理可以核准或拒絕內容變更 （新增或變更）。</span><span class="sxs-lookup"><span data-stu-id="94aa9-194">Only managers can approve or reject content changes (new or changed).</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Authorization/ContactManagerAuthorizationHandler.cs)]
 
-### <a name="create-an-administrator-authorization-handler"></a><span data-ttu-id="068f6-195">建立系統管理員授權處理常式</span><span class="sxs-lookup"><span data-stu-id="068f6-195">Create an administrator authorization handler</span></span>
+### <a name="create-an-administrator-authorization-handler"></a><span data-ttu-id="94aa9-195">建立系統管理員授權處理常式</span><span class="sxs-lookup"><span data-stu-id="94aa9-195">Create an administrator authorization handler</span></span>
 
-<span data-ttu-id="068f6-196">建立`ContactAdministratorsAuthorizationHandler`類別內*授權*資料夾。</span><span class="sxs-lookup"><span data-stu-id="068f6-196">Create a `ContactAdministratorsAuthorizationHandler` class in the *Authorization* folder.</span></span> <span data-ttu-id="068f6-197">`ContactAdministratorsAuthorizationHandler`確認處理資源的使用者是系統管理員。</span><span class="sxs-lookup"><span data-stu-id="068f6-197">The `ContactAdministratorsAuthorizationHandler` verifies the user acting on the resource is an administrator.</span></span> <span data-ttu-id="068f6-198">系統管理員可以執行所有作業。</span><span class="sxs-lookup"><span data-stu-id="068f6-198">Administrator can do all operations.</span></span>
+<span data-ttu-id="94aa9-196">建立`ContactAdministratorsAuthorizationHandler`類別內*授權*資料夾。</span><span class="sxs-lookup"><span data-stu-id="94aa9-196">Create a `ContactAdministratorsAuthorizationHandler` class in the *Authorization* folder.</span></span> <span data-ttu-id="94aa9-197">`ContactAdministratorsAuthorizationHandler`確認處理資源的使用者是系統管理員。</span><span class="sxs-lookup"><span data-stu-id="94aa9-197">The `ContactAdministratorsAuthorizationHandler` verifies the user acting on the resource is an administrator.</span></span> <span data-ttu-id="94aa9-198">系統管理員可以執行所有作業。</span><span class="sxs-lookup"><span data-stu-id="94aa9-198">Administrator can do all operations.</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Authorization/ContactAdministratorsAuthorizationHandler.cs)]
 
-## <a name="register-the-authorization-handlers"></a><span data-ttu-id="068f6-199">註冊授權處理常式</span><span class="sxs-lookup"><span data-stu-id="068f6-199">Register the authorization handlers</span></span>
+## <a name="register-the-authorization-handlers"></a><span data-ttu-id="94aa9-199">註冊授權處理常式</span><span class="sxs-lookup"><span data-stu-id="94aa9-199">Register the authorization handlers</span></span>
 
-<span data-ttu-id="068f6-200">您必須針對註冊服務使用 Entity Framework Core[相依性插入](xref:fundamentals/dependency-injection)使用[AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)。</span><span class="sxs-lookup"><span data-stu-id="068f6-200">Services using Entity Framework Core must be registered for [dependency injection](xref:fundamentals/dependency-injection) using [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions).</span></span> <span data-ttu-id="068f6-201">`ContactIsOwnerAuthorizationHandler`會使用 ASP.NET Core[身分識別](xref:security/authentication/identity)，這根據 Entity Framework Core。</span><span class="sxs-lookup"><span data-stu-id="068f6-201">The `ContactIsOwnerAuthorizationHandler` uses ASP.NET Core [Identity](xref:security/authentication/identity), which is built on Entity Framework Core.</span></span> <span data-ttu-id="068f6-202">註冊處理常式的服務集合，讓它們能夠`ContactsController`經由[相依性插入](xref:fundamentals/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="068f6-202">Register the handlers with the service collection so they're available to the `ContactsController` through [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="068f6-203">將下列程式碼新增至結尾`ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="068f6-203">Add the following code to the end of `ConfigureServices`:</span></span>
+<span data-ttu-id="94aa9-200">您必須針對註冊服務使用 Entity Framework Core[相依性插入](xref:fundamentals/dependency-injection)使用[AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-200">Services using Entity Framework Core must be registered for [dependency injection](xref:fundamentals/dependency-injection) using [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions).</span></span> <span data-ttu-id="94aa9-201">`ContactIsOwnerAuthorizationHandler`會使用 ASP.NET Core[身分識別](xref:security/authentication/identity)，這根據 Entity Framework Core。</span><span class="sxs-lookup"><span data-stu-id="94aa9-201">The `ContactIsOwnerAuthorizationHandler` uses ASP.NET Core [Identity](xref:security/authentication/identity), which is built on Entity Framework Core.</span></span> <span data-ttu-id="94aa9-202">註冊處理常式的服務集合，讓它們能夠`ContactsController`經由[相依性插入](xref:fundamentals/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-202">Register the handlers with the service collection so they're available to the `ContactsController` through [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="94aa9-203">將下列程式碼新增至結尾`ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="94aa9-203">Add the following code to the end of `ConfigureServices`:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet_defaultPolicy&highlight=23-99)]
 
-<span data-ttu-id="068f6-204">`ContactAdministratorsAuthorizationHandler` 和`ContactManagerAuthorizationHandler`會新增為單一子句。</span><span class="sxs-lookup"><span data-stu-id="068f6-204">`ContactAdministratorsAuthorizationHandler` and `ContactManagerAuthorizationHandler` are added as singletons.</span></span> <span data-ttu-id="068f6-205">它們是單次個體，因為他們不使用 EF 和所需的所有資訊都都`Context`參數`HandleRequirementAsync`方法。</span><span class="sxs-lookup"><span data-stu-id="068f6-205">They're singletons because they don't use EF and all the information needed is in the `Context` parameter of the `HandleRequirementAsync` method.</span></span>
+<span data-ttu-id="94aa9-204">`ContactAdministratorsAuthorizationHandler` 和`ContactManagerAuthorizationHandler`會新增為單一子句。</span><span class="sxs-lookup"><span data-stu-id="94aa9-204">`ContactAdministratorsAuthorizationHandler` and `ContactManagerAuthorizationHandler` are added as singletons.</span></span> <span data-ttu-id="94aa9-205">它們是單次個體，因為他們不使用 EF 和所需的所有資訊都都`Context`參數`HandleRequirementAsync`方法。</span><span class="sxs-lookup"><span data-stu-id="94aa9-205">They're singletons because they don't use EF and all the information needed is in the `Context` parameter of the `HandleRequirementAsync` method.</span></span>
 
-## <a name="support-authorization"></a><span data-ttu-id="068f6-206">支援的授權</span><span class="sxs-lookup"><span data-stu-id="068f6-206">Support authorization</span></span>
+## <a name="support-authorization"></a><span data-ttu-id="94aa9-206">支援的授權</span><span class="sxs-lookup"><span data-stu-id="94aa9-206">Support authorization</span></span>
 
-<span data-ttu-id="068f6-207">在本節中，您可以更新 Razor 頁面，並新增的運算需求類別。</span><span class="sxs-lookup"><span data-stu-id="068f6-207">In this section, you update the Razor Pages and add an operations requirements class.</span></span>
+<span data-ttu-id="94aa9-207">在本節中，您可以更新 Razor 頁面，並新增的運算需求類別。</span><span class="sxs-lookup"><span data-stu-id="94aa9-207">In this section, you update the Razor Pages and add an operations requirements class.</span></span>
 
-### <a name="review-the-contact-operations-requirements-class"></a><span data-ttu-id="068f6-208">檢閱此連絡人的作業需求類別</span><span class="sxs-lookup"><span data-stu-id="068f6-208">Review the contact operations requirements class</span></span>
+### <a name="review-the-contact-operations-requirements-class"></a><span data-ttu-id="94aa9-208">檢閱此連絡人的作業需求類別</span><span class="sxs-lookup"><span data-stu-id="94aa9-208">Review the contact operations requirements class</span></span>
 
-<span data-ttu-id="068f6-209">檢閱`ContactOperations`類別。</span><span class="sxs-lookup"><span data-stu-id="068f6-209">Review the `ContactOperations` class.</span></span> <span data-ttu-id="068f6-210">這個類別包含的需求，應用程式支援：</span><span class="sxs-lookup"><span data-stu-id="068f6-210">This class contains the requirements the app supports:</span></span>
+<span data-ttu-id="94aa9-209">檢閱`ContactOperations`類別。</span><span class="sxs-lookup"><span data-stu-id="94aa9-209">Review the `ContactOperations` class.</span></span> <span data-ttu-id="94aa9-210">這個類別包含的需求，應用程式支援：</span><span class="sxs-lookup"><span data-stu-id="94aa9-210">This class contains the requirements the app supports:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-razor-pages"></a><span data-ttu-id="068f6-211">建立連絡人 Razor 頁面的基底類別</span><span class="sxs-lookup"><span data-stu-id="068f6-211">Create a base class for the Contacts Razor Pages</span></span>
+### <a name="create-a-base-class-for-the-contacts-razor-pages"></a><span data-ttu-id="94aa9-211">建立連絡人 Razor 頁面的基底類別</span><span class="sxs-lookup"><span data-stu-id="94aa9-211">Create a base class for the Contacts Razor Pages</span></span>
 
-<span data-ttu-id="068f6-212">建立基底類別，其中包含連絡人 Razor 頁面中使用的服務。</span><span class="sxs-lookup"><span data-stu-id="068f6-212">Create a base class that contains the services used in the contacts Razor Pages.</span></span> <span data-ttu-id="068f6-213">基底類別會將初始化程式碼置於一個位置：</span><span class="sxs-lookup"><span data-stu-id="068f6-213">The base class puts the initialization code in one location:</span></span>
+<span data-ttu-id="94aa9-212">建立基底類別，其中包含連絡人 Razor 頁面中使用的服務。</span><span class="sxs-lookup"><span data-stu-id="94aa9-212">Create a base class that contains the services used in the contacts Razor Pages.</span></span> <span data-ttu-id="94aa9-213">基底類別會將初始化程式碼置於一個位置：</span><span class="sxs-lookup"><span data-stu-id="94aa9-213">The base class puts the initialization code in one location:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/DI_BasePageModel.cs)]
 
-<span data-ttu-id="068f6-214">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="068f6-214">The preceding code:</span></span>
+<span data-ttu-id="94aa9-214">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="94aa9-214">The preceding code:</span></span>
 
-* <span data-ttu-id="068f6-215">新增`IAuthorizationService`服務存取授權的處理常式。</span><span class="sxs-lookup"><span data-stu-id="068f6-215">Adds the `IAuthorizationService` service to access to the authorization handlers.</span></span>
-* <span data-ttu-id="068f6-216">將身分識別新增`UserManager`服務。</span><span class="sxs-lookup"><span data-stu-id="068f6-216">Adds the Identity `UserManager` service.</span></span>
-* <span data-ttu-id="068f6-217">加入 `ApplicationDbContext`。</span><span class="sxs-lookup"><span data-stu-id="068f6-217">Add the `ApplicationDbContext`.</span></span>
+* <span data-ttu-id="94aa9-215">新增`IAuthorizationService`服務存取授權的處理常式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-215">Adds the `IAuthorizationService` service to access to the authorization handlers.</span></span>
+* <span data-ttu-id="94aa9-216">將身分識別新增`UserManager`服務。</span><span class="sxs-lookup"><span data-stu-id="94aa9-216">Adds the Identity `UserManager` service.</span></span>
+* <span data-ttu-id="94aa9-217">加入 `ApplicationDbContext`。</span><span class="sxs-lookup"><span data-stu-id="94aa9-217">Add the `ApplicationDbContext`.</span></span>
 
-### <a name="update-the-createmodel"></a><span data-ttu-id="068f6-218">更新 CreateModel</span><span class="sxs-lookup"><span data-stu-id="068f6-218">Update the CreateModel</span></span>
+### <a name="update-the-createmodel"></a><span data-ttu-id="94aa9-218">更新 CreateModel</span><span class="sxs-lookup"><span data-stu-id="94aa9-218">Update the CreateModel</span></span>
 
-<span data-ttu-id="068f6-219">更新 [建立] 頁面模型建構函式使用`DI_BasePageModel`基底類別：</span><span class="sxs-lookup"><span data-stu-id="068f6-219">Update the create page model constructor to use the `DI_BasePageModel` base class:</span></span>
+<span data-ttu-id="94aa9-219">更新 [建立] 頁面模型建構函式使用`DI_BasePageModel`基底類別：</span><span class="sxs-lookup"><span data-stu-id="94aa9-219">Update the create page model constructor to use the `DI_BasePageModel` base class:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/Create.cshtml.cs?name=snippetCtor)]
 
-<span data-ttu-id="068f6-220">更新`CreateModel.OnPostAsync`方法：</span><span class="sxs-lookup"><span data-stu-id="068f6-220">Update the `CreateModel.OnPostAsync` method to:</span></span>
+<span data-ttu-id="94aa9-220">更新`CreateModel.OnPostAsync`方法：</span><span class="sxs-lookup"><span data-stu-id="94aa9-220">Update the `CreateModel.OnPostAsync` method to:</span></span>
 
-* <span data-ttu-id="068f6-221">新增的使用者識別碼`Contact`模型。</span><span class="sxs-lookup"><span data-stu-id="068f6-221">Add the user ID to the `Contact` model.</span></span>
-* <span data-ttu-id="068f6-222">呼叫授權處理常式，以確定使用者有權限來建立連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-222">Call the authorization handler to verify the user has permission to create contacts.</span></span>
+* <span data-ttu-id="94aa9-221">新增的使用者識別碼`Contact`模型。</span><span class="sxs-lookup"><span data-stu-id="94aa9-221">Add the user ID to the `Contact` model.</span></span>
+* <span data-ttu-id="94aa9-222">呼叫授權處理常式，以確定使用者有權限來建立連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-222">Call the authorization handler to verify the user has permission to create contacts.</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/Create.cshtml.cs?name=snippet_Create)]
 
-### <a name="update-the-indexmodel"></a><span data-ttu-id="068f6-223">更新 IndexModel</span><span class="sxs-lookup"><span data-stu-id="068f6-223">Update the IndexModel</span></span>
+### <a name="update-the-indexmodel"></a><span data-ttu-id="94aa9-223">更新 IndexModel</span><span class="sxs-lookup"><span data-stu-id="94aa9-223">Update the IndexModel</span></span>
 
-<span data-ttu-id="068f6-224">更新`OnGetAsync`方法，讓只有核准的連絡人會向一般使用者顯示：</span><span class="sxs-lookup"><span data-stu-id="068f6-224">Update the `OnGetAsync` method so only approved contacts are shown to general users:</span></span>
+<span data-ttu-id="94aa9-224">更新`OnGetAsync`方法，讓只有核准的連絡人會向一般使用者顯示：</span><span class="sxs-lookup"><span data-stu-id="94aa9-224">Update the `OnGetAsync` method so only approved contacts are shown to general users:</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/Index.cshtml.cs?name=snippet)]
 
-### <a name="update-the-editmodel"></a><span data-ttu-id="068f6-225">更新 EditModel</span><span class="sxs-lookup"><span data-stu-id="068f6-225">Update the EditModel</span></span>
+### <a name="update-the-editmodel"></a><span data-ttu-id="94aa9-225">更新 EditModel</span><span class="sxs-lookup"><span data-stu-id="94aa9-225">Update the EditModel</span></span>
 
-<span data-ttu-id="068f6-226">新增授權處理常式，以確認該使用者所擁有的連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-226">Add an authorization handler to verify the user owns the contact.</span></span> <span data-ttu-id="068f6-227">正在驗證資源的授權，因為`[Authorize]`屬性還不夠。</span><span class="sxs-lookup"><span data-stu-id="068f6-227">Because resource authorization is being validated, the `[Authorize]` attribute is not enough.</span></span> <span data-ttu-id="068f6-228">要在評估屬性時，應用程式就不需要資源的存取權。</span><span class="sxs-lookup"><span data-stu-id="068f6-228">The app doesn't have access to the resource when attributes are evaluated.</span></span> <span data-ttu-id="068f6-229">資源為基礎的授權必須是必要的。</span><span class="sxs-lookup"><span data-stu-id="068f6-229">Resource-based authorization must be imperative.</span></span> <span data-ttu-id="068f6-230">一旦應用程式存取的資源中，載入頁面模型中，或載入處理常式本身內，則必須執行檢查。</span><span class="sxs-lookup"><span data-stu-id="068f6-230">Checks must be performed once the app has access to the resource, either by loading it in the page model or by loading it within the handler itself.</span></span> <span data-ttu-id="068f6-231">您經常存取的資源，藉由傳入的資源索引鍵。</span><span class="sxs-lookup"><span data-stu-id="068f6-231">You frequently access the resource by passing in the resource key.</span></span>
+<span data-ttu-id="94aa9-226">新增授權處理常式，以確認該使用者所擁有的連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-226">Add an authorization handler to verify the user owns the contact.</span></span> <span data-ttu-id="94aa9-227">正在驗證資源的授權，因為`[Authorize]`屬性還不夠。</span><span class="sxs-lookup"><span data-stu-id="94aa9-227">Because resource authorization is being validated, the `[Authorize]` attribute is not enough.</span></span> <span data-ttu-id="94aa9-228">要在評估屬性時，應用程式就不需要資源的存取權。</span><span class="sxs-lookup"><span data-stu-id="94aa9-228">The app doesn't have access to the resource when attributes are evaluated.</span></span> <span data-ttu-id="94aa9-229">資源為基礎的授權必須是必要的。</span><span class="sxs-lookup"><span data-stu-id="94aa9-229">Resource-based authorization must be imperative.</span></span> <span data-ttu-id="94aa9-230">一旦應用程式存取的資源中，載入頁面模型中，或載入處理常式本身內，則必須執行檢查。</span><span class="sxs-lookup"><span data-stu-id="94aa9-230">Checks must be performed once the app has access to the resource, either by loading it in the page model or by loading it within the handler itself.</span></span> <span data-ttu-id="94aa9-231">您經常存取的資源，藉由傳入的資源索引鍵。</span><span class="sxs-lookup"><span data-stu-id="94aa9-231">You frequently access the resource by passing in the resource key.</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/Edit.cshtml.cs?name=snippet)]
 
-### <a name="update-the-deletemodel"></a><span data-ttu-id="068f6-232">更新 DeleteModel</span><span class="sxs-lookup"><span data-stu-id="068f6-232">Update the DeleteModel</span></span>
+### <a name="update-the-deletemodel"></a><span data-ttu-id="94aa9-232">更新 DeleteModel</span><span class="sxs-lookup"><span data-stu-id="94aa9-232">Update the DeleteModel</span></span>
 
-<span data-ttu-id="068f6-233">更新使用授權處理常式，以確定使用者有刪除權限，在連絡人上的 [刪除] 頁面模型。</span><span class="sxs-lookup"><span data-stu-id="068f6-233">Update the delete page model to use the authorization handler to verify the user has delete permission on the contact.</span></span>
+<span data-ttu-id="94aa9-233">更新使用授權處理常式，以確定使用者有刪除權限，在連絡人上的 [刪除] 頁面模型。</span><span class="sxs-lookup"><span data-stu-id="94aa9-233">Update the delete page model to use the authorization handler to verify the user has delete permission on the contact.</span></span>
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/Delete.cshtml.cs?name=snippet)]
 
-## <a name="inject-the-authorization-service-into-the-views"></a><span data-ttu-id="068f6-234">插入檢視中的授權服務</span><span class="sxs-lookup"><span data-stu-id="068f6-234">Inject the authorization service into the views</span></span>
+## <a name="inject-the-authorization-service-into-the-views"></a><span data-ttu-id="94aa9-234">插入檢視中的授權服務</span><span class="sxs-lookup"><span data-stu-id="94aa9-234">Inject the authorization service into the views</span></span>
 
-<span data-ttu-id="068f6-235">目前，UI 顯示編輯和刪除的使用者無法修改的連絡人的連結。</span><span class="sxs-lookup"><span data-stu-id="068f6-235">Currently, the UI shows edit and delete links for contacts the user can't modify.</span></span>
+<span data-ttu-id="94aa9-235">目前，UI 顯示編輯和刪除的使用者無法修改的連絡人的連結。</span><span class="sxs-lookup"><span data-stu-id="94aa9-235">Currently, the UI shows edit and delete links for contacts the user can't modify.</span></span>
 
-<span data-ttu-id="068f6-236">將授權服務插入*Pages/_ViewImports*檔案中，以供所有視圖使用：</span><span class="sxs-lookup"><span data-stu-id="068f6-236">Inject the authorization service in the *Pages/_ViewImports.cshtml* file so it's available to all views:</span></span>
+<span data-ttu-id="94aa9-236">將授權服務插入*Pages/_ViewImports*檔案中，以供所有視圖使用：</span><span class="sxs-lookup"><span data-stu-id="94aa9-236">Inject the authorization service in the *Pages/_ViewImports.cshtml* file so it's available to all views:</span></span>
 
 [!code-cshtml[](secure-data/samples/final3/Pages/_ViewImports.cshtml?highlight=6-99)]
 
-<span data-ttu-id="068f6-237">上述標記會新增數個`using`陳述式。</span><span class="sxs-lookup"><span data-stu-id="068f6-237">The preceding markup adds several `using` statements.</span></span>
+<span data-ttu-id="94aa9-237">上述標記會新增數個`using`陳述式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-237">The preceding markup adds several `using` statements.</span></span>
 
-<span data-ttu-id="068f6-238">更新**編輯**並**刪除**中的連結*Pages/Contacts/Index.cshtml*讓它們只轉譯為適當的權限的使用者：</span><span class="sxs-lookup"><span data-stu-id="068f6-238">Update the **Edit** and **Delete** links in *Pages/Contacts/Index.cshtml* so they're only rendered for users with the appropriate permissions:</span></span>
+<span data-ttu-id="94aa9-238">更新**編輯**並**刪除**中的連結*Pages/Contacts/Index.cshtml*讓它們只轉譯為適當的權限的使用者：</span><span class="sxs-lookup"><span data-stu-id="94aa9-238">Update the **Edit** and **Delete** links in *Pages/Contacts/Index.cshtml* so they're only rendered for users with the appropriate permissions:</span></span>
 
 [!code-cshtml[](secure-data/samples/final3/Pages/Contacts/Index.cshtml?highlight=34-36,62-999)]
 
 > [!WARNING]
-> <span data-ttu-id="068f6-239">隱藏不需要變更資料的權限的使用者的連結不安全的應用程式。</span><span class="sxs-lookup"><span data-stu-id="068f6-239">Hiding links from users that don't have permission to change data doesn't secure the app.</span></span> <span data-ttu-id="068f6-240">隱藏的連結，讓應用程式更方便使用顯示唯一有效的連結。</span><span class="sxs-lookup"><span data-stu-id="068f6-240">Hiding links makes the app more user-friendly by displaying only valid links.</span></span> <span data-ttu-id="068f6-241">使用者可以 hack 產生的 Url 以叫用 編輯和刪除作業對他們未擁有的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-241">Users can hack the generated URLs to invoke edit and delete operations on data they don't own.</span></span> <span data-ttu-id="068f6-242">Razor 頁面或控制站必須強制執行存取檢查，以確保資料的安全。</span><span class="sxs-lookup"><span data-stu-id="068f6-242">The Razor Page or controller must enforce access checks to secure the data.</span></span>
+> <span data-ttu-id="94aa9-239">隱藏不需要變更資料的權限的使用者的連結不安全的應用程式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-239">Hiding links from users that don't have permission to change data doesn't secure the app.</span></span> <span data-ttu-id="94aa9-240">隱藏的連結，讓應用程式更方便使用顯示唯一有效的連結。</span><span class="sxs-lookup"><span data-stu-id="94aa9-240">Hiding links makes the app more user-friendly by displaying only valid links.</span></span> <span data-ttu-id="94aa9-241">使用者可以 hack 產生的 Url 以叫用 編輯和刪除作業對他們未擁有的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-241">Users can hack the generated URLs to invoke edit and delete operations on data they don't own.</span></span> <span data-ttu-id="94aa9-242">Razor 頁面或控制站必須強制執行存取檢查，以確保資料的安全。</span><span class="sxs-lookup"><span data-stu-id="94aa9-242">The Razor Page or controller must enforce access checks to secure the data.</span></span>
 
-### <a name="update-details"></a><span data-ttu-id="068f6-243">更新詳細資料</span><span class="sxs-lookup"><span data-stu-id="068f6-243">Update Details</span></span>
+### <a name="update-details"></a><span data-ttu-id="94aa9-243">更新詳細資料</span><span class="sxs-lookup"><span data-stu-id="94aa9-243">Update Details</span></span>
 
-<span data-ttu-id="068f6-244">更新詳細資料檢視，讓經理可以核准或拒絕連絡人：</span><span class="sxs-lookup"><span data-stu-id="068f6-244">Update the details view so managers can approve or reject contacts:</span></span>
+<span data-ttu-id="94aa9-244">更新詳細資料檢視，讓經理可以核准或拒絕連絡人：</span><span class="sxs-lookup"><span data-stu-id="94aa9-244">Update the details view so managers can approve or reject contacts:</span></span>
 
 [!code-cshtml[](secure-data/samples/final2.1/Pages/Contacts/Details.cshtml?name=snippet)]
 
-<span data-ttu-id="068f6-245">更新詳細資料 頁面模型：</span><span class="sxs-lookup"><span data-stu-id="068f6-245">Update the details page model:</span></span>
+<span data-ttu-id="94aa9-245">更新詳細資料 頁面模型：</span><span class="sxs-lookup"><span data-stu-id="94aa9-245">Update the details page model:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Details.cshtml.cs?name=snippet)]
 
-## <a name="add-or-remove-a-user-to-a-role"></a><span data-ttu-id="068f6-246">新增或移除使用者角色</span><span class="sxs-lookup"><span data-stu-id="068f6-246">Add or remove a user to a role</span></span>
+## <a name="add-or-remove-a-user-to-a-role"></a><span data-ttu-id="94aa9-246">新增或移除使用者角色</span><span class="sxs-lookup"><span data-stu-id="94aa9-246">Add or remove a user to a role</span></span>
 
-<span data-ttu-id="068f6-247">請參閱[本期](https://github.com/aspnet/AspNetCore.Docs/issues/8502)有關：</span><span class="sxs-lookup"><span data-stu-id="068f6-247">See [this issue](https://github.com/aspnet/AspNetCore.Docs/issues/8502) for information on:</span></span>
+<span data-ttu-id="94aa9-247">請參閱[本期](https://github.com/aspnet/AspNetCore.Docs/issues/8502)有關：</span><span class="sxs-lookup"><span data-stu-id="94aa9-247">See [this issue](https://github.com/aspnet/AspNetCore.Docs/issues/8502) for information on:</span></span>
 
-* <span data-ttu-id="068f6-248">移除使用者的權限。</span><span class="sxs-lookup"><span data-stu-id="068f6-248">Removing privileges from a user.</span></span> <span data-ttu-id="068f6-249">例如，將聊天應用程式中的使用者靜音。</span><span class="sxs-lookup"><span data-stu-id="068f6-249">For example, muting a user in a chat app.</span></span>
-* <span data-ttu-id="068f6-250">若要新增權限。</span><span class="sxs-lookup"><span data-stu-id="068f6-250">Adding privileges to a user.</span></span>
+* <span data-ttu-id="94aa9-248">移除使用者的權限。</span><span class="sxs-lookup"><span data-stu-id="94aa9-248">Removing privileges from a user.</span></span> <span data-ttu-id="94aa9-249">例如，將聊天應用程式中的使用者靜音。</span><span class="sxs-lookup"><span data-stu-id="94aa9-249">For example, muting a user in a chat app.</span></span>
+* <span data-ttu-id="94aa9-250">若要新增權限。</span><span class="sxs-lookup"><span data-stu-id="94aa9-250">Adding privileges to a user.</span></span>
 
-## <a name="test-the-completed-app"></a><span data-ttu-id="068f6-251">測試已完成的應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-251">Test the completed app</span></span>
+## <a name="test-the-completed-app"></a><span data-ttu-id="94aa9-251">測試已完成的應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-251">Test the completed app</span></span>
 
-<span data-ttu-id="068f6-252">如果您尚未設定植入的使用者帳戶的密碼，使用[Secret Manager 工具](xref:security/app-secrets#secret-manager)設定密碼：</span><span class="sxs-lookup"><span data-stu-id="068f6-252">If you haven't already set a password for seeded user accounts, use the [Secret Manager tool](xref:security/app-secrets#secret-manager) to set a password:</span></span>
+<span data-ttu-id="94aa9-252">如果您尚未設定植入的使用者帳戶的密碼，使用[Secret Manager 工具](xref:security/app-secrets#secret-manager)設定密碼：</span><span class="sxs-lookup"><span data-stu-id="94aa9-252">If you haven't already set a password for seeded user accounts, use the [Secret Manager tool](xref:security/app-secrets#secret-manager) to set a password:</span></span>
 
-* <span data-ttu-id="068f6-253">選擇強式密碼：請使用八個或更多個字元，且至少要有一個大寫字元、數位和符號。</span><span class="sxs-lookup"><span data-stu-id="068f6-253">Choose a strong password: Use eight or more characters and at least one upper-case character, number, and symbol.</span></span> <span data-ttu-id="068f6-254">比方說，`Passw0rd!`符合強式密碼需求。</span><span class="sxs-lookup"><span data-stu-id="068f6-254">For example, `Passw0rd!` meets the strong password requirements.</span></span>
-* <span data-ttu-id="068f6-255">執行下列命令，從專案的資料夾，其中`<PW>`的密碼：</span><span class="sxs-lookup"><span data-stu-id="068f6-255">Execute the following command from the project's folder, where `<PW>` is the password:</span></span>
+* <span data-ttu-id="94aa9-253">選擇強式密碼：請使用八個或更多個字元，且至少要有一個大寫字元、數位和符號。</span><span class="sxs-lookup"><span data-stu-id="94aa9-253">Choose a strong password: Use eight or more characters and at least one upper-case character, number, and symbol.</span></span> <span data-ttu-id="94aa9-254">比方說，`Passw0rd!`符合強式密碼需求。</span><span class="sxs-lookup"><span data-stu-id="94aa9-254">For example, `Passw0rd!` meets the strong password requirements.</span></span>
+* <span data-ttu-id="94aa9-255">執行下列命令，從專案的資料夾，其中`<PW>`的密碼：</span><span class="sxs-lookup"><span data-stu-id="94aa9-255">Execute the following command from the project's folder, where `<PW>` is the password:</span></span>
 
-  ```console
+  ```dotnetcli
   dotnet user-secrets set SeedUserPW <PW>
   ```
 
-<span data-ttu-id="068f6-256">如果應用程式的連絡人：</span><span class="sxs-lookup"><span data-stu-id="068f6-256">If the app has contacts:</span></span>
+<span data-ttu-id="94aa9-256">如果應用程式的連絡人：</span><span class="sxs-lookup"><span data-stu-id="94aa9-256">If the app has contacts:</span></span>
 
-* <span data-ttu-id="068f6-257">刪除的記錄中的所有`Contact`資料表。</span><span class="sxs-lookup"><span data-stu-id="068f6-257">Delete all of the records in the `Contact` table.</span></span>
-* <span data-ttu-id="068f6-258">重新啟動植入資料庫的應用程式。</span><span class="sxs-lookup"><span data-stu-id="068f6-258">Restart the app to seed the database.</span></span>
+* <span data-ttu-id="94aa9-257">刪除的記錄中的所有`Contact`資料表。</span><span class="sxs-lookup"><span data-stu-id="94aa9-257">Delete all of the records in the `Contact` table.</span></span>
+* <span data-ttu-id="94aa9-258">重新啟動植入資料庫的應用程式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-258">Restart the app to seed the database.</span></span>
 
-<span data-ttu-id="068f6-259">測試已完成的應用程式的簡單方法是啟動三個不同的瀏覽器 （或 incognito/InPrivate 工作階段）。</span><span class="sxs-lookup"><span data-stu-id="068f6-259">An easy way to test the completed app is to launch three different browsers (or incognito/InPrivate sessions).</span></span> <span data-ttu-id="068f6-260">在瀏覽器中註冊新的使用者 (例如`test@example.com`)。</span><span class="sxs-lookup"><span data-stu-id="068f6-260">In one browser, register a new user (for example, `test@example.com`).</span></span> <span data-ttu-id="068f6-261">使用不同的使用者登入每個瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="068f6-261">Sign in to each browser with a different user.</span></span> <span data-ttu-id="068f6-262">請確認下列作業：</span><span class="sxs-lookup"><span data-stu-id="068f6-262">Verify the following operations:</span></span>
+<span data-ttu-id="94aa9-259">測試已完成的應用程式的簡單方法是啟動三個不同的瀏覽器 （或 incognito/InPrivate 工作階段）。</span><span class="sxs-lookup"><span data-stu-id="94aa9-259">An easy way to test the completed app is to launch three different browsers (or incognito/InPrivate sessions).</span></span> <span data-ttu-id="94aa9-260">在瀏覽器中註冊新的使用者 (例如`test@example.com`)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-260">In one browser, register a new user (for example, `test@example.com`).</span></span> <span data-ttu-id="94aa9-261">使用不同的使用者登入每個瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="94aa9-261">Sign in to each browser with a different user.</span></span> <span data-ttu-id="94aa9-262">請確認下列作業：</span><span class="sxs-lookup"><span data-stu-id="94aa9-262">Verify the following operations:</span></span>
 
-* <span data-ttu-id="068f6-263">已註冊的使用者可以檢視所有已核准的連絡資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-263">Registered users can view all of the approved contact data.</span></span>
-* <span data-ttu-id="068f6-264">已註冊的使用者可以編輯/刪除他們自己的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-264">Registered users can edit/delete their own data.</span></span>
-* <span data-ttu-id="068f6-265">經理可以核准/拒絕連絡人資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-265">Managers can approve/reject contact data.</span></span> <span data-ttu-id="068f6-266">`Details`檢視會顯示**核准**並**拒絕**按鈕。</span><span class="sxs-lookup"><span data-stu-id="068f6-266">The `Details` view shows **Approve** and **Reject** buttons.</span></span>
-* <span data-ttu-id="068f6-267">系統管理員可以核准/拒絕和編輯/刪除所有資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-267">Administrators can approve/reject and edit/delete all data.</span></span>
+* <span data-ttu-id="94aa9-263">已註冊的使用者可以檢視所有已核准的連絡資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-263">Registered users can view all of the approved contact data.</span></span>
+* <span data-ttu-id="94aa9-264">已註冊的使用者可以編輯/刪除他們自己的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-264">Registered users can edit/delete their own data.</span></span>
+* <span data-ttu-id="94aa9-265">經理可以核准/拒絕連絡人資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-265">Managers can approve/reject contact data.</span></span> <span data-ttu-id="94aa9-266">`Details`檢視會顯示**核准**並**拒絕**按鈕。</span><span class="sxs-lookup"><span data-stu-id="94aa9-266">The `Details` view shows **Approve** and **Reject** buttons.</span></span>
+* <span data-ttu-id="94aa9-267">系統管理員可以核准/拒絕和編輯/刪除所有資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-267">Administrators can approve/reject and edit/delete all data.</span></span>
 
-| <span data-ttu-id="068f6-268">使用者</span><span class="sxs-lookup"><span data-stu-id="068f6-268">User</span></span>                | <span data-ttu-id="068f6-269">植入的應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-269">Seeded by the app</span></span> | <span data-ttu-id="068f6-270">選項</span><span class="sxs-lookup"><span data-stu-id="068f6-270">Options</span></span>                                  |
+| <span data-ttu-id="94aa9-268">使用者</span><span class="sxs-lookup"><span data-stu-id="94aa9-268">User</span></span>                | <span data-ttu-id="94aa9-269">植入的應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-269">Seeded by the app</span></span> | <span data-ttu-id="94aa9-270">選項</span><span class="sxs-lookup"><span data-stu-id="94aa9-270">Options</span></span>                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | <span data-ttu-id="068f6-271">否</span><span class="sxs-lookup"><span data-stu-id="068f6-271">No</span></span>                | <span data-ttu-id="068f6-272">編輯/刪除自己的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-272">Edit/delete the own data.</span></span>                |
-| manager@contoso.com | <span data-ttu-id="068f6-273">是</span><span class="sxs-lookup"><span data-stu-id="068f6-273">Yes</span></span>               | <span data-ttu-id="068f6-274">核准/拒絕和編輯/刪除自己的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-274">Approve/reject and edit/delete own data.</span></span> |
-| admin@contoso.com   | <span data-ttu-id="068f6-275">是</span><span class="sxs-lookup"><span data-stu-id="068f6-275">Yes</span></span>               | <span data-ttu-id="068f6-276">核准/拒絕和編輯/刪除所有資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-276">Approve/reject and edit/delete all data.</span></span> |
+| test@example.com    | <span data-ttu-id="94aa9-271">否</span><span class="sxs-lookup"><span data-stu-id="94aa9-271">No</span></span>                | <span data-ttu-id="94aa9-272">編輯/刪除自己的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-272">Edit/delete the own data.</span></span>                |
+| manager@contoso.com | <span data-ttu-id="94aa9-273">是</span><span class="sxs-lookup"><span data-stu-id="94aa9-273">Yes</span></span>               | <span data-ttu-id="94aa9-274">核准/拒絕和編輯/刪除自己的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-274">Approve/reject and edit/delete own data.</span></span> |
+| admin@contoso.com   | <span data-ttu-id="94aa9-275">是</span><span class="sxs-lookup"><span data-stu-id="94aa9-275">Yes</span></span>               | <span data-ttu-id="94aa9-276">核准/拒絕和編輯/刪除所有資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-276">Approve/reject and edit/delete all data.</span></span> |
 
-<span data-ttu-id="068f6-277">在系統管理員的瀏覽器中建立的連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-277">Create a contact in the administrator's browser.</span></span> <span data-ttu-id="068f6-278">複製的 URL 刪除和編輯從系統管理員連絡。</span><span class="sxs-lookup"><span data-stu-id="068f6-278">Copy the URL for delete and edit from the administrator contact.</span></span> <span data-ttu-id="068f6-279">這些連結貼入測試使用者的瀏覽器，以確認測試使用者無法執行這些作業。</span><span class="sxs-lookup"><span data-stu-id="068f6-279">Paste these links into the test user's browser to verify the test user can't perform these operations.</span></span>
+<span data-ttu-id="94aa9-277">在系統管理員的瀏覽器中建立的連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-277">Create a contact in the administrator's browser.</span></span> <span data-ttu-id="94aa9-278">複製的 URL 刪除和編輯從系統管理員連絡。</span><span class="sxs-lookup"><span data-stu-id="94aa9-278">Copy the URL for delete and edit from the administrator contact.</span></span> <span data-ttu-id="94aa9-279">這些連結貼入測試使用者的瀏覽器，以確認測試使用者無法執行這些作業。</span><span class="sxs-lookup"><span data-stu-id="94aa9-279">Paste these links into the test user's browser to verify the test user can't perform these operations.</span></span>
 
-## <a name="create-the-starter-app"></a><span data-ttu-id="068f6-280">建立入門應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-280">Create the starter app</span></span>
+## <a name="create-the-starter-app"></a><span data-ttu-id="94aa9-280">建立入門應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-280">Create the starter app</span></span>
 
-* <span data-ttu-id="068f6-281">建立名為"ContactManager"Razor 頁面應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-281">Create a Razor Pages app named "ContactManager"</span></span>
-  * <span data-ttu-id="068f6-282">建立應用程式與**個別使用者帳戶**。</span><span class="sxs-lookup"><span data-stu-id="068f6-282">Create the app with **Individual User Accounts**.</span></span>
-  * <span data-ttu-id="068f6-283">提供名稱"ContactManager"使命名空間符合此範例中使用的命名空間。</span><span class="sxs-lookup"><span data-stu-id="068f6-283">Name it "ContactManager" so the namespace matches the namespace used in the sample.</span></span>
-  * <span data-ttu-id="068f6-284">`-uld` 指定 LocalDB，而不是 SQLite</span><span class="sxs-lookup"><span data-stu-id="068f6-284">`-uld` specifies LocalDB instead of SQLite</span></span>
+* <span data-ttu-id="94aa9-281">建立名為"ContactManager"Razor 頁面應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-281">Create a Razor Pages app named "ContactManager"</span></span>
+  * <span data-ttu-id="94aa9-282">建立應用程式與**個別使用者帳戶**。</span><span class="sxs-lookup"><span data-stu-id="94aa9-282">Create the app with **Individual User Accounts**.</span></span>
+  * <span data-ttu-id="94aa9-283">提供名稱"ContactManager"使命名空間符合此範例中使用的命名空間。</span><span class="sxs-lookup"><span data-stu-id="94aa9-283">Name it "ContactManager" so the namespace matches the namespace used in the sample.</span></span>
+  * <span data-ttu-id="94aa9-284">`-uld` 指定 LocalDB，而不是 SQLite</span><span class="sxs-lookup"><span data-stu-id="94aa9-284">`-uld` specifies LocalDB instead of SQLite</span></span>
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* <span data-ttu-id="068f6-285">新增*模型/連絡人 .cs*：</span><span class="sxs-lookup"><span data-stu-id="068f6-285">Add *Models/Contact.cs*:</span></span>
+* <span data-ttu-id="94aa9-285">新增*模型/連絡人 .cs*：</span><span class="sxs-lookup"><span data-stu-id="94aa9-285">Add *Models/Contact.cs*:</span></span>
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
-* <span data-ttu-id="068f6-286">Scaffold`Contact`模型。</span><span class="sxs-lookup"><span data-stu-id="068f6-286">Scaffold the `Contact` model.</span></span>
-* <span data-ttu-id="068f6-287">建立初始移轉並更新資料庫：</span><span class="sxs-lookup"><span data-stu-id="068f6-287">Create initial migration and update the database:</span></span>
+* <span data-ttu-id="94aa9-286">Scaffold`Contact`模型。</span><span class="sxs-lookup"><span data-stu-id="94aa9-286">Scaffold the `Contact` model.</span></span>
+* <span data-ttu-id="94aa9-287">建立初始移轉並更新資料庫：</span><span class="sxs-lookup"><span data-stu-id="94aa9-287">Create initial migration and update the database:</span></span>
 
-```console
+```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet tool install -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator razorpage -m Contact -udl -dc ApplicationDbContext -outDir Pages\Contacts --referenceScriptLibraries
 dotnet ef database drop -f
 dotnet ef migrations add initial
 dotnet ef database update
-  ```
+```
 
-<span data-ttu-id="068f6-288">如果您遇到`dotnet aspnet-codegenerator razorpage`命令的錯誤，請參閱[此 GitHub 問題](https://github.com/aspnet/Scaffolding/issues/984)。</span><span class="sxs-lookup"><span data-stu-id="068f6-288">If you experience a bug with the `dotnet aspnet-codegenerator razorpage` command, see [this GitHub issue](https://github.com/aspnet/Scaffolding/issues/984).</span></span>
+<span data-ttu-id="94aa9-288">如果您遇到`dotnet aspnet-codegenerator razorpage`命令的錯誤，請參閱[此 GitHub 問題](https://github.com/aspnet/Scaffolding/issues/984)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-288">If you experience a bug with the `dotnet aspnet-codegenerator razorpage` command, see [this GitHub issue](https://github.com/aspnet/Scaffolding/issues/984).</span></span>
 
-* <span data-ttu-id="068f6-289">更新*Pages/Shared/_Layout*檔案中的**ContactManager**錨點：</span><span class="sxs-lookup"><span data-stu-id="068f6-289">Update the **ContactManager** anchor in the *Pages/Shared/_Layout.cshtml* file:</span></span>
+* <span data-ttu-id="94aa9-289">更新*Pages/Shared/_Layout*檔案中的**ContactManager**錨點：</span><span class="sxs-lookup"><span data-stu-id="94aa9-289">Update the **ContactManager** anchor in the *Pages/Shared/_Layout.cshtml* file:</span></span>
 
  ```cshtml
 <a class="navbar-brand" asp-area="" asp-page="/Contacts/Index">ContactManager</a>
   ```
 
-* <span data-ttu-id="068f6-290">測試應用程式建立、 編輯和刪除連絡人</span><span class="sxs-lookup"><span data-stu-id="068f6-290">Test the app by creating, editing, and deleting a contact</span></span>
+* <span data-ttu-id="94aa9-290">測試應用程式建立、 編輯和刪除連絡人</span><span class="sxs-lookup"><span data-stu-id="94aa9-290">Test the app by creating, editing, and deleting a contact</span></span>
 
-### <a name="seed-the-database"></a><span data-ttu-id="068f6-291">植入資料庫</span><span class="sxs-lookup"><span data-stu-id="068f6-291">Seed the database</span></span>
+### <a name="seed-the-database"></a><span data-ttu-id="94aa9-291">植入資料庫</span><span class="sxs-lookup"><span data-stu-id="94aa9-291">Seed the database</span></span>
 
-<span data-ttu-id="068f6-292">將[SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs)類別新增至 [*資料*] 資料夾：</span><span class="sxs-lookup"><span data-stu-id="068f6-292">Add the [SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) class to the *Data* folder:</span></span>
+<span data-ttu-id="94aa9-292">將[SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs)類別新增至 [*資料*] 資料夾：</span><span class="sxs-lookup"><span data-stu-id="94aa9-292">Add the [SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) class to the *Data* folder:</span></span>
 
 [!code-csharp[](secure-data/samples/starter3/Data/SeedData.cs)]
 
-<span data-ttu-id="068f6-293">呼叫`SeedData.Initialize`從`Main`:</span><span class="sxs-lookup"><span data-stu-id="068f6-293">Call `SeedData.Initialize` from `Main`:</span></span>
+<span data-ttu-id="94aa9-293">呼叫`SeedData.Initialize`從`Main`:</span><span class="sxs-lookup"><span data-stu-id="94aa9-293">Call `SeedData.Initialize` from `Main`:</span></span>
 
 [!code-csharp[](secure-data/samples/starter3/Program.cs)]
 
-<span data-ttu-id="068f6-294">測試應用程式植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="068f6-294">Test that the app seeded the database.</span></span> <span data-ttu-id="068f6-295">請連絡資料庫中有任何資料列，如果種子方法不會執行。</span><span class="sxs-lookup"><span data-stu-id="068f6-295">If there are any rows in the contact DB, the seed method doesn't run.</span></span>
+<span data-ttu-id="94aa9-294">測試應用程式植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="94aa9-294">Test that the app seeded the database.</span></span> <span data-ttu-id="94aa9-295">請連絡資料庫中有任何資料列，如果種子方法不會執行。</span><span class="sxs-lookup"><span data-stu-id="94aa9-295">If there are any rows in the contact DB, the seed method doesn't run.</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
 
-<span data-ttu-id="068f6-296">本教學課程會示範如何建立 ASP.NET Core web 應用程式與受保護的授權的使用者資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-296">This tutorial shows how to create an ASP.NET Core web app with user data protected by authorization.</span></span> <span data-ttu-id="068f6-297">它會顯示已驗證 （登錄） 的使用者的連絡人清單中已建立。</span><span class="sxs-lookup"><span data-stu-id="068f6-297">It displays a list of contacts that authenticated (registered) users have created.</span></span> <span data-ttu-id="068f6-298">有三個安全性群組：</span><span class="sxs-lookup"><span data-stu-id="068f6-298">There are three security groups:</span></span>
+<span data-ttu-id="94aa9-296">本教學課程會示範如何建立 ASP.NET Core web 應用程式與受保護的授權的使用者資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-296">This tutorial shows how to create an ASP.NET Core web app with user data protected by authorization.</span></span> <span data-ttu-id="94aa9-297">它會顯示已驗證 （登錄） 的使用者的連絡人清單中已建立。</span><span class="sxs-lookup"><span data-stu-id="94aa9-297">It displays a list of contacts that authenticated (registered) users have created.</span></span> <span data-ttu-id="94aa9-298">有三個安全性群組：</span><span class="sxs-lookup"><span data-stu-id="94aa9-298">There are three security groups:</span></span>
 
-* <span data-ttu-id="068f6-299">**已註冊的使用者**可以檢視所有已認可的資料並可以編輯/刪除他們自己的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-299">**Registered users** can view all the approved data and can edit/delete their own data.</span></span>
-* <span data-ttu-id="068f6-300">**管理員**可以核准或拒絕連絡人資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-300">**Managers** can approve or reject contact data.</span></span> <span data-ttu-id="068f6-301">只有已核准的連絡人會對使用者顯示。</span><span class="sxs-lookup"><span data-stu-id="068f6-301">Only approved contacts are visible to users.</span></span>
-* <span data-ttu-id="068f6-302">**系統管理員**可以核准/拒絕並編輯/刪除任何資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-302">**Administrators** can approve/reject and edit/delete any data.</span></span>
+* <span data-ttu-id="94aa9-299">**已註冊的使用者**可以檢視所有已認可的資料並可以編輯/刪除他們自己的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-299">**Registered users** can view all the approved data and can edit/delete their own data.</span></span>
+* <span data-ttu-id="94aa9-300">**管理員**可以核准或拒絕連絡人資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-300">**Managers** can approve or reject contact data.</span></span> <span data-ttu-id="94aa9-301">只有已核准的連絡人會對使用者顯示。</span><span class="sxs-lookup"><span data-stu-id="94aa9-301">Only approved contacts are visible to users.</span></span>
+* <span data-ttu-id="94aa9-302">**系統管理員**可以核准/拒絕並編輯/刪除任何資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-302">**Administrators** can approve/reject and edit/delete any data.</span></span>
 
-<span data-ttu-id="068f6-303">在下圖中，使用者 Rick (`rick@example.com`) 登入。</span><span class="sxs-lookup"><span data-stu-id="068f6-303">In the following image, user Rick (`rick@example.com`) is signed in.</span></span> <span data-ttu-id="068f6-304">Rick 只能檢視已核准的連絡人和**編輯**/**刪除**/**新建**他連絡人的連結。</span><span class="sxs-lookup"><span data-stu-id="068f6-304">Rick can only view approved contacts and **Edit**/**Delete**/**Create New** links for his contacts.</span></span> <span data-ttu-id="068f6-305">只有最後一筆記錄，由 Rick，顯示**編輯**並**刪除**連結。</span><span class="sxs-lookup"><span data-stu-id="068f6-305">Only the last record, created by Rick, displays **Edit** and **Delete** links.</span></span> <span data-ttu-id="068f6-306">其他使用者不會看到最後一筆記錄，直到管理員或系統管理員的狀態變更為 「 Approved 」。</span><span class="sxs-lookup"><span data-stu-id="068f6-306">Other users won't see the last record until a manager or administrator changes the status to "Approved".</span></span>
+<span data-ttu-id="94aa9-303">在下圖中，使用者 Rick (`rick@example.com`) 登入。</span><span class="sxs-lookup"><span data-stu-id="94aa9-303">In the following image, user Rick (`rick@example.com`) is signed in.</span></span> <span data-ttu-id="94aa9-304">Rick 只能檢視已核准的連絡人和**編輯**/**刪除**/**新建**他連絡人的連結。</span><span class="sxs-lookup"><span data-stu-id="94aa9-304">Rick can only view approved contacts and **Edit**/**Delete**/**Create New** links for his contacts.</span></span> <span data-ttu-id="94aa9-305">只有最後一筆記錄，由 Rick，顯示**編輯**並**刪除**連結。</span><span class="sxs-lookup"><span data-stu-id="94aa9-305">Only the last record, created by Rick, displays **Edit** and **Delete** links.</span></span> <span data-ttu-id="94aa9-306">其他使用者不會看到最後一筆記錄，直到管理員或系統管理員的狀態變更為 「 Approved 」。</span><span class="sxs-lookup"><span data-stu-id="94aa9-306">Other users won't see the last record until a manager or administrator changes the status to "Approved".</span></span>
 
 ![螢幕擷取畫面顯示 Rick 登入](secure-data/_static/rick.png)
 
-<span data-ttu-id="068f6-308">在下圖中， `manager@contoso.com`已登入並以管理員的角色執行：</span><span class="sxs-lookup"><span data-stu-id="068f6-308">In the following image, `manager@contoso.com` is signed in and in the manager's role:</span></span>
+<span data-ttu-id="94aa9-308">在下圖中， `manager@contoso.com`已登入並以管理員的角色執行：</span><span class="sxs-lookup"><span data-stu-id="94aa9-308">In the following image, `manager@contoso.com` is signed in and in the manager's role:</span></span>
 
 ![螢幕擷取畫面顯示manager@contoso.com登入](secure-data/_static/manager1.png)
 
-<span data-ttu-id="068f6-310">下圖顯示之管理員的連絡詳細資料檢視：</span><span class="sxs-lookup"><span data-stu-id="068f6-310">The following image shows the managers details view of a contact:</span></span>
+<span data-ttu-id="94aa9-310">下圖顯示之管理員的連絡詳細資料檢視：</span><span class="sxs-lookup"><span data-stu-id="94aa9-310">The following image shows the managers details view of a contact:</span></span>
 
 ![連絡人的管理員的檢視](secure-data/_static/manager.png)
 
-<span data-ttu-id="068f6-312">**核准**並**拒絕**按鈕只會顯示為管理員和系統管理員。</span><span class="sxs-lookup"><span data-stu-id="068f6-312">The **Approve** and **Reject** buttons are only displayed for managers and administrators.</span></span>
+<span data-ttu-id="94aa9-312">**核准**並**拒絕**按鈕只會顯示為管理員和系統管理員。</span><span class="sxs-lookup"><span data-stu-id="94aa9-312">The **Approve** and **Reject** buttons are only displayed for managers and administrators.</span></span>
 
-<span data-ttu-id="068f6-313">在下圖中， `admin@contoso.com`已登入，並以系統管理員角色：</span><span class="sxs-lookup"><span data-stu-id="068f6-313">In the following image, `admin@contoso.com` is signed in and in the administrator's role:</span></span>
+<span data-ttu-id="94aa9-313">在下圖中， `admin@contoso.com`已登入，並以系統管理員角色：</span><span class="sxs-lookup"><span data-stu-id="94aa9-313">In the following image, `admin@contoso.com` is signed in and in the administrator's role:</span></span>
 
 ![螢幕擷取畫面顯示admin@contoso.com登入](secure-data/_static/admin.png)
 
-<span data-ttu-id="068f6-315">系統管理員將擁有所有權限。</span><span class="sxs-lookup"><span data-stu-id="068f6-315">The administrator has all privileges.</span></span> <span data-ttu-id="068f6-316">她可以讀取/編輯/刪除的任何連絡人，並變更連絡人的狀態。</span><span class="sxs-lookup"><span data-stu-id="068f6-316">She can read/edit/delete any contact and change the status of contacts.</span></span>
+<span data-ttu-id="94aa9-315">系統管理員將擁有所有權限。</span><span class="sxs-lookup"><span data-stu-id="94aa9-315">The administrator has all privileges.</span></span> <span data-ttu-id="94aa9-316">她可以讀取/編輯/刪除的任何連絡人，並變更連絡人的狀態。</span><span class="sxs-lookup"><span data-stu-id="94aa9-316">She can read/edit/delete any contact and change the status of contacts.</span></span>
 
-<span data-ttu-id="068f6-317">藉由建立應用程式[scaffolding](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model)下列`Contact`模型：</span><span class="sxs-lookup"><span data-stu-id="068f6-317">The app was created by [scaffolding](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model) the following `Contact` model:</span></span>
+<span data-ttu-id="94aa9-317">藉由建立應用程式[scaffolding](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model)下列`Contact`模型：</span><span class="sxs-lookup"><span data-stu-id="94aa9-317">The app was created by [scaffolding](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model) the following `Contact` model:</span></span>
 
 [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
-<span data-ttu-id="068f6-318">此範例包含下列 「 授權 」 處理常式：</span><span class="sxs-lookup"><span data-stu-id="068f6-318">The sample contains the following authorization handlers:</span></span>
+<span data-ttu-id="94aa9-318">此範例包含下列 「 授權 」 處理常式：</span><span class="sxs-lookup"><span data-stu-id="94aa9-318">The sample contains the following authorization handlers:</span></span>
 
-* <span data-ttu-id="068f6-319">`ContactIsOwnerAuthorizationHandler`：確保使用者只能編輯其資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-319">`ContactIsOwnerAuthorizationHandler`: Ensures that a user can only edit their data.</span></span>
-* <span data-ttu-id="068f6-320">`ContactManagerAuthorizationHandler`：可讓管理員核准或拒絕連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-320">`ContactManagerAuthorizationHandler`: Allows managers to approve or reject contacts.</span></span>
-* <span data-ttu-id="068f6-321">`ContactAdministratorsAuthorizationHandler`：允許系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-321">`ContactAdministratorsAuthorizationHandler`: Allows administrators to approve or reject contacts and to edit/delete contacts.</span></span>
+* <span data-ttu-id="94aa9-319">`ContactIsOwnerAuthorizationHandler`：確保使用者只能編輯其資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-319">`ContactIsOwnerAuthorizationHandler`: Ensures that a user can only edit their data.</span></span>
+* <span data-ttu-id="94aa9-320">`ContactManagerAuthorizationHandler`：可讓管理員核准或拒絕連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-320">`ContactManagerAuthorizationHandler`: Allows managers to approve or reject contacts.</span></span>
+* <span data-ttu-id="94aa9-321">`ContactAdministratorsAuthorizationHandler`：允許系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-321">`ContactAdministratorsAuthorizationHandler`: Allows administrators to approve or reject contacts and to edit/delete contacts.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="068f6-322">必要條件</span><span class="sxs-lookup"><span data-stu-id="068f6-322">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="94aa9-322">必要條件</span><span class="sxs-lookup"><span data-stu-id="94aa9-322">Prerequisites</span></span>
 
-<span data-ttu-id="068f6-323">本教學課程會前進。</span><span class="sxs-lookup"><span data-stu-id="068f6-323">This tutorial is advanced.</span></span> <span data-ttu-id="068f6-324">您應該先熟悉：</span><span class="sxs-lookup"><span data-stu-id="068f6-324">You should be familiar with:</span></span>
+<span data-ttu-id="94aa9-323">本教學課程會前進。</span><span class="sxs-lookup"><span data-stu-id="94aa9-323">This tutorial is advanced.</span></span> <span data-ttu-id="94aa9-324">您應該先熟悉：</span><span class="sxs-lookup"><span data-stu-id="94aa9-324">You should be familiar with:</span></span>
 
-* [<span data-ttu-id="068f6-325">ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="068f6-325">ASP.NET Core</span></span>](xref:tutorials/first-mvc-app/start-mvc)
-* [<span data-ttu-id="068f6-326">驗證</span><span class="sxs-lookup"><span data-stu-id="068f6-326">Authentication</span></span>](xref:security/authentication/identity)
-* [<span data-ttu-id="068f6-327">帳戶確認和密碼復原</span><span class="sxs-lookup"><span data-stu-id="068f6-327">Account Confirmation and Password Recovery</span></span>](xref:security/authentication/accconfirm)
-* [<span data-ttu-id="068f6-328">授權</span><span class="sxs-lookup"><span data-stu-id="068f6-328">Authorization</span></span>](xref:security/authorization/introduction)
-* [<span data-ttu-id="068f6-329">Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="068f6-329">Entity Framework Core</span></span>](xref:data/ef-mvc/intro)
+* [<span data-ttu-id="94aa9-325">ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="94aa9-325">ASP.NET Core</span></span>](xref:tutorials/first-mvc-app/start-mvc)
+* [<span data-ttu-id="94aa9-326">驗證</span><span class="sxs-lookup"><span data-stu-id="94aa9-326">Authentication</span></span>](xref:security/authentication/identity)
+* [<span data-ttu-id="94aa9-327">帳戶確認和密碼復原</span><span class="sxs-lookup"><span data-stu-id="94aa9-327">Account Confirmation and Password Recovery</span></span>](xref:security/authentication/accconfirm)
+* [<span data-ttu-id="94aa9-328">授權</span><span class="sxs-lookup"><span data-stu-id="94aa9-328">Authorization</span></span>](xref:security/authorization/introduction)
+* [<span data-ttu-id="94aa9-329">Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="94aa9-329">Entity Framework Core</span></span>](xref:data/ef-mvc/intro)
 
-## <a name="the-starter-and-completed-app"></a><span data-ttu-id="068f6-330">Starter 和已完成的應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-330">The starter and completed app</span></span>
+## <a name="the-starter-and-completed-app"></a><span data-ttu-id="94aa9-330">Starter 和已完成的應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-330">The starter and completed app</span></span>
 
-<span data-ttu-id="068f6-331">[下載](xref:index#how-to-download-a-sample)[完成](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples)應用程式。</span><span class="sxs-lookup"><span data-stu-id="068f6-331">[Download](xref:index#how-to-download-a-sample) the [completed](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) app.</span></span> <span data-ttu-id="068f6-332">[測試](#test-the-completed-app)已完成的應用程式，讓您熟悉其安全性功能。</span><span class="sxs-lookup"><span data-stu-id="068f6-332">[Test](#test-the-completed-app) the completed app so you become familiar with its security features.</span></span>
+<span data-ttu-id="94aa9-331">[下載](xref:index#how-to-download-a-sample)[完成](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples)應用程式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-331">[Download](xref:index#how-to-download-a-sample) the [completed](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) app.</span></span> <span data-ttu-id="94aa9-332">[測試](#test-the-completed-app)已完成的應用程式，讓您熟悉其安全性功能。</span><span class="sxs-lookup"><span data-stu-id="94aa9-332">[Test](#test-the-completed-app) the completed app so you become familiar with its security features.</span></span>
 
-### <a name="the-starter-app"></a><span data-ttu-id="068f6-333">入門應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-333">The starter app</span></span>
+### <a name="the-starter-app"></a><span data-ttu-id="94aa9-333">入門應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-333">The starter app</span></span>
 
-<span data-ttu-id="068f6-334">[下載](xref:index#how-to-download-a-sample) [starter](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/)應用程式。</span><span class="sxs-lookup"><span data-stu-id="068f6-334">[Download](xref:index#how-to-download-a-sample) the [starter](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) app.</span></span>
+<span data-ttu-id="94aa9-334">[下載](xref:index#how-to-download-a-sample) [starter](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/)應用程式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-334">[Download](xref:index#how-to-download-a-sample) the [starter](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) app.</span></span>
 
-<span data-ttu-id="068f6-335">執行應用程式中，點選**ContactManager**連結，並確認您可以建立、 編輯和刪除連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-335">Run the app, tap the **ContactManager** link, and verify you can create, edit, and delete a contact.</span></span>
+<span data-ttu-id="94aa9-335">執行應用程式中，點選**ContactManager**連結，並確認您可以建立、 編輯和刪除連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-335">Run the app, tap the **ContactManager** link, and verify you can create, edit, and delete a contact.</span></span>
 
-## <a name="secure-user-data"></a><span data-ttu-id="068f6-336">保護使用者資料</span><span class="sxs-lookup"><span data-stu-id="068f6-336">Secure user data</span></span>
+## <a name="secure-user-data"></a><span data-ttu-id="94aa9-336">保護使用者資料</span><span class="sxs-lookup"><span data-stu-id="94aa9-336">Secure user data</span></span>
 
-<span data-ttu-id="068f6-337">下列各節會有所有主要的步驟，來建立安全的使用者資料的應用程式。</span><span class="sxs-lookup"><span data-stu-id="068f6-337">The following sections have all the major steps to create the secure user data app.</span></span> <span data-ttu-id="068f6-338">您可能會發現它已完成的專案參考很有幫助。</span><span class="sxs-lookup"><span data-stu-id="068f6-338">You may find it helpful to refer to the completed project.</span></span>
+<span data-ttu-id="94aa9-337">下列各節會有所有主要的步驟，來建立安全的使用者資料的應用程式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-337">The following sections have all the major steps to create the secure user data app.</span></span> <span data-ttu-id="94aa9-338">您可能會發現它已完成的專案參考很有幫助。</span><span class="sxs-lookup"><span data-stu-id="94aa9-338">You may find it helpful to refer to the completed project.</span></span>
 
-### <a name="tie-the-contact-data-to-the-user"></a><span data-ttu-id="068f6-339">將繫結至使用者的連絡人資料</span><span class="sxs-lookup"><span data-stu-id="068f6-339">Tie the contact data to the user</span></span>
+### <a name="tie-the-contact-data-to-the-user"></a><span data-ttu-id="94aa9-339">將繫結至使用者的連絡人資料</span><span class="sxs-lookup"><span data-stu-id="94aa9-339">Tie the contact data to the user</span></span>
 
-<span data-ttu-id="068f6-340">使用 ASP.NET[識別](xref:security/authentication/identity)使用者識別碼，以確保使用者可以編輯其資料，但不是其他使用者資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-340">Use the ASP.NET [Identity](xref:security/authentication/identity) user ID to ensure users can edit their data, but not other users data.</span></span> <span data-ttu-id="068f6-341">新增`OwnerID`並`ContactStatus`到`Contact`模型：</span><span class="sxs-lookup"><span data-stu-id="068f6-341">Add `OwnerID` and `ContactStatus` to the `Contact` model:</span></span>
+<span data-ttu-id="94aa9-340">使用 ASP.NET[識別](xref:security/authentication/identity)使用者識別碼，以確保使用者可以編輯其資料，但不是其他使用者資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-340">Use the ASP.NET [Identity](xref:security/authentication/identity) user ID to ensure users can edit their data, but not other users data.</span></span> <span data-ttu-id="94aa9-341">新增`OwnerID`並`ContactStatus`到`Contact`模型：</span><span class="sxs-lookup"><span data-stu-id="94aa9-341">Add `OwnerID` and `ContactStatus` to the `Contact` model:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
-<span data-ttu-id="068f6-342">`OwnerID` 是來自使用者的識別碼`AspNetUser`資料表中[身分識別](xref:security/authentication/identity)資料庫。</span><span class="sxs-lookup"><span data-stu-id="068f6-342">`OwnerID` is the user's ID from the `AspNetUser` table in the [Identity](xref:security/authentication/identity) database.</span></span> <span data-ttu-id="068f6-343">`Status`欄位可讓您判斷是否可供一般使用者檢視連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-343">The `Status` field determines if a contact is viewable by general users.</span></span>
+<span data-ttu-id="94aa9-342">`OwnerID` 是來自使用者的識別碼`AspNetUser`資料表中[身分識別](xref:security/authentication/identity)資料庫。</span><span class="sxs-lookup"><span data-stu-id="94aa9-342">`OwnerID` is the user's ID from the `AspNetUser` table in the [Identity](xref:security/authentication/identity) database.</span></span> <span data-ttu-id="94aa9-343">`Status`欄位可讓您判斷是否可供一般使用者檢視連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-343">The `Status` field determines if a contact is viewable by general users.</span></span>
 
-<span data-ttu-id="068f6-344">建立新的移轉，並更新資料庫：</span><span class="sxs-lookup"><span data-stu-id="068f6-344">Create a new migration and update the database:</span></span>
+<span data-ttu-id="94aa9-344">建立新的移轉，並更新資料庫：</span><span class="sxs-lookup"><span data-stu-id="94aa9-344">Create a new migration and update the database:</span></span>
 
-```console
+```dotnetcli
 dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-identity"></a><span data-ttu-id="068f6-345">將角色服務新增到 身分識別</span><span class="sxs-lookup"><span data-stu-id="068f6-345">Add Role services to Identity</span></span>
+### <a name="add-role-services-to-identity"></a><span data-ttu-id="94aa9-345">將角色服務新增到 身分識別</span><span class="sxs-lookup"><span data-stu-id="94aa9-345">Add Role services to Identity</span></span>
 
-<span data-ttu-id="068f6-346">附加[AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1)來新增角色服務：</span><span class="sxs-lookup"><span data-stu-id="068f6-346">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) to add Role services:</span></span>
+<span data-ttu-id="94aa9-346">附加[AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1)來新增角色服務：</span><span class="sxs-lookup"><span data-stu-id="94aa9-346">Append [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) to add Role services:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Startup.cs?name=snippet2&highlight=12)]
 
-### <a name="require-authenticated-users"></a><span data-ttu-id="068f6-347">需要已驗證的使用者</span><span class="sxs-lookup"><span data-stu-id="068f6-347">Require authenticated users</span></span>
+### <a name="require-authenticated-users"></a><span data-ttu-id="94aa9-347">需要已驗證的使用者</span><span class="sxs-lookup"><span data-stu-id="94aa9-347">Require authenticated users</span></span>
 
-<span data-ttu-id="068f6-348">設定預設的驗證原則，以要求使用者進行驗證：</span><span class="sxs-lookup"><span data-stu-id="068f6-348">Set the default authentication policy to require users to be authenticated:</span></span>
+<span data-ttu-id="94aa9-348">設定預設的驗證原則，以要求使用者進行驗證：</span><span class="sxs-lookup"><span data-stu-id="94aa9-348">Set the default authentication policy to require users to be authenticated:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Startup.cs?name=snippet&highlight=17-99)] 
 
- <span data-ttu-id="068f6-349">您可以選擇退出的 Razor 頁面、 控制器或動作方法層級的驗證`[AllowAnonymous]`屬性。</span><span class="sxs-lookup"><span data-stu-id="068f6-349">You can opt out of authentication at the Razor Page, controller, or action method level with the `[AllowAnonymous]` attribute.</span></span> <span data-ttu-id="068f6-350">設定預設的驗證原則，以要求使用者進行驗證，可保護新加入的 Razor 頁面和控制站。</span><span class="sxs-lookup"><span data-stu-id="068f6-350">Setting the default authentication policy to require users to be authenticated protects newly added Razor Pages and controllers.</span></span> <span data-ttu-id="068f6-351">具有預設值所需的驗證會比依賴新的控制器和 Razor 頁面，以包含更安全`[Authorize]`屬性。</span><span class="sxs-lookup"><span data-stu-id="068f6-351">Having authentication required by default is more secure than relying on new controllers and Razor Pages to include the `[Authorize]` attribute.</span></span>
+ <span data-ttu-id="94aa9-349">您可以選擇退出的 Razor 頁面、 控制器或動作方法層級的驗證`[AllowAnonymous]`屬性。</span><span class="sxs-lookup"><span data-stu-id="94aa9-349">You can opt out of authentication at the Razor Page, controller, or action method level with the `[AllowAnonymous]` attribute.</span></span> <span data-ttu-id="94aa9-350">設定預設的驗證原則，以要求使用者進行驗證，可保護新加入的 Razor 頁面和控制站。</span><span class="sxs-lookup"><span data-stu-id="94aa9-350">Setting the default authentication policy to require users to be authenticated protects newly added Razor Pages and controllers.</span></span> <span data-ttu-id="94aa9-351">具有預設值所需的驗證會比依賴新的控制器和 Razor 頁面，以包含更安全`[Authorize]`屬性。</span><span class="sxs-lookup"><span data-stu-id="94aa9-351">Having authentication required by default is more secure than relying on new controllers and Razor Pages to include the `[Authorize]` attribute.</span></span>
 
-<span data-ttu-id="068f6-352">新增[AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute)索引，因此匿名使用者可以取得站台的相關資訊，才能註冊的相關和連絡人頁面。</span><span class="sxs-lookup"><span data-stu-id="068f6-352">Add [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) to the Index, About, and Contact pages so anonymous users can get information about the site before they register.</span></span>
+<span data-ttu-id="94aa9-352">新增[AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute)索引，因此匿名使用者可以取得站台的相關資訊，才能註冊的相關和連絡人頁面。</span><span class="sxs-lookup"><span data-stu-id="94aa9-352">Add [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) to the Index, About, and Contact pages so anonymous users can get information about the site before they register.</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Index.cshtml.cs?highlight=1,6)]
 
-### <a name="configure-the-test-account"></a><span data-ttu-id="068f6-353">設定測試帳戶</span><span class="sxs-lookup"><span data-stu-id="068f6-353">Configure the test account</span></span>
+### <a name="configure-the-test-account"></a><span data-ttu-id="94aa9-353">設定測試帳戶</span><span class="sxs-lookup"><span data-stu-id="94aa9-353">Configure the test account</span></span>
 
-<span data-ttu-id="068f6-354">`SeedData`類別會建立兩個帳戶： 系統管理員和管理員。</span><span class="sxs-lookup"><span data-stu-id="068f6-354">The `SeedData` class creates two accounts: administrator and manager.</span></span> <span data-ttu-id="068f6-355">使用[Secret Manager 工具](xref:security/app-secrets)設定這些帳戶的密碼。</span><span class="sxs-lookup"><span data-stu-id="068f6-355">Use the [Secret Manager tool](xref:security/app-secrets) to set a password for these accounts.</span></span> <span data-ttu-id="068f6-356">設定密碼，從專案目錄 (目錄包含*Program.cs*):</span><span class="sxs-lookup"><span data-stu-id="068f6-356">Set the password from the project directory (the directory containing *Program.cs*):</span></span>
+<span data-ttu-id="94aa9-354">`SeedData`類別會建立兩個帳戶： 系統管理員和管理員。</span><span class="sxs-lookup"><span data-stu-id="94aa9-354">The `SeedData` class creates two accounts: administrator and manager.</span></span> <span data-ttu-id="94aa9-355">使用[Secret Manager 工具](xref:security/app-secrets)設定這些帳戶的密碼。</span><span class="sxs-lookup"><span data-stu-id="94aa9-355">Use the [Secret Manager tool](xref:security/app-secrets) to set a password for these accounts.</span></span> <span data-ttu-id="94aa9-356">設定密碼，從專案目錄 (目錄包含*Program.cs*):</span><span class="sxs-lookup"><span data-stu-id="94aa9-356">Set the password from the project directory (the directory containing *Program.cs*):</span></span>
 
-```console
+```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
 ```
 
-<span data-ttu-id="068f6-357">如果未指定強式密碼，則會擲回例外狀況時`SeedData.Initialize`呼叫。</span><span class="sxs-lookup"><span data-stu-id="068f6-357">If a strong password is not specified, an exception is thrown when `SeedData.Initialize` is called.</span></span>
+<span data-ttu-id="94aa9-357">如果未指定強式密碼，則會擲回例外狀況時`SeedData.Initialize`呼叫。</span><span class="sxs-lookup"><span data-stu-id="94aa9-357">If a strong password is not specified, an exception is thrown when `SeedData.Initialize` is called.</span></span>
 
-<span data-ttu-id="068f6-358">更新`Main`使用測試密碼：</span><span class="sxs-lookup"><span data-stu-id="068f6-358">Update `Main` to use the test password:</span></span>
+<span data-ttu-id="94aa9-358">更新`Main`使用測試密碼：</span><span class="sxs-lookup"><span data-stu-id="94aa9-358">Update `Main` to use the test password:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Program.cs?name=snippet)]
 
-### <a name="create-the-test-accounts-and-update-the-contacts"></a><span data-ttu-id="068f6-359">建立測試帳戶和更新連絡人</span><span class="sxs-lookup"><span data-stu-id="068f6-359">Create the test accounts and update the contacts</span></span>
+### <a name="create-the-test-accounts-and-update-the-contacts"></a><span data-ttu-id="94aa9-359">建立測試帳戶和更新連絡人</span><span class="sxs-lookup"><span data-stu-id="94aa9-359">Create the test accounts and update the contacts</span></span>
 
-<span data-ttu-id="068f6-360">更新`Initialize`方法中的`SeedData`類別來建立測試帳戶：</span><span class="sxs-lookup"><span data-stu-id="068f6-360">Update the `Initialize` method in the `SeedData` class to create the test accounts:</span></span>
+<span data-ttu-id="94aa9-360">更新`Initialize`方法中的`SeedData`類別來建立測試帳戶：</span><span class="sxs-lookup"><span data-stu-id="94aa9-360">Update the `Initialize` method in the `SeedData` class to create the test accounts:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Data/SeedData.cs?name=snippet_Initialize)]
 
-<span data-ttu-id="068f6-361">新增系統管理員使用者識別碼和`ContactStatus`連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-361">Add the administrator user ID and `ContactStatus` to the contacts.</span></span> <span data-ttu-id="068f6-362">讓其中一個 「 連絡人 」 已提交 」 和一個 「 已拒絕 」。</span><span class="sxs-lookup"><span data-stu-id="068f6-362">Make one of the contacts "Submitted" and one "Rejected".</span></span> <span data-ttu-id="068f6-363">加入所有連絡人的使用者識別碼和狀態。</span><span class="sxs-lookup"><span data-stu-id="068f6-363">Add the user ID and status to all the contacts.</span></span> <span data-ttu-id="068f6-364">只有一個連絡人所示：</span><span class="sxs-lookup"><span data-stu-id="068f6-364">Only one contact is shown:</span></span>
+<span data-ttu-id="94aa9-361">新增系統管理員使用者識別碼和`ContactStatus`連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-361">Add the administrator user ID and `ContactStatus` to the contacts.</span></span> <span data-ttu-id="94aa9-362">讓其中一個 「 連絡人 」 已提交 」 和一個 「 已拒絕 」。</span><span class="sxs-lookup"><span data-stu-id="94aa9-362">Make one of the contacts "Submitted" and one "Rejected".</span></span> <span data-ttu-id="94aa9-363">加入所有連絡人的使用者識別碼和狀態。</span><span class="sxs-lookup"><span data-stu-id="94aa9-363">Add the user ID and status to all the contacts.</span></span> <span data-ttu-id="94aa9-364">只有一個連絡人所示：</span><span class="sxs-lookup"><span data-stu-id="94aa9-364">Only one contact is shown:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Data/SeedData.cs?name=snippet1&highlight=17,18)]
 
-## <a name="create-owner-manager-and-administrator-authorization-handlers"></a><span data-ttu-id="068f6-365">建立擁有者 」、 「 管理員 」 和 「 系統管理員授權的處理常式</span><span class="sxs-lookup"><span data-stu-id="068f6-365">Create owner, manager, and administrator authorization handlers</span></span>
+## <a name="create-owner-manager-and-administrator-authorization-handlers"></a><span data-ttu-id="94aa9-365">建立擁有者 」、 「 管理員 」 和 「 系統管理員授權的處理常式</span><span class="sxs-lookup"><span data-stu-id="94aa9-365">Create owner, manager, and administrator authorization handlers</span></span>
 
-<span data-ttu-id="068f6-366">建立*授權*資料夾，並在其中`ContactIsOwnerAuthorizationHandler`建立類別。</span><span class="sxs-lookup"><span data-stu-id="068f6-366">Create an *Authorization* folder and create a `ContactIsOwnerAuthorizationHandler` class in it.</span></span> <span data-ttu-id="068f6-367">`ContactIsOwnerAuthorizationHandler`確認處理資源的使用者擁有的資源。</span><span class="sxs-lookup"><span data-stu-id="068f6-367">The `ContactIsOwnerAuthorizationHandler` verifies that the user acting on a resource owns the resource.</span></span>
+<span data-ttu-id="94aa9-366">建立*授權*資料夾，並在其中`ContactIsOwnerAuthorizationHandler`建立類別。</span><span class="sxs-lookup"><span data-stu-id="94aa9-366">Create an *Authorization* folder and create a `ContactIsOwnerAuthorizationHandler` class in it.</span></span> <span data-ttu-id="94aa9-367">`ContactIsOwnerAuthorizationHandler`確認處理資源的使用者擁有的資源。</span><span class="sxs-lookup"><span data-stu-id="94aa9-367">The `ContactIsOwnerAuthorizationHandler` verifies that the user acting on a resource owns the resource.</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Authorization/ContactIsOwnerAuthorizationHandler.cs)]
 
-<span data-ttu-id="068f6-368">`ContactIsOwnerAuthorizationHandler`呼叫[內容。成功](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_)目前已驗證的使用者是否連絡擁有者。</span><span class="sxs-lookup"><span data-stu-id="068f6-368">The `ContactIsOwnerAuthorizationHandler` calls [context.Succeed](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) if the current authenticated user is the contact owner.</span></span> <span data-ttu-id="068f6-369">授權的處理常式通常：</span><span class="sxs-lookup"><span data-stu-id="068f6-369">Authorization handlers generally:</span></span>
+<span data-ttu-id="94aa9-368">`ContactIsOwnerAuthorizationHandler`呼叫[內容。成功](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_)目前已驗證的使用者是否連絡擁有者。</span><span class="sxs-lookup"><span data-stu-id="94aa9-368">The `ContactIsOwnerAuthorizationHandler` calls [context.Succeed](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) if the current authenticated user is the contact owner.</span></span> <span data-ttu-id="94aa9-369">授權的處理常式通常：</span><span class="sxs-lookup"><span data-stu-id="94aa9-369">Authorization handlers generally:</span></span>
 
-* <span data-ttu-id="068f6-370">傳回`context.Succeed`時符合的需求。</span><span class="sxs-lookup"><span data-stu-id="068f6-370">Return `context.Succeed` when the requirements are met.</span></span>
-* <span data-ttu-id="068f6-371">傳回`Task.CompletedTask`時不符合需求。</span><span class="sxs-lookup"><span data-stu-id="068f6-371">Return `Task.CompletedTask` when requirements aren't met.</span></span> <span data-ttu-id="068f6-372">`Task.CompletedTask`不是成功或失敗&mdash;，它允許其他授權處理常式執行。</span><span class="sxs-lookup"><span data-stu-id="068f6-372">`Task.CompletedTask` is not success or failure&mdash;it allows other authorization handlers to run.</span></span>
+* <span data-ttu-id="94aa9-370">傳回`context.Succeed`時符合的需求。</span><span class="sxs-lookup"><span data-stu-id="94aa9-370">Return `context.Succeed` when the requirements are met.</span></span>
+* <span data-ttu-id="94aa9-371">傳回`Task.CompletedTask`時不符合需求。</span><span class="sxs-lookup"><span data-stu-id="94aa9-371">Return `Task.CompletedTask` when requirements aren't met.</span></span> <span data-ttu-id="94aa9-372">`Task.CompletedTask`不是成功或失敗&mdash;，它允許其他授權處理常式執行。</span><span class="sxs-lookup"><span data-stu-id="94aa9-372">`Task.CompletedTask` is not success or failure&mdash;it allows other authorization handlers to run.</span></span>
 
-<span data-ttu-id="068f6-373">如果您需要明確地使失敗，傳回[內容。失敗](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail)。</span><span class="sxs-lookup"><span data-stu-id="068f6-373">If you need to explicitly fail, return [context.Fail](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).</span></span>
+<span data-ttu-id="94aa9-373">如果您需要明確地使失敗，傳回[內容。失敗](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-373">If you need to explicitly fail, return [context.Fail](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).</span></span>
 
-<span data-ttu-id="068f6-374">此應用程式會允許連絡人的擁有者可以編輯/刪除/建立自己的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-374">The app allows contact owners to edit/delete/create their own data.</span></span> <span data-ttu-id="068f6-375">`ContactIsOwnerAuthorizationHandler` 不需要檢查傳入的要求參數的作業。</span><span class="sxs-lookup"><span data-stu-id="068f6-375">`ContactIsOwnerAuthorizationHandler` doesn't need to check the operation passed in the requirement parameter.</span></span>
+<span data-ttu-id="94aa9-374">此應用程式會允許連絡人的擁有者可以編輯/刪除/建立自己的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-374">The app allows contact owners to edit/delete/create their own data.</span></span> <span data-ttu-id="94aa9-375">`ContactIsOwnerAuthorizationHandler` 不需要檢查傳入的要求參數的作業。</span><span class="sxs-lookup"><span data-stu-id="94aa9-375">`ContactIsOwnerAuthorizationHandler` doesn't need to check the operation passed in the requirement parameter.</span></span>
 
-### <a name="create-a-manager-authorization-handler"></a><span data-ttu-id="068f6-376">建立管理員授權的處理常式</span><span class="sxs-lookup"><span data-stu-id="068f6-376">Create a manager authorization handler</span></span>
+### <a name="create-a-manager-authorization-handler"></a><span data-ttu-id="94aa9-376">建立管理員授權的處理常式</span><span class="sxs-lookup"><span data-stu-id="94aa9-376">Create a manager authorization handler</span></span>
 
-<span data-ttu-id="068f6-377">建立`ContactManagerAuthorizationHandler`類別內*授權*資料夾。</span><span class="sxs-lookup"><span data-stu-id="068f6-377">Create a `ContactManagerAuthorizationHandler` class in the *Authorization* folder.</span></span> <span data-ttu-id="068f6-378">`ContactManagerAuthorizationHandler`確認處理資源的使用者是管理員。</span><span class="sxs-lookup"><span data-stu-id="068f6-378">The `ContactManagerAuthorizationHandler` verifies the user acting on the resource is a manager.</span></span> <span data-ttu-id="068f6-379">只有經理可以核准或拒絕內容變更 （新增或變更）。</span><span class="sxs-lookup"><span data-stu-id="068f6-379">Only managers can approve or reject content changes (new or changed).</span></span>
+<span data-ttu-id="94aa9-377">建立`ContactManagerAuthorizationHandler`類別內*授權*資料夾。</span><span class="sxs-lookup"><span data-stu-id="94aa9-377">Create a `ContactManagerAuthorizationHandler` class in the *Authorization* folder.</span></span> <span data-ttu-id="94aa9-378">`ContactManagerAuthorizationHandler`確認處理資源的使用者是管理員。</span><span class="sxs-lookup"><span data-stu-id="94aa9-378">The `ContactManagerAuthorizationHandler` verifies the user acting on the resource is a manager.</span></span> <span data-ttu-id="94aa9-379">只有經理可以核准或拒絕內容變更 （新增或變更）。</span><span class="sxs-lookup"><span data-stu-id="94aa9-379">Only managers can approve or reject content changes (new or changed).</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Authorization/ContactManagerAuthorizationHandler.cs)]
 
-### <a name="create-an-administrator-authorization-handler"></a><span data-ttu-id="068f6-380">建立系統管理員授權處理常式</span><span class="sxs-lookup"><span data-stu-id="068f6-380">Create an administrator authorization handler</span></span>
+### <a name="create-an-administrator-authorization-handler"></a><span data-ttu-id="94aa9-380">建立系統管理員授權處理常式</span><span class="sxs-lookup"><span data-stu-id="94aa9-380">Create an administrator authorization handler</span></span>
 
-<span data-ttu-id="068f6-381">建立`ContactAdministratorsAuthorizationHandler`類別內*授權*資料夾。</span><span class="sxs-lookup"><span data-stu-id="068f6-381">Create a `ContactAdministratorsAuthorizationHandler` class in the *Authorization* folder.</span></span> <span data-ttu-id="068f6-382">`ContactAdministratorsAuthorizationHandler`確認處理資源的使用者是系統管理員。</span><span class="sxs-lookup"><span data-stu-id="068f6-382">The `ContactAdministratorsAuthorizationHandler` verifies the user acting on the resource is an administrator.</span></span> <span data-ttu-id="068f6-383">系統管理員可以執行所有作業。</span><span class="sxs-lookup"><span data-stu-id="068f6-383">Administrator can do all operations.</span></span>
+<span data-ttu-id="94aa9-381">建立`ContactAdministratorsAuthorizationHandler`類別內*授權*資料夾。</span><span class="sxs-lookup"><span data-stu-id="94aa9-381">Create a `ContactAdministratorsAuthorizationHandler` class in the *Authorization* folder.</span></span> <span data-ttu-id="94aa9-382">`ContactAdministratorsAuthorizationHandler`確認處理資源的使用者是系統管理員。</span><span class="sxs-lookup"><span data-stu-id="94aa9-382">The `ContactAdministratorsAuthorizationHandler` verifies the user acting on the resource is an administrator.</span></span> <span data-ttu-id="94aa9-383">系統管理員可以執行所有作業。</span><span class="sxs-lookup"><span data-stu-id="94aa9-383">Administrator can do all operations.</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Authorization/ContactAdministratorsAuthorizationHandler.cs)]
 
-## <a name="register-the-authorization-handlers"></a><span data-ttu-id="068f6-384">註冊授權處理常式</span><span class="sxs-lookup"><span data-stu-id="068f6-384">Register the authorization handlers</span></span>
+## <a name="register-the-authorization-handlers"></a><span data-ttu-id="94aa9-384">註冊授權處理常式</span><span class="sxs-lookup"><span data-stu-id="94aa9-384">Register the authorization handlers</span></span>
 
-<span data-ttu-id="068f6-385">您必須針對註冊服務使用 Entity Framework Core[相依性插入](xref:fundamentals/dependency-injection)使用[AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)。</span><span class="sxs-lookup"><span data-stu-id="068f6-385">Services using Entity Framework Core must be registered for [dependency injection](xref:fundamentals/dependency-injection) using [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions).</span></span> <span data-ttu-id="068f6-386">`ContactIsOwnerAuthorizationHandler`會使用 ASP.NET Core[身分識別](xref:security/authentication/identity)，這根據 Entity Framework Core。</span><span class="sxs-lookup"><span data-stu-id="068f6-386">The `ContactIsOwnerAuthorizationHandler` uses ASP.NET Core [Identity](xref:security/authentication/identity), which is built on Entity Framework Core.</span></span> <span data-ttu-id="068f6-387">註冊處理常式的服務集合，讓它們能夠`ContactsController`經由[相依性插入](xref:fundamentals/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="068f6-387">Register the handlers with the service collection so they're available to the `ContactsController` through [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="068f6-388">將下列程式碼新增至結尾`ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="068f6-388">Add the following code to the end of `ConfigureServices`:</span></span>
+<span data-ttu-id="94aa9-385">您必須針對註冊服務使用 Entity Framework Core[相依性插入](xref:fundamentals/dependency-injection)使用[AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-385">Services using Entity Framework Core must be registered for [dependency injection](xref:fundamentals/dependency-injection) using [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions).</span></span> <span data-ttu-id="94aa9-386">`ContactIsOwnerAuthorizationHandler`會使用 ASP.NET Core[身分識別](xref:security/authentication/identity)，這根據 Entity Framework Core。</span><span class="sxs-lookup"><span data-stu-id="94aa9-386">The `ContactIsOwnerAuthorizationHandler` uses ASP.NET Core [Identity](xref:security/authentication/identity), which is built on Entity Framework Core.</span></span> <span data-ttu-id="94aa9-387">註冊處理常式的服務集合，讓它們能夠`ContactsController`經由[相依性插入](xref:fundamentals/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-387">Register the handlers with the service collection so they're available to the `ContactsController` through [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="94aa9-388">將下列程式碼新增至結尾`ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="94aa9-388">Add the following code to the end of `ConfigureServices`:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Startup.cs?name=snippet_defaultPolicy&highlight=27-99)]
 
-<span data-ttu-id="068f6-389">`ContactAdministratorsAuthorizationHandler` 和`ContactManagerAuthorizationHandler`會新增為單一子句。</span><span class="sxs-lookup"><span data-stu-id="068f6-389">`ContactAdministratorsAuthorizationHandler` and `ContactManagerAuthorizationHandler` are added as singletons.</span></span> <span data-ttu-id="068f6-390">它們是單次個體，因為他們不使用 EF 和所需的所有資訊都都`Context`參數`HandleRequirementAsync`方法。</span><span class="sxs-lookup"><span data-stu-id="068f6-390">They're singletons because they don't use EF and all the information needed is in the `Context` parameter of the `HandleRequirementAsync` method.</span></span>
+<span data-ttu-id="94aa9-389">`ContactAdministratorsAuthorizationHandler` 和`ContactManagerAuthorizationHandler`會新增為單一子句。</span><span class="sxs-lookup"><span data-stu-id="94aa9-389">`ContactAdministratorsAuthorizationHandler` and `ContactManagerAuthorizationHandler` are added as singletons.</span></span> <span data-ttu-id="94aa9-390">它們是單次個體，因為他們不使用 EF 和所需的所有資訊都都`Context`參數`HandleRequirementAsync`方法。</span><span class="sxs-lookup"><span data-stu-id="94aa9-390">They're singletons because they don't use EF and all the information needed is in the `Context` parameter of the `HandleRequirementAsync` method.</span></span>
 
-## <a name="support-authorization"></a><span data-ttu-id="068f6-391">支援的授權</span><span class="sxs-lookup"><span data-stu-id="068f6-391">Support authorization</span></span>
+## <a name="support-authorization"></a><span data-ttu-id="94aa9-391">支援的授權</span><span class="sxs-lookup"><span data-stu-id="94aa9-391">Support authorization</span></span>
 
-<span data-ttu-id="068f6-392">在本節中，您可以更新 Razor 頁面，並新增的運算需求類別。</span><span class="sxs-lookup"><span data-stu-id="068f6-392">In this section, you update the Razor Pages and add an operations requirements class.</span></span>
+<span data-ttu-id="94aa9-392">在本節中，您可以更新 Razor 頁面，並新增的運算需求類別。</span><span class="sxs-lookup"><span data-stu-id="94aa9-392">In this section, you update the Razor Pages and add an operations requirements class.</span></span>
 
-### <a name="review-the-contact-operations-requirements-class"></a><span data-ttu-id="068f6-393">檢閱此連絡人的作業需求類別</span><span class="sxs-lookup"><span data-stu-id="068f6-393">Review the contact operations requirements class</span></span>
+### <a name="review-the-contact-operations-requirements-class"></a><span data-ttu-id="94aa9-393">檢閱此連絡人的作業需求類別</span><span class="sxs-lookup"><span data-stu-id="94aa9-393">Review the contact operations requirements class</span></span>
 
-<span data-ttu-id="068f6-394">檢閱`ContactOperations`類別。</span><span class="sxs-lookup"><span data-stu-id="068f6-394">Review the `ContactOperations` class.</span></span> <span data-ttu-id="068f6-395">這個類別包含的需求，應用程式支援：</span><span class="sxs-lookup"><span data-stu-id="068f6-395">This class contains the requirements the app supports:</span></span>
+<span data-ttu-id="94aa9-394">檢閱`ContactOperations`類別。</span><span class="sxs-lookup"><span data-stu-id="94aa9-394">Review the `ContactOperations` class.</span></span> <span data-ttu-id="94aa9-395">這個類別包含的需求，應用程式支援：</span><span class="sxs-lookup"><span data-stu-id="94aa9-395">This class contains the requirements the app supports:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-razor-pages"></a><span data-ttu-id="068f6-396">建立連絡人 Razor 頁面的基底類別</span><span class="sxs-lookup"><span data-stu-id="068f6-396">Create a base class for the Contacts Razor Pages</span></span>
+### <a name="create-a-base-class-for-the-contacts-razor-pages"></a><span data-ttu-id="94aa9-396">建立連絡人 Razor 頁面的基底類別</span><span class="sxs-lookup"><span data-stu-id="94aa9-396">Create a base class for the Contacts Razor Pages</span></span>
 
-<span data-ttu-id="068f6-397">建立基底類別，其中包含連絡人 Razor 頁面中使用的服務。</span><span class="sxs-lookup"><span data-stu-id="068f6-397">Create a base class that contains the services used in the contacts Razor Pages.</span></span> <span data-ttu-id="068f6-398">基底類別會將初始化程式碼置於一個位置：</span><span class="sxs-lookup"><span data-stu-id="068f6-398">The base class puts the initialization code in one location:</span></span>
+<span data-ttu-id="94aa9-397">建立基底類別，其中包含連絡人 Razor 頁面中使用的服務。</span><span class="sxs-lookup"><span data-stu-id="94aa9-397">Create a base class that contains the services used in the contacts Razor Pages.</span></span> <span data-ttu-id="94aa9-398">基底類別會將初始化程式碼置於一個位置：</span><span class="sxs-lookup"><span data-stu-id="94aa9-398">The base class puts the initialization code in one location:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/DI_BasePageModel.cs)]
 
-<span data-ttu-id="068f6-399">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="068f6-399">The preceding code:</span></span>
+<span data-ttu-id="94aa9-399">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="94aa9-399">The preceding code:</span></span>
 
-* <span data-ttu-id="068f6-400">新增`IAuthorizationService`服務存取授權的處理常式。</span><span class="sxs-lookup"><span data-stu-id="068f6-400">Adds the `IAuthorizationService` service to access to the authorization handlers.</span></span>
-* <span data-ttu-id="068f6-401">將身分識別新增`UserManager`服務。</span><span class="sxs-lookup"><span data-stu-id="068f6-401">Adds the Identity `UserManager` service.</span></span>
-* <span data-ttu-id="068f6-402">加入 `ApplicationDbContext`。</span><span class="sxs-lookup"><span data-stu-id="068f6-402">Add the `ApplicationDbContext`.</span></span>
+* <span data-ttu-id="94aa9-400">新增`IAuthorizationService`服務存取授權的處理常式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-400">Adds the `IAuthorizationService` service to access to the authorization handlers.</span></span>
+* <span data-ttu-id="94aa9-401">將身分識別新增`UserManager`服務。</span><span class="sxs-lookup"><span data-stu-id="94aa9-401">Adds the Identity `UserManager` service.</span></span>
+* <span data-ttu-id="94aa9-402">加入 `ApplicationDbContext`。</span><span class="sxs-lookup"><span data-stu-id="94aa9-402">Add the `ApplicationDbContext`.</span></span>
 
-### <a name="update-the-createmodel"></a><span data-ttu-id="068f6-403">更新 CreateModel</span><span class="sxs-lookup"><span data-stu-id="068f6-403">Update the CreateModel</span></span>
+### <a name="update-the-createmodel"></a><span data-ttu-id="94aa9-403">更新 CreateModel</span><span class="sxs-lookup"><span data-stu-id="94aa9-403">Update the CreateModel</span></span>
 
-<span data-ttu-id="068f6-404">更新 [建立] 頁面模型建構函式使用`DI_BasePageModel`基底類別：</span><span class="sxs-lookup"><span data-stu-id="068f6-404">Update the create page model constructor to use the `DI_BasePageModel` base class:</span></span>
+<span data-ttu-id="94aa9-404">更新 [建立] 頁面模型建構函式使用`DI_BasePageModel`基底類別：</span><span class="sxs-lookup"><span data-stu-id="94aa9-404">Update the create page model constructor to use the `DI_BasePageModel` base class:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Create.cshtml.cs?name=snippetCtor)]
 
-<span data-ttu-id="068f6-405">更新`CreateModel.OnPostAsync`方法：</span><span class="sxs-lookup"><span data-stu-id="068f6-405">Update the `CreateModel.OnPostAsync` method to:</span></span>
+<span data-ttu-id="94aa9-405">更新`CreateModel.OnPostAsync`方法：</span><span class="sxs-lookup"><span data-stu-id="94aa9-405">Update the `CreateModel.OnPostAsync` method to:</span></span>
 
-* <span data-ttu-id="068f6-406">新增的使用者識別碼`Contact`模型。</span><span class="sxs-lookup"><span data-stu-id="068f6-406">Add the user ID to the `Contact` model.</span></span>
-* <span data-ttu-id="068f6-407">呼叫授權處理常式，以確定使用者有權限來建立連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-407">Call the authorization handler to verify the user has permission to create contacts.</span></span>
+* <span data-ttu-id="94aa9-406">新增的使用者識別碼`Contact`模型。</span><span class="sxs-lookup"><span data-stu-id="94aa9-406">Add the user ID to the `Contact` model.</span></span>
+* <span data-ttu-id="94aa9-407">呼叫授權處理常式，以確定使用者有權限來建立連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-407">Call the authorization handler to verify the user has permission to create contacts.</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Create.cshtml.cs?name=snippet_Create)]
 
-### <a name="update-the-indexmodel"></a><span data-ttu-id="068f6-408">更新 IndexModel</span><span class="sxs-lookup"><span data-stu-id="068f6-408">Update the IndexModel</span></span>
+### <a name="update-the-indexmodel"></a><span data-ttu-id="94aa9-408">更新 IndexModel</span><span class="sxs-lookup"><span data-stu-id="94aa9-408">Update the IndexModel</span></span>
 
-<span data-ttu-id="068f6-409">更新`OnGetAsync`方法，讓只有核准的連絡人會向一般使用者顯示：</span><span class="sxs-lookup"><span data-stu-id="068f6-409">Update the `OnGetAsync` method so only approved contacts are shown to general users:</span></span>
+<span data-ttu-id="94aa9-409">更新`OnGetAsync`方法，讓只有核准的連絡人會向一般使用者顯示：</span><span class="sxs-lookup"><span data-stu-id="94aa9-409">Update the `OnGetAsync` method so only approved contacts are shown to general users:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Index.cshtml.cs?name=snippet)]
 
-### <a name="update-the-editmodel"></a><span data-ttu-id="068f6-410">更新 EditModel</span><span class="sxs-lookup"><span data-stu-id="068f6-410">Update the EditModel</span></span>
+### <a name="update-the-editmodel"></a><span data-ttu-id="94aa9-410">更新 EditModel</span><span class="sxs-lookup"><span data-stu-id="94aa9-410">Update the EditModel</span></span>
 
-<span data-ttu-id="068f6-411">新增授權處理常式，以確認該使用者所擁有的連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-411">Add an authorization handler to verify the user owns the contact.</span></span> <span data-ttu-id="068f6-412">正在驗證資源的授權，因為`[Authorize]`屬性還不夠。</span><span class="sxs-lookup"><span data-stu-id="068f6-412">Because resource authorization is being validated, the `[Authorize]` attribute is not enough.</span></span> <span data-ttu-id="068f6-413">要在評估屬性時，應用程式就不需要資源的存取權。</span><span class="sxs-lookup"><span data-stu-id="068f6-413">The app doesn't have access to the resource when attributes are evaluated.</span></span> <span data-ttu-id="068f6-414">資源為基礎的授權必須是必要的。</span><span class="sxs-lookup"><span data-stu-id="068f6-414">Resource-based authorization must be imperative.</span></span> <span data-ttu-id="068f6-415">一旦應用程式存取的資源中，載入頁面模型中，或載入處理常式本身內，則必須執行檢查。</span><span class="sxs-lookup"><span data-stu-id="068f6-415">Checks must be performed once the app has access to the resource, either by loading it in the page model or by loading it within the handler itself.</span></span> <span data-ttu-id="068f6-416">您經常存取的資源，藉由傳入的資源索引鍵。</span><span class="sxs-lookup"><span data-stu-id="068f6-416">You frequently access the resource by passing in the resource key.</span></span>
+<span data-ttu-id="94aa9-411">新增授權處理常式，以確認該使用者所擁有的連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-411">Add an authorization handler to verify the user owns the contact.</span></span> <span data-ttu-id="94aa9-412">正在驗證資源的授權，因為`[Authorize]`屬性還不夠。</span><span class="sxs-lookup"><span data-stu-id="94aa9-412">Because resource authorization is being validated, the `[Authorize]` attribute is not enough.</span></span> <span data-ttu-id="94aa9-413">要在評估屬性時，應用程式就不需要資源的存取權。</span><span class="sxs-lookup"><span data-stu-id="94aa9-413">The app doesn't have access to the resource when attributes are evaluated.</span></span> <span data-ttu-id="94aa9-414">資源為基礎的授權必須是必要的。</span><span class="sxs-lookup"><span data-stu-id="94aa9-414">Resource-based authorization must be imperative.</span></span> <span data-ttu-id="94aa9-415">一旦應用程式存取的資源中，載入頁面模型中，或載入處理常式本身內，則必須執行檢查。</span><span class="sxs-lookup"><span data-stu-id="94aa9-415">Checks must be performed once the app has access to the resource, either by loading it in the page model or by loading it within the handler itself.</span></span> <span data-ttu-id="94aa9-416">您經常存取的資源，藉由傳入的資源索引鍵。</span><span class="sxs-lookup"><span data-stu-id="94aa9-416">You frequently access the resource by passing in the resource key.</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Edit.cshtml.cs?name=snippet)]
 
-### <a name="update-the-deletemodel"></a><span data-ttu-id="068f6-417">更新 DeleteModel</span><span class="sxs-lookup"><span data-stu-id="068f6-417">Update the DeleteModel</span></span>
+### <a name="update-the-deletemodel"></a><span data-ttu-id="94aa9-417">更新 DeleteModel</span><span class="sxs-lookup"><span data-stu-id="94aa9-417">Update the DeleteModel</span></span>
 
-<span data-ttu-id="068f6-418">更新使用授權處理常式，以確定使用者有刪除權限，在連絡人上的 [刪除] 頁面模型。</span><span class="sxs-lookup"><span data-stu-id="068f6-418">Update the delete page model to use the authorization handler to verify the user has delete permission on the contact.</span></span>
+<span data-ttu-id="94aa9-418">更新使用授權處理常式，以確定使用者有刪除權限，在連絡人上的 [刪除] 頁面模型。</span><span class="sxs-lookup"><span data-stu-id="94aa9-418">Update the delete page model to use the authorization handler to verify the user has delete permission on the contact.</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Delete.cshtml.cs?name=snippet)]
 
-## <a name="inject-the-authorization-service-into-the-views"></a><span data-ttu-id="068f6-419">插入檢視中的授權服務</span><span class="sxs-lookup"><span data-stu-id="068f6-419">Inject the authorization service into the views</span></span>
+## <a name="inject-the-authorization-service-into-the-views"></a><span data-ttu-id="94aa9-419">插入檢視中的授權服務</span><span class="sxs-lookup"><span data-stu-id="94aa9-419">Inject the authorization service into the views</span></span>
 
-<span data-ttu-id="068f6-420">目前，UI 顯示編輯和刪除的使用者無法修改的連絡人的連結。</span><span class="sxs-lookup"><span data-stu-id="068f6-420">Currently, the UI shows edit and delete links for contacts the user can't modify.</span></span>
+<span data-ttu-id="94aa9-420">目前，UI 顯示編輯和刪除的使用者無法修改的連絡人的連結。</span><span class="sxs-lookup"><span data-stu-id="94aa9-420">Currently, the UI shows edit and delete links for contacts the user can't modify.</span></span>
 
-<span data-ttu-id="068f6-421">插入中的授權服務*views/_viewimports.cshtml*檔案，以便它可供所有檢視：</span><span class="sxs-lookup"><span data-stu-id="068f6-421">Inject the authorization service in the *Views/_ViewImports.cshtml* file so it's available to all views:</span></span>
+<span data-ttu-id="94aa9-421">插入中的授權服務*views/_viewimports.cshtml*檔案，以便它可供所有檢視：</span><span class="sxs-lookup"><span data-stu-id="94aa9-421">Inject the authorization service in the *Views/_ViewImports.cshtml* file so it's available to all views:</span></span>
 
 [!code-cshtml[](secure-data/samples/final2.1/Pages/_ViewImports.cshtml?highlight=6-99)]
 
-<span data-ttu-id="068f6-422">上述標記會新增數個`using`陳述式。</span><span class="sxs-lookup"><span data-stu-id="068f6-422">The preceding markup adds several `using` statements.</span></span>
+<span data-ttu-id="94aa9-422">上述標記會新增數個`using`陳述式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-422">The preceding markup adds several `using` statements.</span></span>
 
-<span data-ttu-id="068f6-423">更新**編輯**並**刪除**中的連結*Pages/Contacts/Index.cshtml*讓它們只轉譯為適當的權限的使用者：</span><span class="sxs-lookup"><span data-stu-id="068f6-423">Update the **Edit** and **Delete** links in *Pages/Contacts/Index.cshtml* so they're only rendered for users with the appropriate permissions:</span></span>
+<span data-ttu-id="94aa9-423">更新**編輯**並**刪除**中的連結*Pages/Contacts/Index.cshtml*讓它們只轉譯為適當的權限的使用者：</span><span class="sxs-lookup"><span data-stu-id="94aa9-423">Update the **Edit** and **Delete** links in *Pages/Contacts/Index.cshtml* so they're only rendered for users with the appropriate permissions:</span></span>
 
 [!code-cshtml[](secure-data/samples/final2.1/Pages/Contacts/Index.cshtml?highlight=34-36,62-999)]
 
 > [!WARNING]
-> <span data-ttu-id="068f6-424">隱藏不需要變更資料的權限的使用者的連結不安全的應用程式。</span><span class="sxs-lookup"><span data-stu-id="068f6-424">Hiding links from users that don't have permission to change data doesn't secure the app.</span></span> <span data-ttu-id="068f6-425">隱藏的連結，讓應用程式更方便使用顯示唯一有效的連結。</span><span class="sxs-lookup"><span data-stu-id="068f6-425">Hiding links makes the app more user-friendly by displaying only valid links.</span></span> <span data-ttu-id="068f6-426">使用者可以 hack 產生的 Url 以叫用 編輯和刪除作業對他們未擁有的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-426">Users can hack the generated URLs to invoke edit and delete operations on data they don't own.</span></span> <span data-ttu-id="068f6-427">Razor 頁面或控制站必須強制執行存取檢查，以確保資料的安全。</span><span class="sxs-lookup"><span data-stu-id="068f6-427">The Razor Page or controller must enforce access checks to secure the data.</span></span>
+> <span data-ttu-id="94aa9-424">隱藏不需要變更資料的權限的使用者的連結不安全的應用程式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-424">Hiding links from users that don't have permission to change data doesn't secure the app.</span></span> <span data-ttu-id="94aa9-425">隱藏的連結，讓應用程式更方便使用顯示唯一有效的連結。</span><span class="sxs-lookup"><span data-stu-id="94aa9-425">Hiding links makes the app more user-friendly by displaying only valid links.</span></span> <span data-ttu-id="94aa9-426">使用者可以 hack 產生的 Url 以叫用 編輯和刪除作業對他們未擁有的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-426">Users can hack the generated URLs to invoke edit and delete operations on data they don't own.</span></span> <span data-ttu-id="94aa9-427">Razor 頁面或控制站必須強制執行存取檢查，以確保資料的安全。</span><span class="sxs-lookup"><span data-stu-id="94aa9-427">The Razor Page or controller must enforce access checks to secure the data.</span></span>
 
-### <a name="update-details"></a><span data-ttu-id="068f6-428">更新詳細資料</span><span class="sxs-lookup"><span data-stu-id="068f6-428">Update Details</span></span>
+### <a name="update-details"></a><span data-ttu-id="94aa9-428">更新詳細資料</span><span class="sxs-lookup"><span data-stu-id="94aa9-428">Update Details</span></span>
 
-<span data-ttu-id="068f6-429">更新詳細資料檢視，讓經理可以核准或拒絕連絡人：</span><span class="sxs-lookup"><span data-stu-id="068f6-429">Update the details view so managers can approve or reject contacts:</span></span>
+<span data-ttu-id="94aa9-429">更新詳細資料檢視，讓經理可以核准或拒絕連絡人：</span><span class="sxs-lookup"><span data-stu-id="94aa9-429">Update the details view so managers can approve or reject contacts:</span></span>
 
 [!code-cshtml[](secure-data/samples/final2.1/Pages/Contacts/Details.cshtml?name=snippet)]
 
-<span data-ttu-id="068f6-430">更新詳細資料 頁面模型：</span><span class="sxs-lookup"><span data-stu-id="068f6-430">Update the details page model:</span></span>
+<span data-ttu-id="94aa9-430">更新詳細資料 頁面模型：</span><span class="sxs-lookup"><span data-stu-id="94aa9-430">Update the details page model:</span></span>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Details.cshtml.cs?name=snippet)]
 
-## <a name="add-or-remove-a-user-to-a-role"></a><span data-ttu-id="068f6-431">新增或移除使用者角色</span><span class="sxs-lookup"><span data-stu-id="068f6-431">Add or remove a user to a role</span></span>
+## <a name="add-or-remove-a-user-to-a-role"></a><span data-ttu-id="94aa9-431">新增或移除使用者角色</span><span class="sxs-lookup"><span data-stu-id="94aa9-431">Add or remove a user to a role</span></span>
 
-<span data-ttu-id="068f6-432">請參閱[本期](https://github.com/aspnet/AspNetCore.Docs/issues/8502)有關：</span><span class="sxs-lookup"><span data-stu-id="068f6-432">See [this issue](https://github.com/aspnet/AspNetCore.Docs/issues/8502) for information on:</span></span>
+<span data-ttu-id="94aa9-432">請參閱[本期](https://github.com/aspnet/AspNetCore.Docs/issues/8502)有關：</span><span class="sxs-lookup"><span data-stu-id="94aa9-432">See [this issue](https://github.com/aspnet/AspNetCore.Docs/issues/8502) for information on:</span></span>
 
-* <span data-ttu-id="068f6-433">移除使用者的權限。</span><span class="sxs-lookup"><span data-stu-id="068f6-433">Removing privileges from a user.</span></span> <span data-ttu-id="068f6-434">例如，將聊天應用程式中的使用者靜音。</span><span class="sxs-lookup"><span data-stu-id="068f6-434">For example, muting a user in a chat app.</span></span>
-* <span data-ttu-id="068f6-435">若要新增權限。</span><span class="sxs-lookup"><span data-stu-id="068f6-435">Adding privileges to a user.</span></span>
+* <span data-ttu-id="94aa9-433">移除使用者的權限。</span><span class="sxs-lookup"><span data-stu-id="94aa9-433">Removing privileges from a user.</span></span> <span data-ttu-id="94aa9-434">例如，將聊天應用程式中的使用者靜音。</span><span class="sxs-lookup"><span data-stu-id="94aa9-434">For example, muting a user in a chat app.</span></span>
+* <span data-ttu-id="94aa9-435">若要新增權限。</span><span class="sxs-lookup"><span data-stu-id="94aa9-435">Adding privileges to a user.</span></span>
 
-## <a name="test-the-completed-app"></a><span data-ttu-id="068f6-436">測試已完成的應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-436">Test the completed app</span></span>
+## <a name="test-the-completed-app"></a><span data-ttu-id="94aa9-436">測試已完成的應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-436">Test the completed app</span></span>
 
-<span data-ttu-id="068f6-437">如果您尚未設定植入的使用者帳戶的密碼，使用[Secret Manager 工具](xref:security/app-secrets#secret-manager)設定密碼：</span><span class="sxs-lookup"><span data-stu-id="068f6-437">If you haven't already set a password for seeded user accounts, use the [Secret Manager tool](xref:security/app-secrets#secret-manager) to set a password:</span></span>
+<span data-ttu-id="94aa9-437">如果您尚未設定植入的使用者帳戶的密碼，使用[Secret Manager 工具](xref:security/app-secrets#secret-manager)設定密碼：</span><span class="sxs-lookup"><span data-stu-id="94aa9-437">If you haven't already set a password for seeded user accounts, use the [Secret Manager tool](xref:security/app-secrets#secret-manager) to set a password:</span></span>
 
-* <span data-ttu-id="068f6-438">選擇強式密碼：請使用八個或更多個字元，且至少要有一個大寫字元、數位和符號。</span><span class="sxs-lookup"><span data-stu-id="068f6-438">Choose a strong password: Use eight or more characters and at least one upper-case character, number, and symbol.</span></span> <span data-ttu-id="068f6-439">比方說，`Passw0rd!`符合強式密碼需求。</span><span class="sxs-lookup"><span data-stu-id="068f6-439">For example, `Passw0rd!` meets the strong password requirements.</span></span>
-* <span data-ttu-id="068f6-440">執行下列命令，從專案的資料夾，其中`<PW>`的密碼：</span><span class="sxs-lookup"><span data-stu-id="068f6-440">Execute the following command from the project's folder, where `<PW>` is the password:</span></span>
+* <span data-ttu-id="94aa9-438">選擇強式密碼：請使用八個或更多個字元，且至少要有一個大寫字元、數位和符號。</span><span class="sxs-lookup"><span data-stu-id="94aa9-438">Choose a strong password: Use eight or more characters and at least one upper-case character, number, and symbol.</span></span> <span data-ttu-id="94aa9-439">比方說，`Passw0rd!`符合強式密碼需求。</span><span class="sxs-lookup"><span data-stu-id="94aa9-439">For example, `Passw0rd!` meets the strong password requirements.</span></span>
+* <span data-ttu-id="94aa9-440">執行下列命令，從專案的資料夾，其中`<PW>`的密碼：</span><span class="sxs-lookup"><span data-stu-id="94aa9-440">Execute the following command from the project's folder, where `<PW>` is the password:</span></span>
 
-  ```console
+  ```dotnetcli
   dotnet user-secrets set SeedUserPW <PW>
   ```
 
-* <span data-ttu-id="068f6-441">卸載並更新資料庫</span><span class="sxs-lookup"><span data-stu-id="068f6-441">Drop and update the Database</span></span>
+* <span data-ttu-id="94aa9-441">卸載並更新資料庫</span><span class="sxs-lookup"><span data-stu-id="94aa9-441">Drop and update the Database</span></span>
 
-    ```console
-     dotnet ef database drop -f
-     dotnet ef database update  
-     ```
+  ```dotnetcli
+  dotnet ef database drop -f
+  dotnet ef database update  
+  ```
 
-* <span data-ttu-id="068f6-442">重新啟動植入資料庫的應用程式。</span><span class="sxs-lookup"><span data-stu-id="068f6-442">Restart the app to seed the database.</span></span>
+* <span data-ttu-id="94aa9-442">重新啟動植入資料庫的應用程式。</span><span class="sxs-lookup"><span data-stu-id="94aa9-442">Restart the app to seed the database.</span></span>
 
-<span data-ttu-id="068f6-443">測試已完成的應用程式的簡單方法是啟動三個不同的瀏覽器 （或 incognito/InPrivate 工作階段）。</span><span class="sxs-lookup"><span data-stu-id="068f6-443">An easy way to test the completed app is to launch three different browsers (or incognito/InPrivate sessions).</span></span> <span data-ttu-id="068f6-444">在瀏覽器中註冊新的使用者 (例如`test@example.com`)。</span><span class="sxs-lookup"><span data-stu-id="068f6-444">In one browser, register a new user (for example, `test@example.com`).</span></span> <span data-ttu-id="068f6-445">使用不同的使用者登入每個瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="068f6-445">Sign in to each browser with a different user.</span></span> <span data-ttu-id="068f6-446">請確認下列作業：</span><span class="sxs-lookup"><span data-stu-id="068f6-446">Verify the following operations:</span></span>
+<span data-ttu-id="94aa9-443">測試已完成的應用程式的簡單方法是啟動三個不同的瀏覽器 （或 incognito/InPrivate 工作階段）。</span><span class="sxs-lookup"><span data-stu-id="94aa9-443">An easy way to test the completed app is to launch three different browsers (or incognito/InPrivate sessions).</span></span> <span data-ttu-id="94aa9-444">在瀏覽器中註冊新的使用者 (例如`test@example.com`)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-444">In one browser, register a new user (for example, `test@example.com`).</span></span> <span data-ttu-id="94aa9-445">使用不同的使用者登入每個瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="94aa9-445">Sign in to each browser with a different user.</span></span> <span data-ttu-id="94aa9-446">請確認下列作業：</span><span class="sxs-lookup"><span data-stu-id="94aa9-446">Verify the following operations:</span></span>
 
-* <span data-ttu-id="068f6-447">已註冊的使用者可以檢視所有已核准的連絡資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-447">Registered users can view all of the approved contact data.</span></span>
-* <span data-ttu-id="068f6-448">已註冊的使用者可以編輯/刪除他們自己的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-448">Registered users can edit/delete their own data.</span></span>
-* <span data-ttu-id="068f6-449">經理可以核准/拒絕連絡人資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-449">Managers can approve/reject contact data.</span></span> <span data-ttu-id="068f6-450">`Details`檢視會顯示**核准**並**拒絕**按鈕。</span><span class="sxs-lookup"><span data-stu-id="068f6-450">The `Details` view shows **Approve** and **Reject** buttons.</span></span>
-* <span data-ttu-id="068f6-451">系統管理員可以核准/拒絕和編輯/刪除所有資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-451">Administrators can approve/reject and edit/delete all data.</span></span>
+* <span data-ttu-id="94aa9-447">已註冊的使用者可以檢視所有已核准的連絡資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-447">Registered users can view all of the approved contact data.</span></span>
+* <span data-ttu-id="94aa9-448">已註冊的使用者可以編輯/刪除他們自己的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-448">Registered users can edit/delete their own data.</span></span>
+* <span data-ttu-id="94aa9-449">經理可以核准/拒絕連絡人資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-449">Managers can approve/reject contact data.</span></span> <span data-ttu-id="94aa9-450">`Details`檢視會顯示**核准**並**拒絕**按鈕。</span><span class="sxs-lookup"><span data-stu-id="94aa9-450">The `Details` view shows **Approve** and **Reject** buttons.</span></span>
+* <span data-ttu-id="94aa9-451">系統管理員可以核准/拒絕和編輯/刪除所有資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-451">Administrators can approve/reject and edit/delete all data.</span></span>
 
-| <span data-ttu-id="068f6-452">使用者</span><span class="sxs-lookup"><span data-stu-id="068f6-452">User</span></span>                | <span data-ttu-id="068f6-453">植入的應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-453">Seeded by the app</span></span> | <span data-ttu-id="068f6-454">選項</span><span class="sxs-lookup"><span data-stu-id="068f6-454">Options</span></span>                                  |
+| <span data-ttu-id="94aa9-452">使用者</span><span class="sxs-lookup"><span data-stu-id="94aa9-452">User</span></span>                | <span data-ttu-id="94aa9-453">植入的應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-453">Seeded by the app</span></span> | <span data-ttu-id="94aa9-454">選項</span><span class="sxs-lookup"><span data-stu-id="94aa9-454">Options</span></span>                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | <span data-ttu-id="068f6-455">否</span><span class="sxs-lookup"><span data-stu-id="068f6-455">No</span></span>                | <span data-ttu-id="068f6-456">編輯/刪除自己的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-456">Edit/delete the own data.</span></span>                |
-| manager@contoso.com | <span data-ttu-id="068f6-457">是</span><span class="sxs-lookup"><span data-stu-id="068f6-457">Yes</span></span>               | <span data-ttu-id="068f6-458">核准/拒絕和編輯/刪除自己的資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-458">Approve/reject and edit/delete own data.</span></span> |
-| admin@contoso.com   | <span data-ttu-id="068f6-459">是</span><span class="sxs-lookup"><span data-stu-id="068f6-459">Yes</span></span>               | <span data-ttu-id="068f6-460">核准/拒絕和編輯/刪除所有資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-460">Approve/reject and edit/delete all data.</span></span> |
+| test@example.com    | <span data-ttu-id="94aa9-455">否</span><span class="sxs-lookup"><span data-stu-id="94aa9-455">No</span></span>                | <span data-ttu-id="94aa9-456">編輯/刪除自己的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-456">Edit/delete the own data.</span></span>                |
+| manager@contoso.com | <span data-ttu-id="94aa9-457">是</span><span class="sxs-lookup"><span data-stu-id="94aa9-457">Yes</span></span>               | <span data-ttu-id="94aa9-458">核准/拒絕和編輯/刪除自己的資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-458">Approve/reject and edit/delete own data.</span></span> |
+| admin@contoso.com   | <span data-ttu-id="94aa9-459">是</span><span class="sxs-lookup"><span data-stu-id="94aa9-459">Yes</span></span>               | <span data-ttu-id="94aa9-460">核准/拒絕和編輯/刪除所有資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-460">Approve/reject and edit/delete all data.</span></span> |
 
-<span data-ttu-id="068f6-461">在系統管理員的瀏覽器中建立的連絡人。</span><span class="sxs-lookup"><span data-stu-id="068f6-461">Create a contact in the administrator's browser.</span></span> <span data-ttu-id="068f6-462">複製的 URL 刪除和編輯從系統管理員連絡。</span><span class="sxs-lookup"><span data-stu-id="068f6-462">Copy the URL for delete and edit from the administrator contact.</span></span> <span data-ttu-id="068f6-463">這些連結貼入測試使用者的瀏覽器，以確認測試使用者無法執行這些作業。</span><span class="sxs-lookup"><span data-stu-id="068f6-463">Paste these links into the test user's browser to verify the test user can't perform these operations.</span></span>
+<span data-ttu-id="94aa9-461">在系統管理員的瀏覽器中建立的連絡人。</span><span class="sxs-lookup"><span data-stu-id="94aa9-461">Create a contact in the administrator's browser.</span></span> <span data-ttu-id="94aa9-462">複製的 URL 刪除和編輯從系統管理員連絡。</span><span class="sxs-lookup"><span data-stu-id="94aa9-462">Copy the URL for delete and edit from the administrator contact.</span></span> <span data-ttu-id="94aa9-463">這些連結貼入測試使用者的瀏覽器，以確認測試使用者無法執行這些作業。</span><span class="sxs-lookup"><span data-stu-id="94aa9-463">Paste these links into the test user's browser to verify the test user can't perform these operations.</span></span>
 
-## <a name="create-the-starter-app"></a><span data-ttu-id="068f6-464">建立入門應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-464">Create the starter app</span></span>
+## <a name="create-the-starter-app"></a><span data-ttu-id="94aa9-464">建立入門應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-464">Create the starter app</span></span>
 
-* <span data-ttu-id="068f6-465">建立名為"ContactManager"Razor 頁面應用程式</span><span class="sxs-lookup"><span data-stu-id="068f6-465">Create a Razor Pages app named "ContactManager"</span></span>
-  * <span data-ttu-id="068f6-466">建立應用程式與**個別使用者帳戶**。</span><span class="sxs-lookup"><span data-stu-id="068f6-466">Create the app with **Individual User Accounts**.</span></span>
-  * <span data-ttu-id="068f6-467">提供名稱"ContactManager"使命名空間符合此範例中使用的命名空間。</span><span class="sxs-lookup"><span data-stu-id="068f6-467">Name it "ContactManager" so the namespace matches the namespace used in the sample.</span></span>
-  * <span data-ttu-id="068f6-468">`-uld` 指定 LocalDB，而不是 SQLite</span><span class="sxs-lookup"><span data-stu-id="068f6-468">`-uld` specifies LocalDB instead of SQLite</span></span>
+* <span data-ttu-id="94aa9-465">建立名為"ContactManager"Razor 頁面應用程式</span><span class="sxs-lookup"><span data-stu-id="94aa9-465">Create a Razor Pages app named "ContactManager"</span></span>
+  * <span data-ttu-id="94aa9-466">建立應用程式與**個別使用者帳戶**。</span><span class="sxs-lookup"><span data-stu-id="94aa9-466">Create the app with **Individual User Accounts**.</span></span>
+  * <span data-ttu-id="94aa9-467">提供名稱"ContactManager"使命名空間符合此範例中使用的命名空間。</span><span class="sxs-lookup"><span data-stu-id="94aa9-467">Name it "ContactManager" so the namespace matches the namespace used in the sample.</span></span>
+  * <span data-ttu-id="94aa9-468">`-uld` 指定 LocalDB，而不是 SQLite</span><span class="sxs-lookup"><span data-stu-id="94aa9-468">`-uld` specifies LocalDB instead of SQLite</span></span>
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* <span data-ttu-id="068f6-469">新增*模型/連絡人 .cs*：</span><span class="sxs-lookup"><span data-stu-id="068f6-469">Add *Models/Contact.cs*:</span></span>
+* <span data-ttu-id="94aa9-469">新增*模型/連絡人 .cs*：</span><span class="sxs-lookup"><span data-stu-id="94aa9-469">Add *Models/Contact.cs*:</span></span>
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
-* <span data-ttu-id="068f6-470">Scaffold`Contact`模型。</span><span class="sxs-lookup"><span data-stu-id="068f6-470">Scaffold the `Contact` model.</span></span>
-* <span data-ttu-id="068f6-471">建立初始移轉並更新資料庫：</span><span class="sxs-lookup"><span data-stu-id="068f6-471">Create initial migration and update the database:</span></span>
+* <span data-ttu-id="94aa9-470">Scaffold`Contact`模型。</span><span class="sxs-lookup"><span data-stu-id="94aa9-470">Scaffold the `Contact` model.</span></span>
+* <span data-ttu-id="94aa9-471">建立初始移轉並更新資料庫：</span><span class="sxs-lookup"><span data-stu-id="94aa9-471">Create initial migration and update the database:</span></span>
 
-  ```console
+  ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Contact -udl -dc ApplicationDbContext -outDir Pages\Contacts --referenceScriptLibraries
   dotnet ef database drop -f
   dotnet ef migrations add initial
   dotnet ef database update
   ```
 
-* <span data-ttu-id="068f6-472">更新**ContactManager**中的錨點*pages/_layout.cshtml*檔案：</span><span class="sxs-lookup"><span data-stu-id="068f6-472">Update the **ContactManager** anchor in the *Pages/_Layout.cshtml* file:</span></span>
+* <span data-ttu-id="94aa9-472">更新**ContactManager**中的錨點*pages/_layout.cshtml*檔案：</span><span class="sxs-lookup"><span data-stu-id="94aa9-472">Update the **ContactManager** anchor in the *Pages/_Layout.cshtml* file:</span></span>
 
   ```cshtml
   <a asp-page="/Contacts/Index" class="navbar-brand">ContactManager</a>
   ```
 
-* <span data-ttu-id="068f6-473">測試應用程式建立、 編輯和刪除連絡人</span><span class="sxs-lookup"><span data-stu-id="068f6-473">Test the app by creating, editing, and deleting a contact</span></span>
+* <span data-ttu-id="94aa9-473">測試應用程式建立、 編輯和刪除連絡人</span><span class="sxs-lookup"><span data-stu-id="94aa9-473">Test the app by creating, editing, and deleting a contact</span></span>
 
-### <a name="seed-the-database"></a><span data-ttu-id="068f6-474">植入資料庫</span><span class="sxs-lookup"><span data-stu-id="068f6-474">Seed the database</span></span>
+### <a name="seed-the-database"></a><span data-ttu-id="94aa9-474">植入資料庫</span><span class="sxs-lookup"><span data-stu-id="94aa9-474">Seed the database</span></span>
 
-<span data-ttu-id="068f6-475">新增[SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs)類別，即可*資料*資料夾。</span><span class="sxs-lookup"><span data-stu-id="068f6-475">Add the [SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) class to the *Data* folder.</span></span>
+<span data-ttu-id="94aa9-475">新增[SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs)類別，即可*資料*資料夾。</span><span class="sxs-lookup"><span data-stu-id="94aa9-475">Add the [SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) class to the *Data* folder.</span></span>
 
-<span data-ttu-id="068f6-476">呼叫`SeedData.Initialize`從`Main`:</span><span class="sxs-lookup"><span data-stu-id="068f6-476">Call `SeedData.Initialize` from `Main`:</span></span>
+<span data-ttu-id="94aa9-476">呼叫`SeedData.Initialize`從`Main`:</span><span class="sxs-lookup"><span data-stu-id="94aa9-476">Call `SeedData.Initialize` from `Main`:</span></span>
 
 [!code-csharp[](secure-data/samples/starter2.1/Program.cs?name=snippet)]
 
-<span data-ttu-id="068f6-477">測試應用程式植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="068f6-477">Test that the app seeded the database.</span></span> <span data-ttu-id="068f6-478">請連絡資料庫中有任何資料列，如果種子方法不會執行。</span><span class="sxs-lookup"><span data-stu-id="068f6-478">If there are any rows in the contact DB, the seed method doesn't run.</span></span>
+<span data-ttu-id="94aa9-477">測試應用程式植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="94aa9-477">Test that the app seeded the database.</span></span> <span data-ttu-id="94aa9-478">請連絡資料庫中有任何資料列，如果種子方法不會執行。</span><span class="sxs-lookup"><span data-stu-id="94aa9-478">If there are any rows in the contact DB, the seed method doesn't run.</span></span>
 
 ::: moniker-end
 
 <a name="secure-data-add-resources-label"></a>
 
-### <a name="additional-resources"></a><span data-ttu-id="068f6-479">其他資源</span><span class="sxs-lookup"><span data-stu-id="068f6-479">Additional resources</span></span>
+### <a name="additional-resources"></a><span data-ttu-id="94aa9-479">其他資源</span><span class="sxs-lookup"><span data-stu-id="94aa9-479">Additional resources</span></span>
 
-* [<span data-ttu-id="068f6-480">建置.NET Core 和 SQL Database web 應用程式在 Azure App Service</span><span class="sxs-lookup"><span data-stu-id="068f6-480">Build a .NET Core and SQL Database web app in Azure App Service</span></span>](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
-* <span data-ttu-id="068f6-481">[ASP.NET Core 授權實驗室](https://github.com/blowdart/AspNetAuthorizationWorkshop)。</span><span class="sxs-lookup"><span data-stu-id="068f6-481">[ASP.NET Core Authorization Lab](https://github.com/blowdart/AspNetAuthorizationWorkshop).</span></span> <span data-ttu-id="068f6-482">這個實驗室會進入此教學課程中介紹的安全性功能的更多詳細資料。</span><span class="sxs-lookup"><span data-stu-id="068f6-482">This lab goes into more detail on the security features introduced in this tutorial.</span></span>
+* [<span data-ttu-id="94aa9-480">建置.NET Core 和 SQL Database web 應用程式在 Azure App Service</span><span class="sxs-lookup"><span data-stu-id="94aa9-480">Build a .NET Core and SQL Database web app in Azure App Service</span></span>](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
+* <span data-ttu-id="94aa9-481">[ASP.NET Core 授權實驗室](https://github.com/blowdart/AspNetAuthorizationWorkshop)。</span><span class="sxs-lookup"><span data-stu-id="94aa9-481">[ASP.NET Core Authorization Lab](https://github.com/blowdart/AspNetAuthorizationWorkshop).</span></span> <span data-ttu-id="94aa9-482">這個實驗室會進入此教學課程中介紹的安全性功能的更多詳細資料。</span><span class="sxs-lookup"><span data-stu-id="94aa9-482">This lab goes into more detail on the security features introduced in this tutorial.</span></span>
 * <xref:security/authorization/introduction>
-* [<span data-ttu-id="068f6-483">自訂原則式授權</span><span class="sxs-lookup"><span data-stu-id="068f6-483">Custom policy-based authorization</span></span>](xref:security/authorization/policies)
+* [<span data-ttu-id="94aa9-483">自訂原則式授權</span><span class="sxs-lookup"><span data-stu-id="94aa9-483">Custom policy-based authorization</span></span>](xref:security/authorization/policies)

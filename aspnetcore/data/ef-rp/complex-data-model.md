@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: ab29cf687c80551d275cae69f28b7576016bfff6
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: 78ff36b291b3215460d9ae8e560f49871862d19f
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238131"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080976"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -197,7 +197,7 @@ SqliteException: SQLite Error 1: 'no such column: s.FirstName'.
 
 * 在專案資料夾中開啟命令視窗。 輸入下列命令來建立新的移轉並更新資料庫：
 
-  ```console
+  ```dotnetcli
   dotnet ef migrations add ColumnFirstName
   dotnet ef database update
   ```
@@ -213,7 +213,7 @@ SqliteException: SQLite Error 1: 'no such column: s.FirstName'.
 * 刪除 *Migrations* 資料夾。
 * 執行下列命令來卸除資料庫、建立新的初始移轉，然後套用移轉：
 
-  ```console
+  ```dotnetcli
   dotnet ef database drop --force
   dotnet ef migrations add InitialCreate
   dotnet ef database update
@@ -612,13 +612,13 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 * 執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet ef database drop --force
   ```
 
 * 刪除 *Migrations* 資料夾，然後執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet ef migrations add InitialCreate
   dotnet ef database update
   ```
@@ -705,7 +705,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 * 若您正在搭配 Visual Studio Code 使用 SQL Server LocalDB，請執行下列命令：
 
-  ```console
+  ```dotnetcli
   dotnet ef database update
   ```
 
@@ -839,7 +839,7 @@ Update-Database
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-```console
+```dotnetcli
 dotnet ef migrations add ColumnFirstName
 dotnet ef database update
 ```
@@ -1091,7 +1091,7 @@ public ICollection<Course> Courses { get; set; }
 
 * EF Core 會設定串聯刪除規則，以便在刪除講師時刪除部門。
 * 在刪除講師時刪除部門並非預期的行為。
-* 下列[Fluent API](#fluent-api-alternative-to-attributes)會設定限制規則, 而不是 cascade。
+* 下列[Fluent API](#fluent-api-alternative-to-attributes)會設定限制規則，而不是 cascade。
 
    ```csharp
    modelBuilder.Entity<Department>()
@@ -1246,13 +1246,13 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-```PMC
+```powershell
 Add-Migration ComplexDataModel
 ```
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-```console
+```dotnetcli
 dotnet ef migrations add ComplexDataModel
 ```
 
@@ -1303,10 +1303,10 @@ Update-Database
 
 在命令視窗中輸入下列命令：
 
- ```console
- dotnet ef database drop
+```dotnetcli
+dotnet ef database drop
 dotnet ef database update
- ```
+```
 
 ---
 

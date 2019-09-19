@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/01/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: fe6cdca1f7180f9da26fe2838e529becb26ccd45
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: f16891182d274333ddc05eea401c06468e0717b1
+ms.sourcegitcommit: b1e480e1736b0fe0e4d8dce4a4cf5c8e47fc2101
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081106"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71108080"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 Azure Key Vault 設定提供者
 
@@ -90,13 +90,13 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 1. 使用下列命令建立資源群組，其中`{RESOURCE GROUP NAME}`是新資源群組的資源組名，而`{LOCATION}`是 Azure 區域（datacenter）：
 
-   ```console
+   ```azure-cli
    az group create --name "{RESOURCE GROUP NAME}" --location {LOCATION}
    ```
 
 1. 使用下列命令在資源群組中建立 key vault，其中是新`{KEY VAULT NAME}`金鑰保存庫的名稱，而`{LOCATION}`是 Azure 區域（datacenter）：
 
-   ```console
+   ```azure-cli
    az keyvault create --name "{KEY VAULT NAME}" --resource-group "{RESOURCE GROUP NAME}" --location {LOCATION}
    ```
 
@@ -106,7 +106,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
    下列秘密可用於範例應用程式。 這些值包含`_prod`後置詞，以區別它們`_dev`與開發環境中從使用者秘密載入的尾碼值。 將`{KEY VAULT NAME}`取代為您在上一個步驟中建立的金鑰保存庫名稱：
 
-   ```console
+   ```azure-cli
    az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "SecretName" --value "secret_value_1_prod"
    az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "Section--SecretName" --value "secret_value_2_prod"
    ```
@@ -176,7 +176,7 @@ X.509 憑證是由作業系統所管理。 應用程式會`AddAzureKeyVault`使�
 
 使用 Azure CLI 和應用程式的物件識別碼，提供應用程式`list`和`get`存取金鑰保存庫的許可權：
 
-```console
+```azure-cli
 az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secret-permissions get list
 ```
 
@@ -240,7 +240,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 1. 使用下列 Azure CLI 命令，將秘密儲存在 Azure Key Vault 中：
 
-   ```console
+   ```azure-cli
    az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "5000-AppSecret" --value "5.0.0.0_secret_value_prod"
    az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "5100-AppSecret" --value "5.1.0.0_secret_value_prod"
    ```

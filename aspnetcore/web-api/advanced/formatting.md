@@ -4,109 +4,127 @@ author: ardalis
 description: 了解如何在 ASP.NET Core Web API 中格式化回應資料。
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 05/29/2019
+ms.date: 8/22/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 8bee4efdae5341ddab5bd3aec278ecfef37f0c08
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 7b19bf54ea9f8a87c26ba7567a7348fcbea997c8
+ms.sourcegitcommit: e7dc89620fa02c2ff80bee1e3f77297f97616968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082353"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71151184"
 ---
-<!-- DO NOT EDIT BEFORE https://github.com/aspnet/AspNetCore.Docs/pull/12077 MERGES -->
-# <a name="format-response-data-in-aspnet-core-web-api"></a><span data-ttu-id="e882d-103">在 ASP.NET Core Web API 中格式化回應資料</span><span class="sxs-lookup"><span data-stu-id="e882d-103">Format response data in ASP.NET Core Web API</span></span>
+# <a name="format-response-data-in-aspnet-core-web-api"></a><span data-ttu-id="88197-103">在 ASP.NET Core Web API 中格式化回應資料</span><span class="sxs-lookup"><span data-stu-id="88197-103">Format response data in ASP.NET Core Web API</span></span>
 
-<span data-ttu-id="e882d-104">作者：[Steve Smith](https://ardalis.com/)</span><span class="sxs-lookup"><span data-stu-id="e882d-104">By [Steve Smith](https://ardalis.com/)</span></span>
+<span data-ttu-id="88197-104">由 [Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Steve Smith](https://ardalis.com/) 撰寫</span><span class="sxs-lookup"><span data-stu-id="88197-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Steve Smith](https://ardalis.com/)</span></span>
 
-<span data-ttu-id="e882d-105">ASP.NET Core MVC 具有使用固定格式或回應用戶端規格的內建回應資料格式化支援。</span><span class="sxs-lookup"><span data-stu-id="e882d-105">ASP.NET Core MVC has built-in support for formatting response data, using fixed formats or in response to client specifications.</span></span>
+<span data-ttu-id="88197-105">ASP.NET Core MVC 支援格式化回應資料。</span><span class="sxs-lookup"><span data-stu-id="88197-105">ASP.NET Core MVC has support for formatting response data.</span></span> <span data-ttu-id="88197-106">您可以使用特定格式或回應用戶端要求的格式來格式化回應資料。</span><span class="sxs-lookup"><span data-stu-id="88197-106">Response data can be formatted using specific formats or in response to client requested format.</span></span>
 
-<span data-ttu-id="e882d-106">[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/formatting/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="e882d-106">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/formatting/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="88197-107">[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/formatting) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="88197-107">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/formatting) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="format-specific-action-results"></a><span data-ttu-id="e882d-107">格式特定動作結果</span><span class="sxs-lookup"><span data-stu-id="e882d-107">Format-Specific Action Results</span></span>
+## <a name="format-specific-action-results"></a><span data-ttu-id="88197-108">特定格式的動作結果</span><span class="sxs-lookup"><span data-stu-id="88197-108">Format-specific Action Results</span></span>
 
-<span data-ttu-id="e882d-108">某些動作結果類型是特定格式所特有的，例如 `JsonResult` 和 `ContentResult`。</span><span class="sxs-lookup"><span data-stu-id="e882d-108">Some action result types are specific to a particular format, such as `JsonResult` and `ContentResult`.</span></span> <span data-ttu-id="e882d-109">動作可以傳回一律以特定方式格式化的特定結果。</span><span class="sxs-lookup"><span data-stu-id="e882d-109">Actions can return specific results that are always formatted in a particular manner.</span></span> <span data-ttu-id="e882d-110">例如，不論用戶端喜好設定為何，傳回 `JsonResult` 都會傳回 JSON 格式化資料。</span><span class="sxs-lookup"><span data-stu-id="e882d-110">For example, returning a `JsonResult` will return JSON-formatted data, regardless of client preferences.</span></span> <span data-ttu-id="e882d-111">同樣地，傳回 `ContentResult` 將會傳回純文字格式化字串資料 (就像只傳回字串一樣)。</span><span class="sxs-lookup"><span data-stu-id="e882d-111">Likewise, returning a `ContentResult` will return plain-text-formatted string data (as will simply returning a string).</span></span>
+<span data-ttu-id="88197-109">某些動作結果類型是特定格式所特有的，例如 <xref:Microsoft.AspNetCore.Mvc.JsonResult> 和 <xref:Microsoft.AspNetCore.Mvc.ContentResult>。</span><span class="sxs-lookup"><span data-stu-id="88197-109">Some action result types are specific to a particular format, such as <xref:Microsoft.AspNetCore.Mvc.JsonResult> and <xref:Microsoft.AspNetCore.Mvc.ContentResult>.</span></span> <span data-ttu-id="88197-110">無論用戶端喜好設定為何，動作都可以傳回以特定格式格式化的結果。</span><span class="sxs-lookup"><span data-stu-id="88197-110">Actions can return results that are formatted in a particular format, regardless of client preferences.</span></span> <span data-ttu-id="88197-111">例如， `JsonResult`傳回會傳回 JSON 格式的資料。</span><span class="sxs-lookup"><span data-stu-id="88197-111">For example, returning `JsonResult` returns JSON-formatted data.</span></span> <span data-ttu-id="88197-112">傳回`ContentResult`或字串會傳回純文字格式的字串資料。</span><span class="sxs-lookup"><span data-stu-id="88197-112">Returning `ContentResult` or a string returns plain-text-formatted string data.</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="e882d-112">動作不要求任何特定的型別，MVC 支援任何物件的傳回值。</span><span class="sxs-lookup"><span data-stu-id="e882d-112">An action isn't required to return any particular type; MVC supports any object return value.</span></span> <span data-ttu-id="e882d-113">如果動作回傳 `IActionResult` 的實作並且「控制器」 繼承自 `Controller`，開發人員會有許多對應至多種選項的輔助方法。</span><span class="sxs-lookup"><span data-stu-id="e882d-113">If an action returns an `IActionResult` implementation and the controller inherits from `Controller`, developers have many helper methods corresponding to many of the choices.</span></span> <span data-ttu-id="e882d-114">回傳物件的動作結果不是 `IActionResult` 型別會使用適當的序列化 `IOutputFormatter` 實作。</span><span class="sxs-lookup"><span data-stu-id="e882d-114">Results from actions that return objects that are not `IActionResult` types will be serialized using the appropriate `IOutputFormatter` implementation.</span></span>
+<span data-ttu-id="88197-113">動作不需要傳回任何特定的類型。</span><span class="sxs-lookup"><span data-stu-id="88197-113">An action isn't required to return any specific type.</span></span> <span data-ttu-id="88197-114">ASP.NET Core 支援任何物件傳回值。</span><span class="sxs-lookup"><span data-stu-id="88197-114">ASP.NET Core supports any object return value.</span></span>  <span data-ttu-id="88197-115">傳回不<xref:Microsoft.AspNetCore.Mvc.IActionResult>是型別物件之動作的結果，會使用適當<xref:Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter>的實作為序列化。</span><span class="sxs-lookup"><span data-stu-id="88197-115">Results from actions that return objects that are not <xref:Microsoft.AspNetCore.Mvc.IActionResult> types are serialized using the appropriate <xref:Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter> implementation.</span></span> <span data-ttu-id="88197-116">如需詳細資訊，請參閱<xref:web-api/action-return-types>。</span><span class="sxs-lookup"><span data-stu-id="88197-116">For more information, see <xref:web-api/action-return-types>.</span></span>
 
-<span data-ttu-id="e882d-115">若要從繼承自 `Controller` 基底類別的控制器傳回特定格式的資料，請使用內建協助程式方法 `Json` 傳回 JSON 和 `Content` (針對純文字)。</span><span class="sxs-lookup"><span data-stu-id="e882d-115">To return data in a specific format from a controller that inherits from the `Controller` base class, use the built-in helper method `Json` to return JSON and `Content` for plain text.</span></span> <span data-ttu-id="e882d-116">動作方法應該會傳回特定結果類型 (例如，`JsonResult`) 或 `IActionResult`。</span><span class="sxs-lookup"><span data-stu-id="e882d-116">Your action method should return either the specific result type (for instance, `JsonResult`) or `IActionResult`.</span></span>
+<span data-ttu-id="88197-117">內建 helper 方法<xref:Microsoft.AspNetCore.Mvc.ControllerBase.Ok*>會傳回 JSON 格式的資料：[!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_get)]</span><span class="sxs-lookup"><span data-stu-id="88197-117">The built-in helper method <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Ok*> returns JSON-formatted data: [!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_get)]</span></span>
 
-<span data-ttu-id="e882d-117">傳回 JSON 格式化資料：</span><span class="sxs-lookup"><span data-stu-id="e882d-117">Returning JSON-formatted data:</span></span>
+<span data-ttu-id="88197-118">下載範例會傳回作者清單。</span><span class="sxs-lookup"><span data-stu-id="88197-118">The sample download returns the list of authors.</span></span> <span data-ttu-id="88197-119">使用 F12 瀏覽器開發人員工具或[Postman](https://www.getpostman.com/tools)搭配先前的程式碼：</span><span class="sxs-lookup"><span data-stu-id="88197-119">Using the F12 browser developer tools or [Postman](https://www.getpostman.com/tools) with the previous code:</span></span>
 
-[!code-csharp[](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=3,5&range=21-26)]
+* <span data-ttu-id="88197-120">顯示包含**內容類型：** `application/json; charset=utf-8`的回應標頭。</span><span class="sxs-lookup"><span data-stu-id="88197-120">The response header containing **content-type:** `application/json; charset=utf-8` is displayed.</span></span>
+* <span data-ttu-id="88197-121">系統會顯示要求標頭。</span><span class="sxs-lookup"><span data-stu-id="88197-121">The request headers are displayed.</span></span> <span data-ttu-id="88197-122">例如， `Accept`標頭。</span><span class="sxs-lookup"><span data-stu-id="88197-122">For example, the `Accept` header.</span></span> <span data-ttu-id="88197-123">前面的程式碼會忽略標頭。`Accept`</span><span class="sxs-lookup"><span data-stu-id="88197-123">The `Accept` header is ignored by the preceding code.</span></span>
 
-<span data-ttu-id="e882d-118">此動作的範例回應：</span><span class="sxs-lookup"><span data-stu-id="e882d-118">Sample response from this action:</span></span>
+<span data-ttu-id="88197-124">若要傳回純文字格式化資料，請使用 <xref:Microsoft.AspNetCore.Mvc.ContentResult.Content> 和 <xref:Microsoft.AspNetCore.Mvc.ContentResult.Content> 協助程式：</span><span class="sxs-lookup"><span data-stu-id="88197-124">To return plain text formatted data, use <xref:Microsoft.AspNetCore.Mvc.ContentResult.Content> and the <xref:Microsoft.AspNetCore.Mvc.ContentResult.Content> helper:</span></span>
 
-![Microsoft Edge 中 [開發人員工具] 的 [網路] 索引標籤，顯示回應的內容類型為 application/json](formatting/_static/json-response.png)
+[!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_about)]
 
-<span data-ttu-id="e882d-120">請注意，在網路要求清單及 [回應標頭] 區段中，回應的內容類型都是 `application/json`。</span><span class="sxs-lookup"><span data-stu-id="e882d-120">Note that the content type of the response is `application/json`, shown both in the list of network requests and in the Response Headers section.</span></span> <span data-ttu-id="e882d-121">另請注意，在 [要求標頭] 區段的 Accept 標頭中瀏覽器 (在此情況下為 Microsoft Edge) 所呈現的選項清單。</span><span class="sxs-lookup"><span data-stu-id="e882d-121">Also note the list of options presented by the browser (in this case, Microsoft Edge) in the Accept header in the Request Headers section.</span></span> <span data-ttu-id="e882d-122">目前技術將會忽略此標頭。下面會討論其遵守方式。</span><span class="sxs-lookup"><span data-stu-id="e882d-122">The current technique is ignoring this header; obeying it is discussed below.</span></span>
+<span data-ttu-id="88197-125">在上述程式碼中， `Content-Type`傳回的`text/plain`是。</span><span class="sxs-lookup"><span data-stu-id="88197-125">In the preceding code, the `Content-Type` returned is `text/plain`.</span></span> <span data-ttu-id="88197-126">傳回字串傳遞`Content-Type` `text/plain`下列內容：</span><span class="sxs-lookup"><span data-stu-id="88197-126">Returning a string delivers `Content-Type` of `text/plain`:</span></span>
 
-<span data-ttu-id="e882d-123">若要傳回純文字格式化資料，請使用 `ContentResult` 和 `Content` 協助程式：</span><span class="sxs-lookup"><span data-stu-id="e882d-123">To return plain text formatted data, use `ContentResult` and the `Content` helper:</span></span>
+[!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_string)]
 
-[!code-csharp[](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=3,5&range=47-52)]
+<span data-ttu-id="88197-127">針對具有多個傳回類型的動作`IActionResult`，傳回。</span><span class="sxs-lookup"><span data-stu-id="88197-127">For actions with multiple return types, return `IActionResult`.</span></span> <span data-ttu-id="88197-128">例如，根據執行的作業結果傳回不同的 HTTP 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="88197-128">For example, returning different HTTP status codes based on the result of operations performed.</span></span>
 
-<span data-ttu-id="e882d-124">此動作的回應：</span><span class="sxs-lookup"><span data-stu-id="e882d-124">A response from this action:</span></span>
+## <a name="content-negotiation"></a><span data-ttu-id="88197-129">內容協調</span><span class="sxs-lookup"><span data-stu-id="88197-129">Content negotiation</span></span>
 
-![Microsoft Edge 中 [開發人員工具] 的 [網路] 索引標籤，顯示回應的內容類型為 text/plain](formatting/_static/text-response.png)
+<span data-ttu-id="88197-130">當用戶端指定[Accept 標頭](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)時，就會發生內容協商。</span><span class="sxs-lookup"><span data-stu-id="88197-130">Content negotiation occurs when the client specifies an [Accept header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).</span></span> <span data-ttu-id="88197-131">ASP.NET Core 使用的預設格式為[JSON](https://json.org/)。</span><span class="sxs-lookup"><span data-stu-id="88197-131">The default format used by ASP.NET Core is [JSON](https://json.org/).</span></span> <span data-ttu-id="88197-132">內容協商為：</span><span class="sxs-lookup"><span data-stu-id="88197-132">Content negotiation is:</span></span>
 
-<span data-ttu-id="e882d-126">請注意，在此情況下，所傳回的 `Content-Type` 是 `text/plain`。</span><span class="sxs-lookup"><span data-stu-id="e882d-126">Note in this case the `Content-Type` returned is `text/plain`.</span></span> <span data-ttu-id="e882d-127">只要使用字串回應類型，也可以達到這個相同的行為：</span><span class="sxs-lookup"><span data-stu-id="e882d-127">You can also achieve this same behavior using just a string response type:</span></span>
+* <span data-ttu-id="88197-133">由<xref:Microsoft.AspNetCore.Mvc.ObjectResult>執行。</span><span class="sxs-lookup"><span data-stu-id="88197-133">Implemented by <xref:Microsoft.AspNetCore.Mvc.ObjectResult>.</span></span>
+* <span data-ttu-id="88197-134">內建自 helper 方法所傳回的狀態碼特定動作結果。</span><span class="sxs-lookup"><span data-stu-id="88197-134">Built into the status code-specific action results returned from the helper methods.</span></span> <span data-ttu-id="88197-135">動作結果 helper 方法是以為基礎`ObjectResult`。</span><span class="sxs-lookup"><span data-stu-id="88197-135">The action results helper methods are based on `ObjectResult`.</span></span>
 
-[!code-csharp[](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=3,5&range=54-59)]
+<span data-ttu-id="88197-136">傳回模型型別時，傳回型別會是`ObjectResult`。</span><span class="sxs-lookup"><span data-stu-id="88197-136">When a model type is returned,  the return type is `ObjectResult`.</span></span>
 
->[!TIP]
-> <span data-ttu-id="e882d-128">針對具有多個傳回類型或選項 (例如，根據所執行作業結果的不同 HTTP 狀態碼) 的非一般動作，偏好使用 `IActionResult` 作為傳回類型。</span><span class="sxs-lookup"><span data-stu-id="e882d-128">For non-trivial actions with multiple return types or options (for example, different HTTP status codes based on the result of operations performed), prefer `IActionResult` as the return type.</span></span>
+<span data-ttu-id="88197-137">下列動作方法使用 `Ok` 和 `NotFound` 協助程式方法：</span><span class="sxs-lookup"><span data-stu-id="88197-137">The following action method uses the `Ok` and `NotFound` helper methods:</span></span>
 
-## <a name="content-negotiation"></a><span data-ttu-id="e882d-129">內容交涉</span><span class="sxs-lookup"><span data-stu-id="e882d-129">Content Negotiation</span></span>
+[!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_search)]
 
-<span data-ttu-id="e882d-130">用戶端指定 [Accept 標頭](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)時，會進行內容交涉 (簡稱 *conneg*)。</span><span class="sxs-lookup"><span data-stu-id="e882d-130">Content negotiation (*conneg* for short) occurs when the client specifies an [Accept header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).</span></span> <span data-ttu-id="e882d-131">ASP.NET Core MVC 預設使用 JSON 格式。</span><span class="sxs-lookup"><span data-stu-id="e882d-131">The default format used by ASP.NET Core MVC is JSON.</span></span> <span data-ttu-id="e882d-132">內容交涉是由 `ObjectResult` 所實作。</span><span class="sxs-lookup"><span data-stu-id="e882d-132">Content negotiation is implemented by `ObjectResult`.</span></span> <span data-ttu-id="e882d-133">它也會內建到從協助程式方法 (全部都是根據 `ObjectResult`) 所傳回的狀態碼特定動作結果。</span><span class="sxs-lookup"><span data-stu-id="e882d-133">It's also built into the status code specific action results returned from the helper methods (which are all based on `ObjectResult`).</span></span> <span data-ttu-id="e882d-134">您也可以傳回模型類型 (已定義為資料傳輸類型的類別)，而且架構會自動將它包裝在 `ObjectResult` 中。</span><span class="sxs-lookup"><span data-stu-id="e882d-134">You can also return a model type (a class you've defined as your data transfer type) and the framework will automatically wrap it in an `ObjectResult` for you.</span></span>
+<span data-ttu-id="88197-138">除非要求另一個格式，且伺服器可以傳回要求的格式，否則會傳回 JSON 格式的回應。</span><span class="sxs-lookup"><span data-stu-id="88197-138">A JSON-formatted response is returned unless another format was requested and the server can return the requested format.</span></span> <span data-ttu-id="88197-139">[Fiddler](https://www.telerik.com/fiddler)或[Postman](https://www.getpostman.com/tools)這類工具`Accept`可以設定標頭來指定傳回格式。</span><span class="sxs-lookup"><span data-stu-id="88197-139">Tools such as [Fiddler](https://www.telerik.com/fiddler) or [Postman](https://www.getpostman.com/tools) can set the `Accept` header to specify the return format.</span></span> <span data-ttu-id="88197-140">`Accept`當包含伺服器支援的類型時，就會傳回該類型。</span><span class="sxs-lookup"><span data-stu-id="88197-140">When the `Accept` contains a type the server supports, that type is returned.</span></span>
 
-<span data-ttu-id="e882d-135">下列動作方法使用 `Ok` 和 `NotFound` 協助程式方法：</span><span class="sxs-lookup"><span data-stu-id="e882d-135">The following action method uses the `Ok` and `NotFound` helper methods:</span></span>
+<span data-ttu-id="88197-141">根據預設，ASP.NET Core 只支援 JSON。</span><span class="sxs-lookup"><span data-stu-id="88197-141">By default, ASP.NET Core only supports JSON.</span></span> <span data-ttu-id="88197-142">對於不會變更預設值的應用程式，一律會傳回 JSON 格式的回應，而不論用戶端要求為何。</span><span class="sxs-lookup"><span data-stu-id="88197-142">For apps not changing the default, JSON-formatted responses are alway returned regardless of the client request.</span></span> <span data-ttu-id="88197-143">下一節將說明如何新增其他格式器。</span><span class="sxs-lookup"><span data-stu-id="88197-143">The next section shows how to add additional formatters.</span></span>
 
-[!code-csharp[](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=8,10&range=28-38)]
+<span data-ttu-id="88197-144">控制器動作可以傳回 Poco （簡單的 CLR 物件）。</span><span class="sxs-lookup"><span data-stu-id="88197-144">Controller actions can return POCOs (Plain Old CLR Objects).</span></span> <span data-ttu-id="88197-145">當 POCO 傳回時，執行時間會自動建立`ObjectResult`包裝物件的。</span><span class="sxs-lookup"><span data-stu-id="88197-145">When a POCO is returned, the runtime automatically creates an `ObjectResult` that wraps the object.</span></span> <span data-ttu-id="88197-146">用戶端會取得已格式化的序列化物件。</span><span class="sxs-lookup"><span data-stu-id="88197-146">The client gets the formatted serialized object.</span></span> <span data-ttu-id="88197-147">如果傳回的物件是`null` `204 No Content` ，則會傳迴響應。</span><span class="sxs-lookup"><span data-stu-id="88197-147">If the object being returned is `null`, a `204 No Content` response is returned.</span></span>
 
-<span data-ttu-id="e882d-136">除非要求另一種格式，而且伺服器可以傳回所要求的格式，否則會傳回 JSON 格式的回應。</span><span class="sxs-lookup"><span data-stu-id="e882d-136">A JSON-formatted response will be returned unless another format was requested and the server can return the requested format.</span></span> <span data-ttu-id="e882d-137">您可以使用 [Fiddler](https://www.telerik.com/fiddler) 這類工具建立包含 Accept 標頭的要求，以及指定另一種格式。</span><span class="sxs-lookup"><span data-stu-id="e882d-137">You can use a tool like [Fiddler](https://www.telerik.com/fiddler) to create a request that includes an Accept header and specify another format.</span></span> <span data-ttu-id="e882d-138">在此情況下，如果伺服器的「格式器」可以使用所要求的格式產生回應，則會以用戶端慣用的格式傳回結果。</span><span class="sxs-lookup"><span data-stu-id="e882d-138">In that case, if the server has a *formatter* that can produce a response in the requested format, the result will be returned in the client-preferred format.</span></span>
+<span data-ttu-id="88197-148">傳回物件類型：</span><span class="sxs-lookup"><span data-stu-id="88197-148">Returning an object type:</span></span>
 
-![Fiddler 主控台，顯示 Accept 標頭值為 application/xml 的手動建立 GET 要求](formatting/_static/fiddler-composer.png)
+[!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_alias)]
 
-<span data-ttu-id="e882d-140">在上面的螢幕擷取畫面中，已使用 Fiddler Composer 來產生要求，並指定 `Accept: application/xml`。</span><span class="sxs-lookup"><span data-stu-id="e882d-140">In the above screenshot, the Fiddler Composer has been used to generate a request, specifying `Accept: application/xml`.</span></span> <span data-ttu-id="e882d-141">ASP.NET Core MVC 預設僅支援 JSON；因此，即使指定另一種格式，所傳回的結果仍然會是 JSON 格式。</span><span class="sxs-lookup"><span data-stu-id="e882d-141">By default, ASP.NET Core MVC only supports JSON, so even when another format is specified, the result returned is still JSON-formatted.</span></span> <span data-ttu-id="e882d-142">您將在下節中看到如何新增其他格式器。</span><span class="sxs-lookup"><span data-stu-id="e882d-142">You'll see how to add additional formatters in the next section.</span></span>
+<span data-ttu-id="88197-149">在上述程式碼中，有效作者別名`200 OK`的要求會傳回含有作者資料的回應。</span><span class="sxs-lookup"><span data-stu-id="88197-149">In the preceding code, a request for a valid author alias returns a `200 OK` response with the author's data.</span></span> <span data-ttu-id="88197-150">對無效別名`204 No Content`的要求會傳迴響應。</span><span class="sxs-lookup"><span data-stu-id="88197-150">A request for an invalid alias returns a `204 No Content` response.</span></span>
 
-<span data-ttu-id="e882d-143">控制器動作可以傳回 POCO (簡單的 CLR 物件)，在此情況下，ASP.NET Core MVC 會自動建立可包裝物件的 `ObjectResult`。</span><span class="sxs-lookup"><span data-stu-id="e882d-143">Controller actions can return POCOs (Plain Old CLR Objects), in which case ASP.NET Core MVC automatically creates an `ObjectResult` for you that wraps the object.</span></span> <span data-ttu-id="e882d-144">用戶端會取得格式化的序列化物件 (JSON 格式是預設值；您可以設定 XML 或其他格式)。</span><span class="sxs-lookup"><span data-stu-id="e882d-144">The client will get the formatted serialized object (JSON format is the default; you can configure XML or other formats).</span></span> <span data-ttu-id="e882d-145">如果所傳回的物件是 `null`，則架構將傳回 `204 No Content` 回應。</span><span class="sxs-lookup"><span data-stu-id="e882d-145">If the object being returned is `null`, then the framework will return a `204 No Content` response.</span></span>
+### <a name="the-accept-header"></a><span data-ttu-id="88197-151">Accept 標頭</span><span class="sxs-lookup"><span data-stu-id="88197-151">The Accept header</span></span>
 
-<span data-ttu-id="e882d-146">傳回物件類型：</span><span class="sxs-lookup"><span data-stu-id="e882d-146">Returning an object type:</span></span>
+<span data-ttu-id="88197-152">當要求中出現`Accept`標頭時，就會進行內容協商。</span><span class="sxs-lookup"><span data-stu-id="88197-152">Content *negotiation* takes place when an `Accept` header appears in the request.</span></span> <span data-ttu-id="88197-153">當要求包含 accept 標頭時，ASP.NET Core：</span><span class="sxs-lookup"><span data-stu-id="88197-153">When a request contains an accept header, ASP.NET Core:</span></span>
 
-[!code-csharp[](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=3&range=40-45)]
+* <span data-ttu-id="88197-154">依照喜好設定順序，列舉 accept 標頭中的媒體類型。</span><span class="sxs-lookup"><span data-stu-id="88197-154">Enumerates the media types in the accept header in preference order.</span></span>
+* <span data-ttu-id="88197-155">嘗試尋找可以使用其中一種指定的格式產生回應的格式器。</span><span class="sxs-lookup"><span data-stu-id="88197-155">Tries to find a formatter that can produce a response in one of the formats specified.</span></span>
 
-<span data-ttu-id="e882d-147">在此範例中，有效作者別名的要求將會收到包含作者資料的 200 OK 回應。</span><span class="sxs-lookup"><span data-stu-id="e882d-147">In the sample, a request for a valid author alias will receive a 200 OK response with the author's data.</span></span> <span data-ttu-id="e882d-148">無效別名的要求將會收到「204 沒有內容」回應。</span><span class="sxs-lookup"><span data-stu-id="e882d-148">A request for an invalid alias will receive a 204 No Content response.</span></span> <span data-ttu-id="e882d-149">下面顯示以 XML 和 JSON 格式顯示回應的螢幕擷取畫面。</span><span class="sxs-lookup"><span data-stu-id="e882d-149">Screenshots showing the response in XML and JSON formats are shown below.</span></span>
+<span data-ttu-id="88197-156">如果找不到可滿足用戶端要求的格式器，請 ASP.NET Core：</span><span class="sxs-lookup"><span data-stu-id="88197-156">If no formatter is found that can satisfy the client's request, ASP.NET Core:</span></span>
 
-### <a name="content-negotiation-process"></a><span data-ttu-id="e882d-150">內容交涉程序</span><span class="sxs-lookup"><span data-stu-id="e882d-150">Content Negotiation Process</span></span>
+* <span data-ttu-id="88197-157">`406 Not Acceptable` 如果<xref:Microsoft.AspNetCore.Mvc.MvcOptions>已設定，則會傳回，或-</span><span class="sxs-lookup"><span data-stu-id="88197-157">Returns `406 Not Acceptable` if <xref:Microsoft.AspNetCore.Mvc.MvcOptions> has been set, or -</span></span>
+* <span data-ttu-id="88197-158">嘗試尋找可產生回應的第一個格式器。</span><span class="sxs-lookup"><span data-stu-id="88197-158">Tries to find the first formatter that can produce a response.</span></span>
 
-<span data-ttu-id="e882d-151">只有在 `Accept` 標頭出現在要求中時，才會進行「內容交涉」。</span><span class="sxs-lookup"><span data-stu-id="e882d-151">Content *negotiation* only takes place if an `Accept` header appears in the request.</span></span> <span data-ttu-id="e882d-152">要求包含 Accept 標頭時，架構會依喜好設定順序來列舉 Accept 標頭中的媒體類型，並嘗試尋找可產生回應的格式器，而回應的格式為 Accept 標頭所指定的其中一種格式。</span><span class="sxs-lookup"><span data-stu-id="e882d-152">When a request contains an accept header, the framework will enumerate the media types in the accept header in preference order and will try to find a formatter that can produce a response in one of the formats specified by the accept header.</span></span> <span data-ttu-id="e882d-153">如果找不到可滿足用戶端要求的格式器，架構會嘗試尋找第一個可產生回應的格式器 (除非開發人員已在 `MvcOptions` 上設定選項，改為傳回「406 無法接受」)。</span><span class="sxs-lookup"><span data-stu-id="e882d-153">In case no formatter is found that can satisfy the client's request, the framework will try to find the first formatter that can produce a response (unless the developer has configured the option on `MvcOptions` to return 406 Not Acceptable instead).</span></span> <span data-ttu-id="e882d-154">如果要求指定 XML，但尚未設定 XML 格式器，則會使用 JSON 格式器。</span><span class="sxs-lookup"><span data-stu-id="e882d-154">If the request specifies XML, but the XML formatter has not been configured, then the JSON formatter will be used.</span></span> <span data-ttu-id="e882d-155">更常見地是，如果未設定格式器來提供所要求的格式，則會使用可格式化物件的第一個格式器。</span><span class="sxs-lookup"><span data-stu-id="e882d-155">More generally, if no formatter is configured that can provide the requested format, then the first formatter that can format the object is used.</span></span> <span data-ttu-id="e882d-156">如果未指定標頭，則會使用可處理要傳回之物件的第一個格式器來序列化回應。</span><span class="sxs-lookup"><span data-stu-id="e882d-156">If no header is given, the first formatter that can handle the object to be returned will be used to serialize the response.</span></span> <span data-ttu-id="e882d-157">在此情況下，無法進行任何交涉，伺服器將會判斷所使用的格式。</span><span class="sxs-lookup"><span data-stu-id="e882d-157">In this case, there isn't any negotiation taking place - the server is determining what format it will use.</span></span>
+<span data-ttu-id="88197-159">如果未針對要求的格式設定格式器，則會使用可格式化物件的第一個格式器。</span><span class="sxs-lookup"><span data-stu-id="88197-159">If no formatter is configured for the requested format, the first formatter that can format the object is used.</span></span> <span data-ttu-id="88197-160">如果要求`Accept`中未出現標頭：</span><span class="sxs-lookup"><span data-stu-id="88197-160">If no `Accept` header appears in the request:</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="e882d-158">如果 Accept 標頭包含 `*/*`，則除非 `MvcOptions` 上的 `RespectBrowserAcceptHeader` 設定為 true，否則會忽略標頭。</span><span class="sxs-lookup"><span data-stu-id="e882d-158">If the Accept header contains `*/*`, the Header will be ignored unless `RespectBrowserAcceptHeader` is set to true on `MvcOptions`.</span></span>
+* <span data-ttu-id="88197-161">第一個可以處理物件的格式器是用來序列化回應。</span><span class="sxs-lookup"><span data-stu-id="88197-161">The first formatter that can handle the object is used to serialize the response.</span></span>
+* <span data-ttu-id="88197-162">沒有任何進行中的協商。</span><span class="sxs-lookup"><span data-stu-id="88197-162">There isn't any negotiation taking place.</span></span> <span data-ttu-id="88197-163">伺服器正在決定要傳回的格式。</span><span class="sxs-lookup"><span data-stu-id="88197-163">The server is determining what format to return.</span></span>
 
-### <a name="browsers-and-content-negotiation"></a><span data-ttu-id="e882d-159">瀏覽器和內容交涉</span><span class="sxs-lookup"><span data-stu-id="e882d-159">Browsers and Content Negotiation</span></span>
+<span data-ttu-id="88197-164">如果 Accept 標頭包含`*/*`，除非在上<xref:Microsoft.AspNetCore.Mvc.MvcOptions>將設`RespectBrowserAcceptHeader`為 true，否則會忽略標頭。</span><span class="sxs-lookup"><span data-stu-id="88197-164">If the Accept header contains `*/*`, the Header is ignored unless `RespectBrowserAcceptHeader` is set to true on <xref:Microsoft.AspNetCore.Mvc.MvcOptions>.</span></span>
 
-<span data-ttu-id="e882d-160">與一般 API 用戶端不同，網頁瀏覽器會提供 `Accept` 標頭，內含廣泛的格式陣列 (包括萬用字元)。</span><span class="sxs-lookup"><span data-stu-id="e882d-160">Unlike typical API clients, web browsers tend to supply `Accept` headers that include a wide array of formats, including wildcards.</span></span> <span data-ttu-id="e882d-161">根據預設，架構偵測到要求來自瀏覽器時，將會忽略 `Accept` 標頭，並改為傳回應用程式中已設定預設格式 (除非另外設定，否則為 JSON ) 的內容。</span><span class="sxs-lookup"><span data-stu-id="e882d-161">By default, when the framework detects that the request is coming from a browser, it will ignore the `Accept` header and instead return the content in the application's configured default format (JSON unless otherwise configured).</span></span> <span data-ttu-id="e882d-162">使用不同的瀏覽器來採用 API 時，這提供更一致的經驗。</span><span class="sxs-lookup"><span data-stu-id="e882d-162">This provides a more consistent experience when using different browsers to consume APIs.</span></span>
+### <a name="browsers-and-content-negotiation"></a><span data-ttu-id="88197-165">瀏覽器和內容協調</span><span class="sxs-lookup"><span data-stu-id="88197-165">Browsers and content negotiation</span></span>
 
-<span data-ttu-id="e882d-163">如果您想要應用程式採用瀏覽器 Accept 標頭，則可以將這設定為 MVC 組態的一部分，方法是在 *Startup.cs* 的 `ConfigureServices` 方法中將 `RespectBrowserAcceptHeader` 設定為 `true`。</span><span class="sxs-lookup"><span data-stu-id="e882d-163">If you would prefer your application honor browser accept headers, you can configure this as part of MVC's configuration by setting `RespectBrowserAcceptHeader` to `true` in the `ConfigureServices` method in *Startup.cs*.</span></span>
+<span data-ttu-id="88197-166">與一般 API 用戶端不同的是`Accept` ，網頁瀏覽器會提供標頭。</span><span class="sxs-lookup"><span data-stu-id="88197-166">Unlike typical API clients, web browsers supply `Accept` headers.</span></span> <span data-ttu-id="88197-167">網頁瀏覽器會指定許多格式，包括萬用字元。</span><span class="sxs-lookup"><span data-stu-id="88197-167">Web browser specify many formats, including wildcards.</span></span> <span data-ttu-id="88197-168">根據預設，當架構偵測到要求來自瀏覽器時：</span><span class="sxs-lookup"><span data-stu-id="88197-168">By default, when the framework detects that the request is coming from a browser:</span></span>
 
-```csharp
-services.AddMvc(options =>
-{
-    options.RespectBrowserAcceptHeader = true; // false by default
-});
-```
+* <span data-ttu-id="88197-169">已`Accept`忽略標頭。</span><span class="sxs-lookup"><span data-stu-id="88197-169">The `Accept` header is ignored.</span></span>
+* <span data-ttu-id="88197-170">除非另有設定，否則內容會以 JSON 格式傳回。</span><span class="sxs-lookup"><span data-stu-id="88197-170">The content is returned in JSON, unless otherwise configured.</span></span>
 
-## <a name="configuring-formatters"></a><span data-ttu-id="e882d-164">設定格式器</span><span class="sxs-lookup"><span data-stu-id="e882d-164">Configuring Formatters</span></span>
+<span data-ttu-id="88197-171">使用 Api 時，這會在瀏覽器之間提供更一致的體驗。</span><span class="sxs-lookup"><span data-stu-id="88197-171">This provides a more consistent experience across browsers when consuming APIs.</span></span>
 
-<span data-ttu-id="e882d-165">如果您的應用程式需要支援 JSON 預設值以外的其他格式，則可以新增 NuGet 套件，並設定 MVC 來支援它們。</span><span class="sxs-lookup"><span data-stu-id="e882d-165">If your application needs to support additional formats beyond the default of JSON, you can add NuGet packages and configure MVC to support them.</span></span> <span data-ttu-id="e882d-166">輸入和輸出有個別的格式器。</span><span class="sxs-lookup"><span data-stu-id="e882d-166">There are separate formatters for input and output.</span></span> <span data-ttu-id="e882d-167">[模型繫結](xref:mvc/models/model-binding)會使用輸入格式器；輸出格式器是用來格式化回應。</span><span class="sxs-lookup"><span data-stu-id="e882d-167">Input formatters are used by [Model Binding](xref:mvc/models/model-binding); output formatters are used to format responses.</span></span> <span data-ttu-id="e882d-168">您也可以設定[自訂格式器](xref:web-api/advanced/custom-formatters)。</span><span class="sxs-lookup"><span data-stu-id="e882d-168">You can also configure [Custom Formatters](xref:web-api/advanced/custom-formatters).</span></span>
+<span data-ttu-id="88197-172">若要設定應用程式以接受瀏覽器 accept 標<xref:Microsoft.AspNetCore.Mvc.MvcOptions.RespectBrowserAcceptHeader>頭`true`，請將設為：</span><span class="sxs-lookup"><span data-stu-id="88197-172">To configure an app to honor browser accept headers, set <xref:Microsoft.AspNetCore.Mvc.MvcOptions.RespectBrowserAcceptHeader> to `true`:</span></span>
+
+::: moniker range=">= aspnetcore-3.0"
+[!code-csharp[](./formatting/3.0sample/StartupRespectBrowserAcceptHeader.cs?name=snippet)]
+::: moniker-end
+::: moniker range="< aspnetcore-3.0"
+[!code-csharp[](./formatting/sample/StartupRespectBrowserAcceptHeader.cs?name=snippet)]
+::: moniker-end
+
+### <a name="configure-formatters"></a><span data-ttu-id="88197-173">設定格式器</span><span class="sxs-lookup"><span data-stu-id="88197-173">Configure formatters</span></span>
+
+<span data-ttu-id="88197-174">需要支援其他格式的應用程式可以新增適當的 NuGet 套件，並設定支援。</span><span class="sxs-lookup"><span data-stu-id="88197-174">Apps that need to support additional formats can add the appropriate NuGet packages and configure support.</span></span> <span data-ttu-id="88197-175">輸入和輸出有個別的格式器。</span><span class="sxs-lookup"><span data-stu-id="88197-175">There are separate formatters for input and output.</span></span> <span data-ttu-id="88197-176">[模型](xref:mvc/models/model-binding)系結會使用輸入格式器。</span><span class="sxs-lookup"><span data-stu-id="88197-176">Input formatters are used by [Model Binding](xref:mvc/models/model-binding).</span></span> <span data-ttu-id="88197-177">輸出格式器是用來格式化回應。</span><span class="sxs-lookup"><span data-stu-id="88197-177">Output formatters are used to format responses.</span></span> <span data-ttu-id="88197-178">如需建立自訂格式器的詳細資訊，請參閱[自訂格式化](xref:web-api/advanced/custom-formatters)器。</span><span class="sxs-lookup"><span data-stu-id="88197-178">For information on creating a custom formatter, see [Custom Formatters](xref:web-api/advanced/custom-formatters).</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-### <a name="configure-systemtextjson-based-formatters"></a><span data-ttu-id="e882d-169">設定 System.Text.Json-based 格式器</span><span class="sxs-lookup"><span data-stu-id="e882d-169">Configure System.Text.Json-based formatters</span></span>
+### <a name="add-xml-format-support"></a><span data-ttu-id="88197-179">新增 XML 格式支援</span><span class="sxs-lookup"><span data-stu-id="88197-179">Add XML format support</span></span>
 
-<span data-ttu-id="e882d-170">`System.Text.Json` 型格式器可以使用 `Microsoft.AspNetCore.Mvc.JsonOptions.SerializerOptions` 來設定。</span><span class="sxs-lookup"><span data-stu-id="e882d-170">Features for the `System.Text.Json`-based formatters can be configured using `Microsoft.AspNetCore.Mvc.JsonOptions.SerializerOptions`.</span></span>
+<span data-ttu-id="88197-180">使用<xref:System.Xml.Serialization.XmlSerializer>執行的 XML 格式器是透過<xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlSerializerFormatters*>呼叫來設定：</span><span class="sxs-lookup"><span data-stu-id="88197-180">XML formatters implemented using <xref:System.Xml.Serialization.XmlSerializer> are configured by calling <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlSerializerFormatters*>:</span></span>
+
+[!code-csharp[](./formatting/3.0sample/Startup.cs?name=snippet)]
+
+<span data-ttu-id="88197-181">上述程式碼會使用來`XmlSerializer`序列化結果。</span><span class="sxs-lookup"><span data-stu-id="88197-181">The preceding code serializes results using `XmlSerializer`.</span></span>
+
+<span data-ttu-id="88197-182">使用上述程式碼時，控制器方法應該根據要求的`Accept`標頭傳回適當的格式。</span><span class="sxs-lookup"><span data-stu-id="88197-182">When using the preceding code, controller methods should return the appropriate format based on the request's `Accept` header.</span></span>
+
+### <a name="configure-systemtextjson-based-formatters"></a><span data-ttu-id="88197-183">設定 System.Text.Json-based 格式器</span><span class="sxs-lookup"><span data-stu-id="88197-183">Configure System.Text.Json-based formatters</span></span>
+
+<span data-ttu-id="88197-184">`System.Text.Json` 型格式器可以使用 `Microsoft.AspNetCore.Mvc.JsonOptions.SerializerOptions` 來設定。</span><span class="sxs-lookup"><span data-stu-id="88197-184">Features for the `System.Text.Json`-based formatters can be configured using `Microsoft.AspNetCore.Mvc.JsonOptions.SerializerOptions`.</span></span>
 
 ```csharp
 services.AddControllers().AddJsonOptions(options =>
@@ -119,7 +137,7 @@ services.AddControllers().AddJsonOptions(options =>
 });
 ```
 
-<span data-ttu-id="e882d-171">以每個動作為基礎的輸出序列化選項，可以使用`JsonResult`進行設定。</span><span class="sxs-lookup"><span data-stu-id="e882d-171">Output serialization options, on a per-action basis, can be configured using `JsonResult`.</span></span> <span data-ttu-id="e882d-172">例如：</span><span class="sxs-lookup"><span data-stu-id="e882d-172">For example:</span></span>
+<span data-ttu-id="88197-185">以每個動作為基礎的輸出序列化選項，可以使用`JsonResult`進行設定。</span><span class="sxs-lookup"><span data-stu-id="88197-185">Output serialization options, on a per-action basis, can be configured using `JsonResult`.</span></span> <span data-ttu-id="88197-186">例如：</span><span class="sxs-lookup"><span data-stu-id="88197-186">For example:</span></span>
 
 ```csharp
 public IActionResult Get()
@@ -131,22 +149,21 @@ public IActionResult Get()
 }
 ```
 
-### <a name="add-newtonsoftjson-based-json-format-support"></a><span data-ttu-id="e882d-173">新增 Newtonsoft.Json 型 JSON 格式支援</span><span class="sxs-lookup"><span data-stu-id="e882d-173">Add Newtonsoft.Json-based JSON format support</span></span>
+### <a name="add-newtonsoftjson-based-json-format-support"></a><span data-ttu-id="88197-187">新增 Newtonsoft.Json 型 JSON 格式支援</span><span class="sxs-lookup"><span data-stu-id="88197-187">Add Newtonsoft.Json-based JSON format support</span></span>
 
-<span data-ttu-id="e882d-174">在 ASP.NET Core 3.0 之前，MVC 預設為使用以 `Newtonsoft.Json` 套件實作的 JSON 格式器。</span><span class="sxs-lookup"><span data-stu-id="e882d-174">Prior to ASP.NET Core 3.0, MVC defaulted to using JSON formatters implemented using the `Newtonsoft.Json` package.</span></span> <span data-ttu-id="e882d-175">在 ASP.NET Core 3.0 或更新版本中，預設 JSON 格式器是以 `System.Text.Json` 為基礎。</span><span class="sxs-lookup"><span data-stu-id="e882d-175">In ASP.NET Core 3.0 or later, the default JSON formatters are based on `System.Text.Json`.</span></span> <span data-ttu-id="e882d-176">對 `Newtonsoft.Json` 型格式器與功能的支援可透過安裝 [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet 套件並在 `Startup.ConfigureServices` 中設定它來取得。</span><span class="sxs-lookup"><span data-stu-id="e882d-176">Support for `Newtonsoft.Json`-based formatters and features is available by installing the [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet package and configuring it in `Startup.ConfigureServices`.</span></span>
+<span data-ttu-id="88197-188">在 ASP.NET Core 3.0 之前，預設使用的`Newtonsoft.Json` JSON 格式器會使用封裝來執行。</span><span class="sxs-lookup"><span data-stu-id="88197-188">Prior to ASP.NET Core 3.0, the default used JSON formatters implemented using the `Newtonsoft.Json` package.</span></span> <span data-ttu-id="88197-189">在 ASP.NET Core 3.0 或更新版本中，預設 JSON 格式器是以 `System.Text.Json` 為基礎。</span><span class="sxs-lookup"><span data-stu-id="88197-189">In ASP.NET Core 3.0 or later, the default JSON formatters are based on `System.Text.Json`.</span></span> <span data-ttu-id="88197-190">藉由`Newtonsoft.Json`安裝[NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet 套件並在中`Startup.ConfigureServices`進行設定，即可取得根據格式的格式器和功能的支援。</span><span class="sxs-lookup"><span data-stu-id="88197-190">Support for `Newtonsoft.Json` based formatters and features is available by installing the [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet package and configuring it in `Startup.ConfigureServices`.</span></span>
 
-```csharp
-services.AddControllers()
-    .AddNewtonsoftJson();
-```
+[!code-csharp[](./formatting/3.0sample/StartupNewtonsoftJson.cs?name=snippet)]
 
-<span data-ttu-id="e882d-177">某些功能可能無法搭配`System.Text.Json` 型格式器使用，而且需要對 ASP.NET Core 3.0 版本之 `Newtonsoft.Json` 型格式器的參考。</span><span class="sxs-lookup"><span data-stu-id="e882d-177">Some features may not work well with `System.Text.Json`-based formatters and require a reference to the `Newtonsoft.Json`-based formatters for the ASP.NET Core 3.0 release.</span></span> <span data-ttu-id="e882d-178">若您的 ASP.NET Core 3.0 或更新版本應用程式符合下列條件，請繼續使用 `Newtonsoft.Json` 型格式器：</span><span class="sxs-lookup"><span data-stu-id="e882d-178">Continue using the `Newtonsoft.Json`-based formatters if your ASP.NET Core 3.0 or later app:</span></span>
+<span data-ttu-id="88197-191">某些功能可能不適用於以`System.Text.Json`為基礎的格式器，而且需要參考以為基礎的`Newtonsoft.Json`格式器。</span><span class="sxs-lookup"><span data-stu-id="88197-191">Some features may not work well with `System.Text.Json`-based formatters and require a reference to the `Newtonsoft.Json`-based formatters.</span></span> <span data-ttu-id="88197-192">如果應用程式`Newtonsoft.Json`有下列情況，請繼續使用以為基礎的格式器：</span><span class="sxs-lookup"><span data-stu-id="88197-192">Continue using the `Newtonsoft.Json`-based formatters if the app:</span></span>
 
-* <span data-ttu-id="e882d-179">使用 `Newtonsoft.Json` 屬性 (例如 `[JsonProperty]` 或 `[JsonIgnore]`) 自訂序列化設定，或仰賴 `Newtonsoft.Json` 所提供的功能。</span><span class="sxs-lookup"><span data-stu-id="e882d-179">Uses `Newtonsoft.Json` attributes (for example, `[JsonProperty]` or `[JsonIgnore]`), customizes the serialization settings, or relies on features that `Newtonsoft.Json` provides.</span></span>
-* <span data-ttu-id="e882d-180">設定 `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`。</span><span class="sxs-lookup"><span data-stu-id="e882d-180">Configures `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`.</span></span> <span data-ttu-id="e882d-181">在 ASP.NET Core 3.0 版之前，`JsonResult.SerializerSettings` 接受 `Newtonsoft.Json` 專屬的 `JsonSerializerSettings` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="e882d-181">Prior to ASP.NET Core 3.0, `JsonResult.SerializerSettings` accepts an instance of `JsonSerializerSettings` that is specific to `Newtonsoft.Json`.</span></span>
-* <span data-ttu-id="e882d-182">產生 [OpenAPI](<xref:tutorials/web-api-help-pages-using-swagger>) 文件。</span><span class="sxs-lookup"><span data-stu-id="e882d-182">Generates [OpenAPI](<xref:tutorials/web-api-help-pages-using-swagger>) documentation.</span></span>
+* <span data-ttu-id="88197-193">使用`Newtonsoft.Json`屬性。</span><span class="sxs-lookup"><span data-stu-id="88197-193">Uses `Newtonsoft.Json` attributes.</span></span> <span data-ttu-id="88197-194">例如，`[JsonProperty]` 或 `[JsonIgnore]`。</span><span class="sxs-lookup"><span data-stu-id="88197-194">For example, `[JsonProperty]` or `[JsonIgnore]`.</span></span>
+* <span data-ttu-id="88197-195">自訂序列化設定。</span><span class="sxs-lookup"><span data-stu-id="88197-195">Customizes the serialization settings.</span></span>
+* <span data-ttu-id="88197-196">依賴提供的`Newtonsoft.Json`功能。</span><span class="sxs-lookup"><span data-stu-id="88197-196">Relies on features that `Newtonsoft.Json` provides.</span></span>
+* <span data-ttu-id="88197-197">設定 `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`。</span><span class="sxs-lookup"><span data-stu-id="88197-197">Configures `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`.</span></span> <span data-ttu-id="88197-198">在 ASP.NET Core 3.0 版之前，`JsonResult.SerializerSettings` 接受 `Newtonsoft.Json` 專屬的 `JsonSerializerSettings` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="88197-198">Prior to ASP.NET Core 3.0, `JsonResult.SerializerSettings` accepts an instance of `JsonSerializerSettings` that is specific to `Newtonsoft.Json`.</span></span>
+* <span data-ttu-id="88197-199">產生 [OpenAPI](<xref:tutorials/web-api-help-pages-using-swagger>) 文件。</span><span class="sxs-lookup"><span data-stu-id="88197-199">Generates [OpenAPI](<xref:tutorials/web-api-help-pages-using-swagger>) documentation.</span></span>
 
-<span data-ttu-id="e882d-183">您可以使用`Newtonsoft.Json` `Microsoft.AspNetCore.Mvc.MvcNewtonsoftJsonOptions.SerializerSettings`來設定以為基礎之格式器的功能：</span><span class="sxs-lookup"><span data-stu-id="e882d-183">Features for the `Newtonsoft.Json`-based formatters can be configured using `Microsoft.AspNetCore.Mvc.MvcNewtonsoftJsonOptions.SerializerSettings`:</span></span>
+<span data-ttu-id="88197-200">您可以使用`Newtonsoft.Json` `Microsoft.AspNetCore.Mvc.MvcNewtonsoftJsonOptions.SerializerSettings`來設定以為基礎之格式器的功能：</span><span class="sxs-lookup"><span data-stu-id="88197-200">Features for the `Newtonsoft.Json`-based formatters can be configured using `Microsoft.AspNetCore.Mvc.MvcNewtonsoftJsonOptions.SerializerSettings`:</span></span>
 
 ```csharp
 services.AddControllers().AddNewtonsoftJson(options =>
@@ -159,7 +176,7 @@ services.AddControllers().AddNewtonsoftJson(options =>
 });
 ```
 
-<span data-ttu-id="e882d-184">以每個動作為基礎的輸出序列化選項，可以使用`JsonResult`進行設定。</span><span class="sxs-lookup"><span data-stu-id="e882d-184">Output serialization options, on a per-action basis, can be configured using `JsonResult`.</span></span> <span data-ttu-id="e882d-185">例如：</span><span class="sxs-lookup"><span data-stu-id="e882d-185">For example:</span></span>
+<span data-ttu-id="88197-201">以每個動作為基礎的輸出序列化選項，可以使用`JsonResult`進行設定。</span><span class="sxs-lookup"><span data-stu-id="88197-201">Output serialization options, on a per-action basis, can be configured using `JsonResult`.</span></span> <span data-ttu-id="88197-202">例如：</span><span class="sxs-lookup"><span data-stu-id="88197-202">For example:</span></span>
 
 ```csharp
 public IActionResult Get()
@@ -173,80 +190,68 @@ public IActionResult Get()
 
 ::: moniker-end
 
-### <a name="add-xml-format-support"></a><span data-ttu-id="e882d-186">新增 XML 格式支援</span><span class="sxs-lookup"><span data-stu-id="e882d-186">Add XML format support</span></span>
-
 ::: moniker range="<= aspnetcore-2.2"
 
-<span data-ttu-id="e882d-187">若要在 ASP.NET Core 2.2 或更早版本中新增 XML 格式支援，請安裝 [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/) \(英文\) NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="e882d-187">To add XML formatting support in ASP.NET Core 2.2 or earlier, install the [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/) NuGet package.</span></span>
+### <a name="add-xml-format-support"></a><span data-ttu-id="88197-203">新增 XML 格式支援</span><span class="sxs-lookup"><span data-stu-id="88197-203">Add XML format support</span></span>
+
+<span data-ttu-id="88197-204">XML 格式設定需要[AspNetCore 的 xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/) NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="88197-204">XML formatting requires the [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/) NuGet package.</span></span>
+
+<span data-ttu-id="88197-205">使用<xref:System.Xml.Serialization.XmlSerializer>執行的 XML 格式器是透過<xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlSerializerFormatters*>呼叫來設定：</span><span class="sxs-lookup"><span data-stu-id="88197-205">XML formatters implemented using <xref:System.Xml.Serialization.XmlSerializer> are configured by calling <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlSerializerFormatters*>:</span></span>
+
+[!code-csharp[](./formatting/sample/Startup.cs?name=snippet)]
+
+<span data-ttu-id="88197-206">上述程式碼會使用來`XmlSerializer`序列化結果。</span><span class="sxs-lookup"><span data-stu-id="88197-206">The preceding code serializes results using `XmlSerializer`.</span></span>
+
+<span data-ttu-id="88197-207">使用上述程式碼時，控制器方法應該根據要求的`Accept`標頭傳回適當的格式。</span><span class="sxs-lookup"><span data-stu-id="88197-207">When using the preceding code, controller methods should return the appropriate format based on the request's `Accept` header.</span></span>
 
 ::: moniker-end
 
-<span data-ttu-id="e882d-188">使用 `System.Xml.Serialization.XmlSerializer` 實作的 XML 格式器可以透過呼叫 `Startup.ConfigureServices` 中的 <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlSerializerFormatters*> 來設定：</span><span class="sxs-lookup"><span data-stu-id="e882d-188">XML formatters implemented using `System.Xml.Serialization.XmlSerializer` can be configured by calling <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlSerializerFormatters*> in `Startup.ConfigureServices`:</span></span>
+### <a name="specify-a-format"></a><span data-ttu-id="88197-208">指定格式</span><span class="sxs-lookup"><span data-stu-id="88197-208">Specify a format</span></span>
 
-[!code-csharp[](./formatting/sample/Startup.cs?name=snippet1&highlight=2)]
+<span data-ttu-id="88197-209">若要限制回應格式，請[`[Produces]`](xref:Microsoft.AspNetCore.Mvc.ProducesAttribute)套用篩選準則。</span><span class="sxs-lookup"><span data-stu-id="88197-209">To restrict the response formats, apply the [`[Produces]`](xref:Microsoft.AspNetCore.Mvc.ProducesAttribute) filter.</span></span> <span data-ttu-id="88197-210">就像大部分的`[Produces]` [篩選器](xref:mvc/controllers/filters)一樣，可以在動作、控制器或全域範圍套用：</span><span class="sxs-lookup"><span data-stu-id="88197-210">Like most [Filters](xref:mvc/controllers/filters), `[Produces]` can be applied at the action, controller, or global scope:</span></span>
 
-<span data-ttu-id="e882d-189">或者，使用 `System.Runtime.Serialization.DataContractSerializer` 實作的 XML 格式器可以透過呼叫 `Startup.ConfigureServices` 中的 <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlDataContractSerializerFormatters*> 來設定：</span><span class="sxs-lookup"><span data-stu-id="e882d-189">Alternatively, XML formatters implemented using `System.Runtime.Serialization.DataContractSerializer` can be configured by calling <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlDataContractSerializerFormatters*> in `Startup.ConfigureServices`:</span></span>
+[!code-csharp[](./formatting/3.0sample/Controllers/WeatherForecastController.cs?name=snippet)]
 
-```csharp
-services.AddMvc()
-    .AddXmlDataContractSerializerFormatters();
-```
+<span data-ttu-id="88197-211">上述[`[Produces]`](xref:Microsoft.AspNetCore.Mvc.ProducesAttribute)篩選準則：</span><span class="sxs-lookup"><span data-stu-id="88197-211">The preceding [`[Produces]`](xref:Microsoft.AspNetCore.Mvc.ProducesAttribute) filter:</span></span>
 
-<span data-ttu-id="e882d-190">新增 XML 格式支援之後，控制器方法應該會根據要求的 `Accept` 標頭來傳回適當的格式，如這個 Fiddler 範例所示範：</span><span class="sxs-lookup"><span data-stu-id="e882d-190">Once you've added support for XML formatting, your controller methods should return the appropriate format based on the request's `Accept` header, as this Fiddler example demonstrates:</span></span>
+* <span data-ttu-id="88197-212">強制控制器內的所有動作傳回 JSON 格式的回應。</span><span class="sxs-lookup"><span data-stu-id="88197-212">Forces all actions within the controller to return JSON-formatted responses.</span></span>
+* <span data-ttu-id="88197-213">如果設定了其他格式器，而且用戶端指定了不同的格式，則會傳回 JSON。</span><span class="sxs-lookup"><span data-stu-id="88197-213">If other formatters are configured and the client specifies a different format, JSON is returned.</span></span>
 
-![Fiddler 主控台：要求的 [原始] 索引標籤會顯示 Accept 標頭值為 application/xml。](formatting/_static/xml-response.png)
+<span data-ttu-id="88197-214">如需詳細資訊，請參閱[篩選](xref:mvc/controllers/filters)。</span><span class="sxs-lookup"><span data-stu-id="88197-214">For more information, see [Filters](xref:mvc/controllers/filters).</span></span>
 
-<span data-ttu-id="e882d-193">您可以在 [偵測器] 索引標籤中看到已設定 `Accept: application/xml` 標頭來提出原始 GET 要求。</span><span class="sxs-lookup"><span data-stu-id="e882d-193">You can see in the Inspectors tab that the Raw GET request was made with an `Accept: application/xml` header set.</span></span> <span data-ttu-id="e882d-194">回應窗格會顯示 `Content-Type: application/xml` 標頭，並已將 `Author` 物件序列化為 XML。</span><span class="sxs-lookup"><span data-stu-id="e882d-194">The response pane shows the `Content-Type: application/xml` header, and the `Author` object has been serialized to XML.</span></span>
+### <a name="special-case-formatters"></a><span data-ttu-id="88197-215">特殊案例格式器</span><span class="sxs-lookup"><span data-stu-id="88197-215">Special case formatters</span></span>
 
-<span data-ttu-id="e882d-195">使用 [編輯器] 索引標籤，修改在 `Accept` 標頭中指定 `application/json` 的要求。</span><span class="sxs-lookup"><span data-stu-id="e882d-195">Use the Composer tab to modify the request to specify `application/json` in the `Accept` header.</span></span> <span data-ttu-id="e882d-196">執行要求，並將回應格式化為 JSON：</span><span class="sxs-lookup"><span data-stu-id="e882d-196">Execute the request, and the response will be formatted as JSON:</span></span>
+<span data-ttu-id="88197-216">有些特殊案例是使用內建格式器所實作。</span><span class="sxs-lookup"><span data-stu-id="88197-216">Some special cases are implemented using built-in formatters.</span></span> <span data-ttu-id="88197-217">根據預設， `string`傳回類型的格式為*text/純文字*（如果透過`Accept`標頭要求，則為*text/html* ）。</span><span class="sxs-lookup"><span data-stu-id="88197-217">By default, `string` return types are formatted as *text/plain* (*text/html* if requested via the `Accept` header).</span></span> <span data-ttu-id="88197-218">您可以藉由移除<xref:Microsoft.AspNetCore.Mvc.Formatters.TextOutputFormatter>來刪除這個行為。</span><span class="sxs-lookup"><span data-stu-id="88197-218">This behavior can be deleted by removing the <xref:Microsoft.AspNetCore.Mvc.Formatters.TextOutputFormatter>.</span></span> <span data-ttu-id="88197-219">已移除方法中的`Configure`格式器。</span><span class="sxs-lookup"><span data-stu-id="88197-219">Formatters are removed in the `Configure` method.</span></span> <span data-ttu-id="88197-220">`204 No Content` 傳回`null`時，具有模型物件傳回類型的動作會返回。</span><span class="sxs-lookup"><span data-stu-id="88197-220">Actions that have a model object return type return `204 No Content` when returning `null`.</span></span> <span data-ttu-id="88197-221">您可以藉由移除<xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter>來刪除這個行為。</span><span class="sxs-lookup"><span data-stu-id="88197-221">This behavior can be deleted by removing the <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter>.</span></span> <span data-ttu-id="88197-222">下列程式碼會移除 `TextOutputFormatter` 和 `HttpNoContentOutputFormatter`。</span><span class="sxs-lookup"><span data-stu-id="88197-222">The following code removes the `TextOutputFormatter` and `HttpNoContentOutputFormatter`.</span></span>
 
-![Fiddler 主控台：要求的 [原始] 索引標籤會顯示 Accept 標頭值為 application/json。](formatting/_static/json-response-fiddler.png)
+::: moniker range=">= aspnetcore-3.0"
+[!code-csharp[](./formatting/3.0sample/StartupTextOutputFormatter.cs?name=snippet)]
+::: moniker-end
+::: moniker range="< aspnetcore-3.0"
+[!code-csharp[](./formatting/sample/StartupTextOutputFormatter.cs?name=snippet)]
+::: moniker-end
 
-<span data-ttu-id="e882d-199">在此螢幕擷取畫面中，您可以看到要求設定 `Accept: application/json` 標頭，而回應指定與其 `Content-Type` 相同的值。</span><span class="sxs-lookup"><span data-stu-id="e882d-199">In this screenshot, you can see the request sets a header of `Accept: application/json` and the response specifies the same as its `Content-Type`.</span></span> <span data-ttu-id="e882d-200">`Author` 物件會以 JSON 格式顯示在回應本文中。</span><span class="sxs-lookup"><span data-stu-id="e882d-200">The `Author` object is shown in the body of the response, in JSON format.</span></span>
+<span data-ttu-id="88197-223">若沒有`string` `406 Not Acceptable`，傳回類型會傳回。 `TextOutputFormatter`</span><span class="sxs-lookup"><span data-stu-id="88197-223">Without the `TextOutputFormatter`, `string` return types return `406 Not Acceptable`.</span></span> <span data-ttu-id="88197-224">如果 XML 格式器存在，則會`string`格式化傳回的`TextOutputFormatter`類型（如果已移除）。</span><span class="sxs-lookup"><span data-stu-id="88197-224">If an XML formatter exists, it formats `string` return types if the `TextOutputFormatter` is removed.</span></span>
 
-### <a name="forcing-a-particular-format"></a><span data-ttu-id="e882d-201">強制執行特定格式</span><span class="sxs-lookup"><span data-stu-id="e882d-201">Forcing a Particular Format</span></span>
+<span data-ttu-id="88197-225">如果沒有 `HttpNoContentOutputFormatter`，則會使用已設定的格式器來格式化 Null 物件。</span><span class="sxs-lookup"><span data-stu-id="88197-225">Without the `HttpNoContentOutputFormatter`, null objects are formatted using the configured formatter.</span></span> <span data-ttu-id="88197-226">例如：</span><span class="sxs-lookup"><span data-stu-id="88197-226">For example:</span></span>
 
-<span data-ttu-id="e882d-202">如果您想要限制特定動作的回應格式，則可以套用 `[Produces]` 篩選。</span><span class="sxs-lookup"><span data-stu-id="e882d-202">If you would like to restrict the response formats for a specific action you can, you can apply the `[Produces]` filter.</span></span> <span data-ttu-id="e882d-203">`[Produces]` 篩選可指定特定動作 (或控制器) 的回應格式。</span><span class="sxs-lookup"><span data-stu-id="e882d-203">The `[Produces]` filter specifies the response formats for a specific action (or controller).</span></span> <span data-ttu-id="e882d-204">與大部分[篩選](xref:mvc/controllers/filters)類似，這可以套用至動作、控制器或全域範圍。</span><span class="sxs-lookup"><span data-stu-id="e882d-204">Like most [Filters](xref:mvc/controllers/filters), this can be applied at the action, controller, or global scope.</span></span>
+* <span data-ttu-id="88197-227">JSON 格式器會傳回具有主體的`null`回應。</span><span class="sxs-lookup"><span data-stu-id="88197-227">The JSON formatter returns a response with a body of `null`.</span></span>
+* <span data-ttu-id="88197-228">Xml 格式器會傳回具有屬性`xsi:nil="true"`集的空 xml 元素。</span><span class="sxs-lookup"><span data-stu-id="88197-228">The XML formatter returns an empty XML element with the attribute `xsi:nil="true"` set.</span></span>
 
-```csharp
-[Produces("application/json")]
-public class AuthorsController
-```
+## <a name="response-format-url-mappings"></a><span data-ttu-id="88197-229">回應格式 URL 對應</span><span class="sxs-lookup"><span data-stu-id="88197-229">Response format URL mappings</span></span>
 
-<span data-ttu-id="e882d-205">`[Produces]` 篩選將強制執行 `AuthorsController` 內的所有動作，以傳回 JSON 格式化回應，即使已設定應用程式和用戶端的其他格式器也是一樣，但前提是 `Accept` 標頭要求不同且可用的格式。</span><span class="sxs-lookup"><span data-stu-id="e882d-205">The `[Produces]` filter will force all actions within the `AuthorsController` to return JSON-formatted responses, even if other formatters were configured for the application and the client provided an `Accept` header requesting a different, available format.</span></span> <span data-ttu-id="e882d-206">若要深入了解，請參閱[篩選](xref:mvc/controllers/filters) (包括如何全域套用篩選)。</span><span class="sxs-lookup"><span data-stu-id="e882d-206">See [Filters](xref:mvc/controllers/filters) to learn more, including how to apply filters globally.</span></span>
+<span data-ttu-id="88197-230">用戶端可以要求特定格式做為 URL 的一部分，例如：</span><span class="sxs-lookup"><span data-stu-id="88197-230">Clients can request a particular format as part of the URL, for example:</span></span>
 
-### <a name="special-case-formatters"></a><span data-ttu-id="e882d-207">特殊案例格式器</span><span class="sxs-lookup"><span data-stu-id="e882d-207">Special Case Formatters</span></span>
+* <span data-ttu-id="88197-231">在查詢字串或部分路徑中。</span><span class="sxs-lookup"><span data-stu-id="88197-231">In the query string or part of the path.</span></span>
+* <span data-ttu-id="88197-232">使用格式特定的副檔名，例如 .xml 或. json。</span><span class="sxs-lookup"><span data-stu-id="88197-232">By using a format-specific file extension such as .xml or .json.</span></span>
 
-<span data-ttu-id="e882d-208">有些特殊案例是使用內建格式器所實作。</span><span class="sxs-lookup"><span data-stu-id="e882d-208">Some special cases are implemented using built-in formatters.</span></span> <span data-ttu-id="e882d-209">根據預設，`string` 傳回類型將會格式化為 *text/plain* (如果透過 `Accept` 標頭要求，則為 *text/html*)。</span><span class="sxs-lookup"><span data-stu-id="e882d-209">By default, `string` return types will be formatted as *text/plain* (*text/html* if requested via `Accept` header).</span></span> <span data-ttu-id="e882d-210">移除 `TextOutputFormatter`，即可移除此行為。</span><span class="sxs-lookup"><span data-stu-id="e882d-210">This behavior can be removed by removing the `TextOutputFormatter`.</span></span> <span data-ttu-id="e882d-211">您可以在 *Startup.cs* 的 `Configure` 方法中移除格式器 (如下所示)。</span><span class="sxs-lookup"><span data-stu-id="e882d-211">You remove formatters in the `Configure` method in *Startup.cs* (shown below).</span></span> <span data-ttu-id="e882d-212">傳回 `null` 時，具有模型物件傳回類型的動作會傳回「204 沒有內容」回應。</span><span class="sxs-lookup"><span data-stu-id="e882d-212">Actions that have a model object return type will return a 204 No Content response when returning `null`.</span></span> <span data-ttu-id="e882d-213">移除 `HttpNoContentOutputFormatter`，即可移除此行為。</span><span class="sxs-lookup"><span data-stu-id="e882d-213">This behavior can be removed by removing the `HttpNoContentOutputFormatter`.</span></span> <span data-ttu-id="e882d-214">下列程式碼會移除 `TextOutputFormatter` 和 `HttpNoContentOutputFormatter`。</span><span class="sxs-lookup"><span data-stu-id="e882d-214">The following code removes the `TextOutputFormatter` and `HttpNoContentOutputFormatter`.</span></span>
+<span data-ttu-id="88197-233">應該在 API 所使用的路由中指定要求路徑的對應。</span><span class="sxs-lookup"><span data-stu-id="88197-233">The mapping from request path should be specified in the route the API is using.</span></span> <span data-ttu-id="88197-234">例如：</span><span class="sxs-lookup"><span data-stu-id="88197-234">For example:</span></span>
 
-```csharp
-services.AddMvc(options =>
-{
-    options.OutputFormatters.RemoveType<TextOutputFormatter>();
-    options.OutputFormatters.RemoveType<HttpNoContentOutputFormatter>();
-});
-```
+[!code-csharp[](./formatting/sample/Controllers/ProductsController.cs?name=snippet)]
 
-<span data-ttu-id="e882d-215">例如，如果沒有 `TextOutputFormatter`，則 `string` 傳回類型會傳回「406 無法接受」。</span><span class="sxs-lookup"><span data-stu-id="e882d-215">Without the `TextOutputFormatter`, `string` return types return 406 Not Acceptable, for example.</span></span> <span data-ttu-id="e882d-216">請注意，如果存在 XML 格式器，則移除 `TextOutputFormatter` 時，會格式化 `string` 傳回類型。</span><span class="sxs-lookup"><span data-stu-id="e882d-216">Note that if an XML formatter exists, it will format `string` return types if the `TextOutputFormatter` is removed.</span></span>
+<span data-ttu-id="88197-235">先前的路由可讓要求的格式指定為選用的副檔名。</span><span class="sxs-lookup"><span data-stu-id="88197-235">The preceding route allows the requested format to be specified as an optional file extension.</span></span> <span data-ttu-id="88197-236">屬性會檢查`RouteData`中的格式值是否存在，並在建立回應時，將回應格式對應至適當的格式器。 [`[FormatFilter]`](xref:Microsoft.AspNetCore.Mvc.FormatFilterAttribute)</span><span class="sxs-lookup"><span data-stu-id="88197-236">The [`[FormatFilter]`](xref:Microsoft.AspNetCore.Mvc.FormatFilterAttribute) attribute checks for the existence of the format value in the `RouteData` and maps the response format to the appropriate formatter when the response is created.</span></span>
 
-<span data-ttu-id="e882d-217">如果沒有 `HttpNoContentOutputFormatter`，則會使用已設定的格式器來格式化 Null 物件。</span><span class="sxs-lookup"><span data-stu-id="e882d-217">Without the `HttpNoContentOutputFormatter`, null objects are formatted using the configured formatter.</span></span> <span data-ttu-id="e882d-218">例如，JSON 格式器只會傳回本文為 `null` 的回應，而 XML 格式器將會傳回已設定屬性 `xsi:nil="true"` 的空白 XML 項目。</span><span class="sxs-lookup"><span data-stu-id="e882d-218">For example, the JSON formatter will simply return a response with a body of `null`, while the XML formatter will return an empty XML element with the attribute `xsi:nil="true"` set.</span></span>
-
-## <a name="response-format-url-mappings"></a><span data-ttu-id="e882d-219">回應格式 URL 對應</span><span class="sxs-lookup"><span data-stu-id="e882d-219">Response Format URL Mappings</span></span>
-
-<span data-ttu-id="e882d-220">用戶端可以要求特定格式作為 URL 的一部分 (例如在查詢字串中或作為路徑的一部分)，或是使用格式特定副檔名 (例如 .xml 或 .json)。</span><span class="sxs-lookup"><span data-stu-id="e882d-220">Clients can request a particular format as part of the URL, such as in the query string or part of the path, or by using a format-specific file extension such as .xml or .json.</span></span> <span data-ttu-id="e882d-221">應該在 API 所使用的路由中指定要求路徑的對應。</span><span class="sxs-lookup"><span data-stu-id="e882d-221">The mapping from request path should be specified in the route the API is using.</span></span> <span data-ttu-id="e882d-222">例如：</span><span class="sxs-lookup"><span data-stu-id="e882d-222">For example:</span></span>
-
-```csharp
-[FormatFilter]
-public class ProductsController
-{
-    [Route("[controller]/[action]/{id}.{format?}")]
-    public Product GetById(int id)
-```
-
-<span data-ttu-id="e882d-223">此路由可將所要求的格式指定為選擇性副檔名。</span><span class="sxs-lookup"><span data-stu-id="e882d-223">This route would allow the requested format to be specified as an optional file extension.</span></span> <span data-ttu-id="e882d-224">`[FormatFilter]` 屬性會檢查 `RouteData` 中是否有格式值，並在建立回應時將回應格式對應至適當的格式器。</span><span class="sxs-lookup"><span data-stu-id="e882d-224">The `[FormatFilter]` attribute checks for the existence of the format value in the `RouteData` and will map the response format to the appropriate formatter when the response is created.</span></span>
-
-|           <span data-ttu-id="e882d-225">路由</span><span class="sxs-lookup"><span data-stu-id="e882d-225">Route</span></span>            |             <span data-ttu-id="e882d-226">格式器</span><span class="sxs-lookup"><span data-stu-id="e882d-226">Formatter</span></span>              |
+|           <span data-ttu-id="88197-237">路由</span><span class="sxs-lookup"><span data-stu-id="88197-237">Route</span></span>            |             <span data-ttu-id="88197-238">格式器</span><span class="sxs-lookup"><span data-stu-id="88197-238">Formatter</span></span>              |
 |----------------------------|------------------------------------|
-|   `/products/GetById/5`    |    <span data-ttu-id="e882d-227">預設輸出格式器</span><span class="sxs-lookup"><span data-stu-id="e882d-227">The default output formatter</span></span>    |
-| `/products/GetById/5.json` | <span data-ttu-id="e882d-228">JSON 格式器 (如果已設定)</span><span class="sxs-lookup"><span data-stu-id="e882d-228">The JSON formatter (if configured)</span></span> |
-| `/products/GetById/5.xml`  | <span data-ttu-id="e882d-229">XML 格式器 (如果已設定)</span><span class="sxs-lookup"><span data-stu-id="e882d-229">The XML formatter (if configured)</span></span>  |
+|   `/products/GetById/5`    |    <span data-ttu-id="88197-239">預設輸出格式器</span><span class="sxs-lookup"><span data-stu-id="88197-239">The default output formatter</span></span>    |
+| `/products/GetById/5.json` | <span data-ttu-id="88197-240">JSON 格式器 (如果已設定)</span><span class="sxs-lookup"><span data-stu-id="88197-240">The JSON formatter (if configured)</span></span> |
+| `/products/GetById/5.xml`  | <span data-ttu-id="88197-241">XML 格式器 (如果已設定)</span><span class="sxs-lookup"><span data-stu-id="88197-241">The XML formatter (if configured)</span></span>  |

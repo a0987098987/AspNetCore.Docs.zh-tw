@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/07/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 6e225e490e54e44877fa27573ff9b513c8dcd9a3
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 47c546a086588919e4458d6aeeb39453cbc754e0
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964050"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168135"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
 依[Daniel Roth](https://github.com/danroth27)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Blazor 是一種 web 架構，設計用來在瀏覽器中以[WebAssembly](https://webassembly.org/)為基礎的 .net 執行時間（*Blazor WebAssembly*）或伺服器端在 ASP.NET Core （*Blazor server*）中執行用戶端。 無論裝載模型為何，應用程式和元件模型*都相同*。
 
@@ -120,7 +122,7 @@ UI 延遲是從起始的動作到 UI 更新時間所花費的時間。 較小的
 
 對於僅限於私人商業網路的企業營運應用程式，通常會 imperceptible 因網路延遲而對使用者的延遲所造成的影響。 對於透過網際網路部署的應用程式，使用者的延遲可能會很明顯，尤其是在地理位置廣泛散佈的使用者時。
 
-記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。 如需詳細資訊，請參閱 <xref:security/blazor/server>。
+記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。 如需詳細資訊，請參閱<xref:security/blazor/server>。
 
 Blazor 伺服器應用程式應該經過優化，藉由減少網路延遲和記憶體使用量，將 UI 延遲降到最低。 如需測量網路延遲的方法， <xref:host-and-deploy/blazor/server#measure-network-latency>請參閱。 如需 SignalR 和 Blazor 的詳細資訊，請參閱：
 

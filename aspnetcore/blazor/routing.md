@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/routing
-ms.openlocfilehash: 1c61eedf7dbf0bbc8796eaa11360783b9d7aba6c
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 6d9d1614b6e0cc9f4711de0db4513ada4841809f
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963863"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168185"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
 作者：[Luke Latham](https://github.com/guardrex)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 瞭解如何路由傳送要求，以及如何使用`NavLink`元件在 Blazor apps 中建立導覽連結。
 
@@ -55,7 +57,7 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 > [!IMPORTANT]
-> 為了讓 url 正確解析，應用程式必須在其`<base>` *wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host. cshtml*檔案（Blazor 伺服器）中包含一個標記，其中包含`href`屬性中指定的應用程式基底路徑（`<base href="/">`). 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/index#app-base-path>。
+> 為了讓 url 正確解析，應用程式必須在其`<base>` *wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host. cshtml*檔案（Blazor 伺服器）中包含一個標記，其中包含`href`屬性中指定的應用程式基底路徑（`<base href="/">`). 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/index#app-base-path>。
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>在找不到內容時提供自訂內容
 
@@ -131,7 +133,7 @@ ASP.NET Core 3.0 Preview 中的 Blazor 應用程式不支援選擇性參數。 �
 * 雙星號*catch-all*語法（`**`）可跨多個資料夾界限捕捉路徑，而不需要編碼正`/`斜線（）。
 * `path`路由參數名稱。
 
-如需詳細資訊，請參閱 <xref:fundamentals/routing>。
+如需詳細資訊，請參閱<xref:fundamentals/routing>。
 
 ## <a name="navlink-component"></a>NavLink 元件
 

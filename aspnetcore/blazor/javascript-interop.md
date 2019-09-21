@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/07/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: 1572b9ee646577d094409cc33dd621f2f73dc863
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: aee9b981349e62dcc7ccf352dd5bab520969ed3b
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964206"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168195"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)、 [Daniel Roth](https://github.com/danroth27)和[Luke Latham](https://github.com/guardrex)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Blazor 應用程式可以從 JavaScript 程式碼，叫用 .NET 和 .NET 方法的 JavaScript 函式。
 
@@ -248,7 +250,7 @@ JavaScript interop 程式碼可以包含在類別庫中，這可讓您在 NuGet 
 
 在應用程式的專案檔中參考的組建 NuGet 套件，與參考任何 NuGet 套件的方式相同。 還原套件之後，應用程式程式碼可以呼叫 JavaScript，就像是C#一樣。
 
-如需詳細資訊，請參閱 <xref:blazor/class-libraries>。
+如需詳細資訊，請參閱<xref:blazor/class-libraries>。
 
 ## <a name="harden-js-interop-calls"></a>強化 JS interop 呼叫
 

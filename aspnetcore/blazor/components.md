@@ -5,14 +5,14 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/06/2019
+ms.date: 09/19/2019
 uid: blazor/components
-ms.openlocfilehash: 521421ac413218c1f04dd9feade2a49dc1f7b918
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 55b40bc640715bf4052fa99ed68f63250b67e8d1
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080538"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168217"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -454,7 +454,7 @@ Razor 元件提供事件處理功能。 針對名為`on{event}`的 HTML 專案�
 | ----- | ----- |
 | 剪貼簿        | `ClipboardEventArgs` |
 | 拖放式             | `DragEventArgs`&ndash; 並按住`DataTransferItem`拖曳的專案資料。 `DataTransfer` |
-| Error            | `ErrorEventArgs` |
+| 錯誤            | `ErrorEventArgs` |
 | 焦點            | `FocusEventArgs`不包含的`relatedTarget`支援。 &ndash; |
 | `<input>` 變更 | `ChangeEventArgs` |
 | 鍵盤         | `KeyboardEventArgs` |
@@ -1044,7 +1044,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為`false`或`
 <input type="checkbox" />
 ```
 
-如需詳細資訊，請參閱 <xref:mvc/views/razor>。
+如需詳細資訊，請參閱<xref:mvc/views/razor>。
 
 ## <a name="raw-html"></a>原始 HTML
 
@@ -1128,7 +1128,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為`false`或`
 
 ### <a name="generic-typed-components"></a>泛型型別元件
 
-樣板化元件通常會以一般方式輸入。 例如，泛型`ListViewTemplate`元件可以用來呈現`IEnumerable<T>`值。 若要定義泛型元件，請使用`@typeparam`指示詞來指定類型參數：
+樣板化元件通常會以一般方式輸入。 例如，泛型`ListViewTemplate`元件可以用來呈現`IEnumerable<T>`值。 若要定義泛型元件，請使用[@typeparam](xref:mvc/views/razor#typeparam)指示詞來指定類型參數：
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Components/ListViewTemplate.razor)]
 
@@ -1419,14 +1419,14 @@ builder.AddContent(1, "Second");
 
 | 序列 | 類型      | 資料   |
 | :------: | --------- | :----: |
-| 0        | Text node | 第一個  |
-| 1        | Text node | 第二個 |
+| 0        | Text node | First  |
+| 1        | Text node | Second |
 
 想像一下， `false`會變成，然後再次呈現標記。 `someFlag` 這次，產生器會接收：
 
 | 序列 | 類型       | 資料   |
 | :------: | ---------- | :----: |
-| 1        | Text node  | 第二個 |
+| 1        | Text node  | Second |
 
 當執行時間執行 diff 時，會看到順序`0`中的專案已移除，因此它會產生下列簡單的*編輯腳本*：
 
@@ -1451,14 +1451,14 @@ builder.AddContent(seq++, "Second");
 
 | 序列 | 類型      | 資料   |
 | :------: | --------- | :----: |
-| 0        | Text node | 第一個  |
-| 1        | Text node | 第二個 |
+| 0        | Text node | First  |
+| 1        | Text node | Second |
 
 此結果與先前的案例相同，因此不會有負面問題存在。 `someFlag``false`在第二個轉譯上，輸出為：
 
 | 序列 | 類型      | 資料   |
 | :------: | --------- | ------ |
-| 0        | Text node | 第二個 |
+| 0        | Text node | Second |
 
 這次，diff 演算法發現發生了*兩*項變更，而演算法會產生下列編輯腳本：
 
@@ -1550,7 +1550,7 @@ public class CultureController : Controller
 ```
 
 > [!WARNING]
-> `LocalRedirect`使用動作結果來防止開啟重新導向攻擊。 如需詳細資訊，請參閱 <xref:security/preventing-open-redirects>。
+> `LocalRedirect`使用動作結果來防止開啟重新導向攻擊。 如需詳細資訊，請參閱<xref:security/preventing-open-redirects>。
 
 下列元件顯示當使用者選取文化特性時，如何執行初始重新導向的範例：
 
@@ -1595,7 +1595,7 @@ Blazor 的`@bind`功能會根據使用者目前的文化特性來執行全球化
 * `IStringLocalizer<>`Blazor 應用程式*支援*。
 * `IHtmlLocalizer<>`、 `IViewLocalizer<>`和資料批註當地語系化 ASP.NET Core MVC 案例中，而且**不支援**Blazor 應用程式。
 
-如需詳細資訊，請參閱 <xref:fundamentals/localization>。
+如需詳細資訊，請參閱<xref:fundamentals/localization>。
 
 ## <a name="scalable-vector-graphics-svg-images"></a>可擴充向量圖形（SVG）影像
 

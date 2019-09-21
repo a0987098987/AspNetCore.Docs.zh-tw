@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: security/blazor/index
-ms.openlocfilehash: c9b57e2a987ae4a49f0965386ad080c98803d8b0
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 51fb1f9984878fceee0b207d02a02622c3ba191d
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080655"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168355"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 ASP.NET Core 支援在 Blazor 應用程式中設定及管理安全性。
 
@@ -236,7 +238,7 @@ public void ConfigureServices(IServiceCollection services)
 </Router>
 ```
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>授權
 
 在使用者被驗證之後，系統便會套用「授權」規則以控制使用者可以執行的動作。
 
@@ -298,7 +300,7 @@ public void ConfigureServices(IServiceCollection services)
 </AuthorizeView>
 ```
 
-如需詳細資訊，請參閱 <xref:security/authorization/roles>。
+如需詳細資訊，請參閱<xref:security/authorization/roles>。
 
 針對原則型授權，請使用 `Policy` 參數：
 
@@ -308,7 +310,7 @@ public void ConfigureServices(IServiceCollection services)
 </AuthorizeView>
 ```
 
-宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱 <xref:security/authorization/policies>。
+宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱<xref:security/authorization/policies>。
 
 這些 Api 可以在 Blazor 伺服器或 Blazor WebAssembly 應用程式中使用。
 

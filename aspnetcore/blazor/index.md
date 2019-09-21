@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seoapril2019
 ms.date: 09/05/2019
 uid: blazor/index
-ms.openlocfilehash: 767ec8f106bebb92cf13a10eb63fab4905715d3d
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 378892efafa6b979d7f92a5e559b2dc8bb12295d
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964118"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168264"
 ---
 # <a name="introduction-to-blazor"></a>Blazor 簡介
 
@@ -103,6 +103,8 @@ Welcome to your new app.
 
 ## <a name="blazor-webassembly"></a>Blazor WebAssembly
 
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
+
 Blazor WebAssembly 是單一頁面應用程式架構，可使用 .NET 建立互動式用戶端 web 應用程式。 Blazor WebAssembly 使用開放式 web 標準，而不需要外掛程式或程式碼轉譯，並可在所有新式網頁瀏覽器中運作，包括行動瀏覽器。
 
 在網頁瀏覽器內執行 .NET 程式碼已可藉由 [WebAssembly](https://webassembly.org) (縮寫為 *wasm*) 達成。 WebAssembly 是一種精簡的位元組程式碼格式，針對快速下載和最快執行速度而最佳化。 WebAssembly 是開放式的 Web 標準，在不含外掛程式的網頁瀏覽器中支援。
@@ -135,7 +137,7 @@ Blazor 伺服器用來與瀏覽器通訊的連接也會用來處理 JavaScript i
 
 ## <a name="javascript-interop"></a>JavaScript Interop
 
-對於需要協力廠商 JavaScript 程式庫和瀏覽器 API 存取的應用程式，元件能夠和 JavaScript 交互操作。 元件可以使用 JavaScript 可以使用的任何程式庫或 API。 C# 程式碼可以呼叫進入 JavaScript 程式碼，而 JavaScript 程式碼可以呼叫進入 C# 程式碼。 如需詳細資訊，請參閱 <xref:blazor/javascript-interop>。
+對於需要協力廠商 JavaScript 程式庫和瀏覽器 API 存取的應用程式，元件能夠和 JavaScript 交互操作。 元件可以使用 JavaScript 可以使用的任何程式庫或 API。 C# 程式碼可以呼叫進入 JavaScript 程式碼，而 JavaScript 程式碼可以呼叫進入 C# 程式碼。 如需詳細資訊，請參閱<xref:blazor/javascript-interop>。
 
 ## <a name="code-sharing-and-net-standard"></a>程式碼共用和 .NET Standard
 

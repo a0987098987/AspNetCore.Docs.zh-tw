@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: f6c143cc17d08e0cada67ec831e090661c4fed56
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: b7de145ae9924dd405e67f60fc93d81549834164
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081438"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168226"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
 作者：[Luke Latham](https://github.com/guardrex)、[Rainer Stropek](https://www.timecockpit.com) 和 [Daniel Roth](https://github.com/danroth27)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 使用[Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)：
 
@@ -265,4 +267,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="configure-the-linker"></a>設定連結器
 
-Blazor 在每個組建上執行中繼語言 (IL) 連結，以從輸出組件移除不必要的 IL。 組件連結可在組建上控制。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/configure-linker>。
+Blazor 在每個組建上執行中繼語言 (IL) 連結，以從輸出組件移除不必要的 IL。 組件連結可在組建上控制。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/configure-linker>。

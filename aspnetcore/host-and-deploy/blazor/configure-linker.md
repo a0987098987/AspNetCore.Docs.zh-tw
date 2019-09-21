@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/02/2019
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: 03be18e7ee6ca8103e1a666da9e693ff67267d83
-ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
-ms.translationtype: HT
+ms.openlocfilehash: cf017ec6d6de3c5848b866b0c29781f283c5de44
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538635"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168003"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>設定 ASP.NET Core Blazor 的連結器
 
 作者：[Luke Latham](https://github.com/guardrex)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Blazor 會在發行組建期間執行[中繼語言 (IL)](/dotnet/standard/managed-code#intermediate-language--execution) 連結，以從應用程式的輸出組件中移除不必要的 IL。
 

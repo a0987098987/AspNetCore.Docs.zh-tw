@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/dependency-injection
-ms.openlocfilehash: 6c01fdc390cc9150cf81673c717b73c4b10c31f1
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 074d7a669c900eb242c8329147b28d1c50652915
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963972"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168083"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
 
 依[Rainer Stropek](https://www.timecockpit.com)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Blazor 支援相依性[插入（DI）](xref:fundamentals/dependency-injection)。 應用程式可以使用內建的服務，方法是將它們插入元件中。 應用程式也可以定義和註冊自訂服務，並透過 DI 讓它們可在整個應用程式中使用。
 
@@ -31,8 +33,8 @@ DI 是用來存取集中位置所設定之服務的技術。 在 Blazor 應用�
 
 | 服務 | 存留期 | 描述 |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | 單一 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。 請注意，這個實例`HttpClient`會使用瀏覽器來處理背景中的 HTTP 流量。 [HttpClient](xref:System.Net.Http.HttpClient.BaseAddress)會自動設定為應用程式的基底 URI 前置詞。 如需詳細資訊，請參閱 <xref:blazor/call-web-api>。 |
-| `IJSRuntime` | 單一 | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱 <xref:blazor/javascript-interop>。 |
+| <xref:System.Net.Http.HttpClient> | 單一 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。 請注意，這個實例`HttpClient`會使用瀏覽器來處理背景中的 HTTP 流量。 [HttpClient](xref:System.Net.Http.HttpClient.BaseAddress)會自動設定為應用程式的基底 URI 前置詞。 如需詳細資訊，請參閱<xref:blazor/call-web-api>。 |
+| `IJSRuntime` | 單一 | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱<xref:blazor/javascript-interop>。 |
 | `NavigationManager` | 單一 | 包含使用 Uri 和導覽狀態的協助程式。 如需詳細資訊，請參閱[URI 和流覽狀態](xref:blazor/routing#uri-and-navigation-state-helpers)協助程式。 |
 
 自訂服務提供者不會自動提供表格中所列的預設服務。 如果您使用自訂服務提供者，而且需要資料表中所顯示的任何服務，請將所需的服務新增至新的服務提供者。
@@ -65,7 +67,7 @@ public void ConfigureServices(IServiceCollection services)
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI 會建立服務的*單一實例*。 所有需要`Singleton`服務的元件都會收到相同服務的實例。 |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | 每當元件從服務容器取得`Transient`服務的實例時，就會收到服務的*新實例*。 |
 
-DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，請參閱 <xref:fundamentals/dependency-injection>。
+DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，請參閱<xref:fundamentals/dependency-injection>。
 
 ## <a name="request-a-service-in-a-component"></a>要求元件中的服務
 
@@ -74,7 +76,7 @@ DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，�
 * 輸入&ndash;要插入之服務的類型。
 * 屬性&ndash;接收插入的應用程式服務之屬性的名稱。 屬性不需要手動建立。 編譯器會建立屬性。
 
-如需詳細資訊，請參閱 <xref:mvc/views/dependency-injection>。
+如需詳細資訊，請參閱<xref:mvc/views/dependency-injection>。
 
 使用多`@inject`個語句來插入不同的服務。
 

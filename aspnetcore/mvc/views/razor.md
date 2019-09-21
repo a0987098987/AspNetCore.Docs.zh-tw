@@ -3,14 +3,14 @@ title: ASP.NET Core 的 Razor 語法參考
 author: rick-anderson
 description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記語法。
 ms.author: riande
-ms.date: 08/05/2019
+ms.date: 09/19/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 75bf0e792ff7975f03e0f7c2fa6a71ed74d813e1
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
-ms.translationtype: HT
+ms.openlocfilehash: 9a319f7efb6d879559afd9faca6955aba719fa2f
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819791"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168300"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -61,7 +61,7 @@ Razor 隱含運算式會以 `@` 開頭，後面接著 C# 程式碼：
 <p>@await DoSomething("hello", "world")</p>
 ```
 
-隱含運算式「不能」  包含 C# 泛型，因為括弧 (`<>`) 內的字元會解譯為 HTML 標籤。 下列程式碼**無效**：
+隱含運算式「不能」包含 C# 泛型，因為括弧 (`<>`) 內的字元會解譯為 HTML 標籤。 下列程式碼**無效**：
 
 ```cshtml
 <p>@GenericMethod<int>()</p>
@@ -455,9 +455,9 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-### <a name="code"></a>\@code
+### <a name="code"></a>\@錯誤碼
 
-此案例僅適用於 Razor 元件 (.razor)。 
+此案例僅適用於 Razor 元件 (.razor)。
 
 `@code` 區塊會啟用 [Razor 元件](xref:blazor/components)，來將 C# 成員 (欄位、屬性和方法) 新增至元件：
 
@@ -599,15 +599,15 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 ### <a name="layout"></a>\@layout
 
-此案例僅適用於 Razor 元件 (.razor)。 
+此案例僅適用於 Razor 元件 (.razor)。
 
-`@layout` 指示詞會指定 Razor 元件的版面配置。 版面配置元件可用來避免程式碼重複和不一致。 如需詳細資訊，請參閱 <xref:blazor/layouts>。
+`@layout` 指示詞會指定 Razor 元件的版面配置。 版面配置元件可用來避免程式碼重複和不一致。 如需詳細資訊，請參閱<xref:blazor/layouts>。
 
 ::: moniker-end
 
 ### <a name="model"></a>\@model
 
-此案例僅適用於 MVC 檢視和 Razor Pages (.cshtml)。 
+此案例僅適用於 MVC 檢視和 Razor Pages (.cshtml)。
 
 `@model` 指示詞會指定傳遞至檢視或頁面的模型類型：
 
@@ -676,22 +676,22 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 `@page` 指示詞會根據其出現的檔案類型而有不同的效果。 指示詞：
 
-* *.cshtml* 檔案中的 in 表示檔案是 Razor 頁面。 如需詳細資訊，請參閱 <xref:razor-pages/index>。
-* 指定 Razor 元件應該直接處理要求。 如需詳細資訊，請參閱 <xref:blazor/routing>。
+* *.cshtml* 檔案中的 in 表示檔案是 Razor 頁面。 如需詳細資訊，請參閱<xref:razor-pages/index>。
+* 指定 Razor 元件應該直接處理要求。 如需詳細資訊，請參閱<xref:blazor/routing>。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-位於 *.cshtml* 檔案第一行的 `@page` 指示詞指出該檔案是 Razor 頁面。 如需詳細資訊，請參閱 <xref:razor-pages/index>。
+位於 *.cshtml* 檔案第一行的 `@page` 指示詞指出該檔案是 Razor 頁面。 如需詳細資訊，請參閱<xref:razor-pages/index>。
 
 ::: moniker-end
 
 ### <a name="section"></a>\@section
 
-此案例僅適用於 MVC 檢視和 Razor Pages (.cshtml)。 
+此案例僅適用於 MVC 檢視和 Razor Pages (.cshtml)。
 
-`@section` 指示詞會與 [MVC 和 Razor Pages 版面配置](xref:mvc/views/layout)搭配使用，讓檢視或頁面可以轉譯 HTML 頁面不同部分中的內容。 如需詳細資訊，請參閱 <xref:mvc/views/layout>。
+`@section` 指示詞會與 [MVC 和 Razor Pages 版面配置](xref:mvc/views/layout)搭配使用，讓檢視或頁面可以轉譯 HTML 頁面不同部分中的內容。 如需詳細資訊，請參閱<xref:mvc/views/layout>。
 
 ### <a name="using"></a>\@using
 
@@ -711,33 +711,39 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 ### <a name="attributes"></a>\@attributes
 
-此案例僅適用於 Razor 元件 (.razor)。 
+此案例僅適用於 Razor 元件 (.razor)。
 
-`@attributes` 允許元件轉譯非宣告的屬性。 如需詳細資訊，請參閱 <xref:blazor/components#attribute-splatting-and-arbitrary-parameters>。
+`@attributes` 允許元件轉譯非宣告的屬性。 如需詳細資訊，請參閱<xref:blazor/components#attribute-splatting-and-arbitrary-parameters>。
 
 ### <a name="bind"></a>\@bind
 
-此案例僅適用於 Razor 元件 (.razor)。 
+此案例僅適用於 Razor 元件 (.razor)。
 
-元件中的資料繫結會使用 `@bind` 屬性來完成。 如需詳細資訊，請參閱 <xref:blazor/components#data-binding>。
+元件中的資料繫結會使用 `@bind` 屬性來完成。 如需詳細資訊，請參閱<xref:blazor/components#data-binding>。
 
 ### <a name="onevent"></a>\@on{event}
 
-此案例僅適用於 Razor 元件 (.razor)。 
+此案例僅適用於 Razor 元件 (.razor)。
 
-Razor 提供元件的事件處理功能。 如需詳細資訊，請參閱 <xref:blazor/components#event-handling>。
+Razor 提供元件的事件處理功能。 如需詳細資訊，請參閱<xref:blazor/components#event-handling>。
 
 ### <a name="key"></a>\@key
 
-此案例僅適用於 Razor 元件 (.razor)。 
+此案例僅適用於 Razor 元件 (.razor)。
 
-`@key` 指示詞屬性導致元件差異比較演算法會根據索引鍵的值來保證元素或元件的保留。 如需詳細資訊，請參閱 <xref:blazor/components#use-key-to-control-the-preservation-of-elements-and-components>。
+`@key` 指示詞屬性導致元件差異比較演算法會根據索引鍵的值來保證元素或元件的保留。 如需詳細資訊，請參閱<xref:blazor/components#use-key-to-control-the-preservation-of-elements-and-components>。
 
 ### <a name="ref"></a>\@ref
 
-此案例僅適用於 Razor 元件 (.razor)。 
+此案例僅適用於 Razor 元件 (.razor)。
 
-元件參考 (`@ref`) 提供一種方式來參考元件執行個體，讓您可以對該執行個體發出命令。 如需詳細資訊，請參閱 <xref:blazor/components#capture-references-to-components>。
+元件參考 (`@ref`) 提供一種方式來參考元件執行個體，讓您可以對該執行個體發出命令。 如需詳細資訊，請參閱<xref:blazor/components#capture-references-to-components>。
+
+### <a name="typeparam"></a>\@typeparam
+
+此案例僅適用於 Razor 元件 (.razor)。
+
+`@typeparam`指示詞會為所產生的元件類別宣告泛型型別參數。 如需詳細資訊，請參閱<xref:blazor/components#generic-typed-components>。
 
 ::: moniker-end
 
@@ -842,7 +848,7 @@ public class Pet
 
 ## <a name="tag-helpers"></a>標籤協助程式
 
-此案例僅適用於 MVC 檢視和 Razor Pages (.cshtml)。 
+此案例僅適用於 MVC 檢視和 Razor Pages (.cshtml)。
 
 [標籤協助程式](xref:mvc/views/tag-helpers/intro)有三個相關的指示詞。
 

@@ -5,14 +5,14 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/19/2019
+ms.date: 09/21/2019
 uid: blazor/components
-ms.openlocfilehash: 55b40bc640715bf4052fa99ed68f63250b67e8d1
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.openlocfilehash: cf12be950043095b7e3e5eab897dd626021cb982
+ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168217"
+ms.lasthandoff: 09/21/2019
+ms.locfileid: "71176385"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -27,14 +27,6 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 元件會使用C#和 HTML 標籤的組合，在[razor](xref:mvc/views/razor)元件檔案（*razor*）中執行。 Blazor 中的元件正式稱為*Razor 元件*。
 
 元件的名稱必須以大寫字元開頭。 例如， *MyCoolComponent*有效，而*MyCoolComponent*則無效。
-
-只要使用`_RazorComponentInclude` MSBuild 屬性將檔案識別為 Razor 元件檔案，就可以使用 *. cshtml*副檔名來撰寫元件。 例如，指定*Pages*資料夾下所有 *. cshtml*檔案的應用程式，都應該視為 Razor 元件檔案：
-
-```xml
-<PropertyGroup>
-  <_RazorComponentInclude>Pages\**\*.cshtml</_RazorComponentInclude>
-</PropertyGroup>
-```
 
 元件的 UI 是使用 HTML 定義的。 動態轉譯邏輯 (例如迴圈、條件、運算式) 是使用內嵌的 C# 語法 (稱為 [Razor](xref:mvc/views/razor)) 來新增的。 編譯應用程式時，會將 HTML 標籤和C#轉譯邏輯轉換成元件類別。 產生的類別名稱與檔案的名稱相符。
 
@@ -1046,6 +1038,9 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為`false`或`
 
 如需詳細資訊，請參閱<xref:mvc/views/razor>。
 
+> [!WARNING]
+> 當 .NET 類型為`bool`時，某些 HTML 屬性（例如，[按下的 aria](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons)）無法正常運作。 在這些情況下，請`string`使用型別， `bool`而不是。
+
 ## <a name="raw-html"></a>原始 HTML
 
 字串通常會使用 DOM 文位元組點來呈現，這表示它們可能包含的任何標記都會被忽略，並視為常值。 若要轉譯原始 HTML，請將 HTML 內容包裝`MarkupString`在值中。 此值會剖析為 HTML 或 SVG，並插入 DOM 中。
@@ -1333,7 +1328,7 @@ public class ThemeInfo
 
 ## <a name="manual-rendertreebuilder-logic"></a>手動 RenderTreeBuilder 邏輯
 
-`Microsoft.AspNetCore.Components.RenderTree`提供操作元件和元素的方法，包括在程式碼中C#手動建立元件。
+`Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder`提供操作元件和元素的方法，包括在程式碼中C#手動建立元件。
 
 > [!NOTE]
 > 使用來`RenderTreeBuilder`建立元件是一個先進的案例。 格式不正確的元件（例如，未封閉的標記標記）可能會導致未定義的行為。
@@ -1386,6 +1381,8 @@ public class ThemeInfo
     }
 }
 ```
+
+> !WARNING中`Microsoft.AspNetCore.Components.RenderTree`的類型允許處理轉譯作業的*結果*。 這些是 Blazor framework 執行的內部詳細資料。 這些類型應該被視為不*穩定*，未來的版本可能會變更。
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>序號與程式程式碼號相關，而不是執行順序
 

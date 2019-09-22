@@ -32,7 +32,6 @@
 @page "/prerendered-interop"
 @using Microsoft.AspNetCore.Components
 @using Microsoft.JSInterop
-@inject IComponentContext ComponentContext
 @inject IJSRuntime JSRuntime
 
 <p>
@@ -59,32 +58,5 @@
             StateHasChanged();
         }
     }
-}
-```
-
-若要根據應用程式目前是否為已轉譯的內容，有條件地呈現`IsConnected`不同的內容`IComponentContext` ，請在服務上使用屬性。 對於 Blazor 伺服器應用程式`IsConnected` ， `true`只有在有作用中的用戶端連接時，才會傳回。 它一律`true`會在 Blazor WebAssembly apps 中傳回。
-
-```cshtml
-@page "/isconnected-example"
-@using Microsoft.AspNetCore.Components.Services
-@inject IComponentContext ComponentContext
-
-<h1>IsConnected Example</h1>
-
-<p>
-    Current state:
-    <strong id="connected-state">
-        @(ComponentContext.IsConnected ? "connected" : "not connected")
-    </strong>
-</p>
-
-<p>
-    Clicks:
-    <strong id="count">@count</strong>
-    <button id="increment-count" @onclick="@(() => count++)">Click me</button>
-</p>
-
-@code {
-    private int count;
 }
 ```

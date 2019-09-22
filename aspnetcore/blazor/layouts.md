@@ -5,14 +5,14 @@ description: 瞭解如何為 Blazor 應用程式建立可重複使用的版面�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/06/2019
+ms.date: 09/21/2019
 uid: blazor/layouts
-ms.openlocfilehash: 05a38c10e18407d50422192ab1ddf3ff4b0f3a5b
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: 6ae795f720cd2cc1010ebec46bcee877b31d20c6
+ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800369"
+ms.lasthandoff: 09/21/2019
+ms.locfileid: "71176419"
 ---
 # <a name="aspnet-core-blazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -45,6 +45,8 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 如需`Router`元件的詳細資訊，請<xref:blazor/routing>參閱。
 
+將配置指定為路由器中的預設版面配置是很有用的作法，因為它可以根據每個元件或每個資料夾來覆寫。 偏好使用路由器來設定應用程式的預設版面配置，因為這是最常見的技術。
+
 ## <a name="specify-a-layout-in-a-component"></a>在元件中指定版面配置
 
 使用 Razor `@layout`指示詞將版面配置套用至元件。 編譯器會將`@layout`轉換`LayoutAttribute`成，並將其套用至元件類別。
@@ -52,6 +54,8 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 下列`MasterList`元件的內容會插入`MasterLayout`至的位置`@Body`：
 
 [!code-cshtml[](layouts/sample_snapshot/3.x/MasterList.razor?highlight=1)]
+
+直接在元件中指定版面配置會覆寫路由器中的*預設*組態集， `@layout`或從 *_Imports*匯入的指示詞。
 
 ## <a name="centralized-layout-selection"></a>集中式版面配置選取
 
@@ -66,6 +70,8 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 [!code-cshtml[](layouts/sample_snapshot/3.x/_Imports.razor)]
 
 *_Imports* razor 檔案類似[razor 視圖和頁面的 _ViewImports](xref:mvc/views/layout#importing-shared-directives)檔案，但特別適用于 razor 元件檔案。
+
+在 *_Imports*中指定版面配置，會覆寫指定為路由器*預設版面*配置的版面配置。
 
 ## <a name="nested-layouts"></a>嵌套版面配置
 

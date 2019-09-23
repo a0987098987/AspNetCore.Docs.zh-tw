@@ -1,111 +1,108 @@
 ---
 title: ASP.NET Core 的應用程式組件
-author: ardalis
-description: 了解如何使用應用程式組件 (也就是應用程式資源的抽象概念)，以探索或避免載入組件的功能。
+author: rick-anderson
+description: 與中的應用程式元件共用控制器、視圖、Razor Pages 等等 ASP.NET Core
 ms.author: riande
-ms.date: 01/04/2017
+ms.date: 05/14/2019
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 4900ccf5589500db076f8cecd9da198c6a7ceea4
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
-ms.translationtype: HT
+ms.openlocfilehash: ad0372f25377115e6fc7c8ea42db75de56b3e6d2
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886469"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187008"
 ---
+# <a name="share-controllers-views-razor-pages-and-more-with-application-parts-in-aspnet-core"></a><span data-ttu-id="61d9e-103">在 ASP.NET Core 中與應用程式元件共用控制器、視圖、Razor Pages 和更多</span><span class="sxs-lookup"><span data-stu-id="61d9e-103">Share controllers, views, Razor Pages and more with Application Parts in ASP.NET Core</span></span>
+=======
+
 <!-- DO NOT MAKE CHANGES BEFORE https://github.com/aspnet/AspNetCore.Docs/pull/12376 Merges -->
 
-# <a name="application-parts-in-aspnet-core"></a><span data-ttu-id="c12ed-103">ASP.NET Core 的應用程式組件</span><span class="sxs-lookup"><span data-stu-id="c12ed-103">Application Parts in ASP.NET Core</span></span>
+<span data-ttu-id="61d9e-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="61d9e-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="c12ed-104">[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="c12ed-104">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="61d9e-105">[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="61d9e-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="c12ed-105">「應用程式組件」  是應用程式資源的抽象概念，其中您可以探索到控制器、檢視元件或標籤協助程式等 MVC 功能。</span><span class="sxs-lookup"><span data-stu-id="c12ed-105">An *Application Part* is an abstraction over the resources of an application, from which MVC features like controllers, view components, or tag helpers may be discovered.</span></span> <span data-ttu-id="c12ed-106">應用程式組件的其中一個範例是 AssemblyPart，其會封裝組件參考，並將類型與編譯參考公開。</span><span class="sxs-lookup"><span data-stu-id="c12ed-106">One example of an application part is an AssemblyPart, which encapsulates an assembly reference and exposes types and compilation references.</span></span> <span data-ttu-id="c12ed-107">「功能提供者」  會使用應用程式組件，來填入 ASP.NET Core MVC 應用程式的功能。</span><span class="sxs-lookup"><span data-stu-id="c12ed-107">*Feature providers* work with application parts to populate the features of an ASP.NET Core MVC app.</span></span> <span data-ttu-id="c12ed-108">應用程式組件的主要使用案例是讓您設定應用程式，以探索 (或避免載入) 組件中的 MVC 功能。</span><span class="sxs-lookup"><span data-stu-id="c12ed-108">The main use case for application parts is to allow you to configure your app to discover (or avoid loading) MVC features from an assembly.</span></span>
+<span data-ttu-id="61d9e-106">*應用程式元件*是應用程式資源的抽象概念。</span><span class="sxs-lookup"><span data-stu-id="61d9e-106">An *Application Part* is an abstraction over the resources of an app.</span></span> <span data-ttu-id="61d9e-107">應用程式元件可讓 ASP.NET Core 探索控制器、視圖元件、標記協助程式、Razor Pages、Razor 編譯來源等等。</span><span class="sxs-lookup"><span data-stu-id="61d9e-107">Application Parts allow ASP.NET Core to discover controllers, view components, tag helpers, Razor Pages, razor compilation sources, and more.</span></span> <span data-ttu-id="61d9e-108">[AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart)是一個應用程式元件。</span><span class="sxs-lookup"><span data-stu-id="61d9e-108">[AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) is an Application part.</span></span> <span data-ttu-id="61d9e-109">`AssemblyPart`封裝元件參考，並公開類型和編譯參考。</span><span class="sxs-lookup"><span data-stu-id="61d9e-109">`AssemblyPart` encapsulates an assembly reference and exposes types and compilation references.</span></span>
 
-## <a name="introducing-application-parts"></a><span data-ttu-id="c12ed-109">應用程式組件簡介</span><span class="sxs-lookup"><span data-stu-id="c12ed-109">Introducing Application Parts</span></span>
+<span data-ttu-id="61d9e-110">*功能提供者*會使用應用程式元件來填入 ASP.NET Core 應用程式的功能。</span><span class="sxs-lookup"><span data-stu-id="61d9e-110">*Feature providers* work with application parts to populate the features of an ASP.NET Core app.</span></span> <span data-ttu-id="61d9e-111">應用程式元件的主要使用案例是將應用程式設定為從元件中探索（或避免載入） ASP.NET Core 功能。</span><span class="sxs-lookup"><span data-stu-id="61d9e-111">The main use case for application parts is to configure an app to discover (or avoid loading) ASP.NET Core features from an assembly.</span></span> <span data-ttu-id="61d9e-112">例如，您可能會想要在多個應用程式之間共用一般功能。</span><span class="sxs-lookup"><span data-stu-id="61d9e-112">For example, you might want to share common functionality between multiple apps.</span></span> <span data-ttu-id="61d9e-113">使用應用程式元件時，您可以與多個應用程式共用包含控制器、視圖、Razor Pages、Razor 編譯來源、標記協助程式等元件（DLL）。</span><span class="sxs-lookup"><span data-stu-id="61d9e-113">Using Application Parts, you can share an assembly (DLL) containing controllers, views, Razor Pages, razor compilation sources, Tag Helpers, and more with multiple apps.</span></span> <span data-ttu-id="61d9e-114">在多個專案中複製程式碼時，偏好共用元件。</span><span class="sxs-lookup"><span data-stu-id="61d9e-114">Sharing an assembly is preferred to duplicating code in multiple projects.</span></span>
 
-<span data-ttu-id="c12ed-110">MVC 應用程式會從[應用程式組件](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart)載入其功能。</span><span class="sxs-lookup"><span data-stu-id="c12ed-110">MVC apps load their features from [application parts](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart).</span></span> <span data-ttu-id="c12ed-111">值得注意的是，[AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart) 類別代表組件所支援的應用程式組件。</span><span class="sxs-lookup"><span data-stu-id="c12ed-111">In particular, the [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart) class represents an application part that's backed by an assembly.</span></span> <span data-ttu-id="c12ed-112">您可以使用這些類別來探索及載入 MVC 功能，例如控制器、檢視元件、標籤協助程式和 Razor 編譯來源。</span><span class="sxs-lookup"><span data-stu-id="c12ed-112">You can use these classes to discover and load MVC features, such as controllers, view components, tag helpers, and razor compilation sources.</span></span> <span data-ttu-id="c12ed-113">[ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) 負責追蹤適用於 MVC 應用程式的應用程式組件和功能提供者。</span><span class="sxs-lookup"><span data-stu-id="c12ed-113">The [ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) is responsible for tracking the application parts and feature providers available to the MVC app.</span></span> <span data-ttu-id="c12ed-114">您可以在設定 MVC 時與 `Startup` 中的 `ApplicationPartManager` 互動：</span><span class="sxs-lookup"><span data-stu-id="c12ed-114">You can interact with the `ApplicationPartManager` in `Startup` when you configure MVC:</span></span>
+<span data-ttu-id="61d9e-115">ASP.NET Core 應用程式從<xref:System.Web.WebPages.ApplicationPart>載入功能。</span><span class="sxs-lookup"><span data-stu-id="61d9e-115">ASP.NET Core apps load features from <xref:System.Web.WebPages.ApplicationPart>.</span></span> <span data-ttu-id="61d9e-116"><xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart>類別代表元件所支援的應用程式元件。</span><span class="sxs-lookup"><span data-stu-id="61d9e-116">The <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart> class represents an application part that's backed by an assembly.</span></span>
 
-```csharp
-// create an assembly part from a class's assembly
-var assembly = typeof(Startup).GetTypeInfo().Assembly;
-services.AddMvc()
-    .AddApplicationPart(assembly);
+## <a name="load-aspnet-core-features"></a><span data-ttu-id="61d9e-117">載入 ASP.NET Core 功能</span><span class="sxs-lookup"><span data-stu-id="61d9e-117">Load ASP.NET Core features</span></span>
 
-// OR
-var assembly = typeof(Startup).GetTypeInfo().Assembly;
-var part = new AssemblyPart(assembly);
-services.AddMvc()
-    .ConfigureApplicationPartManager(apm => apm.ApplicationParts.Add(part));
-```
+<span data-ttu-id="61d9e-118">`ApplicationPart`使用和`AssemblyPart`類別來探索和載入 ASP.NET Core 功能（控制器、視圖元件等）。</span><span class="sxs-lookup"><span data-stu-id="61d9e-118">Use the `ApplicationPart` and `AssemblyPart` classes to discover and load ASP.NET Core features (controllers, view components, etc.).</span></span> <span data-ttu-id="61d9e-119">會<xref:Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartManager>追蹤可用的應用程式元件和功能提供者。</span><span class="sxs-lookup"><span data-stu-id="61d9e-119">The <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartManager> tracks the application parts and feature providers available.</span></span> <span data-ttu-id="61d9e-120">`ApplicationPartManager`設定于`Startup.ConfigureServices`：</span><span class="sxs-lookup"><span data-stu-id="61d9e-120">`ApplicationPartManager` is configured in `Startup.ConfigureServices`:</span></span>
 
-<span data-ttu-id="c12ed-115">MVC 預設會搜尋相依性樹狀結構，並尋找控制器 (即使位於其他組件中)。</span><span class="sxs-lookup"><span data-stu-id="c12ed-115">By default MVC will search the dependency tree and find controllers (even in other assemblies).</span></span> <span data-ttu-id="c12ed-116">您可以使用應用程式組件，來載入任意組件 (例如來自未於編譯時期參考的外掛程式)。</span><span class="sxs-lookup"><span data-stu-id="c12ed-116">To load an arbitrary assembly (for instance, from a plugin that isn't referenced at compile time), you can use an application part.</span></span>
+[!code-csharp[](./app-parts/sample1/WebAppParts/Startup.cs?name=snippet)]
 
-<span data-ttu-id="c12ed-117">您可以使用應用程式組件，來「避免」  尋找特定組件或位置中的控制器。</span><span class="sxs-lookup"><span data-stu-id="c12ed-117">You can use application parts to *avoid* looking for controllers in a particular assembly or location.</span></span> <span data-ttu-id="c12ed-118">藉由修改 `ApplicationPartManager` 的 `ApplicationParts` 集合，您可以控制要提供給應用程式哪些組件。</span><span class="sxs-lookup"><span data-stu-id="c12ed-118">You can control which parts (or assemblies) are available to the app by modifying the `ApplicationParts` collection of the `ApplicationPartManager`.</span></span> <span data-ttu-id="c12ed-119">`ApplicationParts` 集合中的項目順序並不重要。</span><span class="sxs-lookup"><span data-stu-id="c12ed-119">The order of the entries in the `ApplicationParts` collection isn't important.</span></span> <span data-ttu-id="c12ed-120">請務必完全設定 `ApplicationPartManager` 之後，再用它來設定容器中的服務。</span><span class="sxs-lookup"><span data-stu-id="c12ed-120">It's important to fully configure the `ApplicationPartManager` before using it to configure services in the container.</span></span> <span data-ttu-id="c12ed-121">例如，您應該完全設定 `ApplicationPartManager` 之後，再叫用 `AddControllersAsServices`。</span><span class="sxs-lookup"><span data-stu-id="c12ed-121">For example, you should fully configure the `ApplicationPartManager` before invoking `AddControllersAsServices`.</span></span> <span data-ttu-id="c12ed-122">如果您沒有這麼做，於呼叫該方法之後才新增的應用程式組件控制器就不會受到影響 (亦無法註冊為服務)，而這可能會造成應用程式的行為異常。</span><span class="sxs-lookup"><span data-stu-id="c12ed-122">Failing to do so, will mean that controllers in application parts added after that method call won't be affected (won't get registered as services) which might result in incorrect behavior of your application.</span></span>
+<span data-ttu-id="61d9e-121">下列程式碼提供`ApplicationPartManager`使用`AssemblyPart`設定的替代方法：</span><span class="sxs-lookup"><span data-stu-id="61d9e-121">The following code provides an alternative approach to configuring `ApplicationPartManager` using `AssemblyPart`:</span></span>
 
-<span data-ttu-id="c12ed-123">如果組件包含您不想使用的控制器，請將它從 `ApplicationPartManager` 移除：</span><span class="sxs-lookup"><span data-stu-id="c12ed-123">If you have an assembly that contains controllers you don't want to be used, remove it from the `ApplicationPartManager`:</span></span>
+[!code-csharp[](./app-parts/sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-```csharp
-services.AddMvc()
-    .ConfigureApplicationPartManager(apm =>
-    {
-        var dependentLibrary = apm.ApplicationParts
-            .FirstOrDefault(part => part.Name == "DependentLibrary");
+<span data-ttu-id="61d9e-122">上述兩個程式碼範例會`SharedController`從元件載入。</span><span class="sxs-lookup"><span data-stu-id="61d9e-122">The preceding two code samples load the `SharedController` from an assembly.</span></span> <span data-ttu-id="61d9e-123">`SharedController`不在應用程式專案中。</span><span class="sxs-lookup"><span data-stu-id="61d9e-123">The `SharedController` is not in the applications project.</span></span> <span data-ttu-id="61d9e-124">請參閱[WebAppParts 解決方案](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts)範例下載。</span><span class="sxs-lookup"><span data-stu-id="61d9e-124">See the [WebAppParts solution](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts) sample download.</span></span>
 
-        if (dependentLibrary != null)
-        {
-           apm.ApplicationParts.Remove(dependentLibrary);
-        }
-    })
-```
+### <a name="include-views"></a><span data-ttu-id="61d9e-125">包含視圖</span><span class="sxs-lookup"><span data-stu-id="61d9e-125">Include views</span></span>
 
-<span data-ttu-id="c12ed-124">除了專案的組件和其相依組件，`ApplicationPartManager` 還預設包含 `Microsoft.AspNetCore.Mvc.TagHelpers` 和 `Microsoft.AspNetCore.Mvc.Razor` 的組件。</span><span class="sxs-lookup"><span data-stu-id="c12ed-124">In addition to your project's assembly and its dependent assemblies, the `ApplicationPartManager` will include parts for `Microsoft.AspNetCore.Mvc.TagHelpers` and `Microsoft.AspNetCore.Mvc.Razor` by default.</span></span>
+<span data-ttu-id="61d9e-126">若要在元件中包含 views：</span><span class="sxs-lookup"><span data-stu-id="61d9e-126">To include views in the assembly:</span></span>
 
-## <a name="application-feature-providers"></a><span data-ttu-id="c12ed-125">應用程式功能提供者</span><span class="sxs-lookup"><span data-stu-id="c12ed-125">Application Feature Providers</span></span>
+* <span data-ttu-id="61d9e-127">將下列標記新增至共用專案檔：</span><span class="sxs-lookup"><span data-stu-id="61d9e-127">Add the following markup to the shared project file:</span></span>
 
-<span data-ttu-id="c12ed-126">應用程式功能提供者會檢查應用程式組件，並對這些組件提供功能。</span><span class="sxs-lookup"><span data-stu-id="c12ed-126">Application Feature Providers examine application parts and provide features for those parts.</span></span> <span data-ttu-id="c12ed-127">下列 MVC 功能均內建功能提供者：</span><span class="sxs-lookup"><span data-stu-id="c12ed-127">There are built-in feature providers for the following MVC features:</span></span>
+  ```csproj
+    <ItemGroup>
+      <EmbeddedResource Include = "Views\**\*.cshtml" />
+    </ ItemGroup >
+  ```
 
-* [<span data-ttu-id="c12ed-128">控制器</span><span class="sxs-lookup"><span data-stu-id="c12ed-128">Controllers</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
-* [<span data-ttu-id="c12ed-129">中繼資料參考</span><span class="sxs-lookup"><span data-stu-id="c12ed-129">Metadata Reference</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.razor.compilation.metadatareferencefeatureprovider)
-* [<span data-ttu-id="c12ed-130">標記協助程式</span><span class="sxs-lookup"><span data-stu-id="c12ed-130">Tag Helpers</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
-* [<span data-ttu-id="c12ed-131">檢視元件</span><span class="sxs-lookup"><span data-stu-id="c12ed-131">View Components</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
+* <span data-ttu-id="61d9e-128"><xref:Microsoft.Extensions.FileProviders.EmbeddedFileProvider>將新增<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine>至：</span><span class="sxs-lookup"><span data-stu-id="61d9e-128">Add the <xref:Microsoft.Extensions.FileProviders.EmbeddedFileProvider> to the <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine>:</span></span>
 
-<span data-ttu-id="c12ed-132">繼承自 `IApplicationFeatureProvider<T>` 的功能提供者，其中 `T` 是功能的類型。</span><span class="sxs-lookup"><span data-stu-id="c12ed-132">Feature providers inherit from `IApplicationFeatureProvider<T>`, where `T` is the type of the feature.</span></span> <span data-ttu-id="c12ed-133">針對上述所列的任何 MVC 功能類型，您可以實作自己的功能提供者。</span><span class="sxs-lookup"><span data-stu-id="c12ed-133">You can implement your own feature providers for any of MVC's feature types listed above.</span></span> <span data-ttu-id="c12ed-134">在 `ApplicationPartManager.FeatureProviders` 集合中，功能提供者順序可能相當重要，因為更新版本的提供者可以依據舊版提供者所採取的動作做出回應。</span><span class="sxs-lookup"><span data-stu-id="c12ed-134">The order of feature providers in the `ApplicationPartManager.FeatureProviders` collection can be important, since later providers can react to actions taken by previous providers.</span></span>
+[!code-csharp[](./app-parts/sample1/WebAppParts/StartupViews.cs?name=snippet&highlight=3-7)]
 
-### <a name="sample-generic-controller-feature"></a><span data-ttu-id="c12ed-135">範例：泛型控制器功能</span><span class="sxs-lookup"><span data-stu-id="c12ed-135">Sample: Generic controller feature</span></span>
+### <a name="prevent-loading-resources"></a><span data-ttu-id="61d9e-129">防止載入資源</span><span class="sxs-lookup"><span data-stu-id="61d9e-129">Prevent loading resources</span></span>
 
-<span data-ttu-id="c12ed-136">根據預設，ASP.NET Core MVC 會忽略泛型控制器 (例如 `SomeController<T>`)。</span><span class="sxs-lookup"><span data-stu-id="c12ed-136">By default, ASP.NET Core MVC ignores generic controllers (for example, `SomeController<T>`).</span></span> <span data-ttu-id="c12ed-137">這個範例使用的控制器功能提供者，會在預設提供者之後執行，並新增指定類型清單 (定義於 `EntityTypes.Types`) 的泛型控制器執行個體：</span><span class="sxs-lookup"><span data-stu-id="c12ed-137">This sample uses a controller feature provider that runs after the default provider and adds generic controller instances for a specified list of types (defined in `EntityTypes.Types`):</span></span>
+<span data-ttu-id="61d9e-130">應用程式元件可以用來*避免*在特定元件或位置中載入資源。</span><span class="sxs-lookup"><span data-stu-id="61d9e-130">Application parts can be used to *avoid* loading resources in a particular assembly or location.</span></span> <span data-ttu-id="61d9e-131">新增或移除<xref:Microsoft.AspNetCore.Mvc.ApplicationParts>集合的成員，以隱藏或提供可用的資源。</span><span class="sxs-lookup"><span data-stu-id="61d9e-131">Add or remove members of the  <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> collection to hide or make available resources.</span></span> <span data-ttu-id="61d9e-132">`ApplicationParts` 集合中的項目順序並不重要。</span><span class="sxs-lookup"><span data-stu-id="61d9e-132">The order of the entries in the `ApplicationParts` collection isn't important.</span></span> <span data-ttu-id="61d9e-133">先設定`ApplicationPartManager` ，再使用它來設定容器中的服務。</span><span class="sxs-lookup"><span data-stu-id="61d9e-133">Configure the `ApplicationPartManager` before using it to configure services in the container.</span></span> <span data-ttu-id="61d9e-134">例如，在叫用`ApplicationPartManager` `AddControllersAsServices`之前設定。</span><span class="sxs-lookup"><span data-stu-id="61d9e-134">For example, configure the `ApplicationPartManager` before invoking `AddControllersAsServices`.</span></span> <span data-ttu-id="61d9e-135">在集合上呼叫`Remove`以移除資源。`ApplicationParts`</span><span class="sxs-lookup"><span data-stu-id="61d9e-135">Call `Remove` on the `ApplicationParts` collection to remove a resource.</span></span>
 
-[!code-csharp[](./app-parts/sample/AppPartsSample/GenericControllerFeatureProvider.cs?highlight=13&range=18-36)]
+<span data-ttu-id="61d9e-136">下列程式碼會<xref:Microsoft.AspNetCore.Mvc.ApplicationParts>使用從`MyDependentLibrary`應用程式中移除：[!code-csharp[](./app-parts/sample1/WebAppParts/StartupRm.cs?name=snippet)]</span><span class="sxs-lookup"><span data-stu-id="61d9e-136">The following code uses <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> to remove `MyDependentLibrary` from the app: [!code-csharp[](./app-parts/sample1/WebAppParts/StartupRm.cs?name=snippet)]</span></span>
 
-<span data-ttu-id="c12ed-138">實體類型：</span><span class="sxs-lookup"><span data-stu-id="c12ed-138">The entity types:</span></span>
+<span data-ttu-id="61d9e-137">`ApplicationPartManager`包含的部分：</span><span class="sxs-lookup"><span data-stu-id="61d9e-137">The `ApplicationPartManager` includes parts for:</span></span>
 
-[!code-csharp[](./app-parts/sample/AppPartsSample/Model/EntityTypes.cs?range=6-16)]
+* <span data-ttu-id="61d9e-138">應用程式元件和相依元件。</span><span class="sxs-lookup"><span data-stu-id="61d9e-138">The apps assembly and dependent assemblies.</span></span>
+* `Microsoft.AspNetCore.Mvc.TagHelpers`
+* <span data-ttu-id="61d9e-139">`Microsoft.AspNetCore.Mvc.Razor`.</span><span class="sxs-lookup"><span data-stu-id="61d9e-139">`Microsoft.AspNetCore.Mvc.Razor`.</span></span>
 
-<span data-ttu-id="c12ed-139">系統會將功能提供者新增至 `Startup`：</span><span class="sxs-lookup"><span data-stu-id="c12ed-139">The feature provider is added in `Startup`:</span></span>
+## <a name="application-feature-providers"></a><span data-ttu-id="61d9e-140">應用程式功能提供者</span><span class="sxs-lookup"><span data-stu-id="61d9e-140">Application feature providers</span></span>
 
-```csharp
-services.AddMvc()
-    .ConfigureApplicationPartManager(apm => 
-        apm.FeatureProviders.Add(new GenericControllerFeatureProvider()));
-```
+<span data-ttu-id="61d9e-141">應用程式功能提供者會檢查應用程式元件，並為這些元件提供功能。</span><span class="sxs-lookup"><span data-stu-id="61d9e-141">Application feature providers examine application parts and provide features for those parts.</span></span> <span data-ttu-id="61d9e-142">下列 ASP.NET Core 功能有內建的功能提供者：</span><span class="sxs-lookup"><span data-stu-id="61d9e-142">There are built-in feature providers for the following ASP.NET Core features:</span></span>
 
-<span data-ttu-id="c12ed-140">根據預設，用於路由的泛用控制器名稱格式為 *GenericController'1[Widget]* 而不是 *Widget*。</span><span class="sxs-lookup"><span data-stu-id="c12ed-140">By default, the generic controller names used for routing would be of the form *GenericController\`1[Widget]* instead of *Widget*.</span></span> <span data-ttu-id="c12ed-141">您可以使用下列屬性修改名稱，以對應至控制器所使用的泛型型別：</span><span class="sxs-lookup"><span data-stu-id="c12ed-141">The following attribute is used to modify the name to correspond to the generic type used by the controller:</span></span>
+* [<span data-ttu-id="61d9e-143">控制器</span><span class="sxs-lookup"><span data-stu-id="61d9e-143">Controllers</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
+* [<span data-ttu-id="61d9e-144">標記協助程式</span><span class="sxs-lookup"><span data-stu-id="61d9e-144">Tag Helpers</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
+* [<span data-ttu-id="61d9e-145">檢視元件</span><span class="sxs-lookup"><span data-stu-id="61d9e-145">View Components</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
 
-[!code-csharp[](./app-parts/sample/AppPartsSample/GenericControllerNameConvention.cs)]
+<span data-ttu-id="61d9e-146">繼承自 <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.IApplicationFeatureProvider`1> 的功能提供者，其中 `T` 是功能的類型。</span><span class="sxs-lookup"><span data-stu-id="61d9e-146">Feature providers inherit from <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.IApplicationFeatureProvider`1>, where `T` is the type of the feature.</span></span> <span data-ttu-id="61d9e-147">功能提供者可以針對任何先前列出的功能類型來執行。</span><span class="sxs-lookup"><span data-stu-id="61d9e-147">Feature providers can be implemented for any of the previously listed feature types.</span></span> <span data-ttu-id="61d9e-148">中的功能提供者順序`ApplicationPartManager.FeatureProviders`可能會影響執行時間行為。</span><span class="sxs-lookup"><span data-stu-id="61d9e-148">The order of feature providers in the `ApplicationPartManager.FeatureProviders` can impact run time behavior.</span></span> <span data-ttu-id="61d9e-149">稍後新增的提供者可以回應先前新增的提供者所採取的動作。</span><span class="sxs-lookup"><span data-stu-id="61d9e-149">Later added providers can react to actions taken by earlier added providers.</span></span>
 
-<span data-ttu-id="c12ed-142">`GenericController` 類別：</span><span class="sxs-lookup"><span data-stu-id="c12ed-142">The `GenericController` class:</span></span>
+### <a name="generic-controller-feature"></a><span data-ttu-id="61d9e-150">泛型控制器功能</span><span class="sxs-lookup"><span data-stu-id="61d9e-150">Generic controller feature</span></span>
 
-[!code-csharp[](./app-parts/sample/AppPartsSample/GenericController.cs?highlight=5-6)]
+<span data-ttu-id="61d9e-151">ASP.NET Core 會忽略[泛型控制器](/dotnet/csharp/programming-guide/generics/generic-classes)。</span><span class="sxs-lookup"><span data-stu-id="61d9e-151">ASP.NET Core ignores [generic controllers](/dotnet/csharp/programming-guide/generics/generic-classes).</span></span> <span data-ttu-id="61d9e-152">泛型控制器具有型別參數（ `MyController<T>`例如）。</span><span class="sxs-lookup"><span data-stu-id="61d9e-152">A generic controller has a type parameter (for example, `MyController<T>`).</span></span> <span data-ttu-id="61d9e-153">下列範例會針對指定的類型清單加入泛型控制器實例。</span><span class="sxs-lookup"><span data-stu-id="61d9e-153">The following sample adds generic controller instances for a specified list of types.</span></span>
 
-<span data-ttu-id="c12ed-143">要求相符路由時的結果為：</span><span class="sxs-lookup"><span data-stu-id="c12ed-143">The result, when a matching route is requested:</span></span>
+[!code-csharp[](./app-parts/sample2/AppPartsSample/GenericControllerFeatureProvider.cs?name=snippet)]
 
-![來自範例應用程式的輸出範例會顯示 'Hello from a generic Sprocket controller'。](app-parts/_static/generic-controller.png)
+<span data-ttu-id="61d9e-154">類型定義于`EntityTypes.Types`：</span><span class="sxs-lookup"><span data-stu-id="61d9e-154">The types are defined in `EntityTypes.Types`:</span></span>
 
-### <a name="sample-display-available-features"></a><span data-ttu-id="c12ed-145">範例：顯示可用的功能</span><span class="sxs-lookup"><span data-stu-id="c12ed-145">Sample: Display available features</span></span>
+[!code-csharp[](./app-parts/sample2/AppPartsSample/Models/EntityTypes.cs?name=snippet)]
 
-<span data-ttu-id="c12ed-146">您可以透過[相依性插入](../../fundamentals/dependency-injection.md)要求 `ApplicationPartManager`，並使用它來填入適當的功能執行個體，以逐一查看適用於應用程式的已填入功能：</span><span class="sxs-lookup"><span data-stu-id="c12ed-146">You can iterate through the populated features available to your app by requesting an `ApplicationPartManager` through [dependency injection](../../fundamentals/dependency-injection.md) and using it to populate instances of the appropriate features:</span></span>
+<span data-ttu-id="61d9e-155">系統會將功能提供者新增至 `Startup`：</span><span class="sxs-lookup"><span data-stu-id="61d9e-155">The feature provider is added in `Startup`:</span></span>
 
-[!code-csharp[](./app-parts/sample/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
+[!code-csharp[](./app-parts/sample2/AppPartsSample/Startup.cs?name=snippet)]
 
-<span data-ttu-id="c12ed-147">範例輸出：</span><span class="sxs-lookup"><span data-stu-id="c12ed-147">Example output:</span></span>
+<span data-ttu-id="61d9e-156">用於路由的一般控制器名稱的格式為*GenericController ' 1 [widget]* ，而不是*Widget*。</span><span class="sxs-lookup"><span data-stu-id="61d9e-156">Generic controller names used for routing are of the form *GenericController\`1[Widget]* rather than *Widget*.</span></span> <span data-ttu-id="61d9e-157">下列屬性會修改名稱，以對應至控制器所使用的泛型型別：</span><span class="sxs-lookup"><span data-stu-id="61d9e-157">The following attribute modifies the name to correspond to the generic type used by the controller:</span></span>
 
-![來自範例應用程式的範例輸出](app-parts/_static/available-features.png)
+[!code-csharp[](./app-parts/sample2/AppPartsSample/GenericControllerNameConvention.cs)]
+
+<span data-ttu-id="61d9e-158">`GenericController` 類別：</span><span class="sxs-lookup"><span data-stu-id="61d9e-158">The `GenericController` class:</span></span>
+
+[!code-csharp[](./app-parts/sample2/AppPartsSample/GenericController.cs)]
+
+### <a name="display-available-features"></a><span data-ttu-id="61d9e-159">顯示可用的功能</span><span class="sxs-lookup"><span data-stu-id="61d9e-159">Display available features</span></span>
+
+<span data-ttu-id="61d9e-160">`ApplicationPartManager`透過相依性[插入](../../fundamentals/dependency-injection.md)要求，可以列舉應用程式可用的功能：</span><span class="sxs-lookup"><span data-stu-id="61d9e-160">The features available to an app can be enumerated by by requesting an `ApplicationPartManager` through [dependency injection](../../fundamentals/dependency-injection.md):</span></span>
+
+[!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
+
+<span data-ttu-id="61d9e-161">[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2)會使用上述程式碼來顯示應用程式功能。</span><span class="sxs-lookup"><span data-stu-id="61d9e-161">The [download sample](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) uses the preceding code to display the app features.</span></span>

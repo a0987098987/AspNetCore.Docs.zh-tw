@@ -5,12 +5,12 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 8/15/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: b0efaf76cb2172f5b7568e42065b99b1259949de
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: b2ef7a582dfedcd670af7bb18a6927cec31f6414
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081988"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187288"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
@@ -69,21 +69,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer -IncludePrerelease
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
-執行下列 .NET Core CLI 命令：
-
-```dotnetcli
-dotnet tool install --global dotnet-ef --version 3.0.0-*
-dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
-dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
-```
-
-上述命令會新增：
-
-* 適用於 .NET CLI 的 Entity Framework Core 工具。
-* EF Core SQLite 提供者，該提供者會將 EF Core 套件作為相依性安裝。
-* Scaffolding `Microsoft.VisualStudio.Web.CodeGeneration.Design` 和 `Microsoft.EntityFrameworkCore.SqlServer` 需要的套件。
+[!INCLUDE[](~/includes/add-EF-NuGet-SQLite-CLI.md)]
 
 ---
 
@@ -538,7 +524,7 @@ Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
 
    `Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。
 
-   資料庫結構描述是以 `MvcMovieContext` 類別為基礎。 `Initial` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱 <xref:data/ef-mvc/migrations>。
+   資料庫結構描述是以 `MvcMovieContext` 類別為基礎。 `Initial` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
 
    `Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
 

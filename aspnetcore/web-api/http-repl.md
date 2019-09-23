@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/29/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 8ef49797fed3379e33810f311bfc474e524122e0
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 086ac141a04ab4a560f2c26fb049ef8a5493dc97
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082592"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187249"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -45,7 +45,7 @@ HTTP「讀取、求值、輸出」迴圈 (REPL) 是：
 若要安裝 HTTP REPL，請執行下列命令：
 
 ```dotnetcli
-dotnet tool install -g Microsoft.dotnet-httprepl --version "3.0.0-*"
+dotnet tool install -g Microsoft.dotnet-httprepl
 ```
 
 會從 [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) \(英文\) NuGet 套件安裝 [.NET Core 全域工具](/dotnet/core/tools/global-tools#install-a-global-tool)。

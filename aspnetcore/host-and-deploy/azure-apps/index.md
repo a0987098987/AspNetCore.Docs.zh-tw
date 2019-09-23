@@ -5,14 +5,14 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/07/2019
+ms.date: 07/28/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 7736888c43aafd2f64e3d7b079f2099fe548a825
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 4dc150ff4534e42e1995a185f650cea9df70ccc4
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081079"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187043"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -47,7 +47,7 @@ ms.locfileid: "71081079"
 
 ## <a name="application-configuration"></a>應用程式組態
 
-### <a name="platform"></a>平台
+### <a name="platform"></a>Platform
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -63,7 +63,7 @@ Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執�
 
 如需 .NET Core 架構元件與發佈方法的詳細資訊，例如 .NET Core 執行階段和 .NET Core SDK 的相關資訊，請參閱[關於 .NET Core：組合](/dotnet/core/about#composition)。
 
-### <a name="packages"></a>Packages
+### <a name="packages"></a>package
 
 包含下列 NuGet 套件，為部署至 Azure App Service 的應用程式提供自動記錄功能：
 
@@ -97,7 +97,17 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ## <a name="monitoring-and-logging"></a>監視與記錄
 
-Azure App Service 提供**ASP.NET Core 記錄延伸**模組，可啟用 ASP.NET Core 應用程式的記錄整合。 若要將延伸模組自動新增至 App Service，請使用 Visual Studio 的**發行**程式搭配**App Service**發行設定檔。 當不使用 Visual Studio 部署應用程式時，請透過 App Service 的 [**開發工具** > **擴充**功能] 對話方塊，在 Azure 入口網站中手動安裝此延伸模組。
+::: moniker range=">= aspnetcore-3.0"
+
+部署到 App Service 的 ASP.NET Core 應用程式會自動接收 App Service 延伸模組：**ASP.NET Core 記錄整合**。 延伸模組讓 Azure App Service 上的 ASP.NET Core 應用程式得以進行記錄整合。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+部署到 App Service 的 ASP.NET Core 應用程式會自動接收 App Service 延伸模組 **ASP.NET Core 記錄延伸模組**。 延伸模組讓 Azure App Service 上的 ASP.NET Core 應用程式得以進行記錄整合。
+
+::: moniker-end
 
 如需監視、記錄及疑難排解的資訊，請參閱下列文章：
 
@@ -127,11 +137,22 @@ Azure App Service 提供**ASP.NET Core 記錄延伸**模組，可啟用 ASP.NET 
 * SQL 存放區
 * Redis 快取
 
-如需詳細資訊，請參閱 <xref:security/data-protection/implementation/key-storage-providers>。
+如需詳細資訊，請參閱<xref:security/data-protection/implementation/key-storage-providers>。
+<a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
+<!-- revert this after 3.0 supported
+## Deploy ASP.NET Core preview release to Azure App Service
 
-## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>將 ASP.NET Core 預覽版本部署至 Azure App Service
+Use one of the following approaches if the app relies on a preview release of .NET Core:
 
-如果應用程式仰賴 .NET Core 的預覽版本，請使用下列其中一種方法：
+* [Install the preview site extension](#install-the-preview-site-extension).
+* [Deploy a self-contained preview app](#deploy-a-self-contained-preview-app).
+* [Use Docker with Web Apps for containers](#use-docker-with-web-apps-for-containers).
+-->
+## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>將 ASP.NET Core 3.0 部署至 Azure App Service
+
+我們希望 Azure App Service 很快就會提供 ASP.NET Core 3.0。
+
+如果應用程式依賴 .NET Core 3.0，請使用下列其中一種方法：
 
 * [安裝預覽網站延伸模組](#install-the-preview-site-extension)。
 * [部署獨立式預覽應用程式](#deploy-a-self-contained-preview-app)。
@@ -230,7 +251,7 @@ Azure App Service 提供**ASP.NET Core 記錄延伸**模組，可啟用 ASP.NET 
 
 1. 從命令殼層使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，以發行組態來發佈應用程式。 在下列範例中，應用程式會發佈為依架構不同的應用程式：
 
-   ```dotnetcli
+   ```console
    dotnet publish --configuration Release
    ```
 
@@ -268,7 +289,7 @@ Azure App Service 提供**ASP.NET Core 記錄延伸**模組，可啟用 ASP.NET 
 
 1. 從命令殼層中使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，針對主機執行階段以 [發行] 設定來發佈應用程式。 在下列範例中，將針對 `win-x86` RID發佈應用程式。 提供給 `--runtime` 選項的 RID 必須在專案檔的 `<RuntimeIdentifier>` (或 `<RuntimeIdentifiers>`) 屬性中提供。
 
-   ```dotnetcli
+   ```console
    dotnet publish --configuration Release --runtime win-x86
    ```
 

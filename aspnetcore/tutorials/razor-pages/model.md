@@ -3,14 +3,14 @@ title: 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 author: rick-anderson
 description: 了解如何使用 Entity Framework Core (EF Core)，新增用來管理資料庫中電影的類別。
 ms.author: riande
-ms.date: 07/22/2019
+ms.date: 9/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 18cf9aea930a7989bb844bc6c40dfa1ce84b7b4d
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: dcbcf37dfd95d784ebe249ec6e9e4184a8853d3d
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082617"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187160"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -99,7 +99,7 @@ ms.locfileid: "71082617"
 * 安裝 Scaffolding 工具：
 
   ```dotnetcli
-   dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
+   dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
 * **針對 Windows**：執行下列命令：
@@ -122,7 +122,7 @@ ms.locfileid: "71082617"
 * 安裝 Scaffolding 工具：
 
   ```dotnetcli
-   dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
+   dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
 * 執行下列命令：
@@ -230,7 +230,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 
 ---
 
-`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱 <xref:data/ef-mvc/migrations>。
+`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
 
 `Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
 
@@ -475,7 +475,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 
 ---
 
-`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱 <xref:data/ef-mvc/migrations>。
+`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
 
 `Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
 

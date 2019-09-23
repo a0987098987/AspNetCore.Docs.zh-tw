@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/27/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 1cc4fffc50978a3a958a96e1eb250cb85a8d2879
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 2d0eb24641c3d1f795b9e85ce10d42ee96d30846
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082072"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187303"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -36,13 +36,13 @@ ms.locfileid: "71082072"
 
 本教學課程會建立以下 API：
 
-|API | 說明 | 要求本文 | 回應本文 |
+|API | 描述 | 要求本文 | 回應本文 |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | 取得所有待辦事項 | 無 | 待辦事項的陣列|
-|GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | 無 | 待辦事項|
-|POST /api/TodoItems | 新增項目 | 待辦事項 | 待辦事項 |
+|GET /api/TodoItems | 取得所有待辦事項 | None | 待辦事項的陣列|
+|GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | None | 待辦事項|
+|POST /api/TodoItems | 新增記錄 | 待辦事項 | 待辦事項 |
 |PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | None |
-|DELETE /api/TodoItems/{識別碼} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | 無 | 無|
+|DELETE /api/TodoItems/{識別碼} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | None | None|
 
 下圖顯示應用程式的設計。
 
@@ -84,8 +84,8 @@ ms.locfileid: "71082072"
    ```dotnetcli
    dotnet new webapi -o TodoApi
    cd TodoAPI
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
-   dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 3.0.0-*
+   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+   dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
    ```
 
@@ -117,8 +117,8 @@ ms.locfileid: "71082072"
 在專案資料夾中開啟命令終端機，然後執行下列命令：
 
    ```dotnetcli
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
-   dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 3.0.0-*
+   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+   dotnet add package Microsoft.EntityFrameworkCore.InMemory
    ```
 
 ---
@@ -281,8 +281,8 @@ ms.locfileid: "71082072"
 執行下列命令：
 
 ```dotnetcli
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
-dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet tool install --global dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext  -outDir Controllers
 ```
@@ -388,7 +388,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 * 建立新的要求。
 * 將 HTTP 方法設定為 **GET**。
-* 將要求 URL 設定為 `https://localhost:<port>/api/TodoItems`。 例如： `https://localhost:5001/api/TodoItems` 。
+* 將要求 URL 設定為 `https://localhost:<port>/api/TodoItems`。 例如，`https://localhost:5001/api/TodoItems`。
 * 在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)。
 * 選取 [傳送]。
 
@@ -490,11 +490,11 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 |API | 描述 | 要求本文 | 回應本文 |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | 取得所有待辦事項 | 無 | 待辦事項的陣列|
+|GET /api/TodoItems | 取得所有待辦事項 | None | 待辦事項的陣列|
 |GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | None | 待辦事項|
-|POST /api/TodoItems | 新增項目 | 待辦事項 | 待辦事項 |
-|PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | 無 |
-|DELETE /api/TodoItems/{識別碼} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | None | 無|
+|POST /api/TodoItems | 新增記錄 | 待辦事項 | 待辦事項 |
+|PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | None |
+|DELETE /api/TodoItems/{識別碼} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | None | None|
 
 下圖顯示應用程式的設計。
 
@@ -762,7 +762,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 * 建立新的要求。
   * 將 HTTP 方法設定為 **GET**。
-  * 將要求 URL 設定為 `https://localhost:<port>/api/todo`。 例如： `https://localhost:5001/api/todo` 。
+  * 將要求 URL 設定為 `https://localhost:<port>/api/todo`。 例如，`https://localhost:5001/api/todo`。
 * 在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)。
 * 選取 [傳送]。
 

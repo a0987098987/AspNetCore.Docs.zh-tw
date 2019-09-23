@@ -4,14 +4,14 @@ author: rick-anderson
 description: 此教學課程時間不長，會使用 ASP.NET Core 建立及執行基本的 Hello World 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/15/2019
+ms.date: 09/22/2019
 uid: getting-started
-ms.openlocfilehash: d1edf91f1b37ba2b69732471dc6c1f306ac5ad24
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 0f05ab120d64832a4bc2fd70921efc7238ee9eac
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081112"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187065"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
@@ -31,7 +31,7 @@ ms.locfileid: "71081112"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [.NET Core 2.2 SDK](https://www.microsoft.com/net/download/all)
+[!INCLUDE[](~/includes/3.0-SDK.md)]
 
 ## <a name="create-a-web-app-project"></a>建立 Web 應用程式專案
 
@@ -40,6 +40,11 @@ ms.locfileid: "71081112"
 ```dotnetcli
 dotnet new webapp -o aspnetcoreapp
 ```
+
+上述命令：
+
+* 建立新的 web 應用程式。  
+* 參數會建立名為 aspnetcoreapp 的目錄，其中包含應用程式的來源檔案。 `-o`
 
 ### <a name="trust-the-development-certificate"></a>信任開發憑證
 

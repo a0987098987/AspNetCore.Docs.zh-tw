@@ -5,12 +5,12 @@ description: 在本教學課程中，您將開始使用 EF Core 移轉功能來�
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 8a4929a905c6a488231d7d29e1101f6fd887477f
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: efcf62d56a7b4cee4780d5f0475b4ef363fe1897
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082074"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187081"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 
@@ -45,7 +45,7 @@ Drop-Database
 * 請在命令提示字元執行下列命令以安裝 EF CLI 工具：
 
   ```dotnetcli
-  dotnet tool install --global dotnet-ef --version 3.0.0-*
+  dotnet tool install --global dotnet-ef
   ```
 
 * 在命令提示字元中，巡覽至專案資料夾。 專案資料夾包含 *ContosoUniversity.csproj* 檔案。

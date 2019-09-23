@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 07/22/2019
 uid: data/ef-rp/intro
-ms.openlocfilehash: 107b348b4484301b86eeb5528833914fe4c1eaf7
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 6b7d2ca1cea23efd195f1ae0e0a749c6d2d9b622
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080961"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71186963"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -87,7 +87,7 @@ Visual Studio Code 說明則會使用 [SQLite](https://www.sqlite.org/)，它是
 * 在專案資料夾中的命令提示字元內，執行下列命令：
 
   ```dotnetcli
-  dotnet tool install --global dotnet-ef --version 3.0.0-*
+  dotnet tool install --global dotnet-ef
   dotnet ef database update
   ```
 
@@ -227,14 +227,17 @@ Visual Studio Code 說明則會使用 [SQLite](https://www.sqlite.org/)，它是
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 執行下列 .NET Core CLI 命令來安裝必要的 NuGet 套件：
-
+<!-- TO DO  After testing, Replace with
+[!INCLUDE[](~/includes/includes/add-EF-NuGet-SQLite-CLI.md)]
+remove dotnet tool install --global  below
+ -->
   ```dotnetcli
-  dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
-  dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
-  dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
-  dotnet add package Microsoft.EntityFrameworkCore.Tools --version 3.0.0-*
-  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
-  dotnet add package Microsoft.Extensions.Logging.Debug --version 3.0.0-*
+  dotnet add package Microsoft.EntityFrameworkCore.SQLite
+  dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+  dotnet add package Microsoft.EntityFrameworkCore.Design
+  dotnet add package Microsoft.EntityFrameworkCore.Tools
+  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+  dotnet add package Microsoft.Extensions.Logging.Debug
   ```
 
   Microsoft.VisualStudio.Web.CodeGeneration.Design 套件是進行 scaffolding 時的必要項目。 雖然應用程式不會使用 SQL Server，scaffolding 工具仍需要 SQL Server 套件。
@@ -244,7 +247,7 @@ Visual Studio Code 說明則會使用 [SQLite](https://www.sqlite.org/)，它是
 * 執行下列命令來安裝 [aspnet-codegenerator scaffolding 工具](xref:fundamentals/tools/dotnet-aspnet-codegenerator)。
 
   ```dotnetcli
-  dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
+  dotnet tool install --global dotnet-aspnet-codegenerator
   ```
 
 * 執行下列命令來 scaffold Student 頁面。
@@ -694,7 +697,7 @@ EF Core 會建立空白資料庫。 在本節中，會寫入 `Initialize` 方法
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Intro)]
 
-注意:上述程式碼針對命名空間 (`namespace ContosoUniversity.Models`) 使用 `Models`，而不是使用 `Data`。 `Models` 與產生框架的程式碼一致。 如需詳細資訊，請參閱[此 GitHub Scaffolding 問題](https://github.com/aspnet/Scaffolding/issues/822)。
+注意：上述程式碼針對命名空間 (`namespace ContosoUniversity.Models`) 使用 `Models`，而不是使用 `Data`。 `Models` 與產生框架的程式碼一致。 如需詳細資訊，請參閱[此 GitHub Scaffolding 問題](https://github.com/aspnet/Scaffolding/issues/822)。
 
 程式碼會檢查資料庫中是否有任何學生。 如果資料庫中沒有學生，則會使用測試資料初始化資料庫。 它會將測試資料載入陣列之中，而非 `List<T>` 集合，以最佳化效能。
 
@@ -765,6 +768,6 @@ Drop-Database
 * [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=P7iTtQnkrNs)
 
 > [!div class="step-by-step"]
-> [下一個](xref:data/ef-rp/crud)
+> [下一步](xref:data/ef-rp/crud)
 
 ::: moniker-end

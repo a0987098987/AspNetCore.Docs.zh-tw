@@ -4,14 +4,14 @@ author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.0 中的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/20/2019
+ms.date: 09/23/2019
 uid: aspnetcore-3.0
-ms.openlocfilehash: 97703b8d67c148ef6b3ee4a93cdfc07ab970ecd4
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: 490d00da7282e2efe28fcc52e593dd71d7324d3f
+ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187485"
+ms.locfileid: "71198988"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>3\.0 ASP.NET Core 的新功能
 
@@ -487,6 +487,17 @@ app.UseEndpoints(endpoints =>
 在舊版的 ASP.NET Core 中，當<xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>部署<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>到 Azure Linux 或 IIS 以外的任何反向 proxy 後方時，呼叫和會有問題。 先前版本的修正已記載于[轉送 Linux 和非 IIS 反向 proxy 的配置](xref:host-and-deploy/proxy-load-balancer#forward-the-scheme-for-linux-and-non-iis-reverse-proxies)中。
 
 此案例已在 ASP.NET Core 3.0 中修正。 當`ASPNETCORE_FORWARDEDHEADERS_ENABLED`環境變數設定為`true`時，主機會啟用[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options)。 `ASPNETCORE_FORWARDEDHEADERS_ENABLED`在我們的`true`容器映射中設定為。
+
+## <a name="performance-improvements"></a>效能改善
+
+ASP.NET Core 3.0 包含許多增強功能，可減少記憶體使用量並改善輸送量：
+
+* 針對範圍服務使用內建的相依性插入容器時，減少記憶體使用量。
+* 減少整個架構的配置，包括中介軟體案例和路由。
+* 減少 WebSocket 連接的記憶體使用量。
+* HTTPS 連線的記憶體減少和輸送量改善。
+* 新的優化和完全非同步 JSON 序列化程式。
+* 減少在表單剖析中的記憶體使用量和輸送量改善。
 
 ## <a name="aspnet-core-30-only-runs-on-net-core-30"></a>ASP.NET Core 3.0 只會在 .NET Core 3.0 上執行
 

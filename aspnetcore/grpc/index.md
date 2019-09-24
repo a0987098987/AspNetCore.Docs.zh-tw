@@ -1,23 +1,23 @@
 ---
-title: ASP.NET Core 上的 gRPC 簡介
+title: .NET Core 上的 gRPC 簡介
 author: juntaoluo
 description: 了解搭配 Kestrel 伺服器及 ASP.NET Core 堆疊的 gRPC 服務。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 02/26/2019
+ms.date: 09/20/2019
 uid: grpc/index
-ms.openlocfilehash: dd1c42744bfda965df91ea1fcc0b71814317b969
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
-ms.translationtype: HT
+ms.openlocfilehash: 928eb58930743cd0905f185f54df46c5984b8e97
+ms.sourcegitcommit: fa61d882be9d0c48bd681f2efcb97e05522051d0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085544"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71205688"
 ---
-# <a name="introduction-to-grpc-on-aspnet-core"></a>ASP.NET Core 上的 gRPC 簡介
+# <a name="introduction-to-grpc-on-net-core"></a>.NET Core 上的 gRPC 簡介
 
-作者：[John Luo](https://github.com/juntaoluo)
+依[John 羅文](https://github.com/juntaoluo)和[James 的牛頓-王](https://twitter.com/jamesnk)
 
-[gRPC](https://grpc.io/docs/guides/) 是不限於語言的高效能遠端程序呼叫 (RPC) 架構。 如需詳細的 gRPC 基本概念，請參閱 [gRPC 文件頁面](https://grpc.io/docs/)。
+[gRPC](https://grpc.io/docs/guides/) 是不限於語言的高效能遠端程序呼叫 (RPC) 架構。
 
 gRPC 的主要優點包括：
 * 新式高效能輕量型 RPC 架構。
@@ -31,11 +31,100 @@ gRPC 的主要優點包括：
 * 必須使用多種語言進行開發的多語言系統。
 * 必須處理資料流要求或回應的點對點即時服務。
 
-雖然目前可在官方 [gRPC 網頁](https://grpc.io/docs/quickstart/csharp.html)上取得 C# 實作，但目前的實作仰賴以 C (gRPC [C-core](https://grpc.io/blog/grpc-stacks)) 撰寫而成的原生程式庫。 目前已在準備根據完全受控的 Kestrel HTTP 伺服器及 ASP.NET Core 堆疊，提供全新實作。 下列文件提供簡介，說明如何使用此全新實作建置 gRPC 服務。
+## <a name="c-tooling-support-for-proto-files"></a>C#適用于 proto 檔案的工具支援
+
+gRPC 會使用合約優先的方法來開發 API。 服務和訊息定義于 *\*proto*檔案中：
+
+```protobuf
+syntax = "proto3";
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+```
+
+服務、用戶端和訊息的 .net 類型會透過在專案中包含 *\*proto*檔案的方式自動產生：
+
+* 將套件參考新增至[Grpc](https://www.nuget.org/packages/Grpc.Tools/)套件。
+* 將 *\*proto*檔案加入至`<Protobuf>`專案群組。
+
+```xml
+<ItemGroup>
+  <Protobuf Include="Protos\greet.proto" />
+</ItemGroup>
+```
+
+如需 gRPC 工具支援的詳細資訊， <xref:grpc/basics>請參閱。
+
+## <a name="grpc-services-on-aspnet-core"></a>ASP.NET Core 上的 gRPC 服務
+
+gRPC 服務可以裝載于 ASP.NET Core 上。 服務具有與熱門 ASP.NET Core 功能的完整整合，例如記錄、相依性插入（DI）、驗證和授權。
+
+GRPC 服務專案範本提供入門服務：
+
+```csharp
+public class GreeterService : Greeter.GreeterBase
+{
+    private readonly ILogger<GreeterService> _logger;
+
+    public GreeterService(ILogger<GreeterService> logger)
+    {
+        _logger = logger;
+    }
+
+    public override Task<HelloReply> SayHello(HelloRequest request,
+        ServerCallContext context)
+    {
+        _logger.LogInformation("Saying hello to " + request.Name);
+        return Task.FromResult(new HelloReply 
+        {
+            Message = "Hello " + request.Name
+        });
+    }
+}
+```
+
+`GreeterService`繼承自`GreeterBase`類型，這是從 *\*proto*檔案中`Greeter`的服務產生的。 此服務可供*Startup.cs*中的用戶端存取：
+
+```csharp
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGrpcService<GreeterService>();
+});
+```
+
+若要深入瞭解 ASP.NET Core 上的 gRPC 服務， <xref:grpc/aspnetcore>請參閱。
+
+## <a name="call-grpc-services-with-a-net-client"></a>使用 .NET 用戶端呼叫 gRPC 服務
+
+gRPC 用戶端是[從 *\*proto*檔案產生](xref:grpc/basics#generated-c-assets)的具體用戶端類型。 具體的 gRPC 用戶端具有轉譯為 *\*proto*檔案中 gRPC 服務的方法。
+
+```csharp
+var channel = GrpcChannel.ForAddress("https://localhost:5001");
+var client = new Greeter.GreeterClient(channel);
+
+var response = await client.SayHello(
+    new HelloRequest { Name = "World" });
+
+Console.WriteLine(response.Message);
+```
+
+GRPC 用戶端是使用通道所建立，這代表 gRPC 服務的長時間連接。 您可以使用`GrpcChannel.ForAddress`來建立通道。
+
+如需建立用戶端和呼叫不同服務方法的詳細資訊， <xref:grpc/client>請參閱。
 
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:grpc/basics>
-* <xref:tutorials/grpc/grpc-start>
 * <xref:grpc/aspnetcore>
-* <xref:grpc/migration>
+* <xref:grpc/client>
+* <xref:grpc/clientfactory>
+* <xref:tutorials/grpc/grpc-start>

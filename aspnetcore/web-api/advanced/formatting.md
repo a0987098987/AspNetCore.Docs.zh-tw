@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 8/22/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 7b19bf54ea9f8a87c26ba7567a7348fcbea997c8
-ms.sourcegitcommit: e7dc89620fa02c2ff80bee1e3f77297f97616968
+ms.openlocfilehash: 5861a8e353b8fac95ca51aca7b44a768d3c2ffb7
+ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71151184"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71199057"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 
@@ -250,8 +250,8 @@ XML 格式設定需要[AspNetCore 的 xml](https://www.nuget.org/packages/Micros
 
 先前的路由可讓要求的格式指定為選用的副檔名。 屬性會檢查`RouteData`中的格式值是否存在，並在建立回應時，將回應格式對應至適當的格式器。 [`[FormatFilter]`](xref:Microsoft.AspNetCore.Mvc.FormatFilterAttribute)
 
-|           路由            |             格式器              |
-|----------------------------|------------------------------------|
-|   `/products/GetById/5`    |    預設輸出格式器    |
-| `/products/GetById/5.json` | JSON 格式器 (如果已設定) |
-| `/products/GetById/5.xml`  | XML 格式器 (如果已設定)  |
+|           路由        |             格式器              |
+|------------------------|------------------------------------|
+|   `/api/products/5`    |    預設輸出格式器    |
+| `/api/products/5.json` | JSON 格式器 (如果已設定) |
+| `/api/products/5.xml`  | XML 格式器 (如果已設定)  |

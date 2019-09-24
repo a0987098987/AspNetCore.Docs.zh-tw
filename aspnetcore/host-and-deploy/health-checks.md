@@ -5,14 +5,14 @@ description: 了解如何為 ASP.NET Core 基礎結構 (例如應用程式和資
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/10/2019
+ms.date: 09/23/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 8fdb1332882fd25bd61f5403a3b1f10e8a0bc7f7
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: d8be6c8eb45cde162693621e63bf40d48d04c324
+ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081523"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71199009"
 ---
 # <a name="health-checks-in-aspnet-core"></a>ASP.NET Core 中的健康狀態檢查
 
@@ -187,7 +187,7 @@ app.UseEndpoints(endpoints =>
 
 ### <a name="enable-cross-origin-requests-cors"></a>啟用跨原始來源要求 (CORS)
 
-雖然從瀏覽器手動執行健康情況檢查並不是常見的使用案例，但您可以呼叫`RequireCors`健全狀況檢查端點來啟用 CORS 中介軟體。 多載會接受 CORS 原則產生器委派`CorsPolicyBuilder`（）或原則名稱。 `RequireCors` 如果未提供原則，則會使用預設的 CORS 原則。 如需詳細資訊，請參閱 <xref:security/cors>。
+雖然從瀏覽器手動執行健康情況檢查並不是常見的使用案例，但您可以呼叫`RequireCors`健全狀況檢查端點來啟用 CORS 中介軟體。 多載會接受 CORS 原則產生器委派`CorsPolicyBuilder`（）或原則名稱。 `RequireCors` 如果未提供原則，則會使用預設的 CORS 原則。 如需詳細資訊，請參閱<xref:security/cors>。
 
 ## <a name="health-check-options"></a>健康狀態檢查選項
 
@@ -727,9 +727,12 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 * <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> &ndash; 如果 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> 為 `null` (預設)，健康狀態檢查發行者服務就會執行所有已註冊的健康狀態檢查。 若要執行一部分的健康狀態檢查，請提供可篩選該組檢查的函式。 每個期間都會評估該述詞。
 * <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Timeout> &ndash; 執行所有 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 執行個體之健康狀態檢查的逾時。 若要在沒有逾時的情況下執行，請使用 <xref:System.Threading.Timeout.InfiniteTimeSpan>。 預設值為 30 秒。
 
-在範例應用程式中，`ReadinessPublisher` 是一個 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 實作。 健康狀態檢查狀態會記錄在 `Entries` 中，並針對每項檢查進行記錄：
+在範例應用程式中，`ReadinessPublisher` 是一個 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 實作。 會針對記錄層級的每個檢查記錄健全狀況檢查狀態：
 
-[!code-csharp[](health-checks/samples/3.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=20,22-23)]
+* 如果健康<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogInformation*>情況檢查狀態為，則為<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Healthy>資訊（）。
+* 如果狀態<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogError*> <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded>為或<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy>，則為錯誤（）。
+
+[!code-csharp[](health-checks/samples/3.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=18-27)]
 
 在範例應用程式的 `LivenessProbeStartup` 範例中，`StartupHostedService` 整備檢查具有 2 秒的啟動延遲，且每 30 秒會執行一次檢查。 為了啟用 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 實作，此範例會在[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器中將 `ReadinessPublisher` 註冊為單一服務：
 
@@ -758,7 +761,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-如需詳細資訊，請參閱 <xref:fundamentals/middleware/index#use-run-and-map>。
+如需詳細資訊，請參閱<xref:fundamentals/middleware/index#use-run-and-map>。
 
 ::: moniker-end
 
@@ -1402,9 +1405,12 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 > [!WARNING]
 > 在 ASP.NET Core 2.2 版中，設定 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Period>並不會獲得 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 實作遵守；它會設定 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Delay> 的值。 ASP.NET Core 3.0 已解決此問題。
 
-在範例應用程式中，`ReadinessPublisher` 是一個 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 實作。 健康狀態檢查狀態會記錄在 `Entries` 中，並針對每項檢查進行記錄：
+在範例應用程式中，`ReadinessPublisher` 是一個 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 實作。 健全狀況檢查狀態會針對每個檢查記錄為下列其中一項：
 
-[!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=20,22-23)]
+* 如果健康<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogInformation*>情況檢查狀態為，則為<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Healthy>資訊（）。
+* 如果狀態<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogError*> <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded>為或<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy>，則為錯誤（）。
+
+[!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=18-27)]
 
 在範例應用程式的 `LivenessProbeStartup` 範例中，`StartupHostedService` 整備檢查具有 2 秒的啟動延遲，且每 30 秒會執行一次檢查。 為了啟用 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 實作，此範例會在[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器中將 `ReadinessPublisher` 註冊為單一服務：
 
@@ -1443,6 +1449,6 @@ app.MapWhen(
 app.UseMvc();
 ```
 
-如需詳細資訊，請參閱 <xref:fundamentals/middleware/index#use-run-and-map>。
+如需詳細資訊，請參閱<xref:fundamentals/middleware/index#use-run-and-map>。
 
 ::: moniker-end

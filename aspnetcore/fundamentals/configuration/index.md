@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/12/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 0de2222e8072523ff0e5d261a9fe5ef8eb9a7606
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 357a3d89648086f0329cd16bc9d72863df9bdcd6
+ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081813"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71217794"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -47,7 +47,7 @@ ASP.NET Core 中的應用程式設定是以由*設定提供者*所建立的機�
 using Microsoft.Extensions.Configuration;
 ```
 
-*選項模式*是此主題中所述之設定概念的延伸。 選項使用類別來代表一組相關的設定。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/options>。
+*選項模式*是此主題中所述之設定概念的延伸。 選項使用類別來代表一組相關的設定。 如需詳細資訊，請參閱<xref:fundamentals/configuration/options>。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -111,7 +111,7 @@ using Microsoft.Extensions.Configuration;
 * <xref:fundamentals/environments>
 * <xref:security/app-secrets> &ndash; 包含使用環境變數來儲存敏感性資料的建議。 「祕密管理員」使用「檔案設定提供者」以 JSON 檔案在本機系統上存放使用者祕密。 此主題稍後將說明「檔案設定提供者」。
 
-[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可安全地儲存 ASP.NET Core 應用程式的應用程式祕密。 如需詳細資訊，請參閱 <xref:security/key-vault-configuration>。
+[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可安全地儲存 ASP.NET Core 應用程式的應用程式祕密。 如需詳細資訊，請參閱<xref:security/key-vault-configuration>。
 
 ## <a name="hierarchical-configuration-data"></a>階層式設定資料
 
@@ -226,7 +226,7 @@ public class IndexModel : PageModel
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
-        .ConfigureHostConfiguration((hostingContext, config) =>
+        .ConfigureHostConfiguration(config =>
         {
             var dict = new Dictionary<string, string>
             {
@@ -619,9 +619,9 @@ key=value
 
 | Key                        | 開發值 | 生產值 |
 | -------------------------- | :---------------: | :--------------: |
-| Logging:LogLevel:System    | 內容       | 內容      |
-| Logging:LogLevel:Microsoft | 內容       | 內容      |
-| Logging:LogLevel:Default   | 偵錯             | Error            |
+| Logging:LogLevel:System    | 資訊       | 資訊      |
+| Logging:LogLevel:Microsoft | 資訊       | 資訊      |
+| Logging:LogLevel:Default   | 偵錯             | 錯誤            |
 | AllowedHosts               | *                 | *                |
 
 ### <a name="xml-configuration-provider"></a>XML 設定提供者
@@ -883,7 +883,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 ## <a name="bind-to-a-class"></a>繫結到類別
 
-設定可以繫結到類別，以使用*選項模式*代表相關設定的群組。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/options>。
+設定可以繫結到類別，以使用*選項模式*代表相關設定的群組。 如需詳細資訊，請參閱<xref:fundamentals/configuration/options>。
 
 設定值是以字串傳回，但是呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 會啟用 [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) 物件的建構。
 
@@ -923,7 +923,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 | starship:registry     | NCC-1701                                          |
 | starship:class        | Constitution                                      |
 | starship:length       | 304.8                                             |
-| starship:commissioned | 偽                                             |
+| starship:commissioned | False                                             |
 | trademark             | Paramount Pictures Corp. https://www.paramount.com |
 
 範例應用程式使用 `starship` 機碼呼叫 `GetSection`。 `starship` 機碼值組會被隔離。 會在子區段上呼叫 `Bind` 方法，並傳入 `Starship` 類別的執行個體。 繫結執行個體值之後，執行個體會被指派給屬性以用於轉譯：
@@ -1315,7 +1315,7 @@ public class Startup
 
 ## <a name="add-configuration-from-an-external-assembly"></a>從外部組件新增設定
 
-<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration>。
+<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱<xref:fundamentals/configuration/platform-specific-configuration>。
 
 ## <a name="additional-resources"></a>其他資源
 

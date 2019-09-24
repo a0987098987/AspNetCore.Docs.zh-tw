@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
 uid: grpc/index
-ms.openlocfilehash: 928eb58930743cd0905f185f54df46c5984b8e97
-ms.sourcegitcommit: fa61d882be9d0c48bd681f2efcb97e05522051d0
+ms.openlocfilehash: 88ceeba329ff2c7d764b7a5eabd5413da6ace765
+ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71205688"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219130"
 ---
 # <a name="introduction-to-grpc-on-net-core"></a>.NET Core 上的 gRPC 簡介
 
@@ -83,7 +83,7 @@ public class GreeterService : Greeter.GreeterBase
     public override Task<HelloReply> SayHello(HelloRequest request,
         ServerCallContext context)
     {
-        _logger.LogInformation("Saying hello to " + request.Name);
+        _logger.LogInformation("Saying hello to {Name}", request.Name);
         return Task.FromResult(new HelloReply 
         {
             Message = "Hello " + request.Name

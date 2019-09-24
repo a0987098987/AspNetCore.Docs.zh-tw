@@ -7,21 +7,27 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/25/2018
 uid: fundamentals/metapackage
-ms.openlocfilehash: 5d49213e6d694f121d8301c94ba71782b2dc45cf
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
-ms.translationtype: HT
+ms.openlocfilehash: 91f39fc59e5682fb19f8cbc6e9ebe5b30e5dcf3c
+ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086939"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219143"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>ASP.NET Core 2.0 的 Microsoft.AspNetCore.All 中繼套件
+
+::: moniker range=">= aspnetcore-3.0"
+
+`Microsoft.AspNetCore.All`中繼套件不包含在 ASP.NET Core 3.0 和更新版本中。 如需詳細資訊，請參閱 <<c0> [ 此 GitHub 問題](https://github.com/aspnet/Announcements/issues/314)。
+
+::: moniker-end
 
 > [!NOTE]
 > 建議以 ASP.NET Core 2.1 及更新版本為目標的應用程式使用 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，而非此套件。 請參閱本文章中的[從 Microsoft.AspNetCore.All 移轉到 Microsoft.AspNetCore.App](#migrate)。
 
 這項功能需要以 .NET Core 2.x 為目標的 ASP.NET Core 2.x。
 
-[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) \(英文\) 是參考共用架構的中繼套件。 「共用的架構」是一組不在應用程式資料夾內的組件 (*.dll* 檔案)。 共用的架構必須安裝於要執行應用程式的機器上。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
+[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) \(英文\) 是參考共用架構的中繼套件。 「共用的架構」是一組不在應用程式資料夾內的組件 ( *.dll* 檔案)。 共用的架構必須安裝於要執行應用程式的機器上。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
 
 `Microsoft.AspNetCore.All` 所參考的共用架構包含：
 

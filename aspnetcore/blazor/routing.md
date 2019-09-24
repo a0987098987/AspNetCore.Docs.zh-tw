@@ -5,14 +5,14 @@ description: 瞭解如何在應用程式中路由傳送要求，以及關於 Nav
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/21/2019
+ms.date: 09/23/2019
 uid: blazor/routing
-ms.openlocfilehash: d6fb3f03be94ff99ac3ed434265e6cd6b752c625
-ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
+ms.openlocfilehash: ccc8231d1925d4a55eeef618800c10652f9ae36d
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/21/2019
-ms.locfileid: "71176396"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211666"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 

@@ -5,14 +5,14 @@ description: 探索如何將元件包含在來自外部元件程式庫的 Blazor
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2019
+ms.date: 09/23/2019
 uid: blazor/class-libraries
-ms.openlocfilehash: 91c4ffb29649c162fc15e5cb70dc60144b53afea
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: d9ef276357e95d97b7d89427c5e237aceea7a0d3
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080656"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207108"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
 
@@ -109,7 +109,7 @@ dotnet nuget publish
 
 ## <a name="create-a-razor-components-class-library-with-static-assets"></a>建立具有靜態資產的 Razor 元件類別庫
 
-RCL 可以包含靜態資產。 使用該程式庫的任何應用程式都可以使用靜態資產。 如需詳細資訊，請參閱 <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>。
+RCL 可以包含靜態資產。 使用該程式庫的任何應用程式都可以使用靜態資產。 如需詳細資訊，請參閱<xref:razor-pages/ui-class#create-an-rcl-with-static-assets>。
 
 ## <a name="additional-resources"></a>其他資源
 

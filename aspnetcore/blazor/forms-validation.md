@@ -5,14 +5,14 @@ description: 瞭解如何在 Blazor 中使用表單和欄位驗證案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/15/2019
+ms.date: 09/23/2019
 uid: blazor/forms-validation
-ms.openlocfilehash: c68ebf7f7bf07b6c243ab16307716cea13870446
-ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
+ms.openlocfilehash: 6f6ace3deb7ed4262b643d897273bc767334b5e6
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/21/2019
-ms.locfileid: "71176353"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207192"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 

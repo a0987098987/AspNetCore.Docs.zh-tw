@@ -5,14 +5,14 @@ description: 探索 ASP.NET Core 如何 Blazor Blazor 如何管理未處理的�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/06/2019
+ms.date: 09/23/2019
 uid: blazor/handle-errors
-ms.openlocfilehash: d3e261e83f375574339a8ce3428e8bfb73df4307
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: de0a2f74df84f41581ac93dbeec7a5c5e90c6fa2
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963980"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207176"
 ---
 # <a name="handle-errors-in-aspnet-core-blazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
 
@@ -48,9 +48,9 @@ Blazor 會將大部分未處理的例外狀況視為其發生所在之線路的�
 
 ## <a name="log-errors-with-a-persistent-provider"></a>使用持續性提供者記錄錯誤
 
-如果發生未處理的例外狀況，則會將<xref:Microsoft.Extensions.Logging.ILogger>例外狀況記錄到服務容器中設定的實例。 根據預設，Blazor apps 會使用主控台記錄提供者來記錄至主控台輸出。 請考慮使用可記錄管理大小和記錄輪替的提供者，記錄到更永久的位置。 如需詳細資訊，請參閱 <xref:fundamentals/logging/index>。
+如果發生未處理的例外狀況，則會將<xref:Microsoft.Extensions.Logging.ILogger>例外狀況記錄到服務容器中設定的實例。 根據預設，Blazor apps 會使用主控台記錄提供者來記錄至主控台輸出。 請考慮使用可記錄管理大小和記錄輪替的提供者，記錄到更永久的位置。 如需詳細資訊，請參閱<xref:fundamentals/logging/index>。
 
-在開發期間，Blazor 通常會將例外狀況的完整詳細資料傳送至瀏覽器的主控台，以協助進行偵錯工具。 在生產環境中，瀏覽器主控台中的詳細錯誤預設為停用，這表示錯誤不會傳送至用戶端，但例外狀況的完整詳細資料仍會記錄在伺服器端。 如需詳細資訊，請參閱 <xref:fundamentals/error-handling>。
+在開發期間，Blazor 通常會將例外狀況的完整詳細資料傳送至瀏覽器的主控台，以協助進行偵錯工具。 在生產環境中，瀏覽器主控台中的詳細錯誤預設為停用，這表示錯誤不會傳送至用戶端，但例外狀況的完整詳細資料仍會記錄在伺服器端。 如需詳細資訊，請參閱<xref:fundamentals/error-handling>。
 
 您必須決定要記錄哪些事件，以及記錄事件的嚴重性層級。 惡意的使用者可能可以故意觸發錯誤。 例如，請勿從顯示產品詳細資料之元件的 URL 中`ProductId`提供不明的錯誤中記錄事件。 並非所有錯誤都應該視為高嚴重性事件以進行記錄。
 
@@ -151,7 +151,7 @@ Blazor 會將大部分未處理的例外狀況視為其發生所在之線路的�
 
 您可以選擇在 .NET 端或方法呼叫的 JavaScript 端使用錯誤處理常式代碼。
 
-如需詳細資訊，請參閱 <xref:blazor/javascript-interop>。
+如需詳細資訊，請參閱<xref:blazor/javascript-interop>。
 
 ### <a name="circuit-handlers"></a>線路處理常式
 
@@ -213,7 +213,7 @@ Blazor 可讓程式碼定義*電路處理常式*，以在使用者的線路狀�
 
 ### <a name="custom-render-tree-logic"></a>自訂呈現樹狀結構邏輯
 
-大部分的 Blazor 元件都會實作為*razor*檔案，並且會進行編譯，以產生邏輯來`RenderTreeBuilder`操作以轉譯其輸出。 開發人員可以使用程式`RenderTreeBuilder`性程式C#代碼手動執行邏輯。 如需詳細資訊，請參閱 <xref:blazor/components#manual-rendertreebuilder-logic>。
+大部分的 Blazor 元件都會實作為*razor*檔案，並且會進行編譯，以產生邏輯來`RenderTreeBuilder`操作以轉譯其輸出。 開發人員可以使用程式`RenderTreeBuilder`性程式C#代碼手動執行邏輯。 如需詳細資訊，請參閱<xref:blazor/components#manual-rendertreebuilder-logic>。
 
 > [!WARNING]
 > 手動轉譯樹狀結構產生器邏輯的使用會被視為先進且不安全的案例，不建議用於一般元件開發。

@@ -5,17 +5,14 @@ description: 與中的應用程式元件共用控制器、視圖、Razor Pages �
 ms.author: riande
 ms.date: 05/14/2019
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: ad0372f25377115e6fc7c8ea42db75de56b3e6d2
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: 4b4c8c554a7045a180b56cf9998ab1a8496cde1b
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187008"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207344"
 ---
 # <a name="share-controllers-views-razor-pages-and-more-with-application-parts-in-aspnet-core"></a>在 ASP.NET Core 中與應用程式元件共用控制器、視圖、Razor Pages 和更多
-=======
-
-<!-- DO NOT MAKE CHANGES BEFORE https://github.com/aspnet/AspNetCore.Docs/pull/12376 Merges -->
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -37,7 +34,7 @@ ASP.NET Core 應用程式從<xref:System.Web.WebPages.ApplicationPart>載入功�
 
 [!code-csharp[](./app-parts/sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-上述兩個程式碼範例會`SharedController`從元件載入。 `SharedController`不在應用程式專案中。 請參閱[WebAppParts 解決方案](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts)範例下載。
+上述兩個程式碼範例會`SharedController`從元件載入。 `SharedController`不在應用程式的專案中。 請參閱[WebAppParts 解決方案](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts)範例下載。
 
 ### <a name="include-views"></a>包含視圖
 
@@ -46,14 +43,14 @@ ASP.NET Core 應用程式從<xref:System.Web.WebPages.ApplicationPart>載入功�
 * 將下列標記新增至共用專案檔：
 
   ```csproj
-    <ItemGroup>
-      <EmbeddedResource Include = "Views\**\*.cshtml" />
-    </ ItemGroup >
+  <ItemGroup>
+      <EmbeddedResource Include="Views\**\*.cshtml" />
+  </ItemGroup>
   ```
 
 * <xref:Microsoft.Extensions.FileProviders.EmbeddedFileProvider>將新增<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine>至：
 
-[!code-csharp[](./app-parts/sample1/WebAppParts/StartupViews.cs?name=snippet&highlight=3-7)]
+  [!code-csharp[](./app-parts/sample1/WebAppParts/StartupViews.cs?name=snippet&highlight=3-7)]
 
 ### <a name="prevent-loading-resources"></a>防止載入資源
 
@@ -63,8 +60,8 @@ ASP.NET Core 應用程式從<xref:System.Web.WebPages.ApplicationPart>載入功�
 
 `ApplicationPartManager`包含的部分：
 
-* 應用程式元件和相依元件。
-* `Microsoft.AspNetCore.Mvc.TagHelpers`
+* 應用程式的元件和相依元件。
+* `Microsoft.AspNetCore.Mvc.TagHelpers`.
 * `Microsoft.AspNetCore.Mvc.Razor`.
 
 ## <a name="application-feature-providers"></a>應用程式功能提供者
@@ -79,7 +76,7 @@ ASP.NET Core 應用程式從<xref:System.Web.WebPages.ApplicationPart>載入功�
 
 ### <a name="generic-controller-feature"></a>泛型控制器功能
 
-ASP.NET Core 會忽略[泛型控制器](/dotnet/csharp/programming-guide/generics/generic-classes)。 泛型控制器具有型別參數（ `MyController<T>`例如）。 下列範例會針對指定的類型清單加入泛型控制器實例。
+ASP.NET Core 會忽略[泛型控制器](/dotnet/csharp/programming-guide/generics/generic-classes)。 泛型控制器具有型別參數（ `MyController<T>`例如）。 下列範例會針對指定的類型清單加入泛型控制器實例：
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/GenericControllerFeatureProvider.cs?name=snippet)]
 
@@ -99,10 +96,34 @@ ASP.NET Core 會忽略[泛型控制器](/dotnet/csharp/programming-guide/generic
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/GenericController.cs)]
 
+例如，要求的 URL `https://localhost:5001/Sprocket`會產生下列回應：
+
+```text
+Hello from a generic Sprocket controller.
+```
+
 ### <a name="display-available-features"></a>顯示可用的功能
 
 `ApplicationPartManager`透過相依性[插入](../../fundamentals/dependency-injection.md)要求，可以列舉應用程式可用的功能：
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2)會使用上述程式碼來顯示應用程式功能。
+[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2)會使用上述程式碼來顯示應用程式功能：
+
+```text
+Controllers:
+    - FeaturesController
+    - HomeController
+    - HelloController
+    - GenericController`1
+    - GenericController`1
+Tag Helpers:
+    - PrerenderTagHelper
+    - AnchorTagHelper
+    - CacheTagHelper
+    - DistributedCacheTagHelper
+    - EnvironmentTagHelper
+    - Additional Tag Helpers omitted for brevity.
+View Components:
+    - SampleViewComponent
+```

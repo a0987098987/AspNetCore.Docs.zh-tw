@@ -5,14 +5,14 @@ description: 瞭解如何調試 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/22/2019
+ms.date: 09/23/2019
 uid: blazor/debug
-ms.openlocfilehash: ebdd015a8d1138d98d8fcd1b1f18b8053248e2bd
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.openlocfilehash: 3519479d8058f013de23cc9cfa0f5574cd158053
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168113"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207205"
 ---
 # <a name="debug-aspnet-core-blazor"></a>Debug ASP.NET Core Blazor
 

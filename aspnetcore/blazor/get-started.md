@@ -5,14 +5,14 @@ description: 使用您選擇的工具來建立 Blazor 應用程式，以開始�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/05/2019
+ms.date: 09/23/2019
 uid: blazor/get-started
-ms.openlocfilehash: 428e231a38bb6547cfc69ccb253374da5218e058
-ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
+ms.openlocfilehash: 4c2a8f62b7f6a60815d131756d1e551904d918ad
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71198916"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207218"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -22,7 +22,7 @@ ms.locfileid: "71198916"
 
 開始使用 Blazor：
 
-1. 安裝最新的[.Net Core 3.0 PREVIEW SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0)版本。
+1. 安裝最新的[.Net Core 3.0 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0)版本。
 
 1. 在命令 shell 中執行下列命令，以安裝 Blazor 範本：
 
@@ -34,7 +34,7 @@ ms.locfileid: "71198916"
 
    # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-   1 \。 使用**ASP.NET 和 網頁程式開發**工作負載安裝最新的[Visual Studio preview](https://visualstudio.com/vs/preview) 。
+   1 \。 使用**ASP.NET 和 網頁程式開發**工作負載安裝最新的[Visual Studio](https://visualstudio.com/vs/) 。
 
    2 \。 建立新的專案。
 

@@ -85,7 +85,7 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 
 使用參數來指定搜尋可路由的元件`Router`時，要考慮的元件的其他元件。 `AdditionalAssemblies` 除了指定的`AppAssembly`元件以外，還會考慮指定的元件。 在下列範例中， `Component1`是在參考的類別庫中定義的可路由元件。 下列`AdditionalAssemblies`範例會產生的`Component1`路由支援：
 
-< 路由器 AppAssembly = "typeof （程式）。元件 "AdditionalAssemblies =" new [] {typeof （Component1）。Assembly} > .。。</Router>
+< 路由器 AppAssembly = "typeof （程式）。元件 "AdditionalAssemblies =" new [] {typeof （Component1）。Assembly} > ...</Router>
 
 ## <a name="route-parameters"></a>路由參數
 

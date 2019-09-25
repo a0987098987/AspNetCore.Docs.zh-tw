@@ -1,36 +1,38 @@
 ---
-title: 比較 gRPC 服務與 HTTP APIs
+title: 比較 gRPC 服務與 HTTP Api
 author: jamesnk
 description: 瞭解 gRPC 與 HTTP Api 的比較，以及它的建議案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 03/31/2019
+ms.date: 09/25/2019
 uid: grpc/comparison
-ms.openlocfilehash: c34c7ecb668e478e2be3271928a2439979a746d9
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 935078d890998fe6af366e3f6a7bf21f53c20cf7
+ms.sourcegitcommit: a7813a776809a5029c94aa503ee71994f156231f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310477"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71267720"
 ---
-# <a name="comparing-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP APIs
+# <a name="compare-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP Api
 
 依[James 牛頓-王](https://twitter.com/jamesnk)
 
-本文說明[gRPC services](https://grpc.io/docs/guides/)與 HTTP api （包括 ASP.NET Core [Web api](xref:web-api/index)）之間的比較。 用來為您的應用程式提供 API 的技術是一項重要的選擇，gRPC 提供與 HTTP Api 相較之下的獨特優點。 本文討論 gRPC 的優點和缺點，並建議在其他技術上使用 gRPC 的案例。
+本文說明[gRPC services](https://grpc.io/docs/guides/)與 HTTP api （包括 ASP.NET Core [web api](xref:web-api/index)）之間的比較。 用來為您的應用程式提供 API 的技術是一項重要的選擇，gRPC 提供與 HTTP Api 相較之下的獨特優點。 本文討論 gRPC 的優點和缺點，並建議在其他技術上使用 gRPC 的案例。
 
-#### <a name="overview"></a>總覽
+## <a name="high-level-comparison"></a>高階比較
+
+下表提供 gRPC 和 HTTP Api 與 JSON 之間功能的高階比較。
 
 | 功能          | gRPC                                               | HTTP Api 與 JSON           |
 | ---------------- | -------------------------------------------------- | ----------------------------- |
 | 合約         | 必要（*proto*）                                | 選擇性（OpenAPI）            |
 | Transport        | HTTP/2                                             | HTTP                          |
 | 承載          | [Protobuf （小型，二進位）](#performance)           | JSON （大型、人類可讀取）  |
-| Prescriptiveness | [嚴格規格](#strict-specification)      | 鬆動. 任何 HTTP 都有效      |
+| Prescriptiveness | [嚴格規格](#strict-specification)      | 鬆動. 任何 HTTP 都是有效的。      |
 | 資料流        | [用戶端，伺服器，雙向](#streaming)       | 用戶端，伺服器                |
 | 瀏覽器支援  | [否（需要 grpc-web）](#limited-browser-support) | 是                           |
 | 安全性         | 傳輸（HTTPS）                                  | 傳輸（HTTPS）             |
-| 用戶端程式代碼-gen  | [是](#code-generation)                            | OpenAPI + 協力廠商工具 |
+| 用戶端程式代碼產生 | [是](#code-generation)                      | OpenAPI + 協力廠商工具 |
 
 ## <a name="grpc-strengths"></a>gRPC 的優點
 
@@ -47,7 +49,7 @@ gRPC 是針對 HTTP/2 所設計，這是一種可透過 HTTP 1.x 提供顯著效
 
 所有的 gRPC 架構都提供第一級的程式碼產生支援。 GRPC 開發的核心檔案是定義 gRPC 服務和訊息合約的[ *proto* ](https://developers.google.com/protocol-buffers/docs/proto3)檔案。 在此檔案中，gRPC 架構會產生服務基類、訊息和完整用戶端的程式碼。
 
-藉由在`*.proto`伺服器與用戶端之間共用檔案，可以從端對端產生訊息和用戶端程式代碼。 用戶端的程式碼產生不會在用戶端和伺服器上排除重複的訊息，並為您建立強型別用戶端。 不需要撰寫用戶端，就能在具有許多服務的應用程式中節省大量的開發時間。
+藉由共用伺服器和用戶端之間的*proto*檔案，可以從端對端產生訊息和用戶端程式代碼。 用戶端的程式碼產生不會在用戶端和伺服器上排除重複的訊息，並為您建立強型別用戶端。 不需要撰寫用戶端，就能在具有許多服務的應用程式中節省大量的開發時間。
 
 ### <a name="strict-specification"></a>嚴格規格
 
@@ -95,7 +97,7 @@ GRPC-Web 不支援所有 gRPC 的功能。 用戶端和雙向串流不受支援�
 
 HTTP API 要求會以文字傳送，並可供人類讀取和建立。
 
-根據預設，gRPC 訊息會以 Protobuf 編碼。 雖然 Protobuf 的傳送和接收效率較高，但其二進位格式卻不容易閱讀。 Protobuf 需要在檔案中`*.proto`指定訊息的介面描述，才能正確還原序列化。 需要額外的工具，才能在網路上分析 Protobuf 承載，並以手動方式撰寫要求。
+根據預設，gRPC 訊息會以 Protobuf 編碼。 雖然 Protobuf 的傳送和接收效率較高，但其二進位格式卻不容易閱讀。 Protobuf 需要指定于*proto*檔案中的訊息介面描述，才能正確還原序列化。 需要額外的工具，才能在網路上分析 Protobuf 承載，並以手動方式撰寫要求。
 
 [伺服器反映](https://github.com/grpc/grpc/blob/master/doc/server-reflection.md)和[gRPC 命令列工具](https://github.com/grpc/grpc/blob/master/doc/command_line_tool.md)等功能都存在，以協助進行二進位 Protobuf 訊息。 此外，Protobuf 訊息支援[JSON 的轉換](https://developers.google.com/protocol-buffers/docs/proto3#json)。 內建的 JSON 轉換提供了一種有效率的方式，可在進行偵錯工具時，將 Protobuf 訊息轉換成人類看得懂的格式。
 

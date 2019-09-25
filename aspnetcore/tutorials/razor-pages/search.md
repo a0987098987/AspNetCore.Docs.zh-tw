@@ -5,12 +5,12 @@ description: 示範如何將搜尋新增至 ASP.NET Core Razor 頁面
 ms.author: riande
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: d1aa3f914ebcab4d095b6fca1dac3cf44855d516
-ms.sourcegitcommit: 16502797ea749e2690feaa5e652a65b89c007c89
-ms.translationtype: HT
+ms.openlocfilehash: fde99d8fab00265294bccb2ecdb380d02a8f3673
+ms.sourcegitcommit: a7813a776809a5029c94aa503ee71994f156231f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68483292"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71267758"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>將搜尋新增至 ASP.NET Core Razor 頁面
 
@@ -20,7 +20,7 @@ ms.locfileid: "68483292"
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-在下列各節中，會新增依「內容類型」  或「名稱」  搜尋電影。
+在下列各節中，會新增依「內容類型」或「名稱」搜尋電影。
 
 將下列反白顯示的屬性新增至 *Pages/Movies/Index.cshtml.cs*：
 
@@ -45,7 +45,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-這時候，系統只會「定義」查詢  ，而尚**未**對資料庫執行查詢。
+這時候，系統只會「定義」查詢，而尚**未**對資料庫執行查詢。
 
 如果 `SearchString` 屬性不是 Null 或空白，則會修改電影查詢來篩選搜尋字串：
 
@@ -122,7 +122,7 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-在下列各節中，會新增依「內容類型」  或「名稱」  搜尋電影。
+在下列各節中，會新增依「內容類型」或「名稱」搜尋電影。
 
 將下列反白顯示的屬性新增至 *Pages/Movies/Index.cshtml.cs*：
 
@@ -147,7 +147,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-這時候，系統只會「定義」查詢  ，而尚**未**對資料庫執行查詢。
+這時候，系統只會「定義」查詢，而尚**未**對資料庫執行查詢。
 
 如果 `SearchString` 屬性不是 Null 或空白，則會修改電影查詢來篩選搜尋字串：
 
@@ -209,6 +209,7 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
 
 依據內容類型、電影標題和這兩者進行搜尋，藉以測試應用程式。
+上述程式碼會使用[Select 標記](xref:mvc/views/working-with-forms#the-select-tag-helper)協助程式和選項標籤協助程式。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -20,11 +20,11 @@
 
 **[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper)**
 
-[comment]: **[LinkTagHelper](xref:mvc/views/tag-helpers/builtin-th/link-tag-helper)**
+**[LinkTagHelper](xref:mvc/views/tag-helpers/builtin-th/link-tag-helper)**
 
 [comment]: **[OptionTagHelper](xref:mvc/views/tag-helpers/builtin-th/option-tag-helper)**
 
-[comment]: **[ScriptTagHelper](xref:mvc/views/tag-helpers/builtin-th/script-tag-helper)**
+**[ScriptTagHelper](xref:mvc/views/tag-helpers/builtin-th/script-tag-helper)**
 
 **[部分標記協助程式](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)**
 

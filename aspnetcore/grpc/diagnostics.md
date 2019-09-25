@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 09/23/2019
 uid: grpc/diagnostics
-ms.openlocfilehash: ce6ad96d9e26c9cd3844093536745f8f9bea4a76
-ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
+ms.openlocfilehash: 7194e91b40a08c4a7ee619b8f207900af2683aa1
+ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204342"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71250728"
 ---
 # <a name="logging-and-diagnostics-in-grpc-on-net"></a>.NET 上 gRPC 中的記錄和診斷
 
@@ -28,11 +28,11 @@ ms.locfileid: "71204342"
 
 gRPC 會將記錄新增`Grpc`至類別之下。 若要啟用 gRPC 的詳細記錄，請`Grpc`將下列專案`Debug`新增至中 `LogLevel` `Logging`的子區段，以在 appsettings 中設定層級的前置詞：
 
-[!code-json[](diagnostics/logging-config.json?highlight=7)]
+[!code-json[](diagnostics/sample/logging-config.json?highlight=7)]
 
 您也可以在*Startup.cs*中使用`ConfigureLogging`來設定此項：
 
-[!code-csharp[](diagnostics/logging-config-code.cs?highlight=5)]
+[!code-csharp[](diagnostics/sample/logging-config-code.cs?highlight=5)]
 
 如果您不是使用以 JSON 為基礎的設定，請在您的配置系統中設定下列設定值：
 
@@ -46,7 +46,7 @@ gRPC 會將記錄新增`Grpc`至類別之下。 若要啟用 gRPC 的詳細記�
 
 以下是 gRPC 服務`Debug`層級的主控台輸出範例：
 
-```
+```console
 info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
       Request starting HTTP/2 POST https://localhost:5001/Greet.Greeter/SayHello application/grpc
 info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
@@ -82,19 +82,19 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 若要從 .net 用戶端取得記錄，您可以在`GrpcChannelOptions.LoggerFactory`建立用戶端通道時設定屬性。 如果您是從 ASP.NET Core 應用程式呼叫 gRPC 服務，則可以從相依性插入（DI）解析記錄器 factory：
 
-[!code-csharp[](diagnostics/net-client-dependency-injection.cs?highlight=7,16)]
+[!code-csharp[](diagnostics/sample/net-client-dependency-injection.cs?highlight=7,16)]
 
 啟用用戶端記錄的另一種方式是使用[gRPC 用戶端 factory](xref:grpc/clientfactory)來建立用戶端。 向用戶端 factory 註冊並從 DI 解析的 gRPC 用戶端，會自動使用應用程式設定的記錄。
 
 如果您的應用程式未使用 DI，則您可以`ILoggerFactory`使用[server.loggerfactory](xref:Microsoft.Extensions.Logging.LoggerFactory.Create*)建立新的實例。 若要存取此方法，請在您的應用程式中新增[Microsoft Extensions. 記錄](https://www.nuget.org/packages/microsoft.extensions.logging/)套件。
 
-[!code-csharp[](diagnostics/net-client-loggerfactory-create.cs?highlight=1,8)]
+[!code-csharp[](diagnostics/sample/net-client-loggerfactory-create.cs?highlight=1,8)]
 
 ### <a name="sample-logging-output"></a>範例記錄輸出
 
 以下是 gRPC 用戶端`Debug`層級的主控台輸出範例：
 
-```
+```console
 dbug: Grpc.Net.Client.Internal.GrpcCall[1]
       Starting gRPC call. Method type: 'Unary', URI: 'https://localhost:5001/Greet.Greeter/SayHello'.
 dbug: Grpc.Net.Client.Internal.GrpcCall[6]

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 90b439603dd51ff02e40045b9420876d7200bef1
-ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.openlocfilehash: 2d517a89c6002b5c85e98128605f95585354f8db
+ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219169"
+ms.locfileid: "71248259"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
@@ -936,7 +936,7 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 使用協力廠商架構類似於使用內建的提供者之一：
 
 1. 將 NuGet 套件新增至專案。
-1. 呼叫 `ILoggerFactory`。
+1. 通話記錄架構所提供的擴充方法。`ILoggerFactory`
 
 如需詳細資訊，請參閱每個提供者的文件。 Microsoft 不支援第三方記錄提供者。
 

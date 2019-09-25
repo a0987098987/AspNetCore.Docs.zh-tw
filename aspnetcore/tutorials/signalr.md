@@ -4,20 +4,20 @@ author: bradygaster
 description: 在本教學課程中，您會建立使用 ASP.NET Core SignalR 的聊天應用程式。
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 07/08/2019
+ms.date: 09/24/2019
 uid: tutorials/signalr
-ms.openlocfilehash: 2dfa994b9763a0139cb70cbf9847ac3b02b568e4
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 7a6574bd3c463f0890f5dc076944f1ab0f0c919a
+ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081977"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71248393"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
 ::: moniker range=">= aspnetcore-3.0"
 
-本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您會了解如何：
+本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您將學習如何：
 
 > [!div class="checklist"]
 > * 建立 Web 專案。
@@ -259,7 +259,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 ::: moniker range="< aspnetcore-3.0"
 
-本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您會了解如何：
+本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您將學習如何：
 
 > [!div class="checklist"]
 > * 建立 Web 專案。
@@ -484,6 +484,10 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 > [!TIP]
 > 如果應用程式無法運作，請開啟您的瀏覽器開發人員工具 (F12)，然後移至主控台。 您可能會看到與 HTML 和 JavaScript 程式碼相關的錯誤。 例如，假設您將 *signalr.js* 放置在與指示不同的資料夾中。 在此情況下，該檔案的參考無法運作，您會在主控台中看到 404 錯誤。
 > ![signalr.js 找不到錯誤](signalr/_static/2.x/f12-console.png)
+
+## <a name="additional-resources"></a>其他資源
+
+* [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=iKlVmu-r0JQ)
 
 ## <a name="next-steps"></a>後續步驟
 

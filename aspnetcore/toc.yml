@@ -12,6 +12,8 @@
   uid: getting-started
 - name: 新功能
   items:
+    - name: 3.0 中的新功能
+      uid: aspnetcore-3.0
     - name: 2.2 中的新功能
       uid: aspnetcore-2.2
     - name: 2.1 中的新功能
@@ -164,7 +166,7 @@
     - name: Web 應用程式安全性
       displayName: 'tutorial, identity'
       href: /learn/modules/secure-aspnet-core-identity/
-- name: Fundamentals
+- name: 基礎
   items:
     - name: 總覽
       uid: fundamentals/index
@@ -182,7 +184,7 @@
           uid: fundamentals/host/web-host
     - name: 伺服器
       uid: fundamentals/servers/index
-    - name: Configuration
+    - name: 設定
       uid: fundamentals/configuration/index
     - name: 選項
       uid: fundamentals/configuration/options
@@ -327,6 +329,8 @@
               uid: host-and-deploy/blazor/server
             - name: 設定連結器
               uid: host-and-deploy/blazor/configure-linker
+        - name: 範例
+          href: 'https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor'
     - name: 用戶端開發
       items:
         - name: 單頁應用程式
@@ -436,6 +440,8 @@
           uid: tutorials/get-started-with-swashbuckle
         - name: 開始使用 NSwag
           uid: tutorials/get-started-with-nswag
+        - name: OpenAPI 工具
+          uid: web-api/Microsoft.dotnet-openapi
     - name: 動作傳回類型
       uid: web-api/action-return-types
     - name: 處理 JSON Patch 要求
@@ -487,6 +493,9 @@
     - name: 用戶端
       displayName: signalr
       items:
+        - name: SignalR 用戶端功能
+          uid: signalr/client-features
+          displayName: signalr
         - name: .NET 用戶端
           uid: signalr/dotnet-client
           displayName: signalr
@@ -519,7 +528,7 @@
           uid: signalr/redis-backplane
         - name: 具備背景服務的 SignalR
           uid: signalr/background-services
-    - name: Configuration
+    - name: 設定
       uid: signalr/configuration
       displayName: signalr
     - name: 驗證與授權
@@ -559,10 +568,12 @@
       uid: grpc/client
     - name: gRPC 用戶端處理站整合
       uid: grpc/clientfactory
-    - name: Configuration
+    - name: 設定
       uid: grpc/configuration
     - name: 驗證與授權
       uid: grpc/authn-and-authz
+    - name: 記錄和診斷
+      uid: grpc/diagnostics
     - name: 安全性考量
       uid: grpc/security
     - name: 從 C Core 移轉 gRPC 服務
@@ -930,7 +941,7 @@
               uid: security/data-protection/consumer-apis/limited-lifetime-payloads
             - name: 取消金鑰已被撤銷之承載的保護
               uid: security/data-protection/consumer-apis/dangerous-unprotect
-        - name: Configuration
+        - name: 設定
           items:
             - name: 總覽
               uid: security/data-protection/configuration/index
@@ -1117,7 +1128,7 @@
           uid: migration/mvc
         - name: Web API
           uid: migration/webapi
-        - name: Configuration
+        - name: 設定
           uid: migration/configuration
         - name: 驗證和身分識別
           uid: migration/identity

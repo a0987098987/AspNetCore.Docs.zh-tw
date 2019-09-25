@@ -267,7 +267,7 @@
           uid: mvc/views/overview
         - name: 部分檢視
           uid: mvc/views/partial
-        - name: Controllers
+        - name: 控制器
           uid: mvc/controllers/actions
         - name: 路由
           uid: mvc/controllers/routing

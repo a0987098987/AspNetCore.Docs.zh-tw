@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/27/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 6f6240084f6dee1fa4b9ae7efb7748a129d5ed37
-ms.sourcegitcommit: 14b25156e34c82ed0495b4aff5776ac5b1950b5e
-ms.translationtype: HT
+ms.openlocfilehash: 5e5215f246c6c7a805a4c99f485d51a2fb3c712d
+ms.sourcegitcommit: cf9ffcce4fe0b69fe795aae9ae06e99fdb18bdfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301212"
+ms.locfileid: "71306669"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -71,7 +71,7 @@ ms.locfileid: "71301212"
 * 從 [檔案] 功能表選取 [新增] > [專案]。
 * 選取 **ASP.NET Core Web 應用程式**範本，然後按一下 [下一步]。
 * 將專案命名為 *TodoApi*，然後按一下 [建立]。
-* 在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中，確認選取 [.NET Core] 和 [ASP.NET Core 3.0]。 選取 **API** 範本，然後按一下 [建立]。 請**勿**選取 [Enable Docker Support] \(啟用 Docker 支援\)。
+* 在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中，確認選取 [.NET Core] 和 [ASP.NET Core 3.0]。 選取 **API** 範本，然後按一下 [建立]。
 
 ![VS 新增專案對話方塊](first-web-api/_static/vs3.png)
 
@@ -227,9 +227,8 @@ ms.locfileid: "71301212"
 ### <a name="add-microsoftentityframeworkcoresqlserver"></a>新增 Microsoft.EntityFrameworkCore.SqlServer
 
 * 在 [工具] 功能表上，選取 [NuGet 套件管理員] > [管理解決方案的 NuGet 套件]。
-* 選取 [包括發行前版本] 核取方塊。
 * 選取 [瀏覽] 索引標籤，然後在搜尋方塊中輸入 **Microsoft.EntityFrameworkCore.SqlServer**。
-* 選取左窗格中的 [Microsoft.EntityFrameworkCore.SqlServer V3.0.0-preview]。
+* 在左窗格中選取 [ **microsoft.entityframeworkcore** ]。
 * 選取右窗格中的 [專案] 核取方塊，然後選取 [安裝]。
 * 使用上述指示來新增 `Microsoft.EntityFrameworkCore.InMemory` NuGet 套件。
 

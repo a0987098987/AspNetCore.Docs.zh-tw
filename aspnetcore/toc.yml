@@ -576,9 +576,9 @@
       uid: grpc/diagnostics
     - name: 安全性考量
       uid: grpc/security
-    - name: 從 C Core 移轉 gRPC 服務
+    - name: 從 C-core 移轉 gRPC 服務
       uid: grpc/migration
-    - name: 比較 gRPC 服務與 HTTP APIs
+    - name: 比較 gRPC 服務與 HTTP API
       uid: grpc/comparison
     - name: 範例
       href: 'https://github.com/grpc/grpc-dotnet/tree/master/examples'

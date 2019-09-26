@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/27/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 2d0eb24641c3d1f795b9e85ce10d42ee96d30846
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
-ms.translationtype: MT
+ms.openlocfilehash: 6f6240084f6dee1fa4b9ae7efb7748a129d5ed37
+ms.sourcegitcommit: 14b25156e34c82ed0495b4aff5776ac5b1950b5e
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187303"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71301212"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -913,6 +913,12 @@ Fetch 會傳送 HTTP POST 要求，並在要求本文中包含待辦事項。 `a
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AjaxDelete)]
 
 ::: moniker-end
+
+<a name="auth"></a>
+
+## <a name="add-authentication-support-to-a-web-api"></a>將驗證支援新增至 Web API
+
+請參閱[IdentityServer4](https://identityserver4.readthedocs.io/en/latest/quickstarts/0_overview.html)教學課程。
 
 ## <a name="additional-resources"></a>其他資源
 

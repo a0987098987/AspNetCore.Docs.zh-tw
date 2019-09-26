@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/14/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: eafb06d181ca3f085cccb314749c8d4deba074fa
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: aa42b1c7199e951714be809de9c9c5f857473485
+ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082565"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71278760"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>在 ASP.NET Core 中強制使用 HTTPS
 
@@ -313,7 +313,7 @@ ASP.NET Core 2.1 和更新版本會使用`UseHsts`擴充方法來執行 HSTS。 
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli) 
 
-使用 `--no-https` 選項。 例如：
+使用 `--no-https` 選項。 例如
 
 ```dotnetcli
 dotnet new webapp --no-https
@@ -362,6 +362,58 @@ dotnet dev-certs https --help
 * 在 WSL 視窗中，執行下列命令：`ASPNETCORE_Kestrel__Certificates__Default__Password="<cryptic-password>" ASPNETCORE_Kestrel__Certificates__Default__Path=/mnt/c/Users/user-name/.aspnet/https/aspnetapp.pfx dotnet watch run`
 
   上述命令會設定環境變數，讓 Linux 使用 Windows 受信任的憑證。
+
+## <a name="troubleshoot-certificate-problems"></a>針對憑證問題進行疑難排解
+
+當 ASP.NET Core 的 HTTPS 開發憑證已[安裝並受信任](#trust)，但您仍有瀏覽器警告，指出憑證不受信任時，本節會提供協助。
+
+### <a name="all-platforms---certificate-not-trusted"></a>所有平臺-憑證不受信任
+
+執行下列命令：
+
+```dotnetcli
+dotnet devcerts https --clean
+dotnet devcerts https --trust
+```
+
+關閉任何開啟的瀏覽器實例。 在應用程式中開啟新的瀏覽器視窗。 瀏覽器會快取憑證信任。
+
+上述命令會解決大部分的瀏覽器信任問題。 如果瀏覽器仍不信任憑證，請遵循遵循的平臺特定建議。
+
+### <a name="docker---certificate-not-trusted"></a>Docker-憑證不受信任
+
+* 刪除*C:\Users\{USER} \AppData\Roaming\ASP.NET\Https*資料夾。
+* 清除方案。 刪除 [bin] 和 [obj] 資料夾。
+* 重新開機開發工具。 例如，Visual Studio、Visual Studio Code 或 Visual Studio for Mac。
+
+### <a name="windows---certificate-not-trusted"></a>Windows-憑證不受信任
+
+* 檢查證書存儲中的憑證。 應該會有一個`localhost`憑證`ASP.NET Core HTTPS development certificate` ，而且在和下`Current User > Personal > Certificates`都有易記名稱`Current User > Trusted root certification authorities > Certificates`
+* 從個人和信任的根憑證授權單位移除所有找到的憑證。 請勿**移除 IIS Express** localhost 憑證。
+* 執行下列命令：
+
+```dotnetcli
+dotnet devcerts https --clean
+dotnet devcerts https --trust
+```
+
+關閉任何開啟的瀏覽器實例。 在應用程式中開啟新的瀏覽器視窗。
+
+### <a name="os-x---certificate-not-trusted"></a>OS X-憑證不受信任
+
+* 開啟 [KeyChain 存取]。
+* 選取 [系統 keychain]。
+* 檢查 localhost 憑證是否存在。
+* 檢查它是否在圖示`+`上包含符號，以表示其對所有使用者都是受信任的。
+* 從系統 keychain 中移除憑證。
+* 執行下列命令：
+
+```dotnetcli
+dotnet devcerts https --clean
+dotnet devcerts https --trust
+```
+
+關閉任何開啟的瀏覽器實例。 在應用程式中開啟新的瀏覽器視窗。
 
 ## <a name="additional-information"></a>其他資訊
 

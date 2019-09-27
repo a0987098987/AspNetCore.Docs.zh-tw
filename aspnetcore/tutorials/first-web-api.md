@@ -228,7 +228,7 @@ ms.locfileid: "71306669"
 
 * 在 [工具] 功能表上，選取 [NuGet 套件管理員] > [管理解決方案的 NuGet 套件]。
 * 選取 [瀏覽] 索引標籤，然後在搜尋方塊中輸入 **Microsoft.EntityFrameworkCore.SqlServer**。
-* 在左窗格中選取 [ **microsoft.entityframeworkcore** ]。
+* 在左窗格中選取 [ **Microsoft.EntityFrameworkCore.SqlServer** ]。
 * 選取右窗格中的 [專案] 核取方塊，然後選取 [安裝]。
 * 使用上述指示來新增 `Microsoft.EntityFrameworkCore.InMemory` NuGet 套件。
 

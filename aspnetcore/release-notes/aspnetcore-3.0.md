@@ -4,14 +4,14 @@ author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.0 中的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 09/26/2019
 uid: aspnetcore-3.0
-ms.openlocfilehash: 490d00da7282e2efe28fcc52e593dd71d7324d3f
-ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
+ms.openlocfilehash: c1b61fee7264b972c70dbfa8f1461e33e3645746
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71198988"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317651"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>3\.0 ASP.NET Core 的新功能
 
@@ -107,8 +107,8 @@ const connection = new signalR.HubConnectionBuilder()
 
 若要在連接中斷時提供 UI 意見反應，SignalR 用戶端 API 已擴充為包含下列事件處理常式：
 
-* `onreconnecting`：讓開發人員有機會停用 UI，或讓使用者知道應用程式已離線。
-* `onreconnected`：讓開發人員有機會在連接重新建立後更新 UI。
+* `onreconnecting`:讓開發人員有機會停用 UI，或讓使用者知道應用程式已離線。
+* `onreconnected`:讓開發人員有機會在連接重新建立後更新 UI。
 
 下列程式碼會`onreconnecting`在嘗試連接時使用來更新 UI：
 
@@ -316,8 +316,19 @@ ASP.NET Core 3.0 現在會<xref:System.Text.Json>使用 JSON 序列化的預設�
 
 下列清單包含新的 Razor 指示詞：
 
-* [@attribute](xref:mvc/views/razor#attribute)&ndash; 指示詞會將指定的屬性套用至所產生頁面`@attribute`或視圖的類別。 例如，`@attribute [Authorize]`。
-* [@implements](xref:mvc/views/razor#implements)&ndash; 指示詞會為所產生的`@implements`類別實作為介面。 例如，`@implements IDisposable`。
+* [@attribute](xref:mvc/views/razor#attribute)&ndash; 指示詞會將指定的屬性套用至所產生頁面`@attribute`或視圖的類別。 例如： `@attribute [Authorize]` 。
+* [@implements](xref:mvc/views/razor#implements)&ndash; 指示詞會為所產生的`@implements`類別實作為介面。 例如： `@implements IDisposable` 。
+
+## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 支援 web Api 和 Spa 的驗證和授權
+
+[IdentityServer4](https://identityserver.io)是適用于 ASP.NET Core 3.0 的 OpenID Connect 和 OAuth 2.0 架構。 IdentityServer4 可啟用下列安全性功能：
+
+* 驗證即服務（AaaS）
+* 多個應用程式類型的單一登入/關閉（SSO）
+* Api 的存取控制
+* 同盟閘道
+
+如需詳細資訊，請參閱[歡迎使用 IdentityServer4](http://docs.identityserver.io/en/latest/index.html)。
 
 ## <a name="certificate-and-kerberos-authentication"></a>憑證和 Kerberos 驗證
 
@@ -420,9 +431,9 @@ ASP.NET Core 3.0 範本會使用<xref:fundamentals/host/generic-host>。 先前�
 
 在 HTTPS 端點的 Kestrel 中，預設會啟用 HTTP/2。 受作業系統支援時，會啟用 IIS 或 HTTP.sys 的 HTTP/2 支援。
 
-## <a name="request-counters"></a>要求計數器
+## <a name="eventcounters-on-request"></a>要求 EventCounters
 
-裝載 EventSource （AspNetCore）會發出下列與連入要求相關的 EventCounters：
+主控 EventSource `Microsoft.AspNetCore.Hosting`會發出下列與連入要求<xref:System.Diagnostics.Tracing.EventCounter>相關的新類型：
 
 * `requests-per-second`
 * `total-requests`
@@ -476,7 +487,7 @@ app.UseEndpoints(endpoints =>
 
 .NET Core 3.0 引進了新的背景工作服務應用程式範本。 此範本可提供在 .NET Core 中撰寫長時間執行服務的起點。
 
-如需詳細資訊，請參閱:
+如需詳細資訊，請參閱：
 
 * [.NET Core 背景工作角色做為 Windows 服務](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/)
 * <xref:fundamentals/host/hosted-services>

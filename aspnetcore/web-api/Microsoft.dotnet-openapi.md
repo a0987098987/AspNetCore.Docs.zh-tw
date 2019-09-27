@@ -3,31 +3,29 @@ title: 使用 OpenAPI 開發 ASP.NET Core 應用程式
 author: ryanbrandenburg
 description: 示範如何使用 ' dotnet-openapi ' 工具來加入 OpenAPI 檔案的參考。
 ms.author: rybrande
-ms.date: 08/26/2019
+ms.date: 09/26/2019
 monikerRange: '>= aspnetcore-3.0'
 uid: web-api/Microsoft.dotnet-openapi
-ms.openlocfilehash: a9b38bb7e69744d72867bf69cecf1fa92d7c15b3
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: f5eae9e871bc8efc30d500769adb845ff244a90c
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187457"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317779"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>使用 OpenAPI 工具開發 ASP.NET Core 應用程式
 
 依 Ryan Brandenburg
 
-`Microsoft.dotnet-openapi`是一種 .NET Core 通用工具，可用於管理專案中的[OpenAPI](https://github.com/OAI/OpenAPI-Specification)參考。
+[Dotnet-openapi](https://www.nuget.org/packages/Microsoft.dotnet-openapi)是一種[.Net Core 通用工具](/dotnet/core/tools/global-tools)，可用於管理專案中的[openapi](https://github.com/OAI/OpenAPI-Specification)參考。
 
 ## <a name="installation"></a>安裝
 
 若要`Microsoft.dotnet-openapi`安裝，請執行下列命令：
 
-```console
+```dotnetcli
 dotnet tool install -g Microsoft.dotnet-openapi
 ```
-
-`Microsoft.dotnet-openapi`是[.Net Core 通用工具](/dotnet/core/tools/global-tools)。
 
 ## <a name="add"></a>新增
 
@@ -57,7 +55,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 ### <a name="add-file"></a>新增檔案
 
-#### <a name="options"></a>選項
+#### <a name="options"></a>選項。
 
 | Short 選項| Long 選項| 描述 | 範例 |
 |-------|------|-------|---------|
@@ -74,7 +72,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 ### <a name="add-url"></a>新增 URL
 
-#### <a name="options"></a>選項
+#### <a name="options"></a>選項。
 
 | Short 選項| Long 選項| 描述 | 範例 |
 |-------|------|-------------|---------|
@@ -94,7 +92,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 從 *.csproj*檔案中移除符合指定檔案名的 OpenAPI 參考。 移除 OpenAPI 參考時，將不會產生用戶端。 已刪除*yaml*檔案。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 | Short 選項| Long 選項| 描述| 範例 |
 |-------|------|------------|---------|
@@ -112,7 +110,7 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 重新整理使用下載 URL 的最新內容下載之檔案的本機版本。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 | Short 選項| Long 選項| 描述 | 範例 |
 |-------|------|-------------|---------|

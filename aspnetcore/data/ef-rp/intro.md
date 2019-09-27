@@ -4,14 +4,14 @@ author: tdykstra
 description: 示範如何建立使用 Entity Framework Core 的 Razor 頁面應用程式
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 07/22/2019
+ms.date: 09/26/2019
 uid: data/ef-rp/intro
-ms.openlocfilehash: 6b7d2ca1cea23efd195f1ae0e0a749c6d2d9b622
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: e261ccd30dc9ef0929e74fa44a5ed752d515b707
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71186963"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317688"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -19,7 +19,7 @@ ms.locfileid: "71186963"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-這是一系列教學課程的第一篇，示範如何在 ASP.NET Core Razor Pages 應用程式中使用 Entity Framework (EF) Core。 教學課程會為虛構的 Contoso 大學建置網站。 網站包含學生入學許可、課程建立和講師指派等功能。
+這是一系列教學課程中的第一篇，示範如何在[ASP.NET Core Razor Pages](xref:razor-pages/index)應用程式中使用 ENTITY FRAMEWORK （EF） Core。 教學課程會為虛構的 Contoso 大學建置網站。 網站包含學生入學許可、課程建立和講師指派等功能。
 
 [下載或檢視已完成的應用程式。](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
@@ -768,6 +768,6 @@ Drop-Database
 * [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=P7iTtQnkrNs)
 
 > [!div class="step-by-step"]
-> [下一步](xref:data/ef-rp/crud)
+> [下一個](xref:data/ef-rp/crud)
 
 ::: moniker-end

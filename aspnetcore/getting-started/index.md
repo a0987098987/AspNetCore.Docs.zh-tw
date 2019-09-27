@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/22/2019
 uid: getting-started
-ms.openlocfilehash: 0f05ab120d64832a4bc2fd70921efc7238ee9eac
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: c9cd5e05f52c8bdefa931adc654087dac91e2f05
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187065"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317756"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
@@ -90,18 +90,18 @@ dotnet dev-certs https --trust
 
 ```dotnetcli
 cd aspnetcoreapp
-dotnet run
+dotnet watch run
 ```
 
 命令殼層指出應用程式已啟動之後，瀏覽到 [https://localhost:5001](https://localhost:5001)。 按一下 [接受] 以接受隱私權與 Cookie 原則。 此應用程式不會保留個人資訊。
 
 ## <a name="edit-a-razor-page"></a>編輯 Razor 頁面
 
-開啟 *Pages/Index.cshtml*，然後以下列醒目提示的標記修改頁面：
+開啟*Pages/Index. cshtml* ，並以下列反白顯示的標記修改並儲存頁面：
 
 [!code-cshtml[](sample/index.cshtml?highlight=9)]
 
-瀏覽到 [https://localhost:5001](https://localhost:5001) 並驗證已顯示變更。
+流覽至[https://localhost:5001](https://localhost:5001)、重新整理頁面，並確認已顯示變更。
 
 ## <a name="next-steps"></a>後續步驟
 

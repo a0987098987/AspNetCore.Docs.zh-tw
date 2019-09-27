@@ -5,14 +5,14 @@ description: 了解如何在 ASP.NET Core 中使用託管服務實作背景工�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/18/2019
+ms.date: 09/26/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 8df86b10d7ba853edb3265df0e02eabbf8a2c058
-ms.sourcegitcommit: fa61d882be9d0c48bd681f2efcb97e05522051d0
+ms.openlocfilehash: 5a29952c4e50edb953fa03c6ea1a1ae27b728bb0
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71205707"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317726"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
@@ -63,7 +63,7 @@ dotnet new worker -o ContosoWorker
 
 ---
 
-## <a name="package"></a>Package
+## <a name="package"></a>套件
 
 針對 ASP.NET Core 應用程式，會隱含地新增對[Microsoft Extensions](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)的套件參考。
 
@@ -123,10 +123,12 @@ dotnet new worker -o ContosoWorker
 
 ## <a name="backgroundservice"></a>BackgroundService
 
-`BackgroundService`是用來進行長時間<xref:Microsoft.Extensions.Hosting.IHostedService>執行的基類。 `BackgroundService`定義背景作業的兩個方法：
+`BackgroundService`是用來進行長時間<xref:Microsoft.Extensions.Hosting.IHostedService>執行的基類。 `BackgroundService``ExecuteAsync(CancellationToken stoppingToken)`提供抽象方法以包含服務的邏輯。 呼叫[IHostedService. StopAsync](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*)時，會觸發。`stoppingToken` 這個方法`Task`的實作為傳回，代表背景服務的整個存留期。
 
-* `ExecuteAsync(CancellationToken stoppingToken)`&ndash; 在啟動<xref:Microsoft.Extensions.Hosting.IHostedService>時呼叫。 `ExecuteAsync` 此執行應該會`Task`傳回，代表執行長時間執行之作業的存留期。 呼叫`stoppingToken` [IHostedService. StopAsync](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*)時所觸發的。
-* `StopAsync(CancellationToken stoppingToken)`&ndash; 當應用程式主機執行正常關機時`StopAsync` ，就會觸發。 `stoppingToken`指出關閉程式應該不會再正常。
+此外，*也可以選擇性地*覆寫在`IHostedService`上定義的方法，以執行服務的啟動和關閉程式碼：
+
+* `StopAsync(CancellationToken cancellationToken)`&ndash; 當應用程式主機執行正常關機`StopAsync`時，會呼叫。 當主機決定強制終止服務時，會發出信號。`cancellationToken` 如果覆寫這個方法，您**必須**呼叫（和`await`）基類方法，以確保服務正常關閉。
+* `StartAsync(CancellationToken cancellationToken)`&ndash; 呼叫`StartAsync`來啟動背景服務。 如果啟動進程中斷，就會發出信號。`cancellationToken` 此實`Task`作為傳回，代表服務的啟動進程。 在`Task`完成之前，不會再啟動任何進一步的服務。 如果覆寫這個方法，您**必須**呼叫（和`await`）基類方法，以確保服務能正確啟動。
 
 ## <a name="timed-background-tasks"></a>計時背景工作
 
@@ -198,7 +200,7 @@ dotnet new worker -o ContosoWorker
 * Web 主機 &ndash; Web 主機對於裝載 Web 應用程式非常有用。 本主題中顯示的範例程式碼是來自 Web 主機版本的範例。 如需詳細資訊，請參閱 [Web 主機](xref:fundamentals/host/web-host)主題。
 * 泛型主機 &ndash; 泛型主機是 ASP.NET Core 2.1 的新功能。 如需詳細資訊，請參閱[泛型主機](xref:fundamentals/host/generic-host)主題。
 
-## <a name="package"></a>Package
+## <a name="package"></a>套件
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) 套件的套件參考。
 

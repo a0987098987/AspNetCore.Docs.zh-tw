@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/14/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: aa42b1c7199e951714be809de9c9c5f857473485
-ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
+ms.openlocfilehash: 1d1bba6a1f1da2af959bc69b31f79bac53bf48b9
+ms.sourcegitcommit: fe3e556bf438fc4136fcf0bac61cf96e3e91caf5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71278760"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71341472"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>在 ASP.NET Core 中強制使用 HTTPS
 
@@ -150,7 +150,7 @@ ms.locfileid: "71278760"
 
 部署到 Azure App Service 時，請遵循[教學課程：將現有的自訂 SSL 憑證繫結至 Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 下列反白顯示的程式碼會呼叫[AddHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpsredirectionservicesextensions.addhttpsredirection)來設定中介軟體選項：
 
@@ -284,9 +284,9 @@ ASP.NET Core 2.1 和更新版本會使用`UseHsts`擴充方法來執行 HSTS。 
 
 `UseHsts`排除下列回送主機：
 
-* `localhost`：IPv4 回送位址。
-* `127.0.0.1`：IPv4 回送位址。
-* `[::1]`：IPv6 回送位址。
+* `localhost` :IPv4 回送位址。
+* `127.0.0.1` :IPv4 回送位址。
+* `[::1]` :IPv6 回送位址。
 
 ## <a name="opt-out-of-httpshsts-on-project-creation"></a>在建立專案時退出宣告 HTTPS/HSTS
 
@@ -313,7 +313,7 @@ ASP.NET Core 2.1 和更新版本會使用`UseHsts`擴充方法來執行 HSTS。 
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli) 
 
-使用 `--no-https` 選項。 例如
+使用 `--no-https` 選項。 例如：
 
 ```dotnetcli
 dotnet new webapp --no-https
@@ -393,8 +393,8 @@ dotnet devcerts https --trust
 * 執行下列命令：
 
 ```dotnetcli
-dotnet devcerts https --clean
-dotnet devcerts https --trust
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
 ```
 
 關閉任何開啟的瀏覽器實例。 在應用程式中開啟新的瀏覽器視窗。

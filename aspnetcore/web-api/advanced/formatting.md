@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 8/22/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 5861a8e353b8fac95ca51aca7b44a768d3c2ffb7
-ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
+ms.openlocfilehash: e503df3d81efbb2800503c0cb4ff5ae093b6e1ac
+ms.sourcegitcommit: 023495344053dc59115c80538f0ece935e7490a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71199057"
+ms.lasthandoff: 09/28/2019
+ms.locfileid: "71592357"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 
@@ -137,7 +137,7 @@ services.AddControllers().AddJsonOptions(options =>
 });
 ```
 
-以每個動作為基礎的輸出序列化選項，可以使用`JsonResult`進行設定。 例如：
+以每個動作為基礎的輸出序列化選項，可以使用`JsonResult`進行設定。 例如:
 
 ```csharp
 public IActionResult Get()
@@ -169,14 +169,14 @@ public IActionResult Get()
 services.AddControllers().AddNewtonsoftJson(options =>
 {
     // Use the default property (Pascal) casing
-    options.SerializerSettings.ContractResolver = new DefautlContractResolver();
+    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
 
     // Configure a custom converter
     options.SerializerOptions.Converters.Add(new MyCustomJsonConverter());
 });
 ```
 
-以每個動作為基礎的輸出序列化選項，可以使用`JsonResult`進行設定。 例如：
+以每個動作為基礎的輸出序列化選項，可以使用`JsonResult`進行設定。 例如:
 
 ```csharp
 public IActionResult Get()
@@ -232,7 +232,7 @@ XML 格式設定需要[AspNetCore 的 xml](https://www.nuget.org/packages/Micros
 
 若沒有`string` `406 Not Acceptable`，傳回類型會傳回。 `TextOutputFormatter` 如果 XML 格式器存在，則會`string`格式化傳回的`TextOutputFormatter`類型（如果已移除）。
 
-如果沒有 `HttpNoContentOutputFormatter`，則會使用已設定的格式器來格式化 Null 物件。 例如：
+如果沒有 `HttpNoContentOutputFormatter`，則會使用已設定的格式器來格式化 Null 物件。 例如:
 
 * JSON 格式器會傳回具有主體的`null`回應。
 * Xml 格式器會傳回具有屬性`xsi:nil="true"`集的空 xml 元素。
@@ -244,7 +244,7 @@ XML 格式設定需要[AspNetCore 的 xml](https://www.nuget.org/packages/Micros
 * 在查詢字串或部分路徑中。
 * 使用格式特定的副檔名，例如 .xml 或. json。
 
-應該在 API 所使用的路由中指定要求路徑的對應。 例如：
+應該在 API 所使用的路由中指定要求路徑的對應。 例如:
 
 [!code-csharp[](./formatting/sample/Controllers/ProductsController.cs?name=snippet)]
 

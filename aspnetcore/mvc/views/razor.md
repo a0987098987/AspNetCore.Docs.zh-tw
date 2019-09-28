@@ -3,14 +3,14 @@ title: ASP.NET Core 的 Razor 語法參考
 author: rick-anderson
 description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記語法。
 ms.author: riande
-ms.date: 09/19/2019
+ms.date: 09/28/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 9a319f7efb6d879559afd9faca6955aba719fa2f
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.openlocfilehash: 6f8835419dbf4c271617f57484c3408e0af30617
+ms.sourcegitcommit: f62014bb558ff6f8fdaef2e96cb05986e216aacd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168300"
+ms.lasthandoff: 09/28/2019
+ms.locfileid: "71592320"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -227,9 +227,9 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 * 只會轉譯 `<text>` 標籤之間的內容。
 * 在 HTML 輸出中，`<text>` 標籤前後都不能出現任何空白字元。
 
-### <a name="explicit-line-transition-with-colon"></a>使用 \@&colon; 進行明確的行轉換
+### <a name="explicit-line-transition"></a>明確行轉換
 
-若要將一整行的其餘部分轉譯為程式碼區塊內的 HTML，請使用 `@:` 語法：
+若要將整行的其餘部分轉譯為程式碼區塊內的 HTML，請使用 `@:` 語法：
 
 ```cshtml
 @for (var i = 0; i < people.Length; i++)
@@ -487,7 +487,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 ::: moniker-end
 
-例如：
+例如:
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -852,7 +852,7 @@ public class Pet
 
 [標籤協助程式](xref:mvc/views/tag-helpers/intro)有三個相關的指示詞。
 
-| 指示詞 | 功能 |
+| 指示詞 | 函數 |
 | --------- | -------- |
 | [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | 使標籤協助程式可供檢視。 |
 | [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 移除先前從檢視新增的標籤協助程式。 |

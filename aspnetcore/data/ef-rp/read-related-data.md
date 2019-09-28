@@ -4,14 +4,14 @@ author: tdykstra
 description: 在此教學課程中，您可以讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/22/2019
+ms.date: 09/28/2019
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: f53f8edef7fe8690d0e414bc094d81dc99ad198a
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 02b52dee0b661ad26cd6fa9fea08fcea3d7dd9bd
+ms.sourcegitcommit: f62014bb558ff6f8fdaef2e96cb05986e216aacd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082094"
+ms.lasthandoff: 09/28/2019
+ms.locfileid: "71592305"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -46,9 +46,9 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   ![個別查詢範例](read-related-data/_static/separate-queries.png)
 
-  注意:EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
+  注意：EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
 
-* [明確式載入](/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如：
+* [明確式載入](/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如:
 
   ![明確式載入範例](read-related-data/_static/explicit-loading.png)
 
@@ -258,7 +258,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
   }
   ```
 
-* 新增 [課程] 資料行，以顯示每位講師所教授的課程。 如需此 Razor 語法的詳細資訊，請參閱[使用 `@:` 的明確行轉換](xref:mvc/views/razor#explicit-line-transition-with-)。
+* 新增 [課程] 資料行，以顯示每位講師所教授的課程。 如需此 razor 語法的詳細資訊，請參閱[明確行轉換](xref:mvc/views/razor#explicit-line-transition)。
 
 * 新增程式碼，將 `class="success"` 動態新增至所選講師和課程的 `tr` 項目。 這會使用啟動程序類別設定所選取資料列的背景色彩。
 
@@ -357,9 +357,9 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   ![個別查詢範例](read-related-data/_static/separate-queries.png)
 
-  注意:EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
+  注意：EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
 
-* [明確式載入](/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如：
+* [明確式載入](/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如:
 
   ![明確式載入範例](read-related-data/_static/explicit-loading.png)
 
@@ -498,8 +498,8 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 查詢具有兩個 Include：
 
-* `OfficeAssignment`：顯示在 [Instructors 檢視](#IP)中。
-* `CourseAssignments`：它顯示所教授的課程。
+* `OfficeAssignment`:顯示在 [Instructors 檢視](#IP)中。
+* `CourseAssignments`:它顯示所教授的課程。
 
 ### <a name="update-the-instructors-index-page"></a>更新 Instructors [索引] 頁面
 
@@ -527,7 +527,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
   }
   ```
 
-* 新增 [課程] 資料行，以顯示每位講師所教授的課程。 若要深入了解此 Razor 語法，請參閱[使用 `@:` 進行明確的行轉換](xref:mvc/views/razor#explicit-line-transition-with-)。
+* 新增 [課程] 資料行，以顯示每位講師所教授的課程。 如需此 razor 語法的詳細資訊，請參閱[明確行轉換](xref:mvc/views/razor#explicit-line-transition)。
 
 * 新增程式碼，將 `class="success"` 動態新增至所選取講師的 `tr` 項目。 這會使用啟動程序類別設定所選取資料列的背景色彩。
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/26/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 5a29952c4e50edb953fa03c6ea1a1ae27b728bb0
-ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
+ms.openlocfilehash: 0eaa3a62370c1e413840bb65f597dc664adafc38
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71317726"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71688113"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
@@ -37,29 +37,7 @@ ms.locfileid: "71317726"
 
 ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式的起點。 使用範本作為裝載服務應用程式的基礎：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
-1. 建立新的專案。
-1. 選取 [ASP.NET Core Web 應用程式]。 選取 [下一步]。
-1. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 選取 [建立]。
-1. 在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中，確認選取 [.NET Core] 和 [ASP.NET Core 3.0]。
-1. 選取 [背景工作服務] 範本。 選取 [建立]。
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
-
-1. 建立新的專案。
-1. 在提要欄位中選取 [ **.Net Core** ] 底下的 [**應用程式**]。
-1. 選取  **ASP.NET Core**下的 背景**工作角色**。 選取 [下一步]。
-1. 針對 [**目標 Framework**] 選取 [ **.net Core 3.0** ]。 選取 [下一步]。
-1. 在 [**專案名稱**] 欄位中提供名稱。 選取 [建立]。
-
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
-
-從命令殼層以 [dotnet new](/dotnet/core/tools/dotnet-new) 命令使用背景工作服務 (`worker`) 範本。 在下列範例中，已建立名為 `ContosoWorker` 的背景工作服務應用程式。 當命令執行時，會自動建立 `ContosoWorker` 應用程式的資料夾。
-
-```dotnetcli
-dotnet new worker -o ContosoWorker
-```
+[!INCLUDE[](~/includes/worker-template-instructions.md)]
 
 ---
 

@@ -5,14 +5,14 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 09/30/2019
 uid: blazor/components
-ms.openlocfilehash: 28e908968bd77c61da72d1bcc6032e580d15541b
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: ea216e405e5be52b578e99a529d8c6a726ea9cdd
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71207266"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71688035"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -440,13 +440,13 @@ Razor 元件提供事件處理功能。 針對名為`on{event}`的 HTML 專案�
 
 對於某些事件，則允許事件引數類型。 如果不需要存取這些事件種類的其中一個，則在方法呼叫中不需要。
 
-下表顯示支援的[EventArgs](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src/Web) 。
+支援的 `EventArgs` 會顯示在下表中。
 
 | Event - 事件 | 類別 |
 | ----- | ----- |
 | 剪貼簿        | `ClipboardEventArgs` |
 | 拖放式             | `DragEventArgs`&ndash; 並按住`DataTransferItem`拖曳的專案資料。 `DataTransfer` |
-| 錯誤            | `ErrorEventArgs` |
+| Error            | `ErrorEventArgs` |
 | 焦點            | `FocusEventArgs`不包含的`relatedTarget`支援。 &ndash; |
 | `<input>` 變更 | `ChangeEventArgs` |
 | 鍵盤         | `KeyboardEventArgs` |
@@ -456,7 +456,7 @@ Razor 元件提供事件處理功能。 針對名為`on{event}`的 HTML 專案�
 | 進度         | `ProgressEventArgs` |
 | 觸控            | `TouchEventArgs`&ndash; 代表觸控裝置上`TouchPoint`的單一連絡人點。 |
 
-如需上表中事件的屬性和事件處理行為的詳細資訊，請參閱[參考來源中的 EventArgs 類別（aspnet/AspNetCore release/3.0-preview9 分支）](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src/Web)。
+如需上表中事件的屬性和事件處理行為的詳細資訊，請參閱[參考來源中的 EventArgs 類別（aspnet/AspNetCore release/3.0 分支）](https://github.com/aspnet/AspNetCore/tree/release/3.0/src/Components/Web/src/Web)。
 
 ### <a name="lambda-expressions"></a>Lambda 運算式
 
@@ -1382,7 +1382,7 @@ public class ThemeInfo
 }
 ```
 
-> !WARNING中`Microsoft.AspNetCore.Components.RenderTree`的類型允許處理轉譯作業的*結果*。 這些是 Blazor framework 執行的內部詳細資料。 這些類型應該被視為不*穩定*，未來的版本可能會變更。
+> !WARNING@No__t-0 中的類型允許處理轉譯作業的*結果*。 這些是 Blazor framework 執行的內部詳細資料。 這些類型應該被視為不*穩定*，未來的版本可能會變更。
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>序號與程式程式碼號相關，而不是執行順序
 
@@ -1414,16 +1414,16 @@ builder.AddContent(1, "Second");
 
 當程式碼第一次執行時，如果`someFlag`是`true`，則產生器會接收：
 
-| 序列 | 類型      | 資料   |
+| 序列 | Type      | Data   |
 | :------: | --------- | :----: |
-| 0        | Text node | First  |
-| 1        | Text node | Second |
+| 0        | Text node | 第一個  |
+| 1        | Text node | 第二個 |
 
 想像一下， `false`會變成，然後再次呈現標記。 `someFlag` 這次，產生器會接收：
 
-| 序列 | 類型       | 資料   |
+| 序列 | Type       | Data   |
 | :------: | ---------- | :----: |
-| 1        | Text node  | Second |
+| 1        | Text node  | 第二個 |
 
 當執行時間執行 diff 時，會看到順序`0`中的專案已移除，因此它會產生下列簡單的*編輯腳本*：
 
@@ -1446,16 +1446,16 @@ builder.AddContent(seq++, "Second");
 
 現在，第一個輸出是：
 
-| 序列 | 類型      | 資料   |
+| 序列 | Type      | Data   |
 | :------: | --------- | :----: |
-| 0        | Text node | First  |
-| 1        | Text node | Second |
+| 0        | Text node | 第一個  |
+| 1        | Text node | 第二個 |
 
 此結果與先前的案例相同，因此不會有負面問題存在。 `someFlag``false`在第二個轉譯上，輸出為：
 
-| 序列 | 類型      | 資料   |
+| 序列 | Type      | Data   |
 | :------: | --------- | ------ |
-| 0        | Text node | Second |
+| 0        | Text node | 第二個 |
 
 這次，diff 演算法發現發生了*兩*項變更，而演算法會產生下列編輯腳本：
 
@@ -1514,7 +1514,7 @@ public class HostModel : PageModel
 
 1. 瀏覽器會將初始 HTTP 要求傳送至應用程式。
 1. 文化特性是由當地語系化中介軟體所指派。
-1. _Host `OnGet`中的方法會在 cookie 中保存文化特性，做為回應的一部分。
+1. *_Host*中的 `OnGet` 方法會在 cookie 中保存文化特性，做為回應的一部分。
 1. 瀏覽器會開啟 WebSocket 連線，以建立互動式 Blazor 伺服器會話。
 1. 當地語系化中介軟體會讀取 cookie 並指派文化特性。
 1. Blazor 伺服器會話的開頭是正確的文化特性。

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何使用 ASP.NET Core 建置 Web API。
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/27/2019
+ms.date: 09/29/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 366323416061bf729c092419f2f6a5912884252b
-ms.sourcegitcommit: 5d25a7f22c50ca6fdd0f8ecd8e525822e1b35b7a
+ms.openlocfilehash: 7bb98fe5befa8eea80885d246da31ad87d5cfc2d
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2019
-ms.locfileid: "71551724"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71691206"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -228,7 +228,7 @@ ms.locfileid: "71551724"
 
 * 在 [工具] 功能表上，選取 [NuGet 套件管理員] > [管理解決方案的 NuGet 套件]。
 * 選取 [瀏覽] 索引標籤，然後在搜尋方塊中輸入 **Microsoft.EntityFrameworkCore.SqlServer**。
-* 在左窗格中選取 [ **Microsoft.EntityFrameworkCore.SqlServer** ]。
+* 在左窗格中選取 [ **microsoft.entityframeworkcore** ]。
 * 選取右窗格中的 [專案] 核取方塊，然後選取 [安裝]。
 * 使用上述指示來新增 `Microsoft.EntityFrameworkCore.InMemory` NuGet 套件。
 
@@ -273,7 +273,7 @@ ms.locfileid: "71551724"
 
   * 在**模型類別**中選取 [ **TodoItem （TodoApi）** ]。
   * 選取**資料內容類別**中的 [ **TodoCoNtext （TodoApi）** ]。
-  * 選取 [新增]
+  * 選取 [新增]。
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -283,7 +283,7 @@ ms.locfileid: "71551724"
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext  -outDir Controllers
+dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
 上述命令：
@@ -322,7 +322,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * 啟動 Web 應用程式。
 * 啟動 Postman。
 * 停用 [SSL certificate verification] \(SSL 憑證驗證\)
-* 從 [檔案] > [設定] (* *[一般]* 索引標籤)，停用 [SSL certificate verification] \(SSL 憑證驗證\)。
+* 從 [檔案] > [設定] ([一般] 索引標籤)，停用 [SSL 憑證驗證]。
     > [!WARNING]
     > 在測試控制器之後，請重新啟用 [SSL certificate verification] \(SSL 憑證驗證\)。
 
@@ -356,7 +356,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
   ![Postman 主控台的 [標頭] 索引標籤](first-web-api/_static/3/create.png)
 
 * 將方法設定為 GET。
-* 貼上 URI (例如 `https://localhost:5001/api/TodoItems/1`)
+* 貼上 URI （例如，`https://localhost:5001/api/TodoItems/1`）。
 * 選取 [傳送]。
 
 ## <a name="examine-the-get-methods"></a>檢查 GET 方法
@@ -404,7 +404,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * 以控制器的名稱取代 `[controller]`，也就是將控制器類別名稱減去 "Controller" 字尾。 在此範例中，控制器類別名稱是 **TodoItems**Controller，因此控制器名稱是 "TodoItems"。 ASP.NET Core [路由](xref:mvc/controllers/routing)不區分大小寫。
 * 如果 `[HttpGet]` 屬性具有路由範本 (例如 `[HttpGet("products")]`)，請將其附加到路徑。 此範例不使用範本。 如需詳細資訊，請參閱[使用 Http[Verb] 屬性的屬性路由](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)。
 
-在下列 `GetTodoItem` 方法中，`"{id}"` 是待辦事項唯一識別碼的預留位置變數。 在叫用 `GetTodoItem` 時，會將 URL 中的 `"{id}"` 值提供給方法的 `id` 參數。
+在下列 `GetTodoItem` 方法中，`"{id}"` 是待辦事項唯一識別碼的預留位置變數。 叫用 `GetTodoItem` 時，URL 中 `"{id}"` 的值會提供給其 @no__t 2 參數中的方法。
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_GetByID&highlight=1-2)]
 
@@ -458,8 +458,8 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 使用 Postman 刪除待辦事項：
 
 * 將方法設定為 `DELETE`。
-* 設定要刪除的物件 URI，例如 `https://localhost:5001/api/TodoItems/1`
-* 選取 [傳送]
+* 設定要刪除之物件的 URI （例如 `https://localhost:5001/api/TodoItems/1`）。
+* 選取 [傳送]。
 
 ## <a name="call-the-web-api-with-javascript"></a>使用 JavaScript 呼叫 Web API
 
@@ -741,10 +741,10 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 本教學課程使用 Postman 來測試 Web API。
 
-* 安裝 [Postman](https://www.getpostman.com/downloads/)
+* 安裝[Postman](https://www.getpostman.com/downloads/)。
 * 啟動 Web 應用程式。
 * 啟動 Postman。
-* 停用 [SSL certificate verification] \(SSL 憑證驗證\)
+* 停用**SSL 憑證驗證**。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -813,7 +813,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
   ![Postman 主控台的 [標頭] 索引標籤](first-web-api/_static/pmc2.png)
 
 * 將方法設定為 GET。
-* 貼上 URI (例如 `https://localhost:5001/api/Todo/2`)
+* 貼上 URI （例如，`https://localhost:5001/api/Todo/2`）。
 * 選取 [傳送]。
 
 ## <a name="add-a-puttodoitem-method"></a>新增 PutTodoItem 方法
@@ -857,8 +857,8 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 使用 Postman 刪除待辦事項：
 
 * 將方法設定為 `DELETE`。
-* 設定要刪除的物件 URI，例如 `https://localhost:5001/api/todo/1`
-* 選取 [傳送]
+* 設定要刪除之物件的 URI （例如 `https://localhost:5001/api/todo/1`）。
+* 選取 [傳送]。
 
 範例應用程式可讓您刪除所有項目。 但刪除最後一個項目之後，模型類別建構函式會在下次呼叫 API 時建立新的項目。
 

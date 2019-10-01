@@ -1,7 +1,7 @@
 ---
-title: 檢視 ASP.NET Core 中的元件
+title: ASP.NET Core 中的檢視元件 (View components)
 author: rick-anderson
-description: 了解如何檢視 ASP.NET Core 中使用的元件，以及如何將這些元件新增到應用程式。
+description: 了解如何使用 ASP.NET Core 中的檢視元件，以及如何將這些元件新增到應用程式。
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/14/2019
@@ -13,7 +13,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 07/31/2019
 ms.locfileid: "68670091"
 ---
-# <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
+# <a name="view-components-in-aspnet-core"></a>ASP.NET Core 中的檢視元件
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

@@ -5,16 +5,18 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: ec78d35daf6823779fca491aca7b7b309db4b02e
-ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
-ms.translationtype: HT
+ms.openlocfilehash: 6dfbeae201a3586dfea6620917083130c4985b22
+ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66750030"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703804"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT)、[Damien Bowden](https://twitter.com/damien_bod)、[Bart Calixto](https://twitter.com/bartmax)、[Nadeem Afana](https://afana.me/) 和 [Hisham Bin Ateya](https://twitter.com/hishambinateya) 提供
+
+在這份檔更新為 ASP.NET Core 3.0 之前，請參閱 Hisham 的 Blog （ [ASP.NET Core 3.0 中的當地語系化新功能](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0)）。
 
 使用 ASP.NET Core 建立多語系網站時，可讓更廣大的群眾使用您的網站。 ASP.NET Core 提供服務與中介軟體，可將網站當地語系化成不同的語言與文化特性。
 
@@ -126,15 +128,15 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 資源檔是一種實用的機制，可讓您將可當地語系化的字串與代碼區隔開來。 您可以將非預設語言的翻譯字串作為隔離的 *.resx* 資源檔。 例如，您可以建立名為 *Welcome.es.resx* 的西班牙文資源檔，以包含翻譯的字串。 "es" 是西班牙文的語言代碼。 若要在 Visual Studio 中建立這個資源檔：
 
-1. 在方案總管  中，以滑鼠右鍵按一下要放置資源檔的資料夾 > [新增]   > [新增項目]  。
+1. 在方案總管中，以滑鼠右鍵按一下要放置資源檔的資料夾 > [新增] > [新增項目]。
 
     ![巢狀快顯功能表：在 [方案總管] 中，會開啟 [資源] 的快顯功能表。 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
 
-2. 在 [Search installed templates] (搜尋已安裝的範本)  方塊中，輸入「資源」，並命名檔案。
+2. 在 [Search installed templates] (搜尋已安裝的範本) 方塊中，輸入「資源」，並命名檔案。
 
     ![[新增項目] 對話方塊](localization/_static/res.png)
 
-3. 在 [名稱]  資料行中輸入索引鍵值 (原生字串)，並在 [值]  資料行中輸入已翻譯的字串。
+3. 在 [名稱] 資料行中輸入索引鍵值 (原生字串)，並在 [值] 資料行中輸入已翻譯的字串。
 
     ![Welcome.es.resx 檔案 (西班牙文的「歡迎使用」資源檔)，其中 [名稱] 資料行的文字為 Hello，而 [值] 資料行的文字為 Hola (Hello 的西班牙文)](localization/_static/hola.png)
 
@@ -151,7 +153,7 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 | 資源名稱 | 點或路徑命名 |
 | ------------   | ------------- |
 | Resources/Controllers.HomeController.fr.resx | 點  |
-| Resources/Controllers/HomeController.fr.resx  | 路徑 |
+| Resources/Controllers/HomeController.fr.resx  | `Path` |
 |    |     |
 
 如果資源檔是使用 Razor 檢視中的 `@inject IViewLocalizer`，亦遵循類似的模式。 您可以使用點命名或路徑命名方式，來命名檢視的資源檔。 Razor 檢視的資源檔會模仿其相關聯檢視檔案的路徑。 假設我們將 `ResourcesPath` 設為 "Resources"，與 *Views/Home/About.cshtml* 檢視建立關聯的法文資源檔可為下列其一：
@@ -259,19 +261,19 @@ Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `u
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>在 IE 中設定 Accept-Language HTTP 標頭
 
-1. 從齒輪圖示，點選 [網際網路選項]  。
+1. 從齒輪圖示，點選 [網際網路選項]。
 
-2. 點選 [語言]  。
+2. 點選 [語言]。
 
     ![網際網路選項](localization/_static/lang.png)
 
-3. 點選 [設定語言喜好設定]  。
+3. 點選 [設定語言喜好設定]。
 
-4. 點選 [新增語言]  。
+4. 點選 [新增語言]。
 
 5. 新增語言。
 
-6. 點選語言，然後點選 [上移]  。
+6. 點選語言，然後點選 [上移]。
 
 ### <a name="use-a-custom-provider"></a>使用自訂提供者
 

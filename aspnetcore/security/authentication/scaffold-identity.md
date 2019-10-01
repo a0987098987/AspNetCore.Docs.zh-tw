@@ -1,41 +1,41 @@
 ---
-title: ASP.NET Core 專案中的 scaffold 身分識別
+title: ASP.NET Core 專案中的 Scaffold 身分識別
 author: rick-anderson
-description: 了解如何建立 ASP.NET Core 專案中的身分識別。
+description: 瞭解如何在 ASP.NET Core 專案中 scaffold 身分識別。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 9e784864ee78bdfb76dab7748f3fb81728b9c289
-ms.sourcegitcommit: 91cc1f07ef178ab709ea42f8b3a10399c970496e
+ms.openlocfilehash: f3ae089d344d95ed84c9720ab4ba2c697400901e
+ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622775"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703765"
 ---
-# <a name="scaffold-identity-in-aspnet-core-projects"></a>ASP.NET Core 專案中的 scaffold 身分識別
+# <a name="scaffold-identity-in-aspnet-core-projects"></a>ASP.NET Core 專案中的 Scaffold 身分識別
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core 2.1 和更新版本可[ASP.NET Core Identity](xref:security/authentication/identity)作為[Razor 類別庫](xref:razor-pages/ui-class)。 包含身分識別應用程式，可以套用到建構者選擇性地加入 包含在識別 Razor 類別庫 (RCL) 的原始程式碼。 建議您產生原始程式碼，以便能夠修改程式碼並變更行為。 例如，您可以指示 Scaffolder 產生註冊使用的程式碼。 產生的程式碼優先於身分識別 RCL 中的相同程式碼。 若要完整掌控 UI，並使用預設 RCL，請參閱下節[建立完整的身分識別 UI 來源](#full)。
+ASP.NET Core 2.1 和更新版本提供作為[Razor 類別庫](xref:razor-pages/ui-class)的[ASP.NET Core 身分識別](xref:security/authentication/identity)。 包含身分識別的應用程式可以套用 scaffolder，以選擇性地新增包含在身分識別 Razor 類別庫（RCL）中的原始程式碼。 建議您產生原始程式碼，以便能夠修改程式碼並變更行為。 例如，您可以指示 Scaffolder 產生註冊使用的程式碼。 產生的程式碼優先於身分識別 RCL 中的相同程式碼。 若要取得 UI 的完全控制，而不使用預設 RCL，請參閱[建立完整身分識別 UI 來源](#full)一節。
 
-執行的應用程式**不**包含驗證可以套用 scaffolder 新增 RCL 識別套件。 您可以選擇選取要產生的身分識別程式碼。
+**不**包含驗證的應用程式可以套用 scaffolder 來新增 RCL 身分識別套件。 您可以選擇選取要產生的身分識別程式碼。
 
-雖然框架產生大部分的必要的程式碼，您必須更新專案，以完成程序。 本文件說明完成識別 scaffolding 更新所需的步驟。
+雖然 scaffolder 會產生大部分必要的程式碼，但您必須更新您的專案，才能完成此流程。 本檔說明完成身分識別架構更新所需的步驟。
 
-執行身分識別框架時， *ScaffoldingReadme.txt*專案目錄中建立檔案。 *ScaffoldingReadme.txt*檔案包含需要的完成識別 scaffolding 更新內容的一般指示。 本文件包含更詳細的說明，比*ScaffoldingReadme.txt*檔案。
+執行身分識別 scaffolder 時，會在專案目錄中建立*ScaffoldingReadme。* *ScaffoldingReadme .txt*檔案包含完成身分識別架構更新所需事項的一般指示。 本檔包含比*ScaffoldingReadme*更完整的指示。
 
-我們建議使用顯示檔案的差異，並可讓您將變更原始檔控制系統。 執行身分識別 scaffolder 之後檢查所做的變更。
+我們建議使用會顯示檔案差異的原始檔控制系統，並可讓您備份變更。 執行身分識別 scaffolder 之後，請檢查變更。
 
 > [!NOTE]
-> 使用時，服務不需要[雙因素驗證](xref:security/authentication/identity-enable-qrcodes)，[帳戶確認和密碼復原](xref:security/authentication/accconfirm)，以及其他與身分識別的安全性功能。 Scaffolding 身分識別時，不會產生服務或服務虛設常式。 若要啟用這些功能的服務必須手動加入。 例如，請參閱[需要電子郵件確認](xref:security/authentication/accconfirm#require-email-confirmation)。
+> 使用[雙因素驗證](xref:security/authentication/identity-enable-qrcodes)、[帳戶確認和密碼](xref:security/authentication/accconfirm)復原，以及其他具有身分識別的安全性功能時，都需要服務。 當基架構識別時，不會產生服務或服務存根。 啟用這些功能的服務必須手動新增。 例如，請參閱[需要電子郵件確認](xref:security/authentication/accconfirm#require-email-confirmation)。
 
-## <a name="scaffold-identity-into-an-empty-project"></a>Scaffold 的身分識別至空專案
+## <a name="scaffold-identity-into-an-empty-project"></a>將身分識別 Scaffold 到空的專案
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-加入下列反白顯示的呼叫`Startup`類別：
+將下列反白顯示的呼叫新增至 `Startup` 類別：
 
 [!code-csharp[](scaffold-identity/sample/StartupEmpty.cs?name=snippet1&highlight=5,20-23)]
 
@@ -43,16 +43,19 @@ ASP.NET Core 2.1 和更新版本可[ASP.NET Core Identity](xref:security/authent
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-## <a name="scaffold-identity-into-a-razor-project-without-existing-authorization"></a>Scaffold 的身分識別至 Razor 專案沒有現有的授權
+## <a name="scaffold-identity-into-a-razor-project-without-existing-authorization"></a>將身分識別 Scaffold 到不具現有授權的 Razor 專案
 
-<!--
+<!--  Updated for 3.0
 set projNam=RPnoAuth
 set projType=webapp
-set version=2.1.0
 
 dotnet new %projType% -o %projNam%
 cd %projNam%
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design -v %version%
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+dotnet add package Microsoft.AspNetCore.Identity.UI
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet restore
 dotnet aspnet-codegenerator identity --useDefaultUI
 dotnet ef migrations add CreateIdentitySchema
@@ -61,11 +64,11 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-已在中設定身分識別*Areas/Identity/IdentityHostingStartup.cs*。 如需詳細資訊，請參閱 < [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。
+身分識別是在*Areas/identity/IdentityHostingStartup*中設定。 如需詳細資訊，請參閱[IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。
 
 <a name="efm"></a>
 
-### <a name="migrations-useauthentication-and-layout"></a>移轉、 UseAuthentication 和版面配置
+### <a name="migrations-useauthentication-and-layout"></a>遷移、UseAuthentication 和版面配置
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
@@ -73,7 +76,7 @@ dotnet ef database update
 
 ### <a name="enable-authentication"></a>啟用驗證
 
-在 `Configure`方法`Startup`類別中，呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
+在 `Startup` 類別的 `Configure` 方法中，在 `UseStaticFiles` 之後呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) ：
 
 [!code-csharp[](scaffold-identity/sample/StartupRPnoAuth.cs?name=snippet1&highlight=29)]
 
@@ -81,11 +84,11 @@ dotnet ef database update
 
 ### <a name="layout-changes"></a>版面配置變更
 
-選擇項：加入部分的登入 (`_LoginPartial`) 和配置檔案：
+選擇性：將登入部分（`_LoginPartial`）新增至版面配置檔案：
 
 [!code-html[Main](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
-## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>Scaffold Razor 專案具有授權的身分識別
+## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>使用授權將身分識別 Scaffold 到 Razor 專案
 
 <!--
 Use >=2.1: dotnet new webapp -au Individual -o RPauth
@@ -100,9 +103,9 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 -->
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
-中所設定的一些身分識別選項*Areas/Identity/IdentityHostingStartup.cs*。 如需詳細資訊，請參閱 < [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。
+某些身分識別選項會在*區域/身分識別/IdentityHostingStartup*中設定。 如需詳細資訊，請參閱[IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。
 
-## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>MVC 專案中現有的授權而成的 scaffold 身分識別
+## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>將身分識別 Scaffold 至沒有現有授權的 MVC 專案
 
 <!--
 set projNam=MvcNoAuth
@@ -120,23 +123,23 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-選擇項：加入部分的登入 (`_LoginPartial`) 來*Views/Shared/_Layout.cshtml*檔案：
+選擇性：將登入部分（`_LoginPartial`）新增至*Views/Shared/_Layout. cshtml*檔案：
 
 [!code-html[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
 
-* 移動*Pages/Shared/_LoginPartial.cshtml*檔案*Views/Shared/_LoginPartial.cshtml*
+* 將*Pages/shared/_LoginPartial*檔案移至*Views/shared/_LoginPartial。 cshtml*
 
-已在中設定身分識別*Areas/Identity/IdentityHostingStartup.cs*。 如需詳細資訊，請參閱 IHostingStartup。
+身分識別是在*Areas/identity/IdentityHostingStartup*中設定。 如需詳細資訊，請參閱 IHostingStartup。
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
+@No__t-1 之後呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) ：
 
 [!code-csharp[](scaffold-identity/sample/StartupMvcNoAuth.cs?name=snippet1&highlight=23)]
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
-## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a>Scaffold 的身分識別至具有授權的 MVC 專案
+## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a>使用授權將身分識別 Scaffold 至 MVC 專案
 
 <!--
 dotnet new mvc -au Individual -o MvcAuth
@@ -148,27 +151,27 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --fil
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-刪除*頁/Shared*資料夾，然後在該資料夾中的檔案。
+刪除*頁面/共用*資料夾，以及該資料夾中的檔案。
 
 <a name="full"></a>
 
-## <a name="create-full-identity-ui-source"></a>建立完整的身分識別 UI 來源
+## <a name="create-full-identity-ui-source"></a>建立完整身分識別 UI 來源
 
-若要維護的身分識別使用者介面的完整控制權，執行身分識別的框架，然後選取**覆寫所有檔案**。
+若要維持身分識別 UI 的完全控制，請執行身分識別 scaffolder，然後選取 [覆**寫所有**檔案]。
 
-下列醒目提示的程式碼會顯示預設識別 UI 取代 ASP.NET Core 2.1 web 應用程式中的身分識別的變更。 您可能想要這樣做能夠完整控制身分識別 UI。
+下列反白顯示的程式碼顯示在 ASP.NET Core 2.1 web 應用程式中，將預設身分識別 UI 取代為身分識別的變更。 您可能想要執行此動作，以完全控制身分識別 UI。
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet1&highlight=13-14,17-999)]
 
-預設身分識別會取代下列程式碼：
+下列程式碼會取代預設身分識別：
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet2)]
 
-下列程式碼設定[LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath)， [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath)，並[AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath):
+下列程式碼會設定[LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath)、 [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath)和[AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath)：
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet3)]
 
-註冊`IEmailSender`實作，例如：
+註冊 `IEmailSender` 的執行，例如：
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet4)]
 
@@ -176,4 +179,4 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --fil
 
 ## <a name="additional-resources"></a>其他資源
 
-* [變更用於 ASP.NET Core 2.1 和更新版本的驗證程式碼](xref:migration/20_21#changes-to-authentication-code)
+* [將驗證程式代碼變更為 ASP.NET Core 2.1 和更新版本](xref:migration/20_21#changes-to-authentication-code)

@@ -8,7 +8,7 @@ ms.date: 05/31/2019
 uid: mvc/models/model-binding
 ms.openlocfilehash: 298e305cf918117ec2d313060a7420a1e721a365
 ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/22/2019
 ms.locfileid: "69975301"
@@ -165,7 +165,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 模型繫結器可將來源字串轉換成的簡單型別包括：
 
-* [布林值](xref:System.ComponentModel.BooleanConverter)
+* [Boolean](xref:System.ComponentModel.BooleanConverter)
 * [Byte](xref:System.ComponentModel.ByteConverter)、[SByte](xref:System.ComponentModel.SByteConverter)
 * [Char](xref:System.ComponentModel.CharConverter)
 * [DateTime](xref:System.ComponentModel.DateTimeConverter)
@@ -179,7 +179,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter)、[UInt32](xref:System.ComponentModel.UInt32Converter)、[UInt64](xref:System.ComponentModel.UInt64Converter)
 * [Uri](xref:System.UriTypeConverter)
-* [版本](xref:System.ComponentModel.VersionConverter)
+* [Version](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>複雜類型
 

@@ -1,5 +1,5 @@
 ---
-title: ASP.NET Core 中的檢視元件 (View components)
+title: ASP.NET Core 中的檢視元件
 author: rick-anderson
 description: 了解如何使用 ASP.NET Core 中的檢視元件，以及如何將這些元件新增到應用程式。
 ms.author: riande

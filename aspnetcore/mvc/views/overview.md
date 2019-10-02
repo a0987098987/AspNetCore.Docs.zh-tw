@@ -34,10 +34,10 @@ ms.locfileid: "64891343"
 
 ## <a name="benefits-of-using-views"></a>使用檢視的優點
 
-檢視可協助在 MVC 應用程式內建立[關注區隔](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns)，方法是區隔使用者介面標記與應用程式的其他部分。 遵循 SoC 設計可讓您的應用程式模組化，以提供數個優點：
+檢視可協助在 MVC 應用程式內建立[關注點分離](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns)(縮寫為 SoC)，方法是區隔使用者介面標記與應用程式的其他部分。 遵循 SoC 設計可讓您的應用程式模組化，以提供數個優點：
 
 * 應用程式較容易維護，因為其組織性較佳。 檢視一般會依應用程式功能分組。 這可讓您在處理功能時更輕鬆地找到相關檢視。
-* 應用程式的組件是鬆散耦合的。 您可以分別從商務邏輯和資料存取元件來建置和更新應用程式的檢視。 您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。
+* 應用程式的組件是低耦合的。 您可以分別從商務邏輯和資料存取元件來建置和更新應用程式的檢視。 您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。
 * 因為檢視是個別單位，所以可以更輕鬆地測試應用程式的使用者介面部分。
 * 為達到更佳的編排情況，較不希望使用者介面的區段意外地重複。
 
@@ -350,9 +350,9 @@ Razor 頁面中沒有 `ViewBag`。
     ...
 ```
 
-請記住，針對 `ViewData`，不需要轉換字串。 您可以使用 `@ViewData["Title"]`，而不需要轉換。
+請記住，針對 `ViewData`，不需要轉型成字串。 您可以使用 `@ViewData["Title"]`，而不需要轉換。
 
-可以同時使用 `ViewData` 和 `ViewBag`，與混合使用和比對讀取與寫入屬性一樣。 會轉譯下列標記：
+可以同時使用 `ViewData` 和 `ViewBag`，與混合使用和比對讀取與寫入屬性一樣。 會轉譯為下列標記：
 
 ```html
 <!DOCTYPE html>

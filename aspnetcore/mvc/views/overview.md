@@ -7,7 +7,7 @@ ms.date: 04/03/2019
 uid: mvc/views/overview
 ms.openlocfilehash: 5e56c6bb18cb5d2389c11eb3e4aa9869228da47d
 ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/27/2019
 ms.locfileid: "64891343"
@@ -18,7 +18,7 @@ ms.locfileid: "64891343"
 
 本文件說明 ASP.NET Core MVC 應用程式中所使用的檢視。 如需 Razor 頁面的資訊，請參閱 [Razor 頁面簡介](xref:razor-pages/index)。
 
-在模型檢視控制器 (MVC) 模式中，「檢視」會處理應用程式的資料呈現和使用者互動。 檢視是具有內嵌 [Razor 標記](xref:mvc/views/razor)的 HTML 範本。 Razor 標記是與 HTML 標記互動的程式碼，可以產生傳送至用戶端的網頁。
+在模型檢視控制器 (MVC) 模式中，「檢視」  會處理應用程式的資料呈現和使用者互動。 檢視是具有內嵌 [Razor 標記](xref:mvc/views/razor)的 HTML 範本。 Razor 標記是與 HTML 標記互動的程式碼，可以產生傳送至用戶端的網頁。
 
 在 ASP.NET Core MVC 中，檢視是在 Razor 標記中使用 [C# 程式設計語言](/dotnet/csharp/)的 *.cshtml* 檔案。 通常，檢視檔案會分組成針對每個應用程式之[控制器](xref:mvc/controllers/actions)而命名的資料夾。 資料夾會儲存至應用程式根目錄的 *Views* 資料夾中：
 
@@ -34,7 +34,7 @@ ms.locfileid: "64891343"
 
 ## <a name="benefits-of-using-views"></a>使用檢視的優點
 
-檢視可協助在 MVC 應用程式內建立[關注點分離](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns)，方法是區隔使用者介面標記與應用程式的其他部分。遵循 SoC 設計可讓您的應用程式模組化，以提供數個優點：
+檢視可協助在 MVC 應用程式內建立[關注點分離](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns)，方法是區隔使用者介面標記與應用程式的其他部分。 遵循 SoC 設計可讓您的應用程式模組化，以提供數個優點：
 
 * 應用程式較容易維護，因為其組織性較佳。 檢視一般會依應用程式功能分組。 這可讓您在處理功能時更輕鬆地找到相關檢視。
 * 應用程式的組件是鬆散耦合的。 您可以分別從商務邏輯和資料存取元件來建置和更新應用程式的檢視。 您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。
@@ -85,7 +85,7 @@ ms.locfileid: "64891343"
 
 ### <a name="view-discovery"></a>檢視探索
 
-動作傳回檢視時，會進行稱為「檢視探索」的程序。 此程序根據檢視名稱來決定使用的檢視檔案。 
+動作傳回檢視時，會進行稱為「檢視探索」  的程序。 此程序根據檢視名稱來決定使用的檢視檔案。 
 
 `View` 方法的預設行為 (`return View();`) 是傳回的檢視與從中呼叫它的動作方法同名。 例如，使用控制器的 *About* `ActionResult` 方法名稱來搜尋名為 *About.cshtml* 的檢視檔案。 首先，執行階段會在 *Views/[ControllerName]* 資料夾中尋找檢視。 如果在這裡找不到相符的檢視，則會搜尋檢視的 *Shared* 資料夾。
 
@@ -133,7 +133,7 @@ return View("./About");
 
 最穩健的方法是在檢視中指定 [model](xref:mvc/models/model-binding) 類型。 此模型通常稱為 *viewmodel*。 您可以透過動作將 viewmodel 類型執行個體傳遞至檢視。
 
-使用 viewmodel 將資料傳遞至檢視，讓檢視利用「強式」檢查。 *強式型別* (或*強型別*) 代表每個變數與常數都有明確定義的類型 (例如，`string`、`int` 或 `DateTime`)。 在編譯時期檢查檢視中所使用之類型的有效性。
+使用 viewmodel 將資料傳遞至檢視，讓檢視利用「強式」  檢查。 *強式型別* (或*強型別*) 代表每個變數與常數都有明確定義的類型 (例如，`string`、`int` 或 `DateTime`)。 在編譯時期檢查檢視中所使用之類型的有效性。
 
 [Visual Studio](https://visualstudio.microsoft.com) 與 [Visual Studio Code](https://code.visualstudio.com/) 會使用稱為 [IntelliSense](/visualstudio/ide/using-intellisense) 的功能，列出強型別類別成員。 當您想要查看 viewmodel 的屬性時，請鍵入 viewmodel 的變數名稱，後面接著句號 (`.`)。 這有助於更快速地撰寫程式碼，並且減少錯誤。
 
@@ -192,9 +192,9 @@ namespace WebApplication1.ViewModels
 
 ### <a name="weakly-typed-data-viewdata-viewdata-attribute-and-viewbag"></a>弱型別資料 (ViewData、ViewData 屬性與 ViewBag)
 
-Razor 頁面中沒有 `ViewBag`。
+Razor 頁面中沒有 `ViewBag`。 
 
-除了強型別檢視之外，檢視還可以存取*弱型別* (也稱為*鬆散型別*) 資料集合。 與強式型別不同，「弱式型別」 (或「鬆散型別」) 表示您未明確宣告所使用資料的類型。 您可以使用弱型別資料的集合，對控制器與檢視傳遞將少量的資料進出。
+除了強型別檢視之外，檢視還可以存取*弱型別* (也稱為*鬆散型別*) 資料集合。 與強式型別不同，「弱式型別」  (或「鬆散型別」  ) 表示您未明確宣告所使用資料的類型。 您可以使用弱型別資料的集合，對控制器與檢視傳遞將少量的資料進出。
 
 | 在 ... 之間傳遞資料                        | 範例                                                                        |
 | ------------------------------------------------- | ------------------------------------------------------------------------------ |
@@ -292,7 +292,7 @@ public class HomeController : Controller
 
 **ViewBag**
 
-Razor 頁面中沒有 `ViewBag`。
+Razor 頁面中沒有 `ViewBag`。 
 
 `ViewBag` 是可動態存取 `ViewData` 中所儲存物件的 [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata) 物件。 `ViewBag` 的使用更為方便，因為它不需要進行轉換。 下列範例示範如何使用 `ViewBag`，而其結果與上方使用 `ViewData` 相同：
 
@@ -325,7 +325,7 @@ public IActionResult SomeAction()
 
 **同時使用 ViewData 和 ViewBag**
 
-Razor 頁面中沒有 `ViewBag`。
+Razor 頁面中沒有 `ViewBag`。 
 
 因為 `ViewData` 和 `ViewBag` 參照相同的基礎 `ViewData` 集合，所以您可以同時使用 `ViewData` 和 `ViewBag`，並在讀取和寫入值時於其間混合使用和比對。
 

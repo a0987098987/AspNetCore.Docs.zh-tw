@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
 uid: grpc/index
-ms.openlocfilehash: 88ceeba329ff2c7d764b7a5eabd5413da6ace765
-ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.openlocfilehash: 2f32bf6e8df2c5b3574c337682cdc2845991630c
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219130"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71925167"
 ---
 # <a name="introduction-to-grpc-on-net-core"></a>.NET Core 上的 gRPC 簡介
 
@@ -20,7 +20,7 @@ ms.locfileid: "71219130"
 [gRPC](https://grpc.io/docs/guides/) 是不限於語言的高效能遠端程序呼叫 (RPC) 架構。
 
 gRPC 的主要優點包括：
-* 新式高效能輕量型 RPC 架構。
+* 現代化、高效能、輕量的 RPC 架構。
 * 根據預設使用 Protocol Buffers 的合約優先式 API 開發，使您得以進行不限於語言的實作。
 * 適用於多種語言的工具，可產生強型別伺服器及用戶端。
 * 支援用戶端、伺服器及雙向資料流呼叫。
@@ -120,6 +120,8 @@ Console.WriteLine(response.Message);
 GRPC 用戶端是使用通道所建立，這代表 gRPC 服務的長時間連接。 您可以使用`GrpcChannel.ForAddress`來建立通道。
 
 如需建立用戶端和呼叫不同服務方法的詳細資訊， <xref:grpc/client>請參閱。
+
+[!INCLUDE[](~/includes/gRPCazure.md)]
 
 ## <a name="additional-resources"></a>其他資源
 

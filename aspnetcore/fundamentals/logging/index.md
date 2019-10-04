@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 2d517a89c6002b5c85e98128605f95585354f8db
-ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
+ms.openlocfilehash: bb38ebca3c7b9bb4c28a52c0dad80be9669e1b40
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248259"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71924881"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
@@ -174,7 +174,7 @@ ms.locfileid: "71248259"
 
 記錄速度應該很快，不值得花費非同步程式碼的效能成本來處理。 若您的記錄資料存放區很慢，請不要直接寫入其中。 請考慮一開始將記錄寫入到快速的存放區，稍後再將它們移到慢速存放區。 例如，如果您要登入 SQL Server，您不希望在 `Log` 方法中直接執行，因為 `Log` 方法是同步的。 相反地，以同步方式將記錄訊息新增到記憶體內佇列，並讓背景工作角色提取出佇列的訊息，藉此執行推送資料到 SQL Server 的非同步工作。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 記錄提供者設定是由一或多個記錄提供者提供：
 
@@ -392,7 +392,7 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
   發生需要立即注意的失敗。 範例：資料遺失情況、磁碟空間不足。
 
-使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如：
+使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如:
 
 * 在生產環境中，透過 `Information` 層級將 `Trace` 傳送到大量資料存放區。 透過 `Critical` 將 `Warning` 傳送到值資料存放區。
 * 在開發期間，透過 `Critical` 將 `Warning` 傳送到主控台，並在進行疑難排解時透過 `Information` 新增 `Trace`。
@@ -529,7 +529,7 @@ warn: TodoApi.Controllers.TodoController[4000]
 ```csharp
 string p1 = "parm1";
 string p2 = "parm2";
-_logger.LogInformation("Parameter values: {p1}, {p2}", p1, p2);
+_logger.LogInformation("Parameter values: {p2}, {p1}", p1, p2);
 ```
 
 此程式碼會使用依順序的參數值建立記錄訊息：
@@ -619,13 +619,13 @@ System.Exception: Item not found exception.
 
 組態資料和上述範例中所示的 `AddFilter` 程式碼會建立下表中所示的規則。 前六項來自組態範例，最後兩項來自程式碼範例。
 
-| number | 提供者      | 開頭如下的類別...          | 最低記錄層級 |
+| Number | 提供者      | 開頭如下的類別...          | 最低記錄層級 |
 | :----: | ------------- | --------------------------------------- | ----------------- |
-| 1      | 偵錯         | 所有類別                          | 資訊       |
+| 1      | 偵錯         | 所有類別                          | 內容       |
 | 2      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Internal | 警告           |
 | 3      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Razor    | 偵錯             |
-| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | 錯誤             |
-| 5      | 主控台       | 所有類別                          | 資訊       |
+| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
+| 5      | 主控台       | 所有類別                          | 內容       |
 | 6      | 所有提供者 | 所有類別                          | 偵錯             |
 | 7      | 所有提供者 | 系統                                  | 偵錯             |
 | 8      | 偵錯         | Microsoft                               | 追蹤             |
@@ -679,7 +679,7 @@ System.Exception: Item not found exception.
 
 ### <a name="filter-functions"></a>篩選函式
 
-針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如：
+針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如:
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -697,7 +697,7 @@ System.Exception: Item not found exception.
 
 以下是由 ASP.NET Core 與 Entity Framework Core 所使用的一些類別，以及有關它們可傳回哪些記錄的附註：
 
-| 分類                            | 注意 |
+| Category                            | 注意 |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | 一般 ASP.NET Core 診斷。 |
 | Microsoft.AspNetCore.DataProtection | 已考慮、發現及使用哪些金鑰。 |

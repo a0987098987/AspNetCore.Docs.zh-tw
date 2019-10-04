@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/03/2019
 uid: grpc/aspnetcore
-ms.openlocfilehash: 18a6dd2ddd4f3c3c4466e3b96dd1748fd0972e39
-ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
+ms.openlocfilehash: 2507ce6df05403cb19e8bfa2565d410d6140b144
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71250793"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71925082"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>搭配 ASP.NET Core 的 gRPC 服務
 
@@ -122,6 +122,8 @@ GRPC API 可讓您存取某些 HTTP/2 訊息資料, 例如方法、主機、標�
 `ServerCallContext`並未提供所有 ASP.NET api `HttpContext`的完整存取權。 擴充方法會提供完整的`HttpContext`存取權, 以代表 ASP.NET api 中的基礎 HTTP/2 訊息: `GetHttpContext`
 
 [!code-csharp[](~/grpc/aspnetcore/sample/GrcpService/GreeterService2.cs?highlight=6-7&name=snippet)]
+
+[!INCLUDE[](~/includes/gRPCazure.md)]
 
 ## <a name="additional-resources"></a>其他資源
 

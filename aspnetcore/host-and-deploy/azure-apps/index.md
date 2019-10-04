@@ -5,14 +5,14 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/28/2019
+ms.date: 10/02/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 7489868fac513948cbe6f48391e7260a34b2175e
-ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
+ms.openlocfilehash: bda4923adb0f9769f883ef64f7902c8650308222
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703757"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71924894"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -292,7 +292,7 @@ Use one of the following approaches if the app relies on a preview release of .N
 1. 從命令殼層中使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，針對主機執行階段以 [發行] 設定來發佈應用程式。 在下列範例中，將針對 `win-x86` RID發佈應用程式。 提供給 `--runtime` 選項的 RID 必須在專案檔的 `<RuntimeIdentifier>` (或 `<RuntimeIdentifiers>`) 屬性中提供。
 
    ```console
-   dotnet publish --configuration Release --runtime win-x86
+   dotnet publish --configuration Release --runtime win-x86 --self-contained
    ```
 
 1. 將 bin/Release/{目標 FRAMEWORK}/{執行階段識別碼}/publish 目錄的內容移至 App Service 中的網站。 若要在 Kudu 主控台將 *publish* 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。

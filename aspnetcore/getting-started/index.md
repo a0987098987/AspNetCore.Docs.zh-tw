@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/22/2019
 uid: getting-started
-ms.openlocfilehash: c9cd5e05f52c8bdefa931adc654087dac91e2f05
-ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
+ms.openlocfilehash: 798f1ee87c05d886d8991e3f0230c8ebc6341ba8
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71317756"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71925107"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
@@ -44,7 +44,7 @@ dotnet new webapp -o aspnetcoreapp
 上述命令：
 
 * 建立新的 web 應用程式。  
-* 參數會建立名為 aspnetcoreapp 的目錄，其中包含應用程式的來源檔案。 `-o`
+* 參數會建立名為 aspnetcoreapp 的目錄，其中包含應用程式的來源檔案。 `-o aspnetcoreapp`
 
 ### <a name="trust-the-development-certificate"></a>信任開發憑證
 
@@ -93,7 +93,7 @@ cd aspnetcoreapp
 dotnet watch run
 ```
 
-命令殼層指出應用程式已啟動之後，瀏覽到 [https://localhost:5001](https://localhost:5001)。 按一下 [接受] 以接受隱私權與 Cookie 原則。 此應用程式不會保留個人資訊。
+命令殼層指出應用程式已啟動之後，瀏覽到 [https://localhost:5001](https://localhost:5001)。
 
 ## <a name="edit-a-razor-page"></a>編輯 Razor 頁面
 

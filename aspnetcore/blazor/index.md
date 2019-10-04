@@ -1,20 +1,20 @@
 ---
-title: ASP.NET Core 中的 Blazor 簡介
+title: ASP.NET Core Blazor 簡介
 author: guardrex
 description: 探索 ASP.NET Core Blazor，這是在 ASP.NET Core 應用程式中使用 .NET 建置互動式用戶端 Web UI 的方式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 09/23/2019
+ms.date: 10/03/2019
 uid: blazor/index
-ms.openlocfilehash: b02d721907ce7bd66ccd588f5c18d05add606fad
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: d7dae028fd9a0505c9a2fa49a284f64fce59287f
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211685"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71924664"
 ---
-# <a name="introduction-to-blazor"></a>Blazor 簡介
+# <a name="introduction-to-aspnet-core-blazor"></a>ASP.NET Core Blazor 簡介
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 

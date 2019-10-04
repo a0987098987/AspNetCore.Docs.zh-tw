@@ -7,12 +7,12 @@ ms.author: jamesnk
 ms.custom: mvc
 ms.date: 09/21/2019
 uid: grpc/troubleshoot
-ms.openlocfilehash: 15377ba4b31ce9319df300b23e5a95c67bca7db4
-ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
+ms.openlocfilehash: c31f499b008cdec9d759e804b18965156ca99f30
+ms.sourcegitcommit: d8b12cc1716ee329d7bd2300e201b61e15d506ac
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/21/2019
-ms.locfileid: "71176503"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71942896"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>針對 .NET Core 上的 gRPC 進行疑難排解
 
@@ -151,3 +151,21 @@ gRPC 程式碼產生具體的用戶端和服務基類需要從專案參考 proto
   <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
 </ItemGroup>
 ```
+
+## <a name="wpf-projects-unable-to-generated-grpc-c-assets-from-proto-files"></a>WPF 專案無法從C# *\** 檔產生 gRPC 資產
+
+WPF 專案有一個[已知的問題](https://github.com/dotnet/wpf/issues/810)，導致 gRPC 程式碼產生無法正常運作。 在 WPF 專案中，藉由參考 `Grpc.Tools` 和*proto*檔案所產生的任何 gRPC 類型，會在使用時建立編譯錯誤：
+
+> 錯誤 CS0246：找不到類型或命名空間名稱 ' MyGrpcServices ' （您是否遺漏 using 指示詞或元件參考？）
+
+您可以藉由下列方式解決此問題：
+
+1. 建立新的 .NET Core 類別庫專案。
+2. 在新的專案中，新增參考以[ C#從 *\** 檔中啟用程式碼產生：
+    * 將套件參考新增至[Grpc](https://www.nuget.org/packages/Grpc.Tools/)套件。
+    * 將 *\*proto*檔案加入至`<Protobuf>`專案群組。
+3. 在 WPF 應用程式中，加入新專案的參考。
+
+WPF 應用程式可以從新的類別庫專案使用 gRPC 產生的類型。
+
+[!INCLUDE[](~/includes/gRPCazure.md)]

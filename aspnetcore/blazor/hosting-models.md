@@ -5,14 +5,14 @@ description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/03/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 766b52df82f75ea1223e20d8471faa5732311f91
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: bc3ad9c7c4731b685fc161844d9f55e51722c0ea
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71207238"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71924667"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -133,11 +133,14 @@ Blazor 伺服器應用程式應該經過優化，藉由減少網路延遲和記�
 
 Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果連接中斷，應用程式會嘗試重新連線到伺服器。 只要用戶端的狀態仍在記憶體中，用戶端會話就會繼續，而不會失去狀態。
 
-當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。 若要自訂 UI，請在 *_Host*的 [ `id` Razor 頁面] 中，以`components-reconnect-modal`做為它的來定義元素。 用戶端會根據連接的狀態，使用下列其中一個 CSS 類別來更新這個元素：
+當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。 若要自訂 UI，請在 *_Host*的 [Razor] 頁面中，定義具有 `components-reconnect-modal` 的元素做為其 `id`。 用戶端會根據連接的狀態，使用下列其中一個 CSS 類別來更新這個元素：
 
-* `components-reconnect-show`&ndash;顯示 UI 以指出連線已中斷，而且用戶端正在嘗試重新連接。
+* `components-reconnect-show` &ndash; 顯示 UI，表示連線中斷，而且用戶端正在嘗試重新連線。
 * `components-reconnect-hide`&ndash;用戶端具有使用中的連線，並隱藏 UI。
-* `components-reconnect-failed`&ndash;重新連接失敗。 若要再次嘗試重新連接`window.Blazor.reconnect()`，請呼叫。
+* `components-reconnect-failed` &ndash; 重新連線失敗，可能是因為網路失敗。 若要嘗試重新連接，請呼叫 `window.Blazor.reconnect()`。
+* `components-reconnect-rejected` &ndash; 個重新連線遭到拒絕。 已達到伺服器但拒絕連線，而且伺服器上的使用者狀態已消失。 若要重載應用程式，請呼叫 `location.reload()`。 當下列情況發生時，可能會產生此連接狀態：
+  * 線路中發生損毀（伺服器端程式碼）。
+  * 用戶端中斷連線的時間夠長，伺服器才會捨棄使用者的狀態。 系統會處置使用者與之互動的元件實例。
 
 ### <a name="stateful-reconnection-after-prerendering"></a>預呈現後的具狀態重新連接
 

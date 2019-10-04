@@ -6,18 +6,18 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: tutorials/signalr
-ms.openlocfilehash: 7a6574bd3c463f0890f5dc076944f1ab0f0c919a
-ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
+ms.openlocfilehash: bec01adc2682f83b0225df66e221bd2e4ea9feb4
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248393"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71925327"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
 ::: moniker range=">= aspnetcore-3.0"
 
-本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您將學習如何：
+本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web 專案。
@@ -95,16 +95,15 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
 * 在 [新增用戶端程式庫] 對話方塊中，針對 [提供者] 選取 [unpkg]。
 
-* 針對 [程式庫] 輸入 `@aspnet/signalr@next`。
-<!-- when 3.0 is released, change @next to @latest -->
+* 針對 [程式庫] 輸入 `@microsoft/signalr@latest`。
 
 * 選取 [選擇特定檔案]、展開 [散發者/瀏覽器] 資料夾，然後選取 *signalr.js* 與 *signalr.min.js*。
 
-* 將 [目標位置] 設定為 *wwwroot/lib/signalr/* ，然後選取 [安裝]。
+* 將 [**目標位置**] 設定為*wwwroot/js/signalr/* ，然後選取 [**安裝**]。
 
-  ![[新增用戶端程式庫] 對話方塊 - 選取程式庫](signalr/_static/3.x/libman1.png)
+  ![[新增用戶端程式庫] 對話方塊 - 選取程式庫](signalr/_static/3.x/find-signalr-client-libs-select-files.png)
 
-  LibMan 會建立 *wwwroot/lib/signalr* 資料夾，並將選取的檔案複製到其中。
+  LibMan 會建立*wwwroot/js/signalr*資料夾，並將選取的檔案複製到其中。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
@@ -117,20 +116,20 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 * 執行下列命令以透過使用 LibMan 來取得 SignalR 用戶端程式庫。 您可能必須等幾秒鐘，才會看到輸出。
 
   ```console
-  libman install @aspnet/signalr@next -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  libman install @microsoft/signalr@latest -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
   ```
 
   參數指定下列選項：
   * 使用 unpkg 提供者。
-  * 將檔案複製到 *wwwroot/lib/signalr* 目的地。
+  * 將檔案複製到*wwwroot/js/signalr*目的地。
   * 只複製指定的檔案。
 
   輸出看起來會像下列範例這樣：
 
   ```console
-  wwwroot/lib/signalr/dist/browser/signalr.js written to disk
-  wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
-  Installed library "@aspnet/signalr@next" to "wwwroot/lib/signalr"
+  wwwroot/js/signalr/dist/browser/signalr.js written to disk
+  wwwroot/js/signalr/dist/browser/signalr.min.js written to disk
+  Installed library "@microsoft/signalr@latest" to "wwwroot/js/signalr"
   ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
@@ -146,20 +145,20 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 * 執行下列命令以透過使用 LibMan 來取得 SignalR 用戶端程式庫。
 
   ```console
-  libman install @aspnet/signalr@next -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
   ```
 
   參數指定下列選項：
   * 使用 unpkg 提供者。
-  * 將檔案複製到 *wwwroot/lib/signalr* 目的地。
+  * 將檔案複製到*wwwroot/js/signalr*目的地。
   * 只複製指定的檔案。
 
   輸出看起來會像下列範例這樣：
 
   ```console
-  wwwroot/lib/signalr/dist/browser/signalr.js written to disk
-  wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
-  Installed library "@aspnet/signalr@next" to "wwwroot/lib/signalr"
+  wwwroot/js/signalr/dist/browser/signalr.js written to disk
+  wwwroot/js/signalr/dist/browser/signalr.min.js written to disk
+  Installed library "@microsoft/signalr@latest" to "wwwroot/js/signalr"
   ```
 
 ---
@@ -241,7 +240,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 > [!TIP]
 > * 如果應用程式無法運作，請開啟您的瀏覽器開發人員工具 (F12)，然後移至主控台。 您可能會看到與 HTML 和 JavaScript 程式碼相關的錯誤。 例如，假設您將 *signalr.js* 放置在與指示不同的資料夾中。 在此情況下，該檔案的參考無法運作，您會在主控台中看到 404 錯誤。
 >   ![signalr.js 找不到錯誤](signalr/_static/3.x/f12-console.png)
-> * 如果您在 Chrome 中收到 ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY 錯誤，或在 Firefox 中收到 NS_ERROR_NET_INADEQUATE_SECURITY 錯誤，請執行下列命令來更新您的開發憑證：
+> * 如果您在 Chrome 中收到錯誤 ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY，請執行下列命令來更新您的開發憑證：
 >
 >   ```dotnetcli
 >   dotnet dev-certs https --clean
@@ -259,7 +258,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 ::: moniker range="< aspnetcore-3.0"
 
-本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您將學習如何：
+本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web 專案。

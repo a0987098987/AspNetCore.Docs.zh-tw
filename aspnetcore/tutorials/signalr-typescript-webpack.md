@@ -4,14 +4,14 @@ author: ssougnez
 description: 在本教學課程中，您可以設定 Webpack 來組合並建置其用戶端以 TypeScript 撰寫的 ASP.NET Core SignalR Web 應用程式。
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 04/23/2019
+ms.date: 10/04/2019
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 99628b4f52980e6d32c70d11bb0d8a770dac7f86
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 630e8cb5efe9c313479960626d3d864c4923cbd1
+ms.sourcegitcommit: 3ffcd8cbff8b49128733842f72270bc58279de70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081577"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955924"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
 
@@ -55,14 +55,14 @@ ms.locfileid: "71081577"
 
 設定 Visual Studio 以在 *PATH* 環境變數中尋找 npm。 根據預設，Visual Studio 會使用在其安裝目錄中找到的 npm 版本。 請遵循 Visual Studio 中的下列指示：
 
-1. 流覽至 [**工具** > ] [**選項** > ] [**專案和方案** > ] [ **web 套件管理** > **外部 web 工具**]。
+1. 流覽至 [**工具**] > 個**選項**> 個**專案和方案**> **Web 套件管理**> 個**外部 Web 工具**。
 1. 從清單中選取 *$(PATH)* 項目。 按一下向上箭號，將此項目移至清單中的第二個位置。
 
     ![Visual Studio 組態](signalr-typescript-webpack/_static/signalr-configure-path-visual-studio.png)
 
 Visual Studio 組態已完成。 現在即可開始建立專案。
 
-1. 使用 [**檔案** > ] [**新增** > **專案**] 功能表選項，然後選擇 [ **ASP.NET Core Web 應用程式**] 範本。
+1. 使用 [ **@no__t-** 1**新增**>**專案**] 功能表選項，然後選擇 [ **ASP.NET Core Web 應用程式**] 範本。
 1. 將專案命名為*命名為 signalrwebpack*，然後選取 [**建立**]。
 1. 從 [目標 framework] 下拉式選單中選取 [ *.Net Core* ]，然後從 [framework 選取器] 下拉式選單中選取 [ *ASP.NET Core 3.0* ]。 選取 [**空白**] 範本，然後選取 [**建立**]。
 
@@ -119,9 +119,9 @@ dotnet new web -o SignalRWebPack
 
     指令碼的一些說明：
 
-    * `build`：在開發模式下組合您的用戶端資源，並監看檔案變更。 檔案監看員會導致套件組合在每次專案檔變更時重新產生。 `mode` 選項會停用生產環境最佳化，例如樹狀結構搖晃和縮製。 `build` 僅用於開發。
-    * `release`：在生產模式下組合您的用戶端資源。
-    * `publish`：執行 `release` 指令碼，以在生產模式下組合用戶端資源。 它會呼叫 .NET Core CLI 的 [publish](/dotnet/core/tools/dotnet-publish) 命令來發行應用程式。
+    * `build`:在開發模式下組合您的用戶端資源，並監看檔案變更。 檔案監看員會導致套件組合在每次專案檔變更時重新產生。 `mode` 選項會停用生產環境最佳化，例如樹狀結構搖晃和縮製。 `build` 僅用於開發。
+    * `release`:在生產模式下組合您的用戶端資源。
+    * `publish`:執行 `release` 指令碼，以在生產模式下組合用戶端資源。 它會呼叫 .NET Core CLI 的 [publish](/dotnet/core/tools/dotnet-publish) 命令來發行應用程式。
 
 1. 使用下列內容，在專案根目錄中建立名為 *webpack.config.js* 的檔案：
 
@@ -160,22 +160,22 @@ dotnet new web -o SignalRWebPack
 
     上述的 TypeScript 會擷取 DOM 項目的參考，並將附加兩個事件處理常式：
 
-    * `keyup`：當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 **Enter** 鍵時，即會呼叫 `send` 函式。
-    * `click`：當使用者按一下 [傳送] 按鈕時，就會引發此事件。 系統會呼叫 `send` 函式。
+    * `keyup`:當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 **Enter** 鍵時，即會呼叫 `send` 函式。
+    * `click`:當使用者按一下 [傳送] 按鈕時，就會引發此事件。 系統會呼叫 `send` 函式。
 
 ## <a name="configure-the-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
-1. 在方法中，將呼叫新增至[UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)和[UseStaticFiles。](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) `Startup.Configure`
+1. 在 `Startup.Configure` 方法中，將呼叫新增至[UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)和[UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。
 
    [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_UseStaticDefaultFiles&highlight=2-3)]
 
    上述程式碼可讓伺服器找出並提供 *index.html* 檔案，而不論使用者輸入的是其完整 URL 還是 Web 應用程式的根目錄 URL。
 
-1. 在`Startup.Configure`方法的結尾，將 */hub*路由對應至`ChatHub`中樞。 取代顯示 Hello World 的程式碼 *！* 具有下列這一行： 
+1. 在 `Startup.Configure` 方法的結尾，將 */hub*路由對應至 `ChatHub` 中樞。 取代顯示 Hello World 的程式碼 *！* 具有下列這一行： 
 
    [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_UseSignalR&highlight=3)]
 
-1. 在方法中，呼叫[AddSignalR。](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_) `Startup.ConfigureServices` 它會將 SignalR 服務新增至您的專案。
+1. 在 `Startup.ConfigureServices` 方法中，呼叫[AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_)。 它會將 SignalR 服務新增至您的專案。
 
    [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_AddSignalR)]
 
@@ -267,7 +267,7 @@ dotnet new web -o SignalRWebPack
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -290,14 +290,14 @@ dotnet new web -o SignalRWebPack
 
 設定 Visual Studio 以在 *PATH* 環境變數中尋找 npm。 根據預設，Visual Studio 會使用在其安裝目錄中找到的 npm 版本。 請遵循 Visual Studio 中的下列指示：
 
-1. 流覽至 [**工具** > ] [**選項** > ] [**專案和方案** > ] [ **web 套件管理** > **外部 web 工具**]。
+1. 流覽至 [**工具**] > 個**選項**> 個**專案和方案**> **Web 套件管理**> 個**外部 Web 工具**。
 1. 從清單中選取 *$(PATH)* 項目。 按一下向上箭號，將此項目移至清單中的第二個位置。
 
     ![Visual Studio 組態](signalr-typescript-webpack/_static/signalr-configure-path-visual-studio.png)
 
 Visual Studio 組態已完成。 現在即可開始建立專案。
 
-1. 使用 [**檔案** > ] [**新增** > **專案**] 功能表選項，然後選擇 [ **ASP.NET Core Web 應用程式**] 範本。
+1. 使用 [ **@no__t-** 1**新增**>**專案**] 功能表選項，然後選擇 [ **ASP.NET Core Web 應用程式**] 範本。
 1. 將專案命名為*命名為 signalrwebpack*，然後選取 [**建立**]。
 1. 從目標 Framework 下拉式清單中選取 [.NET Core]，然後從 Framework 選取器下拉式清單中選取 [ASP.NET Core 2.2]。 選取 [**空白**] 範本，然後選取 [**建立**]。
 
@@ -354,9 +354,9 @@ dotnet new web -o SignalRWebPack
 
     指令碼的一些說明：
 
-    * `build`：在開發模式下組合您的用戶端資源，並監看檔案變更。 檔案監看員會導致套件組合在每次專案檔變更時重新產生。 `mode` 選項會停用生產環境最佳化，例如樹狀結構搖晃和縮製。 `build` 僅用於開發。
-    * `release`：在生產模式下組合您的用戶端資源。
-    * `publish`：執行 `release` 指令碼，以在生產模式下組合用戶端資源。 它會呼叫 .NET Core CLI 的 [publish](/dotnet/core/tools/dotnet-publish) 命令來發行應用程式。
+    * `build`:在開發模式下組合您的用戶端資源，並監看檔案變更。 檔案監看員會導致套件組合在每次專案檔變更時重新產生。 `mode` 選項會停用生產環境最佳化，例如樹狀結構搖晃和縮製。 `build` 僅用於開發。
+    * `release`:在生產模式下組合您的用戶端資源。
+    * `publish`:執行 `release` 指令碼，以在生產模式下組合用戶端資源。 它會呼叫 .NET Core CLI 的 [publish](/dotnet/core/tools/dotnet-publish) 命令來發行應用程式。
 
 1. 使用下列內容，在專案根目錄中建立名為 *webpack.config.js* 的檔案：
 
@@ -395,8 +395,8 @@ dotnet new web -o SignalRWebPack
 
     上述的 TypeScript 會擷取 DOM 項目的參考，並將附加兩個事件處理常式：
 
-    * `keyup`：當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 **Enter** 鍵時，即會呼叫 `send` 函式。
-    * `click`：當使用者按一下 [傳送] 按鈕時，就會引發此事件。 系統會呼叫 `send` 函式。
+    * `keyup`:當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 **Enter** 鍵時，即會呼叫 `send` 函式。
+    * `click`:當使用者按一下 [傳送] 按鈕時，就會引發此事件。 系統會呼叫 `send` 函式。
 
 ## <a name="configure-the-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
@@ -413,8 +413,6 @@ dotnet new web -o SignalRWebPack
 1. 將 */hub* 路由對應至 `ChatHub` 中樞。 在 `Startup.Configure` 方法的結尾，新增下列程式碼行：
 
     [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_UseSignalR)]
-
-::: moniker-end
 
 1. 在專案根目錄中建立名為 *Hubs* 的新目錄。 其目的是要儲存下一個步驟所建立的 SignalR 中樞。
 

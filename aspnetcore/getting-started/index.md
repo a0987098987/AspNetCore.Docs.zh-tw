@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/22/2019
 uid: getting-started
-ms.openlocfilehash: 798f1ee87c05d886d8991e3f0230c8ebc6341ba8
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: 116a22bce80257948bfcc02c03a74a4b5568b8b5
+ms.sourcegitcommit: 4649814d1ae32248419da4e8f8242850fd8679a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71925107"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71975696"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
@@ -44,7 +44,7 @@ dotnet new webapp -o aspnetcoreapp
 上述命令：
 
 * 建立新的 web 應用程式。  
-* 參數會建立名為 aspnetcoreapp 的目錄，其中包含應用程式的來源檔案。 `-o aspnetcoreapp`
+* @No__t-0 參數會建立名為*aspnetcoreapp*的目錄，其中包含應用程式的來源檔案。
 
 ### <a name="trust-the-development-certificate"></a>信任開發憑證
 
@@ -76,8 +76,6 @@ dotnet dev-certs https --trust
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-若是適用於 Linux 的 Windows 子系統，請參閱[信任來自適用於 Linux 的 Windows 子系統的 HTTPS 憑證](xref:security/enforcing-ssl#wsl)。
-
 請參閱您 Linux 發行版本的文件，來了解如何信任 HTTPS 開發憑證。
 
 ---
@@ -101,7 +99,7 @@ dotnet watch run
 
 [!code-cshtml[](sample/index.cshtml?highlight=9)]
 
-流覽至[https://localhost:5001](https://localhost:5001)、重新整理頁面，並確認已顯示變更。
+流覽至[https://localhost:5001](https://localhost:5001)，重新整理頁面，並確認已顯示變更。
 
 ## <a name="next-steps"></a>後續步驟
 

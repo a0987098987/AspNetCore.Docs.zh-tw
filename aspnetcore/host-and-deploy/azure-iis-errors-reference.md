@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/11/2019
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: f6afd6491181830f4d79486fa26a64423cd4a0ac
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 047ef23bd2f4d349d2d342d17764c7edd3e0de4a
+ms.sourcegitcommit: 4649814d1ae32248419da4e8f8242850fd8679a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963680"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71975680"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Azure App Service 與 IIS 搭配 ASP.NET Core 時的常見錯誤參考
 
@@ -20,7 +20,7 @@ ms.locfileid: "70963680"
 
 本主題描述常見的錯誤，並提供在 Azure App Service 和 IIS 上裝載 ASP.NET Core 應用程式時，針對特定錯誤的疑難排解建議。
 
-如需一般疑難排解指導方針<xref:test/troubleshoot-azure-iis>，請參閱。
+如需一般疑難排解指導方針，請參閱 <xref:test/troubleshoot-azure-iis>。
 
 收集下列資訊：
 
@@ -39,18 +39,6 @@ ms.locfileid: "70963680"
 本主題中的錯誤清單並不完整。 如果您遇到這裡未列出的錯誤，請使用本主題底部的 [內容意見反應] 按鈕來開啟新的問題，並提供如何重現錯誤的詳細指示。
 
 [!INCLUDE[Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
-
-## <a name="installer-unable-to-obtain-vc-redistributable"></a>安裝程式無法取得 VC++ 可轉散發套件
-
-* **安裝程式例外狀況：** 0x80072efd **--或--** 0x80072f76 - 未指定的錯誤
-
-* **安裝程式記錄例外狀況&#8224;：** 錯誤 0x80072efd **--或--** 0x80072f76：無法執行 EXE 套件
-
-  &#8224;記錄位於 *C:\Users\{USER}\AppData\Local\Temp\dd_DotNetCoreWinSvrHosting__{TIMESTAMP}.log*。
-
-疑難排解：
-
-[安裝 .NET Core 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)時，如果系統無法存取網際網路，以致安裝程式無法取得 *Microsoft Visual C++ 2015 可轉散發套件*，就會發生這個例外狀況。 請從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=53840)取得安裝程式。 如果安裝程式失敗，伺服器可能就無法收到裝載[架構相依部署 (FDD)](/dotnet/core/deploying/#framework-dependent-deployments-fdd) 所需的 .NET Core 執行階段。 如果要裝載 FDD，請確認已在 [程式和功能] 或 [應用程式與功能] 中安裝執行階段。 如果需要特定執行階段，請從 [.NET Download Archives](https://dotnet.microsoft.com/download/archives) (.NET 下載封存) 下載執行階段，並將它安裝在系統上。 安裝執行階段之後，從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動系統或重新啟動 IIS。
 
 ## <a name="os-upgrade-removed-the-32-bit-aspnet-core-module"></a>作業系統升級已移除 32 位元的 ASP.NET Core 模組
 
@@ -91,7 +79,7 @@ ms.locfileid: "70963680"
 
 * 確認**應用程式設定**中應用程式的**平台**與應用程式位元相符。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>。
+如需詳細資訊，請參閱<xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>。
 
 ## <a name="an-x86-app-is-deployed-but-the-app-pool-isnt-enabled-for-32-bit-apps"></a>已部署 x86 應用程式，但未啟用 32 位元應用程式的應用程式集區
 
@@ -123,7 +111,7 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 疑難排解：
 
-* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
+* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱<xref:test/troubleshoot-azure-iis>。
 
 * 如果在升級應用程式和部署更新的組件時，Azure 應用程式部署發生這個例外狀況，請手動刪除來自先前部署的所有檔案。 部署升級的應用程式時，延遲不相容的組件會導致 `System.BadImageFormatException` 例外狀況。
 
@@ -233,7 +221,7 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 疑難排解：
 
-* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
+* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱<xref:test/troubleshoot-azure-iis>。
 
 * 檢查 *web.config* 中 `<aspNetCore>` 元素上的 *processPath* 屬性，以確認它是 `dotnet` (適用於架構相依部署 (FDD)) 或 `.\{ASSEMBLY}.exe` (適用於[自封式部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd))。
 
@@ -250,8 +238,6 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
   如需詳細資訊，請參閱[安裝 .NET Core 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)。
 
   如果需要特定執行階段，請從 [.NET Download Archives](https://dotnet.microsoft.com/download/archives) (.NET 下載封存) 下載執行階段，並將它安裝在系統上。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，透過重新啟動系統或重新啟動 IIS 來完成安裝。
-
-* 可能已部署 FDD，但系統上未安裝 *Microsoft Visual C++ 2015 可轉散發套件 (x64)* 。 請從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=53840)取得安裝程式。
 
 ## <a name="incorrect-arguments-of-aspnetcore-element"></a>不正確的 \<aspNetCore> 元素引數
 
@@ -279,7 +265,7 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 疑難排解：
 
-* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
+* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱<xref:test/troubleshoot-azure-iis>。
 
 * 檢查 *web.config* 中 `<aspNetCore>` 元素上的 *arguments* 屬性，以確認它是 (a) `.\{ASSEMBLY}.dll` (適用於架構相依部署 (FDD))；或 (b) 不存在、空字串 (`arguments=""`)，或是應用程式的引數清單 (`arguments="{ARGUMENT_1}, {ARGUMENT_2}, ... {ARGUMENT_X}"`，適用於自封式部署 (SCD))。
 
@@ -341,7 +327,7 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 請確認子應用程式的 *web.config* 檔案不包含 `<handlers>` 區段，或子應用程式未繼承父應用程式的處理常式。
 
-父應用程式 *web.config* 的 `<system.webServer>` 區段位於 `<location>` 元素內。 將 <xref:System.Configuration.SectionInformation.InheritInChildApplications*> 屬性設定為 `false`，以表示在 [\<location>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location) 元素內指定的設定，不是由位在父應用程式子目錄中的應用程式所繼承。 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module>。
+父應用程式 *web.config* 的 `<system.webServer>` 區段位於 `<location>` 元素內。 將 <xref:System.Configuration.SectionInformation.InheritInChildApplications*> 屬性設定為 `false`，以表示在 [\<location>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location) 元素內指定的設定，不是由位在父應用程式子目錄中的應用程式所繼承。 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
 
 ::: moniker-end
 

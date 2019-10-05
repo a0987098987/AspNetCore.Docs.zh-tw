@@ -122,13 +122,8 @@
               uid: data/ef-rp/update-related-data
             - name: 處理並行衝突
               uid: data/ef-rp/concurrency
-        - name: 使用 MVC 的 EF Core，現有資料庫
+        - name: 使用 MVC 的 EF Core
           displayName: tutorial
-          href: /ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-        - name: 使用 MVC 的 EF Core，新的資料庫
-          displayName: tutorial
-          href: /ef/core/get-started/aspnetcore/new-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-        - name: 使用 MVC 的 EF Core，10 堂教學課程
           items:
             - name: 總覽
               uid: data/ef-mvc/index
@@ -231,8 +226,6 @@
           uid: razor-pages/filter
         - name: 路由及應用程式慣例
           uid: razor-pages/razor-pages-conventions
-        - name: 上傳檔案
-          uid: razor-pages/upload-files
         - name: Razor SDK
           uid: razor-pages/sdk
     - name: MVC
@@ -271,8 +264,6 @@
           uid: mvc/controllers/actions
         - name: 路由
           uid: mvc/controllers/routing
-        - name: 檔案上傳
-          uid: mvc/models/file-uploads
         - name: 相依性插入 - 控制器
           uid: mvc/controllers/dependency-injection
         - name: 相依性插入 - 檢視
@@ -418,6 +409,8 @@
           uid: mvc/controllers/filters
         - name: 區域
           uid: mvc/controllers/areas
+        - name: 上傳檔案
+          uid: mvc/models/file-uploads
         - name: 應用程式組件
           uid: mvc/extensibility/app-parts
         - name: aspnet-codegenerator
@@ -632,11 +625,7 @@
               uid: data/ef-rp/update-related-data
             - name: 處理並行衝突
               uid: data/ef-rp/concurrency
-        - name: 使用 MVC 的 EF Core，新的資料庫
-          href: /ef/core/get-started/aspnetcore/new-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-        - name: 使用 MVC 的 EF Core，現有資料庫
-          href: /ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-        - name: 使用 MVC 的 EF Core，10 堂教學課程
+        - name: 使用 MVC 的 EF Core
           items:
             - name: 總覽
               uid: data/ef-mvc/index

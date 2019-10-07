@@ -350,7 +350,7 @@ Razor 頁面中沒有 `ViewBag`。
     ...
 ```
 
-請記住，字串不要求針對 `ViewData` 進行轉換。您可以使用 `@ViewData["Title"]`，而不需要轉換。
+請記住，字串不要求針對 `ViewData` 進行轉換。 您可以使用 `@ViewData["Title"]`，而不需要轉換。
 
 可以同時使用 `ViewData` 和 `ViewBag`，與混合使用和比對讀取與寫入屬性一樣。 會轉譯下列標記：
 

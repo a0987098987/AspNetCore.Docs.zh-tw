@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 如何透過使用檔案提供者，將檔案�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/26/2019
+ms.date: 10/07/2019
 uid: fundamentals/file-providers
-ms.openlocfilehash: 44c439dce893d486668bf8ac3f20cdf7952c5186
-ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
-ms.translationtype: HT
+ms.openlocfilehash: 3a92b44efc70d156596ee9fe80b4f6a65266e73d
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70059094"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007176"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
@@ -22,7 +22,7 @@ ms.locfileid: "70059094"
 
 ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「檔案提供者」在整個 ASP.NET Core 架構中使用：
 
-* `IWebHostEnvironment` 將應用程式的內容根目錄與 Web 根目錄公開為 `IFileProvider` 類型。
+* `IWebHostEnvironment` 會將應用程式的[內容根目錄](xref:fundamentals/index#content-root)和[web 根目錄](xref:fundamentals/index#web-root)公開為 `IFileProvider` 類型。
 * [靜態檔案中介軟體](xref:fundamentals/static-files)使用檔案提供者尋找靜態檔案。
 * [Razor](xref:mvc/views/razor) 使用「檔案提供者」來尋找頁面與檢視。
 * .NET Core 工具使用「檔案提供者」與 Glob 模式來指定應該要發佈哪些檔案。
@@ -53,7 +53,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「
 
 我們提供三個 `IFileProvider` 的實作。
 
-| 實作 | 說明 |
+| 實作 | 描述 |
 | -------------- | ----------- |
 | [PhysicalFileProvider](#physicalfileprovider) | 實體提供者用來存取系統的實體檔案。 |
 | [ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) | 資訊清單內嵌提供者用來存取內嵌於組件的檔案。 |
@@ -114,7 +114,7 @@ var manifestEmbeddedProvider =
 * 將檔案限定為上次修改日期。
 * 為包內嵌檔案資訊清單的內嵌資源命名。
 
-| 多載 | 說明 |
+| 多載 | 描述 |
 | -------- | ----------- |
 | `ManifestEmbeddedFileProvider(Assembly, String)` | 接受選擇性的 `root` 相對路徑參數。 指定 `root` 以將對 <xref:Microsoft.Extensions.FileProviders.IFileProvider.GetDirectoryContents*> 的呼叫限定為所提供路徑下的那些資源。 |
 | `ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)` | 接受選擇性的 `root` 相對路徑參數與 `lastModified` 日期 (<xref:System.DateTimeOffset>) 參數。 `lastModified` 日期會限定為 <xref:Microsoft.Extensions.FileProviders.IFileInfo> 執行個體 (由 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 所傳回) 的上次修改日期。 |
@@ -160,10 +160,10 @@ var manifestEmbeddedProvider =
 符合特定目錄中具有 *.txt* 副檔名的所有檔案。
 
 **`directory/*/appsettings.json`**  
-符合「目錄」  資料夾下一層級之目錄中的所有 `appsettings.json` 檔案。
+符合「目錄」資料夾下一層級之目錄中的所有 `appsettings.json` 檔案。
 
 **`directory/**/*.txt`**  
-符合在「目錄」  資料夾下之任何地方所找到的具有 *.txt* 副檔名的所有檔案。
+符合在「目錄」資料夾下之任何地方所找到的具有 *.txt* 副檔名的所有檔案。
 
 ::: moniker-end
 
@@ -171,7 +171,7 @@ var manifestEmbeddedProvider =
 
 ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「檔案提供者」在整個 ASP.NET Core 架構中使用：
 
-* <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> 將應用程式的內容根目錄與 Web 根目錄公開為 `IFileProvider` 類型。
+* <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> 會將應用程式的[內容根目錄](xref:fundamentals/index#content-root)和[web 根目錄](xref:fundamentals/index#web-root)公開為 `IFileProvider` 類型。
 * [靜態檔案中介軟體](xref:fundamentals/static-files)使用檔案提供者尋找靜態檔案。
 * [Razor](xref:mvc/views/razor) 使用「檔案提供者」來尋找頁面與檢視。
 * .NET Core 工具使用「檔案提供者」與 Glob 模式來指定應該要發佈哪些檔案。
@@ -202,7 +202,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「
 
 我們提供三個 `IFileProvider` 的實作。
 
-| 實作 | 說明 |
+| 實作 | 描述 |
 | -------------- | ----------- |
 | [PhysicalFileProvider](#physicalfileprovider) | 實體提供者用來存取系統的實體檔案。 |
 | [ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) | 資訊清單內嵌提供者用來存取內嵌於組件的檔案。 |
@@ -261,7 +261,7 @@ var manifestEmbeddedProvider =
 * 將檔案限定為上次修改日期。
 * 為包內嵌檔案資訊清單的內嵌資源命名。
 
-| 多載 | 說明 |
+| 多載 | 描述 |
 | -------- | ----------- |
 | `ManifestEmbeddedFileProvider(Assembly, String)` | 接受選擇性的 `root` 相對路徑參數。 指定 `root` 以將對 <xref:Microsoft.Extensions.FileProviders.IFileProvider.GetDirectoryContents*> 的呼叫限定為所提供路徑下的那些資源。 |
 | `ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)` | 接受選擇性的 `root` 相對路徑參數與 `lastModified` 日期 (<xref:System.DateTimeOffset>) 參數。 `lastModified` 日期會限定為 <xref:Microsoft.Extensions.FileProviders.IFileInfo> 執行個體 (由 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 所傳回) 的上次修改日期。 |
@@ -307,9 +307,9 @@ var manifestEmbeddedProvider =
 符合特定目錄中具有 *.txt* 副檔名的所有檔案。
 
 **`directory/*/appsettings.json`**  
-符合「目錄」  資料夾下一層級之目錄中的所有 `appsettings.json` 檔案。
+符合「目錄」資料夾下一層級之目錄中的所有 `appsettings.json` 檔案。
 
 **`directory/**/*.txt`**  
-符合在「目錄」  資料夾下之任何地方所找到的具有 *.txt* 副檔名的所有檔案。
+符合在「目錄」資料夾下之任何地方所找到的具有 *.txt* 副檔名的所有檔案。
 
 ::: moniker-end

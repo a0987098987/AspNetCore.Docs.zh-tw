@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/23/2019
 uid: blazor/class-libraries
-ms.openlocfilehash: d9ef276357e95d97b7d89427c5e237aceea7a0d3
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: 2e042b43c6db24e0ecac727be100575fe1275e17
+ms.sourcegitcommit: 6d26ab647ede4f8e57465e29b03be5cb130fc872
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71207108"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71999782"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
 
@@ -28,16 +28,16 @@ ms.locfileid: "71207108"
 
 ## <a name="create-an-rcl"></a>建立 RCL
 
-遵循<xref:blazor/get-started>文章中的指導方針，設定您的環境以進行 Blazor。
+遵循 @no__t 0 文章中的指導方針，設定您的環境以進行 Blazor。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 建立新的專案。
 1. 選取 [ **Razor 類別庫**]。 選取 [下一步]。
 1. 在 [**建立新的 Razor 類別庫**] 對話方塊中，選取 [**建立**]。
-1. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 本主題中的範例會使用專案名稱`MyComponentLib1`。 選取 [建立]。
+1. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 本主題中的範例會使用專案名稱 `MyComponentLib1`。 選取 [建立]。
 1. 將 RCL 新增至方案：
-   1. 以滑鼠右鍵按一下方案。 選取 [**加入** > **現有專案**]。
+   1. 以滑鼠右鍵按一下方案。 選取 [**新增** >  個**現有專案**]。
    1. 流覽至 RCL 的專案檔。
    1. 選取 RCL 的專案檔（ *.csproj*）。
 1. 從應用程式新增參考 RCL：
@@ -46,7 +46,7 @@ ms.locfileid: "71207108"
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-1. 使用**Razor 類別庫**範本（`razorclasslib`）搭配命令 shell 中的[dotnet new](/dotnet/core/tools/dotnet-new)命令。 在下列範例中，會建立名為`MyComponentLib1`的 RCL。 執行命令時， `MyComponentLib1`會自動建立保存的資料夾：
+1. 使用**Razor 類別庫**範本（`razorclasslib`）搭配命令 shell 中的[dotnet new](/dotnet/core/tools/dotnet-new)命令。 在下列範例中，會建立名為 `MyComponentLib1` 的 RCL。 執行命令時，會自動建立保留 `MyComponentLib1` 的資料夾：
 
    ```dotnetcli
    dotnet new razorclasslib -o MyComponentLib1
@@ -65,11 +65,11 @@ ms.locfileid: "71207108"
 若要使用另一個專案中的程式庫中所定義的元件，請使用下列其中一種方法：
 
 * 使用命名空間的完整類型名稱。
-* 使用 Razor 的[ \@using](xref:mvc/views/razor#using)指示詞。 個別元件可以依名稱新增。
+* 使用 Razor 的[@no__t 1using](xref:mvc/views/razor#using)指示詞。 個別元件可以依名稱新增。
 
-在下列範例中， `MyComponentLib1`是`SalesReport`包含元件的元件庫。
+在下列範例中，`MyComponentLib1` 是包含 @no__t 1 元件的元件庫。
 
-`SalesReport`元件可以使用其完整型別名稱和命名空間來加以參考：
+您可以使用命名空間的完整型別名稱來參考 `SalesReport` 元件：
 
 ```cshtml
 <h1>Hello, world!</h1>
@@ -79,7 +79,7 @@ Welcome to your new app.
 <MyComponentLib1.SalesReport />
 ```
 
-如果使用`@using`指示詞將程式庫帶入範圍，也可以參考此元件：
+如果程式庫使用 `@using` 指示詞進入範圍，也可以參考此元件：
 
 ```cshtml
 @using MyComponentLib1
@@ -91,7 +91,7 @@ Welcome to your new app.
 <SalesReport />
 ```
 
-將指示詞包含在最上層的 *_Import razor*檔案中，以將程式庫的元件提供給整個專案。 `@using MyComponentLib1` 將指示詞新增至任何層級的 *_Import razor*檔案，以將命名空間套用至資料夾內的單一頁面或一組頁面。
+將 `@using MyComponentLib1` 指示詞包含在最上層的 *_Import razor*檔案中，以將程式庫的元件提供給整個專案。 將指示詞新增至任何層級的 *_Import razor*檔案，以將命名空間套用至資料夾內的單一頁面或一組頁面。
 
 ## <a name="build-pack-and-ship-to-nuget"></a>組建、封裝和寄送至 NuGet
 
@@ -101,11 +101,7 @@ Welcome to your new app.
 dotnet pack
 ```
 
-使用命令 shell 中的[dotnet NuGet publish](/dotnet/core/tools/dotnet-nuget-push)命令，將封裝上傳至 NuGet：
-
-```dotnetcli
-dotnet nuget publish
-```
+使用命令 shell 中的[dotnet NuGet push](/dotnet/core/tools/dotnet-nuget-push)命令，將套件上傳至 nuget。
 
 ## <a name="create-a-razor-components-class-library-with-static-assets"></a>建立具有靜態資產的 Razor 元件類別庫
 

@@ -5,14 +5,14 @@ description: 了解建置 ASP.NET Core 應用程式的基本概念。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/06/2019
+ms.date: 10/07/2019
 uid: fundamentals/index
-ms.openlocfilehash: cff2afd62ed60648dc689d408dde56ecda18c261
-ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
+ms.openlocfilehash: a70d6aa05a2c92d19076b8d6e4ea24d7554368b6
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815648"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007112"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -33,7 +33,7 @@ ms.locfileid: "70815648"
 
 [!code-csharp[](index/snapshots/2.x/Startup1.cs?highlight=3,12)]
 
-如需詳細資訊，請參閱 <xref:fundamentals/startup>。
+如需詳細資訊，請參閱<xref:fundamentals/startup>。
 
 ## <a name="dependency-injection-services"></a>相依性插入 (服務)
 
@@ -45,7 +45,7 @@ ASP.NET Core 具有內建的相依性插入 (DI) 架構，可讓應用程式的�
 
 雖然 DI 為內建，但其設計用於讓您插入協力廠商的控制反轉 (IoC) 容器 (若您想要的話)。
 
-如需詳細資訊，請參閱 <xref:fundamentals/dependency-injection>。
+如需詳細資訊，請參閱<xref:fundamentals/dependency-injection>。
 
 ## <a name="middleware"></a>中介軟體
 
@@ -59,7 +59,7 @@ ASP.NET Core 具有內建的相依性插入 (DI) 架構，可讓應用程式的�
 
 ASP.NET Core 包含一組豐富的內建中介軟體，您也可以撰寫自訂中介軟體。
 
-如需詳細資訊，請參閱 <xref:fundamentals/middleware/index>。
+如需詳細資訊，請參閱<xref:fundamentals/middleware/index>。
 
 ## <a name="host"></a>主機
 
@@ -87,7 +87,7 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 * 從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。
 * 將記錄輸出傳送到主控台及偵錯提供者。
 
-如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host>。
+如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
 
 ::: moniker-end
 
@@ -105,7 +105,7 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 * 從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。
 * 將記錄輸出傳送到主控台及偵錯提供者。
 
-如需詳細資訊，請參閱 <xref:fundamentals/host/web-host>。
+如需詳細資訊，請參閱<xref:fundamentals/host/web-host>。
 
 ::: moniker-end
 
@@ -160,7 +160,7 @@ ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 �
 
 ::: moniker-end
 
-如需詳細資訊，請參閱 <xref:fundamentals/servers/index>。
+如需詳細資訊，請參閱<xref:fundamentals/servers/index>。
 
 ## <a name="configuration"></a>組態
 
@@ -170,9 +170,9 @@ ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，�
 
 針對管理保密組態資料 (例如密碼)，ASP.NET Core 提供[祕密管理員工具](xref:security/app-secrets)。 針對生產祕密，我們建議使用 [Azure Key Vault](xref:security/key-vault-configuration)。
 
-如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
+如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
 在可能的情況下，ASP.NET Core 會遵循「選項模式」來儲存及擷取組態值。 選項模式使用類別來代表一組相關的設定。
 
@@ -187,7 +187,7 @@ var options = new WebSocketOptions
 app.UseWebSockets(options);
 ```
 
-如需詳細資訊，請參閱 <xref:fundamentals/configuration/options>。
+如需詳細資訊，請參閱<xref:fundamentals/configuration/options>。
 
 ## <a name="environments"></a>環境
 
@@ -197,7 +197,7 @@ app.UseWebSockets(options);
 
 [!code-csharp[](index/snapshots/2.x/Startup2.cs?highlight=3-6)]
 
-如需詳細資訊，請參閱 <xref:fundamentals/environments>。
+如需詳細資訊，請參閱<xref:fundamentals/environments>。
 
 ## <a name="logging"></a>記錄
 
@@ -219,13 +219,13 @@ ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提�
 
 `ILogger` 介面可讓您將任何數量的欄位傳遞給記錄提供者。 欄位常用於建構訊息字串，但提供者也可以將它們作為個別欄位，傳送至資料存放區。 這項功能可讓記錄提供者實作 [semantic logging (語意記錄)，又稱為 structured logging (結構化記錄)](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
 
-如需詳細資訊，請參閱 <xref:fundamentals/logging/index>。
+如需詳細資訊，請參閱<xref:fundamentals/logging/index>。
 
 ## <a name="routing"></a>路由
 
 「路由」是一種對應到處理常式的 URL 模式。 處理常式通常是 Razor 頁面、MVC 控制器中的動作方法，或是中介軟體。 ASP.NET Core 路由可讓您控制您應用程式使用的 URL。
 
-如需詳細資訊，請參閱 <xref:fundamentals/routing>。
+如需詳細資訊，請參閱<xref:fundamentals/routing>。
 
 ## <a name="error-handling"></a>錯誤處理
 
@@ -236,7 +236,7 @@ ASP.NET Core 具有處理錯誤的內建功能，例如：
 * 靜態狀態碼頁面
 * 啟動例外狀況處理
 
-如需詳細資訊，請參閱 <xref:fundamentals/error-handling>。
+如需詳細資訊，請參閱<xref:fundamentals/error-handling>。
 
 ## <a name="make-http-requests"></a>發出 HTTP 要求
 
@@ -248,40 +248,61 @@ ASP.NET Core 具有處理錯誤的內建功能，例如：
 * 管理基礎 `HttpClientMessageHandler` 執行個體的共用和存留期，以避免在手動管理 `HttpClient` 存留期時，發生的常見 DNS 問題。
 * 針對透過處理站所建立之用戶端傳送的所有要求，新增可設定的記錄體驗 (透過 `ILogger`)。
 
-如需詳細資訊，請參閱 <xref:fundamentals/http-requests>。
+如需詳細資訊，請參閱<xref:fundamentals/http-requests>。
 
 ## <a name="content-root"></a>內容根目錄
 
-內容根是指向任何由應用程式所使用私人內容的基礎路徑，例如其 Razor 檔案。 根據預設，內容根是裝載應用程式可執行檔的基礎路徑。 您可以在[建置主機](#host)時指定替代位置。
+內容根目錄是的基底路徑：
+
+* 裝載應用程式的可執行檔（ *.exe*）。
+* 組成應用程式的已編譯元件（ *.dll*）。
+* 應用程式所使用的非程式碼內容檔案，例如：
+  * Razor 檔案（ *. cshtml*， *razor*）
+  * 設定檔（ *. json*、 *.xml*）
+  * 資料檔案（ *.db*）
+* [Web 根目錄](#web-root)，通常是已發佈的*wwwroot*資料夾。
+
+在開發期間：
+
+* 內容根目錄預設為專案的根目錄。
+* 專案的根目錄是用來建立：
+  * 應用程式在專案根目錄中的非程式碼內容檔案路徑。
+  * [Web 根目錄](#web-root)，通常是專案根目錄中的*wwwroot*資料夾。
 
 ::: moniker range=">= aspnetcore-3.0"
 
-如需詳細資訊，請參閱[內容根](xref:fundamentals/host/generic-host#content-root)。
+[建立主機](#host)時，可以指定替代的內容根路徑。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host#contentrootpath>。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-如需詳細資訊，請參閱[內容根](xref:fundamentals/host/web-host#content-root)。
+[建立主機](#host)時，可以指定替代的內容根路徑。 如需詳細資訊，請參閱<xref:fundamentals/host/web-host#content-root>。
 
 ::: moniker-end
 
 ## <a name="web-root"></a>Web 根目錄
 
-Web 根目錄 (也稱為 *webroot*) 是公用、靜態資源 (例如 CSS、JavaScript 和影像檔) 的基礎路徑。 根據預設，靜態檔案中介軟體只會提供來自 Web 根目錄 (及其子目錄) 的檔案。 Web 根目錄路徑預設為 *{內容根}/wwwroot*，但您可以在[建置主機](#host)時指定不同的位置。
+Web 根目錄是公用、非程式碼、靜態資源檔的基底路徑，例如：
+
+* 樣式表單（ *.css*）
+* JavaScript （ *.js*）
+* 影像（ *.png*、 *.jpg*）
+
+根據預設，靜態檔案只會從 web 根目錄（和子目錄）提供。
 
 ::: moniker range=">= aspnetcore-3.0"
 
-如需詳細資訊，請參閱[WebRoot](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#webroot)
+Web 根目錄路徑預設為 *{content root}/wwwroot*，但在[建立主機](#host)時，可以指定不同的 web 根目錄。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host#webroot>。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-如需詳細資訊，請參閱 [Web 根目錄](/aspnet/core/fundamentals/host/web-host#webroot)。
+Web 根目錄路徑預設為 *{content root}/wwwroot*，但在[建立主機](#host)時，可以指定不同的 web 根目錄。 如需詳細資訊，請參閱 [Web 根目錄](xref:fundamentals/host/web-host#web-root)。
 
 ::: moniker-end
 
-在 Razor ( *.cshtml*) 檔案中，波狀符號與正斜線 `~/` 會指向 Web 根目錄。 開頭為 `~/` 的路徑稱為虛擬路徑。
+在 Razor （*cshtml*）檔案中，波狀符號-斜線（`~/`）會指向 web 根目錄。 開頭為 `~/` 的路徑稱為*虛擬路徑*。
 
-如需詳細資訊，請參閱 <xref:fundamentals/static-files>。
+如需詳細資訊，請參閱<xref:fundamentals/static-files>。

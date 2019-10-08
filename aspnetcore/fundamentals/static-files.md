@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何在 ASP.NET Core Web 應用程式中提供靜態檔案、保護其安全，並設定靜態檔案裝載中介軟體的行為。
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/8/2019
+ms.date: 10/07/2019
 uid: fundamentals/static-files
-ms.openlocfilehash: 1c665d1206e984fe41e9f57bb5356839c354dde2
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
-ms.translationtype: HT
+ms.openlocfilehash: 2f153551a86860616469200862723528e4a8cc1c
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308187"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007323"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -23,7 +23,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ## <a name="serve-static-files"></a>提供靜態檔案
 
-靜態檔案會儲存在專案的 Web 根目錄中。 預設目錄是 *\<content_root>/wwwroot*，但是可以透過 [UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_) 方法進行變更。 如需詳細資訊，請參閱[內容根目錄](xref:fundamentals/index#content-root)和 [Web 根目錄](xref:fundamentals/index#web-root)。
+靜態檔案會儲存在專案的[web 根目錄](xref:fundamentals/index#web-root)中。 預設目錄是 *{content root}/wwwroot*，但可以透過[UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_)方法加以變更。 如需詳細資訊，請參閱[內容根目錄](xref:fundamentals/index#content-root)和 [Web 根目錄](xref:fundamentals/index#web-root)。
 
 您必須讓應用程式的 Web 主機記住內容根目錄。
 
@@ -43,7 +43,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ::: moniker-end
 
-您可透過 Web 根目錄的相對路徑來存取靜態檔案。 例如，**Web 應用程式**專案範本的 *wwwroot* 資料夾內包含數個資料夾：
+靜態檔案可透過相對於[web 根目錄](xref:fundamentals/index#web-root)的路徑來存取。 例如，**Web 應用程式**專案範本的 *wwwroot* 資料夾內包含數個資料夾：
 
 * **wwwroot**
   * **css**
@@ -78,15 +78,15 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 [!code-csharp[](static-files/samples/1x/StartupStaticFiles.cs?name=snippet_ConfigureMethod&highlight=3)]
 
-無參數的 `UseStaticFiles` 方法多載會將 Web 根目錄中的檔案標示為可提供。 下列標記參考 *wwwroot/images/banner1.svg*：
+無參數的 `UseStaticFiles` 方法多載會將[web 根目錄](xref:fundamentals/index#web-root)中的檔案標記為 servable。 下列標記參考 *wwwroot/images/banner1.svg*：
 
 [!code-cshtml[](static-files/samples/1x/Views/Home/Index.cshtml?name=snippet_static_file_wwwroot)]
 
-在上述程式碼中，波浪字元 `~/` 會指向 Web 根目錄。 如需詳細資訊，請參閱 [Web 根目錄](xref:fundamentals/index#web-root)。
+在上述程式碼中，波狀符號字元 `~/` 指向[web 根目錄](xref:fundamentals/index#web-root)。
 
 ### <a name="serve-files-outside-of-web-root"></a>提供 Web 根目錄外的檔案
 
-請考慮使用目錄階層，以提供不位於 Web 根目錄的靜態檔案：
+假設有一個目錄階層，其中要提供的靜態檔案位於[web 根目錄](xref:fundamentals/index#web-root)外部：
 
 * **wwwroot**
   * **css**
@@ -108,7 +108,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ### <a name="set-http-response-headers"></a>設定 HTTP 回應標頭
 
-[StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions) 物件可以用來設定 HTTP 回應標頭。 除了設定從 Web 根目錄提供靜態檔案，下列程式碼會設定 `Cache-Control` 標頭：
+[StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions) 物件可以用來設定 HTTP 回應標頭。 除了設定[web 根目錄](xref:fundamentals/index#web-root)提供的靜態檔案外，下列程式碼也會設定 @no__t 1 標頭：
 
 [!code-csharp[](static-files/samples/1x/StartupAddHeader.cs?name=snippet_ConfigureMethod)]
 
@@ -208,8 +208,8 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 | URI            |                             回應  |
 | ------- | ------|
-| http://\<伺服器位址>/StaticFiles/images/banner1.svg    |      MyStaticFiles/images/banner1.svg |
-| http://\<伺服器位址>/StaticFiles             |     MyStaticFiles/default.html |
+| *http://\<server_address>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
+| *http://\<server_address>/StaticFiles*             |     MyStaticFiles/default.html |
 
 如果 *MyStaticFiles* 目錄中不存在預設名稱的檔案， http://\<伺服器位址>/StaticFiles 會傳回含有可點按連結的目錄清單：
 
@@ -256,7 +256,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 > [!WARNING]
 > 如果已啟用 IIS 靜態檔案處理常式，**但是**未正確設定 ASP.NET Core 模組，仍可提供靜態檔案。 舉例來說，未部署 *web.config* 檔案時可能會發生上述情況。
 
-* 請將程式碼檔案 (包括 *.cs* 和 *.cshtml*) 放在應用程式專案的 Web 根目錄之外。 如此一來，即會建立應用程式的用戶端內容與伺服器端程式碼之間的邏輯分隔。 這樣可以防止伺服器端程式碼外洩。
+* 將程式碼檔案（包括 *.cs*和*cshtml*）放在應用程式專案的[web 根目錄](xref:fundamentals/index#web-root)外部。 如此一來，即會建立應用程式的用戶端內容與伺服器端程式碼之間的邏輯分隔。 這樣可以防止伺服器端程式碼外洩。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -1,37 +1,37 @@
 ---
 title: 設定 ASP.NET Core 資料保護
 author: rick-anderson
-description: 了解如何設定 ASP.NET Core 中的資料保護。
+description: 瞭解如何在 ASP.NET Core 中設定資料保護。
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/11/2019
+ms.date: 10/07/2019
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 65a927b6288ca6cc41ee1bedd1080e52ffe0d3e1
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 380293f650c9548c286f98c0447c7ed08b918f2a
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034931"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007373"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>設定 ASP.NET Core 資料保護
 
-初始化資料保護系統時，它會套用[預設設定](xref:security/data-protection/configuration/default-settings)根據作業環境。 這些設定是通常適用於在單一機器上執行的應用程式。 有開發人員可能要變更預設設定的情況：
+當資料保護系統初始化時，它會根據操作環境來套用[預設設定](xref:security/data-protection/configuration/default-settings)。 這些設定通常適用于在單一電腦上執行的應用程式。 在某些情況下，開發人員可能會想要變更預設設定：
 
-* 應用程式則會分散到多部電腦。
-* 為了符合法規。
+* 應用程式會散佈在多部電腦上。
+* 基於合規性因素。
 
-針對這些案例中，資料保護系統會提供豐富的組態 API。
+在這些情況下，資料保護系統會提供豐富的設定 API。
 
 > [!WARNING]
-> 類似於組態檔，資料保護 keyring 應受到保護使用適當的權限。 您可以選擇加密待用的金鑰，但這不會防止攻擊者建立新的金鑰。 因此，您的應用程式的安全性會受到影響。 設定資料保護的儲存體位置應該有其存取僅限於應用程式本身，類似於您想保護組態檔的方式。 例如，如果您選擇您 keyring 儲存在磁碟上，使用檔案系統權限。 請確定只有在識別您的 web 應用程式執行具有讀取、 寫入和建立該目錄的存取權。 如果您使用 Azure Blob 儲存體時，web 應用程式應該能夠讀取、 寫入或建立新的項目中的 blob 存放區等等。
+> 與設定檔類似，應使用適當的許可權來保護資料保護金鑰環。 您可以選擇加密待用金鑰，但這並不會阻止攻擊者建立新的金鑰。 因此，您的應用程式安全性會受到影響。 使用資料保護設定的儲存位置應該將其存取限制為應用程式本身，與保護設定檔的方式類似。 例如，如果您選擇將金鑰環形儲存在磁片上，請使用檔案系統許可權。 請確定您的 web 應用程式執行所用的身分識別，具有該目錄的讀取、寫入和建立存取權。 如果您使用 Azure Blob 儲存體，只有 web 應用程式應該能夠在 Blob 存放區中讀取、寫入或建立新的專案等等。
 >
-> 擴充方法[AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection)會傳回[IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder)。 `IDataProtectionBuilder` 會公開，您可以鏈結在一起若要設定資料保護選項的擴充方法。
+> 擴充方法[AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection)會傳回[IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder)。 `IDataProtectionBuilder` 會公開可連結在一起以設定資料保護選項的擴充方法。
 
 ::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="protectkeyswithazurekeyvault"></a>ProtectKeysWithAzureKeyVault
 
-金鑰存放在[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)，設定與系統[ProtectKeysWithAzureKeyVault](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault)在`Startup`類別：
+若要將金鑰儲存在[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)中，請在 `Startup` 類別中設定具有[ProtectKeysWithAzureKeyVault](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault)的系統：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -42,21 +42,21 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-設定金鑰環儲存體位置 (例如[PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage))。 必須設定的位置，因為呼叫`ProtectKeysWithAzureKeyVault`會實作[IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor)停用自動的資料保護設定，包括 keyring 存放區位置。 上述範例會使用 Azure Blob 儲存體，以保存 keyring。 如需詳細資訊，請參閱[金鑰儲存提供者：Azure 儲存體](xref:security/data-protection/implementation/key-storage-providers#azure-storage)。 您也可以保存在本機使用 keyring [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system)。
+設定金鑰環形儲存位置（例如， [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)）。 必須設定位置，因為呼叫 `ProtectKeysWithAzureKeyVault` 會執行停用自動資料保護設定的[IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) ，包括金鑰環形儲存位置。 上述範例會使用 Azure Blob 儲存體來保存金鑰環。 如需詳細資訊，請參閱 @no__t 0Key 存放裝置提供者：Azure 儲存體](xref:security/data-protection/implementation/key-storage-providers#azure-storage)。 您也可以使用[PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system)在本機保存金鑰信號。
 
-`keyIdentifier`是用於金鑰加密的金鑰保存庫金鑰識別碼。 例如，建立名為金鑰保存庫中的索引鍵`dataprotection`中`contosokeyvault`具有金鑰識別碼`https://contosokeyvault.vault.azure.net/keys/dataprotection/`。 提供應用程式與**解除包裝金鑰**並**包裝金鑰**到 key vault 的權限。
+@No__t-0 是用於金鑰加密的金鑰保存庫金鑰識別碼。 例如，在 `contosokeyvault` 中名為 `dataprotection` 的金鑰保存庫中建立的金鑰具有 `https://contosokeyvault.vault.azure.net/keys/dataprotection/` 的金鑰識別碼。 提供具有解除包裝**金鑰的**應用程式和金鑰保存庫的**金鑰**許可權。
 
 `ProtectKeysWithAzureKeyVault` 多載：
 
-* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder，KeyVaultClient，String)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_Microsoft_Azure_KeyVault_KeyVaultClient_System_String_)允許使用[KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)啟用資料保護系統，才能使用金鑰保存庫。
-* [（IDataProtectionBuilder、 字串、 字串、 X509Certificate2） ProtectKeysWithAzureKeyVault](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_)允許使用`ClientId`並[X509Certificate](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2)啟用資料保護系統，才能使用金鑰保存庫。
-* [（IDataProtectionBuilder、 字串、 字串、 字串） 的 ProtectKeysWithAzureKeyVault](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_String_)允許使用`ClientId`和`ClientSecret`啟用資料保護系統，才能使用金鑰保存庫。
+* [ProtectKeysWithAzureKeyVault （IDataProtectionBuilder，KeyVaultClient，String）](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_Microsoft_Azure_KeyVault_KeyVaultClient_System_String_)允許使用[KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient) ，讓資料保護系統能夠使用金鑰保存庫。
+* [ProtectKeysWithAzureKeyVault （IDataProtectionBuilder，string，string，X509Certificate2）](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_)允許使用 `ClientId` 和[X509Certificate](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) ，讓資料保護系統能夠使用金鑰保存庫。
+* [ProtectKeysWithAzureKeyVault （IDataProtectionBuilder，string，string，string）](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_String_)允許使用 `ClientId` 和 `ClientSecret`，讓資料保護系統能夠使用金鑰保存庫。
 
 ::: moniker-end
 
 ## <a name="persistkeystofilesystem"></a>PersistKeysToFileSystem
 
-若要將金鑰存放在 UNC 共用而不是在 *%LOCALAPPDATA%* 的預設位置，設定與系統[PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem):
+若要將金鑰儲存在 UNC 共用上，而不是在 *% LOCALAPPDATA%* 的預設位置，請使用[PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem)設定系統：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -67,11 +67,11 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!WARNING]
-> 如果您變更金鑰的持續性位置時，系統將不會再自動加密待用的金鑰因為它並不知道是否 DPAPI 是適當的加密機制。
+> 如果您變更金鑰持續性位置，系統就不會再自動加密待用金鑰，因為它並不知道 DPAPI 是否為適當的加密機制。
 
 ## <a name="protectkeyswith"></a>ProtectKeysWith\*
 
-您可以設定來保護待用的金鑰呼叫任何的系統[ProtectKeysWith\* ](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions)組態 Api。 請考慮下列範例中，這在 UNC 共用上儲存金鑰，並加密待用與特定 X.509 憑證的這些金鑰：
+您可以藉由呼叫任何[ProtectKeysWith @ no__t-1](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions)設定 api，設定系統來保護待用金鑰。 請考慮下列範例，其會將金鑰儲存在 UNC 共用上，並使用特定的 x.509 憑證來加密待用金鑰：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -84,7 +84,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range=">= aspnetcore-2.1"
 
-在 ASP.NET Core 2.1 或更新版本，您可以提供[X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2)要[ProtectKeysWithCertificate](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithcertificate)，例如從檔案載入憑證：
+在 ASP.NET Core 2.1 或更新版本中，您可以提供[ProtectKeysWithCertificate](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithcertificate)的[X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) ，例如從檔案載入的憑證：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -98,13 +98,13 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-請參閱[加密的金鑰在 Rest](xref:security/data-protection/implementation/key-encryption-at-rest)的更多範例和討論內建的金鑰加密機制。
+如需有關內建金鑰加密機制的其他範例和討論，請參閱待用[金鑰加密](xref:security/data-protection/implementation/key-encryption-at-rest)。
 
 ::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="unprotectkeyswithanycertificate"></a>UnprotectKeysWithAnyCertificate
 
-在 ASP.NET Core 2.1 或更新版本，您可以旋轉憑證和解密金鑰在待用期間使用的陣列[X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2)與憑證[UnprotectKeysWithAnyCertificate](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.unprotectkeyswithanycertificate):
+在 ASP.NET Core 2.1 或更新版本中，您可以使用具有[UnprotectKeysWithAnyCertificate](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.unprotectkeyswithanycertificate)的[X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2)憑證陣列，旋轉憑證並將待用金鑰解密：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -123,7 +123,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="setdefaultkeylifetime"></a>SetDefaultKeyLifetime
 
-若要設定系統使用的金鑰的存留期為 14 天，而非預設的 90 天，請使用[SetDefaultKeyLifetime](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setdefaultkeylifetime):
+若要將系統設定為使用14天的金鑰存留期，而不是預設的90天，請使用[SetDefaultKeyLifetime](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setdefaultkeylifetime)：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -135,14 +135,14 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="setapplicationname"></a>SetApplicationName
 
-根據預設，資料保護系統會隔離應用程式不會根據其內容根路徑，彼此，即使它們共用相同的實體索引鍵存放庫。 這可防止應用程式了解彼此的受保護的承載。
+根據預設，資料保護系統會依據其[內容根](xref:fundamentals/index#content-root)路徑，將應用程式彼此隔離，即使它們共用相同的實體金鑰存放庫也是一樣。 這可防止應用程式瞭解彼此受保護的裝載。
 
-若要共用的受保護應用程式間的承載：
+若要在應用程式之間共用受保護的承載：
 
-* 設定<xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>中具有相同值的每個應用程式。
-* 跨應用程式使用相同版本的資料保護 API 堆疊。 執行**任一**的應用程式的專案檔中的下列：
-  * 參考相同的共用的 framework 版本，透過[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
-  * 參考相同[Data Protection 套件](xref:security/data-protection/introduction#package-layout)版本。
+* 使用相同的值，在每個應用程式中設定 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>。
+* 跨應用程式使用相同版本的資料保護 API 堆疊。 在應用程式的專案檔案中執行下列**其中一**項：
+  * 透過[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)參考相同的共用架構版本。
+  * 參考相同的[資料保護套件](xref:security/data-protection/introduction#package-layout)版本。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -154,7 +154,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="disableautomatickeygeneration"></a>DisableAutomaticKeyGeneration
 
-您可能會有您不想要自動彙總 （建立新的金鑰） 的索引鍵，因為他們接近到期的應用程式的案例。 這其中一個範例可能是應用程式設定中的主要/次要關聯性，其中主要應用程式必須負責針對金鑰管理問題，而次要應用程式只需要金鑰環的唯讀檢視。 可以設定次要應用程式，將視為唯讀的金鑰環，藉由設定與系統<xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.DisableAutomaticKeyGeneration*>:
+您可能會想要讓應用程式在接近到期的情況下自動變換金鑰（建立新的金鑰）。 其中一個範例可能是在主要/次要關係中設定的應用程式，其中只有主要應用程式會負責金鑰管理考慮，而次要應用程式只會有金鑰環的唯讀視圖。 次要應用程式可以設定為使用 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.DisableAutomaticKeyGeneration*> 來將金鑰環視為唯讀：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -166,22 +166,22 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="per-application-isolation"></a>每個應用程式隔離
 
-ASP.NET Core 主機所提供資料保護系統時，它會自動隔離應用程式不會彼此，即使這些應用程式相同的背景工作處理序帳戶下執行，並使用相同的主要金鑰材料。 這是有點類似 IsolateApps 修飾詞將來自 System.Web 的`<machineKey>`項目。
+當資料保護系統是由 ASP.NET Core 主機提供時，它會自動將應用程式彼此隔離，即使這些應用程式是在相同的工作者進程帳戶下執行，而且使用相同的主要金鑰內容。 這有點類似于 System.web 的 `<machineKey>` 元素中的 IsolateApps 修飾詞。
 
-隔離機制的運作方式是為唯一的租用戶，考慮在本機電腦上的每個應用程式，因此<xref:Microsoft.AspNetCore.DataProtection.IDataProtector>root 破解的任何指定的應用程式會自動包含為鑑別子的應用程式識別碼。 應用程式的唯一識別碼是應用程式的實體路徑：
+隔離機制的運作方式是將本機電腦上的每個應用程式視為唯一的租使用者，因此任何指定應用程式的根 @no__t 0 會自動將應用程式識別碼包含為鑒別子。 應用程式的唯一識別碼是應用程式的實體路徑：
 
-* 針對裝載在 IIS 中的應用程式，唯一的識別碼會是應用程式的 IIS 實體路徑。 如果應用程式部署在 web 伺服陣列環境中，這個值是穩定假設 IIS 環境 web 伺服陣列中的所有電腦上設定方式均類似。
-* 上執行的自我裝載應用程式[Kestrel 伺服器](xref:fundamentals/servers/index#kestrel)，唯一的識別碼是在磁碟上的應用程式的實體路徑。
+* 對於裝載于 IIS 中的應用程式，唯一識別碼是應用程式的 IIS 實體路徑。 如果應用程式部署在 web 伺服陣列環境中，此值會穩定，假設 IIS 環境在 web 伺服陣列中的所有電腦上都有類似的設定。
+* 對於在[Kestrel 伺服器](xref:fundamentals/servers/index#kestrel)上執行的自我裝載應用程式，唯一識別碼是磁片上應用程式的實體路徑。
 
-唯一識別項設計來重設之後存留下來&mdash;個別的應用程式和的電腦本身。
+唯一識別碼的設計是要繼續重設個別應用程式和電腦本身的 @ no__t-0both。
 
-此隔離機制假設應用程式不是惡意的。 惡意應用程式一律會影響任何其他在相同的背景工作處理序帳戶下執行的應用程式。 在共用主控環境中彼此不受信任的應用程式所在，主機服務提供者應該採取步驟，以確保應用程式，包括將應用程式的基礎金鑰存放庫之間的 OS 層級隔離。
+這種隔離機制會假設應用程式不是惡意的。 惡意應用程式一律會影響在同一個工作者進程帳戶下執行的任何其他應用程式。 在應用程式互相不受信任的共用裝載環境中，主機服務提供者應採取步驟，以確保應用程式之間的作業系統層級隔離，包括分隔應用程式的基礎金鑰存放庫。
 
-ASP.NET Core 主應用程式不提供資料保護系統 (例如，如果您將透過其執行個體化`DataProtectionProvider`具象類型) 預設為停用應用程式隔離。 只要提供適當停用應用程式隔離時，受到相同的金鑰材料的所有應用程式可以共用承載[用途](xref:security/data-protection/consumer-apis/purpose-strings)。 若要提供應用程式隔離，在此環境中的，呼叫[SetApplicationName](#setapplicationname)方法設定物件，並提供每個應用程式的唯一名稱。
+如果資料保護系統不是由 ASP.NET Core 主機提供（例如，如果您透過 `DataProtectionProvider` 具象類型來具現化），則預設會停用應用程式隔離。 當應用程式隔離停用時，所有由相同的金鑰內容所支援的應用程式都可以共用承載，只要它們提供適當的[用途](xref:security/data-protection/consumer-apis/purpose-strings)即可。 若要在此環境中提供應用程式隔離，請在設定物件上呼叫[SetApplicationName](#setapplicationname)方法，並為每個應用程式提供唯一的名稱。
 
-## <a name="changing-algorithms-with-usecryptographicalgorithms"></a>變更具有 UseCryptographicAlgorithms 演算法
+## <a name="changing-algorithms-with-usecryptographicalgorithms"></a>使用 UseCryptographicAlgorithms 變更演算法
 
-資料保護堆疊可讓您變更使用新產生的索引鍵的預設演算法。 若要這樣做最簡單的方式是呼叫[UseCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecryptographicalgorithms)設定回呼：
+資料保護堆疊可讓您變更新產生的索引鍵所使用的預設演算法。 若要這麼做，最簡單的方法是從設定回呼呼叫[UseCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecryptographicalgorithms) ：
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -211,20 +211,20 @@ services.AddDataProtection()
 
 ::: moniker-end
 
-EncryptionAlgorithm 的預設值是 AES-256-CBC，預設 ValidationAlgorithm HMACSHA256。 透過系統管理員可以設定預設原則[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy)，但明確呼叫`UseCryptographicAlgorithms`會覆寫預設原則。
+預設 EncryptionAlgorithm 為 AES-256-CBC，而預設 ValidationAlgorithm 為 HMACSHA256。 系統管理員可以透過[整部電腦的原則](xref:security/data-protection/configuration/machine-wide-policy)來設定預設原則，但 `UseCryptographicAlgorithms` 的明確呼叫會覆寫預設原則。
 
-呼叫`UseCryptographicAlgorithms`可讓您指定的所需的演算法，從預先定義的內建清單。 您不需要擔心演算法的實作。 在上述案例中，資料保護系統會嘗試使用 AES 的 CNG 實作，如果在 Windows 上執行。 否則，它會回復到 managed [System.Security.Cryptography.Aes](/dotnet/api/system.security.cryptography.aes)類別。
+呼叫 `UseCryptographicAlgorithms` 可讓您從預先定義的內建清單中指定所需的演算法。 您不需要擔心演算法的執行。 在上述案例中，如果在 Windows 上執行，資料保護系統會嘗試使用 AES 的 CNG 實行。 否則，它會回復[至受管理](/dotnet/api/system.security.cryptography.aes)的 system.string 類別。
 
-您可以手動指定透過呼叫實作[UseCustomCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecustomcryptographicalgorithms)。
+您可以透過呼叫[UseCustomCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecustomcryptographicalgorithms)來手動指定執行。
 
 > [!TIP]
-> 變更演算法不會影響金鑰環中的現有金鑰。 它只會影響新產生的索引鍵。
+> 變更演算法不會影響金鑰環中的現有索引鍵。 它只會影響新產生的金鑰。
 
-### <a name="specifying-custom-managed-algorithms"></a>指定受管理的自訂演算法
+### <a name="specifying-custom-managed-algorithms"></a>指定自訂受控演算法
 
 ::: moniker range=">= aspnetcore-2.0"
 
-若要指定受管理的自訂演算法，建立[ManagedAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.managedauthenticatedencryptorconfiguration)指向實作類型的執行個體：
+若要指定自訂的 managed 演算法，請建立指向執行類型的[ManagedAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.managedauthenticatedencryptorconfiguration)實例：
 
 ```csharp
 serviceCollection.AddDataProtection()
@@ -246,7 +246,7 @@ serviceCollection.AddDataProtection()
 
 ::: moniker range="< aspnetcore-2.0"
 
-若要指定受管理的自訂演算法，建立[ManagedAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.managedauthenticatedencryptionsettings)指向實作類型的執行個體：
+若要指定自訂的 managed 演算法，請建立指向執行類型的[ManagedAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.managedauthenticatedencryptionsettings)實例：
 
 ```csharp
 serviceCollection.AddDataProtection()
@@ -266,16 +266,16 @@ serviceCollection.AddDataProtection()
 
 ::: moniker-end
 
-通常\*類型屬性必須指向實體，可具現化 （透過公用的無參數建構函式） 實作[SymmetricAlgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm)並[KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm)，不過系統特殊案例某些等值`typeof(Aes)`為了方便起見。
+一般來說，@no__t 0Type 的屬性必須指向[system.security.cryptography.symmetricalgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm)和[KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm)的具象、可具現化（透過公用無參數 ctor）的實值，不過，系統特殊案例的某些值（例如 `typeof(Aes)`）便於.
 
 > [!NOTE]
-> SymmetricAlgorithm 必須 ≥ 128 位元的金鑰長度和 ≥ 64 位元為單位的區塊大小，而且它必須支援使用 PKCS #7 填補的 CBC 模式加密。 KeyedHashAlgorithm 必須有摘要大小 > = 128 位元，而且它必須支援的長度等於雜湊演算法的摘要長度索引鍵。 KeyedHashAlgorithm 不是 HMAC 是絕對必要。
+> System.security.cryptography.symmetricalgorithm 必須具有≥128位的金鑰長度和≥64位的區塊大小，而且它必須支援具有 PKCS #7 填補的 CBC 模式加密。 KeyedHashAlgorithm 必須具有 > = 128 位的摘要大小，而且它必須支援長度等於雜湊演算法摘要長度的索引鍵。 KeyedHashAlgorithm 不一定要是 HMAC。
 
 ### <a name="specifying-custom-windows-cng-algorithms"></a>指定自訂的 Windows CNG 演算法
 
 ::: moniker range=">= aspnetcore-2.0"
 
-若要指定 HMAC 驗證搭配使用 CBC 模式加密的自訂 Windows CNG 演算法，建立[CngCbcAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration)執行個體，包含演算法的資訊：
+若要使用 CBC 模式加密搭配 HMAC 驗證來指定自訂 Windows CNG 演算法，請建立包含演算法資訊的[CngCbcAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration)實例：
 
 ```csharp
 services.AddDataProtection()
@@ -299,7 +299,7 @@ services.AddDataProtection()
 
 ::: moniker range="< aspnetcore-2.0"
 
-若要指定 HMAC 驗證搭配使用 CBC 模式加密的自訂 Windows CNG 演算法，建立[CngCbcAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cngcbcauthenticatedencryptionsettings)執行個體，包含演算法的資訊：
+若要使用 CBC 模式加密搭配 HMAC 驗證來指定自訂 Windows CNG 演算法，請建立包含演算法資訊的[CngCbcAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cngcbcauthenticatedencryptionsettings)實例：
 
 ```csharp
 services.AddDataProtection()
@@ -322,11 +322,11 @@ services.AddDataProtection()
 ::: moniker-end
 
 > [!NOTE]
-> 對稱區塊加密演算法金鑰長度必須 > = 128 位元為單位的區塊大小 > = 64 位元，而且它必須支援使用 PKCS #7 填補的 CBC 模式加密。 雜湊演算法必須有摘要大小 > = 128 位元，且必須支援正在開啟與 BCRYPT\_ALG\_處理\_HMAC\_旗標的旗標。 \*可以設定為 null，以指定的演算法所用的預設提供者提供者屬性。 請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)文件的詳細資訊。
+> 對稱式區塊加密演算法的金鑰長度必須為 > = 128 位、區塊大小 > = 64 位，而且必須支援具有 PKCS #7 填補的 CBC 模式加密。 雜湊演算法的摘要大小必須為 > = 128 位，而且必須支援以 BCRYPT @ no__t-0ALG @ no__t-1HANDLE @ no__t-2HMAC @ no__t-3FLAG 旗標開啟。 @No__t 0Provider 的屬性可以設定為 null，以針對指定的演算法使用預設提供者。 如需詳細資訊，請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)檔。
 
 ::: moniker range=">= aspnetcore-2.0"
 
-若要指定使用驗證 Galois/計數器模式加密的自訂 Windows CNG 演算法，建立[CngGcmAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cnggcmauthenticatedencryptorconfiguration)執行個體，包含演算法的資訊：
+若要使用 Galois/計數器模式加密搭配驗證來指定自訂的 Windows CNG 演算法，請建立包含演算法資訊的[CngGcmAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cnggcmauthenticatedencryptorconfiguration)實例：
 
 ```csharp
 services.AddDataProtection()
@@ -346,7 +346,7 @@ services.AddDataProtection()
 
 ::: moniker range="< aspnetcore-2.0"
 
-若要指定使用驗證 Galois/計數器模式加密的自訂 Windows CNG 演算法，建立[CngGcmAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cnggcmauthenticatedencryptionsettings)執行個體，包含演算法的資訊：
+若要使用 Galois/計數器模式加密搭配驗證來指定自訂的 Windows CNG 演算法，請建立包含演算法資訊的[CngGcmAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cnggcmauthenticatedencryptionsettings)實例：
 
 ```csharp
 services.AddDataProtection()
@@ -365,18 +365,22 @@ services.AddDataProtection()
 ::: moniker-end
 
 > [!NOTE]
-> 對稱區塊加密演算法金鑰長度必須 > = 128 位元，區塊大小為剛好為 128 位元，而且它必須支援 GCM 加密。 您可以設定[EncryptionAlgorithmProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider)屬性設為 null 指定演算法所用的預設提供者。 請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)文件的詳細資訊。
+> 對稱式區塊加密演算法的金鑰長度必須為 > = 128 位、剛好為128位的區塊大小，而且必須支援 GCM 加密。 您可以將[EncryptionAlgorithmProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider)屬性設定為 null，以針對指定的演算法使用預設提供者。 如需詳細資訊，請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)檔。
 
-### <a name="specifying-other-custom-algorithms"></a>指定其他的自訂演算法
+### <a name="specifying-other-custom-algorithms"></a>指定其他自訂演算法
 
-雖然不公開做為第一級的 API，資料保護系統就會是可延伸，足以讓您指定幾乎任何一種演算法。 比方說，就可以將包含在硬體安全性模組 (HSM) 的所有索引鍵，並提供核心的自訂實作加密和解密的常式。 請參閱[IAuthenticatedEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.iauthenticatedencryptor)中[核心加密擴充性](xref:security/data-protection/extensibility/core-crypto)如需詳細資訊。
+雖然不會公開為第一類的 API，但資料保護系統的擴充性足以讓您指定幾乎任何類型的演算法。 例如，您可以保留硬體安全模組（HSM）中包含的所有金鑰，以及提供核心加密和解密常式的自訂執行。 如需詳細資訊，請參閱[核心密碼](xref:security/data-protection/extensibility/core-crypto)編譯擴充性中的[IAuthenticatedEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.iauthenticatedencryptor) 。
 
-## <a name="persisting-keys-when-hosting-in-a-docker-container"></a>裝載的 Docker 容器中時，保存索引鍵
+## <a name="persisting-keys-when-hosting-in-a-docker-container"></a>在 Docker 容器中裝載時保存金鑰
 
-裝載於[Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/)容器中，索引鍵應保存在其中一個：
+在[Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/)容器中裝載時，應該在下列其中一項維護金鑰：
 
-* 是保存超過容器的存留期，例如共用的磁碟區或主應用程式掛接的磁碟區的 Docker 磁碟區的資料夾。
-* 外部提供者，例如[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)或是[Redis](https://redis.io/)。
+* 一種資料夾，其為保存在容器存留期之外的 Docker 磁片區，例如共用磁片區或裝載掛接的磁片區。
+* 外部提供者，例如[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)或[Redis](https://redis.io/)。
+
+## <a name="persisting-keys-with-redis"></a>使用 Redis 保存金鑰
+
+只有支援[Redis 資料持續](/azure/azure-cache-for-redis/cache-how-to-premium-persistence)性的 Redis 版本才應該用來儲存索引鍵。 [Azure Blob 儲存體](/azure/storage/blobs/storage-blobs-introduction)是持續性的，可以用來儲存金鑰。 如需詳細資訊，請參閱 <<c0> [ 此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/13476)。
 
 ## <a name="additional-resources"></a>其他資源
 

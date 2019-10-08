@@ -5,14 +5,14 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/09/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 544037a2a1f836e51b4f10551316312ef55c68da
-ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
+ms.openlocfilehash: 32226c06ba005b4a61c473d6584b2b762733dcbd
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71688076"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007295"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -49,7 +49,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 在建置主機時，將呼叫由 [Microsoft.Extensions.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices) 套件提供的 `IHostBuilder.UseWindowsService`。 如果應用程式以 Windows 服務形式執行，則方法會：
 
 * 將主機存留期設定為 `WindowsServiceLifetime`。
-* 設定內容根目錄。
+* 設定[內容根目錄](xref:fundamentals/index#content-root)。
 * 啟用使用應用程式名稱作為預設來源名稱記錄至事件記錄檔。
   * 您可以使用 *appsettings.Production.json* 檔案中的 `Logging:LogLevel:Default` 機碼來設定記錄層級。
   * 只有系統管理員才能建立新的事件來源。 如果無法使用應用程式名稱建立事件來源，則會向「應用程式」來源記錄警告，並停用事件記錄檔。
@@ -300,12 +300,12 @@ Remove-Service -Name {NAME}
 
 ## <a name="configure-endpoints"></a>設定端點
 
-ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URLS`環境變數，以設定 URL 和埠。
+ASP.NET Core 預設會繫結至 `http://localhost:5000`。 藉由設定 `ASPNETCORE_URLS` 環境變數，來設定 URL 和埠。
 
 如需其他 URL 和埠設定方法，包括 HTTPS 端點的支援，請參閱下列主題：
 
-* <xref:fundamentals/servers/kestrel#endpoint-configuration>Kestrel
-* <xref:fundamentals/servers/httpsys#configure-windows-server>（Http.sys）
+* <xref:fundamentals/servers/kestrel#endpoint-configuration> （Kestrel）
+* <xref:fundamentals/servers/httpsys#configure-windows-server> （HTTP.sys）
 
 > [!NOTE]
 > 不支援使用 ASP.NET Core HTTPS 開發憑證來保護服務端點。
@@ -326,7 +326,7 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URL
 
 ### <a name="set-the-content-root-path-to-the-apps-folder"></a>將內容根目錄路徑設定到應用程式的資料夾
 
-<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> 與建立服務時提供給 `binPath` 引數的路徑相同。 請搭配應用程式內容根目錄的路徑呼叫 <xref:System.IO.Directory.SetCurrentDirectory*>，而不要呼叫 `GetCurrentDirectory` 來建立設定檔的路徑。
+<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> 與建立服務時提供給 `binPath` 引數的路徑相同。 不是呼叫 `GetCurrentDirectory` 來建立設定檔案的路徑，而是以應用程式[內容根目錄](xref:fundamentals/index#content-root)的路徑呼叫 <xref:System.IO.Directory.SetCurrentDirectory*>。
 
 在 `Program.Main` 中，判斷服務可執行檔資料夾的路徑，然後使用該路徑來建立應用程式的內容根目錄：
 

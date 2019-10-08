@@ -5,14 +5,14 @@ description: 了解如何使用 ASP.NET Core、內容傳遞網路 (CDN)、檔案
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: cdb424137d80b280873347c1352fc43d23b4aec3
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: a0a11f3aed9035000e79844fbec7cdd17b73fdaa
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211620"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007345"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
@@ -111,7 +111,7 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
 
 * 停用繼承的 ASP.NET Core 模組處理常式。
 
-  將`<handlers>`區段新增至檔案，以移除 Blazor 應用*程式已發佈的 web.config 檔案*中的處理常式：
+  將 `<handlers>` 區段新增至檔案，以移除 Blazor 應用程式的已發佈*web.config*檔案中的處理常式：
 
   ```xml
   <handlers>
@@ -119,7 +119,7 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
   </handlers>
   ```
 
-* `<system.webServer>` `inheritInChildApplications`使用設定為的`false`元素，停用根（父系）應用程式區段`<location>`的繼承：
+* 使用 `<location>` 元素並將 `inheritInChildApplications` 設定為 `false`，停用根（父系）應用程式的 `<system.webServer>` 區段的繼承：
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -198,7 +198,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ### <a name="content-root"></a>內容根目錄
 
-`--contentroot` 引數設定包含應用程式內容檔案的目錄絕對路徑。 在下列範例中，`/content-root-path` 是應用程式的內容根路徑。
+@No__t-0 引數會設定包含應用程式內容檔案（[內容根](xref:fundamentals/index#content-root)）之目錄的絕對路徑。 在下列範例中，`/content-root-path` 是應用程式的內容根路徑。
 
 * 在命令提示字元，於本機執行應用程式時傳遞引數。 從應用程式目錄，執行：
 
@@ -220,7 +220,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ### <a name="path-base"></a>路徑基底
 
-引數`href`會設定應用程式以非根相對 URL 路徑在本機執行的應用程式基底路徑（ `<base>`此標籤會設定為預備和`/`生產以外的路徑）。 `--pathbase` 在下列範例中，`/relative-URL-path` 是應用程式的路徑基底。 如需詳細資訊，請參閱[應用程式基底路徑](xref:host-and-deploy/blazor/index#app-base-path)。
+@No__t-0 引數會設定應用程式以非根相對 URL 路徑在本機執行的應用程式基底路徑（@no__t 1 標記 `href` 設定為用於預備與生產環境的 `/` 以外的路徑。 在下列範例中，`/relative-URL-path` 是應用程式的路徑基底。 如需詳細資訊，請參閱[應用程式基底路徑](xref:host-and-deploy/blazor/index#app-base-path)。
 
 > [!IMPORTANT]
 > 不同於提供給 `<base>` 標籤 `href` 的路徑，在傳遞 `--pathbase` 引數值時請勿包含尾端的斜線 (`/`)。 如果應用程式基底路徑提供於 `<base>` 標籤作為 `<base href="/CoolApp/">` (包括尾端的斜線)，請將命令列引數值傳遞為 `--pathbase=/CoolApp` (不含尾端的斜線)。

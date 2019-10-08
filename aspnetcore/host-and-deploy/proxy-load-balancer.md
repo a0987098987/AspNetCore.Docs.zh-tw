@@ -5,14 +5,14 @@ description: 了解裝載在 Proxy 伺服器和負載平衡器 (通常會遮蔽�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/12/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: 3243f5d3254e6585ff9ca48900a3326aa9b6f502
-ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.openlocfilehash: 5eb69c2a253d1b8c42edd39b64b595898e6fb948
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219170"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007286"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>設定 ASP.NET Core 以與 Proxy 伺服器和負載平衡器搭配運作
 
@@ -29,7 +29,7 @@ ms.locfileid: "71219170"
 
 依照慣例，Proxy 會以 HTTP 標頭轉送資訊。
 
-| 頁首 | 描述 |
+| 標頭 | 描述 |
 | ------ | ----------- |
 | X-Forwarded-For | 針對在 Proxy 鏈結中起始要求及後續 Proxy 的用戶端，保存用戶端的相關資訊。 此參數可能包含 IP 位址 (以及視需要可能會有連接埠號碼)。 在 Proxy 伺服器鏈結中，第一個參數會指出起始要求的用戶端。 後面接著後續的 Proxy 識別碼。 鏈結中的最後一個 Proxy 並不在參數清單中。 最後一個 Proxy 的 IP 位址 (以及視需要會有連接埠號碼) 會在傳輸層以遠端 IP 位址的形式提供。 |
 | X-Forwarded-Proto | 原始配置的值 (HTTP/HTTPS)。 如果要求周遊了多個 Proxy，則此值也可能是一個配置清單。 |
@@ -252,6 +252,60 @@ if (string.Equals(
 }
 ```
 
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="certificate-forwarding"></a>憑證轉送 
+
+### <a name="azure"></a>Azure
+
+若要設定憑證轉送的 Azure App Service，請參閱[設定 Azure App Service 的 TLS 相互驗證](/azure/app-service/app-service-web-configure-tls-mutual-auth)。 下列指導方針適用于設定 ASP.NET Core 應用程式。
+
+在 `Startup.Configure` 中，在呼叫 `app.UseAuthentication();` 之前新增下列程式碼：
+
+```csharp
+app.UseCertificateForwarding();
+```
+
+
+設定憑證轉送中介軟體來指定 Azure 所使用的標頭名稱。 在 `Startup.ConfigureServices` 中，新增下列程式碼，以設定中介軟體用來建立憑證的標頭：
+
+```csharp
+services.AddCertificateForwarding(options =>
+    options.CertificateHeader = "X-ARR-ClientCert");
+```
+
+### <a name="other-web-proxies"></a>其他 web proxy
+
+如果使用的 proxy 不是 IIS 或 Azure App Service 的應用程式要求路由（ARR），請將 proxy 設定為轉送其在 HTTP 標頭中收到的憑證。 在 `Startup.Configure` 中，在呼叫 `app.UseAuthentication();` 之前新增下列程式碼：
+
+```csharp
+app.UseCertificateForwarding();
+```
+
+設定憑證轉送中介軟體來指定標頭名稱。 在 `Startup.ConfigureServices` 中，新增下列程式碼，以設定中介軟體用來建立憑證的標頭：
+
+```csharp
+services.AddCertificateForwarding(options =>
+    options.CertificateHeader = "YOUR_CERTIFICATE_HEADER_NAME");
+```
+
+如果 proxy 不會以 base64 編碼憑證（如同 Nginx 的情況），請設定 `HeaderConverter` 選項。 請考慮 `Startup.ConfigureServices` 中的下列範例：
+
+```csharp
+services.AddCertificateForwarding(options =>
+{
+    options.CertificateHeader = "YOUR_CUSTOM_HEADER_NAME";
+    options.HeaderConverter = (headerValue) => 
+    {
+        var clientCertificate = 
+           /* some conversion logic to create an X509Certificate2 */
+        return clientCertificate;
+    }
+});
+```
+
+::: moniker-end
+
 ## <a name="troubleshoot"></a>疑難排解
 
 當標頭未如預期般傳送時，請啟用[記錄功能](xref:fundamentals/logging/index)。 如果記錄提供的資訊不足，無法針對問題進行疑難排解，則請列舉伺服器所收到的要求標頭。 使用內嵌中介軟體將要求標頭寫入應用程式回應或記錄標頭。 
@@ -336,53 +390,6 @@ services.Configure<ForwardedHeadersOptions>(options =>
 
 > [!IMPORTANT]
 > 只允許信任的 Proxy 以及網路轉送標頭。 否則，[IP 詐騙](https://www.iplocation.net/ip-spoofing)攻擊有可能發生。
-
-## <a name="certificate-forwarding"></a>憑證轉送 
-
-### <a name="on-azure"></a>在 Azure 上
-
-請參閱 [Azure 文件](/azure/app-service/app-service-web-configure-tls-mutual-auth)以設定 Azure Web Apps。 在您應用程式的 `Startup.Configure` 方法中，於 `app.UseAuthentication();` 呼叫的前面新增下列程式碼：
-
-```csharp
-app.UseCertificateForwarding();
-```
-
-您也需要設定憑證轉送中介軟體以指定 Azure 使用的標頭名稱。 在您應用程式的 `Startup.ConfigureServices` 方法中，新增下列程式碼以設定標頭，中介軟體會在其中建置憑證：
-
-```csharp
-services.AddCertificateForwarding(options =>
-    options.CertificateHeader = "X-ARR-ClientCert");
-```
-
-### <a name="with-other-web-proxies"></a>搭配其他 Web Proxy
-
-如果您使用的 Proxy 不是 IIS 或 Azure Web Apps 應用程式要求路由，請設定您的 Proxy 轉送它在 HTTP 標頭中收到的憑證。 在您應用程式的 `Startup.Configure` 方法中，於 `app.UseAuthentication();` 呼叫的前面新增下列程式碼：
-
-```csharp
-app.UseCertificateForwarding();
-```
-
-您也需要設定憑證轉送中介軟體以指定標頭名稱。 在您應用程式的 `Startup.ConfigureServices` 方法中，新增下列程式碼以設定標頭，中介軟體會在其中建置憑證：
-
-```csharp
-services.AddCertificateForwarding(options =>
-    options.CertificateHeader = "YOUR_CERTIFICATE_HEADER_NAME");
-```
-
-最後，如果 Proxy 不是使用 base64 編碼憑證 (和 Nginx 一樣)，則請設定 `HeaderConverter` 選項。 請考慮 `Startup.ConfigureServices` 中的下列範例：
-
-```csharp
-services.AddCertificateForwarding(options =>
-{
-    options.CertificateHeader = "YOUR_CUSTOM_HEADER_NAME";
-    options.HeaderConverter = (headerValue) => 
-    {
-        var clientCertificate = 
-           /* some conversion logic to create an X509Certificate2 */
-        return clientCertificate;
-    }
-});
-```
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -5,14 +5,14 @@ description: 了解如何在發佈 ASP.NET Core 應用程式時轉換 web.config
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/07/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: 32e66007d527f7f7b7cfd88d3bebc9b808251941
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: d28c362a200ad433e316bc1af710231a169a30a4
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081453"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007311"
 ---
 # <a name="transform-webconfig"></a>轉換 web.config
 
@@ -28,7 +28,7 @@ ms.locfileid: "71081453"
 這些轉換會針對下列任一 *web.config* 產生案例進行：
 
 * 由 `Microsoft.NET.Sdk.Web` SDK 自動產生。
-* 由開發人員在應用程式的內容根目錄中提供。
+* 由開發人員在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中提供。
 
 ## <a name="build-configuration"></a>組建組態
 

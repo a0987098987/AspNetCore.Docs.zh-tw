@@ -5,14 +5,14 @@ description: 了解如何使用 HTTP REPL .NET Core 全域工具來瀏覽和測�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 08/29/2019
+ms.date: 10/07/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 086ac141a04ab4a560f2c26fb049ef8a5493dc97
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: c845c28210d6defcb70a520f176b64986ae3d4a6
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187249"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007440"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -134,7 +134,7 @@ HTTP REPL 提供命令完成。 按 <kbd>Tab</kbd> 鍵會逐一查看完成您�
 httprepl <ROOT URI>
 ```
 
-`<ROOT URI>` 是 web API 的基底 URI。 例如：
+`<ROOT URI>` 是 web API 的基底 URI。 例如:
 
 ```console
 httprepl https://localhost:5001
@@ -146,7 +146,7 @@ httprepl https://localhost:5001
 connect <ROOT URI>
 ```
 
-例如：
+例如:
 
 ```console
 (Disconnected)~ connect https://localhost:5001
@@ -160,7 +160,7 @@ connect <ROOT URI>
 connect <ROOT URI> --swagger <SWAGGER URI>
 ```
 
-例如：
+例如:
 
 ```console
 (Disconnected)~ connect https://localhost:5001 --swagger /swagger/v1/swagger.json
@@ -199,7 +199,7 @@ https://localhost:5001/fruits~ ls
 https://localhost:5001/fruits~
 ```
 
-或者，執行 `ui` 命令在瀏覽器中開啟 web API 的 Swagger UI 頁面。 例如：
+或者，執行 `ui` 命令在瀏覽器中開啟 web API 的 Swagger UI 頁面。 例如:
 
 ```console
 https://localhost:5001/~ ui
@@ -243,7 +243,7 @@ https://localhost:5001/people~
 
 ### <a name="view-the-settings"></a>檢視設定
 
-若要檢視可用的設定，請執行 `pref get` 命令。 例如：
+若要檢視可用的設定，請執行 `pref get` 命令。 例如:
 
 ```console
 https://localhost:5001/~ pref get
@@ -281,7 +281,7 @@ https://localhost:5001/people~ pref set colors.json White
 
 ### <a name="set-indentation-size"></a>設定縮排大小
 
-目前僅為 JSON 支援回應縮排大小自訂。 預設大小為兩個空格。 例如：
+目前僅為 JSON 支援回應縮排大小自訂。 預設大小為兩個空格。 例如:
 
 ```json
 [
@@ -370,7 +370,7 @@ pref set editor.command.default.arguments "--disable-extensions --new-window"
 - */swagger.json*
 - */swagger/v1/swagger.json*
 
-若要在您的環境中使用一組不同的搜尋路徑，請設定 `swagger.searchPaths` 喜好設定。 此值必須是以管線分隔的相對路徑清單。 例如：
+若要在您的環境中使用一組不同的搜尋路徑，請設定 `swagger.searchPaths` 喜好設定。 此值必須是以管線分隔的相對路徑清單。 例如:
 
 ```console
 pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
@@ -390,7 +390,7 @@ get <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 以下是使用 `get` 命令時可用的選項：
 
@@ -474,7 +474,7 @@ post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-f
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -490,7 +490,7 @@ post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-f
     https://localhost:5001/people~ post -h Content-Type=application/json
     ```
 
-    在上述命令中，`Content-Type` HTTP 要求標頭設定為指出 JSON 類型的要求本文媒體。 預設文字編輯器會開啟 *.tmp* 檔案，其中包含代表 HTTP 要求本文的 JSON 範本。 例如：
+    在上述命令中，`Content-Type` HTTP 要求標頭設定為指出 JSON 類型的要求本文媒體。 預設文字編輯器會開啟 *.tmp* 檔案，其中包含代表 HTTP 要求本文的 JSON 範本。 例如:
 
     ```json
     {
@@ -544,7 +544,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -585,7 +585,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     https://localhost:5001/fruits~ put 2 -h Content-Type=application/json
     ```
 
-    在上述命令中，`Content-Type` HTTP 要求標頭設定為指出 JSON 類型的要求本文媒體。 預設文字編輯器會開啟 *.tmp* 檔案，其中包含代表 HTTP 要求本文的 JSON 範本。 例如：
+    在上述命令中，`Content-Type` HTTP 要求標頭設定為指出 JSON 類型的要求本文媒體。 預設文字編輯器會開啟 *.tmp* 檔案，其中包含代表 HTTP 要求本文的 JSON 範本。 例如:
 
     ```json
     {
@@ -658,7 +658,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -744,7 +744,7 @@ patch <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -764,7 +764,7 @@ head <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:bod
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -782,7 +782,7 @@ options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -790,7 +790,7 @@ options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:
 
 若要設定 HTTP 要求標頭，請使用下列其中一個方法：
 
-1. 與 HTTP 要求一同設定。 例如：
+1. 與 HTTP 要求一同設定。 例如:
 
   ```console
   https://localhost:5001/people~ post -h Content-Type=application/json
@@ -798,17 +798,99 @@ options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:
 
   若使用上述方法，則各相異的 HTTP 要求標頭都需要自己的 `-h` 選項。
 
-1. 於傳送 HTTP 要求之前設定。 例如：
+1. 於傳送 HTTP 要求之前設定。 例如:
 
   ```console
   https://localhost:5001/people~ set header Content-Type application/json
   ```
 
-  若在傳送要求之前設定標頭，則標頭會保留命令殼層工作階段的持續時間設定。 若要清除標頭，請提供空白值。 例如：
+  若在傳送要求之前設定標頭，則標頭會保留命令殼層工作階段的持續時間設定。 若要清除標頭，請提供空白值。 例如:
 
   ```console
   https://localhost:5001/people~ set header Content-Type
   ```
+
+## <a name="test-secured-endpoints"></a>測試受保護的端點
+
+HTTP 複寫支援透過使用 HTTP 要求標頭來測試受保護的端點。 支援的驗證和授權配置範例包括基本驗證、JWT 持有人權杖和摘要式驗證。 例如，您可以使用下列命令將持有人權杖傳送至端點：
+
+```console
+set header Authorization "bearer <TOKEN VALUE>"
+```
+
+若要存取 Azure 託管的端點或使用[azure REST API](/rest/api/azure/)，您需要持有人權杖。 使用下列步驟，透過[Azure CLI](/cli/azure/)取得 Azure 訂用帳戶的持有人權杖。 HTTP 複寫會設定 HTTP 要求標頭中的持有人權杖，並抓取 Azure App Service Web Apps 的清單。
+
+1. 登入 Azure：
+
+    ```azcli
+    az login
+    ```
+
+1. 使用下列命令取得您的訂用帳戶識別碼：
+
+    ```azcli
+    az account show --query id
+    ```
+
+1. 複製您的訂用帳戶識別碼，然後執行下列命令：
+
+    ```azcli
+    az account set --subscription "<SUBSCRIPTION ID>"
+    ```
+
+1. 使用下列命令取得您的持有人權杖：
+
+    ```azcli
+    az account get-access-token --query accessToken
+    ```
+
+1. 透過 HTTP 複寫來連接到 Azure REST API：
+
+    ```console
+    httprepl https://management.azure.com
+    ```
+
+1. 設定 `Authorization` HTTP 要求標頭：
+
+    ```console
+    https://management.azure.com/> set header Authorization "bearer <ACCESS TOKEN>"
+    ```
+
+1. 流覽至訂用帳戶：
+
+    ```console
+    https://management.azure.com/> cd subscriptions/<SUBSCRIPTION ID>
+    ```
+
+1. 取得訂用帳戶的 Azure App Service Web Apps 清單：
+
+    ```console
+    https://management.azure.com/subscriptions/{SUBSCRIPTION ID}> get providers/Microsoft.Web/sites?api-version=2016-08-01
+    ```
+
+    隨即顯示下列回應：
+
+    ```console
+    HTTP/1.1 200 OK
+    Cache-Control: no-cache
+    Content-Length: 35948
+    Content-Type: application/json; charset=utf-8
+    Date: Thu, 19 Sep 2019 23:04:03 GMT
+    Expires: -1
+    Pragma: no-cache
+    Strict-Transport-Security: max-age=31536000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    x-ms-correlation-request-id: <em>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</em>
+    x-ms-original-request-ids: <em>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</em>
+    x-ms-ratelimit-remaining-subscription-reads: 11999
+    x-ms-request-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    x-ms-routing-request-id: WESTUS:xxxxxxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx
+    {
+      "value": [
+        <AZURE RESOURCES LIST>
+      ]
+    }
+    ```
 
 ## <a name="toggle-http-request-display"></a>切換 HTTP 要求顯示
 
@@ -816,14 +898,14 @@ options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:
 
 ### <a name="enable-request-display"></a>啟用要求顯示
 
-透過執行 `echo on` 命令來檢視要傳送的 HTTP 要求。 例如：
+透過執行 `echo on` 命令來檢視要傳送的 HTTP 要求。 例如:
 
 ```console
 https://localhost:5001/people~ echo on
 Request echoing is on
 ```
 
-目前工作階段中的後續 HTTP 要求會顯示要求標頭。 例如：
+目前工作階段中的後續 HTTP 要求會顯示要求標頭。 例如:
 
 ```console
 https://localhost:5001/people~ post
@@ -861,7 +943,7 @@ https://localhost:5001/people~
 
 ### <a name="disable-request-display"></a>停用要求顯示
 
-透過執行 `echo off` 命令來隱藏要傳送的 HTTP 要求顯示。 例如：
+透過執行 `echo off` 命令來隱藏要傳送的 HTTP 要求顯示。 例如:
 
 ```console
 https://localhost:5001/people~ echo off
@@ -870,7 +952,7 @@ Request echoing is off
 
 ## <a name="run-a-script"></a>執行指令碼
 
-如果您經常執行一組相同的 HTTP REPL 命令，請考慮將它們儲存在文字檔中。 檔案中的命令會採用與手動在命令列上執行的命令相同的格式。 您可使用 `run` 命令以批次的方式執行命令。 例如：
+如果您經常執行一組相同的 HTTP REPL 命令，請考慮將它們儲存在文字檔中。 檔案中的命令會採用與手動在命令列上執行的命令相同的格式。 您可使用 `run` 命令以批次的方式執行命令。 例如:
 
 1. 建立包含一組以新行分隔命令的文字檔。 為了說明，請參考包含以下命令的 *people-script.txt* 檔案：
 
@@ -882,7 +964,7 @@ Request echoing is off
     get 1
     ```
 
-1. 執行 `run` 命令，傳入文字檔的路徑。 例如：
+1. 執行 `run` 命令，傳入文字檔的路徑。 例如:
 
     ```console
     https://localhost:5001/~ run C:\http-repl-scripts\people-script.txt

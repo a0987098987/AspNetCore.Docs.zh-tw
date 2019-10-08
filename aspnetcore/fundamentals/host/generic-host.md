@@ -5,14 +5,14 @@ description: 了解 .NET Core 的泛型主機，其負責啟動應用程式及�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/05/2019
+ms.date: 10/07/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: bd6e01697900b93d5b98122c726e1f8c8b89c0fc
-ms.sourcegitcommit: 4115bf0e850c13d4e655beb5ab5e8ff431173cb6
+ms.openlocfilehash: 1582955cd18e6739111af05c9a892cd5cb4e270d
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981921"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007236"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -78,7 +78,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> 方法：
 
-* 設定 <xref:System.IO.Directory.GetCurrentDirectory*> 所傳回路徑的內容根目錄。
+* 將[內容根目錄](xref:fundamentals/index#content-root)設定為 <xref:System.IO.Directory.GetCurrentDirectory*> 所傳回的路徑。
 * 從下列項目載入主機組態：
   * 前面加上 "DOTNET_" 的環境變數。
   * 命令列引數。
@@ -199,6 +199,11 @@ Host.CreateDefaultBuilder(args)
     .UseContentRoot("c:\\content-root")
     //...
 ```
+
+如需詳細資訊，請參閱：
+
+* [Fundamentals：內容根目錄 @ no__t-0
+* [WebRoot](#webroot)
 
 ### <a name="environmentname"></a>EnvironmentName
 
@@ -397,7 +402,7 @@ Kestrel 有它自己的端點設定 API。 如需詳細資訊，請參閱<xref:f
 
 **索引鍵**：webroot  
 **類型**：*string*  
-**預設**： *(Content Root)/wwwroot* (如果路徑存在)。 如果路徑不存在，則會使用無作業檔案提供者。  
+**預設**：預設為 `wwwroot`。 *{Content root}/wwwroot*的路徑必須存在。 如果路徑不存在，則會使用無作業檔案提供者。  
 **環境變數**：`<PREFIX_>WEBROOT`
 
 若要設定此值，請使用環境變數或呼叫 `UseWebRoot`：
@@ -405,6 +410,11 @@ Kestrel 有它自己的端點設定 API。 如需詳細資訊，請參閱<xref:f
 ```csharp
 webBuilder.UseWebRoot("public");
 ```
+
+如需詳細資訊，請參閱：
+
+* [Fundamentals：Web 根目錄 @ no__t-0
+* [ContentRootPath](#contentrootpath)
 
 ## <a name="manage-the-host-lifetime"></a>管理主機存留期
 
@@ -574,6 +584,8 @@ var host = new HostBuilder()
 如果路徑不存在，就無法啟動主機。
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_UseContentRoot)]
+
+如需詳細資訊，請參閱 [Fundamentals：Content root @ no__t-0。
 
 ### <a name="environment"></a>環境
 

@@ -395,7 +395,7 @@ Web UI 範本（Razor Pages、具有控制器和 views 的 MVC）已移除下列
 * Cookie 同意 UI 已不再包含在內。 若要在 ASP.NET Core 3.0 範本產生的應用程式中啟用 cookie 同意功能<xref:security/gdpr>，請參閱。
 * 腳本和相關的靜態資產現在會當做本機檔案來參考，而不是使用 Cdn。 如需詳細資訊，請參閱[腳本和相關靜態資產現在會當做本機檔案參考，而不是根據目前的環境使用 cdn （aspnet/AspNetCore #14350）](https://github.com/aspnet/AspNetCore.Docs/issues/14350)。
 
-「角度」範本已更新為使用「角度8」。
+「Angular」範本已更新為使用「Angular8」。
 
 根據預設，Razor 類別庫（RCL）範本預設為 Razor 元件開發。 Visual Studio 中的新範本選項會提供頁面和視圖的範本支援。 從命令 shell 中的範本建立 RCL 時，請傳遞`-support-pages-and-views`選項（`dotnet new razorclasslib -support-pages-and-views`）。
 
@@ -473,9 +473,9 @@ app.UseEndpoints(endpoints =>
 * <xref:migration/22-to-30#health-checks>
 * <xref:host-and-deploy/health-checks>
 
-## <a name="pipes-on-httpcontext"></a>HttpCoNtext 上的管道
+## <a name="pipes-on-httpcontext"></a>HttpContext 上的管道
 
-現在可以讀取要求本文，並使用<xref:System.IO.Pipelines> API 寫入回應主體。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader`屬性會提供<xref:System.IO.Pipelines.PipeReader> ，可用於讀取要求本文。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter`屬性提供<xref:System.IO.Pipelines.PipeWriter>可用於寫入回應主體的。 `HttpRequest.BodyReader`是`HttpRequest.Body`資料流程的類比。 `HttpResponse.BodyWriter`是`HttpResponse.Body`資料流程的類比。
+現在可以使用<xref:System.IO.Pipelines> API 讀取要求本文與寫入回應主體。  <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader`屬性提供 <xref:System.IO.Pipelines.PipeReader> 可用於讀取要求本文。 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter`屬性提供<xref:System.IO.Pipelines.PipeWriter> 可用於寫入回應主體。 `HttpRequest.BodyReader` 類似於`HttpRequest.Body` 的資料流。 `HttpResponse.BodyWriter` 類似於 `HttpResponse.Body` 的資料流。
 
 <!-- indirectly related, https://github.com/dotnet/docs/pull/14414 won't be published by 9/23  -->
 

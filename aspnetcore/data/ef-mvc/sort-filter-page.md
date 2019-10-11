@@ -1,17 +1,17 @@
 ---
 title: 教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Core
 description: 在本教學課程中，您要將排序、篩選和分頁功能新增至 Students 的 [索引] 頁面。 此外，還要建立將執行簡易群組的頁面。
-author: tdykstra
+author: rick-anderson
 ms.author: riande
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 7a5f617b00cceb007f37ca1e585c4c7ff1831b56
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: c4d50b72c5508d52b17c6754b6d8e77c1a3903b6
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975215"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259351"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Core
 
@@ -74,7 +74,7 @@ ms.locfileid: "69975215"
 
 此程式碼使用 `ViewData` 屬性中的資訊，以適當的查詢字串值設定超連結。
 
-執行應用程式，選取 [Students]  索引標籤，然後按一下 [姓氏]  和 [註冊日期]  資料行標題，以確認排序的運作正常。
+執行應用程式，選取 [Students] 索引標籤，然後按一下 [姓氏] 和 [註冊日期] 資料行標題，以確認排序的運作正常。
 
 ![以姓名順序排列的 Students [索引] 頁面](sort-filter-page/_static/name-order.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "69975215"
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>將搜尋方塊新增至學生的 [索引] 檢視
 
-在 *Views/Student/Index.cshtml* 中，於開始表格標記之前立即新增醒目提示的程式碼，以建立標題、文字方塊及 [搜尋]  按鈕。
+在 *Views/Student/Index.cshtml* 中，於開始表格標記之前立即新增醒目提示的程式碼，以建立標題、文字方塊及 [搜尋] 按鈕。
 
 [!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
 此程式碼會使用 `<form>` [標籤協助程式](xref:mvc/views/tag-helpers/intro) 來新增搜尋文字方塊和按鈕。 `<form>` 標籤協助程式預設會使用 POST 提交表單資料，這表示參數會以 HTTP 訊息本文傳遞，而不是以 URL 作為查詢字串傳遞。 當您指定 HTTP GET 時，表單資料會以 URL 中作為查詢字串傳遞，這可讓使用者為該 URL 加上書籤。 W3C 指導方針建議，只有在動作不會產生更新時才應使用 GET。
 
-執行應用程式，選取 [Students]  索引標籤，輸入搜尋字串，然後按一下 [搜尋] 以確認篩選可以運作。
+執行應用程式，選取 [Students] 索引標籤，輸入搜尋字串，然後按一下 [搜尋] 以確認篩選可以運作。
 
 ![含篩選的 Students [索引] 頁面](sort-filter-page/_static/filtering.png)
 
@@ -115,7 +115,7 @@ http://localhost:5813/Students?SearchString=an
 
 如果您為此頁面加上書籤，則會在使用書籤時取得篩選的清單。 將 `method="get"` 新增至 `form` 標籤會導致查詢字串的產生。
 
-在這個階段，如果您按一下資料行標題排序連結，將會遺失您在 [搜尋]  方塊中輸入的篩選值。 您將在下節修正該問題。
+在這個階段，如果您按一下資料行標題排序連結，將會遺失您在 [搜尋] 方塊中輸入的篩選值。 您將在下節修正該問題。
 
 ## <a name="add-paging-to-students-index"></a>為 Students 索引新增分頁
 
@@ -127,7 +127,7 @@ http://localhost:5813/Students?SearchString=an
 
 [!code-csharp[](intro/samples/cu/PaginatedList.cs)]
 
-此程式碼中的 `CreateAsync` 方法會採用頁面大小和頁面數，並會將適當的 `Skip` 和 `Take` 陳述式套用至 `IQueryable`。 在 `IQueryable` 上呼叫 `ToListAsync` 時，會傳回僅包含所要求頁面的清單。 `HasPreviousPage` 和 `HasNextPage` 屬性可用來啟用或停用 [上一頁]  和 [下一頁]  分頁按鈕。
+此程式碼中的 `CreateAsync` 方法會採用頁面大小和頁面數，並會將適當的 `Skip` 和 `Take` 陳述式套用至 `IQueryable`。 在 `IQueryable` 上呼叫 `ToListAsync` 時，會傳回僅包含所要求頁面的清單。 `HasPreviousPage` 和 `HasNextPage` 屬性可用來啟用或停用 [上一頁] 和 [下一頁] 分頁按鈕。
 
 `CreateAsync` 方法用來建立 `PaginatedList<T>` 物件而不是建構函式，因為建構函式無法執行非同步程式碼。
 

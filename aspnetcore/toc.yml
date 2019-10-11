@@ -310,7 +310,7 @@
           uid: blazor/debug
         - name: 呼叫 Web API
           uid: blazor/call-web-api
-        - name: 裝載及部署
+        - name: 裝載和部署
           items:
             - name: 總覽
               uid: host-and-deploy/blazor/index
@@ -507,7 +507,7 @@
         - name: JavaScript API 參考
           href: /javascript/api/?view=signalr-js-latest
           displayName: signalr
-    - name: 裝載和調整規模
+    - name: 主機與規模調整
       displayName: signalr
       items:
         - name: 總覽
@@ -661,13 +661,13 @@
           href: /azure/visual-studio/vs-storage-aspnet5-getting-started-queues?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
         - name: 資料表儲存體
           href: /azure/visual-studio/vs-storage-aspnet5-getting-started-tables?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-- name: 裝載及部署
+- name: 裝載和部署
   displayName: publish
   items:
     - name: 總覽
       displayName: 'azure, deploy, publish'
       uid: host-and-deploy/index
-    - name: 裝載於 Azure App Service
+    - name: Azure App Service
       displayName: 'deploy, publish'
       items:
         - name: 總覽
@@ -717,7 +717,7 @@
         - name: 後續步驟
           displayName: 'azure, deploy, publish'
           uid: azure/devops/next-steps
-    - name: 裝載於使用 IIS 的 Windows
+    - name: IIS
       displayName: 'deploy, publish'
       items:
         - name: 總覽
@@ -749,16 +749,16 @@
     - name: HTTP.sys
       displayName: 'deploy, publish, server'
       uid: fundamentals/servers/httpsys
-    - name: Windows 服務中的主機
+    - name: Windows 服務
       displayName: 'deploy, publish'
       uid: host-and-deploy/windows-service
-    - name: Linux 上使用 Nginx 的主機
+    - name: 使用 Nginx 的 Linux
       displayName: 'deploy, publish'
       uid: host-and-deploy/linux-nginx
-    - name: Linux 上使用 Apache 的主機
+    - name: 使用 Apache 的 Linux
       displayName: 'deploy, publish'
       uid: host-and-deploy/linux-apache
-    - name: 裝載於 Docker
+    - name: Docker
       displayName: 'deploy, publish'
       items:
         - name: 總覽
@@ -779,7 +779,7 @@
     - name: Proxy 和負載平衡器設定
       displayName: 'deploy, publish'
       uid: host-and-deploy/proxy-load-balancer
-    - name: 裝載於 Web 伺服陣列
+    - name: Web 伺服陣列
       displayName: 'deploy, publish'
       uid: host-and-deploy/web-farm
     - name: Visual Studio 發行設定檔

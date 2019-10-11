@@ -5,12 +5,12 @@ description: 說明如何使用資料庫和 ASP.NET Core。
 ms.author: riande
 ms.date: 7/22/2019
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 197697f28e9faa45c1ac2b7f993bde15994957e5
-ms.sourcegitcommit: 051f068c78931432e030b60094c38376d64d013e
-ms.translationtype: HT
+ms.openlocfilehash: 87d27b60940826e21b060f2e07d344b30ff75b27
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68440380"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259791"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>使用資料庫和 ASP.NET Core
 
@@ -55,11 +55,11 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 資料庫預設會在 `C:/Users/<user/>` 目錄中建立 `*.mdf` 檔案。
 
 <a name="ssox"></a>
-* 從 [檢視]  功能表中，開啟 [SQL Server 物件總管]  (SSOX)。
+* 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
 
   ![檢視功能表](sql/_static/ssox.png)
 
-* 以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視表設計工具]  ：
+* 以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視表設計工具]：
 
   ![在 Movie 資料表上開啟的操作功能表](sql/_static/design.png)
 
@@ -67,7 +67,7 @@ LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發�
 
 請注意 `ID` 旁的索引鍵圖示。 根據預設，EF 會為主索引鍵建立名為 `ID` 的屬性。
 
-* 以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視資料]  ：
+* 以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視資料]：
 
   ![開啟的電影資料表顯示資料表資料](sql/_static/vd22.png)
 
@@ -107,10 +107,10 @@ if (context.Movie.Any())
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Program.cs)]
 
-生產環境應用程式不會呼叫 `Database.Migrate`。 它會新增至前面的程式碼以免在尚未執行 `Update-Database` 時發生下列例外狀況：
+未執行 `Update-Database` 時，會發生下列例外狀況：
 
-SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫。 登入失敗。
-使用者 'user name' 登入失敗。
+`SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
+`Login failed for user 'user name'.`
 
 ### <a name="test-the-app"></a>測試應用程式
 
@@ -119,7 +119,7 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 * 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行這項操作
 * 強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。 若要強制初始化，IIS Express 必須停止並重新啟動。 您可以使用下列其中一個方法來執行此工作：
 
-  * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束]  或 [停止網站]  ：
+  * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束] 或 [停止網站]：
 
     ![IIS Express 系統匣圖示](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
@@ -194,11 +194,11 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 資料庫預設會在 `C:/Users/<user/>` 目錄中建立 `*.mdf` 檔案。
 
 <a name="ssox"></a>
-* 從 [檢視]  功能表中，開啟 [SQL Server 物件總管]  (SSOX)。
+* 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
 
   ![檢視功能表](sql/_static/ssox.png)
 
-* 以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視表設計工具]  ：
+* 以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視表設計工具]：
 
   ![在電影資料表上開啟操作功能表](sql/_static/design.png)
 
@@ -206,7 +206,7 @@ LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發�
 
 請注意 `ID` 旁的索引鍵圖示。 根據預設，EF 會為主索引鍵建立名為 `ID` 的屬性。
 
-* 以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視資料]  ：
+* 以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視資料]：
 
   ![開啟的電影資料表顯示資料表資料](sql/_static/vd22.png)
 
@@ -263,7 +263,7 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 * 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行這項操作
 * 強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。 若要強制初始化，IIS Express 必須停止並重新啟動。 您可以使用下列其中一個方法來執行此工作：
 
-  * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束]  或 [停止站台]  ：
+  * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束] 或 [停止站台]：
 
     ![IIS Express 系統匣圖示](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 

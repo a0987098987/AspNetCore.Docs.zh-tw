@@ -1,18 +1,18 @@
 ---
 title: 登入 .NET Core 與 ASP.NET Core
-author: tdykstra
+author: rick-anderson
 description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提供的記錄架構。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/08/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 9f7b39cc1c557356b75608817db4e8d6f61af794
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 697e6cf0cd1b51ad6c2942e21bc084d1fe6bfa4e
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007033"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259742"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
@@ -22,7 +22,7 @@ ms.locfileid: "72007033"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-本文中顯示的大部分程式碼範例都來自 ASP.NET Core 應用程式。 這些程式碼片段的記錄特定部分，適用於任何使用[一般主機](xref:fundamentals/host/generic-host)的 .NET Core 應用程式。 如需如何在非 Web 主控台應用程式中使用一般主機的資訊，請參閱[託管服務](xref:fundamentals/host/hosted-services)。
+本文中顯示的大部分程式碼範例都來自 ASP.NET Core 應用程式。 這些程式碼片段的記錄特定部分適用于任何使用[泛型主機](xref:fundamentals/host/generic-host)的 .net Core 應用程式。 如需如何在非 Web 主控台應用程式中使用一般主機的資訊，請參閱[託管服務](xref:fundamentals/host/hosted-services)。
 
 不含一般主機的應用程式記錄程式碼，會因[新增提供者](#add-providers)和[建立記錄器](#create-logs)的方式而有所不同。 非主機程式碼範例顯示於本文的這些章節中。
 
@@ -394,8 +394,12 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如:
 
-* 在生產環境中，透過 `Information` 層級將 `Trace` 傳送到大量資料存放區。 透過 `Critical` 將 `Warning` 傳送到值資料存放區。
-* 在開發期間，透過 `Critical` 將 `Warning` 傳送到主控台，並在進行疑難排解時透過 `Information` 新增 `Trace`。
+* 在生產環境中：
+  * 在 `Trace` 到 @no__t 1 層級的記錄，會產生大量的詳細記錄訊息。 若要控制成本，而不超過資料儲存體限制，請記錄 `Trace` 到高容量、低成本的資料存放區，@no__t 1 層級的訊息。
+  * 在 `Warning` 到 @no__t 1 層級的記錄，通常會產生較少、較小的記錄檔訊息。 因此，成本和儲存體限制通常不會造成問題，因此可讓您更靈活地選擇資料存放區。
+* 在開發期間：
+  * 記錄 `Warning` 到主控台的 `Critical` 則訊息。
+  * 進行疑難排解時，將 `Trace` 到 `Information` 訊息。
 
 本文稍後的[記錄篩選](#log-filtering)一節將說明如何控制提供者所處理的記錄層級。
 

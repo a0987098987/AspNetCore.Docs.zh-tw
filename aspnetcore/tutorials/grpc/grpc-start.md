@@ -4,14 +4,14 @@ author: juntaoluo
 description: 此教學課程會示範如何在 ASP.NET Core 上，建立 gRPC 服務與 gRPC 用戶端。 了解如何建立 gRPC 服務專案、編輯通訊協定檔案，以及新增雙工資料流呼叫。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 8/26/2019
+ms.date: 10/10/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 9eeb71ca751005780560f0f2200edc2013541c34
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: 61324cdd5b574ea8a12a1be5846a25c311ab4499
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71925217"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259676"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端與伺服器
 
@@ -91,7 +91,7 @@ cd GrpcGreeter
 
 ### <a name="open-the-project"></a>開啟專案
 
-從 Visual Studio，選取 [檔案] > [開啟]，然後選取 [GrpcGreeter.sln] 檔案。
+從 Visual Studio 選取 [**檔案 @no__t-** 1] [**開啟**]，然後選取*GrpcGreeter .csproj*檔案。
 
 ---
 
@@ -256,7 +256,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 Greeter 用戶端建立者：
 
 * 具現化包含建立 gRPC 服務連線資訊的 `HttpClient`。
-* `HttpClient`使用來建立 gRPC 通道和 Greeter 用戶端：
+* 使用 `HttpClient` 來建立 gRPC 通道和 Greeter 用戶端：
 
 [!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=3-5)]
 

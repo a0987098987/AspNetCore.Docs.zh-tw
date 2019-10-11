@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/18/2019
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 12665fb2e7a9c75747f5c83129a617aea6adfbbf
-ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
+ms.openlocfilehash: 64503ed55438b24f2d3d87092107408ddcb515d7
+ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71317699"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165268"
 ---
 # <a name="docker-images-for-aspnet-core"></a>ASP.NET Core 的 Docker 映像
 
@@ -19,7 +19,7 @@ ms.locfileid: "71317699"
 
 在本教學課程中，您已：
 > [!div class="checklist"]
-> * 了解 Microsoft.NET Core Docker 映像 
+> * 了解 Microsoft.NET Core Docker 映像
 > * 下載 ASP.NET Core 範例應用程式
 > * 在本機執行範例應用程式
 > * 在 Linux 容器中執行範例應用程式
@@ -36,13 +36,21 @@ ms.locfileid: "71317699"
 
   範例會使用此映像來建置應用程式。 此映像包含隨附命令列工具 (CLI) 的 .NET Core SDK。 此映像會最佳化來進行本機開發、偵錯和單元測試。 基於開發和編譯而安裝的工具可使此映像成為相對較大的映像。 
 
-* `dotnet/core/aspnet` 
+* `dotnet/core/aspnet`
 
    範例會使用此映像來執行應用程式。 此映像包含 ASP.NET Core 執行階段和程式庫，並會進行最佳化，以在生產環境中執行應用程式。 專為部署和應用程式啟動速度而設計的映像相對較小，因此，已將從 Docker 登錄到 Docker 主機的網路效能最佳化。 只會將執行應用程式所需的程式庫和內容複製到容器中。 內容已準備好執行，可用最短的時間從 `Docker run` 到應用程式啟動。 在 Docker 模型中，不需要動態程式碼編譯。
 
 ## <a name="prerequisites"></a>必要條件
+::: moniker range="< aspnetcore-3.0"
+
+* [.NET Core 2.2 SDK](https://www.microsoft.com/net/core)
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 * [.NET Core SDK 3.0](https://dotnet.microsoft.com/download)
+
+::: moniker-end
 
 * Docker 用戶端 18.03 或更新版本
 
@@ -168,6 +176,8 @@ ms.locfileid: "71317699"
 
 若要在 Docker 容器內使用手動發行的應用程式，請建立新的 Dockerfile 並使用 `docker build .` 命令來建置容器。
 
+::: moniker range="< aspnetcore-3.0"
+
 ```console
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
 WORKDIR /app
@@ -177,7 +187,7 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 
 ### <a name="the-dockerfile"></a>Dockerfile
 
-以下是您稍早執行的`docker build`命令所使用的 Dockerfile。  它會以您在本節所做的相同方式，使用 `dotnet publish` 進行建置及部署。  
+以下是您稍早執行的 `docker build` 命令所使用的*Dockerfile* 。  它會以您在本節所做的相同方式，使用 `dotnet publish` 進行建置及部署。  
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
@@ -200,6 +210,51 @@ COPY --from=build /app/aspnetapp/out ./
 ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 ```
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+```console
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+WORKDIR /app
+COPY published/aspnetapp.dll ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+```
+
+### <a name="the-dockerfile"></a>Dockerfile
+
+以下是您稍早執行的 `docker build` 命令所使用的*Dockerfile* 。  它會以您在本節所做的相同方式，使用 `dotnet publish` 進行建置及部署。  
+
+```dockerfile
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
+WORKDIR /app
+
+# copy csproj and restore as distinct layers
+COPY *.sln .
+COPY aspnetapp/*.csproj ./aspnetapp/
+RUN dotnet restore
+
+# copy everything else and build app
+COPY aspnetapp/. ./aspnetapp/
+WORKDIR /app/aspnetapp
+RUN dotnet publish -c Release -o out
+
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/aspnetapp/out ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+```
+
+::: moniker-end
+
+```console
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+WORKDIR /app
+COPY published/aspnetapp.dll ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+```
+
 ## <a name="additional-resources"></a>其他資源
 
 * [Docker build 命令列](https://docs.docker.com/engine/reference/commandline/build) \(英文\)
@@ -210,15 +265,6 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 * [使用 Visual Studio Code 進行偵錯](https://code.visualstudio.com/docs/nodejs/debugging-recipes#_debug-nodejs-in-docker-containers) \(英文\) 
 
 ## <a name="next-steps"></a>後續步驟
-
-在本教學課程中，您已：
-> [!div class="checklist"]
-> * 了解 Microsoft .NET Core Docker 映像 
-> * 已下載 ASP.NET Core 範例應用程式
-> * 在本機執行範例應用程式
-> * 在 Linux 容器中執行範例應用程式
-> * 使用 Windows 容器執行範例
-> * 手動建置並部署
 
 包含範例應用程式的 Git 存放庫也會包含文件。 如需存放庫中可用資源的概觀，請參閱[讀我檔案](https://github.com/dotnet/dotnet-docker/blob/master/samples/aspnetapp/README.md) \(英文\)。 特別是了解如何實作 HTTPS：
 

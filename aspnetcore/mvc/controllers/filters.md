@@ -4,14 +4,14 @@ author: ardalis
 description: 了解篩選條件的運作方式，以及如何在 ASP.NET Core 中使用它們。
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/08/2019
+ms.date: 09/28/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: 50b199744f32ad19335080da406db69665ec1ae9
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: ed48c2074360768b8d8c5af7057b353b00592394
+ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856151"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72037688"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -132,12 +132,12 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 | 序列 | 篩選條件範圍 | 篩選條件方法 |
 |:--------:|:------------:|:-------------:|
-| 1 | Global | `OnActionExecuting` |
+| 1 | 全域 | `OnActionExecuting` |
 | 2 | 控制器 | `OnActionExecuting` |
 | 3 | 方法 | `OnActionExecuting` |
 | 4 | 方法 | `OnActionExecuted` |
 | 5 | 控制器 | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| 6 | 全域 | `OnActionExecuted` |
 
 此順序顯示：
 
@@ -194,8 +194,8 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | 方法 | 0 | `OnActionExecuting` |
 | 2 | 控制器 | 1  | `OnActionExecuting` |
-| 3 | Global | 2  | `OnActionExecuting` |
-| 4 | Global | 2  | `OnActionExecuted` |
+| 3 | 全域 | 2  | `OnActionExecuting` |
+| 4 | 全域 | 2  | `OnActionExecuted` |
 | 5 | 控制器 | 1  | `OnActionExecuted` |
 | 6 | 方法 | 0  | `OnActionExecuted` |
 
@@ -437,9 +437,12 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/LoggingAddHeaderFilter.cs?name=snippet_ResultFilter)]
 
-執行的結果類型會取決於動作。 傳回檢視的動作會在執行中的 <xref:Microsoft.AspNetCore.Mvc.ViewResult> 裡包含處理中的所有 Razor。 API 方法可能在結果執行當中執行某種序列化。 深入了解[動作結果](xref:mvc/controllers/actions)
+執行的結果類型會取決於動作。 傳回檢視的動作會在執行中的 <xref:Microsoft.AspNetCore.Mvc.ViewResult> 裡包含處理中的所有 Razor。 API 方法可能在結果執行當中執行某種序列化。 深入瞭解[動作結果](xref:mvc/controllers/actions)。
 
-動作篩選條件只會針對成功的結果執行 - 動作或動作篩選條件會執行動作結果。 當例外狀況篩選條件處理例外狀況時，不會執行結果篩選條件。
+只有當動作或動作篩選準則產生動作結果時，才會執行結果篩選準則。 當下列情況時，不會執行結果篩選：
+
+* 授權篩選或資源篩選器會將管線短路。
+* 例外狀況篩選條件會產生動作結果來處理例外狀況。
 
 藉由將 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel?displayProperty=fullName> 設為 `true`，<xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuting*?displayProperty=fullName> 方法可以縮短動作結果和後續結果篩選條件的執行。 在縮短時寫入至回應物件，以避免產生空的回應。 在 `IResultFilter.OnResultExecuting` 中擲回例外狀況會：
 
@@ -471,12 +474,10 @@ If an exception was thrown **IN THE RESULT FILTER**, the response body is not se
 
 ### <a name="ialwaysrunresultfilter-and-iasyncalwaysrunresultfilter"></a>IAlwaysRunResultFilter 和 IAsyncAlwaysRunResultFilter
 
-<xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> 和 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> 介面會宣告針對所有動作結果執行的 <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> 實作。 篩選條件會套用至所有動作結果，除非：
+<xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> 和 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> 介面會宣告針對所有動作結果執行的 <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> 實作。 這包括由產生的動作結果：
 
-* 套用 <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter> 或 <xref:Microsoft.AspNetCore.Mvc.Filters.IAuthorizationFilter> 並縮短回應。
-* 例外狀況篩選條件會產生動作結果來處理例外狀況。
-
-`IExceptionFilter` 和 `IAuthorizationFilter` 以外的篩選條件並不會縮短 `IAlwaysRunResultFilter` 和 `IAsyncAlwaysRunResultFilter`。
+* 最少迴圈的授權篩選準則和資源篩選器。
+* 例外狀況篩選準則。
 
 例如，下列篩選一律會執行，並會在內容交涉失敗時，為動作結果 (<xref:Microsoft.AspNetCore.Mvc.ObjectResult>) 設定「422 無法處理的實體」狀態碼：
 

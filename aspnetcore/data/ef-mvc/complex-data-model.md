@@ -1,18 +1,18 @@
 ---
 title: 教學課程：建立複雜的資料模型 - ASP.NET MVC 搭配 EF Core
 description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
-author: tdykstra
+author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 85a11ba082fc8f6b364019f6cefcd5b1fe5a9215
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 313d951ccdd45ae1209ffd9612d24738822fbed8
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080466"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259604"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>教學課程：建立複雜的資料模型 - ASP.NET MVC 搭配 EF Core
 

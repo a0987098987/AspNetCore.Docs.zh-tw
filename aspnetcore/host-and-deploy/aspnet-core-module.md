@@ -5,14 +5,14 @@ description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/24/2019
+ms.date: 10/08/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 811aafce6686b446440b146efd7449b598ed1722
-ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
+ms.openlocfilehash: c1c34f368cb3f7767bf0f229ff70c5ab53c6005f
+ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248341"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165318"
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
@@ -79,13 +79,15 @@ ASP.NET Core 應用程式預設為同進程裝載模型。
 
 ### <a name="out-of-process-hosting-model"></a>跨處理序裝載模型
 
-若要設定跨進程裝載的應用程式，請將`<AspNetCoreHostingModel>`屬性的值設為`OutOfProcess` （同進程裝載是使用`InProcess`設定，這是預設值）：
+若要設定跨進程裝載的應用程式，請在專案檔（ *.csproj*）中將 [`<AspNetCoreHostingModel>`] 屬性的值設為 `OutOfProcess`：
 
 ```xml
 <PropertyGroup>
   <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
 </PropertyGroup>
 ```
+
+同進程裝載是使用 `InProcess` 來設定，這是預設值。
 
 使用 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器而不是 IIS HTTP 伺服器 (`IISHttpServer`)。
 
@@ -182,11 +184,11 @@ ASP.NET Core 模組也可以：
 | `stdoutLogEnabled` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會將 **processPath** 中所指定處理序的 **stdout** 和 **stderr** 重新導向到 **stdoutLogFile** 中所指定的檔案。</p> | `false` |
 | `stdoutLogFile` | <p>選擇性字串屬性。</p><p>指定記錄來自 **processPath** 中所指定處理序之 **stdout** 和 **stderr** 的相對或絕對檔案路徑。 相對路徑是相對於網站的根目錄。 所有開頭為 `.` 的路徑都是網站根目錄的相對路徑，而所有其他路徑則視為絕對路徑。 建立記錄檔後，模組會建立路徑中提供的所有資料夾。 使用底線分隔符號，時間戳記、處理序識別碼及副檔名 ( *.log*) 會新增至 **stdoutLogFile** 路徑的最後一個區段。 如果提供 `.\logs\stdout` 作為值，在 2018 年 2 月 5 日的 19:41:32 以處理序識別碼 1934 進行儲存時，範例 stdout 記錄檔就會以 *stdout_20180205194132_1934.log* 的形式儲存在 [logs] 資料夾中。</p> | `aspnetcore-stdout` |
 
-### <a name="setting-environment-variables"></a>設定環境變數
+### <a name="set-environment-variables"></a>設定環境變數
 
 您可以在 `processPath` 屬性中為處理序指定環境變數。 請使用 `<environmentVariables>` 集合元素的 `<environmentVariable>` 子元素來指定環境變數。 本節中所設定環境變數的優先順序會高於系統環境變數。
 
-下列範例會設定兩個環境變數。 `ASPNETCORE_ENVIRONMENT` 會將應用程式的環境設定為 `Development`。 開發人員可以在 *web.config* 檔案中暫時設定這個值，以在進行應用程式例外狀況偵錯時，強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入。 `CONFIG_DIR` 是一個使用者定義的環境變數範例，其中開發人員已撰寫程式碼，會在啟動時讀取值來構成用以載入應用程式設定檔的路徑。
+下列範例會在*web.config 中設定*兩個環境變數。`ASPNETCORE_ENVIRONMENT` 會將應用程式的環境設定為 `Development`。 開發人員可以在 *web.config* 檔案中暫時設定這個值，以在進行應用程式例外狀況偵錯時，強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入。 `CONFIG_DIR` 是一個使用者定義的環境變數範例，其中開發人員已撰寫程式碼，會在啟動時讀取值來構成用以載入應用程式設定檔的路徑。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -245,7 +247,7 @@ ASP.NET Core 模組也可以：
 
 若 `stdoutLogEnabled` 為 false，會擷取在應用程式啟動時發生的錯誤，並發出最大 30KB 的事件記錄檔。 啟動之後，就會捨棄其他的記錄檔。
 
-下列範例 `aspNetCore` 元素會設定 Azure App Service 中所裝載應用程式的 stdout 記錄。 系統可接受使用本機路徑或網路共用路徑來進行本機記錄。 請確認 AppPool 使用者身分識別具備所提供路徑的寫入權限。
+*Web.config 檔案*中的下列範例 `aspNetCore` 元素會針對 Azure App Service 中裝載的應用程式，設定 stdout 記錄。 系統可接受使用本機路徑或網路共用路徑來進行本機記錄。 請確認 AppPool 使用者身分識別具備所提供路徑的寫入權限。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -304,7 +306,7 @@ ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<han
 
 *僅適用于使用同進程裝載模型時。*
 
-使用 `stackSize` 設定以位元組為單位來設定受控堆疊的大小。 預設大小為 `1048576` 個位元組 (1 MB)。
+使用*web.config*中的 `stackSize` 設定（以位元組為單位），來設定受控堆疊大小。預設大小為 `1048576` 個位元組 (1 MB)。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -392,7 +394,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema_v2.xml
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 **IIS**
 
@@ -777,7 +779,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema_v2.xml
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 **IIS**
 
@@ -999,7 +1001,7 @@ ASP.NET Core 模組安裝程式會以 **TrustedInstaller** 帳戶的權限執行
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema.xml
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 **IIS**
 

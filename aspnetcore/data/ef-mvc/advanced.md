@@ -1,18 +1,18 @@
 ---
 title: 教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
 description: 本教學課程介紹一些實用主題，這些主題超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念。
-author: tdykstra
+author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 7a67efad187f29773c1cac7a5a2457d02080114b
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: d4a2aad6d93cc9a53c730323620de59fead6d5ab
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080540"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259598"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
 
@@ -173,7 +173,7 @@ Entity Framework 藉由比較實體的目前值與原始值，判斷實體如何
 
 * ChangeTracker.Entries
 
-如果您追蹤的實體數量龐大，而且您在迴圈中呼叫其中一種方法多次，您可能會透過使用 `ChangeTracker.AutoDetectChangesEnabled` 屬性暫時關閉自動變更偵測，使效能獲得顯著改善。 例如：
+如果您追蹤的實體數量龐大，而且您在迴圈中呼叫其中一種方法多次，您可能會透過使用 `ChangeTracker.AutoDetectChangesEnabled` 屬性暫時關閉自動變更偵測，使效能獲得顯著改善。 例如:
 
 ```csharp
 _context.ChangeTracker.AutoDetectChangesEnabled = false;

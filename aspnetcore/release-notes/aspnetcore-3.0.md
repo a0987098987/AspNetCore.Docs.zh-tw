@@ -4,14 +4,14 @@ author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.0 中的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/26/2019
+ms.date: 10/08/2019
 uid: aspnetcore-3.0
-ms.openlocfilehash: ec3de5b35883752b7b3dbefceccec55da3986f39
-ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
+ms.openlocfilehash: 90433773bec2efc5a2bc39d71ce7ae324b922046
+ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703671"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165361"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>3\.0 ASP.NET Core 的新功能
 
@@ -70,15 +70,15 @@ Blazor 中的元件通常是使用 Razor 語法（這是 HTML 和C#的自然 ble
 
 ASP.NET Core 3.0 中的 gRPC 功能包括：
 
-* [Grpc. AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore) &ndash;用來裝載 Grpc 服務的 ASP.NET Core 架構。 ASP.NET Core 上的 gRPC 與標準 ASP.NET Core 功能整合，例如記錄、相依性插入（DI）、驗證和授權。
-* [Grpc .net. 用戶端](https://www.nuget.org/packages/Grpc.Net.Client) &ndash; ： .net Core 的 Grpc 用戶端，建基於`HttpClient`熟悉的。
-* [Grpc .net. ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) &ndash; Grpc 用戶端與`HttpClientFactory`整合。
+* [Grpc. AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore) &ndash; 用來裝載 Grpc 服務的 ASP.NET Core 架構。 ASP.NET Core 上的 gRPC 與標準 ASP.NET Core 功能整合，例如記錄、相依性插入（DI）、驗證和授權。
+* [Grpc .net。用戶端](https://www.nuget.org/packages/Grpc.Net.Client)&ndash; Grpc 用戶端，適用于 .net Core，以熟悉的 `HttpClient` 為基礎。
+* [Grpc .net. ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) &ndash; Grpc 與 `HttpClientFactory` 的用戶端整合。
 
 如需詳細資訊，請參閱<xref:grpc/index>。
 
 ## <a name="signalr"></a>SignalR
 
-如需遷移指示，請參閱[更新 SignalR 程式碼](xref:migration/22-to-30#signalr)。 SignalR 現在會`System.Text.Json`使用來序列化/還原序列化 JSON 訊息。 如需還原`Newtonsoft.Json`為基礎之序列化程式的指示，請參閱[切換至 Newtonsoft。](xref:migration/22-to-30#switch-to-newtonsoftjson)
+如需遷移指示，請參閱[更新 SignalR 程式碼](xref:migration/22-to-30#signalr)。 SignalR 現在會使用 `System.Text.Json` 來序列化/還原序列化 JSON 訊息。 如需還原 `Newtonsoft.Json` 型序列化程式的指示，請參閱[切換至 Newtonsoft。](xref:migration/22-to-30#switch-to-newtonsoftjson)
 
 在適用于 SignalR 的 JavaScript 和 .NET 用戶端中，已加入自動重新連接的支援。 根據預設，用戶端會嘗試立即重新連線，並在2、10和30秒後重試（如有必要）。 如果用戶端成功重新連接，則會收到新的連線識別碼。 自動重新連線是加入宣告的：
 
@@ -110,7 +110,7 @@ const connection = new signalR.HubConnectionBuilder()
 * `onreconnecting`:讓開發人員有機會停用 UI，或讓使用者知道應用程式已離線。
 * `onreconnected`:讓開發人員有機會在連接重新建立後更新 UI。
 
-下列程式碼會`onreconnecting`在嘗試連接時使用來更新 UI：
+下列程式碼會在嘗試連接時，使用 `onreconnecting` 來更新 UI：
 
 ```javascript
 connection.onreconnecting((error) => {
@@ -121,7 +121,7 @@ connection.onreconnecting((error) => {
 });
 ```
 
-下列程式碼會`onreconnected`使用來更新連接上的 UI：
+下列程式碼會使用 `onreconnected` 來更新連接上的 UI：
 
 ```javascript
 connection.onreconnected((connectionId) => {
@@ -132,7 +132,7 @@ connection.onreconnected((connectionId) => {
 });
 ```
 
-當中樞方法需要授權時，SignalR 3.0 和更新版本會將自訂資源提供給授權處理常式。 資源是的實例`HubInvocationContext`。 `HubInvocationContext`包含：
+當中樞方法需要授權時，SignalR 3.0 和更新版本會將自訂資源提供給授權處理常式。 資源是 `HubInvocationContext` 的實例。 @No__t-0 包含：
 
 * `HubCallerContext`
 * 所叫用之中樞方法的名稱。
@@ -174,16 +174,16 @@ public class DomainRestrictedRequirement :
 }
 ```
 
-在上述程式碼中`DomainRestrictedRequirement` ，會作為自`IAuthorizationRequirement`定義。 因為傳入`HubInvocationContext`的是資源參數，所以內部邏輯可以：
+在上述程式碼中，`DomainRestrictedRequirement` 會作為自訂 `IAuthorizationRequirement`。 因為傳入的是 `HubInvocationContext` 資源參數，所以內部邏輯可以：
 
 * 檢查正在呼叫中樞的內容。
 * 請決定是否要讓使用者執行個別的中樞方法。
 
-您可以使用程式碼在執行時間檢查的原則名稱來裝飾個別的中樞方法。 當用戶端嘗試呼叫個別的中樞方法時`DomainRestrictedRequirement` ，處理常式會執行並控制方法的存取。 根據`DomainRestrictedRequirement`控制項存取的方式：
+您可以使用程式碼在執行時間檢查的原則名稱來裝飾個別的中樞方法。 當用戶端嘗試呼叫個別的中樞方法時，@no__t 0 處理常式會執行並控制方法的存取。 根據 @no__t 0 控制存取的方式：
 
-* 所有登入的使用者都可以呼叫`SendMessage`方法。
-* 只有已使用`@jabbr.net`電子郵件地址登入的使用者可以查看使用者的歷程記錄。
-* 僅`bob42@jabbr.net`能禁止來自聊天室的使用者。
+* 所有登入的使用者都可以呼叫 `SendMessage` 方法。
+* 只有使用 @no__t 0 電子郵件地址登入的使用者，才能夠查看使用者的歷程記錄。
+* 只有 `bob42@jabbr.net` 可以禁止來自聊天室的使用者。
 
 ```csharp
 [Authorize]
@@ -205,11 +205,11 @@ public class ChatHub : Hub
 }
 ```
 
-建立原則`DomainRestricted`可能牽涉到：
+建立 @no__t 0 原則可能牽涉到：
 
 * 在*Startup.cs*中，新增原則。
-* 提供自訂`DomainRestrictedRequirement`需求做為參數。
-* 向`DomainRestricted`授權中介軟體註冊。
+* 提供自訂的 `DomainRestrictedRequirement` 需求做為參數。
+* 向授權中介軟體註冊 `DomainRestricted`。
 
 ```csharp
 services
@@ -245,7 +245,7 @@ app.UseRouting(routes =>
 });
 ```
 
-SignalR 3.0 中樞可以透過端點路由來路由傳送。 使用端點路由，通常可以在中`UseRouting`設定所有路由：
+SignalR 3.0 中樞可以透過端點路由來路由傳送。 使用端點路由時，您通常可以在 `UseRouting` 中設定所有路由：
 
 ```csharp
 app.UseRouting(routes =>
@@ -257,7 +257,7 @@ app.UseRouting(routes =>
 
 已新增 ASP.NET Core 3.0 SignalR：
 
-用戶端對伺服器串流。 使用用戶端對伺服器串流，伺服器端方法可以接受`IAsyncEnumerable<T>`或`ChannelReader<T>`的實例。 在下列C#範例中，中樞`UploadStream`上的方法會接收來自用戶端的字串資料流程：
+用戶端對伺服器串流。 使用用戶端對伺服器串流，伺服器端方法可以接受 `IAsyncEnumerable<T>` 或 `ChannelReader<T>` 的實例。 在下列C#範例中，中樞上的 @no__t 1 方法會接收來自用戶端的字串資料流程：
 
 ```csharp
 public async Task UploadStream(IAsyncEnumerable<string> stream)
@@ -269,9 +269,9 @@ public async Task UploadStream(IAsyncEnumerable<string> stream)
 }
 ```
 
-.Net 用戶端應用程式可以傳遞`IAsyncEnumerable<T>`或`ChannelReader<T>`實例`UploadStream`作為`stream`上述中樞方法的引數。
+.NET 用戶端應用程式可以傳遞 `IAsyncEnumerable<T>` 或 @no__t 1 實例，做為上述 `UploadStream` 中樞方法的 `stream` 引數。
 
-在`for`迴圈完成且區域函式結束後，就會傳送資料流程完成：
+在 `for` 迴圈完成且區域函式結束後，就會傳送資料流程完成：
 
 ```csharp
 async IAsyncEnumerable<string> clientStreamData()
@@ -286,14 +286,14 @@ async IAsyncEnumerable<string> clientStreamData()
 await connection.SendAsync("UploadStream", clientStreamData());
 ```
 
-JavaScript 用戶端應用程式會`Subject`將 SignalR （或[RxJS 主體](https://rxjs.dev/api/index/class/Subject)）用於`stream`上述`UploadStream`中樞方法的引數。
+JavaScript 用戶端應用程式會針對上述 `UploadStream` 中樞方法的 `stream` 引數使用 SignalR `Subject` （或[RxJS 主體](https://rxjs.dev/api/index/class/Subject)）。
 
 ```javascript
 let subject = new signalR.Subject();
 await connection.send("StartStream", "MyAsciiArtStream", subject);
 ```
 
-JavaScript 程式碼可以使用`subject.next`方法來處理已捕捉並準備傳送至伺服器的字串。
+JavaScript 程式碼可以使用 `subject.next` 方法來處理已捕捉並準備傳送至伺服器的字串。
 
 ```javascript
 subject.next("example");
@@ -302,13 +302,13 @@ subject.complete();
 
 使用上述兩個程式碼片段這類程式碼，可以建立即時串流體驗。
 
-### <a name="new-json-serialization"></a>新的 JSON 序列化
+## <a name="new-json-serialization"></a>新的 JSON 序列化
 
-ASP.NET Core 3.0 現在會<xref:System.Text.Json>使用 JSON 序列化的預設值：
+ASP.NET Core 3.0 現在會使用預設 <xref:System.Text.Json> 來進行 JSON 序列化：
 
 * 非同步讀取和寫入 JSON。
 * 已針對 UTF-8 文字進行優化。
-* 通常比`Newtonsoft.Json`更高的效能。
+* 通常高於 `Newtonsoft.Json` 的效能。
 
 若要將 Json.NET 新增至 ASP.NET Core 3.0，請參閱[新增 Newtonsoft 以 json 為基礎的 json 格式支援](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support)。
 
@@ -316,8 +316,8 @@ ASP.NET Core 3.0 現在會<xref:System.Text.Json>使用 JSON 序列化的預設�
 
 下列清單包含新的 Razor 指示詞：
 
-* [@attribute](xref:mvc/views/razor#attribute)&ndash; 指示詞會將指定的屬性套用至所產生頁面`@attribute`或視圖的類別。 例如： `@attribute [Authorize]` 。
-* [@implements](xref:mvc/views/razor#implements)&ndash; 指示詞會為所產生的`@implements`類別實作為介面。 例如： `@implements IDisposable` 。
+* [@attribute](xref:mvc/views/razor#attribute) &ndash; `@attribute` 指示詞會將指定的屬性套用至所產生頁面或視圖的類別。 例如，`@attribute [Authorize]`。
+* [@implements](xref:mvc/views/razor#implements) &ndash; `@implements` 指示詞會為所產生的類別執行介面。 例如，`@implements IDisposable`。
 
 ## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 支援 web Api 和 Spa 的驗證和授權
 
@@ -335,8 +335,8 @@ ASP.NET Core 3.0 現在會<xref:System.Text.Json>使用 JSON 序列化的預設�
 憑證驗證需要：
 
 * 正在設定伺服器以接受憑證。
-* 在中`Startup.Configure`新增驗證中介軟體。
-* 在中`Startup.ConfigureServices`新增憑證驗證服務。
+* 在 `Startup.Configure` 中新增驗證中介軟體。
+* 在 `Startup.ConfigureServices` 中新增憑證驗證服務。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -392,38 +392,38 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Web UI 範本（Razor Pages、具有控制器和 views 的 MVC）已移除下列各項：
 
-* Cookie 同意 UI 已不再包含在內。 若要在 ASP.NET Core 3.0 範本產生的應用程式中啟用 cookie 同意功能<xref:security/gdpr>，請參閱。
+* Cookie 同意 UI 已不再包含在內。 若要在 ASP.NET Core 3.0 範本產生的應用程式中啟用 cookie 同意功能，請參閱 <xref:security/gdpr>。
 * 腳本和相關的靜態資產現在會當做本機檔案來參考，而不是使用 Cdn。 如需詳細資訊，請參閱[腳本和相關靜態資產現在會當做本機檔案參考，而不是根據目前的環境使用 cdn （aspnet/AspNetCore #14350）](https://github.com/aspnet/AspNetCore.Docs/issues/14350)。
 
 Angular 範本已更新為使用 Angular 8。
 
-根據預設，Razor 類別庫（RCL）範本預設為 Razor 元件開發。 Visual Studio 中的新範本選項會提供頁面和視圖的範本支援。 從命令 shell 中的範本建立 RCL 時，請傳遞`-support-pages-and-views`選項（`dotnet new razorclasslib -support-pages-and-views`）。
+根據預設，Razor 類別庫（RCL）範本預設為 Razor 元件開發。 Visual Studio 中的新範本選項會提供頁面和視圖的範本支援。 從命令 shell 中的範本建立 RCL 時，請傳遞 `--support-pages-and-views` 選項（`dotnet new razorclasslib --support-pages-and-views`）。
 
 ## <a name="generic-host"></a>一般主機
 
-ASP.NET Core 3.0 範本會使用<xref:fundamentals/host/generic-host>。 先前使用<xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>的版本。 使用 .net Core 泛型主機（<xref:Microsoft.Extensions.Hosting.HostBuilder>）可讓 ASP.NET Core 應用程式與非 web 特定的其他伺服器案例更緊密整合。 如需詳細資訊，請參閱[HostBuilder 取代 WebHostBuilder](xref:migration/22-to-30?view=aspnetcore-2.2#hostbuilder-replaces-webhostbuilder)。
+ASP.NET Core 3.0 範本會使用 <xref:fundamentals/host/generic-host>。 先前使用的版本 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>。 使用 .NET Core 泛型主機（<xref:Microsoft.Extensions.Hosting.HostBuilder>）可讓 ASP.NET Core 應用程式與非 web 特定的其他伺服器案例更緊密整合。 如需詳細資訊，請參閱[HostBuilder 取代 WebHostBuilder](xref:migration/22-to-30?view=aspnetcore-2.2#hostbuilder-replaces-webhostbuilder)。
 
 ### <a name="host-configuration"></a>主機組態
 
-在 ASP.NET Core 3.0 發行之前， `ASPNETCORE_`已載入前面加上的環境變數，以進行 Web 主機的主機設定。 在3.0 中`AddEnvironmentVariables` ，是用來載入`DOTNET_`前面加上之主機`CreateDefaultBuilder`設定的環境變數。
+在 ASP.NET Core 3.0 發行之前，會載入前面加上 `ASPNETCORE_` 的環境變數，以進行 Web 主機的主機設定。 在3.0 中，`AddEnvironmentVariables` 用來載入前面加上 `DOTNET_` 的環境變數，以 `CreateDefaultBuilder` 進行主機設定。
 
 ### <a name="changes-to-startup-contructor-injection"></a>啟動 contructor 插入的變更
 
-泛型主機僅支援下列型別來`Startup`插入函式：
+泛型主機僅支援下列類型的 `Startup` 的函式插入：
 
 * <xref:Microsoft.Extensions.Hosting.IHostEnvironment>
 * `IWebHostEnvironment`
 * <xref:Microsoft.Extensions.Configuration.IConfiguration>
 
-所有服務仍然可以直接插入做為方法的`Startup.Configure`引數。 如需詳細資訊，請參閱[泛型主機限制啟動函數插入（aspnet/公告 #353）](https://github.com/aspnet/Announcements/issues/353)。
+所有服務仍然可以直接插入 `Startup.Configure` 方法的引數。 如需詳細資訊，請參閱[泛型主機限制啟動函數插入（aspnet/公告 #353）](https://github.com/aspnet/Announcements/issues/353)。
 
 ## <a name="kestrel"></a>Kestrel
 
-* Kestrel 設定已更新，可供遷移至一般主機。 在3.0 中，Kestrel 是在所提供`ConfigureWebHostDefaults`的 web 主機產生器上設定。
+* Kestrel 設定已更新，可供遷移至一般主機。 在3.0 中，Kestrel 是在 `ConfigureWebHostDefaults` 所提供的 web 主機產生器上設定。
 * 連接介面卡已從 Kestrel 中移除，並以連線中介軟體取代，類似于 ASP.NET Core 管線中的 HTTP 中介軟體，但較低層級的連接。
-* Kestrel 傳輸層已公開為中`Connections.Abstractions`的公用介面。
+* Kestrel 傳輸層已公開為 `Connections.Abstractions` 中的公用介面。
 * 標頭和尾端之間的多義性已藉由將尾端標頭移至新集合來解決。
-* 同步 IO api （例如`HttpRequest.Body.Read`）是執行緒耗盡的常見來源，導致應用程式當機。 在3.0 中`AllowSynchronousIO` ，預設為停用。
+* 同步 IO Api （例如 `HttpRequest.Body.Read`）是執行緒耗盡的常見來源，因而導致應用程式當機。 在3.0 中，預設會停用 `AllowSynchronousIO`。
 
 如需詳細資訊，請參閱<xref:migration/22-to-30#kestrel>。
 
@@ -433,7 +433,7 @@ ASP.NET Core 3.0 範本會使用<xref:fundamentals/host/generic-host>。 先前�
 
 ## <a name="eventcounters-on-request"></a>要求 EventCounters
 
-主控 EventSource `Microsoft.AspNetCore.Hosting`會發出下列與連入要求<xref:System.Diagnostics.Tracing.EventCounter>相關的新類型：
+主控 EventSource （`Microsoft.AspNetCore.Hosting`）會發出下列與連入要求相關的新 @no__t 1 類型：
 
 * `requests-per-second`
 * `total-requests`
@@ -444,7 +444,7 @@ ASP.NET Core 3.0 範本會使用<xref:fundamentals/host/generic-host>。 先前�
 
 端點路由可讓架構（例如 MVC）適用于中介軟體，已增強：
 
-* 中介軟體和端點的順序可在的要求處理管線`Startup.Configure`中設定。
+* 中介軟體和端點的順序可在 `Startup.Configure` 的要求處理管線中設定。
 * 端點和中介軟體會與其他以 ASP.NET Core 為基礎的技術（例如健康狀態檢查）妥善地撰寫。
 * 端點可以在中介軟體和 MVC 中執行原則，例如 CORS 或授權。
 * 篩選器和屬性可以放在控制器中的方法上。
@@ -453,7 +453,7 @@ ASP.NET Core 3.0 範本會使用<xref:fundamentals/host/generic-host>。 先前�
 
 ## <a name="health-checks"></a>健康情況檢查
 
-健全狀況檢查會搭配泛型主機使用端點路由。 在`Startup.Configure`中， `MapHealthChecks`使用端點 URL 或相對路徑在端點產生器上呼叫：
+健全狀況檢查會搭配泛型主機使用端點路由。 在 `Startup.Configure` 中，使用端點 URL 或相對路徑，在端點產生器上呼叫 `MapHealthChecks`：
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -475,7 +475,7 @@ app.UseEndpoints(endpoints =>
 
 ## <a name="pipes-on-httpcontext"></a>HttpCoNtext 上的管道
 
-現在可以使用 <xref:System.IO.Pipelines> API 讀取要求本文與寫入回應本文。 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` 屬性提供可用於讀取要求本文的 <xref:System.IO.Pipelines.PipeReader>。 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` 屬性提供可用來寫入回應本文的 <xref:System.IO.Pipelines.PipeWriter>。`HttpRequest.BodyReader` 類似於`HttpRequest.Body` 資料流。`HttpResponse.BodyWriter` 類似於 `HttpResponse.Body` 資料流。
+現在可以使用 <xref:System.IO.Pipelines> API 來讀取要求本文並寫入回應主體。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` 屬性提供可用來讀取要求主體的 <xref:System.IO.Pipelines.PipeReader>。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` 屬性提供可用來寫入回應主體的 <xref:System.IO.Pipelines.PipeWriter>。 `HttpRequest.BodyReader` 是 `HttpRequest.Body` 資料流程的類比。 `HttpResponse.BodyWriter` 是 `HttpResponse.Body` 資料流程的類比。
 
 <!-- indirectly related, https://github.com/dotnet/docs/pull/14414 won't be published by 9/23  -->
 
@@ -495,9 +495,9 @@ app.UseEndpoints(endpoints =>
 
 ## <a name="forwarded-headers-middleware-improvements"></a>轉送的標頭中介軟體改善
 
-在舊版的 ASP.NET Core 中，當<xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>部署<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>到 Azure Linux 或 IIS 以外的任何反向 proxy 後方時，呼叫和會有問題。 先前版本的修正已記載于[轉送 Linux 和非 IIS 反向 proxy 的配置](xref:host-and-deploy/proxy-load-balancer#forward-the-scheme-for-linux-and-non-iis-reverse-proxies)中。
+在舊版的 ASP.NET Core 中，當部署到 Azure Linux 或 IIS 以外的任何反向 proxy 後方時，呼叫 <xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*> 和 <xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*> 會有問題。 先前版本的修正已記載于[轉送 Linux 和非 IIS 反向 proxy 的配置](xref:host-and-deploy/proxy-load-balancer#forward-the-scheme-for-linux-and-non-iis-reverse-proxies)中。
 
-此案例已在 ASP.NET Core 3.0 中修正。 當`ASPNETCORE_FORWARDEDHEADERS_ENABLED`環境變數設定為`true`時，主機會啟用[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options)。 `ASPNETCORE_FORWARDEDHEADERS_ENABLED`在我們的`true`容器映射中設定為。
+此案例已在 ASP.NET Core 3.0 中修正。 當 `ASPNETCORE_FORWARDEDHEADERS_ENABLED` 環境變數設定為 `true` 時，主機會啟用[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options)。 在我們的容器映射中，`ASPNETCORE_FORWARDEDHEADERS_ENABLED` 設定為 `true`。
 
 ## <a name="performance-improvements"></a>效能改善
 
@@ -518,7 +518,7 @@ ASP.NET Core 3.0 包含許多增強功能，可減少記憶體使用量並改善
 
 ## <a name="use-the-aspnet-core-shared-framework"></a>使用 ASP.NET Core 共用架構
 
-[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)中所包含的 ASP.NET Core 3.0 共用架構，不再需要專案檔中的明確`<PackageReference />`元素。 在專案檔中使用`Microsoft.NET.Sdk.Web` SDK 時，會自動參考共用架構：
+[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)中所包含的 ASP.NET Core 3.0 共用架構，不再需要專案檔中明確的 `<PackageReference />` 元素。 在專案檔中使用 `Microsoft.NET.Sdk.Web` SDK 時，會自動參考共用架構：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -528,7 +528,7 @@ ASP.NET Core 3.0 包含許多增強功能，可減少記憶體使用量並改善
 
 從 ASP.NET Core 3.0 共用架構中移除的最顯著元件如下：
 
-* [Newtonsoft. Json](https://www.nuget.org/packages/Newtonsoft.Json/) （Json.NET）。 若要將 Json.NET 新增至 ASP.NET Core 3.0，請參閱[新增 Newtonsoft 以 json 為基礎的 json 格式支援](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support)。 ASP.NET Core 3.0 引進`System.Text.Json`讀取和寫入 JSON。 如需詳細資訊，請參閱本檔中的[新 JSON 序列化](#new-json-serialization)。
+* [Newtonsoft. Json](https://www.nuget.org/packages/Newtonsoft.Json/) （Json.NET）。 若要將 Json.NET 新增至 ASP.NET Core 3.0，請參閱[新增 Newtonsoft 以 json 為基礎的 json 格式支援](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support)。 ASP.NET Core 3.0 引進了 `System.Text.Json`，以供讀取和寫入 JSON。 如需詳細資訊，請參閱本檔中的[新 JSON 序列化](#new-json-serialization)。
 * [Entity Framework Core](/ef/core/)
 
 如需從共用架構中移除之元件的完整清單，請參閱[從 3.0 AspNetCore 中移除的元件](https://github.com/aspnet/AspNetCore/issues/3755)。 如需這項變更動機的詳細資訊，請參閱[3.0 中 AspNetCore 應用程式的重大變更](https://github.com/aspnet/Announcements/issues/325)，以及[第一次介紹 ASP.NET Core 3.0](https://devblogs.microsoft.com/aspnet/a-first-look-at-changes-coming-in-asp-net-core-3-0/)中的變更。

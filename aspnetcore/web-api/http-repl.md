@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/07/2019
 uid: web-api/http-repl
-ms.openlocfilehash: c845c28210d6defcb70a520f176b64986ae3d4a6
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: bb3757f51487a307ebfb97452b80995f84e95e4b
+ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007440"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72037719"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -790,25 +790,25 @@ options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:
 
 若要設定 HTTP 要求標頭，請使用下列其中一個方法：
 
-1. 與 HTTP 要求一同設定。 例如:
+* 與 HTTP 要求一同設定。 例如:
 
-  ```console
-  https://localhost:5001/people~ post -h Content-Type=application/json
-  ```
+    ```console
+    https://localhost:5001/people~ post -h Content-Type=application/json
+    ```
+    
+    若使用上述方法，則各相異的 HTTP 要求標頭都需要自己的 `-h` 選項。
 
-  若使用上述方法，則各相異的 HTTP 要求標頭都需要自己的 `-h` 選項。
+* 於傳送 HTTP 要求之前設定。 例如:
 
-1. 於傳送 HTTP 要求之前設定。 例如:
-
-  ```console
-  https://localhost:5001/people~ set header Content-Type application/json
-  ```
-
-  若在傳送要求之前設定標頭，則標頭會保留命令殼層工作階段的持續時間設定。 若要清除標頭，請提供空白值。 例如:
-
-  ```console
-  https://localhost:5001/people~ set header Content-Type
-  ```
+    ```console
+    https://localhost:5001/people~ set header Content-Type application/json
+    ```
+    
+    若在傳送要求之前設定標頭，則標頭會保留命令殼層工作階段的持續時間設定。 若要清除標頭，請提供空白值。 例如:
+    
+    ```console
+    https://localhost:5001/people~ set header Content-Type
+    ```
 
 ## <a name="test-secured-endpoints"></a>測試受保護的端點
 

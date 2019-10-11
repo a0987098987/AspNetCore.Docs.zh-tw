@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 中介軟體和要求管線。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/22/2019
+ms.date: 10/08/2019
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 674e89cd22ce113474dfbba44b57d9255446fc3e
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
-ms.translationtype: MT
+ms.openlocfilehash: 5d02e1eb37693881d5b1855e1ed163590d8a44d3
+ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773786"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165315"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -68,18 +68,30 @@ ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個�
 1. 例外狀況/錯誤處理
    * 當應用程式在開發環境中執行時：
      * 開發人員例外狀況頁面中介軟體 (<xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage*>) 會回報應用程式執行階段錯誤。
-     * 資料錯誤頁面中介軟體 (<xref:Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage*>) 會回報資料庫執行階段錯誤。
+     * 資料庫錯誤頁面中介軟體會報告資料庫執行階段錯誤。
    * 當應用程式在生產環境中執行時：
      * 例外狀況處理常式中介軟體 (<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*>) 會攔截在下列中介軟體中擲回的例外狀況。
      * HTTP 靜態傳輸安全性通訊協定 (HSTS) 中介軟體 (<xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>) 會新增 `Strict-Transport-Security` 標頭。
 1. HTTPS 重新導向中介軟體 (<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>) 會將 HTTP 要求重新導向到 HTTPS。
 1. 靜態檔案中介軟體 (<xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>) 會傳回靜態檔案並縮短進一步的要求處理時間。
 1. Cookie 原則中介軟體 (<xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*>) 會使應用程式符合歐盟一般資料保護歸調 (GDPR) 法規。
-1. 路由中介軟體`UseRouting`（）以路由傳送要求。
+1. 路由中介軟體（`UseRouting`）以路由傳送要求。
 1. 驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>) 會嘗試在允許使用者存取安全資源之前先驗證使用者。
-1. 授權中介軟體`UseAuthorization`（）會授權使用者存取安全的資源。
+1. 授權中介軟體（`UseAuthorization`）會授權使用者存取安全的資源。
 1. 工作階段中介軟體 (<xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession*>) 會建立並維護工作階段狀態。 若應用程式使用工作階段狀態，請在 Cookie 原則中介軟體之後、MVC 中介軟體之前呼叫工作階段中介軟體。
-1. 端點路由中介軟體`UseEndpoints` （ `MapRazorPages`含），以將 Razor Pages 端點新增至要求管線。
+1. 端點路由中介軟體（`UseEndpoints` 加 `MapRazorPages`），以將 Razor Pages 端點新增至要求管線。
+
+<!--
+
+FUTURE UPDATE
+
+On the next topic overhaul/release update, add API crosslink to "Database Error Page Middleware" in Item 1 of the list ...
+
+Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage*
+
+... when available via the API docs.
+
+-->
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

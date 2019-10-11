@@ -5,14 +5,14 @@ description: 瞭解如何在應用程式中路由傳送要求，以及關於 Nav
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/09/2019
 uid: blazor/routing
-ms.openlocfilehash: 76266aedd4655161f1f50a8beb0936660d452912
-ms.sourcegitcommit: 6d26ab647ede4f8e57465e29b03be5cb130fc872
+ms.openlocfilehash: 8f48112237e6dd3fed88404c53b8d7d9137ef6ff
+ms.sourcegitcommit: 0b8a7571bf7acf85bf16118acb2435001cbe4b5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71999823"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72236534"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -85,7 +85,13 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 
 使用 `AdditionalAssemblies` 參數來指定搜尋可路由的元件時，要考慮的 `Router` 元件的其他元件。 除了 @no__t 的 4.9.0-指定元件以外，還會考慮指定的元件。 在下列範例中，`Component1` 是在參考的類別庫中定義的可路由元件。 下列 `AdditionalAssemblies` 範例會導致 `Component1` 的路由支援：
 
-< 路由器 AppAssembly = "typeof （程式）。元件 "AdditionalAssemblies =" new [] {typeof （Component1）。Assembly} > ...</Router>
+```cshtml
+<Router
+    AppAssembly="typeof(Program).Assembly"
+    AdditionalAssemblies="new[] { typeof(Component1).Assembly }>
+    ...
+</Router>
+```
 
 ## <a name="route-parameters"></a>路由參數
 

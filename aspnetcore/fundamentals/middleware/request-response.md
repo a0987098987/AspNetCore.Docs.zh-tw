@@ -20,7 +20,7 @@ ms.locfileid: "71081677"
 
 此文章說明如何讀取要求本文及寫入回應本文。 撰寫中介軟體時，可能需要這些作業的程式碼。 在撰寫中介軟體之外，自訂程式碼通常不是必要的，因為作業是由 MVC 和 Razor Pages 處理。
 
-要求和回應主體有兩個抽象概念：<xref:System.IO.Stream> 和 <xref:System.IO.Pipelines.Pipe>。針對要求讀取，[HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) 是 <xref:System.IO.Stream>，而 `HttpRequest.BodyReader` 是 <xref:System.IO.Pipelines.PipeReader>。針對回應寫入，[HttpResponse](xref:Microsoft.AspNetCore.Http.HttpResponse.Body) 是 <xref:System.IO.Stream>，而 `HttpResponse.BodyWriter` 是<xref:System.IO.Pipelines.PipeWriter>。
+要求和回應主體有兩個抽象概念： <xref:System.IO.Stream>和。 <xref:System.IO.Pipelines.Pipe> 對於要求讀取，[HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) 是 <xref:System.IO.Stream>，而 `HttpRequest.BodyReader` 是 <xref:System.IO.Pipelines.PipeReader>。 針對回應寫入， [HttpResponse](xref:Microsoft.AspNetCore.Http.HttpResponse.Body)是<xref:System.IO.Stream> <xref:System.IO.Pipelines.PipeWriter>，而`HttpResponse.BodyWriter`是。
 
 建議在資料流程上使用管線。 資料流可以更容易地用於一些簡單的作業，但管線具有效能優勢，並且更容易在大部分情況下使用。 ASP.NET Core 開始使用管線，而不是內部的資料流程。 範例包括：
 
@@ -72,11 +72,11 @@ ms.locfileid: "71081677"
 
 ## <a name="adapters"></a>配接器
 
- `Body` 和 `BodyReader/BodyWriter` 屬性都都適用於 `HttpRequest` 與 `HttpResponse`。當您將 `Body` 設定為不同的資料流時，配接器的新集合會自動將每個類型調整成同一種資料流。如果您將 `HttpRequest.Body` 設定為新的資料流，`HttpRequest.BodyReader` 會自動設為新的 `PipeReader` (它會封裝 `HttpRequest.Body`)。
- 
+和屬性都適用于`HttpRequest`和。 `HttpResponse` `BodyReader/BodyWriter` `Body` 當您將`Body`設定為不同的資料流程時，一組新的介面卡會自動將每個類型調整成另一種。 如果您將`HttpRequest.Body`設定為新的資料流程`HttpRequest.BodyReader` ，會自動設為包裝`PipeReader` `HttpRequest.Body`的新。
+
 ## <a name="startasync"></a>StartAsync
 
-`HttpResponse.StartAsync` 是用來指出標頭是不可修改的，且指出要執行 `OnStarting` 回呼。使用 Kestrel 做為伺服器時，在 `PipeReader` 之前呼叫 `StartAsync` 可確保 `GetMemory` 所傳回的記憶體屬於 Kestrel 的內部 <xref:System.IO.Pipelines.Pipe>，而不是屬於 外部緩衝區。
+`HttpResponse.StartAsync` 是用來指出標頭是不可修改的，且指出要執行 `OnStarting` 回呼。 使用 Kestrel 做為伺服器時，在 `PipeReader` 之前呼叫 `StartAsync`  可確保 `GetMemory` 所傳回的記憶體屬於 Kestrel 的內部 <xref:System.IO.Pipelines.Pipe>，而不是屬於 外部緩衝區。
 
 ## <a name="additional-resources"></a>其他資源
 

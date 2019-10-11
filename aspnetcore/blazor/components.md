@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/05/2019
 uid: blazor/components
-ms.openlocfilehash: 438b3802087e2ac3df4cbe69a700b878c1cbbf63
-ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
-ms.translationtype: HT
+ms.openlocfilehash: 3e0966bf978c99fc00db7682bea3292306cbb03c
+ms.sourcegitcommit: d81912782a8b0bd164f30a516ad80f8defb5d020
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037417"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72179030"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -194,30 +194,42 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 ## <a name="data-binding"></a>資料繫結
 
-元件和 DOM 元素的資料系結都是使用[@bind](xref:mvc/views/razor#bind)屬性來完成。 下列範例會將 [`_italicsCheck`] 欄位系結至核取方塊的已核取狀態：
+元件和 DOM 元素的資料系結都是使用[@bind](xref:mvc/views/razor#bind)屬性來完成。 下列範例會將 `CurrentValue` 屬性系結至文字方塊的值：
 
 ```cshtml
-<input type="checkbox" class="form-check-input" id="italicsCheck" 
-    @bind="_italicsCheck" />
+<input @bind="CurrentValue" />
+
+@code {
+    private string CurrentValue { get; set; }
+}
 ```
 
-選取並清除核取方塊時，會將屬性的值更新為 `true`，並分別 `false`。
+當文字方塊失去焦點時，就會更新屬性的值。
 
-只有在呈現元件時，才會在 UI 中更新此核取方塊，而不是回應變更屬性的值。 由於元件會在事件處理常式程式碼執行之後自行呈現，因此屬性更新通常會立即反映在 UI 中。
+只有在呈現元件時，才會更新 UI 中的文字方塊，而不會回應變更屬性的值。 由於元件會在事件處理常式程式碼執行之後自行呈現，因此在觸發事件處理常式之後，屬性更新*通常*會立即反映在 UI 中。
 
 使用 `@bind` 搭配 `CurrentValue` 屬性（`<input @bind="CurrentValue" />`）基本上等同于下列內容：
 
 ```cshtml
 <input value="@CurrentValue"
-    @onchange="@((ChangeEventArgs __e) => CurrentValue = __e.Value)" />
+    @onchange="@((ChangeEventArgs __e) => CurrentValue = 
+        __e.Value.ToString())" />
+        
+@code {
+    private string CurrentValue { get; set; }
+}
 ```
 
-當元件呈現時，輸入專案的 `value` 會來自 `CurrentValue` 屬性。 當使用者在文字方塊中輸入時，會引發 `onchange` 事件，而 `CurrentValue` 屬性會設定為變更的值。 事實上，程式碼產生稍微複雜一點，因為 @no__t 0 會處理一些執行型別轉換的情況。 就原則而言，`@bind` 會將運算式的目前值與 @no__t 1 屬性產生關聯，並使用已註冊的處理常式來處理變更。
+當元件呈現時，輸入專案的 `value` 會來自 `CurrentValue` 屬性。 當使用者在文字方塊中輸入並變更元素焦點時，`onchange` 事件會引發，而 `CurrentValue` 屬性會設定為變更的值。 實際上，程式碼產生更為複雜，因為 `@bind` 會處理類型轉換執行的情況。 就原則而言，`@bind` 會將運算式的目前值與 @no__t 1 屬性產生關聯，並使用已註冊的處理常式來處理變更。
 
 除了使用 `@bind` 語法處理 `onchange` 事件之外，也可以使用其他事件來系結屬性或欄位，方法是指定具有 `event` 參數（[@bind-value:event](xref:mvc/views/razor#bind)）的[@bind-value](xref:mvc/views/razor#bind)屬性。 下列範例會系結 `oninput` 事件的 `CurrentValue` 屬性：
 
 ```cshtml
 <input @bind-value="CurrentValue" @bind-value:event="oninput" />
+
+@code {
+    private string CurrentValue { get; set; }
+}
 ```
 
 不同于當元素失去焦點時引發的 `onchange`，`oninput` 會在文字方塊的值變更時引發。

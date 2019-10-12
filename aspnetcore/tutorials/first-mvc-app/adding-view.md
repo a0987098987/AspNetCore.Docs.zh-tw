@@ -5,12 +5,12 @@ description: 將檢視新增至簡易的 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 8/04/2019
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 1c29b59f9306774316ff37eeb57cc441fe5c7370
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
-ms.translationtype: HT
+ms.openlocfilehash: de75c3b0651c0cda6629af786d7db9dc83bc4fef
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820089"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72288830"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
 
@@ -26,25 +26,25 @@ ms.locfileid: "68820089"
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-上述程式碼會呼叫控制器的 <xref:Microsoft.AspNetCore.Mvc.Controller.View*> 方法。 它使用檢視範本來產生 HTML 回應。 上述 `Index` 方法等控制器方法 (也稱為「動作方法」  ) 通常會傳回 <xref:Microsoft.AspNetCore.Mvc.IActionResult> (或衍生自 <xref:Microsoft.AspNetCore.Mvc.ActionResult> 的類別)，而不會傳回像是 `string` 的類型。
+上述程式碼會呼叫控制器的 <xref:Microsoft.AspNetCore.Mvc.Controller.View*> 方法。 它使用檢視範本來產生 HTML 回應。 上述 `Index` 方法等控制器方法 (也稱為「動作方法」) 通常會傳回 <xref:Microsoft.AspNetCore.Mvc.IActionResult> (或衍生自 <xref:Microsoft.AspNetCore.Mvc.ActionResult> 的類別)，而不會傳回像是 `string` 的類型。
 
 ## <a name="add-a-view"></a>新增檢視
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 依序以滑鼠右鍵按一下 *Views* 資料夾、[新增] > [新增資料夾]  ，然後將資料夾命名為 *HelloWorld*。
+* 依序以滑鼠右鍵按一下 *Views* 資料夾、[新增] > [新增資料夾]，然後將資料夾命名為 *HelloWorld*。
 
-* 依序以滑鼠右鍵按一下 *Views/HelloWorld* 資料夾、[新增] > [新增項目]  。
+* 依序以滑鼠右鍵按一下 *Views/HelloWorld* 資料夾、[新增] > [新增項目]。
 
-* 在 [新增項目 - MvcMovie]  對話方塊內
+* 在 [新增項目 - MvcMovie] 對話方塊內
 
   * 在右上角的搜尋方塊中，輸入 *view*
 
-  * 選取 [Razor 檢視] 
+  * 選取 [Razor 檢視]
 
-  * 保留 [名稱]  方塊值 *Index.cshtml*。
+  * 保留 [名稱] 方塊值 *Index.cshtml*。
 
-  * 選取 [新增] 
+  * 選取 [新增]
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view.png)
 
@@ -57,14 +57,14 @@ ms.locfileid: "68820089"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 依序以滑鼠右鍵按一下 *Views* 資料夾、[新增] > [新增資料夾]  ，然後將資料夾命名為 *HelloWorld*。
-* 依序以滑鼠右鍵按一下 *Views/HelloWorld* 資料夾、[新增] > [新增檔案]  。
-* 在 [新增檔案]  對話方塊中：
+* 依序以滑鼠右鍵按一下 *Views* 資料夾、[新增] > [新增資料夾]，然後將資料夾命名為 *HelloWorld*。
+* 依序以滑鼠右鍵按一下 *Views/HelloWorld* 資料夾、[新增] > [新增檔案]。
+* 在 [新增檔案] 對話方塊中：
 
-  * 選取左窗格的 [Web]  。
-  * 選取中間窗格的 [空的 HTML 檔案]  。
-  * 在 [名稱]  方塊中，鍵入 **Index.cshtml**。
-  * 選取 [新增]  。
+  * 選取左窗格的 [Web]。
+  * 選取中間窗格的 [空的 HTML 檔案]。
+  * 在 [名稱] 方塊中，鍵入 **Index.cshtml**。
+  * 選取 [新增]。
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view_mac.png)
 
@@ -82,11 +82,11 @@ ms.locfileid: "68820089"
 
 選取功能表連結 (**MvcMovie**、**Home** 和 **Privacy**)。 每個頁面會顯示相同的功能表配置。 功能表配置是在 *Views/Shared/_Layout.cshtml* 檔案中實作。 開啟 *Views/Shared/_Layout.cshtml* 檔案。
 
-[版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是顯示您建立之所有檢視特定頁面的預留位置，「包裝」  在版面配置頁中。 例如，如果您選取 **Privacy** 連結，**Views/Home/Privacy.cshtml** 檢視就會呈現在 `RenderBody` 方法內。
+[版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是顯示您建立之所有檢視特定頁面的預留位置，「包裝」在版面配置頁中。 例如，如果您選取 **Privacy** 連結，**Views/Home/Privacy.cshtml** 檢視就會呈現在 `RenderBody` 方法內。
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>變更配置檔案中的標題、頁尾及功能表連結
 
-將 *Views\Shared\_Layout.cshtml* 檔案的內容取代為下列標記。 所做的變更已醒目提示：
+以下列標記取代*Views/Shared/_Layout*檔案的內容。 所做的變更已醒目提示：
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
 
@@ -183,25 +183,25 @@ ms.locfileid: "68820089"
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-上述程式碼會呼叫控制器的 <xref:Microsoft.AspNetCore.Mvc.Controller.View*> 方法。 它使用檢視範本來產生 HTML 回應。 上述 `Index` 方法等控制器方法 (也稱為「動作方法」  ) 通常會傳回 <xref:Microsoft.AspNetCore.Mvc.IActionResult> (或衍生自 <xref:Microsoft.AspNetCore.Mvc.ActionResult> 的類別)，而不會傳回像是 `string` 的類型。
+上述程式碼會呼叫控制器的 <xref:Microsoft.AspNetCore.Mvc.Controller.View*> 方法。 它使用檢視範本來產生 HTML 回應。 上述 `Index` 方法等控制器方法 (也稱為「動作方法」) 通常會傳回 <xref:Microsoft.AspNetCore.Mvc.IActionResult> (或衍生自 <xref:Microsoft.AspNetCore.Mvc.ActionResult> 的類別)，而不會傳回像是 `string` 的類型。
 
 ## <a name="add-a-view"></a>新增檢視
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 依序以滑鼠右鍵按一下 *Views* 資料夾、[新增] > [新增資料夾]  ，然後將資料夾命名為 *HelloWorld*。
+* 依序以滑鼠右鍵按一下 *Views* 資料夾、[新增] > [新增資料夾]，然後將資料夾命名為 *HelloWorld*。
 
-* 依序以滑鼠右鍵按一下 *Views/HelloWorld* 資料夾、[新增] > [新增項目]  。
+* 依序以滑鼠右鍵按一下 *Views/HelloWorld* 資料夾、[新增] > [新增項目]。
 
-* 在 [新增項目 - MvcMovie]  對話方塊內
+* 在 [新增項目 - MvcMovie] 對話方塊內
 
   * 在右上角的搜尋方塊中，輸入 *view*
 
-  * 選取 [Razor 檢視] 
+  * 選取 [Razor 檢視]
 
-  * 保留 [名稱]  方塊值 *Index.cshtml*。
+  * 保留 [名稱] 方塊值 *Index.cshtml*。
 
-  * 選取 [新增] 
+  * 選取 [新增]
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view.png)
 
@@ -214,14 +214,14 @@ ms.locfileid: "68820089"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 依序以滑鼠右鍵按一下 *Views* 資料夾、[新增] > [新增資料夾]  ，然後將資料夾命名為 *HelloWorld*。
-* 依序以滑鼠右鍵按一下 *Views/HelloWorld* 資料夾、[新增] > [新增檔案]  。
-* 在 [新增檔案]  對話方塊中：
+* 依序以滑鼠右鍵按一下 *Views* 資料夾、[新增] > [新增資料夾]，然後將資料夾命名為 *HelloWorld*。
+* 依序以滑鼠右鍵按一下 *Views/HelloWorld* 資料夾、[新增] > [新增檔案]。
+* 在 [新增檔案] 對話方塊中：
 
-  * 選取左窗格的 [Web]  。
-  * 選取中間窗格的 [空的 HTML 檔案]  。
-  * 在 [名稱]  方塊中，鍵入 **Index.cshtml**。
-  * 選取 [新增]  。
+  * 選取左窗格的 [Web]。
+  * 選取中間窗格的 [空的 HTML 檔案]。
+  * 在 [名稱] 方塊中，鍵入 **Index.cshtml**。
+  * 選取 [新增]。
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view_mac.png)
 
@@ -239,7 +239,7 @@ ms.locfileid: "68820089"
 
 選取功能表連結 (**MvcMovie**、**Home** 和 **Privacy**)。 每個頁面會顯示相同的功能表配置。 功能表配置是在 *Views/Shared/_Layout.cshtml* 檔案中實作。 開啟 *Views/Shared/_Layout.cshtml* 檔案。
 
-[版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是顯示您建立之所有檢視特定頁面的預留位置，「包裝」  在版面配置頁中。 例如，如果您選取 **Privacy** 連結，**Views/Home/Privacy.cshtml** 檢視就會呈現在 `RenderBody` 方法內。
+[版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是顯示您建立之所有檢視特定頁面的預留位置，「包裝」在版面配置頁中。 例如，如果您選取 **Privacy** 連結，**Views/Home/Privacy.cshtml** 檢視就會呈現在 `RenderBody` 方法內。
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>變更配置檔案中的標題、頁尾及功能表連結
 

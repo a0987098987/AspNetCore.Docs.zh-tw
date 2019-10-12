@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/25/2019
 uid: blazor/get-started
-ms.openlocfilehash: 5aec91eff7de0732a47fec1aafa5e094c89c37a4
-ms.sourcegitcommit: 14b25156e34c82ed0495b4aff5776ac5b1950b5e
+ms.openlocfilehash: ef9113dbfdbbd5920c4358cdac0c77c60f40b7c8
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71295437"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72288793"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -42,7 +42,7 @@ ms.locfileid: "71295437"
 
    4 \。 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
-   5 \。 如需 Blazor 的 WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型的詳細資訊，請參閱<xref:blazor/hosting-models> *Blazor Server*和*Blazor WebAssembly*。
+   5 \。 如需 Blazor 的 WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
 
    6。 按下 **F5** 即可執行應用程式。
 
@@ -67,13 +67,13 @@ ms.locfileid: "71295437"
       dotnet new blazorserver -o WebApplication1
       ```
 
-      如需這兩個 Blazor 裝載模型的詳細資訊，請參閱<xref:blazor/hosting-models> *Blazor Server*和*Blazor WebAssembly*。
+      如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
 
    4 \。 在 Visual Studio Code 中開啟 [ *WebApplication1* ] 資料夾。
 
    5 \。 若為 Blazor 伺服器專案，IDE 會要求您新增資產以建立和對專案進行偵錯工具。 選取 [是]。
 
-   6。 如果使用 Blazor 伺服器應用程式，請使用 Visual Studio Code 偵錯工具來執行應用程式。 如果使用 Blazor WebAssembly 應用程式，請`dotnet run`從應用程式的專案資料夾執行。
+   6。 如果使用 Blazor 伺服器應用程式，請使用 Visual Studio Code 偵錯工具來執行應用程式。 如果使用 Blazor WebAssembly 應用程式，請從應用程式的專案資料夾執行 `dotnet run`。
 
    7 \。 在瀏覽器中，巡覽至 `https://localhost:5001`。
 
@@ -115,7 +115,7 @@ ms.locfileid: "71295437"
    dotnet run
    ```
 
-   如需這兩個 Blazor 裝載模型的詳細資訊，請參閱<xref:blazor/hosting-models> *Blazor Server*和*Blazor WebAssembly*。
+   如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
 
    在瀏覽器中，巡覽至 `https://localhost:5001`。
 
@@ -127,47 +127,47 @@ ms.locfileid: "71295437"
 * 計數器
 * 提取資料
 
-在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 將網頁中的計數器遞增通常需要撰寫 JavaScript，但 Razor 元件則是使用來C#提供更好的方法。
+在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 將網頁中的計數器遞增通常需要撰寫 JavaScript，但透過 Blazor，您可以C#使用。
 
 *Pages/Counter.razor*：
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Counter1.razor?highlight=7,12-15)]
 
-`/counter`在瀏覽器中的要求（如頂端的`@page`指示詞所指定）會導致`Counter`元件轉譯其內容。 元件會轉譯成轉譯樹狀結構的記憶體中標記法，然後用來以彈性且有效率的方式更新 UI。
+在瀏覽器中 `/counter` 的要求，如同頂端的 `@page` 指示詞所指定，會導致 @no__t 2 元件轉譯其內容。 元件會轉譯成轉譯樹狀結構的記憶體中標記法，然後用來以彈性且有效率的方式更新 UI。
 
 每次選取 [**按我**] 按鈕時：
 
-* 引發`onclick`事件。
+* @No__t-0 事件會引發。
 * 已呼叫 `IncrementCount` 方法。
-* `currentCount`會遞增。
+* @No__t-0 會遞增。
 * 元件會再次轉譯。
 
 執行時間會比較新的內容與先前的內容，而且只會將已變更的內容套用至檔物件模型（DOM）。
 
-使用 HTML 語法將元件新增至另一個元件。 例如，藉由`Counter` `<Counter />`將元素新增至`Index`元件，將元件新增至應用程式的首頁。
+使用 HTML 語法將元件新增至另一個元件。 例如，將 `Counter` 元件新增至應用程式的首頁，方法是將 `<Counter />` 元素新增至 @no__t 2 元件。
 
 *Pages/Index.razor*：
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Index1.razor?highlight=7)]
 
-執行應用程式。 首頁有自己的計數器，由`Counter`元件提供。
+執行應用程式。 首頁有自己的計數器，由 @no__t 0 元件提供。
 
-元件參數是使用屬性或[子內容](xref:blazor/components#child-content)所指定，可讓您設定子元件上的屬性。 若要將參數新增至`Counter`元件，請更新元件的`@code`區塊：
+元件參數是使用屬性或[子內容](xref:blazor/components#child-content)所指定，可讓您設定子元件上的屬性。 若要將參數新增至 `Counter` 元件，請更新元件的 `@code` 區塊：
 
-* `IncrementAmount`使用屬性加入的公用屬性。`[Parameter]`
+* 使用 `[Parameter]` 屬性來新增 `IncrementAmount` 的公用屬性。
 * 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
 
 *Pages/Counter.razor*：
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Counter2.razor?highlight=12-13,17)]
 
-使用屬性， `Index` `<Counter>`在元件的元素中指定。 `IncrementAmount`
+使用屬性，在 `Index` 元件的 `<Counter>` 元素中指定 `IncrementAmount`。
 
 *Pages/Index.razor*：
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
-執行應用程式。 元件有自己的計數器，每次選取 [按我] 按鈕時，就會遞增10。 `Index` 中`Counter` 的`/counter`元件（*razor*）會繼續遞增一。
+執行應用程式。 @No__t 0 元件有自己的計數器，每次選取 [按**我**] 按鈕時，就會遞增10。 @No__t-2 的 `Counter` 元件（*razor*）會繼續遞增一。
 
 ## <a name="next-steps"></a>後續步驟
 

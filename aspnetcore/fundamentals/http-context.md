@@ -4,14 +4,14 @@ author: coderandhiker
 description: 了解如何存取 ASP.NET Core 中的 HttpContext。
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/27/2018
+ms.date: 10/11/2018
 uid: fundamentals/httpcontext
-ms.openlocfilehash: 373c036e0839ce51259e23f8503fbe4691b48751
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 888adf6d61e6968127385952e65f942e86b7eb63
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886513"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72288975"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>存取 ASP.NET Core 中的 HttpContext
 
@@ -137,7 +137,7 @@ public class UserRepository : IUserRepository
 `HttpContext` 不是安全執行緒。 在處理要求之外讀取或寫入 `HttpContext` 的屬性，可能會導致 `NullReferenceException`。
 
 > [!NOTE]
-> 在處理要求之外使用 `HttpContext`，通常會導致 `NullReferenceException`。 如果您的應用程式偶爾會產生 `NullReferenceException`，請檢閱啟動背景處理的程式碼部分，或在要求完成之後繼續處理的部分。 尋找錯誤，例如，將控制器方法定義為 `async void`。
+> 在處理要求之外使用 `HttpContext`，通常會導致 `NullReferenceException`。 如果您的應用程式偶爾會產生 `NullReferenceException`，請檢閱啟動背景處理的程式碼部分，或在要求完成之後繼續處理的部分。 尋找錯誤，例如將控制器方法定義為 `async void`。
 
 使用 `HttpContext` 資料安全地執行背景工作：
 

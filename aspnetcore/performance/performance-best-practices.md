@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/26/2019
 uid: performance/performance-best-practices
-ms.openlocfilehash: a2952f5234cdef7f749a1af8dd4adcb887290629
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 3484a0233a0d56811235192c4b64aa9296e72b58
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259769"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72289064"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>ASP.NET Core 效能最佳做法
 
@@ -178,10 +178,7 @@ ASP.NET Core 中的所有 IO 都是非同步。 伺服器會執行具有同步�
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/MyFirstController.cs?name=snippet3)]
 
-上述程式碼會以非同步方式將整個 HTTP 要求主體讀取到記憶體中。
-
-> [!WARNING]
-> 如果要求很大，將整個 HTTP 要求主體讀取到記憶體中，可能會導致記憶體不足（OOM）狀況。 OOM 可能會導致拒絕服務。  如需詳細資訊，請參閱本檔中的[避免將大型要求內文或回應本文讀取到記憶體](#arlb)中。
+上述程式碼會以非同步方式將要求主體還原序列化C#為物件。
 
 ## <a name="prefer-readformasync-over-requestform"></a>偏好透過要求 ReadFormAsync。表單
 
@@ -265,7 +262,7 @@ ASP.NET Core 3.0 預設會使用 <xref:System.Text.Json> 來進行 JSON 序列�
 
 只有在 ASP.NET Core 管線中有使用中的 HTTP 要求時，`HttpContext` 才有效。 整個 ASP.NET Core 管線是執行每個要求的非同步委派鏈。 當這個鏈傳回的 `Task` 完成時，就會回收 `HttpContext`。
 
-**不要這麼做：** 下列範例使用 `async void`：
+**不要這麼做：** 下列範例會使用 `async void`，這會在達到第一個 `await` 時，讓 HTTP 要求完成：
 
 * 這在 ASP.NET Core 應用程式中**一律**是不良的做法。
 * 在 HTTP 要求完成後，存取 `HttpResponse`。

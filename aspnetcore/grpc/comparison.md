@@ -1,19 +1,19 @@
 ---
-title: 比較 gRPC 服務與 HTTP Api
+title: 比較 gRPC 服務與 HTTP API
 author: jamesnk
 description: 瞭解 gRPC 與 HTTP Api 的比較，以及它的建議案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 09/25/2019
 uid: grpc/comparison
-ms.openlocfilehash: 935078d890998fe6af366e3f6a7bf21f53c20cf7
-ms.sourcegitcommit: a7813a776809a5029c94aa503ee71994f156231f
+ms.openlocfilehash: 5c3ea7a78401e6483425fa0774b3051b3d20f516
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71267720"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72289044"
 ---
-# <a name="compare-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP Api
+# <a name="compare-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP API
 
 依[James 牛頓-王](https://twitter.com/jamesnk)
 
@@ -55,7 +55,7 @@ gRPC 是針對 HTTP/2 所設計，這是一種可透過 HTTP 1.x 提供顯著效
 
 具有 JSON 的 HTTP API 的正式規格不存在。 開發人員會爭論 Url、HTTP 動詞命令和回應碼的最佳格式。
 
-[GRPC 規格](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md)規定了 gRPC 服務必須遵循的格式。 gRPC 可排除爭論並節省開發人員的時間，因為 gPRC 在平臺和實現之間是一致的。
+[GRPC 規格](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md)規定了 gRPC 服務必須遵循的格式。 gRPC 可排除爭論並節省開發人員的時間，因為 gRPC 在平臺和實現之間是一致的。
 
 ### <a name="streaming"></a>資料流
 
@@ -81,7 +81,7 @@ gRPC 適用于下列案例：
 * **微服務**&ndash; gRPC 是針對低延遲和高輸送量通訊所設計。 gRPC 非常適合用於效率非常重要的輕量微服務。
 * **點對點即時通訊**&ndash; gRPC 有絕佳的雙向串流支援。 gRPC 服務可以即時推送訊息，而不需要輪詢。
 * **多語言環境**&ndash; gRPC 工具支援所有熱門的開發語言，讓 gRPC 成為多語言環境的理想選擇。
-* **網路受限環境**&ndash; gRPC 訊息會使用 Protobuf （輕量訊息格式）進行序列化。 GRPC 訊息一律會小於對等的 JSON 訊息。
+* **網路受限的環境**&ndash; gRPC 訊息會使用 Protobuf （輕量訊息格式）進行序列化。 GRPC 訊息一律會小於對等的 JSON 訊息。
 
 ## <a name="grpc-weaknesses"></a>gRPC 弱點
 
@@ -105,9 +105,9 @@ HTTP API 要求會以文字傳送，並可供人類讀取和建立。
 
 在下列案例中，建議您透過 gRPC 使用其他架構：
 
-* **瀏覽器可存取的 api**&ndash; gRPC 在瀏覽器中並不完全受到支援。 gRPC-Web 可以提供瀏覽器支援，但它有一些限制，而且引進了伺服器 proxy。
+* 瀏覽器**可存取的 api** &ndash; gRPC 在瀏覽器中完全不受支援。 gRPC-Web 可以提供瀏覽器支援，但它有一些限制，而且引進了伺服器 proxy。
 * **廣播即時通訊**&ndash; gRPC 支援透過串流進行即時通訊，但將訊息廣播到已註冊連線的概念並不存在。 例如，在聊天室案例中，新的聊天訊息應傳送至聊天室中的所有用戶端時，每個 gRPC 呼叫都需要個別將新的聊天訊息串流至用戶端。 [SignalR](xref:signalr/introduction)是適用于此案例的架構。 SignalR 具有持續連線的概念，以及廣播訊息的內建支援。
-* **處理序間通訊**&ndash;進程必須裝載 HTTP/2 伺服器，以接受傳入的 gRPC 呼叫。 對於 Windows 而言，處理序間通訊[管道](/dotnet/standard/io/pipe-operations)是快速、輕量的通訊方法。
+* **處理序間通訊**&ndash; 進程必須裝載 HTTP/2 伺服器，以接受傳入的 gRPC 呼叫。 對於 Windows 而言，處理序間通訊[管道](/dotnet/standard/io/pipe-operations)是快速、輕量的通訊方法。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -7,6 +7,7 @@ ASP.NET Core 提供下列優點：
 * 能夠在 Windows、macOS 和 Linux 上開發並執行。
 * 開放原始碼和[社群導向](https://live.asp.net/) \(英文\)。
 * 整合[現代化用戶端架構](xref:blazor/index)和開發工作流程。
+* 支援使用[gRPC](xref:grpc/index)裝載遠端程序呼叫（RPC）服務。
 * 雲端就緒、以環境為基礎的[組態系統](xref:fundamentals/configuration/index)。
 * 內建的[相依性插入](xref:fundamentals/dependency-injection)。
 * 輕量型、[高效能](https://github.com/aspnet/benchmarks) \(英文\) 且模組化的 HTTP 要求管線。

@@ -6,12 +6,12 @@ ms.author: riserrad
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vscode
-ms.openlocfilehash: a5d92775d6245494c34bfe691d7ade663b2078d5
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 90ba130f13903cd45eca062c0eca8945eff2e0fa
+ms.sourcegitcommit: 7a2c820692f04bfba04398641b70f27fa15391f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082399"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72290650"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio-code"></a>使用 Visual Studio Code 將 ASP.NET Core 應用程式發佈至 Azure
 
@@ -31,7 +31,7 @@ ms.locfileid: "71082399"
 - 安裝 [.NET Core SDK](https://dotnet.microsoft.com/download)
 - 安裝 [Visual Studio Code](https://code.visualstudio.com/Download) \(英文\)
   - 將 [C# 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)安裝至 Visual Studio Code
-  - 將 [Azure App Service 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)安裝至 Visual Studio Code 並加以設定後再繼續
+  - 安裝[Azure App Service 擴充](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)功能以 Visual Studio Code 並進行設定，然後再繼續
 
 ## <a name="create-an-aspnet-core-mvc-project"></a>建立 ASP.NET Core MVC 專案
 

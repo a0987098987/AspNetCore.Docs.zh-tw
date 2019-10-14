@@ -20,7 +20,7 @@ ms.locfileid: "71081677"
 
 此文章說明如何讀取要求本文及寫入回應本文。 撰寫中介軟體時，可能需要這些作業的程式碼。 在撰寫中介軟體之外，自訂程式碼通常不是必要的，因為作業是由 MVC 和 Razor Pages 處理。
 
-要求和回應主體有兩個抽象概念： <xref:System.IO.Stream>和。 <xref:System.IO.Pipelines.Pipe> 對於要求讀取，[HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) 是 <xref:System.IO.Stream>，而 `HttpRequest.BodyReader` 是 <xref:System.IO.Pipelines.PipeReader>。 針對回應寫入， [HttpResponse](xref:Microsoft.AspNetCore.Http.HttpResponse.Body)是<xref:System.IO.Stream> <xref:System.IO.Pipelines.PipeWriter>，而`HttpResponse.BodyWriter`是。
+要求和回應主體有兩個抽象概念：<xref:System.IO.Stream> 和 <xref:System.IO.Pipelines.Pipe>。 針對要求讀取，[HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) 是 <xref:System.IO.Stream>，而 `HttpRequest.BodyReader` 是 <xref:System.IO.Pipelines.PipeReader>。 針對回應寫入，[HttpResponse](xref:Microsoft.AspNetCore.Http.HttpResponse.Body) 是<xref:System.IO.Stream>，而 `HttpResponse.BodyWriter` 是<xref:System.IO.Pipelines.PipeWriter>。
 
 建議在資料流程上使用管線。 資料流可以更容易地用於一些簡單的作業，但管線具有效能優勢，並且更容易在大部分情況下使用。 ASP.NET Core 開始使用管線，而不是內部的資料流程。 範例包括：
 

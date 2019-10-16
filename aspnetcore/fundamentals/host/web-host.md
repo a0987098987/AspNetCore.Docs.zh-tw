@@ -2,16 +2,17 @@
 title: ASP.NET Core Web 主機
 author: rick-anderson
 description: 了解 ASP.NET Core 中的 Web 主機，其負責啟動應用程式及管理存留期。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/14/2019
+ms.date: 10/07/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 977c1df67c2775870d630f3a1085d5e19cef58f5
-ms.sourcegitcommit: 4115bf0e850c13d4e655beb5ab5e8ff431173cb6
+ms.openlocfilehash: bc18b5490d232758b796d33a62cd8d1a7dd7289f
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981902"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007103"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
@@ -23,7 +24,7 @@ ASP.NET Core 應用程式會設定並啟動「主機」。 主機負責應用程
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
 此文章涵蓋 Web 主機，它適用於裝載 Web 應用程式。 針對其他類型的應用程式，請使用[一般主機](xref:fundamentals/host/generic-host)。
 
@@ -54,7 +55,7 @@ public class Program
 `CreateDefaultBuilder` 會執行下列工作：
 
 * 使用應用程式的主機組態提供者，將 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器設定為網頁伺服器。 如需 Kestrel 伺服器的預設選項，請參閱 <xref:fundamentals/servers/kestrel#kestrel-options>。
-* 設定 [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory) 所傳回路徑的內容根目錄。
+* 將[內容根目錄](xref:fundamentals/index#content-root)設定為[GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)所傳回的路徑。
 * 從下列項目載入[主機組態](#host-configuration-values)：
   * 前面加上 `ASPNETCORE_` 的環境變數 (例如，`ASPNETCORE_ENVIRONMENT`)。
   * 命令列引數。
@@ -120,7 +121,7 @@ public class Program
 
 ::: moniker-end
 
-「內容根目錄」會決定主機搜尋內容檔案 (例如 MVC 檢視檔案) 的位置。 從專案的根資料夾啟動應用程式時，會使用專案的根資料夾作為內容根目錄。 這是 [Visual Studio](https://visualstudio.microsoft.com) 和 [dotnet 新範本](/dotnet/core/tools/dotnet-new)中使用的預設值。
+[「內容根目錄」](xref:fundamentals/index#content-root)會決定主機搜尋內容檔案 (例如 MVC 檢視檔案) 的位置。 從專案的根資料夾啟動應用程式時，會使用專案的根資料夾作為內容根目錄。 這是 [Visual Studio](https://visualstudio.microsoft.com) 和 [dotnet 新範本](/dotnet/core/tools/dotnet-new)中使用的預設值。
 
 如需應用程式組態的詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 
@@ -141,7 +142,17 @@ public class Program
 
 ### <a name="application-key-name"></a>應用程式索引鍵 (名稱)
 
+::: moniker range=">= aspnetcore-3.0"
+
+在主機結構期間呼叫[UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup)或[設定](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure)時，會自動設定 `IWebHostEnvironment.ApplicationName` 屬性。 該值會設定為包含應用程式進入點的組件名稱。 若要明確設定該值，請使用 [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey)：
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 在主機建構期間呼叫 [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) 或 [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) 時，會自動設定 [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment.applicationname) 屬性。 該值會設定為包含應用程式進入點的組件名稱。 若要明確設定該值，請使用 [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey)：
+
+::: moniker-end
 
 **索引鍵**：applicationName  
 **類型**：*string*  
@@ -173,7 +184,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="content-root"></a>內容根目錄
 
-此設定可決定 ASP.NET Core 開始搜尋內容檔案 (例如 MVC 檢視) 的位置。 
+此設定會決定 ASP.NET Core 開始搜尋內容檔案的位置。
 
 **索引鍵**：contentRoot  
 **類型**：*string*  
@@ -181,12 +192,17 @@ WebHost.CreateDefaultBuilder(args)
 **設定使用**：`UseContentRoot`  
 **環境變數**：`ASPNETCORE_CONTENTROOT`
 
-內容根目錄也作為 [Web 根目錄設定](#web-root)的基底路徑。 如果路徑不存在，就無法啟動主機。
+內容根目錄也會用來做為[web 根目錄](xref:fundamentals/index#web-root)的基底路徑。 如果內容根路徑不存在，則無法啟動主機。
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseContentRoot("c:\\<content-root>")
 ```
+
+如需詳細資訊，請參閱：
+
+* [Fundamentals：內容根目錄 @ no__t-0
+* [Web 根目錄](#web-root)
 
 ### <a name="detailed-errors"></a>詳細錯誤
 
@@ -371,7 +387,7 @@ WebHost.CreateDefaultBuilder(args)
 
 **索引鍵**：webroot  
 **類型**：*string*  
-**預設**：如果未指定，則預設為 "(Content Root)/wwwroot" (若該路徑存在的話)。 如果路徑不存在，則會使用無作業檔案提供者。  
+**預設**：預設為 `wwwroot`。 *{Content root}/wwwroot*的路徑必須存在。 如果路徑不存在，則會使用無作業檔案提供者。  
 **設定使用**：`UseWebRoot`  
 **環境變數**：`ASPNETCORE_WEBROOT`
 
@@ -379,6 +395,11 @@ WebHost.CreateDefaultBuilder(args)
 WebHost.CreateDefaultBuilder(args)
     .UseWebRoot("public")
 ```
+
+如需詳細資訊，請參閱：
+
+* [Fundamentals：Web 根目錄 @ no__t-0
+* [內容根目錄](#content-root)
 
 ## <a name="override-configuration"></a>覆寫組態
 
@@ -505,7 +526,7 @@ using (var host = WebHost.Start("http://localhost:8080", app => app.Response.Wri
 
 產生與 **Start(RequestDelegate app)** 相同的結果，除了應用程式會在 `http://localhost:8080` 回應。
 
-**Start(Action&lt;IRouteBuilder&gt; routeBuilder)**
+**開始（動作 @ no__t-1IRouteBuilder > routeBuilder）**
 
 使用 `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) 的執行個體來使用路由中介軟體：
 
@@ -539,7 +560,7 @@ using (var host = WebHost.Start(router => router
 
 `WaitForShutdown` 會封鎖，直到發出中斷 (Ctrl-C/SIGINT 或 SIGTERM)。 應用程式會顯示 `Console.WriteLine` 訊息並等候按鍵動作以便結束。
 
-**Start(string url, Action&lt;IRouteBuilder&gt; routeBuilder)**
+**Start （字串 url，Action @ no__t-1IRouteBuilder > routeBuilder）**
 
 使用 URL 和 `IRouteBuilder` 的執行個體：
 
@@ -560,9 +581,9 @@ using (var host = WebHost.Start("http://localhost:8080", router => router
 }
 ```
 
-產生與 **Start(Action&lt;IRouteBuilder&gt; routeBuilder)** 相同的結果，除了應用程式會在 `http://localhost:8080` 回應。
+會產生與**Start （Action @ no__t-1IRouteBuilder > routeBuilder）** 相同的結果，但應用程式會在 `http://localhost:8080` 回應。
 
-**StartWith(Action&lt;IApplicationBuilder&gt; app)**
+**與 startwith （動作 @ no__t-1IApplicationBuilder > 應用程式）**
 
 提供委派以設定 `IApplicationBuilder`：
 
@@ -583,7 +604,7 @@ using (var host = WebHost.StartWith(app =>
 
 在瀏覽器中提出要求給 `http://localhost:5000`，以收到 "Hello World!" 回應 `WaitForShutdown` 會封鎖，直到發出中斷 (Ctrl-C/SIGINT 或 SIGTERM)。 應用程式會顯示 `Console.WriteLine` 訊息並等候按鍵動作以便結束。
 
-**StartWith(string url, Action&lt;IApplicationBuilder&gt; app)**
+**與 startwith （字串 url，動作 @ no__t-1IApplicationBuilder > 應用程式）**
 
 提供 URL 和委派以設定 `IApplicationBuilder`：
 
@@ -602,7 +623,104 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 }
 ```
 
-產生與 **StartWith(Action&lt;IApplicationBuilder&gt; app)** 相同的結果，除了應用程式會在 `http://localhost:8080` 回應。
+會產生與**與 startwith （Action @ no__t-1IApplicationBuilder > 應用程式）** 相同的結果，但應用程式會在 `http://localhost:8080` 上回應。
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="iwebhostenvironment-interface"></a>IWebHostEnvironment 介面
+
+@No__t 0 介面提供應用程式虛擬主機環境的相關資訊。 使用[建構函式插入](xref:fundamentals/dependency-injection)以取得 `IWebHostEnvironment`，才能使用其屬性和擴充方法：
+
+```csharp
+public class CustomFileReader
+{
+    private readonly IWebHostEnvironment _env;
+
+    public CustomFileReader(IWebHostEnvironment env)
+    {
+        _env = env;
+    }
+
+    public string ReadFile(string filePath)
+    {
+        var fileProvider = _env.WebRootFileProvider;
+        // Process the file here
+    }
+}
+```
+
+[以慣例為基礎的方法](xref:fundamentals/environments#environment-based-startup-class-and-methods)可用來根據環境在啟動時設定應用程式。 或者，將 `IWebHostEnvironment` 插入至 `Startup` 建構函式，以便用於 `ConfigureServices`：
+
+```csharp
+public class Startup
+{
+    public Startup(IWebHostEnvironment env)
+    {
+        HostingEnvironment = env;
+    }
+
+    public IWebHostEnvironment HostingEnvironment { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (HostingEnvironment.IsDevelopment())
+        {
+            // Development configuration
+        }
+        else
+        {
+            // Staging/Production configuration
+        }
+
+        var contentRootPath = HostingEnvironment.ContentRootPath;
+    }
+}
+```
+
+> [!NOTE]
+> 除了 `IsDevelopment` 擴充方法，`IWebHostEnvironment` 也提供 `IsStaging`、`IsProduction` 和 `IsEnvironment(string environmentName)` 方法。 如需詳細資訊，請參閱<xref:fundamentals/environments>。
+
+`IWebHostEnvironment` 服務也可直接插入至 `Configure` 方法，以便設定處理管線：
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // In Development, use the Developer Exception Page
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        // In Staging/Production, route exceptions to /error
+        app.UseExceptionHandler("/error");
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+建立自訂[中介軟體](xref:fundamentals/middleware/write)時，`IWebHostEnvironment` 可以插入至 `Invoke` 方法：
+
+```csharp
+public async Task Invoke(HttpContext context, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // Configure middleware for Development
+    }
+    else
+    {
+        // Configure middleware for Staging/Production
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 ## <a name="ihostingenvironment-interface"></a>IHostingEnvironment 介面
 
@@ -695,6 +813,77 @@ public async Task Invoke(HttpContext context, IHostingEnvironment env)
 }
 ```
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="ihostapplicationlifetime-interface"></a>IHostApplicationLifetime 介面
+
+`IHostApplicationLifetime` 允許啟動後和關機活動。 在介面上的三個屬性是用來註冊定義啟動和關閉事件之 `Action` 方法的取消語彙基元。
+
+| 取消語彙基元    | 觸發時機&#8230; |
+| --------------------- | --------------------- |
+| `ApplicationStarted`  | 已完全啟動主機。 |
+| `ApplicationStopped`  | 主機正在完成正常關機程序。 應該處理所有要求。 關機封鎖，直到完成此事件。 |
+| `ApplicationStopping` | 主機正在執行正常關機程序。 可能仍在處理要求。 關機封鎖，直到完成此事件。 |
+
+```csharp
+public class Startup
+{
+    public void Configure(IApplicationBuilder app, IHostApplicationLifetime appLifetime)
+    {
+        appLifetime.ApplicationStarted.Register(OnStarted);
+        appLifetime.ApplicationStopping.Register(OnStopping);
+        appLifetime.ApplicationStopped.Register(OnStopped);
+
+        Console.CancelKeyPress += (sender, eventArgs) =>
+        {
+            appLifetime.StopApplication();
+            // Don't terminate the process immediately, wait for the Main thread to exit gracefully.
+            eventArgs.Cancel = true;
+        };
+    }
+
+    private void OnStarted()
+    {
+        // Perform post-startup activities here
+    }
+
+    private void OnStopping()
+    {
+        // Perform on-stopping activities here
+    }
+
+    private void OnStopped()
+    {
+        // Perform post-stopped activities here
+    }
+}
+```
+
+`StopApplication` 會要求應用程式終止。 當呼叫類別的 `Shutdown` 方法時，下列類別使用 `StopApplication` 來順利關閉應用程式：
+
+```csharp
+public class MyClass
+{
+    private readonly IHostApplicationLifetime _appLifetime;
+
+    public MyClass(IHostApplicationLifetime appLifetime)
+    {
+        _appLifetime = appLifetime;
+    }
+
+    public void Shutdown()
+    {
+        _appLifetime.StopApplication();
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 ## <a name="iapplicationlifetime-interface"></a>IApplicationLifetime 介面
 
 [IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) 允許啟動後和關機活動。 在介面上的三個屬性是用來註冊定義啟動和關閉事件之 `Action` 方法的取消語彙基元。
@@ -757,6 +946,8 @@ public class MyClass
     }
 }
 ```
+
+::: moniker-end
 
 ## <a name="scope-validation"></a>範圍驗證
 

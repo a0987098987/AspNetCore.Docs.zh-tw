@@ -5,14 +5,14 @@ description: 瞭解如何從 Blazor apps 中的 JavaScript，從 .NET 和 .NET �
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/07/2019
+ms.date: 09/23/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: aee9b981349e62dcc7ccf352dd5bab520969ed3b
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
-ms.translationtype: MT
+ms.openlocfilehash: b30bce6ef3ebf1cd2f4f3fe8d046e1db9b6929d5
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168195"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71924640"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
@@ -38,7 +38,7 @@ Blazor 應用程式可以從 JavaScript 程式碼，叫用 .NET 和 .NET 方法�
 
 下列範例是根據[TextDecoder](https://developer.mozilla.org/docs/Web/API/TextDecoder)，這是以實驗性 JavaScript 為基礎的解碼器。 此範例示範如何從C#方法叫用 JavaScript 函數。 JavaScript 函式會從C#方法接受位元組陣列、解碼陣列，然後將文字傳回給元件以供顯示。
 
-在 wwwroot/index.html `<head>` （Blazor WebAssembly）或*Pages/_Host. cshtml* （Blazor Server）的元素內，提供用`TextDecoder`來解碼傳遞陣列的函式：
+在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor Server）的 @no__t 0 元素中，提供使用 `TextDecoder` 來解碼傳遞陣列的函式：
 
 [!code-html[](javascript-interop/samples_snapshot/index-script.html)]
 
@@ -81,13 +81,13 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 [!code-javascript[](./common/samples/3.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
-將參考 JavaScript 檔案的 標記放在wwwroot/index.html檔案（BlazorWebAssembly）或Pages/_Host.cshtml檔案（Blazor伺服器）`<script>`中。
+將參考 JavaScript 檔案的 `<script>` 標記放在*wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host. Cshtml*檔案（Blazor 伺服器）中。
 
 *wwwroot/index.html*（Blazor WebAssembly）：
 
 [!code-html[](./common/samples/3.x/BlazorSample/wwwroot/index.html?highlight=15)]
 
-*Pages/_Host. cshtml*（Blazor 伺服器）：
+*Pages/_Host. cshtml* （Blazor Server）：
 
 [!code-cshtml[](javascript-interop/samples_snapshot/_Host.cshtml?highlight=29)]
 
@@ -113,7 +113,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 ## <a name="call-a-void-javascript-function"></a>呼叫 void JavaScript 函數
 
-傳回[void （0）/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void)或[undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined)的 JavaScript 函式會使用`IJSRuntime.InvokeAsync<object>`來呼叫， `null`該函式會傳回。
+會 使用`IJSRuntime.InvokeVoidAsync`呼叫傳回[void （0）/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void)或 [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined) 的 JavaScript 函數。
 
 ## <a name="detect-when-a-blazor-app-is-prerendering"></a>偵測 Blazor 應用程式何時已進行預呈現
  
@@ -139,7 +139,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 ```
 
 > [!NOTE]
-> 當 Blazor 與參考的專案互動時，**請勿使用已**捕捉的專案參考作為擴展或操作 DOM 的方式。 這麼做可能會干擾宣告式轉譯模型。
+> 請勿**使用已**捕捉的元素參考做為擴展 DOM 的方式。 這麼做可能會干擾宣告式轉譯模型。
 
 就 .net 程式`ElementReference`代碼而言，是一個不透明的控制碼。 您*唯一*可以做`ElementReference`的事，就是透過 javascript interop 將它傳遞至 javascript 程式碼。 當您這麼做時，JavaScript 端程式碼會接收`HTMLElement`一個實例，它可以搭配一般的 DOM api 來使用。
 

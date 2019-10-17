@@ -5,14 +5,14 @@ description: 瞭解如何使用 ASP.NET Core 來裝載和部署 Blazor 伺服器
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/05/2019
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: aedef7fe695dd4a0cbf04d3f3e9947f33f7afa40
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: 693d7ff67bad3a0c5bd050b795833763056ed511
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211615"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378820"
 ---
 # <a name="host-and-deploy-blazor-server"></a>裝載和部署 Blazor 伺服器
 
@@ -42,9 +42,9 @@ ms.locfileid: "71211615"
 * 伺服器可支援的現用線路數目。
 * 用戶端上的 UI 延遲。
 
-如需建立安全且可擴充的 Blazor 伺服器應用程式的<xref:security/blazor/server>指引，請參閱。
+如需建立安全且可擴充的 Blazor 伺服器應用程式的指引，請參閱 <xref:security/blazor/server>。
 
-每個線路都使用大約 250 KB 的記憶體來進行最小的*Hello World*樣式應用程式。 線路的大小取決於應用程式的程式碼，以及與每個元件相關聯的狀態維護需求。 我們建議您在開發應用程式和基礎結構期間測量資源需求，但下列基準可以是規劃部署目標的起點：如果您預期您的應用程式支援5000並行使用者，請考慮將至少 1.3 GB 的伺服器記憶體預算給應用程式（或每位使用者 ~ 273 KB）。
+每個線路都使用大約 250 KB 的記憶體來進行最小的*Hello World*樣式應用程式。 線路的大小取決於應用程式的程式碼，以及與每個元件相關聯的狀態維護需求。 我們建議您在開發應用程式和基礎結構期間測量資源需求，但下列基準可以是規劃部署目標的起點：如果您預期應用程式支援5000並行使用者，請考慮在應用程式最少 1.3 GB 的伺服器記憶體（或每位使用者約 273 KB）。
 
 ### <a name="signalr-configuration"></a>SignalR 設定
 
@@ -52,7 +52,11 @@ Blazor 伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊
 
 因為延遲、可靠性和[安全性](xref:signalr/security)較低，所以使用 Websocket 作為 SignalR 傳輸時，Blazor 的效果最佳。 當 Websocket 無法使用時，或當應用程式明確設定為使用長輪詢時，SignalR 會使用長輪詢。 部署到 Azure App Service 時，請將應用程式設定為在服務的 Azure 入口網站設定中使用 Websocket。 如需設定應用程式以進行 Azure App Service 的詳細資訊，請參閱[SignalR 發行指導方針](xref:signalr/publish-to-azure-web-app)。
 
-我們建議使用 Blazor 伺服器應用程式的[Azure SignalR Service](/azure/azure-signalr) 。 此服務可讓您將 Blazor 伺服器應用程式相應增加為大量的並行 SignalR 連接。 此外，SignalR 服務的全球範圍和高效能資料中心會大幅協助減少因地理位置而造成的延遲。
+我們建議使用 Blazor 伺服器應用程式的[Azure SignalR Service](/azure/azure-signalr) 。 此服務可讓您將 Blazor 伺服器應用程式相應增加為大量的並行 SignalR 連接。 此外，SignalR 服務的全球範圍和高效能資料中心會大幅協助減少因地理位置而造成的延遲。 若要設定應用程式（並選擇性地布建） Azure SignalR Service：
+
+* 在 Blazor 伺服器應用程式的 Visual Studio 中建立 Azure 應用程式發佈設定檔。
+* 將**Azure SignalR Service**相依性新增至設定檔。 如果 Azure 訂用帳戶沒有要指派給應用程式的既有 Azure SignalR Service 實例，請選取 [**建立新的 Azure SignalR Service 實例**] 以布建新的服務實例。
+* 將應用程式發行至 Azure。
 
 ### <a name="measure-network-latency"></a>測量網路延遲
 

@@ -5,14 +5,14 @@ description: 了解 .NET Core 的泛型主機，其負責啟動應用程式及�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/15/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 8e29c3a300cc1cdc37458427d3be7ceed84385ef
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: f14917ad924e2c762a14c2cb5f51391d4be06e7b
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259635"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378759"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -26,7 +26,7 @@ ms.locfileid: "72259635"
 
 * 相依性插入 (DI)
 * 記錄
-* 組態
+* Configuration
 * `IHostedService` 實作
 
 當啟動主機時，會在 DI 容器中找到的每個 `IHostedService.StartAsync` 實作上呼叫 <xref:Microsoft.Extensions.Hosting.IHostedService>。 在 Web 應用程式中，其中一個 `IHostedService` 實作是一種 Web 服務，負責啟動 [HTTP 伺服器實作](xref:fundamentals/index#servers)。
@@ -74,7 +74,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 如果應用程式使用 Entity Framework Core，請勿變更 `CreateHostBuilder` 方法的名稱或簽章。 [Entity Framework Core 工具](/ef/core/miscellaneous/cli/)預期找到 `CreateHostBuilder` 方法，其在不執行應用程式的情況下設定主機。 如需詳細資訊，請參閱[設計階段 DbContext 建立](/ef/core/miscellaneous/cli/dbcontext-creation)。
 
-## <a name="default-builder-settings"></a>預設建立器設定 
+## <a name="default-builder-settings"></a>預設建立器設定
 
 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> 方法：
 
@@ -127,7 +127,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 <xref:Microsoft.Extensions.Hosting.IHostLifetime> 實作會控制主機啟動及停止的時機。 會使用最後一個註冊的實作。
 
-<xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> 是預設的 `IHostLifetime` 實作。 `ConsoleLifetime`:
+`Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` 是預設的 `IHostLifetime` 實作。 `ConsoleLifetime`:
 
 * 會接聽 Ctrl+C/SIGINT 或 SIGTERM，並呼叫 <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> 以啟動關機程序。
 * 會解除封鎖 [RunAsync](#runasync) 和 [WaitForShutdownAsync](#waitforshutdownasync) 等延伸模組。
@@ -178,7 +178,7 @@ CreateDefaultBuilder 包含具有前置詞 `DOTNET_` 的環境變數提供者和
 
 **索引鍵**：applicationName  
 **類型**：*string*  
-**預設**：包含應用程式進入點的組件名稱。
+**預設值**：包含應用程式進入點的元件名稱。
 **環境變數**：`<PREFIX_>APPLICATIONNAME`
 
 若要設定此值，請使用環境變數。 
@@ -189,7 +189,7 @@ CreateDefaultBuilder 包含具有前置詞 `DOTNET_` 的環境變數提供者和
 
 **索引鍵**：contentRoot  
 **類型**：*string*  
-**預設**：應用程式組件所在的資料夾。  
+**預設值**：應用程式元件所在的資料夾。  
 **環境變數**：`<PREFIX_>CONTENTROOT`
 
 若要設定此值，請使用環境變數或呼叫 `IHostBuilder` 上的 `UseContentRoot`：
@@ -200,9 +200,9 @@ Host.CreateDefaultBuilder(args)
     //...
 ```
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱:
 
-* [Fundamentals：內容根目錄 @ no__t-0
+* [基本概念：內容根目錄](xref:fundamentals/index#content-root)
 * [WebRoot](#webroot)
 
 ### <a name="environmentname"></a>EnvironmentName
@@ -211,7 +211,7 @@ Host.CreateDefaultBuilder(args)
 
 **索引鍵**：environment  
 **類型**：*string*  
-**預設**：生產環境  
+**預設值**：Production  
 **環境變數**：`<PREFIX_>ENVIRONMENT`
 
 若要設定此值，請使用環境變數或呼叫 `IHostBuilder` 上的 `UseEnvironment`：
@@ -233,7 +233,7 @@ Host.CreateDefaultBuilder(args)
 
 **索引鍵**：shutdownTimeoutSeconds  
 **類型**：*int*  
-**預設**：5 秒**環境變數**：`<PREFIX_>SHUTDOWNTIMEOUTSECONDS`
+**預設值**：5秒**環境變數**： `<PREFIX_>SHUTDOWNTIMEOUTSECONDS`
 
 若要設定此值，請使用環境變數或設定 `HostOptions`。 下列範例將逾時設為 20 秒：
 
@@ -261,7 +261,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 **索引鍵**：captureStartupErrors  
 **類型**：*bool* (`true` 或 `1`)  
-**預設**：預設為 `false`，除非應用程式執行時在 IIS 背後有 Kestrel，此時預設即為 `true`。  
+**預設值**：預設為 `false`，除非應用程式執行時在 IIS 背後有 Kestrel，此時預設值即為 `true`。  
 **環境變數**：`<PREFIX_>CAPTURESTARTUPERRORS`
 
 若要設定此值，請使用組態或呼叫 `CaptureStartupErrors`：
@@ -291,7 +291,7 @@ webBuilder.UseSetting(WebHostDefaults.DetailedErrorsKey, "true");
 
 **索引鍵**：hostingStartupAssemblies  
 **類型**：*string*  
-**預設**：空字串  
+**預設值**：空字串  
 **環境變數**：`<PREFIX_>_HOSTINGSTARTUPASSEMBLIES`
 
 若要設定此值，請使用組態或呼叫 `UseSetting`：
@@ -306,7 +306,7 @@ webBuilder.UseSetting(WebHostDefaults.HostingStartupAssembliesKey, "assembly1;as
 
 **索引鍵**：hostingStartupExcludeAssemblies  
 **類型**：*string*  
-**預設**：空字串  
+**預設值**：空字串  
 **環境變數**：`<PREFIX_>_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
 
 若要設定此值，請使用組態或呼叫 `UseSetting`：
@@ -321,7 +321,7 @@ HTTPS 重新導向連接埠。 用於[強制 HTTPS](xref:security/enforcing-ssl)
 
 索引**鍵**： HTTPs_port  
 **類型**：*string*  
-**預設**：未設定預設值。  
+**預設**值：未設定預設值。  
 **環境變數**：`<PREFIX_>HTTPS_PORT`
 
 若要設定此值，請使用組態或呼叫 `UseSetting`：
@@ -366,7 +366,7 @@ webBuilder.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true");
 
 **索引鍵**：startupAssembly  
 **類型**：*string*  
-**預設**：應用程式的組件  
+**預設值**：應用程式的組件  
 **環境變數**：`<PREFIX_>STARTUPASSEMBLY`
 
 若要設定此值，請使用環境變數或呼叫 `UseStartup`。 `UseStartup` 可以採用組件名稱 (`string`) 或類型 (`TStartup`)。 如果呼叫多個 `UseStartup` 方法，最後一個將會優先。
@@ -402,7 +402,7 @@ Kestrel 有它自己的端點設定 API。 如需詳細資訊，請參閱<xref:f
 
 **索引鍵**：webroot  
 **類型**：*string*  
-**預設**：預設為 `wwwroot`。 *{Content root}/wwwroot*的路徑必須存在。 如果路徑不存在，則會使用無作業檔案提供者。  
+**預設**值：預設值為 `wwwroot`。 *{Content root}/wwwroot*的路徑必須存在。 如果路徑不存在，則會使用無作業檔案提供者。  
 **環境變數**：`<PREFIX_>WEBROOT`
 
 若要設定此值，請使用環境變數或呼叫 `UseWebRoot`：
@@ -411,9 +411,9 @@ Kestrel 有它自己的端點設定 API。 如需詳細資訊，請參閱<xref:f
 webBuilder.UseWebRoot("public");
 ```
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱:
 
-* [Fundamentals：Web 根目錄 @ no__t-0
+* [基本概念： Web 根目錄](xref:fundamentals/index#web-root)
 * [ContentRootPath](#contentrootpath)
 
 ## <a name="manage-the-host-lifetime"></a>管理主機存留期
@@ -432,7 +432,7 @@ webBuilder.UseWebRoot("public");
 
 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.RunConsoleAsync*> 會啟用主控台支援、建置和啟動主機，以及等候 Ctrl+C/SIGINT 或 SIGTERM 關機。
 
-### <a name="start"></a>啟動
+### <a name="start"></a>開始
 
 <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Start*> 會同步啟動主機。
 
@@ -517,7 +517,7 @@ ASP.NET Core 應用程式會設定並啟動主機。 主機負責應用程式啟
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_HostBuilder)]
 
-## <a name="options"></a>選項。
+## <a name="options"></a>選項
 
 <xref:Microsoft.Extensions.Hosting.IHost> 的 <xref:Microsoft.Extensions.Hosting.HostOptions> 設定選項。
 
@@ -546,8 +546,8 @@ var host = new HostBuilder()
 * [環境](xref:fundamentals/environments) (<xref:Microsoft.Extensions.Hosting.IHostingEnvironment>)
 * <xref:Microsoft.Extensions.Hosting.HostBuilderContext>
 * [組態](xref:fundamentals/configuration/index) (<xref:Microsoft.Extensions.Configuration.IConfiguration>)
-* <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> (<xref:Microsoft.Extensions.Hosting.Internal.ApplicationLifetime>)
-* <xref:Microsoft.Extensions.Hosting.IHostLifetime> (<xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime>)
+* <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> (`Microsoft.Extensions.Hosting.Internal.ApplicationLifetime`)
+* <xref:Microsoft.Extensions.Hosting.IHostLifetime> (`Microsoft.Extensions.Hosting.Internal.ConsoleLifetime`)
 * <xref:Microsoft.Extensions.Hosting.IHost>
 * [選項](xref:fundamentals/configuration/options) (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions*>)
 * [記錄](xref:fundamentals/logging/index) (<xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging*>)
@@ -577,7 +577,7 @@ var host = new HostBuilder()
 
 **索引鍵**：contentRoot  
 **類型**：*string*  
-**預設**：預設為應用程式組件所在的資料夾。  
+**預設值**：預設為應用程式組件所在的資料夾。  
 **設定使用**：`UseContentRoot`  
 **環境變數**：`<PREFIX_>CONTENTROOT` (`<PREFIX_>` 是[選擇性和使用者定義的](#configurehostconfiguration))
 
@@ -585,7 +585,7 @@ var host = new HostBuilder()
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_UseContentRoot)]
 
-如需詳細資訊，請參閱 [Fundamentals：Content root @ no__t-0。
+如需詳細資訊，請參閱[基本概念：內容根目錄](xref:fundamentals/index#content-root)。
 
 ### <a name="environment"></a>環境
 
@@ -593,7 +593,7 @@ var host = new HostBuilder()
 
 **索引鍵**：environment  
 **類型**：*string*  
-**預設**：生產環境  
+**預設值**：Production  
 **設定使用**：`UseEnvironment`  
 **環境變數**：`<PREFIX_>ENVIRONMENT` (`<PREFIX_>` 是[選擇性和使用者定義的](#configurehostconfiguration))
 
@@ -684,7 +684,7 @@ var host = new HostBuilder()
 
 ### <a name="useconsolelifetime"></a>UseConsoleLifetime
 
-<xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> 會接聽 Ctrl+C/SIGINT 或 SIGTERM，並呼叫 <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> 以啟動關機程序。 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> 會解除封鎖 [RunAsync](#runasync) 和 [WaitForShutdownAsync](#waitforshutdownasync) 等延伸模組。 <xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> 會預先註冊為預設存留期實作。 系統會使用最後一個註冊的存留期。
+<xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> 會接聽 Ctrl+C/SIGINT 或 SIGTERM，並呼叫 <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> 以啟動關機程序。 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> 會解除封鎖 [RunAsync](#runasync) 和 [WaitForShutdownAsync](#waitforshutdownasync) 等延伸模組。 `Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` 會預先註冊為預設存留期實作。 系統會使用最後一個註冊的存留期。
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_UseConsoleLifetime)]
 
@@ -840,7 +840,7 @@ public class Program
 
 ### <a name="waitforshutdown"></a>WaitForShutdown
 
-<xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> 會透過 <xref:Microsoft.Extensions.Hosting.IHostLifetime> 觸發，例如 <xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> (會接聽 Ctrl+C/SIGINT 或 SIGTERM)。 <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> 會呼叫 <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>。
+<xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> 會透過 <xref:Microsoft.Extensions.Hosting.IHostLifetime> 觸發，例如 `Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` (會接聽 Ctrl+C/SIGINT 或 SIGTERM)。 <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> 會呼叫 <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>。
 
 ```csharp
 public class Program

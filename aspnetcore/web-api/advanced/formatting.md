@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 8/22/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 0dd8b3b5ec58a199db086c4c0b0f057d26afd589
-ms.sourcegitcommit: 7a2c820692f04bfba04398641b70f27fa15391f5
+ms.openlocfilehash: 78fe620ea8fdd681a276253f77939bcb2a56ebb9
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72290627"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391283"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 
@@ -219,16 +219,16 @@ XML 格式設定需要[AspNetCore 的 xml](https://www.nuget.org/packages/Micros
 
 ### <a name="special-case-formatters"></a>特殊案例格式器
 
-有些特殊案例是使用內建格式器所實作。 根據預設，`string` 傳回類型會格式化為*text/純文字*（如果透過 `Accept` 標頭要求，則為*text/html* ）。 您可以藉由移除 <xref:Microsoft.AspNetCore.Mvc.Formatters.TextOutputFormatter> 來刪除此行為。 已移除 `Configure` 方法中的格式器。 傳回 `null` 時，具有模型物件傳回類型的動作會傳回 `204 No Content`。 您可以藉由移除 <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter> 來刪除此行為。 下列程式碼會移除 `TextOutputFormatter` 和 `HttpNoContentOutputFormatter`。
+有些特殊案例是使用內建格式器所實作。 根據預設，`string` 傳回類型會格式化為*text/純文字*（如果透過 `Accept` 標頭要求，則為*text/html* ）。 您可以藉由移除 <xref:Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter> 來刪除此行為。 已移除 `ConfigureServices` 方法中的格式器。 傳回 `null` 時，具有模型物件傳回類型的動作會傳回 `204 No Content`。 您可以藉由移除 <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter> 來刪除此行為。 下列程式碼會移除 `StringOutputFormatter` 和 `HttpNoContentOutputFormatter`。
 
 ::: moniker range=">= aspnetcore-3.0"
-[!code-csharp[](./formatting/3.0sample/StartupTextOutputFormatter.cs?name=snippet)]
+[!code-csharp[](./formatting/3.0sample/StartupStringOutputFormatter.cs?name=snippet)]
 ::: moniker-end
 ::: moniker range="< aspnetcore-3.0"
-[!code-csharp[](./formatting/sample/StartupTextOutputFormatter.cs?name=snippet)]
+[!code-csharp[](./formatting/sample/StartupStringOutputFormatter.cs?name=snippet)]
 ::: moniker-end
 
-如果沒有 `TextOutputFormatter`，`string` 傳回類型會傳回 `406 Not Acceptable`。 如果 XML 格式器存在，則會格式化 `string` 傳回類型（如果移除 `TextOutputFormatter`）。
+如果沒有 `StringOutputFormatter`，則內建 JSON 格式器會 `string` 傳回類型。 如果已移除內建 JSON 格式器，而且有可用的 XML 格式器，則 XML 格式器格式 `string` 傳回類型。 否則，`string` 傳回類型會傳回 `406 Not Acceptable`。
 
 如果沒有 `HttpNoContentOutputFormatter`，則會使用已設定的格式器來格式化 Null 物件。 例如:
 

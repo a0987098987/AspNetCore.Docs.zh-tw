@@ -5,14 +5,14 @@ description: 瞭解如何調試 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/15/2019
 uid: blazor/debug
-ms.openlocfilehash: 3519479d8058f013de23cc9cfa0f5574cd158053
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: 9fc3f1d2dd7dc79d2ba3d64bff6e0f92ac2cf6dc
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71207205"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391176"
 ---
 # <a name="debug-aspnet-core-blazor"></a>Debug ASP.NET Core Blazor
 
@@ -25,13 +25,13 @@ ms.locfileid: "71207205"
 偵錯工具功能有限。 可用的案例包括：
 
 * 設定和移除中斷點。
-* 透過程式碼或`F10`繼續（`F8`）程式碼執行的單一步驟（）。
-* 在 [*區域變數*] 顯示中，觀察、 `int` `string`和`bool`類型之任何本機變數的值。
+* 透過程式碼執行的單一步驟（`F10`）（`F8`）。
+* 在 [*區域變數*] 顯示中，觀察 `int`、`string` 和 `bool` 類型的任何本機變數值。
 * 查看呼叫堆疊，包括從 JavaScript 轉換成 .NET，以及從 .NET 到 JavaScript 的呼叫鏈。
 
 您*不能*：
 
-* 觀察不是`int`、 `string`或`bool`之任何區域變數的值。
+* 觀察不是 `int`、`string` 或 `bool` 之任何區域變數的值。
 * 觀察任何類別屬性或欄位的值。
 * 將滑鼠停留在變數上以查看其值。
 * 評估主控台中的運算式。
@@ -40,7 +40,7 @@ ms.locfileid: "71207205"
 
 開發進一步的偵錯工具，是工程小組的持續焦點。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 調試需要下列其中一個瀏覽器：
 
@@ -49,16 +49,16 @@ ms.locfileid: "71207205"
 
 ## <a name="procedure"></a>程序
 
-1. 在 configuration 中`Debug`執行 Blazor WebAssembly 應用程式。 將選項傳遞至[dotnet 執行](/dotnet/core/tools/dotnet-run)命令： `dotnet run --configuration Debug`。 `--configuration Debug`
+1. 在 `Debug` 設定中執行 Blazor WebAssembly 應用程式。 將 `--configuration Debug` 選項傳遞至[dotnet 執行](/dotnet/core/tools/dotnet-run)命令： `dotnet run --configuration Debug`。
 1. 在瀏覽器中存取應用程式。
 1. 將鍵盤焦點放在應用程式，而不是 [開發人員工具] 面板。 起始調試時，可以關閉開發人員工具面板。
 1. 選取下列 Blazor 特定的鍵盤快速鍵：
-   * `Shift+Alt+D`在 Windows/Linux 上
-   * `Shift+Cmd+D`在 macOS 上
+   * Windows/Linux 上的 `Shift+Alt+D`
+   * macOS 上的 `Shift+Cmd+D`
 1. 依照畫面上所列的步驟，在啟用遠端偵測的情況下重新開機瀏覽器。
 1. 再次選取下列 Blazor 特定的鍵盤快速鍵，以啟動 [debug] 會話：
-   * `Shift+Alt+D`在 Windows/Linux 上
-   * `Shift+Cmd+D`在 macOS 上
+   * Windows/Linux 上的 `Shift+Alt+D`
+   * macOS 上的 `Shift+Cmd+D`
 
 ## <a name="enable-remote-debugging"></a>啟用遠端偵錯
 
@@ -66,7 +66,7 @@ ms.locfileid: "71207205"
 
 ## <a name="debug-the-app"></a>偵錯應用程式
 
-當 Chrome 在啟用遠端偵錯程式的情況下執行時，[偵錯工具] 鍵盤快速鍵會開啟新的 [偵錯工具]經過一段時間之後，[**來源**] 索引標籤會顯示應用程式中的 .net 元件清單。 展開每個元件，並尋找可用來進行偵錯工具的 *.cs* /*原始檔案。* 設定中斷點、切換回應用程式的索引標籤，並在程式碼執行時叫用中斷點。 到達中斷點之後，透過程式碼或繼續（`F10` `F8`）程式碼執行的單一步驟（）。
+當 Chrome 在啟用遠端偵錯程式的情況下執行時，[偵錯工具] 鍵盤快速鍵會開啟新的 [偵錯工具]經過一段時間之後，[**來源**] 索引標籤會顯示應用程式中的 .net 元件清單。 展開每個元件，並找出可用來進行偵錯工具的 *.cs*/ *. razor*原始程式檔。 設定中斷點、切換回應用程式的索引標籤，並在程式碼執行時叫用中斷點。 叫用中斷點之後，透過程式碼或繼續（`F8`）程式碼執行的單一步驟（`F10`）。
 
 Blazor 提供的偵錯工具 proxy 會執行[Chrome DevTools 通訊協定](https://chromedevtools.github.io/devtools-protocol/)，並使用來擴充通訊協定。NET 特定資訊。 當您按下 [調試鍵盤快速鍵] 時，Blazor 會將 Chrome DevTools 指向 proxy。 Proxy 會連線到您想要進行調試的瀏覽器視窗（因此需要啟用遠端偵錯）。
 
@@ -78,4 +78,4 @@ Blazor 提供的偵錯工具 proxy 會執行[Chrome DevTools 通訊協定](https
 
 如果您遇到錯誤，下列秘訣可能會有説明：
 
-在 [**偵錯工具**] 索引標籤中，開啟瀏覽器中的開發人員工具。 在主控台中，執行`localStorage.clear()`以移除任何中斷點。
+在 [**偵錯工具**] 索引標籤中，開啟瀏覽器中的開發人員工具。 在主控台中，執行 `localStorage.clear()`，以移除任何中斷點。

@@ -5,14 +5,14 @@ description: 了解 Blazor 驗證與授權案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/05/2019
+ms.date: 10/15/2019
 uid: security/blazor/index
-ms.openlocfilehash: 1fcd54e954d09e66b8bb1c9a51ef56193f3acf93
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 85a6a32ea068e6cd00ebb71bdf7fe0bd06b77618
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007431"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391306"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
 
@@ -251,7 +251,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 </Router>
 ```
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>授權
 
 在使用者被驗證之後，系統便會套用「授權」規則以控制使用者可以執行的動作。
 
@@ -493,7 +493,7 @@ Not authorized.
 
 常見錯誤：
 
-* **授權需要 Task\<AuthenticationState> 類型的階層式參數。請考慮使用 CascadingAuthenticationState 來提供此項目。**
+* **授權需要類型為 Task @ no__t-1AuthenticationState > 的串聯參數。請考慮使用 CascadingAuthenticationState 來提供此。**
 
 * **針對 `authenticationStateTask` 接收到 `null` 值**
 

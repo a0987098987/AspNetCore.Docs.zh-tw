@@ -5,14 +5,14 @@ description: 瞭解 ASP.NET Core Blazor 的支援平臺。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/15/2019
 uid: blazor/supported-platforms
-ms.openlocfilehash: b769ee175cde7c9a613d7fb70949de129ca428d3
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: 4e86bd6967a747a59c99a515c1c838cc2c21770f
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211575"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391222"
 ---
 # <a name="aspnet-core-blazor-supported-platforms"></a>ASP.NET Core Blazor 支援的平臺
 
@@ -30,9 +30,9 @@ ms.locfileid: "71211575"
 | Mozilla Firefox                  | 目前               |
 | Google Chrome，包括 Android | 目前               |
 | Safari，包括 iOS            | 目前               |
-| Microsoft Internet Explorer      | 不受支援&dagger; |
+| Microsoft Internet Explorer      | 不支援 @ no__t-0 |
 
-&dagger;Microsoft Internet Explorer 不支援[WebAssembly](https://webassembly.org)。
+@no__t 0Microsoft Internet Explorer 不支援[WebAssembly](https://webassembly.org)。
 
 ### <a name="blazor-server"></a>Blazor 伺服器
 
@@ -42,9 +42,9 @@ ms.locfileid: "71211575"
 | Mozilla Firefox                  | 目前    |
 | Google Chrome，包括 Android | 目前    |
 | Safari，包括 iOS            | 目前    |
-| Microsoft Internet Explorer      | 英寸&dagger; |
+| Microsoft Internet Explorer      | 11 @ no__t-0 |
 
-&dagger;需要額外的 polyfills （例如，可透過[Polyfill.io](https://polyfill.io/v3/)配套新增承諾）。
+需要 @no__t 0Additional polyfills （例如，可透過[Polyfill.io](https://polyfill.io/v3/)配套新增承諾）。
 
 ## <a name="additional-resources"></a>其他資源
 

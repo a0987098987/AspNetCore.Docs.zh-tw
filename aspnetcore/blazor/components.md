@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/05/2019
 uid: blazor/components
-ms.openlocfilehash: 3e0966bf978c99fc00db7682bea3292306cbb03c
-ms.sourcegitcommit: d81912782a8b0bd164f30a516ad80f8defb5d020
+ms.openlocfilehash: a71bbf3921417cbd23aeb14d0d78ad8354d6e93a
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72179030"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378694"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -454,11 +454,11 @@ Razor 元件提供事件處理功能。 針對名為 `on{event}` （例如，`on
 
 支援的 `EventArgs` 會顯示在下表中。
 
-| Event - 事件 | 類別 |
+| Event - 事件 | 執行個體 |
 | ----- | ----- |
 | 剪貼簿        | `ClipboardEventArgs` |
 | 拖放式             | `DragEventArgs` &ndash; `DataTransfer` 和 `DataTransferItem` 會保存拖曳的專案資料。 |
-| Error            | `ErrorEventArgs` |
+| 錯誤            | `ErrorEventArgs` |
 | 焦點            | `FocusEventArgs` &ndash; 不包含對 `relatedTarget` 的支援。 |
 | `<input>` 變更 | `ChangeEventArgs` |
 | 鍵盤         | `KeyboardEventArgs` |
@@ -692,7 +692,7 @@ Password:
 當元件轉譯時，[`loginDialog`] 欄位會填入 `MyLoginDialog` 子元件實例。 接著，您可以在元件實例上叫用 .NET 方法。
 
 > [!IMPORTANT]
-> 只有在轉譯元件且其輸出包含 `MyLoginDialog` 元素之後，才會填入 `loginDialog` 變數。 直到該點為止，沒有任何可參考的內容。 若要在元件完成呈現之後操作元件參考，請使用 `OnAfterRenderAsync` 或 `OnAfterRender` 方法。
+> 只有在轉譯元件且其輸出包含 `MyLoginDialog` 元素之後，才會填入 `loginDialog` 變數。 直到該點為止，沒有任何可參考的內容。 若要在元件完成呈現之後操作元件參考，請使用[OnAfterRenderAsync 或 OnAfterRender 方法](#lifecycle-methods)。
 
 雖然捕捉元件參考使用類似的語法來[捕捉元素參考](xref:blazor/javascript-interop#capture-references-to-elements)，但它並不是[JavaScript interop](xref:blazor/javascript-interop)功能。 元件參考不會傳遞至 JavaScript 程式碼 @ no__t-0they're 僅適用于 .NET 程式碼。
 
@@ -841,6 +841,9 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
+> [!NOTE]
+> 在 `OnInitializedAsync` 週期事件期間，必須在元件初始化期間進行非同步工作。
+
 如需同步操作，請使用 `OnInitialized`：
 
 ```csharp
@@ -858,6 +861,9 @@ protected override async Task OnParametersSetAsync()
     await ...
 }
 ```
+
+> [!NOTE]
+> 當套用參數和屬性值時，非同步工作必須在 `OnParametersSetAsync` 週期事件期間發生。
 
 ```csharp
 protected override void OnParametersSet()
@@ -884,6 +890,9 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
     }
 }
 ```
+
+> [!NOTE]
+> 在 `OnAfterRenderAsync` 週期事件期間，必須立即執行非同步工作。
 
 ```csharp
 protected override void OnAfterRender(bool firstRender)
@@ -1294,7 +1303,7 @@ public class ThemeInfo
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
 
-子 `Tab` 元件並未明確地當做參數傳遞至 `TabSet`。 相反地，子 `Tab` 元件是 `TabSet` 之子內容的一部分。 不過，`TabSet` 仍然需要知道每個 @no__t 1 元件，使其可以呈現標頭和使用中的索引標籤。若要在不需要額外程式碼的情況下啟用這項協調，@no__t 0 元件*可以將其本身提供為串聯值*，然後由子 @no__t 2 元件挑選。
+子 `Tab` 元件並未明確地當做參數傳遞至 `TabSet`。 相反地，子 `Tab` 元件是 `TabSet` 之子內容的一部分。 不過，`TabSet` 仍然需要知道每個 @no__t 1 元件，使其可以呈現標頭和使用中的索引標籤。若要在不需要額外程式碼的情況下啟用這項協調，@no__t 2 元件*可以將其本身提供為*串聯的值，然後由子 @no__t 4 元件挑選。
 
 `TabSet` 元件：
 
@@ -1429,16 +1438,16 @@ builder.AddContent(1, "Second");
 
 當程式碼第一次執行時，如果 `someFlag` 是 `true`，產生器會接收：
 
-| 序列 | Type      | Data   |
+| 序列 | 輸入      | 資料   |
 | :------: | --------- | :----: |
-| 0        | Text node | 第一個  |
-| 1        | Text node | 第二個 |
+| 0        | Text node | First  |
+| 1        | Text node | Second |
 
 假設 `someFlag` 會變成 `false`，並再次轉譯標記。 這次，產生器會接收：
 
-| 序列 | Type       | Data   |
+| 序列 | 輸入       | 資料   |
 | :------: | ---------- | :----: |
-| 1        | Text node  | 第二個 |
+| 1        | Text node  | Second |
 
 當執行時間執行差異時，會看到順序 `0` 的專案已移除，因此它會產生下列簡單的*編輯腳本*：
 
@@ -1461,16 +1470,16 @@ builder.AddContent(seq++, "Second");
 
 現在，第一個輸出是：
 
-| 序列 | Type      | Data   |
+| 序列 | 輸入      | 資料   |
 | :------: | --------- | :----: |
-| 0        | Text node | 第一個  |
-| 1        | Text node | 第二個 |
+| 0        | Text node | First  |
+| 1        | Text node | Second |
 
 此結果與先前的案例相同，因此不會有負面問題存在。 `someFlag` 在第二個轉譯中是 `false`，輸出則是：
 
-| 序列 | Type      | Data   |
+| 序列 | 輸入      | 資料   |
 | :------: | --------- | ------ |
-| 0        | Text node | 第二個 |
+| 0        | Text node | Second |
 
 這次，diff 演算法發現發生了*兩*項變更，而演算法會產生下列編輯腳本：
 

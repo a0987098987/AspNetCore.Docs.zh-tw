@@ -5,14 +5,14 @@ description: 逐步建置 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/15/2019
+ms.date: 10/15/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 10feb5467a6a6b5a43e0df739fa72902af9854da
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.openlocfilehash: c357b324905ee3a4c9f4bd167dbbcacaf7e1bc76
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168367"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391213"
 ---
 # <a name="build-your-first-blazor-app"></a>組建第一個 Blazor 應用程式
 
@@ -26,7 +26,7 @@ ms.locfileid: "71168367"
 
 ## <a name="build-components"></a>組建元件
 
-1. 在 *Pages* 資料夾中瀏覽至每個應用程式的三個頁面：首頁、計數器和擷取資料。 這些頁面會透過 Razor 元件檔案 *Index.razor*、*Counter.razor* 及 *FetchData.razor* 來實作。
+1. 流覽至每個應用程式的 [ *pages* ] 資料夾中的三個頁面： [首頁]、[計數器] 和 [提取資料]。 這些頁面會透過 Razor 元件檔案 *Index.razor*、*Counter.razor* 及 *FetchData.razor* 來實作。
 
 1. 在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 讓網頁中的計數器遞增通常需要撰寫 JavaScript，但 Blazor 提供更好的 C# 使用方法。
 
@@ -59,7 +59,7 @@ ms.locfileid: "71168367"
 
 1. 透過將 `<Counter />` 元素新增至 `Index` 元件 (*Index.razor*)，來將 `Counter` 元件新增至應用程式的 `Index` 元件。
 
-   如果您使用 Blazor WebAssembly 來進行這項體驗， `SurveyPrompt` `Index`元件會使用元件。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用 Blazor 伺服器應用程式來進行此體驗，請將`<Counter />`元素新增`Index`至元件：
+   如果您使用 Blazor WebAssembly 來進行此體驗，則 `Index` 元件會使用 @no__t 0 元件。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用 Blazor 伺服器應用程式進行此體驗，請將 `<Counter />` 元素新增至 `Index` 元件：
 
    *Pages/Index.razor*：
 
@@ -69,11 +69,11 @@ ms.locfileid: "71168367"
 
 ## <a name="component-parameters"></a>元件參數
 
-元件也可以有參數。 元件參數是在元件類別上使用具有`[Parameter]`屬性的公用屬性來定義。 使用這些屬性來指定標記中元件的引數。
+元件也可以有參數。 元件參數是在元件類別上使用具有 `[Parameter]` 屬性的公用屬性來定義。 使用這些屬性來指定標記中元件的引數。
 
 1. 更新元件的 `@code` C# 程式碼：
 
-   * `IncrementAmount` 新增`[Parameter]`具有屬性的公用屬性。
+   * 新增具有 `[Parameter]` 屬性的公用 `IncrementAmount` 屬性。
    * 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
 
    *Pages/Counter.razor*：
@@ -99,11 +99,13 @@ ms.locfileid: "71168367"
 
 ## <a name="dependency-injection"></a>相依性插入
 
-如果使用 Blazor 伺服器應用程式， `WeatherForecastService`服務會註冊為中`Startup.ConfigureServices`的[單一](xref:fundamentals/dependency-injection#service-lifetimes)。 服務的實例可透過相依性[插入（DI）](xref:fundamentals/dependency-injection)在整個應用程式中使用：
+### <a name="blazor-server-experience"></a>Blazor 伺服器體驗
+
+如果使用 Blazor 伺服器應用程式，則 `WeatherForecastService` 服務會在 `Startup.ConfigureServices` 中註冊為[singleton](xref:fundamentals/dependency-injection#service-lifetimes) 。 服務的實例可透過相依性[插入（DI）](xref:fundamentals/dependency-injection)在整個應用程式中使用：
 
 [!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-指示詞是用來將`WeatherForecastService`服務的實例插入`FetchData`元件中。 `@inject`
+@No__t-0 指示詞是用來將 @no__t 1 服務的實例插入至 @no__t 2 元件。
 
 *Pages/FetchData.razor*：
 
@@ -113,13 +115,15 @@ ms.locfileid: "71168367"
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-如果使用 Blazor WebAssembly 應用程式，則`HttpClient`會插入，以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料。
+### <a name="blazor-webassembly-experience"></a>Blazor WebAssembly 體驗
+
+如果使用 Blazor WebAssembly 應用程式，則會插入 `HttpClient`，以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料。
 
 *Pages/FetchData.razor*：
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData1_client.razor?highlight=7-8)]
 
-[\@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) 迴圈會用來將每個預測執行個體轉譯為天氣資料表中的資料列：
+[@No__t 1](/dotnet/csharp/language-reference/keywords/foreach-in)迴圈是用來將每個預測實例轉譯為天氣資料的資料表中的資料列：
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
 

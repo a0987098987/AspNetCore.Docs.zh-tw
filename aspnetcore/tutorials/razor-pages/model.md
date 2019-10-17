@@ -5,16 +5,16 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 9/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: dcbcf37dfd95d784ebe249ec6e9e4184a8853d3d
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: 4f8b80cb51bd10eb3b136a780dc123c41d61c0a5
+ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187160"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72519071"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -141,7 +141,7 @@ ms.locfileid: "71187160"
 
 隨即建立 Scaffold 處理序並更新下列檔案：
 
-* *Pages/Movies*：Create、Delete、Details、Edit 和 Index。
+* *Pages/Movies*：建立、刪除、詳細資料、編輯和索引。
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="updated"></a>已更新
@@ -154,7 +154,7 @@ ms.locfileid: "71187160"
 
 Scaffold 處理序會建立下列檔案：
 
-* *Pages/Movies*：Create、Delete、Details、Edit 和 Index。
+* *Pages/Movies*：建立、刪除、詳細資料、編輯和索引。
 
 下一節將說明所建立的檔案。
 
@@ -192,13 +192,13 @@ Update-Database
 
 ---
 
-上述命令會產生下列警告：「實體類型 'Movie' 上的十進位資料行 'Price' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
+上述命令會產生下列警告：「實體類型 ' Movie ' 的十進位資料行 ' Price ' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
 
 您可以忽略該警告，稍後的教學課程中將修正此問題。
 
-`ef migrations add InitialCreate` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (在 *RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
+[遷移] 命令會產生程式碼來建立初始資料庫架構。 架構是以 `DbContext` 中指定的模型為基礎。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
 
-`ef database update` 命令會執行 *Migrations/\<時間戳記>_InitialCreate.cs* 檔案中的 `Up` 方法。 `Up` 方法會建立資料庫。
+@No__t-0 命令會在尚未套用的遷移中執行 `Up` 方法。 在此情況下，`update` 會在建立資料庫的「*遷移/\<time-戳記 > _InitialCreate*中執行 `Up` 方法。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -218,7 +218,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 
 上述程式碼會建立實體集的 [`DbSet<Movie>`](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
 
-連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
+連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core configuration system](xref:fundamentals/configuration/index) 會從 *appsettings.json* 檔案讀取連接字串。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -229,10 +229,6 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 檢查 `Up` 方法。
 
 ---
-
-`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
-
-`Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
 
 <a name="test"></a>
 
@@ -264,7 +260,7 @@ Login failed for user 'User-name'.
 
 > [!div class="step-by-step"]
 > [上一步：開始使用](xref:tutorials/razor-pages/razor-pages-start)
-> [下一步：Scaffolded Razor 頁面](xref:tutorials/razor-pages/page)
+> [下一步：Scaffold Razor 頁面](xref:tutorials/razor-pages/page)
 
 ::: moniker-end
 
@@ -396,7 +392,7 @@ to use Data, it should not use models. That will make the namespace the same for
 
 ### <a name="files-created"></a>建立的檔案
 
-* *Pages/Movies*：Create、Delete、Details、Edit 和 Index。
+* *Pages/Movies*：建立、刪除、詳細資料、編輯和索引。
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="file-updated"></a>檔案已更新
@@ -422,10 +418,14 @@ to use Data, it should not use models. That will make the namespace the same for
 
 在 PMC 中，輸入下列命令：
 
-```PMC
+```Powershell
 Add-Migration Initial
 Update-Database
 ```
+
+`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (在 *RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 @No__t-0 引數是用來命名遷移。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
+
+`Update-Database` 命令會執行 *Migrations/\<時間戳記>_InitialCreate.cs* 檔案中的 `Up` 方法。 `Up` 方法會建立資料庫。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -436,14 +436,8 @@ Update-Database
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
 ---
-
-上述命令會產生下列警告：「實體類型 'Movie' 上的十進位資料行 'Price' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
-
-您可以忽略該警告，稍後的教學課程中將修正此問題。
-
-`ef migrations add InitialCreate` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (在 *RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
-
-`ef database update` 命令會執行 *Migrations/\<時間戳記>_InitialCreate.cs* 檔案中的 `Up` 方法。 `Up` 方法會建立資料庫。
+> [!NOTE]
+> 上述命令會產生下列警告：「*實體類型 ' Movie ' 的十進位資料行 ' Price ' 未指定任何類型。如果值不符合預設的有效位數和小數位數，這會導致以無訊息模式截斷值。使用 ' HasColumnType （） ' 明確指定可容納所有值的 SQL server 資料行類型。* 」您可以忽略該警告，其將在稍後的教學課程中修正。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -463,7 +457,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 
 上述程式碼會建立實體集的 [`DbSet<Movie>`](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
 
-連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
+連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core configuration system](xref:fundamentals/configuration/index) 會從 *appsettings.json* 檔案讀取連接字串。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -474,10 +468,6 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 檢查 `Up` 方法。
 
 ---
-
-`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `RazorPagesMovieContext` (位在 *Data/RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
-
-`Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
 
 <a name="test"></a>
 
@@ -509,6 +499,6 @@ Login failed for user 'User-name'.
 
 > [!div class="step-by-step"]
 > [上一步：開始使用](xref:tutorials/razor-pages/razor-pages-start)
-> [下一步：Scaffolded Razor 頁面](xref:tutorials/razor-pages/page)
+> [下一步：Scaffold Razor 頁面](xref:tutorials/razor-pages/page)
 
 ::: moniker-end

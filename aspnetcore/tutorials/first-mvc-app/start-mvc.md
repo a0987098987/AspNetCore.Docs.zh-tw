@@ -3,18 +3,18 @@ title: ASP.NET Core MVC 使用者入門
 author: rick-anderson
 description: 了解如何開始使用 ASP.NET Core MVC。
 ms.author: riande
-ms.date: 08/05/2019
+ms.date: 10/16/2019
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 52d8fc631075408991d3a2e62cdaccf681c5927f
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: f07afb15c0a31110c20d96a5db5c02030cefe5d5
+ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082138"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72519097"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -22,7 +22,7 @@ ms.locfileid: "71082138"
 
 本教學課程將教導您建置 ASP.NET Core MVC Web 應用程式的基本概念。
 
-此應用程式會管理電影標題的資料庫。 您會了解如何：
+此應用程式會管理電影標題的資料庫。 您將學習如何：
 
 > [!div class="checklist"]
 > * 建立 Web 應用程式。
@@ -34,7 +34,7 @@ ms.locfileid: "71082138"
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -66,7 +66,7 @@ ms.locfileid: "71082138"
 
 * 選取 [Web 應用程式 (Model-View-Controller)]，然後選取 [建立]。
 
-![[新增專案] 對話方塊、左窗格中的 [.Net Core]、ASP.NET Core Web ](start-mvc/_static/new_project22-21.png)
+![[新增專案] 對話方塊、左窗格中的 [.Net Core]、ASP.NET Core Web ](start-mvc/_static/new_project30.png)
 
 Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只要輸入專案名稱，然後選取幾個選項，就立刻會有工作中的應用程式。 這是基本的入門專案。
 
@@ -83,10 +83,10 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
    code -r MvcMovie
    ```
 
-  * 對話方塊隨即顯示，並指出 **'MvcMovie' 中遺漏了建置和偵錯的必要資產。新增它們嗎？**  選取 [是]
+  * 此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' MvcMovie ' 中遺漏了 debug。要新增它們嗎？**  選取 [是]
 
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
-  * `code -r MvcMovie`：在 Visual Studio Code 中載入 *MvcMovie.csproj* 專案檔。
+  * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie .csproj*專案檔案。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -162,7 +162,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 在本教學課程的下一個部分中，您會了解 MVC，並開始撰寫一些程式碼。
 
 > [!div class="step-by-step"]
-> [下一個](adding-controller.md)
+> [下一步](adding-controller.md)
 
 ::: moniker-end
 
@@ -172,7 +172,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 本教學課程將教導您建置 ASP.NET Core MVC Web 應用程式的基本概念。
 
-此應用程式會管理電影標題的資料庫。 您會了解如何：
+此應用程式會管理電影標題的資料庫。 您將學習如何：
 
 > [!div class="checklist"]
 > * 建立 Web 應用程式。
@@ -184,7 +184,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -233,10 +233,10 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
    code -r MvcMovie
    ```
 
-  * 對話方塊隨即顯示，並指出 **'MvcMovie' 中遺漏了建置和偵錯的必要資產。新增它們嗎？**  選取 [是]
+  * 此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' MvcMovie ' 中遺漏了 debug。要新增它們嗎？**  選取 [是]
 
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
-  * `code -r MvcMovie`：在 Visual Studio Code 中載入 *MvcMovie.csproj* 專案檔。
+  * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie .csproj*專案檔案。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -324,6 +324,6 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 在本教學課程的下一個部分中，您會了解 MVC，並開始撰寫一些程式碼。
 
 > [!div class="step-by-step"]
-> [下一個](adding-controller.md)
+> [下一步](adding-controller.md)
 
 ::: moniker-end

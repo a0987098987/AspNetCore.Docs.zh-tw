@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/05/2019
 uid: blazor/components
-ms.openlocfilehash: a71bbf3921417cbd23aeb14d0d78ad8354d6e93a
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: cd48111e8d601fc67e8a938fcdd686759a9ddeca
+ms.sourcegitcommit: ce2bfb01f2cc7dd83f8a97da0689d232c71bcdc4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378694"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72531111"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -37,8 +37,8 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 元件成員可以使用C#開頭為 `@` 的運算式，做為元件轉譯邏輯的一部分。 例如， C#欄位的呈現方式是在功能變數名稱前面加上 `@`。 下列範例會評估並呈現：
 
-* `_headingFontStyle` 到 `font-style` 的 CSS 屬性值。
-* `_headingText` 到 `<h1>` 元素的內容。
+* `_headingFontStyle` 至 `font-style` 的 CSS 屬性值。
+* `_headingText` 至 `<h1>` 元素的內容。
 
 ```cshtml
 <h1 style="font-style:@_headingFontStyle">@_headingText</h1>
@@ -81,27 +81,27 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 在*Index*中的下列標記會轉譯 `HeadingComponent` 實例：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/Index.razor?name=snippet_HeadingComponent)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/Index.razor?name=snippet_HeadingComponent)]
 
 *Components/HeadingComponent. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/HeadingComponent.razor)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/HeadingComponent.razor)]
 
 如果元件包含的 HTML 專案具有大寫的第一個字母，但不符合元件名稱，則會發出警告，指出該元素有未預期的名稱。 為元件的命名空間加入 @no__t 0 的語句，可讓元件可用，這會移除警告。
 
 ## <a name="component-parameters"></a>元件參數
 
-元件可以具有*元件參數*，其使用元件類別上的公用屬性來定義，並具有 `[Parameter]` 屬性。 使用這些屬性來指定標記中元件的引數。
+元件可以具有*元件參數*，其使用元件類別上的公用屬性（具有 `[Parameter]` 屬性）來定義。 使用這些屬性來指定標記中元件的引數。
 
 *Components/ChildComponent. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/ChildComponent.razor?highlight=11-12)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=11-12)]
 
 在下列範例中，`ParentComponent` 會設定 `ChildComponent` 之 `Title` 屬性的值。
 
 *Pages/ParentComponent. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=5-6)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=5-6)]
 
 ## <a name="child-content"></a>子內容
 
@@ -111,7 +111,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 *Components/ChildComponent. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/ChildComponent.razor?highlight=3,14-15)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=3,14-15)]
 
 > [!NOTE]
 > 接收 `RenderFragment` 內容的屬性必須依照慣例命名為 `ChildContent`。
@@ -120,7 +120,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 *Pages/ParentComponent. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=7-8)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=7-8)]
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>屬性展開和任意參數
 
@@ -190,7 +190,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 }
 ```
 
-@No__t-1 上的 `CaptureUnmatchedValues` 屬性允許參數比對與任何其他參數不相符的所有屬性。 元件只能定義具有 `CaptureUnmatchedValues` 的單一參數。 搭配 `CaptureUnmatchedValues` 使用的屬性類型必須可從具有字串索引鍵的 `Dictionary<string, object>` 指派。 `IEnumerable<KeyValuePair<string, object>>` 或 `IReadOnlyDictionary<string, object>` 也是此案例中的選項。
+@No__t_1 上的 `CaptureUnmatchedValues` 屬性可讓參數符合所有不符合任何其他參數的屬性。 元件只能定義具有 `CaptureUnmatchedValues` 的單一參數。 搭配 `CaptureUnmatchedValues` 使用的屬性類型必須可從具有字串索引鍵的 `Dictionary<string, object>` 指派。 `IEnumerable<KeyValuePair<string, object>>` 或 `IReadOnlyDictionary<string, object>` 也是此案例中的選項。
 
 ## <a name="data-binding"></a>資料繫結
 
@@ -513,11 +513,11 @@ Razor 元件提供事件處理功能。 針對名為 `on{event}` （例如，`on
 
 範例應用程式中的 @no__t 0 會示範如何設定按鈕的 @no__t 1 處理常式，以從範例的 `ParentComponent` 接收 @no__t 2 委派。 @No__t-0 是以 `MouseEventArgs` 輸入，這適用于來自週邊裝置的 @no__t 2 事件：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/ChildComponent.razor?highlight=5-7,17-18)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
 @No__t-0 會將子系的 `EventCallback<T>` 設定為其 @no__t 2 方法：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=6,16-19)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=6,16-19)]
 
 在 `ChildComponent` 中選取按鈕時：
 
@@ -968,7 +968,7 @@ Blazor 中的路由是藉由將路由範本提供給應用程式中每個可存�
 
 多個路由範本可以套用至元件。 下列元件會回應 `/BlazorRoute` 和 `/DifferentBlazorRoute` 的要求：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 ## <a name="route-parameters"></a>路由參數
 
@@ -976,7 +976,7 @@ Blazor 中的路由是藉由將路由範本提供給應用程式中每個可存�
 
 *路由參數元件*：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/RouteParameter.razor?name=snippet_RouteParameter)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/RouteParameter.razor?name=snippet_RouteParameter)]
 
 不支援選擇性參數，因此上述範例中會套用兩個 @no__t 0 的指示詞。 第一個則允許不使用參數導覽至元件。 第二個 `@page` 指示詞會採用 `{text}` 路由參數，並將值指派給 `Text` 屬性。
 
@@ -988,11 +988,11 @@ Blazor 中的路由是藉由將路由範本提供給應用程式中每個可存�
 
 *Pages/BlazorRocks. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRocks.razor?name=snippet_BlazorRocks)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRocks.razor?name=snippet_BlazorRocks)]
 
 *BlazorRocksBase.cs*：
 
-[!code-csharp[](common/samples/3.x/BlazorSample/Pages/BlazorRocksBase.cs)]
+[!code-csharp[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRocksBase.cs)]
 
 基類應該衍生自 `ComponentBase`。
 
@@ -1096,7 +1096,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為 `false` �
 
 `TableTemplate` 元件：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/TableTemplate.razor)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
 
 使用樣板化元件時，可以使用符合參數名稱的子專案來指定範本參數（`TableHeader`，並在下列範例中 `RowTemplate`）：
 
@@ -1149,7 +1149,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為 `false` �
 
 樣板化元件通常會以一般方式輸入。 例如，泛型 `ListViewTemplate` 元件可用來呈現 @no__t 1 的值。 若要定義泛型元件，請使用[@typeparam](xref:mvc/views/razor#typeparam)指示詞來指定類型參數：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/ListViewTemplate.razor)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
 
 使用泛型型別元件時，會在可能的情況下推斷型別參數：
 
@@ -1218,7 +1218,7 @@ public class ThemeInfo
 }
 ```
 
-為了利用串聯值，元件會使用 `[CascadingParameter]` 屬性來宣告串聯式參數。 串聯式值會依類型系結至串聯式參數。
+為了利用串聯值，元件會使用 `[CascadingParameter]` 屬性宣告串聯式參數。 串聯式值會依類型系結至串聯式參數。
 
 在範例應用程式中，`CascadingValuesParametersTheme` 元件會將 @no__t 級串聯值系結至階層式參數。 參數是用來為元件所顯示的其中一個按鈕設定 CSS 類別。
 
@@ -1297,23 +1297,23 @@ public class ThemeInfo
 
 範例應用程式有一個 @no__t 0 的介面，可執行索引標籤：
 
-[!code-csharp[](common/samples/3.x/BlazorSample/UIInterfaces/ITab.cs)]
+[!code-csharp[](common/samples/3.x/BlazorWebAssemblySample/UIInterfaces/ITab.cs)]
 
 @No__t 0 元件使用 `TabSet` 元件，其中包含數個 @no__t 2 元件：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
 
 子 `Tab` 元件並未明確地當做參數傳遞至 `TabSet`。 相反地，子 `Tab` 元件是 `TabSet` 之子內容的一部分。 不過，`TabSet` 仍然需要知道每個 @no__t 1 元件，使其可以呈現標頭和使用中的索引標籤。若要在不需要額外程式碼的情況下啟用這項協調，@no__t 2 元件*可以將其本身提供為*串聯的值，然後由子 @no__t 4 元件挑選。
 
 `TabSet` 元件：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/TabSet.razor)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/TabSet.razor)]
 
 子系 `Tab` 元件會將包含的 `TabSet` 捕捉為串聯參數，因此 @no__t 2 元件會將自己加入至 `TabSet`，以及在其上使用的座標。
 
 `Tab` 元件：
 
-[!code-cshtml[](common/samples/3.x/BlazorSample/Components/Tab.razor)]
+[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/Tab.razor)]
 
 ## <a name="razor-templates"></a>Razor 範本
 
@@ -1406,7 +1406,7 @@ public class ThemeInfo
 }
 ```
 
-> !WARNING@No__t-0 中的類型允許處理轉譯作業的*結果*。 這些是 Blazor framework 執行的內部詳細資料。 這些類型應該被視為不*穩定*，未來的版本可能會變更。
+> !WARNING@No__t_0 中的類型允許處理轉譯作業的*結果*。 這些是 Blazor framework 執行的內部詳細資料。 這些類型應該被視為不*穩定*，未來的版本可能會變更。
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>序號與程式程式碼號相關，而不是執行順序
 

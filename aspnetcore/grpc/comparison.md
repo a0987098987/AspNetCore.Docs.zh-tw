@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 09/25/2019
 uid: grpc/comparison
-ms.openlocfilehash: 5c3ea7a78401e6483425fa0774b3051b3d20f516
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: 52b057876481bd9be4f83d93b1f05081ed19660f
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72289044"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72589966"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP API
 
@@ -23,15 +23,15 @@ ms.locfileid: "72289044"
 
 下表提供 gRPC 和 HTTP Api 與 JSON 之間功能的高階比較。
 
-| 功能          | gRPC                                               | HTTP Api 與 JSON           |
+| 特殊功能          | gRPC                                               | HTTP Api 與 JSON           |
 | ---------------- | -------------------------------------------------- | ----------------------------- |
 | 合約         | 必要（*proto*）                                | 選擇性（OpenAPI）            |
-| Transport        | HTTP/2                                             | HTTP                          |
+| 通訊協定         | HTTP/2                                             | HTTP                          |
 | 承載          | [Protobuf （小型，二進位）](#performance)           | JSON （大型、人類可讀取）  |
-| Prescriptiveness | [嚴格規格](#strict-specification)      | 鬆動. 任何 HTTP 都是有效的。      |
+| Prescriptiveness | [嚴格規格](#strict-specification)      | 鬆動. 任何 HTTP 都是有效的。     |
 | 資料流        | [用戶端，伺服器，雙向](#streaming)       | 用戶端，伺服器                |
-| 瀏覽器支援  | [否（需要 grpc-web）](#limited-browser-support) | 是                           |
-| 安全性         | 傳輸（HTTPS）                                  | 傳輸（HTTPS）             |
+| 瀏覽器支援  | [否（需要 grpc-web）](#limited-browser-support) | [是]                           |
+| 安全性         | 傳輸（TLS）                                    | 傳輸（TLS）               |
 | 用戶端程式代碼產生 | [是](#code-generation)                      | OpenAPI + 協力廠商工具 |
 
 ## <a name="grpc-strengths"></a>gRPC 的優點
@@ -105,9 +105,9 @@ HTTP API 要求會以文字傳送，並可供人類讀取和建立。
 
 在下列案例中，建議您透過 gRPC 使用其他架構：
 
-* 瀏覽器**可存取的 api** &ndash; gRPC 在瀏覽器中完全不受支援。 gRPC-Web 可以提供瀏覽器支援，但它有一些限制，而且引進了伺服器 proxy。
-* **廣播即時通訊**&ndash; gRPC 支援透過串流進行即時通訊，但將訊息廣播到已註冊連線的概念並不存在。 例如，在聊天室案例中，新的聊天訊息應傳送至聊天室中的所有用戶端時，每個 gRPC 呼叫都需要個別將新的聊天訊息串流至用戶端。 [SignalR](xref:signalr/introduction)是適用于此案例的架構。 SignalR 具有持續連線的概念，以及廣播訊息的內建支援。
-* **處理序間通訊**&ndash; 進程必須裝載 HTTP/2 伺服器，以接受傳入的 gRPC 呼叫。 對於 Windows 而言，處理序間通訊[管道](/dotnet/standard/io/pipe-operations)是快速、輕量的通訊方法。
+* 瀏覽器中 &ndash; gRPC 的**瀏覽器可存取 api**不完全受到支援。 gRPC-Web 可以提供瀏覽器支援，但它有一些限制，而且引進了伺服器 proxy。
+* **廣播即時通訊**&ndash; gRPC 透過串流支援即時通訊，但將訊息廣播到已註冊連線的概念並不存在。 例如，在聊天室案例中，新的聊天訊息應傳送至聊天室中的所有用戶端時，每個 gRPC 呼叫都需要個別將新的聊天訊息串流至用戶端。 [SignalR](xref:signalr/introduction)是適用于此案例的架構。 SignalR 具有持續連線的概念，以及廣播訊息的內建支援。
+* 進程**間通訊**&ndash; 處理常式必須裝載 HTTP/2 伺服器，以接受傳入的 gRPC 呼叫。 對於 Windows 而言，處理序間通訊[管道](/dotnet/standard/io/pipe-operations)是快速、輕量的通訊方法。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -5,14 +5,14 @@ description: 了解如何使用組態 API 設定 ASP.NET Core 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/12/2019
+ms.date: 10/18/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 357a3d89648086f0329cd16bc9d72863df9bdcd6
-ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.openlocfilehash: 0a9b1a1a08617ef4ca8a36295cec8910ec111acd
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71217794"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72589910"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -191,7 +191,7 @@ public class IndexModel : PageModel
 
 下表顯示可供 ASP.NET Core 應用程式使用的設定提供者。
 
-| 提供者 | 從&hellip;提供設定 |
+| Provider | 從&hellip;提供設定 |
 | -------- | ----------------------------------- |
 | [Azure Key Vault 設定提供者](xref:security/key-vault-configuration) (*安全性*主題) | Azure Key Vault |
 | [Azure 應用程式組態提供者](/azure/azure-app-configuration/quickstart-aspnet-core-app) (Azure 文件) | Azure 應用程式組態 |
@@ -395,7 +395,7 @@ public static readonly Dictionary<string, string> _switchMappings =
 
 建立切換對應字典之後，它會包含下表中所示的資料。
 
-| Key       | 值             |
+| 機碼       | 值             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -408,7 +408,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 執行上述命令之後，設定包含下表中顯示的值。
 
-| Key               | 值    |
+| 機碼               | 值    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -491,7 +491,7 @@ var config = new ConfigurationBuilder()
 
 設定 API 四個連接字串環境變數的特殊處理規則，這些這些環境變數牽涉到針對應用程式環境設定 Azure 連接字串。 若將前置詞提供給 `AddEnvironmentVariables`具有下表顯示之前置詞的環境變數。
 
-| 連接字串前置詞 | 提供者 |
+| 連接字串前置詞 | Provider |
 | ------------------------ | -------- |
 | `CUSTOMCONNSTR_` | 自訂提供者 |
 | `MYSQLCONNSTR_` | [MySQL](https://www.mysql.com/) |
@@ -617,10 +617,10 @@ key=value
 1. 執行範例應用程式。 開啟瀏覽器以瀏覽位於 `http://localhost:5000` 的應用程式。
 1. 觀察輸出是否包含表格中所顯示之設定的機碼值組 (視環境而定)。 記錄設定機碼會使用冒號 (`:`) 做為階層式分隔符號。
 
-| Key                        | 開發值 | 生產值 |
+| 機碼                        | 開發值 | 生產值 |
 | -------------------------- | :---------------: | :--------------: |
-| Logging:LogLevel:System    | 資訊       | 資訊      |
-| Logging:LogLevel:Microsoft | 資訊       | 資訊      |
+| Logging:LogLevel:System    | 內容       | 內容      |
+| Logging:LogLevel:Microsoft | 內容       | 內容      |
 | Logging:LogLevel:Default   | 偵錯             | 錯誤            |
 | AllowedHosts               | *                 | *                |
 
@@ -773,7 +773,7 @@ public static readonly Dictionary<string, string> _dict =
 
 ## <a name="getvalue"></a>GetValue
 
-[ConfigurationBinder.GetValue\<T>](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) 會從具有所指定機碼的組態擷取值，並將其轉換為指定的型別。 若找不到機碼，多載允許您提供預設值。
+[ConfigurationBinder \<T >](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*)會使用指定的索引鍵從設定中解壓縮單一值，並將它轉換成指定的 noncollection 類型。 多載會接受預設值。
 
 下列範例：
 
@@ -917,7 +917,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 會建立下列設定機碼值組：
 
-| Key                   | 值                                             |
+| 機碼                   | 值                                             |
 | --------------------- | ------------------------------------------------- |
 | starship:name         | USS Enterprise                                    |
 | starship:registry     | NCC-1701                                          |
@@ -1007,7 +1007,7 @@ TvShow = tvShow;
 
 考慮下表中顯示的設定機碼與值。
 
-| Key             | 值  |
+| 機碼             | 值  |
 | :-------------: | :----: |
 | array:entries:0 | value0 |
 | array:entries:1 | value1 |
@@ -1097,7 +1097,7 @@ config.AddJsonFile(
 
 表格中顯示的機碼值組會載入到設定中。
 
-| Key             | 值  |
+| 機碼             | 值  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1130,7 +1130,7 @@ config.AddJsonFile(
 
 「JSON 設定提供者」會將設定資料讀入到下列機碼值組：
 
-| Key                     | 值  |
+| 機碼                     | 值  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |
@@ -1269,7 +1269,7 @@ public class Startup
 }
 ```
 
-如需使用啟動方便方法來存取設定的範例，請參閱[應用程式啟動：便利的方法](xref:fundamentals/startup#convenience-methods)。
+如需使用啟動方便方法來存取設定的範例，請參閱[應用程式啟動：方便方法](xref:fundamentals/startup#convenience-methods)。
 
 ## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>存取 Razor Pages 頁面或 MVC 檢視中的設定
 

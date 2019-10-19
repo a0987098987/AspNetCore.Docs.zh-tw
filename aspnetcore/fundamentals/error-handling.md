@@ -7,20 +7,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/08/2019
 uid: fundamentals/error-handling
-ms.openlocfilehash: a610c42d75864259b609e11b8bf0776c5ab8e507
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: bff526e196ecc378d4687e1c38188977aeeccfd9
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72288844"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72589881"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>處理 ASP.NET Core 中的錯誤
 
 作者：[Tom Dykstra](https://github.com/tdykstra/)、[Luke Latham](https://github.com/guardrex) 及 [Steve Smith](https://ardalis.com/)
 
-本文說明處理 ASP.NET Core 應用程式錯誤的常見方法。
+本文涵蓋在 ASP.NET Core web 應用程式中處理錯誤的常見方法。 請參閱 web Api 的 <xref:web-api/handle-errors>。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples)。 ([如何下載](xref:index#how-to-download-a-sample)。)該文章包含在範例應用程式中設定前置處理器指示詞 (`#if`、`#endif`、`#define`) 以啟用不同案例的指示。
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples)。 （[如何下載](xref:index#how-to-download-a-sample)）。本文包含如何在範例應用程式中設定預處理器指示詞（`#if`、`#endif`、`#define`）以啟用不同案例的指示。
 
 ## <a name="developer-exception-page"></a>開發人員例外狀況頁面
 

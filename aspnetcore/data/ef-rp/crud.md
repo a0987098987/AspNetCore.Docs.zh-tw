@@ -7,7 +7,7 @@ ms.date: 07/22/2019
 uid: data/ef-rp/crud
 ms.openlocfilehash: 57c4a1789d54c29a28ba7e67a1d15815415a461c
 ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/19/2019
 ms.locfileid: "69583124"

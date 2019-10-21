@@ -5,14 +5,14 @@ description: 了解如何在 Windows Server Internet Information Services (IIS) 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/11/2019
+ms.date: 10/13/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: c11a46220f0055f4d3d14c84065281f642a4cbe7
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: bf535134277a08103ba8ce55eeed540a9fce8260
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72289031"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333874"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -22,7 +22,7 @@ ms.locfileid: "72289031"
 
 [安裝 .NET Core 裝載套件組合](#install-the-net-core-hosting-bundle)
 
-## <a name="supported-operating-systems"></a>支援的作業系統
+## <a name="supported-operating-systems"></a>Supported operating systems
 
 支援下列作業系統：
 
@@ -66,7 +66,7 @@ ms.locfileid: "72289031"
 
 ![同處理序代管內的 ASP.NET Core 模組案例](index/_static/ancm-inprocess.png)
 
-要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 模組會接收原生要求，並將它傳遞至 IIS HTTP 伺服器 (`IISHttpServer`)。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
+要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 ASP.NET Core 模組會接收原生要求，並將它傳遞給 IIS HTTP 伺服器（`IISHttpServer`）。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
 
 IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 應用程式的回應會透過 IIS HTTP 伺服器傳回 IIS。 IIS 會將回應傳送到起始該要求的用戶端。
 
@@ -87,7 +87,7 @@ IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介
 
 ### <a name="out-of-process-hosting-model"></a>跨處理序裝載模型
 
-因為 ASP.NET Core 應用程式執行所在的處理序會與 IIS 工作者處理序分開，所以此模組會執行處理程序管理。 此模組會在第一個要求到達時啟動 ASP.NET Core 應用程式的處理序，並在應用程式關閉或損毀時將它重新啟動。 此行為基本上與執行同處理序，並由 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 所管理的應用程式相同。
+因為 ASP.NET Core 應用程式會在與 IIS 背景工作進程不同的進程中執行，所以 ASP.NET Core 模組會處理進程管理。 此模組會在第一個要求到達時啟動 ASP.NET Core 應用程式的處理序，並在應用程式關閉或損毀時將它重新啟動。 此行為基本上與執行同處理序，並由 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 所管理的應用程式相同。
 
 下圖說明 IIS、ASP.NET Core 模組和跨處理序裝載應用程式之間的關聯性：
 
@@ -168,7 +168,7 @@ services.Configure<IISServerOptions>(options =>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-| 選項                         | 預設 | 設定 |
+| 選項                         | Default | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -181,7 +181,7 @@ services.Configure<IISServerOptions>(options =>
 
 ::: moniker range="< aspnetcore-3.0"
 
-| 選項                         | 預設 | 設定 |
+| 選項                         | Default | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -203,7 +203,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| 選項                         | 預設 | 設定 |
+| 選項                         | Default | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，[IIS 整合中介軟體](#enable-the-iisintegration-components)會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -243,7 +243,7 @@ services.Configure<IISOptions>(options =>
 
 機密檔案存在於應用程式的實體路徑上，例如 *\<組件>.runtimeconfig.json*、 *\<組件>.xml* (XML 文件註解)，以及 *\<組件>.deps.json*。 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
 
-***web.config* 檔案必須持續存在於部署之中、已正確命名，並能夠設定網站以正常啟動。無論在任何情況下，請都不要從生產環境部署移除 *web.config* 檔案。**
+***Web.config*檔案必須隨時存在於部署中、正確命名，而且能夠將網站設定為正常啟動。絕對不要從生產環境部署*移除 web.config 檔案*。**
 
 ### <a name="transform-webconfig"></a>轉換 web.config
 
@@ -267,7 +267,7 @@ services.Configure<IISOptions>(options =>
    若要啟用 Windows 驗證，請展開下列節點：[網頁伺服器] > [安全性]。 選取 [Windows 驗證] 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 WebSockets，請展開下列節點：[網頁伺服器] > [應用程式開發]。 選取 [WebSocket 通訊協定] 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 WebSocket，請展開下列節點：[網頁伺服器] > [應用程式開發]。 選取 [WebSocket 通訊協定] 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 透過**確認**步驟繼續作業，安裝網頁伺服器角色和服務。 安裝**網頁伺服器 (IIS)** 角色之後，不需要重新啟動伺服器/IIS。
 
@@ -289,7 +289,7 @@ services.Configure<IISOptions>(options =>
    若要啟用 Windows 驗證，請展開下列節點：[World Wide Web 服務] > [安全性]。 選取 [Windows 驗證] 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 WebSockets，請展開下列節點：[World Wide Web 服務] > [應用程式開發功能]。 選取 [WebSocket 通訊協定] 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 WebSocket，請展開下列節點：[World Wide Web 服務] > [應用程式開發功能]。 選取 [WebSocket 通訊協定] 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 若 IIS 安裝需要重新啟動，請重新啟動系統。
 
@@ -363,7 +363,7 @@ services.Configure<IISOptions>(options =>
 
     ASP.NET Core 會在不同的處理序中執行，並管理執行階段。 ASP.NET Core 不仰賴載入桌面 CLR (.NET CLR)&mdash;會使用 .NET Core 的核心通用語言執行平台 (CoreCLR) 來開機以在背景工作處理序中裝載應用程式。 將 [.NET CLR 版本] 設定為 [沒有受控碼] 是選擇性的，但建議這樣做。
 
-1. *ASP.NET Core 2.2 或更新版本*：對於使用[同處理序主控模型](#in-process-hosting-model)的 64 位元 (x64) [自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)，會停用 32 位元 (x86) 處理序的應用程式集區。
+1. *ASP.NET Core 2.2 或更新版本*：對於使用[同處理序主控模型](#in-process-hosting-model)的 64 位元 (x64) [獨立式部署](/dotnet/core/deploying/#self-contained-deployments-scd)，會停用 32 位元 (x86) 處理序的應用程式集區。
 
    在 IIS 管理員的 [動作] 資訊看板 > [應用程式集區] 中，選取 [設定應用程式集區預設值] 或 [進階設定]。 找到 [啟用 32 位元應用程式]，然後將其值設定為 `False`。 此設定不會影響為[處理程序外裝載](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model)部署的應用程式。
 
@@ -641,7 +641,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 *此節只適用於以 .NET Framework 為目標的 ASP.NET Core 應用程式。*
 
-針對以 .NET Framework 為目標的 ASP.NET Core 應用程式，在 IIS 中OPTIONS 要求預設不會傳遞到應用程式。 若要了解如何在 *web.config* 中設定應用程式的 IIS 處理常式以傳遞 OPTIONS 要求，請參閱[在 ASP.NET Web API 2 中啟用跨原始來源要求：CORS 如何運作](/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api#how-cors-works)。
+針對以 .NET Framework 為目標的 ASP.NET Core 應用程式，在 IIS 中OPTIONS 要求預設不會傳遞到應用程式。 若要瞭解如何在 web.config 中設定應用程式的 IIS 處理*程式來傳遞*選項要求，請參閱[在 ASP.NET Web API 2 中啟用跨原始來源要求： CORS 的運作方式](/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api#how-cors-works)。
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -752,5 +752,5 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 * [ASP.NET Core 簡介](xref:index)
 * [Microsoft IIS 官方網站](https://www.iis.net/)
 * [Windows Server 技術內容庫](/windows-server/windows-server)
-* [IIS 上的 HTTP/2](/iis/get-started/whats-new-in-iis-10/http2-on-iis)
+* [ISS 上的 HTTP/2](/iis/get-started/whats-new-in-iis-10/http2-on-iis)
 * <xref:host-and-deploy/iis/transform-webconfig>

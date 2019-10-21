@@ -1,0 +1,2 @@
+> [!NOTE]
+> 在 ASP.NET Core 3.0 web 應用程式之前，如果不支援要求的文化特性，則會針對每個要求撰寫一份 `LogLevel.Warning` 類型的記錄。 針對每個要求記錄一 `LogLevel.Warning`，可能會產生含有多餘資訊的大型記錄檔。 此行為已在 ASP.NET 3.0 中變更。 @No__t_0 會寫入 `LogLevel.Debug` 類型的記錄檔，這會減少實際執行記錄的大小。

@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 0629605f4d5597a9694cb20ce00b91ff4a768468
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 1b08e1515afe656b95be9fb436caa00cd53ab9ad
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082474"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334097"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -28,7 +28,7 @@ ms.locfileid: "71082474"
 
 使用 EF Code First 自動建立資料庫時，Code First 會：
 
-* 將資料表新增至資料庫，以追蹤資料庫的結構描述是否與其產生的來源模型類別同步。
+* 將 `__EFMigrationsHistory` 資料表加入至資料庫，以追蹤資料庫的架構是否與其產生的模型類別同步。
 * 如果模型類別與資料庫不同步，EF 會擲回例外狀況。
 
 自動驗證結構描述/模型是否同步，讓您更容易發現不一致的資料庫/程式碼問題。
@@ -51,11 +51,11 @@ ms.locfileid: "71082474"
 * 使用 `Rating` 欄位更新 [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)。
 * 將 `Rating` 欄位新增至 Edit 頁面。
 
-在更新資料庫以包含新欄位之前，應用程式無法運作。 如果立即執行，應用程式會擲回 `SqlException`：
+在更新資料庫以包含新欄位之前，應用程式無法運作。 在不更新資料庫的情況下執行應用程式會擲回 `SqlException`：
 
 `SqlException: Invalid column name 'Rating'.`
 
-此錯誤是因為更新的電影模型類別，不同於資料庫之電影資料表的結構描述 (資料庫資料表中沒有任何 `Rating` 資料行)。
+@No__t_0 例外狀況是因為更新的電影模型類別與資料庫之電影資料表的架構不同。 (資料庫資料表中沒有任何 `Rating` 資料行)。
 
 有幾個方法可以解決這個錯誤：
 
@@ -94,9 +94,9 @@ Update-Database
 * 比較 `Movie` 模型與 `Movie` 資料庫結構描述。
 * 建立程式碼，將資料庫結構描述移轉至新模型。
 
-"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
+"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，更加實用。
 
-`Update-Database` 命令會指示架構將結構描述變更套用至資料庫。
+@No__t_0 命令會告訴架構將架構變更套用至資料庫，並保留現有的資料。
 
 <a name="ssox"></a>
 
@@ -219,7 +219,7 @@ Update-Database
 * 比較 `Movie` 模型與 `Movie` 資料庫結構描述。
 * 建立程式碼，將資料庫結構描述移轉至新模型。
 
-"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
+"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，更加實用。
 
 `Update-Database` 命令會指示架構將結構描述變更套用至資料庫。
 

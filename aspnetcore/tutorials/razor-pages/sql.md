@@ -5,12 +5,12 @@ description: 說明如何使用資料庫和 ASP.NET Core。
 ms.author: riande
 ms.date: 7/22/2019
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 87d27b60940826e21b060f2e07d344b30ff75b27
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: b5acb573f8fa39e5300ecdb359113d8697d78934
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259791"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334235"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>使用資料庫和 ASP.NET Core
 
@@ -38,7 +38,7 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 
 您的產生程式碼會有不同的資料庫 (`Database={Database name}`) 名稱值。 名稱值為任意值。
 
-[!code-json[](razor-pages-start/sample/RazorPagesMovie30/appsettings.json)]
+[!code-json[](razor-pages-start/sample/RazorPagesMovie30/appsettings.json?highlight=10-12)]
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -52,7 +52,7 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 資料庫預設會在 `C:/Users/<user/>` 目錄中建立 `*.mdf` 檔案。
+LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 資料庫預設會在 `C:\Users\<user>\` 目錄中建立 `*.mdf` 檔案。
 
 <a name="ssox"></a>
 * 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
@@ -109,8 +109,8 @@ if (context.Movie.Any())
 
 未執行 `Update-Database` 時，會發生下列例外狀況：
 
-`SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
-`Login failed for user 'user name'.`
+> `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
+> `Login failed for user 'user name'.`
 
 ### <a name="test-the-app"></a>測試應用程式
 
@@ -141,7 +141,7 @@ if (context.Movie.Any())
 ## <a name="additional-resources"></a>其他資源
 
 > [!div class="step-by-step"]
-> [上一步：Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
+> [上一步：包含 Scaffold 的 Razor Pages](xref:tutorials/razor-pages/page)
 > [下一步：更新頁面](xref:tutorials/razor-pages/da1)
 
 ::: moniker-end
@@ -297,7 +297,7 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 * [這個教學課程的 YouTube 版本](https://youtu.be/A_5ff11sDHY)
 
 > [!div class="step-by-step"]
-> [上一步：Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
+> [上一步：包含 Scaffold 的 Razor Pages](xref:tutorials/razor-pages/page)
 > [下一步：更新頁面](xref:tutorials/razor-pages/da1)
 
 ::: moniker-end

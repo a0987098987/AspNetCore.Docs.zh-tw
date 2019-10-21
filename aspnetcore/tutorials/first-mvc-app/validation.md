@@ -5,16 +5,16 @@ description: 如何將驗證新增至 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 04/13/2017
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: f94d1003732b8ff04ec8aba3005f8c95a876cd67
-ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
-ms.translationtype: HT
+ms.openlocfilehash: 2bb4ed173d154e3b7457ce3f8009f0f9406e36c4
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "67815123"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334067"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>將驗證新增至 ASP.NET Core MVC 應用程式
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 本節內容：
 
@@ -33,11 +33,11 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 執行應用程式並巡覽至電影控制器。
 
-點選 [新建]  連結以新增新電影。 使用無效值填寫表單。 jQuery 用戶端驗證一偵測到錯誤，就會顯示錯誤訊息。
+點選 [新建] 連結以新增新電影。 使用無效值填寫表單。 jQuery 用戶端驗證一偵測到錯誤，就會顯示錯誤訊息。
 
 ![有多個 jQuery 用戶端驗證錯誤的電影檢視表單](~/tutorials/first-mvc-app/validation/_static/val.png)
 
-[!INCLUDE[](~/includes/currency.md)]
+[!INCLUDE[](~/includes/localization/currency.md)]
 
 請注意表單如何在包含無效值的每個欄位中自動呈現適當的驗證錯誤訊息。 用戶端 (使用 JavaScript 和 jQuery) 與伺服器端 (若使用者已停用 JavaScript 時) 都會強制執行這些錯誤。
 
@@ -75,7 +75,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 [輸入標記協助程式](xref:mvc/views/working-with-forms) 會使用 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
 
-此方法最好的一點在於，控制器和 `Create` 檢視範本對要強制執行的實際驗證規則，或顯示的特定錯誤訊息，全都一無所知。 驗證規則和錯誤字串只在 `Movie` 類別中指定。 這些相同的驗證規則會自動套用到 `Edit` 檢視，以及任何其他您可能建立以編輯模型的檢視範本。
+此方法最好的一點在於，控制器和 `Create` 檢視範本對要強制執行的實際驗證規則，或顯示的特定錯誤訊息，全都一無所知。 只有在 `Movie` 類別中才能指定驗證規則和錯誤字串。 這些相同的驗證規則會自動套用到 `Edit` 檢視，以及任何其他您可能建立以編輯模型的檢視範本。
 
 當您需要變更驗證邏輯時，您可以在模型中新增驗證屬性 (本例中為 `Movie` 類別)，只在一個位置完成作業。 您不必擔心應用程式的不同部分會與規則強制執行的方式不一致，所有的驗證邏輯都是在同一個地方定義，用於所有位置。 這會讓程式碼非常整齊乾淨，容易維護及發展。 這表示您會完全接受 DRY 原則。
 
@@ -124,7 +124,7 @@ public DateTime ReleaseDate { get; set; }
 * [使用表單](xref:mvc/views/working-with-forms)
 * [全球化和當地語系化](xref:fundamentals/localization)
 * [標記協助程式簡介](xref:mvc/views/tag-helpers/intro)
-* [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
+* [編寫標籤協助程式](xref:mvc/views/tag-helpers/authoring)
 
 > [!div class="step-by-step"]
 > [上一頁](new-field.md)

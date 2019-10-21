@@ -5,18 +5,16 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 8398e99af42da48718eea370cffa6ce4be0086ae
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: 9ed133c93a9ec95c63869b710d120eca9fda1b6e
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72288901"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333713"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT)、[Damien Bowden](https://twitter.com/damien_bod)、[Bart Calixto](https://twitter.com/bartmax)、[Nadeem Afana](https://afana.me/) 和 [Hisham Bin Ateya](https://twitter.com/hishambinateya) 提供
-
-在這份檔更新為 ASP.NET Core 3.0 之前，請參閱 Hisham 的 Blog （ [ASP.NET Core 3.0 中的當地語系化新功能](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0)）。
 
 使用 ASP.NET Core 建立多語系網站時，可讓更廣大的群眾使用您的網站。 ASP.NET Core 提供服務與中介軟體，可將網站當地語系化成不同的語言與文化特性。
 
@@ -76,7 +74,7 @@ ASP.NET Core 中導入了 `IStringLocalizer` 和 `IStringLocalizer<T>`，其設�
 
 法文資源檔可能包含下列內容：
 
-| Key | 值 |
+| 機碼 | 值 |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
@@ -130,7 +128,7 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 1. 在方案總管中，以滑鼠右鍵按一下要放置資源檔的資料夾 > [新增] > [新增項目]。
 
-    ![巢狀快顯功能表：在 [方案總管] 中，會開啟 [資源] 的快顯功能表。 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
+    ![巢狀特色選單：方案總管會開啟 [資源] 的特色選單， 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
 
 2. 在 [Search installed templates] (搜尋已安裝的範本) 方塊中，輸入「資源」，並命名檔案。
 
@@ -153,7 +151,7 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 | 資源名稱 | 點或路徑命名 |
 | ------------   | ------------- |
 | Resources/Controllers.HomeController.fr.resx | 點  |
-| Resources/Controllers/HomeController.fr.resx  | `Path` |
+| Resources/Controllers/HomeController.fr.resx  | 路徑 |
 |    |     |
 
 如果資源檔是使用 Razor 檢視中的 `@inject IViewLocalizer`，亦遵循類似的模式。 您可以使用點命名或路徑命名方式，來命名檢視的資源檔。 Razor 檢視的資源檔會模仿其相關聯檢視檔案的路徑。 假設我們將 `ResourcesPath` 設為 "Resources"，與 *Views/Home/About.cshtml* 檢視建立關聯的法文資源檔可為下列其一：
@@ -275,6 +273,31 @@ Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `u
 
 6. 點選語言，然後點選 [上移]。
 
+::: moniker range=">= aspnetcore-3.0"
+### <a name="the-content-language-http-header"></a>內容語言 HTTP 標頭
+
+[內容語言](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language)實體標頭：
+
+ - 用來描述適用于物件的語言。
+ - 可讓使用者根據使用者的慣用語言來區分。
+
+實體標頭會同時用於 HTTP 要求和回應。
+
+在 ASP.NET Core 3.0 中，可以藉由設定屬性 `ApplyCurrentCultureToResponseHeaders` 來新增 `Content-Language` 標頭。
+
+新增 `Content-Language` 標頭：
+
+ - 允許 RequestLocalizationMiddleware 使用 `CurrentUICulture` 設定 `Content-Language` 標頭。
+ - 不需要明確地 `Content-Language` 設定回應標頭。
+
+```csharp
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    ApplyCurrentCultureToResponseHeaders = true
+});
+```
+::: moniker-end
+
 ### <a name="use-a-custom-provider"></a>使用自訂提供者
 
 假設您想要讓客戶將他們的語言和文化特性儲存在您的資料庫中。 您可以撰寫提供者，以供使用者查詢這些值。 下列程式碼會示範如何新增自訂提供者：
@@ -360,15 +383,19 @@ services.Configure<RequestLocalizationOptions>(options =>
 詞彙：
 
 * 全球化 (G11N)：讓應用程式支援不同語言和區域的程序。
-* 當地語系化 (L10N)：針對特定語言和區域自訂應用程式的程序。
-* 國際化 (I18N)：描述全球化和當地語系化。
-* 文化特性：它是一種語言和選擇性的區域。
-* 中性文化特性：具有指定的語言但不限地區的文化特性。 (例如 "en"、"es")。
-* 特定文化特性：具有指定的語言與區域的文化特性。 (例如 "en-US"、"en-GB"、"es-CL")。
-* 父文化特性：包含特定文化特性的中性文化特性。 (例如，"en" 是 "en-US" 和 "en-GB" 的父文化特性)。
+* 當地語系化 (L10N)：針對特定語言和區域，自訂應用程式的程序。
+* 國際化 (I18N)：包含全球化和當地語系化這兩部分的描述。
+* 文化特性：它是一種語言和/或地區。
+* 中性文化特性：具有指定的語言但不限地區的文化特性 (例如 "en"、"es")。
+* 特定文化特性：具有指定的語言和地區的文化特性 (例如 "en-US"、"en-GB"、"es-CL")。
+* 父文化特性：包含特定文化特性的中性文化特性 (例如，"en" 是 "en-US" 和 "en-GB" 的父文化特性)。
 * 地區設定：地區設定與文化特性相同。
 
-[!INCLUDE[](~/includes/currency.md)]
+[!INCLUDE[](~/includes/localization/currency.md)]
+
+::: moniker range=">= aspnetcore-3.0"
+[!INCLUDE[](~/includes/localization/unsupported-culture-log-level.md)]
+::: moniker-end
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -378,3 +405,4 @@ services.Configure<RequestLocalizationOptions>(options =>
 * [.resx 檔案中的資源](/dotnet/framework/resources/working-with-resx-files-programmatically)
 * [Microsoft 多語應用程式工具組](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)
 * [當地語系化和泛型](https://github.com/hishamco/hishambinateya.com/blob/master/Posts/localization-and-generics.md)
+* [ASP.NET Core 3.0 中當地語系化的新功能](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0)

@@ -5,14 +5,14 @@ description: 深入了解 HTTP.sys，這是 Windows 上的 ASP.NET Core 網頁�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/08/2019
+ms.date: 10/14/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: acdcdca3250f2aa3445458cc2c4e5f50360338a1
-ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.openlocfilehash: f9e564119604e13bdc48a6c36de7d283c56f68f0
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037609"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333808"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 
@@ -110,14 +110,14 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
 ::: moniker range=">= aspnetcore-3.1"
 
-| 屬性 | 描述 | 預設 |
+| 屬性 | 描述 | Default |
 | -------- | ----------- | :-----: |
 | [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `false` |
 | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
 | [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由 [AuthenticationSchemes enum](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes) 提供：`Basic`、`Kerberos`、`Negotiate`、`None` 和 `NTLM`。 | `None` |
 | [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
-| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(無限制) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>（全電腦<br>設 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
 | `RequestQueueMode` | 這會指出伺服器是否負責建立和設定要求佇列，或是否應附加至現有的佇列。<br>附加至現有的佇列時，大部分的現有設定選項都不適用。 | `RequestQueueMode.Create` |
@@ -130,14 +130,14 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
 ::: moniker range="= aspnetcore-3.0"
 
-| 屬性 | 描述 | 預設 |
+| 屬性 | 描述 | Default |
 | -------- | ----------- | :-----: |
 | [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `false` |
 | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
 | [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由 [AuthenticationSchemes enum](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes) 提供：`Basic`、`Kerberos`、`Negotiate`、`None` 和 `NTLM`。 | `None` |
 | [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
-| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(無限制) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>（全電腦<br>設 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | 指出若回應本文因為用戶端中斷連線而寫入失敗時，應擲回例外狀況或正常完成。 | `false`<br>(正常完成) |
@@ -148,14 +148,14 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
 ::: moniker range="< aspnetcore-3.0"
 
-| 屬性 | 描述 | 預設 |
+| 屬性 | 描述 | Default |
 | -------- | ----------- | :-----: |
 | [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `true` |
 | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
 | [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由 [AuthenticationSchemes enum](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes) 提供：`Basic`、`Kerberos`、`Negotiate`、`None` 和 `NTLM`。 | `None` |
 | [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
-| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(無限制) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>（全電腦<br>設 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | 指出若回應本文因為用戶端中斷連線而寫入失敗時，應擲回例外狀況或正常完成。 | `false`<br>(正常完成) |
@@ -248,7 +248,7 @@ public IActionResult MyActionMethod()
    HTTP.sys 使用 [HTTP Server API UrlPrefix 字串格式](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)。
 
    > [!WARNING]
-   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結會導致應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確的主機名稱或 IP 位址，而不要使用萬用字元。 若您擁有整個父網域 (相對於有弱點的 `*.com`) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 便不構成安全性風險。 如需詳細資訊，請參閱[RFC 7230：5.4 節：主機](https://tools.ietf.org/html/rfc7230#section-5.4) \(英文\)。
+   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結會導致應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確的主機名稱或 IP 位址，而不要使用萬用字元。 若您擁有整個父網域 (相對於有弱點的 `*.com`) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 便不構成安全性風險。 如需詳細資訊，請參閱[RFC 7230：第5.4 節：主機](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
 1. 在伺服器上預先註冊 URL 首碼。
 

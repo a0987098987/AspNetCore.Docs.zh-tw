@@ -4,14 +4,14 @@ author: pkellner
 description: 探索 ASP.NET Core 錨點標籤協助程式屬性，以及各屬性在 HTML 錨點標籤的延伸行為中所扮演的角色。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 04/18/2019
+ms.date: 10/13/2019
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 44fc4ff6334e33630974181021aa1a6880a89917
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: 3ff8a52361b4911a5bb3163a8ea6ae90e504e4ef
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856216"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333943"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的錨點標籤協助程式
 
@@ -47,7 +47,7 @@ ms.locfileid: "67856216"
 <a href="/Home">All Speakers</a>
 ```
 
-## <a name="asp-action"></a>asp-action
+### <a name="asp-action"></a>asp-action
 
 [asp-action](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Action*) 屬性值代表所產生 `href` 屬性中包含的控制器動作名稱。 下列標記會將產生的 `href` 屬性值設為喇叭評估頁面：
 
@@ -135,7 +135,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 如果除了 `asp-route`，還指定了 `asp-controller` 或 `asp-action`，產生的路由可能不如預期。 為避免路由衝突，請勿將 `asp-route` 與 `asp-controller` 及 `asp-action` 屬性搭配使用。
 
-## <a name="asp-all-route-data"></a>asp-all-route-data
+### <a name="asp-all-route-data"></a>asp-all-route-data
 
 [asp-all-route-data](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) 屬性支援建立機碼值組的字典。 機碼為參數名稱，值則為參數值。
 
@@ -173,7 +173,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) 屬性設定區域名稱，用以設定合適的路由。 下列範例描述了 `asp-area` 屬性如何造成路由重新對應。
 
-### <a name="usage-in-razor-pages"></a>Razor Pages 中的使用方式
+#### <a name="usage-in-razor-pages"></a>Razor Pages 中的使用方式
 
 ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 
@@ -207,7 +207,7 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 >
 >   [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_AllowAreas)]
 
-### <a name="usage-in-mvc"></a>MVC 中的使用方式
+#### <a name="usage-in-mvc"></a>MVC 中的使用方式
 
 請考慮下列目錄階層：
 
@@ -241,7 +241,7 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 
 ### <a name="asp-protocol"></a>asp-protocol
 
-[asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) 屬性用於在您的 URL 中指定通訊協定 (例如 `https`)。 例如：
+[asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) 屬性用於在您的 URL 中指定通訊協定 (例如 `https`)。 例如:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
@@ -255,7 +255,7 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 
 ### <a name="asp-host"></a>asp-host
 
-[asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) 屬性用於在您的 URL 中指定主機名稱。 例如：
+[asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) 屬性用於在您的 URL 中指定主機名稱。 例如:
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 

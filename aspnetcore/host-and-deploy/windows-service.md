@@ -5,14 +5,14 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/10/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 32226c06ba005b4a61c473d6584b2b762733dcbd
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: b02e627af875f15a81d68b0d625a2eccf25c0657
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007295"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333794"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -22,7 +22,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
@@ -300,12 +300,14 @@ Remove-Service -Name {NAME}
 
 ## <a name="configure-endpoints"></a>設定端點
 
-ASP.NET Core 預設會繫結至 `http://localhost:5000`。 藉由設定 `ASPNETCORE_URLS` 環境變數，來設定 URL 和埠。
+ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定 `ASPNETCORE_URLS` 環境變數，以設定 URL 和埠。
 
-如需其他 URL 和埠設定方法，包括 HTTPS 端點的支援，請參閱下列主題：
+如需其他 URL 和埠設定方法，請參閱相關的伺服器文章：
 
-* <xref:fundamentals/servers/kestrel#endpoint-configuration> （Kestrel）
-* <xref:fundamentals/servers/httpsys#configure-windows-server> （HTTP.sys）
+* <xref:fundamentals/servers/kestrel#endpoint-configuration>
+* <xref:fundamentals/servers/httpsys#configure-windows-server>
+
+前述指引涵蓋 HTTPS 端點的支援。 例如，當搭配 Windows 服務使用驗證時，請為 HTTPS 設定應用程式。
 
 > [!NOTE]
 > 不支援使用 ASP.NET Core HTTPS 開發憑證來保護服務端點。
@@ -326,7 +328,7 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 藉由設定 `ASPNETC
 
 ### <a name="set-the-content-root-path-to-the-apps-folder"></a>將內容根目錄路徑設定到應用程式的資料夾
 
-<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> 與建立服務時提供給 `binPath` 引數的路徑相同。 不是呼叫 `GetCurrentDirectory` 來建立設定檔案的路徑，而是以應用程式[內容根目錄](xref:fundamentals/index#content-root)的路徑呼叫 <xref:System.IO.Directory.SetCurrentDirectory*>。
+<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> 與建立服務時提供給 `binPath` 引數的路徑相同。 請呼叫具有應用程式[內容根目錄](xref:fundamentals/index#content-root)路徑的 <xref:System.IO.Directory.SetCurrentDirectory*>，而不是呼叫 `GetCurrentDirectory` 建立設定檔的路徑。
 
 在 `Program.Main` 中，判斷服務可執行檔資料夾的路徑，然後使用該路徑來建立應用程式的內容根目錄：
 

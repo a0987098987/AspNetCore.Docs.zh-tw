@@ -5,14 +5,14 @@ description: 瞭解如何使用 Azure Key Vault 設定提供者，使用在執�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: cc3894df4df169d941f54ef3dfad5d3e6f798aad
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: c8e76068dbcf2a59a15fa75a1fc5aa0032e6acc5
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007400"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334203"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 Azure Key Vault 設定提供者
 
@@ -27,21 +27,21 @@ By [Luke Latham](https://github.com/guardrex)和[Andrew Stanton-護士](https://
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="packages"></a>Packages
+## <a name="packages"></a>package
 
 若要使用 Azure Key Vault 設定提供者，請將套件參考新增至[AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/)套件。
 
 若要採用[適用于 Azure 資源的受控](/azure/active-directory/managed-identities-azure-resources/overview)識別案例，請將套件參考新增至[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)套件。
 
 > [!NOTE]
-> 在撰寫本文時，最新穩定版本的 `Microsoft.Azure.Services.AppAuthentication`，版本 `1.0.3`，可支援[系統指派的受控](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)識別。 @No__t-1 套件中提供*使用者指派受控*識別的支援。 本主題示範如何使用系統管理的身分識別，而提供的範例應用程式會使用 `Microsoft.Azure.Services.AppAuthentication` 套件的版本 `1.0.3`。
+> 在撰寫本文時，最新穩定版本的 `Microsoft.Azure.Services.AppAuthentication` （版本 `1.0.3`）可支援[系統指派的受控](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)識別。 @No__t_1 套件中提供*使用者指派受控*識別的支援。 本主題示範如何使用系統管理的身分識別，而提供的範例應用程式會使用 `Microsoft.Azure.Services.AppAuthentication` 套件的版本 `1.0.3`。
 
 ## <a name="sample-app"></a>範例應用程式
 
 範例應用程式會以*Program.cs*檔案頂端的 `#define` 語句所決定的兩種模式之一來執行：
 
-* `Certificate` &ndash; 會示範如何使用 Azure Key Vault 用戶端識別碼和 x.509 憑證來存取儲存在 Azure Key Vault 中的秘密。 這個版本的範例可以從任何位置執行，部署至 Azure App Service 或任何能夠提供 ASP.NET Core 應用程式的主機。
-* `Managed` &ndash; 會示範如何使用[適用于 Azure 資源的受控](/azure/active-directory/managed-identities-azure-resources/overview)識別來驗證應用程式，以使用 Azure AD 驗證來進行 Azure Key Vault，而不需要在應用程式的程式碼或設定中儲存認證。 使用受控識別進行驗證時，不需要 Azure AD 應用程式識別碼和密碼（用戶端密碼）。 您必須將範例的 `Managed` 版本部署至 Azure。 請遵循[使用適用于 Azure 資源的受控](#use-managed-identities-for-azure-resources)識別一節中的指導方針。
+* `Certificate` &ndash; 示範如何使用 Azure Key Vault 用戶端識別碼和 x.509 憑證來存取儲存在 Azure Key Vault 中的秘密。 這個版本的範例可以從任何位置執行，部署至 Azure App Service 或任何能夠提供 ASP.NET Core 應用程式的主機。
+* `Managed` &ndash; 示範如何使用[適用于 Azure 資源的受控](/azure/active-directory/managed-identities-azure-resources/overview)識別來驗證應用程式，以使用 Azure AD 驗證來進行 Azure Key Vault，而不需要在應用程式的程式碼或設定中儲存認證。 使用受控識別進行驗證時，不需要 Azure AD 應用程式識別碼和密碼（用戶端密碼）。 您必須將範例的 `Managed` 版本部署至 Azure。 請遵循[使用適用于 Azure 資源的受控](#use-managed-identities-for-azure-resources)識別一節中的指導方針。
 
 如需有關如何使用預處理器指示詞（`#define`）來設定範例應用程式的詳細資訊，請參閱 <xref:index#preprocessor-directives-in-sample-code>。
 
@@ -49,7 +49,7 @@ By [Luke Latham](https://github.com/guardrex)和[Andrew Stanton-護士](https://
 
 使用[秘密管理員工具](xref:security/app-secrets)在本機設定秘密。 當範例應用程式在開發環境中的本機電腦上執行時，會從本機密碼管理員存放區載入秘密。
 
-「密碼管理員」工具在應用程式的專案檔中需要有 `<UserSecretsId>` 的屬性。 將屬性值（`{GUID}`）設定為任何唯一的 GUID：
+「密碼管理員」工具需要應用程式專案檔中的 `<UserSecretsId>` 屬性。 將屬性值（`{GUID}`）設定為任何唯一的 GUID：
 
 ```xml
 <PropertyGroup>
@@ -72,11 +72,11 @@ dotnet user-secrets set "SecretName" "secret_value_1_dev"
 dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 ```
 
-當這些秘密儲存在具有 Azure Key Vault 區段之[生產環境的秘密儲存](#secret-storage-in-the-production-environment-with-azure-key-vault)Azure Key Vault 中時，`_dev` 尾碼會變更為 `_prod`。 尾碼會在應用程式的輸出中提供視覺提示，指出設定值的來源。
+當這些秘密儲存在具有 Azure Key Vault 區段之[生產環境的秘密儲存](#secret-storage-in-the-production-environment-with-azure-key-vault)Azure Key Vault 中時，`_dev` 的尾碼會變更為 `_prod`。 尾碼會在應用程式的輸出中提供視覺提示，指出設定值的來源。
 
 ## <a name="secret-storage-in-the-production-environment-with-azure-key-vault"></a>在生產環境中使用 Azure Key Vault 的秘密儲存
 
-@No__t 0Quickstart 所提供的指示：使用 Azure CLI @ no__t-0 主題來設定和取出 Azure Key Vault 的秘密，此處會摘要說明如何建立 Azure Key Vault 並儲存範例應用程式所使用的秘密。 如需進一步的詳細資料，請參閱主題。
+以下摘要說明[快速入門：從 Azure Key Vault 使用 Azure CLI 主題設定和取出秘密](/azure/key-vault/quick-create-cli)，以建立 Azure Key Vault 並儲存範例應用程式所使用的秘密。 如需進一步的詳細資料，請參閱主題。
 
 1. 使用下列其中一種方法，在[Azure 入口網站](https://portal.azure.com/)中開啟 Azure Cloud shell：
 
@@ -86,7 +86,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
    如需詳細資訊，請參閱[Azure 命令列介面（CLI）](/cli/azure/)和[Azure Cloud Shell 的總覽](/azure/cloud-shell/overview)。
 
-1. 如果您尚未驗證，請使用 `az login` 命令登入。
+1. 如果尚未驗證，請使用 `az login` 命令登入。
 
 1. 使用下列命令建立資源群組，其中 `{RESOURCE GROUP NAME}` 是新資源群組的資源組名，而 `{LOCATION}` 是 Azure 區域（datacenter）：
 
@@ -94,7 +94,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    az group create --name "{RESOURCE GROUP NAME}" --location {LOCATION}
    ```
 
-1. 使用下列命令在資源群組中建立金鑰保存庫，其中 `{KEY VAULT NAME}` 是新金鑰保存庫的名稱，而 `{LOCATION}` 是 Azure 區域（datacenter）：
+1. 使用下列命令，在資源群組中建立金鑰保存庫，其中 `{KEY VAULT NAME}` 是新金鑰保存庫的名稱，而 `{LOCATION}` 是 Azure 區域（datacenter）：
 
    ```azure-cli
    az keyvault create --name "{KEY VAULT NAME}" --resource-group "{RESOURCE GROUP NAME}" --location {LOCATION}
@@ -139,10 +139,10 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. 選取 [儲存]。
 1. 部署應用程式。
 
-@No__t-0 範例應用程式會從 `IConfigurationRoot` 取得其設定值，其名稱與秘密名稱相同：
+@No__t_0 範例應用程式會從 `IConfigurationRoot` 與秘密名稱相同的名稱取得其設定值：
 
-* 非階層式值：@No__t-0 的值是透過 `config["SecretName"]` 取得。
-* 階層式值（區段）：請使用 `:` （冒號）標記法或 @no__t 1 擴充方法。 使用下列其中一種方法來取得設定值：
+* 非階層式值： `SecretName` 的值是以 `config["SecretName"]` 取得。
+* 階層式值（區段）：使用 `:` （冒號）標記法或 `GetSection` 擴充方法。 使用下列其中一種方法來取得設定值：
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
@@ -160,21 +160,21 @@ X.509 憑證是由作業系統所管理。 應用程式會使用*appsettings*所
 
 [!code-json[](key-vault-configuration/sample/appsettings.json)]
 
-當您執行應用程式時，網頁會顯示已載入的密碼值。 在開發環境中，秘密值會以 `_dev` 尾碼來載入。 在生產環境中，值會以 `_prod` 的尾碼載入。
+當您執行應用程式時，網頁會顯示已載入的密碼值。 在開發環境中，會以 `_dev` 尾碼來載入密碼值。 在生產環境中，值會以 `_prod` 尾碼來載入。
 
 ## <a name="use-managed-identities-for-azure-resources"></a>使用適用于 Azure 資源的受控識別
 
 **部署至 azure 的應用程式**可以利用[Azure 資源的受控](/azure/active-directory/managed-identities-azure-resources/overview)識別，讓應用程式使用不需認證的 Azure AD 驗證（應用程式識別碼和密碼/用戶端密碼）驗證 Azure Key Vault儲存在應用程式中。
 
-範例應用程式會使用 Azure 資源的受控識別，但*Program.cs*檔案頂端的 `#define` 語句設定為 `Managed`。
+當*Program.cs*檔案頂端的 `#define` 語句設定為 `Managed` 時，範例應用程式會使用適用于 Azure 資源的受控識別。
 
-在應用程式的*appsettings*中輸入保存庫名稱。 當設定為 `Managed` 版本時，範例應用程式不需要應用程式識別碼和密碼（用戶端密碼），因此您可以忽略這些設定專案。 應用程式會部署至 Azure，而 Azure 只會使用儲存在*appsettings*中的保存庫名稱來驗證應用程式，以存取 Azure Key Vault。
+在應用程式的*appsettings*中輸入保存庫名稱。 當設定為 `Managed` 版本時，範例應用程式不需要應用程式識別碼和密碼（用戶端秘密），因此您可以忽略這些設定專案。 應用程式會部署至 Azure，而 Azure 只會使用儲存在*appsettings*中的保存庫名稱來驗證應用程式，以存取 Azure Key Vault。
 
 將範例應用程式部署至 Azure App Service。
 
 部署到 Azure App Service 的應用程式會在建立服務時，自動向 Azure AD 註冊。 從部署取得物件識別碼，以便在下列命令中使用。 物件識別碼會顯示在 App Service 的 身分**識別** 面板上的 Azure 入口網站。
 
-使用 Azure CLI 和應用程式的物件識別碼，提供具有 `list` 和 @no__t 1 許可權的應用程式來存取金鑰保存庫：
+使用 Azure CLI 和應用程式的物件識別碼，為應用程式提供 `list` 和 `get` 許可權以存取金鑰保存庫：
 
 ```azure-cli
 az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secret-permissions get list
@@ -184,11 +184,21 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 範例應用程式：
 
-* 建立不含連接字串之 @no__t 0 類別的實例。 未提供連接字串時，提供者會嘗試從 Azure 資源的受控識別取得存取權杖。
+* 建立 `AzureServiceTokenProvider` 類別的實例，而不含連接字串。 未提供連接字串時，提供者會嘗試從 Azure 資源的受控識別取得存取權杖。
 * 新的 `KeyVaultClient` 會使用 `AzureServiceTokenProvider` 實例權杖回呼來建立。
-* @No__t-0 實例會搭配使用 `IKeyVaultSecretManager` 的預設實作為載入所有秘密值，並在索引鍵名稱中以冒號（`:`）取代雙破折號（`--`）。
+* @No__t_0 實例會搭配使用 `IKeyVaultSecretManager` 的預設執行，以載入所有秘密值，並以冒號（`:`）取代索引鍵名稱中的雙破折號（`--`）。
 
 [!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet2&highlight=13-21)]
+
+金鑰保存庫名稱範例值： `contosovault`
+    
+*appsettings.json*：
+
+```json
+{
+  "KeyVaultName": "Key Vault Name"
+}
+```
 
 當您執行應用程式時，網頁會顯示已載入的密碼值。 在開發環境中，秘密值具有 `_dev` 尾碼，因為它們是由使用者密碼提供。 在生產環境中，值會以 `_prod` 尾碼載入，因為它們是由 Azure Key Vault 提供。
 
@@ -201,17 +211,17 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 > [!WARNING]
 > 請勿在金鑰保存庫秘密上使用前置詞，將多個應用程式的秘密放入相同的金鑰保存庫，或將環境秘密（例如*開發*與*生產*密碼）放入相同的保存庫中。 我們建議不同的應用程式和開發/生產環境使用不同的金鑰保存庫，以隔離最高安全性層級的應用程式環境。
 
-在下列範例中，會在金鑰保存庫中建立秘密（並使用適用于開發環境的秘密管理員工具）來 `5000-AppSecret` （金鑰保存庫密碼名稱中不允許期間）。 此秘密代表應用程式版本5.0.0.0 的應用程式密碼。 針對另一個版本的應用程式5.1.0.0，會將密碼新增至金鑰保存庫（並使用秘密管理員工具）來 `5100-AppSecret`。 每個應用程式版本都會將其版本設定的秘密值載入至其設定中，如 `AppSecret`，會在載入秘密時去除版本。
+在下列範例中，會在金鑰保存庫中建立秘密（並使用適用于開發環境的密碼管理員工具）進行 `5000-AppSecret` （金鑰保存庫密碼名稱中不允許期間）。 此秘密代表應用程式版本5.0.0.0 的應用程式密碼。 針對其他版本的應用程式（5.1.0.0），會將密碼新增至金鑰保存庫（並使用秘密管理員工具）進行 `5100-AppSecret`。 每個應用程式版本都會將其版本設定的秘密值載入至其設定中做為 `AppSecret`，並在載入秘密時去除版本。
 
-使用自訂的 `IKeyVaultSecretManager` 呼叫 `AddAzureKeyVault`：
+使用自訂 `IKeyVaultSecretManager` 呼叫 `AddAzureKeyVault`：
 
 [!code-csharp[](key-vault-configuration/sample_snapshot/Program.cs?highlight=30-34)]
 
-@No__t 0 的執行動作會回應密碼的版本前置詞，以將適當的密碼載入設定中：
+@No__t_0 的執行會回應密碼的版本前置詞，以將適當的密碼載入設定中：
 
 [!code-csharp[](key-vault-configuration/sample_snapshot/Startup.cs?name=snippet1)]
 
-@No__t-0 方法是由可逐一查看保存庫密碼的提供者演算法所呼叫，以尋找具有版本前置詞的金鑰。 當找到具有 `Load` 的版本前置詞時，演算法會使用 `GetKey` 方法來傳回密碼名稱的設定名稱。 它會從密碼的名稱中去除版本前置詞，並傳回其餘的秘密名稱，以載入至應用程式的設定名稱/值配對。
+@No__t_0 方法是由提供者演算法所呼叫，它會逐一查看保存庫秘密，以尋找具有版本前置詞的金鑰。 當找到具有 `Load` 的版本前置詞時，演算法會使用 `GetKey` 方法來傳回密碼名稱的設定名稱。 它會從密碼的名稱中去除版本前置詞，並傳回其餘的秘密名稱，以載入至應用程式的設定名稱/值配對。
 
 當此方法執行時：
 
@@ -223,7 +233,7 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
    </PropertyGroup>
    ```
 
-1. 確認應用程式的專案檔中有 `<UserSecretsId>` 屬性，其中 `{GUID}` 是使用者提供的 GUID：
+1. 確認 `<UserSecretsId>` 屬性存在於應用程式的專案檔中，其中 `{GUID}` 是使用者提供的 GUID：
 
    ```xml
    <PropertyGroup>
@@ -245,11 +255,11 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
    az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "5100-AppSecret" --value "5.1.0.0_secret_value_prod"
    ```
 
-1. 當應用程式執行時，會載入金鑰保存庫密碼。 @No__t-0 的字串秘密符合應用程式的專案檔（`5.0.0.0`）中指定的應用程式版本。
+1. 當應用程式執行時，會載入金鑰保存庫密碼。 @No__t_0 的字串秘密符合應用程式的專案檔（`5.0.0.0`）中所指定的應用程式版本。
 
-1. 版本（`5000` （含破折號））會從索引鍵名稱中移除。 在整個應用程式中，使用金鑰讀取設定 `AppSecret` 會載入秘密值。
+1. 會從索引鍵名稱中移除版本 `5000` （含破折號）。 在整個應用程式中，使用金鑰來讀取設定 `AppSecret` 會載入秘密值。
 
-1. 如果專案檔中的應用程式版本變更為 `5.1.0.0`，而應用程式再次執行，則傳回的秘密值會在開發環境中 `5.1.0.0_secret_value_dev`，而生產中的 `5.1.0.0_secret_value_prod`。
+1. 如果專案檔中的應用程式版本變更為 `5.1.0.0`，而應用程式再次執行，則傳回的秘密值會在開發環境中 `5.1.0.0_secret_value_dev`，並在生產環境中 `5.1.0.0_secret_value_prod`。
 
 > [!NOTE]
 > 您也可以提供您自己的 `KeyVaultClient` 實作為 `AddAzureKeyVault`。 自訂用戶端允許跨應用程式共用單一用戶端實例。
@@ -258,11 +268,11 @@ az keyvault set-policy --name '{KEY VAULT NAME}' --object-id {OBJECT ID} --secre
 
 提供者能夠將設定值讀入陣列中，以系結至 POCO 陣列。
 
-從允許金鑰包含冒號（`:`）分隔符號的設定來源讀取時，會使用數位索引鍵區段來區別組成陣列的索引鍵（`:0:`，`:1:` 。 `:{n}:`). 如需詳細資訊，請參閱 [Configuration：將陣列系結至類別 @ no__t-0。
+從允許金鑰包含冒號（`:`）分隔符號的設定來源讀取時，會使用數位索引鍵區段來區別組成陣列的索引鍵（`:0:`、`:1:` 。 `:{n}:`)。 如需詳細資訊，請參閱[Configuration：將陣列系結至類別](xref:fundamentals/configuration/index#bind-an-array-to-a-class)。
 
-Azure Key Vault 索引鍵不能使用冒號做為分隔符號。 本主題中所述的方法使用雙虛線（`--`）做為階層式值的分隔符號（區段）。 陣列索引鍵會以雙虛線和數位索引鍵區段（`--0--`，`--1--`，&hellip; `--{n}--`）儲存在 Azure Key Vault 中。
+Azure Key Vault 索引鍵不能使用冒號做為分隔符號。 本主題中所述的方法會使用雙虛線（`--`）做為階層式值的分隔符號（區段）。 陣列索引鍵會以雙虛線和數位索引鍵區段（`--0--`、`--1--`、&hellip; `--{n}--`）儲存在 Azure Key Vault 中。
 
-檢查 JSON 檔案所提供的下列[Serilog](https://serilog.net/)記錄提供者設定。 @No__t-0 陣列中定義了兩個物件常值，其會反映兩個 Serilog*接收*，其中描述記錄輸出的目的地：
+檢查 JSON 檔案所提供的下列[Serilog](https://serilog.net/)記錄提供者設定。 @No__t_0 陣列中定義了兩個物件常值，會反映兩個 Serilog*接收*，其中描述記錄輸出的目的地：
 
 ```json
 "Serilog": {
@@ -287,7 +297,7 @@ Azure Key Vault 索引鍵不能使用冒號做為分隔符號。 本主題中所
 
 先前 JSON 檔案中顯示的設定會使用雙虛線（`--`）標記法和數值區段儲存在 Azure Key Vault 中：
 
-| Key | 值 |
+| 機碼 | 值 |
 | --- | ----- |
 | `Serilog--WriteTo--0--Name` | `AzureTableStorage` |
 | `Serilog--WriteTo--0--Args--storageTableName` | `logs` |
@@ -298,7 +308,7 @@ Azure Key Vault 索引鍵不能使用冒號做為分隔符號。 本主題中所
 
 ## <a name="reload-secrets"></a>重載秘密
 
-系統會快取密碼，直到呼叫 `IConfigurationRoot.Reload()` 為止。 除非執行 `Reload`，否則應用程式不會遵守金鑰保存庫中已過期、已停用及更新的秘密。
+系統會快取密碼，直到呼叫 `IConfigurationRoot.Reload()` 為止。 在執行 `Reload` 之前，應用程式不會遵守金鑰保存庫中已過期、已停用及更新的秘密。
 
 ```csharp
 Configuration.Reload();
@@ -306,7 +316,7 @@ Configuration.Reload();
 
 ## <a name="disabled-and-expired-secrets"></a>已停用和過期的秘密
 
-停用和過期的秘密會在執行時間擲回 `KeyVaultClientException`。 若要防止應用程式擲回，請使用不同的設定提供者來提供設定，或更新已停用或已過期的密碼。
+已停用和過期的秘密會在執行時間擲回 `KeyVaultClientException`。 若要防止應用程式擲回，請使用不同的設定提供者來提供設定，或更新已停用或已過期的密碼。
 
 ## <a name="troubleshoot"></a>疑難排解
 
@@ -323,9 +333,9 @@ Configuration.Reload();
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:fundamentals/configuration/index>
-* @no__t 0Microsoft Azure：Key Vault @ no__t-0
-* @no__t 0Microsoft Azure：Key Vault 檔 @ no__t-0
+* [Microsoft Azure： Key Vault](https://azure.microsoft.com/services/key-vault/)
+* [Microsoft Azure： Key Vault 檔](/azure/key-vault/)
 * [如何為 Azure Key Vault 產生及傳輸受 HSM 保護的金鑰](/azure/key-vault/key-vault-hsm-protected-keys)
 * [KeyVaultClient 類別](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
-* [快速入門：使用 .NET web 應用程式 @ no__t 從 Azure Key Vault 設定和取出秘密-0
-* [教學課程：如何在中搭配使用 Azure Key Vault 與 Azure Windows 虛擬機器。NET @ no__t-0
+* [快速入門：使用 .NET web 應用程式從 Azure Key Vault 設定和取出秘密](/azure/key-vault/quick-create-net)
+* [教學課程：如何在 .NET 中搭配使用 Azure Key Vault 與 Azure Windows 虛擬機器](/azure/key-vault/tutorial-net-windows-virtual-machine)

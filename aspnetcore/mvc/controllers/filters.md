@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: ed48c2074360768b8d8c5af7057b353b00592394
-ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.openlocfilehash: 0c3597f24e02af40517e12a86127b140ed4fb550
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037688"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333926"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -132,12 +132,12 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 | 序列 | 篩選條件範圍 | 篩選條件方法 |
 |:--------:|:------------:|:-------------:|
-| 1 | 全域 | `OnActionExecuting` |
+| 1 | Global | `OnActionExecuting` |
 | 2 | 控制器 | `OnActionExecuting` |
 | 3 | 方法 | `OnActionExecuting` |
 | 4 | 方法 | `OnActionExecuted` |
 | 5 | 控制器 | `OnActionExecuted` |
-| 6 | 全域 | `OnActionExecuted` |
+| 6 | Global | `OnActionExecuted` |
 
 此順序顯示：
 
@@ -158,7 +158,7 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 `TestController`：
 
-* 將 `SampleActionFilterAttribute` (`[SampleActionFilter]`) 套用至 `FilterTest2` 動作：
+* 將 `SampleActionFilterAttribute` （`[SampleActionFilter]`）套用至 `FilterTest2` 動作。
 * 覆寫 `OnActionExecuting` 和 `OnActionExecuted`。
 
 [!code-csharp[](./filters/sample/FiltersSample/Controllers/TestController.cs?name=snippet)]
@@ -194,8 +194,8 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | 方法 | 0 | `OnActionExecuting` |
 | 2 | 控制器 | 1  | `OnActionExecuting` |
-| 3 | 全域 | 2  | `OnActionExecuting` |
-| 4 | 全域 | 2  | `OnActionExecuted` |
+| 3 | Global | 2  | `OnActionExecuting` |
+| 4 | Global | 2  | `OnActionExecuted` |
 | 5 | 控制器 | 1  | `OnActionExecuted` |
 | 6 | 方法 | 0  | `OnActionExecuted` |
 
@@ -449,18 +449,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 * 導致無法執行動作結果和後續的篩選條件。
 * 視為失敗，而不是成功的結果。
 
-當 <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuted*?displayProperty=fullName> 方法執行時：
-
-* 回應很可能已被傳送至用戶端，且無法變更。
-* 如果擲回例外狀況，則不會傳送回應本文。
-
-<!-- Review preceding "If an exception was thrown: Original 
-When the OnResultExecuted method runs, the response has likely been sent to the client and cannot be changed further (unless an exception was thrown).
-
-SHould that be , 
-If an exception was thrown **IN THE RESULT FILTER**, the response body is not sent.
-
- -->
+當 <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuted*?displayProperty=fullName> 方法執行時，回應可能已經傳送到用戶端。 如果回應已傳送給用戶端，則無法進一步變更。
 
 如果動作結果執行被另一個篩選條件縮短，則 `ResultExecutedContext.Canceled` 會被設為 `true`。
 
@@ -494,7 +483,7 @@ If an exception was thrown **IN THE RESULT FILTER**, the response body is not se
 上述程式碼可以透過執行[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) \(英文\) 來進行測試：
 
 * 叫用 F12 開發人員工具。
-* 巡覽至 `https://localhost:5001/Sample/HeaderWithFactory`
+* 巡覽至 `https://localhost:5001/Sample/HeaderWithFactory`。
 
 F12 開發人員工具會顯示由範例程式碼所加入的下列回應標頭：
 
@@ -532,7 +521,7 @@ What's a non-named attribute?
 
 若要使用中介軟體作為篩選條件，請建立一個具有 `Configure` 方法的類型，其能指定要插入到篩選條件管線的中介軟體。 以下範例會使用當地語系化中介軟體來建立某個要求目前的文化特性：
 
-[!code-csharp[](./filters/sample/FiltersSample/Filters/LocalizationPipeline.cs?name=snippet_MiddlewareFilter&highlight=3,21)]
+[!code-csharp[](./filters/sample/FiltersSample/Filters/LocalizationPipeline.cs?name=snippet_MiddlewareFilter&highlight=3,22)]
 
 使用 <xref:Microsoft.AspNetCore.Mvc.MiddlewareFilterAttribute> 來執行中介軟體：
 
@@ -542,5 +531,5 @@ What's a non-named attribute?
 
 ## <a name="next-actions"></a>後續動作
 
-* 請參閱[Razor Pages 的篩選方法](xref:razor-pages/filter)
+* 請參閱[Razor Pages 的篩選方法](xref:razor-pages/filter)。
 * 若要嘗試使用篩選條件，請[下載、測試及修改 GitHub 範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) \(英文\)。

@@ -5,14 +5,14 @@ description: 了解如何在 Visual Studio 中建立發行設定檔，並使用�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/21/2019
+ms.date: 10/12/2019
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: fd08a5ebe5b85dcddcec4ef3e57d326a44ce2f2d
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: a3d6cc450e42d7eb6b694cd4985828ce52fa7519
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080851"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333756"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔
 
@@ -70,7 +70,7 @@ Web SDK 會匯入[Razor SDK](xref:razor-pages/sdk)。 因此，符合 `**\*.csht
 
 ## <a name="basic-command-line-publishing"></a>基本命令列發佈
 
-命令列發佈適用於所有 .NET Core 支援的平台，而不需要 Visual Studio。 在下列範例中，.NET Core CLI 的 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令是從專案目錄執行 (此目錄包含 *.csproj* 檔案)。 如果專案資料夾不是目前的工作目錄，請在專案檔案路徑中明確傳入。 例如：
+命令列發佈適用於所有 .NET Core 支援的平台，而不需要 Visual Studio。 在下列範例中，.NET Core CLI 的 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令是從專案目錄執行 (此目錄包含 *.csproj* 檔案)。 如果專案資料夾不是目前的工作目錄，請在專案檔案路徑中明確傳入。 例如:
 
 ```dotnetcli
 dotnet publish C:\Webs\Web1
@@ -152,14 +152,24 @@ Visual Studio 的發佈工具會產生描述發行設定檔的 *Properties/Publi
 
 機密資訊 (例如發佈密碼) 會依每個使用者/電腦加密。 其儲存位置是在 *Properties/PublishProfiles/{設定檔名稱}.pubxml.user* 檔案中。 由於此檔案可以儲存機密資訊，因此不應該將它簽入至原始檔控制。
 
-如需如何發佈 ASP.NET Core Web 應用程式的概觀，請參閱<xref:host-and-deploy/index>。 發佈 ASP.NET Core Web 應用程式所需的 MSBuild 工作和目標是 [aspnet/websdk 存放庫](https://github.com/aspnet/websdk)的開放原始碼。
+如需如何發佈 ASP.NET Core Web 應用程式的概觀，請參閱<xref:host-and-deploy/index>。 發佈 ASP.NET Core web 應用程式所需的 MSBuild 工作和目標，是[aspnet/websdk 存放庫](https://github.com/aspnet/websdk)中的開放原始碼。
 
-`dotnet publish` 命令可以使用資料夾、MSDeploy 及 [Kudu](https://github.com/projectkudu/kudu/wiki) 發行設定檔。 因為 MSDeploy 缺少跨平台支援，所以只有 Windows 支援下列 MSDeploy 選項。
+下列命令可以使用 folder、Msdeploy.exe 和[Kudu](https://github.com/projectkudu/kudu/wiki)發行設定檔。 因為 MSDeploy 缺少跨平台支援，所以只有 Windows 支援下列 MSDeploy 選項。
 
 **資料夾 (可跨平台運作)：**
 
+<!--
+
+NOTE: Add back the following 'dotnet publish' folder publish example after https://github.com/aspnet/websdk/issues/888 is resolved.
+
 ```dotnetcli
 dotnet publish WebApplication.csproj /p:PublishProfile=<FolderProfileName>
+```
+
+-->
+
+```dotnetcli
+dotnet build WebApplication.csproj /p:DeployOnBuild=true /p:PublishProfile=<FolderProfileName>
 ```
 
 **MSDeploy：**
@@ -168,17 +178,26 @@ dotnet publish WebApplication.csproj /p:PublishProfile=<FolderProfileName>
 dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployProfileName> /p:Password=<DeploymentPassword>
 ```
 
+```dotnetcli
+dotnet build WebApplication.csproj /p:DeployOnBuild=true /p:PublishProfile=<MsDeployProfileName> /p:Password=<DeploymentPassword>
+```
+
 **MSDeploy 套件：**
 
 ```dotnetcli
 dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployPackageProfileName>
 ```
 
-在先前的範例中，請不要將 `deployonbuild` 傳遞給 `dotnet publish`。
+```dotnetcli
+dotnet build WebApplication.csproj /p:DeployOnBuild=true /p:PublishProfile=<MsDeployPackageProfileName>
+```
+
+在上述範例中：
+
+* `dotnet publish` 和 `dotnet build` 支援從任何平臺發佈至 Azure 的 Kudu Api。 Visual Studio 發佈支援 Kudu API，但 WebSDK 也支援使用它來跨平台發佈到 Azure。
+* 請勿將 `DeployOnBuild` 傳遞至 `dotnet publish` 命令。
 
 如需詳細資訊，請參閱 [Microsoft.NET.Sdk.Publish](https://github.com/aspnet/websdk#microsoftnetsdkpublish)\(英文\)。
-
-`dotnet publish` 支援使用 Kudu API 從任何平台發佈到 Azure。 Visual Studio 發佈支援 Kudu API，但 WebSDK 也支援使用它來跨平台發佈到 Azure。
 
 將含有下列內容的發行設定檔新增至專案的 *Properties/PublishProfiles* 資料夾：
 
@@ -193,21 +212,20 @@ dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployPackageProfileNa
 </Project>
 ```
 
-執行下列命令以壓縮發佈內容，然後使用 Kudu API 將它發佈到 Azure：
+## <a name="folder-publish-example"></a>資料夾發行範例
 
-```dotnetcli
-dotnet publish /p:PublishProfile=Azure /p:Configuration=Release
-```
+以名為*FolderProfile*的設定檔發行時，請使用下列其中一個命令：
 
-使用發行設定檔時，請設定下列 MSBuild 屬性：
+<!--
 
-* `DeployOnBuild=true`
-* `PublishProfile={PUBLISH PROFILE}`
+NOTE: Temporarily removed until https://github.com/aspnet/websdk/issues/888 is resolved.
 
-使用名為 *FolderProfile* 的設定檔來進行發佈時，可以執行下列兩個命令其中之一：
+* `dotnet publish /p:Configuration=Release /p:PublishProfile=FolderProfile`
+
+-->
 
 * `dotnet build /p:DeployOnBuild=true /p:PublishProfile=FolderProfile`
-* `msbuild      /p:DeployOnBuild=true /p:PublishProfile=FolderProfile`
+* `msbuild /p:DeployOnBuild=true /p:PublishProfile=FolderProfile`
 
 .NET Core CLI 的 [dotnet build](/dotnet/core/tools/dotnet-build) 命令會呼叫 `msbuild` 來執行建置和發佈程序。 傳入資料夾設定檔時，`dotnet build` 或 `msbuild` 命令是一樣的。 在 Windows 上直接呼叫 `msbuild` 時，會使用 .NET Framework 版本的 MSBuild。 在非資料夾設定檔上呼叫 `dotnet build`：
 
@@ -244,6 +262,16 @@ MSBuild file.
 
 * `<ExcludeApp_Data>` 屬性的出現僅為滿足 XML 結構描述需求。 即使專案根目錄中有 *App_Data* 資料夾，`<ExcludeApp_Data>` 屬性對發佈程序也不具效用。 *App_Data* 資料夾不會受到和 ASP.NET 4.x 專案一樣的特殊處理。
 
+<!--
+
+NOTE: Temporarily removed from 'Using the .NET Core CLI' below until https://github.com/aspnet/websdk/issues/888 is resolved.
+
+    ```dotnetcli
+    dotnet publish /p:Configuration=Release /p:PublishProfile=FolderProfile
+    ```
+
+-->
+
 * `<LastUsedBuildConfiguration>` 屬性設定為 `Release`。 從 Visual Studio 發佈時，會使用發佈程序開始時的值來設定 `<LastUsedBuildConfiguration>` 值。 `<LastUsedBuildConfiguration>` 很特殊，不應該在匯入的 MSBuild 檔案中被覆寫。 不過，這個屬性可以從命令列使用下列方法之一覆寫。
   * 使用 .NET Core CLI：
 
@@ -279,8 +307,8 @@ msbuild {PATH}
 * {PROFILE} &ndash; 發行設定檔的名稱。
 * {USERNAME} &ndash; MSDeploy 使用者名稱。 {USERNAME} 可以在發行設定檔中找到。
 * {PASSWORD} &ndash; MSDeploy 密碼。 您可以從 *{PROFILE}.PublishSettings* 檔案取得 {PASSWORD}。 從下列其中一個位置下載 *.PublishSettings* 檔案：
-  * **方案總管**：選取 [檢視] > [Cloud Explorer]。 連線到您的 Azure 訂用帳戶。 開啟 [應用程式服務]。 以滑鼠右鍵按一下應用程式。 選取 [下載發行設定檔]。
-  * Azure 入口網站：在 Web 應用程式的 [概觀] 面板中，選取 [取得發行設定檔]。
+  * **方案總管**：選取 [ **View**  > **Cloud Explorer**]。 連線到您的 Azure 訂用帳戶。 開啟 [應用程式服務]。 以滑鼠右鍵按一下應用程式。 選取 [下載發行設定檔]。
+  * Azure 入口網站：在 web 應用程式的 **[總覽**] 面板中選取 [**取得發行設定檔**]。
 
 下列範例使用名為 *AzureWebApp - Web Deploy* 的發行設定檔：
 
@@ -437,7 +465,7 @@ Done Building Project "C:\Webs\Web1\Web1.csproj" (default targets).
 
 [!code-xml[](visual-studio-publish-profiles/samples/Web1.pubxml?highlight=18-23)]
 
-上述範例會使用 `ResolvedFileToPublish` 項目，其預設行為是一律將 `Include` 屬性提供的檔案複製到發佈的網站。 藉由包含附帶內部文字 `Never` 或 `PreserveNewest` 的 `<CopyToPublishDirectory>` 子元素，來覆寫預設行為。 例如：
+上述範例會使用 `ResolvedFileToPublish` 項目，其預設行為是一律將 `Include` 屬性提供的檔案複製到發佈的網站。 藉由包含附帶內部文字 `Never` 或 `PreserveNewest` 的 `<CopyToPublishDirectory>` 子元素，來覆寫預設行為。 例如:
 
 ```xml
 <ResolvedFileToPublish Include="..\ReadMe2.md">
@@ -473,7 +501,7 @@ Done Building Project "C:\Webs\Web1\Web1.csproj" (default targets).
 
 ## <a name="the-kudu-service"></a>Kudu 服務
 
-若要檢視 Azure App Service Web 應用程式部署中的檔案，請使用 [Kudu 服務](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service)。 將 `scm` 權杖附加至 Web 應用程式名稱。 例如：
+若要檢視 Azure App Service Web 應用程式部署中的檔案，請使用 [Kudu 服務](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service)。 將 `scm` 權杖附加至 Web 應用程式名稱。 例如:
 
 | URL                                    | 結果       |
 | -------------------------------------- | ------------ |
@@ -485,6 +513,6 @@ Done Building Project "C:\Webs\Web1\Web1.csproj" (default targets).
 ## <a name="additional-resources"></a>其他資源
 
 * [Web Deploy](https://www.iis.net/downloads/microsoft/web-deploy) (MSDeploy) 可簡化對 IIS 伺服器的 Web 應用程式和網站部署。
-* [Web SDK GitHub 存放庫](https://github.com/aspnet/websdk/issues)：針對部署提出問題及要求功能。
+* [WEB SDK GitHub 存放庫](https://github.com/aspnet/websdk/issues)：針對部署提出問題及要求功能。
 * [從 Visual Studio 將 ASP.NET Web 應用程式發佈至 Azure VM](/azure/virtual-machines/windows/publish-web-app-from-visual-studio)
 * <xref:host-and-deploy/iis/transform-webconfig>

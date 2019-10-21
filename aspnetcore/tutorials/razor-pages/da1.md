@@ -5,16 +5,16 @@ description: 了解如何更新 ASP.NET Core 應用程式中產生的頁面。
 ms.author: riande
 ms.date: 12/20/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: f1f69b7facf584d46248405c808e75bdd8448d2b
-ms.sourcegitcommit: 051f068c78931432e030b60094c38376d64d013e
-ms.translationtype: HT
+ms.openlocfilehash: 0f6535462fe2d308825bf7289c10d2b0690cebd4
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68440329"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334118"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>更新 ASP.NET Core 應用程式中產生的頁面
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -34,7 +34,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 
 瀏覽至 Pages/Movies，然後將滑鼠停留在 **Edit** 連結，以查看目標 URL。
 
-![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 之 URL 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
+![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
 
 在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、**Details**  和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。
 
@@ -42,7 +42,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 
 [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`asp-page` 和路由識別碼 (`asp-route-id`) 動態產生 HTML `href` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。
 
-從您最愛的瀏覽器中使用 [檢視原始檔]  來檢查產生的標記。 產生的 HTML 部分如下所示：
+從您最愛的瀏覽器中使用 [檢視原始檔] 來檢查產生的標記。 產生的 HTML 部分如下所示：
 
 ```html
 <td>
@@ -53,6 +53,8 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 ```
 
 動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如 `https://localhost:5001/Movies/Details?id=1` 中的 `?id=1`)。
+
+### <a name="add-route-template"></a>新增路由範本
 
 更新 Edit、Details 和 Delete Razor 頁面，以使用 "{id:int}" 路由範本。 將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。 執行應用程式，然後檢視原始檔。 產生的 HTML 將識別碼新增至 URL 的路徑部分：
 
@@ -89,7 +91,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 若要測試 `catch` 區段：
 
 * 在 `catch (DbUpdateConcurrencyException)`上設定中斷點
-* 針對電影選取 [編輯]  ，進行變更，但不要輸入 [儲存]  。
+* 針對電影選取 [編輯]，進行變更，但不要輸入 [儲存]。
 * 在另一個瀏覽器視窗中，選取相同電影的 **Delete** 連結，然後刪除電影。
 * 在先前的瀏覽器視窗中，發佈對電影的變更。
 
@@ -147,7 +149,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 
 瀏覽至 Pages/Movies，然後將滑鼠停留在 **Edit** 連結，以查看目標 URL。
 
-![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 之 URL 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
+![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
 
 在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、**Details**  和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。
 
@@ -155,7 +157,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 
 [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`asp-page` 和路由識別碼 (`asp-route-id`) 動態產生 HTML `href` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。
 
-從您最愛的瀏覽器中使用 [檢視原始檔]  來檢查產生的標記。 產生的 HTML 部分如下所示：
+從您最愛的瀏覽器中使用 [檢視原始檔] 來檢查產生的標記。 產生的 HTML 部分如下所示：
 
 ```html
 <td>
@@ -202,7 +204,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 若要測試 `catch` 區段：
 
 * 在 `catch (DbUpdateConcurrencyException)`上設定中斷點
-* 針對電影選取 [編輯]  ，進行變更，但不要輸入 [儲存]  。
+* 針對電影選取 [編輯]，進行變更，但不要輸入 [儲存]。
 * 在另一個瀏覽器視窗中，選取相同電影的 **Delete** 連結，然後刪除電影。
 * 在先前的瀏覽器視窗中，發佈對電影的變更。
 

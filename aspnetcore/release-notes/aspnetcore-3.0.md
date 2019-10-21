@@ -475,7 +475,7 @@ app.UseEndpoints(endpoints =>
 
 ## <a name="pipes-on-httpcontext"></a>HttpCoNtext 上的管道
 
-現在可以使用 <xref:System.IO.Pipelines> API 來讀取要求本文並寫入回應主體。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` 屬性提供可用來讀取要求主體的 <xref:System.IO.Pipelines.PipeReader>。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` 屬性提供可用來寫入回應主體的 <xref:System.IO.Pipelines.PipeWriter>。 `HttpRequest.BodyReader` 是 `HttpRequest.Body` 資料流程的類比。 `HttpResponse.BodyWriter` 是 `HttpResponse.Body` 資料流程的類比。
+現在可以使用 <xref:System.IO.Pipelines>API 讀取要求本文與寫入回應本文。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` 屬性提供可用於讀取要求本文的 <xref:System.IO.Pipelines.PipeReader>。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` 屬性提供可用來寫入回應本文的 <xref:System.IO.Pipelines.PipeWriter>。 `HttpRequest.BodyReader` 類似於`HttpRequest.Body` 資料流。 `HttpResponse.BodyWriter` 類似於 `HttpResponse.Body` 資料流。
 
 <!-- indirectly related, https://github.com/dotnet/docs/pull/14414 won't be published by 9/23  -->
 

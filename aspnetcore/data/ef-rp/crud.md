@@ -120,7 +120,7 @@ Students 頁面的 Scaffold 程式碼不包含註冊資料。 在本節中，您
 
 ## <a name="update-the-edit-page"></a>更新 [編輯] 頁面
 
-在 *Pages/Students/Create.cshtml.cs* 中，使用下列程式碼取代 `OnGetAsync` 和 `OnPostAsync` 方法。
+在 *Pages/Students/Edit.cshtml.cs* 中，使用下列程式碼取代 `OnGetAsync` 和 `OnPostAsync` 方法。
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Edit.cshtml.cs?name=snippet_OnGetPost)]
 

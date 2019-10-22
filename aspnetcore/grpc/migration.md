@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
-ms.openlocfilehash: 8f0d9dd980fa3281f30dc29d329d10ccd352ae72
-ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
+ms.openlocfilehash: 596eca0f510387a18472eb353672980e0a8e0d24
+ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71278705"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72698004"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>將 gRPC 服務從 C-核心遷移至 ASP.NET Core
 
@@ -23,13 +23,13 @@ ms.locfileid: "71278705"
 
 在 ASP.NET Core 堆疊中，預設會以[限定範圍的存留期](xref:fundamentals/dependency-injection#service-lifetimes)來建立 gRPC 服務。 相反地，gRPC C-core 預設會系結至具有[單一存留期](xref:fundamentals/dependency-injection#service-lifetimes)的服務。
 
-限定範圍存留期可讓服務執行解析具有限定範圍存留期的其他服務。 例如，範圍存留期也可以透過函`DbContext`式插入，從 DI 容器解析。 使用範圍存留期：
+限定範圍存留期可讓服務執行解析具有限定範圍存留期的其他服務。 例如，範圍存留期也可以透過函式插入，從 DI 容器解析 `DbContext`。 使用範圍存留期：
 
 * 服務實的新實例會針對每個要求而建立。
 * 您無法透過執行類型上的實例成員，在要求之間共用狀態。
 * 預期的情況是將共用狀態儲存在 DI 容器的單一服務中。 儲存的共用狀態會在 gRPC 服務執行的函式中解析。
 
-如需服務存留期的詳細資訊<xref:fundamentals/dependency-injection#service-lifetimes>，請參閱。
+如需服務存留期的詳細資訊，請參閱 <xref:fundamentals/dependency-injection#service-lifetimes>。
 
 ### <a name="add-a-singleton-service"></a>新增單一服務
 
@@ -47,25 +47,25 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="configure-grpc-services-options"></a>設定 gRPC services 選項
 
-在以 C 為基礎的應用程式中，當`grpc.max_receive_message_length`您`grpc.max_send_message_length`在[建立伺服器實例](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server__ctor_System_Collections_Generic_IEnumerable_Grpc_Core_ChannelOption__)時，會使用`ChannelOption`和等設定進行設定。
+在以 C 為基礎的應用程式中，`grpc.max_receive_message_length` 和 `grpc.max_send_message_length` 等設定會在[建立伺服器實例](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server__ctor_System_Collections_Generic_IEnumerable_Grpc_Core_ChannelOption__)時，使用 `ChannelOption` 來設定。
 
-在 ASP.NET Core 中，gRPC 會透過`GrpcServiceOptions`類型提供設定。 例如，gRPC 服務的傳入訊息大小上限可以透過來設定`AddGrpc`。 下列範例會將 4 mb `ReceiveMaxMessageSize`的預設值變更為 16 mb：
+在 ASP.NET Core 中，gRPC 會透過 `GrpcServiceOptions` 類型提供設定。 例如，gRPC 服務的傳入訊息大小上限可以透過 `AddGrpc` 來設定。 下列範例會將 4 MB 的預設 `MaxReceiveMessageSize` 變更為 16 MB：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddGrpc(options =>
     {
-        options.ReceiveMaxMessageSize = 16 * 1024 * 1024; // 16 MB
+        options.MaxReceiveMessageSize = 16 * 1024 * 1024; // 16 MB
     });
 }
 ```
 
-如需設定的詳細資訊， <xref:grpc/configuration>請參閱。
+如需設定的詳細資訊，請參閱 <xref:grpc/configuration>。
 
 ## <a name="logging"></a>記錄
 
-`GrpcEnvironment`以 C 核心為基礎的應用程式依賴來[設定記錄器](https://grpc.io/grpc/csharp/api/Grpc.Core.GrpcEnvironment.html?q=size#Grpc_Core_GrpcEnvironment_SetLogger_Grpc_Core_Logging_ILogger_)進行偵錯工具。 ASP.NET Core 堆疊會透過[記錄 API](xref:fundamentals/logging/index)提供這種功能。 例如，您可以透過函式插入，將記錄器新增至 gRPC 服務：
+以 C 核心為基礎的應用程式依賴 `GrpcEnvironment` 來[設定記錄器](https://grpc.io/grpc/csharp/api/Grpc.Core.GrpcEnvironment.html?q=size#Grpc_Core_GrpcEnvironment_SetLogger_Grpc_Core_Logging_ILogger_)以進行偵錯工具。 ASP.NET Core 堆疊會透過[記錄 API](xref:fundamentals/logging/index)提供這種功能。 例如，您可以透過函式插入，將記錄器新增至 gRPC 服務：
 
 ```csharp
 public class GreeterService : Greeter.GreeterBase

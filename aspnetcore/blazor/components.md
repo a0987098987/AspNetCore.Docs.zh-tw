@@ -5,14 +5,14 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/05/2019
+ms.date: 10/20/2019
 uid: blazor/components
-ms.openlocfilehash: cd48111e8d601fc67e8a938fcdd686759a9ddeca
-ms.sourcegitcommit: ce2bfb01f2cc7dd83f8a97da0689d232c71bcdc4
+ms.openlocfilehash: 065a3a078c56f813ed38f85d7414f22061217dff
+ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72531111"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72697954"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -33,7 +33,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 元件類別的成員均定義於 `@code` 區塊中。 在 `@code` 區塊中，元件狀態（屬性、欄位）是以事件處理或定義其他元件邏輯的方法來指定。 允許一個以上的 `@code` 區塊。
 
 > [!NOTE]
-> 在 ASP.NET Core 3.0 的先前預覽中，`@functions` 區塊用於與 Razor 元件中 @no__t 1 區塊相同的用途。 `@functions` 區塊會繼續在 Razor 元件中運作，但我們建議您在 ASP.NET Core 3.0 Preview 6 或更新版本中使用 `@code` 區塊。
+> 在 ASP.NET Core 3.0 的先前預覽中，`@functions` 組塊用於與 Razor 元件中 `@code` 組塊相同的用途。 `@functions` 區塊會繼續在 Razor 元件中運作，但我們建議您在 ASP.NET Core 3.0 Preview 6 或更新版本中使用 `@code` 區塊。
 
 元件成員可以使用C#開頭為 `@` 的運算式，做為元件轉譯邏輯的一部分。 例如， C#欄位的呈現方式是在功能變數名稱前面加上 `@`。 下列範例會評估並呈現：
 
@@ -87,7 +87,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/HeadingComponent.razor)]
 
-如果元件包含的 HTML 專案具有大寫的第一個字母，但不符合元件名稱，則會發出警告，指出該元素有未預期的名稱。 為元件的命名空間加入 @no__t 0 的語句，可讓元件可用，這會移除警告。
+如果元件包含的 HTML 專案具有大寫的第一個字母，但不符合元件名稱，則會發出警告，指出該元素有未預期的名稱。 為元件的命名空間加入 `@using` 語句，會使元件可供使用，這會移除警告。
 
 ## <a name="component-parameters"></a>元件參數
 
@@ -107,7 +107,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 元件可以設定另一個元件的內容。 指派元件會在指定接收元件的標記之間提供內容。
 
-在下列範例中，`ChildComponent` 具有代表 `RenderFragment` 的 @no__t 1 屬性，代表要呈現的 UI 區段。 @No__t-0 的值位於應呈現內容之元件的標記中。 從父元件接收 `ChildContent` 的值，並在啟動載入面板的 `panel-body` 中轉譯。
+在下列範例中，`ChildComponent` 具有代表 `RenderFragment` 的 `ChildContent` 屬性，代表要呈現的 UI 區段。 @No__t_0 的值位於元件的標記中，應在其中呈現內容。 從父元件接收 `ChildContent` 的值，並在啟動載入面板的 `panel-body` 中轉譯。
 
 *Components/ChildComponent. razor*：
 
@@ -124,7 +124,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>屬性展開和任意參數
 
-除了元件的宣告參數之外，元件還可以捕捉和轉譯其他屬性。 您可以在字典中捕捉其他屬性，然後在使用[@attributes](xref:mvc/views/razor#attributes) Razor 指示詞轉譯元件時， *splatted*至元素。 當定義的元件會產生支援各種自訂的標記專案時，這個案例就很有用。 例如，針對支援許多參數的 @no__t 0 分別定義屬性，可能會很繁瑣。
+除了元件的宣告參數之外，元件還可以捕捉和轉譯其他屬性。 您可以在字典中捕捉其他屬性，然後在使用[@attributes](xref:mvc/views/razor#attributes) Razor 指示詞轉譯元件時， *splatted*至元素。 當定義的元件會產生支援各種自訂的標記專案時，這個案例就很有用。 例如，針對支援許多參數的 `<input>` 分別定義屬性，可能會很繁瑣。
 
 在下列範例中，第一個 `<input>` 元素（`id="useIndividualParams"`）會使用個別的元件參數，而第二個 `<input>` 元素（`id="useAttributesDict"`）則使用屬性展開：
 
@@ -220,7 +220,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 }
 ```
 
-當元件呈現時，輸入專案的 `value` 會來自 `CurrentValue` 屬性。 當使用者在文字方塊中輸入並變更元素焦點時，`onchange` 事件會引發，而 `CurrentValue` 屬性會設定為變更的值。 實際上，程式碼產生更為複雜，因為 `@bind` 會處理類型轉換執行的情況。 就原則而言，`@bind` 會將運算式的目前值與 @no__t 1 屬性產生關聯，並使用已註冊的處理常式來處理變更。
+當元件呈現時，輸入專案的 `value` 會來自 `CurrentValue` 屬性。 當使用者在文字方塊中輸入並變更元素焦點時，`onchange` 事件會引發，而 `CurrentValue` 屬性會設定為變更的值。 實際上，程式碼產生更為複雜，因為 `@bind` 會處理類型轉換執行的情況。 就原則而言，`@bind` 會將運算式的目前值與 `value` 屬性產生關聯，並使用已註冊的處理常式來處理變更。
 
 除了使用 `@bind` 語法處理 `onchange` 事件之外，也可以使用其他事件來系結屬性或欄位，方法是指定具有 `event` 參數（[@bind-value:event](xref:mvc/views/razor#bind)）的[@bind-value](xref:mvc/views/razor#bind)屬性。 下列範例會系結 `oninput` 事件的 `CurrentValue` 屬性：
 
@@ -240,7 +240,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 請考慮下列案例：
 
-* @No__t-0 元素系結至 `int` 類型，其初始值為 `123`：
+* @No__t_0 元素會系結至 `int` 類型，其初始值為 `123`：
 
   ```cshtml
   <input @bind="MyProperty" />
@@ -254,7 +254,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 在上述案例中，元素的值會還原為 `123`。 當 `123.45` 的值拒絕 `123` 的原始值時，使用者瞭解其值不被接受。
 
-根據預設，系結會套用至元素的 `onchange` 事件（`@bind="{PROPERTY OR FIELD}"`）。 使用 `@bind-value="{PROPERTY OR FIELD}" @bind-value:event={EVENT}` 來設定不同的事件。 若為 `oninput` 事件（`@bind-value:event="oninput"`），回復會在引進無法剖析值的任何擊鍵之後發生。 以 `int` 系結型別為目標的 `oninput` 事件時，使用者無法輸入 @no__t 2 字元。 會立即移除 `.` 字元，因此使用者會立即收到僅允許整數的意見反應。 在某些情況下，@no__t 0 事件上的值不是理想的情況，例如，當使用者應允許清除無法剖析的 `<input>` 值時。 替代方案包括：
+根據預設，系結會套用至元素的 `onchange` 事件（`@bind="{PROPERTY OR FIELD}"`）。 使用 `@bind-value="{PROPERTY OR FIELD}" @bind-value:event={EVENT}` 來設定不同的事件。 若為 `oninput` 事件（`@bind-value:event="oninput"`），回復會在引進無法剖析值的任何擊鍵之後發生。 以 `int` 系結類型的 `oninput` 事件為目標時，使用者無法輸入 `.` 字元。 會立即移除 `.` 字元，因此使用者會立即收到僅允許整數的意見反應。 在某些情況下，在 `oninput` 事件上還原值不是理想的情況，例如當使用者應允許清除無法剖析的 `<input>` 值時。 替代方案包括：
 
 * 請勿使用 `oninput` 事件。 使用預設的 `onchange` 事件（`@bind="{PROPERTY OR FIELD}"`），在此情況下，除非元素失去焦點，否則不正確值不會還原。
 * 系結至可為 null 的型別（例如 `int?` 或 `string`），並提供自訂邏輯來處理不正確專案。
@@ -285,7 +285,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 * `month`
 * `week`
 
-`@bind` 支援 `@bind:culture` 參數，以提供用來剖析和格式化值的 <xref:System.Globalization.CultureInfo?displayProperty=fullName>。 使用 `date` 和 @no__t 1 欄位類型時，不建議指定文化特性。 `date` 和 `number` 具有內建的 Blazor 支援，可提供所需的文化特性。
+`@bind` 支援 `@bind:culture` 參數，以提供用來剖析和格式化值的 <xref:System.Globalization.CultureInfo?displayProperty=fullName>。 使用 `date` 和 `number` 欄位類型時，不建議指定文化特性。 `date` 和 `number` 具有內建的 Blazor 支援，可提供所需的文化特性。
 
 如需如何設定使用者文化特性的詳細資訊，請參閱[當地語系化](#localization)一節。
 
@@ -302,14 +302,14 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 }
 ```
 
-在上述程式碼中，@no__t 0 元素的欄位類型（`type`）預設為 `text`。 支援下列 .NET 類型的 `@bind:format`：
+在上述程式碼中，`<input>` 元素的欄位類型（`type`）預設為 `text`。 支援下列 .NET 類型的 `@bind:format`：
 
 * <xref:System.DateTime?displayProperty=fullName>
 * <xref:System.DateTime?displayProperty=fullName>?
 * <xref:System.DateTimeOffset?displayProperty=fullName>
 * <xref:System.DateTimeOffset?displayProperty=fullName>?
 
-@No__t-0 屬性會指定要套用至 `<input>` 元素之 `value` 的日期格式。 當發生 `onchange` 事件時，也會使用格式來剖析值。
+@No__t_0 屬性會指定要套用至 `<input>` 元素 `value` 的日期格式。 當發生 `onchange` 事件時，也會使用格式來剖析值。
 
 不建議指定 `date` 欄位類型的格式，因為 Blazor 具有格式日期的內建支援。
 
@@ -317,7 +317,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結屬性值。
 
-下列子元件（`ChildComponent`）具有 `Year` 元件參數和 @no__t 2 回呼：
+下列子元件（`ChildComponent`）具有 `Year` 元件參數和 `YearChanged` 回呼：
 
 ```cshtml
 <h2>Child Component</h2>
@@ -385,7 +385,7 @@ Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結�
 <p>Year: 1986</p>
 ```
 
-@No__t-0 參數是可系結的，因為它具有符合 `Year` 參數類型的隨附 `YearChanged` 事件。
+@No__t_0 參數是可系結的，因為它具有符合 `Year` 參數類型的伴隨 `YearChanged` 事件。
 
 依照慣例，`<ChildComponent @bind-Year="ParentYear" />` 基本上等同于撰寫：
 
@@ -505,17 +505,17 @@ Razor 元件提供事件處理功能。 針對名為 `on{event}` （例如，`on
 ```
 
 > [!NOTE]
-> 請勿直接在 lambda 運算式**中使用 @no__t** 2 迴圈中的迴圈變數（`i`）。 否則，所有 lambda 運算式都會使用相同的變數，使 @no__t 0 的值在所有 lambda 中都相同。 一律在本機變數中捕捉其值（在上述範例中為 `buttonNumber`），然後使用它。
+> 請勿直接在 lambda 運算式**中使用 `for`** 迴圈中的迴圈變數（`i`）。 否則，所有 lambda 運算式都會使用相同的變數，使 `i` 值在所有 lambda 中都相同。 一律在本機變數中捕捉其值（在上述範例中為 `buttonNumber`），然後使用它。
 
 ### <a name="eventcallback"></a>App eventcallback
 
-有一個常見的嵌套元件案例，就是當子元件事件發生時，需要執行父元件的方法 @ no__t-0for 範例（當子系中發生 @no__t 1 事件時）。 若要在元件之間公開事件，請使用 `EventCallback`。 父元件可以將回呼方法指派給子元件的 `EventCallback`。
+有一個常見的嵌套元件案例，就是當子元件事件發生時，想要執行父元件的方法 &mdash;for 例如，當子系中發生 `onclick` 事件時。 若要在元件之間公開事件，請使用 `EventCallback`。 父元件可以將回呼方法指派給子元件的 `EventCallback`。
 
-範例應用程式中的 @no__t 0 會示範如何設定按鈕的 @no__t 1 處理常式，以從範例的 `ParentComponent` 接收 @no__t 2 委派。 @No__t-0 是以 `MouseEventArgs` 輸入，這適用于來自週邊裝置的 @no__t 2 事件：
+範例應用程式中的 `ChildComponent` 會示範如何設定按鈕的 `onclick` 處理常式，以接收來自範例 `ParentComponent` 的 `EventCallback` 委派。 系統會使用 `MouseEventArgs` 輸入 `EventCallback`，這適用于來自週邊裝置的 `onclick` 事件：
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
-@No__t-0 會將子系的 `EventCallback<T>` 設定為其 @no__t 2 方法：
+@No__t_0 會將子系的 `EventCallback<T>` 設定為其 `ShowMessage` 方法：
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=6,16-19)]
 
@@ -557,7 +557,7 @@ await callback.InvokeAsync(arg);
 
 下列 `PasswordField` 元件（*self.passwordfield.text*）：
 
-* 將 `<input>` 元素的值設定為 @no__t 1 屬性。
+* 將 `<input>` 元素的值設定為 `Password` 屬性。
 * 將 `Password` 屬性的變更公開至具有[app eventcallback](#eventcallback)的父元件。
 
 ```cshtml
@@ -595,7 +595,7 @@ Password:
 }
 ```
 
-@No__t-0 元件會在另一個元件中使用：
+@No__t_0 元件會在另一個元件中使用：
 
 ```cshtml
 <PasswordField @bind-Password="password" />
@@ -694,7 +694,7 @@ Password:
 > [!IMPORTANT]
 > 只有在轉譯元件且其輸出包含 `MyLoginDialog` 元素之後，才會填入 `loginDialog` 變數。 直到該點為止，沒有任何可參考的內容。 若要在元件完成呈現之後操作元件參考，請使用[OnAfterRenderAsync 或 OnAfterRender 方法](#lifecycle-methods)。
 
-雖然捕捉元件參考使用類似的語法來[捕捉元素參考](xref:blazor/javascript-interop#capture-references-to-elements)，但它並不是[JavaScript interop](xref:blazor/javascript-interop)功能。 元件參考不會傳遞至 JavaScript 程式碼 @ no__t-0they're 僅適用于 .NET 程式碼。
+雖然捕捉元件參考使用類似的語法來[捕捉元素參考](xref:blazor/javascript-interop#capture-references-to-elements)，但它並不是[JavaScript interop](xref:blazor/javascript-interop)功能。 元件參考不會傳遞至 JavaScript 程式碼，&mdash;they 只會在 .NET 程式碼中使用。
 
 > [!NOTE]
 > 請勿**使用元件**參考來改變子元件的狀態。 請改用一般宣告式參數，將資料傳遞至子元件。 使用一般宣告式參數會導致子元件自動 rerender 正確的時間。
@@ -756,7 +756,7 @@ public class NotifierService
 
 在上述範例中，`NotifierService` 會叫用元件在 Blazor 的 `SynchronizationContext` 以外的 `OnNotify` 方法。 `InvokeAsync` 是用來切換至正確的內容，並將轉譯排入佇列。
 
-## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>使用 @no__t 0key 來控制元素和元件的保留
+## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>使用 \@key 控制元素和元件的保留
 
 當轉譯專案或元件的清單，以及後續變更的專案或元件時，Blazor 的比較演算法必須決定哪些先前的專案或元件可以保留，以及模型物件應如何對應至這些專案。 一般來說，此程式是自動的，可以忽略，但在某些情況下，您可能會想要控制進程。
 
@@ -774,7 +774,7 @@ public class NotifierService
 }
 ```
 
-@No__t-0 集合的內容可能會隨著插入、刪除或重新排序的專案而變更。 當元件 rerenders 時，@no__t 0 元件可能會變更，以接收不同的 @no__t 1 參數值。 這可能會導致比預期更複雜的 rerendering。 在某些情況下，rerendering 可能會導致可見的行為差異，例如失去元素的焦點。
+@No__t_0 集合的內容可能會隨著插入、刪除或重新排序的專案而變更。 當元件 rerenders 時，`<DetailsEditor>` 元件可能會變更，以接收不同的 `Details` 參數值。 這可能會導致比預期更複雜的 rerendering。 在某些情況下，rerendering 可能會導致可見的行為差異，例如失去元素的焦點。
 
 您可以使用 `@key` 指示詞屬性來控制對應進程。 `@key` 會使比較演算法根據索引鍵的值，保證保留元素或元件：
 
@@ -790,20 +790,20 @@ public class NotifierService
 }
 ```
 
-當 @no__t 0 集合變更時，比較演算法會保留 @no__t 1 實例與 @no__t 2 實例之間的關聯：
+當 `People` 集合變更時，比較演算法會保留 `<DetailsEditor>` 實例與 `person` 實例之間的關聯：
 
 * 如果從 `People` 清單中刪除 `Person`，則只會從 UI 移除對應的 `<DetailsEditor>` 實例。 其他實例則保持不變。
-* 如果在清單中的某個位置插入 `Person`，則會在對應的位置插入一個新的 @no__t 1 實例。 其他實例則保持不變。
-* 如果 `Person` 的專案重新排序，則會保留對應的 @no__t 1 實例，並在 UI 中重新排序。
+* 如果在清單中的某個位置插入 `Person`，就會在該對應的位置插入一個新的 `<DetailsEditor>` 實例。 其他實例則保持不變。
+* 如果重新排序 `Person` 專案，則會保留對應的 `<DetailsEditor>` 實例，並在 UI 中重新排序。
 
 在某些情況下，使用 `@key` 會將 rerendering 的複雜性降到最低，並避免 DOM 的具狀態部分可能發生的問題，例如焦點位置。
 
 > [!IMPORTANT]
 > 索引鍵在每個容器元素或元件的本機。 金鑰不會在檔之間進行全域比較。
 
-### <a name="when-to-use-key"></a>使用 @no__t 的時機-0key
+### <a name="when-to-use-key"></a>使用 \@key 的時機
 
-一般來說，每當轉譯清單時（例如，在 @no__t 1 區塊中），使用 `@key` 就有意義，而且有適當的值可定義 `@key`。
+一般而言，只要轉譯清單（例如，在 `@foreach` 區塊中），而且有適當的值來定義 `@key`，就有合理的使用 `@key`。
 
 當物件變更時，您也可以使用 `@key` 來防止 Blazor 保留元素或元件子樹：
 
@@ -813,7 +813,7 @@ public class NotifierService
 </div>
 ```
 
-如果 `@currentPerson` 變更，則 @no__t 1 屬性指示詞會強制 Blazor 捨棄整個 `<div>` 及其下階，並使用新的專案和元件重建 UI 中的子樹。 如果您需要保證 `@currentPerson` 變更時不會保留任何 UI 狀態，這會很有用。
+如果 `@currentPerson` 變更，`@key` attribute 指示詞會強制 Blazor 捨棄整個 `<div>` 及其下階，並使用新的元素和元件重建 UI 內的子樹。 如果您需要保證 `@currentPerson` 變更時不會保留任何 UI 狀態，這會很有用。
 
 ### <a name="when-not-to-use-key"></a>當不使用時 \@key
 
@@ -821,7 +821,7 @@ public class NotifierService
 
 即使未使用 `@key`，Blazor 還是會盡可能保留子項目和元件實例。 使用 `@key` 的唯一優點是控制模型實例*如何*對應至保留的元件實例，而不是用來選取對應的比較演算法。
 
-### <a name="what-values-to-use-for-key"></a>要用於 @no__t 的值-0key
+### <a name="what-values-to-use-for-key"></a>要用於 \@key 的值
 
 一般來說，提供下列其中一種類型的值給 `@key` 是合理的：
 
@@ -876,7 +876,7 @@ protected override void OnParametersSet()
 
 在*伺服器上預先呈現時，不會呼叫*`OnAfterRender`。
 
-@No__t-1 和 `OnAfterRender` 的 `firstRender` 參數為：
+@No__t_1 和 `OnAfterRender` 的 `firstRender` 參數是：
 
 * 當第一次叫用元件實例時，設定為 `true`。
 * 確保初始化工作只會執行一次。
@@ -906,9 +906,9 @@ protected override void OnAfterRender(bool firstRender)
 
 ### <a name="handle-incomplete-async-actions-at-render"></a>處理轉譯時的未完成非同步動作
 
-在呈現元件之前，在生命週期事件中執行的非同步動作可能尚未完成。 當生命週期方法正在執行時，物件可能 @no__t 0 或未完全填入資料。 提供轉譯邏輯，以確認物件已初始化。 當物件 `null` 時，轉譯預留位置 UI 元素（例如，載入訊息）。
+在呈現元件之前，在生命週期事件中執行的非同步動作可能尚未完成。 當生命週期方法正在執行時，物件可能 `null` 或未完全填入資料。 提供轉譯邏輯，以確認物件已初始化。 當物件 `null` 時，轉譯預留位置 UI 元素（例如，載入訊息）。
 
-在 Blazor 範本的 `FetchData` 元件中，`OnInitializedAsync` 會覆寫為 asychronously 接收預測資料（`forecasts`）。 當 `forecasts` `null` 時，會向使用者顯示載入訊息。 @No__t-1 傳回的 `Task` 完成後，元件會重新顯示並具有更新的狀態。
+在 Blazor 範本的 `FetchData` 元件中，`OnInitializedAsync` 會覆寫為 asychronously 接收預測資料（`forecasts`）。 當 `forecasts` `null` 時，會向使用者顯示載入訊息。 @No__t_1 所傳回的 `Task` 完成之後，元件會以更新的狀態重新顯示。
 
 *Pages/FetchData.razor*：
 
@@ -960,11 +960,14 @@ protected override bool ShouldRender()
 }
 ```
 
+> [!NOTE]
+> 不支援在 `Dispose` 中呼叫 `StateHasChanged`。 `StateHasChanged` 可能會在轉譯器關閉時叫用。 在該時間點不支援要求 UI 更新。
+
 ## <a name="routing"></a>路由
 
 Blazor 中的路由是藉由將路由範本提供給應用程式中每個可存取的元件來達成。
 
-編譯具有 `@page` 指示詞的 Razor 檔案時，產生的類別會指定路由範本 @no__t 1。 在執行時間，路由器會尋找具有 @no__t 0 的元件類別，並轉譯任何元件具有符合所要求 URL 的路由範本。
+當您編譯具有 `@page` 指示詞的 Razor 檔案時，會提供指定路由範本 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> 給產生的類別。 在執行時間，路由器會尋找具有 `RouteAttribute` 的元件類別，並轉譯哪一個元件的路由範本符合要求的 URL。
 
 多個路由範本可以套用至元件。 下列元件會回應 `/BlazorRoute` 和 `/DifferentBlazorRoute` 的要求：
 
@@ -978,23 +981,108 @@ Blazor 中的路由是藉由將路由範本提供給應用程式中每個可存�
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/RouteParameter.razor?name=snippet_RouteParameter)]
 
-不支援選擇性參數，因此上述範例中會套用兩個 @no__t 0 的指示詞。 第一個則允許不使用參數導覽至元件。 第二個 `@page` 指示詞會採用 `{text}` 路由參數，並將值指派給 `Text` 屬性。
+不支援選擇性參數，因此上述範例中會套用兩個 `@page` 的指示詞。 第一個則允許不使用參數導覽至元件。 第二個 `@page` 指示詞會採用 `{text}` 路由參數，並將值指派給 `Text` 屬性。
 
-## <a name="base-class-inheritance-for-a-code-behind-experience"></a>「程式碼後置」體驗的基類繼承
+::: moniker range=">= aspnetcore-3.1"
 
-元件檔案會將 HTML 標籤C#和處理常式代碼混合在同一個檔案中。 @No__t-0 指示詞可用來提供具有「程式碼後置」體驗的 Blazor apps，以分隔元件標記與處理常式代碼。
+## <a name="partial-class-support"></a>部分類別支援
+
+Razor 元件是以部分類別的形式產生。 Razor 元件是使用下列其中一種方法來撰寫的：
+
+* C#程式碼是以 HTML 標籤和 Razor 程式碼的[@code](xref:mvc/views/razor#code)區塊定義在單一檔案中。 Blazor 範本會使用這種方法來定義其 Razor 元件。
+* C#程式碼會放在定義為部分類別的程式碼後置檔案中。
+
+下列範例顯示在 Blazor 範本所產生的應用程式中，具有 `@code` 區塊的預設 `Counter` 元件。 HTML 標籤、Razor 程式碼和C#程式碼位於相同的檔案中：
+
+*Counter. razor*：
+
+```cshtml
+@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    int currentCount = 0;
+
+    void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+```
+
+您也可以使用具有部分類別的程式碼後置檔案來建立 `Counter` 元件：
+
+*Counter. razor*：
+
+```cshtml
+@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+```
+
+*Counter.razor.cs*：
+
+```csharp
+namespace BlazorApp.Pages
+{
+    public partial class Counter
+    {
+        int currentCount = 0;
+
+        void IncrementCount()
+        {
+            currentCount++;
+        }
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
+
+## <a name="specify-a-component-base-class"></a>指定元件基類
+
+@No__t_0 指示詞可以用來指定元件的基類。
 
 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)會顯示元件如何繼承基類（`BlazorRocksBase`），以提供元件的屬性和方法。
 
 *Pages/BlazorRocks. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRocks.razor?name=snippet_BlazorRocks)]
+```cshtml
+@page "/BlazorRocks"
+@inherits BlazorRocksBase
+
+<h1>@BlazorRocksText</h1>
+```
 
 *BlazorRocksBase.cs*：
 
-[!code-csharp[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRocksBase.cs)]
+```csharp
+using Microsoft.AspNetCore.Components;
+
+namespace BlazorSample
+{
+    public class BlazorRocksBase : ComponentBase
+    {
+        public string BlazorRocksText { get; set; } = 
+            "Blazor rocks the browser!";
+    }
+}
+```
 
 基類應該衍生自 `ComponentBase`。
+
+::: moniker-end
 
 ## <a name="import-components"></a>匯入元件
 
@@ -1067,7 +1155,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為 `false` �
 
 ## <a name="raw-html"></a>原始 HTML
 
-字串通常會使用 DOM 文位元組點來呈現，這表示它們可能包含的任何標記都會被忽略，並視為常值。 若要轉譯原始 HTML，請將 HTML 內容包裝為 @no__t 0 值。 此值會剖析為 HTML 或 SVG，並插入 DOM 中。
+字串通常會使用 DOM 文位元組點來呈現，這表示它們可能包含的任何標記都會被忽略，並視為常值。 若要呈現原始 HTML，請將 HTML 內容包裝 `MarkupString` 值。 此值會剖析為 HTML 或 SVG，並插入 DOM 中。
 
 > [!WARNING]
 > 轉譯從任何未受信任來源所建立的原始 HTML 會有**安全性風險**，應予以避免！
@@ -1147,7 +1235,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為 `false` �
 
 ### <a name="generic-typed-components"></a>泛型型別元件
 
-樣板化元件通常會以一般方式輸入。 例如，泛型 `ListViewTemplate` 元件可用來呈現 @no__t 1 的值。 若要定義泛型元件，請使用[@typeparam](xref:mvc/views/razor#typeparam)指示詞來指定類型參數：
+樣板化元件通常會以一般方式輸入。 例如，泛型 `ListViewTemplate` 元件可以用來呈現 `IEnumerable<T>` 值。 若要定義泛型元件，請使用[@typeparam](xref:mvc/views/razor#typeparam)指示詞來指定類型參數：
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
 
@@ -1177,7 +1265,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為 `false` �
 
 ### <a name="theme-example"></a>主題範例
 
-在範例應用程式的下列範例中，@no__t 0 類別會指定主題資訊，以向下流動元件階層，讓應用程式中指定部分內的所有按鈕共用相同的樣式。
+在範例應用程式的下列範例中，`ThemeInfo` 類別會指定要向下流動元件階層的主題資訊，讓應用程式中指定部分內的所有按鈕共用相同的樣式。
 
 *UIThemeClasses/ThemeInfo .cs*：
 
@@ -1188,9 +1276,9 @@ public class ThemeInfo
 }
 ```
 
-祖系元件可以使用串聯值元件來提供串聯值。 @No__t-0 元件會包裝元件階層的子樹，並提供單一值給該子樹內的所有元件。
+祖系元件可以使用串聯值元件來提供串聯值。 @No__t_0 元件會包裝元件階層的子樹，並提供單一值給該子樹內的所有元件。
 
-例如，範例應用程式會在其中一個應用程式的配置中，將主題資訊（`ThemeInfo`）指定為構成 `@Body` 屬性之配置主體的所有元件的串聯參數。 `ButtonClass` 會在版面配置元件中指派 `btn-success` 的值。 任何子代元件都可以透過 @no__t 0 串聯物件來取用這個屬性。
+例如，範例應用程式會在其中一個應用程式的配置中，將主題資訊（`ThemeInfo`）指定為構成 `@Body` 屬性之配置主體的所有元件的串聯參數。 `ButtonClass` 會在版面配置元件中指派 `btn-success` 的值。 任何子代元件都可以透過 `ThemeInfo` 級聯的物件來取用這個屬性。
 
 `CascadingValuesParametersLayout` 元件：
 
@@ -1220,7 +1308,7 @@ public class ThemeInfo
 
 為了利用串聯值，元件會使用 `[CascadingParameter]` 屬性宣告串聯式參數。 串聯式值會依類型系結至串聯式參數。
 
-在範例應用程式中，`CascadingValuesParametersTheme` 元件會將 @no__t 級串聯值系結至階層式參數。 參數是用來為元件所顯示的其中一個按鈕設定 CSS 類別。
+在範例應用程式中，`CascadingValuesParametersTheme` 元件會將 `ThemeInfo` 級聯的值系結至串聯式參數。 參數是用來為元件所顯示的其中一個按鈕設定 CSS 類別。
 
 `CascadingValuesParametersTheme` 元件：
 
@@ -1258,7 +1346,7 @@ public class ThemeInfo
 }
 ```
 
-若要在相同的子樹中串聯多個相同類型的值，請為每個 `CascadingValue` 元件和其對應的 `CascadingParameter` 提供唯一的 @no__t 0 字串。 在下列範例中，兩個 @no__t 0 元件會依名稱將不同的實例 `MyCascadingType`：
+若要在相同的子樹中串聯多個相同類型的值，請為每個 `CascadingValue` 元件和其對應的 `CascadingParameter` 提供唯一的 `Name` 字串。 在下列範例中，兩個 `CascadingValue` 元件會依名稱將不同的實例 `MyCascadingType`：
 
 ```cshtml
 <CascadingValue Value=@ParentCascadeParameter1 Name="CascadeParam1">
@@ -1295,21 +1383,21 @@ public class ThemeInfo
 
 串聯式參數也可以讓元件在元件階層之間共同作業。 例如，請考慮範例應用程式中的下列*TabSet*範例。
 
-範例應用程式有一個 @no__t 0 的介面，可執行索引標籤：
+範例應用程式有一個 `ITab` 的介面，可執行索引標籤：
 
 [!code-csharp[](common/samples/3.x/BlazorWebAssemblySample/UIInterfaces/ITab.cs)]
 
-@No__t 0 元件使用 `TabSet` 元件，其中包含數個 @no__t 2 元件：
+@No__t_0 元件會使用 `TabSet` 元件，其中包含數個 `Tab` 元件：
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
 
-子 `Tab` 元件並未明確地當做參數傳遞至 `TabSet`。 相反地，子 `Tab` 元件是 `TabSet` 之子內容的一部分。 不過，`TabSet` 仍然需要知道每個 @no__t 1 元件，使其可以呈現標頭和使用中的索引標籤。若要在不需要額外程式碼的情況下啟用這項協調，@no__t 2 元件*可以將其本身提供為*串聯的值，然後由子 @no__t 4 元件挑選。
+子 `Tab` 元件並未明確地當做參數傳遞至 `TabSet`。 相反地，子 `Tab` 元件是 `TabSet` 之子內容的一部分。 不過，`TabSet` 還是必須知道每個 `Tab` 元件，才能轉譯標頭和使用中的索引標籤。若要在不需要額外程式碼的情況下啟用這項協調，`TabSet` 元件*可以將其本身提供為*串聯的值，然後由子 `Tab` 元件挑選。
 
 `TabSet` 元件：
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/TabSet.razor)]
 
-子系 `Tab` 元件會將包含的 `TabSet` 捕捉為串聯參數，因此 @no__t 2 元件會將自己加入至 `TabSet`，以及在其上使用的座標。
+子系 `Tab` 元件會將包含的 `TabSet` 作為串聯參數來捕捉，因此 `Tab` 元件會將自己加入至 `TabSet`，並對作用中的索引標籤進行協調。
 
 `Tab` 元件：
 
@@ -1323,7 +1411,7 @@ public class ThemeInfo
 @<{HTML tag}>...</{HTML tag}>
 ```
 
-下列範例說明如何指定 `RenderFragment` 和 @no__t 1 值，並直接在元件中呈現範本。 轉譯片段也可以當做引數傳遞至樣板[化元件](#templated-components)。
+下列範例說明如何指定 `RenderFragment` 和 `RenderFragment<T>` 值，並直接在元件中呈現範本。 轉譯片段也可以當做引數傳遞至樣板[化元件](#templated-components)。
 
 ```cshtml
 @timeTemplate
@@ -1357,7 +1445,7 @@ public class ThemeInfo
 > [!NOTE]
 > 使用 `RenderTreeBuilder` 來建立元件是一個先進的案例。 格式不正確的元件（例如，未封閉的標記標記）可能會導致未定義的行為。
 
-請考慮下列 @no__t 0 元件，它可以手動內建在另一個元件中：
+請考慮下列 `PetDetails` 元件，其可手動內建于另一個元件中：
 
 ```cshtml
 <h2>Pet Details Component</h2>
@@ -1371,7 +1459,7 @@ public class ThemeInfo
 }
 ```
 
-在下列範例中，`CreateComponent` 方法中的迴圈會產生三個 @no__t 1 元件。 呼叫 `RenderTreeBuilder` 方法來建立元件（`OpenComponent` 和 `AddAttribute`）時，序號是源程式碼號。 Blazor 差異演算法依賴對應于不同程式程式碼的序號，而不是相異的呼叫調用。 建立具有 `RenderTreeBuilder` 方法的元件時，請硬式編碼序號的引數。 **使用計算或計數器來產生序號可能會導致效能不佳。** 如需詳細資訊，請參閱[序號與程式程式碼號，而不是執行順序](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order)一節。
+在下列範例中，`CreateComponent` 方法中的迴圈會產生三個 `PetDetails` 元件。 呼叫 `RenderTreeBuilder` 方法來建立元件（`OpenComponent` 和 `AddAttribute`）時，序號是源程式碼號。 Blazor 差異演算法依賴對應于不同程式程式碼的序號，而不是相異的呼叫調用。 建立具有 `RenderTreeBuilder` 方法的元件時，請硬式編碼序號的引數。 **使用計算或計數器來產生序號可能會導致效能不佳。** 如需詳細資訊，請參閱[序號與程式程式碼號，而不是執行順序](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order)一節。
 
 `BuiltContent` 元件：
 
@@ -1494,9 +1582,9 @@ builder.AddContent(seq++, "Second");
 
 * 如果序號是動態產生的，應用程式效能會受到影響。
 * 架構無法在執行時間自動建立自己的序號，因為必要的資訊不存在，除非是在編譯時期加以捕捉。
-* 請勿撰寫以手動方式執行的長區塊，`RenderTreeBuilder` 邏輯。 偏好 @no__t 0 的檔案，並允許編譯器處理序號。 如果您無法避免手動 `RenderTreeBuilder` 邏輯，請將較長的程式碼區塊分割成較小的片段，包裝在 `OpenRegion` @ no__t-2 @ no__t-3 呼叫中。 每個區域都有自己的序號個別空間，因此您可以在每個區域內從零（或任何其他任一數字）重新開機。
+* 請勿撰寫以手動方式執行的長區塊，`RenderTreeBuilder` 邏輯。 偏好 `.razor` 檔案，並允許編譯器處理序號。 如果您無法避免手動 `RenderTreeBuilder` 邏輯，請將長塊的程式碼分割成較小的片段，並以 `OpenRegion` / `CloseRegion` 呼叫來包裝。 每個區域都有自己的序號個別空間，因此您可以在每個區域內從零（或任何其他任一數字）重新開機。
 * 如果序號已硬式編碼，則 diff 演算法只會要求序號增加值。 起始值和間距無關。 一個合法的選項是使用程式程式碼號做為序號，或從零開始，並以一個或數百個（或任何慣用的間隔）來增加。 
-* Blazor 會使用序號，而其他樹狀結構比較的 UI 架構則不會使用它們。 當使用序號時，比較速度會更快，而且 Blazor 具有可自動處理序號的編譯步驟，以便開發人員撰寫 @no__t 0 檔案。
+* Blazor 會使用序號，而其他樹狀結構比較的 UI 架構則不會使用它們。 使用序號時，比較速度會更快，而且 Blazor 具有可自動處理序號的編譯步驟，讓開發人員撰寫 `.razor` 檔案。
 
 ## <a name="localization"></a>當地語系化
 
@@ -1545,7 +1633,7 @@ public class HostModel : PageModel
 
 ## <a name="provide-ui-to-choose-the-culture"></a>提供 UI 以選擇文化特性
 
-為了提供允許使用者選取文化特性的 UI，建議使用以重新*導向為基礎的方法*。 此程式類似于在使用者嘗試存取安全資源時，在 web 應用程式中發生的狀況。 @ no__t-0the 使用者會重新導向至登入頁面，然後重新導向至原始資源。 
+為了提供允許使用者選取文化特性的 UI，建議使用以重新*導向為基礎的方法*。 此程式類似于在使用者嘗試存取安全資源時，在 web 應用程式中發生的情況，&mdash;the 使用者重新導向至登入頁面，然後重新導向至原始資源。 
 
 應用程式會透過重新導向至控制器的方式，來保存使用者選取的文化特性。 控制器會將使用者選取的文化特性設定為 cookie，並將使用者重新導向回到原始 URI。
 

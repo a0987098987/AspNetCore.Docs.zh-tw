@@ -752,5 +752,5 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 * [ASP.NET Core 簡介](xref:index)
 * [Microsoft IIS 官方網站](https://www.iis.net/)
 * [Windows Server 技術內容庫](/windows-server/windows-server)
-* [ISS 上的 HTTP/2](/iis/get-started/whats-new-in-iis-10/http2-on-iis)
+* [IIS 上的 HTTP/2](/iis/get-started/whats-new-in-iis-10/http2-on-iis)
 * <xref:host-and-deploy/iis/transform-webconfig>

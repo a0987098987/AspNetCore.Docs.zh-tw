@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/22/2019
 uid: performance/caching/memory
-ms.openlocfilehash: aa39503f034cf46fa4317a1f3cbb8d130afd1b8c
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: d6b2aa363c552fdbda7f6e9ec5d476768c17d8a5
+ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333743"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72779185"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>ASP.NET Core 中的記憶體快取
 
@@ -56,6 +56,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 > [!WARNING]
 > 從相依性[插入](xref:fundamentals/dependency-injection)使用*共用*記憶體快取，並呼叫 `SetSize`、`Size` 或 `SizeLimit` 來限制快取大小，可能會導致應用程式失敗。 在快取上設定大小限制時，所有專案在新增時都必須指定大小。 這可能會導致問題，因為開發人員可能無法完全控制使用共用快取的內容。 例如，Entity Framework Core 使用共用快取，且未指定大小。 如果應用程式設定快取大小限制，並使用 EF Core，應用程式會擲回 `InvalidOperationException`。
 > 使用 `SetSize`、`Size` 或 `SizeLimit` 來限制快取時，請建立用於快取的快取單一快取。 如需詳細資訊和範例，請參閱[使用 SetSize、大小和 SizeLimit 來限制](#use-setsize-size-and-sizelimit-to-limit-cache-size)快取大小。
+> 共用快取是由其他架構或程式庫共用。 例如，EF Core 使用共用快取，且未指定大小。 
 
 記憶體內部快取是使用相依性[插入](xref:fundamentals/dependency-injection)從應用程式參考的*服務*。 在此函數中要求 `IMemoryCache` 實例：
 

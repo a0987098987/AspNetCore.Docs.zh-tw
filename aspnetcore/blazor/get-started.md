@@ -5,14 +5,14 @@ description: 使用您選擇的工具來建立 Blazor 應用程式，以開始�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 10/21/2019
 uid: blazor/get-started
-ms.openlocfilehash: fc368be5eb2e5d8f7c80071dc86a02ae986a685f
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: 80ff7b42a44e722dd27bc4fde53a066863448e10
+ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391046"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72779118"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -46,7 +46,7 @@ ms.locfileid: "72391046"
 
    5 \。 如需 Blazor 的 WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
 
-   6。 按下 **F5** 即可執行應用程式。
+   6。 按下 **Ctrl**+**F5** 即可執行應用程式。
 
    > [!NOTE]
    > 如果您已安裝 ASP.NET Core Blazor （Preview 6 或更早版本）先前預覽版本的 Blazor Visual Studio 延伸模組，則可以卸載擴充功能。 在命令介面中安裝 Blazor 範本，現在已足以在 Visual Studio 中呈現範本。
@@ -242,28 +242,28 @@ ms.locfileid: "72391046"
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Counter1.razor?highlight=7,12-15)]
 
-在瀏覽器中 `/counter` 的要求，如同頂端的 `@page` 指示詞所指定，會導致 @no__t 2 元件轉譯其內容。 元件會轉譯成轉譯樹狀結構的記憶體中標記法，然後用來以彈性且有效率的方式更新 UI。
+在瀏覽器中 `/counter` 的要求，如同頂端的 `@page` 指示詞所指定，會導致 `Counter` 元件轉譯其內容。 元件會轉譯成轉譯樹狀結構的記憶體中標記法，然後用來以彈性且有效率的方式更新 UI。
 
 每次選取 [**按我**] 按鈕時：
 
-* @No__t-0 事件會引發。
+* @No__t_0 事件會引發。
 * 已呼叫 `IncrementCount` 方法。
-* @No__t-0 會遞增。
+* @No__t_0 會遞增。
 * 元件會再次轉譯。
 
 執行時間會比較新的內容與先前的內容，而且只會將已變更的內容套用至檔物件模型（DOM）。
 
-使用 HTML 語法將元件新增至另一個元件。 例如，將 `Counter` 元件新增至應用程式的首頁，方法是將 `<Counter />` 元素新增至 @no__t 2 元件。
+使用 HTML 語法將元件新增至另一個元件。 例如，藉由將 `<Counter />` 元素新增至 `Index` 元件，將 `Counter` 元件新增至應用程式的首頁。
 
 *Pages/Index.razor*：
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Index1.razor?highlight=7)]
 
-執行應用程式。 首頁有自己的計數器，由 @no__t 0 元件提供。
+執行應用程式。 首頁有自己的計數器，由 `Counter` 元件提供。
 
 元件參數是使用屬性或[子內容](xref:blazor/components#child-content)所指定，可讓您設定子元件上的屬性。 若要將參數新增至 `Counter` 元件，請更新元件的 `@code` 區塊：
 
-* 使用 `[Parameter]` 屬性來新增 `IncrementAmount` 的公用屬性。
+* 加入具有 `[Parameter]` 屬性之 `IncrementAmount` 的公用屬性。
 * 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
 
 *Pages/Counter.razor*：
@@ -276,7 +276,7 @@ ms.locfileid: "72391046"
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
-執行應用程式。 @No__t 0 元件有自己的計數器，每次選取 [按**我**] 按鈕時，就會遞增10。 @No__t-2 的 `Counter` 元件（*razor*）會繼續遞增一。
+執行應用程式。 @No__t_0 元件有自己的計數器，每次選取 [按**我**] 按鈕時，就會遞增10。 @No__t_2 的 `Counter` 元件（*razor*）會繼續遞增一。
 
 ## <a name="next-steps"></a>後續步驟
 

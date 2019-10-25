@@ -5,22 +5,22 @@ description: 本教學課程會示範如何在 ASP.NET Core 應用程式中安�
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 5462f89a3b5a257ed0a6a8439efb077653fb14f6
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: a2a0bcdace67052975630f99aab23bbb0fd99bff
+ms.sourcegitcommit: 383017d7060a6d58f6a79cf4d7335d5b4b6c5659
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082253"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72816134"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>使用檔案監看員開發 ASP.NET Core 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Victor Hurdugaci](https://twitter.com/victorhurdugaci)
 
-`dotnet watch` 是一種工具，會在來源檔案變更時執行 [.NET Core CLI](/dotnet/core/tools) 命令。 例如，檔案變更會觸發編譯、測試執行或部署。
+[dotnet watch](https://www.nuget.org/packages/dotnet-watch)是一種工具，會在來源檔案變更時執行[.NET Core CLI](/dotnet/core/tools)命令。 例如，檔案變更會觸發編譯、測試執行或部署。
 
 本教學課程使用現有的 Web API 與兩個端點：一個傳回加總，另一個傳回產品。 本教學課程已修正產品方法的 Bug。
 
-下載[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)。 這是由二個專案所組成：*WebApp* (ASP.NET Core Web API) 和 *WebAppTests* (Web API 的單元測試)。
+下載[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)。 它包含兩個專案：*WebApp* (ASP.NET Core Web API) 和 *WebAppTests* (Web API 的單元測試)。
 
 在命令殼層中，巡覽至 *WebApp* 資料夾。 執行下列命令：
 
@@ -69,7 +69,7 @@ Application started. Press Ctrl+C to shut down.
 
 ## <a name="run-net-core-cli-commands-using-dotnet-watch"></a>使用 `dotnet watch` 執行 .NET Core CLI 命令
 
-任何 [.NET Core CLI 命令](/dotnet/core/tools#cli-commands)都可以使用 `dotnet watch` 執行。 例如：
+任何 [.NET Core CLI 命令](/dotnet/core/tools#cli-commands)都可以使用 `dotnet watch` 執行。 例如:
 
 | 命令 | 使用監看式的命令 |
 | ---- | ----- |

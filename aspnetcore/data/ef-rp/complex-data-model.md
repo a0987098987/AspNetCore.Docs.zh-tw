@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 2461bc398cd237dac04f4eb8832c70290663ff56
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 1244b2e23a842538ff2fca01a513317a690afe7c
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259495"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034024"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -59,7 +59,7 @@ ms.locfileid: "72259495"
 
 針對學生註冊日期，所有頁面目前都會同時顯示日期和一天當中的時間，雖然只要日期才是重要項目。 透過使用資料註解屬性，您便可以只透過單一程式碼變更來修正每個顯示資料頁面中的顯示格式。 
 
-[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供了許多資料類型，例如　Date、Time、PhoneNumber、Currency、EmailAddress 等。`DataType` 屬性也可以讓應用程式自動提供限定於某些類型的功能。 例如:
+[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。`DataType` 屬性也可以讓應用程式自動提供類型特有的功能。 例如:
 
 * `DataType.EmailAddress` 會自動建立 `mailto:` 連結。
 * `DataType.Date` 在大多數的瀏覽器中都會提供日期選取器。
@@ -364,7 +364,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 public decimal Budget { get; set; }
 ```
 
-通常您不需要資料行對應。 EF Core 會根據屬性的 CLR 型別來選擇適當 SQL Server 資料型別。 CLR `decimal` 類型會對應到 SQL Server 的 `decimal` 類型。 由於 `Budget` 是貨幣，因此金額資料類型會比較適合貨幣。
+通常您不需要資料行對應。 EF Core 會根據屬性的 CLR 型別來選擇適當 SQL Server 資料型別。 CLR `decimal` 類型會對應到 SQL Server `decimal` 類型。 由於 `Budget` 是貨幣，因此金額資料類型會比較適合貨幣。
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵及導覽屬性
 
@@ -453,7 +453,7 @@ public Student Student { get; set; }
 
 Instructor 對 Courses 的多對多關聯性需要聯結資料表，而該聯結資料表的實體為 CourseAssignment。
 
-![講師對課程 m:M](complex-data-model/_static/courseassignment.png)
+![講師-課程 m:M](complex-data-model/_static/courseassignment.png)
 
 通常會將聯結實體命名為 `EntityName1EntityName2`。 例如，使用此模式的 Instructor 對 Courses 聯結資料表將會是 `CourseInstructor`。 不過，我們建議使用可描述關聯性的名稱。
 
@@ -510,7 +510,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 * 僅 EF Core 組態 (例如，`HasKey`)。
 * 驗證及 EF Core 組態 (例如，`[StringLength(50)]`)。
 
-如需屬性與 Fluent API 的詳細資訊，請參閱[組態方法](/ef/core/modeling/)。
+如需屬性與 Fluent API 的詳細資訊，請參閱[方法](/ef/core/modeling/)。
 
 ## <a name="entity-diagram"></a>實體圖表
 
@@ -682,7 +682,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 新增下列醒目提示程式碼。 新的程式碼位於 `.CreateTable( name: "Department"` 區塊後方：
 
-[!code-csharp[](intro/samples/cu30snapshots/5-complex/Migrations/ ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=23-31)]
+[!code-csharp[](intro/samples/cu30snapshots/5-complex/Migrations/ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=23-31)]
 
 透過上述變更，現有的 `Course` 資料列將會在執行 `ComplexDataModel.Up` 方法後與 "Temp" 部門相關。
 
@@ -749,7 +749,7 @@ https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供了許多資料類型，例如　Date、Time、PhoneNumber、Currency、EmailAddress 等。`DataType` 屬性也可以讓應用程式自動提供限定於某些類型的功能。 例如:
+[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。`DataType` 屬性也可以讓應用程式自動提供類型特有的功能。 例如:
 
 * `DataType.EmailAddress` 會自動建立 `mailto:` 連結。
 * `DataType.Date` 在大多數的瀏覽器中都會提供日期選取器。
@@ -1278,7 +1278,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 現在您有了現有的資料庫，您需要思考如何對其套用未來變更。 本教學課程示範兩種方法：
 
 * [卸除並重新建立資料庫](#drop)
-* [將移轉套用至現有資料庫](#applyexisting)。 雖然這個方法更複雜且耗時，卻是實際生產環境的慣用方法。 **注意**：這是本教學課程的選擇性章節。 您可以執行卸除並重新建立步驟，然後略過本節。 如果您希望遵循本章節中的步驟，請不要執行卸除並重新建立的步驟。 
+* [將移轉套用至現有資料庫](#applyexisting)。 雖然這個方法更複雜且耗時，卻是實際生產環境的慣用方法。 **請注意**：這是本教學課程的選擇性章節。 您可以執行卸除並重新建立步驟，然後略過本節。 如果您希望遵循本章節中的步驟，請不要執行卸除並重新建立的步驟。 
 
 <a name="drop"></a>
 

@@ -1,31 +1,30 @@
 ---
 title: ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 author: rick-anderson
-description: 本教學課程示範如何搭配使用 OAuth 2.0 與外部驗證提供者，建立 ASP.NET Core 2.x 應用程式。
+description: 本教學課程示範如何使用 OAuth 2.0 搭配外部驗證提供者來建立 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/10/2019
+ms.date: 10/21/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: edaf9eeaf02879b2f7816bab0eb373a7de640c05
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 627ca483d60514d85e38c0e346ff5aef64ad9fee
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082510"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034300"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程會示範如何建置 ASP.NET Core 2.2 應用程式，讓使用者可使用 OAuth 2.0 以外部驗證提供者提供的認證登入。
+本教學課程示範如何建立 ASP.NET Core 3.0 應用程式，讓使用者能夠使用 OAuth 2.0 搭配外部驗證提供者的認證來登入。
 
-下列各節涵蓋 [Facebook](xref:security/authentication/facebook-logins)、[Twitter](xref:security/authentication/twitter-logins)、[Google](xref:security/authentication/google-logins) 和 [Microsoft](xref:security/authentication/microsoft-logins) 的提供者。 您可透過 [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) 和 [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers) 這類協力廠商套件，取得其他提供者。
-
-![Facebook、Twitter、Google+ 和 Windows 的社交媒體圖示](index/_static/social.png)
+下列各節涵蓋[Facebook](xref:security/authentication/facebook-logins)、 [Twitter](xref:security/authentication/twitter-logins)、 [Google](xref:security/authentication/google-logins)和[Microsoft](xref:security/authentication/microsoft-logins)提供者，並使用本文中建立的入門專案。 您可透過 [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) 和 [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers) 這類協力廠商套件，取得其他提供者。
 
 讓使用者透過現有認證登入：
+
 * 對使用者而言十分方便。
-* 可將複雜的登入程序管理作業轉移至協力廠商。 
+* 可將複雜的登入程序管理作業轉移至協力廠商。
 
 如需社交登入如何帶動流量和客戶轉換的範例，請參閱 [Facebook](https://www.facebook.com/unsupportedbrowser) 和 [Twitter](https://dev.twitter.com/resources/case-studies) 的案例研究。
 
@@ -36,36 +35,32 @@ ms.locfileid: "71082510"
 * 建立新的專案。
 * 選取 [ASP.NET Core Web 應用程式] 和 [下一步]。
 * 提供**專案名稱**並確認或變更**位置**。 選取 [建立]。
-* 選取下拉式清單中的 [ASP.NET Core 2.2]。 選取範本清單中的 [Web 應用程式]。
+* 在下拉式選單中選取 [ **ASP.NET Core 3.0** ]，然後選取 [ **Web 應用程式**]。
 * 選取 [驗證] 下的 [變更]，並將驗證設定為 [個別使用者帳戶]。 選取 [確定]。
 * 在 [建立新的 ASP.NET Core Web 應用程式] 視窗中選取 [建立]。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
+* 開啟終端機。  對於 Visual Studio Code，您可以開啟[整合式終端](https://code.visualstudio.com/docs/editor/integrated-terminal)機。
 
 * 將目錄 (`cd`) 變更為其中包含專案的資料夾。
 
-* 執行下列命令：
+* 若是 Windows，請執行下列命令：
 
   ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld
-  code -r WebApp1
+  ```
+
+  針對 macOS 和 Linux，請執行下列命令：
+
+  ```dotnetcli
+  dotnet new webapp -o WebApp1 -au Individual
   ```
 
   * `dotnet new` 命令會在 [WebApp1] 資料夾中建立新的 Razor Pages 專案。
-  * `-uld` 會使用 LocalDB，而不是 SQLite。 省略 `-uld` 以使用 SQLite。
   * `-au Individual` 會建立程式碼以進行個別驗證。
+  * `-uld` 使用 LocalDB，這是適用于 Windows SQL Server Express 的輕量版本。 省略 `-uld` 以使用 SQLite。
   * `code` 命令會在新的 Visual Studio Code 執行個體中開啟 [WebApp1] 資料夾。
-
-* 對話方塊隨即顯示，並指出 **'WebApp1' 中遺漏了建置和偵錯的必要資產。新增它們嗎？** 選取 [是]。
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
-
-* 選取 [檔案] > [新增方案]。
-* 選取提要欄位中的 [.NET Core] > [應用程式]。 選取 [Web 應用程式] 範本。 選取 [下一步]。
-* 將 [目標 Framework] 下拉式清單設定為 [.NET Core 2.2]。 選取 [下一步]。
-* 提供**專案名稱**。 確認或變更**位置**。 選取 [建立]。
 
 ---
 
@@ -120,4 +115,4 @@ ms.locfileid: "71082510"
 
 * 請參考提供者的特定頁面，以設定應用程式所需的提供者登入項目。
 
-* 您想要保存有關使用者與其存取和重新整理權杖的額外資料。 如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims>。
+* 您想要保存有關使用者與其存取和重新整理權杖的額外資料。 如需詳細資訊，請參閱<xref:security/authentication/social/additional-claims>。

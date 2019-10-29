@@ -5,14 +5,14 @@ description: 了解在 Windows Server 上搭配 IIS 執行 ASP.NET Core 應用�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/10/2019
+ms.date: 10/26/2019
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: e5da4f7202bf31e65c366d6f7de54212f5b0fed7
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 2d2c8d8e4b39d18a3a727e2a2bdef3be566897c1
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259795"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034150"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
@@ -20,7 +20,7 @@ ms.locfileid: "72259795"
 
 本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://visualstudio.microsoft.com) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Visual Studio (適用於 Windows)](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
@@ -152,7 +152,6 @@ IIS 的網站必須含有下列設定：
 ## <a name="additional-resources"></a>其他資源
 
 * [IIS 中的 IIS 管理員使用者入門](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
-* [使用 IIS 在 Windows 上裝載 ASP.NET](xref:host-and-deploy/iis/index)
-* [ASP.NET Core 模組簡介](xref:host-and-deploy/aspnet-core-module)
-* [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
-* [強制使用 HTTPS](xref:security/enforcing-ssl)
+* <xref:host-and-deploy/iis/index>
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:security/enforcing-ssl>

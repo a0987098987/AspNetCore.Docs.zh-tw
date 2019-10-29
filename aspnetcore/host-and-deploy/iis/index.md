@@ -5,14 +5,14 @@ description: 了解如何在 Windows Server Internet Information Services (IIS) 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/13/2019
+ms.date: 10/26/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: bf535134277a08103ba8ce55eeed540a9fce8260
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 179ab4c97426c9d3cb8ed069d2059d767d755533
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333874"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034258"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -129,8 +129,6 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Cr
 
 在使用模組時不需要呼叫 `UseUrls` 或 Kestrel 的 `Listen` API。 若呼叫 `UseUrls` 或 `Listen`，Kestrel 只會接聽未使用 IIS 執行應用程式時指定的連接埠。
 
-如需處理序內和處理序外裝載模型的詳細資訊，請參閱 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)及 [ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)。
-
 ::: moniker-end
 
 如需 ASP.NET Core 模組組態指南，請參閱 <xref:host-and-deploy/aspnet-core-module>。
@@ -221,7 +219,7 @@ services.Configure<IISOptions>(options =>
 <Project Sdk="Microsoft.NET.Sdk.Web">
 ```
 
-如果專案中沒有 *web.config* 檔案，則系統會使用正確的 *processPath* 和 *arguments* 建立該檔案以設定 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)，並將該檔案移至[已發行的輸出](xref:host-and-deploy/directory-structure)。
+如果*web.config*檔案不存在於專案中，則會使用正確的*processPath*和*引數*來建立檔案，以設定 ASP.NET Core 模組並移至[已發行的輸出](xref:host-and-deploy/directory-structure)。
 
 如果 *web.config* 檔案存在於專案中，則系統會使用正確的 *processPath* 和 *arguments* 來轉換該檔案以設定 ASP.NET Core 模組，然後將它移至已發行的輸出。 轉換不會修改檔案中的 IIS 組態設定。
 
@@ -235,7 +233,7 @@ services.Configure<IISOptions>(options =>
 </PropertyGroup>
 ```
 
-使 Web SDK 無法轉換檔案時，應該由開發人員手動設定 *processPath* 和 *arguments*。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)。
+使 Web SDK 無法轉換檔案時，應該由開發人員手動設定 *processPath* 和 *arguments*。 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
 
 ### <a name="webconfig-file-location"></a>web.config 檔案位置
 
@@ -332,6 +330,10 @@ services.Configure<IISOptions>(options =>
    * `OPT_NO_X86=1` &ndash; 跳過安裝 x86 執行階段。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
    * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
 1. 請重新啟動系統，或是從命令殼層依序執行 **net stop was /y** 和 **net start w3svc**。 重新啟動 IIS 將能偵測到由安裝程式對系統路徑 (此為環境變數) 所做出的變更。
+
+安裝裝載套件組合時，不需要手動停止 IIS 中的個別網站。 裝載的應用程式（IIS 網站）會在 IIS 重新開機時重新開機。 應用程式會在收到第一個要求時重新開機，包括從[應用程式初始化模組](#application-initialization-module-and-idle-timeout)。
+
+ASP.NET Core 採用共用架構封裝修補程式版本的向前復原行為。 當 IIS 所裝載的應用程式使用 IIS 重新開機時，應用程式會在收到第一個要求時，以其所參考套件的最新修補程式版本來載入。 如果未重新開機 IIS，應用程式會在其工作者進程回收時重新開機並展示向前復原行為，並接收其第一個要求。
 
 > [!NOTE]
 > 如需 IIS 共用組態的資訊，請參閱[使用 IIS 共用組態的 ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration)。
@@ -528,13 +530,19 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
-如需有關同處理序裝載模型與如何設定 ASP.NET Core 模組的詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module> 與 <xref:host-and-deploy/aspnet-core-module>。
+如需有關同進程裝載模型和設定 ASP.NET Core 模組的詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module>。
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
 在對使用了 ASP.NET Core 模組的 ASP.NET Core 有作用的 IIS 情境下，設定會受 *web.config* 的 `<system.webServer>` 區段影響。 舉例來說，IIS 設定對動態壓縮有作用。 如果在伺服器層級將 IIS 設為使用動態壓縮，應用程式 *web.config* 檔案中的 `<urlCompression>` 元素則可為 ASP.NET Core 應用程式予以停用。
 
-如需詳細資訊，請參閱 [\<system.webServer> 的設定參考](/iis/configuration/system.webServer/)、[ASP.NET Core 模組設定參考](xref:host-and-deploy/aspnet-core-module)以及 [IIS 模組與 ASP.NET Core](xref:host-and-deploy/iis/modules)。 若要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (支援 IIS 10.0 或更新版本)，請參閱 IIS 參考文件之[環境變數 \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
+如需詳細資訊，請參閱下列主題：
+
+* [\<System.webserver > 的設定參考](/iis/configuration/system.webServer/)
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/iis/modules>
+
+若要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (支援 IIS 10.0 或更新版本)，請參閱 IIS 參考文件之[環境變數 \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
 
 ## <a name="configuration-sections-of-webconfig"></a>web.config 的組態區段
 
@@ -728,11 +736,8 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 了解 .NET Core 應用程式部署模型。  
 [.NET Core 應用程式部署](/dotnet/core/deploying/)
 
-了解 ASP.NET Core 模組如何讓 Kestrel Web 伺服器將 IIS 或 IIS Express 作為反向 Proxy 伺服器使用。  
-[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)
-
-了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。  
-[ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
+深入瞭解 ASP.NET Core 模組，包括設定指引。  
+<xref:host-and-deploy/aspnet-core-module>
 
 了解已發行之 ASP.NET Core 應用程式的目錄結構。  
 [目錄結構](xref:host-and-deploy/directory-structure)
@@ -752,5 +757,5 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 * [ASP.NET Core 簡介](xref:index)
 * [Microsoft IIS 官方網站](https://www.iis.net/)
 * [Windows Server 技術內容庫](/windows-server/windows-server)
-* [IIS 上的 HTTP/2](/iis/get-started/whats-new-in-iis-10/http2-on-iis)
+* [ISS 上的 HTTP/2](/iis/get-started/whats-new-in-iis-10/http2-on-iis)
 * <xref:host-and-deploy/iis/transform-webconfig>

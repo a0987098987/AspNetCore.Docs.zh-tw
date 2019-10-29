@@ -5,14 +5,14 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/20/2019
+ms.date: 10/21/2019
 uid: blazor/components
-ms.openlocfilehash: 065a3a078c56f813ed38f85d7414f22061217dff
-ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
+ms.openlocfilehash: 8c228b168cdbd58928ef3f57ff26bc86e8dfc1ba
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72697954"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73033972"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -37,7 +37,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 元件成員可以使用C#開頭為 `@` 的運算式，做為元件轉譯邏輯的一部分。 例如， C#欄位的呈現方式是在功能變數名稱前面加上 `@`。 下列範例會評估並呈現：
 
-* `_headingFontStyle` 至 `font-style` 的 CSS 屬性值。
+* `_headingFontStyle` 至 `font-style`的 CSS 屬性值。
 * `_headingText` 至 `<h1>` 元素的內容。
 
 ```cshtml
@@ -107,7 +107,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 元件可以設定另一個元件的內容。 指派元件會在指定接收元件的標記之間提供內容。
 
-在下列範例中，`ChildComponent` 具有代表 `RenderFragment` 的 `ChildContent` 屬性，代表要呈現的 UI 區段。 @No__t_0 的值位於元件的標記中，應在其中呈現內容。 從父元件接收 `ChildContent` 的值，並在啟動載入面板的 `panel-body` 中轉譯。
+在下列範例中，`ChildComponent` 具有代表 `RenderFragment` 的 `ChildContent` 屬性，代表要呈現的 UI 區段。 `ChildContent` 的值位於元件的標記中，應在其中呈現內容。 從父元件接收 `ChildContent` 的值，並在啟動載入面板的 `panel-body` 中轉譯。
 
 *Components/ChildComponent. razor*：
 
@@ -190,7 +190,53 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 }
 ```
 
-@No__t_1 上的 `CaptureUnmatchedValues` 屬性可讓參數符合所有不符合任何其他參數的屬性。 元件只能定義具有 `CaptureUnmatchedValues` 的單一參數。 搭配 `CaptureUnmatchedValues` 使用的屬性類型必須可從具有字串索引鍵的 `Dictionary<string, object>` 指派。 `IEnumerable<KeyValuePair<string, object>>` 或 `IReadOnlyDictionary<string, object>` 也是此案例中的選項。
+`[Parameter]` 上的 `CaptureUnmatchedValues` 屬性可讓參數符合所有不符合任何其他參數的屬性。 元件只能定義具有 `CaptureUnmatchedValues` 的單一參數。 搭配 `CaptureUnmatchedValues` 使用的屬性類型必須可從具有字串索引鍵的 `Dictionary<string, object>` 指派。 `IEnumerable<KeyValuePair<string, object>>` 或 `IReadOnlyDictionary<string, object>` 也是此案例中的選項。
+
+相對於元素屬性位置的 `@attributes` 位置很重要。 當 `@attributes` 在專案上 splatted 時，會從右至左（最後一個）處理屬性。 請考慮使用 `Child` 元件的下列元件範例：
+
+*ParentComponent razor*：
+
+```cshtml
+<ChildComponent extra="10" />
+```
+
+*ChildComponent razor*：
+
+```cshtml
+<div @attributes="AdditionalAttributes" extra="5" />
+
+[Parameter(CaptureUnmatchedValues = true)]
+public IDictionary<string, object> AdditionalAttributes { get; set; }
+```
+
+`Child` 元件的 `extra` 屬性會設定為 `@attributes`的右邊。 `Parent` 元件的轉譯 `<div>` 會在透過額外屬性傳遞時包含 `extra="5"`，因為屬性是由右至左處理（最後一個）：
+
+```html
+<div extra="5" />
+```
+
+在下列範例中，`extra` 和 `@attributes` 的順序會在 `Child` 元件的 `<div>`中反轉：
+
+*ParentComponent razor*：
+
+```cshtml
+<ChildComponent extra="10" />
+```
+
+*ChildComponent razor*：
+
+```cshtml
+<div extra="5" @attributes="AdditionalAttributes" />
+
+[Parameter(CaptureUnmatchedValues = true)]
+public IDictionary<string, object> AdditionalAttributes { get; set; }
+```
+
+當透過其他屬性傳遞時，`Parent` 元件中呈現的 `<div>` 會包含 `extra="10"`：
+
+```html
+<div extra="10" />
+```
 
 ## <a name="data-binding"></a>資料繫結
 
@@ -240,7 +286,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 請考慮下列案例：
 
-* @No__t_0 元素會系結至 `int` 類型，其初始值為 `123`：
+* `<input>` 元素會系結至 `int` 類型，其初始值為 `123`：
 
   ```cshtml
   <input @bind="MyProperty" />
@@ -309,7 +355,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 * <xref:System.DateTimeOffset?displayProperty=fullName>
 * <xref:System.DateTimeOffset?displayProperty=fullName>?
 
-@No__t_0 屬性會指定要套用至 `<input>` 元素 `value` 的日期格式。 當發生 `onchange` 事件時，也會使用格式來剖析值。
+`@bind:format` 屬性會指定要套用至 `<input>` 元素 `value` 的日期格式。 當發生 `onchange` 事件時，也會使用格式來剖析值。
 
 不建議指定 `date` 欄位類型的格式，因為 Blazor 具有格式日期的內建支援。
 
@@ -385,7 +431,7 @@ Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結�
 <p>Year: 1986</p>
 ```
 
-@No__t_0 參數是可系結的，因為它具有符合 `Year` 參數類型的伴隨 `YearChanged` 事件。
+`Year` 參數是可系結的，因為它具有符合 `Year` 參數類型的伴隨 `YearChanged` 事件。
 
 依照慣例，`<ChildComponent @bind-Year="ParentYear" />` 基本上等同于撰寫：
 
@@ -515,7 +561,7 @@ Razor 元件提供事件處理功能。 針對名為 `on{event}` （例如，`on
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
-@No__t_0 會將子系的 `EventCallback<T>` 設定為其 `ShowMessage` 方法：
+`ParentComponent` 會將子系的 `EventCallback<T>` 設定為其 `ShowMessage` 方法：
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=6,16-19)]
 
@@ -595,7 +641,7 @@ Password:
 }
 ```
 
-@No__t_0 元件會在另一個元件中使用：
+`PasswordField` 元件會在另一個元件中使用：
 
 ```cshtml
 <PasswordField @bind-Password="password" />
@@ -774,7 +820,7 @@ public class NotifierService
 }
 ```
 
-@No__t_0 集合的內容可能會隨著插入、刪除或重新排序的專案而變更。 當元件 rerenders 時，`<DetailsEditor>` 元件可能會變更，以接收不同的 `Details` 參數值。 這可能會導致比預期更複雜的 rerendering。 在某些情況下，rerendering 可能會導致可見的行為差異，例如失去元素的焦點。
+`People` 集合的內容可能會隨著插入、刪除或重新排序的專案而變更。 當元件 rerenders 時，`<DetailsEditor>` 元件可能會變更，以接收不同的 `Details` 參數值。 這可能會導致比預期更複雜的 rerendering。 在某些情況下，rerendering 可能會導致可見的行為差異，例如失去元素的焦點。
 
 您可以使用 `@key` 指示詞屬性來控制對應進程。 `@key` 會使比較演算法根據索引鍵的值，保證保留元素或元件：
 
@@ -876,7 +922,7 @@ protected override void OnParametersSet()
 
 在*伺服器上預先呈現時，不會呼叫*`OnAfterRender`。
 
-@No__t_1 和 `OnAfterRender` 的 `firstRender` 參數是：
+`OnAfterRenderAsync` 和 `OnAfterRender` 的 `firstRender` 參數是：
 
 * 當第一次叫用元件實例時，設定為 `true`。
 * 確保初始化工作只會執行一次。
@@ -908,7 +954,7 @@ protected override void OnAfterRender(bool firstRender)
 
 在呈現元件之前，在生命週期事件中執行的非同步動作可能尚未完成。 當生命週期方法正在執行時，物件可能 `null` 或未完全填入資料。 提供轉譯邏輯，以確認物件已初始化。 當物件 `null` 時，轉譯預留位置 UI 元素（例如，載入訊息）。
 
-在 Blazor 範本的 `FetchData` 元件中，`OnInitializedAsync` 會覆寫為 asychronously 接收預測資料（`forecasts`）。 當 `forecasts` `null` 時，會向使用者顯示載入訊息。 @No__t_1 所傳回的 `Task` 完成之後，元件會以更新的狀態重新顯示。
+在 Blazor 範本的 `FetchData` 元件中，`OnInitializedAsync` 會覆寫為 asychronously 接收預測資料（`forecasts`）。 當 `forecasts` `null` 時，會向使用者顯示載入訊息。 `OnInitializedAsync` 所傳回的 `Task` 完成之後，元件會以更新的狀態重新顯示。
 
 *Pages/FetchData.razor*：
 
@@ -1052,7 +1098,7 @@ namespace BlazorApp.Pages
 
 ## <a name="specify-a-component-base-class"></a>指定元件基類
 
-@No__t_0 指示詞可以用來指定元件的基類。
+`@inherits` 指示詞可以用來指定元件的基類。
 
 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)會顯示元件如何繼承基類（`BlazorRocksBase`），以提供元件的屬性和方法。
 
@@ -1276,7 +1322,7 @@ public class ThemeInfo
 }
 ```
 
-祖系元件可以使用串聯值元件來提供串聯值。 @No__t_0 元件會包裝元件階層的子樹，並提供單一值給該子樹內的所有元件。
+祖系元件可以使用串聯值元件來提供串聯值。 `CascadingValue` 元件會包裝元件階層的子樹，並提供單一值給該子樹內的所有元件。
 
 例如，範例應用程式會在其中一個應用程式的配置中，將主題資訊（`ThemeInfo`）指定為構成 `@Body` 屬性之配置主體的所有元件的串聯參數。 `ButtonClass` 會在版面配置元件中指派 `btn-success` 的值。 任何子代元件都可以透過 `ThemeInfo` 級聯的物件來取用這個屬性。
 
@@ -1387,7 +1433,7 @@ public class ThemeInfo
 
 [!code-csharp[](common/samples/3.x/BlazorWebAssemblySample/UIInterfaces/ITab.cs)]
 
-@No__t_0 元件會使用 `TabSet` 元件，其中包含數個 `Tab` 元件：
+`CascadingValuesParametersTabSet` 元件會使用 `TabSet` 元件，其中包含數個 `Tab` 元件：
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
 
@@ -1494,7 +1540,7 @@ public class ThemeInfo
 }
 ```
 
-> !WARNING@No__t_0 中的類型允許處理轉譯作業的*結果*。 這些是 Blazor framework 執行的內部詳細資料。 這些類型應該被視為不*穩定*，未來的版本可能會變更。
+> !WARNING`Microsoft.AspNetCore.Components.RenderTree` 中的類型允許處理轉譯作業的*結果*。 這些是 Blazor framework 執行的內部詳細資料。 這些類型應該被視為不*穩定*，未來的版本可能會變更。
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>序號與程式程式碼號相關，而不是執行順序
 

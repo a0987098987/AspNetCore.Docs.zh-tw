@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 10/07/2019
 uid: razor-pages/index
-ms.openlocfilehash: d12cf7f4f45c98c292b0d035c99e051d9b779e9a
-ms.sourcegitcommit: 383017d7060a6d58f6a79cf4d7335d5b4b6c5659
+ms.openlocfilehash: 61e15b9b9b8f84de36621c301ecb9d33b21dff88
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72816132"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034283"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 簡介
 
@@ -157,7 +157,7 @@ DB 內容：
 
 從*Pages/Create. cshtml*轉譯的 HTML：
 
-[!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create4.html)]
+[!code-html[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create4.html)]
 
 在先前的程式碼中，張貼表單：
 
@@ -283,7 +283,7 @@ DB 內容：
 
 * 產生下列 HTML：
 
-  [!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create5.html)]
+  [!code-html[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create5.html)]
 
 張貼不含名稱值的建立表單時，會顯示錯誤訊息「需要名稱欄位」。 在表單上。 如果在用戶端上啟用 JavaScript，瀏覽器會顯示錯誤，而不會張貼至伺服器。
 

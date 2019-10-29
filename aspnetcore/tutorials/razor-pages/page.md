@@ -5,12 +5,12 @@ description: 說明 Scaffolding 所產生的 Razor 頁面。
 ms.author: riande
 ms.date: 08/17/2019
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 939ed5c3cdf33d8d99712e3166d8d07d3bac719f
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 594fd6186cc73aa054fc9a1478850fa01e481ef2
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72334088"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034203"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Scaffold Razor 頁面
 
@@ -44,15 +44,15 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 ### <a name="the-page-directive"></a>@page 指示詞
 
-@No__t_0 Razor 指示詞會讓檔案成為 MVC 動作，這表示它可以處理要求。 `@page` 必須是頁面上的第一個 Razor 指示詞。 `@page` 是轉換成 Razor 特定標記的範例。 如需詳細資訊，請參閱 [Razor 語法](xref:mvc/views/razor#razor-syntax)。
+`@page` Razor 指示詞會讓檔案成為 MVC 動作，這表示它可以處理要求。 `@page` 必須是頁面上的第一個 Razor 指示詞。 `@page` 是轉換成 Razor 特定標記的範例。 如需詳細資訊，請參閱 [Razor 語法](xref:mvc/views/razor#razor-syntax)。
 
 檢查下列 HTML 協助程式中使用的 Lambda 運算式：
 
 ```cshtml
-@Html.DisplayNameFor(model => model.Movie[0].Title))
+@Html.DisplayNameFor(model => model.Movie[0].Title)
 ```
 
-`DisplayNameFor` HTML 協助程式會檢查 Lambda 運算式中參考的 `Title` 屬性來判斷顯示名稱。 Lambda 運算式是進行檢查而不是評估。 這表示當 `model`、`model.Movie` 或 `model.Movie[0]` `null` 或空白時，不會發生存取違規。 在評估 Lambda 運算式時 (例如，使用 `@Html.DisplayFor(modelItem => item.Title)`)，會評估模型的屬性值。
+`DisplayNameFor` HTML 協助程式會檢查 Lambda 運算式中參考的 `Title` 屬性來判斷顯示名稱。 Lambda 運算式是進行檢查而不是評估。 這表示當 `model`、`model.Movie`或 `model.Movie[0]` `null` 或空白時，不會發生存取違規。 在評估 Lambda 運算式時 (例如，使用 `@Html.DisplayFor(modelItem => item.Title)`)，會評估模型的屬性值。
 
 <a name="md"></a>
 
@@ -83,7 +83,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 上述強調顯示的標記是 Razor 轉換成 C# 的範例。 `{` 和 `}` 字元中含括 C# 程式碼的區塊。
 
-@No__t_0 基類包含可用來將資料傳遞至 View 的 `ViewData` dictionary 屬性。 物件會使用機碼/值模式新增至 `ViewData` 字典。 在上述範例中，`"Title"` 屬性會新增至 `ViewData` 字典。
+`PageModel` 基類包含可用來將資料傳遞至 View 的 `ViewData` dictionary 屬性。 物件會使用機碼/值模式新增至 `ViewData` 字典。 在上述範例中，`"Title"` 屬性會新增至 `ViewData` 字典。
 
 *Pages/Shared/_Layout.cshtml* 檔案中使用 `"Title"` 屬性。 下列標記會顯示 *_Layout.cshtml* 檔案的前幾行。
 
@@ -240,7 +240,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 檢查下列 HTML 協助程式中使用的 Lambda 運算式：
 
 ```cshtml
-@Html.DisplayNameFor(model => model.Movie[0].Title))
+@Html.DisplayNameFor(model => model.Movie[0].Title)
 ```
 
 `DisplayNameFor` HTML 協助程式會檢查 Lambda 運算式中參考的 `Title` 屬性來判斷顯示名稱。 Lambda 運算式是進行檢查而不是評估。 這表示當 `model`、`model.Movie` 或 `model.Movie[0]` 是 `null` 或空白時，不會有任何存取違規。 在評估 Lambda 運算式時 (例如，使用 `@Html.DisplayFor(modelItem => item.Title)`)，會評估模型的屬性值。

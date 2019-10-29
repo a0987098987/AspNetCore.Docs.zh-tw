@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 072f9bbdcf7171ede63383b085f9f0f030bf1076
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: be67c129af4f071d10719e0bbf121de761dde9f4
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391163"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034000"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -66,7 +66,7 @@ ASP.NET Core 應用程式會參考要新增的應用程式 `Startup` 類別：
 * 伺服器端服務。
 * 應用程式至要求處理管線。
 
-*Blazor*腳本 @ no__t-1 會建立用戶端連接。 應用程式會負責保存和還原所需的應用程式狀態（例如，萬一網路連線中斷時）。
+*Blazor*腳本&dagger; 會建立用戶端連接。 應用程式會負責保存和還原所需的應用程式狀態（例如，萬一網路連線中斷時）。
 
 Blazor 伺服器裝載模型提供數個優點：
 
@@ -83,7 +83,7 @@ Blazor 伺服器裝載模型提供數個優點：
 * 對於具有許多使用者的應用程式而言，擴充性是極具挑戰性的。 伺服器必須管理多個用戶端連接並處理用戶端狀態。
 * 需要 ASP.NET Core 伺服器才能服務應用程式。 無伺服器部署案例不可行（例如，從 CDN 提供應用程式）。
 
-@no__t 0The 的*blazor*是由 ASP.NET Core 共用架構中的內嵌資源所提供。
+&dagger;從 ASP.NET Core 共用架構中的內嵌資源來提供*blazor*腳本。
 
 ### <a name="comparison-to-server-rendered-ui"></a>與伺服器呈現的 UI 比較
 
@@ -133,7 +133,7 @@ Blazor 伺服器應用程式應該經過優化，藉由減少網路延遲和記�
 
 Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果連接中斷，應用程式會嘗試重新連線到伺服器。 只要用戶端的狀態仍在記憶體中，用戶端會話就會繼續，而不會失去狀態。
 
-當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。 若要自訂 UI，請在 *_Host*的 [Razor] 頁面中，定義具有 `components-reconnect-modal` 的元素做為其 `id`。 用戶端會根據連接的狀態，使用下列其中一個 CSS 類別來更新這個元素：
+當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。 若要自訂 UI，請在 *_Host*的 [Razor] 頁面中，以 `components-reconnect-modal` 做為其 `id` 定義元素。 用戶端會根據連接的狀態，使用下列其中一個 CSS 類別來更新這個元素：
 
 * `components-reconnect-show` &ndash; 顯示 UI，表示連線中斷，而且用戶端正在嘗試重新連線。
 * `components-reconnect-hide` &ndash; 用戶端有作用中的連線，請隱藏 UI。
@@ -220,7 +220,7 @@ Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果
 
 在*Pages/_Host. cshtml*檔案中設定 SignalR 用戶端：
 
-* 將 `autostart="false"` 屬性加入至*blazor*腳本的 @no__t 1 標記中。
+* 將 `autostart="false"` 屬性加入至*blazor*腳本的 `<script>` 標記。
 * 呼叫 `Blazor.start`，並傳入指定 SignalR 產生器的設定物件。
 
 ```html
@@ -228,7 +228,7 @@ Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果
 <script>
   Blazor.start({
     configureSignalR: function (builder) {
-      builder.configureLogging(2); // LogLevel.Information
+      builder.configureLogging("information"); // LogLevel.Information
     }
   });
 </script>

@@ -5,14 +5,14 @@ description: 了解如何使用組態 API 設定 ASP.NET Core 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/18/2019
+ms.date: 10/24/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 0a9b1a1a08617ef4ca8a36295cec8910ec111acd
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: 263f9f7c4c800a74b745fd636196e1e135afc91b
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589910"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73033908"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -537,13 +537,10 @@ var config = new ConfigurationBuilder()
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
 {
-    config.SetBasePath(Directory.GetCurrentDirectory());
     config.AddIniFile(
         "config.ini", optional: true, reloadOnChange: true);
 })
 ```
-
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。
 
 INI 設定檔的一般範例：
 
@@ -602,13 +599,10 @@ key=value
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
 {
-    config.SetBasePath(Directory.GetCurrentDirectory());
     config.AddJsonFile(
         "config.json", optional: true, reloadOnChange: true);
 })
 ```
-
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。
 
 **範例**
 
@@ -643,13 +637,10 @@ key=value
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
 {
-    config.SetBasePath(Directory.GetCurrentDirectory());
     config.AddXmlFile(
         "config.xml", optional: true, reloadOnChange: true);
 })
 ```
-
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。
 
 XML 設定檔可以針對重複的區段使用相異元素名稱：
 
@@ -732,14 +723,11 @@ XML 設定檔可以針對重複的區段使用相異元素名稱：
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
 {
-    config.SetBasePath(Directory.GetCurrentDirectory());
     var path = Path.Combine(
         Directory.GetCurrentDirectory(), "path/to/files");
     config.AddKeyPerFile(directoryPath: path, optional: true);
 })
 ```
-
-透過 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 設定基底路徑。
 
 ## <a name="memory-configuration-provider"></a>記憶體設定提供者
 
@@ -1019,13 +1007,13 @@ TvShow = tvShow;
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,23)]
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,22)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,23)]
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,22)]
 
 ::: moniker-end
 
@@ -1203,7 +1191,7 @@ config.AddJsonFile(
 
 下列程式碼顯示如何在 *Program.cs* 中使用自訂 `EFConfigurationProvider`：
 
-[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=30-31)]
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=29-30)]
 
 ::: moniker-end
 
@@ -1239,7 +1227,7 @@ config.AddJsonFile(
 
 下列程式碼顯示如何在 *Program.cs* 中使用自訂 `EFConfigurationProvider`：
 
-[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=30-31)]
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=29-30)]
 
 ::: moniker-end
 

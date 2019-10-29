@@ -29,23 +29,23 @@ dotnet tool install -g dotnet-grpc
 
 ## <a name="add-references"></a>新增參考
 
-`dotnet-grpc` 可以用來將 Protobuf 參考新增為 *.csproj*檔案中的 @no__t 1 專案：
+`dotnet-grpc` 可以用來將 Protobuf 參考新增至 *.csproj* 檔案中的 `<Protobuf />` 位置：
 
 ```xml
 <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
 ```
 
-Protobuf 參考是用來產生C#用戶端和/或伺服器資產。 @No__t-0 工具可以：
+Protobuf 參考是用來產生 C# 用戶端和/或伺服器資產。 `dotnet-grp` 工具可以：
 
 * 從磁片上的本機檔案建立 Protobuf 參考。
 * 從 URL 所指定的遠端檔案建立 Protobuf 參考。
 * 請確定已將正確的 gRPC 套件相依性新增至專案。
 
-例如，`Grpc.AspNetCore` 套件會新增至 web 應用程式。 `Grpc.AspNetCore` 包含 gRPC 伺服器和用戶端程式庫和工具支援。 或者，只包含 gRPC 用戶端程式庫和工具支援的 `Grpc.Net.Client`、@no__t 1 和 @no__t 2 套件會新增至主控台應用程式。
+例如，`Grpc.AspNetCore` 套件會新增至 web 應用程式。 `Grpc.AspNetCore` 包含 gRPC 伺服器和用戶端程式庫和工具支援。 或者，只包含 gRPC 用戶端程式庫和工具支援的 `Grpc.Net.Client`、`Grpc.Tool` 和 `Google.Protobu` 套件會新增至主控台應用程式。
 
 ### <a name="add-file"></a>新增檔案
 
-@No__t-0 命令是用來將磁片上的本機檔案新增為 Protobuf 參考。 提供的檔案路徑：
+`add-fil` 命令是用來將磁片上的本機檔案新增為 Protobuf 參考。 提供的檔案路徑：
 
 * 可以相對於目前的目錄或絕對路徑。
 * 可能包含以模式為基礎之檔案[通配](https://wikipedia.org/wiki/Glob_(programming))的萬用字元。
@@ -75,7 +75,7 @@ dotnet grpc add-file [options] <files>...
 
 ### <a name="add-url"></a>新增 URL
 
-@No__t-0 命令是用來將來源 URL 所指定的遠端檔案新增為 Protobuf 參考。 必須提供檔案路徑，以指定要下載遠端檔案的位置。 檔案路徑可以相對於目前的目錄或絕對路徑。 如果檔案路徑位於專案目錄外，則會新增 `Link` 元素，以在 Visual Studio 中的虛擬資料夾 `Protos` 顯示該檔案。
+`add-ur` 命令是用來將來源 URL 所指定的遠端檔案新增為 Protobuf 參考。 必須提供檔案路徑，以指定要下載遠端檔案的位置。 檔案路徑可以相對於目前的目錄或絕對路徑。 如果檔案路徑位於專案目錄外，則會新增 `Link` 元素，以在 Visual Studio 中的虛擬資料夾 `Protos` 顯示該檔案。
 
 ### <a name="usage"></a>使用量
 
@@ -101,7 +101,7 @@ dotnet-grpc add-url [options] <url>
 
 ## <a name="remove"></a>移除
 
-@No__t-0 命令是用來從 *.csproj*檔案中移除 Protobuf 參考。 命令接受路徑引數和來源 Url 做為引數。 工具：
+`remove` 命令是用來從 *.csproj*檔案中移除 Protobuf 參考。 命令接受路徑引數和來源 Url 做為引數。 工具：
 
 * 只會移除 Protobuf 參考。
 * 不會刪除此*proto*檔案，即使該檔案原本是從遠端 URL 下載也一樣。
@@ -126,7 +126,7 @@ dotnet-grpc remove [options] <references>...
 
 ## <a name="refresh"></a>重新整理
 
-@No__t-0 命令是用來以來源 URL 的最新內容來更新遠端參考。 下載檔案路徑和來源 URL 都可以用來指定要更新的參考。 附註：
+`refresh` 命令是用來以來源 URL 的最新內容來更新遠端參考。 下載檔案路徑和來源 URL 都可以用來指定要更新的參考。 附註：
 
 * 檔案內容的雜湊會進行比較，以判斷是否應該更新本機檔案。
 * 不會比較任何時間戳記資訊。
@@ -154,7 +154,7 @@ dotnet-grpc refresh [options] [<references>...]
 
 ## <a name="list"></a>清單
 
-@No__t-0 命令是用來顯示專案檔中的所有 Protobuf 參考。 如果資料行的所有值都是預設值，可能會省略資料行。
+`list` 命令是用來顯示專案檔中的所有 Protobuf 參考。 如果資料行的所有值都是預設值，可能會省略資料行。
 
 ### <a name="usage"></a>使用量
 

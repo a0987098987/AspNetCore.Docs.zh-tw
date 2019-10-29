@@ -34,7 +34,7 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 
 ## <a name="route-templates"></a>路由範本
 
-@No__t_0 元件可讓您使用指定的路由來路由傳送至每個元件。 @No__t_0 元件會出現在*應用程式 razor*檔案中：
+`Route` 元件可讓您使用指定的路由來路由傳送至每個元件。 `Route` 元件會出現在*應用程式 razor*檔案中：
 
 ```cshtml
 <Router AppAssembly="typeof(Startup).Assembly">
@@ -81,7 +81,7 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 </Router>
 ```
 
-@No__t_0 標記的內容可以包含任意專案，例如其他互動式元件。 若要將預設版面配置套用至 `NotFound` 內容，請參閱 <xref:blazor/layouts>。
+`<NotFound>` 標記的內容可以包含任意專案，例如其他互動式元件。 若要將預設版面配置套用至 `NotFound` 內容，請參閱 <xref:blazor/layouts>。
 
 ## <a name="route-to-components-from-multiple-assemblies"></a>從多個元件路由至元件
 
@@ -110,7 +110,7 @@ ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個
 在下列範例中，`Users` 元件的路由只會符合下列條件：
 
 * 要求 URL 上有 `Id` 的路由區段。
-* @No__t_0 區段是一個整數（`int`）。
+* `Id` 區段是一個整數（`int`）。
 
 [!code-cshtml[](routing/samples_snapshot/3.x/Constraint.razor?highlight=1)]
 
@@ -132,22 +132,22 @@ ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個
 
 ### <a name="routing-with-urls-that-contain-dots"></a>包含點的 Url 路由
 
-在 Blazor 伺服器應用程式中， *_Host*中的預設路由是 `/` （`@page "/"`）。 包含點（`.`）的要求 URL 與預設路由不相符，因為 URL 會顯示要求檔案。 @No__t_0 應用程式針對不存在的靜態檔案傳回*404-找不到*回應。 若要使用包含點的路由，請使用下列路由範本來設定 *_Host* ：
+在 Blazor 伺服器應用程式中， *_Host*中的預設路由是 `/` （`@page "/"`）。 包含點（`.`）的要求 URL 與預設路由不相符，因為 URL 會顯示要求檔案。 Blazor 應用程式針對不存在的靜態檔案傳回*404-找不到*回應。 若要使用包含點的路由，請使用下列路由範本來設定 *_Host* ：
 
 ```cshtml
 @page "/{**path}"
 ```
 
-@No__t_0 範本包含：
+`"/{**path}"` 範本包含：
 
 * 雙星號*catch-all*語法（`**`）可跨多個資料夾界限捕捉路徑，而不需要編碼正斜線（`/`）。
-* @No__t_0 路由參數名稱。
+* `path` 路由參數名稱。
 
 如需詳細資訊，請參閱<xref:fundamentals/routing>。
 
 ## <a name="navlink-component"></a>NavLink 元件
 
-建立導覽連結時，請使用 `NavLink` 元件來取代 HTML 超連結元素（`<a>`）。 @No__t_0 元件的行為就像 `<a>` 元素，不同之處在于它會根據其 `href` 是否符合目前的 URL 來切換 `active` 的 CSS 類別。 @No__t_0 類別可協助使用者瞭解在顯示的導覽連結中，哪個頁面是使用中的頁面。
+建立導覽連結時，請使用 `NavLink` 元件來取代 HTML 超連結元素（`<a>`）。 `NavLink` 元件的行為就像 `<a>` 元素，不同之處在于它會根據其 `href` 是否符合目前的 URL 來切換 `active` 的 CSS 類別。 `active` 類別可協助使用者瞭解在顯示的導覽連結中，哪個頁面是使用中的頁面。
 
 下列 `NavMenu` 元件會建立[啟動](https://getbootstrap.com/docs/)程式導覽列，示範如何使用 `NavLink` 元件：
 

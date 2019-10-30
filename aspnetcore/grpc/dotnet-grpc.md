@@ -29,23 +29,23 @@ dotnet tool install -g dotnet-grpc
 
 ## <a name="add-references"></a>新增參考
 
-`dotnet-grpc` 可以用來將 Protobuf 參考新增至 *.csproj* 檔案中的 `<Protobuf />` 位置：
+`dotnet-grpc` 可用來將 Protobuf 參考當做 `<Protobuf />` 專案新增至 *.csproj*檔案：
 
 ```xml
 <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
 ```
 
-Protobuf 參考是用來產生 C# 用戶端和/或伺服器資產。 `dotnet-grp` 工具可以：
+Protobuf 參考是用來產生C#用戶端和/或伺服器資產。 `dotnet-grpc` 工具可以：
 
 * 從磁片上的本機檔案建立 Protobuf 參考。
 * 從 URL 所指定的遠端檔案建立 Protobuf 參考。
 * 請確定已將正確的 gRPC 套件相依性新增至專案。
 
-例如，`Grpc.AspNetCore` 套件會新增至 web 應用程式。 `Grpc.AspNetCore` 包含 gRPC 伺服器和用戶端程式庫和工具支援。 或者，只包含 gRPC 用戶端程式庫和工具支援的 `Grpc.Net.Client`、`Grpc.Tool` 和 `Google.Protobu` 套件會新增至主控台應用程式。
+例如，`Grpc.AspNetCore` 套件會新增至 web 應用程式。 `Grpc.AspNetCore` 包含 gRPC 伺服器和用戶端程式庫和工具支援。 或者，只包含 gRPC 用戶端程式庫和工具支援的 `Grpc.Net.Client`、`Grpc.Tools` 和 `Google.Protobuf` 套件會新增至主控台應用程式。
 
 ### <a name="add-file"></a>新增檔案
 
-`add-fil` 命令是用來將磁片上的本機檔案新增為 Protobuf 參考。 提供的檔案路徑：
+`add-file` 命令是用來將磁片上的本機檔案新增為 Protobuf 參考。 提供的檔案路徑：
 
 * 可以相對於目前的目錄或絕對路徑。
 * 可能包含以模式為基礎之檔案[通配](https://wikipedia.org/wiki/Glob_(programming))的萬用字元。
@@ -71,11 +71,11 @@ dotnet grpc add-file [options] <files>...
 | -p | --project | 要操作之專案檔的路徑。 如果未指定檔案，此命令會在目前的目錄中搜尋一個檔案。
 | -s | --服務 | 應產生的 gRPC 服務類型。 如果指定了 `Default`，則會將 `Both` 用於 Web 專案，而 `Client` 則用於非 Web 專案。 接受的值為 `Both`，`Client`，`Default`，`None`，`Server`。
 | -i | --其他-匯入-目錄 | 解析 protobuf 檔案的匯入時，所要使用的其他目錄。 這是以分號分隔的路徑清單。
-| | --access | 要用於產生C#之類別的存取修飾詞。 預設值是 `Public`。 接受的值為 `Internal`，`Public`。
+| | --access | 要用於產生C#之類別的存取修飾詞。 預設值為 `Public`。 接受的值為 `Internal`，`Public`。
 
 ### <a name="add-url"></a>新增 URL
 
-`add-ur` 命令是用來將來源 URL 所指定的遠端檔案新增為 Protobuf 參考。 必須提供檔案路徑，以指定要下載遠端檔案的位置。 檔案路徑可以相對於目前的目錄或絕對路徑。 如果檔案路徑位於專案目錄外，則會新增 `Link` 元素，以在 Visual Studio 中的虛擬資料夾 `Protos` 顯示該檔案。
+`add-url` 命令是用來將來源 URL 所指定的遠端檔案新增為 Protobuf 參考。 必須提供檔案路徑，以指定要下載遠端檔案的位置。 檔案路徑可以相對於目前的目錄或絕對路徑。 如果檔案路徑位於專案目錄外，則會新增 `Link` 元素，以在 Visual Studio 中的虛擬資料夾 `Protos` 顯示該檔案。
 
 ### <a name="usage"></a>使用量
 
@@ -126,7 +126,7 @@ dotnet-grpc remove [options] <references>...
 
 ## <a name="refresh"></a>重新整理
 
-`refresh` 命令是用來以來源 URL 的最新內容來更新遠端參考。 下載檔案路徑和來源 URL 都可以用來指定要更新的參考。 附註：
+`refresh` 命令是用來以來源 URL 的最新內容來更新遠端參考。 下載檔案路徑和來源 URL 都可以用來指定要更新的參考。 注意：
 
 * 檔案內容的雜湊會進行比較，以判斷是否應該更新本機檔案。
 * 不會比較任何時間戳記資訊。
@@ -154,7 +154,7 @@ dotnet-grpc refresh [options] [<references>...]
 
 ## <a name="list"></a>清單
 
-`list` 命令是用來顯示專案檔中的所有 Protobuf 參考。 如果資料行的所有值都是預設值，可能會省略資料行。
+`list` 命令會用來顯示專案檔中的所有 Protobuf 參考。 如果資料行的所有值都是預設值，可能會省略資料行。
 
 ### <a name="usage"></a>使用量
 

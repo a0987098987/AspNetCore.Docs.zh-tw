@@ -34,7 +34,7 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 
 ## <a name="route-templates"></a>路由範本
 
-`Route` 元件可讓您使用指定的路由來路由傳送至每個元件。 `Route` 元件會出現在*應用程式 razor*檔案中：
+`Router` 元件可讓您使用指定的路由來路由傳送至每個元件。 `Router` 元件會出現在*應用程式 razor*檔案中：
 
 ```cshtml
 <Router AppAssembly="typeof(Startup).Assembly">
@@ -47,11 +47,11 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 </Router>
 ```
 
-編譯具有 `@page` 指示詞的*razor*檔案時，會提供所產生的類別，<xref:Microsoft.AspNetCore.Mvc.RouteAttribute> 指定路由範本。
+編譯具有 `@page` 指示詞的*razor*檔案時，會提供所產生的類別 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> 指定路由範本。
 
 在執行時間，`RouteView` 元件：
 
-* 接收來自 `Router` 的 `RouteData`，以及任何所需的參數。
+* 接收來自 `Router` 的 `RouteData` 以及任何想要的參數。
 * 使用指定的參數，以配置（或選擇性的預設版面配置）呈現指定的元件。
 
 您可以選擇性地指定具有版面配置類別的 `DefaultLayout` 參數，以用於未指定版面配置的元件。 預設 Blazor 範本會指定 `MainLayout` 元件。 *MainLayout*是在範本專案的*共用*資料夾中。 如需版面配置的詳細資訊，請參閱 <xref:blazor/layouts>。
@@ -61,13 +61,13 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 > [!IMPORTANT]
-> 為了讓 Url 正確解析，應用程式必須在其*wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host*檔（Blazor 伺服器）中包含 `<base>` 標記，並在 `href` 屬性（`<base href="/">`）中指定應用程式基底路徑。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/index#app-base-path>。
+> 為了讓 Url 正確解析，應用程式必須在其*wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host*檔（Blazor 伺服器）中包含 `<base>` 標記，並在 `href` 屬性（`<base href="/">`）中指定應用程式基底路徑. 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/index#app-base-path>。
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>在找不到內容時提供自訂內容
 
 如果找不到所要求路由的內容，`Router` 元件可讓應用程式指定自訂內容。
 
-在*應用程式的 razor*檔案中，于 `Router` 元件的 `NotFound` 範本參數中設定自訂內容：
+在*應用程式 razor*檔案中，于 `Router` 元件的 `NotFound` 範本參數中設定自訂內容：
 
 ```cshtml
 <Router AppAssembly="typeof(Startup).Assembly">
@@ -85,7 +85,7 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 
 ## <a name="route-to-components-from-multiple-assemblies"></a>從多個元件路由至元件
 
-使用 `AdditionalAssemblies` 參數，指定搜尋可路由的元件時，要考慮的 `Router` 元件的其他元件。 除了 `AppAssembly` 指定的元件以外，還會考慮指定的元件。 在下列範例中，`Component1` 是在參考的類別庫中定義的可路由元件。 下列 `AdditionalAssemblies` 範例會導致 `Component1` 的路由支援：
+使用 `AdditionalAssemblies` 參數來指定搜尋可路由的元件時，要考慮的 `Router` 元件的其他元件。 除了 `AppAssembly`指定的元件以外，還會考慮指定的元件。 在下列範例中，`Component1` 是在參考的類別庫中定義的可路由元件。 下列 `AdditionalAssemblies` 範例會導致 `Component1` 的路由支援：
 
 ```cshtml
 <Router
@@ -119,20 +119,20 @@ ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個
 | 條件約束 | 範例           | 範例相符項目                                                                  | 非變異值<br>文化特性<br>比對 |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
 | `bool`     | `{active:bool}`   | `true`、 `FALSE`                                                                  | 否                               |
-| `datetime` | `{dob:datetime}`  | `2016-12-31`、 `2016-12-31 7:32pm`                                                | [是]                              |
-| `decimal`  | `{price:decimal}` | `49.99`、 `-1,000.01`                                                             | [是]                              |
-| `double`   | `{weight:double}` | `1.234`、 `-1,001.01e8`                                                           | [是]                              |
-| `float`    | `{weight:float}`  | `1.234`、 `-1,001.01e8`                                                           | [是]                              |
+| `datetime` | `{dob:datetime}`  | `2016-12-31`、 `2016-12-31 7:32pm`                                                | 是                              |
+| `decimal`  | `{price:decimal}` | `49.99`、 `-1,000.01`                                                             | 是                              |
+| `double`   | `{weight:double}` | `1.234`、 `-1,001.01e8`                                                           | 是                              |
+| `float`    | `{weight:float}`  | `1.234`、 `-1,001.01e8`                                                           | 是                              |
 | `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`、 `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 否                               |
-| `int`      | `{id:int}`        | `123456789`、 `-123456789`                                                        | [是]                              |
-| `long`     | `{ticks:long}`    | `123456789`、 `-123456789`                                                        | [是]                              |
+| `int`      | `{id:int}`        | `123456789`、 `-123456789`                                                        | 是                              |
+| `long`     | `{ticks:long}`    | `123456789`、 `-123456789`                                                        | 是                              |
 
 > [!WARNING]
 > 確認 URL 可以轉換成 CLR 類型的路由條件約束 (例如 `int` 或 `DateTime`) 一律使用不因國別而異的文化特性。 這些條件約束假設 URL 不可當地語系化。
 
 ### <a name="routing-with-urls-that-contain-dots"></a>包含點的 Url 路由
 
-在 Blazor 伺服器應用程式中， *_Host*中的預設路由是 `/` （`@page "/"`）。 包含點（`.`）的要求 URL 與預設路由不相符，因為 URL 會顯示要求檔案。 Blazor 應用程式針對不存在的靜態檔案傳回*404-找不到*回應。 若要使用包含點的路由，請使用下列路由範本來設定 *_Host* ：
+在 Blazor 伺服器應用程式中， *_Host*中的預設路由是 `/` （`@page "/"`）。 包含點（`.`）的要求 URL 不符合預設路由，因為 URL 會顯示要求檔案。 Blazor 應用程式針對不存在的靜態檔案傳回*404-找不到*回應。 若要使用包含點的路由，請使用下列路由範本來設定 *_Host* ：
 
 ```cshtml
 @page "/{**path}"
@@ -140,7 +140,7 @@ ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個
 
 `"/{**path}"` 範本包含：
 
-* 雙星號*catch-all*語法（`**`）可跨多個資料夾界限捕捉路徑，而不需要編碼正斜線（`/`）。
+* 雙星號的*catch-all*語法（`**`），可跨多個資料夾界限捕捉路徑，而不需要編碼正斜線（`/`）。
 * `path` 路由參數名稱。
 
 如需詳細資訊，請參閱<xref:fundamentals/routing>。
@@ -155,12 +155,12 @@ ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個
 
 有兩個 `NavLinkMatch` 選項可供您指派給 `<NavLink>` 元素的 `Match` 屬性：
 
-* `NavLinkMatch.All` &ndash; 當 `NavLink` 符合整個目前的 URL 時，其為作用中狀態。
-* `NavLinkMatch.Prefix` （*預設值*） &ndash; 當 `NavLink` 符合目前 URL 的任何前置詞時，它就會處於作用中狀態。
+* `NavLinkMatch.All` &ndash; 當它符合整個目前的 URL 時，`NavLink` 為作用中。
+* `NavLinkMatch.Prefix` （*預設值*） &ndash; 當它符合目前 URL 的任何前置詞時，`NavLink` 為作用中。
 
 在上述範例中，Home `NavLink` `href=""` 符合 home URL，而且只會在應用程式的預設基底路徑 URL （例如 `https://localhost:5001/`）收到 `active` 的 CSS 類別。 第二個 `NavLink` 會在使用者造訪具有 `MyComponent` 前置詞的任何 URL 時收到 `active` 類別（例如 `https://localhost:5001/MyComponent` 和 `https://localhost:5001/MyComponent/AnotherSegment`）。
 
-其他 `NavLink` 元件屬性會傳遞至呈現的錨點標記。 在下列範例中，`NavLink` 元件包含 `target` 屬性：
+額外的 `NavLink` 元件屬性會傳遞至呈現的錨點標記。 在下列範例中，`NavLink` 元件包含 `target` 屬性：
 
 ```cshtml
 <NavLink href="my-page" target="_blank">My page</NavLink>
@@ -183,7 +183,7 @@ ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個
 | `NavigateTo` | 導覽至指定的 URI。 如果 `forceLoad` 是 `true`：<ul><li>已略過用戶端路由。</li><li>瀏覽器會強制從伺服器載入新頁面，無論 URI 是否通常由用戶端路由器處理。</li></ul> |
 | `LocationChanged` | 導覽位置變更時引發的事件。 |
 | `ToAbsoluteUri` | 將相對 URI 轉換為絕對 URI。 |
-| `ToBaseRelativePath` | 給定基底 URI （例如，先前由 `GetBaseUri` 傳回的 URI），會將絕對 URI 轉換成相對於基底 URI 前置詞的 URI。 |
+| `ToBaseRelativePath` | 假設基底 URI （例如先前由 `GetBaseUri` 所傳回的 URI），會將絕對 URI 轉換成相對於基底 URI 前置詞的 URI。 |
 
 下列元件會在選取按鈕時，流覽至應用程式的 `Counter` 元件：
 

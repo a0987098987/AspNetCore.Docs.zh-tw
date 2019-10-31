@@ -5,14 +5,14 @@ description: 了解 Kestrel，這是 ASP.NET Core 的跨平台網頁伺服器。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 10/29/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 5565011f6531ef5e95eb02f310e7107f9ed547b2
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: beaf6ac49359adfdc2dc24221eab04cc853646a9
+ms.sourcegitcommit: de0fc77487a4d342bcc30965ec5c142d10d22c03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378872"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73143438"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -154,9 +154,9 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 
 請使用下列**其中一**種方法：
 
-* 設定 @no__t 中的 Kestrel-0：
+* 在 `Startup.ConfigureServices`中設定 Kestrel：
 
-  1. 將 `IConfiguration` 的實例插入至 @no__t 1 類別。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
+  1. 將 `IConfiguration` 的實例插入 `Startup` 類別中。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
   2. 在 `Startup.ConfigureServices` 中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
 
      ```csharp
@@ -398,7 +398,7 @@ ASP.NET Core 預設會繫結至：
 
 `KestrelServerOptions` 設定：
 
-### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （Action @ no__t-0ListenOptions >）
+### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （Action\<Listenoptions 來 >）
 
 指定組態 `Action` 以針對每個指定端點執行。 呼叫 `ConfigureEndpointDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -412,7 +412,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 });
 ```
 
-### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action @ no__t-0HttpsConnectionAdapterOptions >）
+### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action\<HttpsConnectionAdapterOptions >）
 
 指定組態 `Action` 以針對每個 HTTPS 端點執行。 呼叫 `ConfigureHttpsDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -631,6 +631,20 @@ webBuilder.ConfigureKestrel(serverOptions =>
                 return exampleCert;
             };
         });
+    });
+});
+```
+
+### <a name="connection-logging"></a>連接記錄
+
+呼叫 <xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging*>，針對連接上的位元組層級通訊發出調試層級記錄。 連線記錄有助於疑難排解低層級通訊中的問題，例如在 TLS 加密期間和 proxy 後方。 如果 `UseConnectionLogging` 放在 `UseHttps`之前，則會記錄加密的流量。 如果 `UseConnectionLogging` 放在 `UseHttps`之後，則會記錄解密的流量。
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Listen(IPAddress.Any, 8000, listenOptions =>
+    {
+        listenOptions.UseConnectionLogging();
     });
 });
 ```
@@ -1088,9 +1102,9 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 
 請使用下列**其中一**種方法：
 
-* 設定 @no__t 中的 Kestrel-0：
+* 在 `Startup.ConfigureServices`中設定 Kestrel：
 
-  1. 將 `IConfiguration` 的實例插入至 @no__t 1 類別。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
+  1. 將 `IConfiguration` 的實例插入 `Startup` 類別中。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
   2. 在 `Startup.ConfigureServices` 中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
 
      ```csharp
@@ -1345,7 +1359,7 @@ ASP.NET Core 預設會繫結至：
 
 `KestrelServerOptions` 設定：
 
-### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （Action @ no__t-0ListenOptions >）
+### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （Action\<Listenoptions 來 >）
 
 指定組態 `Action` 以針對每個指定端點執行。 呼叫 `ConfigureEndpointDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -1362,7 +1376,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action @ no__t-0HttpsConnectionAdapterOptions >）
+### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action\<HttpsConnectionAdapterOptions >）
 
 指定組態 `Action` 以針對每個 HTTPS 端點執行。 呼叫 `ConfigureHttpsDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -1595,6 +1609,20 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
                 });
             });
         });
+```
+
+### <a name="connection-logging"></a>連接記錄
+
+呼叫 <xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging*>，針對連接上的位元組層級通訊發出調試層級記錄。 連線記錄有助於疑難排解低層級通訊中的問題，例如在 TLS 加密期間和 proxy 後方。 如果 `UseConnectionLogging` 放在 `UseHttps`之前，則會記錄加密的流量。 如果 `UseConnectionLogging` 放在 `UseHttps`之後，則會記錄解密的流量。
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Listen(IPAddress.Any, 8000, listenOptions =>
+    {
+        listenOptions.UseConnectionLogging();
+    });
+});
 ```
 
 ### <a name="bind-to-a-tcp-socket"></a>繫結至 TCP 通訊端
@@ -1957,9 +1985,9 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 
 請使用下列**其中一**種方法：
 
-* 設定 @no__t 中的 Kestrel-0：
+* 在 `Startup.ConfigureServices`中設定 Kestrel：
 
-  1. 將 `IConfiguration` 的實例插入至 @no__t 1 類別。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
+  1. 將 `IConfiguration` 的實例插入 `Startup` 類別中。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
   2. 在 `Startup.ConfigureServices` 中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
 
      ```csharp
@@ -2171,7 +2199,7 @@ ASP.NET Core 預設會繫結至：
 
 `KestrelServerOptions` 設定：
 
-### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （Action @ no__t-0ListenOptions >）
+### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （Action\<Listenoptions 來 >）
 
 指定組態 `Action` 以針對每個指定端點執行。 呼叫 `ConfigureEndpointDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -2188,7 +2216,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action @ no__t-0HttpsConnectionAdapterOptions >）
+### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action\<HttpsConnectionAdapterOptions >）
 
 指定組態 `Action` 以針對每個 HTTPS 端點執行。 呼叫 `ConfigureHttpsDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -2422,6 +2450,20 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             });
         })
         .Build();
+```
+
+### <a name="connection-logging"></a>連接記錄
+
+呼叫 <xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging*>，針對連接上的位元組層級通訊發出調試層級記錄。 連線記錄有助於疑難排解低層級通訊中的問題，例如在 TLS 加密期間和 proxy 後方。 如果 `UseConnectionLogging` 放在 `UseHttps`之前，則會記錄加密的流量。 如果 `UseConnectionLogging` 放在 `UseHttps`之後，則會記錄解密的流量。
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Listen(IPAddress.Any, 8000, listenOptions =>
+    {
+        listenOptions.UseConnectionLogging();
+    });
+});
 ```
 
 ### <a name="bind-to-a-tcp-socket"></a>繫結至 TCP 通訊端

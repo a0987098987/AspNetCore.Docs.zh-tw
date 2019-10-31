@@ -5,18 +5,18 @@ description: 了解整合測試如何確保應用程式的元件在基礎結構�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/14/2019
+ms.date: 10/28/2019
 uid: test/integration-tests
-ms.openlocfilehash: c0fede8f9f46d1b10502055d8e1fe7caa48cf351
-ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
+ms.openlocfilehash: 33f3e29bc649fa65efdff0c47e54a83662005577
+ms.sourcegitcommit: de0fc77487a4d342bcc30965ec5c142d10d22c03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72779222"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73143359"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
-作者： [Luke Latham](https://github.com/guardrex)和[Steve Smith](https://ardalis.com/)
+作者： [Luke Latham](https://github.com/guardrex)、 [Javier Calvarro Nelson](https://github.com/javiercn)、 [Steve Smith](https://ardalis.com/)和[Jos van der Til](https://jvandertil.nl)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -130,8 +130,6 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 
 測試類別會實作為類別*裝置*介面（[IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)），以指示類別包含測試，並在類別中的所有測試中提供共用物件實例。
 
-### <a name="basic-test-of-app-endpoints"></a>應用程式端點的基本測試
-
 下列測試類別 `BasicTests`會使用 `WebApplicationFactory` 來啟動 SUT，並提供測試方法的[HttpClient](/dotnet/api/system.net.http.httpclient) `Get_EndpointsReturnSuccessAndCorrectContentType`。 方法會檢查回應狀態碼是否成功（狀態碼的範圍為200-299），以及是否 `text/html; charset=utf-8` 數個應用程式頁面的 `Content-Type` 標頭。
 
 [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient)會建立 `HttpClient` 的實例，其會自動遵循重新導向和處理 cookie。
@@ -139,25 +137,6 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet1)]
 
 根據預設，當啟用[GDPR 同意原則](xref:security/gdpr)時，不會在要求之間保留非必要的 cookie。 若要保留非必要的 cookie （例如 TempData 提供者所使用的 cookie），請在您的測試中將它們標示為必要。 如需將 cookie 標示為必要的指示，請參閱[基本 cookie](xref:security/gdpr#essential-cookies)。
-
-### <a name="test-a-secure-endpoint"></a>測試安全端點
-
-`BasicTests` 類別中的另一項測試會檢查安全的端點是否將未驗證的使用者重新導向至應用程式的登入頁面。
-
-在 SUT 中，[`/SecurePage`] 頁面會使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)慣例，將[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)套用至頁面。 如需詳細資訊，請參閱[Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
-
-[!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
-
-在 `Get_SecurePageRequiresAnAuthenticatedUser` 測試中， [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions)會設定為不允許重新導向，方法是將[AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect)設定為 `false`：
-
-[!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet2)]
-
-藉由不允許用戶端遵循重新導向，您可以進行下列檢查：
-
-* 您可以根據預期的 HttpStatusCode 檢查由 SUT 所傳回的狀態碼。重新導向至登入頁面（可能是[HttpStatusCode](/dotnet/api/system.net.httpstatuscode)）之後，重新[導向](/dotnet/api/system.net.httpstatuscode)結果，而不是最終狀態代碼。
-* 系統會檢查回應標頭中的 `Location` 標頭值，以確認其開頭為 `http://localhost/Identity/Account/Login`，而不是最終的登入頁面回應，其中 `Location` 標頭不存在。
-
-如需 `WebApplicationFactoryClientOptions` 的詳細資訊，請參閱[用戶端選項](#client-options)一節。
 
 ## <a name="customize-webapplicationfactory"></a>自訂 WebApplicationFactory
 
@@ -190,7 +169,7 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 
    [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet1)]
 
-   範例應用程式的用戶端設定為防止下列重新導向的 `HttpClient`。 如[測試安全端點](#test-a-secure-endpoint)一節中所述，這會允許測試檢查應用程式第一個回應的結果。 第一個回應是其中許多測試中具有 `Location` 標頭的重新導向。
+   範例應用程式的用戶端設定為防止下列重新導向的 `HttpClient`。 如稍後的模擬[驗證](#mock-authentication)一節中所述，這會允許測試檢查應用程式第一個回應的結果。 第一個回應是其中許多測試中具有 `Location` 標頭的重新導向。
 
 3. 一般測試會使用 `HttpClient` 和 helper 方法來處理要求和回應：
 
@@ -297,6 +276,50 @@ _client = _factory.CreateClient(clientOptions);
     Mr. Scarman, and time is my business.">
 ```
 
+## <a name="mock-authentication"></a>Mock 驗證
+
+`AuthTests` 類別中的測試會檢查安全的端點：
+
+* 將未驗證的使用者重新導向至應用程式的登入頁面。
+* 傳回已驗證使用者的內容。
+
+在 SUT 中，[`/SecurePage`] 頁面會使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)慣例，將[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)套用至頁面。 如需詳細資訊，請參閱[Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
+
+[!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
+
+在 `Get_SecurePageRedirectsAnUnauthenticatedUser` 測試中， [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions)會設定為不允許重新導向，方法是將[AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect)設定為 `false`：
+
+[!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet2)]
+
+藉由不允許用戶端遵循重新導向，您可以進行下列檢查：
+
+* 您可以根據預期的 HttpStatusCode 檢查由 SUT 所傳回的狀態碼。重新導向至登入頁面（可能是[HttpStatusCode](/dotnet/api/system.net.httpstatuscode)）之後，重新[導向](/dotnet/api/system.net.httpstatuscode)結果，而不是最終狀態代碼。
+* 系統會檢查回應標頭中的 `Location` 標頭值，以確認其開頭為 `http://localhost/Identity/Account/Login`，而不是最終的登入頁面回應，其中 `Location` 標頭不存在。
+
+測試應用程式可以模擬[ConfigureTestServices](/dotnet/api/microsoft.aspnetcore.testhost.webhostbuilderextensions.configuretestservices)中的 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1>，以便測試驗證和授權的層面。 最小案例會傳回[AuthenticateResult。成功](xref:Microsoft.AspNetCore.Authentication.AuthenticateResult.Success*)：
+
+[!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet4&highlight=11-18)]
+
+當驗證配置設定為時，會呼叫 `TestAuthHandler` 來驗證使用者，以 `AddAuthentication` 註冊 `ConfigureTestServices`的 `Test`：
+
+[!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet3&highlight=7-12)]
+
+如需 `WebApplicationFactoryClientOptions` 的詳細資訊，請參閱[用戶端選項](#client-options)一節。
+
+## <a name="set-the-environment"></a>設定環境
+
+根據預設，會將 SUT 的主機和應用程式環境設定為使用開發環境。 若要覆寫 SUT 的環境：
+
+* 設定 `ASPNETCORE_ENVIRONMENT` 環境變數（例如，`Staging`、`Production`或其他自訂值，例如 `Testing`）。
+* 覆寫測試應用程式中的 `CreateHostBuilder`，以讀取前面加上 `ASPNETCORE`的環境變數。
+
+```csharp
+protected override IHostBuilder CreateHostBuilder() => 
+    base.CreateHostBuilder()
+        .ConfigureHostConfiguration(
+            config => config.AddEnvironmentVariables("ASPNETCORE"));
+```
+
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>測試基礎結構如何推斷應用程式內容根路徑
 
 `WebApplicationFactory` 的函式會藉由搜尋元件上的[WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute)來推斷應用程式[內容根](xref:fundamentals/index#content-root)路徑，其中包含與 `TEntryPoint` 元件 `System.Reflection.Assembly.FullName`的索引鍵相等的整合測試。 如果找不到具有正確索引鍵的屬性，`WebApplicationFactory` 會回復為搜尋方案檔（ *.sln*），並將 `TEntryPoint` 元件名稱附加至方案目錄。 應用程式根目錄（內容根路徑）是用來探索 views 和內容檔案。
@@ -353,8 +376,9 @@ SUT 是具有下列特性的 Razor Pages 訊息系統：
 
 | 測試應用程式目錄 | 描述 |
 | ------------------ | ----------- |
-| *BasicTests* | *BasicTests.cs*包含用於路由的測試方法、透過未經驗證的使用者存取安全頁面，以及取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。 |
-| *IntegrationTests* | *IndexPageTests.cs*包含使用自訂 `WebApplicationFactory` 類別之索引頁面的整合測試。 |
+| *AuthTests* | 包含的測試方法：<ul><li>以未驗證的使用者存取安全頁面。</li><li>使用模擬 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1>，透過已驗證的使用者來存取安全頁面。</li><li>取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。</li></ul> |
+| *BasicTests* | 包含路由和內容類型的測試方法。 |
+| *IntegrationTests* | 包含使用自訂 `WebApplicationFactory` 類別之索引頁面的整合測試。 |
 | *Helper/公用程式* | <ul><li>*Utilities.cs*包含用來將測試資料植入資料庫的 `InitializeDbForTests` 方法。</li><li>*HtmlHelpers.cs*提供方法，以傳回用於測試方法的 AngleSharp `IHtmlDocument`。</li><li>*HttpClientExtensions.cs*提供 `SendAsync` 的多載，以將要求提交至 SUT。</li></ul> |
 
 測試架構為[xUnit](https://xunit.github.io/)。 整合測試會使用[AspNetCore. TestHost](/dotnet/api/microsoft.aspnetcore.testhost)進行，其中包含[TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)。 由於[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing)會使用測試封裝來設定測試主機和測試伺服器，因此 `TestHost` 和 `TestServer` 套件不需要測試應用程式的專案檔或測試中的開發人員設定中的直接套件參考相關.
@@ -477,8 +501,6 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 
 測試類別會實作為類別*裝置*介面（[IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)），以指示類別包含測試，並在類別中的所有測試中提供共用物件實例。
 
-### <a name="basic-test-of-app-endpoints"></a>應用程式端點的基本測試
-
 下列測試類別 `BasicTests`會使用 `WebApplicationFactory` 來啟動 SUT，並提供測試方法的[HttpClient](/dotnet/api/system.net.http.httpclient) `Get_EndpointsReturnSuccessAndCorrectContentType`。 方法會檢查回應狀態碼是否成功（狀態碼的範圍為200-299），以及是否 `text/html; charset=utf-8` 數個應用程式頁面的 `Content-Type` 標頭。
 
 [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient)會建立 `HttpClient` 的實例，其會自動遵循重新導向和處理 cookie。
@@ -486,25 +508,6 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet1)]
 
 根據預設，當啟用[GDPR 同意原則](xref:security/gdpr)時，不會在要求之間保留非必要的 cookie。 若要保留非必要的 cookie （例如 TempData 提供者所使用的 cookie），請在您的測試中將它們標示為必要。 如需將 cookie 標示為必要的指示，請參閱[基本 cookie](xref:security/gdpr#essential-cookies)。
-
-### <a name="test-a-secure-endpoint"></a>測試安全端點
-
-`BasicTests` 類別中的另一項測試會檢查安全的端點是否將未驗證的使用者重新導向至應用程式的登入頁面。
-
-在 SUT 中，[`/SecurePage`] 頁面會使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)慣例，將[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)套用至頁面。 如需詳細資訊，請參閱[Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
-
-[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
-
-在 `Get_SecurePageRequiresAnAuthenticatedUser` 測試中， [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions)會設定為不允許重新導向，方法是將[AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect)設定為 `false`：
-
-[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet2)]
-
-藉由不允許用戶端遵循重新導向，您可以進行下列檢查：
-
-* 您可以根據預期的 HttpStatusCode 檢查由 SUT 所傳回的狀態碼。重新導向至登入頁面（可能是[HttpStatusCode](/dotnet/api/system.net.httpstatuscode)）之後，重新[導向](/dotnet/api/system.net.httpstatuscode)結果，而不是最終狀態代碼。
-* 系統會檢查回應標頭中的 `Location` 標頭值，以確認其開頭為 `http://localhost/Identity/Account/Login`，而不是最終的登入頁面回應，其中 `Location` 標頭不存在。
-
-如需 `WebApplicationFactoryClientOptions` 的詳細資訊，請參閱[用戶端選項](#client-options)一節。
 
 ## <a name="customize-webapplicationfactory"></a>自訂 WebApplicationFactory
 
@@ -520,7 +523,7 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet1)]
 
-   範例應用程式的用戶端設定為防止下列重新導向的 `HttpClient`。 如[測試安全端點](#test-a-secure-endpoint)一節中所述，這會允許測試檢查應用程式第一個回應的結果。 第一個回應是其中許多測試中具有 `Location` 標頭的重新導向。
+   範例應用程式的用戶端設定為防止下列重新導向的 `HttpClient`。 如稍後的模擬[驗證](#mock-authentication)一節中所述，這會允許測試檢查應用程式第一個回應的結果。 第一個回應是其中許多測試中具有 `Location` 標頭的重新導向。
 
 3. 一般測試會使用 `HttpClient` 和 helper 方法來處理要求和回應：
 
@@ -627,6 +630,50 @@ _client = _factory.CreateClient(clientOptions);
     Mr. Scarman, and time is my business.">
 ```
 
+## <a name="mock-authentication"></a>Mock 驗證
+
+`AuthTests` 類別中的測試會檢查安全的端點：
+
+* 將未驗證的使用者重新導向至應用程式的登入頁面。
+* 傳回已驗證使用者的內容。
+
+在 SUT 中，[`/SecurePage`] 頁面會使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)慣例，將[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)套用至頁面。 如需詳細資訊，請參閱[Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
+
+在 `Get_SecurePageRedirectsAnUnauthenticatedUser` 測試中， [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions)會設定為不允許重新導向，方法是將[AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect)設定為 `false`：
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet2)]
+
+藉由不允許用戶端遵循重新導向，您可以進行下列檢查：
+
+* 您可以根據預期的 HttpStatusCode 檢查由 SUT 所傳回的狀態碼。重新導向至登入頁面（可能是[HttpStatusCode](/dotnet/api/system.net.httpstatuscode)）之後，重新[導向](/dotnet/api/system.net.httpstatuscode)結果，而不是最終狀態代碼。
+* 系統會檢查回應標頭中的 `Location` 標頭值，以確認其開頭為 `http://localhost/Identity/Account/Login`，而不是最終的登入頁面回應，其中 `Location` 標頭不存在。
+
+測試應用程式可以模擬[ConfigureTestServices](/dotnet/api/microsoft.aspnetcore.testhost.webhostbuilderextensions.configuretestservices)中的 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1>，以便測試驗證和授權的層面。 最小案例會傳回[AuthenticateResult。成功](xref:Microsoft.AspNetCore.Authentication.AuthenticateResult.Success*)：
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet4&highlight=11-18)]
+
+當驗證配置設定為時，會呼叫 `TestAuthHandler` 來驗證使用者，以 `AddAuthentication` 註冊 `ConfigureTestServices`的 `Test`：
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet3&highlight=7-12)]
+
+如需 `WebApplicationFactoryClientOptions` 的詳細資訊，請參閱[用戶端選項](#client-options)一節。
+
+## <a name="set-the-environment"></a>設定環境
+
+根據預設，會將 SUT 的主機和應用程式環境設定為使用開發環境。 若要覆寫 SUT 的環境：
+
+* 設定 `ASPNETCORE_ENVIRONMENT` 環境變數（例如，`Staging`、`Production`或其他自訂值，例如 `Testing`）。
+* 覆寫測試應用程式中的 `CreateHostBuilder`，以讀取前面加上 `ASPNETCORE`的環境變數。
+
+```csharp
+protected override IHostBuilder CreateHostBuilder() => 
+    base.CreateHostBuilder()
+        .ConfigureHostConfiguration(
+            config => config.AddEnvironmentVariables("ASPNETCORE"));
+```
+
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>測試基礎結構如何推斷應用程式內容根路徑
 
 `WebApplicationFactory` 的函式會藉由搜尋元件上的[WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute)來推斷應用程式[內容根](xref:fundamentals/index#content-root)路徑，其中包含與 `TEntryPoint` 元件 `System.Reflection.Assembly.FullName`的索引鍵相等的整合測試。 如果找不到具有正確索引鍵的屬性，`WebApplicationFactory` 會回復為搜尋方案檔（ *.sln*），並將 `TEntryPoint` 元件名稱附加至方案目錄。 應用程式根目錄（內容根路徑）是用來探索 views 和內容檔案。
@@ -693,8 +740,9 @@ SUT 是具有下列特性的 Razor Pages 訊息系統：
 
 | 測試應用程式目錄 | 描述 |
 | ------------------ | ----------- |
-| *BasicTests* | *BasicTests.cs*包含用於路由的測試方法、透過未經驗證的使用者存取安全頁面，以及取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。 |
-| *IntegrationTests* | *IndexPageTests.cs*包含使用自訂 `WebApplicationFactory` 類別之索引頁面的整合測試。 |
+| *AuthTests* | 包含的測試方法：<ul><li>以未驗證的使用者存取安全頁面。</li><li>使用模擬 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1>，透過已驗證的使用者來存取安全頁面。</li><li>取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。</li></ul> |
+| *BasicTests* | 包含路由和內容類型的測試方法。 |
+| *IntegrationTests* | 包含使用自訂 `WebApplicationFactory` 類別之索引頁面的整合測試。 |
 | *Helper/公用程式* | <ul><li>*Utilities.cs*包含用來將測試資料植入資料庫的 `InitializeDbForTests` 方法。</li><li>*HtmlHelpers.cs*提供方法，以傳回用於測試方法的 AngleSharp `IHtmlDocument`。</li><li>*HttpClientExtensions.cs*提供 `SendAsync` 的多載，以將要求提交至 SUT。</li></ul> |
 
 測試架構為[xUnit](https://xunit.github.io/)。 整合測試會使用[AspNetCore. TestHost](/dotnet/api/microsoft.aspnetcore.testhost)進行，其中包含[TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)。 由於[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing)會使用測試封裝來設定測試主機和測試伺服器，因此 `TestHost` 和 `TestServer` 套件不需要測試應用程式的專案檔或測試中的開發人員設定中的直接套件參考相關.
@@ -712,6 +760,6 @@ SUT 是具有下列特性的 Razor Pages 訊息系統：
 ## <a name="additional-resources"></a>其他資源
 
 * [單元測試](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
-* [Razor 頁面單元測試](xref:test/razor-pages-tests)
-* [中介軟體](xref:fundamentals/middleware/index)
-* [測試控制器](xref:mvc/controllers/testing)
+* <xref:test/razor-pages-tests>
+* <xref:fundamentals/middleware/index>
+* <xref:mvc/controllers/testing>

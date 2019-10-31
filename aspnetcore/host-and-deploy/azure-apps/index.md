@@ -1,18 +1,18 @@
 ---
 title: 將 ASP.NET Core 應用程式部署至 Azure App Service
-author: guardrex
+author: bradygaster
 description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
+ms.author: bradyg
 ms.custom: mvc
-ms.date: 10/02/2019
+ms.date: 10/11/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: bda4923adb0f9769f883ef64f7902c8650308222
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: 392868b4fc9105279f8f3b10436a9915123e7070
+ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71924894"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73190639"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -29,6 +29,8 @@ ms.locfileid: "71924894"
 在 Linux 上使用命令列建立 ASP.NET Core Web 應用程式並將其部署到 Azure App Service。
 
 如需 Azure App 服務上可用的 ASP.NET Core 版本，請參閱[App Service 儀表板上的 ASP.NET Core](https://aspnetcoreon.azurewebsites.net/) 。
+
+訂閱[App Service 公告](https://github.com/Azure/app-service-announcements/)存放庫並監視問題。 App Service 小組會定期張貼傳入 App Service 的公告和案例。
 
 若要閱讀下列文章，請參閱 ASP.NET Core 文件：
 
@@ -49,7 +51,7 @@ ms.locfileid: "71924894"
 
 ## <a name="application-configuration"></a>應用程式組態
 
-### <a name="platform"></a>平台
+### <a name="platform"></a>Platform
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -63,9 +65,9 @@ Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執�
 
 ::: moniker-end
 
-如需 .NET Core 架構元件與發佈方法的詳細資訊，例如 .NET Core 執行階段和 .NET Core SDK 的相關資訊，請參閱[關於 .NET Core：組合](/dotnet/core/about#composition)。
+如需 .NET Core framework 元件和散發方法的詳細資訊，例如 .NET Core 執行時間和 .NET Core SDK 的相關資訊，請參閱[關於 .Net core：組合](/dotnet/core/about#composition)。
 
-### <a name="packages"></a>Packages
+### <a name="packages"></a>package
 
 包含下列 NuGet 套件，為部署至 Azure App Service 的應用程式提供自動記錄功能：
 
@@ -141,24 +143,48 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 如需詳細資訊，請參閱<xref:security/data-protection/implementation/key-storage-providers>。
 <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
-<!-- revert this after 3.0 supported
-## Deploy ASP.NET Core preview release to Azure App Service
 
-Use one of the following approaches if the app relies on a preview release of .NET Core:
-
-* [Install the preview site extension](#install-the-preview-site-extension).
-* [Deploy a self-contained preview app](#deploy-a-self-contained-preview-app).
-* [Use Docker with Web Apps for containers](#use-docker-with-web-apps-for-containers).
--->
 ## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>將 ASP.NET Core 3.0 部署至 Azure App Service
 
-我們希望 Azure App Service 很快就會提供 ASP.NET Core 3.0。
+Azure App Service 支援 ASP.NET Core 3.0。 若要部署 .net Core 版本比 .NET Core 3.0 更早的預覽版本，請使用下列其中一種技術。 當執行時間可用但 SDK 尚未安裝在 Azure App Service 上時，也會使用這些方法。
 
-如果應用程式依賴 .NET Core 3.0，請使用下列其中一種方法：
-
-* [安裝預覽網站延伸模組](#install-the-preview-site-extension)。
+* [使用 Azure Pipelines 指定 .NET Core SDK 版本](#specify-the-net-core-sdk-version-using-azure-pipelines)
 * [部署獨立式預覽應用程式](#deploy-a-self-contained-preview-app)。
 * [將具有 Web Apps 的 Docker 用於容器](#use-docker-with-web-apps-for-containers)。
+* [安裝預覽網站延伸模組](#install-the-preview-site-extension)。
+
+### <a name="specify-the-net-core-sdk-version-using-azure-pipelines"></a>使用 Azure Pipelines 指定 .NET Core SDK 版本
+
+使用[AZURE APP SERVICE CI/CD 案例](/azure/app-service/deploy-continuous-deployment)來設定具有 Azure DevOps 的持續整合組建。 建立 Azure DevOps 組建之後，選擇性地將組建設定為使用特定的 SDK 版本。 
+
+#### <a name="specify-the-net-core-sdk-version"></a>指定 .NET Core SDK 版本
+
+使用 App Service 部署中心建立 Azure DevOps 組建時，預設的組建管線會包含 `Restore`、`Build`、`Test`和 `Publish`的步驟。 若要指定 SDK 版本，請選取 [代理程式作業] 清單中的 [新增] **（+）** 按鈕，以新增新的步驟。 在搜尋列中搜尋 **.NET Core SDK** 。 
+
+![新增 .NET Core SDK 步驟](index/add-sdk-step.png)
+
+將步驟移至組建中的第一個位置，使其後面的步驟使用指定的 .NET Core SDK 版本。 指定 .NET Core SDK 的版本。 在此範例中，SDK 設定為 `3.0.100`。
+
+![完成的 SDK 步驟](index/sdk-step-first-place.png)
+
+若要發佈[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)，請在 `Publish` 步驟中設定 SCD，並提供[執行時間識別碼（RID）](/dotnet/core/rid-catalog)。
+
+![獨立發行](index/self-contained.png)
+
+### <a name="deploy-a-self-contained-preview-app"></a>部署獨立式預覽應用程式
+
+以預覽執行階段為目標的[獨立式部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) 會在部署中包含預覽執行階段。
+
+部署獨立式應用程式時：
+
+* Azure App Service 中的網站不需要[預覽網站延伸模組](#install-the-preview-site-extension)。
+* 應用程式發佈必須遵循不同於針對 [Framework 相依部署 (FDD)](/dotnet/core/deploying#framework-dependent-deployments-fdd) 發佈時使用的方法。
+
+請遵循[部署獨立式應用程式](#deploy-the-app-self-contained)一節。
+
+### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器
+
+[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) 包含最新的預覽 Docker 映像。 這些映像可用作為基底映像。 請使用映像，並以一般的方式將其部署至容器的 Web 應用程式。
 
 ### <a name="install-the-preview-site-extension"></a>安裝預覽網站延伸模組
 
@@ -205,21 +231,6 @@ Use one of the following approaches if the app relies on a preview release of .N
 如果您使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站延伸模組新增至 Web 應用程式。 例如:
 
 [!code-json[](index/sample/arm.json?highlight=2)]
-
-### <a name="deploy-a-self-contained-preview-app"></a>部署獨立式預覽應用程式
-
-以預覽執行階段為目標的[獨立式部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) 會在部署中包含預覽執行階段。
-
-部署獨立式應用程式時：
-
-* Azure App Service 中的網站不需要[預覽網站延伸模組](#install-the-preview-site-extension)。
-* 應用程式發佈必須遵循不同於針對 [Framework 相依部署 (FDD)](/dotnet/core/deploying#framework-dependent-deployments-fdd) 發佈時使用的方法。
-
-請遵循[部署獨立式應用程式](#deploy-the-app-self-contained)一節。
-
-### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器
-
-[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) 包含最新的預覽 Docker 映像。 這些映像可用作為基底映像。 請使用映像，並以一般的方式將其部署至容器的 Web 應用程式。
 
 ## <a name="publish-and-deploy-the-app"></a>發佈及部署應用程式
 
@@ -301,7 +312,7 @@ Use one of the following approaches if the app relies on a preview release of .N
 
 ## <a name="protocol-settings-https"></a>通訊協定設定 (HTTPS)
 
-安全通訊協定繫結可讓您指定透過 HTTPS 回應要求時要使用的憑證。 繫結需要針對特定主機名稱簽發的有效私密憑證 ( *.pfx*)。 如需詳細資訊，請參閱[教學課程：將現有的自訂 SSL 憑證繫結至 Azure App Service](/azure/app-service/app-service-web-tutorial-custom-ssl)。
+安全通訊協定繫結可讓您指定透過 HTTPS 回應要求時要使用的憑證。 繫結需要針對特定主機名稱簽發的有效私密憑證 ( *.pfx*)。 如需詳細資訊，請參閱[教學課程：將現有的自訂 SSL 憑證系結至 Azure App Service](/azure/app-service/app-service-web-tutorial-custom-ssl)。
 
 ## <a name="transform-webconfig"></a>轉換 web.config
 

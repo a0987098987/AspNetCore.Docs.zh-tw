@@ -7,18 +7,20 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: spa/react
-ms.openlocfilehash: 0e61c5b3e31a0b050d356b8f8e16306dc1e2a7f3
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: bbe5328bfa5b4187989a00c3c94e98dabc5d032a
+ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080420"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73190525"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>React 專案範本與 ASP.NET Core 搭配使用
 
 更新的 React 專案範本可利用 React 和 [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA) 慣例來實作功能多樣的用戶端使用者介面 (UI)，適合作為 ASP.NET Core 應用程式入門。
 
 這個範本相當於建立一個 ASP.NET Core 專案作為 API 後端，以及建立一個標準 CRA React 專案作為 UI，但是可以將這兩個專案裝載至單一應用程式專案中，這樣便可視為一個整體進行建置與發行。
+
+[回應] 專案範本不是用於伺服器端轉譯（SSR）。 針對具有回應和 node.js 的 SSR，請考慮使用[Next .js](https://github.com/zeit/next.js/)或[Razzle](https://github.com/jaredpalmer/razzle)。
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
@@ -59,7 +61,7 @@ cd my-new-app
 
 ## <a name="install-npm-packages"></a>安裝 npm 套件
 
-若要安裝協力廠商 npm 套件，請在 *ClientApp* 子目錄中使用命令提示字元。 例如：
+若要安裝協力廠商 npm 套件，請在 *ClientApp* 子目錄中使用命令提示字元。 例如:
 
 ```console
 cd ClientApp

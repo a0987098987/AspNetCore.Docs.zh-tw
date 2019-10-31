@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: fundamentals/routing
-ms.openlocfilehash: c8037d79c79c5b7eb3b99d9724aa3e5361f92b8c
-ms.sourcegitcommit: 5d25a7f22c50ca6fdd0f8ecd8e525822e1b35b7a
+ms.openlocfilehash: 8b4da4e1e262ec82225413d0338b3492d0b5e152
+ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2019
-ms.locfileid: "71482036"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73190512"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -441,7 +441,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 注意 |
+| constraint (條件約束) | 範例 | 範例相符項目 | 備註 |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`、 `-123456789` | 符合任何整數 |
 | `bool` | `{active:bool}` | `true`、 `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
@@ -487,10 +487,10 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 | 運算式   | String    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | mz        | 是   | 符合運算式    |
-| `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
+| `[a-z]{2}`   | hello     | [是]   | 子字串相符項目     |
+| `[a-z]{2}`   | 123abc456 | [是]   | 子字串相符項目     |
+| `[a-z]{2}`   | mz        | [是]   | 符合運算式    |
+| `[a-z]{2}`   | MZ        | [是]   | 不區分大小寫    |
 | `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
 | `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 
@@ -591,6 +591,81 @@ routes.MapRoute("blog_route", "blog/{*slug}",
 複雜區段 (例如，`[Route("/x{token}y")]`) 會透過以非窮盡的方式，由右至左比對常值來處理。 請參閱[此程式碼](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293)以了解如何比對複雜區段的詳細解釋。 [程式法範例](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293)不是由 ASP.NET Core 使用，但它提供一個好的複雜區段解釋。
 <!-- While that code is no longer used by ASP.NET Core for complex segment matching, it provides a good match to the current algorithm. The [current code](https://github.com/aspnet/AspNetCore/blob/91514c9af7e0f4c44029b51f05a01c6fe4c96e4c/src/Http/Routing/src/Matching/DfaMatcherBuilder.cs#L227-L244) is too abstracted from matching to be useful for understanding complex segment matching.
 -->
+
+## <a name="configuring-endpoint-metadata"></a>設定端點中繼資料
+
+下列連結提供設定端點中繼資料的相關資訊：
+
+* [使用端點路由來啟用 Cors](xref:security/cors#enable-cors-with-endpoint-routing)
+* 使用自訂 `[MinimumAgeAuthorize]` 屬性的[IAuthorizationPolicyProvider 範例](https://github.com/aspnet/AspNetCore/tree/release/3.0/src/Security/samples/CustomPolicyProvider)
+* [使用 [授權] 屬性測試驗證](xref:security/authentication/identity#test-identity)
+* <xref:Microsoft.AspNetCore.Builder.AuthorizationEndpointConventionBuilderExtensions.RequireAuthorization*>
+* [選取具有 [授權] 屬性的配置](xref:security/authorization/limitingidentitybyscheme#selecting-the-scheme-with-the-authorize-attribute)
+* [使用 [授權] 屬性套用原則](xref:security/authorization/policies#applying-policies-to-mvc-controllers)
+* <xref:security/authorization/roles>
+
+<a name="hostmatch"></a>
+
+## <a name="host-matching-in-routes-with-requirehost"></a>搭配 RequireHost 的路由中的主機比對
+
+`RequireHost` 將條件約束套用至需要指定之主機的路由。 `RequireHost` 或 `[Host]` 參數可以是：
+
+* 主機： `www.domain.com` （符合任何埠的 `www.domain.com`）
+* 具有萬用字元的主機： `*.domain.com` （符合任何埠上的 `www.domain.com`、`subdomain.domain.com`或 `www.subdomain.domain.com`）
+* 埠： `*:5000` （符合任何主機的通訊埠5000）
+* 主機和埠： `www.domain.com:5000`、`*.domain.com:5000` （符合主機和埠）
+
+您可以使用 `RequireHost` 或 `[Host]`來指定多個參數。 條件約束會符合任何參數的有效主機。 例如，`[Host("domain.com", "*.domain.com")]` 會符合 `domain.com`、`www.domain.com`或 `subdomain.domain.com`。
+
+下列程式碼會使用 `RequireHost` 來要求路由上指定的主機：
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    app.UseRouting();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapGet("/", context => context.Response.WriteAsync("Hi Contoso!"))
+            .RequireHost("contoso.com");
+        endpoints.MapGet("/", context => context.Response.WriteAsync("Hi AdventureWorks!"))
+            .RequireHost("adventure-works.com");
+        endpoints.MapHealthChecks("/healthz").RequireHost("*:8080");
+    });
+}
+```
+
+下列程式碼會使用 `[Host]` 屬性來要求控制器上的指定主機：
+
+```csharp
+[Host("contoso.com", "adventure-works.com")]
+public class HomeController : Controller
+{
+    private readonly ILogger<HomeController> _logger;
+
+    public HomeController(ILogger<HomeController> logger)
+    {
+        _logger = logger;
+    }
+
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    [Host("example.com:8080")]
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+}
+```
+
+當 `[Host]` 屬性同時套用至控制器和動作方法時：
+
+* 會使用動作上的屬性。
+* 已忽略控制器屬性。
 
 ::: moniker-end
 
@@ -1027,7 +1102,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 注意 |
+| constraint (條件約束) | 範例 | 範例相符項目 | 備註 |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`、 `-123456789` | 符合任何整數 |
 | `bool` | `{active:bool}` | `true`、 `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
@@ -1073,10 +1148,10 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 | 運算式   | String    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | mz        | 是   | 符合運算式    |
-| `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
+| `[a-z]{2}`   | hello     | [是]   | 子字串相符項目     |
+| `[a-z]{2}`   | 123abc456 | [是]   | 子字串相符項目     |
+| `[a-z]{2}`   | mz        | [是]   | 符合運算式    |
+| `[a-z]{2}`   | MZ        | [是]   | 不區分大小寫    |
 | `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
 | `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 
@@ -1481,7 +1556,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 注意 |
+| constraint (條件約束) | 範例 | 範例相符項目 | 備註 |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`、 `-123456789` | 符合任何整數 |
 | `bool` | `{active:bool}` | `true`、 `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
@@ -1527,10 +1602,10 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 | 運算式   | String    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | mz        | 是   | 符合運算式    |
-| `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
+| `[a-z]{2}`   | hello     | [是]   | 子字串相符項目     |
+| `[a-z]{2}`   | 123abc456 | [是]   | 子字串相符項目     |
+| `[a-z]{2}`   | mz        | [是]   | 符合運算式    |
+| `[a-z]{2}`   | MZ        | [是]   | 不區分大小寫    |
 | `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
 | `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 

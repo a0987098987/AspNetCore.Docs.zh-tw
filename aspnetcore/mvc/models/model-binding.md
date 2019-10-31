@@ -6,12 +6,12 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 05/31/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: 298e305cf918117ec2d313060a7420a1e721a365
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: aeb2da7e11df1eab5a17e2ae0a3971420c9383b4
+ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975301"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73190603"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core 中的資料繫結
 
@@ -120,7 +120,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 ### <a name="additional-sources"></a>其他來源
 
-來源資料由「值提供者」  提供給模型繫結系統。 您可以撰寫並註冊自訂值提供者，其從其他來源取得模型繫結資料。 例如，您可能想要 Cookie 或工作階段狀態的資料。 從新來源取得資料：
+來源資料由「值提供者」提供給模型繫結系統。 您可以撰寫並註冊自訂值提供者，其從其他來源取得模型繫結資料。 例如，您可能想要 Cookie 或工作階段狀態的資料。 從新來源取得資料：
 
 * 建立會實作 `IValueProvider` 的類別。
 * 建立會實作 `IValueProviderFactory` 的類別。
@@ -155,7 +155,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 [!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Create.cshtml.cs?name=snippet_HandleMBError&highlight=3-6)]
 
-用戶端驗證會攔截大部分不正確的資料，否則會被提交至 Razor Pages 表單。 此驗證會讓您更難觸發上述醒目提示的程式碼。 範例應用程式包含 [Submit with Invalid Date] \(以無效日期送出\)  按鈕，將不正確的資料放入 [雇用日期]  欄位並提交表單。 此按鈕會顯示當資料轉換錯誤發生時，重新顯示頁面的程式碼如何運作。
+用戶端驗證會攔截大部分不正確的資料，否則會被提交至 Razor Pages 表單。 此驗證會讓您更難觸發上述醒目提示的程式碼。 範例應用程式包含 [Submit with Invalid Date] \(以無效日期送出\) 按鈕，將不正確的資料放入 [雇用日期] 欄位並提交表單。 此按鈕會顯示當資料轉換錯誤發生時，重新顯示頁面的程式碼如何運作。
 
 當上述程式碼重新顯示頁面時，無效的輸入不會顯示在表單欄位中。 這是因為模型屬性已設為 null 或預設值。 無效的輸入確實會出現在錯誤訊息中。 但是，如果您想要在表單欄位中重新顯示不正確的資料，請考慮讓模型屬性成為字串，以手動方式執行資料轉換。
 
@@ -165,7 +165,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 模型繫結器可將來源字串轉換成的簡單型別包括：
 
-* [Boolean](xref:System.ComponentModel.BooleanConverter)
+* [布林值](xref:System.ComponentModel.BooleanConverter)
 * [Byte](xref:System.ComponentModel.ByteConverter)、[SByte](xref:System.ComponentModel.SByteConverter)
 * [Char](xref:System.ComponentModel.CharConverter)
 * [DateTime](xref:System.ComponentModel.DateTimeConverter)
@@ -179,7 +179,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter)、[UInt32](xref:System.ComponentModel.UInt32Converter)、[UInt64](xref:System.ComponentModel.UInt64Converter)
 * [Uri](xref:System.UriTypeConverter)
-* [Version](xref:System.ComponentModel.VersionConverter)
+* [版本](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>複雜類型
 
@@ -275,11 +275,11 @@ public class Instructor
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-`[Bind]` 屬性可用來防止「建立」  案例中的大量指派。 它在編輯案例中運作不良，因為排除的屬性都設定為 null 或預設值，而非保持不變。 建議使用檢視模型而非 `[Bind]` 屬性來防禦大量指派。 如需詳細資訊，請參閱[關於大量指派的安全性注意事項](xref:data/ef-mvc/crud#security-note-about-overposting)。
+`[Bind]` 屬性可用來防止「建立」案例中的大量指派。 它在編輯案例中運作不良，因為排除的屬性都設定為 null 或預設值，而非保持不變。 建議使用檢視模型而非 `[Bind]` 屬性來防禦大量指派。 如需詳細資訊，請參閱[關於大量指派的安全性注意事項](xref:data/ef-mvc/crud#security-note-about-overposting)。
 
 ## <a name="collections"></a>集合
 
-針對簡單型別集合的目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如：
+針對簡單型別集合的目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如:
 
 * 假設要繫結的參數是名為 `selectedCourses` 的陣列：
 
@@ -324,7 +324,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 ## <a name="dictionaries"></a>字典
 
-針對 `Dictionary` 目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如：
+針對 `Dictionary` 目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如:
 
 * 假設目標參數是名為 `selectedCourses` 的 `Dictionary<int, string>`：
 
@@ -374,7 +374,7 @@ HTTP 要求包含上傳的檔案。  也支援多個檔案的 `IEnumerable<IForm
 
 ## <a name="input-formatters"></a>輸入格式器
 
-要求本文中的資料可以是 JSON、XML 或某些其他格式。 模型繫結會使用設定處理特定內容類型的「輸入格式器」  ，來剖析此資料。 根據預設，ASP.NET Core 包含 JSON 型輸入格式器以處理 JSON 資料。 您可以新增其他內容類型的其他格式器。
+要求本文中的資料可以是 JSON、XML 或某些其他格式。 模型繫結會使用設定處理特定內容類型的「輸入格式器」，來剖析此資料。 根據預設，ASP.NET Core 包含 JSON 型輸入格式器以處理 JSON 資料。 您可以新增其他內容類型的其他格式器。
 
 ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute) 屬性為基礎的輸入格式器。 若無任何屬性，則它會使用 [Content-Type 標頭](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html)。
 
@@ -394,7 +394,7 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
   public ActionResult<Pet> Create(Pet pet)
   ```
 
-  如需詳細資訊，請參閱 [XML 序列化簡介](https://docs.microsoft.com/en-us/dotnet/standard/serialization/introducing-xml-serialization)。
+  如需詳細資訊，請參閱 [XML 序列化簡介](/dotnet/standard/serialization/introducing-xml-serialization)。
 
 ## <a name="exclude-specified-types-from-model-binding"></a>排除模型繫結中的指定類型
 

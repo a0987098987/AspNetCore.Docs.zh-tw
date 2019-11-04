@@ -29,7 +29,7 @@ dotnet tool install -g dotnet-grpc
 
 ## <a name="add-references"></a>新增參考
 
-`dotnet-grpc` 可用來將 Protobuf 參考當做 `<Protobuf />` 專案新增至 *.csproj*檔案：
+`dotnet-grpc` 可以用來將 Protobuf 參考新增至 *.csproj* 檔案中的 `<Protobuf />` 位置：
 
 ```xml
 <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />

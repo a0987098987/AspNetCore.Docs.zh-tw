@@ -6,14 +6,14 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 10/10/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 61324cdd5b574ea8a12a1be5846a25c311ab4499
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 0da5a4cf0d9cc15fee6417d143cfc9e9f1e4509c
+ms.sourcegitcommit: 9e85c2562df5e108d7933635c830297f484bb775
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259676"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73463060"
 ---
-# <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端與伺服器
+# <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端和伺服器
 
 作者：[John Luo](https://github.com/juntaoluo)
 
@@ -30,7 +30,7 @@ ms.locfileid: "72259676"
 > * 建立 gRPC 用戶端。
 > * 利用 gRPC Greeter 服務來測試 gRPC 用戶端。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -75,7 +75,7 @@ ms.locfileid: "72259676"
   * `dotnet new` 命令會在 [GrpcGreeter] 資料夾中建立一個新的 gRPC 服務。
   * `code` 命令會在新的 Visual Studio Code 執行個體中開啟 [GrpcGreeter] 資料夾。
 
-  對話方塊隨即顯示，並指出 **'GrpcGreeter' 中遺漏了建置和偵錯的必要資產。新增它們嗎？**
+  此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' GrpcGreeter ' 中遺漏了 debug。要新增它們嗎？**
 * 選取 [是]。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
@@ -91,7 +91,7 @@ cd GrpcGreeter
 
 ### <a name="open-the-project"></a>開啟專案
 
-從 Visual Studio 選取 [**檔案 @no__t-** 1] [**開啟**]，然後選取*GrpcGreeter .csproj*檔案。
+從 Visual Studio 選取 [**檔案** > **開啟**]，然後選取*GrpcGreeter .csproj*檔案。
 
 ---
 
@@ -134,7 +134,7 @@ info: Microsoft.Hosting.Lifetime[0]
 *GrpcGreeter* 專案檔：
 
 * *greet.proto* &ndash; *Protos/greet.proto* 檔案會定義 `Greeter` gRPC，並會用來產生 gRPC 伺服器資產。 如需詳細資訊，請參閱 [gRPC 簡介](xref:grpc/index)。
-* *Services* 資料夾：包含 `Greeter` 服務的實作。
+* *Services*資料夾：包含 `Greeter` 服務的執行。
 * *appSettings.json* &ndash; 包含設定資料，例如 Kestrel 所使用的通訊協定。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
 * *Program.cs* &ndash; 包含 gRPC 服務的進入點。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
 * *Startup.cs* &ndash; 包含設定應用程式行為的程式碼。 如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
@@ -255,8 +255,8 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
 Greeter 用戶端建立者：
 
-* 具現化包含建立 gRPC 服務連線資訊的 `HttpClient`。
-* 使用 `HttpClient` 來建立 gRPC 通道和 Greeter 用戶端：
+* 具現化包含建立與 gRPC 服務連線資訊的 `GrpcChannel`。
+* 使用 `GrpcChannel` 建構 Greeter 用戶端：
 
 [!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=3-5)]
 

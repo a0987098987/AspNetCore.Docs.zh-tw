@@ -5,14 +5,14 @@ description: 如何使用模型繫結和資料流在 ASP.NET Core MVC 上傳檔�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/02/2019
+ms.date: 10/31/2019
 uid: mvc/models/file-uploads
-ms.openlocfilehash: de8bfee22e39dfc5a6ed254cf0555887891d4590
-ms.sourcegitcommit: d81912782a8b0bd164f30a516ad80f8defb5d020
+ms.openlocfilehash: 04e7533aa190a4875d3f66e8665fec16abec48b3
+ms.sourcegitcommit: 9e85c2562df5e108d7933635c830297f484bb775
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72179311"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73462948"
 ---
 # <a name="upload-files-in-aspnet-core"></a>上傳 ASP.NET Core 中的檔案
 
@@ -34,17 +34,16 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 
 降低成功攻擊的可能性的安全性步驟如下：
 
-* 將檔案上傳到系統上的專用檔案上傳區域，最好是在非系統磁片磁碟機上。 使用專用位置可讓您更輕鬆地對上傳的檔案強加安全性限制。 停用檔案上傳位置的執行許可權。 &dagger;
-* 絕對不要將上傳的檔案保存在與應用程式相同的目錄樹狀結構中。 &dagger;
-* 使用應用程式所決定的安全檔案名。 請勿使用使用者所提供的檔案名或上傳檔案的不受信任檔案名。 &dagger;若要在 UI 或記錄訊息中顯示不受信任的檔案名，請以 HTML 編碼值。
-* 只允許一組特定的已核准副檔名。 &dagger;
-* 請檢查檔案格式簽章，以防止使用者上傳回報偽裝檔。 &dagger;例如，不允許使用者上傳副檔名為 *.txt*的 *.exe*檔案。
-* 確認用戶端檢查也會在伺服器上執行。 &dagger;用戶端檢查很容易規避。
-* 請檢查上傳檔案的大小，並防止上傳大於預期的上傳。 &dagger;
+* 將檔案上傳到專用的檔案上傳區域，最好是在非系統磁片磁碟機上。 專用位置可讓您更輕鬆地對上傳的檔案強加安全性限制。 停用檔案上傳位置的 execute 許可權。&dagger;
+* 請勿將上傳的**檔案保存在**與應用程式相同的目錄樹狀結構中。&dagger;
+* 使用應用程式所決定的安全檔案名。 請勿使用使用者所提供的檔案名或上傳檔案的不受信任檔案名。&dagger; HTML 在顯示不受信任的檔案名時進行編碼。 例如，記錄檔案名或在 UI 中顯示（Razor 會自動以 HTML 編碼輸出）。
+* 僅允許應用程式設計規格的已核准副檔名。&dagger; <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
+* 確認用戶端檢查是在伺服器上執行。&dagger; 用戶端檢查很容易規避。
+* 檢查上傳檔案的大小。 設定最大大小限制以防止大量上傳。&dagger;
 * 當使用相同名稱的上傳檔案覆寫檔案時，請在上傳檔案之前，檢查資料庫或實體儲存體的檔案名。
 * **在儲存檔案之前，在上傳的內容上執行病毒/惡意程式碼掃描器。**
 
-@no__t 0The 範例應用程式示範符合準則的方法。
+&dagger;範例應用程式示範符合準則的方法。
 
 > [!WARNING]
 > 將惡意程式碼上傳至系統經常是執行程式碼的第一步，該程式碼可能：
@@ -57,7 +56,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 > 如需在接受來自使用者的檔案時減少攻擊介面區的資訊，請參閱下列資源：
 >
 > * [不受限制的檔案上傳](https://www.owasp.org/index.php/Unrestricted_File_Upload)
-> * @no__t 0Azure 安全性：在接受來自使用者 @ no__t-0 的檔案時，確保適當的控制項已就緒
+> * [Azure 安全性：請確保在接受來自使用者的檔案時，適當的控制項已就緒](/azure/security/azure-security-threat-modeling-tool-input-validation#controls-users)
 
 如需有關如何執行安全性措施的詳細資訊，包括範例應用程式的範例，請參閱[驗證](#validation)一節。
 
@@ -84,7 +83,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
   * 服務通常會針對內部部署解決方案提供改良的擴充性和彈性，通常會受到單一失敗點的影響。
   * 在大型儲存體基礎結構案例中，服務可能會降低成本。
 
-  如需詳細資訊，請參閱[快速入門：使用 .NET 在物件儲存體 @ no__t-0 中建立 blob。 本主題示範 <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>，但 <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> 可以在使用 <xref:System.IO.Stream> 時，用來將 <xref:System.IO.FileStream> 儲存至 blob 儲存體。
+  如需詳細資訊，請參閱[快速入門：使用 .net 在物件儲存體中建立 blob](/azure/storage/blobs/storage-quickstart-blobs-dotnet)。 本主題示範 <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>，但 <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> 可以在使用 <xref:System.IO.Stream>時，用來將 <xref:System.IO.FileStream> 儲存至 blob 儲存體。
 
 ## <a name="file-upload-scenarios"></a>檔案上傳案例
 
@@ -102,7 +101,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 此主題的下列各節會涵蓋緩衝處理小型檔案：
 
 * [實體儲存體](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [[資料庫備份]](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [資料庫](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **資料流**
 
@@ -202,9 +201,9 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
   </script>
   ```
 
-為了支援檔案上傳，HTML 表單必須指定 `multipart/form-data` 的編碼類型（`enctype`）。
+為了支援檔案上傳，HTML 表單必須指定 `multipart/form-data`的編碼類型（`enctype`）。
 
-若要支援上傳多個檔案的 @no__t 0 輸入元素，請在 `<input>` 元素上提供 `multiple` 屬性：
+若要支援上傳多個檔案的 `files` input 元素，請在 `<input>` 元素上提供 `multiple` 屬性：
 
 ```cshtml
 <input asp-for="FileUpload.FormFiles" type="file" multiple>
@@ -212,24 +211,36 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 
 您可以使用 <xref:Microsoft.AspNetCore.Http.IFormFile>，透過[模型](xref:mvc/models/model-binding)系結來存取上傳至伺服器的個別檔案。 範例應用程式會針對資料庫和實體儲存案例，示範多個已緩衝處理的檔案上傳。
 
+<a name="filename"></a>
+
 > [!WARNING]
-> 請勿依賴或信任 <xref:Microsoft.AspNetCore.Http.IFormFile> 的 @no__t 0 屬性而不進行驗證。 @No__t-0 屬性只應用於顯示用途，而且只能用於 HTML 編碼值。
+> 除了顯示和記錄之外，**請勿使用 <xref:Microsoft.AspNetCore.Http.IFormFile>** 的 `FileName` 屬性。 當顯示或記錄時，HTML 會將檔案名編碼。 攻擊者可以提供惡意的檔案名，包括完整路徑或相對路徑。 應用程式應該：
+>
+> * 從使用者提供的檔案名中移除路徑。
+> * 針對 UI 或記錄儲存以 HTML 編碼、路徑移除的檔案名。
+> * 為儲存區產生新的隨機檔案名。
+>
+> 下列程式碼會從檔案名中移除路徑：
+>
+> ```csharp
+> string untrustedFileName = Path.GetFileName(pathName);
+> ```
 >
 > 到目前為止所提供的範例並不考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
 >
 > * [安全性考量](#security-considerations)
 > * [驗證](#validation)
 
-使用模型系結上傳檔案並 <xref:Microsoft.AspNetCore.Http.IFormFile> 時，動作方法可以接受：
+使用模型系結和 <xref:Microsoft.AspNetCore.Http.IFormFile>上傳檔案時，動作方法可以接受：
 
 * 單一 <xref:Microsoft.AspNetCore.Http.IFormFile>。
 * 下列任何代表數個檔案的集合：
   * <xref:Microsoft.AspNetCore.Http.IFormFileCollection>
   * <xref:System.Collections.IEnumerable>\<<xref:Microsoft.AspNetCore.Http.IFormFile>>
-  * [清單](xref:System.Collections.Generic.List`1)\< @ no__t-2 @ no__t-3
+  * [列出](xref:System.Collections.Generic.List`1)\<<xref:Microsoft.AspNetCore.Http.IFormFile>>
 
 > [!NOTE]
-> 系結符合依名稱的表單檔案。 例如，`<input type="file" name="formFile">` 中的 HTML `name` 值必須符合系結C#的參數/屬性（`FormFile`）。 如需詳細資訊，請參閱[Match name 屬性值與 POST 方法的參數名稱](#match-name-attribute-value-to-parameter-name-of-post-method)一節。
+> 系結符合依名稱的表單檔案。 例如，`<input type="file" name="formFile">` 中的 HTML `name` 值必須符合C#參數/屬性系結（`FormFile`）。 如需詳細資訊，請參閱[Match name 屬性值與 POST 方法的參數名稱](#match-name-attribute-value-to-parameter-name-of-post-method)一節。
 
 下列範例：
 
@@ -263,7 +274,7 @@ public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> files)
 }
 ```
 
-使用 `Path.GetRandomFileName` 可產生不含路徑的檔案名。 在下列範例中，路徑是從設定取得：
+使用 `Path.GetRandomFileName` 產生不含路徑的檔案名。 在下列範例中，路徑是從設定取得：
 
 ```csharp
 foreach (var formFile in files)
@@ -281,21 +292,21 @@ foreach (var formFile in files)
 }
 ```
 
-傳遞給 <xref:System.IO.FileStream> 的路徑*必須*包含檔案名。 如果未提供檔案名，則會在執行時間擲回 @no__t 0。
+傳遞至 <xref:System.IO.FileStream> 的路徑*必須*包含檔案名。 如果未提供檔案名，則會在執行時間擲回 <xref:System.UnauthorizedAccessException>。
 
-使用 <xref:Microsoft.AspNetCore.Http.IFormFile> 技術所上傳的檔案會在處理之前，先緩衝到伺服器上的記憶體或磁片上。 在動作方法內，<xref:Microsoft.AspNetCore.Http.IFormFile> 內容可以 <xref:System.IO.Stream> 來存取。 除了本機檔案系統之外，檔案也可以儲存至網路共用或檔案儲存體服務，例如[Azure Blob 儲存體](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs)。
+使用 <xref:Microsoft.AspNetCore.Http.IFormFile> 技術所上傳的檔案會在處理之前，先緩衝到伺服器上的記憶體或磁片上。 在動作方法內，<xref:Microsoft.AspNetCore.Http.IFormFile> 內容可以 <xref:System.IO.Stream>存取。 除了本機檔案系統之外，檔案也可以儲存至網路共用或檔案儲存體服務，例如[Azure Blob 儲存體](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs)。
 
 如需在多個檔案上傳並使用安全檔案名的另一個範例，請參閱範例應用程式中的*Pages/BufferedMultipleFileUploadPhysical* 。
 
 > [!WARNING]
-> 如果建立超過65535個檔案，但未刪除先前的暫存檔案，則[GetTempFileName](xref:System.IO.Path.GetTempFileName*)會擲回 <xref:System.IO.IOException>。 65535檔案的限制是每一伺服器的限制。 如需有關 Windows OS 上此限制的詳細資訊，請參閱下列主題中的備註：
+> 如果建立的檔案超過65535，而未刪除先前的暫存檔案，則[GetTempFileName](xref:System.IO.Path.GetTempFileName*)會擲回 <xref:System.IO.IOException>。 65535檔案的限制是每一伺服器的限制。 如需有關 Windows OS 上此限制的詳細資訊，請參閱下列主題中的備註：
 >
 > * [GetTempFileNameA 函式](/windows/desktop/api/fileapi/nf-fileapi-gettempfilenamea#remarks)
 > * <xref:System.IO.Path.GetTempFileName*>
 
 ### <a name="upload-small-files-with-buffered-model-binding-to-a-database"></a>將具有緩衝模型系結的小型檔案上傳至資料庫
 
-若要使用[Entity Framework](/ef/core/index)將二進位檔案資料儲存在資料庫中，請在實體上定義 @no__t 1 陣列屬性：
+若要使用[Entity Framework](/ef/core/index)在資料庫中儲存二進位檔案資料，請在實體上定義 <xref:System.Byte> 陣列屬性：
 
 ```csharp
 public class AppFile
@@ -305,7 +316,7 @@ public class AppFile
 }
 ```
 
-指定包含 <xref:Microsoft.AspNetCore.Http.IFormFile> 之類別的頁面模型屬性：
+指定包含 <xref:Microsoft.AspNetCore.Http.IFormFile>之類別的 [頁面模型] 屬性：
 
 ```csharp
 public class BufferedSingleFileUploadDbModel : PageModel
@@ -327,9 +338,9 @@ public class BufferedSingleFileUploadDb
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Http.IFormFile> 可以直接當做動作方法參數或系結模型屬性使用。 先前的範例會使用系結模型屬性。
+> <xref:Microsoft.AspNetCore.Http.IFormFile> 可以直接當做動作方法參數或系結模型屬性來使用。 先前的範例會使用系結模型屬性。
 
-@No__t-0 用於 Razor Pages 格式：
+`FileUpload` 用於 Razor Pages 形式：
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -345,7 +356,7 @@ public class BufferedSingleFileUploadDb
 </form>
 ```
 
-當表單張貼至伺服器時，將 <xref:Microsoft.AspNetCore.Http.IFormFile> 複製到資料流程，並將它儲存為資料庫中的位元組陣列。 在下列範例中，`_dbContext` 會儲存應用程式的資料庫內容：
+當表單張貼至伺服器時，請將 <xref:Microsoft.AspNetCore.Http.IFormFile> 複製到資料流程，並將其儲存為資料庫中的位元組陣列。 在下列範例中，`_dbContext` 會儲存應用程式的資料庫內容：
 
 ```csharp
 public async Task<IActionResult> OnPostUploadAsync()
@@ -384,7 +395,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 > [!WARNING]
 > 將二進位資料儲存至關聯式資料庫時請小心，因為它可能會對效能造成不良影響。
 >
-> 請勿依賴或信任 <xref:Microsoft.AspNetCore.Http.IFormFile> 的 @no__t 0 屬性而不進行驗證。 @No__t-0 屬性只能用於顯示用途，而且只能用於 HTML 編碼。
+> 請勿依賴或信任 <xref:Microsoft.AspNetCore.Http.IFormFile> 的 `FileName` 屬性，而不進行驗證。 `FileName` 屬性只能用於顯示用途，而且只能用於 HTML 編碼。
 >
 > 提供的範例不會考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
 >
@@ -399,15 +410,15 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
 
-@No__t-0 是用來停用模型系結：
+`DisableFormValueModelBindingAttribute` 可用來停用模型系結：
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/ModelBinding.cs?name=snippet_DisableFormValueModelBindingAttribute)]
 
-在範例應用程式中，`GenerateAntiforgeryTokenCookieAttribute` 和 `DisableFormValueModelBindingAttribute` 會以篩選準則套用至 `/StreamedSingleFileUploadDb` 的頁面應用程式模型，並使用[@no__t 慣例](xref:razor-pages/razor-pages-conventions)在 Razor Pages-4 中 `/StreamedSingleFileUploadPhysical`：
+在範例應用程式中，`GenerateAntiforgeryTokenCookieAttribute` 和 `DisableFormValueModelBindingAttribute` 會當做篩選套用至 `/StreamedSingleFileUploadDb` 的頁面應用程式模型，以及 `Startup.ConfigureServices` 中使用[Razor Pages 慣例](xref:razor-pages/razor-pages-conventions)的 `/StreamedSingleFileUploadPhysical`：
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_AddRazorPages&highlight=8-11,17-20)]
 
-由於模型系結不會讀取表單，因此從表單系結的參數不會系結（查詢、路由及標頭會繼續正常執行）。 動作方法會直接與 `Request` 屬性搭配運作。 `MultipartReader` 是用來讀取每個區段。 索引鍵/值資料會儲存在 `KeyValueAccumulator` 中。 讀取多部分區段之後，會使用 `KeyValueAccumulator` 的內容，將表單資料系結至模型類型。
+由於模型系結不會讀取表單，因此從表單系結的參數不會系結（查詢、路由及標頭會繼續正常執行）。 動作方法會直接與 `Request` 屬性搭配運作。 `MultipartReader` 是用來讀取每個區段。 索引鍵/值資料會儲存在 `KeyValueAccumulator`中。 讀取多部分區段之後，會使用 `KeyValueAccumulator` 的內容，將表單資料系結至模型類型。
 
 使用 EF Core 串流至資料庫的完整 `StreamingController.UploadDatabase` 方法：
 
@@ -421,16 +432,16 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadPhysical)]
 
-在範例應用程式中，驗證檢查是由 `FileHelpers.ProcessStreamedFile` 來處理。
+在範例應用程式中，驗證檢查是由 `FileHelpers.ProcessStreamedFile`處理。
 
 ## <a name="validation"></a>驗證
 
-範例應用程式的 `FileHelpers` 類別會示範多個已緩衝處理的 @no__t 1 和串流檔案上傳的檢查。 若要處理範例應用程式中 @no__t 0 的緩衝檔案上傳，請參閱*公用程式/FileHelpers*檔案中的 `ProcessFormFile` 方法。 如需處理資料流程檔案，請參閱相同檔案中的 `ProcessStreamedFile` 方法。
+範例應用程式的 `FileHelpers` 類別會示範多個已緩衝處理的 <xref:Microsoft.AspNetCore.Http.IFormFile> 和串流檔案上傳的檢查。 若要處理範例應用程式中 <xref:Microsoft.AspNetCore.Http.IFormFile> 緩衝的檔案上傳，請參閱*公用程式/FileHelpers*檔案中的 `ProcessFormFile` 方法。 如需處理資料流程檔案，請參閱相同檔案中的 `ProcessStreamedFile` 方法。
 
 > [!WARNING]
 > 範例應用程式中所示範的驗證處理方法不會掃描已上傳檔案的內容。 在大部分的生產環境案例中，會在檔案上使用病毒/惡意程式碼掃描器 API，才能讓使用者或其他系統使用檔案。
 >
-> 雖然主題範例提供驗證技術的實用範例，但請不要在生產應用程式中執行 @no__t 0 類別，除非您：
+> 雖然主題範例提供驗證技術的實用範例，但請勿在生產應用程式中執行 `FileHelpers` 類別，除非您：
 >
 > * 完全瞭解此實作為。
 > * 針對應用程式的環境和規格修改適當的執行。
@@ -503,7 +514,7 @@ Razor 會自動對屬性值進行 HTML 編碼以供顯示。 以下是可安全�
 }
 ```
 
-在 Razor 以外，一律會從使用者的要求 @no__t 0 的檔案名內容。
+在 Razor 以外，一律 <xref:System.Net.WebUtility.HtmlEncode*> 來自使用者要求的檔案名內容。
 
 許多的執行都必須包含檔案存在的檢查;否則，檔案會由相同名稱的檔案覆寫。 提供其他邏輯以符合您應用程式的規格。
 
@@ -519,7 +530,7 @@ Razor 會自動對屬性值進行 HTML 編碼以供顯示。 以下是可安全�
 }
 ```
 
-@No__t-0 會插入 @no__t 1 類別中：
+`FileSizeLimit` 會插入 `PageModel` 類別中：
 
 ```csharp
 public class BufferedSingleFileUploadPhysicalModel : PageModel
@@ -550,13 +561,13 @@ if (formFile.Length > _fileSizeLimit)
 
 在以下範例中：
 
-* 使用 `<input>` 元素時，`name` 屬性會設定為值 `battlePlans`：
+* 使用 `<input>` 元素時，`name` 屬性會設定為 `battlePlans`的值：
 
   ```html
   <input type="file" name="battlePlans" multiple>
   ```
 
-* 在 JavaScript 中使用 `FormData` 時，此名稱會設定為 `battlePlans` 的值：
+* 在 JavaScript 中使用 `FormData` 時，此名稱會設定為 `battlePlans`的值：
 
   ```javascript
   var formData = new FormData();
@@ -568,7 +579,7 @@ if (formFile.Length > _fileSizeLimit)
 
 針對C#方法的參數使用相符的名稱（`battlePlans`）：
 
-* 針對名為 `Upload` 的 Razor Pages 頁面處理常式方法：
+* 針對名為 `Upload`的 Razor Pages 頁面處理常式方法：
 
   ```csharp
   public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> battlePlans)
@@ -584,7 +595,7 @@ if (formFile.Length > _fileSizeLimit)
 
 ### <a name="multipart-body-length-limit"></a>多部分主體長度限制
 
-<xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> 會設定每個多部分主體的長度限制。 超過此限制的表單區段會在剖析時擲回 <xref:System.IO.InvalidDataException>。 預設值為134217728（128 MB）。 使用 `Startup.ConfigureServices` 中的 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> 設定來自訂限制：
+<xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> 設定每個多部分主體的長度限制。 超過此限制的表單區段會在剖析時擲回 <xref:System.IO.InvalidDataException>。 預設值為134217728（128 MB）。 使用 `Startup.ConfigureServices`中的 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> 設定自訂限制：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -597,9 +608,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> 用來設定單一頁面或動作的 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit>。
+<xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> 可用來設定單一頁面或動作的 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit>。
 
-在 Razor Pages 應用程式中，將篩選套用至 `Startup.ConfigureServices` 中的[慣例](xref:razor-pages/razor-pages-conventions)：
+在 Razor Pages 應用程式中，將篩選套用至 `Startup.ConfigureServices`中的[慣例](xref:razor-pages/razor-pages-conventions)：
 
 ```csharp
 services.AddRazorPages()
@@ -645,9 +656,9 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> 是用來設定單一頁面或動作的[MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) 。
+<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> 可用來設定單一頁面或動作的[MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) 。
 
-在 Razor Pages 應用程式中，將篩選套用至 `Startup.ConfigureServices` 中的[慣例](xref:razor-pages/razor-pages-conventions)：
+在 Razor Pages 應用程式中，將篩選套用至 `Startup.ConfigureServices`中的[慣例](xref:razor-pages/razor-pages-conventions)：
 
 ```csharp
 services.AddRazorPages()
@@ -675,7 +686,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 }
 ```
 
-您也可以使用[@attribute](xref:mvc/views/razor#attribute) Razor 指示詞來套用 `RequestSizeLimitAttribute`：
+`RequestSizeLimitAttribute` 也可以使用[@attribute](xref:mvc/views/razor#attribute) Razor 指示詞來套用：
 
 ```cshtml
 @attribute [RequestSizeLimitAttribute(52428800)]
@@ -728,7 +739,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 ### <a name="null-reference-exception-with-iformfile"></a>IFormFile 的 Null 參考例外狀況
 
-如果控制器接受使用 <xref:Microsoft.AspNetCore.Http.IFormFile> 的上傳檔案，但值為 `null`，請確認 HTML 表單指定的 `enctype` 值為 `multipart/form-data`。 如果未在 `<form>` 元素上設定此屬性，則不會進行檔案上傳，而且任何系結的 @no__t 1 引數都會 `null`。 此外，請確認[表單資料中的上傳命名符合應用程式的命名](#match-name-attribute-value-to-parameter-name-of-post-method)。
+如果控制器使用 <xref:Microsoft.AspNetCore.Http.IFormFile> 來接受上傳檔案，但 `null`值，請確認 HTML 表單是否指定 `multipart/form-data`的 `enctype` 值。 如果未在 `<form>` 元素上設定這個屬性，就不會進行檔案上傳，而且會 `null`任何系結 <xref:Microsoft.AspNetCore.Http.IFormFile> 引數。 此外，請確認[表單資料中的上傳命名符合應用程式的命名](#match-name-attribute-value-to-parameter-name-of-post-method)。
 
 ::: moniker-end
 
@@ -748,17 +759,16 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 
 降低成功攻擊的可能性的安全性步驟如下：
 
-* 將檔案上傳到系統上的專用檔案上傳區域，最好是在非系統磁片磁碟機上。 使用專用位置可讓您更輕鬆地對上傳的檔案強加安全性限制。 停用檔案上傳位置的執行許可權。 &dagger;
-* 絕對不要將上傳的檔案保存在與應用程式相同的目錄樹狀結構中。 &dagger;
-* 使用應用程式所決定的安全檔案名。 請勿使用使用者所提供的檔案名或上傳檔案的不受信任檔案名。 &dagger;若要在 UI 或記錄訊息中顯示不受信任的檔案名，請以 HTML 編碼值。
-* 只允許一組特定的已核准副檔名。 &dagger;
-* 請檢查檔案格式簽章，以防止使用者上傳回報偽裝檔。 &dagger;例如，不允許使用者上傳副檔名為 *.txt*的 *.exe*檔案。
-* 確認用戶端檢查也會在伺服器上執行。 &dagger;用戶端檢查很容易規避。
-* 請檢查上傳檔案的大小，並防止上傳大於預期的上傳。 &dagger;
+* 將檔案上傳到專用的檔案上傳區域，最好是在非系統磁片磁碟機上。 專用位置可讓您更輕鬆地對上傳的檔案強加安全性限制。 停用檔案上傳位置的 execute 許可權。&dagger;
+* 請勿將上傳的**檔案保存在**與應用程式相同的目錄樹狀結構中。&dagger;
+* 使用應用程式所決定的安全檔案名。 請勿使用使用者所提供的檔案名或上傳檔案的不受信任檔案名。&dagger; HTML 在顯示不受信任的檔案名時進行編碼。 例如，記錄檔案名或在 UI 中顯示（Razor 會自動以 HTML 編碼輸出）。
+* 僅允許應用程式設計規格的已核准副檔名。&dagger; <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
+* 確認用戶端檢查是在伺服器上執行。&dagger; 用戶端檢查很容易規避。
+* 檢查上傳檔案的大小。 設定最大大小限制以防止大量上傳。&dagger;
 * 當使用相同名稱的上傳檔案覆寫檔案時，請在上傳檔案之前，檢查資料庫或實體儲存體的檔案名。
 * **在儲存檔案之前，在上傳的內容上執行病毒/惡意程式碼掃描器。**
 
-@no__t 0The 範例應用程式示範符合準則的方法。
+&dagger;範例應用程式示範符合準則的方法。
 
 > [!WARNING]
 > 將惡意程式碼上傳至系統經常是執行程式碼的第一步，該程式碼可能：
@@ -771,7 +781,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 > 如需在接受來自使用者的檔案時減少攻擊介面區的資訊，請參閱下列資源：
 >
 > * [不受限制的檔案上傳](https://www.owasp.org/index.php/Unrestricted_File_Upload)
-> * @no__t 0Azure 安全性：在接受來自使用者 @ no__t-0 的檔案時，確保適當的控制項已就緒
+> * [Azure 安全性：請確保在接受來自使用者的檔案時，適當的控制項已就緒](/azure/security/azure-security-threat-modeling-tool-input-validation#controls-users)
 
 如需有關如何執行安全性措施的詳細資訊，包括範例應用程式的範例，請參閱[驗證](#validation)一節。
 
@@ -798,7 +808,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
   * 服務通常會針對內部部署解決方案提供改良的擴充性和彈性，通常會受到單一失敗點的影響。
   * 在大型儲存體基礎結構案例中，服務可能會降低成本。
 
-  如需詳細資訊，請參閱[快速入門：使用 .NET 在物件儲存體 @ no__t-0 中建立 blob。 本主題示範 <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>，但 <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> 可以在使用 <xref:System.IO.Stream> 時，用來將 <xref:System.IO.FileStream> 儲存至 blob 儲存體。
+  如需詳細資訊，請參閱[快速入門：使用 .net 在物件儲存體中建立 blob](/azure/storage/blobs/storage-quickstart-blobs-dotnet)。 本主題示範 <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>，但 <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> 可以在使用 <xref:System.IO.Stream>時，用來將 <xref:System.IO.FileStream> 儲存至 blob 儲存體。
 
 ## <a name="file-upload-scenarios"></a>檔案上傳案例
 
@@ -816,7 +826,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 此主題的下列各節會涵蓋緩衝處理小型檔案：
 
 * [實體儲存體](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [[資料庫備份]](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [資料庫](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **資料流**
 
@@ -916,9 +926,9 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
   </script>
   ```
 
-為了支援檔案上傳，HTML 表單必須指定 `multipart/form-data` 的編碼類型（`enctype`）。
+為了支援檔案上傳，HTML 表單必須指定 `multipart/form-data`的編碼類型（`enctype`）。
 
-若要支援上傳多個檔案的 @no__t 0 輸入元素，請在 `<input>` 元素上提供 `multiple` 屬性：
+若要支援上傳多個檔案的 `files` input 元素，請在 `<input>` 元素上提供 `multiple` 屬性：
 
 ```cshtml
 <input asp-for="FileUpload.FormFiles" type="file" multiple>
@@ -926,24 +936,36 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 
 您可以使用 <xref:Microsoft.AspNetCore.Http.IFormFile>，透過[模型](xref:mvc/models/model-binding)系結來存取上傳至伺服器的個別檔案。 範例應用程式會針對資料庫和實體儲存案例，示範多個已緩衝處理的檔案上傳。
 
+<a name="filename2"></a>
+
 > [!WARNING]
-> 請勿依賴或信任 <xref:Microsoft.AspNetCore.Http.IFormFile> 的 @no__t 0 屬性而不進行驗證。 @No__t-0 屬性只應用於顯示用途，而且只能用於 HTML 編碼值。
+> 除了顯示和記錄之外，**請勿使用 <xref:Microsoft.AspNetCore.Http.IFormFile>** 的 `FileName` 屬性。 當顯示或記錄時，HTML 會將檔案名編碼。 攻擊者可以提供惡意的檔案名，包括完整路徑或相對路徑。 應用程式應該：
+>
+> * 從使用者提供的檔案名中移除路徑。
+> * 針對 UI 或記錄儲存以 HTML 編碼、路徑移除的檔案名。
+> * 為儲存區產生新的隨機檔案名。
+>
+> 下列程式碼會從檔案名中移除路徑：
+>
+> ```csharp
+> string untrustedFileName = Path.GetFileName(pathName);
+> ```
 >
 > 到目前為止所提供的範例並不考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
 >
 > * [安全性考量](#security-considerations)
 > * [驗證](#validation)
 
-使用模型系結上傳檔案並 <xref:Microsoft.AspNetCore.Http.IFormFile> 時，動作方法可以接受：
+使用模型系結和 <xref:Microsoft.AspNetCore.Http.IFormFile>上傳檔案時，動作方法可以接受：
 
 * 單一 <xref:Microsoft.AspNetCore.Http.IFormFile>。
 * 下列任何代表數個檔案的集合：
   * <xref:Microsoft.AspNetCore.Http.IFormFileCollection>
   * <xref:System.Collections.IEnumerable>\<<xref:Microsoft.AspNetCore.Http.IFormFile>>
-  * [清單](xref:System.Collections.Generic.List`1)\< @ no__t-2 @ no__t-3
+  * [列出](xref:System.Collections.Generic.List`1)\<<xref:Microsoft.AspNetCore.Http.IFormFile>>
 
 > [!NOTE]
-> 系結符合依名稱的表單檔案。 例如，`<input type="file" name="formFile">` 中的 HTML `name` 值必須符合系結C#的參數/屬性（`FormFile`）。 如需詳細資訊，請參閱[Match name 屬性值與 POST 方法的參數名稱](#match-name-attribute-value-to-parameter-name-of-post-method)一節。
+> 系結符合依名稱的表單檔案。 例如，`<input type="file" name="formFile">` 中的 HTML `name` 值必須符合C#參數/屬性系結（`FormFile`）。 如需詳細資訊，請參閱[Match name 屬性值與 POST 方法的參數名稱](#match-name-attribute-value-to-parameter-name-of-post-method)一節。
 
 下列範例：
 
@@ -977,7 +999,7 @@ public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> files)
 }
 ```
 
-使用 `Path.GetRandomFileName` 可產生不含路徑的檔案名。 在下列範例中，路徑是從設定取得：
+使用 `Path.GetRandomFileName` 產生不含路徑的檔案名。 在下列範例中，路徑是從設定取得：
 
 ```csharp
 foreach (var formFile in files)
@@ -995,21 +1017,21 @@ foreach (var formFile in files)
 }
 ```
 
-傳遞給 <xref:System.IO.FileStream> 的路徑*必須*包含檔案名。 如果未提供檔案名，則會在執行時間擲回 @no__t 0。
+傳遞至 <xref:System.IO.FileStream> 的路徑*必須*包含檔案名。 如果未提供檔案名，則會在執行時間擲回 <xref:System.UnauthorizedAccessException>。
 
-使用 <xref:Microsoft.AspNetCore.Http.IFormFile> 技術所上傳的檔案會在處理之前，先緩衝到伺服器上的記憶體或磁片上。 在動作方法內，<xref:Microsoft.AspNetCore.Http.IFormFile> 內容可以 <xref:System.IO.Stream> 來存取。 除了本機檔案系統之外，檔案也可以儲存至網路共用或檔案儲存體服務，例如[Azure Blob 儲存體](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs)。
+使用 <xref:Microsoft.AspNetCore.Http.IFormFile> 技術所上傳的檔案會在處理之前，先緩衝到伺服器上的記憶體或磁片上。 在動作方法內，<xref:Microsoft.AspNetCore.Http.IFormFile> 內容可以 <xref:System.IO.Stream>存取。 除了本機檔案系統之外，檔案也可以儲存至網路共用或檔案儲存體服務，例如[Azure Blob 儲存體](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs)。
 
 如需在多個檔案上傳並使用安全檔案名的另一個範例，請參閱範例應用程式中的*Pages/BufferedMultipleFileUploadPhysical* 。
 
 > [!WARNING]
-> 如果建立超過65535個檔案，但未刪除先前的暫存檔案，則[GetTempFileName](xref:System.IO.Path.GetTempFileName*)會擲回 <xref:System.IO.IOException>。 65535檔案的限制是每一伺服器的限制。 如需有關 Windows OS 上此限制的詳細資訊，請參閱下列主題中的備註：
+> 如果建立的檔案超過65535，而未刪除先前的暫存檔案，則[GetTempFileName](xref:System.IO.Path.GetTempFileName*)會擲回 <xref:System.IO.IOException>。 65535檔案的限制是每一伺服器的限制。 如需有關 Windows OS 上此限制的詳細資訊，請參閱下列主題中的備註：
 >
 > * [GetTempFileNameA 函式](/windows/desktop/api/fileapi/nf-fileapi-gettempfilenamea#remarks)
 > * <xref:System.IO.Path.GetTempFileName*>
 
 ### <a name="upload-small-files-with-buffered-model-binding-to-a-database"></a>將具有緩衝模型系結的小型檔案上傳至資料庫
 
-若要使用[Entity Framework](/ef/core/index)將二進位檔案資料儲存在資料庫中，請在實體上定義 @no__t 1 陣列屬性：
+若要使用[Entity Framework](/ef/core/index)在資料庫中儲存二進位檔案資料，請在實體上定義 <xref:System.Byte> 陣列屬性：
 
 ```csharp
 public class AppFile
@@ -1019,7 +1041,7 @@ public class AppFile
 }
 ```
 
-指定包含 <xref:Microsoft.AspNetCore.Http.IFormFile> 之類別的頁面模型屬性：
+指定包含 <xref:Microsoft.AspNetCore.Http.IFormFile>之類別的 [頁面模型] 屬性：
 
 ```csharp
 public class BufferedSingleFileUploadDbModel : PageModel
@@ -1041,9 +1063,9 @@ public class BufferedSingleFileUploadDb
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Http.IFormFile> 可以直接當做動作方法參數或系結模型屬性使用。 先前的範例會使用系結模型屬性。
+> <xref:Microsoft.AspNetCore.Http.IFormFile> 可以直接當做動作方法參數或系結模型屬性來使用。 先前的範例會使用系結模型屬性。
 
-@No__t-0 用於 Razor Pages 格式：
+`FileUpload` 用於 Razor Pages 形式：
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1059,7 +1081,7 @@ public class BufferedSingleFileUploadDb
 </form>
 ```
 
-當表單張貼至伺服器時，將 <xref:Microsoft.AspNetCore.Http.IFormFile> 複製到資料流程，並將它儲存為資料庫中的位元組陣列。 在下列範例中，`_dbContext` 會儲存應用程式的資料庫內容：
+當表單張貼至伺服器時，請將 <xref:Microsoft.AspNetCore.Http.IFormFile> 複製到資料流程，並將其儲存為資料庫中的位元組陣列。 在下列範例中，`_dbContext` 會儲存應用程式的資料庫內容：
 
 ```csharp
 public async Task<IActionResult> OnPostUploadAsync()
@@ -1098,7 +1120,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 > [!WARNING]
 > 將二進位資料儲存至關聯式資料庫時請小心，因為它可能會對效能造成不良影響。
 >
-> 請勿依賴或信任 <xref:Microsoft.AspNetCore.Http.IFormFile> 的 @no__t 0 屬性而不進行驗證。 @No__t-0 屬性只能用於顯示用途，而且只能用於 HTML 編碼。
+> 請勿依賴或信任 <xref:Microsoft.AspNetCore.Http.IFormFile> 的 `FileName` 屬性，而不進行驗證。 `FileName` 屬性只能用於顯示用途，而且只能用於 HTML 編碼。
 >
 > 提供的範例不會考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
 >
@@ -1113,15 +1135,15 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
 
-@No__t-0 是用來停用模型系結：
+`DisableFormValueModelBindingAttribute` 可用來停用模型系結：
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/ModelBinding.cs?name=snippet_DisableFormValueModelBindingAttribute)]
 
-在範例應用程式中，`GenerateAntiforgeryTokenCookieAttribute` 和 `DisableFormValueModelBindingAttribute` 會以篩選準則套用至 `/StreamedSingleFileUploadDb` 的頁面應用程式模型，並使用[@no__t 慣例](xref:razor-pages/razor-pages-conventions)在 Razor Pages-4 中 `/StreamedSingleFileUploadPhysical`：
+在範例應用程式中，`GenerateAntiforgeryTokenCookieAttribute` 和 `DisableFormValueModelBindingAttribute` 會當做篩選套用至 `/StreamedSingleFileUploadDb` 的頁面應用程式模型，以及 `Startup.ConfigureServices` 中使用[Razor Pages 慣例](xref:razor-pages/razor-pages-conventions)的 `/StreamedSingleFileUploadPhysical`：
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Startup.cs?name=snippet_AddMvc&highlight=8-11,17-20)]
 
-由於模型系結不會讀取表單，因此從表單系結的參數不會系結（查詢、路由及標頭會繼續正常執行）。 動作方法會直接與 `Request` 屬性搭配運作。 `MultipartReader` 是用來讀取每個區段。 索引鍵/值資料會儲存在 `KeyValueAccumulator` 中。 讀取多部分區段之後，會使用 `KeyValueAccumulator` 的內容，將表單資料系結至模型類型。
+由於模型系結不會讀取表單，因此從表單系結的參數不會系結（查詢、路由及標頭會繼續正常執行）。 動作方法會直接與 `Request` 屬性搭配運作。 `MultipartReader` 是用來讀取每個區段。 索引鍵/值資料會儲存在 `KeyValueAccumulator`中。 讀取多部分區段之後，會使用 `KeyValueAccumulator` 的內容，將表單資料系結至模型類型。
 
 使用 EF Core 串流至資料庫的完整 `StreamingController.UploadDatabase` 方法：
 
@@ -1135,16 +1157,16 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadPhysical)]
 
-在範例應用程式中，驗證檢查是由 `FileHelpers.ProcessStreamedFile` 來處理。
+在範例應用程式中，驗證檢查是由 `FileHelpers.ProcessStreamedFile`處理。
 
 ## <a name="validation"></a>驗證
 
-範例應用程式的 `FileHelpers` 類別會示範多個已緩衝處理的 @no__t 1 和串流檔案上傳的檢查。 若要處理範例應用程式中 @no__t 0 的緩衝檔案上傳，請參閱*公用程式/FileHelpers*檔案中的 `ProcessFormFile` 方法。 如需處理資料流程檔案，請參閱相同檔案中的 `ProcessStreamedFile` 方法。
+範例應用程式的 `FileHelpers` 類別會示範多個已緩衝處理的 <xref:Microsoft.AspNetCore.Http.IFormFile> 和串流檔案上傳的檢查。 若要處理範例應用程式中 <xref:Microsoft.AspNetCore.Http.IFormFile> 緩衝的檔案上傳，請參閱*公用程式/FileHelpers*檔案中的 `ProcessFormFile` 方法。 如需處理資料流程檔案，請參閱相同檔案中的 `ProcessStreamedFile` 方法。
 
 > [!WARNING]
 > 範例應用程式中所示範的驗證處理方法不會掃描已上傳檔案的內容。 在大部分的生產環境案例中，會在檔案上使用病毒/惡意程式碼掃描器 API，才能讓使用者或其他系統使用檔案。
 >
-> 雖然主題範例提供驗證技術的實用範例，但請不要在生產應用程式中執行 @no__t 0 類別，除非您：
+> 雖然主題範例提供驗證技術的實用範例，但請勿在生產應用程式中執行 `FileHelpers` 類別，除非您：
 >
 > * 完全瞭解此實作為。
 > * 針對應用程式的環境和規格修改適當的執行。
@@ -1217,7 +1239,7 @@ Razor 會自動對屬性值進行 HTML 編碼以供顯示。 以下是可安全�
 }
 ```
 
-在 Razor 以外，一律會從使用者的要求 @no__t 0 的檔案名內容。
+在 Razor 以外，一律 <xref:System.Net.WebUtility.HtmlEncode*> 來自使用者要求的檔案名內容。
 
 許多的執行都必須包含檔案存在的檢查;否則，檔案會由相同名稱的檔案覆寫。 提供其他邏輯以符合您應用程式的規格。
 
@@ -1233,7 +1255,7 @@ Razor 會自動對屬性值進行 HTML 編碼以供顯示。 以下是可安全�
 }
 ```
 
-@No__t-0 會插入 @no__t 1 類別中：
+`FileSizeLimit` 會插入 `PageModel` 類別中：
 
 ```csharp
 public class BufferedSingleFileUploadPhysicalModel : PageModel
@@ -1264,13 +1286,13 @@ if (formFile.Length > _fileSizeLimit)
 
 在以下範例中：
 
-* 使用 `<input>` 元素時，`name` 屬性會設定為值 `battlePlans`：
+* 使用 `<input>` 元素時，`name` 屬性會設定為 `battlePlans`的值：
 
   ```html
   <input type="file" name="battlePlans" multiple>
   ```
 
-* 在 JavaScript 中使用 `FormData` 時，此名稱會設定為 `battlePlans` 的值：
+* 在 JavaScript 中使用 `FormData` 時，此名稱會設定為 `battlePlans`的值：
 
   ```javascript
   var formData = new FormData();
@@ -1282,7 +1304,7 @@ if (formFile.Length > _fileSizeLimit)
 
 針對C#方法的參數使用相符的名稱（`battlePlans`）：
 
-* 針對名為 `Upload` 的 Razor Pages 頁面處理常式方法：
+* 針對名為 `Upload`的 Razor Pages 頁面處理常式方法：
 
   ```csharp
   public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> battlePlans)
@@ -1298,7 +1320,7 @@ if (formFile.Length > _fileSizeLimit)
 
 ### <a name="multipart-body-length-limit"></a>多部分主體長度限制
 
-<xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> 會設定每個多部分主體的長度限制。 超過此限制的表單區段會在剖析時擲回 <xref:System.IO.InvalidDataException>。 預設值為134217728（128 MB）。 使用 `Startup.ConfigureServices` 中的 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> 設定來自訂限制：
+<xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> 設定每個多部分主體的長度限制。 超過此限制的表單區段會在剖析時擲回 <xref:System.IO.InvalidDataException>。 預設值為134217728（128 MB）。 使用 `Startup.ConfigureServices`中的 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> 設定自訂限制：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -1311,9 +1333,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> 用來設定單一頁面或動作的 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit>。
+<xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> 可用來設定單一頁面或動作的 <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit>。
 
-在 Razor Pages 應用程式中，將篩選套用至 `Startup.ConfigureServices` 中的[慣例](xref:razor-pages/razor-pages-conventions)：
+在 Razor Pages 應用程式中，將篩選套用至 `Startup.ConfigureServices`中的[慣例](xref:razor-pages/razor-pages-conventions)：
 
 ```csharp
 services.AddMvc()
@@ -1357,9 +1379,9 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> 是用來設定單一頁面或動作的[MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) 。
+<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> 可用來設定單一頁面或動作的[MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) 。
 
-在 Razor Pages 應用程式中，將篩選套用至 `Startup.ConfigureServices` 中的[慣例](xref:razor-pages/razor-pages-conventions)：
+在 Razor Pages 應用程式中，將篩選套用至 `Startup.ConfigureServices`中的[慣例](xref:razor-pages/razor-pages-conventions)：
 
 ```csharp
 services.AddMvc()
@@ -1435,7 +1457,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 ### <a name="null-reference-exception-with-iformfile"></a>IFormFile 的 Null 參考例外狀況
 
-如果控制器接受使用 <xref:Microsoft.AspNetCore.Http.IFormFile> 的上傳檔案，但值為 `null`，請確認 HTML 表單指定的 `enctype` 值為 `multipart/form-data`。 如果未在 `<form>` 元素上設定此屬性，則不會進行檔案上傳，而且任何系結的 @no__t 1 引數都會 `null`。 此外，請確認[表單資料中的上傳命名符合應用程式的命名](#match-name-attribute-value-to-parameter-name-of-post-method)。
+如果控制器使用 <xref:Microsoft.AspNetCore.Http.IFormFile> 來接受上傳檔案，但 `null`值，請確認 HTML 表單是否指定 `multipart/form-data`的 `enctype` 值。 如果未在 `<form>` 元素上設定這個屬性，就不會進行檔案上傳，而且會 `null`任何系結 <xref:Microsoft.AspNetCore.Http.IFormFile> 引數。 此外，請確認[表單資料中的上傳命名符合應用程式的命名](#match-name-attribute-value-to-parameter-name-of-post-method)。
 
 ::: moniker-end
 
@@ -1443,5 +1465,5 @@ The request filtering module is configured to deny a request that exceeds the re
 ## <a name="additional-resources"></a>其他資源
 
 * [不受限制的檔案上傳](https://www.owasp.org/index.php/Unrestricted_File_Upload)
-* @no__t 0Azure 安全性：安全性框架：輸入驗證 |緩和措施 @ no__t-0
-* @no__t 0Azure 雲端設計模式：Valet 索引鍵模式 @ no__t-0
+* [Azure 安全性：安全性框架：輸入驗證 |緩和措施](/azure/security/azure-security-threat-modeling-tool-input-validation)
+* [Azure 雲端設計模式： Valet 金鑰模式](/azure/architecture/patterns/valet-key)

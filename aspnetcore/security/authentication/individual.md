@@ -1,22 +1,22 @@
 ---
-title: 個別使用者帳戶建立的 ASP.NET Core 專案為基礎的發行項
+title: 以個別使用者帳戶所建立 ASP.NET Core 專案為基礎的文章
 author: rick-anderson
-description: 探索與個別使用者帳戶建立的 ASP.NET Core 專案為基礎的發行項。
+description: 根據使用個別使用者帳戶所建立 ASP.NET Core 專案來探索文章。
 ms.author: riande
 ms.date: 11/30/2017
 uid: security/authentication/individual
-ms.openlocfilehash: cf548417268a8587787471b9ed91c0ed109fbee9
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 91c5665dc50124b3ba09bdcfbf3ba501f684c604
+ms.sourcegitcommit: 9e85c2562df5e108d7933635c830297f484bb775
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080695"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73463029"
 ---
-# <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>個別使用者帳戶建立的 ASP.NET Core 專案為基礎的發行項
+# <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>以個別使用者帳戶所建立 ASP.NET Core 專案為基礎的文章
 
-ASP.NET Core 識別隨附於 Visual Studio 中的專案範本與 「 個別使用者帳戶 」 選項。
+ASP.NET Core 身分識別包含在具有 [個別使用者帳戶] 選項之 Visual Studio 的專案範本中。
 
-驗證範本可用於使用.NET Core CLI `-au Individual`:
+驗證範本可在 .NET Core CLI 中使用 `-au Individual`：
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -42,7 +42,7 @@ dotnet new razor -au Individual
 
 ## <a name="no-authentication"></a>無驗證
 
-使用`-au`選項在 .NET Core CLI 中指定驗證。 在 Visual Studio 中，新的 web 應用程式可以使用 [**變更驗證**] 對話方塊。 Visual Studio 中新 web 應用程式的預設值為 [**無驗證**]。
+使用 `-au` 選項在 .NET Core CLI 中指定驗證。 在 Visual Studio 中，新的 web 應用程式可以使用 [**變更驗證**] 對話方塊。 Visual Studio 中新 web 應用程式的預設值為 [**無驗證**]。
 
 建立不含驗證的專案：
 
@@ -53,14 +53,13 @@ dotnet new razor -au Individual
 
 ## <a name="windows-authentication"></a>Windows 驗證
 
-在 .NET Core CLI 中使用`-au Windows`選項，為新的 web 應用程式指定 Windows 驗證。 在 Visual Studio 中，[**變更驗證**] 對話方塊會提供**Windows 驗證**選項。
+使用 `-au Windows` 選項，為 .NET Core CLI 中的新 web 應用程式指定 Windows 驗證。 在 Visual Studio 中，[**變更驗證**] 對話方塊會提供**Windows 驗證**選項。
 
 如果已選取 [Windows 驗證]，則會將應用程式設定為使用[Windows 驗證 IIS 模組](xref:host-and-deploy/iis/modules)。 Windows 驗證適用于內部網路網站。
 
 ## <a name="additional-resources"></a>其他資源
 
-下列文件顯示如何使用 ASP.NET Core 範本使用個別的使用者帳戶中產生的程式碼：
+下列文章示範如何使用在 ASP.NET Core 範本中產生的程式碼，以使用個別使用者帳戶：
 
-* [使用 SMS 的雙因素驗證](xref:security/authentication/2fa)
 * [ASP.NET Core 中的帳戶確認和密碼復原](xref:security/authentication/accconfirm)
-* [建立 ASP.NET Core 應用程式與受保護的授權的使用者資料](xref:security/authorization/secure-data)
+* [建立具有受授權保護之使用者資料的 ASP.NET Core 應用程式](xref:security/authorization/secure-data)

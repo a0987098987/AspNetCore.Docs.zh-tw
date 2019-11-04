@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/29/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 6f2d62600da828261ecfc3a1df688ce914eccf33
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: abb55ea12583374639f28945037cb6aa41a5a32d
+ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72590020"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73427041"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -917,7 +917,7 @@ jQuery 會傳送 HTTP POST 要求和要求主體中的待辦事項。 `accepts` 
 
 ## <a name="add-authentication-support-to-a-web-api"></a>將驗證支援新增至 Web API
 
-請參閱[IdentityServer4](https://identityserver4.readthedocs.io/en/latest/quickstarts/0_overview.html)教學課程。
+[!INCLUDE[](~/includes/IdentityServer4.md)]
 
 ## <a name="additional-resources"></a>其他資源
 

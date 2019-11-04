@@ -5,14 +5,14 @@ description: 逐步建置 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 10/31/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: c357b324905ee3a4c9f4bd167dbbcacaf7e1bc76
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: cc7caa1ee01e0282024895ab35c5b9933b1504d0
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391213"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416168"
 ---
 # <a name="build-your-first-blazor-app"></a>組建第一個 Blazor 應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "72391213"
 
 1. 流覽至每個應用程式的 [ *pages* ] 資料夾中的三個頁面： [首頁]、[計數器] 和 [提取資料]。 這些頁面會透過 Razor 元件檔案 *Index.razor*、*Counter.razor* 及 *FetchData.razor* 來實作。
 
-1. 在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 讓網頁中的計數器遞增通常需要撰寫 JavaScript，但 Blazor 提供更好的 C# 使用方法。
+1. 在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 將網頁中的計數器遞增通常需要撰寫 JavaScript。 透過 Blazor，您可以改C#為撰寫。
 
 1. 檢查 *Counter.razor`Counter` 檔案中*  元件的實作。
 
@@ -59,7 +59,7 @@ ms.locfileid: "72391213"
 
 1. 透過將 `<Counter />` 元素新增至 `Index` 元件 (*Index.razor*)，來將 `Counter` 元件新增至應用程式的 `Index` 元件。
 
-   如果您使用 Blazor WebAssembly 來進行此體驗，則 `Index` 元件會使用 @no__t 0 元件。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用 Blazor 伺服器應用程式進行此體驗，請將 `<Counter />` 元素新增至 `Index` 元件：
+   如果您使用 Blazor WebAssembly 來進行這項體驗，`Index` 元件會使用 `SurveyPrompt` 元件。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用 Blazor 伺服器應用程式進行此體驗，請將 `<Counter />` 元素新增至 `Index` 元件：
 
    *Pages/Index.razor*：
 
@@ -73,7 +73,7 @@ ms.locfileid: "72391213"
 
 1. 更新元件的 `@code` C# 程式碼：
 
-   * 新增具有 `[Parameter]` 屬性的公用 `IncrementAmount` 屬性。
+   * 加入具有 `[Parameter]` 屬性的公用 `IncrementAmount` 屬性。
    * 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
 
    *Pages/Counter.razor*：
@@ -105,7 +105,7 @@ ms.locfileid: "72391213"
 
 [!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-@No__t-0 指示詞是用來將 @no__t 1 服務的實例插入至 @no__t 2 元件。
+`@inject` 指示詞是用來將 `WeatherForecastService` 服務的實例插入 `FetchData` 元件。
 
 *Pages/FetchData.razor*：
 
@@ -123,7 +123,7 @@ ms.locfileid: "72391213"
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData1_client.razor?highlight=7-8)]
 
-[@No__t 1](/dotnet/csharp/language-reference/keywords/foreach-in)迴圈是用來將每個預測實例轉譯為天氣資料的資料表中的資料列：
+[@foreach](/dotnet/csharp/language-reference/keywords/foreach-in)迴圈是用來將每個預測實例轉譯為天氣資料之資料表中的資料列：
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
 

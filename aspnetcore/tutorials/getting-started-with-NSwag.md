@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/21/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 5e62a8cc50947969d42981350b65a24781929d62
-ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
+ms.openlocfilehash: 23927e6ce0a7b29ce3f32d4e7f7d3f234257ca9b
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71691188"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416162"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>NSwag 與 ASP.NET Core 使用者入門
 
@@ -157,7 +157,7 @@ namespace MyNamespace
 ```
 
 > [!TIP]
-> C# 用戶端程式碼會根據 [Settings] \(設定\) 索引標籤中的選取項目來產生。修改設定以執行工作，例如重新命名預設的命名空間和產生同步方法。
+> C#用戶端程式代碼會根據 [**設定**] 索引標籤中的選取專案來產生。請修改設定以執行工作，例如預設命名空間重新命名和同步方法產生。
 
 * 將產生的 C# 程式碼複製到將取用 API 的用戶端專案中檔案。
 * 開始取用 Web API：
@@ -265,7 +265,7 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker range=">= aspnetcore-2.1"
 
- 由於 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而針對 Web API 動作建議使用的傳回型別是 [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult%601)，因此它只能推斷 `T` 所定義的傳回型別。 您無法自動推斷其他可能的傳回型別。
+由於 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而針對 Web API 動作建議使用的傳回型別是 [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult%601)，因此它只能推斷 `T` 所定義的傳回型別。 您無法自動推斷其他可能的傳回型別。
 
 參考下列範例：
 

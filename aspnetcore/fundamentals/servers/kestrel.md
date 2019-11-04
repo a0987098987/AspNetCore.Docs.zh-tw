@@ -5,14 +5,14 @@ description: 了解 Kestrel，這是 ASP.NET Core 的跨平台網頁伺服器。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/29/2019
+ms.date: 10/31/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: beaf6ac49359adfdc2dc24221eab04cc853646a9
-ms.sourcegitcommit: de0fc77487a4d342bcc30965ec5c142d10d22c03
+ms.openlocfilehash: bab751bc1453481a11114a7a8c0787fa5576e500
+ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73143438"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73427065"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -83,13 +83,13 @@ Kestrel 用作不需要反向 Proxy 伺服器的 Edge Server 時，不支援在�
 
 ## <a name="how-to-use-kestrel-in-aspnet-core-apps"></a>如何在 ASP.NET Core 應用程式中使用 Kestrel
 
-ASP.NET Core 專案範本預設會使用 Kestrel。 在 *Program.cs* 中，範本程式碼會呼叫 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*>，而後者會在幕後呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>。
+ASP.NET Core 專案範本預設會使用 Kestrel。 在*Program.cs*中，應用程式會呼叫 `ConfigureWebHostDefaults`，這會在幕後呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>。
 
-[!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
+[!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=8)]
 
-如需 `CreateDefaultBuilder` 和建立主機的詳細資訊，請參閱 <xref:fundamentals/host/generic-host#set-up-a-host> 的*設定主機*和預設產生器*設定*章節。
+如需建立主機的詳細資訊，請參閱 <xref:fundamentals/host/generic-host#set-up-a-host>的*設定主機*和*預設*產生器設定章節。
 
-若要在呼叫 `CreateDefaultBuilder` 並 `ConfigureWebHostDefaults` 之後提供額外的設定，請使用 `ConfigureKestrel`：
+若要在呼叫 `ConfigureWebHostDefaults` 之後提供額外的設定，請使用 `ConfigureKestrel`：
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -102,28 +102,6 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
             })
             .UseStartup<Startup>();
         });
-```
-
-如果應用程式未呼叫 `CreateDefaultBuilder` 來設定主機，請在呼叫 `ConfigureKestrel` **之前**，先呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>：
-
-```csharp
-public static void Main(string[] args)
-{
-    var host = new HostBuilder()
-        .UseContentRoot(Directory.GetCurrentDirectory())
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            webBuilder.UseKestrel(serverOptions =>
-            {
-                // Set properties and call methods on options
-            })
-            .UseIISIntegration()
-            .UseStartup<Startup>();
-        })
-        .Build();
-
-    host.Run();
-}
 ```
 
 ## <a name="kestrel-options"></a>Kestrel 選項

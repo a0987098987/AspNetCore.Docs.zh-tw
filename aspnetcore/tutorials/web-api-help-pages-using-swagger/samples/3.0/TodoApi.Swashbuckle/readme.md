@@ -10,12 +10,12 @@ products:
 - vs-code
 - vs-mac
 urlFragment: getstarted-swashbuckle-aspnetcore
-ms.openlocfilehash: 2b1da1d524eb18f1048314c544c64f82c22761e9
-ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
-ms.translationtype: HT
+ms.openlocfilehash: c3c11f8b8f93cf7256a787c09dec7a2fb1f4e8b7
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69988964"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416188"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -132,7 +132,7 @@ XML 註解可以使用下列方式啟用：
 
 #### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 以滑鼠右鍵按一下 [方案總管]  中的專案，然後選取 [編輯 <專案名稱>.csproj]  。
+* 以滑鼠右鍵按一下 [方案總管] 中的專案，然後選取 [編輯 <專案名稱>.csproj]。
 * 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
 ```xml
@@ -144,7 +144,7 @@ XML 註解可以使用下列方式啟用：
 
 #### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 從 [Solution Pad]  中，按下 [控制項]  ，然後按一下專案名稱。 巡覽至 [工具]   > [編輯檔案]  。
+* 從 [Solution Pad] 中，按下 [控制項]，然後按一下專案名稱。 巡覽至 [工具] > [編輯檔案]。
 * 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
 ```xml
@@ -179,7 +179,7 @@ warning CS1591: Missing XML comment for publicly visible type or member 'TodoCon
 <NoWarn>$(NoWarn);1591</NoWarn>
 ```
 
-若只要針對特定成員隱藏，請將程式碼放在 [#pragma 警告](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning)前置處理器指示詞中。 針對不應該透過 API 文件公開的程式碼，此方法非常有用。在下列範例中，會針對整個 `Program` 類別忽略警告碼 CS1591。 會在類別定義結尾處還原強制執行的警告碼。 以逗號分隔清單指定多個警告碼。
+若只要針對特定成員隱藏，請將程式碼放在 [#pragma 警告](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning)前置處理器指示詞中。 這個方法適用于不應透過 API 檔公開的程式碼。在下列範例中，會忽略整個 `Program` 類別的警告程式碼 CS1591。 會在類別定義結尾處還原強制執行的警告碼。 以逗號分隔清單指定多個警告碼。
 
 ```csharp
 namespace TodoApi
@@ -318,8 +318,8 @@ UI 是由產生的 JSON 結構描述所驅動：
 /// <response code="201">Returns the newly created item</response>
 /// <response code="400">If the item is null</response>            
 [HttpPost]
-[ProducesResponseType(201)]
-[ProducesResponseType(400)]
+[ProducesResponseType(StatusCodes.Status201Created)]
+[ProducesResponseType(StatusCodes.Status400BadRequest)]
 public ActionResult<TodoItem> Create(TodoItem item)
 {
     _context.TodoItems.Add(item);
@@ -393,7 +393,7 @@ public class TodoController : ControllerBase
 {
     private readonly TodoContext _context;
 ```
-[回應內容類型]  下拉式清單會選取此內容類型，作為控制器 GET 動作的預設值：
+[回應內容類型] 下拉式清單會選取此內容類型，作為控制器 GET 動作的預設值：
 
 ![含有預設回應內容類型的 Swagger UI](sample_images/json-response-content-type.png)
 
@@ -410,8 +410,8 @@ public class TodoController : ControllerBase
 /// <response code="201">Returns the newly created item</response>
 /// <response code="400">If the item is null</response>            
 [HttpPost]
-[ProducesResponseType(201)]
-[ProducesResponseType(400)]
+[ProducesResponseType(StatusCodes.Status201Created)]
+[ProducesResponseType(StatusCodes.Status400BadRequest)]
 public ActionResult<TodoItem> Create(TodoItem item)
 ```
 
@@ -421,4 +421,4 @@ public ActionResult<TodoItem> Create(TodoItem item)
 
 在 ASP.NET Core 2.2 或更新版本中，慣例可作為使用 `[ProducesResponseType]` 明確裝飾個別動作的替代方案。 如需詳細資訊，請參閱[使用 Web API 慣例](https://docs.microsoft.com/aspnet/core/web-api/advanced/conventions)。
 
-如需自訂 UI 的詳細資訊，請參閱：[自訂 UI](/aspnet/core/tutorials/getting-started-with-swashbuckle?#customize-and-extend)
+如需自訂 UI 的詳細資訊，請參閱[自訂 ui](/aspnet/core/tutorials/getting-started-with-swashbuckle?#customize-and-extend) 。

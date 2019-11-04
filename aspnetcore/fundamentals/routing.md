@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 8b4da4e1e262ec82225413d0338b3492d0b5e152
-ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
+ms.openlocfilehash: be4493cc927bd5437a2c9dab00b6a555756195bb
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73190512"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416129"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -127,7 +127,7 @@ URL 產生是路由可用來依據一組路由值建立 URL 路徑的處理序�
 >
 > * 使用 <xref:Microsoft.AspNetCore.Routing.LinkGenerator>，並注意與 `Map` 或 `MapWhen` 搭配使用的中介軟體。 `Map*` 會變更執行要求的基底路徑，這會影響連結產生的輸出。 所有的 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> API 都允許指定基底路徑。 請一律指定空白基底路徑來恢復 `Map*` 對連結產生的影響。
 
-## <a name="differences-from-earlier-versions-of-routing"></a>與舊版路由的差異
+## <a name="endpoint-routing-differences-from-earlier-versions-of-routing"></a>端點路由與舊版路由的差異
 
 端點路由和之前的路由版本之間存在一些差異，早于 ASP.NET Core 2.2：
 

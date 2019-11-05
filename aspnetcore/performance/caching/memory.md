@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何快取 ASP.NET Core 中的資料和記憶體。
 ms.author: riande
 ms.custom: mvc
-ms.date: 8/22/2019
+ms.date: 11/2/2019
 uid: performance/caching/memory
-ms.openlocfilehash: d6b2aa363c552fdbda7f6e9ec5d476768c17d8a5
-ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
+ms.openlocfilehash: 1114d154ed1af09958df63ae718712177bbf6db0
+ms.sourcegitcommit: 09f4a5ded39cc8204576fe801d760bd8b611f3aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72779185"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73611449"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>ASP.NET Core 中的記憶體快取
 
@@ -62,7 +62,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ctor)]
 
-下列程式碼會使用[TryGetValue](/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__)來檢查快取中是否有時間。 如果沒有快取時間，則會建立新的專案，並將其新增至已[設定](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.set?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_)的快取中。 @No__t_0 類別是下載範例的一部分。
+下列程式碼會使用[TryGetValue](/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__)來檢查快取中是否有時間。 如果沒有快取時間，則會建立新的專案，並將其新增至已[設定](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.set?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_)的快取中。 `CacheKeys` 類別是下載範例的一部分。
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/CacheKeys.cs)]
 
@@ -108,7 +108,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 ## <a name="use-setsize-size-and-sizelimit-to-limit-cache-size"></a>使用 SetSize、Size 和 SizeLimit 來限制快取大小
 
-@No__t_0 實例可以選擇性地指定並強制執行大小限制。 快取大小限制沒有定義的測量單位，因為快取沒有測量專案大小的機制。 如果已設定快取大小限制，所有專案都必須指定大小。 ASP.NET Core 執行時間不會根據記憶體壓力來限制快取大小。 開發人員需要限制快取大小。 指定的大小是開發人員選擇的單位。
+`MemoryCache` 實例可以選擇性地指定並強制執行大小限制。 快取大小限制沒有定義的測量單位，因為快取沒有測量專案大小的機制。 如果已設定快取大小限制，所有專案都必須指定大小。 ASP.NET Core 執行時間不會根據記憶體壓力來限制快取大小。 開發人員需要限制快取大小。 指定的大小是開發人員選擇的單位。
 
 例如:
 
@@ -136,7 +136,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 [!code-csharp[](memory/3.0sample/RPcache/Pages/SetSize.cshtml.cs?name=snippet)]
 
-@No__t_0 或 <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.SetSize*> 擴充方法可以設定快取專案的大小：
+<xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.Size> 或 <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.SetSize*> 擴充方法可以設定快取專案的大小：
 
 [!code-csharp[](memory/3.0sample/RPcache/Pages/SetSize.cshtml.cs?name=snippet2&highlight=9,10,14,15)]
 
@@ -158,15 +158,18 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例示範如果相依專案過期，如何讓快取專案過期。 已將 `CancellationChangeToken` 新增至快取的專案。 在 `CancellationTokenSource` 上呼叫 `Cancel` 時，這兩個快取專案都會被收回。
+下列範例示範如果相依專案過期，如何讓快取專案過期。 已將 <xref:Microsoft.Extensions.Primitives.CancellationChangeToken> 新增至快取的專案。 在 `CancellationTokenSource` 上呼叫 `Cancel` 時，這兩個快取專案都會被收回。
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ed)]
 
-使用 `CancellationTokenSource` 可讓多個快取專案收回為群組。 在上述程式碼中使用 `using` 模式時，在 `using` 區塊內建立的快取專案將會繼承觸發程式和到期設定。
+使用 <xref:System.Threading.CancellationTokenSource> 可讓多個快取專案收回為群組。 在上述程式碼中使用 `using` 模式時，在 `using` 區塊內建立的快取專案將會繼承觸發程式和到期設定。
 
 ## <a name="additional-notes"></a>其他備註
 
-* 到期不會在背景中發生。 沒有任何計時器會主動掃描快取中是否有過期的專案。 快取上的任何活動（`Get`、`Set`、`Remove`）都可以觸發過期專案的背景掃描。 @No__t_0 （`CancelAfter`）上的計時器也會移除專案，並觸發過期專案的掃描。 例如，不是使用 `SetAbsoluteExpiration(TimeSpan.FromHours(1))`，而是使用已註冊權杖的 `CancellationTokenSource.CancelAfter(TimeSpan.FromHours(1))`。 當此標記引發時，它會立即移除該專案，並引發收回回呼。 如需詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/Caching/issues/248)。
+* 到期不會在背景中發生。 沒有任何計時器會主動掃描快取中是否有過期的專案。 快取上的任何活動（`Get`、`Set`、`Remove`）都可以觸發過期專案的背景掃描。 `CancellationTokenSource` （<xref:System.Threading.CancellationTokenSource.CancelAfter*>）上的計時器也會移除專案，並觸發過期專案的掃描。 下列範例會使用[CancellationTokenSource （TimeSpan）](/dotnet/api/system.threading.cancellationtokensource.-ctor)作為已註冊的權杖。 當此標記引發時，它會立即移除該專案，並引發收回回呼：
+
+[!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ae)]
+
 * 使用回呼來重新擴展快取專案時：
 
   * 因為回呼尚未完成，所以多個要求可以將快取的金鑰值空白。
@@ -277,7 +280,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 ## <a name="use-setsize-size-and-sizelimit-to-limit-cache-size"></a>使用 SetSize、Size 和 SizeLimit 來限制快取大小
 
-@No__t_0 實例可以選擇性地指定並強制執行大小限制。 快取大小限制沒有定義的測量單位，因為快取沒有測量專案大小的機制。 如果已設定快取大小限制，所有專案都必須指定大小。 ASP.NET Core 執行時間不會根據記憶體壓力來限制快取大小。 開發人員需要限制快取大小。 指定的大小是開發人員選擇的單位。
+`MemoryCache` 實例可以選擇性地指定並強制執行大小限制。 快取大小限制沒有定義的測量單位，因為快取沒有測量專案大小的機制。 如果已設定快取大小限制，所有專案都必須指定大小。 ASP.NET Core 執行時間不會根據記憶體壓力來限制快取大小。 開發人員需要限制快取大小。 指定的大小是開發人員選擇的單位。
 
 例如:
 
@@ -327,7 +330,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例示範如果相依專案過期，如何讓快取專案過期。 已將 `CancellationChangeToken` 新增至快取的專案。 在 `CancellationTokenSource` 上呼叫 `Cancel` 時，這兩個快取專案都會被收回。
+下列範例示範如果相依專案過期，如何讓快取專案過期。 已將 <xref:Microsoft.Extensions.Primitives.CancellationChangeToken> 新增至快取的專案。 在 `CancellationTokenSource` 上呼叫 `Cancel` 時，這兩個快取專案都會被收回。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 

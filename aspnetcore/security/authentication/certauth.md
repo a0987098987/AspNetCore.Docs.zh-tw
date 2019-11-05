@@ -6,16 +6,16 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 08/19/2019
 uid: security/authentication/certauth
-ms.openlocfilehash: bb375cf380175daf2399f3b56f543819ee5692b8
-ms.sourcegitcommit: 07cd66e367d080acb201c7296809541599c947d1
+ms.openlocfilehash: 1e646aabb4e384e6906575e7beaa680e91f968a0
+ms.sourcegitcommit: e5d4768aaf85703effb4557a520d681af8284e26
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71039248"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73616571"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
-`Microsoft.AspNetCore.Authentication.Certificate`包含類似于 ASP.NET Core 的[憑證驗證](https://tools.ietf.org/html/rfc5246#section-7.4.4)的執行。 憑證驗證會在 TLS 層級進行，長時間才會到達 ASP.NET Core。 更準確地說，這是驗證憑證的驗證處理常式，並提供您可將該憑證解析成的`ClaimsPrincipal`事件。 
+`Microsoft.AspNetCore.Authentication.Certificate` 包含類似于 ASP.NET Core 的[憑證驗證](https://tools.ietf.org/html/rfc5246#section-7.4.4)的執行方式。 憑證驗證會在 TLS 層級進行，長時間才會到達 ASP.NET Core。 更準確地說，這是驗證憑證的驗證處理常式，並提供您可將該憑證解析成 `ClaimsPrincipal`的事件。 
 
 [設定您的主機](#configure-your-host-to-require-certificates)以進行憑證驗證，其為 IIS、Kestrel、Azure Web Apps 或您所使用的任何其他。
 
@@ -32,11 +32,11 @@ ms.locfileid: "71039248"
 
 取得 HTTPS 憑證並加以套用，並[將您的主機設定](#configure-your-host-to-require-certificates)為需要憑證。
 
-在您的 web 應用程式中，新增對`Microsoft.AspNetCore.Authentication.Certificate`封裝的參考。 然後在`Startup.Configure`方法中，使用`app.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).UseCertificateAuthentication(...);`您的選項呼叫`OnCertificateValidated` ，提供的委派，以在隨要求傳送的用戶端憑證上執行任何補充驗證。 將該資訊轉換成`ClaimsPrincipal` ，並`context.Principal`在屬性上設定它。
+在您的 web 應用程式中，新增 `Microsoft.AspNetCore.Authentication.Certificate` 封裝的參考。 然後在 `Startup.ConfigureServices` 方法中，使用您的選項呼叫 `services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).UseCertificateAuthentication(...);`，並提供委派給 `OnCertificateValidated`，以在隨要求一起傳送的用戶端憑證上執行任何補充驗證。 將該資訊轉換成 `ClaimsPrincipal`，並在 `context.Principal` 屬性上進行設定。
 
-如果驗證失敗，此處理程式`403 (Forbidden)`會傳迴響應， `401 (Unauthorized)`而不是，如您所預期。 其原因是必須在初始 TLS 連線期間進行驗證。 當它到達處理常式時，就太晚了。 沒有任何方法可將連接從匿名連接升級為具有憑證的連線。
+如果驗證失敗，此處理程式會傳回 `403 (Forbidden)` 回應，而不是如您所預期的 `401 (Unauthorized)`。 其原因是必須在初始 TLS 連線期間進行驗證。 當它到達處理常式時，就太晚了。 沒有任何方法可將連接從匿名連接升級為具有憑證的連線。
 
-此外， `app.UseAuthentication();` `Startup.Configure`也會在方法中新增。 否則，HttpCoNtext 使用者將不會設定為`ClaimsPrincipal`從憑證建立。 例如:
+此外，也請在 `Startup.Configure` 方法中新增 `app.UseAuthentication();`。 否則，HttpCoNtext 使用者將不會設定為從憑證建立 `ClaimsPrincipal`。 例如:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -59,7 +59,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="configure-certificate-validation"></a>設定憑證驗證
 
-`CertificateAuthenticationOptions`處理常式有一些內建的驗證，這是您應該在憑證上執行的最小驗證。 預設會啟用這些設定。
+`CertificateAuthenticationOptions` 處理常式有一些內建的驗證，這是您應該在憑證上執行的最小驗證。 預設會啟用這些設定。
 
 ### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>AllowedCertificateTypes = 連鎖、Lnk-selfsigned 之類或 All （連鎖 |Lnk-selfsigned 之類
 
@@ -95,8 +95,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 此處理程式有兩個事件：
 
-* `OnAuthenticationFailed`&ndash;如果在驗證期間發生例外狀況，並可讓您做出回應，則呼叫。
-* `OnCertificateValidated`&ndash;在驗證憑證後呼叫，通過驗證並建立預設主體。 此事件可讓您執行自己的驗證，並增強或取代主體。 範例包括：
+* 如果在驗證期間發生例外狀況，則會呼叫 `OnAuthenticationFailed` &ndash;，並可讓您做出回應。
+* 在驗證憑證後呼叫 &ndash; `OnCertificateValidated`，通過驗證並已建立預設主體。 此事件可讓您執行自己的驗證，並增強或取代主體。 範例包括：
   * 判斷您的服務是否知道憑證。
   * 建立您自己的主體。 請考慮 `Startup.ConfigureServices` 中的下列範例：
 
@@ -132,7 +132,7 @@ services.AddAuthentication(
     });
 ```
 
-如果您發現輸入憑證不符合您的額外驗證，請`context.Fail("failure reason")`呼叫失敗原因。
+如果您發現輸入憑證不符合您的額外驗證，請呼叫 `context.Fail("failure reason")`，但發生失敗原因。
 
 針對實際的功能，您可能會想要呼叫在相依性插入中註冊的服務，而這些相依性會連接到資料庫或其他類型的使用者存放區。 使用傳入委派的內容存取您的服務。 請考慮 `Startup.ConfigureServices` 中的下列範例：
 
@@ -177,7 +177,7 @@ services.AddAuthentication(
     });
 ```
 
-就概念而言，驗證憑證是一項授權考慮。 在授權原則中新增核取簽發者或指紋，而不是在內部`OnCertificateValidated`，是完全可接受的。
+就概念而言，驗證憑證是一項授權考慮。 例如，在授權原則中新增核取簽發者或指紋，而不是在 `OnCertificateValidated`內，是完全可接受的。
 
 ## <a name="configure-your-host-to-require-certificates"></a>將您的主機設定為需要憑證
 

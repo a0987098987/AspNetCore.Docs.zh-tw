@@ -5,14 +5,14 @@ description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 11/03/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: be67c129af4f071d10719e0bbf121de761dde9f4
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: d1b9e6ab7ba93c00a569be309f2334df9e3f4140
+ms.sourcegitcommit: e5d4768aaf85703effb4557a520d681af8284e26
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034000"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73616596"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -133,7 +133,7 @@ Blazor 伺服器應用程式應該經過優化，藉由減少網路延遲和記�
 
 Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果連接中斷，應用程式會嘗試重新連線到伺服器。 只要用戶端的狀態仍在記憶體中，用戶端會話就會繼續，而不會失去狀態。
 
-當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。 若要自訂 UI，請在 *_Host*的 [Razor] 頁面中，以 `components-reconnect-modal` 做為其 `id` 定義元素。 用戶端會根據連接的狀態，使用下列其中一個 CSS 類別來更新這個元素：
+當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。 若要自訂 UI，請在 *_Host. cshtml* Razor 頁面中，使用 `components-reconnect-modal` 做為其 `id` 來定義元素。 用戶端會根據連接的狀態，使用下列其中一個 CSS 類別來更新這個元素：
 
 * `components-reconnect-show` &ndash; 顯示 UI，表示連線中斷，而且用戶端正在嘗試重新連線。
 * `components-reconnect-hide` &ndash; 用戶端有作用中的連線，請隱藏 UI。
@@ -144,7 +144,23 @@ Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果
 
 ### <a name="stateful-reconnection-after-prerendering"></a>預呈現後的具狀態重新連接
 
-在建立伺服器的用戶端連接之前，預設會設定 Blazor 伺服器應用程式，以預先呈現伺服器上的 UI。 這是在 *_Host* Razor 頁面中設定：
+在建立伺服器的用戶端連接之前，預設會設定 Blazor 伺服器應用程式，以預先呈現伺服器上的 UI。 這會在 *_Host. cshtml* Razor 頁面中設定：
+
+::: moniker range=">= aspnetcore-3.1"
+
+```cshtml
+<body>
+    <app>
+      <component type="typeof(App)" render-mode="ServerPrerendered" />
+    </app>
+
+    <script src="_framework/blazor.server.js"></script>
+</body>
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
 
 ```cshtml
 <body>
@@ -154,10 +170,24 @@ Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果
 </body>
 ```
 
+::: moniker-end
+
 `RenderMode` 會設定元件是否：
 
 * 會資源清單到頁面中。
 * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動 Blazor 應用程式所需的資訊。
+
+::: moniker range=">= aspnetcore-3.1"
+
+| `RenderMode`        | 描述 |
+| ------------------- | ----------- |
+| `ServerPrerendered` | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+| `Server`            | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+| `Static`            | 將元件轉譯為靜態 HTML。 |
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
 
 | `RenderMode`        | 描述 |
 | ------------------- | ----------- |
@@ -165,9 +195,65 @@ Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果
 | `Server`            | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 不支援參數。 |
 | `Static`            | 將元件轉譯為靜態 HTML。 支援參數。 |
 
+::: moniker-end
+
 不支援從靜態 HTML 網頁轉譯伺服器元件。
 
-用戶端會重新連線至伺服器，其狀態與用來呈現應用程式的狀態相同。 如果應用程式的狀態仍在記憶體中，則在建立 SignalR 連接之後，元件狀態不會重新顯示。
+當 `RenderMode` `ServerPrerendered`時，元件一開始會以靜態方式轉譯為頁面的一部分。 當瀏覽器建立回到伺服器的連接後，就會*再次*轉譯該元件，而且該元件現在是互動式的。 如果有用來初始化元件的[生命週期方法](xref:blazor/components#lifecycle-methods)（`OnInitialized{Async}`），則會執行*兩次*方法：
+
+* 當元件以靜態方式資源清單時。
+* 建立伺服器連接之後。
+
+這可能會導致在最後呈現元件時，UI 中顯示的資料有明顯的變更。
+
+若要避免 Blazor 伺服器應用程式中的雙呈現案例：
+
+* 傳入識別碼，可在自動處理期間用來快取狀態，並在應用程式重新開機之後，取得狀態。
+* 在預入期間使用識別碼來儲存元件狀態。
+* 在可呈現後使用識別碼，以取得快取的狀態。
+
+下列程式碼示範以範本為基礎的 Blazor 伺服器應用程式中，可避免雙重呈現的更新 `WeatherForecastService`：
+
+```csharp
+public class WeatherForecastService
+{
+    private static readonly string[] Summaries = new[]
+    {
+        "Freezing", "Bracing", "Chilly", "Cool", "Mild",
+        "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+    };
+    
+    public WeatherForecastService(IMemoryCache memoryCache)
+    {
+        MemoryCache = memoryCache;
+    }
+    
+    public IMemoryCache MemoryCache { get; }
+
+    public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
+    {
+        return MemoryCache.GetOrCreateAsync(startDate, async e =>
+        {
+            e.SetOptions(new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = 
+                    TimeSpan.FromSeconds(30)
+            });
+
+            var rng = new Random();
+
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = startDate.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            }).ToArray();
+        });
+    }
+}
+```
 
 ### <a name="render-stateful-interactive-components-from-razor-pages-and-views"></a>從 Razor 頁面和 views 轉譯具狀態的互動式元件
 
@@ -181,15 +267,63 @@ Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果
 
 下列 Razor 頁面會呈現 `Counter` 元件：
 
+::: moniker range=">= aspnetcore-3.1"
+
+```cshtml
+<h1>My Razor Page</h1>
+
+<component type="typeof(Counter)" render-mode="ServerPrerendered" 
+    param-InitialValue="InitialValue" />
+
+@code {
+    [BindProperty(SupportsGet=true)]
+    public int InitialValue { get; set; }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
+
 ```cshtml
 <h1>My Razor Page</h1>
 
 @(await Html.RenderComponentAsync<Counter>(RenderMode.ServerPrerendered))
+
+@code {
+    [BindProperty(SupportsGet=true)]
+    public int InitialValue { get; set; }
+}
 ```
+
+::: moniker-end
 
 ### <a name="render-noninteractive-components-from-razor-pages-and-views"></a>從 Razor 頁面和 views 轉譯非互動式元件
 
 在下列 Razor 頁面中，`MyComponent` 元件會以靜態方式轉譯，並使用下列格式指定的初始值：
+
+::: moniker range=">= aspnetcore-3.1"
+
+```cshtml
+<h1>My Razor Page</h1>
+
+<form>
+    <input type="number" asp-for="InitialValue" />
+    <button type="submit">Set initial value</button>
+</form>
+
+<component type="typeof(Counter)" render-mode="Static" 
+    param-InitialValue="InitialValue" />
+
+@code {
+    [BindProperty(SupportsGet=true)]
+    public int InitialValue { get; set; }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
 
 ```cshtml
 <h1>My Razor Page</h1>
@@ -207,6 +341,8 @@ Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果
     public int InitialValue { get; set; }
 }
 ```
+
+::: moniker-end
 
 因為 `MyComponent` 是以靜態方式轉譯，所以元件不能是互動式的。
 

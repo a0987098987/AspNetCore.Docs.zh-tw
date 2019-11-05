@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/29/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 98df1aa1671c22384252676c56e8cb4a3a0a35eb
-ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
+ms.openlocfilehash: 5ed5fb61e5989b291523332c6a2ec332f9ca0f6b
+ms.sourcegitcommit: e5d4768aaf85703effb4557a520d681af8284e26
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73190497"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73616612"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Spa 的驗證和授權
 
@@ -175,7 +175,7 @@ dotnet new react -o <output_directory_name> -au Individual
 services.AddAuthentication()
     .AddIdentityServerJwt();
 
-services.ConfigureOptions<JwtBearerOptions>(
+services.Configure<JwtBearerOptions>(
     IdentityServerJwtConstants.IdentityServerJwtBearerScheme,
     options =>
     {

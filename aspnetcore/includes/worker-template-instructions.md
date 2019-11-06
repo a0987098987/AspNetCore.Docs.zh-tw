@@ -10,7 +10,7 @@
 1. 建立新的專案。
 1. 在提要欄位中選取 [ **.Net Core** ] 底下的 [**應用程式**]。
 1. 選取  **ASP.NET Core**下的 背景**工作角色**。 選取 [下一步]。
-1. 針對 [**目標 Framework**] 選取 [ **.net Core 3.0** ]。 選取 [下一步]。
+1. 針對**目標 Framework**選取 [ **.net Core 3.0** ] 或更新版本。 選取 [下一步]。
 1. 在 [**專案名稱**] 欄位中提供名稱。 選取 [建立]。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
@@ -20,3 +20,5 @@
 ```dotnetcli
 dotnet new worker -o ContosoWorker
 ```
+
+---

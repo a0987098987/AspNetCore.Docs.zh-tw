@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/05/2019
 uid: performance/memory
-ms.openlocfilehash: 48397e9fe7da912c1930f17fb86b686f0a20c60e
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: 8f6b47ecde6f265bfb9437234b89f11f7d235869
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/06/2019
-ms.locfileid: "73638238"
+ms.locfileid: "73660007"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>ASP.NET Core 中的記憶體管理和垃圾收集（GC）
 
@@ -70,7 +70,7 @@ GC 會配置堆積區段，其中每個區段都是連續的記憶體範圍。 �
 
 [MemoryLeak 範例應用程式](https://github.com/sebastienros/memoryleak)可在 GitHub 上取得。 MemoryLeak 應用程式：
 
-* 包含診斷控制器，它會收集應用程式的實際 tine 記憶體和 GC 資料。
+* 包含診斷控制器，可收集應用程式的即時記憶體和 GC 資料。
 * 具有顯示記憶體和 GC 資料的 [索引] 頁面。 [索引] 頁面會每秒重新整理一次。
 * 包含可提供各種記憶體負載模式的 API 控制器。
 * 不是支援的工具，不過，它可以用來顯示 ASP.NET Core 應用程式的記憶體使用模式。
@@ -114,7 +114,7 @@ public ActionResult<string> GetBigString()
 
 上圖顯示：
 
-* 22 RPS
+* 22K RPS
 * 層代 0 GC 回收每秒發生數次。
 * 系統會觸發第1代集合，因為應用程式每秒配置的記憶體會大幅增加。
 * 工作集在大約 500 MB 是常數。

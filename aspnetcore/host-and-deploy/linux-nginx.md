@@ -5,14 +5,14 @@ description: 了解如何在 Ubuntu 16.04 上將 Nginx 設定為反向 Proxy，�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/31/2019
+ms.date: 11/05/2019
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: b71bc0464892f15ef8db0324a8e66a28a6192577
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: c6ae86ec9ac54ddf2d487fd72156199fbdd029ef
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080866"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73659867"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "71080866"
 * 確保 Web 應用程式在啟動時以精靈的形式執行。
 * 設定程序管理工具以協助重新啟動 Web 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器。
 1. 在伺服器上安裝 .NET Core 執行階段。
@@ -104,11 +104,11 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/proxy-load-balancer>。
+如需詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
 
 ### <a name="install-nginx"></a>安裝 Nginx
 
-使用 `apt-get` 來安裝 Nginx。 安裝程式建立的 *systemd* init 指令碼，會在系統啟動時將 Nginx 執行為精靈。 請遵循 [Nginx：Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (官方 Debian/Ubuntu 套件) 中適用於 Ubuntu 的安裝指示。
+使用 `apt-get` 來安裝 Nginx。 安裝程式建立的 *systemd* init 指令碼，會在系統啟動時將 Nginx 執行為精靈。 請遵循 [Nginx：Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (Nginx：官方 Debian/Ubuntu 套件) 中適用於 Ubuntu 的安裝指示。
 
 > [!NOTE]
 > 如果需要選用的 Nginx 模組，可能要從來源建置 Nginx。
@@ -287,7 +287,7 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 
 ## <a name="long-request-header-fields"></a>要求標頭欄位太長
 
-如果應用程式所需的要求標頭欄位長度超過 Proxy 伺服器的預設設定 (視平台而定通常為 4K 或 8K)，下列指示詞需要調整。 要套用的值會因案例而異。 如需詳細資訊，請參閱您的伺服器文件。
+Proxy 伺服器預設設定通常會將要求標頭欄位限制為 4 K 或 8 K （視平臺而定）。 應用程式可能需要比預設值更長的欄位（例如，使用[Azure Active Directory](https://azure.microsoft.com/services/active-directory/)的應用程式）。 如果需要較長的欄位，proxy 伺服器的預設設定需要調整。 要套用的值取決於案例。 如需詳細資訊，請參閱您的伺服器文件。
 
 * [proxy_buffer_size](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_buffer_size)
 * [proxy_buffers](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_buffers)
@@ -392,12 +392,12 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 sudo nano /etc/nginx/nginx.conf
 ```
 
-新增行 `add_header X-Content-Type-Options "nosniff";` 並儲存檔案，然後重新啟動 Nginx。
+新增 `add_header X-Content-Type-Options "nosniff";` 行並儲存檔案，然後重新啟動 Nginx。
 
 ## <a name="additional-resources"></a>其他資源
 
 * [Linux 上 .NET Core 的必要條件](/dotnet/core/linux-prerequisites)
-* [Nginx：Binary Releases:Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (二進位版本：官方 Debian/Ubuntu 套件)
+* [Nginx: Binary Releases: Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (Nginx：二進位版本：正式的 Debian Ubuntu 套件)
 * <xref:test/troubleshoot>
 * <xref:host-and-deploy/proxy-load-balancer>
-* [NGINX：Using the Forwarded header](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/) (使用轉送的標頭)
+* [NGINX：使用轉送的標頭](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/)

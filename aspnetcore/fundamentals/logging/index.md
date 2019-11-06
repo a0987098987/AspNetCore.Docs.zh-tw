@@ -5,14 +5,14 @@ description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/08/2019
+ms.date: 11/05/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 697e6cf0cd1b51ad6c2942e21bc084d1fe6bfa4e
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 2cb19d251ad69ebd7d18480c14857e948c69b747
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259742"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73659964"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
@@ -131,6 +131,69 @@ ms.locfileid: "72259742"
 
 [!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
 
+不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來登入 `CreateHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
+
+```csharp
+using System;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args)
+    {
+        var builtConfig = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .AddCommandLine(args)
+            .Build();
+
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .WriteTo.File(builtConfig["Logging:FilePath"])
+            .CreateLogger();
+
+        try
+        {
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddRazorPages();
+                })
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddConfiguration(builtConfig);
+                })
+                .ConfigureLogging(logging =>
+                {   
+                    logging.AddSerilog();
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+        }
+        catch (Exception ex)
+        {
+            Log.Fatal(ex, "Host builder error");
+
+            throw;
+        }
+        finally
+        {
+            Log.CloseAndFlush();
+        }
+    }
+}
+```
+
 ### <a name="create-logs-in-the-startup-class"></a>在 Startup 類別中建立記錄
 
 若要在 ASP.NET Core 應用程式的 `Startup.Configure` 方法中寫入記錄，請在方法簽章中包含 `ILogger` 參數：
@@ -168,13 +231,73 @@ ms.locfileid: "72259742"
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
 
+不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來登入 `CreateWebHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
+
+```csharp
+using System;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var builtConfig = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .AddCommandLine(args)
+            .Build();
+
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .WriteTo.File(builtConfig["Logging:FilePath"])
+            .CreateLogger();
+
+        try
+        {
+            return WebHost.CreateDefaultBuilder(args)
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddMvc();
+                })
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddConfiguration(builtConfig);
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.AddSerilog();
+                })
+                .UseStartup<Startup>();
+        }
+        catch (Exception ex)
+        {
+            Log.Fatal(ex, "Host builder error");
+
+            throw;
+        }
+        finally
+        {
+            Log.CloseAndFlush();
+        }
+    }
+}
+```
+
 ::: moniker-end
 
 ### <a name="no-asynchronous-logger-methods"></a>無非同步記錄器方法
 
 記錄速度應該很快，不值得花費非同步程式碼的效能成本來處理。 若您的記錄資料存放區很慢，請不要直接寫入其中。 請考慮一開始將記錄寫入到快速的存放區，稍後再將它們移到慢速存放區。 例如，如果您要登入 SQL Server，您不希望在 `Log` 方法中直接執行，因為 `Log` 方法是同步的。 相反地，以同步方式將記錄訊息新增到記憶體內佇列，並讓背景工作角色提取出佇列的訊息，藉此執行推送資料到 SQL Server 的非同步工作。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>Configuration
 
 記錄提供者設定是由一或多個記錄提供者提供：
 
@@ -374,7 +497,7 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 偵錯 = 1
 
-  針對可在開發與偵錯中使用的資訊。 範例：`Entering method Configure with flag set to true.` 只有在進行疑難排解時才在生產環境中啟用 `Debug` 層級記錄，因為此類記錄的數目非常多。
+  針對可在開發與偵錯中使用的資訊。 範例：`Entering method Configure with flag set to true.` 由於記錄的數目很龐大，因此除非您正在進行疑難排解，否則通常不會在生產環境中啟用 `Debug` 層級記錄。
 
 * 資訊 = 2
 
@@ -395,11 +518,11 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如:
 
 * 在生產環境中：
-  * 在 `Trace` 到 @no__t 1 層級的記錄，會產生大量的詳細記錄訊息。 若要控制成本，而不超過資料儲存體限制，請記錄 `Trace` 到高容量、低成本的資料存放區，@no__t 1 層級的訊息。
-  * 在 `Warning` 到 @no__t 1 層級的記錄，通常會產生較少、較小的記錄檔訊息。 因此，成本和儲存體限制通常不會造成問題，因此可讓您更靈活地選擇資料存放區。
+  * 在 `Trace` 透過 `Information` 層級進行記錄，會產生大量的詳細記錄訊息。 若要控制成本，而不超過資料儲存體限制，請透過 `Information` 層級的訊息，將 `Trace` 記錄到高容量、低成本的資料存放區。
+  * 透過 `Critical` 層級的 `Warning` 記錄通常會產生較少、較小的記錄檔訊息。 因此，成本和儲存體限制通常不會造成問題，因此可讓您更靈活地選擇資料存放區。
 * 在開發期間：
-  * 記錄 `Warning` 到主控台的 `Critical` 則訊息。
-  * 進行疑難排解時，將 `Trace` 到 `Information` 訊息。
+  * 透過 `Critical` 訊息，將 `Warning` 記錄到主控台。
+  * 進行疑難排解時，透過 `Information` 訊息新增 `Trace`。
 
 本文稍後的[記錄篩選](#log-filtering)一節將說明如何控制提供者所處理的記錄層級。
 
@@ -623,12 +746,12 @@ System.Exception: Item not found exception.
 
 組態資料和上述範例中所示的 `AddFilter` 程式碼會建立下表中所示的規則。 前六項來自組態範例，最後兩項來自程式碼範例。
 
-| Number | 提供者      | 開頭如下的類別...          | 最低記錄層級 |
+| number | Provider      | 開頭如下的類別...          | 最低記錄層級 |
 | :----: | ------------- | --------------------------------------- | ----------------- |
 | 1      | 偵錯         | 所有類別                          | 內容       |
 | 2      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Internal | 警告           |
 | 3      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Razor    | 偵錯             |
-| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
+| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | 錯誤             |
 | 5      | 主控台       | 所有類別                          | 內容       |
 | 6      | 所有提供者 | 所有類別                          | 偵錯             |
 | 7      | 所有提供者 | 系統                                  | 偵錯             |
@@ -701,7 +824,7 @@ System.Exception: Item not found exception.
 
 以下是由 ASP.NET Core 與 Entity Framework Core 所使用的一些類別，以及有關它們可傳回哪些記錄的附註：
 
-| Category                            | 注意 |
+| Category                            | 備註 |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | 一般 ASP.NET Core 診斷。 |
 | Microsoft.AspNetCore.DataProtection | 已考慮、發現及使用哪些金鑰。 |
@@ -767,7 +890,7 @@ warn: TodoApiSample.Controllers.TodoController[4000]
 
 ASP.NET Core 隨附下列提供者：
 
-* [Console](#console-provider)
+* [主控台](#console-provider)
 * [偵錯](#debug-provider)
 * [EventSource](#eventsource-provider)
 * [EventLog](#windows-eventlog-provider)

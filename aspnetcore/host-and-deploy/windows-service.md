@@ -5,22 +5,22 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/10/2019
+ms.date: 10/30/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: b02e627af875f15a81d68b0d625a2eccf25c0657
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 014585cd1e170fc94f7f577e11ec19824e54572f
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333794"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73659860"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
-作者：[Luke Latham](https://github.com/guardrex) 和 [Tom Dykstra](https://github.com/tdykstra)
+作者：[Luke Latham](https://github.com/guardrex)
 
 ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications)，不需要使用 IIS。 當裝載為 Windows 服務時，應用程式將會在伺服器重新開機後自動啟動。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -38,15 +38,15 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 [!INCLUDE[](~/includes/worker-template-instructions.md)]
 
----
-
 ::: moniker-end
 
 ## <a name="app-configuration"></a>應用程式設定
 
 ::: moniker range=">= aspnetcore-3.0"
 
-在建置主機時，將呼叫由 [Microsoft.Extensions.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices) 套件提供的 `IHostBuilder.UseWindowsService`。 如果應用程式以 Windows 服務形式執行，則方法會：
+應用程式需要[WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices)的套件參考。
+
+建立主機時，會呼叫 `IHostBuilder.UseWindowsService`。 如果應用程式以 Windows 服務形式執行，則方法會：
 
 * 將主機存留期設定為 `WindowsServiceLifetime`。
 * 設定[內容根目錄](xref:fundamentals/index#content-root)。
@@ -54,7 +54,20 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
   * 您可以使用 *appsettings.Production.json* 檔案中的 `Logging:LogLevel:Default` 機碼來設定記錄層級。
   * 只有系統管理員才能建立新的事件來源。 如果無法使用應用程式名稱建立事件來源，則會向「應用程式」來源記錄警告，並停用事件記錄檔。
 
-[!code-csharp[](windows-service/samples/3.x/AspNetCoreService/Program.cs?name=snippet_Program)]
+在*Program.cs*的 `CreateHostBuilder` 中：
+
+```csharp
+Host.CreateDefaultBuilder(args)
+    .UseWindowsService()
+    ...
+```
+
+本主題隨附的下列範例應用程式：
+
+* 背景工作角色服務範例會根據背景工作使用[託管服務](xref:fundamentals/host/hosted-services)的[工作者服務範本](#worker-service-template)，&ndash; 非 web 應用程式範例。
+* Web App Service 範例 &ndash; Razor Pages web 應用程式範例，其以 Windows 服務的形式執行，並具有適用于背景工作的[託管服務](xref:fundamentals/host/hosted-services)。
+
+如需 MVC 指引，請參閱 <xref:mvc/overview> 和 <xref:migration/22-to-30>底下的文章。
 
 ::: moniker-end
 
@@ -81,24 +94,31 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 如需詳細資訊與部署案例建議，請參閱 [.NET Core 應用程式部署](/dotnet/core/deploying/)。
 
+### <a name="sdk"></a>SDK
+
+針對使用 Razor Pages 或 MVC 架構的 web 應用程式服務，請在專案檔中指定 Web SDK：
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+```
+
+如果服務只執行背景工作（例如，[託管服務](xref:fundamentals/host/hosted-services)），請在專案檔中指定工作者 SDK：
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+```
+
 ### <a name="framework-dependent-deployment-fdd"></a>架構相依部署 (FDD)
 
 架構相依部署 (FDD) 仰賴存在於目標系統上的全系統共用 .NET Core 版本。 依照此文章中的指導方針採用 FDD 案例時，SDK 會產生可執行檔 ( *.exe*)，稱為「架構相依可執行檔」。
 
 ::: moniker range=">= aspnetcore-3.0"
 
-將下列屬性元素新增至專案檔：
-
-* `<OutputType>` &ndash; 應用程式的輸出類型 (`Exe` 表示可執行檔)。
-* `<LangVersion>` &ndash; C# 語言版本 (`latest` 或 `preview`)。
-
-針對 Windows Services 應用程式，不需要 *web.config* 檔案 (發行 ASP.NET Core 應用程式時通常會產生此檔案)。 若要停用 *web.config* 檔案的建立，請新增 `<IsTransformWebConfigDisabled>` 屬性集到 `true`。
+如果使用[WEB SDK](#sdk)，通常是在發佈 ASP.NET Core 應用程式時所*產生的 web.config*檔案，對於 Windows 服務應用程式而言是不必要的。 若要停用 *web.config* 檔案的建立，請新增 `<IsTransformWebConfigDisabled>` 屬性集到 `true`。
 
 ```xml
 <PropertyGroup>
   <TargetFramework>netcoreapp3.0</TargetFramework>
-  <OutputType>Exe</OutputType>
-  <LangVersion>preview</LangVersion>
   <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
 </PropertyGroup>
 ```
@@ -132,7 +152,7 @@ Windows [執行階段識別碼 (RID)](/dotnet/core/rid-catalog) ([\<RuntimeIdent
 
 ```xml
 <PropertyGroup>
-  <TargetFramework>netcoreapp2.1</TargetFramework>
+  <TargetFramework>netcoreapp2.2</TargetFramework>
   <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
   <UseAppHost>true</UseAppHost>
   <SelfContained>false</SelfContained>

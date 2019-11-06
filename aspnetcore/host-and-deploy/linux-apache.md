@@ -5,14 +5,14 @@ description: 了解如何在 CentOS 上將 Apache 設定為反向 Proxy 伺服�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: shboyer
 ms.custom: mvc
-ms.date: 03/31/2019
+ms.date: 11/05/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: ec14bce5d8ada9a56ccc44d1159373dc73a09c1b
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: fce91db736908e433ba6803319aa8984bb68a554
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081886"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73659891"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "71081886"
 
 使用本指南來了解如何在 [CentOS 7](https://www.centos.org/) 上將 [Apache](https://httpd.apache.org/) 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器上執行的 ASP.NET Core Web 應用程式。 [mod_proxy 延伸模組](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html)和相關的模組會建立伺服器的反向 Proxy。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 執行 CentOS 7 的伺服器搭配具有 sudo 權限的標準使用者帳戶。
 * 在伺服器上安裝 .NET Core 執行階段。
@@ -83,7 +83,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/proxy-load-balancer>。
+如需詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
 
 ### <a name="install-apache"></a>安裝 Apache
 
@@ -484,7 +484,7 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
 
 ### <a name="long-request-header-fields"></a>要求標頭欄位太長
 
-如果應用程式所需的要求標頭欄位長度超過 Proxy 伺服器的預設設定 (通常為 8,190 個位元組)，請調整 [LimitRequestFieldSize](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize) 指示詞的值。 要套用的值會因案例而異。 如需詳細資訊，請參閱您的伺服器文件。
+Proxy 伺服器預設設定通常會將要求標頭欄位限制為8190個位元組。 應用程式可能需要比預設值更長的欄位（例如，使用[Azure Active Directory](https://azure.microsoft.com/services/active-directory/)的應用程式）。 如果需要較長的欄位，proxy 伺服器的[LimitRequestFieldSize](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize)指示詞需要調整。 要套用的值取決於案例。 如需詳細資訊，請參閱您的伺服器文件。
 
 > [!WARNING]
 > 除非必要，否則請勿增加 `LimitRequestFieldSize` 的預設值。 增加此值會提高緩衝區溢位及惡意使用者發動拒絕服務 (DoS) 攻擊的風險。

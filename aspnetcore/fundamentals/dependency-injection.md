@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 如何實作相依性插入以及如何使用�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/12/2019
+ms.date: 11/05/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: b07ed6d1c23454c95778a5942de615684b70bc36
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: c46e7322e86c2836a15bd0720995a8634bb185be
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589894"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634016"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -180,7 +180,7 @@ public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
 
 ## <a name="framework-provided-services"></a>架構提供的服務
 
-@No__t_0 方法負責定義應用程式所使用的服務，包括平臺功能，例如 Entity Framework Core 和 ASP.NET Core MVC。 一開始，根據[主機的設定方式](xref:fundamentals/index#host)，提供給 `ConfigureServices` 的 `IServiceCollection` 具有架構所定義的服務。 以 ASP.NET Core 範本為基礎的應用程式，在架構中註冊數百項服務並不常見。 下表列出架構註冊服務的小型範例。
+`Startup.ConfigureServices` 方法負責定義應用程式所使用的服務，包括平臺功能，例如 Entity Framework Core 和 ASP.NET Core MVC。 一開始，根據[主機的設定方式](xref:fundamentals/index#host)，提供給 `ConfigureServices` 的 `IServiceCollection` 具有架構所定義的服務。 以 ASP.NET Core 範本為基礎的應用程式，在架構中註冊數百項服務並不常見。 下表列出架構註冊服務的小型範例。
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -571,7 +571,7 @@ public class Program
 最佳做法是：
 
 * 設計服務以使用相依性插入來取得其相依性。
-* 避免具狀態的靜態方法呼叫。
+* 避免具狀態的靜態類別和成員。 將應用程式設計成使用單一服務，以避免建立全域狀態。
 * 避免直接在服務內具現化相依類別。 直接具現化會將程式碼耦合到特定實作。
 * 讓應用程式類別維持在小型、情況良好且可輕鬆測試的狀態。
 

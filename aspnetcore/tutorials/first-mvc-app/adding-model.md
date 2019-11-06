@@ -5,12 +5,12 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 8/15/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 5ad31a2536ad70590eaa767cf20068512241f36b
-ms.sourcegitcommit: 14b25156e34c82ed0495b4aff5776ac5b1950b5e
+ms.openlocfilehash: d6d75bcbab875c08bfff532d968013dca323beed
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71295467"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634117"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
@@ -112,7 +112,7 @@ using Microsoft.EntityFrameworkCore;
 
 ---
 
-連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
+連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core configuration system](xref:fundamentals/configuration/index) 會從 *appsettings.json* 檔案讀取連接字串。
 
 <a name="cs"></a>
 
@@ -148,13 +148,13 @@ using Microsoft.EntityFrameworkCore;
 
 完成 [新增控制器] 對話方塊：
 
-* **模型類別：** Movie (MvcMovie.Models)
-* **資料內容類別：** *MvcMovieContext (MvcMovie.Data)*
+* **模型類別:** *Movie (MvcMovie.Models)*
+* **資料內容類別：** *mvcmoviecoNtext.cs （MvcMovie. Data）*
 
 ![新增資料內容](adding-model/_static/dc3.png)
 
 * **檢視：** 保持核取預設的每一個選項
-* **控制器名稱：** 保留預設 *MoviesController*
+* **控制器名稱：** 保留預設值 *MoviesController*
 * 選取 [新增]
 
 Visual Studio 會建立：
@@ -198,7 +198,7 @@ Visual Studio 會建立：
 
 <!-- End of tabs                  -->
 
-您目前尚無法使用 scaffold 頁面，因為資料庫不存在。 若您執行應用程式並按一下 [影片應用程式] 連結，您會收到「無法開啟資料庫」或「找不到資料表：Movie」錯誤訊息。
+您目前尚無法使用 scaffold 頁面，因為資料庫不存在。 如果您執行應用程式，並按一下 [**電影應用程式**] 連結，就會出現 [*無法開啟資料庫*] 或 [*沒有這類資料表：電影*錯誤訊息]。
 
 <a name="migration"></a>
 
@@ -212,14 +212,14 @@ Visual Studio 會建立：
 
 在 PMC 中，輸入下列命令：
 
-```console
+```PMC
 Add-Migration InitialCreate
 Update-Database
 ```
 
-* `Add-Migration InitialCreate`：產生 *Migrations/{timestamp}_InitialCreate.cs* 移轉檔案。 `InitialCreate` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。 因為這是第一次移轉，所產生類別會包含建立資料庫結構描述的程式碼。 資料庫結構描述是以 `MvcMovieContext` 類別為基礎。
+* `Add-Migration InitialCreate`：產生*遷移/{timestamp} _InitialCreate .cs*遷移檔案。 `InitialCreate` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。 因為這是第一次移轉，所產生類別會包含建立資料庫結構描述的程式碼。 資料庫結構描述是以 `MvcMovieContext` 類別為基礎。
 
-* `Update-Database`：將資料庫更新到最新的移轉，即上一個命令建立的移轉。 此命令會執行 *Migrations/{time-stamp}_InitialCreate.cs* 檔案中的 `Up` 方法，其會建立資料庫。
+* `Update-Database`：將資料庫更新為先前命令所建立的最新遷移。 此命令會執行 *Migrations/{time-stamp}_InitialCreate.cs* 檔案中的 `Up` 方法，其會建立資料庫。
 
   資料庫更新命令會產生下列警告： 
 
@@ -238,9 +238,9 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-* `ef migrations add InitialCreate`：產生 *Migrations/{timestamp}_InitialCreate.cs* 移轉檔案。 `InitialCreate` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。 因為這是第一次移轉，所產生類別會包含建立資料庫結構描述的程式碼。 資料庫結構描述會以 `MvcMovieContext` 類別 (在 *Data/MvcMovieContext.cs* 檔案中) 中指定的模型為基礎。
+* `ef migrations add InitialCreate`：產生*遷移/{timestamp} _InitialCreate .cs*遷移檔案。 `InitialCreate` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。 因為這是第一次移轉，所產生類別會包含建立資料庫結構描述的程式碼。 資料庫結構描述會以 `MvcMovieContext` 類別 (在 *Data/MvcMovieContext.cs* 檔案中) 中指定的模型為基礎。
 
-* `ef database update`：將資料庫更新到最新的移轉，即上一個命令建立的移轉。 此命令會執行 *Migrations/{time-stamp}_InitialCreate.cs* 檔案中的 `Up` 方法，其會建立資料庫。
+* `ef database update`：將資料庫更新為先前命令所建立的最新遷移。 此命令會執行 *Migrations/{time-stamp}_InitialCreate.cs* 檔案中的 `Up` 方法，其會建立資料庫。
 
 [!INCLUDE [ more information on the CLI tools for EF Core](~/includes/ef-cli.md)]
 
@@ -406,13 +406,13 @@ return View(movie);
 
 完成 [新增控制器] 對話方塊：
 
-* **模型類別：** Movie (MvcMovie.Models)
+* **模型類別:** *Movie (MvcMovie.Models)*
 * **資料內容類別：** 選取 **+** 圖示並新增預設的 **MvcMovie.Models.MvcMovieContext**
 
 ![新增資料內容](adding-model/_static/dc.png)
 
 * **檢視：** 保持核取預設的每一個選項
-* **控制器名稱：** 保留預設 *MoviesController*
+* **控制器名稱：** 保留預設值 *MoviesController*
 * 選取 [新增]
 
 ![[新增控制器] 對話方塊](adding-model/_static/add_controller2.png)
@@ -517,7 +517,7 @@ Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
 
 1. 在 PMC 中，輸入下列命令：
 
-   ```console
+   ```PMC
    Add-Migration Initial
    Update-Database
    ```
@@ -556,7 +556,7 @@ Scaffolding 工具會自動建立 DB 內容，並向 DI 容器註冊該內容。
 
 上述程式碼會建立實體集的 [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
 
-連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
+連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core configuration system](xref:fundamentals/configuration/index) 會從 *appsettings.json* 檔案讀取連接字串。
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/21/2019
 uid: blazor/get-started
-ms.openlocfilehash: 80ff7b42a44e722dd27bc4fde53a066863448e10
-ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
+ms.openlocfilehash: 48d7ff4bf23273daf43128831aa46cfab3d982fe
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72779118"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634021"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -29,7 +29,7 @@ ms.locfileid: "72779118"
 1. 在命令 shell 中執行下列命令，以安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)範本。 Blazor WebAssembly 處於預覽階段時， [AspNetCore. Blazor](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/)套件具有預覽版本。
 
    ```dotnetcli
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview1.19508.20
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview2.19528.8
    ```
 
 1. 遵循您選擇的工具的指導方針：
@@ -276,7 +276,7 @@ ms.locfileid: "72779118"
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
-執行應用程式。 @No__t_0 元件有自己的計數器，每次選取 [按**我**] 按鈕時，就會遞增10。 @No__t_2 的 `Counter` 元件（*razor*）會繼續遞增一。
+執行應用程式。 `Index` 元件有自己的計數器，每次選取 [按**我**] 按鈕時，就會遞增10。 `/counter` 的 `Counter` 元件（*razor*）會繼續遞增一。
 
 ## <a name="next-steps"></a>後續步驟
 

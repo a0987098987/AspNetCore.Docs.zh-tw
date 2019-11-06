@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
-ms.openlocfilehash: 596eca0f510387a18472eb353672980e0a8e0d24
-ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
+ms.openlocfilehash: c4c07808540c9af370bfa253e8154a8a19f0f3de
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72698004"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634061"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>將 gRPC 服務從 C-核心遷移至 ASP.NET Core
 
@@ -80,9 +80,27 @@ public class GreeterService : Greeter.GreeterBase
 
 以 C 核心為基礎的應用程式會透過[伺服器埠屬性](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server_Ports)來設定 HTTPS。 在 ASP.NET Core 中設定伺服器時，會使用類似的概念。 例如，Kestrel 會使用[端點](xref:fundamentals/servers/kestrel#endpoint-configuration)設定來取得這種功能。
 
-## <a name="interceptors-and-middleware"></a>攔截器和中介軟體
+## <a name="grpc-interceptors-vs-middleware"></a>gRPC 攔截器 vs 中介軟體
 
-相較于以 C 核心為基礎的 gRPC 應用程式中的攔截器，ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)提供類似的功能。 中介軟體和攔截器的概念相同，兩者都是用來建立處理 gRPC 要求的管線。 兩者都允許在管線中的下一個元件之前或之後執行工作。 不過，ASP.NET Core 中介軟體會在基礎 HTTP/2 訊息上運作，而攔截器則是使用[ServerCallCoNtext](https://grpc.io/grpc/csharp/api/Grpc.Core.ServerCallContext.html)在抽象概念的 gRPC 層上運作。
+相較于以 C 核心為基礎的 gRPC 應用程式中的攔截器，ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)提供類似的功能。 ASP.NET Core 中介軟體和攔截器在概念上類似。 既
+
+* 是用來建立處理 gRPC 要求的管線。
+* 允許在管線中的下一個元件之前或之後執行工作。
+* 提供 `HttpContext`的存取權：
+  * 在中介軟體中，`HttpContext` 是一個參數。
+  * 在攔截器中，可以使用 `ServerCallContext` 參數搭配 `ServerCallContext.GetHttpContext` 擴充方法來存取 `HttpContext`。 請注意，這項功能是在 ASP.NET Core 中執行的攔截器所特有。
+
+gRPC 攔截器與 ASP.NET Core 中介軟體的差異：
+
+* 攔截器
+  * 使用[ServerCallCoNtext](https://grpc.io/grpc/csharp/api/Grpc.Core.ServerCallContext.html)在抽象概念的 gRPC 層上操作。
+  * 提供存取權：
+    * 傳送至呼叫的已還原序列化訊息。
+    * 在序列化之前，從呼叫傳回的訊息。
+* 中介軟體
+  * 在 gRPC 攔截器之前執行。
+  * 在基礎 HTTP/2 訊息上操作。
+  * 只能存取來自要求和回應資料流程的位元組。
 
 ## <a name="additional-resources"></a>其他資源
 

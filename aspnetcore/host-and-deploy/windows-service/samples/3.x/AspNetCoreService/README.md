@@ -1,5 +1,0 @@
-# <a name="aspnet-core-windows-service-sample"></a><span data-ttu-id="0c4ae-101">ASP.NET Core Windows 服務範例</span><span class="sxs-lookup"><span data-stu-id="0c4ae-101">ASP.NET Core Windows Service Sample</span></span>
-
-<span data-ttu-id="0c4ae-102">這個範例會示範如何在不使用 IIS 的狀況下，將 ASP.NET Core 應用程式裝載為 Windows 服務。</span><span class="sxs-lookup"><span data-stu-id="0c4ae-102">This sample shows how to host an ASP.NET Core app as a Windows Service without using IIS.</span></span> <span data-ttu-id="0c4ae-103">這個範例會示範[在 Windows 服務中裝載 ASP.NET Core](https://docs.microsoft.com/aspnet/core/host-and-deploy/windows-service) 中描述的案例。</span><span class="sxs-lookup"><span data-stu-id="0c4ae-103">This sample demonstrates the scenario described in [Host ASP.NET Core in a Windows Service](https://docs.microsoft.com/aspnet/core/host-and-deploy/windows-service).</span></span>
-
-<span data-ttu-id="0c4ae-104">建立並啟動服務之後，請在瀏覽器中存取應用程式`http://localhost:5000/`，網址為。</span><span class="sxs-lookup"><span data-stu-id="0c4ae-104">After establishing and starting the service, access the app in a browser at `http://localhost:5000/`.</span></span>

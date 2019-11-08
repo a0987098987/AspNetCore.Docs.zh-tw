@@ -3,14 +3,14 @@ title: ASP.NET Core MVC 概觀
 author: ardalis
 description: 了解 ASP.NET Core MVC 何以是建置使用模型檢視控制器設計模式之 Web 應用程式和 API 的豐富架構。
 ms.author: riande
-ms.date: 08/01/2019
+ms.date: 11/07/2019
 uid: mvc/overview
-ms.openlocfilehash: 7f09751850cbfa7bb3dc79656d4530445a9767b1
-ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
-ms.translationtype: HT
+ms.openlocfilehash: 4f4ea3da8563cabaaa6183c6835c2f1eb8c387b4
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707813"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799487"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -76,13 +76,13 @@ ASP.NET Core MVC 包括下列各項：
 
 ASP.NET Core MVC 是以 [ASP.NET Core 路由](../fundamentals/routing.md)為建置基礎且功能強大的 URL 對應元件，可讓您建置具有可理解且可搜尋之 URL 的應用程式。 這可讓您定義適用於搜尋引擎最佳化 (SEO) 和連結產生的應用程式 URL 命名模式，而不需要考慮如何在網頁伺服器上組織檔案。 您可以使用方便且支援路由值條件約束、預設值和選用值的路由範本語法，來定義您的路由。
 
-「以慣例為基礎的路由」  可讓您全域定義應用程式接受的的 URL 格式，以及每種格式如何對應至指定控制器上的特定動作方法。 當收到內送要求時，路由引擎會剖析 URL 定並將它對應至其中一個已定義的 URL 格式，再呼叫關聯控制器的動作方法。
+「以慣例為基礎的路由」可讓您全域定義應用程式接受的的 URL 格式，以及每種格式如何對應至指定控制器上的特定動作方法。 當收到內送要求時，路由引擎會剖析 URL 定並將它對應至其中一個已定義的 URL 格式，再呼叫關聯控制器的動作方法。
 
 ```csharp
 routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");
 ```
 
-「屬性路由」  可讓您指定路由資訊，方法是使用定義應用程式路由的屬性來裝飾控制器和動作。 這表示路由定義會緊接著其所關聯的控制器和動作。
+「屬性路由」可讓您指定路由資訊，方法是使用定義應用程式路由的屬性來裝飾控制器和動作。 這表示路由定義會緊接著其所關聯的控制器和動作。
 
 ```csharp
 [Route("api/[controller]")]
@@ -172,7 +172,7 @@ public class AccountController : Controller
 
 ### <a name="areas"></a>區域
 
-[區域](controllers/areas.md)可讓您將大型 ASP.NET Core MVC Web 應用程式分割成較小的功能群組。 一個區域是應用程式內的一個 MVC 結構。 在 MVC 專案中，模型、控制器和檢視等邏輯元件會保留在不同的資料夾中，而且 MVC 會使用命名慣例來建立這些元件之間的關聯性。 針對大型應用程式，將應用程式分割成個別高功能層級區域可能較有利。 例如，一個電子商務應用程式可分成多個業務單位，例如結帳、計費和搜尋等。所有這些單位都有自己的邏輯元件檢視、控制器和模型。
+[區域](controllers/areas.md)可讓您將大型 ASP.NET Core MVC Web 應用程式分割成較小的功能群組。 一個區域是應用程式內的一個 MVC 結構。 在 MVC 專案中，模型、控制器和檢視等邏輯元件會保留在不同的資料夾中，而且 MVC 會使用命名慣例來建立這些元件之間的關聯性。 針對大型應用程式，將應用程式分割成個別高功能層級區域可能較有利。 例如，具有多個業務單位的電子商務應用程式，例如結帳、計費和搜尋等。每個單位都有自己的邏輯元件視圖、控制器和模型。
 
 ### <a name="web-apis"></a>Web API
 
@@ -243,7 +243,7 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 </environment>
 ```
 
-標籤協助程式提供適合 HTML 的開發體驗和豐富的 IntelliSense 環境，以建立 HTML 和 Razor 標記。 大部分的內建標籤協助程式都是以現有的 HTML 元素為目標，並提供元素的伺服器端屬性。
+標籤協助程式提供適合 HTML 的開發體驗和豐富的 IntelliSense 環境，以建立 HTML 和 Razor 標記。 大部分的內建標籤協助程式都是以現有的 HTML 項目為目標，並提供項目的伺服器端屬性。
 
 ### <a name="view-components"></a>檢視元件
 
@@ -253,4 +253,9 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 
 <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> 方法可讓應用程式加入或退出 ASP.NET Core MVC 2.1 或更新版本所引入的可能重大行為變更。
 
-如需詳細資訊，請參閱 <xref:mvc/compatibility-version>。
+如需詳細資訊，請參閱<xref:mvc/compatibility-version>。
+
+## <a name="additional-resources"></a>其他資源
+
+* 適用于 ASP.NET Core MVC &ndash; 強型別單元測試程式庫[的 MyTested AspNetCore](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc) ，提供流暢的介面來測試 Mvc 和 Web API 應用程式。 （*不是由 Microsoft 維護或支援）。*
+

@@ -5,14 +5,14 @@ description: 了解在 ASP.NET Core 應用程式中如何跨多個環境控制�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 11/07/2019
 uid: fundamentals/environments
-ms.openlocfilehash: 91fa2a78e62dff65704a3dda826f45f27bad6064
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: 7e49499e94fb9ea82a0ba17e4e9de05c6a2d4e98
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73634098"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799304"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>在 ASP.NET Core 中使用多個環境
 
@@ -262,7 +262,7 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 
 **專案檔或發行設定檔**
 
-**針對 WINDOWS IIS 部署：** 將 `<EnvironmentName>` 屬性包含在發行設定檔（ *. .pubxml*）或專案檔中。 此方法會在專案發行時於 *web.config* 中設定環境：
+**針對 WINDOWS IIS 部署：** 將 `<EnvironmentName>` 屬性包含在[發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中。 此方法會在專案發行時於 *web.config* 中設定環境：
 
 ```xml
 <PropertyGroup>

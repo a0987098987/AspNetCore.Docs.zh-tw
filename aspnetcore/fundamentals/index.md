@@ -5,14 +5,14 @@ description: 了解建置 ASP.NET Core 應用程式的基本概念。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 11/07/2019
 uid: fundamentals/index
-ms.openlocfilehash: a70d6aa05a2c92d19076b8d6e4ea24d7554368b6
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 7173a732a04bf3e598adef298fa9120c15dd52fb
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007112"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799377"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -69,7 +69,7 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 * 中介軟體元件
 * 記錄
 * DI
-* 組態
+* Configuration
 
 在單一物件中包含所有應用程式相互依存資源的主要理由便是生命週期管理：控制應用程式的啟動及順利關機。
 
@@ -162,7 +162,7 @@ ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 �
 
 如需詳細資訊，請參閱<xref:fundamentals/servers/index>。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>Configuration
 
 ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，以成對名稱和數值的形式取得設定。 您可以使用各種來源的內建組態提供者，例如 *.json* 檔案、 *.xml* 檔案、環境變數及命令列引數。 您也可以撰寫自訂組態提供者。
 
@@ -172,7 +172,7 @@ ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，�
 
 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
 
-## <a name="options"></a>選項。
+## <a name="options"></a>選項
 
 在可能的情況下，ASP.NET Core 會遵循「選項模式」來儲存及擷取組態值。 選項模式使用類別來代表一組相關的設定。
 
@@ -303,6 +303,14 @@ Web 根目錄路徑預設為 *{content root}/wwwroot*，但在[建立主機](#ho
 
 ::: moniker-end
 
-在 Razor （*cshtml*）檔案中，波狀符號-斜線（`~/`）會指向 web 根目錄。 開頭為 `~/` 的路徑稱為*虛擬路徑*。
+使用專案檔中的[\<內容 > 專案專案](/visualstudio/msbuild/common-msbuild-project-items#content)，防止在*wwwroot*中發行檔案。 下列範例會防止在*wwwroot/本機*目錄和子目錄中發佈內容：
+
+```xml
+<ItemGroup>
+  <Content Update="wwwroot\local\**\*.*" CopyToPublishDirectory="Never" />
+</ItemGroup>
+```
+
+在 Razor （*cshtml*）檔案中，波狀符號斜線（`~/`）會指向 web 根目錄。 以 `~/` 開頭的路徑稱為*虛擬路徑*。
 
 如需詳細資訊，請參閱<xref:fundamentals/static-files>。

@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 11/05/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 312b3d4eb13eb04453bf0c3256fc362918157a45
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: f2c9c2fc8112ef8a1a5afdbe448de6319c43521d
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73634141"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73761232"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -116,6 +116,8 @@ ms.locfileid: "73634141"
 
 [!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
 
+[!INCLUDE [use SQL Server in production](~/includes/RP/sqlitedev.md)]
+
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
@@ -132,6 +134,8 @@ ms.locfileid: "73634141"
   ```
 
 [!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
+
+[!INCLUDE [use SQL Server in production](~/includes/RP/sqlitedev.md)]
 
 ---
 

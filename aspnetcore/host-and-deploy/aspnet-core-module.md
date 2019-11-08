@@ -5,14 +5,14 @@ description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2019
+ms.date: 11/07/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 42ff4438738931fde70e123031412bcfc8a83efb
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: c9bbd36b8a55b837f6d78abf99215c5496895a39
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034217"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799418"
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
@@ -208,7 +208,7 @@ ASP.NET Core 模組也可以：
 ```
 
 > [!NOTE]
-> 在 *web.config* 中直接設定環境的替代方式是在發行設定檔 ( *.pubxml*) 或專案檔中包括 `<EnvironmentName>` 屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
+> 直接在*web.config*中設定環境的替代方法是在[發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中包含 `<EnvironmentName>` 屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
 >
 > ```xml
 > <PropertyGroup>
@@ -366,7 +366,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 1. 在該檔案上按一下滑鼠右鍵，然後從關聯式功能表中選取 [內容]。
 1. 選取 [**詳細資料**] 索引標籤。檔案**版本**和**產品版本**代表已安裝的模組版本。
 
-模組的裝載套件組合安裝程式記錄檔位於*C：\\使用者\\% UserName%\\AppData\\本機\\Temp*。此檔案的名稱為*dd_DotNetCoreWinSvrHosting__\<timestamp > _000_AspNetCoreModule_x64*。
+模組的裝載套件組合安裝程式記錄檔位於*C：\\使用者\\% UserName%\\AppData\\本機\\Temp*。此檔案的名稱為*dd_DotNetCoreWinSvrHosting__\<時間戳記 > _000_AspNetCoreModule_x64 .log*。
 
 ## <a name="module-schema-and-configuration-file-locations"></a>模組、結構描述及設定檔位置
 
@@ -623,7 +623,7 @@ ASP.NET Core 模組也可以：
 ```
 
 > [!NOTE]
-> 在 *web.config* 中直接設定環境的替代方式是在發行設定檔 ( *.pubxml*) 或專案檔中包括 `<EnvironmentName>` 屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
+> 直接在*web.config*中設定環境的替代方法是在[發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中包含 `<EnvironmentName>` 屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
 >
 > ```xml
 > <PropertyGroup>
@@ -761,7 +761,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 1. 在該檔案上按一下滑鼠右鍵，然後從關聯式功能表中選取 [內容]。
 1. 選取 [**詳細資料**] 索引標籤。檔案**版本**和**產品版本**代表已安裝的模組版本。
 
-模組的裝載套件組合安裝程式記錄檔位於*C：\\使用者\\% UserName%\\AppData\\本機\\Temp*。此檔案的名稱為*dd_DotNetCoreWinSvrHosting__\<timestamp > _000_AspNetCoreModule_x64*。
+模組的裝載套件組合安裝程式記錄檔位於*C：\\使用者\\% UserName%\\AppData\\本機\\Temp*。此檔案的名稱為*dd_DotNetCoreWinSvrHosting__\<時間戳記 > _000_AspNetCoreModule_x64 .log*。
 
 ## <a name="module-schema-and-configuration-file-locations"></a>模組、結構描述及設定檔位置
 
@@ -999,7 +999,7 @@ ASP.NET Core 模組安裝程式會以 **TrustedInstaller** 帳戶的權限執行
 1. 在該檔案上按一下滑鼠右鍵，然後從關聯式功能表中選取 [內容]。
 1. 選取 [**詳細資料**] 索引標籤。檔案**版本**和**產品版本**代表已安裝的模組版本。
 
-模組的裝載套件組合安裝程式記錄檔位於*C：\\使用者\\% UserName%\\AppData\\本機\\Temp*。此檔案的名稱為*dd_DotNetCoreWinSvrHosting__\<timestamp > _000_AspNetCoreModule_x64*。
+模組的裝載套件組合安裝程式記錄檔位於*C：\\使用者\\% UserName%\\AppData\\本機\\Temp*。此檔案的名稱為*dd_DotNetCoreWinSvrHosting__\<時間戳記 > _000_AspNetCoreModule_x64 .log*。
 
 ## <a name="module-schema-and-configuration-file-locations"></a>模組、結構描述及設定檔位置
 

@@ -5,12 +5,12 @@ description: 了解如何開始使用 ASP.NET Core MVC。
 ms.author: riande
 ms.date: 10/16/2019
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: f07afb15c0a31110c20d96a5db5c02030cefe5d5
-ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
+ms.openlocfilehash: 0c8c59a5c59c8a70985dc8463c80f9569a00621f
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72519097"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73761245"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 

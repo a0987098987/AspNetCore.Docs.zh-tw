@@ -5,14 +5,14 @@ description: 了解如何設定裝載環境及部署 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/12/2019
+ms.date: 11/07/2019
 uid: host-and-deploy/index
-ms.openlocfilehash: 068c5f357b8010d78493a78a10c353e3317f3867
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
-ms.translationtype: HT
+ms.openlocfilehash: aa6e3da5f40211535037c671de913ab3219f063a
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969890"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799341"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>裝載及部署 ASP.NET Core
 
@@ -68,6 +68,10 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 ## <a name="publish-with-msdeploy-on-windows"></a>在 Windows 上使用 MSDeploy 來發行
 
 請參閱 <xref:host-and-deploy/visual-studio-publish-profiles> 以取得有關如何使用 Visual Studio 發行設定檔發行應用程式的指示，包括從 Windows 命令提示字元使用 [dotnet msbuild](/dotnet/core/tools/dotnet-msbuild) 命令。
+
+## <a name="internet-information-services-iis"></a>Internet Information Services (IIS)
+
+若要*使用 web.config 檔案所提供*的設定來部署至 INTERNET INFORMATION SERVICES （IIS），請參閱 <xref:host-and-deploy/iis/index>底下的文章。
 
 ## <a name="host-in-a-web-farm"></a>裝載於 Web 伺服陣列
 

@@ -1,20 +1,20 @@
 ---
-title: 適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔
+title: Visual Studio ASP.NET Core 應用程式部署的發行設定檔（. .pubxml）
 author: rick-anderson
 description: 了解如何在 Visual Studio 中建立發行設定檔，並使用這些設定檔來管理對各種目標的 ASP.NET Core 應用程式部署。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/12/2019
+ms.date: 11/07/2019
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: a3d6cc450e42d7eb6b694cd4985828ce52fa7519
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 274dd2cd528d3766aa07f69aac3470a131c79ffe
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333756"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799343"
 ---
-# <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔
+# <a name="visual-studio-publish-profiles-pubxml-for-aspnet-core-app-deployment"></a>Visual Studio ASP.NET Core 應用程式部署的發行設定檔（. .pubxml）
 
 作者：[Sayed Ibrahim Hashimi](https://github.com/sayedihashimi) 及 [Rick Anderson](https://twitter.com/RickAndMSFT)
 

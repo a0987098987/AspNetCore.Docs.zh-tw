@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 uid: fundamentals/static-files
-ms.openlocfilehash: 2f153551a86860616469200862723528e4a8cc1c
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: b989b90100318ac874dc399daf65ef7d21c5549f
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007323"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799473"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -108,7 +108,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ### <a name="set-http-response-headers"></a>設定 HTTP 回應標頭
 
-[StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions) 物件可以用來設定 HTTP 回應標頭。 除了設定[web 根目錄](xref:fundamentals/index#web-root)提供的靜態檔案外，下列程式碼也會設定 @no__t 1 標頭：
+[StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions) 物件可以用來設定 HTTP 回應標頭。 除了從[web 根目錄](xref:fundamentals/index#web-root)設定靜態檔案服務之外，下列程式碼還會設定 `Cache-Control` 標頭：
 
 [!code-csharp[](static-files/samples/1x/StartupAddHeader.cs?name=snippet_ConfigureMethod)]
 
@@ -171,7 +171,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ## <a name="usefileserver"></a>UseFileServer
 
-[UseFileServer](/dotnet/api/microsoft.aspnetcore.builder.fileserverextensions.usefileserver#Microsoft_AspNetCore_Builder_FileServerExtensions_UseFileServer_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 結合 `UseStaticFiles`、`UseDefaultFiles` 和 `UseDirectoryBrowser` 的功能。
+<xref:Microsoft.AspNetCore.Builder.FileServerExtensions.UseFileServer*> 結合 `UseStaticFiles`、`UseDefaultFiles`和選擇性 `UseDirectoryBrowser`的功能。
 
 下列程式碼可提供靜態檔案和預設檔案。 未啟用目錄瀏覽功能。
 
@@ -208,8 +208,8 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 | URI            |                             回應  |
 | ------- | ------|
-| *http://\<server_address>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
-| *http://\<server_address>/StaticFiles*             |     MyStaticFiles/default.html |
+| http://\<伺服器位址>/StaticFiles/images/banner1.svg    |      MyStaticFiles/images/banner1.svg |
+| http://\<伺服器位址>/StaticFiles             |     MyStaticFiles/default.html |
 
 如果 *MyStaticFiles* 目錄中不存在預設名稱的檔案， http://\<伺服器位址>/StaticFiles 會傳回含有可點按連結的目錄清單：
 

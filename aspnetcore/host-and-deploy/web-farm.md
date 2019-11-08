@@ -5,14 +5,14 @@ description: 了解如何在 Web 伺服陣列環境中裝載具有共用資源�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/12/2019
+ms.date: 11/07/2019
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: df1be8cc76a5017923f26636a241b69881dfcc81
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
-ms.translationtype: HT
+ms.openlocfilehash: 16ec2162be8199857d0f2d0ff989ec4cdc6c3277
+ms.sourcegitcommit: 68d804d60e104c81fe77a87a9af70b5df2726f60
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65970114"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73830709"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>在 Web 伺服陣列上裝載 ASP.NET Core
 
@@ -61,9 +61,9 @@ ms.locfileid: "65970114"
 | 情節 | 相依於 &hellip; |
 | -------- | ------------------- |
 | 驗證 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱 <xref:security/authentication/cookie> 與 <xref:security/cookie-sharing>。 |
-| 身分識別 | 驗證及資料庫設定。<br><br>如需詳細資訊，請參閱<xref:security/authentication/identity>。 |
+| 識別 | 驗證及資料庫設定。<br><br>如需詳細資訊，請參閱<xref:security/authentication/identity>。 |
 | 工作階段 | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 和快取 (請參閱 <xref:performance/caching/distributed>)。<br><br>如需詳細資訊，請參閱[工作階段與應用程式狀態：工作階段狀態](xref:fundamentals/app-state#session-state)。 |
-| TempData | 資料保護 (加密的 Cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 或工作階段 (請參閱[工作階段與應用程式狀態：工作階段狀態](xref:fundamentals/app-state#session-state))。<br><br>如需詳細資訊，請參閱[工作階段與應用程式狀態：TempData](xref:fundamentals/app-state#tempdata)。 |
+| TempData | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 或工作階段 (請參閱[工作階段與應用程式狀態：工作階段狀態](xref:fundamentals/app-state#session-state))。<br><br>如需詳細資訊，請參閱[工作階段與應用程式狀態：TempData](xref:fundamentals/app-state#tempdata)。 |
 | 防偽 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱<xref:security/anti-request-forgery>。 |
 
 ## <a name="troubleshoot"></a>疑難排解
@@ -88,3 +88,7 @@ ms.locfileid: "65970114"
 ## <a name="obtain-data-from-apps"></a>從應用程式取得資料
 
 若 Web 伺服器陣列應用程式能夠回應要求、請使用終端機內嵌中介軟體從應用程式取得要求、連線與額外資料。 如如需詳細資訊與範例程式碼，請參閱 <xref:test/troubleshoot#obtain-data-from-an-app>。
+
+## <a name="additional-resources"></a>其他資源
+
+* [適用于 Windows 的自訂腳本擴充](/azure/virtual-machines/extensions/custom-script-windows)功能 &ndash; 會在 Azure 虛擬機器上下載和執行腳本，這對於部署後設定和軟體安裝很有用。

@@ -22,10 +22,9 @@
 }
 ```
 
-如需上述範例程式碼，請在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor 伺服器）的 `<head>` 元素內提供 `setElementText` JavaScript 函數。 函式會使用 `IJSRuntime.InvokeVoidAsync` 來呼叫，而且不會傳回值：
+針對上述範例程式碼，請在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor Server）的 `<head>` 元素內提供 `setElementText` JavaScript 函數。 函式會使用 `IJSRuntime.InvokeVoidAsync` 來呼叫，而且不會傳回值：
 
 ```html
-<!--  -->
 <script>
   window.setElementText = (element, text) => element.innerText = text;
 </script>
@@ -71,7 +70,7 @@ Set value via JS interop call:
 }
 ```
 
-如需上述範例程式碼，請在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor 伺服器）的 `<head>` 元素內提供 `setElementText` JavaScript 函數。 呼叫函式時，會使用 `IJSRuntime.InvokeAsync` 並傳回值：
+針對上述範例程式碼，請在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor Server）的 `<head>` 元素內提供 `setElementText` JavaScript 函數。 呼叫函式時，會使用 `IJSRuntime.InvokeAsync` 並傳回值：
 
 ```html
 <script>

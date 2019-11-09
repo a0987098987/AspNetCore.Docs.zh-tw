@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 11/07/2019
 uid: security/authentication/certauth
-ms.openlocfilehash: 0db23c325f0b1f5a6500e3b2549db170e3df97c5
-ms.sourcegitcommit: 68d804d60e104c81fe77a87a9af70b5df2726f60
+ms.openlocfilehash: 0062bc0d7688ebcc67f8240da7166d89493f6639
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830722"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897026"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
@@ -229,21 +229,35 @@ public static IHostBuilder CreateHostBuilder(string[] args)
 在 Azure Web Apps 中，會將憑證當做名為 `X-ARR-ClientCert`的自訂要求標頭來傳遞。 若要使用它，請在 `Startup.ConfigureServices`中設定憑證轉送：
 
 ```csharp
-services.AddCertificateForwarding(options =>
+public void ConfigureServices(IServiceCollection services)
 {
-    options.CertificateHeader = "X-ARR-ClientCert";
-    options.HeaderConverter = (headerValue) =>
+    // ...
+    
+    services.AddCertificateForwarding(options =>
     {
-        X509Certificate2 clientCertificate = null;
-        if(!string.IsNullOrWhiteSpace(headerValue))
+        options.CertificateHeader = "X-ARR-ClientCert";
+        options.HeaderConverter = (headerValue) =>
         {
-            byte[] bytes = StringToByteArray(headerValue);
-            clientCertificate = new X509Certificate2(bytes);
-        }
+            X509Certificate2 clientCertificate = null;
+            if(!string.IsNullOrWhiteSpace(headerValue))
+            {
+                byte[] bytes = StringToByteArray(headerValue);
+                clientCertificate = new X509Certificate2(bytes);
+            }
 
-        return clientCertificate;
-    };
-});
+            return clientCertificate;
+        };
+    });
+}
+
+private static byte[] StringToByteArray(string hex)
+{
+    int NumberChars = hex.Length;
+    byte[] bytes = new byte[NumberChars / 2];
+    for (int i = 0; i < NumberChars; i += 2)
+        bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+    return bytes;
+}
 ```
 
 然後 `Startup.Configure` 方法會新增中介軟體。 在呼叫 `UseAuthentication` 和 `UseAuthorization`之前，會呼叫 `UseCertificateForwarding`：
@@ -434,7 +448,7 @@ Get-ChildItem -Path cert:\localMachine\my\141594A0AE38CBBECED7AF680F7945CD51D8F2
 Export-Certificate -Cert cert:\localMachine\my\141594A0AE38CBBECED7AF680F7945CD51D8F28A -FilePath child_b_from_a_dev_damienbod.crt
 ```
 
-使用根、中繼或子系憑證時，可以視需要使用簽發者或主體來驗證憑證。
+使用根、中繼或子系憑證時，可以視需要使用指紋或 PublicKey 來驗證憑證。
 
 ```csharp
 using System.Collections.Generic;

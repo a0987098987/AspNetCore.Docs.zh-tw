@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 9ed133c93a9ec95c63869b710d120eca9fda1b6e
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 0cf6e5d391242322aa4c7b1a0b6a20dd484c80f6
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333713"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73896894"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -197,7 +197,7 @@ using Microsoft.Extensions.Localization;
 
 ### <a name="generate-resource-files-with-visual-studio"></a>使用 Visual Studio 產生資源檔
 
-如果您在 Visual Studio 中建立資源檔，但檔案名稱中不含文化特性 (例如 *Welcome.resx*)，則 Visual Studio 會針對每個字串的屬性建立 C# 類別。 但這通常不是您使用 ASP.NET Core 的初衷。 一般來說，您不會有預設的 *.resx* 資源檔 (不含文化特性名稱的 *.resx* 檔案)。 因此，建議您建立含有文化特性名稱的 *.resx* 檔案 (例如 *Welcome.fr.resx*)。 當您建立含有文化特性名稱的 *.resx* 檔案時，Visual Studio 就不會產生類別檔案。 我們認為大多數開發人員不需建立預設的語言資源檔。
+如果您在 Visual Studio 中建立資源檔，但檔案名稱中不含文化特性 (例如 *Welcome.resx*)，則 Visual Studio 會針對每個字串的屬性建立 C# 類別。 但這通常不是您使用 ASP.NET Core 的初衷。 一般來說，您不會有預設的 *.resx* 資源檔 (不含文化特性名稱的 *.resx* 檔案)。 因此，建議您建立含有文化特性名稱的 *.resx* 檔案 (例如 *Welcome.fr.resx*)。 當您建立含有文化特性名稱的 *.resx* 檔案時，Visual Studio 就不會產生類別檔案。
 
 ### <a name="add-other-cultures"></a>新增其他文化特性
 

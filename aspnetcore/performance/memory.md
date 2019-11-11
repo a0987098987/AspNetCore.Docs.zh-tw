@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/05/2019
 uid: performance/memory
-ms.openlocfilehash: 8f6b47ecde6f265bfb9437234b89f11f7d235869
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 4c25c069aa2a6088c0549d786ecdd487ab7b9ea5
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73660007"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73896938"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>ASP.NET Core 中的記憶體管理和垃圾收集（GC）
 
@@ -82,7 +82,7 @@ GC 會配置堆積區段，其中每個區段都是連續的記憶體範圍。 �
 此圖表會顯示記憶體使用量的兩個值：
 
 - 已配置：受管理物件所佔用的記憶體數量
-- 工作集：進程所使用的實體記憶體（RAM）總計。 所顯示的工作集與 [工作管理員] 可以顯示的值相同。
+- [工作集](/windows/win32/memory/working-set)：目前位於實體記憶體中的進程虛擬位址空間內的一組頁面。 所顯示的工作集與 [工作管理員] 會顯示相同的值。
 
 ### <a name="transient-objects"></a>暫時性物件
 

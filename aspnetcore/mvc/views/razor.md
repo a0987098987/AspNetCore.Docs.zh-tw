@@ -5,12 +5,12 @@ description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記
 ms.author: riande
 ms.date: 09/28/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 6f8835419dbf4c271617f57484c3408e0af30617
-ms.sourcegitcommit: f62014bb558ff6f8fdaef2e96cb05986e216aacd
+ms.openlocfilehash: d8d686c23ea61950947798f213c9846058f1812e
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2019
-ms.locfileid: "71592320"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73896903"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -229,7 +229,7 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 
 ### <a name="explicit-line-transition"></a>明確行轉換
 
-若要將整行的其餘部分轉譯為程式碼區塊內的 HTML，請使用 `@:` 語法：
+若要在程式碼區塊內將整行的其餘部分轉譯為 HTML，請使用 `@:` 語法：
 
 ```cshtml
 @for (var i = 0; i < people.Length; i++)
@@ -455,7 +455,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-### <a name="code"></a>\@錯誤碼
+### <a name="code"></a>\@程式碼
 
 此案例僅適用於 Razor 元件 (.razor)。
 
@@ -676,7 +676,7 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 `@page` 指示詞會根據其出現的檔案類型而有不同的效果。 指示詞：
 
-* *.cshtml* 檔案中的 in 表示檔案是 Razor 頁面。 如需詳細資訊，請參閱<xref:razor-pages/index>。
+* *.cshtml* 檔案中的 in 表示檔案是 Razor 頁面。 如需詳細資訊，請參閱[自訂路由](xref:razor-pages/index#custom-routes)和 <xref:razor-pages/index>。
 * 指定 Razor 元件應該直接處理要求。 如需詳細資訊，請參閱<xref:blazor/routing>。
 
 ::: moniker-end
@@ -743,7 +743,7 @@ Razor 提供元件的事件處理功能。 如需詳細資訊，請參閱<xref:b
 
 此案例僅適用於 Razor 元件 (.razor)。
 
-`@typeparam`指示詞會為所產生的元件類別宣告泛型型別參數。 如需詳細資訊，請參閱<xref:blazor/components#generic-typed-components>。
+`@typeparam` 指示詞會為所產生的元件類別宣告泛型型別參數。 如需詳細資訊，請參閱<xref:blazor/components#generic-typed-components>。
 
 ::: moniker-end
 
@@ -852,7 +852,7 @@ public class Pet
 
 [標籤協助程式](xref:mvc/views/tag-helpers/intro)有三個相關的指示詞。
 
-| 指示詞 | 函數 |
+| 指示詞 | 功能 |
 | --------- | -------- |
 | [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | 使標籤協助程式可供檢視。 |
 | [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 移除先前從檢視新增的標籤協助程式。 |
@@ -876,17 +876,17 @@ Razor 關鍵字會使用 `@(Razor Keyword)` (例如 `@(functions)`) 逸出。
 
 * case
 * do
-* default
+* 預設
 * for
 * foreach
 * if
 * else
-* lock
+* 鎖定
 * switch
 * try
 * catch
 * finally
-* using
+* 使用
 * while
 
 C# Razor 關鍵字必須使用 `@(@C# Razor Keyword)` (例如 `@(@case)`) 雙重逸出。 第一個 `@` 會將 Razor 剖析器逸出。 第二個 `@` 會將 C# 剖析器逸出。

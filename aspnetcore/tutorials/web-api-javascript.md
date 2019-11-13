@@ -4,13 +4,13 @@ author: rick-anderson
 description: 了解如何使用 JavaScript 呼叫 ASP.NET Core Web API。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 08/27/2019
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: bbe261307f6f68af002cb98cc4895888ade7f61c
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: 0070816149d64fc1d71d453eb0f135050c78597a
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 11/13/2019
 ms.locfileid: "72378695"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>教學課程：使用 JavaScript 呼叫 ASP.NET Core Web API
@@ -18,6 +18,14 @@ ms.locfileid: "72378695"
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 此教學課程會示範如何使用 JavaScript (使用 [Fetch API](https://developer.mozilla.org/docs/Web/API/Fetch_API)) 呼叫 ASP.NET Core Web API。
+
+::: moniker range="< aspnetcore-3.0"
+
+針對 ASP.NET Core 2.2，請參閱[使用 JavaScript 呼叫 Web API](xref:tutorials/first-web-api#call-the-web-api-with-javascript) 的 2.2 版。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -67,9 +75,9 @@ ms.locfileid: "72378695"
 
 * 系統會宣告 `item` 變數來建構待辦事項的物件常值表示法。
 * 您可以使用下列選項來設定 Fetch 要求：
-  * `method`&mdash;指定 POST HTTP 動作動詞命令。
-  * `body`&mdash;指定要求本文的 JSON 表示法。 JSON 是透過將儲存在 `item` 中的物件常值傳遞至 [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) 函式來產生。
-  * `headers`&mdash;指定 `Accept` 和 `Content-Type` HTTP 要求標題。 這兩個標題都設定為 `application/json`，以分別指定接收和傳送的媒體類型。
+    * `method`&mdash;指定 POST HTTP 動作動詞命令。
+    * `body`&mdash;指定要求本文的 JSON 表示法。 JSON 是透過將儲存在 `item` 中的物件常值傳遞至 [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) 函式來產生。
+    * `headers`&mdash;指定 `Accept` 和 `Content-Type` HTTP 要求標題。 這兩個標題都設定為 `application/json`，以分別指定接收和傳送的媒體類型。
 * HTTP POST 要求會傳送至 *api/TodoItems* 路由。
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]
@@ -95,3 +103,5 @@ ms.locfileid: "72378695"
 
 > [!div class="nextstepaction"]
 > <xref:tutorials/get-started-with-swashbuckle>
+
+::: moniker-end

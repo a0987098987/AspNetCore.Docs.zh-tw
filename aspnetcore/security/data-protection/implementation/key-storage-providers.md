@@ -1,27 +1,27 @@
 ---
 title: ASP.NET Core 中的金鑰儲存提供者
 author: rick-anderson
-description: 深入了解 ASP.NET Core，以及如何設定金鑰的儲存體位置中的金鑰儲存提供者。
+description: 深入瞭解 ASP.NET Core 中的金鑰儲存提供者，以及如何設定金鑰儲存位置。
 ms.author: riande
 ms.date: 06/11/2019
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: d5d15779d89a2d746ca2165abab2840232ae0128
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: ec746f383c18ccc7b60c614c990f7577d2d52a20
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082034"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74052837"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core 中的金鑰儲存提供者
 
-資料保護系統[採用預設的探索機制](xref:security/data-protection/configuration/default-settings)來判斷應該保存密碼編譯金鑰的位置。 開發人員可以覆寫預設的探索機制，並以手動方式指定的位置。
+資料保護系統[預設會採用探索機制](xref:security/data-protection/configuration/default-settings)來判斷密碼編譯金鑰的保存位置。 開發人員可以覆寫預設探索機制，並手動指定位置。
 
 > [!WARNING]
-> 如果您指定明確的金鑰持續性位置，讓金鑰不會再加密待用資料保護系統取消登錄 rest 機制，在預設金鑰加密。 建議您另外[指定明確的金鑰加密機制](xref:security/data-protection/implementation/key-encryption-at-rest)生產環境部署。
+> 如果您指定明確的金鑰持續性位置，資料保護系統會取消註冊待用的預設金鑰加密機制，因此金鑰不會再加密。 建議您另外針對生產環境部署[指定明確的金鑰加密機制](xref:security/data-protection/implementation/key-encryption-at-rest)。
 
 ## <a name="file-system"></a>檔案系統
 
-若要設定的檔案系統為基礎金鑰存放庫，呼叫[PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem)設定常式，如下所示。 提供[DirectoryInfo](/dotnet/api/system.io.directoryinfo)指向存放庫儲存金鑰的位置：
+若要設定以檔案系統為基礎的金鑰存放庫，請呼叫[PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem)設定常式，如下所示。 提供[DirectoryInfo](/dotnet/api/system.io.directoryinfo) ，指向存放應儲存金鑰的存放庫：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -31,11 +31,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-`DirectoryInfo`可以指向本機電腦上的目錄，或它可以指向網路共用上的資料夾。 如果指向本機電腦上的目錄 （並的案例是在本機電腦上的應用程式需要使用此存放庫的存取權），請考慮使用[Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest) (在 Windows) 來加密待用的金鑰。 否則，請考慮使用[X.509 憑證](xref:security/data-protection/implementation/key-encryption-at-rest)來加密待用的金鑰。
+`DirectoryInfo` 可以指向本機電腦上的目錄，也可以指向網路共用上的資料夾。 如果指向本機電腦上的目錄（而且案例是只有本機電腦上的應用程式需要存取權才能使用此存放庫），請考慮使用[WINDOWS DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest) （在 windows 上）來加密待用金鑰。 否則，請考慮使用[x.509 憑證](xref:security/data-protection/implementation/key-encryption-at-rest)來加密待用金鑰。
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
-[AspNetCore. DataProtection. AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/)封裝可讓您將資料保護金鑰儲存在 Azure Blob 儲存體中。 可以跨數個執行個體的 web 應用程式共用金鑰。 應用程式可以共用驗證 cookie 或 CSRF 防護，在多部伺服器。
+[AspNetCore. DataProtection. AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/)封裝可讓您將資料保護金鑰儲存在 Azure Blob 儲存體中。 金鑰可以在 web 應用程式的數個實例之間共用。 應用程式可以在多部伺服器之間共用驗證 cookie 或 CSRF 保護。
 
 若要設定 Azure Blob 儲存體提供者，請呼叫其中一個[PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)多載。
 
@@ -70,19 +70,19 @@ services.AddDataProtection()
 
 ::: moniker range=">= aspnetcore-2.2"
 
-[AspNetCore. DataProtection. StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/)封裝可讓您將資料保護金鑰儲存在 Redis 快取中。 可以跨數個執行個體的 web 應用程式共用金鑰。 應用程式可以共用驗證 cookie 或 CSRF 防護，在多部伺服器。
+[AspNetCore. DataProtection. StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/)封裝可讓您將資料保護金鑰儲存在 Redis 快取中。 金鑰可以在 web 應用程式的數個實例之間共用。 應用程式可以在多部伺服器之間共用驗證 cookie 或 CSRF 保護。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-[AspNetCore. DataProtection. Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/)封裝可讓您將資料保護金鑰儲存在 Redis 快取中。 可以跨數個執行個體的 web 應用程式共用金鑰。 應用程式可以共用驗證 cookie 或 CSRF 防護，在多部伺服器。
+[AspNetCore. DataProtection. Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/)封裝可讓您將資料保護金鑰儲存在 Redis 快取中。 金鑰可以在 web 應用程式的數個實例之間共用。 應用程式可以在多部伺服器之間共用驗證 cookie 或 CSRF 保護。
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.2"
 
-若要設定 Redis，呼叫其中一種[PersistKeysToStackExchangeRedis](/dotnet/api/microsoft.aspnetcore.dataprotection.stackexchangeredisdataprotectionbuilderextensions.persistkeystostackexchangeredis)多載：
+若要在 Redis 上設定，請呼叫其中一個[PersistKeysToStackExchangeRedis](/dotnet/api/microsoft.aspnetcore.dataprotection.stackexchangeredisdataprotectionbuilderextensions.persistkeystostackexchangeredis)多載：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -97,7 +97,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range="< aspnetcore-2.2"
 
-若要設定 Redis，呼叫其中一種[PersistKeysToRedis](/dotnet/api/microsoft.aspnetcore.dataprotection.redisdataprotectionbuilderextensions.persistkeystoredis)多載：
+若要在 Redis 上設定，請呼叫其中一個[PersistKeysToRedis](/dotnet/api/microsoft.aspnetcore.dataprotection.redisdataprotectionbuilderextensions.persistkeystoredis)多載：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -112,15 +112,15 @@ public void ConfigureServices(IServiceCollection services)
 
 如需詳細資訊，請參閱下列主題：
 
-* [StackExchange.Redis ConnectionMultiplexer](https://github.com/StackExchange/StackExchange.Redis/blob/master/docs/Basics.md)
+* [Stackexchange.redis. Redis ConnectionMultiplexer](https://github.com/StackExchange/StackExchange.Redis/blob/master/docs/Basics.md)
 * [Azure Redis 快取](/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache#connect-to-the-cache)
 * [aspnet/DataProtection 範例](https://github.com/aspnet/AspNetCore/tree/2.2.0/src/DataProtection/samples)
 
 ## <a name="registry"></a>登錄
 
-**僅適用於 Windows 的部署。**
+**僅適用于 Windows 部署。**
 
-有時候應用程式可能沒有在檔案系統的 「 寫入 」 權限。 請考慮應用程式執行的虛擬服務帳戶的案例 (例如*w3wp.exe*的應用程式集區身分識別)。 在這些情況下，系統管理員可以佈建服務帳戶身分識別可以存取的登錄機碼。 呼叫[PersistKeysToRegistry](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystoregistry)擴充方法，如下所示。 提供[登錄機碼](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository.registrykey)指向儲存密碼編譯金鑰的位置：
+有時候應用程式可能沒有檔案系統的寫入權限。 假設應用程式是以虛擬服務帳戶（例如*w3wp.exe*的應用程式集區身分識別）執行的案例。 在這些情況下，系統管理員可以布建可由服務帳戶身分識別存取的登錄機碼。 呼叫[PersistKeysToRegistry](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystoregistry)擴充方法，如下所示。 提供指向應儲存密碼編譯金鑰之位置的[RegistryKey](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository.registrykey) ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -131,25 +131,25 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!IMPORTANT]
-> 我們建議您使用[Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest)來加密待用的金鑰。
+> 我們建議使用[WINDOWS DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest)來加密待用金鑰。
 
 ::: moniker range=">= aspnetcore-2.2"
 
 ## <a name="entity-framework-core"></a>Entity Framework Core
 
-[Microsoft.AspNetCore.DataProtection.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/)封裝提供一個機制，來儲存至資料庫，使用 Entity Framework Core 資料保護金鑰。 `Microsoft.AspNetCore.DataProtection.EntityFrameworkCore` NuGet 套件必須新增至專案檔，並不屬於[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
+[AspNetCore. DataProtection. microsoft.entityframeworkcore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/)套件提供使用 Entity Framework Core 將資料保護金鑰儲存至資料庫的機制。 `Microsoft.AspNetCore.DataProtection.EntityFrameworkCore` NuGet 套件必須新增至專案檔，而不是[AspNetCore. 應用程式中繼套件](xref:fundamentals/metapackage-app)的一部分。
 
-透過此封裝，可以跨多個 web 應用程式執行個體共用金鑰。
+使用此套件，可以在多個 web 應用程式實例之間共用金鑰。
 
-若要設定 EF Core 提供者，請呼叫[ `PersistKeysToDbContext<TContext>` ](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext)方法：
+若要設定 EF Core 提供者，請呼叫[`PersistKeysToDbContext<TContext>`](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext)方法：
 
-[!code-csharp[Main](key-storage-providers/sample/Startup.cs?name=snippet&highlight=13-15)]
+[!code-csharp[Main](key-storage-providers/sample/Startup.cs?name=snippet&highlight=13-20)]
 
-泛型參數（ `TContext`）必須繼承自[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)並執行[IDataProtectionKeyCoNtext](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcore.idataprotectionkeycontext)：
+泛型參數（`TContext`）必須繼承自[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)並執行[IDataProtectionKeyCoNtext](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcore.idataprotectionkeycontext)：
 
 [!code-csharp[Main](key-storage-providers/sample/MyKeysContext.cs)]
 
-`DataProtectionKeys`建立資料表。
+建立 `DataProtectionKeys` 資料表。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -171,9 +171,9 @@ dotnet ef database update --context MyKeysContext
 
 ---
 
-`MyKeysContext`是上述`DbContext`程式碼範例中定義的。 如果您使用的是`DbContext`不同的名稱，請以您`DbContext`的`MyKeysContext`名稱取代。
+`MyKeysContext` 是上述程式碼範例中定義的 `DbContext`。 如果您使用不同名稱的 `DbContext`，請以您的 `DbContext` 名稱取代 `MyKeysContext`。
 
-`DataProtectionKeys`類別/實體採用下表所示的結構。
+`DataProtectionKeys` 類別/實體會採用下表所示的結構。
 
 | 屬性/欄位 | CLR 型別 | SQL 類型              |
 | -------------- | -------- | --------------------- |
@@ -185,4 +185,4 @@ dotnet ef database update --context MyKeysContext
 
 ## <a name="custom-key-repository"></a>自訂金鑰存放庫
 
-如果內建機制不適當，開發人員可以指定自己的金鑰持續性機制藉由提供自訂[IXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.ixmlrepository)。
+如果不適合使用內建機制，開發人員可以藉由提供自訂[IXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.ixmlrepository)來指定自己的金鑰持續性機制。

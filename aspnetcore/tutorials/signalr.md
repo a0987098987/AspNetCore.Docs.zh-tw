@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 962cc0318ebbfc7fac16ca0947a2e3e83e51665c
+ms.openlocfilehash: ac727ed0517a8b30fd8194c010576fdd74a5950a
 ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73964035"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74052861"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-opno-locsignalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
@@ -249,13 +249,6 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞至 SignalR。
 >   dotnet dev-certs https --trust
 >   ```
 
-## <a name="next-steps"></a>後續步驟
-
-若要深入瞭解 SignalR，請參閱簡介：
-
-> [!div class="nextstepaction"]
-> [ASP.NET Core SignalR 簡介](xref:signalr/introduction)
-
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
@@ -485,18 +478,4 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞至 SignalR。
 ## <a name="additional-resources"></a>其他資源 
 * [這個教學課程的 YouTube 版本](https://www.youtube.com/watch?v=iKlVmu-r0JQ)   
 
-## <a name="next-steps"></a>後續步驟   
-
-在本教學課程中，您將了解如何：   
-
-> [!div class="checklist"]  
-> * 建立 Web 應用程式專案。   
-> * 新增 SignalR 用戶端程式庫。   
-> * 建立 SignalR 中樞。 
-> * 將專案設定為使用 SignalR。 
-> * 新增使用中樞的程式碼，以將訊息從任何用戶端傳送至所有連線的用戶端。   
-若要深入瞭解 SignalR，請參閱簡介：    
-> [!div class="nextstepaction"] 
-> [ASP.NET Core SignalR 簡介](xref:signalr/introduction)   
 ::: moniker-end
-

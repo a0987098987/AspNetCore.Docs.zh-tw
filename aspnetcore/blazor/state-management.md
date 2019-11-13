@@ -6,32 +6,34 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
+no-loc:
+- Blazor
 uid: blazor/state-management
-ms.openlocfilehash: 67042fa9b86125fe95d877dbce246abeb6f35dd0
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: 408d44a3f2e81a165e8b786c6d2efc9329082e30
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391267"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962831"
 ---
-# <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core Blazor 狀態管理
+# <a name="aspnet-core-opno-locblazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor 伺服器是可設定狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在*伺服器的記憶體中。* 
+Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在*伺服器的記憶體中。* 
 
 保留給使用者線路的狀態範例包括：
 
-* 呈現的 UI @ no__t-元件實例和其最新的轉譯輸出的0the 階層。
+* 呈現的 UI&mdash;元件實例的階層及其最新的轉譯輸出。
 * 元件實例中任何欄位和屬性的值。
 * 保留在範圍為線路之相依性[插入（DI）](xref:fundamentals/dependency-injection)服務實例中的資料。
 
 > [!NOTE]
-> 本文解決 Blazor 伺服器應用程式中的狀態持續性。 Blazor WebAssembly apps 可以利用[瀏覽器中的用戶端狀態持續](#client-side-in-the-browser)性，但需要的自訂解決方案或協力廠商套件超出本文的範圍。
+> 本文解決 Blazor Server 應用程式中的狀態持續性。 Blazor WebAssembly apps 可以利用[瀏覽器中的用戶端狀態持續](#client-side-in-the-browser)性，但需要自訂解決方案或協力廠商套件，超出本文的範圍。
 
-## <a name="blazor-circuits"></a>Blazor 線路
+## <a name="opno-locblazor-circuits"></a>Blazor 線路
 
 如果使用者遇到暫時性的網路連線遺失，Blazor 會嘗試將使用者重新連接到其原始線路，讓他們可以繼續使用應用程式。 不過，不一定能夠將使用者重新連接到伺服器記憶體中的原始線路：
 
@@ -50,7 +52,7 @@ Blazor 伺服器是可設定狀態的應用程式架構。 在大部分的情況
 
 一般而言，跨線路維護狀態適用于使用者主動建立資料的情況，而不只是讀取已經存在的資料。
 
-若要保留超過單一線路的狀態，*請勿只將資料儲存在伺服器的記憶體中*。 應用程式必須將資料保存到其他儲存位置。 狀態持續性不是自動的 @ no__t-在開發應用程式以執行具狀態的資料持續性時，0you 必須採取步驟。
+若要保留超過單一線路的狀態，*請勿只將資料儲存在伺服器的記憶體中*。 應用程式必須將資料保存到其他儲存位置。 狀態持續性不會自動&mdash;您在開發應用程式以執行具狀態的資料持續性時，必須採取步驟。
 
 通常只有在高價值的狀態下，使用者才需要建立資料持續性。 在下列範例中，保存狀態可以節省商務工作的時間或輔助：
 
@@ -64,7 +66,7 @@ Blazor 伺服器是可設定狀態的應用程式架構。 在大部分的情況
 
 ## <a name="where-to-persist-state"></a>保存狀態的位置
 
-在 Blazor 伺服器應用程式中保存狀態有三個常見的位置。 每個方法最適合不同的案例，而且有不同的注意事項：
+有三個常見的位置存在於 Blazor 伺服器應用程式中的保存狀態。 每個方法最適合不同的案例，而且有不同的注意事項：
 
 * [資料庫中的伺服器端](#server-side-in-a-database)
 * [URL](#url)
@@ -93,16 +95,16 @@ Blazor 伺服器是可設定狀態的應用程式架構。 在大部分的情況
 瀏覽器的網址列內容會保留：
 
 * 如果使用者手動重載頁面。
-* 如果 web 伺服器變成無法使用 @ no__t-0the 使用者會強制重載頁面，以便連接到不同的伺服器。
+* 如果 web 伺服器變得無法使用&mdash;則會強制使用者重載頁面，以便連接到不同的伺服器。
 
 如需使用 `@page` 指示詞來定義 URL 模式的詳細資訊，請參閱 <xref:blazor/routing>。
 
 ### <a name="client-side-in-the-browser"></a>瀏覽器中的用戶端
 
-對於使用者主動建立的暫時性資料，常見的備份存放區是瀏覽器的 @no__t 0 和 @no__t 1 的集合。 若已放棄迴圈，則不需要應用程式來管理或清除已儲存的狀態，這是優於伺服器端儲存體的優點。
+對於使用者主動建立的暫時性資料，常見的備份存放區是瀏覽器的 `localStorage` 和 `sessionStorage` 集合。 若已放棄迴圈，則不需要應用程式來管理或清除已儲存的狀態，這是優於伺服器端儲存體的優點。
 
 > [!NOTE]
-> 本節中的「用戶端」指的是瀏覽器中的用戶端案例，而不是[Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)。 `localStorage` 和 `sessionStorage` 可以在 Blazor WebAssembly apps 中使用，但只能透過撰寫自訂程式碼或使用協力廠商套件。
+> 本節中的「用戶端」指的是瀏覽器中的用戶端案例，而不是[Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)。 `localStorage` 和 `sessionStorage` 可以在 Blazor WebAssembly 應用程式中使用，但只能透過撰寫自訂程式碼或使用協力廠商套件。
 
 `localStorage` 和 `sessionStorage` 的差異如下：
 
@@ -140,8 +142,8 @@ Blazor 伺服器是可設定狀態的應用程式架構。 在大部分的情況
 
 若要安裝 `Microsoft.AspNetCore.ProtectedBrowserStorage` 套件：
 
-1. 在 Blazor 伺服器應用程式專案中，新增[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)的套件參考。
-1. 在最上層的 HTML 中（例如，在預設專案範本的*Pages/_Host. cshtml*檔案中），新增下列 `<script>` 標記：
+1. 在 Blazor Server 應用程式專案中，將套件參考新增至[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
+1. 在最上層 HTML 中（例如，在預設專案範本的*Pages/_Host. cshtml*檔案中），加入下列 `<script>` 標記：
 
    ```html
    <script src="_content/Microsoft.AspNetCore.ProtectedBrowserStorage/protectedBrowserStorage.js"></script>
@@ -167,9 +169,9 @@ Blazor 伺服器是可設定狀態的應用程式架構。 在大部分的情況
 @inject ProtectedSessionStorage ProtectedSessionStore
 ```
 
-@No__t-0 語句可以放在 *_Imports 的 razor*檔案中，而不是在元件中。 使用 *_Imports*檔案可讓應用程式或整個應用程式的較大區段使用命名空間。
+`@using` 語句可以放入 *_Imports 的 razor*檔案中，而不是在元件中。 使用 *_Imports razor*檔案可讓應用程式或整個應用程式的較大區段使用命名空間。
 
-若要在專案範本的 `Counter` 元件中保存 `currentCount` 值，請將 @no__t 2 方法修改為使用 `ProtectedSessionStore.SetAsync`：
+若要將 `currentCount` 值保存在專案範本的 `Counter` 元件中，請將 `IncrementCount` 方法修改為使用 `ProtectedSessionStore.SetAsync`：
 
 ```csharp
 private async Task IncrementCount()
@@ -181,9 +183,9 @@ private async Task IncrementCount()
 
 在更大、更實際的應用程式中，個別欄位的儲存是不太可能發生的情況。 應用程式較可能儲存包含複雜狀態的整個模型物件。 `ProtectedSessionStore` 會自動序列化和還原序列化 JSON 資料。
 
-在上述程式碼範例中，@no__t 0 資料會在使用者的瀏覽器中儲存為 `sessionStorage['count']`。 資料不會以純文字儲存，而是使用 ASP.NET Core 的[資料保護](xref:security/data-protection/introduction)來保護。 如果在瀏覽器的開發人員主控台中評估 `sessionStorage['count']`，則可以看到加密的資料。
+在上述程式碼範例中，`currentCount` 資料會以 `sessionStorage['count']` 方式儲存在使用者的瀏覽器中。 資料不會以純文字儲存，而是使用 ASP.NET Core 的[資料保護](xref:security/data-protection/introduction)來保護。 如果在瀏覽器的開發人員主控台中評估 `sessionStorage['count']`，就可以看到加密的資料。
 
-若要在使用者稍後回到 `Counter` 元件時復原 @no__t 0 資料（包括它們是否在全新的線路上），請使用 `ProtectedSessionStore.GetAsync`：
+若要復原 `currentCount` 資料（如果使用者稍後回到 `Counter` 元件（包括它們是在全新的線路上），請使用 `ProtectedSessionStore.GetAsync`：
 
 ```csharp
 protected override async Task OnInitializedAsync()
@@ -205,7 +207,7 @@ protected override async Task OnInitializedAsync()
 
 由於瀏覽器儲存體是非同步（透過網路連線存取），因此在載入資料並可供元件使用之前，一律會有一段時間。 若要獲得最佳結果，請在載入進行時轉譯載入狀態訊息，而不是顯示空白或預設的資料。
 
-其中一種方法是追蹤資料是否 @no__t 0 （仍在載入中）。 在預設的 `Counter` 元件中，計數會保留在 `int` 中。 將問號（`?`）新增至類型（`int`），讓 `currentCount` 可為 null：
+其中一種方法是追蹤資料是否 `null` （仍在載入中）。 在預設的 `Counter` 元件中，計數會保留在 `int` 中。 將問號（`?`）新增至類型（`int`），讓 `currentCount` 可為 null：
 
 ```csharp
 private int? currentCount;
@@ -237,9 +239,9 @@ else
 
 > 目前無法發出 JavaScript interop 呼叫。 這是因為正在資源清單元件。
 
-解決錯誤的其中一種方法是停用已處理的。 如果應用程式大量使用以瀏覽器為基礎的存放裝置，這通常是最佳的選擇。 預先呈現會增加複雜度，且不會對應用程式造成好處，因為應用程式無法在 `localStorage` 或 @no__t 1 之前，先將任何有用的內容呈現給您。
+解決錯誤的其中一種方法是停用已處理的。 如果應用程式大量使用以瀏覽器為基礎的存放裝置，這通常是最佳的選擇。 因為應用程式在 `localStorage` 或 `sessionStorage` 可供使用之前無法提供任何有用的內容，所以已進行的呈現會增加複雜度，且不會對應用程式
 
-若要停用預先預先呈現，請開啟*Pages/_Host*檔，並將呼叫變更為 `Html.RenderComponentAsync<App>(RenderMode.Server)`。
+若要停用預呈現，請開啟*Pages/_Host. cshtml*檔案，然後將呼叫變更為 `Html.RenderComponentAsync<App>(RenderMode.Server)`。
 
 預先呈現可能適用于未使用 `localStorage` 或 `sessionStorage` 的其他頁面。 若要保持已啟用的已啟用狀態，請延遲載入作業，直到瀏覽器連線到線路為止。 以下是儲存計數器值的範例：
 
@@ -282,7 +284,7 @@ else
 
 如果許多元件都依賴以瀏覽器為基礎的儲存體，則重新執行狀態提供者程式碼很多次會建立程式碼重複。 避免程式碼重複的其中一個選項是建立一個可封裝狀態提供者邏輯的*狀態供應器父元件*。 子元件可以使用持續性資料，而不考慮狀態持續性機制。
 
-在下列 @no__t 0 元件範例中，會保存計數器資料：
+在下列 `CounterStateProvider` 元件的範例中，會保存計數器資料：
 
 ```cshtml
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
@@ -320,9 +322,9 @@ else
 }
 ```
 
-@No__t 0 元件在載入完成之前，不會轉譯其子內容來處理載入階段。
+`CounterStateProvider` 元件在載入完成之前，不會呈現其子內容來處理載入階段。
 
-若要使用 `CounterStateProvider` 元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取該狀態，請將 `CounterStateProvider` 元件包裝在 @no__t 2 元件（*app.config*）的 `Router`：
+若要使用 `CounterStateProvider` 元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取狀態，請將 `CounterStateProvider` 元件包裝在 `App` 元件（*razor*）的 `Router` 周圍：
 
 ```cshtml
 <CounterStateProvider>
@@ -332,7 +334,7 @@ else
 </CounterStateProvider>
 ```
 
-包裝的元件會接收並可修改保存的計數器狀態。 下列 @no__t 0 元件會執行模式：
+包裝的元件會接收並可修改保存的計數器狀態。 下列 `Counter` 元件會執行模式：
 
 ```cshtml
 @page "/counter"

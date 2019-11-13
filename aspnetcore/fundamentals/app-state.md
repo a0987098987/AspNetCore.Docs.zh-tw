@@ -5,14 +5,16 @@ description: 探索方法以在要求之間保留工作階段和應用程式狀�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/12/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: ccb37a422d972ab9113bb4115473d054282dac87
-ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
+ms.openlocfilehash: b80b1e72eb2f25e9c9fe07a0c33c14ecf5ae05aa
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71278684"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963486"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>ASP.NET Core 中的工作階段與應用程式狀態
 
@@ -52,7 +54,7 @@ Cookie 通常可用於個人化，其中內容會針對已知的使用者自訂�
 工作階段狀態是用來在使用者瀏覽 Web 應用程式時存放使用者資料的 ASP.NET Core 情節。 工作階段狀態使用應用程式所維護的存放區，在用戶端的要求之間保存資料。 工作階段資料受到快取的支援，並被視為暫時資料&mdash;網站沒有工作階段資料應該也會繼續運作。 重要應用程式資料應該儲存在使用者資料庫，並只在工作階段中快取以獲得效能最佳化。
 
 > [!NOTE]
-> [SignalR](xref:signalr/index) 應用程式中不支援工作階段，因為 [SignalR 中樞](xref:signalr/hubs)可獨立於 HTTP 內容之外而執行。 例如，當長時間輪詢要求由中樞維持開啟，超過要求的 HTTP 內容存留期時，便可能發生此情況。
+> [SignalR](xref:signalr/index)應用程式不支援會話，因為[SignalR 中樞](xref:signalr/hubs)可能會獨立于 HTTP 內容之外執行。 例如，當長時間輪詢要求由中樞維持開啟，超過要求的 HTTP 內容存留期時，便可能發生此情況。
 
 ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識別碼的 Cookie 給用戶端，以便將其隨著每個要求傳送至應用程式。 應用程式則使用工作階段識別碼來擷取工作階段資料。
 
@@ -163,7 +165,7 @@ Name: @HttpContext.Session.GetString(IndexModel.SessionKeyName)
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core 會公開 Razor Pages [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData)或控制器<xref:Microsoft.AspNetCore.Mvc.Controller.TempData>。 這個屬性會儲存資料，直到讀取另一個要求為止。 在要求結束時，可以使用[保留（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)和[查看（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*)方法來檢查資料，而不需要刪除。 [Keep （）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)會標示字典中的所有專案以進行保留。 `TempData`當需要多個單一要求的資料時，對於重新導向而言特別有用。 `TempData`是由使用`TempData` cookie 或會話狀態的提供者所執行。
+ASP.NET Core 會公開 Razor Pages [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData)或控制器 <xref:Microsoft.AspNetCore.Mvc.Controller.TempData>。 這個屬性會儲存資料，直到讀取另一個要求為止。 在要求結束時，可以使用[保留（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)和[查看（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*)方法來檢查資料，而不需要刪除。 [Keep （）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)會標示字典中的所有專案以進行保留。 當有多個要求需要資料時，`TempData` 特別適合用來重新導向。 `TempData` 是由使用 cookie 或會話狀態的 `TempData` 提供者所執行。
 
 ## <a name="tempdata-samples"></a>TempData 範例
 
@@ -171,19 +173,19 @@ ASP.NET Core 會公開 Razor Pages [TempData](xref:Microsoft.AspNetCore.Mvc.Razo
 
 [!code-csharp[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Create.cshtml.cs?name=snippet&highlight=15-16,30)]
 
-會顯示`TempData["Message"]`下列頁面：
+下列頁面會顯示 `TempData["Message"]`：
 
 [!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexPeek.cshtml?range=1-14)]
 
-在上述標記中，在要求結束時，**不**會`TempData["Message"]`刪除，因為`Peek`會使用。 重新整理頁面會`TempData["Message"]`顯示。
+在上述標記中，在要求結束時，**不**會刪除 `TempData["Message"]`，因為會使用 `Peek`。 重新整理頁面會顯示 `TempData["Message"]`。
 
-下列標記與上述程式碼類似，但會使用`Keep`來保留要求結尾的資料：
+下列標記與上述程式碼類似，但使用 `Keep` 在要求結束時保留資料：
 
 [!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexKeep.cshtml?range=1-14)]
 
-在*IndexPeek*和*IndexKeep*頁面之間流覽並不`TempData["Message"]`會刪除。
+在 [ *IndexPeek* ] 和 [ *IndexKeep* ] 頁面之間流覽並不會 `TempData["Message"]`刪除。
 
-下列程式碼會`TempData["Message"]`顯示，但在要求結束時， `TempData["Message"]`會刪除：
+下列程式碼會顯示 `TempData["Message"]`，但在要求結束時，`TempData["Message"]` 會被刪除：
 
 [!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Index.cshtml?range=1-14)]
 
@@ -316,9 +318,9 @@ app.Run(async (context) =>
 
   檢查是否有錯誤的建議方法是，當應用程式完成寫入至工作階段後，從應用程式程式碼呼叫 `await feature.Session.CommitAsync();`。 備份存放區無法使用時，`CommitAsync` 會擲回例外狀況。 如果 `CommitAsync` 失敗，應用程式可以處理例外狀況。 `LoadAsync` 在無法使用資料存放區的相同情況下會擲回。
   
-## <a name="signalr-and-session-state"></a>SignalR 和會話狀態
+## <a name="opno-locsignalr-and-session-state"></a>SignalR 和會話狀態
 
-SignalR apps 不應使用會話狀態來儲存資訊。 SignalR apps 可以在中樞的中， `Context.Items`將每個線上狀態儲存在中。 <!-- https://github.com/aspnet/SignalR/issues/2139 -->
+SignalR 應用程式不應使用會話狀態來儲存資訊。 SignalR 的應用程式可以在中樞的 `Context.Items` 中儲存每個線上狀態。 <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
 ## <a name="additional-resources"></a>其他資源
 

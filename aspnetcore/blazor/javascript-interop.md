@@ -1,20 +1,22 @@
 ---
 title: ASP.NET Core Blazor JavaScript interop
 author: guardrex
-description: 瞭解如何從 Blazor apps 中的 JavaScript，從 .NET 和 .NET 方法叫用 JavaScript 函式。
+description: 瞭解如何從 Blazor 應用程式中的 JavaScript，從 .NET 和 .NET 方法叫用 JavaScript 函式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/16/2019
+no-loc:
+- Blazor
 uid: blazor/javascript-interop
-ms.openlocfilehash: b157e16918975cd522318a02f21824d9a0198b11
-ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
+ms.openlocfilehash: 76437ef00e00f5de1b995b4f0b1a09e5876dff8f
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72697937"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962833"
 ---
-# <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
+# <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)、 [Daniel Roth](https://github.com/danroth27)和[Luke Latham](https://github.com/guardrex)
 
@@ -28,17 +30,17 @@ Blazor 應用程式可以從 JavaScript 程式碼，叫用 .NET 和 .NET 方法�
 
 有時候需要 .NET 程式碼來呼叫 JavaScript 函式。 例如，JavaScript 呼叫可以將 JavaScript 程式庫中的瀏覽器功能或功能公開給應用程式。
 
-若要從 .NET 呼叫 JavaScript，請使用 `IJSRuntime` 抽象概念。 @No__t_0 方法會接受您想要叫用之 JavaScript 函數的識別碼，以及任何數目的 JSON 可序列化引數。 函數識別碼相對於全域範圍（`window`）。 如果您想要呼叫 `window.someScope.someFunction`，識別碼會 `someScope.someFunction`。 在呼叫函式之前，不需要先註冊函式。 傳回類型 `T` 也必須是 JSON 可序列化。
+若要從 .NET 呼叫 JavaScript，請使用 `IJSRuntime` 抽象概念。 `InvokeAsync<T>` 方法會接受您想要叫用之 JavaScript 函數的識別碼，以及任何數目的 JSON 可序列化引數。 函數識別碼相對於全域範圍（`window`）。 如果您想要呼叫 `window.someScope.someFunction`，識別碼會 `someScope.someFunction`。 在呼叫函式之前，不需要先註冊函式。 傳回類型 `T` 也必須是 JSON 可序列化。
 
 針對 Blazor 伺服器應用程式：
 
 * Blazor 伺服器應用程式會處理多個使用者要求。 請勿在元件中呼叫 `JSRuntime.Current`，以叫用 JavaScript 函數。
 * 插入 `IJSRuntime` 抽象概念，並使用插入的物件發出 JavaScript interop 呼叫。
-* 當 Blazor 應用程式預先呈現時，無法呼叫 JavaScript，因為尚未建立與瀏覽器的連接。 如需詳細資訊，請參閱偵測[Blazor 應用程式何時進行預呈現](#detect-when-a-blazor-app-is-prerendering)一節。
+* 雖然已預先處理 Blazor 應用程式，但無法呼叫 JavaScript，因為尚未建立與瀏覽器的連接。 如需詳細資訊，請參閱偵測[何時將 Blazor 應用程式進行預呈現](#detect-when-a-blazor-app-is-prerendering)一節。
 
 下列範例是根據[TextDecoder](https://developer.mozilla.org/docs/Web/API/TextDecoder)，這是以實驗性 JavaScript 為基礎的解碼器。 此範例示範如何從C#方法叫用 JavaScript 函數。 JavaScript 函式會從C#方法接受位元組陣列、解碼陣列，然後將文字傳回給元件以供顯示。
 
-在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor Server）的 `<head>` 元素中，提供 JavaScript 函式，使用 `TextDecoder` 來解碼傳遞的陣列，並傳回解碼的值：
+在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor Server）的 `<head>` 元素內，提供使用 `TextDecoder` 來解碼傳遞陣列並傳回解碼值的 JavaScript 函式：
 
 [!code-html[](javascript-interop/samples_snapshot/index-script-convertarray.html)]
 
@@ -63,7 +65,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
   [!code-cshtml[](javascript-interop/samples_snapshot/inject-abstraction.razor?highlight=1)]
 
-  在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor Server）的 `<head>` 元素內，提供 `handleTickerChanged` 的 JavaScript 函式。 函式會使用 `IJSRuntime.InvokeVoidAsync` 來呼叫，而且不會傳回值：
+  在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor Server）的 `<head>` 元素內，提供 `handleTickerChanged` JavaScript 函數。 函式會使用 `IJSRuntime.InvokeVoidAsync` 來呼叫，而且不會傳回值：
 
   [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged1.html)]
 
@@ -71,7 +73,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
   [!code-csharp[](javascript-interop/samples_snapshot/inject-abstraction-class.cs?highlight=5)]
 
-  在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor Server）的 `<head>` 元素內，提供 `handleTickerChanged` 的 JavaScript 函式。 呼叫函式時，會使用 `JSRuntime.InvokeAsync` 並傳回值：
+  在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor Server）的 `<head>` 元素內，提供 `handleTickerChanged` JavaScript 函數。 呼叫函式時，會使用 `JSRuntime.InvokeAsync` 並傳回值：
 
   [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged2.html)]
 
@@ -91,7 +93,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 [!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
-將參考 JavaScript 檔案的 `<script>` 標記放在*wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host. Cshtml*檔案（Blazor 伺服器）中。
+將參考 JavaScript 檔案的 `<script>` 標記放在*wwwroot/index.html*檔案中（Blazor WebAssembly）或*Pages/_Host. cshtml*檔案（Blazor 伺服器）。
 
 *wwwroot/index.html* （Blazor WebAssembly）：
 
@@ -105,7 +107,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 .NET 方法會藉由呼叫 `IJSRuntime.InvokeAsync<T>`，與*exampleJsInterop*檔案中的 JavaScript 函數互通。
 
-@No__t_0 抽象概念是非同步，可允許 Blazor 伺服器案例。 如果應用程式是 Blazor WebAssembly 應用程式，而且您想要以同步方式叫用 JavaScript 函式，請將轉換為 `IJSInProcessRuntime`，並改為呼叫 `Invoke<T>`。 我們建議大部分的 JavaScript interop 程式庫都使用非同步 Api，以確保所有案例中都有可用的程式庫。
+`IJSRuntime` 抽象概念是非同步，可讓 Blazor 伺服器案例。 如果應用程式是 Blazor WebAssembly 應用程式，而且您想要以同步方式叫用 JavaScript 函式，請將轉換成 `IJSInProcessRuntime` 並改為呼叫 `Invoke<T>`。 我們建議大部分的 JavaScript interop 程式庫都使用非同步 Api，以確保所有案例中都有可用的程式庫。
 
 範例應用程式包含一個可示範 JavaScript interop 的元件。 元件：
 
@@ -118,14 +120,14 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 [!code-cshtml[](./common/samples/3.x/BlazorWebAssemblySample/Pages/JsInterop.razor?name=snippet_JSInterop1&highlight=3,19-21,23-25)]
 
 1. 當 `TriggerJsPrompt` 是藉由選取元件的 [**觸發程式 JavaScript 提示**] 按鈕來執行時，會呼叫*wwwroot/exampleJsInterop*檔案中提供的 JavaScript `showPrompt` 函數。
-1. @No__t_0 函式會接受使用者輸入（使用者的名稱），這是 HTML 編碼並傳回給元件。 元件會將使用者的名稱儲存在本機變數中，`name`。
+1. `showPrompt` 函式會接受使用者輸入（使用者的名稱），這是 HTML 編碼並傳回給元件。 元件會將使用者的名稱儲存在本機變數中，`name`。
 1. 儲存在 `name` 中的字串會合並到歡迎訊息中，該訊息會傳遞至 JavaScript 函式 `displayWelcome`，這會將歡迎訊息轉譯為標題標記。
 
 ## <a name="call-a-void-javascript-function"></a>呼叫 void JavaScript 函數
 
 會使用 `IJSRuntime.InvokeVoidAsync` 呼叫傳回[void （0）/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void)或[undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined)的 JavaScript 函數。
 
-## <a name="detect-when-a-blazor-app-is-prerendering"></a>偵測 Blazor 應用程式何時已進行預呈現
+## <a name="detect-when-a-opno-locblazor-app-is-prerendering"></a>偵測 Blazor 應用程式何時已進行預呈現
  
 [!INCLUDE[](~/includes/blazor-prerendering.md)]
 
@@ -151,7 +153,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 > [!NOTE]
 > 請勿**使用已**捕捉的元素參考做為擴展 DOM 的方式。 這麼做可能會干擾宣告式轉譯模型。
 
-就 .NET 程式碼而言，`ElementReference` 是不透明的控制碼。 @No__t_1 的*唯一*做法是透過 javascript interop 將它傳遞至 javascript 程式碼。 當您這麼做時，JavaScript 端程式碼會收到 `HTMLElement` 實例，它可以搭配一般的 DOM Api 來使用。
+就 .NET 程式碼而言，`ElementReference` 是不透明的控制碼。 `ElementReference` 的*唯一*做法是透過 javascript interop 將它傳遞至 javascript 程式碼。 當您這麼做時，JavaScript 端程式碼會收到 `HTMLElement` 實例，它可以搭配一般的 DOM Api 來使用。
 
 例如，下列程式碼會定義 .NET 擴充方法，讓您能夠將焦點設定在元素上：
 
@@ -190,9 +192,9 @@ public static Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
 
 ### <a name="static-net-method-call"></a>靜態 .NET 方法呼叫
 
-若要從 JavaScript 叫用靜態 .NET 方法，請使用 `DotNet.invokeMethod` 或 `DotNet.invokeMethodAsync` 函數。 傳入您想要呼叫之靜態方法的識別碼、包含函數的元件名稱，以及任何引數。 最好是非同步版本來支援 Blazor 伺服器案例。 若要從 JavaScript 叫用 .NET 方法，.NET 方法必須是公用的、靜態的，而且具有 `[JSInvokable]` 的屬性。 根據預設，方法識別碼是方法名稱，但您可以使用 `JSInvokableAttribute` 的函式來指定不同的識別碼。 目前不支援呼叫開放式泛型方法。
+若要從 JavaScript 叫用靜態 .NET 方法，請使用 `DotNet.invokeMethod` 或 `DotNet.invokeMethodAsync` 函數。 傳入您想要呼叫之靜態方法的識別碼、包含函數的元件名稱，以及任何引數。 最好是非同步版本，以支援 Blazor 伺服器案例。 若要從 JavaScript 叫用 .NET 方法，.NET 方法必須是公用的、靜態的，而且具有 `[JSInvokable]` 的屬性。 根據預設，方法識別碼是方法名稱，但您可以使用 `JSInvokableAttribute` 的函式來指定不同的識別碼。 目前不支援呼叫開放式泛型方法。
 
-範例應用程式包含傳回C# `int` 陣列的方法。 @No__t_0 屬性會套用至方法。
+範例應用程式包含傳回C# `int` 陣列的方法。 `JSInvokable` 屬性會套用至方法。
 
 *Pages/JsInterop. razor*：
 
@@ -224,7 +226,7 @@ Array(4) [ 1, 2, 3, 4 ]
 > [!NOTE]
 > 範例應用程式會將訊息記錄到用戶端主控台。 如需範例應用程式所示範的下列範例，請在瀏覽器的開發人員工具中檢查瀏覽器的主控台輸出。
 
-選取 [**觸發程式 .net 實例方法 HelloHelper. SayHello** ] 按鈕時，會呼叫 `ExampleJsInterop.CallHelloHelperSayHello`，並將名稱（`Blazor`）傳遞給方法。
+選取 [**觸發程式 .net 實例方法 HelloHelper. SayHello** ] 按鈕時，會呼叫 `ExampleJsInterop.CallHelloHelperSayHello`，並將名稱 `Blazor`傳遞至方法。
 
 *Pages/JsInterop. razor*：
 
@@ -264,7 +266,7 @@ JavaScript interop 程式碼可以包含在類別庫中，這可讓您在 NuGet 
 
 ## <a name="harden-js-interop-calls"></a>強化 JS interop 呼叫
 
-JS interop 可能會因為網路錯誤而失敗，而且應該視為不可靠。 根據預設，Blazor 伺服器應用程式會在一分鐘之後，將伺服器上的 JS interop 呼叫數倍。 如果應用程式可以容忍較積極的超時（例如10秒），請使用下列其中一種方法來設定超時時間：
+JS interop 可能會因為網路錯誤而失敗，而且應該視為不可靠。 根據預設，Blazor Server 應用程式會在一分鐘後，在伺服器上執行的 JS interop 呼叫數次。 如果應用程式可以容忍較積極的超時（例如10秒），請使用下列其中一種方法來設定超時時間：
 
 * 全域在 `Startup.ConfigureServices` 中，指定 timeout：
 

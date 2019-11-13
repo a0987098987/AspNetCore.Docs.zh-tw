@@ -1,34 +1,36 @@
 ---
 title: 開始使用 ASP.NET Core SignalR
 author: bradygaster
-description: 在本教學課程中，您會建立使用 ASP.NET Core SignalR 的聊天應用程式。
+description: 在本教學課程中，您會建立使用 ASP.NET Core SignalR的聊天應用程式。
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 10/03/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 078f1875d22a90f90575826e6f212205cd4b3d5b
-ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
+ms.openlocfilehash: 962cc0318ebbfc7fac16ca0947a2e3e83e51665c
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72519123"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73964035"
 ---
-# <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
+# <a name="tutorial-get-started-with-aspnet-core-opno-locsignalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
 ::: moniker range=">= aspnetcore-3.0"
 
-本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您將學習如何：
+本教學課程將教您使用 SignalR建立即時應用程式的基本概念。 您將學習如何：
 
 > [!div class="checklist"]
 > * 建立 Web 專案。
 > * 新增 SignalR 用戶端程式庫。
 > * 建立 SignalR 中樞。
-> * 設定專案以使用 SignalR。
+> * 將專案設定為使用 SignalR。
 > * 新增程式碼，以將訊息從任何用戶端傳送至所有連線的用戶端。
 
 最後，您會有一個運作正常的聊天應用程式：
 
-![SignalR 範例應用程式](signalr/_static/3.x/signalr-get-started-finished.png)
+![[!OP.無-LOC （SignalR）] 範例應用程式](signalr/_static/3.x/signalr-get-started-finished.png)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -85,9 +87,9 @@ ms.locfileid: "72519123"
 
 ---
 
-## <a name="add-the-signalr-client-library"></a>新增 SignalR 用戶端程式庫
+## <a name="add-the-opno-locsignalr-client-library"></a>新增 SignalR 用戶端程式庫
 
-SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容傳遞網路 (CDN)，可以傳遞在 Node.js 套件管理員 (npm) 中找到的任何項目。
+SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構中。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容傳遞網路 (CDN)，可以傳遞在 Node.js 套件管理員 (npm) 中找到的任何項目。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
@@ -113,7 +115,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
-* 執行下列命令以透過使用 LibMan 來取得 SignalR 用戶端程式庫。 您可能必須等幾秒鐘，才會看到輸出。
+* 執行下列命令，使用 LibMan 取得 SignalR 用戶端程式庫。 您可能必須等幾秒鐘，才會看到輸出。
 
   ```console
   libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
@@ -142,7 +144,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
 * 瀏覽到專案資料夾 (包含 *SignalRChat.csproj* 檔案的資料夾)。
 
-* 執行下列命令以透過使用 LibMan 來取得 SignalR 用戶端程式庫。
+* 執行下列命令，使用 LibMan 取得 SignalR 用戶端程式庫。
 
   ```console
   libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
@@ -163,7 +165,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
 ---
 
-## <a name="create-a-signalr-hub"></a>建立 SignalR 中樞
+## <a name="create-a-opno-locsignalr-hub"></a>建立 SignalR 中樞
 
 *中樞*類別可提供作為高階管線，用來處理用戶端/伺服器通訊。
 
@@ -175,11 +177,11 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
   `ChatHub` 類別繼承自 SignalR `Hub` 類別。 `Hub` 類別管理連線、群組和傳訊。
 
-  連線的用戶端可以呼叫 `SendMessage` 方法將訊息傳送至所有用戶端。 本教學課程稍後將示範呼叫該方法的 JavaScript 用戶端程式碼。 SignalR 程式碼是以非同步方式來提供最大的延展性。
+  連線的用戶端可以呼叫 `SendMessage` 方法將訊息傳送至所有用戶端。 本教學課程稍後將示範呼叫該方法的 JavaScript 用戶端程式碼。 SignalR 程式碼是非同步，可提供最大的擴充性。
 
-## <a name="configure-signalr"></a>設定 SignalR
+## <a name="configure-opno-locsignalr"></a>設定 SignalR
 
-SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
+SignalR 伺服器必須設定為將 SignalR 要求傳遞至 SignalR。
 
 * 將下列醒目提示的程式碼新增至 *Startup.cs* 檔案。
 
@@ -187,7 +189,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
   這些變更會將 SignalR 新增至 ASP.NET Core 相依性插入和路由系統。
 
-## <a name="add-signalr-client-code"></a>新增 SignalR 用戶端程式碼
+## <a name="add-opno-locsignalr-client-code"></a>新增 SignalR 用戶端程式代碼
 
 * 以下列程式碼取代 *Pages\Index.cshtml* 中的程式碼：
 
@@ -196,8 +198,8 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
   上述程式碼：
 
   * 建立名稱和訊息文字的文字方塊，以及提交按鈕。
-  * 使用 `id="messagesList"` 建立清單，用於顯示接收自 SignalR 中樞的訊息。
-  * 包含 SignalR 的指令碼參考和您在下一個步驟中建立的 *chat.js* 應用程式程式碼。
+  * 建立包含 `id="messagesList"` 的清單，以顯示從 SignalR 中樞接收的訊息。
+  * 包含 SignalR 的腳本參考，以及您在下一個步驟中建立的*聊天 .js*應用程式代碼。
 
 * 在 *wwwroot/js* 資料夾中，建立含有下列程式碼的 *chat.js* 檔案：
 
@@ -235,7 +237,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
   名稱和訊息會立即顯示在兩個頁面上。
 
-  ![SignalR 範例應用程式](signalr/_static/3.x/signalr-get-started-finished.png)
+  ![[!OP.無-LOC （SignalR）] 範例應用程式](signalr/_static/3.x/signalr-get-started-finished.png)
 
 > [!TIP]
 > * 如果應用程式無法運作，請開啟您的瀏覽器開發人員工具 (F12)，然後移至主控台。 您可能會看到與 HTML 和 JavaScript 程式碼相關的錯誤。 例如，假設您將 *signalr.js* 放置在與指示不同的資料夾中。 在此情況下，該檔案的參考無法運作，您會在主控台中看到 404 錯誤。
@@ -249,7 +251,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解 SignalR，請參閱簡介：
+若要深入瞭解 SignalR，請參閱簡介：
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core SignalR 簡介](xref:signalr/introduction)
@@ -258,15 +260,15 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 ::: moniker range="< aspnetcore-3.0"
 
-本教學課程將教授使用 SignalR 建置即時應用程式的基本概念。 您將學習如何：   
+本教學課程將教您使用 SignalR建立即時應用程式的基本概念。 您將學習如何： 
 
 > [!div class="checklist"]  
 > * 建立 Web 專案。   
-> * 新增 SignalR 用戶端程式庫。 
-> * 建立 SignalR 中樞。   
-> * 設定專案以使用 SignalR。   
+> * 新增 SignalR 用戶端程式庫。   
+> * 建立 SignalR 中樞。 
+> * 將專案設定為使用 SignalR。 
 > * 新增程式碼，以將訊息從任何用戶端傳送至所有連線的用戶端。  
-最後，您將會有一個可運作的聊天應用程式： @no__t 0SignalR 範例應用程式 @ no__t-1 
+最後，您將會有一個可運作的聊天應用程式： ![[！OP.無-LOC （SignalR）] 範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png)   
 
 ## <a name="prerequisites"></a>Prerequisites    
 
@@ -323,9 +325,9 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 --- 
 
-## <a name="add-the-signalr-client-library"></a>新增 SignalR 用戶端程式庫   
+## <a name="add-the-opno-locsignalr-client-library"></a>新增 SignalR 用戶端程式庫 
 
-SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容傳遞網路 (CDN)，可以傳遞在 Node.js 套件管理員 (npm) 中找到的任何項目。    
+SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件中。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容傳遞網路 (CDN)，可以傳遞在 Node.js 套件管理員 (npm) 中找到的任何項目。  
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 
@@ -353,7 +355,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli   
   ```   
 
-* 執行下列命令以透過使用 LibMan 來取得 SignalR 用戶端程式庫。 您可能必須等幾秒鐘，才會看到輸出。   
+* 執行下列命令，使用 LibMan 取得 SignalR 用戶端程式庫。 您可能必須等幾秒鐘，才會看到輸出。 
 
   ```console    
   libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js    
@@ -382,7 +384,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
 * 瀏覽到專案資料夾 (包含 *SignalRChat.csproj* 檔案的資料夾)。 
 
-* 執行下列命令以透過使用 LibMan 來取得 SignalR 用戶端程式庫。  
+* 執行下列命令，使用 LibMan 取得 SignalR 用戶端程式庫。    
 
   ```console    
   libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js    
@@ -403,7 +405,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
 --- 
 
-## <a name="create-a-signalr-hub"></a>建立 SignalR 中樞 
+## <a name="create-a-opno-locsignalr-hub"></a>建立 SignalR 中樞   
 
 *中樞*類別可提供作為高階管線，用來處理用戶端/伺服器通訊。   
 
@@ -413,21 +415,21 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
   [!code-csharp[Startup](signalr/sample-snapshot/2.x/ChatHub.cs)]   
 
-  `ChatHub` 類別繼承自 SignalR `Hub` 類別。 `Hub` 類別管理連線、群組和傳訊。    
+  `ChatHub` 類別繼承自 SignalR `Hub` 類別。 `Hub` 類別管理連線、群組和傳訊。  
 
-  連線的用戶端可以呼叫 `SendMessage` 方法將訊息傳送至所有用戶端。 本教學課程稍後將示範呼叫該方法的 JavaScript 用戶端程式碼。 SignalR 程式碼是以非同步方式來提供最大的延展性。  
+  連線的用戶端可以呼叫 `SendMessage` 方法將訊息傳送至所有用戶端。 本教學課程稍後將示範呼叫該方法的 JavaScript 用戶端程式碼。 SignalR 程式碼是非同步，可提供最大的擴充性。    
 
-## <a name="configure-signalr"></a>設定 SignalR    
+## <a name="configure-opno-locsignalr"></a>設定 SignalR  
 
-SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。  
+SignalR 伺服器必須設定為將 SignalR 要求傳遞至 SignalR。    
 
 * 將下列醒目提示的程式碼新增至 *Startup.cs* 檔案。  
 
   [!code-csharp[Startup](signalr/sample-snapshot/2.x/Startup.cs?highlight=7,33,52-55)]  
 
-  這些變更會將 SignalR 新增至 ASP.NET Core 相依性插入系統和中介軟體管線。    
+  這些變更會將 SignalR 新增至 ASP.NET Core 相依性插入系統和中介軟體管線。  
 
-## <a name="add-signalr-client-code"></a>新增 SignalR 用戶端程式碼  
+## <a name="add-opno-locsignalr-client-code"></a>新增 SignalR 用戶端程式代碼    
 
 * 以下列程式碼取代 *Pages\Index.cshtml* 中的程式碼：  
 
@@ -436,8 +438,8 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
   上述程式碼：   
 
   * 建立名稱和訊息文字的文字方塊，以及提交按鈕。  
-  * 使用 `id="messagesList"` 建立清單，用於顯示接收自 SignalR 中樞的訊息。 
-  * 包含 SignalR 的指令碼參考和您在下一個步驟中建立的 *chat.js* 應用程式程式碼。  
+  * 建立包含 `id="messagesList"` 的清單，以顯示從 SignalR 中樞接收的訊息。   
+  * 包含 SignalR 的腳本參考，以及您在下一個步驟中建立的*聊天 .js*應用程式代碼。    
 
 * 在 *wwwroot/js* 資料夾中，建立含有下列程式碼的 *chat.js* 檔案：  
 
@@ -475,7 +477,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
   名稱和訊息會立即顯示在兩個頁面上。   
 
-  ![SignalR 範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png)   
+  ![[!OP.無-LOC （SignalR）] 範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png) 
 
 > [!TIP]    
 > 如果應用程式無法運作，請開啟您的瀏覽器開發人員工具 (F12)，然後移至主控台。 您可能會看到與 HTML 和 JavaScript 程式碼相關的錯誤。 例如，假設您將 *signalr.js* 放置在與指示不同的資料夾中。 在此情況下，該檔案的參考無法運作，您會在主控台中看到 404 錯誤。   
@@ -489,12 +491,12 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 > [!div class="checklist"]  
 > * 建立 Web 應用程式專案。   
-> * 新增 SignalR 用戶端程式庫。 
-> * 建立 SignalR 中樞。   
-> * 設定專案以使用 SignalR。   
+> * 新增 SignalR 用戶端程式庫。   
+> * 建立 SignalR 中樞。 
+> * 將專案設定為使用 SignalR。 
 > * 新增使用中樞的程式碼，以將訊息從任何用戶端傳送至所有連線的用戶端。   
-若要深入了解 SignalR，請參閱簡介：  
+若要深入瞭解 SignalR，請參閱簡介：    
 > [!div class="nextstepaction"] 
-> [ASP.NET Core SignalR 簡介](xref:signalr/introduction) 
+> [ASP.NET Core SignalR 簡介](xref:signalr/introduction)   
 ::: moniker-end
 

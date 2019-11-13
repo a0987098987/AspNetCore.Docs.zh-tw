@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 0cf6e5d391242322aa4c7b1a0b6a20dd484c80f6
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.openlocfilehash: 36235e305037c0bbf20093327e2a0ff21b3de809
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896894"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963672"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -165,6 +165,9 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
 [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) 屬性會在組件的根命名空間與組件名稱不同時，提供組件的根命名空間。 
+
+> [!WARNING]
+> 當專案的名稱不是有效的 .NET 識別碼時，就可能發生這種情況。 例如 `my-project-name.csproj` 會使用根命名空間 `my_project_name`，而元件名稱會 `my-project-name` 導致此錯誤。 
 
 如果組件的根命名空間與組件名稱不同：
 

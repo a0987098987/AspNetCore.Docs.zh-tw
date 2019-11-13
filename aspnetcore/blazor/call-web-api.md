@@ -1,39 +1,41 @@
 ---
-title: 從 ASP.NET Core Blazor 呼叫 Web API
+title: 從 ASP.NET Core 呼叫 Web API Blazor
 author: guardrex
 description: 瞭解如何使用 JSON helper 從 Blazor 應用程式呼叫 Web API，包括建立跨原始來源資源分享（CORS）要求。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
+no-loc:
+- Blazor
 uid: blazor/call-web-api
-ms.openlocfilehash: b08fdf5c2f9a523314b1744a33087eb64fa4c14a
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: b5c57317005d0072410542bad322458b1cb3f5ee
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390845"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962718"
 ---
-# <a name="call-a-web-api-from-aspnet-core-blazor"></a>從 ASP.NET Core Blazor 呼叫 Web API
+# <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>從 ASP.NET Core 呼叫 Web API Blazor
 
 By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.com/danroth27)和[Juan De la Cruz](https://github.com/juandelacruz23)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor WebAssembly apps 會使用預先設定的 `HttpClient` 服務來呼叫 web Api。 撰寫要求，其中可以包含 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)選項、使用 Blazor JSON helper 或搭配 <xref:System.Net.Http.HttpRequestMessage>。
+Blazor WebAssembly apps 會使用預先設定的 `HttpClient` 服務來呼叫 web Api。 撰寫要求，其中可包含 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)選項、使用 Blazor JSON helper 或 <xref:System.Net.Http.HttpRequestMessage>。
 
-Blazor 伺服器應用程式會使用 <xref:System.Net.Http.HttpClient> 實例呼叫 web Api，通常是使用 <xref:System.Net.Http.IHttpClientFactory> 來建立。 如需詳細資訊，請參閱<xref:fundamentals/http-requests>。
+Blazor 伺服器應用程式會使用通常使用 <xref:System.Net.Http.IHttpClientFactory>建立的 <xref:System.Net.Http.HttpClient> 實例來呼叫 web Api。 如需詳細資訊，請參閱<xref:fundamentals/http-requests>。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-如需 Blazor WebAssembly 範例，請參閱範例應用程式中的下列元件：
+如 Blazor WebAssembly 範例，請參閱範例應用程式中的下列元件：
 
 * 呼叫 Web API （*Pages/CallWebAPI. razor*）
 * HTTP 要求測試器（*元件/HTTPRequestTester razor*）
 
 ## <a name="httpclient-and-json-helpers"></a>HttpClient 和 JSON 協助程式
 
-在 Blazor WebAssembly apps 中， [HttpClient](xref:fundamentals/http-requests)會以預先設定的服務形式提供，讓要求回到源伺服器。 若要使用 `HttpClient` JSON helper，請將套件參考新增至 `Microsoft.AspNetCore.Blazor.HttpClient`。 `HttpClient` 和 JSON helper 也用來呼叫協力廠商 Web API 端點。 `HttpClient` 是使用瀏覽器[FETCH API](https://developer.mozilla.org/docs/Web/API/Fetch_API)來執行，並受限於其限制，包括強制執行相同的來源原則。
+在 Blazor WebAssembly apps 中， [HttpClient](xref:fundamentals/http-requests)會當做預先設定的服務提供，讓要求回到源伺服器。 若要使用 `HttpClient` JSON helper，請將套件參考新增至 `Microsoft.AspNetCore.Blazor.HttpClient`。 `HttpClient` 和 JSON helper 也用來呼叫協力廠商 Web API 端點。 `HttpClient` 是使用瀏覽器[FETCH API](https://developer.mozilla.org/docs/Web/API/Fetch_API)來執行，並受限於其限制，包括強制執行相同的來源原則。
 
 用戶端的基底位址會設定為源伺服器的位址。 使用 `@inject` 指示詞插入 `HttpClient` 實例：
 
@@ -42,10 +44,10 @@ Blazor 伺服器應用程式會使用 <xref:System.Net.Http.HttpClient> 實例�
 @inject HttpClient Http
 ```
 
-在下列範例中，Todo Web API 處理建立、讀取、更新和刪除（CRUD）作業。 這些範例是以儲存下列的 @no__t 0 類別為基礎：
+在下列範例中，Todo Web API 處理建立、讀取、更新和刪除（CRUD）作業。 這些範例是以儲存的 `TodoItem` 類別為基礎：
 
 * 識別碼（`Id`，`long`） &ndash; 專案的唯一識別碼。
-* 名稱（`Name`，`string`） @no__t 專案的2名稱。
+* 專案的名稱（`Name`、`string`） &ndash; 名稱。
 * 狀態（`IsComplete`，`bool`） &ndash; 表示 Todo 專案是否已完成。
 
 ```csharp
@@ -77,7 +79,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 * `PostJsonAsync` &ndash; 會傳送 HTTP POST 要求，包括 JSON 編碼的內容，並剖析 JSON 回應主體以建立物件。
 
-  在下列程式碼中，`_newItemName` 是由元件的繫結項目所提供。 @No__t-0 方法是藉由選取 `<button>` 元素來觸發。 如需完整範例，請參閱範例應用程式。
+  在下列程式碼中，`_newItemName` 是由元件的繫結項目所提供。 `AddItem` 方法是藉由選取 `<button>` 元素來觸發。 如需完整範例，請參閱範例應用程式。
 
   ```cshtml
   @using System.Net.Http
@@ -153,7 +155,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 ## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>具有 Fetch API 要求選項的 HttpClient 和 HttpRequestMessage
 
-在 Blazor WebAssembly 應用程式的 WebAssembly 上執行時，請使用[HttpClient](xref:fundamentals/http-requests)並 <xref:System.Net.Http.HttpRequestMessage> 來自訂要求。 例如，您可以指定要求 URI、HTTP 方法，以及任何所需的要求標頭。
+在 Blazor WebAssembly 應用程式的 WebAssembly 上執行時，請使用[HttpClient](xref:fundamentals/http-requests)和 <xref:System.Net.Http.HttpRequestMessage> 來自訂要求。 例如，您可以指定要求 URI、HTTP 方法，以及任何所需的要求標頭。
 
 使用要求的 `WebAssemblyHttpMessageHandler.FetchArgs` 屬性，將要求選項提供給基礎 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API) 。 如下列範例所示，`credentials` 屬性會設定為下列任何值：
 
@@ -202,13 +204,13 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 如需有關提取 API 選項的詳細資訊，請參閱[MDN web 檔： WindowOrWorkerGlobalScope。 Fetch （）:P arameters](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)。
 
-在 CORS 要求上傳送認證（授權 cookie/標頭）時，CORS 原則必須允許 @no__t 0 標頭。
+在 CORS 要求上傳送認證（授權 cookie/標頭）時，CORS 原則必須允許 `Authorization` 標頭。
 
 下列原則包含的設定：
 
 * 要求來源（`http://localhost:5000`，`https://localhost:5001`）。
 * Any 方法（動詞）。
-* `Content-Type` 和 @no__t 1 的標頭。 若要允許自訂標頭（例如，`x-custom-header`），請在呼叫 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> 時列出標頭。
+* `Content-Type` 和 `Authorization` 標頭。 若要允許自訂標頭（例如，`x-custom-header`），請在呼叫 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> 時列出標頭。
 * 用戶端 JavaScript 程式碼（`credentials` 屬性設定為 `include`）所設定的認證。
 
 ```csharp

@@ -5,14 +5,14 @@ description: 如何使用模型繫結和資料流在 ASP.NET Core MVC 上傳檔�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 11/04/2019
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 04e7533aa190a4875d3f66e8665fec16abec48b3
-ms.sourcegitcommit: 9e85c2562df5e108d7933635c830297f484bb775
+ms.openlocfilehash: b57ad4fe62de38085c11d7026d278cc6e0c565ce
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73462948"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963162"
 ---
 # <a name="upload-files-in-aspnet-core"></a>上傳 ASP.NET Core 中的檔案
 
@@ -741,6 +741,10 @@ The request filtering module is configured to deny a request that exceeds the re
 
 如果控制器使用 <xref:Microsoft.AspNetCore.Http.IFormFile> 來接受上傳檔案，但 `null`值，請確認 HTML 表單是否指定 `multipart/form-data`的 `enctype` 值。 如果未在 `<form>` 元素上設定這個屬性，就不會進行檔案上傳，而且會 `null`任何系結 <xref:Microsoft.AspNetCore.Http.IFormFile> 引數。 此外，請確認[表單資料中的上傳命名符合應用程式的命名](#match-name-attribute-value-to-parameter-name-of-post-method)。
 
+### <a name="stream-was-too-long"></a>資料流程太長
+
+本主題中的範例依賴 <xref:System.IO.MemoryStream> 來保存所上傳檔案的內容。 `int.MaxValue``MemoryStream` 的大小限制。 如果應用程式的檔案上傳案例需要保留大於 50 MB 的檔案內容，請使用不依賴單一 `MemoryStream` 來保存已上傳檔案內容的替代方法。
+
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
@@ -1458,6 +1462,10 @@ The request filtering module is configured to deny a request that exceeds the re
 ### <a name="null-reference-exception-with-iformfile"></a>IFormFile 的 Null 參考例外狀況
 
 如果控制器使用 <xref:Microsoft.AspNetCore.Http.IFormFile> 來接受上傳檔案，但 `null`值，請確認 HTML 表單是否指定 `multipart/form-data`的 `enctype` 值。 如果未在 `<form>` 元素上設定這個屬性，就不會進行檔案上傳，而且會 `null`任何系結 <xref:Microsoft.AspNetCore.Http.IFormFile> 引數。 此外，請確認[表單資料中的上傳命名符合應用程式的命名](#match-name-attribute-value-to-parameter-name-of-post-method)。
+
+### <a name="stream-was-too-long"></a>資料流程太長
+
+本主題中的範例依賴 <xref:System.IO.MemoryStream> 來保存所上傳檔案的內容。 `int.MaxValue``MemoryStream` 的大小限制。 如果應用程式的檔案上傳案例需要保留大於 50 MB 的檔案內容，請使用不依賴單一 `MemoryStream` 來保存已上傳檔案內容的替代方法。
 
 ::: moniker-end
 

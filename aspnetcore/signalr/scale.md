@@ -6,15 +6,15 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/28/2018
-uid: signalr/scale
 no-loc:
 - SignalR
-ms.openlocfilehash: a215ce489746a7585cf4e72d4f04e0eac588b44c
-ms.sourcegitcommit: a7bbe3890befead19440075b05b9674351f98872
+uid: signalr/scale
+ms.openlocfilehash: 7fc767939996a489174be949742637030924616d
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905729"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963753"
 ---
 # <a name="aspnet-core-opno-locsignalr-hosting-and-scaling"></a>ASP.NET Core SignalR 裝載和調整
 

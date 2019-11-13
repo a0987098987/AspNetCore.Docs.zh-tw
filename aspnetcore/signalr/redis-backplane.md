@@ -1,43 +1,45 @@
 ---
-title: Redis ASP.NET Core SignalR 向外延展後的擋板
+title: ASP.NET Core SignalR 相應放大的 Redis 背板
 author: bradygaster
-description: 了解如何設定 Redis 後擋板，若要啟用向外延展的 ASP.NET Core SignalR 應用程式。
+description: 瞭解如何設定 Redis 背板，以啟用 ASP.NET Core SignalR 應用程式的相應放大。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/28/2018
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: signalr/redis-backplane
-ms.openlocfilehash: adf9bbce1353fd811a4044e173533f76bc4193de
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 379d46fcaabb8eb0d04e521a5ad698229f947b7c
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152914"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963910"
 ---
-# <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>設定 ASP.NET Core SignalR 向外延展 Redis 後擋板
+# <a name="set-up-a-redis-backplane-for-aspnet-core-opno-locsignalr-scale-out"></a>設定 ASP.NET Core SignalR 相應放大的 Redis 背板
 
-藉由[Andrew Stanton-nurse](https://twitter.com/anurse)， [Brady Gaster](https://twitter.com/bradygaster)，並[Tom Dykstra](https://github.com/tdykstra)，
+[Andrew Stanton-護士](https://twitter.com/anurse)、 [Brady Gaster](https://twitter.com/bradygaster)和[Tom 作者: dykstra](https://github.com/tdykstra)，
 
-這篇文章說明設定 SignalR 特定層面[Redis](https://redis.io/)来用於相應放大的 ASP.NET Core SignalR 應用程式伺服器。
+本文說明設定[Redis](https://redis.io/)伺服器以用來相應放大 ASP.NET Core SignalR 應用程式的 SignalR特定層面。
 
-## <a name="set-up-a-redis-backplane"></a>設定 Redis 後擋板
+## <a name="set-up-a-redis-backplane"></a>設定 Redis 背板
 
 * 部署 Redis 伺服器。
 
   > [!IMPORTANT] 
-  > 針對生產用途，它會在相同的資料中心與 SignalR 應用程式執行時，才建議 Redis 後擋板。 否則，網路延遲會降低效能。 如果您的 SignalR 應用程式正在執行 Azure 雲端中，我們會建議 Azure SignalR 服務，而不是 Redis 後擋板。 您可以使用 Azure Redis 快取服務進行開發和測試環境。
+  > 針對生產用途，只有在與 SignalR 應用程式相同的資料中心內執行時，才建議使用 Redis 背板。 否則，網路延遲會降低效能。 如果您的 SignalR 應用程式正在 Azure 雲端中執行，建議使用 Azure SignalR 服務，而不是 Redis 背板。 您可以使用 Azure Redis 快取服務進行開發和測試環境。
 
   如需詳細資訊，請參閱下列資源：
 
   * <xref:signalr/scale>
-  * [Redis 文件](https://redis.io/)
-  * [Azure Redis 快取文件](https://docs.microsoft.com/azure/redis-cache/)
+  * [Redis 檔](https://redis.io/)
+  * [Azure Redis 快取檔](https://docs.microsoft.com/azure/redis-cache/)
 
 ::: moniker range="= aspnetcore-2.1"
 
-* 中的 SignalR 應用程式中，安裝`Microsoft.AspNetCore.SignalR.Redis`NuGet 套件。 (另外還有`Microsoft.AspNetCore.SignalR.StackExchangeRedis`封裝，但是，另一個 ASP.NET Core 2.2 和更新版本。)
+* 在 SignalR 應用程式中，安裝 `Microsoft.AspNetCore.SignalR.Redis` NuGet 套件。 （也有 `Microsoft.AspNetCore.SignalR.StackExchangeRedis` 套件，但這是用於 ASP.NET Core 2.2 和更新版本）。
 
-* 在 `Startup.ConfigureServices`方法中，呼叫`AddRedis`之後`AddSignalR`:
+* 在 `Startup.ConfigureServices` 方法中，在 `AddSignalR`後呼叫 `AddRedis`：
 
   ```csharp
   services.AddSignalR().AddRedis("<your_Redis_connection_string>");
@@ -45,9 +47,9 @@ ms.locfileid: "67152914"
 
 * 視需要設定選項：
  
-  您可以設定大部分的選項，在連接字串或[ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options)物件。 中指定的選項`ConfigurationOptions`覆寫連接字串中設定的原則。
+  大部分選項都可以在連接字串或[ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options)物件中設定。 在 `ConfigurationOptions` 中指定的選項會覆寫連接字串中所設定的選項。
 
-  下列範例示範如何在中設定選項`ConfigurationOptions`物件。 此範例會將通道的前置詞，讓多個應用程式可以共用相同的 Redis 執行個體下, 一個步驟中所述。
+  下列範例顯示如何設定 `ConfigurationOptions` 物件中的選項。 這個範例會新增通道前置詞，讓多個應用程式可以共用相同的 Redis 實例，如下列步驟所述。
 
   ```csharp
   services.AddSignalR()
@@ -56,18 +58,18 @@ ms.locfileid: "67152914"
     });
   ```
 
-  在上述程式碼，`options.Configuration`任何指定的連接字串中進行初始化。
+  在上述程式碼中，`options.Configuration` 會使用連接字串中指定的內容進行初始化。
 
 ::: moniker-end
 
 ::: moniker range="> aspnetcore-2.1"
 
-* 中的 SignalR 應用程式中，安裝下列 NuGet 套件的其中一個：
+* 在 SignalR 應用程式中，安裝下列其中一個 NuGet 套件：
 
-  * `Microsoft.AspNetCore.SignalR.StackExchangeRedis` -取決於 StackExchange.Redis 2.X.X。 這是 ASP.NET Core 2.2 和更新版本的建議的封裝。
-  * `Microsoft.AspNetCore.SignalR.Redis` -取決於 StackExchange.Redis 1.X.X。 此套件不會在 ASP.NET Core 3.0 出貨。
+  * `Microsoft.AspNetCore.SignalR.StackExchangeRedis`-取決於 Stackexchange.redis. Redis 2. X.X。 這是建議用於 ASP.NET Core 2.2 和更新版本的套件。
+  * `Microsoft.AspNetCore.SignalR.Redis`-取決於 Stackexchange.redis. Redis 1. X.X。 此套件將不會在 ASP.NET Core 3.0 中傳送。
 
-* 在 `Startup.ConfigureServices`方法中，呼叫`AddStackExchangeRedis`之後`AddSignalR`:
+* 在 `Startup.ConfigureServices` 方法中，在 `AddSignalR`後呼叫 `AddStackExchangeRedis`：
 
   ```csharp
   services.AddSignalR().AddStackExchangeRedis("<your_Redis_connection_string>");
@@ -75,9 +77,9 @@ ms.locfileid: "67152914"
 
 * 視需要設定選項：
  
-  您可以設定大部分的選項，在連接字串或[ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options)物件。 中指定的選項`ConfigurationOptions`覆寫連接字串中設定的原則。
+  大部分選項都可以在連接字串或[ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options)物件中設定。 在 `ConfigurationOptions` 中指定的選項會覆寫連接字串中所設定的選項。
 
-  下列範例示範如何在中設定選項`ConfigurationOptions`物件。 此範例會將通道的前置詞，讓多個應用程式可以共用相同的 Redis 執行個體下, 一個步驟中所述。
+  下列範例顯示如何設定 `ConfigurationOptions` 物件中的選項。 這個範例會新增通道前置詞，讓多個應用程式可以共用相同的 Redis 實例，如下列步驟所述。
 
   ```csharp
   services.AddSignalR()
@@ -86,17 +88,17 @@ ms.locfileid: "67152914"
     });
   ```
 
-  在上述程式碼，`options.Configuration`任何指定的連接字串中進行初始化。
+  在上述程式碼中，`options.Configuration` 會使用連接字串中指定的內容進行初始化。
 
-  如需 Redis 選項的資訊，請參閱[StackExchange Redis 文件](https://stackexchange.github.io/StackExchange.Redis/Configuration.html)。
+  如需 Redis 選項的詳細資訊，請參閱[Stackexchange.redis Redis 檔](https://stackexchange.github.io/StackExchange.Redis/Configuration.html)。
 
 ::: moniker-end
 
-* 如果您使用一個 Redis 伺服器的多個的 SignalR 應用程式，請針對每個 SignalR 應用程式使用不同的通道前置詞。
+* 如果您針對多個 SignalR 應用程式使用一部 Redis 伺服器，請為每個 SignalR 應用程式使用不同的通道首碼。
 
-  設定通道的前置詞會隔離其他使用不同的通道前置詞的項目從一個 SignalR 應用程式。 如果您不指派不同的前置詞，從一個應用程式傳送至所有它自己的用戶端的訊息會移至後擋板以使用 Redis 伺服器的所有應用程式的所有用戶端中。
+  設定通道前置詞會隔離另一個使用不同通道首碼的 SignalR 應用程式。 如果您未指派不同的前置詞，則從某個應用程式傳送到其所有用戶端的訊息，將會移至使用 Redis 伺服器做為背板的所有應用程式的所有用戶端。
 
-* 設定您的伺服器的伺服陣列負載平衡軟體黏性工作階段。 以下是一些有關如何這麼做的文件範例：
+* 針對粘滯會話設定伺服器陣列的負載平衡軟體。 以下是有關如何執行此動作的一些檔範例：
 
   * [IIS](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)
   * [HAProxy](https://www.haproxy.com/blog/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/)
@@ -105,19 +107,19 @@ ms.locfileid: "67152914"
 
 ## <a name="redis-server-errors"></a>Redis 伺服器錯誤
 
-當 Redis 伺服器當機時，SignalR 擲回的例外狀況，表示不會將訊息傳遞。 某些一般的例外狀況訊息：
+當 Redis 伺服器關閉時，SignalR 會擲回指出不會傳遞訊息的例外狀況。 一些一般的例外狀況訊息：
 
-* *失敗的寫入訊息*
-* *無法叫用中樞方法 'MethodName'*
-* *無法連線至 Redis*
+* *無法寫入訊息*
+* *無法叫用中樞方法 ' 方法名稱 '*
+* *連接至 Redis 失敗*
 
-SignalR 未緩衝訊息傳送給他們時伺服器恢復運作。 Redis 伺服器已關閉時傳送任何訊息都會遺失。
+SignalR 不會在伺服器恢復連線時緩衝處理訊息，以傳送它們。 Redis 伺服器關閉時傳送的任何訊息都會遺失。
 
-Redis 伺服器再次可用時，會自動重新連線 SignalR。
+當 Redis 伺服器再次可供使用時，SignalR 自動重新連接。
 
-### <a name="custom-behavior-for-connection-failures"></a>連線失敗的自訂行為
+### <a name="custom-behavior-for-connection-failures"></a>連接失敗的自訂行為
 
-以下是範例，示範如何處理 Redis 連線失敗事件。
+以下範例示範如何處理 Redis 連接失敗事件。
 
 ::: moniker range="= aspnetcore-2.1"
 
@@ -186,13 +188,13 @@ services.AddSignalR()
 
 ## <a name="redis-clustering"></a>Redis 叢集
 
-[Redis 叢集](https://redis.io/topics/cluster-spec)是使用多個 Redis 伺服器達到高可用性的方法。 叢集未正式支援，但可能會運作。
+[Redis](https://redis.io/topics/cluster-spec)叢集是使用多部 Redis 伺服器達到高可用性的方法。 叢集並未正式支援，但可能會有作用。
 
 ## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱下列資源：
 
 * <xref:signalr/scale>
-* [Redis 文件](https://redis.io/documentation)
-* [StackExchange Redis 文件](https://stackexchange.github.io/StackExchange.Redis/)
-* [Azure Redis 快取文件](https://docs.microsoft.com/azure/redis-cache/)
+* [Redis 檔](https://redis.io/documentation)
+* [Stackexchange.redis Redis 檔](https://stackexchange.github.io/StackExchange.Redis/)
+* [Azure Redis 快取檔](https://docs.microsoft.com/azure/redis-cache/)

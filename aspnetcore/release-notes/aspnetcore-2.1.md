@@ -4,22 +4,24 @@ author: isaac2004
 description: 了解 ASP.NET Core 2.1 的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/30/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: 359f961db768b9048427c8ab296ee3e035879408
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
-ms.translationtype: HT
+ms.openlocfilehash: a45ba44fb7911a21927a4a996c0d6fa9eb776357
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086398"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963184"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>ASP.NET Core 2.1 的新功能
 
 本文會重點說明 ASP.NET Core 2.1 最重要的變更，附有相關文件的連結。
 
-## <a name="signalr"></a>SignalR
+## SignalR
 
-SignalR 已針對 ASP.NET Core 2.1 改寫。 ASP.NET Core SignalR 包含數項改善：
+已針對 ASP.NET Core 2.1 重寫 SignalR。 ASP.NET Core SignalR 包含一些改良功能：
 
 * 簡化的向外延展模型。
 * 沒有 jQuery 相依性的新 JavaScript 用戶端。
@@ -28,7 +30,7 @@ SignalR 已針對 ASP.NET Core 2.1 改寫。 ASP.NET Core SignalR 包含數項�
 * 新的資料流處理回應模型。
 * 支援以裸機 WebSockets 為基礎的用戶端。
 
-如需詳細資訊，請參閱 [ASP.NET Core SignalR](xref:signalr/introduction)。
+如需詳細資訊，請參閱[ASP.NET Core SignalR](xref:signalr/introduction)。
 
 ## <a name="razor-class-libraries"></a>Razor 類別庫
 
@@ -70,7 +72,7 @@ Web 應用程式通常需要同時接聽 HTTP 和 HTTPS，然後將所有 HTTP �
 
 在生產環境中，必須明確設定 HTTPS。 在 2.1 中，已新增為 Kestrel 設定 HTTPS 的預設組態結構描述。 應用程式可以設定為使用下列：
 
-* 包括 URL 在內的多個端點。 如需詳細資訊，請參閱 [Kestrel 網頁伺服器實作：端點組態](xref:fundamentals/servers/kestrel#endpoint-configuration)。
+* 包括 URL 在內的多個端點。 如需詳細資訊，請參閱[實作 Kestrel 網頁伺服器：端點組態](xref:fundamentals/servers/kestrel#endpoint-configuration)。
 * 用於 HTTPS 的憑證來自磁碟檔案或憑證存放區。
 
 ## <a name="gdpr"></a>GDPR
@@ -81,7 +83,7 @@ ASP.NET Core 提供 API 和範本以利符合某些 [EU General Data Protection 
 
 引進新套件簡化測試的建立和執行。 [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) 套件處理下列工作：
 
-* 將相依性檔案 (*\*.deps*) 從已測試的應用程式複製到測試專案的 *bin* 資料夾。
+* 將相依性檔案 ( *\*.deps*) 從已測試的應用程式複製到測試專案的 *bin* 資料夾。
 * 將內容的根目錄設定為經過測試之應用程式的專案根目錄，以便在執行測試時找到靜態檔案和頁面/檢視。
 * 提供 [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) 類別來簡化以 [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) 啟動載入經過測試的應用程式。
 
@@ -131,7 +133,7 @@ ASP.NET Core 2.1 包含新的 `IHttpClientFactory` 服務，讓您在應用程�
 
 ## <a name="kestrel-transport-configuration"></a>Kestrel 傳輸組態
 
-隨著 ASP.NET Core 2.1 的發行，Kestrel 的預設傳輸不再根據 Libuv，而是改為根據受控通訊端。 如需詳細資訊，請參閱 [Kestrel 網頁伺服器實作：傳輸組態](xref:fundamentals/servers/kestrel#transport-configuration)。
+隨著 ASP.NET Core 2.1 的發行，Kestrel 的預設傳輸不再根據 Libuv，而是改為根據受控通訊端。 如需詳細資訊，請參閱[實作 Kestrel 網頁伺服器：傳輸組態](xref:fundamentals/servers/kestrel#transport-configuration)。
 
 ## <a name="generic-host-builder"></a>泛型主機建立器
 

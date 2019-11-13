@@ -1,17 +1,19 @@
 ---
 title: 在 ASP.NET 4.x 和 ASP.NET Core 之間進行選擇
 author: rick-anderson
-description: 說明 ASP.NET Core 與ASP.NET 4.x，以及如何在兩者之間進行選擇。
+description: 說明 ASP.NET Core 與 ASP.NET 4.x 的比較，以及如何在兩者之間進行選擇。
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 07/15/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 9e093e83a1f6367cbb244076a8351644244f9874
-ms.sourcegitcommit: 7e00e8236ca4eabf058f07020a5a3882daf7564f
-ms.translationtype: HT
+ms.openlocfilehash: 8b1681476f96e8613f9461c507fbb7696f888cbc
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68239215"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963618"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>在 ASP.NET 4.x 和 ASP.NET Core 之間進行選擇
 
@@ -34,7 +36,7 @@ ASP.NET 4.x 是一個成熟的架構，其提供在 Windows 上建置企業級�
 | ASP.NET Core | ASP.NET 4.x |
 |---|---|
 |為 Windows、macOS 或 Linux 建置|為 Windows 建置|
-|從 ASP.NET Core 2.x 開始，[Razor 頁面](xref:razor-pages/index)是建立 Web UI 的建議方法。 另請參閱 [MVC](xref:mvc/overview)、[Web API](xref:tutorials/first-web-api) 和 [SignalR](xref:signalr/introduction)。|使用 [Web Forms](/aspnet/web-forms)、[SignalR](/aspnet/signalr)、[MVC](/aspnet/mvc)、[Web API](/aspnet/web-api/)、[WebHooks](/aspnet/webhooks/) 或 [Web Pages](/aspnet/web-pages)|
+|從 ASP.NET Core 2.x 開始，[Razor 頁面](xref:razor-pages/index)是建立 Web UI 的建議方法。 另請參閱[MVC](xref:mvc/overview)、 [Web API](xref:tutorials/first-web-api)和[SignalR](xref:signalr/introduction)。|使用[Web Forms](/aspnet/web-forms)、 [SignalR](/aspnet/signalr)、 [MVC](/aspnet/mvc)、 [web API](/aspnet/web-api/)、 [webhook](/aspnet/webhooks/)或[Web Pages](/aspnet/web-pages)|
 |每部電腦多個版本|每部電腦一個版本|
 |在 [Visual Studio](https://visualstudio.microsoft.com/vs/)、[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) 或 [Visual Studio Code](https://code.visualstudio.com/) 中使用 C# 或 F# 進行開發|在 [Visual Studio](https://visualstudio.microsoft.com/vs/) 中使用 C#、VB 或 F# 進行開發|
 |效能比 ASP.NET 4.x 更高|效能良好|

@@ -1,28 +1,31 @@
 ---
-title: ASP.NET Core Blazor 驗證與授權
+title: ASP.NET Core Blazor 驗證和授權
 author: guardrex
-description: 了解 Blazor 驗證與授權案例。
+description: 深入瞭解 Blazor 驗證和授權案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 11/12/2019
+no-loc:
+- Blazor
+- SignalR
 uid: security/blazor/index
-ms.openlocfilehash: 85a6a32ea068e6cd00ebb71bdf7fe0bd06b77618
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: 2ebc4d72191dff33a7fb6170650be67c3836cdaa
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391306"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73964013"
 ---
-# <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
+# <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證和授權
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-ASP.NET Core 支援在 Blazor 應用程式中設定及管理安全性。
+ASP.NET Core 支援 Blazor 應用程式中的安全性設定和管理。
 
-Blazor 伺服器與 Blazor WebAssembly 應用程式之間的安全性案例不同。 由於 Blazor 伺服器應用程式是在伺服器上執行，因此授權檢查能夠判斷：
+Blazor 伺服器與 Blazor WebAssembly 應用程式之間的安全性案例不同。 因為 Blazor 伺服器應用程式會在伺服器上執行，所以授權檢查能夠判斷：
 
 * 要提供給使用者的 UI 選項 (例如，使用者可以使用哪些功能表項目)。
 * 適用於應用程式和元件之特定區域的存取規則。
@@ -31,11 +34,11 @@ Blazor WebAssembly 應用程式會在用戶端上執行。 授權「僅」會被
 
 ## <a name="authentication"></a>驗證
 
-Blazor 會使用現有的 ASP.NET Core 驗證機制來建立使用者的身分識別。 確切的機制取決於 Blazor 應用程式的主控方式、Blazor 伺服器或 Blazor WebAssembly。
+Blazor 使用現有的 ASP.NET Core 驗證機制來建立使用者的身分識別。 確切的機制取決於主控 Blazor 應用程式的方式，Blazor Server 或 Blazor WebAssembly。
 
-### <a name="blazor-server-authentication"></a>Blazor 伺服器驗證
+### <a name="opno-locblazor-server-authentication"></a>Blazor 伺服器驗證
 
-Blazor 伺服器應用程式會在使用 SignalR 建立的即時連線上運作。 [SignalR 型應用程式中的驗證](xref:signalr/authn-and-authz)會在連線建立時處理。 驗證可以是以 Cookie 或其他持有人權杖為基礎。
+Blazor 伺服器應用程式會在使用 SignalR建立的即時連線上運作。 建立連接時，會處理[以 SignalR為基礎之應用程式中的驗證](xref:signalr/authn-and-authz)。 驗證可以是以 Cookie 或其他持有人權杖為基礎。
 
 當您建立專案時，Blazor 伺服器專案範本可以為您設定驗證。
 
@@ -43,7 +46,7 @@ Blazor 伺服器應用程式會在使用 SignalR 建立的即時連線上運作�
 
 遵循 <xref:blazor/get-started> 文章中的 Visual Studio 指導方針，使用驗證機制建立新的 Blazor 伺服器專案。
 
-在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中選擇 [Blazor 伺服器應用程式] 範本之後，請選取 [驗證] 下的 [變更]。
+選擇 [**建立新 ASP.NET Core Web 應用程式**] 對話方塊中的 [ **Blazor 伺服器應用**程式] 範本之後，請選取 [**驗證**] 底下的 [**變更**]。
 
 對話方塊隨即開啟，並提供可供其他 ASP.NET Core 專案使用的相同驗證機制集合：
 
@@ -113,17 +116,17 @@ The command creates a folder named with the value provided for the `{APP NAME}` 
 
 ---
 
-### <a name="blazor-webassembly-authentication"></a>Blazor WebAssembly authentication
+### <a name="opno-locblazor-webassembly-authentication"></a>Blazor WebAssembly authentication
 
 在 Blazor WebAssembly apps 中，可以略過驗證檢查，因為使用者可以修改所有的用戶端程式代碼。 這同樣也適用於所有的用戶端應用程式技術，包括 JavaScript SPA 架構或任何作業系統的原生應用程式。
 
 將[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/)的套件參考新增至應用程式的專案檔。
 
-下列各節涵蓋 Blazor WebAssembly apps 的自訂 `AuthenticationStateProvider` 服務的執行。
+下列各節涵蓋 Blazor WebAssembly 應用程式的自訂 `AuthenticationStateProvider` 服務的執行。
 
 ## <a name="authenticationstateprovider-service"></a>AuthenticationStateProvider 服務
 
-Blazor 伺服器應用程式包含內建的 `AuthenticationStateProvider` 服務，可從 ASP.NET Core 的 @no__t 取得驗證狀態資料。 這就是驗證狀態與現有 ASP.NET Core 伺服器端驗證機制之間的整合方式。
+Blazor 伺服器應用程式包含內建 `AuthenticationStateProvider` 服務，可從 ASP.NET Core 的 `HttpContext.User`取得驗證狀態資料。 這就是驗證狀態與現有 ASP.NET Core 伺服器端驗證機制之間的整合方式。
 
 `AuthenticationStateProvider` 是 `AuthorizeView` 元件與 `CascadingAuthenticationState` 元件用來取得驗證狀態的基礎服務。
 
@@ -234,7 +237,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 如果 `user.Identity.IsAuthenticated` 為 `true`，系統便可以列舉宣告，並評估角色中的成員資格。
 
-使用 `AuthorizeRouteView` 和 @no__t 2 元件來設定 @no__t 0 串聯參數：
+使用 `AuthorizeRouteView` 和 `CascadingAuthenticationState` 元件來設定 `Task<AuthenticationState>` 級聯參數：
 
 ```cshtml
 <Router AppAssembly="@typeof(Program).Assembly">
@@ -292,7 +295,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 </AuthorizeView>
 ```
 
-@No__t-0 和 @no__t 1 標記的內容可以包含任意專案，例如其他互動式元件。
+`<Authorized>` 和 `<NotAuthorized>` 標記的內容可以包含任意專案，例如其他互動式元件。
 
 授權情況 (例如控制 UI 選項或存取的角色或原則) 已涵蓋於[授權](#authorization)一節。
 
@@ -325,13 +328,13 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱<xref:security/authorization/policies>。
 
-這些 Api 可以在 Blazor 伺服器或 Blazor WebAssembly 應用程式中使用。
+這些 Api 可以在 Blazor Server 或 Blazor WebAssembly 應用程式中使用。
 
 如果未指定 `Roles` 和 `Policy`，`AuthorizeView` 便會使用預設原則。
 
 ### <a name="content-displayed-during-asynchronous-authentication"></a>在非同步驗證期間所顯示的內容
 
-Blazor 允許以「非同步」方式判斷驗證狀態。 這種方法的主要案例是在 Blazor WebAssembly 應用程式中，對外部端點提出要求以進行驗證。
+Blazor 允許以*非同步方式*判斷驗證狀態。 這種方法的主要案例是在 Blazor WebAssembly 應用程式中提出對外部端點進行驗證的要求。
 
 在驗證期間，`AuthorizeView` 預設不會顯示任何內容。 若要在驗證發生時顯示內容，請使用 `<Authorizing>` 元素：
 
@@ -348,11 +351,11 @@ Blazor 允許以「非同步」方式判斷驗證狀態。 這種方法的主要
 </AuthorizeView>
 ```
 
-這種方法通常不適用於 Blazor 伺服器應用程式。 Blazor 伺服器應用程式會在狀態建立後立即知道驗證狀態。 `Authorizing` 內容可以在 Blazor 伺服器應用程式的 @no__t 1 元件中提供，但永遠不會顯示內容。
+這種方法通常不適用於 Blazor 伺服器應用程式。 Blazor 伺服器應用程式會在狀態建立後立即知道驗證狀態。 `Authorizing` 內容可以在 Blazor 伺服器應用程式的 `AuthorizeView` 元件中提供，但永遠不會顯示內容。
 
 ## <a name="authorize-attribute"></a>[Authorize] 屬性
 
-@No__t-0 屬性可以在 Razor 元件中使用：
+`[Authorize]` 屬性可以在 Razor 元件中使用：
 
 ```cshtml
 @page "/"
@@ -365,7 +368,7 @@ You can only see this if you're signed in.
 > 在 Blazor WebAssembly 應用程式元件中，將 `Microsoft.AspNetCore.Authorization` 命名空間（`@using Microsoft.AspNetCore.Authorization`）新增至本節中的範例。
 
 > [!IMPORTANT]
-> 請僅在透過 Blazor 路由器抵達的 `@page` 元件上使用 `[Authorize]`。 授權僅會以路由的層面執行，且「不」適用於在頁面內轉譯的子元件。 若要授權在頁面內顯示特定組件，請改為使用 `AuthorizeView`。
+> 請只在透過 Blazor 路由器到達 `@page` 元件上使用 `[Authorize]`。 授權僅會以路由的層面執行，且「不」適用於在頁面內轉譯的子元件。 若要授權在頁面內顯示特定組件，請改為使用 `AuthorizeView`。
 
 `[Authorize]` 屬性也支援角色型或原則型授權。 針對角色型授權，請使用 `Roles` 參數：
 
@@ -392,13 +395,13 @@ You can only see this if you're signed in.
 
 ## <a name="customize-unauthorized-content-with-the-router-component"></a>搭配 Router 元件自訂未經授權的內容
 
-@No__t-0 元件與 @no__t 1 元件結合，可讓應用程式在下列情況指定自訂內容：
+`Router` 元件與 `AuthorizeRouteView` 元件結合，可讓應用程式在下列情況指定自訂內容：
 
 * 找不到內容。
 * 使用者無法滿足套用至元件的 `[Authorize]` 條件。 `[Authorize]` 屬性已涵蓋於 [[Authorize] 屬性](#authorize-attribute)一節。
 * 正在進行非同步驗證。
 
-在預設的 Blazor 伺服器專案範本中，*應用程式 razor*檔案示範如何設定自訂內容：
+在預設的 Blazor Server 專案範本中，*應用程式 razor*檔案示範如何設定自訂內容：
 
 ```cshtml
 <Router AppAssembly="@typeof(Program).Assembly">
@@ -426,7 +429,7 @@ You can only see this if you're signed in.
 </Router>
 ```
 
-@No__t-0、`<NotAuthorized>` 和 @no__t 2 標記的內容可以包含任意專案，例如其他互動式元件。
+`<NotFound>`、`<NotAuthorized>`和 `<Authorizing>` 標記的內容可以包含任意專案，例如其他互動式元件。
 
 如果未指定 `<NotAuthorized>` 元素，則 `AuthorizeRouteView` 會使用下列回溯訊息：
 
@@ -476,14 +479,14 @@ Not authorized.
 ```
 
 > [!NOTE]
-> 在 Blazor WebAssembly 應用程式元件中，新增 `Microsoft.AspNetCore.Authorization` 和 @no__t 1 命名空間：
+> 在 Blazor WebAssembly 應用程式元件中，新增 `Microsoft.AspNetCore.Authorization` 和 `Microsoft.AspNetCore.Components.Authorization` 命名空間：
 >
 > ```cshtml
 > @using Microsoft.AspNetCore.Authorization
 > @using Microsoft.AspNetCore.Components.Authorization
 > ```
 
-## <a name="authorization-in-blazor-webassembly-apps"></a>Blazor WebAssembly apps 中的授權
+## <a name="authorization-in-opno-locblazor-webassembly-apps"></a>Blazor WebAssembly 應用程式中的授權
 
 在 Blazor WebAssembly apps 中，可以略過授權檢查，因為使用者可以修改所有的用戶端程式代碼。 這同樣也適用於所有的用戶端應用程式技術，包括 JavaScript SPA 架構或任何作業系統的原生應用程式。
 
@@ -493,11 +496,11 @@ Not authorized.
 
 常見錯誤：
 
-* **授權需要類型為 Task @ no__t-1AuthenticationState > 的串聯參數。請考慮使用 CascadingAuthenticationState 來提供此。**
+* **授權需要類型為 Task\<AuthenticationState > 的串聯參數。請考慮使用 CascadingAuthenticationState 來提供此。**
 
 * **針對 `authenticationStateTask` 接收到 `null` 值**
 
-專案可能不是使用已啟用驗證的 Blazor 伺服器範本所建立。 請將 `<CascadingAuthenticationState>` 包裝在 UI 樹狀的一部分，例如在 *App.razor* 中，如下所示：
+專案可能不是使用已啟用驗證的 Blazor 伺服器範本來建立。 請將 `<CascadingAuthenticationState>` 包裝在 UI 樹狀的一部分，例如在 *App.razor* 中，如下所示：
 
 ```cshtml
 <CascadingAuthenticationState>

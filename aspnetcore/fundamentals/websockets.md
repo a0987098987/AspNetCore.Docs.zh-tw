@@ -5,14 +5,16 @@ description: 了解如何在 ASP.NET Core 中開始使用 WebSocket。
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/10/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: 098e6826d6f7114baceb9578dc6d9883eb83f0aa
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: fc07d572116f8eea2b30ea6cf80324e5c66f994c
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589698"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963163"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core 中的 WebSockets 支援
 
@@ -22,11 +24,11 @@ ms.locfileid: "72589698"
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([如何下載](xref:index#how-to-download-a-sample))。 [如何執行](#sample-app)。
 
-## <a name="signalr"></a>SignalR
+## SignalR
 
-[ASP.NET Core SignalR](xref:signalr/introduction) 是程式庫，可簡化將即時 Web 功能新增至應用程式的程序。 它會盡可能使用 WebSockets。
+[ASP.NET Core SignalR](xref:signalr/introduction)是可簡化將即時 web 功能新增至應用程式的程式庫。 它會盡可能使用 WebSockets。
 
-針對大部分的應用程式，我們建議透過原始 WebSocket 的 SignalR。 SignalR 為不提供 WebSocket 的環境提供傳輸後援。 它也提供簡單的遠端程序呼叫應用程式模型。 而且在大部分的案例中，相較於使用原始 WebSocket，SignalR 沒有顯著的效能缺點。
+對於大部分的應用程式，我們建議 SignalR 高於原始 Websocket。 SignalR 為無法使用 Websocket 的環境提供傳輸回溯。 它也提供簡單的遠端程序呼叫應用程式模型。 在大部分的情況下，相較于使用原始 Websocket，SignalR 沒有明顯的效能缺點。
 
 ## <a name="prerequisites"></a>Prerequisites
 

@@ -1,24 +1,26 @@
 ---
 title: ASP.NET Core SignalR 支援的平臺
 author: bradygaster
-description: 瞭解 ASP.NET Core SignalR 的支援平臺。
+description: 瞭解 ASP.NET Core SignalR的支援平臺。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/01/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: signalr/supported-platforms
-ms.openlocfilehash: 1be7a307710e6e522c0088fd1ca01da11a13eda1
-ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
+ms.openlocfilehash: 86ba5b1aec230d78c1a0e1709187e129df6cb4cc
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426977"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963735"
 ---
-# <a name="aspnet-core-signalr-supported-platforms"></a>ASP.NET Core SignalR 支援的平臺
+# <a name="aspnet-core-opno-locsignalr-supported-platforms"></a>ASP.NET Core SignalR 支援的平臺
 
 ## <a name="server-system-requirements"></a>伺服器系統需求
 
-SignalR for ASP.NET Core 支援 ASP.NET Core 支援的任何伺服器平臺。
+ASP.NET Core 的 SignalR 支援 ASP.NET Core 支援的任何伺服器平臺。
 
 ## <a name="javascript-client"></a>JavaScript 用戶端
 
@@ -36,7 +38,7 @@ SignalR for ASP.NET Core 支援 ASP.NET Core 支援的任何伺服器平臺。
 
 ## <a name="net-client"></a>.NET 用戶端
 
-[.Net 用戶端](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/)會在 ASP.NET Core 支援的任何平臺上執行。 例如， [xamarin 開發人員可以使用 SignalR](https://github.com/aspnet/Announcements/issues/305) ，利用 xamarin 8.4.0.1 和更新版本，以及使用11.14.0.4 和更新版本的 ios 應用程式來建立 android 應用程式。
+[.Net 用戶端](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/)會在 ASP.NET Core 支援的任何平臺上執行。 例如， [Xamarin 開發人員可以使用 SignalR](https://github.com/aspnet/Announcements/issues/305) ，以使用8.4.0.1 和更新版本，以及使用11.14.0.4 和更新版本的 ios 應用程式來建立 android 應用程式。
 
 如果伺服器執行 IIS，Websocket 傳輸需要 Windows Server 2012 或更新版本上的 IIS 8.0 或更新版本。 所有平臺都支援其他傳輸。
 

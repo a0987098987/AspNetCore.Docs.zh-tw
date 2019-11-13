@@ -4,14 +4,16 @@ author: jamesnk
 description: 瞭解 gRPC 與 HTTP Api 的比較，以及它的建議案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 09/25/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: grpc/comparison
-ms.openlocfilehash: 52b057876481bd9be4f83d93b1f05081ed19660f
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: ceb24d656827548492a6fa326681922297fc481b
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589966"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963650"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP API
 
@@ -106,7 +108,7 @@ HTTP API 要求會以文字傳送，並可供人類讀取和建立。
 在下列案例中，建議您透過 gRPC 使用其他架構：
 
 * 瀏覽器中 &ndash; gRPC 的**瀏覽器可存取 api**不完全受到支援。 gRPC-Web 可以提供瀏覽器支援，但它有一些限制，而且引進了伺服器 proxy。
-* **廣播即時通訊**&ndash; gRPC 透過串流支援即時通訊，但將訊息廣播到已註冊連線的概念並不存在。 例如，在聊天室案例中，新的聊天訊息應傳送至聊天室中的所有用戶端時，每個 gRPC 呼叫都需要個別將新的聊天訊息串流至用戶端。 [SignalR](xref:signalr/introduction)是適用于此案例的架構。 SignalR 具有持續連線的概念，以及廣播訊息的內建支援。
+* **廣播即時通訊**&ndash; gRPC 透過串流支援即時通訊，但將訊息廣播到已註冊連線的概念並不存在。 例如，在聊天室案例中，新的聊天訊息應傳送至聊天室中的所有用戶端時，每個 gRPC 呼叫都需要個別將新的聊天訊息串流至用戶端。 [SignalR](xref:signalr/introduction)在此案例中是有用的架構。 SignalR 具有持續連線的概念，以及廣播訊息的內建支援。
 * 進程**間通訊**&ndash; 處理常式必須裝載 HTTP/2 伺服器，以接受傳入的 gRPC 呼叫。 對於 Windows 而言，處理序間通訊[管道](/dotnet/standard/io/pipe-operations)是快速、輕量的通訊方法。
 
 ## <a name="additional-resources"></a>其他資源

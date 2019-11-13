@@ -5,26 +5,28 @@ description: 瞭解如何設定 ASP.NET Core SignalR 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 08/05/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: signalr/configuration
-ms.openlocfilehash: 66f274fcda27392091de6b4be8c7221bc87b7585
-ms.sourcegitcommit: c452e6af92e130413106c4863193f377cde4cd9c
+ms.openlocfilehash: 682cc36216a4dc9b38c87b4f67100ab565a70e5c
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246485"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963975"
 ---
-# <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 設定
+# <a name="aspnet-core-opno-locsignalr-configuration"></a>ASP.NET Core SignalR 設定
 
 ## <a name="jsonmessagepack-serialization-options"></a>JSON/MessagePack 序列化選項
 
-ASP.NET Core SignalR 支援兩種通訊協定來編碼訊息：[JSON](https://www.json.org/)和[MessagePack](https://msgpack.org/index.html)。 每個通訊協定都有序列化設定選項。
+ASP.NET Core SignalR 支援兩種通訊協定來編碼訊息： [JSON](https://www.json.org/)和[MessagePack](https://msgpack.org/index.html)。 每個通訊協定都有序列化設定選項。
 
 ::: moniker range=">= aspnetcore-3.0"
 
-您可以使用[AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol)擴充方法，在伺服器上設定 JSON 序列化。 `AddJsonProtocol` 可以在[AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr)中的 `Startup.ConfigureServices` 之後加入。 @No__t-0 方法會接受一個可接收 `options` 物件的委派。 該物件上的[PayloadSerializerOptions](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializeroptions)屬性是 @no__t 1 @no__t 2 物件，可用來設定引數和傳回值的序列化。 如需詳細資訊，請參閱[system.web 檔](/dotnet/api/system.text.json)。
+您可以使用[AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol)擴充方法，在伺服器上設定 JSON 序列化。 `AddJsonProtocol` 可以在 `Startup.ConfigureServices`中[AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr)之後加入。 `AddJsonProtocol` 方法會接受一個可接收 `options` 物件的委派。 該物件上的[PayloadSerializerOptions](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializeroptions)屬性是 `System.Text.Json` <xref:System.Text.Json.JsonSerializerOptions> 物件，可用於設定引數和傳回值的序列化。 如需詳細資訊，請參閱[system.web 檔](/dotnet/api/system.text.json)。
 
-例如，若要設定序列化程式不變更屬性名稱的大小寫，而不是預設的 "camelCase" 名稱，請在 `Startup.ConfigureServices` 中使用下列程式碼：
+例如，若要設定序列化程式不變更屬性名稱的大小寫，而不是預設的 "camelCase" 名稱，請在 `Startup.ConfigureServices`中使用下列程式碼：
 
 ```csharp
 services.AddSignalR()
@@ -47,17 +49,20 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
+> [!NOTE]
+> 此時不可能在 JavaScript 用戶端中設定 JSON 序列化。
+
 ### <a name="switch-to-newtonsoftjson"></a>切換至 Newtonsoft. Json
 
-如果您需要 `Newtonsoft.Json` 的功能，但不支援 `System.Text.Json`，請參閱[切換至 Newtonsoft](xref:migration/22-to-30#switch-to-newtonsoftjson)。
+如果您需要 `System.Text.Json`中不支援的 `Newtonsoft.Json` 功能，請參閱[切換至 Newtonsoft。](xref:migration/22-to-30#switch-to-newtonsoftjson)
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.2"
 
-您可以在伺服器上使用[AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol)擴充方法來設定 JSON 序列化，這可在您的 `Startup.ConfigureServices` 方法中的[AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr)之後加入。 @No__t-0 方法會接受一個可接收 `options` 物件的委派。 該物件上的[PayloadSerializerSettings](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializersettings)屬性是一個可用於設定引數和傳回值序列化的 JSON.NET @no__t 1 物件。 如需詳細資訊，請參閱[JSON.NET 檔](https://www.newtonsoft.com/json/help/html/Introduction.htm)。
+您可以在伺服器上使用[AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol)擴充方法來設定 JSON 序列化，這可在您的 `Startup.ConfigureServices` 方法中[AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr)之後加入。 `AddJsonProtocol` 方法會接受一個可接收 `options` 物件的委派。 該物件上的[PayloadSerializerSettings](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializersettings)屬性是 JSON.NET `JsonSerializerSettings` 物件，可用於設定引數和傳回值的序列化。 如需詳細資訊，請參閱[JSON.NET 檔](https://www.newtonsoft.com/json/help/html/Introduction.htm)。
  
-例如，若要設定序列化程式使用 "PascalCase" 屬性名稱，而不是預設的 "camelCase" 名稱，請在 `Startup.ConfigureServices` 中使用下列程式碼：
+例如，若要設定序列化程式使用 "PascalCase" 屬性名稱，而不是預設的 "camelCase" 名稱，請在 `Startup.ConfigureServices`中使用下列程式碼：
  
 ```csharp
 services.AddSignalR()
@@ -82,14 +87,14 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-::: moniker-end
-
 > [!NOTE]
 > 此時不可能在 JavaScript 用戶端中設定 JSON 序列化。
 
+::: moniker-end
+
 ### <a name="messagepack-serialization-options"></a>MessagePack 序列化選項
 
-MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.msgpackprotocoldependencyinjectionextensions.addmessagepackprotocol)呼叫來設定。 如需詳細資訊，請參閱[SignalR 中的 MessagePack](xref:signalr/messagepackhubprotocol) 。
+MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.msgpackprotocoldependencyinjectionextensions.addmessagepackprotocol)呼叫來設定。 如需詳細資訊，請參閱[SignalR中的 MessagePack](xref:signalr/messagepackhubprotocol) 。
 
 > [!NOTE]
 > 此時不可能在 JavaScript 用戶端中設定 MessagePack 序列化。
@@ -100,11 +105,11 @@ MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet
 
 ::: moniker range=">= aspnetcore-3.0"
 
-| 選項 | Default Value | 描述 |
+| 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
-| `ClientTimeoutInterval` | 30 秒 | 如果用戶端未在此間隔內收到訊息（包括 keep-alive），伺服器會將它視為已中斷連線。 這可能需要比此逾時間隔更長的時間，讓用戶端實際被標示為已中斷連線，因為這是如何實行的。 建議的值為 `KeepAliveInterval` 值的雙精度浮點數。|
+| `ClientTimeoutInterval` | 30 秒 | 如果用戶端未在此間隔內收到訊息（包括 keep-alive），伺服器會將它視為已中斷連線。 這可能需要比此逾時間隔更長的時間，讓用戶端實際被標示為已中斷連線，因為這是如何實行的。 建議的值是 `KeepAliveInterval` 值的雙精度浮點數。|
 | `HandshakeTimeout` | 15 秒 | 如果用戶端未在此時間間隔內傳送初始交握訊息，連接就會關閉。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
-| `KeepAliveInterval` | 15 秒 | 如果伺服器未在此間隔內傳送訊息，則會自動傳送 ping 訊息，讓連接保持開啟。 變更 `KeepAliveInterval` 時，請變更用戶端上的 `ServerTimeout` @ no__t-2 @ no__t-3 設定。 建議的 `ServerTimeout` @ no__t-1 @ no__t-2 值為 `KeepAliveInterval` 值的雙精度浮點數。  |
+| `KeepAliveInterval` | 15 秒 | 如果伺服器未在此間隔內傳送訊息，則會自動傳送 ping 訊息，讓連接保持開啟。 當變更 `KeepAliveInterval`時，請變更用戶端上的 `ServerTimeout`/`serverTimeoutInMilliseconds` 設定。 建議的 `ServerTimeout`/`serverTimeoutInMilliseconds` 值為 `KeepAliveInterval` 值的雙精度浮點數。  |
 | `SupportedProtocols` | 所有已安裝的通訊協定 | 此中樞支援的通訊協定。 根據預設，允許在伺服器上註冊的所有通訊協定，但是可以從這份清單中移除通訊協定，以停用個別中樞的特定通訊協定。 |
 | `EnableDetailedErrors` | `false` | 如果 `true`，當中樞方法擲回例外狀況時，會將詳細的例外狀況訊息傳回給用戶端。 預設值為 `false`，因為這些例外狀況訊息可能包含機密資訊。 |
 | `StreamBufferCapacity` | `10` | 可以針對用戶端上傳資料流程進行緩衝處理的專案數上限。 若達到此限制，則在伺服器處理資料流程專案之前，會封鎖調用的處理。|
@@ -114,11 +119,11 @@ MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet
 
 ::: moniker range="= aspnetcore-2.2"
 
-| 選項 | Default Value | 描述 |
+| 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
-| `ClientTimeoutInterval` | 30 秒 | 如果用戶端未在此間隔內收到訊息（包括 keep-alive），伺服器會將它視為已中斷連線。 這可能需要比此逾時間隔更長的時間，讓用戶端實際被標示為已中斷連線，因為這是如何實行的。 建議的值為 `KeepAliveInterval` 值的雙精度浮點數。|
+| `ClientTimeoutInterval` | 30 秒 | 如果用戶端未在此間隔內收到訊息（包括 keep-alive），伺服器會將它視為已中斷連線。 這可能需要比此逾時間隔更長的時間，讓用戶端實際被標示為已中斷連線，因為這是如何實行的。 建議的值是 `KeepAliveInterval` 值的雙精度浮點數。|
 | `HandshakeTimeout` | 15 秒 | 如果用戶端未在此時間間隔內傳送初始交握訊息，連接就會關閉。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
-| `KeepAliveInterval` | 15 秒 | 如果伺服器未在此間隔內傳送訊息，則會自動傳送 ping 訊息，讓連接保持開啟。 變更 `KeepAliveInterval` 時，請變更用戶端上的 `ServerTimeout` @ no__t-2 @ no__t-3 設定。 建議的 `ServerTimeout` @ no__t-1 @ no__t-2 值為 `KeepAliveInterval` 值的雙精度浮點數。  |
+| `KeepAliveInterval` | 15 秒 | 如果伺服器未在此間隔內傳送訊息，則會自動傳送 ping 訊息，讓連接保持開啟。 當變更 `KeepAliveInterval`時，請變更用戶端上的 `ServerTimeout`/`serverTimeoutInMilliseconds` 設定。 建議的 `ServerTimeout`/`serverTimeoutInMilliseconds` 值為 `KeepAliveInterval` 值的雙精度浮點數。  |
 | `SupportedProtocols` | 所有已安裝的通訊協定 | 此中樞支援的通訊協定。 根據預設，允許在伺服器上註冊的所有通訊協定，但是可以從這份清單中移除通訊協定，以停用個別中樞的特定通訊協定。 |
 | `EnableDetailedErrors` | `false` | 如果 `true`，當中樞方法擲回例外狀況時，會將詳細的例外狀況訊息傳回給用戶端。 預設值為 `false`，因為這些例外狀況訊息可能包含機密資訊。 |
 
@@ -126,16 +131,16 @@ MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet
 
 ::: moniker range="= aspnetcore-2.1"
 
-| 選項 | Default Value | 描述 |
+| 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
 | `HandshakeTimeout` | 15 秒 | 如果用戶端未在此時間間隔內傳送初始交握訊息，連接就會關閉。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
-| `KeepAliveInterval` | 15 秒 | 如果伺服器未在此間隔內傳送訊息，則會自動傳送 ping 訊息，讓連接保持開啟。 變更 `KeepAliveInterval` 時，請變更用戶端上的 `ServerTimeout` @ no__t-2 @ no__t-3 設定。 建議的 `ServerTimeout` @ no__t-1 @ no__t-2 值為 `KeepAliveInterval` 值的雙精度浮點數。  |
+| `KeepAliveInterval` | 15 秒 | 如果伺服器未在此間隔內傳送訊息，則會自動傳送 ping 訊息，讓連接保持開啟。 當變更 `KeepAliveInterval`時，請變更用戶端上的 `ServerTimeout`/`serverTimeoutInMilliseconds` 設定。 建議的 `ServerTimeout`/`serverTimeoutInMilliseconds` 值為 `KeepAliveInterval` 值的雙精度浮點數。  |
 | `SupportedProtocols` | 所有已安裝的通訊協定 | 此中樞支援的通訊協定。 根據預設，允許在伺服器上註冊的所有通訊協定，但是可以從這份清單中移除通訊協定，以停用個別中樞的特定通訊協定。 |
 | `EnableDetailedErrors` | `false` | 如果 `true`，當中樞方法擲回例外狀況時，會將詳細的例外狀況訊息傳回給用戶端。 預設值為 `false`，因為這些例外狀況訊息可能包含機密資訊。 |
 
 ::: moniker-end
 
-您可以為所有中樞設定選項，方法是在 `Startup.ConfigureServices` 中提供選項委派給 `AddSignalR` 呼叫。
+您可以為所有中樞設定選項，方法是在 `Startup.ConfigureServices`中提供 `AddSignalR` 呼叫的選項委派。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -148,7 +153,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-單一中樞的選項會覆寫 `AddSignalR` 中提供的全域選項，而且可以使用 <xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddHubOptions*> 來設定：
+單一中樞的選項會覆寫 `AddSignalR` 中提供的全域選項，而且可以使用 <xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddHubOptions*>來設定：
 
 ```csharp
 services.AddSignalR().AddHubOptions<MyHub>(options =>
@@ -161,7 +166,7 @@ services.AddSignalR().AddHubOptions<MyHub>(options =>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-使用 `HttpConnectionDispatcherOptions` 來設定與傳輸和記憶體緩衝區管理相關的 advanced 設定。 這些選項的設定方式是將委派傳遞至 `Startup.Configure` 中的[MapHub @ no__t-1T >](/dotnet/api/microsoft.aspnetcore.builder.hubendpointroutebuilderextensions.maphub) 。
+使用 `HttpConnectionDispatcherOptions` 來設定與傳輸和記憶體緩衝區管理相關的 advanced 設定。 這些選項是藉由將委派傳遞至 `Startup.Configure`中的[MapHub\<t >](/dotnet/api/microsoft.aspnetcore.builder.hubendpointroutebuilderextensions.maphub)來設定。
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -183,7 +188,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ::: moniker range="<= aspnetcore-2.2"
 
-使用 `HttpConnectionDispatcherOptions` 來設定與傳輸和記憶體緩衝區管理相關的 advanced 設定。 這些選項的設定方式是將委派傳遞至 `Startup.Configure` 中的[MapHub @ no__t-1T >](/dotnet/api/microsoft.aspnetcore.signalr.hubroutebuilder.maphub) 。
+使用 `HttpConnectionDispatcherOptions` 來設定與傳輸和記憶體緩衝區管理相關的 advanced 設定。 這些選項是藉由將委派傳遞至 `Startup.Configure`中的[MapHub\<t >](/dotnet/api/microsoft.aspnetcore.signalr.hubroutebuilder.maphub)來設定。
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -204,16 +209,16 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ::: moniker-end
 
-下表說明設定 ASP.NET Core SignalR 的 advanced HTTP 選項的選項：
+下表說明設定 ASP.NET Core SignalR的 advanced HTTP 選項的選項：
 
 ::: moniker range=">= aspnetcore-3.0"
 
-| 選項 | Default Value | 描述 |
+| 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
 | `ApplicationMaxBufferSize` | 32 KB | 在套用背壓之前，伺服器會緩衝的用戶端接收的最大位元組數目。 增加此值可讓伺服器更快速地接收較大的訊息，而不需套用背壓，但可能會增加記憶體耗用量。 |
 | `AuthorizationData` | 自動從套用至中樞類別的 `Authorize` 屬性收集資料。 | 用來判斷是否授權用戶端連線到中樞的[IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata)物件清單。 |
 | `TransportMaxBufferSize` | 32 KB | 在觀察到背壓之前，伺服器會緩衝的應用程式所傳送的最大位元組數目。 增加此值可讓伺服器更快速地緩衝較大的訊息，而不需等待背壓，但可能會增加記憶體耗用量。 |
-| `Transports` | 所有傳輸都已啟用。 | @No__t-0 值的位旗標列舉，可以限制用戶端可用來連接的傳輸。 |
+| `Transports` | 所有傳輸都已啟用。 | `HttpTransportType` 值的位旗標列舉，可以限制用戶端可用來連接的傳輸。 |
 | `LongPolling` | 請參閱下方。 | 長輪詢傳輸特定的其他選項。 |
 | `WebSockets` | 請參閱下方。 | Websocket 傳輸特定的其他選項。 |
 
@@ -221,12 +226,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ::: moniker range="< aspnetcore-3.0"
 
-| 選項 | Default Value | 描述 |
+| 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
 | `ApplicationMaxBufferSize` | 32 KB | 從用戶端接收伺服器緩衝區的最大位元組數目。 增加這個值可讓伺服器接收較大的訊息，但可能會對記憶體耗用量造成負面影響。 |
 | `AuthorizationData` | 自動從套用至中樞類別的 `Authorize` 屬性收集資料。 | 用來判斷是否授權用戶端連線到中樞的[IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata)物件清單。 |
 | `TransportMaxBufferSize` | 32 KB | 由伺服器所緩衝的應用程式所傳送的最大位元組數目。 增加這個值可讓伺服器傳送較大的訊息，但可能會對記憶體耗用量造成負面影響。 |
-| `Transports` | 所有傳輸都已啟用。 | @No__t-0 值的位旗標列舉，可以限制用戶端可用來連接的傳輸。 |
+| `Transports` | 所有傳輸都已啟用。 | `HttpTransportType` 值的位旗標列舉，可以限制用戶端可用來連接的傳輸。 |
 | `LongPolling` | 請參閱下方。 | 長輪詢傳輸特定的其他選項。 |
 | `WebSockets` | 請參閱下方。 | Websocket 傳輸特定的其他選項。 |
 
@@ -234,20 +239,20 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 長輪詢傳輸具有其他選項，可以使用 `LongPolling` 屬性來設定：
 
-| 選項 | Default Value | 描述 |
+| 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
 | `PollTimeout` | 90秒 | 在終止單一輪詢要求之前，伺服器等候訊息傳送至用戶端的最大時間量。 降低此值會導致用戶端更頻繁地發出新的輪詢要求。 |
 
 WebSocket 傳輸具有其他選項，可以使用 `WebSockets` 屬性來設定：
 
-| 選項 | Default Value | 描述 |
+| 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
 | `CloseTimeout` | 5 秒 | 伺服器關閉之後，如果用戶端無法在此時間間隔內關閉，連接就會終止。 |
 | `SubProtocolSelector` | `null` | 可以用來將 `Sec-WebSocket-Protocol` 標頭設定為自訂值的委派。 委派會接收用戶端要求的值做為輸入，而且預期會傳回所需的值。 |
 
 ## <a name="configure-client-options"></a>設定用戶端選項
 
-用戶端選項可以在 `HubConnectionBuilder` 類型上設定（在 .NET 和 JavaScript 用戶端中提供）。 它也可在 JAVA 用戶端中使用，但 @no__t 0 子類別則包含 builder 設定選項，以及 `HubConnection` 本身。
+您可以在 `HubConnectionBuilder` 類型上設定用戶端選項（可在 .NET 和 JavaScript 用戶端中使用）。 它也可在 JAVA 用戶端中使用，但 `HttpHubConnectionBuilder` 子類別則包含 builder 設定選項，以及 `HubConnection` 本身。
 
 ### <a name="configure-logging"></a>設定記錄
 
@@ -256,7 +261,7 @@ WebSocket 傳輸具有其他選項，可以使用 `WebSockets` 屬性來設定�
 > [!NOTE]
 > 若要註冊記錄提供者，您必須安裝必要的套件。 如需完整清單，請參閱檔的[內建記錄提供者](xref:fundamentals/logging/index#built-in-logging-providers)一節。
 
-例如，若要啟用主控台記錄，請安裝 `Microsoft.Extensions.Logging.Console` NuGet 套件。 呼叫 @no__t 0 擴充方法：
+例如，若要啟用主控台記錄，請安裝 `Microsoft.Extensions.Logging.Console` NuGet 套件。 呼叫 `AddConsole` 擴充方法：
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -268,7 +273,7 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-在 JavaScript 用戶端中，有類似的 `configureLogging` 方法存在。 提供 `LogLevel` 值，表示要產生的記錄訊息的最小層級。 記錄檔會寫入至瀏覽器主控台視窗。
+在 JavaScript 用戶端中，有類似的 `configureLogging` 方法存在。 提供 `LogLevel` 值，指出要產生的記錄訊息的最小層級。 記錄檔會寫入至瀏覽器主控台視窗。
 
 ```javascript
 let connection = new signalR.HubConnectionBuilder()
@@ -279,7 +284,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 ::: moniker range=">= aspnetcore-3.0"
 
-您也可以提供代表記錄層級名稱的 `string` 值，而不是 @no__t 0 值。 在您無法存取 @no__t 0 常數的環境中設定 SignalR 記錄時，這會很有用。
+您也可以提供代表記錄層級名稱的 `string` 值，而不是 `LogLevel` 值。 在您無法存取 `LogLevel` 常數的環境中設定 SignalR 記錄時，這會很有用。
 
 ```javascript
 let connection = new signalR.HubConnectionBuilder()
@@ -288,7 +293,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-下表列出可用的記錄層級。 您提供給 `configureLogging` 的值會設定將記錄的**最低**記錄層級。 記錄在此層級的訊息，**或在資料表中所列的層級**將會記錄下來。
+下表列出可用的記錄層級。 您提供給 `configureLogging` 的值會設定要記錄的**最低**記錄層級。 記錄在此層級的訊息，**或在資料表中所列的層級**將會記錄下來。
 
 | String                      | LogLevel               |
 | --------------------------- | ---------------------- |
@@ -307,7 +312,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 如需記錄的詳細資訊，請參閱[SignalR 診斷檔](xref:signalr/diagnostics)。
 
-SignalR JAVA 用戶端會使用[SLF4J](https://www.slf4j.org/)程式庫進行記錄。 它是高階記錄 API，可讓程式庫的使用者藉由帶入特定的記錄相依性來選擇自己的特定記錄執行。 下列程式碼片段顯示如何搭配 SignalR JAVA 用戶端使用 `java.util.logging`。
+SignalR JAVA 用戶端會使用[SLF4J](https://www.slf4j.org/)程式庫進行記錄。 它是高階記錄 API，可讓程式庫的使用者藉由帶入特定的記錄相依性來選擇自己的特定記錄執行。 下列程式碼片段示範如何使用 `java.util.logging` 搭配 SignalR JAVA 用戶端。
 
 ```gradle
 implementation 'org.slf4j:slf4j-jdk14:1.7.25'
@@ -325,7 +330,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 
 ### <a name="configure-allowed-transports"></a>設定允許的傳輸
 
-SignalR 所使用的傳輸可以在 `WithUrl` 呼叫中設定（以 JavaScript `withUrl`）。 @No__t-0 值的位 OR 可以用來限制用戶端只使用指定的傳輸。 預設會啟用所有傳輸。
+SignalR 所使用的傳輸可以在 `WithUrl` 呼叫（在 JavaScript 中`withUrl`）中設定。 `HttpTransportType` 值的位 OR 可以用來限制用戶端只使用指定的傳輸。 預設會啟用所有傳輸。
 
 例如，若要停用伺服器傳送的事件傳輸，但允許 Websocket 和較長的輪詢連接：
 
@@ -335,7 +340,7 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-在 JavaScript 用戶端中，傳輸是藉由在提供給 `withUrl` 的 options 物件上設定 `transport` 欄位來設定：
+在 JavaScript 用戶端中，藉由在提供給 `withUrl`的選項物件上設定 [`transport`] 欄位來設定傳輸：
 
 ```javascript
 let connection = new signalR.HubConnectionBuilder()
@@ -351,7 +356,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 ::: moniker range="= aspnetcore-3.0"
 
-在 JAVA 用戶端中，會使用 `HttpHubConnectionBuilder` 上的 `withTransport` 方法來選取傳輸。 JAVA 用戶端預設為使用 Websocket 傳輸。
+在 JAVA 用戶端中，會使用 `HttpHubConnectionBuilder`上的 `withTransport` 方法來選取傳輸。 JAVA 用戶端預設為使用 Websocket 傳輸。
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/myhub")
@@ -360,15 +365,15 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 ```
 
 > [!NOTE]
-> SignalR JAVA 用戶端尚不支援傳輸回退。
+> SignalR 的 JAVA 用戶端尚不支援傳輸回退。
 
 ::: moniker-end
 
 ### <a name="configure-bearer-authentication"></a>設定持有人驗證
 
-若要提供驗證資料以及 SignalR 要求，請使用 `AccessTokenProvider` 選項（JavaScript 中的 `accessTokenFactory`）來指定函式，以傳回所需的存取權杖。 在 .NET 用戶端中，此存取權杖會當做 HTTP 「持有人驗證」權杖（使用 `Bearer` 類型的 `Authorization` 標頭）傳入。 在 JavaScript 用戶端中，存取權杖會用來做為持有人權杖，**但**在少數情況下，瀏覽器 api 會限制套用標頭的功能（特別是在伺服器傳送的事件和 websocket 要求中）。 在這些情況下，存取權杖會以查詢字串值的形式提供 `access_token`。
+若要提供驗證資料和 SignalR 要求，請使用 `AccessTokenProvider` 選項（JavaScript 中的`accessTokenFactory`）來指定會傳回所需存取權杖的函式。 在 .NET 用戶端中，此存取權杖會當做 HTTP 「持有人驗證」權杖（使用具有 `Bearer`類型的 `Authorization` 標頭）傳入。 在 JavaScript 用戶端中，存取權杖會用來做為持有人權杖，**但**在少數情況下，瀏覽器 api 會限制套用標頭的功能（特別是在伺服器傳送的事件和 websocket 要求中）。 在這些情況下，存取權杖會當做查詢字串值提供 `access_token`。
 
-在 .NET 用戶端中，可以使用 `WithUrl` 中的選項委派來指定 `AccessTokenProvider` 選項：
+在 .NET 用戶端中，可以使用 `WithUrl`中的選項委派來指定 `AccessTokenProvider` 選項：
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -380,7 +385,7 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-在 JavaScript 用戶端中，存取權杖是藉由在 `withUrl` 的 options 物件上設定 `accessTokenFactory` 欄位來設定：
+在 JavaScript 用戶端中，存取權杖是藉由在 `withUrl`中的 options 物件上設定 [`accessTokenFactory`] 欄位來設定：
 
 ```javascript
 let connection = new signalR.HubConnectionBuilder()
@@ -394,7 +399,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-在 SignalR JAVA 用戶端中，您可以藉由提供存取權杖 factory 給[HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java)，設定要用於驗證的持有人權杖。 使用[withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__)提供[RxJAVA](https://github.com/ReactiveX/RxJava) [單一 @ no__t-3String >](https://reactivex.io/documentation/single.html)。 只要呼叫[單一. defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)，您就可以撰寫邏輯來產生用戶端的存取權杖。
+在 SignalR JAVA 用戶端中，您可以藉由提供存取權杖 factory 給[HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java)，設定要用於驗證的持有人權杖。 使用[withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__)提供[RxJAVA](https://github.com/ReactiveX/RxJava) [單一\<字串 >](https://reactivex.io/documentation/single.html)。 只要呼叫[單一. defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-)，您就可以撰寫邏輯來產生用戶端的存取權杖。
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/myhub")
@@ -415,26 +420,26 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 | 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
-| `ServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `Closed` 事件（在 JavaScript 中為 `onclose`）。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器的 @no__t 0 值的數位，以允許時間到達 ping。 |
-| `HandshakeTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應，用戶端會取消交握並觸發 `Closed` 事件（在 JavaScript 中為 `onclose`）。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
-| `KeepAliveInterval` | 15 秒 | 決定用戶端傳送 ping 訊息的間隔。 從用戶端傳送任何訊息時，會將計時器重設為間隔的開始。 如果用戶端未在伺服器上的 @no__t 0 設定中傳送訊息，伺服器會將用戶端視為已中斷連線。 |
+| `ServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `Closed` 事件（在 JavaScript 中`onclose`）。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少為伺服器 `KeepAliveInterval` 值的數位，以允許時間到達 ping。 |
+| `HandshakeTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應，用戶端會取消交握並觸發 `Closed` 事件（在 JavaScript 中`onclose`）。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
+| `KeepAliveInterval` | 15 秒 | 決定用戶端傳送 ping 訊息的間隔。 從用戶端傳送任何訊息時，會將計時器重設為間隔的開始。 如果用戶端未在伺服器上設定的 `ClientTimeoutInterval` 中傳送訊息，伺服器會將用戶端視為已中斷連線。 |
 
-在 .NET 用戶端中，timeout 值會指定為 @no__t 0 值。
+在 .NET 用戶端中，timeout 值會指定為 `TimeSpan` 值。
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 | 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
-| `serverTimeoutInMilliseconds` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onclose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器的 @no__t 0 值的數位，以允許時間到達 ping。 |
-| `keepAliveIntervalInMilliseconds` | 15秒（15000毫秒） | 決定用戶端傳送 ping 訊息的間隔。 從用戶端傳送任何訊息時，會將計時器重設為間隔的開始。 如果用戶端未在伺服器上的 @no__t 0 設定中傳送訊息，伺服器會將用戶端視為已中斷連線。 |
+| `serverTimeoutInMilliseconds` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onclose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少為伺服器 `KeepAliveInterval` 值的數位，以允許時間到達 ping。 |
+| `keepAliveIntervalInMilliseconds` | 15秒（15000毫秒） | 決定用戶端傳送 ping 訊息的間隔。 從用戶端傳送任何訊息時，會將計時器重設為間隔的開始。 如果用戶端未在伺服器上設定的 `ClientTimeoutInterval` 中傳送訊息，伺服器會將用戶端視為已中斷連線。 |
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 | 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
-| `getServerTimeout` / `setServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onClose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器的 @no__t 0 值的數位，以允許時間到達 ping。 |
+| `getServerTimeout` / `setServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onClose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少為伺服器 `KeepAliveInterval` 值的數位，以允許時間到達 ping。 |
 | `withHandshakeResponseTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應，用戶端會取消交握並觸發 `onClose` 事件。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
-| `getKeepAliveInterval` / `setKeepAliveInterval` | 15秒（15000毫秒） | 決定用戶端傳送 ping 訊息的間隔。 從用戶端傳送任何訊息時，會將計時器重設為間隔的開始。 如果用戶端未在伺服器上的 @no__t 0 設定中傳送訊息，伺服器會將用戶端視為已中斷連線。 |
+| `getKeepAliveInterval` / `setKeepAliveInterval` | 15秒（15000毫秒） | 決定用戶端傳送 ping 訊息的間隔。 從用戶端傳送任何訊息時，會將計時器重設為間隔的開始。 如果用戶端未在伺服器上設定的 `ClientTimeoutInterval` 中傳送訊息，伺服器會將用戶端視為已中斷連線。 |
 
 ::: moniker-end
 
@@ -444,22 +449,22 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 | 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
-| `ServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `Closed` 事件（在 JavaScript 中為 `onclose`）。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器的 @no__t 0 值的數位，以允許時間到達 ping。 |
-| `HandshakeTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應，用戶端會取消交握並觸發 `Closed` 事件（在 JavaScript 中為 `onclose`）。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
+| `ServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `Closed` 事件（在 JavaScript 中`onclose`）。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少為伺服器 `KeepAliveInterval` 值的數位，以允許時間到達 ping。 |
+| `HandshakeTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應，用戶端會取消交握並觸發 `Closed` 事件（在 JavaScript 中`onclose`）。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
 
-在 .NET 用戶端中，timeout 值會指定為 @no__t 0 值。
+在 .NET 用戶端中，timeout 值會指定為 `TimeSpan` 值。
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 | 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
-| `serverTimeoutInMilliseconds` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onclose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器的 @no__t 0 值的數位，以允許時間到達 ping。 |
+| `serverTimeoutInMilliseconds` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onclose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少為伺服器 `KeepAliveInterval` 值的數位，以允許時間到達 ping。 |
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 | 選項 | 預設值 | 描述 |
 | ------ | ------------- | ----------- |
-| `getServerTimeout` / `setServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onClose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少為伺服器的 @no__t 0 值的數位，以允許時間讓 ping 抵達。 |
+| `getServerTimeout` / `setServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onClose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是伺服器的 `KeepAliveInterval` 值至少為兩倍的數位，以允許時間到達 ping。 |
 | `withHandshakeResponseTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應，用戶端會取消交握並觸發 `onClose` 事件。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
 
 ::: moniker-end
@@ -468,14 +473,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 ### <a name="configure-additional-options"></a>設定其他選項
 
-您可以在 `HubConnectionBuilder` 上或在 JAVA 用戶端的 `HttpHubConnectionBuilder` 上的各種設定 Api 上，以 `WithUrl` （JavaScript 中的 `withUrl`）方法來設定其他選項：
+您可以在 `HubConnectionBuilder` 上或在 JAVA 用戶端的 `HttpHubConnectionBuilder` 上，于 `WithUrl` （在 JavaScript 中`withUrl`）方法中設定其他選項：
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 | .NET 選項 |  預設值 | 描述 |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
-| `SkipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure SignalR Service 時，無法啟用此設定。 |
+| `SkipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure SignalR 服務時，無法啟用此設定。 |
 | `ClientCertificates` | Empty | 要傳送以驗證要求的 TLS 憑證集合。 |
 | `Cookies` | Empty | 要與每個 HTTP 要求一起傳送的 HTTP cookie 集合。 |
 | `Credentials` | Empty | 每個 HTTP 要求傳送的認證。 |
@@ -488,22 +493,22 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-| JavaScript 選項 | Default Value | 描述 |
+| JavaScript 選項 | 預設值 | 描述 |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
-| `skipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure SignalR Service 時，無法啟用此設定。 |
+| `skipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure SignalR 服務時，無法啟用此設定。 |
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-| JAVA 選項 | Default Value | 描述 |
+| JAVA 選項 | 預設值 | 描述 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
-| `shouldSkipNegotiate` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure SignalR Service 時，無法啟用此設定。 |
+| `shouldSkipNegotiate` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure SignalR 服務時，無法啟用此設定。 |
 | `withHeader` `withHeaders` | Empty | 要隨每個 HTTP 要求傳送之其他 HTTP 標頭的對應。 |
 
 ---
 
-在 .NET 用戶端中，這些選項可以由提供給 `WithUrl` 的選項委派進行修改：
+在 .NET 用戶端中，這些選項可以由提供給 `WithUrl`的選項委派進行修改：
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -515,7 +520,7 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-在 JavaScript 用戶端中，可以在提供給 `withUrl` 的 JavaScript 物件中提供這些選項：
+在 JavaScript 用戶端中，可以在提供給 `withUrl`的 JavaScript 物件中提供這些選項：
 
 ```javascript
 let connection = new signalR.HubConnectionBuilder()

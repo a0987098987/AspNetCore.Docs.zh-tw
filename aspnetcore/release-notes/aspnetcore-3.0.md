@@ -4,22 +4,25 @@ author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.0 中的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 11/12/2019
+no-loc:
+- Blazor
+- SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 8c53d8a9fa222ca40f26dc713ec3b70ddde76539
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: c3dde383507ec919f82b5268ddbf23911c3d24f8
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416116"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963114"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>3\.0 ASP.NET Core 的新功能
 
 本文將重點放在 ASP.NET Core 3.0 中最重要的變更，並提供相關檔的連結。
 
-## <a name="blazor"></a>Blazor
+## Blazor
 
-Blazor 是 ASP.NET Core 中的新架構，可讓您使用 .NET 建立互動式用戶端 web UI：
+Blazor 是使用 .NET 建立互動式用戶端 web UI ASP.NET Core 的新架構：
 
 * 使用 C# 而不是 JavaScript 來建立豐富的互動式 UI。
 * 共用以 .NET 撰寫的伺服器端與用戶端應用程式邏輯。
@@ -37,17 +40,17 @@ Blazor framework 支援的案例：
 
 如需詳細資訊，請參閱<xref:blazor/index>。
 
-### <a name="blazor-server"></a>Blazor 伺服器
+### <a name="opno-locblazor-server"></a>Blazor 伺服器
 
-Blazor 會將元件轉譯邏輯與套用 UI 更新的方式分隔。 Blazor 伺服器提供在 ASP.NET Core 應用程式中將 Razor 元件裝載在伺服器上的支援。 UI 更新透過 SignalR 連線處理。 ASP.NET Core 3.0 支援 Blazor 伺服器。
+Blazor 將元件轉譯邏輯與 UI 更新的套用方式分離。 Blazor Server 提供在 ASP.NET Core 應用程式中將 Razor 元件裝載在伺服器上的支援。 UI 更新會透過 SignalR 連接來處理。 ASP.NET Core 3.0 支援 Blazor Server。
 
-### <a name="blazor-webassembly-preview"></a>Blazor WebAssembly （預覽）
+### <a name="opno-locblazor-webassembly-preview"></a>Blazor WebAssembly （預覽）
 
-Blazor apps 也可以直接在瀏覽器中使用以 WebAssembly 為基礎的 .NET 執行時間來執行。 Blazor WebAssembly 處於預覽狀態，ASP.NET Core 3.0*不*支援。 ASP.NET Core 的未來版本將會支援 Blazor WebAssembly。
+Blazor 應用程式也可以直接在瀏覽器中使用以 WebAssembly 為基礎的 .NET 執行時間來執行。 Blazor WebAssembly 處於預覽狀態，ASP.NET Core 3.0*不*支援。 ASP.NET Core 的未來版本將支援 Blazor WebAssembly。
 
 ### <a name="razor-components"></a>Razor 元件
 
-Blazor 應用程式是從元件建立而成。 元件是獨立的使用者介面（UI）區塊，例如頁面、對話方塊或表單。 元件是定義 UI 呈現邏輯和用戶端事件處理常式的一般 .NET 類別。 您可以建立豐富的互動式 web 應用程式，而不需要 JavaScript。
+Blazor 的應用程式是從元件建立而成。 元件是獨立的使用者介面（UI）區塊，例如頁面、對話方塊或表單。 元件是定義 UI 呈現邏輯和用戶端事件處理常式的一般 .NET 類別。 您可以建立豐富的互動式 web 應用程式，而不需要 JavaScript。
 
 Blazor 中的元件通常是使用 Razor 語法（這是 HTML 和C#的自然 blend）來撰寫。 Razor 元件與 Razor Pages 和 MVC 的觀點相似，因為它們都使用 Razor。 不同于以要求-回應模型為基礎的頁面和視圖，元件是專門用來處理 UI 組合。
 
@@ -76,11 +79,11 @@ ASP.NET Core 3.0 中的 gRPC 功能包括：
 
 如需詳細資訊，請參閱<xref:grpc/index>。
 
-## <a name="signalr"></a>SignalR
+## SignalR
 
 如需遷移指示，請參閱[更新 SignalR 程式碼](xref:migration/22-to-30#signalr)。 SignalR 現在會使用 `System.Text.Json` 來序列化/還原序列化 JSON 訊息。 如需還原以 `Newtonsoft.Json`為基礎之序列化程式的指示，請參閱[切換至 Newtonsoft。](xref:migration/22-to-30#switch-to-newtonsoftjson)
 
-在適用于 SignalR 的 JavaScript 和 .NET 用戶端中，已加入自動重新連接的支援。 根據預設，用戶端會嘗試立即重新連線，並在2、10和30秒後重試（如有必要）。 如果用戶端成功重新連接，則會收到新的連線識別碼。 自動重新連線是加入宣告的：
+在 SignalR的 JavaScript 和 .NET 用戶端中，已加入自動重新連接的支援。 根據預設，用戶端會嘗試立即重新連線，並在2、10和30秒後重試（如有必要）。 如果用戶端成功重新連接，則會收到新的連線識別碼。 自動重新連線是加入宣告的：
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -132,7 +135,7 @@ connection.onreconnected((connectionId) => {
 });
 ```
 
-當中樞方法需要授權時，SignalR 3.0 和更新版本會將自訂資源提供給授權處理常式。 資源是 `HubInvocationContext` 的實例。 `HubInvocationContext` 包括：
+SignalR 3.0 和更新版本會在中樞方法需要授權時，將自訂資源提供給授權處理常式。 資源是 `HubInvocationContext` 的實例。 `HubInvocationContext` 包括：
 
 * `HubCallerContext`
 * 所叫用之中樞方法的名稱。

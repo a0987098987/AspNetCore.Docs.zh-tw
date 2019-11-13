@@ -1,23 +1,25 @@
 ---
 title: 搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
 author: ssougnez
-description: 在本教學課程中，您可以設定 Webpack 來組合並建置其用戶端以 TypeScript 撰寫的 ASP.NET Core SignalR Web 應用程式。
+description: 在本教學課程中，您會將 Webpack 設定為配套，並建立用戶端以 TypeScript 撰寫的 ASP.NET Core SignalR web 應用程式。
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 10/04/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 630e8cb5efe9c313479960626d3d864c4923cbd1
-ms.sourcegitcommit: 3ffcd8cbff8b49128733842f72270bc58279de70
+ms.openlocfilehash: 759584f432807689ba194c86046364552fce1a45
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955924"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73964022"
 ---
-# <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
+# <a name="use-aspnet-core-opno-locsignalr-with-typescript-and-webpack"></a>搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
 
 作者：[Sébastien Sougnez](https://twitter.com/ssougnez) 和 [Scott Addie](https://twitter.com/Scott_Addie)
 
-[Webpack](https://webpack.js.org/) 可讓開發人員組合並建置 Web 應用程式的用戶端資源。 本教學課程示範如何在其以 [TypeScript](https://www.typescriptlang.org/) 撰寫的 ASP.NET Core SignalR Web 應用程式中使用 Webpack。
+[Webpack](https://webpack.js.org/) 可讓開發人員組合並建置 Web 應用程式的用戶端資源。 本教學課程示範如何在用戶端以[TypeScript](https://www.typescriptlang.org/)撰寫的 ASP.NET Core SignalR web 應用程式中使用 Webpack。
 
 在本教學課程中，您將了解如何：
 
@@ -32,11 +34,11 @@ ms.locfileid: "71955924"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) 和 **ASP.NET 與 Web 開發**工作負載
+* 隨附 **ASP.NET 和網頁程式開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 * [.NET Core SDK 3.0 或更新版本](https://www.microsoft.com/net/download/all)
 * 具有 [npm](https://www.npmjs.com/) 的 [Node.js](https://nodejs.org/)
 
@@ -55,14 +57,14 @@ ms.locfileid: "71955924"
 
 設定 Visual Studio 以在 *PATH* 環境變數中尋找 npm。 根據預設，Visual Studio 會使用在其安裝目錄中找到的 npm 版本。 請遵循 Visual Studio 中的下列指示：
 
-1. 流覽至 [**工具**] > 個**選項**> 個**專案和方案**> **Web 套件管理**> 個**外部 Web 工具**。
+1. 流覽至 [**工具**] >**選項**> [**專案和方案**] > **Web 套件管理**> [**外部 web 工具**]。
 1. 從清單中選取 *$(PATH)* 項目。 按一下向上箭號，將此項目移至清單中的第二個位置。
 
     ![Visual Studio 組態](signalr-typescript-webpack/_static/signalr-configure-path-visual-studio.png)
 
 Visual Studio 組態已完成。 現在即可開始建立專案。
 
-1. 使用 [ **@no__t-** 1**新增**>**專案**] 功能表選項，然後選擇 [ **ASP.NET Core Web 應用程式**] 範本。
+1. 使用 [檔案] > [**新增**>**專案**] 功能表**選項，然後**選擇 [ **ASP.NET Core Web 應用程式**] 範本。
 1. 將專案命名為*命名為 signalrwebpack*，然後選取 [**建立**]。
 1. 從 [目標 framework] 下拉式選單中選取 [ *.Net Core* ]，然後從 [framework 選取器] 下拉式選單中選取 [ *ASP.NET Core 3.0* ]。 選取 [**空白**] 範本，然後選取 [**建立**]。
 
@@ -119,9 +121,9 @@ dotnet new web -o SignalRWebPack
 
     指令碼的一些說明：
 
-    * `build`:在開發模式下組合您的用戶端資源，並監看檔案變更。 檔案監看員會導致套件組合在每次專案檔變更時重新產生。 `mode` 選項會停用生產環境最佳化，例如樹狀結構搖晃和縮製。 `build` 僅用於開發。
-    * `release`:在生產模式下組合您的用戶端資源。
-    * `publish`:執行 `release` 指令碼，以在生產模式下組合用戶端資源。 它會呼叫 .NET Core CLI 的 [publish](/dotnet/core/tools/dotnet-publish) 命令來發行應用程式。
+    * `build`：在開發模式下組合您的用戶端資源，並監看檔案變更。 檔案監看員會導致套件組合在每次專案檔變更時重新產生。 `mode` 選項會停用生產環境最佳化，例如樹狀結構搖晃和縮製。 `build` 僅用於開發。
+    * `release`：在生產模式下組合您的用戶端資源。
+    * `publish`：執行 `release` 指令碼，以在生產模式下組合用戶端資源。 它會呼叫 .NET Core CLI 的 [publish](/dotnet/core/tools/dotnet-publish) 命令來發行應用程式。
 
 1. 使用下列內容，在專案根目錄中建立名為 *webpack.config.js* 的檔案：
 
@@ -130,7 +132,7 @@ dotnet new web -o SignalRWebPack
     上述檔案會設定 Webpack 編譯。 要注意的一些組態詳細資料：
 
     * `output` 屬性會覆寫 *dist* 的預設值。 因而在 *wwwroot* 目錄中發出套件組合。
-    * `resolve.extensions` 陣列包含 *.js* 來匯入 SignalR 用戶端 JavaScript。
+    * `resolve.extensions` 陣列會包含 *.js*以匯入 SignalR 用戶端 JavaScript。
 
 1. 在專案根目錄中建立新的 *src* 目錄。 其目的是要儲存專案的用戶端資產。
 
@@ -160,8 +162,8 @@ dotnet new web -o SignalRWebPack
 
     上述的 TypeScript 會擷取 DOM 項目的參考，並將附加兩個事件處理常式：
 
-    * `keyup`:當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 **Enter** 鍵時，即會呼叫 `send` 函式。
-    * `click`:當使用者按一下 [傳送] 按鈕時，就會引發此事件。 系統會呼叫 `send` 函式。
+    * `keyup`：當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 **Enter** 鍵時，即會呼叫 `send` 函式。
+    * `click`：當使用者按一下 [傳送] 按鈕時，就會引發此事件。 系統會呼叫 `send` 函式。
 
 ## <a name="configure-the-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
@@ -179,7 +181,7 @@ dotnet new web -o SignalRWebPack
 
    [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_AddSignalR)]
 
-1. 在專案根目錄中建立名為 *Hubs* 的新目錄。 其目的是要儲存下一個步驟所建立的 SignalR 中樞。
+1. 在專案根目錄中建立名為 *Hubs* 的新目錄。 其目的是要儲存在下一個步驟中建立的 SignalR 中樞。
 
 1. 使用下列程式碼建立中樞 *Hubs/ChatHub.cs*：
 
@@ -199,7 +201,7 @@ dotnet new web -o SignalRWebPack
     npm install @aspnet/signalr
     ```
 
-    上述命令會安裝 [SignalR TypeScript 用戶端](https://www.npmjs.com/package/@aspnet/signalr)，這可讓用戶端將訊息傳送至伺服器。
+    上述命令會安裝[SignalR TypeScript 用戶端](https://www.npmjs.com/package/@aspnet/signalr)，以允許用戶端將訊息傳送至伺服器。
 
 1. 將醒目提示的程式碼新增至 *src/index.ts* 檔案：
 
@@ -207,7 +209,7 @@ dotnet new web -o SignalRWebPack
 
     上述程式碼支援從伺服器接收訊息。 `HubConnectionBuilder` 類別會建立用於設定伺服器連線的新產生器。 `withUrl` 函式則會設定中樞 URL。
 
-    SignalR 可讓用戶端與伺服器之間進行訊息交換。 每個訊息都有特定的名稱。 例如，您可以包含名稱為 `messageReceived` 的訊息，用來執行負責在訊息區域中顯示新訊息的邏輯。 接聽特定的訊息可透過 `on` 函式完成。 您可以接聽任意數目的訊息名稱。 也可將參數傳遞給訊息，例如作者的名稱和已接收訊息的內容。 用戶端收到訊息之後，就會在其 `innerHTML` 屬性中使用作者的名稱和訊息內容建立新的 `div` 元素。 它會新增至顯示訊息的主要 `div` 元素。
+    SignalR 可在用戶端與伺服器之間交換訊息。 每個訊息都有特定的名稱。 例如，您可以包含名稱為 `messageReceived` 的訊息，用來執行負責在訊息區域中顯示新訊息的邏輯。 接聽特定的訊息可透過 `on` 函式完成。 您可以接聽任意數目的訊息名稱。 也可將參數傳遞給訊息，例如作者的名稱和已接收訊息的內容。 用戶端收到訊息之後，就會在其 `innerHTML` 屬性中使用作者的名稱和訊息內容建立新的 `div` 元素。 它會新增至顯示訊息的主要 `div` 元素。
 
 1. 現在用戶端可以接收訊息，請設定它來傳送訊息。 將醒目提示的程式碼新增至 *src/index.ts* 檔案：
 
@@ -271,7 +273,7 @@ dotnet new web -o SignalRWebPack
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) 和 **ASP.NET 與 Web 開發**工作負載
+* 隨附 **ASP.NET 和網頁程式開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 * [.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download/all)
 * 具有 [npm](https://www.npmjs.com/) 的 [Node.js](https://nodejs.org/)
 
@@ -290,14 +292,14 @@ dotnet new web -o SignalRWebPack
 
 設定 Visual Studio 以在 *PATH* 環境變數中尋找 npm。 根據預設，Visual Studio 會使用在其安裝目錄中找到的 npm 版本。 請遵循 Visual Studio 中的下列指示：
 
-1. 流覽至 [**工具**] > 個**選項**> 個**專案和方案**> **Web 套件管理**> 個**外部 Web 工具**。
+1. 流覽至 [**工具**] >**選項**> [**專案和方案**] > **Web 套件管理**> [**外部 web 工具**]。
 1. 從清單中選取 *$(PATH)* 項目。 按一下向上箭號，將此項目移至清單中的第二個位置。
 
     ![Visual Studio 組態](signalr-typescript-webpack/_static/signalr-configure-path-visual-studio.png)
 
 Visual Studio 組態已完成。 現在即可開始建立專案。
 
-1. 使用 [ **@no__t-** 1**新增**>**專案**] 功能表選項，然後選擇 [ **ASP.NET Core Web 應用程式**] 範本。
+1. 使用 [檔案] > [**新增**>**專案**] 功能表**選項，然後**選擇 [ **ASP.NET Core Web 應用程式**] 範本。
 1. 將專案命名為*命名為 signalrwebpack*，然後選取 [**建立**]。
 1. 從目標 Framework 下拉式清單中選取 [.NET Core]，然後從 Framework 選取器下拉式清單中選取 [ASP.NET Core 2.2]。 選取 [**空白**] 範本，然後選取 [**建立**]。
 
@@ -354,9 +356,9 @@ dotnet new web -o SignalRWebPack
 
     指令碼的一些說明：
 
-    * `build`:在開發模式下組合您的用戶端資源，並監看檔案變更。 檔案監看員會導致套件組合在每次專案檔變更時重新產生。 `mode` 選項會停用生產環境最佳化，例如樹狀結構搖晃和縮製。 `build` 僅用於開發。
-    * `release`:在生產模式下組合您的用戶端資源。
-    * `publish`:執行 `release` 指令碼，以在生產模式下組合用戶端資源。 它會呼叫 .NET Core CLI 的 [publish](/dotnet/core/tools/dotnet-publish) 命令來發行應用程式。
+    * `build`：在開發模式下組合您的用戶端資源，並監看檔案變更。 檔案監看員會導致套件組合在每次專案檔變更時重新產生。 `mode` 選項會停用生產環境最佳化，例如樹狀結構搖晃和縮製。 `build` 僅用於開發。
+    * `release`：在生產模式下組合您的用戶端資源。
+    * `publish`：執行 `release` 指令碼，以在生產模式下組合用戶端資源。 它會呼叫 .NET Core CLI 的 [publish](/dotnet/core/tools/dotnet-publish) 命令來發行應用程式。
 
 1. 使用下列內容，在專案根目錄中建立名為 *webpack.config.js* 的檔案：
 
@@ -365,7 +367,7 @@ dotnet new web -o SignalRWebPack
     上述檔案會設定 Webpack 編譯。 要注意的一些組態詳細資料：
 
     * `output` 屬性會覆寫 *dist* 的預設值。 因而在 *wwwroot* 目錄中發出套件組合。
-    * `resolve.extensions` 陣列包含 *.js* 來匯入 SignalR 用戶端 JavaScript。
+    * `resolve.extensions` 陣列會包含 *.js*以匯入 SignalR 用戶端 JavaScript。
 
 1. 在專案根目錄中建立新的 *src* 目錄。 其目的是要儲存專案的用戶端資產。
 
@@ -395,8 +397,8 @@ dotnet new web -o SignalRWebPack
 
     上述的 TypeScript 會擷取 DOM 項目的參考，並將附加兩個事件處理常式：
 
-    * `keyup`:當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 **Enter** 鍵時，即會呼叫 `send` 函式。
-    * `click`:當使用者按一下 [傳送] 按鈕時，就會引發此事件。 系統會呼叫 `send` 函式。
+    * `keyup`：當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 **Enter** 鍵時，即會呼叫 `send` 函式。
+    * `click`：當使用者按一下 [傳送] 按鈕時，就會引發此事件。 系統會呼叫 `send` 函式。
 
 ## <a name="configure-the-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
@@ -414,7 +416,7 @@ dotnet new web -o SignalRWebPack
 
     [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_UseSignalR)]
 
-1. 在專案根目錄中建立名為 *Hubs* 的新目錄。 其目的是要儲存下一個步驟所建立的 SignalR 中樞。
+1. 在專案根目錄中建立名為 *Hubs* 的新目錄。 其目的是要儲存在下一個步驟中建立的 SignalR 中樞。
 
 1. 使用下列程式碼建立中樞 *Hubs/ChatHub.cs*：
 
@@ -434,7 +436,7 @@ dotnet new web -o SignalRWebPack
     npm install @aspnet/signalr
     ```
 
-    上述命令會安裝 [SignalR TypeScript 用戶端](https://www.npmjs.com/package/@aspnet/signalr)，這可讓用戶端將訊息傳送至伺服器。
+    上述命令會安裝[SignalR TypeScript 用戶端](https://www.npmjs.com/package/@aspnet/signalr)，以允許用戶端將訊息傳送至伺服器。
 
 1. 將醒目提示的程式碼新增至 *src/index.ts* 檔案：
 
@@ -442,7 +444,7 @@ dotnet new web -o SignalRWebPack
 
     上述程式碼支援從伺服器接收訊息。 `HubConnectionBuilder` 類別會建立用於設定伺服器連線的新產生器。 `withUrl` 函式則會設定中樞 URL。
 
-    SignalR 可讓用戶端與伺服器之間進行訊息交換。 每個訊息都有特定的名稱。 例如，您可以包含名稱為 `messageReceived` 的訊息，用來執行負責在訊息區域中顯示新訊息的邏輯。 接聽特定的訊息可透過 `on` 函式完成。 您可以接聽任意數目的訊息名稱。 也可將參數傳遞給訊息，例如作者的名稱和已接收訊息的內容。 用戶端收到訊息之後，就會在其 `innerHTML` 屬性中使用作者的名稱和訊息內容建立新的 `div` 元素。 它會新增至顯示訊息的主要 `div` 元素。
+    SignalR 可在用戶端與伺服器之間交換訊息。 每個訊息都有特定的名稱。 例如，您可以包含名稱為 `messageReceived` 的訊息，用來執行負責在訊息區域中顯示新訊息的邏輯。 接聽特定的訊息可透過 `on` 函式完成。 您可以接聽任意數目的訊息名稱。 也可將參數傳遞給訊息，例如作者的名稱和已接收訊息的內容。 用戶端收到訊息之後，就會在其 `innerHTML` 屬性中使用作者的名稱和訊息內容建立新的 `div` 元素。 它會新增至顯示訊息的主要 `div` 元素。
 
 1. 現在用戶端可以接收訊息，請設定它來傳送訊息。 將醒目提示的程式碼新增至 *src/index.ts* 檔案：
 

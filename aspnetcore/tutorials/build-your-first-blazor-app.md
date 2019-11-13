@@ -1,34 +1,36 @@
 ---
-title: 組建第一個 Blazor 應用程式
+title: 建立您的第一個 Blazor 應用程式
 author: guardrex
-description: 逐步建置 Blazor 應用程式。
+description: 逐步建立 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/31/2019
+no-loc:
+- Blazor
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: cc7caa1ee01e0282024895ab35c5b9933b1504d0
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: 646e14060b88fc2a0fefc2f7a5ebb1c15ac39b79
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416168"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963703"
 ---
-# <a name="build-your-first-blazor-app"></a>組建第一個 Blazor 應用程式
+# <a name="build-your-first-opno-locblazor-app"></a>建立您的第一個 Blazor 應用程式
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-本教學課程示範如何建置和修改 Blazor 應用程式。
+本教學課程說明如何建立和修改 Blazor 應用程式。
 
-請依照 <xref:blazor/get-started> 文章中的指引來建立本教學課程的 Blazor 專案。 將專案命名為 *ToDoList*。
+遵循 <xref:blazor/get-started> 文章中的指導方針，為本教學課程建立 Blazor 專案。 將專案命名為 *ToDoList*。
 
 ## <a name="build-components"></a>組建元件
 
 1. 流覽至每個應用程式的 [ *pages* ] 資料夾中的三個頁面： [首頁]、[計數器] 和 [提取資料]。 這些頁面會透過 Razor 元件檔案 *Index.razor*、*Counter.razor* 及 *FetchData.razor* 來實作。
 
-1. 在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 將網頁中的計數器遞增通常需要撰寫 JavaScript。 透過 Blazor，您可以改C#為撰寫。
+1. 在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 將網頁中的計數器遞增通常需要撰寫 JavaScript。 使用 Blazor，您可以改C#為撰寫。
 
 1. 檢查 *Counter.razor`Counter` 檔案中*  元件的實作。
 
@@ -59,7 +61,7 @@ ms.locfileid: "73416168"
 
 1. 透過將 `<Counter />` 元素新增至 `Index` 元件 (*Index.razor*)，來將 `Counter` 元件新增至應用程式的 `Index` 元件。
 
-   如果您使用 Blazor WebAssembly 來進行這項體驗，`Index` 元件會使用 `SurveyPrompt` 元件。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用 Blazor 伺服器應用程式進行此體驗，請將 `<Counter />` 元素新增至 `Index` 元件：
+   如果您使用 Blazor WebAssembly 來進行這項體驗，`Index` 元件會使用 `SurveyPrompt` 元件。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用 Blazor 伺服器應用程式進行這項體驗，請將 `<Counter />` 元素新增至 `Index` 元件：
 
    *Pages/Index.razor*：
 
@@ -99,9 +101,9 @@ ms.locfileid: "73416168"
 
 ## <a name="dependency-injection"></a>相依性插入
 
-### <a name="blazor-server-experience"></a>Blazor 伺服器體驗
+### <a name="opno-locblazor-server-experience"></a>Blazor 伺服器體驗
 
-如果使用 Blazor 伺服器應用程式，則 `WeatherForecastService` 服務會在 `Startup.ConfigureServices` 中註冊為[singleton](xref:fundamentals/dependency-injection#service-lifetimes) 。 服務的實例可透過相依性[插入（DI）](xref:fundamentals/dependency-injection)在整個應用程式中使用：
+如果使用 Blazor 伺服器應用程式，`WeatherForecastService` 服務會在 `Startup.ConfigureServices`中註冊為[singleton](xref:fundamentals/dependency-injection#service-lifetimes) 。 服務的實例可透過相依性[插入（DI）](xref:fundamentals/dependency-injection)在整個應用程式中使用：
 
 [!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
@@ -115,9 +117,9 @@ ms.locfileid: "73416168"
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-### <a name="blazor-webassembly-experience"></a>Blazor WebAssembly 體驗
+### <a name="opno-locblazor-webassembly-experience"></a>Blazor WebAssembly 體驗
 
-如果使用 Blazor WebAssembly 應用程式，則會插入 `HttpClient`，以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料。
+如果使用 Blazor WebAssembly 應用程式，`HttpClient` 會插入，以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料。
 
 *Pages/FetchData.razor*：
 

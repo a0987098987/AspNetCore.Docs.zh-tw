@@ -1,20 +1,22 @@
 ---
 title: 裝載和部署 ASP.NET Core Blazor WebAssembly
 author: guardrex
-description: 了解如何使用 ASP.NET Core、內容傳遞網路 (CDN)、檔案伺服器和 GitHub Pages 來裝載和部署 Blazor 應用程式。
+description: 瞭解如何使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
+no-loc:
+- Blazor
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: 943dbb772d9a7bcb337012c126828d1ab4eb545c
-ms.sourcegitcommit: 383017d7060a6d58f6a79cf4d7335d5b4b6c5659
+ms.openlocfilehash: 0fcefc3f1e51beb7cc29aef6dd4f4b8557e61965
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72816059"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963638"
 ---
-# <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
+# <a name="host-and-deploy-aspnet-core-opno-locblazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
 作者：[Luke Latham](https://github.com/guardrex)、[Rainer Stropek](https://www.timecockpit.com) 和 [Daniel Roth](https://github.com/danroth27)
 
@@ -22,17 +24,17 @@ ms.locfileid: "72816059"
 
 使用[Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)：
 
-* Blazor 應用程式、其相依性，和 .NET 執行階段會下載至瀏覽器中。
+* Blazor 應用程式、其相依性和 .NET 執行時間會下載至瀏覽器。
 * 應用程式會直接在瀏覽器 UI 執行緒上執行。
 
 支援下列部署策略：
 
-* Blazor 應用程式由 ASP.NET Core 應用程式提供服務。 此策略已於[搭配 ASP.NET Core 的已裝載部署](#hosted-deployment-with-aspnet-core)一節中涵蓋。
-* Blazor 應用程式放在靜態裝載的網頁伺服器或服務上，其中 .NET 不會用來提供服務給 Blazor 應用程式。 此策略涵蓋于[獨立部署](#standalone-deployment)一節，其中包含將 Blazor WebAssembly 應用程式裝載為 IIS 子應用程式的相關資訊。
+* Blazor 應用程式是由 ASP.NET Core 應用程式提供。 此策略已於[搭配 ASP.NET Core 的已裝載部署](#hosted-deployment-with-aspnet-core)一節中涵蓋。
+* Blazor 應用程式會放在靜態裝載的 web 伺服器或服務上，其中 .NET 不會用來服務 Blazor 應用程式。 此策略涵蓋于[獨立部署](#standalone-deployment)一節，其中包含將 Blazor WebAssembly 應用程式裝載為 IIS 子應用程式的相關資訊。
 
 ## <a name="rewrite-urls-for-correct-routing"></a>重寫 URL 以便正確地路由
 
-Blazor WebAssembly 應用程式中頁面元件的路由要求，並不像是 Blazor 伺服器（裝載的應用程式）中的路由要求一樣簡單。 假設有兩個元件的 Blazor WebAssembly 應用程式：
+Blazor WebAssembly 應用程式中頁面元件的路由要求，並不像 Blazor 伺服器（裝載的應用程式）中的路由要求一樣簡單。 請考慮具有兩個元件的 Blazor WebAssembly 應用程式：
 
 * *Main.razor* &ndash; 載入應用程式根目錄，同時包含 `About` 元件 (`href="About"`) 的連結。
 * *About.razor* &ndash; `About` 元件。
@@ -42,21 +44,21 @@ Blazor WebAssembly 應用程式中頁面元件的路由要求，並不像是 Bla
 1. 瀏覽器提出要求。
 1. 傳回預設頁面，這通常是 *index.html*。
 1. *index.html* 啟動載入應用程式。
-1. Blazor 的路由器會載入，且會轉譯 Razor `Main` 元件。
+1. Blazor的路由器載入，並轉譯 Razor `Main` 元件。
 
-在主頁面中，選取用戶端 `About` 元件的連結有用，因為 Blazor 路由器會停止瀏覽器，使其不再從網際網路對 `www.contoso.com` 提出針對 `About` 的要求，並自行提供轉譯的 `About` 元件。 *Blazor WebAssembly 應用程式內*內部端點的所有要求都以相同的方式工作：要求不會對網際網路上伺服器裝載的資源觸發瀏覽器型要求。 路由器會在內部處理要求。
+在主頁面中，選取 `About` 元件的連結可在用戶端上運作，因為 Blazor 路由器會停止瀏覽器在網際網路上提出要求，以 `www.contoso.com` `About`，並提供轉譯的 `About` 元件本身。 *Blazor WebAssembly 應用程式內*內部端點的所有要求都是以相同方式執行：要求不會對網際網路上伺服器裝載的資源觸發瀏覽器型要求。 路由器會在內部處理要求。
 
 如果使用瀏覽器之網址列提出對 `www.contoso.com/About` 的要求，則要求會失敗。 在應用程式的網際網路主機上沒有這類資源存在，因此會傳回「404 - 找不到」的回應。
 
-因為瀏覽器會提出要求給以網際網路為基礎的主機以取得用戶端頁面，所以網頁伺服器和裝載服務必須針對實際上不在伺服器上資源，將所有要求重新撰寫至 *index.html* 頁面。 當傳回*index. html*時，應用程式的 Blazor 路由器會接管並回應正確的資源。
+因為瀏覽器會提出要求給以網際網路為基礎的主機以取得用戶端頁面，所以網頁伺服器和裝載服務必須針對實際上不在伺服器上資源，將所有要求重新撰寫至 *index.html* 頁面。 當傳回*index. html*時，應用程式的 Blazor 路由器會接管並以正確的資源回應。
 
 部署到 IIS 伺服器時，您可以使用 URL 重寫模組搭配應用*程式已發佈的 web.config 檔案*。 如需詳細資訊，請參閱[IIS](#iis)一節。
 
 ## <a name="hosted-deployment-with-aspnet-core"></a>搭配 ASP.NET Core 的已裝載部署
 
-*託管部署*可從 web 伺服器上執行的[ASP.NET Core 應用程式](xref:index)，將 Blazor WebAssembly 應用程式提供給瀏覽器。
+裝載的*部署*可從在 web 伺服器上執行的[ASP.NET Core 應用程式](xref:index)，將 Blazor WebAssembly 應用程式提供給瀏覽器。
 
-Blazor 應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以便兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 針對裝載部署，Visual Studio 包含 **Blazor WebAssembly 應用程式**專案範本 (使用 [dotnet new](/dotnet/core/tools/dotnet-new) 命令時的 `blazorwasm` 範本)，並已選取 [已裝載] 選項。
+Blazor 應用程式隨附于已發佈輸出中的 ASP.NET Core 應用程式，因此兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 針對裝載的部署，Visual Studio 包括**Blazor WebAssembly 應用程式**專案範本（使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的`blazorwasm` 範本）以及選取的**hosted**選項。
 
 如需 ASP.NET Core 應用程式裝載和部署的詳細資訊，請參閱 <xref:host-and-deploy/index>。
 
@@ -64,19 +66,19 @@ Blazor 應用程式隨附於發佈輸出中的 ASP.NET Core 應用程式，以�
 
 ## <a name="standalone-deployment"></a>獨立部署
 
-*獨立部署*可將 Blazor WebAssembly 應用程式當做一組直接由用戶端要求的靜態檔案來提供。 所有靜態檔案伺服器都能夠支援 Blazor 應用程式。
+*獨立部署*會將 Blazor WebAssembly 應用程式當做一組直接由用戶端要求的靜態檔案來提供。 任何靜態檔案伺服器都可以服務 Blazor 應用程式。
 
 獨立式部署資產會發佈至 [bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist] 資料夾。
 
 ### <a name="iis"></a>IIS
 
-IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 IIS 來裝載 Blazor，請參閱[在 IIS 上建置靜態網站](/iis/manage/creating-websites/scenario-build-a-static-website-on-iis)。
+IIS 是適用于 Blazor 應用程式的靜態檔案伺服器。 若要設定 IIS 以裝載 Blazor，請參閱[在 iis 上建立靜態網站](/iis/manage/creating-websites/scenario-build-a-static-website-on-iis)。
 
 已發行的資產會建立在 */bin/Release/{TARGET FRAMEWORK}/publish* 資料夾中。 在網頁伺服器或裝載服務上，裝載 *publish* 資料夾的內容。
 
 #### <a name="webconfig"></a>web.config
 
-發佈 Blazor 專案時，會建立 *web.config* 檔案，並使用下列 IIS 組態：
+發行 Blazor 專案時，會使用下列 IIS 設定來建立*web.config*檔案：
 
 * 針對下列副檔名設定 MIME 類型：
   * *.dll* &ndash; `application/octet-stream`
@@ -88,8 +90,8 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
   * `application/octet-stream`
   * `application/wasm`
 * 建立 URL Rewrite Module 規則：
-  * 提供應用程式靜態資產所在的子目錄 ( *{組件名稱}/dist/{要求的路徑}* )。
-  * 建立 SPA 後援路由，讓非檔案資產要求重新導向至其靜態資產資料夾中的應用程式預設文件 ( *{組件名稱}/dist/index.html*)。
+  * 提供應用程式靜態資產所在的子目錄 (*{組件名稱}/dist/{要求的路徑}*)。
+  * 建立 SPA 後援路由，讓非檔案資產要求重新導向至其靜態資產資料夾中的應用程式預設文件 (*{組件名稱}/dist/index.html*)。
 
 #### <a name="install-the-url-rewrite-module"></a>安裝 URL Rewrite 模組
 
@@ -111,7 +113,7 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
 
 * 停用繼承的 ASP.NET Core 模組處理常式。
 
-  將 `<handlers>` 區段新增至檔案，以移除 Blazor 應用程式的已發佈*web.config*檔案中的處理常式：
+  將 `<handlers>` 區段新增至檔案，以移除 Blazor 應用程式的已發行*web.config*檔案中的處理常式：
 
   ```xml
   <handlers>
@@ -139,7 +141,7 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
 
 #### <a name="troubleshooting"></a>疑難排解
 
-如果收到「500 - 內部伺服器錯誤」，且 IIS 管理員在嘗試存取網站設定時擲回錯誤，請確認是否已安裝 URL Rewrite 模組。 未安裝此模組時，IIS 無法剖析 *web.config* 檔案。 這導致 IIS 管理員無法載入網站的組態，且網站無法提供 Blazor 的靜態檔案。
+如果收到「500 - 內部伺服器錯誤」，且 IIS 管理員在嘗試存取網站設定時擲回錯誤，請確認是否已安裝 URL Rewrite 模組。 未安裝此模組時，IIS 無法剖析 *web.config* 檔案。 這可防止 IIS 管理員載入網站的設定和網站，使其無法提供 Blazor的靜態檔案。
 
 如需針對部署至 IIS 進行疑難排解的詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
 
@@ -150,7 +152,7 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
 當 Blob 服務針對儲存體帳戶上的靜態網站裝載啟用時：
 
 * 將 [索引文件名稱] 設定為 `index.html`。
-* 將 [錯誤文件路徑] 設定為 `index.html`。 Razor 元件和其他非檔案端點不會位於由 Blob 服務所存放之靜態內容中的實體路徑上。 當系統接收到針對這些資源之一，且應由 Blazor 路由器處理的要求時，由 Blob 服務所產生的「404 - 找不到」錯誤會將要求路由至**錯誤文件路徑**。 系統會傳回 *index.html* Blob，且 Blazor 路由器會載入並處理該路徑。
+* 將 [錯誤文件路徑] 設定為 `index.html`。 Razor 元件和其他非檔案端點不會位於由 Blob 服務所存放之靜態內容中的實體路徑上。 收到 Blazor 路由器應處理的其中一個資源的要求時，由 blob 服務產生的*404-找不*到的錯誤會將要求路由傳送至**錯誤檔路徑**。 會傳回*索引 .html* blob，而 Blazor 路由器會載入並處理路徑。
 
 如需詳細資訊，請參閱[Azure 儲存體中的靜態網站代管](/azure/storage/blobs/storage-blob-static-website)。
 
@@ -176,7 +178,7 @@ http {
 
 ### <a name="nginx-in-docker"></a>Docker 中的 Nginx
 
-若要在 Docker 中使用 Nginx 裝載 Blazor，請設定 Dockerfile 以使用以 Alpine 為基礎的 Nginx 映像。 更新 Dockerfile，將 *nginx.config* 檔案複製到容器內。
+若要使用 Nginx 在 Docker 中裝載 Blazor，請將 Dockerfile 設定為使用以 Alpine 為基礎的 Nginx 映射。 更新 Dockerfile，將 *nginx.config* 檔案複製到容器內。
 
 如下列範例所示，新增一行至 Dockerfile：
 
@@ -188,7 +190,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ### <a name="apache"></a>投稿
 
-若要將 Blazor WebAssembly 應用程式部署到 CentOS 7 或更新版本：
+若要將 Blazor WebAssembly 應用程式部署至 CentOS 7 或更新版本：
 
 1. 建立 Apache 設定檔。 下列範例是一個簡化的設定檔案（*blazorapp*）：
 
@@ -242,7 +244,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="host-configuration-values"></a>主機組態值
 
-[Blazor WebAssembly apps](xref:blazor/hosting-models#blazor-webassembly)可以在開發環境中的執行時間，接受下列主機設定值做為命令列引數。
+[Blazor WebAssembly 應用程式](xref:blazor/hosting-models#blazor-webassembly)可以在開發環境中的執行時間，接受下列主機設定值做為命令列引數。
 
 ### <a name="content-root"></a>內容根目錄
 
@@ -315,4 +317,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="configure-the-linker"></a>設定連結器
 
-Blazor 在每個組建上執行中繼語言 (IL) 連結，以從輸出組件移除不必要的 IL。 組件連結可在組建上控制。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/configure-linker>。
+Blazor 會在每個組建上執行中繼語言（IL）連結，以從輸出元件中移除不必要的 IL。 組件連結可在組建上控制。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/configure-linker>。

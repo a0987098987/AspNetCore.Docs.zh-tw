@@ -4,14 +4,16 @@ author: rick-anderson
 description: 了解 ASP.NET Core 2.2 的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: 88a202d85c4d4ed7a395dba78feea29ef4637732
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: fca653158c95e7c1a11f25f4076830fe3e7e93ae
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975717"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963128"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2 的新功能
 
@@ -25,7 +27,7 @@ OpenAPI (之前稱為 Swagger) 是用來描述 REST API 的語言無關規格。
 
 * <xref:web-api/advanced/analyzers>
 * <xref:web-api/advanced/conventions>
-* [ASP.NET Core 2.2.0-preview1:OpenAPI Analyzers & Conventions](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/) (ASP.NET Core 2.2.0-preview1：OpenAPI 分析器與慣例)
+* [ASP.NET Core 2.2.0-preview1： OpenAPI 分析器 & 慣例](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/)
 
 ## <a name="problem-details-support"></a>問題詳細資料支援
 
@@ -33,12 +35,12 @@ ASP.NET Core 2.1 引進了 `ProblemDetails`，它採用 [RFC 7807](https://tools
 
 ## <a name="endpoint-routing"></a>端點路由
 
-ASP.NET Core 2.2 使用新的「端點路由」  系統來改善要求的分派。 其變更包括新的連結產生 API 成員和路由參數轉換器。
+ASP.NET Core 2.2 使用新的「端點路由」系統來改善要求的分派。 其變更包括新的連結產生 API 成員和路由參數轉換器。
 
 如需詳細資訊，請參閱下列資源：
 
 * [Endpoint routing in 2.2](https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/) (2.2 中的端點路由)
-* [路由參數轉換器](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (請參閱＜Routing＞(路由)  一節)
+* [路由參數轉換器](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (請參閱＜Routing＞(路由) 一節)
 * [IRouter 路由與端點路由之間的差異](xref:fundamentals/routing?view=aspnetcore-2.2#differences-from-earlier-versions-of-routing)
 
 ## <a name="health-checks"></a>健康狀態檢查
@@ -74,11 +76,11 @@ HTTP/2 是 HTTP 通訊協定的主要版本。 一些值得注意的 HTTP/2 功�
 
 如需詳細資訊，請參閱 [IIS 的同處理序裝載](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model)。
 
-## <a name="signalr-java-client"></a>SignalR Java 用戶端
+## <a name="opno-locsignalr-java-client"></a>SignalR JAVA 用戶端
 
-ASP.NET Core 2.2 引進適用於 SignalR 的 Java 用戶端。 此用戶端支援從 Java 程式碼連線到 ASP.NET Core SignalR 伺服器，包括 Android 應用程式。
+ASP.NET Core 2.2 引進了適用于 SignalR的 JAVA 用戶端。 此用戶端支援從 JAVA 程式碼連接到 ASP.NET Core 的 SignalR 伺服器，包括 Android 應用程式。
 
-如需詳細資訊，請參閱 [ASP.NET Core SignalR Java 用戶端](https://docs.microsoft.com/aspnet/core/signalr/java-client?view=aspnetcore-2.2)。
+如需詳細資訊，請參閱[ASP.NET Core SignalR JAVA 用戶端](https://docs.microsoft.com/aspnet/core/signalr/java-client?view=aspnetcore-2.2)。
 
 ## <a name="cors-improvements"></a>CORS 改善
 

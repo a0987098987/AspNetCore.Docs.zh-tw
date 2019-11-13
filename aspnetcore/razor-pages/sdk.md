@@ -6,13 +6,15 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 08/23/2019
+no-loc:
+- Blazor
 uid: razor-pages/sdk
-ms.openlocfilehash: 606d2bdca3fa4fb1c81df73ac697d2175c3ab633
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 2fbdf95d02d7918236981c7fee8ebcbedf5c55e1
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72334029"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963255"
 ---
 # <a name="aspnet-core-razor-sdk"></a>ASP.NET Core Razor SDK
 
@@ -20,7 +22,7 @@ ms.locfileid: "72334029"
 
 ## <a name="overview"></a>總覽
 
-@No__t_0 包含 `Microsoft.NET.Sdk.Razor` MSBuild SDK （Razor SDK）。 Razor SDK：
+[!INCLUDE[](~/includes/2.1-SDK.md)] 包含 `Microsoft.NET.Sdk.Razor` MSBuild SDK （Razor SDK）。 Razor SDK：
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -72,7 +74,7 @@ Razor SDK 包含 `Content` 專案，其中 `Include` 屬性設定為 `**\*.cshtm
   * `Microsoft.AspNetCore.Mvc.Razor.Extensions`
   * `Microsoft.AspNetCore.Mvc.Razor`
     
-  @No__t_0 套件會提供專案的 Razor 編譯工作和目標。
+  `Microsoft.AspNetCore.Razor.Design` 套件會提供專案的 Razor 編譯工作和目標。
 
   `Microsoft.AspNetCore.Mvc` 中包含上述套件。 下列標記顯示的專案檔會使用 Razor SDK 來建立 ASP.NET Core Razor Pages 應用程式的 Razor 檔案：
     
@@ -83,7 +85,7 @@ Razor SDK 包含 `Content` 專案，其中 `Include` 屬性設定為 `**\*.cshtm
 ::: moniker range="= aspnetcore-2.1"
 
 > [!WARNING]
-> @No__t_0 和 `Microsoft.AspNetCore.Mvc.Razor.Extensions` 套件都包含在[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)中。 不過，無版本的 `Microsoft.AspNetCore.App` 套件參考會提供應用程式的中繼套件，其中不包含最新版本的 `Microsoft.AspNetCore.Razor.Design`。 專案必須參考一致版本的 `Microsoft.AspNetCore.Razor.Design` （或 `Microsoft.AspNetCore.Mvc`），才會包含 Razor 的最新組建時間修正程式。 如需詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/Razor/issues/2553)。
+> `Microsoft.AspNetCore.Razor.Design` 和 `Microsoft.AspNetCore.Mvc.Razor.Extensions` 套件都包含在[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)中。 不過，無版本的 `Microsoft.AspNetCore.App` 套件參考會提供應用程式的中繼套件，其中不包含最新版本的 `Microsoft.AspNetCore.Razor.Design`。 專案必須參考一致版本的 `Microsoft.AspNetCore.Razor.Design` （或 `Microsoft.AspNetCore.Mvc`），才會包含 Razor 的最新組建時間修正程式。 如需詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/Razor/issues/2553)。
 
 ::: moniker-end
 

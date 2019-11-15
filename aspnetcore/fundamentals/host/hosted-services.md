@@ -5,14 +5,14 @@ description: 了解如何在 ASP.NET Core 中使用託管服務實作背景工�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/26/2019
+ms.date: 11/14/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: c1fbb5ae8ffc4ee506f42df6a4cbbe845b2b903d
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 0fdf503e4a5f6f73d5488261707180cfb5967492
+ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333663"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74115949"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
@@ -28,26 +28,27 @@ By [Luke Latham](https://github.com/guardrex)和[Jeow Li Huan](https://github.co
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-範例應用程式有兩個版本：
-
-* Web 主機 &ndash; Web 主機對於裝載 Web 應用程式非常有用。 本主題中顯示的範例程式碼是來自 Web 主機版本的範例。 如需詳細資訊，請參閱 [Web 主機](xref:fundamentals/host/web-host)主題。
-* 泛型主機 &ndash; 泛型主機是 ASP.NET Core 2.1 的新功能。 如需詳細資訊，請參閱[泛型主機](xref:fundamentals/host/generic-host)主題。
-
 ## <a name="worker-service-template"></a>背景工作服務範本
 
-ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式的起點。 使用範本作為裝載服務應用程式的基礎：
+ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式的起點。 從背景工作角色服務範本建立的應用程式會在其專案檔中指定背景工作角色 SDK：
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+```
+
+使用範本作為裝載服務應用程式的基礎：
 
 [!INCLUDE[](~/includes/worker-template-instructions.md)]
 
----
-
 ## <a name="package"></a>封裝
 
-針對 ASP.NET Core 應用程式，會隱含地新增對[Microsoft Extensions](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)的套件參考。
+以背景工作角色服務範本為基礎的應用程式會使用 `Microsoft.NET.Sdk.Worker` SDK，並具有對[Microsoft Extensions. 裝載](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)封裝的明確套件參考。 例如，請參閱範例應用程式的專案檔（*BackgroundTasksSample .csproj*）。
+
+若是使用 `Microsoft.NET.Sdk.Web` SDK 的 web 應用程式，則會隱含地從共用架構參考[Microsoft Extensions. 裝載](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)套件。 應用程式的專案檔中不需要明確的套件參考。
 
 ## <a name="ihostedservice-interface"></a>IHostedService 介面
 
-@No__t_0 介面會針對主機所管理的物件定義兩種方法：
+<xref:Microsoft.Extensions.Hosting.IHostedService> 介面會針對主機所管理的物件定義兩種方法：
 
 * [StartAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*) &ndash; `StartAsync` 包含啟動背景工作的邏輯。 *在之前*呼叫 `StartAsync`：
 
@@ -125,7 +126,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 範圍背景工作服務包含背景工作的邏輯。 在以下範例中：
 
 * 服務是非同步。 `DoWork` 方法會傳回 `Task`。 基於示範目的，`DoWork` 方法會等待10秒的延遲。
-* @No__t_0 會插入服務中。
+* <xref:Microsoft.Extensions.Logging.ILogger> 會插入服務中。
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ScopedProcessingService.cs?name=snippet1)]
 
@@ -145,7 +146,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 在下列 `QueueHostedService` 範例中：
 
-* @No__t_0 方法會傳回 `Task`，在 `ExecuteAsync` 中等待。
+* `BackgroundProcessing` 方法會傳回 `Task`，在 `ExecuteAsync`中等待。
 * 佇列中的背景工作會在 `BackgroundProcessing` 中進行清除作業並執行。
 * 在 `StopAsync` 中停止服務之前，會等待工作專案。
 
@@ -153,7 +154,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 每當在輸入裝置上選取 `w` 金鑰時，`MonitorLoop` 服務就會處理託管服務的佇列工作：
 
-* @No__t_0 會插入 `MonitorLoop` 服務中。
+* `IBackgroundTaskQueue` 會插入 `MonitorLoop` 服務中。
 * 呼叫 `IBackgroundTaskQueue.QueueBackgroundWorkItem` 以將工作專案排入佇列。
 * 工作專案會模擬長時間執行的背景工作：
   * 會執行三個5秒的延遲（`Task.Delay`）。
@@ -176,11 +177,6 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 * 以循序方式執行的排入佇列背景工作。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
-
-範例應用程式有兩個版本：
-
-* Web 主機 &ndash; Web 主機對於裝載 Web 應用程式非常有用。 本主題中顯示的範例程式碼是來自 Web 主機版本的範例。 如需詳細資訊，請參閱 [Web 主機](xref:fundamentals/host/web-host)主題。
-* 泛型主機 &ndash; 泛型主機是 ASP.NET Core 2.1 的新功能。 如需詳細資訊，請參閱[泛型主機](xref:fundamentals/host/generic-host)主題。
 
 ## <a name="package"></a>封裝
 

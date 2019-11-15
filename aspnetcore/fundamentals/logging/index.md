@@ -1,20 +1,20 @@
 ---
-title: .NET Core 與 ASP.NET Core 中的記錄
+title: 登入 .NET Core 與 ASP.NET Core
 author: rick-anderson
 description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提供的記錄架構。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 11/13/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 2cb19d251ad69ebd7d18480c14857e948c69b747
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: eda5c9c0372e47f5670cf097b5db80ec227bcb47
+ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73659964"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74115961"
 ---
-# <a name="logging-in-net-core-and-aspnet-core"></a>.NET Core 與 ASP.NET Core 中的記錄
+# <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Steve Smith](https://ardalis.com/)
 
@@ -892,7 +892,7 @@ ASP.NET Core 隨附下列提供者：
 
 * [主控台](#console-provider)
 * [偵錯](#debug-provider)
-* [EventSource](#eventsource-provider)
+* [EventSource](#event-source-provider)
 * [EventLog](#windows-eventlog-provider)
 * [TraceSource](#tracesource-provider)
 * [AzureAppServicesFile](#azure-app-service-provider)
@@ -925,15 +925,121 @@ dotnet run
 logging.AddDebug();
 ```
 
-### <a name="eventsource-provider"></a>EventSource 提供者
+### <a name="event-source-provider"></a>事件來源提供者
 
-針對以 ASP.NET Core 1.1.0 或更新版本為目標的應用程式，[Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource) 提供者套件可以實作事件追蹤。 在 Windows 上，它會使用 [ETW](https://msdn.microsoft.com/library/windows/desktop/bb968803)。 提供者可以跨平台，但目前沒有適用於 Linux 或 macOS 的事件收集和顯示工具。
+然後，會將名稱為 `Microsoft-Extensions-Logging`的事件來源跨平臺寫入至[記錄 EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource)提供者套件。 在 Windows 上，提供者會使用[ETW](https://msdn.microsoft.com/library/windows/desktop/bb968803)。
 
 ```csharp
 logging.AddEventSourceLogger();
 ```
 
-收集及檢視記錄的一個好方法是使用 [PerfView 公用程式](https://github.com/Microsoft/perfview)。 此外還有一些其他工具可檢視 ETW 記錄，但 PerfView 提供處理 ASP.NET Core 所發出 ETW 事件的最佳體驗。
+呼叫 `CreateDefaultBuilder` 來建立主機時，會自動新增事件來源提供者。
+
+::: moniker range=">= aspnetcore-3.0"
+
+#### <a name="dotnet-trace-tooling"></a>dotnet 追蹤工具
+
+[Dotnet 追蹤](/dotnet/core/diagnostics/dotnet-trace)工具是一種跨平臺 CLI 全域工具，可讓您收集執行中進程的 .net Core 追蹤。 此工具會使用 <xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource>收集 <xref:Microsoft.Extensions.Logging.EventSource> 提供者資料。
+
+使用下列命令安裝 dotnet 追蹤工具：
+
+```dotnetcli
+dotnet tool install --global dotnet-trace
+```
+
+使用 dotnet 追蹤工具，從應用程式收集追蹤：
+
+1. 如果應用程式未使用 `CreateDefaultBuilder`建立主機，請將[事件來源提供者](#event-source-provider)新增至應用程式的記錄設定。
+
+1. 使用 `dotnet run` 命令執行應用程式。
+
+1. 判斷 .NET Core 應用程式的處理序識別碼（PID）：
+
+   * 在 Windows 上，請使用下列其中一種方法：
+     * 工作管理員（Ctrl + Alt + Del）
+     * [tasklist 命令](/windows-server/administration/windows-commands/tasklist)
+     * [取得進程 Powershell 命令](/powershell/module/microsoft.powershell.management/get-process)
+   * 在 Linux 上，請使用[pidof 命令](https://refspecs.linuxfoundation.org/LSB_5.0.0/LSB-Core-generic/LSB-Core-generic/pidof.html)。
+
+   尋找與應用程式元件同名之進程的 PID。
+
+1. 執行 `dotnet trace` 命令。
+
+   一般命令語法：
+
+   ```dotnetcli
+   dotnet trace collect -p {PID} 
+       --providers Microsoft-Extensions-Logging:{Keyword}:{Event Level}
+           :FilterSpecs=\"
+               {Logger Category 1}:{Event Level 1};
+               {Logger Category 2}:{Event Level 2};
+               ...
+               {Logger Category N}:{Event Level N}\"
+   ```
+
+   使用 PowerShell 命令 shell 時，請以單引號括住 `--providers` 值（`'`）：
+
+   ```dotnetcli
+   dotnet trace collect -p {PID} 
+       --providers 'Microsoft-Extensions-Logging:{Keyword}:{Event Level}
+           :FilterSpecs=\"
+               {Logger Category 1}:{Event Level 1};
+               {Logger Category 2}:{Event Level 2};
+               ...
+               {Logger Category N}:{Event Level N}\"'
+   ```
+
+   在非 Windows 平臺上，加入 `-f speedscope` 選項，將輸出追蹤檔案的格式變更為 `speedscope`。
+
+   | 關鍵字 | 描述 |
+   | :-----: | ----------- |
+   | 1       | 記錄有關 `LoggingEventSource`的中繼事件。 不會從 `ILogger`記錄事件）。 |
+   | 2       | 在呼叫 `ILogger.Log()` 時開啟 `Message` 事件。 以程式設計方式（未格式化）提供資訊。 |
+   | 4       | 在呼叫 `ILogger.Log()` 時開啟 `FormatMessage` 事件。 提供資訊的格式化字串版本。 |
+   | 8       | 在呼叫 `ILogger.Log()` 時開啟 `MessageJson` 事件。 提供引數的 JSON 標記法。 |
+
+   | 事件層級 | 描述     |
+   | :---------: | --------------- |
+   | 0           | `LogAlways`     |
+   | 1           | `Critical`      |
+   | 2           | `Error`         |
+   | 3           | `Warning`       |
+   | 4           | `Informational` |
+   | 5           | `Verbose`       |
+
+   `{Logger Category}` 和 `{Event Level}` 的 `FilterSpecs` 專案表示其他記錄篩選準則。 以分號（`;`）分隔 `FilterSpecs` 專案。
+
+   使用 Windows 命令 shell 的範例（`--providers` 值周圍**沒有**單引號）：
+
+   ```dotnetcli
+   dotnet trace collect -p {PID} --providers Microsoft-Extensions-Logging:4:2:FilterSpecs=\"Microsoft.AspNetCore.Hosting*:4\"
+   ```
+
+   上述命令會啟用：
+
+   * 事件來源記錄器，用來產生錯誤（`2`）的格式化字串（`4`）。
+   * `Microsoft.AspNetCore.Hosting` 記錄在 `Informational` 記錄層級（`4`）。
+
+1. 按 Enter 鍵或 Ctrl + C 來停止 dotnet 追蹤工具。
+
+   追蹤會以名稱*nettrace*儲存在執行 `dotnet trace` 命令的資料夾中。
+
+1. 使用[Perfview](#perfview)開啟追蹤。 開啟*nettrace*檔案，並流覽追蹤事件。
+
+如需詳細資訊，請參閱:
+
+* [效能分析公用程式追蹤（dotnet-追蹤）](/dotnet/core/diagnostics/dotnet-trace) （.net Core 檔）
+* [效能分析公用程式追蹤（dotnet 追蹤）](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md) （dotnet/診斷 GitHub 存放庫檔）
+* [LoggingEventSource 類別](xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource)（.Net API 瀏覽器）
+* <xref:System.Diagnostics.Tracing.EventLevel>
+* [LoggingEventSource 參考來源（3.0）](https://github.com/aspnet/Extensions/blob/release/3.0/src/Logging/Logging.EventSource/src/LoggingEventSource.cs) &ndash; 若要取得不同版本的參考來源，請將分支變更為 `release/{Version}`，其中 `{Version}` 是所需 ASP.NET Core 的版本。
+* [Perfview](#perfview) &ndash; 用於查看事件來源追蹤。
+
+#### <a name="perfview"></a>Perfview
+
+::: moniker-end
+
+使用[PerfView 公用程式](https://github.com/Microsoft/perfview)來收集及查看記錄。 此外還有一些其他工具可檢視 ETW 記錄，但 PerfView 提供處理 ASP.NET Core 所發出 ETW 事件的最佳體驗。
 
 若要設定 PerfView 以收集此提供者所記錄的事件，請將字串 `*Microsoft-Extensions-Logging` 新增至 [其他提供者] 清單 (請勿遺漏字串開頭的星號)。
 

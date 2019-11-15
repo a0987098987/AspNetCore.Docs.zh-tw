@@ -324,7 +324,7 @@ ASP.NET Core 3.0 現在會使用 <xref:System.Text.Json> JSON 序列化的預設
 
 ## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 支援 web Api 和 Spa 的驗證和授權
 
-ASP.NET Core 3.0 使用 Web API 授權的支援，在單一頁面應用程式（Spa）中提供驗證。 用於驗證和儲存使用者的 ASP.NET Core 身分識別會與[IdentityServer4](https://identityserver.io/)結合，以執行 Open ID Connect。
+ASP.NET Core 3.0 使用 Web API 授權的支援，在單一頁面應用程式（SPA）中提供驗證。 用於驗證和儲存使用者的 ASP.NET Core 身分識別會與[IdentityServer4](https://identityserver.io/)結合，以執行 Open ID Connect。
 
 IdentityServer4 是適用于 ASP.NET Core 3.0 的 OpenID Connect 和 OAuth 2.0 架構。 它會啟用下列安全性功能：
 
@@ -340,8 +340,8 @@ IdentityServer4 是適用于 ASP.NET Core 3.0 的 OpenID Connect 和 OAuth 2.0 �
 憑證驗證需要：
 
 * 正在設定伺服器以接受憑證。
-* 在 `Startup.Configure`中新增驗證中介軟體。
-* 在 `Startup.ConfigureServices`中新增憑證驗證服務。
+* 在 `Startup.Configure` 中新增驗證中介軟體。
+* 在 `Startup.ConfigureServices` 中新增憑證驗證服務。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -386,9 +386,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 主機需求：
 
-* Windows 主機必須將[服務主體名稱](/windows/win32/ad/service-principal-names)（spn）新增至裝載應用程式的使用者帳戶。
+* Windows 主機必須將[服務主體名稱](/windows/win32/ad/service-principal-names)（SPN）新增至裝載應用程式的使用者帳戶。
 * Linux 和 macOS 機器必須加入網域。
-  * 必須為 web 進程建立 Spn。
+  * 必須為 web 進程建立 SPN。
   * 必須在主機電腦上產生和設定[Keytab](https://blogs.technet.microsoft.com/pie/2018/01/03/all-you-need-to-know-about-keytab-files/)檔案。
 
 如需詳細資訊，請參閱<xref:security/authentication/windowsauth>。
@@ -410,7 +410,7 @@ ASP.NET Core 3.0 範本會使用 <xref:fundamentals/host/generic-host>。 先前
 
 ### <a name="host-configuration"></a>主機組態
 
-在 ASP.NET Core 3.0 發行之前，會針對 Web 主機的主機設定載入前面加上 `ASPNETCORE_` 的環境變數。 在3.0 中，`AddEnvironmentVariables` 是用來載入前面加上 `DOTNET_` 的環境變數，以使用 `CreateDefaultBuilder`進行主機設定。
+在 ASP.NET Core 3.0 發行之前，會針對 Web 主機的主機設定載入前面加上 `ASPNETCORE_` 的環境變數。 在 3.0 中，`AddEnvironmentVariables` 是用來載入前面加上 `DOTNET_` 的環境變數，以使用 `CreateDefaultBuilder`進行主機設定。
 
 ### <a name="changes-to-startup-constructor-injection"></a>啟動函式插入的變更
 
@@ -502,7 +502,7 @@ app.UseEndpoints(endpoints =>
 
 在舊版的 ASP.NET Core 中，當部署到 Azure Linux 或 IIS 以外的任何反向 proxy 後方時，呼叫 <xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*> 和 <xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*> 會有問題。 先前版本的修正已記載于[轉送 Linux 和非 IIS 反向 proxy 的配置](xref:host-and-deploy/proxy-load-balancer#forward-the-scheme-for-linux-and-non-iis-reverse-proxies)中。
 
-此案例已在 ASP.NET Core 3.0 中修正。 當 `ASPNETCORE_FORWARDEDHEADERS_ENABLED` 環境變數設定為 `true`時，主機會啟用[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options)。 在我們的容器映射中，`ASPNETCORE_FORWARDEDHEADERS_ENABLED` 設定為 `true`。
+此案例已在 ASP.NET Core 3.0 中修正。 當 `ASPNETCORE_FORWARDEDHEADERS_ENABLED` 環境變數設定為 `true` 時，主機會啟用[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options)。 在我們的容器映射中，`ASPNETCORE_FORWARDEDHEADERS_ENABLED` 設定為 `true`。
 
 ## <a name="performance-improvements"></a>效能改善
 

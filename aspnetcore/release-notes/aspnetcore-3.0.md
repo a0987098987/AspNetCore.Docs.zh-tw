@@ -1,5 +1,5 @@
 ---
-title: 3\.0 ASP.NET Core 的新功能
+title: 3.0 ASP.NET Core 的新功能
 author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.0 中的新功能。
 ms.author: riande
@@ -81,9 +81,9 @@ ASP.NET Core 3.0 中的 gRPC 功能包括：
 
 ## SignalR
 
-如需遷移指示，請參閱[更新 SignalR 程式碼](xref:migration/22-to-30#signalr)。 SignalR 現在會使用 `System.Text.Json` 來序列化/還原序列化 JSON 訊息。 如需還原以 `Newtonsoft.Json`為基礎之序列化程式的指示，請參閱[切換至 Newtonsoft。](xref:migration/22-to-30#switch-to-newtonsoftjson)
+如需遷移指示，請參閱[更新 SignalR 程式碼](xref:migration/22-to-30#signalr)。 SignalR 現在會使用 `System.Text.Json` 來序列化/還原序列化 JSON 訊息。 如需還原以 `Newtonsoft.Json` 為基礎之序列化程式的指示，請參閱[切換至 Newtonsoft。](xref:migration/22-to-30#switch-to-newtonsoftjson)
 
-在 SignalR的 JavaScript 和 .NET 用戶端中，已加入自動重新連接的支援。 根據預設，用戶端會嘗試立即重新連線，並在2、10和30秒後重試（如有必要）。 如果用戶端成功重新連接，則會收到新的連線識別碼。 自動重新連線是加入宣告的：
+在 SignalR 的 JavaScript 和 .NET 用戶端中，已加入自動重新連接的支援。 根據預設，用戶端會嘗試立即重新連線，並在 2、10 和 30 秒後重試（如有必要）。 如果用戶端成功重新連接，則會收到新的連線識別碼。 自動重新連線是加入宣告的：
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -400,7 +400,7 @@ Web UI 範本（Razor Pages、具有控制器和 views 的 MVC）已移除下列
 * Cookie 同意 UI 已不再包含在內。 若要在 ASP.NET Core 3.0 範本產生的應用程式中啟用 cookie 同意功能，請參閱 <xref:security/gdpr>。
 * 腳本和相關的靜態資產現在會當做本機檔案來參考，而不是使用 Cdn。 如需詳細資訊，請參閱[腳本和相關靜態資產現在會當做本機檔案參考，而不是根據目前的環境使用 cdn （aspnet/AspNetCore #14350）](https://github.com/aspnet/AspNetCore.Docs/issues/14350)。
 
-「角度」範本已更新為使用「角度8」。
+Angular 範本已更新為使用 Angular 8。
 
 根據預設，Razor 類別庫（RCL）範本預設為 Razor 元件開發。 Visual Studio 中的新範本選項會提供頁面和視圖的範本支援。 從命令 shell 中的範本建立 RCL 時，請傳遞 `--support-pages-and-views` 選項（`dotnet new razorclasslib --support-pages-and-views`）。
 

@@ -20,7 +20,7 @@ ms.locfileid: "72334235"
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-`RazorPagesMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
+`RazorPagesMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 [Startup.cs](xref:fundamentals/dependency-injection) 的 `ConfigureServices` 方法中，以*相依性插入*容器登錄資料庫內容：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -52,7 +52,7 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 資料庫預設會在 `C:\Users\<user>\` 目錄中建立 `*.mdf` 檔案。
+LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 資料庫預設會在 `*.mdf` 目錄中建立 `C:\Users\<user>\` 檔案。
 
 <a name="ssox"></a>
 * 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
@@ -80,7 +80,7 @@ LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發�
 
 ## <a name="seed-the-database"></a>植入資料庫
 
-使用下列程式碼，在 *Models* 資料夾中建立名為 `SeedData` 的新類別：
+使用下列程式碼，在 `SeedData`Models*資料夾中建立名為* 的新類別：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
@@ -141,7 +141,7 @@ if (context.Movie.Any())
 ## <a name="additional-resources"></a>其他資源
 
 > [!div class="step-by-step"]
-> [上一步：包含 Scaffold 的 Razor Pages](xref:tutorials/razor-pages/page)
+> [上一步：包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages/page)
 > [下一步：更新頁面](xref:tutorials/razor-pages/da1)
 
 ::: moniker-end
@@ -150,7 +150,7 @@ if (context.Movie.Any())
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-`RazorPagesMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
+`RazorPagesMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 [Startup.cs](xref:fundamentals/dependency-injection) 的 `ConfigureServices` 方法中，以*相依性插入*容器登錄資料庫內容：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -164,7 +164,7 @@ if (context.Movie.Any())
 
 如需 `ConfigureServices` 中所用之方法的詳細資訊，請參閱：
 
-* 適用於 `CookiePolicyOptions` 的 [ASP.NET Core 中的 EU 一般資料保護規定 (GDPR) 支援](xref:security/gdpr)。
+* 適用於 [ 的 ](xref:security/gdpr)ASP.NET Core 中的 EU 一般資料保護規定 (GDPR) 支援`CookiePolicyOptions`。
 * [SetCompatibilityVersion](xref:mvc/compatibility-version)
 
 ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本機開發，它會從 *appsettings.json* 檔案取得連接字串。
@@ -191,7 +191,7 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 資料庫預設會在 `C:/Users/<user/>` 目錄中建立 `*.mdf` 檔案。
+LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 資料庫預設會在 `*.mdf` 目錄中建立 `C:/Users/<user/>` 檔案。
 
 <a name="ssox"></a>
 * 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
@@ -224,7 +224,7 @@ LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發�
 
 ## <a name="seed-the-database"></a>植入資料庫
 
-使用下列程式碼，在 *Models* 資料夾中建立名為 `SeedData` 的新類別：
+使用下列程式碼，在 `SeedData`Models*資料夾中建立名為* 的新類別：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedData.cs?name=snippet_1)]
 
@@ -297,7 +297,7 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 * [這個教學課程的 YouTube 版本](https://youtu.be/A_5ff11sDHY)
 
 > [!div class="step-by-step"]
-> [上一步：包含 Scaffold 的 Razor Pages](xref:tutorials/razor-pages/page)
+> [上一步：包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages/page)
 > [下一步：更新頁面](xref:tutorials/razor-pages/da1)
 
 ::: moniker-end

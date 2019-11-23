@@ -59,9 +59,9 @@ ms.locfileid: "73034024"
 
 針對學生註冊日期，所有頁面目前都會同時顯示日期和一天當中的時間，雖然只要日期才是重要項目。 透過使用資料註解屬性，您便可以只透過單一程式碼變更來修正每個顯示資料頁面中的顯示格式。 
 
-[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。`DataType` 屬性也可以讓應用程式自動提供類型特有的功能。 例如:
+[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。`DataType` 屬性也可以讓應用程式自動提供類型特有的功能。 例如：
 
-* `DataType.EmailAddress` 會自動建立 `mailto:` 連結。
+* `mailto:` 會自動建立 `DataType.EmailAddress` 連結。
 * `DataType.Date` 在大多數的瀏覽器中都會提供日期選取器。
 
 `DataType` 屬性會發出 HTML5 `data-` (發音為 data dash) 屬性。 `DataType` 屬性不會提供驗證。
@@ -124,7 +124,7 @@ public string FirstMidName { get; set; }
 
 建立資料庫時，模型上的屬性名稱會用來作為資料行名稱 (使用 `Column` 屬性時除外)。 `Student` 模型針對名字欄位使用 `FirstMidName`，因為欄位中可能也會包含中間名。
 
-透過 `[Column]` 屬性，資料模型中 `Student.FirstMidName` 會對應到 `Student` 資料表的 `FirstName` 資料行。 新增 `Column` 屬性會變更支援 `SchoolContext` 的模型。 支援 `SchoolContext` 的模型不再符合資料庫。 這種不一致會透過在本教學課程中稍後部分新增移轉來解決。
+透過 `[Column]` 屬性，資料模型中 `Student.FirstMidName` 會對應到 `FirstName` 資料表的 `Student` 資料行。 新增 `Column` 屬性會變更支援 `SchoolContext` 的模型。 支援 `SchoolContext` 的模型不再符合資料庫。 這種不一致會透過在本教學課程中稍後部分新增移轉來解決。
 
 ### <a name="the-required-attribute"></a>Required 屬性
 
@@ -132,7 +132,7 @@ public string FirstMidName { get; set; }
 [Required]
 ```
 
-`Required` 屬性會讓名稱屬性成為必要欄位。 針對不可為 Null 型別的實值型別 (例如 `DateTime`、`int` 和 `double`)，`Required` 屬性並非必要項目。 不可為 Null 的類型會自動視為必要欄位。
+`Required` 屬性會讓名稱屬性成為必要欄位。 針對不可為 Null 型別的實值型別 (例如 `Required`、`DateTime` 和 `int`)，`double` 屬性並非必要項目。 不可為 Null 的類型會自動視為必要欄位。
 
 `Required` 屬性必須搭配 `MinimumLength` 使用，才能強制執行 `MinimumLength`。
 
@@ -301,7 +301,7 @@ public int InstructorID { get; set; }
 
 `Course` 實體具有外部索引鍵 (FK) 屬性`DepartmentID`。 `DepartmentID` 會指向相關的 `Department` 實體。 `Course` 實體具有一個 `Department` 導覽屬性。
 
-若模型針對相關實體已有導覽屬性，則 EF Core 針對資料模型便不需要外部索引鍵屬性。 EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 但是，在資料模型中明確包含 FK (外部索引鍵) 可讓更新更簡單且更有效率。 例如，假設有一個模型，當中「不」包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
+若模型針對相關實體已有導覽屬性，則 EF Core 針對資料模型便不需要外部索引鍵屬性。 EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 但是，在資料模型中明確包含 FK (外部索引鍵) 可讓更新更簡單且更有效率。 例如，假設有一個模型，當中「不」`DepartmentID`*包含*  FK 屬性。 當擷取課程實體以進行編輯時：
 
 * 若 `Department` 屬性未明確載入，則其為 Null。
 * 若要更新課程實體，必須先擷取 `Department` 實體。
@@ -453,7 +453,7 @@ public Student Student { get; set; }
 
 Instructor 對 Courses 的多對多關聯性需要聯結資料表，而該聯結資料表的實體為 CourseAssignment。
 
-![講師-課程 m:M](complex-data-model/_static/courseassignment.png)
+![講師對課程 m:M](complex-data-model/_static/courseassignment.png)
 
 通常會將聯結實體命名為 `EntityName1EntityName2`。 例如，使用此模式的 Instructor 對 Courses 聯結資料表將會是 `CourseInstructor`。 不過，我們建議使用可描述關聯性的名稱。
 
@@ -593,7 +593,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [套件管理員主控台] (PMC) 中，執行下列命令：
+* 在套件管理員主控台 (PMC) 中，執行下列命令：
 
   ```powershell
   Drop-Database
@@ -693,7 +693,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [套件管理員主控台] (PMC) 中，執行下列命令：
+* 在套件管理員主控台 (PMC) 中，執行下列命令：
 
   ```powershell
   Update-Database
@@ -734,7 +734,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 ![實體圖表](complex-data-model/_static/diagram.png)
 
-若您遇到無法解決的問題，請下載[完整應用程式](
+若您遭遇到無法解決的問題，請下載[完整應用程式](
 https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
 
 ## <a name="customize-the-data-model-with-attributes"></a>使用屬性自訂資料模型
@@ -749,9 +749,9 @@ https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。`DataType` 屬性也可以讓應用程式自動提供類型特有的功能。 例如:
+[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。`DataType` 屬性也可以讓應用程式自動提供類型特有的功能。 例如：
 
-* `DataType.EmailAddress` 會自動建立 `mailto:` 連結。
+* `mailto:` 會自動建立 `DataType.EmailAddress` 連結。
 * `DataType.Date` 在大多數的瀏覽器中都會提供日期選取器。
 
 `DataType` 屬性會發出 HTML 5 `data-` (發音為 data dash) 屬性，可讓 HTML 5 瀏覽器取用。 `DataType` 屬性不會提供驗證。
@@ -817,7 +817,7 @@ https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
-經過上述變更之後，應用程式中的 `Student.FirstMidName` 會對應到 `Student` 資料表的 `FirstName` 資料行。
+經過上述變更之後，應用程式中的 `Student.FirstMidName` 會對應到 `FirstName` 資料表的 `Student` 資料行。
 
 新增 `Column` 屬性會變更支援 `SchoolContext` 的模型。 支援 `SchoolContext` 的模型不再符合資料庫。 若應用程式在套用移轉之前執行，便會產生下列例外狀況：
 
@@ -876,7 +876,7 @@ Please review the migration for accuracy.
 
 ### <a name="the-required-attribute"></a>Required 屬性
 
-`Required` 屬性會讓名稱屬性成為必要欄位。 針對不可為 Null 的類型，例如實值型別 (`DateTime`、`int`、`double` 等) 等，`Required` 屬性是不需要的。 不可為 Null 的類型會自動視為必要欄位。
+`Required` 屬性會讓名稱屬性成為必要欄位。 針對不可為 Null 的類型，例如實值型別 (`Required`、`DateTime`、`int` 等) 等，`double` 屬性是不需要的。 不可為 Null 的類型會自動視為必要欄位。
 
 `Required` 屬性可由 `StringLength` 屬性中的最小長度參數取代：
 
@@ -965,7 +965,7 @@ public int InstructorID { get; set; }
 
 ### <a name="the-instructor-navigation-property"></a>Instructor 導覽屬性
 
-`Instructor` 實體的 `OfficeAssignment` 導覽屬性可為 Null，因為：
+`OfficeAssignment` 實體的 `Instructor` 導覽屬性可為 Null，因為：
 
 * 參考型別 (例如類別可為 Null)。
 * 講師可能沒有辦公室指派。
@@ -998,7 +998,7 @@ public Instructor Instructor { get; set; }
 
 當資料模型針對相關實體有一個導覽屬性時，EF Core 不需要針對該模型具備 FK 屬性。
 
-EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
+EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」`DepartmentID`*包含*  FK 屬性。 當擷取課程實體以進行編輯時：
 
 * 若沒有明確載入，`Department` 實體將為 Null。
 * 若要更新課程實體，必須先擷取 `Department` 實體。
@@ -1156,7 +1156,7 @@ public Student Student { get; set; }
 
 ### <a name="instructor-to-courses"></a>講師-課程
 
-![講師-課程 m:M](complex-data-model/_static/courseassignment.png)
+![講師對課程 m:M](complex-data-model/_static/courseassignment.png)
 
 講師-課程多對多關聯性：
 
@@ -1288,7 +1288,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [套件管理員主控台] (PMC) 中，執行下列命令：
+在套件管理員主控台 (PMC) 中，執行下列命令：
 
 ```PMC
 Drop-Database

@@ -15,7 +15,7 @@ ms.locfileid: "71082319"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>將欄位新增至 ASP.NET Core MVC 應用程式
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 在本節中，您會使用 [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First 移轉：
 
@@ -51,7 +51,7 @@ Command ⌘ + B
 
 ------
 
-因為您已將欄位新增至 `Movie` 類別，所以需要更新繫結允許清單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `Create` 和 `Edit` 這兩個動作方法的 `[Bind]` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
+因為您已將欄位新增至 `Movie` 類別，所以需要更新繫結允許清單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `[Bind]` 和 `Create` 這兩個動作方法的 `Edit` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
 
 ```csharp
 [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")]
@@ -63,7 +63,7 @@ Command ⌘ + B
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-64)]
 
-使用 `Rating` 欄位更新 */Views/Movies/Create.cshtml*。
+使用 *欄位更新*/Views/Movies/Create.cshtml`Rating`。
 
 # <a name="visual-studio--visual-studio-for-mactabvisual-studiovisual-studio-mac"></a>[Visual Studio / Visual Studio for Mac](#tab/visual-studio+visual-studio-mac)
 
@@ -131,7 +131,7 @@ dotnet ef database update
 ---
 <!-- End of VS tabs -->
 
-執行應用程式，並驗證您可以使用 `Rating` 欄位建立/編輯/顯示電影。 您應該將 `Rating` 欄位新增至 `Edit`、`Details` 和 `Delete` 檢視範本。
+執行應用程式，並確認您可以使用 `Rating` 欄位建立/編輯/顯示電影。 您應該將 `Rating` 欄位新增至 `Edit`、`Details` 和 `Delete` 檢視範本。
 
 > [!div class="step-by-step"]
 > [上一頁](search.md)

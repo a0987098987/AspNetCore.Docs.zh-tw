@@ -1,7 +1,7 @@
 ---
 title: 將欄位新增至 ASP.NET Core 中的 Razor 頁面
 author: rick-anderson
-description: 示範如何使用 Entity Framework Core 將新欄位新增至 Razor Pages
+description: 示範如何使用 Entity Framework Core 將新欄位新增至 Razor 頁面
 ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
@@ -50,14 +50,14 @@ ms.locfileid: "72822381"
 更新下列頁面：
 
 * 將 `Rating` 欄位新增至 Delete 和 Details 頁面。
-* 使用 `Rating` 欄位更新 [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)。
+* 使用 [ 欄位更新 ](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)Create.cshtml`Rating`。
 * 將 `Rating` 欄位新增至 Edit 頁面。
 
 在更新資料庫以包含新欄位之前，應用程式無法運作。 在不更新資料庫的情況下執行應用程式會擲回 `SqlException`：
 
 `SqlException: Invalid column name 'Rating'.`
 
-@No__t_0 例外狀況是因為更新的電影模型類別與資料庫之電影資料表的架構不同。 (資料庫資料表中沒有任何 `Rating` 資料行)。
+`SqlException` 例外狀況是因為更新的電影模型類別與資料庫之電影資料表的架構不同。 (資料庫資料表中沒有任何 `Rating` 資料行)。
 
 有幾個方法可以解決這個錯誤：
 
@@ -96,9 +96,9 @@ Update-Database
 * 比較 `Movie` 模型與 `Movie` 資料庫結構描述。
 * 建立程式碼，將資料庫結構描述移轉至新模型。
 
-"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，更加實用。
+"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
 
-@No__t_0 命令會告訴架構將架構變更套用至資料庫，並保留現有的資料。
+`Update-Database` 命令會告訴架構將架構變更套用至資料庫，並保留現有的資料。
 
 <a name="ssox"></a>
 
@@ -132,7 +132,7 @@ dotnet ef database update
 
 ---
 
-執行應用程式，並驗證您可以使用 `Rating` 欄位建立/編輯/顯示電影。 若未植入資料庫，請在 `SeedData.Initialize` 方法中設定中斷點。
+執行應用程式，並確認您可以使用 `Rating` 欄位建立/編輯/顯示電影。 若未植入資料庫，請在 `SeedData.Initialize` 方法中設定中斷點。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -175,7 +175,7 @@ dotnet ef database update
 更新下列頁面：
 
 * 將 `Rating` 欄位新增至 Delete 和 Details 頁面。
-* 使用 `Rating` 欄位更新 [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml)。
+* 使用 [ 欄位更新 ](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml)Create.cshtml`Rating`。
 * 將 `Rating` 欄位新增至 Edit 頁面。
 
 在更新資料庫以包含新欄位之前，應用程式無法運作。 如果立即執行，應用程式會擲回 `SqlException`：
@@ -221,7 +221,7 @@ Update-Database
 * 比較 `Movie` 模型與 `Movie` 資料庫結構描述。
 * 建立程式碼，將資料庫結構描述移轉至新模型。
 
-"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，更加實用。
+"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
 
 `Update-Database` 命令會指示架構將結構描述變更套用至資料庫。
 
@@ -255,7 +255,7 @@ dotnet ef database update
 
 ---
 
-執行應用程式，並驗證您可以使用 `Rating` 欄位建立/編輯/顯示電影。 若未植入資料庫，請在 `SeedData.Initialize` 方法中設定中斷點。
+執行應用程式，並確認您可以使用 `Rating` 欄位建立/編輯/顯示電影。 若未植入資料庫，請在 `SeedData.Initialize` 方法中設定中斷點。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -51,15 +51,15 @@ Blazor WebAssembly 應用程式會發佈至 */BIN/RELEASE/{TARGET FRAMEWORK}/PUB
 *應用程式基底路徑*是應用程式的根 URL 路徑。 請考慮下列主要應用程式和 Blazor 應用程式：
 
 * 主要的應用程式稱為 `MyApp`：
-  * 應用程式實際位於*d： \\MyApp*。
-  * 要求會在 `https://www.contoso.com/{MYAPP RESOURCE}` 收到。
-* 名為 `CoolApp` 的 Blazor 應用程式是 `MyApp` 的子應用程式：
-  * 子應用程式實際上位於*d： \\MyApp @ no__t-2CoolApp*。
-  * 要求會在 `https://www.contoso.com/CoolApp/{COOLAPP RESOURCE}` 收到。
+  * 應用程式實際位於*d：\\MyApp*。
+  * `https://www.contoso.com/{MYAPP RESOURCE}`收到要求。
+* 稱為 `CoolApp` 的 Blazor 應用程式為 `MyApp`的子應用程式：
+  * 子應用程式實際上位於*d：\\MyApp\\CoolApp*。
+  * `https://www.contoso.com/CoolApp/{COOLAPP RESOURCE}`收到要求。
 
-若未指定 `CoolApp` 的額外設定，此案例中的子應用程式就不會知道其位於伺服器上的位置。 例如，應用程式無法對其資源建立正確的相對 Url，而不知道它位於相對 URL 路徑 `/CoolApp/`。
+若未指定 `CoolApp`的額外設定，此案例中的子應用程式就不會知道其位於伺服器上的位置。 例如，應用程式無法在不知道其位於相對 URL 路徑 `/CoolApp/`的情況下，為其資源建立正確的相對 Url。
 
-若要為 Blazor 應用程式的基底路徑 `https://www.contoso.com/CoolApp/` 提供設定，@no__t 1 標記的 `href` 屬性會設為*wwwroot/index.html*檔案中的相對根路徑：
+若要為 Blazor 應用程式的基底路徑提供設定 `https://www.contoso.com/CoolApp/`，`<base>` 標記的 `href` 屬性會設為*wwwroot/index.html*檔案中的相對根路徑：
 
 ```html
 <base href="/CoolApp/">
@@ -69,15 +69,15 @@ Blazor WebAssembly 應用程式會發佈至 */BIN/RELEASE/{TARGET FRAMEWORK}/PUB
 
 在許多裝載案例中，應用程式的相對 URL 路徑是應用程式的根目錄。 在這些情況下，應用程式的相對 URL 基底路徑是正斜線（`<base href="/" />`），這是 Blazor 應用程式的預設設定。 在其他裝載案例（例如 GitHub 頁面和 IIS 子應用程式）中，應用程式基底路徑必須設定為應用程式的伺服器相對 URL 路徑。
 
-若要設定應用程式的基底路徑，請更新 *wwwroot/index.html* 檔案 `<head>` 標籤項目內的 `<base>` 標籤。 將 `href` 屬性值設定為 `/{RELATIVE URL PATH}/` （需要尾端斜線），其中 `{RELATIVE URL PATH}` 是應用程式的完整相對 URL 路徑。
+若要設定應用程式的基底路徑，請更新 `<base>`wwwroot/index.html`<head>` 檔案 *標籤項目內的* 標籤。 將 `href` 屬性值設定為 `/{RELATIVE URL PATH}/` （需要尾端斜線），其中 `{RELATIVE URL PATH}` 是應用程式的完整相對 URL 路徑。
 
-針對具有非根相對 URL 路徑的應用程式（例如，`<base href="/CoolApp/">`），應用程式在*本機執行時*，無法找到其資源。 若要在本機開發和測試期間解決這個問題，您可以提供「基底路徑」引數，讓它在執行時符合 `<base>` 標籤的 `href` 值。 若要在本機執行應用程式時傳遞 path base 引數，請使用 `--pathbase` 選項，從應用程式的目錄執行 `dotnet run` 命令：
+針對具有非根相對 URL 路徑的應用程式（例如 `<base href="/CoolApp/">`），應用程式*在本機執行時*，無法找到其資源。 若要在本機開發和測試期間解決這個問題，您可以提供「基底路徑」引數，讓它在執行時符合 `href` 標籤的 `<base>` 值。 若要在本機執行應用程式時傳遞 path base 引數，請使用 `--pathbase` 選項，從應用程式的目錄執行 `dotnet run` 命令：
 
 ```dotnetcli
 dotnet run --pathbase=/{RELATIVE URL PATH (no trailing slash)}
 ```
 
-若應用程式的相對 URL 路徑為 `/CoolApp/` （`<base href="/CoolApp/">`），則命令為：
+針對具有 `/CoolApp/` （`<base href="/CoolApp/">`）之相對 URL 路徑的應用程式，命令為：
 
 ```dotnetcli
 dotnet run --pathbase=/CoolApp

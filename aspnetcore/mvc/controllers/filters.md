@@ -130,14 +130,14 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
   
 下列範例說明針對同步動作篩選條件呼叫篩選條件方法的順序。
 
-| 序列 | 篩選條件範圍 | 篩選條件方法 |
+| 序列 | 篩選條件範圍 | Filter 方法 |
 |:--------:|:------------:|:-------------:|
-| 1 | Global | `OnActionExecuting` |
+| 1 | 全域 | `OnActionExecuting` |
 | 2 | 控制器 | `OnActionExecuting` |
 | 3 | 方法 | `OnActionExecuting` |
 | 4 | 方法 | `OnActionExecuted` |
 | 5 | 控制器 | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| 6 | 全域 | `OnActionExecuted` |
 
 此順序顯示：
 
@@ -179,8 +179,8 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 可以藉由實作 <xref:Microsoft.AspNetCore.Mvc.Filters.IOrderedFilter> 來覆寫預設執行序列。 `IOrderedFilter` 會公開 <xref:Microsoft.AspNetCore.Mvc.Filters.IOrderedFilter.Order> 屬性，其優先順序會高於範圍以決定執行順序。 具有較低 `Order` 值的篩選條件：
 
-* 在具有較高 `Order` 值的篩選條件之前執行「之前」程式碼。
-* 在具有較高 `Order` 值的篩選條件之後執行「之後」程式碼。
+* 在具有較高  *值的篩選條件之前執行「之前」* `Order`程式碼。
+* 在具有較高  *值的篩選條件之後執行「之後」* `Order`程式碼。
 
 `Order` 屬性可以搭配建構函式參數設定：
 
@@ -190,12 +190,12 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 請考慮先前範例所示的同樣 3 個動作篩選條件。 如果控制器和全域篩選條件的 `Order` 屬性被個別設定為 1 和 2，執行順序將會反轉。
 
-| 序列 | 篩選條件範圍 | `Order` 屬性 | 篩選條件方法 |
+| 序列 | 篩選條件範圍 | `Order` 屬性 | Filter 方法 |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | 方法 | 0 | `OnActionExecuting` |
 | 2 | 控制器 | 1  | `OnActionExecuting` |
-| 3 | Global | 2  | `OnActionExecuting` |
-| 4 | Global | 2  | `OnActionExecuted` |
+| 3 | 全域 | 2  | `OnActionExecuting` |
+| 4 | 全域 | 2  | `OnActionExecuted` |
 | 5 | 控制器 | 1  | `OnActionExecuted` |
 | 6 | 方法 | 0  | `OnActionExecuted` |
 
@@ -203,7 +203,7 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 ## <a name="cancellation-and-short-circuiting"></a>取消和縮短
 
-可以設定提供給篩選條件方法之 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext> 參數上的 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext.Result> 屬性，以縮短篩選條件管線。 比方說，下列資源篩選條件可防止管線的其餘部分執行：
+可以設定提供給篩選條件方法之 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext.Result> 參數上的 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext> 屬性，以縮短篩選條件管線。 比方說，下列資源篩選條件可防止管線的其餘部分執行：
 
 <a name="short-circuiting-resource-filter"></a>
 
@@ -214,7 +214,7 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 * 最先執行，因為它是資源篩選條件，且 `AddHeader` 是動作篩選條件。
 * 縮短管線的其餘部分。
 
-因此，`SomeResource` 動作的 `AddHeader` 篩選條件永遠不會執行。 如果這兩個篩選條件都套用在動作方法層級，此行為也會相同，假設 `ShortCircuitingResourceFilter` 先執行的話。 `ShortCircuitingResourceFilter` 會因為其篩選器類型而先執行，或藉由明確使用 `Order` 屬性而先執行。
+因此，`AddHeader` 動作的 `SomeResource` 篩選條件永遠不會執行。 如果這兩個篩選條件都套用在動作方法層級，此行為也會相同，假設 `ShortCircuitingResourceFilter` 先執行的話。 `ShortCircuitingResourceFilter` 會因為其篩選器類型而先執行，或藉由明確使用 `Order` 屬性而先執行。
 
 [!code-csharp[](./filters/sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1,9)]
 
@@ -268,7 +268,7 @@ DI 會提供記錄器。 不過，請避免僅針對記錄目的建立並使用�
 
 * 不應該搭配仰賴具有非單一資料庫存留期之服務的篩選條件使用。
 
- <xref:Microsoft.AspNetCore.Mvc.ServiceFilterAttribute> 會實作 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>。 `IFilterFactory` 會公開 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> 方法來建立 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> 執行個體。 `CreateInstance` 會從 DI 載入指定的類型。
+ <xref:Microsoft.AspNetCore.Mvc.ServiceFilterAttribute> 會執行 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>。 `IFilterFactory` 會公開 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> 方法來建立 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> 執行個體。 `CreateInstance` 會從 DI 載入指定的類型。
 
 ### <a name="typefilterattribute"></a>TypeFilterAttribute
 
@@ -444,7 +444,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 * 授權篩選或資源篩選器會將管線短路。
 * 例外狀況篩選條件會產生動作結果來處理例外狀況。
 
-藉由將 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel?displayProperty=fullName> 設為 `true`，<xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuting*?displayProperty=fullName> 方法可以縮短動作結果和後續結果篩選條件的執行。 在縮短時寫入至回應物件，以避免產生空的回應。 在 `IResultFilter.OnResultExecuting` 中擲回例外狀況會：
+藉由將 <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuting*?displayProperty=fullName> 設為 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel?displayProperty=fullName>，`true` 方法可以縮短動作結果和後續結果篩選條件的執行。 在縮短時寫入至回應物件，以避免產生空的回應。 在 `IResultFilter.OnResultExecuting` 中擲回例外狀況會：
 
 * 導致無法執行動作結果和後續的篩選條件。
 * 視為失敗，而不是成功的結果。
@@ -455,7 +455,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 如果動作結果或後續的結果篩選條件擲回例外狀況，則 `ResultExecutedContext.Exception` 會被設為非 Null 值。 將 `Exception` 設為 Null 實際上會「處理」例外狀況，並且使 ASP.NET Core 稍後不會在管線中重新擲回例外狀況。 並沒有可以在處理結果篩選條件中的例外狀況時，將資料寫入回應的可靠方式。 當動作結果擲回例外狀況時，如果標頭已清除至用戶端，則沒有任何可靠的機制能傳送失敗碼。
 
-針對 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter> 而言，對 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutionDelegate> 上的 `await next` 的呼叫會執行任何後續的結果篩選條件和動作結果。 若要縮短，請將 [ResultExecutingContext.Cancel](xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel) 設定為 `true`，並且不要呼叫 `ResultExecutionDelegate`：
+針對 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter> 而言，對 `await next` 上的 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutionDelegate> 的呼叫會執行任何後續的結果篩選條件和動作結果。 若要縮短，請將 [ResultExecutingContext.Cancel](xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel) 設定為 `true`，並且不要呼叫 `ResultExecutionDelegate`：
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/MyAsyncResponseFilter.cs?name=snippet)]
 
@@ -466,7 +466,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> 和 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> 介面會宣告針對所有動作結果執行的 <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> 實作。 這包括由產生的動作結果：
 
 * 最少迴圈的授權篩選準則和資源篩選器。
-* 例外狀況篩選準則。
+* 例外狀況篩選條件。
 
 例如，下列篩選一律會執行，並會在內容交涉失敗時，為動作結果 (<xref:Microsoft.AspNetCore.Mvc.ObjectResult>) 設定「422 無法處理的實體」狀態碼：
 
@@ -474,7 +474,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 ### <a name="ifilterfactory"></a>IFilterFactory
 
-<xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory> 會實作 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>。 因此，`IFilterFactory` 執行個體可用來在篩選條件管線中任何位置作為 `IFilterMetadata` 執行個體。 當執行階段準備要叫用篩選條件時，它會嘗試將它轉換成 `IFilterFactory`。 如果該轉換成功，系統會呼叫 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> 方法來建立被叫用的 `IFilterMetadata` 執行個體。 因為在應用程式啟動時不需要明確設定精確的篩選條件管線，所以這提供了具有彈性的設計。
+<xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory> 會執行 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>。 因此，`IFilterFactory` 執行個體可用來在篩選條件管線中任何位置作為 `IFilterMetadata` 執行個體。 當執行階段準備要叫用篩選條件時，它會嘗試將它轉換成 `IFilterFactory`。 如果該轉換成功，系統會呼叫 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> 方法來建立被叫用的 `IFilterMetadata` 執行個體。 因為在應用程式啟動時不需要明確設定精確的篩選條件管線，所以這提供了具有彈性的設計。
 
 可以使用自訂屬性實作作為另一種建立篩選條件的方法，來實作 `IFilterFactory`：
 
@@ -505,7 +505,7 @@ What's a non-named attribute?
 * 不需要傳遞參數。
 * 有需要由 DI 滿足的建構函式相依性。
 
-<xref:Microsoft.AspNetCore.Mvc.TypeFilterAttribute> 會實作 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>。 `IFilterFactory` 會公開 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> 方法來建立 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> 執行個體。 `CreateInstance` 會從服務容器 (DI) 載入指定的類型。
+<xref:Microsoft.AspNetCore.Mvc.TypeFilterAttribute> 會執行 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>。 `IFilterFactory` 會公開 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> 方法來建立 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata> 執行個體。 `CreateInstance` 會從服務容器 (DI) 載入指定的類型。
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/SampleActionFilterAttribute.cs?name=snippet_TypeFilterAttribute&highlight=1,3,7)]
 

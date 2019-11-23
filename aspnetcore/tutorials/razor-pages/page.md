@@ -32,7 +32,7 @@ Razor 頁面衍生自 `PageModel`。 依照慣例，`PageModel` 衍生的類別�
 
 當針對頁面提出要求時，`OnGetAsync` 方法會將電影清單傳回 Razor 頁面。 呼叫 `OnGetAsync` 或 `OnGet` 來初始化頁面的狀態。 在此情況下，`OnGetAsync` 會取得電影清單並加以顯示。
 
-當 `OnGet` 傳回 `void` 或 `OnGetAsync` 傳回 `Task` 時，不會使用 return 語句。 當傳回型別是 `IActionResult` 或 `Task<IActionResult>` 時，必須提供傳回陳述式。 例如，*Pages/Movies/Create.cshtml.cs* `OnPostAsync` 方法：
+當 `OnGet` 傳回 `void` 或 `OnGetAsync` 傳回`Task`時，不會使用 return 語句。 當傳回型別是 `IActionResult` 或 `Task<IActionResult>` 時，必須提供傳回陳述式。 例如，*Pages/Movies/Create.cshtml.cs* `OnPostAsync` 方法：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml.cs?name=snippet)]
 
@@ -71,7 +71,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 * 指定在一個位置。
 * 套用於網站中的多個頁面。
 
-找到 `@RenderBody()` 這行。 `RenderBody` 是一個預留位置，可供顯示所有頁面特定檢視 (「包裝」在版面配置頁面中)。 例如，選取 [隱私權] 連結，就會在 `RenderBody` 方法內轉譯 *Pages/Privacy.cshtml* 檢視。
+找到 `@RenderBody()` 這行。 `RenderBody` 是一個預留位置，可供顯示所有頁面特定檢視 (「包裝」在版面配置頁面中)。 例如，選取 [隱私權] 連結，就會在 *方法內轉譯*Pages/Privacy.cshtml`RenderBody` 檢視。
 
 <a name="vd"></a>
 
@@ -85,7 +85,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 `PageModel` 基類包含可用來將資料傳遞至 View 的 `ViewData` dictionary 屬性。 物件會使用機碼/值模式新增至 `ViewData` 字典。 在上述範例中，`"Title"` 屬性會新增至 `ViewData` 字典。
 
-*Pages/Shared/_Layout.cshtml* 檔案中使用 `"Title"` 屬性。 下列標記會顯示 *_Layout.cshtml* 檔案的前幾行。
+`"Title"`Pages/Shared/_Layout.cshtml*檔案中使用* 屬性。 下列標記會顯示 *_Layout.cshtml* 檔案的前幾行。
 
 <!-- we need a snapshot copy of layout because we are
 changing in in the next step.
@@ -96,7 +96,7 @@ changing in in the next step.
 
 ### <a name="update-the-layout"></a>更新配置
 
-變更 *Pages/Shared/_Layout.cshtml* 檔案中的 `<title>` 項目，以顯示 **Movie** 而不是 **RazorPagesMovie**。
+變更 `<title>`Pages/Shared/_Layout.cshtml*檔案中的* 項目，以顯示 **Movie** 而不是 **RazorPagesMovie**。
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
@@ -193,7 +193,7 @@ Scaffolding 引擎會在模型中建立每個欄位的 Razor 標記 (除了識�
 
 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers) (`<div asp-validation-summary` 和 `<span asp-validation-for`) 會顯示驗證錯誤。 驗證將於本文稍後詳細討論到。
 
-[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper) (`<label asp-for="Movie.Title" class="control-label"></label>`) 會產生 `Title` 屬性 (property) 的標籤標題和 `for` 屬性 (attribute)。
+[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper) (`<label asp-for="Movie.Title" class="control-label"></label>`) 會產生 `for` 屬性 (property) 的標籤標題和 `Title` 屬性 (attribute)。
 
 [輸入標記協助程式](xref:mvc/views/working-with-forms) (`<input asp-for="Movie.Title" class="form-control">`) 會使用[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。
 
@@ -257,7 +257,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 選取功能表連結 (**RazorPagesMovie**、**Home** 及 **Privacy**)。 每個頁面會顯示相同的功能表配置。 功能表配置會在 *Pages/Shared/_Layout.cshtml* 檔案中實作。 開啟 *Pages/Shared/_Layout.cshtml* 檔案。
 
-[版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是一個「包裝」在版面配置頁中的預留位置，可供顯示您建立的所有頁面特定檢視。 例如，如果您選取 [Privacy] 連結，就會在 `RenderBody` 方法內呈現 **Pages/Privacy.cshtml** 檢視。
+[版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是一個「包裝」在版面配置頁中的預留位置，可供顯示您建立的所有頁面特定檢視。 例如，如果您選取 [Privacy] 連結，就會在 **方法內呈現**Pages/Privacy.cshtml`RenderBody` 檢視。
 
 <a name="vd"></a>
 
@@ -282,7 +282,7 @@ changing in in the next step.
 
 ### <a name="update-the-layout"></a>更新配置
 
-變更 *Pages/Shared/_Layout.cshtml* 檔案中的 `<title>` 項目，以顯示 **Movie** 而不是 **RazorPagesMovie**。
+變更 `<title>`Pages/Shared/_Layout.cshtml*檔案中的* 項目，以顯示 **Movie** 而不是 **RazorPagesMovie**。
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
@@ -361,7 +361,7 @@ Scaffolding 引擎會在模型中建立每個欄位的 Razor 標記 (除了識�
 
 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers) (`<div asp-validation-summary` 和 `<span asp-validation-for`) 會顯示驗證錯誤。 驗證將於本文稍後詳細討論到。
 
-[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper) (`<label asp-for="Movie.Title" class="control-label"></label>`) 會產生 `Title` 屬性 (property) 的標籤標題和 `for` 屬性 (attribute)。
+[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper) (`<label asp-for="Movie.Title" class="control-label"></label>`) 會產生 `for` 屬性 (property) 的標籤標題和 `Title` 屬性 (attribute)。
 
 [輸入標記協助程式](xref:mvc/views/working-with-forms) (`<input asp-for="Movie.Title" class="form-control">`) 會使用[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。
 

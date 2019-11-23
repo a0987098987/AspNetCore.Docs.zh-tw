@@ -23,7 +23,7 @@ ms.locfileid: "71999854"
 
 gRPC 可與[ASP.NET Core 驗證](xref:security/authentication/identity)搭配使用，以將使用者與每個呼叫產生關聯。
 
-以下是使用 gRPC 和 ASP.NET Core authentication 之 @no__t 0 的範例：
+以下是使用 gRPC 和 ASP.NET Core authentication 之 `Startup.Configure` 的範例：
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -41,11 +41,11 @@ public void Configure(IApplicationBuilder app)
 ```
 
 > [!NOTE]
-> 您註冊 ASP.NET Core authentication 中介軟體的順序很重要。 在 `UseRouting` 和 `UseEndpoints` 之前，一律呼叫 `UseAuthentication` 並 `UseAuthorization`。
+> 您註冊 ASP.NET Core authentication 中介軟體的順序很重要。 一律呼叫 `UseAuthentication`，並在 `UseEndpoints``UseRouting` 和之前 `UseAuthorization`。
 
-需要設定您的應用程式在呼叫期間所使用的驗證機制。 驗證設定會新增至 `Startup.ConfigureServices`，而且會根據您的應用程式使用的驗證機制而有所不同。 如需如何保護 ASP.NET Core 應用程式的範例，請參閱[驗證範例](xref:security/authentication/samples)。
+需要設定您的應用程式在呼叫期間所使用的驗證機制。 驗證設定會在 `Startup.ConfigureServices` 中新增，而且會根據您的應用程式使用的驗證機制而有所不同。 如需如何保護 ASP.NET Core 應用程式的範例，請參閱[驗證範例](xref:security/authentication/samples)。
 
-一旦設定好驗證之後，就可以透過 `ServerCallContext`，在 gRPC 服務方法中存取使用者。
+一旦設定好驗證之後，就可以透過 `ServerCallContext`在 gRPC 服務方法中存取使用者。
 
 ```csharp
 public override Task<BuyTicketsResponse> BuyTickets(
@@ -80,7 +80,7 @@ public bool DoAuthenticatedCall(
 }
 ```
 
-在通道上設定 `ChannelCredentials`，是使用 gRPC 呼叫將權杖傳送至服務的另一種方式。 每次進行 gRPC 呼叫時，就會執行此認證，這可避免需要在多個位置撰寫程式碼來自行傳遞權杖。
+在通道上設定 `ChannelCredentials` 是使用 gRPC 呼叫將權杖傳送至服務的另一種方式。 每次進行 gRPC 呼叫時，就會執行此認證，這可避免需要在多個位置撰寫程式碼來自行傳遞權杖。
 
 下列範例中的認證會設定通道，以使用每個 gRPC 呼叫來傳送權杖：
 
@@ -144,13 +144,13 @@ public Ticketer.TicketerClient CreateClientWithCert(
 * JWT 權杖
 * OAuth 2。0
 * OpenID Connect
-* WS-Federation
+* WS-同盟
 
 如需有關在伺服器上設定驗證的詳細資訊，請參閱[ASP.NET Core 驗證](xref:security/authentication/identity)。
 
 將 gRPC 用戶端設定為使用驗證，將取決於您所使用的驗證機制。 先前的持有人權杖和用戶端憑證範例顯示 gRPC 用戶端可設定為使用 gRPC 呼叫來傳送驗證中繼資料的幾種方式：
 
-* 強型別 gRPC 用戶端會在內部使用 `HttpClient`。 您可以在[`HttpClientHandler`](/dotnet/api/system.net.http.httpclienthandler)上設定驗證，或將自訂的[`HttpMessageHandler`](/dotnet/api/system.net.http.httpmessagehandler)實例新增至 `HttpClient`。
+* 強型別 gRPC 用戶端會在內部使用 `HttpClient`。 驗證可以在[`HttpClientHandler`](/dotnet/api/system.net.http.httpclienthandler)上設定，或藉由將自訂[`HttpMessageHandler`](/dotnet/api/system.net.http.httpmessagehandler)實例新增至 `HttpClient`來進行。
 * 每個 gRPC 呼叫都有一個選擇性的 `CallOptions` 引數。 您可以使用選項的標頭集合來傳送自訂標頭。
 
 > [!NOTE]
@@ -167,7 +167,7 @@ public class TicketerService : Ticketer.TicketerBase
 }
 ```
 
-您可以使用 `[Authorize]` 屬性的函數引數和屬性，限制只有符合特定[授權原則](xref:security/authorization/policies)的使用者才能存取。 例如，如果您有一個名為 `MyAuthorizationPolicy` 的自訂授權原則，請確定只有符合該原則的使用者可以使用下列程式碼來存取服務：
+您可以使用 `[Authorize]` 屬性的函數引數和屬性，限制只有符合特定[授權原則](xref:security/authorization/policies)的使用者才能存取。 例如，如果您有稱為 `MyAuthorizationPolicy`的自訂授權原則，請確定只有符合該原則的使用者可以使用下列程式碼來存取服務：
 
 ```csharp
 [Authorize("MyAuthorizationPolicy")]

@@ -42,9 +42,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-設定金鑰環形儲存位置（例如， [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)）。 必須設定位置，因為呼叫 `ProtectKeysWithAzureKeyVault` 會執行停用自動資料保護設定的[IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) ，包括金鑰環形儲存位置。 上述範例會使用 Azure Blob 儲存體來保存金鑰環。 如需詳細資訊，請參閱 @no__t 0Key 存放裝置提供者：Azure 儲存體](xref:security/data-protection/implementation/key-storage-providers#azure-storage)。 您也可以使用[PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system)在本機保存金鑰信號。
+設定金鑰環形儲存位置（例如， [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)）。 必須設定位置，因為呼叫 `ProtectKeysWithAzureKeyVault` 會執行停用自動資料保護設定的[IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) ，包括金鑰環形儲存位置。 上述範例會使用 Azure Blob 儲存體來保存金鑰環。 如需詳細資訊，請參閱[金鑰儲存提供者： Azure 儲存體](xref:security/data-protection/implementation/key-storage-providers#azure-storage)。 您也可以使用[PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system)在本機保存金鑰信號。
 
-@No__t-0 是用於金鑰加密的金鑰保存庫金鑰識別碼。 例如，在 `contosokeyvault` 中名為 `dataprotection` 的金鑰保存庫中建立的金鑰具有 `https://contosokeyvault.vault.azure.net/keys/dataprotection/` 的金鑰識別碼。 提供具有解除包裝**金鑰的**應用程式和金鑰保存庫的**金鑰**許可權。
+`keyIdentifier` 是用於金鑰加密的金鑰保存庫金鑰識別碼。 例如，在 `contosokeyvault` 中名為 `dataprotection` 的金鑰保存庫中建立的金鑰具有金鑰識別碼 `https://contosokeyvault.vault.azure.net/keys/dataprotection/`。 提供具有解除包裝**金鑰的**應用程式和金鑰保存庫的**金鑰**許可權。
 
 `ProtectKeysWithAzureKeyVault` 多載：
 
@@ -71,7 +71,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="protectkeyswith"></a>ProtectKeysWith\*
 
-您可以藉由呼叫任何[ProtectKeysWith @ no__t-1](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions)設定 api，設定系統來保護待用金鑰。 請考慮下列範例，其會將金鑰儲存在 UNC 共用上，並使用特定的 x.509 憑證來加密待用金鑰：
+您可以藉由呼叫任何[ProtectKeysWith\*](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions)設定 api 來設定系統來保護待用金鑰。 請考慮下列範例，其會將金鑰儲存在 UNC 共用上，並使用特定的 x.509 憑證來加密待用金鑰：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -139,7 +139,7 @@ public void ConfigureServices(IServiceCollection services)
 
 若要在應用程式之間共用受保護的承載：
 
-* 使用相同的值，在每個應用程式中設定 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>。
+* 使用相同的值來設定每個應用程式中的 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>。
 * 跨應用程式使用相同版本的資料保護 API 堆疊。 在應用程式的專案檔案中執行下列**其中一**項：
   * 透過[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)參考相同的共用架構版本。
   * 參考相同的[資料保護套件](xref:security/data-protection/introduction#package-layout)版本。
@@ -154,7 +154,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="disableautomatickeygeneration"></a>DisableAutomaticKeyGeneration
 
-您可能會想要讓應用程式在接近到期的情況下自動變換金鑰（建立新的金鑰）。 其中一個範例可能是在主要/次要關係中設定的應用程式，其中只有主要應用程式會負責金鑰管理考慮，而次要應用程式只會有金鑰環的唯讀視圖。 次要應用程式可以設定為使用 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.DisableAutomaticKeyGeneration*> 來將金鑰環視為唯讀：
+您可能會想要讓應用程式在接近到期的情況下自動變換金鑰（建立新的金鑰）。 其中一個範例可能是在主要/次要關係中設定的應用程式，其中只有主要應用程式會負責金鑰管理考慮，而次要應用程式只會有金鑰環的唯讀視圖。 您可以設定具有 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.DisableAutomaticKeyGeneration*>的系統，將次要應用程式設定為將金鑰環視為唯讀：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -168,16 +168,16 @@ public void ConfigureServices(IServiceCollection services)
 
 當資料保護系統是由 ASP.NET Core 主機提供時，它會自動將應用程式彼此隔離，即使這些應用程式是在相同的工作者進程帳戶下執行，而且使用相同的主要金鑰內容。 這有點類似于 System.web 的 `<machineKey>` 元素中的 IsolateApps 修飾詞。
 
-隔離機制的運作方式是將本機電腦上的每個應用程式視為唯一的租使用者，因此任何指定應用程式的根 @no__t 0 會自動將應用程式識別碼包含為鑒別子。 應用程式的唯一識別碼是應用程式的實體路徑：
+隔離機制的運作方式是將本機電腦上的每個應用程式視為唯一的租使用者，因此任何指定應用程式的根 <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> 會自動將應用程式識別碼包含為鑒別子。 應用程式的唯一識別碼是應用程式的實體路徑：
 
 * 對於裝載于 IIS 中的應用程式，唯一識別碼是應用程式的 IIS 實體路徑。 如果應用程式部署在 web 伺服陣列環境中，此值會穩定，假設 IIS 環境在 web 伺服陣列中的所有電腦上都有類似的設定。
 * 對於在[Kestrel 伺服器](xref:fundamentals/servers/index#kestrel)上執行的自我裝載應用程式，唯一識別碼是磁片上應用程式的實體路徑。
 
-唯一識別碼的設計是要繼續重設個別應用程式和電腦本身的 @ no__t-0both。
+唯一識別碼是設計用來在個別應用程式和電腦本身的&mdash;重設。
 
 這種隔離機制會假設應用程式不是惡意的。 惡意應用程式一律會影響在同一個工作者進程帳戶下執行的任何其他應用程式。 在應用程式互相不受信任的共用裝載環境中，主機服務提供者應採取步驟，以確保應用程式之間的作業系統層級隔離，包括分隔應用程式的基礎金鑰存放庫。
 
-如果資料保護系統不是由 ASP.NET Core 主機提供（例如，如果您透過 `DataProtectionProvider` 具象類型來具現化），則預設會停用應用程式隔離。 當應用程式隔離停用時，所有由相同的金鑰內容所支援的應用程式都可以共用承載，只要它們提供適當的[用途](xref:security/data-protection/consumer-apis/purpose-strings)即可。 若要在此環境中提供應用程式隔離，請在設定物件上呼叫[SetApplicationName](#setapplicationname)方法，並為每個應用程式提供唯一的名稱。
+如果資料保護系統不是由 ASP.NET Core 主機所提供（例如，如果您透過 `DataProtectionProvider` 具象類型來具現化），則預設會停用應用程式隔離。 當應用程式隔離停用時，所有由相同的金鑰內容所支援的應用程式都可以共用承載，只要它們提供適當的[用途](xref:security/data-protection/consumer-apis/purpose-strings)即可。 若要在此環境中提供應用程式隔離，請在設定物件上呼叫[SetApplicationName](#setapplicationname)方法，並為每個應用程式提供唯一的名稱。
 
 ## <a name="changing-algorithms-with-usecryptographicalgorithms"></a>使用 UseCryptographicAlgorithms 變更演算法
 
@@ -211,7 +211,7 @@ services.AddDataProtection()
 
 ::: moniker-end
 
-預設 EncryptionAlgorithm 為 AES-256-CBC，而預設 ValidationAlgorithm 為 HMACSHA256。 系統管理員可以透過[整部電腦的原則](xref:security/data-protection/configuration/machine-wide-policy)來設定預設原則，但 `UseCryptographicAlgorithms` 的明確呼叫會覆寫預設原則。
+預設 EncryptionAlgorithm 為 AES-256-CBC，而預設 ValidationAlgorithm 為 HMACSHA256。 系統管理員可以透過[整部電腦的原則](xref:security/data-protection/configuration/machine-wide-policy)來設定預設原則，但是明確呼叫 `UseCryptographicAlgorithms` 會覆寫預設原則。
 
 呼叫 `UseCryptographicAlgorithms` 可讓您從預先定義的內建清單中指定所需的演算法。 您不需要擔心演算法的執行。 在上述案例中，如果在 Windows 上執行，資料保護系統會嘗試使用 AES 的 CNG 實行。 否則，它會回復[至受管理](/dotnet/api/system.security.cryptography.aes)的 system.string 類別。
 
@@ -266,7 +266,7 @@ serviceCollection.AddDataProtection()
 
 ::: moniker-end
 
-一般來說，@no__t 0Type 的屬性必須指向[system.security.cryptography.symmetricalgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm)和[KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm)的具象、可具現化（透過公用無參數 ctor）的實值，不過，系統特殊案例的某些值（例如 `typeof(Aes)`）便於.
+一般來說，\*型別屬性必須指向[system.security.cryptography.symmetricalgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm)和[KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm)的具象、可具現化（透過公用無參數 ctor）的實作為，不過，為了方便起見，`typeof(Aes)` 有一些值，例如。
 
 > [!NOTE]
 > System.security.cryptography.symmetricalgorithm 必須具有≥128位的金鑰長度和≥64位的區塊大小，而且它必須支援具有 PKCS #7 填補的 CBC 模式加密。 KeyedHashAlgorithm 必須具有 > = 128 位的摘要大小，而且它必須支援長度等於雜湊演算法摘要長度的索引鍵。 KeyedHashAlgorithm 不一定要是 HMAC。
@@ -322,7 +322,7 @@ services.AddDataProtection()
 ::: moniker-end
 
 > [!NOTE]
-> 對稱式區塊加密演算法的金鑰長度必須為 > = 128 位、區塊大小 > = 64 位，而且必須支援具有 PKCS #7 填補的 CBC 模式加密。 雜湊演算法的摘要大小必須為 > = 128 位，而且必須支援以 BCRYPT @ no__t-0ALG @ no__t-1HANDLE @ no__t-2HMAC @ no__t-3FLAG 旗標開啟。 @No__t 0Provider 的屬性可以設定為 null，以針對指定的演算法使用預設提供者。 如需詳細資訊，請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)檔。
+> 對稱式區塊加密演算法的金鑰長度必須為 > = 128 位、區塊大小 > = 64 位，而且必須支援具有 PKCS #7 填補的 CBC 模式加密。 雜湊演算法的摘要大小必須為 > = 128 位，而且必須支援以 BCRYPT\_ALG 來開啟，\_處理\_HMAC\_旗標旗標。 \*提供者屬性可以設定為 null，以針對指定的演算法使用預設提供者。 如需詳細資訊，請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)檔。
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -380,7 +380,7 @@ services.AddDataProtection()
 
 ## <a name="persisting-keys-with-redis"></a>使用 Redis 保存金鑰
 
-只有支援[Redis 資料持續](/azure/azure-cache-for-redis/cache-how-to-premium-persistence)性的 Redis 版本才應該用來儲存索引鍵。 [Azure Blob 儲存體](/azure/storage/blobs/storage-blobs-introduction)是持續性的，可以用來儲存金鑰。 如需詳細資訊，請參閱 <<c0> [ 此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/13476)。
+只有支援[Redis 資料持續](/azure/azure-cache-for-redis/cache-how-to-premium-persistence)性的 Redis 版本才應該用來儲存索引鍵。 [Azure Blob 儲存體](/azure/storage/blobs/storage-blobs-introduction)是持續性的，可以用來儲存金鑰。 如需詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/13476)。
 
 ## <a name="additional-resources"></a>其他資源
 

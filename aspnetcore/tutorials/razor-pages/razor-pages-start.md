@@ -25,7 +25,7 @@ ms.locfileid: "74116157"
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-在本教學課程中，您已：
+在本教學課程中，您將了解：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。
@@ -36,7 +36,7 @@ ms.locfileid: "74116157"
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>開發環境需求
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -66,7 +66,7 @@ ms.locfileid: "74116157"
 
 ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/3/npx.png)
 
-  下列起始專案會隨即建立：
+  接著起始專案會隨即建立：
 
   ![底下提供說明，包括方案總管](razor-pages-start/_static/se2.2.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "74116157"
   * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊彈出**「所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？」** 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 

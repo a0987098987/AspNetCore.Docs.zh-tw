@@ -1,5 +1,5 @@
 ---
-title: 3.0 ASP.NET Core 的新功能
+title: 3\.0 ASP.NET Core 的新功能
 author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.0 中的新功能。
 ms.author: riande
@@ -83,7 +83,7 @@ ASP.NET Core 3.0 中的 gRPC 功能包括：
 
 如需遷移指示，請參閱[更新 SignalR 程式碼](xref:migration/22-to-30#signalr)。 SignalR 現在會使用 `System.Text.Json` 來序列化/還原序列化 JSON 訊息。 如需還原以 `Newtonsoft.Json` 為基礎之序列化程式的指示，請參閱[切換至 Newtonsoft。](xref:migration/22-to-30#switch-to-newtonsoftjson)
 
-在 SignalR 的 JavaScript 和 .NET 用戶端中，已加入自動重新連接的支援。 根據預設，用戶端會嘗試立即重新連線，並在 2、10 和 30 秒後重試（如有必要）。 如果用戶端成功重新連接，則會收到新的連線識別碼。 自動重新連線是加入宣告的：
+在 SignalR的 JavaScript 和 .NET 用戶端中，已加入自動重新連接的支援。 根據預設，用戶端會嘗試立即重新連線，並在 2、10 和 30 秒後重試（如有必要）。 如果用戶端成功重新連接，則會收到新的連線識別碼。 自動重新連線是加入宣告的：
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()

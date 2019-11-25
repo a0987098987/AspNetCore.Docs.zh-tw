@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: fundamentals/httpcontext
-ms.openlocfilehash: 888adf6d61e6968127385952e65f942e86b7eb63
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: 0bf40f9cd2554f5ba01ccc06001fa4f1940d51a5
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72288975"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74289054"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>存取 ASP.NET Core 中的 HttpContext
 
-ASP.NET Core 應用程式透過 [IHttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor) 介面與其預設實作 [HttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.httpcontextaccessor) 來存取 `HttpContext`。 只有當您需要存取服務內的 `HttpContext` 時，才需要使用 `IHttpContextAccessor`。
+ASP.NET Core 應用程式透過 `HttpContext`IHttpContextAccessor[ 介面與其預設實作 ](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor)HttpContextAccessor[ 來存取 ](/dotnet/api/microsoft.aspnetcore.http.httpcontextaccessor)。 只有當您需要存取服務內的 `IHttpContextAccessor` 時，才需要使用 `HttpContext`。
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -39,7 +39,7 @@ public class AboutModel : PageModel
 
 ## <a name="use-httpcontext-from-a-razor-view"></a>從 Razor 檢視使用 HttpContext
 
-Razor 檢視會透過檢視上的 [RazorPage.Context](/dotnet/api/microsoft.aspnetcore.mvc.razor.razorpage.context#Microsoft_AspNetCore_Mvc_Razor_RazorPage_Context) 屬性，直接公開 `HttpContext`。 以下範例會在內部網路應用程式中使用 Windows 驗證，擷取目前的使用者名稱：
+Razor 檢視會透過檢視上的 `HttpContext`RazorPage.Context[ 屬性，直接公開 ](/dotnet/api/microsoft.aspnetcore.mvc.razor.razorpage.context#Microsoft_AspNetCore_Mvc_Razor_RazorPage_Context)。 以下範例會在內部網路應用程式中使用 Windows 驗證，擷取目前的使用者名稱：
 
 ```cshtml
 @{
@@ -147,9 +147,9 @@ public class UserRepository : IUserRepository
 為了避免不安全的程式碼，絕對不會將 `HttpContext` 傳遞至執行背景工作的方法，而是改為傳遞您所需的資料。
 
 ```csharp
-public class EmailController
+public class EmailController : Controller
 {
-    public ActionResult SendEmail(string email)
+    public IActionResult SendEmail(string email)
     {
         var correlationId = HttpContext.Request.Headers["x-correlation-id"].ToString();
 

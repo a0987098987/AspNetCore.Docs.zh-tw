@@ -9,12 +9,12 @@ ms.date: 10/15/2019
 no-loc:
 - Blazor
 uid: blazor/state-management
-ms.openlocfilehash: 408d44a3f2e81a165e8b786c6d2efc9329082e30
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 38ee5fccdf476f08c9f39d01b53c81b48eea04bf
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962831"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317189"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
@@ -22,7 +22,7 @@ ms.locfileid: "73962831"
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在*伺服器的記憶體中。* 
+Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在伺服器的記憶體中。 
 
 保留給使用者線路的狀態範例包括：
 
@@ -56,8 +56,8 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 通常只有在高價值的狀態下，使用者才需要建立資料持續性。 在下列範例中，保存狀態可以節省商務工作的時間或輔助：
 
-* 多步驟 webform &ndash;，使用者在其狀態遺失時，針對多步驟程式的數個已完成步驟重新輸入資料相當耗時。 如果使用者離開多步驟表單，並在稍後返回表單，則會在此案例中失去狀態。
-* 購物車 &ndash; 應用程式中代表潛在收益的任何商業重要元件都可以維護。 失去其狀態的使用者，因此其購物車，可能會在日後返回網站時購買較少的產品或服務。
+* 多步驟 webform &ndash; 當使用者的狀態遺失時，針對多步驟程式的數個已完成步驟重新輸入資料是非常耗時的。 如果使用者離開多步驟表單，並在稍後返回表單，則會在此案例中失去狀態。
+* 購物車 &ndash; 應用程式的任何商業重要元件，其代表可能的收益。 失去其狀態的使用者，因此其購物車，可能會在日後返回網站時購買較少的產品或服務。
 
 通常不需要保留容易重新建立的狀態，例如輸入登入對話方塊中未提交的使用者名稱。
 
@@ -97,7 +97,7 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 * 如果使用者手動重載頁面。
 * 如果 web 伺服器變得無法使用&mdash;則會強制使用者重載頁面，以便連接到不同的伺服器。
 
-如需使用 `@page` 指示詞來定義 URL 模式的詳細資訊，請參閱 <xref:blazor/routing>。
+如需使用 `@page` 指示詞定義 URL 模式的詳細資訊，請參閱 <xref:blazor/routing>。
 
 ### <a name="client-side-in-the-browser"></a>瀏覽器中的用戶端
 
@@ -108,15 +108,15 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 `localStorage` 和 `sessionStorage` 的差異如下：
 
-* `localStorage` 的範圍設定為使用者的瀏覽器。 如果使用者重載頁面，或關閉並重新開啟瀏覽器，則狀態會保持不變。 如果使用者開啟多個瀏覽器索引標籤，則狀態會在索引標籤之間共用。 資料會保存在 `localStorage`，直到明確清除為止。
+* `localStorage` 的範圍設定為使用者的瀏覽器。 如果使用者重載頁面，或關閉並重新開啟瀏覽器，則狀態會保持不變。 如果使用者開啟多個瀏覽器索引標籤，則狀態會在索引標籤之間共用。 資料會保存在 `localStorage` 中，直到明確清除為止。
 * `sessionStorage` 的範圍設定為使用者的瀏覽器索引標籤。如果使用者重載索引標籤，則狀態會保持不變。 如果使用者關閉索引標籤或瀏覽器，則狀態會遺失。 如果使用者開啟多個瀏覽器索引標籤，每個索引標籤都有自己獨立的資料版本。
 
-一般來說，`sessionStorage` 會更安全地使用。 `sessionStorage` 可避免使用者開啟多個索引標籤並遇到下列問題的風險：
+一般來說，`sessionStorage` 較安全，使用。 `sessionStorage` 可避免使用者開啟多個索引標籤並遇到下列問題的風險：
 
 * 索引標籤上狀態儲存體中的 bug。
 * 當索引標籤覆寫其他索引標籤的狀態時，會造成混淆的行為。
 
-如果應用程式必須在關閉並重新開啟瀏覽器時保存狀態，`localStorage` 是較佳的選擇。
+如果應用程式必須在關閉並重新開啟瀏覽器時保存狀態，`localStorage` 是較好的選擇。
 
 使用瀏覽器儲存的注意事項：
 
@@ -127,13 +127,13 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 ## <a name="third-party-browser-storage-solutions"></a>協力廠商瀏覽器儲存解決方案
 
-協力廠商 NuGet 套件提供使用 `localStorage` 和 `sessionStorage` 的 Api。
+協力廠商 NuGet 套件提供使用 `localStorage` 和 `sessionStorage`的 Api。
 
 值得考慮選擇以透明方式使用 ASP.NET Core[資料保護](xref:security/data-protection/introduction)的套件。 ASP.NET Core 資料保護會將儲存的資料加密，並降低篡改已儲存資料的潛在風險。 如果 JSON 序列化資料是以純文字儲存，則使用者可以使用瀏覽器開發人員工具來查看資料，同時也會修改儲存的資料。 保護資料不一定會有問題，因為資料在本質上可能是很簡單的。 例如，讀取或修改 UI 專案的預存色彩對使用者或組織而言並不會有嚴重的安全性風險。 避免允許使用者檢查或篡改*敏感性資料*。
 
 ## <a name="protected-browser-storage-experimental-package"></a>受保護的瀏覽器儲存體實驗性封裝
 
-提供 `localStorage` 和 `sessionStorage` 之[資料保護](xref:security/data-protection/introduction)的 NuGet 套件範例是[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
+提供[和](xref:security/data-protection/introduction)資料保護`localStorage`的 NuGet 套件範例是 AspNetCore.`sessionStorage` [Microsoft.AspNetCore.ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
 
 > [!WARNING]
 > `Microsoft.AspNetCore.ProtectedBrowserStorage` 是不受支援的實驗性封裝，目前不適用於生產環境使用。
@@ -194,7 +194,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync`，並在 `OnParametersSetAsync` 中指派結果，而不是 `OnInitializedAsync`。 只有第一次具現化元件時，才會呼叫 `OnInitializedAsync`。 如果使用者在相同頁面上繼續流覽至不同的 URL，則稍後不會再次呼叫 `OnInitializedAsync`。
+如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在 `OnParametersSetAsync`中指派結果，而不是 `OnInitializedAsync`。 只有第一次具現化元件時，才會呼叫 `OnInitializedAsync`。 如果使用者在相同頁面上繼續流覽至不同的 URL，則稍後不會再次呼叫 `OnInitializedAsync`。
 
 > [!WARNING]
 > 此章節中的範例僅適用于伺服器未啟用預先安裝的情況。 啟用預入功能時，會產生類似下列的錯誤：
@@ -207,7 +207,7 @@ protected override async Task OnInitializedAsync()
 
 由於瀏覽器儲存體是非同步（透過網路連線存取），因此在載入資料並可供元件使用之前，一律會有一段時間。 若要獲得最佳結果，請在載入進行時轉譯載入狀態訊息，而不是顯示空白或預設的資料。
 
-其中一種方法是追蹤資料是否 `null` （仍在載入中）。 在預設的 `Counter` 元件中，計數會保留在 `int` 中。 將問號（`?`）新增至類型（`int`），讓 `currentCount` 可為 null：
+其中一種方法是追蹤資料是否 `null` （仍在載入中）。 在預設的 `Counter` 元件中，計數會保留在 `int`中。 將問號（`?`）新增至類型（`int`），使 `currentCount` 可為 null：
 
 ```csharp
 private int? currentCount;
@@ -235,15 +235,25 @@ else
 * 與使用者的瀏覽器之間的互動連接不存在。
 * 瀏覽器還沒有可執行 JavaScript 程式碼的頁面。
 
-`localStorage` 或 `sessionStorage` 在預先呈現期間無法使用。 如果元件嘗試與存放裝置互動，則會產生類似下列的錯誤：
+在預做期間無法使用 `localStorage` 或 `sessionStorage`。 如果元件嘗試與存放裝置互動，則會產生類似下列的錯誤：
 
 > 目前無法發出 JavaScript interop 呼叫。 這是因為正在資源清單元件。
 
 解決錯誤的其中一種方法是停用已處理的。 如果應用程式大量使用以瀏覽器為基礎的存放裝置，這通常是最佳的選擇。 因為應用程式在 `localStorage` 或 `sessionStorage` 可供使用之前無法提供任何有用的內容，所以已進行的呈現會增加複雜度，且不會對應用程式
 
+::: moniker range=">= aspnetcore-3.1"
+
+若要停用預呈現，請開啟*Pages/_Host. cshtml*檔案，然後將 `Component` 標記協助程式 `render-mode` 的呼叫變更為 `Server`。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
+
 若要停用預呈現，請開啟*Pages/_Host. cshtml*檔案，然後將呼叫變更為 `Html.RenderComponentAsync<App>(RenderMode.Server)`。
 
-預先呈現可能適用于未使用 `localStorage` 或 `sessionStorage` 的其他頁面。 若要保持已啟用的已啟用狀態，請延遲載入作業，直到瀏覽器連線到線路為止。 以下是儲存計數器值的範例：
+::: moniker-end
+
+針對未使用 `localStorage` 或 `sessionStorage`的其他頁面，可進行預呈現可能會很有用。 若要保持已啟用的已啟用狀態，請延遲載入作業，直到瀏覽器連線到線路為止。 以下是儲存計數器值的範例：
 
 ```cshtml
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
@@ -355,9 +365,9 @@ else
 }
 ```
 
-先前的元件不需要與 `ProtectedBrowserStorage` 互動，也不會處理「載入」階段。
+上述元件不需要與 `ProtectedBrowserStorage`互動，也不會處理「載入」階段。
 
-如先前所述，若要處理預先呈現的，可以修改 `CounterStateProvider`，讓取用計數器資料的所有元件都能自動搭配預先呈現的方式使用。 如需詳細資訊，請參閱處理預進行[處理](#handle-prerendering)一節。
+如先前所述，若要處理已進行的預呈現，可以修改 `CounterStateProvider`，讓取用計數器資料的所有元件都能自動以可處理方式使用。 如需詳細資訊，請參閱處理預進行[處理](#handle-prerendering)一節。
 
 一般情況下，建議使用*狀態供應器父元件*模式：
 

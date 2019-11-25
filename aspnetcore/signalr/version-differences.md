@@ -4,16 +4,16 @@ author: bradygaster
 description: SignalR 和 ASP.NET Core 之間的差異 SignalR
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 no-loc:
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: 0f644c132b0fcf9a0ecf0ab181791a6477c97f76
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: cdc798c30ca02b50a7f1c03c21010cc32ae88f06
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963727"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317451"
 ---
 # <a name="differences-between-aspnet-opno-locsignalr-and-aspnet-core-opno-locsignalr"></a>ASP.NET SignalR 與 ASP.NET Core 之間的差異 SignalR
 
@@ -21,20 +21,67 @@ ASP.NET Core SignalR 與 ASP.NET SignalR的用戶端或伺服器不相容。 本
 
 ## <a name="how-to-identify-the-opno-locsignalr-version"></a>如何識別 SignalR 版本
 
+::: moniker range=">= aspnetcore-3.0"
+
+|                      | ASP.NET SignalR | ASP.NET Core SignalR |
+| -------------------- | --------------- | -------------------- |
+| 伺服器 NuGet 封裝 | [SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | 無。 包含在[AspNetCore](xref:fundamentals/metapackage-app)共用架構中。 |
+| 用戶端 NuGet 套件 | [SignalR。台](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[SignalR。NODE.JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [AspNetCore.SignalR。台](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
+| JavaScript 用戶端 npm 套件 | [signalr](https://www.npmjs.com/package/signalr) | [@microsoft/signalr](https://www.npmjs.com/package/@microsoft/signalr) |
+| Java 用戶端 | [GitHub 存放庫](https://github.com/SignalR/java-client)（已淘汰）  | Maven package [com. signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
+| 伺服器應用程式類型 | ASP.NET （System.web）或 OWIN 自我裝載 | ASP.NET Core |
+| 支援的伺服器平臺 | .NET Framework 4.5 或更新版本 | .NET Core 3.0 或更新版本 |
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
 |                      | ASP.NET SignalR | ASP.NET Core SignalR |
 | -------------------- | --------------- | -------------------- |
 | 伺服器 NuGet 封裝 | [SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | [AspNetCore 應用程式](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)（.net Core）<br>[AspNetCore。SignalR](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) （.NET Framework） |
 | 用戶端 NuGet 套件 | [SignalR。台](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[SignalR。NODE.JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [AspNetCore.SignalR。台](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
-| 用戶端 npm 套件 | [signalr](https://www.npmjs.com/package/signalr) | [@aspnet/signalr](https://www.npmjs.com/package/@aspnet/signalr) |
-| JAVA 用戶端 | [GitHub 存放庫](https://github.com/SignalR/java-client)（已淘汰）  | Maven package [com. signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
+| JavaScript 用戶端 npm 套件 | [signalr](https://www.npmjs.com/package/signalr) | [@aspnet/signalr](https://www.npmjs.com/package/@aspnet/signalr) |
+| Java 用戶端 | [GitHub 存放庫](https://github.com/SignalR/java-client)（已淘汰）  | Maven package [com. signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
 | 伺服器應用程式類型 | ASP.NET （System.web）或 OWIN 自我裝載 | ASP.NET Core |
 | 支援的伺服器平臺 | .NET Framework 4.5 或更新版本 | .NET Framework 4.6.1 或更新版本<br>.NET Core 2.1 或更新版本 |
+
+::: moniker-end
 
 ## <a name="feature-differences"></a>功能差異
 
 ### <a name="automatic-reconnects"></a>自動重新連接
 
-ASP.NET Core SignalR不支援自動重新連接。 如果用戶端已中斷連線，則使用者必須明確地啟動新的連線（如果他們想要重新連接）。 在 ASP.NET SignalR中，如果中斷連接，SignalR 會嘗試重新連線到伺服器。
+::: moniker range=">= aspnetcore-3.0"
+
+在 ASP.NET SignalR：
+
+* 根據預設，如果中斷連接，SignalR 會嘗試重新連線到伺服器。 
+
+在 ASP.NET Core SignalR中：
+
+* 自動重新連接會同時使用[.net 客戶](xref:signalr/dotnet-client#automatically-reconnect)端和[JavaScript 用戶端](xref:signalr/javascript-client#automatically-reconnect)來選擇：
+
+```csharp
+HubConnection connection = new HubConnectionBuilder()
+    .WithUrl(new Uri("http://127.0.0.1:5000/chatHub"))
+    .WithAutomaticReconnect()
+    .Build();
+```
+
+```javascript
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .withAutomaticReconnect()
+    .build();
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+在 ASP.NET Core 3.0 之前，SignalR 不支援自動重新連接。 如果用戶端已中斷連線，使用者必須明確地啟動新的連線以重新連接。 在 ASP.NET SignalR中，如果中斷連接，SignalR 會嘗試重新連線到伺服器。
+
+::: moniker-end
 
 ### <a name="protocol-support"></a>通訊協定支援
 
@@ -46,9 +93,9 @@ ASP.NET Core SignalR中不支援永久的框架傳輸。
 
 ## <a name="differences-on-the-server"></a>伺服器上的差異
 
-ASP.NET Core SignalR 伺服器端程式庫包含在適用于 Razor 和 MVC 專案的**ASP.NET Core Web 應用程式**範本中的[中繼套件](xref:fundamentals/metapackage-app)套件。
+ASP.NET Core SignalR 伺服器端程式庫都包含在[AspNetCore](xref:fundamentals/metapackage-app)中，用於 RAZOR 和 MVC 專案的**ASP.NET Core Web 應用程式**範本。
 
-ASP.NET Core SignalR 是 ASP.NET Core 中介軟體，所以必須藉由在 `Startup.ConfigureServices`中呼叫[AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr)來設定。
+ASP.NET Core SignalR 是 ASP.NET Core 中介軟體。 您必須在 `Startup.ConfigureServices`中呼叫 <xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddSignalR%2A> 來設定它。
 
 ```csharp
 services.AddSignalR()
@@ -56,8 +103,7 @@ services.AddSignalR()
 
 ::: moniker range=">= aspnetcore-3.0"
 
-若要設定路由，請在 `Startup.Configure` 方法中的[UseEndpoints](/dotnet/api/microsoft.aspnetcore.builder.endpointroutingapplicationbuilderextensions.useendpoints)方法呼叫內，將路由對應至中樞。
-
+若要設定路由，請在 `Startup.Configure` 方法的 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints%2A> 方法呼叫內，將路由對應至中樞。
 
 ```csharp
 app.UseRouting();
@@ -72,7 +118,7 @@ app.UseEndpoints(endpoints =>
 
 ::: moniker range="<= aspnetcore-2.2"
 
-若要設定路由，請在 `Startup.Configure` 方法中的[UseSignalR](/dotnet/api/microsoft.aspnetcore.builder.signalrappbuilderextensions.usesignalr)方法呼叫內，將路由對應至中樞。
+若要設定路由，請在 `Startup.Configure` 方法的 <xref:Microsoft.AspNetCore.Builder.SignalRAppBuilderExtensions.UseSignalR%2A> 方法呼叫內，將路由對應至中樞。
 
 ```csharp
 app.UseSignalR(routes =>
@@ -85,7 +131,7 @@ app.UseSignalR(routes =>
 
 ### <a name="sticky-sessions"></a>粘滯話
 
-ASP.NET SignalR 的向外延展模型可讓用戶端重新連線，並將訊息傳送至伺服器陣列中的任何伺服器。 在 ASP.NET Core SignalR中，用戶端必須在連接期間與相同的伺服器互動。 針對使用 Redis 的向外延展，這表示需要有粘滯會話。 針對使用[Azure SignalR 服務](/azure/azure-signalr/)的向外延展，不需要粘滯會話，因為服務會處理用戶端的連線。
+ASP.NET SignalR 的向外延展模型可讓用戶端重新連線，並將訊息傳送至伺服器陣列中的任何伺服器。 在 ASP.NET Core SignalR中，用戶端必須在連接期間與相同的伺服器互動。 針對使用 Redis 的向外延展，這表示需要有粘滯會話。 針對使用[Azure SignalR 服務](/azure/azure-signalr/)的向外延展，由於服務會處理與用戶端的連線，因此不需要進行任何「粘滯話」。
 
 ### <a name="single-hub-per-connection"></a>每個連接的單一中樞
 
@@ -97,7 +143,7 @@ ASP.NET Core SignalR 現在支援從中樞將[資料串流](xref:signalr/streami
 
 ### <a name="state"></a>狀況
 
-在用戶端與中樞之間傳遞任意狀態的能力（通常稱為 HubState）已移除，並支援進度訊息。 目前沒有任何對應的中樞 proxy。
+已移除在用戶端與中樞之間傳遞任意狀態的功能（通常稱為 `HubState`），並支援進度訊息。 目前沒有任何對應的中樞 proxy。
 
 ### <a name="persistentconnection-removal"></a>PersistentConnection 移除
 
@@ -117,14 +163,29 @@ ASP.NET Core SignalR 不支援 `HubPipeline` 模組。
 
 ASP.NET Core SignalR 用戶端是以[TypeScript](https://www.typescriptlang.org/)撰寫。 使用[javascript 用戶端](xref:signalr/javascript-client)時，您可以使用 JAVAscript 或 TypeScript 來撰寫。
 
-### <a name="the-javascript-client-is-hosted-at-npmhttpswwwnpmjscom"></a>JavaScript 用戶端裝載于[npm](https://www.npmjs.com/)
+### <a name="the-javascript-client-is-hosted-at-npm"></a>JavaScript 用戶端裝載于 npm
 
-在先前的版本中，JavaScript 用戶端是透過 Visual Studio 中的 NuGet 套件取得。 針對核心版本， [@aspnet/signalr](https://www.npmjs.com/package/@aspnet/signalr) npm 套件包含 JavaScript 程式庫。 此套件不包含在**ASP.NET Core Web 應用程式**範本中。 使用 npm 取得並安裝 `@aspnet/signalr` npm 套件。
+::: moniker range=">= aspnetcore-3.0"
+
+在 ASP.NET 版本中，JavaScript 用戶端是透過 Visual Studio 中的 NuGet 套件取得。 在 ASP.NET Core 版本中， [@microsoft/signalr](https://www.npmjs.com/package/@microsoft/signalr) npm 套件包含 JavaScript 程式庫。 此套件不包含在**ASP.NET Core Web 應用程式**範本中。 使用 npm 取得並安裝 `@microsoft/signalr` npm 套件。
+
+```console
+npm init -y
+npm install @microsoft/signalr
+```
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
+在 ASP.NET 版本中，JavaScript 用戶端是透過 Visual Studio 中的 NuGet 套件取得。 在 ASP.NET Core 版本中， [@aspnet/signalr](https://www.npmjs.com/package/@aspnet/signalr) npm 套件包含 JavaScript 程式庫。 此套件不包含在**ASP.NET Core Web 應用程式**範本中。 使用 npm 取得並安裝 `@aspnet/signalr` npm 套件。
 
 ```console
 npm init -y
 npm install @aspnet/signalr
 ```
+
+::: moniker-end
 
 ### <a name="jquery"></a>jQuery
 
@@ -136,7 +197,23 @@ ASP.NET Core SignalR 需要 Microsoft Internet Explorer 11 或更新版本（ASP
 
 ### <a name="javascript-client-method-syntax"></a>JavaScript 用戶端方法語法
 
-JavaScript 語法已從舊版的 SignalR變更。 您不需要使用 `$connection` 物件，而是使用[HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) API 建立連接。
+::: moniker range=">= aspnetcore-3.0"
+
+JavaScript 語法已從 ASP.NET 版本的 SignalR變更。 您不需要使用 `$connection` 物件，而是使用[HubConnectionBuilder](/javascript/api/@aspnet/signalr/hubconnectionbuilder) API 建立連接。
+
+```javascript
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/hub")
+    .build();
+```
+
+使用[on](/javascript/api/@microsoft/signalr/HubConnection#on)方法來指定中樞可以呼叫的用戶端方法。
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
+JavaScript 語法已從 ASP.NET 版本的 SignalR變更。 您不需要使用 `$connection` 物件，而是使用[HubConnectionBuilder](/javascript/api/@microsoft/signalr/hubconnectionbuilder) API 建立連接。
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -146,29 +223,41 @@ const connection = new signalR.HubConnectionBuilder()
 
 使用[on](/javascript/api/@aspnet/signalr/HubConnection#on)方法來指定中樞可以呼叫的用戶端方法。
 
+::: moniker-end
+
 ```javascript
 connection.on("ReceiveMessage", (user, message) => {
     const msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    const encodedMsg = user + " says " + msg;
-    log(encodedMsg);
+    const encodedMsg = `${user} says ${msg}`;
+    console.log(encodedMsg);
 });
 ```
 
 建立用戶端方法之後，請啟動中樞連接。 建立[catch](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)方法的鏈，以記錄或處理錯誤。
 
 ```javascript
-connection.start().catch(err => console.error(err.toString()));
+connection.start().catch(err => console.error(err));
 ```
 
 ### <a name="hub-proxies"></a>中樞 proxy
 
-不會再自動產生中樞 proxy。 相反地，方法名稱會以字串形式傳遞至[invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) API。
+::: moniker range=">= aspnetcore-3.0"
+
+不會再自動產生中樞 proxy。 相反地，方法名稱會以字串形式傳遞至[invoke](/javascript/api/@microsoft/signalr/hubconnection#invoke) API。
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
+不會再自動產生中樞 proxy。 相反地，方法名稱會以字串形式傳遞至[invoke](/javascript/api/@aspnet/signalr/hubconnection#invoke) API。
+
+::: moniker-end
 
 ### <a name="net-and-other-clients"></a>.NET 和其他用戶端
 
-`Microsoft.AspNetCore.SignalR.Client` NuGet 套件包含適用于 ASP.NET Core SignalR的 .NET 用戶端程式庫。
+[AspNetCore.SignalR。用戶端](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)NuGet 套件包含適用于 ASP.NET Core SignalR的 .net 用戶端程式庫。
 
-使用[HubConnectionBuilder](/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionbuilder)來建立和建立與中樞的連接實例。
+使用 [<xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>] 建立並建立與中樞的連接實例。
 
 ```csharp
 connection = new HubConnectionBuilder()

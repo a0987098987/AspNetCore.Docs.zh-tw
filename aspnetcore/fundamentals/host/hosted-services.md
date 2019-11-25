@@ -5,32 +5,32 @@ description: 了解如何在 ASP.NET Core 中使用託管服務實作背景工�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/14/2019
+ms.date: 11/19/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 0fdf503e4a5f6f73d5488261707180cfb5967492
-ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
+ms.openlocfilehash: da3c2679005714a3d82de94cf3bc3c809aa3500d
+ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74115949"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74239725"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
-By [Luke Latham](https://github.com/guardrex)和[Jeow Li Huan](https://github.com/huan086)
+By [Luke Latham](https://github.com/guardrex) and [Jeow Li Huan](https://github.com/huan086)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 在 ASP.NET Core 中，背景工作可實作為「託管服務」。 託管服務是具有背景工作邏輯的類別，可實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。 本主題提供三個託管服務範例：
 
 * 在計時器上執行的背景工作。
-* 啟動[具範圍服務](xref:fundamentals/dependency-injection#service-lifetimes)的託管服務。 已設定範圍的服務可以使用相依性[插入（DI）](xref:fundamentals/dependency-injection)。
+* 啟動[具範圍服務](xref:fundamentals/dependency-injection#service-lifetimes)的託管服務。 The scoped service can use [dependency injection (DI)](xref:fundamentals/dependency-injection).
 * 以循序方式執行的排入佇列背景工作。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="worker-service-template"></a>背景工作服務範本
 
-ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式的起點。 從背景工作角色服務範本建立的應用程式會在其專案檔中指定背景工作角色 SDK：
+ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式的起點。 An app created from the Worker Service template specifies the Worker SDK in its project file:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Worker">
@@ -42,20 +42,20 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 ## <a name="package"></a>封裝
 
-以背景工作角色服務範本為基礎的應用程式會使用 `Microsoft.NET.Sdk.Worker` SDK，並具有對[Microsoft Extensions. 裝載](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)封裝的明確套件參考。 例如，請參閱範例應用程式的專案檔（*BackgroundTasksSample .csproj*）。
+An app based on the Worker Service template uses the `Microsoft.NET.Sdk.Worker` SDK and has an explicit package reference to the [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) package. For example, see the sample app's project file (*BackgroundTasksSample.csproj*).
 
-若是使用 `Microsoft.NET.Sdk.Web` SDK 的 web 應用程式，則會隱含地從共用架構參考[Microsoft Extensions. 裝載](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)套件。 應用程式的專案檔中不需要明確的套件參考。
+For web apps that use the `Microsoft.NET.Sdk.Web` SDK, the [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) package is referenced implicitly from the shared framework. An explicit package reference in the app's project file isn't required.
 
 ## <a name="ihostedservice-interface"></a>IHostedService 介面
 
-<xref:Microsoft.Extensions.Hosting.IHostedService> 介面會針對主機所管理的物件定義兩種方法：
+The <xref:Microsoft.Extensions.Hosting.IHostedService> interface defines two methods for objects that are managed by the host:
 
-* [StartAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*) &ndash; `StartAsync` 包含啟動背景工作的邏輯。 *在之前*呼叫 `StartAsync`：
+* [StartAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*) &ndash; `StartAsync` 包含啟動背景工作的邏輯。 `StartAsync` is called *before*:
 
-  * 應用程式的要求處理管線已設定（`Startup.Configure`）。
-  * 伺服器已啟動並[IApplicationLifetime。 ApplicationStarted](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*)會觸發。
+  * The app's request processing pipeline is configured (`Startup.Configure`).
+  * The server is started and [IApplicationLifetime.ApplicationStarted](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*) is triggered.
 
-  您可以變更預設行為，以便在應用程式的管線已設定且呼叫 `ApplicationStarted` 之後，託管服務的 `StartAsync` 執行。 若要變更預設行為，請在呼叫 `ConfigureWebHostDefaults` 之後，新增託管服務（在下列範例中 `VideosWatcher`）：
+  The default behavior can be changed so that the hosted service's `StartAsync` runs after the app's pipeline has been configured and `ApplicationStarted` is called. To change the default behavior, add the hosted service (`VideosWatcher` in the following example) after calling `ConfigureWebHostDefaults`:
 
   ```csharp
   using Microsoft.AspNetCore.Hosting;
@@ -100,14 +100,13 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 託管服務會在應用程式啟動時隨即啟動，然後在應用程式關閉時正常關閉。 如果在背景工作執行期間擲回錯誤，即使未呼叫 `StopAsync`，也應該呼叫 `Dispose`。
 
-## <a name="backgroundservice"></a>BackgroundService
+## <a name="backgroundservice-base-class"></a>BackgroundService base class
 
-`BackgroundService` 是用來執行長時間執行 <xref:Microsoft.Extensions.Hosting.IHostedService> 的基類。 `BackgroundService` 提供 `ExecuteAsync(CancellationToken stoppingToken)` 的抽象方法，以包含服務的邏輯。 呼叫[IHostedService. StopAsync](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*)時，就會觸發 `stoppingToken`。 這個方法的執行會傳回代表背景服務整個存留期的 `Task`。
+<xref:Microsoft.Extensions.Hosting.BackgroundService> is a base class for implementing a long running <xref:Microsoft.Extensions.Hosting.IHostedService>.
 
-此外，*也可以選擇性地*覆寫在 `IHostedService` 上定義的方法，以執行服務的啟動和關閉程式碼：
+[ExecuteAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.BackgroundService.ExecuteAsync*) is called to run the background service. The implementation returns a <xref:System.Threading.Tasks.Task> that represents the entire lifetime of the background service. No further services are started until [ExecuteAsync becomes asynchronous](https://github.com/aspnet/Extensions/issues/2149), such as by calling `await`. Avoid performing long, blocking initialization work in `ExecuteAsync`. The host blocks in [StopAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.BackgroundService.StopAsync*) waiting for `ExecuteAsync` to complete.
 
-* 當應用程式主機執行正常關機時，會呼叫 `StopAsync(CancellationToken cancellationToken)` &ndash; `StopAsync`。 當主機決定強制終止服務時，就會發出 `cancellationToken` 信號。 如果覆寫這個方法，您**必須**呼叫（並 `await`）基類方法，以確保服務正常關閉。
-* 呼叫 `StartAsync(CancellationToken cancellationToken)` &ndash; `StartAsync` 來啟動背景服務。 如果啟動進程中斷，就會發出 `cancellationToken` 信號。 此實作為傳回的 `Task`，代表服務的啟動進程。 在此 `Task` 完成之前，不會再啟動任何進一步的服務。 如果覆寫這個方法，您**必須**呼叫（並 `await`）基類方法，以確保服務能正確啟動。
+The cancellation token is triggered when [IHostedService.StopAsync](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*) is called. Your implementation of `ExecuteAsync` should finish promptly when the cancellation token is fired in order to gracefully shut down the service. Otherwise, the service ungracefully shuts down at the shutdown timeout. For more information, see the [IHostedService interface](#ihostedservice-interface) section.
 
 ## <a name="timed-background-tasks"></a>計時背景工作
 
@@ -115,54 +114,54 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/TimedHostedService.cs?name=snippet1&highlight=16-18,34,41)]
 
-服務會在 `IHostBuilder.ConfigureServices` （*Program.cs*）中以 `AddHostedService` 擴充方法註冊：
+The service is registered in `IHostBuilder.ConfigureServices` (*Program.cs*) with the `AddHostedService` extension method:
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet1)]
 
 ## <a name="consuming-a-scoped-service-in-a-background-task"></a>在背景工作中使用範圍服務
 
-若要在 `BackgroundService` 內使用[範圍服務](xref:fundamentals/dependency-injection#service-lifetimes)，請建立範圍。 根據預設，不會針對託管服務建立任何範圍。
+To use [scoped services](xref:fundamentals/dependency-injection#service-lifetimes) within a [BackgroundService](#backgroundservice-base-class), create a scope. 根據預設，不會針對託管服務建立任何範圍。
 
 範圍背景工作服務包含背景工作的邏輯。 在以下範例中：
 
-* 服務是非同步。 `DoWork` 方法會傳回 `Task`。 基於示範目的，`DoWork` 方法會等待10秒的延遲。
-* <xref:Microsoft.Extensions.Logging.ILogger> 會插入服務中。
+* The service is asynchronous. `DoWork` 方法會傳回 `Task`。 For demonstration purposes, a delay of ten seconds is awaited in the `DoWork` method.
+* An <xref:Microsoft.Extensions.Logging.ILogger> is injected into the service.
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ScopedProcessingService.cs?name=snippet1)]
 
-託管服務會建立範圍來解析已設定範圍的背景工作服務，以呼叫其 `DoWork` 方法。 `DoWork` 會傳回 `Task`，在 `ExecuteAsync` 中等待：
+The hosted service creates a scope to resolve the scoped background task service to call its `DoWork` method. `DoWork` returns a `Task`, which is awaited in `ExecuteAsync`:
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=19,22-35)]
 
-服務會在 `IHostBuilder.ConfigureServices` （*Program.cs*）中註冊。 託管服務會向 `AddHostedService` 擴充方法註冊：
+The services are registered in `IHostBuilder.ConfigureServices` (*Program.cs*). The hosted service is registered with the `AddHostedService` extension method:
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet2)]
 
 ## <a name="queued-background-tasks"></a>排入佇列背景工作
 
-背景工作佇列是以 .NET 4.x <xref:System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem*> （[暫時排程為 ASP.NET Core 的內建](https://github.com/aspnet/Hosting/issues/1280)）為基礎：
+A background task queue is based on the .NET 4.x <xref:System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem*> ([tentatively scheduled to be built-in for ASP.NET Core](https://github.com/aspnet/Hosting/issues/1280)):
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/BackgroundTaskQueue.cs?name=snippet1)]
 
-在下列 `QueueHostedService` 範例中：
+In the following `QueueHostedService` example:
 
-* `BackgroundProcessing` 方法會傳回 `Task`，在 `ExecuteAsync`中等待。
-* 佇列中的背景工作會在 `BackgroundProcessing` 中進行清除作業並執行。
-* 在 `StopAsync` 中停止服務之前，會等待工作專案。
+* The `BackgroundProcessing` method returns a `Task`, which is awaited in `ExecuteAsync`.
+* Background tasks in the queue are dequeued and executed in `BackgroundProcessing`.
+* Work items are awaited before the service stops in `StopAsync`.
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/QueuedHostedService.cs?name=snippet1&highlight=28-29,33)]
 
-每當在輸入裝置上選取 `w` 金鑰時，`MonitorLoop` 服務就會處理託管服務的佇列工作：
+A `MonitorLoop` service handles enqueuing tasks for the hosted service whenever the `w` key is selected on an input device:
 
-* `IBackgroundTaskQueue` 會插入 `MonitorLoop` 服務中。
-* 呼叫 `IBackgroundTaskQueue.QueueBackgroundWorkItem` 以將工作專案排入佇列。
-* 工作專案會模擬長時間執行的背景工作：
-  * 會執行三個5秒的延遲（`Task.Delay`）。
-  * 如果工作已取消，`try-catch` 語句會 <xref:System.OperationCanceledException> 補漏白。
+* The `IBackgroundTaskQueue` is injected into the `MonitorLoop` service.
+* `IBackgroundTaskQueue.QueueBackgroundWorkItem` is called to enqueue a work item.
+* The work item simulates a long-running background task:
+  * Three 5-second delays are executed (`Task.Delay`).
+  * A `try-catch` statement traps <xref:System.OperationCanceledException> if the task is cancelled.
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/MonitorLoop.cs?name=snippet_Monitor&highlight=7,33)]
 
-服務會在 `IHostBuilder.ConfigureServices` （*Program.cs*）中註冊。 託管服務會向 `AddHostedService` 擴充方法註冊：
+The services are registered in `IHostBuilder.ConfigureServices` (*Program.cs*). The hosted service is registered with the `AddHostedService` extension method:
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet3)]
 
@@ -173,7 +172,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 在 ASP.NET Core 中，背景工作可實作為「託管服務」。 託管服務是具有背景工作邏輯的類別，可實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。 本主題提供三個託管服務範例：
 
 * 在計時器上執行的背景工作。
-* 啟動[具範圍服務](xref:fundamentals/dependency-injection#service-lifetimes)的託管服務。 已設定範圍的服務可以使用相依性[插入（DI）](xref:fundamentals/dependency-injection)
+* 啟動[具範圍服務](xref:fundamentals/dependency-injection#service-lifetimes)的託管服務。 The scoped service can use [dependency injection (DI)](xref:fundamentals/dependency-injection)
 * 以循序方式執行的排入佇列背景工作。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
@@ -234,11 +233,11 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 ## <a name="queued-background-tasks"></a>排入佇列背景工作
 
-背景工作佇列是根據 .NET Framework 4.x <xref:System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem*> （[暫時排程為 ASP.NET Core 的內建](https://github.com/aspnet/Hosting/issues/1280)）：
+A background task queue is based on the .NET Framework 4.x <xref:System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem*> ([tentatively scheduled to be built-in for ASP.NET Core](https://github.com/aspnet/Hosting/issues/1280)):
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample/Services/BackgroundTaskQueue.cs?name=snippet1)]
 
-在 `QueueHostedService` 中，佇列中的背景工作會從佇列中清除，並作為 <xref:Microsoft.Extensions.Hosting.BackgroundService> 執行，這是實作長時間執行 `IHostedService` 的基底類別：
+在 `QueueHostedService` 中，佇列中的背景工作會從佇列中清除，並作為 [BackgroundService](#backgroundservice-base-class) 執行，這是實作長時間執行 `IHostedService` 的基底類別：
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample/Services/QueuedHostedService.cs?name=snippet1&highlight=21,25)]
 
@@ -253,7 +252,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample/Pages/Index.cshtml.cs?name=snippet1)]
 
-在索引頁面上選取 [新增工作] 按鈕時，就會執行 `OnPostAddTask` 方法。 呼叫 `QueueBackgroundWorkItem` 以將工作專案排入佇列：
+在索引頁面上選取 [新增工作] 按鈕時，就會執行 `OnPostAddTask` 方法。 `QueueBackgroundWorkItem` is called to enqueue a work item:
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample/Pages/Index.cshtml.cs?name=snippet2)]
 

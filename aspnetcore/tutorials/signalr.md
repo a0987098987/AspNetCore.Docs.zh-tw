@@ -4,16 +4,16 @@ author: bradygaster
 description: 在本教學課程中，您會建立使用 ASP.NET Core SignalR的聊天應用程式。
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 no-loc:
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: ac727ed0517a8b30fd8194c010576fdd74a5950a
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 55ebdbfa4556deca74a6cdf0638307425cd1a01a
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74052861"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317493"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-opno-locsignalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
@@ -32,7 +32,7 @@ ms.locfileid: "74052861"
 
 ![[!OP.無-LOC （SignalR）] 範例應用程式](signalr/_static/3.x/signalr-get-started-finished.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -263,7 +263,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞至 SignalR。
 > * 新增程式碼，以將訊息從任何用戶端傳送至所有連線的用戶端。  
 最後，您將會有一個可運作的聊天應用程式： ![[！OP.無-LOC （SignalR）] 範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png)   
 
-## <a name="prerequisites"></a>Prerequisites    
+## <a name="prerequisites"></a>先決條件    
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)   
 
@@ -328,7 +328,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件中�
 
 * 在 [新增用戶端程式庫] 對話方塊中，針對 [提供者] 選取 [unpkg]。 
 
-* 針對 [程式庫]，輸入 `@aspnet/signalr@1`，然後選取非預覽版的最新版本。 
+* 針對 [程式庫]，輸入 `@microsoft/signalr@3`，然後選取非預覽版的最新版本。  
 
   ![[新增用戶端程式庫] 對話方塊 - 選取程式庫](signalr/_static/2.x/libman1.png)   
 
@@ -351,7 +351,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件中�
 * 執行下列命令，使用 LibMan 取得 SignalR 用戶端程式庫。 您可能必須等幾秒鐘，才會看到輸出。 
 
   ```console    
-  libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js    
+  libman install @microsoft/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js 
   ```   
 
   參數指定下列選項： 
@@ -364,7 +364,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件中�
   ```console    
   wwwroot/lib/signalr/dist/browser/signalr.js written to disk   
   wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk   
-  Installed library "@aspnet/signalr@1.0.3" to "wwwroot/lib/signalr"    
+  Installed library "@microsoft/signalr@3.0.1" to "wwwroot/lib/signalr" 
   ```   
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)   
@@ -380,7 +380,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件中�
 * 執行下列命令，使用 LibMan 取得 SignalR 用戶端程式庫。    
 
   ```console    
-  libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js    
+  libman install @microsoft/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js 
   ```   
 
   參數指定下列選項： 
@@ -393,7 +393,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件中�
   ```console    
   wwwroot/lib/signalr/dist/browser/signalr.js written to disk   
   wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk   
-  Installed library "@aspnet/signalr@1.0.3" to "wwwroot/lib/signalr"    
+  Installed library "@microsoft/signalr@3.x.x" to "wwwroot/lib/signalr" 
   ```   
 
 --- 
@@ -454,17 +454,17 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞至 SignalR。
 
 * 在整合式終端機中，執行下列命令：    
 
-  ```dotnetcli  
-  dotnet run -p SignalRChat.csproj  
-  ```   
+  ```dotnetcli
+  dotnet run -p SignalRChat.csproj
+  ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)   
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 從功能表中選取 [執行] > [啟動但不偵錯]。  
+* 從功能表中選取 [執行] > [啟動但不偵錯]。
 
---- 
+---
 
-* 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。    
+* 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
 * 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送訊息] 按鈕。  
 

@@ -5,16 +5,16 @@ description: 瞭解如何在建立 Blazor 應用程式時，控制中繼語言�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 no-loc:
 - Blazor
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: b30669a7ca02c756fa10c8cf9973ef87e29e7bd4
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 0bc987d72d2f684b1ecbd4a883e9a09fac7c801e
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963608"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317283"
 ---
 # <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a>設定 ASP.NET Core Blazor 的連結器
 
@@ -22,7 +22,7 @@ ms.locfileid: "73963608"
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor 在發行組建期間執行[中繼語言（IL）](/dotnet/standard/managed-code#intermediate-language--execution)連結，以從應用程式的輸出元件中移除不必要的 IL。
+Blazor 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-code#intermediate-language--execution)連結，以從應用程式的輸出元件中移除不必要的 IL。
 
 請使用下列其中一種方法來控制組件連結：
 
@@ -31,7 +31,7 @@ Blazor 在發行組建期間執行[中繼語言（IL）](/dotnet/standard/manage
 
 ## <a name="disable-linking-with-a-msbuild-property"></a>使用 MSBuild 屬性來停用連結
 
-組建應用程式時，預設會在版本模式中啟用連結，其中包括發佈。 若要停用所有組件的連結，請在專案檔中將 `BlazorLinkOnBuild` MSBuild 屬性設為 `false`：
+建立應用程式時，預設會啟用連結，其中包括發佈。 若要停用所有組件的連結，請在專案檔中將 `BlazorLinkOnBuild` MSBuild 屬性設為 `false`：
 
 ```xml
 <PropertyGroup>
@@ -82,3 +82,29 @@ Blazor 在發行組建期間執行[中繼語言（IL）](/dotnet/standard/manage
 ```
 
 如需詳細資訊，請參閱[IL 連結器： xml 描述元的語法](https://github.com/mono/linker/blob/master/src/linker/README.md#syntax-of-xml-descriptor)。
+
+### <a name="configure-the-linker-for-internationalization"></a>設定國際化的連結器
+
+根據預設，Blazor WebAssembly 應用程式的 Blazor連結器設定會去除國際化資訊，但不包括明確要求的地區設定。 移除這些元件會將應用程式的大小降到最低。
+
+若要控制要保留哪些國際化元件，請在專案檔中設定 `<MonoLinkerI18NAssemblies>` MSBuild 屬性：
+
+```xml
+<PropertyGroup>
+  <MonoLinkerI18NAssemblies>{all|none|REGION1,REGION2,...}</MonoLinkerI18NAssemblies>
+</PropertyGroup>
+```
+
+| 區域值     | Mono 區域元件    |
+| ---------------- | ----------------------- |
+| `all`            | 包含的所有元件 |
+| `cjk`            | *I18N.CJK .dll*          |
+| `mideast`        | *I18N.務必 .dll*      |
+| `none` (預設) | 無                    |
+| `other`          | *I18N.其他 .dll*        |
+| `rare`           | *I18N.罕見的 .dll*         |
+| `west`           | *I18N.West .dll*         |
+
+使用逗號來分隔多個值（例如，`mideast,west`）。
+
+如需詳細資訊，請參閱[I18N： Pnetlib 國際化架構程式庫（mono/Mono GitHub 存放庫）](https://github.com/mono/mono/tree/master/mcs/class/I18N)。

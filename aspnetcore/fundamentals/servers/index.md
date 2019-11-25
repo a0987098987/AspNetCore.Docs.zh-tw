@@ -7,22 +7,22 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/07/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: e542dd4506eb77f949c0c87bea3044397bbb1b8f
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: d46793ef54c99fe609b5983c5a658fb7b20032fa
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799397"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74289068"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
 由 [Tom Dykstra](https://github.com/tdykstra)、[Steve Smith](https://ardalis.com/)、[Stephen Halter](https://twitter.com/halter73) 和 [Chris Ross](https://github.com/Tratcher) 提供
 
-ASP.NET Core 應用程式執行時，需使用內含式 HTTP 伺服器實作。 伺服器實作會接聽 HTTP 要求，並以組成 <xref:Microsoft.AspNetCore.Http.HttpContext> 的一組[要求功能](xref:fundamentals/request-features)形式向應用程式呈現。
+ASP.NET Core 應用程式執行時，需使用內含式 HTTP 伺服器實作。 伺服器實作會接聽 HTTP 要求，並以組成 [ 的一組](xref:fundamentals/request-features)要求功能<xref:Microsoft.AspNetCore.Http.HttpContext>形式向應用程式呈現。
 
 ## <a name="kestrel"></a>Kestrel
 
-Kestrel 是內含於 ASP.NET Core 專案範本中的預設網頁伺服器。
+Kestrel 是 ASP.NET Core 專案範本所指定的預設 web 伺服器。
 
 使用 Kestrel：
 
@@ -53,7 +53,7 @@ ASP.NET Core 隨附下列項目：
 * 位於與 IIS HTTP 伺服器的 IIS 背景工作處理序 ([同處理序代管模型](#hosting-models)) 相同的處理序中。 「同處理序」是建議的設定。
 * 從 IIS 背景工作處理序中分離出的處理序 ([跨處理序裝載模型](#hosting-models))，並搭配 [Kestrel 伺服器](#kestrel)。
 
-[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)是一種原生 IIS 模組，可處理 IIS 與同處理序 IIS HTTP 伺服器或 Kestrel 之間的原生 IIS 要求。 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)是一種原生 IIS 模組，可處理 IIS 與同處理序 IIS HTTP 伺服器或 Kestrel 之間的原生 IIS 要求。 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module>。
 
 ## <a name="hosting-models"></a>裝載模型
 
@@ -128,7 +128,7 @@ ASP.NET Core 隨附 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)，這
 
 ## <a name="httpsys"></a>HTTP.sys
 
-如果您在 Windows 上執行 ASP.NET Core 應用程式，則 HTTP.sys 是 Kestrel 的替代方案。 通常建議使用 Kestrel 以達到最佳效能。 HTTP.sys 可以用於下列情況：應用程式公開到網際網路，且必要功能是由 HTTP.sys 而非 Kestrel 支援。 如需詳細資訊，請參閱<xref:fundamentals/servers/httpsys>。
+如果您在 Windows 上執行 ASP.NET Core 應用程式，則 HTTP.sys 是 Kestrel 的替代方案。 通常建議使用 Kestrel 以達到最佳效能。 HTTP.sys 可以用於下列情況：應用程式公開到網際網路，且必要功能是由 HTTP.sys 而非 Kestrel 支援。 如需詳細資訊，請參閱 <xref:fundamentals/servers/httpsys>。
 
 ![HTTP.sys 直接與網際網路通訊](httpsys/_static/httpsys-to-internet.png)
 
@@ -140,7 +140,7 @@ HTTP.sys 也可用於只公開到內部網路的應用程式。
 
 ## <a name="aspnet-core-server-infrastructure"></a>ASP.NET Core 伺服器基礎結構
 
-`Startup.Configure` 方法提供的 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> 會公開類型<xref:Microsoft.AspNetCore.Http.Features.IFeatureCollection> 的 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ServerFeatures> 屬性。 Kestrel 與 HTTP.sys 只會公開 <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> 功能，但不同的伺服器實作則可能會公開更多的功能。
+<xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> 方法提供的 `Startup.Configure` 會公開類型<xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ServerFeatures> 的 <xref:Microsoft.AspNetCore.Http.Features.IFeatureCollection> 屬性。 Kestrel 與 HTTP.sys 只會公開 <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> 功能，但不同的伺服器實作則可能會公開更多的功能。
 
 `IServerAddressesFeature` 可用來找出伺服器實作在執行階段已繫結的連接埠。
 
@@ -158,7 +158,7 @@ HTTP.sys 也可用於只公開到內部網路的應用程式。
 
 當您在專案資料夾中使用命令提示字元啟動應用程式時，[dotnet run](/dotnet/core/tools/dotnet-run) 會啟動應用程式和伺服器 (僅限 Kestrel 和 HTTP.sys)。 組態是由 `-c|--configuration` 選項指定，會設為 `Debug` (預設值) 或 `Release`。
 
-當使用 `dotnet run` 或內建于工具的偵錯工具（例如 Visual Studio）來啟動應用程式時， *launchsettings.json json*檔案會提供設定。 如果啟動設定檔出現在*launchsettings.json*檔案中，請使用 `--launch-profile {PROFILE NAME}` 選項搭配`dotnet run` 命令，或選取 Visual Studio 中的設定檔。 如需詳細資訊，請參閱 [dotnet run](/dotnet/core/tools/dotnet-run) 和 [.NET Core 發佈封裝](/dotnet/core/build/distribution-packaging)。
+當使用 `dotnet run` 或內建于工具的偵錯工具（例如 Visual Studio）來啟動應用程式時， *launchsettings.json json*檔案會提供設定。 如果啟動設定檔出現在*launchsettings.json*檔案中，請使用 `--launch-profile {PROFILE NAME}` 選項搭配 `dotnet run` 命令，或選取 Visual Studio 中的設定檔。 如需詳細資訊，請參閱 [dotnet run](/dotnet/core/tools/dotnet-run) 和 [.NET Core 發佈封裝](/dotnet/core/build/distribution-packaging)。
 
 ## <a name="http2-support"></a>HTTP/2 支援
 

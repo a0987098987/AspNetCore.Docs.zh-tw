@@ -1,5 +1,5 @@
 ---
-title: 教學課程：建立複雜的資料模型 - ASP.NET MVC 搭配 EF Core
+title: 教學課程：建立複雜的資料模型-使用 EF Core ASP.NET MVC
 description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
 author: rick-anderson
 ms.author: riande
@@ -7,14 +7,14 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 313d951ccdd45ae1209ffd9612d24738822fbed8
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: b8b1ade4c8c29d34200bf8c0944cff6adec0bb95
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259604"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74288959"
 ---
-# <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>教學課程：建立複雜的資料模型 - ASP.NET MVC 搭配 EF Core
+# <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>教學課程：建立複雜的資料模型-使用 EF Core ASP.NET MVC
 
 在先前的教學課程中，您建立了由三個實體組成的簡單資料模型。 在本教學課程中，您會新增更多實體和關聯性，並透過指定格式、驗證和資料庫對應規則來自訂資料模型。
 
@@ -22,7 +22,7 @@ ms.locfileid: "72259604"
 
 ![實體圖表](complex-data-model/_static/diagram.png)
 
-在本教學課程中，您已：
+在本教學課程中，您將：
 
 > [!div class="checklist"]
 > * 自訂資料模型
@@ -38,7 +38,7 @@ ms.locfileid: "72259604"
 > * 變更連接字串
 > * 更新資料庫
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [使用 EF Core 移轉](migrations.md)
 
@@ -48,13 +48,13 @@ ms.locfileid: "72259604"
 
 ### <a name="the-datatype-attribute"></a>DataType 屬性
 
-針對學生的註冊日期，所有網頁目前都會同時顯示時間和日期，即使您針對此欄位只需要日期而已。 使用資料註解屬性，您可以透過僅對一個程式碼進行變更，來修正每個顯示資料的檢視上的顯示格式。 為了查看如何進行此操作的範例，您將會新增一個屬性至 `Student` 類別中的 `EnrollmentDate` 屬性。
+針對學生的註冊日期，所有網頁目前都會同時顯示時間和日期，即使您針對此欄位只需要日期而已。 使用資料註解屬性，您可以透過僅對一個程式碼進行變更，來修正每個顯示資料的檢視上的顯示格式。 為了查看如何進行此操作的範例，您將會新增一個屬性至 `EnrollmentDate` 類別中的 `Student` 屬性。
 
-在 *Models/Student.cs* 中，為 `System.ComponentModel.DataAnnotations` 命名空間新增一個 `using` 陳述式，然後將 `DataType` 和 `DisplayFormat` 屬性新增到 `EnrollmentDate` 屬性，如下列範例所示：
+在 *Models/Student.cs* 中，為 `using` 命名空間新增一個 `System.ComponentModel.DataAnnotations` 陳述式，然後將 `DataType` 和 `DisplayFormat` 屬性新增到 `EnrollmentDate` 屬性，如下列範例所示：
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-`DataType` 屬性可用於指定比資料庫內建類型更特定的資料類型。 在此案例中，我們只想要追蹤日期，而非日期和時間。 `DataType` 列舉提供了許多資料類型，例如　Date、Time、PhoneNumber、Currency、EmailAddress 等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可建立 `DataType.EmailAddress` 的 `mailto:` 連結，而且可以在支援 HTML5 的瀏覽器中提供 `DataType.Date` 的日期選擇器。 `DataType` 屬性會發出 HTML 5 瀏覽器了解的 HTML 5 `data-` (讀音為 data dash) 屬性。 `DataType` 屬性不會提供任何驗證。
+`DataType` 屬性可用於指定比資料庫內建類型更特定的資料類型。 在此案例中，我們只想要追蹤日期，而非日期和時間。 `DataType` 列舉提供了許多資料類型，例如　Date、Time、PhoneNumber、Currency、EmailAddress 等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可建立 `mailto:` 的 `DataType.EmailAddress` 連結，而且可以在支援 HTML5 的瀏覽器中提供 `DataType.Date` 的日期選擇器。 `DataType` 屬性會發出 HTML 5 瀏覽器了解的 HTML 5 `data-` (讀音為 data dash) 屬性。 `DataType` 屬性不會提供任何驗證。
 
 `DataType.Date` 未指定顯示日期的格式。 根據預設，資料欄位會依照根據伺服器的 CultureInfo 為基礎的預設格式顯示。
 
@@ -106,7 +106,7 @@ dotnet ef migrations add MaxLengthOnNames
 dotnet ef database update
 ```
 
-`migrations add` 命令會警告可能發生資料遺失，因為該項變更縮短了兩個資料行的最大長度。  移轉會建立名為 \<時間戳記 >_MaxLengthOnNames.cs 的檔案。 此檔案包含了 `Up` 方法中的程式碼，可更新資料庫，使其符合目前的資料模型。 `database update` 命令執行了該程式碼。
+`migrations add` 命令會警告可能發生資料遺失，因為該項變更縮短了兩個資料行的最大長度。  移轉會建立名為 *時間戳記 >_MaxLengthOnNames.cs\<* 的檔案。 此檔案包含了 `Up` 方法中的程式碼，可更新資料庫，使其符合目前的資料模型。 `database update` 命令執行了該程式碼。
 
 Entity Framework 會使用移轉檔案名稱前置的時間戳記來排序移轉。 您可以在執行 update-database 命令前建立多個移轉，然後所有的移轉便會依照其建立的先後順序套用。
 
@@ -116,15 +116,15 @@ Entity Framework 會使用移轉檔案名稱前置的時間戳記來排序移轉
 
 您也可以使用屬性控制您的類別和屬性對應到資料庫的方式。 假設您已針對名字欄位使用 `FirstMidName` 作為名稱，因為欄位中可能也會包含中間名。 但您想要將資料庫資料行命名為 `FirstName`，因為撰寫臨機操作查詢資料庫的使用者比較習慣該名稱。 若要進行此對應，您可以使用 `Column` 屬性。
 
-`Column` 屬性指定當建立資料庫時，`Student` 資料表中對應到 `FirstMidName` 屬性的資料行會命名為 `FirstName`。 換句話說，當您的程式碼參照 `Student.FirstMidName` 時，資料便會來自 `Student` 資料表中的 `FirstName` 資料行或在其中更新。 若您沒有指定資料行名稱，則它們便會命名為與屬性名稱相同的名稱。
+`Column` 屬性指定當建立資料庫時，`Student` 資料表中對應到 `FirstMidName` 屬性的資料行會命名為 `FirstName`。 換句話說，當您的程式碼參照 `Student.FirstMidName` 時，資料便會來自 `FirstName` 資料表中的 `Student` 資料行或在其中更新。 若您沒有指定資料行名稱，則它們便會命名為與屬性名稱相同的名稱。
 
-在 *Student.cs* 檔案中，為 `System.ComponentModel.DataAnnotations.Schema` 新增一個 `using` 陳述式，然後將資料行名稱屬性新增到 `FirstMidName` 屬性，如下列醒目提示程式碼中所示：
+在 *Student.cs* 檔案中，為 `using` 新增一個 `System.ComponentModel.DataAnnotations.Schema` 陳述式，然後將資料行名稱屬性新增到 `FirstMidName` 屬性，如下列醒目提示程式碼中所示：
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
 新增 `Column` 屬性會變更支援 `SchoolContext` 的模型，因此它將不會符合資料庫。
 
-儲存您的變更並建置專案。 然後，在專案資料夾中開啟命令視窗，並輸入下列命令以建立另一個移轉：
+儲存您的變更，並建置專案。 然後，在專案資料夾中開啟命令視窗，並輸入下列命令以建立另一個移轉：
 
 ```dotnetcli
 dotnet ef migrations add ColumnFirstName
@@ -155,11 +155,12 @@ dotnet ef database update
 
 `Required` 屬性會讓名稱屬性成為必要欄位。 針對不可為 Null 的類型，例如實值型別 (DateTime、int、double、float 等) 等，`Required` 屬性是不需要的。 不可為 Null 的類型會自動視為必要欄位。
 
-您可以移除 `Required` 屬性並以 `StringLength` 屬性的最小長度參數取代它：
+`Required` 屬性必須搭配 `MinimumLength` 使用，才能強制執行 `MinimumLength`。
 
 ```csharp
 [Display(Name = "Last Name")]
-[StringLength(50, MinimumLength=1)]
+[Required]
+[StringLength(50, MinimumLength=2)]
 public string LastName { get; set; }
 ```
 
@@ -248,7 +249,7 @@ Instructor 實體具有一個可為 Null 的 `OfficeAssignment` 導覽屬性 (�
 
 ### <a name="the-databasegenerated-attribute"></a>DatabaseGenerated 屬性
 
-`DatabaseGenerated` 屬性和 `CourseID` 屬性上的 `None` 參數指定主索引鍵由使用者提供，而非由資料庫產生。
+`DatabaseGenerated` 屬性和 `None` 屬性上的 `CourseID` 參數指定主索引鍵由使用者提供，而非由資料庫產生。
 
 ```csharp
 [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -300,7 +301,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 public decimal Budget { get; set; }
 ```
 
-資料行對應通常都是不必要的，因為 Entity Framework 會根據您為該屬性定義的 CLR 類型選擇適合的 SQL Server 資料類型。 CLR `decimal` 類型會對應到 SQL Server 的 `decimal` 類型。 但在此案例下，您知道資料行會儲存貨幣數量，而貨幣資料類型是最適合的。
+資料行對應通常都是不必要的，因為 Entity Framework 會根據您為該屬性定義的 CLR 類型選擇適合的 SQL Server 資料類型。 CLR `decimal` 類型會對應到 SQL Server `decimal` 類型。 但在此案例下，您知道資料行會儲存貨幣數量，而貨幣資料類型是最適合的。
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵及導覽屬性
 
@@ -361,7 +362,7 @@ Student 和 Course 實體之間存在一個多對多關聯性，且 Enrollment �
 
 下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表使用了 EF 6.x 的 Entity Framework Power Tools 產生。建立圖表不是此教學課程的一部分，其僅作為展示之用。)
 
-![「學生-課程」多對多關聯性](complex-data-model/_static/student-course.png)
+![學生-課程多對多關聯性](complex-data-model/_static/student-course.png)
 
 每個關聯性線條都在其中一端有一個「1」，並在另外一端有一個「星號 (*)」，顯示其為一對多關聯性。
 
@@ -379,13 +380,13 @@ Student 和 Course 實體之間存在一個多對多關聯性，且 Enrollment �
 
 ### <a name="join-entity-names"></a>聯結實體名稱
 
-針對「講師-課程」多對多關聯性，資料庫中必須要有一個聯結資料表，且其必須由一個實體集代表。 將聯結實體命名為 `EntityName1EntityName2` 的做法非常常見。在此案例中，即為 `CourseInstructor`。 不過，我們建議您選擇可描述關聯性的名稱。 資料模型是從簡單開始慢慢成長的，並且常常一開始沒有承載的聯結在之後便會變成具有承載。 若您在一開始便使用了描述性的實體名稱，您在之後便不需要變更該名稱。 理想情況下，聯結實體在公司網域中會有自己的自然 (可能為一個單字) 名稱。 例如，「書籍」和「客戶」可透過「評分」進行連結。 針對此關聯性，相較於 `CourseInstructor`，`CourseAssignment` 是較佳的選擇。
+針對「講師-課程」多對多關聯性，資料庫中必須要有一個聯結資料表，且其必須由一個實體集代表。 將聯結實體命名為 `EntityName1EntityName2` 的做法非常常見。在此案例中，即為 `CourseInstructor`。 不過，我們建議您選擇可描述關聯性的名稱。 資料模型是從簡單開始慢慢成長的，並且常常一開始沒有承載的聯結在之後便會變成具有承載。 若您在一開始便使用了描述性的實體名稱，您在之後便不需要變更該名稱。 理想情況下，聯結實體在公司網域中會有自己的自然 (可能為一個單字) 名稱。 例如，「書籍」和「客戶」可透過「評分」進行連結。 針對此關聯性，相較於 `CourseAssignment`，`CourseInstructor` 是較佳的選擇。
 
 ### <a name="composite-key"></a>複合索引鍵
 
 由於外部索引鍵不可為 Null，並且當一起使用時便可唯一識別資料表的每一個資料列，因此您不需要擁有一個個別的主索引鍵。 *InstructorID* 和 *CourseID* 屬性可作為複合主索引鍵發揮功能。 針對 EF 識別複合主索引鍵的唯一方法便是使用 *Fluent API* (您無法使用屬性完成這項操作)。 您會在下節中了解如何設定複合主索引鍵。
 
-複合索引鍵可確保當您針對一個課程擁有多個資料列，且針對一位講師擁有多個資料列時，您無法針對相同的講師和課程擁有多個資料列。 由於 `Enrollment` 聯結實體定義了其自身的主索引鍵，因此這種種類的重複項目是可能的。 若要避免這種重複的項目，您可以在外部索引鍵欄位上新增一個唯一的索引，或使用與 `CourseAssignment` 相似的主複合索引鍵來設定 `Enrollment`。 如需詳細資訊，請參閱[索引](/ef/core/modeling/indexes)。
+複合索引鍵可確保當您針對一個課程擁有多個資料列，且針對一位講師擁有多個資料列時，您無法針對相同的講師和課程擁有多個資料列。 由於 `Enrollment` 聯結實體定義了其自身的主索引鍵，因此這種種類的重複項目是可能的。 若要避免這種重複的項目，您可以在外部索引鍵欄位上新增一個唯一的索引，或使用與 `Enrollment` 相似的主複合索引鍵來設定 `CourseAssignment`。 如需詳細資訊，請參閱[索引](/ef/core/modeling/indexes)。
 
 ## <a name="update-the-database-context"></a>更新資料庫內容
 
@@ -397,7 +398,7 @@ Student 和 Course 實體之間存在一個多對多關聯性，且 Enrollment �
 
 ## <a name="about-a-fluent-api-alternative"></a>關於 Fluent API 替代項目
 
-`DbContext` 類別的 `OnModelCreating` 方法中的程式碼使用了 *Fluent API* 來設定 EF 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式，例如這個從 [EF Core 文件](/ef/core/modeling/#use-fluent-api-to-configure-a-model)取得的範例：
+`OnModelCreating` 類別的 `DbContext` 方法中的程式碼使用了 *Fluent API* 來設定 EF 行為。 此 API 稱為 "fluent" ，因為其常常會用於將一系列的方法呼叫串在一起，使其成為一個單一陳述式，例如這個從 [EF Core 文件](/ef/core/modeling/#use-fluent-api-to-configure-a-model)取得的範例：
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -412,7 +413,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 某些開發人員偏好單獨使用 Fluent API，使其實體類別保持「整潔」。 若想要的話，您也可以混合使用屬性和 Fluent API，並且有一些自訂項目只能使用 Fluent API 完成。但一般來說，建議的做法是在這兩種方法中選擇其中一項，然後盡可能的一致使用該方法。 若您確實同時使用了兩者，則請注意當發生衝突時，Fluent API 會覆寫屬性。
 
-如需屬性與 Fluent API 的詳細資訊，請參閱[組態方法](/ef/core/modeling/)。
+如需屬性與 Fluent API 的詳細資訊，請參閱[方法](/ef/core/modeling/)。
 
 ## <a name="entity-diagram-showing-relationships"></a>顯示關聯性的實體圖表
 
@@ -432,7 +433,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="add-a-migration"></a>新增移轉
 
-儲存您的變更並建置專案。 然後在專案資料夾中開啟命令視窗，並輸入 `migrations add` 命令 (請還不要執行 update-database 命令)：
+儲存您的變更，並建置專案。 然後在專案資料夾中開啟命令視窗，並輸入 `migrations add` 命令 (請還不要執行 update-database 命令)：
 
 ```dotnetcli
 dotnet ef migrations add ComplexDataModel
@@ -465,7 +466,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 在生產環境的應用程式中，您會撰寫程式碼或指令碼以新增 Department 資料列，並使 Course 資料列與新的 Department 資料列產生關聯。 屆時您便不再需要為 Course.DepartmentID 資料行設定 "Temp" 部門或預設值。
 
-儲存您的變更並建置專案。
+儲存您的變更，並建置專案。
 
 ## <a name="change-the-connection-string"></a>變更連接字串
 
@@ -513,7 +514,7 @@ dotnet ef database update
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已：
+在本教學課程中，您將：
 
 > [!div class="checklist"]
 > * 自訂資料模型

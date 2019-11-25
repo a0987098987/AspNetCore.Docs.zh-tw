@@ -5,17 +5,17 @@ description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: ad83c57f55c75d4a49656fa5d7046c32b0f049ff
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: b688d000f26c9b230d9fdee8423b3194145fe1aa
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963566"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317302"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>裝載和部署 Blazor 伺服器
 
@@ -55,11 +55,55 @@ Blazor 伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊
 
 因為延遲、可靠性和[安全性](xref:signalr/security)較低，所以使用 websocket 作為 SignalR 傳輸時，Blazor 的效果最佳。 當 Websocket 無法使用時，或當應用程式明確設定為使用長輪詢時，SignalR 會使用長輪詢。 部署到 Azure App Service 時，請將應用程式設定為在服務的 Azure 入口網站設定中使用 Websocket。 如需設定應用程式以進行 Azure App Service 的詳細資訊，請參閱[SignalR 發佈指導方針](xref:signalr/publish-to-azure-web-app)。
 
+#### <a name="azure-opno-locsignalr-service"></a>Azure SignalR 服務
+
 我們建議使用適用于 Blazor 伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr)。 此服務可將 Blazor 伺服器應用程式相應增加為大量的並行 SignalR 連線。 此外，SignalR 服務的全球範圍和高效能資料中心會大幅協助減少因地理位置而造成的延遲。 若要設定應用程式（並選擇性地布建） Azure SignalR 服務：
 
-* 在 Blazor 伺服器應用程式的 Visual Studio 中建立 Azure 應用程式發佈設定檔。
-* 將**Azure SignalR 服務**相依性新增至設定檔。 如果 Azure 訂用帳戶沒有要指派給應用程式的既有 Azure SignalR 服務實例，請選取 [**建立新的 azure SignalR 服務實例**] 以布建新的服務實例。
-* 將應用程式發行至 Azure。
+1. 啟用服務以支援「固定*會話*」，在此情況下，用戶端會在進行[回溯時重新導向至相同的伺服器](xref:blazor/hosting-models#reconnection-to-the-same-server)。 將 [`ServerStickyMode` 選項] 或 [設定] 值設為 [`Required`]。 一般而言，應用程式會使用下列**其中一**種方法來建立設定：
+
+   * `Startup.ConfigureServices`：
+  
+     ```csharp
+     services.AddSignalR().AddAzureSignalR(options =>
+     {
+         options.ServerStickyMode = 
+             Microsoft.Azure.SignalR.ServerStickyMode.Required;
+     });
+     ```
+
+   * 設定（使用下列**其中一**種方法）：
+  
+     * *appsettings.json*：
+
+       ```json
+       "Azure:SignalR:ServerStickyMode": "Required"
+       ```
+
+     * App service 的設定 ** > Azure 入口網站中的** **應用程式設定**（**名稱**： `Azure:SignalR:ServerStickyMode`，**值**： `Required`）。
+
+1. 在 Blazor 伺服器應用程式的 Visual Studio 中建立 Azure 應用程式發佈設定檔。
+1. 將**Azure SignalR 服務**相依性新增至設定檔。 如果 Azure 訂用帳戶沒有要指派給應用程式的既有 Azure SignalR 服務實例，請選取 [**建立新的 azure SignalR 服務實例**] 以布建新的服務實例。
+1. 將應用程式發行至 Azure。
+
+#### <a name="iis"></a>IIS
+
+使用 IIS 時，會使用應用程式要求路由來啟用「粘滯會話」。 如需詳細資訊，請參閱[使用應用程式要求路由的 HTTP 負載平衡](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
+
+#### <a name="kubernetes"></a>Kubernetes
+
+使用下列[Kubernetes 注釋來建立輸入定義：適用于粘滯會話](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/)。
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: <ingress-name>
+  annotations:
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "affinity"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "14400"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "14400"
+```
 
 ### <a name="measure-network-latency"></a>測量網路延遲
 

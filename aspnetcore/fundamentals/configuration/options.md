@@ -5,14 +5,14 @@ description: 了解如何使用選項模式來代表 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/28/2019
+ms.date: 11/18/2019
 uid: fundamentals/configuration/options
-ms.openlocfilehash: f9e94e8d1736b7ffaa2640aba03da6b239a34f0a
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 4192bab8acef7c4f7bdf1ac481c468cd0a835420
+ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034020"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74239788"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -31,7 +31,7 @@ ms.locfileid: "73034020"
 
 ## <a name="package"></a>封裝
 
-ASP.NET Core 應用程式中會隱含地參考[microsoft.extensions.options.configurationextensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/)套件。
+The [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) package is implicitly referenced in ASP.NET Core apps.
 
 ## <a name="options-interfaces"></a>選項介面
 
@@ -138,7 +138,7 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
-`GetSection` 方法需要 <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> 命名空間。
+The `GetSection` method requires the <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> namespace.
 
 範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：
 
@@ -162,11 +162,16 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 subOption1 = subvalue1_from_json, subOption2 = 200
 ```
 
-## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a>檢視模型提供的選項或使用直接檢視插入提供的選項
+## <a name="options-injection"></a>Options injection
 
-檢視模型提供的選項或使用直接檢視插入提供的選項是以範例應用程式中的範例 &num;4 來示範。
+Options injection is demonstrated as Example &num;4 in the sample app.
 
-可以在檢視模型中提供選項，或藉由將 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 直接插入至檢視來提供選項 (*Pages/Index.cshtml.cs*)：
+Inject <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into:
+
+* A Razor page or MVC view with the [@inject](xref:mvc/views/razor#inject) Razor directive.
+* A page or view model.
+
+The following example from the sample app injects <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into a page model (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -186,9 +191,12 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 重新載入組態資料是以範例應用程式中的範例 &num;5 來示範。
 
-<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 支援以最小的處理負擔來重新載入選項。
+Using <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>, options are computed once per request when accessed and cached for the lifetime of the request.
 
-在要求的存留期內存取及快取選項時，會針對每個要求計算一次選項。
+The difference between `IOptionsMonitor` and `IOptionsSnapshot` is that:
+
+* `IOptionsMonitor` is a [singleton service](xref:fundamentals/dependency-injection#singleton) that retrieves current option values at any time, which is especially useful in singleton dependencies.
+* `IOptionsSnapshot` is a [scoped service](xref:fundamentals/dependency-injection#scoped) and provides a snapshot of the options at the time the `IOptionsSnapshot<T>` object is constructed. Options snapshots are designed for use with transient and scoped dependencies.
 
 下列範例示範在 *appsettings.json* 變更之後如何建立新的 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> (*Pages/Index.cshtml.cs*)。 對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。
 
@@ -342,7 +350,7 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。 `Microsoft.Extensions.Options.DataAnnotations` 會在 ASP.NET Core apps 中以隱含方式參考。
+透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。 `Microsoft.Extensions.Options.DataAnnotations` is implicitly referenced in ASP.NET Core apps.
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -554,7 +562,7 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
-`GetSection` 方法需要 <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> 命名空間。
+The `GetSection` method requires the <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> namespace.
 
 範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：
 
@@ -578,11 +586,16 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 subOption1 = subvalue1_from_json, subOption2 = 200
 ```
 
-## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a>檢視模型提供的選項或使用直接檢視插入提供的選項
+## <a name="options-injection"></a>Options injection
 
-檢視模型提供的選項或使用直接檢視插入提供的選項是以範例應用程式中的範例 &num;4 來示範。
+Options injection is demonstrated as Example &num;4 in the sample app.
 
-可以在檢視模型中提供選項，或藉由將 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 直接插入至檢視來提供選項 (*Pages/Index.cshtml.cs*)：
+Inject <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into:
+
+* A Razor page or MVC view with the [@inject](xref:mvc/views/razor#inject) Razor directive.
+* A page or view model.
+
+The following example from the sample app injects <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into a page model (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -602,9 +615,12 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 重新載入組態資料是以範例應用程式中的範例 &num;5 來示範。
 
-<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 支援以最小的處理負擔來重新載入選項。
+Using <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>, options are computed once per request when accessed and cached for the lifetime of the request.
 
-在要求的存留期內存取及快取選項時，會針對每個要求計算一次選項。
+The difference between `IOptionsMonitor` and `IOptionsSnapshot` is that:
+
+* `IOptionsMonitor` is a [singleton service](xref:fundamentals/dependency-injection#singleton) that retrieves current option values at any time, which is especially useful in singleton dependencies.
+* `IOptionsSnapshot` is a [scoped service](xref:fundamentals/dependency-injection#scoped) and provides a snapshot of the options at the time the `IOptionsSnapshot<T>` object is constructed. Options snapshots are designed for use with transient and scoped dependencies.
 
 下列範例示範在 *appsettings.json* 變更之後如何建立新的 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> (*Pages/Index.cshtml.cs*)。 對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。
 
@@ -758,7 +774,7 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。 `Microsoft.Extensions.Options.DataAnnotations` 包含在[AspNetCore. App 中繼套件](xref:fundamentals/metapackage-app)中。
+透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。 `Microsoft.Extensions.Options.DataAnnotations` is included in the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app).
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
@@ -968,7 +984,7 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
-`GetSection` 方法需要 <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> 命名空間。
+The `GetSection` method requires the <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> namespace.
 
 範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：
 

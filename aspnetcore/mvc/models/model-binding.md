@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解 ASP.NET Core 中的模型繫結如何運作，以及如何自訂其行為。
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
-ms.date: 05/31/2019
+ms.date: 11/15/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: aeb2da7e11df1eab5a17e2ae0a3971420c9383b4
-ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
+ms.openlocfilehash: a025419a5b4d2c2e3e5c5a7850df281ddd3164ea
+ms.sourcegitcommit: f91d322f790123d41ec3271fa084ae20ed9f89a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73190603"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155049"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core 中的資料繫結
 
@@ -40,7 +40,7 @@ ms.locfileid: "73190603"
 http://contoso.com/api/pets/2?DogsOnly=true
 ```
 
-在路由系統選取動作方法之後，模型繫結會透過下列步驟：
+在路由系統選取動作方法之後，模型系結會經歷下列步驟：
 
 * 尋找第一個參數 `GetByID`，它是名為 `id` 的整數。
 * 查看 HTTP 要求中所有可用的來源，在路由資料中找到 `id` = "2"。

@@ -4,16 +4,16 @@ author: ssougnez
 description: 在本教學課程中，您會將 Webpack 設定為配套，並建立用戶端以 TypeScript 撰寫的 ASP.NET Core SignalR web 應用程式。
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 no-loc:
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 759584f432807689ba194c86046364552fce1a45
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: a7c99c9e79647995886aec5b3a91584fd2f24451
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73964022"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317478"
 ---
 # <a name="use-aspnet-core-opno-locsignalr-with-typescript-and-webpack"></a>搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
 
@@ -34,20 +34,20 @@ ms.locfileid: "73964022"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 隨附 **ASP.NET 和網頁程式開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
+* 隨附 [ASP.NET 和網頁程式開發](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)工作負載的 **Visual Studio 2019**
 * [.NET Core SDK 3.0 或更新版本](https://www.microsoft.com/net/download/all)
-* 具有 [npm](https://www.npmjs.com/) 的 [Node.js](https://nodejs.org/)
+* 具有 [npm](https://nodejs.org/) 的 [Node.js](https://www.npmjs.com/)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Visual Studio Code](https://code.visualstudio.com/download)
 * [.NET Core SDK 3.0 或更新版本](https://www.microsoft.com/net/download/all)
 * [適用於 Visual Studio Code 1.17.1 版或更新版本的 C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-* 具有 [npm](https://www.npmjs.com/) 的 [Node.js](https://nodejs.org/)
+* 具有 [npm](https://nodejs.org/) 的 [Node.js](https://www.npmjs.com/)
 
 ---
 
@@ -109,7 +109,7 @@ dotnet new web -o SignalRWebPack
 
     如需詳細資料，請參閱官方的 [npm-install](https://docs.npmjs.com/cli/install) 文件。
 
-1. 以下列程式碼片段取代 *package.json* 檔案的 `scripts` 屬性：
+1. 以下列程式碼片段取代 `scripts`package.json*檔案的* 屬性：
 
     ```json
     "scripts": {
@@ -162,7 +162,7 @@ dotnet new web -o SignalRWebPack
 
     上述的 TypeScript 會擷取 DOM 項目的參考，並將附加兩個事件處理常式：
 
-    * `keyup`：當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 **Enter** 鍵時，即會呼叫 `send` 函式。
+    * `keyup`：當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 `send`Enter**鍵時，即會呼叫** 函式。
     * `click`：當使用者按一下 [傳送] 按鈕時，就會引發此事件。 系統會呼叫 `send` 函式。
 
 ## <a name="configure-the-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
@@ -198,10 +198,10 @@ dotnet new web -o SignalRWebPack
 1. 在專案的根目錄下執行下列命令：
 
     ```console
-    npm install @aspnet/signalr
+    npm install @microsoft/signalr
     ```
 
-    上述命令會安裝[SignalR TypeScript 用戶端](https://www.npmjs.com/package/@aspnet/signalr)，以允許用戶端將訊息傳送至伺服器。
+    上述命令會安裝[SignalR TypeScript 用戶端](https://www.npmjs.com/package/@microsoft/signalr)，以允許用戶端將訊息傳送至伺服器。
 
 1. 將醒目提示的程式碼新增至 *src/index.ts* 檔案：
 
@@ -209,7 +209,7 @@ dotnet new web -o SignalRWebPack
 
     上述程式碼支援從伺服器接收訊息。 `HubConnectionBuilder` 類別會建立用於設定伺服器連線的新產生器。 `withUrl` 函式則會設定中樞 URL。
 
-    SignalR 可在用戶端與伺服器之間交換訊息。 每個訊息都有特定的名稱。 例如，您可以包含名稱為 `messageReceived` 的訊息，用來執行負責在訊息區域中顯示新訊息的邏輯。 接聽特定的訊息可透過 `on` 函式完成。 您可以接聽任意數目的訊息名稱。 也可將參數傳遞給訊息，例如作者的名稱和已接收訊息的內容。 用戶端收到訊息之後，就會在其 `innerHTML` 屬性中使用作者的名稱和訊息內容建立新的 `div` 元素。 它會新增至顯示訊息的主要 `div` 元素。
+    SignalR 可在用戶端與伺服器之間交換訊息。 每個訊息都有特定的名稱。 例如，您可以包含名稱為 `messageReceived` 的訊息，用來執行負責在訊息區域中顯示新訊息的邏輯。 接聽特定的訊息可透過 `on` 函式完成。 您可以接聽任意數目的訊息名稱。 也可將參數傳遞給訊息，例如作者的名稱和已接收訊息的內容。 用戶端收到訊息之後，就會在其 `div` 屬性中使用作者的名稱和訊息內容建立新的 `innerHTML` 元素。 它會新增至顯示訊息的主要 `div` 元素。
 
 1. 現在用戶端可以接收訊息，請設定它來傳送訊息。 將醒目提示的程式碼新增至 *src/index.ts* 檔案：
 
@@ -223,7 +223,7 @@ dotnet new web -o SignalRWebPack
 
     上述程式碼會在伺服器收到訊息之後，向所有連線的使用者廣播已接收的訊息。 不需要讓泛型 `on` 方法接收所有訊息。 以訊息名稱命名方法就已足夠。
 
-    在此範例中，TypeScript 用戶端會傳送一則識別為 `newMessage` 的訊息。 C# `NewMessage` 方法預期有用戶端所傳送的資料。 將會在 [Clients.All](/dotnet/api/microsoft.aspnetcore.signalr.ihubclients-1.all) 上呼叫 [SendAsync](/dotnet/api/microsoft.aspnetcore.signalr.clientproxyextensions.sendasync) 方法。 接收的訊息就會傳送到連線至中樞的所有用戶端。
+    在此範例中，TypeScript 用戶端會傳送一則識別為 `newMessage` 的訊息。 C# `NewMessage` 方法預期有用戶端所傳送的資料。 將會在 [Clients.All](/dotnet/api/microsoft.aspnetcore.signalr.clientproxyextensions.sendasync) 上呼叫 [SendAsync](/dotnet/api/microsoft.aspnetcore.signalr.ihubclients-1.all) 方法。 接收的訊息就會傳送到連線至中樞的所有用戶端。
 
 ## <a name="test-the-app"></a>測試應用程式
 
@@ -235,13 +235,13 @@ dotnet new web -o SignalRWebPack
 
     [!INCLUDE [npm-run-release](../includes/signalr-typescript-webpack/npm-run-release.md)]
 
-1. 選取 [偵錯] > [啟動但不偵錯]，啟動瀏覽器中的應用程式，但不附加偵錯工具。 隨即會在 `http://localhost:<port_number>` 處提供 *wwwroot/index.html* 檔案。
+1. 選取 [偵錯] > [啟動但不偵錯]，啟動瀏覽器中的應用程式，但不附加偵錯工具。 隨即會在 *處提供*wwwroot/index.html`http://localhost:<port_number>` 檔案。
 
    如果您遇到編譯錯誤，請嘗試關閉並重新開啟方案。 
 
 1. 開啟另一個瀏覽器執行個體 (任何瀏覽器)。 在網址列中貼上 URL。
 
-1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在兩個頁面上。
+1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在這兩個頁面上。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -261,7 +261,7 @@ dotnet new web -o SignalRWebPack
 
 1. 開啟另一個瀏覽器執行個體 (任何瀏覽器)。 在網址列中貼上 URL。
 
-1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在兩個頁面上。
+1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在這兩個頁面上。
 
 ---
 
@@ -273,16 +273,16 @@ dotnet new web -o SignalRWebPack
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 隨附 **ASP.NET 和網頁程式開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
+* 隨附 [ASP.NET 和網頁程式開發](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)工作負載的 **Visual Studio 2019**
 * [.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download/all)
-* 具有 [npm](https://www.npmjs.com/) 的 [Node.js](https://nodejs.org/)
+* 具有 [npm](https://nodejs.org/) 的 [Node.js](https://www.npmjs.com/)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Visual Studio Code](https://code.visualstudio.com/download)
 * [.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download/all)
 * [適用於 Visual Studio Code 1.17.1 版或更新版本的 C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-* 具有 [npm](https://www.npmjs.com/) 的 [Node.js](https://nodejs.org/)
+* 具有 [npm](https://nodejs.org/) 的 [Node.js](https://www.npmjs.com/)
 
 ---
 
@@ -344,7 +344,7 @@ dotnet new web -o SignalRWebPack
 
     如需詳細資料，請參閱官方的 [npm-install](https://docs.npmjs.com/cli/install) 文件。
 
-1. 以下列程式碼片段取代 *package.json* 檔案的 `scripts` 屬性：
+1. 以下列程式碼片段取代 `scripts`package.json*檔案的* 屬性：
 
     ```json
     "scripts": {
@@ -397,18 +397,18 @@ dotnet new web -o SignalRWebPack
 
     上述的 TypeScript 會擷取 DOM 項目的參考，並將附加兩個事件處理常式：
 
-    * `keyup`：當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 **Enter** 鍵時，即會呼叫 `send` 函式。
+    * `keyup`：當使用者在識別為 `tbMessage` 的文字方塊中鍵入某些內容時，就會引發此事件。 當使用者按下 `send`Enter**鍵時，即會呼叫** 函式。
     * `click`：當使用者按一下 [傳送] 按鈕時，就會引發此事件。 系統會呼叫 `send` 函式。
 
 ## <a name="configure-the-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
-1. `Startup.Configure` 方法中提供的程式碼會顯示 *Hello World!* 。 請以 [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 和 [UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 的呼叫取代 `app.Run` 方法呼叫。
+1. `Startup.Configure` 方法中提供的程式碼會顯示 *Hello World!* 。 請以 `app.Run`UseDefaultFiles[ 和 ](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)UseStaticFiles[ 的呼叫取代 ](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 方法呼叫。
 
     [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_UseStaticDefaultFiles)]
 
     上述程式碼可讓伺服器找出並提供 *index.html* 檔案，而不論使用者輸入的是其完整 URL 還是 Web 應用程式的根目錄 URL。
 
-1. 在 `Startup.ConfigureServices` 方法中呼叫 [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_)。 它會將 SignalR 服務新增至您的專案。
+1. 在 [ 方法中呼叫 ](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_)AddSignalR`Startup.ConfigureServices`。 它會將 SignalR 服務新增至您的專案。
 
     [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_AddSignalR)]
 
@@ -433,10 +433,10 @@ dotnet new web -o SignalRWebPack
 1. 在專案的根目錄下執行下列命令：
 
     ```console
-    npm install @aspnet/signalr
+    npm install @microsoft/signalr
     ```
 
-    上述命令會安裝[SignalR TypeScript 用戶端](https://www.npmjs.com/package/@aspnet/signalr)，以允許用戶端將訊息傳送至伺服器。
+    上述命令會安裝[SignalR TypeScript 用戶端](https://www.npmjs.com/package/@microsoft/signalr)，以允許用戶端將訊息傳送至伺服器。
 
 1. 將醒目提示的程式碼新增至 *src/index.ts* 檔案：
 
@@ -444,7 +444,7 @@ dotnet new web -o SignalRWebPack
 
     上述程式碼支援從伺服器接收訊息。 `HubConnectionBuilder` 類別會建立用於設定伺服器連線的新產生器。 `withUrl` 函式則會設定中樞 URL。
 
-    SignalR 可在用戶端與伺服器之間交換訊息。 每個訊息都有特定的名稱。 例如，您可以包含名稱為 `messageReceived` 的訊息，用來執行負責在訊息區域中顯示新訊息的邏輯。 接聽特定的訊息可透過 `on` 函式完成。 您可以接聽任意數目的訊息名稱。 也可將參數傳遞給訊息，例如作者的名稱和已接收訊息的內容。 用戶端收到訊息之後，就會在其 `innerHTML` 屬性中使用作者的名稱和訊息內容建立新的 `div` 元素。 它會新增至顯示訊息的主要 `div` 元素。
+    SignalR 可在用戶端與伺服器之間交換訊息。 每個訊息都有特定的名稱。 例如，您可以包含名稱為 `messageReceived` 的訊息，用來執行負責在訊息區域中顯示新訊息的邏輯。 接聽特定的訊息可透過 `on` 函式完成。 您可以接聽任意數目的訊息名稱。 也可將參數傳遞給訊息，例如作者的名稱和已接收訊息的內容。 用戶端收到訊息之後，就會在其 `div` 屬性中使用作者的名稱和訊息內容建立新的 `innerHTML` 元素。 它會新增至顯示訊息的主要 `div` 元素。
 
 1. 現在用戶端可以接收訊息，請設定它來傳送訊息。 將醒目提示的程式碼新增至 *src/index.ts* 檔案：
 
@@ -458,7 +458,7 @@ dotnet new web -o SignalRWebPack
 
     上述程式碼會在伺服器收到訊息之後，向所有連線的使用者廣播已接收的訊息。 不需要讓泛型 `on` 方法接收所有訊息。 以訊息名稱命名方法就已足夠。
 
-    在此範例中，TypeScript 用戶端會傳送一則識別為 `newMessage` 的訊息。 C# `NewMessage` 方法預期有用戶端所傳送的資料。 將會在 [Clients.All](/dotnet/api/microsoft.aspnetcore.signalr.ihubclients-1.all) 上呼叫 [SendAsync](/dotnet/api/microsoft.aspnetcore.signalr.clientproxyextensions.sendasync) 方法。 接收的訊息就會傳送到連線至中樞的所有用戶端。
+    在此範例中，TypeScript 用戶端會傳送一則識別為 `newMessage` 的訊息。 C# `NewMessage` 方法預期有用戶端所傳送的資料。 將會在 [Clients.All](/dotnet/api/microsoft.aspnetcore.signalr.clientproxyextensions.sendasync) 上呼叫 [SendAsync](/dotnet/api/microsoft.aspnetcore.signalr.ihubclients-1.all) 方法。 接收的訊息就會傳送到連線至中樞的所有用戶端。
 
 ## <a name="test-the-app"></a>測試應用程式
 
@@ -470,11 +470,11 @@ dotnet new web -o SignalRWebPack
 
     [!INCLUDE [npm-run-release](../includes/signalr-typescript-webpack/npm-run-release.md)]
 
-1. 選取 [偵錯] > [啟動但不偵錯]，啟動瀏覽器中的應用程式，但不附加偵錯工具。 隨即會在 `http://localhost:<port_number>` 處提供 *wwwroot/index.html* 檔案。
+1. 選取 [偵錯] > [啟動但不偵錯]，啟動瀏覽器中的應用程式，但不附加偵錯工具。 隨即會在 *處提供*wwwroot/index.html`http://localhost:<port_number>` 檔案。
 
 1. 開啟另一個瀏覽器執行個體 (任何瀏覽器)。 在網址列中貼上 URL。
 
-1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在兩個頁面上。
+1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在這兩個頁面上。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -494,7 +494,7 @@ dotnet new web -o SignalRWebPack
 
 1. 開啟另一個瀏覽器執行個體 (任何瀏覽器)。 在網址列中貼上 URL。
 
-1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在兩個頁面上。
+1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在這兩個頁面上。
 
 ---
 

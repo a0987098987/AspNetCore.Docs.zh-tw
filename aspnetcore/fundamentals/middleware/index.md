@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/08/2019
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 8f5c3aabf17e78ae9675048602317c54f08e82a7
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: d678f3d1f6ca10e486543a2965506236e4e61b82
+ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259808"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74239842"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -33,7 +33,7 @@ ms.locfileid: "72259808"
 
 ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個呼叫。 下圖說明此概念。 執行緒遵循黑色箭號執行。
 
-![要求處理模式說明要求抵達，經過三個中介軟體所處理，然後應用程式送出回應。 每個中介軟體會執行自己的邏輯，並於 next() 陳述式中將要求遞交給下一個中介軟體。 在第三個中介軟體處理要求後，要求會反向傳回經前兩個中介軟體，以在其 next() 陳述式後，至作為回應離開應用程式傳到用戶端前的期間內，進行額外處理。](index/_static/request-delegate-pipeline.png)
+![要求處理模式說明要求抵達，經過三個中介軟體所處理，然後應用程式送出回應。 每個中介軟體會執行其邏輯，並於 next() 陳述式中將要求遞交至下個中介軟體。 在第三個中介軟體處理要求後，要求會反向傳回經前兩個中介軟體，以在其 next() 陳述式後，至作為回應離開應用程式傳到用戶端前的期間內，進行額外處理。](index/_static/request-delegate-pipeline.png)
 
 每一個委派皆能在下個委派的前後執行作業。 處理例外狀況的委派必須提前在管線中呼叫，以便其可與管線後續階段中所發生的例外狀況達成一致。
 
@@ -57,29 +57,40 @@ ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個�
 >
 > <xref:Microsoft.AspNetCore.Http.HttpResponse.HasStarted*> 是實用的提示，可表示是否已傳送標頭 (或) 是否已寫入本文。
 
-## <a name="order"></a>順序
+<a name="order"></a>
 
-`Startup.Configure` 方法內中介軟體元件的新增順序可定義在要求時叫用中介軟體元件的順序及回應的反向順序。 對安全性、效能與功能性而言，此順序相當重要。
+## <a name="middleware-order"></a>Middleware order
 
-下列 `Startup.Configure` 方法會新增適用於一般應用程式案例的中介軟體元件：
+`Startup.Configure` 方法內中介軟體元件的新增順序可定義在要求時叫用中介軟體元件的順序及回應的反向順序。 The order is **critical** for security, performance, and functionality.
+
+The following `Startup.Configure` method adds security related middleware components in the recommended order:
 
 ::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](index/snapshot/StartupAll3.cs?name=snippet)]
+
+在上述程式碼中：
+
+* Middleware that is not added when creating a new web app with [individual users accounts](xref:security/authentication/identity) is commented out.
+* Not every middleware needs to go in this exact order, but many do. For example, `UseCors`, `UseAuthentication`, and `UseAuthorization` must go in the order shown.
+
+下列 `Startup.Configure` 方法會新增適用於一般應用程式案例的中介軟體元件：
 
 1. 例外狀況/錯誤處理
    * 當應用程式在開發環境中執行時：
      * 開發人員例外狀況頁面中介軟體 (<xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage*>) 會回報應用程式執行階段錯誤。
-     * 資料庫錯誤頁面中介軟體會報告資料庫執行階段錯誤。
+     * Database Error Page Middleware reports database runtime errors.
    * 當應用程式在生產環境中執行時：
      * 例外狀況處理常式中介軟體 (<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*>) 會攔截在下列中介軟體中擲回的例外狀況。
      * HTTP 靜態傳輸安全性通訊協定 (HSTS) 中介軟體 (<xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>) 會新增 `Strict-Transport-Security` 標頭。
 1. HTTPS 重新導向中介軟體 (<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>) 會將 HTTP 要求重新導向到 HTTPS。
 1. 靜態檔案中介軟體 (<xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>) 會傳回靜態檔案並縮短進一步的要求處理時間。
 1. Cookie 原則中介軟體 (<xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*>) 會使應用程式符合歐盟一般資料保護歸調 (GDPR) 法規。
-1. 路由中介軟體（`UseRouting`）以路由傳送要求。
+1. Routing Middleware (`UseRouting`) to route requests.
 1. 驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>) 會嘗試在允許使用者存取安全資源之前先驗證使用者。
-1. 授權中介軟體（`UseAuthorization`）會授權使用者存取安全的資源。
+1. Authorization Middleware (`UseAuthorization`) authorizes a user to access secure resources.
 1. 工作階段中介軟體 (<xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession*>) 會建立並維護工作階段狀態。 若應用程式使用工作階段狀態，請在 Cookie 原則中介軟體之後、MVC 中介軟體之前呼叫工作階段中介軟體。
-1. 端點路由中介軟體（`UseEndpoints` 加 `MapRazorPages`），以將 Razor Pages 端點新增至要求管線。
+1. Endpoint Routing Middleware (`UseEndpoints` with `MapRazorPages`) to add Razor Pages endpoints to the request pipeline.
 
 <!--
 
@@ -126,11 +137,11 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> 是第一個新增到管道的中介軟體元件。 因此，例外處理常式中介軟體會攔截後續呼叫中發生的所有例外狀況。
 
-靜態檔案中介軟體會提前在管線中呼叫，以便其無須逐一處理剩餘的元件，就能處理要求及執行最少運算。 靜態檔案中介軟體**不會**執行授權檢查。 靜態檔案中介軟體所提供的任何檔案（包括*wwwroot*底下的檔案）皆可公開使用。 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
+靜態檔案中介軟體會提前在管線中呼叫，以便其無須逐一處理剩餘的元件，就能處理要求及執行最少運算。 靜態檔案中介軟體**不會**執行授權檢查。 Any files served by Static File Middleware, including those under *wwwroot*, are publicly available. 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
 
 若靜態檔案中介軟體未處理要求，該要求會繼續傳遞給執行驗證的驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>)。 驗證不會對未經驗證的要求執行最少運算。 雖然驗證中介軟體會驗證要求，但只有在 MVC 選取特定 Razor 頁面或 MVC 控制器及動作後，才會進行驗證 (與拒絕)。
 
-下列範例示範靜態檔案中介軟體在回應壓縮中介軟體之前處理靜態檔案要求之前的靜態檔案順序。 靜態檔案並不會以此中介軟體順序壓縮。 Razor Pages 回應可以進行壓縮。
+下列範例示範靜態檔案中介軟體在回應壓縮中介軟體之前處理靜態檔案要求之前的靜態檔案順序。 靜態檔案並不會以此中介軟體順序壓縮。 The Razor Pages responses can be compressed.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -150,6 +161,15 @@ public void Configure(IApplicationBuilder app)
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
+
+[!code-csharp[](index/snapshot/Startup22.cs?name=snippet)]
+
+在上述程式碼中：
+
+* Middleware that is not added when creating a new web app with [individual users accounts](xref:security/authentication/identity) is commented out.
+* Not every middleware needs to go in this exact order, but many do. For example, `UseCors` and `UseAuthentication` must go in the order shown.
+
+下列 `Startup.Configure` 方法會新增適用於一般應用程式案例的中介軟體元件：
 
 1. 例外狀況/錯誤處理
    * 當應用程式在開發環境中執行時：
@@ -192,7 +212,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> 是第一個新增到管道的中介軟體元件。 因此，例外處理常式中介軟體會攔截後續呼叫中發生的所有例外狀況。
 
-靜態檔案中介軟體會提前在管線中呼叫，以便其無須逐一處理剩餘的元件，就能處理要求及執行最少運算。 靜態檔案中介軟體**不會**執行授權檢查。 靜態檔案中介軟體所提供的任何檔案（包括*wwwroot*底下的檔案）皆可公開使用。 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
+靜態檔案中介軟體會提前在管線中呼叫，以便其無須逐一處理剩餘的元件，就能處理要求及執行最少運算。 靜態檔案中介軟體**不會**執行授權檢查。 Any files served by Static File Middleware, including those under *wwwroot*, are publicly available. 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
 
 若靜態檔案中介軟體未處理要求，該要求會繼續傳遞給執行驗證的驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>)。 驗證不會對未經驗證的要求執行最少運算。 雖然驗證中介軟體會驗證要求，但只有在 MVC 選取特定 Razor 頁面或 MVC 控制器及動作後，才會進行驗證 (與拒絕)。
 
@@ -266,23 +286,23 @@ ASP.NET Core 隨附下列中介軟體元件。 「順序」欄說明 中介軟�
 | 中介軟體 | 描述 | 順序 |
 | ---------- | ----------- | ----- |
 | [驗證](xref:security/authentication/identity) | 提供驗證支援。 | 在需要 `HttpContext.User` 之前。 OAuth 回呼的終端機。 |
-| [Cookie 原則](xref:security/gdpr) | 追蹤使用者對用於儲存個人資訊的同意，並強制執行 Cookie 欄位的最低標準，例如 `secure` 和 `SameSite`。 | 在發出 Cookie 的中介軟體之前。 例如：驗證、工作階段、MVC (TempData)。 |
+| [Cookie 原則](xref:security/gdpr) | 追蹤使用者對用於儲存個人資訊的同意，並強制執行 Cookie 欄位的最低標準，例如 `secure` 和 `SameSite`。 | 在發出 Cookie 的中介軟體之前。 範例：驗證、工作階段、MVC (TempData)。 |
 | [CORS](xref:security/cors) | 設定跨原始來源資源共用。 | 在使用 CORS 的元件之前。 |
-| [診斷](xref:fundamentals/error-handling) | 提供開發人員例外狀況頁面、例外狀況處理、狀態字碼頁，以及新應用程式的預設網頁的數個個別中介軟體。 | 在產生錯誤的元件之前。 終端機的例外狀況，或為新的應用程式提供預設的網頁。 |
+| [診斷](xref:fundamentals/error-handling) | Several separate middlewares that provide a developer exception page, exception handling, status code pages, and the default web page for new apps. | 在產生錯誤的元件之前。 Terminal for exceptions or serving the default web page for new apps. |
 | [轉送標頭](xref:host-and-deploy/proxy-load-balancer) | 將設為 Proxy 的標頭轉送到目前要求。 | 在使用更新方法的欄位之前。 範例：配置、主機，用戶端 IP、方法。 |
 | [健康狀態檢查](xref:host-and-deploy/health-checks) | 檢查 ASP.NET Core 應用程式及其相依性的健康狀態，例如檢查資料庫可用性。 | 若某項要求與健康狀態檢查端點相符，則會是終端機。 |
 | [HTTP 方法覆寫](xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions) | 允許傳入的 POST 要求覆寫方法。 | 在使用更新方法的元件之前。 |
 | [HTTPS 重新導向](xref:security/enforcing-ssl#require-https) | 將所有 HTTP 要求都重新導向至 HTTPS。 | 在使用 URL 的元件之前。 |
-| [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | 增強安全性的中介軟體，可新增特殊的回應標頭。 | 在傳送回應前和修改要求的元件後。 例如：轉送的標頭、URL 重寫。 |
+| [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | 增強安全性的中介軟體，可新增特殊的回應標頭。 | 在傳送回應前和修改要求的元件後。 範例：轉送的標頭、URL 重寫。 |
 | [MVC](xref:mvc/overview) | 使用 MVC/Razor 頁面處理要求。 | 若要求符合路由則終止。 |
 | [OWIN](xref:fundamentals/owin) | 以 OWIN 為基礎之應用程式、伺服器和中介軟體的 Interop。 | 若 OWIN 中介軟體完全處理要求則終止。 |
 | [回應快取](xref:performance/caching/middleware) | 提供快取回應的支援。 | 在需要快取的元件之前。 |
 | [回應壓縮](xref:performance/response-compression) | 提供壓縮回應的支援。 | 在需要壓縮的元件之前。 |
 | [要求當地語系化](xref:fundamentals/localization) | 提供當地語系化支援。 | 在偵測當地語系化的元件之前。 |
-| [端點路由](xref:fundamentals/routing) | 定義並限制要求路由。 | 比對路由的終端機。 |
-| [工作階段](xref:fundamentals/app-state) | 提供管理使用者工作階段的支援。 | 在需要工作階段的元件之前。 |
+| [Endpoint Routing](xref:fundamentals/routing) | 定義並限制要求路由。 | 比對路由的終端機。 |
+| [Session](xref:fundamentals/app-state) | 提供管理使用者工作階段的支援。 | 在需要工作階段的元件之前。 |
 | [靜態檔案](xref:fundamentals/static-files) | 支援靜態檔案的提供和目錄瀏覽。 | 若要求符合檔案則終止。 |
-| [URL 重寫](xref:fundamentals/url-rewriting) | 提供重寫 URL 及重新導向要求的支援。 | 在使用 URL 的元件之前。 |
+| [URL Rewrite](xref:fundamentals/url-rewriting) | 提供重寫 URL 及重新導向要求的支援。 | 在使用 URL 的元件之前。 |
 | [WebSockets](xref:fundamentals/websockets) | 啟用 WebSockets 通訊協定。 | 在接受 WebSocket 要求的必要元件之前。 |
 
 ## <a name="additional-resources"></a>其他資源

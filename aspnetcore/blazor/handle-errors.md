@@ -5,31 +5,72 @@ description: 探索 ASP.NET Core 如何 Blazor Blazor 如何管理未處理的�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 11/21/2019
+no-loc:
+- Blazor
+- SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: afcaa4d926c3e5f0a018897ce4b67b54574dae77
-ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
+ms.openlocfilehash: f2fa59259f1dd36f50e81256bddea265e347554b
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426982"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317159"
 ---
-# <a name="handle-errors-in-aspnet-core-blazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
+# <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
 
 本文說明 Blazor 如何管理未處理的例外狀況，以及如何開發偵測和處理錯誤的應用程式。
 
-## <a name="how-the-blazor-framework-reacts-to-unhandled-exceptions"></a>Blazor 架構如何回應未處理的例外狀況
+::: moniker range=">= aspnetcore-3.1"
 
-Blazor 伺服器是可設定狀態的架構。 當使用者與應用程式互動時，它們會維持與伺服器的連線，稱為「*線路*」。 線路包含作用中的元件實例，以及其他許多狀態層面，例如：
+## <a name="detailed-errors-during-development"></a>開發期間的詳細錯誤
+
+當 Blazor 應用程式在開發期間無法正常運作時，從應用程式接收詳細的錯誤資訊有助於疑難排解和修正問題。 發生錯誤時，Blazor 應用程式會在畫面底部顯示 [金色] 列：
+
+* 在開發期間，「金級」列會將您導向至瀏覽器主控台，您可以在其中看到例外狀況。
+* 在生產環境中，「金級」列會通知使用者發生錯誤，並建議重新整理瀏覽器。
+
+此錯誤處理體驗的 UI 是 Blazor 專案範本的一部分。 在 Blazor WebAssembly 應用程式中，自訂*wwwroot/index.html*檔案中的體驗：
+
+```html
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+```
+
+在 Blazor 伺服器應用程式中，自訂*Pages/_Host. cshtml*檔案中的體驗：
+
+```cshtml
+<div id="blazor-error-ui">
+    <environment include="Staging,Production">
+        An error has occurred. This application may no longer respond until reloaded.
+    </environment>
+    <environment include="Development">
+        An unhandled exception has occurred. See browser dev tools for details.
+    </environment>
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+```
+
+`blazor-error-ui` 專案是由 Blazor 範本所包含的樣式所隱藏，然後在發生錯誤時顯示。
+
+::: moniker-end
+
+## <a name="how-the-opno-locblazor-framework-reacts-to-unhandled-exceptions"></a>Blazor 架構如何回應未處理的例外狀況
+
+Blazor Server 是具狀態架構。 當使用者與應用程式互動時，它們會維持與伺服器的連線，稱為「*線路*」。 線路包含作用中的元件實例，以及其他許多狀態層面，例如：
 
 * 最新呈現的元件輸出。
 * 可由用戶端事件觸發的目前事件處理委派集合。
 
 如果使用者在多個瀏覽器索引標籤中開啟應用程式，則會有多個獨立線路。
 
-Blazor 會將大部分未處理的例外狀況視為其發生所在之線路的嚴重問題。 如果線路因未處理的例外狀況而終止，則使用者只需重載頁面來建立新的線路，即可繼續與應用程式互動。 在終止的電路以外的線路（也就是其他使用者或其他瀏覽器索引標籤的線路）不受影響。 此案例與當機&mdash;的桌面應用程式相似，因為必須重新開機損毀的應用程式，但不會影響其他應用程式。
+Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴重問題。 如果線路因未處理的例外狀況而終止，則使用者只需重載頁面來建立新的線路，即可繼續與應用程式互動。 在終止的電路以外的線路（也就是其他使用者或其他瀏覽器索引標籤的線路）不受影響。 此案例與當機&mdash;的桌面應用程式相似，因為必須重新開機損毀的應用程式，但不會影響其他應用程式。
 
 當未處理的例外狀況發生時，會終止電路，原因如下：
 
@@ -48,9 +89,9 @@ Blazor 會將大部分未處理的例外狀況視為其發生所在之線路的�
 
 ## <a name="log-errors-with-a-persistent-provider"></a>使用持續性提供者記錄錯誤
 
-如果發生未處理的例外狀況，則會將例外狀況記錄到服務容器中所設定 <xref:Microsoft.Extensions.Logging.ILogger> 實例。 根據預設，Blazor apps 會使用主控台記錄提供者來記錄至主控台輸出。 請考慮使用可記錄管理大小和記錄輪替的提供者，記錄到更永久的位置。 如需詳細資訊，請參閱<xref:fundamentals/logging/index>。
+如果發生未處理的例外狀況，則會將例外狀況記錄到服務容器中所設定 <xref:Microsoft.Extensions.Logging.ILogger> 實例。 根據預設，Blazor apps 會使用主控台記錄提供者來記錄至主控台輸出。 請考慮使用可記錄管理大小和記錄輪替的提供者，記錄到更永久的位置。 如需詳細資訊，請參閱 <xref:fundamentals/logging/index>。
 
-在開發期間，Blazor 通常會將例外狀況的完整詳細資料傳送至瀏覽器的主控台，以協助進行偵錯工具。 在生產環境中，瀏覽器主控台中的詳細錯誤預設為停用，這表示錯誤不會傳送至用戶端，但例外狀況的完整詳細資料仍會記錄在伺服器端。 如需詳細資訊，請參閱<xref:fundamentals/error-handling>。
+在開發期間，Blazor 通常會將例外狀況的完整詳細資料傳送至瀏覽器的主控台，以協助進行偵錯工具。 在生產環境中，瀏覽器主控台中的詳細錯誤預設為停用，這表示錯誤不會傳送至用戶端，但例外狀況的完整詳細資料仍會記錄在伺服器端。 如需詳細資訊，請參閱 <xref:fundamentals/error-handling>。
 
 您必須決定要記錄哪些事件，以及記錄事件的嚴重性層級。 惡意的使用者可能可以故意觸發錯誤。 例如，請勿從顯示產品詳細資料之元件的 URL 中提供不明 `ProductId` 的錯誤中記錄事件。 並非所有錯誤都應該視為高嚴重性事件以進行記錄。
 
@@ -151,7 +192,7 @@ Blazor 會將大部分未處理的例外狀況視為其發生所在之線路的�
 
 您可以選擇在 .NET 端或方法呼叫的 JavaScript 端使用錯誤處理常式代碼。
 
-如需詳細資訊，請參閱<xref:blazor/javascript-interop>。
+如需詳細資訊，請參閱 <xref:blazor/javascript-interop>。
 
 ### <a name="circuit-handlers"></a>線路處理常式
 
@@ -172,11 +213,32 @@ Blazor 可讓程式碼定義*電路處理常式*，以在使用者的線路狀�
 
 ### <a name="prerendering"></a>呈現
 
-Blazor 元件可以使用 `Html.RenderComponentAsync` 來資源清單，以便在使用者的初始 HTTP 要求中傳回其呈現的 HTML 標籤。 其運作方式如下：
+::: moniker range=">= aspnetcore-3.1"
+
+Blazor 元件可以使用 `Component` 標籤協助程式來資源清單，如此一來，就會在使用者的初始 HTTP 要求中傳回其呈現的 HTML 標籤。 其運作方式如下：
 
 * 針對屬於相同頁面的所有資源清單元件建立新的電路。
 * 產生初始 HTML。
-* 將電路視為 `disconnected`，直到使用者的瀏覽器將 SignalR 連接重新建立回相同的伺服器為止。 建立連線時，線路上的互動會繼續，而且元件的 HTML 標籤也會更新。
+* 將電路視為 `disconnected`，直到使用者的瀏覽器建立回到相同伺服器的 SignalR 連接為止。 建立連線時，線路上的互動會繼續，而且元件的 HTML 標籤也會更新。
+
+如果任何元件在進行預入期間擲回未處理的例外狀況（例如，在生命週期方法或轉譯邏輯期間）：
+
+* 這是電路的嚴重例外狀況。
+* 例外狀況會從 `Component` 標籤協助程式的呼叫堆疊中擲出。 因此，除非開發人員程式碼明確攔截到例外狀況，否則整個 HTTP 要求都會失敗。
+
+在一般情況下，如果無法轉譯，則繼續建立並轉譯元件並沒有意義，因為無法轉譯運作中的元件。
+
+若要容忍在自動處理期間可能發生的錯誤，錯誤處理邏輯必須放在可能會擲回例外狀況的元件內部。 使用[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句搭配錯誤處理和記錄。 不要將 `Component` 標籤協助套裝程式裝在 `try-catch` 的語句中，而是將錯誤處理邏輯放在 `Component` 標籤協助程式所呈現的元件中。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
+
+Blazor 元件可以使用 `Html.RenderComponentAsync` 來資源清單，使其呈現的 HTML 標籤會當做使用者初始 HTTP 要求的一部分傳回。 其運作方式如下：
+
+* 針對屬於相同頁面的所有資源清單元件建立新的電路。
+* 產生初始 HTML。
+* 將電路視為 `disconnected`，直到使用者的瀏覽器建立回到相同伺服器的 SignalR 連接為止。 建立連線時，線路上的互動會繼續，而且元件的 HTML 標籤也會更新。
 
 如果任何元件在進行預入期間擲回未處理的例外狀況（例如，在生命週期方法或轉譯邏輯期間）：
 
@@ -186,6 +248,8 @@ Blazor 元件可以使用 `Html.RenderComponentAsync` 來資源清單，以便�
 在一般情況下，如果無法轉譯，則繼續建立並轉譯元件並沒有意義，因為無法轉譯運作中的元件。
 
 若要容忍在自動處理期間可能發生的錯誤，錯誤處理邏輯必須放在可能會擲回例外狀況的元件內部。 使用[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句搭配錯誤處理和記錄。 不要將呼叫包裝到 `try-catch` 語句中的 `RenderComponentAsync`，而是將錯誤處理邏輯放在 `RenderComponentAsync`所呈現的元件中。
+
+::: moniker-end
 
 ## <a name="advanced-scenarios"></a>Advanced 案例
 
@@ -213,7 +277,7 @@ Blazor 元件可以使用 `Html.RenderComponentAsync` 來資源清單，以便�
 
 ### <a name="custom-render-tree-logic"></a>自訂呈現樹狀結構邏輯
 
-大部分的 Blazor 元件都會實作為*razor*檔案，並且會進行編譯，以產生可在 `RenderTreeBuilder` 上操作以呈現其輸出的邏輯。 開發人員可以使用程式性程式C#代碼手動執行 `RenderTreeBuilder` 邏輯。 如需詳細資訊，請參閱<xref:blazor/components#manual-rendertreebuilder-logic>。
+大部分的 Blazor 元件會實作為*razor*檔案，並且會進行編譯，以產生可在 `RenderTreeBuilder` 上操作以呈現其輸出的邏輯。 開發人員可以使用程式性程式C#代碼手動執行 `RenderTreeBuilder` 邏輯。 如需詳細資訊，請參閱 <xref:blazor/components#manual-rendertreebuilder-logic>。
 
 > [!WARNING]
 > 手動轉譯樹狀結構產生器邏輯的使用會被視為先進且不安全的案例，不建議用於一般元件開發。

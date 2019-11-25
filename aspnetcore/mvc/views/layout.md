@@ -5,12 +5,12 @@ description: 了解如何先使用通用配置、共用指示詞，以及執行�
 ms.author: riande
 ms.date: 07/30/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 9a7b8003b24329f6e9cbd349ee47f6844b7c5f6d
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: 3ba2f459ca2b04a3001e261acab26880b6582500
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238039"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74289002"
 ---
 # <a name="layout-in-aspnet-core"></a>ASP.NET Core 中的配置
 
@@ -22,7 +22,7 @@ ms.locfileid: "70238039"
 * 共用指示詞。
 * 執行常見的程式碼，再轉譯頁面或檢視。
 
-此文章件將探討 ASP.NET Core MVC 兩種不同方法的配置：Razor Pages 和包含檢視的控制器。 針對本主題，差異很小：
+本文件將探討 ASP.NET Core MVC 兩種不同方法的配置：Razor Pages 和包含檢視的控制器。 針對本主題，差異很小：
 
 * Razor Pages 位於 *Pages* 資料夾。
 * 包含檢視的控制器，使用 *Views* 資料夾進行檢視。
@@ -41,7 +41,7 @@ ms.locfileid: "70238039"
 
   ![方案總管中的 Pages 資料夾](layout/_static/rp-web-project-views.png)
 
-* 具有檢視的控制器：*Views/Shared/_Layout.cshtml*
+* 包含檢視的控制器：*Views/Shared/_Layout.cshtml*
 
   ![方案總管中的 Views 資料夾](layout/_static/mvc-web-project-views.png)
 
@@ -65,12 +65,12 @@ Razor 檢視具有 `Layout` 屬性。 個別檢視透過設定此屬性來指定
 <!-- https://stackoverflow.com/questions/23327578 -->
 ### <a name="sections"></a>章節
 
-配置可以選擇性地呼叫 `RenderSection`，以參考一或多個「區段」。 區段提供一種方式，來組織特定頁面項目應放置的位置。 每次呼叫 `RenderSection`，都可以指定該區段是必要區段或是選擇性區段：
+配置可以選擇性地呼叫 *，以參考一或多個「區段」* `RenderSection`。 區段提供一種方式，來組織特定頁面項目應放置的位置。 每次呼叫 `RenderSection`，都可以指定該區段是必要區段或是選擇性區段：
 
 ```html
-@section Scripts {
-    @RenderSection("Scripts", required: false)
-}
+<script type="text/javascript" src="~/scripts/global.js"></script>
+
+@RenderSection("Scripts", required: false)
 ```
 
 如果找不到必要區段，將會擲回例外狀況。 個別檢視指定要使用 `@section` Razor 語法在區段內轉譯的內容。 如果頁面或檢視定義區段，則必須進行轉譯 (否則會發生錯誤)。
@@ -79,7 +79,7 @@ Razor Pages 檢視中的範例 `@section` 定義：
 
 ```html
 @section Scripts {
-     <script type="text/javascript" src="/scripts/main.js"></script>
+     <script type="text/javascript" src="~/scripts/main.js"></script>
 }
 ```
 

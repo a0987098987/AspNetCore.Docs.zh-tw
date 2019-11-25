@@ -5,14 +5,14 @@ description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/13/2019
+ms.date: 11/19/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: eda5c9c0372e47f5670cf097b5db80ec227bcb47
-ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
+ms.openlocfilehash: b23e64077290f0f613e904651e4bb640fcbba95d
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74115961"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74289082"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
@@ -297,7 +297,7 @@ public class Program
 
 記錄速度應該很快，不值得花費非同步程式碼的效能成本來處理。 若您的記錄資料存放區很慢，請不要直接寫入其中。 請考慮一開始將記錄寫入到快速的存放區，稍後再將它們移到慢速存放區。 例如，如果您要登入 SQL Server，您不希望在 `Log` 方法中直接執行，因為 `Log` 方法是同步的。 相反地，以同步方式將記錄訊息新增到記憶體內佇列，並讓背景工作角色提取出佇列的訊息，藉此執行推送資料到 SQL Server 的非同步工作。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>組態
 
 記錄提供者設定是由一或多個記錄提供者提供：
 
@@ -310,8 +310,6 @@ public class Program
 * 自訂提供者 (已安裝或已建立)。
 
 例如，記錄設定通常是由應用程式的 `Logging` 區段所提供的。 下列範例顯示一般 *appsettings.Development.json* 檔案的內容：
-
-::: moniker range=">= aspnetcore-2.1"
 
 ```json
 {
@@ -337,7 +335,7 @@ public class Program
 
 若已在 `Logging.{providername}.LogLevel` 中指定層級，它們會覆寫 `Logging.LogLevel` 中設定的所有項目。
 
-::: moniker-end
+記錄 API 不包含在應用程式執行時變更記錄層級的案例。 不過，某些設定提供者能夠重載設定，這會立即影響記錄設定。 例如，檔案設定[提供者](xref:fundamentals/configuration/index#file-configuration-provider)（由 `CreateDefaultBuilder` 新增以讀取設定檔案），預設會重載記錄設定。 如果應用程式正在執行時，程式碼中的設定有所變更，應用程式可以呼叫[IConfigurationRoot](xref:Microsoft.Extensions.Configuration.IConfigurationRoot.Reload*)來更新應用程式的記錄設定。
 
 如需有關如何實作設定提供者的詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 
@@ -497,7 +495,7 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 偵錯 = 1
 
-  針對可在開發與偵錯中使用的資訊。 範例：`Entering method Configure with flag set to true.` 由於記錄的數目很龐大，因此除非您正在進行疑難排解，否則通常不會在生產環境中啟用 `Debug` 層級記錄。
+  針對可在開發與偵錯中使用的資訊。 範例：`Entering method Configure with flag set to true.` 只有在進行疑難排解時才在生產環境中啟用 `Debug` 層級記錄，因為此類記錄的數目非常多。
 
 * 資訊 = 2
 
@@ -706,7 +704,7 @@ System.Exception: Item not found exception.
 
 ### <a name="create-filter-rules-in-configuration"></a>在組態中建立篩選規則
 
-專案範本程式碼會呼叫 `CreateDefaultBuilder` 以設定主控台與偵錯提供者的記錄。 `CreateDefaultBuilder` 方法會設定記錄以尋找 `Logging` 區段中的組態，如[本文先前所述](#configuration)。
+專案範本程式碼會呼叫 `CreateDefaultBuilder`，以設定主控台、Debug 和 EventSource （ASP.NET Core 2.2 或更新版本）提供者的記錄。 `CreateDefaultBuilder` 方法會設定記錄以尋找 `Logging` 區段中的組態，如[本文先前所述](#configuration)。
 
 組態資料會依提供者和類別指定最低記錄層級，如下列範例所示：
 
@@ -746,12 +744,12 @@ System.Exception: Item not found exception.
 
 組態資料和上述範例中所示的 `AddFilter` 程式碼會建立下表中所示的規則。 前六項來自組態範例，最後兩項來自程式碼範例。
 
-| number | Provider      | 開頭如下的類別...          | 最低記錄層級 |
+| number | 提供者      | 開頭如下的類別...          | 最低記錄層級 |
 | :----: | ------------- | --------------------------------------- | ----------------- |
 | 1      | 偵錯         | 所有類別                          | 內容       |
 | 2      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Internal | 警告           |
 | 3      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Razor    | 偵錯             |
-| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | 錯誤             |
+| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
 | 5      | 主控台       | 所有類別                          | 內容       |
 | 6      | 所有提供者 | 所有類別                          | 偵錯             |
 | 7      | 所有提供者 | 系統                                  | 偵錯             |
@@ -824,7 +822,7 @@ System.Exception: Item not found exception.
 
 以下是由 ASP.NET Core 與 Entity Framework Core 所使用的一些類別，以及有關它們可傳回哪些記錄的附註：
 
-| Category                            | 備註 |
+| 分類                            | 注意 |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | 一般 ASP.NET Core 診斷。 |
 | Microsoft.AspNetCore.DataProtection | 已考慮、發現及使用哪些金鑰。 |
@@ -890,7 +888,7 @@ warn: TodoApiSample.Controllers.TodoController[4000]
 
 ASP.NET Core 隨附下列提供者：
 
-* [主控台](#console-provider)
+* [Console](#console-provider)
 * [偵錯](#debug-provider)
 * [EventSource](#event-source-provider)
 * [EventLog](#windows-eventlog-provider)
@@ -1026,7 +1024,7 @@ dotnet tool install --global dotnet-trace
 
 1. 使用[Perfview](#perfview)開啟追蹤。 開啟*nettrace*檔案，並流覽追蹤事件。
 
-如需詳細資訊，請參閱:
+如需詳細資訊，請參閱：
 
 * [效能分析公用程式追蹤（dotnet-追蹤）](/dotnet/core/diagnostics/dotnet-trace) （.net Core 檔）
 * [效能分析公用程式追蹤（dotnet 追蹤）](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md) （dotnet/診斷 GitHub 存放庫檔）
@@ -1081,7 +1079,7 @@ logging.AddAzureWebAppDiagnostics();
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)未包含提供者套件。 當以 .NET Framework 為目標或是參考 `Microsoft.AspNetCore.App` 中繼套件時，請將提供者套件新增至專案。 
 
@@ -1130,7 +1128,7 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 
 * 從您應用程式的入口網站頁面瀏覽到 [App Service 記錄]。
 * 將 [應用程式記錄 (檔案系統)] 設定為 [開啟]。
-* 選擇記錄 [層級]。
+* 選擇記錄 [層級]。 此設定僅適用于 Azure 記錄串流，而不適用於應用程式中的其他記錄提供者。
 
 瀏覽到 [記錄資料流] 頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面產生的訊息。
 

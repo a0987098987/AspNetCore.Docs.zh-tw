@@ -5,14 +5,14 @@ description: 了解 Kestrel，這是 ASP.NET Core 的跨平台網頁伺服器。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 11/14/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: bab751bc1453481a11114a7a8c0787fa5576e500
-ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
+ms.openlocfilehash: 6fba6689f72f7a565e28d80f6770765ab097cf11
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73427065"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74289096"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -81,9 +81,9 @@ Kestrel 用作不需要反向 Proxy 伺服器的 Edge Server 時，不支援在�
 > [!WARNING]
 > 裝載於反向 Proxy 組態需要[主機篩選](#host-filtering)。
 
-## <a name="how-to-use-kestrel-in-aspnet-core-apps"></a>如何在 ASP.NET Core 應用程式中使用 Kestrel
+## <a name="kestrel-in-aspnet-core-apps"></a>ASP.NET Core 應用程式中的 Kestrel
 
-ASP.NET Core 專案範本預設會使用 Kestrel。 在*Program.cs*中，應用程式會呼叫 `ConfigureWebHostDefaults`，這會在幕後呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>。
+ASP.NET Core 專案範本預設會使用 Kestrel。 在*Program.cs*中，<xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> 方法會呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>：
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=8)]
 
@@ -135,7 +135,7 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 * 在 `Startup.ConfigureServices`中設定 Kestrel：
 
   1. 將 `IConfiguration` 的實例插入 `Startup` 類別中。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
-  2. 在 `Startup.ConfigureServices` 中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
+  2. 在 `Startup.ConfigureServices`中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
 
      ```csharp
      // using Microsoft.Extensions.Configuration
@@ -149,7 +149,7 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 
 * 建立主機時設定 Kestrel：
 
-  在*Program.cs*中，將設定的 [`Kestrel`] 區段載入 Kestrel 的設定：
+  在*Program.cs*中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -222,7 +222,7 @@ public IActionResult MyActionMethod()
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinResponseDataRate>
 
-如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於最小值，則連接會超時。寬限期是指 Kestrel 提供用戶端將其傳送速率增加到最小值的時間量。在這段時間內不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
+如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於下限值，則連線會逾時。寬限期是 Kestrel 提供給用戶端的時間量，以便將其傳送速率提高到下限值；在這段期間不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
 
 預設速率下限為 240 個位元組/秒，寬限期為 5 秒。
 
@@ -259,7 +259,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 });
 ```
 
-預設值為 100。
+預設值是 100。
 
 ### <a name="header-table-size"></a>標頭表格大小
 
@@ -276,7 +276,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="maximum-frame-size"></a>框架大小上限
 
-`Http2.MaxFrameSize` 表示伺服器所接收或傳送之 HTTP/2 連接框架承載的允許大小上限。 這個值是以八位元提供，而且必須介於 2^14 (16,384) 到 2^24-1 (16,777,215) 之間。
+`Http2.MaxFrameSize` 指出伺服器所接收或傳送之 HTTP/2 連接框架承載的允許大小上限。 這個值是以八位元提供，而且必須介於 2^14 (16,384) 到 2^24-1 (16,777,215) 之間。
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
@@ -328,7 +328,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="synchronous-io"></a>同步 IO
 
-<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO> 控制是否允許要求與回應的同步 IO。 預設值是 `false`。
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO> 控制是否允許要求與回應的同步 IO。 預設值為 `false`。
 
 > [!WARNING]
 > 大量的封鎖同步 IO 作業會導致執行緒集區耗盡，這會使得應用程式沒有回應。 只有當使用不支援同步 IO 的程式庫時才啟用 `AllowSynchronousIO`。
@@ -390,6 +390,9 @@ webBuilder.ConfigureKestrel(serverOptions =>
 });
 ```
 
+> [!NOTE]
+> 在呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults*>**之前**呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 所建立的端點不會套用預設值。
+
 ### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action\<HttpsConnectionAdapterOptions >）
 
 指定組態 `Action` 以針對每個 HTTPS 端點執行。 呼叫 `ConfigureHttpsDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
@@ -404,6 +407,9 @@ webBuilder.ConfigureKestrel(serverOptions =>
     });
 });
 ```
+
+> [!NOTE]
+> 在呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>**之前**呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 所建立的端點不會套用預設值。
 
 ### <a name="configureiconfiguration"></a>Configure(IConfiguration)
 
@@ -541,7 +547,7 @@ webBuilder.UseKestrel((context, serverOptions) =>
 });
 ```
 
-`KestrelServerOptions.ConfigurationLoader` 可以直接存取，以繼續逐一查看現有的載入器，例如 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 所提供的載入器。
+`KestrelServerOptions.ConfigurationLoader` 可以直接存取，以繼續逐一查看現有的載入器，例如 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>提供的載入器。
 
 * 每個端點的 [設定] 區段都可以在 `Endpoint` 方法的選項中使用，如此一來，就可以讀取自訂設定。
 * 可以藉由使用另一個區段再次呼叫 `options.Configure(context.Configuration.GetSection("{SECTION}"))` 而載入多個組態。 只會使用最後一個組態，除非在先前的執行個體上已明確呼叫 `Load`。 中繼套件不會呼叫 `Load`，如此可能會取代其預設組態區段。
@@ -859,7 +865,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
                      Version="{VERSION}" />
    ```
 
-* 在 `IWebHostBuilder` 上呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>：
+* 呼叫 `IWebHostBuilder`上的 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>：
 
    ```csharp
    public class Program
@@ -1019,7 +1025,7 @@ ASP.NET Core 專案範本預設會使用 Kestrel。 在 *Program.cs* 中，範�
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
 
-如需 `CreateDefaultBuilder` 和建立主機的詳細資訊，請參閱 <xref:fundamentals/host/web-host#set-up-a-host> 的*設定主機*一節。
+如需 `CreateDefaultBuilder` 和建立主機的詳細資訊，請參閱 <xref:fundamentals/host/web-host#set-up-a-host>的*設定主機*一節。
 
 若要在呼叫 `CreateDefaultBuilder` 之後提供額外的設定，請使用 `ConfigureKestrel`：
 
@@ -1083,7 +1089,7 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 * 在 `Startup.ConfigureServices`中設定 Kestrel：
 
   1. 將 `IConfiguration` 的實例插入 `Startup` 類別中。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
-  2. 在 `Startup.ConfigureServices` 中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
+  2. 在 `Startup.ConfigureServices`中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
 
      ```csharp
      // using Microsoft.Extensions.Configuration
@@ -1097,7 +1103,7 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 
 * 建立主機時設定 Kestrel：
 
-  在*Program.cs*中，將設定的 [`Kestrel`] 區段載入 Kestrel 的設定：
+  在*Program.cs*中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -1167,7 +1173,7 @@ public IActionResult MyActionMethod()
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinResponseDataRate>
 
-如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於最小值，則連接會超時。寬限期是指 Kestrel 提供用戶端將其傳送速率增加到最小值的時間量。在這段時間內不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
+如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於下限值，則連線會逾時。寬限期是 Kestrel 提供給用戶端的時間量，以便將其傳送速率提高到下限值；在這段期間不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
 
 預設速率下限為 240 個位元組/秒，寬限期為 5 秒。
 
@@ -1205,7 +1211,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-預設值為 100。
+預設值是 100。
 
 ### <a name="header-table-size"></a>標頭表格大小
 
@@ -1354,6 +1360,9 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
+> [!NOTE]
+> 在呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults*>**之前**呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 所建立的端點不會套用預設值。
+
 ### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action\<HttpsConnectionAdapterOptions >）
 
 指定組態 `Action` 以針對每個 HTTPS 端點執行。 呼叫 `ConfigureHttpsDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
@@ -1371,6 +1380,10 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             });
         });
 ```
+
+> [!NOTE]
+> 在呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>**之前**呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 所建立的端點不會套用預設值。
+
 
 ### <a name="configureiconfiguration"></a>Configure(IConfiguration)
 
@@ -1511,7 +1524,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-`KestrelServerOptions.ConfigurationLoader` 可以直接存取，以繼續逐一查看現有的載入器，例如 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 所提供的載入器。
+`KestrelServerOptions.ConfigurationLoader` 可以直接存取，以繼續逐一查看現有的載入器，例如 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>提供的載入器。
 
 * 每個端點的 [設定] 區段都可以在 `Endpoint` 方法的選項中使用，如此一來，就可以讀取自訂設定。
 * 可以藉由使用另一個區段再次呼叫 `options.Configure(context.Configuration.GetSection("{SECTION}"))` 而載入多個組態。 只會使用最後一個組態，除非在先前的執行個體上已明確呼叫 `Load`。 中繼套件不會呼叫 `Load`，如此可能會取代其預設組態區段。
@@ -1934,7 +1947,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-如需 `CreateDefaultBuilder` 和建立主機的詳細資訊，請參閱 <xref:fundamentals/host/web-host#set-up-a-host> 的*設定主機*一節。
+如需 `CreateDefaultBuilder` 和建立主機的詳細資訊，請參閱 <xref:fundamentals/host/web-host#set-up-a-host>的*設定主機*一節。
 
 ## <a name="kestrel-options"></a>Kestrel 選項
 
@@ -1966,7 +1979,7 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 * 在 `Startup.ConfigureServices`中設定 Kestrel：
 
   1. 將 `IConfiguration` 的實例插入 `Startup` 類別中。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
-  2. 在 `Startup.ConfigureServices` 中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
+  2. 在 `Startup.ConfigureServices`中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
 
      ```csharp
      // using Microsoft.Extensions.Configuration
@@ -1980,7 +1993,7 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 
 * 建立主機時設定 Kestrel：
 
-  在*Program.cs*中，將設定的 [`Kestrel`] 區段載入 Kestrel 的設定：
+  在*Program.cs*中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -2082,7 +2095,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinResponseDataRate>
 
-如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於最小值，則連接會超時。寬限期是指 Kestrel 提供用戶端將其傳送速率增加到最小值的時間量。在這段時間內不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
+如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於下限值，則連線會逾時。寬限期是 Kestrel 提供給用戶端的時間量，以便將其傳送速率提高到下限值；在這段期間不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
 
 預設速率下限為 240 個位元組/秒，寬限期為 5 秒。
 
@@ -2194,6 +2207,9 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
+> [!NOTE]
+> 在呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults*>**之前**呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 所建立的端點不會套用預設值。
+
 ### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action\<HttpsConnectionAdapterOptions >）
 
 指定組態 `Action` 以針對每個 HTTPS 端點執行。 呼叫 `ConfigureHttpsDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
@@ -2211,6 +2227,9 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             });
         });
 ```
+
+> [!NOTE]
+> 在呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>**之前**呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 所建立的端點不會套用預設值。
 
 ### <a name="configureiconfiguration"></a>Configure(IConfiguration)
 
@@ -2351,7 +2370,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-`KestrelServerOptions.ConfigurationLoader` 可以直接存取，以繼續逐一查看現有的載入器，例如 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 所提供的載入器。
+`KestrelServerOptions.ConfigurationLoader` 可以直接存取，以繼續逐一查看現有的載入器，例如 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>提供的載入器。
 
 * 每個端點的 [設定] 區段都可以在 `Endpoint` 方法的選項中使用，如此一來，就可以讀取自訂設定。
 * 可以藉由使用另一個區段再次呼叫 `options.Configure(context.Configuration.GetSection("{SECTION}"))` 而載入多個組態。 只會使用最後一個組態，除非在先前的執行個體上已明確呼叫 `Load`。 中繼套件不會呼叫 `Load`，如此可能會取代其預設組態區段。
@@ -2645,4 +2664,4 @@ Listening on the following addresses: http://127.0.0.1:48508
 * <xref:test/troubleshoot>
 * <xref:security/enforcing-ssl>
 * <xref:host-and-deploy/proxy-load-balancer>
-* [RFC 7230：訊息語法和路由 (第 5.4 節：主機)](https://tools.ietf.org/html/rfc7230#section-5.4)
+* [RFC 7230：Message Syntax and Routing (訊息語法和路由) 第 5.4 節：Host (主機)](https://tools.ietf.org/html/rfc7230#section-5.4)

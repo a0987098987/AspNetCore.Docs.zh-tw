@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解 ASP.NET Core 中的模型繫結如何運作，以及如何自訂其行為。
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
-ms.date: 11/15/2019
+ms.date: 11/21/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: a025419a5b4d2c2e3e5c5a7850df281ddd3164ea
-ms.sourcegitcommit: f91d322f790123d41ec3271fa084ae20ed9f89a6
+ms.openlocfilehash: 823d92c279454fc6c744eebbecf4268412774eba
+ms.sourcegitcommit: a104ba258ae7c0b3ee7c6fa7eaea1ddeb8b6eb73
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155049"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74478713"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core 中的資料繫結
 
@@ -40,7 +40,7 @@ ms.locfileid: "74155049"
 http://contoso.com/api/pets/2?DogsOnly=true
 ```
 
-在路由系統選取動作方法之後，模型系結會經歷下列步驟：
+Model binding goes through the following steps after the routing system selects the action method:
 
 * 尋找第一個參數 `GetByID`，它是名為 `id` 的整數。
 * 查看 HTTP 要求中所有可用的來源，在路由資料中找到 `id` = "2"。
@@ -83,18 +83,18 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 根據預設，模型繫結會從下列 HTTP 要求的來源中，取得索引鍵/值組形式的資料：
 
-1. 表單欄位 
+1. 表單欄位
 1. 要求本文 (適用於[具有 [ApiController] 屬性的控制器](xref:web-api/index#binding-source-parameter-inference)。)
 1. 路由資料
 1. 查詢字串參數
-1. 已上傳的檔案 
+1. 已上傳的檔案
 
-針對每個目標參數或屬性，會依照本清單顯示的順序掃描來源。 但也有一些例外：
+For each target parameter or property, the sources are scanned in the order indicated in the preceding list. 但也有一些例外：
 
 * 路由資料和查詢字串值只用於簡單型別。
 * 所上傳檔案只會繫結至實作 `IFormFile` 或 `IEnumerable<IFormFile>` 的目標類型。
 
-如果預設行為不提供正確的結果，您可以使用下列其中一個屬性來指定用於任何所指定目標的來源。 
+If the default source is not correct, use one of the following attributes to specify the source:
 
 * [[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) - 從查詢字串取得值。 
 * [[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) - 從路由資料取得值。
@@ -114,9 +114,34 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 ### <a name="frombody-attribute"></a>[FromBody] 屬性
 
-要求本文資料會使用要求內容類型特定的輸入格式器來剖析。 [本文稍後](#input-formatters)會說明輸入格式器。
+Apply the `[FromBody]` attribute to a parameter to populate its properties from the body of an HTTP request. The ASP.NET Core runtime delegates the responsibility of reading the body to an input formatter. [本文稍後](#input-formatters)會說明輸入格式器。
 
-針對每個動作方法，請不要將 `[FromBody]` 套用至多個參數。 ASP.NET Core 執行階段會將讀取要求資料流的責任委派給輸入格式器。 要求資料經讀取後，即無法再次讀取以用來繫結其他 `[FromBody]` 參數。
+When `[FromBody]` is applied to a complex type parameter, any binding source attributes applied to its properties are ignored. For example, the following `Create` action specifies that its `pet` parameter is populated from the body:
+
+```csharp
+public ActionResult<Pet> Create([FromBody] Pet pet)
+```
+
+The `Pet` class specifies that its `Breed` property is populated from a query string parameter:
+
+```csharp
+public class Pet
+{
+    public string Name { get; set; }
+
+    [FromQuery] // Attribute is ignored.
+    public string Breed { get; set; }
+}
+```
+
+在上述範例中：
+
+* The `[FromQuery]` attribute is ignored.
+* The `Breed` property is not populated from a query string parameter. 
+
+Input formatters read only the body and don't understand binding source attributes. If a suitable value is found in the body, that value is used to populate the `Breed` property.
+
+針對每個動作方法，請不要將 `[FromBody]` 套用至多個參數。 Once the request stream is read by an input formatter, it's no longer available to be read again for binding other `[FromBody]` parameters.
 
 ### <a name="additional-sources"></a>其他來源
 

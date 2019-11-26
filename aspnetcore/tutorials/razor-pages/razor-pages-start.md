@@ -25,7 +25,7 @@ ms.locfileid: "74116157"
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-在本教學課程中，您已：
+在此教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。
@@ -36,7 +36,7 @@ ms.locfileid: "74116157"
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -171,7 +171,7 @@ ms.locfileid: "74116157"
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-在本教學課程中，您已：
+在此教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。
@@ -182,7 +182,7 @@ ms.locfileid: "74116157"
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 

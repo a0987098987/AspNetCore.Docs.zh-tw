@@ -32,7 +32,7 @@ ms.locfileid: "74317493"
 
 ![[!OP.無-LOC （SignalR）] 範例應用程式](signalr/_static/3.x/signalr-get-started-finished.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -263,7 +263,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞至 SignalR。
 > * 新增程式碼，以將訊息從任何用戶端傳送至所有連線的用戶端。  
 最後，您將會有一個可運作的聊天應用程式： ![[！OP.無-LOC （SignalR）] 範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png)   
 
-## <a name="prerequisites"></a>先決條件    
+## <a name="prerequisites"></a>必要條件    
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)   
 
@@ -312,7 +312,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞至 SignalR。
 
 * 選取 [.NET Core] > [應用程式] > [ASP.NET Core Web 應用程式] (不要選取 [ASP.NET Core Web 應用程式 (MVC)])。  
 
-* 選取 [下一步]。  
+* 選取 **[下一步]** 。  
 
 * 將專案命名為 *SignalRChat*，然後選取 [建立]。   
 

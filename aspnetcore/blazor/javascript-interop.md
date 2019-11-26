@@ -125,7 +125,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 ## <a name="call-a-void-javascript-function"></a>呼叫 void JavaScript 函數
 
-會 使用`IJSRuntime.InvokeVoidAsync`呼叫傳回[void （0）/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void)或 [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined) 的 JavaScript 函數。
+會使用 `IJSRuntime.InvokeVoidAsync`來呼叫傳回[void （0）/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void)或[undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined)的 JavaScript 函式。
 
 ## <a name="detect-when-a-opno-locblazor-app-is-prerendering"></a>偵測 Blazor 應用程式何時已進行預呈現
  
@@ -199,7 +199,7 @@ public static Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
 [!code-cshtml[](javascript-interop/samples_snapshot/component2.razor?highlight=1,4,12)]
 
 > [!IMPORTANT]
-> 只有在呈現元件之後，才會填入 `username` 變數。 如果擴展 `ElementReference` 傳遞至 JavaScript 程式碼，JavaScript 程式碼就會收到 `null`的值。 若要在元件完成轉譯之後操作元素參考 (以設定專案的初始焦點), 請使用`OnAfterRenderAsync`或[元件生命週期方法](xref:blazor/components#lifecycle-methods) `OnAfterRender`。
+> 只有在呈現元件之後，才會填入 `username` 變數。 如果擴展 `ElementReference` 傳遞至 JavaScript 程式碼，JavaScript 程式碼就會收到 `null`的值。 若要在元件完成轉譯之後操作元素參考（以設定專案的初始焦點），請使用 `OnAfterRenderAsync` 或 `OnAfterRender` 的[元件生命週期方法](xref:blazor/components#lifecycle-methods)。
 
 ## <a name="invoke-net-methods-from-javascript-functions"></a>從 JavaScript 函式呼叫 .NET 方法
 
@@ -275,7 +275,7 @@ JS interop 程式碼可以包含在類別庫中，這可讓您在 NuGet 套件�
 
 在應用程式的專案檔中參考的組建 NuGet 套件，與參考任何 NuGet 套件的方式相同。 還原套件之後，應用程式程式碼可以呼叫 JavaScript，就像是C#一樣。
 
-如需詳細資訊，請參閱<xref:blazor/class-libraries>。
+如需詳細資訊，請參閱 <xref:blazor/class-libraries>。
 
 ## <a name="harden-js-interop-calls"></a>強化 JS interop 呼叫
 

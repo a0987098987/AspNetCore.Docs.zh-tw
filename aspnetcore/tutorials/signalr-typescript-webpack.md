@@ -34,7 +34,7 @@ ms.locfileid: "74317478"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 

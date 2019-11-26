@@ -26,7 +26,7 @@ ASP.NET Core 的 SignalR 支援 ASP.NET Core 支援的任何伺服器平臺。
 
 [JavaScript 用戶端](xref:signalr/javascript-client)會在 NodeJS 8 和更新版本以及下列瀏覽器上執行：
 
-| Browser                         | 版本         |
+| 瀏覽器                         | 版本         |
 | ------------------------------- | --------------- |
 | Microsoft Edge                  | 目前的&dagger; |
 | Mozilla Firefox                 | 目前的&dagger; |

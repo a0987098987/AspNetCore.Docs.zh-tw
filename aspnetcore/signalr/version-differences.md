@@ -25,7 +25,7 @@ ASP.NET Core SignalR 與 ASP.NET SignalR的用戶端或伺服器不相容。 本
 
 |                      | ASP.NET SignalR | ASP.NET Core SignalR |
 | -------------------- | --------------- | -------------------- |
-| 伺服器 NuGet 封裝 | [SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | 無。 包含在[AspNetCore](xref:fundamentals/metapackage-app)共用架構中。 |
+| 伺服器 NuGet 封裝 | [SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | None。 包含在[AspNetCore](xref:fundamentals/metapackage-app)共用架構中。 |
 | 用戶端 NuGet 套件 | [SignalR。台](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[SignalR。NODE.JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [AspNetCore.SignalR。台](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
 | JavaScript 用戶端 npm 套件 | [signalr](https://www.npmjs.com/package/signalr) | [@microsoft/signalr](https://www.npmjs.com/package/@microsoft/signalr) |
 | Java 用戶端 | [GitHub 存放庫](https://github.com/SignalR/java-client)（已淘汰）  | Maven package [com. signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
@@ -137,11 +137,11 @@ ASP.NET SignalR 的向外延展模型可讓用戶端重新連線，並將訊息�
 
 在 ASP.NET Core SignalR中，已簡化連接模型。 直接連接到單一中樞，而不是使用單一連線來共用多個中樞的存取權。
 
-### <a name="streaming"></a>資料流
+### <a name="streaming"></a>Streaming
 
 ASP.NET Core SignalR 現在支援從中樞將[資料串流](xref:signalr/streaming)至用戶端。
 
-### <a name="state"></a>狀況
+### <a name="state"></a>狀態
 
 已移除在用戶端與中樞之間傳遞任意狀態的功能（通常稱為 `HubState`），並支援進度訊息。 目前沒有任何對應的中樞 proxy。
 

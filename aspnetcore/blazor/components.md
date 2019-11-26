@@ -329,7 +329,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 當使用者將無法剖析的值提供給資料系結元素時，會在觸發系結事件時，自動將無法剖析的值還原成先前的值。
 
-請考慮下列案例：
+請試想下述情況：
 
 * `<input>` 元素會系結至 `int` 類型，其初始值為 `123`：
 
@@ -545,10 +545,10 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 下表顯示支援的 `EventArgs`。
 
-| 事件            | 類別                | DOM 事件和注意事項 |
+| 事件            | 執行個體                | DOM 事件和注意事項 |
 | ---------------- | -------------------- | -------------------- |
 | 剪貼簿        | `ClipboardEventArgs` | `oncut`, `oncopy`, `onpaste` |
-| 拖放式             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` 和 `DataTransferItem` 保存拖曳的專案資料。 |
+| 拖曳             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` 和 `DataTransferItem` 保存拖曳的專案資料。 |
 | 錯誤            | `ErrorEventArgs`     | `onerror` |
 | 事件            | `EventArgs`          | *一般*<br>`onactivate`、`onbeforeactivate`、`onbeforedeactivate`、`ondeactivate`、`onended`、`onfullscreenchange`、`onfullscreenerror`、`onloadeddata`、`onloadedmetadata`、`onpointerlockchange`、`onpointerlockerror`、`onreadystatechange`、`onscroll`<br><br>*剪貼簿*<br>`onbeforecut`, `onbeforecopy`, `onbeforepaste`<br><br>*輸入*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*媒介*<br>`oncanplay`、`oncanplaythrough`、`oncuechange`、`ondurationchange`、`onemptied`、`onpause`、`onplay`、`onplaying`、`onratechange`、`onseeked`、`onseeking`、`onstalled`、`onstop`、`onsuspend`、`ontimeupdate`、`onvolumechange`、`onwaiting` |
 | 焦點            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>不包含 `relatedTarget`的支援。 |
@@ -1688,14 +1688,14 @@ builder.AddContent(1, "Second");
 
 第一次執行程式碼時，如果 `true``someFlag`，則產生器會接收：
 
-| 序列 | 輸入      | 資料   |
+| 序列 | 類型      | Data   |
 | :------: | --------- | :----: |
-| 0        | Text node | First  |
+| 0        | Text node | 第一個  |
 | 1        | Text node | Second |
 
 假設 `someFlag` 會變成 `false`，然後再次轉譯標記。 這次，產生器會接收：
 
-| 序列 | 輸入       | 資料   |
+| 序列 | 類型       | Data   |
 | :------: | ---------- | :----: |
 | 1        | Text node  | Second |
 
@@ -1720,14 +1720,14 @@ builder.AddContent(seq++, "Second");
 
 現在，第一個輸出是：
 
-| 序列 | 輸入      | 資料   |
+| 序列 | 類型      | Data   |
 | :------: | --------- | :----: |
-| 0        | Text node | First  |
+| 0        | Text node | 第一個  |
 | 1        | Text node | Second |
 
 此結果與先前的案例相同，因此不會有負面問題存在。 `someFlag` 是在第二個轉譯 `false`，而輸出則是：
 
-| 序列 | 輸入      | 資料   |
+| 序列 | 類型      | Data   |
 | :------: | --------- | ------ |
 | 0        | Text node | Second |
 
@@ -1763,7 +1763,7 @@ Blazor 伺服器應用程式是使用[當地語系化中介軟體](xref:fundamen
 
 根據預設，Blazor WebAssembly 應用程式的 Blazor連結器設定會去除國際化資訊，但不包括明確要求的地區設定。 如需控制連結器行為的詳細資訊和指引，請參閱 <xref:host-and-deploy/blazor/configure-linker#configure-the-linker-for-internationalization>。
 
-### <a name="cookies"></a>Cookie
+### <a name="cookies"></a>Cookies
 
 當地語系化文化特性 cookie 可以保存使用者的文化特性。 Cookie 是由應用程式的主機頁面（*Pages/主機. cshtml .cs*）的 `OnGet` 方法所建立。 當地語系化中介軟體會在後續要求中讀取 cookie，以設定使用者的文化特性。 
 

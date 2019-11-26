@@ -40,7 +40,7 @@ ms.locfileid: "74478713"
 http://contoso.com/api/pets/2?DogsOnly=true
 ```
 
-Model binding goes through the following steps after the routing system selects the action method:
+在路由系統選取動作方法之後，模型系結會經歷下列步驟：
 
 * 尋找第一個參數 `GetByID`，它是名為 `id` 的整數。
 * 查看 HTTP 要求中所有可用的來源，在路由資料中找到 `id` = "2"。
@@ -49,7 +49,7 @@ Model binding goes through the following steps after the routing system selects 
 * 查看來源，在查詢字串中找到 "DogsOnly=true"。 名稱比對不區分大小寫。
 * 將字串 "true" 轉換成布林值 `true`。
 
-架構接著會呼叫 `GetById` 方法，針對 `id` 參數傳送 2、`dogsOnly` 參數傳送 `true`。
+架構接著會呼叫 `GetById` 方法，針對 `id` 參數傳送 2、`true` 參數傳送 `dogsOnly`。
 
 在上例中，模型繫結目標都是簡單型別的方法參數。 目標也可能是複雜類型的屬性。 成功繫結每一個屬性後，該屬性就會發生[模型驗證](xref:mvc/models/validation)。 哪些資料繫結至模型，以及任何繫結或驗證錯誤的記錄，都會儲存在 [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) 或 [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState)。 為了解此程序是否成功，應用程式會檢查 [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid) 旗標。
 
@@ -79,7 +79,7 @@ Model binding goes through the following steps after the routing system selects 
 
 [!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Index.cshtml.cs?name=snippet_SupportsGet)]
 
-## <a name="sources"></a>來源
+## <a name="sources"></a>Sources
 
 根據預設，模型繫結會從下列 HTTP 要求的來源中，取得索引鍵/值組形式的資料：
 
@@ -89,12 +89,12 @@ Model binding goes through the following steps after the routing system selects 
 1. 查詢字串參數
 1. 已上傳的檔案
 
-For each target parameter or property, the sources are scanned in the order indicated in the preceding list. 但也有一些例外：
+針對每個目標參數或屬性，系統會依照上述清單中所示的順序來掃描來源。 但也有一些例外：
 
 * 路由資料和查詢字串值只用於簡單型別。
 * 所上傳檔案只會繫結至實作 `IFormFile` 或 `IEnumerable<IFormFile>` 的目標類型。
 
-If the default source is not correct, use one of the following attributes to specify the source:
+如果預設來源不正確，請使用下列其中一個屬性來指定來源：
 
 * [[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) - 從查詢字串取得值。 
 * [[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) - 從路由資料取得值。
@@ -114,15 +114,15 @@ If the default source is not correct, use one of the following attributes to spe
 
 ### <a name="frombody-attribute"></a>[FromBody] 屬性
 
-Apply the `[FromBody]` attribute to a parameter to populate its properties from the body of an HTTP request. The ASP.NET Core runtime delegates the responsibility of reading the body to an input formatter. [本文稍後](#input-formatters)會說明輸入格式器。
+將 `[FromBody]` 屬性套用至參數，以從 HTTP 要求的主體填入其屬性。 ASP.NET Core 執行時間會將讀取主體的責任委派給輸入格式器。 [本文稍後](#input-formatters)會說明輸入格式器。
 
-When `[FromBody]` is applied to a complex type parameter, any binding source attributes applied to its properties are ignored. For example, the following `Create` action specifies that its `pet` parameter is populated from the body:
+當 `[FromBody]` 套用至複雜型別參數時，會忽略套用至其屬性的任何系結來源屬性。 例如，下列 `Create` 動作會指定其 `pet` 參數是從主體填入：
 
 ```csharp
 public ActionResult<Pet> Create([FromBody] Pet pet)
 ```
 
-The `Pet` class specifies that its `Breed` property is populated from a query string parameter:
+`Pet` 類別指定其 `Breed` 屬性是從查詢字串參數填入：
 
 ```csharp
 public class Pet
@@ -136,12 +136,12 @@ public class Pet
 
 在上述範例中：
 
-* The `[FromQuery]` attribute is ignored.
-* The `Breed` property is not populated from a query string parameter. 
+* `[FromQuery]` 的屬性會被忽略。
+* 不會從查詢字串參數填入 `Breed` 屬性。 
 
-Input formatters read only the body and don't understand binding source attributes. If a suitable value is found in the body, that value is used to populate the `Breed` property.
+輸入格式器只會讀取主體，而不會瞭解系結來源屬性。 如果在主體中找到適當的值，該值會用來填入 `Breed` 屬性。
 
-針對每個動作方法，請不要將 `[FromBody]` 套用至多個參數。 Once the request stream is read by an input formatter, it's no longer available to be read again for binding other `[FromBody]` parameters.
+針對每個動作方法，請不要將 `[FromBody]` 套用至多個參數。 一旦輸入格式器讀取要求資料流程之後，就無法再讀取它，以系結其他 `[FromBody]` 參數。
 
 ### <a name="additional-sources"></a>其他來源
 
@@ -237,7 +237,7 @@ public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 
 ### <a name="prefix--property-name"></a>前置詞 = 屬性名稱
 
-如果要繫結的模型是控制器或 `PageModel` 類別名為 `Instructor` 的屬性：
+如果要繫結的模型是控制器或 `Instructor` 類別名為 `PageModel` 的屬性：
 
 ```csharp
 [BindProperty]
@@ -268,7 +268,7 @@ public IActionResult OnPost(
 > [!NOTE]
 > 當張貼的表單資料為值來源時，這些屬性會影響模型繫結。 它們不會影響處理已張貼 JSON 和 XML 要求本文的輸入格式器。 [本文稍後](#input-formatters)會說明輸入格式器。
 >
-> 另請參閱[模型驗證](xref:mvc/models/validation#required-attribute)中的 `[Required]` 屬性討論。
+> 另請參閱`[Required]`模型驗證[中的 ](xref:mvc/models/validation#required-attribute) 屬性討論。
 
 ### <a name="bindrequired-attribute"></a>[BindRequired] 屬性
 
@@ -293,7 +293,7 @@ public IActionResult OnPost(
 public class Instructor
 ```
 
-在下列範例中，當呼叫 `OnPost` 方法時，只會繫結 `Instructor` 模型的指定屬性：
+在下列範例中，當呼叫 `Instructor` 方法時，只會繫結 `OnPost` 模型的指定屬性：
 
 ```csharp
 [HttpPost]
@@ -304,7 +304,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 ## <a name="collections"></a>集合
 
-針對簡單型別集合的目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如:
+針對簡單型別集合的目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如：
 
 * 假設要繫結的參數是名為 `selectedCourses` 的陣列：
 
@@ -349,9 +349,9 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 ## <a name="dictionaries"></a>字典
 
-針對 `Dictionary` 目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如:
+針對 `Dictionary` 目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如：
 
-* 假設目標參數是名為 `selectedCourses` 的 `Dictionary<int, string>`：
+* 假設目標參數是名為 `Dictionary<int, string>` 的 `selectedCourses`：
 
   ```csharp
   public IActionResult OnPost(int? id, Dictionary<int, string> selectedCourses)
@@ -423,13 +423,13 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 ## <a name="exclude-specified-types-from-model-binding"></a>排除模型繫結中的指定類型
 
-模型繫結和驗證系統的行為是由 [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) 所驅動。 您可以將詳細資料提供者新增至 [MvcOptions.ModelMetadataDetailsProviders](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders)，藉以自訂 `ModelMetadata`。 內建的詳細資料提供者可用於停用模型繫結或驗證所指定類型。
+模型繫結和驗證系統的行為是由 [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) 所驅動。 您可以將詳細資料提供者新增至 `ModelMetadata`MvcOptions.ModelMetadataDetailsProviders[，藉以自訂 ](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders)。 內建的詳細資料提供者可用於停用模型繫結或驗證所指定類型。
 
-若要停用指定類型之所有模型的模型繫結，請在 `Startup.ConfigureServices` 中新增 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider>。 例如，若要對類型為 `System.Version` 的所有模型停用模型繫結：
+若要停用指定類型之所有模型的模型繫結，請在 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider> 中新增 `Startup.ConfigureServices`。 例如，若要對類型為 `System.Version` 的所有模型停用模型繫結：
 
 [!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=4-5)]
 
-若要停用指定類型屬性的驗證，請在 `Startup.ConfigureServices` 中新增 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider>。 例如，若要針對類型為 `System.Guid` 的屬性停用驗證：
+若要停用指定類型屬性的驗證，請在 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider> 中新增 `Startup.ConfigureServices`。 例如，若要針對類型為 `System.Guid` 的屬性停用驗證：
 
 [!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=6-7)]
 

@@ -16,7 +16,7 @@ ms.locfileid: "74289002"
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Dave Brock](https://twitter.com/daveabrock)
 
-頁面和檢視經常會共用視覺效果和程式設計項目。 本文會示範如何：
+頁面和檢視經常會共用視覺效果和程式設計項目。 本文示範如何：
 
 * 使用常見配置。
 * 共用指示詞。

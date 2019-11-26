@@ -18,13 +18,13 @@ ms.locfileid: "74412052"
 
 作者：[Scott Addie](https://github.com/scottaddie) 與 [Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core 支援使用 C# 建立 RESTful 服務，也稱為 Web API。 若要處理要求，Web API 會使用控制器。 Web API 中的「控制器」都衍生自類別 `ControllerBase`。 This article shows how to use controllers for handling web API requests.
+ASP.NET Core 支援使用 C# 建立 RESTful 服務，也稱為 Web API。 若要處理要求，Web API 會使用控制器。 Web API 中的「控制器」都衍生自類別 `ControllerBase`。 本文說明如何使用控制器來處理 Web API 要求。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/index/samples)。 ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="controllerbase-class"></a>ControllerBase 類別
 
-A web API consists of one or more controller classes that derive from <xref:Microsoft.AspNetCore.Mvc.ControllerBase>. The web API project template provides a starter controller:
+Web API 由一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase>的控制器類別所組成。 Web API 專案範本提供入門控制器：
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -38,7 +38,7 @@ A web API consists of one or more controller classes that derive from <xref:Micr
 
 ::: moniker-end
 
-請不要從 <xref:Microsoft.AspNetCore.Mvc.Controller> 類別衍生以建立 Web API 控制器。 `Controller` 衍生自 `ControllerBase` 並會新增檢視支援，以供處理網頁，而不是 Web API 要求。 There's an exception to this rule: if you plan to use the same controller for both views and web APIs, derive it from `Controller`.
+請不要從 <xref:Microsoft.AspNetCore.Mvc.Controller> 類別衍生以建立 Web API 控制器。 `Controller` 衍生自 `ControllerBase` 並會新增檢視支援，以供處理網頁，而不是 Web API 要求。 此規則有例外狀況：如果您想要將相同的控制器用於 views 和 web Api，請從 `Controller`衍生。
 
 `ControllerBase` 類別提供許多處理 HTTP 要求的實用屬性和方法。 例如，`ControllerBase.CreatedAtAction` 會傳回 201 狀態碼：
 
@@ -46,7 +46,7 @@ A web API consists of one or more controller classes that derive from <xref:Micr
 
 以下是 `ControllerBase` 提供的一些其他方法範例。
 
-|方法   |備註    |
+|方法   |注意事項    |
 |---------|---------|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest%2A>| 傳回 400 狀態碼。|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound%2A>|傳回 404 狀態碼。|
@@ -58,17 +58,17 @@ A web API consists of one or more controller classes that derive from <xref:Micr
 
 ## <a name="attributes"></a>屬性
 
-<xref:Microsoft.AspNetCore.Mvc> 命名空間提供的屬性，可用來設定 Web API 控制器和動作方法的行為。 The following example uses attributes to specify the supported HTTP action verb and any known HTTP status codes that could be returned:
+<xref:Microsoft.AspNetCore.Mvc> 命名空間提供的屬性，可用來設定 Web API 控制器和動作方法的行為。 下列範例會使用屬性來指定支援的 HTTP 動作動詞，以及任何可能傳回的已知 HTTP 狀態碼：
 
 [!code-csharp[](index/samples/2.x/2.2/Controllers/PetsController.cs?name=snippet_400And201&highlight=1-3)]
 
 以下是一些其他可用的屬性範例。
 
-|屬性|備註|
+|屬性|注意事項|
 |---------|-----|
 |[[Route]](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |指定控制器或動作的 URL 模式。|
 |[[Bind]](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |指定模型繫結要包含的前置詞和屬性。|
-|[[HttpGet]](<xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute>)  |Identifies an action that supports the HTTP GET action verb.|
+|[[HttpGet]](<xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute>)  |識別支援 HTTP GET 動作動詞的動作。|
 |[[Consumes]](<xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute>)|指定動作所接受的資料類型。|
 |[[Produces]](<xref:Microsoft.AspNetCore.Mvc.ProducesAttribute>)|指定動作所傳回的資料類型。|
 
@@ -76,7 +76,7 @@ A web API consists of one or more controller classes that derive from <xref:Micr
 
 ## <a name="apicontroller-attribute"></a>ApiController 屬性
 
-The [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) attribute can be applied to a controller class to enable the following opinionated, API-specific behaviors:
+您可以將[[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute)屬性套用至控制器類別，以啟用下列固定、API 特定的行為：
 
 * [屬性路由需求](#attribute-routing-requirement)
 * [HTTP 400 自動回應](#automatic-http-400-responses)
@@ -86,7 +86,7 @@ The [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) attr
 
 這些功能都需要[相容性版本](xref:mvc/compatibility-version) 2.1 或更新版本。
 
-### <a name="attribute-on-specific-controllers"></a>Attribute on specific controllers
+### <a name="attribute-on-specific-controllers"></a>特定控制器上的屬性
 
 `[ApiController]` 屬性可以套用至特定的控制器，如專案範本中的下列範例所示：
 
@@ -102,9 +102,9 @@ The [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) attr
 
 ::: moniker-end
 
-### <a name="attribute-on-multiple-controllers"></a>Attribute on multiple controllers
+### <a name="attribute-on-multiple-controllers"></a>多個控制器上的屬性
 
-在多個控制站上使用同一屬性的方法之一，就是建立以 `[ApiController]` 屬性標註的自訂基底控制器類別。 The following example shows a custom base class and a controller that derives from it:
+在多個控制站上使用同一屬性的方法之一，就是建立以 `[ApiController]` 屬性標註的自訂基底控制器類別。 下列範例顯示自訂基類，以及從它衍生的控制器：
 
 [!code-csharp[](index/samples/2.x/2.2/Controllers/MyControllerBase.cs?name=snippet_MyControllerBase)]
 
@@ -122,9 +122,9 @@ The [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) attr
 
 ::: moniker range=">= aspnetcore-2.2"
 
-### <a name="attribute-on-an-assembly"></a>Attribute on an assembly
+### <a name="attribute-on-an-assembly"></a>元件上的屬性
 
-如果[相容性版本](xref:mvc/compatibility-version)設定為 2.2 或更新版本，`[ApiController]` 屬性就可以套用至組件。 以這種方式標註會將 Web API 行為套用至組件中的所有控制器。 沒有任何方法可以退出個別控制器。 Apply the assembly-level attribute to the namespace declaration surrounding the `Startup` class:
+如果[相容性版本](xref:mvc/compatibility-version)設定為 2.2 或更新版本，`[ApiController]` 屬性就可以套用至組件。 以這種方式標註會將 Web API 行為套用至組件中的所有控制器。 沒有任何方法可以退出個別控制器。 將元件層級屬性套用至圍繞 `Startup` 類別的命名空間宣告：
 
 ```csharp
 [assembly: ApiController]
@@ -141,13 +141,13 @@ namespace WebApiSample
 
 ## <a name="attribute-routing-requirement"></a>屬性路由需求
 
-`[ApiController]` 屬性會讓屬性路由需求。 例如:
+`[ApiController]` 屬性會讓屬性路由需求。 例如：
 
 ::: moniker range=">= aspnetcore-3.0"
 
 [!code-csharp[](index/samples/3.x/Controllers/WeatherForecastController.cs?name=snippet_ControllerSignature&highlight=2)]
 
-Actions are inaccessible via [conventional routes](xref:mvc/controllers/routing#conventional-routing) defined by `UseEndpoints`, <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc%2A>, or <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute%2A> in `Startup.Configure`.
+動作可透過 `Startup.Configure`中 `UseEndpoints`、<xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc%2A>或 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute%2A> 所定義的慣例[路由](xref:mvc/controllers/routing#conventional-routing)來存取。
 
 ::: moniker-end
 
@@ -155,7 +155,7 @@ Actions are inaccessible via [conventional routes](xref:mvc/controllers/routing#
 
 [!code-csharp[](index/samples/2.x/2.2/Controllers/ValuesController.cs?name=snippet_ControllerSignature&highlight=1)]
 
-無法透過 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc%2A> 中所定義的[慣例路由](xref:mvc/controllers/routing#conventional-routing)或 `Startup.Configure` 中的 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute%2A> 來存取動作。
+無法透過 [ 中所定義的](xref:mvc/controllers/routing#conventional-routing)慣例路由<xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc%2A>或 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute%2A> 中的 `Startup.Configure` 來存取動作。
 
 ::: moniker-end
 
@@ -170,11 +170,11 @@ if (!ModelState.IsValid)
 }
 ```
 
-ASP.NET Core MVC uses the <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter> action filter to do the preceding check.
+ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter> 動作篩選準則來執行上述檢查。
 
 ### <a name="default-badrequest-response"></a>預設 BadRequest 回應
 
-With a compatibility version of 2.1, the default response type for an HTTP 400 response is <xref:Microsoft.AspNetCore.Mvc.SerializableError>. The following request body is an example of the serialized type:
+當相容性版本為2.1 時，HTTP 400 回應的預設回應類型為 <xref:Microsoft.AspNetCore.Mvc.SerializableError>。 下列要求主體是序列化類型的範例：
 
 ```json
 {
@@ -186,7 +186,7 @@ With a compatibility version of 2.1, the default response type for an HTTP 400 r
 
 ::: moniker range=">= aspnetcore-2.2"
 
-With a compatibility version of 2.2 or later, the default response type for an HTTP 400 response is <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>. The following request body is an example of the serialized type:
+使用2.2 版或更新版本的相容性版本時，會 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>HTTP 400 回應的預設回應類型。 下列要求主體是序列化類型的範例：
 
 ```json
 {
@@ -202,10 +202,10 @@ With a compatibility version of 2.2 or later, the default response type for an H
 }
 ```
 
-The `ValidationProblemDetails` type:
+`ValidationProblemDetails` 類型：
 
-* Provides a machine-readable format for specifying errors in web API responses.
-* Complies with the [RFC 7807 specification](https://tools.ietf.org/html/rfc7807).
+* 提供電腦可讀取的格式，以指定 Web API 回應中的錯誤。
+* 符合[RFC 7807 規格](https://tools.ietf.org/html/rfc7807)。
 
 ::: moniker-end
 
@@ -213,7 +213,7 @@ The `ValidationProblemDetails` type:
 
 請參閱[如何在模型驗證錯誤上記錄自動 400 回應 (aspnet/AspNetCore.Docs #12157)](https://github.com/aspnet/AspNetCore.Docs/issues/12157) \(英文\)。
 
-### <a name="disable-automatic-400-response"></a>Disable automatic 400 response
+### <a name="disable-automatic-400-response"></a>停用自動400回應
 
 若要停用自動 400 行為，請將 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressModelStateInvalidFilter> 屬性設定為 `true`。 在 `Startup.ConfigureServices` 中新增下列醒目提示的程式碼：
 
@@ -249,7 +249,7 @@ The `ValidationProblemDetails` type:
 |[[FromServices]](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) | 作為動作參數插入的要求服務 |
 
 > [!WARNING]
-> 當值可能包含 `%2f` (也就是 `/`) 時，請勿使用 `[FromRoute]`。 `%2f` 不會是未逸出的 `/`。 如果值可能包含 `%2f`，請使用 `[FromQuery]`。
+> 當值可能包含 `[FromRoute]` (也就是 `%2f`) 時，請勿使用 `/`。 `%2f` 不會是未逸出的 `/`。 如果值可能包含 `[FromQuery]`，請使用 `%2f`。
 
 若沒有 `[ApiController]` 屬性或繫結來源屬性 (例如 `[FromQuery]`)，ASP.NET Core 執行階段會嘗試使用複雜物件模型繫結器。 複雜物件模型繫結器會以定義的順序從值提供者提取資料。
 
@@ -259,14 +259,14 @@ The `ValidationProblemDetails` type:
 
 `[ApiController]` 屬性會依據動作參數的預設資料來源套用推斷規則。 這些規則透過將屬性套用至動作參數，讓您不必以手動方式識別的繫結來源。 繫結來源推斷規則的行為如下所示：
 
-* 系統會依據複雜類型參數推斷 `[FromBody]`。 如果是任何具有像是 <xref:Microsoft.AspNetCore.Http.IFormCollection> 與 <xref:System.Threading.CancellationToken> 等特殊意義的複雜內建類型，則為 `[FromBody]` 推斷規則的例外。 繫結來源推斷程式碼會忽略這些特殊的類型。
+* 系統會依據複雜類型參數推斷 `[FromBody]`。 如果是任何具有像是 `[FromBody]` 與 <xref:Microsoft.AspNetCore.Http.IFormCollection> 等特殊意義的複雜內建類型，則為 <xref:System.Threading.CancellationToken> 推斷規則的例外。 繫結來源推斷程式碼會忽略這些特殊的類型。
 * `[FromForm]` 針對類型 <xref:Microsoft.AspNetCore.Http.IFormFile> 與 <xref:Microsoft.AspNetCore.Http.IFormFileCollection> 的動作參數推斷的。 而不會依據任何簡單或使用者定義的類型進行推斷。
 * 系統會依據符合路由範本參數的任何動作參數名稱推斷 `[FromRoute]`。 如果有多個路由符合動作參數，則會將任何路由值視為 `[FromRoute]`。
 * 系統會依據任何其他動作參數推斷 `[FromQuery]`。
 
 ### <a name="frombody-inference-notes"></a>FromBody 推斷備註
 
-並不會為像是 `string` 或 `int` 等簡單型別，推斷 `[FromBody]`。 因此，當需要使用該功能時，應為簡單型別使用 `[FromBody]` 屬性。
+並不會為像是 `[FromBody]` 或 `string` 等簡單型別，推斷 `int`。 因此，當需要使用該功能時，應為簡單型別使用 `[FromBody]` 屬性。
 
 當動作有多個參數從要求主體繫結時，會擲回例外狀況。 例如，下列所有動作方法簽章都會造成例外狀況：
 
@@ -322,9 +322,9 @@ The `ValidationProblemDetails` type:
 
 ## <a name="multipartform-data-request-inference"></a>多部分/表單資料要求推斷
 
-The `[ApiController]` attribute applies an inference rule when an action parameter is annotated with the [[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) attribute. The `multipart/form-data` request content type is inferred.
+當動作參數以[[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)屬性標注時，`[ApiController]` 屬性會套用推斷規則。 會推斷 `multipart/form-data` 要求內容類型。
 
-To disable the default behavior, set the <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressConsumesConstraintForFormFileParameters> property to `true` in `Startup.ConfigureServices`:
+若要停用預設行為，請將 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressConsumesConstraintForFormFileParameters> 屬性設定為 `Startup.ConfigureServices`中的 `true`：
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -348,13 +348,13 @@ To disable the default behavior, set the <xref:Microsoft.AspNetCore.Mvc.ApiBehav
 
 ## <a name="problem-details-for-error-status-codes"></a>錯誤狀態碼的問題詳細資料
 
-當相容性版本為 2.2 或更新版本時，MVC 會將錯誤結果 (具有狀態碼 400 以上的結果) 為具有 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> 的結果。 以 [RFC 7807 規格](https://tools.ietf.org/html/rfc7807)為基礎的 `ProblemDetails` 類型，在 HTTP 回應中提供電腦可讀取的錯誤詳細資料。
+當相容性版本為 2.2 或更新版本時，MVC 會將錯誤結果 (具有狀態碼 400 以上的結果) 為具有 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> 的結果。 以 `ProblemDetails`RFC 7807 規格[為基礎的 ](https://tools.ietf.org/html/rfc7807) 類型，在 HTTP 回應中提供電腦可讀取的錯誤詳細資料。
 
 請考慮下列控制器動作中的程式碼：
 
 [!code-csharp[](index/samples/2.x/2.2/Controllers/PetsController.cs?name=snippet_ProblemDetailsStatusCode)]
 
-The `NotFound` method produces an HTTP 404 status code with a `ProblemDetails` body. 例如:
+`NotFound` 方法會產生具有 `ProblemDetails` 主體的 HTTP 404 狀態碼。 例如：
 
 ```json
 {
@@ -367,7 +367,7 @@ The `NotFound` method produces an HTTP 404 status code with a `ProblemDetails` b
 
 ### <a name="disable-problemdetails-response"></a>停用 ProblemDetails 回應
 
-The automatic creation of a `ProblemDetails` instance is disabled when the <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressMapClientErrors%2A> property is set to `true`. 將下列程式碼加入 `Startup.ConfigureServices`：
+當 [<xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressMapClientErrors%2A>] 屬性設定為 [`true`] 時，會停用自動建立 `ProblemDetails` 實例。 將下列程式碼加入 `Startup.ConfigureServices`：
 
 ::: moniker-end
 

@@ -109,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-在以下範例中：
+在下列範例中：
 
 * `UserRepository` 宣告其對 `IHttpContextAccessor` 的相依性。
 * 當相依性插入解析相依性鏈結並建立 `UserRepository` 的實例時，將提供相依性。

@@ -28,9 +28,9 @@ ms.locfileid: "74478756"
 [在 Linux 上的 App Service 中建立 ASP.NET Core 應用程式](/azure/app-service/containers/quickstart-dotnetcore)  
 在 Linux 上使用命令列建立 ASP.NET Core Web 應用程式並將其部署到 Azure App Service。
 
-See the [ASP.NET Core on App Service Dashboard](https://aspnetcoreon.azurewebsites.net/) for the version of ASP.NET Core available on Azure App service.
+如需 Azure App 服務上可用的 ASP.NET Core 版本，請參閱[App Service 儀表板上的 ASP.NET Core](https://aspnetcoreon.azurewebsites.net/) 。
 
-Subscribe to the [App Service Announcements](https://github.com/Azure/app-service-announcements/) repository and monitor the issues. The App Service team regularly posts announcements and scenarios arriving in App Service.
+訂閱[App Service 公告](https://github.com/Azure/app-service-announcements/)存放庫並監視問題。 App Service 小組會定期張貼傳入 App Service 的公告和案例。
 
 若要閱讀下列文章，請參閱 ASP.NET Core 文件：
 
@@ -51,9 +51,9 @@ Subscribe to the [App Service Announcements](https://github.com/Azure/app-servic
 
 ## <a name="application-configuration"></a>應用程式組態
 
-### <a name="platform"></a>Platform
+### <a name="platform"></a>平台
 
-The platform architecture (x86/x64) of an App Services app is set in the app's settings in the Azure Portal for apps that are hosted on an A-series compute (Basic) or higher hosting tier. Confirm that the app's publish settings (for example, in the Visual Studio [publish profile (.pubxml)](xref:host-and-deploy/visual-studio-publish-profiles)) match the setting in the app's service configuration in the Azure Portal.
+應用程式服務應用程式的平臺架構（x86/x64）會在 Azure 入口網站的應用程式設定中，針對裝載于 A 系列計算（基本）或更高主機層上的應用程式進行設定。 確認應用程式的發佈設定（例如，在 Visual Studio[發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)）中，是否符合應用程式在 Azure 入口網站中的服務設定。
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -67,9 +67,9 @@ Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執�
 
 ::: moniker-end
 
-For more information on .NET Core framework components and distribution methods, such as information on the .NET Core runtime and the .NET Core SDK, see [About .NET Core: Composition](/dotnet/core/about#composition).
+如需 .NET Core framework 元件和散發方法的詳細資訊，例如 .NET Core 執行時間和 .NET Core SDK 的相關資訊，請參閱[關於 .Net core：組合](/dotnet/core/about#composition)。
 
-### <a name="packages"></a>package
+### <a name="packages"></a>套件
 
 包含下列 NuGet 套件，為部署至 Azure App Service 的應用程式提供自動記錄功能：
 
@@ -143,35 +143,35 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 * SQL 存放區
 * Redis 快取
 
-如需詳細資訊，請參閱<xref:security/data-protection/implementation/key-storage-providers>。
+如需詳細資訊，請參閱 <xref:security/data-protection/implementation/key-storage-providers>。
 <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
 
-## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>Deploy ASP.NET Core 3.0 to Azure App Service
+## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>將 ASP.NET Core 3.0 部署至 Azure App Service
 
-ASP.NET Core 3.0 is supported on Azure App Service. To deploy a preview release of a .NET Core version later than .NET Core 3.0, use one of the following techniques. These approaches are also used when the runtime is available but the SDK hasn't been installed on Azure App Service.
+Azure App Service 支援 ASP.NET Core 3.0。 若要部署 .net Core 版本比 .NET Core 3.0 更早的預覽版本，請使用下列其中一種技術。 當執行時間可用但 SDK 尚未安裝在 Azure App Service 上時，也會使用這些方法。
 
-* [Specify the .NET Core SDK Version using Azure Pipelines](#specify-the-net-core-sdk-version-using-azure-pipelines)
+* [使用 Azure Pipelines 指定 .NET Core SDK 版本](#specify-the-net-core-sdk-version-using-azure-pipelines)
 * [部署獨立式預覽應用程式](#deploy-a-self-contained-preview-app)。
 * [將具有 Web Apps 的 Docker 用於容器](#use-docker-with-web-apps-for-containers)。
 * [安裝預覽網站延伸模組](#install-the-preview-site-extension)。
 
-### <a name="specify-the-net-core-sdk-version-using-azure-pipelines"></a>Specify the .NET Core SDK Version using Azure Pipelines
+### <a name="specify-the-net-core-sdk-version-using-azure-pipelines"></a>使用 Azure Pipelines 指定 .NET Core SDK 版本
 
-Use [Azure App Service CI/CD scenarios](/azure/app-service/deploy-continuous-deployment) to set up a continuous integration build with Azure DevOps. After the Azure DevOps build is created, optionally configure the build to use a specific SDK version. 
+使用[AZURE APP SERVICE CI/CD 案例](/azure/app-service/deploy-continuous-deployment)來設定具有 Azure DevOps 的持續整合組建。 建立 Azure DevOps 組建之後，選擇性地將組建設定為使用特定的 SDK 版本。 
 
-#### <a name="specify-the-net-core-sdk-version"></a>Specify the .NET Core SDK version
+#### <a name="specify-the-net-core-sdk-version"></a>指定 .NET Core SDK 版本
 
-When using the App Service deployment center to create an Azure DevOps build, the default build pipeline includes steps for `Restore`, `Build`, `Test`, and `Publish`. To specify the SDK version, select the **Add (+)** button in the Agent job list to add a new step. Search for **.NET Core SDK** in the search bar. 
+使用 App Service 部署中心建立 Azure DevOps 組建時，預設的組建管線會包含 `Restore`、`Build`、`Test`和 `Publish`的步驟。 若要指定 SDK 版本，請選取 [代理程式作業] 清單中的 [新增] **（+）** 按鈕，以新增新的步驟。 在搜尋列中搜尋 **.NET Core SDK** 。 
 
-![Add the .NET Core SDK step](index/add-sdk-step.png)
+![新增 .NET Core SDK 步驟](index/add-sdk-step.png)
 
-Move the step into the first position in the build so that the steps following it use the specified version of the .NET Core SDK. Specify the version of the .NET Core SDK. In this example, the SDK is set to `3.0.100`.
+將步驟移至組建中的第一個位置，使其後面的步驟使用指定的 .NET Core SDK 版本。 指定 .NET Core SDK 的版本。 在此範例中，SDK 設定為 `3.0.100`。
 
-![Completed SDK step](index/sdk-step-first-place.png)
+![完成的 SDK 步驟](index/sdk-step-first-place.png)
 
-To publish a [self-contained deployment (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd), configure SCD in the `Publish` step and provide the [Runtime Identifier (RID)](/dotnet/core/rid-catalog).
+若要發佈[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)，請在 `Publish` 步驟中設定 SCD，並提供[執行時間識別碼（RID）](/dotnet/core/rid-catalog)。
 
-![Self-contained publish](index/self-contained.png)
+![獨立發行](index/self-contained.png)
 
 ### <a name="deploy-a-self-contained-preview-app"></a>部署獨立式預覽應用程式
 
@@ -215,11 +215,11 @@ To publish a [self-contained deployment (SCD)](/dotnet/core/deploying/#self-cont
    當已安裝 x64 預覽執行階段時，此命令會傳回 `True`。
 
 > [!NOTE]
-> The platform architecture (x86/x64) of an App Services app is set in the app's settings in the Azure Portal for apps that are hosted on an A-series compute (Basic) or higher hosting tier. Confirm that the app's publish settings (for example, in the Visual Studio [publish profile (.pubxml)](xref:host-and-deploy/visual-studio-publish-profiles)) match the setting in the app's service configuration in the Azure portal.
+> 應用程式服務應用程式的平臺架構（x86/x64）會在 Azure 入口網站的應用程式設定中，針對裝載于 A 系列計算（基本）或更高主機層上的應用程式進行設定。 確認應用程式的發佈設定（例如，在 Visual Studio[發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)）是否符合 Azure 入口網站中應用程式的服務設定中的設定。
 >
-> 如果在同處理序模式中執行應用程式，且平台架構設定為適用於 64 位元 (x64)，ASP.NET Core 模組會使用 64 位元預覽執行階段 (如果有)。 Install the **ASP.NET Core {X.Y} (x64) Runtime** extension using the Azure Portal.
+> 如果在同處理序模式中執行應用程式，且平台架構設定為適用於 64 位元 (x64)，ASP.NET Core 模組會使用 64 位元預覽執行階段 (如果有)。 使用 Azure 入口網站安裝**ASP.NET Core {X. Y} （x64）運行**時間擴充功能。
 >
-> After installing the x64 preview runtime, run the following command in the Azure Kudu PowerShell command window to verify the installation. Substitute the ASP.NET Core runtime version for `{X.Y}` in the following command:
+> 安裝 x64 preview 執行時間之後，請在 Azure Kudu PowerShell 命令視窗中執行下列命令，以確認安裝。 在下列命令中，以 `{X.Y}` 的 ASP.NET Core 執行階段版本取代：
 >
 > ```powershell
 > Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64\
@@ -232,7 +232,7 @@ To publish a [self-contained deployment (SCD)](/dotnet/core/deploying/#self-cont
 
 **搭配使用預覽網站延伸模組與 ARM 範本**
 
-如果您使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站延伸模組新增至 Web 應用程式。 例如:
+如果您使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站延伸模組新增至 Web 應用程式。 例如：
 
 [!code-json[](index/sample/arm.json?highlight=2)]
 
@@ -240,10 +240,10 @@ To publish a [self-contained deployment (SCD)](/dotnet/core/deploying/#self-cont
 
 ::: moniker range=">= aspnetcore-2.2"
 
-For a 64-bit deployment:
+若為64位部署：
 
 * 請使用 64 位元 .NET Core SDK 來建置 64 位元應用程式。
-* 在 App Service 的 [組態] > [一般設定] 中，將 [平台] 設為 [64 位元]。 應用程式必須使用基本或更高的服務方案，才能選擇平台位元。
+* 在 App Service 的 [組態] **[一般設定]** **中，將 [平台]**  >  設為 [64 位元]。 應用程式必須使用基本或更高的服務方案，才能選擇平台位元。
 
 ::: moniker-end
 
@@ -272,7 +272,7 @@ For a 64-bit deployment:
    dotnet publish --configuration Release
    ```
 
-1. 將 bin/Release/{目標 FRAMEWORK}/publish 目錄的內容移到 App Service 中的網站。 若要在 [Kudu](https://github.com/projectkudu/kudu/wiki) 主控台將 *publish* 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
+1. 將 bin/Release/{目標 FRAMEWORK}/publish 目錄的內容移到 App Service 中的網站。 若要在 *Kudu* 主控台將 [publish](https://github.com/projectkudu/kudu/wiki) 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
 
 ---
 
@@ -316,7 +316,7 @@ For a 64-bit deployment:
 
 ## <a name="protocol-settings-https"></a>通訊協定設定 (HTTPS)
 
-安全通訊協定繫結可讓您指定透過 HTTPS 回應要求時要使用的憑證。 繫結需要針對特定主機名稱簽發的有效私密憑證 ( *.pfx*)。 For more information, see [Tutorial: Bind an existing custom SSL certificate to Azure App Service](/azure/app-service/app-service-web-tutorial-custom-ssl).
+安全通訊協定繫結可讓您指定透過 HTTPS 回應要求時要使用的憑證。 繫結需要針對特定主機名稱簽發的有效私密憑證 ( *.pfx*)。 如需詳細資訊，請參閱[教學課程：將現有的自訂 SSL 憑證系結至 Azure App Service](/azure/app-service/app-service-web-tutorial-custom-ssl)。
 
 ## <a name="transform-webconfig"></a>轉換 web.config
 

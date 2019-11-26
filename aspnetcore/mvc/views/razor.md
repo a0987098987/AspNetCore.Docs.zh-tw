@@ -872,7 +872,7 @@ public class Pet
 
 [標籤協助程式](xref:mvc/views/tag-helpers/intro)有三個相關的指示詞。
 
-| 指示詞 | 函式 |
+| Directive | 函數 |
 | --------- | -------- |
 | [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | 使標籤協助程式可供檢視。 |
 | [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 移除先前從檢視新增的標籤協助程式。 |
@@ -886,7 +886,7 @@ public class Pet
 * namespace
 * 函式
 * 繼承
-* model
+* 模型
 * section
 * helper (ASP.NET Core 目前不支援)
 
@@ -897,7 +897,7 @@ Razor 關鍵字會使用 `@(Razor Keyword)` (例如 `@(functions)`) 逸出。
 * case
 * do
 * default
-* for
+* 作為
 * foreach
 * if
 * else
@@ -906,14 +906,14 @@ Razor 關鍵字會使用 `@(Razor Keyword)` (例如 `@(functions)`) 逸出。
 * try
 * catch
 * finally
-* 使用
+* using
 * while
 
 C# Razor 關鍵字必須使用 `@(@C# Razor Keyword)` (例如 `@(@case)`) 雙重逸出。 第一個 `@` 會將 Razor 剖析器逸出。 第二個 `@` 會將 C# 剖析器逸出。
 
 ### <a name="reserved-keywords-not-used-by-razor"></a>Razor 未使用的保留關鍵字
 
-* 類別
+* class
 
 ## <a name="inspect-the-razor-c-class-generated-for-a-view"></a>檢查針對檢視所產生的 Razor C# 類別
 

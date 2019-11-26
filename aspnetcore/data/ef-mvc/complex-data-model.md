@@ -38,7 +38,7 @@ ms.locfileid: "74288959"
 > * 變更連接字串
 > * 更新資料庫
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [使用 EF Core 移轉](migrations.md)
 

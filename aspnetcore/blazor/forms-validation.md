@@ -172,7 +172,7 @@ public class Starship
 }
 ```
 
-會建立做`EditForm`為`EditContext`階層式值[, 以追蹤編輯程式的相關中繼資料, 包括已修改的欄位和目前的驗證訊息。](xref:blazor/components#cascading-values-and-parameters) `EditForm` 也會提供有效和無效提交（`OnValidSubmit`、`OnInvalidSubmit`）的便利事件。 或者，使用 `OnSubmit` 來觸發驗證，並使用自訂驗證程式代碼來檢查域值。
+`EditForm` 會建立一個 `EditContext` 做為階層式[值](xref:blazor/components#cascading-values-and-parameters)，以追蹤編輯程式的相關中繼資料，包括已修改的欄位和目前的驗證訊息。 `EditForm` 也會提供有效和無效提交（`OnValidSubmit`、`OnInvalidSubmit`）的便利事件。 或者，使用 `OnSubmit` 來觸發驗證，並使用自訂驗證程式代碼來檢查域值。
 
 ## <a name="inputtext-based-on-the-input-event"></a>根據輸入事件的 InputText
 

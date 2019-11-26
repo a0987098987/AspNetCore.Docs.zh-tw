@@ -27,7 +27,7 @@ ms.locfileid: "74289108"
 * [Twitter 驗證](xref:security/authentication/twitter-logins)
 * [其他提供者](xref:security/authentication/otherlogins)
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 在 `ConfigureServices` 方法中，使用 <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*>、<xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*>和 <xref:Microsoft.Extensions.DependencyInjection.GoogleExtensions.AddGoogle*> 方法來設定應用程式的驗證配置：
 
@@ -82,7 +82,7 @@ ms.locfileid: "74289108"
 * [Twitter 驗證](xref:security/authentication/twitter-logins)
 * [其他提供者](xref:security/authentication/otherlogins)
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 在 `ConfigureServices` 方法中，使用 `AddAuthentication`、`AddCookie`和 `AddGoogle` 方法來設定應用程式的驗證配置：
 

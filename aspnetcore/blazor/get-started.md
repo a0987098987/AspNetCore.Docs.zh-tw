@@ -5,16 +5,16 @@ description: 藉由使用您選擇的工具來建立 Blazor 應用程式，開�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 11/25/2019
 no-loc:
 - Blazor
 uid: blazor/get-started
-ms.openlocfilehash: 198093b37cb4f440eb7b520d18004304aea570a5
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: 7d495bddde3c01c743db9757204a5cf59d8b160b
+ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74239711"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74550319"
 ---
 # <a name="get-started-with-aspnet-core-opno-locblazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -42,7 +42,7 @@ ms.locfileid: "74239711"
 
    2 \。 建立新的專案。
 
-   3 \。 選取 [ **Blazor 應用程式**]。 選取 **[下一步]** 。
+   3 \。 選取 [ **Blazor 應用程式**]。 選取 [下一步]。
 
    4 \。 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
@@ -81,25 +81,25 @@ ms.locfileid: "74239711"
 
    7 \。 在瀏覽器中，巡覽至 `https://localhost:5001`。
 
-   <!--
+   # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-   # [Visual Studio for Mac](#tab/visual-studio-mac)
+   1 \。 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。 將[更新通道切換為 [預覽](/visualstudio/mac/install-preview)]。
 
-   1\. Install [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/). Switch the [Update channel to Preview](/visualstudio/mac/install-preview).
+   2 \。 選取 **[** 檔案] > [**新增方案**] 或 [建立**新專案**]。
 
-   2\. Select **File** > **New Solution** or **New Project**.
+   3 \。 在側邊欄中，選取 [ **.Net Core** > **應用程式**]。
 
-   3\. In the sidebar, select **.NET Core** > **App**.
+   4 \。 選取 [ **Blazor 伺服器應用程式**] 範本。 目前只有 Blazor 伺服器範本可在 Visual Studio for Mac 中使用。 如需 Blazor WebAssembly 體驗，請遵循 [ **.NET Core CLI** ] 索引標籤上的指示。選取 Blazor 伺服器範本之後，請選取 **[下一步]** 。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
 
-   4\. For a Blazor Server experience, select the **Blazor Server App** template. For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. For information on the two Blazor hosting models, *Blazor Server* and *Blazor WebAssembly*, see <xref:blazor/hosting-models>.
+   <!-- For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. -->
 
-   5\. The **Target Framework** defaults to **.NET Core 3.0**. Select **Next**.
+   5 \。 **目標 Framework**預設為 **.net core 3.0** （如果已安裝 3.1 Preview SDK，則為 **.net core 3.1** ）。 選取架構，然後選取 **[下一步]** 。
 
-   6\. In the **Project Name** field, enter `WebApplication1`. Select **Create**.
+   6。 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1`。 選取 [建立]。
 
-   7\. Select **Run** > **Run Without Debugging** to run the app *without the debugger*. Running with the debugger isn't supported at this time.
+   7 \。 選取 [**執行**] > **執行而不進行調試**程式，以在不進行偵錯工具的*情況下*執行 使用 [**開始調試**程式] 執行應用程式，以*使用調試*程式執行應用程式。
 
-   -->
+       If a prompt appears to trust the development certificate, trust the certificate and continue.
 
    # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
@@ -147,7 +147,7 @@ ms.locfileid: "74239711"
 
    3 \。 建立新的專案。
 
-   4 \。 選取 [ **Blazor 應用程式**]。 選取 **[下一步]** 。
+   4 \。 選取 [ **Blazor 應用程式**]。 選取 [下一步]。
 
    5 \。 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
@@ -186,25 +186,25 @@ ms.locfileid: "74239711"
 
    7 \。 在瀏覽器中，巡覽至 `https://localhost:5001`。
 
-   <!--
+   # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-   # [Visual Studio for Mac](#tab/visual-studio-mac)
+   1 \。 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。 將[更新通道切換為 [預覽](/visualstudio/mac/install-preview)]。
 
-   1\. Install [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/). Switch the [Update channel to Preview](/visualstudio/mac/install-preview).
+   2 \。 選取 **[** 檔案] > [**新增方案**] 或 [建立**新專案**]。
 
-   2\. Select **File** > **New Solution** or **New Project**.
+   3 \。 在側邊欄中，選取 [ **.Net Core** > **應用程式**]。
 
-   3\. In the sidebar, select **.NET Core** > **App**.
+   4 \。 選取 [ **Blazor 伺服器應用程式**] 範本。 目前只有 Blazor 伺服器範本可在 Visual Studio for Mac 中使用。 如需 Blazor WebAssembly 體驗，請遵循 [ **.NET Core CLI** ] 索引標籤上的指示。選取 Blazor 伺服器範本之後，請選取 **[下一步]** 。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
 
-   4\. For a Blazor Server experience, select the **Blazor Server App** template. For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. For information on the two Blazor hosting models, *Blazor Server* and *Blazor WebAssembly*, see <xref:blazor/hosting-models>.
+   <!-- For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. -->
 
-   5\. The **Target Framework** defaults to **.NET Core 3.0**. Select **Next**.
+   5 \。 **目標 Framework**預設為 **.net core 3.0** （如果已安裝 3.1 Preview SDK，則為 **.net core 3.1** ）。 選取架構，然後選取 **[下一步]** 。
 
-   6\. In the **Project Name** field, enter `WebApplication1`. Select **Create**.
+   6。 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1`。 選取 [建立]。
 
-   7\. Select **Run** > **Run Without Debugging** to run the app *without the debugger*. Running with the debugger isn't supported at this time.
+   7 \。 選取 [**執行**] > **執行而不進行調試**程式，以在不進行偵錯工具的*情況下*執行 使用 [**開始調試**程式] 執行應用程式，以*使用調試*程式執行應用程式。
 
-   -->
+       If a prompt appears to trust the development certificate, trust the certificate and continue.
 
    # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
@@ -266,7 +266,7 @@ ms.locfileid: "74239711"
 元件參數是使用屬性或[子內容](xref:blazor/components#child-content)所指定，可讓您設定子元件上的屬性。 若要將參數新增至 `Counter` 元件，請更新元件的 `@code` 區塊：
 
 * 加入具有 `[Parameter]` 屬性之 `IncrementAmount` 的公用屬性。
-* 將 `IncrementCount` 方法變更為在增加 `IncrementAmount`的值時使用 `currentCount`。
+* 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
 
 *Pages/Counter.razor*：
 
@@ -286,4 +286,5 @@ ms.locfileid: "74239711"
 
 ## <a name="additional-resources"></a>其他資源
 
+* <xref:blazor/templates>
 * <xref:signalr/introduction>

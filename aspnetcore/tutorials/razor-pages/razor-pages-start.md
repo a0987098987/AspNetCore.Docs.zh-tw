@@ -86,7 +86,7 @@ ms.locfileid: "74116157"
   * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會出現一個對話方塊詢問「' RazorPagesMovie ' 缺少建置及偵錯所需的資產。要新增它們嗎?」 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 

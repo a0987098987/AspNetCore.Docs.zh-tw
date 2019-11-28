@@ -282,6 +282,8 @@
           uid: blazor/hosting-models
         - name: 建置您的第一個應用程式
           uid: tutorials/first-blazor-app
+        - name: 範本
+          uid: blazor/templates
         - name: 元件
           uid: blazor/components
         - name: 表單和驗證
@@ -1100,6 +1102,9 @@
       uid: fundamentals/middleware/extensibility-third-party-container
 - name: 移轉
   items:
+    - name: 3.0 至 3.1
+      displayName: 'migrate, migration'
+      uid: migration/30-to-31
     - name: 2.2 至 3.0
       displayName: 'migrate, migration'
       uid: migration/22-to-30

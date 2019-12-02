@@ -1,5 +1,5 @@
 ---
-title: 登入 .NET Core 與 ASP.NET Core
+title: .NET Core 與 ASP.NET Core 中的記錄
 author: rick-anderson
 description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提供的記錄架構。
 monikerRange: '>= aspnetcore-2.1'
@@ -14,7 +14,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 11/27/2019
 ms.locfileid: "74550366"
 ---
-# <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
+# <a name="logging-in-net-core-and-aspnet-core"></a>.NET Core 與 ASP.NET Core 中的記錄
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Steve Smith](https://ardalis.com/)
 

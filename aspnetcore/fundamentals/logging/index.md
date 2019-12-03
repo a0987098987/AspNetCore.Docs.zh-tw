@@ -1022,7 +1022,7 @@ dotnet tool install --global dotnet-trace
 
    追蹤會以名稱*nettrace*儲存在執行 `dotnet trace` 命令的資料夾中。
 
-1. 使用[Perfview](#perfview)開啟追蹤。 開啟*nettrace*檔案，並瀏覽追蹤事件。
+1. 使用 [Perfview](#perfview) 開啟追蹤。開啟 *nettrace* 檔案，並瀏覽追蹤事件。
 
 如需詳細資訊，請參閱。
 

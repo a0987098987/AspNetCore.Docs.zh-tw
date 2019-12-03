@@ -6,12 +6,12 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 11/21/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: 823d92c279454fc6c744eebbecf4268412774eba
-ms.sourcegitcommit: a104ba258ae7c0b3ee7c6fa7eaea1ddeb8b6eb73
+ms.openlocfilehash: a49fec38a6d38bbd33e9461cbcceb39bfe810f5c
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74478713"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717282"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core 中的資料繫結
 
@@ -49,7 +49,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 * 查看來源，在查詢字串中找到 "DogsOnly=true"。 名稱比對不區分大小寫。
 * 將字串 "true" 轉換成布林值 `true`。
 
-架構接著會呼叫 `GetById` 方法，針對 `id` 參數傳送 2、`true` 參數傳送 `dogsOnly`。
+架構接著會呼叫 `GetById` 方法，針對 `id` 參數傳送 2、`dogsOnly` 參數傳送 `true`。
 
 在上例中，模型繫結目標都是簡單型別的方法參數。 目標也可能是複雜類型的屬性。 成功繫結每一個屬性後，該屬性就會發生[模型驗證](xref:mvc/models/validation)。 哪些資料繫結至模型，以及任何繫結或驗證錯誤的記錄，都會儲存在 [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) 或 [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState)。 為了解此程序是否成功，應用程式會檢查 [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid) 旗標。
 
@@ -237,7 +237,7 @@ public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 
 ### <a name="prefix--property-name"></a>前置詞 = 屬性名稱
 
-如果要繫結的模型是控制器或 `Instructor` 類別名為 `PageModel` 的屬性：
+如果要繫結的模型是控制器或 `PageModel` 類別名為 `Instructor` 的屬性：
 
 ```csharp
 [BindProperty]
@@ -268,7 +268,7 @@ public IActionResult OnPost(
 > [!NOTE]
 > 當張貼的表單資料為值來源時，這些屬性會影響模型繫結。 它們不會影響處理已張貼 JSON 和 XML 要求本文的輸入格式器。 [本文稍後](#input-formatters)會說明輸入格式器。
 >
-> 另請參閱`[Required]`模型驗證[中的 ](xref:mvc/models/validation#required-attribute) 屬性討論。
+> 另請參閱[模型驗證](xref:mvc/models/validation#required-attribute)中的 `[Required]` 屬性討論。
 
 ### <a name="bindrequired-attribute"></a>[BindRequired] 屬性
 
@@ -293,7 +293,7 @@ public IActionResult OnPost(
 public class Instructor
 ```
 
-在下列範例中，當呼叫 `Instructor` 方法時，只會繫結 `OnPost` 模型的指定屬性：
+在下列範例中，當呼叫 `OnPost` 方法時，只會繫結 `Instructor` 模型的指定屬性：
 
 ```csharp
 [HttpPost]
@@ -351,7 +351,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 針對 `Dictionary` 目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如：
 
-* 假設目標參數是名為 `Dictionary<int, string>` 的 `selectedCourses`：
+* 假設目標參數是名為 `selectedCourses` 的 `Dictionary<int, string>`：
 
   ```csharp
   public IActionResult OnPost(int? id, Dictionary<int, string> selectedCourses)
@@ -380,6 +380,27 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
   * selectedCourses["1050"]="Chemistry"
   * selectedCourses["2000"]="Economics"
+
+<a name="glob"></a>
+
+## <a name="globalization-behavior-of-model-binding-route-data-and-query-strings"></a>模型系結路由資料和查詢字串的全球化行為
+
+ASP.NET Core 路由值提供者和查詢字串值提供者：
+
+* 將值視為不因文化特性而異。
+* Url 會預期文化特性不變。
+
+相反地，來自表單資料的值會經歷區分文化特性的轉換。 這是根據設計，讓 Url 可跨地區設定進行共用。
+
+若要讓 ASP.NET Core route 值提供者和查詢字串值提供者進行區分文化特性的轉換：
+
+* 繼承自 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory>
+* 從[QueryStringValueProviderFactory](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs)或[RouteValueValueProviderFactory](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)複製程式碼
+* 以 CurrentCulture 取代傳遞至值提供者的[文化特性值](https://github.com/aspnet/AspNetCore/blob/e625fe29b049c60242e8048b4ea743cca65aa7b5/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs#L30) [。](xref:System.Globalization.CultureInfo.CurrentCulture)
+* 將 MVC 選項中的預設值提供者 factory 取代為新的值：
+
+[!code-csharp[](model-binding/samples/StartupMB.cs?name=snippet)]
+[!code-csharp[](model-binding/samples/StartupMB.cs?name=snippet1)]
 
 ## <a name="special-data-types"></a>特殊資料類型
 
@@ -423,13 +444,13 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 ## <a name="exclude-specified-types-from-model-binding"></a>排除模型繫結中的指定類型
 
-模型繫結和驗證系統的行為是由 [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) 所驅動。 您可以將詳細資料提供者新增至 `ModelMetadata`MvcOptions.ModelMetadataDetailsProviders[，藉以自訂 ](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders)。 內建的詳細資料提供者可用於停用模型繫結或驗證所指定類型。
+模型繫結和驗證系統的行為是由 [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) 所驅動。 您可以將詳細資料提供者新增至 [MvcOptions.ModelMetadataDetailsProviders](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders)，藉以自訂 `ModelMetadata`。 內建的詳細資料提供者可用於停用模型繫結或驗證所指定類型。
 
-若要停用指定類型之所有模型的模型繫結，請在 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider> 中新增 `Startup.ConfigureServices`。 例如，若要對類型為 `System.Version` 的所有模型停用模型繫結：
+若要停用指定類型之所有模型的模型繫結，請在 `Startup.ConfigureServices` 中新增 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider>。 例如，若要對類型為 `System.Version` 的所有模型停用模型繫結：
 
 [!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=4-5)]
 
-若要停用指定類型屬性的驗證，請在 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider> 中新增 `Startup.ConfigureServices`。 例如，若要針對類型為 `System.Guid` 的屬性停用驗證：
+若要停用指定類型屬性的驗證，請在 `Startup.ConfigureServices` 中新增 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider>。 例如，若要針對類型為 `System.Guid` 的屬性停用驗證：
 
 [!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=6-7)]
 

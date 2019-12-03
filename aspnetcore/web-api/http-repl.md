@@ -5,14 +5,14 @@ description: 了解如何使用 HTTP REPL .NET Core 全域工具來瀏覽和測�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 12/02/2019
 uid: web-api/http-repl
-ms.openlocfilehash: bb3757f51487a307ebfb97452b80995f84e95e4b
-ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.openlocfilehash: c6e3ab5685b5bd0b154d20585fb0d187f81da641
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037719"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717161"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -27,16 +27,16 @@ HTTP「讀取、求值、輸出」迴圈 (REPL) 是：
 支援的 [HTTP 動詞命令](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)如下：
 
 * [DELETE](#test-http-delete-requests)
-* [GET](#test-http-get-requests)
+* [獲取](#test-http-get-requests)
 * [HEAD](#test-http-head-requests)
 * [OPTIONS](#test-http-options-requests)
-* [PATCH](#test-http-patch-requests)
-* [POST](#test-http-post-requests)
+* [跳](#test-http-patch-requests)
+* [發佈](#test-http-post-requests)
 * [提出](#test-http-put-requests)
 
 若要跟著做，[請檢視或下載範例 ASP.NET Core web API](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
 * [!INCLUDE [2.1-SDK](~/includes/2.1-SDK.md)]
 
@@ -50,7 +50,7 @@ dotnet tool install -g Microsoft.dotnet-httprepl
 
 會從 [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) \(英文\) NuGet 套件安裝 [.NET Core 全域工具](/dotnet/core/tools/global-tools#install-a-global-tool)。
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用
 
 成功安裝工具後，請執行以下命令來啟動 HTTP REPL：
 
@@ -134,7 +134,7 @@ HTTP REPL 提供命令完成。 按 <kbd>Tab</kbd> 鍵會逐一查看完成您�
 httprepl <ROOT URI>
 ```
 
-`<ROOT URI>` 是 web API 的基底 URI。 例如:
+`<ROOT URI>` 是 web API 的基底 URI。 例如：
 
 ```console
 httprepl https://localhost:5001
@@ -146,7 +146,7 @@ httprepl https://localhost:5001
 connect <ROOT URI>
 ```
 
-例如:
+例如：
 
 ```console
 (Disconnected)~ connect https://localhost:5001
@@ -160,7 +160,7 @@ connect <ROOT URI>
 connect <ROOT URI> --swagger <SWAGGER URI>
 ```
 
-例如:
+例如：
 
 ```console
 (Disconnected)~ connect https://localhost:5001 --swagger /swagger/v1/swagger.json
@@ -199,7 +199,7 @@ https://localhost:5001/fruits~ ls
 https://localhost:5001/fruits~
 ```
 
-或者，執行 `ui` 命令在瀏覽器中開啟 web API 的 Swagger UI 頁面。 例如:
+或者，執行 `ui` 命令在瀏覽器中開啟 web API 的 Swagger UI 頁面。 例如：
 
 ```console
 https://localhost:5001/~ ui
@@ -243,7 +243,7 @@ https://localhost:5001/people~
 
 ### <a name="view-the-settings"></a>檢視設定
 
-若要檢視可用的設定，請執行 `pref get` 命令。 例如:
+若要檢視可用的設定，請執行 `pref get` 命令。 例如：
 
 ```console
 https://localhost:5001/~ pref get
@@ -270,7 +270,7 @@ colors.status=BoldYellow
 https://localhost:5001/people~ pref set colors.json White
 ```
 
-只能使用[允許的色彩](https://github.com/aspnet/HttpRepl/blob/01d5c3c3373e98fe566ff5ef8a17c571de880293/src/Microsoft.Repl/ConsoleHandling/AllowedColors.cs)。 後續的 HTTP 要求會顯示含有新著色的輸出。
+只能使用[允許的色彩](https://github.com/dotnet/HttpRepl/blob/01d5c3c3373e98fe566ff5ef8a17c571de880293/src/Microsoft.Repl/ConsoleHandling/AllowedColors.cs)。 後續的 HTTP 要求會顯示含有新著色的輸出。
 
 未設定特定色彩機碼時，會使用較泛用的機碼。 為了示範此遞補行為，請參考以下範例：
 
@@ -281,7 +281,7 @@ https://localhost:5001/people~ pref set colors.json White
 
 ### <a name="set-indentation-size"></a>設定縮排大小
 
-目前僅為 JSON 支援回應縮排大小自訂。 預設大小為兩個空格。 例如:
+目前僅為 JSON 支援回應縮排大小自訂。 預設大小為兩個空格。 例如：
 
 ```json
 [
@@ -370,7 +370,7 @@ pref set editor.command.default.arguments "--disable-extensions --new-window"
 - */swagger.json*
 - */swagger/v1/swagger.json*
 
-若要在您的環境中使用一組不同的搜尋路徑，請設定 `swagger.searchPaths` 喜好設定。 此值必須是以管線分隔的相對路徑清單。 例如:
+若要在您的環境中使用一組不同的搜尋路徑，請設定 `swagger.searchPaths` 喜好設定。 此值必須是以管線分隔的相對路徑清單。 例如：
 
 ```console
 pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
@@ -384,13 +384,13 @@ pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
 get <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 以下是使用 `get` 命令時可用的選項：
 
@@ -468,13 +468,13 @@ get <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body
 post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -490,7 +490,7 @@ post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-f
     https://localhost:5001/people~ post -h Content-Type=application/json
     ```
 
-    在上述命令中，`Content-Type` HTTP 要求標頭設定為指出 JSON 類型的要求本文媒體。 預設文字編輯器會開啟 *.tmp* 檔案，其中包含代表 HTTP 要求本文的 JSON 範本。 例如:
+    在上述命令中，`Content-Type` HTTP 要求標頭設定為指出 JSON 類型的要求本文媒體。 預設文字編輯器會開啟 *.tmp* 檔案，其中包含代表 HTTP 要求本文的 JSON 範本。 例如：
 
     ```json
     {
@@ -538,13 +538,13 @@ post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-f
 put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -554,7 +554,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
 
 若要發出 HTTP PUT 要求：
 
-1. *選擇性*：執行 `get` 命令以在修改前檢視資料：
+1. *選擇性*：在修改資料之前，請先執行 `get` 命令來加以流覽：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -585,7 +585,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     https://localhost:5001/fruits~ put 2 -h Content-Type=application/json
     ```
 
-    在上述命令中，`Content-Type` HTTP 要求標頭設定為指出 JSON 類型的要求本文媒體。 預設文字編輯器會開啟 *.tmp* 檔案，其中包含代表 HTTP 要求本文的 JSON 範本。 例如:
+    在上述命令中，`Content-Type` HTTP 要求標頭設定為指出 JSON 類型的要求本文媒體。 預設文字編輯器會開啟 *.tmp* 檔案，其中包含代表 HTTP 要求本文的 JSON 範本。 例如：
 
     ```json
     {
@@ -615,7 +615,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     Server: Kestrel
     ```
 
-1. *選擇性*：發出 `get` 命令來查看修改。 舉例來說，如果您在文字編輯器中鍵入 "Cherry"，`get` 會傳回以下內容：
+1. *選擇性*：發出 `get` 命令以查看修改。 舉例來說，如果您在文字編輯器中鍵入 "Cherry"，`get` 會傳回以下內容：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -652,13 +652,13 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
 delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -666,7 +666,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
 
 若要發出 HTTP DELETE 要求：
 
-1. *選擇性*：執行 `get` 命令以在修改前檢視資料：
+1. *選擇性*：在修改資料之前，請先執行 `get` 命令來加以流覽：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -705,7 +705,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
     Server: Kestrel
     ```
 
-1. *選擇性*：發出 `get` 命令來查看修改。 在本範例中，`get` 會傳回以下內容：
+1. *選擇性*：發出 `get` 命令以查看修改。 在本範例中，`get` 會傳回以下內容：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -738,13 +738,13 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
 patch <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -758,13 +758,13 @@ patch <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-
 head <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -776,13 +776,13 @@ head <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:bod
 options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -790,7 +790,7 @@ options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:
 
 若要設定 HTTP 要求標頭，請使用下列其中一個方法：
 
-* 與 HTTP 要求一同設定。 例如:
+* 與 HTTP 要求一同設定。 例如：
 
     ```console
     https://localhost:5001/people~ post -h Content-Type=application/json
@@ -798,13 +798,13 @@ options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:
     
     若使用上述方法，則各相異的 HTTP 要求標頭都需要自己的 `-h` 選項。
 
-* 於傳送 HTTP 要求之前設定。 例如:
+* 於傳送 HTTP 要求之前設定。 例如：
 
     ```console
     https://localhost:5001/people~ set header Content-Type application/json
     ```
     
-    若在傳送要求之前設定標頭，則標頭會保留命令殼層工作階段的持續時間設定。 若要清除標頭，請提供空白值。 例如:
+    若在傳送要求之前設定標頭，則標頭會保留命令殼層工作階段的持續時間設定。 若要清除標頭，請提供空白值。 例如：
     
     ```console
     https://localhost:5001/people~ set header Content-Type
@@ -898,14 +898,14 @@ set header Authorization "bearer <TOKEN VALUE>"
 
 ### <a name="enable-request-display"></a>啟用要求顯示
 
-透過執行 `echo on` 命令來檢視要傳送的 HTTP 要求。 例如:
+透過執行 `echo on` 命令來檢視要傳送的 HTTP 要求。 例如：
 
 ```console
 https://localhost:5001/people~ echo on
 Request echoing is on
 ```
 
-目前工作階段中的後續 HTTP 要求會顯示要求標頭。 例如:
+目前工作階段中的後續 HTTP 要求會顯示要求標頭。 例如：
 
 ```console
 https://localhost:5001/people~ post
@@ -943,7 +943,7 @@ https://localhost:5001/people~
 
 ### <a name="disable-request-display"></a>停用要求顯示
 
-透過執行 `echo off` 命令來隱藏要傳送的 HTTP 要求顯示。 例如:
+透過執行 `echo off` 命令來隱藏要傳送的 HTTP 要求顯示。 例如：
 
 ```console
 https://localhost:5001/people~ echo off
@@ -952,7 +952,7 @@ Request echoing is off
 
 ## <a name="run-a-script"></a>執行指令碼
 
-如果您經常執行一組相同的 HTTP REPL 命令，請考慮將它們儲存在文字檔中。 檔案中的命令會採用與手動在命令列上執行的命令相同的格式。 您可使用 `run` 命令以批次的方式執行命令。 例如:
+如果您經常執行一組相同的 HTTP REPL 命令，請考慮將它們儲存在文字檔中。 檔案中的命令會採用與手動在命令列上執行的命令相同的格式。 您可使用 `run` 命令以批次的方式執行命令。 例如：
 
 1. 建立包含一組以新行分隔命令的文字檔。 為了說明，請參考包含以下命令的 *people-script.txt* 檔案：
 
@@ -964,7 +964,7 @@ Request echoing is off
     get 1
     ```
 
-1. 執行 `run` 命令，傳入文字檔的路徑。 例如:
+1. 執行 `run` 命令，傳入文字檔的路徑。 例如：
 
     ```console
     https://localhost:5001/~ run C:\http-repl-scripts\people-script.txt
@@ -1037,4 +1037,4 @@ https://localhost:5001/~
 ## <a name="additional-resources"></a>其他資源
 
 * [REST API 要求](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)
-* [HTTP REPL GitHub 存放庫](https://github.com/aspnet/HttpRepl)
+* [HTTP REPL GitHub 存放庫](https://github.com/dotnet/HttpRepl)

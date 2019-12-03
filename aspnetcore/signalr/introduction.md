@@ -5,16 +5,16 @@ description: 瞭解 ASP.NET Core SignalR 程式庫如何簡化將即時功能新
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/27/2019
 no-loc:
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: 7108d9f223db78937dd1203a1cb4b890006b20ec
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: e84dd0d086cbfc80a80bc10baa33979da9b5d137
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963945"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717230"
 ---
 # <a name="introduction-to-aspnet-core-opno-locsignalr"></a>ASP.NET Core SignalR 簡介
 
@@ -42,7 +42,7 @@ SignalR 提供用來建立伺服器對用戶端[遠端程序呼叫（RPC）](htt
 
 ## <a name="transports"></a>傳輸
 
-SignalR 支援數種處理即時通訊的技巧：
+SignalR 支援下列用來處理即時通訊的技術（依正常回溯的順序）：
 
 * [WebSockets](https://tools.ietf.org/html/rfc7118)
 * 伺服器傳送的事件

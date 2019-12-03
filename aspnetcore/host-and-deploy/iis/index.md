@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/26/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 179ab4c97426c9d3cb8ed069d2059d767d755533
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: de1b3e270ccd90bde741975de38a224e557f1a08
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034258"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717412"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -325,15 +325,36 @@ services.Configure<IISOptions>(options =>
 1. 在伺服器上執行安裝程式。 從系統管理員命令殼層執行安裝程式時，有 下列參數可用：
 
    * `OPT_NO_ANCM=1` &ndash; 跳過安裝 ASP.NET Core 模組。
-   * `OPT_NO_RUNTIME=1` &ndash; 跳過安裝 .NET Core 執行階段。
-   * `OPT_NO_SHAREDFX=1` &ndash; 跳過安裝 ASP.NET 共用架構 (ASP.NET 執行階段)。
+   * `OPT_NO_RUNTIME=1` &ndash; 跳過安裝 .NET Core 執行階段。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_SHAREDFX=1` &ndash; 跳過安裝 ASP.NET 共用架構 (ASP.NET 執行階段)。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
    * `OPT_NO_X86=1` &ndash; 跳過安裝 x86 執行階段。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
    * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
-1. 請重新啟動系統，或是從命令殼層依序執行 **net stop was /y** 和 **net start w3svc**。 重新啟動 IIS 將能偵測到由安裝程式對系統路徑 (此為環境變數) 所做出的變更。
+1. 重新開機系統，或在命令 shell 中執行下列命令：
+
+   ```console
+   net stop was /y
+   net start w3svc
+   ```
+   重新啟動 IIS 將能偵測到由安裝程式對系統路徑 (此為環境變數) 所做出的變更。
+
+::: moniker range=">= aspnetcore-3.0"
+
+ASP.NET Core 不採用共用架構封裝修補程式版本的向前復原行為。 藉由安裝新的裝載套件組合來升級共用架構之後，請重新開機系統，或在命令 shell 中執行下列命令：
+
+```console
+net stop was /y
+net start w3svc
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 安裝裝載套件組合時，不需要手動停止 IIS 中的個別網站。 裝載的應用程式（IIS 網站）會在 IIS 重新開機時重新開機。 應用程式會在收到第一個要求時重新開機，包括從[應用程式初始化模組](#application-initialization-module-and-idle-timeout)。
 
 ASP.NET Core 採用共用架構封裝修補程式版本的向前復原行為。 當 IIS 所裝載的應用程式使用 IIS 重新開機時，應用程式會在收到第一個要求時，以其所參考套件的最新修補程式版本來載入。 如果未重新開機 IIS，應用程式會在其工作者進程回收時重新開機並展示向前復原行為，並接收其第一個要求。
+
+::: moniker-end
 
 > [!NOTE]
 > 如需 IIS 共用組態的資訊，請參閱[使用 IIS 共用組態的 ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration)。
@@ -410,7 +431,7 @@ ASP.NET Core 採用共用架構封裝修補程式版本的向前復原行為。 
 
 * 使用 Web Deploy 並參考專案檔中的 `Microsoft.NET.Sdk.Web`。 *app_offline.htm* 檔案是放在 Web 應用程式目錄的根目錄中。 當檔案存在時，ASP.NET Core 模組會正常關閉應用程式，並在部署期間提供 *app_offline.htm* 檔案。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module#app_offlinehtm)。
 * 在伺服器上的 IIS 管理員中手動停止應用程式集區。
-* 使用 PowerShell 卸載*app_offline* （需要 PowerShell 5 或更新版本）：
+* 使用 PowerShell 卸載*app_offline .htm* （需要 PowerShell 5 或更新版本）：
 
   ```PowerShell
   $pathToApp = 'PATH_TO_APP'
@@ -574,7 +595,7 @@ IIS [新增網站] 對話方塊預設每個應用程式皆為單一應用程式�
 
 ::: moniker-end
 
-## <a name="application-pool-identity"></a>應用程式集區身分識別
+## <a name="application-pool-identity"></a>應用程式集區識別碼
 
 應用程式集區身分識別帳戶可讓應用程式在唯一的帳戶下執行，不必建立及管理網域或本機帳戶。 在 IIS 8.0 或更新版本中，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，並預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，於應用程式集區的 [進階設定] 下，確定 [身分識別] 設定為使用 **ApplicationPoolIdentity**：
 

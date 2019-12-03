@@ -4,14 +4,14 @@ author: rick-anderson
 ms.author: riande
 description: 探索 ASP.NET Core 腳本標記協助程式屬性，以及每個屬性在 HTML 腳本標記的擴充行為中所扮演的角色。
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 12/02/2019
 uid: mvc/views/tag-helpers/builtin-th/script-tag-helper
-ms.openlocfilehash: c3d9148bd62dcc045873cc3a72884ae458349d70
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 8a90eb5a74ff3f8178a47c59ad7ba1b6a389ab87
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317113"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717373"
 ---
 # <a name="script-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的腳本標記協助程式
 
@@ -34,17 +34,19 @@ ms.locfileid: "74317113"
 </script>
 ```
 
+請勿使用 `<script>` 元素的[defer](https://developer.mozilla.org/docs/Web/HTML/Element/script)屬性來延遲載入 CDN 腳本。 腳本標記協助程式會轉譯 JavaScript，以立即執行[asp-fallback-測試](#asp-fallback-test)運算式。 如果載入 CDN 腳本已延遲，運算式就會失敗。
+
 ## <a name="commonly-used-script-tag-helper-attributes"></a>常用的腳本標記協助程式屬性
 
 如需所有腳本標記協助程式屬性、屬性和方法，請參閱[腳本標記 helper](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper) 。
 
 ### <a name="asp-fallback-test"></a>asp-回溯-測試
 
-要用於回溯測試之主要腳本中定義的腳本方法。 如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression>。
+要用於回溯測試之主要腳本中定義的腳本方法。 如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression>。
 
 ### <a name="asp-fallback-src"></a>asp-fallback-src
 
-當主要複本失敗時，要回復之腳本標記的 URL。 如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc>。
+當主要複本失敗時，要回復之腳本標記的 URL。 如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc>。
 
 ## <a name="additional-resources"></a>其他資源
 

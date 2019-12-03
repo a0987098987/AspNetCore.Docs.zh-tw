@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 11/30/2019
 uid: fundamentals/localization
-ms.openlocfilehash: 391786498dc7088f3a06915128f23b2c0e734656
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 645f680436336acbe1d5c2854a242527c9b4b9cb
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681106"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717399"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -372,6 +372,10 @@ services.Configure<RequestLocalizationOptions>(options =>
 [!code-csharp[](localization/sample/Localization/Controllers/HomeController.cs?range=57-67)]
 
 您無法將 *_SelectLanguagePartial.cshtml* 插入這個專案的範例程式碼。 [GitHub](https://github.com/aspnet/entropy) 上的範例 **Localization.StarterWeb** 專案，其中的程式碼會部分透過[相依性插入](dependency-injection.md)容器將 `RequestLocalizationOptions` 流向 Razor。
+
+## <a name="model-binding-route-data-and-query-strings"></a>模型系結路由資料和查詢字串
+
+請參閱模型系結[路由資料和查詢字串的全球化行為](xref:mvc/models/model-binding#glob)。
 
 ## <a name="globalization-and-localization-terms"></a>全球化和當地語系化詞彙
 

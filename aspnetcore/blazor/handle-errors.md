@@ -5,17 +5,17 @@ description: 探索 ASP.NET Core 如何 Blazor Blazor 如何管理未處理的�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 12/01/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: 9784b357c2cdeb7422bbe40a39f881c97f6d716a
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 9f249fac331d31249f9325892e8365e3d0b4cc5a
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74680989"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717057"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
 
@@ -122,7 +122,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 ### <a name="lifecycle-methods"></a>生命週期方法
 
-在元件的存留期間，Blazor 會叫用[生命週期方法](xref:blazor/lifecycle)：
+在元件的存留期間，Blazor 會叫用下列[生命週期方法](xref:blazor/lifecycle)：
 
 * `OnInitialized` / `OnInitializedAsync`
 * `OnParametersSet` / `OnParametersSetAsync`

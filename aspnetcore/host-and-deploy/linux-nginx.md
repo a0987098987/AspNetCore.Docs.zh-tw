@@ -5,18 +5,18 @@ description: 了解如何在 Ubuntu 16.04 上將 Nginx 設定為反向 Proxy，�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/02/2019
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: c6ae86ec9ac54ddf2d487fd72156199fbdd029ef
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: f307a1c3e0dc62c5dc03e50d710696fadd9fd487
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73659867"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717386"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
-由 [Sourabh Shirhatti](https://twitter.com/sshirhatti) 提供
+作者：[Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
 本指南說明在 Ubuntu 16.04 伺服器上設定生產環境就緒的 ASP.NET Core 環境。 這些指示可能使用較新版本的 Ubuntu，但未經測試。
 
@@ -32,14 +32,17 @@ ms.locfileid: "73659867"
 * 確保 Web 應用程式在啟動時以精靈的形式執行。
 * 設定程序管理工具以協助重新啟動 Web 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
 1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器。
 1. 在伺服器上安裝 .NET Core 執行階段。
-   1. 請前往 [.NET Core 的 All Downloads (下載區)](https://www.microsoft.com/net/download/all) 頁面。
-   1. 在 [執行階段] 下的清單中選取最新的非預覽執行階段。
-   1. 選取並遵循符合伺服器 Ubuntu 版本的 Ubuntu 指示。
+   1. 請造訪[下載 .Net Core 頁面](https://dotnet.microsoft.com/download/dotnet-core)。
+   1. 選取最新的非預覽 .NET Core 版本。
+   1. 在 [**執行應用程式-運行**時間] 下的表格中，下載最新的非預覽執行時間。
+   1. 選取 [Linux**套件管理員指示**] 連結，並遵循 ubuntu 版本的 ubuntu 指示。
 1. 現有的 ASP.NET Core 應用程式。
+
+在未來升級共用架構之後的任何時間點，重新開機伺服器所裝載的 ASP.NET Core 應用程式。
 
 ## <a name="publish-and-copy-over-the-app"></a>跨應用程式發佈與複製
 
@@ -48,7 +51,7 @@ ms.locfileid: "73659867"
 如果應用程式在本機執行且未設定為進行安全連線 (HTTPS)，請採用下列任一方法：
 
 * 設定應用程式以處理安全的本機連線。 如需詳細資訊，請參閱 [HTTPS 組態](#https-configuration)一節。
-* 從 `https://localhost:5001`Properties/launchSettings.json`applicationUrl` 檔案中的 *屬性移除* (如果有的話)。
+* 從 *Properties/launchSettings.json* 檔案中的 `applicationUrl` 屬性移除 `https://localhost:5001` (如果有的話)。
 
 從開發環境執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 將應用程式封裝到可在伺服器上執行的目錄 (例如，*bin/Release/&lt;target_framework_moniker&gt;/publish*)：
 
@@ -78,11 +81,11 @@ Kestrel 非常適用於從 ASP.NET Core 提供動態內容。 不過，Web 服�
 
 為達到本指南的目的，使用 Nginx 的單一執行個體。 它會在相同的伺服器上和 HTTP 伺服器一起執行。 您可以根據需求，選擇不同的設定。
 
-由於反向 Proxy 會轉送要求，因此請使用來自 [Microsoft.AspNetCore.HttpOverrides](xref:host-and-deploy/proxy-load-balancer) 套件的[轉送的標頭中介軟體](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/)。 此中介軟體會使用 `Request.Scheme` 標頭來更新 `X-Forwarded-Proto`，以便讓重新導向 URI 及其他安全性原則正確運作。
+由於反向 Proxy 會轉送要求，因此請使用來自 [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) 套件的[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)。 此中介軟體會使用 `X-Forwarded-Proto` 標頭來更新 `Request.Scheme`，以便讓重新導向 URI 及其他安全性原則正確運作。
 
 任何依賴配置的元件，例如驗證、連結產生、重新導向和地理位置，都必須在叫用轉送的標頭中介軟體後放置。 轉送的標頭中介軟體是一般規則，應該先於診斷和錯誤處理中介軟體以外的其他中介軟體執行。 這種排序可確保依賴轉送標頭資訊的中介軟體可以耗用用於處理的標頭值。
 
-請先在 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 中叫用 `Startup.Configure` 方法，再呼叫 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 或類似的驗證配置中介軟體。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
+請先在 `Startup.Configure` 中叫用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 方法，再呼叫 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 或類似的驗證配置中介軟體。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -95,7 +98,7 @@ app.UseAuthentication();
 
 如果未將任何 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 指定給中介軟體，則要轉送的預設標頭會是 `None`。
 
-在預設情況下，在回送位址 (127.0.0.0/8, [::1]) 上執行的 Proxy (包括標準的本機位址 (127.0.0.1)) 是受信任的。 如果組織內有其他受信任的 Proxy 或網路處理網際網路與網頁伺服器之間的要求，請使用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*>，將其新增至 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 或 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 清單。 下列範例會將 IP 位址 10.0.0.100 的受信任 Proxy 伺服器新增至 `KnownProxies` 中「轉送的標頭中介軟體」的 `Startup.ConfigureServices`：
+在預設情況下，在回送位址 (127.0.0.0/8, [::1]) 上執行的 Proxy (包括標準的本機位址 (127.0.0.1)) 是受信任的。 如果組織內有其他受信任的 Proxy 或網路處理網際網路與網頁伺服器之間的要求，請使用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>，將其新增至 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> 或 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 清單。 下列範例會將 IP 位址 10.0.0.100 的受信任 Proxy 伺服器新增至 `Startup.ConfigureServices` 中「轉送的標頭中介軟體」的 `KnownProxies`：
 
 ```csharp
 services.Configure<ForwardedHeadersOptions>(options =>
@@ -104,7 +107,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/proxy-load-balancer>。
+如需詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
 
 ### <a name="install-nginx"></a>安裝 Nginx
 
@@ -155,7 +158,7 @@ server {
 使用上述設定檔和預設伺服器時，Nginx 會在連接埠 80 接受主機標頭為 `example.com` 或 `*.example.com` 的公用流量。 不符合這些主機的要求將不會轉送至 Kestrel。 Nginx 會將相符的要求轉送至位於 `http://localhost:5000` 的 Kestrel。 如需詳細資訊，請參閱 [nginx 如何處理要求](https://nginx.org/docs/http/request_processing.html) \(英文\)。 若要變更 Kestrel 的 IP/連接埠，請參閱 [Kestrel：端點組態](xref:fundamentals/servers/kestrel#endpoint-configuration)。
 
 > [!WARNING]
-> 如果無法指定適當的 [server_name 指示詞](https://nginx.org/docs/http/server_names.html)，就會讓應用程式暴露在安全性弱點的風險下。 若您擁有整個父網域 (相對於易受攻擊的 `*.example.com`) 的控制權，子網域萬用字元繫結 (例如 `*.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
+> 如果無法指定適當的 [server_name 指示詞](https://nginx.org/docs/http/server_names.html)，就會讓應用程式暴露在安全性弱點的風險下。 若您擁有整個父網域 (相對於易受攻擊的 `*.com`) 的控制權，子網域萬用字元繫結 (例如 `*.example.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
 建立 Nginx 設定之後，請執行 `sudo nginx -t` 來確認設定檔的語法。 如果設定檔測試成功，請執行 `sudo nginx -s reload` 來強制 Nginx 套用這些變更。
 
@@ -204,7 +207,7 @@ WantedBy=multi-user.target
 
 如果設定不是使用 *www-data* 這個使用者，就必須先建立這裡所定義的使用者，並授與適當的檔案擁有權。
 
-使用 `TimeoutStopSec` 可設定應用程式收到初始中斷訊號之後等待關閉的時間。 如果應用程式在此期間後未關閉，則會發出 SIGKILL 來終止應用程式。 提供不具單位的秒值 (例如 `150`)、時間範圍值 (例如 `2min 30s`) 或 `infinity` (表示停用逾時)。 `TimeoutStopSec` 在管理員設定檔 (`DefaultTimeoutStopSec`systemd-system.conf *、* system.conf.d *、* systemd-user.conf *、* user.conf.d *) 的預設值為* 。 大多數發行版本的預設逾時為 90 秒。
+使用 `TimeoutStopSec` 可設定應用程式收到初始中斷訊號之後等待關閉的時間。 如果應用程式在此期間後未關閉，則會發出 SIGKILL 來終止應用程式。 提供不具單位的秒值 (例如 `150`)、時間範圍值 (例如 `2min 30s`) 或 `infinity` (表示停用逾時)。 `TimeoutStopSec` 在管理員設定檔 (*systemd-system.conf*、*system.conf.d*、*systemd-user.conf*、*user.conf.d*) 的預設值為 `DefaultTimeoutStopSec`。 大多數發行版本的預設逾時為 90 秒。
 
 ```
 # The default value is 90 seconds for most distributions.
@@ -392,7 +395,11 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 sudo nano /etc/nginx/nginx.conf
 ```
 
-新增行 `add_header X-Content-Type-Options "nosniff";` 並儲存檔案，然後重新啟動 Nginx。
+新增 `add_header X-Content-Type-Options "nosniff";` 行並儲存檔案，然後重新啟動 Nginx。
+
+## <a name="additional-nginx-suggestions"></a>其他 Nginx 建議
+
+升級伺服器上的共用架構之後，請重新開機伺服器所主控的 ASP.NET Core 應用程式。
 
 ## <a name="additional-resources"></a>其他資源
 

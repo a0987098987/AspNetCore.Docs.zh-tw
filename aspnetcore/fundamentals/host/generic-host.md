@@ -5,14 +5,14 @@ description: 了解 .NET Core 的泛型主機，其負責啟動應用程式及�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 12/02/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: f14917ad924e2c762a14c2cb5f51391d4be06e7b
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: 2ed4af109b5ccd303a03a0d9167649dda7793126
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378759"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717018"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -85,7 +85,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 * 從下列項目載入應用程式組態：
   * *appsettings.json*。
   * *appsettings.{Environment}.json*
-  * 應用程式在 [ 環境中執行時的](xref:security/app-secrets)祕密管理員`Development`。
+  * 應用程式在 `Development` 環境中執行時的[祕密管理員](xref:security/app-secrets)。
   * 環境變數。
   * 命令列引數。
 * 新增下列[記錄](xref:fundamentals/logging/index)提供者：
@@ -127,9 +127,9 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 <xref:Microsoft.Extensions.Hosting.IHostLifetime> 實作會控制主機啟動及停止的時機。 會使用最後一個註冊的實作。
 
-`Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` 是預設的 `IHostLifetime` 實作。 `ConsoleLifetime`：
+`Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` 是預設的 `IHostLifetime` 實作。 `ConsoleLifetime`:
 
-* 會接聽 Ctrl+C/SIGINT 或 SIGTERM，並呼叫 <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> 以啟動關機程序。
+* 接聽 Ctrl + C/SIGINT 或 SIGTERM，並呼叫 <xref:Microsoft.Extensions.Hosting.IHostApplicationLifetime.StopApplication*> 以開始關機程式。
 * 會解除封鎖 [RunAsync](#runasync) 和 [WaitForShutdownAsync](#waitforshutdownasync) 等延伸模組。
 
 ## <a name="ihostenvironment"></a>IHostEnvironment
@@ -140,17 +140,15 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 * [EnvironmentName](#environmentname)
 * [ContentRootPath](#contentrootpath)
 
-Web 應用程式會實作 `IWebHostEnvironment` 介面，其繼承 `IHostEnvironment` 並新增：
-
-* [WebRootPath](#webroot)
+Web apps 會執行 `IWebHostEnvironment` 介面，它會繼承 `IHostEnvironment` 並新增[WebRootPath](#webroot)。
 
 ## <a name="host-configuration"></a>主機組態
 
 主機組態用於 <xref:Microsoft.Extensions.Hosting.IHostEnvironment> 實作的屬性。
 
-主機組態位於 [ 內的 ](xref:Microsoft.Extensions.Hosting.HostBuilderContext.Configuration)HostBuilderContext.Configuration<xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>。 在 `ConfigureAppConfiguration` 之後，應用程式組態會取代 `HostBuilderContext.Configuration`。
+主機組態位於 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 內的 [HostBuilderContext.Configuration](xref:Microsoft.Extensions.Hosting.HostBuilderContext.Configuration)。 在 `ConfigureAppConfiguration` 之後，應用程式組態會取代 `HostBuilderContext.Configuration`。
 
-若要新增主機組態，請呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureHostConfiguration*> 上的 `IHostBuilder`。 `ConfigureHostConfiguration` 可以多次呼叫，其結果是累加的。 主機會使用指定索引鍵上最後設定值的任何選項。
+若要新增主機組態，請呼叫 `IHostBuilder` 上的 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureHostConfiguration*>。 `ConfigureHostConfiguration` 可以多次呼叫，其結果是累加的。 主機會使用指定索引鍵上最後設定值的任何選項。
 
 CreateDefaultBuilder 包含具有前置詞 `DOTNET_` 的環境變數提供者和命令列引數。 針對 Web 應用程式，會新增具有前置詞 `ASPNETCORE_` 的環境變數提供者。 讀取環境變數時，就會移除前置詞。 例如，`ASPNETCORE_ENVIRONMENT` 的環境變數值會變成 `environment` 索引鍵的主機組態值。
 
@@ -160,7 +158,7 @@ CreateDefaultBuilder 包含具有前置詞 `DOTNET_` 的環境變數提供者和
 
 ## <a name="app-configuration"></a>應用程式設定
 
-應用程式組態的建立方式是在 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 上呼叫 `IHostBuilder`。 `ConfigureAppConfiguration` 可以多次呼叫，其結果是累加的。 應用程式會使用指定索引鍵上最後設定值的任何選項。 
+應用程式組態的建立方式是在 `IHostBuilder` 上呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>。 `ConfigureAppConfiguration` 可以多次呼叫，其結果是累加的。 應用程式會使用指定索引鍵上最後設定值的任何選項。 
 
 由 `ConfigureAppConfiguration` 建立的組態位於 [HostBuilderContext.Configuration](xref:Microsoft.Extensions.Hosting.HostBuilderContext.Configuration*)，可用於後續作業並用作 DI 中的服務。 主機組態也會新增至應用程式組態。
 
@@ -192,7 +190,7 @@ CreateDefaultBuilder 包含具有前置詞 `DOTNET_` 的環境變數提供者和
 **預設值**：應用程式元件所在的資料夾。  
 **環境變數**：`<PREFIX_>CONTENTROOT`
 
-若要設定此值，請使用環境變數或呼叫 `UseContentRoot` 上的 `IHostBuilder`：
+若要設定此值，請使用環境變數或呼叫 `IHostBuilder` 上的 `UseContentRoot`：
 
 ```csharp
 Host.CreateDefaultBuilder(args)
@@ -200,7 +198,7 @@ Host.CreateDefaultBuilder(args)
     //...
 ```
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱＜＞。
 
 * [基本概念：內容根目錄](xref:fundamentals/index#content-root)
 * [WebRoot](#webroot)
@@ -214,7 +212,7 @@ Host.CreateDefaultBuilder(args)
 **預設值**：Production  
 **環境變數**：`<PREFIX_>ENVIRONMENT`
 
-若要設定此值，請使用環境變數或呼叫 `UseEnvironment` 上的 `IHostBuilder`：
+若要設定此值，請使用環境變數或呼叫 `IHostBuilder` 上的 `UseEnvironment`：
 
 ```csharp
 Host.CreateDefaultBuilder(args)
@@ -226,7 +224,7 @@ Host.CreateDefaultBuilder(args)
 
 [HostOptions.ShutdownTimeout](xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*) 會設定 <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*> 的逾時。 預設值是五秒鐘。  在逾時期間，主機會：
 
-* 觸發 [IHostApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.applicationstopping)。
+* 觸發 [IHostApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.aspnetcore.hosting.ihostapplicationlifetime.applicationstopping)。
 * 嘗試停止託管的服務，並記錄無法停止之服務的錯誤。
 
 如果在所有的託管服務停止之前逾時期限已到期，則應用程式關閉時，會停止任何剩餘的作用中服務。 即使服務尚未完成處理也會停止。 如果服務需要更多時間才能停止，請增加逾時。
@@ -347,7 +345,7 @@ webBuilder.PreferHostingUrls(false);
 
 ### <a name="preventhostingstartup"></a>PreventHostingStartup
 
-可防止自動載入裝載啟動組件，包括應用程式組件所設定的裝載啟動組件。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration>。
+可防止自動載入裝載啟動組件，包括應用程式組件所設定的裝載啟動組件。 如需詳細資訊，請參閱<xref:fundamentals/configuration/platform-specific-configuration>。
 
 **索引鍵**preventHostingStartup  
 **類型**：*bool* (`true` 或 `1`)  
@@ -394,7 +392,7 @@ webBuilder.UseStartup<Startup>();
 webBuilder.UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002");
 ```
 
-Kestrel 有它自己的端點設定 API。 如需詳細資訊，請參閱 <xref:fundamentals/servers/kestrel#endpoint-configuration>。
+Kestrel 有它自己的端點設定 API。 如需詳細資訊，請參閱<xref:fundamentals/servers/kestrel#endpoint-configuration>。
 
 ### <a name="webroot"></a>WebRoot
 
@@ -411,7 +409,7 @@ Kestrel 有它自己的端點設定 API。 如需詳細資訊，請參閱 <xref:
 webBuilder.UseWebRoot("public");
 ```
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱＜＞。
 
 * [基本概念： Web 根目錄](xref:fundamentals/index#web-root)
 * [ContentRootPath](#contentrootpath)
@@ -507,9 +505,9 @@ ASP.NET Core 應用程式會設定並啟動主機。 主機負責應用程式啟
 
 ## <a name="introduction"></a>簡介
 
-可使用位於 <xref:Microsoft.Extensions.Hosting> 命名空間的泛型主機程式庫，且該程式庫由 [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/) 套件提供。 `Microsoft.Extensions.Hosting`Microsoft.AspNetCore.App 中繼套件[ (ASP.NET Core 2.1 或更新版本) 包含 ](xref:fundamentals/metapackage-app) 套件。
+可使用位於 <xref:Microsoft.Extensions.Hosting> 命名空間的泛型主機程式庫，且該程式庫由 [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/) 套件提供。 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 或更新版本) 包含 `Microsoft.Extensions.Hosting` 套件。
 
-<xref:Microsoft.Extensions.Hosting.IHostedService> 是程式碼執行的進入點。 每個 <xref:Microsoft.Extensions.Hosting.IHostedService> 實作會依 [ConfigureServices 中的服務註冊](#configureservices)順序執行。 當主機啟動時，會在每個 <xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*> 上呼叫 <xref:Microsoft.Extensions.Hosting.IHostedService>；當主機順利關閉時，則會依反向註冊順序呼叫 <xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*>。
+<xref:Microsoft.Extensions.Hosting.IHostedService> 是程式碼執行的進入點。 每個 <xref:Microsoft.Extensions.Hosting.IHostedService> 實作會依 [ConfigureServices 中的服務註冊](#configureservices)順序執行。 當主機啟動時，會在每個 <xref:Microsoft.Extensions.Hosting.IHostedService> 上呼叫 <xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*>；當主機順利關閉時，則會依反向註冊順序呼叫 <xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*>。
 
 ## <a name="set-up-a-host"></a>設定主機
 
@@ -519,7 +517,7 @@ ASP.NET Core 應用程式會設定並啟動主機。 主機負責應用程式啟
 
 ## <a name="options"></a>選項
 
-<xref:Microsoft.Extensions.Hosting.HostOptions> 的 <xref:Microsoft.Extensions.Hosting.IHost> 設定選項。
+<xref:Microsoft.Extensions.Hosting.IHost> 的 <xref:Microsoft.Extensions.Hosting.HostOptions> 設定選項。
 
 ### <a name="shutdown-timeout"></a>關機逾時
 
@@ -614,11 +612,11 @@ var host = new HostBuilder()
 * 命令列引數組態。
 * 任何其他必要的組態提供者。
 
-使用之後呼叫`SetBasePath`檔案組態提供者[的 ](xref:fundamentals/configuration/index#file-configuration-provider)，並透過指定應用程式基底路徑，就可使用主機的檔案設定。 範例應用程式會使用 JSON 檔案，*hostsettings.json*，並呼叫 <xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*> 取用檔案的主機組態設定。
+使用之後呼叫[檔案組態提供者](xref:fundamentals/configuration/index#file-configuration-provider)的 `SetBasePath`，並透過指定應用程式基底路徑，就可使用主機的檔案設定。 範例應用程式會使用 JSON 檔案，*hostsettings.json*，並呼叫 <xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*> 取用檔案的主機組態設定。
 
 若要新增主機的[環境變數組態](xref:fundamentals/configuration/index#environment-variables-configuration-provider)，請在主機建立器上呼叫 <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*>。 `AddEnvironmentVariables` 可接受選擇性的使用者定義前置詞。 範例應用程式會使用前置詞 `PREFIX_`。 讀取環境變數時，就會移除前置詞。 在設定範例應用程式的主機時，`PREFIX_ENVIRONMENT` 的環境變數值會變成 `environment` 索引鍵的主機組態值。
 
-在開發期間使用 [Visual Studio](https://visualstudio.microsoft.com) 或以 `dotnet run` 執行應用程式時，可能會在 *Properties/launchSettings.json* 檔案中設定環境變數。 在 [Visual Studio Code](https://code.visualstudio.com/) 中，可以在開發期間於 *.vscode/launch.json* 檔案中設定環境變數。 如需詳細資訊，請參閱 <xref:fundamentals/environments>。
+在開發期間使用 [Visual Studio](https://visualstudio.microsoft.com) 或以 `dotnet run` 執行應用程式時，可能會在 *Properties/launchSettings.json* 檔案中設定環境變數。 在 [Visual Studio Code](https://code.visualstudio.com/) 中，可以在開發期間於 *.vscode/launch.json* 檔案中設定環境變數。 如需詳細資訊，請參閱<xref:fundamentals/environments>。
 
 [命令列組態](xref:fundamentals/configuration/index#command-line-configuration-provider)可透過呼叫 <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> 新增。 命令列組態會在最後新增，以便命令列引數覆寫由先前組態提供者提供的組態。
 
@@ -628,13 +626,13 @@ var host = new HostBuilder()
 
 您可以使用 [applicationName](#application-key-name) 和 [contentRoot](#content-root) 索引鍵來提供其他組態。
 
-使用 `HostBuilder` 的 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureHostConfiguration*> 組態範例：
+使用 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureHostConfiguration*> 的 `HostBuilder` 組態範例：
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_ConfigureHostConfiguration)]
 
 ## <a name="configureappconfiguration"></a>ConfigureAppConfiguration
 
-應用程式組態的建立方式是在 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 實作上呼叫 <xref:Microsoft.Extensions.Hosting.IHostBuilder>。 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 會使用 <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> 來建立應用程式的 <xref:Microsoft.Extensions.Configuration.IConfiguration>。 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 可以多次呼叫，其結果是累加的。 應用程式會使用指定索引鍵上最後設定值的任何選項。 您可以從後續作業的 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>HostBuilderContext.Configuration[ 及 ](xref:Microsoft.Extensions.Hosting.HostBuilderContext.Configuration*) 中存取 <xref:Microsoft.Extensions.Hosting.IHost.Services*> 所建立的組態。
+應用程式組態的建立方式是在 <xref:Microsoft.Extensions.Hosting.IHostBuilder> 實作上呼叫 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>。 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 會使用 <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> 來建立應用程式的 <xref:Microsoft.Extensions.Configuration.IConfiguration>。 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 可以多次呼叫，其結果是累加的。 應用程式會使用指定索引鍵上最後設定值的任何選項。 您可以從後續作業的 [HostBuilderContext.Configuration](xref:Microsoft.Extensions.Hosting.HostBuilderContext.Configuration*) 及 <xref:Microsoft.Extensions.Hosting.IHost.Services*> 中存取 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> 所建立的組態。
 
 應用程式組態會自動接收由 [ConfigureHostConfiguration](#configurehostconfiguration) 提供的主機組態。
 
@@ -654,7 +652,7 @@ var host = new HostBuilder()
 
 [!code-csharp[](generic-host/samples/2.x/GenericHostSample/appsettings.Production.json)]
 
-若要將設定檔移至輸出目錄，請在專案檔中將設定檔指定為 [MSBuild 專案項目](/visualstudio/msbuild/common-msbuild-project-items)。 範例應用程式使用下列 *項目，移動其 JSON 應用程式設定檔和*hostsettings.json`<Content>`：
+若要將設定檔移至輸出目錄，請在專案檔中將設定檔指定為 [MSBuild 專案項目](/visualstudio/msbuild/common-msbuild-project-items)。 範例應用程式使用下列 `<Content>` 項目，移動其 JSON 應用程式設定檔和 *hostsettings.json*：
 
 ```xml
 <ItemGroup>
@@ -664,13 +662,13 @@ var host = new HostBuilder()
 ```
 
 > [!NOTE]
-> 組態擴充方法 (例如 <xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*> 和 <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*>) 需要其他的 NuGet 套件，例如 [Microsoft.Extensions.Configuration.Json](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json) \(英文\) 和[Microsoft.Extensions.Configuration.EnvironmentVariables](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.EnvironmentVariables) \(英文\)。 除非應用程式使用 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)，否則，除了核心 [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) \(英文\) 套件，還必須將這些套件新增至專案。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
+> 組態擴充方法 (例如 <xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*> 和 <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*>) 需要其他的 NuGet 套件，例如 [Microsoft.Extensions.Configuration.Json](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json) \(英文\) 和[Microsoft.Extensions.Configuration.EnvironmentVariables](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.EnvironmentVariables) \(英文\)。 除非應用程式使用 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)，否則，除了核心 [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) \(英文\) 套件，還必須將這些套件新增至專案。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
 
 ## <a name="configureservices"></a>ConfigureServices
 
 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.ConfigureServices*> 會將服務新增至應用程式的[相依性插入](xref:fundamentals/dependency-injection)容器。 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.ConfigureServices*> 可以多次呼叫，其結果是累加的。
 
-託管服務是具有背景工作邏輯的類別，可實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。 如需詳細資訊，請參閱 <xref:fundamentals/host/hosted-services>。
+託管服務是具有背景工作邏輯的類別，可實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。 如需詳細資訊，請參閱<xref:fundamentals/host/hosted-services>。
 
 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/)使用 `AddHostedService` 擴充方法，將存留期事件 `LifetimeEventsHostedService` 和計時背景工作 `TimedHostedService` 等服務新增至應用程式：
 
@@ -708,7 +706,7 @@ var host = new HostBuilder()
 
 ## <a name="extensibility"></a>擴充性
 
-主機擴充性是透過 <xref:Microsoft.Extensions.Hosting.IHostBuilder> 上的擴充方法執行。 下列範例使用 <xref:Microsoft.Extensions.Hosting.IHostBuilder> 中示範的 [TimedHostedService](xref:fundamentals/host/hosted-services#timed-background-tasks) 範例顯示擴充方法如何擴充 <xref:fundamentals/host/hosted-services> 實作。
+主機擴充性是透過 <xref:Microsoft.Extensions.Hosting.IHostBuilder> 上的擴充方法執行。 下列範例使用 <xref:fundamentals/host/hosted-services> 中示範的 [TimedHostedService](xref:fundamentals/host/hosted-services#timed-background-tasks) 範例顯示擴充方法如何擴充 <xref:Microsoft.Extensions.Hosting.IHostBuilder> 實作。
 
 ```csharp
 var host = new HostBuilder()
@@ -936,7 +934,7 @@ public class MyClass
 }
 ```
 
-如需詳細資訊，請參閱 <xref:fundamentals/environments>。
+如需詳細資訊，請參閱<xref:fundamentals/environments>。
 
 ## <a name="iapplicationlifetime-interface"></a>IApplicationLifetime 介面
 
@@ -954,7 +952,7 @@ public class MyClass
 
 [!code-csharp[](generic-host/samples/2.x/GenericHostSample/LifetimeEventsHostedService.cs?name=snippet1)]
 
-<xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> 會要求應用程式終止。 當呼叫類別的 <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> 方法時，下列類別使用 `Shutdown` 來順利關閉應用程式：
+<xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> 會要求應用程式終止。 當呼叫類別的 `Shutdown` 方法時，下列類別使用 <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> 來順利關閉應用程式：
 
 ```csharp
 public class MyClass

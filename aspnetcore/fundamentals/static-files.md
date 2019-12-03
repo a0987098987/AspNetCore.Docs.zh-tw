@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 uid: fundamentals/static-files
-ms.openlocfilehash: b989b90100318ac874dc399daf65ef7d21c5549f
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: 00bab51cb411552c884f85fa63d42d0691b401b1
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799473"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717269"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -238,6 +238,10 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 > [!WARNING]
 > 啟用 [ServeUnknownFileTypes](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions.serveunknownfiletypes#Microsoft_AspNetCore_Builder_StaticFileOptions_ServeUnknownFileTypes) 時會造成安全性風險。 預設為停用，亦不建議您使用。 [FileExtensionContentTypeProvider](#fileextensioncontenttypeprovider) 可提供更安全的替代方法，來提供非標準副檔名的檔案。
+
+## <a name="serve-files-from-multiple-locations"></a>提供多個位置的檔案
+
+`UseStaticFiles` 和 `UseFileServer` 預設為指向*wwwroot*的檔案提供者。 您可以提供其他 `UseStaticFiles` 的實例，並與其他檔案提供者 `UseFileServer`，以從其他位置服務檔案。 如需詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/15578)。
 
 ### <a name="considerations"></a>考量
 

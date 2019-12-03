@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/27/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: 746604bc92775a6fac124ee8bfcf37635786fe41
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: f33444b8fc08dc022da7700af53a218600290162
+ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717005"
+ms.locfileid: "74733917"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>在 ASP.NET Core 中使用 IHttpClientFactory 發出 HTTP 要求
 
@@ -93,7 +93,7 @@ ms.locfileid: "74717005"
   * 封裝處理端點的所有邏輯。
 * 使用 DI，並可在應用程式中需要的位置插入。
 
-具型別用戶端在其建構函式中接受 `HttpClient` 參數：
+具型別用戶端會接受其程式化中的 `HttpClient` 參數：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
@@ -390,7 +390,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
-註冊之後，程式碼可以在可使用[相依性插入 (DI)](xref:fundamentals/dependency-injection) 插入服務的任何位置，接受 `IHttpClientFactory`。 `IHttpClientFactory` 可以用來建立 `HttpClient` 執行個體：
+註冊之後，程式碼可以在可使用[相依性插入 (DI)](xref:fundamentals/dependency-injection) 插入服務的任何位置，接受 `IHttpClientFactory`。 `IHttpClientFactory` 可以用來建立 `HttpClient` 實例：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
@@ -421,7 +421,7 @@ public class ValuesController : ControllerBase
 * 提供單一位置來設定特定的 `HttpClient` 並與其互動。 例如，單一的具型別用戶端可能用於單一的後端端點，並封裝處理該端點的所有邏輯。
 * 使用 DI 且可在應用程式中需要之處插入。
 
-具型別用戶端在其建構函式中接受 `HttpClient` 參數：
+具型別用戶端會接受其程式化中的 `HttpClient` 參數：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
@@ -510,7 +510,7 @@ public class ValuesController : ControllerBase
 
 上述程式碼定義一個基本處理常式。 它會檢查以查看要求上是否已包含 `X-API-KEY` 標頭。 如果遺漏標頭，它可以避免 HTTP 呼叫，並傳回適當的回應。
 
-在註冊期間，可以新增一或多個處理常式至 `HttpClient` 的組態。 這項工作是透過 <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder> 上的擴充方法完成。
+在註冊期間，可以將一或多個處理常式新增至 `HttpClient`的設定。 這項工作是透過 <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder> 上的擴充方法完成。
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet5)]
 
@@ -695,7 +695,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
-註冊之後，程式碼可以在可使用[相依性插入 (DI)](xref:fundamentals/dependency-injection) 插入服務的任何位置，接受 `IHttpClientFactory`。 `IHttpClientFactory` 可以用來建立 `HttpClient` 執行個體：
+註冊之後，程式碼可以在可使用[相依性插入 (DI)](xref:fundamentals/dependency-injection) 插入服務的任何位置，接受 `IHttpClientFactory`。 `IHttpClientFactory` 可以用來建立 `HttpClient` 實例：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
@@ -726,7 +726,7 @@ public class ValuesController : ControllerBase
 * 提供單一位置來設定特定的 `HttpClient` 並與其互動。 例如，單一的具型別用戶端可能用於單一的後端端點，並封裝處理該端點的所有邏輯。
 * 使用 DI 且可在應用程式中需要之處插入。
 
-具型別用戶端在其建構函式中接受 `HttpClient` 參數：
+具型別用戶端會接受其程式化中的 `HttpClient` 參數：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
@@ -815,7 +815,7 @@ public class ValuesController : ControllerBase
 
 上述程式碼定義一個基本處理常式。 它會檢查以查看要求上是否已包含 `X-API-KEY` 標頭。 如果遺漏標頭，它可以避免 HTTP 呼叫，並傳回適當的回應。
 
-在註冊期間，可以新增一或多個處理常式至 `HttpClient` 的組態。 這項工作是透過 <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder> 上的擴充方法完成。
+在註冊期間，可以將一或多個處理常式新增至 `HttpClient`的設定。 這項工作是透過 <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder> 上的擴充方法完成。
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet5)]
 

@@ -5,16 +5,16 @@ description: 瞭解如何從 Blazor 應用程式中的 JavaScript，從 .NET 和
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 12/02/2019
 no-loc:
 - Blazor
 uid: blazor/javascript-interop
-ms.openlocfilehash: 79555ca6c987e2ca57e0cfab9779024498fdd58b
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 108fdac8667f407adba3470de4eb8e35883cefbf
+ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681017"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74733826"
 ---
 # <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
@@ -30,7 +30,7 @@ Blazor 應用程式可以從 JavaScript 程式碼，叫用 .NET 和 .NET 方法�
 
 有時候需要 .NET 程式碼來呼叫 JavaScript 函式。 例如，JavaScript 呼叫可以將 JavaScript 程式庫中的瀏覽器功能或功能公開給應用程式。 此案例稱為*JavaScript 互通性*（*JS interop*）。
 
-若要從 .NET 呼叫 JavaScript，請使用 `IJSRuntime` 的抽象概念。 `InvokeAsync<T>` 方法會接受您想要叫用之 JavaScript 函數的識別碼，以及任何數目的 JSON 可序列化引數。 函數識別碼相對於全域範圍（`window`）。 如果您想要呼叫 `window.someScope.someFunction`，則會 `someScope.someFunction`識別碼。 在呼叫函式之前，不需要先註冊函式。 傳回類型 `T` 也必須是 JSON 可序列化。
+若要從 .NET 呼叫 JavaScript，請使用 `IJSRuntime` 的抽象概念。 `InvokeAsync<T>` 方法會接受您想要叫用之 JavaScript 函數的識別碼，以及任何數目的 JSON 可序列化引數。 函數識別碼相對於全域範圍（`window`）。 如果您想要呼叫 `window.someScope.someFunction`，則會 `someScope.someFunction`識別碼。 在呼叫函式之前，不需要先註冊函式。 傳回類型 `T` 也必須是 JSON 可序列化。 `T` 應符合最佳對應至所傳回 JSON 類型的 .NET 類型。
 
 針對 Blazor 伺服器應用程式：
 
@@ -180,26 +180,41 @@ window.exampleJsFunctions = {
 }
 ```
 
-使用 `IJSRuntime.InvokeAsync<T>` 並以 `ElementReference` 來呼叫 `exampleJsFunctions.focusElement`，以將焦點放在元素：
+若要呼叫不會傳回值的 JavaScript 函數，請使用 `IJSRuntime.InvokeVoidAsync`。 下列程式碼會使用已捕捉的 `ElementReference`來呼叫前面的 JavaScript 函式，以將焦點放在使用者名稱輸入上：
 
 [!code-cshtml[](javascript-interop/samples_snapshot/component1.razor?highlight=1,3,11-12)]
 
-若要使用擴充方法將焦點放在元素，請建立會接收 `IJSRuntime` 實例的靜態擴充方法：
+若要使用擴充方法，請建立會接收 `IJSRuntime` 實例的靜態擴充方法：
 
 ```csharp
-public static Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
+public static async Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
 {
-    return jsRuntime.InvokeAsync<object>(
+    await jsRuntime.InvokeVoidAsync(
         "exampleJsFunctions.focusElement", elementRef);
 }
 ```
 
-方法是直接在物件上呼叫。 下列範例假設 `JsInteropClasses` 命名空間中可以使用靜態 `Focus` 方法：
+`Focus` 方法是直接在物件上呼叫。 下列範例假設 `Focus` 方法可從 `JsInteropClasses` 命名空間取得：
 
-[!code-cshtml[](javascript-interop/samples_snapshot/component2.razor?highlight=1,4,12)]
+[!code-cshtml[](javascript-interop/samples_snapshot/component2.razor?highlight=1-4,12)]
 
 > [!IMPORTANT]
 > 只有在呈現元件之後，才會填入 `username` 變數。 如果擴展 `ElementReference` 傳遞至 JavaScript 程式碼，JavaScript 程式碼就會收到 `null`的值。 若要在元件完成轉譯之後操作元素參考（以設定元素的初始焦點），請使用[OnAfterRenderAsync 或 OnAfterRender 元件生命週期方法](xref:blazor/lifecycle#after-component-render)。
+
+當使用泛型型別並傳回值時，請使用[ValueTask\<t >](xref:System.Threading.Tasks.ValueTask`1)：
+
+```csharp
+public static ValueTask<T> GenericMethod<T>(this ElementReference elementRef, 
+    IJSRuntime jsRuntime)
+{
+    return jsRuntime.InvokeAsync<T>(
+        "exampleJsFunctions.doSomethingGeneric", elementRef);
+}
+```
+
+`GenericMethod` 是直接在具有類型的物件上呼叫。 下列範例假設 `GenericMethod` 可從 `JsInteropClasses` 命名空間取得：
+
+[!code-cshtml[](javascript-interop/samples_snapshot/component3.razor?highlight=17)]
 
 ## <a name="invoke-net-methods-from-javascript-functions"></a>從 JavaScript 函式呼叫 .NET 方法
 
@@ -296,3 +311,7 @@ JS interop 可能會因為網路錯誤而失敗，而且應該視為不可靠。
   ```
 
 如需資源耗盡的詳細資訊，請參閱 <xref:security/blazor/server>。
+
+## <a name="additional-resources"></a>其他資源
+
+* [InteropComponent razor 範例（aspnet/AspNetCore GitHub 存放庫，3.0 發行分支）](https://github.com/aspnet/AspNetCore/blob/release/3.0/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)

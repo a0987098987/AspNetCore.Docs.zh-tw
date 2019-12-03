@@ -5,16 +5,16 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 11/27/2019
 no-loc:
 - Blazor
 uid: blazor/components
-ms.openlocfilehash: 764e5e7db995b2dcadccf6d93c826ccf32c9ba04
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 19636b0f10e71133eddece918b1bb9e2bc25a226
+ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681002"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74733839"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -71,6 +71,8 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 <component type="typeof(Counter)" render-mode="ServerPrerendered" 
     param-IncrementAmount="10" />
 ```
+
+支援傳遞參數（例如，上述範例中的 `IncrementAmount`）。
 
 `RenderMode` 設定元件是否：
 
@@ -402,7 +404,11 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 `@bind:format` 屬性會指定要套用至 `<input>` 元素 `value` 的日期格式。 當發生 `onchange` 事件時，也會使用此格式來剖析值。
 
-不建議指定 `date` 欄位類型的格式，因為 Blazor 具有格式日期的內建支援。
+不建議指定 `date` 欄位類型的格式，因為 Blazor 具有格式日期的內建支援。 在建議的情況下，只有在使用 `date` 欄位類型提供格式時，才使用 `yyyy-MM-dd` 日期格式來進行系結以正確運作：
+
+```razor
+<input type="date" @bind="StartDate" @bind:format="yyyy-MM-dd">
+```
 
 **元件參數**
 

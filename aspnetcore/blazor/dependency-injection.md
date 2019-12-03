@@ -5,16 +5,16 @@ description: 瞭解 Blazor 應用程式如何將服務插入元件中。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 11/27/2019
 no-loc:
 - Blazor
 uid: blazor/dependency-injection
-ms.openlocfilehash: a39d913636afc55ac9d831de923ba7ae8db1216b
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 165cfa7a98cdd523c25d5c4bfc8e2c9d0ef1ad22
+ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963084"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74733813"
 ---
 # <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
 
@@ -27,7 +27,7 @@ Blazor 支援相依性[插入（DI）](xref:fundamentals/dependency-injection)�
 DI 是用來存取集中位置所設定之服務的技術。 這在 Blazor 應用程式中很有用，可用於：
 
 * 跨許多元件（稱為*單一*服務）共用服務類別的單一實例。
-* 使用參考抽象，將元件與具體的服務類別分離。 例如，請考慮介面 `IDataAccess`，以存取應用程式中的資料。 介面是由具體的 `DataAccess` 類別執行，並在應用程式的服務容器中註冊為服務。 當元件使用 DI 來接收 `IDataAccess` 的實層時，該元件不會與具象類型結合。 可以交換執行，也許是針對單元測試中的 mock 執行。
+* 使用參考抽象，將元件與具體的服務類別分離。 例如，請考慮使用介面 `IDataAccess` 來存取應用程式中的資料。 介面是由具體的 `DataAccess` 類別來執行，並在應用程式的服務容器中註冊為服務。 當元件使用 DI 來接收 `IDataAccess` 執行時，該元件不會與具象類型結合。 可以交換執行，也許是針對單元測試中的 mock 執行。
 
 ## <a name="default-services"></a>預設服務
 
@@ -35,7 +35,7 @@ DI 是用來存取集中位置所設定之服務的技術。 這在 Blazor 應�
 
 | 服務 | 存留期 | 描述 |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | 單一 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。 請注意，`HttpClient` 的這個實例會使用瀏覽器來處理背景中的 HTTP 流量。 [HttpClient](xref:System.Net.Http.HttpClient.BaseAddress)會自動設定為應用程式的基底 URI 前置詞。 如需詳細資訊，請參閱<xref:blazor/call-web-api>。 |
+| <xref:System.Net.Http.HttpClient> | 單一 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。<br><br>Blazor WebAssembly 應用程式中的 `HttpClient` 實例會使用瀏覽器來處理背景中的 HTTP 流量。<br><br>Blazor 伺服器應用程式預設不包含設定為服務的 `HttpClient`。 提供 `HttpClient` 給 Blazor 伺服器應用程式。<br><br>如需詳細資訊，請參閱<xref:blazor/call-web-api>。 |
 | `IJSRuntime` | 單一 | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱<xref:blazor/javascript-interop>。 |
 | `NavigationManager` | 單一 | 包含使用 Uri 和導覽狀態的協助程式。 如需詳細資訊，請參閱[URI 和流覽狀態](xref:blazor/routing#uri-and-navigation-state-helpers)協助程式。 |
 
@@ -52,7 +52,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-`ConfigureServices` 方法會傳遞 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>，這是服務描述元物件（<xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor>）的清單。 服務會藉由將服務描述項提供給服務集合來新增。 下列範例示範 `IDataAccess` 介面及其具體執行 `DataAccess` 的概念：
+`ConfigureServices` 方法會傳遞 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>，這是服務描述元物件（<xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor>）的清單。 服務會藉由將服務描述項提供給服務集合來新增。 下列範例示範 `IDataAccess` 介面和其具體執行 `DataAccess`的概念：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -76,17 +76,17 @@ DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，�
 將服務新增至服務集合之後，請使用[\@插入](xref:mvc/views/razor#inject)Razor 指示詞，將服務插入元件中。 `@inject` 有兩個參數：
 
 * 輸入 &ndash; 要插入之服務的類型。
-* 屬性 &ndash;：接收插入的 app service 的屬性名稱。 屬性不需要手動建立。 編譯器會建立屬性。
+* 屬性 &ndash; 接收插入的應用程式服務之屬性的名稱。 屬性不需要手動建立。 編譯器會建立屬性。
 
 如需詳細資訊，請參閱<xref:mvc/views/dependency-injection>。
 
 使用多個 `@inject` 語句來插入不同的服務。
 
-下列範例示範如何使用 `@inject`。 執行 `Services.IDataAccess` 的服務會插入元件的屬性 `DataRepository`。 請注意程式碼如何使用 `IDataAccess` 的抽象概念：
+下列範例示範如何使用 `@inject`。 執行 `Services.IDataAccess` 的服務會插入元件的屬性 `DataRepository`中。 請注意程式碼如何使用 `IDataAccess` 抽象：
 
 [!code-cshtml[](dependency-injection/samples_snapshot/3.x/CustomerList.razor?highlight=2-3,23)]
 
-就內部而言，會使用 `InjectAttribute` 屬性裝飾產生的屬性（`DataRepository`）。 通常不會直接使用這個屬性。 如果元件需要基類，而且基類也需要插入的屬性，請手動新增 `InjectAttribute`：
+就內部而言，產生的屬性（`DataRepository`）會以 `InjectAttribute` 屬性裝飾。 通常不會直接使用這個屬性。 如果元件需要基類，而且基類也需要插入的屬性，請手動加入 `InjectAttribute`：
 
 ```csharp
 public class ComponentBase : IComponent
@@ -98,7 +98,7 @@ public class ComponentBase : IComponent
 }
 ```
 
-在衍生自基類的元件中，不需要 `@inject` 指示詞。 基類的 `InjectAttribute` 就已足夠：
+在衍生自基類的元件中，不需要 `@inject` 指示詞。 基類的 `InjectAttribute` 已足夠：
 
 ```cshtml
 @page "/demo"

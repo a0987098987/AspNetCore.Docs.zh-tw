@@ -5,18 +5,18 @@ description: 了解如何讀取及操作應用程式模型，來修改 ASP.NET C
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/application-model
-ms.openlocfilehash: f7f64c8b3a63ec66936772e724edb57037654059
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 4e264dc7cc63955df42df0b9eeeb7b82ae286241
+ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815501"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74733956"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>在 ASP.NET Core 中使用應用程式模型
 
 作者：[Steve Smith](https://ardalis.com/)
 
-ASP.NET Core MVC 定義了一個「應用程式模型」  ，代表 MVC 應用程式的元件。 您可以讀取及操作此模型來修改 MVC 項目的行為。 根據預設，MVC 遵循特定慣例來判斷哪些類別會被視為控制器、對這些類別的哪些方法是動作，以及參數和路由的行為方式。 您可以自訂此行為，以符合您的應用程式需求，方法是建立自己的慣例，並將其全域套用或作為屬性來套用。
+ASP.NET Core MVC 定義了一個「應用程式模型」，代表 MVC 應用程式的元件。 您可以讀取及操作此模型來修改 MVC 項目的行為。 根據預設，MVC 遵循特定慣例來判斷哪些類別會被視為控制器、對這些類別的哪些方法是動作，以及參數和路由的行為方式。 您可以自訂此行為，以符合您的應用程式需求，方法是建立自己的慣例，並將其全域套用或作為屬性來套用。
 
 ## <a name="models-and-providers"></a>模型和提供者
 
@@ -71,7 +71,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 
 ## <a name="conventions"></a>慣例
 
-應用程式模型定義了慣例抽象化，提供比覆寫整個模型或提供者更簡單的方式，來自訂模型的行為。 這些抽象化是用來修改您應用程式行為的建議方式。 慣例會提供方式讓您撰寫程式碼，動態地套用自訂。 雖然[篩選條件](xref:mvc/controllers/filters)提供方法來修改架構的行為，但自訂可讓您控制整個應用程式如何連接在一起。
+應用程式模型定義了慣例抽象化，提供比覆寫整個模型或提供者更簡單的方式，來自訂模型的行為。 這些抽象化是用來修改您應用程式行為的建議方式。 慣例會提供方式讓您撰寫程式碼，動態地套用自訂。 雖然[篩選準則](xref:mvc/controllers/filters)提供修改架構行為的方法，但自訂可讓您控制整個應用程式如何一起運作。
 
 可用的慣例如下：
 
@@ -130,7 +130,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 
 ### <a name="sample-modifying-the-actionmodel-name"></a>範例：修改 ActionModel 名稱
 
-下列慣例會修改 `ActionModel` 以更新其所套用之動作的「名稱」  。 新的名稱會當作傳給屬性的參數。 這個新名稱由路由使用，因此它會影響用來連線到此動作方法的路由。
+下列慣例會修改 `ActionModel` 以更新其所套用之動作的「名稱」。 新的名稱會當作傳給屬性的參數。 這個新名稱由路由使用，因此它會影響用來連線到此動作方法的路由。
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/CustomActionNameAttribute.cs)]
 

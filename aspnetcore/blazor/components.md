@@ -9,12 +9,12 @@ ms.date: 11/23/2019
 no-loc:
 - Blazor
 uid: blazor/components
-ms.openlocfilehash: 89c92fbd5a3939cd2b4a34c39163767bcdf73bb8
-ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
+ms.openlocfilehash: 764e5e7db995b2dcadccf6d93c826ccf32c9ba04
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74550311"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74681002"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -522,7 +522,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 }
 ```
 
-事件處理常式也可以是非同步，並傳回 <xref:System.Threading.Tasks.Task>。 不需要手動呼叫 `StateHasChanged()`。 例外狀況會在發生時記錄。
+事件處理常式也可以是非同步，並傳回 <xref:System.Threading.Tasks.Task>。 不需要手動呼叫[StateHasChanged](xref:blazor/lifecycle#state-changes)。 例外狀況會在發生時記錄。
 
 在下列範例中，當選取按鈕時，會以非同步方式呼叫 `UpdateHeading`：
 
@@ -614,7 +614,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 在 `ChildComponent`中選取按鈕時：
 
 * 呼叫 `ParentComponent`的 `ShowMessage` 方法。 `messageText` 會更新並顯示在 `ParentComponent`中。
-* 回呼的方法（`ShowMessage`）中不需要呼叫 `StateHasChanged`。 系統會自動呼叫 `StateHasChanged` 來 rerender `ParentComponent`，就像子事件會觸發在子系內執行之事件處理常式中的元件 rerendering 一樣。
+* 回呼的方法（`ShowMessage`）中不需要呼叫[StateHasChanged](xref:blazor/lifecycle#state-changes) 。 系統會自動呼叫 `StateHasChanged` 來 rerender `ParentComponent`，就像子事件會觸發在子系內執行之事件處理常式中的元件 rerendering 一樣。
 
 `EventCallback` 和 `EventCallback<T>` 允許非同步委派。 `EventCallback<T>` 是強型別，而且需要特定的引數類型。 `EventCallback` 是弱式類型，而且允許任何引數類型。
 
@@ -854,7 +854,7 @@ Password:
 當元件呈現時，`loginDialog` 欄位會填入 `MyLoginDialog` 子元件實例。 接著，您可以在元件實例上叫用 .NET 方法。
 
 > [!IMPORTANT]
-> 只有在轉譯元件之後才會填入 `loginDialog` 變數，且其輸出會包含 `MyLoginDialog` 元素。 直到該點為止，沒有任何可參考的內容。 若要在元件完成呈現之後操作元件參考，請使用[OnAfterRenderAsync 或 OnAfterRender 方法](#lifecycle-methods)。
+> 只有在轉譯元件之後才會填入 `loginDialog` 變數，且其輸出會包含 `MyLoginDialog` 元素。 直到該點為止，沒有任何可參考的內容。 若要在元件完成呈現之後操作元件參考，請使用[OnAfterRenderAsync 或 OnAfterRender 方法](xref:blazor/lifecycle#after-component-render)。
 
 雖然捕捉元件參考使用類似的語法來[捕捉元素參考](xref:blazor/javascript-interop#capture-references-to-elements)，但它並不是[JavaScript interop](xref:blazor/javascript-interop)功能。 元件參考不會傳遞至 JavaScript 程式碼，&mdash;它們只會在 .NET 程式碼中使用。
 
@@ -863,7 +863,7 @@ Password:
 
 ## <a name="invoke-component-methods-externally-to-update-state"></a>在外部叫用元件方法來更新狀態
 
-Blazor 會使用 `SynchronizationContext` 來強制執行單一邏輯執行緒。 元件的生命週期方法和 Blazor 所引發的任何事件回呼都會在此 `SynchronizationContext`上執行。 在事件中，必須根據外來事件（例如計時器或其他通知）更新元件，請使用 `InvokeAsync` 方法，這會分派給 Blazor的 `SynchronizationContext`。
+Blazor 會使用 `SynchronizationContext` 來強制執行單一邏輯執行緒。 元件的[生命週期方法](xref:blazor/lifecycle)和 Blazor 所引發的任何事件回呼都會在此 `SynchronizationContext`上執行。 在事件中，必須根據外來事件（例如計時器或其他通知）更新元件，請使用 `InvokeAsync` 方法，這會分派給 Blazor的 `SynchronizationContext`。
 
 例如，假設有一個通知程式*服務*可通知任何處于已更新狀態的「接聽」元件：
 
@@ -991,139 +991,6 @@ public class NotifierService
 * 唯一識別碼（例如，`int`、`string`或 `Guid`類型的主要金鑰值）。
 
 請確定用於 `@key` 的值不會造成衝突。 如果在相同的父元素中偵測到衝突值，Blazor 會擲回例外狀況，因為它無法以決定性的方式將舊專案或元件對應到新的專案或元件。 只使用不同的值，例如物件實例或主鍵值。
-
-## <a name="lifecycle-methods"></a>生命週期方法
-
-`OnInitializedAsync` 和 `OnInitialized` 執行程式碼以初始化元件。 若要執行非同步作業，請在作業上使用 `OnInitializedAsync` 和 `await` 關鍵字：
-
-```csharp
-protected override async Task OnInitializedAsync()
-{
-    await ...
-}
-```
-
-> [!NOTE]
-> 在 `OnInitializedAsync` 生命週期事件期間，必須進行元件初始化期間的非同步工作。
-
-如需同步作業，請使用 `OnInitialized`：
-
-```csharp
-protected override void OnInitialized()
-{
-    ...
-}
-```
-
-當元件已從其父系接收參數，且已將值指派給屬性時，會呼叫 `OnParametersSetAsync` 和 `OnParametersSet`。 這些方法會在元件初始化之後和每次呈現父元件時執行：
-
-```csharp
-protected override async Task OnParametersSetAsync()
-{
-    await ...
-}
-```
-
-> [!NOTE]
-> 當套用參數和屬性值時，必須在 `OnParametersSetAsync` 生命週期事件期間進行非同步工作。
-
-```csharp
-protected override void OnParametersSet()
-{
-    ...
-}
-```
-
-在元件完成呈現之後，會呼叫 `OnAfterRenderAsync` 和 `OnAfterRender`。 此時會填入元素和元件參考。 使用此階段來執行使用轉譯內容的其他初始化步驟，例如啟用在轉譯的 DOM 元素上操作的協力廠商 JavaScript 程式庫。
-
-在*伺服器上進行預呈現時，不會呼叫 `OnAfterRender`。*
-
-`OnAfterRenderAsync` 和 `OnAfterRender` 的 `firstRender` 參數是：
-
-* 當第一次叫用元件實例時，將設定為 `true`。
-* 確保初始化工作只會執行一次。
-
-```csharp
-protected override async Task OnAfterRenderAsync(bool firstRender)
-{
-    if (firstRender)
-    {
-        await ...
-    }
-}
-```
-
-> [!NOTE]
-> 在 `OnAfterRenderAsync` 生命週期事件期間，必須在轉譯之後立即進行非同步工作。
-
-```csharp
-protected override void OnAfterRender(bool firstRender)
-{
-    if (firstRender)
-    {
-        ...
-    }
-}
-```
-
-### <a name="handle-incomplete-async-actions-at-render"></a>處理轉譯時的未完成非同步動作
-
-在呈現元件之前，在生命週期事件中執行的非同步動作可能尚未完成。 當生命週期方法正在執行時，物件可能 `null` 或未完全填入資料。 提供轉譯邏輯，以確認物件已初始化。 當物件 `null`時，轉譯預留位置 UI 元素（例如載入訊息）。
-
-在 Blazor 範本的 `FetchData` 元件中，`OnInitializedAsync` 會覆寫為 asychronously 接收預測資料（`forecasts`）。 當 `forecasts` `null`時，就會向使用者顯示載入訊息。 `OnInitializedAsync` 所傳回的 `Task` 完成之後，元件會以更新的狀態重新顯示。
-
-*Pages/FetchData.razor*：
-
-[!code-cshtml[](components/samples_snapshot/3.x/FetchData.razor?highlight=9)]
-
-### <a name="execute-code-before-parameters-are-set"></a>在設定參數之前執行程式碼
-
-在設定參數之前，可以覆寫 `SetParameters` 來執行程式碼：
-
-```csharp
-public override void SetParameters(ParameterView parameters)
-{
-    ...
-
-    base.SetParameters(parameters);
-}
-```
-
-如果未叫用 `base.SetParameters`，自訂程式碼就可以任何需要的方式解讀傳入的參數值。 例如，傳入的參數不需要指派給類別的屬性。
-
-### <a name="suppress-refreshing-of-the-ui"></a>隱藏 UI 的重新整理
-
-可以覆寫 `ShouldRender` 以隱藏 UI 的重新整理。 如果執行會傳回 `true`，則會重新整理 UI。 即使 `ShouldRender` 遭到覆寫，元件一律會一開始呈現。
-
-```csharp
-protected override bool ShouldRender()
-{
-    var renderUI = true;
-
-    return renderUI;
-}
-```
-
-## <a name="component-disposal-with-idisposable"></a>使用 IDisposable 的元件處置
-
-如果元件會執行 <xref:System.IDisposable>，當元件從 UI 中移除時，就會呼叫[Dispose 方法](/dotnet/standard/garbage-collection/implementing-dispose)。 下列元件會使用 `@implements IDisposable` 和 `Dispose` 方法：
-
-```csharp
-@using System
-@implements IDisposable
-
-...
-
-@code {
-    public void Dispose()
-    {
-        ...
-    }
-}
-```
-
-> [!NOTE]
-> 不支援在 `Dispose` 中呼叫 `StateHasChanged`。 `StateHasChanged` 可能會在轉譯器關閉時叫用。 在該時間點不支援要求 UI 更新。
 
 ## <a name="routing"></a>路由
 

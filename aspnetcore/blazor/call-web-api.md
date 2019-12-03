@@ -5,16 +5,16 @@ description: 瞭解如何使用 JSON helper 從 Blazor 應用程式呼叫 Web AP
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 11/23/2019
 no-loc:
 - Blazor
 uid: blazor/call-web-api
-ms.openlocfilehash: b5c57317005d0072410542bad322458b1cb3f5ee
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: ffc9904c5746fbf0fafa10cf054666608942650c
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962718"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74680898"
 ---
 # <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>從 ASP.NET Core 呼叫 Web API Blazor
 
@@ -35,7 +35,7 @@ Blazor 伺服器應用程式會使用通常使用 <xref:System.Net.Http.IHttpCli
 
 ## <a name="httpclient-and-json-helpers"></a>HttpClient 和 JSON 協助程式
 
-在 Blazor WebAssembly apps 中， [HttpClient](xref:fundamentals/http-requests)會當做預先設定的服務提供，讓要求回到源伺服器。 若要使用 `HttpClient` JSON helper，請將套件參考新增至 `Microsoft.AspNetCore.Blazor.HttpClient`。 `HttpClient` 和 JSON helper 也用來呼叫協力廠商 Web API 端點。 `HttpClient` 是使用瀏覽器[FETCH API](https://developer.mozilla.org/docs/Web/API/Fetch_API)來執行，並受限於其限制，包括強制執行相同的來源原則。
+在 Blazor WebAssembly apps 中， [HttpClient](xref:fundamentals/http-requests)會當做預先設定的服務提供，讓要求回到源伺服器。 若要使用 `HttpClient` JSON helper，請將套件參考新增至 `Microsoft.AspNetCore.Blazor.HttpClient`。 `HttpClient` 和 JSON 協助程式也用來呼叫協力廠商 Web API 端點。 `HttpClient` 是使用瀏覽器[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)來執行，並受限於其限制，包括強制執行相同的來源原則。
 
 用戶端的基底位址會設定為源伺服器的位址。 使用 `@inject` 指示詞插入 `HttpClient` 實例：
 
@@ -48,7 +48,7 @@ Blazor 伺服器應用程式會使用通常使用 <xref:System.Net.Http.IHttpCli
 
 * 識別碼（`Id`，`long`） &ndash; 專案的唯一識別碼。
 * 專案的名稱（`Name`、`string`） &ndash; 名稱。
-* 狀態（`IsComplete`，`bool`） &ndash; 表示 Todo 專案是否已完成。
+* 如果 Todo 專案已完成，則為狀態（`IsComplete`、`bool`） &ndash; 指示。
 
 ```csharp
 private class TodoItem
@@ -61,9 +61,9 @@ private class TodoItem
 
 JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並處理回應：
 
-* `GetJsonAsync` &ndash; 會傳送 HTTP GET 要求，並剖析 JSON 回應主體以建立物件。
+* `GetJsonAsync` &ndash; 傳送 HTTP GET 要求，並剖析 JSON 回應主體以建立物件。
 
-  在下列程式碼中，元件會顯示 `_todoItems`。 當元件完成呈現（[OnInitializedAsync](xref:blazor/components#lifecycle-methods)）時，會觸發 `GetTodoItems` 方法。 如需完整範例，請參閱範例應用程式。
+  在下列程式碼中，元件會顯示 `_todoItems`。 當元件完成呈現（[OnInitializedAsync](xref:blazor/lifecycle#component-initialization-methods)）時，就會觸發 `GetTodoItems` 方法。 如需完整範例，請參閱範例應用程式。
 
   ```cshtml
   @using System.Net.Http
@@ -77,7 +77,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   }
   ```
 
-* `PostJsonAsync` &ndash; 會傳送 HTTP POST 要求，包括 JSON 編碼的內容，並剖析 JSON 回應主體以建立物件。
+* `PostJsonAsync` &ndash; 傳送 HTTP POST 要求，包括 JSON 編碼的內容，並剖析 JSON 回應主體以建立物件。
 
   在下列程式碼中，`_newItemName` 是由元件的繫結項目所提供。 `AddItem` 方法是藉由選取 `<button>` 元素來觸發。 如需完整範例，請參閱範例應用程式。
 
@@ -99,9 +99,9 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   }
   ```
 
-* `PutJsonAsync` &ndash; 會傳送 HTTP PUT 要求，包括 JSON 編碼的內容。
+* `PutJsonAsync` &ndash; 傳送 HTTP PUT 要求，包括 JSON 編碼的內容。
 
-  在下列程式碼中，`Name` 和 `IsCompleted` 的 `_editItem` 值是由元件的繫結項目所提供。 當專案在 UI 的另一個部分中選取，而且呼叫 `EditItem` 時，就會設定專案的 `Id`。 藉由選取 [儲存 `<button>`] 元素，即可觸發 `SaveItem` 方法。 如需完整範例，請參閱範例應用程式。
+  在下列程式碼中，`Name` 和 `IsCompleted` 的 `_editItem` 值是由元件的繫結項目所提供。 當專案在 UI 的另一個部分中選取，且呼叫 `EditItem` 時，會設定專案的 `Id`。 藉由選取 [儲存 `<button>`] 元素，即可觸發 `SaveItem` 方法。 如需完整範例，請參閱範例應用程式。
 
   ```cshtml
   @using System.Net.Http
@@ -126,7 +126,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   }
   ```
 
-<xref:System.Net.Http> 包含額外的擴充方法，可用於傳送 HTTP 要求和接收 HTTP 回應。 [HttpClient](xref:System.Net.Http.HttpClient.DeleteAsync*)是用來將 HTTP DELETE 要求傳送至 Web API。
+<xref:System.Net.Http> 包含傳送 HTTP 要求和接收 HTTP 回應的其他擴充方法。 [HttpClient](xref:System.Net.Http.HttpClient.DeleteAsync*)是用來將 HTTP DELETE 要求傳送至 Web API。
 
 在下列程式碼中，Delete `<button>` 元素會呼叫 `DeleteItem` 方法。 系結的 `<input>` 元素會提供要刪除之專案的 `id`。 如需完整範例，請參閱範例應用程式。
 
@@ -157,11 +157,11 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 在 Blazor WebAssembly 應用程式的 WebAssembly 上執行時，請使用[HttpClient](xref:fundamentals/http-requests)和 <xref:System.Net.Http.HttpRequestMessage> 來自訂要求。 例如，您可以指定要求 URI、HTTP 方法，以及任何所需的要求標頭。
 
-使用要求的 `WebAssemblyHttpMessageHandler.FetchArgs` 屬性，將要求選項提供給基礎 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API) 。 如下列範例所示，`credentials` 屬性會設定為下列任何值：
+使用要求上的 `WebAssemblyHttpMessageHandler.FetchArgs` 屬性，將要求選項提供給基礎 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API) 。 如下列範例所示，`credentials` 屬性會設定為下列任何值：
 
 * `FetchCredentialsOption.Include` （"include"） &ndash; 會建議瀏覽器傳送認證（例如 cookie 或 HTTP 驗證標頭），即使是跨原始來源要求也一樣。 只有在 CORS 原則設定為允許認證時才允許。
-* `FetchCredentialsOption.Omit` （"省略"） &ndash; 會建議瀏覽器永遠不會傳送認證（例如 cookie 或 HTTP 驗證標頭）。
-* `FetchCredentialsOption.SameOrigin` （「相同來源」） &ndash; 會建議瀏覽器只有在目標 URL 與呼叫應用程式位於相同的來源時，才會傳送認證（例如 cookie 或 HTTP 驗證標頭）。
+* `FetchCredentialsOption.Omit` （「省略」） &ndash; 會建議瀏覽器永遠不會傳送認證（例如 cookie 或 HTTP 驗證標頭）。
+* `FetchCredentialsOption.SameOrigin` （「相同來源」） &ndash; 只有在目標 URL 與呼叫應用程式位於相同的來源時，才會建議瀏覽器傳送認證（例如 cookie 或 HTTP 驗證標頭）。
 
 ```cshtml
 @using System.Net.Http
@@ -208,9 +208,9 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 下列原則包含的設定：
 
-* 要求來源（`http://localhost:5000`，`https://localhost:5001`）。
+* 要求來源（`http://localhost:5000`、`https://localhost:5001`）。
 * Any 方法（動詞）。
-* `Content-Type` 和 `Authorization` 標頭。 若要允許自訂標頭（例如，`x-custom-header`），請在呼叫 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> 時列出標頭。
+* `Content-Type` 和 `Authorization` 標頭。 若要允許自訂標頭（例如 `x-custom-header`），請在呼叫 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>時列出標頭。
 * 用戶端 JavaScript 程式碼（`credentials` 屬性設定為 `include`）所設定的認證。
 
 ```csharp

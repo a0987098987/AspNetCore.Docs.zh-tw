@@ -3,14 +3,14 @@ title: ASP.NET Core 全球化和當地語系化
 author: rick-anderson
 description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內容當地語系化成不同的語言與文化特性。
 ms.author: riande
-ms.date: 01/14/2017
+ms.date: 11/30/2019
 uid: fundamentals/localization
-ms.openlocfilehash: 36235e305037c0bbf20093327e2a0ff21b3de809
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 391786498dc7088f3a06915128f23b2c0e734656
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963672"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74681106"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -74,7 +74,7 @@ ASP.NET Core 中導入了 `IStringLocalizer` 和 `IStringLocalizer<T>`，其設�
 
 法文資源檔可能包含下列內容：
 
-| 機碼 | 值 |
+| 索引鍵 | {2&gt;值&lt;2} |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
@@ -151,7 +151,7 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 | 資源名稱 | 點或路徑命名 |
 | ------------   | ------------- |
 | Resources/Controllers.HomeController.fr.resx | 點  |
-| Resources/Controllers/HomeController.fr.resx  | 路徑 |
+| Resources/Controllers/HomeController.fr.resx  | {2&gt;路徑&lt;2} |
 |    |     |
 
 如果資源檔是使用 Razor 檢視中的 `@inject IViewLocalizer`，亦遵循類似的模式。 您可以使用點命名或路徑命名方式，來命名檢視的資源檔。 Razor 檢視的資源檔會模仿其相關聯檢視檔案的路徑。 假設我們將 `ResourcesPath` 設為 "Resources"，與 *Views/Home/About.cshtml* 檢視建立關聯的法文資源檔可為下列其一：
@@ -276,7 +276,7 @@ Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `u
 
 6. 點選語言，然後點選 [上移]。
 
-::: moniker range=">= aspnetcore-3.0"
+::: moniker range=">= aspnetcore-3.1"
 ### <a name="the-content-language-http-header"></a>內容語言 HTTP 標頭
 
 [內容語言](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language)實體標頭：
@@ -286,11 +286,11 @@ Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `u
 
 實體標頭會同時用於 HTTP 要求和回應。
 
-在 ASP.NET Core 3.0 中，可以藉由設定屬性 `ApplyCurrentCultureToResponseHeaders` 來新增 `Content-Language` 標頭。
+`Content-Language` 標頭可以藉由將屬性設定為 `ApplyCurrentCultureToResponseHeaders`來新增。
 
 新增 `Content-Language` 標頭：
 
- - 允許 RequestLocalizationMiddleware 使用 `CurrentUICulture` 設定 `Content-Language` 標頭。
+ - 允許 RequestLocalizationMiddleware 使用 `CurrentUICulture`設定 `Content-Language` 標頭。
  - 不需要明確地 `Content-Language` 設定回應標頭。
 
 ```csharp
@@ -407,5 +407,4 @@ services.Configure<RequestLocalizationOptions>(options =>
 * [全球化與當地語系化 .NET 應用程式](/dotnet/standard/globalization-localization/index)
 * [.resx 檔案中的資源](/dotnet/framework/resources/working-with-resx-files-programmatically)
 * [Microsoft 多語應用程式工具組](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)
-* [當地語系化和泛型](https://github.com/hishamco/hishambinateya.com/blob/master/Posts/localization-and-generics.md)
-* [ASP.NET Core 3.0 中當地語系化的新功能](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0)
+* [當地語系化和泛型](http://hishambinateya.com/localization-and-generics)

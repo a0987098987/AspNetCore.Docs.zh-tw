@@ -5,17 +5,17 @@ description: 探索 ASP.NET Core 如何 Blazor Blazor 如何管理未處理的�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 11/23/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: f2fa59259f1dd36f50e81256bddea265e347554b
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 9784b357c2cdeb7422bbe40a39f881c97f6d716a
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317159"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74680989"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
 
@@ -89,9 +89,9 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 ## <a name="log-errors-with-a-persistent-provider"></a>使用持續性提供者記錄錯誤
 
-如果發生未處理的例外狀況，則會將例外狀況記錄到服務容器中所設定 <xref:Microsoft.Extensions.Logging.ILogger> 實例。 根據預設，Blazor apps 會使用主控台記錄提供者來記錄至主控台輸出。 請考慮使用可記錄管理大小和記錄輪替的提供者，記錄到更永久的位置。 如需詳細資訊，請參閱 <xref:fundamentals/logging/index>。
+如果發生未處理的例外狀況，則會將例外狀況記錄到服務容器中所設定 <xref:Microsoft.Extensions.Logging.ILogger> 實例。 根據預設，Blazor apps 會使用主控台記錄提供者來記錄至主控台輸出。 請考慮使用可記錄管理大小和記錄輪替的提供者，記錄到更永久的位置。 如需詳細資訊，請參閱<xref:fundamentals/logging/index>。
 
-在開發期間，Blazor 通常會將例外狀況的完整詳細資料傳送至瀏覽器的主控台，以協助進行偵錯工具。 在生產環境中，瀏覽器主控台中的詳細錯誤預設為停用，這表示錯誤不會傳送至用戶端，但例外狀況的完整詳細資料仍會記錄在伺服器端。 如需詳細資訊，請參閱 <xref:fundamentals/error-handling>。
+在開發期間，Blazor 通常會將例外狀況的完整詳細資料傳送至瀏覽器的主控台，以協助進行偵錯工具。 在生產環境中，瀏覽器主控台中的詳細錯誤預設為停用，這表示錯誤不會傳送至用戶端，但例外狀況的完整詳細資料仍會記錄在伺服器端。 如需詳細資訊，請參閱<xref:fundamentals/error-handling>。
 
 您必須決定要記錄哪些事件，以及記錄事件的嚴重性層級。 惡意的使用者可能可以故意觸發錯誤。 例如，請勿從顯示產品詳細資料之元件的 URL 中提供不明 `ProductId` 的錯誤中記錄事件。 並非所有錯誤都應該視為高嚴重性事件以進行記錄。
 
@@ -122,7 +122,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 ### <a name="lifecycle-methods"></a>生命週期方法
 
-在元件的存留期間，Blazor 會叫用生命週期方法：
+在元件的存留期間，Blazor 會叫用[生命週期方法](xref:blazor/lifecycle)：
 
 * `OnInitialized` / `OnInitializedAsync`
 * `OnParametersSet` / `OnParametersSetAsync`
@@ -173,7 +173,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 如果元件的 `Dispose` 方法擲回未處理的例外狀況，則例外狀況對線路而言是嚴重的。 如果處置邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
 
-如需有關元件處置的詳細資訊，請參閱 <xref:blazor/components#component-disposal-with-idisposable>。
+如需有關元件處置的詳細資訊，請參閱 <xref:blazor/lifecycle#component-disposal-with-idisposable>。
 
 ### <a name="javascript-interop"></a>JavaScript Interop
 
@@ -192,7 +192,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 您可以選擇在 .NET 端或方法呼叫的 JavaScript 端使用錯誤處理常式代碼。
 
-如需詳細資訊，請參閱 <xref:blazor/javascript-interop>。
+如需詳細資訊，請參閱<xref:blazor/javascript-interop>。
 
 ### <a name="circuit-handlers"></a>線路處理常式
 
@@ -277,7 +277,7 @@ Blazor 元件可以使用 `Html.RenderComponentAsync` 來資源清單，使其�
 
 ### <a name="custom-render-tree-logic"></a>自訂呈現樹狀結構邏輯
 
-大部分的 Blazor 元件會實作為*razor*檔案，並且會進行編譯，以產生可在 `RenderTreeBuilder` 上操作以呈現其輸出的邏輯。 開發人員可以使用程式性程式C#代碼手動執行 `RenderTreeBuilder` 邏輯。 如需詳細資訊，請參閱 <xref:blazor/components#manual-rendertreebuilder-logic>。
+大部分的 Blazor 元件會實作為*razor*檔案，並且會進行編譯，以產生可在 `RenderTreeBuilder` 上操作以呈現其輸出的邏輯。 開發人員可以使用程式性程式C#代碼手動執行 `RenderTreeBuilder` 邏輯。 如需詳細資訊，請參閱<xref:blazor/components#manual-rendertreebuilder-logic>。
 
 > [!WARNING]
 > 手動轉譯樹狀結構產生器邏輯的使用會被視為先進且不安全的案例，不建議用於一般元件開發。

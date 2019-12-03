@@ -5,17 +5,17 @@ description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 11/23/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: a017737eacd93ac776afe7ee8024eed602d7edcc
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 38db9804c9cdd1aa31ca48af2dd9ec2e85175156
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317219"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74681041"
 ---
 # <a name="aspnet-core-opno-locblazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -125,7 +125,7 @@ UI 延遲是從起始的動作到 UI 更新時間所花費的時間。 較小的
 
 對於僅限於私人商業網路的企業營運應用程式，通常會 imperceptible 因網路延遲而對使用者的延遲所造成的影響。 對於透過網際網路部署的應用程式，使用者的延遲可能會很明顯，尤其是在地理位置廣泛散佈的使用者時。
 
-記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。 如需詳細資訊，請參閱 <xref:security/blazor/server>。
+記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。 如需詳細資訊，請參閱<xref:security/blazor/server>。
 
 Blazor 伺服器應用程式應該經過優化，藉由減少網路延遲和記憶體使用量，將 UI 延遲降到最低。 如需測量網路延遲的方法，請參閱 <xref:host-and-deploy/blazor/server#measure-network-latency>。 如需 SignalR 和 Blazor的詳細資訊，請參閱：
 
@@ -140,7 +140,7 @@ Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果
 
 Blazor 伺服器應用程式會 prerenders，以回應第一個用戶端要求，這會在伺服器上設定 UI 狀態。 當用戶端嘗試建立 SignalR 連接時，用戶端必須重新連線到相同的伺服器。 使用多個後端伺服器的 Blazor 伺服器應用程式應該為 SignalR 連線執行*粘滯會話*。
 
-我們建議使用適用于 Blazor 伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr)。 此服務可將 Blazor 伺服器應用程式相應增加為大量的並行 SignalR 連線。 您可以將服務的 `ServerStickyMode` 選項或設定值設為 [`Required`]，以針對 Azure SignalR 服務啟用 [粘滯會話]。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/server#signalr-configuration>。
+我們建議使用適用于 Blazor 伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr)。 此服務可將 Blazor 伺服器應用程式相應增加為大量的並行 SignalR 連線。 您可以將服務的 `ServerStickyMode` 選項或設定值設為 [`Required`]，以針對 Azure SignalR 服務啟用 [粘滯會話]。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/server#signalr-configuration>。
 
 使用 IIS 時，會使用應用程式要求路由來啟用「粘滯會話」。 如需詳細資訊，請參閱[使用應用程式要求路由的 HTTP 負載平衡](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
 
@@ -222,7 +222,7 @@ Blazor 伺服器應用程式會 prerenders，以回應第一個用戶端要求�
 
 不支援從靜態 HTML 網頁轉譯伺服器元件。
 
-當 `RenderMode` `ServerPrerendered`時，元件一開始會以靜態方式轉譯為頁面的一部分。 當瀏覽器建立回到伺服器的連接後，就會*再次*轉譯該元件，而且該元件現在是互動式的。 如果有用來初始化元件的[生命週期方法](xref:blazor/components#lifecycle-methods)（`OnInitialized{Async}`），則會執行*兩次*方法：
+當 `RenderMode` `ServerPrerendered`時，元件一開始會以靜態方式轉譯為頁面的一部分。 當瀏覽器建立回到伺服器的連接後，就會*再次*轉譯該元件，而且該元件現在是互動式的。 如果存在用於初始化元件的[OnInitialized {Async}](xref:blazor/lifecycle#component-initialization-methods)生命週期方法，則會執行*兩次*方法：
 
 * 當元件以靜態方式資源清單時。
 * 建立伺服器連接之後。

@@ -5,16 +5,16 @@ description: 瞭解如何在 Blazor 伺服器應用程式中保存狀態。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 11/23/2019
 no-loc:
 - Blazor
 uid: blazor/state-management
-ms.openlocfilehash: 38ee5fccdf476f08c9f39d01b53c81b48eea04bf
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: facd6c2747bb0b31404c3c4fce25b76cd141932e
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317189"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74680976"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
@@ -74,7 +74,7 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 ### <a name="server-side-in-a-database"></a>資料庫中的伺服器端
 
-針對永久資料保存或任何必須跨越多個使用者或裝置的資料，獨立的伺服器端資料庫幾乎都是最好的選擇。 選項包括：
+針對永久資料保存或任何必須跨越多個使用者或裝置的資料，獨立的伺服器端資料庫幾乎都是最好的選擇。 這些選項包括：
 
 * 關係 SQL 資料庫
 * 索引鍵/值存放區
@@ -85,7 +85,7 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 如需 Azure 資料儲存體選項的詳細資訊，請參閱[Azure 儲存體檔](/azure/storage/)和[azure 資料庫](https://azure.microsoft.com/product-categories/databases/)。
 
-### <a name="url"></a>URL
+### <a name="url"></a>{2&gt; URL&lt;2}
 
 對於代表導覽狀態的暫時性資料，請將資料模型為 URL 的一部分。 在 URL 中模型化的狀態範例包括：
 
@@ -194,7 +194,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在 `OnParametersSetAsync`中指派結果，而不是 `OnInitializedAsync`。 只有第一次具現化元件時，才會呼叫 `OnInitializedAsync`。 如果使用者在相同頁面上繼續流覽至不同的 URL，則稍後不會再次呼叫 `OnInitializedAsync`。
+如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在 `OnParametersSetAsync`中指派結果，而不是 `OnInitializedAsync`。 只有第一次具現化元件時，才會呼叫 `OnInitializedAsync`。 如果使用者在相同頁面上繼續流覽至不同的 URL，則稍後不會再次呼叫 `OnInitializedAsync`。 如需詳細資訊，請參閱<xref:blazor/lifecycle>。
 
 > [!WARNING]
 > 此章節中的範例僅適用于伺服器未啟用預先安裝的情況。 啟用預入功能時，會產生類似下列的錯誤：

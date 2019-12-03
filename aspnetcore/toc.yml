@@ -286,6 +286,8 @@
           uid: blazor/templates
         - name: 元件
           uid: blazor/components
+        - name: 生命週期
+          uid: blazor/lifecycle
         - name: 表單和驗證
           uid: blazor/forms-validation
         - name: 元件程式庫
@@ -819,6 +821,8 @@
       uid: security/index
     - name: 驗證
       items:
+        - name: 總覽
+          uid: security/authentication/index
         - name: 身分識別簡介
           uid: security/authentication/identity
         - name: 具 SPA 的身分識別

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何使用 JavaScript 呼叫 ASP.NET Core Web API。
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/27/2019
+ms.date: 11/26/2019
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 0070816149d64fc1d71d453eb0f135050c78597a
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 5a31aa2974eb41938db89f97c070c352a26290fd
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "72378695"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74681171"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>教學課程：使用 JavaScript 呼叫 ASP.NET Core Web API
 
@@ -27,7 +27,7 @@ ms.locfileid: "72378695"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件：
 
 * 完成[教學課程：建立 Web API](xref:tutorials/first-web-api)
 * 熟悉 CSS、HTML 和 JavaScript
@@ -44,13 +44,15 @@ ms.locfileid: "72378695"
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 
-1. 在專案根目錄中建立 *wwwroot* 目錄。
+1. 在專案根目錄中建立*wwwroot*資料夾。
 
-1. 將名為 *index.html* 的 HTML 檔案新增至 *wwwroot* 目錄。 將其內容取代為下列標記：
+1. 在*wwwroot*資料夾內建立*js*資料夾。
+
+1. 將名為*index* .html 的 HTML 檔案新增至*wwwroot*資料夾。 將*index*的內容取代為下列標記：
 
     [!code-html[](first-web-api/samples/3.0/TodoApi/wwwroot/index.html)]
 
-1. 將名為 *site.js* 的 JavaScript 檔案新增至 *wwwroot* 目錄。 將其內容取代為下列程式碼：
+1. 將名為*site .js*的 JavaScript 檔案新增至*wwwroot/js*資料夾。 將*site .js*的內容取代為下列程式碼：
 
     [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_SiteJs)]
 
@@ -75,9 +77,9 @@ ms.locfileid: "72378695"
 
 * 系統會宣告 `item` 變數來建構待辦事項的物件常值表示法。
 * 您可以使用下列選項來設定 Fetch 要求：
-    * `method`&mdash;指定 POST HTTP 動作動詞命令。
-    * `body`&mdash;指定要求本文的 JSON 表示法。 JSON 是透過將儲存在 `item` 中的物件常值傳遞至 [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) 函式來產生。
-    * `headers`&mdash;指定 `Accept` 和 `Content-Type` HTTP 要求標題。 這兩個標題都設定為 `application/json`，以分別指定接收和傳送的媒體類型。
+  * `method`&mdash;指定 POST HTTP 動作動詞命令。
+  * `body`&mdash;指定要求本文的 JSON 表示法。 JSON 是透過將儲存在 `item` 中的物件常值傳遞至 [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) 函式來產生。
+  * `headers`&mdash;指定 `Accept` 和 `Content-Type` HTTP 要求標題。 這兩個標題都設定為 `application/json`，以分別指定接收和傳送的媒體類型。
 * HTTP POST 要求會傳送至 *api/TodoItems* 路由。
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]

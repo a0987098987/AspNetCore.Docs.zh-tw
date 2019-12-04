@@ -2,26 +2,25 @@
 title: 存取 ASP.NET Core 中的 HttpContext
 author: coderandhiker
 description: 了解如何存取 ASP.NET Core 中的 HttpContext。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/11/2018
+ms.date: 12/03/2019
 uid: fundamentals/httpcontext
-ms.openlocfilehash: 0bf40f9cd2554f5ba01ccc06001fa4f1940d51a5
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: 8a7ee180380c42ea745c91b8e6a18c1baa820220
+ms.sourcegitcommit: 5974e3e66dab3398ecf2324fbb82a9c5636f70de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289054"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74778735"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>存取 ASP.NET Core 中的 HttpContext
 
-ASP.NET Core 應用程式透過 `HttpContext`IHttpContextAccessor[ 介面與其預設實作 ](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor)HttpContextAccessor[ 來存取 ](/dotnet/api/microsoft.aspnetcore.http.httpcontextaccessor)。 只有當您需要存取服務內的 `IHttpContextAccessor` 時，才需要使用 `HttpContext`。
-
-::: moniker range=">= aspnetcore-2.0"
+ASP.NET Core 應用程式會透過 <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> 介面和其預設的執行 <xref:Microsoft.AspNetCore.Http.HttpContextAccessor>來存取 `HttpContext`。 只有當您需要存取服務內的 `HttpContext` 時，才需要使用 `IHttpContextAccessor`。
 
 ## <a name="use-httpcontext-from-razor-pages"></a>從 Razor 頁面使用 HttpContext
 
-Razor 頁面 [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) 會公開 [HttpContext](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.httpcontext) 屬性：
+Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 會公開 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext> 屬性：
 
 ```csharp
 public class AboutModel : PageModel
@@ -35,21 +34,21 @@ public class AboutModel : PageModel
 }
 ```
 
-::: moniker-end
-
 ## <a name="use-httpcontext-from-a-razor-view"></a>從 Razor 檢視使用 HttpContext
 
-Razor 檢視會透過檢視上的 `HttpContext`RazorPage.Context[ 屬性，直接公開 ](/dotnet/api/microsoft.aspnetcore.mvc.razor.razorpage.context#Microsoft_AspNetCore_Mvc_Razor_RazorPage_Context)。 以下範例會在內部網路應用程式中使用 Windows 驗證，擷取目前的使用者名稱：
+Razor 檢視會透過檢視上的 [RazorPage.Context](xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context) 屬性，直接公開 `HttpContext`。 下列範例會使用 Windows 驗證來抓取內部網路應用程式中目前的使用者名稱：
 
 ```cshtml
 @{
     var username = Context.User.Identity.Name;
+    
+    ...
 }
 ```
 
 ## <a name="use-httpcontext-from-a-controller"></a>從控制器使用 HttpContext
 
-控制器會公開 [ControllerBase.HttpContext](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.httpcontext) 屬性：
+控制器會公開 [ControllerBase.HttpContext](xref:Microsoft.AspNetCore.Mvc.ControllerBase.HttpContext) 屬性：
 
 ```csharp
 public class HomeController : Controller
@@ -57,7 +56,8 @@ public class HomeController : Controller
     public IActionResult About()
     {
         var pathBase = HttpContext.Request.PathBase;
-        // Do something with the PathBase.
+
+        ...
 
         return View();
     }
@@ -73,22 +73,21 @@ public class MyCustomMiddleware
 {
     public Task InvokeAsync(HttpContext context)
     {
-        // Middleware initialization optionally using HttpContext
+        ...
     }
 }
 ```
 
 ## <a name="use-httpcontext-from-custom-components"></a>從自訂元件中使用 HttpContext
 
-對於需要存取 `HttpContext` 的其他架構和自訂元件，建議的方法是使用內建的[相依性插入容器](xref:fundamentals/dependency-injection)來註冊相依性。 相依性插入容器會將 `IHttpContextAccessor` 提供給在其建構函式中將其聲明為相依性的任何類別。
+對於需要存取 `HttpContext` 的其他架構和自訂元件，建議的方法是使用內建的[相依性插入容器](xref:fundamentals/dependency-injection)來註冊相依性。 相依性插入容器會將 `IHttpContextAccessor` 提供給在其函式中宣告為相依性的任何類別：
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-3.0"
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-     services.AddMvc()
-         .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+     services.AddControllersWithViews();
      services.AddHttpContextAccessor();
      services.AddTransient<IUserRepository, UserRepository>();
 }
@@ -96,13 +95,14 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.0"
+::: moniker range="< aspnetcore-3.0"
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-     services.AddMvc();
-     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+     services.AddMvc()
+         .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+     services.AddHttpContextAccessor();
      services.AddTransient<IUserRepository, UserRepository>();
 }
 ```
@@ -134,17 +134,17 @@ public class UserRepository : IUserRepository
 
 ## <a name="httpcontext-access-from-a-background-thread"></a>從背景執行緒存取 HttpContext
 
-`HttpContext` 不是安全執行緒。 在處理要求之外讀取或寫入 `HttpContext` 的屬性，可能會導致 `NullReferenceException`。
+`HttpContext` 不是安全線程。 在處理要求之外讀取或寫入 `HttpContext` 的屬性，可能會導致 <xref:System.NullReferenceException>。
 
 > [!NOTE]
-> 在處理要求之外使用 `HttpContext`，通常會導致 `NullReferenceException`。 如果您的應用程式偶爾會產生 `NullReferenceException`，請檢閱啟動背景處理的程式碼部分，或在要求完成之後繼續處理的部分。 尋找錯誤，例如將控制器方法定義為 `async void`。
+> 如果您的應用程式會產生偶爾 `NullReferenceException` 錯誤，請檢查部分程式碼，以開始背景處理或在要求完成後繼續處理。 尋找錯誤，例如將控制器方法定義為 `async void`。
 
 使用 `HttpContext` 資料安全地執行背景工作：
 
 * 在要求處理期間複製所需的資料。
 * 將複製的資料傳遞至背景工作。
 
-為了避免不安全的程式碼，絕對不會將 `HttpContext` 傳遞至執行背景工作的方法，而是改為傳遞您所需的資料。
+若要避免不安全的程式碼，請勿將 `HttpContext` 傳遞至執行背景工作的方法。 請改為傳遞所需的資料。 在下列範例中，會呼叫 `SendEmailCore` 以開始傳送電子郵件。 `correlationId` 會傳遞給 `SendEmailCore`，而不是 `HttpContext`。 程式碼執行不會等待 `SendEmailCore` 完成：
 
 ```csharp
 public class EmailController : Controller
@@ -153,13 +153,13 @@ public class EmailController : Controller
     {
         var correlationId = HttpContext.Request.Headers["x-correlation-id"].ToString();
 
-        // Starts sending an email, but doesn't wait for it to complete
         _ = SendEmailCore(correlationId);
+
         return View();
     }
 
     private async Task SendEmailCore(string correlationId)
     {
-        // send the email
+        ...
     }
 }

@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 4737747f84a59780fe70f63195f7580bd812e4de
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
-ms.translationtype: HT
+ms.openlocfilehash: 634c6937089a0a0fe1f862a83771aff65a1f8418
+ms.sourcegitcommit: 5974e3e66dab3398ecf2324fbb82a9c5636f70de
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74734023"
+ms.locfileid: "74778839"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>3\.1 ASP.NET Core 的新功能
 
@@ -51,9 +51,9 @@ Blazor 伺服器應用程式現在可以在初始轉譯期間，將參數傳遞�
 
 [!code-csharp[](sample/Program.cs?name=snippet)]
 
-<!-- TODO
-## Breaking changes for SameSite cookies
--->
+## <a name="breaking-changes-for-samesite-cookies"></a>SameSite cookie 的重大變更
+
+SameSite cookie 的行為已變更，以反映即將進行的瀏覽器變更。 這可能會影響驗證案例，例如 AzureAd、OpenIdConnect 或 WsFederation。 如需詳細資訊，請參閱<xref:security/samesite>。
 
 ## <a name="prevent-default-actions-for-events-in-opno-locblazor-apps"></a>防止 Blazor 應用程式中的事件的預設動作
 

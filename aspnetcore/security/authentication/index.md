@@ -4,14 +4,14 @@ author: mjrousos
 description: 深入瞭解 ASP.NET Core 中的驗證。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/22/2019
+ms.date: 12/04/2019
 uid: security/authentication/index
-ms.openlocfilehash: 5e6c875188831c468bc6ca52ce71c5961b43573c
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 324b2669d3b69e4757a284e4ae7e1de5f4e87e5a
+ms.sourcegitcommit: 05ca05a5c8f6ae556aaad66ad9e4ec1e6b643c77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681452"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74810247"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>ASP.NET Core 驗證的總覽
 
@@ -57,7 +57,7 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 * 驗證處理常式。
 * 用於設定該特定處理常式實例的選項。
 
-配置可做為一種機制，用來參考相關處理常式的驗證、挑戰和禁止行為。 例如，授權原則可以依名稱指定應使用的授權配置（或配置）來驗證使用者。 設定驗證時，通常會指定預設的驗證配置。 除非資源要求特定的配置，否則會使用預設配置。 也可以：
+配置可做為一種機制，用來參考相關處理常式的驗證、挑戰和禁止行為。 例如，授權原則可以使用配置名稱來指定應該使用哪一種驗證配置（或配置）來驗證使用者。 設定驗證時，通常會指定預設的驗證配置。 除非資源要求特定的配置，否則會使用預設配置。 也可以：
 
 * 指定要用於驗證、挑戰和禁止動作的不同預設配置。
 * 使用[原則](xref:security/authentication/policyschemes)配置，將多個配置結合成一個。

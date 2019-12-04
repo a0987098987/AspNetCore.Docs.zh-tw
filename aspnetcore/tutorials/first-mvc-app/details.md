@@ -5,16 +5,16 @@ description: 了解基本 ASP.NET Core MVC 應用程式中的 Details 控制器�
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: d19e8cdb63da2bb9c66db1943dfcec183d432401
-ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
-ms.translationtype: HT
+ms.openlocfilehash: 04eb2efa4e67d84e575580a6248d0b5b567064af
+ms.sourcegitcommit: b3e1e31e5d8bdd94096cf27444594d4a7b065525
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68862976"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803379"
 ---
 # <a name="examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>檢查 ASP.NET Core 應用程式的 Details 和 Delete 方法
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 開啟 Movie 控制器，並檢查 `Details` 方法：
 
@@ -22,7 +22,7 @@ ms.locfileid: "68862976"
 
 建立這個動作方法的 MVC scaffolding 引擎，會新增一項註解以顯示叫用方法的 HTTP 要求。 在此情況下，它是含有 `Movies` 控制器、`Details` 方法和 `id` 值這三個 URL 區段的 GET 要求。 回想一下，這些區段會在 *Startup.cs* 中定義。
 
-[!code-csharp[](start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
+[!code-csharp[](start-mvc/sample/MvcMovie3/Startup.cs?highlight=5&name=snippet_1)]
 
 EF 可讓您輕鬆使用 `FirstOrDefaultAsync` 方法來搜尋資料。 此方法內建一項重要的安全性功能：程式碼會先驗證搜尋方法是否已找到電影，之後才嘗試對其執行任何動作。 比方說，駭客可能會將透過 `http://localhost:{PORT}/Movies/Details/1` 連結建立的 URL 變更為類似 `http://localhost:{PORT}/Movies/Details/12345` (或不代表實際電影的其他值)，導致站台發生錯誤。 如果並未檢查是否電影是否為 null，應用程式就會擲回例外狀況。
 
@@ -56,4 +56,4 @@ public async Task<IActionResult> Delete(int id, bool notUsed)
 如需部署至 Azure 的資訊，請參閱[教學課程：在 Azure App Service 中建置 .NET Core 和 SQL Database Web 應用程式](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)。
 
 > [!div class="step-by-step"]
-> [上一步](validation.md)
+> [上一篇](validation.md)

@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/17/2019
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 7499381a24a2513a4fbd1205f245e624c86647c3
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: a7a5c40d6c31c4416212c02c1b491dd794f2a1d3
+ms.sourcegitcommit: b3e1e31e5d8bdd94096cf27444594d4a7b065525
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080564"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803275"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>在 ASP.NET Core 中組合及縮小靜態資產
 
@@ -27,7 +27,7 @@ ms.locfileid: "71080564"
 
 ### <a name="bundling"></a>統合
 
-配套會將多個檔案結合成單一檔案。 「組合」可減少呈現 web 資產（例如網頁）所需的伺服器要求數目。 您可以針對 CSS、JavaScript 等建立任意數目的個別組合。較少的檔案表示從瀏覽器到伺服器的 HTTP 要求較少，或提供您應用程式的服務。 這會導致第一頁載入效能改進。
+統合可將多個檔案合併成單一檔案。 「組合」可減少呈現 web 資產（例如網頁）所需的伺服器要求數目。 您可以針對 CSS、JavaScript 等建立任意數目的個別組合。較少的檔案表示從瀏覽器到伺服器的 HTTP 要求較少，或提供您應用程式的服務。 這會導致第一頁載入效能改進。
 
 ### <a name="minification"></a>縮制
 
@@ -63,7 +63,7 @@ ms.locfileid: "71080564"
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>選擇捆綁和縮制策略
 
-MVC 和 Razor Pages 專案範本提供現成的解決方案，可供包含 JSON 設定檔的組合和縮制使用。 協力廠商工具（例如[Grunt](xref:client-side/using-grunt)工作執行器）會以更複雜的方式來完成相同的工作。 當您的開發工作流程需要處理超出配套和縮制&mdash;（例如 linting 和影像優化）時，協力廠商工具是很好的組合。 藉由使用設計階段組合和縮制，縮減檔案會在應用程式部署之前建立。 部署之前的捆綁與縮小提供伺服器負載降低的優點。 不過，請務必辨識設計階段的組合和縮制會增加組建複雜度，而且只適用于靜態檔案。
+MVC 和 Razor Pages 專案範本提供現成的解決方案，可供包含 JSON 設定檔的組合和縮制使用。 協力廠商工具（例如[Grunt](xref:client-side/using-grunt)工作執行器）會以更複雜的方式來完成相同的工作。 當您的開發工作流程需要處理超出配套和縮制&mdash;（例如 linting 和影像優化）時，協力廠商工具是很好的方式。 藉由使用設計階段組合和縮制，縮減檔案會在應用程式部署之前建立。 部署之前的捆綁與縮小提供伺服器負載降低的優點。 不過，請務必辨識設計階段的組合和縮制會增加組建複雜度，而且只適用于靜態檔案。
 
 ## <a name="configure-bundling-and-minification"></a>設定捆綁和縮制
 
@@ -83,16 +83,16 @@ MVC 和 Razor Pages 專案範本提供現成的解決方案，可供包含 JSON 
 
 *Bundleconfig.json*會定義每個配套的選項。 在上述範例中，會針對自訂 JavaScript （*wwwroot/js/* node.js）和樣式表單（*wwwroot/css/.css*）檔案定義單一組合設定。
 
-設定選項包括:
+設定選項包括：
 
-* `outputFileName`：要輸出的組合檔案名稱。 可以包含來自*bundleconfig.json*的相對路徑。 **必填**
+* `outputFileName`：要輸出的組合檔案名稱。 可以包含來自*bundleconfig.json*的相對路徑。 **必要**
 * `inputFiles`：要組合在一起的檔案陣列。 這些是設定檔的相對路徑。 （**選擇性**） * 空白值會產生空的輸出檔。 支援[萬用字元模式。](https://www.tldp.org/LDP/abs/html/globbingref.html)
-* `minify`：輸出類型的縮制選項。 **選擇性**，*預設值`minify: { enabled: true }` -*
+* `minify`：輸出類型的縮制選項。 **選擇性**，*預設值-`minify: { enabled: true }`*
   * 每個輸出檔案類型都有可用的設定選項。
     * [CSS Minifier](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [JavaScript Minifier](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [HTML Minifier](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`：表示是否將產生的檔案加入至專案檔的旗標。 **選擇性**，*預設值-false*
+* `includeInProject`：旗標，指出是否要將產生的檔案加入至專案檔。 **選擇性**，*預設值-false*
 * `sourceMap`：表示是否要產生配套檔案之來源對應的旗標。 **選擇性**，*預設值-false*
 * `sourceMapRootPath`：用來儲存所產生之來源對應檔的根路徑。
 
@@ -197,7 +197,7 @@ dotnet bundle
 ```
 
 > [!IMPORTANT]
-> NuGet 套件管理員會將 * .csproj 檔案的相依性新增`<PackageReference />`為節點。 只有`dotnet bundle`在使用`<DotNetCliToolReference />`節點時，才會向 .NET Core CLI 註冊此命令。 據以修改 * .csproj 檔案。
+> NuGet 套件管理員會將 * .csproj 檔案的相依性新增為 `<PackageReference />` 節點。 只有在使用 `<DotNetCliToolReference />` 節點時，才會向 .NET Core CLI 註冊 `dotnet bundle` 命令。 據以修改 * .csproj 檔案。
 
 ## <a name="add-files-to-workflow"></a>將檔案新增至工作流程
 
@@ -213,7 +213,7 @@ dotnet bundle
 > 或者，也可以使用下列萬用字元模式：
 >
 > ```json
-> "inputFiles": ["wwwroot/**/*(*.css|!(*.min.css))"]
+> "inputFiles": ["wwwroot/**/!(*.min).css" ]
 > ```
 >
 > 這個萬用字元模式會比對所有 CSS 檔案，並排除縮減檔案模式。
@@ -226,7 +226,7 @@ dotnet bundle
 
 使用您的瀏覽器中的[環境](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)標籤協助程式，指定要包含在頁面中的檔案。 環境標籤協助程式只會在特定[環境](xref:fundamentals/environments)中執行時呈現其內容。
 
-下列`environment`標記會在`Development`環境中執行時呈現未處理的 CSS 檔案：
+下列 `environment` 標記會在 `Development` 環境中執行時，呈現未處理的 CSS 檔案：
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -240,7 +240,7 @@ dotnet bundle
 
 ::: moniker-end
 
-在以外`environment`的環境`Development`中執行時，下列標記會轉譯配套和縮減的 CSS 檔案。 例如，在或`Production` `Staging`中執行時，會觸發這些樣式表單的呈現：
+下列 `environment` 標記會在 `Development`以外的環境中執行時，轉譯配套和縮減的 CSS 檔案。 例如，在 `Production` 或 `Staging` 中執行，會觸發這些樣式表單的呈現：
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -265,11 +265,11 @@ Visual Studio[搭配程式 & Minifier](https://marketplace.visualstudio.com/item
 > [!NOTE]
 > 搭配程式 & Minifier 延伸模組屬於 GitHub 上的社區驅動專案，Microsoft 不提供任何支援。 問題應在[此](https://github.com/madskristensen/BundlerMinifier/issues)提出。
 
-以滑鼠右鍵按一下方案總管中的*bundleconfig.json* ，然後選取 [**搭配程式 & Minifier**  > **轉換成 Gulp ...** ]：
+以滑鼠右鍵按一下方案總管中的*bundleconfig.json* ，然後選取 [**搭配程式 & Minifier** ] > **轉換為 [Gulp ...** ]：
 
 ![轉換成 Gulp 內容功能表項目](../client-side/bundling-and-minification/_static/convert-to-gulp.png)
 
-*Gulpfile.js*會將檔案新增至*專案。* 已安裝*package. json*檔案的`devDependencies`區段中所列的支援[npm](https://www.npmjs.com/)套件。
+*Gulpfile.js*會將檔案新增至*專案。* 已安裝*package. json*檔案的 `devDependencies` 區段中所列的支援[npm](https://www.npmjs.com/)套件。
 
 在 [PMC] 視窗中執行下列命令，以將 Gulp CLI 安裝為全域相依性：
 
@@ -285,10 +285,10 @@ npm i -g gulp-cli
 
 如果 Visual Studio 和/或搭配程式 & Minifier 延伸模組無法使用，請以手動方式轉換。
 
-將包含下列`devDependencies`的*package. json*檔案新增至專案根目錄：
+將具有下列 `devDependencies`的*package. json*檔案新增至專案根目錄：
 
 > [!WARNING]
-> `gulp-uglify`模組不支援 ECMAScript （ES） 2015/ES6 和更新版本。 安裝[gulp-terser](https://www.npmjs.com/package/gulp-terser) ，而`gulp-uglify`不是使用 ES2015/ES6 或更新版本。
+> `gulp-uglify` 模組不支援 ECMAScript （ES） 2015/ES6 和更新版本。 安裝[gulp-terser](https://www.npmjs.com/package/gulp-terser) ，而不是 `gulp-uglify`，以使用 ES2015/ES6 或更新版本。
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/package.json?range=5-13)]
 
@@ -314,7 +314,7 @@ npm i -g gulp-cli
 
 [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
 
-在此範例中， `MyPreCompileTarget`目標內定義的任何工作都會在預先定義`Build`的目標之前執行。 與下列類似的輸出會出現在 Visual Studio 的 [輸出] 視窗中：
+在此範例中，`MyPreCompileTarget` 目標內定義的任何工作都會在預先定義的 `Build` 目標之前執行。 與下列類似的輸出會出現在 Visual Studio 的 [輸出] 視窗中：
 
 ```console
 1>------ Build started: Project: BuildBundlerMinifierApp, Configuration: Debug Any CPU ------
@@ -327,7 +327,6 @@ npm i -g gulp-cli
 1>[14:17:49] Finished 'min:css' after 88 ms
 ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 ```
-
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -3,14 +3,14 @@ title: 從 ASP.NET 移轉至 ASP.NET Core
 author: isaac2004
 description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 ASP.NET Core.web 的指導
 ms.author: scaddie
-ms.date: 12/11/2018
+ms.date: 10/18/2019
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 9c97b9c0f13a265ab5c90225dcd5a581a1272701
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 1564b644b774939c3c242a41812851917e96d2b2
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815471"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "74803340"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 
@@ -18,7 +18,7 @@ ms.locfileid: "67815471"
 
 這篇文章可作為將 ASP.NET 應用程式移轉至 ASP.NET Core 的參考指南。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
 [.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download)
 
@@ -154,6 +154,10 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 > [!NOTE]
 > 如需在 ASP.NET Core 中提供靜態檔案更深入的參考，請參閱[靜態檔案](xref:fundamentals/static-files)。
+
+## <a name="multi-value-cookies"></a>多重值 cookie
+
+ASP.NET Core 中不支援[多重值的 cookie](xref:System.Web.HttpCookie.Values) 。 為每個值建立一個 cookie。
 
 ## <a name="additional-resources"></a>其他資源
 

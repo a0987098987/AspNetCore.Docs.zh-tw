@@ -9,6 +9,10 @@
       "moniker_ranges": [
         ">= aspnetcore-1.0"
       ],
+      "xref_query_tags": [
+        "/dotnet",
+        "/aspnet"
+      ],
       "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content",
@@ -32,6 +36,9 @@
   "continue_with_document_error": true,
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
+  "contribution_branch_mappings": {
+    "live-sxs": "live"
+  },
   "dependent_repositories": [
     {
       "path_to_root": "_themes",
@@ -66,11 +73,11 @@
     ]
 },
   "need_generate_pdf_url_template": true,
-  "need_generate_pdf": false,
-  "need_generate_intellisense": false,
-  "Targets": {
+  "targets": {
     "Pdf": {
       "template_folder": "_themes.pdf"
     }
-  }
+  },
+  "need_generate_pdf": false,
+  "need_generate_intellisense": false
 }

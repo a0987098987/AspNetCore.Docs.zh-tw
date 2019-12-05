@@ -1,20 +1,20 @@
 ---
-title: .NET Core 與 ASP.NET Core 中的記錄
+title: 登入 .NET Core 與 ASP.NET Core
 author: rick-anderson
 description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提供的記錄架構。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/19/2019
+ms.date: 12/04/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 23ce2d09d2ce9f415ce71bcd7c21c29cb2a040fc
-ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
+ms.openlocfilehash: 49d598330948c5f4a137c534094e14ed5e01e27c
+ms.sourcegitcommit: f4cd3828e26e6d549ba8d0c36a17be35ad9e5a51
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74550366"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74825489"
 ---
-# <a name="logging-in-net-core-and-aspnet-core"></a>.NET Core 與 ASP.NET Core 中的記錄
+# <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Steve Smith](https://ardalis.com/)
 
@@ -48,10 +48,10 @@ ms.locfileid: "74550366"
 
 預設 ASP.NET Core 專案範本會呼叫 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A> 新增下列記錄提供者：
 
-* 主控台
-* 偵錯
-* EventSource
-* EventLog (僅當在 Windows 上執行時)
+* [主控台](#console-provider)
+* [偵錯](#debug-provider)
+* [EventSource](#event-source-provider)
+* [EventLog](#windows-eventlog-provider) （僅適用于在 Windows 上執行時）
 
 您可以使用您想要的提供者來取代預設提供者。 呼叫 <xref:Microsoft.Extensions.Logging.LoggingBuilderExtensions.ClearProviders%2A> 並新增您要的提供者。
 
@@ -129,7 +129,7 @@ ms.locfileid: "74550366"
 
 若要在 ASP.NET Core 應用程式的 `Program` 類別中寫入記錄，請在建立主機之後從 DI 取得 `ILogger` 執行個體：
 
-[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
+[!code-csharp[](index/samples_snapshot/3.x/TodoApiSample/Program.cs?highlight=9,10)]
 
 不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來登入 `CreateHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
 
@@ -1022,9 +1022,9 @@ dotnet tool install --global dotnet-trace
 
    追蹤會以名稱*nettrace*儲存在執行 `dotnet trace` 命令的資料夾中。
 
-1. 使用 [Perfview](#perfview) 開啟追蹤。 開啟 *nettrace* 檔案，並瀏覽追蹤事件。
+1. 使用[Perfview](#perfview)開啟追蹤。 開啟*nettrace*檔案，並流覽追蹤事件。
 
-如需詳細資訊，請參閱。
+如需詳細資訊，請參閱＜＞。
 
 * [效能分析公用程式追蹤（dotnet-追蹤）](/dotnet/core/diagnostics/dotnet-trace) （.net Core 檔）
 * [效能分析公用程式追蹤（dotnet 追蹤）](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md) （dotnet/診斷 GitHub 存放庫檔）
@@ -1051,7 +1051,11 @@ dotnet tool install --global dotnet-trace
 logging.AddEventLog();
 ```
 
-[AddEventLog 多載](xref:Microsoft.Extensions.Logging.EventLoggerFactoryExtensions)可讓您傳入 <xref:Microsoft.Extensions.Logging.EventLog.EventLogSettings>。
+[AddEventLog 多載](xref:Microsoft.Extensions.Logging.EventLoggerFactoryExtensions)可讓您傳入 <xref:Microsoft.Extensions.Logging.EventLog.EventLogSettings>。 如果 `null` 或未指定，則會使用下列預設設定：
+
+* `LogName` &ndash; 「應用程式」
+* `SourceName` &ndash; 「.NET 執行時間」
+* `MachineName` &ndash; 本機電腦
 
 ### <a name="tracesource-provider"></a>TraceSource 提供者
 

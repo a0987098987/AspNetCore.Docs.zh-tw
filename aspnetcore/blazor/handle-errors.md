@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: 9f249fac331d31249f9325892e8365e3d0b4cc5a
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: e737a8a85e7eb83d95618d71e85b0307c54b0766
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717057"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879689"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
 
@@ -116,7 +116,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 當 Blazor 建立元件的實例時：
 
 * 會叫用元件的函式。
-* 系統會叫用透過[@inject](xref:blazor/dependency-injection#request-a-service-in-a-component)指示詞或[[插入]](xref:blazor/dependency-injection#request-a-service-in-a-component)屬性提供給元件之函式的任何非 singleton DI 服務的構造函式。 
+* 系統會叫用透過[`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component)指示詞或[`[Inject]`](xref:blazor/dependency-injection#request-a-service-in-a-component)屬性提供給元件之函式的任何非 singleton DI 服務的函式。 
 
 任何 `[Inject]` 屬性的任何執行的函式或 setter 擲回未處理的例外狀況時，線路都會失敗。 例外狀況是嚴重的，因為架構無法具現化元件。 如果函式邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄功能的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
 
@@ -185,7 +185,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 * 如果 `InvokeAsync<T>` 的呼叫以非同步方式失敗，則 .NET <xref:System.Threading.Tasks.Task> 會失敗。 `InvokeAsync<T>` 的呼叫可能會失敗，例如，JavaScript 端程式碼會擲回例外狀況，或傳回以 `rejected`完成的 `Promise`。 開發人員程式碼必須攔截例外狀況。 如果使用[await](/dotnet/csharp/language-reference/keywords/await)運算子，請考慮將方法呼叫包裝在含有錯誤處理和記錄的[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。 否則，失敗的程式碼會產生對線路而言是嚴重的未處理例外狀況。
 * 根據預設，`InvokeAsync<T>` 的呼叫必須在特定期間內完成，否則呼叫會超時。預設的超時時間為一分鐘。 Timeout 會保護程式碼不會遺失網路連線，或永遠不會傳回完成訊息的 JavaScript 程式碼。 如果呼叫超時，則產生的 `Task` 會因 <xref:System.OperationCanceledException>而失敗。 使用記錄來設陷並處理例外狀況。
 
-同樣地，JavaScript 程式碼可能會起始對[[JSInvokable] 屬性](xref:blazor/javascript-interop#invoke-net-methods-from-javascript-functions)所指示之 .net 方法的呼叫。 如果這些 .NET 方法擲回未處理的例外狀況：
+同樣地，JavaScript 程式碼可能會起始呼叫[`[JSInvokable]`](xref:blazor/javascript-interop#invoke-net-methods-from-javascript-functions)屬性所指示的 .net 方法。 如果這些 .NET 方法擲回未處理的例外狀況：
 
 * 此例外狀況不會被視為對線路的嚴重錯誤。
 * JavaScript 端 `Promise` 遭到拒絕。
@@ -251,7 +251,7 @@ Blazor 元件可以使用 `Html.RenderComponentAsync` 來資源清單，使其�
 
 ::: moniker-end
 
-## <a name="advanced-scenarios"></a>Advanced 案例
+## <a name="advanced-scenarios"></a>進階案例
 
 ### <a name="recursive-rendering"></a>遞迴轉譯
 

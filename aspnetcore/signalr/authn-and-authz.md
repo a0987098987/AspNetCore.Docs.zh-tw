@@ -5,16 +5,16 @@ description: 瞭解如何在 ASP.NET Core SignalR中使用驗證和授權。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 5a1e15ef46a3f89af3fbd3d505e7bd340c46e672
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 091cc9b2adc1f6a8fac79519884695d1c1725d2a
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963819"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880409"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-opno-locsignalr"></a>ASP.NET Core SignalR 中的驗證和授權
 
@@ -24,7 +24,7 @@ ms.locfileid: "73963819"
 
 ## <a name="authenticate-users-connecting-to-a-opno-locsignalr-hub"></a>驗證連接到 SignalR 中樞的使用者
 
-SignalR 可以與[ASP.NET Core 驗證](xref:security/authentication/identity)搭配使用，以將使用者與每個連線建立關聯。 在中樞中，可以從[`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user)屬性存取驗證資料。 驗證可讓中樞在與使用者相關聯的所有連接上呼叫方法。 如需詳細資訊，請參閱[管理 SignalR中的使用者和群組](xref:signalr/groups)。 多個連接可能會與單一使用者相關聯。
+SignalR 可以與[ASP.NET Core 驗證](xref:security/authentication/identity)搭配使用，以將使用者與每個連線建立關聯。 在中樞中，可以從[HubConnectionCoNtext 的使用者](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user)屬性存取驗證資料。 驗證可讓中樞在與使用者相關聯的所有連接上呼叫方法。 如需詳細資訊，請參閱[管理 SignalR中的使用者和群組](xref:signalr/groups)。 多個連接可能會與單一使用者相關聯。
 
 以下是使用 SignalR 和 ASP.NET Core 驗證的 `Startup.Configure` 範例：
 
@@ -174,7 +174,7 @@ var connection = new HubConnectionBuilder()
 
 [!code-csharp[Adding the email to the ASP.NET identity claims](authn-and-authz/sample/pages/account/Register.cshtml.cs?name=AddEmailClaim)]
 
-在您的 `Startup.ConfigureServices` 中註冊此元件。
+在您的 `Startup.ConfigureServices`中註冊此元件。
 
 ```csharp
 services.AddSingleton<IUserIdProvider, EmailBasedUserIdProvider>();
@@ -218,7 +218,7 @@ public class ChatHub : Hub
 
 ### <a name="use-authorization-handlers-to-customize-hub-method-authorization"></a>使用授權處理常式自訂中樞方法授權
 
-當中樞方法需要授權時，SignalR 會提供自訂資源給授權處理常式。 資源是 `HubInvocationContext` 的實例。 `HubInvocationContext` 包括 `HubCallerContext`、所叫用的中樞方法名稱，以及中樞方法的引數。
+當中樞方法需要授權時，SignalR 會提供自訂資源給授權處理常式。 資源是 `HubInvocationContext`的實例。 `HubInvocationContext` 包括 `HubCallerContext`、所叫用的中樞方法名稱，以及中樞方法的引數。
 
 請考慮允許多個組織透過 Azure Active Directory 登入的聊天室範例。 具有 Microsoft 帳戶的任何人都可以登入交談，但只有擁有組織的成員才能夠禁止使用者或觀看使用者的聊天記錄。 此外，我們可能會想要限制特定使用者的特定功能。 使用 ASP.NET Core 3.0 中的更新功能，這是完全可行的。 請注意，`DomainRestrictedRequirement` 如何作為自訂 `IAuthorizationRequirement`。 現在，已將 `HubInvocationContext` 資源參數傳入，內部邏輯可以檢查正在呼叫中樞的內容，並決定是否要讓使用者執行個別的中樞方法。
 
@@ -266,7 +266,7 @@ public class DomainRestrictedRequirement :
 }
 ```
 
-在 `Startup.ConfigureServices` 中，新增新的原則，並提供自訂的 `DomainRestrictedRequirement` 需求做為參數，以建立 `DomainRestricted` 原則。
+在 `Startup.ConfigureServices`中，新增新的原則，並提供自訂的 `DomainRestrictedRequirement` 需求做為參數，以建立 `DomainRestricted` 原則。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

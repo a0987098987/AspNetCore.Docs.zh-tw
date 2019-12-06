@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 中的 Startup 類別如何設定服務和應�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/02/2019
+ms.date: 12/05/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 081eaa772d136477a37a3392877886327e0cda7c
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: 2468c685850f74b8dafb3e0abea6d7b83c417af0
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73634043"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880513"
 ---
 # <a name="app-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -43,7 +43,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 ::: moniker-end
 
-一旦建置應用程式[主機](xref:fundamentals/index#host)，就會指定 `Startup` 類別。 `Startup` 類別通常會藉由呼叫主機產生器上的 [`WebHostBuilderExtensions.UseStartup<TStartup>`](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) 方法來指定：
+一旦建置應用程式[主機](xref:fundamentals/index#host)，就會指定 `Startup` 類別。 `Startup` 類別通常是藉由在主機建立器上呼叫[WebHostBuilderExtensions. UseStartup\<TStartup >](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定。
 
 ::: moniker range="< aspnetcore-3.0"
 

@@ -9,12 +9,12 @@ ms.date: 11/23/2019
 no-loc:
 - Blazor
 uid: blazor/state-management
-ms.openlocfilehash: facd6c2747bb0b31404c3c4fce25b76cd141932e
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: ed203458126f3b4c97103c88a465e3eb5953a775
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74680976"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879719"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
@@ -22,7 +22,7 @@ ms.locfileid: "74680976"
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在*伺服器的記憶體中。* 
+Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在伺服器的記憶體中。 
 
 保留給使用者線路的狀態範例包括：
 
@@ -77,7 +77,7 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 針對永久資料保存或任何必須跨越多個使用者或裝置的資料，獨立的伺服器端資料庫幾乎都是最好的選擇。 這些選項包括：
 
 * 關係 SQL 資料庫
-* 索引鍵/值存放區
+* 索引鍵-值存放區
 * Blob 存放區
 * 資料表存放區
 
@@ -133,7 +133,7 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 ## <a name="protected-browser-storage-experimental-package"></a>受保護的瀏覽器儲存體實驗性封裝
 
-為 `localStorage` 和 `sessionStorage` 提供[資料保護](xref:security/data-protection/introduction)的 NuGet 套件範例是[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
+提供`localStorage`和[資料保護](xref:security/data-protection/introduction)的 NuGet 套件範例是 AspNetCore.`sessionStorage` [Microsoft.AspNetCore.ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
 
 > [!WARNING]
 > `Microsoft.AspNetCore.ProtectedBrowserStorage` 是不受支援的實驗性封裝，目前不適用於生產環境使用。
@@ -157,7 +157,7 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 ### <a name="save-and-load-data-within-a-component"></a>儲存和載入元件中的資料
 
-在需要將資料載入或儲存至瀏覽器儲存體的任何元件中，使用[@inject](xref:blazor/dependency-injection#request-a-service-in-a-component)來插入下列任一項的實例：
+在需要將資料載入或儲存至瀏覽器儲存體的任何元件中，使用[`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component)來插入下列任一項的實例：
 
 * `ProtectedLocalStorage`
 * `ProtectedSessionStorage`

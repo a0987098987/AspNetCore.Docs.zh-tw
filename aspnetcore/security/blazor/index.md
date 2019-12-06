@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: 2ebc4d72191dff33a7fb6170650be67c3836cdaa
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 693ac1a5b5bcaf8a9bbf0ff9ab63fb41764e3888
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73964013"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880460"
 ---
 # <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證和授權
 
@@ -32,7 +32,7 @@ Blazor 伺服器與 Blazor WebAssembly 應用程式之間的安全性案例不�
 
 Blazor WebAssembly 應用程式會在用戶端上執行。 授權「僅」會被用來決定要顯示的 UI 選項。 由於用戶端檢查可由使用者修改或略過，因此 Blazor WebAssembly 應用程式無法強制執行授權存取規則。
 
-## <a name="authentication"></a>驗證
+## <a name="authentication"></a>驗證  (可能為英文網頁)
 
 Blazor 使用現有的 ASP.NET Core 驗證機制來建立使用者的身分識別。 確切的機制取決於主控 Blazor 應用程式的方式，Blazor Server 或 Blazor WebAssembly。
 
@@ -69,7 +69,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 | 驗證機制                                                                 | `{AUTHENTICATION}` 值 |
 | ---------------------------------------------------------------------------------------- | :----------------------: |
-| 無驗證                                                                        | `None`                   |
+| 不需要驗證                                                                        | `None`                   |
 | 個人<br>搭配 ASP.NET Core 身分識別儲存在應用程式中的使用者。                        | `Individual`             |
 | 個人<br>儲存在 [Azure AD B2C](xref:security/authentication/azure-ad-b2c) 中的使用者。 | `IndividualB2C`          |
 | 公司或學校帳戶<br>適用於單一租用戶的組織驗證。            | `SingleOrg`              |
@@ -398,7 +398,7 @@ You can only see this if you're signed in.
 `Router` 元件與 `AuthorizeRouteView` 元件結合，可讓應用程式在下列情況指定自訂內容：
 
 * 找不到內容。
-* 使用者無法滿足套用至元件的 `[Authorize]` 條件。 `[Authorize]` 屬性已涵蓋於 [[Authorize] 屬性](#authorize-attribute)一節。
+* 使用者無法滿足套用至元件的 `[Authorize]` 條件。 [`[Authorize]` 屬性](#authorize-attribute)一節涵蓋 `[Authorize]` 屬性。
 * 正在進行非同步驗證。
 
 在預設的 Blazor Server 專案範本中，*應用程式 razor*檔案示範如何設定自訂內容：
@@ -492,7 +492,7 @@ Not authorized.
 
 **請一律在由您用戶端應用程式所存取之任何 API 端點內的伺服器上執行授權檢查。**
 
-## <a name="troubleshoot-errors"></a>疑難排解錯誤
+## <a name="troubleshoot-errors"></a>針對錯誤進行疑難排解
 
 常見錯誤：
 

@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/22/2019
 uid: web-api/index
-ms.openlocfilehash: 3f52e4ce2d26902324ab30e0bda7ed8a4942daa0
-ms.sourcegitcommit: ddc813f0f1fb293861a01597532919945b0e7fe5
+ms.openlocfilehash: 5ef8b4d012f4ed90339ffea191612e4dc365d958
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74412052"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880534"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建立 Web API
 
@@ -46,7 +46,7 @@ Web API 由一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase>�
 
 以下是 `ControllerBase` 提供的一些其他方法範例。
 
-|方法   |注意事項    |
+|方法   |備註    |
 |---------|---------|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest%2A>| 傳回 400 狀態碼。|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound%2A>|傳回 404 狀態碼。|
@@ -64,19 +64,19 @@ Web API 由一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase>�
 
 以下是一些其他可用的屬性範例。
 
-|屬性|注意事項|
+|屬性|備註|
 |---------|-----|
-|[[Route]](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |指定控制器或動作的 URL 模式。|
-|[[Bind]](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |指定模型繫結要包含的前置詞和屬性。|
-|[[HttpGet]](<xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute>)  |識別支援 HTTP GET 動作動詞的動作。|
-|[[Consumes]](<xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute>)|指定動作所接受的資料類型。|
-|[[Produces]](<xref:Microsoft.AspNetCore.Mvc.ProducesAttribute>)|指定動作所傳回的資料類型。|
+|[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |指定控制器或動作的 URL 模式。|
+|[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |指定模型繫結要包含的前置詞和屬性。|
+|[`[HttpGet]`](<xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute>)  |識別支援 HTTP GET 動作動詞的動作。|
+|[`[Consumes]`](<xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute>)|指定動作所接受的資料類型。|
+|[`[Produces]`](<xref:Microsoft.AspNetCore.Mvc.ProducesAttribute>)|指定動作所傳回的資料類型。|
 
 如需包含可用屬性的清單，請參閱 <xref:Microsoft.AspNetCore.Mvc> 命名空間。
 
 ## <a name="apicontroller-attribute"></a>ApiController 屬性
 
-您可以將[[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute)屬性套用至控制器類別，以啟用下列固定、API 特定的行為：
+[`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute)屬性可以套用至控制器類別，以啟用下列固定的 API 特定行為：
 
 * [屬性路由需求](#attribute-routing-requirement)
 * [HTTP 400 自動回應](#automatic-http-400-responses)
@@ -147,7 +147,7 @@ namespace WebApiSample
 
 [!code-csharp[](index/samples/3.x/Controllers/WeatherForecastController.cs?name=snippet_ControllerSignature&highlight=2)]
 
-動作可透過 `Startup.Configure`中 `UseEndpoints`、<xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc%2A>或 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute%2A> 所定義的慣例[路由](xref:mvc/controllers/routing#conventional-routing)來存取。
+在中<xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc%2A> <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute%2A>`UseEndpoints`，您`Startup.Configure`可以透過、或所定義的[慣例路由](xref:mvc/controllers/routing#conventional-routing)來存取動作。
 
 ::: moniker-end
 
@@ -155,7 +155,7 @@ namespace WebApiSample
 
 [!code-csharp[](index/samples/2.x/2.2/Controllers/ValuesController.cs?name=snippet_ControllerSignature&highlight=1)]
 
-無法透過 [ 中所定義的](xref:mvc/controllers/routing#conventional-routing)慣例路由<xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc%2A>或 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute%2A> 中的 `Startup.Configure` 來存取動作。
+無法透過 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc%2A> 中所定義的[慣例路由](xref:mvc/controllers/routing#conventional-routing)或 `Startup.Configure` 中的 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute%2A> 來存取動作。
 
 ::: moniker-end
 
@@ -241,15 +241,15 @@ ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelSt
 
 |屬性|繫結來源 |
 |---------|---------|
-|[[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | 要求本文 |
-|[[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | 要求本文中的表單資料 |
-|[[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | 要求標頭 |
-|[[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | 要求查詢字串參數 |
-|[[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute)   | 來自目前要求的路由資料 |
-|[[FromServices]](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) | 作為動作參數插入的要求服務 |
+|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | 要求本文 |
+|[`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | 要求本文中的表單資料 |
+|[`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | 要求標頭 |
+|[`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | 要求查詢字串參數 |
+|[`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute)   | 來自目前要求的路由資料 |
+|[`[FromServices]`](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) | 作為動作參數插入的要求服務 |
 
 > [!WARNING]
-> 當值可能包含 `[FromRoute]` (也就是 `%2f`) 時，請勿使用 `/`。 `%2f` 不會是未逸出的 `/`。 如果值可能包含 `[FromQuery]`，請使用 `%2f`。
+> 當值可能包含 `%2f` (也就是 `/`) 時，請勿使用 `[FromRoute]`。 `%2f` 不會是未逸出的 `/`。 如果值可能包含 `%2f`，請使用 `[FromQuery]`。
 
 若沒有 `[ApiController]` 屬性或繫結來源屬性 (例如 `[FromQuery]`)，ASP.NET Core 執行階段會嘗試使用複雜物件模型繫結器。 複雜物件模型繫結器會以定義的順序從值提供者提取資料。
 
@@ -259,14 +259,14 @@ ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelSt
 
 `[ApiController]` 屬性會依據動作參數的預設資料來源套用推斷規則。 這些規則透過將屬性套用至動作參數，讓您不必以手動方式識別的繫結來源。 繫結來源推斷規則的行為如下所示：
 
-* 系統會依據複雜類型參數推斷 `[FromBody]`。 如果是任何具有像是 `[FromBody]` 與 <xref:Microsoft.AspNetCore.Http.IFormCollection> 等特殊意義的複雜內建類型，則為 <xref:System.Threading.CancellationToken> 推斷規則的例外。 繫結來源推斷程式碼會忽略這些特殊的類型。
+* 系統會依據複雜類型參數推斷 `[FromBody]`。 如果是任何具有像是 <xref:Microsoft.AspNetCore.Http.IFormCollection> 與 <xref:System.Threading.CancellationToken> 等特殊意義的複雜內建類型，則為 `[FromBody]` 推斷規則的例外。 繫結來源推斷程式碼會忽略這些特殊的類型。
 * `[FromForm]` 針對類型 <xref:Microsoft.AspNetCore.Http.IFormFile> 與 <xref:Microsoft.AspNetCore.Http.IFormFileCollection> 的動作參數推斷的。 而不會依據任何簡單或使用者定義的類型進行推斷。
 * 系統會依據符合路由範本參數的任何動作參數名稱推斷 `[FromRoute]`。 如果有多個路由符合動作參數，則會將任何路由值視為 `[FromRoute]`。
 * 系統會依據任何其他動作參數推斷 `[FromQuery]`。
 
 ### <a name="frombody-inference-notes"></a>FromBody 推斷備註
 
-並不會為像是 `[FromBody]` 或 `string` 等簡單型別，推斷 `int`。 因此，當需要使用該功能時，應為簡單型別使用 `[FromBody]` 屬性。
+並不會為像是 `string` 或 `int` 等簡單型別，推斷 `[FromBody]`。 因此，當需要使用該功能時，應為簡單型別使用 `[FromBody]` 屬性。
 
 當動作有多個參數從要求主體繫結時，會擲回例外狀況。 例如，下列所有動作方法簽章都會造成例外狀況：
 
@@ -322,7 +322,7 @@ ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelSt
 
 ## <a name="multipartform-data-request-inference"></a>多部分/表單資料要求推斷
 
-當動作參數以[[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)屬性標注時，`[ApiController]` 屬性會套用推斷規則。 會推斷 `multipart/form-data` 要求內容類型。
+當動作參數以[`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)屬性標注時，`[ApiController]` 屬性會套用推斷規則。 會推斷 `multipart/form-data` 要求內容類型。
 
 若要停用預設行為，請將 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressConsumesConstraintForFormFileParameters> 屬性設定為 `Startup.ConfigureServices`中的 `true`：
 
@@ -348,7 +348,7 @@ ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelSt
 
 ## <a name="problem-details-for-error-status-codes"></a>錯誤狀態碼的問題詳細資料
 
-當相容性版本為 2.2 或更新版本時，MVC 會將錯誤結果 (具有狀態碼 400 以上的結果) 為具有 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> 的結果。 以 `ProblemDetails`RFC 7807 規格[為基礎的 ](https://tools.ietf.org/html/rfc7807) 類型，在 HTTP 回應中提供電腦可讀取的錯誤詳細資料。
+當相容性版本為 2.2 或更新版本時，MVC 會將錯誤結果 (具有狀態碼 400 以上的結果) 為具有 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> 的結果。 以 [RFC 7807 規格](https://tools.ietf.org/html/rfc7807)為基礎的 `ProblemDetails` 類型，在 HTTP 回應中提供電腦可讀取的錯誤詳細資料。
 
 請考慮下列控制器動作中的程式碼：
 

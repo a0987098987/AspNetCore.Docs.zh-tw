@@ -9,12 +9,12 @@ ms.date: 11/27/2019
 no-loc:
 - Blazor
 uid: blazor/components
-ms.openlocfilehash: 19636b0f10e71133eddece918b1bb9e2bc25a226
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: 9cdbae0bde8f6c44dc8b680dccbf9c8f96043c7f
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733839"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879701"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -171,7 +171,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>屬性展開和任意參數
 
-除了元件的宣告參數之外，元件還可以捕捉和轉譯其他屬性。 您可以在字典中捕捉其他屬性，然後在使用[@attributes](xref:mvc/views/razor#attributes) Razor 指示詞轉譯元件時，將其*splatted*到元素上。 當定義的元件會產生支援各種自訂的標記專案時，這個案例就很有用。 例如，針對支援許多參數的 `<input>` 分別定義屬性，可能會很繁瑣。
+除了元件的宣告參數之外，元件還可以捕捉和轉譯其他屬性。 您可以在字典中捕捉其他屬性，然後在使用[`@attributes`](xref:mvc/views/razor#attributes) Razor 指示詞轉譯元件時，將其*splatted*到元素上。 當定義的元件會產生支援各種自訂的標記專案時，這個案例就很有用。 例如，針對支援許多參數的 `<input>` 分別定義屬性，可能會很繁瑣。
 
 在下列範例中，第一個 `<input>` 元素（`id="useIndividualParams"`）使用個別的元件參數，而第二個 `<input>` 元素（`id="useAttributesDict"`）使用屬性展開：
 
@@ -287,7 +287,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 ## <a name="data-binding"></a>資料繫結
 
-元件和 DOM 元素的資料系結都是使用[@bind](xref:mvc/views/razor#bind)屬性來完成。 下列範例會將 `CurrentValue` 屬性系結至文字方塊的值：
+元件和 DOM 元素的資料系結都是使用[`@bind`](xref:mvc/views/razor#bind)屬性來完成。 下列範例會將 `CurrentValue` 屬性系結至文字方塊的值：
 
 ```cshtml
 <input @bind="CurrentValue" />
@@ -315,7 +315,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 當元件轉譯時，input 元素的 `value` 來自 `CurrentValue` 屬性。 當使用者在文字方塊中輸入並變更元素焦點時，`onchange` 事件會引發，而且 `CurrentValue` 屬性會設定為變更的值。 實際上，程式碼產生更為複雜，因為 `@bind` 會處理執行類型轉換的情況。 就原則而言，`@bind` 會將運算式的目前值與 `value` 屬性產生關聯，並使用已註冊的處理常式來處理變更。
 
-除了使用 `@bind` 語法來處理 `onchange` 事件之外，也可以使用其他事件來系結屬性或欄位，方法是指定具有 `event` 參數（[@bind-value:event](xref:mvc/views/razor#bind)）的[@bind-value](xref:mvc/views/razor#bind)屬性。 下列範例會系結 `oninput` 事件的 `CurrentValue` 屬性：
+除了使用 `@bind` 語法來處理 `onchange` 事件之外，也可以使用其他事件來系結屬性或欄位，方法是指定具有 `event` 參數（[`@bind-value:event`](xref:mvc/views/razor#bind)）的[`@bind-value`](xref:mvc/views/razor#bind)屬性。 下列範例會系結 `oninput` 事件的 `CurrentValue` 屬性：
 
 ```cshtml
 <input @bind-value="CurrentValue" @bind-value:event="oninput" />
@@ -384,7 +384,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 **格式字串**
 
-資料系結可搭配使用[@bind:format](xref:mvc/views/razor#bind)<xref:System.DateTime> 格式字串。 目前無法使用其他格式運算式，例如貨幣或數位格式。
+資料系結可搭配使用[`@bind:format`](xref:mvc/views/razor#bind)<xref:System.DateTime> 格式字串。 目前無法使用其他格式運算式，例如貨幣或數位格式。
 
 ```cshtml
 <input @bind="StartDate" @bind:format="yyyy-MM-dd" />
@@ -498,7 +498,7 @@ Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結�
 
 ## <a name="event-handling"></a>事件處理
 
-Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案屬性（例如，`onclick` 和 `onsubmit`）與委派類型的值，Razor 元件會將屬性的值視為事件處理常式。 屬性的名稱一律會格式化[@on{EVENT}](xref:mvc/views/razor#onevent)。
+Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案屬性（例如，`onclick` 和 `onsubmit`）與委派類型的值，Razor 元件會將屬性的值視為事件處理常式。 屬性的名稱一律會格式化[`@on{EVENT}`](xref:mvc/views/razor#onevent)。
 
 下列程式碼會在 UI 中選取按鈕時，呼叫 `UpdateHeading` 方法：
 
@@ -556,7 +556,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 | 剪貼簿        | `ClipboardEventArgs` | `oncut`、`oncopy`、`onpaste` |
 | 拖曳             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` 和 `DataTransferItem` 保存拖曳的專案資料。 |
 | 錯誤            | `ErrorEventArgs`     | `onerror` |
-| Event            | `EventArgs`          | *一般*<br>`onactivate`、`onbeforeactivate`、`onbeforedeactivate`、`ondeactivate`、`onended`、`onfullscreenchange`、`onfullscreenerror`、`onloadeddata`、`onloadedmetadata`、`onpointerlockchange`、`onpointerlockerror`、`onreadystatechange`、`onscroll`<br><br>*剪貼簿*<br>`onbeforecut`、`onbeforecopy`、`onbeforepaste`<br><br>*輸入*<br>`oninvalid`、 `onreset`、 `onselect`、 `onselectionchange`、 `onselectstart`、 `onsubmit`<br><br>*媒介*<br>`oncanplay`、`oncanplaythrough`、`oncuechange`、`ondurationchange`、`onemptied`、`onpause`、`onplay`、`onplaying`、`onratechange`、`onseeked`、`onseeking`、`onstalled`、`onstop`、`onsuspend`、`ontimeupdate`、`onvolumechange`、`onwaiting` |
+| Event            | `EventArgs`          | *一般*<br>`onactivate`、`onbeforeactivate`、`onbeforedeactivate`、`ondeactivate`、`onended`、`onfullscreenchange`、`onfullscreenerror`、`onloadeddata`、`onloadedmetadata`、`onpointerlockchange`、`onpointerlockerror`、`onreadystatechange`、`onscroll`<br><br>*剪貼簿*<br>`onbeforecut`、`onbeforecopy`、`onbeforepaste`<br><br>*輸入*<br>`oninvalid`、 `onreset`、 `onselect`、 `onselectionchange`、 `onselectstart`、 `onsubmit`<br><br>*媒體*<br>`oncanplay`、`oncanplaythrough`、`oncuechange`、`ondurationchange`、`onemptied`、`onpause`、`onplay`、`onplaying`、`onratechange`、`onseeked`、`onseeking`、`onstalled`、`onstop`、`onsuspend`、`ontimeupdate`、`onvolumechange`、`onwaiting` |
 | 焦點            | `FocusEventArgs`     | `onfocus`、`onblur`、`onfocusin``onfocusout`<br><br>不包含 `relatedTarget`的支援。 |
 | 輸入            | `ChangeEventArgs`    | `onchange`、 `oninput` |
 | 鍵盤         | `KeyboardEventArgs`  | `onkeydown`、`onkeypress`、`onkeyup` |
@@ -651,7 +651,7 @@ await callback.InvokeAsync(arg);
 
 ### <a name="prevent-default-actions"></a>防止預設動作
 
-使用[@on{EVENT}:P reventdefault](xref:mvc/views/razor#oneventpreventdefault)指示詞屬性來避免事件的預設動作。
+使用[`@on{EVENT}:preventDefault`](xref:mvc/views/razor#oneventpreventdefault)指示詞屬性來防止事件的預設動作。
 
 在輸入裝置上選取索引鍵，且元素焦點位於文字方塊上時，瀏覽器通常會在文字方塊中顯示索引鍵的字元。 在下列範例中，會藉由指定 `@onkeypress:preventDefault` 指示詞屬性來防止預設行為。 計數器會遞增，而且 **+** 的索引鍵不會捕捉到 `<input>` 元素的值中：
 
@@ -683,7 +683,7 @@ await callback.InvokeAsync(arg);
 
 ### <a name="stop-event-propagation"></a>停止事件傳播
 
-使用[@on{EVENT}： .stoppropagation](xref:mvc/views/razor#oneventstoppropagation)指示詞屬性來停止事件傳播。
+使用[`@on{EVENT}:stopPropagation`](xref:mvc/views/razor#oneventstoppropagation)指示詞屬性來停止事件傳播。
 
 在下列範例中，選取核取方塊可防止從第二個子系 `<div>` 的 click 事件傳播到父 `<div>`：
 
@@ -841,7 +841,7 @@ Password:
 
 元件參考提供參考元件實例的方法，讓您可以發出命令給該實例，例如 `Show` 或 `Reset`。 若要捕捉元件參考：
 
-* 將[@ref](xref:mvc/views/razor#ref)屬性加入至子元件。
+* 將[`@ref`](xref:mvc/views/razor#ref)屬性加入至子元件。
 * 定義與子元件類型相同的欄位。
 
 ```cshtml
@@ -1026,7 +1026,7 @@ Razor 元件（*razor*）**不**支援*Catch-all*參數語法（`*`/`**`），�
 
 Razor 元件是以部分類別的形式產生。 Razor 元件是使用下列其中一種方法來撰寫的：
 
-* C#程式碼是以 HTML 標籤和 Razor 程式碼的[@code](xref:mvc/views/razor#code)區塊定義在單一檔案中。 Blazor 範本會使用這種方法來定義其 Razor 元件。
+* C#程式碼是以 HTML 標籤和 Razor 程式碼的[`@code`](xref:mvc/views/razor#code)區塊定義在單一檔案中。 Blazor 範本會使用這種方法來定義其 Razor 元件。
 * C#程式碼會放在定義為部分類別的程式碼後置檔案中。
 
 下列範例顯示在從 Blazor 範本產生的應用程式中，具有 `@code` 區塊的預設 `Counter` 元件。 HTML 標籤、Razor 程式碼和C#程式碼位於相同的檔案中：
@@ -1125,13 +1125,13 @@ namespace BlazorSample
 
 以 Razor 撰寫之元件的命名空間是根據（依優先順序排列）：
 
-* Razor 檔案（*razor*）標記中的[@namespace](xref:mvc/views/razor#namespace)指定（`@namespace BlazorSample.MyNamespace`）。
+* Razor 檔案（*razor*）標記中的[`@namespace`](xref:mvc/views/razor#namespace)指定（`@namespace BlazorSample.MyNamespace`）。
 * 專案檔的 `RootNamespace` （`<RootNamespace>BlazorSample</RootNamespace>`）。
 * 從專案檔的檔案名（ *.csproj*）取得的專案名稱，以及從專案根目錄到元件的路徑。 例如，架構會將 *{PROJECT ROOT}/Pages/Index.razor* （*BlazorSample*）解析為 `BlazorSample.Pages`的命名空間。 元件會C#遵循名稱系結規則。 針對此範例中的 `Index` 元件，範圍內的元件都是元件：
   * 在相同的資料夾中，*頁面*。
   * 專案根目錄中未明確指定不同命名空間的元件。
 
-使用 Razor 的[@using](xref:mvc/views/razor#using)指示詞，在不同的命名空間中定義的元件會帶入範圍中。
+使用 Razor 的[`@using`](xref:mvc/views/razor#using)指示詞，在不同的命名空間中定義的元件會帶入範圍中。
 
 如果*BlazorSample/Shared/* 資料夾中有另一個元件（`NavMenu.razor`）存在，則元件可用於 `Index.razor`，並具有下列 `@using` 語句：
 
@@ -1143,7 +1143,7 @@ This is the Index page.
 <NavMenu></NavMenu>
 ```
 
-元件也可以使用其完整名稱來參考，這不需要[@using](xref:mvc/views/razor#using)指示詞：
+元件也可以使用其完整名稱來參考，這不需要[`@using`](xref:mvc/views/razor#using)指示詞：
 
 ```cshtml
 This is the Index page.
@@ -1272,7 +1272,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果 `false` 或 `nul
 
 ### <a name="generic-typed-components"></a>泛型型別元件
 
-樣板化元件通常會以一般方式輸入。 例如，泛型 `ListViewTemplate` 元件可以用來呈現 `IEnumerable<T>` 值。 若要定義泛型元件，請使用[@typeparam](xref:mvc/views/razor#typeparam)指示詞來指定類型參數：
+樣板化元件通常會以一般方式輸入。 例如，泛型 `ListViewTemplate` 元件可以用來呈現 `IEnumerable<T>` 值。 若要定義泛型元件，請使用[`@typeparam`](xref:mvc/views/razor#typeparam)指示詞來指定類型參數：
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
 

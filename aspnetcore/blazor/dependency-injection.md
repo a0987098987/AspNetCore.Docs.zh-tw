@@ -5,16 +5,16 @@ description: 瞭解 Blazor 應用程式如何將服務插入元件中。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/27/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/dependency-injection
-ms.openlocfilehash: 165cfa7a98cdd523c25d5c4bfc8e2c9d0ef1ad22
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: 17dd0f927064ae7c2b1e3e439fd93e2cb220a5a4
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733813"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879772"
 ---
 # <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
 
@@ -86,7 +86,7 @@ DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，�
 
 [!code-cshtml[](dependency-injection/samples_snapshot/3.x/CustomerList.razor?highlight=2-3,23)]
 
-就內部而言，產生的屬性（`DataRepository`）會以 `InjectAttribute` 屬性裝飾。 通常不會直接使用這個屬性。 如果元件需要基類，而且基類也需要插入的屬性，請手動加入 `InjectAttribute`：
+就內部而言，產生的屬性（`DataRepository`）會使用 `InjectAttribute` 屬性。 通常不會直接使用這個屬性。 如果元件需要基類，而且基類也需要插入的屬性，請手動加入 `InjectAttribute`：
 
 ```csharp
 public class ComponentBase : IComponent

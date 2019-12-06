@@ -4,14 +4,14 @@ author: scottaddie
 description: 本文概述將 ASP.NET Core 1.x 專案移轉至 ASP.NET Core 2.0 的必要條件和最常見步驟。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/05/2019
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 056930f3c586153d13555bbb6036f46587e2352d
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 1242ec9f71f4a26b07f9a56a2a960bf315b56ccf
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815094"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880007"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>從 ASP.NET Core 1.x 遷移至 2.0
 
@@ -23,7 +23,7 @@ ms.locfileid: "67815094"
 
 <a name="prerequisites"></a>
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
 請參閱 [ASP.NET Core 使用者入門](xref:getting-started)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "67815094"
 
 ## <a name="update-net-core-sdk-version-in-globaljson"></a>更新 global.json 中的 .NET Core SDK 版本
 
-如果您的方案依賴 [*global.json* ](/dotnet/core/tools/global-json) 檔案而以特定的 .NET Core SDK 版本為目標，請更新其 `version` 屬性，以使用您電腦上安裝的 2.0 版：
+如果您的解決方案依賴[global json](/dotnet/core/tools/global-json)檔案以特定 .NET Core SDK 版本為目標，請將其 `version` 屬性更新為使用安裝在您電腦上的2.0 版本：
 
 [!code-json[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/global.json?highlight=3)]
 

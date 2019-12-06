@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: e82f28afdac8517f72538094d97f28bdcfe46102
-ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
+ms.openlocfilehash: bc0ea4a777e8684a7b0925377b8a19a45c2b531c
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74551582"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879663"
 ---
 # <a name="aspnet-core-opno-locblazor-templates"></a>ASP.NET Core Blazor 範本
 
@@ -61,7 +61,7 @@ Blazor 架構會提供範本來為每個 Blazor 裝載模型開發應用程式�
 
 * *App.config* &ndash; 應用程式的根元件，其會使用 <xref:Microsoft.AspNetCore.Components.Routing.Router> 元件來設定用戶端路由。 `Router` 元件會攔截瀏覽器導覽，並呈現符合所要求位址的頁面。
 
-* *Pages*資料夾 &ndash; 包含組成 Blazor 應用程式的可路由元件/頁面（*razor*）。 每個頁面的路由都是使用[@page](xref:mvc/views/razor#page)指示詞來指定。 此範本包含下列元件：
+* *Pages*資料夾 &ndash; 包含組成 Blazor 應用程式的可路由元件/頁面（*razor*）。 每個頁面的路由都是使用[`@page`](xref:mvc/views/razor#page)指示詞來指定。 此範本包含下列元件：
   * `Index` （*Index. razor*） &ndash; 會執行首頁。
   * `Counter` （*razor*） &ndash; 會實行 [計數器] 頁面。
   * `Error` （只有在應用程式中發生未處理的例外狀況時，才會轉譯） &ndash; 轉譯的*錯誤（razor*、Blazor 伺服器應用程式）。
@@ -71,7 +71,7 @@ Blazor 架構會提供範本來為每個 Blazor 裝載模型開發應用程式�
   * `MainLayout` （*MainLayout razor*） &ndash; 應用程式的版面配置元件。
   * `NavMenu` （*navmenu.cshtml razor*） &ndash; 會執行提要欄位導覽。 包含[NavLink 元件](xref:blazor/routing#navlink-component)（<xref:Microsoft.AspNetCore.Components.Routing.NavLink>），它會呈現其他 Razor 元件的導覽連結。 [`NavLink`] 元件會在載入元件時自動指出選取的狀態，協助使用者瞭解目前顯示的元件。
 
-* *_Imports razor* &ndash; 包含常見的 razor 指示詞，以包含在應用程式的元件（*razor*）中，例如命名空間的[@using](xref:mvc/views/razor#using)指示詞。
+* *_Imports razor* &ndash; 包含常見的 razor 指示詞，以包含在應用程式的元件（*razor*）中，例如命名空間的[`@using`](xref:mvc/views/razor#using)指示詞。
 
 * *資料*資料夾（Blazor Server） &ndash; 包含 `WeatherForecastService` 的 `WeatherForecast` 類別和執行，可提供範例天氣資料給應用程式的 `FetchData` 元件。
 

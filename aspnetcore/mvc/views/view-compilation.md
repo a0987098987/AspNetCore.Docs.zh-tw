@@ -5,14 +5,14 @@ description: 了解在 ASP.NET Core 應用程式中發生 Razor 檔案編譯的�
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 12/05/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 95fa0d72ed9c088945707ac6b79c3fbde35a5a30
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: 0a5770a00c5cb319b571628659a07e73e0de54f9
+ms.sourcegitcommit: fd2483f0a384b1c479c5b4af025ee46917db1919
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416153"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74867974"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>ASP.NET Core 中 Razor 檔案的先行編譯
 
@@ -123,16 +123,57 @@ dotnet publish -c Release
 
 ::: moniker range=">= aspnetcore-3.0"
 
-使用 `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation` 封裝來啟用執行階段編譯。 若要啟用執行階段編譯，應用程式必須：
+若要啟用所有環境和設定模式的執行時間編譯：
 
-* 安裝 [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 套件。
-* 更新專案的 `Startup.ConfigureServices` 方法以包括對 `AddRazorRuntimeCompilation` 的呼叫：
+1. 安裝 [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 套件。
 
-  ```csharp
-  services
-      .AddControllersWithViews()
-      .AddRazorRuntimeCompilation();
-  ```
+1. 更新專案的 `Startup.ConfigureServices` 方法，以包含對 `AddRazorRuntimeCompilation`的呼叫。 例如：
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddRazorPages()
+            .AddRazorRuntimeCompilation();
+
+        // code omitted for brevity
+    }
+    ```
+
+### <a name="conditionally-enable-runtime-compilation"></a>有條件地啟用執行時間編譯
+
+可以啟用執行時間編譯，使其僅適用于本機開發。 以這種方式有條件地啟用會確保已發行的輸出：
+
+* 使用已編譯的視圖。
+* 大小較小。
+* 不會在生產環境中啟用檔案監看員。
+
+若要根據環境和設定模式啟用執行時間編譯：
+
+1. 根據作用中的 `Configuration` 值，有條件地參考[microsoft.aspnetcore.mvc.razor.runtimecompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/)套件：
+
+    ```xml
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" Condition="'$(Configuration)' == 'Debug'" />
+    ```
+
+1. 更新專案的 `Startup.ConfigureServices` 方法，以包含對 `AddRazorRuntimeCompilation`的呼叫。 有條件地執行 `AddRazorRuntimeCompilation`，使其只有在 `ASPNETCORE_ENVIRONMENT` 變數設定為 `Development`時，才會以 Debug 模式執行：
+
+    ```csharp
+    public IWebHostEnvironment Env { get; set; }
+    
+    public void ConfigureServices(IServiceCollection services)
+    {
+        IMvcBuilder builder = services.AddRazorPages();
+    
+    #if DEBUG
+        if (Env.IsDevelopment())
+        {
+            builder.AddRazorRuntimeCompilation();
+        }
+    #endif
+
+        // code omitted for brevity
+    }
+    ```
 
 ::: moniker-end
 

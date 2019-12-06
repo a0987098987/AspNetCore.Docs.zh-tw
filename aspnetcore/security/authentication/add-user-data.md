@@ -3,24 +3,24 @@ title: 在 ASP.NET Core 專案中新增、下載及刪除使用者資料至身�
 author: rick-anderson
 description: 瞭解如何將自訂使用者資料新增至 ASP.NET Core 專案中的身分識別。 刪除每個 GDPR 的資料。
 ms.author: riande
-ms.date: 06/18/2019
+ms.date: 12/05/2019
 ms.custom: mvc, seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: 6daca5776930f80eec8d81132b5a5c4d4d5c13ad
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: f54df68834cd3e2493e558aaab9851f036f3f01b
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681158"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880747"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>在 ASP.NET Core 專案中新增、下載和刪除自訂使用者資料至身分識別
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
-本文說明如何：
+本文將說明如何：
 
 * 將自訂使用者資料新增至 ASP.NET Core web 應用程式。
-* 使用 <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute> 屬性裝飾自訂使用者資料模型，使其自動可供下載和刪除。 讓資料能夠下載和刪除有助於符合[GDPR](xref:security/gdpr)需求。
+* 將具有 <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute> 屬性的自訂使用者資料模型標記為可自動供下載和刪除。 讓資料能夠下載和刪除有助於符合[GDPR](xref:security/gdpr)需求。
 
 專案範例是從 Razor Pages web 應用程式建立的，但這些指示類似于 ASP.NET Core MVC web 應用程式。
 
@@ -145,7 +145,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 ::: moniker-end
 
-以[PersonalData](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute)屬性裝飾的屬性包括：
+具有[PersonalData](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute)屬性的屬性如下：
 
 * 當 [*區域/身分識別/頁面/帳戶/管理/DeletePersonalData* ] Razor 頁面呼叫 `UserManager.Delete`時刪除。
 * 包含在下載的資料中，依*區域/身分識別/頁面/帳戶/管理/DownloadPersonalData. cshtml* Razor 頁面。

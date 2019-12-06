@@ -8,12 +8,12 @@ products:
 - aspnet-core
 - vs
 urlFragment: aspnetcore-webapi-mongodb
-ms.openlocfilehash: 402b25f3f7c1644a52832b5c8566269773932e95
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
-ms.translationtype: HT
+ms.openlocfilehash: 01f9cf237dcf2a9b95c181c2cb87ef9f59102244
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886290"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881175"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
 
@@ -27,7 +27,7 @@ ms.locfileid: "69886290"
 * 從 Web API 執行 MongoDB CRUD 作業
 * 自訂 JSON 序列化
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
 * [.NET Core SDK 3.0 或更新版本](https://www.microsoft.com/net/download/all)
 * [Visual Studio 2019 預覽版](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=community&ch=pre&rel=16&utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019preview)以及 **ASP.NET 與 Web 開發**工作負載
@@ -124,11 +124,11 @@ ms.locfileid: "69886290"
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>建立 ASP.NET Core Web API 專案
 
-1. 移至 [檔案]   > [新增]   > [專案]  。
-1. 選取 [ASP.NET Core Web 應用程式]  專案類型，然後選取 [下一步]  。
-1. 將專案命名為 *BooksApi*，然後選取 [建立]  。
-1. 選取 [.NET Core]  目標架構與 [ASP.NET Core 3.0]  。 選取 [API]  專案範本，然後選取 [確定]  。
-1. 造訪 [NuGet 資源庫：MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) 來判斷 MongoDB 的最新穩定 .NET 驅動程式版本。 在 [套件管理員主控台]  視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 移至 [檔案] > [新增] > [專案]。
+1. 選取 [ASP.NET Core Web 應用程式] 專案類型，然後選取 [下一步]。
+1. 將專案命名為 *BooksApi*，然後選取 [建立]。
+1. 選取 [.NET Core] 目標架構與 [ASP.NET Core 3.0]。 選取 [API] 專案範本，然後選取 [確定]。
+1. 請造訪[NuGet 資源庫： MongoDB 驅動程式](https://www.nuget.org/packages/MongoDB.Driver/)，以判斷最新穩定版本的 .net Driver for MongoDB。 在 [套件管理員主控台] 視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
     ```powershell
     Install-Package MongoDB.Driver -Version {VERSION}
@@ -166,10 +166,10 @@ ms.locfileid: "69886290"
     在上面的類別中，需要 `Id` 屬性：
 
     * 才能將通用語言執行平台 (CLR) 物件對應到 MongoDB 集合。
-    * 使用 [[BsonId]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) 加上附註以指定此屬性作為文件的主索引鍵。
-    * 使用 [[BsonRepresentation(BsonType.ObjectId)]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) 加上附註讓參數傳遞為類型 `string`，而非 [ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm) 結構。 Mongo 會處理從 `string` 轉換到 `ObjectId` 的作業。
+    * 會以[`[BsonId]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm)標注，將此屬性指定為檔的主要金鑰。
+    * 會以[`[BsonRepresentation(BsonType.ObjectId)]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm)標注，允許以類型 `string` （而不是[ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm)結構）傳遞參數。 Mongo 會處理從 `string` 轉換到 `ObjectId` 的作業。
 
-    使用 [[BsonElement]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm) 屬性標註 `BookName` 屬性。 `Name` 的屬性值代表 MongoDB 集合中的屬性名稱。
+    `BookName` 屬性是以[`[BsonElement]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm)屬性來標注。 `Name` 的屬性值代表 MongoDB 集合中的屬性名稱。
 
 ## <a name="add-a-configuration-model"></a>新增組態模型
 
@@ -469,7 +469,7 @@ namespace BooksApi.Controllers
 
 為滿足上述需求，請進行下列變更：
 
-1. 已從 ASP.NET 共用架構中移除 JSON.NET。 將套件參考新增至 [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson)。
+1. 已從 ASP.NET 共用架構移除 JSON.NET。 將套件參考新增至 [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson)。
 
 1. 在 `Startup.ConfigureServices` 中，將下列醒目提示的程式碼鏈結至 `AddMvc` 方法呼叫：
 
@@ -491,7 +491,7 @@ namespace BooksApi.Controllers
 
     完成前述變更後，Web API 序列化 JSON 回應中屬性名稱即符合其對應的 CLR 物件類型屬性名稱。 例如，`Book` 類別的 `Author` 屬性會序列化為 `Author`。
 
-1. 在 *Models/Book.cs* 中，以下列 [[JsonProperty]](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) 屬性標註 `BookName` 屬性：
+1. 在*模型/Book .cs*中，使用下列[`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm)屬性來標注 `BookName` 屬性：
 
     ```csharp
     [BsonElement("Name")]

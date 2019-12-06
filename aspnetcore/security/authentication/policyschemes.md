@@ -1,38 +1,38 @@
 ---
 title: ASP.NET Core 中的原則配置
 author: rick-anderson
-description: 驗證原則配置輕鬆地擁有單一邏輯的驗證配置
+description: 驗證原則配置可讓您更輕鬆地擁有單一邏輯驗證架構
 ms.author: riande
-ms.date: 02/28/2019
+ms.date: 12/05/2019
 uid: security/authentication/policyschemes
-ms.openlocfilehash: be03f349455c673b0739935ad20e596325c8cb74
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: f02d8e5cac20a9b60c5eddbd28253efacf682ea1
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815289"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880708"
 ---
 # <a name="policy-schemes-in-aspnet-core"></a>ASP.NET Core 中的原則配置
 
-驗證原則配置讓您更容易有可能使用多個方法的單一邏輯的驗證配置。 比方說，原則配置可能會使用 Google 驗證的挑戰和 cookie 驗證的所有其他項目。 驗證原則配置讓：
+驗證原則配置可讓您更輕鬆地讓單一邏輯驗證架構使用多種方法。 例如，原則配置可能會針對挑戰使用 Google 驗證，並針對其他所有專案使用 cookie 驗證。 驗證原則配置會使其成為：
 
-* 輕鬆地將轉送到另一個配置的任何驗證動作。
-* 會根據要求，以動態方式正向。
+* 輕鬆將任何驗證動作轉送至另一個配置。
+* 根據要求動態轉送。
 
-使用衍生的所有驗證配置<xref:Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions>和相關聯[ `AuthenticationHandler<TOptions>` ](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1):
+使用衍生 <xref:Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions> 的所有驗證配置和相關聯的[AuthenticationHandler\<TOptions >](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1)：
 
-* 會自動在 ASP.NET Core 2.1 和更新版本的原則配置。
-* 您可以啟用透過設定的配置選項。
+* 會在 ASP.NET Core 2.1 和更新版本中自動進行原則配置。
+* 可以透過設定配置的選項來啟用。
 
 [!code-csharp[sample](policyschemes/samples/AuthenticationSchemeOptions.cs?name=snippet)]
 
 ## <a name="examples"></a>範例
 
-下列範例會示範較高的層級配置，結合了較低層級的配置。 使用 Google 驗證的挑戰，並 cookie 驗證使用於其他所有項目：
+下列範例顯示結合較低層級配置的較高層級架構。 Google 驗證用於挑戰，而 cookie 驗證則用於其他所有專案：
 
 [!code-csharp[sample](policyschemes/samples/Startup.cs?name=snippet1)]
 
-下列範例可讓您動態選取個別要求基礎上的配置。 也就是如何混用 cookie 和 API 驗證：
+下列範例會針對每個要求，啟用動態選取配置。 也就是說，如何混合使用 cookie 和 API 驗證：
 
  <!-- REVIEW, missing If set in public Func<HttpContext, string> ForwardDefaultSelector -->
 

@@ -4,27 +4,27 @@ author: rick-anderson
 description: 深入了解 ASP.NET Core 2.0 的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/28/2019
+ms.date: 12/05/2019
 uid: aspnetcore-2.0
-ms.openlocfilehash: dac5a48042a71774cb884e30a166be68bee69691
-ms.sourcegitcommit: f5762967df3be8b8c868229e679301f2f7954679
-ms.translationtype: HT
+ms.openlocfilehash: 452ccd76eece55cb5cf38fe39781f2f64dd5d466
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048105"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880867"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
 本文會重點說明 ASP.NET Core 2.0 最重要的變更，附有相關文件的連結。
 
-## <a name="razor-pages"></a>Razor Pages
+## <a name="razor-pages"></a>Razor 頁面
 
-Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
+Razor Pages 是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
 
 如需詳細資訊，請參閱簡介與教學課程：
 
 * [Razor 頁面簡介](xref:razor-pages/index)
-* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
+* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
 
 ## <a name="aspnet-core-metapackage"></a>ASP.NET Core 中繼套件
 
@@ -48,7 +48,7 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 
 `IConfiguration` 執行個體預設新增至 ASP.NET Core 2.0 的服務容器中。 服務容器中的 `IConfiguration` 可讓應用程式從容器輕鬆擷取組態值。
 
-如需已規劃文件狀態的相關資訊，請參閱 [GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/3387)。
+如需已規劃文件狀態的資訊，請參閱 [GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/3387)。
 
 ## <a name="logging-update"></a>記錄更新
 
@@ -104,7 +104,7 @@ var entityTag = new EntityTagHeaderValue("\"MyCalculatedEtagValue\"");
 return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNow.AddSeconds(-5), entityTag: entityTag);
 ```
 
-傳回給訪客的檔案，`ETag` 和 `LastModified` 值會以適當的 HTTP 標頭裝飾。
+傳回給您的訪客的檔案具有 `ETag` 和 `LastModified` 值的適當 HTTP 標頭。
 
 如果應用程式訪客要求內容與範圍要求標頭，ASP.NET Core 會辨識要求並處理標頭。 如果要求的內容可以部分傳送，ASP.NET Core 會適當略過，並只傳回要求的位元組集合。 您不需要將任何特殊的處理常式寫入方法，來調整或處理這項功能；會為您自動處理。
 

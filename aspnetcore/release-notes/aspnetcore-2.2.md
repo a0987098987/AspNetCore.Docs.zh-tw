@@ -4,16 +4,16 @@ author: rick-anderson
 description: 了解 ASP.NET Core 2.2 的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: fca653158c95e7c1a11f25f4076830fe3e7e93ae
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 8995a514ea2e5016da85952d0f0beaf396a5d639
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963128"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880838"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2 的新功能
 
@@ -57,7 +57,12 @@ ASP.NET Core 2.2 使用新的「端點路由」系統來改善要求的分派。
 
 ASP.NET Core 2.2 新增 HTTP/2 支援。
 
-HTTP/2 是 HTTP 通訊協定的主要版本。 一些值得注意的 HTTP/2 功能包括支援標頭壓縮，以及透過單一連線進行完全多工的資料流。 雖然 HTTP/2 會保留 HTTP 的語意 (HTTP 標頭、方法等)，但它是自 HTTP/1.x 以來的重大變更，對於此資料如何進行框架處理及透過網路傳送皆有所著墨。
+HTTP/2 是 HTTP 通訊協定的主要版本。 值得注意的 HTTP/2 功能包括：
+
+* 支援標頭壓縮。
+* 透過單一連線的完整多工串流。
+
+雖然 HTTP/2 會保留 HTTP 的語法（例如，HTTP 標頭和方法），但這是從 HTTP/1.x 進行的重大變更，以瞭解資料在用戶端與伺服器之間的框架和傳送方式。
 
 這項框架處理變更導致伺服器和用戶端必須交涉所使用的通訊協定版本。 Application-Layer Protocol Negotiation (ALPN) 是 TLS 延伸模組，可讓伺服器和用戶端交涉在其 TLS 信號交換過程中所使用的通訊協定版本。 雖然您可能事先知道伺服器與用戶端之間的通訊協定，但所有主要瀏覽器都支援 ALPN 作為建立 HTTP/2 連線的唯一方式。
 

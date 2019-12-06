@@ -4,17 +4,17 @@ author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.1 中的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 634c6937089a0a0fe1f862a83771aff65a1f8418
-ms.sourcegitcommit: 5974e3e66dab3398ecf2324fbb82a9c5636f70de
+ms.openlocfilehash: 5eaf14f3b9c5a5b2b83e469c4dc8119b5fc341c1
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74778839"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880819"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>3\.1 ASP.NET Core 的新功能
 
@@ -47,7 +47,7 @@ Blazor 伺服器應用程式現在可以在初始轉譯期間，將參數傳遞�
 
 ## <a name="support-for-shared-queues-in-httpsys"></a>支援 HTTP.sys 中的共用佇列
 
-[Http.sys 支援建立](xref:fundamentals/servers/httpsys)匿名要求佇列。 在 ASP.NET Core 3.1 中，我們新增了建立或附加至現有已命名 HTTP.SYS 要求佇列的功能。 建立或附加至現有的已命名 HTTP.SYS 要求佇列，可啟用 HTTP 的案例。擁有佇列的 Sys controller 進程與接聽程式進程無關。 這種獨立性讓您能夠在接聽程式進程重新開機之間保留現有的連接和排入佇列的要求：
+[Http.sys 支援建立](xref:fundamentals/servers/httpsys)匿名要求佇列。 在 ASP.NET Core 3.1 中，我們新增了建立或附加至現有已命名 HTTP.SYS 要求佇列的功能。 建立或附加至現有的已命名 HTTP.SYS 要求佇列，可讓擁有佇列的 HTTP.SYS 控制器進程與接聽程式進程無關的情況。 這種獨立性讓您能夠在接聽程式進程重新開機之間保留現有的連接和排入佇列的要求：
 
 [!code-csharp[](sample/Program.cs?name=snippet)]
 

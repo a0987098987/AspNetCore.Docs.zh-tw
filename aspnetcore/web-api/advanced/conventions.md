@@ -5,20 +5,20 @@ description: 深入了解 ASP.NET Core 中的 Web API 慣例。
 monikerRange: '>= aspnetcore-2.2'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/13/2018
+ms.date: 12/05/2019
 uid: web-api/advanced/conventions
-ms.openlocfilehash: ae409158defe15ffaa7454039b302cf3c6437e54
-ms.sourcegitcommit: 6d9cf728465cdb0de1037633a8b7df9a8989cccb
-ms.translationtype: HT
+ms.openlocfilehash: 2c7e33da24322504fc5e1be83c0b814710186687
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67463284"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881323"
 ---
 # <a name="use-web-api-conventions"></a>使用 Web API 慣例
 
 作者：[Pranav Krishnamoorthy](https://github.com/pranavkm) 和 [Scott Addie](https://github.com/scottaddie)
 
-ASP.NET Core 2.2 和更新版本包含擷取常見 [API 文件](xref:tutorials/web-api-help-pages-using-swagger)的方式，並將其套用至多個動作、控制器，或組件內的所有控制器。 Web API 慣例為使用 [[ProducesResponseType]](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) 裝飾個別動作的替代品。
+ASP.NET Core 2.2 和更新版本包含擷取常見 [API 文件](xref:tutorials/web-api-help-pages-using-swagger)的方式，並將其套用至多個動作、控制器，或組件內的所有控制器。 Web API 慣例是以[`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute)裝飾個別動作的替代方案。
 
 慣例可讓您：
 
@@ -52,7 +52,7 @@ ASP.NET Core MVC 2.2 和更新版本在 <xref:Microsoft.AspNetCore.Mvc.DefaultAp
 
     如需有關 `[ProducesDefaultResponseType]`,的詳細資訊，請參閱[預設回應](https://swagger.io/docs/specification/describing-responses/#default) \(英文\)。
 
-1. 套用到控制器的 `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` &mdash; 會將指定的慣例類型套用至控制器上的所有動作。 慣例方法由提示所裝飾，且該提示會決定要套用慣例方法的動作。 如需提示的詳細資訊，請參閱[建立 Web API 慣例](#create-web-api-conventions)。
+1. 套用到控制器的 `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` &mdash; 會將指定的慣例類型套用至控制器上的所有動作。 慣例方法會以決定要套用慣例方法之動作的提示來標示。 如需提示的詳細資訊，請參閱[建立 Web API 慣例](#create-web-api-conventions)。
 
     在下列範例中，會將一組預設的慣例套用至 *ContactsConventionController* 中的所有動作：
 

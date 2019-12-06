@@ -3,14 +3,14 @@ title: 使用 ASP.NET Core 建立原生行動應用程式的後端服務
 author: ardalis
 description: 了解如何使用 ASP.NET Core MVC 建立後端服務，以支援原生行動應用程式。
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 12/05/2019
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: b50d2593d7dc4b89472033898373e3a22fc9a7a3
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 38ac69bfe9d99d6d61f96fde92d86fd752ebbb6b
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883953"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881153"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>使用 ASP.NET Core 建立原生行動應用程式的後端服務
 
@@ -63,7 +63,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 > [!NOTE]
 > 請確定您是直接執行應用程式，而非在 IIS Express 之後執行，因為其根據預設會忽略所有非本機的要求。 在命令提示字元中執行 [dotnet run](/dotnet/core/tools/dotnet-run)，或從 Visual Studio 工具列的 [偵錯目標] 下拉式功能表中選擇應用程式名稱設定檔。
 
-新增一個模型類別來代表待辦項目。 使用 `[Required]` 屬性來標記必要欄位：
+新增一個模型類別來代表待辦項目。 標示具有 `[Required]` 屬性的必要欄位：
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Models/ToDoItem.cs)]
 
@@ -108,7 +108,7 @@ API 方法需要一些方式才能操作資料。 使用原始 Xamarin 範本使
 
 ### <a name="creating-items"></a>建立項目
 
-根據慣例，建立新的資料項目會對應到 HTTP POST 動詞命令。 `Create` 方法套用了一個 `[HttpPost]` 屬性，並且接受一個 `ToDoItem` 執行個體。 由於 `item` 引數會在 POST 主體中傳遞，此參數會使用 `[FromBody]` 屬性進行修飾。
+根據慣例，建立新的資料項目會對應到 HTTP POST 動詞命令。 `Create` 方法已套用 `[HttpPost]` 屬性，並接受 `ToDoItem` 實例。 因為 `item` 引數會傳入 POST 的主體，所以這個參數會指定 `[FromBody]` 屬性。
 
 在方法中，項目會經過有效性的檢查，以及是否先前存在過資料存放區中。若沒有發現任何問題，則該項目便會新增至存放庫中。 檢查 `ModelState.IsValid` 會執行 [模型驗證](../mvc/models/validation.md)，並且應該要在每個接受使用者輸入的 API 方法中執行。
 

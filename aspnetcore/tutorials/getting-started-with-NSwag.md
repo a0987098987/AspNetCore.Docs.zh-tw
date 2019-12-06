@@ -4,14 +4,14 @@ author: zuckerthoben
 description: 了解如何使用 NSwag 來產生 ASP.NET Core Web API 的文件和說明頁面。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 06/21/2019
+ms.date: 12/05/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 23927e6ce0a7b29ce3f32d4e7f7d3f234257ca9b
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: 676e911a14bd128998c987b3f955c40e19af98d1
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416162"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881298"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>NSwag 與 ASP.NET Core 使用者入門
 
@@ -257,7 +257,7 @@ Swagger UI 會顯示版本資訊：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-上述動作會傳回 `IActionResult`，但在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*) 或 [BadRequest](xref:System.Web.Http.ApiController.BadRequest*)。 請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。 使用下列屬性裝飾動作：
+上述動作會傳回 `IActionResult`，但在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*) 或 [BadRequest](xref:System.Web.Http.ApiController.BadRequest*)。 請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。 使用下列屬性來標記動作：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
@@ -271,7 +271,7 @@ Swagger UI 會顯示版本資訊：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-上述動作會傳回 `ActionResult<T>`。 在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*)。 由於控制器是以 [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) 屬性裝飾，因此也可能傳回 [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) 回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。 請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。 使用下列屬性裝飾動作：
+上述動作會傳回 `ActionResult<T>`。 在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*)。 由於控制器具有[`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute)屬性，因此也可以[BadRequest](xref:System.Web.Http.ApiController.BadRequest*)回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。 請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。 使用下列屬性來標記動作：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
@@ -279,6 +279,6 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker-end
 
-Swagger 產生器現在可以正確描述此動作，而產生的用戶端會知道呼叫端點時它們所接收的內容。 建議做法是，使用這些屬性來裝飾所有動作。
+Swagger 產生器現在可以正確描述此動作，而產生的用戶端會知道呼叫端點時它們所接收的內容。 建議使用這些屬性來標記所有動作。
 
 如需 API 動作應該傳回哪些 HTTP 回應的指導方針，請參閱 [RFC 7231 規格](https://tools.ietf.org/html/rfc7231#section-4.3)。

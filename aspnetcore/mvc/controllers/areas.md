@@ -3,14 +3,14 @@ title: ASP.NET Core 中的區域
 author: rick-anderson
 description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功能組織成群組，作為個別命名空間 (適用於路由) 和資料夾結構 (適用於檢視)。
 ms.author: riande
-ms.date: 08/16/2019
+ms.date: 12/05/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 9065aa23a537add5a9376472e4f4478e9d4149bd
-ms.sourcegitcommit: 776598f71da0d1e4c9e923b3b395d3c3b5825796
-ms.translationtype: HT
+ms.openlocfilehash: 7e02a21361e0e2148b29a3ae0f1ba25e68239e13
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70024735"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881122"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
@@ -34,7 +34,7 @@ ms.locfileid: "70024735"
 使用區域、控制器及檢視的典型 ASP.NET Core Web 應用程式包含下列項目：
 
 * 一個[區域資料夾結構](#area-folder-structure)。
-* 使用 [&lbrack;Area&rbrack;](#attribute) 屬性裝飾的控制器可使控制器與區域產生關聯：
+* 具有[`[Area]`](#attribute)屬性的控制器，可讓控制器與區域產生關聯：
 
   [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
 
@@ -44,12 +44,12 @@ ms.locfileid: "70024735"
 
 ### <a name="area-folder-structure"></a>區域資料夾結構
 
-假設應用程式具有兩個邏輯群組：「產品」  和「服務」  。 使用區域，資料夾結構應該如下：
+假設應用程式具有兩個邏輯群組：「產品」和「服務」。 使用區域，資料夾結構應該如下：
 
 * Project name
   * 區域
-    * 產品
-      * Controllers
+    * Products
+      * 控制器
         * HomeController.cs
         * ManageController.cs
       * 檢視
@@ -59,7 +59,7 @@ ms.locfileid: "70024735"
           * Index.cshtml
           * About.cshtml
     * 服務
-      * Controllers
+      * 控制器
         * HomeController.cs
       * 檢視
         * 首頁
@@ -110,7 +110,7 @@ ms.locfileid: "70024735"
 
 範例下載包括[部分檢視](xref:mvc/views/partial)，其中可在未指定區域的情況下包含上述連結和相同連結。 部分檢視會在[配置檔案](xref:mvc/views/layout)中進行參考，因此，應用程式中的每個頁面都會顯示產生的連結。 在未指定區域的情況下產生的連結，只有在從相同區域與控制器中的頁面進行參考時才有效。
 
-未指定區域或控制站時，路由即會取決於「環境」  值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。
+未指定區域或控制站時，路由即會取決於「環境」值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。
 
 如需詳細資訊，請參閱[路由至控制器動作](xref:mvc/controllers/routing)。
 
@@ -138,16 +138,16 @@ ms.locfileid: "70024735"
 
 * Project name
   * 區域
-    * 產品
+    * Products
       * 頁面
         * _ViewImports
         * 關於
-        * 索引
+        * {2&gt;索引&lt;2}
     * 服務
       * 頁面
         * 管理
           * 關於
-          * 索引
+          * {2&gt;索引&lt;2}
 
 ### <a name="link-generation-with-razor-pages-and-areas"></a>使用 Razor Pages 和區域產生連結
 
@@ -159,7 +159,7 @@ ms.locfileid: "70024735"
 
 範例下載包括[部分檢視](xref:mvc/views/partial)，其中可在未指定區域的情況下包含上述連結和相同連結。 部分檢視會在[配置檔案](xref:mvc/views/layout)中進行參考，因此，應用程式中的每個頁面都會顯示產生的連結。 在未指定區域的情況下產生的連結，只有在從相同區域中的頁面進行參考時才有效。
 
-未指定區域時，路由即會取決於「環境」  值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。 例如，試想從下列程式碼產生的連結：
+未指定區域時，路由即會取決於「環境」值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。 例如，試想從下列程式碼產生的連結：
 
 [!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
 

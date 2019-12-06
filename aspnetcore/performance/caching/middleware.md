@@ -5,14 +5,14 @@ description: 了解如何設定和使用 ASP.NET Core 中的回應快取中介�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/04/2019
+ms.date: 12/05/2019
 uid: performance/caching/middleware
-ms.openlocfilehash: a8e656e1d59114e2e953323e98e0a2399efca98a
-ms.sourcegitcommit: 09f4a5ded39cc8204576fe801d760bd8b611f3aa
+ms.openlocfilehash: d034252f69f8efdc9a912a0d9c3ecde65196e7e3
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73611462"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880929"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core 中的回應快取中介軟體
 
@@ -20,9 +20,9 @@ By [Luke Latham](https://github.com/guardrex)和[John 羅文](https://github.com
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-本文說明如何在 ASP.NET Core 應用程式中設定回應快取中介軟體。 中介軟體會決定何時可快取回應、儲存回應，以及提供來自快取的回應。 如需 HTTP 快取和[[ResponseCache]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute)屬性的簡介，請參閱[回應](xref:performance/caching/response)快取。
+本文說明如何在 ASP.NET Core 應用程式中設定回應快取中介軟體。 中介軟體會決定何時可快取回應、儲存回應，以及提供來自快取的回應。 如需 HTTP 快取和[`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute)屬性的簡介，請參閱[回應](xref:performance/caching/response)快取。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>組態
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -39,7 +39,7 @@ By [Luke Latham](https://github.com/guardrex)和[John 羅文](https://github.com
 範例應用程式會新增標頭，以在後續要求中控制快取：
 
 * 快取[控制](https://tools.ietf.org/html/rfc7234#section-5.2)&ndash; 快取最多10秒的快取回應。
-* [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) &ndash; 設定中介軟體只有在後續要求的[`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4)標頭符合原始要求的時，才會提供快取的回應。
+* [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) &ndash; 設定中介軟體只有在後續要求的[接受編碼](https://tools.ietf.org/html/rfc7231#section-5.3.4)標頭符合原始要求的時，才會提供快取的回應。
 
 [!code-csharp[](middleware/samples_snippets/3.x/AddHeaders.cs)]
 
@@ -65,7 +65,7 @@ By [Luke Latham](https://github.com/guardrex)和[John 羅文](https://github.com
 範例應用程式會新增標頭，以在後續要求中控制快取：
 
 * 快取[控制](https://tools.ietf.org/html/rfc7234#section-5.2)&ndash; 快取最多10秒的快取回應。
-* [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) &ndash; 設定中介軟體只有在後續要求的[`Accept-Encoding`](https://tools.ietf.org/html/rfc7231#section-5.3.4)標頭符合原始要求的時，才會提供快取的回應。
+* [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) &ndash; 設定中介軟體只有在後續要求的[接受編碼](https://tools.ietf.org/html/rfc7231#section-5.3.4)標頭符合原始要求的時，才會提供快取的回應。
 
 [!code-csharp[](middleware/samples_snippets/2.x/AddHeaders.cs)]
 
@@ -101,7 +101,7 @@ services.AddResponseCaching(options =>
 
 ## <a name="varybyquerykeys"></a>VaryByQueryKeys
 
-使用 MVC/Web API 控制器或 Razor Pages 頁面模型時， [[ResponseCache]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute)屬性會指定為回應快取設定適當標頭所需的參數。 嚴格要求中介軟體的 `[ResponseCache]` 屬性的唯一參數是 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys>，這不會對應到實際的 HTTP 標頭。 如需詳細資訊，請參閱<xref:performance/caching/response#responsecache-attribute>。
+使用 MVC/Web API 控制器或 Razor Pages 頁面模型時， [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute)屬性會指定為回應快取設定適當標頭所需的參數。 嚴格要求中介軟體的 `[ResponseCache]` 屬性的唯一參數是 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys>，這不會對應到實際的 HTTP 標頭。 如需詳細資訊，請參閱<xref:performance/caching/response#responsecache-attribute>。
 
 當不使用 `[ResponseCache]` 屬性時，回應快取可能會隨著 `VaryByQueryKeys`而不同。 直接從[HttpCoNtext](xref:Microsoft.AspNetCore.Http.HttpContext.Features)使用 <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingFeature>：
 
@@ -120,10 +120,10 @@ if (responseCachingFeature != null)
 
 下表提供會影響回應快取的 HTTP 標頭資訊。
 
-| 頁首 | 詳細資料 |
+| 標頭 | 詳細資料 |
 | ------ | ------- |
 | `Authorization` | 如果標頭存在，則不會快取回應。 |
-| `Cache-Control` | 中介軟體只會考慮以 `public` cache 指示詞標示的快取回應。 使用下列參數來控制快取：<ul><li>最大壽命</li><li>最大-過時&#8224;</li><li>最小-全新</li><li>必須-重新驗證</li><li>無-快取</li><li>否-存放區</li><li>僅限-快取</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-重新驗證&#8225;</li></ul>&#8224;如果未指定 `max-stale`的限制，中介軟體不會採取任何動作。<br>&#8225;`proxy-revalidate` 與 `must-revalidate`的效果相同。<br><br>如需詳細資訊，請參閱[RFC 7231：要求](https://tools.ietf.org/html/rfc7234#section-5.2.1)快取控制指示詞。 |
+| `Cache-Control` | 中介軟體只會考慮以 `public` cache 指示詞標示的快取回應。 使用下列參數來控制快取：<ul><li>最大壽命</li><li>最大-過時&#8224;</li><li>最小-全新</li><li>must-revalidate</li><li>no-cache</li><li>否-存放區</li><li>僅限-快取</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-重新驗證&#8225;</li></ul>&#8224;如果未指定 `max-stale`的限制，中介軟體不會採取任何動作。<br>&#8225;`proxy-revalidate` 與 `must-revalidate`的效果相同。<br><br>如需詳細資訊，請參閱[RFC 7231：要求](https://tools.ietf.org/html/rfc7234#section-5.2.1)快取控制指示詞。 |
 | `Pragma` | 要求中的 `Pragma: no-cache` 標頭會產生與 `Cache-Control: no-cache`相同的效果。 `Cache-Control` 標頭中的相關指示詞會覆寫此標頭（如果有的話）。 視為與 HTTP/1.0 的回溯相容性。 |
 | `Set-Cookie` | 如果標頭存在，則不會快取回應。 要求處理管線中設定一或多個 cookie 的任何中介軟體，可防止回應快取中介軟體快取回應（例如，以[cookie 為基礎的 TempData 提供者](xref:fundamentals/app-state#tempdata)）。  |
 | `Vary` | `Vary` 標頭是用來依另一個標頭來改變快取的回應。 例如，藉由包含 `Vary: Accept-Encoding` 標頭，以編碼方式快取回應，其會快取標頭 `Accept-Encoding: gzip` 和 `Accept-Encoding: text/plain` 的要求回應。 永遠不會儲存標頭值為 `*` 的回應。 |

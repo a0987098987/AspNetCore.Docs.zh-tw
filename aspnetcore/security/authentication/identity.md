@@ -3,14 +3,14 @@ title: ASP.NET Core 上的身分識別簡介
 author: rick-anderson
 description: 將身分識別與 ASP.NET Core 應用程式搭配使用。 瞭解如何設定密碼需求（RequireDigit、RequiredLength、RequiredUniqueChars 等）。
 ms.author: riande
-ms.date: 12/7/2019
+ms.date: 12/05/2019
 uid: security/authentication/identity
-ms.openlocfilehash: 331ebe36eb4bb7fa694de8daa969bcabcab1c974
-ms.sourcegitcommit: b3e1e31e5d8bdd94096cf27444594d4a7b065525
+ms.openlocfilehash: c867b73a96fd081f6e2ca17fef561ac539c0a129
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803392"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880722"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET Core 上的身分識別簡介
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何在 ASP.NET Core 中編寫標籤協助程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/29/2019
+ms.date: 12/05/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: f0c7e114583b2ca2e681c507bef3487c863d8cd0
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: e8b62d795f6444e6dd79e27ace687d5db4db86de
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589864"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881005"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
@@ -31,7 +31,7 @@ ms.locfileid: "72589864"
 
 ## <a name="a-minimal-tag-helper"></a>最精簡的標籤協助程式
 
-在本節中，您會撰寫可更新電子郵件標籤的標籤協助程式。 例如:
+在本節中，您會撰寫可更新電子郵件標籤的標籤協助程式。 例如：
 
 ```html
 <email>Support</email>
@@ -117,7 +117,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 <a name="self-closing"></a>
 
    > [!NOTE]
-   > 如果您要撰寫電子郵件標籤自我結尾 (`<email mail-to="Rick" />`)，則最終輸出也會是自我結尾。 若要啟用可以寫入只有開始標籤的標籤 (`<email mail-to="Rick">`)，您必須以下列項目來裝飾此類別：
+   > 如果您要撰寫電子郵件標籤自我結尾 (`<email mail-to="Rick" />`)，則最終輸出也會是自我結尾。 若要啟用只使用開始標記（`<email mail-to="Rick">`）寫入標記的功能，您必須使用下列內容來標記類別：
    >
    > [!code-csharp[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailVoid.cs?highlight=1&range=6-10)]
 

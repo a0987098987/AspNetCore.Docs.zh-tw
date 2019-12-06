@@ -4,17 +4,17 @@ author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.0 中的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: c3dde383507ec919f82b5268ddbf23911c3d24f8
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 4ade13c38880c9915ec590297f2a43548ca400a8
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963114"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880833"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>3\.0 ASP.NET Core 的新功能
 
@@ -67,7 +67,7 @@ Blazor 中的元件通常是使用 Razor 語法（這是 HTML 和C#的自然 ble
   * 二進位序列化格式。
 * 提供下列功能：
 
-  * 驗證
+  * 驗證  (可能為英文網頁)
   * 雙向串流和流量控制。
   * 取消和超時。
 
@@ -81,9 +81,9 @@ ASP.NET Core 3.0 中的 gRPC 功能包括：
 
 ## SignalR
 
-如需遷移指示，請參閱[更新 SignalR 程式碼](xref:migration/22-to-30#signalr)。 SignalR 現在會使用 `System.Text.Json` 來序列化/還原序列化 JSON 訊息。 如需還原以 `Newtonsoft.Json` 為基礎之序列化程式的指示，請參閱[切換至 Newtonsoft。](xref:migration/22-to-30#switch-to-newtonsoftjson)
+如需遷移指示，請參閱[更新 SignalR 程式碼](xref:migration/22-to-30#signalr)。 SignalR 現在會使用 `System.Text.Json` 來序列化/還原序列化 JSON 訊息。 如需還原以 `Newtonsoft.Json`為基礎之序列化程式的指示，請參閱[切換至 Newtonsoft。](xref:migration/22-to-30#switch-to-newtonsoftjson)
 
-在 SignalR的 JavaScript 和 .NET 用戶端中，已加入自動重新連接的支援。 根據預設，用戶端會嘗試立即重新連線，並在 2、10 和 30 秒後重試（如有必要）。 如果用戶端成功重新連接，則會收到新的連線識別碼。 自動重新連線是加入宣告的：
+在 SignalR的 JavaScript 和 .NET 用戶端中，已加入自動重新連接的支援。 根據預設，用戶端會嘗試立即重新連線，並在2、10和30秒後重試（如有必要）。 如果用戶端成功重新連接，則會收到新的連線識別碼。 自動重新連線是加入宣告的：
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -135,7 +135,7 @@ connection.onreconnected((connectionId) => {
 });
 ```
 
-SignalR 3.0 和更新版本會在中樞方法需要授權時，將自訂資源提供給授權處理常式。 資源是 `HubInvocationContext` 的實例。 `HubInvocationContext` 包括：
+SignalR 3.0 和更新版本會在中樞方法需要授權時，將自訂資源提供給授權處理常式。 資源是 `HubInvocationContext`的實例。 `HubInvocationContext` 包括：
 
 * `HubCallerContext`
 * 所叫用之中樞方法的名稱。
@@ -182,7 +182,7 @@ public class DomainRestrictedRequirement :
 * 檢查正在呼叫中樞的內容。
 * 請決定是否要讓使用者執行個別的中樞方法。
 
-您可以使用程式碼在執行時間檢查的原則名稱來裝飾個別的中樞方法。 當用戶端嘗試呼叫個別的中樞方法時，`DomainRestrictedRequirement` 處理常式會執行並控制方法的存取。 根據 `DomainRestrictedRequirement` 控制存取的方式：
+您可以使用程式碼在執行時間檢查的原則名稱來標示個別的中樞方法。 當用戶端嘗試呼叫個別的中樞方法時，`DomainRestrictedRequirement` 處理常式會執行並控制方法的存取。 根據 `DomainRestrictedRequirement` 控制存取的方式：
 
 * 所有登入的使用者都可以呼叫 `SendMessage` 方法。
 * 只有使用 `@jabbr.net` 電子郵件地址登入的使用者，才能夠查看使用者的歷程記錄。
@@ -319,12 +319,12 @@ ASP.NET Core 3.0 現在會使用 <xref:System.Text.Json> JSON 序列化的預設
 
 下列清單包含新的 Razor 指示詞：
 
-* [@attribute](xref:mvc/views/razor#attribute) &ndash; `@attribute` 指示詞會將指定的屬性套用至所產生頁面或視圖的類別。 例如，`@attribute [Authorize]`。
-* [@implements](xref:mvc/views/razor#implements) &ndash; `@implements` 指示詞會為所產生的類別執行介面。 例如，`@implements IDisposable`。
+* [`@attribute`](xref:mvc/views/razor#attribute) &ndash; `@attribute` 指示詞會將指定的屬性套用至所產生頁面或視圖的類別。 例如，`@attribute [Authorize]`。
+* [`@implements`](xref:mvc/views/razor#implements) &ndash; `@implements` 指示詞會為所產生的類別執行介面。 例如，`@implements IDisposable`。
 
 ## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 支援 web Api 和 Spa 的驗證和授權
 
-ASP.NET Core 3.0 使用 Web API 授權的支援，在單一頁面應用程式（SPA）中提供驗證。 用於驗證和儲存使用者的 ASP.NET Core 身分識別會與[IdentityServer4](https://identityserver.io/)結合，以執行 Open ID Connect。
+ASP.NET Core 3.0 使用 Web API 授權的支援，在單一頁面應用程式（Spa）中提供驗證。 用於驗證和儲存使用者的 ASP.NET Core 身分識別會與[IdentityServer4](https://identityserver.io/)結合，以執行 Open ID Connect。
 
 IdentityServer4 是適用于 ASP.NET Core 3.0 的 OpenID Connect 和 OAuth 2.0 架構。 它會啟用下列安全性功能：
 
@@ -340,8 +340,8 @@ IdentityServer4 是適用于 ASP.NET Core 3.0 的 OpenID Connect 和 OAuth 2.0 �
 憑證驗證需要：
 
 * 正在設定伺服器以接受憑證。
-* 在 `Startup.Configure` 中新增驗證中介軟體。
-* 在 `Startup.ConfigureServices` 中新增憑證驗證服務。
+* 在 `Startup.Configure`中新增驗證中介軟體。
+* 在 `Startup.ConfigureServices`中新增憑證驗證服務。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -386,9 +386,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 主機需求：
 
-* Windows 主機必須將[服務主體名稱](/windows/win32/ad/service-principal-names)（SPN）新增至裝載應用程式的使用者帳戶。
+* Windows 主機必須將[服務主體名稱](/windows/win32/ad/service-principal-names)（spn）新增至裝載應用程式的使用者帳戶。
 * Linux 和 macOS 機器必須加入網域。
-  * 必須為 web 進程建立 SPN。
+  * 必須為 web 進程建立 Spn。
   * 必須在主機電腦上產生和設定[Keytab](https://blogs.technet.microsoft.com/pie/2018/01/03/all-you-need-to-know-about-keytab-files/)檔案。
 
 如需詳細資訊，請參閱<xref:security/authentication/windowsauth>。
@@ -410,7 +410,7 @@ ASP.NET Core 3.0 範本會使用 <xref:fundamentals/host/generic-host>。 先前
 
 ### <a name="host-configuration"></a>主機組態
 
-在 ASP.NET Core 3.0 發行之前，會針對 Web 主機的主機設定載入前面加上 `ASPNETCORE_` 的環境變數。 在 3.0 中，`AddEnvironmentVariables` 是用來載入前面加上 `DOTNET_` 的環境變數，以使用 `CreateDefaultBuilder`進行主機設定。
+在 ASP.NET Core 3.0 發行之前，會針對 Web 主機的主機設定載入前面加上 `ASPNETCORE_` 的環境變數。 在3.0 中，`AddEnvironmentVariables` 是用來載入前面加上 `DOTNET_` 的環境變數，以使用 `CreateDefaultBuilder`進行主機設定。
 
 ### <a name="changes-to-startup-constructor-injection"></a>啟動函式插入的變更
 
@@ -426,9 +426,9 @@ ASP.NET Core 3.0 範本會使用 <xref:fundamentals/host/generic-host>。 先前
 
 * Kestrel 設定已更新，可供遷移至一般主機。 在3.0 中，Kestrel 是在 `ConfigureWebHostDefaults`所提供的 web 主機產生器上設定。
 * 連接介面卡已從 Kestrel 中移除，並以連線中介軟體取代，類似于 ASP.NET Core 管線中的 HTTP 中介軟體，但較低層級的連接。
-* Kestrel 傳輸層已公開為 `Connections.Abstractions` 中的公用介面。
+* Kestrel 傳輸層已公開為 `Connections.Abstractions`中的公用介面。
 * 標頭和尾端之間的多義性已藉由將尾端標頭移至新集合來解決。
-* 同步 IO Api （例如 `HttpRequest.Body.Read`）是執行緒耗盡的常見來源，因而導致應用程式當機。 在3.0 中，預設會停用 `AllowSynchronousIO`。
+* 同步 IO Api （例如 `HttpRequest.Body.Read`）是執行緒耗盡的常見來源，因而導致應用程式當機。 在 3.0 中，預設會停用 `AllowSynchronousIO`。
 
 如需詳細資訊，請參閱<xref:migration/22-to-30#kestrel>。
 
@@ -458,7 +458,7 @@ ASP.NET Core 3.0 範本會使用 <xref:fundamentals/host/generic-host>。 先前
 
 ## <a name="health-checks"></a>健康情況檢查
 
-健全狀況檢查會搭配泛型主機使用端點路由。 在 `Startup.Configure` 中，使用端點 URL 或相對路徑，在端點產生器上呼叫 `MapHealthChecks`：
+健全狀況檢查會搭配泛型主機使用端點路由。 在 `Startup.Configure`中，使用端點 URL 或相對路徑，在端點產生器上呼叫 `MapHealthChecks`：
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -480,7 +480,7 @@ app.UseEndpoints(endpoints =>
 
 ## <a name="pipes-on-httpcontext"></a>HttpCoNtext 上的管道
 
-現在可以使用 <xref:System.IO.Pipelines> API 來讀取要求本文並寫入回應主體。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` 屬性提供可用於讀取要求本文的 <xref:System.IO.Pipelines.PipeReader>。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` 屬性提供可用於寫入回應主體的 <xref:System.IO.Pipelines.PipeWriter>。 `HttpRequest.BodyReader` 是 `HttpRequest.Body` 串流的類比。 `HttpResponse.BodyWriter` 是 `HttpResponse.Body` 串流的類比。
+現在可以使用 <xref:System.IO.Pipelines>API 讀取要求本文與寫入回應本文。 此 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` 屬性提供可用於讀取要求本文的 <xref:System.IO.Pipelines.PipeReader>。 此 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` 屬性提供可用來寫入回應本文的 <xref:System.IO.Pipelines.PipeWriter>。 `HttpRequest.BodyReader` 類似於`HttpRequest.Body` 資料流。 `HttpResponse.BodyWriter` 類似於`HttpResponse.Body` 資料流。
 
 <!-- indirectly related, https://github.com/dotnet/docs/pull/14414 won't be published by 9/23  -->
 
@@ -492,7 +492,7 @@ app.UseEndpoints(endpoints =>
 
 .NET Core 3.0 引進了新的背景工作服務應用程式範本。 此範本提供在 .NET Core 中撰寫長時間執行服務的起點。
 
-如需詳細資訊，請參閱:
+如需詳細資訊，請參閱＜＞。
 
 * [.NET Core 背景工作角色做為 Windows 服務](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/)
 * <xref:fundamentals/host/hosted-services>
@@ -502,7 +502,7 @@ app.UseEndpoints(endpoints =>
 
 在舊版的 ASP.NET Core 中，當部署到 Azure Linux 或 IIS 以外的任何反向 proxy 後方時，呼叫 <xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*> 和 <xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*> 會有問題。 先前版本的修正已記載于[轉送 Linux 和非 IIS 反向 proxy 的配置](xref:host-and-deploy/proxy-load-balancer#forward-the-scheme-for-linux-and-non-iis-reverse-proxies)中。
 
-此案例已在 ASP.NET Core 3.0 中修正。 當 `ASPNETCORE_FORWARDEDHEADERS_ENABLED` 環境變數設定為 `true` 時，主機會啟用[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options)。 在我們的容器映射中，`ASPNETCORE_FORWARDEDHEADERS_ENABLED` 設定為 `true`。
+此案例已在 ASP.NET Core 3.0 中修正。 當 `ASPNETCORE_FORWARDEDHEADERS_ENABLED` 環境變數設定為 `true`時，主機會啟用[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options)。 在我們的容器映射中，`ASPNETCORE_FORWARDEDHEADERS_ENABLED` 設定為 `true`。
 
 ## <a name="performance-improvements"></a>效能改善
 

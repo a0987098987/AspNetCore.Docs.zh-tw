@@ -6,12 +6,12 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 11/21/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: a49fec38a6d38bbd33e9461cbcceb39bfe810f5c
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: 705044804b6ecc980baa88a624863ce5ac72a694
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717282"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881058"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core 中的資料繫結
 
@@ -96,11 +96,11 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 如果預設來源不正確，請使用下列其中一個屬性來指定來源：
 
-* [[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) - 從查詢字串取得值。 
-* [[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) - 從路由資料取得值。
-* [[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) - 從已張貼的表單欄位取得值。
-* [[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) - 從要求本文取得值。
-* [[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) - 從 HTTP 標頭取得值。
+* [`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) -從查詢字串取得值。 
+* [`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) -從路由資料取得值。
+* [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) -從已張貼的表單欄位取得值。
+* [`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) -從要求主體取得值。
+* [`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) -從 HTTP 標頭取得值。
 
 這些屬性：
 
@@ -166,7 +166,7 @@ public class Pet
 * 針對複雜類型，模型繫結會使用預設建構函式建立執行個體，但不設定屬性。
 * 陣列設為 `Array.Empty<T>()`，但 `byte[]` 陣列設為 `null`。
 
-如果模型狀態在模型屬性表單欄位中找不到任何項目時應該失效，則請使用 [[BindRequired] 屬性](#bindrequired-attribute)。
+當模型屬性的表單欄位中找不到任何內容時，如果模型狀態應該失效，請使用[`[BindRequired]`](#bindrequired-attribute)屬性。
 
 請注意，此 `[BindRequired]` 行為適用於來自已張貼表單資料的模型繫結，不適合要求本文中的 JSON 或 XML 資料。 要求本文資料由[輸入格式器](#input-formatters)處理。
 

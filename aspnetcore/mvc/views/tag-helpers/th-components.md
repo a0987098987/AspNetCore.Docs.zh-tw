@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 06/12/2019
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: de053dd0138224a9bece218010eaaedcf7e084cb
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
-ms.translationtype: HT
+ms.openlocfilehash: 070cc3aae08664c13d8eb793a066766d0a5569ee
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583533"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880979"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式元件
 
@@ -83,7 +83,7 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 在上述程式碼中：
 
 * `@inject` 指示詞會提供 `ITagHelperComponentManager` 的執行個體。 該執行個體會指派給名為 `manager` 的變數，用於 Razor 檔案中的下游存取。
-* `AddressTagHelperComponent` 的執行個體會新增至應用程式標籤協助程式元件集合中。
+* `AddressTagHelperComponent` 的執行個體會新增至應用程式標籤協助程式元件集合。
 
 `AddressTagHelperComponent` 已修改，以容納接受 `markup` 和 `order` 參數的建構函式：
 
@@ -111,8 +111,8 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 建立自訂標籤協助程式元件：
 
 * 建立衍生自 <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentTagHelper> 的公用類別。
-* 將 [[HtmlTargetElement]](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute) 屬性套用至該類別。 指定目標 HTML 項目的名稱。
-* *選擇性*：將 [[EditorBrowsable(EditorBrowsableState.Never)]](xref:System.ComponentModel.EditorBrowsableAttribute) 屬性套用至類別，以在 IntelliSense 中隱藏該類型的顯示。
+* 將[`[HtmlTargetElement]`](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute)屬性套用至類別。 指定目標 HTML 項目的名稱。
+* *選擇性*：將[`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute)屬性套用至類別，以隱藏 IntelliSense 中的類型顯示。
 
 下列程式碼會建立以 `<address>` HTML 項目為目標的自訂標籤協助程式元件：
 

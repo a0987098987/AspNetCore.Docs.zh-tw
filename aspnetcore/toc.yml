@@ -350,8 +350,6 @@
               uid: client-side/libman/libman-vs
         - name: Grunt
           uid: client-side/using-grunt
-        - name: Bower
-          uid: client-side/bower
         - name: 配套並縮小
           uid: client-side/bundling-and-minification
         - name: 瀏覽器連結
@@ -557,6 +555,13 @@
     - name: 記錄和診斷
       displayName: signalr
       uid: signalr/diagnostics
+    - name: 規格
+      displayName: 'signalr, specs'
+      items:
+        - name: 中樞通訊協定
+          href: 'https://github.com/aspnet/AspNetCore/blob/master/src/SignalR/docs/specs/HubProtocol.md'
+        - name: 傳輸通訊協定
+          href: 'https://github.com/aspnet/AspNetCore/blob/master/src/SignalR/docs/specs/TransportProtocols.md'
 - name: 遠端程序呼叫應用程式
   items:
     - name: gRPC 服務簡介

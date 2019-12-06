@@ -4,14 +4,14 @@ author: steve-smith
 description: 探索如何防範惡意網站可能會影響用戶端瀏覽器與應用程式之間互動的 web 應用程式攻擊。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/11/2019
+ms.date: 12/05/2019
 uid: security/anti-request-forgery
-ms.openlocfilehash: c3d32a93bcbf9f3897c10e68ba4e43d269a3ea80
-ms.sourcegitcommit: b3e1e31e5d8bdd94096cf27444594d4a7b065525
+ms.openlocfilehash: 54e153af55f28d9a89bbf16bce1c17f876567b59
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803366"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880799"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>防止 ASP.NET Core 中的跨網站要求偽造（XSRF/CSRF）攻擊
 
@@ -172,7 +172,7 @@ Token 是唯一且無法預測的。 權杖也可以用來確保一系列要求�
 }
 ```
 
-將 antiforgery token 明確新增至 `<form>` 專案，而不使用標記協助程式搭配 HTML helper [@Html.AntiForgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.htmlhelper.antiforgerytoken)：
+將 antiforgery token 明確新增至 `<form>` 專案，而不使用標記協助程式搭配 HTML helper [`@Html.AntiForgeryToken`](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.htmlhelper.antiforgerytoken)：
 
 ```cshtml
 <form action="/" method="post">
@@ -305,7 +305,7 @@ public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
 }
 ```
 
-`ValidateAntiForgeryToken` 屬性需要對其裝飾之動作方法要求的權杖，包括 HTTP GET 要求。 如果 `ValidateAntiForgeryToken` 屬性會套用到應用程式的控制器，則可以使用 `IgnoreAntiforgeryToken` 屬性加以覆寫。
+`ValidateAntiForgeryToken` 屬性需要對其所標記之動作方法的要求使用權杖，包括 HTTP GET 要求。 如果 `ValidateAntiForgeryToken` 屬性會套用到應用程式的控制器，則可以使用 `IgnoreAntiforgeryToken` 屬性加以覆寫。
 
 > [!NOTE]
 > ASP.NET Core 不支援自動新增 antiforgery token 來取得要求。

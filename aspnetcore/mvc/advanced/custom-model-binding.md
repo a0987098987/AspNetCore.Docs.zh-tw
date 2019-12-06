@@ -3,14 +3,14 @@ title: ASP.NET Core 中的自訂模型繫結
 author: ardalis
 description: 了解模型繫結如何讓控制器動作直接使用 ASP.NET Core 中的模型類型。
 ms.author: riande
-ms.date: 11/13/2018
+ms.date: 12/05/2019
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: b2fbe6a9f11315d1fb8863fbf62e8929c7ff3fc2
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: 625cc6c9ca5a2c22d028ea25f8fc0d942b71f12d
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71186875"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881135"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>ASP.NET Core 中的自訂模型繫結
 
@@ -34,11 +34,11 @@ ms.locfileid: "71186875"
 
 Base64 編碼字串可用來代表二進位資料。 例如，下列影像可編碼為字串。
 
-![DotNet Bot](custom-model-binding/images/bot.png "DotNet Bot")
+![dotnet bot](custom-model-binding/images/bot.png "dotnet bot")
 
 下圖顯示一小部分的編碼字串：
 
-![DotNet Bot 編碼](custom-model-binding/images/encoded-bot.png "DotNet Bot 編碼")
+![dotnet bot 已編碼](custom-model-binding/images/encoded-bot.png "dotnet bot 已編碼")
 
 請遵循[範例的讀我檔案](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/sample/CustomModelBindingSample/README.md)中的指示，將 Base64 編碼字串轉換成檔案。
 
@@ -69,7 +69,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 您可以使用 [Postman](https://www.getpostman.com/) 等工具，將 Base64 編碼字串張貼至此 API 方法：
 
-![Postman](custom-model-binding/images/postman.png "Postman")
+![postman](custom-model-binding/images/postman.png "postman")
 
 只要繫結器可以將要求資料繫結至適當命名的屬性或引數，模型繫結就會成功。 下列範例示範如何使用具有檢視模型的 `ByteArrayModelBinder`：
 
@@ -124,7 +124,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 下圖顯示偵錯工具中的預設模型繫結器。
 
-![預設模型繫結器](custom-model-binding/images/default-model-binders.png "預設模型繫結器")
+![預設模型系結器](custom-model-binding/images/default-model-binders.png "預設模型系結器")
 
 將您的提供者新增集合結尾可能會導致在有機會呼叫自訂繫結器之前，即呼叫內建模型繫結器。 在此範例中，會將自訂提供者新增集合開頭，以確保其用於 `Author` 動作引數。
 
@@ -147,4 +147,4 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 - 不應該嘗試設定狀態碼或傳回結果 (例如 404 找不到)。 如果模型繫結失敗，[動作篩選](xref:mvc/controllers/filters)或動作方法本身內的邏輯應該會處理失敗。
 - 最適合用來排除動作方法中的重複程式碼和交叉關注。
-- 一般而言，不應該用來將字串轉換成自訂類型，[`TypeConverter`](/dotnet/api/system.componentmodel.typeconverter) 通常是較好的選擇。
+- 通常不應該用來將字串轉換成自訂類型， [TypeConverter](/dotnet/api/system.componentmodel.typeconverter)通常是較好的選項。

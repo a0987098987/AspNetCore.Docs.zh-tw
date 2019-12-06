@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/04/2019
 uid: mvc/models/file-uploads
-ms.openlocfilehash: b57ad4fe62de38085c11d7026d278cc6e0c565ce
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 20e58660185a3055e06e92d9136e80e2394a470d
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963162"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881062"
 ---
 # <a name="upload-files-in-aspnet-core"></a>上傳 ASP.NET Core 中的檔案
 
@@ -89,7 +89,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 
 上傳檔案的兩個一般方法是緩衝和串流處理。
 
-**緩衝**
+**緩衝處理**
 
 系統會將整個檔案讀入 <xref:Microsoft.AspNetCore.Http.IFormFile>，這是用來C#處理或儲存檔案的檔案標記法。
 
@@ -183,7 +183,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 若要針對[不支援 FETCH API](https://caniuse.com/#feat=fetch)的用戶端，以 JavaScript 執行表單 POST，請使用下列其中一種方法：
 
 * 使用提取 Polyfill （例如，[fetch [Polyfill （github/fetch）]](https://github.com/github/fetch)）。
-* 使用 `XMLHttpRequest`。 例如:
+* 使用 `XMLHttpRequest`。 例如：
 
   ```javascript
   <script>
@@ -242,7 +242,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 > [!NOTE]
 > 系結符合依名稱的表單檔案。 例如，`<input type="file" name="formFile">` 中的 HTML `name` 值必須符合C#參數/屬性系結（`FormFile`）。 如需詳細資訊，請參閱[Match name 屬性值與 POST 方法的參數名稱](#match-name-attribute-value-to-parameter-name-of-post-method)一節。
 
-下列範例：
+下列範例︰
 
 * 迴圈一或多個已上傳的檔案。
 * 會使用[GetTempFileName](xref:System.IO.Path.GetTempFileName*)來傳回檔案的完整路徑，包括檔案名。 
@@ -456,7 +456,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ### <a name="file-extension-validation"></a>副檔名驗證
 
-已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如:
+已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如：
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -559,7 +559,7 @@ if (formFile.Length > _fileSizeLimit)
 
 在張貼表單資料或直接使用 JavaScript `FormData` 的非 Razor 表單中，在表單的元素或 `FormData` 中指定的名稱必須符合控制器動作中參數的名稱。
 
-在以下範例中：
+在下列範例中：
 
 * 使用 `<input>` 元素時，`name` 屬性會設定為 `battlePlans`的值：
 
@@ -686,7 +686,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 }
 ```
 
-`RequestSizeLimitAttribute` 也可以使用[@attribute](xref:mvc/views/razor#attribute) Razor 指示詞來套用：
+`RequestSizeLimitAttribute` 也可以使用[`@attribute`](xref:mvc/views/razor#attribute) Razor 指示詞來套用：
 
 ```cshtml
 @attribute [RequestSizeLimitAttribute(52428800)]
@@ -733,7 +733,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 如需增加限制的詳細資訊，請參閱[IIS 內容長度限制](#iis-content-length-limit)一節。
 
-### <a name="connection-failure"></a>連接失敗
+### <a name="connection-failure"></a>連線失敗
 
 連接錯誤和重設伺服器連接可能表示上傳的檔案超過 Kestrel 的要求主體大小上限。 如需詳細資訊，請參閱[Kestrel 最大要求主體大小](#kestrel-maximum-request-body-size)一節。 Kestrel 用戶端連接限制也可能需要調整。
 
@@ -818,7 +818,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 
 上傳檔案的兩個一般方法是緩衝和串流處理。
 
-**緩衝**
+**緩衝處理**
 
 系統會將整個檔案讀入 <xref:Microsoft.AspNetCore.Http.IFormFile>，這是用來C#處理或儲存檔案的檔案標記法。
 
@@ -912,7 +912,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 若要針對[不支援 FETCH API](https://caniuse.com/#feat=fetch)的用戶端，以 JavaScript 執行表單 POST，請使用下列其中一種方法：
 
 * 使用提取 Polyfill （例如，[fetch [Polyfill （github/fetch）]](https://github.com/github/fetch)）。
-* 使用 `XMLHttpRequest`。 例如:
+* 使用 `XMLHttpRequest`。 例如：
 
   ```javascript
   <script>
@@ -971,7 +971,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 > [!NOTE]
 > 系結符合依名稱的表單檔案。 例如，`<input type="file" name="formFile">` 中的 HTML `name` 值必須符合C#參數/屬性系結（`FormFile`）。 如需詳細資訊，請參閱[Match name 屬性值與 POST 方法的參數名稱](#match-name-attribute-value-to-parameter-name-of-post-method)一節。
 
-下列範例：
+下列範例︰
 
 * 迴圈一或多個已上傳的檔案。
 * 會使用[GetTempFileName](xref:System.IO.Path.GetTempFileName*)來傳回檔案的完整路徑，包括檔案名。 
@@ -1185,7 +1185,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ### <a name="file-extension-validation"></a>副檔名驗證
 
-已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如:
+已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如：
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -1288,7 +1288,7 @@ if (formFile.Length > _fileSizeLimit)
 
 在張貼表單資料或直接使用 JavaScript `FormData` 的非 Razor 表單中，在表單的元素或 `FormData` 中指定的名稱必須符合控制器動作中參數的名稱。
 
-在以下範例中：
+在下列範例中：
 
 * 使用 `<input>` 元素時，`name` 屬性會設定為 `battlePlans`的值：
 
@@ -1455,7 +1455,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 如需增加限制的詳細資訊，請參閱[IIS 內容長度限制](#iis-content-length-limit)一節。
 
-### <a name="connection-failure"></a>連接失敗
+### <a name="connection-failure"></a>連線失敗
 
 連接錯誤和重設伺服器連接可能表示上傳的檔案超過 Kestrel 的要求主體大小上限。 如需詳細資訊，請參閱[Kestrel 最大要求主體大小](#kestrel-maximum-request-body-size)一節。 Kestrel 用戶端連接限制也可能需要調整。
 

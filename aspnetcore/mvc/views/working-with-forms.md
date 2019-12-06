@@ -4,14 +4,14 @@ author: rick-anderson
 description: 描述搭配表單使用的內建標籤協助程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/06/2019
+ms.date: 12/05/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 43a1c408ff1a03468989e5bb0839ca2cd245082b
-ms.sourcegitcommit: b5e63714afc26e94be49a92619586df5189ed93a
-ms.translationtype: HT
+ms.openlocfilehash: 61b50a63bd026f917035f64785d8d3b1956958a6
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68739499"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880956"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
@@ -56,7 +56,7 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 
 [!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
-*Views/Account* 資料夾 (當您建立具有「個別使用者帳戶」  的新 Web 應用程式時產生) 中的許多檢視表，包含 [asp-route-returnurl](xref:mvc/views/working-with-forms) 屬性：
+*Views/Account* 資料夾 (當您建立具有「個別使用者帳戶」的新 Web 應用程式時產生) 中的許多檢視表，包含 [asp-route-returnurl](xref:mvc/views/working-with-forms) 屬性：
 
 ```cshtml
 <form asp-controller="Account" asp-action="Login"
@@ -73,14 +73,14 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 
 支援 [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) 屬性來控制 `formaction` 的值：
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |[asp-controller](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-controller)|控制器的名稱。|
 |[asp-action](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-action)|動作方法的名稱。|
 |[asp-area](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-area)|區域的名稱。|
 |[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|Razor 頁面的名稱。|
 |[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Razor 頁面處理常式的名稱。|
-|[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|路由的名稱。|
+|[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|路徑的名稱。|
 |[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|單一 URL 路由值。 例如，`asp-route-id="1234"`。|
 |[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|所有路由值。|
 |[asp-fragment](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-fragment)|URL 片段。|
@@ -241,7 +241,7 @@ Type expected
    </form>
 ```
 
-套用至 `Email` 和 `Password` 屬性的資料註解會產生模型的中繼資料。 輸入標籤協助程式會取用模型中繼資料，並產生 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-val-*` 屬性 (請參閱[模型驗證](../models/validation.md))。 這些屬性描述要附加至輸入欄位的驗證程式。 這提供低調的 HTML5 和 [jQuery](https://jquery.com/) 驗證。 低調屬性具有格式 `data-val-rule="Error Message"`，其中 rule 是驗證規則的名稱 (例如 `data-val-required`、`data-val-email`、`data-val-maxlength` 等。)如果屬性中提供錯誤訊息，就會顯示為 `data-val-rule` 屬性的值。 另外還有 `data-val-ruleName-argumentName="argumentValue"` 格式的屬性，提供規則的其他詳細資料，例如 `data-val-maxlength-max="1024"`。
+套用至 `Email` 和 `Password` 屬性的資料註解會產生模型的中繼資料。 輸入標籤協助程式會取用模型中繼資料，並產生 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-val-*` 屬性 (請參閱[模型驗證](../models/validation.md))。 這些屬性描述要附加至輸入欄位的驗證程式。 這提供低調的 HTML5 和 [jQuery](https://jquery.com/) 驗證。 不顯眼的屬性的格式為 `data-val-rule="Error Message"`，其中 rule 是驗證規則的名稱（例如 `data-val-required`、`data-val-email`、`data-val-maxlength`等等）。如果在屬性中提供錯誤訊息，則會顯示為 `data-val-rule` 屬性的值。 另外還有 `data-val-ruleName-argumentName="argumentValue"` 格式的屬性，提供規則的其他詳細資料，例如 `data-val-maxlength-max="1024"`。
 
 ### <a name="html-helper-alternatives-to-input-tag-helper"></a>輸入標籤協助程式的 HTML 標記替代
 
@@ -457,7 +457,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ### <a name="sample"></a>範例
 
-在下列範例中，資料模型裝飾了 `DataAnnotation` 屬性，它會在 `<input>` 項目產生驗證錯誤訊息。  在發生驗證錯誤時，驗證標籤協助程式會顯示錯誤訊息：
+在下列範例中，資料模型具有 `DataAnnotation` 屬性，這會在 `<input>` 元素上產生驗證錯誤訊息。  在發生驗證錯誤時，驗證標籤協助程式會顯示錯誤訊息：
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
@@ -545,7 +545,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 [!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]
 
-您可以用 `Display` 屬性裝飾列舉值清單，以取得更豐富的 UI：
+您可以使用 `Display` 屬性來標記您的列舉值清單，以取得更豐富的 UI：
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
 
@@ -638,7 +638,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
-新增 HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) 項目並不限於「沒有選取項目」  的案例。 例如，下列檢視和動作方法會產生類似於上述程式碼的 HTML：
+新增 HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) 項目並不限於「沒有選取項目」的案例。 例如，下列檢視和動作方法會產生類似於上述程式碼的 HTML：
 
 [!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?name=snippetNone)]
 

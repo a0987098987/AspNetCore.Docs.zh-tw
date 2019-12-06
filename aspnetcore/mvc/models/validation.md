@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解 ASP.NET Core MVC 和 Razor Pages 中的模型驗證。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 uid: mvc/models/validation
-ms.openlocfilehash: 19f71799e958e2761832c91cec6762a6d391d2b5
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 7a6017141eb1016128c4a135c187479717580bb5
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317432"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881033"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和 Razor Pages 中的模型驗證
 
@@ -31,7 +31,7 @@ ms.locfileid: "74317432"
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Pages/Movies/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=3-6)]
 
-如果 Web API 控制器具有 `ModelState.IsValid` 屬性，則該控制器就不需要檢查 `[ApiController]`。 在此情況下，當模型狀態無效時，會傳回包含錯誤詳細資料的自動 HTTP 400 回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。
+如果 Web API 控制器具有 `[ApiController]` 屬性，則該控制器就不需要檢查 `ModelState.IsValid`。 在此情況下，當模型狀態無效時，會傳回包含錯誤詳細資料的自動 HTTP 400 回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。
 
 ## <a name="rerun-validation"></a>重新執行驗證
 
@@ -55,10 +55,10 @@ ms.locfileid: "74317432"
 * `[Phone]`：驗證屬性是否具有電話號碼格式。
 * `[Range]`：驗證屬性值是否落在指定的範圍內。
 * `[RegularExpression]`：驗證屬性值符合指定的正則運算式。
-* `[Required]`：驗證欄位不是 null。 請參閱 [[必要] 屬性](#required-attribute)以取得此屬性行為的詳細資料。
+* `[Required]`：驗證欄位不是 null。 如需此屬性行為的詳細資料，請參閱[`[Required]` 屬性](#required-attribute)。
 * `[StringLength]`：驗證字串屬性值未超過指定的長度限制。
 * `[Url]`：驗證屬性是否具有 URL 格式。
-* `[Remote]`：藉由在伺服器上呼叫動作方法，驗證用戶端上的輸入。 請參閱 [[遠端] 屬性](#remote-attribute)以取得此屬性行為的詳細資料。
+* `[Remote]`：藉由在伺服器上呼叫動作方法，驗證用戶端上的輸入。 如需此屬性行為的詳細資料，請參閱 `[`[遠端] ' 屬性] （#remote 屬性）。
 
 您可以在 [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations) 命名空間中找到驗證屬性的完整清單。
 
@@ -82,7 +82,7 @@ ms.locfileid: "74317432"
 
 ## <a name="required-attribute"></a>[必要] 屬性
 
-根據預設，驗證系統會將不可為 Null 的參數或屬性視為具有 `[Required]` 屬性。 例如 [ 和 ](/dotnet/csharp/language-reference/keywords/value-types) 的`decimal`實值型別`int`不可為 Null。
+根據預設，驗證系統會將不可為 Null 的參數或屬性視為具有 `[Required]` 屬性。 例如 `decimal` 和 `int` 的[實值型別](/dotnet/csharp/language-reference/keywords/value-types)不可為 Null。
 
 ### <a name="required-validation-on-the-server"></a>[必要] 在伺服器上執行驗證
 
@@ -130,11 +130,11 @@ ms.locfileid: "74317432"
    
 ### <a name="additional-fields"></a>其他欄位
 
-`AdditionalFields` 屬性 (Attribute) 的 `[Remote]` 屬性 (Property) 可讓您針對伺服器上的資料來驗證欄位組合。 例如，如果 `User` 模型具 `FirstName` 和 `LastName` 屬性，建議您確認沒有任何現有使用者已具有該組名稱。 下列範例顯示如何使用 `AdditionalFields`：
+`[Remote]` 屬性 (Attribute) 的 `AdditionalFields` 屬性 (Property) 可讓您針對伺服器上的資料來驗證欄位組合。 例如，如果 `User` 模型具 `FirstName` 和 `LastName` 屬性，建議您確認沒有任何現有使用者已具有該組名稱。 下列範例顯示如何使用 `AdditionalFields`：
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Models/User.cs?name=snippet_Name&highlight=1,5)]
 
-`AdditionalFields` 可能已明確設定為 `"FirstName"` 和 `"LastName"` 字串，但使用 [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) 運算子可簡化稍後的重構。 此驗證的動作方法必須同時接受 `firstName` 和 `lastName` 引數：
+`AdditionalFields` 可以明確設定為字串 "FirstName" 和 "LastName"，但使用[nameof](/dotnet/csharp/language-reference/keywords/nameof)運算子可簡化稍後的重構。 此驗證的動作方法必須同時接受 `firstName` 和 `lastName` 引數：
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -255,9 +255,13 @@ public string MiddleName { get; set; }
 </div>
 ```
 
-請注意，HTML 輸出中的 `data-` 屬性 (attribute) 會對應至 `Movie.ReleaseDate` 屬性 (property) 的驗證屬性 (attribute)。 `data-val-required` 屬性包含使用者未填入發行日期欄位時所要顯示的錯誤訊息。 jQuery 低調驗證會將此值傳遞至 jQuery 驗證的 [`required()`](https://jqueryvalidation.org/required-method/) 方法，然後在隨附的 **\<span>** 項目中顯示該訊息。
+請注意，HTML 輸出中的 `data-` 屬性 (attribute) 會對應至 `Movie.ReleaseDate` 屬性 (property) 的驗證屬性 (attribute)。 `data-val-required` 屬性包含使用者未填入發行日期欄位時所要顯示的錯誤訊息。 jQuery 不顯眼的驗證會將此值傳遞至 jQuery Validate [required （）](https://jqueryvalidation.org/required-method/)方法，然後在伴隨的 **\<範圍 >** 元素中顯示該訊息。
 
 資料型別驗證是根據屬性的 .NET 型別，除非是由 `[DataType]` 屬性覆寫。 瀏覽器具有自己的預設錯誤訊息，但 jQuery 驗證低調驗證套件可以覆寫這些訊息。 `[DataType]` 屬性和子類別 (例如 `[EmailAddress]`) 可讓您指定錯誤訊息。
+
+## <a name="unobtrusive-validation"></a>不顯眼的驗證
+
+如需不顯眼驗證的相關資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/1111)。
 
 ### <a name="add-validation-to-dynamic-forms"></a>將驗證新增至動態表單
 
@@ -317,7 +321,7 @@ $.get({
 * 識別驗證規則名稱和錯誤訊息文字 (例如 `data-val-rulename="Error message."`)。
 * 提供驗證程式需要的任何其他參數 (例如 `data-val-rulename-param1="value"`)。
 
-下列範例顯示範例應用程式之 `data-` 屬性的 `ClassicMovie` 屬性：
+下列範例顯示範例應用程式之 `ClassicMovie` 屬性的 `data-` 屬性：
 
 ```html
 <input class="form-control" type="date"
@@ -331,13 +335,13 @@ $.get({
 如前文所述，[標記協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview) 使用來自驗證屬性的資訊來轉譯 `data-` 屬性。 有二個選項可撰寫用於建立自訂 `data-` HTML 屬性的程式碼：
 
 * 建立衍生自 `AttributeAdapterBase<TAttribute>` 的類別，以及可實作 `IValidationAttributeAdapterProvider` 的類別，並在 DI 中註冊您的屬性及其配接器。 此方法遵循[單一職責原則](https://wikipedia.org/wiki/Single_responsibility_principle)，其中伺服器相關與用戶端相關的驗證程式碼位於不同類別中。 配接器也具有優點，由於其在 DI 中註冊，因此可以使用 DI 中的其他服務 (如需要)。
-* 在您的 `IClientModelValidator` 類別中實作 `ValidationAttribute`。 如果屬性不執行任何伺服器端驗證，且不需要任何來自 DI 的服務，則此方法可能適合。
+* 在您的 `ValidationAttribute` 類別中實作 `IClientModelValidator`。 如果屬性不執行任何伺服器端驗證，且不需要任何來自 DI 的服務，則此方法可能適合。
 
 ### <a name="attributeadapter-for-client-side-validation"></a>用戶端驗證的屬性配接器
 
 這種在 HTML 中轉譯 `data-` 屬性的方法，由範例應用程式中的 `ClassicMovie` 屬性使用。 使用此方法來新增用戶端驗證：
 
-1. 建立自訂驗證屬性的屬性配接器類別。 自 [AttributeAdapterBase\<T>](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2) 衍生類別。 建立會將 `AddValidation` 屬性新增至轉譯輸出的 `data-` 方法，如下列範例所示：
+1. 建立自訂驗證屬性的屬性配接器類別。 自 [AttributeAdapterBase\<T>](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2) 衍生類別。 建立會將 `data-` 屬性新增至轉譯輸出的 `AddValidation` 方法，如下列範例所示：
 
    [!code-csharp[](validation/samples/3.x/ValidationSample/Validation/ClassicMovieAttributeAdapter.cs?name=snippet_Class)]
 
@@ -368,7 +372,7 @@ $.get({
 * 將所有 *. cshtml*檔案中 `_ValidationScriptsPartial` 的參考批註在一起。
 * 移除*Pages\Shared\_ValidationScriptsPartial*的內容。
 
-上述方法不會防止用戶端驗證 ASP.NET Core 身分識別 Razor 類別庫。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。
+上述方法不會防止用戶端驗證 ASP.NET Core 身分識別 Razor 類別庫。 如需詳細資訊，請參閱<xref:security/authentication/scaffold-identity>。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -391,7 +395,7 @@ $.get({
 
 [!code-csharp[](validation/samples_snapshot/2.x/Create.cshtml.cs?name=snippet&highlight=3-6)]
 
-如果 Web API 控制器具有 `ModelState.IsValid` 屬性，則該控制器就不需要檢查 `[ApiController]`。 在此情況下，當模型狀態無效時，會傳回包含錯誤詳細資料的自動 HTTP 400 回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。
+如果 Web API 控制器具有 `[ApiController]` 屬性，則該控制器就不需要檢查 `ModelState.IsValid`。 在此情況下，當模型狀態無效時，會傳回包含錯誤詳細資料的自動 HTTP 400 回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。
 
 ## <a name="rerun-validation"></a>重新執行驗證
 
@@ -415,10 +419,10 @@ $.get({
 * `[Phone]`：驗證屬性是否具有電話號碼格式。
 * `[Range]`：驗證屬性值是否落在指定的範圍內。
 * `[RegularExpression]`：驗證屬性值符合指定的正則運算式。
-* `[Required]`：驗證欄位不是 null。 請參閱 [[必要] 屬性](#required-attribute)以取得此屬性行為的詳細資料。
+* `[Required]`：驗證欄位不是 null。 如需此屬性行為的詳細資料，請參閱[`[Required]` 屬性](#required-attribute)。
 * `[StringLength]`：驗證字串屬性值未超過指定的長度限制。
 * `[Url]`：驗證屬性是否具有 URL 格式。
-* `[Remote]`：藉由在伺服器上呼叫動作方法，驗證用戶端上的輸入。 請參閱 [[遠端] 屬性](#remote-attribute)以取得此屬性行為的詳細資料。
+* `[Remote]`：藉由在伺服器上呼叫動作方法，驗證用戶端上的輸入。 如需此屬性行為的詳細資料，請參閱[`[Remote]` 屬性](#remote-attribute)。
 
 您可以在 [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations) 命名空間中找到驗證屬性的完整清單。
 
@@ -442,7 +446,7 @@ $.get({
 
 ## <a name="required-attribute"></a>[必要] 屬性
 
-根據預設，驗證系統會將不可為 Null 的參數或屬性視為具有 `[Required]` 屬性。 例如 [ 和 ](/dotnet/csharp/language-reference/keywords/value-types) 的`decimal`實值型別`int`不可為 Null。
+根據預設，驗證系統會將不可為 Null 的參數或屬性視為具有 `[Required]` 屬性。 例如 `decimal` 和 `int` 的[實值型別](/dotnet/csharp/language-reference/keywords/value-types)不可為 Null。
 
 ### <a name="required-validation-on-the-server"></a>[必要] 在伺服器上執行驗證
 
@@ -486,15 +490,15 @@ $.get({
 
    [!code-csharp[](validation/samples/2.x/ValidationSample/Models/User.cs?name=snippet_UserEmailProperty)]
  
-   `[Remote]` 屬性位於 `Microsoft.AspNetCore.Mvc` 命名空間。 如不使用 [ 或 ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures) 中繼套件，請安裝 `Microsoft.AspNetCore.App`Microsoft.AspNetCore.Mvc.ViewFeatures`Microsoft.AspNetCore.All` NuGet 套件。
+   `[Remote]` 屬性位於 `Microsoft.AspNetCore.Mvc` 命名空間。 如不使用 `Microsoft.AspNetCore.App` 或 `Microsoft.AspNetCore.All` 中繼套件，請安裝 [Microsoft.AspNetCore.Mvc.ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures) NuGet 套件。
    
 ### <a name="additional-fields"></a>其他欄位
 
-`AdditionalFields` 屬性 (Attribute) 的 `[Remote]` 屬性 (Property) 可讓您針對伺服器上的資料來驗證欄位組合。 例如，如果 `User` 模型具 `FirstName` 和 `LastName` 屬性，建議您確認沒有任何現有使用者已具有該組名稱。 下列範例顯示如何使用 `AdditionalFields`：
+`[Remote]` 屬性 (Attribute) 的 `AdditionalFields` 屬性 (Property) 可讓您針對伺服器上的資料來驗證欄位組合。 例如，如果 `User` 模型具 `FirstName` 和 `LastName` 屬性，建議您確認沒有任何現有使用者已具有該組名稱。 下列範例顯示如何使用 `AdditionalFields`：
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/User.cs?name=snippet_UserNameProperties)]
 
-`AdditionalFields` 可能已明確設定為 `"FirstName"` 和 `"LastName"` 字串，但使用 [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) 運算子可簡化稍後的重構。 這項驗證的動作方法必須接受名字和姓氏引數：
+`AdditionalFields` 可以明確設定為 `"FirstName"` 和 `"LastName"`的字串，但使用[nameof](/dotnet/csharp/language-reference/keywords/nameof)運算子可簡化稍後的重構。 這項驗證的動作方法必須接受名字和姓氏引數：
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -557,7 +561,7 @@ public string MiddleName { get; set; }
 
 [檢查年齡] 頁面上的第二個表單會在要求本文中提交 `Age` 值，而且驗證會失敗。 由於 `age` 參數必須來自查詢字串，因此繫結會失敗。
 
-執行 `CompatibilityVersion.Version_2_1` 或更新版本時，根據預設會啟用最上層節點驗證。 否則，會停用最上層節點驗證。 預設選項可以藉由設定 (<xref:Microsoft.AspNetCore.Mvc.MvcOptions.AllowValidatingTopLevelNodes*>) 中的 `Startup.ConfigureServices` 屬性來覆寫，如下所示：
+執行 `CompatibilityVersion.Version_2_1` 或更新版本時，根據預設會啟用最上層節點驗證。 否則，會停用最上層節點驗證。 預設選項可以藉由設定 (`Startup.ConfigureServices`) 中的 <xref:Microsoft.AspNetCore.Mvc.MvcOptions.AllowValidatingTopLevelNodes*> 屬性來覆寫，如下所示：
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup.cs?name=snippet_AddMvc&highlight=4)]
 
@@ -624,7 +628,7 @@ public string MiddleName { get; set; }
 </form>
 ```
 
-請注意，HTML 輸出中的 `data-` 屬性 (attribute) 會對應至 `ReleaseDate` 屬性 (property) 的驗證屬性 (attribute)。 `data-val-required` 屬性包含使用者未填入發行日期欄位時所要顯示的錯誤訊息。 jQuery 低調驗證會將此值傳遞至 jQuery 驗證的 [`required()`](https://jqueryvalidation.org/required-method/) 方法，然後在隨附的 **\<span>** 項目中顯示該訊息。
+請注意，HTML 輸出中的 `data-` 屬性 (attribute) 會對應至 `ReleaseDate` 屬性 (property) 的驗證屬性 (attribute)。 `data-val-required` 屬性包含使用者未填入發行日期欄位時所要顯示的錯誤訊息。 jQuery 不顯眼的驗證會將此值傳遞至 jQuery Validate [required （）](https://jqueryvalidation.org/required-method/)方法，然後在伴隨的 **\<範圍 >** 元素中顯示該訊息。
 
 資料型別驗證是根據屬性的 .NET 型別，除非是由 `[DataType]` 屬性覆寫。 瀏覽器具有自己的預設錯誤訊息，但 jQuery 驗證低調驗證套件可以覆寫這些訊息。 `[DataType]` 屬性和子類別 (例如 `[EmailAddress]`) 可讓您指定錯誤訊息。
 
@@ -686,7 +690,7 @@ $.get({
 * 識別驗證規則名稱和錯誤訊息文字 (例如 `data-val-rulename="Error message."`)。
 * 提供驗證程式需要的任何其他參數 (例如 `data-val-rulename-parm1="value"`)。
 
-下列範例顯示範例應用程式之 `data-` 屬性的 `ClassicMovie` 屬性：
+下列範例顯示範例應用程式之 `ClassicMovie` 屬性的 `data-` 屬性：
 
 ```html
 <input class="form-control" type="datetime"
@@ -700,13 +704,13 @@ $.get({
 如前文所述，[標記協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview) 使用來自驗證屬性的資訊來轉譯 `data-` 屬性。 有二個選項可撰寫用於建立自訂 `data-` HTML 屬性的程式碼：
 
 * 建立衍生自 `AttributeAdapterBase<TAttribute>` 的類別，以及可實作 `IValidationAttributeAdapterProvider` 的類別，並在 DI 中註冊您的屬性及其配接器。 此方法遵循[單一職責原則](https://wikipedia.org/wiki/Single_responsibility_principle)，其中伺服器相關與用戶端相關的驗證程式碼位於不同類別中。 配接器也具有優點，由於其在 DI 中註冊，因此可以使用 DI 中的其他服務 (如需要)。
-* 在您的 `IClientModelValidator` 類別中實作 `ValidationAttribute`。 如果屬性不執行任何伺服器端驗證，且不需要任何來自 DI 的服務，則此方法可能適合。
+* 在您的 `ValidationAttribute` 類別中實作 `IClientModelValidator`。 如果屬性不執行任何伺服器端驗證，且不需要任何來自 DI 的服務，則此方法可能適合。
 
 ### <a name="attributeadapter-for-client-side-validation"></a>用戶端驗證的屬性配接器
 
 這種在 HTML 中轉譯 `data-` 屬性的方法，由範例應用程式中的 `ClassicMovie` 屬性使用。 使用此方法來新增用戶端驗證：
 
-1. 建立自訂驗證屬性的屬性配接器類別。 自 [AttributeAdapterBase\<T>](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2) 衍生類別。 建立會將 `AddValidation` 屬性新增至轉譯輸出的 `data-` 方法，如下列範例所示：
+1. 建立自訂驗證屬性的屬性配接器類別。 自 [AttributeAdapterBase\<T>](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2) 衍生類別。 建立會將 `data-` 屬性新增至轉譯輸出的 `AddValidation` 方法，如下列範例所示：
 
    [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttributeAdapter.cs?name=snippet_ClassicMovieAttributeAdapter)]
 
@@ -736,7 +740,7 @@ $.get({
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup3.cs?name=snippet_DisableClientValidation)]
 
-停用用戶端驗證的另一個選項，是將 `_ValidationScriptsPartial`.cshtml*檔案中對* 的參考標記為註解。
+停用用戶端驗證的另一個選項，是將 *.cshtml* 檔案中對 `_ValidationScriptsPartial` 的參考標記為註解。
 
 ## <a name="additional-resources"></a>其他資源
 

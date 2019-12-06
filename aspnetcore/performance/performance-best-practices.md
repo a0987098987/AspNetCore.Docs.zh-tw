@@ -4,16 +4,16 @@ author: mjrousos
 description: 提升 ASP.NET Core 應用程式效能及避免常見效能問題的秘訣。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 64d231ca435ccbfe9bfcd839a2b67fcee68c0cc6
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: bd30776d527b4ac9f44005e9f5d03fec7cfda2e6
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74239886"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880924"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>ASP.NET Core 效能最佳做法
 
@@ -23,7 +23,7 @@ ms.locfileid: "74239886"
 
 ## <a name="cache-aggressively"></a>主動快取
 
-本檔的數個部分會討論快取。 如需詳細資訊，請參閱 <xref:performance/caching/response>。
+本檔的數個部分會討論快取。 如需詳細資訊，請參閱<xref:performance/caching/response>。
 
 ## <a name="understand-hot-code-paths"></a>瞭解熱程式碼路徑
 
@@ -41,7 +41,7 @@ ASP.NET Core 應用程式中常見的效能問題是封鎖可能是非同步呼�
 * 取得通用程式碼路徑中的鎖定。 在架構上平行執行程式碼時，ASP.NET Core apps 最具效能。
 * 呼叫[Task。執行](/dotnet/api/system.threading.tasks.task.run)並立即等待它。 ASP.NET Core 已經在一般執行緒集區執行緒上執行應用程式程式碼，因此呼叫工作。只會產生額外不必要的執行緒集區排程。 即使已排程的程式碼會封鎖執行緒，工作也不會阻止這種情況。
 
-**Do**：
+**建議事項**：
 
 * 將[熱程式碼路徑](#understand-hot-code-paths)設為非同步。
 * 如果有非同步 API 可供使用，請以非同步方式呼叫資料存取和長時間執行的作業 Api。 同樣地，[請勿使用 [執行]](/dotnet/api/system.threading.tasks.task.run) ，讓 synchronus API 成為非同步。
@@ -56,7 +56,7 @@ ASP.NET Core 應用程式中常見的效能問題是封鎖可能是非同步呼�
 建議：
 
 * **請考慮快**取經常使用的大型物件。 快取大型物件可避免耗用昂貴的配置。
-* 使用[`ArrayPool<T>`](/dotnet/api/system.buffers.arraypool-1)來儲存大型陣列，以**執行**集區緩衝區。
+* 使用[ArrayPool\<t >](/dotnet/api/system.buffers.arraypool-1)來**執行**集區緩衝區，以儲存大型陣列。
 * **請勿**在[熱程式碼路徑](#understand-hot-code-paths)上配置許多短期的大型物件。
 
 您可以藉由檢查[PerfView](https://github.com/Microsoft/perfview)中的垃圾收集（GC）統計資料並檢查，來診斷上述的記憶體問題：
@@ -75,7 +75,7 @@ ASP.NET Core 應用程式中常見的效能問題是封鎖可能是非同步呼�
 
 * **請**以非同步方式呼叫所有資料存取 api。
 * **請勿**抓取超過所需的資料。 撰寫查詢，只傳回目前 HTTP 要求所需的資料。
-* 如果可以接受稍微過期的資料，**請考慮快**取從資料庫或遠端服務抓取的經常存取資料。 根據案例而定，請使用[MemoryCache](xref:performance/caching/memory)或[microsoft.web.distributedcache](xref:performance/caching/distributed)。 如需詳細資訊，請參閱 <xref:performance/caching/response>。
+* 如果可以接受稍微過期的資料，**請考慮快**取從資料庫或遠端服務抓取的經常存取資料。 根據案例而定，請使用[MemoryCache](xref:performance/caching/memory)或[microsoft.web.distributedcache](xref:performance/caching/distributed)。 如需詳細資訊，請參閱<xref:performance/caching/response>。
 * **儘量減少**網路來回行程。 其目標是要在單一呼叫中抓取所需的資料，而不是在數個呼叫中取得。
 * 在存取資料進行唯讀時，**請不要**在 Entity Framework Core 中使用[無追蹤查詢](/ef/core/querying/tracking#no-tracking-queries)。 EF Core 可以更有效率地傳回無追蹤查詢的結果。
 * **執行**篩選和匯總 LINQ 查詢（例如，使用 `.Where`、`.Select`或 `.Sum` 語句），以便讓篩選由資料庫執行。
@@ -140,7 +140,7 @@ ASP.NET Core 應用程式中常見的效能問題是封鎖可能是非同步呼�
 
 ## <a name="use-the-latest-aspnet-core-release"></a>使用最新的 ASP.NET Core 版本
 
-ASP.NET Core 的每個新版本都包含效能改進。 .NET Core 和 ASP.NET Core 的優化意味著較新的版本通常會優於較舊的版本。 例如，.NET Core 2.1 已加入從[`Span<T>`](https://msdn.microsoft.com/magazine/mt814808.aspx)編譯之正則運算式和受惠的支援。 ASP.NET Core 2.2 已新增對 HTTP/2 的支援。 [ASP.NET Core 3.0 新增了許多改善](xref:aspnetcore-3.0)，可減少記憶體使用量並改善輸送量。 如果效能是優先順序，請考慮升級至目前版本的 ASP.NET Core。
+ASP.NET Core 的每個新版本都包含效能改進。 .NET Core 和 ASP.NET Core 的優化意味著較新的版本通常會優於較舊的版本。 例如，.NET Core 2.1 已從[Span\<t >](https://msdn.microsoft.com/magazine/mt814808.aspx)新增編譯之正則運算式和受惠的支援。 ASP.NET Core 2.2 已新增對 HTTP/2 的支援。 [ASP.NET Core 3.0 新增了許多改善](xref:aspnetcore-3.0)，可減少記憶體使用量並改善輸送量。 如果效能是優先順序，請考慮升級至目前版本的 ASP.NET Core。
 
 ## <a name="minimize-exceptions"></a>最小化例外狀況
 
@@ -154,7 +154,7 @@ ASP.NET Core 的每個新版本都包含效能改進。 .NET Core 和 ASP.NET Co
 
 應用程式診斷工具（例如 Application Insights）有助於找出應用程式中可能會影響效能的常見例外狀況。
 
-## <a name="performance-and-reliability"></a>效能與可靠性
+## <a name="performance-and-reliability"></a>效能和可靠性
 
 下列各節提供效能秘訣和已知的可靠性問題和解決方案。
 
@@ -228,7 +228,7 @@ ASP.NET Core 中的所有 IO 都是非同步。 伺服器會執行同時具有�
 > [!WARNING]
 > 如果要求很大，可能會導致記憶體不足（OOM）狀況。 OOM 可能會導致拒絕服務。  如需詳細資訊，請參閱本檔中的[避免將大型要求內文或回應本文讀取到記憶體](#arlb)中。
 
-ASP.NET Core 3.0 預設會使用 <xref:System.Text.Json> 的 JSON 序列化。 <xref:System.Text.Json>：
+ASP.NET Core 3.0 預設會使用 <xref:System.Text.Json> 的 JSON 序列化。 <xref:System.Text.Json>:
 
 * 非同步讀取和寫入 JSON。
 * 已針對 UTF-8 文字進行優化。

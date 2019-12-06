@@ -3,14 +3,14 @@ title: ASP.NET Core 中的路由至控制器動作
 author: rick-anderson
 description: 了解 ASP.NET Core MVC 如何使用路由中介軟體來比對內送要求的 URL，並將這些 URL 對應至動作。
 ms.author: riande
-ms.date: 01/24/2019
+ms.date: 12/05/2019
 uid: mvc/controllers/routing
-ms.openlocfilehash: a0dbfbe60c151990581b494f81e500fe0b315f55
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: b0cd3df6eb0efa90fc76d206413016d6c624285c
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589860"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881080"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core 中的路由至控制器動作
 
@@ -165,7 +165,7 @@ app.UseMvc(routes =>
 
 ### <a name="disambiguating-actions"></a>釐清動作
 
-若透過路由符合兩個動作，MVC 必須釐清並選擇「最佳」候選項目，否則會擲回例外狀況。 例如:
+若透過路由符合兩個動作，MVC 必須釐清並選擇「最佳」候選項目，否則會擲回例外狀況。 例如：
 
 ```csharp
 public class ProductsController : Controller
@@ -336,7 +336,7 @@ public class ProductsApiController : Controller
 }
 ```
 
-在此範例中，URL 路徑 `/products` 可能符合 `ProductsApi.ListProducts`，而 URL 路徑 `/products/5` 可能符合 `ProductsApi.GetProduct(int)`。 由於這兩種動作是以 `HttpGetAttribute` 裝飾，因此只會符合 HTTP `GET`。
+在此範例中，URL 路徑 `/products` 可能符合 `ProductsApi.ListProducts`，而 URL 路徑 `/products/5` 可能符合 `ProductsApi.GetProduct(int)`。 這兩個動作都只會符合 HTTP `GET`，因為它們是以 `HttpGetAttribute`標記。
 
 套用至開頭為 `/` 或 `~/` 之動作的路由範本，無法與套用至控制器的路由範本合併。 此範例會比對一組類似於「預設路由」的 URL 路徑。
 

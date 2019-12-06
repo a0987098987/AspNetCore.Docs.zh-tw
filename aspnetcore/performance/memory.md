@@ -4,14 +4,14 @@ author: rick-anderson
 description: 瞭解記憶體在 ASP.NET Core 中的管理方式，以及垃圾收集行程（GC）的運作方式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/05/2019
 uid: performance/memory
-ms.openlocfilehash: 4c25c069aa2a6088c0549d786ecdd487ab7b9ea5
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.openlocfilehash: 85e34c9faa31a1020a4200eb99003455ca435ec3
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896938"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880954"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>ASP.NET Core 中的記憶體管理和垃圾收集（GC）
 
@@ -274,7 +274,7 @@ public int GetLOH1(int size)
 - [ResponseCaching/資料流程/StreamUtilities .cs](https://github.com/aspnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
 - [ResponseCaching/MemoryResponseCache .cs](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
-如需詳細資訊，請參閱:
+如需詳細資訊，請參閱＜＞。
 
 * [發現大型物件堆積](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
 * [大型物件堆積](/dotnet/standard/garbage-collection/large-object-heap)
@@ -373,7 +373,7 @@ public async Task<int> GetHttpClient2(string url)
 
 在上圖中，層代0回收大約每秒發生一次。
 
-上述程式碼可以藉由使用[`ArrayPool<T>`](xref:System.Buffers.ArrayPool`1)來共用 `byte` 緩衝區來進行優化。 靜態實例會在要求之間重複使用。
+上述程式碼可以藉由使用[ArrayPool\<t >](xref:System.Buffers.ArrayPool`1)來將 `byte` 緩衝區進行優化。 靜態實例會在要求之間重複使用。
 
 這種方法的不同之處在于，會從 API 傳回集區物件。 這表示：
 

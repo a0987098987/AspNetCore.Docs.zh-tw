@@ -4,16 +4,16 @@ author: isaac2004
 description: 了解 ASP.NET Core 2.1 的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: a45ba44fb7911a21927a4a996c0d6fa9eb776357
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: d969b4caab44e3e50b3a0202b25864921d6d01dc
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963184"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880862"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>ASP.NET Core 2.1 的新功能
 
@@ -51,7 +51,7 @@ ASP.NET Core 2.1 將 [ASP.NET Core 身分識別](xref:security/authentication/id
 
 ## <a name="https"></a>HTTPS
 
-隨著安全性與隱私權日益受到重視，為 Web 應用程式啟用 HTTPS 極其重要。 在網站上強制執行 HTTPS 變得日益嚴格。 不使用 HTTPS 的站台會被認為不安全。 瀏覽器 (Chromium、Mozilla) 開始強制執行必須從安全內容使用 Web 功能。 [GDPR](xref:security/gdpr) 需要使用 HTTPS 來保護使用者隱私。 雖然在生產環境中使用 HTTPS 非常重要，但在開發中使用 HTTPS 有助於避免發生部署問題 (例如不安全的連結)。 ASP.NET Core 2.1 包含多項改善，讓您更容易在開發中使用 HTTPS，以及在生產環境中設定 HTTPS。 如需詳細資訊，請參閱[強制執行 HTTPS](xref:security/enforcing-ssl)。
+隨著安全性與隱私權日益受到重視，為 Web 應用程式啟用 HTTPS 極其重要。 在網站上強制執行 HTTPS 變得日益嚴格。 不使用 HTTPS 的網站會被視為不安全。 瀏覽器 (Chromium、Mozilla) 開始強制執行必須從安全內容使用 Web 功能。 [GDPR](xref:security/gdpr) 需要使用 HTTPS 來保護使用者隱私。 雖然在生產環境中使用 HTTPS 非常重要，但在開發中使用 HTTPS 有助於避免發生部署問題 (例如不安全的連結)。 ASP.NET Core 2.1 包含多項改善，讓您更容易在開發中使用 HTTPS，以及在生產環境中設定 HTTPS。 如需詳細資訊，請參閱[強制執行 HTTPS](xref:security/enforcing-ssl)。
 
 ### <a name="on-by-default"></a>預設為開啟
 
@@ -147,7 +147,7 @@ ASP.NET Core 2.1 包含新的 `IHttpClientFactory` 服務，讓您在應用程�
 
 Angular 範本以 Angular CLI 為基礎，React 範本以 create-react-app 為基礎。
 
-如需詳細資訊，請參閱:
+如需詳細資訊，請參閱＜＞。
 
 * <xref:spa/angular>
 * <xref:spa/react>

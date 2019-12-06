@@ -4,16 +4,16 @@ author: jamesnk
 description: 瞭解 gRPC 與 HTTP Api 的比較，以及它的建議案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: ceb24d656827548492a6fa326681922297fc481b
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 8935e665dfd5d8f9afa002f475c202ec0f0ee657
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963650"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880674"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP API
 
@@ -31,8 +31,8 @@ ms.locfileid: "73963650"
 | 通訊協定         | HTTP/2                                             | HTTP                          |
 | 承載          | [Protobuf （小型，二進位）](#performance)           | JSON （大型、人類可讀取）  |
 | Prescriptiveness | [嚴格規格](#strict-specification)      | 鬆動. 任何 HTTP 都是有效的。     |
-| 資料流        | [用戶端，伺服器，雙向](#streaming)       | 用戶端，伺服器                |
-| 瀏覽器支援  | [否（需要 grpc-web）](#limited-browser-support) | [是]                           |
+| Streaming        | [用戶端，伺服器，雙向](#streaming)       | 用戶端，伺服器                |
+| 瀏覽器支援  | [否（需要 grpc-web）](#limited-browser-support) | 是                           |
 | 安全性         | 傳輸（TLS）                                    | 傳輸（TLS）               |
 | 用戶端程式代碼產生 | [是](#code-generation)                      | OpenAPI + 協力廠商工具 |
 
@@ -49,7 +49,7 @@ gRPC 是針對 HTTP/2 所設計，這是一種可透過 HTTP 1.x 提供顯著效
 
 ### <a name="code-generation"></a>程式碼產生
 
-所有的 gRPC 架構都提供第一級的程式碼產生支援。 GRPC 開發的核心檔案是定義 gRPC 服務和訊息合約的[ *proto* ](https://developers.google.com/protocol-buffers/docs/proto3)檔案。 在此檔案中，gRPC 架構會產生服務基類、訊息和完整用戶端的程式碼。
+所有的 gRPC 架構都提供第一級的程式碼產生支援。 GRPC 開發的核心檔案是定義 gRPC 服務和訊息合約的[proto](https://developers.google.com/protocol-buffers/docs/proto3)檔案。 在此檔案中，gRPC 架構會產生服務基類、訊息和完整用戶端的程式碼。
 
 藉由共用伺服器和用戶端之間的*proto*檔案，可以從端對端產生訊息和用戶端程式代碼。 用戶端的程式碼產生不會在用戶端和伺服器上排除重複的訊息，並為您建立強型別用戶端。 不需要撰寫用戶端，就能在具有許多服務的應用程式中節省大量的開發時間。
 
@@ -59,7 +59,7 @@ gRPC 是針對 HTTP/2 所設計，這是一種可透過 HTTP 1.x 提供顯著效
 
 [GRPC 規格](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md)規定了 gRPC 服務必須遵循的格式。 gRPC 可排除爭論並節省開發人員的時間，因為 gRPC 在平臺和實現之間是一致的。
 
-### <a name="streaming"></a>資料流
+### <a name="streaming"></a>Streaming
 
 HTTP/2 提供長時間即時通訊資料流程的基礎。 gRPC 提供透過 HTTP/2 進行串流的第一級支援。
 

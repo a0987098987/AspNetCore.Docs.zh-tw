@@ -3,14 +3,14 @@ title: 在 ASP.NET Core MVC 中處理控制器要求
 author: ardalis
 description: ''
 ms.author: riande
-ms.date: 07/03/2017
+ms.date: 12/05/2019
 uid: mvc/controllers/actions
-ms.openlocfilehash: 952e4dbb2c4343ca87ace1535e4a5968faf088cf
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 715a73863513870d1cbd522e75013d41830da1e7
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890253"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881098"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>在 ASP.NET Core MVC 中處理控制器要求
 
@@ -23,13 +23,15 @@ ms.locfileid: "64890253"
 控制器是用來定義和分組一組動作。 動作 (或「動作方法」) 是控制器上處理要求的方法。 控制器會以邏輯方式將類似動作群組在一起。 這項動作彙總允許統一套用一組通用規則 (例如路由、快取和授權)。 要求會透過[路由](xref:mvc/controllers/routing)對應至動作。
 
 依照慣例，控制器類別：
-* 位於專案的根層級 *Controllers* 資料夾中
-* 繼承自 `Microsoft.AspNetCore.Mvc.Controller`
+
+* 位於專案的根層級*控制器*資料夾中。
+* 繼承自 `Microsoft.AspNetCore.Mvc.Controller`。
 
 控制器是至少下列其中一個條件為 true 的可具現化類別：
-* 類別名稱的後面會加上 "Controller"
-* 類別繼承自名稱後面加上 "Controller" 的類別
-* 類別是以 `[Controller]` 屬性裝飾
+
+* 類別名稱後面會加上 `Controller`。
+* 類別繼承自名稱後面加上 `Controller`的類別。
+* `[Controller]` 屬性會套用至類別。
 
 控制器類別不得具有相關聯的 `[NonController]` 屬性。
 
@@ -43,7 +45,7 @@ ms.locfileid: "64890253"
 
 ## <a name="defining-actions"></a>定義動作
 
-控制器上的公用方法 (不包括以 `[NonAction]` 屬性裝飾的項目) 就是動作。 動作上的參數會繫結至要求資料，並使用[模型繫結](xref:mvc/models/model-binding)進行驗證。 繫結模型的所有項目都會進行模型驗證。 `ModelState.IsValid` 屬性值指出模型繫結和驗證是否成功。
+控制器上的公用方法（除了具有 `[NonAction]` 屬性的方法）是動作。 動作上的參數會繫結至要求資料，並使用[模型繫結](xref:mvc/models/model-binding)進行驗證。 繫結模型的所有項目都會進行模型驗證。 `ModelState.IsValid` 屬性值指出模型繫結和驗證是否成功。
 
 動作方法應該包含將要求對應至商務關注的邏輯。 商務關注應該一般呈現為控制器透過[相依性插入](xref:mvc/controllers/dependency-injection)存取的服務。 動作接著會將商務動作的結果對應至應用程式狀態。
 
@@ -53,11 +55,11 @@ ms.locfileid: "64890253"
 
 控制器通常繼承自[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)，但這不是必要的。 衍生自 `Controller` 提供對三種類別的協助程式方法的存取：
 
-#### <a name="1-methods-resulting-in-an-empty-response-body"></a>1.方法，導致空白回應本文
+#### <a name="1-methods-resulting-in-an-empty-response-body"></a>1. 產生空白回應主體的方法
 
 因為回應本文缺少要描述的內容，所以未包括 `Content-Type` HTTP 回應標頭。
 
-此類別內有兩種結果類型：重新導向與 HTTP 狀態碼。
+此類別內有兩種結果類型：「重新導向」和「HTTP 狀態碼」。
 
 * **HTTP 狀態碼**
 
@@ -69,11 +71,11 @@ ms.locfileid: "64890253"
 
     「重新導向」結果類型不同於主要用來新增 `Location` HTTP 回應標頭的「HTTP 狀態碼」類型。
 
-#### <a name="2-methods-resulting-in-a-non-empty-response-body-with-a-predefined-content-type"></a>2.方法，導致具有預先定義內容類型的非空白回應本文
+#### <a name="2-methods-resulting-in-a-non-empty-response-body-with-a-predefined-content-type"></a>2. 以預先定義的內容類型產生非空白回應主體的方法
 
 此類別中的大多數協助程式方法包括 `ContentType` 屬性，可讓您設定 `Content-Type` 回應標頭來描述回應本文。
 
-此類別內有兩種結果類型：[檢視](xref:mvc/views/overview)與 [格式化回應](xref:web-api/advanced/formatting).
+此類別內有兩種結果類型：[檢視](xref:mvc/views/overview)和[格式化回應](xref:web-api/advanced/formatting)。
 
 * **檢視**
 
@@ -85,7 +87,7 @@ ms.locfileid: "64890253"
     
     此類型的其他通用方法包括 `File` 與 `PhysicalFile`。 例如，`return PhysicalFile(customerFilePath, "text/xml");` 會傳回 [PhysicalFileResult](/dotnet/api/microsoft.aspnetcore.mvc.physicalfileresult)。
 
-#### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3.方法，導致使用與用戶端交涉之內容類型格式化的非空白回應本文
+#### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. 在與用戶端協商的內容類型中格式化為非空白回應主體的方法
 
 此類別普遍稱為**內容交涉**。 只要動作傳回 [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) 類型或 [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult) 實作以外的某個項目，就會套用[內容交涉](xref:web-api/advanced/formatting#content-negotiation)。 傳回非 `IActionResult` 實作的動作 (例如，`object`) 也會傳回「格式化回應」。
 

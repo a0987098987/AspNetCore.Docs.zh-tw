@@ -3,14 +3,14 @@ title: 將搜尋新增至 ASP.NET Core Razor 頁面
 author: rick-anderson
 description: 示範如何將搜尋新增至 ASP.NET Core Razor 頁面
 ms.author: riande
-ms.date: 7/23/2019
+ms.date: 12/05/2019
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 1eeb3aa86f2a6928b6d0b368c90e4760a66a6c6e
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 8228207b0f37a6923b29891ac3115dd0be115501
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72334056"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881324"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>將搜尋新增至 ASP.NET Core Razor 頁面
 
@@ -26,7 +26,7 @@ ms.locfileid: "72334056"
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
-* `SearchString`：包含使用者在搜尋文字方塊中輸入的文字。 `SearchString` 是以 [`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute) 屬性裝飾。 `[BindProperty]` 使用與屬性相同的名稱來繫結表單值和查詢字串。 需要 `(SupportsGet = true)` 才能在 GET 要求上進行繫結。
+* `SearchString`：包含使用者在搜尋文字方塊中輸入的文字。 `SearchString` 具有[`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute)屬性。 `[BindProperty]` 使用與屬性相同的名稱來繫結表單值和查詢字串。 需要 `(SupportsGet = true)` 才能在 GET 要求上進行繫結。
 * `Genres`：包含內容類型清單。 `Genres` 可讓使用者從清單中選取內容類型。 `SelectList` 需要 `using Microsoft.AspNetCore.Mvc.Rendering;`
 * `MovieGenre`：包含使用者所選取的特定內容類型 (例如「西部片」)。
 * 稍後在本教學課程中將會使用 `Genres` 和 `MovieGenre`。
@@ -54,7 +54,7 @@ var movies = from m in _context.Movie
 `s => s.Title.Contains()` 程式碼是一種 [Lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)。 在以方法為基礎的 [LINQ](/dotnet/csharp/programming-guide/concepts/linq/) 查詢中，會將 Lambda 作為標準查詢運算子方法的引數，例如 [Where](/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) 方法或 `Contains` (用於上述程式碼)。 定義 LINQ 查詢或藉由呼叫像是 `Where`、`Contains` 或 `OrderBy` 等方法進行修改時，並不會加以執行。 而是會延後查詢執行。 這表示系統會延遲評估運算式，直到該運算式的實現值受到逐一查看，或呼叫 `ToListAsync` 方法為止。 如需詳細資訊，請參閱[查詢執行](/dotnet/framework/data/adonet/ef/language-reference/query-execution)。
 
 > [!NOTE]
-> [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 方法是在資料庫上執行，而不是在 C# 程式碼中執行。 查詢的區分大小寫取決於資料庫和定序。 在 SQL Server 上，`Contains` 對應至 [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql)，因此不區分大小寫。 而在 SQLlite 中，由於使用預設定序，因此會區分大小寫。
+> [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains)方法是在資料庫上執行，而不是在C#程式碼中執行。 查詢的區分大小寫取決於資料庫和定序。 在 SQL Server 上，`Contains` 對應至 [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql)，因此不區分大小寫。 而在 SQLlite 中，由於使用預設定序，因此會區分大小寫。
 
 巡覽至 Movies 頁面，並將 `?searchString=Ghost` 這類查詢字串附加至 URL (例如，`https://localhost:5001/Movies?searchString=Ghost`)。 隨即顯示篩選過的電影。
 
@@ -70,7 +70,7 @@ var movies = from m in _context.Movie
 
 ![已將 ghost 一詞新增至 URL，而傳回的電影清單包含 Ghostbusters 和 Ghostbusters 2 兩個電影的 Index 檢視](search/_static/g2.png)
 
-ASP.NET Core 執行階段使用[模型繫結](xref:mvc/models/model-binding)來設定查詢字串 (`SearchString`) 中的 `?searchString=Ghost` 屬性值或路由傳送資料 (`https://localhost:5001/Movies/Ghost`)。 模型繫結是不區分大小寫的。
+ASP.NET Core 執行階段使用[模型繫結](xref:mvc/models/model-binding)來設定查詢字串 (`?searchString=Ghost`) 中的 `SearchString` 屬性值或路由傳送資料 (`https://localhost:5001/Movies/Ghost`)。 模型繫結是不區分大小寫的。
 
 但是，您不能期望使用者會在搜尋電影時修改 URL。 在此步驟中，會新增用來篩選電影的 UI。 如果您已新增路由條件約束 `"{searchString?}"`，請將它移除。
 
@@ -129,7 +129,7 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
-* `SearchString`：包含使用者在搜尋文字方塊中輸入的文字。 `SearchString` 是以 [`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute) 屬性裝飾。 `[BindProperty]` 使用與屬性相同的名稱來繫結表單值和查詢字串。 需要 `(SupportsGet = true)` 才能在 GET 要求上進行繫結。
+* `SearchString`：包含使用者在搜尋文字方塊中輸入的文字。 `SearchString` 具有[`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute)屬性。 `[BindProperty]` 使用與屬性相同的名稱來繫結表單值和查詢字串。 需要 `(SupportsGet = true)` 才能在 GET 要求上進行繫結。
 * `Genres`：包含內容類型清單。 `Genres` 可讓使用者從清單中選取內容類型。 `SelectList` 需要 `using Microsoft.AspNetCore.Mvc.Rendering;`
 * `MovieGenre`：包含使用者所選取的特定內容類型 (例如「西部片」)。
 * 稍後在本教學課程中將會使用 `Genres` 和 `MovieGenre`。
@@ -172,7 +172,7 @@ var movies = from m in _context.Movie
 
 ![已將 ghost 一詞新增至 URL，而傳回的電影清單包含 Ghostbusters 和 Ghostbusters 2 兩個電影的 Index 檢視](search/_static/g2.png)
 
-ASP.NET Core 執行階段使用[模型繫結](xref:mvc/models/model-binding)來設定查詢字串 (`SearchString`) 中的 `?searchString=Ghost` 屬性值或路由傳送資料 (`https://localhost:5001/Movies/Ghost`)。 模型繫結是不區分大小寫的。
+ASP.NET Core 執行階段使用[模型繫結](xref:mvc/models/model-binding)來設定查詢字串 (`?searchString=Ghost`) 中的 `SearchString` 屬性值或路由傳送資料 (`https://localhost:5001/Movies/Ghost`)。 模型繫結是不區分大小寫的。
 
 但是，您不能期望使用者會在搜尋電影時修改 URL。 在此步驟中，會新增用來篩選電影的 UI。 如果您已新增路由條件約束 `"{searchString?}"`，請將它移除。
 

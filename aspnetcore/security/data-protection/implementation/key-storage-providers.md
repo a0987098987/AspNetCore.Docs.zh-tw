@@ -3,14 +3,14 @@ title: ASP.NET Core 中的金鑰儲存提供者
 author: rick-anderson
 description: 深入瞭解 ASP.NET Core 中的金鑰儲存提供者，以及如何設定金鑰儲存位置。
 ms.author: riande
-ms.date: 06/11/2019
+ms.date: 12/05/2019
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: ec746f383c18ccc7b60c614c990f7577d2d52a20
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 76f224fb7d322722c3875b734127da4da294a646
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74052837"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881211"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core 中的金鑰儲存提供者
 
@@ -141,7 +141,7 @@ public void ConfigureServices(IServiceCollection services)
 
 使用此套件，可以在多個 web 應用程式實例之間共用金鑰。
 
-若要設定 EF Core 提供者，請呼叫[`PersistKeysToDbContext<TContext>`](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext)方法：
+若要設定 EF Core 提供者，請呼叫[PersistKeysToDbCoNtext\<TCoNtext >](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext)方法：
 
 [!code-csharp[Main](key-storage-providers/sample/Startup.cs?name=snippet&highlight=13-20)]
 
@@ -175,7 +175,7 @@ dotnet ef database update --context MyKeysContext
 
 `DataProtectionKeys` 類別/實體會採用下表所示的結構。
 
-| 屬性/欄位 | CLR 型別 | SQL 類型              |
+| 屬性/欄位 | CLR 型別 | SQL 型別              |
 | -------------- | -------- | --------------------- |
 | `Id`           | `int`    | `int`、PK、not null   |
 | `FriendlyName` | `string` | `nvarchar(MAX)`、null |

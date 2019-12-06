@@ -5,16 +5,16 @@ description: 瞭解如何在 ASP.NET Core SignalR中使用驗證和授權。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: c5a34ae67bdfb8f7fd92c00f18973b66b685a99c
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: f443fe0fbaaa1facd09edc0878c048772895ecff
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963906"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881187"
 ---
 # <a name="security-considerations-in-aspnet-core-opno-locsignalr"></a>ASP.NET Core SignalR 中的安全性考慮
 
@@ -22,9 +22,9 @@ ms.locfileid: "73963906"
 
 本文提供保護 SignalR的相關資訊。
 
-## <a name="cross-origin-resource-sharing"></a>跨原始來源資源分享
+## <a name="cross-origin-resource-sharing"></a>跨原始資源共用
 
-[跨原始來源資源分享（CORS）](https://www.w3.org/TR/cors/)可以用來允許瀏覽器中的跨原始來源 SignalR 連接。 如果 JavaScript 程式碼裝載于 SignalR 應用程式的不同網域，則必須啟用[CORS 中介軟體](xref:security/cors)，才能讓 JavaScript 連線到 SignalR 應用程式。 只允許來自您信任或控制之網域的跨原始來源要求。 例如:
+[跨原始來源資源分享（CORS）](https://www.w3.org/TR/cors/)可以用來允許瀏覽器中的跨原始來源 SignalR 連接。 如果 JavaScript 程式碼裝載于 SignalR 應用程式的不同網域，則必須啟用[CORS 中介軟體](xref:security/cors)，才能讓 JavaScript 連線到 SignalR 應用程式。 只允許來自您信任或控制之網域的跨原始來源要求。 例如：
 
 * 您的網站主控于 `http://www.example.com`
 * 您的 SignalR 應用程式裝載于 `http://signalr.example.com`
@@ -106,7 +106,7 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 
 ## <a name="access-token-logging"></a>存取權杖記錄
 
-使用 Websocket 或伺服器傳送事件時，瀏覽器用戶端會在查詢字串中傳送存取權杖。 透過查詢字串接收存取權杖通常與使用標準 `Authorization` 標頭一樣安全。 您應該一律使用 HTTPS 來確保用戶端與伺服器之間的安全端對端連接。 許多 web 伺服器會記錄每個要求的 URL，包括查詢字串。 記錄 Url 可能會記錄存取權杖。 ASP.NET Core 預設會記錄每個要求的 URL，其中會包含查詢字串。 例如:
+使用 Websocket 或伺服器傳送事件時，瀏覽器用戶端會在查詢字串中傳送存取權杖。 透過查詢字串接收存取權杖通常與使用標準 `Authorization` 標頭一樣安全。 您應該一律使用 HTTPS 來確保用戶端與伺服器之間的安全端對端連接。 許多 web 伺服器會記錄每個要求的 URL，包括查詢字串。 記錄 Url 可能會記錄存取權杖。 ASP.NET Core 預設會記錄每個要求的 URL，其中會包含查詢字串。 例如：
 
 ```
 info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
@@ -117,7 +117,7 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
 
 ## <a name="exceptions"></a>例外狀況
 
-例外狀況訊息通常會被視為不應該向用戶端顯示的敏感性資料。 根據預設，SignalR 不會將中樞方法擲回之例外狀況的詳細資料傳送給用戶端。 相反地，用戶端會收到一般訊息，指出發生錯誤。 您可以使用[`EnableDetailedErrors`](xref:signalr/configuration#configure-server-options)覆寫傳遞給用戶端的例外狀況訊息（例如，在開發或測試中）。 例外狀況訊息不應在生產環境應用程式中公開給用戶端。
+例外狀況訊息通常會被視為不應該向用戶端顯示的敏感性資料。 根據預設，SignalR 不會將中樞方法擲回之例外狀況的詳細資料傳送給用戶端。 相反地，用戶端會收到一般訊息，指出發生錯誤。 您可以使用[EnableDetailedErrors](xref:signalr/configuration#configure-server-options)覆寫傳遞給用戶端的例外狀況訊息（例如，在開發或測試中）。 例外狀況訊息不應在生產環境應用程式中公開給用戶端。
 
 ## <a name="buffer-management"></a>緩衝區管理
 
@@ -131,7 +131,7 @@ SignalR 會使用每個連接的緩衝區來管理傳入和傳出訊息。 根�
 * 用戶端可能會導致伺服器配置大量的記憶體緩衝區。
 * 大型緩衝區的伺服器配置可能會減少並行連接的數目。
 
-傳入和傳出訊息都有限制，這兩者都可以在 `MapHub`中設定的[`HttpConnectionDispatcherOptions`](xref:signalr/configuration#configure-server-options)物件上設定：
+傳入和傳出訊息有一些限制，這兩者都可以在 `MapHub`中設定的[HttpConnectionDispatcherOptions](xref:signalr/configuration#configure-server-options)物件上進行設定：
 
 * `ApplicationMaxBufferSize` 代表用戶端中伺服器緩衝區的最大位元組數目。 如果用戶端嘗試傳送大於此限制的訊息，連接可能會關閉。
 * `TransportMaxBufferSize` 代表伺服器可以傳送的最大位元組數。 如果伺服器嘗試傳送大於此限制的訊息（包括來自中樞方法的傳回值），則會擲回例外狀況。

@@ -5,16 +5,16 @@ description: 瞭解如何從 Blazor 應用程式中的 JavaScript，從 .NET 和
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/javascript-interop
-ms.openlocfilehash: 108fdac8667f407adba3470de4eb8e35883cefbf
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: 05225b86701b7a5d5c84dd43afbef70dd1ece228
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733826"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944066"
 ---
 # <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
@@ -55,7 +55,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 * 選取元件按鈕（**轉換陣列**）時，使用 `JSRuntime` 叫用 `convertArray` JavaScript 函數。
 * 呼叫 JavaScript 函式之後，傳遞的陣列會轉換成字串。 此字串會傳回給元件以供顯示。
 
-[!code-cshtml[](javascript-interop/samples_snapshot/call-js-example.razor?highlight=2,34-35)]
+[!code-razor[](javascript-interop/samples_snapshot/call-js-example.razor?highlight=2,34-35)]
 
 ## <a name="use-of-ijsruntime"></a>使用 IJSRuntime
 
@@ -63,7 +63,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 * 將 `IJSRuntime` 抽象層插入 Razor 元件（*razor*）：
 
-  [!code-cshtml[](javascript-interop/samples_snapshot/inject-abstraction.razor?highlight=1)]
+  [!code-razor[](javascript-interop/samples_snapshot/inject-abstraction.razor?highlight=1)]
 
   在*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. Cshtml* （Blazor Server）的 `<head>` 元素內，提供 `handleTickerChanged` JavaScript 函數。 函式會使用 `IJSRuntime.InvokeVoidAsync` 來呼叫，而且不會傳回值：
 
@@ -79,7 +79,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 * 針對使用[BuildRenderTree](xref:blazor/components#manual-rendertreebuilder-logic)的動態內容產生，請使用 `[Inject]` 屬性：
 
-  ```csharp
+  ```razor
   [Inject]
   IJSRuntime JSRuntime { get; set; }
   ```
@@ -117,7 +117,35 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 *Pages/JSInterop. razor*：
 
-[!code-cshtml[](./common/samples/3.x/BlazorWebAssemblySample/Pages/JsInterop.razor?name=snippet_JSInterop1&highlight=3,19-21,23-25)]
+```razor
+@page "/JSInterop"
+@using BlazorSample.JsInteropClasses
+@inject IJSRuntime JSRuntime
+
+<h1>JavaScript Interop</h1>
+
+<h2>Invoke JavaScript functions from .NET methods</h2>
+
+<button type="button" class="btn btn-primary" @onclick="TriggerJsPrompt">
+    Trigger JavaScript Prompt
+</button>
+
+<h3 id="welcome" style="color:green;font-style:italic"></h3>
+
+@code {
+    public async Task TriggerJsPrompt()
+    {
+        // showPrompt is implemented in wwwroot/exampleJsInterop.js
+        var name = await JSRuntime.InvokeAsync<string>(
+                "exampleJsFunctions.showPrompt",
+                "What's your name?");
+        // displayWelcome is implemented in wwwroot/exampleJsInterop.js
+        await JSRuntime.InvokeVoidAsync(
+                "exampleJsFunctions.displayWelcome",
+                $"Hello {name}! Welcome to Blazor!");
+    }
+}
+```
 
 1. 當您選取元件的 [**觸發程式 JavaScript 提示**] 按鈕來執行 `TriggerJsPrompt` 時，會呼叫*wwwroot/exampleJsInterop*檔案中提供的 JavaScript `showPrompt` 函數。
 1. `showPrompt` 函式會接受使用者輸入（使用者的名稱），這是 HTML 編碼並傳回給元件。 元件會將使用者的名稱儲存在本機變數中，`name`。
@@ -125,7 +153,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 ## <a name="call-a-void-javascript-function"></a>呼叫 void JavaScript 函數
 
-會使用 `IJSRuntime.InvokeVoidAsync`來呼叫傳回[void （0）/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void)或[undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined)的 JavaScript 函式。
+會 使用`IJSRuntime.InvokeVoidAsync`呼叫傳回[void （0）/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void)或 [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined) 的 JavaScript 函數。
 
 ## <a name="detect-when-a-opno-locblazor-app-is-prerendering"></a>偵測 Blazor 應用程式何時已進行預呈現
  
@@ -142,7 +170,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 下列範例會示範如何捕捉 `username` `<input>` 元素的參考：
 
-```cshtml
+```razor
 <input @ref="username" ... />
 
 @code {
@@ -155,7 +183,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 >
 > 在下列範例中，改變未排序清單（`ul`）的內容很*危險*，因為 Blazor 與 DOM 互動以填入此元素的清單專案（`<li>`）：
 >
-> ```cshtml
+> ```razor
 > <ul ref="MyList">
 >     @foreach (var item in Todos)
 >     {
@@ -182,7 +210,7 @@ window.exampleJsFunctions = {
 
 若要呼叫不會傳回值的 JavaScript 函數，請使用 `IJSRuntime.InvokeVoidAsync`。 下列程式碼會使用已捕捉的 `ElementReference`來呼叫前面的 JavaScript 函式，以將焦點放在使用者名稱輸入上：
 
-[!code-cshtml[](javascript-interop/samples_snapshot/component1.razor?highlight=1,3,11-12)]
+[!code-razor[](javascript-interop/samples_snapshot/component1.razor?highlight=1,3,11-12)]
 
 若要使用擴充方法，請建立會接收 `IJSRuntime` 實例的靜態擴充方法：
 
@@ -196,7 +224,7 @@ public static async Task Focus(this ElementReference elementRef, IJSRuntime jsRu
 
 `Focus` 方法是直接在物件上呼叫。 下列範例假設 `Focus` 方法可從 `JsInteropClasses` 命名空間取得：
 
-[!code-cshtml[](javascript-interop/samples_snapshot/component2.razor?highlight=1-4,12)]
+[!code-razor[](javascript-interop/samples_snapshot/component2.razor?highlight=1-4,12)]
 
 > [!IMPORTANT]
 > 只有在呈現元件之後，才會填入 `username` 變數。 如果擴展 `ElementReference` 傳遞至 JavaScript 程式碼，JavaScript 程式碼就會收到 `null`的值。 若要在元件完成轉譯之後操作元素參考（以設定元素的初始焦點），請使用[OnAfterRenderAsync 或 OnAfterRender 元件生命週期方法](xref:blazor/lifecycle#after-component-render)。
@@ -214,7 +242,7 @@ public static ValueTask<T> GenericMethod<T>(this ElementReference elementRef,
 
 `GenericMethod` 是直接在具有類型的物件上呼叫。 下列範例假設 `GenericMethod` 可從 `JsInteropClasses` 命名空間取得：
 
-[!code-cshtml[](javascript-interop/samples_snapshot/component3.razor?highlight=17)]
+[!code-razor[](javascript-interop/samples_snapshot/component3.razor?highlight=17)]
 
 ## <a name="invoke-net-methods-from-javascript-functions"></a>從 JavaScript 函式呼叫 .NET 方法
 
@@ -226,7 +254,20 @@ public static ValueTask<T> GenericMethod<T>(this ElementReference elementRef,
 
 *Pages/JsInterop. razor*：
 
-[!code-cshtml[](./common/samples/3.x/BlazorWebAssemblySample/Pages/JsInterop.razor?name=snippet_JSInterop2&highlight=7-11)]
+```razor
+<button type="button" class="btn btn-primary"
+        onclick="exampleJsFunctions.returnArrayAsyncJs()">
+    Trigger .NET static method ReturnArrayAsync
+</button>
+
+@code {
+    [JSInvokable]
+    public static Task<int[]> ReturnArrayAsync()
+    {
+        return Task.FromResult(new int[] { 1, 2, 3 });
+    }
+}
+```
 
 提供給用戶端的 JavaScript 會C#叫用 .net 方法。
 
@@ -258,7 +299,19 @@ Array(4) [ 1, 2, 3, 4 ]
 
 *Pages/JsInterop. razor*：
 
-[!code-cshtml[](./common/samples/3.x/BlazorWebAssemblySample/Pages/JsInterop.razor?name=snippet_JSInterop3&highlight=8-9)]
+```razor
+<button type="button" class="btn btn-primary" @onclick="TriggerNetInstanceMethod">
+    Trigger .NET instance method HelloHelper.SayHello
+</button>
+
+@code {
+    public async Task TriggerNetInstanceMethod()
+    {
+        var exampleJsInterop = new ExampleJsInterop(JSRuntime);
+        await exampleJsInterop.CallHelloHelperSayHello("Blazor");
+    }
+}
+```
 
 `CallHelloHelperSayHello` 會使用 `HelloHelper`的新實例，叫用 JavaScript 函數 `sayHello`。
 

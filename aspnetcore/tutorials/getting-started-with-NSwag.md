@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 676e911a14bd128998c987b3f955c40e19af98d1
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: bd68e134fb71fd396a30ec9c674111bc8536860d
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881298"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944170"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>NSwag 與 ASP.NET Core 使用者入門
 
@@ -109,7 +109,7 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 ### <a name="generate-code-with-nswagstudio"></a>使用 NSwagStudio 來產生程式碼
 
-* 依照 [NSwagStudio GitHub 存放庫](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) \(英文\) 的指示來安裝 NSwagStudio。
+* 依照 [NSwagStudio GitHub 存放庫](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) \(英文\) 的指示來安裝 NSwagStudio。 在 [NSwag 版本] 頁面上，您可以下載 xcopy 版本，而不需安裝和系統管理員許可權即可啟動。
 * 啟動 NSwagStudio，然後在 [Swagger Specification URL] \(Swagger 規格 URL\) 文字方塊中輸入 *swagger.json* 檔案 URL。 例如， *http://localhost:44354/swagger/v1/swagger.json* 。
 * 按一下 [Create local Copy] \(建立本機複本\) 按鈕，以產生 Swagger 規格的 JSON 表示法。
 

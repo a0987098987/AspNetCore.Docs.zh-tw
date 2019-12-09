@@ -5,17 +5,17 @@ description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 38db9804c9cdd1aa31ca48af2dd9ec2e85175156
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 7676d16bddf146ea38619ed35c5e32c5bce731de
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681041"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943756"
 ---
 # <a name="aspnet-core-opno-locblazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -150,7 +150,7 @@ Blazor 伺服器應用程式會 prerenders，以回應第一個用戶端要求�
 
 若要自訂 UI，請在 *_Host*的 [Razor 頁面] `<body>` 中，定義具有 `components-reconnect-modal` `id` 的元素：
 
-```html
+```cshtml
 <div id="components-reconnect-modal">
     ...
 </div>
@@ -323,7 +323,7 @@ public class WeatherForecastService
 
 ### <a name="render-noninteractive-components-from-razor-pages-and-views"></a>從 Razor 頁面和 views 轉譯非互動式元件
 
-在下列 Razor 頁面中，`MyComponent` 元件會以靜態方式轉譯，並使用以表單指定的初始值：
+在下列 Razor 頁面中，`Counter` 元件會以靜態方式轉譯，並使用以表單指定的初始值：
 
 ::: moniker range=">= aspnetcore-3.1"
 
@@ -356,7 +356,7 @@ public class WeatherForecastService
     <button type="submit">Set initial value</button>
 </form>
 
-@(await Html.RenderComponentAsync<MyComponent>(RenderMode.Static, 
+@(await Html.RenderComponentAsync<Counter>(RenderMode.Static, 
     new { InitialValue = InitialValue }))
 
 @code {

@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 5eaf14f3b9c5a5b2b83e469c4dc8119b5fc341c1
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 89c676b96ef66f648544a8a884593bdafa3876de
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880819"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944222"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>3\.1 ASP.NET Core 的新功能
 
@@ -28,7 +28,7 @@ Razor 元件現在會以部分類別的形式產生。 Razor 元件的程式碼�
 
 在 ASP.NET Core 3.0 的 Blazor 中，會使用 HTML Helper （`Html.RenderComponentAsync`）將元件轉譯成頁面和 views。 在 ASP.NET Core 3.1 中，使用新的元件標記協助程式，從頁面或視圖轉譯元件：
 
-```razor
+```cshtml
 <component type="typeof(Counter)" render-mode="ServerPrerendered" />
 ```
 

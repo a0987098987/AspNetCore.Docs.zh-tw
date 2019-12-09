@@ -5,16 +5,16 @@ description: 瞭解如何為 Blazor 應用程式建立可重複使用的版面�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/layouts
-ms.openlocfilehash: 3546259fc6b622a6137a6baa8f446c5f43af1cab
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 90acfb0d4e9daadb12be79de6bd0c99fc545697a
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962814"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944053"
 ---
 # <a name="aspnet-core-opno-locblazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -31,7 +31,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 下列程式碼範例顯示*MainLayout*版面配置元件的 razor 範本。 版面配置會繼承 `LayoutComponentBase` 並設定導覽列和頁尾之間的 `@Body`：
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
+[!code-razor[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
 
 在以其中一個 Blazor 應用程式範本為基礎的應用程式中，`MainLayout` 元件（*MainLayout*）位於應用程式的*共用*資料夾中。
 
@@ -39,11 +39,11 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 在應用程式的*razor*檔案中，于 `Router` 元件中指定預設的應用程式佈建。 下列 `Router` 元件（由預設 Blazor 範本提供）會將預設版面配置設定為 `MainLayout` 元件：
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/App1.razor?highlight=3)]
+[!code-razor[](layouts/sample_snapshot/3.x/App1.razor?highlight=3)]
 
 若要提供 `NotFound` 內容的預設版面配置，請指定 `NotFound` 內容的 `LayoutView`：
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/App2.razor?highlight=6-9)]
+[!code-razor[](layouts/sample_snapshot/3.x/App2.razor?highlight=6-9)]
 
 如需 `Router` 元件的詳細資訊，請參閱 <xref:blazor/routing>。
 
@@ -55,7 +55,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 下列 `MasterList` 元件的內容會插入至 `MasterLayout` 的 `@Body`位置：
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MasterList.razor?highlight=1)]
+[!code-razor[](layouts/sample_snapshot/3.x/MasterList.razor?highlight=1)]
 
 直接在元件中指定版面配置會覆寫路由器中的*預設*組態集，或從 *_Imports*匯入的 `@layout` 指示詞。
 
@@ -65,11 +65,11 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 下列 *_Imports razor*檔案匯入：
 
-* `MyCoolLayout`
+* `MyCoolLayout`。
 * 相同資料夾和任何子資料夾中的所有 Razor 元件。
 * `BlazorApp1.Data` 命名空間。
  
-[!code-cshtml[](layouts/sample_snapshot/3.x/_Imports.razor)]
+[!code-razor[](layouts/sample_snapshot/3.x/_Imports.razor)]
 
 *_Imports razor*檔案類似[razor 視圖和頁面的 _ViewImports. cshtml](xref:mvc/views/layout#importing-shared-directives)檔案，但特別適用于 razor 元件檔案。
 
@@ -81,15 +81,15 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 下列範例顯示如何使用嵌套的配置。 *EpisodesComponent. razor*檔案是要顯示的元件。 元件會參考 `MasterListLayout`：
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/EpisodesComponent.razor?highlight=1)]
+[!code-razor[](layouts/sample_snapshot/3.x/EpisodesComponent.razor?highlight=1)]
 
 *MasterListLayout razor*檔案提供 `MasterListLayout`。 版面配置會參考另一個版面配置，也就是其轉譯位置的 `MasterLayout`。 `EpisodesComponent` 會在 `@Body` 出現的位置呈現：
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MasterListLayout.razor?highlight=1,9)]
+[!code-razor[](layouts/sample_snapshot/3.x/MasterListLayout.razor?highlight=1,9)]
 
 最後，在*MasterLayout*中 `MasterLayout` 包含最上層的版面配置元素，例如頁首、主功能表和頁尾。 `EpisodesComponent` 的 `MasterListLayout` 會在 `@Body` 出現的位置呈現：
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
+[!code-razor[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
 
 ## <a name="additional-resources"></a>其他資源
 

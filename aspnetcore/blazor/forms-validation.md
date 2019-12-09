@@ -5,16 +5,16 @@ description: 瞭解如何在 Blazor中使用表單和欄位驗證案例。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/forms-validation
-ms.openlocfilehash: f1df213b16bb7ecd6a771700291d834776dee475
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: f4c1845ee4b6ff9274b7117167367ccdd9f36c12
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317173"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943689"
 ---
 # <a name="aspnet-core-opno-locblazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 
@@ -111,7 +111,7 @@ public class Starship
 
 下列表單會使用 `Starship` 模型中所定義的驗證來驗證使用者輸入：
 
-```cshtml
+```razor
 @page "/FormsValidation"
 
 <h1>Starfleet Starship Database</h1>
@@ -172,7 +172,7 @@ public class Starship
 }
 ```
 
-`EditForm` 會建立一個 `EditContext` 做為階層式[值](xref:blazor/components#cascading-values-and-parameters)，以追蹤編輯程式的相關中繼資料，包括已修改的欄位和目前的驗證訊息。 `EditForm` 也會提供有效和無效提交（`OnValidSubmit`、`OnInvalidSubmit`）的便利事件。 或者，使用 `OnSubmit` 來觸發驗證，並使用自訂驗證程式代碼來檢查域值。
+會建立做`EditContext`為[階層式值](xref:blazor/components#cascading-values-and-parameters), 以追蹤編輯程式的相關中繼資料, 包括已修改的欄位和目前的驗證訊息。`EditForm` `EditForm` 也會提供有效和無效提交（`OnValidSubmit`、`OnInvalidSubmit`）的便利事件。 或者，使用 `OnSubmit` 來觸發驗證，並使用自訂驗證程式代碼來檢查域值。
 
 ## <a name="inputtext-based-on-the-input-event"></a>根據輸入事件的 InputText
 
@@ -180,7 +180,7 @@ public class Starship
 
 建立具有下列標記的元件，並使用元件，就像使用 `InputText` 一樣：
 
-```cshtml
+```razor
 @inherits InputText
 
 <input 
@@ -204,19 +204,19 @@ Blazor 會執行兩種類型的驗證：
 
 `ValidationSummary` 元件會匯總所有驗證訊息，類似于[驗證摘要](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)標籤協助程式：
 
-```csthml
+```razor
 <ValidationSummary />
 ```
 
 具有 `Model` 參數的特定模型輸出驗證訊息：
   
-```csthml
+```razor
 <ValidationSummary Model="@starship" />
 ```
 
 `ValidationMessage` 元件會顯示特定欄位的驗證訊息，類似于[驗證訊息標記](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)協助程式。 使用 `For` 屬性指定驗證欄位，並以 lambda 運算式命名模型屬性：
 
-```cshtml
+```razor
 <ValidationMessage For="@(() => starship.MaximumAccommodation)" />
 ```
 
@@ -259,7 +259,7 @@ Blazor 支援使用內建 `DataAnnotationsValidator`的資料批註來驗證表�
 
 若要驗證系結模型的整個物件圖形（包括集合和複雜型別屬性），請使用*實驗*性 AspNetCore 所提供的 `ObjectGraphDataAnnotationsValidator`。 [Blazor。DataAnnotations。驗證](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation)套件：
 
-```cshtml
+```razor
 <EditForm Model="@model" OnValidSubmit="@HandleValidSubmit">
     <ObjectGraphDataAnnotationsValidator />
     ...

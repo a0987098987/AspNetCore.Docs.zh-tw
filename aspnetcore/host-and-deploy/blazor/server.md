@@ -5,17 +5,17 @@ description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: b688d000f26c9b230d9fdee8423b3194145fe1aa
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: d45d355eabc53fc90bcda4cb7be22fb6a9f04541
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317302"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944330"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>裝載和部署 Blazor 伺服器
 
@@ -61,7 +61,7 @@ Blazor 伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊
 
 1. 啟用服務以支援「固定*會話*」，在此情況下，用戶端會在進行[回溯時重新導向至相同的伺服器](xref:blazor/hosting-models#reconnection-to-the-same-server)。 將 [`ServerStickyMode` 選項] 或 [設定] 值設為 [`Required`]。 一般而言，應用程式會使用下列**其中一**種方法來建立設定：
 
-   * `Startup.ConfigureServices`：
+   * `Startup.ConfigureServices`:
   
      ```csharp
      services.AddSignalR().AddAzureSignalR(options =>
@@ -83,7 +83,7 @@ Blazor 伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊
 
 1. 在 Blazor 伺服器應用程式的 Visual Studio 中建立 Azure 應用程式發佈設定檔。
 1. 將**Azure SignalR 服務**相依性新增至設定檔。 如果 Azure 訂用帳戶沒有要指派給應用程式的既有 Azure SignalR 服務實例，請選取 [**建立新的 azure SignalR 服務實例**] 以布建新的服務實例。
-1. 將應用程式發行至 Azure。
+1. 將應用程式發佈至 Azure。
 
 #### <a name="iis"></a>IIS
 
@@ -109,7 +109,7 @@ metadata:
 
 您可以使用[JS interop](xref:blazor/javascript-interop)來測量網路延遲，如下列範例所示：
 
-```cshtml
+```razor
 @inject IJSRuntime JS
 
 @if (latency is null)

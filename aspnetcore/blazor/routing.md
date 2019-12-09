@@ -5,16 +5,16 @@ description: 瞭解如何在應用程式中路由傳送要求，以及關於 Nav
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/routing
-ms.openlocfilehash: 2c139db4e44679fbd9f3455a2d2543be0e128765
-ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
+ms.openlocfilehash: 1690434f48141bc83e7bc02e22cb763430eaa10d
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74550341"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944014"
 ---
 # <a name="aspnet-core-opno-locblazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -36,7 +36,7 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 
 `Router` 元件可讓您使用指定的路由來路由傳送至每個元件。 `Router` 元件會出現在*應用程式 razor*檔案中：
 
-```cshtml
+```razor
 <Router AppAssembly="typeof(Startup).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -58,7 +58,12 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 
 多個路由範本可以套用至元件。 下列元件會回應 `/BlazorRoute` 和 `/DifferentBlazorRoute`的要求：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
+```razor
+@page "/BlazorRoute"
+@page "/DifferentBlazorRoute"
+
+<h1>Blazor routing</h1>
+```
 
 > [!IMPORTANT]
 > 為了讓 Url 正確解析，應用程式必須在其*wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host. cshtml*檔案（Blazor 伺服器）中包含在 `href` 屬性（`<base href="/">`）中指定的應用程式基底路徑的 `<base>` 標記。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/index#app-base-path>。
@@ -69,7 +74,7 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 
 在*應用程式的 razor*檔案中，于 `Router` 元件的 `NotFound` 範本參數中設定自訂內容：
 
-```cshtml
+```razor
 <Router AppAssembly="typeof(Startup).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -87,7 +92,7 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 
 使用 `AdditionalAssemblies` 參數，指定搜尋可路由的元件時，要考慮的 `Router` 元件的其他元件。 除了 `AppAssembly`指定的元件以外，還會考慮指定的元件。 在下列範例中，`Component1` 是在參考的類別庫中定義的可路由元件。 下列 `AdditionalAssemblies` 範例會導致 `Component1`的路由支援：
 
-```cshtml
+```razor
 <Router
     AppAssembly="typeof(Program).Assembly"
     AdditionalAssemblies="new[] { typeof(Component1).Assembly }">
@@ -99,7 +104,22 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 
 路由器會使用路由參數來填入具有相同名稱的對應元件參數（不區分大小寫）：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/RouteParameter.razor?name=snippet_RouteParameter&highlight=2,7-8)]
+```razor
+@page "/RouteParameter"
+@page "/RouteParameter/{text}"
+
+<h1>Blazor is @Text!</h1>
+
+@code {
+    [Parameter]
+    public string Text { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Text = Text ?? "fantastic";
+    }
+}
+```
 
 ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個範例中會套用兩個 `@page` 指示詞。 第一個則允許不使用參數導覽至元件。 第二個 `@page` 指示詞會採用 `{text}` 路由參數，並將值指派給 `Text` 屬性。
 
@@ -112,7 +132,7 @@ ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個
 * 要求 URL 上有 `Id` 的路由區段。
 * `Id` 區段是一個整數（`int`）。
 
-[!code-cshtml[](routing/samples_snapshot/3.x/Constraint.razor?highlight=1)]
+[!code-razor[](routing/samples_snapshot/3.x/Constraint.razor?highlight=1)]
 
 下表所示的路由條件約束可供使用。 若為符合不因文化特性而異的路由條件約束，請參閱表格下方的警告以取得詳細資訊。
 
@@ -154,7 +174,7 @@ ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個
 
 下列 `NavMenu` 元件會建立[啟動](https://getbootstrap.com/docs/)程式導覽列，示範如何使用 `NavLink` 元件：
 
-[!code-cshtml[](routing/samples_snapshot/3.x/NavMenu.razor?highlight=4,9)]
+[!code-razor[](routing/samples_snapshot/3.x/NavMenu.razor?highlight=4,9)]
 
 有兩個 `NavLinkMatch` 選項可供您指派給 `<NavLink>` 元素的 `Match` 屬性：
 
@@ -165,7 +185,7 @@ ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個
 
 其他 `NavLink` 元件屬性會傳遞至呈現的錨點標記。 在下列範例中，`NavLink` 元件包含 `target` 屬性：
 
-```cshtml
+```razor
 <NavLink href="my-page" target="_blank">My page</NavLink>
 ```
 
@@ -190,7 +210,7 @@ ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個
 
 下列元件會在選取按鈕時，流覽至應用程式的 `Counter` 元件：
 
-```cshtml
+```razor
 @page "/navigate"
 @inject NavigationManager NavigationManager
 

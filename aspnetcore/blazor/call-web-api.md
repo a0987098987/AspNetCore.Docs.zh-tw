@@ -5,16 +5,16 @@ description: 瞭解如何使用 JSON helper 從 Blazor 應用程式呼叫 Web AP
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/03/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/call-web-api
-ms.openlocfilehash: d4c69e8be2d4f6295c7177bf5d00aed596d0ead2
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: f1929b48275a36552f061a64823267df0f3acabc
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733852"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943910"
 ---
 # <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>從 ASP.NET Core 呼叫 Web API Blazor
 
@@ -49,7 +49,7 @@ Blazor 伺服器應用程式預設不包含 `HttpClient` 服務。 使用[HttpCl
 
 用戶端的基底位址會設定為源伺服器的位址。 使用 `@inject` 指示詞插入 `HttpClient` 實例：
 
-```cshtml
+```razor
 @using System.Net.Http
 @inject HttpClient Http
 ```
@@ -75,7 +75,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
   在下列程式碼中，元件會顯示 `_todoItems`。 當元件完成呈現（[OnInitializedAsync](xref:blazor/lifecycle#component-initialization-methods)）時，就會觸發 `GetTodoItems` 方法。 如需完整範例，請參閱範例應用程式。
 
-  ```cshtml
+  ```razor
   @using System.Net.Http
   @inject HttpClient Http
 
@@ -91,7 +91,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
   在下列程式碼中，`_newItemName` 是由元件的繫結項目所提供。 `AddItem` 方法是藉由選取 `<button>` 元素來觸發。 如需完整範例，請參閱範例應用程式。
 
-  ```cshtml
+  ```razor
   @using System.Net.Http
   @inject HttpClient Http
 
@@ -113,7 +113,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
   在下列程式碼中，`Name` 和 `IsCompleted` 的 `_editItem` 值是由元件的繫結項目所提供。 當專案在 UI 的另一個部分中選取，且呼叫 `EditItem` 時，會設定專案的 `Id`。 藉由選取 [儲存 `<button>`] 元素，即可觸發 `SaveItem` 方法。 如需完整範例，請參閱範例應用程式。
 
-  ```cshtml
+  ```razor
   @using System.Net.Http
   @inject HttpClient Http
 
@@ -140,7 +140,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 在下列程式碼中，Delete `<button>` 元素會呼叫 `DeleteItem` 方法。 系結的 `<input>` 元素會提供要刪除之專案的 `id`。 如需完整範例，請參閱範例應用程式。
 
-```cshtml
+```razor
 @using System.Net.Http
 @inject HttpClient Http
 
@@ -167,7 +167,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 在 Blazor WebAssembly 應用程式的 WebAssembly 上執行時，請使用[HttpClient](xref:fundamentals/http-requests)和 <xref:System.Net.Http.HttpRequestMessage> 來自訂要求。 例如，您可以指定要求 URI、HTTP 方法，以及任何所需的要求標頭。
 
-```cshtml
+```razor
 @using System.Net.Http
 @using System.Net.Http.Headers
 @inject HttpClient Http

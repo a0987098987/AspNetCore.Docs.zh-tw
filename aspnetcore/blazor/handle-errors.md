@@ -5,17 +5,17 @@ description: 探索 ASP.NET Core 如何 Blazor Blazor 如何管理未處理的�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: e737a8a85e7eb83d95618d71e85b0307c54b0766
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: d73eb9a0dd0ec7a4bec4b7b9aeaaa4a9ee888bce
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879689"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943702"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
 
@@ -138,7 +138,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
   * `loadFailed` 設定為 `true`，用來向使用者顯示錯誤訊息。
   * 會記錄錯誤。
 
-[!code-cshtml[](handle-errors/samples_snapshot/3.x/product-details.razor?highlight=11,27-39)]
+[!code-razor[](handle-errors/samples_snapshot/3.x/product-details.razor?highlight=11,27-39)]
 
 ### <a name="rendering-logic"></a>呈現邏輯
 
@@ -148,7 +148,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 若要避免轉譯邏輯中出現 null 參考例外狀況，請先檢查是否有 `null` 物件，然後再存取其成員。 在下列範例中，如果 `null``person.Address`，則不會存取 `person.Address` 屬性：
 
-[!code-cshtml[](handle-errors/samples_snapshot/3.x/person-example.razor?highlight=1)]
+[!code-razor[](handle-errors/samples_snapshot/3.x/person-example.razor?highlight=1)]
 
 上述程式碼假設 `person` 不 `null`。 通常，程式碼的結構會保證在呈現元件時，物件存在。 在這些情況下，不需要檢查呈現邏輯中的 `null`。 在先前的範例中，`person` 可能會保證存在，因為 `person` 會在元件具現化時建立。
 

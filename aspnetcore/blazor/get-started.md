@@ -5,16 +5,16 @@ description: 藉由使用您選擇的工具來建立 Blazor 應用程式，開�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/03/2019
+ms.date: 12/09/2019
 no-loc:
 - Blazor
 uid: blazor/get-started
-ms.openlocfilehash: d356a06849f54434c492dc68f57f7edc8805de22
-ms.sourcegitcommit: 5974e3e66dab3398ecf2324fbb82a9c5636f70de
+ms.openlocfilehash: e368ecaf931d392de7e52ec2d5a2dfd171c2c86f
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74778774"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943757"
 ---
 # <a name="get-started-with-aspnet-core-opno-locblazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -95,7 +95,7 @@ ms.locfileid: "74778774"
 
    <!-- For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. -->
 
-   5 \。 **目標 Framework**預設為 **.net core 3.0** （如果已安裝 3.1 Preview SDK，則為 **.net core 3.1** ）。 選取架構，然後選取 **[下一步]** 。
+   5 \。 將**目標 Framework**設定為 **.net Core 3.1** ，然後選取 **[下一步]** 。
 
    6。 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1`。 選取 [建立]。
 
@@ -202,7 +202,7 @@ ms.locfileid: "74778774"
 
    <!-- For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. -->
 
-   5 \。 **目標 Framework**預設為 **.net core 3.0** （如果已安裝 3.1 Preview SDK，則為 **.net core 3.1** ）。 選取架構，然後選取 **[下一步]** 。
+   5 \。 將**目標 Framework**設定為 **.net Core 3.0** ，然後選取 **[下一步]** 。
 
    6。 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1`。 選取 [建立]。
 
@@ -246,7 +246,7 @@ ms.locfileid: "74778774"
 
 *Pages/Counter.razor*：
 
-[!code-cshtml[](get-started/samples_snapshot/3.x/Counter1.razor?highlight=7,12-15)]
+[!code-razor[](get-started/samples_snapshot/3.x/Counter1.razor?highlight=7,12-15)]
 
 在瀏覽器中 `/counter` 的要求，如同頂端的 `@page` 指示詞所指定，會導致 `Counter` 元件轉譯其內容。 元件會轉譯成轉譯樹狀結構的記憶體中標記法，然後用來以彈性且有效率的方式更新 UI。
 
@@ -263,7 +263,7 @@ ms.locfileid: "74778774"
 
 *Pages/Index.razor*：
 
-[!code-cshtml[](get-started/samples_snapshot/3.x/Index1.razor?highlight=7)]
+[!code-razor[](get-started/samples_snapshot/3.x/Index1.razor?highlight=7)]
 
 執行應用程式。 首頁有自己的計數器，由 `Counter` 元件提供。
 
@@ -274,13 +274,13 @@ ms.locfileid: "74778774"
 
 *Pages/Counter.razor*：
 
-[!code-cshtml[](get-started/samples_snapshot/3.x/Counter2.razor?highlight=12-13,17)]
+[!code-razor[](get-started/samples_snapshot/3.x/Counter2.razor?highlight=12-13,17)]
 
 使用屬性，在 `Index` 元件的 `<Counter>` 元素中指定 `IncrementAmount`。
 
 *Pages/Index.razor*：
 
-[!code-cshtml[](get-started/samples_snapshot/3.x/Index2.razor?highlight=7)]
+[!code-razor[](get-started/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
 執行應用程式。 `Index` 元件有自己的計數器，每次選取 [按**我**] 按鈕時，就會遞增10。 `/counter` 的 `Counter` 元件（*razor*）會繼續遞增一。
 

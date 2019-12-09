@@ -5,17 +5,17 @@ description: 探索 ASP.NET Core Blazor，這是在 ASP.NET Core 應用程式中
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 8b656a7461c78475432722540ad628258cfe19c4
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 4ab6af649afe66d92fb2ea07d3abed057f321bce
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962918"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943715"
 ---
 # <a name="introduction-to-aspnet-core-opno-locblazor"></a>ASP.NET Core Blazor 簡介
 
@@ -53,7 +53,7 @@ Blazor 應用程式是以*元件*為基礎。 Blazor 中的元件是 UI 的元�
 
 下列 Razor 標記示範一個元件 (*Dialog.razor*)，此元件可巢狀於另一個元件內：
 
-```cshtml
+```razor
 <div>
     <h1>@Title</h1>
 
@@ -84,7 +84,7 @@ Blazor 使用自然 HTML 標籤來進行 UI 組合。 HTML 元素會指定元件
 
 *Index.razor*：
 
-```cshtml
+```razor
 @page "/"
 
 <h1>Hello, world!</h1>

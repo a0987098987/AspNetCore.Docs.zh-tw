@@ -5,16 +5,16 @@ description: 瞭解如何在 Blazor 伺服器應用程式中保存狀態。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/state-management
-ms.openlocfilehash: ed203458126f3b4c97103c88a465e3eb5953a775
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 7351ee2438c6adf675b8aa5e8ecdb1b2da7b4f23
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879719"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943923"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
@@ -164,7 +164,7 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 選擇取決於您想要使用的備份存放區。 在下列範例中，會使用 `sessionStorage`：
 
-```cshtml
+```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 ```
@@ -215,7 +215,7 @@ private int? currentCount;
 
 不是無條件地顯示 [計數] 和 [**遞增**] 按鈕，而是只有在載入資料時，才選擇顯示這些元素：
 
-```cshtml
+```razor
 @if (currentCount.HasValue)
 {
     <p>Current count: <strong>@currentCount</strong></p>
@@ -255,7 +255,7 @@ else
 
 針對未使用 `localStorage` 或 `sessionStorage`的其他頁面，可進行預呈現可能會很有用。 若要保持已啟用的已啟用狀態，請延遲載入作業，直到瀏覽器連線到線路為止。 以下是儲存計數器值的範例：
 
-```cshtml
+```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedLocalStorage ProtectedLocalStore
 
@@ -296,7 +296,7 @@ else
 
 在下列 `CounterStateProvider` 元件的範例中，會保存計數器資料：
 
-```cshtml
+```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 
@@ -336,7 +336,7 @@ else
 
 若要使用 `CounterStateProvider` 元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取狀態，請將 `CounterStateProvider` 元件包裝在 `App` 元件（*razor*）的 `Router` 周圍：
 
-```cshtml
+```razor
 <CounterStateProvider>
     <Router AppAssembly="typeof(Startup).Assembly">
         ...
@@ -346,7 +346,7 @@ else
 
 包裝的元件會接收並可修改保存的計數器狀態。 下列 `Counter` 元件會執行模式：
 
-```cshtml
+```razor
 @page "/counter"
 
 <p>Current count: <strong>@CounterStateProvider.CurrentCount</strong></p>

@@ -5,16 +5,16 @@ description: 探索如何將元件包含在來自外部元件程式庫的 Blazor
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/class-libraries
-ms.openlocfilehash: d4cc4124c9dc28ed6da0923b919919df4965f89f
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 6bac007e3e1d046d6b16a3a0be6dc5976b99b766
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962714"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943871"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
 
@@ -73,7 +73,7 @@ ms.locfileid: "73962714"
 
 您可以使用命名空間的完整型別名稱來參考 `SalesReport` 元件：
 
-```cshtml
+```razor
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
@@ -83,7 +83,7 @@ Welcome to your new app.
 
 如果程式庫是使用 `@using` 指示詞帶入範圍中，則也可以參考此元件：
 
-```cshtml
+```razor
 @using MyComponentLib1
 
 <h1>Hello, world!</h1>

@@ -9,12 +9,12 @@ ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/dependency-injection
-ms.openlocfilehash: 17dd0f927064ae7c2b1e3e439fd93e2cb220a5a4
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: aad6cfee500b5cb502470f6a4a7cb5756df09dc4
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879772"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943780"
 ---
 # <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
 
@@ -84,7 +84,7 @@ DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，�
 
 下列範例示範如何使用 `@inject`。 執行 `Services.IDataAccess` 的服務會插入元件的屬性 `DataRepository`中。 請注意程式碼如何使用 `IDataAccess` 抽象：
 
-[!code-cshtml[](dependency-injection/samples_snapshot/3.x/CustomerList.razor?highlight=2-3,23)]
+[!code-razor[](dependency-injection/samples_snapshot/3.x/CustomerList.razor?highlight=2-3,23)]
 
 就內部而言，產生的屬性（`DataRepository`）會使用 `InjectAttribute` 屬性。 通常不會直接使用這個屬性。 如果元件需要基類，而且基類也需要插入的屬性，請手動加入 `InjectAttribute`：
 
@@ -100,7 +100,7 @@ public class ComponentBase : IComponent
 
 在衍生自基類的元件中，不需要 `@inject` 指示詞。 基類的 `InjectAttribute` 已足夠：
 
-```cshtml
+```razor
 @page "/demo"
 @inherits ComponentBase
 
@@ -135,7 +135,7 @@ public class DataAccess : IDataAccess
 
 若要將服務的範圍設為元件的存留期，可以使用 `OwningComponentBase` 和 `OwningComponentBase<TService>` 基類。 這些基類會公開類型 `IServiceProvider` 的 `ScopedServices` 屬性，其會解析範圍設定為元件存留期的服務。 若要撰寫繼承自 Razor 基類的元件，請使用 `@inherits` 指示詞。
 
-```cshtml
+```razor
 @page "/users"
 @attribute [Authorize]
 @inherits OwningComponentBase<Data.ApplicationDbContext>

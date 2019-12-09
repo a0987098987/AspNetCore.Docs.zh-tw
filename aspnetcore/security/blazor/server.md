@@ -5,17 +5,17 @@ description: 瞭解如何降低 Blazor 伺服器應用程式的安全性威脅�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/server
-ms.openlocfilehash: 5cf83a4dd255959e8840fca3a8194b5b4e2ad0a8
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 2d644b84b304a31ad0debc16164ad155c7f7da65
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963883"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944278"
 ---
 # <a name="secure-aspnet-core-opno-locblazor-server-apps"></a>保護 ASP.NET Core Blazor 伺服器應用程式
 
@@ -38,7 +38,7 @@ Blazor 伺服器應用程式會採用具*狀態*的資料處理模型，其中�
 
 * [CPU](#cpu)
 * [記憶體](#memory)
-* [用戶端連接](#client-connections)
+* [用戶端連線](#client-connections)
 
 阻絕服務（DoS）攻擊通常會設法耗盡應用程式或伺服器的資源。 不過，資源耗盡不一定是系統遭受攻擊的結果。 例如，有限的資源可能會因為高使用者需求而耗盡。 [拒絕服務（dos）攻擊](#denial-of-service-dos-attacks)一節會進一步涵蓋 DoS。
 
@@ -73,7 +73,7 @@ Blazor 伺服器應用程式會針對具狀態應用程式（例如 WPF、Window
 > [!NOTE]
 > 在開發期間，可以流量分析工具或捕捉到的追蹤來評估用戶端的記憶體需求。 Profiler 或追蹤不會捕獲配置給特定用戶端的記憶體。 若要在開發期間捕捉特定用戶端的記憶體使用量，請捕捉傾印，並檢查以使用者線路為根之所有物件的記憶體需求。
 
-### <a name="client-connections"></a>用戶端連接
+### <a name="client-connections"></a>用戶端連線
 
 當一或多個用戶端開啟太多與伺服器的並行連線，導致其他用戶端無法建立新的連線時，就會發生連線耗盡的情況。
 
@@ -97,7 +97,7 @@ Blazor 用戶端會在每個會話建立單一連線，並且只要開啟瀏覽�
 | Blazor 伺服器應用程式限制                            | 描述 | Default |
 | ------------------------------------------------------- | ----------- | ------- |
 | `CircuitOptions.DisconnectedCircuitMaxRetained`         | 給定伺服器一次保存在記憶體中的中斷連線線路數目上限。 | 100 |
-| `CircuitOptions.DisconnectedCircuitRetentionPeriod`     | 中斷連線的線路在損毀之前，保留在記憶體中的最大時間量。 | 3分鐘 |
+| `CircuitOptions.DisconnectedCircuitRetentionPeriod`     | 中斷連線的線路在損毀之前，保留在記憶體中的最大時間量。 | 3 分鐘 |
 | `CircuitOptions.JSInteropDefaultCallTimeout`            | 伺服器在計時非同步 JavaScript 函式呼叫之前等待的最大時間量。 | 1 分鐘 |
 | `CircuitOptions.MaxBufferedUnacknowledgedRenderBatches` | 伺服器在指定時間將每個線路保留在記憶體中的未認可轉譯批次數目上限，以支援健全的重新連接。 達到此限制之後，伺服器就會停止產生新的轉譯批次，直到用戶端認可一或多個批次為止。 | 10 |
 
@@ -148,7 +148,7 @@ Blazor 用戶端會在每個會話建立單一連線，並且只要開啟瀏覽�
 
 事件會提供 Blazor 伺服器應用程式的進入點。 Web apps 中保護端點的相同規則適用于 Blazor 伺服器應用程式中的事件處理。 惡意用戶端可以將任何想要傳送的資料傳送為事件的內容。
 
-例如:
+例如：
 
 * `<select>` 的變更事件可能會傳送的值不在應用程式呈現給用戶端的選項內。
 * `<input>` 可以將任何文字資料傳送至伺服器，略過用戶端驗證。
@@ -159,7 +159,7 @@ Blazor 的伺服器事件是非同步，因此可以藉由產生新的轉譯，�
 
 假設有一個「計數器」元件，應該允許使用者增加最多三次的計數器。 根據 `count`的值，有條件地遞增計數器的按鈕：
 
-```cshtml
+```razor
 <p>Count: @count<p>
 
 @if (count < 3)
@@ -180,7 +180,7 @@ Blazor 的伺服器事件是非同步，因此可以藉由產生新的轉譯，�
 
 用戶端可以分派一或多個增量事件，架構才會產生這個元件的新轉譯。 結果是，使用者可以將 `count` 遞增*三次*，因為 UI 不會快速移除按鈕。 以下範例顯示達成三個 `count` 增量之限制的正確方式：
 
-```cshtml
+```razor
 <p>Count: @count<p>
 
 @if (count < 3)
@@ -208,7 +208,7 @@ Blazor 的伺服器事件是非同步，因此可以藉由產生新的轉譯，�
 
 如果事件回呼叫用長時間執行的作業（例如從外部服務或資料庫提取資料），請考慮使用「防護」。 此防護可以防止使用者在作業進行中時，使用視覺效果的意見反應來排入多個作業。 下列元件程式碼會將 `isLoading` 設定為 `true`，同時 `GetForecastAsync` 從伺服器取得資料。 當 `isLoading` `true`時，UI 中的按鈕會停用：
 
-```cshtml
+```razor
 @page "/fetchdata"
 @using BlazorServerSample.Data
 @inject WeatherForecastService ForecastService
@@ -235,7 +235,7 @@ Blazor 的伺服器事件是非同步，因此可以藉由產生新的轉譯，�
 
 除了使用防護[多個分派](#guard-against-multiple-dispatches)一節中所述的防護以外，請考慮在處置元件時，使用 <xref:System.Threading.CancellationToken> 來取消長時間執行的作業。 這種方法的優點是避免在元件中*使用-dispose* ：
 
-```cshtml
+```razor
 @implements IDisposable
 
 ...
@@ -291,8 +291,8 @@ Blazor 的伺服器事件是非同步，因此可以藉由產生新的轉譯，�
 
 使用下列內容啟用詳細錯誤：
 
-* `CircuitOptions.DetailedErrors`
-* `DetailedErrors` 設定金鑰。 例如，將 `ASPNETCORE_DETAILEDERRORS` 環境變數設定為 `true`的值。
+* `CircuitOptions.DetailedErrors`。
+* `DetailedErrors` 組態機碼。 例如，將 `ASPNETCORE_DETAILEDERRORS` 環境變數設定為 `true`的值。
 
 > [!WARNING]
 > 將錯誤資訊公開給網際網路上的用戶端，是應一律避免的安全性風險。

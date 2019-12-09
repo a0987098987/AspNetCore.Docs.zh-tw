@@ -5,16 +5,16 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/27/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/components
-ms.openlocfilehash: 9cdbae0bde8f6c44dc8b680dccbf9c8f96043c7f
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: a79202565f45b4d26e280427892ea16b33f3f853
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879701"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943858"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -42,7 +42,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 * `_headingFontStyle` 至 `font-style`的 CSS 屬性值。
 * `_headingText` 至 `<h1>` 元素的內容。
 
-```cshtml
+```razor
 <h1 style="font-style:@_headingFontStyle">@_headingText</h1>
 
 @code {
@@ -55,7 +55,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 元件是一般C#類別，可以放在專案內的任何位置。 產生網頁的元件通常會位於*Pages*資料夾中。 非頁面元件通常會放在*共用*資料夾中，或加入至專案的自訂資料夾中。 若要使用自訂資料夾，請將自訂資料夾的命名空間新增至父元件或應用程式的 *_Imports razor*檔案。 例如，下列命名空間會在應用程式的根命名空間為 `WebApplication`時，讓*元件*資料夾中的元件可供使用：
 
-```cshtml
+```razor
 @using WebApplication.Components
 ```
 
@@ -128,11 +128,13 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 在*Index*中的下列標記會呈現 `HeadingComponent` 實例：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/Index.razor?name=snippet_HeadingComponent)]
+```razor
+<HeadingComponent />
+```
 
 *Components/HeadingComponent. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/HeadingComponent.razor)]
+[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/HeadingComponent.razor)]
 
 如果元件包含的 HTML 專案具有大寫的第一個字母，但不符合元件名稱，則會發出警告，指出該元素有未預期的名稱。 為元件的命名空間加入 `@using` 語句，會使元件可供使用，這會移除警告。
 
@@ -142,13 +144,25 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 *Components/ChildComponent. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=11-12)]
+[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=11-12)]
 
-在下列範例中，`ParentComponent` 設定 `ChildComponent`的 `Title` 屬性值。
+在範例應用程式的下列範例中，`ParentComponent` 設定 `ChildComponent`的 `Title` 屬性值。
 
 *Pages/ParentComponent. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=5-6)]
+```razor
+@page "/ParentComponent"
+
+<h1>Parent-child example</h1>
+
+<ChildComponent Title="Panel Title from Parent"
+                OnClick="@ShowMessage">
+    Content of the child component is supplied
+    by the parent component.
+</ChildComponent>
+
+...
+```
 
 ## <a name="child-content"></a>子內容
 
@@ -158,16 +172,28 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 *Components/ChildComponent. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=3,14-15)]
+[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=3,14-15)]
 
 > [!NOTE]
 > 接收 `RenderFragment` 內容的屬性必須依照慣例命名 `ChildContent`。
 
-下列 `ParentComponent` 可以藉由將內容放入 `<ChildComponent>` 標記中，來提供呈現 `ChildComponent` 的內容。
+範例應用程式中的 `ParentComponent` 可以藉由將內容放入 `<ChildComponent>` 標記中，來提供呈現 `ChildComponent` 的內容。
 
 *Pages/ParentComponent. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=7-8)]
+```razor
+@page "/ParentComponent"
+
+<h1>Parent-child example</h1>
+
+<ChildComponent Title="Panel Title from Parent"
+                OnClick="@ShowMessage">
+    Content of the child component is supplied
+    by the parent component.
+</ChildComponent>
+
+...
+```
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>屬性展開和任意參數
 
@@ -175,7 +201,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 在下列範例中，第一個 `<input>` 元素（`id="useIndividualParams"`）使用個別的元件參數，而第二個 `<input>` 元素（`id="useAttributesDict"`）使用屬性展開：
 
-```cshtml
+```razor
 <input id="useIndividualParams"
        maxlength="@Maxlength"
        placeholder="@Placeholder"
@@ -230,7 +256,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 若要接受任意屬性，請使用 `[Parameter]` 屬性定義元件參數，並將 `CaptureUnmatchedValues` 屬性設定為 `true`：
 
-```cshtml
+```razor
 @code {
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> InputAttributes { get; set; }
@@ -243,13 +269,13 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 *ParentComponent razor*：
 
-```cshtml
+```razor
 <ChildComponent extra="10" />
 ```
 
 *ChildComponent razor*：
 
-```cshtml
+```razor
 <div @attributes="AdditionalAttributes" extra="5" />
 
 [Parameter(CaptureUnmatchedValues = true)]
@@ -266,13 +292,13 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 *ParentComponent razor*：
 
-```cshtml
+```razor
 <ChildComponent extra="10" />
 ```
 
 *ChildComponent razor*：
 
-```cshtml
+```razor
 <div extra="5" @attributes="AdditionalAttributes" />
 
 [Parameter(CaptureUnmatchedValues = true)]
@@ -289,7 +315,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 元件和 DOM 元素的資料系結都是使用[`@bind`](xref:mvc/views/razor#bind)屬性來完成。 下列範例會將 `CurrentValue` 屬性系結至文字方塊的值：
 
-```cshtml
+```razor
 <input @bind="CurrentValue" />
 
 @code {
@@ -303,7 +329,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 搭配 `CurrentValue` 屬性（`<input @bind="CurrentValue" />`）使用 `@bind` 基本上等同于下列內容：
 
-```cshtml
+```razor
 <input value="@CurrentValue"
     @onchange="@((ChangeEventArgs __e) => CurrentValue = 
         __e.Value.ToString())" />
@@ -317,7 +343,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 除了使用 `@bind` 語法來處理 `onchange` 事件之外，也可以使用其他事件來系結屬性或欄位，方法是指定具有 `event` 參數（[`@bind-value:event`](xref:mvc/views/razor#bind)）的[`@bind-value`](xref:mvc/views/razor#bind)屬性。 下列範例會系結 `oninput` 事件的 `CurrentValue` 屬性：
 
-```cshtml
+```razor
 <input @bind-value="CurrentValue" @bind-value:event="oninput" />
 
 @code {
@@ -335,7 +361,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 * `<input>` 元素會系結至 `int` 類型，其初始值為 `123`：
 
-  ```cshtml
+  ```razor
   <input @bind="MyProperty" />
 
   @code {
@@ -386,7 +412,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 資料系結可搭配使用[`@bind:format`](xref:mvc/views/razor#bind)<xref:System.DateTime> 格式字串。 目前無法使用其他格式運算式，例如貨幣或數位格式。
 
-```cshtml
+```razor
 <input @bind="StartDate" @bind:format="yyyy-MM-dd" />
 
 @code {
@@ -416,7 +442,7 @@ Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結�
 
 下列子元件（`ChildComponent`）具有 `Year` 元件參數和 `YearChanged` 回呼：
 
-```cshtml
+```razor
 <h2>Child Component</h2>
 
 <p>Year: @Year</p>
@@ -434,7 +460,7 @@ Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結�
 
 下列父元件會使用 `ChildComponent`，並將 `ParentYear` 參數從父系系結至子元件上的 `Year` 參數：
 
-```cshtml
+```razor
 @page "/ParentComponent"
 
 <h1>Parent Component</h1>
@@ -486,13 +512,13 @@ Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結�
 
 依照慣例，`<ChildComponent @bind-Year="ParentYear" />` 基本上等同于撰寫：
 
-```cshtml
+```razor
 <ChildComponent @bind-Year="ParentYear" @bind-Year:event="YearChanged" />
 ```
 
 一般來說，屬性可以使用 `@bind-property:event` 屬性系結至對應的事件處理常式。 例如，您可以使用下列兩個屬性，將屬性 `MyProp` 系結至 `MyEventHandler`：
 
-```cshtml
+```razor
 <MyComponent @bind-MyProp="MyValue" @bind-MyProp:event="MyEventHandler" />
 ```
 
@@ -502,7 +528,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 下列程式碼會在 UI 中選取按鈕時，呼叫 `UpdateHeading` 方法：
 
-```cshtml
+```razor
 <button class="btn btn-primary" @onclick="UpdateHeading">
     Update heading
 </button>
@@ -517,7 +543,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 下列程式碼會在 UI 中變更核取方塊時呼叫 `CheckChanged` 方法：
 
-```cshtml
+```razor
 <input type="checkbox" class="form-check-input" @onchange="CheckChanged" />
 
 @code {
@@ -532,7 +558,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 在下列範例中，當選取按鈕時，會以非同步方式呼叫 `UpdateHeading`：
 
-```cshtml
+```razor
 <button class="btn btn-primary" @onclick="UpdateHeading">
     Update heading
 </button>
@@ -572,13 +598,13 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 您也可以使用 Lambda 運算式：
 
-```cshtml
+```razor
 <button @onclick="@(e => Console.WriteLine("Hello, world!"))">Say hello</button>
 ```
 
 關閉其他值（例如反覆運算一組專案時）通常會很方便。 下列範例會建立三個按鈕，其中每個都會呼叫 `UpdateHeading` 在 UI 中選取時傳遞事件引數（`MouseEventArgs`）和其按鈕編號（`buttonNumber`）：
 
-```cshtml
+```razor
 <h2>@message</h2>
 
 @for (var i = 1; i < 4; i++)
@@ -609,13 +635,36 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 有一個常見的嵌套元件案例，就是當子元件事件發生時，想要執行父元件的方法&mdash;例如，當子系中發生 `onclick` 事件時。 若要在元件之間公開事件，請使用 `EventCallback`。 父元件可以將回呼方法指派給子元件的 `EventCallback`。
 
-範例應用程式中的 `ChildComponent` 會示範如何設定按鈕的 `onclick` 處理常式，以接收來自範例 `ParentComponent`的 `EventCallback` 委派。 系統會使用 `MouseEventArgs`輸入 `EventCallback`，這適用于來自週邊裝置的 `onclick` 事件：
+範例應用程式中的 `ChildComponent` （*Components/ChildComponent*）示範如何設定按鈕的 `onclick` 處理常式，以接收來自範例 `ParentComponent`的 `EventCallback` 委派。 系統會使用 `MouseEventArgs`輸入 `EventCallback`，這適用于來自週邊裝置的 `onclick` 事件：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
+[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
-`ParentComponent` 會將子系的 `EventCallback<T>` 設定為其 `ShowMessage` 方法：
+`ParentComponent` 會將子系的 `EventCallback<T>` 設定為其 `ShowMessage` 方法。
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=6,16-19)]
+*Pages/ParentComponent. razor*：
+
+```razor
+@page "/ParentComponent"
+
+<h1>Parent-child example</h1>
+
+<ChildComponent Title="Panel Title from Parent"
+                OnClick="@ShowMessage">
+    Content of the child component is supplied
+    by the parent component.
+</ChildComponent>
+
+<p><b>@messageText</b></p>
+
+@code {
+    private string messageText;
+
+    private void ShowMessage(MouseEventArgs e)
+    {
+        messageText = $"Blaze a new trail with Blazor! ({e.ScreenX}, {e.ScreenY})";
+    }
+}
+```
 
 在 `ChildComponent`中選取按鈕時：
 
@@ -624,7 +673,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 `EventCallback` 和 `EventCallback<T>` 允許非同步委派。 `EventCallback<T>` 是強型別，而且需要特定的引數類型。 `EventCallback` 是弱式類型，而且允許任何引數類型。
 
-```cshtml
+```razor
 <p><b>@messageText</b></p>
 
 @{ var message = "Default Text"; }
@@ -655,7 +704,7 @@ await callback.InvokeAsync(arg);
 
 在輸入裝置上選取索引鍵，且元素焦點位於文字方塊上時，瀏覽器通常會在文字方塊中顯示索引鍵的字元。 在下列範例中，會藉由指定 `@onkeypress:preventDefault` 指示詞屬性來防止預設行為。 計數器會遞增，而且 **+** 的索引鍵不會捕捉到 `<input>` 元素的值中：
 
-```cshtml
+```razor
 <input value="@_count" @onkeypress="KeyHandler" @onkeypress:preventDefault />
 
 @code {
@@ -675,7 +724,7 @@ await callback.InvokeAsync(arg);
 
 屬性的值也可以是運算式。 在下列範例中，`_shouldPreventDefault` 是設定為 `true` 或 `false`的 `bool` 欄位：
 
-```cshtml
+```razor
 <input @onkeypress:preventDefault="_shouldPreventDefault" />
 ```
 
@@ -687,7 +736,7 @@ await callback.InvokeAsync(arg);
 
 在下列範例中，選取核取方塊可防止從第二個子系 `<div>` 的 click 事件傳播到父 `<div>`：
 
-```cshtml
+```razor
 <label>
     <input @bind="_stopPropagation" type="checkbox" />
     Stop Propagation
@@ -728,7 +777,7 @@ await callback.InvokeAsync(arg);
 * 將 `<input>` 元素的值設定為 `Password` 屬性。
 * 將 `Password` 屬性的變更公開至具有[app eventcallback](#eventcallback)的父元件。
 
-```cshtml
+```razor
 Password: 
 
 <input @oninput="OnPasswordChanged" 
@@ -765,7 +814,7 @@ Password:
 
 `PasswordField` 元件會在另一個元件中使用：
 
-```cshtml
+```razor
 <PasswordField @bind-Password="password" />
 
 @code {
@@ -780,7 +829,7 @@ Password:
 
 如果密碼的值中使用了空格，下列範例會向使用者提供立即的意見反應：
 
-```cshtml
+```razor
 Password: 
 
 <input @oninput="OnPasswordChanged" 
@@ -844,7 +893,7 @@ Password:
 * 將[`@ref`](xref:mvc/views/razor#ref)屬性加入至子元件。
 * 定義與子元件類型相同的欄位。
 
-```cshtml
+```razor
 <MyLoginDialog @ref="loginDialog" ... />
 
 @code {
@@ -891,7 +940,7 @@ public class NotifierService
 
 使用 `NotifierService` 來更新元件：
 
-```cshtml
+```razor
 @page "/"
 @inject NotifierService Notifier
 @implements IDisposable
@@ -975,7 +1024,7 @@ public class NotifierService
 
 當物件變更時，您也可以使用 `@key` 來防止 Blazor 保留元素或元件子樹：
 
-```cshtml
+```razor
 <div @key="currentPerson">
     ... content that depends on currentPerson ...
 </div>
@@ -1004,17 +1053,39 @@ Blazor 中的路由會藉由提供路由範本給應用程式中的每個可存�
 
 當您編譯具有 `@page` 指示詞的 Razor 檔案時，會提供指定路由範本 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> 給產生的類別。 在執行時間，路由器會尋找具有 `RouteAttribute` 的元件類別，並轉譯哪一個元件的路由範本符合要求的 URL。
 
-多個路由範本可以套用至元件。 下列元件會回應 `/BlazorRoute` 和 `/DifferentBlazorRoute`的要求：
+多個路由範本可以套用至元件。 下列元件會回應 `/BlazorRoute` 和 `/DifferentBlazorRoute`的要求。
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
+*Pages/BlazorRoute. razor*：
+
+```razor
+@page "/BlazorRoute"
+@page "/DifferentBlazorRoute"
+
+<h1>Blazor routing</h1>
+```
 
 ## <a name="route-parameters"></a>路由參數
 
 元件可以從 `@page` 指示詞所提供的路由範本接收路由參數。 路由器會使用路由參數來填入對應的元件參數。
 
-*路由參數元件*：
+*Pages/RouteParameter. razor*：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/RouteParameter.razor?name=snippet_RouteParameter)]
+```razor
+@page "/RouteParameter"
+@page "/RouteParameter/{text}"
+
+<h1>Blazor is @Text!</h1>
+
+@code {
+    [Parameter]
+    public string Text { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Text = Text ?? "fantastic";
+    }
+}
+```
 
 不支援選擇性參數，因此上述範例中會套用兩個 `@page` 的指示詞。 第一個則允許不使用參數導覽至元件。 第二個 `@page` 指示詞會採用 `{text}` 路由參數，並將值指派給 `Text` 屬性。
 
@@ -1033,7 +1104,7 @@ Razor 元件是以部分類別的形式產生。 Razor 元件是使用下列其�
 
 *Counter. razor*：
 
-```cshtml
+```razor
 @page "/counter"
 
 <h1>Counter</h1>
@@ -1056,7 +1127,7 @@ Razor 元件是以部分類別的形式產生。 Razor 元件是使用下列其�
 
 *Counter. razor*：
 
-```cshtml
+```razor
 @page "/counter"
 
 <h1>Counter</h1>
@@ -1095,7 +1166,7 @@ namespace BlazorApp.Pages
 
 *Pages/BlazorRocks. razor*：
 
-```cshtml
+```razor
 @page "/BlazorRocks"
 @inherits BlazorRocksBase
 
@@ -1135,7 +1206,7 @@ namespace BlazorSample
 
 如果*BlazorSample/Shared/* 資料夾中有另一個元件（`NavMenu.razor`）存在，則元件可用於 `Index.razor`，並具有下列 `@using` 語句：
 
-```cshtml
+```razor
 @using BlazorSample.Shared
 
 This is the Index page.
@@ -1145,7 +1216,7 @@ This is the Index page.
 
 元件也可以使用其完整名稱來參考，這不需要[`@using`](xref:mvc/views/razor#using)指示詞：
 
-```cshtml
+```razor
 This is the Index page.
 
 <BlazorSample.Shared.NavMenu></BlazorSample.Shared.NavMenu>
@@ -1164,7 +1235,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果 `false` 或 `nul
 
 在下列範例中，`IsCompleted` 會決定是否要在元素的標記中轉譯 `checked`：
 
-```cshtml
+```razor
 <input type="checkbox" checked="@IsCompleted" />
 
 @code {
@@ -1221,11 +1292,11 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果 `false` 或 `nul
 
 `TableTemplate` 元件：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
+[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
 
 使用樣板化元件時，可以使用符合參數名稱的子專案來指定範本參數（`TableHeader`，並在下列範例中 `RowTemplate`）：
 
-```cshtml
+```razor
 <TableTemplate Items="pets">
     <TableHeader>
         <th>ID</th>
@@ -1242,7 +1313,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果 `false` 或 `nul
 
 當做元素傳遞 `RenderFragment<T>` 類型的元件引數具有名為 `context` 的隱含參數（例如，從前面的程式碼範例，`@context.PetId`），但您可以使用子專案上的 `Context` 屬性來變更參數名稱。 在下列範例中，`RowTemplate` 元素的 `Context` 屬性會指定 `pet` 參數：
 
-```cshtml
+```razor
 <TableTemplate Items="pets">
     <TableHeader>
         <th>ID</th>
@@ -1257,7 +1328,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果 `false` 或 `nul
 
 或者，您也可以指定 component 元素上的 `Context` 屬性。 指定的 `Context` 屬性會套用至所有指定的範本參數。 當您想要指定隱含子內容的內容參數名稱時（不含任何換行的子項目），這會很有用。 在下列範例中，`Context` 屬性會出現在 `TableTemplate` 元素上，並套用至所有範本參數：
 
-```cshtml
+```razor
 <TableTemplate Items="pets" Context="pet">
     <TableHeader>
         <th>ID</th>
@@ -1274,11 +1345,11 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果 `false` 或 `nul
 
 樣板化元件通常會以一般方式輸入。 例如，泛型 `ListViewTemplate` 元件可以用來呈現 `IEnumerable<T>` 值。 若要定義泛型元件，請使用[`@typeparam`](xref:mvc/views/razor#typeparam)指示詞來指定類型參數：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
+[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
 
 使用泛型型別元件時，會在可能的情況下推斷型別參數：
 
-```cshtml
+```razor
 <ListViewTemplate Items="pets">
     <ItemTemplate Context="pet">
         <li>@pet.Name</li>
@@ -1288,7 +1359,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果 `false` 或 `nul
 
 否則，必須使用符合型別參數名稱的屬性來明確指定型別參數。 在下列範例中，`TItem="Pet"` 會指定類型：
 
-```cshtml
+```razor
 <ListViewTemplate Items="pets" TItem="Pet">
     <ItemTemplate Context="pet">
         <li>@pet.Name</li>
@@ -1319,7 +1390,7 @@ public class ThemeInfo
 
 `CascadingValuesParametersLayout` 元件：
 
-```cshtml
+```razor
 @inherits LayoutComponentBase
 @using BlazorSample.UIThemeClasses
 
@@ -1349,7 +1420,7 @@ public class ThemeInfo
 
 `CascadingValuesParametersTheme` 元件：
 
-```cshtml
+```razor
 @page "/cascadingvaluesparameterstheme"
 @layout CascadingValuesParametersLayout
 @using BlazorSample.UIThemeClasses
@@ -1385,7 +1456,7 @@ public class ThemeInfo
 
 若要在相同的子樹中串聯多個相同類型的值，請為每個 `CascadingValue` 元件和其對應的 `CascadingParameter`提供唯一的 `Name` 字串。 在下列範例中，兩個 `CascadingValue` 元件會依名稱將不同的實例 `MyCascadingType`：
 
-```cshtml
+```razor
 <CascadingValue Value=@ParentCascadeParameter1 Name="CascadeParam1">
     <CascadingValue Value=@ParentCascadeParameter2 Name="CascadeParam2">
         ...
@@ -1404,7 +1475,7 @@ public class ThemeInfo
 
 在子系元件中，串聯的參數會以名稱從上階元件中對應的串聯值接收其值：
 
-```cshtml
+```razor
 ...
 
 @code {
@@ -1426,31 +1497,53 @@ public class ThemeInfo
 
 `CascadingValuesParametersTabSet` 元件會使用 `TabSet` 元件，其中包含數個 `Tab` 元件：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
+```razor
+<TabSet>
+    <Tab Title="First tab">
+        <h4>Greetings from the first tab!</h4>
+
+        <label>
+            <input type="checkbox" @bind="showThirdTab" />
+            Toggle third tab
+        </label>
+    </Tab>
+    <Tab Title="Second tab">
+        <h4>The second tab says Hello World!</h4>
+    </Tab>
+
+    @if (showThirdTab)
+    {
+        <Tab Title="Third tab">
+            <h4>Welcome to the disappearing third tab!</h4>
+            <p>Toggle this tab from the first tab.</p>
+        </Tab>
+    }
+</TabSet>
+```
 
 子 `Tab` 元件不會明確地當做參數傳遞至 `TabSet`。 相反地，子 `Tab` 元件是 `TabSet`之子內容的一部分。 不過，`TabSet` 還是必須知道每個 `Tab` 元件，才能轉譯標頭和使用中的索引標籤。若要在不需要額外程式碼的情況下啟用這項協調，`TabSet` 元件*可以將其本身提供為*串聯的值，然後由子 `Tab` 元件挑選。
 
 `TabSet` 元件：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/TabSet.razor)]
+[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/TabSet.razor)]
 
 子系 `Tab` 元件會將包含的 `TabSet` 作為串聯參數來捕捉，因此 `Tab` 元件會將自己加入至 `TabSet`，並對作用中的索引標籤進行協調。
 
 `Tab` 元件：
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/Tab.razor)]
+[!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/Tab.razor)]
 
 ## <a name="razor-templates"></a>Razor 範本
 
 轉譯片段可以使用 Razor 範本語法來定義。 Razor 範本是定義 UI 程式碼片段並採用下列格式的方式：
 
-```cshtml
+```razor
 @<{HTML tag}>...</{HTML tag}>
 ```
 
 下列範例說明如何指定 `RenderFragment` 和 `RenderFragment<T>` 值，並直接在元件中呈現範本。 轉譯片段也可以當做引數傳遞至樣板[化元件](#templated-components)。
 
-```cshtml
+```razor
 @timeTemplate
 
 @petTemplate(new Pet { Name = "Rex" })
@@ -1484,7 +1577,7 @@ public class ThemeInfo
 
 請考慮下列 `PetDetails` 元件，其可手動內建于另一個元件中：
 
-```cshtml
+```razor
 <h2>Pet Details Component</h2>
 
 <p>@PetDetailsQuote</p>
@@ -1500,7 +1593,7 @@ public class ThemeInfo
 
 `BuiltContent` 元件：
 
-```cshtml
+```razor
 @page "/BuiltContent"
 
 <h1>Build a component</h1>
@@ -1539,9 +1632,9 @@ public class ThemeInfo
 
 這些改良功能的重要範例包括*序號*。 序號會向運行時程表示輸出來自哪些不同和已排序的程式程式碼。 執行時間會使用這項資訊，以線性時間產生有效率的樹狀差異，這比一般樹狀結構的差異演算法通常還能快得多。
 
-請考慮下列簡單的 `.razor` 檔案：
+請考慮下列 Razor 元件（*razor*）檔案：
 
-```cshtml
+```razor
 @if (someFlag)
 {
     <text>First</text>
@@ -1704,7 +1797,7 @@ public class CultureController : Controller
 
 下列元件顯示當使用者選取文化特性時，如何執行初始重新導向的範例：
 
-```cshtml
+```razor
 @inject NavigationManager NavigationManager
 
 <h3>Select your language</h3>

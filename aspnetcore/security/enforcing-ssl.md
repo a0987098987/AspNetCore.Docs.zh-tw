@@ -4,14 +4,14 @@ author: rick-anderson
 description: 瞭解如何在 ASP.NET Core web 應用程式中要求使用 HTTPS/TLS。
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/14/2019
+ms.date: 12/06/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 82cd2e52f3bd929682b9eae24611ad04fd9f8682
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 032105c67e15ab94635ae6fadea103450c7eb0fb
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317362"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944235"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>在 ASP.NET Core 中強制使用 HTTPS
 
@@ -85,7 +85,7 @@ ms.locfileid: "74317362"
 
 我們建議使用暫時重新導向，而不是永久重新導向。 連結快取在開發環境中可能會造成不穩定的行為。 如果您想要在應用程式處於非開發環境時傳送永久重新導向狀態碼，請參閱在[生產中設定永久重新導向](#configure-permanent-redirects-in-production)一節。 我們建議使用[HSTS](#http-strict-transport-security-protocol-hsts)來通知用戶端，只應將安全的資源要求傳送至應用程式（僅限生產環境）。
 
-### <a name="port-configuration"></a>埠設定
+### <a name="port-configuration"></a>連接埠組態
 
 中介軟體必須要有埠，才可將不安全的要求重新導向至 HTTPS。 如果沒有可用的埠：
 
@@ -131,7 +131,7 @@ ms.locfileid: "74317362"
 > [!NOTE]
 > 當應用程式在反向 proxy 設定中執行時，<xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> 無法使用。 使用本節所述的其中一種其他方法來設定埠。
 
-### <a name="edge-deployments"></a>邊緣部署 
+### <a name="edge-deployments"></a>Edge 部署 
 
 當 Kestrel 或 HTTP.SYS 做為公眾面向的邊緣伺服器時，Kestrel 或 HTTP.SYS 必須設定為接聽兩者：
 
@@ -173,7 +173,7 @@ ms.locfileid: "74317362"
 上述反白顯示的程式碼：
 
 * 將[HttpsRedirectionOptions RedirectStatusCode](xref:Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionOptions.RedirectStatusCode*)設定為 <xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect>，這是預設值。 使用 <xref:Microsoft.AspNetCore.Http.StatusCodes> 類別的欄位，以 `RedirectStatusCode`指派。
-* 將 HTTPS 埠設定為5001。 預設值為443。
+* 將 HTTPS 埠設定為5001。
 
 #### <a name="configure-permanent-redirects-in-production"></a>在生產環境中設定永久重新導向
 
@@ -259,7 +259,7 @@ ASP.NET Core 2.1 和更新版本使用 `UseHsts` 擴充方法來執行 HSTS。 �
 
 `UseHsts` 不建議在開發中使用，因為瀏覽器會高度快取 HSTS 設定。 根據預設，`UseHsts` 會排除本機回送位址。
 
-若為第一次執行 HTTPS 的生產環境，請使用其中一個 <xref:System.TimeSpan> 方法，將初始[HstsOptions](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*)設定為較小的值。 如果您需要將 HTTPS 基礎結構還原為 HTTP，請將值從小時設定為不超過一天。 在您確信 HTTPS 設定的持續性之後，請增加 HSTS 的最大壽命值;常使用的值為一年。
+若為第一次執行 HTTPS 的生產環境，請使用其中一個 <xref:System.TimeSpan>方法，將初始 [HstsOptions 設定為較小的值](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*)。 如果您需要將 HTTPS 基礎結構還原為 HTTP，請將值從小時設定為不超過一天。 在您確信 HTTPS 設定的持續性之後，請增加 HSTS 的最大壽命值;常使用的值為一年。
 
 下列程式碼範例：
 

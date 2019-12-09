@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/07/2019
 uid: fundamentals/file-providers
-ms.openlocfilehash: 531f7acd7a704a74e6142d201f613f05288deecb
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.openlocfilehash: a454ca394546184968222ca2ca44d7159b19a12a
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896846"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944304"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
@@ -95,7 +95,7 @@ var physicalProvider = _env.ContentRootFileProvider;
 
 若要產生內嵌檔案的資訊清單，請將 `<GenerateEmbeddedFilesManifest>` 屬性設定為 `true`。 使用 [\<EmbeddedResource>](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) 來指定要內嵌的檔案：
 
-[!code-csharp[](file-providers/samples/3.x/FileProviderSample/FileProviderSample.csproj?highlight=6,14)]
+[!code-csharp[](file-providers/samples/3.x/FileProviderSample/FileProviderSample.csproj?highlight=5,13)]
 
 使用 [Glob 模式](#glob-patterns)來指定一或多個要內嵌到組件中的檔案。
 

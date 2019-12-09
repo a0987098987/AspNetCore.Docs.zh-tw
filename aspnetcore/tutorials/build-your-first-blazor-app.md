@@ -5,16 +5,16 @@ description: 逐步建立 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/27/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 07069410135e216ff5f4de94285a54be66d44615
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 11ff540a70ebdb8baa0c7adb98cb1dfe27d91e50
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880373"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944183"
 ---
 # <a name="build-your-first-opno-locblazor-app"></a>建立您的第一個 Blazor 應用程式
 
@@ -184,7 +184,7 @@ ms.locfileid: "74880373"
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
 
-   ```cshtml
+   ```razor
    <input placeholder="Something todo" @bind="newTodo" />
    ```
 

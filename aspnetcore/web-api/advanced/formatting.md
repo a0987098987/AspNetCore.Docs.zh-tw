@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 12/05/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 4433ed11dad7522962ebeed411c4bef88e07e7af
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: cab383053751598b882f3716943d3d9392c56f4a
+ms.sourcegitcommit: 29ace642ca0e1f0b48a18d66de266d8811df2b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881362"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74987965"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 
@@ -118,7 +118,7 @@ ASP.NET Core MVC 支援格式化回應資料。 您可以使用特定格式或�
 
 上述程式碼會使用 `XmlSerializer`來序列化結果。
 
-使用上述程式碼時，控制器方法應該根據要求的 `Accept` 標頭傳回適當的格式。
+使用上述程式碼時，控制器方法會根據要求的 `Accept` 標頭傳回適當的格式。
 
 ### <a name="configure-systemtextjson-based-formatters"></a>設定 System.Text.Json-based 格式器
 

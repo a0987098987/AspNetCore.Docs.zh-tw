@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 12/05/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 1988877a552ba58841140a00b61bdcf003afd87d
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 95b6d3e016edcd2e13207c8e658cf0d2fb21f945
+ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881348"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74959072"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -353,11 +353,6 @@ to use Data, it should not use models. That will make the namespace the same for
 -->
 
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
-* 安裝 Scaffolding 工具：
-
-  ```dotnetcli
-   dotnet tool install --global dotnet-aspnet-codegenerator
-   ```
 
 * **針對 Windows**：執行下列命令：
 
@@ -376,12 +371,6 @@ to use Data, it should not use models. That will make the namespace the same for
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
-* 安裝 Scaffolding 工具：
-
-  ```dotnetcli
-   dotnet tool install --global dotnet-aspnet-codegenerator
-   ```
-
 * 執行下列命令：
 
   ```dotnetcli

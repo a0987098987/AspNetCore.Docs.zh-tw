@@ -4,7 +4,7 @@
 
 在 RazorPagesMovie 專案中，建立名為 *Data* 的新資料夾。 將下列 `RazorPagesMovieContext` 類別新增至 *ata* 資料夾：
 
-[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Data/RazorPagesMovieContext.cs)]
 
 上述程式碼會建立實體集的 `DbSet` 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表，而實體則對應至資料表中的資料列。
 

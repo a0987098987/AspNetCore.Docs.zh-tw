@@ -4,14 +4,14 @@ author: blowdart
 description: 瞭解如何在 IIS 和 HTTP.sys 的 ASP.NET Core 中設定憑證驗證。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
-ms.date: 11/14/2019
+ms.date: 12/09/2019
 uid: security/authentication/certauth
-ms.openlocfilehash: 2ed3e88adf3bdb7528f47492b6eb5792f99f20d8
-ms.sourcegitcommit: f91d322f790123d41ec3271fa084ae20ed9f89a6
+ms.openlocfilehash: 38ee8a6767191bb3eee4286e49b96162b14d9889
+ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155001"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74959056"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
@@ -36,14 +36,14 @@ ms.locfileid: "74155001"
 
 如果驗證失敗，此處理程式會傳回 `403 (Forbidden)` 回應，而不是如您所預期的 `401 (Unauthorized)`。 其原因是必須在初始 TLS 連線期間進行驗證。 當它到達處理常式時，就太晚了。 沒有任何方法可將連接從匿名連接升級為具有憑證的連線。
 
-此外，也請在 `Startup.Configure` 方法中新增 `app.UseAuthentication();`。 否則，`HttpContext.User` 將不會設定為從憑證建立 `ClaimsPrincipal`。 例如:
+此外，也請在 `Startup.Configure` 方法中新增 `app.UseAuthentication();`。 否則，`HttpContext.User` 將不會設定為從憑證建立 `ClaimsPrincipal`。 例如：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddAuthentication(
         CertificateAuthenticationDefaults.AuthenticationScheme)
-            .AddCertificate();
+        .AddCertificate();
     // All the other service configuration.
 }
 
@@ -194,14 +194,16 @@ public static void Main(string[] args)
 public static IHostBuilder CreateHostBuilder(string[] args)
 {
     return Host.CreateDefaultBuilder(args)
-               .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureKestrel(o =>
-                    {
-                        o.ConfigureHttpsDefaults(o => o.ClientCertificateMode = ClientCertificateMode.RequireCertificate);
-                    });
-                });
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+            webBuilder.ConfigureKestrel(o =>
+            {
+                o.ConfigureHttpsDefaults(o => 
+            o.ClientCertificateMode = 
+                ClientCertificateMode.RequireCertificate);
+            });
+        });
 }
 ```
 
@@ -234,14 +236,13 @@ public static IHostBuilder CreateHostBuilder(string[] args)
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    // ...
-    
     services.AddCertificateForwarding(options =>
     {
         options.CertificateHeader = "X-ARR-ClientCert";
         options.HeaderConverter = (headerValue) =>
         {
             X509Certificate2 clientCertificate = null;
+        
             if(!string.IsNullOrWhiteSpace(headerValue))
             {
                 byte[] bytes = StringToByteArray(headerValue);
@@ -257,8 +258,12 @@ private static byte[] StringToByteArray(string hex)
 {
     int NumberChars = hex.Length;
     byte[] bytes = new byte[NumberChars / 2];
+
     for (int i = 0; i < NumberChars; i += 2)
+    {
         bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+    }
+
     return bytes;
 }
 ```
@@ -269,7 +274,7 @@ private static byte[] StringToByteArray(string hex)
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
     ...
-    
+
     app.UseRouting();
 
     app.UseCertificateForwarding();
@@ -295,8 +300,11 @@ namespace AspNetCoreCertificateAuthApi
     {
         public bool ValidateCertificate(X509Certificate2 clientCertificate)
         {
-            // Do not hardcode passwords in production code, use thumbprint or key vault
-            var cert = new X509Certificate2(Path.Combine("sts_dev_cert.pfx"), "1234");
+            // Do not hardcode passwords in production code
+            // Use thumbprint or key vault
+            var cert = new X509Certificate2(
+                Path.Combine("sts_dev_cert.pfx"), "1234");
+
             if (clientCertificate.Thumbprint == cert.Thumbprint)
             {
                 return true;
@@ -317,11 +325,12 @@ private async Task<JsonDocument> GetApiDataAsync()
 {
     try
     {
-        // Do not hardcode passwords in production code, use thumbprint or key vault
-        var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "sts_dev_cert.pfx"), "1234");
-
+        // Do not hardcode passwords in production code
+        // Use thumbprint or key vault
+        var cert = new X509Certificate2(
+            Path.Combine(_environment.ContentRootPath, 
+                "sts_dev_cert.pfx"), "1234");
         var client = _clientFactory.CreateClient();
-
         var request = new HttpRequestMessage()
         {
             RequestUri = new Uri("https://localhost:44379/api/values"),
@@ -339,7 +348,9 @@ private async Task<JsonDocument> GetApiDataAsync()
             return data;
         }
 
-        throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
+        throw new ApplicationException(
+            $"Status code: {response.StatusCode}, " +
+            $"Error: {response.ReasonPhrase}");
     }
     catch (Exception e)
     {

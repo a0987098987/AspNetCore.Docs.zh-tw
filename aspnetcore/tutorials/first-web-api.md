@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 96b4c030c1d91f97725d1f3623c7b4023ad99ff3
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 4377d7d1895b80b3c98a5b480c0f42820f11fbb8
+ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880630"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74959108"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -52,15 +52,15 @@ ms.locfileid: "74880630"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
@@ -71,7 +71,7 @@ ms.locfileid: "74880630"
 * 從 [檔案] 功能表選取 [新增] > [專案]。
 * 選取 **ASP.NET Core Web 應用程式**範本，然後按一下 [下一步]。
 * 將專案命名為 *TodoApi*，然後按一下 [建立]。
-* 在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中，確認選取 [.NET Core] 和 [ASP.NET Core 3.0]。 選取 **API** 範本，然後按一下 [建立]。
+* 在 [**建立新的 ASP.NET Core Web 應用程式**] 對話方塊中，確認已選取 [ **.net Core** ] 和 [ **ASP.NET Core 3.1** ]。 選取 **API** 範本，然後按一下 [建立]。
 
 ![VS 新增專案對話方塊](first-web-api/_static/vs3.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "74880630"
 
   ![macOS [新增專案] 對話方塊](first-web-api-mac/_static/1.png)
   
-* 在 [設定您的新 ASP.NET Core Web API] 對話方塊中，選取 * *.NET Core 3.0* 的 [目標 Framework]。
+* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取 [**目標 Framework** ] * [ *.net Core 3.1*]。
 
 * 針對 [專案名稱] 輸入 *TodoApi*，然後選取 [建立]。
 

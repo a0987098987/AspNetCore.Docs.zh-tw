@@ -5,12 +5,12 @@ description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中�
 ms.author: riande
 ms.date: 11/12/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: a8381dee05f267077a29999f3d8bbe6327c2b863
-ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
+ms.openlocfilehash: b651437b698d01310f90c5f14832616c1896e6c0
+ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116157"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74959095"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
@@ -25,7 +25,7 @@ ms.locfileid: "74116157"
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-在此教學課程中，您將了解如何：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。
@@ -36,19 +36,19 @@ ms.locfileid: "74116157"
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
@@ -62,13 +62,13 @@ ms.locfileid: "74116157"
 * 將專案命名為 **RazorPagesMovie**。 請務必將專案命名為 *RazorPagesMovie*，以便在您複製並貼上程式碼時，名稱空間會相符。
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/config.png)
 
-* 在下拉式清單中選取 [ASP.NET Core 3.0]，然後依序選取 [Web 應用程式] 及 [建立]。
+* 在下拉式清單 [ **Web 應用程式**] 中選取 [ **ASP.NET Core 3.1** ]，然後選取 [**建立**]。
 
 ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/3/npx.png)
 
   下列起始專案會隨即建立：
 
-  ![底下提供說明，包括方案總管](razor-pages-start/_static/se2.2.png)
+  ![方案總管](razor-pages-start/_static/se2.2.png)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -100,7 +100,7 @@ ms.locfileid: "74116157"
 
   ![macOS [新增專案] 對話方塊](razor-pages-start/_static/webapp.png)
 
-* 在 [設定您的新 ASP.NET Core Web API] 對話方塊中，為 [.NET Core 3.0] 設定 [目標 Framework]。
+* 在 [設定**您的新 ASP.NET Core WEB API** ] 對話方塊中，將 [**目標 Framework** ] 設為 [ **.net Core 3.1**]。
 
   ![macOS .NET Core 3.0 選取項目](razor-pages-start/_static/targetframework3.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "74116157"
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-在此教學課程中，您將了解如何：
+在本教學課程中，您已：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。
@@ -182,7 +182,7 @@ ms.locfileid: "74116157"
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -218,7 +218,7 @@ ms.locfileid: "74116157"
 
   下列起始專案會隨即建立：
 
-  ![底下提供說明，包括方案總管](razor-pages-start/_static/se2.2.png)
+  ![方案總管](razor-pages-start/_static/se2.2.png)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -236,7 +236,7 @@ ms.locfileid: "74116157"
   * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會出現一個對話方塊詢問「' RazorPagesMovie ' 缺少建置及偵錯所需的資產。要新增它們嗎?」 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 

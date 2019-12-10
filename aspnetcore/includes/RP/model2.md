@@ -29,7 +29,7 @@
 在 *Startup.cs* 最上方新增下列 `using` 陳述式：
 
 ```csharp
-using RazorPagesMovie.Models;
+using RazorPagesMovie.Data;
 using Microsoft.EntityFrameworkCore;
 ```
 

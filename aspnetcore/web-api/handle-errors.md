@@ -5,28 +5,28 @@ description: 瞭解 ASP.NET Core web Api 的錯誤處理。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: prkrishn
 ms.custom: mvc
-ms.date: 09/27/2019
+ms.date: 12/10/2019
 uid: web-api/handle-errors
-ms.openlocfilehash: 457ad7449c608c3b1b0acd729626e07808f55897
-ms.sourcegitcommit: ddc813f0f1fb293861a01597532919945b0e7fe5
+ms.openlocfilehash: c2dbc47b4495b7187aefbc62eb6d2f0c9683c2da
+ms.sourcegitcommit: 29ace642ca0e1f0b48a18d66de266d8811df2b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74412099"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74987827"
 ---
-# <a name="handle-errors-in-aspnet-core-web-apis"></a><span data-ttu-id="3a577-103">處理 ASP.NET Core web Api 中的錯誤</span><span class="sxs-lookup"><span data-stu-id="3a577-103">Handle errors in ASP.NET Core web APIs</span></span>
+# <a name="handle-errors-in-aspnet-core-web-apis"></a><span data-ttu-id="49874-103">處理 ASP.NET Core web Api 中的錯誤</span><span class="sxs-lookup"><span data-stu-id="49874-103">Handle errors in ASP.NET Core web APIs</span></span>
 
-<span data-ttu-id="3a577-104">本文說明如何使用 ASP.NET Core web Api 處理和自訂錯誤處理。</span><span class="sxs-lookup"><span data-stu-id="3a577-104">This article describes how to handle and customize error handling with ASP.NET Core web APIs.</span></span>
+<span data-ttu-id="49874-104">本文說明如何使用 ASP.NET Core web Api 處理和自訂錯誤處理。</span><span class="sxs-lookup"><span data-stu-id="49874-104">This article describes how to handle and customize error handling with ASP.NET Core web APIs.</span></span>
 
-<span data-ttu-id="3a577-105">[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/handle-errors/samples)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="3a577-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/handle-errors/samples) ([How to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="49874-105">[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/handle-errors/samples)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="49874-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/handle-errors/samples) ([How to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="developer-exception-page"></a><span data-ttu-id="3a577-106">開發人員例外狀況頁面</span><span class="sxs-lookup"><span data-stu-id="3a577-106">Developer Exception Page</span></span>
+## <a name="developer-exception-page"></a><span data-ttu-id="49874-106">開發人員例外狀況頁面</span><span class="sxs-lookup"><span data-stu-id="49874-106">Developer Exception Page</span></span>
 
-<span data-ttu-id="3a577-107">[[開發人員例外](xref:fundamentals/error-handling)狀況] 頁面是一個實用的工具，可取得伺服器錯誤的詳細堆疊追蹤。</span><span class="sxs-lookup"><span data-stu-id="3a577-107">The [Developer Exception Page](xref:fundamentals/error-handling) is a useful tool to get detailed stack traces for server errors.</span></span> <span data-ttu-id="3a577-108">它會使用 <xref:Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware> 從 HTTP 管線捕獲同步和非同步例外狀況，並產生錯誤回應。</span><span class="sxs-lookup"><span data-stu-id="3a577-108">It uses <xref:Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware> to capture synchronous and asynchronous exceptions from the HTTP pipeline and to generate error responses.</span></span> <span data-ttu-id="3a577-109">為了說明，請考慮下列控制器動作：</span><span class="sxs-lookup"><span data-stu-id="3a577-109">To illustrate, consider the following controller action:</span></span>
+<span data-ttu-id="49874-107">[[開發人員例外](xref:fundamentals/error-handling)狀況] 頁面是一個實用的工具，可取得伺服器錯誤的詳細堆疊追蹤。</span><span class="sxs-lookup"><span data-stu-id="49874-107">The [Developer Exception Page](xref:fundamentals/error-handling) is a useful tool to get detailed stack traces for server errors.</span></span> <span data-ttu-id="49874-108">它會使用 <xref:Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware> 從 HTTP 管線捕獲同步和非同步例外狀況，並產生錯誤回應。</span><span class="sxs-lookup"><span data-stu-id="49874-108">It uses <xref:Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware> to capture synchronous and asynchronous exceptions from the HTTP pipeline and to generate error responses.</span></span> <span data-ttu-id="49874-109">為了說明，請考慮下列控制器動作：</span><span class="sxs-lookup"><span data-stu-id="49874-109">To illustrate, consider the following controller action:</span></span>
 
 [!code-csharp[](handle-errors/samples/3.x/Controllers/WeatherForecastController.cs?name=snippet_GetByCity)]
 
-<span data-ttu-id="3a577-110">執行下列 `curl` 命令來測試前一個動作：</span><span class="sxs-lookup"><span data-stu-id="3a577-110">Run the following `curl` command to test the preceding action:</span></span>
+<span data-ttu-id="49874-110">執行下列 `curl` 命令來測試前一個動作：</span><span class="sxs-lookup"><span data-stu-id="49874-110">Run the following `curl` command to test the preceding action:</span></span>
 
 ```bash
 curl -i https://localhost:5001/weatherforecast/chicago
@@ -34,7 +34,7 @@ curl -i https://localhost:5001/weatherforecast/chicago
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="3a577-111">在 ASP.NET Core 3.0 和更新版本中，如果用戶端不要求 HTML 格式的輸出，則開發人員例外狀況頁面會顯示純文字回應。</span><span class="sxs-lookup"><span data-stu-id="3a577-111">In ASP.NET Core 3.0 and later, the Developer Exception Page displays a plain-text response if the client doesn't request HTML-formatted output.</span></span> <span data-ttu-id="3a577-112">即會出現下列輸出：</span><span class="sxs-lookup"><span data-stu-id="3a577-112">The following output appears:</span></span>
+<span data-ttu-id="49874-111">在 ASP.NET Core 3.0 和更新版本中，如果用戶端不要求 HTML 格式的輸出，則開發人員例外狀況頁面會顯示純文字回應。</span><span class="sxs-lookup"><span data-stu-id="49874-111">In ASP.NET Core 3.0 and later, the Developer Exception Page displays a plain-text response if the client doesn't request HTML-formatted output.</span></span> <span data-ttu-id="49874-112">即會出現下列輸出：</span><span class="sxs-lookup"><span data-stu-id="49874-112">The following output appears:</span></span>
 
 ```console
 HTTP/1.1 500 Internal Server Error
@@ -68,19 +68,19 @@ Host: localhost:44312
 User-Agent: curl/7.55.1
 ```
 
-<span data-ttu-id="3a577-113">若要改為顯示 HTML 格式的回應，請將 `Accept` HTTP 要求標頭設定為 `text/html` 媒體類型。</span><span class="sxs-lookup"><span data-stu-id="3a577-113">To display an HTML-formatted response instead, set the `Accept` HTTP request header to the `text/html` media type.</span></span> <span data-ttu-id="3a577-114">例如：</span><span class="sxs-lookup"><span data-stu-id="3a577-114">For example:</span></span>
+<span data-ttu-id="49874-113">若要改為顯示 HTML 格式的回應，請將 `Accept` HTTP 要求標頭設定為 `text/html` 媒體類型。</span><span class="sxs-lookup"><span data-stu-id="49874-113">To display an HTML-formatted response instead, set the `Accept` HTTP request header to the `text/html` media type.</span></span> <span data-ttu-id="49874-114">例如：</span><span class="sxs-lookup"><span data-stu-id="49874-114">For example:</span></span>
 
 ```bash
 curl -i -H "Accept: text/html" https://localhost:5001/weatherforecast/chicago
 ```
 
-<span data-ttu-id="3a577-115">請考慮下列來自 HTTP 回應的摘錄：</span><span class="sxs-lookup"><span data-stu-id="3a577-115">Consider the following excerpt from the HTTP response:</span></span>
+<span data-ttu-id="49874-115">請考慮下列來自 HTTP 回應的摘錄：</span><span class="sxs-lookup"><span data-stu-id="49874-115">Consider the following excerpt from the HTTP response:</span></span>
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.2"
 
-<span data-ttu-id="3a577-116">在 ASP.NET Core 2.2 和更早版本中，開發人員例外狀況頁面會顯示 HTML 格式的回應。</span><span class="sxs-lookup"><span data-stu-id="3a577-116">In ASP.NET Core 2.2 and earlier, the Developer Exception Page displays an HTML-formatted response.</span></span> <span data-ttu-id="3a577-117">例如，請考慮下列來自 HTTP 回應的摘錄：</span><span class="sxs-lookup"><span data-stu-id="3a577-117">For example, consider the following excerpt from the HTTP response:</span></span>
+<span data-ttu-id="49874-116">在 ASP.NET Core 2.2 和更早版本中，開發人員例外狀況頁面會顯示 HTML 格式的回應。</span><span class="sxs-lookup"><span data-stu-id="49874-116">In ASP.NET Core 2.2 and earlier, the Developer Exception Page displays an HTML-formatted response.</span></span> <span data-ttu-id="49874-117">例如，請考慮下列來自 HTTP 回應的摘錄：</span><span class="sxs-lookup"><span data-stu-id="49874-117">For example, consider the following excerpt from the HTTP response:</span></span>
 
 ::: moniker-end
 
@@ -108,20 +108,20 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="3a577-118">透過 Postman 之類的工具進行測試時，HTML 格式的回應會變得很有用。</span><span class="sxs-lookup"><span data-stu-id="3a577-118">The HTML-formatted response becomes useful when testing via tools like Postman.</span></span> <span data-ttu-id="3a577-119">下列螢幕擷取畫面顯示 Postman 中的純文字和 HTML 格式的回應：</span><span class="sxs-lookup"><span data-stu-id="3a577-119">The following screen capture shows both the plain-text and the HTML-formatted responses in Postman:</span></span>
+<span data-ttu-id="49874-118">透過 Postman 之類的工具進行測試時，HTML 格式的回應會變得很有用。</span><span class="sxs-lookup"><span data-stu-id="49874-118">The HTML-formatted response becomes useful when testing via tools like Postman.</span></span> <span data-ttu-id="49874-119">下列螢幕擷取畫面顯示 Postman 中的純文字和 HTML 格式的回應：</span><span class="sxs-lookup"><span data-stu-id="49874-119">The following screen capture shows both the plain-text and the HTML-formatted responses in Postman:</span></span>
 
 ![Postman 中的開發人員例外狀況頁面測試](handle-errors/_static/developer-exception-page-postman.gif)
 
 ::: moniker-end
 
 > [!WARNING]
-> <span data-ttu-id="3a577-121">**僅有當應用程式是在開發環境中執行時**，才啟用開發人員例外狀況頁面。</span><span class="sxs-lookup"><span data-stu-id="3a577-121">Enable the Developer Exception Page **only when the app is running in the Development environment**.</span></span> <span data-ttu-id="3a577-122">當應用程式在生產環境中執行時，您不會想要公開共用例外狀況的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="3a577-122">You don't want to share detailed exception information publicly when the app runs in production.</span></span> <span data-ttu-id="3a577-123">如需設定環境的詳細資訊，請參閱<xref:fundamentals/environments>。</span><span class="sxs-lookup"><span data-stu-id="3a577-123">For more information on configuring environments, see <xref:fundamentals/environments>.</span></span>
+> <span data-ttu-id="49874-121">**僅有當應用程式是在開發環境中執行時**，才啟用開發人員例外狀況頁面。</span><span class="sxs-lookup"><span data-stu-id="49874-121">Enable the Developer Exception Page **only when the app is running in the Development environment**.</span></span> <span data-ttu-id="49874-122">當應用程式在生產環境中執行時，您不會想要公開共用例外狀況的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="49874-122">You don't want to share detailed exception information publicly when the app runs in production.</span></span> <span data-ttu-id="49874-123">如需設定環境的詳細資訊，請參閱<xref:fundamentals/environments>。</span><span class="sxs-lookup"><span data-stu-id="49874-123">For more information on configuring environments, see <xref:fundamentals/environments>.</span></span>
 
-## <a name="exception-handler"></a><span data-ttu-id="3a577-124">例外處理常式</span><span class="sxs-lookup"><span data-stu-id="3a577-124">Exception handler</span></span>
+## <a name="exception-handler"></a><span data-ttu-id="49874-124">例外處理常式</span><span class="sxs-lookup"><span data-stu-id="49874-124">Exception handler</span></span>
 
-<span data-ttu-id="3a577-125">在非開發環境中，[例外狀況處理中介軟體](xref:fundamentals/error-handling)可以用來產生錯誤承載：</span><span class="sxs-lookup"><span data-stu-id="3a577-125">In non-development environments, [Exception Handling Middleware](xref:fundamentals/error-handling) can be used to produce an error payload:</span></span>
+<span data-ttu-id="49874-125">在非開發環境中，[例外狀況處理中介軟體](xref:fundamentals/error-handling)可以用來產生錯誤承載：</span><span class="sxs-lookup"><span data-stu-id="49874-125">In non-development environments, [Exception Handling Middleware](xref:fundamentals/error-handling) can be used to produce an error payload:</span></span>
 
-1. <span data-ttu-id="3a577-126">在 `Startup.Configure`中，叫用 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A> 以使用中介軟體：</span><span class="sxs-lookup"><span data-stu-id="3a577-126">In `Startup.Configure`, invoke <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A> to use the middleware:</span></span>
+1. <span data-ttu-id="49874-126">在 `Startup.Configure`中，叫用 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A> 以使用中介軟體：</span><span class="sxs-lookup"><span data-stu-id="49874-126">In `Startup.Configure`, invoke <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A> to use the middleware:</span></span>
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -135,7 +135,7 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-1. <span data-ttu-id="3a577-127">設定控制器動作以回應 `/error` 的路由：</span><span class="sxs-lookup"><span data-stu-id="3a577-127">Configure a controller action to respond to the `/error` route:</span></span>
+1. <span data-ttu-id="49874-127">設定控制器動作以回應 `/error` 的路由：</span><span class="sxs-lookup"><span data-stu-id="49874-127">Configure a controller action to respond to the `/error` route:</span></span>
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -149,11 +149,11 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-<span data-ttu-id="3a577-128">上述 `Error` 動作會將符合[RFC7807](https://tools.ietf.org/html/rfc7807)規範的承載傳送至用戶端。</span><span class="sxs-lookup"><span data-stu-id="3a577-128">The preceding `Error` action sends an [RFC7807](https://tools.ietf.org/html/rfc7807)-compliant payload to the client.</span></span>
+<span data-ttu-id="49874-128">上述 `Error` 動作會將[RFC 7807](https://tools.ietf.org/html/rfc7807)相容的承載傳送至用戶端。</span><span class="sxs-lookup"><span data-stu-id="49874-128">The preceding `Error` action sends an [RFC 7807](https://tools.ietf.org/html/rfc7807)-compliant payload to the client.</span></span>
 
-<span data-ttu-id="3a577-129">例外狀況處理中介軟體也可以在本機開發環境中提供更詳細的內容協商輸出。</span><span class="sxs-lookup"><span data-stu-id="3a577-129">Exception Handling Middleware can also provide more detailed content-negotiated output in the local development environment.</span></span> <span data-ttu-id="3a577-130">使用下列步驟，在開發與生產環境之間產生一致的裝載格式：</span><span class="sxs-lookup"><span data-stu-id="3a577-130">Use the following steps to produce a consistent payload format across development and production environments:</span></span>
+<span data-ttu-id="49874-129">例外狀況處理中介軟體也可以在本機開發環境中提供更詳細的內容協商輸出。</span><span class="sxs-lookup"><span data-stu-id="49874-129">Exception Handling Middleware can also provide more detailed content-negotiated output in the local development environment.</span></span> <span data-ttu-id="49874-130">使用下列步驟，在開發與生產環境之間產生一致的裝載格式：</span><span class="sxs-lookup"><span data-stu-id="49874-130">Use the following steps to produce a consistent payload format across development and production environments:</span></span>
 
-1. <span data-ttu-id="3a577-131">在 `Startup.Configure`中，註冊環境特有的例外狀況處理中介軟體實例：</span><span class="sxs-lookup"><span data-stu-id="3a577-131">In `Startup.Configure`, register environment-specific Exception Handling Middleware instances:</span></span>
+1. <span data-ttu-id="49874-131">在 `Startup.Configure`中，註冊環境特有的例外狀況處理中介軟體實例：</span><span class="sxs-lookup"><span data-stu-id="49874-131">In `Startup.Configure`, register environment-specific Exception Handling Middleware instances:</span></span>
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -191,12 +191,12 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-    <span data-ttu-id="3a577-132">在上述程式碼中，中介軟體會向註冊：</span><span class="sxs-lookup"><span data-stu-id="3a577-132">In the preceding code, the middleware is registered with:</span></span>
+    <span data-ttu-id="49874-132">在上述程式碼中，中介軟體會向註冊：</span><span class="sxs-lookup"><span data-stu-id="49874-132">In the preceding code, the middleware is registered with:</span></span>
 
-    * <span data-ttu-id="3a577-133">在開發環境中 `/error-local-development` 的路由。</span><span class="sxs-lookup"><span data-stu-id="3a577-133">A route of `/error-local-development` in the Development environment.</span></span>
-    * <span data-ttu-id="3a577-134">不是開發環境中 `/error` 的路由。</span><span class="sxs-lookup"><span data-stu-id="3a577-134">A route of `/error` in environments that aren't Development.</span></span>
+    * <span data-ttu-id="49874-133">在開發環境中 `/error-local-development` 的路由。</span><span class="sxs-lookup"><span data-stu-id="49874-133">A route of `/error-local-development` in the Development environment.</span></span>
+    * <span data-ttu-id="49874-134">不是開發環境中 `/error` 的路由。</span><span class="sxs-lookup"><span data-stu-id="49874-134">A route of `/error` in environments that aren't Development.</span></span>
     
-1. <span data-ttu-id="3a577-135">將屬性路由套用至控制器動作：</span><span class="sxs-lookup"><span data-stu-id="3a577-135">Apply attribute routing to controller actions:</span></span>
+1. <span data-ttu-id="49874-135">將屬性路由套用至控制器動作：</span><span class="sxs-lookup"><span data-stu-id="49874-135">Apply attribute routing to controller actions:</span></span>
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -210,19 +210,19 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-## <a name="use-exceptions-to-modify-the-response"></a><span data-ttu-id="3a577-136">使用例外狀況來修改回應</span><span class="sxs-lookup"><span data-stu-id="3a577-136">Use exceptions to modify the response</span></span>
+## <a name="use-exceptions-to-modify-the-response"></a><span data-ttu-id="49874-136">使用例外狀況來修改回應</span><span class="sxs-lookup"><span data-stu-id="49874-136">Use exceptions to modify the response</span></span>
 
-<span data-ttu-id="3a577-137">您可以從控制器外部修改回應的內容。</span><span class="sxs-lookup"><span data-stu-id="3a577-137">The contents of the response can be modified from outside of the controller.</span></span> <span data-ttu-id="3a577-138">在 ASP.NET 4.x Web API 中，其中一種方法是使用 <xref:System.Web.Http.HttpResponseException> 類型。</span><span class="sxs-lookup"><span data-stu-id="3a577-138">In ASP.NET 4.x Web API, one way to do this was using the <xref:System.Web.Http.HttpResponseException> type.</span></span> <span data-ttu-id="3a577-139">ASP.NET Core 不包含對等的類型。</span><span class="sxs-lookup"><span data-stu-id="3a577-139">ASP.NET Core doesn't include an equivalent type.</span></span> <span data-ttu-id="3a577-140">您可以使用下列步驟來新增 `HttpResponseException` 的支援：</span><span class="sxs-lookup"><span data-stu-id="3a577-140">Support for `HttpResponseException` can be added with the following steps:</span></span>
+<span data-ttu-id="49874-137">您可以從控制器外部修改回應的內容。</span><span class="sxs-lookup"><span data-stu-id="49874-137">The contents of the response can be modified from outside of the controller.</span></span> <span data-ttu-id="49874-138">在 ASP.NET 4.x Web API 中，其中一種方法是使用 <xref:System.Web.Http.HttpResponseException> 類型。</span><span class="sxs-lookup"><span data-stu-id="49874-138">In ASP.NET 4.x Web API, one way to do this was using the <xref:System.Web.Http.HttpResponseException> type.</span></span> <span data-ttu-id="49874-139">ASP.NET Core 不包含對等的類型。</span><span class="sxs-lookup"><span data-stu-id="49874-139">ASP.NET Core doesn't include an equivalent type.</span></span> <span data-ttu-id="49874-140">您可以使用下列步驟來新增 `HttpResponseException` 的支援：</span><span class="sxs-lookup"><span data-stu-id="49874-140">Support for `HttpResponseException` can be added with the following steps:</span></span>
 
-1. <span data-ttu-id="3a577-141">建立名為 `HttpResponseException`的知名例外狀況類型：</span><span class="sxs-lookup"><span data-stu-id="3a577-141">Create a well-known exception type named `HttpResponseException`:</span></span>
+1. <span data-ttu-id="49874-141">建立名為 `HttpResponseException`的知名例外狀況類型：</span><span class="sxs-lookup"><span data-stu-id="49874-141">Create a well-known exception type named `HttpResponseException`:</span></span>
 
     [!code-csharp[](handle-errors/samples/3.x/Exceptions/HttpResponseException.cs?name=snippet_HttpResponseException)]
 
-1. <span data-ttu-id="3a577-142">建立名為 `HttpResponseExceptionFilter`的動作篩選準則：</span><span class="sxs-lookup"><span data-stu-id="3a577-142">Create an action filter named `HttpResponseExceptionFilter`:</span></span>
+1. <span data-ttu-id="49874-142">建立名為 `HttpResponseExceptionFilter`的動作篩選準則：</span><span class="sxs-lookup"><span data-stu-id="49874-142">Create an action filter named `HttpResponseExceptionFilter`:</span></span>
 
     [!code-csharp[](handle-errors/samples/3.x/Filters/HttpResponseExceptionFilter.cs?name=snippet_HttpResponseExceptionFilter)]
 
-1. <span data-ttu-id="3a577-143">在 `Startup.ConfigureServices`中，將動作篩選準則新增至 [篩選] 集合：</span><span class="sxs-lookup"><span data-stu-id="3a577-143">In `Startup.ConfigureServices`, add the action filter to the filters collection:</span></span>
+1. <span data-ttu-id="49874-143">在 `Startup.ConfigureServices`中，將動作篩選準則新增至 [篩選] 集合：</span><span class="sxs-lookup"><span data-stu-id="49874-143">In `Startup.ConfigureServices`, add the action filter to the filters collection:</span></span>
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -242,9 +242,9 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-## <a name="validation-failure-error-response"></a><span data-ttu-id="3a577-144">驗證失敗錯誤回應</span><span class="sxs-lookup"><span data-stu-id="3a577-144">Validation failure error response</span></span>
+## <a name="validation-failure-error-response"></a><span data-ttu-id="49874-144">驗證失敗錯誤回應</span><span class="sxs-lookup"><span data-stu-id="49874-144">Validation failure error response</span></span>
 
-<span data-ttu-id="3a577-145">針對 Web API 控制器，當模型驗證失敗時，MVC 會以 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> 回應類型回應。</span><span class="sxs-lookup"><span data-stu-id="3a577-145">For web API controllers, MVC responds with a <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> response type when model validation fails.</span></span> <span data-ttu-id="3a577-146">MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> 的結果來針對驗證失敗來建立錯誤回應。</span><span class="sxs-lookup"><span data-stu-id="3a577-146">MVC uses the results of <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> to construct the error response for a validation failure.</span></span> <span data-ttu-id="3a577-147">下列範例會使用 factory，將預設回應類型變更為 `Startup.ConfigureServices`中的 <xref:Microsoft.AspNetCore.Mvc.SerializableError>：</span><span class="sxs-lookup"><span data-stu-id="3a577-147">The following example uses the factory to change the default response type to <xref:Microsoft.AspNetCore.Mvc.SerializableError> in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="49874-145">針對 Web API 控制器，當模型驗證失敗時，MVC 會以 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> 回應類型回應。</span><span class="sxs-lookup"><span data-stu-id="49874-145">For web API controllers, MVC responds with a <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> response type when model validation fails.</span></span> <span data-ttu-id="49874-146">MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> 的結果來針對驗證失敗來建立錯誤回應。</span><span class="sxs-lookup"><span data-stu-id="49874-146">MVC uses the results of <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> to construct the error response for a validation failure.</span></span> <span data-ttu-id="49874-147">下列範例會使用 factory，將預設回應類型變更為 `Startup.ConfigureServices`中的 <xref:Microsoft.AspNetCore.Mvc.SerializableError>：</span><span class="sxs-lookup"><span data-stu-id="49874-147">The following example uses the factory to change the default response type to <xref:Microsoft.AspNetCore.Mvc.SerializableError> in `Startup.ConfigureServices`:</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -264,22 +264,29 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
 ::: moniker-end
 
-## <a name="client-error-response"></a><span data-ttu-id="3a577-148">用戶端錯誤回應</span><span class="sxs-lookup"><span data-stu-id="3a577-148">Client error response</span></span>
+## <a name="client-error-response"></a><span data-ttu-id="49874-148">用戶端錯誤回應</span><span class="sxs-lookup"><span data-stu-id="49874-148">Client error response</span></span>
 
-<span data-ttu-id="3a577-149">*錯誤結果*會定義為 HTTP 狀態碼為400或更高的結果。</span><span class="sxs-lookup"><span data-stu-id="3a577-149">An *error result* is defined as a result with an HTTP status code of 400 or higher.</span></span> <span data-ttu-id="3a577-150">針對 Web API 控制器，MVC 會將錯誤結果轉換成具有 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>的結果。</span><span class="sxs-lookup"><span data-stu-id="3a577-150">For web API controllers, MVC transforms an error result to a result with <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>.</span></span>
+<span data-ttu-id="49874-149">*錯誤結果*會定義為 HTTP 狀態碼為400或更高的結果。</span><span class="sxs-lookup"><span data-stu-id="49874-149">An *error result* is defined as a result with an HTTP status code of 400 or higher.</span></span> <span data-ttu-id="49874-150">針對 Web API 控制器，MVC 會將錯誤結果轉換成具有 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>的結果。</span><span class="sxs-lookup"><span data-stu-id="49874-150">For web API controllers, MVC transforms an error result to a result with <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>.</span></span>
+
+::: moniker range="= aspnetcore-2.1"
+
+> [!IMPORTANT]
+> <span data-ttu-id="49874-151">ASP.NET Core 2.1 會產生幾乎符合 RFC 7807 標準的問題詳細資料回應。</span><span class="sxs-lookup"><span data-stu-id="49874-151">ASP.NET Core 2.1 generates a problem details response that's nearly RFC 7807-compliant.</span></span> <span data-ttu-id="49874-152">如果符合100% 的合規性，請將專案升級至 ASP.NET Core 2.2 或更新版本。</span><span class="sxs-lookup"><span data-stu-id="49874-152">If 100 percent compliance is important, upgrade the project to ASP.NET Core 2.2 or later.</span></span>
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="3a577-151">您可以透過下列其中一種方式來設定錯誤回應：</span><span class="sxs-lookup"><span data-stu-id="3a577-151">The error response can be configured in one of the following ways:</span></span>
+<span data-ttu-id="49874-153">您可以透過下列其中一種方式來設定錯誤回應：</span><span class="sxs-lookup"><span data-stu-id="49874-153">The error response can be configured in one of the following ways:</span></span>
 
-1. [<span data-ttu-id="3a577-152">執行 ProblemDetailsFactory</span><span class="sxs-lookup"><span data-stu-id="3a577-152">Implement ProblemDetailsFactory</span></span>](#implement-problemdetailsfactory)
-1. [<span data-ttu-id="3a577-153">使用 ApiBehaviorOptions. ClientErrorMapping</span><span class="sxs-lookup"><span data-stu-id="3a577-153">Use ApiBehaviorOptions.ClientErrorMapping</span></span>](#use-apibehavioroptionsclienterrormapping)
+1. [<span data-ttu-id="49874-154">執行 ProblemDetailsFactory</span><span class="sxs-lookup"><span data-stu-id="49874-154">Implement ProblemDetailsFactory</span></span>](#implement-problemdetailsfactory)
+1. [<span data-ttu-id="49874-155">使用 ApiBehaviorOptions. ClientErrorMapping</span><span class="sxs-lookup"><span data-stu-id="49874-155">Use ApiBehaviorOptions.ClientErrorMapping</span></span>](#use-apibehavioroptionsclienterrormapping)
 
-### <a name="implement-problemdetailsfactory"></a><span data-ttu-id="3a577-154">執行 ProblemDetailsFactory</span><span class="sxs-lookup"><span data-stu-id="3a577-154">Implement ProblemDetailsFactory</span></span>
+### <a name="implement-problemdetailsfactory"></a><span data-ttu-id="49874-156">執行 ProblemDetailsFactory</span><span class="sxs-lookup"><span data-stu-id="49874-156">Implement ProblemDetailsFactory</span></span>
 
-<span data-ttu-id="3a577-155">MVC 會使用 `Microsoft.AspNetCore.Mvc.ProblemDetailsFactory` 來產生 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> 和 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>的所有實例。</span><span class="sxs-lookup"><span data-stu-id="3a577-155">MVC uses `Microsoft.AspNetCore.Mvc.ProblemDetailsFactory` to produce all instances of <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> and <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>.</span></span> <span data-ttu-id="3a577-156">這包括用戶端錯誤回應、驗證失敗錯誤回應，以及 `Microsoft.AspNetCore.Mvc.ControllerBase.Problem` 和 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem> helper 方法。</span><span class="sxs-lookup"><span data-stu-id="3a577-156">This includes client error responses, validation failure error responses, and the `Microsoft.AspNetCore.Mvc.ControllerBase.Problem` and <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem> helper methods.</span></span>
+<span data-ttu-id="49874-157">MVC 會使用 `Microsoft.AspNetCore.Mvc.ProblemDetailsFactory` 來產生 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> 和 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>的所有實例。</span><span class="sxs-lookup"><span data-stu-id="49874-157">MVC uses `Microsoft.AspNetCore.Mvc.ProblemDetailsFactory` to produce all instances of <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> and <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>.</span></span> <span data-ttu-id="49874-158">這包括用戶端錯誤回應、驗證失敗錯誤回應，以及 `Microsoft.AspNetCore.Mvc.ControllerBase.Problem` 和 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem> helper 方法。</span><span class="sxs-lookup"><span data-stu-id="49874-158">This includes client error responses, validation failure error responses, and the `Microsoft.AspNetCore.Mvc.ControllerBase.Problem` and <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem> helper methods.</span></span>
 
-<span data-ttu-id="3a577-157">若要自訂問題詳細資料回應，請在 `Startup.ConfigureServices`中註冊 `ProblemDetailsFactory` 的自訂執行：</span><span class="sxs-lookup"><span data-stu-id="3a577-157">To customize the problem details response, register a custom implementation of `ProblemDetailsFactory` in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="49874-159">若要自訂問題詳細資料回應，請在 `Startup.ConfigureServices`中註冊 `ProblemDetailsFactory` 的自訂執行：</span><span class="sxs-lookup"><span data-stu-id="49874-159">To customize the problem details response, register a custom implementation of `ProblemDetailsFactory` in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection serviceCollection)
@@ -293,15 +300,15 @@ public void ConfigureServices(IServiceCollection serviceCollection)
 
 ::: moniker range="= aspnetcore-2.2"
 
-<span data-ttu-id="3a577-158">您可以如[使用 ApiBehaviorOptions. ClientErrorMapping](#use-apibehavioroptionsclienterrormapping)一節中所述，設定錯誤回應。</span><span class="sxs-lookup"><span data-stu-id="3a577-158">The error response can be configured as outlined in the [Use ApiBehaviorOptions.ClientErrorMapping](#use-apibehavioroptionsclienterrormapping) section.</span></span>
+<span data-ttu-id="49874-160">您可以如[使用 ApiBehaviorOptions. ClientErrorMapping](#use-apibehavioroptionsclienterrormapping)一節中所述，設定錯誤回應。</span><span class="sxs-lookup"><span data-stu-id="49874-160">The error response can be configured as outlined in the [Use ApiBehaviorOptions.ClientErrorMapping](#use-apibehavioroptionsclienterrormapping) section.</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.2"
 
-### <a name="use-apibehavioroptionsclienterrormapping"></a><span data-ttu-id="3a577-159">使用 ApiBehaviorOptions. ClientErrorMapping</span><span class="sxs-lookup"><span data-stu-id="3a577-159">Use ApiBehaviorOptions.ClientErrorMapping</span></span>
+### <a name="use-apibehavioroptionsclienterrormapping"></a><span data-ttu-id="49874-161">使用 ApiBehaviorOptions. ClientErrorMapping</span><span class="sxs-lookup"><span data-stu-id="49874-161">Use ApiBehaviorOptions.ClientErrorMapping</span></span>
 
-<span data-ttu-id="3a577-160">使用 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping%2A> 屬性可設定 `ProblemDetails` 回應的內容。</span><span class="sxs-lookup"><span data-stu-id="3a577-160">Use the <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping%2A> property to configure the contents of the `ProblemDetails` response.</span></span> <span data-ttu-id="3a577-161">例如，`Startup.ConfigureServices` 中的下列程式碼會更新404回應的 `type` 屬性：</span><span class="sxs-lookup"><span data-stu-id="3a577-161">For example, the following code in `Startup.ConfigureServices` updates the `type` property for 404 responses:</span></span>
+<span data-ttu-id="49874-162">使用 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping%2A> 屬性可設定 `ProblemDetails` 回應的內容。</span><span class="sxs-lookup"><span data-stu-id="49874-162">Use the <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping%2A> property to configure the contents of the `ProblemDetails` response.</span></span> <span data-ttu-id="49874-163">例如，`Startup.ConfigureServices` 中的下列程式碼會更新404回應的 `type` 屬性：</span><span class="sxs-lookup"><span data-stu-id="49874-163">For example, the following code in `Startup.ConfigureServices` updates the `type` property for 404 responses:</span></span>
 
 ::: moniker-end
 

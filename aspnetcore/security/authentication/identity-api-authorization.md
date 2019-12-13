@@ -18,19 +18,19 @@ ms.locfileid: "73897042"
 
 ASP.NET Core 3.0 或更新版本使用 API 授權的支援，在單一頁面應用程式（Spa）中提供驗證。 用於驗證和儲存使用者的 ASP.NET Core 身分識別會與[IdentityServer](https://identityserver.io/)結合，以執行 Open ID Connect。
 
-驗證參數已加入至「**角度**」和「**回應**」專案範本，類似于**Web 應用程式（模型-視圖控制器）** （MVC）和**web 應用程式**（Razor Pages）中的驗證參數專案範本。 允許的參數值為 [**無**] 和 [**個人**]。 [**回應 .js] 和 [Redux** ] 專案範本目前不支援 [驗證] 參數。
+驗證參數已加入至「**Angular**」和「**React**」專案範本，類似于**Web 應用程式（模型-視圖控制器）** （MVC）和**web 應用程式**（Razor Pages）中的驗證參數專案範本。 允許的參數值為 [**無**] 和 [**個人**]。 [**React .js] 和 [Redux** ] 專案範本目前不支援 [驗證] 參數。
 
 ## <a name="create-an-app-with-api-authorization-support"></a>建立具有 API 授權支援的應用程式
 
-使用者驗證和授權可以同時用於「角度」和「回應」 Spa。 開啟命令 shell，然後執行下列命令：
+使用者驗證和授權可以同時用於「Angular」和「React」 Spa。 開啟命令 shell，然後執行下列命令：
 
-**角度**：
+**Angular**：
 
 ```dotnetcli
 dotnet new angular -o <output_directory_name> -au Individual
 ```
 
-**回應**：
+**React**：
 
 ```dotnetcli
 dotnet new react -o <output_directory_name> -au Individual
@@ -207,7 +207,7 @@ services.Configure<JwtBearerOptions>(
 1. 呼叫 API 授權支援所提供的原始實作為。
 1. 執行它自己的自訂邏輯。
 
-## <a name="protect-a-client-side-route-angular"></a>保護用戶端路由（角度）
+## <a name="protect-a-client-side-route-angular"></a>保護用戶端路由（Angular）
 
 若要保護用戶端路由，請將授權防護新增至設定路由時要執行的防護清單。 例如，您可以在主要應用程式角度模組內查看 `fetch-data` 路由的設定方式：
 
@@ -220,11 +220,11 @@ RouterModule.forRoot([
 
 請務必注意，保護路由並不會保護實際端點（仍然需要套用 `[Authorize]` 屬性），但它只會防止使用者在未驗證時流覽至指定的用戶端路由。
 
-## <a name="authenticate-api-requests-angular"></a>驗證 API 要求（角度）
+## <a name="authenticate-api-requests-angular"></a>驗證 API 要求（Angular）
 
 使用應用程式所定義的 HTTP 用戶端攔截器，來驗證與應用程式一起裝載之 Api 的要求會自動完成。
 
-## <a name="protect-a-client-side-route-react"></a>保護用戶端路由（回應）
+## <a name="protect-a-client-side-route-react"></a>保護用戶端路由（React）
 
 使用 `AuthorizeRoute` 元件，而不是純 `Route` 元件來保護用戶端路由。 例如，請注意 `App` 元件內如何設定 `fetch-data` 路由：
 
@@ -237,7 +237,7 @@ RouterModule.forRoot([
 * 不會保護實際的端點（仍然需要套用 `[Authorize]` 屬性）。
 * 只有在未驗證時，才會防止使用者流覽至指定的用戶端路由。
 
-## <a name="authenticate-api-requests-react"></a>驗證 API 要求（回應）
+## <a name="authenticate-api-requests-react"></a>驗證 API 要求（React）
 
 藉由先從 `AuthorizeService`匯入 `authService` 實例，來驗證具有回應的要求。 存取權杖會從 `authService` 抓取，並附加至要求，如下所示。 在回應元件中，這項工作通常會在 `componentDidMount` 生命週期方法中完成，或做為某些使用者互動的結果。
 

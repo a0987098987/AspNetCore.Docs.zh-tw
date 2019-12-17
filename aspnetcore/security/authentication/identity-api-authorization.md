@@ -133,9 +133,9 @@ dotnet new react -o <output_directory_name> -au Individual
 }
 ```
 
-## <a name="general-description-of-the-angular-app"></a>Angular應用程式的一般描述
+## <a name="general-description-of-the-angular-app"></a>角度應用程式的一般描述
 
-Angular範本中的驗證和 API 授權支援位於*ClientApp\src\api-authorization*目錄中自己的Angular模組。 模組是由下列元素所組成：
+角度範本中的驗證和 API 授權支援位於*ClientApp\src\api-authorization*目錄中自己的角度模組。 模組是由下列元素所組成：
 
 * 3個元件：
   * *login. component. ts*：處理應用程式的登入流程。
@@ -146,11 +146,11 @@ Angular範本中的驗證和 API 授權支援位於*ClientApp\src\api-authorizat
 * 可以新增至路由並要求使用者在造訪路由之前進行驗證的 route guard `AuthorizeGuard`。
 * HTTP 攔截器 `AuthorizeInterceptor`，會在使用者通過驗證時，將存取權杖附加至以 API 為目標的傳出 HTTP 要求。
 * 服務 `AuthorizeService`，可處理驗證程式的較低層級詳細資料，並將已驗證使用者的相關資訊公開給其餘的應用程式以供取用。
-* 一個Angular模組，定義與應用程式驗證部分相關聯的路由。 它會公開登入功能表元件、攔截器、防護和服務，以便從應用程式的其餘部分取用。
+* 一個角度模組，定義與應用程式驗證部分相關聯的路由。 它會公開登入功能表元件、攔截器、防護和服務，以便從應用程式的其餘部分取用。
 
-## <a name="general-description-of-the-react-app"></a>React應用程式的一般描述
+## <a name="general-description-of-the-react-app"></a>回應應用程式的一般描述
 
-React範本中的驗證和 API 授權支援位於*ClientApp\src\components\api-authorization*目錄中。 它是由下列元素所組成：
+回應範本中的驗證和 API 授權支援位於*ClientApp\src\components\api-authorization*目錄中。 它是由下列元素所組成：
 
 * 4個元件：
   * *登入 .js*：處理應用程式的登入流程。
@@ -209,7 +209,7 @@ services.Configure<JwtBearerOptions>(
 
 ## <a name="protect-a-client-side-route-angular"></a>保護用戶端路由（Angular）
 
-若要保護用戶端路由，請將授權防護新增至設定路由時要執行的防護清單。 例如，您可以在主要應用程式Angular模組內查看 `fetch-data` 路由的設定方式：
+若要保護用戶端路由，請將授權防護新增至設定路由時要執行的防護清單。 例如，您可以在主要應用程式角度模組內查看 `fetch-data` 路由的設定方式：
 
 ```typescript
 RouterModule.forRoot([
@@ -239,7 +239,7 @@ RouterModule.forRoot([
 
 ## <a name="authenticate-api-requests-react"></a>驗證 API 要求（React）
 
-藉由先從 `AuthorizeService`匯入 `authService` 實例，來驗證具有React的要求。 存取權杖會從 `authService` 抓取，並附加至要求，如下所示。 在React元件中，這項工作通常會在 `componentDidMount` 生命週期方法中完成，或做為某些使用者互動的結果。
+藉由先從 `AuthorizeService`匯入 `authService` 實例，來驗證具有回應的要求。 存取權杖會從 `authService` 抓取，並附加至要求，如下所示。 在回應元件中，這項工作通常會在 `componentDidMount` 生命週期方法中完成，或做為某些使用者互動的結果。
 
 ### <a name="import-the-authservice-into-your-component"></a>將 authService 匯入您的元件
 

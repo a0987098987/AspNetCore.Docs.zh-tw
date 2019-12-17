@@ -43,7 +43,7 @@ ms.locfileid: "74880983"
 
 部分標記協助程式屬性的清查如下。
 
-## <a name="name"></a>{2&gt;名稱&lt;2}
+## <a name="name"></a>名稱
 
 `name` 屬性 (Attribute) 是必要項。 它會指出要呈現之部分檢視的名稱或路徑。 當提供部分檢視名稱時，就會起始[檢視探索](xref:mvc/views/overview#view-discovery)程序。 提供明確的路徑時，則會略過該程序。 如需了解所有可接受的 `name` 值，請參閱[部分檢視探索](xref:mvc/views/partial#partial-view-discovery)。
 

@@ -1,5 +1,5 @@
 ---
-title: 3\.0 ASP.NET Core 的新功能
+title: ASP.NET Core 3.0 的新功能
 author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.0 中的新功能。
 ms.author: riande
@@ -16,7 +16,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 12/06/2019
 ms.locfileid: "74880833"
 ---
-# <a name="whats-new-in-aspnet-core-30"></a>3\.0 ASP.NET Core 的新功能
+# <a name="whats-new-in-aspnet-core-30"></a>ASP.NET Core 3.0 的新功能
 
 本文將重點放在 ASP.NET Core 3.0 中最重要的變更，並提供相關檔的連結。
 

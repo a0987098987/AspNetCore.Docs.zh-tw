@@ -40,28 +40,28 @@ ms.locfileid: "74943757"
 
    # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-   1 \。 使用**ASP.NET 和 網頁程式開發**工作負載安裝[Visual Studio 16.4 或更新版本](https://visualstudio.microsoft.com/vs/preview/)。
+   1\. 使用**ASP.NET 和 網頁程式開發**工作負載安裝[Visual Studio 16.4 或更新版本](https://visualstudio.microsoft.com/vs/preview/)。
 
-   2 \。 建立新的專案。
+   2\. 建立新的專案。
 
-   3 \。 選取 [ **Blazor 應用程式**]。 選取 [下一步]。
+   3\. 選取 [ **Blazor 應用程式**]。 選取 [下一步]。
 
-   4 \。 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
+   4\. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
-   5 \。 如需 Blazor WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
+   5\. 如需 Blazor WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
 
-   6。 按下 **Ctrl**+**F5** 即可執行應用程式。
+   6\. 按下 **Ctrl**+**F5** 即可執行應用程式。
 
    > [!NOTE]
    > 如果您已安裝 ASP.NET Core Blazor （Preview 6 或更早版本）先前預覽版本的 Blazor Visual Studio 延伸模組，則可以卸載擴充功能。 在命令介面中安裝 Blazor 範本，現在已足以呈現 Visual Studio 中的範本。
 
    # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-   1 \。 安裝 [Visual Studio Code (英文)](https://code.visualstudio.com/)。
+   1\. 安裝 [Visual Studio Code (英文)](https://code.visualstudio.com/)。
 
-   2 \。 安裝[ C# Visual Studio Code 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)功能的最新版本。
+   2\. 安裝[ C# Visual Studio Code 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)功能的最新版本。
 
-   3 \。 如需 Blazor WebAssembly 體驗，請在命令 shell 中執行下列命令：
+   3\. 如需 Blazor WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
       ```dotnetcli
       dotnet new blazorwasm -o WebApplication1
@@ -75,31 +75,31 @@ ms.locfileid: "74943757"
 
       如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
 
-   4 \。 在 Visual Studio Code 中開啟 [ *WebApplication1* ] 資料夾。
+   4\. 在 Visual Studio Code 中開啟 [ *WebApplication1* ] 資料夾。
 
-   5 \。 若為 Blazor 伺服器專案，IDE 會要求您新增資產以建立和對專案進行偵錯工具。 選取 [是]。
+   5\. 若為 Blazor 伺服器專案，IDE 會要求您新增資產以建立和對專案進行偵錯工具。 選取 [是]。
 
-   6。 如果使用 Blazor 伺服器應用程式，請使用 Visual Studio Code 偵錯工具來執行應用程式。 如果使用 Blazor WebAssembly 應用程式，請從應用程式的專案資料夾執行 `dotnet run`。
+   6\. 如果使用 Blazor 伺服器應用程式，請使用 Visual Studio Code 偵錯工具來執行應用程式。 如果使用 Blazor WebAssembly 應用程式，請從應用程式的專案資料夾執行 `dotnet run`。
 
-   7 \。 在瀏覽器中，巡覽至 `https://localhost:5001`。
+   7\. 在瀏覽器中，巡覽至 `https://localhost:5001`。
 
    # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-   1 \。 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。 將[更新通道切換為 [預覽](/visualstudio/mac/install-preview)]。
+   1\. 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。 將[更新通道切換為 [預覽](/visualstudio/mac/install-preview)]。
 
-   2 \。 選取 **[** 檔案] > [**新增方案**] 或 [建立**新專案**]。
+   2\. 選取 **[** 檔案] > [**新增方案**] 或 [建立**新專案**]。
 
-   3 \。 在側邊欄中，選取 [ **.Net Core** > **應用程式**]。
+   3\. 在側邊欄中，選取 [ **.Net Core** > **應用程式**]。
 
-   4 \。 選取 [ **Blazor 伺服器應用程式**] 範本。 目前只有 Blazor 伺服器範本可在 Visual Studio for Mac 中使用。 如需 Blazor WebAssembly 體驗，請遵循 [ **.NET Core CLI** ] 索引標籤上的指示。選取 Blazor 伺服器範本之後，請選取 **[下一步]** 。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
+   4\. 選取 [ **Blazor 伺服器應用程式**] 範本。 目前只有 Blazor 伺服器範本可在 Visual Studio for Mac 中使用。 如需 Blazor WebAssembly 體驗，請遵循 [ **.NET Core CLI** ] 索引標籤上的指示。選取 Blazor 伺服器範本之後，請選取 **[下一步]** 。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
 
    <!-- For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. -->
 
-   5 \。 將**目標 Framework**設定為 **.net Core 3.1** ，然後選取 **[下一步]** 。
+   5\. 將**目標 Framework**設定為 **.net Core 3.1** ，然後選取 **[下一步]** 。
 
-   6。 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1`。 選取 [建立]。
+   6\. 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1`。 選取 [建立]。
 
-   7 \。 選取 [**執行**] > **執行而不進行調試**程式，以在不進行偵錯工具的*情況下*執行 使用 [**開始調試**程式] 執行應用程式，以*使用調試*程式執行應用程式。
+   7\. 選取 [**執行**] > **執行而不進行調試**程式，以在不進行偵錯工具的*情況下*執行 使用 [**開始調試**程式] 執行應用程式，以*使用調試*程式執行應用程式。
 
        If a prompt appears to trust the development certificate, trust the certificate and continue.
 
@@ -145,30 +145,30 @@ ms.locfileid: "74943757"
 
    # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-   1 \。 使用**ASP.NET 和 網頁程式開發**工作負載安裝最新的[Visual Studio](https://visualstudio.com/vs/) 。
+   1\. 使用**ASP.NET 和 網頁程式開發**工作負載安裝最新的[Visual Studio](https://visualstudio.com/vs/) 。
 
-   2 \。 選擇性地使用適用于 Blazor WebAssembly 應用程式開發的**ASP.NET 和 網頁程式開發**工作負載，安裝[Visual Studio 16.4 Preview 2 或更新版本](https://visualstudio.microsoft.com/vs/preview/)。
+   2\. 選擇性地使用適用于 Blazor WebAssembly 應用程式開發的**ASP.NET 和 網頁程式開發**工作負載，安裝[Visual Studio 16.4 Preview 2 或更新版本](https://visualstudio.microsoft.com/vs/preview/)。
 
-   3 \。 建立新的專案。
+   3\. 建立新的專案。
 
-   4 \。 選取 [ **Blazor 應用程式**]。 選取 [下一步]。
+   4\. 選取 [ **Blazor 應用程式**]。 選取 [下一步]。
 
-   5 \。 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
+   5\. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
    6。 如需 Blazor WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
 
-   7 \。 按下 **F5** 即可執行應用程式。
+   7\. 按下 **F5** 即可執行應用程式。
 
    > [!NOTE]
    > 如果您已安裝 ASP.NET Core Blazor （Preview 6 或更早版本）先前預覽版本的 Blazor Visual Studio 延伸模組，則可以卸載擴充功能。 在命令介面中安裝 Blazor 範本，現在已足以呈現 Visual Studio 中的範本。
 
    # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-   1 \。 安裝 [Visual Studio Code (英文)](https://code.visualstudio.com/)。
+   1\. 安裝 [Visual Studio Code (英文)](https://code.visualstudio.com/)。
 
-   2 \。 安裝[ C# Visual Studio Code 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)功能的最新版本。
+   2\. 安裝[ C# Visual Studio Code 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)功能的最新版本。
 
-   3 \。 如需 Blazor WebAssembly 體驗，請在命令 shell 中執行下列命令：
+   3\. 如需 Blazor WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
       ```dotnetcli
       dotnet new blazorwasm -o WebApplication1
@@ -182,31 +182,31 @@ ms.locfileid: "74943757"
 
       如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
 
-   4 \。 在 Visual Studio Code 中開啟 [ *WebApplication1* ] 資料夾。
+   4\. 在 Visual Studio Code 中開啟 [ *WebApplication1* ] 資料夾。
 
-   5 \。 若為 Blazor 伺服器專案，IDE 會要求您新增資產以建立和對專案進行偵錯工具。 選取 [是]。
+   5\. 若為 Blazor 伺服器專案，IDE 會要求您新增資產以建立和對專案進行偵錯工具。 選取 [是]。
 
-   6。 如果使用 Blazor 伺服器應用程式，請使用 Visual Studio Code 偵錯工具來執行應用程式。 如果使用 Blazor WebAssembly 應用程式，請從應用程式的專案資料夾執行 `dotnet run`。
+   6\. 如果使用 Blazor 伺服器應用程式，請使用 Visual Studio Code 偵錯工具來執行應用程式。 如果使用 Blazor WebAssembly 應用程式，請從應用程式的專案資料夾執行 `dotnet run`。
 
-   7 \。 在瀏覽器中，巡覽至 `https://localhost:5001`。
+   7\. 在瀏覽器中，巡覽至 `https://localhost:5001`。
 
    # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-   1 \。 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。 將[更新通道切換為 [預覽](/visualstudio/mac/install-preview)]。
+   1\. 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。 將[更新通道切換為 [預覽](/visualstudio/mac/install-preview)]。
 
-   2 \。 選取 **[** 檔案] > [**新增方案**] 或 [建立**新專案**]。
+   2\. 選取 **[** 檔案] > [**新增方案**] 或 [建立**新專案**]。
 
-   3 \。 在側邊欄中，選取 [ **.Net Core** > **應用程式**]。
+   3\. 在側邊欄中，選取 [ **.Net Core** > **應用程式**]。
 
-   4 \。 選取 [ **Blazor 伺服器應用程式**] 範本。 目前只有 Blazor 伺服器範本可在 Visual Studio for Mac 中使用。 如需 Blazor WebAssembly 體驗，請遵循 [ **.NET Core CLI** ] 索引標籤上的指示。選取 Blazor 伺服器範本之後，請選取 **[下一步]** 。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
+   4\. 選取 [ **Blazor 伺服器應用程式**] 範本。 目前只有 Blazor 伺服器範本可在 Visual Studio for Mac 中使用。 如需 Blazor WebAssembly 體驗，請遵循 [ **.NET Core CLI** ] 索引標籤上的指示。選取 Blazor 伺服器範本之後，請選取 **[下一步]** 。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
 
    <!-- For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. -->
 
-   5 \。 將**目標 Framework**設定為 **.net Core 3.0** ，然後選取 **[下一步]** 。
+   5\. 將**目標 Framework**設定為 **.net Core 3.0** ，然後選取 **[下一步]** 。
 
-   6。 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1`。 選取 [建立]。
+   6\. 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1`。 選取 [建立]。
 
-   7 \。 選取 [**執行**] > **執行而不進行調試**程式，以在不進行偵錯工具的*情況下*執行 使用 [**開始調試**程式] 執行應用程式，以*使用調試*程式執行應用程式。
+   7\. 選取 [**執行**] > **執行而不進行調試**程式，以在不進行偵錯工具的*情況下*執行 使用 [**開始調試**程式] 執行應用程式，以*使用調試*程式執行應用程式。
 
        If a prompt appears to trust the development certificate, trust the certificate and continue.
 

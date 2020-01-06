@@ -1,55 +1,125 @@
-<span data-ttu-id="7a17c-101">執行身分識別 scaffolder：</span><span class="sxs-lookup"><span data-stu-id="7a17c-101">Run the Identity scaffolder:</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="7a17c-102">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="7a17c-102">Visual Studio</span></span>](#tab/visual-studio)
+<span data-ttu-id="78f10-101">執行身分識別 scaffolder：</span><span class="sxs-lookup"><span data-stu-id="78f10-101">Run the Identity scaffolder:</span></span>
 
-* <span data-ttu-id="7a17c-103">在**方案總管**中，以滑鼠右鍵按一下專案 >**加入** > **新的 scaffold 專案**。</span><span class="sxs-lookup"><span data-stu-id="7a17c-103">From **Solution Explorer**, right-click on the project > **Add** > **New Scaffolded Item**.</span></span>
-* <span data-ttu-id="7a17c-104">從 [**新增 Scaffold** ] 對話方塊的左窗格中，選取 [身分**識別** > **新增**]。</span><span class="sxs-lookup"><span data-stu-id="7a17c-104">From the left pane of the **Add Scaffold** dialog, select **Identity** > **Add**.</span></span>
-* <span data-ttu-id="7a17c-105">在 [**新增識別**] 對話方塊中，選取您想要的選項。</span><span class="sxs-lookup"><span data-stu-id="7a17c-105">In the **Add Identity** dialog, select the options you want.</span></span>
-  * <span data-ttu-id="7a17c-106">選取您現有的版面配置頁，否則會以不正確的標記覆寫您的配置檔案。</span><span class="sxs-lookup"><span data-stu-id="7a17c-106">Select your existing layout page, or your layout file will be overwritten with incorrect markup.</span></span> <span data-ttu-id="7a17c-107">選取現有的 *\_配置 cshtml*檔案時，**不**會覆寫該檔案。</span><span class="sxs-lookup"><span data-stu-id="7a17c-107">When an existing *\_Layout.cshtml* file is selected, it is **not** overwritten.</span></span>
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="78f10-102">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="78f10-102">Visual Studio</span></span>](#tab/visual-studio)
 
- <span data-ttu-id="7a17c-108">例如： MVC 專案的 Razor Pages `~/Views/Shared/_Layout.cshtml` `~/Pages/Shared/_Layout.cshtml`</span><span class="sxs-lookup"><span data-stu-id="7a17c-108">For example: `~/Pages/Shared/_Layout.cshtml` for Razor Pages `~/Views/Shared/_Layout.cshtml` for MVC projects</span></span>
-* <span data-ttu-id="7a17c-109">若要使用現有的資料內容，請至少選取一個要覆寫的檔案。</span><span class="sxs-lookup"><span data-stu-id="7a17c-109">To use your existing data context, select at least one file to override.</span></span> <span data-ttu-id="7a17c-110">您必須至少選取一個檔案來新增資料內容。</span><span class="sxs-lookup"><span data-stu-id="7a17c-110">You must select at least one file to add your data context.</span></span>
-  * <span data-ttu-id="7a17c-111">選取您的資料內容類別。</span><span class="sxs-lookup"><span data-stu-id="7a17c-111">Select your data context class.</span></span>
-  * <span data-ttu-id="7a17c-112">選取 [新增]。</span><span class="sxs-lookup"><span data-stu-id="7a17c-112">Select **Add**.</span></span>
-* <span data-ttu-id="7a17c-113">若要建立新的使用者內容，並可能建立身分識別的自訂使用者類別：</span><span class="sxs-lookup"><span data-stu-id="7a17c-113">To create a new user context and possibly create a custom user class for Identity:</span></span>
-  * <span data-ttu-id="7a17c-114">選取 [ **+** ] 按鈕，以建立新的**資料內容類別**。</span><span class="sxs-lookup"><span data-stu-id="7a17c-114">Select the **+** button to create a new **Data context class**.</span></span>
-  * <span data-ttu-id="7a17c-115">選取 [新增]。</span><span class="sxs-lookup"><span data-stu-id="7a17c-115">Select **Add**.</span></span>
+* <span data-ttu-id="78f10-103">在**方案總管**中，以滑鼠右鍵按一下專案 >**加入**>**新的 scaffold 專案**。</span><span class="sxs-lookup"><span data-stu-id="78f10-103">From **Solution Explorer**, right-click on the project > **Add** > **New Scaffolded Item**.</span></span>
+* <span data-ttu-id="78f10-104">從 [**新增 Scaffold** ] 對話方塊的左窗格中，選取 [身分**識別**>**新增**]。</span><span class="sxs-lookup"><span data-stu-id="78f10-104">From the left pane of the **Add Scaffold** dialog, select **Identity** > **Add**.</span></span>
+* <span data-ttu-id="78f10-105">在 [**新增識別**] 對話方塊中，選取您想要的選項。</span><span class="sxs-lookup"><span data-stu-id="78f10-105">In the **Add Identity** dialog, select the options you want.</span></span>
+  * <span data-ttu-id="78f10-106">選取您現有的版面配置頁，否則會以不正確的標記覆寫您的配置檔案。</span><span class="sxs-lookup"><span data-stu-id="78f10-106">Select your existing layout page, or your layout file will be overwritten with incorrect markup.</span></span> <span data-ttu-id="78f10-107">選取現有的 *\_配置 cshtml*檔案時，**不**會覆寫該檔案。</span><span class="sxs-lookup"><span data-stu-id="78f10-107">When an existing *\_Layout.cshtml* file is selected, it is **not** overwritten.</span></span>
 
-<span data-ttu-id="7a17c-116">注意：如果您要建立新的使用者內容，就不需要選取要覆寫的檔案。</span><span class="sxs-lookup"><span data-stu-id="7a17c-116">Note: If you're creating a new user context, you don't have to select a file to override.</span></span>
+ <span data-ttu-id="78f10-108">例如： MVC 專案的 Razor Pages `~/Views/Shared/_Layout.cshtml` `~/Pages/Shared/_Layout.cshtml`</span><span class="sxs-lookup"><span data-stu-id="78f10-108">For example: `~/Pages/Shared/_Layout.cshtml` for Razor Pages `~/Views/Shared/_Layout.cshtml` for MVC projects</span></span>
+* <span data-ttu-id="78f10-109">若要使用現有的資料內容，請至少選取一個要覆寫的檔案。</span><span class="sxs-lookup"><span data-stu-id="78f10-109">To use your existing data context, select at least one file to override.</span></span> <span data-ttu-id="78f10-110">您必須至少選取一個檔案來新增資料內容。</span><span class="sxs-lookup"><span data-stu-id="78f10-110">You must select at least one file to add your data context.</span></span>
+  * <span data-ttu-id="78f10-111">選取您的資料內容類別。</span><span class="sxs-lookup"><span data-stu-id="78f10-111">Select your data context class.</span></span>
+  * <span data-ttu-id="78f10-112">選取 [新增]。</span><span class="sxs-lookup"><span data-stu-id="78f10-112">Select **Add**.</span></span>
+* <span data-ttu-id="78f10-113">若要建立新的使用者內容，並可能建立身分識別的自訂使用者類別：</span><span class="sxs-lookup"><span data-stu-id="78f10-113">To create a new user context and possibly create a custom user class for Identity:</span></span>
+  * <span data-ttu-id="78f10-114">選取 [ **+** ] 按鈕，以建立新的**資料內容類別**。</span><span class="sxs-lookup"><span data-stu-id="78f10-114">Select the **+** button to create a new **Data context class**.</span></span>
+  * <span data-ttu-id="78f10-115">選取 [新增]。</span><span class="sxs-lookup"><span data-stu-id="78f10-115">Select **Add**.</span></span>
 
-# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="7a17c-117">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="7a17c-117">.NET Core CLI</span></span>](#tab/netcore-cli)
+<span data-ttu-id="78f10-116">注意：如果您要建立新的使用者內容，就不需要選取要覆寫的檔案。</span><span class="sxs-lookup"><span data-stu-id="78f10-116">Note: If you're creating a new user context, you don't have to select a file to override.</span></span>
 
-<span data-ttu-id="7a17c-118">如果您先前尚未安裝 ASP.NET Core scaffolder，請立即安裝：</span><span class="sxs-lookup"><span data-stu-id="7a17c-118">If you have not previously installed the ASP.NET Core scaffolder, install it now:</span></span>
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="78f10-117">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="78f10-117">.NET Core CLI</span></span>](#tab/netcore-cli)
+
+<span data-ttu-id="78f10-118">如果您先前尚未安裝 ASP.NET Core scaffolder，請立即安裝：</span><span class="sxs-lookup"><span data-stu-id="78f10-118">If you have not previously installed the ASP.NET Core scaffolder, install it now:</span></span>
 
 ```dotnetcli
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
-<span data-ttu-id="7a17c-119">將[VisualStudio](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/)的套件參考新增至專案（\*.csproj）檔案中。</span><span class="sxs-lookup"><span data-stu-id="7a17c-119">Add a package reference to [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) to the project (\*.csproj) file.</span></span> <span data-ttu-id="7a17c-120">在專案目錄中執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="7a17c-120">Run the following command in the project directory:</span></span>
+<span data-ttu-id="78f10-119">將必要的 NuGet 套件參考新增至專案（\*.csproj）檔案。</span><span class="sxs-lookup"><span data-stu-id="78f10-119">Add required NuGet package references to the project (\*.csproj) file.</span></span> <span data-ttu-id="78f10-120">在專案目錄中執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="78f10-120">Run the following command in the project directory:</span></span>
+
+```dotnetcli
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+dotnet add package Microsoft.AspNetCore.Identity.UI
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+```
+
+<span data-ttu-id="78f10-121">執行下列命令以列出身分識別 scaffolder 選項：</span><span class="sxs-lookup"><span data-stu-id="78f10-121">Run the following command to list the Identity scaffolder options:</span></span>
+
+```dotnetcli
+dotnet aspnet-codegenerator identity -h
+```
+
+[!INCLUDE[](~/includes/scaffoldTFM.md)]
+
+<span data-ttu-id="78f10-122">在專案資料夾中，以您想要的選項執行 [身分識別 scaffolder]。</span><span class="sxs-lookup"><span data-stu-id="78f10-122">In the project folder, run the Identity scaffolder with the options you want.</span></span> <span data-ttu-id="78f10-123">例如，若要使用預設 UI 和最小檔案數目來設定身分識別，請執行下列命令。</span><span class="sxs-lookup"><span data-stu-id="78f10-123">For example, to setup identity with the default UI and the minimum number of files, run the following command.</span></span> <span data-ttu-id="78f10-124">針對您的資料庫內容，請使用正確的完整名稱：</span><span class="sxs-lookup"><span data-stu-id="78f10-124">Use the correct fully qualified name for your DB context:</span></span>
+
+```dotnetcli
+dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login"
+```
+
+<span data-ttu-id="78f10-125">PowerShell 使用分號做為命令分隔符號。</span><span class="sxs-lookup"><span data-stu-id="78f10-125">PowerShell uses semicolon as a command separator.</span></span> <span data-ttu-id="78f10-126">使用 PowerShell 時，請將檔案清單中的分號 escape，或以雙引號括住檔案清單。</span><span class="sxs-lookup"><span data-stu-id="78f10-126">When using PowerShell, escape the semi-colons in the file list or put the file list in double quotes.</span></span> <span data-ttu-id="78f10-127">例如：</span><span class="sxs-lookup"><span data-stu-id="78f10-127">For example:</span></span>
+
+```dotnetcli
+dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
+```
+
+<span data-ttu-id="78f10-128">如果您在未指定 `--files` 旗標或 `--useDefaultUI` 旗標的情況下執行身分識別 scaffolder，則會在專案中建立所有可用的身分識別 UI 頁面。</span><span class="sxs-lookup"><span data-stu-id="78f10-128">If you run the Identity scaffolder without specifying the `--files` flag or the `--useDefaultUI` flag, all the available Identity UI pages will be created in your project.</span></span>
+
+---
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+<span data-ttu-id="78f10-129">執行身分識別 scaffolder：</span><span class="sxs-lookup"><span data-stu-id="78f10-129">Run the Identity scaffolder:</span></span>
+
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="78f10-130">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="78f10-130">Visual Studio</span></span>](#tab/visual-studio)
+
+* <span data-ttu-id="78f10-131">在**方案總管**中，以滑鼠右鍵按一下專案 >**加入**>**新的 scaffold 專案**。</span><span class="sxs-lookup"><span data-stu-id="78f10-131">From **Solution Explorer**, right-click on the project > **Add** > **New Scaffolded Item**.</span></span>
+* <span data-ttu-id="78f10-132">從 [**新增 Scaffold** ] 對話方塊的左窗格中，選取 [身分**識別**>**新增**]。</span><span class="sxs-lookup"><span data-stu-id="78f10-132">From the left pane of the **Add Scaffold** dialog, select **Identity** > **Add**.</span></span>
+* <span data-ttu-id="78f10-133">在 [**新增識別**] 對話方塊中，選取您想要的選項。</span><span class="sxs-lookup"><span data-stu-id="78f10-133">In the **Add Identity** dialog, select the options you want.</span></span>
+  * <span data-ttu-id="78f10-134">選取您現有的版面配置頁，否則會以不正確的標記覆寫您的配置檔案。</span><span class="sxs-lookup"><span data-stu-id="78f10-134">Select your existing layout page, or your layout file will be overwritten with incorrect markup.</span></span> <span data-ttu-id="78f10-135">選取現有的 *\_配置 cshtml*檔案時，**不**會覆寫該檔案。</span><span class="sxs-lookup"><span data-stu-id="78f10-135">When an existing *\_Layout.cshtml* file is selected, it is **not** overwritten.</span></span>
+
+ <span data-ttu-id="78f10-136">例如： MVC 專案的 Razor Pages `~/Views/Shared/_Layout.cshtml` `~/Pages/Shared/_Layout.cshtml`</span><span class="sxs-lookup"><span data-stu-id="78f10-136">For example: `~/Pages/Shared/_Layout.cshtml` for Razor Pages `~/Views/Shared/_Layout.cshtml` for MVC projects</span></span>
+* <span data-ttu-id="78f10-137">若要使用現有的資料內容，請至少選取一個要覆寫的檔案。</span><span class="sxs-lookup"><span data-stu-id="78f10-137">To use your existing data context, select at least one file to override.</span></span> <span data-ttu-id="78f10-138">您必須至少選取一個檔案來新增資料內容。</span><span class="sxs-lookup"><span data-stu-id="78f10-138">You must select at least one file to add your data context.</span></span>
+  * <span data-ttu-id="78f10-139">選取您的資料內容類別。</span><span class="sxs-lookup"><span data-stu-id="78f10-139">Select your data context class.</span></span>
+  * <span data-ttu-id="78f10-140">選取 [新增]。</span><span class="sxs-lookup"><span data-stu-id="78f10-140">Select **Add**.</span></span>
+* <span data-ttu-id="78f10-141">若要建立新的使用者內容，並可能建立身分識別的自訂使用者類別：</span><span class="sxs-lookup"><span data-stu-id="78f10-141">To create a new user context and possibly create a custom user class for Identity:</span></span>
+  * <span data-ttu-id="78f10-142">選取 [ **+** ] 按鈕，以建立新的**資料內容類別**。</span><span class="sxs-lookup"><span data-stu-id="78f10-142">Select the **+** button to create a new **Data context class**.</span></span>
+  * <span data-ttu-id="78f10-143">選取 [新增]。</span><span class="sxs-lookup"><span data-stu-id="78f10-143">Select **Add**.</span></span>
+
+<span data-ttu-id="78f10-144">注意：如果您要建立新的使用者內容，就不需要選取要覆寫的檔案。</span><span class="sxs-lookup"><span data-stu-id="78f10-144">Note: If you're creating a new user context, you don't have to select a file to override.</span></span>
+
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="78f10-145">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="78f10-145">.NET Core CLI</span></span>](#tab/netcore-cli)
+
+<span data-ttu-id="78f10-146">如果您先前尚未安裝 ASP.NET Core scaffolder，請立即安裝：</span><span class="sxs-lookup"><span data-stu-id="78f10-146">If you have not previously installed the ASP.NET Core scaffolder, install it now:</span></span>
+
+```dotnetcli
+dotnet tool install -g dotnet-aspnet-codegenerator
+```
+
+<span data-ttu-id="78f10-147">將[VisualStudio](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/)的套件參考新增至專案（\*.csproj）檔案中。</span><span class="sxs-lookup"><span data-stu-id="78f10-147">Add a package reference to [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) to the project (\*.csproj) file.</span></span> <span data-ttu-id="78f10-148">在專案目錄中執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="78f10-148">Run the following command in the project directory:</span></span>
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 ```
 
-<span data-ttu-id="7a17c-121">執行下列命令以列出身分識別 scaffolder 選項：</span><span class="sxs-lookup"><span data-stu-id="7a17c-121">Run the following command to list the Identity scaffolder options:</span></span>
+<span data-ttu-id="78f10-149">執行下列命令以列出身分識別 scaffolder 選項：</span><span class="sxs-lookup"><span data-stu-id="78f10-149">Run the following command to list the Identity scaffolder options:</span></span>
 
 ```dotnetcli
 dotnet aspnet-codegenerator identity -h
 ```
 
-<span data-ttu-id="7a17c-122">在專案資料夾中，以您想要的選項執行 [身分識別 scaffolder]。</span><span class="sxs-lookup"><span data-stu-id="7a17c-122">In the project folder, run the Identity scaffolder with the options you want.</span></span> <span data-ttu-id="7a17c-123">例如，若要使用預設 UI 和最小檔案數目來設定身分識別，請執行下列命令。</span><span class="sxs-lookup"><span data-stu-id="7a17c-123">For example, to setup identity with the default UI and the minimum number of files, run the following command.</span></span> <span data-ttu-id="7a17c-124">針對您的資料庫內容，請使用正確的完整名稱：</span><span class="sxs-lookup"><span data-stu-id="7a17c-124">Use the correct fully qualified name for your DB context:</span></span>
+<span data-ttu-id="78f10-150">在專案資料夾中，以您想要的選項執行 [身分識別 scaffolder]。</span><span class="sxs-lookup"><span data-stu-id="78f10-150">In the project folder, run the Identity scaffolder with the options you want.</span></span> <span data-ttu-id="78f10-151">例如，若要使用預設 UI 和最小檔案數目來設定身分識別，請執行下列命令。</span><span class="sxs-lookup"><span data-stu-id="78f10-151">For example, to setup identity with the default UI and the minimum number of files, run the following command.</span></span> <span data-ttu-id="78f10-152">針對您的資料庫內容，請使用正確的完整名稱：</span><span class="sxs-lookup"><span data-stu-id="78f10-152">Use the correct fully qualified name for your DB context:</span></span>
 
 ```dotnetcli
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login"
 ```
 
-<span data-ttu-id="7a17c-125">PowerShell 使用分號做為命令分隔符號。</span><span class="sxs-lookup"><span data-stu-id="7a17c-125">PowerShell uses semicolon as a command separator.</span></span> <span data-ttu-id="7a17c-126">使用 PowerShell 時，請將檔案清單中的分號 escape，或以雙引號括住檔案清單。</span><span class="sxs-lookup"><span data-stu-id="7a17c-126">When using PowerShell, escape the semi-colons in the file list or put the file list in double quotes.</span></span> <span data-ttu-id="7a17c-127">例如:</span><span class="sxs-lookup"><span data-stu-id="7a17c-127">For example:</span></span>
+<span data-ttu-id="78f10-153">PowerShell 使用分號做為命令分隔符號。</span><span class="sxs-lookup"><span data-stu-id="78f10-153">PowerShell uses semicolon as a command separator.</span></span> <span data-ttu-id="78f10-154">使用 PowerShell 時，請將檔案清單中的分號 escape，或以雙引號括住檔案清單。</span><span class="sxs-lookup"><span data-stu-id="78f10-154">When using PowerShell, escape the semi-colons in the file list or put the file list in double quotes.</span></span> <span data-ttu-id="78f10-155">例如：</span><span class="sxs-lookup"><span data-stu-id="78f10-155">For example:</span></span>
 
 ```dotnetcli
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
 ```
 
-<span data-ttu-id="7a17c-128">如果您在未指定 `--files` 旗標或 `--useDefaultUI` 旗標的情況下執行身分識別 scaffolder，則會在專案中建立所有可用的身分識別 UI 頁面。</span><span class="sxs-lookup"><span data-stu-id="7a17c-128">If you run the Identity scaffolder without specifying the `--files` flag or the `--useDefaultUI` flag, all the available Identity UI pages will be created in your project.</span></span>
+<span data-ttu-id="78f10-156">如果您在未指定 `--files` 旗標或 `--useDefaultUI` 旗標的情況下執行身分識別 scaffolder，則會在專案中建立所有可用的身分識別 UI 頁面。</span><span class="sxs-lookup"><span data-stu-id="78f10-156">If you run the Identity scaffolder without specifying the `--files` flag or the `--useDefaultUI` flag, all the available Identity UI pages will be created in your project.</span></span>
 
 ---
+
+::: moniker-end

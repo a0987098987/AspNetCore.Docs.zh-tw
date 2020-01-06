@@ -1,2 +1,2 @@
-* [<span data-ttu-id="d40d0-101">Visual Studio for Mac 8.0 版或更新版本</span><span class="sxs-lookup"><span data-stu-id="d40d0-101">Visual Studio for Mac version 8.0 or later</span></span>](https://visualstudio.microsoft.com/downloads/)
-* [<span data-ttu-id="d40d0-102">.NET Core SDK 2.2 或更新版本</span><span class="sxs-lookup"><span data-stu-id="d40d0-102">.NET Core SDK 2.2 or later</span></span>](https://www.microsoft.com/net/download/all)
+* [<span data-ttu-id="34531-101">Visual Studio for Mac 8.0 版或更新版本</span><span class="sxs-lookup"><span data-stu-id="34531-101">Visual Studio for Mac version 8.0 or later</span></span>](https://visualstudio.microsoft.com/downloads/)
+* [<span data-ttu-id="34531-102">.NET Core SDK 2.2 或更新版本</span><span class="sxs-lookup"><span data-stu-id="34531-102">.NET Core SDK 2.2 or later</span></span>](https://www.microsoft.com/net/download/all)

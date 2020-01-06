@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
-ms.openlocfilehash: c4c07808540c9af370bfa253e8154a8a19f0f3de
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: 451171a041f7bbb3711babd73d2fa2e245aadd28
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73634061"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355132"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>將 gRPC 服務從 C-核心遷移至 ASP.NET Core
 
@@ -49,7 +49,7 @@ public void ConfigureServices(IServiceCollection services)
 
 在以 C 為基礎的應用程式中，`grpc.max_receive_message_length` 和 `grpc.max_send_message_length` 等設定會在[建立伺服器實例](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server__ctor_System_Collections_Generic_IEnumerable_Grpc_Core_ChannelOption__)時，使用 `ChannelOption` 來設定。
 
-在 ASP.NET Core 中，gRPC 會透過 `GrpcServiceOptions` 類型提供設定。 例如，gRPC 服務的傳入訊息大小上限可以透過 `AddGrpc` 來設定。 下列範例會將 4 MB 的預設 `MaxReceiveMessageSize` 變更為 16 MB：
+在 ASP.NET Core 中，gRPC 會透過 `GrpcServiceOptions` 類型提供設定。 例如，gRPC 服務的傳入訊息大小上限可以透過 `AddGrpc`來設定。 下列範例會將 4 MB 的預設 `MaxReceiveMessageSize` 變更為 16 MB：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -82,7 +82,7 @@ public class GreeterService : Greeter.GreeterBase
 
 ## <a name="grpc-interceptors-vs-middleware"></a>gRPC 攔截器 vs 中介軟體
 
-相較于以 C 核心為基礎的 gRPC 應用程式中的攔截器，ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)提供類似的功能。 ASP.NET Core 中介軟體和攔截器在概念上類似。 既
+相較于以 C 核心為基礎的 gRPC 應用程式中的攔截器，ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)提供類似的功能。 ASP.NET Core 中介軟體和攔截器在概念上類似。 兩者：
 
 * 是用來建立處理 gRPC 要求的管線。
 * 允許在管線中的下一個元件之前或之後執行工作。
@@ -97,6 +97,7 @@ gRPC 攔截器與 ASP.NET Core 中介軟體的差異：
   * 提供存取權：
     * 傳送至呼叫的已還原序列化訊息。
     * 在序列化之前，從呼叫傳回的訊息。
+  * 可以攔截和處理 gRPC 服務擲回的例外狀況。
 * 中介軟體
   * 在 gRPC 攔截器之前執行。
   * 在基礎 HTTP/2 訊息上操作。

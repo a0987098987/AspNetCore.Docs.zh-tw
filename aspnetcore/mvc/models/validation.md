@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解 ASP.NET Core MVC 和 Razor Pages 中的模型驗證。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/15/2019
 uid: mvc/models/validation
-ms.openlocfilehash: 7a6017141eb1016128c4a135c187479717580bb5
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 042a9933e561de4957f6332bdff3c4f09d2e119b
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881033"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355270"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和 Razor Pages 中的模型驗證
 
@@ -58,7 +58,7 @@ ms.locfileid: "74881033"
 * `[Required]`：驗證欄位不是 null。 如需此屬性行為的詳細資料，請參閱[`[Required]` 屬性](#required-attribute)。
 * `[StringLength]`：驗證字串屬性值未超過指定的長度限制。
 * `[Url]`：驗證屬性是否具有 URL 格式。
-* `[Remote]`：藉由在伺服器上呼叫動作方法，驗證用戶端上的輸入。 如需此屬性行為的詳細資料，請參閱 `[`[遠端] ' 屬性] （#remote 屬性）。
+* `[Remote]`：藉由在伺服器上呼叫動作方法，驗證用戶端上的輸入。 如需此屬性行為的詳細資料，請參閱[`[Remote]` 屬性](#remote-attribute)。
 
 您可以在 [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations) 命名空間中找到驗證屬性的完整清單。
 
@@ -423,6 +423,8 @@ $.get({
 * `[StringLength]`：驗證字串屬性值未超過指定的長度限制。
 * `[Url]`：驗證屬性是否具有 URL 格式。
 * `[Remote]`：藉由在伺服器上呼叫動作方法，驗證用戶端上的輸入。 如需此屬性行為的詳細資料，請參閱[`[Remote]` 屬性](#remote-attribute)。
+
+當您使用 `[RegularExpression]` 屬性搭配用戶端驗證時，會在用戶端上以 JavaScript 執行 RegEx。 這表示將會使用[ECMAScript](/dotnet/standard/base-types/regular-expression-options#ecmascript-matching-behavior)比對行為。 如需詳細資訊，請參閱[這個 GitHub 問題](https://github.com/dotnet/corefx/issues/42487) \(英文\)。
 
 您可以在 [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations) 命名空間中找到驗證屬性的完整清單。
 

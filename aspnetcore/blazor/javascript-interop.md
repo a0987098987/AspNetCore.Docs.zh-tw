@@ -9,12 +9,12 @@ ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/javascript-interop
-ms.openlocfilehash: 05225b86701b7a5d5c84dd43afbef70dd1ece228
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 2350870f8548a9c8df324182883a105706c12c20
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944066"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355740"
 ---
 # <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
@@ -30,13 +30,9 @@ Blazor 應用程式可以從 JavaScript 程式碼，叫用 .NET 和 .NET 方法�
 
 有時候需要 .NET 程式碼來呼叫 JavaScript 函式。 例如，JavaScript 呼叫可以將 JavaScript 程式庫中的瀏覽器功能或功能公開給應用程式。 此案例稱為*JavaScript 互通性*（*JS interop*）。
 
-若要從 .NET 呼叫 JavaScript，請使用 `IJSRuntime` 的抽象概念。 `InvokeAsync<T>` 方法會接受您想要叫用之 JavaScript 函數的識別碼，以及任何數目的 JSON 可序列化引數。 函數識別碼相對於全域範圍（`window`）。 如果您想要呼叫 `window.someScope.someFunction`，則會 `someScope.someFunction`識別碼。 在呼叫函式之前，不需要先註冊函式。 傳回類型 `T` 也必須是 JSON 可序列化。 `T` 應符合最佳對應至所傳回 JSON 類型的 .NET 類型。
+若要從 .NET 呼叫 JavaScript，請使用 `IJSRuntime` 的抽象概念。 若要發出 JS interop 呼叫，請在您的元件中插入 `IJSRuntime` 抽象概念。 `InvokeAsync<T>` 方法會接受您想要叫用之 JavaScript 函數的識別碼，以及任何數目的 JSON 可序列化引數。 函數識別碼相對於全域範圍（`window`）。 如果您想要呼叫 `window.someScope.someFunction`，則會 `someScope.someFunction`識別碼。 在呼叫函式之前，不需要先註冊函式。 傳回類型 `T` 也必須是 JSON 可序列化。 `T` 應符合最佳對應至所傳回 JSON 類型的 .NET 類型。
 
-針對 Blazor 伺服器應用程式：
-
-* Blazor 伺服器應用程式會處理多個使用者要求。 請勿呼叫元件中的 `JSRuntime.Current` 來叫用 JavaScript 函式。
-* 插入 `IJSRuntime` 抽象概念，並使用插入的物件發出 JS interop 呼叫。
-* 雖然已預先處理 Blazor 應用程式，但無法呼叫 JavaScript，因為尚未建立與瀏覽器的連接。 如需詳細資訊，請參閱偵測[何時將 Blazor 應用程式進行預呈現](#detect-when-a-blazor-app-is-prerendering)一節。
+若為已啟用可呈現的 Blazor 伺服器應用程式，在初始預入期間，不可能呼叫 JavaScript。 在建立與瀏覽器的連線之後，必須延後 JavaScript interop 呼叫。 如需詳細資訊，請參閱偵測[何時將 Blazor 應用程式進行預呈現](#detect-when-a-blazor-app-is-prerendering)一節。
 
 下列範例是根據[TextDecoder](https://developer.mozilla.org/docs/Web/API/TextDecoder)，這是以實驗性 JavaScript 為基礎的解碼器。 此範例示範如何從C#方法叫用 JavaScript 函數。 JavaScript 函式會從C#方法接受位元組陣列、解碼陣列，然後將文字傳回給元件以供顯示。
 

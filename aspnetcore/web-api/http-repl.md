@@ -5,14 +5,14 @@ description: 了解如何使用 HTTP REPL .NET Core 全域工具來瀏覽和測�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/02/2019
+ms.date: 12/11/2019
 uid: web-api/http-repl
-ms.openlocfilehash: c6e3ab5685b5bd0b154d20585fb0d187f81da641
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: 34ec2b2eb511f33e1263cdad4a338183a3e4b83a
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717161"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356177"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -27,12 +27,12 @@ HTTP「讀取、求值、輸出」迴圈 (REPL) 是：
 支援的 [HTTP 動詞命令](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)如下：
 
 * [DELETE](#test-http-delete-requests)
-* [獲取](#test-http-get-requests)
+* [GET](#test-http-get-requests)
 * [HEAD](#test-http-head-requests)
 * [OPTIONS](#test-http-options-requests)
-* [跳](#test-http-patch-requests)
-* [發佈](#test-http-post-requests)
-* [提出](#test-http-put-requests)
+* [PATCH](#test-http-patch-requests)
+* [POST](#test-http-post-requests)
+* [PUT](#test-http-put-requests)
 
 若要跟著做，[請檢視或下載範例 ASP.NET Core web API](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
@@ -690,8 +690,9 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
         "data": "Strawberry"
       }
     ]
+    ```
 
-1. Run the `delete` command on an endpoint that supports it:
+1. 在支援的端點上執行 `delete` 命令：
 
     ```console
     https://localhost:5001/fruits~ delete 2

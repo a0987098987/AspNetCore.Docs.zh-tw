@@ -5,12 +5,12 @@ description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 AS
 ms.author: scaddie
 ms.date: 10/18/2019
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 1564b644b774939c3c242a41812851917e96d2b2
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: 19be7191792c44fb5414eb0a7b24772c45391253
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "74803340"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359408"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 
@@ -60,7 +60,7 @@ ASP.NET Core 導入了啟動應用程式的新機制。 ASP.NET 應用程式的�
 
 這會設定您的預設路由，並透過 JSON 將 XmlSerialization 設為預設值。 視需要在此管線新增其他中介軟體 (載入服務、組態設定、靜態檔案等等)。
 
-ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 相反地，這會透過 *Program.cs* `Main` 方法完成 (類似主控台應用程式)，而 `Startup` 也是透過該處載入。
+ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 而是透過*Program.cs* `Main` 方法（類似于主控台應用程式）來完成，而且 `Startup` 會透過該處載入。
 
 [!code-csharp[](samples/program.cs)]
 
@@ -158,6 +158,40 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 ## <a name="multi-value-cookies"></a>多重值 cookie
 
 ASP.NET Core 中不支援[多重值的 cookie](xref:System.Web.HttpCookie.Values) 。 為每個值建立一個 cookie。
+
+## <a name="partial-app-migration"></a>部分應用程式遷移
+
+部分應用程式遷移的其中一個方法是建立 IIS 子應用程式，並只將特定路由從 ASP.NET 4.x 移至 ASP.NET Core，同時保留該應用程式的 URL 結構。 例如，請考慮*applicationhost.config*檔案中應用程式的 URL 結構：
+
+```xml
+<sites>
+    <site name="Default Web Site" id="1" serverAutoStart="true">
+        <application path="/">
+            <virtualDirectory path="/" physicalPath="D:\sites\MainSite\" />
+        </application>
+        <application path="/api" applicationPool="DefaultAppPool">
+            <virtualDirectory path="/" physicalPath="D:\sites\netcoreapi" />
+        </application>
+        <bindings>
+            <binding protocol="http" bindingInformation="*:80:" />
+            <binding protocol="https" bindingInformation="*:443:" sslFlags="0" />
+        </bindings>
+    </site>
+    ...
+</sites>
+```
+
+目錄結構：
+
+```
+.
+├── MainSite
+│   ├── ...
+│   └── Web.config
+└── NetCoreApi
+    ├── ...
+    └── web.config
+```
 
 ## <a name="additional-resources"></a>其他資源
 

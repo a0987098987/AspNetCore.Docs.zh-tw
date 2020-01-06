@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: 5faf0be19448d8272901bf018357da63bbe22d4b
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
-ms.translationtype: HT
+ms.openlocfilehash: cecec09d3d58a84a7c15630e41d23facdb9b236e
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308079"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356158"
 ---
 # <a name="visual-studio-container-tools-with-aspnet-core"></a>Visual Studio 容器工具搭配 ASP.NET Core
 
@@ -19,14 +19,14 @@ Visual Studio 2017 及更新版本支援建置、偵錯和執行以 .NET Core �
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
 * [Docker for Windows](https://docs.docker.com/docker-for-windows/install/)
 * 已安裝 **.NET Core 跨平台開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 
 ## <a name="installation-and-setup"></a>安裝和設定
 
-若要安裝 Docker，請先檢閱[適用於 Windows 的 Docker：What to know before you install](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) (安裝前須知) 中的資訊。 接下來，安裝 [適用於 Windows 的 Docker](https://docs.docker.com/docker-for-windows/install/)。
+若要進行 Docker 安裝，請先檢閱 [Docker for Windows: What to know before you install](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) 中的資訊。 接下來，安裝 [適用於 Windows 的 Docker](https://docs.docker.com/docker-for-windows/install/)。
 
 Docker for Windows 中的 **[Shared Drives](https://docs.docker.com/docker-for-windows/#shared-drives)** (共用磁碟機) 必須設定為支援磁碟區對應和偵錯。 以滑鼠右鍵按一下系統匣的 Docker 圖示，並選取 [設定]，然後選取 [共用磁碟機]。 選取 Docker 儲存檔案的磁碟機。 按一下 [套用]。
 
@@ -84,16 +84,16 @@ Visual Studio 容器工具不支援將 Docker 新增至以 .NET Framework 為目
 
 Visual Studio 2017 版本 15.7 或更早的版本支援將 [Docker Compose](https://docs.docker.com/compose/overview/) 作為唯一的容器協調流程解決方案。 透過 [新增] > [Docker 支援] 可新增 Docker Compose 成品。
 
-Visual Studio 2017 版本 15.8 或更新版本只有在指示進行時，才會新增協調流程解決方案。 以滑鼠右鍵按一下**方案總管**中的專案，然後選取 [新增] > [容器協調器支援]。 提供兩個不同的選擇：[Docker Compose](#docker-compose) 和 [Service Fabric](#service-fabric)。
+Visual Studio 2017 版本 15.8 或更新版本只有在指示進行時，才會新增協調流程解決方案。 以滑鼠右鍵按一下**方案總管**中的專案，然後選取 [新增] > [容器協調器支援]。 提供兩種不同的選擇：[Docker Compose](#docker-compose) 與 [Service Fabric](#service-fabric)。
 
 ### <a name="docker-compose"></a>Docker Compose
 
 Visual Studio 容器工具會將 *docker-compose* 專案新增至包含下列檔案的解決方案：
 
 * *docker-compose.dcproj* &ndash; 代表專案的檔案。 包含 `<DockerTargetOS>` 項目，指定要使用的 OS。
-* *.dockerignore* &ndash; 列出在產生組建內容時，要排除的檔案與目錄模式。
-* *docker-compose.yml* &ndash; 基礎 [Docker Compose](https://docs.docker.com/compose/overview/) 檔案，用於定義分別使用 `docker-compose build` 和 `docker-compose run` 建置並執行的映像集合。
-* *docker-compose.override.yml* &ndash; Docker Compose 將會讀取的選擇性檔案，包含服務的組態覆寫。 Visual Studio 會執行 `docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml"` 來合併這些檔案。
+* *. .dockerignore* &ndash; 列出產生組建內容時要排除的檔案和目錄模式。
+* *docker-compose.dev.debug.yml*會 &ndash; 基底[Docker Compose](https://docs.docker.com/compose/overview/)檔案，用來定義以 `docker-compose build` 和 `docker-compose run`分別建立和執行的映射集合。
+* *docker-compose.dev.debug.yml*會使用服務的設定覆寫，yml &ndash; 選擇性的檔案，並由 Docker Compose 讀取。 Visual Studio 會執行 `docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml"` 來合併這些檔案。
 
 *docker-compose.yml* 檔案會參考執行專案時所建立映像的名稱：
 
@@ -107,6 +107,8 @@ Visual Studio 容器工具會將 *docker-compose* 專案新增至包含下列檔
 
 使用特定於設定的覆寫檔案，可以為偵錯和發行組建設定指定不同的組態設定 (例如環境變數或進入點)。
 
+若要讓 Docker Compose 顯示在 Visual Studio 中執行的選項，Docker 專案必須是啟始專案。
+
 ### <a name="service-fabric"></a>Service Fabric
 
 除了基礎[必要條件](#prerequisites)之外，[Service Fabric](/azure/service-fabric/) 協調流程解決方案還需要下列必要條件：
@@ -118,7 +120,7 @@ Service Fabric 不支援在 Windows 上的本機開發叢集中執行 Linux 容�
 
 Visual Studio 容器工具會執行下列工作：
 
-* 將 *&lt;project_name&gt;應用程式* **Service Fabric 應用程式**專案，新增至解決方案。
+* 將 *&lt;project_name&gt;應用程式* **Service Fabric 應用**程式專案新增至方案。
 * 將 *Dockerfile* 與 *.dockerignore* 檔案，新增至 ASP.NET Core 專案。 如果 ASP.NET Core 專案中已存在 *Dockerfile*，則會重新命名為 *Dockerfile.original*。 會建立類似如下的新 *Dockerfile*：
 
     [!code-dockerfile[](visual-studio-tools-for-docker/samples/2.1/HelloDockerTools/Dockerfile)]
@@ -225,7 +227,7 @@ microsoft/aspnetcore        2.0     c69d39472da9  13 days ago     347MB
 ::: moniker-end
 
 > [!NOTE]
-> `docker images` 命令會傳回存放庫名稱和標記識別為 \<無> (上面未列出) 的中繼映像。 這些未命名映像是由[多階段建置](https://docs.docker.com/engine/userguide/eng-image/multistage-build/) *Dockerfile* 所產生。 它們可以改善最終映像的建置效率 &mdash; 發生變更時只會重建必要層。 當不再需要中繼映像時，請使用 [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) \(英文\) 命令予以刪除。
+> `docker images` 命令會傳回存放庫名稱和標記識別為 \<無> (上面未列出) 的中繼映像。 這些未命名的映射是由[多階段組建](https://docs.docker.com/engine/userguide/eng-image/multistage-build/) *Dockerfile*所產生。 它們可以改善最終映像的建置效率 &mdash; 發生變更時只會重建必要層。 當不再需要中繼映像時，請使用 [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) \(英文\) 命令予以刪除。
 
 相較於 *dev* 映像，生產或發行映像的大小可能需要更小。 基於磁碟區對應，偵錯工具和應用程式是從本機電腦執行，而不是在容器內執行。 「最新」映像已封裝在主機上執行應用程式所需的應用程式碼。 因此，差異是應用程式碼的大小。
 

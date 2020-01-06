@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 4377d7d1895b80b3c98a5b480c0f42820f11fbb8
-ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
+ms.openlocfilehash: 3bf930d19684e84365f0ff0255fccd2939fb3f39
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74959108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354913"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -42,7 +42,7 @@ ms.locfileid: "74959108"
 |GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | None | 待辦事項|
 |POST /api/TodoItems | 新增記錄 | 待辦事項 | 待辦事項 |
 |PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | None |
-|DELETE /api/TodoItems/{識別碼} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | None | None|
+|刪除/api/TodoItems/{id} &nbsp; &nbsp; | &nbsp; &nbsp; 刪除專案 | None | None|
 
 下圖顯示應用程式的設計。
 
@@ -68,7 +68,7 @@ ms.locfileid: "74959108"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 [檔案] 功能表選取 [新增] > [專案]。
+* 從 [**檔案**] 功能表中，選取 [**新增**>**專案**]。
 * 選取 **ASP.NET Core Web 應用程式**範本，然後按一下 [下一步]。
 * 將專案命名為 *TodoApi*，然後按一下 [建立]。
 * 在 [**建立新的 ASP.NET Core Web 應用程式**] 對話方塊中，確認已選取 [ **.net Core** ] 和 [ **ASP.NET Core 3.1** ]。 選取 **API** 範本，然後按一下 [建立]。
@@ -98,11 +98,11 @@ ms.locfileid: "74959108"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 [檔案] > [新增解決方案]。
+* 選取 **[** 檔案] > [**新增方案**]。
 
   ![macOS 新增方案](first-web-api-mac/_static/sln.png)
 
-* 選取[.Net Core] > [應用程式] > [API] > [下一步]。
+* 選取  **.Net Core**  >**應用程式**> **API** >**下一步**。
 
   ![macOS [新增專案] 對話方塊](first-web-api-mac/_static/1.png)
   
@@ -204,7 +204,7 @@ ms.locfileid: "74959108"
 
   ![新增資料夾](first-web-api-mac/_static/folder.png)
 
-* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [新增檔案] > [一般] > [空類別]。
+* 以滑鼠右鍵按一下 [*模型*] 資料夾，**然後選取**[**新增 > 新**檔案 >**一般**>**空白類別**]。
 
 * 將類別命名為 *TodoItem*，然後按一下 [新增]。
 
@@ -267,7 +267,7 @@ ms.locfileid: "74959108"
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 以滑鼠右鍵按一下 *Controllers* 資料夾。
-* 選取 [新增] > [新增 Scaffold 項目]。
+* 選取 [**加入**>**新增 scaffold 專案**]。
 * 選取 [使用 Entity Framework 執行動作的 API 控制器]，然後選取 [新增]。
 * 在 [使用 Entity Framework 執行動作的 API 控制器] 對話方塊中：
 
@@ -322,7 +322,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * 啟動 Web 應用程式。
 * 啟動 Postman。
 * 停用 [SSL certificate verification] \(SSL 憑證驗證\)
-* 從 [檔案] > [設定] ([一般] 索引標籤)，停用 [SSL 憑證驗證]。
+* 從 [檔案 **> 設定**] （ **[一般**] 索引標籤），停用**SSL 憑證驗證**。
     > [!WARNING]
     > 在測試控制器之後，請重新啟用 [SSL certificate verification] \(SSL 憑證驗證\)。
 
@@ -443,15 +443,13 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 下圖顯示 Postman 更新：
 
-![顯示 204 (沒有內容) 回應的 Postman 主控台](first-web-api/_static/3/pmcput.png)
+![顯示「204 (沒有內容) 回應」的 Postman 主控台](first-web-api/_static/3/pmcput.png)
 
 ## <a name="the-deletetodoitem-method"></a>DeleteTodoItem 方法
 
 檢查 `DeleteTodoItem` 方法：
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Delete)]
-
-`DeleteTodoItem` 回應是 [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) \(204 (沒有內容)\)。
 
 ### <a name="test-the-deletetodoitem-method"></a>測試 DeleteTodoItem 方法
 
@@ -493,7 +491,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 |GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | None | 待辦事項|
 |POST /api/TodoItems | 新增記錄 | 待辦事項 | 待辦事項 |
 |PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | None |
-|DELETE /api/TodoItems/{識別碼} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | None | None|
+|刪除/api/TodoItems/{id} &nbsp; &nbsp; | &nbsp; &nbsp; 刪除專案 | None | None|
 
 下圖顯示應用程式的設計。
 
@@ -519,7 +517,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 [檔案] 功能表選取 [新增] > [專案]。
+* 從 [**檔案**] 功能表中，選取 [**新增**>**專案**]。
 * 選取 **ASP.NET Core Web 應用程式**範本，然後按一下 [下一步]。
 * 將專案命名為 *TodoApi*，然後按一下 [建立]。
 * 在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中，確認選取 [.NET Core] 和 [ASP.NET Core 2.2]。 選取 **API** 範本，然後按一下 [建立]。 請**勿**選取 [Enable Docker Support] \(啟用 Docker 支援\)。
@@ -543,11 +541,11 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 [檔案] > [新增解決方案]。
+* 選取 **[** 檔案] > [**新增方案**]。
 
   ![macOS 新增方案](first-web-api-mac/_static/sln.png)
 
-* 選取[.Net Core] > [應用程式] > [API] > [下一步]。
+* 選取  **.Net Core**  >**應用程式**> **API** >**下一步**。
 
   ![macOS [新增專案] 對話方塊](first-web-api-mac/_static/1.png)
   
@@ -609,7 +607,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
   ![新增資料夾](first-web-api-mac/_static/folder.png)
 
-* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [新增檔案] > [一般] > [空類別]。
+* 以滑鼠右鍵按一下 [*模型*] 資料夾，**然後選取**[**新增 > 新**檔案 >**一般**>**空白類別**]。
 
 * 將類別命名為 *TodoItem*，然後按一下 [新增]。
 
@@ -660,7 +658,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 以滑鼠右鍵按一下 *Controllers* 資料夾。
-* 選取 [新增] > [新增項目]。
+* 選取 **[** **新增 > 新專案**]。
 * 在 [新增項目] 對話方塊中，選取 [API 控制器類別] 範本。
 * 將類別命名為 *TodoController*，然後選取 [新增]。
 
@@ -748,11 +746,11 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 [檔案] > [設定] ([一般] 索引標籤)，停用 [SSL 憑證驗證]。
+* 從 [檔案 **> 設定**] （ **[一般**] 索引標籤），停用**SSL 憑證驗證**。
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* 從 [Postman]  >  [喜好設定] ([一般] 索引標籤)，停用 [SSL 憑證驗證]。 或者，選取扳手並選取 [設定]，然後停用 [SSL 憑證驗證]。
+* 從 [Postman] >  [喜好設定] ([一般] 索引標籤)，停用 [SSL 憑證驗證]。 或者，選取扳手並選取 [設定]，然後停用 [SSL 憑證驗證]。
 
 ---
   
@@ -842,7 +840,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 下圖顯示 Postman 更新：
 
-![顯示 204 (沒有內容) 回應的 Postman 主控台](first-web-api/_static/pmcput.png)
+![顯示「204 (沒有內容) 回應」的 Postman 主控台](first-web-api/_static/pmcput.png)
 
 ## <a name="add-a-deletetodoitem-method"></a>新增 DeleteTodoItem 方法
 

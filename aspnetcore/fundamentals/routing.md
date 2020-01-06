@@ -5,14 +5,14 @@ description: 探索 ASP.NET Core 路由功能如何負責將要求 URI 對應至
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/24/2019
+ms.date: 12/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: be4493cc927bd5437a2c9dab00b6a555756195bb
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: 9780183f8f9bc322f73d058b3cab7f8c10f7cd5f
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354744"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -20,7 +20,7 @@ ms.locfileid: "73416129"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-路由會負責將要求 Uri 對應至端點，並將傳入要求分派至這些端點。 路由定義於應用程式，並在該應用程式啟動時進行設定。 路由可以選擇性地從要求中所包含的 URL 擷取值，然後這些值就可用於處理要求。 使用來自應用程式的路由資訊，路由也能夠產生對應至端點的 Url。
+路由會負責將要求 Uri 對應至端點，並將傳入要求分派至這些端點。 路由定義於應用程式，並在該應用程式啟動時進行設定。 路由可以選擇性地從要求中所包含的 URL 擷取值，然後這些值就可用於處理要求。 使用來自應用程式的路由資訊，路由也能夠產生對應至端點的 Url。 許多應用程式不需要新增範本所提供的路由。 控制器和 Razor 頁面的 ASP.NET Core 範本會設定路由端點。 如果您需要新增自訂路由端點，可以在範本產生的路由端點旁設定自訂端點。
 
 > [!IMPORTANT]
 > 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。 如需 Razor Pages 中路由慣例的資訊，請參閱 <xref:razor-pages/razor-pages-conventions>。
@@ -38,7 +38,7 @@ ms.locfileid: "73416129"
 
 Web API 應該使用屬性路由傳送來將應用程式功能模型建構為作業由 HTTP 指令動詞代表的資源集合。 這表示相同邏輯資源上的許多作業 (例如，GET、POST) 都會使用相同的 URL。 屬性路由提供仔細設計 API 公用端點配置所需的控制層級。
 
-Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱 <xref:razor-pages/index> 與 <xref:razor-pages/razor-pages-conventions>。
+Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱<xref:razor-pages/index>和<xref:razor-pages/razor-pages-conventions>。
 
 URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的情況下開發應用程式。 這項支援可讓您從基本路由設定開始，並在決定應用程式資源配置之後修改路由。
 
@@ -126,6 +126,22 @@ URL 產生是路由可用來依據一組路由值建立 URL 路徑的處理序�
 > * 使用 `GetUri*` 擴充方法，並注意應用程式組態不會驗證傳入要求的 `Host` 標頭。 如果傳入要求的 `Host` 標頭未經驗證，則可能將未受信任的要求輸入傳回檢視/頁面 URI 中的用戶端。 建議所有生產應用程式將其伺服器設定為驗證 `Host` 標頭是否為已知有效值。
 >
 > * 使用 <xref:Microsoft.AspNetCore.Routing.LinkGenerator>，並注意與 `Map` 或 `MapWhen` 搭配使用的中介軟體。 `Map*` 會變更執行要求的基底路徑，這會影響連結產生的輸出。 所有的 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> API 都允許指定基底路徑。 請一律指定空白基底路徑來恢復 `Map*` 對連結產生的影響。
+
+## <a name="endpoint-routing"></a>端點路由
+
+* 路由端點具有範本、中繼資料，以及服務端點回應的要求委派。 中繼資料是用來根據附加至每個端點的原則和設定來執行跨領域考慮。 例如，授權中介軟體可以針對[授權原則](xref:security/authorization/policies#applying-policies-to-mvc-controllers)詢問端點的元資料集合。
+* 端點路由會使用兩個擴充方法與中介軟體整合：
+  * [UseRouting](xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*)會將路由對應新增至中介軟體管線。 它必須位於任何路由感知中介軟體之前，例如授權、端點執行等等。
+  * [UseEndpoints](xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*)會將端點執行新增至中介軟體管線。 它會執行服務端點回應的要求委派。
+  `UseEndpoints` 也是路由端點設定的位置，可由應用程式進行比對和執行。 例如，<xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*>、<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*>、<xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*>和 <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>。
+* 應用程式會使用 ASP.NET Core 的 helper 方法來設定其路由。 ASP.NET Core framework 提供 helper 方法，例如 <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*>、、<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> 和 `MapHub<THub>`。 另外還有協助程式方法，可用於設定您自己的自訂路由端點： <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*>、<xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>和[MapVerb](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions)。 
+* 端點路由也支援應用程式啟動後變更的端點。 若要在您的應用程式或 ASP.NET Core 架構中支援這項功能，必須建立並註冊自訂 <xref:Microsoft.AspNetCore.Routing.EndpointDataSource>。 這是一項先進的功能，通常不需要。 端點通常會在啟動時設定，而且在應用程式的存留期為靜態。 在啟動時從檔案或資料庫載入路由設定並非動態的。
+
+下列程式碼顯示端點路由的基本範例：
+
+[!code-csharp[](routing/samples/3.x/Startup.cs?name=snippet)]
+
+如需端點路由的詳細資訊，請參閱本檔中的[URL](#url-matching)比對。
 
 ## <a name="endpoint-routing-differences-from-earlier-versions-of-routing"></a>端點路由與舊版路由的差異
 
@@ -441,7 +457,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 備註 |
+| 條件約束 | 範例 | 範例相符項目 | 注意事項 |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`、 `-123456789` | 符合任何整數 |
 | `bool` | `{active:bool}` | `true`、 `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
@@ -485,12 +501,12 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中所使用的規則運算式通常以插入號 (`^`) 字元開頭，並符合字串的開始位置。 運算式通常以貨幣符號 (`$`) 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算式   | String    | 比對 | 註解               |
+| 運算式   | 字串    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | [是]   | 子字串相符項目     |
-| `[a-z]{2}`   | 123abc456 | [是]   | 子字串相符項目     |
-| `[a-z]{2}`   | mz        | [是]   | 符合運算式    |
-| `[a-z]{2}`   | MZ        | [是]   | 不區分大小寫    |
+| `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
+| `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
+| `[a-z]{2}`   | mz        | 是   | 符合運算式    |
+| `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
 | `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
 | `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 
@@ -502,7 +518,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 除了內建的路由限制式之外，自訂路由限制式也可以透過實作 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面來建立。 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面包含單一方法 `Match`，此方法會在滿足限制式時傳回 `true`，否則會傳回 `false`。
 
-若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 `services.Configure<RouteOptions>` 直接設定 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 來更新。 例如:
+若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 `services.Configure<RouteOptions>` 直接設定 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 來更新。 例如：
 
 ```csharp
 services.AddRouting(options =>
@@ -511,7 +527,7 @@ services.AddRouting(options =>
 });
 ```
 
-限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如:
+限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如：
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -706,7 +722,7 @@ services.AddMvc(options => options.EnableEndpointRouting = false)
 
 Web API 應該使用屬性路由傳送來將應用程式功能模型建構為作業由 HTTP 指令動詞代表的資源集合。 這表示相同邏輯資源上的許多作業 (例如，GET、POST) 都會使用相同的 URL。 屬性路由提供仔細設計 API 公用端點配置所需的控制層級。
 
-Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱 <xref:razor-pages/index> 與 <xref:razor-pages/razor-pages-conventions>。
+Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱<xref:razor-pages/index>和<xref:razor-pages/razor-pages-conventions>。
 
 URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的情況下開發應用程式。 這項支援可讓您從基本路由設定開始，並在決定應用程式資源配置之後修改路由。
 
@@ -1102,7 +1118,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 備註 |
+| 條件約束 | 範例 | 範例相符項目 | 注意事項 |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`、 `-123456789` | 符合任何整數 |
 | `bool` | `{active:bool}` | `true`、 `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
@@ -1146,12 +1162,12 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中所使用的規則運算式通常以插入號 (`^`) 字元開頭，並符合字串的開始位置。 運算式通常以貨幣符號 (`$`) 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算式   | String    | 比對 | 註解               |
+| 運算式   | 字串    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | [是]   | 子字串相符項目     |
-| `[a-z]{2}`   | 123abc456 | [是]   | 子字串相符項目     |
-| `[a-z]{2}`   | mz        | [是]   | 符合運算式    |
-| `[a-z]{2}`   | MZ        | [是]   | 不區分大小寫    |
+| `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
+| `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
+| `[a-z]{2}`   | mz        | 是   | 符合運算式    |
+| `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
 | `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
 | `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 
@@ -1163,7 +1179,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 除了內建的路由限制式之外，自訂路由限制式也可以透過實作 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面來建立。 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面包含單一方法 `Match`，此方法會在滿足限制式時傳回 `true`，否則會傳回 `false`。
 
-若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 `services.Configure<RouteOptions>` 直接設定 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 來更新。 例如:
+若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 `services.Configure<RouteOptions>` 直接設定 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 來更新。 例如：
 
 ```csharp
 services.AddRouting(options =>
@@ -1172,7 +1188,7 @@ services.AddRouting(options =>
 });
 ```
 
-限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如:
+限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如：
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -1282,7 +1298,7 @@ services.AddMvc()
 
 Web API 應該使用屬性路由傳送來將應用程式功能模型建構為作業由 HTTP 指令動詞代表的資源集合。 這表示相同邏輯資源上的許多作業 (例如，GET、POST) 都會使用相同的 URL。 屬性路由提供仔細設計 API 公用端點配置所需的控制層級。
 
-Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱 <xref:razor-pages/index> 與 <xref:razor-pages/razor-pages-conventions>。
+Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱<xref:razor-pages/index>和<xref:razor-pages/razor-pages-conventions>。
 
 URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的情況下開發應用程式。 這項支援可讓您從基本路由設定開始，並在決定應用程式資源配置之後修改路由。
 
@@ -1556,7 +1572,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 備註 |
+| 條件約束 | 範例 | 範例相符項目 | 注意事項 |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`、 `-123456789` | 符合任何整數 |
 | `bool` | `{active:bool}` | `true`、 `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
@@ -1600,12 +1616,12 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中所使用的規則運算式通常以插入號 (`^`) 字元開頭，並符合字串的開始位置。 運算式通常以貨幣符號 (`$`) 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算式   | String    | 比對 | 註解               |
+| 運算式   | 字串    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | [是]   | 子字串相符項目     |
-| `[a-z]{2}`   | 123abc456 | [是]   | 子字串相符項目     |
-| `[a-z]{2}`   | mz        | [是]   | 符合運算式    |
-| `[a-z]{2}`   | MZ        | [是]   | 不區分大小寫    |
+| `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
+| `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
+| `[a-z]{2}`   | mz        | 是   | 符合運算式    |
+| `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
 | `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
 | `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 
@@ -1617,7 +1633,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 除了內建的路由限制式之外，自訂路由限制式也可以透過實作 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面來建立。 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面包含單一方法 `Match`，此方法會在滿足限制式時傳回 `true`，否則會傳回 `false`。
 
-若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 `services.Configure<RouteOptions>` 直接設定 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 來更新。 例如:
+若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 `services.Configure<RouteOptions>` 直接設定 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 來更新。 例如：
 
 ```csharp
 services.AddRouting(options =>
@@ -1626,7 +1642,7 @@ services.AddRouting(options =>
 });
 ```
 
-限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如:
+限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如：
 
 ```csharp
 [HttpGet("{id:customName}")]

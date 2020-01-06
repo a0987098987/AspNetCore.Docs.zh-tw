@@ -5,14 +5,14 @@ description: 了解 Kestrel，這是 ASP.NET Core 的跨平台網頁伺服器。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/14/2019
+ms.date: 12/26/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 6fba6689f72f7a565e28d80f6770765ab097cf11
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: 9fbf0ec93634100fccef279fc7cad92cb1420e84
+ms.sourcegitcommit: 991442dfb16ef08a0aae05bc79f9e9a2d819c587
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289096"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75492591"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -55,7 +55,7 @@ Kestrel 支援下列案例：
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>何時搭配使用 Kestrel 與反向 Proxy
 
-您可以單獨使用 Kestrel，或與 *[Internet Information Services (IIS)](https://www.iis.net/)* 、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
+您可以單獨使用 Kestrel，或與 [Internet Information Services (IIS)](https://www.iis.net/)、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
 
 Kestrel 用作邊緣 (網際網路對應) 網頁伺服器：
 
@@ -108,7 +108,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 Kestrel 網頁伺服器所含的條件約束組態選項，在網際網路對應部署方面特別有用。
 
-請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Limits> 類別的 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 屬性上設定條件約束。 `Limits` 屬性會保存 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits> 類別的執行個體。
+請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 類別的 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Limits> 屬性上設定條件約束。 `Limits` 屬性會保存 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits> 類別的執行個體。
 
 下列範例會使用 <xref:Microsoft.AspNetCore.Server.Kestrel.Core> 命名空間；
 
@@ -135,15 +135,30 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 * 在 `Startup.ConfigureServices`中設定 Kestrel：
 
   1. 將 `IConfiguration` 的實例插入 `Startup` 類別中。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
-  2. 在 `Startup.ConfigureServices`中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
+  2. 在 `Startup.ConfigureServices`中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
      ```csharp
-     // using Microsoft.Extensions.Configuration
-
-     public void ConfigureServices(IServiceCollection services)
+     using Microsoft.Extensions.Configuration
+     
+     public class Startup
      {
-         services.Configure<KestrelServerOptions>(
-             Configuration.GetSection("Kestrel"));
+         public Startup(IConfiguration configuration)
+         {
+             Configuration = configuration;
+         }
+
+         public IConfiguration Configuration { get; }
+
+         public void ConfigureServices(IServiceCollection services)
+         {
+             services.Configure<KestrelServerOptions>(
+                 Configuration.GetSection("Kestrel"));
+         }
+
+         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+         {
+             ...
+         }
      }
      ```
 
@@ -215,7 +230,7 @@ public IActionResult MyActionMethod()
 
 如果應用程式在開始讀取要求之後，設定要求的限制，就會擲回例外狀況（exception）。 有一個 `IsReadOnly` 屬性會指出 `MaxRequestBodySize` 屬性處於唯讀狀態，這表示要設定限制已經太遲。
 
-當應用程式是在 [ASP.NET Core 模組](xref:host-and-deploy/iis/index#out-of-process-hosting-model)後方於[處理序外](xref:host-and-deploy/aspnet-core-module)執行時，Kestrel 的要求本文大小限制將會被停用，因為 IIS 已經設定限制。
+當應用程式是在 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)後方於[處理序外](xref:host-and-deploy/iis/index#out-of-process-hosting-model)執行時，Kestrel 的要求本文大小限制將會被停用，因為 IIS 已經設定限制。
 
 ### <a name="minimum-request-body-data-rate"></a>要求主體資料速率下限
 
@@ -236,7 +251,7 @@ public IActionResult MyActionMethod()
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Startup.cs?name=snippet_Limits&highlight=6-21)]
 
-因為通訊協定對要求多工的支援，所以 HTTP/2 一般不支援以每一要求基礎修改速率限制，進而使先前範例中所參考的 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinResponseDataRateFeature> 不會出現在 HTTP/2 要求的 `HttpContext.Features` 中。 不過，<xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinRequestBodyDataRateFeature> 仍存在 HTTP/2 要求的 `HttpContext.Features`您仍能透過將 *設定為* (即使是針對 HTTP/2 要求)，以個別要求基礎來「完全停用」`IHttpMinRequestBodyDataRateFeature.MinDataRate``null`讀取素率限制。 嘗試讀取 `IHttpMinRequestBodyDataRateFeature.MinDataRate` 或嘗試將它設定為 `null` 以外的值將會導致擲回 `NotSupportedException` (假設要求是 HTTP/2 要求)。
+因為通訊協定對要求多工的支援，所以 HTTP/2 一般不支援以每一要求基礎修改速率限制，進而使先前範例中所參考的 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinResponseDataRateFeature> 不會出現在 HTTP/2 要求的 `HttpContext.Features` 中。 不過，<xref:Microsoft.AspNetCore.Server.Kestrel.Core.Features.IHttpMinRequestBodyDataRateFeature> 仍存在 HTTP/2 要求的 `HttpContext.Features`您仍能透過將 `IHttpMinRequestBodyDataRateFeature.MinDataRate` 設定為 `null` (即使是針對 HTTP/2 要求)，以個別要求基礎來「完全停用」讀取素率限制。 嘗試讀取 `IHttpMinRequestBodyDataRateFeature.MinDataRate` 或嘗試將它設定為 `null` 以外的值將會導致擲回 `NotSupportedException` (假設要求是 HTTP/2 要求)。
 
 透過 `KestrelServerOptions.Limits` 設定的全伺服器速率限制皆仍套用至 HTTP/1.x 及 HTTP/2 連線。
 
@@ -328,7 +343,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="synchronous-io"></a>同步 IO
 
-<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO> 控制是否允許要求與回應的同步 IO。 預設值是 `false`。
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO> 控制是否允許要求與回應的同步 IO。 預設值為 `false`。
 
 > [!WARNING]
 > 大量的封鎖同步 IO 作業會導致執行緒集區耗盡，這會使得應用程式沒有回應。 只有當使用不支援同步 IO 的程式庫時才啟用 `AllowSynchronousIO`。
@@ -370,7 +385,7 @@ ASP.NET Core 預設會繫結至：
 
 專案範本預設會將應用程式設定為在 HTTPS 上執行，並包含 HTTPS 重新導向[和 HSTS 支援](xref:security/enforcing-ssl)。
 
-請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 上呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> 或 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 方法，來為 Kestrel 設定 URL 首碼和連接埠。
+請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 上呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 或 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> 方法，來為 Kestrel 設定 URL 首碼和連接埠。
 
 `UseUrls`、`--urls` 命令列引數、`urls` 主機組態索引鍵和 `ASPNETCORE_URLS` 環境變數同樣有效，但卻有本節稍後註明的限制 (針對 HTTPS 端點組態必須有預設憑證可用)。
 
@@ -421,7 +436,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 `ListenOptions.UseHttps` 延伸模組：
 
-* `UseHttps` &ndash; 設定 Kestrel 以與 HTTPS 預設憑證搭配使用。 如果未設定預設憑證，會擲回例外狀況。
+* `UseHttps` &ndash; 將 Kestrel 設定為使用 HTTPS 搭配預設憑證。 如果未設定預設憑證，會擲回例外狀況。
 * `UseHttps(string fileName)`
 * `UseHttps(string fileName, string password)`
 * `UseHttps(string fileName, string password, Action<HttpsConnectionAdapterOptions> configureOptions)`
@@ -437,7 +452,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 * `filename` 是憑證檔案的路徑和檔案名稱，它相對於包含應用程式內容檔案的目錄。
 * `password` 是存取 X.509 憑證資料所需的密碼。
-* `configureOptions` 是設定 `Action` 的 `HttpsConnectionAdapterOptions`。 傳回 `ListenOptions`。
+* `configureOptions` 是設定 `HttpsConnectionAdapterOptions` 的 `Action`。 傳回 `ListenOptions`。
 * `storeName` 是要從中載入憑證的憑證存放區。
 * `subject` 是憑證的主體名稱。
 * `allowInvalid` 表示是否應該考慮無效的憑證，例如自我簽署憑證。
@@ -465,7 +480,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
 在下列 *appsettings.json* 範例中：
 
 * 將 **AllowInvalid** 設定為 `true`，允許使用無效的憑證 (例如，自我簽署憑證)。
-* 任何未指定憑證 (接下來範例中的 **HttpsDefaultCert**) 的 HTTPS 端點會回復為 [憑證] >[預設] 下定義的憑證或開發憑證。
+* 任何未指定憑證的 HTTPS 端點（在下列範例中為**HttpsDefaultCert** ）會回到 [**憑證**] 底下定義的憑證 >**預設**或開發憑證。
 
 ```json
 {
@@ -551,7 +566,7 @@ webBuilder.UseKestrel((context, serverOptions) =>
 
 * 每個端點的 [設定] 區段都可以在 `Endpoint` 方法的選項中使用，如此一來，就可以讀取自訂設定。
 * 可以藉由使用另一個區段再次呼叫 `options.Configure(context.Configuration.GetSection("{SECTION}"))` 而載入多個組態。 只會使用最後一個組態，除非在先前的執行個體上已明確呼叫 `Load`。 中繼套件不會呼叫 `Load`，如此可能會取代其預設組態區段。
-* `KestrelConfigurationLoader` 會將來自 `Listen` 的 API 的 `KestrelServerOptions` 系列鏡像為 `Endpoint` 多載，所以可在相同的位置設定程式碼和設定端點。 這些多載不使用名稱，並且只使用來自組態的預設組態。
+* `KestrelConfigurationLoader` 會將來自 `KestrelServerOptions` 的 API 的 `Listen` 系列鏡像為 `Endpoint` 多載，所以可在相同的位置設定程式碼和設定端點。 這些多載不使用名稱，並且只使用來自組態的預設組態。
 
 *變更程式碼中的預設值*
 
@@ -637,7 +652,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 方法會繫結至 TCP 通訊端，而選項 Lambda 則會允許 X.509 憑證設定：
 
-[!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_TCPSocket&highlight=9-16)]
+[!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_TCPSocket&highlight=12-18)]
 
 此範例使用 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.ListenOptions>來為端點設定 HTTPS。 若要設定特定端點的其他 Kestrel 設定，請使用相同的 API。
 
@@ -681,7 +696,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 ### <a name="listenoptionsprotocols"></a>ListenOptions.Protocols
 
-`Protocols` 屬性會建立在連線端點上或針對伺服器啟用的 HTTP 通訊協定 (`HttpProtocols`)。 從 `Protocols` 列舉中指派一個值給 `HttpProtocols` 屬性。
+`Protocols` 屬性會建立在連線端點上或針對伺服器啟用的 HTTP 通訊協定 (`HttpProtocols`)。 從 `HttpProtocols` 列舉中指派一個值給 `Protocols` 屬性。
 
 | `HttpProtocols` 列舉值 | 允許的連線通訊協定 |
 | -------------------------- | ----------------------------- |
@@ -697,11 +712,11 @@ HTTP/2 的 TLS 限制：
 * 已停用重新交涉
 * 已停用壓縮
 * 暫時金鑰交換大小下限：
-  * 橢圓曲線 Diffie-Hellman (ECDHE) &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; 最小 224 個位元
-  * 有限欄位 Diffie-Hellman (DHE) &lbrack;`TLS12`&rbrack; &ndash; 最小 2048 個位元
+  * 橢圓曲線 Diffie-hellman （ECDHE） &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; 224 位最小值
+  * 有限的 field Diffie-hellman （DHE） &lbrack;`TLS12`&rbrack; &ndash; 2048 位最小值
 * 加密套件未列於封鎖清單中
 
-預設支援 `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256` &lbrack;`TLS-ECDHE`&rbrack; 與 P-256 橢圓曲線 &lbrack;`FIPS186`&rbrack;。
+`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256` &lbrack;`TLS-ECDHE`&rbrack; 與 P-256 橢圓曲線 &lbrack;`FIPS186`&rbrack; 預設為支援。
 
 下列範例會允許連接埠 8000 上的 HTTP/1.1 和 HTTP/2 連線。 這些連線使用提供的憑證受到 TLS 保護：
 
@@ -937,7 +952,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-預設停用主機篩選中介軟體。 若要啓用中介軟體，請在 `AllowedHosts`appsettings.json/appsettings.*環境名稱>.json\< 中定義*  索引鍵。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+預設停用主機篩選中介軟體。 若要啓用中介軟體，請在 *appsettings.json*/*appsettings.\<環境名稱>.json* 中定義 `AllowedHosts` 索引鍵。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
 
 *appsettings.json*：
 
@@ -948,7 +963,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 ```
 
 > [!NOTE]
-> [轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)也有 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts> 選項。 在不同的案例中，轉送標頭中介軟體和主機篩選中介軟體有類似的功能。 當不保留 `AllowedHosts` 標頭，卻使用反向 Proxy 伺服器或負載平衡器轉送要求時，可使用轉送標頭中介軟體設定 `Host`。 當使用 Kestrel 作為公眾對應 Edge Server，或直接轉送 `AllowedHosts` 標頭時，可使用主機篩選中介軟體設定 `Host`。
+> [轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)也有 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts> 選項。 在不同的案例中，轉送標頭中介軟體和主機篩選中介軟體有類似的功能。 當不保留 `Host` 標頭，卻使用反向 Proxy 伺服器或負載平衡器轉送要求時，可使用轉送標頭中介軟體設定 `AllowedHosts`。 當使用 Kestrel 作為公眾對應 Edge Server，或直接轉送 `Host` 標頭時，可使用主機篩選中介軟體設定 `AllowedHosts`。
 >
 > 如需轉送標頭中介軟體的詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
 
@@ -991,7 +1006,7 @@ Kestrel 支援下列案例：
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>何時搭配使用 Kestrel 與反向 Proxy
 
-您可以單獨使用 Kestrel，或與 *[Internet Information Services (IIS)](https://www.iis.net/)* 、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
+您可以單獨使用 Kestrel，或與 [Internet Information Services (IIS)](https://www.iis.net/)、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
 
 Kestrel 用作邊緣 (網際網路對應) 網頁伺服器：
 
@@ -1039,7 +1054,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-如果應用程式未呼叫 `CreateDefaultBuilder` 來設定主機，請在呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> **之前**，先呼叫 `ConfigureKestrel`：
+如果應用程式未呼叫 `CreateDefaultBuilder` 來設定主機，在呼叫 `ConfigureKestrel`之前，請**先**呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>：
 
 ```csharp
 public static void Main(string[] args)
@@ -1063,7 +1078,7 @@ public static void Main(string[] args)
 
 Kestrel 網頁伺服器所含的條件約束組態選項，在網際網路對應部署方面特別有用。
 
-請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Limits> 類別的 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 屬性上設定條件約束。 `Limits` 屬性會保存 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits> 類別的執行個體。
+請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 類別的 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Limits> 屬性上設定條件約束。 `Limits` 屬性會保存 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits> 類別的執行個體。
 
 下列範例會使用 <xref:Microsoft.AspNetCore.Server.Kestrel.Core> 命名空間；
 
@@ -1089,15 +1104,30 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 * 在 `Startup.ConfigureServices`中設定 Kestrel：
 
   1. 將 `IConfiguration` 的實例插入 `Startup` 類別中。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
-  2. 在 `Startup.ConfigureServices`中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
+  2. 在 `Startup.ConfigureServices`中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
      ```csharp
-     // using Microsoft.Extensions.Configuration
-
-     public void ConfigureServices(IServiceCollection services)
+     using Microsoft.Extensions.Configuration
+     
+     public class Startup
      {
-         services.Configure<KestrelServerOptions>(
-             Configuration.GetSection("Kestrel"));
+         public Startup(IConfiguration configuration)
+         {
+             Configuration = configuration;
+         }
+
+         public IConfiguration Configuration { get; }
+
+         public void ConfigureServices(IServiceCollection services)
+         {
+             services.Configure<KestrelServerOptions>(
+                 Configuration.GetSection("Kestrel"));
+         }
+
+         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+         {
+             ...
+         }
      }
      ```
 
@@ -1166,7 +1196,7 @@ public IActionResult MyActionMethod()
 
 如果應用程式在開始讀取要求之後，設定要求的限制，就會擲回例外狀況（exception）。 有一個 `IsReadOnly` 屬性會指出 `MaxRequestBodySize` 屬性處於唯讀狀態，這表示要設定限制已經太遲。
 
-當應用程式是在 [ASP.NET Core 模組](xref:host-and-deploy/iis/index#out-of-process-hosting-model)後方於[處理序外](xref:host-and-deploy/aspnet-core-module)執行時，Kestrel 的要求本文大小限制將會被停用，因為 IIS 已經設定限制。
+當應用程式是在 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)後方於[處理序外](xref:host-and-deploy/iis/index#out-of-process-hosting-model)執行時，Kestrel 的要求本文大小限制將會被停用，因為 IIS 已經設定限制。
 
 ### <a name="minimum-request-body-data-rate"></a>要求主體資料速率下限
 
@@ -1337,7 +1367,7 @@ ASP.NET Core 預設會繫結至：
 
 專案範本預設會將應用程式設定為在 HTTPS 上執行，並包含 HTTPS 重新導向[和 HSTS 支援](xref:security/enforcing-ssl)。
 
-請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 上呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> 或 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 方法，來為 Kestrel 設定 URL 首碼和連接埠。
+請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 上呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 或 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> 方法，來為 Kestrel 設定 URL 首碼和連接埠。
 
 `UseUrls`、`--urls` 命令列引數、`urls` 主機組態索引鍵和 `ASPNETCORE_URLS` 環境變數同樣有效，但卻有本節稍後註明的限制 (針對 HTTPS 端點組態必須有預設憑證可用)。
 
@@ -1395,7 +1425,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 `ListenOptions.UseHttps` 延伸模組：
 
-* `UseHttps` &ndash; 設定 Kestrel 以與 HTTPS 預設憑證搭配使用。 如果未設定預設憑證，會擲回例外狀況。
+* `UseHttps` &ndash; 將 Kestrel 設定為使用 HTTPS 搭配預設憑證。 如果未設定預設憑證，會擲回例外狀況。
 * `UseHttps(string fileName)`
 * `UseHttps(string fileName, string password)`
 * `UseHttps(string fileName, string password, Action<HttpsConnectionAdapterOptions> configureOptions)`
@@ -1411,7 +1441,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 * `filename` 是憑證檔案的路徑和檔案名稱，它相對於包含應用程式內容檔案的目錄。
 * `password` 是存取 X.509 憑證資料所需的密碼。
-* `configureOptions` 是設定 `Action` 的 `HttpsConnectionAdapterOptions`。 傳回 `ListenOptions`。
+* `configureOptions` 是設定 `HttpsConnectionAdapterOptions` 的 `Action`。 傳回 `ListenOptions`。
 * `storeName` 是要從中載入憑證的憑證存放區。
 * `subject` 是憑證的主體名稱。
 * `allowInvalid` 表示是否應該考慮無效的憑證，例如自我簽署憑證。
@@ -1439,7 +1469,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
 在下列 *appsettings.json* 範例中：
 
 * 將 **AllowInvalid** 設定為 `true`，允許使用無效的憑證 (例如，自我簽署憑證)。
-* 任何未指定憑證 (接下來範例中的 **HttpsDefaultCert**) 的 HTTPS 端點會回復為 [憑證] >[預設] 下定義的憑證或開發憑證。
+* 任何未指定憑證的 HTTPS 端點（在下列範例中為**HttpsDefaultCert** ）會回到 [**憑證**] 底下定義的憑證 >**預設**或開發憑證。
 
 ```json
 {
@@ -1528,7 +1558,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 * 每個端點的 [設定] 區段都可以在 `Endpoint` 方法的選項中使用，如此一來，就可以讀取自訂設定。
 * 可以藉由使用另一個區段再次呼叫 `options.Configure(context.Configuration.GetSection("{SECTION}"))` 而載入多個組態。 只會使用最後一個組態，除非在先前的執行個體上已明確呼叫 `Load`。 中繼套件不會呼叫 `Load`，如此可能會取代其預設組態區段。
-* `KestrelConfigurationLoader` 會將來自 `Listen` 的 API 的 `KestrelServerOptions` 系列鏡像為 `Endpoint` 多載，所以可在相同的位置設定程式碼和設定端點。 這些多載不使用名稱，並且只使用來自組態的預設組態。
+* `KestrelConfigurationLoader` 會將來自 `KestrelServerOptions` 的 API 的 `Listen` 系列鏡像為 `Endpoint` 多載，所以可在相同的位置設定程式碼和設定端點。 這些多載不使用名稱，並且只使用來自組態的預設組態。
 
 *變更程式碼中的預設值*
 
@@ -1664,7 +1694,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 ### <a name="listenoptionsprotocols"></a>ListenOptions.Protocols
 
-`Protocols` 屬性會建立在連線端點上或針對伺服器啟用的 HTTP 通訊協定 (`HttpProtocols`)。 從 `Protocols` 列舉中指派一個值給 `HttpProtocols` 屬性。
+`Protocols` 屬性會建立在連線端點上或針對伺服器啟用的 HTTP 通訊協定 (`HttpProtocols`)。 從 `HttpProtocols` 列舉中指派一個值給 `Protocols` 屬性。
 
 | `HttpProtocols` 列舉值 | 允許的連線通訊協定 |
 | -------------------------- | ----------------------------- |
@@ -1680,11 +1710,11 @@ HTTP/2 的 TLS 限制：
 * 已停用重新交涉
 * 已停用壓縮
 * 暫時金鑰交換大小下限：
-  * 橢圓曲線 Diffie-Hellman (ECDHE) &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; 最小 224 個位元
-  * 有限欄位 Diffie-Hellman (DHE) &lbrack;`TLS12`&rbrack; &ndash; 最小 2048 個位元
+  * 橢圓曲線 Diffie-hellman （ECDHE） &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; 224 位最小值
+  * 有限的 field Diffie-hellman （DHE） &lbrack;`TLS12`&rbrack; &ndash; 2048 位最小值
 * 加密套件未列於封鎖清單中
 
-預設支援 `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256` &lbrack;`TLS-ECDHE`&rbrack; 與 P-256 橢圓曲線 &lbrack;`FIPS186`&rbrack;。
+`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256` &lbrack;`TLS-ECDHE`&rbrack; 與 P-256 橢圓曲線 &lbrack;`FIPS186`&rbrack; 預設為支援。
 
 下列範例會允許連接埠 8000 上的 HTTP/1.1 和 HTTP/2 連線。 這些連線使用提供的憑證受到 TLS 保護：
 
@@ -1870,7 +1900,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-預設停用主機篩選中介軟體。 若要啓用中介軟體，請在 `AllowedHosts`appsettings.json/appsettings.*環境名稱>.json\< 中定義*  索引鍵。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+預設停用主機篩選中介軟體。 若要啓用中介軟體，請在 *appsettings.json*/*appsettings.\<環境名稱>.json* 中定義 `AllowedHosts` 索引鍵。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
 
 *appsettings.json*：
 
@@ -1881,7 +1911,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 ```
 
 > [!NOTE]
-> [轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)也有 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts> 選項。 在不同的案例中，轉送標頭中介軟體和主機篩選中介軟體有類似的功能。 當不保留 `AllowedHosts` 標頭，卻使用反向 Proxy 伺服器或負載平衡器轉送要求時，可使用轉送標頭中介軟體設定 `Host`。 當使用 Kestrel 作為公眾對應 Edge Server，或直接轉送 `AllowedHosts` 標頭時，可使用主機篩選中介軟體設定 `Host`。
+> [轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)也有 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts> 選項。 在不同的案例中，轉送標頭中介軟體和主機篩選中介軟體有類似的功能。 當不保留 `Host` 標頭，卻使用反向 Proxy 伺服器或負載平衡器轉送要求時，可使用轉送標頭中介軟體設定 `AllowedHosts`。 當使用 Kestrel 作為公眾對應 Edge Server，或直接轉送 `Host` 標頭時，可使用主機篩選中介軟體設定 `AllowedHosts`。
 >
 > 如需轉送標頭中介軟體的詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
 
@@ -1903,7 +1933,7 @@ Kestrel 支援下列案例：
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>何時搭配使用 Kestrel 與反向 Proxy
 
-您可以單獨使用 Kestrel，或與 *[Internet Information Services (IIS)](https://www.iis.net/)* 、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
+您可以單獨使用 Kestrel，或與 [Internet Information Services (IIS)](https://www.iis.net/)、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
 
 Kestrel 用作邊緣 (網際網路對應) 網頁伺服器：
 
@@ -1953,7 +1983,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 Kestrel 網頁伺服器所含的條件約束組態選項，在網際網路對應部署方面特別有用。
 
-請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Limits> 類別的 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 屬性上設定條件約束。 `Limits` 屬性會保存 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits> 類別的執行個體。
+請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 類別的 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Limits> 屬性上設定條件約束。 `Limits` 屬性會保存 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits> 類別的執行個體。
 
 下列範例會使用 <xref:Microsoft.AspNetCore.Server.Kestrel.Core> 命名空間；
 
@@ -1979,15 +2009,30 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
 * 在 `Startup.ConfigureServices`中設定 Kestrel：
 
   1. 將 `IConfiguration` 的實例插入 `Startup` 類別中。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
-  2. 在 `Startup.ConfigureServices`中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中。
+  2. 在 `Startup.ConfigureServices`中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
      ```csharp
-     // using Microsoft.Extensions.Configuration
-
-     public void ConfigureServices(IServiceCollection services)
+     using Microsoft.Extensions.Configuration
+     
+     public class Startup
      {
-         services.Configure<KestrelServerOptions>(
-             Configuration.GetSection("Kestrel"));
+         public Startup(IConfiguration configuration)
+         {
+             Configuration = configuration;
+         }
+
+         public IConfiguration Configuration { get; }
+
+         public void ConfigureServices(IServiceCollection services)
+         {
+             services.Configure<KestrelServerOptions>(
+                 Configuration.GetSection("Kestrel"));
+         }
+
+         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+         {
+             ...
+         }
      }
      ```
 
@@ -2088,7 +2133,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 如果應用程式在開始讀取要求之後，設定要求的限制，就會擲回例外狀況（exception）。 有一個 `IsReadOnly` 屬性會指出 `MaxRequestBodySize` 屬性處於唯讀狀態，這表示要設定限制已經太遲。
 
-當應用程式是在 [ASP.NET Core 模組](xref:host-and-deploy/iis/index#out-of-process-hosting-model)後方於[處理序外](xref:host-and-deploy/aspnet-core-module)執行時，Kestrel 的要求本文大小限制將會被停用，因為 IIS 已經設定限制。
+當應用程式是在 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)後方於[處理序外](xref:host-and-deploy/iis/index#out-of-process-hosting-model)執行時，Kestrel 的要求本文大小限制將會被停用，因為 IIS 已經設定限制。
 
 ### <a name="minimum-request-body-data-rate"></a>要求主體資料速率下限
 
@@ -2184,7 +2229,7 @@ ASP.NET Core 預設會繫結至：
 
 專案範本預設會將應用程式設定為在 HTTPS 上執行，並包含 HTTPS 重新導向[和 HSTS 支援](xref:security/enforcing-ssl)。
 
-請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 上呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> 或 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 方法，來為 Kestrel 設定 URL 首碼和連接埠。
+請在 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 上呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 或 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> 方法，來為 Kestrel 設定 URL 首碼和連接埠。
 
 `UseUrls`、`--urls` 命令列引數、`urls` 主機組態索引鍵和 `ASPNETCORE_URLS` 環境變數同樣有效，但卻有本節稍後註明的限制 (針對 HTTPS 端點組態必須有預設憑證可用)。
 
@@ -2241,7 +2286,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 `ListenOptions.UseHttps` 延伸模組：
 
-* `UseHttps` &ndash; 設定 Kestrel 以與 HTTPS 預設憑證搭配使用。 如果未設定預設憑證，會擲回例外狀況。
+* `UseHttps` &ndash; 將 Kestrel 設定為使用 HTTPS 搭配預設憑證。 如果未設定預設憑證，會擲回例外狀況。
 * `UseHttps(string fileName)`
 * `UseHttps(string fileName, string password)`
 * `UseHttps(string fileName, string password, Action<HttpsConnectionAdapterOptions> configureOptions)`
@@ -2257,7 +2302,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 * `filename` 是憑證檔案的路徑和檔案名稱，它相對於包含應用程式內容檔案的目錄。
 * `password` 是存取 X.509 憑證資料所需的密碼。
-* `configureOptions` 是設定 `Action` 的 `HttpsConnectionAdapterOptions`。 傳回 `ListenOptions`。
+* `configureOptions` 是設定 `HttpsConnectionAdapterOptions` 的 `Action`。 傳回 `ListenOptions`。
 * `storeName` 是要從中載入憑證的憑證存放區。
 * `subject` 是憑證的主體名稱。
 * `allowInvalid` 表示是否應該考慮無效的憑證，例如自我簽署憑證。
@@ -2285,7 +2330,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
 在下列 *appsettings.json* 範例中：
 
 * 將 **AllowInvalid** 設定為 `true`，允許使用無效的憑證 (例如，自我簽署憑證)。
-* 任何未指定憑證 (接下來範例中的 **HttpsDefaultCert**) 的 HTTPS 端點會回復為 [憑證] >[預設] 下定義的憑證或開發憑證。
+* 任何未指定憑證的 HTTPS 端點（在下列範例中為**HttpsDefaultCert** ）會回到 [**憑證**] 底下定義的憑證 >**預設**或開發憑證。
 
 ```json
 {
@@ -2374,7 +2419,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 * 每個端點的 [設定] 區段都可以在 `Endpoint` 方法的選項中使用，如此一來，就可以讀取自訂設定。
 * 可以藉由使用另一個區段再次呼叫 `options.Configure(context.Configuration.GetSection("{SECTION}"))` 而載入多個組態。 只會使用最後一個組態，除非在先前的執行個體上已明確呼叫 `Load`。 中繼套件不會呼叫 `Load`，如此可能會取代其預設組態區段。
-* `KestrelConfigurationLoader` 會將來自 `Listen` 的 API 的 `KestrelServerOptions` 系列鏡像為 `Endpoint` 多載，所以可在相同的位置設定程式碼和設定端點。 這些多載不使用名稱，並且只使用來自組態的預設組態。
+* `KestrelConfigurationLoader` 會將來自 `KestrelServerOptions` 的 API 的 `Listen` 系列鏡像為 `Endpoint` 多載，所以可在相同的位置設定程式碼和設定端點。 這些多載不使用名稱，並且只使用來自組態的預設組態。
 
 *變更程式碼中的預設值*
 
@@ -2642,7 +2687,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-預設停用主機篩選中介軟體。 若要啓用中介軟體，請在 `AllowedHosts`appsettings.json/appsettings.*環境名稱>.json\< 中定義*  索引鍵。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+預設停用主機篩選中介軟體。 若要啓用中介軟體，請在 *appsettings.json*/*appsettings.\<環境名稱>.json* 中定義 `AllowedHosts` 索引鍵。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
 
 *appsettings.json*：
 
@@ -2653,7 +2698,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 ```
 
 > [!NOTE]
-> [轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)也有 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts> 選項。 在不同的案例中，轉送標頭中介軟體和主機篩選中介軟體有類似的功能。 當不保留 `AllowedHosts` 標頭，卻使用反向 Proxy 伺服器或負載平衡器轉送要求時，可使用轉送標頭中介軟體設定 `Host`。 當使用 Kestrel 作為公眾對應 Edge Server，或直接轉送 `AllowedHosts` 標頭時，可使用主機篩選中介軟體設定 `Host`。
+> [轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)也有 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts> 選項。 在不同的案例中，轉送標頭中介軟體和主機篩選中介軟體有類似的功能。 當不保留 `Host` 標頭，卻使用反向 Proxy 伺服器或負載平衡器轉送要求時，可使用轉送標頭中介軟體設定 `AllowedHosts`。 當使用 Kestrel 作為公眾對應 Edge Server，或直接轉送 `Host` 標頭時，可使用主機篩選中介軟體設定 `AllowedHosts`。
 >
 > 如需轉送標頭中介軟體的詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
 

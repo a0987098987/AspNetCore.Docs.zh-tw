@@ -5,12 +5,12 @@ description: 了解如何在 ASP.NET Core 中使用控制器方法、檢視和 D
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 6d960da5acecbb95893bd339b4391560bedffb3d
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 2c442060872ab1d2d79a2e355ae257fdf1005914
+ms.sourcegitcommit: 991442dfb16ef08a0aae05bc79f9e9a2d819c587
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815422"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75492651"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>ASP.NET Core 中的控制器方法和檢視
 
@@ -18,7 +18,7 @@ ms.locfileid: "67815422"
 
 此電影應用程式有個不錯的開始，但呈現效果不盡理想，例如 **ReleaseDate** 應該是兩個字。
 
-![Index 檢視：Release Date (發行日期) 是一個字 (不含空格)，且每個電影的發行日期均顯示 12 AM 的時間](working-with-sql/_static/m55.png)
+![索引檢視：Release Date (發行日期) 是一個字 (不含空格)，且每個電影的發行日期均顯示 12 AM 的時間](working-with-sql/_static/m55.png)
 
 開啟 *Models/Movie.cs* 檔案，然後新增反白顯示的程式碼行，如下所示：
 
@@ -30,13 +30,13 @@ ms.locfileid: "67815422"
 
 瀏覽至 `Movies` 控制器，並將滑鼠指標停留在 **Edit** 連結，以查看目標 URL。
 
-![滑鼠停留在 Edit 連結並顯示 https://localhost:5001/Movies/Edit/5 之 URL 的瀏覽器視窗](~/tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
+![滑鼠停留在 Edit 連結並顯示 https://localhost:5001/Movies/Edit/5 的 Url 的瀏覽器視窗](~/tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
 在 *Views/Movies/Index.cshtml* 檔案中，**Edit**、**Details**  和 **Delete** 連結是由 Core MVC 錨點標記協助程式所產生。
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
-[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從控制器動作方法和路由識別碼動態產生 HTML `href` 屬性值。從您最喜愛的瀏覽器中使用 [檢視原始檔]  或使用開發工具來檢查產生的標記。 產生的 HTML 部分如下所示：
+[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從控制器動作方法和路由識別碼動態產生 HTML `href` 屬性值。您可以從您慣用的瀏覽器使用**View Source** ，或使用開發人員工具來檢查產生的標記。 產生的 HTML 部分如下所示：
 
 ```html
  <td>
@@ -48,7 +48,7 @@ ms.locfileid: "67815422"
 
 回想在 *Startup.cs* 檔案中設定的[路由](xref:mvc/controllers/routing)格式：
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
 ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies` 控制器的 `Edit` 動作方法的要求，其參數 `Id` 為 4 (控制器方法也稱為動作方法)。
 
@@ -92,7 +92,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 
 ::: moniker-end
 
-`HttpPost` 屬性指定「只」  能為 `POST` 要求叫用這個 `Edit` 方法。 您可以將 `[HttpGet]` 屬性套用至第一個編輯方法，但不需要執行此動作，因為 `[HttpGet]` 是預設值。
+`HttpPost` 屬性指定「只」能為 `POST` 要求叫用這個 `Edit` 方法。 您可以將 `[HttpGet]` 屬性套用至第一個編輯方法，但不需要執行此動作，因為 `[HttpGet]` 是預設值。
 
 `ValidateAntiForgeryToken` 屬性是用來[防範要求偽造](xref:security/anti-request-forgery)，並與編輯檢視檔案 (*Views/Movies/Edit.cshtml*) 所產生的防偽語彙基元成對。 編輯檢視檔案使用[表單標記協助程式](xref:mvc/views/working-with-forms)產生防偽語彙基元。
 
@@ -148,7 +148,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 
 * [全球化和當地語系化](xref:fundamentals/localization)
 * [標記協助程式簡介](xref:mvc/views/tag-helpers/intro)
-* [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
+* [編寫標籤協助程式](xref:mvc/views/tag-helpers/authoring)
 * [防偽要求](xref:security/anti-request-forgery)
 * 保護控制器避免[過度發佈](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
 * [ViewModels](https://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)

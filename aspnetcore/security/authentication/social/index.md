@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/21/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 627ca483d60514d85e38c0e346ff5aef64ad9fee
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 06ce9c72f43955345efb61afed2538158810005f
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358065"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
@@ -45,7 +45,7 @@ ms.locfileid: "73034300"
 
 * 將目錄 (`cd`) 變更為其中包含專案的資料夾。
 
-* 若是 Windows，請執行下列命令：
+* 針對 Windows，請執行下列命令：
 
   ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld
@@ -111,8 +111,7 @@ ms.locfileid: "73034300"
 
 ## <a name="next-steps"></a>後續步驟
 
+* 如需如何自訂登入按鈕的相關資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/10563)。
 * 本文介紹了外部驗證，並說明將外部登入新增至 ASP.NET Core 應用程式所需的必要條件。
-
 * 請參考提供者的特定頁面，以設定應用程式所需的提供者登入項目。
-
 * 您想要保存有關使用者與其存取和重新整理權杖的額外資料。 如需詳細資訊，請參閱<xref:security/authentication/social/additional-claims>。

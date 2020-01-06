@@ -4,14 +4,14 @@ author: blowdart
 description: 瞭解如何在 IIS 和 HTTP.sys 的 ASP.NET Core 中設定憑證驗證。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
-ms.date: 12/09/2019
+ms.date: 01/02/2020
 uid: security/authentication/certauth
-ms.openlocfilehash: 38ee8a6767191bb3eee4286e49b96162b14d9889
-ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
+ms.openlocfilehash: 9c175439c0313d62c75898f1af097774b06f353a
+ms.sourcegitcommit: e7d4fe6727d423f905faaeaa312f6c25ef844047
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74959056"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608141"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
@@ -63,23 +63,33 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>AllowedCertificateTypes = 連鎖、Lnk-selfsigned 之類或 All （連鎖 |Lnk-selfsigned 之類
 
-這種檢查會驗證是否只允許適當的憑證類型。
+預設值：`CertificateTypes.Chained`
+
+這種檢查會驗證是否只允許適當的憑證類型。 如果應用程式使用自我簽署憑證，則必須將此選項設定為 `CertificateTypes.All` 或 `CertificateTypes.SelfSigned`。
 
 ### <a name="validatecertificateuse"></a>ValidateCertificateUse
+
+預設值：`true`
 
 這項檢查會驗證用戶端所提供的憑證是否有用戶端驗證擴充金鑰使用（EKU），或完全沒有 Eku。 如規格所示，如果未指定任何 EKU，則所有 Eku 都會被視為有效。
 
 ### <a name="validatevalidityperiod"></a>ValidateValidityPeriod
 
+預設值：`true`
+
 這種檢查會驗證憑證是否在其有效期間內。 在每個要求上，處理常式可確保在其目前的會話期間，當憑證呈現時，其有效的憑證尚未到期。
 
 ### <a name="revocationflag"></a>RevocationFlag
+
+預設值：`X509RevocationFlag.ExcludeRoot`
 
 指定要檢查鏈中哪些憑證以進行撤銷的旗標。
 
 只有當憑證連結至根憑證時，才會執行撤銷檢查。
 
 ### <a name="revocationmode"></a>RevocationMode
+
+預設值：`X509RevocationMode.Online`
 
 指定撤銷檢查執行方式的旗標。
 
@@ -376,6 +386,9 @@ Get-ChildItem -Path cert:\localMachine\my\"The thumbprint..." | Export-PfxCertif
 
 Export-Certificate -Cert cert:\localMachine\my\"The thumbprint..." -FilePath root_ca_dev_damienbod.crt
 ```
+
+> [!NOTE]
+> `-DnsName` 參數值必須符合應用程式的部署目標。 例如，"localhost" 用於開發。
 
 #### <a name="install-in-the-trusted-root"></a>在受信任的根目錄中安裝
 

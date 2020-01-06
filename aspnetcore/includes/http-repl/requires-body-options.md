@@ -1,6 +1,6 @@
 * `-c|--content`
 
-  提供內嵌 HTTP 要求本文。 例如，`-c "{ 'id': 2, 'name': 'Cherry' }"`。
+  提供內嵌 HTTP 要求本文。 例如，`-c "{"id":2,"name":"Cherry"}"`。
 
 * `-f|--file`
 

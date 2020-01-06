@@ -2,16 +2,17 @@
 title: 在 ASP.NET Core 中使用 IHttpClientFactory 發出 HTTP 要求
 author: stevejgordon
 description: 深入了解在 ASP.NET Core 中使用 IHttpClientFactory 介面來管理邏輯 HttpClient 執行個體。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/27/2019
+ms.date: 12/16/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: f33444b8fc08dc022da7700af53a218600290162
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: f2494a5815396e693f6fd2a45ad78ebffe4d54a3
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733917"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358078"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>在 ASP.NET Core 中使用 IHttpClientFactory 發出 HTTP 要求
 
@@ -179,7 +180,7 @@ public class ValuesController : ControllerBase
 
 ## <a name="outgoing-request-middleware"></a>外寄要求中介軟體
 
-`HttpClient` 具有委派處理常式的概念，可以針對傳出 HTTP 要求連結在一起。 `IHttpClientFactory`:
+`HttpClient` 具有委派處理常式的概念，可以針對傳出 HTTP 要求連結在一起。 `IHttpClientFactory`：
 
 * 簡化定義要套用至每個已命名用戶端的處理常式。
 * 支援多個處理常式的註冊和連結，以建立外寄要求中介軟體管線。 這些處理常式每個都可以在外寄要求之前和之後執行工作。 此模式：
@@ -357,6 +358,7 @@ public class ValuesController : ControllerBase
 * [使用 HttpClientFactory 實作復原 HTTP 要求](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
 * [使用 HttpClientFactory 和 Polly 原則以指數輪詢實作 HTTP 呼叫重試](/dotnet/standard/microservices-architecture/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly)
 * [實作斷路器模式](/dotnet/standard/microservices-architecture/implement-resilient-applications/implement-circuit-breaker-pattern)
+* [如何在 .NET 中序列化和還原序列化 JSON](/dotnet/standard/serialization/system-text-json-how-to)
 
 ::: moniker-end
 
@@ -661,7 +663,7 @@ public class ValuesController : ControllerBase
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.1"
+::: moniker range="= aspnetcore-2.1"
 
 作者：[Glenn Condron](https://github.com/glennc)、[Ryan Nowak](https://github.com/rynowak) 和 [Steve Gordon](https://github.com/stevejgordon)
 

@@ -5,20 +5,20 @@ description: 了解在 ASP.NET Core 應用程式中如何跨多個環境控制�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 12/17/2019
 uid: fundamentals/environments
-ms.openlocfilehash: affbb95273c91fe5bf452e0e1ebefa669297304c
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 30e2771c0a24fcbf6490d08c7028566314b6c011
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358717"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>在 ASP.NET Core 中使用多個環境
 
 ::: moniker range=">= aspnetcore-3.0"
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core 會使用環境變數根據執行階段環境來設定應用程式行為。
 
@@ -188,11 +188,12 @@ Visual Studio 專案屬性的 [偵錯] 索引標籤提供 GUI，可編輯 *launc
 若要在 [Azure App Service](https://azure.microsoft.com/services/app-service/) 設定環境，請執行下列步驟：
 
 1. 從 [應用程式服務] 刀鋒視窗選取應用程式。
-1. 在 [設定] 群組中，選取 [應用程式設定] 刀鋒視窗。
-1. 在 [應用程式設定] 區域中，選取 [新增設定]。
-1. 針對 [輸入名稱]，提供 `ASPNETCORE_ENVIRONMENT`。 針對 [輸入值]，提供環境 (例如 `Staging`)。
-1. 如果您想要在交換部署位置時，環境設定保留目前的位置，請選取 [位置設定] 核取方塊。 如需詳細資訊，請參閱 [Azure 文件：交換哪些設定？](/azure/app-service/web-sites-staged-publishing)。
-1. 選取刀鋒視窗頂端的 [儲存]。
+1. 在 [**設定**] 群組中，**選取 [** 設定] 分頁。
+1. 在 [**應用程式設定**] 索引標籤中，選取 [**新增應用程式設定**]。
+1. 在 [**新增/編輯應用程式設定**] 視窗中，提供**名稱**的 `ASPNETCORE_ENVIRONMENT`。 針對 [**值**]，提供環境（例如 `Staging`）。
+1. 如果您想要在交換部署位置時，將環境設定維持在目前的位置，請選取 [**部署位置設定**] 核取方塊。 如需詳細資訊，請參閱 Azure 檔[中的在 Azure App Service 中設定預備環境](/azure/app-service/web-sites-staged-publishing)。
+1. 選取 **[確定]** 以關閉 [**新增/編輯應用程式設定**] 視窗。
+1. 選取 [設定] 分頁頂端的 **[** **儲存**]。
 
 Azure App Service 會在新增、變更或刪除 Azure 入口網站的應用程式設定 (環境變數) 之後自動重新啟動應用程式。
 
@@ -292,16 +293,16 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 ### <a name="set-the-environment-in-code"></a>在程式碼中設定環境
 
-在建立主機時呼叫 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseEnvironment*>。 請參閱<xref:fundamentals/host/generic-host#environmentname>.
+在建立主機時呼叫 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseEnvironment*>。 請參閱 <xref:fundamentals/host/generic-host#environmentname>。
 
 
 ### <a name="configuration-by-environment"></a>取決於環境的組態
 
 若要依環境載入組態，建議使用：
 
-* *appsettings* files （*appsettings. {環境}. json*）。 請參閱<xref:fundamentals/configuration/index#json-configuration-provider>.
+* *appsettings* files （*appsettings. {環境}. json*）。 請參閱 <xref:fundamentals/configuration/index#json-configuration-provider>。
 * 環境變數（在裝載應用程式的每個系統上設定）。 請參閱<xref:fundamentals/host/generic-host#environmentname>和<xref:security/app-secrets#environment-variables>。
-* 祕密管理員 (僅限開發環境)。 請參閱<xref:security/app-secrets>.
+* 祕密管理員 (僅限開發環境)。 請參閱 <xref:security/app-secrets>。
 
 ## <a name="environment-based-startup-class-and-methods"></a>以環境為基礎的 Startup 類別和方法
 
@@ -447,7 +448,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 
 ::: moniker range="< aspnetcore-3.0"
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core 會使用環境變數根據執行階段環境來設定應用程式行為。
 
@@ -617,11 +618,12 @@ Visual Studio 專案屬性的 [偵錯] 索引標籤提供 GUI，可編輯 *launc
 若要在 [Azure App Service](https://azure.microsoft.com/services/app-service/) 設定環境，請執行下列步驟：
 
 1. 從 [應用程式服務] 刀鋒視窗選取應用程式。
-1. 在 [設定] 群組中，選取 [應用程式設定] 刀鋒視窗。
-1. 在 [應用程式設定] 區域中，選取 [新增設定]。
-1. 針對 [輸入名稱]，提供 `ASPNETCORE_ENVIRONMENT`。 針對 [輸入值]，提供環境 (例如 `Staging`)。
-1. 如果您想要在交換部署位置時，環境設定保留目前的位置，請選取 [位置設定] 核取方塊。 如需詳細資訊，請參閱 [Azure 文件：交換哪些設定？](/azure/app-service/web-sites-staged-publishing)。
-1. 選取刀鋒視窗頂端的 [儲存]。
+1. 在 [**設定**] 群組中，**選取 [** 設定] 分頁。
+1. 在 [**應用程式設定**] 索引標籤中，選取 [**新增應用程式設定**]。
+1. 在 [**新增/編輯應用程式設定**] 視窗中，提供**名稱**的 `ASPNETCORE_ENVIRONMENT`。 針對 [**值**]，提供環境（例如 `Staging`）。
+1. 如果您想要在交換部署位置時，將環境設定維持在目前的位置，請選取 [**部署位置設定**] 核取方塊。 如需詳細資訊，請參閱 Azure 檔[中的在 Azure App Service 中設定預備環境](/azure/app-service/web-sites-staged-publishing)。
+1. 選取 **[確定]** 以關閉 [**新增/編輯應用程式設定**] 視窗。
+1. 選取 [設定] 分頁頂端的 **[** **儲存**]。
 
 Azure App Service 會在新增、變更或刪除 Azure 入口網站的應用程式設定 (環境變數) 之後自動重新啟動應用程式。
 
@@ -721,15 +723,15 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 ### <a name="set-the-environment-in-code"></a>在程式碼中設定環境
 
-在建立主機時呼叫 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseEnvironment*>。 請參閱<xref:fundamentals/host/web-host#environment>.
+在建立主機時呼叫 <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseEnvironment*>。 請參閱 <xref:fundamentals/host/web-host#environment>。
 
 ### <a name="configuration-by-environment"></a>取決於環境的組態
 
 若要依環境載入組態，建議使用：
 
-* *appsettings* files （*appsettings. {環境}. json*）。 請參閱<xref:fundamentals/configuration/index#json-configuration-provider>.
+* *appsettings* files （*appsettings. {環境}. json*）。 請參閱 <xref:fundamentals/configuration/index#json-configuration-provider>。
 * 環境變數（在裝載應用程式的每個系統上設定）。 請參閱<xref:fundamentals/host/web-host#environment>和<xref:security/app-secrets#environment-variables>。
-* 祕密管理員 (僅限開發環境)。 請參閱<xref:security/app-secrets>.
+* 祕密管理員 (僅限開發環境)。 請參閱 <xref:security/app-secrets>。
 
 ## <a name="environment-based-startup-class-and-methods"></a>以環境為基礎的 Startup 類別和方法
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 380293f650c9548c286f98c0447c7ed08b918f2a
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: cda510d0f8211641e3544b53ded79878d717cc58
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007373"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358406"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>設定 ASP.NET Core 資料保護
 
@@ -26,6 +26,15 @@ ms.locfileid: "72007373"
 > 與設定檔類似，應使用適當的許可權來保護資料保護金鑰環。 您可以選擇加密待用金鑰，但這並不會阻止攻擊者建立新的金鑰。 因此，您的應用程式安全性會受到影響。 使用資料保護設定的儲存位置應該將其存取限制為應用程式本身，與保護設定檔的方式類似。 例如，如果您選擇將金鑰環形儲存在磁片上，請使用檔案系統許可權。 請確定您的 web 應用程式執行所用的身分識別，具有該目錄的讀取、寫入和建立存取權。 如果您使用 Azure Blob 儲存體，只有 web 應用程式應該能夠在 Blob 存放區中讀取、寫入或建立新的專案等等。
 >
 > 擴充方法[AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection)會傳回[IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder)。 `IDataProtectionBuilder` 會公開可連結在一起以設定資料保護選項的擴充方法。
+
+::: moniker range=">= aspnetcore-3.0"
+
+本文中使用的資料保護延伸模組需要下列 NuGet 套件：
+
+* [AspNetCore. DataProtection. AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/)
+* [AspNetCore. DataProtection. AzureKeyVault](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureKeyVault/)
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -380,7 +389,7 @@ services.AddDataProtection()
 
 ## <a name="persisting-keys-with-redis"></a>使用 Redis 保存金鑰
 
-只有支援[Redis 資料持續](/azure/azure-cache-for-redis/cache-how-to-premium-persistence)性的 Redis 版本才應該用來儲存索引鍵。 [Azure Blob 儲存體](/azure/storage/blobs/storage-blobs-introduction)是持續性的，可以用來儲存金鑰。 如需詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/13476)。
+只有支援[Redis 資料持續](/azure/azure-cache-for-redis/cache-how-to-premium-persistence)性的 Redis 版本才應該用來儲存索引鍵。 [Azure Blob 儲存體](/azure/storage/blobs/storage-blobs-introduction)是持續性的，可以用來儲存金鑰。 如需詳細資訊，請參閱[這個 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/13476) \(英文\)。
 
 ## <a name="additional-resources"></a>其他資源
 

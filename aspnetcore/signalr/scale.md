@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 no-loc:
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 7fc767939996a489174be949742637030924616d
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 6506430202870ba9de2f8eb6f33d79c7c1fbbbd4
+ms.sourcegitcommit: e7d4fe6727d423f905faaeaa312f6c25ef844047
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963753"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608063"
 ---
 # <a name="aspnet-core-opno-locsignalr-hosting-and-scaling"></a>ASP.NET Core SignalR 裝載和調整
 
@@ -42,7 +42,7 @@ SignalR 要求特定連接的所有 HTTP 要求都必須由相同的伺服器進
 
 藉由 SignalR 大量使用連線相關資源，可能會影響相同伺服器上裝載的其他 web 應用程式。 當 SignalR 開啟並保留最後一個可用的 TCP 連線時，相同伺服器上的其他 web 應用程式也不會有其他可用的連接。
 
-如果伺服器用盡連線，您會看到隨機的通訊端錯誤和連線重設錯誤。 例如:
+如果伺服器用盡連線，您會看到隨機的通訊端錯誤和連線重設錯誤。 例如：
 
 ```
 An attempt was made to access a socket in a way forbidden by its access permissions...
@@ -90,9 +90,24 @@ Azure SignalR 服務是一個 proxy，而不是背板。 每次用戶端起始�
 
 先前所述的 Azure SignalR 服務優點是 Redis 背板的缺點：
 
-* 需要有粘滯話（也稱為[用戶端親和性](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing#step-3---configure-client-affinity)）。 一旦在伺服器上起始連接，連接就必須停留在該伺服器上。
+* 除了下列**兩**個條件都成立時以外，您還需要有粘滯話（也稱為[用戶端親和性](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing#step-3---configure-client-affinity)）：
+  * 所有用戶端都設定為**只**使用 websocket。
+  * 用戶端設定中已啟用[SkipNegotiation 設定](xref:signalr/configuration#configure-additional-options)。 
+   一旦在伺服器上起始連接，連接就必須停留在該伺服器上。
 * SignalR 應用程式必須根據用戶端數目進行相應放大，即使傳送的訊息很少也一樣。
 * SignalR 應用程式所使用的連線資源比 web 應用程式更多，而沒有 SignalR。
+
+## <a name="iis-limitations-on-windows-client-os"></a>Windows 用戶端作業系統上的 IIS 限制
+
+Windows 10 和 Windows 8.x 是用戶端作業系統。 用戶端作業系統上的 IIS 具有10個並行連線的限制。 SignalR的連接為：
+
+* 暫時性且經常重新建立。
+* **不會**在不再使用時立即處置。
+
+前述條件可能會達到用戶端作業系統上的10個連線限制。 當用戶端 OS 用於開發時，我們建議：
+
+* 避免 IIS。
+* 使用 Kestrel 或 IIS Express 作為部署目標。
 
 ## <a name="next-steps"></a>後續步驟
 

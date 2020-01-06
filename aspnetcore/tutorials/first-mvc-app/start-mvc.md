@@ -5,16 +5,16 @@ description: 了解如何開始使用 ASP.NET Core MVC。
 ms.author: riande
 ms.date: 10/16/2019
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 0c8c59a5c59c8a70985dc8463c80f9569a00621f
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: e70384a6f20f3ef06059ed6b51c76e923187c317
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73761245"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354930"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -34,19 +34,19 @@ ms.locfileid: "73761245"
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
@@ -86,19 +86,19 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
   * 此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' MvcMovie ' 中遺漏了 debug。要新增它們嗎？**  選取 [是]
 
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
-  * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie .csproj*專案檔案。
+  * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie .csproj*專案檔。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 [檔案] > [新增解決方案]。
+* 選取 **[** 檔案] > [**新增方案**]。
 
   ![macOS 新增方案](./start-mvc/_static/new_project_vsmac.png)
 
-* 選取 [.Net Core] > [應用程式] > [Web應用程式 (Model-View-Controller)] > [下一步]。
+* 選取  **.Net Core** >**應用**程式 > **Web 應用程式（模型-視圖控制器）**  **> 下一步**。
 
   ![macOS [新增專案] 對話方塊](./start-mvc/_static/new_project_mvc_vsmac.png)
 
-* 在 [設定您的新 ASP.NET Core Web API] 對話方塊中，設定 **.NET Core 3.0** 的 [目標 Framework]。
+* 在 [設定**您的新 ASP.NET Core WEB API** ] 對話方塊中，設定 **.net Core 3.1**的**目標 Framework** 。
 
 <!-- 
   ![macOS .NET Core 2.2 selection](./start-mvc/_static/new_project_22_vsmac.png)
@@ -120,11 +120,11 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 * 使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
 * 您可以從 [偵錯] 功能表項目的偵錯或非偵錯模式中啟動應用程式：
 
-  ![[偵錯] 功能表](start-mvc/_static/debug_menu.png)
+  ![偵錯功能表](start-mvc/_static/debug_menu.png)
 
 * 您可以選取 [IIS Express] 按鈕偵錯應用程式
 
-  ![IIS Express](start-mvc/_static/iis_express.png)
+  ![[IIS Express]](start-mvc/_static/iis_express.png)
 
   下圖顯示應用程式：
 
@@ -184,7 +184,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -236,15 +236,15 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
   * 此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' MvcMovie ' 中遺漏了 debug。要新增它們嗎？**  選取 [是]
 
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
-  * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie .csproj*專案檔案。
+  * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie .csproj*專案檔。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 [檔案] > [新增解決方案]。
+* 選取 **[** 檔案] > [**新增方案**]。
 
   ![macOS 新增方案](./start-mvc/_static/new_project_vsmac.png)
 
-* 選取 [.Net Core] > [應用程式] > [Web應用程式 (Model-View-Controller)] > [下一步]。
+* 選取  **.Net Core** >**應用**程式 > **Web 應用程式（模型-視圖控制器）**  **> 下一步**。
 
   ![macOS [新增專案] 對話方塊](./start-mvc/_static/new_project_mvc_vsmac.png)
 
@@ -268,11 +268,11 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 * 使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
 * 您可以從 [偵錯] 功能表項目的偵錯或非偵錯模式中啟動應用程式：
 
-  ![[偵錯] 功能表](start-mvc/_static/debug_menu.png)
+  ![偵錯功能表](start-mvc/_static/debug_menu.png)
 
 * 您可以選取 [IIS Express] 按鈕偵錯應用程式
 
-  ![IIS Express](start-mvc/_static/iis_express.png)
+  ![[IIS Express]](start-mvc/_static/iis_express.png)
 
 * 選取 [接受] 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 

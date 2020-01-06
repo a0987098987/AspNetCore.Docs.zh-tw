@@ -6,13 +6,15 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/05/2019
+no-loc:
+- Let's Encrypt
 uid: security/docker-https
-ms.openlocfilehash: c13ba02845eef5c53a939feec2be8a01bc4ca128
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 47027033c0b7130f2d38d22c02a54945b2cc31b3
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358909"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>透過 HTTPS 使用 Docker 裝載 ASP.NET Core 映射
 
@@ -26,22 +28,22 @@ ASP.NET Core 預設會使用[HTTPS](/aspnet/core/security/enforcing-ssl)。 [HTT
 
 此範例需要 docker [17.06](https://docs.docker.com/release-notes/docker-ce)或更新版本的[docker 用戶端](https://www.docker.com/products/docker)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
 本檔中的部分指示需要[.Net Core 2.2 SDK](https://www.microsoft.com/net/download)或更新版本。
 
 ## <a name="certificates"></a>憑證
 
-需要[憑證授權單位](https://en.wikipedia.org/wiki/Certificate_authority)單位的憑證，才能針對網域進行[生產環境裝載](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/)。  「[我們的加密](https://letsencrypt.org/)」是提供免費憑證的憑證授權單位單位。
+需要[憑證授權單位](https://wikipedia.org/wiki/Certificate_authority)單位的憑證，才能針對網域進行[生產環境裝載](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/)。 [Let's Encrypt](https://letsencrypt.org/)是提供免費憑證的憑證授權單位單位。
 
-本檔使用[自我簽署的開發憑證](https://en.wikipedia.org/wiki/Self-signed_certificate)來裝載預先建立的映射`localhost`。 這些指示與使用生產憑證類似。
+本檔使用[自我簽署的開發憑證](https://en.wikipedia.org/wiki/Self-signed_certificate)，透過 `localhost`來裝載預先建立的映射。 這些指示與使用生產憑證類似。
 
 針對生產憑證：
 
-* 不`dotnet dev-certs`需要此工具。
+* 不需要 `dotnet dev-certs` 工具。
 * 憑證不需要儲存在指示所使用的位置。 任何位置都應該可行，雖然不建議在您的網站目錄中儲存憑證。
 
-指示磁片區會將憑證掛接到容器中。 您可以使用 Dockerfile 中的`COPY`命令，將憑證新增至容器映射。 不建議將憑證複製到映射：
+指示磁片區會將憑證掛接到容器中。 您可以使用*Dockerfile*中的 `COPY` 命令，將憑證新增至容器映射。 基於下列原因，不建議將憑證複製到映射：
 
 * 使用相同的映射來測試開發人員憑證並不容易。
 * 使用相同的映射來裝載實際執行憑證很容易。
@@ -60,7 +62,7 @@ dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p { passwo
 dotnet dev-certs https --trust
 ```
 
-在上述命令中，將`{ password here }`取代為密碼。
+在上述命令中，將 `{ password here }` 取代為密碼。
 
 使用針對 HTTPS 設定的 ASP.NET Core 來執行容器映射：
 
@@ -80,9 +82,9 @@ dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p { password her
 dotnet dev-certs https --trust
 ```
 
-`dotnet dev-certs https --trust`只有在 macOS 和 Windows 上才支援。 您必須以散發版本支援的方式信任 Linux 上的憑證。 您很可能需要信任您瀏覽器中的憑證。
+只有在 macOS 和 Windows 上才支援 `dotnet dev-certs https --trust`。 您必須以散發版本支援的方式信任 Linux 上的憑證。 您很可能需要信任您瀏覽器中的憑證。
 
-在上述命令中，將`{ password here }`取代為密碼。
+在上述命令中，將 `{ password here }` 取代為密碼。
 
 使用針對 HTTPS 設定的 ASP.NET Core 來執行容器映射：
 
@@ -102,7 +104,7 @@ dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p { passwo
 dotnet dev-certs https --trust
 ```
 
-在上述命令中，將`{ password here }`取代為密碼。
+在上述命令中，將 `{ password here }` 取代為密碼。
 
 使用針對 HTTPS 設定的 ASP.NET Core 來執行容器映射：
 

@@ -5,16 +5,16 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/28/2019
 no-loc:
 - Blazor
 uid: blazor/components
-ms.openlocfilehash: a79202565f45b4d26e280427892ea16b33f3f853
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 87f21d84c17e5bbd1247bb955acee81384b890e7
+ms.sourcegitcommit: 47d453f34b6fd0179119c572cb8be64c5365cbb6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943858"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75597898"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -579,13 +579,13 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 | Event            | 類別                | DOM 事件和注意事項 |
 | ---------------- | -------------------- | -------------------- |
-| 剪貼簿        | `ClipboardEventArgs` | `oncut`、`oncopy`、`onpaste` |
+| 剪貼簿        | `ClipboardEventArgs` | `oncut`中， `oncopy`中， `onpaste` |
 | 拖曳             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` 和 `DataTransferItem` 保存拖曳的專案資料。 |
 | 錯誤            | `ErrorEventArgs`     | `onerror` |
-| Event            | `EventArgs`          | *一般*<br>`onactivate`、`onbeforeactivate`、`onbeforedeactivate`、`ondeactivate`、`onended`、`onfullscreenchange`、`onfullscreenerror`、`onloadeddata`、`onloadedmetadata`、`onpointerlockchange`、`onpointerlockerror`、`onreadystatechange`、`onscroll`<br><br>*剪貼簿*<br>`onbeforecut`、`onbeforecopy`、`onbeforepaste`<br><br>*輸入*<br>`oninvalid`、 `onreset`、 `onselect`、 `onselectionchange`、 `onselectstart`、 `onsubmit`<br><br>*媒體*<br>`oncanplay`、`oncanplaythrough`、`oncuechange`、`ondurationchange`、`onemptied`、`onpause`、`onplay`、`onplaying`、`onratechange`、`onseeked`、`onseeking`、`onstalled`、`onstop`、`onsuspend`、`ontimeupdate`、`onvolumechange`、`onwaiting` |
-| 焦點            | `FocusEventArgs`     | `onfocus`、`onblur`、`onfocusin``onfocusout`<br><br>不包含 `relatedTarget`的支援。 |
+| Event            | `EventArgs`          | *一般*<br>`onactivate`、`onbeforeactivate`、`onbeforedeactivate`、`ondeactivate`、`onended`、`onfullscreenchange`、`onfullscreenerror`、`onloadeddata`、`onloadedmetadata`、`onpointerlockchange`、`onpointerlockerror`、`onreadystatechange`、`onscroll`<br><br>*剪貼簿*<br>`onbeforecut`中， `onbeforecopy`中， `onbeforepaste`<br><br>*輸入*<br>`oninvalid`、 `onreset`、 `onselect`、 `onselectionchange`、 `onselectstart`、 `onsubmit`<br><br>*媒體*<br>`oncanplay`、`oncanplaythrough`、`oncuechange`、`ondurationchange`、`onemptied`、`onpause`、`onplay`、`onplaying`、`onratechange`、`onseeked`、`onseeking`、`onstalled`、`onstop`、`onsuspend`、`ontimeupdate`、`onvolumechange`、`onwaiting` |
+| 焦點            | `FocusEventArgs`     | `onfocus`、 `onblur`、 `onfocusin`、 `onfocusout`<br><br>不包含 `relatedTarget`的支援。 |
 | 輸入            | `ChangeEventArgs`    | `onchange`、 `oninput` |
-| 鍵盤         | `KeyboardEventArgs`  | `onkeydown`、`onkeypress`、`onkeyup` |
+| 鍵盤         | `KeyboardEventArgs`  | `onkeydown`中， `onkeypress`中， `onkeyup` |
 | 滑鼠            | `MouseEventArgs`     | `onclick`, `oncontextmenu`, `ondblclick`, `onmousedown`, `onmouseup`, `onmouseover`, `onmousemove`, `onmouseout` |
 | 滑鼠指標    | `PointerEventArgs`   | `onpointerdown`, `onpointerup`, `onpointercancel`, `onpointermove`, `onpointerover`, `onpointerout`, `onpointerenter`, `onpointerleave`, `ongotpointercapture`, `onlostpointercapture` |
 | 滑鼠滾輪      | `WheelEventArgs`     | `onwheel`、 `onmousewheel` |
@@ -1624,7 +1624,8 @@ public class ThemeInfo
 }
 ```
 
-> !WARNING`Microsoft.AspNetCore.Components.RenderTree` 中的類型允許處理轉譯作業的*結果*。 這些是 Blazor framework 執行的內部詳細資料。 這些類型應該被視為不*穩定*，未來的版本可能會變更。
+> [!WARNING]
+> `Microsoft.AspNetCore.Components.RenderTree` 中的類型允許處理轉譯作業的*結果*。 這些是 Blazor framework 執行的內部詳細資料。 這些類型應該被視為不*穩定*，未來的版本可能會變更。
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>序號與程式程式碼號相關，而不是執行順序
 

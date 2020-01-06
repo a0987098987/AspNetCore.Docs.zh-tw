@@ -1,5 +1,5 @@
 ---
-title: .NET Core 與 ASP.NET Core 中的記錄
+title: 登入 .NET Core 與 ASP.NET Core
 author: rick-anderson
 description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提供的記錄架構。
 monikerRange: '>= aspnetcore-2.1'
@@ -7,14 +7,14 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/04/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 49d598330948c5f4a137c534094e14ed5e01e27c
-ms.sourcegitcommit: f4cd3828e26e6d549ba8d0c36a17be35ad9e5a51
+ms.openlocfilehash: e1c50c4592b21d56ed813dac43204d63f1bfe46c
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74825489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359344"
 ---
-# <a name="logging-in-net-core-and-aspnet-core"></a>.NET Core 與 ASP.NET Core 中的記錄
+# <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Steve Smith](https://ardalis.com/)
 
@@ -295,7 +295,7 @@ public class Program
 
 ### <a name="no-asynchronous-logger-methods"></a>無非同步記錄器方法
 
-記錄速度應該很快，不值得花費非同步程式碼的效能成本來處理。 若您的記錄資料存放區很慢，請不要直接寫入其中。 請考慮一開始將記錄寫入到快速的存放區，稍後再將它們移到慢速存放區。 例如，如果您要登入 SQL Server，您不希望在 `Log` 方法中直接執行，因為 `Log` 方法是同步的。 相反地，以同步方式將記錄訊息新增到記憶體內佇列，並讓背景工作角色提取出佇列的訊息，藉此執行推送資料到 SQL Server 的非同步工作。 如需詳細資訊，請參閱[此](https://github.com/aspnet/AspNetCore.Docs/issues/11801)GitHub 問題。
+記錄速度應該很快，不值得花費非同步程式碼的效能成本來處理。 若您的記錄資料存放區很慢，請不要直接寫入其中。 請考慮一開始將記錄寫入到快速的存放區，稍後再將它們移到慢速存放區。 例如，如果您要記錄到 SQL Server，您不希望在 `Log` 方法中直接執行，因為 `Log` 方法是同步的。 相反地，以同步方式將記錄訊息新增到記憶體內佇列，並讓背景工作角色提取出佇列的訊息，藉此執行推送資料到 SQL Server 的非同步工作。 如需詳細資訊，請參閱[此](https://github.com/aspnet/AspNetCore.Docs/issues/11801)GitHub 問題。
 
 ## <a name="configuration"></a>組態
 
@@ -822,7 +822,7 @@ System.Exception: Item not found exception.
 
 以下是由 ASP.NET Core 與 Entity Framework Core 所使用的一些類別，以及有關它們可傳回哪些記錄的附註：
 
-| Category                            | 備註 |
+| 分類                            | 注意事項 |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | 一般 ASP.NET Core 診斷。 |
 | Microsoft.AspNetCore.DataProtection | 已考慮、發現及使用哪些金鑰。 |
@@ -1056,6 +1056,16 @@ logging.AddEventLog();
 * `LogName` &ndash; 「應用程式」
 * `SourceName` &ndash; 「.NET 執行時間」
 * `MachineName` &ndash; 本機電腦
+
+記錄[警告層級和更新版本](#log-level)的事件。 若要記錄低於 `Warning`的事件，請明確設定記錄層級。 例如，將下列內容新增至*appsettings*檔案：
+
+```json
+"EventLog": {
+  "LogLevel": {
+    "Default": "Information"
+  }
+}
+```
 
 ### <a name="tracesource-provider"></a>TraceSource 提供者
 

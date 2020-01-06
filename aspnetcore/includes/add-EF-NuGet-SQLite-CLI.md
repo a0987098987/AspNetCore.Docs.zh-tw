@@ -17,3 +17,5 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 * Scaffolding `Microsoft.VisualStudio.Web.CodeGeneration.Design` 和 `Microsoft.EntityFrameworkCore.SqlServer` 需要的套件。
 
 如需允許應用程式依環境設定其資料庫內容的多個環境設定的指引，請參閱 <xref:fundamentals/environments#environment-based-startup-class-and-methods>。
+
+[!INCLUDE[](~/includes/scaffoldTFM.md)]

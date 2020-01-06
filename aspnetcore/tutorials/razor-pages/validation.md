@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: c2397a535fa2c128f18d65323d0f4920af914205
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 34157a63e43372876a02a858741dfd3a83a063b1
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72334211"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354802"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 在本節中將驗證邏輯新增至 `Movie` 模型。 使用者建立或編輯電影時，就會強制執行驗證規則。
 
@@ -26,7 +26,7 @@ ms.locfileid: "72334211"
 * 降低應用程式中的程式碼數量。
 * 使程式碼較少出現錯誤，而且更容易進行測試和維護。
 
-Razor Pages 和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
+Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
 
 ## <a name="add-validation-rules-to-the-movie-model"></a>將驗證規則新增至電影模型
 
@@ -55,7 +55,7 @@ DataAnnotations 命名空間提供一組內建的驗證屬性 (attribute)，其�
 
 擁有 ASP.NET Core 自動強制執行的驗證規則有助於讓您的應用程式更穩固。 它也確保您不會忘記要驗證某些項目，不小心讓不正確的資料進入資料庫。
 
-### <a name="validation-error-ui-in-razor-pages"></a>Razor Pages 中的驗證錯誤 UI
+### <a name="validation-error-ui-in-razor-pages"></a>Razor 頁面中的驗證錯誤 UI
 
 執行應用程式，並巡覽至 Pages/Movies。
 
@@ -92,6 +92,8 @@ DataAnnotations 命名空間提供一組內建的驗證屬性 (attribute)，其�
       return Page();
    }
   ```
+  
+或者，您可以[停用伺服器上的用戶端驗證](xref:mvc/models/validation#disable-client-side-validation)。
 
 下列程式碼顯示稍早在此教學課程中包含 Scaffold 的部分 *Create.cshtml* 頁面。 Create 和 Edit 頁面會使用它來顯示初始表單，以及在發生錯誤時重新顯示格式。
 
@@ -99,7 +101,7 @@ DataAnnotations 命名空間提供一組內建的驗證屬性 (attribute)，其�
 
 [輸入標記協助程式](xref:mvc/views/working-with-forms)會使用 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
 
-Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中才能指定驗證規則和錯誤字串。 這些驗證規則會自動套用至編輯 `Movie` 模型的 Razor Pages。
+Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中才能指定驗證規則和錯誤字串。 這些驗證規則會自動套用至編輯 `Movie` 模型的 Razor 頁面。
 
 當驗證邏輯需要變更時，它只會在模型中進行。 驗證會一致地套用在整個應用程式中(驗證邏輯定義於一個位置)。 位於一個位置的驗證有助於讓程式碼保持整潔，並可讓您更容易進行維護和更新。
 
@@ -209,7 +211,7 @@ SQLite 不需要移轉。
 
 如需部署至 Azure 的詳細資訊，請參閱[教學課程：在 Azure 中使用 SQL Database 建立 ASP.NET Core 應用程式](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)。
 
-感謝您看完這份 Razor Pages 簡介。 完成本教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
+感謝您看完這份 Razor 頁面簡介。 完成本教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
 
 ## <a name="additional-resources"></a>其他資源
 

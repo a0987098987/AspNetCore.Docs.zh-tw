@@ -5,12 +5,12 @@ description: 了解如何將控制器新增至簡單的 ASP.NET Core MVC 應用�
 ms.author: riande
 ms.date: 08/05/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 1c54959130f3a9959d4d4fdb8dcaa0d37ee2f046
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
-ms.translationtype: HT
+ms.openlocfilehash: fe0c1d3c066d6ab20387391e15c3a7cfe684c61e
+ms.sourcegitcommit: 077b45eceae044475f04c1d7ef2d153d7c0515a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820060"
+ms.lasthandoff: 12/29/2019
+ms.locfileid: "75542699"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>將控制器新增至 ASP.NET Core MVC 應用程式
 
@@ -18,43 +18,43 @@ ms.locfileid: "68820060"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Model-View-Controller (MVC) 架構模式可將一個應用程式劃分成三個主要元件：模型 (**M**)、檢視 (**V**) 和控制器 (**C**)。 MVC 模式可協助您建立比傳統整合型應用程式更可測試且更易於更新的應用程式。 MVC 架構的應用程式包含：
+模型檢視控制器 (MVC) 架構模式可將一個應用程式劃分成三個主要元件：模型 (**M**)、檢視 (**V**) 和控制器 (**C**)。 MVC 模式可協助您建立比傳統整合型應用程式更可測試且更易於更新的應用程式。 MVC 架構的應用程式包含：
 
 * 模型 (**M**)：代表應用程式資料的類別。 模型類別使用驗證邏輯對該資料強制執行商務規則。 通常，模型物件會在資料庫中擷取並儲存模型狀態。 在本教學課程中，`Movie` 模型會從資料庫擷取電影資料，將其提供給檢視或更新它。 更新的資料會寫入資料庫。
 
-* 檢視 (**V**)：檢視是顯示應用程式使用者介面 (UI) 的元件。 一般而言，此 UI 會顯示模型資料。
+* 檢視 (**V**)：檢視是顯示應用程式之使用者介面 (UI) 的元件。 一般而言，此 UI 會顯示模型資料。
 
 * 控制器 (**C**)：處理瀏覽器要求的類別。 它們會擷取模型資料，並呼叫傳回回應的檢視範本。 在 MVC 應用程式中，檢視只能顯示資訊；控制器則會處理和回應使用者輸入和互動。 例如，控制器會處理路由資料和查詢字串值，並將這些值傳遞至模型。 此模型可能會使用這些值來查詢資料庫。 例如，`https://localhost:5001/Home/Privacy` 具有 `Home` (控制器) 和 `Privacy` (在首頁控制器上呼叫的動作方法) 的路由資料。 `https://localhost:5001/Movies/Edit/5` 是要使用電影控制器編輯識別碼 = 5 之電影的要求。 本教學課程稍後會說明路由資料。
 
-MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 (輸入邏輯、商務邏輯和 UI 邏輯)，同時提供這些項目之間的鬆散結合。 此模式指定每一種邏輯應該位於應用程式中的位置。 UI 邏輯位於檢視。 輸入邏輯位於控制器。 商務邏輯則位於模型。 這項隔離可協助您管理建置應用程式時的複雜度，因為它可讓您一次處理實作的其中一個層面，而不影響另一個層面的程式碼。 例如，您可以處理檢視程式碼，而不需要根據商務邏輯程式碼。
+MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 (輸入邏輯、商務邏輯和 UI 邏輯)，同時提供這些項目之間的鬆散結合。 此模式指定每一種邏輯應該位於應用程式中的位置。 UI 邏輯應該位在檢視中， 輸入邏輯應該位在控制器中， 商務邏輯則應該位在模型中。 這項隔離可協助您管理建置應用程式時的複雜度，因為它可讓您一次處理實作的其中一個層面，而不影響另一個層面的程式碼。 例如，您可以處理檢視程式碼，而不需要根據商務邏輯程式碼。
 
-本教學課程系列中涵蓋了這些概念，並且顯示如何使用它們來建置電影應用程式。 MVC 專案包含｢控制器｣  和｢檢視｣  的資料夾。
+本教學課程系列中涵蓋了這些概念，並且顯示如何使用它們來建置電影應用程式。 MVC 專案包含｢控制器｣和｢檢視｣的資料夾。
 
 ## <a name="add-a-controller"></a>新增控制器
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [方案總管]  中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]  
+* 在 [方案總管] 中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]
   ![操作功能表](adding-controller/_static/add_controller.png)
 
-* 在 [新增 Scaffold]  對話方塊中，選取 [MVC 控制器 - 空白] 
+* 在 [新增 Scaffold] 對話方塊中，選取 [MVC 控制器 - 空白]
 
   ![新增 MVC 控制器並將其命名](adding-controller/_static/ac.png)
 
-* 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\)  對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]  。
+* 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\) 對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]  ，將新檔案命名為 *HelloWorldController.cs*。
+選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]，將新檔案命名為 *HelloWorldController.cs*。
 
   ![操作功能表](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-在方案總管  中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]  。
+在方案總管中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]。
 ![操作功能表](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-選取 [ASP.NET Core]  和 [MVC 控制器類別]  。
+選取 [ASP.NET Core] 和 [MVC 控制器類別]。
 
 將控制器命名為 **HelloWorldController**。
 
@@ -106,9 +106,9 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
    `https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-(將 `{PORT}` 取代為您的連接埠號碼)。您可以在 URL 中針對 `name` 和 `numtimes` 嘗試不同的值。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
+（將 `{PORT}` 取代為您的埠號碼）。您可以在 URL 中嘗試 `name` 和 `numtimes` 的不同值。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
 
-![瀏覽器視窗，其中顯示應用程式回應 Hello Rick, NumTimes is:4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![顯示「Hello Rick」之應用程式回應的瀏覽器視窗，Numtimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
 在上方的影像中，不會使用 URL 區段 (`Parameters`) ，`name` 和 `numTimes` 則以[查詢字串](https://wikipedia.org/wiki/Query_string)的方式傳遞。 上述 URL 中的 `?` (問號) 是分隔符號，隨後接著查詢字串。 `&` 字元可分隔查詢字串。
 
@@ -132,43 +132,43 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 ::: moniker range="< aspnetcore-3.0"
 
-Model-View-Controller (MVC) 架構模式可將一個應用程式劃分成三個主要元件：模型 (**M**)、檢視 (**V**) 和控制器 (**C**)。 MVC 模式可協助您建立比傳統整合型應用程式更可測試且更易於更新的應用程式。 MVC 架構的應用程式包含：
+模型檢視控制器 (MVC) 架構模式可將一個應用程式劃分成三個主要元件：模型 (**M**)、檢視 (**V**) 和控制器 (**C**)。 MVC 模式可協助您建立比傳統整合型應用程式更可測試且更易於更新的應用程式。 MVC 架構的應用程式包含：
 
 * 模型 (**M**)：代表應用程式資料的類別。 模型類別使用驗證邏輯對該資料強制執行商務規則。 通常，模型物件會在資料庫中擷取並儲存模型狀態。 在本教學課程中，`Movie` 模型會從資料庫擷取電影資料，將其提供給檢視或更新它。 更新的資料會寫入資料庫。
 
-* 檢視 (**V**)：檢視是顯示應用程式使用者介面 (UI) 的元件。 一般而言，此 UI 會顯示模型資料。
+* 檢視 (**V**)：檢視是顯示應用程式之使用者介面 (UI) 的元件。 一般而言，此 UI 會顯示模型資料。
 
 * 控制器 (**C**)：處理瀏覽器要求的類別。 它們會擷取模型資料，並呼叫傳回回應的檢視範本。 在 MVC 應用程式中，檢視只能顯示資訊；控制器則會處理和回應使用者輸入和互動。 例如，控制器會處理路由資料和查詢字串值，並將這些值傳遞至模型。 此模型可能會使用這些值來查詢資料庫。 例如，`https://localhost:5001/Home/About` 具有 `Home` (控制器) 和 `About` (在首頁控制器上呼叫的動作方法) 的路由資料。 `https://localhost:5001/Movies/Edit/5` 是要使用電影控制器編輯識別碼 = 5 之電影的要求。 本教學課程稍後會說明路由資料。
 
-MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 (輸入邏輯、商務邏輯和 UI 邏輯)，同時提供這些項目之間的鬆散結合。 此模式指定每一種邏輯應該位於應用程式中的位置。 UI 邏輯位於檢視。 輸入邏輯位於控制器。 商務邏輯則位於模型。 這項隔離可協助您管理建置應用程式時的複雜度，因為它可讓您一次處理實作的其中一個層面，而不影響另一個層面的程式碼。 例如，您可以處理檢視程式碼，而不需要根據商務邏輯程式碼。
+MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 (輸入邏輯、商務邏輯和 UI 邏輯)，同時提供這些項目之間的鬆散結合。 此模式指定每一種邏輯應該位於應用程式中的位置。 UI 邏輯應該位在檢視中， 輸入邏輯應該位在控制器中， 商務邏輯則應該位在模型中。 這項隔離可協助您管理建置應用程式時的複雜度，因為它可讓您一次處理實作的其中一個層面，而不影響另一個層面的程式碼。 例如，您可以處理檢視程式碼，而不需要根據商務邏輯程式碼。
 
-本教學課程系列中涵蓋了這些概念，並且顯示如何使用它們來建置電影應用程式。 MVC 專案包含｢控制器｣  和｢檢視｣  的資料夾。
+本教學課程系列中涵蓋了這些概念，並且顯示如何使用它們來建置電影應用程式。 MVC 專案包含｢控制器｣和｢檢視｣的資料夾。
 
 ## <a name="add-a-controller"></a>新增控制器
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [方案總管]  中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]  
+* 在 [方案總管] 中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]
   ![操作功能表](adding-controller/_static/add_controller.png)
 
-* 在 [新增 Scaffold]  對話方塊中，選取 [MVC 控制器 - 空白] 
+* 在 [新增 Scaffold] 對話方塊中，選取 [MVC 控制器 - 空白]
 
   ![新增 MVC 控制器並將其命名](adding-controller/_static/ac.png)
 
-* 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\)  對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]  。
+* 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\) 對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]  ，將新檔案命名為 *HelloWorldController.cs*。
+選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]，將新檔案命名為 *HelloWorldController.cs*。
 
   ![操作功能表](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-在方案總管  中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]  。
+在方案總管中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]。
 ![操作功能表](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-選取 [ASP.NET Core]  和 [MVC 控制器類別]  。
+選取 [ASP.NET Core] 和 [MVC 控制器類別]。
 
 將控制器命名為 **HelloWorldController**。
 
@@ -225,9 +225,9 @@ Remove link for simplified tutorial.
 
    `https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-(將 `{PORT}` 取代為您的連接埠號碼)。您可以在 URL 中針對 `name` 和 `numtimes` 嘗試不同的值。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
+（將 `{PORT}` 取代為您的埠號碼）。您可以在 URL 中嘗試 `name` 和 `numtimes` 的不同值。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
 
-![瀏覽器視窗，其中顯示應用程式回應 Hello Rick, NumTimes is:4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![顯示「Hello Rick」之應用程式回應的瀏覽器視窗，Numtimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
 在上方的影像中，不會使用 URL 區段 (`Parameters`) ，`name` 和 `numTimes` 則以[查詢字串](https://wikipedia.org/wiki/Query_string)的方式傳遞。 上述 URL 中的 `?` (問號) 是分隔符號，隨後接著查詢字串。 `&` 字元可分隔查詢字串。
 

@@ -3,14 +3,14 @@ title: 不 ASP.NET Core 身分識別的 Facebook、Google 及外部提供者驗�
 author: rick-anderson
 description: 使用 Facebook、Google、Twitter 等的說明，而不 ASP.NET Core 身分識別的帳戶使用者驗證。
 ms.author: riande
-ms.date: 11/19/2019
+ms.date: 12/10/2019
 uid: security/authentication/social/social-without-identity
-ms.openlocfilehash: 680ea091dcc5ed7f94879b5d277e8be7e5abeb7b
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: 612964ec9ed4975cdc81780dda3bac6cce96037f
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359054"
 ---
 # <a name="use-social-sign-in-provider-authentication-without-aspnet-core-identity"></a>使用不含 ASP.NET Core 身分識別的社交登入提供者驗證
 
@@ -47,7 +47,7 @@ ms.locfileid: "74289108"
 
 [!code-csharp[](social-without-identity/samples_snapshot/3.x/Startup.cs?name=snippet2&highlight=3-4)]
 
-若要深入瞭解驗證配置和 cookie 驗證，請參閱 <xref:security/authentication/cookie>。
+若要深入瞭解驗證配置，請參閱[驗證概念](xref:security/authentication/index#authentication-concepts)。 若要深入瞭解 cookie 驗證，請參閱 <xref:security/authentication/cookie>。
 
 ## <a name="apply-authorization"></a>套用授權
 
@@ -102,7 +102,7 @@ ms.locfileid: "74289108"
 
 [!code-csharp[](social-without-identity/samples_snapshot/2.x/Startup.cs?name=snippet2)]
 
-若要深入瞭解驗證配置和 cookie 驗證，請參閱 <xref:security/authentication/cookie>。
+若要深入瞭解驗證配置，請參閱[驗證概念](xref:security/authentication/index#authentication-concepts)。 若要深入瞭解 cookie 驗證，請參閱 <xref:security/authentication/cookie>。
 
 ## <a name="apply-authorization"></a>套用授權
 

@@ -5,18 +5,20 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 12/05/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 95b6d3e016edcd2e13207c8e658cf0d2fb21f945
-ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
+ms.openlocfilehash: ef4671c9e7628c106b9f68ba5cbfd8a127e095d0
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74959072"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358025"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
+
+<!-- In the next update on the CLI version, let the scaffolder do the same work the VS driven scaffolder does. That is, create the DB context, etc -->
 
 在本節中，會加入類別來管理跨平臺[SQLite 資料庫](https://www.sqlite.org/index.html)中的電影。 從 ASP.NET Core 範本建立的應用程式會使用 SQLite 資料庫。 應用程式的模型類別會與[Entity Framework Core （EF Core）](/ef/core) （[SQLite EF Core 資料庫提供者](/ef/core/providers/sqlite)）搭配使用，以使用資料庫。 EF Core 是一種物件關聯式對應 (ORM) 架構，可簡化資料存取。
 
@@ -46,12 +48,12 @@ ms.locfileid: "74959072"
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
-* 以滑鼠右鍵按一下 [Models] 資料夾，然後選取 [新增] > [新增檔案]。
+* 以滑鼠右鍵按一下 [*模型*] 資料夾，然後選取 [**加入**>**新增**檔案]。
 * 在 [新增檔案] 對話方塊中：
 
   * 在左窗格中選取 [一般]。
   * 在中央窗格中選取 [類別是空的]。
-  * 將類別命名為 **Movie**，然後選取 [新增]。
+  * 將類別命名為 **Movie**，並選取 [新增]。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -69,14 +71,14 @@ ms.locfileid: "74959072"
 
 建立 *Pages/Movies* 資料夾：
 
-* 以滑鼠右鍵按一下 [Pages] 資料夾 > [新增] > [新增資料夾]。
+* 在 *頁面* 資料夾上按一下滑鼠右鍵，>**加入**>**新增資料夾**。
 * 將資料夾命名為 *Movies*
 
-以滑鼠右鍵按一下 [Pages/Movies] 資料夾 > [新增] > [新增 Scaffolded 項目]。
+以滑鼠右鍵按一下  *Pages/電影* 資料夾 **，> 新增**>**新增 scaffold 專案**。
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)] > [新增]。
+在 [**新增 Scaffold** ] 對話方塊中，選取 [ **Razor Pages 使用 Entity Framework （CRUD）** ] > [**新增**]。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
@@ -175,7 +177,7 @@ Scaffold 處理序會建立下列檔案：
 * 新增初始移轉。
 * 以初始移轉更新資料庫。
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+從 [**工具**] 功能表中，選取 [ **NuGet 套件管理員**] > [**套件管理員主控台**]。
 
   ![PMC 功能表](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -212,7 +214,7 @@ ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
-檢查 `Startup.ConfigureServices` 方法。 Scaffolder 已新增醒目標示行：
+檢查 `Startup.ConfigureServices` 方法。 強調顯示的行由 Scaffolder 新增：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
@@ -299,12 +301,12 @@ Login failed for user 'User-name'.
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
-* 以滑鼠右鍵按一下 [Models] 資料夾，然後選取 [新增] > [新增檔案]。
+* 以滑鼠右鍵按一下 [*模型*] 資料夾，然後選取 [**加入**>**新增**檔案]。
 * 在 [新增檔案] 對話方塊中：
 
   * 在左窗格中選取 [一般]。
   * 在中央窗格中選取 [類別是空的]。
-  * 將類別命名為 **Movie**，然後選取 [新增]。
+  * 將類別命名為 **Movie**，並選取 [新增]。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -322,14 +324,14 @@ Login failed for user 'User-name'.
 
 建立 *Pages/Movies* 資料夾：
 
-* 以滑鼠右鍵按一下 [Pages] 資料夾 > [新增] > [新增資料夾]。
+* 在 *頁面* 資料夾上按一下滑鼠右鍵，>**加入**>**新增資料夾**。
 * 將資料夾命名為 *Movies*
 
-以滑鼠右鍵按一下 [Pages/Movies] 資料夾 > [新增] > [新增 Scaffolded 項目]。
+以滑鼠右鍵按一下  *Pages/電影* 資料夾 **，> 新增**>**新增 scaffold 專案**。
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold] 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)] > [新增]。
+在 [**新增 Scaffold** ] 對話方塊中，選取 [ **Razor Pages 使用 Entity Framework （CRUD）** ] > [**新增**]。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
@@ -405,7 +407,7 @@ to use Data, it should not use models. That will make the namespace the same for
 * 新增初始移轉。
 * 以初始移轉更新資料庫。
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+從 [**工具**] 功能表中，選取 [ **NuGet 套件管理員**] > [**套件管理員主控台**]。
 
   ![PMC 功能表](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -440,7 +442,7 @@ ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
-檢查 `Startup.ConfigureServices` 方法。 Scaffolder 已新增醒目標示行：
+檢查 `Startup.ConfigureServices` 方法。 強調顯示的行由 Scaffolder 新增：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 

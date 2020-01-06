@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解 ASP.NET Core 中的模型繫結如何運作，以及如何自訂其行為。
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
-ms.date: 11/21/2019
+ms.date: 12/18/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: da6cc25e0bbb1b2301529b34eab4c91f9ccb46eb
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: d36e42ef2517068ade3f874dc62cc7587ee3ca98
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355667"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core 中的資料繫結
 
@@ -25,7 +25,7 @@ ms.locfileid: "74944291"
 
 控制器和 Razor Pages 使用來自 HTTP 要求的資料。 例如，路由資料可能會提供記錄索引鍵，而已張貼的表單欄位可能會提供模型屬性的值。 撰寫程式碼來擷取這些值的每一個並將它們從字串轉換成 .NET 類型，不但繁瑣又容易發生錯誤。 模型繫結會自動化此程序。 模型繫結系統：
 
-* 擷取來自各種來源的資料，例如路由資料、表單欄位和查詢字串。
+* 從各種不同的來源（例如，路由資料、表單欄位和查詢字串）抓取資料。
 * 在方法參數和公用屬性中，將資料提供給控制器和 Razor Pages。
 * 將字串資料轉換成 .NET 類型。
 * 更新複雜類型的屬性。
@@ -34,7 +34,7 @@ ms.locfileid: "74944291"
 
 假設您有下列動作方法：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Controllers/PetsController.cs?name=snippet_DogsOnly)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Controllers/PetsController.cs?name=snippet_DogsOnly)]
 
 而應用程式收到具有此 URL 的要求：
 
@@ -47,13 +47,13 @@ http://contoso.com/api/pets/2?DogsOnly=true
 * 尋找第一個參數 `GetByID`，它是名為 `id` 的整數。
 * 查看 HTTP 要求中所有可用的來源，在路由資料中找到 `id` = "2"。
 * 將字串 "2" 轉換成整數 2。
-* 尋找下一個 `GetByID` 的參數，它是名為 `dogsOnly` 的布林值。
+* 尋找 `GetByID`的下一個參數，也就是名為 `dogsOnly`的布林值。
 * 查看來源，在查詢字串中找到 "DogsOnly=true"。 名稱比對不區分大小寫。
 * 將字串 "true" 轉換成布林值 `true`。
 
 架構接著會呼叫 `GetById` 方法，針對 `id` 參數傳送 2、`dogsOnly` 參數傳送 `true`。
 
-在上例中，模型繫結目標都是簡單型別的方法參數。 目標也可能是複雜類型的屬性。 成功繫結每一個屬性後，該屬性就會發生[模型驗證](xref:mvc/models/validation)。 哪些資料繫結至模型，以及任何繫結或驗證錯誤的記錄，都會儲存在 [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) 或 [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState)。 為了解此程序是否成功，應用程式會檢查 [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid) 旗標。
+在上例中，模型繫結目標都是簡單型別的方法參數。 目標也可以是複雜類型的屬性。 成功系結每個屬性之後，就會針對該屬性進行[模型驗證](xref:mvc/models/validation)。 哪些資料繫結至模型，以及任何繫結或驗證錯誤的記錄，都會儲存在 [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) 或 [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState)。 為了解此程序是否成功，應用程式會檢查 [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid) 旗標。
 
 ## <a name="targets"></a>目標
 
@@ -65,28 +65,28 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 ### <a name="bindproperty-attribute"></a>[BindProperty] 屬性
 
-可以套用至控制器公用屬性或 `PageModel` 類別，讓模型繫結以該屬性為目標：
+可以套用至控制器的公用屬性或 `PageModel` 類別，讓模型系結以該屬性為目標：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=3-4)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=3-4)]
 
 ### <a name="bindpropertiesattribute"></a>[BindProperties] 屬性
 
-支援 ASP.NET Core 2.1 和更新版本。  可以套用至控制器或 `PageModel` 類別，通知模型繫結以該類別的所有公用屬性為目標：
+適用于 ASP.NET Core 2.1 和更新版本。  可以套用至控制器或 `PageModel` 類別，以告知模型系結以類別的所有公用屬性為目標：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Create.cshtml.cs?name=snippet_BindProperties&highlight=1-2)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/Instructors/Create.cshtml.cs?name=snippet_BindProperties&highlight=1-2)]
 
 ### <a name="model-binding-for-http-get-requests"></a>適用於 HTTP GET 要求的模型繫結
 
-根據預設，屬性不會針對 HTTP GET 要求繫結。 一般而言，GET 要求只需要記錄識別碼參數。 此記錄識別碼用來查詢資料庫中的項目。 因此，不需要繫結保留模型執行個體的屬性。 在您要從 GET 要求將屬性繫結至資料的案例中，請將 `SupportsGet` 屬性設為 `true`：
+根據預設，屬性不會針對 HTTP GET 要求繫結。 一般而言，GET 要求只需要記錄識別碼參數。 此記錄識別碼用來查詢資料庫中的項目。 因此，不需要系結保存模型實例的屬性。 在您要從 GET 要求將屬性繫結至資料的案例中，請將 `SupportsGet` 屬性設為 `true`：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Index.cshtml.cs?name=snippet_SupportsGet)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/Instructors/Index.cshtml.cs?name=snippet_SupportsGet)]
 
 ## <a name="sources"></a>Sources
 
 根據預設，模型繫結會從下列 HTTP 要求的來源中，取得索引鍵/值組形式的資料：
 
 1. 表單欄位
-1. 要求本文 (適用於[具有 [ApiController] 屬性的控制器](xref:web-api/index#binding-source-parameter-inference)。)
+1. 要求主體（針對[具有 [ApiController] 屬性的控制器](xref:web-api/index#binding-source-parameter-inference)）。
 1. 路由資料
 1. 查詢字串參數
 1. 已上傳的檔案
@@ -94,7 +94,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 針對每個目標參數或屬性，系統會依照上述清單中所示的順序來掃描來源。 但也有一些例外：
 
 * 路由資料和查詢字串值只用於簡單型別。
-* 所上傳檔案只會繫結至實作 `IFormFile` 或 `IEnumerable<IFormFile>` 的目標類型。
+* 上傳的檔案只會系結至執行 `IFormFile` 或 `IEnumerable<IFormFile>`的目標型別。
 
 如果預設來源不正確，請使用下列其中一個屬性來指定來源：
 
@@ -108,11 +108,11 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 * 會個別新增至模型屬性 (不是模型類別)，如下列範例所示：
 
-  [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/Instructor.cs?name=snippet_FromQuery&highlight=5-6)]
+  [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/Instructor.cs?name=snippet_FromQuery&highlight=5-6)]
 
-* 選擇性地接受建構函式中的模型名稱值。 如果屬性名稱不符合要求中的值，則提供此選項。 例如，要求中的值可能是名稱中有連字號的標頭，如下列範例所示：
+* 選擇性地接受在此函式中的模型名稱值。 如果屬性名稱不符合要求中的值，則會提供此選項。 例如，要求中的值可能是名稱中有連字號的標頭，如下列範例所示：
 
-  [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Index.cshtml.cs?name=snippet_FromHeader)]
+  [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/Instructors/Index.cshtml.cs?name=snippet_FromHeader)]
 
 ### <a name="frombody-attribute"></a>[FromBody] 屬性
 
@@ -143,50 +143,50 @@ public class Pet
 
 輸入格式器只會讀取主體，而不會瞭解系結來源屬性。 如果在主體中找到適當的值，該值會用來填入 `Breed` 屬性。
 
-針對每個動作方法，請不要將 `[FromBody]` 套用至多個參數。 一旦輸入格式器讀取要求資料流程之後，就無法再讀取它，以系結其他 `[FromBody]` 參數。
+針對每個動作方法，請勿將 `[FromBody]` 套用至一個以上的參數。 一旦輸入格式器讀取要求資料流程之後，就無法再讀取它，以系結其他 `[FromBody]` 參數。
 
 ### <a name="additional-sources"></a>其他來源
 
-來源資料由「值提供者」提供給模型繫結系統。 您可以撰寫並註冊自訂值提供者，其從其他來源取得模型繫結資料。 例如，您可能想要 Cookie 或工作階段狀態的資料。 從新來源取得資料：
+*值提供者*會將來源資料提供給模型系結系統。 您可以撰寫並註冊自訂值提供者，其從其他來源取得模型繫結資料。 例如，您可能想要來自 cookie 或會話狀態的資料。 若要從新的來源取得資料：
 
 * 建立會實作 `IValueProvider` 的類別。
 * 建立會實作 `IValueProviderFactory` 的類別。
 * 在 `Startup.ConfigureServices` 中註冊 Factory 類別。
 
-範例應用程式包含[值提供者](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs)和從 Cookie 取得值的 [actory](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) 範例。 以下是 `Startup.ConfigureServices` 中的註冊碼：
+範例應用程式包含[值提供者](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs)和從 Cookie 取得值的 [actory](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) 範例。 以下是 `Startup.ConfigureServices` 中的註冊碼：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=3)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=4)]
 
-顯示的程式碼會將自訂值提供者放在所有內建值提供者的後面。  若要讓它在清單中排位第一，請呼叫 `Insert(0, new CookieValueProviderFactory())` 而非 `Add`。
+顯示的程式碼會將自訂值提供者放在所有內建值提供者的後面。  若要將它設為清單中的第一個，請呼叫 `Insert(0, new CookieValueProviderFactory())`，而不是 `Add`。
 
 ## <a name="no-source-for-a-model-property"></a>無模型屬性的來源
 
-根據預設，如果找不到模型屬性值，就不會建立模型狀態錯誤。 屬性設定為 null 或預設值：
+根據預設，如果找不到模型屬性的值，就不會建立模型狀態錯誤。 屬性設定為 null 或預設值：
 
-* 可為 Null 的簡單型別會設為 `null`。
+* 可為 null 的簡單類型設定為 `null`。
 * 不可為 Null 的實值型別會設為 `default(T)`。 例如，參數 `int id` 設為 0。
-* 針對複雜類型，模型繫結會使用預設建構函式建立執行個體，但不設定屬性。
+* 針對複雜型別，模型系結會使用預設的函式建立實例，而不會設定屬性。
 * 陣列設為 `Array.Empty<T>()`，但 `byte[]` 陣列設為 `null`。
 
 當模型屬性的表單欄位中找不到任何內容時，如果模型狀態應該失效，請使用[`[BindRequired]`](#bindrequired-attribute)屬性。
 
-請注意，此 `[BindRequired]` 行為適用於來自已張貼表單資料的模型繫結，不適合要求本文中的 JSON 或 XML 資料。 要求本文資料由[輸入格式器](#input-formatters)處理。
+請注意，此 `[BindRequired]` 行為適用於來自已張貼表單資料的模型繫結，不適合要求本文中的 JSON 或 XML 資料。 [輸入](#input-formatters)格式器會處理要求主體資料。
 
 ## <a name="type-conversion-errors"></a>類型轉換錯誤
 
-如果找到來源，但無法轉換成目標型別，則模型狀態會標記為無效。 目標參數或屬性會設為 null 或預設值，如上一節中所述。
+如果找到來源，但無法轉換成目標型別，則模型狀態會標示為無效。 目標參數或屬性會設為 null 或預設值，如上一節中所述。
 
 在具有 `[ApiController]` 屬性的 API 控制器中，無效的模型狀態會導致自動 HTTP 400 回應。
 
 在 Razor 頁面中，重新顯示有錯誤訊息的頁面：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Create.cshtml.cs?name=snippet_HandleMBError&highlight=3-6)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/Instructors/Create.cshtml.cs?name=snippet_HandleMBError&highlight=3-6)]
 
-用戶端驗證會攔截大部分不正確的資料，否則會被提交至 Razor Pages 表單。 此驗證會讓您更難觸發上述醒目提示的程式碼。 範例應用程式包含 [Submit with Invalid Date] \(以無效日期送出\) 按鈕，將不正確的資料放入 [雇用日期] 欄位並提交表單。 此按鈕會顯示當資料轉換錯誤發生時，重新顯示頁面的程式碼如何運作。
+用戶端驗證會攔截大部分不正確的資料，否則會提交至 Razor Pages 表單。 此驗證會讓您更難觸發上述醒目提示的程式碼。 範例應用程式包含 [**具有無效日期的提交**] 按鈕，它會在 [**雇用日期**] 欄位中放入不正確的資料，並提交表單。 此按鈕會顯示當資料轉換錯誤發生時，重新顯示頁面的程式碼如何運作。
 
-當上述程式碼重新顯示頁面時，無效的輸入不會顯示在表單欄位中。 這是因為模型屬性已設為 null 或預設值。 無效的輸入確實會出現在錯誤訊息中。 但是，如果您想要在表單欄位中重新顯示不正確的資料，請考慮讓模型屬性成為字串，以手動方式執行資料轉換。
+當上述程式碼重新顯示頁面時，不正確輸入不會顯示在 [表單] 欄位中。 這是因為模型屬性已設為 null 或預設值。 無效的輸入確實會出現在錯誤訊息中。 但是，如果您想要在表單欄位中重新顯示不正確的資料，請考慮讓模型屬性成為字串，以手動方式執行資料轉換。
 
-如果您不希望類型轉換錯誤導致模型狀態錯誤，建議使用相同的策略。 在此情況下，讓模型屬性成為字串。
+如果您不想要類型轉換錯誤導致模型狀態錯誤，則建議使用相同的策略。 在此情況下，請將模型屬性設為字串。
 
 ## <a name="simple-types"></a>簡單型別
 
@@ -205,12 +205,12 @@ public class Pet
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter)、[UInt32](xref:System.ComponentModel.UInt32Converter)、[UInt64](xref:System.ComponentModel.UInt64Converter)
-* [Uri](xref:System.UriTypeConverter)
+* [URI](xref:System.UriTypeConverter)
 * [版本](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>複雜類型
 
-複雜類型必須具有要繫結的公用預設建構函式及公用可寫入屬性。 發生模型繫結時，類別會使用公用預設建構函式具現化。 
+複雜型別必須具有公用預設的函式，以及要系結的公用可寫入屬性。 發生模型繫結時，類別會使用公用預設建構函式具現化。 
 
 針對複雜類型的每個屬性，模型繫結會查看名稱模式 *prefix.property_name* 的來源。 如果找不到，它會只尋找沒有前置詞的 *property_name*。
 
@@ -235,7 +235,7 @@ public class Pet
 public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 ```
 
-模型繫結從查看索引鍵 `instructorToUpdate.ID` 的來源開始。 如果找不到，則它會尋找不含前置詞的 `ID`。
+模型繫結從查看索引鍵 `instructorToUpdate.ID` 的來源開始。 如果找不到，則會尋找沒有前置詞的 `ID`。
 
 ### <a name="prefix--property-name"></a>前置詞 = 屬性名稱
 
@@ -246,7 +246,7 @@ public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 public Instructor Instructor { get; set; }
 ```
 
-模型繫結從查看索引鍵 `Instructor.ID` 的來源開始。 如果找不到，則它會尋找不含前置詞的 `ID`。
+模型繫結從查看索引鍵 `Instructor.ID` 的來源開始。 如果找不到，則會尋找沒有前置詞的 `ID`。
 
 ### <a name="custom-prefix"></a>自訂前置詞
 
@@ -257,11 +257,11 @@ public IActionResult OnPost(
     int? id, [Bind(Prefix = "Instructor")] Instructor instructorToUpdate)
 ```
 
-模型繫結從查看索引鍵 `Instructor.ID` 的來源開始。 如果找不到，則它會尋找不含前置詞的 `ID`。
+模型繫結從查看索引鍵 `Instructor.ID` 的來源開始。 如果找不到，則會尋找沒有前置詞的 `ID`。
 
 ### <a name="attributes-for-complex-type-targets"></a>複雜類型目標的屬性
 
-有數個內建屬性可供控制複雜類型的模型繫結：
+有數個內建屬性可用來控制複雜類型的模型系結：
 
 * `[BindRequired]`
 * `[BindNever]`
@@ -270,19 +270,19 @@ public IActionResult OnPost(
 > [!NOTE]
 > 當張貼的表單資料為值來源時，這些屬性會影響模型繫結。 它們不會影響處理已張貼 JSON 和 XML 要求本文的輸入格式器。 [本文稍後](#input-formatters)會說明輸入格式器。
 >
-> 另請參閱[模型驗證](xref:mvc/models/validation#required-attribute)中的 `[Required]` 屬性討論。
+> 另請參閱[模型驗證](xref:mvc/models/validation#required-attribute)中的 `[Required]` 屬性的討論。
 
 ### <a name="bindrequired-attribute"></a>[BindRequired] 屬性
 
 只能套用至模型屬性，不能套用到方法參數。 如果模型的屬性不能發生繫結，則會造成模型繫結新增模型狀態錯誤。 以下為範例：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
 ### <a name="bindnever-attribute"></a>[BindNever] 屬性
 
 只能套用至模型屬性，不能套用到方法參數。 避免模型繫結設定模型的屬性。 以下為範例：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
 ### <a name="bind-attribute"></a>[Bind] 屬性
 
@@ -302,7 +302,7 @@ public class Instructor
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-`[Bind]` 屬性可用來防止「建立」案例中的大量指派。 它在編輯案例中運作不良，因為排除的屬性都設定為 null 或預設值，而非保持不變。 建議使用檢視模型而非 `[Bind]` 屬性來防禦大量指派。 如需詳細資訊，請參閱[關於大量指派的安全性注意事項](xref:data/ef-mvc/crud#security-note-about-overposting)。
+`[Bind]` 屬性可用來防止「建立」案例中的大量指派。 它不適用於編輯案例，因為排除的屬性會設定為 null 或預設值，而不會保持不變。 建議使用檢視模型而非 `[Bind]` 屬性來防禦大量指派。 如需詳細資訊，請參閱[關於防止大量指派的安全性注意事項](xref:data/ef-mvc/crud#security-note-about-overposting)。
 
 ## <a name="collections"></a>集合
 
@@ -336,7 +336,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
   [a]=1050&[b]=2000&index=a&index=b
   ```
 
-* 只有表單資料支援下列格式：
+* 下列格式僅在表單資料中受到支援：
 
   ```
   selectedCourses[]=1050&selectedCourses[]=2000
@@ -344,16 +344,16 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 * 針對前列所有範例格式，模型繫結會將有兩個項目的陣列傳遞至 `selectedCourses` 參數：
 
-  * selectedCourses[0]=1050
-  * selectedCourses[1]=2000
+  * selectedCourses [0] = 1050
+  * selectedCourses [1] = 2000
 
-  使用下標數字 (... [0] ... [1] ...) 的資料格式，必須確定從零開始依序編號。 下標編號中如有任何間距，則會忽略間隔後的所有項目。 例如，如果下標是 0 和 2，而不是 0 和 1，則忽略第二個項目。
+  使用注標編號的資料格式（.。。[0] .。。[1] ...）必須確定它們的編號順序是從零開始。 下標編號中如有任何間距，則會忽略間隔後的所有項目。 例如，如果下標是 0 和 2，而不是 0 和 1，則忽略第二個項目。
 
 ## <a name="dictionaries"></a>字典
 
-針對 `Dictionary` 目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如：
+針對 `Dictionary` 目標，模型系結會尋找符合*parameter_name*或*property_name*。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如：
 
-* 假設目標參數是名為 `selectedCourses` 的 `Dictionary<int, string>`：
+* 假設目標參數是名為 `selectedCourses`的 `Dictionary<int, string>`：
 
   ```csharp
   public IActionResult OnPost(int? id, Dictionary<int, string> selectedCourses)
@@ -381,7 +381,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 * 針對前列所有範例格式，模型繫結會將有兩個項目的字典傳遞至 `selectedCourses` 參數：
 
   * selectedCourses["1050"]="Chemistry"
-  * selectedCourses["2000"]="Economics"
+  * selectedCourses ["2000"] = "經濟效益"
 
 <a name="glob"></a>
 
@@ -401,8 +401,8 @@ ASP.NET Core 路由值提供者和查詢字串值提供者：
 * 以 CurrentCulture 取代傳遞至值提供者的[文化特性值](https://github.com/aspnet/AspNetCore/blob/e625fe29b049c60242e8048b4ea743cca65aa7b5/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs#L30) [。](xref:System.Globalization.CultureInfo.CurrentCulture)
 * 將 MVC 選項中的預設值提供者 factory 取代為新的值：
 
-[!code-csharp[](model-binding/samples_snapshot/2.x/Startup.cs?name=snippet)]
-[!code-csharp[](model-binding/samples_snapshot/2.x/Startup.cs?name=snippet1)]
+[!code-csharp[](model-binding/samples_snapshot/3.x/Startup.cs?name=snippet)]
+[!code-csharp[](model-binding/samples_snapshot/3.x/Startup.cs?name=snippet1)]
 
 ## <a name="special-data-types"></a>特殊資料類型
 
@@ -422,7 +422,7 @@ HTTP 要求包含上傳的檔案。  也支援多個檔案的 `IEnumerable<IForm
 
 ## <a name="input-formatters"></a>輸入格式器
 
-要求本文中的資料可以是 JSON、XML 或某些其他格式。 模型繫結會使用設定處理特定內容類型的「輸入格式器」，來剖析此資料。 根據預設，ASP.NET Core 包含 JSON 型輸入格式器以處理 JSON 資料。 您可以新增其他內容類型的其他格式器。
+要求主體中的資料可以是 JSON、XML 或其他格式。 模型繫結會使用設定處理特定內容類型的「輸入格式器」，來剖析此資料。 根據預設，ASP.NET Core 包括用來處理 JSON 資料的 JSON 型輸入格式器。 您可以為其他內容類型新增其他格式器。
 
 ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute) 屬性為基礎的輸入格式器。 若無任何屬性，則它會使用 [Content-Type 標頭](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html)。
 
@@ -432,7 +432,7 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 * 在 `Startup.ConfigureServices` 中，呼叫 <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlSerializerFormatters*> 或 <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlDataContractSerializerFormatters*>。
 
-  [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=9)]
+  [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=10)]
 
 * 將 `Consumes` 屬性套用至要求本文應為 XML 的控制器類別或動作方法。
 
@@ -442,7 +442,25 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
   public ActionResult<Pet> Create(Pet pet)
   ```
 
-  如需詳細資訊，請參閱 [XML 序列化簡介](/dotnet/standard/serialization/introducing-xml-serialization)。
+  如需詳細資訊，請參閱[XML 序列化簡介](/dotnet/standard/serialization/introducing-xml-serialization)。
+
+### <a name="customize-model-binding-with-input-formatters"></a>使用輸入格式器自訂模型系結
+
+輸入格式器會完全負責從要求主體讀取資料。 若要自訂此進程，請設定輸入格式器所使用的 Api。 本節說明如何自訂以 `System.Text.Json`為基礎的輸入格式器，以瞭解名為 `ObjectId`的自訂類型。 
+
+請考慮下列模型，其中包含名為 `Id`的自訂 `ObjectId` 屬性：
+
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/ModelWithObjectId.cs?name=snippet_Class&highlight=3)]
+
+若要在使用 `System.Text.Json`時自訂模型系結程式，請建立衍生自 <xref:System.Text.Json.Serialization.JsonConverter%601>的類別：
+
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/JsonConverters/ObjectIdConverter.cs?name=snippet_Class)]
+
+若要使用自訂轉換器，請將 <xref:System.Text.Json.Serialization.JsonConverterAttribute> 屬性套用至類型。 在下列範例中，`ObjectId` 類型是以 `ObjectIdConverter` 做為其自訂轉換器來設定：
+
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/ObjectId.cs?name=snippet_Class&highlight=1)]
+
+如需詳細資訊，請參閱[如何撰寫自訂轉換器](/dotnet/standard/serialization/system-text-json-converters-how-to)。
 
 ## <a name="exclude-specified-types-from-model-binding"></a>排除模型繫結中的指定類型
 
@@ -450,25 +468,32 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 若要停用指定類型之所有模型的模型繫結，請在 `Startup.ConfigureServices` 中新增 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider>。 例如，若要對類型為 `System.Version` 的所有模型停用模型繫結：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=4-5)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=5-6)]
 
 若要停用指定類型屬性的驗證，請在 `Startup.ConfigureServices` 中新增 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider>。 例如，若要針對類型為 `System.Guid` 的屬性停用驗證：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=6-7)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=7-8)]
 
 ## <a name="custom-model-binders"></a>自訂模型繫結器
 
 您可以撰寫自訂的模型繫結器來擴充模型繫結，並使用 `[ModelBinder]` 屬性以針對特定目標來選取它。 深入了解[自訂模型繫結](xref:mvc/advanced/custom-model-binding)。
 
-## <a name="manual-model-binding"></a>手動模型繫結
+## <a name="manual-model-binding"></a>手動模型系結 
 
 使用 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*> 方法即可手動叫用模型繫結。 此方法已於 `ControllerBase` 和 `PageModel` 類別中定義。 方法多載可讓您指定要使用的前置詞和值提供者。 如果模型繫結失敗，此方法會傳回 `false`。 以下為範例：
 
-[!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
+
+<xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*> 會使用值提供者從表單主體、查詢字串和路由資料取得資料。 `TryUpdateModelAsync` 通常是： 
+
+* 與使用控制器和 views 的 Razor Pages 和 MVC 應用程式搭配使用，以防止過度張貼。
+* 除非從表單資料、查詢字串和路由資料取用，否則不會與 Web API 搭配使用。 取用 JSON 的 Web API 端點會使用[輸入](#input-formatters)格式器，將要求本文還原序列化為物件。
+
+如需詳細資訊，請參閱[TryUpdateModelAsync](xref:data/ef-rp/crud#TryUpdateModelAsync)。
 
 ## <a name="fromservices-attribute"></a>[FromServices] 屬性
 
-這個屬性名稱會遵循指定資料來源的模型繫結屬性模式。 但它與來自值提供者的資料繫結無關。 它從[相依性插入](xref:fundamentals/dependency-injection)容器取得類型的執行個體。 其目的是只有在呼叫特定方法時，才在您需要服務時提供建構函式插入的替代項目。
+這個屬性的名稱會遵循指定資料來源之模型系結屬性的模式。 但它並不是關於從值提供者系結資料。 它從[相依性插入](xref:fundamentals/dependency-injection)容器取得類型的執行個體。 其目的是只有在呼叫特定方法時，才在您需要服務時提供建構函式插入的替代項目。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -486,7 +511,7 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 控制器和 Razor Pages 使用來自 HTTP 要求的資料。 例如，路由資料可能會提供記錄索引鍵，而已張貼的表單欄位可能會提供模型屬性的值。 撰寫程式碼來擷取這些值的每一個並將它們從字串轉換成 .NET 類型，不但繁瑣又容易發生錯誤。 模型繫結會自動化此程序。 模型繫結系統：
 
-* 擷取來自各種來源的資料，例如路由資料、表單欄位和查詢字串。
+* 從各種不同的來源（例如，路由資料、表單欄位和查詢字串）抓取資料。
 * 在方法參數和公用屬性中，將資料提供給控制器和 Razor Pages。
 * 將字串資料轉換成 .NET 類型。
 * 更新複雜類型的屬性。
@@ -508,13 +533,13 @@ http://contoso.com/api/pets/2?DogsOnly=true
 * 尋找第一個參數 `GetByID`，它是名為 `id` 的整數。
 * 查看 HTTP 要求中所有可用的來源，在路由資料中找到 `id` = "2"。
 * 將字串 "2" 轉換成整數 2。
-* 尋找下一個 `GetByID` 的參數，它是名為 `dogsOnly` 的布林值。
+* 尋找 `GetByID`的下一個參數，也就是名為 `dogsOnly`的布林值。
 * 查看來源，在查詢字串中找到 "DogsOnly=true"。 名稱比對不區分大小寫。
 * 將字串 "true" 轉換成布林值 `true`。
 
 架構接著會呼叫 `GetById` 方法，針對 `id` 參數傳送 2、`dogsOnly` 參數傳送 `true`。
 
-在上例中，模型繫結目標都是簡單型別的方法參數。 目標也可能是複雜類型的屬性。 成功繫結每一個屬性後，該屬性就會發生[模型驗證](xref:mvc/models/validation)。 哪些資料繫結至模型，以及任何繫結或驗證錯誤的記錄，都會儲存在 [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) 或 [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState)。 為了解此程序是否成功，應用程式會檢查 [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid) 旗標。
+在上例中，模型繫結目標都是簡單型別的方法參數。 目標也可以是複雜類型的屬性。 成功系結每個屬性之後，就會針對該屬性進行[模型驗證](xref:mvc/models/validation)。 哪些資料繫結至模型，以及任何繫結或驗證錯誤的記錄，都會儲存在 [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) 或 [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState)。 為了解此程序是否成功，應用程式會檢查 [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid) 旗標。
 
 ## <a name="targets"></a>目標
 
@@ -526,19 +551,19 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 ### <a name="bindproperty-attribute"></a>[BindProperty] 屬性
 
-可以套用至控制器公用屬性或 `PageModel` 類別，讓模型繫結以該屬性為目標：
+可以套用至控制器的公用屬性或 `PageModel` 類別，讓模型系結以該屬性為目標：
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=3-4)]
 
 ### <a name="bindpropertiesattribute"></a>[BindProperties] 屬性
 
-支援 ASP.NET Core 2.1 和更新版本。  可以套用至控制器或 `PageModel` 類別，通知模型繫結以該類別的所有公用屬性為目標：
+適用于 ASP.NET Core 2.1 和更新版本。  可以套用至控制器或 `PageModel` 類別，以告知模型系結以類別的所有公用屬性為目標：
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Create.cshtml.cs?name=snippet_BindProperties&highlight=1-2)]
 
 ### <a name="model-binding-for-http-get-requests"></a>適用於 HTTP GET 要求的模型繫結
 
-根據預設，屬性不會針對 HTTP GET 要求繫結。 一般而言，GET 要求只需要記錄識別碼參數。 此記錄識別碼用來查詢資料庫中的項目。 因此，不需要繫結保留模型執行個體的屬性。 在您要從 GET 要求將屬性繫結至資料的案例中，請將 `SupportsGet` 屬性設為 `true`：
+根據預設，屬性不會針對 HTTP GET 要求繫結。 一般而言，GET 要求只需要記錄識別碼參數。 此記錄識別碼用來查詢資料庫中的項目。 因此，不需要系結保存模型實例的屬性。 在您要從 GET 要求將屬性繫結至資料的案例中，請將 `SupportsGet` 屬性設為 `true`：
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Index.cshtml.cs?name=snippet_SupportsGet)]
 
@@ -547,7 +572,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 根據預設，模型繫結會從下列 HTTP 要求的來源中，取得索引鍵/值組形式的資料：
 
 1. 表單欄位
-1. 要求本文 (適用於[具有 [ApiController] 屬性的控制器](xref:web-api/index#binding-source-parameter-inference)。)
+1. 要求主體（針對[具有 [ApiController] 屬性的控制器](xref:web-api/index#binding-source-parameter-inference)）。
 1. 路由資料
 1. 查詢字串參數
 1. 已上傳的檔案
@@ -555,7 +580,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 針對每個目標參數或屬性，系統會依照上述清單中所示的順序來掃描來源。 但也有一些例外：
 
 * 路由資料和查詢字串值只用於簡單型別。
-* 所上傳檔案只會繫結至實作 `IFormFile` 或 `IEnumerable<IFormFile>` 的目標類型。
+* 上傳的檔案只會系結至執行 `IFormFile` 或 `IEnumerable<IFormFile>`的目標型別。
 
 如果預設來源不正確，請使用下列其中一個屬性來指定來源：
 
@@ -571,7 +596,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
   [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/Instructor.cs?name=snippet_FromQuery&highlight=5-6)]
 
-* 選擇性地接受建構函式中的模型名稱值。 如果屬性名稱不符合要求中的值，則提供此選項。 例如，要求中的值可能是名稱中有連字號的標頭，如下列範例所示：
+* 選擇性地接受在此函式中的模型名稱值。 如果屬性名稱不符合要求中的值，則會提供此選項。 例如，要求中的值可能是名稱中有連字號的標頭，如下列範例所示：
 
   [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Index.cshtml.cs?name=snippet_FromHeader)]
 
@@ -604,11 +629,11 @@ public class Pet
 
 輸入格式器只會讀取主體，而不會瞭解系結來源屬性。 如果在主體中找到適當的值，該值會用來填入 `Breed` 屬性。
 
-針對每個動作方法，請不要將 `[FromBody]` 套用至多個參數。 一旦輸入格式器讀取要求資料流程之後，就無法再讀取它，以系結其他 `[FromBody]` 參數。
+針對每個動作方法，請勿將 `[FromBody]` 套用至一個以上的參數。 一旦輸入格式器讀取要求資料流程之後，就無法再讀取它，以系結其他 `[FromBody]` 參數。
 
 ### <a name="additional-sources"></a>其他來源
 
-來源資料由「值提供者」提供給模型繫結系統。 您可以撰寫並註冊自訂值提供者，其從其他來源取得模型繫結資料。 例如，您可能想要 Cookie 或工作階段狀態的資料。 從新來源取得資料：
+*值提供者*會將來源資料提供給模型系結系統。 您可以撰寫並註冊自訂值提供者，其從其他來源取得模型繫結資料。 例如，您可能想要來自 cookie 或會話狀態的資料。 若要從新的來源取得資料：
 
 * 建立會實作 `IValueProvider` 的類別。
 * 建立會實作 `IValueProviderFactory` 的類別。
@@ -618,24 +643,24 @@ public class Pet
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=3)]
 
-顯示的程式碼會將自訂值提供者放在所有內建值提供者的後面。  若要讓它在清單中排位第一，請呼叫 `Insert(0, new CookieValueProviderFactory())` 而非 `Add`。
+顯示的程式碼會將自訂值提供者放在所有內建值提供者的後面。  若要將它設為清單中的第一個，請呼叫 `Insert(0, new CookieValueProviderFactory())`，而不是 `Add`。
 
 ## <a name="no-source-for-a-model-property"></a>無模型屬性的來源
 
-根據預設，如果找不到模型屬性值，就不會建立模型狀態錯誤。 屬性設定為 null 或預設值：
+根據預設，如果找不到模型屬性的值，就不會建立模型狀態錯誤。 屬性設定為 null 或預設值：
 
-* 可為 Null 的簡單型別會設為 `null`。
+* 可為 null 的簡單類型設定為 `null`。
 * 不可為 Null 的實值型別會設為 `default(T)`。 例如，參數 `int id` 設為 0。
-* 針對複雜類型，模型繫結會使用預設建構函式建立執行個體，但不設定屬性。
+* 針對複雜型別，模型系結會使用預設的函式建立實例，而不會設定屬性。
 * 陣列設為 `Array.Empty<T>()`，但 `byte[]` 陣列設為 `null`。
 
 當模型屬性的表單欄位中找不到任何內容時，如果模型狀態應該失效，請使用[`[BindRequired]`](#bindrequired-attribute)屬性。
 
-請注意，此 `[BindRequired]` 行為適用於來自已張貼表單資料的模型繫結，不適合要求本文中的 JSON 或 XML 資料。 要求本文資料由[輸入格式器](#input-formatters)處理。
+請注意，此 `[BindRequired]` 行為適用於來自已張貼表單資料的模型繫結，不適合要求本文中的 JSON 或 XML 資料。 [輸入](#input-formatters)格式器會處理要求主體資料。
 
 ## <a name="type-conversion-errors"></a>類型轉換錯誤
 
-如果找到來源，但無法轉換成目標型別，則模型狀態會標記為無效。 目標參數或屬性會設為 null 或預設值，如上一節中所述。
+如果找到來源，但無法轉換成目標型別，則模型狀態會標示為無效。 目標參數或屬性會設為 null 或預設值，如上一節中所述。
 
 在具有 `[ApiController]` 屬性的 API 控制器中，無效的模型狀態會導致自動 HTTP 400 回應。
 
@@ -643,11 +668,11 @@ public class Pet
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Create.cshtml.cs?name=snippet_HandleMBError&highlight=3-6)]
 
-用戶端驗證會攔截大部分不正確的資料，否則會被提交至 Razor Pages 表單。 此驗證會讓您更難觸發上述醒目提示的程式碼。 範例應用程式包含 [Submit with Invalid Date] \(以無效日期送出\) 按鈕，將不正確的資料放入 [雇用日期] 欄位並提交表單。 此按鈕會顯示當資料轉換錯誤發生時，重新顯示頁面的程式碼如何運作。
+用戶端驗證會攔截大部分不正確的資料，否則會提交至 Razor Pages 表單。 此驗證會讓您更難觸發上述醒目提示的程式碼。 範例應用程式包含 [**具有無效日期的提交**] 按鈕，它會在 [**雇用日期**] 欄位中放入不正確的資料，並提交表單。 此按鈕會顯示當資料轉換錯誤發生時，重新顯示頁面的程式碼如何運作。
 
-當上述程式碼重新顯示頁面時，無效的輸入不會顯示在表單欄位中。 這是因為模型屬性已設為 null 或預設值。 無效的輸入確實會出現在錯誤訊息中。 但是，如果您想要在表單欄位中重新顯示不正確的資料，請考慮讓模型屬性成為字串，以手動方式執行資料轉換。
+當上述程式碼重新顯示頁面時，不正確輸入不會顯示在 [表單] 欄位中。 這是因為模型屬性已設為 null 或預設值。 無效的輸入確實會出現在錯誤訊息中。 但是，如果您想要在表單欄位中重新顯示不正確的資料，請考慮讓模型屬性成為字串，以手動方式執行資料轉換。
 
-如果您不希望類型轉換錯誤導致模型狀態錯誤，建議使用相同的策略。 在此情況下，讓模型屬性成為字串。
+如果您不想要類型轉換錯誤導致模型狀態錯誤，則建議使用相同的策略。 在此情況下，請將模型屬性設為字串。
 
 ## <a name="simple-types"></a>簡單型別
 
@@ -666,12 +691,12 @@ public class Pet
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter)、[UInt32](xref:System.ComponentModel.UInt32Converter)、[UInt64](xref:System.ComponentModel.UInt64Converter)
-* [Uri](xref:System.UriTypeConverter)
+* [URI](xref:System.UriTypeConverter)
 * [版本](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>複雜類型
 
-複雜類型必須具有要繫結的公用預設建構函式及公用可寫入屬性。 發生模型繫結時，類別會使用公用預設建構函式具現化。 
+複雜型別必須具有公用預設的函式，以及要系結的公用可寫入屬性。 發生模型繫結時，類別會使用公用預設建構函式具現化。 
 
 針對複雜類型的每個屬性，模型繫結會查看名稱模式 *prefix.property_name* 的來源。 如果找不到，它會只尋找沒有前置詞的 *property_name*。
 
@@ -696,7 +721,7 @@ public class Pet
 public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 ```
 
-模型繫結從查看索引鍵 `instructorToUpdate.ID` 的來源開始。 如果找不到，則它會尋找不含前置詞的 `ID`。
+模型繫結從查看索引鍵 `instructorToUpdate.ID` 的來源開始。 如果找不到，則會尋找沒有前置詞的 `ID`。
 
 ### <a name="prefix--property-name"></a>前置詞 = 屬性名稱
 
@@ -707,7 +732,7 @@ public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 public Instructor Instructor { get; set; }
 ```
 
-模型繫結從查看索引鍵 `Instructor.ID` 的來源開始。 如果找不到，則它會尋找不含前置詞的 `ID`。
+模型繫結從查看索引鍵 `Instructor.ID` 的來源開始。 如果找不到，則會尋找沒有前置詞的 `ID`。
 
 ### <a name="custom-prefix"></a>自訂前置詞
 
@@ -718,11 +743,11 @@ public IActionResult OnPost(
     int? id, [Bind(Prefix = "Instructor")] Instructor instructorToUpdate)
 ```
 
-模型繫結從查看索引鍵 `Instructor.ID` 的來源開始。 如果找不到，則它會尋找不含前置詞的 `ID`。
+模型繫結從查看索引鍵 `Instructor.ID` 的來源開始。 如果找不到，則會尋找沒有前置詞的 `ID`。
 
 ### <a name="attributes-for-complex-type-targets"></a>複雜類型目標的屬性
 
-有數個內建屬性可供控制複雜類型的模型繫結：
+有數個內建屬性可用來控制複雜類型的模型系結：
 
 * `[BindRequired]`
 * `[BindNever]`
@@ -731,7 +756,7 @@ public IActionResult OnPost(
 > [!NOTE]
 > 當張貼的表單資料為值來源時，這些屬性會影響模型繫結。 它們不會影響處理已張貼 JSON 和 XML 要求本文的輸入格式器。 [本文稍後](#input-formatters)會說明輸入格式器。
 >
-> 另請參閱[模型驗證](xref:mvc/models/validation#required-attribute)中的 `[Required]` 屬性討論。
+> 另請參閱[模型驗證](xref:mvc/models/validation#required-attribute)中的 `[Required]` 屬性的討論。
 
 ### <a name="bindrequired-attribute"></a>[BindRequired] 屬性
 
@@ -763,7 +788,7 @@ public class Instructor
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-`[Bind]` 屬性可用來防止「建立」案例中的大量指派。 它在編輯案例中運作不良，因為排除的屬性都設定為 null 或預設值，而非保持不變。 建議使用檢視模型而非 `[Bind]` 屬性來防禦大量指派。 如需詳細資訊，請參閱[關於大量指派的安全性注意事項](xref:data/ef-mvc/crud#security-note-about-overposting)。
+`[Bind]` 屬性可用來防止「建立」案例中的大量指派。 它不適用於編輯案例，因為排除的屬性會設定為 null 或預設值，而不會保持不變。 建議使用檢視模型而非 `[Bind]` 屬性來防禦大量指派。 如需詳細資訊，請參閱[關於防止大量指派的安全性注意事項](xref:data/ef-mvc/crud#security-note-about-overposting)。
 
 ## <a name="collections"></a>集合
 
@@ -797,7 +822,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
   [a]=1050&[b]=2000&index=a&index=b
   ```
 
-* 只有表單資料支援下列格式：
+* 下列格式僅在表單資料中受到支援：
 
   ```
   selectedCourses[]=1050&selectedCourses[]=2000
@@ -805,16 +830,16 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 * 針對前列所有範例格式，模型繫結會將有兩個項目的陣列傳遞至 `selectedCourses` 參數：
 
-  * selectedCourses[0]=1050
-  * selectedCourses[1]=2000
+  * selectedCourses [0] = 1050
+  * selectedCourses [1] = 2000
 
-  使用下標數字 (... [0] ... [1] ...) 的資料格式，必須確定從零開始依序編號。 下標編號中如有任何間距，則會忽略間隔後的所有項目。 例如，如果下標是 0 和 2，而不是 0 和 1，則忽略第二個項目。
+  使用注標編號的資料格式（.。。[0] .。。[1] ...）必須確定它們的編號順序是從零開始。 下標編號中如有任何間距，則會忽略間隔後的所有項目。 例如，如果下標是 0 和 2，而不是 0 和 1，則忽略第二個項目。
 
 ## <a name="dictionaries"></a>字典
 
-針對 `Dictionary` 目標，模型繫結會尋找符合 *parameter_name* 或 *property_name* 的項目。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如：
+針對 `Dictionary` 目標，模型系結會尋找符合*parameter_name*或*property_name*。 如果找不到相符項目，它會尋找其中一種沒有前置詞的受支援格式。 例如：
 
-* 假設目標參數是名為 `selectedCourses` 的 `Dictionary<int, string>`：
+* 假設目標參數是名為 `selectedCourses`的 `Dictionary<int, string>`：
 
   ```csharp
   public IActionResult OnPost(int? id, Dictionary<int, string> selectedCourses)
@@ -842,7 +867,7 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 * 針對前列所有範例格式，模型繫結會將有兩個項目的字典傳遞至 `selectedCourses` 參數：
 
   * selectedCourses["1050"]="Chemistry"
-  * selectedCourses["2000"]="Economics"
+  * selectedCourses ["2000"] = "經濟效益"
 
 <a name="glob"></a>
 
@@ -883,7 +908,7 @@ HTTP 要求包含上傳的檔案。  也支援多個檔案的 `IEnumerable<IForm
 
 ## <a name="input-formatters"></a>輸入格式器
 
-要求本文中的資料可以是 JSON、XML 或某些其他格式。 模型繫結會使用設定處理特定內容類型的「輸入格式器」，來剖析此資料。 根據預設，ASP.NET Core 包含 JSON 型輸入格式器以處理 JSON 資料。 您可以新增其他內容類型的其他格式器。
+要求主體中的資料可以是 JSON、XML 或其他格式。 模型繫結會使用設定處理特定內容類型的「輸入格式器」，來剖析此資料。 根據預設，ASP.NET Core 包括用來處理 JSON 資料的 JSON 型輸入格式器。 您可以為其他內容類型新增其他格式器。
 
 ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute) 屬性為基礎的輸入格式器。 若無任何屬性，則它會使用 [Content-Type 標頭](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html)。
 
@@ -903,7 +928,7 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
   public ActionResult<Pet> Create(Pet pet)
   ```
 
-  如需詳細資訊，請參閱 [XML 序列化簡介](/dotnet/standard/serialization/introducing-xml-serialization)。
+  如需詳細資訊，請參閱[XML 序列化簡介](/dotnet/standard/serialization/introducing-xml-serialization)。
 
 ## <a name="exclude-specified-types-from-model-binding"></a>排除模型繫結中的指定類型
 
@@ -921,7 +946,7 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 您可以撰寫自訂的模型繫結器來擴充模型繫結，並使用 `[ModelBinder]` 屬性以針對特定目標來選取它。 深入了解[自訂模型繫結](xref:mvc/advanced/custom-model-binding)。
 
-## <a name="manual-model-binding"></a>手動模型繫結
+## <a name="manual-model-binding"></a>手動模型系結
 
 使用 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*> 方法即可手動叫用模型繫結。 此方法已於 `ControllerBase` 和 `PageModel` 類別中定義。 方法多載可讓您指定要使用的前置詞和值提供者。 如果模型繫結失敗，此方法會傳回 `false`。 以下為範例：
 
@@ -929,7 +954,7 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 ## <a name="fromservices-attribute"></a>[FromServices] 屬性
 
-這個屬性名稱會遵循指定資料來源的模型繫結屬性模式。 但它與來自值提供者的資料繫結無關。 它從[相依性插入](xref:fundamentals/dependency-injection)容器取得類型的執行個體。 其目的是只有在呼叫特定方法時，才在您需要服務時提供建構函式插入的替代項目。
+這個屬性的名稱會遵循指定資料來源之模型系結屬性的模式。 但它並不是關於從值提供者系結資料。 它從[相依性插入](xref:fundamentals/dependency-injection)容器取得類型的執行個體。 其目的是只有在呼叫特定方法時，才在您需要服務時提供建構函式插入的替代項目。
 
 ## <a name="additional-resources"></a>其他資源
 

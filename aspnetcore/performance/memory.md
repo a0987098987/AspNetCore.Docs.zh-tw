@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: performance/memory
-ms.openlocfilehash: 85e34c9faa31a1020a4200eb99003455ca435ec3
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: dfc789d080beec09a4f0eb34c3809b9f2df0d4b5
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357274"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>ASP.NET Core 中的記憶體管理和垃圾收集（GC）
 
@@ -203,7 +203,7 @@ public void GetFileProvider()
 }
 ```
 
-[PhysicaFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider?view=dotnet-plat-ext-3.0)是 managed 類別，因此會在要求結束時收集任何實例。
+[PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider?view=dotnet-plat-ext-3.0)是 managed 類別，因此會在要求結束時收集任何實例。
 
 下圖顯示連續叫用 `fileprovider` API 時的記憶體設定檔。
 

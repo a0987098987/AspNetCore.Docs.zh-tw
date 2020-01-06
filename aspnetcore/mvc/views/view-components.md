@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何使用 ASP.NET Core 中的檢視元件，以及如何將這些元件新增到應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/14/2019
+ms.date: 12/18/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: e6990368519857a27b291d7d565c09072f23f1b0
-ms.sourcegitcommit: 7001657c00358b082734ba4273693b9b3ed35d2a
+ms.openlocfilehash: a4583d49eb0b42f1fa6e3d8c444d263cba34da79
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68670091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356838"
 ---
 # <a name="view-components-in-aspnet-core"></a>ASP.NET Core 中的檢視元件
 
@@ -42,7 +42,7 @@ ms.locfileid: "68670091"
 
 檢視元件是由兩個部分所組成：類別 (通常衍生自 [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) 以及它所傳回的結果 (通常是檢視)。 與控制器類似，檢視元件可以是 POCO，但大部分開發人員會想要利用透過衍生自 `ViewComponent` 而取得的方法和屬性。
 
-當不確定檢視元件是否符合應用程式的規格時，您可以考慮改用 Razor 元件。 Razor 元件同樣會結合標記與 C# 程式碼，來產生可重複使用的 UI 單元。 Razor 元件是為提升開發人員提供用戶端 UI 邏輯和組合時的生產力所設計。 如需詳細資訊，請參閱 <xref:blazor/components>。
+當不確定檢視元件是否符合應用程式的規格時，您可以考慮改用 Razor 元件。 Razor 元件同樣會結合標記與 C# 程式碼，來產生可重複使用的 UI 單元。 Razor 元件是為提升開發人員提供用戶端 UI 邏輯和組合時的生產力所設計。 如需詳細資訊，請參閱<xref:blazor/components>。
 
 ## <a name="creating-a-view-component"></a>建立檢視元件
 
@@ -69,7 +69,7 @@ ms.locfileid: "68670091"
 檢視元件會在傳回 `Task<IViewComponentResult>` 的 `InvokeAsync` 方法或傳回 `IViewComponentResult` 的同步 `Invoke` 方法中定義其邏輯。 參數直接來自檢視元件的引動過程，而不是來自模型繫結。 檢視元件絕不會直接處理要求。 通常，檢視元件會初始化模型，並呼叫 `View` 方法將其傳遞至檢視。 簡要來說，檢視元件方法：
 
 * 定義傳回 `Task<IViewComponentResult>` 的 `InvokeAsync` 方法或傳回 `IViewComponentResult` 的同步 `Invoke` 方法。
-* 通常會初始化模型，並呼叫 `ViewComponent` `View` 方法將其傳遞至檢視。
+* 通常會初始化模型，並藉由呼叫 `ViewComponent` `View` 方法，將它傳遞給視圖。
 * 參數來自呼叫端方法，而非 HTTP。 沒有模型繫結。
 * 無法直接當成 HTTP 端點連接。 它們是透過您的程式碼所叫用 (通常是在檢視中)。 檢視元件絕不會處理要求。
 * 已多載在簽章上，而非目前 HTTP 要求中的任何詳細資料。
@@ -87,6 +87,14 @@ ms.locfileid: "68670091"
 檢視元件的預設檢視名稱是 *Default*，這表示您的檢視檔案通常會命名為 *Default.cshtml*。 建立檢視元件結果時，或呼叫 `View` 方法時，可以指定不同的檢視名稱。
 
 建議您將檢視檔案命名為 *Default.cshtml*，並使用 *Views/Shared/Components/{View Component Name}/{View Name}* 路徑。 此範例中所使用的 `PriorityList` 檢視元件會將 *Views/Shared/Components/PriorityList/Default.cshtml* 用於檢視元件檢視。
+
+### <a name="customize-the-view-search-path"></a>自訂視圖搜尋路徑
+
+若要自訂視圖搜尋路徑，請修改 Razor 的 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.ViewLocationFormats> 集合。 例如，若要在 "/Components/{View Component Name}/{檢視 Name}" 路徑中搜尋 views，請將新專案新增至集合：
+
+[!code-cs[](view-components/samples_snapshot/2.x/Startup.cs?name=snippet_ViewLocationFormats&highlight=4)]
+
+在上述程式碼中，預留位置 "{0}" 代表「元件/{視圖元件名稱}/{檢視名稱}」的路徑。
 
 ## <a name="invoking-a-view-component"></a>叫用檢視元件
 
@@ -145,7 +153,7 @@ ms.locfileid: "68670091"
 
 [!code-csharp[](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs?name=snippet_IndexVC)]
 
-## <a name="walkthrough-creating-a-simple-view-component"></a>逐步解說：建立簡單的檢視元件
+## <a name="walkthrough-creating-a-simple-view-component"></a>逐步解說：建立簡單檢視元件
 
 [下載](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample)、建置和測試起始程式碼。 它是具有 `ToDo` 控制器的簡單專案，而此控制器顯示 *ToDO* 項目清單。
 

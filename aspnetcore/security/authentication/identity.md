@@ -5,18 +5,18 @@ description: 將身分識別與 ASP.NET Core 應用程式搭配使用。 瞭解�
 ms.author: riande
 ms.date: 12/05/2019
 uid: security/authentication/identity
-ms.openlocfilehash: c867b73a96fd081f6e2ca17fef561ac539c0a129
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 787d39dd7824f912128e6af849fa268c3e8eb908
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880722"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359195"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET Core 上的身分識別簡介
 
 ::: moniker range=">= aspnetcore-3.0"
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core 身分識別：
 
@@ -48,8 +48,8 @@ ASP.NET Core 身分識別：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 選取 [File] \(檔案\) > [New] \(新增\) > [Project] \(專案\)。
-* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
+* 選取 **[** 檔案] > [**新增**>**專案**]。
+* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [ **確定**]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]** 。
 
@@ -216,6 +216,7 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 ## <a name="next-steps"></a>後續步驟
 
+* 如需使用 SQLite 設定身分識別的相關資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/5131)。
 * [設定身分識別](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
@@ -229,7 +230,7 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 ::: moniker range="< aspnetcore-3.0"
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core 身分識別是將登入功能新增至 ASP.NET Core 應用程式的成員資格系統。 使用者可以建立帳戶，其中包含儲存在身分識別中的登入資訊，或可以使用外部登入提供者。 支援的外部登入提供者包括[Facebook、Google、Microsoft 帳戶及 Twitter](xref:security/authentication/social/index)。
 
@@ -257,8 +258,8 @@ ASP.NET Core 身分識別是將登入功能新增至 ASP.NET Core 應用程式�
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 選取 [File] \(檔案\) > [New] \(新增\) > [Project] \(專案\)。
-* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
+* 選取 **[** 檔案] > [**新增**>**專案**]。
+* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [ **確定**]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]** 。
 
@@ -403,6 +404,7 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 ## <a name="next-steps"></a>後續步驟
 
+* 如需使用 SQLite 設定身分識別的相關資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/5131)。
 * [設定身分識別](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>

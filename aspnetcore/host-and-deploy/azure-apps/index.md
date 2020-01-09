@@ -5,14 +5,14 @@ description: 本文包含 Azure 主機和部署資源的連結。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 12/16/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: f9fc6e706046165c142e19ca38d97ac21914dc9b
-ms.sourcegitcommit: a104ba258ae7c0b3ee7c6fa7eaea1ddeb8b6eb73
+ms.openlocfilehash: 51d82d1deadb3d2adbdccd39c8d949e3f9f812fd
+ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74478756"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75693839"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -51,7 +51,7 @@ ms.locfileid: "74478756"
 
 ## <a name="application-configuration"></a>應用程式組態
 
-### <a name="platform"></a>平台
+### <a name="platform"></a>Platform
 
 應用程式服務應用程式的平臺架構（x86/x64）會在 Azure 入口網站的應用程式設定中，針對裝載于 A 系列計算（基本）或更高主機層上的應用程式進行設定。 確認應用程式的發佈設定（例如，在 Visual Studio[發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)）中，是否符合應用程式在 Azure 入口網站中的服務設定。
 
@@ -69,7 +69,7 @@ Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執�
 
 如需 .NET Core framework 元件和散發方法的詳細資訊，例如 .NET Core 執行時間和 .NET Core SDK 的相關資訊，請參閱[關於 .Net core：組合](/dotnet/core/about#composition)。
 
-### <a name="packages"></a>套件
+### <a name="packages"></a>package
 
 包含下列 NuGet 套件，為部署至 Azure App Service 的應用程式提供自動記錄功能：
 
@@ -87,13 +87,13 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ::: moniker range=">= aspnetcore-3.0"
 
-當應用程式使用[一般主機](xref:fundamentals/host/generic-host)時，環境變數預設不會被載入到應用程式的設定中，而且必須由開發人員新增設定提供者。 新增設定提供者時，開發人員必須判斷環境變數前置詞。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
+當應用程式使用[泛型主機](xref:fundamentals/host/generic-host)時，會在呼叫 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> 來建立主機時，將環境變數載入應用程式的設定中。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-當應用程式使用 [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 建置主機時，環境變數會將主機設定為使用 `ASPNETCORE_`前置詞。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
+當應用程式使用[Web 主機](xref:fundamentals/host/web-host)時，系統會在呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 來建立主機時，將環境變數載入應用程式的設定中。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
 
 ::: moniker-end
 
@@ -143,17 +143,19 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 * SQL 存放區
 * Redis 快取
 
-如需詳細資訊，請參閱 <xref:security/data-protection/implementation/key-storage-providers>。
+如需詳細資訊，請參閱<xref:security/data-protection/implementation/key-storage-providers>。
 <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
 
-## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>將 ASP.NET Core 3.0 部署至 Azure App Service
+## <a name="deploy-an-aspnet-core-app-that-uses-a-net-core-preview"></a>部署使用 .NET Core 預覽的 ASP.NET Core 應用程式
 
-Azure App Service 支援 ASP.NET Core 3.0。 若要部署 .net Core 版本比 .NET Core 3.0 更早的預覽版本，請使用下列其中一種技術。 當執行時間可用但 SDK 尚未安裝在 Azure App Service 上時，也會使用這些方法。
+若要部署使用 .NET Core 預覽版本的應用程式，請參閱下列資源。 當執行時間可用但 SDK 尚未安裝在 Azure App Service 上時，也會使用這些方法。
 
 * [使用 Azure Pipelines 指定 .NET Core SDK 版本](#specify-the-net-core-sdk-version-using-azure-pipelines)
-* [部署獨立式預覽應用程式](#deploy-a-self-contained-preview-app)。
-* [將具有 Web Apps 的 Docker 用於容器](#use-docker-with-web-apps-for-containers)。
-* [安裝預覽網站延伸模組](#install-the-preview-site-extension)。
+* [部署獨立的預覽應用程式](#deploy-a-self-contained-preview-app)
+* [將包含 Web 應用程式的 Docker 用於容器](#use-docker-with-web-apps-for-containers)
+* [安裝預覽網站延伸模組](#install-the-preview-site-extension)
+
+如需 Azure App 服務上可用的 ASP.NET Core 版本，請參閱[App Service 儀表板上的 ASP.NET Core](https://aspnetcoreon.azurewebsites.net/) 。
 
 ### <a name="specify-the-net-core-sdk-version-using-azure-pipelines"></a>使用 Azure Pipelines 指定 .NET Core SDK 版本
 
@@ -243,7 +245,7 @@ Azure App Service 支援 ASP.NET Core 3.0。 若要部署 .net Core 版本比 .N
 若為64位部署：
 
 * 請使用 64 位元 .NET Core SDK 來建置 64 位元應用程式。
-* 在 App Service 的 [組態] **[一般設定]** **中，將 [平台]**  >  設為 [64 位元]。 應用程式必須使用基本或更高的服務方案，才能選擇平台位元。
+* 在 App Service 的 [組態] > [一般設定] 中，將 [平台] 設為 [64 位元]。 應用程式必須使用基本或更高的服務方案，才能選擇平台位元。
 
 ::: moniker-end
 
@@ -272,7 +274,7 @@ Azure App Service 支援 ASP.NET Core 3.0。 若要部署 .net Core 版本比 .N
    dotnet publish --configuration Release
    ```
 
-1. 將 bin/Release/{目標 FRAMEWORK}/publish 目錄的內容移到 App Service 中的網站。 若要在 *Kudu* 主控台將 [publish](https://github.com/projectkudu/kudu/wiki) 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
+1. 將 bin/Release/{目標 FRAMEWORK}/publish 目錄的內容移到 App Service 中的網站。 若要在 [Kudu](https://github.com/projectkudu/kudu/wiki) 主控台將 *publish* 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
 
 ---
 

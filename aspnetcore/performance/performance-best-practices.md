@@ -8,12 +8,12 @@ ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: bd30776d527b4ac9f44005e9f5d03fec7cfda2e6
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: c74adf7479d176c41dc26c7e77acfc3dc9cdcb88
+ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880924"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75693956"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>ASP.NET Core 效能最佳做法
 
@@ -44,7 +44,7 @@ ASP.NET Core 應用程式中常見的效能問題是封鎖可能是非同步呼�
 **建議事項**：
 
 * 將[熱程式碼路徑](#understand-hot-code-paths)設為非同步。
-* 如果有非同步 API 可供使用，請以非同步方式呼叫資料存取和長時間執行的作業 Api。 同樣地，[請勿使用 [執行]](/dotnet/api/system.threading.tasks.task.run) ，讓 synchronus API 成為非同步。
+* 如果有非同步 API 可供使用，請以非同步方式呼叫資料存取、i/o 和長時間執行的作業 Api。 請勿使用工作[。](/dotnet/api/system.threading.tasks.task.run) **請執行，** 讓 synchronus API 成為非同步。
 * 將控制器/Razor 頁面動作設為非同步。 整個呼叫堆疊都是非同步，以便受益于[非同步/](/dotnet/csharp/programming-guide/concepts/async/)等候模式。
 
 分析工具（例如[PerfView](https://github.com/Microsoft/perfview)）可以用來尋找經常加入[執行緒集](/windows/desktop/procthread/thread-pools)區的執行緒。 `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` 事件表示已加入執行緒集區的執行緒。 <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc)  -->
@@ -67,7 +67,7 @@ ASP.NET Core 應用程式中常見的效能問題是封鎖可能是非同步呼�
 
 如需詳細資訊，請參閱[垃圾收集和效能](/dotnet/standard/garbage-collection/performance)。
 
-## <a name="optimize-data-access"></a>優化資料存取
+## <a name="optimize-data-access-and-io"></a>將資料存取和 i/o 優化
 
 與資料存放區和其他遠端服務的互動通常是 ASP.NET Core 應用程式中最慢的部分。 有效率地讀取和寫入資料對於良好的效能非常重要。
 
@@ -77,7 +77,7 @@ ASP.NET Core 應用程式中常見的效能問題是封鎖可能是非同步呼�
 * **請勿**抓取超過所需的資料。 撰寫查詢，只傳回目前 HTTP 要求所需的資料。
 * 如果可以接受稍微過期的資料，**請考慮快**取從資料庫或遠端服務抓取的經常存取資料。 根據案例而定，請使用[MemoryCache](xref:performance/caching/memory)或[microsoft.web.distributedcache](xref:performance/caching/distributed)。 如需詳細資訊，請參閱<xref:performance/caching/response>。
 * **儘量減少**網路來回行程。 其目標是要在單一呼叫中抓取所需的資料，而不是在數個呼叫中取得。
-* 在存取資料進行唯讀時，**請不要**在 Entity Framework Core 中使用[無追蹤查詢](/ef/core/querying/tracking#no-tracking-queries)。 EF Core 可以更有效率地傳回無追蹤查詢的結果。
+* 在存取資料進行唯讀時，**請在** Entity Framework Core 中使用[無追蹤查詢](/ef/core/querying/tracking#no-tracking-queries)。 EF Core 可以更有效率地傳回無追蹤查詢的結果。
 * **執行**篩選和匯總 LINQ 查詢（例如，使用 `.Where`、`.Select`或 `.Sum` 語句），以便讓篩選由資料庫執行。
 * **請考慮 EF Core**在用戶端上解析一些查詢運算子，這可能會導致執行效率不佳的查詢。 如需詳細資訊，請參閱[用戶端評估效能問題](/ef/core/querying/client-eval#client-evaluation-performance-issues)。
 * **請勿**在集合上使用投射查詢，這可能會導致執行 "N + 1" SQL 查詢。 如需詳細資訊，請參閱相互[關聯子查詢的優化](/ef/core/what-is-new/ef-core-2.1#optimization-of-correlated-subqueries)。
@@ -228,7 +228,7 @@ ASP.NET Core 中的所有 IO 都是非同步。 伺服器會執行同時具有�
 > [!WARNING]
 > 如果要求很大，可能會導致記憶體不足（OOM）狀況。 OOM 可能會導致拒絕服務。  如需詳細資訊，請參閱本檔中的[避免將大型要求內文或回應本文讀取到記憶體](#arlb)中。
 
-ASP.NET Core 3.0 預設會使用 <xref:System.Text.Json> 的 JSON 序列化。 <xref:System.Text.Json>:
+ASP.NET Core 3.0 預設會使用 <xref:System.Text.Json> 的 JSON 序列化。 <xref:System.Text.Json>：
 
 * 非同步讀取和寫入 JSON。
 * 已針對 UTF-8 文字進行優化。

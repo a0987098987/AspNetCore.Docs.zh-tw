@@ -5,14 +5,14 @@ description: 了解如何在 Windows Server Internet Information Services (IIS) 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/26/2019
+ms.date: 01/06/2020
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: de1b3e270ccd90bde741975de38a224e557f1a08
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: c2b524472b276dee215ff5eca7fd4e48e98957ef
+ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717412"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75693852"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -139,13 +139,33 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Cr
 
 ### <a name="enable-the-iisintegration-components"></a>啟用 IISIntegration 元件
 
-一般的 *Program.cs* 會呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>，開始設定會啟用與 IIS 整合的主機：
+::: moniker range=">= aspnetcore-3.0"
+
+在 `CreateHostBuilder` （*Program.cs*）中建立主機時，請呼叫 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> 以啟用 IIS 整合：
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        ...
+```
+
+如需 `CreateDefaultBuilder` 的詳細資訊，請參閱 <xref:fundamentals/host/generic-host#default-builder-settings>。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+在 `CreateWebHostBuilder` （*Program.cs*）中建立主機時，請呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 以啟用 IIS 整合：
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
         ...
 ```
+
+如需 `CreateDefaultBuilder` 的詳細資訊，請參閱 <xref:fundamentals/host/web-host#set-up-a-host>。
+
+::: moniker-end
 
 ### <a name="iis-options"></a>IIS 選項
 
@@ -166,7 +186,7 @@ services.Configure<IISServerOptions>(options =>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-| 選項                         | Default | 設定 |
+| 選項                         | 預設值 | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -179,7 +199,7 @@ services.Configure<IISServerOptions>(options =>
 
 ::: moniker range="< aspnetcore-3.0"
 
-| 選項                         | Default | 設定 |
+| 選項                         | 預設值 | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -201,7 +221,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| 選項                         | Default | 設定 |
+| 選項                         | 預設值 | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，[IIS 整合中介軟體](#enable-the-iisintegration-components)會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -273,7 +293,7 @@ services.Configure<IISOptions>(options =>
 
 啟用 [IIS 管理主控台] 和 [World Wide Web 服務]。
 
-1. 瀏覽至控制台 > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] (畫面左側)。
+1. 瀏覽到 [控制台] >  [程式] >  [程式和功能] >  **[開啟或關閉 Windows 功能]** \(畫面左側\)。
 
 1. 開啟 [Internet Information Services] 節點。 開啟 [Web 管理工具] 節點。
 
@@ -324,11 +344,11 @@ services.Configure<IISOptions>(options =>
 
 1. 在伺服器上執行安裝程式。 從系統管理員命令殼層執行安裝程式時，有 下列參數可用：
 
-   * `OPT_NO_ANCM=1` &ndash; 跳過安裝 ASP.NET Core 模組。
-   * `OPT_NO_RUNTIME=1` &ndash; 跳過安裝 .NET Core 執行階段。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
-   * `OPT_NO_SHAREDFX=1` &ndash; 跳過安裝 ASP.NET 共用架構 (ASP.NET 執行階段)。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
-   * `OPT_NO_X86=1` &ndash; 跳過安裝 x86 執行階段。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
-   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
+   * `OPT_NO_ANCM=1` &ndash; 略過安裝 ASP.NET Core 模組。
+   * `OPT_NO_RUNTIME=1` &ndash; 略過安裝 .NET Core 執行時間。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_SHAREDFX=1` &ndash; 略過安裝 ASP.NET 共用架構（ASP.NET 執行時間）。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_X86=1` &ndash; 略過安裝 x86 執行時間。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
+   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 當共用設定（*applicationhost.config*）位於與 iis 安裝相同的電腦上時，請停用 [使用 iis 共用設定檢查]。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
 1. 重新開機系統，或在命令 shell 中執行下列命令：
 
    ```console
@@ -421,7 +441,7 @@ ASP.NET Core 採用共用架構封裝修補程式版本的向前復原行為。 
 
 應用程式部署到主機系統之後，請向其中一個應用程式的公用端點發出要求。
 
-在下列範例中，網站繫結至 IIS 上的**連接埠** `80`，其**主機名稱**為 `www.mysite.com`。 對 `http://www.mysite.com` 發出要求：
+在下列範例中，網站系結至**埠**`80`上 `www.mysite.com` 的 IIS**主機名稱**。 對 `http://www.mysite.com` 發出要求：
 
 ![Microsoft Edge 瀏覽器已載入 IIS 啟動頁面。](index/_static/browsewebsite.png)
 
@@ -574,7 +594,7 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 * `<connectionStrings>`
 * `<location>`
 
-使用其他組態提供者設定的 ASP.NET Core 應用程式。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
+使用其他組態提供者設定的 ASP.NET Core 應用程式。 如需詳細資訊，請參閱 [Configuration](xref:fundamentals/configuration/index)(組態)。
 
 ## <a name="application-pools"></a>應用程式集區
 
@@ -585,13 +605,13 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 * 處理序內裝載 &ndash; 應用程式必須在分開的應用程式集區中執行。
 * 處理序外裝載 &ndash; 建議藉由在各自的應用程式集區中執行每個應用程式，以將應用程式互相隔離。
 
-IIS [新增網站] 對話方塊預設每個應用程式皆為單一應用程式集區。 當提供 [網站名稱] 時，文字會自動轉移至 [應用程式集區] 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
+IIS [新增網站] 對話方塊預設每個應用程式皆為單一應用程式集區。 當提供**網站名稱**時，文字會自動轉移至 [應用程式集區] 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-在伺服器上裝載多個網站時，建議您在其各自的應用程式集區中執行各個應用程式，讓應用程式彼此隔離。 IIS [新增網站] 對話方塊預設成此組態。 當提供 [網站名稱] 時，文字會自動轉移至 [應用程式集區] 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
+在伺服器上裝載多個網站時，建議您在其各自的應用程式集區中執行各個應用程式，讓應用程式彼此隔離。 IIS [新增網站] 對話方塊預設成此組態。 當提供**網站名稱**時，文字會自動轉移至 [應用程式集區] 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
 
 ::: moniker-end
 
@@ -678,8 +698,8 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 在 IIS 中由 ASP.NET Core 模組版本 2 裝載時：
 
-* [應用程式初始化模組](#application-initialization-module) &ndash; 應用程式的代管[同處理序](#in-process-hosting-model)或[非同處理序](#out-of-process-hosting-model)，可設定為在背景工作處理序重新啟動或伺服器重新啟動時自動啟動。
-* [閒置逾時](#idle-timeout) &ndash; 應用程式的裝載 [同處理序](#in-process-hosting-model)可設定為在無活動期間不逾時。
+* [應用程式初始化模組](#application-initialization-module)&ndash; 應用程式的裝載同[進程](#in-process-hosting-model)或跨[進程](#out-of-process-hosting-model)，可以設定為在背景工作進程重新開機或伺服器重新開機時自動啟動。
+* [閒置時間](#idle-timeout)&ndash; 應用程式的裝載同[進程](#in-process-hosting-model)可設定為不會在非活動期間超時。
 
 ### <a name="application-initialization-module"></a>應用程式初始化模組
 
@@ -691,8 +711,8 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 在 Windows 7 或更新的電腦系統上，當在本機使用 IIS 時：
 
-1. 瀏覽到 [控制台] > [程式] > [程式和功能] > **[開啟或關閉 Windows 功能]** \(畫面左側\)。
-1. 開啟 [網際網路資訊服務]> [World Wide Web 服務]> [應用程式開發功能]。
+1. 流覽至 [**控制台**] >**程式**> [**程式和功能**] > [**開啟或關閉 Windows 功能**] （畫面左側）。
+1. 開啟**Internet Information Services** > **World Wide Web 服務**>**應用程式開發功能**。
 1. 選取 [應用程式初始化]的核取方塊。
 
 在 Windows Server 2008 R2 或更新版本上：
@@ -709,7 +729,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
   1. 以滑鼠右鍵按一下清單中應用程式的應用程式集區，然後選取 [進階設定]。
   1. 預設的 [啟動模式] 是 [OnDemand]。 將 [啟動模式] 設定為 [AlwaysRunning]。 選取 [確定]。
   1. 開啟 [連線] 面板中的 [站台] 節點。
-  1. 以滑鼠右鍵按一下應用程式，然後選取 [管理網站] > [進階設定]。
+  1. 以滑鼠右鍵按一下應用程式，然後選取 [**管理網站**] > [**高級設定**]。
   1. 預設 [預先載入已啟用] 設定是 [False]。 將 [預先載入已啟用] 設定為 [True]。 選取 [確定]。
 
 * 使用 *web.config*，新增 `<applicationInitialization>` 元素並將 `doAppInitAfterRestart` 設定為 `true` 至應用程式 *web.config* 檔案中的 `<system.webServer>` 元素：

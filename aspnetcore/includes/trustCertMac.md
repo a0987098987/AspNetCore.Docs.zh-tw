@@ -1,21 +1,15 @@
-* <span data-ttu-id="2f710-101">藉由執行下列命令來信任 HTTPS 開發憑證：</span><span class="sxs-lookup"><span data-stu-id="2f710-101">Trust the HTTPS development certificate by running the following command:</span></span>
+<span data-ttu-id="a2b2b-101">Visual Studio for Mac 會顯示下列快顯視窗：</span><span class="sxs-lookup"><span data-stu-id="a2b2b-101">Visual Studio for Mac displays the following popup:</span></span>
 
-    ```dotnetcli
-    dotnet dev-certs https --trust
-    ```
+![找不到 HTTPS 開發憑證。](~/getting-started/_static/trustCertMac.png)
 
-* <span data-ttu-id="2f710-102">上述命令會顯示以下輸出：</span><span class="sxs-lookup"><span data-stu-id="2f710-102">The preceding command displays the following output:</span></span>
+<span data-ttu-id="a2b2b-104">如果您信任開發憑證，請選取 **[是]** 。</span><span class="sxs-lookup"><span data-stu-id="a2b2b-104">Select **Yes** if you trust the development certificate.</span></span>
 
-    ```console
-    Trusting the HTTPS development certificate was requested. If the certificate 
-    is not already trusted we will run the following command:
-    'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain 
-    <<certificate>>'
-    This command might prompt you for your password to install the certificate on the 
-    system keychain.
-    The HTTPS developer certificate was generated successfully.
-    ```
+<span data-ttu-id="a2b2b-105">此時會顯示下列對話方塊：</span><span class="sxs-lookup"><span data-stu-id="a2b2b-105">The following dialog is displayed:</span></span>
 
-* <span data-ttu-id="2f710-103">出現提示時，請輸入系統管理員使用者名稱和密碼。</span><span class="sxs-lookup"><span data-stu-id="2f710-103">Enter the admin username and password if prompted.</span></span>  <span data-ttu-id="2f710-104">該憑證現在將會被安裝且受到信任。</span><span class="sxs-lookup"><span data-stu-id="2f710-104">The certificate will now be installed and trusted.</span></span>
+![安全性警告對話方塊](~/getting-started/_static/certMac.png)
 
-    <span data-ttu-id="2f710-105">如需詳細資訊，請參閱[信任 ASP.NET Core HTTPS 開發憑證](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)。</span><span class="sxs-lookup"><span data-stu-id="2f710-105">See [Trust the ASP.NET Core HTTPS development certificate](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos) for more information.</span></span>
+<span data-ttu-id="a2b2b-107">輸入您的密碼，然後選取 **[確定]**</span><span class="sxs-lookup"><span data-stu-id="a2b2b-107">Enter your password and select **OK**</span></span>
+
+<span data-ttu-id="a2b2b-108">若您同意信任開發憑證，請選取 [是]。</span><span class="sxs-lookup"><span data-stu-id="a2b2b-108">Select **Yes** if you agree to trust the development certificate.</span></span>
+
+<span data-ttu-id="a2b2b-109">如需詳細資訊，請參閱[信任 ASP.NET CORE HTTPS 開發憑證](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)</span><span class="sxs-lookup"><span data-stu-id="a2b2b-109">See [Trust the ASP.NET Core HTTPS development certificate](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos) for more information</span></span>

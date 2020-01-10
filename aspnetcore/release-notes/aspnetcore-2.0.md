@@ -6,20 +6,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: aspnetcore-2.0
-ms.openlocfilehash: 452ccd76eece55cb5cf38fe39781f2f64dd5d466
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 9d1e1b1154113b8825f4d0faf0f4552b8bd22287
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880867"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828421"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
 本文會重點說明 ASP.NET Core 2.0 最重要的變更，附有相關文件的連結。
 
-## <a name="razor-pages"></a>Razor 頁面
+## <a name="razor-pages"></a>Razor Pages
 
-Razor Pages 是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
+Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
 
 如需詳細資訊，請參閱簡介與教學課程：
 
@@ -156,6 +156,6 @@ Razor 檢視引擎已更新，可使用新的 Roslyn 編譯器 。 這包括支�
 
 ## <a name="additional-information"></a>其他資訊
 
-如需完整的變更清單，請參閱 [ASP.NET Core 2.0 版本資訊](https://github.com/aspnet/Home/releases/tag/2.0.0)。
+如需完整的變更清單，請參閱 [ASP.NET Core 2.0 版本資訊](https://github.com/dotnet/aspnetcore/releases/tag/2.0.0)。
 
 若要了解 ASP.NET Core 開發小組的進度和計劃，請收聽 [ASP.NET Community Standup](https://live.asp.net/) (ASP.NET 社群之聲)。

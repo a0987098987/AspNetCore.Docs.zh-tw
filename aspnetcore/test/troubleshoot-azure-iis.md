@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/20/2019
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 49a0f59fb6930235de10c726f3695f2a5352efb2
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: b0f5d44f153a095a6108a12ee91f4cc46fe0a0de
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74251970"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829006"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>疑難排解 Azure App Service 和 IIS 上的 ASP.NET Core
 
@@ -109,7 +109,7 @@ The Web server is configured to not list the contents of this directory.
 
 * 連絡 [Microsoft 支援服務](https://support.microsoft.com/oas/default.aspx?prid=15832) (依序選取 [開發人員工具] 和 [ASP.NET Core])。
 * 在 Stack Overflow 上詢問問題。
-* 在我們的 [GitHub 存放庫](https://github.com/aspnet/AspNetCore)提出問題。
+* 在我們的 [GitHub 存放庫](https://github.com/dotnet/AspNetCore)提出問題。
 
 ### <a name="50030-in-process-startup-failure"></a>500.30 同處理序啟動失敗
 
@@ -194,7 +194,7 @@ ANCM 無法在提供的啟動時間限制內啟動。 根據預設，逾時值�
 
 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)嘗試啟動背景工作處理序，但無法啟動。 通常會從應用程式事件記錄檔中的專案和 ASP.NET Core 模組 stdout 記錄檔中判斷進程啟動失敗的原因。
 
-因為目標 ASP.NET Core 共用架構的版本不存在，導致應用程式設定錯誤是常見的失敗狀況。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。 「共用的架構」是一組安裝於電腦上且由  *之類的中繼套件所參考的組件 (* .dll`Microsoft.AspNetCore.App` 檔案)。 中繼套件參考可以指定最低必要版本。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
+因為目標 ASP.NET Core 共用架構的版本不存在，導致應用程式設定錯誤是常見的失敗狀況。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。 「共用的架構」是一組安裝於電腦上且由 `Microsoft.AspNetCore.App` 之類的中繼套件所參考的組件 ( *.dll* 檔案)。 中繼套件參考可以指定最低必要版本。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
 
 當裝載或應用程式設定錯誤造成背景工作處理序發生失敗時，會傳回 [502.5 處理序失敗] 錯誤頁面：
 
@@ -240,11 +240,11 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. 選取 [診斷並解決問題]。
 1. 選取 [診斷工具] 標題。
 1. 在 [支援工具] 下，選取 [應用程式事件] 按鈕。
-1. 檢查 [來源] 資料行中 *IIS AspNetCoreModule* 或 **IIS AspNetCoreModule V2** 項目所提供的最新錯誤。
+1. 檢查 [來源] 資料行中 *IIS AspNetCoreModule* 或 *IIS AspNetCoreModule V2* 項目所提供的最新錯誤。
 
 除了使用 [診斷並解決問題] 刀鋒視窗之外，也可以使用 [Kudu](https://github.com/projectkudu/kudu/wiki) 來直接檢查「應用程式事件記錄檔」：
 
-1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行 **]&rarr;** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
 1. 開啟 [LogFiles] 資料夾。
 1. 選取 *eventlog.xml* 檔案旁邊的鉛筆圖示。
@@ -254,7 +254,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 許多啟動錯誤不會在「應用程式事件記錄檔」中產生實用的資訊。 您可以在 [Kudu](https://github.com/projectkudu/kudu/wiki)「遠端執行主控台」中執行應用程式來探索錯誤：
 
-1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行 **]&rarr;** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
 
 #### <a name="test-a-32-bit-x86-app"></a>測試 32 位元 (x86) 應用程式
@@ -320,7 +320,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `true`，並將 **stdoutLogFile** 路徑變更為：`\\?\%home%\LogFiles\stdout`。
 1. 選取 [儲存] 以儲存已更新的 *web.config* 檔案。
 1. 對應用程式發出要求。
-1. 返回 Azure 入口網站。 選取 [開發工具] 區域中的 [進階工具] 刀鋒視窗。 選取 [執行 **]&rarr;** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 返回 Azure 入口網站。 選取 [開發工具] 區域中的 [進階工具] 刀鋒視窗。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
 1. 選取 [LogFiles] 資料夾。
 1. 檢查 [修改時間] 資料行，然後選取鉛筆圖示來編輯修改日期最新的 stdout 記錄檔。
@@ -332,7 +332,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 選取 [儲存] 以儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用 stdout 記錄。
@@ -347,11 +347,11 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 1. 若要啟用增強型診斷記錄，請執行下列任一動作：
    * 遵循[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中的指示，來設定應用程式進行增強型診斷記錄。 重新部署應用程式。
-   * 使用 Kudu 主控台，將`<handlerSettings>`增強型診斷記錄[中所顯示的 ](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) 新增至即時應用程式的 *web.config* 檔案：
-     1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行 **]&rarr;** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+   * 使用 Kudu 主控台，將[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所顯示的 `<handlerSettings>` 新增至即時應用程式的 *web.config* 檔案：
+     1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
      1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
      1. 將資料夾開啟至路徑 [site] > [wwwroot]。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存] 按鈕。
-1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行 **]&rarr;** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具] 區域中，開啟 [進階工具]。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
 1. 將資料夾開啟至路徑 [site] > [wwwroot]。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
 1. 使用檔案名稱旁的鉛筆圖示來開啟記錄檔。
@@ -360,10 +360,10 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 若要停用增強型偵錯記錄，請執行下列任一動作：
 
-* 從 `<handlerSettings>`web.config*檔案本機移除* 並重新部署應用程式。
+* 從 *web.config* 檔案本機移除 `<handlerSettings>` 並重新部署應用程式。
 * 使用 Kudu 主控台來編輯 *web.config* 檔案並移除 `<handlerSettings>` 區段。 儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
 
 > [!WARNING]
 > 無法停用偵錯記錄，可能會造成應用程式或伺服器發生失敗。 記錄檔大小沒有任何限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用偵錯記錄。
@@ -395,7 +395,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 如果未啟用 stdout 記錄，請依照下列步驟進行操作：
 
-1. 在 Azure 入口網站中，選取 [開發工具] 區域中的 [進階工具] 刀鋒視窗。 選取 [執行 **]&rarr;** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 Azure 入口網站中，選取 [開發工具] 區域中的 [進階工具] 刀鋒視窗。 選取 [執行&rarr;] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]，然後選取 [CMD]。
 1. 將資料夾開啟至路徑 [site] > [wwwroot]，然後向下捲動以顯露位於清單底部的 *web.config* 檔案。
 1. 按一下 *web.config* 檔案旁邊的鉛筆圖示。
@@ -477,7 +477,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。
@@ -501,13 +501,13 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 確認為記錄指定的路徑存在，而且應用程式集區的身分識別具有該位置的寫入權限。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
 
 ::: moniker-end
 
 ### <a name="enable-the-developer-exception-page"></a>啟用開發人員例外頁面
 
-在開發環境中，可以將 `ASPNETCORE_ENVIRONMENT` [環境變數新增至 web.config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) 來執行應用程式。 只要主機產生器上的 `UseEnvironment` 不會覆寫應用程式啟動內的環境，設定該環境變數便可允許在應用程式執行時顯示[開發人員例外狀況頁面](xref:fundamentals/error-handling)。
+`ASPNETCORE_ENVIRONMENT`[環境變數可以新增至](xref:host-and-deploy/aspnet-core-module#setting-environment-variables)web.config，以在開發環境中執行應用程式。 只要主機產生器上的 `UseEnvironment` 不會覆寫應用程式啟動內的環境，設定該環境變數便可允許在應用程式執行時顯示[開發人員例外狀況頁面](xref:fundamentals/error-handling)。
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -614,7 +614,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 * <xref:fundamentals/error-handling>
 * <xref:host-and-deploy/aspnet-core-module>
 
-### <a name="azure-documentation"></a>Azure 檔
+### <a name="azure-documentation"></a>Azure 文件
 
 * [Application Insights for ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
 * [使用 Visual Studio 在 Azure App Service 中疑難排解 web 應用程式的遠端偵錯程式一節](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
@@ -633,6 +633,6 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 * [Visual Studio 2017 中遠端 IIS 電腦上的遠端 Debug ASP.NET Core](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
 * [了解使用 Visual Studio 進行偵錯](/visualstudio/debugger/getting-started-with-the-debugger)
 
-### <a name="visual-studio-code-documentation"></a>Visual Studio Code 檔
+### <a name="visual-studio-code-documentation"></a>Visual Studio Code 文件
 
 * [使用 Visual Studio Code 進行偵錯](https://code.visualstudio.com/docs/editor/debugging) \(英文\)

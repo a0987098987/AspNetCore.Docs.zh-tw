@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: performance/memory
-ms.openlocfilehash: dfc789d080beec09a4f0eb34c3809b9f2df0d4b5
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 0ae367e954e21e2f696a3b292fa64f1d2dba98ec
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357274"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829019"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>ASP.NET Core 中的記憶體管理和垃圾收集（GC）
 
@@ -209,7 +209,7 @@ public void GetFileProvider()
 
 ![先前的圖表](memory/_static/fileprovider.png)
 
-上圖顯示此類別的執行明顯問題，因為它會持續增加記憶體使用量。 這是在[此問題](https://github.com/aspnet/Home/issues/3110)中追蹤的已知問題。
+上圖顯示此類別的執行明顯問題，因為它會持續增加記憶體使用量。 這是在[此問題](https://github.com/dotnet/aspnetcore/issues/3110)中追蹤的已知問題。
 
 在使用者程式碼中，可能會發生相同的流失，如下所示：
 
@@ -271,8 +271,9 @@ public int GetLOH1(int size)
 為了達到最大效能，應該將大型物件使用降至最低。 可能的話，請分割大型物件。 例如，ASP.NET Core 中的[回應](xref:performance/caching/response)快取中介軟體會將快取專案分割成小於85000個位元組的區塊。
 
 下列連結顯示將物件保留在 LOH 限制之下的 ASP.NET Core 方法：
-- [ResponseCaching/資料流程/StreamUtilities .cs](https://github.com/aspnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
-- [ResponseCaching/MemoryResponseCache .cs](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
+
+* [ResponseCaching/資料流程/StreamUtilities .cs](https://github.com/dotnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
+* [ResponseCaching/MemoryResponseCache .cs](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
 如需詳細資訊，請參閱＜＞。
 

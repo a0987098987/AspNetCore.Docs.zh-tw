@@ -9,12 +9,12 @@ ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: f443fe0fbaaa1facd09edc0878c048772895ecff
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 1bdb8b10a24c65735f49f04285e4129cb77eb3fb
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881187"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828941"
 ---
 # <a name="security-considerations-in-aspnet-core-opno-locsignalr"></a>ASP.NET Core SignalR 中的安全性考慮
 
@@ -35,7 +35,15 @@ ms.locfileid: "74881187"
 
 * 允許特定的預期來源。 允許任何來源，**但不是安全或**建議的。
 * 必須允許 `GET` 和 `POST` 的 HTTP 方法。
-* 即使未使用驗證，也必須啟用認證。
+* 必須允許認證，才能讓以 cookie 為基礎的適當會話正常運作。 即使未使用驗證，也必須啟用它們。
+
+<!--
+::: moniker range=">= aspnetcore-5.0"  // Moniker here just to make sure this doesn't get missed in the 5.0 version update.
+However, in 5.0 we have provided an option in the TypeScript client to not use credentials.
+The not to use credentials option should only be used when you know 100% that credentials like Cookies are not needed in your app (cookies are used by azure app service when using multiple servers)
+
+For more info, see https://github.com/aspnet/AspNetCore.Docs/issues/16003
+.-->
 
 例如，下列 CORS 原則可讓裝載于 `https://example.com` 上的 SignalR 瀏覽器用戶端存取 `https://signalr.example.com`上裝載的 SignalR 應用程式：
 

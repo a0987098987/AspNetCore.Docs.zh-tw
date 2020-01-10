@@ -9,25 +9,25 @@ ms.date: 11/27/2019
 no-loc:
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: e84dd0d086cbfc80a80bc10baa33979da9b5d137
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: 635431abf9263c2dff261aea47e6f8324061763f
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717230"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829279"
 ---
 # <a name="introduction-to-aspnet-core-opno-locsignalr"></a>ASP.NET Core SignalR 簡介
 
-## <a name="what-is-opno-locsignalr"></a>什麼是 SignalR？
+## <a name="what-is-opno-locsignalr"></a>SignalR 是什麼？
 
 ASP.NET Core SignalR 是一個開放原始碼程式庫，可簡化將即時 web 功能新增至應用程式的流程。 即時 web 功能可讓伺服器端程式碼立即將內容推送至用戶端。
 
 適用于 SignalR的候選項目：
 
-* 需要從伺服器進行高頻率更新的應用程式。 範例包括遊戲、社交網路、投票、拍賣、地圖和 GPS 應用程式。
-* 儀表板和監視應用程式。 範例包括公司儀表板、立即銷售更新或旅遊警示。
-* 協同作業應用程式。 白板應用程式和小組會議軟體是共同作業應用程式的範例。
-* 需要通知的應用程式。 社交網路、電子郵件、聊天、遊戲、旅遊警示，以及許多其他應用程式都使用通知。
+* 需要經常從伺服器取得更新的應用程式。 例如遊戲、社交網路、投票、拍賣、地圖和 GPS 應用程式。
+* 儀表板和監視應用程式。 範例包括公司儀表板、即時銷售更新或旅行警示。
+* 共同作業應用程式。 共同作業應用程式的範例包括白板應用程式和小組會議軟體。
+* 需要通知的應用程式。 社交網路、電子郵件、交談、遊戲、旅行警示和其他使用通知的應用程式。
 
 SignalR 提供用來建立伺服器對用戶端[遠端程序呼叫（RPC）](https://wikipedia.org/wiki/Remote_procedure_call)的 API。 Rpc 會從伺服器端 .NET Core 程式碼呼叫用戶端上的 JavaScript 函數。
 
@@ -38,7 +38,7 @@ SignalR 提供用來建立伺服器對用戶端[遠端程序呼叫（RPC）](htt
 * 將訊息傳送至特定用戶端或用戶端群組。
 * 調整以處理增加的流量。
 
-來源裝載于[GitHub 上的SignalR 存放庫](https://github.com/aspnet/AspNetCore/tree/master/src/SignalR)中。
+來源裝載于[GitHub 上的SignalR 存放庫](https://github.com/dotnet/AspNetCore/tree/master/src/SignalR)中。
 
 ## <a name="transports"></a>傳輸
 

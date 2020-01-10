@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/05/2019
 uid: security/authorization/policies
-ms.openlocfilehash: e3929fb0f45d4ba28f46a6b42b653940de0badb0
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: eeb5ddd63ef8177325b35e5a666aa5e9ab047057
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73761046"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828954"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>ASP.NET Core 中以原則為基礎的授權
 
@@ -31,13 +31,13 @@ ms.locfileid: "73761046"
 
 [!code-csharp[](policies/samples/stubs/copy_of_IAuthorizationService.cs?highlight=24-25,48-49&name=snippet)]
 
-上述程式碼會反白顯示[IAuthorizationService](https://github.com/aspnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationService.cs)的兩個方法。
+上述程式碼會反白顯示[IAuthorizationService](https://github.com/dotnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationService.cs)的兩個方法。
 
 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationRequirement> 是沒有方法的標記服務，以及用來追蹤授權是否成功的機制。
 
 每個 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationHandler> 都會負責檢查是否符合需求：
 <!--The following code is a copy/paste from 
-https://github.com/aspnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationHandler.cs -->
+https://github.com/dotnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationHandler.cs -->
 
 ```csharp
 /// <summary>
@@ -111,13 +111,13 @@ public void ConfigureServices(IServiceCollection services)
 
 如果您是使用 Razor Pages，請參閱本檔中的[將原則套用至 Razor Pages](#applying-policies-to-razor-pages) 。
 
-原則會套用至控制器，方法是使用 `[Authorize]` 屬性加上原則名稱。 例如:
+原則會套用至控制器，方法是使用 `[Authorize]` 屬性加上原則名稱。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
 ## <a name="applying-policies-to-razor-pages"></a>將原則套用至 Razor Pages
 
-原則會套用至 Razor Pages，方法是使用具有原則名稱的 `[Authorize]` 屬性。 例如:
+原則會套用至 Razor Pages，方法是使用具有原則名稱的 `[Authorize]` 屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
@@ -164,7 +164,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="handler-registration"></a>處理常式註冊
 
-在設定期間，會在服務集合中註冊處理常式。 例如:
+在設定期間，會在服務集合中註冊處理常式。 例如：
 
 [!code-csharp[](policies/samples/3.0PoliciesAuthApp1/Startup.cs?range=31-32,39-40,42-45, 53-55, 58)]
 
@@ -249,13 +249,13 @@ if (context.Resource is AuthorizationFilterContext mvcContext)
 
 [!code-csharp[](policies/samples/stubs/copy_of_IAuthorizationService.cs?highlight=24-25,48-49&name=snippet)]
 
-上述程式碼會反白顯示[IAuthorizationService](https://github.com/aspnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationService.cs)的兩個方法。
+上述程式碼會反白顯示[IAuthorizationService](https://github.com/dotnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationService.cs)的兩個方法。
 
 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationRequirement> 是沒有方法的標記服務，以及用來追蹤授權是否成功的機制。
 
 每個 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationHandler> 都會負責檢查是否符合需求：
 <!--The following code is a copy/paste from 
-https://github.com/aspnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationHandler.cs -->
+https://github.com/dotnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationHandler.cs -->
 
 ```csharp
 /// <summary>
@@ -328,13 +328,13 @@ public void ConfigureServices(IServiceCollection services)
 
 如果您是使用 Razor Pages，請參閱本檔中的[將原則套用至 Razor Pages](#applying-policies-to-razor-pages) 。
 
-原則會套用至控制器，方法是使用 `[Authorize]` 屬性加上原則名稱。 例如:
+原則會套用至控制器，方法是使用 `[Authorize]` 屬性加上原則名稱。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
 ## <a name="applying-policies-to-razor-pages"></a>將原則套用至 Razor Pages
 
-原則會套用至 Razor Pages，方法是使用具有原則名稱的 `[Authorize]` 屬性。 例如:
+原則會套用至 Razor Pages，方法是使用具有原則名稱的 `[Authorize]` 屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
@@ -381,7 +381,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="handler-registration"></a>處理常式註冊
 
-在設定期間，會在服務集合中註冊處理常式。 例如:
+在設定期間，會在服務集合中註冊處理常式。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,62-63,66)]
 

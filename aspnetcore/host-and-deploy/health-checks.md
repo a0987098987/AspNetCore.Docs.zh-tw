@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: dfd26b775b6c6a1af0108d34981d7ec3737980dd
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 33e5e71983a55b4ee30436d8e9e1e04186259a5d
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356120"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829214"
 ---
 # <a name="health-checks-in-aspnet-core"></a>ASP.NET Core 中的健康狀態檢查
 
@@ -150,7 +150,7 @@ services.AddHealthChecks()
         HealthCheckResult.Healthy("Example is OK!"), tags: new[] { "example" });
 ```
 
-呼叫 <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddTypeActivatedCheck*> 以將 arugments 傳遞至健康情況檢查的執行。 在下列範例中，`TestHealthCheckWithArgs` 會接受整數和字串，以便在呼叫 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck.CheckHealthAsync*> 時使用：
+呼叫 <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddTypeActivatedCheck*> 以將引數傳遞至健康情況檢查的執行。 在下列範例中，`TestHealthCheckWithArgs` 會接受整數和字串，以便在呼叫 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck.CheckHealthAsync*> 時使用：
 
 ```csharp
 private class TestHealthCheckWithArgs : IHealthCheck

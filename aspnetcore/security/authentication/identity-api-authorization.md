@@ -7,30 +7,30 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/08/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: f58d92634ce1ef6110533d56c40b7520dda90514
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.openlocfilehash: 31a5e47d772e7416646c4d83c3209d7d2b254199
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73897042"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829162"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Spa 的驗證和授權
 
 ASP.NET Core 3.0 或更新版本使用 API 授權的支援，在單一頁面應用程式（Spa）中提供驗證。 用於驗證和儲存使用者的 ASP.NET Core 身分識別會與[IdentityServer](https://identityserver.io/)結合，以執行 Open ID Connect。
 
-驗證參數已加入至「**Angular**」和「**React**」專案範本，類似于**Web 應用程式（模型-視圖控制器）** （MVC）和**web 應用程式**（Razor Pages）中的驗證參數專案範本。 允許的參數值為 [**無**] 和 [**個人**]。 [**React .js] 和 [Redux** ] 專案範本目前不支援 [驗證] 參數。
+驗證參數已加入至「**角度**」和「**回應**」專案範本，類似于**Web 應用程式（模型-視圖控制器）** （MVC）和**web 應用程式**（Razor Pages）專案範本中的驗證參數。 允許的參數值為 [**無**] 和 [**個人**]。 [**回應 .js] 和 [Redux** ] 專案範本目前不支援 [驗證] 參數。
 
 ## <a name="create-an-app-with-api-authorization-support"></a>建立具有 API 授權支援的應用程式
 
-使用者驗證和授權可以同時用於「Angular」和「React」 Spa。 開啟命令 shell，然後執行下列命令：
+使用者驗證和授權可以同時用於「角度」和「回應」 Spa。 開啟命令 shell，然後執行下列命令：
 
-**Angular**：
+**角度**：
 
 ```dotnetcli
 dotnet new angular -o <output_directory_name> -au Individual
 ```
 
-**React**：
+**回應**：
 
 ```dotnetcli
 dotnet new react -o <output_directory_name> -au Individual
@@ -58,7 +58,7 @@ dotnet new react -o <output_directory_name> -au Individual
         .AddEntityFrameworkStores<ApplicationDbContext>();
     ```
 
-  * IdentityServer 有額外的 `AddApiAuthorization` helper 方法，會在 IdentityServer 上提供一些預設的 ASP.NET Core 慣例：
+  * IdentityServer 有額外的 `AddApiAuthorization` helper 方法，會在 IdentityServer 上設定一些預設的 ASP.NET Core 慣例：
 
     ```csharp
     services.AddIdentityServer()
@@ -95,7 +95,7 @@ dotnet new react -o <output_directory_name> -au Individual
 
 ### <a name="weatherforecastcontroller"></a>WeatherForecastController
 
-在*Controllers\WeatherForecastController.cs*檔案中，請注意套用至類別的 `[Authorize]` 屬性，表示使用者必須根據預設原則來存取資源。 預設的授權原則會設定為使用預設的驗證配置，這是由 `AddIdentityServerJwt` 至上述原則配置所設定，讓這類 helper 方法所設定的 `JwtBearerHandler` 成為要求的預設處理常式應用程式。
+在*Controllers\WeatherForecastController.cs*檔案中，請注意套用至類別的 `[Authorize]` 屬性，表示使用者必須根據預設原則來存取資源。 預設的授權原則會設定為使用預設的驗證配置，這是由 `AddIdentityServerJwt` 到上述原則配置所設定，讓這類 helper 方法為應用程式要求的預設處理常式設定 `JwtBearerHandler`。
 
 ### <a name="applicationdbcontext"></a>[ApplicationdbcoNtext]
 
@@ -185,7 +185,7 @@ services.Configure<JwtBearerOptions>(
 
 API 的 JWT 處理常式會引發事件，讓您能夠使用 `JwtBearerEvents`來控制驗證進程。 為了提供 API 授權的支援，`AddIdentityServerJwt` 會註冊自己的事件處理常式。
 
-若要自訂事件的處理，請視需要使用其他邏輯來包裝現有的事件處理常式。 例如:
+若要自訂事件的處理，請視需要使用其他邏輯來包裝現有的事件處理常式。 例如：
 
 ```csharp
 services.Configure<JwtBearerOptions>(
@@ -207,7 +207,7 @@ services.Configure<JwtBearerOptions>(
 1. 呼叫 API 授權支援所提供的原始實作為。
 1. 執行它自己的自訂邏輯。
 
-## <a name="protect-a-client-side-route-angular"></a>保護用戶端路由（Angular）
+## <a name="protect-a-client-side-route-angular"></a>保護用戶端路由（角度）
 
 若要保護用戶端路由，請將授權防護新增至設定路由時要執行的防護清單。 例如，您可以在主要應用程式角度模組內查看 `fetch-data` 路由的設定方式：
 
@@ -220,11 +220,11 @@ RouterModule.forRoot([
 
 請務必注意，保護路由並不會保護實際端點（仍然需要套用 `[Authorize]` 屬性），但它只會防止使用者在未驗證時流覽至指定的用戶端路由。
 
-## <a name="authenticate-api-requests-angular"></a>驗證 API 要求（Angular）
+## <a name="authenticate-api-requests-angular"></a>驗證 API 要求（角度）
 
 使用應用程式所定義的 HTTP 用戶端攔截器，來驗證與應用程式一起裝載之 Api 的要求會自動完成。
 
-## <a name="protect-a-client-side-route-react"></a>保護用戶端路由（React）
+## <a name="protect-a-client-side-route-react"></a>保護用戶端路由（回應）
 
 使用 `AuthorizeRoute` 元件，而不是純 `Route` 元件來保護用戶端路由。 例如，請注意 `App` 元件內如何設定 `fetch-data` 路由：
 
@@ -237,7 +237,7 @@ RouterModule.forRoot([
 * 不會保護實際的端點（仍然需要套用 `[Authorize]` 屬性）。
 * 只有在未驗證時，才會防止使用者流覽至指定的用戶端路由。
 
-## <a name="authenticate-api-requests-react"></a>驗證 API 要求（React）
+## <a name="authenticate-api-requests-react"></a>驗證 API 要求（回應）
 
 藉由先從 `AuthorizeService`匯入 `authService` 實例，來驗證具有回應的要求。 存取權杖會從 `authService` 抓取，並附加至要求，如下所示。 在回應元件中，這項工作通常會在 `componentDidMount` 生命週期方法中完成，或做為某些使用者互動的結果。
 
@@ -260,7 +260,7 @@ async populateWeatherData() {
 }
 ```
 
-## <a name="deploy-to-production"></a>部署到生產環境
+## <a name="deploy-to-production"></a>部署到生產
 
 若要將應用程式部署至生產環境，您必須布建下列資源：
 

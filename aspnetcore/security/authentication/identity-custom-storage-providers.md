@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 6d0d9b5467d9d27b936a17fa86f73e7d8123b75b
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 70951085474d88fd57f1b1496a41adcda520b91f
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73760978"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829149"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -23,7 +23,7 @@ ASP.NET Core 身分識別是可延伸的系統，可讓您建立自訂的儲存�
 
 ## <a name="introduction"></a>簡介
 
-根據預設，ASP.NET Core 身分識別系統會使用 Entity Framework Core，將使用者資訊儲存在 SQL Server 資料庫中。 對於許多應用程式而言，這種方法運作良好。 不過，您可能會想要使用不同的持續性機制或資料結構描述。 例如:
+根據預設，ASP.NET Core 身分識別系統會使用 Entity Framework Core，將使用者資訊儲存在 SQL Server 資料庫中。 對於許多應用程式而言，這種方法運作良好。 不過，您可能會想要使用不同的持續性機制或資料結構描述。 例如：
 
 * 您會使用[Azure 表格儲存體](/azure/storage/)或另一個資料存放區。
 * 您的資料庫資料表具有不同的結構。 
@@ -169,7 +169,7 @@ ASP.NET Core 身分識別包含稱為「管理員」和「存放區」的類別�
 * **IQueryableUserStore**  
  [IQueryableUserStore&lt;TUser&gt;](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1)介面會定義您所執行的成員，以提供可查詢的使用者存放區。
 
-您只會執行應用程式所需的介面。 例如:
+您只會執行應用程式所需的介面。 例如：
 
 ```csharp
 public class UserStore : IUserStore<IdentityUser>,
@@ -185,7 +185,7 @@ public class UserStore : IUserStore<IdentityUser>,
 
 ### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim、IdentityUserLogin 和 IdentityUserRole
 
-`Microsoft.AspNet.Identity.EntityFramework` 命名空間包含[IdentityUserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1)、 [IdentityUserLogin](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)和[IdentityUserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1)類別的實作為。 如果您使用這些功能，您可能會想要建立您自己的類別版本，並定義應用程式的屬性。 不過，有時候在執行基本作業（例如新增或移除使用者的宣告）時，不會將這些實體載入記憶體的效率較高。 相反地，後端存放區類別可以直接在資料來源上執行這些作業。 例如，`UserStore.GetClaimsAsync` 方法可以呼叫 `userClaimTable.FindByUserId(user.Id)` 方法，直接對該資料表執行查詢，並傳回宣告的清單。
+命名空間包含[IdentityUserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1)、[IdentityUserLogin](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin) 和 [IdentityUserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) 類別的實作為。`Microsoft.AspNet.Identity.EntityFramework` 如果您使用這些功能，您可能會想要建立您自己的類別版本，並定義應用程式的屬性。 不過，有時候在執行基本作業（例如新增或移除使用者的宣告）時，不會將這些實體載入記憶體的效率較高。 相反地，後端存放區類別可以直接在資料來源上執行這些作業。 例如，`UserStore.GetClaimsAsync` 方法可以呼叫 `userClaimTable.FindByUserId(user.Id)` 方法，直接對該資料表執行查詢，並傳回宣告的清單。
 
 ## <a name="customize-the-role-class"></a>自訂角色類別
 
@@ -235,7 +235,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="references"></a>reference
+## <a name="references"></a>參考
 
 * [ASP.NET 4.x 身分識別的自訂儲存體提供者](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
-* [ASP.NET Core 身分識別](https://github.com/aspnet/AspNetCore/tree/master/src/Identity)&ndash; 此存放庫包含已維護之商店提供者的社區連結。
+* [ASP.NET Core 身分識別](https://github.com/dotnet/AspNetCore/tree/master/src/Identity)&ndash; 此存放庫包含已維護之商店提供者的社區連結。

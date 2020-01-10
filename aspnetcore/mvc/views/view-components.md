@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: a4583d49eb0b42f1fa6e3d8c444d263cba34da79
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 8df070b580b6125db6616b33a81f3ffebad69f3a
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356838"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828915"
 ---
 # <a name="view-components-in-aspnet-core"></a>ASP.NET Core 中的檢視元件
 
@@ -337,7 +337,7 @@ public class PriorityList : ViewComponent
 
 ## <a name="all-view-component-parameters-are-required"></a>所有檢視元件參數均為必要參數
 
-檢視元件中的每個參數都是必要屬性。 請參閱[這個 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/5011)。 若省略了任何參數：
+檢視元件中的每個參數都是必要屬性。 請參閱[這個 GitHub 問題](https://github.com/dotnet/AspNetCore/issues/5011)。 若省略了任何參數：
 
 * `InvokeAsync` 方法簽章即不相符，因此系統不會執行此方法。
 * ViewComponent 不會轉譯任何標記。

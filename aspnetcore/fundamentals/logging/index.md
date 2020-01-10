@@ -1,20 +1,20 @@
 ---
-title: .NET Core 與 ASP.NET Core 中的記錄
+title: 登入 .NET Core 與 ASP.NET Core
 author: rick-anderson
 description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提供的記錄架構。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/04/2019
+ms.date: 01/08/2020
 uid: fundamentals/logging/index
-ms.openlocfilehash: e1c50c4592b21d56ed813dac43204d63f1bfe46c
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: d9ef6694b6c0b0a88b13d60915be6e04ebdffb28
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359344"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829045"
 ---
-# <a name="logging-in-net-core-and-aspnet-core"></a>.NET Core 與 ASP.NET Core 中的記錄
+# <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Steve Smith](https://ardalis.com/)
 
@@ -22,7 +22,7 @@ ms.locfileid: "75359344"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-本文中顯示的大部分程式碼範例都來自 ASP.NET Core 應用程式。 這些程式碼片段的記錄特定部分適用于任何使用[泛型主機](xref:fundamentals/host/generic-host)的 .net Core 應用程式。 如需如何在非 Web 主控台應用程式中使用一般主機的資訊，請參閱[託管服務](xref:fundamentals/host/hosted-services)。
+本文中顯示的大部分程式碼範例都來自 ASP.NET Core 應用程式。 這些程式碼片段的記錄特定部分適用于任何使用[泛型主機](xref:fundamentals/host/generic-host)的 .net Core 應用程式。 如需如何在非 web 主控台應用程式中使用泛型主機的範例，請參閱[背景工作範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples)的*Program.cs*檔案（<xref:fundamentals/host/hosted-services>）。
 
 不含一般主機的應用程式記錄程式碼，會因[新增提供者](#add-providers)和[建立記錄器](#create-logs)的方式而有所不同。 非主機程式碼範例顯示於本文的這些章節中。
 
@@ -131,7 +131,7 @@ ms.locfileid: "75359344"
 
 [!code-csharp[](index/samples_snapshot/3.x/TodoApiSample/Program.cs?highlight=9,10)]
 
-不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來記錄 `CreateHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
+不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來登入 `CreateHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
 
 ```csharp
 using System;
@@ -231,7 +231,7 @@ public class Program
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
 
-不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來記錄 `CreateWebHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
+不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來登入 `CreateWebHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
 
 ```csharp
 using System;

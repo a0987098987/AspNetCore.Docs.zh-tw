@@ -5,12 +5,12 @@ description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功
 ms.author: riande
 ms.date: 12/05/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 7e02a21361e0e2148b29a3ae0f1ba25e68239e13
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 1066f4ce104e507abe63302fd3523a3a7a8dfde9
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881122"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828239"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
@@ -48,7 +48,7 @@ ms.locfileid: "74881122"
 
 * Project name
   * 區域
-    * Products
+    * 產品
       * 控制器
         * HomeController.cs
         * ManageController.cs
@@ -96,7 +96,7 @@ ms.locfileid: "74881122"
 
 [!code-csharp[](areas/samples/MVCareas/StartupMapAreaRoute.cs?name=snippet&highlight=18-27)]
 
-搭配 ASP.NET Core 2.2 使用 `MapAreaRoute` 時，請參閱[這個 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/7772) \(英文\)。
+搭配 ASP.NET Core 2.2 使用 `MapAreaRoute` 時，請參閱[這個 GitHub 問題](https://github.com/dotnet/AspNetCore/issues/7772) \(英文\)。
 
 如需詳細資訊，請參閱[區域路由](xref:mvc/controllers/routing#areas)。
 
@@ -138,7 +138,7 @@ ms.locfileid: "74881122"
 
 * Project name
   * 區域
-    * Products
+    * 產品
       * 頁面
         * _ViewImports
         * 關於

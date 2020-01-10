@@ -1,5 +1,5 @@
 ---
-title: ASP.NET Core 3.0 的新功能
+title: 3\.0 ASP.NET Core 的新功能
 author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.0 中的新功能。
 ms.author: riande
@@ -9,14 +9,14 @@ no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 4ade13c38880c9915ec590297f2a43548ca400a8
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 1dee9a7e1cc381547e7ece71f302f407223dc838
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880833"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829110"
 ---
-# <a name="whats-new-in-aspnet-core-30"></a>ASP.NET Core 3.0 的新功能
+# <a name="whats-new-in-aspnet-core-30"></a>3\.0 ASP.NET Core 的新功能
 
 本文將重點放在 ASP.NET Core 3.0 中最重要的變更，並提供相關檔的連結。
 
@@ -536,7 +536,7 @@ ASP.NET Core 3.0 包含許多增強功能，可減少記憶體使用量並改善
 * [Newtonsoft. Json](https://www.nuget.org/packages/Newtonsoft.Json/) （Json.NET）。 若要將 Json.NET 新增至 ASP.NET Core 3.0，請參閱[新增 Newtonsoft 以 json 為基礎的 json 格式支援](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support)。 ASP.NET Core 3.0 引進讀取和寫入 JSON 的 `System.Text.Json`。 如需詳細資訊，請參閱本檔中的[新 JSON 序列化](#new-json-serialization)。
 * [Entity Framework Core](/ef/core/)
 
-如需從共用架構中移除之元件的完整清單，請參閱[從 3.0 AspNetCore 中移除的元件](https://github.com/aspnet/AspNetCore/issues/3755)。 如需這項變更動機的詳細資訊，請參閱[3.0 中 AspNetCore 應用程式的重大變更](https://github.com/aspnet/Announcements/issues/325)，以及[第一次介紹 ASP.NET Core 3.0](https://devblogs.microsoft.com/aspnet/a-first-look-at-changes-coming-in-asp-net-core-3-0/)中的變更。
+如需從共用架構中移除之元件的完整清單，請參閱[從 3.0 AspNetCore 中移除的元件](https://github.com/dotnet/AspNetCore/issues/3755)。 如需這項變更動機的詳細資訊，請參閱[3.0 中 AspNetCore 應用程式的重大變更](https://github.com/aspnet/Announcements/issues/325)，以及[第一次介紹 ASP.NET Core 3.0](https://devblogs.microsoft.com/aspnet/a-first-look-at-changes-coming-in-asp-net-core-3-0/)中的變更。
 
 <!-- 
 ## Additional information

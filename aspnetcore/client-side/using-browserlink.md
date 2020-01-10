@@ -4,28 +4,34 @@ author: ncarandini
 description: 說明瀏覽器連結是一種 Visual Studio 功能，可將開發環境與一或多個網頁瀏覽器連結在一起。
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 11/12/2019
+ms.date: 01/09/2020
 no-loc:
 - SignalR
 uid: client-side/using-browserlink
-ms.openlocfilehash: b21b698d49e72b559cd9cd3753c48a38c99db24d
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 19cc3c2ed91bd9e05df3c036123c78ecbf81fcc0
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962789"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828266"
 ---
 # <a name="browser-link-in-aspnet-core"></a>ASP.NET Core 中的瀏覽器連結
 
 By [Nicolò Carandini](https://github.com/ncarandini)、 [Mike Wasson](https://github.com/MikeWasson)和[Tom 作者: dykstra](https://github.com/tdykstra)
 
-瀏覽器連結是 Visual Studio 中的一項功能，可在開發環境與一或多個網頁瀏覽器之間建立通道。 您可以使用瀏覽器連結，一次在數個瀏覽器中重新整理 web 應用程式，這對於跨瀏覽器測試很有用。
+瀏覽器連結是 Visual Studio 功能。 它會在開發環境與一或多個網頁瀏覽器之間建立通道。 您可以使用瀏覽器連結，一次在數個瀏覽器中重新整理您的 web 應用程式，這對於跨瀏覽器測試很有用。
 
 ## <a name="browser-link-setup"></a>瀏覽器連結設定
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-3.0"
 
-將 ASP.NET Core 2.0 專案轉換成 ASP.NET Core 2.1 並轉換成[AspNetCore 應用程式](xref:fundamentals/metapackage-app)時，請安裝 VisualStudio BrowserLink 功能的[BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)套件。 ASP.NET Core 2.1 專案範本預設會使用 `Microsoft.AspNetCore.App` 中繼套件。
+將[BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)套件新增至您的專案。 針對 ASP.NET Core Razor Pages 或 MVC 專案，也請啟用 Razor （*cshtml*）檔案的執行時間編譯，如 <xref:mvc/views/view-compilation>中所述。 只有在已啟用執行時間編譯時，才會套用 Razor 語法變更。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+
+將 ASP.NET Core 2.0 專案轉換成 ASP.NET Core 2.1 並轉換成[AspNetCore 應用程式](xref:fundamentals/metapackage-app)時，請安裝 VisualStudio 瀏覽器連結功能的[BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)套件。 ASP.NET Core 2.1 專案範本預設會使用 `Microsoft.AspNetCore.App` 中繼套件。
 
 ::: moniker-end
 
@@ -37,33 +43,19 @@ ASP.NET Core 2.0 **Web 應用程式**、**空**的和**Web API**專案範本都�
 
 ::: moniker range="<= aspnetcore-1.1"
 
-ASP.NET Core 1.x **Web 應用程式**專案範本具有 BrowserLink 套件的套件參考。（ [VisualStudio](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) ）。 **空**的或**Web API**範本專案會要求您將套件參考新增至 `Microsoft.VisualStudio.Web.BrowserLink`。
-
-由於這是 Visual Studio 的功能，將封裝新增至**空白**或**Web API**範本專案的最簡單方式，就是開啟 [**套件管理員主控台**] （**View** >**其他 Windows** > **package Manager console**），然後執行下列命令：
-
-```console
-install-package Microsoft.VisualStudio.Web.BrowserLink
-```
-
-或者，您可以使用**NuGet 套件管理員**。 以滑鼠右鍵按一下**方案總管**中的專案名稱，然後選擇 [**管理 NuGet 套件**]：
-
-![開啟 NuGet 套件管理員](using-browserlink/_static/open-nuget-package-manager.png)
-
-尋找並安裝套件：
-
-![使用 NuGet 套件管理員新增套件](using-browserlink/_static/add-package-with-nuget-package-manager.png)
+ASP.NET Core 1.x **Web 應用程式**專案範本具有 BrowserLink 套件的套件參考。（ [VisualStudio](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) ）。 其他專案類型則需要您將套件參考新增至 `Microsoft.VisualStudio.Web.BrowserLink`。
 
 ::: moniker-end
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>組態
 
-在 `Startup.Configure` 方法中：
+呼叫 `Startup.Configure` 方法中的 `UseBrowserLink`：
 
 ```csharp
 app.UseBrowserLink();
 ```
 
-通常程式碼位於只在開發環境中啟用瀏覽器連結的 `if` 區塊內，如下所示：
+`UseBrowserLink` 呼叫通常會放在只在開發環境中啟用瀏覽器連結的 `if` 區塊內。 例如：
 
 ```csharp
 if (env.IsDevelopment())
@@ -73,7 +65,7 @@ if (env.IsDevelopment())
 }
 ```
 
-如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments)。
+如需詳細資訊，請參閱<xref:fundamentals/environments>。
 
 ## <a name="how-to-use-browser-link"></a>如何使用瀏覽器連結
 
@@ -85,11 +77,8 @@ if (env.IsDevelopment())
 
 * 一次在數個瀏覽器中重新整理 web 應用程式。
 * 開啟**瀏覽器連結儀表板**。
-* 啟用或停用**瀏覽器連結**。 注意： Visual Studio 2017 （15.3）中，預設會停用瀏覽器連結。
+* 啟用或停用**瀏覽器連結**。 注意： Visual Studio 中預設會停用瀏覽器連結。
 * 啟用或停用[CSS 自動同步](#enable-or-disable-css-auto-sync)處理。
-
-> [!NOTE]
-> 有些 Visual Studio 外掛程式（最值得注意的是， *Web Extension pack 2015*和*web extension pack 2017*）提供瀏覽器連結的擴充功能，但某些其他功能無法與 ASP.NET Core 專案搭配使用。
 
 ## <a name="refresh-the-web-app-in-several-browsers-at-once"></a>一次在數個瀏覽器中重新整理 web 應用程式
 
@@ -97,11 +86,11 @@ if (env.IsDevelopment())
 
 ![F5 下拉式功能表](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-若要一次開啟多個瀏覽器，請從相同的下拉式選單選擇 **[流覽方式 ...]** 。 按住 CTRL 鍵以選取您要的瀏覽器，然後按一下 **[流覽]** ：
+若要一次開啟多個瀏覽器，請從相同的下拉式選單選擇 **[流覽方式 ...]** 。 按住<kbd>Ctrl</kbd>鍵以選取您要的瀏覽器，然後按一下 **[流覽]** ：
 
 ![一次開啟許多瀏覽器](using-browserlink/_static/open-many-browsers-at-once.png)
 
-以下螢幕擷取畫面顯示索引視圖開啟和兩個開啟的瀏覽器的 Visual Studio：
+下列螢幕擷取畫面顯示索引視圖開啟和兩個開啟的瀏覽器的 Visual Studio：
 
 ![與兩個瀏覽器同步處理範例](using-browserlink/_static/sync-with-two-browsers-example.png)
 
@@ -117,11 +106,11 @@ if (env.IsDevelopment())
 
 ### <a name="the-browser-link-dashboard"></a>瀏覽器連結儀表板
 
-從瀏覽器連結下拉式功能表開啟瀏覽器連結儀表板，以管理與開放式瀏覽器的連接：
+從瀏覽器連結下拉式功能表開啟**瀏覽器連結儀表板**視窗，以管理與開放式瀏覽器的連接：
 
 ![開啟-browserslink-儀表板](using-browserlink/_static/open-browserlink-dashboard.png)
 
-如果沒有連接的瀏覽器，您可以藉由選取 [*在瀏覽器中查看*] 連結來啟動非偵錯工具的會話：
+如果沒有連接的瀏覽器，您可以藉由選取 [**在瀏覽器中查看**] 連結來啟動非偵錯工具的會話：
 
 ![browserlink-儀表板-無連接](using-browserlink/_static/browserlink-dashboard-no-connections.png)
 
@@ -129,7 +118,7 @@ if (env.IsDevelopment())
 
 ![browserlink-儀表板-兩個連接](using-browserlink/_static/browserlink-dashboard-two-connections.png)
 
-如有需要，您可以按一下列出的瀏覽器名稱，以重新整理該單一瀏覽器。
+您也可以按一下個別的瀏覽器名稱，只重新整理該瀏覽器。
 
 ### <a name="enable-or-disable-browser-link"></a>啟用或停用瀏覽器連結
 
@@ -141,7 +130,7 @@ if (env.IsDevelopment())
 
 ## <a name="how-it-works"></a>運作方式
 
-瀏覽器連結會使用 SignalR 來建立 Visual Studio 與瀏覽器之間的通道。 啟用瀏覽器連結時，Visual Studio 會作為多個用戶端（瀏覽器）可以連接的 SignalR 伺服器。 瀏覽器連結也會在 ASP.NET Core 要求管線中註冊中介軟體元件。 此元件會將特殊的 `<script>` 參考插入伺服器中的每個頁面要求。 您可以在瀏覽器中選取 [ **View source** ]，然後在 `<body>` 標記內容的結尾處，看到腳本參考：
+瀏覽器連結會使用[SignalR](xref:signalr/introduction)來建立 Visual Studio 與瀏覽器之間的通道。 啟用瀏覽器連結時，Visual Studio 會作為多個用戶端（瀏覽器）可以連接的 SignalR 伺服器。 瀏覽器連結也會在 ASP.NET Core 要求管線中註冊中介軟體元件。 此元件會將特殊的 `<script>` 參考插入伺服器中的每個頁面要求。 您可以在瀏覽器中選取 [ **View source** ]，然後在 `<body>` 標記內容的結尾處，看到腳本參考：
 
 ```html
     <!-- Visual Studio Browser Link -->

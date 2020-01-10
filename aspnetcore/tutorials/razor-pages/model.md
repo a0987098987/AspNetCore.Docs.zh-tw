@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 12/05/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: ef4671c9e7628c106b9f68ba5cbfd8a127e095d0
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: fa5be8f3a222a7c186409faa2f48e43347df637a
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358025"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829292"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -47,8 +47,8 @@ ms.locfileid: "75358025"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
-* 以滑鼠右鍵按一下 [*模型*] 資料夾，然後選取 [**加入**>**新增**檔案]。
+* 在 Solution Pad 中，以滑鼠右鍵按一下**RazorPagesMovie**專案，然後選取 [**加入**>**新增資料夾**]。將資料夾命名為*模型*。
+* 以滑鼠右鍵按一下 [*模型*] 資料夾，然後選取 [**加入**>**新增**檔案 ...]。
 * 在 [新增檔案] 對話方塊中：
 
   * 在左窗格中選取 [一般]。
@@ -56,8 +56,6 @@ ms.locfileid: "75358025"
   * 將類別命名為 **Movie**，並選取 [新增]。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
-
-[!INCLUDE [model 2](~/includes/RP/model2.md)]
 
 ---
 
@@ -122,22 +120,38 @@ ms.locfileid: "75358025"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
-* 安裝 Scaffolding 工具：
+建立 *Pages/Movies* 資料夾：
 
-  ```dotnetcli
-   dotnet tool install --global dotnet-aspnet-codegenerator
-   ```
+* 在 *頁面* 資料夾上按一下滑鼠右鍵，>**加入**>**新增資料夾**。
+* 將資料夾命名為 *Movies*
 
-* 執行下列命令：
+以滑鼠右鍵按一下 [ *Pages/電影*] 資料夾 >**加入**>**新**的 [樣板]。
 
-  ```dotnetcli
-  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
-  ```
+![前述指示中的圖片。](model/_static/scaMac.png)
 
-[!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
+在 **新**的架構 對話方塊中，選取  **Razor Pages 使用 Entity Framework （CRUD）**  **> 下一步**。
 
-[!INCLUDE [use SQL Server in production](~/includes/RP/sqlitedev.md)]
+![前述指示中的圖片。](model/_static/add_scaffoldMac.png)
+
+完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\) 對話方塊：
+
+* 在 [**模型類別**] 下拉式選，選取或輸入**Movie （RazorPagesMovie）** 。
+* 在 [**資料內容類別**] 列中，輸入新類別的名稱 RazorPagesMovie。**資料**。RazorpagesmoviecoNtext-21. 這不是必要的[變更](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) \(英文\)。 它會使用正確的命名空間來建立資料庫內容類別。
+* 選取 [新增]。
+
+![前述指示中的圖片。](model/_static/arpMac.png)
+
+*appsettings.json* 檔案會隨即更新用來連線到本機資料庫的連接字串。
+
+### <a name="add-ef-tools"></a>新增 EF 工具
+
+執行下列 .NET Core CLI 命令：
+
+```dotnetcli
+dotnet tool install --global dotnet-ef
+```
+
+上述命令會加入 .NET Core CLI 的 Entity Framework Core 工具。
 
 ---
 
@@ -156,7 +170,20 @@ ms.locfileid: "75358025"
 
 下一節將說明所建立和更新的檔案。
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+隨即建立 Scaffold 處理序並更新下列檔案：
+
+* *Pages/Movies*：建立、刪除、詳細資料、編輯和索引。
+* *Data/RazorPagesMovieContext.cs*
+
+### <a name="updated"></a>已更新
+
+* *Startup.cs*
+
+下一節將說明所建立和更新的檔案。
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Scaffold 處理序會建立下列檔案：
 
@@ -214,7 +241,7 @@ ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
-檢查 `Startup.ConfigureServices` 方法。 強調顯示的行由 Scaffolder 新增：
+檢查 `Startup.ConfigureServices` 方法。 Scaffolder 已新增醒目標示行：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
@@ -310,8 +337,6 @@ Login failed for user 'User-name'.
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
-[!INCLUDE [model 2](~/includes/RP/model2.md)]
-
 ---
 
 建置專案，以確認沒有任何編譯錯誤。
@@ -372,14 +397,28 @@ to use Data, it should not use models. That will make the namespace the same for
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
-* 執行下列命令：
+建立 *Pages/Movies* 資料夾：
 
-  ```dotnetcli
-  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
-  ```
+* 在 *頁面* 資料夾上按一下滑鼠右鍵，>**加入**>**新增資料夾**。
+* 將資料夾命名為 *Movies*
 
-[!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
+以滑鼠右鍵按一下  *Pages/電影* 資料夾 **，> 新增**>**新增 scaffold 專案**。
+
+![前述指示中的圖片。](model/_static/scaMac.png)
+
+在 [**加入新**的架構] 對話方塊中，選取 [ **Razor Pages 使用 Entity Framework （CRUD）** ] > [**新增**]。
+
+![前述指示中的圖片。](model/_static/add_scaffoldMac.png)
+
+完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\) 對話方塊：
+
+* 在 [**模型類別**] 下拉式選，選取或輸入**Movie**。
+* 在 [**資料內容類別**] 列中，輸入選取**razorpagesmoviecoNtext-21** ，這會使用正確的命名空間建立新的 db 內容類別。 在此情況下，它會是**RazorPagesMovie。 razorpagesmoviecoNtext-21**。
+* 選取 [新增]。
+
+![前述指示中的圖片。](model/_static/arpMac.png)
+
+*appsettings.json* 檔案會隨即更新用來連線到本機資料庫的連接字串。
 
 ---
 
@@ -442,7 +481,7 @@ ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
-檢查 `Startup.ConfigureServices` 方法。 強調顯示的行由 Scaffolder 新增：
+檢查 `Startup.ConfigureServices` 方法。 Scaffolder 已新增醒目標示行：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 

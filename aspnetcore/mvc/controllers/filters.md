@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 1/1/2020
 uid: mvc/controllers/filters
-ms.openlocfilehash: 2300b14a6a89191d3d8c673311880fc144183da9
-ms.sourcegitcommit: e7d4fe6727d423f905faaeaa312f6c25ef844047
+ms.openlocfilehash: 759c150e7f35f3f6a52947edc5ef41448dc227fe
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608117"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828967"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -213,7 +213,7 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
   * `MySampleActionFilter.OnActionExecuted`
 * `TestController.OnActionExecuted`
 
-控制器層級篩選會將[Order](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17)屬性設定為 `int.MinValue`。 在套用至方法的篩選器之後，**無法**將控制器層級篩選設定為執行。 下一節將說明順序。
+控制器層級篩選會將[Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17)屬性設定為 `int.MinValue`。 在套用至方法的篩選器之後，**無法**將控制器層級篩選設定為執行。 下一節將說明順序。
 
 針對 Razor Pages，請參閱[覆寫篩選條件方法來實作 Razor 頁面篩選條件](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods)。
 
@@ -246,7 +246,7 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
   * `MyAction2FilterAttribute.OnResultExecuting`
 * `Test2Controller.OnActionExecuted`
 
-`Order` 屬性在決定篩選條件執行的順序時會覆寫範圍。 篩選條件會先依照順序排序，然後使用範圍來打破僵局。 所有內建的篩選條件都會實作 `IOrderedFilter` 並將預設 `Order` 值設為 0。 如先前所述，控制器層級篩選會針對內建篩選準則將[order](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17)屬性設定為 `int.MinValue`，除非 `Order` 設定為非零值，否則範圍會決定訂單。
+`Order` 屬性在決定篩選條件執行的順序時會覆寫範圍。 篩選條件會先依照順序排序，然後使用範圍來打破僵局。 所有內建的篩選條件都會實作 `IOrderedFilter` 並將預設 `Order` 值設為 0。 如先前所述，控制器層級篩選會針對內建篩選準則將[order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17)屬性設定為 `int.MinValue`，除非 `Order` 設定為非零值，否則範圍會決定訂單。
 
 在上述程式碼中，`MySampleActionFilter` 具有全域範圍，因此它會在具有控制器範圍的 `MyAction2FilterAttribute`之前執行。 若要讓 `MyAction2FilterAttribute` 先執行，請將順序設定為 `int.MinValue`：
 

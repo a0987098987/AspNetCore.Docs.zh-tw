@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 12/16/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 51d82d1deadb3d2adbdccd39c8d949e3f9f812fd
-ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
+ms.openlocfilehash: 286d73d732b146fef15bbfc309caeb214cdbbe0d
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75693839"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829175"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -192,7 +192,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 ### <a name="install-the-preview-site-extension"></a>安裝預覽網站延伸模組
 
-如果您在使用預覽網站延伸模組時發生任何問題，請建立 [aspnet/AspNetCore 問題](https://github.com/aspnet/AspNetCore/issues)。
+如果使用預覽網站延伸模組發生問題，請開啟[dotnet/AspNetCore 問題](https://github.com/dotnet/AspNetCore/issues)。
 
 1. 從 Azure 入口網站瀏覽至 App Service。
 1. 選取 Web 應用程式。

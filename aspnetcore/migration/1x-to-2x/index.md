@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 1242ec9f71f4a26b07f9a56a2a960bf315b56ccf
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: c46f50a418cf630980ac2ba94407e4370d36e7d5
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880007"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828928"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>從 ASP.NET Core 1.x 遷移至 2.0
 
@@ -42,7 +42,7 @@ ms.locfileid: "74880007"
 > [!NOTE]
 > .NET Core 2.0 提供了比 .NET Core 1.x 更大的介面區。 如果您只是因為 .NET Core 1.x 中遺漏了 API 而以 .NET Framework 為目標，以 .NET Core 2.0 為目標可能有效。
 
-如果專案檔包含 `<RuntimeFrameworkVersion>1.{sub-version}</RuntimeFrameworkVersion>`，請參閱[這個 GitHub 問題](https://github.com/aspnet/AspNetCore/issues/3221#issuecomment-413094268) \(英文\)。
+如果專案檔包含 `<RuntimeFrameworkVersion>1.{sub-version}</RuntimeFrameworkVersion>`，請參閱[這個 GitHub 問題](https://github.com/dotnet/AspNetCore/issues/3221#issuecomment-413094268) \(英文\)。
 
 <a name="global-json"></a>
 
@@ -152,7 +152,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Program2.cs?name=snippet_Main2Code&highlight=10)]
 
-從 2.0 開始，除了建置及設定網頁主機外，並不適合在 `BuildWebHost` 中執行任何作業。 有關執行應用程式的任何作業都應該在 `BuildWebHost` 外處理 &mdash; 通常會在 *Program.cs* 的 `Main` 方法中處理。
+從 2.0 開始，除了建置及設定網頁主機外，並不適合在 `BuildWebHost` 中執行任何作業。 有關執行應用程式的任何內容都應該在 `BuildWebHost` 的外部處理 &mdash; 通常是在*Program.cs*的 `Main` 方法中。
 
 <a name="view-compilation"></a>
 

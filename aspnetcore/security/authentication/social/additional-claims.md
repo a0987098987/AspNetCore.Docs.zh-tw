@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: 72710d249d3210208dd9b0356a700ba02a0b727a
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: 44b3e72085e6265319b53b548f7f7ddde2adbd14
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378878"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828577"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>在 ASP.NET Core 中保存外部提供者的其他宣告和權杖
 
@@ -24,9 +24,9 @@ ASP.NET Core 應用程式可以從外部驗證提供者（例如 Facebook、Goog
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
-決定要在應用程式中支援的外部驗證提供者。 針對每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端密碼。 如需詳細資訊，請參閱 <xref:security/authentication/social/index>。 範例應用程式會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
+決定要在應用程式中支援的外部驗證提供者。 針對每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端密碼。 如需詳細資訊，請參閱<xref:security/authentication/social/index>。 範例應用程式會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
 
 ## <a name="set-the-client-id-and-client-secret"></a>設定用戶端識別碼和用戶端秘密
 
@@ -110,7 +110,7 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 
 使用者可以藉由衍生自 <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction> 並執行抽象的 <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.Run*> 方法，來定義自訂動作。
 
-如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>。
+如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>。
 
 ## <a name="removal-of-claim-actions-and-claims"></a>移除宣告動作和宣告
 
@@ -164,9 +164,9 @@ ASP.NET Core 應用程式可以從外部驗證提供者（例如 Facebook、Goog
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
-決定要在應用程式中支援的外部驗證提供者。 針對每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端密碼。 如需詳細資訊，請參閱 <xref:security/authentication/social/index>。 範例應用程式會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
+決定要在應用程式中支援的外部驗證提供者。 針對每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端密碼。 如需詳細資訊，請參閱<xref:security/authentication/social/index>。 範例應用程式會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
 
 ## <a name="set-the-client-id-and-client-secret"></a>設定用戶端識別碼和用戶端秘密
 
@@ -250,7 +250,7 @@ options.Scope.Add("https://www.googleapis.com/auth/user.birthday.read");
 
 使用者可以藉由衍生自 <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction> 並執行抽象的 <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.Run*> 方法，來定義自訂動作。
 
-如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>。
+如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>。
 
 ## <a name="removal-of-claim-actions-and-claims"></a>移除宣告動作和宣告
 
@@ -300,4 +300,4 @@ Authentication Properties
 
 ## <a name="additional-resources"></a>其他資源
 
-* [aspnet/AspNetCore 工程 SocialSample 應用程式](https://github.com/aspnet/AspNetCore/tree/master/src/Security/Authentication/samples/SocialSample)&ndash; 連結的範例應用程式位於[Aspnet/AspNetCore GitHub](https://github.com/aspnet/AspNetCore)存放庫的 `master` 工程分支上。 在下一版的 ASP.NET Core 中，`master` 分支包含作用中開發的程式碼。 若要查看 ASP.NET Core 發行版本的範例應用程式版本，請使用 [**分支**] 下拉式清單來選取發行分支（例如 `release/{X.Y}`）。
+* [dotnet/AspNetCore 工程 SocialSample 應用程式](https://github.com/dotnet/AspNetCore/tree/master/src/Security/Authentication/samples/SocialSample)&ndash; 連結的範例應用程式位於[Dotnet/AspNetCore GitHub](https://github.com/dotnet/AspNetCore)存放庫的 `master` 工程分支上。 在下一版的 ASP.NET Core 中，`master` 分支包含作用中開發的程式碼。 若要查看 ASP.NET Core 發行版本的範例應用程式版本，請使用 [**分支**] 下拉式清單來選取發行分支（例如 `release/{X.Y}`）。

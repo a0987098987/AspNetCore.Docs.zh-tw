@@ -4,14 +4,14 @@ author: rick-anderson
 description: 此教學課程時間不長，會使用 ASP.NET Core 建立及執行基本的 Hello World 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/22/2019
+ms.date: 01/07/2020
 uid: getting-started
-ms.openlocfilehash: 116a22bce80257948bfcc02c03a74a4b5568b8b5
-ms.sourcegitcommit: 4649814d1ae32248419da4e8f8242850fd8679a5
+ms.openlocfilehash: c806bd1e79dea9119f1c9e99d0a2b9742a10987a
+ms.sourcegitcommit: ef1720cb733908f36a54825d84c3461c5280bdbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975696"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737473"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
@@ -29,9 +29,9 @@ ms.locfileid: "71975696"
 
 ![Web 應用程式首頁](_static/home-page.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
-[!INCLUDE[](~/includes/3.0-SDK.md)]
+[!INCLUDE[](~/includes/3.1-SDK.md)]
 
 ## <a name="create-a-web-app-project"></a>建立 Web 應用程式專案
 
@@ -44,7 +44,7 @@ dotnet new webapp -o aspnetcoreapp
 上述命令：
 
 * 建立新的 web 應用程式。  
-* @No__t-0 參數會建立名為*aspnetcoreapp*的目錄，其中包含應用程式的來源檔案。
+* `-o aspnetcoreapp` 參數會建立名為*aspnetcoreapp*的目錄，其中包含應用程式的來源檔案。
 
 ### <a name="trust-the-development-certificate"></a>信任開發憑證
 
@@ -70,7 +70,7 @@ dotnet dev-certs https --trust
 
 上述命令會顯示以下訊息：
 
-*已要求信任 HTTPS 開發憑證。若憑證尚未受到信任，我們會執行下列命令：* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`
+*已要求信任 HTTPS 開發憑證。如果憑證尚未受到信任，我們會執行下列命令：* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`
 
 此命令可能會提示您提供密碼，以在系統金鑰鏈上安裝憑證。 若您同意信任開發憑證，請輸入您的密碼。
 
@@ -99,7 +99,7 @@ dotnet watch run
 
 [!code-cshtml[](sample/index.cshtml?highlight=9)]
 
-流覽至[https://localhost:5001](https://localhost:5001)，重新整理頁面，並確認已顯示變更。
+流覽至[https://localhost:5001](https://localhost:5001)、重新整理頁面，並確認已顯示變更。
 
 ## <a name="next-steps"></a>後續步驟
 

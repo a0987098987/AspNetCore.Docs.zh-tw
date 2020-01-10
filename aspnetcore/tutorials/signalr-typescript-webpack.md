@@ -8,12 +8,12 @@ ms.date: 11/21/2019
 no-loc:
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 331176f299c0efcd7acb19430ffddcaee7ca1cf3
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 9094a1d391c087a6f58aa9dd66e3697a79f4af86
+ms.sourcegitcommit: ef1720cb733908f36a54825d84c3461c5280bdbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357941"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737512"
 ---
 # <a name="use-aspnet-core-opno-locsignalr-with-typescript-and-webpack"></a>搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
 
@@ -241,7 +241,7 @@ dotnet new web -o SignalRWebPack
 
 1. 開啟另一個瀏覽器執行個體 (任何瀏覽器)。 在網址列中貼上 URL。
 
-1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在兩個頁面上。
+1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在這兩個頁面上。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -261,7 +261,7 @@ dotnet new web -o SignalRWebPack
 
 1. 開啟另一個瀏覽器執行個體 (任何瀏覽器)。 在網址列中貼上 URL。
 
-1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在兩個頁面上。
+1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在這兩個頁面上。
 
 ---
 
@@ -270,6 +270,8 @@ dotnet new web -o SignalRWebPack
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
+
+## <a name="prerequisites"></a>必要條件：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -474,7 +476,7 @@ dotnet new web -o SignalRWebPack
 
 1. 開啟另一個瀏覽器執行個體 (任何瀏覽器)。 在網址列中貼上 URL。
 
-1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在兩個頁面上。
+1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在這兩個頁面上。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -494,7 +496,7 @@ dotnet new web -o SignalRWebPack
 
 1. 開啟另一個瀏覽器執行個體 (任何瀏覽器)。 在網址列中貼上 URL。
 
-1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在兩個頁面上。
+1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在這兩個頁面上。
 
 ---
 

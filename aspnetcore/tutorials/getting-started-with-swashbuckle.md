@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: dea8564a1ee94d6ff1d96e9aab68205292765178
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: f3c20eb085fa5277dd37b7323b5a7d7d286bcd99
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881257"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866068"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -39,7 +39,7 @@ Swashbuckle 有三個主要元件：
   * 執行下列命令：
 
     ```powershell
-    Install-Package Swashbuckle.AspNetCore -Version 5.0.0-rc4
+    Install-Package Swashbuckle.AspNetCore -Version 5.0.0-rc5
     ```
 
 * 從 [管理 NuGet 套件] 對話方塊中：
@@ -185,7 +185,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* 開啟 [專案選項] 對話方塊 > [組建] >[編譯器]
+* 開啟 [**專案選項**] 對話方塊 >**組建**>**編譯器**
 * 核取 [一般選項] 區段下方的 [產生 XML 文件] 方塊
 
 ::: moniker-end

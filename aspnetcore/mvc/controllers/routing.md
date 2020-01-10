@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core MVC 如何使用路由中介軟體來比對內�
 ms.author: riande
 ms.date: 12/05/2019
 uid: mvc/controllers/routing
-ms.openlocfilehash: b0cd3df6eb0efa90fc76d206413016d6c624285c
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 8cf7e74df292a614f287eff8561a22187f6558ce
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881080"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866055"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core 中的路由至控制器動作
 
@@ -111,7 +111,7 @@ routes.DefaultHandler = new MvcRouteHandler(...);
 app.UseRouter(routes.Build());
 ```
 
-`UseMvc` 不會直接定義任何路由，而是將預留位置新增至 `attribute` 路由的路由集合。 多載 `UseMvc(Action<IRouteBuilder>)` 可讓您新增自己的路由，同時支援屬性路由。  `UseMvc` 及其所有變化會新增屬性路由的預留位置；不論您如何設定`UseMvc`，一律可以使用屬性路由。 `UseMvcWithDefaultRoute` 會定義預設路由並支援屬性路由。 [屬性路由](#attribute-routing-ref-label)一節包含屬性路由的詳細資料。
+`UseMvc` 不會直接定義任何路由，而是將預留位置新增至 `attribute` 路由的路由集合。 多載 `UseMvc(Action<IRouteBuilder>)` 可讓您新增自己的路由，同時支援屬性路由。  `UseMvc` 及其所有變化都會新增屬性路由的預留位置，不論您設定 `UseMvc`的方式為何，一律可使用屬性路由。 `UseMvcWithDefaultRoute` 會定義預設路由並支援屬性路由。 [屬性路由](#attribute-routing-ref-label)一節包含屬性路由的詳細資料。
 
 <a name="routing-conventional-ref-label"></a>
 
@@ -600,7 +600,7 @@ MVC 建立所有屬性路由動作的查閱資料表，並將比對 `controller`
 `Url.Action` (`IUrlHelper` . `Action`) 及所有相關多載的基本概念，都是您想要透過指定控制器名稱和動作名稱，來指定連結的項目。
 
 > [!NOTE]
-> 使用 `Url.Action` 時，會為您指定`controller` 和 `action` 的目前路由值 (`controller` 和 `action` 的值都屬於「環境值」**和「值」** )。 方法 `Url.Action` 一律會使用 `action` 和 `controller` 的目前值，而且會產生路由至目前動作的 URL 路徑。
+> 使用 `Url.Action`時，系統會為您指定 `controller` 和 `action` 的目前路由值，`controller` 和 `action` 的值是*環境值***和***值*的一部分。 方法 `Url.Action` 一律會使用 `action` 和 `controller` 的目前值，而且會產生路由至目前動作的 URL 路徑。
 
 路由會嘗試使用環境值中的值，來填入您在產生 URL 時未提供的資訊。 使用 `{a}/{b}/{c}/{d}` 等路由和環境值 `{ a = Alice, b = Bob, c = Carol, d = David }`，路由就會有足夠的資訊來產生不含任何其他值的 URL (因為所有路由參數都具有值)。 如果您新增值 `{ d = Donovan }`，則會忽略值 `{ d = David }`，而且產生的 URL 路徑會是 `Alice/Bob/Carol/Donovan`。
 

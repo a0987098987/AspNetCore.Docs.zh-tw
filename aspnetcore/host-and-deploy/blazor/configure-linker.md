@@ -9,12 +9,12 @@ ms.date: 11/21/2019
 no-loc:
 - Blazor
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: 0bc987d72d2f684b1ecbd4a883e9a09fac7c801e
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: cdf506f0c0fa720df64e59342d352ef41271d24b
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317283"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866042"
 ---
 # <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a>設定 ASP.NET Core Blazor 的連結器
 
@@ -62,7 +62,7 @@ Blazor 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-c
     <!--
       Preserve the methods in WasmRuntime because its methods are called by 
       JavaScript client-side code to implement timers.
-      Fixes: https://github.com/aspnet/Blazor/issues/239
+      Fixes: https://github.com/dotnet/blazor/issues/239
     -->
     <type fullname="System.Threading.WasmRuntime" />
   </assembly>
@@ -100,7 +100,7 @@ Blazor 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-c
 | `all`            | 包含的所有元件 |
 | `cjk`            | *I18N.CJK .dll*          |
 | `mideast`        | *I18N.務必 .dll*      |
-| `none` (預設) | 無                    |
+| `none` (預設值) | None                    |
 | `other`          | *I18N.其他 .dll*        |
 | `rare`           | *I18N.罕見的 .dll*         |
 | `west`           | *I18N.West .dll*         |

@@ -5,12 +5,12 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 8/15/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 2fac37e7069fb2a464d4de1da8912197f7adf8a8
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 5d4251a2577111324aa2cfb715c41e3ecad5a9d1
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73761099"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722789"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
@@ -32,9 +32,13 @@ ms.locfileid: "73761099"
 
 以滑鼠右鍵按一下 *Models* 資料夾 > [新增] > [類別]。 將檔案命名為 *Movie.cs*。
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 將名為 *Movie.cs* 的檔案新增到 *Models* 資料夾。
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+以滑鼠右鍵按一下 *模型* 資料夾 **，>** **新增 > 新類別** > **空白類別**。 將檔案命名為 *Movie.cs*。
 
 ---
 
@@ -44,7 +48,7 @@ ms.locfileid: "73761099"
 
 `Movie` 類別包含 `Id` 欄位，該欄位是資料庫的必要欄位，將作為主索引鍵。
 
-[ 上的 ](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter)DateType`ReleaseDate` 屬性會指定資料的型別 (`Date`)。 使用此屬性：
+`ReleaseDate` 上的 [DateType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性會指定資料的型別 (`Date`)。 使用此屬性：
 
   * 使用者不需要在日期欄位中輸入時間資訊。
   * 只會顯示日期，不會顯示時間資訊。
@@ -55,7 +59,7 @@ ms.locfileid: "73761099"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理器主控台] (PMC)。
+從 [**工具**] 功能表中，選取 [ **NuGet 套件管理員**] > [**套件管理員主控台**] （PMC）。
 
 ![PMC 功能表](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 
@@ -67,9 +71,26 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
 上述命令會新增 EF Core SQL Server 提供者。 提供者套件會將 EF Core 套件作為相依性安裝。 其他套件會在本教學課程中稍後的 scaffolding 步驟內自動安裝。
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/add-EF-NuGet-SQLite-CLI.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+從 [**專案**] 功能表中，選取 [**管理 Nuget 套件**]。
+
+在右上方的 [**搜尋**] 欄位中，輸入 `Microsoft.EntityFrameworkCore.SQLite`，然後按下**Return**鍵進行搜尋。 選取相符的 NuGet 套件，然後按 [**新增套件**] 按鈕。
+
+![新增 Entity Framework Core NuGet 套件](~/tutorials/first-mvc-app-mac/adding-model/_static/add-nuget-packages.png)
+
+[**選取專案**] 對話方塊隨即顯示，並選取 [`MvcMovie`] 專案。 按下 [**確定]** 按鈕。
+
+將會顯示 [**接受授權**] 對話方塊。 查看所需的授權，然後按一下 [**接受**] 按鈕。
+
+重複上述步驟來安裝下列 NuGet 套件：
+ * `Microsoft.VisualStudio.Web.CodeGeneration.Design`
+ * `Microsoft.EntityFrameworkCore.SqlServer`
+ * `Microsoft.EntityFrameworkCore.Design`
 
 ---
 
@@ -93,7 +114,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
 ASP.NET Core 內建[相依性插入 (DI)](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core 資料庫內容) 必須在應用程式啟動期間向 DI 進行註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。 在本節中，您會向 DI 容器註冊資料庫內容。
 
-在 `using`Startup.cs*最上方新增下列* 陳述式：
+在 *Startup.cs* 最上方新增下列 `using` 陳述式：
 
 ```csharp
 using MvcMovie.Data;
@@ -112,7 +133,7 @@ using Microsoft.EntityFrameworkCore;
 
 ---
 
-連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
+連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core configuration system](xref:fundamentals/configuration/index) 會從 *appsettings.json* 檔案讀取連接字串。
 
 <a name="cs"></a>
 
@@ -148,7 +169,7 @@ using Microsoft.EntityFrameworkCore;
 
 完成 [新增控制器] 對話方塊：
 
-* **模型類別:** *Movie (MvcMovie.Models)*
+* **模型類別：** *Movie （MvcMovie）*
 * **資料內容類別：** *mvcmoviecoNtext.cs （MvcMovie. Data）*
 
 ![新增資料內容](adding-model/_static/dc3.png)
@@ -208,7 +229,7 @@ Visual Studio 會建立：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理器主控台] (PMC)。
+從 [**工具**] 功能表中，選取 [ **NuGet 套件管理員**] > [**套件管理員主控台**] （PMC）。
 
 在 PMC 中，輸入下列命令：
 
@@ -219,7 +240,7 @@ Update-Database
 
 * `Add-Migration InitialCreate`：產生*遷移/{timestamp} _InitialCreate .cs*遷移檔案。 `InitialCreate` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。 因為這是第一次移轉，所產生類別會包含建立資料庫結構描述的程式碼。 資料庫結構描述是以 `MvcMovieContext` 類別為基礎。
 
-* `Update-Database`：將資料庫更新為先前命令所建立的最新遷移。 此命令會執行 `Up`Migrations/{time-stamp}_InitialCreate.cs*檔案中的* 方法，其會建立資料庫。
+* `Update-Database`：將資料庫更新為先前命令所建立的最新遷移。 此命令會執行 *Migrations/{time-stamp}_InitialCreate.cs* 檔案中的 `Up` 方法，其會建立資料庫。
 
   資料庫更新命令會產生下列警告： 
 
@@ -240,7 +261,7 @@ dotnet ef database update
 
 * `ef migrations add InitialCreate`：產生*遷移/{timestamp} _InitialCreate .cs*遷移檔案。 `InitialCreate` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。 因為這是第一次移轉，所產生類別會包含建立資料庫結構描述的程式碼。 資料庫結構描述會以 `MvcMovieContext` 類別 (在 *Data/MvcMovieContext.cs* 檔案中) 中指定的模型為基礎。
 
-* `ef database update`：將資料庫更新為先前命令所建立的最新遷移。 此命令會執行 `Up`Migrations/{time-stamp}_InitialCreate.cs*檔案中的* 方法，其會建立資料庫。
+* `ef database update`：將資料庫更新為先前命令所建立的最新遷移。 此命令會執行 *Migrations/{time-stamp}_InitialCreate.cs* 檔案中的 `Up` 方法，其會建立資料庫。
 
 [!INCLUDE [ more information on the CLI tools for EF Core](~/includes/ef-cli.md)]
 
@@ -316,7 +337,7 @@ dotnet ef database update
 
 MVC 也提供將強型別模型物件傳遞至檢視的能力。 這種強型別的方法可在編譯時檢查程式碼。 此方法所使用的 scaffolding 機制 (即傳遞強型別模型)，包括 `MoviesController` 類別和檢視。
 
-檢查 `Details`Controllers/MoviesController.cs*檔案中產生的* 方法：
+檢查 *Controllers/MoviesController.cs* 檔案中產生的 `Details` 方法：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_details)]
 
@@ -355,19 +376,19 @@ return View(movie);
 @model MvcMovie.Models.Movie
    ```
 
-此 `@model` 指示詞會允許存取控制器傳遞給檢視的影片。 `Model` 物件為強型別物件。 例如，在 *Details.cshtml* 檢視中，程式碼會使用強型別的 `DisplayNameFor` 物件，將每個電影欄位傳遞至 `DisplayFor` 和 `Model` HTML 協助程式。 `Create` 與 `Edit` 方法和檢視也會傳遞 `Movie` 模型物件。
+此 `@model` 指示詞會允許存取控制器傳遞給檢視的影片。 `Model` 物件為強型別物件。 例如，在 *Details.cshtml* 檢視中，程式碼會使用強型別的 `Model` 物件，將每個電影欄位傳遞至 `DisplayNameFor` 和 `DisplayFor` HTML 協助程式。 `Create` 與 `Edit` 方法和檢視也會傳遞 `Movie` 模型物件。
 
-檢查電影控制器中的 *Index.cshtml* 檢視和 `Index` 方法。 請注意程式碼如何在呼叫 `List` 方法時建立 `View` 物件。 此程式碼會從 `Movies` 動作方法將 `Index` 清單傳遞至檢視：
+檢查電影控制器中的 *Index.cshtml* 檢視和 `Index` 方法。 請注意程式碼如何在呼叫 `View` 方法時建立 `List` 物件。 此程式碼會從 `Index` 動作方法將 `Movies` 清單傳遞至檢視：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_index)]
 
-建立影片控制器時，scaffolding 會在 `@model`Index.cshtml*檔案的頂端包含下列* 陳述式：
+建立影片控制器時，scaffolding 會在 *Index.cshtml* 檔案的頂端包含下列 `@model` 陳述式：
 
 <!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
 
-`@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影清單。 例如，在 *Index.cshtml* 檢視中，程式碼會透過強型別 `foreach` 物件的 `Model` 陳述式循環存取電影：
+`@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影清單。 例如，在 *Index.cshtml* 檢視中，程式碼會透過強型別 `Model` 物件的 `foreach` 陳述式循環存取電影：
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
@@ -419,7 +440,7 @@ return View(movie);
 
 完成 [新增控制器] 對話方塊：
 
-* **模型類別:** *Movie (MvcMovie.Models)*
+* **模型類別：** *Movie （MvcMovie）*
 * **資料內容類別：** 選取 **+** 圖示並新增預設的 **MvcMovie.Models.MvcMovieContext**
 
 ![新增資料內容](adding-model/_static/dc.png)
@@ -524,7 +545,7 @@ Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理器主控台] (PMC)。
+1. 從 [**工具**] 功能表中，選取 [ **NuGet 套件管理員**] > [**套件管理員主控台**] （PMC）。
 
    ![PMC 功能表](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 
@@ -537,9 +558,9 @@ Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
 
    `Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。
 
-   資料庫結構描述是以 `MvcMovieContext` 類別為基礎。 `Initial` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱 <xref:data/ef-mvc/migrations>。
+   資料庫結構描述是以 `MvcMovieContext` 類別為基礎。 `Initial` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
 
-   `Update-Database` 命令會執行 `Up`Migrations/{時間戳記}_InitialCreate.cs*檔案中的* 方法，以建立資料庫。
+   `Update-Database` 命令會執行 *Migrations/{時間戳記}_InitialCreate.cs* 檔案中的 `Up` 方法，以建立資料庫。
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -569,7 +590,7 @@ Scaffolding 工具會自動建立 DB 內容，並向 DI 容器註冊該內容。
 
 上述程式碼會建立實體集的 [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
 
-連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
+連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core configuration system](xref:fundamentals/configuration/index) 會從 *appsettings.json* 檔案讀取連接字串。
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -581,7 +602,7 @@ Scaffolding 工具會自動建立 DB 內容，並向 DI 容器註冊該內容。
 
 ### <a name="test-the-app"></a>測試應用程式
 
-* 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL (`http://localhost:port/movies`)。
+* 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL ( `http://localhost:port/movies` )。
 
 如果您收到類似如下的資料庫例外狀況：
 
@@ -625,7 +646,7 @@ Login failed for user 'User-name'.
 
 MVC 也提供將強型別模型物件傳遞至檢視的能力。 強型別方法可讓程式碼的編譯時期檢查變得更佳。 Scaffolding 機制在建立方法和檢視時，已使用此方法 (也就是傳遞強型別模型) 來搭配 `MoviesController` 類別和檢視。
 
-檢查 `Details`Controllers/MoviesController.cs*檔案中產生的* 方法：
+檢查 *Controllers/MoviesController.cs* 檔案中產生的 `Details` 方法：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_details)]
 
@@ -658,25 +679,25 @@ return View(movie);
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
 
-藉由在檢視檔案的最上方包含 `@model` 陳述式，您可以指定檢視預期要有的物件類型。 當您建立電影控制器時，`@model`Details.cshtml*檔案的最上方會自動包含下列* 陳述式：
+藉由在檢視檔案的最上方包含 `@model` 陳述式，您可以指定檢視預期要有的物件類型。 當您建立電影控制器時，*Details.cshtml* 檔案的最上方會自動包含下列 `@model` 陳述式：
 
 ```HTML
 @model MvcMovie.Models.Movie
    ```
 
-這個 `@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影。 例如，在 *Details.cshtml* 檢視中，程式碼會使用強型別的 `DisplayNameFor` 物件，將每個電影欄位傳遞至 `DisplayFor` 和 `Model` HTML 協助程式。 `Create` 與 `Edit` 方法和檢視也會傳遞 `Movie` 模型物件。
+這個 `@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影。 例如，在 *Details.cshtml* 檢視中，程式碼會使用強型別的 `Model` 物件，將每個電影欄位傳遞至 `DisplayNameFor` 和 `DisplayFor` HTML 協助程式。 `Create` 與 `Edit` 方法和檢視也會傳遞 `Movie` 模型物件。
 
-檢查電影控制器中的 *Index.cshtml* 檢視和 `Index` 方法。 請注意程式碼如何在呼叫 `List` 方法時建立 `View` 物件。 此程式碼會從 `Movies` 動作方法將 `Index` 清單傳遞至檢視：
+檢查電影控制器中的 *Index.cshtml* 檢視和 `Index` 方法。 請注意程式碼如何在呼叫 `View` 方法時建立 `List` 物件。 此程式碼會從 `Index` 動作方法將 `Movies` 清單傳遞至檢視：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_index)]
 
-當您建立電影控制器時，Scaffolding 會在 `@model`Index.cshtml*檔案的最上方自動包含下列* 陳述式：
+當您建立電影控制器時，Scaffolding 會在 *Index.cshtml* 檔案的最上方自動包含下列 `@model` 陳述式：
 
 <!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
 
-`@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影清單。 例如，在 *Index.cshtml* 檢視中，程式碼會透過強型別 `foreach` 物件的 `Model` 陳述式循環存取電影：
+`@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影清單。 例如，在 *Index.cshtml* 檢視中，程式碼會透過強型別 `Model` 物件的 `foreach` 陳述式循環存取電影：
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
@@ -688,7 +709,7 @@ return View(movie);
 * [全球化和當地語系化](xref:fundamentals/localization)
 
 > [!div class="step-by-step"]
-> [上一步：新增檢視](adding-view.md)
-> [下一步：使用 SQL](working-with-sql.md)
+> [先前加入 View](adding-view.md)
+> 下一個使用[資料庫](working-with-sql.md)
 
 ::: moniker-end

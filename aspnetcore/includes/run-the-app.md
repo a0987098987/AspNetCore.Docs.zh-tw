@@ -19,7 +19,7 @@
 
   [!INCLUDE[](~/includes/trustCertMac.md)]
 
-* 在 Visual Studio 中，按**Alt-Cmd-enter**鍵，以在沒有偵錯工具的情況下執行。 或者，流覽至功能表列並移至 [**執行]，> 啟動但不進行調試**。
+* 在 Visual Studio 中，按下 [**選擇-Cmd-Return** ] 以執行而不搭配偵錯工具。 或者，流覽至功能表列並移至 [**執行]，> 啟動但不進行調試**。
 
   Visual Studio 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)啟動瀏覽器，然後巡覽至 `http://localhost:5001`。
 

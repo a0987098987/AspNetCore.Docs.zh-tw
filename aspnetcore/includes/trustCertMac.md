@@ -1,21 +1,15 @@
-* 藉由執行下列命令來信任 HTTPS 開發憑證：
+Visual Studio for Mac 會顯示下列快顯視窗：
 
-    ```dotnetcli
-    dotnet dev-certs https --trust
-    ```
+![找不到 HTTPS 開發憑證。 您要安裝並信任憑證嗎？](~/getting-started/_static/trustCertMac.png)
 
-* 上述命令會顯示以下輸出：
+如果您信任開發憑證，請選取 **[是]** 。
 
-    ```console
-    Trusting the HTTPS development certificate was requested. If the certificate 
-    is not already trusted we will run the following command:
-    'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain 
-    <<certificate>>'
-    This command might prompt you for your password to install the certificate on the 
-    system keychain.
-    The HTTPS developer certificate was generated successfully.
-    ```
+此時會顯示下列對話方塊：
 
-* 出現提示時，請輸入系統管理員使用者名稱和密碼。  該憑證現在將會被安裝且受到信任。
+![安全性警告對話方塊](~/getting-started/_static/certMac.png)
 
-    如需詳細資訊，請參閱[信任 ASP.NET Core HTTPS 開發憑證](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)。
+輸入您的密碼，然後選取 **[確定]**
+
+若您同意信任開發憑證，請選取 [是]。
+
+如需詳細資訊，請參閱[信任 ASP.NET CORE HTTPS 開發憑證](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)

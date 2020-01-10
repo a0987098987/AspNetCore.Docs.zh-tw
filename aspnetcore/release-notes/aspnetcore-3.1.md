@@ -1,5 +1,5 @@
 ---
-title: ASP.NET Core 3.1 的新功能
+title: 3\.1 ASP.NET Core 的新功能
 author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.1 中的新功能。
 ms.author: riande
@@ -9,14 +9,14 @@ no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 89c676b96ef66f648544a8a884593bdafa3876de
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 06c1d2596bff34bbfe3b55e782ea2d24321dd839
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944222"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722748"
 ---
-# <a name="whats-new-in-aspnet-core-31"></a>ASP.NET Core 3.1 的新功能
+# <a name="whats-new-in-aspnet-core-31"></a>3\.1 ASP.NET Core 的新功能
 
 本文將重點放在 ASP.NET Core 3.1 中最重要的變更，並提供相關檔的連結。
 
@@ -38,7 +38,7 @@ Blazor 伺服器應用程式現在可以在初始轉譯期間，將參數傳遞�
 
 例如，已建立一個具有遞增量（`IncrementAmount`）的 `Counter` 元件：
 
-```razor
+```cshtml
 <component type="typeof(Counter)" render-mode="ServerPrerendered" 
     param-IncrementAmount="10" />
 ```

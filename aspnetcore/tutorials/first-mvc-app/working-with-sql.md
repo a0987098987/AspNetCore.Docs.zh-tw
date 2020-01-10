@@ -5,20 +5,20 @@ description: 了解如何在 ASP.NET Core MVC 應用程式中使用 SQL Server L
 ms.author: riande
 ms.date: 8/16/2019
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: de392f4220cf0182d02a20f387164d2f4b184b58
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: d556f07111fb2022a1c2f1a066459566e302835d
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72289089"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722763"
 ---
 # <a name="work-with-sql-in-aspnet-core"></a>在 ASP.NET Core 中使用 SQL
 
 ::: moniker range=">= aspnetcore-3.0"
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-`MvcMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 [Startup.cs](xref:fundamentals/dependency-injection) 檔案的 `ConfigureServices` 方法中，以*相依性插入*容器登錄資料庫內容：
+`MvcMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 檔案的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -74,7 +74,7 @@ LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發�
 
 ## <a name="seed-the-database"></a>植入資料庫
 
-在 `SeedData`Models*資料夾中建立名為* 的新類別。 使用下列程式碼取代產生的程式碼：
+在 *Models* 資料夾中建立名為 `SeedData` 的新類別。 使用下列程式碼取代產生的程式碼：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Models/SeedData.cs?name=snippet_1)]
 
@@ -128,9 +128,9 @@ if (context.Movie.Any())
 
 ::: moniker range="< aspnetcore-3.0"
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-`MvcMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 [Startup.cs](xref:fundamentals/dependency-injection) 檔案的 `ConfigureServices` 方法中，以*相依性插入*容器登錄資料庫內容：
+`MvcMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 檔案的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -186,7 +186,7 @@ LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發�
 
 ## <a name="seed-the-database"></a>植入資料庫
 
-在 `SeedData`Models*資料夾中建立名為* 的新類別。 使用下列程式碼取代產生的程式碼：
+在 *Models* 資料夾中建立名為 `SeedData` 的新類別。 使用下列程式碼取代產生的程式碼：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/SeedData.cs?name=snippet_1)]
 
@@ -231,7 +231,7 @@ if (context.Movie.Any())
 
 應用程式會顯示植入的資料。
 
-![在 Microsoft Edge 中開啟 MVC 電影應用程式顯示電影資料](working-with-sql/_static/m55.png)
+![在 Microsoft Edge 中開啟 MVC 電影應用程式顯示電影資料](working-with-sql/_static/m55_mac.png)
 
 > [!div class="step-by-step"]
 > [上一頁](adding-model.md)

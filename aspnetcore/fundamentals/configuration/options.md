@@ -5,14 +5,14 @@ description: 了解如何使用選項模式來代表 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/18/2019
+ms.date: 01/07/2019
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 1e0bbe041223d376a778c6a326fcee4d254a9127
-ms.sourcegitcommit: c815a9465e7b1bab44ce1643ec345b33e6cf1598
+ms.openlocfilehash: 98fe30fbc424dd51ce8f8319b7ce959fd755c480
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75606775"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722735"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -54,7 +54,7 @@ ASP.NET Core 應用程式中會隱含地參考[microsoft.extensions.options.conf
 
 ## <a name="general-options-configuration"></a>一般選項設定
 
-一般選項設定是以範例應用程式中的範例 &num;1 來示範。
+一般選項設定會示範為範例應用程式中的範例1。
 
 選項類別必須為非抽象，且具有公用的無參數建構函式。 下列 `MyOptions` 類別有兩個屬性，`Option1` 和 `Option2`。 設定預設值為選擇性，但在下列範例中，類別建構函式會設定 `Option1` 的預設值。 `Option2` 的預設值直接藉由初始化屬性來設定 (*Models/MyOptions.cs*)：
 
@@ -98,7 +98,7 @@ option1 = value1_from_json, option2 = -1
 
 ## <a name="configure-simple-options-with-a-delegate"></a>使用委派設定簡單的選項
 
-使用委派設定簡單的選項是以範例應用程式中的範例 &num;2 來示範。
+使用委派來設定簡單的選項，會示範為範例應用程式中的範例2。
 
 使用委派來設定選項值。 範例應用程式使用 `MyOptionsWithDelegateConfig` 類別 (*Models/MyOptionsWithDelegateConfig.cs*)：
 
@@ -128,7 +128,7 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 ## <a name="suboptions-configuration"></a>子選項組態
 
-子選項組態是以範例應用程式中的範例 &num;3 來示範。
+子選項設定會示範為範例應用程式中的範例3。
 
 應用程式應該建立屬於應用程式中特定案例群組 (類別) 的選項類別。 需要組態值的應用程式組件應該只能存取它們使用的設定值。
 
@@ -164,7 +164,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="options-injection"></a>選項插入
 
-選項插入會在範例應用程式中示範為範例 &num;4。
+範例應用程式中的範例4示範了選項插入。
 
 將 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 插入：
 
@@ -189,7 +189,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>使用 IOptionsSnapshot 重新載入設定資料
 
-使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 重新載入組態資料是以範例應用程式中的範例 &num;5 來示範。
+範例應用程式中的範例5示範使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 重載設定資料。
 
 使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>，在要求的存留期記憶體取和快取時，會針對每個要求計算一次的選項。
 
@@ -220,9 +220,9 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 ## <a name="named-options-support-with-iconfigurenamedoptions"></a>IConfigureNamedOptions 的具名選項支援
 
-<xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 &num;6 來示範。
+範例應用程式中的範例6示範了 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的命名選項支援。
 
-「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，會使用 [OptionsServiceCollectionExtensions.Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*) 來宣告具名選項，而前者又會呼叫 [ConfigureNamedOptions\<TOptions>.Configure](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*) 擴充方法：
+命名選項支援可讓應用程式區別已命名的選項設定。 在範例應用程式中，名稱為 options 的宣告為[optionsservicecollectionextensions.configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[configurenamedoptions .configure\<TOptions >。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 已命名的選項會區分大小寫。
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
@@ -478,7 +478,7 @@ public void Configure(IApplicationBuilder app,
 
 ## <a name="general-options-configuration"></a>一般選項設定
 
-一般選項設定是以範例應用程式中的範例 &num;1 來示範。
+一般選項設定會示範為範例應用程式中的範例1。
 
 選項類別必須為非抽象，且具有公用的無參數建構函式。 下列 `MyOptions` 類別有兩個屬性，`Option1` 和 `Option2`。 設定預設值為選擇性，但在下列範例中，類別建構函式會設定 `Option1` 的預設值。 `Option2` 的預設值直接藉由初始化屬性來設定 (*Models/MyOptions.cs*)：
 
@@ -522,7 +522,7 @@ option1 = value1_from_json, option2 = -1
 
 ## <a name="configure-simple-options-with-a-delegate"></a>使用委派設定簡單的選項
 
-使用委派設定簡單的選項是以範例應用程式中的範例 &num;2 來示範。
+使用委派來設定簡單的選項，會示範為範例應用程式中的範例2。
 
 使用委派來設定選項值。 範例應用程式使用 `MyOptionsWithDelegateConfig` 類別 (*Models/MyOptionsWithDelegateConfig.cs*)：
 
@@ -552,7 +552,7 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 ## <a name="suboptions-configuration"></a>子選項組態
 
-子選項組態是以範例應用程式中的範例 &num;3 來示範。
+子選項設定會示範為範例應用程式中的範例3。
 
 應用程式應該建立屬於應用程式中特定案例群組 (類別) 的選項類別。 需要組態值的應用程式組件應該只能存取它們使用的設定值。
 
@@ -588,7 +588,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="options-injection"></a>選項插入
 
-選項插入會在範例應用程式中示範為範例 &num;4。
+範例應用程式中的範例4示範了選項插入。
 
 將 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 插入：
 
@@ -613,7 +613,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>使用 IOptionsSnapshot 重新載入設定資料
 
-使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 重新載入組態資料是以範例應用程式中的範例 &num;5 來示範。
+範例應用程式中的範例5示範使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 重載設定資料。
 
 使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>，在要求的存留期記憶體取和快取時，會針對每個要求計算一次的選項。
 
@@ -644,9 +644,9 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 ## <a name="named-options-support-with-iconfigurenamedoptions"></a>IConfigureNamedOptions 的具名選項支援
 
-<xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 &num;6 來示範。
+範例應用程式中的範例6示範了 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的命名選項支援。
 
-「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，會使用 [OptionsServiceCollectionExtensions.Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*) 來宣告具名選項，而前者又會呼叫 [ConfigureNamedOptions\<TOptions>.Configure](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*) 擴充方法：
+命名選項支援可讓應用程式區別已命名的選項設定。 在範例應用程式中，名稱為 options 的宣告為[optionsservicecollectionextensions.configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[configurenamedoptions .configure\<TOptions >。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 已命名的選項會區分大小寫。
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
@@ -900,7 +900,7 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 
 ## <a name="general-options-configuration"></a>一般選項設定
 
-一般選項設定是以範例應用程式中的範例 &num;1 來示範。
+一般選項設定會示範為範例應用程式中的範例1。
 
 選項類別必須為非抽象，且具有公用的無參數建構函式。 下列 `MyOptions` 類別有兩個屬性，`Option1` 和 `Option2`。 設定預設值為選擇性，但在下列範例中，類別建構函式會設定 `Option1` 的預設值。 `Option2` 的預設值直接藉由初始化屬性來設定 (*Models/MyOptions.cs*)：
 
@@ -944,7 +944,7 @@ option1 = value1_from_json, option2 = -1
 
 ## <a name="configure-simple-options-with-a-delegate"></a>使用委派設定簡單的選項
 
-使用委派設定簡單的選項是以範例應用程式中的範例 &num;2 來示範。
+使用委派來設定簡單的選項，會示範為範例應用程式中的範例2。
 
 使用委派來設定選項值。 範例應用程式使用 `MyOptionsWithDelegateConfig` 類別 (*Models/MyOptionsWithDelegateConfig.cs*)：
 
@@ -974,7 +974,7 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 ## <a name="suboptions-configuration"></a>子選項組態
 
-子選項組態是以範例應用程式中的範例 &num;3 來示範。
+子選項設定會示範為範例應用程式中的範例3。
 
 應用程式應該建立屬於應用程式中特定案例群組 (類別) 的選項類別。 需要組態值的應用程式組件應該只能存取它們使用的設定值。
 
@@ -1010,7 +1010,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a>檢視模型提供的選項或使用直接檢視插入提供的選項
 
-檢視模型提供的選項或使用直接檢視插入提供的選項是以範例應用程式中的範例 &num;4 來示範。
+視圖模型或直接視圖插入所提供的選項，在範例應用程式中會以範例4來示範。
 
 可以在檢視模型中提供選項，或藉由將 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 直接插入至檢視來提供選項 (*Pages/Index.cshtml.cs*)：
 
@@ -1030,7 +1030,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>使用 IOptionsSnapshot 重新載入設定資料
 
-使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 重新載入組態資料是以範例應用程式中的範例 &num;5 來示範。
+範例應用程式中的範例5示範使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 重載設定資料。
 
 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 支援以最小的處理負擔來重新載入選項。
 
@@ -1058,9 +1058,9 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 ## <a name="named-options-support-with-iconfigurenamedoptions"></a>IConfigureNamedOptions 的具名選項支援
 
-<xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 &num;6 來示範。
+範例應用程式中的範例6示範了 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的命名選項支援。
 
-「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，會使用 [OptionsServiceCollectionExtensions.Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*) 來宣告具名選項，而前者又會呼叫 [ConfigureNamedOptions\<TOptions>.Configure](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*) 擴充方法：
+命名選項支援可讓應用程式區別已命名的選項設定。 在範例應用程式中，名稱為 options 的宣告為[optionsservicecollectionextensions.configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[configurenamedoptions .configure\<TOptions >。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 已命名的選項會區分大小寫。
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 

@@ -5,16 +5,16 @@ description: 這一系列的教學課程會示範如何使用 ASP.NET Core 中�
 ms.author: riande
 ms.date: 11/12/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: b651437b698d01310f90c5f14832616c1896e6c0
-ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
+ms.openlocfilehash: 6e1d58ccd83f7d7c1083dc2bf9ce7476650812a1
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74959095"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722991"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 此教學課程是系列中的第一個課程，教導您建置 ASP.NET Core Razor Pages Web 應用程式的基本概念。
@@ -56,7 +56,7 @@ ms.locfileid: "74959095"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案]。
+* 從**Visual Studio 的**[檔案] 功能表中，選取 [**新增**>**專案**]。
 * 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]。
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2.1.png)
 * 將專案命名為 **RazorPagesMovie**。 請務必將專案命名為 *RazorPagesMovie*，以便在您複製並貼上程式碼時，名稱空間會相符。
@@ -68,7 +68,7 @@ ms.locfileid: "74959095"
 
   下列起始專案會隨即建立：
 
-  ![方案總管](razor-pages-start/_static/se2.2.png)
+  ![底下提供說明，包括方案總管](razor-pages-start/_static/se2.2.png)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -92,26 +92,21 @@ ms.locfileid: "74959095"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 [檔案] > [新增解決方案]。
+* 選取 **[** 檔案] > [**新增方案**]。
 
 ![macOS 新增方案](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* 選取 [.NET Core] > [應用程式] > [Web 應用程式] > [下一步]。
+* 選取  **.Net Core** >**應用**程式 > **Web 應用程式**  **> 下一步**。
 
   ![macOS [新增專案] 對話方塊](razor-pages-start/_static/webapp.png)
 
-* 在 [設定**您的新 ASP.NET Core WEB API** ] 對話方塊中，將 [**目標 Framework** ] 設為 [ **.net Core 3.1**]。
+* 在 [設定**新的 Web 應用程式**] 對話方塊中，將 [**目標 Framework** ] 設為 [ **.net Core 3.1**]。
 
-  ![macOS .NET Core 3.0 選取項目](razor-pages-start/_static/targetframework3.png)
+  ![macOS .NET Core 3.1 選項](razor-pages-start/_static/targetframework3.png)
 
 * 將專案命名為 **RazorPagesMovie**，然後選取 [建立]。
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
-
-
-## <a name="open-the-project"></a>開啟專案
-
-從 Visual Studio 中，選取 [檔案] > [開啟]，然後選取 *RazorPagesMovie.csproj* 檔案。
 
 <!-- End of VS tabs -->
 
@@ -202,7 +197,7 @@ ms.locfileid: "74959095"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案]。
+* 從**Visual Studio 的**[檔案] 功能表中，選取 [**新增**>**專案**]。
 
 * 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]。
 
@@ -218,7 +213,7 @@ ms.locfileid: "74959095"
 
   下列起始專案會隨即建立：
 
-  ![方案總管](razor-pages-start/_static/se2.2.png)
+  ![底下提供說明，包括方案總管](razor-pages-start/_static/se2.2.png)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -242,19 +237,21 @@ ms.locfileid: "74959095"
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-從終端機中，執行下列命令：
+* 選取 **[** 檔案] > [**新增方案**]。
 
-<!-- TODO: update these instruction once mac support 2.2 projects -->
+![macOS 新增方案](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-```dotnetcli
-dotnet new webapp -o RazorPagesMovie
-```
+* 選取  **.Net Core** >**應用**程式 > **Web 應用程式**  **> 下一步**。
 
-上述命令使用 [.NET Core CLI](/dotnet/core/tools/dotnet) 來建立 Razor Pages 專案。
+  ![macOS [新增專案] 對話方塊](razor-pages-start/_static/webapp.png)
 
-## <a name="open-the-project"></a>開啟專案
+* 在 [設定**您的新 ASP.NET Core WEB API** ] 對話方塊中，將 [**目標 Framework** ] 設為 [ **.net Core 3.1**]。
 
-從 Visual Studio 中，選取 [檔案] > [開啟]，然後選取 *RazorPagesMovie.csproj* 檔案。
+  ![macOS .NET Core 3.0 選取項目](razor-pages-start/_static/targetframework3.png)
+
+* 將專案命名為 **RazorPagesMovie**，然後選取 [建立]。
+
+  ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 
 <!-- End of VS tabs -->
 

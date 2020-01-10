@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/16/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: f2494a5815396e693f6fd2a45ad78ebffe4d54a3
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 482f8e28c23c621cecaf9ce111d89e9166ea6d85
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358078"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722722"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>在 ASP.NET Core 中使用 IHttpClientFactory 發出 HTTP 要求
 
@@ -300,7 +300,7 @@ public class ValuesController : ControllerBase
 
 - 當應用程式啟動時，建立 `SocketsHttpHandler` 的實例，並在應用程式的生命週期中使用它。
 - 根據 DNS 重新整理時間，將 <xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime> 設定為適當的值。
-- 視需要使用 `new HttpClient(handler, dispostHandler: false)` 建立 `HttpClient` 實例。
+- 視需要使用 `new HttpClient(handler, disposeHandler: false)` 建立 `HttpClient` 實例。
 
 上述方法可解決 `IHttpClientFactory` 以類似的方式解決的資源管理問題。
 
@@ -602,7 +602,7 @@ public class ValuesController : ControllerBase
 
 - 當應用程式啟動時，建立 `SocketsHttpHandler` 的實例，並在應用程式的生命週期中使用它。
 - 根據 DNS 重新整理時間，將 <xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime> 設定為適當的值。
-- 視需要使用 `new HttpClient(handler, dispostHandler: false)` 建立 `HttpClient` 實例。
+- 視需要使用 `new HttpClient(handler, disposeHandler: false)` 建立 `HttpClient` 實例。
 
 上述方法可解決 `IHttpClientFactory` 以類似的方式解決的資源管理問題。
 
@@ -910,7 +910,7 @@ public class ValuesController : ControllerBase
 
 - 當應用程式啟動時，建立 `SocketsHttpHandler` 的實例，並在應用程式的生命週期中使用它。
 - 根據 DNS 重新整理時間，將 <xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime> 設定為適當的值。
-- 視需要使用 `new HttpClient(handler, dispostHandler: false)` 建立 `HttpClient` 實例。
+- 視需要使用 `new HttpClient(handler, disposeHandler: false)` 建立 `HttpClient` 實例。
 
 上述方法可解決 `IHttpClientFactory` 以類似的方式解決的資源管理問題。
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/08/2020
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 897ec2f012adcd325ca0472f381f129bc2b62854
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 49229b5db4d58f25f86425f8622d12c9107262bd
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828876"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914217"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
@@ -104,7 +104,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 <xref:Microsoft.Extensions.Hosting.BackgroundService> 是用來執行長時間執行 <xref:Microsoft.Extensions.Hosting.IHostedService>的基類。
 
-呼叫[ExecuteAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.BackgroundService.ExecuteAsync*)以執行背景服務。 此實作為傳回的 <xref:System.Threading.Tasks.Task>，代表背景服務的整個存留期。 在[ExecuteAsync 變成非同步](https://github.com/aspnet/Extensions/issues/2149)（例如藉由呼叫 `await`）之前，不會再啟動任何進一步的服務。 請避免在 `ExecuteAsync`中執行長時間的封鎖初始化工作。 [StopAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.BackgroundService.StopAsync*)中的主機區塊，等待 `ExecuteAsync` 完成。
+呼叫[ExecuteAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.BackgroundService.ExecuteAsync*)以執行背景服務。 此實作為傳回的 <xref:System.Threading.Tasks.Task>，代表背景服務的整個存留期。 在[ExecuteAsync 變成非同步](https://github.com/dotnet/extensions/issues/2149)（例如藉由呼叫 `await`）之前，不會再啟動任何進一步的服務。 請避免在 `ExecuteAsync`中執行長時間的封鎖初始化工作。 [StopAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.BackgroundService.StopAsync*)中的主機區塊，等待 `ExecuteAsync` 完成。
 
 呼叫[IHostedService. StopAsync](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*)時，會觸發解除標記。 您的 `ExecuteAsync` 的執行應該會在引發解除標記時立即完成，以便正常地關閉服務。 否則，服務強制會在關機時間關閉。 如需詳細資訊，請參閱[IHostedService 介面](#ihostedservice-interface)一節。
 

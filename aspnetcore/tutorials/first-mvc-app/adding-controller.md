@@ -5,12 +5,12 @@ description: 了解如何將控制器新增至簡單的 ASP.NET Core MVC 應用�
 ms.author: riande
 ms.date: 08/05/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: fe0c1d3c066d6ab20387391e15c3a7cfe684c61e
-ms.sourcegitcommit: 077b45eceae044475f04c1d7ef2d153d7c0515a8
+ms.openlocfilehash: fb670902b0dafa7dce2b3372e550095387844936
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2019
-ms.locfileid: "75542699"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914242"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>將控制器新增至 ASP.NET Core MVC 應用程式
 
@@ -106,11 +106,11 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
    `https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-（將 `{PORT}` 取代為您的埠號碼）。您可以在 URL 中嘗試 `name` 和 `numtimes` 的不同值。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
+(Replace `{PORT}` with your port number.) You can try different values for `name` and `numtimes` in the URL. MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
 
-![顯示「Hello Rick」之應用程式回應的瀏覽器視窗，Numtimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![Browser window showing an application response of Hello Rick, NumTimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
-在上方的影像中，不會使用 URL 區段 (`Parameters`) ，`name` 和 `numTimes` 則以[查詢字串](https://wikipedia.org/wiki/Query_string)的方式傳遞。 上述 URL 中的 `?` (問號) 是分隔符號，隨後接著查詢字串。 `&` 字元可分隔查詢字串。
+In the image above, the URL segment (`Parameters`) isn't used, the `name` and `numTimes` parameters are passed in the [query string](https://wikipedia.org/wiki/Query_string). The `?` (question mark) in the above URL is a separator, and the query string follows. The `&` character separates field-value pairs.
 
 以下列程式碼取代 `Welcome` 方法：
 
@@ -225,11 +225,11 @@ Remove link for simplified tutorial.
 
    `https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-（將 `{PORT}` 取代為您的埠號碼）。您可以在 URL 中嘗試 `name` 和 `numtimes` 的不同值。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
+(Replace `{PORT}` with your port number.) You can try different values for `name` and `numtimes` in the URL. MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
 
-![顯示「Hello Rick」之應用程式回應的瀏覽器視窗，Numtimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![Browser window showing an application response of Hello Rick, NumTimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
-在上方的影像中，不會使用 URL 區段 (`Parameters`) ，`name` 和 `numTimes` 則以[查詢字串](https://wikipedia.org/wiki/Query_string)的方式傳遞。 上述 URL 中的 `?` (問號) 是分隔符號，隨後接著查詢字串。 `&` 字元可分隔查詢字串。
+In the image above, the URL segment (`Parameters`) isn't used, the `name` and `numTimes` parameters are passed in the [query string](https://wikipedia.org/wiki/Query_string). The `?` (question mark) in the above URL is a separator, and the query string follows. The `&` character separates field-value pairs.
 
 以下列程式碼取代 `Welcome` 方法：
 

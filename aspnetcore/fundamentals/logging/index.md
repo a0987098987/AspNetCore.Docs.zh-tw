@@ -1,5 +1,5 @@
 ---
-title: .NET Core 與 ASP.NET Core 中的記錄
+title: 登入 .NET Core 與 ASP.NET Core
 author: rick-anderson
 description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提供的記錄架構。
 monikerRange: '>= aspnetcore-2.1'
@@ -7,14 +7,14 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/08/2020
 uid: fundamentals/logging/index
-ms.openlocfilehash: d9ef6694b6c0b0a88b13d60915be6e04ebdffb28
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: f21559e43ae004c81abc18fe8a768d4145ffb184
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829045"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914234"
 ---
-# <a name="logging-in-net-core-and-aspnet-core"></a>.NET Core 與 ASP.NET Core 中的記錄
+# <a name="logging-in-net-core-and-aspnet-core"></a>登入 .NET Core 與 ASP.NET Core
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Steve Smith](https://ardalis.com/)
 
@@ -131,7 +131,7 @@ ms.locfileid: "75829045"
 
 [!code-csharp[](index/samples_snapshot/3.x/TodoApiSample/Program.cs?highlight=9,10)]
 
-不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來記錄 `CreateHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
+不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來登入 `CreateHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
 
 ```csharp
 using System;
@@ -231,7 +231,7 @@ public class Program
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
 
-不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來記錄 `CreateWebHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
+不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來登入 `CreateWebHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
 
 ```csharp
 using System;
@@ -485,7 +485,7 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 在上述程式碼中，第一個參數是[記錄事件識別碼](#log-event-id)。 第二個參數是訊息範本，其中的預留位置會置入其餘方法參數所提供的引數值。 此文章稍後的[訊息範本小節](#log-message-template)將詳細說明方法參數。
 
-在方法名稱中包含層級的記錄方法 (例如 `LogInformation` 與 `LogWarning`) 是 [ILogger 的擴充方法](xref:Microsoft.Extensions.Logging.LoggerExtensions)。 這些方法會呼叫接受 `Log` 參數的 `LogLevel`。 您可以直接呼叫 `Log` 方法，而不是呼叫其中一個擴充方法，但語法會更複雜。 如需詳細資訊，請參閱 <xref:Microsoft.Extensions.Logging.ILogger> 與[記錄器延伸模組原始程式碼](https://github.com/aspnet/Extensions/blob/release/2.2/src/Logging/Logging.Abstractions/src/LoggerExtensions.cs)。
+在方法名稱中包含層級的記錄方法 (例如 `LogInformation` 與 `LogWarning`) 是 [ILogger 的擴充方法](xref:Microsoft.Extensions.Logging.LoggerExtensions)。 這些方法會呼叫接受 `Log` 參數的 `LogLevel`。 您可以直接呼叫 `Log` 方法，而不是呼叫其中一個擴充方法，但語法會更複雜。 如需詳細資訊，請參閱 <xref:Microsoft.Extensions.Logging.ILogger> 與[記錄器延伸模組原始程式碼](https://github.com/dotnet/extensions/blob/release/2.2/src/Logging/Logging.Abstractions/src/LoggerExtensions.cs)。
 
 ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴重性。
 
@@ -1030,7 +1030,7 @@ dotnet tool install --global dotnet-trace
 * [效能分析公用程式追蹤（dotnet 追蹤）](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md) （dotnet/診斷 GitHub 存放庫檔）
 * [LoggingEventSource 類別](xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource)（.Net API 瀏覽器）
 * <xref:System.Diagnostics.Tracing.EventLevel>
-* [LoggingEventSource 參考來源（3.0）](https://github.com/aspnet/Extensions/blob/release/3.0/src/Logging/Logging.EventSource/src/LoggingEventSource.cs) &ndash; 若要取得不同版本的參考來源，請將分支變更為 `release/{Version}`，其中 `{Version}` 是所需 ASP.NET Core 的版本。
+* [LoggingEventSource 參考來源（3.0）](https://github.com/dotnet/extensions/blob/release/3.0/src/Logging/Logging.EventSource/src/LoggingEventSource.cs) &ndash; 若要取得不同版本的參考來源，請將分支變更為 `release/{Version}`，其中 `{Version}` 是所需 ASP.NET Core 的版本。
 * [Perfview](#perfview) &ndash; 用於查看事件來源追蹤。
 
 #### <a name="perfview"></a>Perfview

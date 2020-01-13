@@ -1,5 +1,5 @@
 ---
-title: 教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
+title: 教學課程：瞭解 advanced 案例-使用 EF Core ASP.NET MVC
 description: 本教學課程介紹一些實用主題，這些主題超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念。
 author: rick-anderson
 ms.author: riande
@@ -7,14 +7,14 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: d4a2aad6d93cc9a53c730323620de59fead6d5ab
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: abea9b189861954533b24cb73650af41952d1a86
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259598"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914121"
 ---
-# <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：了解進階案例 - ASP.NET MVC 搭配 EF Core
+# <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：瞭解 advanced 案例-使用 EF Core ASP.NET MVC
 
 在上一個教學課程中，您實作了單表繼承。 本教學課程介紹幾個實用的主題，在超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念時，需要注意這些主題。
 
@@ -31,7 +31,7 @@ ms.locfileid: "72259598"
 > * 了解 EF Core 原始程式碼和開發計劃
 > * 了解如何使用動態 LINQ 來簡化程式碼
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
 * [實作繼承](inheritance.md)
 
@@ -109,7 +109,7 @@ ms.locfileid: "72259598"
 
 按一下 [回到清單]，以查看課程與已修訂學分數的清單。
 
-請注意，生產環境程式碼可確保更新一律會產生有效的資料。 此處顯示的簡化程式碼會增加足夠的學分數而使其數目大於 5。 (`Credits` 屬性具有 `[Range(0, 5)]` 屬性。)更新查詢可正常運作，但是無效的資料可能會導致系統的其他部分假設學分數為 5 或更少，進而發生非預期的結果。
+請注意，生產環境程式碼可確保更新一律會產生有效的資料。 此處顯示的簡化程式碼會增加足夠的學分數而使其數目大於 5。 （`Credits` 屬性具有 `[Range(0, 5)]` 屬性）。更新查詢會正常執行，但是不正確資料可能會導致系統的其他部分假設點數為5或更少，而造成非預期的結果。
 
 如需原始 SQL 查詢的詳細資訊，請參閱[原始 SQL 查詢](/ef/core/querying/raw-sql)。
 
@@ -173,7 +173,7 @@ Entity Framework 藉由比較實體的目前值與原始值，判斷實體如何
 
 * ChangeTracker.Entries
 
-如果您追蹤的實體數量龐大，而且您在迴圈中呼叫其中一種方法多次，您可能會透過使用 `ChangeTracker.AutoDetectChangesEnabled` 屬性暫時關閉自動變更偵測，使效能獲得顯著改善。 例如:
+如果您追蹤的實體數量龐大，而且您在迴圈中呼叫其中一種方法多次，您可能會透過使用 `ChangeTracker.AutoDetectChangesEnabled` 屬性暫時關閉自動變更偵測，使效能獲得顯著改善。 例如：
 
 ```csharp
 _context.ChangeTracker.AutoDetectChangesEnabled = false;
@@ -181,7 +181,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="ef-core-source-code-and-development-plans"></a>EF Core 原始程式碼和開發計劃
 
-Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore)。 EF Core 存放庫包含每夜組建、問題追蹤、功能規格、設計會議記錄和[未來開發藍圖](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap)。 您可以提交或尋找 Bug，並做出貢獻。
+Entity Framework Core 來源位於 [https://github.com/dotnet/efcore](https://github.com/dotnet/efcore)。 EF Core 存放庫包含每夜組建、問題追蹤、功能規格、設計會議記錄和[未來開發藍圖](https://github.com/dotnet/efcore/wiki/Roadmap)。 您可以提交或尋找 Bug，並做出貢獻。
 
 雖然原始程式碼是開放式程式碼，但 Entity Framework Core 也作為 Microsoft 產品完整支援。 Microsoft Entity Framework 小組將控制接受哪些貢獻，並測試所有的程式碼變更以確保每次發行的品質。
 
@@ -197,7 +197,7 @@ Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCor
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DynamicLinq)]
 
-## <a name="acknowledgments"></a>感謝
+## <a name="acknowledgments"></a>致謝
 
 Tom Dykstra 和 Rick Anderson (Twitter @RickAndMSFT) 撰寫了本教學課程。 Rowan Miller、Diego Vega 和其他 Entity Framework 小組成員協助進行程式碼檢閱，並協助對撰寫本教學課程的程式碼時發生的問題進行偵錯。 John Parente 和 Paul Goldman 更新了 ASP.NET Core 2.2 的教學課程。
 
@@ -211,7 +211,7 @@ Tom Dykstra 和 Rick Anderson (Twitter @RickAndMSFT) 撰寫了本教學課程。
 
 > 無法開啟 '...bin\Debug\netcoreapp1.0\ContosoUniversity.dll' 進行寫入 -- '處理序無法存取 '...\bin\Debug\netcoreapp1.0\ContosoUniversity.dll' 檔案，因為其他處理序正在使用它。
 
-解決方案:
+解決方案：
 
 停止 IIS Express 中的網站。 移至 Windows 系統匣中，尋找 IIS Express 並以滑鼠右鍵按一下其圖示，選取 Contoso 大學網站，然後按一下 [停止網站]。
 
@@ -221,7 +221,7 @@ Tom Dykstra 和 Rick Anderson (Twitter @RickAndMSFT) 撰寫了本教學課程。
 
 EF CLI 命令不會自動關閉並儲存程式碼檔案。 如果您有未儲存的變更，當您執行 `migrations add` 命令時，EF 找不到您的變更。
 
-解決方案:
+解決方案：
 
 執行 `migrations remove` 命令，儲存您的程式碼變更，並重新執行 `migrations add` 命令。
 
@@ -243,9 +243,9 @@ dotnet ef database drop
 
 錯誤訊息：
 
-> 建立與 SQL Server　的連線時，發生與網路相關的錯誤或是執行個體特有的錯誤。 找不到或無法存取伺服器。 確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線 (提供者：SQL 網路介面，錯誤：26 - 尋找指定的伺服器/執行個體時發生錯誤)
+> 建立與 SQL Server　的連線時，發生與網路相關的錯誤或是執行個體特有的錯誤。 找不到或無法存取伺服器。 確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線 (提供者：SQL 網路介面，錯誤：26 - 搜尋指定的伺服器/執行個體時發生錯誤)
 
-解決方案:
+解決方案：
 
 檢查連接字串。 如果您已手動刪除資料庫檔案，請變更建構字串的資料庫名稱，以重新開始使用新的資料庫。
 
@@ -255,7 +255,7 @@ dotnet ef database drop
 
 ## <a name="additional-resources"></a>其他資源
 
-如需 EF Core 的詳細資訊，請參閱 [Entity Framework Core 文件](/ef/core)。 另外，還提供了一本書：[Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action)。
+如需 EF Core 的詳細資訊，請參閱 [Entity Framework Core 文件](/ef/core)。 另外，還提供了一本書：[Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action) (Entity Framework Core 實戰)。
 
 如需如何部署 Web 應用程式的資訊，請參閱<xref:host-and-deploy/index>。
 
@@ -279,4 +279,4 @@ dotnet ef database drop
 如此即完成本系列中在 ASP.NET Core MVC 應用程式中使用 Entity Framework Core 的教學課程。 這一系列教學課程使用了新的資料庫，您也可以從現有的資料庫反向建構模型。
 
 > [!div class="nextstepaction"]
-> [教學課程：在 MVC 中使用 EF Core，現有的資料庫](/ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json)
+> [教學課程：使用 MVC、現有的資料庫 EF Core](/ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json)

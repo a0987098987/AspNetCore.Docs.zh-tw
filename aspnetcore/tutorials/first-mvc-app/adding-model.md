@@ -5,12 +5,12 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 8/15/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 5d4251a2577111324aa2cfb715c41e3ecad5a9d1
-ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
+ms.openlocfilehash: 40f26c8c2bf8d8aaec1da4ca2ff96cb45830914e
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722789"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914169"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 

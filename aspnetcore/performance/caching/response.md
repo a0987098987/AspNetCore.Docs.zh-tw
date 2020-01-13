@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 uid: performance/caching/response
-ms.openlocfilehash: 9246305e6979a6a7e006f567ee6bf9569029aef1
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: e20c197c7ce3334d4f4f0b917d1fc94174e6c615
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828304"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914205"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core 中的回應快取
 
@@ -66,7 +66,7 @@ ms.locfileid: "75828304"
 
 ### <a name="distributed-cache"></a>分散式快取
 
-當應用程式裝載于雲端或伺服器陣列時，使用分散式快取將資料儲存在記憶體中。 快取會在處理要求的伺服器之間共用。 如果用戶端的快取資料可供使用，則用戶端可以提交由群組中的任何伺服器所處理的要求。 ASP.NET Core 提供 SQL Server 和 Redis 分散式快取。
+當應用程式裝載于雲端或伺服器陣列時，使用分散式快取將資料儲存在記憶體中。 快取會在處理要求的伺服器之間共用。 如果用戶端的快取資料可供使用，則用戶端可以提交由群組中的任何伺服器所處理的要求。 ASP.NET Core 適用于 SQL Server、 [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)和[NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/)分散式快取。
 
 如需詳細資訊，請參閱<xref:performance/caching/distributed>。
 
@@ -78,7 +78,7 @@ ms.locfileid: "75828304"
 
 ### <a name="distributed-cache-tag-helper"></a>分散式快取標籤協助程式
 
-使用分散式快取標記協助程式，從分散式雲端或 web 伺服陣列案例中的 MVC 視圖或 Razor 頁面快取內容。 分散式快取標記協助程式會使用 SQL Server 或 Redis 來儲存資料。
+使用分散式快取標記協助程式，從分散式雲端或 web 伺服陣列案例中的 MVC 視圖或 Razor 頁面快取內容。 分散式快取標記協助程式會使用 SQL Server、 [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)或[NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/)來儲存資料。
 
 如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>。
 

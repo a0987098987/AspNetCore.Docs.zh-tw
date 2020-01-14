@@ -9,12 +9,12 @@ ms.date: 12/09/2019
 no-loc:
 - Blazor
 uid: blazor/get-started
-ms.openlocfilehash: e368ecaf931d392de7e52ec2d5a2dfd171c2c86f
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 554f4daff92a0839ee7679287a4618e9b51e0fe5
+ms.sourcegitcommit: 925cdbd94613243f33bc7613a62ea34006219931
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943757"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921299"
 ---
 # <a name="get-started-with-aspnet-core-opno-locblazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -85,7 +85,7 @@ ms.locfileid: "74943757"
 
    # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-   1\. 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。 將[更新通道切換為 [預覽](/visualstudio/mac/install-preview)]。
+   1\. 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。
 
    2\. 選取 **[** 檔案] > [**新增方案**] 或 [建立**新專案**]。
 

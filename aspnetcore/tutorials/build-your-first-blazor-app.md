@@ -5,16 +5,16 @@ description: 逐步建立 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 01/13/2020
 no-loc:
 - Blazor
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 11ff540a70ebdb8baa0c7adb98cb1dfe27d91e50
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 8830dcf26b58b5f5fdd36b60298e7b365f99bdd9
+ms.sourcegitcommit: 925cdbd94613243f33bc7613a62ea34006219931
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944183"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921296"
 ---
 # <a name="build-your-first-opno-locblazor-app"></a>建立您的第一個 Blazor 應用程式
 
@@ -73,19 +73,19 @@ ms.locfileid: "74944183"
 
 元件也可以有參數。 元件參數是在元件類別上使用具有 `[Parameter]` 屬性的公用屬性來定義。 使用這些屬性來指定標記中元件的引數。
 
-1. 更新元件的 `@code` C# 程式碼：
+1. 更新元件的 `@code` C#程式碼，如下所示：
 
    * 加入具有 `[Parameter]` 屬性的公用 `IncrementAmount` 屬性。
-   * 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
+   * 當增加 `currentCount`的值時，請將 `IncrementCount` 方法變更為使用 `IncrementAmount` 屬性。
 
    *Pages/Counter.razor*：
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/Counter.razor?highlight=13,17)]
 
-<!-- Add back when supported.
-   > [!NOTE]
-   > From Visual Studio, you can quickly add a component parameter by using the `para` snippet. Type `para` and press the `Tab` key twice.
--->
+   <!-- Add back when supported.
+       > [!NOTE]
+       > From Visual Studio, you can quickly add a component parameter by using the `para` snippet. Type `para` and press the `Tab` key twice.
+   -->
 
 1. 使用屬性在 `Index` 元件的 `<Counter>` 元素中指定 `IncrementAmount` 參數。 設定值來讓計數器以 10 遞增。
 

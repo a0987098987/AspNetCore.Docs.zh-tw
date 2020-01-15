@@ -5,14 +5,14 @@ description: 了解如何使用組態 API 設定 ASP.NET Core 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/04/2019
+ms.date: 01/13/2020
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 9f0ad2791e504a0ff46daad07054b6bf909a546a
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: 09ef06f179e34cd7f4f04ac30c3b5dd95d058244
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73634081"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951846"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -109,7 +109,7 @@ using Microsoft.Extensions.Configuration;
 如需詳細資訊，請參閱下列主題：
 
 * <xref:fundamentals/environments>
-* <xref:security/app-secrets> &ndash; 包含使用環境變數來儲存敏感性資料的建議。 「祕密管理員」使用「檔案設定提供者」以 JSON 檔案在本機系統上存放使用者祕密。 此主題稍後將說明「檔案設定提供者」。
+* <xref:security/app-secrets> &ndash; 包含有關使用環境變數來儲存敏感性資料的建議。 「祕密管理員」使用「檔案設定提供者」以 JSON 檔案在本機系統上存放使用者祕密。 此主題稍後將說明「檔案設定提供者」。
 
 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可安全地儲存 ASP.NET Core 應用程式的應用程式祕密。 如需詳細資訊，請參閱<xref:security/key-vault-configuration>。
 
@@ -149,7 +149,9 @@ using Microsoft.Extensions.Configuration;
 
 實作變更偵測的組態提供者能夠在基礎設定變更時重新載入組態。 例如，檔案組態提供者 (將於本主題稍後討論) 和 [Azure Key Vault 組態提供者](xref:security/key-vault-configuration)均會實作變更偵測。
 
-您可以在應用程式的[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器中找到 <xref:Microsoft.Extensions.Configuration.IConfiguration>。 <xref:Microsoft.Extensions.Configuration.IConfiguration> 可插入 Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 來取得類別的組態：
+您可以在應用程式的[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器中找到 <xref:Microsoft.Extensions.Configuration.IConfiguration>。 <xref:Microsoft.Extensions.Configuration.IConfiguration> 可以插入至 Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 或 MVC <xref:Microsoft.AspNetCore.Mvc.Controller>，以取得類別的設定。
+
+在下列範例中，`_config` 欄位是用來存取設定值：
 
 ```csharp
 public class IndexModel : PageModel
@@ -160,9 +162,18 @@ public class IndexModel : PageModel
     {
         _config = config;
     }
+}
+```
 
-    // The _config local variable is used to obtain configuration 
-    // throughout the class.
+```csharp
+public class HomeController : Controller
+{
+    private readonly IConfiguration _config;
+
+    public HomeController(IConfiguration config)
+    {
+        _config = config;
+    }
 }
 ```
 
@@ -177,7 +188,7 @@ public class IndexModel : PageModel
 * 階層式機碼
   * 在設定 API 內，冒號分隔字元 (`:`) 可在所有平台上運作。
   * 在環境變數中，冒號分隔字元可能無法在所有平台上運作。 所有平台都支援雙底線 (`__`)，且會自動轉換為冒號。
-  * 在 Azure Key Vault 中，階層式機碼使用 `--` (兩個破折號) 來做為分隔符號。 您必須提供程式碼，在祕密載入到應用程式的設定時將破折號取代為冒號。
+  * 在 Azure Key Vault 中，階層式機碼使用 `--` (兩個破折號) 來做為分隔符號。 撰寫程式碼，以在將密碼載入應用程式的設定時，以冒號取代破折號。
 * <xref:Microsoft.Extensions.Configuration.ConfigurationBinder> 支援在設定機碼中使用陣列索引將陣列繫結到物件。 [將陣列繫結到類別](#bind-an-array-to-a-class)一節說明陣列繫結。
 
 ### <a name="values"></a>值
@@ -203,7 +214,7 @@ public class IndexModel : PageModel
 | [記憶體設定提供者](#memory-configuration-provider) | 記憶體內集合 |
 | [使用者祕密 (祕密管理員)](xref:security/app-secrets) (*安全性*主題) | 使用者設定檔目錄中的檔案 |
 
-在啟動時，會依照設定來源的設定提供者的指定順序讀入設定來源。 此主題中所述的設定提供者是以字母順序描述，而非以您的程式碼安排它們的順序。 在您的程式碼中針對底層設定來源的優先順序，為設定提供者排序。
+在啟動時，會依照設定來源的設定提供者的指定順序讀入設定來源。 本主題所描述的設定提供者會依字母順序描述，而不是程式碼排列它們的順序。 請在程式碼中訂購設定提供者，以符合應用程式所需之基礎設定來源的優先順序。
 
 典型的設定提供者順序是：
 
@@ -215,7 +226,7 @@ public class IndexModel : PageModel
 
 將命令列組態提供者放在提供者序列結尾是常見做法，因為這樣可以讓命令列引數覆寫由其他提供者所設定的組態。
 
-當您使用 `CreateDefaultBuilder` 初始化新的主機建立器時，會使用上述的提供者序列。 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
+當使用 `CreateDefaultBuilder`初始化新的主機產生器時，會使用上述的提供者序列。 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -352,7 +363,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 1. 在應用程式執行之後，開啟瀏覽器以瀏覽位於 `http://localhost:5000` 的應用程式。
 1. 觀察輸出是否包含提供給 `dotnet run` 之設定命令列引數的機碼值組。
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 當值後面接著空格時，值必須接著等號 (`=`)，或機碼必須有前置詞 (`--` 或 `/`)。 如果使用等號 (例如 `CommandLineKey=`)，則不需要此值。
 
@@ -374,7 +385,7 @@ dotnet run CommandLineKey1= CommandLineKey2=value2
 
 ### <a name="switch-mappings"></a>切換對應
 
-參數對應允許索引鍵名稱取代邏輯。 當您使用 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 手動建置設定時，可以提供切換取代的字典給 <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> 方法。
+參數對應允許索引鍵名稱取代邏輯。 以 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>手動建立設定時，請將參數取代的字典提供給 <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> 方法。
 
 使用切換對應字典時，會檢查字典中是否有任何索引鍵符合命令列引數所提供的索引鍵。 如果在字典中找到命令列索引鍵，則會傳回字典值 (索引鍵取代) 以在應用程式的設定中設定機碼值組。 所有前面加上單虛線 (`-`) 的命令列索引鍵都需要切換對應。
 
@@ -407,7 +418,7 @@ public static readonly Dictionary<string, string> _switchMappings =
 
 建立切換對應字典之後，它會包含下表中所示的資料。
 
-| 機碼       | 值             |
+| 索引鍵       | {2&gt;值&lt;2}             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -420,7 +431,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 執行上述命令之後，設定包含下表中顯示的值。
 
-| 機碼               | 值    |
+| 索引鍵               | {2&gt;值&lt;2}    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -433,7 +444,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
-[Azure App Service](https://azure.microsoft.com/services/app-service/) 允許您在 Azure 入口網站中設定環境變數，以使用「環境變數設定提供者」覆寫應用程式設定。 如需詳細資訊，請參閱 [Azure App：使用 Azure 入口網站覆寫應用程式設定](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal)。
+[Azure App Service](https://azure.microsoft.com/services/app-service/)允許在 Azure 入口網站中設定環境變數，以使用環境變數設定提供者來覆寫應用程式設定。 如需詳細資訊，請參閱 [Azure App：使用 Azure 入口網站覆寫應用程式設定](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal)。
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -456,19 +467,16 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 從使用者祕密與 *appsettings* 檔案建立設定之後，會呼叫「環境變數設定提供者」。 在此位置呼叫提供者可讓系統在執行階段讀取環境變數，以覆寫由使用者祕密與 *appsettings* 檔案所設定的設定。
 
-如果您需要從其他環境變數提供應用程式設定，請呼叫 `ConfigureAppConfiguration` 中的應用程式其他提供者，並呼叫具有該前置詞的 `AddEnvironmentVariables`。
+若要從其他環境變數提供應用程式設定，請在 `ConfigureAppConfiguration` 中呼叫應用程式的其他提供者，並使用前置詞呼叫 `AddEnvironmentVariables`：
 
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
 {
-    // Call additional providers here as needed.
-    // Call AddEnvironmentVariables last if you need to allow
-    // environment variables to override values from other 
-    // providers.
     config.AddEnvironmentVariables(prefix: "PREFIX_");
 })
-}
 ```
+
+呼叫 last `AddEnvironmentVariables`，以允許具有指定前置詞的環境變數覆寫其他提供者的值。
 
 **範例**
 
@@ -479,7 +487,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 為縮短由應用程式轉譯的環境變數清單，應用程式會篩選環境變數。 請參閱範例應用程式的 *Pages/Index.cshtml.cs* 檔案。
 
-若想要將所有環境變數公開給應用程式使用，請將 *Pages/Index.cshtml.cs* 中的 `FilteredConfiguration` 變更為下面這樣：
+若要公開應用程式可用的所有環境變數，請將*Pages/Index. cshtml*中的 `FilteredConfiguration` 變更為下列內容：
 
 ```csharp
 FilteredConfiguration = _config.AsEnumerable();
@@ -487,7 +495,7 @@ FilteredConfiguration = _config.AsEnumerable();
 
 ### <a name="prefixes"></a>首碼
 
-當您將前置詞套用到 `AddEnvironmentVariables` 方法時，會篩選載入到應用程式設定中的環境變數。 例如，若要篩選前置詞為 `CUSTOM_` 的環境變數，請提供前置詞給設定提供者：
+在 `AddEnvironmentVariables` 方法中提供前置詞時，會篩選載入應用程式設定中的環境變數。 例如，若要篩選前置詞為 `CUSTOM_` 的環境變數，請提供前置詞給設定提供者：
 
 ```csharp
 var config = new ConfigurationBuilder()
@@ -591,10 +599,10 @@ key=value
 * 檔案變更時是否要重新載入設定。
 * <xref:Microsoft.Extensions.FileProviders.IFileProvider> 是用於存取該檔案。
 
-當您使用 `CreateDefaultBuilder` 初始化新的主機建立器時，會自動呼叫 `AddJsonFile` 兩次。 會呼叫此方法以從下列位置載入設定：
+當使用 `CreateDefaultBuilder`初始化新的主機產生器時，會自動呼叫 `AddJsonFile` 兩次。 會呼叫此方法以從下列位置載入設定：
 
-* *appsettings.json* &ndash; 會先讀取此檔案。 檔案的環境版本可以覆寫由 *appsettings.json* 檔案提供的值。
-* *appsettings.{Environment}.json* &ndash; 檔案的環境版本是根據 [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*) 來載入的。
+* *appsettings*會先讀取此檔案 &ndash;。 檔案的環境版本可以覆寫由 *appsettings.json* 檔案提供的值。
+* *appsettings。{環境}. json* &ndash; 檔案的環境版本是根據[IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)載入。
 
 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
 
@@ -618,17 +626,47 @@ key=value
 
 **範例**
 
-範例應用程式利用靜態方便方法 `CreateDefaultBuilder` 的優勢來建置主機，這包括對 `AddJsonFile` 的兩次呼叫。 從 *appsettings.json* 與 *appsettings.{Environment}.json* 載入設定。
+範例應用程式會利用靜態便利方法 `CreateDefaultBuilder` 來建立主機，其中包括兩個 `AddJsonFile`呼叫：
+
+::: moniker range=">= aspnetcore-3.0"
+
+* 第一次呼叫 `AddJsonFile` 會從*appsettings*載入設定：
+
+  [!code-json[](index/samples/3.x/ConfigurationSample/appsettings.json)]
+
+* 第二次呼叫 `AddJsonFile` 會從 appsettings 載入設定 *。 {環境}. json*。 適用于*appsettings。* 範例應用程式中的開發 json 會載入下列檔案：
+
+  [!code-json[](index/samples/3.x/ConfigurationSample/appsettings.Development.json)]
 
 1. 執行範例應用程式。 開啟瀏覽器以瀏覽位於 `http://localhost:5000` 的應用程式。
-1. 觀察輸出是否包含表格中所顯示之設定的機碼值組 (視環境而定)。 記錄設定機碼會使用冒號 (`:`) 做為階層式分隔符號。
+1. 輸出包含以應用程式環境為基礎之設定的索引鍵/值組。 在開發環境中執行應用程式時，會 `Debug` 金鑰 `Logging:LogLevel:Default` 的記錄層級。
+1. 在生產環境中再次執行範例應用程式：
+   1. 開啟*Properties/launchsettings.json*檔案。
+   1. 在 `ConfigurationSample` 設定檔中，將 `ASPNETCORE_ENVIRONMENT` 環境變數的值變更為 [`Production`]。
+   1. 儲存檔案，並使用命令 shell 中的 `dotnet run` 來執行應用程式。
+1. Appsettings 中的設定 *。* 在*appsettings*中，不會再覆寫 json 中的設定。 `Information`金鑰 `Logging:LogLevel:Default` 的記錄層級。
 
-| 機碼                        | 開發值 | 生產值 |
-| -------------------------- | :---------------: | :--------------: |
-| Logging:LogLevel:System    | 內容       | 內容      |
-| Logging:LogLevel:Microsoft | 內容       | 內容      |
-| Logging:LogLevel:Default   | 偵錯             | 錯誤            |
-| AllowedHosts               | *                 | *                |
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+* 第一次呼叫 `AddJsonFile` 會從*appsettings*載入設定：
+
+  [!code-json[](index/samples/2.x/ConfigurationSample/appsettings.json)]
+
+* 第二次呼叫 `AddJsonFile` 會從 appsettings 載入設定 *。 {環境}. json*。 適用于*appsettings。* 範例應用程式中的開發 json 會載入下列檔案：
+
+  [!code-json[](index/samples/2.x/ConfigurationSample/appsettings.Development.json)]
+
+1. 執行範例應用程式。 開啟瀏覽器以瀏覽位於 `http://localhost:5000` 的應用程式。
+1. 輸出包含以應用程式環境為基礎之設定的索引鍵/值組。 在開發環境中執行應用程式時，會 `Debug` 金鑰 `Logging:LogLevel:Default` 的記錄層級。
+1. 在生產環境中再次執行範例應用程式：
+   1. 開啟*Properties/launchsettings.json*檔案。
+   1. 在 `ConfigurationSample` 設定檔中，將 `ASPNETCORE_ENVIRONMENT` 環境變數的值變更為 [`Production`]。
+   1. 儲存檔案，並使用命令 shell 中的 `dotnet run` 來執行應用程式。
+1. Appsettings 中的設定 *。* 在*appsettings*中，不會再覆寫 json 中的設定。 `Warning`金鑰 `Logging:LogLevel:Default` 的記錄層級。
+
+::: moniker-end
 
 ### <a name="xml-configuration-provider"></a>XML 設定提供者
 
@@ -773,9 +811,9 @@ public static readonly Dictionary<string, string> _dict =
 
 ## <a name="getvalue"></a>GetValue
 
-[ConfigurationBinder \<T >](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*)會使用指定的索引鍵從設定中解壓縮單一值，並將它轉換成指定的 noncollection 類型。 多載會接受預設值。
+[ConfigurationBinder\<t >](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*)會使用指定的索引鍵從設定中解壓縮單一值，並將它轉換成指定的 noncollection 類型。 多載會接受預設值。
 
-下列範例：
+下列範例︰
 
 * 從具有機碼 `NumberKey` 的組態擷取字串值。 若在組態機碼中找不到 `NumberKey`，則會使用預設值 `99`。
 * 鍵入值為 `int`。
@@ -917,7 +955,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 會建立下列設定機碼值組：
 
-| 機碼                   | 值                                             |
+| 索引鍵                   | {2&gt;值&lt;2}                                             |
 | --------------------- | ------------------------------------------------- |
 | starship:name         | USS Enterprise                                    |
 | starship:registry     | NCC-1701                                          |
@@ -998,7 +1036,7 @@ TvShow = tvShow;
 
 範例應用程式示範此節中解釋的概念。
 
-<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 支援在設定機碼中使用陣列索引將陣列繫結到物件。 任何公開數值機碼區段 (`:0:`、`:1:`、&hellip; `:{n}:`) 的陣列格式都能繫結到POCO 類別陣列。
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 支援在設定機碼中使用陣列索引將陣列繫結到物件。 公開數值索引鍵區段（`:0:`、`:1:`&hellip; `:{n}:`）的任何陣列格式，都能夠系結至 POCO 類別陣列。
 
 > [!NOTE]
 > 繫結是由慣例提供。 自訂設定提供者不需要實作陣列繫結。
@@ -1007,7 +1045,7 @@ TvShow = tvShow;
 
 考慮下表中顯示的設定機碼與值。
 
-| 機碼             | 值  |
+| 索引鍵             | {2&gt;值&lt;2}  |
 | :-------------: | :----: |
 | array:entries:0 | value0 |
 | array:entries:1 | value1 |
@@ -1097,7 +1135,7 @@ config.AddJsonFile(
 
 表格中顯示的機碼值組會載入到設定中。
 
-| 機碼             | 值  |
+| 索引鍵             | {2&gt;值&lt;2}  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1130,7 +1168,7 @@ config.AddJsonFile(
 
 「JSON 設定提供者」會將設定資料讀入到下列機碼值組：
 
-| 機碼                     | 值  |
+| 索引鍵                     | {2&gt;值&lt;2}  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |
@@ -1273,7 +1311,7 @@ public class Startup
 
 ## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>存取 Razor Pages 頁面或 MVC 檢視中的設定
 
-若要在 [Razor Pages 頁面] 頁面或 MVC 檢視中存取組態設定，請針對 [Microsoft.Extensions.Configuration 命名空間](xref:Microsoft.Extensions.Configuration) [using 指示詞](xref:mvc/views/razor#using) ([C# 參考：using 指示詞](/dotnet/csharp/language-reference/keywords/using-directive))，並將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 插入到頁面或檢視中。
+若要在 [Razor Pages 頁面] 頁面或 MVC 檢視中存取組態設定，請針對 [Microsoft.Extensions.Configuration 命名空間](xref:Microsoft.Extensions.Configuration)[using 指示詞](xref:mvc/views/razor#using) ([C# 參考：using 指示詞](/dotnet/csharp/language-reference/keywords/using-directive))，並將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 插入到頁面或檢視中。
 
 在 [Razor 頁面] 頁面中：
 

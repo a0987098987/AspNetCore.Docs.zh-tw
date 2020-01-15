@@ -5,14 +5,14 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/30/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 014585cd1e170fc94f7f577e11ec19824e54572f
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 37fc0b7862db3280f9ade8d563feba28153ab79b
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73659860"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951832"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -22,7 +22,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件：
 
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
@@ -49,7 +49,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 建立主機時，會呼叫 `IHostBuilder.UseWindowsService`。 如果應用程式以 Windows 服務形式執行，則方法會：
 
 * 將主機存留期設定為 `WindowsServiceLifetime`。
-* 設定[內容根目錄](xref:fundamentals/index#content-root)。
+* 將[內容根目錄](xref:fundamentals/index#content-root)設定為[AppCoNtext. BaseDirectory](xref:System.AppContext.BaseDirectory)。 如需詳細資訊，請參閱[目前目錄與內容根目錄](#current-directory-and-content-root)一節。
 * 啟用使用應用程式名稱作為預設來源名稱記錄至事件記錄檔。
   * 您可以使用 *appsettings.Production.json* 檔案中的 `Logging:LogLevel:Default` 機碼來設定記錄層級。
   * 只有系統管理員才能建立新的事件來源。 如果無法使用應用程式名稱建立事件來源，則會向「應用程式」來源記錄警告，並停用事件記錄檔。
@@ -196,13 +196,13 @@ Windows [執行階段識別碼 (RID)](/dotnet/core/rid-catalog) 會納入包含�
 Windows 10 2018 年 10 月更新 (版本 1809/組建 10.0.17763) 或更新版本：
 
 ```PowerShell
-New-LocalUser -Name {NAME}
+New-LocalUser -Name {SERVICE NAME}
 ```
 
 在 Windows 10 2018 年 10 月更新之前 (1809 版/組建 10.0.17763) 的 Windows OS 上：
 
 ```console
-powershell -Command "New-LocalUser -Name {NAME}"
+powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 ```
 
 在系統提示時提供[強式密碼](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)。
@@ -239,22 +239,22 @@ $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($acl
 $acl.SetAccessRule($accessRule)
 $acl | Set-Acl "{EXE PATH}"
 
-New-Service -Name {NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
+New-Service -Name {SERVICE NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
 ```
 
-* `{EXE PATH}` &ndash; 主機上應用程式的資料夾路徑 (例如 `d:\myservice`)。 請勿包含路徑中應用程式的可執行檔。 不需要結尾的斜線。
-* `{DOMAIN OR COMPUTER NAME\USER}` &ndash; 服務使用者帳戶 (例如 `Contoso\ServiceUser`)。
-* `{NAME}` &ndash; 服務名稱 (例如 `MyService`)。
-* `{EXE FILE PATH}` &ndash; 應用程式的可執行檔路徑 (例如 `d:\myservice\myservice.exe`)。 包含可執行檔的檔案名稱 (包含副檔名)。
-* `{DESCRIPTION}` &ndash; 服務描述 (例如 `My sample service`)。
-* `{DISPLAY NAME}` &ndash; 服務顯示名稱 (例如 `My Service`)。
+* `{EXE PATH}` &ndash; 路徑指向主機上的應用程式資料夾（例如，`d:\myservice`）。 請勿包含路徑中應用程式的可執行檔。 不需要結尾的斜線。
+* `{DOMAIN OR COMPUTER NAME\USER}` &ndash; 服務使用者帳戶（例如，`Contoso\ServiceUser`）。
+* `{SERVICE NAME}` &ndash; 服務名稱（例如，`MyService`）。
+* `{EXE FILE PATH}` &ndash; 應用程式的可執行檔路徑（例如，`d:\myservice\myservice.exe`）。 包含可執行檔的檔案名稱 (包含副檔名)。
+* `{DESCRIPTION}` &ndash; 服務描述（例如，`My sample service`）。
+* `{DISPLAY NAME}` &ndash; 服務顯示名稱（例如，`My Service`）。
 
 ### <a name="start-a-service"></a>啟動服務
 
 以下列 PowerShell 6 命令啟動服務：
 
 ```powershell
-Start-Service -Name {NAME}
+Start-Service -Name {SERVICE NAME}
 ```
 
 此命令需要幾秒鐘啓動服務。
@@ -264,7 +264,7 @@ Start-Service -Name {NAME}
 若要檢查服務狀態，請使用下列 PowerShell 6 命令：
 
 ```powershell
-Get-Service -Name {NAME}
+Get-Service -Name {SERVICE NAME}
 ```
 
 狀態會回報為下列值之一：
@@ -279,7 +279,7 @@ Get-Service -Name {NAME}
 使用下列 Powershell 6 命令停止服務：
 
 ```powershell
-Stop-Service -Name {NAME}
+Stop-Service -Name {SERVICE NAME}
 ```
 
 ### <a name="remove-a-service"></a>移除服務
@@ -287,7 +287,7 @@ Stop-Service -Name {NAME}
 在停止服務的短暫延遲之後，請以下列 Powershell 6 命令移除服務：
 
 ```powershell
-Remove-Service -Name {NAME}
+Remove-Service -Name {SERVICE NAME}
 ```
 
 ::: moniker range="< aspnetcore-3.0"
@@ -342,6 +342,16 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定 `ASPNETCORE_UR
 
 使用 [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) 或 <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> 來找出應用程式的資源。
 
+當應用程式以服務的形式執行時，<xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> 會將 <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> 設定為[AppCoNtext. BaseDirectory](xref:System.AppContext.BaseDirectory)。
+
+應用程式的預設設定檔案*appsettings. json*和*appsettings。 {環境}. json*會在[主機結構期間呼叫 CreateDefaultBuilder](xref:fundamentals/host/generic-host#set-up-a-host)，從應用程式的內容根目錄載入。
+
+若為開發人員程式碼在 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>中載入的其他設定檔案，則不需要呼叫 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>。 在下列範例中， *custom_settings 的 json*檔案存在於應用程式的內容根目錄中，並在未明確設定基底路徑的情況下載入：
+
+[!code-csharp[](windows-service/samples_snapshot/CustomSettingsExample.cs?highlight=13)]
+
+請勿嘗試使用 <xref:System.IO.Directory.GetCurrentDirectory*> 來取得資源路徑，因為 Windows 服務應用程式會傳回*C：\\Windows\\system32*資料夾做為其目前目錄。
+
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
@@ -367,6 +377,83 @@ CreateWebHostBuilder(args)
 ### <a name="store-a-services-files-in-a-suitable-location-on-disk"></a>將服務的檔案儲存在磁碟上的適當位置
 
 使用包含檔案的 <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> 資料夾，使用 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 來指定絕對路徑。
+
+## <a name="troubleshoot"></a>疑難排解
+
+若要疑難排解 Windows 服務應用程式，請參閱 <xref:test/troubleshoot>。
+
+### <a name="common-errors"></a>常見的錯誤
+
+* 舊版或發行前版本的 PowerShell 已在使用中。
+* 已註冊的服務不會使用來自[dotnet publish](/dotnet/core/tools/dotnet-publish)命令的應用程式**已發佈**輸出。 應用程式部署不支援[dotnet build](/dotnet/core/tools/dotnet-build)命令的輸出。 根據部署類型，可以在下列其中一個資料夾中找到已發佈的資產：
+  * *bin/Release/{TARGET FRAMEWORK}/publish* （FDD）
+  * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* （SCD）
+* 服務不是處於執行中狀態。
+* 應用程式所使用資源的路徑（例如憑證）不正確。 Windows 服務的基底路徑是*c：\\windows\\System32*。
+* 使用者不具有 [*以服務方式登*入] 許可權。
+* 執行 `New-Service` PowerShell 命令時，使用者的密碼已過期或傳遞錯誤。
+* 應用程式需要 ASP.NET Core 驗證，但未設定安全連線（HTTPS）。
+* 要求 URL 埠不正確，或未在應用程式中正確設定。
+
+### <a name="system-and-application-event-logs"></a>系統和應用程式事件記錄檔
+
+存取系統和應用程式事件記錄檔：
+
+1. 開啟 [開始] 功能表，搜尋 [*事件檢視器*]，然後選取 [**事件檢視器**] 應用程式。
+1. 在 [事件檢視器] 中，開啟 [Windows 記錄] 節點。
+1. 選取 [**系統**] 以開啟 [系統] 事件記錄檔。 選取 [應用程式] 以開啟「應用程式事件記錄檔」。
+1. 搜尋與失敗應用程式相關的錯誤。
+
+### <a name="run-the-app-at-a-command-prompt"></a>在命令提示字元中執行應用程式
+
+許多啟動錯誤不會在事件記錄檔中產生有用的資訊。 您可以藉由在主控系統上的命令提示字元中執行應用程式，來找出一些錯誤的原因。 若要從應用程式記錄其他詳細資料，請降低[記錄層級](xref:fundamentals/logging/index#log-level)，或在[開發環境](xref:fundamentals/environments)中執行應用程式。
+
+### <a name="clear-package-caches"></a>清除套件快取
+
+升級開發電腦上的 .NET Core SDK 或變更應用程式內的套件版本之後，正常運作的應用程式可能會立即失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
+
+1. 刪除 [bin] 和 [obj] 資料夾。
+1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
+
+   您也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成清除套件快取，並 `nuget locals all -clear`執行命令。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
+
+1. 還原並重建專案。
+1. 重新部署應用程式之前，請先刪除伺服器上 [部署] 資料夾中的所有檔案。
+
+### <a name="slow-or-hanging-app"></a>回應緩慢或無回應的應用程式
+
+損*毀*傾印是系統記憶體的快照集，有助於判斷應用程式損毀、啟動失敗或應用程式緩慢的原因。
+
+#### <a name="app-crashes-or-encounters-an-exception"></a>應用程式損毀或發生例外狀況
+
+從 [Windows 錯誤報告 (WER)](/windows/desktop/wer/windows-error-reporting) 取得並分析傾印：
+
+1. 在 `c:\dumps` 中建立資料夾以保存損毀傾印檔案。
+1. 以應用程式可執行檔名稱執行[EnableDumps PowerShell 腳本](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1)：
+
+   ```console
+   .\EnableDumps {APPLICATION EXE} c:\dumps
+   ```
+
+1. 在會導致損毀的情況下，執行應用程式。
+1. 發生損毀之後，請執行 [DisableDumps PowerShell 指令碼](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1)：
+
+   ```console
+   .\DisableDumps {APPLICATION EXE}
+   ```
+
+在應用程式損毀且傾印收集完成之後，即可正常結束應用程式。 PowerShell 指令碼會將 WER 設定為每個應用程式收集最多五個傾印。
+
+> [!WARNING]
+> 損毀傾印可能會佔用大量磁碟空間 (每個高達好幾 GB)。
+
+#### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>應用程式停止回應、在啟動期間失敗，或正常執行
+
+當*應用程式*當機（停止回應但未損毀）、啟動期間失敗，或正常執行時，請參閱使用者模式傾印檔案[：選擇最適合的工具](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)來選取適當的工具以產生傾印。
+
+#### <a name="analyze-the-dump"></a>分析傾印
+
+您可以使用數種方法來分析傾印。 如需詳細資訊，請參閱[分析使用者模式傾印檔案](/windows-hardware/drivers/debugger/analyzing-a-user-mode-dump-file)。
 
 ## <a name="additional-resources"></a>其他資源
 

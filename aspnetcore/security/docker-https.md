@@ -9,12 +9,12 @@ ms.date: 07/05/2019
 no-loc:
 - Let's Encrypt
 uid: security/docker-https
-ms.openlocfilehash: 47027033c0b7130f2d38d22c02a54945b2cc31b3
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 07e2791e5b26975c71323f8cb41a4b0fbe0cdf11
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358909"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952132"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>透過 HTTPS 使用 Docker 裝載 ASP.NET Core 映射
 
@@ -43,7 +43,7 @@ ASP.NET Core 預設會使用[HTTPS](/aspnet/core/security/enforcing-ssl)。 [HTT
 * 不需要 `dotnet dev-certs` 工具。
 * 憑證不需要儲存在指示所使用的位置。 任何位置都應該可行，雖然不建議在您的網站目錄中儲存憑證。
 
-指示磁片區會將憑證掛接到容器中。 您可以使用*Dockerfile*中的 `COPY` 命令，將憑證新增至容器映射。 基於下列原因，不建議將憑證複製到映射：
+下列章節中包含的指示會使用 Docker 的 `-v` 命令列選項，將憑證掛接到容器中。 您可以使用*Dockerfile*中的 `COPY` 命令，將憑證新增至容器映射，但不建議這麼做。 基於下列原因，不建議將憑證複製到映射：
 
 * 使用相同的映射來測試開發人員憑證並不容易。
 * 使用相同的映射來裝載實際執行憑證很容易。

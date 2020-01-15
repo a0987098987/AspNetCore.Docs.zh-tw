@@ -5,14 +5,14 @@ description: 了解如何設定裝載環境及部署 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/index
-ms.openlocfilehash: 8c7c131ca328f3118c45e822d6d5c86f0d44001f
-ms.sourcegitcommit: b3e1e31e5d8bdd94096cf27444594d4a7b065525
+ms.openlocfilehash: ffc1f0b649e24e5e4a0bca2fc36a0b0c25460238
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803262"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951802"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>裝載及部署 ASP.NET Core
 
@@ -77,6 +77,10 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 如需在 Web 伺服陣列環境中裝載 ASP.NET Core 應用程式的設定資訊 (例如部署應用程式的多個執行個體以獲得調整能力)，請參閱 <xref:host-and-deploy/web-farm>。
 
+## <a name="host-on-docker"></a>Docker 上的主機
+
+如需詳細資訊，請參閱<xref:host-and-deploy/docker/index>。
+
 ::: moniker range=">= aspnetcore-2.2"
 
 ## <a name="perform-health-checks"></a>執行健康狀態檢查
@@ -87,7 +91,5 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:host-and-deploy/docker/index>
 * <xref:test/troubleshoot>
 * [ASP.NET 裝載](https://dotnet.microsoft.com/apps/aspnet/hosting)
-

@@ -5,14 +5,14 @@ description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: c9bbd36b8a55b837f6d78abf99215c5496895a39
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: 75f4a158253dd3276ed37011d9aa73d82cad5b79
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799418"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952011"
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
@@ -89,7 +89,7 @@ ASP.NET Core 應用程式預設為同進程裝載模型。
 </PropertyGroup>
 ```
 
-同進程裝載是使用 `InProcess` 設定，這是預設值。
+同進程裝載是使用 `InProcess`設定，這是預設值。
 
 `<AspNetCoreHostingModel>` 的值不區分大小寫，因此 `inprocess` 和 `outofprocess` 都是有效的值。
 
@@ -306,8 +306,8 @@ ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<han
 
 也可以透過環境變數提供處理常式設定：
 
-* 偵錯記錄檔的 `ASPNETCORE_MODULE_DEBUG_FILE` &ndash; 路徑。 (預設：*aspnetcore-debug.log*)
-* `ASPNETCORE_MODULE_DEBUG` &ndash; 偵錯層級設定。
+* `ASPNETCORE_MODULE_DEBUG_FILE` &ndash; 到 debug 記錄檔的路徑。 (預設：*aspnetcore-debug.log*)
+* `ASPNETCORE_MODULE_DEBUG` &ndash; Debug level 設定。
 
 > [!WARNING]
 > 在部署中保持啟用偵錯記錄的時間，**不要**超過針對問題進行排解疑難所需的時間。 記錄的大小不受限制。 保持啟用偵錯記錄可能會耗盡可用磁碟空間，並讓伺服器或應用程式服務當機。
@@ -392,7 +392,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 * %ProgramFiles(x86)%\IIS Express\Asp.Net Core Module\V2\aspnetcorev2.dll
 
-### <a name="schema"></a>結構描述
+### <a name="schema"></a>Schema
 
 **IIS**
 
@@ -406,7 +406,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema_v2.xml
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>組態
 
 **IIS**
 
@@ -719,8 +719,8 @@ ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<han
 
 也可以透過環境變數提供處理常式設定：
 
-* 偵錯記錄檔的 `ASPNETCORE_MODULE_DEBUG_FILE` &ndash; 路徑。 (預設：*aspnetcore-debug.log*)
-* `ASPNETCORE_MODULE_DEBUG` &ndash; 偵錯層級設定。
+* `ASPNETCORE_MODULE_DEBUG_FILE` &ndash; 到 debug 記錄檔的路徑。 (預設：*aspnetcore-debug.log*)
+* `ASPNETCORE_MODULE_DEBUG` &ndash; Debug level 設定。
 
 > [!WARNING]
 > 在部署中保持啟用偵錯記錄的時間，**不要**超過針對問題進行排解疑難所需的時間。 記錄的大小不受限制。 保持啟用偵錯記錄可能會耗盡可用磁碟空間，並讓伺服器或應用程式服務當機。
@@ -787,7 +787,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 * %ProgramFiles(x86)%\IIS Express\Asp.Net Core Module\V2\aspnetcorev2.dll
 
-### <a name="schema"></a>結構描述
+### <a name="schema"></a>Schema
 
 **IIS**
 
@@ -801,7 +801,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema_v2.xml
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>組態
 
 **IIS**
 
@@ -1017,7 +1017,7 @@ ASP.NET Core 模組安裝程式會以 **TrustedInstaller** 帳戶的權限執行
 
 * %ProgramFiles(x86)%\IIS Express\aspnetcore.dll
 
-### <a name="schema"></a>結構描述
+### <a name="schema"></a>Schema
 
 **IIS**
 
@@ -1027,7 +1027,7 @@ ASP.NET Core 模組安裝程式會以 **TrustedInstaller** 帳戶的權限執行
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema.xml
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>組態
 
 **IIS**
 
@@ -1046,5 +1046,6 @@ ASP.NET Core 模組安裝程式會以 **TrustedInstaller** 帳戶的權限執行
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:host-and-deploy/iis/index>
-* [ASP.NET Core 模組 GitHub 存放庫 (參考來源)](https://github.com/aspnet/AspNetCoreModule)
+* <xref:host-and-deploy/azure-apps/index>
+* [ASP.NET Core 模組參考來源（主要分支）](https://github.com/dotnet/aspnetcore/tree/master/src/Servers/IIS/AspNetCoreModuleV2) &ndash; 使用 [**分支**] 下拉式清單來選取特定版本（例如，`release/3.1`）。
 * <xref:host-and-deploy/iis/modules>

@@ -5,14 +5,14 @@ description: 了解在 Windows Server 上搭配 IIS 執行 ASP.NET Core 應用�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/26/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 2d2c8d8e4b39d18a3a727e2a2bdef3be566897c1
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 704a8dae9da904e4bbdfae0754a6fcdabee6dc82
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034150"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952026"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
@@ -20,7 +20,7 @@ ms.locfileid: "73034150"
 
 本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://visualstudio.microsoft.com) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件：
 
 * [Visual Studio (適用於 Windows)](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
@@ -38,7 +38,7 @@ ms.locfileid: "73034150"
 
 IIS 的網站必須含有下列設定：
 
-* **主機名稱** &ndash; 通常，[預設網站] 會搭配 [主機名稱] 或 `localhost` 使用。 不過，任何具有唯一主機名稱的有效 IIS 網站皆適用。
+* **主機名稱**&ndash; 通常會使用**預設的網站**，且**主機名稱**為 `localhost`。 不過，任何具有唯一主機名稱的有效 IIS 網站皆適用。
 * **網站繫結**
   * 針對需要 HTTPS 的應用程式，請搭配憑證針對連接埠 443 建立繫結。 通常會使用 [IIS Express 開發憑證]，但可使用任何有效的憑證。
   * 針對使用 HTTP 的應用程式，請確認已存在針對連接埠 80 的繫結，或是為新網站建立針對連接埠 80 的繫結。
@@ -152,6 +152,4 @@ IIS 的網站必須含有下列設定：
 ## <a name="additional-resources"></a>其他資源
 
 * [IIS 中的 IIS 管理員使用者入門](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
-* <xref:host-and-deploy/iis/index>
-* <xref:host-and-deploy/aspnet-core-module>
 * <xref:security/enforcing-ssl>

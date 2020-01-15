@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 no-loc:
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 6506430202870ba9de2f8eb6f33d79c7c1fbbbd4
-ms.sourcegitcommit: e7d4fe6727d423f905faaeaa312f6c25ef844047
+ms.openlocfilehash: 8e7b7596fcfe2d6b7150fe1ab09a7ab1dc4a2e47
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608063"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952127"
 ---
 # <a name="aspnet-core-opno-locsignalr-hosting-and-scaling"></a>ASP.NET Core SignalR 裝載和調整
 
@@ -86,7 +86,7 @@ Azure SignalR 服務是一個 proxy，而不是背板。 每次用戶端起始�
 
 ![Redis 背板，從一部伺服器傳送至所有用戶端的訊息](scale/_static/redis-backplane.png)
 
-對於裝載于您自己的基礎結構上的應用程式，Redis 背板是建議的向外延展方法。 由於您的資料中心與 Azure 資料中心之間的連線延遲，Azure SignalR 服務並不是實際使用內部部署應用程式的選項。
+對於裝載于您自己的基礎結構上的應用程式，Redis 背板是建議的向外延展方法。 如果您的資料中心與 Azure 資料中心之間有顯著的連線延遲，Azure SignalR 服務對於具有低延遲或高輸送量需求的內部部署應用程式而言，可能不是可行的選項。
 
 先前所述的 Azure SignalR 服務優點是 Redis 背板的缺點：
 

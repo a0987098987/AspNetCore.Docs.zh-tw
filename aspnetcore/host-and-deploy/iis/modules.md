@@ -5,14 +5,14 @@ description: 探索 ASP.NET Core 應用程式的使用中和非使用中 IIS 模
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/12/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: eb6cedfc572b4ffea969b3583ea6ec44cae1f575
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
-ms.translationtype: HT
+ms.openlocfilehash: ca6cf349aa05db97e145f1cd0cae97a107761fd8
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65970063"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951804"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 
@@ -109,9 +109,9 @@ ms.locfileid: "65970063"
 
 1. 將伺服器層級的模組解除鎖定。 選取「IIS 管理員」[連線] 資訊看板中的 IIS 伺服器。 開啟 [IIS] 區域中的 [模組]。 選取清單中的模組。 在右邊的 [動作] 資訊看板上，選取 [解除鎖定]。 若模組的動作項目顯示為**鎖定**，就代表該模組已經解除鎖定，且不需要任何動作。 將您打算稍後從 *web.config* 移除的模組都解除鎖定。
 
-2. 在 *web.config* 不含 `<modules>` 區段的情況下部署應用程式。如果在 *web.config* 包含 `<modules>` 區段的情況下部署應用程式，但未先在「IIS 管理員」中將該區段解除鎖定，則當「設定管理員」嘗試將該區段解除鎖定時就會擲回例外狀況。 因此，請在沒有 `<modules>` 區段的情況下部署應用程式。
+2. 在*web.config*中不使用 `<modules>` 區段部署應用程式。如果應用程式是*以包含 `<modules>` 區段的 web.config 來*部署，但未先在 IIS 管理員中解除鎖定區段，則在嘗試解除鎖定區段時，Configuration Manager 會擲回例外狀況。 因此，請在沒有 `<modules>` 區段的情況下部署應用程式。
 
-3. 將 *web.config* 的 `<modules>` 區段解除鎖定。在 [連線] 資訊看板中，選取 [站台]中的網站。 在 [管理] 區域中，開啟 [設定編輯器]。 使用導覽控制項來選取 `system.webServer/modules` 區段。 在右邊的 [動作] 資訊看板上，選取將區段 [解除鎖定]。 若模組區段的動作項目顯示為**鎖定區段**，就代表該模組區段已經解除鎖定，且不需要任何動作。
+3. 解除鎖定*web.config*的 `<modules>` 區段。在 [**連接**] 提要欄位中，選取 [**網站**] 中的網站。 在 [管理] 區域中，開啟 [設定編輯器]。 使用導覽控制項來選取 `system.webServer/modules` 區段。 在右邊的 [動作] 資訊看板上，選取將區段 [解除鎖定]。 若模組區段的動作項目顯示為**鎖定區段**，就代表該模組區段已經解除鎖定，且不需要任何動作。
 
 4. 將 `<modules>` 區段新增至具有 `<remove>` 元素的應用程式本機 *web.config* 檔案，以從應用程式移除該模組。 新增多個 `<remove>` 元素以移除多個模組。 如果已在伺服器上進行 *web.config* 變更，請立即在本機對專案的 *web.config* 檔案進行相同的變更。 使用此方法移除模組不會影響模組與伺服器上其他應用程式的搭配使用。
 
@@ -167,8 +167,7 @@ Appcmd.exe delete module MODULE_NAME /app.name:APPLICATION_NAME
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:host-and-deploy/iis/index>
 * [IIS 架構簡介：IIS 中的模組](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [IIS 模組概觀](/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [自訂 IIS 7.0 角色和模組](https://technet.microsoft.com/library/cc627313.aspx)
-* [IIS `<system.webServer>`](/iis/configuration/system.webServer/)
+* [IIS \<System.webserver >](/iis/configuration/system.webServer/)

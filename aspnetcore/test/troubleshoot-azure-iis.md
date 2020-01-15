@@ -5,14 +5,14 @@ description: 瞭解如何診斷 ASP.NET Core 應用程式的 Azure App Service �
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/20/2019
+ms.date: 01/10/2020
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: b0f5d44f153a095a6108a12ee91f4cc46fe0a0de
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 23c90c33d197d26d1c4ad758449e318e20ef3760
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829006"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952144"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>疑難排解 Azure App Service 和 IIS 上的 ASP.NET Core
 
@@ -433,7 +433,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 存取「應用程式事件記錄檔」：
 
-1. 開啟 [開始] 功能表，搜尋**事件檢視器**，然後選取 [事件檢視器]應用程式。
+1. 開啟 [開始] 功能表，搜尋 [*事件檢視器*]，然後選取 [**事件檢視器**] 應用程式。
 1. 在 [事件檢視器] 中，開啟 [Windows 記錄] 節點。
 1. 選取 [應用程式] 以開啟「應用程式事件記錄檔」。
 1. 搜尋與失敗應用程式相關的錯誤。 錯誤在 [來源] 資料行中的值會是 *IIS AspNetCore Module* 或 *IIS Express AspNetCore Module*。
@@ -597,10 +597,10 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ## <a name="clear-package-caches"></a>清除套件快取
 
-有時候，正常運作的應用程式會在升級開發電腦上的 .NET Core SDK，或變更應用程式內的套件版本之後立即失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
+升級開發電腦上的 .NET Core SDK 或變更應用程式內的套件版本之後，正常運作的應用程式可能會立即失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
 
 1. 刪除 [bin] 和 [obj] 資料夾。
-1. 從命令介面執行 `dotnet nuget locals all --clear`，以清除套件快取。
+1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
 
    您也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成清除套件快取，並 `nuget locals all -clear`執行命令。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 

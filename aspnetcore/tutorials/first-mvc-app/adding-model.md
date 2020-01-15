@@ -3,14 +3,14 @@ title: 新增模型到 ASP.NET Core MVC 應用程式
 author: rick-anderson
 description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
-ms.date: 8/15/2019
+ms.date: 01/13/2020
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 40f26c8c2bf8d8aaec1da4ca2ff96cb45830914e
-ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
+ms.openlocfilehash: adf313418e82cc265304262f7a751273fa0e139f
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75914169"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952102"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
@@ -50,8 +50,8 @@ ms.locfileid: "75914169"
 
 `ReleaseDate` 上的 [DateType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性會指定資料的型別 (`Date`)。 使用此屬性：
 
-  * 使用者不需要在日期欄位中輸入時間資訊。
-  * 只會顯示日期，不會顯示時間資訊。
+* 使用者不需要在日期欄位中輸入時間資訊。
+* 只會顯示日期，不會顯示時間資訊。
 
 稍後的教學課程會涵蓋 [DataAnnotations](/dotnet/api/system.componentmodel.dataannotations)。
 
@@ -77,7 +77,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-從 [**專案**] 功能表中，選取 [**管理 Nuget 套件**]。
+從 [**專案**] 功能表中，選取 [**管理 NuGet 套件**]。
 
 在右上方的 [**搜尋**] 欄位中，輸入 `Microsoft.EntityFrameworkCore.SQLite`，然後按下**Return**鍵進行搜尋。 選取相符的 NuGet 套件，然後按 [**新增套件**] 按鈕。
 
@@ -88,9 +88,10 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 將會顯示 [**接受授權**] 對話方塊。 查看所需的授權，然後按一下 [**接受**] 按鈕。
 
 重複上述步驟來安裝下列 NuGet 套件：
- * `Microsoft.VisualStudio.Web.CodeGeneration.Design`
- * `Microsoft.EntityFrameworkCore.SqlServer`
- * `Microsoft.EntityFrameworkCore.Design`
+
+* `Microsoft.VisualStudio.Web.CodeGeneration.Design`
+* `Microsoft.EntityFrameworkCore.SqlServer`
+* `Microsoft.EntityFrameworkCore.Design`
 
 ---
 
@@ -192,13 +193,13 @@ Visual Studio 會建立：
 * 在 Linux 上，匯出 scaffold 工具路徑：
 
   ```console
-    export PATH=$HOME/.dotnet/tools:$PATH
+  export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
 * 執行下列命令：
 
   ```dotnetcli
-   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+  dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
   ```
 
   [!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
@@ -210,7 +211,7 @@ Visual Studio 會建立：
 * 執行下列命令：
 
   ```dotnetcli
-   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+  dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
   ```
 
   [!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
@@ -233,7 +234,7 @@ Visual Studio 會建立：
 
 在 PMC 中，輸入下列命令：
 
-```PMC
+```powershell
 Add-Migration InitialCreate
 Update-Database
 ```
@@ -263,7 +264,7 @@ dotnet ef database update
 
 * `ef database update`：將資料庫更新為先前命令所建立的最新遷移。 此命令會執行 *Migrations/{time-stamp}_InitialCreate.cs* 檔案中的 `Up` 方法，其會建立資料庫。
 
-[!INCLUDE [ more information on the CLI tools for EF Core](~/includes/ef-cli.md)]
+[!INCLUDE [more information on the CLI tools for EF Core](~/includes/ef-cli.md)]
 
 ---
 
@@ -273,7 +274,7 @@ dotnet ef database update
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Migrations/20190805165915_InitialCreate.cs?name=snippet)]
 
- `Up` 方法會建立 Movie 資料表，並將 `Id` 設為主索引鍵。 `Down` 方法會還原 `Up` 移轉所做的結構描述變更。
+`Up` 方法會建立 Movie 資料表，並將 `Id` 設為主索引鍵。 `Down` 方法會還原 `Up` 移轉所做的結構描述變更。
 
 <a name="test"></a>
 
@@ -323,7 +324,11 @@ dotnet ef database update
 
 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將資料庫內容 (`MvcMovieContext`) 插入到控制器中。 控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。
 
-[!INCLUDE [use SQL Server in production](~/includes/RP/sqlitedev.md)]
+### <a name="use-sqlite-for-development-sql-server-for-production"></a>使用 SQLite 進行開發，SQL Server 用於生產環境
+
+選取 SQLite 時，範本產生的程式碼就已準備好進行開發。 下列程式碼示範如何將 <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> 插入啟動。 插入 `IWebHostEnvironment`，讓 `ConfigureServices` 可以在開發中使用 SQLite，並在生產環境中 SQL Server。
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/StartupDevProd.cs?name=snippet_StartupClass&highlight=5,10,16-28)]
 
 ---
 <!-- end of tabs --->
@@ -364,17 +369,17 @@ var movie = await _context.Movie
 
 ```csharp
 return View(movie);
-   ```
+```
 
 檢查 *Views/Movies/Details.cshtml* 檔案的內容：
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
 
 檢視檔案頂端的 `@model` 陳述式會指定檢視所預期物件型別。 建立影片控制器時，會包含下列 `@model` 陳述式：
 
-```HTML
+```cshtml
 @model MvcMovie.Models.Movie
-   ```
+```
 
 此 `@model` 指示詞會允許存取控制器傳遞給檢視的影片。 `Model` 物件為強型別物件。 例如，在 *Details.cshtml* 檢視中，程式碼會使用強型別的 `Model` 物件，將每個電影欄位傳遞至 `DisplayNameFor` 和 `DisplayFor` HTML 協助程式。 `Create` 與 `Edit` 方法和檢視也會傳遞 `Movie` 模型物件。
 
@@ -386,11 +391,11 @@ return View(movie);
 
 <!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
 
 `@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影清單。 例如，在 *Index.cshtml* 檢視中，程式碼會透過強型別 `Model` 物件的 `foreach` 陳述式循環存取電影：
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
 因為 `Model` 物件是強型別 (作為 `IEnumerable<Movie>` 物件)，所以迴圈中每個項目的類型為 `Movie`。 撇開其他優點，這表示您會進行程式碼編譯時期檢查。
 

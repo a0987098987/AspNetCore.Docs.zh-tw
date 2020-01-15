@@ -3,22 +3,22 @@ title: Azure Active Directory 與 ASP.NET Core
 author: rick-anderson
 description: 探索如何向 ASP.NET Core 之 Azure Active Directory 驗證的相關主題。
 ms.author: riande
-ms.date: 12/18/2019
+ms.date: 01/14/2020
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-active-directory/index
-ms.openlocfilehash: 10a174bdb5f9eeed7606d4f0ebb17badc3bc4182
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: a856643216d423c791d3df47bd2206f9121b543f
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359182"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951910"
 ---
 # <a name="azure-active-directory-with-aspnet-core"></a>Azure Active Directory 與 ASP.NET Core
 
 ## <a name="azure-ad-v1-samples"></a>Azure AD V1 範例
 
 下列範例示範如何整合 Azure AD V1，讓使用者使用公司及學校帳戶登入：
-* [將 Azure AD 整合到 ASP.NET Core Web 應用程式](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)
+* [將 Azure AD 整合至 ASP.NET Core Web 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/tree/master)（已封存且不支援）
 * [使用 Azure AD 從 WPF 應用程式呼叫 ASP.NET Core Web API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore)
 * [使用 Azure AD 在 ASP.NET Core Web 應用程式中呼叫 Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
 

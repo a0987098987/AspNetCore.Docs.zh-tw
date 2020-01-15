@@ -9,12 +9,12 @@ ms.date: 12/09/2019
 no-loc:
 - Blazor
 uid: blazor/get-started
-ms.openlocfilehash: 554f4daff92a0839ee7679287a4618e9b51e0fe5
-ms.sourcegitcommit: 925cdbd94613243f33bc7613a62ea34006219931
+ms.openlocfilehash: 2135c2a090d60ec7a46fa4f899f0f14987b6b4e0
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921299"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951715"
 ---
 # <a name="get-started-with-aspnet-core-opno-locblazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -101,7 +101,7 @@ ms.locfileid: "75921299"
 
    7\. 選取 [**執行**] > **執行而不進行調試**程式，以在不進行偵錯工具的*情況下*執行 使用 [**開始調試**程式] 執行應用程式，以*使用調試*程式執行應用程式。
 
-       If a prompt appears to trust the development certificate, trust the certificate and continue.
+   如果出現會信任開發憑證的提示，請信任憑證並繼續。
 
    # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 

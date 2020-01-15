@@ -5,14 +5,14 @@ description: 了解如何在 Windows Server Internet Information Services (IIS) 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/06/2020
+ms.date: 01/13/2020
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 8e0475e3e18688c7d4344661826290d15a2443c0
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: bf035bc65f0f120f52e55effe4d413bfecdf735d
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829188"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952076"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -771,31 +771,19 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 ## <a name="deployment-resources-for-iis-administrators"></a>IIS 系統管理員的部署資源
 
-請參閱 IIS 文件以深入了解 IIS。  
-[IIS 文件](/iis)
-
-了解 .NET Core 應用程式部署模型。  
-[.NET Core 應用程式部署](/dotnet/core/deploying/)
-
-深入瞭解 ASP.NET Core 模組，包括設定指引。  
-<xref:host-and-deploy/aspnet-core-module>
-
-了解已發行之 ASP.NET Core 應用程式的目錄結構。  
-[目錄結構](xref:host-and-deploy/directory-structure)
-
-探索 ASP.NET Core 應用程式的使用中和非使用中 IIS 模組，管理 IIS 模組的方式。  
-[IIS 模組](xref:host-and-deploy/iis/modules)
-
-了解如何診斷 ASP.NET Core 應用程式的 IIS 部署問題。  
-[疑難排解](xref:test/troubleshoot-azure-iis)
-
-區分在 IIS 上裝載 ASP.NET Core 應用程式時的常見錯誤。  
-[Azure App Service 和 IIS 常見的錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)
+* [IIS 文件](/iis)
+* [IIS 中的 IIS 管理員使用者入門](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
+* [.NET Core 應用程式部署](/dotnet/core/deploying/)
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/directory-structure>
+* <xref:host-and-deploy/iis/modules>
+* <xref:test/troubleshoot-azure-iis>
+* <xref:host-and-deploy/azure-iis-errors-reference>
 
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:test/troubleshoot>
-* [ASP.NET Core 簡介](xref:index)
+* <xref:index>
 * [Microsoft IIS 官方網站](https://www.iis.net/)
 * [Windows Server 技術內容庫](/windows-server/windows-server)
 * [ISS 上的 HTTP/2](/iis/get-started/whats-new-in-iis-10/http2-on-iis)

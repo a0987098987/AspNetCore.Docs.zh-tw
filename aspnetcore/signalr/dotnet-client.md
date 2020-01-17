@@ -5,16 +5,16 @@ description: .NET 用戶端 SignalR ASP.NET Core 的相關資訊
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 no-loc:
 - SignalR
 uid: signalr/dotnet-client
-ms.openlocfilehash: 28e8fcf808406cd0251ba94e2ef97ab04841fcd0
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 39d9eccdb1e0457b177e75e6f94f3dd185b0093d
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963974"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146312"
 ---
 # <a name="aspnet-core-opno-locsignalr-net-client"></a>ASP.NET Core SignalR .NET 用戶端
 
@@ -164,7 +164,7 @@ HubConnection connection= new HubConnectionBuilder()
 
 如果您想要更充分掌控自動重新連線嘗試的時間和次數，`WithAutomaticReconnect` 會接受一個物件，該介面會執行 `IRetryPolicy` 介面，其具有名為 `NextRetryDelay`的單一方法。
 
-`NextRetryDelay` 接受具有類型 `RetryContext`的單一引數。 `RetryContext` 有三個屬性：分別是 `long`、`TimeSpan` 和 `Exception` 的 `PreviousRetryCount`、`ElapsedTime` 和 `RetryReason`。 第一次重新連線嘗試之前，`PreviousRetryCount` 和 `ElapsedTime` 都是零，而 `RetryReason` 則是造成連接遺失的例外狀況。 在每次重試失敗後，`PreviousRetryCount` 將會遞增一次，`ElapsedTime` 將會更新以反映到目前為止的重新連接所花費的時間，而 `RetryReason` 將會是導致上次重新連線嘗試失敗的例外狀況。
+`NextRetryDelay` 接受具有類型 `RetryContext`的單一引數。 `RetryContext` 有三個屬性： `PreviousRetryCount`、`ElapsedTime` 和 `RetryReason`，分別是 `long`、`TimeSpan` 和 `Exception`。 第一次重新連線嘗試之前，`PreviousRetryCount` 和 `ElapsedTime` 都是零，而 `RetryReason` 則是造成連接遺失的例外狀況。 在每次重試失敗後，`PreviousRetryCount` 將會遞增一次，`ElapsedTime` 將會更新以反映到目前為止的重新連接所花費的時間，而 `RetryReason` 將會是導致上次重新連線嘗試失敗的例外狀況。
 
 `NextRetryDelay` 必須傳回代表在下一次重新連線嘗試之前等候時間的 TimeSpan，或 `null` 如果 `HubConnection` 應該停止重新連接，則為。
 
@@ -179,7 +179,7 @@ public class RandomRetryPolicy : IRetryPolicy
         // wait between 0 and 10 seconds before the next reconnect attempt.
         if (retryContext.ElapsedTime < TimeSpan.FromSeconds(60))
         {
-            return TimeSpan.FromSeconds(_random.Next() * 10);
+            return TimeSpan.FromSeconds(_random.NextDouble() * 10);
         }
         else
         {

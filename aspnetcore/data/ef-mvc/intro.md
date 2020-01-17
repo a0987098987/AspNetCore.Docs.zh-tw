@@ -1,5 +1,5 @@
 ---
-title: 教學課程：開始在 ASP.NET MVC Web 應用程式中使用 EF Core
+title: 教學課程：開始在 ASP.NET MVC web 應用程式中使用 EF Core
 description: 這是說明如何從零開始建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 author: rick-anderson
 ms.author: riande
@@ -7,22 +7,16 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: a8909d391ae1a35e9c8155df767ab157701c8a51
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 42ce63d1a31e033cf97536935b6dc94e015f30fa
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259455"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146377"
 ---
-# <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>教學課程：開始在 ASP.NET MVC Web 應用程式中使用 EF Core
-
-::: moniker range=">= aspnetcore-3.0"
+# <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>教學課程：開始在 ASP.NET MVC web 應用程式中使用 EF Core
 
 此教學課程**尚未**升級至 ASP.NET Core 3.0。 [Razor Pages 版本](xref:data/ef-rp/intro)已更新。 如需何時可能更新此資訊的詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/13920) \(英文\)。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
@@ -30,7 +24,7 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 
 這個範例應用程式是虛構的 Contoso 大學網站。 其中包括的功能有學生入學許可、課程建立、教師指派。 這是說明如何從零開始建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 
-在本教學課程中，您已：
+在本教學課程中，您將：
 
 > [!div class="checklist"]
 > * 建立 ASP.NET Core MVC Web 應用程式
@@ -43,7 +37,7 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 > * 建立控制器和檢視
 > * 檢視資料庫
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件：
 
 * [.NET Core SDK 2.2](https://www.microsoft.com/net/download)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) 和下列工作負載：
@@ -79,7 +73,7 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 
 * 輸入 **ContosoUniversity** 作為名稱，然後按一下 [確定]。
 
-  ![[新增專案] 對話](intro/_static/new-project2.png)
+  ![新增專案對話方塊](intro/_static/new-project2.png)
 
 * 等候 [新增 ASP.NET Core Web 應用程式] 對話方塊出現。
 
@@ -97,11 +91,11 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 
 開啟 *Views/Shared/_Layout.cshtml* 並進行下列變更：
 
-* 將每個出現的 "ContosoUniversity" 都變更為 "Contoso University"。 共出現三次。
+* 將每個出現的 "ContosoUniversity" 都變更為 "Contoso University"。 共有三個發生次數。
 
 * 為 **About**、**Students**、**Courses**、**Instructors** 及 **Departments** 新增功能表項目，並刪除 **Privacy** 功能表項目。
 
-所做的變更已醒目標示。
+所做的變更已醒目提示。
 
 [!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,34-48,63)]
 
@@ -177,7 +171,7 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 ## <a name="create-the-database-context"></a>建立資料庫內容
 
-為指定資料模型協調 Entity Framework 功能的主要類別便是資料庫內容類別。 若要建立此類別，您可以從 `Microsoft.EntityFrameworkCore.DbContext` 類別來衍生。 在您的程式碼中，您會指定資料模型中包含哪些實體。 您也可以自訂某些 Entity Framework 行為。 在此專案中，類別命名為 `SchoolContext`。
+為指定資料模型協調 Entity Framework 功能的主要類別便是資料庫內容類別。 您可以透過衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別來建立此類別。 在您的程式碼中，您會指定資料模型中包含哪些實體。 您也可以自訂某些 Entity Framework 行為。 在此專案中，類別命名為 `SchoolContext`。
 
 在專案資料夾中，建立名為 *Data* 的資料夾。
 
@@ -201,7 +195,7 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=9-10)]
 
-連接字串的名稱，會透過呼叫 `DbContextOptionsBuilder` 物件上的方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
+連接字串的名稱，會透過呼叫 `DbContextOptionsBuilder` 物件上的方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core configuration system](xref:fundamentals/configuration/index) 會從 *appsettings.json* 檔案讀取連接字串。
 
 為 `ContosoUniversity.Data` 和 `Microsoft.EntityFrameworkCore` 命名空間新增 `using` 陳述式，然後建置專案。
 
@@ -225,7 +219,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 [!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Intro)]
 
-程式碼會檢查資料庫中是否有任何學生。若沒有的話，它便會假設資料庫是新的資料庫，因此需要植入測試資料。 它會將測試資料載入陣列之中，而非 `List<T>` 集合，以最佳化效能。
+程式碼會檢查資料庫中是否有任何學生。若沒有的話，它便會假設資料庫是新的資料庫，因此需要植入測試資料。 會將測試資料載入至陣列而非 `List<T>` 集合，以最佳化效能。
 
 在 *Program.cs* 中，修改 `Main` 方法來在應用程式啟動期間執行下列動作：
 
@@ -255,7 +249,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
   * 選取 [使用 Entity Framework 執行檢視的 MVC 控制器]。
 
-  * 按一下 [新增]。 [新增使用 Entity Framework 執行檢視的 MVC 控制器] 對話方塊隨即出現。
+  * 按一下 [加入]。 [新增使用 Entity Framework 執行檢視的 MVC 控制器] 對話方塊隨即出現。
 
     ![Scaffold Student](intro/_static/scaffold-student2.png)
 
@@ -265,7 +259,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
   * 接受預設的 **StudentsController** 作為名稱。
 
-  * 按一下 [新增]。
+  * 按一下 [加入]。
 
   當您按一下 [新增] 時，Visual Studio Scaffolding 引擎便會建立 *StudentsController.cs* 檔案及一組可以使用該控制器的檢視 ( *.cshtml* 檔案)。
 
@@ -367,7 +361,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已：
+在本教學課程中，您將：
 
 > [!div class="checklist"]
 > * 建立 ASP.NET Core MVC Web 應用程式
@@ -387,4 +381,3 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 > [!div class="nextstepaction"]
 > [實作基本的 CRUD 功能](crud.md)
 
-::: moniker-end

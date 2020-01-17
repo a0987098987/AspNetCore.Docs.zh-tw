@@ -2,20 +2,20 @@
 title: 保護 ASP.NET Core Blazor 伺服器應用程式
 author: guardrex
 description: 瞭解如何降低 Blazor 伺服器應用程式的安全性威脅。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/server
-ms.openlocfilehash: 2d644b84b304a31ad0debc16164ad155c7f7da65
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: d87aac02137681e62cf8f5cbd4dc8b0be6f8431e
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944278"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146299"
 ---
 # <a name="secure-aspnet-core-opno-locblazor-server-apps"></a>保護 ASP.NET Core Blazor 伺服器應用程式
 
@@ -206,7 +206,7 @@ Blazor 的伺服器事件是非同步，因此可以藉由產生新的轉譯，�
 
 ### <a name="guard-against-multiple-dispatches"></a>防護多個分派
 
-如果事件回呼叫用長時間執行的作業（例如從外部服務或資料庫提取資料），請考慮使用「防護」。 此防護可以防止使用者在作業進行中時，使用視覺效果的意見反應來排入多個作業。 下列元件程式碼會將 `isLoading` 設定為 `true`，同時 `GetForecastAsync` 從伺服器取得資料。 當 `isLoading` `true`時，UI 中的按鈕會停用：
+如果事件回呼以非同步方式叫用長時間執行的作業（例如從外部服務或資料庫提取資料），請考慮使用「防護」。 此防護可以防止使用者在作業進行中時，使用視覺效果的意見反應來排入多個作業。 下列元件程式碼會將 `isLoading` 設定為 `true`，同時 `GetForecastAsync` 從伺服器取得資料。 當 `isLoading` `true`時，UI 中的按鈕會停用：
 
 ```razor
 @page "/fetchdata"
@@ -230,6 +230,8 @@ Blazor 的伺服器事件是非同步，因此可以藉由產生新的轉譯，�
     }
 }
 ```
+
+如果背景作業是以 `async`-`await` 模式以非同步方式執行，則上述範例中示範的防護模式會運作。
 
 ### <a name="cancel-early-and-avoid-use-after-dispose"></a>及早取消並避免使用-處置後
 
@@ -292,7 +294,7 @@ Blazor 的伺服器事件是非同步，因此可以藉由產生新的轉譯，�
 使用下列內容啟用詳細錯誤：
 
 * `CircuitOptions.DetailedErrors`。
-* `DetailedErrors` 組態機碼。 例如，將 `ASPNETCORE_DETAILEDERRORS` 環境變數設定為 `true`的值。
+* `DetailedErrors` 設定金鑰。 例如，將 `ASPNETCORE_DETAILEDERRORS` 環境變數設定為 `true`的值。
 
 > [!WARNING]
 > 將錯誤資訊公開給網際網路上的用戶端，是應一律避免的安全性風險。

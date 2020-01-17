@@ -5,16 +5,16 @@ description: 瞭解 ASP.NET Core SignalR的支援平臺。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 01/16/2020
 no-loc:
 - SignalR
 uid: signalr/supported-platforms
-ms.openlocfilehash: 9b9cf1d57d61c333c485f23b7ab952c66814d2aa
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 054965921c87c1a9be27e5ddaa8a87b0fa1f4113
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317471"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146494"
 ---
 # <a name="aspnet-core-opno-locsignalr-supported-platforms"></a>ASP.NET Core SignalR 支援的平臺
 
@@ -26,7 +26,7 @@ ASP.NET Core 的 SignalR 支援 ASP.NET Core 支援的任何伺服器平臺。
 
 [JavaScript 用戶端](xref:signalr/javascript-client)會在 NodeJS 8 和更新版本以及下列瀏覽器上執行：
 
-| 瀏覽器                         | 版本         |
+| 瀏覽器                         | {2&gt;版本&lt;2}         |
 | ------------------------------- | --------------- |
 | Microsoft Edge                  | 目前的&dagger; |
 | Mozilla Firefox                 | 目前的&dagger; |
@@ -50,6 +50,6 @@ ASP.NET Core 的 SignalR 支援 ASP.NET Core 支援的任何伺服器平臺。
 
 下列用戶端可以使用，但為實驗性或非官方。 它們目前不受支援，而且可能永遠不會。
 
-* [C++台](https://github.com/aspnet/SignalR/tree/master/clients/cpp)
+* [C++台](https://github.com/aspnet/SignalR-Client-Cpp)
 
 * [Swift 用戶端](https://github.com/moozzyk/SignalR-Client-Swift)

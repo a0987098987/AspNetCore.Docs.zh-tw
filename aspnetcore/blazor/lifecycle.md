@@ -2,19 +2,20 @@
 title: ASP.NET Core Blazor 生命週期
 author: guardrex
 description: 瞭解如何在 ASP.NET Core Blazor 應用程式中使用 Razor 元件生命週期方法。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/lifecycle
-ms.openlocfilehash: e600e7c7a6a8c646a655520bd5c127f2cd662753
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: df5bb676df59b538179a69978040521c4ee78ed1
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944027"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146364"
 ---
 # <a name="aspnet-core-opno-locblazor-lifecycle"></a>ASP.NET Core Blazor 生命週期
 
@@ -26,26 +27,23 @@ Blazor 架構包含同步和非同步生命週期方法。 覆寫生命週期方
 
 ### <a name="component-initialization-methods"></a>元件初始化方法
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync*> 和 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized*> 會執行初始化元件的程式碼。 只有在第一次具現化元件時，才會呼叫這些方法一次。
+當元件從其父元件收到其初始參數之後初始化時，就會叫用 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync*> 和 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized*>。 當元件執行非同步作業時，請使用 `OnInitializedAsync`，而且應該在作業完成時重新整理。 只有在第一次具現化元件時，才會呼叫這些方法一次。
 
-若要執行非同步作業，請在作業上使用 `OnInitializedAsync` 和 `await` 關鍵字：
-
-```csharp
-protected override async Task OnInitializedAsync()
-{
-    await ...
-}
-```
-
-> [!NOTE]
-> 在 `OnInitializedAsync` 生命週期事件期間，必須進行元件初始化期間的非同步工作。
-
-如需同步作業，請使用 `OnInitialized`：
+若為同步作業，請覆寫 `OnInitialized`：
 
 ```csharp
 protected override void OnInitialized()
 {
     ...
+}
+```
+
+若要執行非同步作業，請覆寫 `OnInitializedAsync`，並在作業上使用 `await` 關鍵字：
+
+```csharp
+protected override async Task OnInitializedAsync()
+{
+    await ...
 }
 ```
 
@@ -70,7 +68,12 @@ public override async Task SetParametersAsync(ParameterView parameters)
 
 ### <a name="after-parameters-are-set"></a>設定參數之後
 
-當元件已從其父系接收參數，且已將值指派給屬性時，會呼叫 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync*> 和 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet*>。 這些方法會在元件初始化之後執行，而且每次指定新的參數值時，都會執行此動作：
+呼叫 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync*> 和 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet*>：
+
+* 當元件初始化並從其父元件收到第一組參數時。
+* 當父元件重新呈現和提供時：
+  * 只有已知的基本不可變類型，其中至少有一個參數已變更。
+  * 任何複雜類型的參數。 架構無法得知複雜型別參數的值是否在內部變動，因此它會將參數集視為已變更。
 
 ```csharp
 protected override async Task OnParametersSetAsync()
@@ -160,7 +163,7 @@ Blazor 伺服器範本中的*Pages/FetchData* ：
 
 如果元件會執行 <xref:System.IDisposable>，當元件從 UI 中移除時，就會呼叫[Dispose 方法](/dotnet/standard/garbage-collection/implementing-dispose)。 下列元件會使用 `@implements IDisposable` 和 `Dispose` 方法：
 
-```csharp
+```razor
 @using System
 @implements IDisposable
 

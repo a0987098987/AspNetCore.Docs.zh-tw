@@ -5,14 +5,14 @@ description: 了解建置 ASP.NET Core 應用程式的基本概念。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 01/15/2020
 uid: fundamentals/index
-ms.openlocfilehash: 7173a732a04bf3e598adef298fa9120c15dd52fb
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: 3fbfc7c4c0d5e568339bc00a7cbe84a3932acf1f
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799377"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146351"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -69,7 +69,7 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 * 中介軟體元件
 * 記錄
 * DI
-* Configuration
+* 組態
 
 在單一物件中包含所有應用程式相互依存資源的主要理由便是生命週期管理：控制應用程式的啟動及順利關機。
 
@@ -111,7 +111,7 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 
 ### <a name="non-web-scenarios"></a>非 Web 案例
 
-一般主機允許其他類型的應用程式，使用交叉剪輯架構延伸模組，例如記錄、相依性插入 (DI)、設定與應用程式存留期管理。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與 <xref:fundamentals/host/hosted-services>。
+一般主機允許其他類型的應用程式，使用交叉剪輯架構延伸模組，例如記錄、相依性插入 (DI)、設定與應用程式存留期管理。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>和<xref:fundamentals/host/hosted-services>。
 
 ## <a name="servers"></a>伺服器
 
@@ -162,7 +162,7 @@ ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 �
 
 如需詳細資訊，請參閱<xref:fundamentals/servers/index>。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>組態
 
 ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，以成對名稱和數值的形式取得設定。 您可以使用各種來源的內建組態提供者，例如 *.json* 檔案、 *.xml* 檔案、環境變數及命令列引數。 您也可以撰寫自訂組態提供者。
 
@@ -206,7 +206,7 @@ ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提�
 * 主控台
 * 偵錯
 * Windows 上的事件追蹤
-* Windows 事件記錄檔
+* Windows 事件日誌
 * TraceSource
 * Azure App Service
 * Azure Application Insights
@@ -310,6 +310,12 @@ Web 根目錄路徑預設為 *{content root}/wwwroot*，但在[建立主機](#ho
   <Content Update="wwwroot\local\**\*.*" CopyToPublishDirectory="Never" />
 </ItemGroup>
 ```
+
+::: moniker range=">= aspnetcore-3.0"
+
+若要防止將靜態身分識別資產發行至 web 根目錄，請參閱 <xref:security/authentication/identity#prevent-publish-of-static-identity-assets>。
+
+::: moniker-end
 
 在 Razor （*cshtml*）檔案中，波狀符號斜線（`~/`）會指向 web 根目錄。 以 `~/` 開頭的路徑稱為*虛擬路徑*。
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/03/2019
 uid: security/samesite
-ms.openlocfilehash: 988069a66cc4772583444303948bff2e47ff4310
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: b344ed8f539979210980b3421659207edd513f32
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733982"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146429"
 ---
 # <a name="work-with-samesite-cookies-in-aspnet-core"></a>在 ASP.NET Core 中使用 SameSite cookie
 
@@ -36,7 +36,7 @@ SameSite 會將預設值[附加](xref:Microsoft.AspNetCore.Http.IResponseCookies
 
 發出 cookie 的所有 ASP.NET Core 元件都會使用適用于其案例的設定來覆寫先前的預設值。 先前已覆寫的預設值尚未變更。
 
-| 元件 | 去 | 預設 |
+| 元件 | Cookie | Default |
 | ------------- | ------------- |
 | <xref:Microsoft.AspNetCore.Http.CookieBuilder> | <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite> | `Unspecified` |
 | <xref:Microsoft.AspNetCore.Http.HttpContext.Session>  | [SessionOptions. Cookie](xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie) |`Lax` |
@@ -72,7 +72,7 @@ ASP.NET Core 3.1 和更新版本提供下列 SameSite 支援：
 
 SameSite 支援首次使用[2016 draft 標準](https://tools.ietf.org/html/draft-west-first-party-cookies-07#section-4.1)在2.0 的 ASP.NET Core 中執行。 2016標準是加入宣告。 ASP.NET Core 依預設將數個 cookie 設定為 `Lax` 來加入宣告。 在驗證發生數個[問題](https://github.com/aspnet/Announcements/issues/318)之後，大部分 SameSite 的使用量都會[停用](https://github.com/aspnet/Announcements/issues/348)。
 
-修補程式于2019年11月發行，從2016標準更新為2019標準。 [SameSite 規格的2019草稿](https://github.com/aspnet/Announcements/issues/390)：
+[修補程式](https://devblogs.microsoft.com/dotnet/net-core-November-2019/)于2019年11月發行，從2016標準更新為2019標準。 [SameSite 規格的2019草稿](https://github.com/aspnet/Announcements/issues/390)：
 
 * 與2016草稿**不**相容。 如需詳細資訊，請參閱本檔中的[支援舊版瀏覽器](#sob)。
 * 指定預設會將 cookie 視為 `SameSite=Lax`。
@@ -166,5 +166,6 @@ Electron 的版本包含舊版的 Chromium。 例如，小組所使用的 Electr
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Chromium Blog：開發人員：準備開始新的 SameSite = None;安全的 Cookie 設定](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)
+* [Chromium Blog：開發人員：準備開始新的 SameSite = None;安全 Cookie 設定](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)
 * [SameSite cookie 說明](https://web.dev/samesite-cookies-explained/)
+* [2019年11月修補程式](https://devblogs.microsoft.com/dotnet/net-core-November-2019/)

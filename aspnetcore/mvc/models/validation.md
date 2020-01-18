@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 uid: mvc/models/validation
-ms.openlocfilehash: 042a9933e561de4957f6332bdff3c4f09d2e119b
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: b697f02183c76b9a96471a748a86c144fde47bb0
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355270"
+ms.lasthandoff: 01/18/2020
+ms.locfileid: "76268747"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和 Razor Pages 中的模型驗證
 
@@ -82,7 +82,9 @@ ms.locfileid: "75355270"
 
 ## <a name="required-attribute"></a>[必要] 屬性
 
-根據預設，驗證系統會將不可為 Null 的參數或屬性視為具有 `[Required]` 屬性。 例如 `decimal` 和 `int` 的[實值型別](/dotnet/csharp/language-reference/keywords/value-types)不可為 Null。
+.NET Core 3.0 和更新版本中的驗證系統會將不可為 null 的參數或系結屬性視為具有 `[Required]` 屬性。 例如 `decimal` 和 `int` 的[實值型別](/dotnet/csharp/language-reference/keywords/value-types)不可為 Null。 藉由設定 `Startup.ConfigureServices`中的 <xref:Microsoft.AspNetCore.Mvc.MvcOptions.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes>，即可停用此行為：
+
+' ' csharp 服務。AddControllers （options = > 選項。SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true）;...
 
 ### <a name="required-validation-on-the-server"></a>[必要] 在伺服器上執行驗證
 

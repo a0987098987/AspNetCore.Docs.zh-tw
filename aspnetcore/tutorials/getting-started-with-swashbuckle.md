@@ -4,14 +4,14 @@ author: zuckerthoben
 description: 了解如何將 Swashbuckle 新增至 ASP.NET Core Web API 專案，以整合 Swagger UI。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 01/17/2020
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: f3c20eb085fa5277dd37b7323b5a7d7d286bcd99
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 16583cde2f4a6deaabc2fc965a5b9484ca94c2fd
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866068"
+ms.lasthandoff: 01/18/2020
+ms.locfileid: "76268717"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -39,7 +39,7 @@ Swashbuckle 有三個主要元件：
   * 執行下列命令：
 
     ```powershell
-    Install-Package Swashbuckle.AspNetCore -Version 5.0.0-rc5
+    Install-Package Swashbuckle.AspNetCore -Version 5.0.0
     ```
 
 * 從 [管理 NuGet 套件] 對話方塊中：
@@ -62,7 +62,7 @@ Swashbuckle 有三個主要元件：
 從 [整合式終端機] 執行下列命令：
 
 ```dotnetcli
-dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc4
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0
 ```
 
 ### <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
@@ -70,7 +70,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc4
 執行下列命令：
 
 ```dotnetcli
-dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc4
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0
 ```
 
 ---

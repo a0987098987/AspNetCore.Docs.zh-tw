@@ -2,19 +2,20 @@
 title: ASP.NET Core Blazor 路由
 author: guardrex
 description: 瞭解如何在應用程式中路由傳送要求，以及關於 NavLink 元件。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/routing
-ms.openlocfilehash: 1690434f48141bc83e7bc02e22cb763430eaa10d
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 0cd15f25ff7975cae3f63a739212aa23062ece23
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944014"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160154"
 ---
 # <a name="aspnet-core-opno-locblazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -121,7 +122,7 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 }
 ```
 
-ASP.NET Core 3.0 中的 Blazor 應用程式不支援選擇性參數。 上一個範例中會套用兩個 `@page` 指示詞。 第一個則允許不使用參數導覽至元件。 第二個 `@page` 指示詞會採用 `{text}` 路由參數，並將值指派給 `Text` 屬性。
+不支援選擇性參數。 上一個範例中會套用兩個 `@page` 指示詞。 第一個則允許不使用參數導覽至元件。 第二個 `@page` 指示詞會採用 `{text}` 路由參數，並將值指派給 `Text` 屬性。
 
 ## <a name="route-constraints"></a>路由條件約束
 

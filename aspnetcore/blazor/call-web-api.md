@@ -2,19 +2,20 @@
 title: 從 ASP.NET Core 呼叫 Web API Blazor
 author: guardrex
 description: 瞭解如何使用 JSON helper 從 Blazor 應用程式呼叫 Web API，包括建立跨原始來源資源分享（CORS）要求。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: f1929b48275a36552f061a64823267df0f3acabc
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 66605f38a6fcaedebc92b0946dca1e5f28b593c6
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943910"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160063"
 ---
 # <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>從 ASP.NET Core 呼叫 Web API Blazor
 

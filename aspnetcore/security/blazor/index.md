@@ -2,20 +2,20 @@
 title: ASP.NET Core Blazor 驗證和授權
 author: guardrex
 description: 深入瞭解 Blazor 驗證和授權案例。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: d3860a5e7f6ae5a3193d657b77fc593c9bd39131
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 2ce2cff8d3ab77f21181070b6f1e48c50561036c
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944196"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160284"
 ---
 # <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證和授權
 
@@ -51,7 +51,7 @@ Blazor 伺服器應用程式會在使用 SignalR建立的即時連線上運作�
 對話方塊隨即開啟，並提供可供其他 ASP.NET Core 專案使用的相同驗證機制集合：
 
 * **無驗證**
-* **個別使用者帳戶** &ndash; 使用者帳戶能以下列方式儲存：
+* 可以儲存 &ndash; 使用者帳戶的**個別使用者帳戶**：
   * 使用 ASP.NET Core 的[身分識別](xref:security/authentication/identity)系統儲存在應用程式內。
   * 使用 [Azure AD B2C](xref:security/authentication/azure-ad-b2c) 儲存。
 * **公司或學校帳戶**

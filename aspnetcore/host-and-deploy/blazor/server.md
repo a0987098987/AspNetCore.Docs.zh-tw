@@ -2,20 +2,20 @@
 title: 裝載和部署 ASP.NET Core Blazor 伺服器
 author: guardrex
 description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應用程式。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: d45d355eabc53fc90bcda4cb7be22fb6a9f04541
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: c07cd05dd8e1c4384c6f8f019173b9b7a9a06fd0
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944330"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160219"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>裝載和部署 Blazor 伺服器
 
@@ -61,7 +61,7 @@ Blazor 伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊
 
 1. 啟用服務以支援「固定*會話*」，在此情況下，用戶端會在進行[回溯時重新導向至相同的伺服器](xref:blazor/hosting-models#reconnection-to-the-same-server)。 將 [`ServerStickyMode` 選項] 或 [設定] 值設為 [`Required`]。 一般而言，應用程式會使用下列**其中一**種方法來建立設定：
 
-   * `Startup.ConfigureServices`:
+   * `Startup.ConfigureServices`：
   
      ```csharp
      services.AddSignalR().AddAzureSignalR(options =>

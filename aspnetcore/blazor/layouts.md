@@ -2,19 +2,20 @@
 title: ASP.NET Core Blazor 版面配置
 author: guardrex
 description: 瞭解如何為 Blazor 應用程式建立可重複使用的版面配置元件。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 90acfb0d4e9daadb12be79de6bd0c99fc545697a
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 51720af8fec5b4427fc66660eb8ac9c54ba2e99e
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944053"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76159855"
 ---
 # <a name="aspnet-core-opno-locblazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -90,6 +91,10 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 最後，在*MasterLayout*中 `MasterLayout` 包含最上層的版面配置元素，例如頁首、主功能表和頁尾。 `EpisodesComponent` 的 `MasterListLayout` 會在 `@Body` 出現的位置呈現：
 
 [!code-razor[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
+
+## <a name="share-a-razor-pages-layout-with-integrated-components"></a>與整合式元件共用 Razor Pages 的版面配置
+
+當可路由的元件整合到 Razor Pages 應用程式時，應用程式的共用配置可以與元件搭配使用。 如需詳細資訊，請參閱<xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps>。
 
 ## <a name="additional-resources"></a>其他資源
 

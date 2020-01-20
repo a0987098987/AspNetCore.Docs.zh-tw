@@ -2,19 +2,20 @@
 title: 裝載和部署 ASP.NET Core Blazor
 author: guardrex
 description: 探索如何裝載和部署 Blazor 應用程式。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 5c37c3d9f424f4c4b814e1955880623fd95179f2
-ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
+ms.openlocfilehash: 238e7fc8f8d64c7847dc8847fb66e22442a3c8e0
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74550380"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160258"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor"></a>裝載和部署 ASP.NET Core Blazor
 

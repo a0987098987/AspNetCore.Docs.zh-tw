@@ -1,28 +1,29 @@
 ---
-title: 建立和使用 ASP.NET Core Razor 元件
+title: Create and use ASP.NET Core Razor components
 author: guardrex
-description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資料、處理事件，以及管理元件生命週期。
-monikerRange: '>= aspnetcore-3.0'
+description: Learn how to create and use Razor components, including how to bind to data, handle events, and manage component life cycles.
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/28/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/components
-ms.openlocfilehash: 9e796a23a0b24a9fee314051644703ef12bd7607
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: e73667925c04dd1b2360138343c4a2dcef0ee310
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828200"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160011"
 ---
-# <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
+# <a name="create-and-use-aspnet-core-razor-components"></a>Create and use ASP.NET Core Razor components
 
-By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com/danroth27)
+By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-Blazor 應用程式是使用*元件*所建立。 「元件」（component）是一種獨立的使用者介面（UI）區塊，例如頁面、對話方塊或表單。 元件包含 HTML 標籤，以及插入資料或回應 UI 事件所需的處理邏輯。 元件具有彈性且輕量。 它們可以在專案之間進行嵌套、重複使用及共用。
+Blazor apps are built using *components*. A component is a self-contained chunk of user interface (UI), such as a page, dialog, or form. 元件包含 HTML 標籤，以及插入資料或回應 UI 事件所需的處理邏輯。 元件具有彈性且輕量。 它們可以在專案之間進行嵌套、重複使用及共用。
 
 ## <a name="component-classes"></a>元件類別
 
@@ -33,9 +34,6 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 元件的 UI 是使用 HTML 定義的。 動態轉譯邏輯 (例如迴圈、條件、運算式) 是使用內嵌的 C# 語法 (稱為 [Razor](xref:mvc/views/razor)) 來新增的。 編譯應用程式時，會將 HTML 標籤和C#轉譯邏輯轉換成元件類別。 產生的類別名稱與檔案的名稱相符。
 
 元件類別的成員均定義於 `@code` 區塊中。 在 `@code` 區塊中，會使用事件處理或定義其他元件邏輯的方法來指定元件狀態（屬性、欄位）。 允許一個以上的 `@code` 區塊。
-
-> [!NOTE]
-> 在 ASP.NET Core 3.0 的先前預覽中，`@functions` 組塊用於與 Razor 元件中 `@code` 組塊相同的用途。 `@functions` 區塊會繼續在 Razor 元件中運作，但我們建議使用 ASP.NET Core 3.0 Preview 6 或更新版本中的 `@code` 組塊。
 
 元件成員可以使用C#開頭為 `@`的運算式，做為元件轉譯邏輯的一部分。 例如， C#欄位是藉由在功能變數名稱前面加上 `@` 來呈現。 下列範例會評估並呈現：
 
@@ -53,17 +51,37 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 一開始呈現元件之後，元件會重新產生其轉譯樹狀結構，以回應事件。 Blazor 接著會比較新的轉譯樹狀結構與上一個，並將任何修改套用至瀏覽器的檔物件模型（DOM）。
 
-元件是一般C#類別，可以放在專案內的任何位置。 產生網頁的元件通常會位於*Pages*資料夾中。 非頁面元件通常會放在*共用*資料夾中，或加入至專案的自訂資料夾中。 若要使用自訂資料夾，請將自訂資料夾的命名空間新增至父元件或應用程式的 *_Imports razor*檔案。 例如，下列命名空間會在應用程式的根命名空間為 `WebApplication`時，讓*元件*資料夾中的元件可供使用：
+元件是一般C#類別，可以放在專案內的任何位置。 產生網頁的元件通常會位於*Pages*資料夾中。 非頁面元件通常會放在*共用*資料夾中，或加入至專案的自訂資料夾中。
+
+一般而言，元件的命名空間是從應用程式的根命名空間和元件在應用程式內的位置（資料夾）衍生而來。 如果應用程式的根命名空間是 `BlazorApp`，且 `Counter` 元件位於*Pages*資料夾中：
+
+* `Counter` 元件的命名空間為 `BlazorApp.Pages`。
+* 元件的完整類型名稱為 `BlazorApp.Pages.Counter`。
+
+如需詳細資訊，請參閱匯[入元件](#import-components)一節。
+
+若要使用自訂資料夾，請將自訂資料夾的命名空間新增至父元件或應用程式的 *_Imports razor*檔案。 例如，下列命名空間會在應用程式的根命名空間為 `BlazorApp`時，讓*元件*資料夾中的元件可供使用：
 
 ```razor
-@using WebApplication.Components
+@using BlazorApp.Components
 ```
 
 ## <a name="integrate-components-into-razor-pages-and-mvc-apps"></a>將元件整合到 Razor Pages 和 MVC 應用程式
 
-將元件與現有的 Razor Pages 和 MVC 應用程式搭配使用。 不需要重新撰寫現有的頁面或 views 就能使用 Razor 元件。 當頁面或視圖呈現時，會同時資源清單元件。
+Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或視圖呈現時，可以同時資源清單元件。
 
-::: moniker range=">= aspnetcore-3.1"
+若要準備 Razor Pages 或 MVC 應用程式來裝載 Razor 元件，請遵循 <xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps> 文章的將*Razor 元件整合到 Razor Pages 和 MVC 應用程式*一節中的指導方針。
+
+使用自訂資料夾來存放應用程式的元件時，請將代表資料夾的命名空間新增至頁面/視圖，或加入至 *_ViewImports. cshtml*檔案。 在下列範例中：
+
+* 將 `MyAppNamespace` 變更為應用程式的命名空間。
+* 如果未使用名為「*元件*」的資料夾來存放元件，請將 `Components` 變更為元件所在的資料夾。
+
+```csharp
+@using MyAppNamespace.Components
+```
+
+*_ViewImports. cshtml*檔案位於 MVC 應用程式的 Razor Pages 應用程式或*Views*資料夾的*Pages*資料夾中。
 
 若要從頁面或視圖呈現元件，請使用 `Component` 標籤協助程式：
 
@@ -90,35 +108,6 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 不支援從靜態 HTML 網頁轉譯伺服器元件。
 
 如需如何呈現元件、元件狀態和 `Component` 標籤協助程式的詳細資訊，請參閱 <xref:blazor/hosting-models>。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.1"
-
-若要從頁面或視圖呈現元件，請使用 `RenderComponentAsync<TComponent>` HTML helper 方法：
-
-```cshtml
-@(await Html.RenderComponentAsync<MyComponent>(RenderMode.ServerPrerendered))
-```
-
-`RenderMode` 設定元件是否：
-
-* 會資源清單到頁面中。
-* 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動 Blazor 應用程式所需的資訊。
-
-| `RenderMode`        | 描述 |
-| ------------------- | ----------- |
-| `ServerPrerendered` | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 不支援參數。 |
-| `Server`            | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 不支援參數。 |
-| `Static`            | 將元件轉譯為靜態 HTML。 支援參數。 |
-
-雖然頁面和視圖可以使用元件，但相反的情況並非如此。 元件不能使用視圖和頁面特定的案例，例如部分視圖和區段。 若要在元件中使用部分視圖的邏輯，請將部分視圖邏輯分解成元件。
-
-不支援從靜態 HTML 網頁轉譯伺服器元件。
-
-如需如何呈現元件、元件狀態和 `RenderComponentAsync` HTML Helper 的詳細資訊，請參閱 <xref:blazor/hosting-models>。
-
-::: moniker-end
 
 ## <a name="use-components"></a>使用元件
 
@@ -353,6 +342,11 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 不同于當元素失去焦點時引發的 `onchange`，`oninput` 當文字方塊的值變更時，就會引發。
 
+上述範例中的 `@bind-value` 系結：
+
+* 指定的運算式（`CurrentValue`）至元素的 `value` 屬性。
+* `@bind-value:event`所指定之事件的變更事件委派。
+
 **無法剖析的值**
 
 當使用者將無法剖析的值提供給資料系結元素時，會在觸發系結事件時，自動將無法剖析的值還原成先前的值。
@@ -522,6 +516,10 @@ Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結�
 <MyComponent @bind-MyProp="MyValue" @bind-MyProp:event="MyEventHandler" />
 ```
 
+**選項按鈕**
+
+如需系結至表單中選項按鈕的相關資訊，請參閱 <xref:blazor/forms-validation#work-with-radio-buttons>。
+
 ## <a name="event-handling"></a>事件處理
 
 Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案屬性（例如，`onclick` 和 `onsubmit`）與委派類型的值，Razor 元件會將屬性的值視為事件處理常式。 屬性的名稱一律會格式化[`@on{EVENT}`](xref:mvc/views/razor#onevent)。
@@ -592,7 +590,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 | 進度         | `ProgressEventArgs`  | `onabort`、 `onload`、 `onloadend`、 `onloadstart`、 `onprogress`、 `ontimeout` |
 | 觸控            | `TouchEventArgs`     | `ontouchstart`、 `ontouchend`、 `ontouchmove`、 `ontouchenter`、 `ontouchleave`、 `ontouchcancel`<br><br>`TouchPoint` 代表觸控式裝置上的單一連絡人點。 |
 
-如需上表中事件的屬性和事件處理行為的詳細資訊，請參閱[參考來源中的 EventArgs 類別（dotnet/AspNetCore release/3.0 分支）](https://github.com/dotnet/AspNetCore/tree/release/3.0/src/Components/Web/src/Web)。
+如需上表中事件的屬性和事件處理行為的詳細資訊，請參閱[參考來源中的 EventArgs 類別（dotnet/aspnetcore release/3.1 分支）](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/Components/Web/src/Web)。
 
 ### <a name="lambda-expressions"></a>Lambda 運算式
 
@@ -696,8 +694,6 @@ await callback.InvokeAsync(arg);
 
 偏好 `EventCallback`的強型別 `EventCallback<T>`。 `EventCallback<T>` 為元件的使用者提供更好的錯誤意見反應。 與其他 UI 事件處理常式類似，指定事件參數是選擇性的。 當沒有任何值傳遞至回呼時，請使用 `EventCallback`。
 
-::: moniker range=">= aspnetcore-3.1"
-
 ### <a name="prevent-default-actions"></a>防止預設動作
 
 使用[`@on{EVENT}:preventDefault`](xref:mvc/views/razor#oneventpreventdefault)指示詞屬性來防止事件的預設動作。
@@ -763,8 +759,6 @@ await callback.InvokeAsync(arg);
         Console.WriteLine($"A child div was selected. {DateTime.Now}");
 }
 ```
-
-::: moniker-end
 
 ## <a name="chained-bind"></a>連鎖系結
 
@@ -1091,8 +1085,6 @@ Blazor 中的路由會藉由提供路由範本給應用程式中的每個可存�
 
 Razor 元件（*razor*）**不**支援*Catch-all*參數語法（`*`/`**`），它會跨多個資料夾界限捕捉路徑。
 
-::: moniker range=">= aspnetcore-3.1"
-
 ## <a name="partial-class-support"></a>部分類別支援
 
 Razor 元件是以部分類別的形式產生。 Razor 元件是使用下列其中一種方法來撰寫的：
@@ -1154,43 +1146,16 @@ namespace BlazorApp.Pages
 }
 ```
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.1"
-
-## <a name="specify-a-component-base-class"></a>指定元件基類
-
-`@inherits` 指示詞可以用來指定元件的基類。
-
-[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)會顯示元件如何繼承基類（`BlazorRocksBase`），以提供元件的屬性和方法。
-
-*Pages/BlazorRocks. razor*：
-
-```razor
-@page "/BlazorRocks"
-@inherits BlazorRocksBase
-
-<h1>@BlazorRocksText</h1>
-```
-
-*BlazorRocksBase.cs*：
+視需要將任何必要的命名空間新增至部分類別檔案。 Razor 元件所使用的一般命名空間包括：
 
 ```csharp
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
-
-namespace BlazorSample
-{
-    public class BlazorRocksBase : ComponentBase
-    {
-        public string BlazorRocksText { get; set; } = 
-            "Blazor rocks the browser!";
-    }
-}
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.AspNetCore.Components.Web;
 ```
-
-基類應該衍生自 `ComponentBase`。
-
-::: moniker-end
 
 ## <a name="import-components"></a>匯入元件
 

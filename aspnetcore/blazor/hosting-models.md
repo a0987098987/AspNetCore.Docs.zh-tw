@@ -2,20 +2,21 @@
 title: ASP.NET Core Blazor 裝載模型
 author: guardrex
 description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
 - SignalR
+- blazor.webassembly.js
 uid: blazor/hosting-models
-ms.openlocfilehash: 7676d16bddf146ea38619ed35c5e32c5bce731de
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: c9521acf40317c90d1197660bfa516710263cfc9
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943756"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160037"
 ---
 # <a name="aspnet-core-opno-locblazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -37,7 +38,7 @@ Blazor 的主要裝載模型會在 WebAssembly 的瀏覽器中執行用戶端。
 
 選取 [ **Blazor WebAssembly 應用程式**] 範本之後，您可以選擇將應用程式設定為使用 ASP.NET Core 後端，方法是選取 [裝載的**ASP.NET Core** ] 核取方塊（[dotnet] [新增] [blazorwasm] [[託管](/dotnet/core/tools/dotnet-new)]）。 ASP.NET Core 應用程式會將 Blazor 應用程式提供給用戶端。 Blazor WebAssembly 應用程式可以使用 Web API 呼叫或[SignalR](xref:signalr/introduction)，透過網路與伺服器互動。
 
-這些範本包含處理下列內容的*blazor. webassembly*腳本：
+這些範本包含的 `blazor.webassembly.js` 腳本會處理：
 
 * 下載 .NET 執行時間、應用程式和應用程式的相依性。
 * 初始化執行時間以執行應用程式。
@@ -69,7 +70,7 @@ ASP.NET Core 應用程式會參考要新增的應用程式 `Startup` 類別：
 * 伺服器端服務。
 * 應用程式至要求處理管線。
 
-*Blazor*腳本&dagger; 會建立用戶端連接。 應用程式會負責保存和還原所需的應用程式狀態（例如，萬一網路連線中斷時）。
+`blazor.server.js` 腳本&dagger; 會建立用戶端連接。 應用程式會負責保存和還原所需的應用程式狀態（例如，萬一網路連線中斷時）。
 
 Blazor 伺服器裝載模型提供數個優點：
 
@@ -86,7 +87,7 @@ Blazor 伺服器裝載有缺點：
 * 對於具有許多使用者的應用程式而言，擴充性是極具挑戰性的。 伺服器必須管理多個用戶端連接並處理用戶端狀態。
 * 需要 ASP.NET Core 伺服器才能服務應用程式。 無伺服器部署案例不可行（例如，從 CDN 提供應用程式）。
 
-&dagger;從 ASP.NET Core 共用架構中的內嵌資源來提供*blazor*腳本。
+&dagger;`blazor.server.js` 腳本是從 ASP.NET Core 共用架構中的內嵌資源所提供。
 
 ### <a name="comparison-to-server-rendered-ui"></a>與伺服器呈現的 UI 比較
 
@@ -110,6 +111,187 @@ Blazor 應用程式是由可重複使用的 UI 元素（稱為「*元件*」）�
 圖形為重新顯示，且會計算 UI*差異*（差異）。 這項差異是更新用戶端上的 UI 所需的最小一組 DOM 編輯。 差異會以二進位格式傳送至用戶端，並由瀏覽器套用。
 
 元件會在使用者從用戶端導覽出去之後處置。 當使用者與元件互動時，元件的狀態（服務、資源）必須保留在伺服器的記憶體中。 因為許多元件的狀態可能會由伺服器同時維護，所以記憶體耗盡是必須解決的問題。 如需如何撰寫 Blazor Server 應用程式以確保最佳使用伺服器記憶體的指引，請參閱 <xref:security/blazor/server>。
+
+### <a name="integrate-razor-components-into-razor-pages-and-mvc-apps"></a>將 Razor 元件整合到 Razor Pages 和 MVC 應用程式中
+
+#### <a name="use-components-in-pages-and-views"></a>使用頁面和視圖中的元件
+
+現有的 Razor Pages 或 MVC 應用程式可以將 Razor 元件整合至頁面和 views：
+
+1. 在應用程式的版面配置檔案（ *_Layout. cshtml*）中：
+
+   * 將下列 `<base>` 標記新增至 `<head>` 元素：
+
+     ```html
+     <base href="~/" />
+     ```
+
+     上述範例中的 `href` 值（*應用程式基底路徑*）假設應用程式位於根 URL 路徑（`/`）。 如果應用程式是子應用程式，請遵循 <xref:host-and-deploy/blazor/index#app-base-path> 文章的*應用程式基底路徑*一節中的指導方針。
+
+     *_Layout. cshtml*檔案位於 MVC 應用程式的 Razor Pages 應用程式或*Views/shared*資料夾中的*Pages/shared*資料夾內。
+
+   * 在結尾 `</body>` 標記內，新增*blazor*的 `<script>` 標記：
+
+     ```html
+     <script src="_framework/blazor.server.js"></script>
+     ```
+
+     架構會將*blazor*新增至應用程式。 不需要手動將腳本新增至應用程式。
+
+1. 使用下列內容，將 *_Imports razor*檔案新增至專案的根資料夾（將最後一個命名空間 `MyAppNamespace`變更為應用程式的命名空間）：
+
+   ```csharp
+   @using System.Net.Http
+   @using Microsoft.AspNetCore.Authorization
+   @using Microsoft.AspNetCore.Components.Authorization
+   @using Microsoft.AspNetCore.Components.Forms
+   @using Microsoft.AspNetCore.Components.Routing
+   @using Microsoft.AspNetCore.Components.Web
+   @using Microsoft.JSInterop
+   @using MyAppNamespace
+   ```
+
+1. 在 `Startup.ConfigureServices`中，新增 Blazor 伺服器服務：
+
+   ```csharp
+   services.AddServerSideBlazor();
+   ```
+
+1. 在 `Startup.Configure`中，將 Blazor 中樞端點新增至 `app.UseEndpoints`：
+
+   ```csharp
+   endpoints.MapBlazorHub();
+   ```
+
+1. 將元件整合到任何頁面或視圖中。 如需詳細資訊，請參閱 <xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps> 文章的將*元件整合到 Razor Pages 和 MVC 應用程式*一節。
+
+#### <a name="use-routable-components-in-a-razor-pages-app"></a>在 Razor Pages 應用程式中使用可路由的元件
+
+在 Razor Pages 應用程式中支援可路由的 Razor 元件：
+
+1. 請遵循[使用頁面和 views 中的元件](#use-components-in-pages-and-views)一節中的指導方針。
+
+1. 使用下列內容，將*應用程式 razor*檔案新增至專案的根目錄：
+
+   ```razor
+   @using Microsoft.AspNetCore.Components.Routing
+
+   <Router AppAssembly="typeof(Program).Assembly">
+       <Found Context="routeData">
+           <RouteView RouteData="routeData" />
+       </Found>
+       <NotFound>
+           <h1>Page not found</h1>
+           <p>Sorry, but there's nothing here!</p>
+       </NotFound>
+   </Router>
+   ```
+
+1. 將 *_Host. cshtml*檔案新增至*Pages*資料夾，其中包含下列內容：
+
+   ```cshtml
+   @page "/blazor"
+   @{
+       Layout = "_Layout";
+   }
+
+   <app>
+       <component type="typeof(App)" render-mode="ServerPrerendered" />
+   </app>
+   ```
+
+   元件會使用共用的 *_Layout. cshtml*檔案作為其版面配置。
+
+1. 在 `Startup.Configure`中，將 *_Host. cshtml*頁面的低優先順序路由新增至端點設定：
+
+   ```csharp
+   app.UseEndpoints(endpoints =>
+   {
+       ...
+
+       endpoints.MapFallbackToPage("/_Host");
+   });
+   ```
+
+1. 將可路由的元件新增至應用程式。 例如：
+
+   ```razor
+   @page "/counter"
+
+   <h1>Counter</h1>
+
+   ...
+   ```
+
+   使用自訂資料夾來保存應用程式的元件時，請將代表資料夾的命名空間新增至*Pages/_ViewImports. cshtml*檔案。 如需詳細資訊，請參閱<xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps>。
+
+#### <a name="use-routable-components-in-an-mvc-app"></a>在 MVC 應用程式中使用可路由的元件
+
+在 MVC 應用程式中支援可路由的 Razor 元件：
+
+1. 請遵循[使用頁面和 views 中的元件](#use-components-in-pages-and-views)一節中的指導方針。
+
+1. 使用下列內容，將*應用程式 razor*檔案新增至專案的根目錄：
+
+   ```razor
+   @using Microsoft.AspNetCore.Components.Routing
+
+   <Router AppAssembly="typeof(Program).Assembly">
+       <Found Context="routeData">
+           <RouteView RouteData="routeData" />
+       </Found>
+       <NotFound>
+           <h1>Page not found</h1>
+           <p>Sorry, but there's nothing here!</p>
+       </NotFound>
+   </Router>
+   ```
+
+1. 使用下列內容，將 *_Host. cshtml*檔案新增至*Views/Home*資料夾：
+
+   ```cshtml
+   @{
+       Layout = "_Layout";
+   }
+
+   <app>
+       <component type="typeof(App)" render-mode="ServerPrerendered" />
+   </app>
+   ```
+
+   元件會使用共用的 *_Layout. cshtml*檔案作為其版面配置。
+
+1. 將動作新增至主控制器：
+
+   ```csharp
+   public IActionResult Blazor()
+   {
+      return View("_Host");
+   }
+   ```
+
+1. 為控制器動作新增低優先順序的路由，以將 *_Host. cshtml*視圖傳回 `Startup.Configure`中的端點設定：
+
+   ```csharp
+   app.UseEndpoints(endpoints =>
+   {
+       ...
+
+       endpoints.MapFallbackToController("Blazor", "Home");
+   });
+   ```
+
+1. 建立*Pages*資料夾，並將可路由的元件新增至應用程式。 例如：
+
+   ```razor
+   @page "/counter"
+
+   <h1>Counter</h1>
+
+   ...
+   ```
+
+   使用自訂資料夾來存放應用程式的元件時，請將代表資料夾的命名空間新增至*Views/_ViewImports. cshtml*檔案。 如需詳細資訊，請參閱<xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps>。
 
 ### <a name="circuits"></a>獲得
 
@@ -169,8 +351,6 @@ Blazor 伺服器應用程式會 prerenders，以回應第一個用戶端要求�
 
 在建立伺服器的用戶端連接之前，預設會設定 Blazor 伺服器應用程式，以預先呈現伺服器上的 UI。 這會在 *_Host. cshtml* Razor 頁面中設定：
 
-::: moniker range=">= aspnetcore-3.1"
-
 ```cshtml
 <body>
     <app>
@@ -181,44 +361,16 @@ Blazor 伺服器應用程式會 prerenders，以回應第一個用戶端要求�
 </body>
 ```
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.1"
-
-```cshtml
-<body>
-    <app>@(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))</app>
-
-    <script src="_framework/blazor.server.js"></script>
-</body>
-```
-
-::: moniker-end
-
 `RenderMode` 設定元件是否：
 
 * 會資源清單到頁面中。
 * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動 Blazor 應用程式所需的資訊。
-
-::: moniker range=">= aspnetcore-3.1"
 
 | `RenderMode`        | 描述 |
 | ------------------- | ----------- |
 | `ServerPrerendered` | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
 | `Server`            | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
 | `Static`            | 將元件轉譯為靜態 HTML。 |
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.1"
-
-| `RenderMode`        | 描述 |
-| ------------------- | ----------- |
-| `ServerPrerendered` | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 不支援參數。 |
-| `Server`            | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 不支援參數。 |
-| `Static`            | 將元件轉譯為靜態 HTML。 支援參數。 |
-
-::: moniker-end
 
 不支援從靜態 HTML 網頁轉譯伺服器元件。
 
@@ -290,8 +442,6 @@ public class WeatherForecastService
 
 下列 Razor 頁面會呈現 `Counter` 元件：
 
-::: moniker range=">= aspnetcore-3.1"
-
 ```cshtml
 <h1>My Razor Page</h1>
 
@@ -304,28 +454,9 @@ public class WeatherForecastService
 }
 ```
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.1"
-
-```cshtml
-<h1>My Razor Page</h1>
-
-@(await Html.RenderComponentAsync<Counter>(RenderMode.ServerPrerendered))
-
-@code {
-    [BindProperty(SupportsGet=true)]
-    public int InitialValue { get; set; }
-}
-```
-
-::: moniker-end
-
 ### <a name="render-noninteractive-components-from-razor-pages-and-views"></a>從 Razor 頁面和 views 轉譯非互動式元件
 
 在下列 Razor 頁面中，`Counter` 元件會以靜態方式轉譯，並使用以表單指定的初始值：
-
-::: moniker range=">= aspnetcore-3.1"
 
 ```cshtml
 <h1>My Razor Page</h1>
@@ -344,29 +475,6 @@ public class WeatherForecastService
 }
 ```
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.1"
-
-```cshtml
-<h1>My Razor Page</h1>
-
-<form>
-    <input type="number" asp-for="InitialValue" />
-    <button type="submit">Set initial value</button>
-</form>
-
-@(await Html.RenderComponentAsync<Counter>(RenderMode.Static, 
-    new { InitialValue = InitialValue }))
-
-@code {
-    [BindProperty(SupportsGet=true)]
-    public int InitialValue { get; set; }
-}
-```
-
-::: moniker-end
-
 由於 `MyComponent` 是以靜態方式呈現，因此元件不能是互動式的。
 
 ### <a name="detect-when-the-app-is-prerendering"></a>偵測應用程式何時已進行預呈現
@@ -379,7 +487,7 @@ public class WeatherForecastService
 
 若要設定*Pages/_Host. cshtml*檔案中的 SignalR 用戶端：
 
-* 將 `autostart="false"` 屬性加入至*blazor*腳本的 `<script>` 標記。
+* 將 `autostart="false"` 屬性加入至 `blazor.server.js` 腳本的 `<script>` 標記。
 * 呼叫 `Blazor.start` 並傳入指定 SignalR 產生器的設定物件。
 
 ```html

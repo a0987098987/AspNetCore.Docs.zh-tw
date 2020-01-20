@@ -2,19 +2,20 @@
 title: ASP.NET Core Blazor 狀態管理
 author: guardrex
 description: 瞭解如何在 Blazor 伺服器應用程式中保存狀態。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/state-management
-ms.openlocfilehash: 7351ee2438c6adf675b8aa5e8ecdb1b2da7b4f23
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: ffb32a4f274a30f2a5ceed9cbf193285e85bab4c
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943923"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160141"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
@@ -199,7 +200,7 @@ protected override async Task OnInitializedAsync()
 > [!WARNING]
 > 此章節中的範例僅適用于伺服器未啟用預先安裝的情況。 啟用預入功能時，會產生類似下列的錯誤：
 >
-> > 目前無法發出 JavaScript interop 呼叫。 這是因為正在資源清單元件。
+> > JavaScript interop calls cannot be issued at this time. This is because the component is being prerendered.
 >
 > 請停用已選擇的，或加入額外的程式碼以使用可處理的。 若要深入瞭解如何撰寫可搭配已預呈現運作的程式碼，請參閱[處理預呈現](#handle-prerendering)一節。
 
@@ -207,13 +208,13 @@ protected override async Task OnInitializedAsync()
 
 由於瀏覽器儲存體是非同步（透過網路連線存取），因此在載入資料並可供元件使用之前，一律會有一段時間。 若要獲得最佳結果，請在載入進行時轉譯載入狀態訊息，而不是顯示空白或預設的資料。
 
-其中一種方法是追蹤資料是否 `null` （仍在載入中）。 在預設的 `Counter` 元件中，計數會保留在 `int`中。 將問號（`?`）新增至類型（`int`），使 `currentCount` 可為 null：
+其中一種方法是追蹤資料是否 `null` （仍在載入中）。 In the default `Counter` component, the count is held in an `int`. Make `currentCount` nullable by adding a question mark (`?`) to the type (`int`):
 
 ```csharp
 private int? currentCount;
 ```
 
-不是無條件地顯示 [計數] 和 [**遞增**] 按鈕，而是只有在載入資料時，才選擇顯示這些元素：
+Instead of unconditionally displaying the count and **Increment** button, choose to display these elements only if the data is loaded:
 
 ```razor
 @if (currentCount.HasValue)
@@ -228,32 +229,22 @@ else
 }
 ```
 
-### <a name="handle-prerendering"></a>處理已預呈現
+### <a name="handle-prerendering"></a>Handle prerendering
 
-在預做期間：
+During prerendering:
 
-* 與使用者的瀏覽器之間的互動連接不存在。
-* 瀏覽器還沒有可執行 JavaScript 程式碼的頁面。
+* An interactive connection to the user's browser doesn't exist.
+* The browser doesn't yet have a page in which it can run JavaScript code.
 
-在預做期間無法使用 `localStorage` 或 `sessionStorage`。 如果元件嘗試與存放裝置互動，則會產生類似下列的錯誤：
+`localStorage` or `sessionStorage` aren't available during prerendering. If the component attempts to interact with storage, an error is generated similar to:
 
-> 目前無法發出 JavaScript interop 呼叫。 這是因為正在資源清單元件。
+> JavaScript interop calls cannot be issued at this time. This is because the component is being prerendered.
 
-解決錯誤的其中一種方法是停用已處理的。 如果應用程式大量使用以瀏覽器為基礎的存放裝置，這通常是最佳的選擇。 因為應用程式在 `localStorage` 或 `sessionStorage` 可供使用之前無法提供任何有用的內容，所以已進行的呈現會增加複雜度，且不會對應用程式
+One way to resolve the error is to disable prerendering. This is usually the best choice if the app makes heavy use of browser-based storage. Prerendering adds complexity and doesn't benefit the app because the app can't prerender any useful content until `localStorage` or `sessionStorage` are available.
 
-::: moniker range=">= aspnetcore-3.1"
+To disable prerendering, open the *Pages/_Host.cshtml* file and change the call to `render-mode` of the `Component` Tag Helper to `Server`.
 
-若要停用預呈現，請開啟*Pages/_Host. cshtml*檔案，然後將 `Component` 標記協助程式 `render-mode` 的呼叫變更為 `Server`。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.1"
-
-若要停用預呈現，請開啟*Pages/_Host. cshtml*檔案，然後將呼叫變更為 `Html.RenderComponentAsync<App>(RenderMode.Server)`。
-
-::: moniker-end
-
-針對未使用 `localStorage` 或 `sessionStorage`的其他頁面，可進行預呈現可能會很有用。 若要保持已啟用的已啟用狀態，請延遲載入作業，直到瀏覽器連線到線路為止。 以下是儲存計數器值的範例：
+Prerendering might be useful for other pages that don't use `localStorage` or `sessionStorage`. To keep prerendering enabled, defer the loading operation until the browser is connected to the circuit. The following is an example for storing a counter value:
 
 ```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
@@ -290,11 +281,11 @@ else
 }
 ```
 
-### <a name="factor-out-the-state-preservation-to-a-common-location"></a>將狀態保留分解為一般位置
+### <a name="factor-out-the-state-preservation-to-a-common-location"></a>Factor out the state preservation to a common location
 
-如果許多元件都依賴以瀏覽器為基礎的儲存體，則重新執行狀態提供者程式碼很多次會建立程式碼重複。 避免程式碼重複的其中一個選項是建立一個可封裝狀態提供者邏輯的*狀態供應器父元件*。 子元件可以使用持續性資料，而不考慮狀態持續性機制。
+If many components rely on browser-based storage, re-implementing state provider code many times creates code duplication. One option for avoiding code duplication is to create a *state provider parent component* that encapsulates the state provider logic. Child components can work with persisted data without regard to the state persistence mechanism.
 
-在下列 `CounterStateProvider` 元件的範例中，會保存計數器資料：
+In the following example of a `CounterStateProvider` component, counter data is persisted:
 
 ```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
@@ -332,9 +323,9 @@ else
 }
 ```
 
-`CounterStateProvider` 元件在載入完成之前，不會呈現其子內容來處理載入階段。
+The `CounterStateProvider` component handles the loading phase by not rendering its child content until loading is complete.
 
-若要使用 `CounterStateProvider` 元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取狀態，請將 `CounterStateProvider` 元件包裝在 `App` 元件（*razor*）的 `Router` 周圍：
+To use the `CounterStateProvider` component, wrap an instance of the component around any other component that requires access to the counter state. To make the state accessible to all components in an app, wrap the `CounterStateProvider` component around the `Router` in the `App` component (*App.razor*):
 
 ```razor
 <CounterStateProvider>
@@ -344,7 +335,7 @@ else
 </CounterStateProvider>
 ```
 
-包裝的元件會接收並可修改保存的計數器狀態。 下列 `Counter` 元件會執行模式：
+Wrapped components receive and can modify the persisted counter state. The following `Counter` component implements the pattern:
 
 ```razor
 @page "/counter"
@@ -365,13 +356,13 @@ else
 }
 ```
 
-上述元件不需要與 `ProtectedBrowserStorage`互動，也不會處理「載入」階段。
+The preceding component isn't required to interact with `ProtectedBrowserStorage`, nor does it deal with a "loading" phase.
 
-如先前所述，若要處理已進行的預呈現，可以修改 `CounterStateProvider`，讓取用計數器資料的所有元件都能自動以可處理方式使用。 如需詳細資訊，請參閱處理預進行[處理](#handle-prerendering)一節。
+To deal with prerendering as described earlier, `CounterStateProvider` can be amended so that all of the components that consume the counter data automatically work with prerendering. See the [Handle prerendering](#handle-prerendering) section for details.
 
-一般情況下，建議使用*狀態供應器父元件*模式：
+In general, *state provider parent component* pattern is recommended:
 
-* 使用許多其他元件中的狀態。
-* 如果只有一個最上層狀態物件要保存，則為。
+* To consume state in many other components.
+* If there's just one top-level state object to persist.
 
-若要保存許多不同的狀態物件，並在不同位置取用不同的物件子集，最好避免在全域處理狀態的載入和儲存。
+To persist many different state objects and consume different subsets of objects in different places, it's better to avoid handling the loading and saving of state globally.

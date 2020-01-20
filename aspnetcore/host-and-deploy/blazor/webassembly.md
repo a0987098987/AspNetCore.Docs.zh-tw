@@ -2,19 +2,20 @@
 title: 裝載和部署 ASP.NET Core Blazor WebAssembly
 author: guardrex
 description: 瞭解如何使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署 Blazor 應用程式。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: 0fcefc3f1e51beb7cc29aef6dd4f4b8557e61965
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 8ed95cdb96804e08c3f1273bbea8f64a8e4f173c
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963638"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160245"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
@@ -36,8 +37,8 @@ ms.locfileid: "73963638"
 
 Blazor WebAssembly 應用程式中頁面元件的路由要求，並不像 Blazor 伺服器（裝載的應用程式）中的路由要求一樣簡單。 請考慮具有兩個元件的 Blazor WebAssembly 應用程式：
 
-* *Main.razor* &ndash; 載入應用程式根目錄，同時包含 `About` 元件 (`href="About"`) 的連結。
-* *About.razor* &ndash; `About` 元件。
+* *主要的 razor* &ndash; 會在應用程式的根目錄載入，並包含 `About` 元件（`href="About"`）的連結。
+* *關於 razor* &ndash; `About` 元件。
 
 使用瀏覽器的網址列要求應用程式預設文件時 (例如 `https://www.contoso.com/`)：
 
@@ -58,7 +59,7 @@ Blazor WebAssembly 應用程式中頁面元件的路由要求，並不像 Blazor
 
 裝載的*部署*可從在 web 伺服器上執行的[ASP.NET Core 應用程式](xref:index)，將 Blazor WebAssembly 應用程式提供給瀏覽器。
 
-Blazor 應用程式隨附于已發佈輸出中的 ASP.NET Core 應用程式，因此兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 針對裝載的部署，Visual Studio 包括**Blazor WebAssembly 應用程式**專案範本（使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的`blazorwasm` 範本）以及選取的**hosted**選項。
+Blazor 應用程式隨附于已發佈輸出中的 ASP.NET Core 應用程式，因此兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 針對裝載的部署，Visual Studio 包括 **Blazor WebAssembly 應用程式**專案範本（使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的`blazorwasm` 範本）以及選取的**hosted**選項。
 
 如需 ASP.NET Core 應用程式裝載和部署的詳細資訊，請參閱 <xref:host-and-deploy/index>。
 
@@ -82,16 +83,16 @@ IIS 是適用于 Blazor 應用程式的靜態檔案伺服器。 若要設定 IIS
 
 * 針對下列副檔名設定 MIME 類型：
   * *.dll* &ndash; `application/octet-stream`
-  * *.json* &ndash; `application/json`
-  * *.wasm* &ndash; `application/wasm`
-  * *.woff* &ndash; `application/font-woff`
-  * *.woff2* &ndash; `application/font-woff`
+  * &ndash; `application/json`*的 json*
+  * *. wasm* &ndash; `application/wasm`
+  * *. woff* &ndash; `application/font-woff`
+  * *. woff2* &ndash; `application/font-woff`
 * 針對下列 MIME 類型會啟用 HTTP 壓縮：
   * `application/octet-stream`
   * `application/wasm`
 * 建立 URL Rewrite Module 規則：
-  * 提供應用程式靜態資產所在的子目錄 (*{組件名稱}/dist/{要求的路徑}*)。
-  * 建立 SPA 後援路由，讓非檔案資產要求重新導向至其靜態資產資料夾中的應用程式預設文件 (*{組件名稱}/dist/index.html*)。
+  * 提供應用程式靜態資產所在的子目錄 ( *{組件名稱}/dist/{要求的路徑}* )。
+  * 建立 SPA 後援路由，讓非檔案資產要求重新導向至其靜態資產資料夾中的應用程式預設文件 ( *{組件名稱}/dist/index.html*)。
 
 #### <a name="install-the-url-rewrite-module"></a>安裝 URL Rewrite 模組
 
@@ -121,7 +122,7 @@ IIS 是適用于 Blazor 應用程式的靜態檔案伺服器。 若要設定 IIS
   </handlers>
   ```
 
-* 使用 `<location>` 元素並將 `inheritInChildApplications` 設定為 `false`，停用根（父系）應用程式的 `<system.webServer>` 區段的繼承：
+* 使用 `<location>` 元素（`inheritInChildApplications` 設定為 `false`）停用根（父系）應用程式 `<system.webServer>` 區段的繼承：
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -188,7 +189,7 @@ COPY ./bin/Release/netstandard2.0/publish /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/nginx.conf
 ```
 
-### <a name="apache"></a>投稿
+### <a name="apache"></a>Apache
 
 若要將 Blazor WebAssembly 應用程式部署至 CentOS 7 或更新版本：
 

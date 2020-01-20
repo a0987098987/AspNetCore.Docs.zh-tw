@@ -2,19 +2,20 @@
 title: ASP.NET Core Blazor 相依性插入
 author: guardrex
 description: 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 01/08/2020
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/dependency-injection
-ms.openlocfilehash: aad6cfee500b5cb502470f6a4a7cb5756df09dc4
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 6930d721f04fd5f7cad2ba472724497a157fda0f
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943780"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76159972"
 ---
 # <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
 
@@ -36,8 +37,8 @@ DI 是用來存取集中位置所設定之服務的技術。 這在 Blazor 應�
 | 服務 | 存留期 | 描述 |
 | ------- | -------- | ----------- |
 | <xref:System.Net.Http.HttpClient> | 單一 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。<br><br>Blazor WebAssembly 應用程式中的 `HttpClient` 實例會使用瀏覽器來處理背景中的 HTTP 流量。<br><br>Blazor 伺服器應用程式預設不包含設定為服務的 `HttpClient`。 提供 `HttpClient` 給 Blazor 伺服器應用程式。<br><br>如需詳細資訊，請參閱<xref:blazor/call-web-api>。 |
-| `IJSRuntime` | 單一 | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱<xref:blazor/javascript-interop>。 |
-| `NavigationManager` | 單一 | 包含使用 Uri 和導覽狀態的協助程式。 如需詳細資訊，請參閱[URI 和流覽狀態](xref:blazor/routing#uri-and-navigation-state-helpers)協助程式。 |
+| `IJSRuntime` | Singleton （Blazor WebAssembly）<br>限定範圍（Blazor Server） | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱<xref:blazor/javascript-interop>。 |
+| `NavigationManager` | Singleton （Blazor WebAssembly）<br>限定範圍（Blazor Server） | 包含使用 Uri 和導覽狀態的協助程式。 如需詳細資訊，請參閱[URI 和流覽狀態](xref:blazor/routing#uri-and-navigation-state-helpers)協助程式。 |
 
 自訂服務提供者不會自動提供表格中所列的預設服務。 如果您使用自訂服務提供者，而且需要資料表中所顯示的任何服務，請將所需的服務新增至新的服務提供者。
 

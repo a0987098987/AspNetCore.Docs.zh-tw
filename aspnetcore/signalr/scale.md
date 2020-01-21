@@ -5,16 +5,16 @@ description: 瞭解如何避免使用 ASP.NET Core SignalR之應用程式的效�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/28/2018
+ms.date: 01/17/2020
 no-loc:
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 8e7b7596fcfe2d6b7150fe1ab09a7ab1dc4a2e47
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 2ffafd452af46b635f4ebbdf74561ad043158808
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75952127"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294740"
 ---
 # <a name="aspnet-core-opno-locsignalr-hosting-and-scaling"></a>ASP.NET Core SignalR 裝載和調整
 
@@ -108,6 +108,17 @@ Windows 10 和 Windows 8.x 是用戶端作業系統。 用戶端作業系統上�
 
 * 避免 IIS。
 * 使用 Kestrel 或 IIS Express 作為部署目標。
+
+## <a name="linux-with-nginx"></a>使用 Nginx 的 Linux
+
+針對 SignalR Websocket，將 proxy 的 `Connection` 和 `Upgrade` 標頭設定為下列內容：
+
+```
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection $connection_upgrade;
+```
+
+如需詳細資訊，請參閱[NGINX as a WebSocket Proxy](https://www.nginx.com/blog/websocket-nginx/)。
 
 ## <a name="next-steps"></a>後續步驟
 

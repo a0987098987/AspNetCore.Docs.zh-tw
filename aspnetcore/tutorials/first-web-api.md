@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 3bf930d19684e84365f0ff0255fccd2939fb3f39
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 73e547b014d78dcbcbf1c887ebec16e0743d10b9
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354913"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294741"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -296,7 +296,6 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 產生的程式碼：
 
-* 定義不含方法的 API 控制器類別。
 * 以[`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute)屬性標記類別。 這個屬性表示控制器會回應 Web API 要求。 如需屬性所啟用之特定行為的相關資訊，請參閱 <xref:web-api/index>。
 * 使用 DI 將資料庫內容 (`TodoContext`) 插入到控制器中。 控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。
 
@@ -322,7 +321,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * 啟動 Web 應用程式。
 * 啟動 Postman。
 * 停用 [SSL certificate verification] \(SSL 憑證驗證\)
-* 從 [檔案 **> 設定**] （ **[一般**] 索引標籤），停用**SSL 憑證驗證**。
+  * 從 [檔案 **> 設定**] （ **[一般**] 索引標籤），停用**SSL 憑證驗證**。
     > [!WARNING]
     > 在測試控制器之後，請重新啟用 [SSL certificate verification] \(SSL 憑證驗證\)。
 
@@ -443,7 +442,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 下圖顯示 Postman 更新：
 
-![顯示「204 (沒有內容) 回應」的 Postman 主控台](first-web-api/_static/3/pmcput.png)
+![顯示 204 (沒有內容) 回應的 Postman 主控台](first-web-api/_static/3/pmcput.png)
 
 ## <a name="the-deletetodoitem-method"></a>DeleteTodoItem 方法
 
@@ -840,7 +839,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 下圖顯示 Postman 更新：
 
-![顯示「204 (沒有內容) 回應」的 Postman 主控台](first-web-api/_static/pmcput.png)
+![顯示 204 (沒有內容) 回應的 Postman 主控台](first-web-api/_static/pmcput.png)
 
 ## <a name="add-a-deletetodoitem-method"></a>新增 DeleteTodoItem 方法
 

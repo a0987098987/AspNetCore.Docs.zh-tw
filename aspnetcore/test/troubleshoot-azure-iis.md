@@ -5,14 +5,14 @@ description: 瞭解如何診斷 ASP.NET Core 應用程式的 Azure App Service �
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/10/2020
+ms.date: 01/18/2020
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 23c90c33d197d26d1c4ad758449e318e20ef3760
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 071dba9e936351e201b7582b3d0667cd6fac54bb
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75952144"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294622"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>疑難排解 Azure App Service 和 IIS 上的 ASP.NET Core
 
@@ -117,7 +117,10 @@ The Web server is configured to not list the contents of this directory.
 
 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)嘗試啟動 .NET Core CLR 同進程，但無法啟動。 通常會從應用程式事件記錄檔中的專案和 ASP.NET Core 模組 stdout 記錄檔中判斷進程啟動失敗的原因。
 
-因為目標 ASP.NET Core 共用架構的版本不存在，導致應用程式設定錯誤是常見的失敗狀況。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。
+常見的失敗狀況：
+
+* 應用程式設定錯誤，因為以不存在的 ASP.NET Core 共用架構版本為目標。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。
+* 使用 Azure Key Vault，缺少 Key Vault 的許可權。 檢查目標 Key Vault 中的存取原則，以確定已授與正確的許可權。
 
 ### <a name="50031-ancm-failed-to-find-native-dependencies"></a>500.31 ANCM 找不到原生相依性
 

@@ -5,16 +5,16 @@ description: 瞭解如何在 ASP.NET Core SignalR中使用驗證和授權。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 01/16/2020
 no-loc:
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: 1bdb8b10a24c65735f49f04285e4129cb77eb3fb
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 4b27d9abb36938ed8161ff0d3535204e3fa68765
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828941"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294710"
 ---
 # <a name="security-considerations-in-aspnet-core-opno-locsignalr"></a>ASP.NET Core SignalR 中的安全性考慮
 
@@ -112,16 +112,20 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 
 ::: moniker-end
 
+## <a name="connectionid"></a>ConnectionId
+
+如果 SignalR 伺服器或用戶端版本 ASP.NET Core 2.2 或更早版本，公開 `ConnectionId` 可能會導致惡意模擬。 如果 SignalR 伺服器和用戶端版本是 ASP.NET Core 3.0 或更新版本，則 `ConnectionToken` 而非 `ConnectionId` 必須保持機密。 `ConnectionToken` 刻意不會在任何 API 中公開。  這可能很容易確保較舊的 SignalR 用戶端不會連線到伺服器，因此即使您的 SignalR 伺服器版本 ASP.NET Core 3.0 或更新版本，`ConnectionId` 也不應公開。
+
 ## <a name="access-token-logging"></a>存取權杖記錄
 
-使用 Websocket 或伺服器傳送事件時，瀏覽器用戶端會在查詢字串中傳送存取權杖。 透過查詢字串接收存取權杖通常與使用標準 `Authorization` 標頭一樣安全。 您應該一律使用 HTTPS 來確保用戶端與伺服器之間的安全端對端連接。 許多 web 伺服器會記錄每個要求的 URL，包括查詢字串。 記錄 Url 可能會記錄存取權杖。 ASP.NET Core 預設會記錄每個要求的 URL，其中會包含查詢字串。 例如：
+使用 Websocket 或伺服器傳送事件時，瀏覽器用戶端會在查詢字串中傳送存取權杖。 透過查詢字串接收存取權杖通常是使用標準 `Authorization` 標頭的安全方式。 請一律使用 HTTPS 來確保用戶端與伺服器之間的安全端對端連接。 許多 web 伺服器會記錄每個要求的 URL，包括查詢字串。 記錄 Url 可能會記錄存取權杖。 ASP.NET Core 預設會記錄每個要求的 URL，其中會包含查詢字串。 例如：
 
 ```
 info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
       Request starting HTTP/1.1 GET http://localhost:5000/myhub?access_token=1234
 ```
 
-如果您對於使用伺服器記錄檔記錄這項資料有疑慮，您可以將 `Microsoft.AspNetCore.Hosting` 記錄器設定為 `Warning` 層級（或更新版本）來完全停用此記錄（這些訊息是以 `Info` 層級寫入）。 如需詳細資訊，請參閱[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)的相關檔。 如果您仍然想要記錄特定的要求資訊，可以[撰寫中介軟體](xref:fundamentals/middleware/write)來記錄所需的資料，並篩選出 `access_token` 查詢字串值（如果有的話）。
+如果您對於使用伺服器記錄檔記錄這項資料有疑慮，您可以將 `Microsoft.AspNetCore.Hosting` 記錄器設定為 `Warning` 層級（或更新版本）來完全停用此記錄（這些訊息是以 `Info` 層級寫入）。 如需詳細資訊，請參閱[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)。 如果您仍然想要記錄特定的要求資訊，可以[撰寫中介軟體](xref:fundamentals/middleware/write)來記錄所需的資料，並篩選出 `access_token` 查詢字串值（如果有的話）。
 
 ## <a name="exceptions"></a>例外狀況
 

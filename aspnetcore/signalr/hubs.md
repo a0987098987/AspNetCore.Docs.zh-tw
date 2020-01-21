@@ -5,16 +5,16 @@ description: 瞭解如何在 ASP.NET Core SignalR中使用中樞。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 01/16/2020
 no-loc:
 - SignalR
 uid: signalr/hubs
-ms.openlocfilehash: f95766cab84bddff2c7c62f30bce1e6d1e43deab
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: e5bc12c5ccafe2b5273d72e6bde0f631ca043428
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963794"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294631"
 ---
 # <a name="use-hubs-in-opno-locsignalr-for-aspnet-core"></a>在適用于 ASP.NET Core 的 SignalR 中使用中樞
 
@@ -94,7 +94,7 @@ public class ChatHub : Hub
 | 方法 | 描述 |
 | ------ | ----------- |
 | `GetHttpContext` | 傳回連接的 `HttpContext`，如果連接未與 HTTP 要求相關聯，則為 `null`。 針對 HTTP 連線，您可以使用這個方法來取得資訊，例如 HTTP 標頭和查詢字串。 |
-| `Abort` | 中止連接。 |
+| `Abort` | 中止連線。 |
 
 ## <a name="the-clients-object"></a>用戶端物件
 
@@ -146,7 +146,7 @@ public class ChatHub : Hub
 
 使用 `Hub<IChatClient>` 可啟用用戶端方法的編譯時間檢查。 這可防止使用魔術字串所造成的問題，因為 `Hub<T>` 只能提供介面中定義之方法的存取權。
 
-使用強型別 `Hub<T>` 會停用使用 `SendAsync`的功能。 在介面上定義的任何方法仍可定義為非同步。 事實上，每個方法都應該傳回 `Task`。 由於它是介面，請不要使用 `async` 關鍵字。 例如:
+使用強型別 `Hub<T>` 會停用使用 `SendAsync`的功能。 在介面上定義的任何方法仍可定義為非同步。 事實上，每個方法都應該傳回 `Task`。 由於它是介面，請不要使用 `async` 關鍵字。 例如：
 
 ```csharp
 public interface IClient
@@ -174,13 +174,15 @@ SignalR 中樞 API 提供 `OnConnectedAsync` 和 `OnDisconnectedAsync` 的虛擬
 
 [!code-csharp[Handle disconnection](hubs/sample/hubs/chathub.cs?name=OnDisconnectedAsync)]
 
+[!INCLUDE[](~/includes/connectionid-signalr.md)]
+
 ## <a name="handle-errors"></a>處理錯誤
 
 在您的中樞方法中擲回的例外狀況會傳送至叫用方法的用戶端。 在 JavaScript 用戶端上，`invoke` 方法會傳回[JAVAscript 承諾](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises)。 當用戶端收到錯誤，並將處理常式附加至使用 `catch`的承諾時，它會被叫用並當做 JavaScript `Error` 物件傳遞。
 
 [!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
-如果您的中樞擲回例外狀況，則不會關閉連接。 根據預設，SignalR 會將一般錯誤訊息傳回給用戶端。 例如:
+如果您的中樞擲回例外狀況，則不會關閉連接。 根據預設，SignalR 會將一般錯誤訊息傳回給用戶端。 例如：
 
 ```
 Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking 'MethodName' on the server.

@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: cd052a97db1e20d6c7aa00f47cf6a7d01a9bc305
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 1b01357233a9b95a5da052d92e30232c94e78a78
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963757"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76727230"
 ---
 # <a name="use-messagepack-hub-protocol-in-opno-locsignalr-for-aspnet-core"></a>在 SignalR 中使用適用于 ASP.NET Core 的 MessagePack Hub 通訊協定
 
@@ -145,7 +145,7 @@ public class ChatMessage
 }
 ```
 
-從 JavaScript 用戶端傳送時，您必須使用 `PascalCased` 的屬性名稱，因為大小寫必須完全C#符合類別。 例如:
+從 JavaScript 用戶端傳送時，您必須使用 `PascalCased` 的屬性名稱，因為大小寫必須完全C#符合類別。 例如：
 
 ```javascript
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
@@ -173,7 +173,7 @@ Uncaught Error: unable to find ext type 255 at decoder.js:427
 
 ### <a name="messagepack-support-in-ahead-of-time-compilation-environment"></a>「預先編譯」環境中的 MessagePack 支援
 
-.NET 用戶端和伺服器使用的[MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp)程式庫會使用程式碼產生來優化序列化。 因此，在使用「預先」編譯的環境（例如 Xamarin iOS 或 Unity）上，預設不支援它。 在這些環境中，可以藉由「預先產生」序列化程式/還原序列化程式碼來使用 MessagePack。 如需詳細資訊，請參閱[MessagePack-CSharp 檔](https://github.com/neuecc/MessagePack-CSharp#pre-code-generationunityxamarin-supports)。 預先產生序列化程式之後，您可以使用傳遞至 `AddMessagePackProtocol`的設定委派來註冊它們：
+.NET 用戶端和伺服器使用的[MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp/tree/v1.8)程式庫會使用程式碼產生來優化序列化。 因此，在使用「預先」編譯的環境（例如 Xamarin iOS 或 Unity）上，預設不支援它。 在這些環境中，可以藉由「預先產生」序列化程式/還原序列化程式碼來使用 MessagePack。 如需詳細資訊，請參閱[MessagePack-CSharp 檔](https://github.com/neuecc/MessagePack-CSharp/tree/v1.8#pre-code-generationunityxamarin-supports)。 預先產生序列化程式之後，您可以使用傳遞至 `AddMessagePackProtocol`的設定委派來註冊它們：
 
 ```csharp
 services.AddSignalR()

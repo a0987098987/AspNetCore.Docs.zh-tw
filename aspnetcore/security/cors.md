@@ -4,18 +4,18 @@ author: rick-anderson
 description: 瞭解 CORS 如何作為標準，以允許或拒絕 ASP.NET Core 應用程式中的跨原始來源要求。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/13/2019
+ms.date: 01/23/2020
 uid: security/cors
-ms.openlocfilehash: 3a51d365626c858ad48298a1108e37eba9050fe7
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: 57098be73164c71d1b0d1fe2f3aee7ec41a32346
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391300"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76727319"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨原始來源要求（CORS）
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 本文說明如何在 ASP.NET Core 應用程式中啟用 CORS。
 
@@ -58,7 +58,7 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會針對具�
 
 * 將原則名稱設定為 "\_myAllowSpecificOrigins"。 原則名稱是任意的。
 * 呼叫 <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> 擴充方法，以啟用 CORS。
-* 使用[lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)呼叫 <xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*>。 Lambda 會採用 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder> 物件。 這篇文章稍後會[說明](#cors-policy-options)設定選項`WithOrigins`，例如。
+* 使用[lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)呼叫 <xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*>。 Lambda 會採用 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder> 物件。 這篇文章稍後會`WithOrigins`說明[設定選項](#cors-policy-options)，例如。
 
 <xref:Microsoft.Extensions.DependencyInjection.MvcCorsMvcCoreBuilderExtensions.AddCors*> 方法呼叫會將 CORS 服務新增至應用程式的服務容器：
 
@@ -502,6 +502,11 @@ Test message
 * CORS 中介軟體不需要處理要求。
 * 回應中不會傳回 CORS 標頭。
 
+## <a name="cors-in-iis"></a>IIS 中的 CORS
+
+部署到 IIS 時，如果伺服器未設定為允許匿名存取，CORS 就必須在 Windows 驗證之前執行。 若要支援此案例，必須安裝並設定應用程式的[IIS CORS 模組](https://www.iis.net/downloads/microsoft/iis-cors-module)。
+
 ## <a name="additional-resources"></a>其他資源
 
 * [跨原始來源資源分享（CORS）](https://developer.mozilla.org/docs/Web/HTTP/CORS)
+* [IIS CORS 模組使用者入門](https://blogs.iis.net/iisteam/getting-started-with-the-iis-cors-module)

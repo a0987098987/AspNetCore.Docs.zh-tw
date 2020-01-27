@@ -5,14 +5,14 @@ description: 了解如何使用組態 API 設定 ASP.NET Core 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 01/23/2020
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 09ef06f179e34cd7f4f04ac30c3b5dd95d058244
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 141ae5cda7672159032013cbda1ef4bfa7c142dd
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75951846"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726977"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -923,7 +923,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 設定可以繫結到類別，以使用*選項模式*代表相關設定的群組。 如需詳細資訊，請參閱<xref:fundamentals/configuration/options>。
 
-設定值是以字串傳回，但是呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 會啟用 [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) 物件的建構。
+設定值是以字串傳回，但是呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 會啟用 [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) 物件的建構。 系結器會將值系結至提供之類型的所有公用讀取/寫入屬性。 欄位**未**系結。
 
 範例應用程式包含 `Starship` 模型 (*Models/Starship.cs*)：
 
@@ -980,7 +980,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 ## <a name="bind-to-an-object-graph"></a>繫結至物件圖形
 
-<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 可以繫結整個 POCO 物件圖形。
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> 可以繫結整個 POCO 物件圖形。 如同系結簡單的物件，只會系結公用讀取/寫入屬性。
 
 範例包含 `TvShow` 模型，其物件圖形包括 `Metadata` 與 `Actors` 類別 (*Models/TvShow.cs*)：
 

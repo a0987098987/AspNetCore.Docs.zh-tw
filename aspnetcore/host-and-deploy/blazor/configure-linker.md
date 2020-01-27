@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: cdcd62915b8f1bae26773ed91e55973527e158f6
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 263b85a3213c1da233e4c96095faaf39d0a8e13f
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160271"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726771"
 ---
 # <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a>設定 ASP.NET Core Blazor 的連結器
 
@@ -108,4 +108,4 @@ Blazor 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-c
 
 使用逗號來分隔多個值（例如，`mideast,west`）。
 
-如需詳細資訊，請參閱[I18N： Pnetlib 國際化架構程式庫（mono/Mono GitHub 存放庫）](https://github.com/mono/mono/tree/master/mcs/class/I18N)。
+如需詳細資訊，請參閱[I18N： Pnetlib 國際化架構程式庫（mono/Mono GitHub 儲存機制）](https://github.com/mono/mono/tree/master/mcs/class/I18N)。

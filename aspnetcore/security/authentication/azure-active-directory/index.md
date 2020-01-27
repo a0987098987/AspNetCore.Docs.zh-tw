@@ -1,37 +1,37 @@
 ---
-title: Azure Active Directory 與 ASP.NET Core
+title: 使用 ASP.NET Core 的 Microsoft 身分識別平臺和 Azure Active Directory
 author: rick-anderson
-description: 探索如何向 ASP.NET Core 之 Azure Active Directory 驗證的相關主題。
+description: 探索 ASP.NET Core 中 web 應用程式和 Api 的 Microsoft 身分識別平臺 Azure Active Directory 的驗證相關主題。
 ms.author: riande
-ms.date: 01/14/2020
+ms.date: 01/21/2020
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-active-directory/index
-ms.openlocfilehash: a856643216d423c791d3df47bd2206f9121b543f
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 7829a062d4727238addca051d0599438c99e90dc
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75951910"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726752"
 ---
 # <a name="azure-active-directory-with-aspnet-core"></a>Azure Active Directory 與 ASP.NET Core
 
-## <a name="azure-ad-v1-samples"></a>Azure AD V1 範例
+這些教學課程和範例示範如何在 ASP.NET Core 中使用 Microsoft 身分識別平臺和 Azure Active Directory 進行驗證。 如需搭配 Azure AD 使用 ASP.NET Core 的其他教學課程和範例，請參閱[Microsoft 身分識別平臺](/azure/active-directory/develop/)。
 
-下列範例示範如何整合 Azure AD V1，讓使用者使用公司及學校帳戶登入：
-* [將 Azure AD 整合至 ASP.NET Core Web 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/tree/master)（已封存且不支援）
-* [使用 Azure AD 從 WPF 應用程式呼叫 ASP.NET Core Web API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore)
-* [使用 Azure AD 在 ASP.NET Core Web 應用程式中呼叫 Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
+## <a name="application-scenarios"></a>應用程式情節
 
-## <a name="azure-ad-v2-samples"></a>Azure AD V2 範例
+* [快速入門：使用 Microsoft 將登入新增至 ASP.NET Core web 應用程式](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp)
+* [登入使用者的 Web 應用程式](/azure/active-directory/develop/scenario-web-app-sign-user-overview?tabs=aspnetcore)
+* [呼叫 web Api 的 web 應用程式](/azure/active-directory/develop/scenario-web-app-call-api-overview)
+* [受保護的 Web API](/azure/active-directory/develop/scenario-protected-web-api-overview)
+* [呼叫其他 web Api 的 web API](/azure/active-directory/develop/scenario-web-api-call-api-overview)
+* [以 Azure AD B2C 登入使用者的 Web 應用程式](xref:security/authentication/azure-ad-b2c)
 
-下列範例示範如何整合 Azure AD V2，讓使用者使用公司及學校帳戶或 Microsoft 個人帳戶 (舊稱 Live 帳戶) 登入：
-* [將 Azure AD V2 整合到 ASP.NET Core 2.0 Web 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)： 
-  * 請參閱[這部相關影片](https://channel9.msdn.com/Events/Build/2018/THR5001) 
+## <a name="samples"></a>範例
 
-* [使用 Azure AD V2 從 WPF 應用程式呼叫 ASP.NET Core 2.0 Web API](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)： 
+* [使用 Azure AD V2，讓您的 ASP.NET Core 應用程式登入使用者並呼叫 Web api](/samples/azure-samples/active-directory-aspnetcore-webapp-openidconnect-v2/enable-webapp-signin/)： 
+  * 請參閱[這部相關影片](https://channel9.msdn.com/Events/Build/2018/THR5001)
+
+* [使用 Azure AD V2 從 WPF 應用程式呼叫 ASP.NET Core 2.0 WEB API](/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/)： 
   * 請參閱[這部相關影片](https://channel9.msdn.com/Events/Build/2018/THR5000)
 
-## <a name="azure-ad-b2c-sample"></a>Azure AD B2C 範例
-
-這個範例示範如何整合 Azure AD B2C，讓使用者使用社交身分識別 (例如 Facebook、Google、...) 登入
 * [使用 Azure AD B2C 的 ASP.NET Core Web API](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapi/)

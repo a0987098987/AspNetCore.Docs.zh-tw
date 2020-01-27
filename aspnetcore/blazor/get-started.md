@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: 09400a076849bdec35beb284a488d01feb8a84c2
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 642881b5400a70a99f6e7e262d2a2f1038389ce7
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159998"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726852"
 ---
 # <a name="get-started-with-aspnet-core-opno-locblazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -39,7 +39,7 @@ ms.locfileid: "76159998"
 
    # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-   1\. 使用**ASP.NET 和 網頁程式開發**工作負載安裝[Visual Studio 16.4 或更新版本](https://visualstudio.microsoft.com/vs/preview/)。
+   1\. 使用**ASP.NET 和 網頁程式開發**工作負載安裝[Visual Studio 2019 16.4 版或更新](https://visualstudio.microsoft.com/vs/preview/)版本。
 
    2\. 建立新的專案。
 

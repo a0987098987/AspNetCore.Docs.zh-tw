@@ -6,16 +6,16 @@ ms.author: riande
 ms.date: 10/26/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: ff12eea5406c4f5392a466728741000e3dd16fc1
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: b5235f4e31f6edd21fb410824fb215ab2d4a41b6
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034225"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76727296"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>在 ASP.NET Core 中使用 Razor 類別庫專案建立可重複使用的 UI
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -36,7 +36,7 @@ Razor 視圖、頁面、控制器、頁面模型、 [razor 元件](xref:blazor/c
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-從命令列執行 `dotnet new razorclasslib`。 例如:
+從命令列執行 `dotnet new razorclasslib`。 例如：
 
 ```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
@@ -74,7 +74,7 @@ RCL 可以由下列各項參考：
 * *RazorUIClassLib/Pages*
 * *RazorUIClassLib/Pages/Shared*
 
-假設*RazorUIClassLib/Pages/Shared*包含兩個部分檔案： *_Header*和 *_Footer. cshtml*。 可以將 `<partial>` 標籤新增至 *_Layout. cshtml*檔案：
+假設*RazorUIClassLib/Pages/Shared*包含兩個部分檔案： *_Header. cshtml*和 *_Footer. cshtml*。 `<partial>` 標記可以新增至 _Layout 的*cshtml*檔案：
 
 ```cshtml
 <body>
@@ -127,9 +127,9 @@ RCL 可能需要可供 RCL 取用應用程式參考的隨附靜態資產。 ASP.
 
 ### <a name="consume-content-from-a-referenced-rcl"></a>從參考的 RCL 取用內容
 
-RCL 的*wwwroot*資料夾中所包含的檔案會公開給使用中應用程式的前置詞 `_content/{LIBRARY NAME}/`。 例如，名為 Razor. *.lib*的程式庫會產生 `_content/Razor.Class.Lib/`的靜態內容路徑。
+RCL 的*wwwroot*資料夾中所包含的檔案會公開給使用中應用程式的前置詞 `_content/{LIBRARY NAME}/`。 例如，名為 Razor. *.lib*的程式庫會產生 `_content/Razor.Class.Lib/`的靜態內容路徑。 當產生 NuGet 套件，且元件名稱與套件識別碼不同時，請使用 `{LIBRARY NAME}`的封裝識別碼。
 
-取用應用程式會參考程式庫所提供的靜態資產，其具有 `<script>`、`<style>`、`<img>`和其他 HTML 標籤。 使用中的應用程式必須在 `Startup.Configure`中啟用[靜態檔案支援](xref:fundamentals/static-files)：
+取用應用程式會參考程式庫所提供的靜態資產，其具有 `<script>`、`<style>`、`<img>`和其他 HTML 標籤。 取用應用程式必須在中`Startup.Configure`啟用[靜態檔案支援](xref:fundamentals/static-files)：
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -192,7 +192,7 @@ Razor 視圖、頁面、控制器、頁面模型、 [razor 元件](xref:blazor/c
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案]。
+* 從**Visual Studio 的**[檔案] 功能表中，選取 [**新增**>**專案**]。
 * 選取 [ASP.NET Core Web 應用程式]。
 * 命名程式庫 (例如，"RazorClassLib") > [確定]。 若要避免與產生的檢視程式庫發生檔案名稱衝突，程式庫名稱結尾請務必不要使用 `.Views`。
 * 確認已選取 **ASP.NET Core 2.1** 或更新版本。
@@ -204,7 +204,7 @@ RCL 具有下列專案檔：
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-從命令列執行 `dotnet new razorclasslib`。 例如:
+從命令列執行 `dotnet new razorclasslib`。 例如：
 
 ```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
@@ -263,7 +263,7 @@ dotnet run
 
 建立 RCL 專案：
 
-* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案]。
+* 從**Visual Studio 的**[檔案] 功能表中，選取 [**新增**>**專案**]。
 * 選取 [ASP.NET Core Web 應用程式]。
 * 將應用程式命名為**RazorUIClassLib** >**確定**。
 * 確認已選取 **ASP.NET Core 2.1** 或更新版本。
@@ -284,9 +284,9 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 * 建立 `RazorUIClassLib` RCL。
 * 建立 Razor _Message 頁面，並將它新增至 RCL。 `-np` 參數會建立頁面而不使用 `PageModel`。
-* 建立[_ViewStart](xref:mvc/views/layout#running-code-before-each-view) ，並將它新增至 RCL。
+* 建立[_ViewStart 的 cshtml](xref:mvc/views/layout#running-code-before-each-view)檔案，並將它新增至 RCL。
 
-若要使用 Razor Pages 專案的配置（在下一節中新增），必須要有 *_ViewStart*檔。
+需要 *_ViewStart. cshtml*檔案才能使用 Razor Pages 專案的配置（在下一節中加入）。
 
 ---
 
@@ -300,7 +300,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
   [!code-cshtml[](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml)]
 
-  需要 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` 才能使用部分檢視 (`<partial name="_Message" />`)。 您可以新增 *_ViewImports.cshtml* 檔案，而不要包含 `@addTagHelper` 指示詞。 例如:
+  需要 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` 才能使用部分檢視 (`<partial name="_Message" />`)。 您可以新增 *_ViewImports.cshtml* 檔案，而不要包含 `@addTagHelper` 指示詞。 例如：
 
   ```dotnetcli
   dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
@@ -376,7 +376,7 @@ dotnet run
 * *RazorUIClassLib/Pages*
 * *RazorUIClassLib/Pages/Shared*
 
-假設*RazorUIClassLib/Pages/Shared*包含兩個部分檔案： *_Header*和 *_Footer. cshtml*。 可以將 `<partial>` 標籤新增至 *_Layout. cshtml*檔案：
+假設*RazorUIClassLib/Pages/Shared*包含兩個部分檔案： *_Header. cshtml*和 *_Footer. cshtml*。 `<partial>` 標記可以新增至 _Layout 的*cshtml*檔案：
 
 ```cshtml
 <body>

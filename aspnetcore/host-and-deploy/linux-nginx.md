@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: e718592127115e46df3154364957943a457b0b1b
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: 880d1762ebbea641c0b9c5a9f8bbca0b68a463c5
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146325"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726671"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -144,6 +144,8 @@ server {
     }
 }
 ```
+
+如果應用程式是依賴 SignalR Websocket 的 Blazor 伺服器應用程式，請參閱 <xref:host-and-deploy/blazor/server#linux-with-nginx>，以取得如何設定 `Connection` 標頭的相關資訊。
 
 當沒有任何與 `server_name` 相符的項目時，Nginx 會使用預設伺服器。 如果未定義任何預設伺服器，則設定檔中的第一個伺服器就是預設伺服器。 最佳做法是，在您的設定檔中新增一個會傳回狀態碼 444 的特定預設伺服器。 預設伺服器設定範例如下：
 

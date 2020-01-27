@@ -5,14 +5,14 @@ description: 了解回應壓縮及如何使用 ASP.NET Core 應用程式中的�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 01/22/2020
 uid: performance/response-compression
-ms.openlocfilehash: 04b2ffd7047e8b127968adb5d40e0141365fb5fe
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: b8a84418a3258e9ac43b4eadd8564c0708590bce
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880915"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726971"
 ---
 # <a name="response-compression-in-aspnet-core"></a>ASP.NET Core 中的回應壓縮
 
@@ -139,7 +139,7 @@ public class Startup
 
 附註：
 
-* `app.UseResponseCompression` 必須在 `app.UseMvc`之前呼叫。
+* `app.UseResponseCompression` 必須在壓縮回應的任何中介軟體之前呼叫。 如需詳細資訊，請參閱<xref:fundamentals/middleware/index#middleware-order>。
 * 使用[Fiddler](https://www.telerik.com/fiddler)、 [Firebug](https://getfirebug.com/)或[Postman](https://www.getpostman.com/)之類的工具來設定 `Accept-Encoding` 要求標頭，並研究回應標頭、大小和主體。
 
 將要求提交至範例應用程式但不 `Accept-Encoding` 標頭，並觀察回應是否已解壓縮。 `Content-Encoding` 和 `Vary` 標頭不存在於回應中。
@@ -202,7 +202,7 @@ public void ConfigureServices(IServiceCollection services)
 
 使用 <xref:Microsoft.AspNetCore.ResponseCompression.BrotliCompressionProviderOptions>設定壓縮等級。 Brotli 壓縮提供者預設為最快速的壓縮層級（[CompressionLevel](xref:System.IO.Compression.CompressionLevel)），這可能不會產生最有效率的壓縮。 如果需要最有效率的壓縮，請設定中介軟體以獲得最佳壓縮。
 
-| Compression Level | 描述 |
+| 壓縮等級 | 描述 |
 | ----------------- | ----------- |
 | [CompressionLevel。最快](xref:System.IO.Compression.CompressionLevel) | 即使產生的輸出未以最佳方式壓縮，壓縮也應該儘快完成。 |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | 不應該執行壓縮。 |
@@ -265,7 +265,7 @@ public void ConfigureServices(IServiceCollection services)
 
 使用 <xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions>設定壓縮等級。 Gzip 壓縮提供者預設為最快速的壓縮層級（[CompressionLevel](xref:System.IO.Compression.CompressionLevel)），這可能不會產生最有效率的壓縮。 如果需要最有效率的壓縮，請設定中介軟體以獲得最佳壓縮。
 
-| Compression Level | 描述 |
+| 壓縮等級 | 描述 |
 | ----------------- | ----------- |
 | [CompressionLevel。最快](xref:System.IO.Compression.CompressionLevel) | 即使產生的輸出未以最佳方式壓縮，壓縮也應該儘快完成。 |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | 不應該執行壓縮。 |

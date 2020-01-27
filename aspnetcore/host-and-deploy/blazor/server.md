@@ -5,17 +5,17 @@ description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/17/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: c07cd05dd8e1c4384c6f8f019173b9b7a9a06fd0
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: e8b3a7faaf1dc88059a79abbc7e74657ebb2068c
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160219"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726737"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>裝載和部署 Blazor 伺服器
 
@@ -83,7 +83,7 @@ Blazor 伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊
 
 1. 在 Blazor 伺服器應用程式的 Visual Studio 中建立 Azure 應用程式發佈設定檔。
 1. 將**Azure SignalR 服務**相依性新增至設定檔。 如果 Azure 訂用帳戶沒有要指派給應用程式的既有 Azure SignalR 服務實例，請選取 [**建立新的 azure SignalR 服務實例**] 以布建新的服務實例。
-1. 將應用程式發佈至 Azure。
+1. 將應用程式發行至 Azure。
 
 #### <a name="iis"></a>IIS
 
@@ -104,6 +104,17 @@ metadata:
     nginx.ingress.kubernetes.io/session-cookie-expires: "14400"
     nginx.ingress.kubernetes.io/session-cookie-max-age: "14400"
 ```
+
+#### <a name="linux-with-nginx"></a>使用 Nginx 的 Linux
+
+若要讓 SignalR Websocket 正常運作，請將 proxy 的 `Upgrade` 和 `Connection` 標頭設定為下列內容：
+
+```
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection $connection_upgrade;
+```
+
+如需詳細資訊，請參閱[NGINX as a WebSocket Proxy](https://www.nginx.com/blog/websocket-nginx/)。
 
 ### <a name="measure-network-latency"></a>測量網路延遲
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 462f34664540b92ba6758224a722c7ca8f9c8de0
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 5e3ff65420b3c6769d52f8b96c216043cb1fdc1a
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829058"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76727002"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -134,7 +134,7 @@ URL 產生是路由可用來依據一組路由值建立 URL 路徑的處理序�
   * [UseRouting](xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*)會將路由對應新增至中介軟體管線。 它必須位於任何路由感知中介軟體之前，例如授權、端點執行等等。
   * [UseEndpoints](xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*)會將端點執行新增至中介軟體管線。 它會執行服務端點回應的要求委派。
   `UseEndpoints` 也是路由端點設定的位置，可由應用程式進行比對和執行。 例如，<xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*>、<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*>、<xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*>和 <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>。
-* 應用程式會使用 ASP.NET Core 的 helper 方法來設定其路由。 ASP.NET Core framework 提供 helper 方法，例如 <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*>、、<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> 和 `MapHub<THub>`。 另外還有協助程式方法，可用於設定您自己的自訂路由端點： <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*>、<xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>和[MapVerb](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions)。 
+* 應用程式會使用 ASP.NET Core 的 helper 方法來設定其路由。 ASP.NET Core 架構提供 helper 方法，例如 <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*>、<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> 和 `MapHub<THub>`。 另外還有協助程式方法，可用於設定您自己的自訂路由端點： <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*>、<xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>和[MapVerb](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions)。 
 * 端點路由也支援應用程式啟動後變更的端點。 若要在您的應用程式或 ASP.NET Core 架構中支援這項功能，必須建立並註冊自訂 <xref:Microsoft.AspNetCore.Routing.EndpointDataSource>。 這是一項先進的功能，通常不需要。 端點通常會在啟動時設定，而且在應用程式的存留期為靜態。 在啟動時從檔案或資料庫載入路由設定並非動態的。
 
 下列程式碼顯示端點路由的基本範例：

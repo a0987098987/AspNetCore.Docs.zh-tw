@@ -4,14 +4,14 @@ author: rick-anderson
 description: 本教學課程示範如何使用 OAuth 2.0 搭配外部驗證提供者來建立 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 01/23/2020
 uid: security/authentication/social/index
-ms.openlocfilehash: 06ce9c72f43955345efb61afed2538158810005f
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 7d0f6647a6f5a4d41067b13acd3d294144027bb7
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358065"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76727326"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
@@ -35,7 +35,7 @@ ms.locfileid: "75358065"
 * 建立新的專案。
 * 選取 [ASP.NET Core Web 應用程式] 和 [下一步]。
 * 提供**專案名稱**並確認或變更**位置**。 選取 [建立]。
-* 在下拉式選單中選取 [ **ASP.NET Core 3.0** ]，然後選取 [ **Web 應用程式**]。
+* 在下拉式（**ASP.NET Core {X. Y}** ）中選取最新版本的 ASP.NET Core，然後選取 [ **Web 應用程式**]。
 * 選取 [驗證] 下的 [變更]，並將驗證設定為 [個別使用者帳戶]。 選取 [確定]。
 * 在 [建立新的 ASP.NET Core Web 應用程式] 視窗中選取 [建立]。
 
@@ -45,7 +45,7 @@ ms.locfileid: "75358065"
 
 * 將目錄 (`cd`) 變更為其中包含專案的資料夾。
 
-* 針對 Windows，請執行下列命令：
+* 若是 Windows，請執行下列命令：
 
   ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld

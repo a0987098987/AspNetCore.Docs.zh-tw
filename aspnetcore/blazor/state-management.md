@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/state-management
-ms.openlocfilehash: ffb32a4f274a30f2a5ceed9cbf193285e85bab4c
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 990d392b0e1658774256626eb277701e40287b79
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160141"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726916"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
@@ -78,7 +78,7 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 針對永久資料保存或任何必須跨越多個使用者或裝置的資料，獨立的伺服器端資料庫幾乎都是最好的選擇。 這些選項包括：
 
 * 關係 SQL 資料庫
-* 索引鍵-值存放區
+* 索引鍵/值存放區
 * Blob 存放區
 * 資料表存放區
 
@@ -172,26 +172,26 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 `@using` 語句可以放入 *_Imports 的 razor*檔案中，而不是在元件中。 使用 *_Imports razor*檔案可讓應用程式或整個應用程式的較大區段使用命名空間。
 
-若要將 `currentCount` 值保存在專案範本的 `Counter` 元件中，請將 `IncrementCount` 方法修改為使用 `ProtectedSessionStore.SetAsync`：
+若要將 `_currentCount` 值保存在專案範本的 `Counter` 元件中，請將 `IncrementCount` 方法修改為使用 `ProtectedSessionStore.SetAsync`：
 
 ```csharp
 private async Task IncrementCount()
 {
-    currentCount++;
-    await ProtectedSessionStore.SetAsync("count", currentCount);
+    _currentCount++;
+    await ProtectedSessionStore.SetAsync("count", _currentCount);
 }
 ```
 
 在更大、更實際的應用程式中，個別欄位的儲存是不太可能發生的情況。 應用程式較可能儲存包含複雜狀態的整個模型物件。 `ProtectedSessionStore` 會自動序列化和還原序列化 JSON 資料。
 
-在上述程式碼範例中，`currentCount` 資料會以 `sessionStorage['count']` 方式儲存在使用者的瀏覽器中。 資料不會以純文字儲存，而是使用 ASP.NET Core 的[資料保護](xref:security/data-protection/introduction)來保護。 如果在瀏覽器的開發人員主控台中評估 `sessionStorage['count']`，就可以看到加密的資料。
+在上述程式碼範例中，`_currentCount` 資料會以 `sessionStorage['count']` 方式儲存在使用者的瀏覽器中。 資料不會以純文字儲存，而是使用 ASP.NET Core 的[資料保護](xref:security/data-protection/introduction)來保護。 如果在瀏覽器的開發人員主控台中評估 `sessionStorage['count']`，就可以看到加密的資料。
 
-若要復原 `currentCount` 資料（如果使用者稍後回到 `Counter` 元件（包括它們是在全新的線路上），請使用 `ProtectedSessionStore.GetAsync`：
+若要復原 `_currentCount` 資料（如果使用者稍後回到 `Counter` 元件（包括它們是在全新的線路上），請使用 `ProtectedSessionStore.GetAsync`：
 
 ```csharp
 protected override async Task OnInitializedAsync()
 {
-    currentCount = await ProtectedSessionStore.GetAsync<int>("count");
+    _currentCount = await ProtectedSessionStore.GetAsync<int>("count");
 }
 ```
 
@@ -200,7 +200,7 @@ protected override async Task OnInitializedAsync()
 > [!WARNING]
 > 此章節中的範例僅適用于伺服器未啟用預先安裝的情況。 啟用預入功能時，會產生類似下列的錯誤：
 >
-> > JavaScript interop calls cannot be issued at this time. This is because the component is being prerendered.
+> > 目前無法發出 JavaScript interop 呼叫。 這是因為正在資源清單元件。
 >
 > 請停用已選擇的，或加入額外的程式碼以使用可處理的。 若要深入瞭解如何撰寫可搭配已預呈現運作的程式碼，請參閱[處理預呈現](#handle-prerendering)一節。
 
@@ -208,18 +208,18 @@ protected override async Task OnInitializedAsync()
 
 由於瀏覽器儲存體是非同步（透過網路連線存取），因此在載入資料並可供元件使用之前，一律會有一段時間。 若要獲得最佳結果，請在載入進行時轉譯載入狀態訊息，而不是顯示空白或預設的資料。
 
-其中一種方法是追蹤資料是否 `null` （仍在載入中）。 In the default `Counter` component, the count is held in an `int`. Make `currentCount` nullable by adding a question mark (`?`) to the type (`int`):
+其中一種方法是追蹤資料是否 `null` （仍在載入中）。 在預設的 `Counter` 元件中，計數會保留在 `int`中。 將問號（`?`）新增至類型（`int`），使 `_currentCount` 可為 null：
 
 ```csharp
-private int? currentCount;
+private int? _currentCount;
 ```
 
-Instead of unconditionally displaying the count and **Increment** button, choose to display these elements only if the data is loaded:
+不是無條件地顯示 [計數] 和 [**遞增**] 按鈕，而是只有在載入資料時，才選擇顯示這些元素：
 
 ```razor
-@if (currentCount.HasValue)
+@if (_currentCount.HasValue)
 {
-    <p>Current count: <strong>@currentCount</strong></p>
+    <p>Current count: <strong>@_currentCount</strong></p>
 
     <button @onclick="IncrementCount">Increment</button>
 }
@@ -229,22 +229,22 @@ else
 }
 ```
 
-### <a name="handle-prerendering"></a>Handle prerendering
+### <a name="handle-prerendering"></a>處理已預呈現
 
-During prerendering:
+在預做期間：
 
-* An interactive connection to the user's browser doesn't exist.
-* The browser doesn't yet have a page in which it can run JavaScript code.
+* 與使用者的瀏覽器之間的互動連接不存在。
+* 瀏覽器還沒有可執行 JavaScript 程式碼的頁面。
 
-`localStorage` or `sessionStorage` aren't available during prerendering. If the component attempts to interact with storage, an error is generated similar to:
+在預做期間無法使用 `localStorage` 或 `sessionStorage`。 如果元件嘗試與存放裝置互動，則會產生類似下列的錯誤：
 
-> JavaScript interop calls cannot be issued at this time. This is because the component is being prerendered.
+> 目前無法發出 JavaScript interop 呼叫。 這是因為正在資源清單元件。
 
-One way to resolve the error is to disable prerendering. This is usually the best choice if the app makes heavy use of browser-based storage. Prerendering adds complexity and doesn't benefit the app because the app can't prerender any useful content until `localStorage` or `sessionStorage` are available.
+解決錯誤的其中一種方法是停用已處理的。 如果應用程式大量使用以瀏覽器為基礎的存放裝置，這通常是最佳的選擇。 因為應用程式在 `localStorage` 或 `sessionStorage` 可供使用之前無法提供任何有用的內容，所以已進行的呈現會增加複雜度，且不會對應用程式
 
-To disable prerendering, open the *Pages/_Host.cshtml* file and change the call to `render-mode` of the `Component` Tag Helper to `Server`.
+若要停用預呈現，請開啟*Pages/_Host. cshtml*檔案，然後將 `Component` 標記協助程式 `render-mode` 的呼叫變更為 `Server`。
 
-Prerendering might be useful for other pages that don't use `localStorage` or `sessionStorage`. To keep prerendering enabled, defer the loading operation until the browser is connected to the circuit. The following is an example for storing a counter value:
+針對未使用 `localStorage` 或 `sessionStorage`的其他頁面，可進行預呈現可能會很有用。 若要保持已啟用的已啟用狀態，請延遲載入作業，直到瀏覽器連線到線路為止。 以下是儲存計數器值的範例：
 
 ```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
@@ -253,8 +253,8 @@ Prerendering might be useful for other pages that don't use `localStorage` or `s
 ... rendering code goes here ...
 
 @code {
-    private int? currentCount;
-    private bool isConnected = false;
+    private int? _currentCount;
+    private bool _isConnected = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -262,7 +262,7 @@ Prerendering might be useful for other pages that don't use `localStorage` or `s
         {
             // When execution reaches this point, the first *interactive* render
             // is complete. The component has an active connection to the browser.
-            isConnected = true;
+            _isConnected = true;
             await LoadStateAsync();
             StateHasChanged();
         }
@@ -270,28 +270,28 @@ Prerendering might be useful for other pages that don't use `localStorage` or `s
 
     private async Task LoadStateAsync()
     {
-        currentCount = await ProtectedLocalStore.GetAsync<int>("prerenderedCount");
+        _currentCount = await ProtectedLocalStore.GetAsync<int>("prerenderedCount");
     }
 
     private async Task IncrementCount()
     {
-        currentCount++;
-        await ProtectedSessionStore.SetAsync("count", currentCount);
+        _currentCount++;
+        await ProtectedSessionStore.SetAsync("count", _currentCount);
     }
 }
 ```
 
-### <a name="factor-out-the-state-preservation-to-a-common-location"></a>Factor out the state preservation to a common location
+### <a name="factor-out-the-state-preservation-to-a-common-location"></a>將狀態保留分解為一般位置
 
-If many components rely on browser-based storage, re-implementing state provider code many times creates code duplication. One option for avoiding code duplication is to create a *state provider parent component* that encapsulates the state provider logic. Child components can work with persisted data without regard to the state persistence mechanism.
+如果許多元件都依賴以瀏覽器為基礎的儲存體，則重新執行狀態提供者程式碼很多次會建立程式碼重複。 避免程式碼重複的其中一個選項是建立一個可封裝狀態提供者邏輯的*狀態供應器父元件*。 子元件可以使用持續性資料，而不考慮狀態持續性機制。
 
-In the following example of a `CounterStateProvider` component, counter data is persisted:
+在下列 `CounterStateProvider` 元件的範例中，會保存計數器資料：
 
 ```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 
-@if (hasLoaded)
+@if (_hasLoaded)
 {
     <CascadingValue Value="@this">
         @ChildContent
@@ -303,7 +303,7 @@ else
 }
 
 @code {
-    private bool hasLoaded;
+    private bool _hasLoaded;
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
@@ -313,7 +313,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         CurrentCount = await ProtectedSessionStore.GetAsync<int>("count");
-        hasLoaded = true;
+        _hasLoaded = true;
     }
 
     public async Task SaveChangesAsync()
@@ -323,9 +323,9 @@ else
 }
 ```
 
-The `CounterStateProvider` component handles the loading phase by not rendering its child content until loading is complete.
+`CounterStateProvider` 元件在載入完成之前，不會呈現其子內容來處理載入階段。
 
-To use the `CounterStateProvider` component, wrap an instance of the component around any other component that requires access to the counter state. To make the state accessible to all components in an app, wrap the `CounterStateProvider` component around the `Router` in the `App` component (*App.razor*):
+若要使用 `CounterStateProvider` 元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取狀態，請將 `CounterStateProvider` 元件包裝在 `App` 元件（*razor*）的 `Router` 周圍：
 
 ```razor
 <CounterStateProvider>
@@ -335,7 +335,7 @@ To use the `CounterStateProvider` component, wrap an instance of the component a
 </CounterStateProvider>
 ```
 
-Wrapped components receive and can modify the persisted counter state. The following `Counter` component implements the pattern:
+包裝的元件會接收並可修改保存的計數器狀態。 下列 `Counter` 元件會執行模式：
 
 ```razor
 @page "/counter"
@@ -356,13 +356,13 @@ Wrapped components receive and can modify the persisted counter state. The follo
 }
 ```
 
-The preceding component isn't required to interact with `ProtectedBrowserStorage`, nor does it deal with a "loading" phase.
+上述元件不需要與 `ProtectedBrowserStorage`互動，也不會處理「載入」階段。
 
-To deal with prerendering as described earlier, `CounterStateProvider` can be amended so that all of the components that consume the counter data automatically work with prerendering. See the [Handle prerendering](#handle-prerendering) section for details.
+如先前所述，若要處理已進行的預呈現，可以修改 `CounterStateProvider`，讓取用計數器資料的所有元件都能自動以可處理方式使用。 如需詳細資訊，請參閱處理預進行[處理](#handle-prerendering)一節。
 
-In general, *state provider parent component* pattern is recommended:
+一般情況下，建議使用*狀態供應器父元件*模式：
 
-* To consume state in many other components.
-* If there's just one top-level state object to persist.
+* 使用許多其他元件中的狀態。
+* 如果只有一個最上層狀態物件要保存，則為。
 
-To persist many different state objects and consume different subsets of objects in different places, it's better to avoid handling the loading and saving of state globally.
+若要保存許多不同的狀態物件，並在不同位置取用不同的物件子集，最好避免在全域處理狀態的載入和儲存。

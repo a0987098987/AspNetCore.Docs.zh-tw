@@ -5,12 +5,12 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 01/13/2020
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: adf313418e82cc265304262f7a751273fa0e139f
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 12429f1f381788569615a2a40e1ca13c4b3cfb6e
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75952102"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76727119"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
@@ -22,7 +22,7 @@ ms.locfileid: "75952102"
 
 您所建立的模型類別稱為 POCO 類別 (來自「純舊 CLR 物件」)，因為它們對 EF Core 沒有任何相依性。 它們只會定義資料庫將儲存之資料的屬性。
 
-在本教學課程中，您首先要撰寫模型類別，而 EF Core 會建立資料庫。 本文未提及的替代方法是從現有的資料庫產生模型類別。 如需該方法的資訊，請參閱 [ASP.NET Core - 現有的資料庫](/ef/core/get-started/aspnetcore/existing-db)。
+在本教學課程中，您首先要撰寫模型類別，而 EF Core 會建立資料庫。
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -585,7 +585,7 @@ ASP.NET Core 內建[相依性插入 (DI)](xref:fundamentals/dependency-injection
 
 Scaffolding 工具會自動建立 DB 內容，並向 DI 容器註冊該內容。
 
-請檢查下列 `Startup.ConfigureServices` 方法。 Scaffolder 已新增醒目標示行：
+請檢查下列 `Startup.ConfigureServices` 方法。 強調顯示的行由 Scaffolder 新增：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=14-15)]
 

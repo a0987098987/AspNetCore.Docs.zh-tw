@@ -1,5 +1,7 @@
 - name: ASP.NET Core 文件
   href: '/aspnet/#pivot=core'
+- name: ASP.NET Core 的新功能文件
+  href: whats-new/index.yml
 - name: 總覽
   items:
     - name: 關於 ASP.NET Core
@@ -10,7 +12,7 @@
       href: /dotnet/standard/choosing-core-framework-server?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
 - name: 開始使用
   uid: getting-started
-- name: 新功能
+- name: 版本資訊
   items:
     - name: 3.1 中的新功能
       uid: aspnetcore-3.1
@@ -885,15 +887,27 @@
             - name: 總覽
               uid: security/authentication/azure-active-directory/index
             - name: 將 Azure AD 整合到 Web 應用程式中
-              href: 'https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial'
-            - name: 將 Azure AD B2C 整合到 Web 應用程式中
-              uid: security/authentication/azure-ad-b2c
-            - name: 將 Azure AD B2C 整合到 Web API 中
-              uid: security/authentication/azure-ad-b2c-webapi
-            - name: 從 WPF 呼叫 Web API
-              href: 'https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore'
-            - name: 使用 Azure AD 在 Web 應用程式中呼叫 Web API
-              href: 'https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore'
+              href: /azure/active-directory/develop/quickstart-v2-aspnet-core-webapp
+            - name: 案例
+              items:
+                - name: 可將使用者登入的 Web 應用程式
+                  href: /azure/active-directory/develop/scenario-web-app-sign-user-overview?tabs=aspnetcore
+                - name: 可呼叫 Web API 的 Web 應用程式
+                  href: /azure/active-directory/develop/scenario-web-app-call-api-overview
+                - name: 受保護的 Web API
+                  href: /azure/active-directory/develop/scenario-protected-web-api-overview
+                - name: 可呼叫其他 Web API 的 Web API
+                  href: /azure/active-directory/develop/scenario-web-api-call-api-overview
+                - name: 將 Azure AD B2C 整合到 Web 應用程式中
+                  uid: security/authentication/azure-ad-b2c
+            - name: 範例
+              items:
+                - name: 使用 Azure AD V2 將使用者登入及呼叫 Web API
+                  href: /samples/azure-samples/active-directory-aspnetcore-webapp-openidconnect-v2/enable-webapp-signin/
+                - name: 使用 Azure AD V2 從 WPF 應用程式呼叫 ASP.NET Core 2.0 Web API
+                  href: /samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+                - name: 使用 Azure AD B2C 的 Web API
+                  href: 'https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapi/'
         - name: 使用 IdentityServer4 保護 ASP.NET Core 應用程式
           href: 'https://identityserver4.readthedocs.io/'
         - name: 使用 Azure App Service 驗證 (簡單驗證) 保護 ASP.NET Core 應用程式

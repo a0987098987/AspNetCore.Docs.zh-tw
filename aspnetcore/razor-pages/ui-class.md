@@ -3,15 +3,15 @@ title: ASP.NET Core 類別庫中的可重複使用 Razor UI
 author: Rick-Anderson
 description: 說明如何在 ASP.NET Core 的類別庫中，使用部分視圖建立可重複使用的 Razor UI。
 ms.author: riande
-ms.date: 10/26/2019
+ms.date: 01/25/2020
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: b5235f4e31f6edd21fb410824fb215ab2d4a41b6
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: 420cc54701394673e2b442b1fdf999e421820fd5
+ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727296"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76809116"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>在 ASP.NET Core 中使用 Razor 類別庫專案建立可重複使用的 UI
 
@@ -86,7 +86,7 @@ RCL 可以由下列各項參考：
 
 ## <a name="create-an-rcl-with-static-assets"></a>建立具有靜態資產的 RCL
 
-RCL 可能需要可供 RCL 取用應用程式參考的隨附靜態資產。 ASP.NET Core 可讓您建立包含可供取用應用程式使用之靜態資產的 RCLs。
+RCL 可能需要隨附的靜態資產，由 RCL 或 RCL 的取用應用程式來參考。 ASP.NET Core 可讓您建立包含可供取用應用程式使用之靜態資產的 RCLs。
 
 若要將隨附的資產納入為 RCL 的一部分，請在類別庫中建立*wwwroot*資料夾，並在該資料夾中包含任何必要的檔案。
 
@@ -127,7 +127,7 @@ RCL 可能需要可供 RCL 取用應用程式參考的隨附靜態資產。 ASP.
 
 ### <a name="consume-content-from-a-referenced-rcl"></a>從參考的 RCL 取用內容
 
-RCL 的*wwwroot*資料夾中所包含的檔案會公開給使用中應用程式的前置詞 `_content/{LIBRARY NAME}/`。 例如，名為 Razor. *.lib*的程式庫會產生 `_content/Razor.Class.Lib/`的靜態內容路徑。 當產生 NuGet 套件，且元件名稱與套件識別碼不同時，請使用 `{LIBRARY NAME}`的封裝識別碼。
+RCL 的*wwwroot*資料夾中包含的檔案會公開給 RCL 或 `_content/{LIBRARY NAME}/`前置詞底下的取用應用程式。 例如，名為 Razor. *.lib*的程式庫會產生 `_content/Razor.Class.Lib/`的靜態內容路徑。 當產生 NuGet 套件，且元件名稱與套件識別碼不同時，請使用 `{LIBRARY NAME}`的封裝識別碼。
 
 取用應用程式會參考程式庫所提供的靜態資產，其具有 `<script>`、`<style>`、`<img>`和其他 HTML 標籤。 取用應用程式必須在中`Startup.Configure`啟用[靜態檔案支援](xref:fundamentals/static-files)：
 

@@ -6,12 +6,12 @@ description: 探索 ASP.NET Core 連結標記協助程式屬性，以及每個�
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
-ms.openlocfilehash: e1e2e58b4ab9087e1f9de5b5c03b587feb88f1b9
-ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
+ms.openlocfilehash: d7514433bee8a138cd7d75bfd15c9798d4fd31a3
+ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256516"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76809103"
 ---
 # <a name="link-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的連結標記協助程式
 
@@ -23,7 +23,7 @@ ms.locfileid: "71256516"
 
 連結標籤協助程式可讓您指定 CSS 檔案的 CDN，以及 CDN 無法使用時的回復。 連結標籤協助程式可提供 CDN 的效能優勢，以及本機裝載的穩定性。
 
-下列 Razor 標記會顯示使用`head` ASP.NET Core web 應用程式範本所建立之配置檔案的元素：
+下列 Razor 標記會顯示使用 ASP.NET Core web 應用程式範本所建立之配置檔案的 `head` 元素：
 
 [!code-html[](link-tag-helper/sample/_Layout.cshtml?name=snippet)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "71256516"
 
 [!code-csharp[](link-tag-helper/sample/HtmlPage1.html)]
 
-在上述程式碼中，連結標記協助程式會`<meta name="x-stylesheet-fallback-test" content="" class="sr-only" />`產生元素和下列 JavaScript，用來驗證要求的*啟動程式。最小的 .css*檔案可在 CDN 上使用。 在此情況下，CSS 檔案可供使用，標記協助程式會`<link />`使用 CDN CSS 檔案產生元素。
+在上述程式碼中，連結標記協助程式會產生 `<meta name="x-stylesheet-fallback-test" content="" class="sr-only" />` 專案和下列 JavaScript，用來驗證要求的*啟動程式。最小的 .css*檔案可在 CDN 上取得。 在此情況下，CSS 檔案可供使用，因此標記協助程式會使用 CDN CSS 檔案來產生 `<link />` 元素。
 
 ## <a name="commonly-used-link-tag-helper-attributes"></a>常用的連結標記協助程式屬性
 
@@ -52,10 +52,6 @@ ms.locfileid: "71256516"
 ### <a name="asp-fallback-test-property"></a>asp-fallback-測試-屬性
 
 用於回退測試的 CSS 屬性名稱。 如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>。
-
-### <a name="asp-fallback-test-value"></a>asp-fallback-測試-值
-
-要用於 fallback 測試的 CSS 屬性值。 如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>。
 
 ### <a name="asp-fallback-test-value"></a>asp-fallback-測試-值
 

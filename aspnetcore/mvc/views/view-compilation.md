@@ -7,16 +7,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 0a5770a00c5cb319b571628659a07e73e0de54f9
-ms.sourcegitcommit: fd2483f0a384b1c479c5b4af025ee46917db1919
+ms.openlocfilehash: cd096bba5eb580c0a606699a2bf7c36442fb56f7
+ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74867974"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76809064"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>ASP.NET Core 中 Razor 檔案的先行編譯
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range="= aspnetcore-1.1"
 
@@ -110,7 +110,7 @@ dotnet publish -c Release
 
 ::: moniker range="= aspnetcore-2.2"
 
-建置時間編譯會透過 Razor 檔案的執行階段編譯來補充。 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions> <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> 可取得或設定可決定磁碟上的檔案變更時是否要重新編譯 Razor files (Razor 檢視與 Razor Pages) 的值。
+建置時間編譯會透過 Razor 檔案的執行階段編譯來補充。 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions> <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> 取得或設定值，以決定是否要重新編譯 Razor 檔案（Razor views 和 Razor Pages），並在磁片上的檔案變更時進行更新。
 
 針對下列項目，預設值是 `true`：
 
@@ -159,11 +159,11 @@ dotnet publish -c Release
 
     ```csharp
     public IWebHostEnvironment Env { get; set; }
-    
+
     public void ConfigureServices(IServiceCollection services)
     {
         IMvcBuilder builder = services.AddRazorPages();
-    
+
     #if DEBUG
         if (Env.IsDevelopment())
         {

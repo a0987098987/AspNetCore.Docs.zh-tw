@@ -5,17 +5,17 @@ description: 探索 ASP.NET Core 如何 Blazor Blazor 如何管理未處理的�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/22/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: fe4cc13b1efb8c70c9632f032626aa938fb65ea3
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 7b5602d5ae5e58d1678762fe1cd2adec1f31c969
+ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159946"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76808999"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
 
@@ -112,7 +112,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 當 Blazor 建立元件的實例時：
 
 * 會叫用元件的函式。
-* 系統會叫用透過[`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component)指示詞或[`[Inject]`](xref:blazor/dependency-injection#request-a-service-in-a-component)屬性提供給元件之函式的任何非 singleton DI 服務的函式。 
+* 系統會叫用透過[`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component)指示詞或[`[Inject]`](xref:blazor/dependency-injection#request-a-service-in-a-component)屬性提供給元件之函式的任何非 singleton DI 服務的函式。
 
 任何 `[Inject]` 屬性的任何執行的函式或 setter 擲回未處理的例外狀況時，線路都會失敗。 例外狀況是嚴重的，因為架構無法具現化元件。 如果函式邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄功能的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
 
@@ -165,7 +165,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 ### <a name="component-disposal"></a>元件處置
 
-例如，元件可能會從 UI 移除，因為使用者已流覽至另一個頁面。 從 UI 移除執行 <xref:System.IDisposable?displayProperty=fullName> 的元件時，架構會呼叫元件的 <xref:System.IDisposable.Dispose*> 方法。 
+例如，元件可能會從 UI 移除，因為使用者已流覽至另一個頁面。 從 UI 移除執行 <xref:System.IDisposable?displayProperty=fullName> 的元件時，架構會呼叫元件的 <xref:System.IDisposable.Dispose*> 方法。
 
 如果元件的 `Dispose` 方法擲回未處理的例外狀況，則例外狀況對線路而言是嚴重的。 如果處置邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
 
@@ -192,16 +192,49 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 ### <a name="circuit-handlers"></a>線路處理常式
 
-Blazor 可讓程式碼定義*電路處理常式*，以在使用者的線路狀態變更時接收通知。 使用下列狀態：
+Blazor Server 可讓程式碼定義*電路處理常式*，以允許對使用者線路狀態的變更執行程式碼。 線路處理常式是透過衍生自 `CircuitHandler` 並在應用程式的服務容器中註冊類別來執行。 下列線路處理常式範例會追蹤開啟的 SignalR 連接：
 
-* `initialized`
-* `connected`
-* `disconnected`
-* `disposed`
+```csharp
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Server.Circuits;
 
-通知的管理方式是註冊繼承自 `CircuitHandler` 抽象基類的 DI 服務。
+public class TrackingCircuitHandler : CircuitHandler
+{
+    private HashSet<Circuit> _circuits = new HashSet<Circuit>();
 
-如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對線路而言是嚴重的。 若要容忍處理常式程式碼或呼叫方法中的例外狀況，請使用錯誤處理和記錄，將程式碼包裝在一個或多個[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。
+    public override Task OnConnectionUpAsync(Circuit circuit, 
+        CancellationToken cancellationToken)
+    {
+        _circuits.Add(circuit);
+
+        return Task.CompletedTask;
+    }
+
+    public override Task OnConnectionDownAsync(Circuit circuit, 
+        CancellationToken cancellationToken)
+    {
+        _circuits.Remove(circuit);
+
+        return Task.CompletedTask;
+    }
+
+    public int ConnectedCircuits => _circuits.Count;
+}
+```
+
+線路處理常式是使用 DI 註冊。 範圍實例會針對每個線路實例而建立。 使用上述範例中的 `TrackingCircuitHandler`，會建立單一服務，因為必須追蹤所有線路的狀態：
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    services.AddSingleton<CircuitHandler, TrackingCircuitHandler>();
+}
+```
+
+如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對 Blazor 伺服器線路而言是嚴重的。 若要容忍處理常式程式碼或呼叫方法中的例外狀況，請使用錯誤處理和記錄，將程式碼包裝在一個或多個[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。
 
 ### <a name="circuit-disposal"></a>線路處置
 
@@ -224,7 +257,7 @@ Blazor 元件可以使用 `Component` 標籤協助程式來資源清單，如此
 
 若要容忍在自動處理期間可能發生的錯誤，錯誤處理邏輯必須放在可能會擲回例外狀況的元件內部。 使用[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句搭配錯誤處理和記錄。 不要將 `Component` 標籤協助套裝程式裝在 `try-catch` 的語句中，而是將錯誤處理邏輯放在 `Component` 標籤協助程式所呈現的元件中。
 
-## <a name="advanced-scenarios"></a>進階案例
+## <a name="advanced-scenarios"></a>Advanced 案例
 
 ### <a name="recursive-rendering"></a>遞迴轉譯
 

@@ -230,8 +230,6 @@
           uid: razor-pages/filter
         - name: 路由及應用程式慣例
           uid: razor-pages/razor-pages-conventions
-        - name: Razor SDK
-          uid: razor-pages/sdk
     - name: MVC
       items:
         - name: 總覽
@@ -409,21 +407,25 @@
               href: 'mvc/views/working-with-forms.md#the-validation-summary-tag-helper'
     - name: 進階
       items:
+        - name: 應用程式組件
+          uid: mvc/extensibility/app-parts
+        - name: 應用程式模型
+          uid: mvc/controllers/application-model
+        - name: 區域
+          uid: mvc/controllers/areas
+        - name: 篩選條件
+          uid: mvc/controllers/filters
+        - name: Razor SDK
+          uid: razor-pages/sdk
         - name: 檢視元件
           uid: mvc/views/view-components
         - name: 檢視編譯
           uid: mvc/views/view-compilation
-        - name: 應用程式模型
-          uid: mvc/controllers/application-model
-        - name: 篩選條件
-          uid: mvc/controllers/filters
-        - name: 區域
-          uid: mvc/controllers/areas
         - name: 上傳檔案
           uid: mvc/models/file-uploads
-        - name: 應用程式組件
-          uid: mvc/extensibility/app-parts
-        - name: aspnet-codegenerator
+        - name: Web SDK
+          uid: razor-pages/web-sdk
+        - name: aspnet-codegenerator (Scaffolding)
           uid: fundamentals/tools/dotnet-aspnet-codegenerator
 - name: Web API 應用程式
   items:
@@ -578,6 +580,8 @@
       uid: grpc/client
     - name: gRPC 用戶端處理站整合
       uid: grpc/clientfactory
+    - name: 在瀏覽器應用程式中使用 gRPC
+      uid: grpc/browser
     - name: 設定
       uid: grpc/configuration
     - name: 驗證與授權

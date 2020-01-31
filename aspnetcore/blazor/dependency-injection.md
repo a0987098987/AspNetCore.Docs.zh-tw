@@ -5,17 +5,17 @@ description: 瞭解 Blazor 應用程式如何將服務插入元件中。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/08/2020
+ms.date: 01/29/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/dependency-injection
-ms.openlocfilehash: fa6762522c831c7fbe2742dbfe4e25a377988e1e
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
-ms.translationtype: HT
+ms.openlocfilehash: 859fd484fc00104575f176fa7d3bf752895475a0
+ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/29/2020
-ms.locfileid: "76869560"
+ms.locfileid: "76885497"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
 
@@ -44,6 +44,69 @@ DI 是用來存取集中位置所設定之服務的技術。 在 Blazor 應用�
 
 ## <a name="add-services-to-an-app"></a>將服務新增至應用程式
 
+### <a name="blazor-webassembly"></a>Blazor WebAssembly
+
+在*Program.cs*的 `Main` 方法中，為應用程式的服務集合設定服務。 在下列範例中，會為 `IMyDependency`註冊 `MyDependency` 實作為：
+
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.Services.AddSingleton<IMyDependency, MyDependency>();
+        builder.RootComponents.Add<App>("app");
+
+        await builder.Build().RunAsync();
+    }
+}
+```
+
+建立主機之後，您就可以從根 DI 範圍存取服務，然後再呈現任何元件。 這有助於在轉譯內容之前執行初始化邏輯：
+
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.Services.AddSingleton<WeatherService>();
+        builder.RootComponents.Add<App>("app");
+
+        var host = builder.Build();
+
+        var weatherService = host.Services.GetRequiredService<WeatherService>();
+        await weatherService.InitializeWeatherAsync();
+
+        await host.RunAsync();
+    }
+}
+```
+
+主機也會提供應用程式的中央設定實例。 以先前的範例為基礎，氣象服務的 URL 會從預設設定來源（例如， *appsettings*）傳遞至 `InitializeWeatherAsync`：
+
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.Services.AddSingleton<WeatherService>();
+        builder.RootComponents.Add<App>("app");
+
+        var host = builder.Build();
+
+        var weatherService = host.Services.GetRequiredService<WeatherService>();
+        await weatherService.InitializeWeatherAsync(
+            host.Configuration["WeatherServiceUrl"]);
+
+        await host.RunAsync();
+    }
+}
+```
+
+### <a name="blazor-server"></a>Blazor 伺服器
+
 建立新的應用程式之後，請檢查 `Startup.ConfigureServices` 方法：
 
 ```csharp
@@ -61,6 +124,8 @@ public void ConfigureServices(IServiceCollection services)
     services.AddSingleton<IDataAccess, DataAccess>();
 }
 ```
+
+### <a name="service-lifetime"></a>服務存留期
 
 您可以使用下表所示的存留期來設定服務。
 

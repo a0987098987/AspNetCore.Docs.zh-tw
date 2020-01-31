@@ -5,14 +5,14 @@ description: 了解已發行之 ASP.NET Core 應用程式的目錄結構。
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/17/2019
+ms.date: 01/28/2020
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: f1df047decc7a0a6b7dcee57a690c55eea428b05
-ms.sourcegitcommit: 28a2874765cefe9eaa068dceb989a978ba2096aa
-ms.translationtype: HT
+ms.openlocfilehash: ba5cb96dfdcdca10034299e3bbe662ce056af791
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166972"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76870262"
 ---
 # <a name="aspnet-core-directory-structure"></a>ASP.NET Core 目錄結構
 
@@ -28,8 +28,8 @@ ms.locfileid: "67166972"
 
 | 應用程式類型 | 目錄結構 |
 | -------- | ------------------- |
-| [架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd) | <ul><li>publish&dagger;<ul><li>Views&dagger; (MVC 應用程式；如果未預先編譯檢視)</li><li>Pages&dagger; (MVC 或 Razor 頁面應用程式；如果未預先編譯頁面)</li><li>wwwroot&dagger;</li><li>*\.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
-| [自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Views&dagger; (MVC 應用程式；如果未預先編譯檢視)</li><li>Pages&dagger; (MVC 或 Razor 頁面應用程式；如果未預先編譯頁面)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{組件名稱}.exe</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
+| [Framework 相依可執行檔（FDE）](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>&dagger; MVC 應用程式的視圖;如果未先行編譯 views</li><li>&dagger; MVC 或 Razor Pages 應用程式的頁面（如果未先行編譯頁面）</li><li>wwwroot&dagger;</li><li>*.dll 檔案</li><li>{元件名稱}. .deps.json. json</li><li>{元件名稱} .dll</li><li>{元件名稱} {。Windows 上的 EXTENSION} *.exe*延伸模組，在 MacOS 或 Linux 上沒有延伸模組</li><li>{元件名稱}. pdb</li><li>{元件名稱}。Views .dll</li><li>{元件名稱}。Views</li><li>{元件名稱}. .runtimeconfig.json. json</li><li>web.config （IIS 部署）</li><li>createdump （[linux createdump 公用程式](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy)）</li>* <li>。因此（linux 共用物件程式庫）</li><li>*. （macOS archive）</li><li>* . Dylib （macOS 動態連結程式庫）</li></ul></li></ul> |
+| [獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>如果未先行編譯 views，&dagger; MVC 應用程式的視圖</li><li>&dagger; MVC 或 Razor Pages 應用程式的頁面（如果未先行編譯頁面）</li><li>wwwroot&dagger;</li><li>\* .dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{組件名稱}.exe</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
 
 &dagger;表示是目錄
 

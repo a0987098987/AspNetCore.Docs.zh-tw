@@ -5,17 +5,17 @@ description: 深入瞭解 ASP.NET Core Blazor 應用程式範本和 Blazor 專�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/29/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: 2a95b986450471b474d93ead252255f2bd9d4918
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: acfa4b8a42cbd310c6fc6dc973573578e94ef999
+ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160115"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76885516"
 ---
 # <a name="aspnet-core-opno-locblazor-templates"></a>ASP.NET Core Blazor 範本
 
@@ -36,16 +36,20 @@ Blazor 架構會提供範本來為每個 Blazor 裝載模型開發應用程式�
 
 下列檔案和資料夾組成從 Blazor 範本產生的 Blazor 應用程式：
 
-* *Program.cs* &ndash; 設定 ASP.NET Core[主機](xref:fundamentals/host/generic-host)的應用程式進入點。 此檔案中的程式碼通用於從 ASP.NET Core 範本產生的所有 ASP.NET Core 應用程式。
+* *Program.cs* &ndash; 應用程式的進入點來設定：
 
-* *Startup.cs* &ndash; 包含應用程式的啟動邏輯。 `Startup` 類別會定義兩個方法：
+  * ASP.NET Core[主機](xref:fundamentals/host/generic-host)（Blazor 伺服器）
+  * WebAssembly 主機（Blazor WebAssembly） &ndash; 此檔案中的程式碼對於從 Blazor WebAssembly 範本（`blazorwasm`）所建立的應用程式而言是唯一的。
+    * `App` 元件（也就是應用程式的根元件）會指定為 `Add` 方法的 `app` DOM 元素。
+    * 服務可以使用主機產生器上的 `ConfigureServices` 方法來設定（例如，`builder.Services.AddSingleton<IMyDependency, MyDependency>();`）。
+    * 您可以透過主機產生器（`builder.Configuration`）來提供設定。
+
+* *Startup.cs* （Blazor Server） &ndash; 包含應用程式的啟動邏輯。 `Startup` 類別會定義兩個方法：
 
   * `ConfigureServices` &ndash; 會設定應用程式的相依性[插入（DI）](xref:fundamentals/dependency-injection)服務。 在 Blazor 伺服器應用程式中，會藉由呼叫 <xref:Microsoft.Extensions.DependencyInjection.ComponentServiceCollectionExtensions.AddServerSideBlazor*>來新增服務，並將 `WeatherForecastService` 新增至服務容器，以供範例 `FetchData` 元件使用。
   * `Configure` &ndash; 設定應用程式的要求處理管線：
-    * Blazor WebAssembly &ndash; 會將 `App` 元件（指定為 `app` DOM 元素）新增至 `AddComponent` 方法），也就是應用程式的根元件。
-    * Blazor 伺服器
-      * 呼叫 <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub*> 來設定端點，以與瀏覽器進行即時連接。 連接是使用[SignalR](xref:signalr/introduction)建立的，這是將即時 web 功能新增至應用程式的架構。
-      * 呼叫[MapFallbackToPage （"/_Host"）](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*)來設定應用程式的根頁面（*Pages/_Host. cshtml*）並啟用導覽。
+    * 呼叫 <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub*> 來設定端點，以與瀏覽器進行即時連接。 連接是使用[SignalR](xref:signalr/introduction)建立的，這是將即時 web 功能新增至應用程式的架構。
+    * 呼叫[MapFallbackToPage （"/_Host"）](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*)來設定應用程式的根頁面（*Pages/_Host. cshtml*）並啟用導覽。
 
 * *wwwroot/index.html* （Blazor WebAssembly） &ndash; 實作為 html 網頁之應用程式的根頁面：
   * 一開始要求應用程式的任何頁面時，會轉譯此頁面並在回應中傳回。

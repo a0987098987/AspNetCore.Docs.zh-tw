@@ -5,27 +5,27 @@ description: 深入瞭解 Blazor 驗證和授權案例。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/29/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: 2ce2cff8d3ab77f21181070b6f1e48c50561036c
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: e9087c246f4805e5931180fa0869fc8a8d23a6c1
+ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160284"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76885592"
 ---
-# <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證和授權
+# <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-ASP.NET Core 支援 Blazor 應用程式中的安全性設定和管理。
+ASP.NET Core 支援在 Blazor 應用程式中設定及管理安全性。
 
-Blazor 伺服器與 Blazor WebAssembly 應用程式之間的安全性案例不同。 因為 Blazor 伺服器應用程式會在伺服器上執行，所以授權檢查能夠判斷：
+Blazor 伺服器與 Blazor WebAssembly 應用程式之間的安全性案例不同。 由於 Blazor 伺服器應用程式是在伺服器上執行，因此授權檢查能夠判斷：
 
 * 要提供給使用者的 UI 選項 (例如，使用者可以使用哪些功能表項目)。
 * 適用於應用程式和元件之特定區域的存取規則。
@@ -34,11 +34,11 @@ Blazor WebAssembly 應用程式會在用戶端上執行。 授權「僅」會被
 
 ## <a name="authentication"></a>驗證  (可能為英文網頁)
 
-Blazor 使用現有的 ASP.NET Core 驗證機制來建立使用者的身分識別。 確切的機制取決於主控 Blazor 應用程式的方式，Blazor Server 或 Blazor WebAssembly。
+Blazor 會使用現有的 ASP.NET Core 驗證機制來建立使用者的身分識別。 確切的機制取決於 Blazor 應用程式的主控方式、Blazor 伺服器或 Blazor WebAssembly。
 
-### <a name="opno-locblazor-server-authentication"></a>Blazor 伺服器驗證
+### <a name="blazor-server-authentication"></a>Blazor 伺服器驗證
 
-Blazor 伺服器應用程式會在使用 SignalR建立的即時連線上運作。 建立連接時，會處理[以 SignalR為基礎之應用程式中的驗證](xref:signalr/authn-and-authz)。 驗證可以是以 Cookie 或其他持有人權杖為基礎。
+Blazor 伺服器應用程式會在使用 SignalR 建立的即時連線上運作。 [SignalR 型應用程式中的驗證](xref:signalr/authn-and-authz)會在連線建立時處理。 驗證可以是以 Cookie 或其他持有人權杖為基礎。
 
 當您建立專案時，Blazor 伺服器專案範本可以為您設定驗證。
 
@@ -46,7 +46,7 @@ Blazor 伺服器應用程式會在使用 SignalR建立的即時連線上運作�
 
 遵循 <xref:blazor/get-started> 文章中的 Visual Studio 指導方針，使用驗證機制建立新的 Blazor 伺服器專案。
 
-選擇 [**建立新 ASP.NET Core Web 應用程式**] 對話方塊中的 [ **Blazor 伺服器應用**程式] 範本之後，請選取 [**驗證**] 底下的 [**變更**]。
+在 [建立新的 ASP.NET Core Web 應用程式] 對話方塊中選擇 [Blazor 伺服器應用程式] 範本之後，請選取 [驗證] 下的 [變更]。
 
 對話方塊隨即開啟，並提供可供其他 ASP.NET Core 專案使用的相同驗證機制集合：
 
@@ -69,7 +69,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 | 驗證機制                                                                 | `{AUTHENTICATION}` 值 |
 | ---------------------------------------------------------------------------------------- | :----------------------: |
-| 不需要驗證                                                                        | `None`                   |
+| 無驗證                                                                        | `None`                   |
 | 個人<br>搭配 ASP.NET Core 身分識別儲存在應用程式中的使用者。                        | `Individual`             |
 | 個人<br>儲存在 [Azure AD B2C](xref:security/authentication/azure-ad-b2c) 中的使用者。 | `IndividualB2C`          |
 | 公司或學校帳戶<br>適用於單一租用戶的組織驗證。            | `SingleOrg`              |
@@ -191,13 +191,26 @@ namespace BlazorSample.Services
 }
 ```
 
-`CustomAuthStateProvider` 服務會在 `Startup.ConfigureServices` 中註冊：
+在 Blazor WebAssembly 應用程式中，`CustomAuthStateProvider` 服務會在*Program.cs*的 `Main` 中註冊：
 
 ```csharp
-// using Microsoft.AspNetCore.Components.Authorization;
-// using BlazorSample.Services;
+using Microsoft.AspNetCore.Blazor.Hosting;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.DependencyInjection;
+using BlazorSample.Services;
 
-services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.Services.AddScoped<AuthenticationStateProvider, 
+            CustomAuthStateProvider>();
+        builder.RootComponents.Add<App>("app");
+
+        await builder.Build().RunAsync();
+    }
+}
 ```
 
 使用 `CustomAuthStateProvider` 時，所有使用者都會以 `mrfibuli` 的使用者名稱進行驗證。
@@ -492,7 +505,7 @@ Not authorized.
 
 **請一律在由您用戶端應用程式所存取之任何 API 端點內的伺服器上執行授權檢查。**
 
-## <a name="troubleshoot-errors"></a>針對錯誤進行疑難排解
+## <a name="troubleshoot-errors"></a>疑難排解錯誤
 
 常見錯誤：
 

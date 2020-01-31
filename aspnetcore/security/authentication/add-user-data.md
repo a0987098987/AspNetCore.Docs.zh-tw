@@ -3,21 +3,21 @@ title: 在 ASP.NET Core 專案中新增、下載及刪除使用者資料至身�
 author: rick-anderson
 description: 瞭解如何將自訂使用者資料新增至 ASP.NET Core 專案中的身分識別。 刪除每個 GDPR 的資料。
 ms.author: riande
-ms.date: 12/05/2019
+ms.date: 01/28/2020
 ms.custom: mvc, seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: f54df68834cd3e2493e558aaab9851f036f3f01b
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: e08c02e2e5d4a429aae10c59e7ae3ea48c975067
+ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880747"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76885553"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>在 ASP.NET Core 專案中新增、下載和刪除自訂使用者資料至身分識別
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本文將說明如何：
+本文說明如何：
 
 * 將自訂使用者資料新增至 ASP.NET Core web 應用程式。
 * 將具有 <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute> 屬性的自訂使用者資料模型標記為可自動供下載和刪除。 讓資料能夠下載和刪除有助於符合[GDPR](xref:security/gdpr)需求。
@@ -86,7 +86,7 @@ dotnet new webapp -o WebApp1
     * **帳戶/管理/索引**
   * 選取 [ **+** ] 按鈕，以建立新的**資料內容類別**。 如果專案名為**WebApp1**，請接受類型（**WebApp1. WebApp1CoNtext** ）。
   * 選取 [ **+** ] 按鈕，以建立新的**使用者類別**。 接受類型（如果專案名為**WebApp1**，則為**WebApp1User** ） >**新增**。
-* 選取 [**新增**]。
+* 選取 [新增]。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 

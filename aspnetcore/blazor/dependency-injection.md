@@ -10,14 +10,14 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/dependency-injection
-ms.openlocfilehash: 6930d721f04fd5f7cad2ba472724497a157fda0f
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
-ms.translationtype: MT
+ms.openlocfilehash: fa6762522c831c7fbe2742dbfe4e25a377988e1e
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159972"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76869560"
 ---
-# <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
+# <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
 
 依[Rainer Stropek](https://www.timecockpit.com)
 
@@ -25,7 +25,7 @@ ms.locfileid: "76159972"
 
 Blazor 支援相依性[插入（DI）](xref:fundamentals/dependency-injection)。 應用程式可以使用內建的服務，方法是將它們插入元件中。 應用程式也可以定義和註冊自訂服務，並透過 DI 讓它們可在整個應用程式中使用。
 
-DI 是用來存取集中位置所設定之服務的技術。 這在 Blazor 應用程式中很有用，可用於：
+DI 是用來存取集中位置所設定之服務的技術。 在 Blazor 應用程式中，這會很有用：
 
 * 跨許多元件（稱為*單一*服務）共用服務類別的單一實例。
 * 使用參考抽象，將元件與具體的服務類別分離。 例如，請考慮使用介面 `IDataAccess` 來存取應用程式中的資料。 介面是由具體的 `DataAccess` 類別來執行，並在應用程式的服務容器中註冊為服務。 當元件使用 DI 來接收 `IDataAccess` 執行時，該元件不會與具象類型結合。 可以交換執行，也許是針對單元測試中的 mock 執行。
@@ -36,9 +36,9 @@ DI 是用來存取集中位置所設定之服務的技術。 這在 Blazor 應�
 
 | 服務 | 存留期 | 描述 |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | 單一 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。<br><br>Blazor WebAssembly 應用程式中的 `HttpClient` 實例會使用瀏覽器來處理背景中的 HTTP 流量。<br><br>Blazor 伺服器應用程式預設不包含設定為服務的 `HttpClient`。 提供 `HttpClient` 給 Blazor 伺服器應用程式。<br><br>如需詳細資訊，請參閱<xref:blazor/call-web-api>。 |
-| `IJSRuntime` | Singleton （Blazor WebAssembly）<br>限定範圍（Blazor Server） | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱<xref:blazor/javascript-interop>。 |
-| `NavigationManager` | Singleton （Blazor WebAssembly）<br>限定範圍（Blazor Server） | 包含使用 Uri 和導覽狀態的協助程式。 如需詳細資訊，請參閱[URI 和流覽狀態](xref:blazor/routing#uri-and-navigation-state-helpers)協助程式。 |
+| <xref:System.Net.Http.HttpClient> | 單一 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。<br><br>Blazor WebAssembly 應用程式中的 `HttpClient` 實例會使用瀏覽器來處理背景中的 HTTP 流量。<br><br>Blazor 伺服器應用程式預設不會包含設定為服務的 `HttpClient`。 提供 Blazor 伺服器應用程式的 `HttpClient`。<br><br>如需詳細資訊，請參閱<xref:blazor/call-web-api>。 |
+| `IJSRuntime` | Singleton （Blazor WebAssembly）<br>限定範圍（Blazor 伺服器） | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱<xref:blazor/javascript-interop>。 |
+| `NavigationManager` | Singleton （Blazor WebAssembly）<br>限定範圍（Blazor 伺服器） | 包含使用 Uri 和導覽狀態的協助程式。 如需詳細資訊，請參閱[URI 和流覽狀態](xref:blazor/routing#uri-and-navigation-state-helpers)協助程式。 |
 
 自訂服務提供者不會自動提供表格中所列的預設服務。 如果您使用自訂服務提供者，而且需要資料表中所顯示的任何服務，請將所需的服務新增至新的服務提供者。
 
@@ -134,7 +134,7 @@ public class DataAccess : IDataAccess
 
 在 ASP.NET Core 應用程式中，限域服務的範圍通常是目前的要求。 要求完成之後，DI 系統會處置任何範圍或暫時性的服務。 在 Blazor 伺服器應用程式中，要求範圍會在用戶端連線期間持續進行，這可能會導致暫時性和範圍內的服務生活得比預期的長。
 
-若要將服務的範圍設為元件的存留期，可以使用 `OwningComponentBase` 和 `OwningComponentBase<TService>` 基類。 這些基類會公開類型 `IServiceProvider` 的 `ScopedServices` 屬性，其會解析範圍設定為元件存留期的服務。 若要撰寫繼承自 Razor 基類的元件，請使用 `@inherits` 指示詞。
+若要將服務的範圍限定在元件的存留期間，您可以使用 `OwningComponentBase` 並 `OwningComponentBase<TService>` 基類。 這些基類會公開類型 `IServiceProvider` 的 `ScopedServices` 屬性，其會解析範圍設定為元件存留期的服務。 若要撰寫繼承自 Razor 基類的元件，請使用 `@inherits` 指示詞。
 
 ```razor
 @page "/users"

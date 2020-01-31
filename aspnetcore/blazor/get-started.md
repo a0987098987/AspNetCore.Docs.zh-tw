@@ -5,19 +5,19 @@ description: 藉由使用您選擇的工具來建立 Blazor 應用程式，開�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/28/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: 642881b5400a70a99f6e7e262d2a2f1038389ce7
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: bd33d874b3d6122f2ab820e9b147b0e62ba03a58
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76726852"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76869576"
 ---
-# <a name="get-started-with-aspnet-core-opno-locblazor"></a>開始使用 ASP.NET Core Blazor
+# <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
@@ -27,12 +27,12 @@ ms.locfileid: "76726852"
 
 1. 安裝[.Net Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
 
-1. 選擇性地安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)範本：
+1. 選擇性安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)範本：
    * 安裝[.Net Core 3.1 或更新版本（預覽） SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-   * 在命令 shell 中執行下列命令。 [AspNetCore.Blazor。範本](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/)套件有預覽版本，而 Blazor WebAssembly 處於預覽階段。
+   * 在命令 shell 中執行下列命令。 Blazor WebAssembly 處於預覽階段時， [AspNetCore. Blazor](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/)套件具有預覽版本。
 
    ```dotnetcli
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview4.19579.2
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
    ```
 
 1. 遵循您選擇的工具的指導方針：
@@ -47,12 +47,12 @@ ms.locfileid: "76726852"
 
    4\. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
-   5\. 如需 Blazor WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
+   5\. 如需 Blazor 的 WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
 
    6\. 按下 **Ctrl**+**F5** 即可執行應用程式。
 
    > [!NOTE]
-   > 如果您已安裝 ASP.NET Core Blazor （Preview 6 或更早版本）先前預覽版本的 Blazor Visual Studio 延伸模組，則可以卸載擴充功能。 在命令介面中安裝 Blazor 範本，現在已足以呈現 Visual Studio 中的範本。
+   > 如果您已安裝 ASP.NET Core Blazor （Preview 6 或更早版本）先前預覽版本的 Blazor Visual Studio 延伸模組，則可以卸載擴充功能。 在命令介面中安裝 Blazor 範本，現在已足以在 Visual Studio 中呈現範本。
 
    # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -60,7 +60,7 @@ ms.locfileid: "76726852"
 
    2\. 安裝[ C# Visual Studio Code 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)功能的最新版本。
 
-   3\. 如需 Blazor WebAssembly 體驗，請在命令 shell 中執行下列命令：
+   3\. 如需 Blazor 的 WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
       ```dotnetcli
       dotnet new blazorwasm -o WebApplication1
@@ -72,7 +72,7 @@ ms.locfileid: "76726852"
       dotnet new blazorserver -o WebApplication1
       ```
 
-      如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
+      如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
 
    4\. 在 Visual Studio Code 中開啟 [ *WebApplication1* ] 資料夾。
 
@@ -90,7 +90,7 @@ ms.locfileid: "76726852"
 
    3\. 在側邊欄中，選取 [ **.Net Core** > **應用程式**]。
 
-   4\. 選取 [ **Blazor 伺服器應用程式**] 範本。 目前只有 Blazor 伺服器範本可在 Visual Studio for Mac 中使用。 如需 Blazor WebAssembly 體驗，請遵循 [ **.NET Core CLI** ] 索引標籤上的指示。選取 Blazor 伺服器範本之後，請選取 **[下一步]** 。 如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
+   4\. 選取 [ **Blazor 伺服器應用程式**] 範本。 目前只有 Blazor 伺服器範本可在 Visual Studio for Mac 中使用。 如需 Blazor 的 WebAssembly 體驗，請遵循 [ **.NET Core CLI** ] 索引標籤上的指示。選取 Blazor 伺服器範本之後，請選取 **[下一步]** 。 如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
 
    <!-- For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. -->
 
@@ -104,7 +104,7 @@ ms.locfileid: "76726852"
 
    # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
-   如需 Blazor WebAssembly 體驗，請在命令 shell 中執行下列命令：
+   如需 Blazor 的 WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1
@@ -120,7 +120,7 @@ ms.locfileid: "76726852"
    dotnet run
    ```
 
-   如需這兩個 Blazor 裝載模型的詳細資訊， *Blazor 伺服器*和 *Blazor WebAssembly*，請參閱 <xref:blazor/hosting-models>。
+   如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
 
    在瀏覽器中，巡覽至 `https://localhost:5001`。
 

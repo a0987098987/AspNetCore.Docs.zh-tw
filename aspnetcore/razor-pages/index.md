@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: 了解 ASP.NET Core 中的 Razor 頁面如何使注重頁面的案例編碼變得更輕鬆，並增加生產力，達到比使用 MVC 更好的成效。
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 01/18/2020
+ms.date: 01/28/2020
 uid: razor-pages/index
-ms.openlocfilehash: 69c9f09aa0e3dbdbe78720c573b5e1fc63464571
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: da30908b38d553405fd3f959f09a19eff750ed17
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294658"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76870501"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面簡介
 
@@ -61,7 +61,7 @@ Razor Pages 可以讓撰寫以頁面為焦點的案例更輕鬆且更具生產�
 
 ---
 
-## <a name="razor-pages"></a>Razor Pages
+## <a name="razor-pages"></a>Razor 頁面
 
 Razor 頁面是在 *Startup.cs* 中啟用：
 
@@ -83,7 +83,7 @@ Razor 頁面是在 *Startup.cs* 中啟用：
 
 依照慣例，`PageModel` 類別檔和附加 *.cs* 檔名的 Razor 頁面檔案名稱相同。 例如，前一個 Razor Page 是 *Pages/Index2.cshtml*。 包含 `PageModel` 類別的檔案名為 *Pages/Index2.cshtml.cs*。
 
-頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。 下表顯示 Razor 頁面路徑和相符的 URL：
+頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。 下表顯示 Razor Page 路徑和相符的 URL:
 
 | 檔案名稱和路徑               | 比對 URL |
 | ----------------- | ------------ |
@@ -133,7 +133,7 @@ DB 內容：
 * `OnGet`，初始化頁所需要的狀態。 在上述程式碼中，`OnGet` 方法會顯示*CreateModel* Razor 頁面。
 * `OnPost`，處理表單提交作業。
 
-`Async` 命名尾碼是選擇性的，但依照慣例通常用於非同步函式。 上述程式碼一般用於 Razor 頁面。
+`Async` 命名尾碼是選擇性的，但依照慣例通常用於非同步函式。 上述程式碼一般用於 Razor Pages。
 
 如果您熟悉如何使用控制器和 views 來 ASP.NET 應用程式：
 
@@ -366,7 +366,7 @@ Pages 可搭配 Razor 檢視引擎的所有功能一起使用。 版面配置、
 
 版面配置頁面應位於 *Pages/Shared* 資料夾中。
 
-我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。 *Views/Shared* 是 MVC 檢視模式。 Razor 頁面應該要依賴資料夾階層，不是路徑慣例。
+我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。 *Views/Shared* 是 MVC 檢視模式。 Razor Pages 應該要依賴資料夾階層，不是路徑慣例。
 
 Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 與 MVC 控制器和傳統 Razor views 搭配使用的版面配置、範本和部分都*是可行*的。
 
@@ -603,6 +603,7 @@ public string Message { get; set; }
 * <xref:razor-pages/razor-pages-conventions>
 * <xref:test/razor-pages-tests>
 * <xref:mvc/views/partial>
+* [將 Razor 元件整合到 Razor Pages 和 MVC 應用程式中](xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps)
 
 ::: moniker-end
 
@@ -652,7 +653,7 @@ Razor Pages 是 ASP.NET Core MVC 新的部分，更容易編寫以頁面為焦�
 
 ---
 
-## <a name="razor-pages"></a>Razor Pages
+## <a name="razor-pages"></a>Razor 頁面
 
 Razor 頁面是在 *Startup.cs* 中啟用：
 
@@ -674,7 +675,7 @@ Razor 頁面是在 *Startup.cs* 中啟用：
 
 依照慣例，`PageModel` 類別檔和附加 *.cs* 檔名的 Razor 頁面檔案名稱相同。 例如，前一個 Razor Page 是 *Pages/Index2.cshtml*。 包含 `PageModel` 類別的檔案名為 *Pages/Index2.cshtml.cs*。
 
-頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。 下表顯示 Razor 頁面路徑和相符的 URL：
+頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。 下表顯示 Razor Page 路徑和相符的 URL:
 
 | 檔案名稱和路徑               | 比對 URL |
 | ----------------- | ------------ |
@@ -724,7 +725,7 @@ DB 內容：
 * `OnGet`，初始化頁所需要的狀態。 [OnGet](#OnGet) 範例。
 * `OnPost`，處理表單提交作業。
 
-`Async` 命名尾碼是選擇性的，但依照慣例通常用於非同步函式。 上述程式碼一般用於 Razor 頁面。
+`Async` 命名尾碼是選擇性的，但依照慣例通常用於非同步函式。 上述程式碼一般用於 Razor Pages。
 
 如果您熟悉如何使用控制器和 views 來 ASP.NET 應用程式：
 
@@ -854,7 +855,7 @@ services.AddMvc()
 
 ## <a name="xsrfcsrf-and-razor-pages"></a>XSRF/CSRF 和 Razor 頁面
 
-您不必撰寫任何[防偽驗證](xref:security/anti-request-forgery)程式碼。 防偽權杖的產生和驗證會自動包含在 Razor Pages 中。
+您不必撰寫任何[防偽驗證](xref:security/anti-request-forgery)程式碼。 防偽權杖的產生和驗證會自動包含在 Razor 頁面中。
 
 <a name="layout"></a>
 
@@ -883,7 +884,7 @@ Pages 可搭配 Razor 檢視引擎的所有功能一起使用。 版面配置、
 
 版面配置頁面應位於 *Pages/Shared* 資料夾中。
 
-我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。 *Views/Shared* 是 MVC 檢視模式。 Razor 頁面應該要依賴資料夾階層，不是路徑慣例。
+我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。 *Views/Shared* 是 MVC 檢視模式。 Razor Pages 應該要依賴資料夾階層，不是路徑慣例。
 
 Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使用的版面配置、範本和部分以及傳統的 Razor 檢視「就這麼簡單」。
 

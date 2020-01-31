@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/javascript-interop
-ms.openlocfilehash: e1b9c84dace193768c6f3fbb5636ef675d65a20d
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 4edef123bc1fe41845b8060b9c3b8e77ffd2969d
+ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159887"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76885468"
 ---
 # <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
@@ -94,11 +94,11 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 *wwwroot/index.html* （Blazor WebAssembly）：
 
-[!code-html[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/index.html?highlight=15)]
+[!code-html[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/index.html?highlight=22)]
 
 *Pages/_Host. cshtml* （Blazor Server）：
 
-[!code-cshtml[](./common/samples/3.x/BlazorServerSample/Pages/_Host.cshtml?highlight=21)]
+[!code-cshtml[](./common/samples/3.x/BlazorServerSample/Pages/_Host.cshtml?highlight=35)]
 
 請勿將 `<script>` 標記放在元件檔中，因為 `<script>` 標記無法動態更新。
 

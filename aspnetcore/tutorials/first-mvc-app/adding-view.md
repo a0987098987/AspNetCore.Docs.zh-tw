@@ -5,16 +5,16 @@ description: 將檢視新增至簡易的 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 8/04/2019
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: de75c3b0651c0cda6629af786d7db9dc83bc4fef
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: a25233968f115c6e3a214d97cf2ca5ab81df8d83
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72288830"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76870424"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -26,7 +26,7 @@ ms.locfileid: "72288830"
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-上述程式碼會呼叫控制器的 <xref:Microsoft.AspNetCore.Mvc.Controller.View*> 方法。 它使用檢視範本來產生 HTML 回應。 上述  *方法等控制器方法 (也稱為「動作方法」* `Index`) 通常會傳回 <xref:Microsoft.AspNetCore.Mvc.IActionResult> (或衍生自 <xref:Microsoft.AspNetCore.Mvc.ActionResult> 的類別)，而不會傳回像是 `string` 的類型。
+上述程式碼會呼叫控制器的 <xref:Microsoft.AspNetCore.Mvc.Controller.View*> 方法。 它使用檢視範本來產生 HTML 回應。 上述 `Index` 方法等控制器方法 (也稱為「動作方法」) 通常會傳回 <xref:Microsoft.AspNetCore.Mvc.IActionResult> (或衍生自 <xref:Microsoft.AspNetCore.Mvc.ActionResult> 的類別)，而不會傳回像是 `string` 的類型。
 
 ## <a name="add-a-view"></a>新增檢視
 
@@ -50,7 +50,7 @@ ms.locfileid: "72288830"
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-為 `Index` 新增 `HelloWorldController` 檢視。
+為 `HelloWorldController` 新增 `Index` 檢視。
 
 * 新增資料夾，並命名為 *Views/HelloWorld*。
 * 將檔案新增至 *Views/HelloWorld* 資料夾，並命名為 *Index.cshtml*。
@@ -61,9 +61,9 @@ ms.locfileid: "72288830"
 * 依序以滑鼠右鍵按一下 *Views/HelloWorld* 資料夾、[新增] > [新增檔案]。
 * 在 [新增檔案] 對話方塊中：
 
-  * 選取左窗格的 [Web]。
-  * 選取中間窗格的 [空的 HTML 檔案]。
-  * 在 [名稱] 方塊中，鍵入 **Index.cshtml**。
+  * 在左窗格中選取 [ **ASP .Net Core** ]。
+  * 選取中央窗格中的 [ **MVC 視圖] 頁面**。
+  * 在 [**名稱**] 方塊中輸入*Index* 。
   * 選取 [新增]。
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view_mac.png)
@@ -74,7 +74,7 @@ ms.locfileid: "72288830"
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
-巡覽至 `https://localhost:{PORT}/HelloWorld`。 `Index` 中的 `HelloWorldController` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設檢視檔案與方法 (`Index`) 擁有相同的名稱，因此會在 */Views/HelloWorld/Index.cshtml* 中使用。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
+巡覽至 `https://localhost:{PORT}/HelloWorld`。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設檢視檔案與方法 (`Index`) 擁有相同的名稱，因此會在 */Views/HelloWorld/Index.cshtml* 中使用。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
 
 ![瀏覽器視窗](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "72288830"
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>變更配置檔案中的標題、頁尾及功能表連結
 
-以下列標記取代*Views/Shared/_Layout. cshtml*檔案的內容。 所做的變更已醒目標示：
+以下列標記取代*Views/Shared/_Layout. cshtml*檔案的內容。 所做的變更已醒目提示：
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
 
@@ -95,7 +95,7 @@ ms.locfileid: "72288830"
 * 出現 `MvcMovie` 的 3 處改為 `Movie App`。
 * 錨點元素 `<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MvcMovie</a>` 改為 `<a class="navbar-brand" asp-controller="Movies" asp-action="Index">Movie App</a>`。
 
-在上述標記中，由於此應用程式未使用`asp-area=""`區域[，因此省略了 ](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) [錨點標籤協助程式屬性](xref:mvc/controllers/areas)和屬性值。
+在上述標記中，因為此應用程式未使用[區域](xref:mvc/controllers/areas)，所以省略了 `asp-area=""`[錨點](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)標籤協助程式屬性和屬性值。
 
 **注意**：尚未執行 `Movies` 控制器。 此時，`Movie App` 連結無法運作。
 
@@ -115,13 +115,13 @@ ms.locfileid: "72288830"
 
 *Views/_ViewStart.cshtml* 檔案會將 *Views/Shared/_Layout.cshtml* 檔案引入每一個檢視。 `Layout` 屬性可用來設定不同的版面配置檢視，或將它設定為 `null`，因此不會使用任何版面配置檔案。
 
-變更 `<h2>`Views/HelloWorld/Index.cshtml*檢視檔案的標題和* 元素：
+變更 *Views/HelloWorld/Index.cshtml* 檢視檔案的標題和 `<h2>` 元素：
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index2.cshtml?highlight=2,5)]
 
 標題和 `<h2>` 元素略有不同，因此可看出哪一段程式碼變更了顯示。
 
-上述程式碼中的 `ViewData["Title"] = "Movie List";` 會將 `Title` 字典的 `ViewData` 屬性設定為 "Movie List"。 `Title` 屬性則用於版面配置頁中的 `<title>` HTML 元素：
+上述程式碼中的 `ViewData["Title"] = "Movie List";` 會將 `ViewData` 字典的 `Title` 屬性設定為 "Movie List"。 `Title` 屬性則用於版面配置頁中的 `<title>` HTML 元素：
 
 ```HTML
 <title>@ViewData["Title"] - Movie App</title>
@@ -141,7 +141,7 @@ ms.locfileid: "72288830"
 
 控制器負責提供為了讓檢視範本呈現回應所需的資料。 最佳做法：檢視範本**不**應該執行商務邏輯，或直接與資料庫互動。 相反地，檢視範本應該只使用由控制器提供給它的資料。 維護這項「關注點分離」，有助於保持程式碼整潔、可測試且可維護。
 
-目前，`Welcome` 類別中的 `HelloWorldController` 方法會採用 `name` 和 `ID` 參數，然後將值直接輸出到瀏覽器。 與其讓控制器以字串方式呈現這個回應，不如變更控制器以改為使用檢視範本。 檢視範本會產生動態回應，這表示必須將適當數量的資料從控制器傳遞至檢視，以便產生回應。 透過讓控制器將檢視範本需要的動態資料 (參數) 放置在檢視範本之後可以存取的 `ViewData` 字典，即可完成這項操作。
+目前，`HelloWorldController` 類別中的 `Welcome` 方法會採用 `name` 和 `ID` 參數，然後將值直接輸出到瀏覽器。 與其讓控制器以字串方式呈現這個回應，不如變更控制器以改為使用檢視範本。 檢視範本會產生動態回應，這表示必須將適當數量的資料從控制器傳遞至檢視，以便產生回應。 透過讓控制器將檢視範本需要的動態資料 (參數) 放置在檢視範本之後可以存取的 `ViewData` 字典，即可完成這項操作。
 
 在 *HelloWorldController.cs* 中變更 `Welcome` 方法，將 `Message` 和 `NumTimes` 值新增至 `ViewData` 字典。 `ViewData` 字典是動態物件，這表示您可以使用任何類型；`ViewData` 物件則要在您於其中放入某個項目之後，才會有定義的屬性。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數 (`name` 和 `numTimes`) 對應至方法中的參數。 完整的 *HelloWorldController.cs* 檔案如下所示：
 
@@ -183,7 +183,7 @@ ms.locfileid: "72288830"
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-上述程式碼會呼叫控制器的 <xref:Microsoft.AspNetCore.Mvc.Controller.View*> 方法。 它使用檢視範本來產生 HTML 回應。 上述  *方法等控制器方法 (也稱為「動作方法」* `Index`) 通常會傳回 <xref:Microsoft.AspNetCore.Mvc.IActionResult> (或衍生自 <xref:Microsoft.AspNetCore.Mvc.ActionResult> 的類別)，而不會傳回像是 `string` 的類型。
+上述程式碼會呼叫控制器的 <xref:Microsoft.AspNetCore.Mvc.Controller.View*> 方法。 它使用檢視範本來產生 HTML 回應。 上述 `Index` 方法等控制器方法 (也稱為「動作方法」) 通常會傳回 <xref:Microsoft.AspNetCore.Mvc.IActionResult> (或衍生自 <xref:Microsoft.AspNetCore.Mvc.ActionResult> 的類別)，而不會傳回像是 `string` 的類型。
 
 ## <a name="add-a-view"></a>新增檢視
 
@@ -207,7 +207,7 @@ ms.locfileid: "72288830"
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-為 `Index` 新增 `HelloWorldController` 檢視。
+為 `HelloWorldController` 新增 `Index` 檢視。
 
 * 新增資料夾，並命名為 *Views/HelloWorld*。
 * 將檔案新增至 *Views/HelloWorld* 資料夾，並命名為 *Index.cshtml*。
@@ -231,7 +231,7 @@ ms.locfileid: "72288830"
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
-巡覽至 `https://localhost:{PORT}/HelloWorld`。 `Index` 中的 `HelloWorldController` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設檢視檔案與方法 (`Index`) 擁有相同的名稱，因此會在 */Views/HelloWorld/Index.cshtml* 中使用。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
+巡覽至 `https://localhost:{PORT}/HelloWorld`。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設檢視檔案與方法 (`Index`) 擁有相同的名稱，因此會在 */Views/HelloWorld/Index.cshtml* 中使用。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
 
 ![瀏覽器視窗](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 
@@ -250,7 +250,7 @@ ms.locfileid: "72288830"
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Shared/_Layout.cshtml?highlight=6,24,51)]
 
-在上述標記中，由於此應用程式未使用`asp-area`區域[，因此已省略 ](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) [錨點標籤協助程式屬性](xref:mvc/controllers/areas)。
+在上述標記中，因為此應用程式未使用[區域](xref:mvc/controllers/areas)，所以省略了 `asp-area`[錨點標籤 Helper 屬性](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)。
 
 <!-- Routing has changed in 2.2, it's going to the last route.
 >[!WARNING]
@@ -275,13 +275,13 @@ ms.locfileid: "72288830"
 
 *Views/_ViewStart.cshtml* 檔案會將 *Views/Shared/_Layout.cshtml* 檔案引入每一個檢視。 `Layout` 屬性可用來設定不同的版面配置檢視，或將它設定為 `null`，因此不會使用任何版面配置檔案。
 
-變更 `<h2>`Views/HelloWorld/Index.cshtml*檢視檔案的標題和* 元素：
+變更 *Views/HelloWorld/Index.cshtml* 檢視檔案的標題和 `<h2>` 元素：
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index2.cshtml?highlight=2,5)]
 
 標題和 `<h2>` 元素略有不同，因此可看出哪一段程式碼變更了顯示。
 
-上述程式碼中的 `ViewData["Title"] = "Movie List";` 會將 `Title` 字典的 `ViewData` 屬性設定為 "Movie List"。 `Title` 屬性則用於版面配置頁中的 `<title>` HTML 元素：
+上述程式碼中的 `ViewData["Title"] = "Movie List";` 會將 `ViewData` 字典的 `Title` 屬性設定為 "Movie List"。 `Title` 屬性則用於版面配置頁中的 `<title>` HTML 元素：
 
 ```HTML
 <title>@ViewData["Title"] - Movie App</title>
@@ -301,7 +301,7 @@ ms.locfileid: "72288830"
 
 控制器負責提供為了讓檢視範本呈現回應所需的資料。 最佳做法：檢視範本**不**應該執行商務邏輯，或直接與資料庫互動。 相反地，檢視範本應該只使用由控制器提供給它的資料。 維護這項「關注點分離」，有助於保持程式碼整潔、可測試且可維護。
 
-目前，`Welcome` 類別中的 `HelloWorldController` 方法會採用 `name` 和 `ID` 參數，然後將值直接輸出到瀏覽器。 與其讓控制器以字串方式呈現這個回應，不如變更控制器以改為使用檢視範本。 檢視範本會產生動態回應，這表示必須將適當數量的資料從控制器傳遞至檢視，以便產生回應。 透過讓控制器將檢視範本需要的動態資料 (參數) 放置在檢視範本之後可以存取的 `ViewData` 字典，即可完成這項操作。
+目前，`HelloWorldController` 類別中的 `Welcome` 方法會採用 `name` 和 `ID` 參數，然後將值直接輸出到瀏覽器。 與其讓控制器以字串方式呈現這個回應，不如變更控制器以改為使用檢視範本。 檢視範本會產生動態回應，這表示必須將適當數量的資料從控制器傳遞至檢視，以便產生回應。 透過讓控制器將檢視範本需要的動態資料 (參數) 放置在檢視範本之後可以存取的 `ViewData` 字典，即可完成這項操作。
 
 在 *HelloWorldController.cs* 中變更 `Welcome` 方法，將 `Message` 和 `NumTimes` 值新增至 `ViewData` 字典。 `ViewData` 字典是動態物件，這表示您可以使用任何類型；`ViewData` 物件則要在您於其中放入某個項目之後，才會有定義的屬性。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數 (`name` 和 `numTimes`) 對應至方法中的參數。 完整的 *HelloWorldController.cs* 檔案如下所示：
 

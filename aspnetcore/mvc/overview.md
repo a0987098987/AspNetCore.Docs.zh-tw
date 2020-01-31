@@ -3,14 +3,14 @@ title: ASP.NET Core MVC 概觀
 author: ardalis
 description: 了解 ASP.NET Core MVC 何以是建置使用模型檢視控制器設計模式之 Web 應用程式和 API 的豐富架構。
 ms.author: riande
-ms.date: 11/07/2019
+ms.date: 01/28/2020
 uid: mvc/overview
-ms.openlocfilehash: 4f4ea3da8563cabaaa6183c6835c2f1eb8c387b4
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: a147c2aa01f1440f8ac59f73eb7be734193f802a
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799487"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76869967"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -41,7 +41,7 @@ MVC 應用程式中的模型代表應用程式的狀態，以及應用程式應�
 
 ### <a name="controller-responsibilities"></a>控制器職責
 
-控制器是處理使用者互動、使用模型，並在最終選取要呈現之檢視的元件。 在 MVC 應用程式中，檢視只會顯示資訊，而控制器則會處理及回應使用者輸入和互動。 在 MVC 模式中，控制器是初始進入點，負責選取要使用的模型類型及要呈現的檢視 (如其名稱所指，它會控制應用程式回應指定要求的方式)。
+控制器是處理使用者互動、使用模型，並在最終選取要呈現之檢視的元件。 在 MVC 應用程式中，檢視只會顯示資訊；控制器則會處理和回應使用者輸入和互動。 在 MVC 模式中，控制器是初始進入點，負責選取要使用的模型類型及要呈現的檢視 (如其名稱所指，它會控制應用程式回應指定要求的方式)。
 
 > [!NOTE]
 > 控制器不應該因太多職責而過於複雜。 若要防止控制器邏輯變得過於複雜，請將控制器中的商務邏輯推送到領域模型中。
@@ -161,7 +161,7 @@ ASP.NET Core 內建[相依性插入 (DI)](../fundamentals/dependency-injection.m
 </html>
 ```
 
-### <a name="filters"></a>篩選條件
+### <a name="filters"></a>篩選器。
 
 [篩選](controllers/filters.md)可協助開發人員封裝交叉關注，例如例外狀況處理或授權。 篩選可執行動作方法的自訂處理前後邏輯，並可設定為在指定要求之執行管線內的特定時間點執行。 篩選可當作屬性套用至控制器或動作 (也可全域執行)。 此架構隨附數個篩選 (例如`Authorize`)。 `[Authorize]` 是用來建立 MVC 授權篩選的屬性。
 
@@ -243,7 +243,7 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 </environment>
 ```
 
-標籤協助程式提供適合 HTML 的開發體驗和豐富的 IntelliSense 環境，以建立 HTML 和 Razor 標記。 大部分的內建標籤協助程式都是以現有的 HTML 項目為目標，並提供項目的伺服器端屬性。
+標籤協助程式提供適合 HTML 的開發體驗和豐富的 IntelliSense 環境，以建立 HTML 和 Razor 標記。 大部分的內建標籤協助程式都是以現有的 HTML 元素為目標，並提供元素的伺服器端屬性。
 
 ### <a name="view-components"></a>檢視元件
 
@@ -258,4 +258,5 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 ## <a name="additional-resources"></a>其他資源
 
 * 適用于 ASP.NET Core MVC &ndash; 強型別單元測試程式庫[的 MyTested AspNetCore](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc) ，提供流暢的介面來測試 Mvc 和 Web API 應用程式。 （*不是由 Microsoft 維護或支援）。*
+* [將 Razor 元件整合到 Razor Pages 和 MVC 應用程式中](xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps)
 

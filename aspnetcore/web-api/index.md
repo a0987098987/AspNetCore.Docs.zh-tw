@@ -5,14 +5,14 @@ description: 了解使用 ASP.NET Core 建立 Web API 的基本概念。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/22/2019
+ms.date: 01/27/2020
 uid: web-api/index
-ms.openlocfilehash: 5ef8b4d012f4ed90339ffea191612e4dc365d958
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 8609e2095c202643cdc905cc610298195b654215
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880534"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76870013"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建立 Web API
 
@@ -46,7 +46,7 @@ Web API 由一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase>�
 
 以下是 `ControllerBase` 提供的一些其他方法範例。
 
-|方法   |備註    |
+|方法   |注意事項    |
 |---------|---------|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest%2A>| 傳回 400 狀態碼。|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound%2A>|傳回 404 狀態碼。|
@@ -64,7 +64,7 @@ Web API 由一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase>�
 
 以下是一些其他可用的屬性範例。
 
-|屬性|備註|
+|屬性|注意事項|
 |---------|-----|
 |[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |指定控制器或動作的 URL 模式。|
 |[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |指定模型繫結要包含的前置詞和屬性。|
@@ -78,13 +78,28 @@ Web API 由一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase>�
 
 [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute)屬性可以套用至控制器類別，以啟用下列固定的 API 特定行為：
 
+::: moniker range=">= aspnetcore-2.2"
+
 * [屬性路由需求](#attribute-routing-requirement)
 * [HTTP 400 自動回應](#automatic-http-400-responses)
 * [繫結來源參數推斷](#binding-source-parameter-inference)
 * [多部分/表單資料要求推斷](#multipartform-data-request-inference)
 * [錯誤狀態碼的問題詳細資料](#problem-details-for-error-status-codes)
 
+*錯誤狀態碼功能的問題詳細資料*需要2.2 或更新版本的[相容性版本](xref:mvc/compatibility-version)。 其他功能需要2.1 或更新版本的相容性版本。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
+
+* [屬性路由需求](#attribute-routing-requirement)
+* [HTTP 400 自動回應](#automatic-http-400-responses)
+* [繫結來源參數推斷](#binding-source-parameter-inference)
+* [多部分/表單資料要求推斷](#multipartform-data-request-inference)
+
 這些功能都需要[相容性版本](xref:mvc/compatibility-version) 2.1 或更新版本。
+
+::: moniker-end
 
 ### <a name="attribute-on-specific-controllers"></a>特定控制器上的屬性
 

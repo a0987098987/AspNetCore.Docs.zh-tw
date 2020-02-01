@@ -6,18 +6,18 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/08/2019
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: 38da80519b9d5d097c24d38b5a37503174629fc4
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.openlocfilehash: 9c173a4589279b03bc12b4b7dea594fae88cf471
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896961"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928391"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>在 ASP.NET Core 中使用特定配置進行授權
 
-在某些情況下，例如單頁應用程式（Spa），通常會使用多個驗證方法。 例如，應用程式可能會使用以 cookie 為基礎的驗證來登入，並針對 JavaScript 要求進行 JWT 持有人驗證。 在某些情況下，應用程式可能會有多個驗證處理常式實例。 例如，兩個 cookie 處理常式，其中一個包含基本身分識別，而另一個則是在觸發多重要素驗證（MFA）時建立。 因為使用者要求的作業需要額外的安全性，所以可能會觸發 MFA。
+在某些情況下，例如單頁應用程式（Spa），通常會使用多個驗證方法。 例如，應用程式可能會使用以 cookie 為基礎的驗證來登入，並針對 JavaScript 要求進行 JWT 持有人驗證。 在某些情況下，應用程式可能會有多個驗證處理常式實例。 例如，兩個 cookie 處理常式，其中一個包含基本身分識別，而另一個則是在觸發多重要素驗證（MFA）時建立。 因為使用者要求的作業需要額外的安全性，所以可能會觸發 MFA。 如需在使用者要求需要 MFA 的資源時強制執行 MFA 的詳細資訊，請參閱 GitHub 問題[保護區段與 mfa](https://github.com/aspnet/AspNetCore.Docs/issues/15791#issuecomment-580464195)。
 
-驗證架構會在驗證期間設定驗證服務時命名。 例如:
+驗證架構會在驗證期間設定驗證服務時命名。 例如：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -42,7 +42,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="selecting-the-scheme-with-the-authorize-attribute"></a>選取具有 [授權] 屬性的配置
 
-在授權的時候，應用程式會指出要使用的處理常式。 藉由將以逗號分隔的驗證架構清單傳遞給 `[Authorize]`，選取應用程式將授權的處理常式。 不論是否已設定預設值，`[Authorize]` 屬性都會指定要使用的驗證配置或配置。 例如:
+在授權的時候，應用程式會指出要使用的處理常式。 藉由將以逗號分隔的驗證架構清單傳遞給 `[Authorize]`，選取應用程式將授權的處理常式。 不論是否已設定預設值，`[Authorize]` 屬性都會指定要使用的驗證配置或配置。 例如：
 
 ```csharp
 [Authorize(AuthenticationSchemes = AuthSchemes)]
@@ -118,7 +118,7 @@ public void ConfigureServices(IServiceCollection services)
 > [!NOTE]
 > 只有一個 JWT 持有人驗證會向 `JwtBearerDefaults.AuthenticationScheme`的預設驗證配置進行註冊。 額外的驗證必須使用唯一的驗證配置進行註冊。
 
-下一個步驟是更新預設授權原則，以接受這兩種驗證配置。 例如:
+下一個步驟是更新預設授權原則，以接受這兩種驗證配置。 例如：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

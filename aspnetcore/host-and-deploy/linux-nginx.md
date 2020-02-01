@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 880d1762ebbea641c0b9c5a9f8bbca0b68a463c5
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: 1a83b7d1b211862793e3ba086234b97248f9ae70
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76726671"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928493"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -310,7 +310,7 @@ Linux 安全性模組 (LSM) 是 Linux 2.6 之後 Linux 核心所包含的一個�
 
 ### <a name="configure-the-firewall"></a>設定防火牆
 
-關閉所有不在使用中的外部連接埠。 簡單的防火牆 (ufw) 提供命令列介面供設定防火牆，為 `iptables` 提供前端。
+關閉所有不在使用中的外部連接埠。 簡單的防火牆（ufw）提供用於設定防火牆的 CLI，藉以提供 `iptables` 的前端。
 
 > [!WARNING]
 > 如未正確設定，防火牆會禁止存取整個系統。 未指定正確的 SSH 連接埠，將會導致您無法存取系統 (若您使用 SSH 連線至該連接埠)。 預設連接埠為 22。 如需詳細資訊，請參閱 [ufw 簡介](https://help.ubuntu.com/community/UFW)與[手冊](https://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html)。

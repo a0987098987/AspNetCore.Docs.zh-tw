@@ -5,17 +5,17 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/28/2019
+ms.date: 01/24/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/components
-ms.openlocfilehash: 6643ccd0fdb62243427bb0972d8deb3f7b57079d
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: d6ba60b20d21636c7f780a80d8fbdb152505a3a3
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76726928"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928252"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -49,7 +49,7 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 }
 ```
 
-一開始呈現元件之後，元件會重新產生其轉譯樹狀結構，以回應事件。 Blazor 接著會比較新的轉譯樹狀結構與上一個，並將任何修改套用至瀏覽器的檔物件模型（DOM）。
+一開始呈現元件之後，元件會重新產生其轉譯樹狀結構，以回應事件。 然後，Blazor 會比較新的轉譯樹狀結構與上一個，並將任何修改套用至瀏覽器的檔物件模型（DOM）。
 
 元件是一般C#類別，可以放在專案內的任何位置。 產生網頁的元件通常會位於*Pages*資料夾中。 非頁面元件通常會放在*共用*資料夾中，或加入至專案的自訂資料夾中。
 
@@ -90,7 +90,7 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
     param-IncrementAmount="10" />
 ```
 
-支援傳遞參數（例如，上述範例中的 `IncrementAmount`）。
+參數類型必須是可序列化的 JSON，這通常表示該類型必須有預設的函式和可設定的屬性。 例如，您可以指定 `IncrementAmount` 的值，因為 `IncrementAmount` 的類型是 `int`，這是 JSON 序列化程式所支援的基本類型。
 
 `RenderMode` 設定元件是否：
 
@@ -108,6 +108,10 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
 不支援從靜態 HTML 網頁轉譯伺服器元件。
 
 如需如何呈現元件、元件狀態和 `Component` 標籤協助程式的詳細資訊，請參閱 <xref:blazor/hosting-models>。
+
+## <a name="tag-helpers-arent-used-in-components"></a>標籤協助程式不會在元件中使用
+
+Razor 元件（*razor*檔案）中不支援[標記](xref:mvc/views/tag-helpers/intro)協助程式。 若要在 Blazor 中提供標籤協助程式的功能，請使用與標籤協助程式相同的功能來建立元件，並改用元件。
 
 ## <a name="use-components"></a>使用元件
 
@@ -392,13 +396,13 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 * 不能包含自由格式的文字。
 * 根據瀏覽器的執行方式提供使用者互動特性。
 
-下欄欄位類型具有特定的格式需求，而且目前不支援 Blazor，因為所有主要瀏覽器都不支援：
+下欄欄位類型具有特定的格式需求，而且目前不受 Blazor 支援，因為並非所有主要瀏覽器都支援：
 
 * `datetime-local`
 * `month`
 * `week`
 
-`@bind` 支援 `@bind:culture` 參數，以提供用來剖析和格式化值的 <xref:System.Globalization.CultureInfo?displayProperty=fullName>。 使用 `date` 和 `number` 欄位類型時，不建議指定文化特性。 `date` 和 `number` 具有內建的 Blazor 支援，可提供所需的文化特性。
+`@bind` 支援 `@bind:culture` 參數，以提供用來剖析和格式化值的 <xref:System.Globalization.CultureInfo?displayProperty=fullName>。 使用 `date` 和 `number` 欄位類型時，不建議指定文化特性。 `date` 和 `number` 具有內建 Blazor 支援，可提供所需的文化特性。
 
 如需如何設定使用者文化特性的詳細資訊，請參閱[當地語系化](#localization)一節。
 
@@ -904,7 +908,7 @@ Password:
 
 ## <a name="invoke-component-methods-externally-to-update-state"></a>在外部叫用元件方法來更新狀態
 
-Blazor 會使用 `SynchronizationContext` 來強制執行單一邏輯執行緒。 元件的[生命週期方法](xref:blazor/lifecycle)和 Blazor 所引發的任何事件回呼都會在此 `SynchronizationContext`上執行。 在事件中，必須根據外來事件（例如計時器或其他通知）更新元件，請使用 `InvokeAsync` 方法，這會分派給 Blazor的 `SynchronizationContext`。
+Blazor 會使用 `SynchronizationContext` 來強制執行單一邏輯執行緒。 元件的[生命週期方法](xref:blazor/lifecycle)以及 Blazor 所引發的任何事件回呼都會在此 `SynchronizationContext`上執行。 在事件中，必須根據外來事件（例如計時器或其他通知）更新元件，請使用 `InvokeAsync` 方法，這會分派給 Blazor 的 `SynchronizationContext`。
 
 例如，假設有一個通知程式*服務*可通知任何處于已更新狀態的「接聽」元件：
 
@@ -957,11 +961,11 @@ public class NotifierService
 }
 ```
 
-在上述範例中，`NotifierService` 會在 Blazor的 `SynchronizationContext`之外叫用元件的 `OnNotify` 方法。 `InvokeAsync` 可用來切換至正確的內容，並將轉譯排入佇列。
+在上述範例中，`NotifierService` 會叫用元件在 Blazor 的 `SynchronizationContext`以外的 `OnNotify` 方法。 `InvokeAsync` 可用來切換至正確的內容，並將轉譯排入佇列。
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>使用 \@鍵來控制元素和元件的保留
 
-當轉譯專案或元件的清單，以及後續變更的專案或元件時，Blazor的比較演算法必須決定哪些先前的專案或元件可以保留，以及模型物件應如何對應到它們。 一般來說，此程式是自動的，可以忽略，但在某些情況下，您可能會想要控制進程。
+當轉譯專案或元件的清單，以及後續變更的專案或元件時，Blazor 的比較演算法必須決定哪些先前的專案或元件可以保留，以及模型物件應如何對應至這些專案。 一般來說，此程式是自動的，可以忽略，但在某些情況下，您可能會想要控制進程。
 
 參考下列範例：
 
@@ -1022,7 +1026,7 @@ public class NotifierService
 
 與 `@key`進行比較時，會產生效能成本。 效能成本並不大，但只有在控制元素或元件保留規則以受益于應用程式時，才指定 `@key`。
 
-即使未使用 `@key`，Blazor 也會盡可能保留子項目和元件實例。 使用 `@key` 的唯一優點是控制模型實例*如何*對應至保留的元件實例，而不是用來選取對應的比較演算法。
+即使未使用 `@key`，Blazor 還是會盡可能保留子項目和元件實例。 使用 `@key` 的唯一優點是控制模型實例*如何*對應至保留的元件實例，而不是用來選取對應的比較演算法。
 
 ### <a name="what-values-to-use-for-key"></a>要用於 \@金鑰的值
 
@@ -1035,7 +1039,7 @@ public class NotifierService
 
 ## <a name="routing"></a>路由
 
-Blazor 中的路由會藉由提供路由範本給應用程式中的每個可存取元件來達到目的。
+Blazor 中的路由是藉由將路由範本提供給應用程式中每個可存取的元件來達成。
 
 當您編譯具有 `@page` 指示詞的 Razor 檔案時，會提供指定路由範本 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> 給產生的類別。 在執行時間，路由器會尋找具有 `RouteAttribute` 的元件類別，並轉譯哪一個元件的路由範本符合要求的 URL。
 
@@ -1084,7 +1088,7 @@ Razor 元件是以部分類別的形式產生。 Razor 元件是使用下列其�
 * C#程式碼是以 HTML 標籤和 Razor 程式碼的[`@code`](xref:mvc/views/razor#code)區塊定義在單一檔案中。 Blazor 範本會使用這種方法來定義其 Razor 元件。
 * C#程式碼會放在定義為部分類別的程式碼後置檔案中。
 
-下列範例顯示在從 Blazor 範本產生的應用程式中，具有 `@code` 區塊的預設 `Counter` 元件。 HTML 標籤、Razor 程式碼和C#程式碼位於相同的檔案中：
+下列範例顯示在 Blazor 範本所產生的應用程式中，具有 `@code` 區塊的預設 `Counter` 元件。 HTML 標籤、Razor 程式碼和C#程式碼位於相同的檔案中：
 
 *Counter. razor*：
 
@@ -1147,6 +1151,43 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components.Web;
+```
+
+## <a name="specify-a-base-class"></a>指定基類
+
+[`@inherits`](xref:mvc/views/razor#inherits)指示詞可以用來指定元件的基類。 下列範例會顯示元件如何繼承基類（`BlazorRocksBase`），以提供元件的屬性和方法。 基類應該衍生自 `ComponentBase`。
+
+*Pages/BlazorRocks. razor*：
+
+```razor
+@page "/BlazorRocks"
+@inherits BlazorRocksBase
+
+<h1>@BlazorRocksText</h1>
+```
+
+*BlazorRocksBase.cs*：
+
+```csharp
+using Microsoft.AspNetCore.Components;
+
+namespace BlazorSample
+{
+    public class BlazorRocksBase : ComponentBase
+    {
+        public string BlazorRocksText { get; set; } = 
+            "Blazor rocks the browser!";
+    }
+}
+```
+
+## <a name="specify-an-attribute"></a>指定屬性
+
+您可以使用[`@attribute`](xref:mvc/views/razor#attribute)指示詞，在 Razor 元件中指定屬性。 下列範例會將 `[Authorize]` 屬性套用至元件類別：
+
+```razor
+@page "/"
+@attribute [Authorize]
 ```
 
 ## <a name="import-components"></a>匯入元件
@@ -1585,7 +1626,7 @@ public class ThemeInfo
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>序號與程式程式碼號相關，而不是執行順序
 
-一律會編譯 Blazor `.razor` 檔案。 這可能是 `.razor` 的絕佳優點，因為您可以使用編譯步驟來插入資訊，以在執行時間改善應用程式效能。
+Blazor `.razor` 檔案一律會進行編譯。 這可能是 `.razor` 的絕佳優點，因為您可以使用編譯步驟來插入資訊，以在執行時間改善應用程式效能。
 
 這些改良功能的重要範例包括*序號*。 序號會向運行時程表示輸出來自哪些不同和已排序的程式程式碼。 執行時間會使用這項資訊，以線性時間產生有效率的樹狀差異，這比一般樹狀結構的差異演算法通常還能快得多。
 

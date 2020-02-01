@@ -7,18 +7,18 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: bcd36509fe42da0a79b9243d17701f40e066a212
-ms.sourcegitcommit: 077b45eceae044475f04c1d7ef2d153d7c0515a8
+ms.openlocfilehash: 9f3e3b29d155f1024aef530bf9c55efa57d4546a
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2019
-ms.locfileid: "75542683"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928405"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>教學課程：使用遷移功能-ASP.NET MVC 搭配 EF Core
 
 在本教學課程中，您會先使用 EF Core 移轉功能來管理資料模型變更。 在稍後的教學課程中，您將在變更資料模型時新增更多移轉作業。
 
-在本教學課程中，您已：
+在本教學課程中，您將：
 
 > [!div class="checklist"]
 > * 了解移轉
@@ -38,7 +38,7 @@ ms.locfileid: "75542683"
 
 在您將應用程式部署到生產環境之前，都可以使用上述方法讓資料庫與資料模型保持同步。 但當應用程式在生產環境中執行時，通常會儲存您想要保留的資料，而您也不想在每次資料變更 (例如新增資料行) 時遺失任何項目。 為了解決上述問題，EF Core 移轉功能可讓 EF 更新資料庫結構描述，而不是建立新的資料庫。
 
-您可以使用**套件管理員主控台** (PMC) 或命令列介面 (CLI)，來進行移轉作業。  這些教學課程會示範如何使用 CLI 命令。 PMC 的資訊位於[本教學課程結尾](#pmc)。
+若要使用遷移，您可以使用**套件管理員主控台**（PMC）或 CLI。  這些教學課程會示範如何使用 CLI 命令。 PMC 的資訊位於[本教學課程結尾](#pmc)。
 
 ## <a name="change-the-connection-string"></a>變更連接字串
 
@@ -59,7 +59,7 @@ ms.locfileid: "75542683"
 
 ## <a name="create-an-initial-migration"></a>建立初始移轉
 
-儲存您的變更，並建置專案。 接著，開啟命令視窗並巡覽至專案資料夾。 以下是執行這個動作的快速方法：
+儲存您的變更並建置專案。 接著，開啟命令視窗並巡覽至專案資料夾。 以下是執行這個動作的快速方法：
 
 * 在 [方案總管] 中，於專案上按一下滑鼠右鍵，然後從操作功能表中選擇 [在檔案總管中開啟資料夾]。
 
@@ -94,7 +94,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 [!code-csharp[](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
-Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。 當您輸入命令以復原更新時，Migrations 會呼叫 `Down` 方法。
+移轉會呼叫 `Up` 方法，以實作資料模型變更來進行移轉。 當您輸入命令以復原更新時，Migrations 會呼叫 `Down` 方法。
 
 這個程式碼適用於您之前輸入 `migrations add InitialCreate` 命令時所建立的初始移轉。 移轉名稱參數 (在此範例中為 "InitialCreate") 可作為檔案名稱，您也可以任意命名。 您最好選擇單字或片語來摘要列出移轉中所要完成的作業。 例如，您可以將稍後的移轉命名為 "AddDepartmentTable"。
 
@@ -173,7 +173,7 @@ Done.
 
 ## <a name="next-step"></a>後續步驟
 
-在本教學課程中，您已：
+在本教學課程中，您將：
 
 > [!div class="checklist"]
 > * 了解移轉

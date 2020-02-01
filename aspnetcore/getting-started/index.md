@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/07/2020
 uid: getting-started
-ms.openlocfilehash: c806bd1e79dea9119f1c9e99d0a2b9742a10987a
-ms.sourcegitcommit: ef1720cb733908f36a54825d84c3461c5280bdbe
+ms.openlocfilehash: 4f7e67e1e422afe3f7e2970e0c40380f065390ac
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737473"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928323"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
-此教學課程示範如何使用.NET Core 命令列介面建立及執行 ASP.NET Core Web 應用程式。
+本教學課程說明如何使用 .NET Core CLI 來建立及執行 ASP.NET Core web 應用程式。
 
 您將了解如何：
 

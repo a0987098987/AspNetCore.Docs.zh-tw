@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/08/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 31a5e47d772e7416646c4d83c3209d7d2b254199
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 623f739b17c0bed3ce929f562c9581ab26ecf5bc
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829162"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928553"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Spa 的驗證和授權
 
@@ -260,7 +260,7 @@ async populateWeatherData() {
 }
 ```
 
-## <a name="deploy-to-production"></a>部署到生產
+## <a name="deploy-to-production"></a>部署到生產環境
 
 若要將應用程式部署至生產環境，您必須布建下列資源：
 
@@ -285,9 +285,9 @@ async populateWeatherData() {
 }
 ```
 
-* 憑證上的名稱屬性會對應到憑證的辨別主旨。
-* 存放區位置代表從何處載入憑證（`CurrentUser` 或 `LocalMachine`）。
 * 存放區名稱代表儲存憑證之憑證存放區的名稱。 在此情況下，它會指向 [個人] 使用者存放區。
+* 存放區位置代表從何處載入憑證（`CurrentUser` 或 `LocalMachine`）。
+* 憑證上的名稱屬性會對應到憑證的辨別主旨。
 
 若要部署至 Azure 網站，請遵循將[應用程式部署至 azure](xref:tutorials/publish-to-azure-webapp-using-vs#deploy-the-app-to-azure)中的步驟來部署應用程式，以建立必要的 Azure 資源，並將應用程式部署至生產環境。
 

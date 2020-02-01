@@ -10,24 +10,24 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/routing
-ms.openlocfilehash: 0cd15f25ff7975cae3f63a739212aa23062ece23
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 32459f9f42220b01ce04e6444a9bb4a9592ee2da
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160154"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928276"
 ---
-# <a name="aspnet-core-opno-locblazor-routing"></a>ASP.NET Core Blazor 路由
+# <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
 作者：[Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-瞭解如何路由傳送要求，以及如何使用 `NavLink` 元件，在 Blazor 應用程式中建立導覽連結。
+瞭解如何路由傳送要求，以及如何使用 `NavLink` 元件，在 Blazor apps 中建立導覽連結。
 
 ## <a name="aspnet-core-endpoint-routing-integration"></a>ASP.NET Core 端點路由整合
 
-Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)。 ASP.NET Core 應用程式會設定為在 `Startup.Configure`中接受具有 `MapBlazorHub` 之互動式元件的連入連線：
+Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)中。 ASP.NET Core 應用程式會設定為在 `Startup.Configure`中接受具有 `MapBlazorHub` 之互動式元件的連入連線：
 
 [!code-csharp[](routing/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
@@ -48,14 +48,14 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 </Router>
 ```
 
-編譯具有 `@page` 指示詞的*razor*檔案時，會提供所產生的類別，<xref:Microsoft.AspNetCore.Mvc.RouteAttribute> 指定路由範本。
+編譯具有 `@page` 指示詞的*razor*檔案時，會提供所產生的類別，<xref:Microsoft.AspNetCore.Components.RouteAttribute> 指定路由範本。
 
 在執行時間，`RouteView` 元件：
 
 * 接收來自 `Router` 的 `RouteData`，以及任何所需的參數。
 * 使用指定的參數，以配置（或選擇性的預設版面配置）呈現指定的元件。
 
-您可以選擇性地指定具有版面配置類別的 `DefaultLayout` 參數，以用於未指定版面配置的元件。 預設 Blazor 範本會指定 `MainLayout` 元件。 *MainLayout*是在範本專案的*共用*資料夾中。 如需版面配置的詳細資訊，請參閱 <xref:blazor/layouts>。
+您可以選擇性地指定具有版面配置類別的 `DefaultLayout` 參數，以用於未指定版面配置的元件。 預設的 Blazor 範本會指定 `MainLayout` 元件。 *MainLayout*是在範本專案的*共用*資料夾中。 如需版面配置的詳細資訊，請參閱 <xref:blazor/layouts>。
 
 多個路由範本可以套用至元件。 下列元件會回應 `/BlazorRoute` 和 `/DifferentBlazorRoute`的要求：
 
@@ -67,7 +67,7 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 ```
 
 > [!IMPORTANT]
-> 為了讓 Url 正確解析，應用程式必須在其*wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host. cshtml*檔案（Blazor 伺服器）中包含在 `href` 屬性（`<base href="/">`）中指定的應用程式基底路徑的 `<base>` 標記。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/index#app-base-path>。
+> 為了讓 Url 正確解析，應用程式必須在其*wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host. Cshtml*檔案（Blazor 伺服器）中包含 `href` 屬性（`<base href="/">`）中指定的應用程式基底路徑的 `<base>` 標記。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/index#app-base-path>。
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>在找不到內容時提供自訂內容
 
@@ -153,7 +153,7 @@ Blazor Server 已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)
 
 ### <a name="routing-with-urls-that-contain-dots"></a>包含點的 Url 路由
 
-在 Blazor 伺服器應用程式中， *_Host*中的預設路由是 `/` （`@page "/"`）。 包含點（`.`）的要求 URL 與預設路由不相符，因為 URL 會顯示要求檔案。 Blazor 應用程式針對不存在的靜態檔案傳回*404-找不到*回應。 若要使用包含點的路由，請使用下列路由範本來設定 *_Host. cshtml* ：
+在 Blazor 伺服器應用程式中， *_Host*中的預設路由是 `/` （`@page "/"`）。 包含點（`.`）的要求 URL 與預設路由不相符，因為 URL 會顯示要求檔案。 如果靜態檔案不存在，Blazor 應用程式會傳回*404-找不*到的回應。 若要使用包含點的路由，請使用下列路由範本來設定 *_Host. cshtml* ：
 
 ```cshtml
 @page "/{**path}"

@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: 1b01357233a9b95a5da052d92e30232c94e78a78
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: 3c2a4285945d3fdc6bba195e3160da8b9dcbba44
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727230"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928180"
 ---
 # <a name="use-messagepack-hub-protocol-in-opno-locsignalr-for-aspnet-core"></a>在 SignalR 中使用適用于 ASP.NET Core 的 MessagePack Hub 通訊協定
 
@@ -49,6 +49,18 @@ services.AddSignalR()
             MessagePack.Resolvers.StandardResolver.Instance
         };
     });
+```
+
+> [!WARNING]
+> 我們強烈建議您查看[CVE-2020-5234](https://github.com/neuecc/MessagePack-CSharp/security/advisories/GHSA-7q36-4xx7-xcxf) ，並套用建議的修補程式。 例如，將 `MessagePackSecurity.Active` 靜態屬性設定為 `MessagePackSecurity.UntrustedData`。 設定 `MessagePackSecurity.Active` 需要以手動方式安裝[1.9. x 版的 MessagePack](https://www.nuget.org/packages/MessagePack/1.9.3)。 安裝 `MessagePack` 1.9. x 升級 SignalR 使用的版本。 當 `MessagePackSecurity.Active` 未設定為 `MessagePackSecurity.UntrustedData`時，惡意用戶端可能會導致拒絕服務。 在 `Program.Main`中設定 `MessagePackSecurity.Active`，如下列程式碼所示：
+
+```csharp
+public static void Main(string[] args)
+{
+  MessagePackSecurity.Active = MessagePackSecurity.UntrustedData;
+
+  CreateHostBuilder(args).Build().Run();
+}
 ```
 
 ## <a name="configure-messagepack-on-the-client"></a>設定用戶端上的 MessagePack

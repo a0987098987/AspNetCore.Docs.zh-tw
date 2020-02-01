@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 如何實作相依性插入以及如何使用�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 01/30/2020
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: fabc6df07d2d7beaa546b189bb7527f626fc669d
-ms.sourcegitcommit: 47d453f34b6fd0179119c572cb8be64c5365cbb6
+ms.openlocfilehash: a9d268489ebcef69d64c6fd65087bc38a3581821
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75597937"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928411"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -613,6 +613,7 @@ public void ConfigureServices(IServiceCollection services)
 * 子容器
 * 自訂生命週期管理
 * `Func<T>` 支援延遲初始設定
+* 以慣例為基礎的註冊
 
 下列協力廠商容器可以與 ASP.NET Core 應用程式搭配使用：
 

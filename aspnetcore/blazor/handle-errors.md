@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: 7b5602d5ae5e58d1678762fe1cd2adec1f31c969
-ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
+ms.openlocfilehash: b987513e5410e95ab632b9935d858b648838d94f
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76808999"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928263"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
 
@@ -30,7 +30,9 @@ ms.locfileid: "76808999"
 * 在開發期間，「金級」列會將您導向至瀏覽器主控台，您可以在其中看到例外狀況。
 * 在生產環境中，「金級」列會通知使用者發生錯誤，並建議重新整理瀏覽器。
 
-此錯誤處理體驗的 UI 是 Blazor 專案範本的一部分。 在 Blazor WebAssembly 應用程式中，自訂*wwwroot/index.html*檔案中的體驗：
+此錯誤處理體驗的 UI 是 Blazor 專案範本的一部分。
+
+在 Blazor WebAssembly 應用程式中，自訂*wwwroot/index.html*檔案中的體驗：
 
 ```html
 <div id="blazor-error-ui">
@@ -57,7 +59,7 @@ ms.locfileid: "76808999"
 
 `blazor-error-ui` 專案是由 Blazor 範本所包含的樣式所隱藏，然後在發生錯誤時顯示。
 
-## <a name="how-the-opno-locblazor-framework-reacts-to-unhandled-exceptions"></a>Blazor 架構如何回應未處理的例外狀況
+## <a name="how-a-opno-locblazor-server-app-reacts-to-unhandled-exceptions"></a>Blazor Server 應用程式如何回應未處理的例外狀況
 
 Blazor Server 是具狀態架構。 當使用者與應用程式互動時，它們會維持與伺服器的連線，稱為「*線路*」。 線路包含作用中的元件實例，以及其他許多狀態層面，例如：
 
@@ -101,9 +103,9 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 * [事件處理常式](#event-handlers)
 * [元件處置](#component-disposal)
 * [JavaScript interop](#javascript-interop)
-* [線路處理常式](#circuit-handlers)
-* [線路處置](#circuit-disposal)
-* [呈現](#prerendering)
+* [Blazor Server 線路處理常式](#blazor-server-circuit-handlers)
+* [Blazor 伺服器線路處置](#blazor-server-circuit-disposal)
+* [Blazor 伺服器 rerendering](#blazor-server-prerendering)
 
 前述未處理的例外狀況會在本文的下列各節中說明。
 
@@ -114,7 +116,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 * 會叫用元件的函式。
 * 系統會叫用透過[`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component)指示詞或[`[Inject]`](xref:blazor/dependency-injection#request-a-service-in-a-component)屬性提供給元件之函式的任何非 singleton DI 服務的函式。
 
-任何 `[Inject]` 屬性的任何執行的函式或 setter 擲回未處理的例外狀況時，線路都會失敗。 例外狀況是嚴重的，因為架構無法具現化元件。 如果函式邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄功能的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
+當任何 `[Inject]` 屬性的任何執行的函式或 setter 擲回未處理的例外狀況時，Blazor Server 線路就會失敗。 例外狀況是嚴重的，因為架構無法具現化元件。 如果函式邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄功能的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
 
 ### <a name="lifecycle-methods"></a>生命週期方法
 
@@ -125,7 +127,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 * `ShouldRender` / `ShouldRenderAsync`
 * `OnAfterRender` / `OnAfterRenderAsync`
 
-如果任何生命週期方法以同步或非同步方式擲回例外狀況，則例外狀況對線路而言是嚴重的。 若要讓元件處理生命週期方法中的錯誤，請新增錯誤處理邏輯。
+如果任何生命週期方法以同步或非同步方式擲回例外狀況，則例外狀況對 Blazor 伺服器線路而言是嚴重的。 若要讓元件處理生命週期方法中的錯誤，請新增錯誤處理邏輯。
 
 在下列範例中，`OnParametersSetAsync` 會呼叫方法來取得產品：
 
@@ -140,7 +142,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 `.razor` 元件檔案中的宣告式標記會編譯成稱為C# `BuildRenderTree`的方法。 當元件呈現時，`BuildRenderTree` 會執行並建立資料結構，以描述所轉譯元件的元素、文字和子元件。
 
-轉譯邏輯可能會擲回例外狀況。 當評估 `@someObject.PropertyName`，但 `@someObject` `null`時，就會發生這種情況的範例。 轉譯邏輯所擲回的未處理例外狀況對線路而言是嚴重的。
+轉譯邏輯可能會擲回例外狀況。 當評估 `@someObject.PropertyName`，但 `@someObject` `null`時，就會發生這種情況的範例。 轉譯邏輯所擲回的未處理例外狀況是 Blazor 伺服器線路的嚴重錯誤。
 
 若要避免轉譯邏輯中出現 null 參考例外狀況，請先檢查是否有 `null` 物件，然後再存取其成員。 在下列範例中，如果 `null``person.Address`，則不會存取 `person.Address` 屬性：
 
@@ -159,7 +161,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 在這些情況下，事件處理常式程式碼可能會擲回未處理的例外狀況。
 
-如果事件處理常式擲回未處理的例外狀況（例如，資料庫查詢失敗），則例外狀況對線路而言是嚴重的。 如果應用程式呼叫可能因外部原因而失敗的程式碼，請使用具有錯誤處理和記錄的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來設陷例外狀況。
+如果事件處理常式擲回未處理的例外狀況（例如，資料庫查詢失敗），則例外狀況對 Blazor 伺服器線路而言是嚴重的。 如果應用程式呼叫可能因外部原因而失敗的程式碼，請使用具有錯誤處理和記錄的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來設陷例外狀況。
 
 如果使用者程式碼不會陷印並處理例外狀況，則架構會記錄例外狀況並終止線路。
 
@@ -167,7 +169,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 例如，元件可能會從 UI 移除，因為使用者已流覽至另一個頁面。 從 UI 移除執行 <xref:System.IDisposable?displayProperty=fullName> 的元件時，架構會呼叫元件的 <xref:System.IDisposable.Dispose*> 方法。
 
-如果元件的 `Dispose` 方法擲回未處理的例外狀況，則例外狀況對線路而言是嚴重的。 如果處置邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
+如果元件的 `Dispose` 方法擲回未處理的例外狀況，則例外狀況對 Blazor 伺服器線路而言是嚴重的。 如果處置邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
 
 如需有關元件處置的詳細資訊，請參閱 <xref:blazor/lifecycle#component-disposal-with-idisposable>。
 
@@ -177,20 +179,20 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 下列條件適用于使用 `InvokeAsync<T>`的錯誤處理：
 
-* 如果 `InvokeAsync<T>` 的呼叫同步失敗，就會發生 .NET 例外狀況。 例如，`InvokeAsync<T>` 的呼叫可能會失敗，因為無法序列化提供的引數。 開發人員程式碼必須攔截例外狀況。 如果事件處理常式或元件生命週期方法中的應用程式程式碼不會處理例外狀況，則產生的例外狀況對線路而言是嚴重的。
-* 如果 `InvokeAsync<T>` 的呼叫以非同步方式失敗，則 .NET <xref:System.Threading.Tasks.Task> 會失敗。 `InvokeAsync<T>` 的呼叫可能會失敗，例如，JavaScript 端程式碼會擲回例外狀況，或傳回以 `rejected`完成的 `Promise`。 開發人員程式碼必須攔截例外狀況。 如果使用[await](/dotnet/csharp/language-reference/keywords/await)運算子，請考慮將方法呼叫包裝在含有錯誤處理和記錄的[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。 否則，失敗的程式碼會產生對線路而言是嚴重的未處理例外狀況。
+* 如果 `InvokeAsync<T>` 的呼叫同步失敗，就會發生 .NET 例外狀況。 例如，`InvokeAsync<T>` 的呼叫可能會失敗，因為無法序列化提供的引數。 開發人員程式碼必須攔截例外狀況。 如果事件處理常式或元件生命週期方法中的應用程式程式碼不會處理例外狀況，則產生的例外狀況對 Blazor 伺服器線路而言是嚴重的。
+* 如果 `InvokeAsync<T>` 的呼叫以非同步方式失敗，則 .NET <xref:System.Threading.Tasks.Task> 會失敗。 `InvokeAsync<T>` 的呼叫可能會失敗，例如，JavaScript 端程式碼會擲回例外狀況，或傳回以 `rejected`完成的 `Promise`。 開發人員程式碼必須攔截例外狀況。 如果使用[await](/dotnet/csharp/language-reference/keywords/await)運算子，請考慮將方法呼叫包裝在含有錯誤處理和記錄的[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。 否則，失敗的程式碼會導致 Blazor 伺服器電路嚴重的未處理例外狀況。
 * 根據預設，`InvokeAsync<T>` 的呼叫必須在特定期間內完成，否則呼叫會超時。預設的超時時間為一分鐘。 Timeout 會保護程式碼不會遺失網路連線，或永遠不會傳回完成訊息的 JavaScript 程式碼。 如果呼叫超時，則產生的 `Task` 會因 <xref:System.OperationCanceledException>而失敗。 使用記錄來設陷並處理例外狀況。
 
 同樣地，JavaScript 程式碼可能會起始呼叫[`[JSInvokable]`](xref:blazor/javascript-interop#invoke-net-methods-from-javascript-functions)屬性所指示的 .net 方法。 如果這些 .NET 方法擲回未處理的例外狀況：
 
-* 此例外狀況不會被視為對線路的嚴重錯誤。
+* 例外狀況不會被視為 Blazor 伺服器線路的嚴重錯誤。
 * JavaScript 端 `Promise` 遭到拒絕。
 
 您可以選擇在 .NET 端或方法呼叫的 JavaScript 端使用錯誤處理常式代碼。
 
 如需詳細資訊，請參閱<xref:blazor/javascript-interop>。
 
-### <a name="circuit-handlers"></a>線路處理常式
+### <a name="opno-locblazor-server-circuit-handlers"></a>Blazor Server 線路處理常式
 
 Blazor Server 可讓程式碼定義*電路處理常式*，以允許對使用者線路狀態的變更執行程式碼。 線路處理常式是透過衍生自 `CircuitHandler` 並在應用程式的服務容器中註冊類別來執行。 下列線路處理常式範例會追蹤開啟的 SignalR 連接：
 
@@ -236,11 +238,11 @@ public void ConfigureServices(IServiceCollection services)
 
 如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對 Blazor 伺服器線路而言是嚴重的。 若要容忍處理常式程式碼或呼叫方法中的例外狀況，請使用錯誤處理和記錄，將程式碼包裝在一個或多個[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。
 
-### <a name="circuit-disposal"></a>線路處置
+### <a name="opno-locblazor-server-circuit-disposal"></a>Blazor 伺服器線路處置
 
 當線路因使用者已中斷連線而結束，而架構正在清除線路狀態時，架構會處置線路的 DI 範圍。 處置範圍會處置任何執行 <xref:System.IDisposable?displayProperty=fullName>的線路範圍 DI 服務。 如果任何 DI 服務在處置期間擲回未處理的例外狀況，則架構會記錄例外狀況。
 
-### <a name="prerendering"></a>呈現
+### <a name="opno-locblazor-server-prerendering"></a>Blazor 伺服器已預呈現
 
 Blazor 元件可以使用 `Component` 標籤協助程式來資源清單，如此一來，就會在使用者的初始 HTTP 要求中傳回其呈現的 HTML 標籤。 其運作方式如下：
 
@@ -274,7 +276,7 @@ Blazor 元件可以使用 `Component` 標籤協助程式來資源清單，如此
 * 導致轉譯進程永遠繼續。
 * 相當於建立未結束的迴圈。
 
-在這些情況下，受影響的線路會停止回應，而執行緒通常會嘗試：
+在這些情況下，受影響的 Blazor 伺服器線路會失敗，而執行緒通常會嘗試：
 
 * 會無限期地耗用作業系統所允許的 CPU 時間量。
 * 耗用不限數量的伺服器記憶體。 使用無限制的記憶體相當於未結束的迴圈在每次反覆運算時將專案新增至集合的案例。

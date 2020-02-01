@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/16/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 37ba756cc4170c145d2ab1f9f0a465057cc826c1
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: cd31094884f53f34d55c0bceabae41ca2bacba4c
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358704"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928549"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 Azure Key Vault 設定提供者
 
@@ -73,11 +73,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 1. 使用下列其中一種方法，在[Azure 入口網站](https://portal.azure.com/)中開啟 Azure Cloud shell：
 
-   * 選取程式碼區塊右上角的 [試試看]。 在文字方塊中使用搜尋字串 "Azure CLI"。
+   * 選取程式碼區塊右上角的 [**試試看**]。 在文字方塊中使用搜尋字串 "Azure CLI"。
    * 使用 [**啟動 Cloud Shell** ] 按鈕，在瀏覽器中開啟 Cloud Shell。
-   * 選取 Azure 入口網站右上角功能表上的 **[Cloud Shell]** 按鈕。
+   * 在 Azure 入口網站右上角的功能表上，選取 [ **Cloud Shell** ] 按鈕。
 
-   如需詳細資訊，請參閱[Azure 命令列介面（CLI）](/cli/azure/)和[Azure Cloud Shell 的總覽](/azure/cloud-shell/overview)。
+   如需詳細資訊，請參閱[Azure Cloud Shell 的](/azure/cloud-shell/overview) [Azure CLI](/cli/azure/)和總覽。
 
 1. 如果尚未驗證，請使用 `az login` 命令登入。
 
@@ -106,7 +106,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 ## <a name="use-application-id-and-x509-certificate-for-non-azure-hosted-apps"></a>將應用程式識別碼和 x.509 憑證用於非 Azure 託管的應用程式
 
-設定 Azure AD、Azure Key Vault 和應用程式，以在應用程式裝載于**Azure 外部時**，使用 Azure Active Directory 應用程式識別碼和 x.509 憑證來驗證金鑰保存庫。 如需詳細資訊，請參閱[關於金鑰、祕密和憑證](/azure/key-vault/about-keys-secrets-and-certificates)。
+設定 Azure AD、Azure Key Vault 和應用程式，以在應用程式裝載于**Azure 外部時**，使用 Azure Active Directory 應用程式識別碼和 x.509 憑證來驗證金鑰保存庫。 如需詳細資訊，請參閱[關於金鑰、秘密和憑證](/azure/key-vault/about-keys-secrets-and-certificates)。
 
 > [!NOTE]
 > 雖然 Azure 中裝載的應用程式支援使用應用程式識別碼和 x.509 憑證，但建議您在 Azure 中裝載應用程式時，使用[適用于 azure 資源的受控](#use-managed-identities-for-azure-resources)識別。 受控識別不需要在應用程式中或在開發環境中儲存憑證。
@@ -124,10 +124,10 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 1. 將金鑰保存庫名稱、應用程式識別碼和憑證指紋儲存在應用程式的*appsettings*中。
 1. 流覽至 Azure 入口網站中的 [**金鑰保存庫**]。
 1. 選取您在[生產環境中使用 Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault)一節所建立的金鑰保存庫。
-1. 選取 [存取原則]。
+1. 選取 [**存取原則**]。
 1. 選取 [**新增存取原則**]。
 1. 開啟 [**秘密許可權**]，並提供具有 [**取得**] 和 [**列出**] 許可權的應用程式。
-1. 選取 [**選取主體**]，然後依名稱選取已註冊的應用程式。 選取 [選取] 按鈕。
+1. 選取 [**選取主體**]，然後依名稱選取已註冊的應用程式。 選取 [**選取**] 按鈕。
 1. 選取 [確定]。
 1. 選取 [儲存]。
 1. 部署應用程式。

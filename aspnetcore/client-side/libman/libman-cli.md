@@ -1,27 +1,27 @@
 ---
-title: 搭配 ASP.NET Core 使用 LibMan 命令列介面（CLI）
+title: 搭配 ASP.NET Core 使用 LibMan CLI
 author: scottaddie
-description: 瞭解如何在 ASP.NET Core 專案中使用 LibMan 命令列介面（CLI）。
+description: 瞭解如何在 ASP.NET Core 專案中使用 LibMan CLI。
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: client-side/libman/libman-cli
-ms.openlocfilehash: 8b2b1e45ab4685482554ac439b0276e0cf381609
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 02d88d09805bd23a86ef924766373245fec7ff52
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962794"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928355"
 ---
-# <a name="use-the-libman-command-line-interface-cli-with-aspnet-core"></a>搭配 ASP.NET Core 使用 LibMan 命令列介面（CLI）
+# <a name="use-the-libman-cli-with-aspnet-core"></a>搭配 ASP.NET Core 使用 LibMan CLI
 
 作者：[Scott Addie](https://twitter.com/Scott_Addie)
 
 [LibMan](xref:client-side/libman/index) CLI 是一種跨平臺工具，支援 .net Core 的任何位置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件：
 
 * [!INCLUDE [2.1-SDK](../../includes/2.1-SDK.md)]
 
@@ -43,7 +43,7 @@ dotnet tool install -g Microsoft.Web.LibraryManager.Cli --version 1.0.94-g606058
 
 在上述範例中，.NET Core 通用工具是從本機 Windows 電腦的*C:\Temp\Microsoft.Web.LibraryManager.Cli.1.0.94-g606058a278.nupkg*檔案進行安裝。
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用
 
 成功安裝 CLI 之後，您可以使用下列命令：
 
@@ -157,7 +157,7 @@ libman install <LIBRARY> [-d|--destination] [--files] [-p|--provider] [--verbosi
 libman install [-h|--help]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `LIBRARY`
 
@@ -336,7 +336,7 @@ libman uninstall <LIBRARY> [--verbosity]
 libman uninstall [-h|--help]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `LIBRARY`
 
@@ -388,7 +388,7 @@ libman update <LIBRARY> [-pre] [--to] [--verbosity]
 libman update [-h|--help]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `LIBRARY`
 
@@ -440,7 +440,7 @@ libman cache list [--files] [--libraries] [--verbosity]
 libman cache [-h|--help]
 ```
 
-### <a name="arguments"></a>引數
+### <a name="arguments"></a>Arguments
 
 `PROVIDER`
 

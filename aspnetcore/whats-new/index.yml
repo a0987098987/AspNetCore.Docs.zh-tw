@@ -19,11 +19,11 @@ landingContent:
     links:
     - text: 2019 年 12 月
       url: 2019-12.md
-    - text: 2019年11月
+    - text: 2019 年 11 月
       url: 2019-11.md
     - text: 2019 年 10 月
       url: 2019-10.md
-    - text: 2019年9月
+    - text: 2019 年 9 月
       url: 2019-09.md
 - title: 參與-參與 ASP.NET Core 檔
   linkLists:

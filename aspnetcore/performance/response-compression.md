@@ -80,7 +80,7 @@ ms.locfileid: "76726971"
 
 下表說明有關要求、傳送、快取和接收壓縮內容的標頭。
 
-| 標頭             | 角色 |
+| 標頭             | Role |
 | ------------------ | ---- |
 | `Accept-Encoding`  | 從用戶端傳送到伺服器，以指示用戶端可接受的內容編碼配置。 |
 | `Content-Encoding` | 從伺服器傳送到用戶端，以指出內容在承載中的編碼方式。 |
@@ -137,7 +137,7 @@ public class Startup
 }
 ```
 
-附註：
+注意:
 
 * `app.UseResponseCompression` 必須在壓縮回應的任何中介軟體之前呼叫。 如需詳細資訊，請參閱<xref:fundamentals/middleware/index#middleware-order>。
 * 使用[Fiddler](https://www.telerik.com/fiddler)、 [Firebug](https://getfirebug.com/)或[Postman](https://www.getpostman.com/)之類的工具來設定 `Accept-Encoding` 要求標頭，並研究回應標頭、大小和主體。
@@ -202,7 +202,7 @@ public void ConfigureServices(IServiceCollection services)
 
 使用 <xref:Microsoft.AspNetCore.ResponseCompression.BrotliCompressionProviderOptions>設定壓縮等級。 Brotli 壓縮提供者預設為最快速的壓縮層級（[CompressionLevel](xref:System.IO.Compression.CompressionLevel)），這可能不會產生最有效率的壓縮。 如果需要最有效率的壓縮，請設定中介軟體以獲得最佳壓縮。
 
-| 壓縮等級 | 描述 |
+| Compression Level | 描述 |
 | ----------------- | ----------- |
 | [CompressionLevel。最快](xref:System.IO.Compression.CompressionLevel) | 即使產生的輸出未以最佳方式壓縮，壓縮也應該儘快完成。 |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | 不應該執行壓縮。 |
@@ -265,7 +265,7 @@ public void ConfigureServices(IServiceCollection services)
 
 使用 <xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions>設定壓縮等級。 Gzip 壓縮提供者預設為最快速的壓縮層級（[CompressionLevel](xref:System.IO.Compression.CompressionLevel)），這可能不會產生最有效率的壓縮。 如果需要最有效率的壓縮，請設定中介軟體以獲得最佳壓縮。
 
-| 壓縮等級 | 描述 |
+| Compression Level | 描述 |
 | ----------------- | ----------- |
 | [CompressionLevel。最快](xref:System.IO.Compression.CompressionLevel) | 即使產生的輸出未以最佳方式壓縮，壓縮也應該儘快完成。 |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | 不應該執行壓縮。 |

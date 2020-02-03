@@ -32,7 +32,7 @@ ms.locfileid: "76727237"
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>必要條件
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -143,7 +143,7 @@ Table and index were created successfully.
 ::: moniker-end
 
 > [!NOTE]
-> <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> /（而且選擇性地，和）通常會儲存在原始檔控制外部（例如，由[秘密管理員](xref:security/app-secrets)或 *appsettings. json* appsettings 儲存）。<xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> *環境} json*檔案）。 連接字串可能包含應保留在原始檔控制系統中的認證。
+> <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> （以及選擇性的 <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> 和 <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>）通常會儲存在原始檔控制外部（例如，由[秘密管理員](xref:security/app-secrets)或*appsettings*/*appsettings 儲存。環境} json*檔案）。 連接字串可能包含應保留在原始檔控制系統中的認證。
 
 ### <a name="distributed-redis-cache"></a>分散式 Redis 快取
 

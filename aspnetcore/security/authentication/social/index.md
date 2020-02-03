@@ -36,7 +36,7 @@ ms.locfileid: "76727326"
 * 選取 [ASP.NET Core Web 應用程式] 和 [下一步]。
 * 提供**專案名稱**並確認或變更**位置**。 選取 [建立]。
 * 在下拉式（**ASP.NET Core {X. Y}** ）中選取最新版本的 ASP.NET Core，然後選取 [ **Web 應用程式**]。
-* 選取 [驗證] 下的 [變更]，並將驗證設定為 [個別使用者帳戶]。 選取 [確定]。
+* 選取 [驗證] 下的 [變更]，並將驗證設定為 [個別使用者帳戶]。 選取 **[確定]** 。
 * 在 [建立新的 ASP.NET Core Web 應用程式] 視窗中選取 [建立]。
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
@@ -45,7 +45,7 @@ ms.locfileid: "76727326"
 
 * 將目錄 (`cd`) 變更為其中包含專案的資料夾。
 
-* 若是 Windows，請執行下列命令：
+* 針對 Windows，請執行下列命令：
 
   ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld
@@ -99,7 +99,7 @@ ms.locfileid: "76727326"
 
 若要建立密碼，並使用您在外部提供者登入程序期間所設的電子郵件進行登入：
 
-* 選取右上角的 [Hello &lt;電子郵件別名&gt;] 連結以瀏覽至 [管理] 檢視。
+* 選取右上角的 [Hello **電子郵件別名&lt;]&gt;** 連結以瀏覽至 [管理] 檢視。
 
 ![Web 應用程式的 [管理] 檢視](index/_static/pass1a.png)
 

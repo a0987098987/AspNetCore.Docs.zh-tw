@@ -17,13 +17,13 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76726771"
 ---
-# <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a>設定 ASP.NET Core Blazor 的連結器
+# <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a>設定 ASP.NET Core [!OP.NO-LOC(Blazor)] 的連結器
 
 作者：[Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-code#intermediate-language--execution)連結，以從應用程式的輸出元件中移除不必要的 IL。
+[!OP.NO-LOC(Blazor)] 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-code#intermediate-language--execution)連結，以從應用程式的輸出元件中移除不必要的 IL。
 
 請使用下列其中一種方法來控制組件連結：
 
@@ -55,7 +55,7 @@ Blazor 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-c
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  This file specifies which parts of the BCL or Blazor packages must not be
+  This file specifies which parts of the BCL or [!OP.NO-LOC(Blazor)] packages must not be
   stripped by the IL Linker even if they aren't referenced by user code.
 -->
 <linker>
@@ -86,7 +86,7 @@ Blazor 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-c
 
 ### <a name="configure-the-linker-for-internationalization"></a>設定國際化的連結器
 
-根據預設，Blazor WebAssembly 應用程式的 Blazor連結器設定會去除國際化資訊，但不包括明確要求的地區設定。 移除這些元件會將應用程式的大小降到最低。
+根據預設，[!OP.NO-LOC(Blazor)] WebAssembly 應用程式的 [!OP.NO-LOC(Blazor)]連結器設定會去除國際化資訊，但不包括明確要求的地區設定。 移除這些元件會將應用程式的大小降到最低。
 
 若要控制要保留哪些國際化元件，請在專案檔中設定 `<MonoLinkerI18NAssemblies>` MSBuild 屬性：
 
@@ -101,7 +101,7 @@ Blazor 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-c
 | `all`            | 包含的所有元件 |
 | `cjk`            | *I18N.CJK .dll*          |
 | `mideast`        | *I18N.務必 .dll*      |
-| `none` (預設值) | None                    |
+| `none` (預設) | 無                    |
 | `other`          | *I18N.其他 .dll*        |
 | `rare`           | *I18N.罕見的 .dll*         |
 | `west`           | *I18N.West .dll*         |

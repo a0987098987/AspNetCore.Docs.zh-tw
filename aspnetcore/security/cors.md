@@ -15,7 +15,7 @@ ms.locfileid: "76727319"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨原始來源要求（CORS）
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 本文說明如何在 ASP.NET Core 應用程式中啟用 CORS。
 
@@ -58,7 +58,7 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會針對具�
 
 * 將原則名稱設定為 "\_myAllowSpecificOrigins"。 原則名稱是任意的。
 * 呼叫 <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> 擴充方法，以啟用 CORS。
-* 使用[lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)呼叫 <xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*>。 Lambda 會採用 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder> 物件。 這篇文章稍後會`WithOrigins`說明[設定選項](#cors-policy-options)，例如。
+* 使用[lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)呼叫 <xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*>。 Lambda 會採用 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder> 物件。 本文稍後會說明設定[選項](#cors-policy-options)，例如 `WithOrigins`。
 
 <xref:Microsoft.Extensions.DependencyInjection.MvcCorsMvcCoreBuilderExtensions.AddCors*> 方法呼叫會將 CORS 服務新增至應用程式的服務容器：
 
@@ -227,7 +227,7 @@ app.UseEndpoints(endpoints =>
 
 ### <a name="set-the-allowed-http-methods"></a>設定允許的 HTTP 方法
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>：
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>:
 
 * 允許任何 HTTP 方法：
 * 會影響預檢要求和 `Access-Control-Allow-Methods` 標頭。 如需詳細資訊，請參閱[預檢要求](#preflight-requests)一節。
@@ -471,7 +471,7 @@ Test message
 測試 CORS：
 
 1. [建立 API 專案](xref:tutorials/first-web-api)。 或者，您可以[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors)。
-1. 使用本檔中的其中一種方法來啟用 CORS。 例如：
+1. 使用本檔中的其中一種方法來啟用 CORS。 例如，
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 

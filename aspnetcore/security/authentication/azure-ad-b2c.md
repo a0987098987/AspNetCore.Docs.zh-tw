@@ -22,15 +22,15 @@ ms.locfileid: "76727283"
 > [!TIP]
 > Azure Active Directory （Azure AD）和 Azure AD B2C 是個別的產品供應專案。 Azure AD 租使用者代表組織，而 Azure AD B2C 租使用者代表要與信賴憑證者應用程式搭配使用的身分識別集合。 若要深入瞭解，請參閱[Azure AD B2C：常見問題（FAQ）](/azure/active-directory-b2c/active-directory-b2c-faqs)。
 
-在本教學課程中，您將瞭解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
-> * 建立 Azure Active Directory B2C 租使用者
+> * 建立 Active Directory B2C 租用戶
 > * 在 Azure AD B2C 中註冊應用程式
 > * 使用 Visual Studio 建立 ASP.NET Core web 應用程式，並將其設定為使用 Azure AD B2C 的租使用者進行驗證
 > * 設定原則來控制 Azure AD B2C 租使用者的行為
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>必要條件
 
 此逐步解說需要下列各項：
 
@@ -47,14 +47,14 @@ ms.locfileid: "76727283"
 
 使用下列值：
 
-| 設定                       | {2&gt;值&lt;2}                     | 注意事項                                                                                                                                                                                              |
+| 設定                       | 值                     | 注意事項                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**                      | *&lt;應用程式名稱&gt;*        | 輸入應用程式的**名稱**，以向取用者描述您的應用程式。                                                                                                                                 |
-| **包含 web 應用程式/Web API** | 是                       |                                                                                                                                                                                                    |
+| **名稱**                      | *&lt;應用程式名稱&gt;*        | 輸入應用程式的**名稱**，以向取用者描述您的應用程式。                                                                                                                                 |
+| **包含 Web 應用程式 / Web API** | 是                       |                                                                                                                                                                                                    |
 | **允許隱含流程**       | 是                       |                                                                                                                                                                                                    |
-| **回復 URL**                 | `https://localhost:44300/signin-oidc` | 回復 Url 是 Azure AD B2C 傳回您的應用程式要求之任何權杖的端點。 Visual Studio 提供要使用的回復 URL。 現在請輸入 `https://localhost:44300/signin-oidc` 來完成表單。 |
+| **回覆 URL**                 | `https://localhost:44300/signin-oidc` | 回覆 URL 是 Azure AD B2C 傳回您應用程式要求之任何權杖的所在端點。 Visual Studio 提供要使用的回復 URL。 現在請輸入 `https://localhost:44300/signin-oidc` 來完成表單。 |
 | **應用程式識別碼 URI**                | 保留空白               | 本教學課程不需要。                                                                                                                                                                    |
-| **包含 native client**     | 否                        |                                                                                                                                                                                                    |
+| **包含原生用戶端**     | 否                        |                                                                                                                                                                                                    |
 
 > [!WARNING]
 > 如果設定非 localhost 回復 URL，請留意[[回復 url] 清單中允許的條件約束](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application)。 
@@ -81,9 +81,9 @@ Visual Studio Web 應用程式範本可以設定為使用 Azure AD B2C 租使用
 
 5. 使用下列值來完成表單：
     
-    | 設定                       | {2&gt;值&lt;2}                                                 |
+    | 設定                       | 值                                                 |
     |-------------------------------|-------------------------------------------------------|
-    | **功能變數名稱**               | *&lt;B2C 租使用者的功能變數名稱&gt;*          |
+    | **網域名稱**               | *&lt;B2C 租使用者的功能變數名稱&gt;*          |
     | **應用程式識別碼**            | *&lt;貼上剪貼簿中的應用程式識別碼&gt;* |
     | **回呼路徑**             | *&lt;使用預設值&gt;*                       |
     | **註冊或登入原則** | `B2C_1_SiUpIn`                                        |
@@ -149,7 +149,7 @@ services.Configure<JwtBearerOptions>(
 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
-> * 建立 Azure Active Directory B2C 租使用者
+> * 建立 Active Directory B2C 租用戶
 > * 在 Azure AD B2C 中註冊應用程式
 > * 使用 Visual Studio 建立設定為使用 Azure AD B2C 租使用者進行驗證的 ASP.NET Core Web 應用程式
 > * 設定原則來控制 Azure AD B2C 租使用者的行為

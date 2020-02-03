@@ -23,7 +23,7 @@ ms.locfileid: "76726916"
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在伺服器的記憶體中。 
+Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在*伺服器的記憶體中。* 
 
 保留給使用者線路的狀態範例包括：
 
@@ -75,10 +75,10 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 ### <a name="server-side-in-a-database"></a>資料庫中的伺服器端
 
-針對永久資料保存或任何必須跨越多個使用者或裝置的資料，獨立的伺服器端資料庫幾乎都是最好的選擇。 這些選項包括：
+針對永久資料保存或任何必須跨越多個使用者或裝置的資料，獨立的伺服器端資料庫幾乎都是最好的選擇。 選項包括：
 
 * 關係 SQL 資料庫
-* 索引鍵/值存放區
+* 索引鍵-值存放區
 * Blob 存放區
 * 資料表存放區
 
@@ -86,7 +86,7 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 如需 Azure 資料儲存體選項的詳細資訊，請參閱[Azure 儲存體檔](/azure/storage/)和[azure 資料庫](https://azure.microsoft.com/product-categories/databases/)。
 
-### <a name="url"></a>{2&gt; URL&lt;2}
+### <a name="url"></a>URL
 
 對於代表導覽狀態的暫時性資料，請將資料模型為 URL 的一部分。 在 URL 中模型化的狀態範例包括：
 
@@ -134,7 +134,7 @@ Blazor Server 是具狀態的應用程式架構。 在大部分的情況下，�
 
 ## <a name="protected-browser-storage-experimental-package"></a>受保護的瀏覽器儲存體實驗性封裝
 
-提供`localStorage`和[資料保護](xref:security/data-protection/introduction)的 NuGet 套件範例是 AspNetCore.`sessionStorage` [Microsoft.AspNetCore.ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
+為 `localStorage` 和 `sessionStorage` 提供[資料保護](xref:security/data-protection/introduction)的 NuGet 套件範例是[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
 
 > [!WARNING]
 > `Microsoft.AspNetCore.ProtectedBrowserStorage` 是不受支援的實驗性封裝，目前不適用於生產環境使用。

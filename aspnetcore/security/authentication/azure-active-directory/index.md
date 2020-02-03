@@ -17,16 +17,16 @@ ms.locfileid: "76726752"
 
 這些教學課程和範例示範如何在 ASP.NET Core 中使用 Microsoft 身分識別平臺和 Azure Active Directory 進行驗證。 如需搭配 Azure AD 使用 ASP.NET Core 的其他教學課程和範例，請參閱[Microsoft 身分識別平臺](/azure/active-directory/develop/)。
 
-## <a name="application-scenarios"></a>應用程式情節
+## <a name="application-scenarios"></a>應用程式案例
 
 * [快速入門：使用 Microsoft 將登入新增至 ASP.NET Core web 應用程式](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp)
 * [登入使用者的 Web 應用程式](/azure/active-directory/develop/scenario-web-app-sign-user-overview?tabs=aspnetcore)
-* [呼叫 web Api 的 web 應用程式](/azure/active-directory/develop/scenario-web-app-call-api-overview)
+* [呼叫 Web API 的 Web 應用程式](/azure/active-directory/develop/scenario-web-app-call-api-overview)
 * [受保護的 Web API](/azure/active-directory/develop/scenario-protected-web-api-overview)
 * [呼叫其他 web Api 的 web API](/azure/active-directory/develop/scenario-web-api-call-api-overview)
 * [以 Azure AD B2C 登入使用者的 Web 應用程式](xref:security/authentication/azure-ad-b2c)
 
-## <a name="samples"></a>範例
+## <a name="samples"></a>Samples
 
 * [使用 Azure AD V2，讓您的 ASP.NET Core 應用程式登入使用者並呼叫 Web api](/samples/azure-samples/active-directory-aspnetcore-webapp-openidconnect-v2/enable-webapp-signin/)： 
   * 請參閱[這部相關影片](https://channel9.msdn.com/Events/Build/2018/THR5001)

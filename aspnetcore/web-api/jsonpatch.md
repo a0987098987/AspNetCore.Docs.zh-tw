@@ -106,7 +106,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 以零為起始的索引可用來指定陣列元素。 `addresses` 陣列的第一個元素會在 `/addresses/0` 上。 若要 `add` 到陣列結尾處，請使用連字號 (-) 而不是索引號碼：`/addresses/-`。
 
-### <a name="operations"></a>操作
+### <a name="operations"></a>作業
 
 下表顯示支援的作業，如 [JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\) 中所定義：
 
@@ -196,17 +196,17 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 此作業在功能上與 `remove` 之後接著 `add` 相同。
 
-下列範例修補文件會設定 `CustomerName` 的值，並使用新的 `Order` 物件來取代 `Orders[0]`。
+下列範例修補文件會設定 `CustomerName` 的值，並使用新的 `Orders[0]` 物件來取代 `Order`。
 
 [!code-json[](jsonpatch/samples/2.2/JSON/replace.json)]
 
 ## <a name="the-move-operation"></a>移動作業
 
-* 如果 `path` 指向陣列元素：將 `from` 元素複製到 `path` 元素的位置，然後在 `from` 元素上執行 `remove` 作業。
-* 如果 `path` 指向屬性：將 `from` 屬性的值複製到 `path` 屬性，然後在 `from` 屬性上執行 `remove` 作業。
+* 如果 `path` 指向陣列元素：將 `from` 元素複製到 `path` 元素的位置，然後在 `remove` 元素上執行 `from` 作業。
+* 如果 `path` 指向屬性：將 `from` 屬性的值複製到 `path` 屬性，然後在 `remove` 屬性上執行 `from` 作業。
 * 如果 `path` 指向不存在的屬性：
   * 如果要修補的資源是靜態物件：要求失敗。
-  * 如果要修補的資源是動態物件：將 `from` 屬性複製到 `path` 所指出的位置，然後在 `from` 屬性上執行 `remove` 作業。
+  * 如果要修補的資源是動態物件：將 `from` 屬性複製到 `path` 所指出的位置，然後在 `remove` 屬性上執行 `from` 作業。
 
 下列範例修補文件：
 
@@ -218,12 +218,12 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 ## <a name="the-copy-operation"></a>複製作業
 
-此作業在功能上與不含最後 `remove` 步驟的 `move` 作業相同。
+此作業在功能上與不含最後 `move` 步驟的 `remove` 作業相同。
 
 下列範例修補文件：
 
 * 將 `Orders[0].OrderName` 的值複製到 `CustomerName`。
-* 在 `Orders[0]` 前面插入 `Orders[1]` 的複本。
+* 在 `Orders[1]` 前面插入 `Orders[0]` 的複本。
 
 [!code-json[](jsonpatch/samples/2.2/JSON/copy.json)]
 
@@ -243,7 +243,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 若要測試範例，請執行應用程式，並使用下列設定來傳送 HTTP 要求：
 
-* URL：`http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`
+* URL： `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`
 * HTTP 方法：`PATCH`
 * 標題：`Content-Type: application/json-patch+json`
 * 主體：從*json*專案資料夾複製並貼上其中一個 json 修補程式檔範例。
@@ -318,7 +318,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 以零為起始的索引可用來指定陣列元素。 `addresses` 陣列的第一個元素會在 `/addresses/0` 上。 若要 `add` 到陣列結尾處，請使用連字號 (-) 而不是索引號碼：`/addresses/-`。
 
-### <a name="operations"></a>操作
+### <a name="operations"></a>作業
 
 下表顯示支援的作業，如 [JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\) 中所定義：
 
@@ -408,17 +408,17 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 此作業在功能上與 `remove` 之後接著 `add` 相同。
 
-下列範例修補文件會設定 `CustomerName` 的值，並使用新的 `Order` 物件來取代 `Orders[0]`。
+下列範例修補文件會設定 `CustomerName` 的值，並使用新的 `Orders[0]` 物件來取代 `Order`。
 
 [!code-json[](jsonpatch/samples/2.2/JSON/replace.json)]
 
 ## <a name="the-move-operation"></a>移動作業
 
-* 如果 `path` 指向陣列元素：將 `from` 元素複製到 `path` 元素的位置，然後在 `from` 元素上執行 `remove` 作業。
-* 如果 `path` 指向屬性：將 `from` 屬性的值複製到 `path` 屬性，然後在 `from` 屬性上執行 `remove` 作業。
+* 如果 `path` 指向陣列元素：將 `from` 元素複製到 `path` 元素的位置，然後在 `remove` 元素上執行 `from` 作業。
+* 如果 `path` 指向屬性：將 `from` 屬性的值複製到 `path` 屬性，然後在 `remove` 屬性上執行 `from` 作業。
 * 如果 `path` 指向不存在的屬性：
   * 如果要修補的資源是靜態物件：要求失敗。
-  * 如果要修補的資源是動態物件：將 `from` 屬性複製到 `path` 所指出的位置，然後在 `from` 屬性上執行 `remove` 作業。
+  * 如果要修補的資源是動態物件：將 `from` 屬性複製到 `path` 所指出的位置，然後在 `remove` 屬性上執行 `from` 作業。
 
 下列範例修補文件：
 
@@ -430,12 +430,12 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 ## <a name="the-copy-operation"></a>複製作業
 
-此作業在功能上與不含最後 `remove` 步驟的 `move` 作業相同。
+此作業在功能上與不含最後 `move` 步驟的 `remove` 作業相同。
 
 下列範例修補文件：
 
 * 將 `Orders[0].OrderName` 的值複製到 `CustomerName`。
-* 在 `Orders[0]` 前面插入 `Orders[1]` 的複本。
+* 在 `Orders[1]` 前面插入 `Orders[0]` 的複本。
 
 [!code-json[](jsonpatch/samples/2.2/JSON/copy.json)]
 
@@ -455,7 +455,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 若要測試範例，請執行應用程式，並使用下列設定來傳送 HTTP 要求：
 
-* URL：`http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`
+* URL： `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`
 * HTTP 方法：`PATCH`
 * 標題：`Content-Type: application/json-patch+json`
 * 主體：從*json*專案資料夾複製並貼上其中一個 json 修補程式檔範例。

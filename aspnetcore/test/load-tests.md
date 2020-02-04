@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/05/2019
 uid: test/loadtests
-ms.openlocfilehash: edaa9e873e8e489f0c560c1736f81358ca1720d0
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: 1fd77a767fb53b9276081dd712e13108094a0382
+ms.sourcegitcommit: cb6015f737b6a93127016ab0f21b58e34b624ff3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289029"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77004288"
 ---
 # <a name="aspnet-core-loadstress-testing"></a>ASP.NET Core 負載/壓力測試
 
@@ -40,7 +40,9 @@ Visual Studio 可讓使用者建立、開發和調試 web 效能和負載測試�
 * [Apache JMeter](https://jmeter.apache.org/)
 * [ApacheBench （ab）](https://httpd.apache.org/docs/2.4/programs/ab.html)
 * [Gatling](https://gatling.io/)
+* [k6](https://k6.io)
 * [Locust](https://locust.io/)
 * [West 風 WebSurge](https://websurge.west-wind.com/)
 * [Netling](https://github.com/hallatore/Netling)
 * [Vegeta](https://github.com/tsenart/vegeta)
+

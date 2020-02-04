@@ -6,24 +6,26 @@ metadata:
   description: 瞭解 ASP.NET Core 檔中的新增和更新內容。
   ms.topic: landing-page
   ms.date: 01/17/2020
-  ms.openlocfilehash: edd748d4d53583e531a280e64979190dcd3c9296
-  ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+  ms.openlocfilehash: c7656fc51e8e8724c1505aecb5b583abbd216928
+  ms.sourcegitcommit: cb6015f737b6a93127016ab0f21b58e34b624ff3
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/24/2020
-  ms.locfileid: "76727417"
+  ms.lasthandoff: 02/04/2020
+  ms.locfileid: "77004327"
 landingContent:
 - title: 尋找 ASP.NET Core 檔更新
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 2020年1月
+      url: 2020-01.md
     - text: 2019 年 12 月
       url: 2019-12.md
-    - text: 2019 年 11 月
+    - text: 2019年11月
       url: 2019-11.md
     - text: 2019 年 10 月
       url: 2019-10.md
-    - text: 2019 年 9 月
+    - text: 2019年9月
       url: 2019-09.md
 - title: 參與-參與 ASP.NET Core 檔
   linkLists:

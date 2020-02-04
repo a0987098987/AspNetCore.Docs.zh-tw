@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 中介軟體和要求管線。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/19/2019
+ms.date: 02/02/2020
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 63566c1642e17ad333bb65b122330d11c4472aff
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 5c8e9e58ab222e482ef029f5099d0a8acd07d8a6
+ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355009"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76972026"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -226,6 +226,7 @@ ASP.NET Core 隨附下列中介軟體元件。 「順序」欄說明 中介軟�
 | [診斷](xref:fundamentals/error-handling) | 提供開發人員例外狀況頁面、例外狀況處理、狀態字碼頁，以及新應用程式的預設網頁的數個個別中介軟體。 | 在產生錯誤的元件之前。 終端機的例外狀況，或為新的應用程式提供預設的網頁。 |
 | [轉送標頭](xref:host-and-deploy/proxy-load-balancer) | 將設為 Proxy 的標頭轉送到目前要求。 | 在使用更新方法的欄位之前。 範例：配置、主機，用戶端 IP、方法。 |
 | [健康狀態檢查](xref:host-and-deploy/health-checks) | 檢查 ASP.NET Core 應用程式及其相依性的健康狀態，例如檢查資料庫可用性。 | 若某項要求與健康狀態檢查端點相符，則會是終端機。 |
+| [標頭傳播](xref:fundamentals/http-requests#header-propagation-middleware) | 將 HTTP 標頭從傳入要求傳播到傳出的 HTTP 用戶端要求。 |
 | [HTTP 方法覆寫](xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions) | 允許傳入的 POST 要求覆寫方法。 | 在使用更新方法的元件之前。 |
 | [HTTPS 重新導向](xref:security/enforcing-ssl#require-https) | 將所有 HTTP 要求都重新導向至 HTTPS。 | 在使用 URL 的元件之前。 |
 | [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | 增強安全性的中介軟體，可新增特殊的回應標頭。 | 在傳送回應前和修改要求的元件後。 範例：轉送的標頭、URL 重寫。 |

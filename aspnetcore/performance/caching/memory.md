@@ -4,14 +4,14 @@ author: rick-anderson
 description: 了解如何快取 ASP.NET Core 中的資料和記憶體。
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/2/2019
+ms.date: 02/02/2020
 uid: performance/caching/memory
-ms.openlocfilehash: eb40026bc9686357cc7cfb8a99f127a3b433cb70
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 23acc17c861c203a87b1c113940e7bf42b51e810
+ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866029"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76972010"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>ASP.NET Core 中的記憶體快取
 
@@ -115,7 +115,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 * 如果 web 應用程式主要是快取字串，則每個快取專案大小都可以是字串長度。
 * 應用程式可以將所有專案的大小指定為1，而大小限制是專案的計數。
 
-如果未設定 <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit>，則快取會成長而不受限制。 當系統記憶體不足時，ASP.NET Core 執行時間不會修剪快取。 應用程式的架構大致如下：
+如果未設定 <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit>，則快取會成長而不受限制。 當系統記憶體不足時，ASP.NET Core 執行時間不會修剪快取。 應用程式必須架構為：
 
 * 限制快取成長。
 * 當可用的記憶體受到限制時，呼叫 <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*> 或 <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*>：

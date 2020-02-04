@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 uid: performance/caching/response
-ms.openlocfilehash: e20c197c7ce3334d4f4f0b917d1fc94174e6c615
-ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
+ms.openlocfilehash: ab5d1414ae72edade81ab55aef6b0fa5af30f0f4
+ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75914205"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76971981"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core 中的回應快取
 
@@ -43,7 +43,7 @@ ms.locfileid: "75914205"
 
 | 標頭                                                     | 函數 |
 | ---------------------------------------------------------- | -------- |
-| [年齡](https://tools.ietf.org/html/rfc7234#section-5.1)     | 在源伺服器上產生或成功驗證回應後的時間量估計（以秒為單位）。 |
+| [存在](https://tools.ietf.org/html/rfc7234#section-5.1)     | 在源伺服器上產生或成功驗證回應後的時間量估計（以秒為單位）。 |
 | [失效](https://tools.ietf.org/html/rfc7234#section-5.3) | 回應被視為過時的時間。 |
 | [雜](https://tools.ietf.org/html/rfc7234#section-5.4)  | 存在以提供與 HTTP/1.0 快取的回溯相容性，以設定 `no-cache` 行為。 如果 `Cache-Control` 標頭存在，則會忽略 `Pragma` 標頭。 |
 | [相同](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | 指定必須等到快取回應的原始要求和新要求中都符合所有 `Vary` 標頭欄位時，才傳送快取的回應。 |

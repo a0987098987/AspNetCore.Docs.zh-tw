@@ -7,12 +7,12 @@ ms.author: stevesa
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: spa/angular
-ms.openlocfilehash: 62654ca040be99de8063a63c7e4ac09cbb8564eb
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 150b2176eac2e68c1ef9ec6deabb087836ff84ce
+ms.sourcegitcommit: cb6015f737b6a93127016ab0f21b58e34b624ff3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080408"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77004262"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Angular 專案範本
 
@@ -53,7 +53,7 @@ Now listening on: http://localhost:<port>
 
 在瀏覽器中開啟這個 URL。
 
-應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 系統會記錄一則類似下面的訊息：*NG Live 程式開發伺服器正在接聽&lt;localhost： otherport&gt;，開啟您的 http://localhost:&lt 瀏覽器; otherport&gt; /* 。 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
+應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 系統會記錄一則類似下列的訊息：*NG Live Development Server is listening on localhost:&lt;otherport&gt;, open your browser on http://localhost:&lt;otherport&gt;/* . 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
 
 ---
 
@@ -61,7 +61,7 @@ Now listening on: http://localhost:<port>
 
 ## <a name="add-pages-images-styles-modules-etc"></a>新增頁面、影像、樣式、模組等等。
 
-*ClientApp* 目錄包含標準 Angular CLI 應用程式。 如需詳細資訊，請參閱 [Angular 文件](https://github.com/angular/angular-cli/wiki) \(英文\)。
+*ClientApp* 目錄包含標準 Angular CLI 應用程式。 如需詳細資訊，請參閱 [Angular 文件](https://https://angular.io) \(英文\)。
 
 由此範本所建立的 Angular 應用程式，以及由 Angular CLI 本身所建立 (透過 `ng new`) 的 Angular 應用程式之間存在些許不同，不過應用程式的功能是一樣的。 由範本所建立的應用程式包含以 [Bootstrap](https://getbootstrap.com/) \(英文\) 為基礎的配置，以及基本的路由範例。
 
@@ -73,7 +73,7 @@ Now listening on: http://localhost:<port>
 cd ClientApp
 ```
 
-如果您已經以全域的方式安裝 `ng` 工具，則可以執行它的任何命令。 例如，您可以執行 `ng lint`、`ng test` 或任何其他 [Angular CLI 命令](https://github.com/angular/angular-cli/wiki#additional-commands) \(英文\)。 您並不需要執行 `ng serve`，因為 ASP.NET Core 應用程式會負責提供應用程式的伺服器端和用戶端部分。 它會在內部針對開發使用 `ng serve`。
+如果您已經以全域的方式安裝 `ng` 工具，則可以執行它的任何命令。 例如，您可以執行 `ng lint`、`ng test` 或任何其他 [Angular CLI 命令](https://angular.io/cli) \(英文\)。 您並不需要執行 `ng serve`，因為 ASP.NET Core 應用程式會負責提供應用程式的伺服器端和用戶端部分。 它會在內部針對開發使用 `ng serve`。
 
 如果您尚未安裝 `ng` 工具，請改為執行 `npm run ng`。 例如，您可以選擇執行 `npm run ng lint` 或 `npm run ng test`。
 

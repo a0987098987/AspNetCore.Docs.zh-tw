@@ -5,17 +5,17 @@ description: 探索 ASP.NET Core Blazor，這是在 ASP.NET Core 應用程式中
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 12/18/2019
+ms.date: 01/31/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 9f43735fc02ba9f8da4ba27c8b5763d587b5429a
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 02c95c19ebfb5ea6ad722f9d49f4cddc7471f8e1
+ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159920"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77034075"
 ---
 # <a name="introduction-to-aspnet-core-opno-locblazor"></a>ASP.NET Core Blazor 簡介
 
@@ -38,7 +38,7 @@ Blazor 是使用 .NET 建立互動式用戶端 web UI 的架構：
 * 使用 Windows、Linux 和 macOS 版的 Visual Studio 保持生產力。
 * 以常用的語言、架構和工具建置，不僅穩定、功能豐富，而且容易使用。
 
-## <a name="components"></a>元件
+## <a name="components"></a>Components
 
 Blazor 應用程式是以*元件*為基礎。 Blazor 中的元件是 UI 的元素，例如頁面、對話方塊或資料輸入表單。
 
@@ -49,7 +49,7 @@ Blazor 應用程式是以*元件*為基礎。 Blazor 中的元件是 UI 的元�
 * 可以為巢狀結構，且可重複使用。
 * 能以 [Razor 類別庫](xref:razor-pages/ui-class)或 [NuGet 套件](/nuget/what-is-nuget)方式共用及散發。
 
-該元件類別通常使用副檔名為 *.razor* 的 [Razor](xref:mvc/views/razor) 標記頁面形式撰寫而成。 Blazor 中的元件正式稱為*Razor 元件*。 Razor 是結合了 HTML 標記與 C# 程式碼的語法，專為開發人員的生產力而設計。 Razor 可讓您在同一個具有 [IntelliSense](/visualstudio/ide/using-intellisense) 支援的檔案中，於 HTML 標記和 C# 之間切換。 Razor Pages 和 MVC 也會使用 Razor。 不同於 Razor Pages 和 MVC，它們是圍繞著要求/回應模型而建置的，元件則是專門用來處理用戶端 UI 邏輯與組合。
+該元件類別通常使用副檔名為 [.razor](xref:mvc/views/razor) 的 *Razor* 標記頁面形式撰寫而成。 Blazor 中的元件正式稱為*Razor 元件*。 Razor 是結合了 HTML 標記與 C# 程式碼的語法，專為開發人員的生產力而設計。 Razor 可讓您在同一個具有 [IntelliSense](/visualstudio/ide/using-intellisense) 支援的檔案中，於 HTML 標記和 C# 之間切換。 Razor Pages 和 MVC 也會使用 Razor。 不同於 Razor Pages 和 MVC，它們是圍繞著要求/回應模型而建置的，元件則是專門用來處理用戶端 UI 邏輯與組合。
 
 下列 Razor 標記示範一個元件 (*Dialog.razor*)，此元件可巢狀於另一個元件內：
 
@@ -140,7 +140,7 @@ Blazor 伺服器用來與瀏覽器通訊的連接也會用來處理 JavaScript i
 
 ## <a name="javascript-interop"></a>JavaScript Interop
 
-對於需要協力廠商 JavaScript 程式庫和瀏覽器 API 存取的應用程式，元件能夠和 JavaScript 交互操作。 元件可以使用 JavaScript 可以使用的任何程式庫或 API。 C# 程式碼可以呼叫進入 JavaScript 程式碼，而 JavaScript 程式碼可以呼叫進入 C# 程式碼。 如需詳細資訊，請參閱<xref:blazor/javascript-interop>。
+對於需要協力廠商 JavaScript 程式庫和瀏覽器 API 存取的應用程式，元件能夠和 JavaScript 交互操作。 元件可以使用 JavaScript 可以使用的任何程式庫或 API。 C# 程式碼可以呼叫進入 JavaScript 程式碼，而 JavaScript 程式碼可以呼叫進入 C# 程式碼。 如需詳細資訊，請參閱 <xref:blazor/javascript-interop>。
 
 ## <a name="code-sharing-and-net-standard"></a>程式碼共用和 .NET Standard
 
@@ -152,6 +152,7 @@ Blazor 會實行[.NET Standard 2.0](/dotnet/standard/net-standard)。 .NET Stand
 
 * [WebAssembly](https://webassembly.org/)
 * <xref:blazor/hosting-models>
+* <xref:tutorials/signalr-blazor-webassembly>
 * [C# 指南](/dotnet/csharp/)
 * <xref:mvc/views/razor>
 * [HTML](https://www.w3.org/html/)

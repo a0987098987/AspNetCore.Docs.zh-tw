@@ -5,17 +5,17 @@ description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/31/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 145f385fd6c5d04510a4ac15a41b879591ab5caa
-ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
+ms.openlocfilehash: 7b4d4aca0bc4650c31bc8e5c4a84ecbad6a49b09
+ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76885522"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77034079"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -35,7 +35,7 @@ Blazor 的主要裝載模型是在 WebAssembly 的瀏覽器中執行用戶端。
 
 若要使用用戶端裝載模型來建立 Blazor 應用程式，請使用**Blazor WebAssembly 應用程式**範本（[dotnet new blazorwasm](/dotnet/core/tools/dotnet-new)）。
 
-選取 [ **Blazor WebAssembly 應用程式**] 範本之後，您可以選擇將應用程式設定為使用 ASP.NET Core 後端，方法是選取 [ **ASP.NET Core**裝載] 核取方塊（[dotnet] [[新增 blazorwasm-](/dotnet/core/tools/dotnet-new)裝載）]。 ASP.NET Core 應用程式會將 Blazor 應用程式提供給用戶端。 Blazor WebAssembly 應用程式可以使用 Web API 呼叫或[SignalR](xref:signalr/introduction)，透過網路與伺服器互動。
+選取 [ **Blazor WebAssembly 應用程式**] 範本之後，您可以選擇將應用程式設定為使用 ASP.NET Core 後端，方法是選取 [ **ASP.NET Core**裝載] 核取方塊（[dotnet] [[新增 blazorwasm-](/dotnet/core/tools/dotnet-new)裝載）]。 ASP.NET Core 應用程式會將 Blazor 應用程式提供給用戶端。 Blazor WebAssembly 應用程式可以使用 Web API 呼叫或[SignalR](xref:signalr/introduction) （<xref:tutorials/signalr-blazor-webassembly>），透過網路與伺服器互動。
 
 這些範本包含的 `blazor.webassembly.js` 腳本會處理：
 
@@ -212,7 +212,7 @@ Blazor 中的 UI 更新會由下列觸發：
    });
    ```
 
-1. 將可路由的元件新增至應用程式。 例如：
+1. 將可路由的元件新增至應用程式。 例如，
 
    ```razor
    @page "/counter"
@@ -222,7 +222,7 @@ Blazor 中的 UI 更新會由下列觸發：
    ...
    ```
 
-   使用自訂資料夾來保存應用程式的元件時，請將代表資料夾的命名空間新增至*Pages/_ViewImports. cshtml*檔案。 如需詳細資訊，請參閱<xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps>。
+   使用自訂資料夾來保存應用程式的元件時，請將代表資料夾的命名空間新增至*Pages/_ViewImports. cshtml*檔案。 如需詳細資訊，請參閱 <xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps>。
 
 #### <a name="use-routable-components-in-an-mvc-app"></a>在 MVC 應用程式中使用可路由的元件
 
@@ -280,7 +280,7 @@ Blazor 中的 UI 更新會由下列觸發：
    });
    ```
 
-1. 建立*Pages*資料夾，並將可路由的元件新增至應用程式。 例如：
+1. 建立*Pages*資料夾，並將可路由的元件新增至應用程式。 例如，
 
    ```razor
    @page "/counter"
@@ -290,7 +290,7 @@ Blazor 中的 UI 更新會由下列觸發：
    ...
    ```
 
-   使用自訂資料夾來存放應用程式的元件時，請將代表資料夾的命名空間新增至*Views/_ViewImports. cshtml*檔案。 如需詳細資訊，請參閱<xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps>。
+   使用自訂資料夾來存放應用程式的元件時，請將代表資料夾的命名空間新增至*Views/_ViewImports. cshtml*檔案。 如需詳細資訊，請參閱 <xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps>。
 
 ### <a name="circuits"></a>獲得
 
@@ -306,7 +306,7 @@ UI 延遲是從起始的動作到 UI 更新時間所花費的時間。 較小的
 
 對於僅限於私人商業網路的企業營運應用程式，通常會 imperceptible 因網路延遲而對使用者的延遲所造成的影響。 對於透過網際網路部署的應用程式，使用者的延遲可能會很明顯，尤其是在地理位置廣泛散佈的使用者時。
 
-記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。 如需詳細資訊，請參閱<xref:security/blazor/server>。
+記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。 如需詳細資訊，請參閱 <xref:security/blazor/server>。
 
 Blazor 伺服器應用程式應該經過優化，藉由減少網路延遲和記憶體使用量，將 UI 延遲降到最低。 如需測量網路延遲的方法，請參閱 <xref:host-and-deploy/blazor/server#measure-network-latency>。 如需 SignalR 和 Blazor 的詳細資訊，請參閱：
 
@@ -321,7 +321,7 @@ Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果
 
 Blazor 伺服器應用程式會 prerenders，以回應第一個用戶端要求，這會在伺服器上設定 UI 狀態。 當用戶端嘗試建立 SignalR 連接時，用戶端必須重新連線到相同的伺服器。 使用一部以上後端伺服器的 Blazor 伺服器應用程式應該針對 SignalR 連線執行*粘滯會話*。
 
-我們建議使用 Blazor 伺服器應用程式的[Azure SignalR Service](/azure/azure-signalr) 。 此服務可讓您將 Blazor 伺服器應用程式相應增加為大量的並行 SignalR 連接。 藉由將服務的 `ServerStickyMode` 選項或設定值設為 [`Required`]，來啟用 Azure SignalR Service 的 [粘滯會話]。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/server#signalr-configuration>。
+我們建議使用 Blazor 伺服器應用程式的[Azure SignalR Service](/azure/azure-signalr) 。 此服務可讓您將 Blazor 伺服器應用程式相應增加為大量的並行 SignalR 連接。 藉由將服務的 `ServerStickyMode` 選項或設定值設為 [`Required`]，來啟用 Azure SignalR Service 的 [粘滯會話]。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/server#signalr-configuration>。
 
 使用 IIS 時，會使用應用程式要求路由來啟用「粘滯會話」。 如需詳細資訊，請參閱[使用應用程式要求路由的 HTTP 負載平衡](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
 
@@ -504,3 +504,4 @@ public class WeatherForecastService
 
 * <xref:blazor/get-started>
 * <xref:signalr/introduction>
+* <xref:tutorials/signalr-blazor-webassembly>

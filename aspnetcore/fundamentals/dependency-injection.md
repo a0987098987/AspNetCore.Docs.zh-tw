@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 如何實作相依性插入以及如何使用�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/30/2020
+ms.date: 02/05/2020
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: a9d268489ebcef69d64c6fd65087bc38a3581821
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: 7c0789dafcb7dfacd15ac448a39bad94649963c8
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928411"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77044923"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -272,13 +272,13 @@ public void ConfigureServices(IServiceCollection services)
 
 服務註冊擴充方法提供在特定案例中很有用的多載。
 
-| 方法 | 自動<br>物件<br>處置 | 選擇性顯示<br>實作 | 傳遞引數 |
+| 方法 | 自動<br>object<br>處置 | 選擇性顯示<br>實作 | 傳遞引數 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | 是 | 是 | 否 |
-| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 是 | 是 | 是 |
+| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>例如：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 是 | 是 | 是 |
 | `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<MyDep>();` | 是 | 否 | 否 |
-| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 否 | 是 | 是 |
-| `AddSingleton(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 否 | 否 | 是 |
+| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>例如：<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 否 | 是 | 是 |
+| `AddSingleton(new {IMPLEMENTATION})`<br>例如：<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 否 | 否 | 是 |
 
 如需類型處置的詳細資訊，請參閱[＜服務處置＞](#disposal-of-services)一節。 多個實作的常見案例是[模擬測試類型](xref:test/integration-tests#inject-mock-services)。
 
@@ -292,7 +292,7 @@ services.AddSingleton<IMyDependency, MyDependency>();
 services.TryAddSingleton<IMyDependency, DifferentDependency>();
 ```
 
-如需詳細資訊，請參閱＜＞。
+如需詳細資訊，請參閱：
 
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAdd*>
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddTransient*>
@@ -417,32 +417,32 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 控制器作業：
 
 暫時性： d233e165-f417-469b-a866-1cf1935d2518  
-具範圍： 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
-單一資料庫： 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-執行個體： 00000000-0000-0000-0000-000000000000
+具範圍：5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+單一資料庫：01271bc1-9e31-48e7-8f7c-7261b040ded9  
+執行個體：00000000-0000-0000-0000-000000000000
 
 `OperationService` 作業：
 
 暫時性： c6b049eb-1318-4e31-90f1-eb2dd849ff64  
-具範圍： 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
-單一資料庫： 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-執行個體： 00000000-0000-0000-0000-000000000000
+具範圍：5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+單一資料庫：01271bc1-9e31-48e7-8f7c-7261b040ded9  
+執行個體：00000000-0000-0000-0000-000000000000
 
 **:第二個要求：**
 
 控制器作業：
 
 暫時性： b63bd538-0a37-4ff1-90ba-081c5138dda0  
-具範圍： 31e820c5-4834-4d22-83fc-a60118acb9f4  
-單一資料庫： 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-執行個體： 00000000-0000-0000-0000-000000000000
+具範圍：31e820c5-4834-4d22-83fc-a60118acb9f4  
+單一資料庫：01271bc1-9e31-48e7-8f7c-7261b040ded9  
+執行個體：00000000-0000-0000-0000-000000000000
 
 `OperationService` 作業：
 
 暫時性： c4cbacb8-36a2-436d-81c8-8c1b78808aaf  
-具範圍： 31e820c5-4834-4d22-83fc-a60118acb9f4  
-單一資料庫： 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-執行個體： 00000000-0000-0000-0000-000000000000
+具範圍：31e820c5-4834-4d22-83fc-a60118acb9f4  
+單一資料庫：01271bc1-9e31-48e7-8f7c-7261b040ded9  
+執行個體：00000000-0000-0000-0000-000000000000
 
 觀察哪些 `OperationId` 值在要求內以及要求之間不同：
 
@@ -544,9 +544,19 @@ public class Program
 
 ## <a name="scope-validation"></a>範圍驗證
 
-當應用程式在開發環境中執行時，預設服務提供者會執行檢查以確認：
+::: moniker range=">= aspnetcore-3.0"
 
-* 範圍服務不是直接或間接由開機服務提供者解析。
+當應用程式在開發環境中執行並呼叫[CreateDefaultBuilder](xref:fundamentals/host/generic-host#default-builder-settings)來建立主機時，預設服務提供者會執行檢查以確認：
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+當應用程式在開發環境中執行並呼叫[CreateDefaultBuilder](xref:fundamentals/host/web-host#set-up-a-host)來建立主機時，預設服務提供者會執行檢查以確認：
+
+::: moniker-end
+
+* 範圍服務不是直接或間接由根服務提供者解析。
 * 範圍服務不是直接或間接插入至單一服務。
 
 根服務提供者會在呼叫 <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider*> 時建立。 當提供者啟動應用程式時，根服務提供者的存留期與應用程式/伺服器的存留期一致，並會在應用程式關閉時處置。

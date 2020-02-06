@@ -5,14 +5,14 @@ description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 02/06/2020
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: d4b540de50f4153f517f871f037521347fb5eb84
-ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
+ms.openlocfilehash: 71f7bf3f5dcf8068d0ada03675ef7948267b79f4
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76971996"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77044900"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -22,7 +22,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
@@ -50,8 +50,10 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 * 將主機存留期設定為 `WindowsServiceLifetime`。
 * 將[內容根目錄](xref:fundamentals/index#content-root)設定為[AppCoNtext. BaseDirectory](xref:System.AppContext.BaseDirectory)。 如需詳細資訊，請參閱[目前目錄與內容根目錄](#current-directory-and-content-root)一節。
-* 啟用使用應用程式名稱作為預設來源名稱記錄至事件記錄檔。
-  * 您可以使用 *appsettings.Production.json* 檔案中的 `Logging:LogLevel:Default` 機碼來設定記錄層級。
+* 啟用記錄至事件記錄檔：
+  * 應用程式名稱會用來做為預設的來源名稱。
+  * 根據會呼叫 `CreateDefaultBuilder` 來建立主機的 ASP.NET Core 範本，應用程式的預設記錄層級為*警告*或更高。
+  * 使用*appsettings*中的 `Logging:EventLog:LogLevel:Default` 金鑰覆寫/appsettings 中的預設記錄層級 *。 {環境}. json*或其他設定提供者。
   * 只有系統管理員才能建立新的事件來源。 如果無法使用應用程式名稱建立事件來源，則會向「應用程式」來源記錄警告，並停用事件記錄檔。
 
 在*Program.cs*的 `CreateHostBuilder` 中：
@@ -77,12 +79,12 @@ Host.CreateDefaultBuilder(args)
 
 若要在於服務外執行時測試及偵錯，請新增程式碼以判斷應用程式是以服務形式執行或以主控台應用程式形式執行。 檢查偵錯工具是否已附加或 `--console` 切換參數是否存在。 若任一條件為真 (應用程式不是以服務形式執行)，請呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*>。 若條件為偽 (應用程式是以服務形式執行)：
 
-* 呼叫 <xref:System.IO.Directory.SetCurrentDirectory*> 並使用應用程式發佈位置的路徑。 請勿呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 來取得路徑，因為當呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 時，Windows 服務應用程式會傳回 *C:\\WINDOWS\\system32* 資料夾。 如需詳細資訊，請參閱[目前目錄與內容根目錄](#current-directory-and-content-root)一節。 在 `CreateWebHostBuilder` 中設定應用程式之前執行此步驟。
+* 呼叫 <xref:System.IO.Directory.SetCurrentDirectory*> 並使用應用程式發佈位置的路徑。 請勿呼叫 <xref:System.IO.Directory.GetCurrentDirectory*> 來取得路徑，因為當呼叫  *時，Windows 服務應用程式會傳回 \\C:\\WINDOWS*system32<xref:System.IO.Directory.GetCurrentDirectory*> 資料夾。 如需詳細資訊，請參閱[目前目錄與內容根目錄](#current-directory-and-content-root)一節。 在 `CreateWebHostBuilder` 中設定應用程式之前執行此步驟。
 * 呼叫 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> 以服務形式執行應用程式。
 
-因為[命令列設定提供者](xref:fundamentals/configuration/index#command-line-configuration-provider)需要命令列引數的名稱值組，在 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 收到引數之前，`--console` 切換參數就會從引數中移除。
+因為[命令列設定提供者](xref:fundamentals/configuration/index#command-line-configuration-provider)需要命令列引數的名稱值組，在 `--console` 收到引數之前，<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 切換參數就會從引數中移除。
 
-若要寫入 Windows 事件記錄檔，請新增 EventLog 提供者到 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>。 使用 *appsettings.Production.json* 檔案中的 `Logging:LogLevel:Default` 機碼設定記錄層級。
+若要寫入 Windows 事件記錄檔，請新增 EventLog 提供者到 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>。 使用 `Logging:LogLevel:Default`appsettings.Production.json*檔案中的* 機碼設定記錄層級。
 
 在範例應用程式的下列範例中，為了處理應用程式內的存留期事件，會呼叫 `RunAsCustomService` 而不是 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>。 如需詳細資訊，請參閱[處理開始與停止事件](#handle-starting-and-stopping-events)一節。
 
@@ -207,7 +209,7 @@ powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 
 在系統提示時提供[強式密碼](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)。
 
-除非搭配過期 <xref:System.DateTime> 將 `-AccountExpires` 參數提供給 [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) Cmdlet，否則該帳戶將不會過期。
+除非搭配過期 `-AccountExpires` 將 [ 參數提供給 ](/powershell/module/microsoft.powershell.localaccounts/new-localuser)New-LocalUser<xref:System.DateTime> Cmdlet，否則該帳戶將不會過期。
 
 如需詳細資訊，請參閱 [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) 和[服務使用者帳戶](/windows/desktop/services/service-user-accounts)。
 
@@ -296,7 +298,7 @@ Remove-Service -Name {SERVICE NAME}
 
 若要處理 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarting*>、<xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarted*> 與 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStopping*> 事件：
 
-1. 使用 `OnStarting`、`OnStarted` 與 `OnStopping` 方法建立衍生自 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService> 的類別：
+1. 使用 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService>、`OnStarting` 與 `OnStarted` 方法建立衍生自 `OnStopping` 的類別：
 
    [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/CustomWebHostService.cs?name=snippet_CustomWebHostService)]
 
@@ -310,13 +312,13 @@ Remove-Service -Name {SERVICE NAME}
    host.RunAsCustomService();
    ```
 
-   若要查看 `Program.Main` 中的 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> 位置，請參閱[部署類型](#deployment-type)一節中的範例程式碼。
+   若要查看 <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> 中的 `Program.Main` 位置，請參閱[部署類型](#deployment-type)一節中的範例程式碼。
 
 ::: moniker-end
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
-服務如果會與來自網際網路或公司網路的要求進行互動，並且位於 Proxy 或負載平衡器後方，可能會需要額外的設定。 如需詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
+服務如果會與來自網際網路或公司網路的要求進行互動，並且位於 Proxy 或負載平衡器後方，可能會需要額外的設定。 如需詳細資訊，請參閱 <xref:host-and-deploy/proxy-load-balancer>。
 
 ## <a name="configure-endpoints"></a>設定端點
 
@@ -376,13 +378,13 @@ CreateWebHostBuilder(args)
 
 ### <a name="store-a-services-files-in-a-suitable-location-on-disk"></a>將服務的檔案儲存在磁碟上的適當位置
 
-使用包含檔案的 <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> 資料夾，使用 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 來指定絕對路徑。
+使用包含檔案的 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 資料夾，使用 <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> 來指定絕對路徑。
 
 ## <a name="troubleshoot"></a>疑難排解
 
 若要疑難排解 Windows 服務應用程式，請參閱 <xref:test/troubleshoot>。
 
-### <a name="common-errors"></a>常見的錯誤
+### <a name="common-errors"></a>常見錯誤
 
 * 舊版或發行前版本的 PowerShell 已在使用中。
 * 已註冊的服務不會使用來自[dotnet publish](/dotnet/core/tools/dotnet-publish)命令的應用程式**已發佈**輸出。 應用程式部署不支援[dotnet build](/dotnet/core/tools/dotnet-build)命令的輸出。 根據部署類型，可以在下列其中一個資料夾中找到已發佈的資產：

@@ -5,14 +5,14 @@ description: 了解如何開始使用適用於 Angular 與 Angular CLI 的 ASP.N
 monikerRange: '>= aspnetcore-2.1'
 ms.author: stevesa
 ms.custom: mvc
-ms.date: 03/07/2019
+ms.date: 02/06/2020
 uid: spa/angular
-ms.openlocfilehash: 150b2176eac2e68c1ef9ec6deabb087836ff84ce
-ms.sourcegitcommit: cb6015f737b6a93127016ab0f21b58e34b624ff3
+ms.openlocfilehash: 11ad5d4c7cadcc582b3e288a331569f62f0b98ac
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77004262"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77044850"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Angular 專案範本
 
@@ -61,7 +61,7 @@ Now listening on: http://localhost:<port>
 
 ## <a name="add-pages-images-styles-modules-etc"></a>新增頁面、影像、樣式、模組等等。
 
-*ClientApp* 目錄包含標準 Angular CLI 應用程式。 如需詳細資訊，請參閱 [Angular 文件](https://https://angular.io) \(英文\)。
+*ClientApp* 目錄包含標準 Angular CLI 應用程式。 如需詳細資訊，請參閱 [Angular 文件](https://angular.io) \(英文\)。
 
 由此範本所建立的 Angular 應用程式，以及由 Angular CLI 本身所建立 (透過 `ng new`) 的 Angular 應用程式之間存在些許不同，不過應用程式的功能是一樣的。 由範本所建立的應用程式包含以 [Bootstrap](https://getbootstrap.com/) \(英文\) 為基礎的配置，以及基本的路由範例。
 
@@ -98,7 +98,7 @@ npm install --save <package_name>
 
 專案已設定為會在 ASP.NET Core 應用程式於開發模式中啟動時，在背景啟動屬於自己的 Angular CLI 伺服器執行個體。 這很方便，因為您不需要手動執行個別的伺服器。
 
-此預設設定有一個缺點。 每當您修改 C# 程式碼，且需要重新啟動 ASP.NET Core 應用程式時，Angular CLI 伺服器都會重新啟動。 開始備份需要大約 10 秒鐘的時間。 如果您經常編輯 C# 程式碼，但又不想要等候 Angular CLI 重新啟動，請獨立於 ASP.NET Core 處理序，於外部執行 Angular CLI 伺服器。 方法如下：
+此預設設定有一個缺點。 每當您修改 C# 程式碼，且需要重新啟動 ASP.NET Core 應用程式時，Angular CLI 伺服器都會重新啟動。 開始備份需要大約 10 秒鐘的時間。 如果您經常編輯 C# 程式碼，但又不想要等候 Angular CLI 重新啟動，請獨立於 ASP.NET Core 處理序，於外部執行 Angular CLI 伺服器。 若要這樣做：
 
 1. 在命令提示字元中，切換至 *ClientApp* 子目錄，然後啟動 Angular CLI 程式開發伺服器：
 
@@ -108,7 +108,7 @@ npm install --save <package_name>
     ```
 
     > [!IMPORTANT]
-    > 使用 `npm start` 來啟動 Angular CLI 程式開發伺服器，而不是 `ng serve`，以遵守 *package.json* 中的設定。 若要將其他參數傳遞給 Angular CLI 伺服器，請將它們新增至 *package.json* 檔案中相關的 `scripts` 行。
+    > 使用 `npm start` 來啟動 Angular CLI 程式開發伺服器，而不是 `ng serve`，以遵守 *package.json* 中的設定。 若要將其他參數傳遞給 Angular CLI 伺服器，請將它們新增至 `scripts`package.json*檔案中相關的* 行。
 
 2. 修改您的 ASP.NET Core 應用程式來使用外部的 Angular CLI 執行個體，而非自行啟動執行個體。 在 *Startup* 類別中，將 `spa.UseAngularCliServer` 引動過程取代為：
 

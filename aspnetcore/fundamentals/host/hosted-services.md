@@ -5,14 +5,14 @@ description: 了解如何在 ASP.NET Core 中使用託管服務實作背景工�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/08/2020
+ms.date: 02/05/2020
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 49229b5db4d58f25f86425f8622d12c9107262bd
-ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
+ms.openlocfilehash: 6a88e56afc4fb1b4f673c362f83d948eda84b930
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75914217"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77044878"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
@@ -40,7 +40,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 [!INCLUDE[](~/includes/worker-template-instructions.md)]
 
-## <a name="package"></a>套件
+## <a name="package"></a>Package
 
 以背景工作角色服務範本為基礎的應用程式會使用 `Microsoft.NET.Sdk.Worker` SDK，並具有對[Microsoft Extensions. 裝載](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)封裝的明確套件參考。 例如，請參閱範例應用程式的專案檔（*BackgroundTasksSample .csproj*）。
 
@@ -95,10 +95,10 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
   若要延長預設的五秒鐘關機逾時，請設定：
 
-  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> (使用泛型主機時)。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host#shutdown-timeout>。
-  * 使用 Web 主機時，關機逾時會裝載組態設定。 如需詳細資訊，請參閱<xref:fundamentals/host/web-host#shutdown-timeout>。
+  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> (使用泛型主機時)。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host#shutdown-timeout>。
+  * 使用 Web 主機時，關機逾時會裝載組態設定。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host#shutdown-timeout>。
 
-託管服務會在應用程式啟動時隨即啟動，然後在應用程式關閉時正常關閉。 如果在背景工作執行期間擲回錯誤，即使未呼叫 `StopAsync`，也應該呼叫 `Dispose`。
+託管服務會在應用程式啟動時隨即啟動，然後在應用程式關閉時正常關閉。 如果在背景工作執行期間擲回錯誤，即使未呼叫 `Dispose`，也應該呼叫 `StopAsync`。
 
 ## <a name="backgroundservice-base-class"></a>BackgroundService 基類
 
@@ -124,7 +124,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 若要使用[BackgroundService](#backgroundservice-base-class)內的[範圍服務](xref:fundamentals/dependency-injection#service-lifetimes)，請建立範圍。 根據預設，不會針對託管服務建立任何範圍。
 
-範圍背景工作服務包含背景工作的邏輯。 在下列範例中：
+範圍背景工作服務包含背景工作的邏輯。 在下例中︰
 
 * 服務是非同步。 `DoWork` 方法會傳回 `Task`。 基於示範目的，`DoWork` 方法會等待10秒的延遲。
 * <xref:Microsoft.Extensions.Logging.ILogger> 會插入服務中。
@@ -179,7 +179,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="package"></a>套件
+## <a name="package"></a>Package
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) 套件的套件參考。
 
@@ -187,7 +187,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 託管服務會實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。 此介面針對主機所管理的物件定義兩種方法：
 
-* [StartAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*) &ndash; `StartAsync` 包含啟動背景工作的邏輯。 使用 [Web 主機](xref:fundamentals/host/web-host)時，是在啟動伺服器和觸發 [IApplicationLifetime.ApplicationStarted](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*) 之後才呼叫 `StartAsync`。 使用 [泛型主機](xref:fundamentals/host/generic-host)時，是在觸發 `ApplicationStarted` 之前呼叫 `StartAsync`。
+* [StartAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*) &ndash; `StartAsync` 包含啟動背景工作的邏輯。 使用 [Web 主機](xref:fundamentals/host/web-host)時，是在啟動伺服器和觸發 `StartAsync`IApplicationLifetime.ApplicationStarted[ 之後才呼叫 ](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*)。 使用 [泛型主機](xref:fundamentals/host/generic-host)時，是在觸發 `StartAsync` 之前呼叫 `ApplicationStarted`。
 
 * 當主機執行正常關機時，會觸發[StopAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*) &ndash;。 `StopAsync` 包含用來結束背景工作的邏輯。 實作 <xref:System.IDisposable> 和 [完成項 (解構函式)](/dotnet/csharp/programming-guide/classes-and-structs/destructors) 以處置任何非受控的資源。
 
@@ -202,10 +202,10 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
   若要延長預設的五秒鐘關機逾時，請設定：
 
-  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> (使用泛型主機時)。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host#shutdown-timeout>。
-  * 使用 Web 主機時，關機逾時會裝載組態設定。 如需詳細資訊，請參閱<xref:fundamentals/host/web-host#shutdown-timeout>。
+  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> (使用泛型主機時)。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host#shutdown-timeout>。
+  * 使用 Web 主機時，關機逾時會裝載組態設定。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host#shutdown-timeout>。
 
-託管服務會在應用程式啟動時隨即啟動，然後在應用程式關閉時正常關閉。 如果在背景工作執行期間擲回錯誤，即使未呼叫 `StopAsync`，也應該呼叫 `Dispose`。
+託管服務會在應用程式啟動時隨即啟動，然後在應用程式關閉時正常關閉。 如果在背景工作執行期間擲回錯誤，即使未呼叫 `Dispose`，也應該呼叫 `StopAsync`。
 
 ## <a name="timed-background-tasks"></a>計時背景工作
 
@@ -221,7 +221,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 ## <a name="consuming-a-scoped-service-in-a-background-task"></a>在背景工作中使用範圍服務
 
-若要在 `IHostedService` 內使用[具範圍服務](xref:fundamentals/dependency-injection#service-lifetimes)，請建立一個範圍。 根據預設，不會針對託管服務建立任何範圍。
+若要在 [ 內使用](xref:fundamentals/dependency-injection#service-lifetimes)具範圍服務`IHostedService`，請建立一個範圍。 根據預設，不會針對託管服務建立任何範圍。
 
 範圍背景工作服務包含背景工作的邏輯。 在下列範例中，<xref:Microsoft.Extensions.Logging.ILogger> 會插入至服務：
 
@@ -265,4 +265,5 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 ## <a name="additional-resources"></a>其他資源
 
 * [在微服務中使用 IHostedService 和 BackgroundService 類別實作背景工作](/dotnet/standard/microservices-architecture/multi-container-microservice-net-applications/background-tasks-with-ihostedservice)
+* [在 Azure App Service 中使用 Webjob 執行背景工作](/azure/app-service/webjobs-create)
 * <xref:System.Threading.Timer>

@@ -5,14 +5,14 @@ description: 了解如何使用由 Microsoft.Extensions.Logging NuGet 套件提�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/08/2020
+ms.date: 02/05/2020
 uid: fundamentals/logging/index
-ms.openlocfilehash: f21559e43ae004c81abc18fe8a768d4145ffb184
-ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
+ms.openlocfilehash: 3c75fdc940701b8f4d367990b5073861467079b2
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75914234"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77044905"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>.NET Core 與 ASP.NET Core 中的記錄
 
@@ -48,7 +48,7 @@ ms.locfileid: "75914234"
 
 預設 ASP.NET Core 專案範本會呼叫 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A> 新增下列記錄提供者：
 
-* [主控台](#console-provider)
+* [Console](#console-provider)
 * [偵錯](#debug-provider)
 * [EventSource](#event-source-provider)
 * [EventLog](#windows-eventlog-provider) （僅適用于在 Windows 上執行時）
@@ -131,7 +131,7 @@ ms.locfileid: "75914234"
 
 [!code-csharp[](index/samples_snapshot/3.x/TodoApiSample/Program.cs?highlight=9,10)]
 
-不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來記錄 `CreateHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
+不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用 [Serilog](https://serilog.net/) 記錄器來記錄 `CreateHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
 
 ```csharp
 using System;
@@ -231,7 +231,7 @@ public class Program
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
 
-不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用[Serilog](https://serilog.net/)記錄器來記錄 `CreateWebHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
+不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用 [Serilog](https://serilog.net/) 記錄器來記錄 `CreateWebHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
 
 ```csharp
 using System;
@@ -495,13 +495,13 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 偵錯 = 1
 
-  針對可在開發與偵錯中使用的資訊。 範例：`Entering method Configure with flag set to true.` 由於記錄的數目很龐大，因此除非您正在進行疑難排解，否則通常不會在生產環境中啟用 `Debug` 層級記錄。
+  針對可在開發與偵錯中使用的資訊。 範例：`Entering method Configure with flag set to true.` 只有在進行疑難排解時才在生產環境中啟用 `Debug` 層級記錄，因為此類記錄的數目非常多。
 
 * 資訊 = 2
 
   針對一般應用程式流程的追蹤。 這些記錄通常有一些長期值。 範例：`Request received for path /api/todo`
 
-* Warning = 3
+* 警告 = 3
 
   針對應用程式流程中發生的異常或意外事件。 這些記錄可能包含不會造成應用程式停止，但可能需要進行調查的錯誤或其他狀況。 已處理的例外狀況即為使用 `Warning` 記錄層級的常見位置。 範例：`FileNotFoundException for file quotes.txt.`
 
@@ -513,7 +513,7 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
   發生需要立即注意的失敗。 範例：資料遺失情況、磁碟空間不足。
 
-使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如：
+使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如:
 
 * 在生產環境中：
   * 在 `Trace` 透過 `Information` 層級進行記錄，會產生大量的詳細記錄訊息。 若要控制成本，而不超過資料儲存體限制，請透過 `Information` 層級的訊息，將 `Trace` 記錄到高容量、低成本的資料存放區。
@@ -728,7 +728,7 @@ System.Exception: Item not found exception.
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_FilterInCode&highlight=4-5)]
+[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_FilterInCode&highlight=2-3)]
 
 ::: moniker-end
 
@@ -744,13 +744,13 @@ System.Exception: Item not found exception.
 
 組態資料和上述範例中所示的 `AddFilter` 程式碼會建立下表中所示的規則。 前六項來自組態範例，最後兩項來自程式碼範例。
 
-| Number | Provider      | 開頭如下的類別...          | 最低記錄層級 |
+| Number | 提供者      | 開頭如下的類別...          | 最低記錄層級 |
 | :----: | ------------- | --------------------------------------- | ----------------- |
-| 1      | 偵錯         | 所有類別                          | 資訊       |
+| 1      | 偵錯         | 所有類別                          | 內容       |
 | 2      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Internal | 警告           |
 | 3      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Razor    | 偵錯             |
-| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | 錯誤             |
-| 5      | 主控台       | 所有類別                          | 資訊       |
+| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
+| 5      | 主控台       | 所有類別                          | 內容       |
 | 6      | 所有提供者 | 所有類別                          | 偵錯             |
 | 7      | 所有提供者 | System                                  | 偵錯             |
 | 8      | 偵錯         | Microsoft                               | 追蹤             |
@@ -804,7 +804,7 @@ System.Exception: Item not found exception.
 
 ### <a name="filter-functions"></a>篩選函式
 
-針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如：
+針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如:
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -822,7 +822,7 @@ System.Exception: Item not found exception.
 
 以下是由 ASP.NET Core 與 Entity Framework Core 所使用的一些類別，以及有關它們可傳回哪些記錄的附註：
 
-| 分類                            | 注意事項 |
+| 分類                            | 注意 |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | 一般 ASP.NET Core 診斷。 |
 | Microsoft.AspNetCore.DataProtection | 已考慮、發現及使用哪些金鑰。 |
@@ -888,7 +888,7 @@ warn: TodoApiSample.Controllers.TodoController[4000]
 
 ASP.NET Core 隨附下列提供者：
 
-* [主控台](#console-provider)
+* [Console](#console-provider)
 * [偵錯](#debug-provider)
 * [EventSource](#event-source-provider)
 * [EventLog](#windows-eventlog-provider)
@@ -996,7 +996,7 @@ dotnet tool install --global dotnet-trace
    | 4       | 在呼叫 `ILogger.Log()` 時開啟 `FormatMessage` 事件。 提供資訊的格式化字串版本。 |
    | 8       | 在呼叫 `ILogger.Log()` 時開啟 `MessageJson` 事件。 提供引數的 JSON 標記法。 |
 
-   | 事件等級 | 描述     |
+   | 事件層級 | 描述     |
    | :---------: | --------------- |
    | 0           | `LogAlways`     |
    | 1           | `Critical`      |
@@ -1024,7 +1024,7 @@ dotnet tool install --global dotnet-trace
 
 1. 使用[Perfview](#perfview)開啟追蹤。 開啟*nettrace*檔案，並流覽追蹤事件。
 
-如需詳細資訊，請參閱＜＞。
+如需詳細資訊，請參閱：
 
 * [效能分析公用程式追蹤（dotnet-追蹤）](/dotnet/core/diagnostics/dotnet-trace) （.net Core 檔）
 * [效能分析公用程式追蹤（dotnet 追蹤）](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md) （dotnet/診斷 GitHub 存放庫檔）

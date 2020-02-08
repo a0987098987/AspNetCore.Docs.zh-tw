@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: d7d4eece935bd83b69a6a5d81898012b99d73193
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 59883a8165040fa58edb2f6cf22d4d6b3abf6f3e
+ms.sourcegitcommit: 80286715afb93c4d13c931b008016d6086c0312b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828902"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77074545"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>在 ASP.NET Core 中強制使用 HTTPS
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 本檔說明如何：
 
@@ -259,7 +259,7 @@ ASP.NET Core 2.1 和更新版本使用 `UseHsts` 擴充方法來執行 HSTS。 �
 
 `UseHsts` 不建議在開發中使用，因為瀏覽器會高度快取 HSTS 設定。 根據預設，`UseHsts` 會排除本機回送位址。
 
-若為第一次執行 HTTPS 的生產環境，請使用其中一個 <xref:System.TimeSpan>方法，將初始 [HstsOptions 設定為較小的值](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*)。 如果您需要將 HTTPS 基礎結構還原為 HTTP，請將值從小時設定為不超過一天。 在您確信 HTTPS 設定的持續性之後，請增加 HSTS 的最大壽命值;常使用的值為一年。
+若為第一次執行 HTTPS 的生產環境，請使用其中一個 <xref:System.TimeSpan> 方法，將初始[HstsOptions](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*)設定為較小的值。 如果您需要將 HTTPS 基礎結構還原為 HTTP，請將值從小時設定為不超過一天。 在您確信 HTTPS 設定的持續性之後，請增加 HSTS 的最大壽命值;常使用的值為一年。
 
 下列程式碼範例：
 
@@ -277,7 +277,7 @@ ASP.NET Core 2.1 和更新版本使用 `UseHsts` 擴充方法來執行 HSTS。 �
 ::: moniker-end
 
 
-* 設定嚴格傳輸安全性標頭的預先載入參數。 預先載入不是[RFC HSTS 規格](https://tools.ietf.org/html/rfc6797)的一部分，但 web 瀏覽器支援在全新安裝時預先載入 HSTS 網站。 請參閱 [https://hstspreload.org/](https://hstspreload.org/) 以取得詳細資訊。
+* 設定嚴格傳輸安全性標頭的預先載入參數。 預先載入不是[RFC HSTS 規格](https://tools.ietf.org/html/rfc6797)的一部分，但 web 瀏覽器支援在全新安裝時預先載入 HSTS 網站。 如需詳細資訊，請參閱 [https://hstspreload.org/](https://hstspreload.org/)。
 * 啟用[includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2)，這會將 HSTS 原則套用至裝載子域。
 * 將嚴格傳輸安全性標頭的最大壽命參數明確設定為60天。 如果未設定，則預設為30天。 如需詳細資訊，請參閱[最大壽命](https://tools.ietf.org/html/rfc6797#section-6.1.1)指示詞。
 * 將 `example.com` 新增至要排除的主機清單。
@@ -313,7 +313,7 @@ ASP.NET Core 2.1 和更新版本使用 `UseHsts` 擴充方法來執行 HSTS。 �
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli) 
 
-使用 `--no-https` 選項。 例如
+使用 `--no-https` 選項。 例如：
 
 ```dotnetcli
 dotnet new webapp --no-https
@@ -419,7 +419,7 @@ dotnet dev-certs https --trust
 
 ### <a name="iis-express-ssl-certificate-used-with-visual-studio"></a>搭配 Visual Studio 使用的 IIS Express SSL 憑證
 
-若要修正 IIS Express 憑證的問題，請從 Visual Studio 安裝程式中選取 [**修復**]。
+若要修正 IIS Express 憑證的問題，請從 Visual Studio 安裝程式中選取 [**修復**]。 如需詳細資訊，請參閱[這個 GitHub 問題](https://github.com/dotnet/aspnetcore/issues/16892) \(英文\)。
 
 ## <a name="additional-information"></a>其他資訊
 

@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: 了解篩選條件的運作方式，以及如何在 ASP.NET Core 中使用它們。
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/1/2020
+ms.date: 02/04/2020
 uid: mvc/controllers/filters
-ms.openlocfilehash: 759c150e7f35f3f6a52947edc5ef41448dc227fe
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: c4bb9d5746e494106ead6ad5bbf972bbcc5a39f1
+ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828967"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77034061"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -28,13 +28,16 @@ ASP.NET Core 中的「篩選條件」可讓程式碼在要求處理管線中的�
 
 可以建立自訂篩選條件來處理跨領域關注。 跨領域關注的範例包括錯誤處理、快取、設定、授權及記錄。  篩選能避免重複的程式碼。 例如，錯誤處理例外狀況篩選條件中可以合併錯誤處理。
 
-本文件適用於 Razor Pages、API 控制器，以及具有檢視的控制器。
+本文件適用於 Razor Pages、API 控制器，以及具有檢視的控制器。 篩選器無法直接與[Razor 元件](xref:blazor/components)搭配使用。 篩選器只會在下列情況時間接影響元件：
+
+* 此元件內嵌在頁面或視圖中。
+* 頁面或控制器/視圖會使用篩選準則。
 
 [檢視或下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="how-filters-work"></a>篩選條件如何運作
 
-篩選條件會在「ASP.NET Core 動作引動過程管線」中執行，其有時也被稱為「篩選條件管線」。  在 ASP.NET Core 之後執行的篩選條件管線會選取要執行的動作。
+篩選條件會在「ASP.NET Core 動作引動過程管線」中執行，其有時也被稱為「篩選條件管線」。 在 ASP.NET Core 之後執行的篩選條件管線會選取要執行的動作。
 
 ![此要求會透過其他中介軟體、路由中介軟體、動作選取和動作調用管線來處理。 要求處理繼續往回歷經動作選取、路由中介軟體，以及各種其他中介軟體，然後才能成為傳送至用戶端的回應。](filters/_static/filter-pipeline-1.png)
 
@@ -173,14 +176,14 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
   
 下列範例說明針對同步動作篩選條件呼叫篩選條件方法的順序。
 
-| 序列 | 篩選條件範圍 | Filter 方法 |
+| 順序 | 篩選條件範圍 | Filter 方法 |
 |:--------:|:------------:|:-------------:|
-| 1 | Global | `OnActionExecuting` |
+| 1 | 全域 | `OnActionExecuting` |
 | 2 | 控制器或 Razor 頁面| `OnActionExecuting` |
 | 3 | 方法 | `OnActionExecuting` |
 | 4 | 方法 | `OnActionExecuted` |
 | 5 | 控制器或 Razor 頁面 | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| 6 | 全域 | `OnActionExecuted` |
 
 ### <a name="controller-level-filters"></a>控制器層級篩選
 
@@ -221,8 +224,8 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 可以藉由實作 <xref:Microsoft.AspNetCore.Mvc.Filters.IOrderedFilter> 來覆寫預設執行序列。 `IOrderedFilter` 會公開 <xref:Microsoft.AspNetCore.Mvc.Filters.IOrderedFilter.Order> 屬性，其優先順序會高於範圍以決定執行順序。 具有較低 `Order` 值的篩選條件：
 
-* 在具有較高 `Order` 值的篩選條件之前執行「之前」程式碼。
-* 在具有較高 `Order` 值的篩選條件之後執行「之後」程式碼。
+* 在具有較高  *值的篩選條件之前執行「之前」* `Order`程式碼。
+* 在具有較高  *值的篩選條件之後執行「之後」* `Order`程式碼。
 
 `Order` 屬性是以「函式參數設定：
 
@@ -258,7 +261,7 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 ## <a name="cancellation-and-short-circuiting"></a>取消和縮短
 
-可以設定提供給篩選條件方法之 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext> 參數上的 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext.Result> 屬性，以縮短篩選條件管線。 比方說，下列資源篩選條件可防止管線的其餘部分執行：
+可以設定提供給篩選條件方法之 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext.Result> 參數上的 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext> 屬性，以縮短篩選條件管線。 比方說，下列資源篩選條件可防止管線的其餘部分執行：
 
 <a name="short-circuiting-resource-filter"></a>
 
@@ -269,7 +272,7 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 * 最先執行，因為它是資源篩選條件，且 `AddHeader` 是動作篩選條件。
 * 縮短管線的其餘部分。
 
-因此，`SomeResource` 動作的 `AddHeader` 篩選條件永遠不會執行。 如果這兩個篩選條件都套用在動作方法層級，此行為也會相同，假設 `ShortCircuitingResourceFilter` 先執行的話。 `ShortCircuitingResourceFilter` 會因為其篩選器類型而先執行，或藉由明確使用 `Order` 屬性而先執行。
+因此，`AddHeader` 動作的 `SomeResource` 篩選條件永遠不會執行。 如果這兩個篩選條件都套用在動作方法層級，此行為也會相同，假設 `ShortCircuitingResourceFilter` 先執行的話。 `ShortCircuitingResourceFilter` 會因為其篩選器類型而先執行，或藉由明確使用 `Order` 屬性而先執行。
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]
 
@@ -501,7 +504,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 * 授權篩選或資源篩選器會將管線短路。
 * 例外狀況篩選條件會產生動作結果來處理例外狀況。
 
-藉由將 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel?displayProperty=fullName> 設為 `true`，<xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuting*?displayProperty=fullName> 方法可以縮短動作結果和後續結果篩選條件的執行。 在縮短時寫入至回應物件，以避免產生空的回應。 在 `IResultFilter.OnResultExecuting`中擲回例外狀況：
+藉由將 <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuting*?displayProperty=fullName> 設為 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel?displayProperty=fullName>，`true` 方法可以縮短動作結果和後續結果篩選條件的執行。 在縮短時寫入至回應物件，以避免產生空的回應。 在 `IResultFilter.OnResultExecuting`中擲回例外狀況：
 
 * 防止執行動作結果和後續的篩選準則。
 * 會被視為失敗，而不是成功的結果。
@@ -512,7 +515,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 如果動作結果或後續的結果篩選條件擲回例外狀況，則 `ResultExecutedContext.Exception` 會被設為非 Null 值。 將 `Exception` 設定為 null 會有效率地處理例外狀況，並防止稍後在管線中擲回例外狀況。 並沒有可以在處理結果篩選條件中的例外狀況時，將資料寫入回應的可靠方式。 當動作結果擲回例外狀況時，如果標頭已清除至用戶端，則沒有任何可靠的機制能傳送失敗碼。
 
-針對 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter> 而言，對 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutionDelegate> 上的 `await next` 的呼叫會執行任何後續的結果篩選條件和動作結果。 若要縮短，請將 [ResultExecutingContext.Cancel](xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel) 設定為 `true`，並且不要呼叫 `ResultExecutionDelegate`：
+針對 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter> 而言，對 `await next` 上的 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutionDelegate> 的呼叫會執行任何後續的結果篩選條件和動作結果。 若要縮短，請將 [ResultExecutingContext.Cancel](xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel) 設定為 `true`，並且不要呼叫 `ResultExecutionDelegate`：
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/MyAsyncResponseFilter.cs?name=snippet)]
 
@@ -544,7 +547,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 執行[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample)來測試上述程式碼：
 
 * 叫用 F12 開發人員工具。
-* 巡覽至 `https://localhost:5001/Sample/HeaderWithFactory`。
+* 瀏覽至 `https://localhost:5001/Sample/HeaderWithFactory`。
 
 F12 開發人員工具會顯示由範例程式碼所加入的下列回應標頭：
 
@@ -714,14 +717,14 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
   
 下列範例說明針對同步動作篩選條件呼叫篩選條件方法的順序。
 
-| 序列 | 篩選條件範圍 | Filter 方法 |
+| 順序 | 篩選條件範圍 | Filter 方法 |
 |:--------:|:------------:|:-------------:|
-| 1 | Global | `OnActionExecuting` |
+| 1 | 全域 | `OnActionExecuting` |
 | 2 | 控制器 | `OnActionExecuting` |
 | 3 | 方法 | `OnActionExecuting` |
 | 4 | 方法 | `OnActionExecuted` |
 | 5 | 控制器 | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| 6 | 全域 | `OnActionExecuted` |
 
 此順序顯示：
 
@@ -763,8 +766,8 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 可以藉由實作 <xref:Microsoft.AspNetCore.Mvc.Filters.IOrderedFilter> 來覆寫預設執行序列。 `IOrderedFilter` 會公開 <xref:Microsoft.AspNetCore.Mvc.Filters.IOrderedFilter.Order> 屬性，其優先順序會高於範圍以決定執行順序。 具有較低 `Order` 值的篩選條件：
 
-* 在具有較高 `Order` 值的篩選條件之前執行「之前」程式碼。
-* 在具有較高 `Order` 值的篩選條件之後執行「之後」程式碼。
+* 在具有較高  *值的篩選條件之前執行「之前」* `Order`程式碼。
+* 在具有較高  *值的篩選條件之後執行「之後」* `Order`程式碼。
 
 `Order` 屬性可以搭配建構函式參數設定：
 
@@ -774,12 +777,12 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 請考慮先前範例所示的同樣 3 個動作篩選條件。 如果控制器和全域篩選條件的 `Order` 屬性被個別設定為 1 和 2，執行順序將會反轉。
 
-| 序列 | 篩選條件範圍 | `Order` 屬性 | Filter 方法 |
+| 順序 | 篩選條件範圍 | `Order` 屬性 | Filter 方法 |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | 方法 | 0 | `OnActionExecuting` |
 | 2 | 控制器 | 1  | `OnActionExecuting` |
-| 3 | Global | 2  | `OnActionExecuting` |
-| 4 | Global | 2  | `OnActionExecuted` |
+| 3 | 全域 | 2  | `OnActionExecuting` |
+| 4 | 全域 | 2  | `OnActionExecuted` |
 | 5 | 控制器 | 1  | `OnActionExecuted` |
 | 6 | 方法 | 0  | `OnActionExecuted` |
 
@@ -787,7 +790,7 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 
 ## <a name="cancellation-and-short-circuiting"></a>取消和縮短
 
-可以設定提供給篩選條件方法之 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext> 參數上的 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext.Result> 屬性，以縮短篩選條件管線。 比方說，下列資源篩選條件可防止管線的其餘部分執行：
+可以設定提供給篩選條件方法之 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext.Result> 參數上的 <xref:Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext> 屬性，以縮短篩選條件管線。 比方說，下列資源篩選條件可防止管線的其餘部分執行：
 
 <a name="short-circuiting-resource-filter"></a>
 
@@ -798,7 +801,7 @@ ASP.NET Core 包含內建的屬性型篩選條件，可對其進行子類別化�
 * 最先執行，因為它是資源篩選條件，且 `AddHeader` 是動作篩選條件。
 * 縮短管線的其餘部分。
 
-因此，`SomeResource` 動作的 `AddHeader` 篩選條件永遠不會執行。 如果這兩個篩選條件都套用在動作方法層級，此行為也會相同，假設 `ShortCircuitingResourceFilter` 先執行的話。 `ShortCircuitingResourceFilter` 會因為其篩選器類型而先執行，或藉由明確使用 `Order` 屬性而先執行。
+因此，`AddHeader` 動作的 `SomeResource` 篩選條件永遠不會執行。 如果這兩個篩選條件都套用在動作方法層級，此行為也會相同，假設 `ShortCircuitingResourceFilter` 先執行的話。 `ShortCircuitingResourceFilter` 會因為其篩選器類型而先執行，或藉由明確使用 `Order` 屬性而先執行。
 
 [!code-csharp[](./filters/sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1,9)]
 
@@ -1028,7 +1031,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 * 授權篩選或資源篩選器會將管線短路。
 * 例外狀況篩選條件會產生動作結果來處理例外狀況。
 
-藉由將 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel?displayProperty=fullName> 設為 `true`，<xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuting*?displayProperty=fullName> 方法可以縮短動作結果和後續結果篩選條件的執行。 在縮短時寫入至回應物件，以避免產生空的回應。 在 `IResultFilter.OnResultExecuting` 中擲回例外狀況會：
+藉由將 <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuting*?displayProperty=fullName> 設為 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel?displayProperty=fullName>，`true` 方法可以縮短動作結果和後續結果篩選條件的執行。 在縮短時寫入至回應物件，以避免產生空的回應。 在 `IResultFilter.OnResultExecuting` 中擲回例外狀況會：
 
 * 導致無法執行動作結果和後續的篩選條件。
 * 視為失敗，而不是成功的結果。
@@ -1039,7 +1042,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 如果動作結果或後續的結果篩選條件擲回例外狀況，則 `ResultExecutedContext.Exception` 會被設為非 Null 值。 將 `Exception` 設為 Null 實際上會「處理」例外狀況，並且使 ASP.NET Core 稍後不會在管線中重新擲回例外狀況。 並沒有可以在處理結果篩選條件中的例外狀況時，將資料寫入回應的可靠方式。 當動作結果擲回例外狀況時，如果標頭已清除至用戶端，則沒有任何可靠的機制能傳送失敗碼。
 
-針對 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter> 而言，對 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutionDelegate> 上的 `await next` 的呼叫會執行任何後續的結果篩選條件和動作結果。 若要縮短，請將 [ResultExecutingContext.Cancel](xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel) 設定為 `true`，並且不要呼叫 `ResultExecutionDelegate`：
+針對 <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncResultFilter> 而言，對 `await next` 上的 <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutionDelegate> 的呼叫會執行任何後續的結果篩選條件和動作結果。 若要縮短，請將 [ResultExecutingContext.Cancel](xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel) 設定為 `true`，並且不要呼叫 `ResultExecutionDelegate`：
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/MyAsyncResponseFilter.cs?name=snippet)]
 
@@ -1067,7 +1070,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 上述程式碼可以透過執行[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) \(英文\) 來進行測試：
 
 * 叫用 F12 開發人員工具。
-* 巡覽至 `https://localhost:5001/Sample/HeaderWithFactory`。
+* 瀏覽至 `https://localhost:5001/Sample/HeaderWithFactory`。
 
 F12 開發人員工具會顯示由範例程式碼所加入的下列回應標頭：
 

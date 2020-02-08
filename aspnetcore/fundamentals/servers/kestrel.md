@@ -5,14 +5,14 @@ description: 了解 Kestrel，這是 ASP.NET Core 的跨平台網頁伺服器。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/26/2019
+ms.date: 02/06/2020
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 9fbf0ec93634100fccef279fc7cad92cb1420e84
-ms.sourcegitcommit: 991442dfb16ef08a0aae05bc79f9e9a2d819c587
+ms.openlocfilehash: 0c5d16b1901a8a8e5ae1914e5eaa86f71fa3a90b
+ms.sourcegitcommit: 80286715afb93c4d13c931b008016d6086c0312b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75492591"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77074532"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -55,7 +55,7 @@ Kestrel 支援下列案例：
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>何時搭配使用 Kestrel 與反向 Proxy
 
-您可以單獨使用 Kestrel，或與 [Internet Information Services (IIS)](https://www.iis.net/)、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
+您可以單獨使用 Kestrel，或與 *[Internet Information Services (IIS)](https://www.iis.net/)* 、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
 
 Kestrel 用作邊緣 (網際網路對應) 網頁伺服器：
 
@@ -116,7 +116,7 @@ Kestrel 網頁伺服器所含的條件約束組態選項，在網際網路對應
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[提供者](xref:fundamentals/configuration/index)來設定。 例如，檔案設定提供者可以從*appsettings*或 Appsettings 載入 Kestrel 設定 *。 {環境}. json*檔案：
+在本文稍後所示的範例中，會在程式碼C#中設定 Kestrel 選項。 您也可以使用設定[提供者](xref:fundamentals/configuration/index)來設定 Kestrel 選項。 例如，檔案設定[提供者](xref:fundamentals/configuration/index#file-configuration-provider)可以從*appsettings*或 appsettings 載入 Kestrel 設定 *。 {環境}. json*檔案：
 
 ```json
 {
@@ -129,6 +129,9 @@ Kestrel 選項（在C#下列範例的程式碼中設定）也可以使用設定[
   }
 }
 ```
+
+> [!NOTE]
+> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> 和[端點](#endpoint-configuration)設定可從設定提供者進行設定。 其餘的 Kestrel 設定必須在程式C#代碼中設定。
 
 請使用下列**其中一**種方法：
 
@@ -237,7 +240,7 @@ public IActionResult MyActionMethod()
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinResponseDataRate>
 
-如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於最小值，則連接會超時。寬限期是指 Kestrel 提供用戶端將其傳送速率增加到最小值的時間量。在這段時間內不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
+如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於下限值，則連線會逾時。寬限期是 Kestrel 提供給用戶端的時間量，以便將其傳送速率提高到下限值；在這段期間不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
 
 預設速率下限為 240 個位元組/秒，寬限期為 5 秒。
 
@@ -274,7 +277,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 });
 ```
 
-預設值為 100。
+預設值是 100。
 
 ### <a name="header-table-size"></a>標頭表格大小
 
@@ -343,7 +346,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="synchronous-io"></a>同步 IO
 
-<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO> 控制是否允許要求與回應的同步 IO。 預設值為 `false`。
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO> 控制是否允許要求與回應的同步 IO。 預設值是 `false`。
 
 > [!WARNING]
 > 大量的封鎖同步 IO 作業會導致執行緒集區耗盡，這會使得應用程式沒有回應。 只有當使用不支援同步 IO 的程式庫時才啟用 `AllowSynchronousIO`。
@@ -489,7 +492,6 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
       "Http": {
         "Url": "http://localhost:5000"
       },
-
       "HttpsInlineCertFile": {
         "Url": "https://localhost:5001",
         "Certificate": {
@@ -497,7 +499,6 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
           "Password": "<certificate password>"
         }
       },
-
       "HttpsInlineCertStore": {
         "Url": "https://localhost:5002",
         "Certificate": {
@@ -507,11 +508,9 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
           "AllowInvalid": "<true or false; defaults to false>"
         }
       },
-
       "HttpsDefaultCert": {
         "Url": "https://localhost:5003"
       },
-
       "Https": {
         "Url": "https://*:5004",
         "Certificate": {
@@ -1006,7 +1005,7 @@ Kestrel 支援下列案例：
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>何時搭配使用 Kestrel 與反向 Proxy
 
-您可以單獨使用 Kestrel，或與 [Internet Information Services (IIS)](https://www.iis.net/)、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
+您可以單獨使用 Kestrel，或與 *[Internet Information Services (IIS)](https://www.iis.net/)* 、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
 
 Kestrel 用作邊緣 (網際網路對應) 網頁伺服器：
 
@@ -1203,7 +1202,7 @@ public IActionResult MyActionMethod()
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinResponseDataRate>
 
-如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於最小值，則連接會超時。寬限期是指 Kestrel 提供用戶端將其傳送速率增加到最小值的時間量。在這段時間內不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
+如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於下限值，則連線會逾時。寬限期是 Kestrel 提供給用戶端的時間量，以便將其傳送速率提高到下限值；在這段期間不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
 
 預設速率下限為 240 個位元組/秒，寬限期為 5 秒。
 
@@ -1241,7 +1240,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-預設值為 100。
+預設值是 100。
 
 ### <a name="header-table-size"></a>標頭表格大小
 
@@ -1933,7 +1932,7 @@ Kestrel 支援下列案例：
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>何時搭配使用 Kestrel 與反向 Proxy
 
-您可以單獨使用 Kestrel，或與 [Internet Information Services (IIS)](https://www.iis.net/)、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
+您可以單獨使用 Kestrel，或與 *[Internet Information Services (IIS)](https://www.iis.net/)* 、[Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/) 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網路接收 HTTP 要求，然後轉送到 Kestrel。
 
 Kestrel 用作邊緣 (網際網路對應) 網頁伺服器：
 
@@ -2140,7 +2139,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinResponseDataRate>
 
-如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於最小值，則連接會超時。寬限期是指 Kestrel 提供用戶端將其傳送速率增加到最小值的時間量。在這段時間內不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
+如果資料是以指定的速率 (位元組/秒) 傳入，Kestrel 會每秒檢查一次。 如果速率低於下限值，則連線會逾時。寬限期是 Kestrel 提供給用戶端的時間量，以便將其傳送速率提高到下限值；在這段期間不會檢查速率。 寬限期可協助避免中斷連線，這是由於 TCP 緩慢啟動而一開始以低速傳送資料所造成。
 
 預設速率下限為 240 個位元組/秒，寬限期為 5 秒。
 
@@ -2709,4 +2708,4 @@ Listening on the following addresses: http://127.0.0.1:48508
 * <xref:test/troubleshoot>
 * <xref:security/enforcing-ssl>
 * <xref:host-and-deploy/proxy-load-balancer>
-* [RFC 7230：訊息語法和路由 (第 5.4 節：主機)](https://tools.ietf.org/html/rfc7230#section-5.4)
+* [RFC 7230：Message Syntax and Routing (訊息語法和路由) 第 5.4 節：Host (主機)](https://tools.ietf.org/html/rfc7230#section-5.4)

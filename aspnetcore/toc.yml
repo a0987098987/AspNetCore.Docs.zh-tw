@@ -101,6 +101,9 @@
         - name: 使用 TypeScript 的 SignalR
           displayName: tutorial
           uid: tutorials/signalr-typescript-webpack
+        - name: 搭配 Blazor WebAssembly 的 SignalR
+          displayName: tutorial
+          uid: tutorials/signalr-blazor-webassembly
     - name: 遠端程序呼叫應用程式
       items:
         - name: 開始使用 gRPC 服務
@@ -282,8 +285,12 @@
           uid: blazor/get-started
         - name: 裝載模型
           uid: blazor/hosting-models
-        - name: 建置您的第一個應用程式
-          uid: tutorials/first-blazor-app
+        - name: 教學課程
+          items:
+            - name: 建置您的第一個應用程式
+              uid: tutorials/first-blazor-app
+            - name: 搭配 Blazor WebAssembly 的 SignalR
+              uid: tutorials/signalr-blazor-webassembly
         - name: 範本
           uid: blazor/templates
         - name: 元件
@@ -477,6 +484,8 @@
           uid: tutorials/signalr
         - name: 使用 TypeScript 的 SignalR
           uid: tutorials/signalr-typescript-webpack
+        - name: 搭配 Blazor WebAssembly 的 SignalR
+          uid: tutorials/signalr-blazor-webassembly
     - name: 範例
       href: 'https://github.com/aspnet/SignalR-samples'
       displayName: signalr

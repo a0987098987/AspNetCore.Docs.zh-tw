@@ -4,14 +4,14 @@ author: scottaddie
 description: 瞭解如何在 ASP.NET Core Web API 中使用各種控制器動作方法傳回類型。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 09/09/2019
+ms.date: 02/03/2020
 uid: web-api/action-return-types
-ms.openlocfilehash: fe665026fdced22ccf4b4f1ba655e858a7acf016
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: aeea005abfcfd45a6fc94dfddfd65e60ffb15df8
+ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879745"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77089184"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的控制器動作傳回類型
 
@@ -60,8 +60,8 @@ public IEnumerable<Product> GetOnSaleProducts() =>
 若要避免在 ASP.NET Core 2.2 和更早版本的資料庫上進行同步列舉和封鎖等候，請叫用 `ToListAsync`：
 
 ```csharp
-public IEnumerable<Product> GetOnSaleProducts() =>
-    _context.Products.Where(p => p.IsOnSale).ToListAsync();
+public async Task<IEnumerable<Product>> GetOnSaleProducts() =>
+    await _context.Products.Where(p => p.IsOnSale).ToListAsync();
 ```
 
 在 ASP.NET Core 3.0 和更新版本中，從動作傳回 `IAsyncEnumerable<T>`：
@@ -148,7 +148,7 @@ public IEnumerable<Product> GetOnSaleProducts() =>
 
 ASP.NET Core 2.1 引進了 Web API 控制器動作的[ActionResult\<t >](xref:Microsoft.AspNetCore.Mvc.ActionResult`1)傳回類型。 它可讓您傳回衍生自 <xref:Microsoft.AspNetCore.Mvc.ActionResult> 或傳回[特定類型](#specific-type)的類型。 `ActionResult<T>` 透過 [IActionResult 類型](#iactionresult-type)提供下列優點：
 
-* 可以排除[`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute)屬性的 `Type` 屬性。 例如，`[ProducesResponseType(200, Type = typeof(Product))]` 簡化為 `[ProducesResponseType(200)]`。 該動作的預期傳回型別會改為從 `ActionResult<T>` 中的 `T` 推斷。
+* 可以排除[`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute)屬性的 `Type` 屬性。 例如，`[ProducesResponseType(200, Type = typeof(Product))]` 簡化為 `[ProducesResponseType(200)]`。 該動作的預期傳回型別會改為從 `T` 中的 `ActionResult<T>` 推斷。
 * [隱含轉型運算子](/dotnet/csharp/language-reference/keywords/implicit)支援 `T` 和 `ActionResult` 轉換成 `ActionResult<T>`。 `T` 會轉換成 <xref:Microsoft.AspNetCore.Mvc.ObjectResult>，這表示 `return new ObjectResult(T);` 已簡化為 `return T;`。
 
 C# 不支援介面上的隱含轉換運算子。 因此，必須將介面轉換為具象型別才能使用 `ActionResult<T>`。 例如，在下列範例中使用 `IEnumerable` 將無法運作：

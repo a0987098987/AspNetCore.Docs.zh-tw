@@ -5,17 +5,17 @@ description: 深入瞭解 Blazor 驗證和授權案例。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/29/2020
+ms.date: 02/02/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: e9087c246f4805e5931180fa0869fc8a8d23a6c1
-ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
+ms.openlocfilehash: c7b3788b5737073100e7fa449fd6bb4a83c0043a
+ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76885592"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114883"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
 
@@ -32,7 +32,7 @@ Blazor 伺服器與 Blazor WebAssembly 應用程式之間的安全性案例不�
 
 Blazor WebAssembly 應用程式會在用戶端上執行。 授權「僅」會被用來決定要顯示的 UI 選項。 由於用戶端檢查可由使用者修改或略過，因此 Blazor WebAssembly 應用程式無法強制執行授權存取規則。
 
-## <a name="authentication"></a>驗證  (可能為英文網頁)
+## <a name="authentication"></a>驗證
 
 Blazor 會使用現有的 ASP.NET Core 驗證機制來建立使用者的身分識別。 確切的機制取決於 Blazor 應用程式的主控方式、Blazor 伺服器或 Blazor WebAssembly。
 
@@ -69,7 +69,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 | 驗證機制                                                                 | `{AUTHENTICATION}` 值 |
 | ---------------------------------------------------------------------------------------- | :----------------------: |
-| 無驗證                                                                        | `None`                   |
+| 不需要驗證                                                                        | `None`                   |
 | 個人<br>搭配 ASP.NET Core 身分識別儲存在應用程式中的使用者。                        | `Individual`             |
 | 個人<br>儲存在 [Azure AD B2C](xref:security/authentication/azure-ad-b2c) 中的使用者。 | `IndividualB2C`          |
 | 公司或學校帳戶<br>適用於單一租用戶的組織驗證。            | `SingleOrg`              |
@@ -284,7 +284,7 @@ public class Program
 
 `AuthorizeView` 元件會根據使用者是否獲得授權以查看某個 UI 來選擇性地顯示該 UI。 此方法可讓您只需要向使用者「顯示」資料，而不需要在程序性邏輯中使用該使用者的身分識別。
 
-該元件會公開 `AuthenticationState` 類型的 `context` 變數，您可以使用它來存取已登入使用者的相關資訊：
+該元件會公開 `context` 類型的 `AuthenticationState` 變數，您可以使用它來存取已登入使用者的相關資訊：
 
 ```razor
 <AuthorizeView>
@@ -329,7 +329,7 @@ public class Program
 </AuthorizeView>
 ```
 
-如需詳細資訊，請參閱<xref:security/authorization/roles>。
+如需詳細資訊，請參閱 <xref:security/authorization/roles>。
 
 針對原則型授權，請使用 `Policy` 參數：
 
@@ -339,7 +339,7 @@ public class Program
 </AuthorizeView>
 ```
 
-宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱<xref:security/authorization/policies>。
+宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱 <xref:security/authorization/policies>。
 
 這些 Api 可以在 Blazor Server 或 Blazor WebAssembly 應用程式中使用。
 
@@ -452,7 +452,7 @@ Not authorized.
 
 ## <a name="notification-about-authentication-state-changes"></a>關於驗證狀態變更的通知
 
-如果應用程式判斷基礎驗證狀態資料已經變更 (例如由於使用者已登出，或是另一個使用者已變更其角色)，自訂的 `AuthenticationStateProvider` 可以選擇性地在 `AuthenticationStateProvider` 基底類別上叫用 `NotifyAuthenticationStateChanged` 方法。 這會通知驗證狀態資料的取用者 (例如 `AuthorizeView`) 使用新資料來重新轉譯。
+如果應用程式判斷基礎驗證狀態資料已經變更 (例如由於使用者已登出，或是另一個使用者已變更其角色)，自訂的 `AuthenticationStateProvider` 可以選擇性地在 `NotifyAuthenticationStateChanged` 基底類別上叫用 `AuthenticationStateProvider` 方法。 這會通知驗證狀態資料的取用者 (例如 `AuthorizeView`) 使用新資料來重新轉譯。
 
 ## <a name="procedural-logic"></a>程序性邏輯
 
@@ -505,13 +505,13 @@ Not authorized.
 
 **請一律在由您用戶端應用程式所存取之任何 API 端點內的伺服器上執行授權檢查。**
 
-## <a name="troubleshoot-errors"></a>疑難排解錯誤
+## <a name="troubleshoot-errors"></a>針對錯誤進行疑難排解
 
 常見錯誤：
 
 * **授權需要類型為 Task\<AuthenticationState > 的串聯參數。請考慮使用 CascadingAuthenticationState 來提供此。**
 
-* **針對 `authenticationStateTask` 接收到 `null` 值**
+* **針對 `null` 接收到 `authenticationStateTask` 值**
 
 專案可能不是使用已啟用驗證的 Blazor 伺服器範本來建立。 請將 `<CascadingAuthenticationState>` 包裝在 UI 樹狀的一部分，例如在 *App.razor* 中，如下所示：
 
@@ -530,3 +530,4 @@ Not authorized.
 * <xref:security/index>
 * <xref:security/blazor/server>
 * <xref:security/authentication/windowsauth>
+* 卓越的[Blazor：驗證](https://github.com/AdrienTorris/awesome-blazor#authentication)社區範例連結

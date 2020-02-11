@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/26/2019
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 5a31aa2974eb41938db89f97c070c352a26290fd
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 2a19a7d16ca8b8f5d6ac8eb99ad919b89f1e368b
+ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681171"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114649"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>教學課程：使用 JavaScript 呼叫 ASP.NET Core Web API
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 此教學課程會示範如何使用 JavaScript (使用 [Fetch API](https://developer.mozilla.org/docs/Web/API/Fetch_API)) 呼叫 ASP.NET Core Web API。
 
@@ -27,7 +27,7 @@ ms.locfileid: "74681171"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 * 完成[教學課程：建立 Web API](xref:tutorials/first-web-api)
 * 熟悉 CSS、HTML 和 JavaScript
@@ -36,11 +36,11 @@ ms.locfileid: "74681171"
 
 在此節中，您會新增一個 HTML 網頁，其中包含用於建立及管理待辦事項的表單。 事件處理常式會附加至頁面上的元素。 事件處理常式會產生對 Web API 的動作方法發出的 HTTP 要求。 Fetch API 的 `fetch` 函式會起始每個 HTTP 要求。
 
-`fetch` 函式會傳回 `Promise` 物件，其中包含以 `Response` 物件代表的 HTTP 回應。 常見的模式是叫用 `Response` 物件上的 `json` 函式，以擷取 JSON 回應主體。 JavaScript 會使用來自 Web API 回應的詳細資料來更新頁面。
+`fetch` 函數會傳回[承諾](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)物件，其中包含以 `Response` 物件表示的 HTTP 回應。 常見的模式是叫用 `json` 物件上的 `Response` 函式，以擷取 JSON 回應主體。 JavaScript 會使用來自 Web API 回應的詳細資料來更新頁面。
 
 最簡單 `fetch` 呼叫會接受代表路由的單一參數。 第二個參數 (稱為 `init` 物件) 是選擇性的。 `init` 是用來設定 HTTP 要求。
 
-1. 請設定應用程式來[提供靜態檔案](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)，並[啟用預設檔案對應](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。 *Startup.cs* 的 `Configure` 方法中需要下列反白顯示的程式碼：
+1. 請設定應用程式來[提供靜態檔案](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)，並[啟用預設檔案對應](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。 `Configure`Startup.cs*的* 方法中需要下列反白顯示的程式碼：
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 

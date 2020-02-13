@@ -5,25 +5,27 @@ description: 了解已發行之 ASP.NET Core 應用程式的目錄結構。
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/28/2020
+ms.date: 02/07/2020
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: ba5cb96dfdcdca10034299e3bbe662ce056af791
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.openlocfilehash: c3c05e6bc461ea4a3bfefa2c7a49d524562f7e5b
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76870262"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172261"
 ---
 # <a name="aspnet-core-directory-structure"></a>ASP.NET Core 目錄結構
 
 作者：[Luke Latham](https://github.com/guardrex)
+
+::: moniker range=">= aspnetcore-3.0"
 
 *publish* 目錄包含 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令所產生的應用程式可部署資產。 此目錄包含：
 
 * 應用程式檔案
 * 組態檔
 * 靜態資產
-* package
+* Packages
 * 執行階段 (僅限[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd))
 
 | 應用程式類型 | 目錄結構 |
@@ -37,7 +39,35 @@ ms.locfileid: "76870262"
 
 *wwwroot* 目錄 (如果存在) 只包含靜態資產。
 
+## <a name="additional-resources"></a>其他資源
+
+* [dotnet publish](/dotnet/core/tools/dotnet-publish)
+* [.NET Core 應用程式部署](/dotnet/core/deploying/)
+* [目標架構](/dotnet/standard/frameworks)
+* [.NET Core RID 類別目錄](/dotnet/core/rid-catalog)
+
+::: moniker-end
+
 ::: moniker range="< aspnetcore-3.0"
+
+*publish* 目錄包含 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令所產生的應用程式可部署資產。 此目錄包含：
+
+* 應用程式檔案
+* 組態檔
+* 靜態資產
+* Packages
+* 執行階段 (僅限[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd))
+
+| 應用程式類型 | 目錄結構 |
+| -------- | ------------------- |
+| [Framework 相依可執行檔（FDE）](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>&dagger; MVC 應用程式的視圖;如果未先行編譯 views</li><li>&dagger; MVC 或 Razor Pages 應用程式的頁面（如果未先行編譯頁面）</li><li>wwwroot&dagger;</li><li>*.dll 檔案</li><li>{元件名稱}. .deps.json. json</li><li>{元件名稱} .dll</li><li>{元件名稱} {。Windows 上的 EXTENSION} *.exe*延伸模組，在 MacOS 或 Linux 上沒有延伸模組</li><li>{元件名稱}. pdb</li><li>{元件名稱}。Views .dll</li><li>{元件名稱}。Views</li><li>{元件名稱}. .runtimeconfig.json. json</li><li>web.config （IIS 部署）</li><li>createdump （[linux createdump 公用程式](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy)）</li>* <li>。因此（linux 共用物件程式庫）</li><li>*. （macOS archive）</li><li>* . Dylib （macOS 動態連結程式庫）</li></ul></li></ul> |
+| [獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>如果未先行編譯 views，&dagger; MVC 應用程式的視圖</li><li>&dagger; MVC 或 Razor Pages 應用程式的頁面（如果未先行編譯頁面）</li><li>wwwroot&dagger;</li><li>\* .dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{組件名稱}.exe</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
+
+&dagger;表示是目錄
+
+*publish* 目錄代表部署的「內容根目錄路徑」(也稱為「應用程式基底路徑」)。 不論給予伺服器上所部署應用程式的 *publish* 目錄什麼名稱，其位置都會作為所裝載應用程式的伺服器實體路徑。
+
+*wwwroot* 目錄 (如果存在) 只包含靜態資產。
 
 建立 *Logs* 資料夾對 [ASP.NET Core 模組增強型偵錯記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)很有用。 模組不會在提供給 `<handlerSetting>` 值的路徑中自動建立資料夾，這些資料夾應該已存在於部署中，模組才能寫入偵錯記錄。
 
@@ -62,11 +92,11 @@ ms.locfileid: "76870262"
 
 部署目錄會要求「讀取/執行」權限。 *Logs* 目錄會要求「讀取/寫入」權限。 其他可供寫入檔案的目錄會要求「讀取/寫入」權限。
 
-::: moniker-end
-
 ## <a name="additional-resources"></a>其他資源
 
 * [dotnet publish](/dotnet/core/tools/dotnet-publish)
 * [.NET Core 應用程式部署](/dotnet/core/deploying/)
 * [目標架構](/dotnet/standard/frameworks)
 * [.NET Core RID 類別目錄](/dotnet/core/rid-catalog)
+
+::: moniker-end

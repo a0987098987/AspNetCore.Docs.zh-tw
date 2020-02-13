@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core MVC 何以是建置使用模型檢視控制器�
 ms.author: riande
 ms.date: 01/28/2020
 uid: mvc/overview
-ms.openlocfilehash: a147c2aa01f1440f8ac59f73eb7be734193f802a
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.openlocfilehash: a0d1e364bf4cda4ad30c5070c9e61e6972759bb0
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76869967"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77171817"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -55,15 +55,15 @@ ASP.NET Core MVC 架構是輕量型、開放原始碼且可高度測試的展示
 
 ASP.NET Core MVC 可讓您透過模式建立動態網站，以清楚關注點分離。 它可讓您完全掌控標記，支援適合 TDD 的開發，並使用最新的網站標準。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 ASP.NET Core MVC 包括下列各項：
 
-* [路由傳送](#routing)
+* [路由](#routing)
 * [模型繫結](#model-binding)
 * [模型驗證](#model-validation)
 * [相依性插入](../fundamentals/dependency-injection.md)
-* [篩選](#filters)
+* [篩選條件](#filters)
 * [區域](#areas)
 * [Web API](#web-apis)
 * [可測試性](#testability)
@@ -145,7 +145,7 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 
 ASP.NET Core 內建[相依性插入 (DI)](../fundamentals/dependency-injection.md) 支援。 在 ASP.NET Core MVC 中，[控制器](controllers/dependency-injection.md)可以透過其建構函式要求所需服務，以便遵循 [Explicit Dependencies Principle](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies) (明確的相依性原則)。
 
-您的應用程式也可以使用 `@inject` 指示詞，[在檢視檔案中使用相依性插入](views/dependency-injection.md)：
+您的應用程式也可以使用 [ 指示詞，](views/dependency-injection.md)在檢視檔案中使用相依性插入`@inject`：
 
 ```cshtml
 @inject SomeService ServiceName
@@ -220,7 +220,7 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 
 [標籤協助程式](views/tag-helpers/intro.md)可讓伺服器端程式碼參與建立及轉譯 Razor 檔案中 HTML 元素的過程。 您可以使用標籤協助程式定義自訂標籤 (例如 `<environment>`)，或修改現有標籤 (例如 `<label>`) 的行為。 標籤協助程式會根據元素名稱及其屬性，繫結至特定元素。 其提供伺服器端轉譯優點，同時仍然保留 HTML 編輯體驗。
 
-有許多適用於一般工作 (例如建立表單和連結、載入資產等) 的內建標籤協助程式，還有更多位於公用 GitHub 存放庫及作為 NuGet 套件來提供。 標籤協助程式是以 C# 撰寫，並根據元素名稱、屬性名稱或上層標籤來設定目標 HTML 元素。 例如，內建 LinkTagHelper 可用來建立 `AccountsController` 之 `Login` 動作的連結：
+有許多適用於一般工作 (例如建立表單和連結、載入資產等) 的內建標籤協助程式，還有更多位於公用 GitHub 存放庫及作為 NuGet 套件來提供。 標籤協助程式是以 C# 撰寫，並根據元素名稱、屬性名稱或上層標籤來設定目標 HTML 元素。 例如，內建 LinkTagHelper 可用來建立 `Login` 之 `AccountsController` 動作的連結：
 
 ```cshtml
 <p>
@@ -243,7 +243,7 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 </environment>
 ```
 
-標籤協助程式提供適合 HTML 的開發體驗和豐富的 IntelliSense 環境，以建立 HTML 和 Razor 標記。 大部分的內建標籤協助程式都是以現有的 HTML 元素為目標，並提供元素的伺服器端屬性。
+標籤協助程式提供適合 HTML 的開發體驗和豐富的 IntelliSense 環境，以建立 HTML 和 Razor 標記。 大部分的內建標籤協助程式都是以現有的 HTML 項目為目標，並提供項目的伺服器端屬性。
 
 ### <a name="view-components"></a>檢視元件
 
@@ -253,10 +253,10 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 
 <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> 方法可讓應用程式加入或退出 ASP.NET Core MVC 2.1 或更新版本所引入的可能重大行為變更。
 
-如需詳細資訊，請參閱<xref:mvc/compatibility-version>。
+如需詳細資訊，請參閱 <xref:mvc/compatibility-version>。
 
 ## <a name="additional-resources"></a>其他資源
 
 * 適用于 ASP.NET Core MVC &ndash; 強型別單元測試程式庫[的 MyTested AspNetCore](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc) ，提供流暢的介面來測試 Mvc 和 Web API 應用程式。 （*不是由 Microsoft 維護或支援）。*
-* [將 Razor 元件整合到 Razor Pages 和 MVC 應用程式中](xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps)
+* [將 Razor 元件整合到 Razor Pages 和 MVC 應用程式中](xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps)
 

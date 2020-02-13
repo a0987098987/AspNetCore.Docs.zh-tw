@@ -5,14 +5,14 @@ description: 深入了解在 ASP.NET Core 中使用 IHttpClientFactory 介面來
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/16/2019
+ms.date: 02/09/2020
 uid: fundamentals/http-requests
-ms.openlocfilehash: 9b9da82191a587be0603ee114562e9a964f05250
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.openlocfilehash: 93b75525e8a3f10c4e0b655baaff83c0f6e8131b
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76870394"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77171811"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>在 ASP.NET Core 中使用 IHttpClientFactory 發出 HTTP 要求
 
@@ -31,7 +31,7 @@ ms.locfileid: "76870394"
 
 本主題中的範例程式碼會使用 <xref:System.Text.Json> 來還原序列化 HTTP 回應中所傳回的 JSON 內容。 如需使用 `Json.NET` 和 `ReadAsAsync<T>`的範例，請使用版本選取器來選取此主題的2.x 版。
 
-## <a name="consumption-patterns"></a>耗用模式
+## <a name="consumption-patterns"></a>耗用量模式
 
 有數種方式可將 `IHttpClientFactory` 用於應用程式：
 
@@ -109,7 +109,12 @@ ms.locfileid: "76870394"
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet3)]
 
-具型別用戶端會向 DI 註冊為暫時性。 具型別用戶端可以直接插入並使用：
+具型別用戶端會向 DI 註冊為暫時性。 在上述程式碼中，`AddHttpClient` 會將 `GitHubService` 註冊為暫時性服務。 此註冊會使用 factory 方法來執行下列動作：
+
+1. 建立 `HttpClient` 執行個體。
+1. 建立 `GitHubService`的實例，並將 `HttpClient` 的實例傳入其函式。
+
+具型別用戶端可以直接插入並使用：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Pages/TypedClient.cshtml.cs?name=snippet1&highlight=11-14,20)]
 
@@ -180,7 +185,7 @@ public class ValuesController : ControllerBase
 
 ## <a name="outgoing-request-middleware"></a>外寄要求中介軟體
 
-`HttpClient` 具有委派處理常式的概念，可以針對傳出 HTTP 要求連結在一起。 `IHttpClientFactory`：
+`HttpClient` 具有委派處理常式的概念，可以針對傳出 HTTP 要求連結在一起。 `IHttpClientFactory`:
 
 * 簡化定義要套用至每個已命名用戶端的處理常式。
 * 支援多個處理常式的註冊和連結，以建立外寄要求中介軟體管線。 這些處理常式每個都可以在外寄要求之前和之後執行工作。 此模式：
@@ -190,7 +195,7 @@ public class ValuesController : ControllerBase
 
     * 快取
     * 錯誤處理
-    * serialization
+    * 序列化
     * 記錄
 
 若要建立委派處理常式：
@@ -275,9 +280,9 @@ public class ValuesController : ControllerBase
 
 ## <a name="httpclient-and-lifetime-management"></a>HttpClient 和存留期管理
 
-每次在 `IHttpClientFactory` 上呼叫 `CreateClient` 時，都會傳回新的 `HttpClient` 執行個體。 系統會根據每個命名的用戶端來建立 <xref:System.Net.Http.HttpMessageHandler>。 處理站會管理 `HttpMessageHandler` 執行個體的存留期。
+每次在 `HttpClient` 上呼叫 `CreateClient` 時，都會傳回新的 `IHttpClientFactory` 執行個體。 系統會根據每個命名的用戶端來建立 <xref:System.Net.Http.HttpMessageHandler>。 處理站會管理 `HttpMessageHandler` 執行個體的存留期。
 
-`IHttpClientFactory` 會將處理站所建立的 `HttpMessageHandler` 執行個體放入集區以減少資源耗用量。 建立新的 `HttpClient` 執行個體時，如果其存留期間尚未過期，`HttpMessageHandler` 執行個體可從集區重複使用。
+`IHttpClientFactory` 會將處理站所建立的 `HttpMessageHandler` 執行個體放入集區以減少資源耗用量。 建立新的 `HttpMessageHandler` 執行個體時，如果其存留期間尚未過期，`HttpClient` 執行個體可從集區重複使用。
 
 將處理常式放入集區非常實用，因為處理常式通常會管理自己專屬的底層 HTTP 連線。 建立比所需數目更多的處理常式，可能會導致連線延遲。 有些處理常式也會保持連線無限期地開啟，這可能導致處理常式無法回應 DNS （網域名稱系統）變更。
 
@@ -287,7 +292,7 @@ public class ValuesController : ControllerBase
 
 `HttpClient` 實例通常可視為**不**需要處置的 .net 物件。 處置會取消傳出的要求，並保證指定的 `HttpClient` 執行個體在呼叫 <xref:System.IDisposable.Dispose*> 之後無法使用。 `IHttpClientFactory` 會追蹤並處置 `HttpClient` 執行個體使用的資源。
 
-在開始使用 `IHttpClientFactory` 之前，讓單一 `HttpClient` 執行個體維持一段較長的時間，是很常使用的模式。 在移轉到 `IHttpClientFactory` 之後，就不再需要此模式。
+在開始使用 `HttpClient` 之前，讓單一 `IHttpClientFactory` 執行個體維持一段較長的時間，是很常使用的模式。 在移轉到 `IHttpClientFactory` 之後，就不再需要此模式。
 
 ### <a name="alternatives-to-ihttpclientfactory"></a>IHttpClientFactory 的替代方案
 
@@ -364,7 +369,7 @@ public class ValuesController : ControllerBase
 
 * 用戶端會在輸出要求中包含已設定的標頭：
 
-  ```C#
+  ```csharp
   var client = clientFactory.CreateClient("MyForwardingClient");
   var response = client.GetAsync(...);
   ```
@@ -391,7 +396,7 @@ public class ValuesController : ControllerBase
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="consumption-patterns"></a>耗用模式
+## <a name="consumption-patterns"></a>耗用量模式
 
 有數種方式可將 `IHttpClientFactory` 用於應用程式：
 
@@ -404,11 +409,11 @@ public class ValuesController : ControllerBase
 
 ### <a name="basic-usage"></a>基本使用方式
 
-`IHttpClientFactory` 可以藉由在 `Startup.ConfigureServices` 方法內的 `IServiceCollection` 上呼叫 `AddHttpClient` 擴充方法來註冊。
+`IHttpClientFactory` 可以藉由在 `AddHttpClient` 方法內的 `IServiceCollection` 上呼叫 `Startup.ConfigureServices` 擴充方法來註冊。
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
-註冊之後，程式碼可以在可使用[相依性插入 (DI)](xref:fundamentals/dependency-injection) 插入服務的任何位置，接受 `IHttpClientFactory`。 `IHttpClientFactory` 可以用來建立 `HttpClient` 實例：
+註冊之後，程式碼可以在可使用`IHttpClientFactory`相依性插入 (DI)[ 插入服務的任何位置，接受 ](xref:fundamentals/dependency-injection)。 `IHttpClientFactory` 可以用來建立 `HttpClient` 實例：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
@@ -593,19 +598,19 @@ public class ValuesController : ControllerBase
 
 ## <a name="httpclient-and-lifetime-management"></a>HttpClient 和存留期管理
 
-每次在 `IHttpClientFactory` 上呼叫 `CreateClient` 時，都會傳回新的 `HttpClient` 執行個體。 每個具名用戶端都有一個 <xref:System.Net.Http.HttpMessageHandler>。 處理站會管理 `HttpMessageHandler` 執行個體的存留期。
+每次在 `HttpClient` 上呼叫 `CreateClient` 時，都會傳回新的 `IHttpClientFactory` 執行個體。 每個具名用戶端都有一個 <xref:System.Net.Http.HttpMessageHandler>。 處理站會管理 `HttpMessageHandler` 執行個體的存留期。
 
-`IHttpClientFactory` 會將處理站所建立的 `HttpMessageHandler` 執行個體放入集區以減少資源耗用量。 建立新的 `HttpClient` 執行個體時，如果其存留期間尚未過期，`HttpMessageHandler` 執行個體可從集區重複使用。
+`IHttpClientFactory` 會將處理站所建立的 `HttpMessageHandler` 執行個體放入集區以減少資源耗用量。 建立新的 `HttpMessageHandler` 執行個體時，如果其存留期間尚未過期，`HttpClient` 執行個體可從集區重複使用。
 
 將處理常式放入集區非常實用，因為處理常式通常會管理自己專屬的底層 HTTP 連線。 建立比所需數目更多的處理常式，可能會導致連線延遲。 有些處理常式也會保持連線無限期地開啟，這可能導致處理常式無法對 DNS 變更回應。
 
-預設處理常式存留時間為兩分鐘。 可以針對每個具名用戶端覆寫預設值。 若要覆寫它，請在建立用戶端時所傳回的 `IHttpClientBuilder` 上呼叫 <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.SetHandlerLifetime*>：
+預設處理常式存留時間為兩分鐘。 可以針對每個具名用戶端覆寫預設值。 若要覆寫它，請在建立用戶端時所傳回的 <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.SetHandlerLifetime*> 上呼叫 `IHttpClientBuilder`：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet11)]
 
 不需要處置用戶端。 處置會取消傳出的要求，並保證指定的 `HttpClient` 執行個體在呼叫 <xref:System.IDisposable.Dispose*> 之後無法使用。 `IHttpClientFactory` 會追蹤並處置 `HttpClient` 執行個體使用的資源。 `HttpClient` 執行個體通常可視為 .NET 物件，不需要處置。
 
-在開始使用 `IHttpClientFactory` 之前，讓單一 `HttpClient` 執行個體維持一段較長的時間，是很常使用的模式。 在移轉到 `IHttpClientFactory` 之後，就不再需要此模式。
+在開始使用 `HttpClient` 之前，讓單一 `IHttpClientFactory` 執行個體維持一段較長的時間，是很常使用的模式。 在移轉到 `IHttpClientFactory` 之後，就不再需要此模式。
 
 ### <a name="alternatives-to-ihttpclientfactory"></a>IHttpClientFactory 的替代方案
 
@@ -692,11 +697,11 @@ public class ValuesController : ControllerBase
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>必要條件
 
 以 .NET Framework 為目標的專案，需要安裝 [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) NuGet 套件。 以 .NET Core 為目標且參考 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) 的專案，已包含 `Microsoft.Extensions.Http` 套件。
 
-## <a name="consumption-patterns"></a>耗用模式
+## <a name="consumption-patterns"></a>耗用量模式
 
 有數種方式可將 `IHttpClientFactory` 用於應用程式：
 
@@ -709,11 +714,11 @@ public class ValuesController : ControllerBase
 
 ### <a name="basic-usage"></a>基本使用方式
 
-`IHttpClientFactory` 可以藉由在 `Startup.ConfigureServices` 方法內的 `IServiceCollection` 上呼叫 `AddHttpClient` 擴充方法來註冊。
+`IHttpClientFactory` 可以藉由在 `AddHttpClient` 方法內的 `IServiceCollection` 上呼叫 `Startup.ConfigureServices` 擴充方法來註冊。
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
-註冊之後，程式碼可以在可使用[相依性插入 (DI)](xref:fundamentals/dependency-injection) 插入服務的任何位置，接受 `IHttpClientFactory`。 `IHttpClientFactory` 可以用來建立 `HttpClient` 實例：
+註冊之後，程式碼可以在可使用`IHttpClientFactory`相依性插入 (DI)[ 插入服務的任何位置，接受 ](xref:fundamentals/dependency-injection)。 `IHttpClientFactory` 可以用來建立 `HttpClient` 實例：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
@@ -901,19 +906,19 @@ public class ValuesController : ControllerBase
 
 ## <a name="httpclient-and-lifetime-management"></a>HttpClient 和存留期管理
 
-每次在 `IHttpClientFactory` 上呼叫 `CreateClient` 時，都會傳回新的 `HttpClient` 執行個體。 每個具名用戶端都有一個 <xref:System.Net.Http.HttpMessageHandler>。 處理站會管理 `HttpMessageHandler` 執行個體的存留期。
+每次在 `HttpClient` 上呼叫 `CreateClient` 時，都會傳回新的 `IHttpClientFactory` 執行個體。 每個具名用戶端都有一個 <xref:System.Net.Http.HttpMessageHandler>。 處理站會管理 `HttpMessageHandler` 執行個體的存留期。
 
-`IHttpClientFactory` 會將處理站所建立的 `HttpMessageHandler` 執行個體放入集區以減少資源耗用量。 建立新的 `HttpClient` 執行個體時，如果其存留期間尚未過期，`HttpMessageHandler` 執行個體可從集區重複使用。
+`IHttpClientFactory` 會將處理站所建立的 `HttpMessageHandler` 執行個體放入集區以減少資源耗用量。 建立新的 `HttpMessageHandler` 執行個體時，如果其存留期間尚未過期，`HttpClient` 執行個體可從集區重複使用。
 
 將處理常式放入集區非常實用，因為處理常式通常會管理自己專屬的底層 HTTP 連線。 建立比所需數目更多的處理常式，可能會導致連線延遲。 有些處理常式也會保持連線無限期地開啟，這可能導致處理常式無法對 DNS 變更回應。
 
-預設處理常式存留時間為兩分鐘。 可以針對每個具名用戶端覆寫預設值。 若要覆寫它，請在建立用戶端時所傳回的 `IHttpClientBuilder` 上呼叫 <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.SetHandlerLifetime*>：
+預設處理常式存留時間為兩分鐘。 可以針對每個具名用戶端覆寫預設值。 若要覆寫它，請在建立用戶端時所傳回的 <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.SetHandlerLifetime*> 上呼叫 `IHttpClientBuilder`：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet11)]
 
 不需要處置用戶端。 處置會取消傳出的要求，並保證指定的 `HttpClient` 執行個體在呼叫 <xref:System.IDisposable.Dispose*> 之後無法使用。 `IHttpClientFactory` 會追蹤並處置 `HttpClient` 執行個體使用的資源。 `HttpClient` 執行個體通常可視為 .NET 物件，不需要處置。
 
-在開始使用 `IHttpClientFactory` 之前，讓單一 `HttpClient` 執行個體維持一段較長的時間，是很常使用的模式。 在移轉到 `IHttpClientFactory` 之後，就不再需要此模式。
+在開始使用 `HttpClient` 之前，讓單一 `IHttpClientFactory` 執行個體維持一段較長的時間，是很常使用的模式。 在移轉到 `IHttpClientFactory` 之後，就不再需要此模式。
 
 ### <a name="alternatives-to-ihttpclientfactory"></a>IHttpClientFactory 的替代方案
 
@@ -991,7 +996,7 @@ public class ValuesController : ControllerBase
 
 * 用戶端會在輸出要求中包含已設定的標頭：
 
-  ```C#
+  ```csharp
   var client = clientFactory.CreateClient("MyForwardingClient");
   var response = client.GetAsync(...);
   ```

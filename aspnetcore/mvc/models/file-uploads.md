@@ -5,14 +5,14 @@ description: 如何使用模型繫結和資料流在 ASP.NET Core MVC 上傳檔�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/04/2019
+ms.date: 02/11/2020
 uid: mvc/models/file-uploads
-ms.openlocfilehash: b5433576ff3e997e6d80201236be2d8463a52d07
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 56fd26c1864089558f5cd89f693dc86ea30c3331
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829227"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172464"
 ---
 # <a name="upload-files-in-aspnet-core"></a>上傳 ASP.NET Core 中的檔案
 
@@ -83,13 +83,13 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
   * 服務通常會針對內部部署解決方案提供改良的擴充性和彈性，通常會受到單一失敗點的影響。
   * 在大型儲存體基礎結構案例中，服務可能會降低成本。
 
-  如需詳細資訊，請參閱[快速入門：使用 .net 在物件儲存體中建立 blob](/azure/storage/blobs/storage-quickstart-blobs-dotnet)。 本主題示範 <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>，但 <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> 可以在使用 <xref:System.IO.Stream>時，用來將 <xref:System.IO.FileStream> 儲存至 blob 儲存體。
+  如需詳細資訊，請參閱[快速入門：使用 .net 在物件儲存體中建立 blob](/azure/storage/blobs/storage-quickstart-blobs-dotnet)。
 
 ## <a name="file-upload-scenarios"></a>檔案上傳案例
 
 上傳檔案的兩個一般方法是緩衝和串流處理。
 
-**緩衝處理**
+**緩衝**
 
 系統會將整個檔案讀入 <xref:Microsoft.AspNetCore.Http.IFormFile>，這是用來C#處理或儲存檔案的檔案標記法。
 
@@ -101,9 +101,9 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 此主題的下列各節會涵蓋緩衝處理小型檔案：
 
 * [實體儲存體](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [資料庫](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Database](#upload-small-files-with-buffered-model-binding-to-a-database)
 
-**資料流**
+**串流**
 
 此檔案會從多部分要求接收，並由應用程式直接處理或儲存。 串流不會大幅改善效能。 串流處理可減少上傳檔案時記憶體或磁碟空間的需求。
 
@@ -183,7 +183,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 若要針對[不支援 FETCH API](https://caniuse.com/#feat=fetch)的用戶端，以 JavaScript 執行表單 POST，請使用下列其中一種方法：
 
 * 使用提取 Polyfill （例如，[fetch [Polyfill （github/fetch）]](https://github.com/github/fetch)）。
-* 使用 `XMLHttpRequest`。 例如：
+* 使用 `XMLHttpRequest`。 例如，
 
   ```javascript
   <script>
@@ -456,7 +456,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ### <a name="file-extension-validation"></a>副檔名驗證
 
-已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如：
+已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如，
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -818,7 +818,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 
 上傳檔案的兩個一般方法是緩衝和串流處理。
 
-**緩衝處理**
+**緩衝**
 
 系統會將整個檔案讀入 <xref:Microsoft.AspNetCore.Http.IFormFile>，這是用來C#處理或儲存檔案的檔案標記法。
 
@@ -830,9 +830,9 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 此主題的下列各節會涵蓋緩衝處理小型檔案：
 
 * [實體儲存體](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [資料庫](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Database](#upload-small-files-with-buffered-model-binding-to-a-database)
 
-**資料流**
+**串流**
 
 此檔案會從多部分要求接收，並由應用程式直接處理或儲存。 串流不會大幅改善效能。 串流處理可減少上傳檔案時記憶體或磁碟空間的需求。
 
@@ -912,7 +912,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 若要針對[不支援 FETCH API](https://caniuse.com/#feat=fetch)的用戶端，以 JavaScript 執行表單 POST，請使用下列其中一種方法：
 
 * 使用提取 Polyfill （例如，[fetch [Polyfill （github/fetch）]](https://github.com/github/fetch)）。
-* 使用 `XMLHttpRequest`。 例如：
+* 使用 `XMLHttpRequest`。 例如，
 
   ```javascript
   <script>
@@ -1185,7 +1185,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ### <a name="file-extension-validation"></a>副檔名驗證
 
-已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如：
+已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如，
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };

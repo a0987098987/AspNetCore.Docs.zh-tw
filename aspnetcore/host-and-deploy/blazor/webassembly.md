@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: 8ed95cdb96804e08c3f1273bbea8f64a8e4f173c
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 861935ff31652f923399a8aa5ae52baa6b77fa91
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160245"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172400"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
@@ -155,7 +155,7 @@ IIS 是適用于 Blazor 應用程式的靜態檔案伺服器。 若要設定 IIS
 * 將 [索引文件名稱] 設定為 `index.html`。
 * 將 [錯誤文件路徑] 設定為 `index.html`。 Razor 元件和其他非檔案端點不會位於由 Blob 服務所存放之靜態內容中的實體路徑上。 收到 Blazor 路由器應處理的其中一個資源的要求時，由 blob 服務產生的*404-找不*到的錯誤會將要求路由傳送至**錯誤檔路徑**。 會傳回*索引 .html* blob，而 Blazor 路由器會載入並處理路徑。
 
-如需詳細資訊，請參閱[Azure 儲存體中的靜態網站代管](/azure/storage/blobs/storage-blob-static-website)。
+如需詳細資訊，請參閱 [Azure 儲存體中的靜態網站裝載](/azure/storage/blobs/storage-blob-static-website)。
 
 ### <a name="nginx"></a>Nginx
 
@@ -183,7 +183,7 @@ http {
 
 如下列範例所示，新增一行至 Dockerfile：
 
-```Dockerfile
+```dockerfile
 FROM nginx:alpine
 COPY ./bin/Release/netstandard2.0/publish /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -241,7 +241,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 若要處理 URL 重寫，請新增 *404.html* 檔，以及處理將要求重新導向至 *index.html* 頁面的指令碼。 如需社群所提供的範例實作，請參閱 [GitHub Pages 的單一頁面應用程式](https://spa-github-pages.rafrex.com/) (GitHub 上的 [rafrex/spa-github-pages](https://github.com/rafrex/spa-github-pages#readme))。 使用社群方法的範例可在 [GitHub 上的 blazor-demo/blazor-demo.github.io](https://github.com/blazor-demo/blazor-demo.github.io) ([即時網站](https://blazor-demo.github.io/)) 看到。
 
-使用專案網站，而非組織網站時，請在 *index.html* 中新增或更新 `<base>` 標籤。 將 `href` 屬性值設定為 GitHub 存放庫名稱，並在尾端加上斜線 (例如 `my-repository/`)。
+使用專案網站，而非組織網站時，請在 `<base>`index.html*中新增或更新* 標籤。 將 `href` 屬性值設定為 GitHub 存放庫名稱，並在尾端加上斜線 (例如 `my-repository/`)。
 
 ## <a name="host-configuration-values"></a>主機組態值
 
@@ -257,7 +257,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
   dotnet run --contentroot=/content-root-path
   ```
 
-* 新增項目至應用程式 **IIS Express** 設定檔中的 *launchSettings.json* 檔案。 此設定的使用時機為當應用程式是搭配 Visual Studio 偵錯工具並以 `dotnet run` 從命令提示字元執行的情況。
+* 新增項目至應用程式 *IIS Express* 設定檔中的 **launchSettings.json** 檔案。 此設定的使用時機為當應用程式是搭配 Visual Studio 偵錯工具並以 `dotnet run` 從命令提示字元執行的情況。
 
   ```json
   "commandLineArgs": "--contentroot=/content-root-path"
@@ -274,7 +274,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 `--pathbase` 引數會設定應用程式以非根相對 URL 路徑在本機執行的應用程式基底路徑（`<base>` 標記 `href` 設定為預備和生產 `/` 以外的路徑）。 在下列範例中，`/relative-URL-path` 是應用程式的路徑基底。 如需詳細資訊，請參閱[應用程式基底路徑](xref:host-and-deploy/blazor/index#app-base-path)。
 
 > [!IMPORTANT]
-> 不同於提供給 `<base>` 標籤 `href` 的路徑，在傳遞 `--pathbase` 引數值時請勿包含尾端的斜線 (`/`)。 如果應用程式基底路徑提供於 `<base>` 標籤作為 `<base href="/CoolApp/">` (包括尾端的斜線)，請將命令列引數值傳遞為 `--pathbase=/CoolApp` (不含尾端的斜線)。
+> 不同於提供給 `href` 標籤 `<base>` 的路徑，在傳遞 `/` 引數值時請勿包含尾端的斜線 (`--pathbase`)。 如果應用程式基底路徑提供於 `<base>` 標籤作為 `<base href="/CoolApp/">` (包括尾端的斜線)，請將命令列引數值傳遞為 `--pathbase=/CoolApp` (不含尾端的斜線)。
 
 * 在命令提示字元，於本機執行應用程式時傳遞引數。 從應用程式目錄，執行：
 
@@ -282,7 +282,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
   dotnet run --pathbase=/relative-URL-path
   ```
 
-* 新增項目至應用程式 **IIS Express** 設定檔中的 *launchSettings.json* 檔案。 此設定的使用時機為當應用程式是搭配 Visual Studio 偵錯工具並以 `dotnet run` 從命令提示字元執行的情況。
+* 新增項目至應用程式 *IIS Express* 設定檔中的 **launchSettings.json** 檔案。 此設定的使用時機為當應用程式是搭配 Visual Studio 偵錯工具並以 `dotnet run` 從命令提示字元執行的情況。
 
   ```json
   "commandLineArgs": "--pathbase=/relative-URL-path"
@@ -304,7 +304,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
   dotnet run --urls=http://127.0.0.1:0
   ```
 
-* 新增項目至應用程式 **IIS Express** 設定檔中的 *launchSettings.json* 檔案。 此設定的使用時機為當應用程式是搭配 Visual Studio 偵錯工具並以 `dotnet run` 從命令提示字元執行的情況。
+* 新增項目至應用程式 *IIS Express* 設定檔中的 **launchSettings.json** 檔案。 此設定的使用時機為當應用程式是搭配 Visual Studio 偵錯工具並以 `dotnet run` 從命令提示字元執行的情況。
 
   ```json
   "commandLineArgs": "--urls=http://127.0.0.1:0"
@@ -318,4 +318,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="configure-the-linker"></a>設定連結器
 
-Blazor 會在每個組建上執行中繼語言（IL）連結，以從輸出元件中移除不必要的 IL。 組件連結可在組建上控制。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/configure-linker>。
+Blazor 會在每個組建上執行中繼語言（IL）連結，以從輸出元件中移除不必要的 IL。 組件連結可在組建上控制。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/configure-linker>。

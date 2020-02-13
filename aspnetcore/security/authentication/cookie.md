@@ -4,14 +4,14 @@ author: rick-anderson
 description: 瞭解如何在不 ASP.NET Core 身分識別的情況下使用 cookie 驗證。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 08/20/2019
+ms.date: 02/11/2020
 uid: security/authentication/cookie
-ms.openlocfilehash: 288fa4317801544bf0d689280c56836431017c89
-ms.sourcegitcommit: 9e85c2562df5e108d7933635c830297f484bb775
+ms.openlocfilehash: 62a3d247dade6c83156a8378407d5e3891713fd1
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73462928"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172123"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>使用不含 ASP.NET Core 身分識別的 cookie 驗證
 
@@ -39,7 +39,7 @@ ASP.NET Core 身分識別是完整且功能完整的驗證提供者，可用於�
 
 根據預設，驗證 cookie 的 <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> 屬性會設定為 [`true`]。 當網站訪客未同意資料收集時，允許驗證 cookie。 如需詳細資訊，請參閱<xref:security/gdpr#essential-cookies>。
 
-在 `Startup.Configure` 中，呼叫 `UseAuthentication` 並 `UseAuthorization` 來設定 `HttpContext.User` 屬性，並針對要求執行授權中介軟體。 呼叫 `UseAuthentication` 並 `UseAuthorization` 方法，再呼叫 `UseEndpoints`：
+在 `Startup.Configure`中，呼叫 `UseAuthentication` 和 `UseAuthorization` 以設定 `HttpContext.User` 屬性，並針對要求執行授權中介軟體。 呼叫 `UseAuthentication` 並 `UseAuthorization` 方法，再呼叫 `UseEndpoints`：
 
 [!code-csharp[](cookie/samples/3.x/CookieSample/Startup.cs?name=snippet2)]
 
@@ -215,7 +215,7 @@ await HttpContext.SignInAsync(
 
 ## <a name="absolute-cookie-expiration"></a>絕對 cookie 到期日
 
-絕對到期時間可以使用 <xref:Microsoft.AspNetCore.Authentication.AuthenticationProperties.ExpiresUtc>來設定。 若要建立持續性 cookie，也必須設定 `IsPersistent`。 否則，會使用以會話為基礎的存留期來建立 cookie，而且可能會在它所保留的驗證票證之前或之後過期。 設定 `ExpiresUtc` 時，它會覆寫 <xref:Microsoft.AspNetCore.Builder.CookieAuthenticationOptions>的 <xref:Microsoft.AspNetCore.Builder.CookieAuthenticationOptions.ExpireTimeSpan> 選項值（如果已設定）。
+絕對到期時間可以使用 <xref:Microsoft.AspNetCore.Authentication.AuthenticationProperties.ExpiresUtc>來設定。 若要建立持續性 cookie，也必須設定 `IsPersistent`。 否則，會使用以會話為基礎的存留期來建立 cookie，而且可能會在它所保留的驗證票證之前或之後過期。 設定 `ExpiresUtc` 時，它會覆寫 <xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions>的 <xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationOptions.ExpireTimeSpan> 選項值（如果已設定）。
 
 下列程式碼片段會建立持續20分鐘的身分識別和對應的 cookie。 這會忽略先前設定的任何滑動到期設定。
 
@@ -256,7 +256,7 @@ ASP.NET Core 身分識別是完整且功能完整的驗證提供者，可用於�
 
 根據預設，驗證 cookie 的 <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> 屬性會設定為 [`true`]。 當網站訪客未同意資料收集時，允許驗證 cookie。 如需詳細資訊，請參閱<xref:security/gdpr#essential-cookies>。
 
-在 `Startup.Configure` 方法中，呼叫 `UseAuthentication` 方法，以叫用設定 `HttpContext.User` 屬性的驗證中介軟體。 在呼叫 `UseMvcWithDefaultRoute` 或 `UseMvc` 之前，請先呼叫 `UseAuthentication` 方法：
+在 `Startup.Configure` 方法中，呼叫 `UseAuthentication` 方法，以叫用設定 `HttpContext.User` 屬性的驗證中介軟體。 呼叫 `UseAuthentication` 方法，再呼叫 `UseMvcWithDefaultRoute` 或 `UseMvc`：
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet2)]
 

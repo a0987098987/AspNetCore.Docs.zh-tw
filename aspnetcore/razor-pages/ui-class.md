@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 01/25/2020
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 1a20b136203921e6a147058eb34da6dcbb7863e7
-ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
+ms.openlocfilehash: 8813244ea6d00b170d9f95d12743e9fee38bf810
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76971987"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172652"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>在 ASP.NET Core 中使用 Razor 類別庫專案建立可重複使用的 UI
 
@@ -36,7 +36,7 @@ Razor 視圖、頁面、控制器、頁面模型、 [razor 元件](xref:blazor/c
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-從命令列執行 `dotnet new razorclasslib`。 例如：
+從命令列執行 `dotnet new razorclasslib`。 例如，
 
 ```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
@@ -129,7 +129,7 @@ RCL 可能需要隨附的靜態資產，由 RCL 或 RCL 的取用應用程式來
 
 RCL 的*wwwroot*資料夾中包含的檔案會公開給 RCL 或 `_content/{LIBRARY NAME}/`前置詞底下的取用應用程式。 例如，名為 Razor. *.lib*的程式庫會產生 `_content/Razor.Class.Lib/`的靜態內容路徑。 當產生 NuGet 套件，且元件名稱與套件識別碼不同時，請使用 `{LIBRARY NAME}`的封裝識別碼。
 
-取用應用程式會參考程式庫所提供的靜態資產，其具有 `<script>`、`<style>`、`<img>`和其他 HTML 標籤。 取用應用程式必須在中`Startup.Configure`啟用[靜態檔案支援](xref:fundamentals/static-files)：
+取用應用程式會參考程式庫所提供的靜態資產，其具有 `<script>`、`<style>`、`<img>`和其他 HTML 標籤。 使用中的應用程式必須在 `Startup.Configure`中啟用[靜態檔案支援](xref:fundamentals/static-files)：
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -193,7 +193,7 @@ Razor 視圖、頁面、控制器、頁面模型、 [razor 元件](xref:blazor/c
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 從**Visual Studio 的**[檔案] 功能表中，選取 [**新增**>**專案**]。
-* 選取 [ASP.NET Core Web 應用程式]。
+* 選取 **ASP.NET Core Web 應用程式**。
 * 命名程式庫 (例如，"RazorClassLib") > [確定]。 若要避免與產生的檢視程式庫發生檔案名稱衝突，程式庫名稱結尾請務必不要使用 `.Views`。
 * 確認已選取 **ASP.NET Core 2.1** 或更新版本。
 * 選取 [ **Razor 類別庫** **] > [確定]** 。
@@ -204,7 +204,7 @@ RCL 具有下列專案檔：
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-從命令列執行 `dotnet new razorclasslib`。 例如：
+從命令列執行 `dotnet new razorclasslib`。 例如，
 
 ```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
@@ -264,7 +264,7 @@ dotnet run
 建立 RCL 專案：
 
 * 從**Visual Studio 的**[檔案] 功能表中，選取 [**新增**>**專案**]。
-* 選取 [ASP.NET Core Web 應用程式]。
+* 選取 **ASP.NET Core Web 應用程式**。
 * 將應用程式命名為**RazorUIClassLib** >**確定**。
 * 確認已選取 **ASP.NET Core 2.1** 或更新版本。
 * 選取 [ **Razor 類別庫** **] > [確定]** 。
@@ -300,7 +300,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
   [!code-cshtml[](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml)]
 
-  需要 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` 才能使用部分檢視 (`<partial name="_Message" />`)。 您可以新增 *_ViewImports.cshtml* 檔案，而不要包含 `@addTagHelper` 指示詞。 例如：
+  需要 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` 才能使用部分檢視 (`<partial name="_Message" />`)。 您可以新增 `@addTagHelper`_ViewImports.cshtml*檔案，而不要包含* 指示詞。 例如，
 
   ```dotnetcli
   dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
@@ -323,7 +323,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 建立 Razor 頁面 Web 應用程式：
 
 * 在**方案總管**中，以滑鼠右鍵按一下方案 **> 新增**>**新增專案**。
-* 選取 [ASP.NET Core Web 應用程式]。
+* 選取 **ASP.NET Core Web 應用程式**。
 * 將應用程式命名為 **WebApp1**。
 * 確認已選取 **ASP.NET Core 2.1** 或更新版本。
 * 選取 [ **Web 應用程式** **] > [確定]** 。
@@ -387,3 +387,7 @@ dotnet run
 ```
 
 ::: moniker-end
+
+## <a name="additional-resources"></a>其他資源
+
+* <xref:blazor/class-libraries>

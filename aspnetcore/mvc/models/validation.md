@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 uid: mvc/models/validation
-ms.openlocfilehash: c4fd16ef682627810c6d7629671de056f1cf3b3f
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: a39eeead10849d11349688c42fe814ede9e8a847
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114753"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172495"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和 Razor Pages 中的模型驗證
 
@@ -64,13 +64,13 @@ ms.locfileid: "77114753"
 
 ### <a name="error-messages"></a>錯誤訊息
 
-驗證屬性可讓您指定要顯示的無效輸入錯誤訊息。 例如：
+驗證屬性可讓您指定要顯示的無效輸入錯誤訊息。 例如，
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-就內部而言，屬性會使用欄位名稱的預留位置呼叫 `String.Format`，有時候也會使用其他預留位置。 例如：
+就內部而言，屬性會使用欄位名稱的預留位置呼叫 `String.Format`，有時候也會使用其他預留位置。 例如，
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -146,7 +146,7 @@ services.AddControllers(options => options.SuppressImplicitRequiredAttributeForN
 
 若要驗證兩個或多個其他欄位，請以逗號分隔清單來提供這些欄位。 例如，若要將 `MiddleName` 屬性 (Property) 新增至模型，請設定 `[Remote]` 屬性 (Attribute)，如下列範例所示：
 
-```cs
+```csharp
 [Remote(action: "VerifyName", controller: "Users", AdditionalFields = nameof(FirstName) + "," + nameof(LastName))]
 public string MiddleName { get; set; }
 ```
@@ -271,7 +271,7 @@ public string MiddleName { get; set; }
 
 jQuery 低調驗證會在第一次載入頁面時將驗證邏輯和傳遞參數至 jQuery 驗證。 因此，驗證不會在動態產生的表單上自動運作。 若要啟用驗證，請指示 jQuery 低調驗證在建立動態表單之後立即進行剖析。 例如，下列程式碼會在透過 AJAX 新增的表單上設定用戶端驗證。
 
-```js
+```javascript
 $.get({
     url: "https://url/that/returns/a/form",
     dataType: "html",
@@ -294,7 +294,7 @@ $.get({
 
 `$.validator.unobtrusive.parse()` 方法適用於整個表單，而非動態產生的個別控制項 (例如 `<input>` 和 `<select/>`)。 若要重新剖析表單，請移除先前剖析表單時新增的驗證資料，如下列範例所示：
 
-```js
+```javascript
 $.get({
     url: "https://url/that/returns/a/control",
     dataType: "html",
@@ -434,13 +434,13 @@ $.get({
 
 ### <a name="error-messages"></a>錯誤訊息
 
-驗證屬性可讓您指定要顯示的無效輸入錯誤訊息。 例如：
+驗證屬性可讓您指定要顯示的無效輸入錯誤訊息。 例如，
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-就內部而言，屬性會使用欄位名稱的預留位置呼叫 `String.Format`，有時候也會使用其他預留位置。 例如：
+就內部而言，屬性會使用欄位名稱的預留位置呼叫 `String.Format`，有時候也會使用其他預留位置。 例如，
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -512,7 +512,7 @@ $.get({
 
 若要驗證兩個或多個其他欄位，請以逗號分隔清單來提供這些欄位。 例如，若要將 `MiddleName` 屬性 (Property) 新增至模型，請設定 `[Remote]` 屬性 (Attribute)，如下列範例所示：
 
-```cs
+```csharp
 [Remote(action: "VerifyName", controller: "Users", AdditionalFields = nameof(FirstName) + "," + nameof(LastName))]
 public string MiddleName { get; set; }
 ```
@@ -642,7 +642,7 @@ public string MiddleName { get; set; }
 
 jQuery 低調驗證會在第一次載入頁面時將驗證邏輯和傳遞參數至 jQuery 驗證。 因此，驗證不會在動態產生的表單上自動運作。 若要啟用驗證，請指示 jQuery 低調驗證在建立動態表單之後立即進行剖析。 例如，下列程式碼會在透過 AJAX 新增的表單上設定用戶端驗證。
 
-```js
+```javascript
 $.get({
     url: "https://url/that/returns/a/form",
     dataType: "html",
@@ -665,7 +665,7 @@ $.get({
 
 `$.validator.unobtrusive.parse()` 方法適用於整個表單，而非動態產生的個別控制項 (例如 `<input>` 和 `<select/>`)。 若要重新剖析表單，請移除先前剖析表單時新增的驗證資料，如下列範例所示：
 
-```js
+```javascript
 $.get({
     url: "https://url/that/returns/a/control",
     dataType: "html",

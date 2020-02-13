@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 12/18/2018
 uid: fundamentals/owin
-ms.openlocfilehash: 7edb4db026f1b778d43ac72883690a0b2a18ee31
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 980b60512bdeadd2a58b87e633ebf1416f725851
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67814889"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172096"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>具有 ASP.NET Core 的 Open Web Interface for .NET (OWIN)
 
@@ -56,7 +56,7 @@ public Task OwinHello(IDictionary<string, object> environment)
 
 範例簽章會傳回 `Task`，並依照 OWIN 的要求接受 `IDictionary<string, object>`。
 
-下列程式碼示範如何使用 `UseOwin` 擴充方法，將 `OwinHello` 中介軟體 (如上所示) 新增至 ASP.NET Core 管線。
+下列程式碼示範如何使用 `OwinHello` 擴充方法，將 `UseOwin` 中介軟體 (如上所示) 新增至 ASP.NET Core 管線。
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -79,11 +79,14 @@ public void Configure(IApplicationBuilder app)
 ```csharp
 app.UseOwin(pipeline =>
 {
-    pipeline(async (next) =>
+    pipeline(next =>
     {
-        // do something before
-        await OwinHello(new OwinEnvironment(HttpContext));
-        // do something after
+        return async environment =>
+        {
+            // Do something before.
+            await next(environment);
+            // Do something after.
+        };
     });
 });
 ```
@@ -234,7 +237,7 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 ### <a name="request-data-owin-v100"></a>要求資料 (OWIN 1.0.0 版)
 
-| Key               | 值 (類型) | 說明 |
+| Key               | 值 (類型) | 描述 |
 | ----------------- | ------------ | ----------- |
 | owin.RequestScheme | `String` |  |
 | owin.RequestMethod  | `String` | |    
@@ -247,29 +250,29 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 ### <a name="request-data-owin-v110"></a>要求資料 (OWIN 1.1.0 版)
 
-| Key               | 值 (類型) | 說明 |
+| Key               | 值 (類型) | 描述 |
 | ----------------- | ------------ | ----------- |
-| owin.RequestId | `String` | Optional |
+| owin.RequestId | `String` | 選擇性 |
 
 ### <a name="response-data-owin-v100"></a>回應資料 (OWIN 1.0.0 版)
 
-| Key               | 值 (類型) | 說明 |
+| Key               | 值 (類型) | 描述 |
 | ----------------- | ------------ | ----------- |
-| owin.ResponseStatusCode | `int` | Optional |
-| owin.ResponseReasonPhrase | `String` | Optional |
+| owin.ResponseStatusCode | `int` | 選擇性 |
+| owin.ResponseReasonPhrase | `String` | 選擇性 |
 | owin.ResponseHeaders | `IDictionary<string,string[]>`  | |
 | owin.ResponseBody | `Stream`  | |
 
 ### <a name="other-data-owin-v100"></a>其他資料 (OWIN 1.0.0 版)
 
-| Key               | 值 (類型) | 說明 |
+| Key               | 值 (類型) | 描述 |
 | ----------------- | ------------ | ----------- |
 | owin.CallCancelled | `CancellationToken` |  |
 | owin.Version  | `String` | |   
 
 ### <a name="common-keys"></a>共同索引鍵
 
-| Key               | 值 (類型) | 說明 |
+| Key               | 值 (類型) | 描述 |
 | ----------------- | ------------ | ----------- |
 | ssl.ClientCertificate | `X509Certificate` |  |
 | ssl.LoadClientCertAsync  | `Func<Task>` | |    
@@ -282,13 +285,13 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 ### <a name="sendfiles-v030"></a>SendFiles 0.3.0 版
 
-| Key               | 值 (類型) | 說明 |
+| Key               | 值 (類型) | 描述 |
 | ----------------- | ------------ | ----------- |
 | sendfile.SendAsync | 請參閱[委派簽章](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | 每個要求 |
 
 ### <a name="opaque-v030"></a>Opaque 0.3.0 版
 
-| Key               | 值 (類型) | 說明 |
+| Key               | 值 (類型) | 描述 |
 | ----------------- | ------------ | ----------- |
 | opaque.Version | `String` |  |
 | opaque.Upgrade | `OpaqueUpgrade` | 請參閱[委派簽章](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
@@ -297,7 +300,7 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 ### <a name="websocket-v030"></a>WebSocket 0.3.0 版
 
-| Key               | 值 (類型) | 說明 |
+| Key               | 值 (類型) | 描述 |
 | ----------------- | ------------ | ----------- |
 | websocket.Version | `String` |  |
 | websocket.Accept | `WebSocketAccept` | 請參閱[委派簽章](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
@@ -307,8 +310,8 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 | websocket.ReceiveAsync | `WebSocketReceiveAsync` | 請參閱[委派簽章](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
 | websocket.CloseAsync | `WebSocketCloseAsync` | 請參閱[委派簽章](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
 | websocket.CallCancelled | `CancellationToken` |  |
-| websocket.ClientCloseStatus | `int` | Optional |
-| websocket.ClientCloseDescription | `String` | Optional |
+| websocket.ClientCloseStatus | `int` | 選擇性 |
+| websocket.ClientCloseDescription | `String` | 選擇性 |
 
 ## <a name="additional-resources"></a>其他資源
 

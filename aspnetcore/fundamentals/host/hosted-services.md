@@ -5,14 +5,14 @@ description: 了解如何在 ASP.NET Core 中使用託管服務實作背景工�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/05/2020
+ms.date: 02/10/2020
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 6a88e56afc4fb1b4f673c362f83d948eda84b930
-ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
+ms.openlocfilehash: 9b7224c07df027c9466db34dcc23505410893f1f
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77044878"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77171788"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
@@ -40,7 +40,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 [!INCLUDE[](~/includes/worker-template-instructions.md)]
 
-## <a name="package"></a>Package
+## <a name="package"></a>套件
 
 以背景工作角色服務範本為基礎的應用程式會使用 `Microsoft.NET.Sdk.Worker` SDK，並具有對[Microsoft Extensions. 裝載](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)封裝的明確套件參考。 例如，請參閱範例應用程式的專案檔（*BackgroundTasksSample .csproj*）。
 
@@ -124,7 +124,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 若要使用[BackgroundService](#backgroundservice-base-class)內的[範圍服務](xref:fundamentals/dependency-injection#service-lifetimes)，請建立範圍。 根據預設，不會針對託管服務建立任何範圍。
 
-範圍背景工作服務包含背景工作的邏輯。 在下例中︰
+範圍背景工作服務包含背景工作的邏輯。 在下列範例中：
 
 * 服務是非同步。 `DoWork` 方法會傳回 `Task`。 基於示範目的，`DoWork` 方法會等待10秒的延遲。
 * <xref:Microsoft.Extensions.Logging.ILogger> 會插入服務中。
@@ -167,6 +167,10 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet3)]
 
+`MontiorLoop` 會在 `Program.Main`中啟動：
+
+[!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet4)]
+
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
@@ -179,7 +183,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="package"></a>Package
+## <a name="package"></a>套件
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) 套件的套件參考。
 

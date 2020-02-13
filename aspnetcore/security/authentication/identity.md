@@ -5,12 +5,12 @@ description: 將身分識別與 ASP.NET Core 應用程式搭配使用。 瞭解�
 ms.author: riande
 ms.date: 01/15/2020
 uid: security/authentication/identity
-ms.openlocfilehash: 98fee261a741a20eed181ca5b9a4ebb693deeb63
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: 164ba10c1d1e2a73ebeb8240293a58f158055699
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146507"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172535"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET Core 上的身分識別簡介
 
@@ -49,7 +49,7 @@ ASP.NET Core 身分識別：
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] > [**新增**>**專案**]。
-* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [ **確定**]。
+* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]** 。
 
@@ -67,7 +67,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-產生的專案會提供[ASP.NET Core 身分識別](xref:security/authentication/identity)做為[Razor 類別庫](xref:razor-pages/ui-class)。 身分識別 Razor 類別庫會公開具有 `Identity` 區域的端點。 例如：
+產生的專案會提供[ASP.NET Core 身分識別](xref:security/authentication/identity)做為[Razor 類別庫](xref:razor-pages/ui-class)。 身分識別 Razor 類別庫會公開具有 `Identity` 區域的端點。 例如，
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -159,7 +159,7 @@ PowerShell 使用分號做為命令分隔符號。 使用 PowerShell 時，請�
 
 [!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-基底 `Controller` 類別會公開可從控制器方法存取的 `User` 屬性。 例如，您可以列舉 `User.Claims` 並做出授權決策。 如需詳細資訊，請參閱<xref:security/authorization/introduction>。
+基底 `Controller` 類別會公開可從控制器方法存取的 `User` 屬性。 例如，您可以列舉 `User.Claims` 並做出授權決策。 如需詳細資訊，請參閱 <xref:security/authorization/introduction>。
 
 ### <a name="log-out"></a>登出
 
@@ -275,7 +275,7 @@ ASP.NET Core 身分識別是將登入功能新增至 ASP.NET Core 應用程式�
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] > [**新增**>**專案**]。
-* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [ **確定**]。
+* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]** 。
 
@@ -287,7 +287,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-產生的專案會提供[ASP.NET Core 身分識別](xref:security/authentication/identity)做為[Razor 類別庫](xref:razor-pages/ui-class)。 身分識別 Razor 類別庫會公開具有 `Identity` 區域的端點。 例如：
+產生的專案會提供[ASP.NET Core 身分識別](xref:security/authentication/identity)做為[Razor 類別庫](xref:razor-pages/ui-class)。 身分識別 Razor 類別庫會公開具有 `Identity` 區域的端點。 例如，
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -301,7 +301,9 @@ dotnet new webapp --auth Individual -o WebApp1
 
 在 [套件管理員主控台] （PMC）中執行下列命令：
 
-```PM> Update-Database```
+```powershell
+Update-Database
+```
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -375,7 +377,7 @@ PowerShell 使用分號做為命令分隔符號。 使用 PowerShell 時，請�
 
 [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-基底 `Controller` 類別會公開您可以從控制器方法存取的 `User` 屬性。 例如，您可以列舉 `User.Claims` 並做出授權決策。 如需詳細資訊，請參閱<xref:security/authorization/introduction>。
+基底 `Controller` 類別會公開您可以從控制器方法存取的 `User` 屬性。 例如，您可以列舉 `User.Claims` 並做出授權決策。 如需詳細資訊，請參閱 <xref:security/authorization/introduction>。
 
 ### <a name="log-out"></a>登出
 

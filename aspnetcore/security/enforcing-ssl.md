@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 59883a8165040fa58edb2f6cf22d4d6b3abf6f3e
-ms.sourcegitcommit: 80286715afb93c4d13c931b008016d6086c0312b
+ms.openlocfilehash: 9efd49bb246a10c4eb49fb1bb0374ae9442d55a1
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77074545"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172618"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>在 ASP.NET Core 中強制使用 HTTPS
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 本檔說明如何：
 
@@ -261,7 +261,7 @@ ASP.NET Core 2.1 和更新版本使用 `UseHsts` 擴充方法來執行 HSTS。 �
 
 若為第一次執行 HTTPS 的生產環境，請使用其中一個 <xref:System.TimeSpan> 方法，將初始[HstsOptions](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*)設定為較小的值。 如果您需要將 HTTPS 基礎結構還原為 HTTP，請將值從小時設定為不超過一天。 在您確信 HTTPS 設定的持續性之後，請增加 HSTS 的最大壽命值;常使用的值為一年。
 
-下列程式碼範例：
+下列程式碼：
 
 
 ::: moniker range=">= aspnetcore-3.0"
@@ -327,7 +327,7 @@ dotnet new webapp --no-https
 
 .NET Core SDK 包含 HTTPS 開發憑證。 憑證會在首次執行體驗中安裝。 例如，`dotnet --info` 會產生類似下列的輸出：
 
-```text
+```
 ASP.NET Core
 ------------
 Successfully installed the ASP.NET Core HTTPS Development Certificate.

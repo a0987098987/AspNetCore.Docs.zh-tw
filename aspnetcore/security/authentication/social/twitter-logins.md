@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 12/06/2019
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 5d0695160d90d0c5d31b8e35bc6c4cc984829333
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 4710c033018710ce3620f8d7221ae2253b2c0b69
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944209"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172515"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>使用 ASP.NET Core 的 Twitter 外部登錄設定
 
@@ -27,6 +27,10 @@ ms.locfileid: "74944209"
 * 流覽至[https://apps.twitter.com/](https://apps.twitter.com/)並登入。 如果您還沒有 Twitter 帳戶，請使用 [ **[立即註冊](https://twitter.com/signup)** ] 連結來建立一個。
 
 * 選取 [建立應用程式]。 填寫 [應用程式**名稱**]、[**應用程式描述**] 和 [公用**網站**URI] （這可以是暫時性的，直到您註冊功能變數名稱）：
+
+* 核取 [**啟用使用 Twitter 登入**] 旁的核取方塊
+
+* AspNetCore 會要求使用者預設擁有電子郵件地址。 前往 [**許可權**] 索引標籤，按一下 [**編輯**] 按鈕，然後核取 [**要求使用者的電子郵件地址**] 旁的方塊。
 
 * 輸入您的開發 URI，並將 `/signin-twitter` 附加至 [**回呼 url** ] 欄位（例如： `https://webapp128.azurewebsites.net/signin-twitter`）。 稍後在此範例中設定的 Twitter 驗證配置，會自動處理 `/signin-twitter` 路由的要求，以執行 OAuth 流程。
 
@@ -52,7 +56,7 @@ dotnet user-secrets set Authentication:Twitter:ConsumerSecret <Secret>
 
 在*Startup.cs*檔案的 `ConfigureServices` 方法中新增 Twitter 服務：
 
-[!code-csharp[](~/security/authentication/social/social-code/3.x/StartupTwitter3x.cs?name=snippet&highlight=10-14)]
+[!code-csharp[](~/security/authentication/social/social-code/3.x/StartupTwitter3x.cs?name=snippet&highlight=10-15)]
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
 

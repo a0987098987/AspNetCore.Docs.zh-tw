@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 1244b2e23a842538ff2fca01a513317a690afe7c
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 411c0874d2b2c6ecadd1da9aff7a093f1e8e525a
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034024"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213424"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -21,7 +21,7 @@ ms.locfileid: "73034024"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-先前的教學課程建立了基本的資料模型，該模型由三個實體組成。 在本教學課程中：
+先前的教學課程建立了基本的資料模型，該模型由三個實體組成。 本教學課程內容：
 
 * 新增更多實體和關聯性。
 * 藉由指定格式、驗證和資料庫對應規則來自訂資料模型。
@@ -155,7 +155,7 @@ public string LastName { get; set; }
 
 ### <a name="create-a-migration"></a>建立移轉
 
-執行應用程式並移至 Students 頁面。 隨即擲回例外狀況。 `[Column]` 屬性會造成 EF 預期尋找名為 `FirstName` 的資料行，但資料庫中的資料行名稱仍是 `FirstMidName`。
+執行應用程式並移至 Students 頁面。 擲回例外狀況。 `[Column]` 屬性會造成 EF 預期尋找名為 `FirstName` 的資料行，但資料庫中的資料行名稱仍是 `FirstMidName`。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -230,7 +230,7 @@ SqliteException: SQLite Error 1: 'no such column: s.FirstName'.
 > [!Note]
 > 在下列各節中，在某些階段建置應用程式會產生編譯器錯誤。 指令會指定何時應建置應用程式。
 
-## <a name="the-instructor-entity"></a>Instructor 實體
+## <a name="the-instructor-entity"></a>[Instructor] 實體
 
 ![Instructor 實體](complex-data-model/_static/instructor-entity.png)
 
@@ -349,7 +349,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ## <a name="the-department-entity"></a>Department 實體
 
-![Department 實體](complex-data-model/_static/department-entity.png)
+![部門實體](complex-data-model/_static/department-entity.png)
 
 使用下列程式碼建立 *Models/Department.cs*：
 
@@ -427,7 +427,7 @@ public int StudentID { get; set; }
 public Student Student { get; set; }
 ```
 
-## <a name="many-to-many-relationships"></a>多對多關聯性
+## <a name="many-to-many-relationships"></a>Many-to-Many Relationships
 
 在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
 
@@ -518,7 +518,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ![實體圖表](complex-data-model/_static/diagram.png)
 
-上述圖表顯示：
+上圖顯示︰
 
 * 數個一對多關聯性線條 (1 對 \*)。
 * `Instructor` 和 `OfficeAssignment` 實體之間的一對零或一關聯性線條 (1 對 0..1)。
@@ -610,7 +610,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 * 開啟命令視窗並巡覽至專案資料夾。 專案資料夾包含 *ContosoUniversity.csproj* 檔案。
 
-* 執行下列命令：
+* 執行以下命令：
 
   ```dotnetcli
   dotnet ef database drop --force
@@ -656,7 +656,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 ## <a name="apply-the-migration"></a>套用移轉
 
-本節為選擇性。 這些步驟僅適用於 SQL Server LocalDB，且只有在您跳過先前的[卸除並重新建立資料庫](#drop)一節時才適用。
+此為選擇性區段。 這些步驟僅適用於 SQL Server LocalDB，且只有在您跳過先前的[卸除並重新建立資料庫](#drop)一節時才適用。
 
 當使用現有的資料執行移轉作業時，某些 FK 條件約束可能會無法透過現有資料滿足。 當您使用的是生產資料時，您必須進行幾個步驟才能移轉現有資料。 本節提供了修正 FK 條件約束違規的範例。 請不要在沒有備份的情況下進行這些程式碼變更。 若您已完成先前的[卸除並重新建立資料庫](#drop)一節，請不要變更這些程式碼。
 
@@ -725,7 +725,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 ::: moniker range="< aspnetcore-3.0"
 
-先前的教學課程建立了基本的資料模型，該模型由三個實體組成。 在本教學課程中：
+先前的教學課程建立了基本的資料模型，該模型由三個實體組成。 本教學課程內容：
 
 * 新增更多實體和關聯性。
 * 藉由指定格式、驗證和資料庫對應規則來自訂資料模型。
@@ -821,7 +821,7 @@ https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 新增 `Column` 屬性會變更支援 `SchoolContext` 的模型。 支援 `SchoolContext` 的模型不再符合資料庫。 若應用程式在套用移轉之前執行，便會產生下列例外狀況：
 
-```SQL
+```
 SqlException: Invalid column name 'FirstName'.
 ```
 
@@ -832,7 +832,7 @@ SqlException: Invalid column name 'FirstName'.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-```PMC
+```powershell
 Add-Migration ColumnFirstName
 Update-Database
 ```
@@ -1046,7 +1046,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ## <a name="create-the-department-entity"></a>建立 Department 實體
 
-![Department 實體](complex-data-model/_static/department-entity.png)
+![部門實體](complex-data-model/_static/department-entity.png)
 
 使用下列程式碼建立 *Models/Department.cs*：
 
@@ -1130,7 +1130,7 @@ public int StudentID { get; set; }
 public Student Student { get; set; }
 ```
 
-## <a name="many-to-many-relationships"></a>多對多關聯性
+## <a name="many-to-many-relationships"></a>Many-to-Many Relationships
 
 在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
 
@@ -1226,7 +1226,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ![實體圖表](complex-data-model/_static/diagram.png)
 
-上述圖表顯示：
+上圖顯示︰
 
 * 數個一對多關聯性線條 (1 對 \*)。
 * `Instructor` 和 `OfficeAssignment` 實體之間的一對零或一關聯性線條 (1 對 0..1)。
@@ -1290,7 +1290,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 在套件管理員主控台 (PMC) 中，執行下列命令：
 
-```PMC
+```powershell
 Drop-Database
 Update-Database
 ```
@@ -1330,7 +1330,7 @@ dotnet ef database update
 
 ### <a name="apply-the-migration-to-the-existing-database"></a>將移轉套用至現有資料庫
 
-本節為選擇性。 只有當您略過先前[卸除並重新建立資料庫](#drop)一節，這些步驟才有效。
+此為選擇性區段。 只有當您略過先前[卸除並重新建立資料庫](#drop)一節，這些步驟才有效。
 
 當使用現有的資料執行移轉作業時，某些 FK 條件約束可能會無法透過現有資料滿足。 當您使用的是生產資料時，您必須進行幾個步驟才能移轉現有資料。 本節提供了修正 FK 條件約束違規的範例。 請不要在沒有備份的情況下進行這些程式碼變更。 若您已完成了先前的章節並已更新資料庫，請不要進行這些程式碼變更。
 
@@ -1358,7 +1358,7 @@ dotnet ef database update
 
 [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
-藉由上述的變更，現有的 `Course` 資料列便會在執行 `ComplexDataModel``Up` 方法後與 "Temp" 部門產生關聯。
+隨著上述變更，現有 `Course` 的資料列會在 `ComplexDataModel` `Up` 方法執行之後，與「Temp」部門相關。
 
 生產環境的應用程式會：
 

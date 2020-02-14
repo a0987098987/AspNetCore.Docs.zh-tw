@@ -5,17 +5,17 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/24/2020
+ms.date: 02/04/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/components
-ms.openlocfilehash: d6ba60b20d21636c7f780a80d8fbdb152505a3a3
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: 0da0d83a4fde7b753a84bf05d3a9284776f2881f
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928252"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213346"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -70,9 +70,9 @@ Blazor 應用程式是使用*元件*所建立。 「元件」（component）是�
 
 Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或視圖呈現時，可以同時資源清單元件。
 
-若要準備 Razor Pages 或 MVC 應用程式來裝載 Razor 元件，請遵循 <xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps> 文章的將*Razor 元件整合到 Razor Pages 和 MVC 應用程式*一節中的指導方針。
+若要準備 Razor Pages 或 MVC 應用程式來裝載 Razor 元件，請遵循 <xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps> 文章的將*Razor 元件整合到 Razor Pages 和 MVC 應用程式*一節中的指導方針。
 
-使用自訂資料夾來存放應用程式的元件時，請將代表資料夾的命名空間新增至頁面/視圖，或加入至 *_ViewImports. cshtml*檔案。 在下列範例中：
+使用自訂資料夾來存放應用程式的元件時，請將代表資料夾的命名空間新增至頁面/視圖，或加入至 *_ViewImports. cshtml*檔案。 在下例中︰
 
 * 將 `MyAppNamespace` 變更為應用程式的命名空間。
 * 如果未使用名為「*元件*」的資料夾來存放元件，請將 `Components` 變更為元件所在的資料夾。
@@ -107,7 +107,10 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
 
 不支援從靜態 HTML 網頁轉譯伺服器元件。
 
-如需如何呈現元件、元件狀態和 `Component` 標籤協助程式的詳細資訊，請參閱 <xref:blazor/hosting-models>。
+如需有關如何呈現元件、元件狀態和 `Component` 標籤協助程式的詳細資訊，請參閱下列文章：
+
+* <xref:blazor/hosting-models>
+* <xref:blazor/hosting-model-configuration>
 
 ## <a name="tag-helpers-arent-used-in-components"></a>標籤協助程式不會在元件中使用
 
@@ -149,7 +152,7 @@ Razor 元件（*razor*檔案）中不支援[標記](xref:mvc/views/tag-helpers/i
 <h1>Parent-child example</h1>
 
 <ChildComponent Title="Panel Title from Parent"
-                OnClick="@ShowMessage">
+                OnClickCallback="@ShowMessage">
     Content of the child component is supplied
     by the parent component.
 </ChildComponent>
@@ -180,7 +183,7 @@ Razor 元件（*razor*檔案）中不支援[標記](xref:mvc/views/tag-helpers/i
 <h1>Parent-child example</h1>
 
 <ChildComponent Title="Panel Title from Parent"
-                OnClick="@ShowMessage">
+                OnClickCallback="@ShowMessage">
     Content of the child component is supplied
     by the parent component.
 </ChildComponent>
@@ -351,11 +354,11 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 * 指定的運算式（`CurrentValue`）至元素的 `value` 屬性。
 * `@bind-value:event`所指定之事件的變更事件委派。
 
-**無法剖析的值**
+### <a name="unparsable-values"></a>無法剖析的值
 
 當使用者將無法剖析的值提供給資料系結元素時，會在觸發系結事件時，自動將無法剖析的值還原成先前的值。
 
-請試想下述情況：
+請考慮下列案例：
 
 * `<input>` 元素會系結至 `int` 類型，其初始值為 `123`：
 
@@ -379,7 +382,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
   * 允許使用者在相關聯的 `EditContext`上提供不正確輸入和接收驗證錯誤。
   * 在 UI 中顯示驗證錯誤，而不幹擾使用者輸入其他 webform 資料。
 
-**全球化**
+### <a name="globalization"></a>全球化
 
 `@bind` 值會格式化為使用目前文化特性的規則來顯示和剖析。
 
@@ -406,7 +409,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 如需如何設定使用者文化特性的詳細資訊，請參閱[當地語系化](#localization)一節。
 
-**格式字串**
+### <a name="format-strings"></a>格式字串
 
 資料系結可搭配使用[`@bind:format`](xref:mvc/views/razor#bind)<xref:System.DateTime> 格式字串。 目前無法使用其他格式運算式，例如貨幣或數位格式。
 
@@ -422,9 +425,9 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 在上述程式碼中，`<input>` 元素的欄位類型（`type`）預設為 `text`。 支援系結下列 .NET 類型的 `@bind:format`：
 
 * <xref:System.DateTime?displayProperty=fullName>
-* <xref:System.DateTime?displayProperty=fullName>？
+* <xref:System.DateTime?displayProperty=fullName>?
 * <xref:System.DateTimeOffset?displayProperty=fullName>
-* <xref:System.DateTimeOffset?displayProperty=fullName>？
+* <xref:System.DateTimeOffset?displayProperty=fullName>?
 
 `@bind:format` 屬性會指定要套用至 `<input>` 元素 `value` 的日期格式。 當發生 `onchange` 事件時，也會使用此格式來剖析值。
 
@@ -434,9 +437,9 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 <input type="date" @bind="StartDate" @bind:format="yyyy-MM-dd">
 ```
 
-**元件參數**
+### <a name="parent-to-child-binding-with-component-parameters"></a>具有元件參數的父系對子系結
 
-Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結屬性值。
+Binding 可辨識元件參數，其中 `@bind-{property}` 可以將屬性值從父元件系結到子元件。 具有連鎖系結區段的[子系對父](#child-to-parent-binding-with-chained-bind)系結中涵蓋了從子系系結至父系的系結。
 
 下列子元件（`ChildComponent`）具有 `Year` 元件參數和 `YearChanged` 回呼：
 
@@ -456,7 +459,10 @@ Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結�
 
 `EventCallback<T>` 會在[app eventcallback](#eventcallback)一節中說明。
 
-下列父元件會使用 `ChildComponent`，並將 `ParentYear` 參數從父系系結至子元件上的 `Year` 參數：
+下列父元件會使用：
+
+* `ChildComponent`，並將 `ParentYear` 參數從父系系結至子元件上的 `Year` 參數。
+* `onclick` 事件是用來觸發 `ChangeTheYear` 方法。 如需詳細資訊，請參閱[事件處理](#event-handling)一節。
 
 ```razor
 @page "/ParentComponent"
@@ -520,7 +526,138 @@ Binding 可辨識元件參數，其中 `@bind-{property}` 可以跨元件系結�
 <MyComponent @bind-MyProp="MyValue" @bind-MyProp:event="MyEventHandler" />
 ```
 
-**選項按鈕**
+### <a name="child-to-parent-binding-with-chained-bind"></a>具有連鎖系結的子系對父系系結
+
+常見的案例是將資料系結參數連結至元件輸出中的 page 元素。 此案例稱為*連鎖*系結，因為會同時發生多個層級的系結。
+
+在頁面的元素中，無法使用 `@bind` 語法來執行連結系結。 事件處理常式和值必須分別指定。 不過，父元件可以使用 `@bind` 語法搭配元件的參數。
+
+下列 `PasswordField` 元件（*self.passwordfield.text*）：
+
+* 將 `<input>` 元素的值設定為 `Password` 屬性。
+* 將 `Password` 屬性的變更公開至具有[app eventcallback](#eventcallback)的父元件。
+* 會使用 `onclick` 事件來觸發 `ToggleShowPassword` 方法。 如需詳細資訊，請參閱[事件處理](#event-handling)一節。
+
+```razor
+<h1>Child Component</h2>
+
+Password: 
+
+<input @oninput="OnPasswordChanged" 
+       required 
+       type="@(_showPassword ? "text" : "password")" 
+       value="@Password" />
+
+<button class="btn btn-primary" @onclick="ToggleShowPassword">
+    Show password
+</button>
+
+@code {
+    private bool _showPassword;
+
+    [Parameter]
+    public string Password { get; set; }
+
+    [Parameter]
+    public EventCallback<string> PasswordChanged { get; set; }
+
+    private Task OnPasswordChanged(ChangeEventArgs e)
+    {
+        Password = e.Value.ToString();
+
+        return PasswordChanged.InvokeAsync(Password);
+    }
+
+    private void ToggleShowPassword()
+    {
+        _showPassword = !_showPassword;
+    }
+}
+```
+
+`PasswordField` 元件會在另一個元件中使用：
+
+```razor
+@page "/ParentComponent"
+
+<h1>Parent Component</h1>
+
+<PasswordField @bind-Password="_password" />
+
+@code {
+    private string _password;
+}
+```
+
+若要對上述範例中的密碼執行檢查或陷印錯誤：
+
+* 建立 `Password` 的支援欄位（在下列範例程式碼中`_password`）。
+* 執行 `Password` setter 中的檢查或陷阱錯誤。
+
+如果密碼的值中使用了空格，下列範例會向使用者提供立即的意見反應：
+
+```razor
+@page "/ParentComponent"
+
+<h1>Parent Component</h1>
+
+Password: 
+
+<input @oninput="OnPasswordChanged" 
+       required 
+       type="@(_showPassword ? "text" : "password")" 
+       value="@Password" />
+
+<button class="btn btn-primary" @onclick="ToggleShowPassword">
+    Show password
+</button>
+
+<span class="text-danger">@_validationMessage</span>
+
+@code {
+    private bool _showPassword;
+    private string _password;
+    private string _validationMessage;
+
+    [Parameter]
+    public string Password
+    {
+        get { return _password ?? string.Empty; }
+        set
+        {
+            if (_password != value)
+            {
+                if (value.Contains(' '))
+                {
+                    _validationMessage = "Spaces not allowed!";
+                }
+                else
+                {
+                    _password = value;
+                    _validationMessage = string.Empty;
+                }
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<string> PasswordChanged { get; set; }
+
+    private Task OnPasswordChanged(ChangeEventArgs e)
+    {
+        Password = e.Value.ToString();
+
+        return PasswordChanged.InvokeAsync(Password);
+    }
+
+    private void ToggleShowPassword()
+    {
+        _showPassword = !_showPassword;
+    }
+}
+```
+
+### <a name="radio-buttons"></a>選項按鈕
 
 如需系結至表單中選項按鈕的相關資訊，請參閱 <xref:blazor/forms-validation#work-with-radio-buttons>。
 
@@ -579,22 +716,25 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 下表顯示支援的 `EventArgs`。
 
-| Event            | 類別                | DOM 事件和注意事項 |
+| 事件            | 類別                | DOM 事件和注意事項 |
 | ---------------- | -------------------- | -------------------- |
-| 剪貼簿        | `ClipboardEventArgs` | `oncut`中， `oncopy`中， `onpaste` |
-| 拖曳             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` 和 `DataTransferItem` 保存拖曳的專案資料。 |
+| 剪貼簿        | `ClipboardEventArgs` | `oncut`、`oncopy`、`onpaste` |
+| 拖曳             | `DragEventArgs`      | `ondrag`、`ondragstart`、`ondragenter`、`ondragleave`、`ondragover`、`ondrop`、`ondragend`<br><br>`DataTransfer` 和 `DataTransferItem` 保存拖曳的專案資料。 |
 | 錯誤            | `ErrorEventArgs`     | `onerror` |
-| Event            | `EventArgs`          | *一般*<br>`onactivate`、`onbeforeactivate`、`onbeforedeactivate`、`ondeactivate`、`onended`、`onfullscreenchange`、`onfullscreenerror`、`onloadeddata`、`onloadedmetadata`、`onpointerlockchange`、`onpointerlockerror`、`onreadystatechange`、`onscroll`<br><br>*剪貼簿*<br>`onbeforecut`中， `onbeforecopy`中， `onbeforepaste`<br><br>*輸入*<br>`oninvalid`、 `onreset`、 `onselect`、 `onselectionchange`、 `onselectstart`、 `onsubmit`<br><br>*媒介*<br>`oncanplay`、`oncanplaythrough`、`oncuechange`、`ondurationchange`、`onemptied`、`onpause`、`onplay`、`onplaying`、`onratechange`、`onseeked`、`onseeking`、`onstalled`、`onstop`、`onsuspend`、`ontimeupdate`、`onvolumechange`、`onwaiting` |
-| 焦點            | `FocusEventArgs`     | `onfocus`、 `onblur`、 `onfocusin`、 `onfocusout`<br><br>不包含 `relatedTarget`的支援。 |
-| 輸入            | `ChangeEventArgs`    | `onchange`、 `oninput` |
-| 鍵盤         | `KeyboardEventArgs`  | `onkeydown`中， `onkeypress`中， `onkeyup` |
-| 滑鼠            | `MouseEventArgs`     | `onclick`, `oncontextmenu`, `ondblclick`, `onmousedown`, `onmouseup`, `onmouseover`, `onmousemove`, `onmouseout` |
+| 事件            | `EventArgs`          | *一般*<br>`onactivate`、`onbeforeactivate`、`onbeforedeactivate`、`ondeactivate`、`onended`、`onfullscreenchange`、`onfullscreenerror`、`onloadeddata`、`onloadedmetadata`、`onpointerlockchange`、`onpointerlockerror`、`onreadystatechange`、`onscroll`<br><br>*剪貼簿*<br>`onbeforecut`、`onbeforecopy`、`onbeforepaste`<br><br>*輸入*<br>`oninvalid`、`onreset`、`onselect`、`onselectionchange`、`onselectstart`、`onsubmit`<br><br>*媒體*<br>`oncanplay`、`oncanplaythrough`、`oncuechange`、`ondurationchange`、`onemptied`、`onpause`、`onplay`、`onplaying`、`onratechange`、`onseeked`、`onseeking`、`onstalled`、`onstop`、`onsuspend`、`ontimeupdate`、`onvolumechange`、`onwaiting` |
+| Focus            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>不包含 `relatedTarget`的支援。 |
+| 輸入            | `ChangeEventArgs`    | `onchange`, `oninput` |
+| 鍵盤         | `KeyboardEventArgs`  | `onkeydown`、`onkeypress`、`onkeyup` |
+| 滑鼠            | `MouseEventArgs`     | `onclick`、`oncontextmenu`、`ondblclick`、`onmousedown`、`onmouseup`、`onmouseover`、`onmousemove`、`onmouseout` |
 | 滑鼠指標    | `PointerEventArgs`   | `onpointerdown`, `onpointerup`, `onpointercancel`, `onpointermove`, `onpointerover`, `onpointerout`, `onpointerenter`, `onpointerleave`, `ongotpointercapture`, `onlostpointercapture` |
-| 滑鼠滾輪      | `WheelEventArgs`     | `onwheel`、 `onmousewheel` |
-| 進度         | `ProgressEventArgs`  | `onabort`、 `onload`、 `onloadend`、 `onloadstart`、 `onprogress`、 `ontimeout` |
-| 觸控            | `TouchEventArgs`     | `ontouchstart`、 `ontouchend`、 `ontouchmove`、 `ontouchenter`、 `ontouchleave`、 `ontouchcancel`<br><br>`TouchPoint` 代表觸控式裝置上的單一連絡人點。 |
+| 滑鼠滾輪      | `WheelEventArgs`     | `onwheel`, `onmousewheel` |
+| 進度         | `ProgressEventArgs`  | `onabort`、`onload`、`onloadend`、`onloadstart`、`onprogress`、`ontimeout` |
+| 觸控            | `TouchEventArgs`     | `ontouchstart`、`ontouchend`、`ontouchmove`、`ontouchenter`、`ontouchleave`、`ontouchcancel`<br><br>`TouchPoint` 代表觸控式裝置上的單一連絡人點。 |
 
-如需上表中事件的屬性和事件處理行為的詳細資訊，請參閱[參考來源中的 EventArgs 類別（dotnet/aspnetcore release/3.1 分支）](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/Components/Web/src/Web)。
+如需詳細資訊，請參閱下列資源：
+
+* [ASP.NET Core 參考來源中的 EventArgs 類別（dotnet/aspnetcore release/3.1 分支）](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/Components/Web/src/Web)。
+* [MDN web 檔： GlobalEventHandlers](https://developer.mozilla.org/docs/Web/API/GlobalEventHandlers) &ndash; 包含哪些 HTML 元素支援每個 DOM 事件的資訊。
 
 ### <a name="lambda-expressions"></a>Lambda 運算式
 
@@ -641,7 +781,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
-`ParentComponent` 會將子系的 `EventCallback<T>` （`OnClick`）設定為其 `ShowMessage` 方法。
+`ParentComponent` 會將子系的 `EventCallback<T>` （`OnClickCallback`）設定為其 `ShowMessage` 方法。
 
 *Pages/ParentComponent. razor*：
 
@@ -651,7 +791,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 <h1>Parent-child example</h1>
 
 <ChildComponent Title="Panel Title from Parent"
-                OnClick="@ShowMessage">
+                OnClickCallback="@ShowMessage">
     Content of the child component is supplied
     by the parent component.
 </ChildComponent>
@@ -677,7 +817,7 @@ Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案
 
 ```razor
 <ChildComponent 
-    OnClick="@(async () => { await Task.Yield(); _messageText = "Blaze It!"; })" />
+    OnClickCallback="@(async () => { await Task.Yield(); _messageText = "Blaze It!"; })" />
 ```
 
 使用 `InvokeAsync` 叫用 `EventCallback` 或 `EventCallback<T>`，並等待 <xref:System.Threading.Tasks.Task>：
@@ -756,126 +896,6 @@ await callback.InvokeAsync(arg);
 }
 ```
 
-## <a name="chained-bind"></a>連鎖系結
-
-常見的案例是將資料系結參數連結至元件輸出中的 page 元素。 此案例稱為*連鎖*系結，因為會同時發生多個層級的系結。
-
-在頁面的元素中，無法使用 `@bind` 語法來執行連結系結。 事件處理常式和值必須分別指定。 不過，父元件可以使用 `@bind` 語法搭配元件的參數。
-
-下列 `PasswordField` 元件（*self.passwordfield.text*）：
-
-* 將 `<input>` 元素的值設定為 `Password` 屬性。
-* 將 `Password` 屬性的變更公開至具有[app eventcallback](#eventcallback)的父元件。
-
-```razor
-Password: 
-
-<input @oninput="OnPasswordChanged" 
-       required 
-       type="@(_showPassword ? "text" : "password")" 
-       value="@Password" />
-
-<button class="btn btn-primary" @onclick="ToggleShowPassword">
-    Show password
-</button>
-
-@code {
-    private bool _showPassword;
-
-    [Parameter]
-    public string Password { get; set; }
-
-    [Parameter]
-    public EventCallback<string> PasswordChanged { get; set; }
-
-    private Task OnPasswordChanged(ChangeEventArgs e)
-    {
-        Password = e.Value.ToString();
-
-        return PasswordChanged.InvokeAsync(Password);
-    }
-
-    private void ToggleShowPassword()
-    {
-        _showPassword = !_showPassword;
-    }
-}
-```
-
-`PasswordField` 元件會在另一個元件中使用：
-
-```razor
-<PasswordField @bind-Password="_password" />
-
-@code {
-    private string _password;
-}
-```
-
-若要對上述範例中的密碼執行檢查或陷印錯誤：
-
-* 建立 `Password` 的支援欄位（在下列範例程式碼中`_password`）。
-* 執行 `Password` setter 中的檢查或陷阱錯誤。
-
-如果密碼的值中使用了空格，下列範例會向使用者提供立即的意見反應：
-
-```razor
-Password: 
-
-<input @oninput="OnPasswordChanged" 
-       required 
-       type="@(_showPassword ? "text" : "password")" 
-       value="@Password" />
-
-<button class="btn btn-primary" @onclick="ToggleShowPassword">
-    Show password
-</button>
-
-<span class="text-danger">@_validationMessage</span>
-
-@code {
-    private bool _showPassword;
-    private string _password;
-    private string _validationMessage;
-
-    [Parameter]
-    public string Password
-    {
-        get { return _password ?? string.Empty; }
-        set
-        {
-            if (_password != value)
-            {
-                if (value.Contains(' '))
-                {
-                    _validationMessage = "Spaces not allowed!";
-                }
-                else
-                {
-                    _password = value;
-                    _validationMessage = string.Empty;
-                }
-            }
-        }
-    }
-
-    [Parameter]
-    public EventCallback<string> PasswordChanged { get; set; }
-
-    private Task OnPasswordChanged(ChangeEventArgs e)
-    {
-        Password = e.Value.ToString();
-
-        return PasswordChanged.InvokeAsync(Password);
-    }
-
-    private void ToggleShowPassword()
-    {
-        _showPassword = !_showPassword;
-    }
-}
-```
-
 ## <a name="capture-references-to-components"></a>捕獲元件的參考
 
 元件參考提供參考元件實例的方法，讓您可以發出命令給該實例，例如 `Show` 或 `Reset`。 若要捕捉元件參考：
@@ -928,6 +948,20 @@ public class NotifierService
 }
 ```
 
+將 `NotifierService` 註冊為 singletion：
+
+* 在 Blazor WebAssembly 中，于 `Program.Main`中註冊服務：
+
+  ```csharp
+  builder.Services.AddSingleton<NotifierService>();
+  ```
+
+* 在 Blazor 伺服器中，于 `Startup.ConfigureServices`中註冊服務：
+
+  ```csharp
+  services.AddSingleton<NotifierService>();
+  ```
+
 使用 `NotifierService` 來更新元件：
 
 ```razor
@@ -967,7 +1001,7 @@ public class NotifierService
 
 當轉譯專案或元件的清單，以及後續變更的專案或元件時，Blazor 的比較演算法必須決定哪些先前的專案或元件可以保留，以及模型物件應如何對應至這些專案。 一般來說，此程式是自動的，可以忽略，但在某些情況下，您可能會想要控制進程。
 
-參考下列範例：
+請考慮下列範例：
 
 ```csharp
 @foreach (var person in People)
@@ -1254,7 +1288,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果 `false` 或 `nul
 <input type="checkbox" />
 ```
 
-如需詳細資訊，請參閱<xref:mvc/views/razor>。
+如需詳細資訊，請參閱 <xref:mvc/views/razor>。
 
 > [!WARNING]
 > 當 .NET 類型為 `bool`時，某些 HTML 屬性（例如，由[aria 按下](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons)）無法正常運作。 在這些情況下，請使用 `string` 類型，而不是 `bool`。
@@ -1654,14 +1688,14 @@ builder.AddContent(1, "Second");
 
 第一次執行程式碼時，如果 `true``someFlag`，則產生器會接收：
 
-| 序列 | 類型      | Data   |
+| 順序 | 類型      | 資料   |
 | :------: | --------- | :----: |
-| 0        | Text node | 第一個  |
+| 0        | Text node | First  |
 | 1        | Text node | Second |
 
 假設 `someFlag` 會變成 `false`，然後再次轉譯標記。 這次，產生器會接收：
 
-| 序列 | 類型       | Data   |
+| 順序 | 類型       | 資料   |
 | :------: | ---------- | :----: |
 | 1        | Text node  | Second |
 
@@ -1686,14 +1720,14 @@ builder.AddContent(seq++, "Second");
 
 現在，第一個輸出是：
 
-| 序列 | 類型      | Data   |
+| 順序 | 類型      | 資料   |
 | :------: | --------- | :----: |
-| 0        | Text node | 第一個  |
+| 0        | Text node | First  |
 | 1        | Text node | Second |
 
 此結果與先前的案例相同，因此不會有負面問題存在。 `someFlag` 是在第二個轉譯 `false`，而輸出則是：
 
-| 序列 | 類型      | Data   |
+| 順序 | 類型      | 資料   |
 | :------: | --------- | ------ |
 | 0        | Text node | Second |
 
@@ -1723,13 +1757,13 @@ Blazor 伺服器應用程式是使用[當地語系化中介軟體](xref:fundamen
 * [Cookie](#cookies)
 * [提供 UI 以選擇文化特性](#provide-ui-to-choose-the-culture)
 
-如需詳細資訊與範例，請參閱<xref:fundamentals/localization>。
+如需詳細資訊和範例，請參閱 <xref:fundamentals/localization>。
 
 ### <a name="configure-the-linker-for-internationalization-opno-locblazor-webassembly"></a>設定國際化的連結器（Blazor WebAssembly）
 
 根據預設，Blazor WebAssembly 應用程式的 Blazor連結器設定會去除國際化資訊，但不包括明確要求的地區設定。 如需控制連結器行為的詳細資訊和指引，請參閱 <xref:host-and-deploy/blazor/configure-linker#configure-the-linker-for-internationalization>。
 
-### <a name="cookies"></a>Cookies
+### <a name="cookies"></a>Cookie
 
 當地語系化文化特性 cookie 可以保存使用者的文化特性。 Cookie 是由應用程式的主機頁面（*Pages/主機. cshtml .cs*）的 `OnGet` 方法所建立。 當地語系化中介軟體會在後續要求中讀取 cookie，以設定使用者的文化特性。 
 
@@ -1791,7 +1825,7 @@ public class CultureController : Controller
 ```
 
 > [!WARNING]
-> 使用 `LocalRedirect` 動作結果來防止開啟重新導向攻擊。 如需詳細資訊，請參閱<xref:security/preventing-open-redirects>。
+> 使用 `LocalRedirect` 動作結果來防止開啟重新導向攻擊。 如需詳細資訊，請參閱 <xref:security/preventing-open-redirects>。
 
 下列元件顯示當使用者選取文化特性時，如何執行初始重新導向的範例：
 
@@ -1834,7 +1868,7 @@ Blazor的 `@bind` 功能會根據使用者目前的文化特性來執行全球�
 * Blazor 應用程式*支援*`IStringLocalizer<>`。
 * `IHtmlLocalizer<>`、`IViewLocalizer<>`和資料批註的當地語系化是 ASP.NET Core MVC 案例，而且 Blazor 應用程式中**不支援**。
 
-如需詳細資訊，請參閱<xref:fundamentals/localization>。
+如需詳細資訊，請參閱 <xref:fundamentals/localization>。
 
 ## <a name="scalable-vector-graphics-svg-images"></a>可擴充向量圖形（SVG）影像
 

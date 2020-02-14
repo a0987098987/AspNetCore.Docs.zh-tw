@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 51720af8fec5b4427fc66660eb8ac9c54ba2e99e
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 8e7294f6b66d34781473522a71f929ed5f9c33f2
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159855"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213372"
 ---
 # <a name="aspnet-core-opno-locblazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -66,7 +66,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 下列 *_Imports razor*檔案匯入：
 
-* `MyCoolLayout`。
+* `MyCoolLayout`第 1 課：建立 Windows Azure 儲存體物件{2}。
 * 相同資料夾和任何子資料夾中的所有 Razor 元件。
 * `BlazorApp1.Data` 命名空間。
  
@@ -94,7 +94,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 ## <a name="share-a-razor-pages-layout-with-integrated-components"></a>與整合式元件共用 Razor Pages 的版面配置
 
-當可路由的元件整合到 Razor Pages 應用程式時，應用程式的共用配置可以與元件搭配使用。 如需詳細資訊，請參閱<xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps>。
+當可路由的元件整合到 Razor Pages 應用程式時，應用程式的共用配置可以與元件搭配使用。 如需詳細資訊，請參閱 <xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps>。
 
 ## <a name="additional-resources"></a>其他資源
 

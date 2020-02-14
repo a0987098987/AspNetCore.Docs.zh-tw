@@ -5,17 +5,17 @@ description: 探索如何將元件包含在來自外部元件程式庫的 Blazor
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/23/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/class-libraries
-ms.openlocfilehash: f8e8688cdb3d1aef0d470e0e2d8c3857140ef65f
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 32088b43f91174596f6b9251d36782e806f966b9
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160024"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213245"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
 
@@ -35,7 +35,7 @@ ms.locfileid: "76160024"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 建立新的專案。
+1. 建立新專案。
 1. 選取 [ **Razor 類別庫**]。 選取 [下一步]。
 1. 在 [**建立新的 Razor 類別庫**] 對話方塊中，選取 [**建立**]。
 1. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 本主題中的範例會使用專案名稱 `MyComponentLib1`。 選取 [建立]。
@@ -47,6 +47,15 @@ ms.locfileid: "76160024"
    1. 以滑鼠右鍵按一下應用程式專案。 選取 [**新增** > **參考**]。
    1. 選取 [RCL] 專案。 選取 [確定]。
 
+> [!NOTE]
+> 從範本產生 RCL 時，如果已選取 [**支援頁面和視圖**] 核取方塊，則也會使用下列內容，將 *_Imports razor*檔案新增至所產生專案的根目錄，以啟用 razor 元件撰寫：
+>
+> ```razor
+> @using Microsoft.AspNetCore.Components.Web
+> ```
+>
+> 以手動方式將檔案新增至所產生專案的根目錄。
+
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 1. 使用**Razor 類別庫**範本（`razorclasslib`）搭配命令 shell 中的[dotnet new](/dotnet/core/tools/dotnet-new)命令。 在下列範例中，會建立名為 `MyComponentLib1`的 RCL。 執行命令時，會自動建立保存 `MyComponentLib1` 的資料夾：
@@ -54,6 +63,15 @@ ms.locfileid: "76160024"
    ```dotnetcli
    dotnet new razorclasslib -o MyComponentLib1
    ```
+
+   > [!NOTE]
+   > 如果從範本產生 RCL 時使用了 `-s|--support-pages-and-views` 參數，則也請將 *_Imports razor*檔案新增至產生之專案的根目錄，並具有下列內容，以啟用 razor 元件撰寫：
+   >
+   > ```razor
+   > @using Microsoft.AspNetCore.Components.Web
+   > ```
+   >
+   > 以手動方式將檔案新增至所產生專案的根目錄。
 
 1. 若要將程式庫新增至現有的專案，請在命令 shell 中使用[dotnet add reference](/dotnet/core/tools/dotnet-add-reference)命令。 在下列範例中，會將 RCL 新增至應用程式。 從應用程式的專案資料夾中，使用程式庫的路徑執行下列命令：
 
@@ -108,7 +126,7 @@ dotnet pack
 
 ## <a name="create-a-razor-components-class-library-with-static-assets"></a>建立具有靜態資產的 Razor 元件類別庫
 
-RCL 可以包含靜態資產。 使用該程式庫的任何應用程式都可以使用靜態資產。 如需詳細資訊，請參閱<xref:razor-pages/ui-class#create-an-rcl-with-static-assets>。
+RCL 可以包含靜態資產。 使用該程式庫的任何應用程式都可以使用靜態資產。 如需詳細資訊，請參閱 <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>。
 
 ## <a name="additional-resources"></a>其他資源
 

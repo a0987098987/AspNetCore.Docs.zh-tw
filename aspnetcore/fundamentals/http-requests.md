@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/09/2020
 uid: fundamentals/http-requests
-ms.openlocfilehash: 93b75525e8a3f10c4e0b655baaff83c0f6e8131b
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: aae643b3d725482285c4c0ca7b08606c0a365d2c
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171811"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213476"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>在 ASP.NET Core 中使用 IHttpClientFactory 發出 HTTP 要求
 
@@ -196,7 +196,7 @@ public class ValuesController : ControllerBase
     * 快取
     * 錯誤處理
     * 序列化
-    * 記錄
+    * logging
 
 若要建立委派處理常式：
 
@@ -312,7 +312,7 @@ public class ValuesController : ControllerBase
 - `SocketsHttpHandler` 會共用 `HttpClient` 實例間的連接。 此共用可防止通訊端耗盡。
 - `SocketsHttpHandler` 會根據 `PooledConnectionLifetime` 迴圈連接，以避免過時的 DNS 問題。
 
-### <a name="cookies"></a>Cookies
+### <a name="cookies"></a>Cookie
 
 集區 `HttpMessageHandler` 實例會導致共用 `CookieContainer` 物件。 意外的 `CookieContainer` 物件共用通常會導致不正確的程式碼。 針對需要 cookie 的應用程式，請考慮下列其中一項：
 
@@ -350,7 +350,7 @@ public class ValuesController : ControllerBase
 * [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)
 * [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 
-在下列範例中：
+在下例中︰
 
 * <xref:System.Net.Http.IHttpClientFactory> 已在[泛型主機的](xref:fundamentals/host/generic-host)服務容器中註冊。
 * `MyService` 會從服務建立用戶端 Factory 執行個體，其可用來建立 `HttpClient`。 `HttpClient` 會用來擷取網頁。
@@ -630,7 +630,7 @@ public class ValuesController : ControllerBase
 - `SocketsHttpHandler` 會共用 `HttpClient` 實例間的連接。 此共用可防止通訊端耗盡。
 - `SocketsHttpHandler` 會根據 `PooledConnectionLifetime` 迴圈連接，以避免過時的 DNS 問題。
 
-### <a name="cookies"></a>Cookies
+### <a name="cookies"></a>Cookie
 
 集區 `HttpMessageHandler` 實例會導致共用 `CookieContainer` 物件。 意外的 `CookieContainer` 物件共用通常會導致不正確的程式碼。 針對需要 cookie 的應用程式，請考慮下列其中一項：
 
@@ -668,7 +668,7 @@ public class ValuesController : ControllerBase
 * [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)
 * [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 
-在下列範例中：
+在下例中︰
 
 * <xref:System.Net.Http.IHttpClientFactory> 已在[泛型主機的](xref:fundamentals/host/generic-host)服務容器中註冊。
 * `MyService` 會從服務建立用戶端 Factory 執行個體，其可用來建立 `HttpClient`。 `HttpClient` 會用來擷取網頁。
@@ -697,7 +697,7 @@ public class ValuesController : ControllerBase
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 以 .NET Framework 為目標的專案，需要安裝 [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) NuGet 套件。 以 .NET Core 為目標且參考 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) 的專案，已包含 `Microsoft.Extensions.Http` 套件。
 
@@ -938,7 +938,7 @@ public class ValuesController : ControllerBase
 - `SocketsHttpHandler` 會共用 `HttpClient` 實例間的連接。 此共用可防止通訊端耗盡。
 - `SocketsHttpHandler` 會根據 `PooledConnectionLifetime` 迴圈連接，以避免過時的 DNS 問題。
 
-### <a name="cookies"></a>Cookies
+### <a name="cookies"></a>Cookie
 
 集區 `HttpMessageHandler` 實例會導致共用 `CookieContainer` 物件。 意外的 `CookieContainer` 物件共用通常會導致不正確的程式碼。 針對需要 cookie 的應用程式，請考慮下列其中一項：
 
@@ -976,7 +976,7 @@ public class ValuesController : ControllerBase
 * [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting)
 * [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 
-在下列範例中：
+在下例中︰
 
 * <xref:System.Net.Http.IHttpClientFactory> 已在[泛型主機的](xref:fundamentals/host/generic-host)服務容器中註冊。
 * `MyService` 會從服務建立用戶端 Factory 執行個體，其可用來建立 `HttpClient`。 `HttpClient` 會用來擷取網頁。

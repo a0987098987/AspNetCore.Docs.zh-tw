@@ -3,14 +3,14 @@ title: ASP.NET Core MVC 概觀
 author: ardalis
 description: 了解 ASP.NET Core MVC 何以是建置使用模型檢視控制器設計模式之 Web 應用程式和 API 的豐富架構。
 ms.author: riande
-ms.date: 01/28/2020
+ms.date: 02/12/2020
 uid: mvc/overview
-ms.openlocfilehash: a0d1e364bf4cda4ad30c5070c9e61e6972759bb0
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 2911399f6ed4e14345171c908c4306b9c3e33805
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171817"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447408"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -220,7 +220,7 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 
 [標籤協助程式](views/tag-helpers/intro.md)可讓伺服器端程式碼參與建立及轉譯 Razor 檔案中 HTML 元素的過程。 您可以使用標籤協助程式定義自訂標籤 (例如 `<environment>`)，或修改現有標籤 (例如 `<label>`) 的行為。 標籤協助程式會根據元素名稱及其屬性，繫結至特定元素。 其提供伺服器端轉譯優點，同時仍然保留 HTML 編輯體驗。
 
-有許多適用於一般工作 (例如建立表單和連結、載入資產等) 的內建標籤協助程式，還有更多位於公用 GitHub 存放庫及作為 NuGet 套件來提供。 標籤協助程式是以 C# 撰寫，並根據元素名稱、屬性名稱或上層標籤來設定目標 HTML 元素。 例如，內建 LinkTagHelper 可用來建立 `Login` 之 `AccountsController` 動作的連結：
+有許多適用於一般工作 (例如建立表單和連結、載入資產等) 的內建標籤協助程式，還有更多位於公用 GitHub 存放庫及作為 NuGet 套件來提供。 標籤協助程式是以 C# 編寫，並根據項目名稱、屬性名稱或上層標籤來設定目標 HTML 項目。 例如，內建 LinkTagHelper 可用來建立 `Login` 之 `AccountsController` 動作的連結：
 
 ```cshtml
 <p>
@@ -258,5 +258,4 @@ ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web A
 ## <a name="additional-resources"></a>其他資源
 
 * 適用于 ASP.NET Core MVC &ndash; 強型別單元測試程式庫[的 MyTested AspNetCore](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc) ，提供流暢的介面來測試 Mvc 和 Web API 應用程式。 （*不是由 Microsoft 維護或支援）。*
-* [將 Razor 元件整合到 Razor Pages 和 MVC 應用程式中](xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps)
-
+* <xref:blazor/integrate-components>

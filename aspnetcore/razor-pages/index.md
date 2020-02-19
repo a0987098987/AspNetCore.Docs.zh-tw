@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: 了解 ASP.NET Core 中的 Razor Pages 如何使注重頁面的案例編碼變得更輕鬆，並增加生產力，達到比使用 MVC 更好的成效。
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 01/28/2020
+ms.date: 02/12/2020
 uid: razor-pages/index
-ms.openlocfilehash: 402e11d653cf0e7433c63844cb7e2802abc61679
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 30e2cde03236bae4c3ca06a91c56586d8c9f2bff
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172614"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447447"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 簡介
 
@@ -27,15 +27,15 @@ Razor Pages 可以讓撰寫以頁面為焦點的案例更輕鬆且更具生產�
 
 ## <a name="prerequisites"></a>必要條件
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
 
@@ -45,15 +45,15 @@ Razor Pages 可以讓撰寫以頁面為焦點的案例更輕鬆且更具生產�
 
 ## <a name="create-a-razor-pages-project"></a>建立 Razor Pages 專案
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 如需如何建立 Razor Pages 專案的詳細說明，請參閱[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 從命令列執行 `dotnet new webapp`。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 從命令列執行 `dotnet new webapp`。
 
@@ -83,7 +83,7 @@ Razor Pages 是在 *Startup.cs* 中啟用：
 
 依照慣例，`PageModel` 類別檔和附加 *.cs* 檔名的 Razor Page 檔案名稱相同。 例如，前一個 Razor Page 是 *Pages/Index2.cshtml*。 包含 `PageModel` 類別的檔案名為 *Pages/Index2.cshtml.cs*。
 
-頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。 下表顯示 Razor Page 路徑和相符的 URL:
+頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。 下表顯示 Razor 頁面路徑和相符的 URL：
 
 | 檔案名稱和路徑               | 比對 URL |
 | ----------------- | ------------ |
@@ -133,7 +133,7 @@ DB 內容：
 * `OnGet`，初始化頁所需要的狀態。 在上述程式碼中，`OnGet` 方法會顯示*CreateModel* Razor 頁面。
 * `OnPost`，處理表單提交作業。
 
-`Async` 命名尾碼是選擇性的，但依照慣例通常用於非同步函式。 上述程式碼一般用於 Razor Pages。
+`Async` 命名尾碼是選擇性的，但依照慣例通常用於非同步函式。 上述程式碼一般用於 Razor 頁面。
 
 如果您熟悉如何使用控制器和 views 來 ASP.NET 應用程式：
 
@@ -366,7 +366,7 @@ Pages 可搭配 Razor 檢視引擎的所有功能一起使用。 版面配置、
 
 版面配置頁面應位於 *Pages/Shared* 資料夾中。
 
-我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。 *Views/Shared* 是 MVC 檢視模式。 Razor Pages 應該要依賴資料夾階層，不是路徑慣例。
+我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。 *Views/Shared* 是 MVC 檢視模式。 Razor 頁面應該要依賴資料夾階層，不是路徑慣例。
 
 Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 與 MVC 控制器和傳統 Razor views 搭配使用的版面配置、範本和部分都*是可行*的。
 
@@ -603,7 +603,7 @@ public string Message { get; set; }
 * <xref:razor-pages/razor-pages-conventions>
 * <xref:test/razor-pages-tests>
 * <xref:mvc/views/partial>
-* [將 Razor 元件整合到 Razor Pages 和 MVC 應用程式中](xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps)
+* <xref:blazor/integrate-components>
 
 ::: moniker-end
 
@@ -619,15 +619,15 @@ Razor Pages 是 ASP.NET Core MVC 新的部分，更容易編寫以頁面為焦�
 
 ## <a name="prerequisites"></a>必要條件
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
 
@@ -637,17 +637,17 @@ Razor Pages 是 ASP.NET Core MVC 新的部分，更容易編寫以頁面為焦�
 
 ## <a name="create-a-razor-pages-project"></a>建立 Razor Pages 專案
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 如需如何建立 Razor Pages 專案的詳細說明，請參閱[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 從命令列執行 `dotnet new webapp`。
 
 從 Visual Studio for Mac 開啟已產生的 *.csproj* 檔案。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 從命令列執行 `dotnet new webapp`。
 
@@ -675,7 +675,7 @@ Razor Pages 是在 *Startup.cs* 中啟用：
 
 依照慣例，`PageModel` 類別檔和附加 *.cs* 檔名的 Razor Page 檔案名稱相同。 例如，前一個 Razor Page 是 *Pages/Index2.cshtml*。 包含 `PageModel` 類別的檔案名為 *Pages/Index2.cshtml.cs*。
 
-頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。 下表顯示 Razor Page 路徑和相符的 URL:
+頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。 下表顯示 Razor 頁面路徑和相符的 URL：
 
 | 檔案名稱和路徑               | 比對 URL |
 | ----------------- | ------------ |
@@ -725,7 +725,7 @@ DB 內容：
 * `OnGet`，初始化頁所需要的狀態。 [OnGet](#OnGet) 範例。
 * `OnPost`，處理表單提交作業。
 
-`Async` 命名尾碼是選擇性的，但依照慣例通常用於非同步函式。 上述程式碼一般用於 Razor Pages。
+`Async` 命名尾碼是選擇性的，但依照慣例通常用於非同步函式。 上述程式碼一般用於 Razor 頁面。
 
 如果您熟悉如何使用控制器和 views 來 ASP.NET 應用程式：
 
@@ -884,7 +884,7 @@ Pages 可搭配 Razor 檢視引擎的所有功能一起使用。 版面配置、
 
 版面配置頁面應位於 *Pages/Shared* 資料夾中。
 
-我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。 *Views/Shared* 是 MVC 檢視模式。 Razor Pages 應該要依賴資料夾階層，不是路徑慣例。
+我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。 *Views/Shared* 是 MVC 檢視模式。 Razor 頁面應該要依賴資料夾階層，不是路徑慣例。
 
 Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使用的版面配置、範本和部分以及傳統的 Razor 檢視「就這麼簡單」。
 
@@ -1085,7 +1085,7 @@ public string Message { get; set; }
 
 [下載或檢視範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/sample)。
 
-請參閱根據本簡介編纂的[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)。
+請參閱根據本簡介編纂的[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。
 
 ### <a name="specify-that-razor-pages-are-at-the-content-root"></a>指定 Razor Pages 位於內容根目錄
 

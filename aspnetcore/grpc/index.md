@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
 uid: grpc/index
-ms.openlocfilehash: 2f32bf6e8df2c5b3574c337682cdc2845991630c
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: d97eea1da28424680a3cfa38102637b1e20ff661
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71925167"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77446953"
 ---
 # <a name="introduction-to-grpc-on-net-core"></a>.NET Core 上的 gRPC 簡介
 
@@ -33,7 +33,7 @@ gRPC 的主要優點包括：
 
 ## <a name="c-tooling-support-for-proto-files"></a>C#適用于 proto 檔案的工具支援
 
-gRPC 會使用合約優先的方法來開發 API。 服務和訊息定義于 *\*proto*檔案中：
+gRPC 會使用合約優先的方法來開發 API。 服務和訊息會定義在 *\*的 proto*檔案中：
 
 ```protobuf
 syntax = "proto3";
@@ -51,10 +51,10 @@ message HelloReply {
 }
 ```
 
-服務、用戶端和訊息的 .net 類型會透過在專案中包含 *\*proto*檔案的方式自動產生：
+服務、用戶端和訊息的 .NET 類型會藉由在專案中包含 *\*的 proto*檔案來自動產生：
 
 * 將套件參考新增至[Grpc](https://www.nuget.org/packages/Grpc.Tools/)套件。
-* 將 *\*proto*檔案加入至`<Protobuf>`專案群組。
+* 將 *\*的 proto*檔案加入至 `<Protobuf>` 專案群組。
 
 ```xml
 <ItemGroup>
@@ -62,7 +62,7 @@ message HelloReply {
 </ItemGroup>
 ```
 
-如需 gRPC 工具支援的詳細資訊， <xref:grpc/basics>請參閱。
+如需 gRPC 工具支援的詳細資訊，請參閱 <xref:grpc/basics>。
 
 ## <a name="grpc-services-on-aspnet-core"></a>ASP.NET Core 上的 gRPC 服務
 
@@ -92,7 +92,7 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-`GreeterService`繼承自`GreeterBase`類型，這是從 *\*proto*檔案中`Greeter`的服務產生的。 此服務可供*Startup.cs*中的用戶端存取：
+`GreeterService` 繼承自 `GreeterBase` 類型，這是從 *\** 的 `Greeter` 服務中產生的。 此服務可供*Startup.cs*中的用戶端存取：
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -101,25 +101,25 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-若要深入瞭解 ASP.NET Core 上的 gRPC 服務， <xref:grpc/aspnetcore>請參閱。
+若要深入瞭解 ASP.NET Core 上的 gRPC 服務，請參閱 <xref:grpc/aspnetcore>。
 
 ## <a name="call-grpc-services-with-a-net-client"></a>使用 .NET 用戶端呼叫 gRPC 服務
 
-gRPC 用戶端是[從 *\*proto*檔案產生](xref:grpc/basics#generated-c-assets)的具體用戶端類型。 具體的 gRPC 用戶端具有轉譯為 *\*proto*檔案中 gRPC 服務的方法。
+gRPC 用戶端是[從 *\*的 proto*檔案產生](xref:grpc/basics#generated-c-assets)的具體用戶端類型。 具體 gRPC 用戶端的方法會轉譯為 *\*的 proto*檔案中的 gRPC 服務。
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
 var client = new Greeter.GreeterClient(channel);
 
-var response = await client.SayHello(
+var response = await client.SayHelloAsync(
     new HelloRequest { Name = "World" });
 
 Console.WriteLine(response.Message);
 ```
 
-GRPC 用戶端是使用通道所建立，這代表 gRPC 服務的長時間連接。 您可以使用`GrpcChannel.ForAddress`來建立通道。
+GRPC 用戶端是使用通道所建立，這代表 gRPC 服務的長時間連接。 您可以使用 `GrpcChannel.ForAddress`來建立通道。
 
-如需建立用戶端和呼叫不同服務方法的詳細資訊， <xref:grpc/client>請參閱。
+如需建立用戶端和呼叫不同服務方法的詳細資訊，請參閱 <xref:grpc/client>。
 
 [!INCLUDE[](~/includes/gRPCazure.md)]
 

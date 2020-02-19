@@ -4,17 +4,17 @@ author: rick-anderson
 description: 深入瞭解 ASP.NET Core 3.1 中的新功能。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 06c1d2596bff34bbfe3b55e782ea2d24321dd839
-ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
+ms.openlocfilehash: f375022ad3ebdea2990f626320ef295926f88c22
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722748"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447434"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>3\.1 ASP.NET Core 的新功能
 
@@ -43,7 +43,7 @@ Blazor 伺服器應用程式現在可以在初始轉譯期間，將參數傳遞�
     param-IncrementAmount="10" />
 ```
 
-如需詳細資訊，請參閱將[元件整合到 Razor Pages 和 MVC 應用程式](xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps)。
+如需詳細資訊，請參閱將[元件整合到 Razor Pages 和 MVC 應用程式](xref:blazor/integrate-components)。
 
 ## <a name="support-for-shared-queues-in-httpsys"></a>支援 HTTP.sys 中的共用佇列
 
@@ -53,7 +53,7 @@ Blazor 伺服器應用程式現在可以在初始轉譯期間，將參數傳遞�
 
 ## <a name="breaking-changes-for-samesite-cookies"></a>SameSite cookie 的重大變更
 
-SameSite cookie 的行為已變更，以反映即將進行的瀏覽器變更。 這可能會影響驗證案例，例如 AzureAd、OpenIdConnect 或 WsFederation。 如需詳細資訊，請參閱<xref:security/samesite>。
+SameSite cookie 的行為已變更，以反映即將進行的瀏覽器變更。 這可能會影響驗證案例，例如 AzureAd、OpenIdConnect 或 WsFederation。 如需詳細資訊，請參閱 <xref:security/samesite>。
 
 ## <a name="prevent-default-actions-for-events-in-opno-locblazor-apps"></a>防止 Blazor 應用程式中的事件的預設動作
 
@@ -63,7 +63,7 @@ SameSite cookie 的行為已變更，以反映即將進行的瀏覽器變更。 
 <input value="@_count" @onkeypress="KeyHandler" @onkeypress:preventDefault />
 ```
 
-如需詳細資訊，請參閱[防止預設動作](xref:blazor/components#prevent-default-actions)。
+如需詳細資訊，請參閱[防止預設動作](xref:blazor/event-handling#prevent-default-actions)。
 
 ## <a name="stop-event-propagation-in-opno-locblazor-apps"></a>在 Blazor 應用程式中停止事件傳播
 
@@ -83,7 +83,7 @@ SameSite cookie 的行為已變更，以反映即將進行的瀏覽器變更。 
 }
 ```
 
-如需詳細資訊，請參閱[停止事件傳播](xref:blazor/components#stop-event-propagation)。
+如需詳細資訊，請參閱[停止事件傳播](xref:blazor/event-handling#stop-event-propagation)。
 
 ## <a name="detailed-errors-during-opno-locblazor-app-development"></a>Blazor 應用程式開發期間的詳細錯誤
 

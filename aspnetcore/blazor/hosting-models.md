@@ -5,17 +5,17 @@ description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/31/2020
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 2314ba39e67fbf734807b96de6c54bc94283a67d
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: 54be0e032a60c69880f428e52f9d778032385dc5
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213310"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447044"
 ---
 # <a name="aspnet-core-opno-locblazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -121,7 +121,7 @@ Blazor 伺服器應用程式建置於[ASP.NET Core SignalR](xref:signalr/introdu
 
 連接到 Blazor 伺服器應用程式的每個瀏覽器畫面（瀏覽器索引標籤或 iframe）都會使用 SignalR 連接。 相較于一般伺服器呈現的應用程式，這還是另一項重要的差異。 在伺服器呈現的應用程式中，在多個瀏覽器畫面中開啟相同的應用程式，通常不會轉譯成伺服器上的其他資源需求。 在 Blazor 伺服器應用程式中，每個瀏覽器畫面都需要個別的線路，且元件狀態的個別實例會由伺服器管理。
 
-Blazor 考慮關閉瀏覽器索引標籤，或流覽至外部 URL 的*正常*終止。 在正常終止的事件中，會立即釋放線路和相關聯的資源。 用戶端也可能會因為網路中斷而無法正常地中斷連線。 Blazor Server 會儲存已中斷連線的線路，以取得可設定的間隔，以允許用戶端重新連線。 如需詳細資訊，請參閱重新[連接到相同的伺服器](xref:blazor/hosting-model-configuration#reconnection-to-the-same-server)。
+Blazor 考慮關閉瀏覽器索引標籤，或流覽至外部 URL 的*正常*終止。 在正常終止的事件中，會立即釋放線路和相關聯的資源。 用戶端也可能會因為網路中斷而無法正常地中斷連線。 Blazor Server 會儲存已中斷連線的線路，以取得可設定的間隔，以允許用戶端重新連線。
 
 ### <a name="ui-latency"></a>UI 延遲
 

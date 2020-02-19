@@ -5,17 +5,17 @@ description: 瞭解如何從 Blazor 應用程式中的 JavaScript，從 .NET 和
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/23/2020
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/javascript-interop
-ms.openlocfilehash: c4f2444b60fc2d3a8af893df379cf62636a7bdd5
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: d681eea5a5e876912bd614fba8ea45a464844496
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213359"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447161"
 ---
 # <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor JavaScript interop
 
@@ -74,7 +74,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
   [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged2.html)]
 
-* 針對使用[BuildRenderTree](xref:blazor/components#manual-rendertreebuilder-logic)的動態內容產生，請使用 `[Inject]` 屬性：
+* 針對使用[BuildRenderTree](xref:blazor/advanced-scenarios#manual-rendertreebuilder-logic)的動態內容產生，請使用 `[Inject]` 屬性：
 
   ```razor
   [Inject]
@@ -512,7 +512,9 @@ returnArrayAsyncJs: function () {
 
 您也可以從 JavaScript 呼叫 .NET 實例方法。 若要從 JavaScript 叫用 .NET 實例方法：
 
-* 將 .NET 實例包裝在 `DotNetObjectReference` 實例中，以將其傳遞給 JavaScript。 .NET 實例會以傳址方式傳遞至 JavaScript。
+* 以傳址方式將 .NET 實例傳遞至 JavaScript：
+  * 對 `DotNetObjectReference.Create`進行靜態呼叫。
+  * 將實例包裝在 `DotNetObjectReference` 實例中，並在 `DotNetObjectReference` 實例上呼叫 `Create`。 處置 `DotNetObjectReference` 物件（本章節稍後會顯示一個範例）。
 * 使用 `invokeMethod` 或 `invokeMethodAsync` 函數，在實例上叫用 .NET 實例方法。 從 JavaScript 叫用其他 .NET 方法時，也可以將 .NET 實例當做引數傳遞。
 
 > [!NOTE]
@@ -556,6 +558,68 @@ returnArrayAsyncJs: function () {
 
 ```console
 Hello, Blazor!
+```
+
+若要避免記憶體流失，並允許在建立 `DotNetObjectReference`的元件上進行垃圾收集，請處置建立 `DotNetObjectReference` 實例之類別中的物件：
+
+```csharp
+public class ExampleJsInterop : IDisposable
+{
+    private readonly IJSRuntime _jsRuntime;
+    private DotNetObjectReference<HelloHelper> _objRef;
+
+    public ExampleJsInterop(IJSRuntime jsRuntime)
+    {
+        _jsRuntime = jsRuntime;
+    }
+
+    public ValueTask<string> CallHelloHelperSayHello(string name)
+    {
+        _objRef = DotNetObjectReference.Create(new HelloHelper(name));
+
+        return _jsRuntime.InvokeAsync<string>(
+            "exampleJsFunctions.sayHello",
+            _objRef);
+    }
+
+    public void Dispose()
+    {
+        _objRef?.Dispose();
+    }
+}
+```
+  
+`ExampleJsInterop` 類別中所顯示的先前模式也可以在元件中執行：
+  
+```razor
+@page "/JSInteropComponent"
+@using BlazorSample.JsInteropClasses
+@implements IDisposable
+@inject IJSRuntime JSRuntime
+
+<h1>JavaScript Interop</h1>
+
+<button type="button" class="btn btn-primary" @onclick="TriggerNetInstanceMethod">
+    Trigger .NET instance method HelloHelper.SayHello
+</button>
+
+@code {
+    private DotNetObjectReference<HelloHelper> _objRef;
+
+    public async Task TriggerNetInstanceMethod()
+    {
+        _objRef = DotNetObjectReference.Create(new HelloHelper("Blazor"));
+
+        await JSRuntime.InvokeAsync<string>(
+            "exampleJsFunctions.sayHello",
+            _objRef);
+    }
+
+    public void Dispose()
+    {
+        _objRef?.Dispose();
+    }
+}
 ```
 
 ## <a name="share-interop-code-in-a-class-library"></a>共用類別庫中的 interop 程式碼

@@ -5,17 +5,17 @@ description: 瞭解如何為 Blazor 應用程式建立可重複使用的版面�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 8e7294f6b66d34781473522a71f929ed5f9c33f2
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: 5b6e1c7ceb4a6e41230e31bbe379bde1bb0a8286
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213372"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447135"
 ---
 # <a name="aspnet-core-opno-locblazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -23,7 +23,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 某些應用程式專案（例如功能表、著作權訊息和公司標誌）通常是應用程式整體版面配置的一部分，並由應用程式中的每個元件所使用。 將這些專案的程式碼複製到應用程式的所有元件，並不是有效率的方法&mdash;每次元素需要更新時，每個元件都必須更新。 這種複製很容易維護，而且可能會在一段時間後導致不一致的內容。 *版面*配置會解決此問題。
 
-就技術上而言，版面配置只是另一個元件。 版面配置定義于 Razor 範本或程式碼中C# ，而且可以使用[資料](xref:blazor/components#data-binding)系結、相依性[插入](xref:blazor/dependency-injection)和其他元件案例。
+就技術上而言，版面配置只是另一個元件。 版面配置定義于 Razor 範本或程式碼中C# ，而且可以使用[資料](xref:blazor/data-binding)系結、相依性[插入](xref:blazor/dependency-injection)和其他元件案例。
 
 若要將*元件*轉換成*版面*配置，元件：
 
@@ -94,7 +94,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 ## <a name="share-a-razor-pages-layout-with-integrated-components"></a>與整合式元件共用 Razor Pages 的版面配置
 
-當可路由的元件整合到 Razor Pages 應用程式時，應用程式的共用配置可以與元件搭配使用。 如需詳細資訊，請參閱 <xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps>。
+當可路由的元件整合到 Razor Pages 應用程式時，應用程式的共用配置可以與元件搭配使用。 如需詳細資訊，請參閱 <xref:blazor/integrate-components>。
 
 ## <a name="additional-resources"></a>其他資源
 

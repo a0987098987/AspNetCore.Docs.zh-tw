@@ -5,17 +5,17 @@ description: 深入瞭解 Blazor 驗證和授權案例。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/02/2020
+ms.date: 02/13/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: c7b3788b5737073100e7fa449fd6bb4a83c0043a
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: c07ffdbd5df58d6b3d19a5d75ce224d830101eac
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114883"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447421"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
 
@@ -42,7 +42,7 @@ Blazor 伺服器應用程式會在使用 SignalR 建立的即時連線上運作�
 
 當您建立專案時，Blazor 伺服器專案範本可以為您設定驗證。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 遵循 <xref:blazor/get-started> 文章中的 Visual Studio 指導方針，使用驗證機制建立新的 Blazor 伺服器專案。
 
@@ -57,7 +57,7 @@ Blazor 伺服器應用程式會在使用 SignalR 建立的即時連線上運作�
 * **公司或學校帳戶**
 * **Windows 驗證**
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 遵循 <xref:blazor/get-started> 文章中的 Visual Studio Code 指導方針，使用驗證機制建立新的 Blazor 伺服器專案：
 
@@ -139,7 +139,7 @@ Blazor 伺服器應用程式包含內建 `AuthenticationStateProvider` 服務，
 @using Microsoft.AspNetCore.Components.Authorization
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
-<button @onclick="@LogUsername">Write user info to console</button>
+<button @onclick="LogUsername">Write user info to console</button>
 
 @code {
     private async Task LogUsername()
@@ -222,7 +222,7 @@ public class Program
 ```razor
 @page "/"
 
-<button @onclick="@LogUsername">Log username</button>
+<button @onclick="LogUsername">Log username</button>
 
 @code {
     [CascadingParameter]
@@ -253,6 +253,8 @@ public class Program
 使用*應用程式 razor*檔案中的 `AuthorizeRouteView` 和 `CascadingAuthenticationState` 元件，設定 `Task<AuthenticationState>` 級聯的參數：
 
 ```razor
+@using Microsoft.AspNetCore.Components.Authorization
+
 <Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
         <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -265,6 +267,13 @@ public class Program
         </CascadingAuthenticationState>
     </NotFound>
 </Router>
+```
+
+將選項和授權的服務新增至 `Program.Main`：
+
+```csharp
+builder.Services.AddOptions();
+builder.Services.AddAuthorizationCore();
 ```
 
 ## <a name="authorization"></a>授權

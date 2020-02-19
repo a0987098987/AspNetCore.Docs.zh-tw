@@ -9,12 +9,12 @@ ms.date: 01/17/2020
 no-loc:
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: bb32bb8617f8a3e4170eeb7e38696ee2bbcafe03
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 260e2f0c16288fec2e0a694d070f357529782d8d
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172545"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447330"
 ---
 # <a name="aspnet-core-signalr-hosting-and-scaling"></a>ASP.NET Core SignalR 裝載和調整
 
@@ -119,6 +119,11 @@ proxy_set_header Connection $connection_upgrade;
 ```
 
 如需詳細資訊，請參閱[NGINX as a WebSocket Proxy](https://www.nginx.com/blog/websocket-nginx/)。
+
+## <a name="third-party-opno-locsignalr-backplane-providers"></a>協力廠商 SignalR 背板提供者
+
+* [NCache](https://www.alachisoft.com/ncache/asp-net-core-signalr.html)
+* [奧爾良](https://github.com/OrleansContrib/SignalR.Orleans)
 
 ## <a name="next-steps"></a>後續步驟
 

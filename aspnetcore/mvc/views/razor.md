@@ -3,14 +3,14 @@ title: ASP.NET Core 的 Razor 語法參考
 author: rick-anderson
 description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記語法。
 ms.author: riande
-ms.date: 12/05/2019
+ms.date: 02/12/2020
 uid: mvc/views/razor
-ms.openlocfilehash: 2d47fbc33328ab454616bcabab796df089686d79
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 0b1eed2816329d62fca4bdb5719825a4197af353
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171852"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447174"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -719,13 +719,13 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 此案例僅適用於 Razor 元件 (.razor)。
 
-元件中的資料繫結會使用 `@bind` 屬性來完成。 如需詳細資訊，請參閱 <xref:blazor/components#data-binding>。
+元件中的資料繫結會使用 `@bind` 屬性來完成。 如需詳細資訊，請參閱 <xref:blazor/data-binding>。
 
 ### <a name="onevent"></a>{EVENT} 上的 \@
 
 此案例僅適用於 Razor 元件 (.razor)。
 
-Razor 提供元件的事件處理功能。 如需詳細資訊，請參閱 <xref:blazor/components#event-handling>。
+Razor 提供元件的事件處理功能。 如需詳細資訊，請參閱 <xref:blazor/event-handling>。
 
 ::: moniker-end
 
@@ -763,7 +763,7 @@ Razor 提供元件的事件處理功能。 如需詳細資訊，請參閱 <xref:
 
 此案例僅適用於 Razor 元件 (.razor)。
 
-`@typeparam` 指示詞會為所產生的元件類別宣告泛型型別參數。 如需詳細資訊，請參閱 <xref:blazor/components#generic-typed-components>。
+`@typeparam` 指示詞會為所產生的元件類別宣告泛型型別參數。 如需詳細資訊，請參閱 <xref:blazor/templated-components#generic-typed-components>。
 
 ::: moniker-end
 

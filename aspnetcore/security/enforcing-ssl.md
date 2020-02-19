@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 9efd49bb246a10c4eb49fb1bb0374ae9442d55a1
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 43f3abfa4bc311ed246f6f2585d522661e492039
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172618"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447148"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>在 ASP.NET Core 中強制使用 HTTPS
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 本檔說明如何：
 
@@ -259,7 +259,7 @@ ASP.NET Core 2.1 和更新版本使用 `UseHsts` 擴充方法來執行 HSTS。 �
 
 `UseHsts` 不建議在開發中使用，因為瀏覽器會高度快取 HSTS 設定。 根據預設，`UseHsts` 會排除本機回送位址。
 
-若為第一次執行 HTTPS 的生產環境，請使用其中一個 <xref:System.TimeSpan> 方法，將初始[HstsOptions](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*)設定為較小的值。 如果您需要將 HTTPS 基礎結構還原為 HTTP，請將值從小時設定為不超過一天。 在您確信 HTTPS 設定的持續性之後，請增加 HSTS 的最大壽命值;常使用的值為一年。
+若為第一次執行 HTTPS 的生產環境，請使用其中一個 <xref:System.TimeSpan> 方法，將初始[HstsOptions](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*)設定為較小的值。 如果您需要將 HTTPS 基礎結構還原為 HTTP，請將值從小時設定為不超過一天。 在您確信 HTTPS 設定的持續性之後，請增加 HSTS `max-age` 值;常使用的值為一年。
 
 下列程式碼：
 
@@ -277,9 +277,9 @@ ASP.NET Core 2.1 和更新版本使用 `UseHsts` 擴充方法來執行 HSTS。 �
 ::: moniker-end
 
 
-* 設定嚴格傳輸安全性標頭的預先載入參數。 預先載入不是[RFC HSTS 規格](https://tools.ietf.org/html/rfc6797)的一部分，但 web 瀏覽器支援在全新安裝時預先載入 HSTS 網站。 如需詳細資訊，請參閱 [https://hstspreload.org/](https://hstspreload.org/)。
+* 設定 `Strict-Transport-Security` 標頭的預先載入參數。 預先載入不是[RFC HSTS 規格](https://tools.ietf.org/html/rfc6797)的一部分，但 web 瀏覽器支援在全新安裝時預先載入 HSTS 網站。 如需詳細資訊，請參閱 [https://hstspreload.org/](https://hstspreload.org/)。
 * 啟用[includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2)，這會將 HSTS 原則套用至裝載子域。
-* 將嚴格傳輸安全性標頭的最大壽命參數明確設定為60天。 如果未設定，則預設為30天。 如需詳細資訊，請參閱[最大壽命](https://tools.ietf.org/html/rfc6797#section-6.1.1)指示詞。
+* 將 `Strict-Transport-Security` 標頭的 `max-age` 參數明確設定為60天。 如果未設定，則預設為30天。 如需詳細資訊，請參閱[最大壽命](https://tools.ietf.org/html/rfc6797#section-6.1.1)指示詞。
 * 將 `example.com` 新增至要排除的主機清單。
 
 `UseHsts` 排除下列回送主機：
@@ -294,7 +294,7 @@ ASP.NET Core 2.1 和更新版本使用 `UseHsts` 擴充方法來執行 HSTS。 �
 
 若要退出 HTTPS/HSTS：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 取消核取 [**針對 HTTPS 設定**] 核取方塊。
 
@@ -311,7 +311,7 @@ ASP.NET Core 2.1 和更新版本使用 `UseHsts` 擴充方法來執行 HSTS。 �
 ::: moniker-end
 
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli) 
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli) 
 
 使用 `--no-https` 選項。 例如：
 
@@ -325,7 +325,7 @@ dotnet new webapp --no-https
 
 ## <a name="trust-the-aspnet-core-https-development-certificate-on-windows-and-macos"></a>信任 Windows 和 macOS 上的 ASP.NET Core HTTPS 開發憑證
 
-.NET Core SDK 包含 HTTPS 開發憑證。 憑證會在首次執行體驗中安裝。 例如，`dotnet --info` 會產生類似下列的輸出：
+.NET Core SDK 包含 HTTPS 開發憑證。 憑證會在首次執行體驗中安裝。 例如，`dotnet --info` 會產生下列輸出的變化：
 
 ```
 ASP.NET Core
@@ -404,7 +404,7 @@ dotnet dev-certs https --trust
 * 開啟 [KeyChain 存取]。
 * 選取 [系統 keychain]。
 * 檢查 localhost 憑證是否存在。
-* 檢查其是否包含圖示上的 `+` 符號，以指出其是否受其信任，以供所有使用者使用。
+* 檢查其是否包含圖示上的 `+` 符號，以指出它是否受信任可供所有使用者使用。
 * 從系統 keychain 中移除憑證。
 * 執行下列命令：
 

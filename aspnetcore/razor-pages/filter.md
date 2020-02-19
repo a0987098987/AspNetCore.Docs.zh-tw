@@ -4,20 +4,20 @@ author: Rick-Anderson
 description: 了解如何在 ASP.NET Core 中建立 Razor 頁面的篩選條件方法。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 12/28/2019
+ms.date: 2/18/2020
 uid: razor-pages/filter
-ms.openlocfilehash: 02771219454556b236080c2668243f788693b2c1
-ms.sourcegitcommit: 077b45eceae044475f04c1d7ef2d153d7c0515a8
+ms.openlocfilehash: a60b17685c6f836de7c0afcc5b89a9894fb8b28f
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2019
-ms.locfileid: "75542713"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447227"
 ---
 # <a name="filter-methods-for-razor-pages-in-aspnet-core"></a>ASP.NET Core 中 Razor 頁面的篩選條件方法
 
 ::: moniker range=">= aspnetcore-3.0"
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 Razor 頁面篩選條件 [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) 和 [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) 可讓 Razor 頁面在 Razor 頁面處理常式執行之前和之後執行程式碼。 Razor 頁面篩選條件類似於 [ASP.NET Core MVC 動作篩選條件](xref:mvc/controllers/filters#action-filters)，但它們無法套用至個別的頁面處理常式方法。
 
@@ -30,7 +30,7 @@ Razor 頁面篩選條件：
 * 無法套用至特定頁面處理常式方法。
 * 可以有相依性[插入](xref:fundamentals/dependency-injection)（DI）填入的函式相依性。 如需詳細資訊，請參閱[ServiceFilterAttribute](/aspnet/core/mvc/controllers/filters#servicefilterattribute)和[TypeFilterAttribute](/aspnet/core/mvc/controllers/filters#typefilterattribute)。
 
-您可以先執行程式碼，方法是使用頁面的函式或中介軟體，但只有 Razor 頁面篩選器才有 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext>的存取權。 篩選具有 <xref:Microsoft.AspNetCore.Mvc.Filters.FilterContext> 的衍生參數，可提供 `HttpContext`的存取權。 例如，[實作篩選條件屬性](#ifa)範例會將標頭新增至回應，這是無法使用建構函式或中介軟體完成的作業。
+雖然頁面的程式碼和中介軟體能夠在處理常式方法執行之前執行自訂程式碼，但只有 Razor 頁面篩選器才能夠存取 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext> 和頁面。 中介軟體可以存取 `HttpContext`，而不是「頁面內容」。 篩選具有 <xref:Microsoft.AspNetCore.Mvc.Filters.FilterContext> 的衍生參數，可提供 `HttpContext`的存取權。 例如，[實作篩選條件屬性](#ifa)範例會將標頭新增至回應，這是無法使用建構函式或中介軟體完成的作業。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/filter/3.1sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -57,7 +57,7 @@ Razor 頁面篩選條件提供下列方法，可在全域或頁面層級套用�
 
 在上述程式碼中，`ProcessUserAgent.Write` 是使用者提供的程式碼，可與使用者代理字串搭配使用。
 
-下列程式碼會啟用 `Startup` 類別中的 `SampleAsyncPageFilter`：
+下列程式碼會啟用 `SampleAsyncPageFilter` 類別中的 `Startup`：
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Startup.cs?name=snippet2)]
 
@@ -109,7 +109,7 @@ Razor 頁面篩選條件提供下列方法，可在全域或頁面層級套用�
 
 ::: moniker range="< aspnetcore-3.0"
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 Razor 頁面篩選條件 [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) 和 [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) 可讓 Razor 頁面在 Razor 頁面處理常式執行之前和之後執行程式碼。 Razor 頁面篩選條件類似於 [ASP.NET Core MVC 動作篩選條件](xref:mvc/controllers/filters#action-filters)，但它們無法套用至個別的頁面處理常式方法。
 
@@ -149,7 +149,7 @@ Razor 頁面篩選條件提供下列方法，可在全域或頁面層級套用�
 
 在上述程式碼中，[ILogger](/dotnet/api/microsoft.extensions.logging.ilogger?view=aspnetcore-2.0) 並非必要。 它在範例中用來提供應用程式的追蹤資訊。
 
-下列程式碼會啟用 `Startup` 類別中的 `SampleAsyncPageFilter`：
+下列程式碼會啟用 `SampleAsyncPageFilter` 類別中的 `Startup`：
 
 [!code-csharp[Main](filter/sample/PageFilter/Startup.cs?name=snippet2&highlight=11)]
 

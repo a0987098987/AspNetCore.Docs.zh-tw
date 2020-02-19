@@ -5,17 +5,17 @@ description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/15/2020
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: b928296c45ddb11efcd2c8912cc595c799e65037
+ms.openlocfilehash: a051d51e734fec4315da73d3c4df57706df7f363
 ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447252"
+ms.locfileid: "77465819"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>裝載和部署 Blazor 伺服器
 
@@ -87,10 +87,7 @@ Blazor 伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊
 
 #### <a name="iis"></a>IIS
 
-使用 IIS 時，請啟用：
-
-* [在 IIS 上的 websocket](xref:fundamentals/websockets#enabling-websockets-on-iis)。
-* [具有應用程式要求路由的粘滯話](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
+使用 IIS 時，會使用應用程式要求路由來啟用「粘滯會話」。 如需詳細資訊，請參閱[使用應用程式要求路由的 HTTP 負載平衡](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
 
 #### <a name="kubernetes"></a>Kubernetes
 

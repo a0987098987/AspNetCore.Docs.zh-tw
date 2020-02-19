@@ -295,6 +295,16 @@
           uid: blazor/templates
         - name: 元件
           uid: blazor/components
+        - name: 資料繫結
+          uid: blazor/data-binding
+        - name: 事件處理
+          uid: blazor/event-handling
+        - name: 樣板化元件
+          uid: blazor/templated-components
+        - name: 整合元件
+          uid: blazor/integrate-components
+        - name: 全球化和當地語系化
+          uid: blazor/globalization-localization
         - name: 生命週期
           uid: blazor/lifecycle
         - name: 版面配置
@@ -335,6 +345,8 @@
               uid: host-and-deploy/blazor/server
             - name: 設定連結器
               uid: host-and-deploy/blazor/configure-linker
+        - name: 進階案例
+          uid: blazor/advanced-scenarios
     - name: 用戶端開發
       items:
         - name: 單頁應用程式

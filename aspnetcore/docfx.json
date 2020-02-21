@@ -46,7 +46,7 @@
     "globalMetadata": {
       "_navPath": "/foo",
       "_navRel": "/foo",
-      "breadcrumb_path": "/dotnet/breadcrumb/toc.json",
+      "breadcrumb_path": "/aspnet/breadcrumb/toc.json",
       "feedback_github_repo": "dotnet/AspNetCore.Docs.zh-tw",
       "feedback_product_url": "https://github.com/dotnet/aspnetcore/blob/master/CONTRIBUTING.md",
       "feedback_system": "GitHub",

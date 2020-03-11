@@ -1,542 +1,542 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
-author: tdykstra
+author: rick-anderson
 description: 在本教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選和分頁功能新增至 Razor 頁面。
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: b4cef98f3ad4973878c5fa65a47c0b86cdfc8686
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
-ms.translationtype: HT
+ms.openlocfilehash: 9563f3ef52ce429eb0a58b468acb8e9cd7b276e2
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583516"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656461"
 ---
-# <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a><span data-ttu-id="f4222-103">ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8</span><span class="sxs-lookup"><span data-stu-id="f4222-103">Razor Pages with EF Core in ASP.NET Core - Sort, Filter, Paging - 3 of 8</span></span>
+# <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a><span data-ttu-id="a1747-103">ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8</span><span class="sxs-lookup"><span data-stu-id="a1747-103">Razor Pages with EF Core in ASP.NET Core - Sort, Filter, Paging - 3 of 8</span></span>
 
-<span data-ttu-id="f4222-104">作者：[Tom Dykstra](https://github.com/tdykstra)、[Rick Anderson](https://twitter.com/RickAndMSFT)、[Jon P Smith](https://twitter.com/thereformedprog)</span><span class="sxs-lookup"><span data-stu-id="f4222-104">By [Tom Dykstra](https://github.com/tdykstra), [Rick Anderson](https://twitter.com/RickAndMSFT), and [Jon P Smith](https://twitter.com/thereformedprog)</span></span>
+<span data-ttu-id="a1747-104">作者：[Tom Dykstra](https://github.com/tdykstra)、[Rick Anderson](https://twitter.com/RickAndMSFT)、[Jon P Smith](https://twitter.com/thereformedprog)</span><span class="sxs-lookup"><span data-stu-id="a1747-104">By [Tom Dykstra](https://github.com/tdykstra), [Rick Anderson](https://twitter.com/RickAndMSFT), and [Jon P Smith](https://twitter.com/thereformedprog)</span></span>
 
 [!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="f4222-105">本教學課程會將排序、篩選和分頁功能新增至 Students 頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-105">This tutorial adds sorting, filtering, and paging functionality to the Students pages.</span></span>
+<span data-ttu-id="a1747-105">本教學課程會將排序、篩選和分頁功能新增至 Students 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-105">This tutorial adds sorting, filtering, and paging functionality to the Students pages.</span></span>
 
-<span data-ttu-id="f4222-106">下圖顯示已完成的頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-106">The following illustration shows a completed page.</span></span> <span data-ttu-id="f4222-107">資料行標題為可按式連結，可用以排序資料行。</span><span class="sxs-lookup"><span data-stu-id="f4222-107">The column headings are clickable links to sort the column.</span></span> <span data-ttu-id="f4222-108">重覆按一下資料行標題，可在遞增和遞減排序次序之間切換。</span><span class="sxs-lookup"><span data-stu-id="f4222-108">Click a column heading repeatedly to switch between ascending and descending sort order.</span></span>
+<span data-ttu-id="a1747-106">下圖顯示已完成的頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-106">The following illustration shows a completed page.</span></span> <span data-ttu-id="a1747-107">資料行標題為可按式連結，可用以排序資料行。</span><span class="sxs-lookup"><span data-stu-id="a1747-107">The column headings are clickable links to sort the column.</span></span> <span data-ttu-id="a1747-108">重覆按一下資料行標題，可在遞增和遞減排序次序之間切換。</span><span class="sxs-lookup"><span data-stu-id="a1747-108">Click a column heading repeatedly to switch between ascending and descending sort order.</span></span>
 
-![Students [索引] 頁面](sort-filter-page/_static/paging30.png)
+![Students 索引頁面](sort-filter-page/_static/paging30.png)
 
-## <a name="add-sorting"></a><span data-ttu-id="f4222-110">新增排序</span><span class="sxs-lookup"><span data-stu-id="f4222-110">Add sorting</span></span>
+## <a name="add-sorting"></a><span data-ttu-id="a1747-110">新增排序</span><span class="sxs-lookup"><span data-stu-id="a1747-110">Add sorting</span></span>
 
-<span data-ttu-id="f4222-111">使用下列程式碼取代 *Pages/Students/Index.cshtml.cs* 中的程式碼來新增排序。</span><span class="sxs-lookup"><span data-stu-id="f4222-111">Replace the code in *Pages/Students/Index.cshtml.cs* with the following code to add sorting.</span></span>
+<span data-ttu-id="a1747-111">使用下列程式碼取代 *Pages/Students/Index.cshtml.cs* 中的程式碼來新增排序。</span><span class="sxs-lookup"><span data-stu-id="a1747-111">Replace the code in *Pages/Students/Index.cshtml.cs* with the following code to add sorting.</span></span>
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_All&highlight=21-24,26,28-52)]
 
-<span data-ttu-id="f4222-112">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="f4222-112">The preceding code:</span></span>
+<span data-ttu-id="a1747-112">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="a1747-112">The preceding code:</span></span>
 
-* <span data-ttu-id="f4222-113">新增屬性來包含排序參數。</span><span class="sxs-lookup"><span data-stu-id="f4222-113">Adds properties to contain the sorting parameters.</span></span>
-* <span data-ttu-id="f4222-114">將 `Student` 屬性的名稱變更為 `Students`。</span><span class="sxs-lookup"><span data-stu-id="f4222-114">Changes the name of the `Student` property to `Students`.</span></span>
-* <span data-ttu-id="f4222-115">取代 `OnGetAsync` 方法中的程式碼。</span><span class="sxs-lookup"><span data-stu-id="f4222-115">Replaces the code in the `OnGetAsync` method.</span></span>
+* <span data-ttu-id="a1747-113">新增屬性來包含排序參數。</span><span class="sxs-lookup"><span data-stu-id="a1747-113">Adds properties to contain the sorting parameters.</span></span>
+* <span data-ttu-id="a1747-114">將 `Student` 屬性的名稱變更為 `Students`。</span><span class="sxs-lookup"><span data-stu-id="a1747-114">Changes the name of the `Student` property to `Students`.</span></span>
+* <span data-ttu-id="a1747-115">取代 `OnGetAsync` 方法中的程式碼。</span><span class="sxs-lookup"><span data-stu-id="a1747-115">Replaces the code in the `OnGetAsync` method.</span></span>
 
-<span data-ttu-id="f4222-116">`OnGetAsync` 方法會從 URL 中的查詢字串接收 `sortOrder` 參數。</span><span class="sxs-lookup"><span data-stu-id="f4222-116">The `OnGetAsync` method receives a `sortOrder` parameter from the query string in the URL.</span></span> <span data-ttu-id="f4222-117">URL (包括查詢字串) 是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。</span><span class="sxs-lookup"><span data-stu-id="f4222-117">The URL (including the query string) is generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper).</span></span>
+<span data-ttu-id="a1747-116">`OnGetAsync` 方法會從 URL 中的查詢字串接收 `sortOrder` 參數。</span><span class="sxs-lookup"><span data-stu-id="a1747-116">The `OnGetAsync` method receives a `sortOrder` parameter from the query string in the URL.</span></span> <span data-ttu-id="a1747-117">URL (包括查詢字串) 是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。</span><span class="sxs-lookup"><span data-stu-id="a1747-117">The URL (including the query string) is generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper).</span></span>
 
-<span data-ttu-id="f4222-118">`sortOrder`參數為 "Name" 或 "Date"。</span><span class="sxs-lookup"><span data-stu-id="f4222-118">The `sortOrder` parameter is either "Name" or "Date."</span></span> <span data-ttu-id="f4222-119">`sortOrder` 參數後面可以選擇接著 "_desc" 來指定遞減順序。</span><span class="sxs-lookup"><span data-stu-id="f4222-119">The `sortOrder` parameter is optionally followed by "_desc" to specify descending order.</span></span> <span data-ttu-id="f4222-120">預設的排序次序為遞增。</span><span class="sxs-lookup"><span data-stu-id="f4222-120">The default sort order is ascending.</span></span>
+<span data-ttu-id="a1747-118">`sortOrder`參數為 "Name" 或 "Date"。</span><span class="sxs-lookup"><span data-stu-id="a1747-118">The `sortOrder` parameter is either "Name" or "Date."</span></span> <span data-ttu-id="a1747-119">`sortOrder` 參數後面可以選擇接著 "_desc" 來指定遞減順序。</span><span class="sxs-lookup"><span data-stu-id="a1747-119">The `sortOrder` parameter is optionally followed by "_desc" to specify descending order.</span></span> <span data-ttu-id="a1747-120">預設排序順序為遞增。</span><span class="sxs-lookup"><span data-stu-id="a1747-120">The default sort order is ascending.</span></span>
 
-<span data-ttu-id="f4222-121">從 **Students** 連結要求 [索引] 頁面時，將不會有查詢字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-121">When the Index page is requested from the **Students** link, there's no query string.</span></span> <span data-ttu-id="f4222-122">學生會以遞增姓氏順序顯示。</span><span class="sxs-lookup"><span data-stu-id="f4222-122">The students are displayed in ascending order by last name.</span></span> <span data-ttu-id="f4222-123">在 `switch` 陳述式中，預設會依姓氏遞增排序 (fall-through 大小寫)。</span><span class="sxs-lookup"><span data-stu-id="f4222-123">Ascending order by last name is the default (fall-through case) in the `switch` statement.</span></span> <span data-ttu-id="f4222-124">使用者按一下資料行標題連結時，適當的 `sortOrder` 值將會在查詢字串值中提供。</span><span class="sxs-lookup"><span data-stu-id="f4222-124">When the user clicks a column heading link, the appropriate `sortOrder` value is provided in the query string value.</span></span>
+<span data-ttu-id="a1747-121">從 **Students** 連結要求 [索引] 頁面時，將不會有查詢字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-121">When the Index page is requested from the **Students** link, there's no query string.</span></span> <span data-ttu-id="a1747-122">學生會以遞增姓氏順序顯示。</span><span class="sxs-lookup"><span data-stu-id="a1747-122">The students are displayed in ascending order by last name.</span></span> <span data-ttu-id="a1747-123">在 `switch` 陳述式中，預設會依姓氏遞增排序 (fall-through 大小寫)。</span><span class="sxs-lookup"><span data-stu-id="a1747-123">Ascending order by last name is the default (fall-through case) in the `switch` statement.</span></span> <span data-ttu-id="a1747-124">使用者按一下資料行標題連結時，適當的 `sortOrder` 值將會在查詢字串值中提供。</span><span class="sxs-lookup"><span data-stu-id="a1747-124">When the user clicks a column heading link, the appropriate `sortOrder` value is provided in the query string value.</span></span>
 
-<span data-ttu-id="f4222-125">Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` 來設定資料行標題超連結：</span><span class="sxs-lookup"><span data-stu-id="f4222-125">`NameSort` and `DateSort` are used by the Razor Page to configure the column heading hyperlinks with the appropriate query string values:</span></span>
+<span data-ttu-id="a1747-125">Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` 來設定資料行標題超連結：</span><span class="sxs-lookup"><span data-stu-id="a1747-125">`NameSort` and `DateSort` are used by the Razor Page to configure the column heading hyperlinks with the appropriate query string values:</span></span>
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_Ternary)]
 
-<span data-ttu-id="f4222-126">程式碼會使用 C# 條件運算子 [?:](/dotnet/csharp/language-reference/operators/conditional-operator)。</span><span class="sxs-lookup"><span data-stu-id="f4222-126">The code uses the C# conditional operator [?:](/dotnet/csharp/language-reference/operators/conditional-operator).</span></span> <span data-ttu-id="f4222-127">`?:` 運算子是一種三元運算子 (會採用三個運算元)。</span><span class="sxs-lookup"><span data-stu-id="f4222-127">The `?:` operator is a ternary operator (it takes three operands).</span></span> <span data-ttu-id="f4222-128">第一行指定當 `sortOrder` 為 null 或空白時，將 `NameSort` 設為 "name_desc"。</span><span class="sxs-lookup"><span data-stu-id="f4222-128">The first line specifies that when `sortOrder` is null or empty, `NameSort` is set to "name_desc."</span></span> <span data-ttu-id="f4222-129">如果 `sortOrder` **不是** null 或空白，則 `NameSort` 設為空字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-129">If `sortOrder` is **not** null or empty, `NameSort` is set to an empty string.</span></span>
+<span data-ttu-id="a1747-126">程式碼會使用 C# 條件運算子 [?:](/dotnet/csharp/language-reference/operators/conditional-operator)。</span><span class="sxs-lookup"><span data-stu-id="a1747-126">The code uses the C# conditional operator [?:](/dotnet/csharp/language-reference/operators/conditional-operator).</span></span> <span data-ttu-id="a1747-127">`?:` 運算子是一種三元運算子 (會採用三個運算元)。</span><span class="sxs-lookup"><span data-stu-id="a1747-127">The `?:` operator is a ternary operator (it takes three operands).</span></span> <span data-ttu-id="a1747-128">第一行指定當 `sortOrder` 為 null 或空白時，將 `NameSort` 設為 "name_desc"。</span><span class="sxs-lookup"><span data-stu-id="a1747-128">The first line specifies that when `sortOrder` is null or empty, `NameSort` is set to "name_desc."</span></span> <span data-ttu-id="a1747-129">如果 `sortOrder`**不是** null 或空白，則 `NameSort` 設為空字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-129">If `sortOrder` is **not** null or empty, `NameSort` is set to an empty string.</span></span>
 
-<span data-ttu-id="f4222-130">這兩個陳述式讓頁面能夠設定資料行標題超連結，如下所示：</span><span class="sxs-lookup"><span data-stu-id="f4222-130">These two statements enable the page to set the column heading hyperlinks as follows:</span></span>
+<span data-ttu-id="a1747-130">這兩個陳述式讓頁面能夠設定資料行標題超連結，如下所示：</span><span class="sxs-lookup"><span data-stu-id="a1747-130">These two statements enable the page to set the column heading hyperlinks as follows:</span></span>
 
-| <span data-ttu-id="f4222-131">目前排序次序</span><span class="sxs-lookup"><span data-stu-id="f4222-131">Current sort order</span></span>   | <span data-ttu-id="f4222-132">姓氏超連結</span><span class="sxs-lookup"><span data-stu-id="f4222-132">Last Name Hyperlink</span></span> | <span data-ttu-id="f4222-133">日期超連結</span><span class="sxs-lookup"><span data-stu-id="f4222-133">Date Hyperlink</span></span> |
+| <span data-ttu-id="a1747-131">目前排序次序</span><span class="sxs-lookup"><span data-stu-id="a1747-131">Current sort order</span></span>   | <span data-ttu-id="a1747-132">姓氏超連結</span><span class="sxs-lookup"><span data-stu-id="a1747-132">Last Name Hyperlink</span></span> | <span data-ttu-id="a1747-133">日期超連結</span><span class="sxs-lookup"><span data-stu-id="a1747-133">Date Hyperlink</span></span> |
 |:--------------------:|:-------------------:|:--------------:|
-| <span data-ttu-id="f4222-134">姓氏遞增</span><span class="sxs-lookup"><span data-stu-id="f4222-134">Last Name ascending</span></span>  | <span data-ttu-id="f4222-135">descending</span><span class="sxs-lookup"><span data-stu-id="f4222-135">descending</span></span>          | <span data-ttu-id="f4222-136">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-136">ascending</span></span>      |
-| <span data-ttu-id="f4222-137">姓氏遞減</span><span class="sxs-lookup"><span data-stu-id="f4222-137">Last Name descending</span></span> | <span data-ttu-id="f4222-138">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-138">ascending</span></span>           | <span data-ttu-id="f4222-139">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-139">ascending</span></span>      |
-| <span data-ttu-id="f4222-140">日期遞增</span><span class="sxs-lookup"><span data-stu-id="f4222-140">Date ascending</span></span>       | <span data-ttu-id="f4222-141">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-141">ascending</span></span>           | <span data-ttu-id="f4222-142">descending</span><span class="sxs-lookup"><span data-stu-id="f4222-142">descending</span></span>     |
-| <span data-ttu-id="f4222-143">日期遞減</span><span class="sxs-lookup"><span data-stu-id="f4222-143">Date descending</span></span>      | <span data-ttu-id="f4222-144">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-144">ascending</span></span>           | <span data-ttu-id="f4222-145">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-145">ascending</span></span>      |
+| <span data-ttu-id="a1747-134">姓氏遞增</span><span class="sxs-lookup"><span data-stu-id="a1747-134">Last Name ascending</span></span>  | <span data-ttu-id="a1747-135">descending</span><span class="sxs-lookup"><span data-stu-id="a1747-135">descending</span></span>          | <span data-ttu-id="a1747-136">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-136">ascending</span></span>      |
+| <span data-ttu-id="a1747-137">姓氏遞減</span><span class="sxs-lookup"><span data-stu-id="a1747-137">Last Name descending</span></span> | <span data-ttu-id="a1747-138">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-138">ascending</span></span>           | <span data-ttu-id="a1747-139">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-139">ascending</span></span>      |
+| <span data-ttu-id="a1747-140">日期遞增</span><span class="sxs-lookup"><span data-stu-id="a1747-140">Date ascending</span></span>       | <span data-ttu-id="a1747-141">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-141">ascending</span></span>           | <span data-ttu-id="a1747-142">descending</span><span class="sxs-lookup"><span data-stu-id="a1747-142">descending</span></span>     |
+| <span data-ttu-id="a1747-143">日期遞減</span><span class="sxs-lookup"><span data-stu-id="a1747-143">Date descending</span></span>      | <span data-ttu-id="a1747-144">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-144">ascending</span></span>           | <span data-ttu-id="a1747-145">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-145">ascending</span></span>      |
 
-<span data-ttu-id="f4222-146">此方法使用 LINQ to Entities 來指定排序所依據的資料行。</span><span class="sxs-lookup"><span data-stu-id="f4222-146">The method uses LINQ to Entities to specify the column to sort by.</span></span> <span data-ttu-id="f4222-147">這個程式碼會在 switch 陳述式之前初始化 `IQueryable<Student>`，並在 switch 陳述式中將其修改：</span><span class="sxs-lookup"><span data-stu-id="f4222-147">The code initializes an `IQueryable<Student>` before the switch statement, and modifies it in the switch statement:</span></span>
+<span data-ttu-id="a1747-146">這個方法會使用 LINQ to Entities 來指定排序所依據的資料行。</span><span class="sxs-lookup"><span data-stu-id="a1747-146">The method uses LINQ to Entities to specify the column to sort by.</span></span> <span data-ttu-id="a1747-147">這個程式碼會在 switch 陳述式之前初始化 `IQueryable<Student>`，並在 switch 陳述式中將其修改：</span><span class="sxs-lookup"><span data-stu-id="a1747-147">The code initializes an `IQueryable<Student>` before the switch statement, and modifies it in the switch statement:</span></span>
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_IQueryable)]
 
-<span data-ttu-id="f4222-148">建立或修改 `IQueryable` 時，不會有任何查詢傳送至資料庫。</span><span class="sxs-lookup"><span data-stu-id="f4222-148">When an`IQueryable` is created or modified, no query is sent to the database.</span></span> <span data-ttu-id="f4222-149">直到 `IQueryable` 物件轉換成集合前，將不會執行查詢。</span><span class="sxs-lookup"><span data-stu-id="f4222-149">The query isn't executed until the `IQueryable` object is converted into a collection.</span></span> <span data-ttu-id="f4222-150">`IQueryable` 會藉由呼叫像是 `ToListAsync` 的方法，轉換成集合。</span><span class="sxs-lookup"><span data-stu-id="f4222-150">`IQueryable` are converted to a collection by calling a method such as `ToListAsync`.</span></span> <span data-ttu-id="f4222-151">因此，`IQueryable` 程式碼會成為一個單一查詢且不會執行，直到下列陳述式產生：</span><span class="sxs-lookup"><span data-stu-id="f4222-151">Therefore, the `IQueryable` code results in a single query that's not executed until the following statement:</span></span>
+<span data-ttu-id="a1747-148">建立或修改 `IQueryable` 時，不會有任何查詢傳送至資料庫。</span><span class="sxs-lookup"><span data-stu-id="a1747-148">When an`IQueryable` is created or modified, no query is sent to the database.</span></span> <span data-ttu-id="a1747-149">直到 `IQueryable` 物件轉換成集合前，將不會執行查詢。</span><span class="sxs-lookup"><span data-stu-id="a1747-149">The query isn't executed until the `IQueryable` object is converted into a collection.</span></span> <span data-ttu-id="a1747-150">`IQueryable` 會藉由呼叫像是 `ToListAsync` 的方法，轉換成集合。</span><span class="sxs-lookup"><span data-stu-id="a1747-150">`IQueryable` are converted to a collection by calling a method such as `ToListAsync`.</span></span> <span data-ttu-id="a1747-151">因此，`IQueryable` 程式碼會成為一個單一查詢且不會執行，直到下列陳述式產生：</span><span class="sxs-lookup"><span data-stu-id="a1747-151">Therefore, the `IQueryable` code results in a single query that's not executed until the following statement:</span></span>
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_SortOnlyRtn)]
 
-<span data-ttu-id="f4222-152">`OnGetAsync` 可取得使用大量可排序資料行數的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="f4222-152">`OnGetAsync` could get verbose with a large number of sortable columns.</span></span> <span data-ttu-id="f4222-153">如需撰寫此功能程式碼的替代方式相關資訊，請參閱本教學課程系列中 MVC 版本的[使用動態 LINQ 來簡化程式碼](xref:data/ef-mvc/advanced#dynamic-linq)。</span><span class="sxs-lookup"><span data-stu-id="f4222-153">For information about an alternative way to code this functionality, see [Use dynamic LINQ to simplify code](xref:data/ef-mvc/advanced#dynamic-linq) in the MVC version of this tutorial series.</span></span>
+<span data-ttu-id="a1747-152">`OnGetAsync` 可取得使用大量可排序資料行數的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="a1747-152">`OnGetAsync` could get verbose with a large number of sortable columns.</span></span> <span data-ttu-id="a1747-153">如需撰寫此功能程式碼的替代方式相關資訊，請參閱本教學課程系列中 MVC 版本的[使用動態 LINQ 來簡化程式碼](xref:data/ef-mvc/advanced#dynamic-linq)。</span><span class="sxs-lookup"><span data-stu-id="a1747-153">For information about an alternative way to code this functionality, see [Use dynamic LINQ to simplify code](xref:data/ef-mvc/advanced#dynamic-linq) in the MVC version of this tutorial series.</span></span>
 
-### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a><span data-ttu-id="f4222-154">將資料行標題超連結新增至 Student 的 [索引] 頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-154">Add column heading hyperlinks to the Student Index page</span></span>
+### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a><span data-ttu-id="a1747-154">將資料行標題超連結新增至 Student 的 [索引] 頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-154">Add column heading hyperlinks to the Student Index page</span></span>
 
-<span data-ttu-id="f4222-155">使用下列程式碼取代 *Students/Index.cshtml* 中的程式碼。</span><span class="sxs-lookup"><span data-stu-id="f4222-155">Replace the code in *Students/Index.cshtml*, with the following code.</span></span> <span data-ttu-id="f4222-156">所做的變更已醒目標示。</span><span class="sxs-lookup"><span data-stu-id="f4222-156">The changes are highlighted.</span></span>
+<span data-ttu-id="a1747-155">使用下列程式碼取代 *Students/Index.cshtml* 中的程式碼。</span><span class="sxs-lookup"><span data-stu-id="a1747-155">Replace the code in *Students/Index.cshtml*, with the following code.</span></span> <span data-ttu-id="a1747-156">所做的變更已醒目標示。</span><span class="sxs-lookup"><span data-stu-id="a1747-156">The changes are highlighted.</span></span>
 
 [!code-cshtml[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml?highlight=5,8,17-19,22,25-27,33)]
 
-<span data-ttu-id="f4222-157">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="f4222-157">The preceding code:</span></span>
+<span data-ttu-id="a1747-157">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="a1747-157">The preceding code:</span></span>
 
-* <span data-ttu-id="f4222-158">將超連結新增至 `LastName` 和 `EnrollmentDate` 資料行標題。</span><span class="sxs-lookup"><span data-stu-id="f4222-158">Adds hyperlinks to the `LastName` and `EnrollmentDate` column headings.</span></span>
-* <span data-ttu-id="f4222-159">使用 `NameSort` 和 `DateSort` 的資訊，以目前排序次序值來設定超連結。</span><span class="sxs-lookup"><span data-stu-id="f4222-159">Uses the information in `NameSort` and `DateSort` to set up hyperlinks with the current sort order values.</span></span>
-* <span data-ttu-id="f4222-160">將頁面標題從索引變更為 Students。</span><span class="sxs-lookup"><span data-stu-id="f4222-160">Changes the page heading from Index to Students.</span></span>
-* <span data-ttu-id="f4222-161">將 `Model.Student` 變更為 `Model.Students`。</span><span class="sxs-lookup"><span data-stu-id="f4222-161">Changes `Model.Student` to `Model.Students`.</span></span>
+* <span data-ttu-id="a1747-158">將超連結新增至 `LastName` 和 `EnrollmentDate` 資料行標題。</span><span class="sxs-lookup"><span data-stu-id="a1747-158">Adds hyperlinks to the `LastName` and `EnrollmentDate` column headings.</span></span>
+* <span data-ttu-id="a1747-159">使用 `NameSort` 和 `DateSort` 的資訊，以目前排序次序值來設定超連結。</span><span class="sxs-lookup"><span data-stu-id="a1747-159">Uses the information in `NameSort` and `DateSort` to set up hyperlinks with the current sort order values.</span></span>
+* <span data-ttu-id="a1747-160">將頁面標題從索引變更為 Students。</span><span class="sxs-lookup"><span data-stu-id="a1747-160">Changes the page heading from Index to Students.</span></span>
+* <span data-ttu-id="a1747-161">將 `Model.Student` 變更為 `Model.Students`。</span><span class="sxs-lookup"><span data-stu-id="a1747-161">Changes `Model.Student` to `Model.Students`.</span></span>
 
-<span data-ttu-id="f4222-162">若要確認該排序運作正常：</span><span class="sxs-lookup"><span data-stu-id="f4222-162">To verify that sorting works:</span></span>
+<span data-ttu-id="a1747-162">若要確認該排序運作正常：</span><span class="sxs-lookup"><span data-stu-id="a1747-162">To verify that sorting works:</span></span>
 
-* <span data-ttu-id="f4222-163">執行應用程式並選取 [Students]  索引標籤。</span><span class="sxs-lookup"><span data-stu-id="f4222-163">Run the app and select the **Students** tab.</span></span>
-* <span data-ttu-id="f4222-164">按一下資料行標題。</span><span class="sxs-lookup"><span data-stu-id="f4222-164">Click the column headings.</span></span>
+* <span data-ttu-id="a1747-163">執行應用程式並選取 [Students] 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="a1747-163">Run the app and select the **Students** tab.</span></span>
+* <span data-ttu-id="a1747-164">按一下資料行標題。</span><span class="sxs-lookup"><span data-stu-id="a1747-164">Click the column headings.</span></span>
 
-## <a name="add-filtering"></a><span data-ttu-id="f4222-165">新增篩選</span><span class="sxs-lookup"><span data-stu-id="f4222-165">Add filtering</span></span>
+## <a name="add-filtering"></a><span data-ttu-id="a1747-165">新增篩選</span><span class="sxs-lookup"><span data-stu-id="a1747-165">Add filtering</span></span>
 
-<span data-ttu-id="f4222-166">將篩選新增至 Students [索引] 頁面：</span><span class="sxs-lookup"><span data-stu-id="f4222-166">To add filtering to the Students Index page:</span></span>
+<span data-ttu-id="a1747-166">將篩選新增至 Students [索引] 頁面：</span><span class="sxs-lookup"><span data-stu-id="a1747-166">To add filtering to the Students Index page:</span></span>
 
-* <span data-ttu-id="f4222-167">文字方塊和提交按鈕會新增至 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-167">A text box and a submit button is added to the Razor Page.</span></span> <span data-ttu-id="f4222-168">文字方塊提供名字或姓氏的搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-168">The text box supplies a search string on the first or last name.</span></span>
-* <span data-ttu-id="f4222-169">頁面模型會更新為使用文字方塊的值。</span><span class="sxs-lookup"><span data-stu-id="f4222-169">The page model is updated to use the text box value.</span></span>
+* <span data-ttu-id="a1747-167">文字方塊和提交按鈕會新增至 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-167">A text box and a submit button is added to the Razor Page.</span></span> <span data-ttu-id="a1747-168">文字方塊提供名字或姓氏的搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-168">The text box supplies a search string on the first or last name.</span></span>
+* <span data-ttu-id="a1747-169">頁面模型會更新為使用文字方塊的值。</span><span class="sxs-lookup"><span data-stu-id="a1747-169">The page model is updated to use the text box value.</span></span>
 
-### <a name="update-the-ongetasync-method"></a><span data-ttu-id="f4222-170">更新 OnGetAsync 方法</span><span class="sxs-lookup"><span data-stu-id="f4222-170">Update the OnGetAsync method</span></span>
+### <a name="update-the-ongetasync-method"></a><span data-ttu-id="a1747-170">更新 OnGetAsync 方法</span><span class="sxs-lookup"><span data-stu-id="a1747-170">Update the OnGetAsync method</span></span>
 
-<span data-ttu-id="f4222-171">使用下列程式碼取代 *Students/Index.cshtml.cs* 中的程式碼來新增篩選：</span><span class="sxs-lookup"><span data-stu-id="f4222-171">Replace the code in *Students/Index.cshtml.cs* with the following code to add filtering:</span></span>
+<span data-ttu-id="a1747-171">使用下列程式碼取代 *Students/Index.cshtml.cs* 中的程式碼來新增篩選：</span><span class="sxs-lookup"><span data-stu-id="a1747-171">Replace the code in *Students/Index.cshtml.cs* with the following code to add filtering:</span></span>
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml.cs?name=snippet_All&highlight=28,33,37-41)]
 
-<span data-ttu-id="f4222-172">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="f4222-172">The preceding code:</span></span>
+<span data-ttu-id="a1747-172">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="a1747-172">The preceding code:</span></span>
 
-* <span data-ttu-id="f4222-173">將 `searchString` 參數新增至 `OnGetAsync` 方法，並將參數值儲存在 `CurrentFilter` 屬性中。</span><span class="sxs-lookup"><span data-stu-id="f4222-173">Adds the `searchString` parameter to the `OnGetAsync` method, and saves the parameter value in the `CurrentFilter` property.</span></span> <span data-ttu-id="f4222-174">從文字方塊中接收搜尋字串值文字方塊會在下一節新增。</span><span class="sxs-lookup"><span data-stu-id="f4222-174">The search string value is received from a text box that's added in the next section.</span></span>
-* <span data-ttu-id="f4222-175">將 `Where` 子句新增至 LINQ 陳述式。</span><span class="sxs-lookup"><span data-stu-id="f4222-175">Adds to the LINQ statement a `Where` clause.</span></span> <span data-ttu-id="f4222-176">`Where` 子句只會選取名字或姓氏包含搜尋字串的學生。</span><span class="sxs-lookup"><span data-stu-id="f4222-176">The `Where` clause selects only students whose first name or last name contains the search string.</span></span> <span data-ttu-id="f4222-177">有可以搜尋的值，LINQ 陳述式才會執行。</span><span class="sxs-lookup"><span data-stu-id="f4222-177">The LINQ statement is executed only if there's a value to search for.</span></span>
+* <span data-ttu-id="a1747-173">將 `searchString` 參數新增至 `OnGetAsync` 方法，並將參數值儲存在 `CurrentFilter` 屬性中。</span><span class="sxs-lookup"><span data-stu-id="a1747-173">Adds the `searchString` parameter to the `OnGetAsync` method, and saves the parameter value in the `CurrentFilter` property.</span></span> <span data-ttu-id="a1747-174">從文字方塊中接收搜尋字串值文字方塊會在下一節新增。</span><span class="sxs-lookup"><span data-stu-id="a1747-174">The search string value is received from a text box that's added in the next section.</span></span>
+* <span data-ttu-id="a1747-175">將 `Where` 子句新增至 LINQ 陳述式。</span><span class="sxs-lookup"><span data-stu-id="a1747-175">Adds to the LINQ statement a `Where` clause.</span></span> <span data-ttu-id="a1747-176">`Where` 子句只會選取名字或姓氏包含搜尋字串的學生。</span><span class="sxs-lookup"><span data-stu-id="a1747-176">The `Where` clause selects only students whose first name or last name contains the search string.</span></span> <span data-ttu-id="a1747-177">有可以搜尋的值，LINQ 陳述式才會執行。</span><span class="sxs-lookup"><span data-stu-id="a1747-177">The LINQ statement is executed only if there's a value to search for.</span></span>
 
-### <a name="iqueryable-vs-ienumerable"></a><span data-ttu-id="f4222-178">IQueryable 與IEnumerable</span><span class="sxs-lookup"><span data-stu-id="f4222-178">IQueryable vs. IEnumerable</span></span>
+### <a name="iqueryable-vs-ienumerable"></a><span data-ttu-id="a1747-178">IQueryable 與 IEnumerable 的比較</span><span class="sxs-lookup"><span data-stu-id="a1747-178">IQueryable vs. IEnumerable</span></span>
 
-<span data-ttu-id="f4222-179">程式碼會呼叫 `IQueryable` 物件上的 `Where` 方法，且會在伺服器上處理篩選。</span><span class="sxs-lookup"><span data-stu-id="f4222-179">The code calls the `Where` method on an `IQueryable` object, and the filter is processed on the server.</span></span> <span data-ttu-id="f4222-180">在某些情況下，應用程式可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。</span><span class="sxs-lookup"><span data-stu-id="f4222-180">In some scenarios, the app might be calling the `Where` method as an extension method on an in-memory collection.</span></span> <span data-ttu-id="f4222-181">例如，假設 `_context.Students` 從 EF Core `DbSet` 變為傳回 `IEnumerable` 集合的儲存機制方法。</span><span class="sxs-lookup"><span data-stu-id="f4222-181">For example, suppose `_context.Students` changes from EF Core `DbSet` to a repository method that returns an `IEnumerable` collection.</span></span> <span data-ttu-id="f4222-182">結果通常都是一樣的，但在某些情況下可能會不同。</span><span class="sxs-lookup"><span data-stu-id="f4222-182">The result would normally be the same but in some cases may be different.</span></span>
+<span data-ttu-id="a1747-179">程式碼會呼叫 `Where` 物件上的 `IQueryable` 方法，且會在伺服器上處理篩選。</span><span class="sxs-lookup"><span data-stu-id="a1747-179">The code calls the `Where` method on an `IQueryable` object, and the filter is processed on the server.</span></span> <span data-ttu-id="a1747-180">在某些情況下，應用程式可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。</span><span class="sxs-lookup"><span data-stu-id="a1747-180">In some scenarios, the app might be calling the `Where` method as an extension method on an in-memory collection.</span></span> <span data-ttu-id="a1747-181">例如，假設 `_context.Students` 從 EF Core `DbSet` 變為傳回 `IEnumerable` 集合的儲存機制方法。</span><span class="sxs-lookup"><span data-stu-id="a1747-181">For example, suppose `_context.Students` changes from EF Core `DbSet` to a repository method that returns an `IEnumerable` collection.</span></span> <span data-ttu-id="a1747-182">結果通常都是一樣的，但在某些情況下可能會不同。</span><span class="sxs-lookup"><span data-stu-id="a1747-182">The result would normally be the same but in some cases may be different.</span></span>
 
-<span data-ttu-id="f4222-183">例如，.NET Framework 的 `Contains` 實作，預設會執行區分大小寫的比較。</span><span class="sxs-lookup"><span data-stu-id="f4222-183">For example, the .NET Framework implementation of `Contains` performs a case-sensitive comparison by default.</span></span> <span data-ttu-id="f4222-184">在 SQL Server，`Contains` 區分大小寫取決於 SQL Server 執行個體的定序設定。</span><span class="sxs-lookup"><span data-stu-id="f4222-184">In SQL Server, `Contains` case-sensitivity is determined by the collation setting of the SQL Server instance.</span></span> <span data-ttu-id="f4222-185">SQL Server 預設為不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="f4222-185">SQL Server defaults to case-insensitive.</span></span> <span data-ttu-id="f4222-186">SQLite 預設為區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="f4222-186">SQLite defaults to case-sensitive.</span></span> <span data-ttu-id="f4222-187">可以使用 `ToUpper` 使測試明確不區分大小寫：</span><span class="sxs-lookup"><span data-stu-id="f4222-187">`ToUpper` could be called to make the test explicitly case-insensitive:</span></span>
+<span data-ttu-id="a1747-183">例如，.NET Framework 的 `Contains` 實作，預設會執行區分大小寫的比較。</span><span class="sxs-lookup"><span data-stu-id="a1747-183">For example, the .NET Framework implementation of `Contains` performs a case-sensitive comparison by default.</span></span> <span data-ttu-id="a1747-184">在 SQL Server，`Contains` 區分大小寫取決於 SQL Server 執行個體的定序設定。</span><span class="sxs-lookup"><span data-stu-id="a1747-184">In SQL Server, `Contains` case-sensitivity is determined by the collation setting of the SQL Server instance.</span></span> <span data-ttu-id="a1747-185">SQL Server 預設為不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="a1747-185">SQL Server defaults to case-insensitive.</span></span> <span data-ttu-id="a1747-186">SQLite 預設為區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="a1747-186">SQLite defaults to case-sensitive.</span></span> <span data-ttu-id="a1747-187">可以使用 `ToUpper` 使測試明確不區分大小寫：</span><span class="sxs-lookup"><span data-stu-id="a1747-187">`ToUpper` could be called to make the test explicitly case-insensitive:</span></span>
 
 ```csharp
 Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 ```
 
-<span data-ttu-id="f4222-188">上述程式碼可確保篩選準則不區分大小寫，即使在 `IEnumerable` 上呼叫 `Where` 方法或在 SQLite 上執行也一樣。</span><span class="sxs-lookup"><span data-stu-id="f4222-188">The preceding code would ensure that the filter is case-insensitive even if the `Where` method is called on an `IEnumerable` or runs on SQLite.</span></span>
+<span data-ttu-id="a1747-188">上述程式碼可確保篩選準則不區分大小寫，即使在 `Where` 上呼叫 `IEnumerable` 方法或在 SQLite 上執行也一樣。</span><span class="sxs-lookup"><span data-stu-id="a1747-188">The preceding code would ensure that the filter is case-insensitive even if the `Where` method is called on an `IEnumerable` or runs on SQLite.</span></span>
 
-<span data-ttu-id="f4222-189">在 `IEnumerable` 集合上呼叫 `Contains` 時，會使用 .NET Core 實作。</span><span class="sxs-lookup"><span data-stu-id="f4222-189">When `Contains` is called on an `IEnumerable` collection, the .NET Core implementation is used.</span></span> <span data-ttu-id="f4222-190">在 `IQueryable` 物件上呼叫 `Contains` 時，會使用資料庫實作。</span><span class="sxs-lookup"><span data-stu-id="f4222-190">When `Contains` is called on an `IQueryable` object, the database implementation is used.</span></span>
+<span data-ttu-id="a1747-189">在 `Contains` 集合上呼叫 `IEnumerable` 時，會使用 .NET Core 實作。</span><span class="sxs-lookup"><span data-stu-id="a1747-189">When `Contains` is called on an `IEnumerable` collection, the .NET Core implementation is used.</span></span> <span data-ttu-id="a1747-190">在 `Contains` 物件上呼叫 `IQueryable` 時，會使用資料庫實作。</span><span class="sxs-lookup"><span data-stu-id="a1747-190">When `Contains` is called on an `IQueryable` object, the database implementation is used.</span></span>
 
-<span data-ttu-id="f4222-191">基於效能考量，在 `IQueryable` 上呼叫 `Contains` 通常是較理想的做法。</span><span class="sxs-lookup"><span data-stu-id="f4222-191">Calling `Contains` on an `IQueryable` is usually preferable for performance reasons.</span></span> <span data-ttu-id="f4222-192">透過 `IQueryable`，篩選會由資料庫伺服器進行。</span><span class="sxs-lookup"><span data-stu-id="f4222-192">With `IQueryable`, the filtering is done by the database server.</span></span> <span data-ttu-id="f4222-193">如果先建立 `IEnumerable`，則必須從資料庫伺服器傳回所有資料列。</span><span class="sxs-lookup"><span data-stu-id="f4222-193">If an `IEnumerable` is created first, all the rows have to be returned from the database server.</span></span>
+<span data-ttu-id="a1747-191">基於效能考量，在 `Contains` 上呼叫 `IQueryable` 通常是較理想的做法。</span><span class="sxs-lookup"><span data-stu-id="a1747-191">Calling `Contains` on an `IQueryable` is usually preferable for performance reasons.</span></span> <span data-ttu-id="a1747-192">透過 `IQueryable`，篩選會由資料庫伺服器進行。</span><span class="sxs-lookup"><span data-stu-id="a1747-192">With `IQueryable`, the filtering is done by the database server.</span></span> <span data-ttu-id="a1747-193">如果先建立 `IEnumerable`，則必須從資料庫伺服器傳回所有資料列。</span><span class="sxs-lookup"><span data-stu-id="a1747-193">If an `IEnumerable` is created first, all the rows have to be returned from the database server.</span></span>
 
-<span data-ttu-id="f4222-194">呼叫 `ToUpper` 會使效能降低。</span><span class="sxs-lookup"><span data-stu-id="f4222-194">There's a performance penalty for calling `ToUpper`.</span></span> <span data-ttu-id="f4222-195">`ToUpper` 程式碼會將一個函式新增至 TSQL SELECT 陳述式的 WHERE 子句中。</span><span class="sxs-lookup"><span data-stu-id="f4222-195">The `ToUpper` code adds a function in the WHERE clause of the TSQL SELECT statement.</span></span> <span data-ttu-id="f4222-196">新增的函式會防止最佳化工具使用索引。</span><span class="sxs-lookup"><span data-stu-id="f4222-196">The added function prevents the optimizer from using an index.</span></span> <span data-ttu-id="f4222-197">假如 SQL 已安裝為不區分大小寫，除非有需要，否則應盡量避免呼叫 `ToUpper`。</span><span class="sxs-lookup"><span data-stu-id="f4222-197">Given that SQL is installed as case-insensitive, it's best to avoid the `ToUpper` call when it's not needed.</span></span>
+<span data-ttu-id="a1747-194">呼叫 `ToUpper` 會使效能降低。</span><span class="sxs-lookup"><span data-stu-id="a1747-194">There's a performance penalty for calling `ToUpper`.</span></span> <span data-ttu-id="a1747-195">`ToUpper` 程式碼會將一個函式新增至 TSQL SELECT 陳述式的 WHERE 子句中。</span><span class="sxs-lookup"><span data-stu-id="a1747-195">The `ToUpper` code adds a function in the WHERE clause of the TSQL SELECT statement.</span></span> <span data-ttu-id="a1747-196">新增的函式會防止最佳化工具使用索引。</span><span class="sxs-lookup"><span data-stu-id="a1747-196">The added function prevents the optimizer from using an index.</span></span> <span data-ttu-id="a1747-197">假如 SQL 已安裝為不區分大小寫，除非有需要，否則應盡量避免呼叫 `ToUpper`。</span><span class="sxs-lookup"><span data-stu-id="a1747-197">Given that SQL is installed as case-insensitive, it's best to avoid the `ToUpper` call when it's not needed.</span></span>
 
-<span data-ttu-id="f4222-198">如需詳細資訊，請參閱 [How to use case-insensitive query with Sqlite provider](https://github.com/aspnet/EntityFrameworkCore/issues/11414) (如何搭配 Sqlite 提供者使用不區分大小寫查詢)。</span><span class="sxs-lookup"><span data-stu-id="f4222-198">For more information, see [How to use case-insensitive query with Sqlite provider](https://github.com/aspnet/EntityFrameworkCore/issues/11414).</span></span>
+<span data-ttu-id="a1747-198">如需詳細資訊，請參閱 [How to use case-insensitive query with Sqlite provider](https://github.com/aspnet/EntityFrameworkCore/issues/11414) (如何搭配 Sqlite 提供者使用不區分大小寫查詢)。</span><span class="sxs-lookup"><span data-stu-id="a1747-198">For more information, see [How to use case-insensitive query with Sqlite provider](https://github.com/aspnet/EntityFrameworkCore/issues/11414).</span></span>
 
-### <a name="update-the-razor-page"></a><span data-ttu-id="f4222-199">更新 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-199">Update the Razor page</span></span>
+### <a name="update-the-razor-page"></a><span data-ttu-id="a1747-199">更新 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-199">Update the Razor page</span></span>
 
-<span data-ttu-id="f4222-200">取代 *Pages/Students/Index.cshtml* 中的程式碼以建立 [搜尋]  按鈕和各種色彩。</span><span class="sxs-lookup"><span data-stu-id="f4222-200">Replace the code in *Pages/Students/Index.cshtml* to create a **Search** button and assorted chrome.</span></span>
+<span data-ttu-id="a1747-200">取代 *Pages/Students/Index.cshtml* 中的程式碼以建立 [搜尋] 按鈕和各種色彩。</span><span class="sxs-lookup"><span data-stu-id="a1747-200">Replace the code in *Pages/Students/Index.cshtml* to create a **Search** button and assorted chrome.</span></span>
 
 [!code-cshtml[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml?highlight=14-23)]
 
-<span data-ttu-id="f4222-201">上述程式碼會使用 `<form>` [標籤協助程式](xref:mvc/views/tag-helpers/intro) 新增搜尋文字方塊和按鈕。</span><span class="sxs-lookup"><span data-stu-id="f4222-201">The preceding code uses the `<form>` [tag helper](xref:mvc/views/tag-helpers/intro) to add the search text box and button.</span></span> <span data-ttu-id="f4222-202">`<form>` 標籤協助程式預設為使用 POST 提交表單資料。</span><span class="sxs-lookup"><span data-stu-id="f4222-202">By default, the `<form>` tag helper submits form data with a POST.</span></span> <span data-ttu-id="f4222-203">在 POST 中，參數會在 HTTP 訊息本文中傳遞，而不是在 URL 中傳遞。</span><span class="sxs-lookup"><span data-stu-id="f4222-203">With POST, the parameters are passed in the HTTP message body and not in the URL.</span></span> <span data-ttu-id="f4222-204">使用 HTTP GET 時，表單資料會以查詢字串的形式在 URL 中傳遞。</span><span class="sxs-lookup"><span data-stu-id="f4222-204">When HTTP GET is used, the form data is passed in the URL as query strings.</span></span> <span data-ttu-id="f4222-205">以查詢字串來傳遞資料，可讓使用者為 URL 加上書籤。</span><span class="sxs-lookup"><span data-stu-id="f4222-205">Passing the data with query strings enables users to bookmark the URL.</span></span> <span data-ttu-id="f4222-206">[W3C 指導方針](https://www.w3.org/2001/tag/doc/whenToUseGet.html) 建議，只有在動作不會產生更新時才應使用 GET。</span><span class="sxs-lookup"><span data-stu-id="f4222-206">The [W3C guidelines](https://www.w3.org/2001/tag/doc/whenToUseGet.html) recommend that GET should be used when the action doesn't result in an update.</span></span>
+<span data-ttu-id="a1747-201">上述程式碼會[使用 `<form>` 卷](xref:mvc/views/tag-helpers/intro)標協助程式來加入搜尋文字方塊和按鈕。</span><span class="sxs-lookup"><span data-stu-id="a1747-201">The preceding code uses the `<form>` [tag helper](xref:mvc/views/tag-helpers/intro) to add the search text box and button.</span></span> <span data-ttu-id="a1747-202">`<form>` 標籤協助程式預設為使用 POST 提交表單資料。</span><span class="sxs-lookup"><span data-stu-id="a1747-202">By default, the `<form>` tag helper submits form data with a POST.</span></span> <span data-ttu-id="a1747-203">在 POST 中，參數會在 HTTP 訊息本文中傳遞，而不是在 URL 中傳遞。</span><span class="sxs-lookup"><span data-stu-id="a1747-203">With POST, the parameters are passed in the HTTP message body and not in the URL.</span></span> <span data-ttu-id="a1747-204">使用 HTTP GET 時，表單資料會以查詢字串的形式在 URL 中傳遞。</span><span class="sxs-lookup"><span data-stu-id="a1747-204">When HTTP GET is used, the form data is passed in the URL as query strings.</span></span> <span data-ttu-id="a1747-205">以查詢字串來傳遞資料，可讓使用者為 URL 加上書籤。</span><span class="sxs-lookup"><span data-stu-id="a1747-205">Passing the data with query strings enables users to bookmark the URL.</span></span> <span data-ttu-id="a1747-206">[W3C 指導方針](https://www.w3.org/2001/tag/doc/whenToUseGet.html) 建議，只有在動作不會產生更新時才應使用 GET。</span><span class="sxs-lookup"><span data-stu-id="a1747-206">The [W3C guidelines](https://www.w3.org/2001/tag/doc/whenToUseGet.html) recommend that GET should be used when the action doesn't result in an update.</span></span>
 
-<span data-ttu-id="f4222-207">測試應用程式：</span><span class="sxs-lookup"><span data-stu-id="f4222-207">Test the app:</span></span>
+<span data-ttu-id="a1747-207">測試應用程式：</span><span class="sxs-lookup"><span data-stu-id="a1747-207">Test the app:</span></span>
 
-* <span data-ttu-id="f4222-208">選取 [Students]  索引標籤並輸入搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-208">Select the **Students** tab and enter a search string.</span></span> <span data-ttu-id="f4222-209">如果您使用 SQLite，則只有在您實作先前示範的選擇性 `ToUpper` 程式碼時，篩選才會不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="f4222-209">If you're using SQLite, the filter is case-insensitive only if you implemented the optional `ToUpper` code shown earlier.</span></span>
+* <span data-ttu-id="a1747-208">選取 [Students] 索引標籤並輸入搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-208">Select the **Students** tab and enter a search string.</span></span> <span data-ttu-id="a1747-209">如果您使用 SQLite，則只有在您實作先前示範的選擇性 `ToUpper` 程式碼時，篩選才會不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="a1747-209">If you're using SQLite, the filter is case-insensitive only if you implemented the optional `ToUpper` code shown earlier.</span></span>
 
-* <span data-ttu-id="f4222-210">選取 [搜尋]  。</span><span class="sxs-lookup"><span data-stu-id="f4222-210">Select **Search**.</span></span>
+* <span data-ttu-id="a1747-210">選取 [搜尋]。</span><span class="sxs-lookup"><span data-stu-id="a1747-210">Select **Search**.</span></span>
 
-<span data-ttu-id="f4222-211">請注意，URL 中包含了搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-211">Notice that the URL contains the search string.</span></span> <span data-ttu-id="f4222-212">例如：</span><span class="sxs-lookup"><span data-stu-id="f4222-212">For example:</span></span>
+<span data-ttu-id="a1747-211">請注意 URL 中包含了搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-211">Notice that the URL contains the search string.</span></span> <span data-ttu-id="a1747-212">例如：</span><span class="sxs-lookup"><span data-stu-id="a1747-212">For example:</span></span>
 
 ```
 https://localhost:<port>/Students?SearchString=an
 ```
 
-<span data-ttu-id="f4222-213">如果頁面已加上書籤，那麼書籤會包含該頁面的 URL 和 `SearchString` 查詢字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-213">If the page is bookmarked, the bookmark contains the URL to the page and the `SearchString` query string.</span></span> <span data-ttu-id="f4222-214">`form` 中的 `method="get"` 導致查詢字串的產生。</span><span class="sxs-lookup"><span data-stu-id="f4222-214">The `method="get"` in the `form` tag is what caused the query string to be generated.</span></span>
+<span data-ttu-id="a1747-213">如果頁面已加上書籤，那麼書籤會包含該頁面的 URL 和 `SearchString` 查詢字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-213">If the page is bookmarked, the bookmark contains the URL to the page and the `SearchString` query string.</span></span> <span data-ttu-id="a1747-214">`method="get"` 中的 `form` 導致查詢字串的產生。</span><span class="sxs-lookup"><span data-stu-id="a1747-214">The `method="get"` in the `form` tag is what caused the query string to be generated.</span></span>
 
-<span data-ttu-id="f4222-215">目前，選取資料行標題排序連結時，[搜尋]  方塊中的篩選值將會遺失。</span><span class="sxs-lookup"><span data-stu-id="f4222-215">Currently, when a column heading sort link is selected, the filter value from the **Search** box is lost.</span></span> <span data-ttu-id="f4222-216">遺失的篩選值會在下一節修正。</span><span class="sxs-lookup"><span data-stu-id="f4222-216">The lost filter value is fixed in the next section.</span></span>
+<span data-ttu-id="a1747-215">目前，選取資料行標題排序連結時，[搜尋] 方塊中的篩選值將會遺失。</span><span class="sxs-lookup"><span data-stu-id="a1747-215">Currently, when a column heading sort link is selected, the filter value from the **Search** box is lost.</span></span> <span data-ttu-id="a1747-216">遺失的篩選值會在下一節修正。</span><span class="sxs-lookup"><span data-stu-id="a1747-216">The lost filter value is fixed in the next section.</span></span>
 
-## <a name="add-paging"></a><span data-ttu-id="f4222-217">新增分頁</span><span class="sxs-lookup"><span data-stu-id="f4222-217">Add paging</span></span>
+## <a name="add-paging"></a><span data-ttu-id="a1747-217">新增分頁</span><span class="sxs-lookup"><span data-stu-id="a1747-217">Add paging</span></span>
 
-<span data-ttu-id="f4222-218">在本節中，`PaginatedList` 類別用來支援分頁。</span><span class="sxs-lookup"><span data-stu-id="f4222-218">In this section, a `PaginatedList` class is created to support paging.</span></span> <span data-ttu-id="f4222-219">`PaginatedList` 類別會使用 `Skip` 和 `Take` 陳述式來篩選伺服器上的資料，而不會擷取資料表中的所有資料列。</span><span class="sxs-lookup"><span data-stu-id="f4222-219">The `PaginatedList` class uses `Skip` and `Take` statements to filter data on the server instead of retrieving all rows of the table.</span></span> <span data-ttu-id="f4222-220">下圖顯示分頁按鈕。</span><span class="sxs-lookup"><span data-stu-id="f4222-220">The following illustration shows the paging buttons.</span></span>
-
-![含分頁連結的 Students [索引] 頁面](sort-filter-page/_static/paging30.png)
-
-### <a name="create-the-paginatedlist-class"></a><span data-ttu-id="f4222-222">建立 PaginatedList 類別</span><span class="sxs-lookup"><span data-stu-id="f4222-222">Create the PaginatedList class</span></span>
-
-<span data-ttu-id="f4222-223">在專案資料夾中，以下列程式碼建立 `PaginatedList.cs`：</span><span class="sxs-lookup"><span data-stu-id="f4222-223">In the project folder, create `PaginatedList.cs` with the following code:</span></span>
-
-[!code-csharp[Main](intro/samples/cu30/PaginatedList.cs)]
-
-<span data-ttu-id="f4222-224">上述程式碼中的 `CreateAsync` 方法會採用頁面大小和頁面數，並會將適當的 `Skip` 和 `Take` 陳述式套用至 `IQueryable`。</span><span class="sxs-lookup"><span data-stu-id="f4222-224">The `CreateAsync` method in the preceding code takes page size and page number and applies the appropriate `Skip` and `Take` statements to the `IQueryable`.</span></span> <span data-ttu-id="f4222-225">在 `IQueryable` 上呼叫 `ToListAsync` 時，會傳回僅包含所要求頁面的清單。</span><span class="sxs-lookup"><span data-stu-id="f4222-225">When `ToListAsync` is called on the `IQueryable`, it returns a List containing only the requested page.</span></span> <span data-ttu-id="f4222-226">`HasPreviousPage` 和 `HasNextPage` 屬性可用來啟用或停用 **Previous** 和 **Next** 分頁按鈕。</span><span class="sxs-lookup"><span data-stu-id="f4222-226">The properties `HasPreviousPage` and `HasNextPage` are used to enable or disable **Previous** and **Next** paging buttons.</span></span>
-
-<span data-ttu-id="f4222-227">`CreateAsync` 方法為建立 `PaginatedList<T>` 之用。</span><span class="sxs-lookup"><span data-stu-id="f4222-227">The `CreateAsync` method is used to create the `PaginatedList<T>`.</span></span> <span data-ttu-id="f4222-228">建構函式無法建立 `PaginatedList<T>` 物件，建構函式也無法執行非同步程式碼。</span><span class="sxs-lookup"><span data-stu-id="f4222-228">A constructor can't create the `PaginatedList<T>` object; constructors can't run asynchronous code.</span></span>
-
-### <a name="add-paging-to-the-pagemodel-class"></a><span data-ttu-id="f4222-229">將分頁新增至 PageModel 類別</span><span class="sxs-lookup"><span data-stu-id="f4222-229">Add paging to the PageModel class</span></span>
-
-<span data-ttu-id="f4222-230">取代 *Students/Index.cshtml.cs* 中的程式碼以新增分頁。</span><span class="sxs-lookup"><span data-stu-id="f4222-230">Replace the code in *Students/Index.cshtml.cs* to add paging.</span></span>
-
-[!code-csharp[Main](intro/samples/cu30/Pages/Students/Index.cshtml.cs?name=snippet_All&highlight=26,28-29,31,34-41,68-70)]
-
-<span data-ttu-id="f4222-231">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="f4222-231">The preceding code:</span></span>
-
-* <span data-ttu-id="f4222-232">將 `Students` 屬性的型別從 `IList<Student>` 變更為 `PaginatedList<Student>`。</span><span class="sxs-lookup"><span data-stu-id="f4222-232">Changes the type of the `Students` property from `IList<Student>` to `PaginatedList<Student>`.</span></span>
-* <span data-ttu-id="f4222-233">將頁面索引、目前的 `sortOrder` 和 `currentFilter` 新增至 `OnGetAsync` 方法簽章。</span><span class="sxs-lookup"><span data-stu-id="f4222-233">Adds the page index, the current `sortOrder`, and the `currentFilter` to the `OnGetAsync` method signature.</span></span>
-* <span data-ttu-id="f4222-234">將排序次序儲存在 CurrentSort 屬性中。</span><span class="sxs-lookup"><span data-stu-id="f4222-234">Saves the sort order in the CurrentSort property.</span></span>
-* <span data-ttu-id="f4222-235">當有新的搜尋字串時，將頁面索引重設為 1。</span><span class="sxs-lookup"><span data-stu-id="f4222-235">Resets page index to 1 when there's a new search string.</span></span>
-* <span data-ttu-id="f4222-236">會使用 `PaginatedList` 類別來取得 Students 實體。</span><span class="sxs-lookup"><span data-stu-id="f4222-236">Uses the `PaginatedList` class to get Student entities.</span></span>
-
-<span data-ttu-id="f4222-237">遇下列情況時，`OnGetAsync` 接收的所有參數都會成為 Null：</span><span class="sxs-lookup"><span data-stu-id="f4222-237">All the parameters that `OnGetAsync` receives are null when:</span></span>
-
-* <span data-ttu-id="f4222-238">從 **Students** 連結呼叫頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-238">The page is called from the **Students** link.</span></span>
-* <span data-ttu-id="f4222-239">使用者沒有按一下分頁或排序連結。</span><span class="sxs-lookup"><span data-stu-id="f4222-239">The user hasn't clicked a paging or sorting link.</span></span>
-
-<span data-ttu-id="f4222-240">按一下分頁連結時，頁面索引變數即包含要顯示的頁面數。</span><span class="sxs-lookup"><span data-stu-id="f4222-240">When a paging link is clicked, the page index variable contains the page number to display.</span></span>
-
-<span data-ttu-id="f4222-241">`CurrentSort` 屬性提供 Razor 頁面目前的排序次序。</span><span class="sxs-lookup"><span data-stu-id="f4222-241">The `CurrentSort` property provides the Razor Page with the current sort order.</span></span> <span data-ttu-id="f4222-242">目前的排序次序必須包含在分頁連結中，以保留分頁時的排序次序。</span><span class="sxs-lookup"><span data-stu-id="f4222-242">The current sort order must be included in the paging links to keep the sort order while paging.</span></span>
-
-<span data-ttu-id="f4222-243">`CurrentFilter` 屬性會提供具有目前篩選字串的 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-243">The `CurrentFilter` property provides the Razor Page with the current filter string.</span></span> <span data-ttu-id="f4222-244">`CurrentFilter` 值：</span><span class="sxs-lookup"><span data-stu-id="f4222-244">The `CurrentFilter` value:</span></span>
-
-* <span data-ttu-id="f4222-245">必須包含在分頁連結中，以保留分頁時的篩選設定。</span><span class="sxs-lookup"><span data-stu-id="f4222-245">Must be included in the paging links in order to maintain the filter settings during paging.</span></span>
-* <span data-ttu-id="f4222-246">頁面重新顯示時，必須還原到文字方塊中。</span><span class="sxs-lookup"><span data-stu-id="f4222-246">Must be restored to the text box when the page is redisplayed.</span></span>
-
-<span data-ttu-id="f4222-247">如果搜尋字串在分頁時變更，頁面會重設為 1。</span><span class="sxs-lookup"><span data-stu-id="f4222-247">If the search string is changed while paging, the page is reset to 1.</span></span> <span data-ttu-id="f4222-248">頁面必須重設為 1 是因為新的篩選可能會導致顯示不同的資料。</span><span class="sxs-lookup"><span data-stu-id="f4222-248">The page has to be reset to 1 because the new filter can result in different data to display.</span></span> <span data-ttu-id="f4222-249">輸入搜尋值和選取 **Submit** 時：</span><span class="sxs-lookup"><span data-stu-id="f4222-249">When a search value is entered and **Submit** is selected:</span></span>
-
-  * <span data-ttu-id="f4222-250">搜尋字串變更。</span><span class="sxs-lookup"><span data-stu-id="f4222-250">The search string is changed.</span></span>
-  * <span data-ttu-id="f4222-251">`searchString` 參數不是 null。</span><span class="sxs-lookup"><span data-stu-id="f4222-251">The `searchString` parameter isn't null.</span></span>
-
-  <span data-ttu-id="f4222-252">`PaginatedList.CreateAsync` 方法會以支援分頁的集合類型，將學生查詢轉換成學生單一頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-252">The `PaginatedList.CreateAsync` method converts the student query to a single page of students in a collection type that supports paging.</span></span> <span data-ttu-id="f4222-253">該學生單一頁面會傳遞至 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-253">That single page of students is passed to the Razor Page.</span></span>
-
-  <span data-ttu-id="f4222-254">在 `PaginatedList.CreateAsync` 呼叫中，`pageIndex` 之後的兩個問號代表 [Null 聯合運算子](/dotnet/csharp/language-reference/operators/null-conditional-operator)。</span><span class="sxs-lookup"><span data-stu-id="f4222-254">The two question marks after `pageIndex` in the `PaginatedList.CreateAsync` call represent the [null-coalescing operator](/dotnet/csharp/language-reference/operators/null-conditional-operator).</span></span> <span data-ttu-id="f4222-255">Null 聯合運算子會針對可為 Null 的型別定義一個預設值。</span><span class="sxs-lookup"><span data-stu-id="f4222-255">The null-coalescing operator defines a default value for a nullable type.</span></span> <span data-ttu-id="f4222-256">運算式 `(pageIndex ?? 1)` 表示，如果 `pageIndex` 有一個值就將該值傳回。</span><span class="sxs-lookup"><span data-stu-id="f4222-256">The expression `(pageIndex ?? 1)` means return the value of `pageIndex` if it has a value.</span></span> <span data-ttu-id="f4222-257">如果 `pageIndex` 沒有值，則傳回 1。</span><span class="sxs-lookup"><span data-stu-id="f4222-257">If `pageIndex` doesn't have a value, return 1.</span></span>
-
-### <a name="add-paging-links-to-the-razor-page"></a><span data-ttu-id="f4222-258">將分頁連結新增至 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-258">Add paging links to the Razor Page</span></span>
-
-<span data-ttu-id="f4222-259">使用下列程式碼取代 *Students/Index.cshtml* 中的程式碼。</span><span class="sxs-lookup"><span data-stu-id="f4222-259">Replace the code in *Students/Index.cshtml* with the following code.</span></span> <span data-ttu-id="f4222-260">所做的變更已醒目提示：</span><span class="sxs-lookup"><span data-stu-id="f4222-260">The changes are highlighted:</span></span>
-
-[!code-cshtml[Main](intro/samples/cu30/Pages/Students/Index.cshtml?highlight=29-32,38-41,69-87)]
-
-<span data-ttu-id="f4222-261">資料行頁首連結會使用查詢字串，將目前的搜尋字串傳遞至 `OnGetAsync` 方法：</span><span class="sxs-lookup"><span data-stu-id="f4222-261">The column header links use the query string to pass the current search string to the `OnGetAsync` method:</span></span>
-
-[!code-cshtml[Main](intro/samples/cu30/Pages/Students/Index.cshtml?range=29-32)]
-
-<span data-ttu-id="f4222-262">分頁按鈕會透過標籤協助程式來顯示：</span><span class="sxs-lookup"><span data-stu-id="f4222-262">The paging buttons are displayed by tag helpers:</span></span>
-
-[!code-cshtml[Main](intro/samples/cu30/Pages/Students/Index.cshtml?range=73-87)]
-
-<span data-ttu-id="f4222-263">執行應用程式並巡覽至學生頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-263">Run the app and navigate to the students page.</span></span>
-
-* <span data-ttu-id="f4222-264">若要確定分頁運作正常，請以不同排序次序按一下分頁連結。</span><span class="sxs-lookup"><span data-stu-id="f4222-264">To make sure paging works, click the paging links in different sort orders.</span></span>
-* <span data-ttu-id="f4222-265">若要驗證分頁的排序和篩選能正確運作，請輸入搜尋字串並嘗試分頁。</span><span class="sxs-lookup"><span data-stu-id="f4222-265">To verify that paging works correctly with sorting and filtering, enter a search string and try paging.</span></span>
+<span data-ttu-id="a1747-218">在本節中，`PaginatedList` 類別用來支援分頁。</span><span class="sxs-lookup"><span data-stu-id="a1747-218">In this section, a `PaginatedList` class is created to support paging.</span></span> <span data-ttu-id="a1747-219">`PaginatedList` 類別會使用 `Skip` 和 `Take` 陳述式來篩選伺服器上的資料，而不會擷取資料表中的所有資料列。</span><span class="sxs-lookup"><span data-stu-id="a1747-219">The `PaginatedList` class uses `Skip` and `Take` statements to filter data on the server instead of retrieving all rows of the table.</span></span> <span data-ttu-id="a1747-220">下圖顯示分頁按鈕。</span><span class="sxs-lookup"><span data-stu-id="a1747-220">The following illustration shows the paging buttons.</span></span>
 
 ![有分頁連結的 Students [索引] 頁面](sort-filter-page/_static/paging30.png)
 
-## <a name="add-grouping"></a><span data-ttu-id="f4222-267">新增分組</span><span class="sxs-lookup"><span data-stu-id="f4222-267">Add grouping</span></span>
+### <a name="create-the-paginatedlist-class"></a><span data-ttu-id="a1747-222">建立 PaginatedList 類別</span><span class="sxs-lookup"><span data-stu-id="a1747-222">Create the PaginatedList class</span></span>
 
-<span data-ttu-id="f4222-268">本節將建立 [關於] 頁面，其中會顯示每個註冊日期的已註冊學生人數。</span><span class="sxs-lookup"><span data-stu-id="f4222-268">This section creates an About page that displays how many students have enrolled for each enrollment date.</span></span> <span data-ttu-id="f4222-269">此更新會使用群組，並包含下列步驟：</span><span class="sxs-lookup"><span data-stu-id="f4222-269">The update uses grouping and includes the following steps:</span></span>
+<span data-ttu-id="a1747-223">在專案資料夾中，以下列程式碼建立 `PaginatedList.cs`：</span><span class="sxs-lookup"><span data-stu-id="a1747-223">In the project folder, create `PaginatedList.cs` with the following code:</span></span>
 
-* <span data-ttu-id="f4222-270">建立資料的檢視模型以用於 [關於]  頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-270">Create a view model for the data used by the **About** page.</span></span>
-* <span data-ttu-id="f4222-271">更新 About 頁面以使用檢視模型。</span><span class="sxs-lookup"><span data-stu-id="f4222-271">Update the About page to use the view model.</span></span>
+[!code-csharp[Main](intro/samples/cu30/PaginatedList.cs)]
 
-### <a name="create-the-view-model"></a><span data-ttu-id="f4222-272">建立檢視模型</span><span class="sxs-lookup"><span data-stu-id="f4222-272">Create the view model</span></span>
+<span data-ttu-id="a1747-224">上述程式碼中的 `CreateAsync` 方法會採用頁面大小和頁面數，並會將適當的 `Skip` 和 `Take` 陳述式套用至 `IQueryable`。</span><span class="sxs-lookup"><span data-stu-id="a1747-224">The `CreateAsync` method in the preceding code takes page size and page number and applies the appropriate `Skip` and `Take` statements to the `IQueryable`.</span></span> <span data-ttu-id="a1747-225">在 `ToListAsync` 上呼叫 `IQueryable` 時，會傳回僅包含所要求頁面的清單。</span><span class="sxs-lookup"><span data-stu-id="a1747-225">When `ToListAsync` is called on the `IQueryable`, it returns a List containing only the requested page.</span></span> <span data-ttu-id="a1747-226">`HasPreviousPage` 和 `HasNextPage` 屬性可用來啟用或停用 **Previous** 和 **Next** 分頁按鈕。</span><span class="sxs-lookup"><span data-stu-id="a1747-226">The properties `HasPreviousPage` and `HasNextPage` are used to enable or disable **Previous** and **Next** paging buttons.</span></span>
 
-<span data-ttu-id="f4222-273">建立 *Models/SchoolViewModels* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="f4222-273">Create a *Models/SchoolViewModels* folder.</span></span>
+<span data-ttu-id="a1747-227">`CreateAsync` 方法為建立 `PaginatedList<T>` 之用。</span><span class="sxs-lookup"><span data-stu-id="a1747-227">The `CreateAsync` method is used to create the `PaginatedList<T>`.</span></span> <span data-ttu-id="a1747-228">建構函式無法建立 `PaginatedList<T>` 物件，建構函式也無法執行非同步程式碼。</span><span class="sxs-lookup"><span data-stu-id="a1747-228">A constructor can't create the `PaginatedList<T>` object; constructors can't run asynchronous code.</span></span>
 
-<span data-ttu-id="f4222-274">使用下列程式碼建立 *SchoolViewModels/EnrollmentDateGroup.cs*：</span><span class="sxs-lookup"><span data-stu-id="f4222-274">Create *SchoolViewModels/EnrollmentDateGroup.cs* with the following code:</span></span>
+### <a name="add-paging-to-the-pagemodel-class"></a><span data-ttu-id="a1747-229">將分頁新增至 PageModel 類別</span><span class="sxs-lookup"><span data-stu-id="a1747-229">Add paging to the PageModel class</span></span>
+
+<span data-ttu-id="a1747-230">取代 *Students/Index.cshtml.cs* 中的程式碼以新增分頁。</span><span class="sxs-lookup"><span data-stu-id="a1747-230">Replace the code in *Students/Index.cshtml.cs* to add paging.</span></span>
+
+[!code-csharp[Main](intro/samples/cu30/Pages/Students/Index.cshtml.cs?name=snippet_All&highlight=26,28-29,31,34-41,68-70)]
+
+<span data-ttu-id="a1747-231">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="a1747-231">The preceding code:</span></span>
+
+* <span data-ttu-id="a1747-232">將 `Students` 屬性的型別從 `IList<Student>` 變更為 `PaginatedList<Student>`。</span><span class="sxs-lookup"><span data-stu-id="a1747-232">Changes the type of the `Students` property from `IList<Student>` to `PaginatedList<Student>`.</span></span>
+* <span data-ttu-id="a1747-233">將頁面索引、目前的 `sortOrder` 和 `currentFilter` 新增至 `OnGetAsync` 方法簽章。</span><span class="sxs-lookup"><span data-stu-id="a1747-233">Adds the page index, the current `sortOrder`, and the `currentFilter` to the `OnGetAsync` method signature.</span></span>
+* <span data-ttu-id="a1747-234">將排序次序儲存在 CurrentSort 屬性中。</span><span class="sxs-lookup"><span data-stu-id="a1747-234">Saves the sort order in the CurrentSort property.</span></span>
+* <span data-ttu-id="a1747-235">當有新的搜尋字串時，將頁面索引重設為 1。</span><span class="sxs-lookup"><span data-stu-id="a1747-235">Resets page index to 1 when there's a new search string.</span></span>
+* <span data-ttu-id="a1747-236">會使用 `PaginatedList` 類別來取得 Students 實體。</span><span class="sxs-lookup"><span data-stu-id="a1747-236">Uses the `PaginatedList` class to get Student entities.</span></span>
+
+<span data-ttu-id="a1747-237">遇下列情況時，`OnGetAsync` 接收的所有參數都會成為 Null：</span><span class="sxs-lookup"><span data-stu-id="a1747-237">All the parameters that `OnGetAsync` receives are null when:</span></span>
+
+* <span data-ttu-id="a1747-238">從 **Students** 連結呼叫頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-238">The page is called from the **Students** link.</span></span>
+* <span data-ttu-id="a1747-239">使用者沒有按一下分頁或排序連結。</span><span class="sxs-lookup"><span data-stu-id="a1747-239">The user hasn't clicked a paging or sorting link.</span></span>
+
+<span data-ttu-id="a1747-240">按一下分頁連結時，頁面索引變數即包含要顯示的頁面數。</span><span class="sxs-lookup"><span data-stu-id="a1747-240">When a paging link is clicked, the page index variable contains the page number to display.</span></span>
+
+<span data-ttu-id="a1747-241">`CurrentSort` 屬性提供 Razor 頁面目前的排序次序。</span><span class="sxs-lookup"><span data-stu-id="a1747-241">The `CurrentSort` property provides the Razor Page with the current sort order.</span></span> <span data-ttu-id="a1747-242">目前的排序次序必須包含在分頁連結中，以保留分頁時的排序次序。</span><span class="sxs-lookup"><span data-stu-id="a1747-242">The current sort order must be included in the paging links to keep the sort order while paging.</span></span>
+
+<span data-ttu-id="a1747-243">`CurrentFilter` 屬性會提供具有目前篩選字串的 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-243">The `CurrentFilter` property provides the Razor Page with the current filter string.</span></span> <span data-ttu-id="a1747-244">`CurrentFilter` 值：</span><span class="sxs-lookup"><span data-stu-id="a1747-244">The `CurrentFilter` value:</span></span>
+
+* <span data-ttu-id="a1747-245">必須包含在分頁連結中，以保留分頁時的篩選設定。</span><span class="sxs-lookup"><span data-stu-id="a1747-245">Must be included in the paging links in order to maintain the filter settings during paging.</span></span>
+* <span data-ttu-id="a1747-246">頁面重新顯示時，必須還原到文字方塊中。</span><span class="sxs-lookup"><span data-stu-id="a1747-246">Must be restored to the text box when the page is redisplayed.</span></span>
+
+<span data-ttu-id="a1747-247">如果搜尋字串在分頁時變更，頁面會重設為 1。</span><span class="sxs-lookup"><span data-stu-id="a1747-247">If the search string is changed while paging, the page is reset to 1.</span></span> <span data-ttu-id="a1747-248">頁面必須重設為 1 是因為新的篩選可能會導致顯示不同的資料。</span><span class="sxs-lookup"><span data-stu-id="a1747-248">The page has to be reset to 1 because the new filter can result in different data to display.</span></span> <span data-ttu-id="a1747-249">輸入搜尋值和選取 **Submit** 時：</span><span class="sxs-lookup"><span data-stu-id="a1747-249">When a search value is entered and **Submit** is selected:</span></span>
+
+  * <span data-ttu-id="a1747-250">搜尋字串變更。</span><span class="sxs-lookup"><span data-stu-id="a1747-250">The search string is changed.</span></span>
+  * <span data-ttu-id="a1747-251">`searchString` 參數不是 null。</span><span class="sxs-lookup"><span data-stu-id="a1747-251">The `searchString` parameter isn't null.</span></span>
+
+  <span data-ttu-id="a1747-252">`PaginatedList.CreateAsync` 方法會以支援分頁的集合類型，將學生查詢轉換成學生單一頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-252">The `PaginatedList.CreateAsync` method converts the student query to a single page of students in a collection type that supports paging.</span></span> <span data-ttu-id="a1747-253">該學生單一頁面會傳遞至 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-253">That single page of students is passed to the Razor Page.</span></span>
+
+  <span data-ttu-id="a1747-254">在 `pageIndex` 呼叫中，`PaginatedList.CreateAsync` 之後的兩個問號代表 [Null 聯合運算子](/dotnet/csharp/language-reference/operators/null-conditional-operator)。</span><span class="sxs-lookup"><span data-stu-id="a1747-254">The two question marks after `pageIndex` in the `PaginatedList.CreateAsync` call represent the [null-coalescing operator](/dotnet/csharp/language-reference/operators/null-conditional-operator).</span></span> <span data-ttu-id="a1747-255">Null 聯合運算子會針對可為 Null 的型別定義一個預設值。</span><span class="sxs-lookup"><span data-stu-id="a1747-255">The null-coalescing operator defines a default value for a nullable type.</span></span> <span data-ttu-id="a1747-256">運算式 `(pageIndex ?? 1)` 表示，如果 `pageIndex` 有一個值就將該值傳回。</span><span class="sxs-lookup"><span data-stu-id="a1747-256">The expression `(pageIndex ?? 1)` means return the value of `pageIndex` if it has a value.</span></span> <span data-ttu-id="a1747-257">如果 `pageIndex` 沒有值，則傳回 1。</span><span class="sxs-lookup"><span data-stu-id="a1747-257">If `pageIndex` doesn't have a value, return 1.</span></span>
+
+### <a name="add-paging-links-to-the-razor-page"></a><span data-ttu-id="a1747-258">將分頁連結新增至 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-258">Add paging links to the Razor Page</span></span>
+
+<span data-ttu-id="a1747-259">使用下列程式碼取代 *Students/Index.cshtml* 中的程式碼。</span><span class="sxs-lookup"><span data-stu-id="a1747-259">Replace the code in *Students/Index.cshtml* with the following code.</span></span> <span data-ttu-id="a1747-260">所做的變更已醒目標示：</span><span class="sxs-lookup"><span data-stu-id="a1747-260">The changes are highlighted:</span></span>
+
+[!code-cshtml[Main](intro/samples/cu30/Pages/Students/Index.cshtml?highlight=29-32,38-41,69-87)]
+
+<span data-ttu-id="a1747-261">資料行頁首連結會使用查詢字串，將目前的搜尋字串傳遞至 `OnGetAsync` 方法：</span><span class="sxs-lookup"><span data-stu-id="a1747-261">The column header links use the query string to pass the current search string to the `OnGetAsync` method:</span></span>
+
+[!code-cshtml[Main](intro/samples/cu30/Pages/Students/Index.cshtml?range=29-32)]
+
+<span data-ttu-id="a1747-262">分頁按鈕會由標籤協助程式來顯示：</span><span class="sxs-lookup"><span data-stu-id="a1747-262">The paging buttons are displayed by tag helpers:</span></span>
+
+[!code-cshtml[Main](intro/samples/cu30/Pages/Students/Index.cshtml?range=73-87)]
+
+<span data-ttu-id="a1747-263">執行應用程式並巡覽至學生頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-263">Run the app and navigate to the students page.</span></span>
+
+* <span data-ttu-id="a1747-264">若要確定分頁運作正常，請以不同排序次序按一下分頁連結。</span><span class="sxs-lookup"><span data-stu-id="a1747-264">To make sure paging works, click the paging links in different sort orders.</span></span>
+* <span data-ttu-id="a1747-265">若要驗證分頁的排序和篩選能正確運作，請輸入搜尋字串並嘗試分頁。</span><span class="sxs-lookup"><span data-stu-id="a1747-265">To verify that paging works correctly with sorting and filtering, enter a search string and try paging.</span></span>
+
+![有分頁連結的 Students [索引] 頁面](sort-filter-page/_static/paging30.png)
+
+## <a name="add-grouping"></a><span data-ttu-id="a1747-267">新增分組</span><span class="sxs-lookup"><span data-stu-id="a1747-267">Add grouping</span></span>
+
+<span data-ttu-id="a1747-268">本節將建立 [關於] 頁面，其中會顯示每個註冊日期的已註冊學生人數。</span><span class="sxs-lookup"><span data-stu-id="a1747-268">This section creates an About page that displays how many students have enrolled for each enrollment date.</span></span> <span data-ttu-id="a1747-269">此更新會使用群組，並包含下列步驟：</span><span class="sxs-lookup"><span data-stu-id="a1747-269">The update uses grouping and includes the following steps:</span></span>
+
+* <span data-ttu-id="a1747-270">建立資料的檢視模型以用於 [關於] 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-270">Create a view model for the data used by the **About** page.</span></span>
+* <span data-ttu-id="a1747-271">更新 About 頁面以使用檢視模型。</span><span class="sxs-lookup"><span data-stu-id="a1747-271">Update the About page to use the view model.</span></span>
+
+### <a name="create-the-view-model"></a><span data-ttu-id="a1747-272">建立檢視模型</span><span class="sxs-lookup"><span data-stu-id="a1747-272">Create the view model</span></span>
+
+<span data-ttu-id="a1747-273">建立 *Models/SchoolViewModels* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="a1747-273">Create a *Models/SchoolViewModels* folder.</span></span>
+
+<span data-ttu-id="a1747-274">使用下列程式碼建立 *SchoolViewModels/EnrollmentDateGroup.cs*：</span><span class="sxs-lookup"><span data-stu-id="a1747-274">Create *SchoolViewModels/EnrollmentDateGroup.cs* with the following code:</span></span>
 
 [!code-csharp[Main](intro/samples/cu30/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
-### <a name="create-the-razor-page"></a><span data-ttu-id="f4222-275">建立 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-275">Create the Razor Page</span></span>
+### <a name="create-the-razor-page"></a><span data-ttu-id="a1747-275">建立 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-275">Create the Razor Page</span></span>
 
-<span data-ttu-id="f4222-276">使用下列程式碼建立 *Pages/About.cshtml* 檔案：</span><span class="sxs-lookup"><span data-stu-id="f4222-276">Create a *Pages/About.cshtml* file with the following code:</span></span>
+<span data-ttu-id="a1747-276">使用下列程式碼建立 *Pages/About.cshtml* 檔案：</span><span class="sxs-lookup"><span data-stu-id="a1747-276">Create a *Pages/About.cshtml* file with the following code:</span></span>
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/About.cshtml)]
 
-### <a name="create-the-page-model"></a><span data-ttu-id="f4222-277">建立頁面模型</span><span class="sxs-lookup"><span data-stu-id="f4222-277">Create the page model</span></span>
+### <a name="create-the-page-model"></a><span data-ttu-id="a1747-277">建立頁面模型</span><span class="sxs-lookup"><span data-stu-id="a1747-277">Create the page model</span></span>
 
-<span data-ttu-id="f4222-278">使用下列程式碼建立 *Pages/About.cshtml.cs* 檔案：</span><span class="sxs-lookup"><span data-stu-id="f4222-278">Create a *Pages/About.cshtml.cs* file with the following code:</span></span>
+<span data-ttu-id="a1747-278">使用下列程式碼建立 *Pages/About.cshtml.cs* 檔案：</span><span class="sxs-lookup"><span data-stu-id="a1747-278">Create a *Pages/About.cshtml.cs* file with the following code:</span></span>
 
 [!code-csharp[Main](intro/samples/cu30/Pages/About.cshtml.cs)]
 
-<span data-ttu-id="f4222-279">LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組中的實體數目、將結果儲存在 `EnrollmentDateGroup` 檢視模型物件的集合中。</span><span class="sxs-lookup"><span data-stu-id="f4222-279">The LINQ statement groups the student entities by enrollment date, calculates the number of entities in each group, and stores the results in a collection of `EnrollmentDateGroup` view model objects.</span></span>
+<span data-ttu-id="a1747-279">LINQ 陳述式會以註冊日期將學生實體組成群組、計算每個群組中的實體數目、將結果儲存在 `EnrollmentDateGroup` 檢視模型物件中的集合。</span><span class="sxs-lookup"><span data-stu-id="a1747-279">The LINQ statement groups the student entities by enrollment date, calculates the number of entities in each group, and stores the results in a collection of `EnrollmentDateGroup` view model objects.</span></span>
 
-<span data-ttu-id="f4222-280">執行應用程式並巡覽至 About 頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-280">Run the app and navigate to the About page.</span></span> <span data-ttu-id="f4222-281">每個註冊日期的學生人數將會顯示在資料表中。</span><span class="sxs-lookup"><span data-stu-id="f4222-281">The count of students for each enrollment date is displayed in a table.</span></span>
+<span data-ttu-id="a1747-280">執行應用程式並巡覽至 About 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-280">Run the app and navigate to the About page.</span></span> <span data-ttu-id="a1747-281">每個註冊日期的學生人數將會顯示在資料表中。</span><span class="sxs-lookup"><span data-stu-id="a1747-281">The count of students for each enrollment date is displayed in a table.</span></span>
 
 ![About 頁面](sort-filter-page/_static/about30.png)
 
-## <a name="next-steps"></a><span data-ttu-id="f4222-283">後續步驟</span><span class="sxs-lookup"><span data-stu-id="f4222-283">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="a1747-283">後續步驟</span><span class="sxs-lookup"><span data-stu-id="a1747-283">Next steps</span></span>
 
-<span data-ttu-id="f4222-284">在下一個教學課程中，應用程式將會使用移轉來更新資料模型。</span><span class="sxs-lookup"><span data-stu-id="f4222-284">In the next tutorial, the app uses migrations to update the data model.</span></span>
+<span data-ttu-id="a1747-284">在下一個教學課程中，應用程式將會使用移轉來更新資料模型。</span><span class="sxs-lookup"><span data-stu-id="a1747-284">In the next tutorial, the app uses migrations to update the data model.</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="f4222-285">[上一個教學課程](xref:data/ef-rp/crud)
-> [下一個教學課程](xref:data/ef-rp/migrations)</span><span class="sxs-lookup"><span data-stu-id="f4222-285">[Previous tutorial](xref:data/ef-rp/crud)
+> <span data-ttu-id="a1747-285">[上一個教學課程](xref:data/ef-rp/crud)
+> [下一個教學課程](xref:data/ef-rp/migrations)</span><span class="sxs-lookup"><span data-stu-id="a1747-285">[Previous tutorial](xref:data/ef-rp/crud)
 [Next tutorial](xref:data/ef-rp/migrations)</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="f4222-286">在本教學課程中，將新增排序、篩選、分組和分頁功能。</span><span class="sxs-lookup"><span data-stu-id="f4222-286">In this tutorial, sorting, filtering, grouping, and paging, functionality is added.</span></span>
+<span data-ttu-id="a1747-286">在本教學課程中，將新增排序、篩選、分組和分頁功能。</span><span class="sxs-lookup"><span data-stu-id="a1747-286">In this tutorial, sorting, filtering, grouping, and paging, functionality is added.</span></span>
 
-<span data-ttu-id="f4222-287">下圖顯示已完成的頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-287">The following illustration shows a completed page.</span></span> <span data-ttu-id="f4222-288">資料行標題為可按式連結，可用以排序資料行。</span><span class="sxs-lookup"><span data-stu-id="f4222-288">The column headings are clickable links to sort the column.</span></span> <span data-ttu-id="f4222-289">重覆按一下資料行標題，可切換遞增和遞減排序次序。</span><span class="sxs-lookup"><span data-stu-id="f4222-289">Clicking a column heading repeatedly switches between ascending and descending sort order.</span></span>
+<span data-ttu-id="a1747-287">下圖顯示已完成的頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-287">The following illustration shows a completed page.</span></span> <span data-ttu-id="a1747-288">資料行標題為可按式連結，可用以排序資料行。</span><span class="sxs-lookup"><span data-stu-id="a1747-288">The column headings are clickable links to sort the column.</span></span> <span data-ttu-id="a1747-289">重覆按一下資料行標題，可切換遞增和遞減排序次序。</span><span class="sxs-lookup"><span data-stu-id="a1747-289">Clicking a column heading repeatedly switches between ascending and descending sort order.</span></span>
 
-![Students [索引] 頁面](sort-filter-page/_static/paging.png)
+![Students 索引頁面](sort-filter-page/_static/paging.png)
 
-<span data-ttu-id="f4222-291">若您遇到無法解決的問題，請下載[完整應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。</span><span class="sxs-lookup"><span data-stu-id="f4222-291">If you run into problems you can't solve, download the [completed app](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).</span></span>
+<span data-ttu-id="a1747-291">若您遭遇到無法解決的問題，請下載[完整應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。</span><span class="sxs-lookup"><span data-stu-id="a1747-291">If you run into problems you can't solve, download the [completed app](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).</span></span>
 
-## <a name="add-sorting-to-the-index-page"></a><span data-ttu-id="f4222-292">將排序新增至索引頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-292">Add sorting to the Index page</span></span>
+## <a name="add-sorting-to-the-index-page"></a><span data-ttu-id="a1747-292">將排序新增至索引頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-292">Add sorting to the Index page</span></span>
 
-<span data-ttu-id="f4222-293">新增字串至 *Students/Index.cshtml.cs*`PageModel` 以包含排序參數：</span><span class="sxs-lookup"><span data-stu-id="f4222-293">Add strings to the *Students/Index.cshtml.cs* `PageModel` to contain the sorting parameters:</span></span>
+<span data-ttu-id="a1747-293">將字串新增至 student */Index. cshtml .cs* `PageModel` 以包含排序參數：</span><span class="sxs-lookup"><span data-stu-id="a1747-293">Add strings to the *Students/Index.cshtml.cs* `PageModel` to contain the sorting parameters:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet1&highlight=10-13)]
 
-<span data-ttu-id="f4222-294">以下列程式碼更新 *Students/Index.cshtml.cs* `OnGetAsync` ：</span><span class="sxs-lookup"><span data-stu-id="f4222-294">Update the *Students/Index.cshtml.cs* `OnGetAsync` with the following code:</span></span>
+<span data-ttu-id="a1747-294">使用下列程式碼更新 student */Index. cshtml. .cs* `OnGetAsync`：</span><span class="sxs-lookup"><span data-stu-id="a1747-294">Update the *Students/Index.cshtml.cs* `OnGetAsync` with the following code:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly)]
 
-<span data-ttu-id="f4222-295">上述程式碼會從 URL 中的查詢字串接收 `sortOrder` 參數。</span><span class="sxs-lookup"><span data-stu-id="f4222-295">The preceding code receives a `sortOrder` parameter from the query string in the URL.</span></span> <span data-ttu-id="f4222-296">URL (包括查詢字串) 是由[錨點標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-)所產生</span><span class="sxs-lookup"><span data-stu-id="f4222-296">The URL (including the query string) is generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper
+<span data-ttu-id="a1747-295">上述程式碼會從 URL 中的查詢字串接收 `sortOrder` 參數。</span><span class="sxs-lookup"><span data-stu-id="a1747-295">The preceding code receives a `sortOrder` parameter from the query string in the URL.</span></span> <span data-ttu-id="a1747-296">URL (包括查詢字串) 是由[錨點標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper
+)所產生</span><span class="sxs-lookup"><span data-stu-id="a1747-296">The URL (including the query string) is generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper
 )</span></span>
 
-<span data-ttu-id="f4222-297">`sortOrder`參數為 "Name" 或 "Date"。</span><span class="sxs-lookup"><span data-stu-id="f4222-297">The `sortOrder` parameter is either "Name" or "Date."</span></span> <span data-ttu-id="f4222-298">`sortOrder` 參數後面可以選擇接著 "_desc" 來指定遞減順序。</span><span class="sxs-lookup"><span data-stu-id="f4222-298">The `sortOrder` parameter is optionally followed by "_desc" to specify descending order.</span></span> <span data-ttu-id="f4222-299">預設的排序次序為遞增。</span><span class="sxs-lookup"><span data-stu-id="f4222-299">The default sort order is ascending.</span></span>
+<span data-ttu-id="a1747-297">`sortOrder`參數為 "Name" 或 "Date"。</span><span class="sxs-lookup"><span data-stu-id="a1747-297">The `sortOrder` parameter is either "Name" or "Date."</span></span> <span data-ttu-id="a1747-298">`sortOrder` 參數後面可以選擇接著 "_desc" 來指定遞減順序。</span><span class="sxs-lookup"><span data-stu-id="a1747-298">The `sortOrder` parameter is optionally followed by "_desc" to specify descending order.</span></span> <span data-ttu-id="a1747-299">預設排序順序為遞增。</span><span class="sxs-lookup"><span data-stu-id="a1747-299">The default sort order is ascending.</span></span>
 
-<span data-ttu-id="f4222-300">從 **Students** 連結要求 [索引] 頁面時，將不會有查詢字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-300">When the Index page is requested from the **Students** link, there's no query string.</span></span> <span data-ttu-id="f4222-301">學生會以遞增姓氏順序顯示。</span><span class="sxs-lookup"><span data-stu-id="f4222-301">The students are displayed in ascending order by last name.</span></span> <span data-ttu-id="f4222-302">在 `switch` 陳述式中，預設會依姓氏遞增排序 (fall-through 大小寫)。</span><span class="sxs-lookup"><span data-stu-id="f4222-302">Ascending order by last name is the default (fall-through case) in the `switch` statement.</span></span> <span data-ttu-id="f4222-303">使用者按一下資料行標題連結時，適當的 `sortOrder` 值將會在查詢字串值中提供。</span><span class="sxs-lookup"><span data-stu-id="f4222-303">When the user clicks a column heading link, the appropriate `sortOrder` value is provided in the query string value.</span></span>
+<span data-ttu-id="a1747-300">從 **Students** 連結要求 [索引] 頁面時，將不會有查詢字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-300">When the Index page is requested from the **Students** link, there's no query string.</span></span> <span data-ttu-id="a1747-301">學生會以遞增姓氏順序顯示。</span><span class="sxs-lookup"><span data-stu-id="a1747-301">The students are displayed in ascending order by last name.</span></span> <span data-ttu-id="a1747-302">在 `switch` 陳述式中，預設會依姓氏遞增排序 (fall-through 大小寫)。</span><span class="sxs-lookup"><span data-stu-id="a1747-302">Ascending order by last name is the default (fall-through case) in the `switch` statement.</span></span> <span data-ttu-id="a1747-303">使用者按一下資料行標題連結時，適當的 `sortOrder` 值將會在查詢字串值中提供。</span><span class="sxs-lookup"><span data-stu-id="a1747-303">When the user clicks a column heading link, the appropriate `sortOrder` value is provided in the query string value.</span></span>
 
-<span data-ttu-id="f4222-304">Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` 來設定資料行標題超連結：</span><span class="sxs-lookup"><span data-stu-id="f4222-304">`NameSort` and `DateSort` are used by the Razor Page to configure the column heading hyperlinks with the appropriate query string values:</span></span>
+<span data-ttu-id="a1747-304">Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` 來設定資料行標題超連結：</span><span class="sxs-lookup"><span data-stu-id="a1747-304">`NameSort` and `DateSort` are used by the Razor Page to configure the column heading hyperlinks with the appropriate query string values:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=3-4)]
 
-<span data-ttu-id="f4222-305">下列程式碼包含 C# 條件式 [?: 運算子](/dotnet/csharp/language-reference/operators/conditional-operator)：</span><span class="sxs-lookup"><span data-stu-id="f4222-305">The following code contains the C# conditional [?: operator](/dotnet/csharp/language-reference/operators/conditional-operator):</span></span>
+<span data-ttu-id="a1747-305">下列程式碼包含 C# 條件式 [?: 運算子](/dotnet/csharp/language-reference/operators/conditional-operator)：</span><span class="sxs-lookup"><span data-stu-id="a1747-305">The following code contains the C# conditional [?: operator](/dotnet/csharp/language-reference/operators/conditional-operator):</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_Ternary)]
 
-<span data-ttu-id="f4222-306">第一行指定當 `sortOrder` 為 null 或空白時，將 `NameSort` 設為 "name_desc"。</span><span class="sxs-lookup"><span data-stu-id="f4222-306">The first line specifies that when `sortOrder` is null or empty, `NameSort` is set to "name_desc."</span></span> <span data-ttu-id="f4222-307">如果 `sortOrder` **不是** null 或空白，則 `NameSort` 設為空字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-307">If `sortOrder` is **not** null or empty, `NameSort` is set to an empty string.</span></span>
+<span data-ttu-id="a1747-306">第一行指定當 `sortOrder` 為 null 或空白時，將 `NameSort` 設為 "name_desc"。</span><span class="sxs-lookup"><span data-stu-id="a1747-306">The first line specifies that when `sortOrder` is null or empty, `NameSort` is set to "name_desc."</span></span> <span data-ttu-id="a1747-307">如果 `sortOrder`**不是** null 或空白，則 `NameSort` 設為空字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-307">If `sortOrder` is **not** null or empty, `NameSort` is set to an empty string.</span></span>
 
-<span data-ttu-id="f4222-308">`?: operator` 也是所謂的三元運算子。</span><span class="sxs-lookup"><span data-stu-id="f4222-308">The `?: operator` is also known as the ternary operator.</span></span>
+<span data-ttu-id="a1747-308">`?: operator` 也是所謂的三元運算子。</span><span class="sxs-lookup"><span data-stu-id="a1747-308">The `?: operator` is also known as the ternary operator.</span></span>
 
-<span data-ttu-id="f4222-309">這兩個陳述式讓頁面能夠設定資料行標題超連結，如下所示：</span><span class="sxs-lookup"><span data-stu-id="f4222-309">These two statements enable the page to set the column heading hyperlinks as follows:</span></span>
+<span data-ttu-id="a1747-309">這兩個陳述式讓頁面能夠設定資料行標題超連結，如下所示：</span><span class="sxs-lookup"><span data-stu-id="a1747-309">These two statements enable the page to set the column heading hyperlinks as follows:</span></span>
 
-| <span data-ttu-id="f4222-310">目前排序次序</span><span class="sxs-lookup"><span data-stu-id="f4222-310">Current sort order</span></span> | <span data-ttu-id="f4222-311">姓氏超連結</span><span class="sxs-lookup"><span data-stu-id="f4222-311">Last Name Hyperlink</span></span> | <span data-ttu-id="f4222-312">日期超連結</span><span class="sxs-lookup"><span data-stu-id="f4222-312">Date Hyperlink</span></span> |
+| <span data-ttu-id="a1747-310">目前排序次序</span><span class="sxs-lookup"><span data-stu-id="a1747-310">Current sort order</span></span> | <span data-ttu-id="a1747-311">姓氏超連結</span><span class="sxs-lookup"><span data-stu-id="a1747-311">Last Name Hyperlink</span></span> | <span data-ttu-id="a1747-312">日期超連結</span><span class="sxs-lookup"><span data-stu-id="a1747-312">Date Hyperlink</span></span> |
 |:--------------------:|:-------------------:|:--------------:|
-| <span data-ttu-id="f4222-313">姓氏遞增</span><span class="sxs-lookup"><span data-stu-id="f4222-313">Last Name ascending</span></span> | <span data-ttu-id="f4222-314">descending</span><span class="sxs-lookup"><span data-stu-id="f4222-314">descending</span></span>        | <span data-ttu-id="f4222-315">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-315">ascending</span></span>      |
-| <span data-ttu-id="f4222-316">姓氏遞減</span><span class="sxs-lookup"><span data-stu-id="f4222-316">Last Name descending</span></span> | <span data-ttu-id="f4222-317">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-317">ascending</span></span>           | <span data-ttu-id="f4222-318">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-318">ascending</span></span>      |
-| <span data-ttu-id="f4222-319">日期遞增</span><span class="sxs-lookup"><span data-stu-id="f4222-319">Date ascending</span></span>       | <span data-ttu-id="f4222-320">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-320">ascending</span></span>           | <span data-ttu-id="f4222-321">descending</span><span class="sxs-lookup"><span data-stu-id="f4222-321">descending</span></span>     |
-| <span data-ttu-id="f4222-322">日期遞減</span><span class="sxs-lookup"><span data-stu-id="f4222-322">Date descending</span></span>      | <span data-ttu-id="f4222-323">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-323">ascending</span></span>           | <span data-ttu-id="f4222-324">ascending</span><span class="sxs-lookup"><span data-stu-id="f4222-324">ascending</span></span>      |
+| <span data-ttu-id="a1747-313">姓氏遞增</span><span class="sxs-lookup"><span data-stu-id="a1747-313">Last Name ascending</span></span> | <span data-ttu-id="a1747-314">descending</span><span class="sxs-lookup"><span data-stu-id="a1747-314">descending</span></span>        | <span data-ttu-id="a1747-315">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-315">ascending</span></span>      |
+| <span data-ttu-id="a1747-316">姓氏遞減</span><span class="sxs-lookup"><span data-stu-id="a1747-316">Last Name descending</span></span> | <span data-ttu-id="a1747-317">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-317">ascending</span></span>           | <span data-ttu-id="a1747-318">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-318">ascending</span></span>      |
+| <span data-ttu-id="a1747-319">日期遞增</span><span class="sxs-lookup"><span data-stu-id="a1747-319">Date ascending</span></span>       | <span data-ttu-id="a1747-320">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-320">ascending</span></span>           | <span data-ttu-id="a1747-321">descending</span><span class="sxs-lookup"><span data-stu-id="a1747-321">descending</span></span>     |
+| <span data-ttu-id="a1747-322">日期遞減</span><span class="sxs-lookup"><span data-stu-id="a1747-322">Date descending</span></span>      | <span data-ttu-id="a1747-323">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-323">ascending</span></span>           | <span data-ttu-id="a1747-324">ascending</span><span class="sxs-lookup"><span data-stu-id="a1747-324">ascending</span></span>      |
 
-<span data-ttu-id="f4222-325">此方法使用 LINQ to Entities 來指定排序所依據的資料行。</span><span class="sxs-lookup"><span data-stu-id="f4222-325">The method uses LINQ to Entities to specify the column to sort by.</span></span> <span data-ttu-id="f4222-326">這個程式碼會在 switch 陳述式之前初始化 `IQueryable<Student>`，並在 switch 陳述式中將其修改：</span><span class="sxs-lookup"><span data-stu-id="f4222-326">The code initializes an `IQueryable<Student>` before the switch statement, and modifies it in the switch statement:</span></span>
+<span data-ttu-id="a1747-325">這個方法會使用 LINQ to Entities 來指定排序所依據的資料行。</span><span class="sxs-lookup"><span data-stu-id="a1747-325">The method uses LINQ to Entities to specify the column to sort by.</span></span> <span data-ttu-id="a1747-326">這個程式碼會在 switch 陳述式之前初始化 `IQueryable<Student>`，並在 switch 陳述式中將其修改：</span><span class="sxs-lookup"><span data-stu-id="a1747-326">The code initializes an `IQueryable<Student>` before the switch statement, and modifies it in the switch statement:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=6-999)]
 
- <span data-ttu-id="f4222-327">建立或修改 `IQueryable` 時，不會有任何查詢傳送至資料庫。</span><span class="sxs-lookup"><span data-stu-id="f4222-327">When an`IQueryable` is created or modified, no query is sent to the database.</span></span> <span data-ttu-id="f4222-328">直到 `IQueryable` 物件轉換成集合前，將不會執行查詢。</span><span class="sxs-lookup"><span data-stu-id="f4222-328">The query isn't executed until the `IQueryable` object is converted into a collection.</span></span> <span data-ttu-id="f4222-329">`IQueryable` 會藉由呼叫像是 `ToListAsync` 的方法，轉換成集合。</span><span class="sxs-lookup"><span data-stu-id="f4222-329">`IQueryable` are converted to a collection by calling a method such as `ToListAsync`.</span></span> <span data-ttu-id="f4222-330">因此，`IQueryable` 程式碼會成為一個單一查詢且不會執行，直到下列陳述式產生：</span><span class="sxs-lookup"><span data-stu-id="f4222-330">Therefore, the `IQueryable` code results in a single query that's not executed until the following statement:</span></span>
+ <span data-ttu-id="a1747-327">建立或修改 `IQueryable` 時，不會有任何查詢傳送至資料庫。</span><span class="sxs-lookup"><span data-stu-id="a1747-327">When an`IQueryable` is created or modified, no query is sent to the database.</span></span> <span data-ttu-id="a1747-328">直到 `IQueryable` 物件轉換成集合前，將不會執行查詢。</span><span class="sxs-lookup"><span data-stu-id="a1747-328">The query isn't executed until the `IQueryable` object is converted into a collection.</span></span> <span data-ttu-id="a1747-329">`IQueryable` 會藉由呼叫像是 `ToListAsync` 的方法，轉換成集合。</span><span class="sxs-lookup"><span data-stu-id="a1747-329">`IQueryable` are converted to a collection by calling a method such as `ToListAsync`.</span></span> <span data-ttu-id="a1747-330">因此，`IQueryable` 程式碼會成為一個單一查詢且不會執行，直到下列陳述式產生：</span><span class="sxs-lookup"><span data-stu-id="a1747-330">Therefore, the `IQueryable` code results in a single query that's not executed until the following statement:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnlyRtn)]
 
-<span data-ttu-id="f4222-331">`OnGetAsync` 可取得使用大量可排序資料行數的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="f4222-331">`OnGetAsync` could get verbose with a large number of sortable columns.</span></span>
+<span data-ttu-id="a1747-331">`OnGetAsync` 可取得使用大量可排序資料行數的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="a1747-331">`OnGetAsync` could get verbose with a large number of sortable columns.</span></span>
 
-### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a><span data-ttu-id="f4222-332">將資料行標題超連結新增至 Student 的 [索引] 頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-332">Add column heading hyperlinks to the Student Index page</span></span>
+### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a><span data-ttu-id="a1747-332">將資料行標題超連結新增至 Student 的 [索引] 頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-332">Add column heading hyperlinks to the Student Index page</span></span>
 
-<span data-ttu-id="f4222-333">用下列醒目標示的程式碼，取代 *Students/Index.cshtml* 中的程式碼：</span><span class="sxs-lookup"><span data-stu-id="f4222-333">Replace the code in *Students/Index.cshtml*, with the following highlighted code:</span></span>
+<span data-ttu-id="a1747-333">用下列醒目標示的程式碼，取代 *Students/Index.cshtml* 中的程式碼：</span><span class="sxs-lookup"><span data-stu-id="a1747-333">Replace the code in *Students/Index.cshtml*, with the following highlighted code:</span></span>
 
 [!code-html[](intro/samples/cu21/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
 
-<span data-ttu-id="f4222-334">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="f4222-334">The preceding code:</span></span>
+<span data-ttu-id="a1747-334">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="a1747-334">The preceding code:</span></span>
 
-* <span data-ttu-id="f4222-335">將超連結新增至 `LastName` 和 `EnrollmentDate` 資料行標題。</span><span class="sxs-lookup"><span data-stu-id="f4222-335">Adds hyperlinks to the `LastName` and `EnrollmentDate` column headings.</span></span>
-* <span data-ttu-id="f4222-336">使用 `NameSort` 和 `DateSort` 的資訊，以目前排序次序值來設定超連結。</span><span class="sxs-lookup"><span data-stu-id="f4222-336">Uses the information in `NameSort` and `DateSort` to set up hyperlinks with the current sort order values.</span></span>
+* <span data-ttu-id="a1747-335">將超連結新增至 `LastName` 和 `EnrollmentDate` 資料行標題。</span><span class="sxs-lookup"><span data-stu-id="a1747-335">Adds hyperlinks to the `LastName` and `EnrollmentDate` column headings.</span></span>
+* <span data-ttu-id="a1747-336">使用 `NameSort` 和 `DateSort` 的資訊，以目前排序次序值來設定超連結。</span><span class="sxs-lookup"><span data-stu-id="a1747-336">Uses the information in `NameSort` and `DateSort` to set up hyperlinks with the current sort order values.</span></span>
 
-<span data-ttu-id="f4222-337">若要確認該排序運作正常：</span><span class="sxs-lookup"><span data-stu-id="f4222-337">To verify that sorting works:</span></span>
+<span data-ttu-id="a1747-337">若要確認該排序運作正常：</span><span class="sxs-lookup"><span data-stu-id="a1747-337">To verify that sorting works:</span></span>
 
-* <span data-ttu-id="f4222-338">執行應用程式並選取 [Students]  索引標籤。</span><span class="sxs-lookup"><span data-stu-id="f4222-338">Run the app and select the **Students** tab.</span></span>
-* <span data-ttu-id="f4222-339">按一下 [姓氏]  。</span><span class="sxs-lookup"><span data-stu-id="f4222-339">Click **Last Name**.</span></span>
-* <span data-ttu-id="f4222-340">按一下 [註冊日期]  。</span><span class="sxs-lookup"><span data-stu-id="f4222-340">Click **Enrollment Date**.</span></span>
+* <span data-ttu-id="a1747-338">執行應用程式並選取 [Students] 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="a1747-338">Run the app and select the **Students** tab.</span></span>
+* <span data-ttu-id="a1747-339">按一下 [姓氏]。</span><span class="sxs-lookup"><span data-stu-id="a1747-339">Click **Last Name**.</span></span>
+* <span data-ttu-id="a1747-340">按一下 [註冊日期]。</span><span class="sxs-lookup"><span data-stu-id="a1747-340">Click **Enrollment Date**.</span></span>
 
-<span data-ttu-id="f4222-341">若要更深入了解這個程式碼：</span><span class="sxs-lookup"><span data-stu-id="f4222-341">To get a better understanding of the code:</span></span>
+<span data-ttu-id="a1747-341">若要更深入了解這個程式碼：</span><span class="sxs-lookup"><span data-stu-id="a1747-341">To get a better understanding of the code:</span></span>
 
-* <span data-ttu-id="f4222-342">在 *Students/Index.cshtml.cs* 的 `switch (sortOrder)` 上，設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="f4222-342">In *Students/Index.cshtml.cs*, set a breakpoint on `switch (sortOrder)`.</span></span>
-* <span data-ttu-id="f4222-343">為 `NameSort` 和 `DateSort` 新增監看式。</span><span class="sxs-lookup"><span data-stu-id="f4222-343">Add a watch for `NameSort` and `DateSort`.</span></span>
-* <span data-ttu-id="f4222-344">在 *Students/Index.cshtml* 的 `@Html.DisplayNameFor(model => model.Student[0].LastName)` 上，設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="f4222-344">In *Students/Index.cshtml*, set a breakpoint on `@Html.DisplayNameFor(model => model.Student[0].LastName)`.</span></span>
+* <span data-ttu-id="a1747-342">在 *Students/Index.cshtml.cs* 的 `switch (sortOrder)` 上，設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="a1747-342">In *Students/Index.cshtml.cs*, set a breakpoint on `switch (sortOrder)`.</span></span>
+* <span data-ttu-id="a1747-343">為 `NameSort` 和 `DateSort` 新增監看式。</span><span class="sxs-lookup"><span data-stu-id="a1747-343">Add a watch for `NameSort` and `DateSort`.</span></span>
+* <span data-ttu-id="a1747-344">在 *Students/Index.cshtml* 的 `@Html.DisplayNameFor(model => model.Student[0].LastName)` 上，設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="a1747-344">In *Students/Index.cshtml*, set a breakpoint on `@Html.DisplayNameFor(model => model.Student[0].LastName)`.</span></span>
 
-<span data-ttu-id="f4222-345">逐步執行偵錯工具。</span><span class="sxs-lookup"><span data-stu-id="f4222-345">Step through the debugger.</span></span>
+<span data-ttu-id="a1747-345">逐步執行偵錯工具。</span><span class="sxs-lookup"><span data-stu-id="a1747-345">Step through the debugger.</span></span>
 
-## <a name="add-a-search-box-to-the-students-index-page"></a><span data-ttu-id="f4222-346">將搜尋方塊新增至 Students [索引] 頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-346">Add a Search Box to the Students Index page</span></span>
+## <a name="add-a-search-box-to-the-students-index-page"></a><span data-ttu-id="a1747-346">將搜尋方塊新增至 Students [索引] 頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-346">Add a Search Box to the Students Index page</span></span>
 
-<span data-ttu-id="f4222-347">將篩選新增至 Students [索引] 頁面：</span><span class="sxs-lookup"><span data-stu-id="f4222-347">To add filtering to the Students Index page:</span></span>
+<span data-ttu-id="a1747-347">將篩選新增至 Students [索引] 頁面：</span><span class="sxs-lookup"><span data-stu-id="a1747-347">To add filtering to the Students Index page:</span></span>
 
-* <span data-ttu-id="f4222-348">文字方塊和提交按鈕會新增至 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-348">A text box and a submit button is added to the Razor Page.</span></span> <span data-ttu-id="f4222-349">文字方塊提供名字或姓氏的搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-349">The text box supplies a search string on the first or last name.</span></span>
-* <span data-ttu-id="f4222-350">頁面模型會更新為使用文字方塊的值。</span><span class="sxs-lookup"><span data-stu-id="f4222-350">The page model is updated to use the text box value.</span></span>
+* <span data-ttu-id="a1747-348">文字方塊和提交按鈕會新增至 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-348">A text box and a submit button is added to the Razor Page.</span></span> <span data-ttu-id="a1747-349">文字方塊提供名字或姓氏的搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-349">The text box supplies a search string on the first or last name.</span></span>
+* <span data-ttu-id="a1747-350">頁面模型會更新為使用文字方塊的值。</span><span class="sxs-lookup"><span data-stu-id="a1747-350">The page model is updated to use the text box value.</span></span>
 
-### <a name="add-filtering-functionality-to-the-index-method"></a><span data-ttu-id="f4222-351">將篩選功能新增至 Index 方法</span><span class="sxs-lookup"><span data-stu-id="f4222-351">Add filtering functionality to the Index method</span></span>
+### <a name="add-filtering-functionality-to-the-index-method"></a><span data-ttu-id="a1747-351">將篩選功能新增至 Index 方法</span><span class="sxs-lookup"><span data-stu-id="a1747-351">Add filtering functionality to the Index method</span></span>
 
-<span data-ttu-id="f4222-352">以下列程式碼更新 *Students/Index.cshtml.cs* `OnGetAsync` ：</span><span class="sxs-lookup"><span data-stu-id="f4222-352">Update the *Students/Index.cshtml.cs* `OnGetAsync` with the following code:</span></span>
+<span data-ttu-id="a1747-352">使用下列程式碼更新 student */Index. cshtml. .cs* `OnGetAsync`：</span><span class="sxs-lookup"><span data-stu-id="a1747-352">Update the *Students/Index.cshtml.cs* `OnGetAsync` with the following code:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
 
-<span data-ttu-id="f4222-353">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="f4222-353">The preceding code:</span></span>
+<span data-ttu-id="a1747-353">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="a1747-353">The preceding code:</span></span>
 
-* <span data-ttu-id="f4222-354">將 `searchString` 參數新增至 `OnGetAsync` 方法。</span><span class="sxs-lookup"><span data-stu-id="f4222-354">Adds the `searchString` parameter to the `OnGetAsync` method.</span></span> <span data-ttu-id="f4222-355">從文字方塊中接收搜尋字串值文字方塊會在下一節新增。</span><span class="sxs-lookup"><span data-stu-id="f4222-355">The search string value is received from a text box that's added in the next section.</span></span>
-* <span data-ttu-id="f4222-356">將 `Where` 子句新增至 LINQ 陳述式。</span><span class="sxs-lookup"><span data-stu-id="f4222-356">Added to the LINQ statement a `Where` clause.</span></span> <span data-ttu-id="f4222-357">`Where` 子句只會選取名字或姓氏包含搜尋字串的學生。</span><span class="sxs-lookup"><span data-stu-id="f4222-357">The `Where` clause selects only students whose first name or last name contains the search string.</span></span> <span data-ttu-id="f4222-358">有可以搜尋的值，LINQ 陳述式才會執行。</span><span class="sxs-lookup"><span data-stu-id="f4222-358">The LINQ statement is executed only if there's a value to search for.</span></span>
+* <span data-ttu-id="a1747-354">將 `searchString` 參數新增至 `OnGetAsync` 方法。</span><span class="sxs-lookup"><span data-stu-id="a1747-354">Adds the `searchString` parameter to the `OnGetAsync` method.</span></span> <span data-ttu-id="a1747-355">從文字方塊中接收搜尋字串值文字方塊會在下一節新增。</span><span class="sxs-lookup"><span data-stu-id="a1747-355">The search string value is received from a text box that's added in the next section.</span></span>
+* <span data-ttu-id="a1747-356">將 `Where` 子句新增至 LINQ 陳述式。</span><span class="sxs-lookup"><span data-stu-id="a1747-356">Added to the LINQ statement a `Where` clause.</span></span> <span data-ttu-id="a1747-357">`Where` 子句只會選取名字或姓氏包含搜尋字串的學生。</span><span class="sxs-lookup"><span data-stu-id="a1747-357">The `Where` clause selects only students whose first name or last name contains the search string.</span></span> <span data-ttu-id="a1747-358">有可以搜尋的值，LINQ 陳述式才會執行。</span><span class="sxs-lookup"><span data-stu-id="a1747-358">The LINQ statement is executed only if there's a value to search for.</span></span>
 
-<span data-ttu-id="f4222-359">注意：上面的程式碼會呼叫 `IQueryable` 物件上的 `Where` 方法，而且會在伺服器上處理篩選。</span><span class="sxs-lookup"><span data-stu-id="f4222-359">Note: The preceding code calls the `Where` method on an `IQueryable` object, and the filter is processed on the server.</span></span> <span data-ttu-id="f4222-360">在某些情況下，應用程式可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。</span><span class="sxs-lookup"><span data-stu-id="f4222-360">In some scenarios, the app might be calling the `Where` method as an extension method on an in-memory collection.</span></span> <span data-ttu-id="f4222-361">例如，假設 `_context.Students` 從 EF Core `DbSet` 變為傳回 `IEnumerable` 集合的儲存機制方法。</span><span class="sxs-lookup"><span data-stu-id="f4222-361">For example, suppose `_context.Students` changes from EF Core `DbSet` to a repository method that returns an `IEnumerable` collection.</span></span> <span data-ttu-id="f4222-362">結果通常都是一樣的，但在某些情況下可能會不同。</span><span class="sxs-lookup"><span data-stu-id="f4222-362">The result would normally be the same but in some cases may be different.</span></span>
+<span data-ttu-id="a1747-359">注意：上述程式碼會在 `Where` 物件上呼叫 `IQueryable` 方法，而篩選是由伺服器處理。</span><span class="sxs-lookup"><span data-stu-id="a1747-359">Note: The preceding code calls the `Where` method on an `IQueryable` object, and the filter is processed on the server.</span></span> <span data-ttu-id="a1747-360">在某些情況下，應用程式可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。</span><span class="sxs-lookup"><span data-stu-id="a1747-360">In some scenarios, the app might be calling the `Where` method as an extension method on an in-memory collection.</span></span> <span data-ttu-id="a1747-361">例如，假設 `_context.Students` 從 EF Core `DbSet` 變為傳回 `IEnumerable` 集合的儲存機制方法。</span><span class="sxs-lookup"><span data-stu-id="a1747-361">For example, suppose `_context.Students` changes from EF Core `DbSet` to a repository method that returns an `IEnumerable` collection.</span></span> <span data-ttu-id="a1747-362">結果通常都是一樣的，但在某些情況下可能會不同。</span><span class="sxs-lookup"><span data-stu-id="a1747-362">The result would normally be the same but in some cases may be different.</span></span>
 
-<span data-ttu-id="f4222-363">例如，.NET Framework 的 `Contains` 實作，預設會執行區分大小寫的比較。</span><span class="sxs-lookup"><span data-stu-id="f4222-363">For example, the .NET Framework implementation of `Contains` performs a case-sensitive comparison by default.</span></span> <span data-ttu-id="f4222-364">在 SQL Server，`Contains` 區分大小寫取決於 SQL Server 執行個體的定序設定。</span><span class="sxs-lookup"><span data-stu-id="f4222-364">In SQL Server, `Contains` case-sensitivity is determined by the collation setting of the SQL Server instance.</span></span> <span data-ttu-id="f4222-365">SQL Server 預設為不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="f4222-365">SQL Server defaults to case-insensitive.</span></span> <span data-ttu-id="f4222-366">可以使用 `ToUpper` 使測試明確不區分大小寫：</span><span class="sxs-lookup"><span data-stu-id="f4222-366">`ToUpper` could be called to make the test explicitly case-insensitive:</span></span>
+<span data-ttu-id="a1747-363">例如，.NET Framework 的 `Contains` 實作，預設會執行區分大小寫的比較。</span><span class="sxs-lookup"><span data-stu-id="a1747-363">For example, the .NET Framework implementation of `Contains` performs a case-sensitive comparison by default.</span></span> <span data-ttu-id="a1747-364">在 SQL Server，`Contains` 區分大小寫取決於 SQL Server 執行個體的定序設定。</span><span class="sxs-lookup"><span data-stu-id="a1747-364">In SQL Server, `Contains` case-sensitivity is determined by the collation setting of the SQL Server instance.</span></span> <span data-ttu-id="a1747-365">SQL Server 預設為不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="a1747-365">SQL Server defaults to case-insensitive.</span></span> <span data-ttu-id="a1747-366">可以使用 `ToUpper` 使測試明確不區分大小寫：</span><span class="sxs-lookup"><span data-stu-id="a1747-366">`ToUpper` could be called to make the test explicitly case-insensitive:</span></span>
 
 `Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
-<span data-ttu-id="f4222-367">如果程式碼變更為使用 `IEnumerable`，則上述程式碼會確保結果不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="f4222-367">The preceding code would ensure that results are case-insensitive if the code changes to use `IEnumerable`.</span></span> <span data-ttu-id="f4222-368">在 `IEnumerable` 集合上呼叫 `Contains` 時，會使用 .NET Core 實作。</span><span class="sxs-lookup"><span data-stu-id="f4222-368">When `Contains` is called on an `IEnumerable` collection, the .NET Core implementation is used.</span></span> <span data-ttu-id="f4222-369">在 `IQueryable` 物件上呼叫 `Contains` 時，會使用資料庫實作。</span><span class="sxs-lookup"><span data-stu-id="f4222-369">When `Contains` is called on an `IQueryable` object, the database implementation is used.</span></span> <span data-ttu-id="f4222-370">從存放庫傳回 `IEnumerable` 可能對效能產生明顯的負面影響：</span><span class="sxs-lookup"><span data-stu-id="f4222-370">Returning an `IEnumerable` from a repository can have a significant performance penalty:</span></span>
+<span data-ttu-id="a1747-367">如果程式碼變更為使用 `IEnumerable`，則上述程式碼會確保結果不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="a1747-367">The preceding code would ensure that results are case-insensitive if the code changes to use `IEnumerable`.</span></span> <span data-ttu-id="a1747-368">在 `Contains` 集合上呼叫 `IEnumerable` 時，會使用 .NET Core 實作。</span><span class="sxs-lookup"><span data-stu-id="a1747-368">When `Contains` is called on an `IEnumerable` collection, the .NET Core implementation is used.</span></span> <span data-ttu-id="a1747-369">在 `Contains` 物件上呼叫 `IQueryable` 時，會使用資料庫實作。</span><span class="sxs-lookup"><span data-stu-id="a1747-369">When `Contains` is called on an `IQueryable` object, the database implementation is used.</span></span> <span data-ttu-id="a1747-370">從存放庫傳回 `IEnumerable` 可能對效能產生明顯的負面影響：</span><span class="sxs-lookup"><span data-stu-id="a1747-370">Returning an `IEnumerable` from a repository can have a significant performance penalty:</span></span>
 
-1. <span data-ttu-id="f4222-371">所有列都會從資料庫伺服器傳回。</span><span class="sxs-lookup"><span data-stu-id="f4222-371">All the rows are returned from the DB server.</span></span>
-1. <span data-ttu-id="f4222-372">在應用程式中，傳回的所有資料列都會套用篩選。</span><span class="sxs-lookup"><span data-stu-id="f4222-372">The filter is applied to all the returned rows in the application.</span></span>
+1. <span data-ttu-id="a1747-371">所有列都會從資料庫伺服器傳回。</span><span class="sxs-lookup"><span data-stu-id="a1747-371">All the rows are returned from the DB server.</span></span>
+1. <span data-ttu-id="a1747-372">在應用程式中，傳回的所有資料列都會套用篩選。</span><span class="sxs-lookup"><span data-stu-id="a1747-372">The filter is applied to all the returned rows in the application.</span></span>
 
-<span data-ttu-id="f4222-373">呼叫 `ToUpper` 會使效能降低。</span><span class="sxs-lookup"><span data-stu-id="f4222-373">There's a performance penalty for calling `ToUpper`.</span></span> <span data-ttu-id="f4222-374">`ToUpper` 程式碼會將一個函式新增至 TSQL SELECT 陳述式的 WHERE 子句中。</span><span class="sxs-lookup"><span data-stu-id="f4222-374">The `ToUpper` code adds a function in the WHERE clause of the TSQL SELECT statement.</span></span> <span data-ttu-id="f4222-375">新增的函式會防止最佳化工具使用索引。</span><span class="sxs-lookup"><span data-stu-id="f4222-375">The added function prevents the optimizer from using an index.</span></span> <span data-ttu-id="f4222-376">假如 SQL 已安裝為不區分大小寫，除非有需要，否則應盡量避免呼叫 `ToUpper`。</span><span class="sxs-lookup"><span data-stu-id="f4222-376">Given that SQL is installed as case-insensitive, it's best to avoid the `ToUpper` call when it's not needed.</span></span>
+<span data-ttu-id="a1747-373">呼叫 `ToUpper` 會使效能降低。</span><span class="sxs-lookup"><span data-stu-id="a1747-373">There's a performance penalty for calling `ToUpper`.</span></span> <span data-ttu-id="a1747-374">`ToUpper` 程式碼會將一個函式新增至 TSQL SELECT 陳述式的 WHERE 子句中。</span><span class="sxs-lookup"><span data-stu-id="a1747-374">The `ToUpper` code adds a function in the WHERE clause of the TSQL SELECT statement.</span></span> <span data-ttu-id="a1747-375">新增的函式會防止最佳化工具使用索引。</span><span class="sxs-lookup"><span data-stu-id="a1747-375">The added function prevents the optimizer from using an index.</span></span> <span data-ttu-id="a1747-376">假如 SQL 已安裝為不區分大小寫，除非有需要，否則應盡量避免呼叫 `ToUpper`。</span><span class="sxs-lookup"><span data-stu-id="a1747-376">Given that SQL is installed as case-insensitive, it's best to avoid the `ToUpper` call when it's not needed.</span></span>
 
-### <a name="add-a-search-box-to-the-student-index-page"></a><span data-ttu-id="f4222-377">將搜尋方塊新增至學生的 [索引] 頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-377">Add a Search Box to the Student Index page</span></span>
+### <a name="add-a-search-box-to-the-student-index-page"></a><span data-ttu-id="a1747-377">將搜尋方塊新增至學生的 [索引] 頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-377">Add a Search Box to the Student Index page</span></span>
 
-<span data-ttu-id="f4222-378">在 *Pages/Students/Index.cshtml* 中新增下列醒目標示的程式碼，以建立 **Search** 按鈕和各式各樣的色彩。</span><span class="sxs-lookup"><span data-stu-id="f4222-378">In *Pages/Students/Index.cshtml*, add the following highlighted code to create a **Search** button and assorted chrome.</span></span>
+<span data-ttu-id="a1747-378">在 *Pages/Students/Index.cshtml* 中新增下列醒目標示的程式碼，以建立 **Search** 按鈕和各式各樣的色彩。</span><span class="sxs-lookup"><span data-stu-id="a1747-378">In *Pages/Students/Index.cshtml*, add the following highlighted code to create a **Search** button and assorted chrome.</span></span>
 
 [!code-html[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
-<span data-ttu-id="f4222-379">上述程式碼會使用 `<form>` [標籤協助程式](xref:mvc/views/tag-helpers/intro) 新增搜尋文字方塊和按鈕。</span><span class="sxs-lookup"><span data-stu-id="f4222-379">The preceding code uses the `<form>` [tag helper](xref:mvc/views/tag-helpers/intro) to add the search text box and button.</span></span> <span data-ttu-id="f4222-380">`<form>` 標籤協助程式預設為使用 POST 提交表單資料。</span><span class="sxs-lookup"><span data-stu-id="f4222-380">By default, the `<form>` tag helper submits form data with a POST.</span></span> <span data-ttu-id="f4222-381">在 POST 中，參數會在 HTTP 訊息本文中傳遞，而不是在 URL 中傳遞。</span><span class="sxs-lookup"><span data-stu-id="f4222-381">With POST, the parameters are passed in the HTTP message body and not in the URL.</span></span> <span data-ttu-id="f4222-382">使用 HTTP GET 時，表單資料會以查詢字串的形式在 URL 中傳遞。</span><span class="sxs-lookup"><span data-stu-id="f4222-382">When HTTP GET is used, the form data is passed in the URL as query strings.</span></span> <span data-ttu-id="f4222-383">以查詢字串來傳遞資料，可讓使用者為 URL 加上書籤。</span><span class="sxs-lookup"><span data-stu-id="f4222-383">Passing the data with query strings enables users to bookmark the URL.</span></span> <span data-ttu-id="f4222-384">[W3C 指導方針](https://www.w3.org/2001/tag/doc/whenToUseGet.html) 建議，只有在動作不會產生更新時才應使用 GET。</span><span class="sxs-lookup"><span data-stu-id="f4222-384">The [W3C guidelines](https://www.w3.org/2001/tag/doc/whenToUseGet.html) recommend that GET should be used when the action doesn't result in an update.</span></span>
+<span data-ttu-id="a1747-379">上述程式碼會[使用 `<form>` 卷](xref:mvc/views/tag-helpers/intro)標協助程式來加入搜尋文字方塊和按鈕。</span><span class="sxs-lookup"><span data-stu-id="a1747-379">The preceding code uses the `<form>` [tag helper](xref:mvc/views/tag-helpers/intro) to add the search text box and button.</span></span> <span data-ttu-id="a1747-380">`<form>` 標籤協助程式預設為使用 POST 提交表單資料。</span><span class="sxs-lookup"><span data-stu-id="a1747-380">By default, the `<form>` tag helper submits form data with a POST.</span></span> <span data-ttu-id="a1747-381">在 POST 中，參數會在 HTTP 訊息本文中傳遞，而不是在 URL 中傳遞。</span><span class="sxs-lookup"><span data-stu-id="a1747-381">With POST, the parameters are passed in the HTTP message body and not in the URL.</span></span> <span data-ttu-id="a1747-382">使用 HTTP GET 時，表單資料會以查詢字串的形式在 URL 中傳遞。</span><span class="sxs-lookup"><span data-stu-id="a1747-382">When HTTP GET is used, the form data is passed in the URL as query strings.</span></span> <span data-ttu-id="a1747-383">以查詢字串來傳遞資料，可讓使用者為 URL 加上書籤。</span><span class="sxs-lookup"><span data-stu-id="a1747-383">Passing the data with query strings enables users to bookmark the URL.</span></span> <span data-ttu-id="a1747-384">[W3C 指導方針](https://www.w3.org/2001/tag/doc/whenToUseGet.html) 建議，只有在動作不會產生更新時才應使用 GET。</span><span class="sxs-lookup"><span data-stu-id="a1747-384">The [W3C guidelines](https://www.w3.org/2001/tag/doc/whenToUseGet.html) recommend that GET should be used when the action doesn't result in an update.</span></span>
 
-<span data-ttu-id="f4222-385">測試應用程式：</span><span class="sxs-lookup"><span data-stu-id="f4222-385">Test the app:</span></span>
+<span data-ttu-id="a1747-385">測試應用程式：</span><span class="sxs-lookup"><span data-stu-id="a1747-385">Test the app:</span></span>
 
-* <span data-ttu-id="f4222-386">選取 [Students]  索引標籤並輸入搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-386">Select the **Students** tab and enter a search string.</span></span>
-* <span data-ttu-id="f4222-387">選取 [搜尋]  。</span><span class="sxs-lookup"><span data-stu-id="f4222-387">Select **Search**.</span></span>
+* <span data-ttu-id="a1747-386">選取 [Students] 索引標籤並輸入搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-386">Select the **Students** tab and enter a search string.</span></span>
+* <span data-ttu-id="a1747-387">選取 [搜尋]。</span><span class="sxs-lookup"><span data-stu-id="a1747-387">Select **Search**.</span></span>
 
-<span data-ttu-id="f4222-388">請注意 URL 中包含了搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-388">Notice that the URL contains the search string.</span></span>
+<span data-ttu-id="a1747-388">請注意 URL 中包含了搜尋字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-388">Notice that the URL contains the search string.</span></span>
 
 ```html
 http://localhost:5000/Students?SearchString=an
 ```
 
-<span data-ttu-id="f4222-389">如果頁面已加上書籤，那麼書籤會包含該頁面的 URL 和 `SearchString` 查詢字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-389">If the page is bookmarked, the bookmark contains the URL to the page and the `SearchString` query string.</span></span> <span data-ttu-id="f4222-390">`form` 中的 `method="get"` 導致查詢字串的產生。</span><span class="sxs-lookup"><span data-stu-id="f4222-390">The `method="get"` in the `form` tag is what caused the query string to be generated.</span></span>
+<span data-ttu-id="a1747-389">如果頁面已加上書籤，那麼書籤會包含該頁面的 URL 和 `SearchString` 查詢字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-389">If the page is bookmarked, the bookmark contains the URL to the page and the `SearchString` query string.</span></span> <span data-ttu-id="a1747-390">`method="get"` 中的 `form` 導致查詢字串的產生。</span><span class="sxs-lookup"><span data-stu-id="a1747-390">The `method="get"` in the `form` tag is what caused the query string to be generated.</span></span>
 
-<span data-ttu-id="f4222-391">目前，選取資料行標題排序連結時，[搜尋]  方塊中的篩選值將會遺失。</span><span class="sxs-lookup"><span data-stu-id="f4222-391">Currently, when a column heading sort link is selected, the filter value from the **Search** box is lost.</span></span> <span data-ttu-id="f4222-392">遺失的篩選值會在下一節修正。</span><span class="sxs-lookup"><span data-stu-id="f4222-392">The lost filter value is fixed in the next section.</span></span>
+<span data-ttu-id="a1747-391">目前，選取資料行標題排序連結時，[搜尋] 方塊中的篩選值將會遺失。</span><span class="sxs-lookup"><span data-stu-id="a1747-391">Currently, when a column heading sort link is selected, the filter value from the **Search** box is lost.</span></span> <span data-ttu-id="a1747-392">遺失的篩選值會在下一節修正。</span><span class="sxs-lookup"><span data-stu-id="a1747-392">The lost filter value is fixed in the next section.</span></span>
 
-## <a name="add-paging-functionality-to-the-students-index-page"></a><span data-ttu-id="f4222-393">將分頁功能新增至 Students [索引] 頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-393">Add paging functionality to the Students Index page</span></span>
+## <a name="add-paging-functionality-to-the-students-index-page"></a><span data-ttu-id="a1747-393">將分頁功能新增至 Students [索引] 頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-393">Add paging functionality to the Students Index page</span></span>
 
-<span data-ttu-id="f4222-394">在本節中，`PaginatedList` 類別用來支援分頁。</span><span class="sxs-lookup"><span data-stu-id="f4222-394">In this section, a `PaginatedList` class is created to support paging.</span></span> <span data-ttu-id="f4222-395">`PaginatedList` 類別會使用 `Skip` 和 `Take` 陳述式來篩選伺服器上的資料，而不會擷取資料表中的所有資料列。</span><span class="sxs-lookup"><span data-stu-id="f4222-395">The `PaginatedList` class uses `Skip` and `Take` statements to filter data on the server instead of retrieving all rows of the table.</span></span> <span data-ttu-id="f4222-396">下圖顯示分頁按鈕。</span><span class="sxs-lookup"><span data-stu-id="f4222-396">The following illustration shows the paging buttons.</span></span>
+<span data-ttu-id="a1747-394">在本節中，`PaginatedList` 類別用來支援分頁。</span><span class="sxs-lookup"><span data-stu-id="a1747-394">In this section, a `PaginatedList` class is created to support paging.</span></span> <span data-ttu-id="a1747-395">`PaginatedList` 類別會使用 `Skip` 和 `Take` 陳述式來篩選伺服器上的資料，而不會擷取資料表中的所有資料列。</span><span class="sxs-lookup"><span data-stu-id="a1747-395">The `PaginatedList` class uses `Skip` and `Take` statements to filter data on the server instead of retrieving all rows of the table.</span></span> <span data-ttu-id="a1747-396">下圖顯示分頁按鈕。</span><span class="sxs-lookup"><span data-stu-id="a1747-396">The following illustration shows the paging buttons.</span></span>
 
 ![有分頁連結的 Students [索引] 頁面](sort-filter-page/_static/paging.png)
 
-<span data-ttu-id="f4222-398">在專案資料夾中，以下列程式碼建立 `PaginatedList.cs`：</span><span class="sxs-lookup"><span data-stu-id="f4222-398">In the project folder, create `PaginatedList.cs` with the following code:</span></span>
+<span data-ttu-id="a1747-398">在專案資料夾中，以下列程式碼建立 `PaginatedList.cs`：</span><span class="sxs-lookup"><span data-stu-id="a1747-398">In the project folder, create `PaginatedList.cs` with the following code:</span></span>
 
 [!code-csharp[](intro/samples/cu21/PaginatedList.cs)]
 
-<span data-ttu-id="f4222-399">上述程式碼中的 `CreateAsync` 方法會採用頁面大小和頁面數，並會將適當的 `Skip` 和 `Take` 陳述式套用至 `IQueryable`。</span><span class="sxs-lookup"><span data-stu-id="f4222-399">The `CreateAsync` method in the preceding code takes page size and page number and applies the appropriate `Skip` and `Take` statements to the `IQueryable`.</span></span> <span data-ttu-id="f4222-400">在 `IQueryable` 上呼叫 `ToListAsync` 時，會傳回僅包含所要求頁面的清單。</span><span class="sxs-lookup"><span data-stu-id="f4222-400">When `ToListAsync` is called on the `IQueryable`, it returns a List containing only the requested page.</span></span> <span data-ttu-id="f4222-401">`HasPreviousPage` 和 `HasNextPage` 屬性可用來啟用或停用 **Previous** 和 **Next** 分頁按鈕。</span><span class="sxs-lookup"><span data-stu-id="f4222-401">The properties `HasPreviousPage` and `HasNextPage` are used to enable or disable **Previous** and **Next** paging buttons.</span></span>
+<span data-ttu-id="a1747-399">上述程式碼中的 `CreateAsync` 方法會採用頁面大小和頁面數，並會將適當的 `Skip` 和 `Take` 陳述式套用至 `IQueryable`。</span><span class="sxs-lookup"><span data-stu-id="a1747-399">The `CreateAsync` method in the preceding code takes page size and page number and applies the appropriate `Skip` and `Take` statements to the `IQueryable`.</span></span> <span data-ttu-id="a1747-400">在 `ToListAsync` 上呼叫 `IQueryable` 時，會傳回僅包含所要求頁面的清單。</span><span class="sxs-lookup"><span data-stu-id="a1747-400">When `ToListAsync` is called on the `IQueryable`, it returns a List containing only the requested page.</span></span> <span data-ttu-id="a1747-401">`HasPreviousPage` 和 `HasNextPage` 屬性可用來啟用或停用 **Previous** 和 **Next** 分頁按鈕。</span><span class="sxs-lookup"><span data-stu-id="a1747-401">The properties `HasPreviousPage` and `HasNextPage` are used to enable or disable **Previous** and **Next** paging buttons.</span></span>
 
-<span data-ttu-id="f4222-402">`CreateAsync` 方法為建立 `PaginatedList<T>` 之用。</span><span class="sxs-lookup"><span data-stu-id="f4222-402">The `CreateAsync` method is used to create the `PaginatedList<T>`.</span></span> <span data-ttu-id="f4222-403">建構函式無法建立 `PaginatedList<T>` 物件，建構函式也無法執行非同步程式碼。</span><span class="sxs-lookup"><span data-stu-id="f4222-403">A constructor can't create the `PaginatedList<T>` object, constructors can't run asynchronous code.</span></span>
+<span data-ttu-id="a1747-402">`CreateAsync` 方法為建立 `PaginatedList<T>` 之用。</span><span class="sxs-lookup"><span data-stu-id="a1747-402">The `CreateAsync` method is used to create the `PaginatedList<T>`.</span></span> <span data-ttu-id="a1747-403">建構函式無法建立 `PaginatedList<T>` 物件，建構函式也無法執行非同步程式碼。</span><span class="sxs-lookup"><span data-stu-id="a1747-403">A constructor can't create the `PaginatedList<T>` object, constructors can't run asynchronous code.</span></span>
 
-## <a name="add-paging-functionality-to-the-index-method"></a><span data-ttu-id="f4222-404">將分頁功能新增至 Index 方法</span><span class="sxs-lookup"><span data-stu-id="f4222-404">Add paging functionality to the Index method</span></span>
+## <a name="add-paging-functionality-to-the-index-method"></a><span data-ttu-id="a1747-404">將分頁功能新增至 Index 方法</span><span class="sxs-lookup"><span data-stu-id="a1747-404">Add paging functionality to the Index method</span></span>
 
-<span data-ttu-id="f4222-405">在 *Students/Index.cshtml.cs* 中，將 `Student` 的類型從 `IList<Student>` 更新至 `PaginatedList<Student>`：</span><span class="sxs-lookup"><span data-stu-id="f4222-405">In *Students/Index.cshtml.cs*, update the type of `Student` from `IList<Student>` to `PaginatedList<Student>`:</span></span>
+<span data-ttu-id="a1747-405">在 *Students/Index.cshtml.cs* 中，將 `Student` 的類型從 `IList<Student>` 更新至 `PaginatedList<Student>`：</span><span class="sxs-lookup"><span data-stu-id="a1747-405">In *Students/Index.cshtml.cs*, update the type of `Student` from `IList<Student>` to `PaginatedList<Student>`:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPageType)]
 
-<span data-ttu-id="f4222-406">以下列程式碼更新 *Students/Index.cshtml.cs* `OnGetAsync` ：</span><span class="sxs-lookup"><span data-stu-id="f4222-406">Update the *Students/Index.cshtml.cs* `OnGetAsync` with the following code:</span></span>
+<span data-ttu-id="a1747-406">使用下列程式碼更新 student */Index. cshtml. .cs* `OnGetAsync`：</span><span class="sxs-lookup"><span data-stu-id="a1747-406">Update the *Students/Index.cshtml.cs* `OnGetAsync` with the following code:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage&highlight=1-4,7-14,41-999)]
 
-<span data-ttu-id="f4222-407">上述程式碼將頁面索引、目前的 `sortOrder`、`currentFilter` 新增至方法簽章。</span><span class="sxs-lookup"><span data-stu-id="f4222-407">The preceding code adds the page index, the current `sortOrder`, and the `currentFilter` to the method signature.</span></span>
+<span data-ttu-id="a1747-407">上述程式碼將頁面索引、目前的 `sortOrder`、`currentFilter` 新增至方法簽章。</span><span class="sxs-lookup"><span data-stu-id="a1747-407">The preceding code adds the page index, the current `sortOrder`, and the `currentFilter` to the method signature.</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage2)]
 
-<span data-ttu-id="f4222-408">遇下列情況時，所有的參數都會成為 null：</span><span class="sxs-lookup"><span data-stu-id="f4222-408">All the parameters are null when:</span></span>
+<span data-ttu-id="a1747-408">遇下列情況時，所有的參數都會成為 null：</span><span class="sxs-lookup"><span data-stu-id="a1747-408">All the parameters are null when:</span></span>
 
-* <span data-ttu-id="f4222-409">從 **Students** 連結呼叫頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-409">The page is called from the **Students** link.</span></span>
-* <span data-ttu-id="f4222-410">使用者沒有按一下分頁或排序連結。</span><span class="sxs-lookup"><span data-stu-id="f4222-410">The user hasn't clicked a paging or sorting link.</span></span>
+* <span data-ttu-id="a1747-409">從 **Students** 連結呼叫頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-409">The page is called from the **Students** link.</span></span>
+* <span data-ttu-id="a1747-410">使用者沒有按一下分頁或排序連結。</span><span class="sxs-lookup"><span data-stu-id="a1747-410">The user hasn't clicked a paging or sorting link.</span></span>
 
-<span data-ttu-id="f4222-411">按一下分頁連結時，頁面索引變數即包含要顯示的頁面數。</span><span class="sxs-lookup"><span data-stu-id="f4222-411">When a paging link is clicked, the page index variable contains the page number to display.</span></span>
+<span data-ttu-id="a1747-411">按一下分頁連結時，頁面索引變數即包含要顯示的頁面數。</span><span class="sxs-lookup"><span data-stu-id="a1747-411">When a paging link is clicked, the page index variable contains the page number to display.</span></span>
 
-<span data-ttu-id="f4222-412">`CurrentSort` 提供 Razor 頁面目前的排序次序。</span><span class="sxs-lookup"><span data-stu-id="f4222-412">`CurrentSort` provides the Razor Page with the current sort order.</span></span> <span data-ttu-id="f4222-413">目前的排序次序必須包含在分頁連結中，以保留分頁時的排序次序。</span><span class="sxs-lookup"><span data-stu-id="f4222-413">The current sort order must be included in the paging links to keep the sort order while paging.</span></span>
+<span data-ttu-id="a1747-412">`CurrentSort` 提供 Razor 頁面目前的排序次序。</span><span class="sxs-lookup"><span data-stu-id="a1747-412">`CurrentSort` provides the Razor Page with the current sort order.</span></span> <span data-ttu-id="a1747-413">目前的排序次序必須包含在分頁連結中，以保留分頁時的排序次序。</span><span class="sxs-lookup"><span data-stu-id="a1747-413">The current sort order must be included in the paging links to keep the sort order while paging.</span></span>
 
-<span data-ttu-id="f4222-414">`CurrentFilter` 提供 Razor 頁面目前的篩選字串。</span><span class="sxs-lookup"><span data-stu-id="f4222-414">`CurrentFilter` provides the Razor Page with the current filter string.</span></span> <span data-ttu-id="f4222-415">`CurrentFilter` 值：</span><span class="sxs-lookup"><span data-stu-id="f4222-415">The `CurrentFilter` value:</span></span>
+<span data-ttu-id="a1747-414">`CurrentFilter` 提供 Razor 頁面目前的篩選字串。</span><span class="sxs-lookup"><span data-stu-id="a1747-414">`CurrentFilter` provides the Razor Page with the current filter string.</span></span> <span data-ttu-id="a1747-415">`CurrentFilter` 值：</span><span class="sxs-lookup"><span data-stu-id="a1747-415">The `CurrentFilter` value:</span></span>
 
-* <span data-ttu-id="f4222-416">必須包含在分頁連結中，以保留分頁時的篩選設定。</span><span class="sxs-lookup"><span data-stu-id="f4222-416">Must be included in the paging links in order to maintain the filter settings during paging.</span></span>
-* <span data-ttu-id="f4222-417">頁面重新顯示時，必須還原到文字方塊中。</span><span class="sxs-lookup"><span data-stu-id="f4222-417">Must be restored to the text box when the page is redisplayed.</span></span>
+* <span data-ttu-id="a1747-416">必須包含在分頁連結中，以保留分頁時的篩選設定。</span><span class="sxs-lookup"><span data-stu-id="a1747-416">Must be included in the paging links in order to maintain the filter settings during paging.</span></span>
+* <span data-ttu-id="a1747-417">頁面重新顯示時，必須還原到文字方塊中。</span><span class="sxs-lookup"><span data-stu-id="a1747-417">Must be restored to the text box when the page is redisplayed.</span></span>
 
-<span data-ttu-id="f4222-418">如果搜尋字串在分頁時變更，頁面會重設為 1。</span><span class="sxs-lookup"><span data-stu-id="f4222-418">If the search string is changed while paging, the page is reset to 1.</span></span> <span data-ttu-id="f4222-419">頁面必須重設為 1 是因為新的篩選可能會導致顯示不同的資料。</span><span class="sxs-lookup"><span data-stu-id="f4222-419">The page has to be reset to 1 because the new filter can result in different data to display.</span></span> <span data-ttu-id="f4222-420">輸入搜尋值和選取 **Submit** 時：</span><span class="sxs-lookup"><span data-stu-id="f4222-420">When a search value is entered and **Submit** is selected:</span></span>
+<span data-ttu-id="a1747-418">如果搜尋字串在分頁時變更，頁面會重設為 1。</span><span class="sxs-lookup"><span data-stu-id="a1747-418">If the search string is changed while paging, the page is reset to 1.</span></span> <span data-ttu-id="a1747-419">頁面必須重設為 1 是因為新的篩選可能會導致顯示不同的資料。</span><span class="sxs-lookup"><span data-stu-id="a1747-419">The page has to be reset to 1 because the new filter can result in different data to display.</span></span> <span data-ttu-id="a1747-420">輸入搜尋值和選取 **Submit** 時：</span><span class="sxs-lookup"><span data-stu-id="a1747-420">When a search value is entered and **Submit** is selected:</span></span>
 
-* <span data-ttu-id="f4222-421">搜尋字串變更。</span><span class="sxs-lookup"><span data-stu-id="f4222-421">The search string is changed.</span></span>
-* <span data-ttu-id="f4222-422">`searchString` 參數不是 null。</span><span class="sxs-lookup"><span data-stu-id="f4222-422">The `searchString` parameter isn't null.</span></span>
+* <span data-ttu-id="a1747-421">搜尋字串變更。</span><span class="sxs-lookup"><span data-stu-id="a1747-421">The search string is changed.</span></span>
+* <span data-ttu-id="a1747-422">`searchString` 參數不是 null。</span><span class="sxs-lookup"><span data-stu-id="a1747-422">The `searchString` parameter isn't null.</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage3)]
 
-<span data-ttu-id="f4222-423">`PaginatedList.CreateAsync` 方法會以支援分頁的集合類型，將學生查詢轉換成學生單一頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-423">The `PaginatedList.CreateAsync` method converts the student query to a single page of students in a collection type that supports paging.</span></span> <span data-ttu-id="f4222-424">該學生單一頁面會傳遞至 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-424">That single page of students is passed to the Razor Page.</span></span>
+<span data-ttu-id="a1747-423">`PaginatedList.CreateAsync` 方法會以支援分頁的集合類型，將學生查詢轉換成學生單一頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-423">The `PaginatedList.CreateAsync` method converts the student query to a single page of students in a collection type that supports paging.</span></span> <span data-ttu-id="a1747-424">該學生單一頁面會傳遞至 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-424">That single page of students is passed to the Razor Page.</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage4)]
 
-<span data-ttu-id="f4222-425">在 `PaginatedList.CreateAsync` 中的兩個問號代表 [null 聯合運算子](/dotnet/csharp/language-reference/operators/null-conditional-operator)。</span><span class="sxs-lookup"><span data-stu-id="f4222-425">The two question marks in `PaginatedList.CreateAsync` represent the [null-coalescing operator](/dotnet/csharp/language-reference/operators/null-conditional-operator).</span></span> <span data-ttu-id="f4222-426">Null 聯合運算子會針對可為 Null 的型別定義一個預設值。</span><span class="sxs-lookup"><span data-stu-id="f4222-426">The null-coalescing operator defines a default value for a nullable type.</span></span> <span data-ttu-id="f4222-427">運算式 `(pageIndex ?? 1)` 表示，如果 `pageIndex` 有一個值就將該值傳回。</span><span class="sxs-lookup"><span data-stu-id="f4222-427">The expression `(pageIndex ?? 1)` means return the value of `pageIndex` if it has a value.</span></span> <span data-ttu-id="f4222-428">如果 `pageIndex` 沒有值，則傳回 1。</span><span class="sxs-lookup"><span data-stu-id="f4222-428">If `pageIndex` doesn't have a value, return 1.</span></span>
+<span data-ttu-id="a1747-425">在 `PaginatedList.CreateAsync` 中的兩個問號代表 [null 聯合運算子](/dotnet/csharp/language-reference/operators/null-conditional-operator)。</span><span class="sxs-lookup"><span data-stu-id="a1747-425">The two question marks in `PaginatedList.CreateAsync` represent the [null-coalescing operator](/dotnet/csharp/language-reference/operators/null-conditional-operator).</span></span> <span data-ttu-id="a1747-426">Null 聯合運算子會針對可為 Null 的型別定義一個預設值。</span><span class="sxs-lookup"><span data-stu-id="a1747-426">The null-coalescing operator defines a default value for a nullable type.</span></span> <span data-ttu-id="a1747-427">運算式 `(pageIndex ?? 1)` 表示，如果 `pageIndex` 有一個值就將該值傳回。</span><span class="sxs-lookup"><span data-stu-id="a1747-427">The expression `(pageIndex ?? 1)` means return the value of `pageIndex` if it has a value.</span></span> <span data-ttu-id="a1747-428">如果 `pageIndex` 沒有值，則傳回 1。</span><span class="sxs-lookup"><span data-stu-id="a1747-428">If `pageIndex` doesn't have a value, return 1.</span></span>
 
-## <a name="add-paging-links-to-the-student-razor-page"></a><span data-ttu-id="f4222-429">將分頁連結新增至學生 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-429">Add paging links to the student Razor Page</span></span>
+## <a name="add-paging-links-to-the-student-razor-page"></a><span data-ttu-id="a1747-429">將分頁連結新增至學生 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-429">Add paging links to the student Razor Page</span></span>
 
-<span data-ttu-id="f4222-430">更新 *Students/Index.cshtml* 中的標記。</span><span class="sxs-lookup"><span data-stu-id="f4222-430">Update the markup in *Students/Index.cshtml*.</span></span> <span data-ttu-id="f4222-431">所做的變更已醒目標示：</span><span class="sxs-lookup"><span data-stu-id="f4222-431">The changes are highlighted:</span></span>
+<span data-ttu-id="a1747-430">更新 *Students/Index.cshtml* 中的標記。</span><span class="sxs-lookup"><span data-stu-id="a1747-430">Update the markup in *Students/Index.cshtml*.</span></span> <span data-ttu-id="a1747-431">所做的變更已醒目標示：</span><span class="sxs-lookup"><span data-stu-id="a1747-431">The changes are highlighted:</span></span>
 
 [!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
 
-<span data-ttu-id="f4222-432">資料行頁首連結會使用查詢字串，將目前的搜尋字串傳遞至 `OnGetAsync` 方法，讓使用者可以在篩選結果內排序：</span><span class="sxs-lookup"><span data-stu-id="f4222-432">The column header links use the query string to pass the current search string to the `OnGetAsync` method so that the user can sort within filter results:</span></span>
+<span data-ttu-id="a1747-432">資料行頁首連結會使用查詢字串，將目前的搜尋字串傳遞至 `OnGetAsync` 方法，讓使用者可以在篩選結果內排序：</span><span class="sxs-lookup"><span data-stu-id="a1747-432">The column header links use the query string to pass the current search string to the `OnGetAsync` method so that the user can sort within filter results:</span></span>
 
 [!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?range=28-31)]
 
-<span data-ttu-id="f4222-433">分頁按鈕會由標籤協助程式來顯示：</span><span class="sxs-lookup"><span data-stu-id="f4222-433">The paging buttons are displayed by tag helpers:</span></span>
+<span data-ttu-id="a1747-433">分頁按鈕會由標籤協助程式來顯示：</span><span class="sxs-lookup"><span data-stu-id="a1747-433">The paging buttons are displayed by tag helpers:</span></span>
 
 [!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?range=72-)]
 
-<span data-ttu-id="f4222-434">執行應用程式並巡覽至學生頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-434">Run the app and navigate to the students page.</span></span>
+<span data-ttu-id="a1747-434">執行應用程式並巡覽至學生頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-434">Run the app and navigate to the students page.</span></span>
 
-* <span data-ttu-id="f4222-435">若要確定分頁運作正常，請以不同排序次序按一下分頁連結。</span><span class="sxs-lookup"><span data-stu-id="f4222-435">To make sure paging works, click the paging links in different sort orders.</span></span>
-* <span data-ttu-id="f4222-436">若要驗證分頁的排序和篩選能正確運作，請輸入搜尋字串並嘗試分頁。</span><span class="sxs-lookup"><span data-stu-id="f4222-436">To verify that paging works correctly with sorting and filtering, enter a search string and try paging.</span></span>
+* <span data-ttu-id="a1747-435">若要確定分頁運作正常，請以不同排序次序按一下分頁連結。</span><span class="sxs-lookup"><span data-stu-id="a1747-435">To make sure paging works, click the paging links in different sort orders.</span></span>
+* <span data-ttu-id="a1747-436">若要驗證分頁的排序和篩選能正確運作，請輸入搜尋字串並嘗試分頁。</span><span class="sxs-lookup"><span data-stu-id="a1747-436">To verify that paging works correctly with sorting and filtering, enter a search string and try paging.</span></span>
 
 ![有分頁連結的 Students [索引] 頁面](sort-filter-page/_static/paging.png)
 
-<span data-ttu-id="f4222-438">若要更深入了解這個程式碼：</span><span class="sxs-lookup"><span data-stu-id="f4222-438">To get a better understanding of the code:</span></span>
+<span data-ttu-id="a1747-438">若要更深入了解這個程式碼：</span><span class="sxs-lookup"><span data-stu-id="a1747-438">To get a better understanding of the code:</span></span>
 
-* <span data-ttu-id="f4222-439">在 *Students/Index.cshtml.cs* 的 `switch (sortOrder)` 上，設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="f4222-439">In *Students/Index.cshtml.cs*, set a breakpoint on `switch (sortOrder)`.</span></span>
-* <span data-ttu-id="f4222-440">為 `NameSort`、`DateSort`、`CurrentSort`、`Model.Student.PageIndex` 新增監看式。</span><span class="sxs-lookup"><span data-stu-id="f4222-440">Add a watch for `NameSort`, `DateSort`, `CurrentSort`, and `Model.Student.PageIndex`.</span></span>
-* <span data-ttu-id="f4222-441">在 *Students/Index.cshtml* 的 `@Html.DisplayNameFor(model => model.Student[0].LastName)` 上，設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="f4222-441">In *Students/Index.cshtml*, set a breakpoint on `@Html.DisplayNameFor(model => model.Student[0].LastName)`.</span></span>
+* <span data-ttu-id="a1747-439">在 *Students/Index.cshtml.cs* 的 `switch (sortOrder)` 上，設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="a1747-439">In *Students/Index.cshtml.cs*, set a breakpoint on `switch (sortOrder)`.</span></span>
+* <span data-ttu-id="a1747-440">為 `NameSort`、`DateSort`、`CurrentSort`、`Model.Student.PageIndex` 新增監看式。</span><span class="sxs-lookup"><span data-stu-id="a1747-440">Add a watch for `NameSort`, `DateSort`, `CurrentSort`, and `Model.Student.PageIndex`.</span></span>
+* <span data-ttu-id="a1747-441">在 *Students/Index.cshtml* 的 `@Html.DisplayNameFor(model => model.Student[0].LastName)` 上，設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="a1747-441">In *Students/Index.cshtml*, set a breakpoint on `@Html.DisplayNameFor(model => model.Student[0].LastName)`.</span></span>
 
-<span data-ttu-id="f4222-442">逐步執行偵錯工具。</span><span class="sxs-lookup"><span data-stu-id="f4222-442">Step through the debugger.</span></span>
+<span data-ttu-id="a1747-442">逐步執行偵錯工具。</span><span class="sxs-lookup"><span data-stu-id="a1747-442">Step through the debugger.</span></span>
 
-## <a name="update-the-about-page-to-show-student-statistics"></a><span data-ttu-id="f4222-443">更新 About 頁面以顯示學生統計資料</span><span class="sxs-lookup"><span data-stu-id="f4222-443">Update the About page to show student statistics</span></span>
+## <a name="update-the-about-page-to-show-student-statistics"></a><span data-ttu-id="a1747-443">更新 About 頁面以顯示學生統計資料</span><span class="sxs-lookup"><span data-stu-id="a1747-443">Update the About page to show student statistics</span></span>
 
-<span data-ttu-id="f4222-444">在此步驟中，*Pages/About.cshtml* 會更新為顯示在每一個註冊日期中，共有多少學生註冊。</span><span class="sxs-lookup"><span data-stu-id="f4222-444">In this step, *Pages/About.cshtml* is updated to display how many students have enrolled for each enrollment date.</span></span> <span data-ttu-id="f4222-445">此更新會使用群組，並包含下列步驟：</span><span class="sxs-lookup"><span data-stu-id="f4222-445">The update uses grouping and includes the following steps:</span></span>
+<span data-ttu-id="a1747-444">在此步驟中，*Pages/About.cshtml* 會更新為顯示在每一個註冊日期中，共有多少學生註冊。</span><span class="sxs-lookup"><span data-stu-id="a1747-444">In this step, *Pages/About.cshtml* is updated to display how many students have enrolled for each enrollment date.</span></span> <span data-ttu-id="a1747-445">此更新會使用群組，並包含下列步驟：</span><span class="sxs-lookup"><span data-stu-id="a1747-445">The update uses grouping and includes the following steps:</span></span>
 
-* <span data-ttu-id="f4222-446">為 **About** 頁面所使用的資料，建立檢視模型。</span><span class="sxs-lookup"><span data-stu-id="f4222-446">Create a view model for the data used by the **About** Page.</span></span>
-* <span data-ttu-id="f4222-447">更新 About 頁面以使用檢視模型。</span><span class="sxs-lookup"><span data-stu-id="f4222-447">Update the About page to use the view model.</span></span>
+* <span data-ttu-id="a1747-446">為 **About** 頁面所使用的資料，建立檢視模型。</span><span class="sxs-lookup"><span data-stu-id="a1747-446">Create a view model for the data used by the **About** Page.</span></span>
+* <span data-ttu-id="a1747-447">更新 About 頁面以使用檢視模型。</span><span class="sxs-lookup"><span data-stu-id="a1747-447">Update the About page to use the view model.</span></span>
 
-### <a name="create-the-view-model"></a><span data-ttu-id="f4222-448">建立檢視模型</span><span class="sxs-lookup"><span data-stu-id="f4222-448">Create the view model</span></span>
+### <a name="create-the-view-model"></a><span data-ttu-id="a1747-448">建立檢視模型</span><span class="sxs-lookup"><span data-stu-id="a1747-448">Create the view model</span></span>
 
-<span data-ttu-id="f4222-449">在 *Models* 資料夾中建立 *SchoolViewModels* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="f4222-449">Create a *SchoolViewModels* folder in the *Models* folder.</span></span>
+<span data-ttu-id="a1747-449">在 *Models* 資料夾中建立 *SchoolViewModels* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="a1747-449">Create a *SchoolViewModels* folder in the *Models* folder.</span></span>
 
-<span data-ttu-id="f4222-450">在 *SchoolViewModels* 資料夾中，以下列程式碼新增 *EnrollmentDateGroup.cs*：</span><span class="sxs-lookup"><span data-stu-id="f4222-450">In the *SchoolViewModels* folder, add a *EnrollmentDateGroup.cs* with the following code:</span></span>
+<span data-ttu-id="a1747-450">在 *SchoolViewModels* 資料夾中，以下列程式碼新增 *EnrollmentDateGroup.cs*：</span><span class="sxs-lookup"><span data-stu-id="a1747-450">In the *SchoolViewModels* folder, add a *EnrollmentDateGroup.cs* with the following code:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
-### <a name="update-the-about-page-model"></a><span data-ttu-id="f4222-451">更新 About 頁面模型</span><span class="sxs-lookup"><span data-stu-id="f4222-451">Update the About page model</span></span>
+### <a name="update-the-about-page-model"></a><span data-ttu-id="a1747-451">更新 About 頁面模型</span><span class="sxs-lookup"><span data-stu-id="a1747-451">Update the About page model</span></span>
 
-<span data-ttu-id="f4222-452">ASP.NET Core 2.2 中的 Web 範本不包括 [關於] 頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-452">The web templates in ASP.NET Core 2.2 do not include the About page.</span></span> <span data-ttu-id="f4222-453">若您使用 ASP.NET Core 2.2，請建立 [關於 Razor Page] 頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-453">If you are using ASP.NET Core 2.2, create the About Razor Page.</span></span>
+<span data-ttu-id="a1747-452">ASP.NET Core 2.2 中的 Web 範本不包括 [關於] 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-452">The web templates in ASP.NET Core 2.2 do not include the About page.</span></span> <span data-ttu-id="a1747-453">若您使用 ASP.NET Core 2.2，請建立 [關於 Razor Page] 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-453">If you are using ASP.NET Core 2.2, create the About Razor Page.</span></span>
 
-<span data-ttu-id="f4222-454">以下列程式碼更新 *Pages/About.cshtml.cs* 檔案：</span><span class="sxs-lookup"><span data-stu-id="f4222-454">Update the *Pages/About.cshtml.cs* file with the following code:</span></span>
+<span data-ttu-id="a1747-454">以下列程式碼更新 *Pages/About.cshtml.cs* 檔案：</span><span class="sxs-lookup"><span data-stu-id="a1747-454">Update the *Pages/About.cshtml.cs* file with the following code:</span></span>
 
 [!code-csharp[](intro/samples/cu21/Pages/About.cshtml.cs)]
 
-<span data-ttu-id="f4222-455">LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組中的實體數目、將結果儲存在 `EnrollmentDateGroup` 檢視模型物件的集合中。</span><span class="sxs-lookup"><span data-stu-id="f4222-455">The LINQ statement groups the student entities by enrollment date, calculates the number of entities in each group, and stores the results in a collection of `EnrollmentDateGroup` view model objects.</span></span>
+<span data-ttu-id="a1747-455">LINQ 陳述式會以註冊日期將學生實體組成群組、計算每個群組中的實體數目、將結果儲存在 `EnrollmentDateGroup` 檢視模型物件中的集合。</span><span class="sxs-lookup"><span data-stu-id="a1747-455">The LINQ statement groups the student entities by enrollment date, calculates the number of entities in each group, and stores the results in a collection of `EnrollmentDateGroup` view model objects.</span></span>
 
-### <a name="modify-the-about-razor-page"></a><span data-ttu-id="f4222-456">修改 About Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="f4222-456">Modify the About Razor Page</span></span>
+### <a name="modify-the-about-razor-page"></a><span data-ttu-id="a1747-456">修改 About Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="a1747-456">Modify the About Razor Page</span></span>
 
-<span data-ttu-id="f4222-457">以下列程式碼取代 *Pages/About.cshtml* 檔案中的程式碼：</span><span class="sxs-lookup"><span data-stu-id="f4222-457">Replace the code in the *Pages/About.cshtml* file with the following code:</span></span>
+<span data-ttu-id="a1747-457">以下列程式碼取代 *Pages/About.cshtml* 檔案中的程式碼：</span><span class="sxs-lookup"><span data-stu-id="a1747-457">Replace the code in the *Pages/About.cshtml* file with the following code:</span></span>
 
 [!code-html[](intro/samples/cu21/Pages/About.cshtml)]
 
-<span data-ttu-id="f4222-458">執行應用程式並巡覽至 About 頁面。</span><span class="sxs-lookup"><span data-stu-id="f4222-458">Run the app and navigate to the About page.</span></span> <span data-ttu-id="f4222-459">每個註冊日期的學生人數將會顯示在資料表中。</span><span class="sxs-lookup"><span data-stu-id="f4222-459">The count of students for each enrollment date is displayed in a table.</span></span>
+<span data-ttu-id="a1747-458">執行應用程式並巡覽至 About 頁面。</span><span class="sxs-lookup"><span data-stu-id="a1747-458">Run the app and navigate to the About page.</span></span> <span data-ttu-id="a1747-459">每個註冊日期的學生人數將會顯示在資料表中。</span><span class="sxs-lookup"><span data-stu-id="a1747-459">The count of students for each enrollment date is displayed in a table.</span></span>
 
-<span data-ttu-id="f4222-460">如果您遇到無法解決的問題，請下載[此階段完成的應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting)。</span><span class="sxs-lookup"><span data-stu-id="f4222-460">If you run into problems you can't solve, download the [completed app for this stage](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting).</span></span>
+<span data-ttu-id="a1747-460">如果您遇到無法解決的問題，請下載[此階段完成的應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting)。</span><span class="sxs-lookup"><span data-stu-id="a1747-460">If you run into problems you can't solve, download the [completed app for this stage](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting).</span></span>
 
 ![About 頁面](sort-filter-page/_static/about.png)
 
-## <a name="additional-resources"></a><span data-ttu-id="f4222-462">其他資源</span><span class="sxs-lookup"><span data-stu-id="f4222-462">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="a1747-462">其他資源</span><span class="sxs-lookup"><span data-stu-id="a1747-462">Additional resources</span></span>
 
-* [<span data-ttu-id="f4222-463">偵錯 ASP.NET Core 2.x 原始檔</span><span class="sxs-lookup"><span data-stu-id="f4222-463">Debugging ASP.NET Core 2.x source</span></span>](https://github.com/aspnet/AspNetCore.Docs/issues/4155)
-* [<span data-ttu-id="f4222-464">這個教學課程的 YouTube 版本</span><span class="sxs-lookup"><span data-stu-id="f4222-464">YouTube version of this tutorial</span></span>](https://www.youtube.com/watch?v=MDs7PFpoMqI)
+* [<span data-ttu-id="a1747-463">偵錯 ASP.NET Core 2.x 原始檔</span><span class="sxs-lookup"><span data-stu-id="a1747-463">Debugging ASP.NET Core 2.x source</span></span>](https://github.com/dotnet/AspNetCore.Docs/issues/4155)
+* [<span data-ttu-id="a1747-464">這個教學課程的 YouTube 版本</span><span class="sxs-lookup"><span data-stu-id="a1747-464">YouTube version of this tutorial</span></span>](https://www.youtube.com/watch?v=MDs7PFpoMqI)
 
-<span data-ttu-id="f4222-465">在下一個教學課程中，應用程式將會使用移轉來更新資料模型。</span><span class="sxs-lookup"><span data-stu-id="f4222-465">In the next tutorial, the app uses migrations to update the data model.</span></span>
+<span data-ttu-id="a1747-465">在下一個教學課程中，應用程式將會使用移轉來更新資料模型。</span><span class="sxs-lookup"><span data-stu-id="a1747-465">In the next tutorial, the app uses migrations to update the data model.</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="f4222-466">[上一頁](xref:data/ef-rp/crud)
-> [下一頁](xref:data/ef-rp/migrations)</span><span class="sxs-lookup"><span data-stu-id="f4222-466">[Previous](xref:data/ef-rp/crud)
+> <span data-ttu-id="a1747-466">[上一頁](xref:data/ef-rp/crud)
+> [下一頁](xref:data/ef-rp/migrations)</span><span class="sxs-lookup"><span data-stu-id="a1747-466">[Previous](xref:data/ef-rp/crud)
 [Next](xref:data/ef-rp/migrations)</span></span>
 
 ::: moniker-end

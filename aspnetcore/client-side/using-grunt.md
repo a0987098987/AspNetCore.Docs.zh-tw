@@ -6,57 +6,57 @@ ms.author: riande
 ms.date: 12/05/2019
 uid: client-side/using-grunt
 ms.openlocfilehash: e516b85da7e94d0c93be642086fede0a11fea3c2
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879797"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657588"
 ---
-# <a name="use-grunt-in-aspnet-core"></a><span data-ttu-id="1f5f5-103">在 ASP.NET Core 中使用 Grunt</span><span class="sxs-lookup"><span data-stu-id="1f5f5-103">Use Grunt in ASP.NET Core</span></span>
+# <a name="use-grunt-in-aspnet-core"></a><span data-ttu-id="65c6a-103">在 ASP.NET Core 中使用 Grunt</span><span class="sxs-lookup"><span data-stu-id="65c6a-103">Use Grunt in ASP.NET Core</span></span>
 
-<span data-ttu-id="1f5f5-104">Grunt 是一項 JavaScript 工作執行程式，可將腳本縮制、TypeScript 編譯、程式碼品質「不起毛」的工具、CSS 前置處理器，以及任何需要執行以支援用戶端開發的重複性工作自動化。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-104">Grunt is a JavaScript task runner that automates script minification, TypeScript compilation, code quality "lint" tools, CSS pre-processors, and just about any repetitive chore that needs doing to support client development.</span></span> <span data-ttu-id="1f5f5-105">Visual Studio 中完全支援 Grunt。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-105">Grunt is fully supported in Visual Studio.</span></span>
+<span data-ttu-id="65c6a-104">Grunt 是一項 JavaScript 工作執行程式，可將腳本縮制、TypeScript 編譯、程式碼品質「不起毛」的工具、CSS 前置處理器，以及任何需要執行以支援用戶端開發的重複性工作自動化。</span><span class="sxs-lookup"><span data-stu-id="65c6a-104">Grunt is a JavaScript task runner that automates script minification, TypeScript compilation, code quality "lint" tools, CSS pre-processors, and just about any repetitive chore that needs doing to support client development.</span></span> <span data-ttu-id="65c6a-105">Visual Studio 中完全支援 Grunt。</span><span class="sxs-lookup"><span data-stu-id="65c6a-105">Grunt is fully supported in Visual Studio.</span></span>
 
-<span data-ttu-id="1f5f5-106">這個範例會使用空的 ASP.NET Core 專案做為其起點，以示範如何從頭開始自動執行用戶端組建程式。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-106">This example uses an empty ASP.NET Core project as its starting point, to show how to automate the client build process from scratch.</span></span>
+<span data-ttu-id="65c6a-106">這個範例會使用空的 ASP.NET Core 專案做為其起點，以示範如何從頭開始自動執行用戶端組建程式。</span><span class="sxs-lookup"><span data-stu-id="65c6a-106">This example uses an empty ASP.NET Core project as its starting point, to show how to automate the client build process from scratch.</span></span>
 
-<span data-ttu-id="1f5f5-107">完成後的範例會清除目標部署目錄、結合 JavaScript 檔案、檢查程式碼品質、總是 JavaScript 檔案內容，並部署至 web 應用程式的根目錄。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-107">The finished example cleans the target deployment directory, combines JavaScript files, checks code quality, condenses JavaScript file content and deploys to the root of your web application.</span></span> <span data-ttu-id="1f5f5-108">我們將使用下列套件：</span><span class="sxs-lookup"><span data-stu-id="1f5f5-108">We will use the following packages:</span></span>
+<span data-ttu-id="65c6a-107">完成後的範例會清除目標部署目錄、結合 JavaScript 檔案、檢查程式碼品質、總是 JavaScript 檔案內容，並部署至 web 應用程式的根目錄。</span><span class="sxs-lookup"><span data-stu-id="65c6a-107">The finished example cleans the target deployment directory, combines JavaScript files, checks code quality, condenses JavaScript file content and deploys to the root of your web application.</span></span> <span data-ttu-id="65c6a-108">我們將使用下列套件：</span><span class="sxs-lookup"><span data-stu-id="65c6a-108">We will use the following packages:</span></span>
 
-* <span data-ttu-id="1f5f5-109">**grunt**： grunt 工作執行器套件。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-109">**grunt**: The Grunt task runner package.</span></span>
+* <span data-ttu-id="65c6a-109">**grunt**： grunt 工作執行器套件。</span><span class="sxs-lookup"><span data-stu-id="65c6a-109">**grunt**: The Grunt task runner package.</span></span>
 
-* <span data-ttu-id="1f5f5-110">**grunt-contrib-clean**：移除檔案或目錄的外掛程式。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-110">**grunt-contrib-clean**: A plugin that removes files or directories.</span></span>
+* <span data-ttu-id="65c6a-110">**grunt-contrib-clean**：移除檔案或目錄的外掛程式。</span><span class="sxs-lookup"><span data-stu-id="65c6a-110">**grunt-contrib-clean**: A plugin that removes files or directories.</span></span>
 
-* <span data-ttu-id="1f5f5-111">**grunt-contrib-jshint**：用來審查 JavaScript 程式碼品質的外掛程式。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-111">**grunt-contrib-jshint**: A plugin that reviews JavaScript code quality.</span></span>
+* <span data-ttu-id="65c6a-111">**grunt-contrib-jshint**：用來審查 JavaScript 程式碼品質的外掛程式。</span><span class="sxs-lookup"><span data-stu-id="65c6a-111">**grunt-contrib-jshint**: A plugin that reviews JavaScript code quality.</span></span>
 
-* <span data-ttu-id="1f5f5-112">**grunt-contrib-concat**：將檔案加入單一檔案的外掛程式。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-112">**grunt-contrib-concat**: A plugin that joins files into a single file.</span></span>
+* <span data-ttu-id="65c6a-112">**grunt-contrib-concat**：將檔案加入單一檔案的外掛程式。</span><span class="sxs-lookup"><span data-stu-id="65c6a-112">**grunt-contrib-concat**: A plugin that joins files into a single file.</span></span>
 
-* <span data-ttu-id="1f5f5-113">**grunt-contrib-uglify**：縮短 JavaScript 以減少大小的外掛程式。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-113">**grunt-contrib-uglify**: A plugin that minifies JavaScript to reduce size.</span></span>
+* <span data-ttu-id="65c6a-113">**grunt-contrib-uglify**：縮短 JavaScript 以減少大小的外掛程式。</span><span class="sxs-lookup"><span data-stu-id="65c6a-113">**grunt-contrib-uglify**: A plugin that minifies JavaScript to reduce size.</span></span>
 
-* <span data-ttu-id="1f5f5-114">**grunt-contrib-watch：監看**檔案活動的外掛程式。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-114">**grunt-contrib-watch**: A plugin that watches file activity.</span></span>
+* <span data-ttu-id="65c6a-114">**grunt-contrib-watch：監看**檔案活動的外掛程式。</span><span class="sxs-lookup"><span data-stu-id="65c6a-114">**grunt-contrib-watch**: A plugin that watches file activity.</span></span>
 
-## <a name="preparing-the-application"></a><span data-ttu-id="1f5f5-115">準備應用程式</span><span class="sxs-lookup"><span data-stu-id="1f5f5-115">Preparing the application</span></span>
+## <a name="preparing-the-application"></a><span data-ttu-id="65c6a-115">準備應用程式</span><span class="sxs-lookup"><span data-stu-id="65c6a-115">Preparing the application</span></span>
 
-<span data-ttu-id="1f5f5-116">若要開始，請設定新的空白 web 應用程式，並新增 TypeScript 範例檔案。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-116">To begin, set up a new empty web application and add TypeScript example files.</span></span> <span data-ttu-id="1f5f5-117">TypeScript 檔案會使用預設的 Visual Studio 設定自動編譯成 JavaScript，而我們將會使用 Grunt 來處理我們的原始內容。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-117">TypeScript files are automatically compiled into JavaScript using default Visual Studio settings and will be our raw material to process using Grunt.</span></span>
+<span data-ttu-id="65c6a-116">若要開始，請設定新的空白 web 應用程式，並新增 TypeScript 範例檔案。</span><span class="sxs-lookup"><span data-stu-id="65c6a-116">To begin, set up a new empty web application and add TypeScript example files.</span></span> <span data-ttu-id="65c6a-117">TypeScript 檔案會使用預設的 Visual Studio 設定自動編譯成 JavaScript，而我們將會使用 Grunt 來處理我們的原始內容。</span><span class="sxs-lookup"><span data-stu-id="65c6a-117">TypeScript files are automatically compiled into JavaScript using default Visual Studio settings and will be our raw material to process using Grunt.</span></span>
 
-1. <span data-ttu-id="1f5f5-118">在 Visual Studio 中，建立新的 `ASP.NET Web Application`。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-118">In Visual Studio, create a new `ASP.NET Web Application`.</span></span>
+1. <span data-ttu-id="65c6a-118">在 Visual Studio 中，建立新的 `ASP.NET Web Application`。</span><span class="sxs-lookup"><span data-stu-id="65c6a-118">In Visual Studio, create a new `ASP.NET Web Application`.</span></span>
 
-2. <span data-ttu-id="1f5f5-119">在 [**新增 ASP.NET 專案**] 對話方塊中，選取 ASP.NET Core**空白**範本，然後按一下 [確定] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-119">In the **New ASP.NET Project** dialog, select the ASP.NET Core **Empty** template and click the OK button.</span></span>
+2. <span data-ttu-id="65c6a-119">在 [**新增 ASP.NET 專案**] 對話方塊中，選取 ASP.NET Core**空白**範本，然後按一下 [確定] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="65c6a-119">In the **New ASP.NET Project** dialog, select the ASP.NET Core **Empty** template and click the OK button.</span></span>
 
-3. <span data-ttu-id="1f5f5-120">在 方案總管中，檢查項目結構。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-120">In the Solution Explorer, review the project structure.</span></span> <span data-ttu-id="1f5f5-121">[`\src`] 資料夾包含空的 `wwwroot` 和 `Dependencies` 節點。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-121">The `\src` folder includes empty `wwwroot` and `Dependencies` nodes.</span></span>
+3. <span data-ttu-id="65c6a-120">在 方案總管中，檢查項目結構。</span><span class="sxs-lookup"><span data-stu-id="65c6a-120">In the Solution Explorer, review the project structure.</span></span> <span data-ttu-id="65c6a-121">[`\src`] 資料夾包含空的 `wwwroot` 和 `Dependencies` 節點。</span><span class="sxs-lookup"><span data-stu-id="65c6a-121">The `\src` folder includes empty `wwwroot` and `Dependencies` nodes.</span></span>
 
     ![空白 web 解決方案](using-grunt/_static/grunt-solution-explorer.png)
 
-4. <span data-ttu-id="1f5f5-123">將名為 `TypeScript` 的新資料夾新增至您的專案目錄。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-123">Add a new folder named `TypeScript` to your project directory.</span></span>
+4. <span data-ttu-id="65c6a-123">將名為 `TypeScript` 的新資料夾新增至您的專案目錄。</span><span class="sxs-lookup"><span data-stu-id="65c6a-123">Add a new folder named `TypeScript` to your project directory.</span></span>
 
-5. <span data-ttu-id="1f5f5-124">在新增任何檔案之前，請確定 Visual Studio 已核取 [在儲存時編譯] 選項。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-124">Before adding any files, make sure that Visual Studio has the option 'compile on save' for TypeScript files checked.</span></span> <span data-ttu-id="1f5f5-125">流覽至 [**工具**] > **選項** > **文字編輯器** > **Typescript** > **專案**：</span><span class="sxs-lookup"><span data-stu-id="1f5f5-125">Navigate to **Tools** > **Options** > **Text Editor** > **Typescript** > **Project**:</span></span>
+5. <span data-ttu-id="65c6a-124">在新增任何檔案之前，請確定 Visual Studio 已核取 [在儲存時編譯] 選項。</span><span class="sxs-lookup"><span data-stu-id="65c6a-124">Before adding any files, make sure that Visual Studio has the option 'compile on save' for TypeScript files checked.</span></span> <span data-ttu-id="65c6a-125">流覽至 [**工具**] > **選項** > **文字編輯器** > **Typescript** > **專案**：</span><span class="sxs-lookup"><span data-stu-id="65c6a-125">Navigate to **Tools** > **Options** > **Text Editor** > **Typescript** > **Project**:</span></span>
 
     ![設定 TypeScript 檔案自動編譯的選項](using-grunt/_static/typescript-options.png)
 
-6. <span data-ttu-id="1f5f5-127">以滑鼠右鍵按一下 `TypeScript` 目錄，然後從內容功能表中選取 [**新增 > 新專案**]。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-127">Right-click the `TypeScript` directory and select **Add > New Item** from the context menu.</span></span> <span data-ttu-id="1f5f5-128">選取**JavaScript**檔案專案，並將檔案命名為*Tastes* （請注意 \*. ts 副檔名）。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-128">Select the **JavaScript file** item and name the file *Tastes.ts* (note the \*.ts extension).</span></span> <span data-ttu-id="1f5f5-129">將以下的 TypeScript 程式程式碼複製到檔案中（當您儲存時，新的*Tastes*會與 JavaScript 來源一起出現）。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-129">Copy the line of TypeScript code below into the file (when you save, a new *Tastes.js* file will appear with the JavaScript source).</span></span>
+6. <span data-ttu-id="65c6a-127">以滑鼠右鍵按一下 `TypeScript` 目錄，然後從內容功能表中選取 [**新增 > 新專案**]。</span><span class="sxs-lookup"><span data-stu-id="65c6a-127">Right-click the `TypeScript` directory and select **Add > New Item** from the context menu.</span></span> <span data-ttu-id="65c6a-128">選取**JavaScript**檔案專案，並將檔案命名為*Tastes* （請注意 \*. ts 副檔名）。</span><span class="sxs-lookup"><span data-stu-id="65c6a-128">Select the **JavaScript file** item and name the file *Tastes.ts* (note the \*.ts extension).</span></span> <span data-ttu-id="65c6a-129">將以下的 TypeScript 程式程式碼複製到檔案中（當您儲存時，新的*Tastes*會與 JavaScript 來源一起出現）。</span><span class="sxs-lookup"><span data-stu-id="65c6a-129">Copy the line of TypeScript code below into the file (when you save, a new *Tastes.js* file will appear with the JavaScript source).</span></span>
 
     ```typescript
     enum Tastes { Sweet, Sour, Salty, Bitter }
     ```
 
-7. <span data-ttu-id="1f5f5-130">將第二個檔案新增至**TypeScript**目錄，並將它命名為 `Food.ts`。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-130">Add a second file to the **TypeScript** directory and name it `Food.ts`.</span></span> <span data-ttu-id="1f5f5-131">將下列程式碼複製到檔案中。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-131">Copy the code below into the file.</span></span>
+7. <span data-ttu-id="65c6a-130">將第二個檔案新增至**TypeScript**目錄，並將它命名為 `Food.ts`。</span><span class="sxs-lookup"><span data-stu-id="65c6a-130">Add a second file to the **TypeScript** directory and name it `Food.ts`.</span></span> <span data-ttu-id="65c6a-131">將下列程式碼複製到檔案中。</span><span class="sxs-lookup"><span data-stu-id="65c6a-131">Copy the code below into the file.</span></span>
 
     ```typescript
     class Food {
@@ -83,20 +83,20 @@ ms.locfileid: "74879797"
     }
     ```
 
-## <a name="configuring-npm"></a><span data-ttu-id="1f5f5-132">設定 NPM</span><span class="sxs-lookup"><span data-stu-id="1f5f5-132">Configuring NPM</span></span>
+## <a name="configuring-npm"></a><span data-ttu-id="65c6a-132">設定 NPM</span><span class="sxs-lookup"><span data-stu-id="65c6a-132">Configuring NPM</span></span>
 
-<span data-ttu-id="1f5f5-133">接下來，設定 NPM 以下載 grunt 和 grunt 工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-133">Next, configure NPM to download grunt and grunt-tasks.</span></span>
+<span data-ttu-id="65c6a-133">接下來，設定 NPM 以下載 grunt 和 grunt 工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-133">Next, configure NPM to download grunt and grunt-tasks.</span></span>
 
-1. <span data-ttu-id="1f5f5-134">在 方案總管中，以滑鼠右鍵按一下專案，然後從內容功能表中選取 **加入 > 新專案**。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-134">In the Solution Explorer, right-click the project and select **Add > New Item** from the context menu.</span></span> <span data-ttu-id="1f5f5-135">選取 [ **NPM 設定檔**] 專案，保留預設名稱 [ *package*]，然後按一下 [**新增**] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-135">Select the **NPM configuration file** item, leave the default name, *package.json*, and click the **Add** button.</span></span>
+1. <span data-ttu-id="65c6a-134">在 方案總管中，以滑鼠右鍵按一下專案，然後從內容功能表中選取 **加入 > 新專案**。</span><span class="sxs-lookup"><span data-stu-id="65c6a-134">In the Solution Explorer, right-click the project and select **Add > New Item** from the context menu.</span></span> <span data-ttu-id="65c6a-135">選取 [ **NPM 設定檔**] 專案，保留預設名稱 [ *package*]，然後按一下 [**新增**] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="65c6a-135">Select the **NPM configuration file** item, leave the default name, *package.json*, and click the **Add** button.</span></span>
 
-2. <span data-ttu-id="1f5f5-136">在*封裝的 json*檔案中，于 `devDependencies` 物件括弧內輸入 "grunt"。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-136">In the *package.json* file, inside the `devDependencies` object braces, enter "grunt".</span></span> <span data-ttu-id="1f5f5-137">從 Intellisense 清單中選取 `grunt`，然後按 Enter 鍵。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-137">Select `grunt` from the Intellisense list and press the Enter key.</span></span> <span data-ttu-id="1f5f5-138">Visual Studio 會將 grunt 套件名稱加上引號，並新增一個冒號。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-138">Visual Studio will quote the grunt package name, and add a colon.</span></span> <span data-ttu-id="1f5f5-139">在冒號右邊，從 Intellisense 清單的頂端選取套件的最新穩定版本（如果未出現 Intellisense，請按 `Ctrl-Space`）。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-139">To the right of the colon, select the latest stable version of the package from the top of the Intellisense list (press `Ctrl-Space` if Intellisense doesn't appear).</span></span>
+2. <span data-ttu-id="65c6a-136">在*封裝的 json*檔案中，于 `devDependencies` 物件括弧內輸入 "grunt"。</span><span class="sxs-lookup"><span data-stu-id="65c6a-136">In the *package.json* file, inside the `devDependencies` object braces, enter "grunt".</span></span> <span data-ttu-id="65c6a-137">從 Intellisense 清單中選取 `grunt`，然後按 Enter 鍵。</span><span class="sxs-lookup"><span data-stu-id="65c6a-137">Select `grunt` from the Intellisense list and press the Enter key.</span></span> <span data-ttu-id="65c6a-138">Visual Studio 會將 grunt 套件名稱加上引號，並新增一個冒號。</span><span class="sxs-lookup"><span data-stu-id="65c6a-138">Visual Studio will quote the grunt package name, and add a colon.</span></span> <span data-ttu-id="65c6a-139">在冒號右邊，從 Intellisense 清單的頂端選取套件的最新穩定版本（如果未出現 Intellisense，請按 `Ctrl-Space`）。</span><span class="sxs-lookup"><span data-stu-id="65c6a-139">To the right of the colon, select the latest stable version of the package from the top of the Intellisense list (press `Ctrl-Space` if Intellisense doesn't appear).</span></span>
 
     ![grunt Intellisense](using-grunt/_static/devdependencies-grunt.png)
 
     > [!NOTE]
-    > <span data-ttu-id="1f5f5-141">NPM 會使用[語義版本](https://semver.org/)設定來組織相依性。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-141">NPM uses [semantic versioning](https://semver.org/) to organize dependencies.</span></span> <span data-ttu-id="1f5f5-142">語義版本控制（也稱為 SemVer）會識別具有編號配置 \<主要 > 的封裝。\<次要 >。\<修補 >。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-142">Semantic versioning, also known as SemVer, identifies packages with the numbering scheme \<major>.\<minor>.\<patch>.</span></span> <span data-ttu-id="1f5f5-143">Intellisense 只會顯示一些常用的選項，以簡化語義版本設定。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-143">Intellisense simplifies semantic versioning by showing only a few common choices.</span></span> <span data-ttu-id="1f5f5-144">Intellisense 清單中的最上層專案（在上述範例中為0.4.5）會被視為套件的最新穩定版本。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-144">The top item in the Intellisense list (0.4.5 in the example above) is considered the latest stable version of the package.</span></span> <span data-ttu-id="1f5f5-145">插入號（^）符號符合最新的主要版本，而波狀符號（~）符合最新的次要版本。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-145">The caret (^) symbol matches the most recent major version and the tilde (~) matches the most recent minor version.</span></span> <span data-ttu-id="1f5f5-146">如需 SemVer 所提供完整表現度的指南，請參閱[NPM semver version parser reference](https://www.npmjs.com/package/semver) 。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-146">See the [NPM semver version parser reference](https://www.npmjs.com/package/semver) as a guide to the full expressivity that SemVer provides.</span></span>
+    > <span data-ttu-id="65c6a-141">NPM 會使用[語義版本](https://semver.org/)設定來組織相依性。</span><span class="sxs-lookup"><span data-stu-id="65c6a-141">NPM uses [semantic versioning](https://semver.org/) to organize dependencies.</span></span> <span data-ttu-id="65c6a-142">語義版本控制（也稱為 SemVer）會識別具有編號配置 \<主要 > 的封裝。\<次要 >。\<修補 >。</span><span class="sxs-lookup"><span data-stu-id="65c6a-142">Semantic versioning, also known as SemVer, identifies packages with the numbering scheme \<major>.\<minor>.\<patch>.</span></span> <span data-ttu-id="65c6a-143">Intellisense 只會顯示一些常用的選項，以簡化語義版本設定。</span><span class="sxs-lookup"><span data-stu-id="65c6a-143">Intellisense simplifies semantic versioning by showing only a few common choices.</span></span> <span data-ttu-id="65c6a-144">Intellisense 清單中的最上層專案（在上述範例中為0.4.5）會被視為套件的最新穩定版本。</span><span class="sxs-lookup"><span data-stu-id="65c6a-144">The top item in the Intellisense list (0.4.5 in the example above) is considered the latest stable version of the package.</span></span> <span data-ttu-id="65c6a-145">插入號（^）符號符合最新的主要版本，而波狀符號（~）符合最新的次要版本。</span><span class="sxs-lookup"><span data-stu-id="65c6a-145">The caret (^) symbol matches the most recent major version and the tilde (~) matches the most recent minor version.</span></span> <span data-ttu-id="65c6a-146">如需 SemVer 所提供完整表現度的指南，請參閱[NPM semver version parser reference](https://www.npmjs.com/package/semver) 。</span><span class="sxs-lookup"><span data-stu-id="65c6a-146">See the [NPM semver version parser reference](https://www.npmjs.com/package/semver) as a guide to the full expressivity that SemVer provides.</span></span>
 
-3. <span data-ttu-id="1f5f5-147">新增更多相依性，以載入 grunt-contrib\*-適用于*clean*、 *jshint*、 *concat*、 *uglify*和*watch*的封裝，如下列範例所示。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-147">Add more dependencies to load grunt-contrib-\* packages for *clean*, *jshint*, *concat*, *uglify*, and *watch* as shown in the example below.</span></span> <span data-ttu-id="1f5f5-148">版本不需要符合範例。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-148">The versions don't need to match the example.</span></span>
+3. <span data-ttu-id="65c6a-147">新增更多相依性，以載入 grunt-contrib\*-適用于*clean*、 *jshint*、 *concat*、 *uglify*和*watch*的封裝，如下列範例所示。</span><span class="sxs-lookup"><span data-stu-id="65c6a-147">Add more dependencies to load grunt-contrib-\* packages for *clean*, *jshint*, *concat*, *uglify*, and *watch* as shown in the example below.</span></span> <span data-ttu-id="65c6a-148">版本不需要符合範例。</span><span class="sxs-lookup"><span data-stu-id="65c6a-148">The versions don't need to match the example.</span></span>
 
     ```json
     "devDependencies": {
@@ -109,24 +109,24 @@ ms.locfileid: "74879797"
     }
     ```
 
-4. <span data-ttu-id="1f5f5-149">儲存*封裝. json*檔案。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-149">Save the *package.json* file.</span></span>
+4. <span data-ttu-id="65c6a-149">儲存*封裝. json*檔案。</span><span class="sxs-lookup"><span data-stu-id="65c6a-149">Save the *package.json* file.</span></span>
 
-<span data-ttu-id="1f5f5-150">每個 `devDependencies` 專案的套件都會下載，以及每個套件所需的任何檔案。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-150">The packages for each `devDependencies` item will download, along with any files that each package requires.</span></span> <span data-ttu-id="1f5f5-151">您可以在**方案總管**中啟用 [**顯示所有**檔案] 按鈕，以在*node_modules*目錄中尋找封裝檔案。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-151">You can find the package files in the *node_modules* directory by enabling the **Show All Files** button in **Solution Explorer**.</span></span>
+<span data-ttu-id="65c6a-150">每個 `devDependencies` 專案的套件都會下載，以及每個套件所需的任何檔案。</span><span class="sxs-lookup"><span data-stu-id="65c6a-150">The packages for each `devDependencies` item will download, along with any files that each package requires.</span></span> <span data-ttu-id="65c6a-151">您可以在**方案總管**中啟用 [**顯示所有**檔案] 按鈕，以在*node_modules*目錄中尋找封裝檔案。</span><span class="sxs-lookup"><span data-stu-id="65c6a-151">You can find the package files in the *node_modules* directory by enabling the **Show All Files** button in **Solution Explorer**.</span></span>
 
 ![grunt node_modules](using-grunt/_static/node-modules.png)
 
 > [!NOTE]
-> <span data-ttu-id="1f5f5-153">如有需要，您可以在**方案總管**中手動還原相依性，方法是在 `Dependencies\NPM` 上按一下滑鼠右鍵，然後選取 [**還原封裝**] 功能表選項。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-153">If you need to, you can manually restore dependencies in **Solution Explorer** by right-clicking on `Dependencies\NPM` and selecting the **Restore Packages** menu option.</span></span>
+> <span data-ttu-id="65c6a-153">如有需要，您可以在**方案總管**中手動還原相依性，方法是在 `Dependencies\NPM` 上按一下滑鼠右鍵，然後選取 [**還原封裝**] 功能表選項。</span><span class="sxs-lookup"><span data-stu-id="65c6a-153">If you need to, you can manually restore dependencies in **Solution Explorer** by right-clicking on `Dependencies\NPM` and selecting the **Restore Packages** menu option.</span></span>
 
 ![還原套件](using-grunt/_static/restore-packages.png)
 
-## <a name="configuring-grunt"></a><span data-ttu-id="1f5f5-155">設定 Grunt</span><span class="sxs-lookup"><span data-stu-id="1f5f5-155">Configuring Grunt</span></span>
+## <a name="configuring-grunt"></a><span data-ttu-id="65c6a-155">設定 Grunt</span><span class="sxs-lookup"><span data-stu-id="65c6a-155">Configuring Grunt</span></span>
 
-<span data-ttu-id="1f5f5-156">Grunt 是使用名為*gruntfile.js*的資訊清單來設定，它會定義、載入及註冊可以手動執行或設定為根據 Visual Studio 中的事件自動執行的工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-156">Grunt is configured using a manifest named *Gruntfile.js* that defines, loads and registers tasks that can be run manually or configured to run automatically based on events in Visual Studio.</span></span>
+<span data-ttu-id="65c6a-156">Grunt 是使用名為*gruntfile.js*的資訊清單來設定，它會定義、載入及註冊可以手動執行或設定為根據 Visual Studio 中的事件自動執行的工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-156">Grunt is configured using a manifest named *Gruntfile.js* that defines, loads and registers tasks that can be run manually or configured to run automatically based on events in Visual Studio.</span></span>
 
-1. <span data-ttu-id="1f5f5-157">以滑鼠右鍵按一下專案，然後**選取**[**新增 > 新專案**]。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-157">Right-click the project and select **Add** > **New Item**.</span></span> <span data-ttu-id="1f5f5-158">選取 [ **JavaScript**檔案專案] 範本，將名稱變更為*gruntfile.js*，然後按一下 [**新增**] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-158">Select the **JavaScript File** item template, change the name to *Gruntfile.js*, and click the **Add** button.</span></span>
+1. <span data-ttu-id="65c6a-157">以滑鼠右鍵按一下專案，然後**選取**[**新增 > 新專案**]。</span><span class="sxs-lookup"><span data-stu-id="65c6a-157">Right-click the project and select **Add** > **New Item**.</span></span> <span data-ttu-id="65c6a-158">選取 [ **JavaScript**檔案專案] 範本，將名稱變更為*gruntfile.js*，然後按一下 [**新增**] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="65c6a-158">Select the **JavaScript File** item template, change the name to *Gruntfile.js*, and click the **Add** button.</span></span>
 
-1. <span data-ttu-id="1f5f5-159">將下列程式碼新增至*gruntfile.js*。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-159">Add the following code to *Gruntfile.js*.</span></span> <span data-ttu-id="1f5f5-160">`initConfig` 函式會設定每個封裝的選項，而模組的其餘部分則會載入和註冊工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-160">The `initConfig` function sets options for each package, and the remainder of the module loads and register tasks.</span></span>
+1. <span data-ttu-id="65c6a-159">將下列程式碼新增至*gruntfile.js*。</span><span class="sxs-lookup"><span data-stu-id="65c6a-159">Add the following code to *Gruntfile.js*.</span></span> <span data-ttu-id="65c6a-160">`initConfig` 函式會設定每個封裝的選項，而模組的其餘部分則會載入和註冊工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-160">The `initConfig` function sets options for each package, and the remainder of the module loads and register tasks.</span></span>
 
    ```javascript
    module.exports = function (grunt) {
@@ -135,7 +135,7 @@ ms.locfileid: "74879797"
    };
    ```
 
-1. <span data-ttu-id="1f5f5-161">在 `initConfig` 函式內，新增 `clean` 工作的選項，如下面的範例*gruntfile.js*所示。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-161">Inside the `initConfig` function, add options for the `clean` task as shown in the example *Gruntfile.js* below.</span></span> <span data-ttu-id="1f5f5-162">`clean` 工作接受目錄字串陣列。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-162">The `clean` task accepts an array of directory strings.</span></span> <span data-ttu-id="1f5f5-163">此工作會從*wwwroot/lib*中移除檔案，並移除整個 */temp*目錄。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-163">This task removes files from *wwwroot/lib* and removes the entire */temp* directory.</span></span>
+1. <span data-ttu-id="65c6a-161">在 `initConfig` 函式內，新增 `clean` 工作的選項，如下面的範例*gruntfile.js*所示。</span><span class="sxs-lookup"><span data-stu-id="65c6a-161">Inside the `initConfig` function, add options for the `clean` task as shown in the example *Gruntfile.js* below.</span></span> <span data-ttu-id="65c6a-162">`clean` 工作接受目錄字串陣列。</span><span class="sxs-lookup"><span data-stu-id="65c6a-162">The `clean` task accepts an array of directory strings.</span></span> <span data-ttu-id="65c6a-163">此工作會從*wwwroot/lib*中移除檔案，並移除整個 */temp*目錄。</span><span class="sxs-lookup"><span data-stu-id="65c6a-163">This task removes files from *wwwroot/lib* and removes the entire */temp* directory.</span></span>
 
     ```javascript
     module.exports = function (grunt) {
@@ -145,34 +145,34 @@ ms.locfileid: "74879797"
     };
     ```
 
-1. <span data-ttu-id="1f5f5-164">在 `initConfig` 函數底下，新增對 `grunt.loadNpmTasks`的呼叫。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-164">Below the `initConfig` function, add a call to `grunt.loadNpmTasks`.</span></span> <span data-ttu-id="1f5f5-165">這會讓工作從 Visual Studio 執行。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-165">This will make the task runnable from Visual Studio.</span></span>
+1. <span data-ttu-id="65c6a-164">在 `initConfig` 函數底下，新增對 `grunt.loadNpmTasks`的呼叫。</span><span class="sxs-lookup"><span data-stu-id="65c6a-164">Below the `initConfig` function, add a call to `grunt.loadNpmTasks`.</span></span> <span data-ttu-id="65c6a-165">這會讓工作從 Visual Studio 執行。</span><span class="sxs-lookup"><span data-stu-id="65c6a-165">This will make the task runnable from Visual Studio.</span></span>
 
     ```javascript
     grunt.loadNpmTasks("grunt-contrib-clean");
     ```
 
-1. <span data-ttu-id="1f5f5-166">儲存*gruntfile.js*。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-166">Save *Gruntfile.js*.</span></span> <span data-ttu-id="1f5f5-167">檔案看起來應該類似下面的螢幕擷取畫面。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-167">The file should look something like the screenshot below.</span></span>
+1. <span data-ttu-id="65c6a-166">儲存*gruntfile.js*。</span><span class="sxs-lookup"><span data-stu-id="65c6a-166">Save *Gruntfile.js*.</span></span> <span data-ttu-id="65c6a-167">檔案看起來應該類似下面的螢幕擷取畫面。</span><span class="sxs-lookup"><span data-stu-id="65c6a-167">The file should look something like the screenshot below.</span></span>
 
     ![初始 gruntfile.js](using-grunt/_static/gruntfile-js-initial.png)
 
-1. <span data-ttu-id="1f5f5-169">以滑鼠右鍵按一下 [ *gruntfile.js* ]，然後從內容功能表中選取 [工作執行**器 Explorer** ]。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-169">Right-click *Gruntfile.js* and select **Task Runner Explorer** from the context menu.</span></span> <span data-ttu-id="1f5f5-170">[工作執行**器 Explorer** ] 視窗隨即開啟。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-170">The **Task Runner Explorer** window will open.</span></span>
+1. <span data-ttu-id="65c6a-169">以滑鼠右鍵按一下 [ *gruntfile.js* ]，然後從內容功能表中選取 [工作執行**器 Explorer** ]。</span><span class="sxs-lookup"><span data-stu-id="65c6a-169">Right-click *Gruntfile.js* and select **Task Runner Explorer** from the context menu.</span></span> <span data-ttu-id="65c6a-170">[工作執行**器 Explorer** ] 視窗隨即開啟。</span><span class="sxs-lookup"><span data-stu-id="65c6a-170">The **Task Runner Explorer** window will open.</span></span>
 
     ![工作執行器 explorer 功能表](using-grunt/_static/task-runner-explorer-menu.png)
 
-1. <span data-ttu-id="1f5f5-172">確認 `clean`**顯示在工作**執行**器 Explorer**的 [工作] 底下。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-172">Verify that `clean` shows under **Tasks** in the **Task Runner Explorer**.</span></span>
+1. <span data-ttu-id="65c6a-172">確認 `clean`**顯示在工作**執行**器 Explorer**的 [工作] 底下。</span><span class="sxs-lookup"><span data-stu-id="65c6a-172">Verify that `clean` shows under **Tasks** in the **Task Runner Explorer**.</span></span>
 
     ![工作執行器 explorer 工作清單](using-grunt/_static/task-runner-explorer-tasks.png)
 
-1. <span data-ttu-id="1f5f5-174">以滑鼠右鍵按一下清除工作，然後從內容功能表中選取 [**執行**]。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-174">Right-click the clean task and select **Run** from the context menu.</span></span> <span data-ttu-id="1f5f5-175">命令視窗會顯示工作的進度。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-175">A command window displays progress of the task.</span></span>
+1. <span data-ttu-id="65c6a-174">以滑鼠右鍵按一下清除工作，然後從內容功能表中選取 [**執行**]。</span><span class="sxs-lookup"><span data-stu-id="65c6a-174">Right-click the clean task and select **Run** from the context menu.</span></span> <span data-ttu-id="65c6a-175">命令視窗會顯示工作的進度。</span><span class="sxs-lookup"><span data-stu-id="65c6a-175">A command window displays progress of the task.</span></span>
 
     ![工作執行器 explorer 執行清除工作](using-grunt/_static/task-runner-explorer-run-clean.png)
 
     > [!NOTE]
-    > <span data-ttu-id="1f5f5-177">尚無任何要清除的檔案或目錄。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-177">There are no files or directories to clean yet.</span></span> <span data-ttu-id="1f5f5-178">如果您想要的話，可以在方案總管中手動建立它們，然後以測試的形式執行清理工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-178">If you like, you can manually create them in the Solution Explorer and then run the clean task as a test.</span></span>
+    > <span data-ttu-id="65c6a-177">尚無任何要清除的檔案或目錄。</span><span class="sxs-lookup"><span data-stu-id="65c6a-177">There are no files or directories to clean yet.</span></span> <span data-ttu-id="65c6a-178">如果您想要的話，可以在方案總管中手動建立它們，然後以測試的形式執行清理工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-178">If you like, you can manually create them in the Solution Explorer and then run the clean task as a test.</span></span>
 
-1. <span data-ttu-id="1f5f5-179">在 `initConfig` 函式中，使用下列程式碼新增 `concat` 的專案。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-179">In the `initConfig` function, add an entry for `concat` using the code below.</span></span>
+1. <span data-ttu-id="65c6a-179">在 `initConfig` 函式中，使用下列程式碼新增 `concat` 的專案。</span><span class="sxs-lookup"><span data-stu-id="65c6a-179">In the `initConfig` function, add an entry for `concat` using the code below.</span></span>
 
-    <span data-ttu-id="1f5f5-180">`src` 屬性陣列會列出要合併的檔案，以其應合併的順序排列。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-180">The `src` property array lists files to combine, in the order that they should be combined.</span></span> <span data-ttu-id="1f5f5-181">`dest` 屬性會指派所產生之合併檔案的路徑。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-181">The `dest` property assigns the path to the combined file that's produced.</span></span>
+    <span data-ttu-id="65c6a-180">`src` 屬性陣列會列出要合併的檔案，以其應合併的順序排列。</span><span class="sxs-lookup"><span data-stu-id="65c6a-180">The `src` property array lists files to combine, in the order that they should be combined.</span></span> <span data-ttu-id="65c6a-181">`dest` 屬性會指派所產生之合併檔案的路徑。</span><span class="sxs-lookup"><span data-stu-id="65c6a-181">The `dest` property assigns the path to the combined file that's produced.</span></span>
 
     ```javascript
     concat: {
@@ -184,11 +184,11 @@ ms.locfileid: "74879797"
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="1f5f5-182">上述程式碼中的 `all` 屬性是目標的名稱。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-182">The `all` property in the code above is the name of a target.</span></span> <span data-ttu-id="1f5f5-183">目標會在某些 Grunt 工作中用來允許多個組建環境。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-183">Targets are used in some Grunt tasks to allow multiple build environments.</span></span> <span data-ttu-id="1f5f5-184">您可以使用 IntelliSense 來查看內建目標，或指派自己的目標。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-184">You can view the built-in targets using IntelliSense or assign your own.</span></span>
+    > <span data-ttu-id="65c6a-182">上述程式碼中的 `all` 屬性是目標的名稱。</span><span class="sxs-lookup"><span data-stu-id="65c6a-182">The `all` property in the code above is the name of a target.</span></span> <span data-ttu-id="65c6a-183">目標會在某些 Grunt 工作中用來允許多個組建環境。</span><span class="sxs-lookup"><span data-stu-id="65c6a-183">Targets are used in some Grunt tasks to allow multiple build environments.</span></span> <span data-ttu-id="65c6a-184">您可以使用 IntelliSense 來查看內建目標，或指派自己的目標。</span><span class="sxs-lookup"><span data-stu-id="65c6a-184">You can view the built-in targets using IntelliSense or assign your own.</span></span>
 
-1. <span data-ttu-id="1f5f5-185">使用下列程式碼新增 `jshint` 工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-185">Add the `jshint` task using the code below.</span></span>
+1. <span data-ttu-id="65c6a-185">使用下列程式碼新增 `jshint` 工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-185">Add the `jshint` task using the code below.</span></span>
 
-    <span data-ttu-id="1f5f5-186">Jshint `code-quality` 公用程式會針對在*暫存*目錄中找到的每個 JavaScript 檔案執行。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-186">The jshint `code-quality` utility is run against every JavaScript file found in the *temp* directory.</span></span>
+    <span data-ttu-id="65c6a-186">Jshint `code-quality` 公用程式會針對在*暫存*目錄中找到的每個 JavaScript 檔案執行。</span><span class="sxs-lookup"><span data-stu-id="65c6a-186">The jshint `code-quality` utility is run against every JavaScript file found in the *temp* directory.</span></span>
 
     ```javascript
     jshint: {
@@ -200,11 +200,11 @@ ms.locfileid: "74879797"
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="1f5f5-187">當 JavaScript 使用括弧語法來指派屬性而非點標記法（也就是 `Tastes["Sweet"]` 而不是 `Tastes.Sweet`）時，選項 "-W069" 是 jshint 所產生的錯誤。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-187">The option "-W069" is an error produced by jshint when JavaScript uses bracket syntax to assign a property instead of dot notation, i.e. `Tastes["Sweet"]` instead of `Tastes.Sweet`.</span></span> <span data-ttu-id="1f5f5-188">選項會關閉警告，讓程式的其餘部分繼續進行。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-188">The option turns off the warning to allow the rest of the process to continue.</span></span>
+    > <span data-ttu-id="65c6a-187">當 JavaScript 使用括弧語法來指派屬性而非點標記法（也就是 `Tastes["Sweet"]` 而不是 `Tastes.Sweet`）時，選項 "-W069" 是 jshint 所產生的錯誤。</span><span class="sxs-lookup"><span data-stu-id="65c6a-187">The option "-W069" is an error produced by jshint when JavaScript uses bracket syntax to assign a property instead of dot notation, i.e. `Tastes["Sweet"]` instead of `Tastes.Sweet`.</span></span> <span data-ttu-id="65c6a-188">選項會關閉警告，讓程式的其餘部分繼續進行。</span><span class="sxs-lookup"><span data-stu-id="65c6a-188">The option turns off the warning to allow the rest of the process to continue.</span></span>
 
-1. <span data-ttu-id="1f5f5-189">使用下列程式碼新增 `uglify` 工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-189">Add the `uglify` task using the code below.</span></span>
+1. <span data-ttu-id="65c6a-189">使用下列程式碼新增 `uglify` 工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-189">Add the `uglify` task using the code below.</span></span>
 
-    <span data-ttu-id="1f5f5-190">此工作會縮短在臨時目錄中找到的*結合 .js*檔案，並依照標準命名慣例，在 wwwroot/lib 中建立結果檔案， *\>. min .js\<檔案名*。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-190">The task minifies the *combined.js* file found in the temp directory and creates the result file in wwwroot/lib following the standard naming convention *\<file name\>.min.js*.</span></span>
+    <span data-ttu-id="65c6a-190">此工作會縮短在臨時目錄中找到的*結合 .js*檔案，並依照標準命名慣例，在 wwwroot/lib 中建立結果檔案， *\>. min .js\<檔案名*。</span><span class="sxs-lookup"><span data-stu-id="65c6a-190">The task minifies the *combined.js* file found in the temp directory and creates the result file in wwwroot/lib following the standard naming convention *\<file name\>.min.js*.</span></span>
 
     ```javascript
     uglify: {
@@ -215,7 +215,7 @@ ms.locfileid: "74879797"
     },
     ```
 
-1. <span data-ttu-id="1f5f5-191">在載入 `grunt-contrib-clean`之 `grunt.loadNpmTasks` 的呼叫底下，請使用下列程式碼，為 jshint、concat 和 uglify 加入相同的呼叫。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-191">Under the call to `grunt.loadNpmTasks` that loads `grunt-contrib-clean`, include the same call for jshint, concat, and uglify using the code below.</span></span>
+1. <span data-ttu-id="65c6a-191">在載入 `grunt-contrib-clean`之 `grunt.loadNpmTasks` 的呼叫底下，請使用下列程式碼，為 jshint、concat 和 uglify 加入相同的呼叫。</span><span class="sxs-lookup"><span data-stu-id="65c6a-191">Under the call to `grunt.loadNpmTasks` that loads `grunt-contrib-clean`, include the same call for jshint, concat, and uglify using the code below.</span></span>
 
     ```javascript
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -223,36 +223,36 @@ ms.locfileid: "74879797"
     grunt.loadNpmTasks('grunt-contrib-uglify');
     ```
 
-1. <span data-ttu-id="1f5f5-192">儲存*gruntfile.js*。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-192">Save *Gruntfile.js*.</span></span> <span data-ttu-id="1f5f5-193">檔案看起來應該類似下列範例。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-193">The file should look something like the example below.</span></span>
+1. <span data-ttu-id="65c6a-192">儲存*gruntfile.js*。</span><span class="sxs-lookup"><span data-stu-id="65c6a-192">Save *Gruntfile.js*.</span></span> <span data-ttu-id="65c6a-193">檔案看起來應該類似下列範例。</span><span class="sxs-lookup"><span data-stu-id="65c6a-193">The file should look something like the example below.</span></span>
 
     ![完整的 grunt 檔案範例](using-grunt/_static/gruntfile-js-complete.png)
 
-1. <span data-ttu-id="1f5f5-195">請注意，[工作執行**器**] [工具組] [任務] 清單包含 `clean`、`concat`、`jshint` 和 `uglify` 工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-195">Notice that the **Task Runner Explorer** Tasks list includes `clean`, `concat`, `jshint` and `uglify` tasks.</span></span> <span data-ttu-id="1f5f5-196">依序執行每個工作，並觀察**方案總管**中的結果。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-196">Run each task in order and observe the results in **Solution Explorer**.</span></span> <span data-ttu-id="1f5f5-197">每項工作都應該執行，而不會發生錯誤。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-197">Each task should run without errors.</span></span>
+1. <span data-ttu-id="65c6a-195">請注意，[工作執行**器**] [工具組] [任務] 清單包含 `clean`、`concat`、`jshint` 和 `uglify` 工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-195">Notice that the **Task Runner Explorer** Tasks list includes `clean`, `concat`, `jshint` and `uglify` tasks.</span></span> <span data-ttu-id="65c6a-196">依序執行每個工作，並觀察**方案總管**中的結果。</span><span class="sxs-lookup"><span data-stu-id="65c6a-196">Run each task in order and observe the results in **Solution Explorer**.</span></span> <span data-ttu-id="65c6a-197">每項工作都應該執行，而不會發生錯誤。</span><span class="sxs-lookup"><span data-stu-id="65c6a-197">Each task should run without errors.</span></span>
 
     ![工作執行器 explorer 執行每項工作](using-grunt/_static/task-runner-explorer-run-each-task.png)
 
-    <span data-ttu-id="1f5f5-199">Concat 工作會建立新的*合併 .js*檔案，並將其放入臨時目錄中。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-199">The concat task creates a new *combined.js* file and places it into the temp directory.</span></span> <span data-ttu-id="1f5f5-200">`jshint` 工作只會執行，而且不會產生輸出。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-200">The `jshint` task simply runs and doesn't produce output.</span></span> <span data-ttu-id="1f5f5-201">`uglify` 工作會建立新的*結合的最小 .js*檔案，並將其放入*wwwroot/lib*中。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-201">The `uglify` task creates a new *combined.min.js* file and places it into *wwwroot/lib*.</span></span> <span data-ttu-id="1f5f5-202">完成時，解決方案看起來應該像下面的螢幕擷取畫面：</span><span class="sxs-lookup"><span data-stu-id="1f5f5-202">On completion, the solution should look something like the screenshot below:</span></span>
+    <span data-ttu-id="65c6a-199">Concat 工作會建立新的*合併 .js*檔案，並將其放入臨時目錄中。</span><span class="sxs-lookup"><span data-stu-id="65c6a-199">The concat task creates a new *combined.js* file and places it into the temp directory.</span></span> <span data-ttu-id="65c6a-200">`jshint` 工作只會執行，而且不會產生輸出。</span><span class="sxs-lookup"><span data-stu-id="65c6a-200">The `jshint` task simply runs and doesn't produce output.</span></span> <span data-ttu-id="65c6a-201">`uglify` 工作會建立新的*結合的最小 .js*檔案，並將其放入*wwwroot/lib*中。</span><span class="sxs-lookup"><span data-stu-id="65c6a-201">The `uglify` task creates a new *combined.min.js* file and places it into *wwwroot/lib*.</span></span> <span data-ttu-id="65c6a-202">完成時，解決方案看起來應該像下面的螢幕擷取畫面：</span><span class="sxs-lookup"><span data-stu-id="65c6a-202">On completion, the solution should look something like the screenshot below:</span></span>
 
     ![所有工作之後的方案瀏覽器](using-grunt/_static/solution-explorer-after-all-tasks.png)
 
     > [!NOTE]
-    > <span data-ttu-id="1f5f5-204">如需每個套件選項的詳細資訊，請造訪主頁面上 [搜尋] 方塊中的[https://www.npmjs.com/](https://www.npmjs.com/)並查閱封裝名稱。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-204">For more information on the options for each package, visit [https://www.npmjs.com/](https://www.npmjs.com/) and lookup the package name in the search box on the main page.</span></span> <span data-ttu-id="1f5f5-205">例如，您可以查詢 grunt-contrib-clean 封裝，以取得說明其所有參數的檔連結。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-205">For example, you can look up the grunt-contrib-clean package to get a documentation link that explains all of its parameters.</span></span>
+    > <span data-ttu-id="65c6a-204">如需每個套件選項的詳細資訊，請造訪主頁面上 [搜尋] 方塊中的[https://www.npmjs.com/](https://www.npmjs.com/)並查閱封裝名稱。</span><span class="sxs-lookup"><span data-stu-id="65c6a-204">For more information on the options for each package, visit [https://www.npmjs.com/](https://www.npmjs.com/) and lookup the package name in the search box on the main page.</span></span> <span data-ttu-id="65c6a-205">例如，您可以查詢 grunt-contrib-clean 封裝，以取得說明其所有參數的檔連結。</span><span class="sxs-lookup"><span data-stu-id="65c6a-205">For example, you can look up the grunt-contrib-clean package to get a documentation link that explains all of its parameters.</span></span>
 
-### <a name="all-together-now"></a><span data-ttu-id="1f5f5-206">總結</span><span class="sxs-lookup"><span data-stu-id="1f5f5-206">All together now</span></span>
+### <a name="all-together-now"></a><span data-ttu-id="65c6a-206">立即整合</span><span class="sxs-lookup"><span data-stu-id="65c6a-206">All together now</span></span>
 
-<span data-ttu-id="1f5f5-207">使用 Grunt `registerTask()` 方法，以特定循序執行一系列的工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-207">Use the Grunt `registerTask()` method to run a series of tasks in a particular sequence.</span></span> <span data-ttu-id="1f5f5-208">例如，若要執行上述的範例步驟，請 > concat-> jshint-> uglify 中，將下列程式碼新增至模組。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-208">For example, to run the example steps above in the order clean -> concat -> jshint -> uglify, add the code below to the module.</span></span> <span data-ttu-id="1f5f5-209">在 initConfig 以外，程式碼應該加入與 loadNpmTasks （）呼叫相同的層級。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-209">The code should be added to the same level as the loadNpmTasks() calls, outside initConfig.</span></span>
+<span data-ttu-id="65c6a-207">使用 Grunt `registerTask()` 方法，以特定循序執行一系列的工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-207">Use the Grunt `registerTask()` method to run a series of tasks in a particular sequence.</span></span> <span data-ttu-id="65c6a-208">例如，若要執行上述的範例步驟，請 > concat-> jshint-> uglify 中，將下列程式碼新增至模組。</span><span class="sxs-lookup"><span data-stu-id="65c6a-208">For example, to run the example steps above in the order clean -> concat -> jshint -> uglify, add the code below to the module.</span></span> <span data-ttu-id="65c6a-209">在 initConfig 以外，程式碼應該加入與 loadNpmTasks （）呼叫相同的層級。</span><span class="sxs-lookup"><span data-stu-id="65c6a-209">The code should be added to the same level as the loadNpmTasks() calls, outside initConfig.</span></span>
 
 ```javascript
 grunt.registerTask("all", ['clean', 'concat', 'jshint', 'uglify']);
 ```
 
-<span data-ttu-id="1f5f5-210">新工作會顯示在 [工作執行器] 中的 [別名工作] 底下。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-210">The new task shows up in Task Runner Explorer under Alias Tasks.</span></span> <span data-ttu-id="1f5f5-211">您可以用滑鼠右鍵按一下並執行，就如同其他工作一樣。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-211">You can right-click and run it just as you would other tasks.</span></span> <span data-ttu-id="1f5f5-212">`all` 工作將依序 `clean`、`concat`、`jshint` 和 `uglify`執行。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-212">The `all` task will run `clean`, `concat`, `jshint` and `uglify`, in order.</span></span>
+<span data-ttu-id="65c6a-210">新工作會顯示在 [工作執行器] 中的 [別名工作] 底下。</span><span class="sxs-lookup"><span data-stu-id="65c6a-210">The new task shows up in Task Runner Explorer under Alias Tasks.</span></span> <span data-ttu-id="65c6a-211">您可以用滑鼠右鍵按一下並執行，就如同其他工作一樣。</span><span class="sxs-lookup"><span data-stu-id="65c6a-211">You can right-click and run it just as you would other tasks.</span></span> <span data-ttu-id="65c6a-212">`all` 工作將依序 `clean`、`concat`、`jshint` 和 `uglify`執行。</span><span class="sxs-lookup"><span data-stu-id="65c6a-212">The `all` task will run `clean`, `concat`, `jshint` and `uglify`, in order.</span></span>
 
 ![別名 grunt 工作](using-grunt/_static/alias-tasks.png)
 
-## <a name="watching-for-changes"></a><span data-ttu-id="1f5f5-214">監看變更</span><span class="sxs-lookup"><span data-stu-id="1f5f5-214">Watching for changes</span></span>
+## <a name="watching-for-changes"></a><span data-ttu-id="65c6a-214">監看變更</span><span class="sxs-lookup"><span data-stu-id="65c6a-214">Watching for changes</span></span>
 
-<span data-ttu-id="1f5f5-215">`watch` 工作會留意檔案和目錄。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-215">A `watch` task keeps an eye on files and directories.</span></span> <span data-ttu-id="1f5f5-216">[監看式] 會在偵測到變更時自動觸發工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-216">The watch triggers tasks automatically if it detects changes.</span></span> <span data-ttu-id="1f5f5-217">將下列程式碼新增至 initConfig，以監看 TypeScript 目錄中 \*.js 檔案的變更。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-217">Add the code below to initConfig to watch for changes to \*.js files in the TypeScript directory.</span></span> <span data-ttu-id="1f5f5-218">如果 JavaScript 檔案已變更，`watch` 將會執行 `all` 工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-218">If a JavaScript file is changed, `watch` will run the `all` task.</span></span>
+<span data-ttu-id="65c6a-215">`watch` 工作會留意檔案和目錄。</span><span class="sxs-lookup"><span data-stu-id="65c6a-215">A `watch` task keeps an eye on files and directories.</span></span> <span data-ttu-id="65c6a-216">[監看式] 會在偵測到變更時自動觸發工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-216">The watch triggers tasks automatically if it detects changes.</span></span> <span data-ttu-id="65c6a-217">將下列程式碼新增至 initConfig，以監看 TypeScript 目錄中 \*.js 檔案的變更。</span><span class="sxs-lookup"><span data-stu-id="65c6a-217">Add the code below to initConfig to watch for changes to \*.js files in the TypeScript directory.</span></span> <span data-ttu-id="65c6a-218">如果 JavaScript 檔案已變更，`watch` 將會執行 `all` 工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-218">If a JavaScript file is changed, `watch` will run the `all` task.</span></span>
 
 ```javascript
 watch: {
@@ -261,26 +261,26 @@ watch: {
 }
 ```
 
-<span data-ttu-id="1f5f5-219">加入 `loadNpmTasks()` 的呼叫，以在 [工作執行器] Explorer 中顯示 `watch` 工作。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-219">Add a call to `loadNpmTasks()` to show the `watch` task in Task Runner Explorer.</span></span>
+<span data-ttu-id="65c6a-219">加入 `loadNpmTasks()` 的呼叫，以在 [工作執行器] Explorer 中顯示 `watch` 工作。</span><span class="sxs-lookup"><span data-stu-id="65c6a-219">Add a call to `loadNpmTasks()` to show the `watch` task in Task Runner Explorer.</span></span>
 
 ```javascript
 grunt.loadNpmTasks('grunt-contrib-watch');
 ```
 
-<span data-ttu-id="1f5f5-220">以滑鼠右鍵按一下工作執行器 Explorer 中的 [監看式] 工作，然後從內容功能表中選取 [執行]。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-220">Right-click the watch task in Task Runner Explorer and select Run from the context menu.</span></span> <span data-ttu-id="1f5f5-221">顯示執行中監看工作的命令視窗會顯示「正在等候 ...」消息。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-221">The command window that shows the watch task running will display a "Waiting…" message.</span></span> <span data-ttu-id="1f5f5-222">開啟其中一個 TypeScript 檔案，加入一個空格，然後儲存檔案。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-222">Open one of the TypeScript files, add a space, and then save the file.</span></span> <span data-ttu-id="1f5f5-223">這會觸發監看式工作，並觸發其他工作依序執行。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-223">This will trigger the watch task and trigger the other tasks to run in order.</span></span> <span data-ttu-id="1f5f5-224">下列螢幕擷取畫面顯示範例執行。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-224">The screenshot below shows a sample run.</span></span>
+<span data-ttu-id="65c6a-220">以滑鼠右鍵按一下工作執行器 Explorer 中的 [監看式] 工作，然後從內容功能表中選取 [執行]。</span><span class="sxs-lookup"><span data-stu-id="65c6a-220">Right-click the watch task in Task Runner Explorer and select Run from the context menu.</span></span> <span data-ttu-id="65c6a-221">顯示執行中監看工作的命令視窗會顯示「正在等候 ...」消息。</span><span class="sxs-lookup"><span data-stu-id="65c6a-221">The command window that shows the watch task running will display a "Waiting…" message.</span></span> <span data-ttu-id="65c6a-222">開啟其中一個 TypeScript 檔案，加入一個空格，然後儲存檔案。</span><span class="sxs-lookup"><span data-stu-id="65c6a-222">Open one of the TypeScript files, add a space, and then save the file.</span></span> <span data-ttu-id="65c6a-223">這會觸發監看式工作，並觸發其他工作依序執行。</span><span class="sxs-lookup"><span data-stu-id="65c6a-223">This will trigger the watch task and trigger the other tasks to run in order.</span></span> <span data-ttu-id="65c6a-224">下列螢幕擷取畫面顯示範例執行。</span><span class="sxs-lookup"><span data-stu-id="65c6a-224">The screenshot below shows a sample run.</span></span>
 
 ![執行工作輸出](using-grunt/_static/watch-running.png)
 
-## <a name="binding-to-visual-studio-events"></a><span data-ttu-id="1f5f5-226">系結至 Visual Studio 事件</span><span class="sxs-lookup"><span data-stu-id="1f5f5-226">Binding to Visual Studio events</span></span>
+## <a name="binding-to-visual-studio-events"></a><span data-ttu-id="65c6a-226">系結至 Visual Studio 事件</span><span class="sxs-lookup"><span data-stu-id="65c6a-226">Binding to Visual Studio events</span></span>
 
-<span data-ttu-id="1f5f5-227">除非您想要在每次使用 Visual Studio 時手動啟動工作，否則請**在組建、** **清除**和**專案開啟**事件**之後**，將工作系結至。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-227">Unless you want to manually start your tasks every time you work in Visual Studio, bind tasks to **Before Build**, **After Build**, **Clean**, and **Project Open** events.</span></span>
+<span data-ttu-id="65c6a-227">除非您想要在每次使用 Visual Studio 時手動啟動工作，否則請**在組建、** **清除**和**專案開啟**事件**之後**，將工作系結至。</span><span class="sxs-lookup"><span data-stu-id="65c6a-227">Unless you want to manually start your tasks every time you work in Visual Studio, bind tasks to **Before Build**, **After Build**, **Clean**, and **Project Open** events.</span></span>
 
-<span data-ttu-id="1f5f5-228">系結 `watch`，讓它在每次開啟 Visual Studio 時都執行。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-228">Bind `watch` so that it runs every time Visual Studio opens.</span></span> <span data-ttu-id="1f5f5-229">在 工作執行器 中，以滑鼠右鍵按一下 監看式 工作，然後從內容**功能表選取** 系結 > **專案**。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-229">In Task Runner Explorer, right-click the watch task and select **Bindings** > **Project Open** from the context menu.</span></span>
+<span data-ttu-id="65c6a-228">系結 `watch`，讓它在每次開啟 Visual Studio 時都執行。</span><span class="sxs-lookup"><span data-stu-id="65c6a-228">Bind `watch` so that it runs every time Visual Studio opens.</span></span> <span data-ttu-id="65c6a-229">在 工作執行器 中，以滑鼠右鍵按一下 監看式 工作，然後從內容**功能表選取** 系結 > **專案**。</span><span class="sxs-lookup"><span data-stu-id="65c6a-229">In Task Runner Explorer, right-click the watch task and select **Bindings** > **Project Open** from the context menu.</span></span>
 
 ![將工作系結至專案開啟](using-grunt/_static/bindings-project-open.png)
 
-<span data-ttu-id="1f5f5-231">卸載並重載專案。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-231">Unload and reload the project.</span></span> <span data-ttu-id="1f5f5-232">當專案再次載入時，[監看式] 工作會自動開始執行。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-232">When the project loads again, the watch task starts running automatically.</span></span>
+<span data-ttu-id="65c6a-231">卸載並重載專案。</span><span class="sxs-lookup"><span data-stu-id="65c6a-231">Unload and reload the project.</span></span> <span data-ttu-id="65c6a-232">當專案再次載入時，[監看式] 工作會自動開始執行。</span><span class="sxs-lookup"><span data-stu-id="65c6a-232">When the project loads again, the watch task starts running automatically.</span></span>
 
-## <a name="summary"></a><span data-ttu-id="1f5f5-233">總結</span><span class="sxs-lookup"><span data-stu-id="1f5f5-233">Summary</span></span>
+## <a name="summary"></a><span data-ttu-id="65c6a-233">摘要</span><span class="sxs-lookup"><span data-stu-id="65c6a-233">Summary</span></span>
 
-<span data-ttu-id="1f5f5-234">Grunt 是功能強大的工作執行器，可以用來將大部分的用戶端組建作業自動化。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-234">Grunt is a powerful task runner that can be used to automate most client-build tasks.</span></span> <span data-ttu-id="1f5f5-235">Grunt 會利用 NPM 來傳遞其套件，並使用與 Visual Studio 的功能工具整合。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-235">Grunt leverages NPM to deliver its packages, and features tooling integration with Visual Studio.</span></span> <span data-ttu-id="1f5f5-236">Visual Studio 的工作執行器 Explorer 會偵測設定檔案的變更，並提供便利的介面來執行工作、查看執行中的工作，以及將工作系結至 Visual Studio 的事件。</span><span class="sxs-lookup"><span data-stu-id="1f5f5-236">Visual Studio's Task Runner Explorer detects changes to configuration files and provides a convenient interface to run tasks, view running tasks, and bind tasks to Visual Studio events.</span></span>
+<span data-ttu-id="65c6a-234">Grunt 是功能強大的工作執行器，可以用來將大部分的用戶端組建作業自動化。</span><span class="sxs-lookup"><span data-stu-id="65c6a-234">Grunt is a powerful task runner that can be used to automate most client-build tasks.</span></span> <span data-ttu-id="65c6a-235">Grunt 會利用 NPM 來傳遞其套件，並使用與 Visual Studio 的功能工具整合。</span><span class="sxs-lookup"><span data-stu-id="65c6a-235">Grunt leverages NPM to deliver its packages, and features tooling integration with Visual Studio.</span></span> <span data-ttu-id="65c6a-236">Visual Studio 的工作執行器 Explorer 會偵測設定檔案的變更，並提供便利的介面來執行工作、查看執行中的工作，以及將工作系結至 Visual Studio 的事件。</span><span class="sxs-lookup"><span data-stu-id="65c6a-236">Visual Studio's Task Runner Explorer detects changes to configuration files and provides a convenient interface to run tasks, view running tasks, and bind tasks to Visual Studio events.</span></span>

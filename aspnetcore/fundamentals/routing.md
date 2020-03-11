@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 5e3ff65420b3c6769d52f8b96c216043cb1fdc1a
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: 113bb79318283e814c0e64ad4dc9d193282f0c52
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727002"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664924"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -25,7 +25,7 @@ ms.locfileid: "76727002"
 > [!IMPORTANT]
 > 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。 如需 Razor Pages 中路由慣例的資訊，請參閱 <xref:razor-pages/razor-pages-conventions>。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>路由的基本概念
 
@@ -38,7 +38,7 @@ ms.locfileid: "76727002"
 
 Web API 應該使用屬性路由傳送來將應用程式功能模型建構為作業由 HTTP 指令動詞代表的資源集合。 這表示相同邏輯資源上的許多作業 (例如，GET、POST) 都會使用相同的 URL。 屬性路由提供仔細設計 API 公用端點配置所需的控制層級。
 
-Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱<xref:razor-pages/index>和<xref:razor-pages/razor-pages-conventions>。
+Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱 <xref:razor-pages/index> 和 <xref:razor-pages/razor-pages-conventions>。
 
 URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的情況下開發應用程式。 這項支援可讓您從基本路由設定開始，並在決定應用程式資源配置之後修改路由。
 
@@ -457,16 +457,16 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 注意事項 |
+| constraint (條件約束) | 範例 | 範例相符項目 | 注意 |
 | ---------- | ------- | --------------- | ----- |
-| `int` | `{id:int}` | `123456789`、 `-123456789` | 符合任何整數 |
-| `bool` | `{active:bool}` | `true`、 `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
-| `datetime` | `{dob:datetime}` | `2016-12-31`、 `2016-12-31 7:32pm` | 符合有效的 `DateTime` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `decimal` | `{price:decimal}` | `49.99`、 `-1,000.01` | 符合有效的 `decimal` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `double` | `{weight:double}` | `1.234`、 `-1,001.01e8` | 符合有效的 `double` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `float` | `{weight:float}` | `1.234`、 `-1,001.01e8` | 符合有效的 `float` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`、 `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 符合有效的 `Guid` 值 |
-| `long` | `{ticks:long}` | `123456789`、 `-123456789` | 符合有效的 `long` 值 |
+| `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數 |
+| `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
+| `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm` | 符合有效的 `DateTime` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | 符合有效的 `decimal` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `double` | `{weight:double}` | `1.234`, `-1,001.01e8` | 符合有效的 `double` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `float` | `{weight:float}` | `1.234`, `-1,001.01e8` | 符合有效的 `float` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 符合有效的 `Guid` 值 |
+| `long` | `{ticks:long}` | `123456789`, `-123456789` | 符合有效的 `long` 值 |
 | `minlength(value)` | `{username:minlength(4)}` | `Rick` | 字串必須至少有 4 個字元 |
 | `maxlength(value)` | `{filename:maxlength(8)}` | `Richard` | 字串不能超過 8 個字元 |
 | `length(length)` | `{filename:length(12)}` | `somefile.txt` | 字串長度必須剛好是 12 個字元 |
@@ -501,7 +501,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中所使用的規則運算式通常以插入號 (`^`) 字元開頭，並符合字串的開始位置。 運算式通常以貨幣符號 (`$`) 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算式   | String    | 相符項目 | 註解               |
+| 運算是   | String    | 相符項目 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
@@ -518,7 +518,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 除了內建的路由限制式之外，自訂路由限制式也可以透過實作 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面來建立。 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面包含單一方法 `Match`，此方法會在滿足限制式時傳回 `true`，否則會傳回 `false`。
 
-若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 直接設定 `services.Configure<RouteOptions>` 來更新。 例如，
+若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 直接設定 `services.Configure<RouteOptions>` 來更新。 例如：
 
 ```csharp
 services.AddRouting(options =>
@@ -527,7 +527,7 @@ services.AddRouting(options =>
 });
 ```
 
-限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如，
+限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如：
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -578,7 +578,7 @@ ASP.NET Core 針對搭配產生的路由使用參數轉換程式提供了 API �
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-在上述範例的結尾產生的 <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> 是 `/package/create/123`。 字典提供「追蹤套件路由」範本 `operation` 的 `id` 和 `package/{operation}/{id}` 路由值。 如需詳細資訊，請參閱[使用路由中介軟體](#use-routing-middleware)一節或[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)中的範例程式碼。
+在上述範例的結尾產生的 <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> 是 `/package/create/123`。 字典提供「追蹤套件路由」範本 `operation` 的 `id` 和 `package/{operation}/{id}` 路由值。 如需詳細資訊，請參閱[使用路由中介軟體](#use-routing-middleware)一節或[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)中的範例程式碼。
 
 <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> 建構函式的第二個參數是「環境值」的集合。 環境值便於使用，因為它們會限制開發人員必須在要求內容中指定的值數目。 目前要求的目前路由值被視為用於連結產生的環境值。 在 ASP.NET Core MVC 應用程式 `About` 的 `HomeController` 動作中，您不需要指定控制器路由值以連結到 `Index` 動作&mdash;會使用 `Home` 的環境值。
 
@@ -709,7 +709,7 @@ services.AddMvc(options => options.EnableEndpointRouting = false)
 > [!IMPORTANT]
 > 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。 如需 Razor Pages 中路由慣例的資訊，請參閱 <xref:razor-pages/razor-pages-conventions>。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>路由的基本概念
 
@@ -722,7 +722,7 @@ services.AddMvc(options => options.EnableEndpointRouting = false)
 
 Web API 應該使用屬性路由傳送來將應用程式功能模型建構為作業由 HTTP 指令動詞代表的資源集合。 這表示相同邏輯資源上的許多作業 (例如，GET、POST) 都會使用相同的 URL。 屬性路由提供仔細設計 API 公用端點配置所需的控制層級。
 
-Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱<xref:razor-pages/index>和<xref:razor-pages/razor-pages-conventions>。
+Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱 <xref:razor-pages/index> 和 <xref:razor-pages/razor-pages-conventions>。
 
 URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的情況下開發應用程式。 這項支援可讓您從基本路由設定開始，並在決定應用程式資源配置之後修改路由。
 
@@ -1118,16 +1118,16 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 注意事項 |
+| constraint (條件約束) | 範例 | 範例相符項目 | 注意 |
 | ---------- | ------- | --------------- | ----- |
-| `int` | `{id:int}` | `123456789`、 `-123456789` | 符合任何整數 |
-| `bool` | `{active:bool}` | `true`、 `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
-| `datetime` | `{dob:datetime}` | `2016-12-31`、 `2016-12-31 7:32pm` | 符合有效的 `DateTime` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `decimal` | `{price:decimal}` | `49.99`、 `-1,000.01` | 符合有效的 `decimal` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `double` | `{weight:double}` | `1.234`、 `-1,001.01e8` | 符合有效的 `double` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `float` | `{weight:float}` | `1.234`、 `-1,001.01e8` | 符合有效的 `float` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`、 `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 符合有效的 `Guid` 值 |
-| `long` | `{ticks:long}` | `123456789`、 `-123456789` | 符合有效的 `long` 值 |
+| `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數 |
+| `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
+| `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm` | 符合有效的 `DateTime` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | 符合有效的 `decimal` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `double` | `{weight:double}` | `1.234`, `-1,001.01e8` | 符合有效的 `double` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `float` | `{weight:float}` | `1.234`, `-1,001.01e8` | 符合有效的 `float` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 符合有效的 `Guid` 值 |
+| `long` | `{ticks:long}` | `123456789`, `-123456789` | 符合有效的 `long` 值 |
 | `minlength(value)` | `{username:minlength(4)}` | `Rick` | 字串必須至少有 4 個字元 |
 | `maxlength(value)` | `{filename:maxlength(8)}` | `Richard` | 字串不能超過 8 個字元 |
 | `length(length)` | `{filename:length(12)}` | `somefile.txt` | 字串長度必須剛好是 12 個字元 |
@@ -1162,7 +1162,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中所使用的規則運算式通常以插入號 (`^`) 字元開頭，並符合字串的開始位置。 運算式通常以貨幣符號 (`$`) 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算式   | String    | 相符項目 | 註解               |
+| 運算是   | String    | 相符項目 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
@@ -1179,7 +1179,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 除了內建的路由限制式之外，自訂路由限制式也可以透過實作 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面來建立。 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面包含單一方法 `Match`，此方法會在滿足限制式時傳回 `true`，否則會傳回 `false`。
 
-若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 直接設定 `services.Configure<RouteOptions>` 來更新。 例如，
+若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 直接設定 `services.Configure<RouteOptions>` 來更新。 例如：
 
 ```csharp
 services.AddRouting(options =>
@@ -1188,7 +1188,7 @@ services.AddRouting(options =>
 });
 ```
 
-限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如，
+限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如：
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -1239,7 +1239,7 @@ ASP.NET Core 針對搭配產生的路由使用參數轉換程式提供了 API �
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-在上述範例的結尾產生的 <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> 是 `/package/create/123`。 字典提供「追蹤套件路由」範本 `operation` 的 `id` 和 `package/{operation}/{id}` 路由值。 如需詳細資訊，請參閱[使用路由中介軟體](#use-routing-middleware)一節或[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)中的範例程式碼。
+在上述範例的結尾產生的 <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> 是 `/package/create/123`。 字典提供「追蹤套件路由」範本 `operation` 的 `id` 和 `package/{operation}/{id}` 路由值。 如需詳細資訊，請參閱[使用路由中介軟體](#use-routing-middleware)一節或[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)中的範例程式碼。
 
 <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> 建構函式的第二個參數是「環境值」的集合。 環境值便於使用，因為它們會限制開發人員必須在要求內容中指定的值數目。 目前要求的目前路由值被視為用於連結產生的環境值。 在 ASP.NET Core MVC 應用程式 `About` 的 `HomeController` 動作中，您不需要指定控制器路由值以連結到 `Index` 動作&mdash;會使用 `Home` 的環境值。
 
@@ -1285,7 +1285,7 @@ services.AddMvc()
 > [!IMPORTANT]
 > 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。 如需 Razor Pages 中路由慣例的資訊，請參閱 <xref:razor-pages/razor-pages-conventions>。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>路由的基本概念
 
@@ -1298,7 +1298,7 @@ services.AddMvc()
 
 Web API 應該使用屬性路由傳送來將應用程式功能模型建構為作業由 HTTP 指令動詞代表的資源集合。 這表示相同邏輯資源上的許多作業 (例如，GET、POST) 都會使用相同的 URL。 屬性路由提供仔細設計 API 公用端點配置所需的控制層級。
 
-Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱<xref:razor-pages/index>和<xref:razor-pages/razor-pages-conventions>。
+Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱 <xref:razor-pages/index> 和 <xref:razor-pages/razor-pages-conventions>。
 
 URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的情況下開發應用程式。 這項支援可讓您從基本路由設定開始，並在決定應用程式資源配置之後修改路由。
 
@@ -1572,16 +1572,16 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 注意事項 |
+| constraint (條件約束) | 範例 | 範例相符項目 | 注意 |
 | ---------- | ------- | --------------- | ----- |
-| `int` | `{id:int}` | `123456789`、 `-123456789` | 符合任何整數 |
-| `bool` | `{active:bool}` | `true`、 `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
-| `datetime` | `{dob:datetime}` | `2016-12-31`、 `2016-12-31 7:32pm` | 符合有效的 `DateTime` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `decimal` | `{price:decimal}` | `49.99`、 `-1,000.01` | 符合有效的 `decimal` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `double` | `{weight:double}` | `1.234`、 `-1,001.01e8` | 符合有效的 `double` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `float` | `{weight:float}` | `1.234`、 `-1,001.01e8` | 符合有效的 `float` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
-| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`、 `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 符合有效的 `Guid` 值 |
-| `long` | `{ticks:long}` | `123456789`、 `-123456789` | 符合有效的 `long` 值 |
+| `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數 |
+| `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
+| `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm` | 符合有效的 `DateTime` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | 符合有效的 `decimal` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `double` | `{weight:double}` | `1.234`, `-1,001.01e8` | 符合有效的 `double` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `float` | `{weight:float}` | `1.234`, `-1,001.01e8` | 符合有效的 `float` 值 (在不因國別而異的文化特性中 - 請參閱警告) |
+| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 符合有效的 `Guid` 值 |
+| `long` | `{ticks:long}` | `123456789`, `-123456789` | 符合有效的 `long` 值 |
 | `minlength(value)` | `{username:minlength(4)}` | `Rick` | 字串必須至少有 4 個字元 |
 | `maxlength(value)` | `{filename:maxlength(8)}` | `Richard` | 字串不能超過 8 個字元 |
 | `length(length)` | `{filename:length(12)}` | `somefile.txt` | 字串長度必須剛好是 12 個字元 |
@@ -1616,7 +1616,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中所使用的規則運算式通常以插入號 (`^`) 字元開頭，並符合字串的開始位置。 運算式通常以貨幣符號 (`$`) 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算式   | String    | 相符項目 | 註解               |
+| 運算是   | String    | 相符項目 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
@@ -1633,7 +1633,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 除了內建的路由限制式之外，自訂路由限制式也可以透過實作 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面來建立。 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 介面包含單一方法 `Match`，此方法會在滿足限制式時傳回 `true`，否則會傳回 `false`。
 
-若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 直接設定 `services.Configure<RouteOptions>` 來更新。 例如，
+若要使用自訂 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>，路由限制式型別必須必須向應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> (在應用程式的服務容器中) 註冊。 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 實作。 更新應用程式的 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 直接設定 `services.Configure<RouteOptions>` 來更新。 例如：
 
 ```csharp
 services.AddRouting(options =>
@@ -1642,7 +1642,7 @@ services.AddRouting(options =>
 });
 ```
 
-限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如，
+限制式接著能以一般方式套用到路由 (使用註冊限制式型別時使用名稱)。 例如：
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -1655,7 +1655,7 @@ public ActionResult<string> Get(string id)
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-在上述範例的結尾產生的 <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> 是 `/package/create/123`。 字典提供「追蹤套件路由」範本 `operation` 的 `id` 和 `package/{operation}/{id}` 路由值。 如需詳細資訊，請參閱[使用路由中介軟體](#use-routing-middleware)一節或[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)中的範例程式碼。
+在上述範例的結尾產生的 <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> 是 `/package/create/123`。 字典提供「追蹤套件路由」範本 `operation` 的 `id` 和 `package/{operation}/{id}` 路由值。 如需詳細資訊，請參閱[使用路由中介軟體](#use-routing-middleware)一節或[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)中的範例程式碼。
 
 <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> 建構函式的第二個參數是「環境值」的集合。 環境值便於使用，因為它們會限制開發人員必須在要求內容中指定的值數目。 目前要求的目前路由值被視為用於連結產生的環境值。 在 ASP.NET Core MVC 應用程式 `About` 的 `HomeController` 動作中，您不需要指定控制器路由值以連結到 `Index` 動作&mdash;會使用 `Home` 的環境值。
 

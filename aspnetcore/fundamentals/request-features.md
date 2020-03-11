@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: fundamentals/request-features
 ms.openlocfilehash: d0f3ae521d1f314dd04cb581d9a921da4719273d
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087025"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659674"
 ---
 # <a name="request-features-in-aspnet-core"></a>ASP.NET Core 中的要求功能
 
@@ -53,7 +53,7 @@ ASP.NET Core 可定義 `Microsoft.AspNetCore.Http.Features` 中伺服器用來�
 
 ## <a name="feature-collections"></a>功能集合
 
-`HttpContext` 的 `Features` 屬性提供一個介面來取得和設定目前要求的可用 HTTP 功能。 由於功能集合即使在要求內容中都是可變動的，因此可以使用中介軟體來修改該集合，並新增其他功能的支援。
+`Features` 的 `HttpContext` 屬性提供一個介面來取得和設定目前要求的可用 HTTP 功能。 由於功能集合即使在要求內容中都是可變動的，因此可以使用中介軟體來修改該集合，並新增其他功能的支援。
 
 ## <a name="middleware-and-request-features"></a>中介軟體和要求功能
 
@@ -63,7 +63,7 @@ ASP.NET Core 可定義 `Microsoft.AspNetCore.Http.Features` 中伺服器用來�
 
 藉由結合自訂伺服器實作和特定中介軟體增強功能，可建構應用程式所需的一組精確功能。 這允許新增遺漏的功能而不需要變更伺服器，並確保只公開少量的功能，以減少受攻擊面區域並改善效能。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 功能介面定義給定的要求可能支援的特定 HTTP 功能。 伺服器定義功能的集合，以及一組該伺服器所支援，但中介軟體可用來增強這些功能的初始功能。
 

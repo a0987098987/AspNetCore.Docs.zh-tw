@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 1c7652c909432b25ae373873cd593afd879cfa00
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 5af532db35b858d157f61a6aca30f55d15e9ff1e
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172556"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657532"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
@@ -454,7 +454,7 @@ public IActionResult Edit(int id, int colorIndex)
 |--- |--- |
 |ValidationSummary.All|屬性和模型層級|
 |ValidationSummary.ModelOnly|模型|
-|ValidationSummary.None|無|
+|ValidationSummary.None|None|
 
 ### <a name="sample"></a>範例
 
@@ -491,7 +491,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 * 有 HTML 協助程式的替代 `Html.DropDownListFor` 和 `Html.ListBoxFor`
 
-`Select Tag Helper` `asp-for` 會指定[select](https://www.w3.org/wiki/HTML/Elements/select)專案的模型屬性名稱，而 `asp-items` 則指定[option](https://www.w3.org/wiki/HTML/Elements/option)元素。  例如，
+`Select Tag Helper` `asp-for` 會指定[select](https://www.w3.org/wiki/HTML/Elements/select)專案的模型屬性名稱，而 `asp-items` 則指定[option](https://www.w3.org/wiki/HTML/Elements/option)元素。  例如：
 
 [!code-HTML[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
@@ -670,4 +670,4 @@ HTTP POST `Index` 方法會顯示選取項目：
 * <xref:mvc/models/model-binding>
 * <xref:mvc/models/validation>
 * [IAttributeAdapter 介面](/dotnet/api/Microsoft.AspNetCore.Mvc.DataAnnotations.IAttributeAdapter)
-* [此文件的程式碼片段](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/working-with-forms/sample/final)
+* [此文件的程式碼片段](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/working-with-forms/sample/final)

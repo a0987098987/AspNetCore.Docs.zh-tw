@@ -7,18 +7,18 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: abea9b189861954533b24cb73650af41952d1a86
-ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
+ms.openlocfilehash: fc6f8d8c4ab09848cf316be2e522bf5ce3b9ac76
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75914121"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657035"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：瞭解 advanced 案例-使用 EF Core ASP.NET MVC
 
 在上一個教學課程中，您實作了單表繼承。 本教學課程介紹幾個實用的主題，在超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念時，需要注意這些主題。
 
-在本教學課程中，您已：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 執行原始 SQL 查詢
@@ -31,7 +31,7 @@ ms.locfileid: "75914121"
 > * 了解 EF Core 原始程式碼和開發計劃
 > * 了解如何使用動態 LINQ 來簡化程式碼
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 * [實作繼承](inheritance.md)
 
@@ -99,7 +99,7 @@ ms.locfileid: "75914121"
 
 [!code-html[](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
 
-藉由選取 [課程] 索引標籤，然後將 "/UpdateCourseCredits" 新增至瀏覽器位址列中的 URL 結尾 (例如：`http://localhost:5813/Courses/UpdateCourseCredits`)，以執行 `UpdateCourseCredits` 方法。 在文字方塊中輸入數目：
+藉由選取 [課程] `UpdateCourseCredits` **索引標籤，然後將 "/UpdateCourseCredits" 新增至瀏覽器位址列中的 URL 結尾 (例如：** )，以執行 `http://localhost:5813/Courses/UpdateCourseCredits` 方法。 在文字方塊中輸入數目：
 
 ![更新課程學分數頁面](advanced/_static/update-credits.png)
 
@@ -193,17 +193,17 @@ Entity Framework Core 來源位於 [https://github.com/dotnet/efcore](https://gi
 
 ## <a name="use-dynamic-linq-to-simplify-code"></a>使用動態 LINQ 來簡化程式碼
 
-[本系列的第三個教學課程](sort-filter-page.md)示範如何在 `switch` 陳述式中，以硬式編碼的資料行名稱來撰寫 LINQ 程式碼。 若有兩個資料行可供選擇，這可正常運作；但是如果您有許多資料行，程式碼可能變得冗長。 若要解決該問題，您可以使用 `EF.Property` 方法，以指定屬性的名稱作為字串。 若要試用這種方法，請以下列程式碼取代 `StudentsController` 中的 `Index` 方法。
+[本系列的第三個教學課程](sort-filter-page.md)示範如何在 `switch` 陳述式中，以硬式編碼的資料行名稱來撰寫 LINQ 程式碼。 若有兩個資料行可供選擇，這可正常運作；但是如果您有許多資料行，程式碼可能變得冗長。 若要解決該問題，您可以使用 `EF.Property` 方法，以指定屬性的名稱作為字串。 若要試用這種方法，請以下列程式碼取代 `Index` 中的 `StudentsController` 方法。
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DynamicLinq)]
 
-## <a name="acknowledgments"></a>致謝
+## <a name="acknowledgments"></a>通知
 
 Tom Dykstra 和 Rick Anderson (Twitter @RickAndMSFT) 撰寫了本教學課程。 Rowan Miller、Diego Vega 和其他 Entity Framework 小組成員協助進行程式碼檢閱，並協助對撰寫本教學課程的程式碼時發生的問題進行偵錯。 John Parente 和 Paul Goldman 更新了 ASP.NET Core 2.2 的教學課程。
 
 <a id="common-errors"></a>
 
-## <a name="troubleshoot-common-errors"></a>針對常見錯誤進行疑難排解
+## <a name="troubleshoot-common-errors"></a>常見問題疑難排解
 
 ### <a name="contosouniversitydll-used-by-another-process"></a>ContosoUniversity.dll 已由其他處理序使用
 
@@ -243,7 +243,7 @@ dotnet ef database drop
 
 錯誤訊息：
 
-> 建立與 SQL Server　的連線時，發生與網路相關的錯誤或是執行個體特有的錯誤。 找不到或無法存取伺服器。 確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線 (提供者：SQL 網路介面，錯誤：26 - 搜尋指定的伺服器/執行個體時發生錯誤)
+> 和 SQL Server 建立連線時，發生與網路相關或執行個體特定的錯誤。 找不到或無法存取伺服器。 檢查執行個體名稱是否正確以及 SQL Server 執行個體是否設定為允許遠端連接。 (提供者：SQL 網路介面，錯誤：26 - 搜尋指定的伺服器/執行個體時發生錯誤)
 
 解決方案：
 
@@ -251,7 +251,7 @@ dotnet ef database drop
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[下載或檢視已完成的應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -263,7 +263,7 @@ dotnet ef database drop
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 執行原始 SQL 查詢

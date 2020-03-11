@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 345fb6962e3376c22551eb7914c70c89cb7100d5
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: e6996f0e6731b05038d0a9329152b8afd5f6796d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213271"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660143"
 ---
 # <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>從 ASP.NET Core 呼叫 Web API Blazor
 
@@ -27,7 +27,7 @@ By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.co
 
 [Blazor 伺服器](xref:blazor/hosting-models#blazor-server)應用程式會使用 <xref:System.Net.Http.HttpClient> 實例呼叫 web api，通常是使用 <xref:System.Net.Http.IHttpClientFactory>來建立的。 本主題中的指導方針與 Blazor 伺服器應用程式無關。 在開發 Blazor 伺服器應用程式時，請遵循 <xref:fundamentals/http-requests>中的指引。
 
-[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)） &ndash; 選取*BlazorWebAssemblySample*應用程式。
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)） &ndash; 選取*BlazorWebAssemblySample*應用程式。
 
 請參閱*BlazorWebAssemblySample*範例應用程式中的下列元件：
 
@@ -160,7 +160,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 瀏覽器安全性可防止網頁向不同于服務網頁的網域提出要求。 這種限制稱為「*相同來源原則*」。 相同來源的原則可防止惡意網站從另一個網站讀取敏感性資料。 若要將來自瀏覽器的要求傳送至具有不同來源的端點，*端點*必須啟用[跨原始來源資源分享（CORS）](https://www.w3.org/TR/cors/)。
 
-[Blazor WebAssembly 範例應用程式（BlazorWebAssemblySample）](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)示範如何在呼叫 Web API 元件（*Pages/CallWebAPI razor*）中使用 CORS。
+[Blazor WebAssembly 範例應用程式（BlazorWebAssemblySample）](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)示範如何在呼叫 Web API 元件（*Pages/CallWebAPI razor*）中使用 CORS。
 
 若要允許其他網站對您的應用程式進行跨原始來源資源分享（CORS）要求，請參閱 <xref:security/cors>。
 

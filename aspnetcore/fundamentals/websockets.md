@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: fc07d572116f8eea2b30ea6cf80324e5c66f994c
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: a8040003374906fd93e12c9fde44c4a5ccc2cf37
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963163"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655782"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core 中的 WebSockets 支援
 
@@ -22,13 +22,13 @@ ms.locfileid: "73963163"
 
 本文說明如何在 ASP.NET Core 中開始使用 WebSocket。 [WebSocket](https://wikipedia.org/wiki/WebSocket) ([RFC 6455](https://tools.ietf.org/html/rfc6455)) 為通訊協定，其可在 TCP 連線下啟用雙向的持續性通訊通道。 它用於受益於快速且即時通訊的應用程式，例如聊天、儀表板和遊戲應用程式。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([如何下載](xref:index#how-to-download-a-sample))。 [如何執行](#sample-app)。
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([如何下載](xref:index#how-to-download-a-sample))。 [如何執行](#sample-app)。
 
-## SignalR
+## <a name="signalr"></a>SignalR
 
-[ASP.NET Core SignalR](xref:signalr/introduction)是可簡化將即時 web 功能新增至應用程式的程式庫。 它會盡可能使用 WebSockets。
+[ASP.NET Core SignalR](xref:signalr/introduction) 是程式庫，可簡化將即時 Web 功能新增至應用程式的程序。 它會盡可能使用 WebSockets。
 
-對於大部分的應用程式，我們建議 SignalR 高於原始 Websocket。 SignalR 為無法使用 Websocket 的環境提供傳輸回溯。 它也提供簡單的遠端程序呼叫應用程式模型。 在大部分的情況下，相較于使用原始 Websocket，SignalR 沒有明顯的效能缺點。
+針對大部分的應用程式，我們建議透過原始 WebSocket 的 SignalR。 SignalR 為不提供 WebSocket 的環境提供傳輸後援。 它也提供簡單的遠端程序呼叫應用程式模型。 而且在大部分的案例中，相較於使用原始 WebSocket，SignalR 沒有顯著的效能缺點。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,11 +49,11 @@ ms.locfileid: "73963163"
 
   * Windows 8 / Windows Server 2012 或更新版本
 
-* 如需支援的瀏覽器，請請參閱 https://caniuse.com/#feat=websockets 。
+* 如需支援的瀏覽器，請請參閱 https://caniuse.com/#feat=websockets。
 
 ::: moniker range="< aspnetcore-2.1"
 
-## <a name="nuget-package"></a>NuGet 套件
+## <a name="nuget-package"></a>Nuget 套件
 
 安裝 [Microsoft.AspNetCore.WebSockets](https://www.nuget.org/packages/Microsoft.AspNetCore.WebSockets/) 套件。
 
@@ -62,13 +62,13 @@ ms.locfileid: "73963163"
 ## <a name="configure-the-middleware"></a>設定中介軟體
 
 
-在 `Startup` 類別的 `Configure` 方法中新增 WebSocket 中介軟體：
+在 `Configure` 類別的 `Startup` 方法中新增 WebSocket 中介軟體：
 
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSockets)]
 
 ::: moniker range="< aspnetcore-2.2"
 
-您可以設定下列設定：
+可設定下列設定：
 
 * `KeepAliveInterval` - 要將 "ping" 框架傳送到用戶端，以確保 Proxy 保持連線開啟的頻率。 預設為兩分鐘。
 * `ReceiveBufferSize` - 用來接收資料的緩衝區大小。 進階使用者可能需要變更此設定，以便根據資料的大小進行效能調整。 預設為 4 KB。
@@ -77,7 +77,7 @@ ms.locfileid: "73963163"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-您可以設定下列設定：
+可設定下列設定：
 
 * `KeepAliveInterval` - 要將 "ping" 框架傳送到用戶端，以確保 Proxy 保持連線開啟的頻率。 預設為兩分鐘。
 * <xref:Microsoft.AspNetCore.Builder.WebSocketOptions.ReceiveBufferSize> - 用來接收資料的緩衝區大小。 進階使用者可能需要變更此設定，以便根據資料的大小進行效能調整。 預設為 4 KB。
@@ -104,7 +104,7 @@ System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed t
 Object name: 'HttpResponseStream'.
 ```
 
-如果您是使用背景服務來將資料寫入 WebSocket，請務必使中介軟體管線持續執行。 請使用 <xref:System.Threading.Tasks.TaskCompletionSource%601> 來這麼做。 將 `TaskCompletionSource` 傳遞至您的背景服務，並讓它在您完成使用 WebSocket 時呼叫 <xref:System.Threading.Tasks.TaskCompletionSource%601.TrySetResult%2A>。 然後，在要求期間，`await` <xref:System.Threading.Tasks.TaskCompletionSource%601.Task> 屬性，如下列範例所示：
+如果您是使用背景服務來將資料寫入 WebSocket，請務必使中介軟體管線持續執行。 請使用 <xref:System.Threading.Tasks.TaskCompletionSource%601> 來這麼做。 將 `TaskCompletionSource` 傳遞至您的背景服務，並讓它在您完成使用 WebSocket 時呼叫 <xref:System.Threading.Tasks.TaskCompletionSource%601.TrySetResult%2A>。 然後，在要求期間，`await`<xref:System.Threading.Tasks.TaskCompletionSource%601.Task> 屬性，如下列範例所示：
 
 ```csharp
 app.Use(async (context, next) => {
@@ -120,7 +120,7 @@ app.Use(async (context, next) => {
 
 絕不要使用 `Task.Wait()`、`Task.Result` 或類似的封鎖呼叫等候通訊端完成，因為這會導致嚴重的執行緒處理問題。 一律使用 `await`。
 
-## <a name="send-and-receive-messages"></a>傳送和接收訊息
+## <a name="send-and-receive-messages"></a>傳送及接收訊息
 
 `AcceptWebSocketAsync` 方法可將 TCP 連線升級為 WebSocket 連線，並提供 [WebSocket](/dotnet/core/api/system.net.websockets.websocket) 物件。 請使用 `WebSocket` 物件來傳送和接收訊息。
 
@@ -147,7 +147,7 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 
 不過，瀏覽器會在發出 WebSocket 要求時，傳送 `Origin` 標頭。 應設定應用程式驗證這些標頭，以確保只允許來自預期來源的 WebSocket。
 
-若您在 "https://server.com " 上裝載伺服器，且在 "https://client.com" 上裝載用戶端，請將 "https://client.com" 新增至 `AllowedOrigins` 清單中，以讓 WebSockets 進行驗證。
+若您在 "https://server.com" 上裝載伺服器，且在 "https://client.com" 上裝載用戶端，請將 "https://client.com" 新增至 `AllowedOrigins` 清單中，以讓 WebSockets 進行驗證。
 
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSocketsOptionsAO&highlight=6-7)]
 
@@ -200,7 +200,7 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 
 ## <a name="sample-app"></a>範例應用程式
 
-本文附帶的[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples)是回應應用程式。 其具有一個進行 WebSocket 連線的網頁，而伺服器會將其接收的任何訊息重新傳送回用戶端。 請從命令提示字元執行應用程式 (它未設定為從 Visual Studio 搭配 IIS Express 執行)，並巡覽至 http://localhost:5000 。 網頁會在左上方顯示連線狀態：
+本文附帶的[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples)是回應應用程式。 其具有一個進行 WebSocket 連線的網頁，而伺服器會將其接收的任何訊息重新傳送回用戶端。 請從命令提示字元執行應用程式 (它未設定為從 Visual Studio 搭配 IIS Express 執行)，並巡覽至 http://localhost:5000。 網頁會在左上方顯示連線狀態：
 
 ![網頁的初始狀態](websockets/_static/start.png)
 

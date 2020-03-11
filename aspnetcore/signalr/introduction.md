@@ -10,15 +10,15 @@ no-loc:
 - SignalR
 uid: signalr/introduction
 ms.openlocfilehash: 635431abf9263c2dff261aea47e6f8324061763f
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829279"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662915"
 ---
 # <a name="introduction-to-aspnet-core-opno-locsignalr"></a>ASP.NET Core SignalR 簡介
 
-## <a name="what-is-opno-locsignalr"></a>SignalR 是什麼？
+## <a name="what-is-opno-locsignalr"></a>什麼是 SignalR？
 
 ASP.NET Core SignalR 是一個開放原始碼程式庫，可簡化將即時 web 功能新增至應用程式的流程。 即時 web 功能可讓伺服器端程式碼立即將內容推送至用戶端。
 
@@ -50,7 +50,7 @@ SignalR 支援下列用來處理即時通訊的技術（依正常回溯的順序
 
 SignalR 會自動選擇伺服器和用戶端功能內的最佳傳輸方法。
 
-## <a name="hubs"></a>中樞
+## <a name="hubs"></a>集線器
 
 SignalR 使用*中樞*在用戶端和伺服器之間進行通訊。
 

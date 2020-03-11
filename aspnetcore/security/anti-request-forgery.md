@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: security/anti-request-forgery
-ms.openlocfilehash: 54e153af55f28d9a89bbf16bce1c17f876567b59
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 3da73b8fe3e3d73d5d7754e0642e55feeb785de3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880799"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659156"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>防止 ASP.NET Core 中的跨網站要求偽造（XSRF/CSRF）攻擊
 
@@ -79,7 +79,7 @@ CSRF 攻擊的範例：
 
 ### <a name="token-based-authentication"></a>以權杖為基礎的驗證
 
-當使用者通過驗證時，就會發出權杖（不是 antiforgery token）。 權杖包含[宣告](/dotnet/framework/security/claims-based-identity-model)形式的使用者資訊或參考權杖，可將應用程式指向應用程式中維護的使用者狀態。 當使用者嘗試存取需要驗證的資源時，權杖會以持有人權杖的形式，以額外的授權標頭傳送至應用程式。 這會讓應用程式無狀態。 在每個後續要求中，會在要求中傳遞權杖以進行伺服器端驗證。 此權杖未*加密*;它會進行*編碼*。 在伺服器上，權杖會解碼以存取其資訊。 若要在後續要求中傳送權杖，請將權杖儲存在瀏覽器的本機儲存體中。 如果權杖儲存在瀏覽器的本機儲存體中，請不要擔心 CSRF 弱點。 當令牌儲存在 cookie 中時，CSRF 是一項考慮。 如需詳細資訊，請參閱 GitHub 問題[SPA 程式碼範例會新增兩個 cookie](https://github.com/aspnet/AspNetCore.Docs/issues/13369)。
+當使用者通過驗證時，就會發出權杖（不是 antiforgery token）。 權杖包含[宣告](/dotnet/framework/security/claims-based-identity-model)形式的使用者資訊或參考權杖，可將應用程式指向應用程式中維護的使用者狀態。 當使用者嘗試存取需要驗證的資源時，權杖會以持有人權杖的形式，以額外的授權標頭傳送至應用程式。 這會讓應用程式無狀態。 在每個後續要求中，會在要求中傳遞權杖以進行伺服器端驗證。 此權杖未*加密*;它會進行*編碼*。 在伺服器上，權杖會解碼以存取其資訊。 若要在後續要求中傳送權杖，請將權杖儲存在瀏覽器的本機儲存體中。 如果權杖儲存在瀏覽器的本機儲存體中，請不要擔心 CSRF 弱點。 當令牌儲存在 cookie 中時，CSRF 是一項考慮。 如需詳細資訊，請參閱 GitHub 問題[SPA 程式碼範例會新增兩個 cookie](https://github.com/dotnet/AspNetCore.Docs/issues/13369)。
 
 ### <a name="multiple-apps-hosted-at-one-domain"></a>裝載于一個網域的多個應用程式
 
@@ -215,7 +215,7 @@ services.AddAntiforgery(options =>
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | 決定用來建立 antiforgery cookie 的設定。 |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Antiforgery 系統用來轉譯 views 中 antiforgery 標記的隱藏表單欄位名稱。 |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Antiforgery 系統使用的標頭名稱。 如果 `null`，系統只會考慮表單資料。 |
-| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | 指定是否要隱藏 `X-Frame-Options` 標頭的產生。 根據預設，會產生值為 "SAMEORIGIN" 的標頭。 預設值為 `false`。 |
+| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | 指定是否要隱藏 `X-Frame-Options` 標頭的產生。 根據預設，會產生值為 "SAMEORIGIN" 的標頭。 預設為 `false`。 |
 
 ::: moniker-end
 
@@ -237,13 +237,13 @@ services.AddAntiforgery(options =>
 | 選項 | 描述 |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | 決定用來建立 antiforgery cookie 的設定。 |
-| [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Cookie 的網域值。 預設值為 `null`。 這個屬性已經過時，將在未來的版本中移除。 建議的替代做法是 [Cookie. 網域]。 |
+| [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Cookie 的網域值。 預設為 `null`。 這個屬性已經過時，將在未來的版本中移除。 建議的替代做法是 [Cookie. 網域]。 |
 | [CookieName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Cookie 的名稱。 如果未設定，系統會產生以[DefaultCookiePrefix](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) （"開頭的唯一名稱。AspNetCore. Antiforgery. "）。 這個屬性已經過時，將在未來的版本中移除。 建議的替代做法是 Cookie.Name。 |
 | [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Cookie 上設定的路徑。 這個屬性已經過時，將在未來的版本中移除。 建議的替代做法是 [Cookie. 路徑]。 |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Antiforgery 系統用來轉譯 views 中 antiforgery 標記的隱藏表單欄位名稱。 |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Antiforgery 系統使用的標頭名稱。 如果 `null`，系統只會考慮表單資料。 |
-| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | 指定 antiforgery 系統是否需要 HTTPS。 如果 `true`，則非 HTTPS 要求會失敗。 預設值為 `false`。 這個屬性已經過時，將在未來的版本中移除。 建議的替代做法是設定 Cookie. SecurePolicy。 |
-| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | 指定是否要隱藏 `X-Frame-Options` 標頭的產生。 根據預設，會產生值為 "SAMEORIGIN" 的標頭。 預設值為 `false`。 |
+| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | 指定 antiforgery 系統是否需要 HTTPS。 如果 `true`，則非 HTTPS 要求會失敗。 預設為 `false`。 這個屬性已經過時，將在未來的版本中移除。 建議的替代做法是設定 Cookie. SecurePolicy。 |
+| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | 指定是否要隱藏 `X-Frame-Options` 標頭的產生。 根據預設，會產生值為 "SAMEORIGIN" 的標頭。 預設為 `false`。 |
 
 ::: moniker-end
 
@@ -316,7 +316,7 @@ ASP.NET Core 應用程式不會為安全的 HTTP 方法（GET、HEAD、OPTIONS �
 
 * GET
 * HEAD
-* 選項
+* OPTIONS
 * TRACE
 
 我們建議您針對非 API 案例廣泛使用 `AutoValidateAntiforgeryToken`。 這可確保預設會保護 POST 動作。 替代方式是預設忽略 antiforgery token，除非將 `ValidateAntiForgeryToken` 套用至個別的動作方法。 在此案例中，較有可能不小心將 POST 動作方法保留為未受保護，讓應用程式容易遭受 CSRF 攻擊。 所有貼文都應該傳送 antiforgery token。
@@ -334,10 +334,20 @@ public class ManageController : Controller
 
 全域範例：
 
+::: moniker range="< aspnetcore-3.0"
+
+伺服器.AddMvc （options = > 選項。篩選。 Add （new AutoValidateAntiforgeryTokenAttribute （）））;
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
 ```csharp
-services.AddMvc(options => 
+services.AddControllersWithViews(options =>
     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 ```
+
+::: moniker-end
 
 ### <a name="override-global-or-controller-antiforgery-attributes"></a>覆寫全域或控制器 antiforgery 屬性
 
@@ -465,7 +475,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="extend-antiforgery"></a>擴充 antiforgery
 

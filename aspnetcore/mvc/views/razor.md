@@ -5,16 +5,16 @@ description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記
 ms.author: riande
 ms.date: 02/12/2020
 uid: mvc/views/razor
-ms.openlocfilehash: 0b1eed2816329d62fca4bdb5719825a4197af353
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: e9d2e42ba3c36bc1661739f3b105ec8efe03de48
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447174"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658715"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Luke Latham](https://github.com/guardrex)、[Taylor Mullen](https://twitter.com/ntaylormullen) 與 [Dan Vicarel](https://github.com/Rabadash8820)
+由[Rick Anderson](https://twitter.com/RickAndMSFT)、 [Taylor Mullen](https://twitter.com/ntaylormullen)和[Dan Vicarel](https://github.com/Rabadash8820)
 
 Razor 是將伺服器架構程式碼內嵌到網頁中的標記語法。 Razor 語法是由 Razor 標記、C# 和 HTML 所組成。 含有 Razor 的檔案通常具有 *.cshtml* 副檔名。 Razor 也可以在 [Razor 元件](xref:blazor/components)檔案 ( *.razor*) 中找到。
 
@@ -487,7 +487,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 ::: moniker-end
 
-例如，
+例如：
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -872,7 +872,7 @@ public class Pet
 
 [標籤協助程式](xref:mvc/views/tag-helpers/intro)有三個相關的指示詞。
 
-| Directive | 函數 |
+| 指示詞 | 函式 |
 | --------- | -------- |
 | [`@addTagHelper`](xref:mvc/views/tag-helpers/intro#add-helper-label) | 使標籤協助程式可供檢視。 |
 | [`@removeTagHelper`](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 移除先前從檢視新增的標籤協助程式。 |
@@ -883,10 +883,10 @@ public class Pet
 ### <a name="razor-keywords"></a>Razor 關鍵字
 
 * page (需要 ASP.NET Core 2.1 或更新版本)
-* namespace
+* 命名空間
 * functions
 * 繼承
-* 模型
+* model
 * section
 * helper (ASP.NET Core 目前不支援)
 
@@ -896,8 +896,8 @@ Razor 關鍵字會使用 `@(Razor Keyword)` (例如 `@(functions)`) 逸出。
 
 * 案例
 * do
-* default
-* 作為
+* 預設
+* for
 * foreach
 * if
 * else
@@ -906,7 +906,7 @@ Razor 關鍵字會使用 `@(Razor Keyword)` (例如 `@(functions)`) 逸出。
 * 嘗試
 * catch
 * finally
-* using
+* 使用
 * while
 
 C# Razor 關鍵字必須使用 `@(@C# Razor Keyword)` (例如 `@(@case)`) 雙重逸出。 第一個 `@` 會將 Razor 剖析器逸出。 第二個 `@` 會將 C# 剖析器逸出。

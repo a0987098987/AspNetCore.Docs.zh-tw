@@ -5,20 +5,20 @@ description: 與中的應用程式元件共用控制器、視圖、Razor Pages �
 ms.author: riande
 ms.date: 11/11/2019
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: a95c344410db0651b9f8f1c1eb7551029f084c25
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 0156c94bc6d0b83d0e14b8ef49468cfdf106d7e6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829071"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667129"
 ---
 # <a name="share-controllers-views-razor-pages-and-more-with-application-parts"></a>與應用程式元件共用控制器、視圖、Razor Pages 和更多
 
 ::: moniker range=">= aspnetcore-3.0"
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 *應用程式元件*是應用程式資源的抽象概念。 應用程式元件可讓 ASP.NET Core 探索控制器、視圖元件、標記協助程式、Razor Pages、Razor 編譯來源等等。 <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart> 是應用程式元件。 `AssemblyPart` 封裝元件參考，並公開類型和編譯參考。
 
@@ -36,7 +36,7 @@ ASP.NET Core 應用程式會從 <xref:System.Web.WebPages.ApplicationPart>載入
 
 [!code-csharp[](./app-parts/3.0sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-上述兩個程式碼範例會從元件載入 `SharedController`。 `SharedController` 不在應用程式的專案中。 請參閱[WebAppParts 解決方案](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/3.0sample1/WebAppParts)範例下載。
+上述兩個程式碼範例會從元件載入 `SharedController`。 `SharedController` 不在應用程式的專案中。 請參閱[WebAppParts 解決方案](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/3.0sample1/WebAppParts)範例下載。
 
 ### <a name="include-views"></a>包含視圖
 
@@ -51,8 +51,8 @@ ASP.NET Core 應用程式會從 <xref:System.Web.WebPages.ApplicationPart>載入
 * 應用程式的元件和相依元件。
 * `Microsoft.AspNetCore.Mvc.ApplicationParts.CompiledRazorAssemblyPart`
 * `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`
-* `Microsoft.AspNetCore.Mvc.TagHelpers`。
-* `Microsoft.AspNetCore.Mvc.Razor`。
+* `Microsoft.AspNetCore.Mvc.TagHelpers`第 1 課：建立 Windows Azure 儲存體物件{2}。
+* `Microsoft.AspNetCore.Mvc.Razor`第 1 課：建立 Windows Azure 儲存體物件{2}。
 
 <a name="fp"></a>
 
@@ -74,7 +74,7 @@ ASP.NET Core 應用程式會從 <xref:System.Web.WebPages.ApplicationPart>載入
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2)會使用上述程式碼來顯示應用程式功能：
+[下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2)會使用上述程式碼來顯示應用程式功能：
 
 ```text
 Controllers:
@@ -106,9 +106,9 @@ View Components:
 
 ::: moniker range="< aspnetcore-3.0"
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 *應用程式元件*是應用程式資源的抽象概念。 應用程式元件可讓 ASP.NET Core 探索控制器、視圖元件、標記協助程式、Razor Pages、Razor 編譯來源等等。 [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart)是一個應用程式元件。 `AssemblyPart` 封裝元件參考，並公開類型和編譯參考。
 
@@ -126,7 +126,7 @@ ASP.NET Core 應用程式會從 <xref:System.Web.WebPages.ApplicationPart>載入
 
 [!code-csharp[](./app-parts/sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-上述兩個程式碼範例會從元件載入 `SharedController`。 `SharedController` 不在應用程式的專案中。 請參閱[WebAppParts 解決方案](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts)範例下載。
+上述兩個程式碼範例會從元件載入 `SharedController`。 `SharedController` 不在應用程式的專案中。 請參閱[WebAppParts 解決方案](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts)範例下載。
 
 ### <a name="include-views"></a>包含視圖
 
@@ -141,8 +141,8 @@ ASP.NET Core 應用程式會從 <xref:System.Web.WebPages.ApplicationPart>載入
 `ApplicationPartManager` 包括下列各部分：
 
 * 應用程式的元件和相依元件。
-* `Microsoft.AspNetCore.Mvc.TagHelpers`。
-* `Microsoft.AspNetCore.Mvc.Razor`。
+* `Microsoft.AspNetCore.Mvc.TagHelpers`第 1 課：建立 Windows Azure 儲存體物件{2}。
+* `Microsoft.AspNetCore.Mvc.Razor`第 1 課：建立 Windows Azure 儲存體物件{2}。
 
 ## <a name="application-feature-providers"></a>應用程式功能提供者
 
@@ -160,7 +160,7 @@ ASP.NET Core 應用程式會從 <xref:System.Web.WebPages.ApplicationPart>載入
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2)會使用上述程式碼來顯示應用程式功能：
+[下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2)會使用上述程式碼來顯示應用程式功能：
 
 ```text
 Controllers:

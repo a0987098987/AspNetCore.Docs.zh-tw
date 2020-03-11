@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 uid: mvc/models/validation
-ms.openlocfilehash: a39eeead10849d11349688c42fe814ede9e8a847
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: cf6b77de78f2c5dda48ffcd8ac1f9ed2f8d28bd7
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172495"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661123"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和 Razor Pages 中的模型驗證
 
@@ -21,7 +21,7 @@ ms.locfileid: "77172495"
 
 本文說明如何在 ASP.NET Core MVC 或 Razor Pages 應用程式中驗證使用者輸入。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="model-state"></a>模型狀態
 
@@ -64,13 +64,13 @@ ms.locfileid: "77172495"
 
 ### <a name="error-messages"></a>錯誤訊息
 
-驗證屬性可讓您指定要顯示的無效輸入錯誤訊息。 例如，
+驗證屬性可讓您指定要顯示的無效輸入錯誤訊息。 例如：
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-就內部而言，屬性會使用欄位名稱的預留位置呼叫 `String.Format`，有時候也會使用其他預留位置。 例如，
+就內部而言，屬性會使用欄位名稱的預留位置呼叫 `String.Format`，有時候也會使用其他預留位置。 例如：
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -265,7 +265,7 @@ public string MiddleName { get; set; }
 
 ## <a name="unobtrusive-validation"></a>不顯眼的驗證
 
-如需不顯眼驗證的相關資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/1111)。
+如需不顯眼驗證的相關資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/1111)。
 
 ### <a name="add-validation-to-dynamic-forms"></a>將驗證新增至動態表單
 
@@ -389,7 +389,7 @@ $.get({
 
 本文說明如何在 ASP.NET Core MVC 或 Razor Pages 應用程式中驗證使用者輸入。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="model-state"></a>模型狀態
 
@@ -409,7 +409,7 @@ $.get({
 
 ## <a name="validation-attributes"></a>驗證屬性
 
-驗證屬性可讓您指定模型屬性的驗證規則。 下列來自[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample)的範例，顯示以驗證屬性標註的模型類別。 `[ClassicMovie]` 屬性是自訂驗證屬性，其他的則是內建。 [未顯示] 是 `[ClassicMovie2]`，這會顯示執行自訂屬性的替代方式。
+驗證屬性可讓您指定模型屬性的驗證規則。 下列來自[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample)的範例，顯示以驗證屬性標註的模型類別。 `[ClassicMovie]` 屬性是自訂驗證屬性，其他的則是內建。 [未顯示] 是 `[ClassicMovie2]`，這會顯示執行自訂屬性的替代方式。
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/Movie.cs?name=snippet_ModelClass)]
 
@@ -434,13 +434,13 @@ $.get({
 
 ### <a name="error-messages"></a>錯誤訊息
 
-驗證屬性可讓您指定要顯示的無效輸入錯誤訊息。 例如，
+驗證屬性可讓您指定要顯示的無效輸入錯誤訊息。 例如：
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-就內部而言，屬性會使用欄位名稱的預留位置呼叫 `String.Format`，有時候也會使用其他預留位置。 例如，
+就內部而言，屬性會使用欄位名稱的預留位置呼叫 `String.Format`，有時候也會使用其他預留位置。 例如：
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]

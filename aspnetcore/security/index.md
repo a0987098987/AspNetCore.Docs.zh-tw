@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/index
 ms.openlocfilehash: 0f8e96fb7d5246e746b95f8907745f849de60e24
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975654"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656034"
 ---
 # <a name="overview-of-aspnet-core-security"></a>ASP.NET Core 安全性概觀
 

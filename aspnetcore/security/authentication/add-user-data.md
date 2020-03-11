@@ -6,27 +6,27 @@ ms.author: riande
 ms.date: 01/28/2020
 ms.custom: mvc, seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: e08c02e2e5d4a429aae10c59e7ae3ea48c975067
-ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
+ms.openlocfilehash: 7a67f55da0e685ed3fd5badb30e8be683411a5ae
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76885553"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662684"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>在 ASP.NET Core 專案中新增、下載和刪除自訂使用者資料至身分識別
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
-本文說明如何：
+本文將說明如何：
 
 * 將自訂使用者資料新增至 ASP.NET Core web 應用程式。
 * 將具有 <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute> 屬性的自訂使用者資料模型標記為可自動供下載和刪除。 讓資料能夠下載和刪除有助於符合[GDPR](xref:security/gdpr)需求。
 
 專案範例是從 Razor Pages web 應用程式建立的，但這些指示類似于 ASP.NET Core MVC web 應用程式。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -42,11 +42,11 @@ ms.locfileid: "76885553"
 
 ## <a name="create-a-razor-web-app"></a>建立 Razor Web 應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案] 。 如果您想要符合[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data)程式碼的命名空間，請將專案命名為**WebApp1** 。
+* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] >  [專案]。 如果您想要符合[下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data)程式碼的命名空間，請將專案命名為**WebApp1** 。
 * 選取 [ **ASP.NET Core Web 應用程式**>**確定]**
 * 選取下拉式清單中的 [ **ASP.NET Core 3.0** ]
 * 選取 [ **Web 應用程式** **] > [確定]**
@@ -56,7 +56,7 @@ ms.locfileid: "76885553"
 
 ::: moniker range="< aspnetcore-3.0"
 
-* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案] 。 如果您想要符合[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data)程式碼的命名空間，請將專案命名為**WebApp1** 。
+* 從 Visual Studio 的 [檔案] 功能表中，選取 [新增] >  [專案]。 如果您想要符合[下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data)程式碼的命名空間，請將專案命名為**WebApp1** 。
 * 選取 [ **ASP.NET Core Web 應用程式**>**確定]**
 * 選取下拉式清單中的 [ **ASP.NET Core 2.2** ]
 * 選取 [ **Web 應用程式** **] > [確定]**
@@ -65,7 +65,7 @@ ms.locfileid: "76885553"
 ::: moniker-end
 
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet new webapp -o WebApp1
@@ -75,7 +75,7 @@ dotnet new webapp -o WebApp1
 
 ## <a name="run-the-identity-scaffolder"></a>執行身分識別 scaffolder
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 在**方案總管**中，以滑鼠右鍵按一下專案 >**加入** > **新的 scaffold 專案**。
 * 從 [**新增 Scaffold** ] 對話方塊的左窗格中，選取 [身分**識別** > **新增**]。
@@ -88,7 +88,7 @@ dotnet new webapp -o WebApp1
   * 選取 [ **+** ] 按鈕，以建立新的**使用者類別**。 接受類型（如果專案名為**WebApp1**，則為**WebApp1User** ） >**新增**。
 * 選取 [新增]。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 如果您先前尚未安裝 ASP.NET Core scaffolder，請立即安裝：
 
@@ -120,7 +120,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 依照 [遷移] [、[UseAuthentication] 和 [版面](xref:security/authentication/scaffold-identity#efm)配置] 中的指示執行下列步驟：
 
 * 建立遷移並更新資料庫。
-* 將 `UseAuthentication` 加入 `Startup.Configure`。
+* 將 `UseAuthentication` 新增至 `Startup.Configure`。
 * 將 `<partial name="_LoginPartial" />` 新增至版面配置檔案。
 * 測試應用程式：
   * 註冊使用者
@@ -203,7 +203,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 ### <a name="add-a-migration-for-the-custom-user-data"></a>新增自訂使用者資料的遷移
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在 [Visual Studio**套件管理員主控台**] 中：
 
@@ -212,7 +212,7 @@ Add-Migration CustomUserData
 Update-Database
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet ef migrations add CustomUserData

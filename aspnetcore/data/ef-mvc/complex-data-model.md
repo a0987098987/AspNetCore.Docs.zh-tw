@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: b8b1ade4c8c29d34200bf8c0944cff6adec0bb95
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: 91fd09874ecab8bfdb6a38a404faba04aeb73edc
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288959"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657427"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>教學課程：建立複雜的資料模型-使用 EF Core ASP.NET MVC
 
@@ -22,7 +22,7 @@ ms.locfileid: "74288959"
 
 ![實體圖表](complex-data-model/_static/diagram.png)
 
-在本教學課程中，您將：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 自訂資料模型
@@ -38,7 +38,7 @@ ms.locfileid: "74288959"
 > * 變更連接字串
 > * 更新資料庫
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [使用 EF Core 移轉](migrations.md)
 
@@ -147,7 +147,7 @@ dotnet ef database update
 
 ![Student 實體](complex-data-model/_static/student-entity.png)
 
-在 *Models/Student.cs* 中，以下列程式碼取代您在先前新增的程式碼。 所做的變更已醒目提示。
+在 *Models/Student.cs* 中，以下列程式碼取代您在先前新增的程式碼。 所做的變更已醒目標示。
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
@@ -239,7 +239,7 @@ Instructor 實體具有一個可為 Null 的 `OfficeAssignment` 導覽屬性 (�
 
 ![Course 實體](complex-data-model/_static/course-entity.png)
 
-在 *Models/Course.cs* 中，以下列程式碼取代您在先前新增的程式碼。 所做的變更已醒目提示。
+在 *Models/Course.cs* 中，以下列程式碼取代您在先前新增的程式碼。 所做的變更已醒目標示。
 
 [!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
@@ -286,7 +286,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ## <a name="create-department-entity"></a>建立 Department 實體
 
-![Department 實體](complex-data-model/_static/department-entity.png)
+![部門實體](complex-data-model/_static/department-entity.png)
 
 使用下列程式碼建立 *Models/Department.cs*：
 
@@ -510,11 +510,11 @@ dotnet ef database update
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[下載或檢視已完成的應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您將：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 自訂資料模型

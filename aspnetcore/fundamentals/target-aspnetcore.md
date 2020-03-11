@@ -9,11 +9,11 @@ no-loc:
 - Blazor
 uid: fundamentals/target-aspnetcore
 ms.openlocfilehash: 72096fc2f03033dfe8325b5129e074913a2fbd1f
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463885"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658064"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>在類別庫中使用 ASP.NET Core Api
 
@@ -42,19 +42,19 @@ ASP.NET Core 遵守[.Net Core 支援原則](https://dotnet.microsoft.com/platfor
 
 只有以 .NET Core 3.x 為目標的專案才支援以這種方式參考 ASP.NET Core。
 
-## <a name="include-opno-locblazor-extensibility"></a>包含 Blazor 擴充性
+## <a name="include-blazor-extensibility"></a>包含 Blazor 擴充性
 
 Blazor 支援 WebAssembly （WASM）和伺服器[裝載模型](xref:blazor/hosting-models)。 除非有特定的理由不這麼做，否則[Razor 元件](xref:blazor/components)程式庫應該支援這兩種裝載模型。 Razor 元件程式庫必須使用[NET.TCP sdk](xref:razor-pages/sdk)。
 
 ### <a name="support-both-hosting-models"></a>同時支援這兩種裝載模型
 
-若要同時支援[Blazor 伺服器](xref:blazor/hosting-models#blazor-server)和[Blazor WASM](xref:blazor/hosting-models#blazor-webassembly)專案的 Razor 元件耗用量，請針對您的編輯器使用下列指示。
+若要支援來自[Blazor 伺服器](xref:blazor/hosting-models#blazor-server)和[Blazor WASM](xref:blazor/hosting-models#blazor-webassembly)專案的 Razor 元件耗用量，請針對您的編輯器使用下列指示。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 使用 [ **Razor 類別庫**] 專案範本。 應取消選取範本的 [**支援頁面和流覽**器] 核取方塊。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 在整合式終端機中執行下列命令：
 
@@ -62,7 +62,7 @@ Blazor 支援 WebAssembly （WASM）和伺服器[裝載模型](xref:blazor/hosti
 dotnet new razorclasslib
 ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 使用 [ **Razor 類別庫**] 專案範本。
 
@@ -82,7 +82,7 @@ dotnet new razorclasslib
 
 ### <a name="support-a-specific-hosting-model"></a>支援特定的主控模型
 
-支援單一 Blazor 裝載模型，這種情況較不常見。 例如，為了僅支援來自[Blazor Server](xref:blazor/hosting-models#blazor-server)專案的 Razor 元件耗用量：
+支援單一 Blazor 裝載模型的情況較不常見。 例如，僅支援來自[Blazor 伺服器](xref:blazor/hosting-models#blazor-server)專案的 Razor 元件耗用量：
 
 * 以 .NET Core 3.x 為目標。
 * 新增共用架構的 `<FrameworkReference>` 元素。
@@ -114,11 +114,11 @@ dotnet new razorclasslib
 
 **Razor 類別庫**專案範本滿足上述以 .net Core 3.x 為目標的專案需求。 針對您的編輯器使用下列指示。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 使用 [ **Razor 類別庫**] 專案範本。 應選取範本的 [**支援頁面和流覽**器] 核取方塊。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 在整合式終端機中執行下列命令：
 
@@ -126,7 +126,7 @@ dotnet new razorclasslib
 dotnet new razorclasslib -s
 ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 目前沒有任何專案範本支援。
 

@@ -5,16 +5,16 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 12/05/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: d2f9a64c77d76702004b94cdf36e558b33d7e19a
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: f6dbac81b4efceb30c379ab06dd715005d879228
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172568"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658932"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -28,7 +28,7 @@ ms.locfileid: "77172568"
 
 ## <a name="add-a-data-model"></a>新增資料模型
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
 
@@ -36,7 +36,7 @@ ms.locfileid: "77172568"
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 新增名為 *Models* 的資料夾。
 * 將類別新增至名為 *Movie.cs* 的 *Models* 資料夾。
@@ -45,7 +45,7 @@ ms.locfileid: "77172568"
 
 [!INCLUDE [model 2](~/includes/RP/model2.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在 Solution Pad 中，以滑鼠右鍵按一下**RazorPagesMovie**專案，然後選取 [**加入**>**新增資料夾**]。將資料夾命名為*模型*。
 * 以滑鼠右鍵按一下 [*模型*] 資料夾，然後選取 [**加入**>**新增**檔案 ...]。
@@ -65,7 +65,7 @@ ms.locfileid: "77172568"
 
 在本節中會 scaffold 影片模型。 亦即 Scaffolding 工具會產生影片模型的建立、讀取、更新和刪除 (CRUD) 作業頁面。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 建立 *Pages/Movies* 資料夾：
 
@@ -90,7 +90,7 @@ ms.locfileid: "77172568"
 
 *appsettings.json* 檔案會隨即更新用來連線到本機資料庫的連接字串。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
@@ -119,7 +119,7 @@ ms.locfileid: "77172568"
 
 [!INCLUDE [use SQL Server in production](~/includes/RP/sqlitedev.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 建立 *Pages/Movies* 資料夾：
 
@@ -158,7 +158,7 @@ dotnet tool install --global dotnet-ef
 
 ### <a name="files-created"></a>建立的檔案
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 隨即建立 Scaffold 處理序並更新下列檔案：
 
@@ -171,7 +171,7 @@ dotnet tool install --global dotnet-ef
 
 下一節將說明所建立和更新的檔案。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 隨即建立 Scaffold 處理序並更新下列檔案：
 
@@ -184,7 +184,7 @@ dotnet tool install --global dotnet-ef
 
 下一節將說明所建立和更新的檔案。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Scaffold 處理序會建立下列檔案：
 
@@ -198,7 +198,7 @@ Scaffold 處理序會建立下列檔案：
 
 ## <a name="initial-migration"></a>初始移轉
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在本節中，您可以使用套件管理員主控台 (PMC) 進行下列作業：
 
@@ -216,11 +216,11 @@ Add-Migration InitialCreate
 Update-Database
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
@@ -234,7 +234,7 @@ Update-Database
 
 `update` 命令會在尚未套用的遷移中執行 `Up` 方法。 在此情況下，`update` 會在建立資料庫的「*遷移/\<時間戳記 > _InitialCreate .cs*檔案中執行 `Up` 方法。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
@@ -254,11 +254,11 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 
 連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 檢查 `Up` 方法。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 檢查 `Up` 方法。
 
@@ -281,10 +281,10 @@ Login failed for user 'User-name'.
 
 * 測試 **Create** 連結。
 
-  ![[建立] 頁面](model/_static/conan.png)
+  ![Create page](model/_static/conan.png)
 
   > [!NOTE]
-  > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，則必須將應用程式全球化。 如需全球化指示，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) \(英文\)。
+  > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，則必須將應用程式全球化。 如需全球化指示，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) \(英文\)。
 
 * 測試 [編輯]、[詳細資料] 和 [刪除] 連結。
 
@@ -309,7 +309,7 @@ Login failed for user 'User-name'.
 
 ## <a name="add-a-data-model"></a>新增資料模型
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
 
@@ -317,7 +317,7 @@ Login failed for user 'User-name'.
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 新增名為 *Models* 的資料夾。
 * 將類別新增至名為 *Movie.cs* 的 *Models* 資料夾。
@@ -326,7 +326,7 @@ Login failed for user 'User-name'.
 
 [!INCLUDE [model 2](~/includes/RP/model2.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在方案總管中，以滑鼠右鍵按一下 **RazorPagesMovie** 專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
 * 以滑鼠右鍵按一下 [*模型*] 資料夾，然後選取 [**加入**>**新增**檔案]。
@@ -346,7 +346,7 @@ Login failed for user 'User-name'.
 
 在本節中會 scaffold 影片模型。 亦即 Scaffolding 工具會產生影片模型的建立、讀取、更新和刪除 (CRUD) 作業頁面。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 建立 *Pages/Movies* 資料夾：
 
@@ -375,7 +375,7 @@ to use Data, it should not use models. That will make the namespace the same for
 
 *appsettings.json* 檔案會隨即更新用來連線到本機資料庫的連接字串。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
@@ -396,7 +396,7 @@ to use Data, it should not use models. That will make the namespace the same for
 
 [!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 建立 *Pages/Movies* 資料夾：
 
@@ -440,7 +440,7 @@ to use Data, it should not use models. That will make the namespace the same for
 
 ## <a name="initial-migration"></a>初始移轉
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在本節中，您可以使用套件管理員主控台 (PMC) 進行下列作業：
 
@@ -462,11 +462,11 @@ Update-Database
 
 `Update-Database` 命令會執行 `Up`Migrations/*時間戳記>_InitialCreate.cs\< 檔案中的*  方法。 `Up` 方法會建立資料庫。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
@@ -474,7 +474,7 @@ Update-Database
 > [!NOTE]
 > 上述命令會產生下列警告：「*實體類型 ' Movie ' 的十進位資料行 ' Price ' 未指定任何類型。如果值不符合預設的有效位數和小數位數，這會導致以無訊息模式截斷值。使用 ' HasColumnType （） ' 明確指定可容納所有值的 SQL server 資料行類型。* 」您可以忽略該警告，其將在稍後的教學課程中修正。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
@@ -494,11 +494,11 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 
 連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 檢查 `Up` 方法。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 檢查 `Up` 方法。
 
@@ -521,10 +521,10 @@ Login failed for user 'User-name'.
 
 * 測試 **Create** 連結。
 
-  ![[建立] 頁面](model/_static/conan.png)
+  ![Create page](model/_static/conan.png)
 
   > [!NOTE]
-  > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，則必須將應用程式全球化。 如需全球化指示，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) \(英文\)。
+  > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，則必須將應用程式全球化。 如需全球化指示，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) \(英文\)。
 
 * 測試 [編輯]、[詳細資料] 和 [刪除] 連結。
 

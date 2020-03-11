@@ -1,16 +1,16 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
-author: tdykstra
+author: rick-anderson
 description: 示範如何以 EF Core 來建立、讀取、更新、刪除。
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/crud
-ms.openlocfilehash: 57c4a1789d54c29a28ba7e67a1d15815415a461c
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 05519852fab22bd3ad5b77e3494b49191448286f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583124"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665645"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 
@@ -50,16 +50,16 @@ Students 頁面的 Scaffold 程式碼不包含註冊資料。 在本節中，您
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Details.cshtml?highlight=32-53)]
 
-上述程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 針對每個註冊，會顯示課程標題及成績。 課程標題會從儲存於 Enrollments 實體之 `Course` 導覽屬性中的課程 (Course) 實體擷取。
+上述程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 針對每個註冊，它會顯示課程標題及成績。 課程標題會從儲存於 Enrollments 實體之 `Course` 導覽屬性中的課程 (Course) 實體擷取。
 
-執行應用程式，選取 [Students]  索引標籤，然後按一下學生的 [詳細資料]  連結。 將會顯示所選取學生的課程及成績清單。
+執行應用程式，選取 [Students] 索引標籤，然後按一下學生的 [詳細資料] 連結。 將會顯示所選取學生的課程及成績清單。
 
 ### <a name="ways-to-read-one-entity"></a>讀取單一實體的方式
 
 產生的程式碼會使用 [FirstOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Threading_CancellationToken_) 來讀取單一實體。 如果找不到任何內容，則此方法會傳回 Null；否則會傳回符合查詢篩選準則的第一個資料列。 `FirstOrDefaultAsync` 通常是比下列替代選項更好的選擇：
 
 * [SingleOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_) - 如果有超過一個滿足查詢篩選準則的實體，就會擲回例外狀況。 為了判斷查詢是否可能傳回超過一個資料列，`SingleOrDefaultAsync` 會嘗試提取多個資料列。 如果查詢只能傳回單一實體 (如同在搜尋唯一索引鍵時一樣)，則此額外工作是不必要的。
-* [FindAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#Microsoft_EntityFrameworkCore_DbContext_FindAsync_System_Type_System_Object___) - 尋找含有主索引鍵 (PK) 的實體。 如果內容正在追蹤具有主索引鍵的實體，則會在沒有傳送要求至資料庫的情況下傳回。 此方法已經過最佳化以便查閱單一實體，但是您無法使用 `FindAsync` 呼叫 `Include`。  因此如果需要相關資料，`FirstOrDefaultAsync` 是較好的選擇。
+* [FindAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#Microsoft_EntityFrameworkCore_DbContext_FindAsync_System_Type_System_Object___) - 尋找含有主索引鍵 (PK) 的實體。 如果內容正在追蹤具有主索引鍵的實體，則會在沒有傳送要求至資料庫的情況下傳回。 此方法已經過最佳化以便查閱單一實體，但是您無法使用 `Include` 呼叫 `FindAsync`。  因此如果需要相關資料，`FirstOrDefaultAsync` 是較好的選擇。
 
 ### <a name="route-data-vs-query-string"></a>路由資料與查詢字串
 
@@ -67,7 +67,7 @@ Students 頁面的 Scaffold 程式碼不包含註冊資料。 在本節中，您
 
 ## <a name="update-the-create-page"></a>更新 [建立] 頁面
 
-[建立] 頁面的 scaffold `OnPostAsync` 程式碼容易受到[大量指派](#overposting)攻擊。 使用下列程式碼取代 *Pages/Students/Create.cshtml.cs* 中的 `OnPostAsync` 方法。
+[建立] 頁面的 scaffold `OnPostAsync` 程式碼容易受到[大量指派](#overposting)攻擊。 使用下列程式碼取代 `OnPostAsync`Pages/Students/Create.cshtml.cs*中的* 方法。
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
@@ -77,9 +77,9 @@ Students 頁面的 Scaffold 程式碼不包含註冊資料。 在本節中，您
 
 上述程式碼會建立 Student 物件，然後使用張貼的表單欄位來更新 Student 物件屬性。 [TryUpdateModelAsync](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#Microsoft_AspNetCore_Mvc_ControllerBase_TryUpdateModelAsync_System_Object_System_Type_System_String_) 方法：
 
-* 使用 [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) 中 [PageCoNtext](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.pagecontext#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_PageContext) 屬性的張貼表單值。
+* 使用 [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.pagecontext#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_PageContext) 中 [PageCoNtext](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) 屬性的張貼表單值。
 * 僅更新列出的屬性 (`s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate`)。
-* 尋找具有 "student" 前置詞的表單欄位。 例如，`Student.FirstMidName`。 不區分大小寫。
+* 尋找具有 "student" 前置詞的表單欄位。 例如： `Student.FirstMidName` 。 不區分大小寫。
 * 使用[模型繫結](xref:mvc/models/model-binding)系統，將字串中表單值轉換成 `Student` 模型中的型別。 例如，`EnrollmentDate` 必須轉換成 DateTime。
 
 執行應用程式，並建立 Student 實體來測試 [建立] 頁面。
@@ -94,7 +94,7 @@ Students 頁面的 Scaffold 程式碼不包含註冊資料。 在本節中，您
 
 無論駭客在 `Secret` 表單欄位中指定了什麼值，該值都會更新到資料庫中。 下列影響顯示了 Fiddler 工具將 `Secret` 欄位 (其值為 "OverPost") 新增到表單的值中。
 
-![Fiddler 新增 [Secret] 欄位](../ef-mvc/crud/_static/fiddler.png)
+![Fiddler 新增 Secret 欄位](../ef-mvc/crud/_static/fiddler.png)
 
 "OverPost" 值已成功新增至插入資料列的 `Secret` 屬性。 即使應用程式設計師從未打算在 [建立] 頁面設定 `Secret` 屬性，還是會發生此情況。
 
@@ -116,7 +116,7 @@ Students 頁面的 Scaffold 程式碼不包含註冊資料。 在本節中，您
 
 [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) 會設定這個物件的值，方法是藉由從其他 [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues) 物件中讀取值。 `SetValues` 使用屬性名稱比對。 檢視模型類型不需要與模型類型相關，只需要有符合的屬性。
 
-使用 `StudentVM` 需要 [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/2-crud/Pages/Students/CreateVM.cshtml) 更新為使用 `StudentVM` 而不是 `Student`。
+使用 `StudentVM` 需要 [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/2-crud/Pages/Students/CreateVM.cshtml) 更新為使用 `StudentVM` 而不是 `Student`。
 
 ## <a name="update-the-edit-page"></a>更新 [編輯] 頁面
 
@@ -146,13 +146,13 @@ Students 頁面的 Scaffold 程式碼不包含註冊資料。 在本節中，您
 
 * `Deleted`：實體已遭標示刪除。 `SaveChanges` 方法會發出 DELETE 陳述式。
 
-* `Detached`：實體未獲得資料庫內容追蹤。
+* `Detached`：實體未由資料庫內容追蹤。
 
 在桌面應用程式中，狀態變更通常會自動進行設定。 實體已讀取、已進行變更，且實體狀態會自動變更為 `Modified`。 呼叫 `SaveChanges` 會產生 SQL UPDATE 陳述式，此陳述式只會更新變更過的屬性。
 
 在 Web 應用程式中，讀取實體並顯示其資料以供編輯之用的 `DbContext` 會在頁面轉譯之後遭到處置。 當呼叫頁面的 `OnPostAsync` 方法時，會發出新的 Web 要求，並且會擁有一個新的 `DbContext` 執行個體。 在新的內容中重新讀取實體時，會模擬桌面處理流程。
 
-## <a name="update-the-delete-page"></a>更新 *Delete* 頁面
+## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
 
 在本節中，您將實作一個呼叫至 `SaveChanges` 失敗時的自訂錯誤訊息。
 
@@ -160,7 +160,7 @@ Students 頁面的 Scaffold 程式碼不包含註冊資料。 在本節中，您
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Delete.cshtml.cs?name=snippet_All&highlight=20,22,30,38-41,53-71)]
 
-上述程式碼會將選擇性參數 `saveChangesError` 新增至 `OnGetAsync` 方法簽章。 `saveChangesError` 會顯示出此方法是否已在刪除學生物件失敗後呼叫。 刪除作業可能會因為暫時性的網路問題而失敗。 資料庫位於雲端時，較可能發生暫時性的網路錯誤。 從 UI 中呼叫 [刪除] 頁面 `OnGetAsync` 時，`saveChangesError` 參數為 false。 當 `OnPostAsync` 呼叫 `OnGetAsync` 時 (因刪除作業失敗)，則 `saveChangesError` 參數為 true。
+上述程式碼會將選擇性參數 `saveChangesError` 新增至 `OnGetAsync` 方法簽章。 `saveChangesError` 會顯示出此方法是否已在刪除學生物件失敗後呼叫。 刪除作業可能會因為暫時性的網路問題而失敗。 資料庫位於雲端時，較可能發生暫時性的網路錯誤。 從 UI 中呼叫 [刪除] 頁面 `saveChangesError` 時，`OnGetAsync` 參數為 false。 當 `OnGetAsync` 呼叫 `OnPostAsync` 時 (因刪除作業失敗)，則 `saveChangesError` 參數為 true。
 
 `OnPostAsync` 方法會擷取選取的實體，然後呼叫 [Remove](/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#Microsoft_EntityFrameworkCore_DbContext_Remove_System_Object_) 方法來將實體的狀態設定為 `Deleted`。 當呼叫 `SaveChanges` 時，便會產生 SQL DELETE 命令。 如果 `Remove` 失敗：
 
@@ -196,7 +196,7 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 
 [索引] 頁面和 [詳細資料] 頁面以 HTTP GET 方法 `OnGetAsync` 取得並顯示所要求的資料
 
-## <a name="singleordefaultasync-vs-firstordefaultasync"></a>SingleOrDefaultAsync 與FirstOrDefaultAsync
+## <a name="singleordefaultasync-vs-firstordefaultasync"></a>SingleOrDefaultAsync 與 FirstOrDefaultAsync 的比較
 
 產生的程式碼會使用 [FirstOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Threading_CancellationToken_)，一般會偏好它而非 [SingleOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_)。
 
@@ -213,7 +213,7 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 
 在大部分的 Scaffold 程式碼中，[FindAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#Microsoft_EntityFrameworkCore_DbContext_FindAsync_System_Type_System_Object___) 可用來取代 `FirstOrDefaultAsync`。
 
-`FindAsync`：
+`FindAsync`:
 
 * 尋找含有主索引鍵 (PK) 的實體。 如果內容正在追蹤含有主索引鍵的實體，會在沒有傳送要求至資料庫的情況下傳回。
 * 簡單並精確。
@@ -225,11 +225,11 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 
 ## <a name="customize-the-details-page"></a>自訂 [詳細資料] 頁面
 
-瀏覽至 `Pages/Students` 頁面。 在 *Pages/Students/Index.cshtml* 檔案中，**編輯**、**詳細資料**、**刪除** 連結是由[錨點標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。
+瀏覽至 `Pages/Students` 頁面。 在 **Pages/Students/Index.cshtml** 檔案中，**編輯**、**詳細資料**、[刪除](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) 連結是由*錨點標籤協助程式*所產生。
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index1.cshtml?name=snippet)]
 
-執行應用程式並選取 [詳細資料]  連結。 URL 的格式為 `http://localhost:5000/Students/Details?id=2` 。 使用 (`?id=2`) 查詢字串來傳遞 Student ID。
+執行應用程式並選取 [詳細資料] 連結。 URL 的格式為 `http://localhost:5000/Students/Details?id=2` 。 使用 (`?id=2`) 查詢字串來傳遞 Student ID。
 
 更新 [編輯]、[詳細資料] 和 [刪除] Razor 頁面，以使用 `"{id:int}"` 路由範本。 將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。
 
@@ -249,7 +249,7 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 
 Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 在本節中，`Enrollments` 集合的內容會顯示於 [詳細資料] 頁面。
 
-*Pages/Students/Details.cshtml.cs* 的 `OnGetAsync` 方法使用 `FirstOrDefaultAsync` 方法來擷取單一 `Student` 實體。 請新增下列醒目提示的程式碼：
+`OnGetAsync`Pages/Students/Details.cshtml.cs*的* 方法使用 `FirstOrDefaultAsync` 方法來擷取單一 `Student` 實體。 請新增下列醒目提示的程式碼：
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Details.cshtml.cs?name=snippet_Details&highlight=8-12)]
 
@@ -265,13 +265,13 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 若在貼上程式碼之後，程式碼的縮排發生錯誤，請按 CTRL-K-D 修正它。
 
-上述程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 針對每個註冊，會顯示課程標題及成績。 課程標題會從儲存於 Enrollments 實體之 `Course` 導覽屬性中的課程 (Course) 實體擷取。
+上述程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 針對每個註冊，它會顯示課程標題及成績。 課程標題會從儲存於 Enrollments 實體之 `Course` 導覽屬性中的課程 (Course) 實體擷取。
 
-執行應用程式，選取 [Students]  索引標籤，然後按一下學生的 [詳細資料]  連結。 將會顯示所選取學生的課程及成績清單。
+執行應用程式，選取 [Students] 索引標籤，然後按一下學生的 [詳細資料] 連結。 將會顯示所選取學生的課程及成績清單。
 
 ## <a name="update-the-create-page"></a>更新 [建立] 頁面
 
-以下列程式碼更新 *Pages/Students/Create.cshtml.cs* 中的 `OnPostAsync` 方法：
+以下列程式碼更新 `OnPostAsync`Pages/Students/Create.cshtml.cs*中的* 方法：
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
@@ -283,12 +283,12 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Create.cshtml.cs?name=snippet_TryUpdateModelAsync)]
 
-在上述程式碼，`TryUpdateModelAsync<Student>` 從 [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) 中的 [PageContext](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.pagecontext#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_PageContext) 屬性中，使用已張貼的表單值來嘗試更新 `emptyStudent` 物件。 `TryUpdateModelAsync` 只會更新列出的屬性 (`s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate`)。
+在上述程式碼，`TryUpdateModelAsync<Student>` 從 `emptyStudent`PageModel[ 中的 ](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.pagecontext#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_PageContext)PageContext[ 屬性中，使用已張貼的表單值來嘗試更新 ](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) 物件。 `TryUpdateModelAsync` 只會更新列出的屬性 (`s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate`)。
 
 在上述範例中：
 
 * 第二個引數 (`"student", // Prefix`) 是使用來查閱值的前置詞。 不區分大小寫。
-* 已張貼的表單值會使用[模型繫結](xref:mvc/models/model-binding)轉換至 `Student` 模型中的類型。
+* 已張貼的表單值會使用`Student`模型繫結[轉換至 ](xref:mvc/models/model-binding) 模型中的類型。
 
 <a id="overpost"></a>
 
@@ -302,7 +302,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 無論駭客在 `Secret` 表單欄位中指定了什麼值，該值都會更新到資料庫中。 下列影響顯示了 Fiddler 工具將 `Secret` 欄位 (其值為 "OverPost") 新增到表單的值中。
 
-![Fiddler 新增 [Secret] 欄位](../ef-mvc/crud/_static/fiddler.png)
+![Fiddler 新增 Secret 欄位](../ef-mvc/crud/_static/fiddler.png)
 
 "OverPost" 值已成功新增至插入資料列的 `Secret` 屬性。 應用程式設計師從未打算在 [建立] 頁面設定 `Secret` 屬性。
 
@@ -322,7 +322,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) 會設定這個物件的值，方法是藉由從其他 [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues) 物件中讀取值。 `SetValues` 使用屬性名稱比對。 檢視模型類型不需要與模型類型相關，只需要有符合的屬性。
 
-使用 `StudentVM` 需要 [CreateVM.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21/Pages/Students/CreateVM.cshtml) 更新為使用 `StudentVM`，而不是使用 `Student`。
+使用 `StudentVM` 需要 [CreateVM.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21/Pages/Students/CreateVM.cshtml) 更新為使用 `StudentVM`，而不是使用 `Student`。
 
 在 Razor 頁面中，`PageModel` 的衍生類別是檢視模型。
 
@@ -348,7 +348,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 實體可為[下列狀態](/dotnet/api/microsoft.entityframeworkcore.entitystate)中的其中一個：
 
-* `Added`：實體還不存在 DB 中。 `SaveChanges` 方法會發出 INSERT 陳述式。
+* `Added`：實體還不存在資料庫中。 `SaveChanges` 方法會發出 INSERT 陳述式。
 
 * `Unchanged`：此實體沒有需要儲存的變更。 從資料庫讀取時，此實體將會有這個狀態。
 
@@ -356,7 +356,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 * `Deleted`：實體已遭標示刪除。 `SaveChanges` 方法會發出 DELETE 陳述式。
 
-* `Detached`：實體未獲得 DB 內容追蹤。
+* `Detached`：實體未獲得資料庫內容追蹤。
 
 在桌面應用程式中，狀態變更通常會自動進行設定。 實體已讀取、已進行變更，且實體狀態會自動變更為 `Modified`。 呼叫 `SaveChanges` 會產生 SQL UPDATE 陳述式，此陳述式只會更新變更過的屬性。
 
@@ -372,7 +372,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Delete.cshtml.cs?name=snippet_OnGetAsync&highlight=1,9,17-20)]
 
-上述程式碼中包含選擇性參數 `saveChangesError`。 `saveChangesError` 會顯示出此方法是否已在刪除學生物件失敗後呼叫。 刪除作業可能會因為暫時性的網路問題而失敗。 暫時性的網路錯誤較可能是在雲端。 [刪除] 頁面 `OnGetAsync` 從 UI 中呼叫時，`saveChangesError` 為 false。 當 `OnPostAsync` 呼叫 `OnGetAsync` 時 (因刪除作業失敗)，則 `saveChangesError` 參數為 true。
+上述程式碼中包含選擇性參數 `saveChangesError`。 `saveChangesError` 會顯示出此方法是否已在刪除學生物件失敗後呼叫。 刪除作業可能會因為暫時性的網路問題而失敗。 暫時性的網路錯誤較可能是在雲端。 [刪除] 頁面 `saveChangesError` 從 UI 中呼叫時，`OnGetAsync` 為 false。 當 `OnGetAsync` 呼叫 `OnPostAsync` 時 (因刪除作業失敗)，則 `saveChangesError` 參數為 true。
 
 ### <a name="the-delete-pages-onpostasync-method"></a>[刪除] 頁面的 OnPostAsync 方法
 
@@ -395,7 +395,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 測試刪除。
 
-## <a name="common-errors"></a>常見的錯誤
+## <a name="common-errors"></a>常見錯誤
 
 Students/Index 或其他連結運作失常：
 

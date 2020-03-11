@@ -7,11 +7,11 @@ ms.date: 09/26/2019
 monikerRange: '>= aspnetcore-3.0'
 uid: web-api/Microsoft.dotnet-openapi
 ms.openlocfilehash: 079e36511b63c186ffa7726bdb1e3c3bcbda9d34
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829253"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655264"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>使用 OpenAPI 工具開發 ASP.NET Core 應用程式
 
@@ -27,7 +27,7 @@ ms.locfileid: "75829253"
 dotnet tool install -g Microsoft.dotnet-openapi
 ```
 
-## <a name="add"></a>Add
+## <a name="add"></a>加
 
 使用此頁面上的任何命令新增 OpenAPI 參考時，會將類似下列的 `<OpenApiReference />` 專案新增至 *.csproj*檔案：
 
@@ -54,15 +54,15 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 ### <a name="add-file"></a>新增檔案
 
-#### <a name="options"></a>選項
+#### <a name="options"></a>選項。
 
 | Short 選項| Long 選項| 描述 | 範例 |
 |-------|------|-------|---------|
 | -p|--updateProject | 要操作的專案。 |dotnet openapi add file *--updateProject .\Ref.csproj* .\OpenAPI.json |
 | -c|--程式碼產生器| 要套用至參考的程式碼產生器。 選項為 `NSwagCSharp` 和 `NSwagTypeScript`。 如果未指定 `--code-generator`，工具預設會 `NSwagCSharp`。|dotnet openapi add file .\OpenApi.json--程式碼產生器
-| -h|--help|顯示說明資訊|dotnet openapi add file--help|
+| -H|--help|顯示說明資訊|dotnet openapi add file--help|
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>引數
 
 |  引數  | 描述 | 範例 |
 |-------------|-------------|---------|
@@ -70,50 +70,50 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 ### <a name="add-url"></a>新增 URL
 
-#### <a name="options"></a>選項
+#### <a name="options"></a>選項。
 
 | Short 選項| Long 選項| 描述 | 範例 |
 |-------|------|-------------|---------|
 | -p|--updateProject | 要操作的專案。 |dotnet openapi 新增 url *--updateProject .\Ref.csproj* `https://contoso.com/openapi.json` |
 | -o|--output-file | 放置 OpenAPI 檔案本機複本的位置。 |dotnet openapi 新增 url `https://contoso.com/openapi.json` *--輸出-file myclient. json* |
 | -c|--程式碼產生器| 要套用至參考的程式碼產生器。 選項為 `NSwagCSharp` 和 `NSwagTypeScript`。 |dotnet openapi add file .\OpenApi.json--程式碼產生器
-| -h|--help|顯示說明資訊|dotnet openapi add url--help|
+| -H|--help|顯示說明資訊|dotnet openapi add url--help|
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>引數
 
 |  引數  | 描述 | 範例 |
 |-------------|-------------|---------|
 | 來源-URL | 要從中建立參考的來源。 必須是 URL。 |dotnet openapi 新增 url `https://contoso.com/openapi.json` |
 
-## <a name="remove"></a>Remove
+## <a name="remove"></a>移除
 
 從 *.csproj*檔案中移除符合指定檔案名的 OpenAPI 參考。 移除 OpenAPI 參考時，將不會產生用戶端。 已刪除*yaml*檔案。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 | Short 選項| Long 選項| 描述| 範例 |
 |-------|------|------------|---------|
 | -p|--updateProject | 要操作的專案。 |dotnet openapi remove *--updateProject .\Ref.csproj* .\OpenAPI.json |
-| -h|--help|顯示說明資訊|dotnet openapi remove--help|
+| -H|--help|顯示說明資訊|dotnet openapi remove--help|
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 |  引數  | 描述| 範例 |
 | ------------|------------|---------|
 | 來源檔案 | 要移除其參考的來源。 |dotnet openapi remove *.\OpenAPI.json* |
 
-## <a name="refresh"></a>重新整理
+## <a name="refresh"></a>Refresh
 
 重新整理使用下載 URL 的最新內容下載之檔案的本機版本。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 | Short 選項| Long 選項| 描述 | 範例 |
 |-------|------|-------------|---------|
 | -p|--updateProject | 要操作的專案。 | dotnet openapi refresh *--updateProject .\Ref.csproj* `https://contoso.com/openapi.json` |
-| -h|--help|顯示說明資訊|dotnet openapi refresh--help|
+| -H|--help|顯示說明資訊|dotnet openapi refresh--help|
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 |  引數  | 描述 | 範例 |
 | ------------|-------------|---------|

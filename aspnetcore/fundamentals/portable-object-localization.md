@@ -5,12 +5,12 @@ description: 本文介紹可攜式物件檔案，並概述在具有 Orchard Core
 ms.author: scaddie
 ms.date: 09/26/2017
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 6ec7afc59d6dfd2629a3d6d83ae619575397a9df
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 08002564eb68bc04eebaeafed560202d0d69958a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884373"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656188"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>使用 ASP.NET Core 設定可攜式物件當地語系化
 
@@ -20,12 +20,12 @@ ms.locfileid: "64884373"
 
 **注意：** Orchard Core 不是 Microsoft 產品。 因此，Microsoft 不提供這項功能的支援。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>什麼是 PO 檔案？
 
 PO 檔案以文字檔的形式散發，其中包含給定語言的翻譯字串。 使用 PO 檔案而不是使用 *.resx* 檔案的一些優點包括：
-- PO 檔案支援複數表示；*.resx* 檔案不支援複數表示。
+- PO 檔案支援複數表示； *.resx* 檔案不支援複數表示。
 - PO 檔案不會像 *.resx* 檔案一樣進行編譯。 因此，不需要特殊化工具與建置步驟。
 - PO 檔案適用於共同作業的線上編輯工具。
 
@@ -75,11 +75,11 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="registering-the-service"></a>註冊服務
 
-將所需的服務新增至 *Startup.cs* 的 `ConfigureServices` 方法：
+將所需的服務新增至 `ConfigureServices`Startup.cs*的* 方法：
 
 [!code-csharp[](localization/sample/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-將必要的中介軟體新增至 *Startup.cs* 的 `Configure` 方法：
+將必要的中介軟體新增至 `Configure`Startup.cs*的* 方法：
 
 [!code-csharp[](localization/sample/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -95,13 +95,13 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 [!code-text[](localization/sample/POLocalization/fr.po)]
 
-這個檔案會同時儲存要翻譯的字串和法文的翻譯字串。 如有必要，翻譯會還原為其父文化特性。 在此範例中，如果所要求的文化特性是 `fr-FR` 或 `fr-CA`，則會使用 *fr.po* 檔案。
+這個檔案會同時儲存要翻譯的字串和法文的翻譯字串。 如有必要，翻譯會還原為其父文化特性。 在此範例中，如果所要求的文化特性是 *或*，則會使用 `fr-FR`fr.po`fr-CA` 檔案。
 
 ### <a name="testing-the-application"></a>測試應用程式
 
-執行您的應用程式，並巡覽至 `/Home/About` URL。 文字 **Hello world!** 隨即顯示。
+執行您的應用程式，並巡覽至 `/Home/About` URL。 文字 **Hello world!** 就會出現。
 
-巡覽至 `/Home/About?culture=fr-FR`RL。 文字 **Bonjour le monde!** 隨即顯示。
+巡覽至 `/Home/About?culture=fr-FR`RL。 文字 **Bonjour le monde!** 就會出現。
 
 ## <a name="pluralization"></a>複數表示
 

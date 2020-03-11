@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: test/troubleshoot
-ms.openlocfilehash: 73a73fb51571e5f7b706ff4b958217854750c1fb
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 042e1c84a7226cb4bf56bcc0ff4e576b67e68e1b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354715"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655299"
 ---
 # <a name="troubleshoot-and-debug-aspnet-core-projects"></a>疑難排解和調試 ASP.NET Core 專案
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 下列連結提供疑難排解指引：
 
@@ -60,7 +60,7 @@ ms.locfileid: "75354715"
 
   > 找不到任何已安裝的 dotnet Sdk。
 
-當環境變數 `PATH` 未指向電腦上的任何 .NET Core Sdk 時，就會出現這些警告。 若要解決這個問題：
+當環境變數 `PATH` 未指向電腦上的任何 .NET Core Sdk 時，就會出現這些警告。 若要解決此問題：
 
 * 安裝 .NET Core SDK。 從[.Net 下載](https://dotnet.microsoft.com/download)取得最新的安裝程式。
 * 確認 `PATH` 環境變數指向安裝 SDK 的位置（適用于64位/x64 的`C:\Program Files\dotnet\` 或32位/x86 的 `C:\Program Files (x86)\dotnet\`）。 SDK 安裝程式通常會設定 `PATH`。 一律在同一部電腦上安裝相同的位 Sdk 和執行時間。
@@ -170,4 +170,4 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env,
 * [在 Linux 上對 ASP Core 進行調試](https://devblogs.microsoft.com/premier-developer/debugging-asp-core-on-linux-with-visual-studio-2017/)
 * [透過 SSH 在 Unix 上對 .NET Core 進行調試](https://devblogs.microsoft.com/devops/debugging-net-core-on-unix-over-ssh/)
 * [快速入門：使用 Visual Studio 偵錯工具的 Debug ASP.NET](/visualstudio/debugger/quickstart-debug-aspnet)
-* 如需更多的偵錯工具資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/2960)。
+* 如需更多的偵錯工具資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/2960)。

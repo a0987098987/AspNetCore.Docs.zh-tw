@@ -5,18 +5,18 @@ description: ''
 ms.author: riande
 ms.date: 03/27/2017
 uid: data/ef-mvc/index
-ms.openlocfilehash: 469b16cfe3cdd41abd133df59036baf92ff04e42
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 9ff070022260aae597d71b2da8d342f41f0c976b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962637"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657287"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---tutorial-series"></a>ASP.NET Core MVC 與 EF Core - 教學課程系列
 
 ::: moniker range=">= aspnetcore-3.0"
 
-此教學課程**尚未**升級至 ASP.NET Core 3.0。 [Razor Pages 版本](xref:data/ef-rp/intro)已更新。 如需何時可能更新此資訊的詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/13920) \(英文\)。
+此教學課程**尚未**升級至 ASP.NET Core 3.0。 [Razor Pages 版本](xref:data/ef-rp/intro)已更新。 如需何時可能更新此資訊的詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/13920) \(英文\)。
 
 ::: moniker-end
 

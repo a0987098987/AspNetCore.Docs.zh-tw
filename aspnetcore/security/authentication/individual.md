@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/11/2019
 uid: security/authentication/individual
 ms.openlocfilehash: 7ef0d5eabded61d04fb9fe7be384a663ad7ea5f4
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828707"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659618"
 ---
 # <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>以個別使用者帳戶所建立 ASP.NET Core 專案為基礎的文章
 
@@ -61,9 +61,9 @@ dotnet new razor -au Individual
 
 下表顯示適用于新 web 應用程式的驗證選項：
 
-| 選項 | 驗證類型 | 連結取得詳細資訊 |
+| 選項 | 驗證類型 | 連結以取得詳細資訊 |
  | ----------------- | ------------ | ---------- |
-| None            |  無驗證 | | 
+| None            |  不需要驗證 | | 
 | 個人      |  個別驗證 | <xref:security/authentication/identity>
 | IndividualB2C   |  使用 Azure AD B2C 的雲端託管個別驗證 | [Azure AD B2C](/azure/active-directory-b2c/) |
 | SingleOrg       |  單一租使用者的組織驗證 | [Azure AD](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp) |
@@ -74,9 +74,9 @@ dotnet new razor -au Individual
 
 下表顯示使用 Visual Studio 建立新的 web 應用程式時可用的驗證選項：
 
-| 選項 | 驗證類型 | 連結取得詳細資訊 |
+| 選項 | 驗證類型 | 連結以取得詳細資訊 |
  | ----------------- | ------------ | ---------- |
-| None            |  無驗證 | | 
+| None            |  不需要驗證 | | 
 | 個別使用者帳戶/儲存應用程式中的使用者帳戶 |  個別驗證 | <xref:security/authentication/identity> |
 | 個別使用者帳戶/連接到雲端中的現有使用者存放區 |  使用 Azure AD B2C 的雲端託管個別驗證 | [Azure AD B2C](/azure/active-directory-b2c/) |
 | 公司或學校雲端/單一組織  |  單一租使用者的組織驗證 | [Azure AD](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp) |

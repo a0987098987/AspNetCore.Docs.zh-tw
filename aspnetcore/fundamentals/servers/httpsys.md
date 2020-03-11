@@ -1,22 +1,22 @@
 ---
 title: ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
-author: guardrex
+author: rick-anderson
 description: 深入了解 HTTP.sys，這是 Windows 上的 ASP.NET Core 網頁伺服器。 HTTP.sys 建置在 HTTP.sys 核心模式驅動程式之上，是 Kestrel 的替代方式，可以用來直接連線到網際網路而不使用 IIS。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 8a315d859fa70d97501156ff3cf97d4c3a5c5bd4
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 3e858a974d6a5c008969c3c51a507880cc25a7ff
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171761"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666919"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 
-作者：[Tom Dykstra](https://github.com/tdykstra)、[Chris Ross](https://github.com/Tratcher) 和 [Luke Latham](https://github.com/guardrex)
+作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Chris Ross](https://github.com/Tratcher)
 
 ::: moniker range=">= aspnetcore-3.1"
 
@@ -40,7 +40,7 @@ HTTP.sys 支援下列功能：
 * Windows 7 或更新版本
 * Windows Server 2008 R2 或更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 
@@ -133,7 +133,7 @@ public IActionResult MyActionMethod()
 
 1. 視需要取得並安裝 X.509 憑證。
 
-   在 Windows 上，請使用 [New-SelfSignedCertificate PowerShell Cmdlet](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 如需不支援的範例，請參閱 [UpdateIISExpressSSLForChrome.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1) \(英文\)。
+   在 Windows 上，請使用 [New-SelfSignedCertificate PowerShell Cmdlet](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 如需不支援的範例，請參閱 [UpdateIISExpressSSLForChrome.ps1](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1) \(英文\)。
 
    在伺服器的**本機電腦**>**個人**存放區中，安裝自我簽署或 CA 簽署的憑證。
 
@@ -222,7 +222,7 @@ public IActionResult MyActionMethod()
        </PropertyGroup>
        ```
 
-   在下列範例中：
+   在下例中︰
 
    * 伺服器的本機 IP 位址是 `10.0.0.4`。
    * 線上隨機 GUID 產生器會提供 `appid` 值。
@@ -293,7 +293,7 @@ HTTP.sys 支援下列功能：
 * Windows 7 或更新版本
 * Windows Server 2008 R2 或更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 
@@ -384,7 +384,7 @@ public IActionResult MyActionMethod()
 
 1. 視需要取得並安裝 X.509 憑證。
 
-   在 Windows 上，請使用 [New-SelfSignedCertificate PowerShell Cmdlet](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 如需不支援的範例，請參閱 [UpdateIISExpressSSLForChrome.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1) \(英文\)。
+   在 Windows 上，請使用 [New-SelfSignedCertificate PowerShell Cmdlet](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 如需不支援的範例，請參閱 [UpdateIISExpressSSLForChrome.ps1](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1) \(英文\)。
 
    在伺服器的**本機電腦**>**個人**存放區中，安裝自我簽署或 CA 簽署的憑證。
 
@@ -473,7 +473,7 @@ public IActionResult MyActionMethod()
        </PropertyGroup>
        ```
 
-   在下列範例中：
+   在下例中︰
 
    * 伺服器的本機 IP 位址是 `10.0.0.4`。
    * 線上隨機 GUID 產生器會提供 `appid` 值。
@@ -544,7 +544,7 @@ HTTP.sys 支援下列功能：
 * Windows 7 或更新版本
 * Windows Server 2008 R2 或更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 
@@ -637,7 +637,7 @@ public IActionResult MyActionMethod()
 
 1. 視需要取得並安裝 X.509 憑證。
 
-   在 Windows 上，請使用 [New-SelfSignedCertificate PowerShell Cmdlet](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 如需不支援的範例，請參閱 [UpdateIISExpressSSLForChrome.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1) \(英文\)。
+   在 Windows 上，請使用 [New-SelfSignedCertificate PowerShell Cmdlet](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 如需不支援的範例，請參閱 [UpdateIISExpressSSLForChrome.ps1](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1) \(英文\)。
 
    在伺服器的**本機電腦**>**個人**存放區中，安裝自我簽署或 CA 簽署的憑證。
 
@@ -726,7 +726,7 @@ public IActionResult MyActionMethod()
        </PropertyGroup>
        ```
 
-   在下列範例中：
+   在下例中︰
 
    * 伺服器的本機 IP 位址是 `10.0.0.4`。
    * 線上隨機 GUID 產生器會提供 `appid` 值。
@@ -797,7 +797,7 @@ HTTP.sys 支援下列功能：
 * Windows 7 或更新版本
 * Windows Server 2008 R2 或更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 
@@ -890,7 +890,7 @@ public IActionResult MyActionMethod()
 
 1. 視需要取得並安裝 X.509 憑證。
 
-   在 Windows 上，請使用 [New-SelfSignedCertificate PowerShell Cmdlet](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 如需不支援的範例，請參閱 [UpdateIISExpressSSLForChrome.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1) \(英文\)。
+   在 Windows 上，請使用 [New-SelfSignedCertificate PowerShell Cmdlet](/powershell/module/pkiclient/new-selfsignedcertificate) 來建立自我簽署的憑證。 如需不支援的範例，請參閱 [UpdateIISExpressSSLForChrome.ps1](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1) \(英文\)。
 
    在伺服器的**本機電腦**>**個人**存放區中，安裝自我簽署或 CA 簽署的憑證。
 
@@ -979,7 +979,7 @@ public IActionResult MyActionMethod()
        </PropertyGroup>
        ```
 
-   在下列範例中：
+   在下例中︰
 
    * 伺服器的本機 IP 位址是 `10.0.0.4`。
    * 線上隨機 GUID 產生器會提供 `appid` 值。

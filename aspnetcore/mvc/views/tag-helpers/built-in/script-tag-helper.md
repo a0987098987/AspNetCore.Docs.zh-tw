@@ -7,15 +7,15 @@ ms.custom: mvc
 ms.date: 12/02/2019
 uid: mvc/views/tag-helpers/builtin-th/script-tag-helper
 ms.openlocfilehash: a037abb6a454e6d06305e7d7f6ecad0c2a0ca717
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171846"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659835"
 ---
 # <a name="script-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的腳本標記協助程式
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 [腳本標記](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper)協助程式會產生主要或切換回腳本檔案的連結。 主要腳本檔案通常位於[內容傳遞網路](/office365/enterprise/content-delivery-networks#what-exactly-is-a-cdn)（CDN）上。
 

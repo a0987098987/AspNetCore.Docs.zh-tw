@@ -8,15 +8,15 @@ ms.custom: mvc
 ms.date: 12/03/2019
 uid: fundamentals/httpcontext
 ms.openlocfilehash: 8a7ee180380c42ea745c91b8e6a18c1baa820220
-ms.sourcegitcommit: 5974e3e66dab3398ecf2324fbb82a9c5636f70de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74778735"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658743"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>存取 ASP.NET Core 中的 HttpContext
 
-ASP.NET Core 應用程式會透過 <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> 介面和其預設的執行 <xref:Microsoft.AspNetCore.Http.HttpContextAccessor>來存取 `HttpContext`。 只有當您需要存取服務內的 `HttpContext` 時，才需要使用 `IHttpContextAccessor`。
+ASP.NET Core 應用程式會透過 <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> 介面和其預設的執行 <xref:Microsoft.AspNetCore.Http.HttpContextAccessor>來存取 `HttpContext`。 只有當您需要存取服務內的 `IHttpContextAccessor` 時，才需要使用 `HttpContext`。
 
 ## <a name="use-httpcontext-from-razor-pages"></a>從 Razor 頁面使用 HttpContext
 
@@ -36,7 +36,7 @@ public class AboutModel : PageModel
 
 ## <a name="use-httpcontext-from-a-razor-view"></a>從 Razor 檢視使用 HttpContext
 
-Razor 檢視會透過檢視上的 [RazorPage.Context](xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context) 屬性，直接公開 `HttpContext`。 下列範例會使用 Windows 驗證來抓取內部網路應用程式中目前的使用者名稱：
+Razor 檢視會透過檢視上的 `HttpContext`RazorPage.Context[ 屬性，直接公開 ](xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context)。 下列範例會使用 Windows 驗證來抓取內部網路應用程式中目前的使用者名稱：
 
 ```cshtml
 @{
@@ -109,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-在下列範例中：
+在下例中︰
 
 * `UserRepository` 宣告其對 `IHttpContextAccessor` 的相依性。
 * 當相依性插入解析相依性鏈結並建立 `UserRepository` 的實例時，將提供相依性。

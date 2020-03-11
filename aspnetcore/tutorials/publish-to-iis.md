@@ -1,22 +1,20 @@
 ---
 title: 將 ASP.NET Core 應用程式發佈到 IIS
-author: guardrex
+author: rick-anderson
 description: 了解如何在 IIS 伺服器上裝載 ASP.NET Core 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/03/2019
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: 820527cc15f883c906d2fdf1c073d443a5b3b40e
-ms.sourcegitcommit: d8b12cc1716ee329d7bd2300e201b61e15d506ac
+ms.openlocfilehash: f3860ba6ca7b99e63000ba0066749751f80cdc23
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71942877"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657833"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>將 ASP.NET Core 應用程式發佈到 IIS
-
-作者：[Luke Latham](https://github.com/guardrex)
 
 本教學課程會示範如何在 IIS 伺服器上裝載 ASP.NET Core 應用程式。
 
@@ -27,10 +25,10 @@ ms.locfileid: "71942877"
 > * 在 IIS 管理員中建立 IIS 網站。
 > * 部署 ASP.NET Core 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 在部署電腦上安裝 [.NET Core SDK](/dotnet/core/sdk)。
-* 使用 **Web Server (IIS)** 伺服器角色設定的 Windows Server。 若您的伺服器並未設為使用 IIS 來裝載網站，請遵循 <xref:host-and-deploy/iis/index#iis-configuration> 一文中＜IIS 組態＞一節內的指導，然後返回本教學課程。
+* 使用 **Web Server (IIS)** 伺服器角色設定的 Windows Server。 若您的伺服器並未設為使用 IIS 來裝載網站，請遵循  *一文中＜IIS 組態＞*<xref:host-and-deploy/iis/index#iis-configuration>一節內的指導，然後返回本教學課程。
 
 > [!WARNING]
 > **IIS 組態和網站安全性涉及本教學課程並未涵蓋的概念。** 請諮詢 [Microsoft IIS 文件](https://www.iis.net/)和[使用 IIS 進行裝載的 ASP.NET Core 文章](xref:host-and-deploy/iis/index)，再於 IIS 上裝載生產應用程式。
@@ -72,7 +70,7 @@ ms.locfileid: "71942877"
 * 應用程式會發佈到資料夾。
 * 資料夾內容會移動到 IIS 網站的資料夾 (指向 IIS 管理員中網站的**實體路徑**)。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [發佈]。
 1. 在 [挑選發佈目標] 對話方塊中，選取 [資料夾] 發佈選項。
@@ -80,7 +78,7 @@ ms.locfileid: "71942877"
    * 若您針對部署電腦上提供為網路共用的 IIS 網站建立資料夾，則請提供指向共用的路徑。 目前的使用者必須具備寫入存取權限才能發佈到共用。
    * 若您無法直接部署到 IIS 伺服器上的 IIS 網站資料夾，請發佈到抽取式媒體上資料夾並透過物理方式將所發佈應用程式實際移動到伺服器上的 IIS 網站資料夾，即 IIS 管理員中的**實體路徑**。 將 *bin/Release/{TARGET FRAMEWORK}/publish* 資料夾中內容移動到伺服器上的 IIS 網站資料夾，即 IIS 管理員中的**實體路徑**。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 1. 在命令殼層中，使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，以發行組態來發佈應用程式：
 
@@ -90,7 +88,7 @@ ms.locfileid: "71942877"
 
 1. 將 *bin/Release/{TARGET FRAMEWORK}/publish* 資料夾中內容移動到伺服器上的 IIS 網站資料夾，即 IIS 管理員中的**實體路徑**。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 1. 在 [解決方案] 中按一下專案，然後選取 [發佈] > [發佈到資料夾]。
 1. 設定 [選取資料夾] 路徑。
@@ -105,7 +103,7 @@ ms.locfileid: "71942877"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
 > * 在 Windows Server 上安裝 .NET Core 裝載套件組合。

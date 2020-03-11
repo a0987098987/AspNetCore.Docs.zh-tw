@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 11/07/2019
 uid: fundamentals/servers/index
 ms.openlocfilehash: d46793ef54c99fe609b5983c5a658fb7b20032fa
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289068"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666338"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -40,7 +40,7 @@ Kestrel 是 ASP.NET Core 專案範本所指定的預設 web 伺服器。
 
 ::: moniker range=">= aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ASP.NET Core 隨附下列項目：
 
@@ -66,11 +66,11 @@ ASP.NET Core 隨附下列項目：
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/aspnet-core-module>
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ASP.NET Core 隨附 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)，這是預設、跨平台的 HTTP 伺服器。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ASP.NET Core 隨附 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)，這是預設、跨平台的 HTTP 伺服器。
 
@@ -80,7 +80,7 @@ ASP.NET Core 隨附 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)，這
 
 ::: moniker range="< aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ASP.NET Core 隨附下列項目：
 
@@ -106,11 +106,11 @@ Kestrel 收取來自模組的要求之後，要求會被推送至 ASP.NET Core �
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/aspnet-core-module>
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ASP.NET Core 隨附 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)，這是預設、跨平台的 HTTP 伺服器。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ASP.NET Core 隨附 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)，這是預設、跨平台的 HTTP 伺服器。
 
@@ -152,9 +152,9 @@ HTTP.sys 也可用於只公開到內部網路的應用程式。
 
 伺服器會在整合式開發環境 (IDE) 或編輯器啟動應用程式時啟動：
 
-* [Visual Studio](https://visualstudio.microsoft.com) &ndash; 您可以使用啟動設定檔搭配 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)/[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)或主控台來啟動應用程式和伺服器。
-* [Visual Studio Code](https://code.visualstudio.com/) &ndash; 應用程式和伺服器會由 [Omnisharp](https://github.com/OmniSharp/omnisharp-vscode) 啟動，這也可啟動 CoreCLR 偵錯工具。
-* [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) &ndash; 應用程式和伺服器會由 [Mono Soft-Mode 偵錯工具](https://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/)啟動。
+* [Visual Studio](https://visualstudio.microsoft.com) &ndash; 啟動設定檔可用來以[IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)/[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)或主控台來啟動應用程式和伺服器。
+* [Visual Studio Code](https://code.visualstudio.com/) &ndash; 應用程式和伺服器是由[Omnisharp](https://github.com/OmniSharp/omnisharp-vscode)啟動，這會啟用 CoreCLR 偵錯工具。
+* [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) &ndash; 應用程式和伺服器會由[Mono 軟模式偵錯工具](https://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/)啟動。
 
 當您在專案資料夾中使用命令提示字元啟動應用程式時，[dotnet run](/dotnet/core/tools/dotnet-run) 會啟動應用程式和伺服器 (僅限 Kestrel 和 HTTP.sys)。 組態是由 `-c|--configuration` 選項指定，會設為 `Debug` (預設值) 或 `Release`。
 

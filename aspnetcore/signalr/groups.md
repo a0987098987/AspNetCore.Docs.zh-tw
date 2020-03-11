@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/groups
-ms.openlocfilehash: 59e90042ecbaf936602643bbdc3965e036426b26
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 7e8c85dcbc46daa68988374f499f19a9d2cead47
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963815"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665862"
 ---
 # <a name="manage-users-and-groups-in-opno-locsignalr"></a>管理 SignalR 中的使用者和群組
 
@@ -22,7 +22,7 @@ ms.locfileid: "73963815"
 
 SignalR 允許訊息傳送至與特定使用者相關聯的所有連接，以及命名的連線群組。
 
-[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/groups/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/groups/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
 
 ## <a name="users-in-opno-locsignalr"></a>SignalR 中的使用者
 

@@ -2,7 +2,7 @@
 
 執行身分識別 scaffolder：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 在**方案總管**中，以滑鼠右鍵按一下專案 >**加入**>**新的 scaffold 專案**。
 * 從 [**新增 Scaffold** ] 對話方塊的左窗格中，選取 [身分**識別**>**新增**]。
@@ -19,7 +19,7 @@
 
 注意：如果您要建立新的使用者內容，就不需要選取要覆寫的檔案。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 如果您先前尚未安裝 ASP.NET Core scaffolder，請立即安裝：
 
@@ -68,7 +68,7 @@ dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files
 
 執行身分識別 scaffolder：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 在**方案總管**中，以滑鼠右鍵按一下專案 >**加入**>**新的 scaffold 專案**。
 * 從 [**新增 Scaffold** ] 對話方塊的左窗格中，選取 [身分**識別**>**新增**]。
@@ -85,7 +85,7 @@ dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files
 
 注意：如果您要建立新的使用者內容，就不需要選取要覆寫的檔案。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 如果您先前尚未安裝 ASP.NET Core scaffolder，請立即安裝：
 

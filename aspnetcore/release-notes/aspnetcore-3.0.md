@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 1dee9a7e1cc381547e7ece71f302f407223dc838
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 35accdd2f65ac5430525be88cc621094e37d3e40
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829110"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667248"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>3\.0 ASP.NET Core 的新功能
 
@@ -38,7 +38,7 @@ Blazor framework 支援的案例：
 * 使用 Razor 類別庫建立元件程式庫
 * JavaScript Interop
 
-如需詳細資訊，請參閱<xref:blazor/index>。
+如需詳細資訊，請參閱 <xref:blazor/index>。
 
 ### <a name="opno-locblazor-server"></a>Blazor 伺服器
 
@@ -67,7 +67,7 @@ Blazor 中的元件通常是使用 Razor 語法（這是 HTML 和C#的自然 ble
   * 二進位序列化格式。
 * 提供下列功能：
 
-  * 驗證  (可能為英文網頁)
+  * 驗證
   * 雙向串流和流量控制。
   * 取消和超時。
 
@@ -77,7 +77,7 @@ ASP.NET Core 3.0 中的 gRPC 功能包括：
 * [Grpc .net. 用戶端](https://www.nuget.org/packages/Grpc.Net.Client)&ndash; Grpc 用戶端，適用于以熟悉的 `HttpClient`為基礎的 .net Core。
 * [Grpc .net. ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) &ndash; Grpc 與 `HttpClientFactory`的用戶端整合。
 
-如需詳細資訊，請參閱<xref:grpc/index>。
+如需詳細資訊，請參閱 <xref:grpc/index>。
 
 ## SignalR
 
@@ -319,8 +319,8 @@ ASP.NET Core 3.0 現在會使用 <xref:System.Text.Json> JSON 序列化的預設
 
 下列清單包含新的 Razor 指示詞：
 
-* [`@attribute`](xref:mvc/views/razor#attribute) &ndash; `@attribute` 指示詞會將指定的屬性套用至所產生頁面或視圖的類別。 例如，`@attribute [Authorize]`。
-* [`@implements`](xref:mvc/views/razor#implements) &ndash; `@implements` 指示詞會為所產生的類別執行介面。 例如，`@implements IDisposable`。
+* [`@attribute`](xref:mvc/views/razor#attribute) &ndash; `@attribute` 指示詞會將指定的屬性套用至所產生頁面或視圖的類別。 例如： `@attribute [Authorize]` 。
+* [`@implements`](xref:mvc/views/razor#implements) &ndash; `@implements` 指示詞會為所產生的類別執行介面。 例如： `@implements IDisposable` 。
 
 ## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 支援 web Api 和 Spa 的驗證和授權
 
@@ -365,7 +365,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * 檢查憑證是否已撤銷。
 * 檢查好處憑證中是否有正確的使用方式旗標。
 
-預設的使用者主體會從憑證屬性來建立。 使用者主體包含的事件可讓您補充或取代主體。 如需詳細資訊，請參閱<xref:security/authentication/certauth>。
+預設的使用者主體會從憑證屬性來建立。 使用者主體包含的事件可讓您補充或取代主體。 如需詳細資訊，請參閱 <xref:security/authentication/certauth>。
 
 [Windows 驗證](/windows-server/security/windows-authentication/windows-authentication-overview)已擴充到 Linux 和 macOS。 在先前的版本中，Windows 驗證僅限於[IIS](xref:host-and-deploy/iis/index)和[HttpSys](xref:fundamentals/servers/httpsys)。 在 ASP.NET Core 3.0 中， [Kestrel](xref:fundamentals/servers/kestrel)可以在 windows、Linux 和 macOS 上針對已加入網域的 windows 主機使用 Negotiate、 [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview)和[NTLM](/windows-server/security/kerberos/ntlm-overview)。 這些驗證配置的 Kestrel 支援是由 AspNetCore 所提供。 [Negotiate NuGet](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate)套件。 如同其他驗證服務，請將驗證應用程式設定為 [寬]，然後設定服務：
 
@@ -391,14 +391,14 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   * 必須為 web 進程建立 Spn。
   * 必須在主機電腦上產生和設定[Keytab](https://blogs.technet.microsoft.com/pie/2018/01/03/all-you-need-to-know-about-keytab-files/)檔案。
 
-如需詳細資訊，請參閱<xref:security/authentication/windowsauth>。
+如需詳細資訊，請參閱 <xref:security/authentication/windowsauth>。
 
 ## <a name="template-changes"></a>範本變更
 
 Web UI 範本（Razor Pages、具有控制器和 views 的 MVC）已移除下列各項：
 
 * Cookie 同意 UI 已不再包含在內。 若要在 ASP.NET Core 3.0 範本產生的應用程式中啟用 cookie 同意功能，請參閱 <xref:security/gdpr>。
-* 腳本和相關的靜態資產現在會當做本機檔案來參考，而不是使用 Cdn。 如需詳細資訊，請參閱[腳本和相關靜態資產現在會當做本機檔案參考，而不是根據目前的環境使用 cdn （aspnet/AspNetCore #14350）](https://github.com/aspnet/AspNetCore.Docs/issues/14350)。
+* 腳本和相關的靜態資產現在會當做本機檔案來參考，而不是使用 Cdn。 如需詳細資訊，請參閱[腳本和相關靜態資產現在會當做本機檔案參考，而不是根據目前的環境使用 cdn （aspnet/AspNetCore #14350）](https://github.com/dotnet/AspNetCore.Docs/issues/14350)。
 
 Angular 範本已更新為使用 Angular 8。
 
@@ -428,9 +428,9 @@ ASP.NET Core 3.0 範本會使用 <xref:fundamentals/host/generic-host>。 先前
 * 連接介面卡已從 Kestrel 中移除，並以連線中介軟體取代，類似于 ASP.NET Core 管線中的 HTTP 中介軟體，但較低層級的連接。
 * Kestrel 傳輸層已公開為 `Connections.Abstractions`中的公用介面。
 * 標頭和尾端之間的多義性已藉由將尾端標頭移至新集合來解決。
-* 同步 IO Api （例如 `HttpRequest.Body.Read`）是執行緒耗盡的常見來源，因而導致應用程式當機。 在 3.0 中，預設會停用 `AllowSynchronousIO`。
+* 同步 IO Api （例如 `HttpRequest.Body.Read`）是執行緒耗盡的常見來源，因而導致應用程式當機。 在3.0 中，預設會停用 `AllowSynchronousIO`。
 
-如需詳細資訊，請參閱<xref:migration/22-to-30#kestrel>。
+如需詳細資訊，請參閱 <xref:migration/22-to-30#kestrel>。
 
 ## <a name="http2-enabled-by-default"></a>預設啟用 HTTP/2
 
@@ -454,7 +454,7 @@ ASP.NET Core 3.0 範本會使用 <xref:fundamentals/host/generic-host>。 先前
 * 端點可以在中介軟體和 MVC 中執行原則，例如 CORS 或授權。
 * 篩選器和屬性可以放在控制器中的方法上。
 
-如需詳細資訊，請參閱<xref:fundamentals/routing#routing-basics>。
+如需詳細資訊，請參閱 <xref:fundamentals/routing#routing-basics>。
 
 ## <a name="health-checks"></a>健康情況檢查
 
@@ -480,7 +480,7 @@ app.UseEndpoints(endpoints =>
 
 ## <a name="pipes-on-httpcontext"></a>HttpCoNtext 上的管道
 
-現在可以使用 <xref:System.IO.Pipelines>API 讀取要求本文與寫入回應本文。 此 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` 屬性提供可用於讀取要求本文的 <xref:System.IO.Pipelines.PipeReader>。 此 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` 屬性提供可用來寫入回應本文的 <xref:System.IO.Pipelines.PipeWriter>。 `HttpRequest.BodyReader` 類似於`HttpRequest.Body` 資料流。 `HttpResponse.BodyWriter` 類似於`HttpResponse.Body` 資料流。
+現在可以使用 <xref:System.IO.Pipelines> API 來讀取要求本文並寫入回應主體。 此 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` 屬性提供可用於讀取要求本文的 <xref:System.IO.Pipelines.PipeReader>。 此 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` 屬性提供可用於寫入回應主體的 <xref:System.IO.Pipelines.PipeWriter>。 `HttpRequest.BodyReader` 是 `HttpRequest.Body` 串流的類比。 `HttpResponse.BodyWriter` 是 `HttpResponse.Body` 串流的類比。
 
 <!-- indirectly related, https://github.com/dotnet/docs/pull/14414 won't be published by 9/23  -->
 
@@ -492,7 +492,7 @@ app.UseEndpoints(endpoints =>
 
 .NET Core 3.0 引進了新的背景工作服務應用程式範本。 此範本提供在 .NET Core 中撰寫長時間執行服務的起點。
 
-如需詳細資訊，請參閱＜＞。
+如需詳細資訊，請參閱
 
 * [.NET Core 背景工作角色做為 Windows 服務](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/)
 * <xref:fundamentals/host/hosted-services>

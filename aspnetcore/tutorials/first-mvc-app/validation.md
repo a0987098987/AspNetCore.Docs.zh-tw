@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 04/13/2017
 uid: tutorials/first-mvc-app/validation
 ms.openlocfilehash: 2bb4ed173d154e3b7457ce3f8009f0f9406e36c4
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72334067"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661963"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>將驗證新增至 ASP.NET Core MVC 應用程式
 
@@ -124,7 +124,7 @@ public DateTime ReleaseDate { get; set; }
 * [使用表單](xref:mvc/views/working-with-forms)
 * [全球化和當地語系化](xref:fundamentals/localization)
 * [標記協助程式簡介](xref:mvc/views/tag-helpers/intro)
-* [編寫標籤協助程式](xref:mvc/views/tag-helpers/authoring)
+* [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
 
 > [!div class="step-by-step"]
 > [上一頁](new-field.md)

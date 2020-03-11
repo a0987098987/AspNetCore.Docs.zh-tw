@@ -5,17 +5,17 @@ description: 探索 ASP.NET Core 如何 Blazor Blazor 如何管理未處理的�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 02/19/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: 7191ae50d64ebd6a9b23b391116aedf3a6d01de2
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: d8098db3977b7515f2665e4230c2d6d3e415dc58
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447018"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661697"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
 
@@ -103,8 +103,6 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 * [事件處理常式](#event-handlers)
 * [元件處置](#component-disposal)
 * [JavaScript interop](#javascript-interop)
-* [Blazor Server 線路處理常式](#blazor-server-circuit-handlers)
-* [Blazor 伺服器線路處置](#blazor-server-circuit-disposal)
 * [Blazor 伺服器 rerendering](#blazor-server-prerendering)
 
 前述未處理的例外狀況會在本文的下列各節中說明。
@@ -183,64 +181,17 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 * 如果 `InvokeAsync<T>` 的呼叫以非同步方式失敗，則 .NET <xref:System.Threading.Tasks.Task> 會失敗。 `InvokeAsync<T>` 的呼叫可能會失敗，例如，JavaScript 端程式碼會擲回例外狀況，或傳回以 `rejected`完成的 `Promise`。 開發人員程式碼必須攔截例外狀況。 如果使用[await](/dotnet/csharp/language-reference/keywords/await)運算子，請考慮將方法呼叫包裝在含有錯誤處理和記錄的[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。 否則，失敗的程式碼會導致 Blazor 伺服器電路嚴重的未處理例外狀況。
 * 根據預設，`InvokeAsync<T>` 的呼叫必須在特定期間內完成，否則呼叫會超時。預設的超時時間為一分鐘。 Timeout 會保護程式碼不會遺失網路連線，或永遠不會傳回完成訊息的 JavaScript 程式碼。 如果呼叫超時，則產生的 `Task` 會因 <xref:System.OperationCanceledException>而失敗。 使用記錄來設陷並處理例外狀況。
 
-同樣地，JavaScript 程式碼可能會起始呼叫[`[JSInvokable]`](xref:blazor/javascript-interop#invoke-net-methods-from-javascript-functions)屬性所指示的 .net 方法。 如果這些 .NET 方法擲回未處理的例外狀況：
+同樣地，JavaScript 程式碼可能會起始呼叫[`[JSInvokable]`](xref:blazor/call-dotnet-from-javascript)屬性所指示的 .net 方法。 如果這些 .NET 方法擲回未處理的例外狀況：
 
 * 例外狀況不會被視為 Blazor 伺服器線路的嚴重錯誤。
 * JavaScript 端 `Promise` 遭到拒絕。
 
 您可以選擇在 .NET 端或方法呼叫的 JavaScript 端使用錯誤處理常式代碼。
 
-如需詳細資訊，請參閱 <xref:blazor/javascript-interop>。
+如需詳細資訊，請參閱下列文章：
 
-### <a name="opno-locblazor-server-circuit-handlers"></a>Blazor Server 線路處理常式
-
-Blazor Server 可讓程式碼定義*電路處理常式*，以允許對使用者線路狀態的變更執行程式碼。 線路處理常式是透過衍生自 `CircuitHandler` 並在應用程式的服務容器中註冊類別來執行。 下列線路處理常式範例會追蹤開啟的 SignalR 連接：
-
-```csharp
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components.Server.Circuits;
-
-public class TrackingCircuitHandler : CircuitHandler
-{
-    private HashSet<Circuit> _circuits = new HashSet<Circuit>();
-
-    public override Task OnConnectionUpAsync(Circuit circuit, 
-        CancellationToken cancellationToken)
-    {
-        _circuits.Add(circuit);
-
-        return Task.CompletedTask;
-    }
-
-    public override Task OnConnectionDownAsync(Circuit circuit, 
-        CancellationToken cancellationToken)
-    {
-        _circuits.Remove(circuit);
-
-        return Task.CompletedTask;
-    }
-
-    public int ConnectedCircuits => _circuits.Count;
-}
-```
-
-線路處理常式是使用 DI 註冊。 範圍實例會針對每個線路實例而建立。 使用上述範例中的 `TrackingCircuitHandler`，會建立單一服務，因為必須追蹤所有線路的狀態：
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    ...
-    services.AddSingleton<CircuitHandler, TrackingCircuitHandler>();
-}
-```
-
-如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對 Blazor 伺服器線路而言是嚴重的。 若要容忍處理常式程式碼或呼叫方法中的例外狀況，請使用錯誤處理和記錄，將程式碼包裝在一個或多個[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。
-
-### <a name="opno-locblazor-server-circuit-disposal"></a>Blazor 伺服器線路處置
-
-當線路因使用者已中斷連線而結束，而架構正在清除線路狀態時，架構會處置線路的 DI 範圍。 處置範圍會處置任何執行 <xref:System.IDisposable?displayProperty=fullName>的線路範圍 DI 服務。 如果任何 DI 服務在處置期間擲回未處理的例外狀況，則架構會記錄例外狀況。
+* <xref:blazor/call-javascript-from-dotnet>
+* <xref:blazor/call-dotnet-from-javascript>
 
 ### <a name="opno-locblazor-server-prerendering"></a>Blazor 伺服器已預呈現
 

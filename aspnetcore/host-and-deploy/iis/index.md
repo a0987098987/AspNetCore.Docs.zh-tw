@@ -1,22 +1,20 @@
 ---
 title: 在使用 IIS 的 Windows 上裝載 ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: 了解如何在 Windows Server Internet Information Services (IIS) 上裝載 ASP.NET Core 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: ee7918783c0189a63d17678cda02f54dc40bdc24
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: c2ca867e3eebdc3fcf512cc5d457ff3c1967f9b1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172487"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657980"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
-
-作者：[Luke Latham](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -437,7 +435,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 1. 以滑鼠右鍵按一下 IIS 管理員中的子應用程式資料夾，然後選取 [轉換成應用程式]。
 
-1. 在 [新增應用程式] 對話方塊中，使用 [應用程式集區] 的[選取] 按鈕來指派您為子應用程式建立的應用程式集區。 選取 **[確定]** 。
+1. 在 [新增應用程式] 對話方塊中，使用 [應用程式集區] 的[選取] 按鈕來指派您為子應用程式建立的應用程式集區。 選取 [確定]。
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
@@ -497,7 +495,7 @@ IIS 管理程序會在 Windows 安全系統中，以應用程式集區的名稱�
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：在選取 [檢查名稱] 之前，"DefaultAppPool" 這個應用程式集區名稱在物件名稱區域中會附加至 "IIS AppPool\"。](index/_static/select-users-or-groups-1.png)
 
-1. 選取 **[確定]** 。
+1. 選取 [確定]。
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：選取 [檢查名稱] 之後，物件名稱 "DefaultAppPool" 會顯示在物件名稱區域中。](index/_static/select-users-or-groups-2.png)
 
@@ -568,10 +566,10 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
   1. 選取 [連線] 面板中的 [應用程式集區]。
   1. 以滑鼠右鍵按一下清單中應用程式的應用程式集區，然後選取 [進階設定]。
-  1. 預設的 [啟動模式] 是 [OnDemand]。 將 [啟動模式] 設定為 [AlwaysRunning]。 選取 **[確定]** 。
+  1. 預設的 [啟動模式] 是 [OnDemand]。 將 [啟動模式] 設定為 [AlwaysRunning]。 選取 [確定]。
   1. 開啟 [連線] 面板中的 [站台] 節點。
   1. 以滑鼠右鍵按一下應用程式，然後選取 [**管理網站**] > [**高級設定**]。
-  1. 預設 [預先載入已啟用] 設定是 [False]。 將 [預先載入已啟用] 設定為 [True]。 選取 **[確定]** 。
+  1. 預設 [預先載入已啟用] 設定是 [False]。 將 [預先載入已啟用] 設定為 [True]。 選取 [確定]。
 
 * 使用 *web.config*，新增 `<applicationInitialization>` 元素並將 `doAppInitAfterRestart` 設定為 `true` 至應用程式 `<system.webServer>`web.config*檔案中的* 元素：
 
@@ -594,7 +592,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 1. 選取 [連線] 面板中的 [應用程式集區]。
 1. 以滑鼠右鍵按一下清單中應用程式的應用程式集區，然後選取 [進階設定]。
-1. 預設 [閒置逾時 (分鐘)] 是 **20** 分鐘。 將 [閒置逾時 (分鐘)] 設定為 **0** (零)。 選取 **[確定]** 。
+1. 預設 [閒置逾時 (分鐘)] 是 **20** 分鐘。 將 [閒置逾時 (分鐘)] 設定為 **0** (零)。 選取 [確定]。
 1. 回收背景工作處理序。
 
 若要防止應用程式裝載[非同處理序](#out-of-process-hosting-model)逾時，請使用下列任一方式：
@@ -1041,7 +1039,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 1. 以滑鼠右鍵按一下 IIS 管理員中的子應用程式資料夾，然後選取 [轉換成應用程式]。
 
-1. 在 [新增應用程式] 對話方塊中，使用 [應用程式集區] 的[選取] 按鈕來指派您為子應用程式建立的應用程式集區。 選取 **[確定]** 。
+1. 在 [新增應用程式] 對話方塊中，使用 [應用程式集區] 的[選取] 按鈕來指派您為子應用程式建立的應用程式集區。 選取 [確定]。
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
@@ -1101,7 +1099,7 @@ IIS 管理程序會在 Windows 安全系統中，以應用程式集區的名稱�
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：在選取 [檢查名稱] 之前，"DefaultAppPool" 這個應用程式集區名稱在物件名稱區域中會附加至 "IIS AppPool\"。](index/_static/select-users-or-groups-1.png)
 
-1. 選取 **[確定]** 。
+1. 選取 [確定]。
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：選取 [檢查名稱] 之後，物件名稱 "DefaultAppPool" 會顯示在物件名稱區域中。](index/_static/select-users-or-groups-2.png)
 
@@ -1172,10 +1170,10 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
   1. 選取 [連線] 面板中的 [應用程式集區]。
   1. 以滑鼠右鍵按一下清單中應用程式的應用程式集區，然後選取 [進階設定]。
-  1. 預設的 [啟動模式] 是 [OnDemand]。 將 [啟動模式] 設定為 [AlwaysRunning]。 選取 **[確定]** 。
+  1. 預設的 [啟動模式] 是 [OnDemand]。 將 [啟動模式] 設定為 [AlwaysRunning]。 選取 [確定]。
   1. 開啟 [連線] 面板中的 [站台] 節點。
   1. 以滑鼠右鍵按一下應用程式，然後選取 [**管理網站**] > [**高級設定**]。
-  1. 預設 [預先載入已啟用] 設定是 [False]。 將 [預先載入已啟用] 設定為 [True]。 選取 **[確定]** 。
+  1. 預設 [預先載入已啟用] 設定是 [False]。 將 [預先載入已啟用] 設定為 [True]。 選取 [確定]。
 
 * 使用 *web.config*，新增 `<applicationInitialization>` 元素並將 `doAppInitAfterRestart` 設定為 `true` 至應用程式 `<system.webServer>`web.config*檔案中的* 元素：
 
@@ -1198,7 +1196,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 1. 選取 [連線] 面板中的 [應用程式集區]。
 1. 以滑鼠右鍵按一下清單中應用程式的應用程式集區，然後選取 [進階設定]。
-1. 預設 [閒置逾時 (分鐘)] 是 **20** 分鐘。 將 [閒置逾時 (分鐘)] 設定為 **0** (零)。 選取 **[確定]** 。
+1. 預設 [閒置逾時 (分鐘)] 是 **20** 分鐘。 將 [閒置逾時 (分鐘)] 設定為 **0** (零)。 選取 [確定]。
 1. 回收背景工作處理序。
 
 若要防止應用程式裝載[非同處理序](#out-of-process-hosting-model)逾時，請使用下列任一方式：
@@ -1650,7 +1648,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 1. 以滑鼠右鍵按一下 IIS 管理員中的子應用程式資料夾，然後選取 [轉換成應用程式]。
 
-1. 在 [新增應用程式] 對話方塊中，使用 [應用程式集區] 的[選取] 按鈕來指派您為子應用程式建立的應用程式集區。 選取 **[確定]** 。
+1. 在 [新增應用程式] 對話方塊中，使用 [應用程式集區] 的[選取] 按鈕來指派您為子應用程式建立的應用程式集區。 選取 [確定]。
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
@@ -1705,7 +1703,7 @@ IIS 管理程序會在 Windows 安全系統中，以應用程式集區的名稱�
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：在選取 [檢查名稱] 之前，"DefaultAppPool" 這個應用程式集區名稱在物件名稱區域中會附加至 "IIS AppPool\"。](index/_static/select-users-or-groups-1.png)
 
-1. 選取 **[確定]** 。
+1. 選取 [確定]。
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：選取 [檢查名稱] 之後，物件名稱 "DefaultAppPool" 會顯示在物件名稱區域中。](index/_static/select-users-or-groups-2.png)
 

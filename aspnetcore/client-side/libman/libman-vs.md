@@ -1,75 +1,75 @@
 ---
-title: 使用 Visual Studio 中的 ASP.NET Core 使用 LibMan
+title: 在 Visual Studio 中搭配 ASP.NET Core 使用 LibMan
 author: scottaddie
-description: 了解如何使用 Visual Studio 的 ASP.NET Core 專案中使用 LibMan。
+description: 瞭解如何在具有 Visual Studio 的 ASP.NET Core 專案中使用 LibMan。
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: ebfb405516d968bf5d5b8cff956a9892457027f2
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: e92e6bc28ec58b26785dd6c79e71512368202a26
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813465"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658309"
 ---
-# <a name="use-libman-with-aspnet-core-in-visual-studio"></a>使用 Visual Studio 中的 ASP.NET Core 使用 LibMan
+# <a name="use-libman-with-aspnet-core-in-visual-studio"></a>在 Visual Studio 中搭配 ASP.NET Core 使用 LibMan
 
 作者：[Scott Addie](https://twitter.com/Scott_Addie)
 
-Visual Studio 的內建支援[LibMan](xref:client-side/libman/index)在 ASP.NET Core 專案中，包括：
+Visual Studio 具有 ASP.NET Core 專案中[LibMan](xref:client-side/libman/index)的內建支援，包括：
 
-* 設定和執行組建 LibMan 還原作業的支援。
-* 觸發 LibMan 還原和清除作業的功能表項目。
-* 尋找程式庫及將檔案新增至專案的 [搜尋] 對話方塊。
-* 編輯支援*libman.json*&mdash;LibMan 資訊清單檔案。
+* 支援在組建上設定和執行 LibMan 還原作業。
+* 用於觸發 LibMan 還原和清除作業的功能表項目。
+* 搜尋對話方塊，用來尋找程式庫並將檔案新增至專案。
+* 編輯*libman*的支援&mdash;libman 資訊清單檔案。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/client-side/libman/samples/) [（如何下載）](xref:index#how-to-download-a-sample)
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/client-side/libman/samples/) [（如何下載）](xref:index#how-to-download-a-sample)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) 和 **ASP.NET 與 Web 開發**工作負載
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)，其中包含 **ASP.NET 和 Web 部署**工作負載
 
 ## <a name="add-library-files"></a>新增程式庫檔案
 
-程式庫檔案可以新增至 ASP.NET Core 專案中，兩個不同的方式：
+程式庫檔案可以透過兩種不同的方式新增至 ASP.NET Core 專案：
 
 1. [使用 [新增用戶端程式庫] 對話方塊](#use-the-add-client-side-library-dialog)
-1. [手動設定 LibMan 資訊清單檔案項目](#manually-configure-libman-manifest-file-entries)
+1. [手動設定 LibMan 資訊清單檔案專案](#manually-configure-libman-manifest-file-entries)
 
 ### <a name="use-the-add-client-side-library-dialog"></a>使用 [新增用戶端程式庫] 對話方塊
 
 請遵循下列步驟來安裝用戶端程式庫：
 
-* 在 [**方案總管] 中**，以滑鼠右鍵按一下專案資料夾中的檔案應該新增。 選擇**新增** > **用戶端程式庫**。 **新增用戶端程式庫**對話方塊隨即出現：
+* 在**方案總管**中，以滑鼠右鍵按一下要在其中新增檔案的專案資料夾。 選擇 [**新增** > 用戶端連結**庫**]。 [**新增客戶**端程式庫] 對話方塊隨即出現：
 
-  ![新增用戶端程式庫 對話方塊](_static/add-library-dialog.png)
+  ![[新增用戶端程式庫] 對話方塊](_static/add-library-dialog.png)
 
-* 選取 從程式庫提供者**提供者**下拉式清單。 CDNJS 是預設提供者。
-* 類型程式庫名稱，在擷取**程式庫**文字方塊。 IntelliSense 提供一份文件庫開始提供的文字。
-* 從 [IntelliSense] 清單中選取程式庫。 請注意，程式庫名稱會加上`@`符號和已知的所選的提供者的最新穩定版本。
+* 從 [**提供者**] 下拉式選選取程式庫提供者。 CDNJS 是預設的提供者。
+* 在 [連結**庫**] 文字方塊中，輸入要提取的程式庫名稱。 IntelliSense 會提供以提供的文字開頭的程式庫清單。
+* 從 [IntelliSense] 清單中選取 [程式庫]。 請注意，程式庫名稱的後面會加上 `@` 符號和所選提供者已知的最新穩定版本。
 * 決定要包含哪些檔案：
-  * 選取 **包括所有的程式庫檔**選項按鈕，以包含所有的程式庫的檔案。
-  * 選取 **選擇特定的檔案**選項按鈕，以包含程式庫檔案的子集。 選取選項按鈕時，會啟用檔案選取器樹狀目錄。 請檢查要下載的檔案名稱的左邊的方塊。
-* 指定儲存在檔案的專案資料夾**目標位置**文字方塊。 建議，另一個資料夾中儲存每個程式庫。
+  * 選取 [**包含所有文件庫**檔案] 選項按鈕，以包含程式庫的所有檔案。
+  * 選取 [**選擇特定**檔案] 選項按鈕，以包含文件庫檔案的子集。 選取選項按鈕時，就會啟用檔案選取器樹狀目錄。 選取要下載的檔案名左邊的方塊。
+* 指定專案資料夾，將檔案儲存在 [**目標位置**] 文字方塊中。 建議將每個程式庫儲存在不同的資料夾中。
 
-  建議**目標位置**資料夾以啟動 [] 對話方塊的位置為基礎：
+  建議的 [**目標位置**] 資料夾是以啟動對話的位置為基礎：
 
-  * 如果從專案根目錄中啟動：
-    * *wwwroot/lib*如果使用*wwwroot*存在。
-    * *lib*如果使用*wwwroot*不存在。
-  * 如果啟動專案資料夾中，會使用對應的資料夾名稱。
+  * 如果是從專案根目錄啟動：
+    * 如果*wwwroot*存在，則會使用*wwwroot/lib* 。
+    * 如果*wwwroot*不存在，則會使用*lib* 。
+  * 如果從專案資料夾啟動，則會使用對應的資料夾名稱。
 
-  程式庫名稱會加上資料夾的建議。 下表說明資料夾建議，Razor 頁面專案中安裝 jQuery 時。
+  資料夾建議會加上程式庫名稱的尾碼。 下表說明在 Razor Pages 專案中安裝 jQuery 時的資料夾建議。
   
   |啟動位置                           |建議的資料夾      |
   |------------------------------------------|----------------------|
-  |專案根目錄 (如果*wwwroot*存在)        |*wwwroot/lib/jquery/* |
-  |專案根目錄 (如果*wwwroot*不存在) |*lib/jquery/*         |
-  |*頁面*專案中的資料夾                 |*Pages/jquery/*       |
+  |專案根目錄（如果*wwwroot*存在）        |*wwwroot/lib/jquery/* |
+  |專案根目錄（如果*wwwroot*不存在） |*lib/jquery/*         |
+  |Project 中的*Pages*資料夾                 |*Pages/jquery/*       |
 
-* 按一下 [**安裝**] 按鈕，下載的檔案，每個在組態*libman.json*。
-* 檢閱**程式庫管理員**摘要**輸出**安裝詳細資料 視窗。 例如：
+* 按一下 [**安裝**] 按鈕，依據*libman*中的設定下載檔案。
+* 查看 [**輸出**] 視窗的 [連結**庫管理員**] 摘要，以取得安裝詳細資料。 例如：
 
   ```console
   Restore operation started...
@@ -82,53 +82,53 @@ Visual Studio 的內建支援[LibMan](xref:client-side/libman/index)在 ASP.NET 
   1 libraries restored in 2.32 seconds
   ```
 
-### <a name="manually-configure-libman-manifest-file-entries"></a>手動設定 LibMan 資訊清單檔案項目
+### <a name="manually-configure-libman-manifest-file-entries"></a>手動設定 LibMan 資訊清單檔案專案
 
-在 Visual Studio 中的所有 LibMan 作業為都基礎的專案根目錄 LibMan 資訊清單的內容 (*libman.json*)。 您可以手動編輯*libman.json*設定專案的程式庫檔案。 Visual Studio 中還原所有的程式庫檔案一次*libman.json*儲存。
+Visual Studio 中的所有 LibMan 作業都是以專案根目錄的 LibMan 資訊清單（*LibMan*）的內容為基礎。 您可以手動編輯*libman* ，以設定專案的程式庫檔案。 Visual Studio 在儲存*libman*之後，就會還原所有的程式庫檔案。
 
-若要開啟  *libman.json*進行編輯，有下列選項：
+若要開啟*libman*以進行編輯，有下列選項：
 
-* 按兩下*libman.json*中的檔案**方案總管 中**。
-* 中的專案上按一下滑鼠右鍵**方案總管**，然後選取**管理用戶端程式庫**。 **&#8224;**
-* 選取 **管理的用戶端程式庫**從 Visual Studio**專案**功能表。 **&#8224;**
+* 按兩下**方案總管**中的*libman json*檔案。
+* 以滑鼠右鍵按一下**方案總管**中的專案，然後選取 [**管理客戶**端程式庫]。 **&#8224;**
+* 從 [Visual Studio**專案**] 功能表中，選取 [**管理客戶**端程式庫]。 **&#8224;**
 
-**&#8224;** 如果*libman.json*檔案不存在的專案根目錄中，將會使用預設項目範本內容建立。
+**&#8224;** 如果專案根目錄中還沒有*libman* ，則會使用預設的專案範本內容來建立該檔案。
 
-Visual Studio 提供豐富編輯支援，像是顏色標示、 格式、 IntelliSense 和結構描述驗證的 JSON。 LibMan 資訊清單的 JSON 結構描述位於[ https://json.schemastore.org/libman ](https://json.schemastore.org/libman)。
+Visual Studio 提供豐富的 JSON 編輯支援，例如顏色標示、格式設定、IntelliSense 和架構驗證。 您可在[https://json.schemastore.org/libman](https://json.schemastore.org/libman)找到 LibMan 資訊清單的 JSON 架構。
 
-下列資訊清單檔案時，LibMan 擷取檔案中定義的組態每`libraries`屬性。 物件常值中定義的說明`libraries`遵循：
+使用下列資訊清單檔，LibMan 會根據 `libraries` 屬性中所定義的設定來抓取檔案。 `libraries` 中所定義之物件常值的說明如下：
 
-* 子集[jQuery](https://jquery.com/) 3.3.1 版會從 CDNJS 提供者。 中所定義的子集`files`屬性&mdash;*jquery.min.js*， *jquery.js*，以及*jquery.min.map*。 檔案會放在專案的*wwwroot/lib/jquery*資料夾。
-* 將整個[Bootstrap](https://getbootstrap.com/) 4.1.3 版會擷取並放置於*wwwroot/lib/啟動程序*資料夾。 物件常值`provider`屬性會覆寫`defaultProvider`屬性值。 LibMan 擷取 unpkg 提供者的啟動程序的檔案。
-* 子集[Lodash](https://lodash.com/)已核准的組織內的控管主體。 *Lodash.js*並*lodash.min.js*檔案會從本機檔案系統中擷取*c:\\temp\\lodash\\* 。 檔案會複製到專案的*wwwroot/lib/lodash*資料夾。
+* [JQuery](https://jquery.com/)版本3.3.1 的子集會從 CDNJS 提供者抓取。 子集定義于 `files` 屬性中，&mdash;*jquery*、 *jquery*和 jquery. *min. map*。 這些檔案會放在專案的*wwwroot/lib/jquery*資料夾中。
+* 完整的[啟動](https://getbootstrap.com/)程式版本4.1.3 會被取出並放在*wwwroot/lib/啟動*程式資料夾中。 物件常值的 `provider` 屬性會覆寫 `defaultProvider` 屬性值。 LibMan 會從 unpkg 提供者抓取啟動程式檔案。
+* 組織內的管理主體已核准[lodash 所](https://lodash.com/)的子集。 系統會從本機檔案系統 *（位於 C：\\temp\\lodash 所\\* ）中取出*lodash 所 .js*和*lodash 所*檔案。 這些檔案會複製到專案的*wwwroot/lib/lodash 所*資料夾中。
 
 [!code-json[](samples/LibManSample/libman.json)]
 
 > [!NOTE]
-> LibMan 僅支援一個版本從每個提供者的每個程式庫。 *Libman.json*檔案無法通過結構描述驗證，如果它包含具有相同的程式庫名稱，指定提供者的兩個程式庫。
+> LibMan 只支援每個提供者的一個版本的程式庫。 如果*libman json*檔案包含兩個具有相同提供者之程式庫名稱的程式庫，則架構驗證會失敗。
 
-## <a name="restore-library-files"></a>將程式庫檔案還原
+## <a name="restore-library-files"></a>還原程式庫檔案
 
-若要還原從 Visual Studio 內的程式庫檔案，必須有有效*libman.json*專案根目錄中的檔案。 已還原的檔案會放置在專案中指定的每個程式庫的位置。
+若要從 Visual Studio 內還原程式庫檔案，專案根目錄中必須有有效的*libman json*檔案。 還原的檔案會放在專案中的每個程式庫所指定的位置。
 
-您可以在 ASP.NET Core 專案中有兩種還原程式庫檔案：
+程式庫檔案可以透過兩種方式在 ASP.NET Core 專案中還原：
 
-1. [在建置時還原檔案](#restore-files-during-build)
-1. [以手動方式還原檔案](#restore-files-manually)
+1. [在組建期間還原檔案](#restore-files-during-build)
+1. [手動還原檔](#restore-files-manually)
 
-### <a name="restore-files-during-build"></a>在建置時還原檔案
+### <a name="restore-files-during-build"></a>在組建期間還原檔案
 
-LibMan 可以還原的已定義的程式庫檔案做為建置程序的一部分。 根據預設，*還原上建置*停用行為。
+LibMan 可以還原已定義的程式庫檔案，做為建立程式的一部分。 根據預設，會停用「*還原組建*」行為。
 
-若要啟用並測試還原上建置行為：
+若要啟用和測試還原後的行為：
 
-* 以滑鼠右鍵按一下*libman.json*中**方案總管**，然後選取**啟用還原用戶端程式庫建置**從內容功能表。
-* 按一下 **是**按鈕時提示您安裝 NuGet 套件。 [Microsoft.Web.LibraryManager.Build](https://www.nuget.org/packages/Microsoft.Web.LibraryManager.Build/) NuGet 封裝加入至專案：
+* 以滑鼠右鍵按一下**方案總管**中的 [ *libman* ]，然後從內容功能表選取 [**啟用從組建還原客戶**端程式庫]。
+* 當系統提示您安裝 NuGet 套件時，請按一下 [**是]** 按鈕。 隨即會將[LibraryManager](https://www.nuget.org/packages/Microsoft.Web.LibraryManager.Build/) NuGet 套件新增至專案：
 
   [!code-xml[](samples/LibManSample/LibManSample.csproj?name=snippet_RestoreOnBuildPackage)]
 
-* 建置專案，以確認 LibMan 檔案還原，就會發生。 `Microsoft.Web.LibraryManager.Build`套件插入專案的建立作業期間執行 LibMan MSBuild 目標。
-* 檢閱**建置**摘要**輸出**LibMan 活動記錄 視窗：
+* 建立專案，以確認發生 LibMan 檔案還原。 `Microsoft.Web.LibraryManager.Build` 套件會插入在專案的組建作業期間執行 LibMan 的 MSBuild 目標。
+* 檢查 [**輸出**] 視窗的 [**組建**摘要]，以取得 LibMan 活動記錄：
 
   ```console
   1>------ Build started: Project: LibManSample, Configuration: Debug Any CPU ------
@@ -142,25 +142,25 @@ LibMan 可以還原的已定義的程式庫檔案做為建置程序的一部分�
   ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
   ```
 
-啟用還原上建置行為時， *libman.json*操作功能表會顯示**停用還原用戶端程式庫建置**選項。 選取此選項會移除`Microsoft.Web.LibraryManager.Build`套件從專案檔的參考。 因此，用戶端程式庫不再會在每個組建上還原。
+啟用「還原組建」行為時，[ *libman* ] 內容功能表會在 [組建] 選項**上顯示 [停用還原客戶**端程式庫]。 選取此選項會從專案檔中移除 `Microsoft.Web.LibraryManager.Build` 的封裝參考。 因此，用戶端程式庫不會再在每個組建上還原。
 
-不論還原上組建設定中，您可以手動還原的任何時候*libman.json*操作功能表。 如需詳細資訊，請參閱 <<c0> [ 以手動方式還原檔案](#restore-files-manually)。
+不論「還原時的組建」設定為何，您都可以隨時從 [ *libman* ] 內容功能表手動還原。 如需詳細資訊，請參閱[手動還原](#restore-files-manually)檔案。
 
-### <a name="restore-files-manually"></a>以手動方式還原檔案
+### <a name="restore-files-manually"></a>手動還原檔
 
-若要以手動方式還原程式庫檔案：
+若要手動還原程式庫檔案：
 
-* 在方案中的所有專案：
-  * 中的方案名稱上按一下滑鼠右鍵**方案總管 中**。
-  * 選取 **還原用戶端程式庫**選項。
+* 針對方案中的所有專案：
+  * 以滑鼠右鍵按一下**方案總管**中的方案名稱。
+  * 選取 [**還原用戶端程式庫**] 選項。
 * 針對特定專案：
-  * 以滑鼠右鍵按一下*libman.json*中的檔案**方案總管 中**。
-  * 選取 **還原用戶端程式庫**選項。
+  * 以滑鼠右鍵按一下**方案總管**中的*libman json*檔案。
+  * 選取 [**還原用戶端程式庫**] 選項。
 
-雖然還原作業正在執行：
+當還原作業正在執行時：
 
-* 在 Visual Studio 的 [狀態] 列上的工作狀態中心 (TSC) 圖示會變成動畫，以及將讀取*還原作業已開始*。 按一下圖示即可開啟列出的已知的背景工作的工具提示。
-* 會將訊息傳送至 [狀態] 列與**程式庫管理員**摘要**輸出**視窗。 例如：
+* Visual Studio 狀態列上的 [工作狀態中心（TSC）] 圖示會顯示為動畫，且會*開始讀取還原*作業。 按一下圖示即可開啟工具提示，其中列出已知的背景工作。
+* 訊息將會傳送至 [**輸出**] 視窗的狀態列和 [連結**庫管理員**] 摘要。 例如：
 
   ```console
   Restore operation started...
@@ -175,17 +175,17 @@ LibMan 可以還原的已定義的程式庫檔案做為建置程序的一部分�
 
 ## <a name="delete-library-files"></a>刪除程式庫檔案
 
-若要執行*全新*作業，這會刪除先前還原 Visual Studio 中的程式庫檔案：
+執行*清除*作業，這會刪除先前在 Visual Studio 中還原的程式庫檔案：
 
-* 以滑鼠右鍵按一下*libman.json*中的檔案**方案總管 中**。
-* 選取 **全新的用戶端程式庫**選項。
+* 以滑鼠右鍵按一下**方案總管**中的*libman json*檔案。
+* 選取 [**清除客戶**端程式庫] 選項。
 
-若要防止意外移除程式庫檔案，清除作業並不會刪除整個目錄。 它只會移除已包含在前一個還原的檔案。
+為了防止意外移除非程式庫檔案，清除作業不會刪除整個目錄。 它只會移除先前還原中所包含的檔案。
 
-當正在執行清除的作業：
+當清除作業正在執行時：
 
-* Visual Studio 的 [狀態] 列 TSC 圖示項目建立動畫，並將讀取*用戶端程式庫作業啟動*。 按一下圖示即可開啟列出的已知的背景工作的工具提示。
-* 訊息會傳送至 [狀態] 列與**程式庫管理員**摘要**輸出**視窗。 例如：
+* [Visual Studio] 狀態列上的 [TSC] 圖示會以動畫顯示，而且會*開始讀取用戶端程式庫*作業。 按一下圖示即可開啟工具提示，其中列出已知的背景工作。
+* 訊息會傳送至 [**輸出**] 視窗的狀態列和 [連結**庫管理員**] 摘要。 例如：
 
 ```console
 Clean libraries operation started...
@@ -193,41 +193,41 @@ Clean libraries operation completed
 2 libraries were successfully deleted in 1.91 secs
 ```
 
-清除作業只會刪除從專案的檔案。 程式庫檔案保持在未來的還原作業上更快速地擷取的快取中。 若要管理儲存在本機電腦的快取中的程式庫檔案，請使用[LibMan CLI](xref:client-side/libman/libman-cli)。
+「清除」作業只會刪除專案中的檔案。 程式庫檔案會保留在快取中，以便在未來的還原作業中更快速地取得。 若要管理儲存在本機電腦快取中的程式庫檔案，請使用[LIBMAN CLI](xref:client-side/libman/libman-cli)。
 
-## <a name="uninstall-library-files"></a>解除安裝程式庫檔案
+## <a name="uninstall-library-files"></a>卸載程式庫檔案
 
-若要解除安裝程式庫檔案：
+若要卸載程式庫檔案：
 
-* 開啟*libman.json*。
-* 放置在對應的插入號`libraries`物件常值。
-* 按一下左邊界中，會出現燈泡圖示，然後選取**解除安裝\<library_name > @\<library_version >** :
+* 開啟*libman*。
+* 將插入號放在對應的 `libraries` 物件常值內。
+* 按一下左邊界中顯示的燈泡圖示，然後選取 **卸載 \<library_name > @\<library_version >** ：
 
-  ![解除安裝程式庫操作功能表選項](_static/uninstall-menu-option.png)
+  ![卸載程式庫內容功能表選項](_static/uninstall-menu-option.png)
 
-或者，您可以手動編輯並儲存 LibMan 資訊清單 (*libman.json*)。 [還原作業](#restore-library-files)時儲存檔案時執行。 不會再定義中的程式庫檔案*libman.json*從專案中移除。
+或者，您可以手動編輯並儲存 LibMan 資訊清單（*LibMan*）。 [還原](#restore-library-files)作業會在儲存檔案時執行。 不再定義于*libman*中的程式庫檔案會從專案中移除。
 
 ## <a name="update-library-version"></a>更新程式庫版本
 
-若要檢查有更新的程式庫版本：
+若要檢查更新的程式庫版本：
 
-* 開啟*libman.json*。
-* 放置在對應的插入號`libraries`物件常值。
-* 按一下燈泡圖示出現在左邊界中。 將滑鼠停留**檢查是否有更新**。
+* 開啟*libman*。
+* 將插入號放在對應的 `libraries` 物件常值內。
+* 按一下左邊界中顯示的燈泡圖示。 將滑鼠停留在 [**檢查更新**] 上方。
 
-LibMan 會檢查程式庫版本比安裝的版本還新。 可能會發生下列結果：
+LibMan 會檢查程式庫版本是否比安裝的版本還要新。 可能會發生下列結果：
 
-* A**找不到更新**如果已安裝最新版本，就會顯示訊息。
-* 最新穩定版本會顯示如果沒有已安裝。
+* 如果已安裝最新版本，則會顯示 [**找不到更新**] 訊息。
+* 如果尚未安裝，則會顯示最新的穩定版本。
 
-  ![檢查有更新快顯功能表選項](_static/update-menu-option.png)
+  ![檢查更新內容功能表選項](_static/update-menu-option.png)
 
-* 如果可用的發行前版本比已安裝的版本還新，則會顯示發行前版本。
+* 如果預先發行版本比安裝的版本可用，則會顯示發行前版本。
 
-若要降級至較舊的程式庫版本，請以手動方式編輯*libman.json*檔案。 當儲存檔案時，LibMan[還原作業](#restore-library-files):
+若要降級為舊版的程式庫版本，請手動編輯*libman* 。 儲存檔案時，LibMan[還原](#restore-library-files)作業：
 
-* 從先前版本中移除多餘的檔案。
-* 從新的版本中加入全新和更新的檔案。
+* 從舊版本移除多餘的檔案。
+* 從新版本加入新的和更新的檔案。
 
 ## <a name="additional-resources"></a>其他資源
 

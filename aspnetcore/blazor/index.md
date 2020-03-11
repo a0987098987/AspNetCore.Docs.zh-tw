@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 02c95c19ebfb5ea6ad722f9d49f4cddc7471f8e1
-ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
+ms.openlocfilehash: 038799564078c4d3e8a7aa3a9841c6303edf9d12
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77034075"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658274"
 ---
 # <a name="introduction-to-aspnet-core-opno-locblazor"></a>ASP.NET Core Blazor 簡介
 
@@ -38,7 +38,7 @@ Blazor 是使用 .NET 建立互動式用戶端 web UI 的架構：
 * 使用 Windows、Linux 和 macOS 版的 Visual Studio 保持生產力。
 * 以常用的語言、架構和工具建置，不僅穩定、功能豐富，而且容易使用。
 
-## <a name="components"></a>Components
+## <a name="components"></a>元件
 
 Blazor 應用程式是以*元件*為基礎。 Blazor 中的元件是 UI 的元素，例如頁面、對話方塊或資料輸入表單。
 
@@ -114,7 +114,7 @@ Blazor WebAssembly 是使用 .NET 建立互動式用戶端 web 應用程式的�
 
 WebAssembly 程式碼可以透過 JavaScript 存取瀏覽器的完整功能，稱為 「JavaScript 互通性」(或 *JavaScript Interop*)。 在瀏覽器中透過 WebAssembly 執行的 .NET 程式碼會在瀏覽器的 JavaScript 沙箱執行，且受沙箱所提供對用戶端電腦之惡意動作的保護。
 
-![[!OP.無 LOC （Blazor）] WebAssembly 會在瀏覽器中使用 WebAssembly 執行 .NET 程式碼。](index/_static/blazor-webassembly.png)
+![Blazor WebAssembly 會在使用 WebAssembly 的瀏覽器中執行 .NET 程式碼。](index/_static/blazor-webassembly.png)
 
 在瀏覽器中建立並執行 Blazor WebAssembly 應用程式時：
 
@@ -136,11 +136,14 @@ Blazor 將元件轉譯邏輯與 UI 更新的套用方式分離。 Blazor Server 
 
 Blazor 伺服器用來與瀏覽器通訊的連接也會用來處理 JavaScript interop 呼叫。
 
-![[!OP.無 LOC （Blazor）] 伺服器會在伺服器上執行 .NET 程式碼，並透過 [！，與用戶端上的檔物件模型互動OP.無-LOC （SignalR）] 連接](index/_static/blazor-server.png)
+![Blazor Server 會在伺服器上執行 .NET 程式碼，並透過 SignalR 連接與用戶端上的檔物件模型進行互動](index/_static/blazor-server.png)
 
 ## <a name="javascript-interop"></a>JavaScript Interop
 
-對於需要協力廠商 JavaScript 程式庫和瀏覽器 API 存取的應用程式，元件能夠和 JavaScript 交互操作。 元件可以使用 JavaScript 可以使用的任何程式庫或 API。 C# 程式碼可以呼叫進入 JavaScript 程式碼，而 JavaScript 程式碼可以呼叫進入 C# 程式碼。 如需詳細資訊，請參閱 <xref:blazor/javascript-interop>。
+對於需要協力廠商 JavaScript 程式庫和瀏覽器 API 存取的應用程式，元件能夠和 JavaScript 交互操作。 元件可以使用 JavaScript 可以使用的任何程式庫或 API。 C# 程式碼可以呼叫進入 JavaScript 程式碼，而 JavaScript 程式碼可以呼叫進入 C# 程式碼。 如需詳細資訊，請參閱下列文章：
+
+* <xref:blazor/call-javascript-from-dotnet>
+* <xref:blazor/call-dotnet-from-javascript>
 
 ## <a name="code-sharing-and-net-standard"></a>程式碼共用和 .NET Standard
 

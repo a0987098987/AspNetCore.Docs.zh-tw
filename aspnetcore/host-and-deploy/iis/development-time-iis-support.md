@@ -1,28 +1,28 @@
 ---
 title: Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
-author: guardrex
+author: rick-anderson
 description: 了解在 Windows Server 上搭配 IIS 執行 ASP.NET Core 應用程式時，對該應用程式所提供的偵錯支援。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: f03ee94e5890c58addef4ba0d3ba7a4af6b659e7
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: f87a1d8cf41248f14932908c0633f98a7198853f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172099"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664042"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
-作者：[Sourabh Shirhatti](https://twitter.com/sshirhatti) 和 [Luke Latham](https://github.com/guardrex)
+由 [Sourabh Shirhatti](https://twitter.com/sshirhatti) 提供
 
 ::: moniker range=">= aspnetcore-3.0"
 
 本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://visualstudio.microsoft.com) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Visual Studio (適用於 Windows)](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
@@ -32,7 +32,7 @@ ms.locfileid: "77172099"
 ## <a name="enable-iis"></a>啟用 IIS
 
 1. 在 Windows 中，流覽至 [**控制台**] >**程式**> [**程式和功能**] > [**開啟或關閉 Windows 功能**] （畫面左側）。
-1. 選取 [Internet Information Services] 核取方塊。 選取 **[確定]** 。
+1. 選取 [Internet Information Services] 核取方塊。 選取 [確定]。
 
 安裝 IIS 可能需要重新啟動系統。
 
@@ -68,7 +68,7 @@ IIS 的網站必須含有下列設定：
 
 建立新的啟動設定檔，以新增開發階段 IIS 支援：
 
-1. 以滑鼠右鍵按一下 [方案總管] 中的專案。 選取 [內容]。 開啟 [偵錯] 索引標籤。
+1. 以滑鼠右鍵按一下 [方案總管] 中的專案。 選取 [屬性]。 開啟 [偵錯] 索引標籤。
 1. 針對 [設定檔]，選取 [新增] 按鈕。 在快顯示窗中，將設定檔命名為 "IIS"。 選取 [確定] 以建立設定檔。
 1. 針對 [啟動] 設定，從清單中選取 [IIS]。
 1. 選取 [啟動瀏覽器] 的核取方塊並提供端點 URL。
@@ -137,7 +137,7 @@ IIS 的網站必須含有下列設定：
 
 本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://visualstudio.microsoft.com) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Visual Studio (適用於 Windows)](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
@@ -147,7 +147,7 @@ IIS 的網站必須含有下列設定：
 ## <a name="enable-iis"></a>啟用 IIS
 
 1. 在 Windows 中，流覽至 [**控制台**] >**程式**> [**程式和功能**] > [**開啟或關閉 Windows 功能**] （畫面左側）。
-1. 選取 [Internet Information Services] 核取方塊。 選取 **[確定]** 。
+1. 選取 [Internet Information Services] 核取方塊。 選取 [確定]。
 
 安裝 IIS 可能需要重新啟動系統。
 
@@ -183,7 +183,7 @@ IIS 的網站必須含有下列設定：
 
 建立新的啟動設定檔，以新增開發階段 IIS 支援：
 
-1. 以滑鼠右鍵按一下 [方案總管] 中的專案。 選取 [內容]。 開啟 [偵錯] 索引標籤。
+1. 以滑鼠右鍵按一下 [方案總管] 中的專案。 選取 [屬性]。 開啟 [偵錯] 索引標籤。
 1. 針對 [設定檔]，選取 [新增] 按鈕。 在快顯示窗中，將設定檔命名為 "IIS"。 選取 [確定] 以建立設定檔。
 1. 針對 [啟動] 設定，從清單中選取 [IIS]。
 1. 選取 [啟動瀏覽器] 的核取方塊並提供端點 URL。

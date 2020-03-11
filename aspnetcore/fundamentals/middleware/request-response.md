@@ -7,12 +7,12 @@ ms.author: jukotali
 ms.custom: mvc
 ms.date: 08/29/2019
 uid: fundamentals/middleware/request-response
-ms.openlocfilehash: 5e531c0ce0ed48097054fd81ddc3655a66cc7c5f
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: b473fa02e1d23f02bc5d2e15fa54ab7b1dbbb17c
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081677"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667213"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>ASP.NET Core 中的要求和回應作業
 
@@ -20,22 +20,23 @@ ms.locfileid: "71081677"
 
 此文章說明如何讀取要求本文及寫入回應本文。 撰寫中介軟體時，可能需要這些作業的程式碼。 在撰寫中介軟體之外，自訂程式碼通常不是必要的，因為作業是由 MVC 和 Razor Pages 處理。
 
-要求和回應主體有兩個抽象概念：<xref:System.IO.Stream> 和 <xref:System.IO.Pipelines.Pipe>。 針對要求讀取，[HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) 是 <xref:System.IO.Stream>，而 `HttpRequest.BodyReader` 是 <xref:System.IO.Pipelines.PipeReader>。 針對回應寫入，[HttpResponse](xref:Microsoft.AspNetCore.Http.HttpResponse.Body) 是<xref:System.IO.Stream>，而 `HttpResponse.BodyWriter` 是<xref:System.IO.Pipelines.PipeWriter>。
+要求和回應主體有兩個抽象概念： <xref:System.IO.Stream> 和 <xref:System.IO.Pipelines.Pipe>。 對於要求讀取，[HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) 是 <xref:System.IO.Stream>，而 `HttpRequest.BodyReader` 是 <xref:System.IO.Pipelines.PipeReader>。 針對回應寫入， [HttpResponse](xref:Microsoft.AspNetCore.Http.HttpResponse.Body)是一種 <xref:System.IO.Stream>，`HttpResponse.BodyWriter` 是 <xref:System.IO.Pipelines.PipeWriter>。
 
-建議在資料流程上使用管線。 資料流可以更容易地用於一些簡單的作業，但管線具有效能優勢，並且更容易在大部分情況下使用。 ASP.NET Core 開始使用管線，而不是內部的資料流程。 範例包括：
+建議在資料流程上使用[管線](/dotnet/standard/io/pipelines)。 資料流可以更容易地用於一些簡單的作業，但管線具有效能優勢，並且更容易在大部分情況下使用。 ASP.NET Core 開始使用管線，而不是內部的資料流程。 範例包括：
 
 * `FormReader`
 * `TextReader`
 * `TextWriter`
 * `HttpResponse.WriteAsync`
 
-未從架構中移除資料流程。 資料流程會繼續在整個 .net 中使用，而且許多資料流程類型沒有對等的管道， `FileStreams`例如`ResponseCompression`和。
+未從架構中移除資料流程。 資料流程會繼續在整個 .NET 中使用，而且許多資料流程類型沒有對等的管道，例如 `FileStreams` 和 `ResponseCompression`。
 
 ## <a name="stream-examples"></a>資料流範例
 
 假設目標是要建立一個中介軟體，將整個要求本文當做字串清單來讀取，並在新行上分割。 簡單的資料流實作看起來可能像下列範例這樣：
 
 [!code-csharp[](request-response/samples/3.x/RequestResponseSample/Startup.cs?name=GetListOfStringsFromStream)]
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 此程式碼確實有用，但有一些問題：
 
@@ -66,17 +67,17 @@ ms.locfileid: "71081677"
 
 此範例可修正資料流實作的許多問題：
 
-* 不需要字串緩衝區，因為 `PipeReader` 會處理尚未使用位元組。
+* 不需要字串緩衝區，因為 `PipeReader` 會處理尚未使用的位元組。
 * 編碼的字串會直接新增至所傳回字串的清單。
 * 除了字串 (除了 `ToArray()` 呼叫之外) 所使用的記憶體，系統不會配置資源給字串建立作業。
 
 ## <a name="adapters"></a>配接器
 
-和屬性都適用于`HttpRequest`和。 `HttpResponse` `BodyReader/BodyWriter` `Body` 當您將`Body`設定為不同的資料流程時，一組新的介面卡會自動將每個類型調整成另一種。 如果您將`HttpRequest.Body`設定為新的資料流程`HttpRequest.BodyReader` ，會自動設為包裝`PipeReader` `HttpRequest.Body`的新。
+`Body` 和 `BodyReader/BodyWriter` 屬性都適用于 `HttpRequest` 和 `HttpResponse`。 當您將 `Body` 設定為不同的資料流程時，一組新的介面卡會自動將每個類型調整成另一種。 如果您將 `HttpRequest.Body` 設定為新的資料流程，`HttpRequest.BodyReader` 會自動設定為包裝 `HttpRequest.Body`的新 `PipeReader`。
 
 ## <a name="startasync"></a>StartAsync
 
-`HttpResponse.StartAsync` 是用來指出標頭是不可修改的，且指出要執行 `OnStarting` 回呼。 使用 Kestrel 做為伺服器時，在 `PipeReader` 之前呼叫 `StartAsync`  可確保 `GetMemory` 所傳回的記憶體屬於 Kestrel 的內部 <xref:System.IO.Pipelines.Pipe>，而不是屬於 外部緩衝區。
+`HttpResponse.StartAsync` 是用來指出標頭是不可修改的，而且會執行 `OnStarting` 回呼。 使用 Kestrel 做為伺服器時，在使用 `PipeReader` 之前呼叫 `StartAsync`，保證 `GetMemory` 所傳回的記憶體屬於 Kestrel 的內部 <xref:System.IO.Pipelines.Pipe>，而不是外部緩衝區。
 
 ## <a name="additional-resources"></a>其他資源
 

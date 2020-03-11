@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 01/15/2020
 uid: host-and-deploy/docker/building-net-docker-images
 ms.openlocfilehash: 5bed5e9a4a6109a45badcef7c0d4e03eb2312bf0
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146338"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664070"
 ---
 # <a name="docker-images-for-aspnet-core"></a>ASP.NET Core 的 Docker 映像
 
 本教學課程示範如何在 Docker 容器中執行 ASP.NET Core 應用程式。
 
-在本教學課程中，您將：
+在本教學課程中，您：
 > [!div class="checklist"]
 > * 了解 Microsoft.NET Core Docker 映像
 > * 下載 ASP.NET Core 範例應用程式
@@ -40,7 +40,7 @@ ms.locfileid: "76146338"
 
    範例會使用此映像來執行應用程式。 此映像包含 ASP.NET Core 執行階段和程式庫，並會進行最佳化，以在生產環境中執行應用程式。 專為部署和應用程式啟動速度而設計的映像相對較小，因此，已將從 Docker 登錄到 Docker 主機的網路效能最佳化。 只會將執行應用程式所需的程式庫和內容複製到容器中。 內容已準備好執行，可用最短的時間從 `Docker run` 到應用程式啟動。 在 Docker 模型中，不需要動態程式碼編譯。
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 ::: moniker range="< aspnetcore-3.0"
 
 * [.NET Core 2.2 SDK](https://www.microsoft.com/net/core)
@@ -54,7 +54,7 @@ ms.locfileid: "76146338"
 
 * Docker 用戶端 18.03 或更新版本
 
-  * Linux 散發
+  * Linux 散發套件
     * [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/)
     * [Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
     * [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)

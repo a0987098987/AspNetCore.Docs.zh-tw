@@ -26,7 +26,7 @@
 
 ### <a name="register-the-database-context"></a>登錄資料庫內容
 
-在 *Startup.cs* 最上方新增下列 `using` 陳述式：
+在 `using`Startup.cs*最上方新增下列* 陳述式：
 
 ```csharp
 using MvcMovie.Data;
@@ -72,7 +72,7 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 
 ### <a name="register-the-database-context"></a>登錄資料庫內容
 
-在 *Startup.cs* 最上方新增下列 `using` 陳述式：
+在 `using`Startup.cs*最上方新增下列* 陳述式：
 
 ```csharp
 using MvcMovie.Models;

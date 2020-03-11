@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 12/05/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: cab383053751598b882f3716943d3d9392c56f4a
-ms.sourcegitcommit: 29ace642ca0e1f0b48a18d66de266d8811df2b83
+ms.openlocfilehash: 908016720ade67a02ebe30d1dcb7929ad7592270
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74987965"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661900"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 
@@ -19,13 +19,13 @@ ms.locfileid: "74987965"
 
 ASP.NET Core MVC 支援格式化回應資料。 您可以使用特定格式或回應用戶端要求的格式來格式化回應資料。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/formatting) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/formatting) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="format-specific-action-results"></a>特定格式的動作結果
 
 某些動作結果類型是特定格式所特有的，例如 <xref:Microsoft.AspNetCore.Mvc.JsonResult> 和 <xref:Microsoft.AspNetCore.Mvc.ContentResult>。 無論用戶端喜好設定為何，動作都可以傳回以特定格式格式化的結果。 例如，傳回 `JsonResult` 會傳回 JSON 格式的資料。 傳回 `ContentResult` 或字串會傳回純文字格式的字串資料。
 
-動作不需要傳回任何特定的類型。 ASP.NET Core 支援任何物件傳回值。  傳回不是 <xref:Microsoft.AspNetCore.Mvc.IActionResult> 類型之物件的動作結果，會使用適當的 <xref:Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter> 執行進行序列化。 如需詳細資訊，請參閱<xref:web-api/action-return-types>。
+動作不需要傳回任何特定的類型。 ASP.NET Core 支援任何物件傳回值。  傳回不是 <xref:Microsoft.AspNetCore.Mvc.IActionResult> 類型之物件的動作結果，會使用適當的 <xref:Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter> 執行進行序列化。 如需詳細資訊，請參閱 <xref:web-api/action-return-types>。
 
 內建 helper 方法 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Ok*> 會傳回 JSON 格式的資料： [!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_get)]
 
@@ -158,7 +158,7 @@ public IActionResult Get()
 * 使用 `Newtonsoft.Json` 的屬性。 例如，`[JsonProperty]` 或 `[JsonIgnore]`。
 * 自訂序列化設定。
 * 依賴 `Newtonsoft.Json` 提供的功能。
-* 設定 `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`。 在 ASP.NET Core 3.0 版之前，`JsonResult.SerializerSettings` 接受 `Newtonsoft.Json` 專屬的 `JsonSerializerSettings` 執行個體。
+* 設定 `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`。 在 ASP.NET Core 3.0 版之前，`JsonResult.SerializerSettings` 接受 `JsonSerializerSettings` 專屬的 `Newtonsoft.Json` 執行個體。
 * 產生 [OpenAPI](<xref:tutorials/web-api-help-pages-using-swagger>) 文件。
 
 `Newtonsoft.Json`型格式器的功能可以使用 `Microsoft.AspNetCore.Mvc.MvcNewtonsoftJsonOptions.SerializerSettings`來設定：
@@ -248,7 +248,7 @@ XML 格式設定需要[AspNetCore 的 xml](https://www.nuget.org/packages/Micros
 
 先前的路由可讓要求的格式指定為選用的副檔名。 [`[FormatFilter]`](xref:Microsoft.AspNetCore.Mvc.FormatFilterAttribute)屬性會檢查 `RouteData` 中的格式值是否存在，並在建立回應時，將回應格式對應至適當的格式器。
 
-|           路由        |             Formatter              |
+|           路由        |             格式器              |
 |------------------------|------------------------------------|
 |   `/api/products/5`    |    預設輸出格式器    |
 | `/api/products/5.json` | JSON 格式器 (如果已設定) |

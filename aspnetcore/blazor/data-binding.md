@@ -5,17 +5,17 @@ description: 瞭解 Blazor 應用程式中元件和 DOM 元素的資料系結案
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/data-binding
-ms.openlocfilehash: c38e6095d4e93d3eead10fa8bb0356b2113bb220
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: 92377730b9d353a507ffd384710fb979affe7265
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77453230"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661284"
 ---
 # <a name="aspnet-core-opno-locblazor-data-binding"></a>ASP.NET Core Blazor 資料系結
 
@@ -49,10 +49,10 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 
 當元件轉譯時，input 元素的 `value` 來自 `CurrentValue` 屬性。 當使用者在文字方塊中輸入並變更元素焦點時，`onchange` 事件會引發，而且 `CurrentValue` 屬性會設定為變更的值。 實際上，程式碼產生更為複雜，因為 `@bind` 會處理執行類型轉換的情況。 就原則而言，`@bind` 會將運算式的目前值與 `value` 屬性產生關聯，並使用已註冊的處理常式來處理變更。
 
-除了使用 `@bind` 語法來處理 `onchange` 事件之外，也可以使用其他事件來系結屬性或欄位，方法是指定具有 `event` 參數（[`@bind-value:event`](xref:mvc/views/razor#bind)）的[`@bind-value`](xref:mvc/views/razor#bind)屬性。 下列範例會系結 `oninput` 事件的 `CurrentValue` 屬性：
+藉由同時包含具有 `event` 參數的 `@bind:event` 屬性，在其他事件上系結屬性或欄位。 下列範例會系結 `oninput` 事件上的 `CurrentValue` 屬性：
 
 ```razor
-<input @bind-value="CurrentValue" @bind-value:event="oninput" />
+<input @bind="CurrentValue" @bind:event="oninput" />
 
 @code {
     private string CurrentValue { get; set; }
@@ -61,12 +61,25 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 
 不同于當元素失去焦點時引發的 `onchange`，`oninput` 當文字方塊的值變更時，就會引發。
 
-上述範例中的 `@bind-value` 系結：
+使用 `@bind-{ATTRIBUTE}` 搭配 `@bind-{ATTRIBUTE}:event` 語法來系結 `value`以外的元素屬性。 在下列範例中，當 `_paragraphStyle` 值變更時，會更新段落的樣式：
 
-* 指定的運算式（`CurrentValue`）至元素的 `value` 屬性。
-* `@bind-value:event`所指定之事件的變更事件委派。
+```razor
+@page "/binding-example"
 
-### <a name="unparsable-values"></a>無法剖析的值
+<p>
+    <input type="text" @bind="_paragraphStyle" />
+</p>
+
+<p @bind-style="_paragraphStyle" @bind-style:event="onchange">
+    Blazorify the app!
+</p>
+
+@code {
+    private string _paragraphStyle = "color:red";
+}
+```
+
+## <a name="unparsable-values"></a>無法剖析的值
 
 當使用者將無法剖析的值提供給資料系結元素時，會在觸發系結事件時，自動將無法剖析的值還原成先前的值。
 
@@ -86,15 +99,15 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 
 在上述案例中，元素的值會還原為 `123`。 當 `123.45` 值拒絕 `123`的原始值時，使用者瞭解其值不被接受。
 
-根據預設，系結會套用至元素的 `onchange` 事件（`@bind="{PROPERTY OR FIELD}"`）。 使用 `@bind-value="{PROPERTY OR FIELD}" @bind-value:event={EVENT}` 來設定不同的事件。 若為 `oninput` 事件（`@bind-value:event="oninput"`），回復會在引進無法剖析值的任何擊鍵之後發生。 以 `int`系結類型的 `oninput` 事件為目標時，使用者無法輸入 `.` 字元。 系統會立即移除 `.` 字元，讓使用者收到僅允許整數的立即回應。 在某些情況下，在 `oninput` 事件上還原值不是理想的情況，例如當使用者應允許清除無法剖析的 `<input>` 值時。 替代方案包括：
+根據預設，系結會套用至元素的 `onchange` 事件（`@bind="{PROPERTY OR FIELD}"`）。 使用 `@bind="{PROPERTY OR FIELD}" @bind:event={EVENT}`，在不同的事件上觸發系結。 若為 `oninput` 事件（`@bind:event="oninput"`），回復會在引進無法剖析值的任何擊鍵之後發生。 以 `int`系結類型的 `oninput` 事件為目標時，使用者無法輸入 `.` 字元。 系統會立即移除 `.` 字元，讓使用者收到僅允許整數的立即回應。 在某些情況下，在 `oninput` 事件上還原值不是理想的情況，例如當使用者應允許清除無法剖析的 `<input>` 值時。 替代方案包括：
 
-* 請勿使用 `oninput` 事件。 使用預設的 `onchange` 事件（`@bind="{PROPERTY OR FIELD}"`），在元素失去焦點之前，不會還原不正確值。
+* 請勿使用 `oninput` 事件。 使用預設的 `onchange` 事件（僅指定 `@bind="{PROPERTY OR FIELD}"`），在元素失去焦點之前，不會還原不正確值。
 * 系結至可為 null 的型別（例如 `int?` 或 `string`），並提供自訂邏輯來處理不正確專案。
 * 使用[表單驗證元件](xref:blazor/forms-validation)，例如 `InputNumber` 或 `InputDate`。 表單驗證元件有內建支援，可管理不正確輸入。 表單驗證元件：
   * 允許使用者在相關聯的 `EditContext`上提供不正確輸入和接收驗證錯誤。
   * 在 UI 中顯示驗證錯誤，而不幹擾使用者輸入其他 webform 資料。
 
-### <a name="format-strings"></a>格式字串
+## <a name="format-strings"></a>格式字串
 
 資料系結可搭配使用[`@bind:format`](xref:mvc/views/razor#bind)<xref:System.DateTime> 格式字串。 目前無法使用其他格式運算式，例如貨幣或數位格式。
 
@@ -122,9 +135,9 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 <input type="date" @bind="StartDate" @bind:format="yyyy-MM-dd">
 ```
 
-### <a name="parent-to-child-binding-with-component-parameters"></a>具有元件參數的父系對子系結
+## <a name="parent-to-child-binding-with-component-parameters"></a>具有元件參數的父系對子系結
 
-Binding 可辨識元件參數，其中 `@bind-{property}` 可以將屬性值從父元件系結到子元件。 具有連鎖系結區段的[子系對父](#child-to-parent-binding-with-chained-bind)系結中涵蓋了從子系系結至父系的系結。
+Binding 可辨識元件參數，其中 `@bind-{PROPERTY}` 可以將屬性值從父元件系結到子元件。 具有連鎖系結區段的[子系對父](#child-to-parent-binding-with-chained-bind)系結中涵蓋了從子系系結至父系的系結。
 
 下列子元件（`ChildComponent`）具有 `Year` 元件參數和 `YearChanged` 回呼：
 
@@ -205,13 +218,13 @@ Binding 可辨識元件參數，其中 `@bind-{property}` 可以將屬性值從�
 <ChildComponent @bind-Year="ParentYear" @bind-Year:event="YearChanged" />
 ```
 
-一般來說，屬性可以使用 `@bind-property:event` 屬性系結至對應的事件處理常式。 例如，您可以使用下列兩個屬性，將屬性 `MyProp` 系結至 `MyEventHandler`：
+一般而言，屬性可以藉由包含 `@bind-{PROPRETY}:event` 屬性來系結至對應的事件處理常式。 例如，您可以使用下列兩個屬性，將屬性 `MyProp` 系結至 `MyEventHandler`：
 
 ```razor
 <MyComponent @bind-MyProp="MyValue" @bind-MyProp:event="MyEventHandler" />
 ```
 
-### <a name="child-to-parent-binding-with-chained-bind"></a>具有連鎖系結的子系對父系系結
+## <a name="child-to-parent-binding-with-chained-bind"></a>具有連鎖系結的子系對父系系結
 
 常見的案例是將資料系結參數連結至元件輸出中的 page 元素。 此案例稱為*連鎖*系結，因為會同時發生多個層級的系結。
 
@@ -342,6 +355,6 @@ Password:
 }
 ```
 
-### <a name="radio-buttons"></a>選項按鈕
+## <a name="radio-buttons"></a>選項按鈕
 
 如需系結至表單中選項按鈕的相關資訊，請參閱 <xref:blazor/forms-validation#work-with-radio-buttons>。

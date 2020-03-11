@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 10/16/2019
 uid: grpc/troubleshoot
 ms.openlocfilehash: c501cda14f3bac9297695ece59cbc4634e4b7895
-ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72519049"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664126"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>針對 .NET Core 上的 gRPC 進行疑難排解
 
@@ -53,7 +53,7 @@ static async Task Main(string[] args)
 .NET gRPC 用戶端要求服務必須具有受信任的憑證。 呼叫沒有受信任憑證的 gRPC 服務時，會傳回下列錯誤訊息：
 
 > 未處理的例外狀況。 System.net.HTTP.HTTPrequestexception：無法建立 SSL 連線，請參閱內部例外狀況。
-> ---> AuthenticationException：根據驗證程式，遠端憑證是不正確。
+> ---> System.Security.Authentication.AuthenticationException: 根據驗證程序，遠端憑證是無效的。
 
 如果您要在本機測試您的應用程式，而且 ASP.NET Core HTTPS 開發憑證不受信任，您可能會看到此錯誤。 如需修正此問題的指示，請參閱[信任 Windows 和 macOS上的 ASP.NET Core HTTPS 開發憑證](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)。
 

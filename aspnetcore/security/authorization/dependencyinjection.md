@@ -1,26 +1,26 @@
 ---
-title: ASP.NET Core 中的要求處理常式中的相依性插入
+title: ASP.NET Core 中的需求處理常式中的相依性插入
 author: rick-anderson
-description: 了解如何使用相依性插入將 ASP.NET Core 應用程式中插入授權要求處理常式。
+description: 瞭解如何使用相依性插入將授權需求處理常式插入 ASP.NET Core 應用程式中。
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/dependencyinjection
 ms.openlocfilehash: 71d563e11d308a95c08e6d012d3a071f4697d2de
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64896365"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666086"
 ---
-# <a name="dependency-injection-in-requirement-handlers-in-aspnet-core"></a>ASP.NET Core 中的要求處理常式中的相依性插入
+# <a name="dependency-injection-in-requirement-handlers-in-aspnet-core"></a>ASP.NET Core 中的需求處理常式中的相依性插入
 
 <a name="security-authorization-di"></a>
 
-[必須註冊授權處理常式](xref:security/authorization/policies#handler-registration)在設定期間的服務集合中 (使用[相依性插入](xref:fundamentals/dependency-injection))。
+在設定期間，必須在服務集合中[註冊授權處理常式](xref:security/authorization/policies#handler-registration)（使用相依性[插入](xref:fundamentals/dependency-injection)）。
 
-假設您擁有您想要評估授權處理常式內的規則的儲存機制和服務集合中註冊該存放庫。 授權會解決，並將之插入您建構函式。
+假設您有想要在授權處理常式中評估的規則存放庫，而且該儲存機制已在服務集合中註冊。 授權將會解析，並將其插入您的函式。
 
-例如，如果您想要使用 ASP。NET 的記錄基礎結構，您會想要插入`ILoggerFactory`到您的處理常式。 這類處理常式可能如下：
+例如，如果您想要使用 ASP。NET 的記錄基礎結構，您會想要將 `ILoggerFactory` 插入處理常式中。 這類處理常式看起來可能像這樣：
 
 ```csharp
 public class LoggingAuthorizationHandler : AuthorizationHandler<MyRequirement>
@@ -41,13 +41,13 @@ public class LoggingAuthorizationHandler : AuthorizationHandler<MyRequirement>
    }
    ```
 
-您會註冊處理常式和`services.AddSingleton()`:
+您會使用 `services.AddSingleton()`來註冊處理常式：
 
 ```csharp
 services.AddSingleton<IAuthorizationHandler, LoggingAuthorizationHandler>();
 ```
 
-當您的應用程式啟動時，建立執行個體的處理常式將和插入的已註冊的 DI 會`ILoggerFactory`至您的建構函式。
+當您的應用程式啟動時，將會建立處理常式的實例，而 DI 會將註冊的 `ILoggerFactory` 插入您的函式。
 
 > [!NOTE]
-> 使用 Entity Framework 的處理常式不應該註冊為單一子句。
+> 使用 Entity Framework 的處理常式不應該註冊為單次個體。

@@ -8,11 +8,11 @@ ms.date: 12/02/2019
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/facebook-logins
 ms.openlocfilehash: 2e4cc04c6e7ff8e5f5701cc7f9ede73dbc1b4685
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717084"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667465"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Facebook 外部登入設定
 
@@ -51,7 +51,7 @@ ms.locfileid: "74717084"
 > [!NOTE]
 > URI */signin-facebook*會設定為 facebook 驗證提供者的預設回呼。 您可以在設定 Facebook 驗證中介軟體時，透過[FacebookOptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性來變更預設的回呼 URI。
 
-* 按一下 [**儲存變更**]。
+* 按一下 **[儲存變更]** 。
 
 * 按一下左側導覽列中的 [**設定**] > [**基本**] 連結。
 

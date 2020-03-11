@@ -1,5 +1,5 @@
 ---
-title: 教學課程：實作繼承 - ASP.NET MVC 搭配 EF Core
+title: 教學課程：執行繼承-使用 EF Core 的 ASP.NET MVC
 description: 本教學課程將說明如何在 ASP.NET Core 應用程式中使用 Entity Framework Core，以實作資料模型中的繼承。
 author: rick-anderson
 ms.author: riande
@@ -7,20 +7,20 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: c10df60a43f5d59f3ce13afd38aad42b88c80516
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: dab3d2b057162f6d986db10e74e3681acc0ada3b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259397"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657238"
 ---
-# <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>教學課程：實作繼承 - ASP.NET MVC 搭配 EF Core
+# <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>教學課程：執行繼承-使用 EF Core 的 ASP.NET MVC
 
 在上一個教學課程中，您已處理並行存取例外狀況。 本教學課程將示範如何在資料模型中實作繼承。
 
 在物件導向程式設計中，您可以使用繼承，以便重複使用程式碼。 在本教學課程中，您將變更 `Instructor` 和 `Student` 類別，讓它們衍生自 `Person` 基底類別，而此基底類別包含講師和學生通用的屬性，例如 `LastName`。 您不會新增或變更任何網頁，但是您將變更一些程式碼，這些變更將會自動反映在資料庫中。
 
-在本教學課程中，您已：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 將繼承對應至資料庫
@@ -30,7 +30,7 @@ ms.locfileid: "72259397"
 > * 建立及更新移轉
 > * 測試實作
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [處理並行](concurrency.md)
 
@@ -91,7 +91,7 @@ School 資料模型中的 `Instructor` 和 `Student` 類別有數個完全相同
 
 ## <a name="create-and-update-migrations"></a>建立及更新移轉
 
-儲存您的變更並建置專案。 然後，在專案資料夾中開啟命令視窗，並輸入下列命令：
+儲存您的變更，並建置專案。 然後，在專案資料夾中開啟命令視窗，並輸入下列命令：
 
 ```dotnetcli
 dotnet ef migrations add Inheritance
@@ -99,7 +99,7 @@ dotnet ef migrations add Inheritance
 
 還不要執行 `database update` 命令。 該命令將導致資料遺失，因為它會卸除 Instructor 資料表，然後將 Student 資料表重新命名為 Person。 您必須提供自訂程式碼來保留現有的資料。
 
-開啟 Migrations/\<時間戳記>_Inheritance.cs，並以下列程式碼取代 `Up` 方法：
+開啟 Migrations/*時間戳記>_Inheritance.cs\<* ，並以下列程式碼取代 `Up` 方法：
 
 [!code-csharp[](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
 
@@ -150,7 +150,7 @@ dotnet ef database update
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[下載或檢視已完成的應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -158,7 +158,7 @@ dotnet ef database update
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 將繼承對應至資料庫
@@ -171,4 +171,4 @@ dotnet ef database update
 若要了解如何處理各種較進階的 Entity Framework 案例，請前往下一個教學課程。
 
 > [!div class="nextstepaction"]
-> [下一步：進階主題](advanced.md)
+> [下一步： Advanced 主題](advanced.md)

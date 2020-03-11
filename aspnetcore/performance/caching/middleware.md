@@ -1,28 +1,28 @@
 ---
 title: ASP.NET Core 中的回應快取中介軟體
-author: guardrex
+author: rick-anderson
 description: 了解如何設定和使用 ASP.NET Core 中的回應快取中介軟體。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: performance/caching/middleware
-ms.openlocfilehash: 61fa42161560ce2b512a73f1d7e32d11cd9bcb2c
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: 4deac15538d4607bd611c4e072daae39447681c1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114792"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655733"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core 中的回應快取中介軟體
 
-By [Luke Latham](https://github.com/guardrex)和[John 羅文](https://github.com/JunTaoLuo)
+作者：[John Luo](https://github.com/JunTaoLuo)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 本文說明如何在 ASP.NET Core 應用程式中設定回應快取中介軟體。 中介軟體會決定何時可快取回應、儲存回應，以及提供來自快取的回應。 如需 HTTP 快取和[`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute)屬性的簡介，請參閱[回應](xref:performance/caching/response)快取。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="configuration"></a>組態
 
@@ -162,7 +162,7 @@ if (responseCachingFeature != null)
 
 本文說明如何在 ASP.NET Core 應用程式中設定回應快取中介軟體。 中介軟體會決定何時可快取回應、儲存回應，以及提供來自快取的回應。 如需 HTTP 快取和[`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute)屬性的簡介，請參閱[回應](xref:performance/caching/response)快取。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="configuration"></a>組態
 

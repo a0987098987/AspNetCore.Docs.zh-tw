@@ -9,32 +9,32 @@ ms.date: 01/16/2020
 no-loc:
 - SignalR
 uid: signalr/hubs
-ms.openlocfilehash: e5bc12c5ccafe2b5273d72e6bde0f631ca043428
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: 54ffd8614c1cec4cfeba0878e910ed25fc6ba7d2
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294631"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662950"
 ---
-# <a name="use-hubs-in-opno-locsignalr-for-aspnet-core"></a>在適用于 ASP.NET Core 的 SignalR 中使用中樞
+# <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 SignalR 中的中樞進行 ASP.NET Core
 
 By [Rachel Appel](https://twitter.com/rachelappel)和[古柯 Griffin](https://twitter.com/1kevgriff)
 
-[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [（如何下載）](xref:index#how-to-download-a-sample)
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [（如何下載）](xref:index#how-to-download-a-sample)
 
-## <a name="what-is-a-opno-locsignalr-hub"></a>什麼是 SignalR 中樞
+## <a name="what-is-a-signalr-hub"></a>什麼是 SignalR hub
 
-SignalR 中樞 API 可讓您從伺服器呼叫已連線用戶端上的方法。 在伺服器程式碼中，您可以定義用戶端所呼叫的方法。 在用戶端程式代碼中，您可以定義從伺服器呼叫的方法。 SignalR 會處理幕後的所有內容，讓您能夠即時進行用戶端對伺服器和伺服器對用戶端通訊。
+SignalR 中樞 API 可讓您從伺服器呼叫已連線用戶端上的方法。 在伺服器程式碼中，您可以定義用戶端所呼叫的方法。 在用戶端程式代碼中，您可以定義從伺服器呼叫的方法。 SignalR 會處理幕後的所有內容，讓您能夠進行即時的用戶端對伺服器和伺服器對用戶端通訊。
 
-## <a name="configure-opno-locsignalr-hubs"></a>設定 SignalR 中樞
+## <a name="configure-signalr-hubs"></a>設定 SignalR 中樞
 
-SignalR 中介軟體需要一些服務，其透過呼叫 `services.AddSignalR`來設定。
+SignalR 中介軟體需要一些服務，透過呼叫 `services.AddSignalR`來設定。
 
 [!code-csharp[Configure service](hubs/sample/startup.cs?range=38)]
 
 ::: moniker range=">= aspnetcore-3.0"
 
-將 SignalR 功能新增至 ASP.NET Core 應用程式時，請在 `Startup.Configure` 方法的 `app.UseEndpoints` 回呼中呼叫 `endpoint.MapHub` 來設定 SignalR 路由。
+將 SignalR 功能新增至 ASP.NET Core 應用程式時，請在 `Startup.Configure` 方法的 `app.UseEndpoints` 回呼中呼叫 `endpoint.MapHub`，以安裝 SignalR 路由。
 
 ```csharp
 app.UseRouting();
@@ -48,7 +48,7 @@ app.UseEndpoints(endpoints =>
 
 ::: moniker range="<= aspnetcore-2.2"
 
-將 SignalR 功能新增至 ASP.NET Core 應用程式時，請在 `Startup.Configure` 方法中呼叫 `app.UseSignalR` 來設定 SignalR 路由。
+將 SignalR 功能新增至 ASP.NET Core 應用程式時，請在 `Startup.Configure` 方法中呼叫 `app.UseSignalR`，以安裝 SignalR 路由。
 
 [!code-csharp[Configure routes to hubs](hubs/sample/startup.cs?range=57-60)]
 
@@ -82,8 +82,8 @@ public class ChatHub : Hub
 
 | 屬性 | 描述 |
 | ------ | ----------- |
-| `ConnectionId` | 取得連接的唯一識別碼，由 SignalR指派。 每個連接都有一個連接識別碼。|
-| `UserIdentifier` | 取得[使用者識別碼](xref:signalr/groups)。 根據預設，SignalR 會使用與連接相關聯的 `ClaimsPrincipal` 中的 `ClaimTypes.NameIdentifier` 作為使用者識別碼。 |
+| `ConnectionId` | 取得連接的唯一識別碼，由 SignalR 指派。 每個連接都有一個連接識別碼。|
+| `UserIdentifier` | 取得[使用者識別碼](xref:signalr/groups)。 根據預設，SignalR 會使用與連接相關聯的 `ClaimsPrincipal` 中的 `ClaimTypes.NameIdentifier` 做為使用者識別碼。 |
 | `User` | 取得與目前使用者相關聯的 `ClaimsPrincipal`。 |
 | `Items` | 取得索引鍵/值集合，可用來在此連接的範圍內共用資料。 資料可以儲存在此集合中，且會保存在不同中樞方法叫用的連接中。 |
 | `Features` | 取得連接上可用的功能集合。 目前，在大部分的情況下不需要此集合，因此尚未詳細記載。 |

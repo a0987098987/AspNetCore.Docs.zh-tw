@@ -1,28 +1,26 @@
 ---
 title: ASP.NET Core 中的回應壓縮
-author: guardrex
+author: rick-anderson
 description: 了解回應壓縮及如何使用 ASP.NET Core 應用程式中的回應壓縮中介軟體。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: performance/response-compression
-ms.openlocfilehash: d37b05edd55ac0d3910855563b819114cf815b43
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: aae0b8d74fc424cc81c046e9042279856865bf6a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114805"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665974"
 ---
 # <a name="response-compression-in-aspnet-core"></a>ASP.NET Core 中的回應壓縮
-
-作者：[Luke Latham](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 網路頻寬是有限的資源。 減少回應的大小通常會增加應用程式的回應性，通常會大幅提升。 減少承載大小的其中一種方法是壓縮應用程式的回應。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>使用回應壓縮中介軟體的時機
 
@@ -73,7 +71,7 @@ ms.locfileid: "77114805"
 | `Content-Type`     | 指定內容的 MIME 類型。 每個回應都應該指定其 `Content-Type`。 中介軟體會檢查此值，以判斷是否應該壓縮回應。 中介軟體會指定一組可編碼的[預設 MIME 類型](#mime-types)，但您可以取代或加入 MIME 類型。 |
 | `Vary`             | 當伺服器以 [`Accept-Encoding`] 的值傳送至 [用戶端] 和 [proxy] 時，`Vary` 標頭會向用戶端或 proxy 指出它應該根據要求的 `Accept-Encoding` 標頭值來快取（改變）回應。 傳回具有 `Vary: Accept-Encoding` 標頭之內容的結果，是會分別快取壓縮和未壓縮的回應。 |
 
-使用[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples)探索回應壓縮中介軟體的功能。 此範例說明：
+使用[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples)探索回應壓縮中介軟體的功能。 此範例說明：
 
 * 使用 Gzip 和自訂壓縮提供者來壓縮應用程式回應。
 * 如何將 MIME 類型新增至 MIME 類型的預設清單以進行壓縮。
@@ -268,7 +266,7 @@ public void ConfigureServices(IServiceCollection services)
 
 網路頻寬是有限的資源。 減少回應的大小通常會增加應用程式的回應性，通常會大幅提升。 減少承載大小的其中一種方法是壓縮應用程式的回應。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>使用回應壓縮中介軟體的時機
 
@@ -319,7 +317,7 @@ public void ConfigureServices(IServiceCollection services)
 | `Content-Type`     | 指定內容的 MIME 類型。 每個回應都應該指定其 `Content-Type`。 中介軟體會檢查此值，以判斷是否應該壓縮回應。 中介軟體會指定一組可編碼的[預設 MIME 類型](#mime-types)，但您可以取代或加入 MIME 類型。 |
 | `Vary`             | 當伺服器以 [`Accept-Encoding`] 的值傳送至 [用戶端] 和 [proxy] 時，`Vary` 標頭會向用戶端或 proxy 指出它應該根據要求的 `Accept-Encoding` 標頭值來快取（改變）回應。 傳回具有 `Vary: Accept-Encoding` 標頭之內容的結果，是會分別快取壓縮和未壓縮的回應。 |
 
-使用[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples)探索回應壓縮中介軟體的功能。 此範例說明：
+使用[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples)探索回應壓縮中介軟體的功能。 此範例說明：
 
 * 使用 Gzip 和自訂壓縮提供者來壓縮應用程式回應。
 * 如何將 MIME 類型新增至 MIME 類型的預設清單以進行壓縮。
@@ -513,7 +511,7 @@ public void ConfigureServices(IServiceCollection services)
 
 網路頻寬是有限的資源。 減少回應的大小通常會增加應用程式的回應性，通常會大幅提升。 減少承載大小的其中一種方法是壓縮應用程式的回應。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>使用回應壓縮中介軟體的時機
 
@@ -564,7 +562,7 @@ public void ConfigureServices(IServiceCollection services)
 | `Content-Type`     | 指定內容的 MIME 類型。 每個回應都應該指定其 `Content-Type`。 中介軟體會檢查此值，以判斷是否應該壓縮回應。 中介軟體會指定一組可編碼的[預設 MIME 類型](#mime-types)，但您可以取代或加入 MIME 類型。 |
 | `Vary`             | 當伺服器以 [`Accept-Encoding`] 的值傳送至 [用戶端] 和 [proxy] 時，`Vary` 標頭會向用戶端或 proxy 指出它應該根據要求的 `Accept-Encoding` 標頭值來快取（改變）回應。 傳回具有 `Vary: Accept-Encoding` 標頭之內容的結果，是會分別快取壓縮和未壓縮的回應。 |
 
-使用[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples)探索回應壓縮中介軟體的功能。 此範例說明：
+使用[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples)探索回應壓縮中介軟體的功能。 此範例說明：
 
 * 使用 Gzip 和自訂壓縮提供者來壓縮應用程式回應。
 * 如何將 MIME 類型新增至 MIME 類型的預設清單以進行壓縮。

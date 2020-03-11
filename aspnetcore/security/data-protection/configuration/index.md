@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/12/2017
 uid: security/data-protection/configuration/index
 ms.openlocfilehash: d6b87f8c0b20572929cf7449379c6fa3ade123ad
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883003"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667955"
 ---
 # <a name="data-protection-configuration-in-aspnet-core"></a>ASP.NET Core 的資料保護組態
 

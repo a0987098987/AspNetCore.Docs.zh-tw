@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/25/2018
 uid: fundamentals/metapackage
-ms.openlocfilehash: 91f39fc59e5682fb19f8cbc6e9ebe5b30e5dcf3c
-ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.openlocfilehash: e47f583d0fa75bdeb26b669303747a70619117c1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219143"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663146"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>ASP.NET Core 2.0 的 Microsoft.AspNetCore.All 中繼套件
 
 ::: moniker range=">= aspnetcore-3.0"
 
-`Microsoft.AspNetCore.All`中繼套件不包含在 ASP.NET Core 3.0 和更新版本中。 如需詳細資訊，請參閱 <<c0> [ 此 GitHub 問題](https://github.com/aspnet/Announcements/issues/314)。
+`Microsoft.AspNetCore.All` 中繼套件不包含在 ASP.NET Core 3.0 和更新版本中。 如需詳細資訊，請參閱[這個 GitHub 問題](https://github.com/aspnet/Announcements/issues/314) \(英文\)。
 
 ::: moniker-end
 
@@ -47,7 +47,7 @@ ms.locfileid: "71219143"
 
 ## <a name="implicit-versioning"></a>隱含的版本設定
 
-在 ASP.NET Core 2.1 或更新版本中，您可指定不含版本的 `Microsoft.AspNetCore.All` 套件參考。 當未指定版本時，SDK (`Microsoft.NET.Sdk.Web`) 會指定隱含的版本。 建議依賴 SDK 指定的隱含版本，而不要明確設定套件參考的版本號碼。 如果您對此方法有疑問，請在 [Discussion for the Microsoft.AspNetCore.App implicit version](https://github.com/aspnet/AspNetCore.Docs/issues/6430) (Microsoft.AspNetCore.App 隱含版本討論區) 留下 GitHub 意見。
+在 ASP.NET Core 2.1 或更新版本中，您可指定不含版本的 `Microsoft.AspNetCore.All` 套件參考。 當未指定版本時，SDK (`Microsoft.NET.Sdk.Web`) 會指定隱含的版本。 建議依賴 SDK 指定的隱含版本，而不要明確設定套件參考的版本號碼。 如果您對此方法有疑問，請在 [Discussion for the Microsoft.AspNetCore.App implicit version](https://github.com/dotnet/AspNetCore.Docs/issues/6430) (Microsoft.AspNetCore.App 隱含版本討論區) 留下 GitHub 意見。
 
 可攜式應用程式的隱含版本會設定為 `major.minor.0`。 共用架構向前復原機制會在已安裝共用架構中的最新相容版本上，執行應用程式。 為了保證開發、測試和生產均使用相同版本，請務必在所有環境中安裝相同版本的共用架構。 針對獨立應用程式，隱含版本號碼會設定為已安裝 SDK 隨附共用架構的 `major.minor.patch`。
 
@@ -55,7 +55,7 @@ ms.locfileid: "71219143"
 
 在專案檔中，專案的 SDK 必須設定為 `Microsoft.NET.Sdk.Web`，才能使用 `Microsoft.AspNetCore.All` 的隱含版本。 當指定 `Microsoft.NET.Sdk` SDK 時 (專案檔頂端的 `<Project Sdk="Microsoft.NET.Sdk">`)，就會產生以下警告：
 
-*警告 NU1604：專案相依性 Microsoft.AspNetCore.All 不包含界限下限 (含)。請在相依性版本包含下限，以確保還原結果一致。*
+*警告 NU1604：專案相依性 AspNetCore。全部不包含內含下限。請在相依性版本中包含下限，以確保一致的還原結果。*
 
 這是.NET Core 2.1 SDK 的已知的問題，並將於 .NET Core 2.2 SDK 中修正。
 

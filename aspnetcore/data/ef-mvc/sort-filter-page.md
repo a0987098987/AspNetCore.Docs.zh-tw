@@ -1,27 +1,27 @@
 ---
-title: 教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Core
+title: 教學課程：使用 EF Core 新增排序、篩選和分頁 ASP.NET MVC
 description: 在本教學課程中，您要將排序、篩選和分頁功能新增至 Students 的 [索引] 頁面。 此外，還要建立將執行簡易群組的頁面。
 author: rick-anderson
 ms.author: riande
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: c4d50b72c5508d52b17c6754b6d8e77c1a3903b6
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 99bf9ed59b47e8fbba838b97c3e032b9808f6a94
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259351"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657133"
 ---
-# <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>教學課程：新增排序、篩選及分頁 - ASP.NET MVC 搭配 EF Core
+# <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>教學課程：使用 EF Core 新增排序、篩選和分頁 ASP.NET MVC
 
 在上一個教學課程中，您已針對學生實體的基本 CRUD 作業實作一組網頁。 在本教學課程中，您要將排序、篩選和分頁功能新增至 Students 的 [索引] 頁面。 此外，還要建立將執行簡易群組的頁面。
 
 下圖顯示當您完成時的頁面外觀。 資料行標題是使用者可以按一下以依據該資料行排序的連結。 重覆按一下資料行標題，可切換遞增和遞減排序次序。
 
-![Students [索引] 頁面](sort-filter-page/_static/paging.png)
+![Students 索引頁面](sort-filter-page/_static/paging.png)
 
-在本教學課程中，您已：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 新增資料行排序連結
@@ -31,7 +31,7 @@ ms.locfileid: "72259351"
 > * 新增分頁連結
 > * 建立 [關於] 頁面
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [實作 CRUD 功能](crud.md)
 
@@ -45,7 +45,7 @@ ms.locfileid: "72259351"
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
 
-此程式碼會從 URL 中的查詢字串接收 `sortOrder` 參數。 查詢字串值是由 ASP.NET Core MVC 提供，作為動作方法的參數。 該參數是 "Name" 或 "Date" 的字串，後面可選擇性地接著底線和字串 "desc" 來指定遞減順序。 預設的排序次序為遞增。
+此程式碼會從 URL 中的查詢字串接收 `sortOrder` 參數。 查詢字串值是由 ASP.NET Core MVC 提供，作為動作方法的參數。 該參數是 "Name" 或 "Date" 的字串，後面可選擇性地接著底線和字串 "desc" 來指定遞減順序。 預設排序順序為遞增。
 
 第一次要求 [索引] 頁面時，沒有任何查詢字串。 學生會依姓氏的遞增順序顯示，這是 `switch` 陳述式中失敗案例所建立的預設值。 使用者按一下資料行標題超連結時，適當的 `sortOrder` 值將會在查詢字串值中提供。
 
@@ -53,7 +53,7 @@ ms.locfileid: "72259351"
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly&highlight=3-4)]
 
-這些是三元陳述式。 第一個陳述式指定當 `sortOrder` 參數為 null 或是空的時，NameSortParm 應該設定為 "name_desc"；否則它應該設定為空字串。 這兩個陳述式讓檢視能夠設定資料行標題超連結，如下所示：
+這些是三元陳述式。 第一個陳述式指定當 `sortOrder` 參數為 null 或是空的時，NameSortParm 應該設定為 "name_desc"；否則它應該設定為空字串。 這兩個陳述式會啟動設定資料行標題超連結的檢視，如下所示：
 
 |  目前排序次序  | 姓氏超連結 | 日期超連結 |
 |:--------------------:|:-------------------:|:--------------:|
@@ -62,11 +62,11 @@ ms.locfileid: "72259351"
 | 日期遞增       | ascending           | descending     |
 | 日期遞減      | ascending           | ascending      |
 
-此方法使用 LINQ to Entities 來指定排序所依據的資料行。 此程式碼會在 switch 陳述式之前建立 `IQueryable` 變數、在 switch 陳述式中修改它，並在 `switch` 陳述式之後呼叫 `ToListAsync` 方法。 當您建立和修改 `IQueryable` 變數時，沒有查詢會傳送至資料庫。 在您呼叫 `ToListAsync` 等方法以將 `IQueryable` 物件轉換成集合之前，不會執行查詢。 因此，此程式碼會產生一個直到 `return View` 陳述式才會執行的單一查詢。
+這個方法會使用 LINQ to Entities 來指定排序所依據的資料行。 此程式碼會在 switch 陳述式之前建立 `IQueryable` 變數、在 switch 陳述式中修改它，並在 `ToListAsync` 陳述式之後呼叫 `switch` 方法。 當您建立和修改 `IQueryable` 變數時，沒有查詢會傳送至資料庫。 在您呼叫 `IQueryable` 等方法以將 `ToListAsync` 物件轉換成集合之前，不會執行查詢。 因此，此程式碼會產生一個直到 `return View` 陳述式才會執行的單一查詢。
 
 此程式碼可取得使用大量資料行數目的詳細資訊。 [本系列中的最後一個教學課程](advanced.md#dynamic-linq)示範如何撰寫程式碼，讓您以字串變數傳遞 `OrderBy` 資料行的名稱。
 
-### <a name="add-column-heading-hyperlinks-to-the-student-index-view"></a>將資料行標題超連結新增至學生的 [索引] 檢視
+### <a name="add-column-heading-hyperlinks-to-the-student-index-view"></a>將資料行標題超連結新增至 Student [索引] 檢視
 
 以下列程式碼取代 *Views/Students/Index.cshtml* 中的程式碼，以新增資料行標題超連結。 變更的行已醒目提示。
 
@@ -91,23 +91,23 @@ ms.locfileid: "72259351"
 您已將 `searchString` 參數新增至 `Index` 方法。 從將新增至 [索引] 檢視的文字方塊中接收搜尋字串值。 您也已在 LINQ 陳述式中新增 where 子句，該子句只會選取其名字或姓氏包含搜尋字串的學生。 唯有當具有要搜尋的值時，才會執行新增 where 子句的陳述式。
 
 > [!NOTE]
-> 在這裡，您可以在 `IQueryable` 物件上呼叫 `Where` 方法，而篩選將會在伺服器上處理。 在某些情況下，您可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 (例如，假設您變更了 `_context.Students` 的參考，以便它參考傳回 `IEnumerable` 集合的存放庫方法，而不是參考 EF `DbSet`)。結果通常都是一樣的，但在某些情況下可能會不同。
+> 在這裡，您可以在 `Where` 物件上呼叫 `IQueryable` 方法，而篩選將會在伺服器上處理。 在某些情況下，您可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 （例如，假設您將參考變更為 `_context.Students`，而不是使用 EF `DbSet` 它會參考傳回 `IEnumerable` 集合的存放庫方法）。結果通常會相同，但在某些情況下可能會不同。
 >
->例如，.NET Framework 實作的 `Contains` 方法預設會執行區分大小寫的比較，但在 SQL Server 中，這取決於 SQL Server 執行個體的定序設定。 該設定預設為不區分大小寫。 您可以呼叫 `ToUpper` 方法以使測試明確不區分大小寫：*Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())* 。 如果您稍後變更程式碼，以使用傳回 `IEnumerable` 集合 (而不是 `IQueryable` 物件) 的存放庫，這會確保結果保持不變。 (當您在 `IEnumerable` 集合上呼叫 `Contains` 方法時，將取得 .NET Framework 實作；當您在 `IQueryable` 物件上呼叫它時，則會取得資料庫提供者實作。)不過，此解決方案會對效能帶來負面影響。 `ToUpper` 程式碼會將一個函式置於 TSQL SELECT 陳述式的 WHERE 子句中。 這會防止最佳化工具使用索引。 假設 SQL 大部分安裝為不區分大小寫，最好避免使用 `ToUpper` 程式碼，直到您移轉至區分大小寫的資料存放區為止。
+>例如，.NET Framework 實作的 `Contains` 方法預設會執行區分大小寫的比較，但在 SQL Server 中，這取決於 SQL Server 執行個體的定序設定。 該設定預設為不區分大小寫。 您可以呼叫 `ToUpper` 方法，使測試明確地不區分大小寫：*Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())* 。 如果您稍後變更程式碼，以使用傳回 `IEnumerable` 集合 (而不是 `IQueryable` 物件) 的存放庫，這會確保結果保持不變。 （當您在 `IEnumerable` 集合上呼叫 `Contains` 方法時，會取得 .NET Framework 的實值。當您在 `IQueryable` 物件上呼叫它時，您會取得資料庫提供者的執行）。不過，此解決方案的效能會有負面影響。 `ToUpper` 程式碼會將一個函式置於 TSQL SELECT 陳述式的 WHERE 子句中。 這會防止最佳化工具使用索引。 假設 SQL 大部分安裝為不區分大小寫，最好避免使用 `ToUpper` 程式碼，直到您移轉至區分大小寫的資料存放區為止。
 
-### <a name="add-a-search-box-to-the-student-index-view"></a>將搜尋方塊新增至學生的 [索引] 檢視
+### <a name="add-a-search-box-to-the-student-index-view"></a>將 Search Box 新增至 Student [索引] 檢視
 
 在 *Views/Student/Index.cshtml* 中，於開始表格標記之前立即新增醒目提示的程式碼，以建立標題、文字方塊及 [搜尋] 按鈕。
 
 [!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
-此程式碼會使用 `<form>` [標籤協助程式](xref:mvc/views/tag-helpers/intro) 來新增搜尋文字方塊和按鈕。 `<form>` 標籤協助程式預設會使用 POST 提交表單資料，這表示參數會以 HTTP 訊息本文傳遞，而不是以 URL 作為查詢字串傳遞。 當您指定 HTTP GET 時，表單資料會以 URL 中作為查詢字串傳遞，這可讓使用者為該 URL 加上書籤。 W3C 指導方針建議，只有在動作不會產生更新時才應使用 GET。
+此程式碼[使用 `<form>` 卷](xref:mvc/views/tag-helpers/intro)標協助程式來新增搜尋文字方塊和按鈕。 `<form>` 標籤協助程式預設會使用 POST 提交表單資料，這表示參數會以 HTTP 訊息本文傳遞，而不是以 URL 作為查詢字串傳遞。 當您指定 HTTP GET 時，表單資料會以 URL 中作為查詢字串傳遞，這可讓使用者為該 URL 加上書籤。 W3C 指導方針建議，只有在動作不會產生更新時才應使用 GET。
 
 執行應用程式，選取 [Students] 索引標籤，輸入搜尋字串，然後按一下 [搜尋] 以確認篩選可以運作。
 
 ![含篩選的 Students [索引] 頁面](sort-filter-page/_static/filtering.png)
 
-請注意，URL 中包含了搜尋字串。
+請注意 URL 中包含了搜尋字串。
 
 ```html
 http://localhost:5813/Students?SearchString=an
@@ -119,15 +119,15 @@ http://localhost:5813/Students?SearchString=an
 
 ## <a name="add-paging-to-students-index"></a>為 Students 索引新增分頁
 
-若要將分頁新增至 Students 的 [索引] 頁面，您要建立使用 `Skip` 和 `Take` 陳述式的 `PaginatedList` 類別來篩選伺服器上的資料，而不是一直擷取資料表的所有資料列。 然後，您要在 `Index` 方法中進行其他變更，並將分頁按鈕新增至 `Index` 檢視。 下圖顯示分頁按鈕。
+若要將分頁新增至 Students 的 [索引] 頁面，您要建立使用 `PaginatedList` 和 `Skip` 陳述式的 `Take` 類別來篩選伺服器上的資料，而不是一直擷取資料表的所有資料列。 然後，您要在 `Index` 方法中進行其他變更，並將分頁按鈕新增至 `Index` 檢視。 下圖顯示分頁按鈕。
 
-![含分頁連結的 Students [索引] 頁面](sort-filter-page/_static/paging.png)
+![有分頁連結的 Students [索引] 頁面](sort-filter-page/_static/paging.png)
 
 在專案資料夾中，建立 `PaginatedList.cs`，然後以下列程式碼取代範本程式碼。
 
 [!code-csharp[](intro/samples/cu/PaginatedList.cs)]
 
-此程式碼中的 `CreateAsync` 方法會採用頁面大小和頁面數，並會將適當的 `Skip` 和 `Take` 陳述式套用至 `IQueryable`。 在 `IQueryable` 上呼叫 `ToListAsync` 時，會傳回僅包含所要求頁面的清單。 `HasPreviousPage` 和 `HasNextPage` 屬性可用來啟用或停用 [上一頁] 和 [下一頁] 分頁按鈕。
+此程式碼中的 `CreateAsync` 方法會採用頁面大小和頁面數，並會將適當的 `Skip` 和 `Take` 陳述式套用至 `IQueryable`。 在 `ToListAsync` 上呼叫 `IQueryable` 時，會傳回僅包含所要求頁面的清單。 `HasPreviousPage` 和 `HasNextPage` 屬性可用來啟用或停用 [上一頁] 和 [下一頁] 分頁按鈕。
 
 `CreateAsync` 方法用來建立 `PaginatedList<T>` 物件而不是建構函式，因為建構函式無法執行非同步程式碼。
 
@@ -176,7 +176,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 ## <a name="add-paging-links"></a>新增分頁連結
 
-在 *Views/Students/Index.cshtml* 中，以下列程式碼取代現有程式碼。 所做的變更已醒目提示。
+在 *Views/Students/Index.cshtml* 中，以下列程式碼取代現有程式碼。 所做的變更已醒目標示。
 
 [!code-html[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
 
@@ -188,7 +188,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-currentFilter ="@ViewData["CurrentFilter"]">Enrollment Date</a>
 ```
 
-分頁按鈕會透過標籤協助程式來顯示：
+分頁按鈕會由標籤協助程式來顯示：
 
 ```html
 <a asp-action="Index"
@@ -202,7 +202,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 執行應用程式並移至 Students 頁面。
 
-![含分頁連結的 Students [索引] 頁面](sort-filter-page/_static/paging.png)
+![有分頁連結的 Students [索引] 頁面](sort-filter-page/_static/paging.png)
 
 以不同排序次序按一下分頁連結，以確定分頁運作正常。 然後輸入搜尋字串並再次嘗試分頁，以確認分頁的排序和篩選能正確運作。
 
@@ -236,7 +236,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
-LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組中的實體數目、將結果儲存在 `EnrollmentDateGroup` 檢視模型物件的集合中。
+LINQ 陳述式會以註冊日期將學生實體組成群組、計算每個群組中的實體數目、將結果儲存在 `EnrollmentDateGroup` 檢視模型物件中的集合。
 
 ### <a name="create-the-about-view"></a>建立 About 檢視
 
@@ -248,11 +248,11 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[下載或檢視已完成的應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 新增資料行排序連結

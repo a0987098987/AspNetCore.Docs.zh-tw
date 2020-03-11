@@ -1,47 +1,47 @@
 ---
-title: 工具和下載-使用 ASP.NET Core 和 Azure 的 DevOps
+title: 工具和下載-使用 ASP.NET Core 和 Azure DevOps
 author: CamSoper
-description: 工具和下載所需的 ASP.NET Core 與 Azure 的 DevOps。
+description: 使用 ASP.NET Core 和 Azure 進行 DevOps 所需的工具和下載。
 ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/tools-and-downloads
 ms.openlocfilehash: 25ce311373b0aaddfa3bc2728c39e503acbca69d
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080630"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659485"
 ---
-# <a name="tools-and-downloads"></a>工具和下載
+# <a name="tools-and-downloads"></a>工具及下載
 
-Azure 有數個介面，來佈建和管理資源，例如[Azure 入口網站](https://portal.azure.com)， [Azure CLI](/cli/azure/)， [Azure PowerShell](/powershell/azure/overview)， [Azure 雲端Shell](https://shell.azure.com/bash)，和 Visual Studio。 本指南會採用最簡單的方法，並使用 Azure Cloud Shell 中盡可能減少所需的步驟。 不過，必須使用 Azure 入口網站的某些部分。
+Azure 提供數個介面來布建和管理資源，例如[Azure 入口網站](https://portal.azure.com)、 [Azure CLI](/cli/azure/)、 [Azure PowerShell](/powershell/azure/overview)、 [Azure Cloud Shell](https://shell.azure.com/bash)和 Visual Studio。 本指南會採用極簡方法，並盡可能使用 Azure Cloud Shell，以減少所需的步驟。 不過，Azure 入口網站必須用於某些部分。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-以下的訂用帳戶是必要的：
+需要下列訂用帳戶：
 
-* Azure&mdash;如果您沒有帳戶，請[取得免費試用](https://azure.microsoft.com/free/)。
-* Azure 的 DevOps 服務&mdash;第 4 章中建立您的 Azure DevOps 的訂用帳戶和組織。
-* GitHub&mdash;如果您沒有帳戶，請[免費註冊](https://github.com/join)。
+* Azure &mdash; 如果您沒有帳戶，請[取得免費試用版](https://azure.microsoft.com/free/)。
+* Azure DevOps Services &mdash; 您的 Azure DevOps 訂用帳戶和組織會在第4章中建立。
+* GitHub &mdash; 如果您沒有帳戶，請[免費註冊](https://github.com/join)。
 
-下列工具是必要的：
+需要下列工具：
 
-* [Git](https://git-scm.com/downloads) &mdash; Git 有基本了解建議您使用本指南中。 檢閱[Git 文件](https://git-scm.com/doc)，特別[git 遠端](https://git-scm.com/docs/git-remote)並[git 推送](https://git-scm.com/docs/git-push)。
-* [.NET core SDK](https://www.microsoft.com/net/download/) &mdash; 2.1.300 版或更新版本才可建置並執行範例應用程式。 如果 Visual Studio 會隨 **.NET Core 跨平台開發**工作負載中，.NET Core SDK 已安裝。
+* [Git](https://git-scm.com/downloads) &mdash; 在本指南中建議使用 git 的基本瞭解。 請參閱[git 檔](https://git-scm.com/doc)，特別是[git 遠端](https://git-scm.com/docs/git-remote)和[git push](https://git-scm.com/docs/git-push)。
+* 需要[.NET Core SDK](https://www.microsoft.com/net/download/) &mdash; 2.1.300 或更新版本，才能建立並執行範例應用程式。 如果 Visual Studio 與 **.Net Core 跨平臺開發**工作負載一起安裝，則已安裝 .NET Core SDK。
 
-    確認您的.NET Core SDK 安裝。 開啟命令殼層中，然後執行下列命令：
+    確認您的 .NET Core SDK 安裝。 開啟命令 shell，然後執行下列命令：
 
     ```dotnetcli
     dotnet --version
     ```
 
-## <a name="recommended-tools-windows-only"></a>建議的工具 (僅 Windows)
+## <a name="recommended-tools-windows-only"></a>建議的工具（僅限 Windows）
 
-* [Visual Studio](https://visualstudio.microsoft.com)的功能強大的 Azure 工具提供 GUI 來執行大部分的本指南中所述的功能。 任何版本的 Visual Studio 將會運作，包括免費的 Visual Studio Community Edition。 教學課程會示範使用和不使用 Visual Studio 的開發、 部署及 DevOps 寫入。
+* [Visual Studio](https://visualstudio.microsoft.com)的健全 Azure 工具提供 GUI，可用於本指南中所述的大部分功能。 任何版本的 Visual Studio 都可以使用，包括免費的 Visual Studio Community 版本。 這些教學課程的撰寫是為了示範開發、部署和 DevOps，以及是否 Visual Studio。
 
-  確認 Visual Studio 具有下列[工作負載](/visualstudio/install/modify-visual-studio)安裝：
+  確認 Visual Studio 已安裝下列[工作負載](/visualstudio/install/modify-visual-studio)：
 
-  * ASP.NET 與網頁程式開發
+  * ASP.NET 和 Web 開發
   * Azure 開發
   * .NET Core 跨平台開發

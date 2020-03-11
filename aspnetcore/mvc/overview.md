@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 02/12/2020
 uid: mvc/overview
 ms.openlocfilehash: 2911399f6ed4e14345171c908c4306b9c3e33805
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447408"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658428"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -161,7 +161,7 @@ ASP.NET Core 內建[相依性插入 (DI)](../fundamentals/dependency-injection.m
 </html>
 ```
 
-### <a name="filters"></a>篩選器。
+### <a name="filters"></a>篩選器
 
 [篩選](controllers/filters.md)可協助開發人員封裝交叉關注，例如例外狀況處理或授權。 篩選可執行動作方法的自訂處理前後邏輯，並可設定為在指定要求之執行管線內的特定時間點執行。 篩選可當作屬性套用至控制器或動作 (也可全域執行)。 此架構隨附數個篩選 (例如`Authorize`)。 `[Authorize]` 是用來建立 MVC 授權篩選的屬性。
 

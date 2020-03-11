@@ -1,28 +1,28 @@
 ---
 title: 上傳 ASP.NET Core 中的檔案
-author: guardrex
+author: rick-anderson
 description: 如何使用模型繫結和資料流在 ASP.NET Core MVC 上傳檔案。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 56fd26c1864089558f5cd89f693dc86ea30c3331
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: fc71c39dd1aa70e6b092799fec00bd7bf66703e8
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172464"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664826"
 ---
 # <a name="upload-files-in-aspnet-core"></a>上傳 ASP.NET Core 中的檔案
 
-作者： [Luke Latham](https://github.com/guardrex)、 [Steve Smith](https://ardalis.com/)和[Rutger 風暴](https://github.com/rutix)
+作者： [Steve Smith](https://ardalis.com/)和[Rutger 風暴](https://github.com/rutix)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對較大的檔案使用緩衝的串流處理。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>安全性考量
 
@@ -183,7 +183,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 若要針對[不支援 FETCH API](https://caniuse.com/#feat=fetch)的用戶端，以 JavaScript 執行表單 POST，請使用下列其中一種方法：
 
 * 使用提取 Polyfill （例如，[fetch [Polyfill （github/fetch）]](https://github.com/github/fetch)）。
-* 使用 `XMLHttpRequest`。 例如，
+* 使用 `XMLHttpRequest`。 例如：
 
   ```javascript
   <script>
@@ -226,7 +226,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> 到目前為止所提供的範例並不考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
+> 到目前為止所提供的範例並不考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
 >
 > * [安全性考量](#security-considerations)
 > * [驗證](#validation)
@@ -242,7 +242,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 > [!NOTE]
 > 系結符合依名稱的表單檔案。 例如，`<input type="file" name="formFile">` 中的 HTML `name` 值必須符合C#參數/屬性系結（`FormFile`）。 如需詳細資訊，請參閱[Match name 屬性值與 POST 方法的參數名稱](#match-name-attribute-value-to-parameter-name-of-post-method)一節。
 
-下列範例︰
+下列範例將：
 
 * 迴圈一或多個已上傳的檔案。
 * 會使用[GetTempFileName](xref:System.IO.Path.GetTempFileName*)來傳回檔案的完整路徑，包括檔案名。 
@@ -270,7 +270,7 @@ public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> files)
     // Process uploaded files
     // Don't rely on or trust the FileName property without validation.
 
-    return Ok(new { count = files.Count, size, filePath });
+    return Ok(new { count = files.Count, size });
 }
 ```
 
@@ -397,7 +397,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 >
 > 請勿依賴或信任 <xref:Microsoft.AspNetCore.Http.IFormFile> 的 `FileName` 屬性，而不進行驗證。 `FileName` 屬性只能用於顯示用途，而且只能用於 HTML 編碼。
 >
-> 提供的範例不會考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
+> 提供的範例不會考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
 >
 > * [安全性考量](#security-considerations)
 > * [驗證](#validation)
@@ -456,7 +456,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ### <a name="file-extension-validation"></a>副檔名驗證
 
-已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如，
+已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如：
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -559,7 +559,7 @@ if (formFile.Length > _fileSizeLimit)
 
 在張貼表單資料或直接使用 JavaScript `FormData` 的非 Razor 表單中，在表單的元素或 `FormData` 中指定的名稱必須符合控制器動作中參數的名稱。
 
-在下列範例中：
+在下例中︰
 
 * 使用 `<input>` 元素時，`name` 屬性會設定為 `battlePlans`的值：
 
@@ -751,7 +751,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對較大的檔案使用緩衝的串流處理。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>安全性考量
 
@@ -912,7 +912,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 若要針對[不支援 FETCH API](https://caniuse.com/#feat=fetch)的用戶端，以 JavaScript 執行表單 POST，請使用下列其中一種方法：
 
 * 使用提取 Polyfill （例如，[fetch [Polyfill （github/fetch）]](https://github.com/github/fetch)）。
-* 使用 `XMLHttpRequest`。 例如，
+* 使用 `XMLHttpRequest`。 例如：
 
   ```javascript
   <script>
@@ -955,7 +955,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> 到目前為止所提供的範例並不考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
+> 到目前為止所提供的範例並不考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
 >
 > * [安全性考量](#security-considerations)
 > * [驗證](#validation)
@@ -971,7 +971,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 > [!NOTE]
 > 系結符合依名稱的表單檔案。 例如，`<input type="file" name="formFile">` 中的 HTML `name` 值必須符合C#參數/屬性系結（`FormFile`）。 如需詳細資訊，請參閱[Match name 屬性值與 POST 方法的參數名稱](#match-name-attribute-value-to-parameter-name-of-post-method)一節。
 
-下列範例︰
+下列範例將：
 
 * 迴圈一或多個已上傳的檔案。
 * 會使用[GetTempFileName](xref:System.IO.Path.GetTempFileName*)來傳回檔案的完整路徑，包括檔案名。 
@@ -999,7 +999,7 @@ public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> files)
     // Process uploaded files
     // Don't rely on or trust the FileName property without validation.
 
-    return Ok(new { count = files.Count, size, filePath });
+    return Ok(new { count = files.Count, size });
 }
 ```
 
@@ -1126,7 +1126,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 >
 > 請勿依賴或信任 <xref:Microsoft.AspNetCore.Http.IFormFile> 的 `FileName` 屬性，而不進行驗證。 `FileName` 屬性只能用於顯示用途，而且只能用於 HTML 編碼。
 >
-> 提供的範例不會考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
+> 提供的範例不會考慮安全性考慮。 下列各節和[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)會提供其他資訊：
 >
 > * [安全性考量](#security-considerations)
 > * [驗證](#validation)
@@ -1185,7 +1185,7 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 ### <a name="file-extension-validation"></a>副檔名驗證
 
-已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如，
+已上傳檔案的延伸模組應針對允許的延伸模組清單進行檢查。 例如：
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -1288,7 +1288,7 @@ if (formFile.Length > _fileSizeLimit)
 
 在張貼表單資料或直接使用 JavaScript `FormData` 的非 Razor 表單中，在表單的元素或 `FormData` 中指定的名稱必須符合控制器動作中參數的名稱。
 
-在下列範例中：
+在下例中︰
 
 * 使用 `<input>` 元素時，`name` 屬性會設定為 `battlePlans`的值：
 

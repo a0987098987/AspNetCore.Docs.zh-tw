@@ -9,26 +9,26 @@ ms.date: 01/14/2020
 no-loc:
 - SignalR
 uid: signalr/dotnet-client
-ms.openlocfilehash: 39d9eccdb1e0457b177e75e6f94f3dd185b0093d
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: a9583c9d6df52ff81a402df03e663ccc3847e51f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146312"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660038"
 ---
-# <a name="aspnet-core-opno-locsignalr-net-client"></a>ASP.NET Core SignalR .NET 用戶端
+# <a name="aspnet-core-signalr-net-client"></a>ASP.NET Core SignalR .NET 用戶端
 
 ASP.NET Core SignalR .NET 用戶端程式庫可讓您從 .NET 應用程式與 SignalR 中樞進行通訊。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 本文中的程式碼範例是使用 ASP.NET Core SignalR .NET 用戶端的 WPF 應用程式。
 
-## <a name="install-the-opno-locsignalr-net-client-package"></a>安裝 SignalR .NET 用戶端封裝
+## <a name="install-the-signalr-net-client-package"></a>安裝 SignalR .NET 用戶端封裝
 
-[AspNetCore.SignalR。需要用戶端](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)封裝，.net 用戶端才能連接到 SignalR 中樞。
+.NET 用戶端必須要有[AspNetCore. SignalR. Client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)封裝，才能連接到 SignalR hub。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 若要安裝用戶端程式庫，請在 [**套件管理員主控台**] 視窗中執行下列命令：
 
@@ -36,7 +36,7 @@ ASP.NET Core SignalR .NET 用戶端程式庫可讓您從 .NET 應用程式與 Si
 Install-Package Microsoft.AspNetCore.SignalR.Client
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 若要安裝用戶端程式庫，請在命令 shell 中執行下列命令：
 

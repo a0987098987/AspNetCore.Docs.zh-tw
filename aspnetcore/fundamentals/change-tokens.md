@@ -1,27 +1,25 @@
 ---
 title: 在 ASP.NET Core 中使用變更權杖來偵測變更
-author: guardrex
+author: rick-anderson
 description: 了解如何使用變更權杖來追蹤變更。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 10/07/2019
 uid: fundamentals/change-tokens
-ms.openlocfilehash: bb30d7a4c7dc82200821c60a49c314b246562111
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 70451e219f1295b854e2f84aac55f0cfd1786b19
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007204"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656342"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>在 ASP.NET Core 中使用變更權杖來偵測變更
-
-作者：[Luke Latham](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 「變更權杖」是用來追蹤狀態變更的一般用途低階建置組塊。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>IChangeToken 介面
 
@@ -43,7 +41,7 @@ ms.locfileid: "72007204"
 * `Func<IChangeToken>` 會產生權杖。
 * 在權杖變更時呼叫 `Action`。
 
-[ChangeToken.OnChange\<TState>(Func\<IChangeToken>, Action\<TState>, TState)](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*) 多載接受傳遞到權杖取用者 `Action` 的額外 `TState` 參數。
+[ChangeToken.OnChange\<TState>(Func\<IChangeToken>, Action\<TState>, TState)](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*) 多載接受傳遞到權杖取用者 `TState` 的額外 `Action` 參數。
 
 `OnChange` 會傳回 <xref:System.IDisposable>。 呼叫 <xref:System.IDisposable.Dispose*> 將阻止權杖接聽其他變更和釋出權杖的資源。
 
@@ -53,13 +51,13 @@ ms.locfileid: "72007204"
 
 * 針對監視檔案變更，<xref:Microsoft.Extensions.FileProviders.IFileProvider> 的 <xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*> 方法會針對要監看的指定檔案或資料夾建立 `IChangeToken`。
 * `IChangeToken` 權杖可新增至快取項目，以在變更時觸發快取收回。
-* 針對 `TOptions` 變更，<xref:Microsoft.Extensions.Options.IOptionsMonitor`1> 的預設 <xref:Microsoft.Extensions.Options.OptionsMonitor`1> 實作具有會接受一或多個 <xref:Microsoft.Extensions.Options.IOptionsChangeTokenSource`1> 執行個體的多載。 每個執行個體會傳回 `IChangeToken`，以登錄變更通知回呼來追蹤選項變更。
+* 針對 `TOptions` 變更，<xref:Microsoft.Extensions.Options.OptionsMonitor`1> 的預設 <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> 實作具有會接受一或多個 <xref:Microsoft.Extensions.Options.IOptionsChangeTokenSource`1> 執行個體的多載。 每個執行個體會傳回 `IChangeToken`，以登錄變更通知回呼來追蹤選項變更。
 
 ## <a name="monitor-for-configuration-changes"></a>監視設定變更
 
 ASP.NET Core 範本預設使用 [JSON 組態檔](xref:fundamentals/configuration/index#json-configuration-provider) (*appsettings.json*、*appsettings.Development.json* 和 *appsettings.Production.json*) 來載入應用程式組態設定。
 
-這些檔案是在接受 `reloadOnChange` 參數的 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 擴充方法上使用 [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) 擴充方法來設定的。 `reloadOnChange` 指出組態是否應該在檔案變更時重新載入。 此設定會出在 <xref:Microsoft.Extensions.Hosting.Host> 便利方法 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> 中：
+這些檔案是在接受 [ 參數的 ](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) 擴充方法上使用 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)`reloadOnChange` 擴充方法來設定的。 `reloadOnChange` 指出組態是否應該在檔案變更時重新載入。 此設定會出在 <xref:Microsoft.Extensions.Hosting.Host> 便利方法 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> 中：
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -83,7 +81,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 將變更通知的權杖取用者 `Action` 回呼登錄到設定重新載入權杖。
 
-在 `Startup.Configure`中：
+在 `Startup.Configure` 中：
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -115,13 +113,13 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 `config.GetReloadToken()` 提供此權杖。 `InvokeChanged` 是回呼方法。 此執行個體中的 `state` 是用來存取監視狀態的 `IConfigurationMonitor` 執行個體參考。 會使用兩個屬性：
 
-* `MonitoringEnabled` &ndash; 指出回呼是否應該執行其自訂程式碼。
-* `CurrentState` &ndash; 描述要用於 UI 的目前監視狀態。
+* `MonitoringEnabled` &ndash; 指出回呼是否應執行其自訂程式碼。
+* `CurrentState` &ndash; 描述在 UI 中使用的目前監視狀態。
 
 `InvokeChanged` 方法類似於之前的方法，不同之處在於：
 
 * 不會執行其程式碼，除非 `MonitoringEnabled` 是 `true`。
-* 在其 `WriteConsole` 輸出中輸出目前的 `state`。
+* 在其 `state` 輸出中輸出目前的 `WriteConsole`。
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Extensions/ConfigurationMonitor.cs?name=snippet3)]
 
@@ -172,13 +170,13 @@ UI 啟用和停用監視中的按鈕。
 1. 使用 [IFileProviders.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) 從檔案提供者取得變更權杖。 修改檔案時，就會觸發權杖的回呼。
 1. 使用[滑動期限](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration)快取檔案內容。 變更權杖附有 [MemoryCacheEntryExtensions.AddExpirationToke](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.AddExpirationToken*)，可在快取的檔案變更時收回快取項目。
 
-在下列範例中，檔案會儲存在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中。 `IWebHostEnvironment.ContentRootFileProvider` 用來取得 <xref:Microsoft.Extensions.FileProviders.IFileProvider>，指向應用程式的 `IWebHostEnvironment.ContentRootPath`。 `filePath` 是使用 [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath) 取得的。
+在下列範例中，檔案會儲存在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中。 `IWebHostEnvironment.ContentRootFileProvider` 可用來取得指向應用程式 `IWebHostEnvironment.ContentRootPath`的 <xref:Microsoft.Extensions.FileProviders.IFileProvider>。 `filePath` 是使用 [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath) 取得的。
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Services/FileService.cs?name=snippet1)]
 
 `FileService` 是在服務容器以及記憶體快取服務中登錄的。
 
-在 `Startup.ConfigureServices`中：
+在 `Startup.ConfigureServices` 中：
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Startup.cs?name=snippet4)]
 
@@ -219,7 +217,7 @@ var compositeChangeToken =
 
 「變更權杖」是用來追蹤狀態變更的一般用途低階建置組塊。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>IChangeToken 介面
 
@@ -241,7 +239,7 @@ var compositeChangeToken =
 * `Func<IChangeToken>` 會產生權杖。
 * 在權杖變更時呼叫 `Action`。
 
-[ChangeToken.OnChange\<TState>(Func\<IChangeToken>, Action\<TState>, TState)](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*) 多載接受傳遞到權杖取用者 `Action` 的額外 `TState` 參數。
+[ChangeToken.OnChange\<TState>(Func\<IChangeToken>, Action\<TState>, TState)](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*) 多載接受傳遞到權杖取用者 `TState` 的額外 `Action` 參數。
 
 `OnChange` 會傳回 <xref:System.IDisposable>。 呼叫 <xref:System.IDisposable.Dispose*> 將阻止權杖接聽其他變更和釋出權杖的資源。
 
@@ -251,13 +249,13 @@ var compositeChangeToken =
 
 * 針對監視檔案變更，<xref:Microsoft.Extensions.FileProviders.IFileProvider> 的 <xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*> 方法會針對要監看的指定檔案或資料夾建立 `IChangeToken`。
 * `IChangeToken` 權杖可新增至快取項目，以在變更時觸發快取收回。
-* 針對 `TOptions` 變更，<xref:Microsoft.Extensions.Options.IOptionsMonitor`1> 的預設 <xref:Microsoft.Extensions.Options.OptionsMonitor`1> 實作具有會接受一或多個 <xref:Microsoft.Extensions.Options.IOptionsChangeTokenSource`1> 執行個體的多載。 每個執行個體會傳回 `IChangeToken`，以登錄變更通知回呼來追蹤選項變更。
+* 針對 `TOptions` 變更，<xref:Microsoft.Extensions.Options.OptionsMonitor`1> 的預設 <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> 實作具有會接受一或多個 <xref:Microsoft.Extensions.Options.IOptionsChangeTokenSource`1> 執行個體的多載。 每個執行個體會傳回 `IChangeToken`，以登錄變更通知回呼來追蹤選項變更。
 
 ## <a name="monitor-for-configuration-changes"></a>監視設定變更
 
 ASP.NET Core 範本預設使用 [JSON 組態檔](xref:fundamentals/configuration/index#json-configuration-provider) (*appsettings.json*、*appsettings.Development.json* 和 *appsettings.Production.json*) 來載入應用程式組態設定。
 
-這些檔案是在接受 `reloadOnChange` 參數的 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 擴充方法上使用 [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) 擴充方法來設定的。 `reloadOnChange` 指出組態是否應該在檔案變更時重新載入。 此設定會出在 <xref:Microsoft.AspNetCore.WebHost> 便利方法 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 中：
+這些檔案是在接受 [ 參數的 ](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) 擴充方法上使用 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)`reloadOnChange` 擴充方法來設定的。 `reloadOnChange` 指出組態是否應該在檔案變更時重新載入。 此設定會出在 <xref:Microsoft.AspNetCore.WebHost> 便利方法 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 中：
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -281,7 +279,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 將變更通知的權杖取用者 `Action` 回呼登錄到設定重新載入權杖。
 
-在 `Startup.Configure`中：
+在 `Startup.Configure` 中：
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -313,13 +311,13 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 `config.GetReloadToken()` 提供此權杖。 `InvokeChanged` 是回呼方法。 此執行個體中的 `state` 是用來存取監視狀態的 `IConfigurationMonitor` 執行個體參考。 會使用兩個屬性：
 
-* `MonitoringEnabled` &ndash; 指出回呼是否應該執行其自訂程式碼。
-* `CurrentState` &ndash; 描述要用於 UI 的目前監視狀態。
+* `MonitoringEnabled` &ndash; 指出回呼是否應執行其自訂程式碼。
+* `CurrentState` &ndash; 描述在 UI 中使用的目前監視狀態。
 
 `InvokeChanged` 方法類似於之前的方法，不同之處在於：
 
 * 不會執行其程式碼，除非 `MonitoringEnabled` 是 `true`。
-* 在其 `WriteConsole` 輸出中輸出目前的 `state`。
+* 在其 `state` 輸出中輸出目前的 `WriteConsole`。
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Extensions/ConfigurationMonitor.cs?name=snippet3)]
 
@@ -370,13 +368,13 @@ UI 啟用和停用監視中的按鈕。
 1. 使用 [IFileProviders.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) 從檔案提供者取得變更權杖。 修改檔案時，就會觸發權杖的回呼。
 1. 使用[滑動期限](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration)快取檔案內容。 變更權杖附有 [MemoryCacheEntryExtensions.AddExpirationToke](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.AddExpirationToken*)，可在快取的檔案變更時收回快取項目。
 
-在下列範例中，檔案會儲存在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中。 [IHostingEnvironment.ContentRootFileProvider](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootFileProvider) 是用來取得指向應用程式 <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootPath> 的 <xref:Microsoft.Extensions.FileProviders.IFileProvider>。 `filePath` 是使用 [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath) 取得的。
+在下列範例中，檔案會儲存在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中。 [IHostingEnvironment.ContentRootFileProvider](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootFileProvider) 是用來取得指向應用程式 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 的 <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootPath>。 `filePath` 是使用 [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath) 取得的。
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Services/FileService.cs?name=snippet1)]
 
 `FileService` 是在服務容器以及記憶體快取服務中登錄的。
 
-在 `Startup.ConfigureServices`中：
+在 `Startup.ConfigureServices` 中：
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Startup.cs?name=snippet4)]
 

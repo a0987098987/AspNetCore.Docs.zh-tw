@@ -4,7 +4,7 @@
 
 ## <a name="examples-in-this-sample"></a>這個範例中的範例
 
-| 情節 | 範例示範 |
+| 狀況 | 範例示範 |
 | -------- | ----------- |
 | [模型慣例](https://docs.microsoft.com/aspnet/core/razor-pages/razor-pages-conventions#model-conventions) | 將路由屬性和標頭新增至應用程式的頁面。 |
 | [使用 AddPageRoute 來新增頁面路由](https://docs.microsoft.com/aspnet/core/razor-pages/razor-pages-conventions#configure-a-page-route) | 將指定的路由新增至指定頁面上的頁面。 |

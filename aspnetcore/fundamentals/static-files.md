@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 uid: fundamentals/static-files
-ms.openlocfilehash: 00bab51cb411552c884f85fa63d42d0691b401b1
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: 95a77defc7e98328e1f4e3615648b1d14485e51e
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717269"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660122"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -19,7 +19,7 @@ ms.locfileid: "74717269"
 
 HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用程式直接提供給用戶端的資產。 您需要進行一些設定，才能提供這些檔案。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="serve-static-files"></a>提供靜態檔案
 
@@ -37,7 +37,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ::: moniker range="< aspnetcore-2.0"
 
-您可以叫用 `Program.Main` 內的 [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseContentRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_)，以將內容根目錄設定為目前的目錄：
+您可以叫用 [ 內的 ](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseContentRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_)UseContentRoot`Program.Main`，以將內容根目錄設定為目前的目錄：
 
 [!code-csharp[](static-files/samples/1x/Program.cs?name=snippet_ProgramClass&highlight=7)]
 
@@ -50,7 +50,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
   * **images**
   * **js**
 
-若要存取 *images* 子資料夾的檔案，其 URI 格式為 http://\<伺服器位址>/images/\<影像檔名稱>。 例如， *http://localhost:9189/images/banner3.svg* 。
+若要存取 *images* 子資料夾的檔案，其 URI 格式為 http://*伺服器位址>/images/\<影像檔名稱>\<* 。 例如： *http://localhost:9189/images/banner3.svg* 。
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -60,7 +60,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ::: moniker range="= aspnetcore-2.0"
 
-如以 .NET Framework 為目標，請將 [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) 套件新增至專案。 如以 .NET Core 為目標，[Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)會包含此套件。
+如以 .NET Framework 為目標，請將 [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) 套件新增至專案。 如以 .NET Framework 為目標，[Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)會包含此套件。
 
 ::: moniker-end
 
@@ -74,7 +74,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ### <a name="serve-files-inside-of-web-root"></a>提供 Web 根目錄內的檔案
 
-叫用 `Startup.Configure` 內的 [UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 方法：
+叫用 [ 內的 ](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)UseStaticFiles`Startup.Configure` 方法：
 
 [!code-csharp[](static-files/samples/1x/StartupStaticFiles.cs?name=snippet_ConfigureMethod&highlight=3)]
 
@@ -100,7 +100,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 [!code-csharp[](static-files/samples/1x/StartupTwoStaticFiles.cs?name=snippet_ConfigureMethod&highlight=5-10)]
 
-上述程式碼會透過 *StaticFiles* URI 區段公開 *MyStaticFiles* 目錄階層。 要求 http://\<伺服器位址>/StaticFiles/images/banner1.svg 時，會提供 *banner1.svg* 檔案。
+上述程式碼會透過 *StaticFiles* URI 區段公開 *MyStaticFiles* 目錄階層。 要求 http://*伺服器位址>/StaticFiles/images/banner1.svg\<* 時，會提供 *banner1.svg* 檔案。
 
 下列標記參考 *MyStaticFiles/images/banner1.svg*：
 
@@ -111,6 +111,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 [StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions) 物件可以用來設定 HTTP 回應標頭。 除了從[web 根目錄](xref:fundamentals/index#web-root)設定靜態檔案服務之外，下列程式碼還會設定 `Cache-Control` 標頭：
 
 [!code-csharp[](static-files/samples/1x/StartupAddHeader.cs?name=snippet_ConfigureMethod)]
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 [HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) 方法存在於 [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/) 套件中。
 
@@ -129,32 +130,32 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ## <a name="enable-directory-browsing"></a>啟用目錄瀏覽
 
-您的 Web 應用程式使用者可藉由目錄瀏覽功能，查看目錄清單及指定目錄內的檔案。 基於安全性考量，預設為停用目錄瀏覽功能 (請參閱[考量](#considerations))。 您可以叫用 `Startup.Configure` 內的 [UseDirectoryBrowser](/dotnet/api/microsoft.aspnetcore.builder.directorybrowserextensions.usedirectorybrowser#Microsoft_AspNetCore_Builder_DirectoryBrowserExtensions_UseDirectoryBrowser_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Builder_DirectoryBrowserOptions_) 方法，以啟用目錄瀏覽功能：
+您的 Web 應用程式使用者可藉由目錄瀏覽功能，查看目錄清單及指定目錄內的檔案。 基於安全性考量，預設為停用目錄瀏覽功能 (請參閱[考量](#considerations))。 您可以叫用 [ 內的 ](/dotnet/api/microsoft.aspnetcore.builder.directorybrowserextensions.usedirectorybrowser#Microsoft_AspNetCore_Builder_DirectoryBrowserExtensions_UseDirectoryBrowser_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Builder_DirectoryBrowserOptions_)UseDirectoryBrowser`Startup.Configure` 方法，以啟用目錄瀏覽功能：
 
 [!code-csharp[](static-files/samples/1x/StartupBrowse.cs?name=snippet_ConfigureMethod&highlight=12-17)]
 
-您可以從 `Startup.ConfigureServices` 叫用 [AddDirectoryBrowser](/dotnet/api/microsoft.extensions.dependencyinjection.directorybrowserserviceextensions.adddirectorybrowser#Microsoft_Extensions_DependencyInjection_DirectoryBrowserServiceExtensions_AddDirectoryBrowser_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 方法，以新增所需的服務：
+您可以從 [ 叫用 ](/dotnet/api/microsoft.extensions.dependencyinjection.directorybrowserserviceextensions.adddirectorybrowser#Microsoft_Extensions_DependencyInjection_DirectoryBrowserServiceExtensions_AddDirectoryBrowser_Microsoft_Extensions_DependencyInjection_IServiceCollection_)AddDirectoryBrowser`Startup.ConfigureServices` 方法，以新增所需的服務：
 
 [!code-csharp[](static-files/samples/1x/StartupBrowse.cs?name=snippet_ConfigureServicesMethod&highlight=3)]
 
-上述程式碼可讓您使用 URL http://\<伺服器位址>/MyImages 與每個檔案和資料夾的連結，來進行 *wwwroot/images* 資料夾的目錄瀏覽：
+上述程式碼可讓您使用 URL http://*伺服器位址>/MyImages* *與每個檔案和資料夾的連結，來進行 \<wwwroot/images* 資料夾的目錄瀏覽：
 
 ![目錄瀏覽](static-files/_static/dir-browse.png)
 
 如需了解啟用瀏覽功能時的安全性風險，請參閱[考量](#considerations)。
 
-請注意下列範例中的兩個 `UseStaticFiles` 呼叫。 第一個呼叫可提供 *wwwroot* 資料夾中的靜態檔案。 第二個呼叫可啟用使用 URL http://\<伺服器位址>/MyImages 的 *wwwroot/images* 資料夾目錄瀏覽功能：
+請注意下列範例中的兩個 `UseStaticFiles` 呼叫。 第一個呼叫可提供 *wwwroot* 資料夾中的靜態檔案。 第二個呼叫可啟用使用 URL http://*伺服器位址>/MyImages* *的 \<wwwroot/images* 資料夾目錄瀏覽功能：
 
 [!code-csharp[](static-files/samples/1x/StartupBrowse.cs?name=snippet_ConfigureMethod&highlight=3,5)]
 
 ## <a name="serve-a-default-document"></a>提供預設文件
 
-設定預設的歡迎頁面，可讓訪客在瀏覽您的網站時有個合乎邏輯的起點。 若要提供預設頁面 (使用者不需完整限定 URI)，請從 `Startup.Configure` 呼叫 [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 方法：
+設定預設的歡迎頁面，可讓訪客在瀏覽您的網站時有個合乎邏輯的起點。 若要提供預設頁面 (使用者不需完整限定 URI)，請從 [ 呼叫 ](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)UseDefaultFiles`Startup.Configure` 方法：
 
 [!code-csharp[](static-files/samples/1x/StartupEmpty.cs?name=snippet_ConfigureMethod&highlight=3)]
 
 > [!IMPORTANT]
-> 您必須在 `UseStaticFiles` 之前先呼叫 `UseDefaultFiles`，才能提供預設的檔案。 `UseDefaultFiles` 是 URL 重寫器，並非實際提供檔案。 透過 `UseStaticFiles` 啟用靜態檔案中介軟體以提供檔案。
+> 您必須在 `UseDefaultFiles` 之前先呼叫 `UseStaticFiles`，才能提供預設的檔案。 `UseDefaultFiles` 是 URL 重寫器，並非實際提供檔案。 透過 `UseStaticFiles` 啟用靜態檔案中介軟體以提供檔案。
 
 使用 `UseDefaultFiles` 要求以搜尋資料夾：
 
@@ -200,7 +201,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureMethod&highlight=5-11)]
 
-當 `EnableDirectoryBrowsing` 屬性值是 `true` 時，必須呼叫 `AddDirectoryBrowser`：
+當 `AddDirectoryBrowser` 屬性值是 `EnableDirectoryBrowsing` 時，必須呼叫 `true`：
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureServicesMethod)]
 
@@ -208,10 +209,10 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 | URI            |                             回應  |
 | ------- | ------|
-| http://\<伺服器位址>/StaticFiles/images/banner1.svg    |      MyStaticFiles/images/banner1.svg |
-| http://\<伺服器位址>/StaticFiles             |     MyStaticFiles/default.html |
+| http://*伺服器位址>/StaticFiles/images/banner1.svg\<*    |      MyStaticFiles/images/banner1.svg |
+| http://*伺服器位址>/StaticFiles\<*             |     MyStaticFiles/default.html |
 
-如果 *MyStaticFiles* 目錄中不存在預設名稱的檔案， http://\<伺服器位址>/StaticFiles 會傳回含有可點按連結的目錄清單：
+如果 *MyStaticFiles* 目錄中不存在預設名稱的檔案， http://*伺服器位址>/StaticFiles\<* 會傳回含有可點按連結的目錄清單：
 
 ![靜態檔案清單](static-files/_static/db2.png)
 
@@ -241,7 +242,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 ## <a name="serve-files-from-multiple-locations"></a>提供多個位置的檔案
 
-`UseStaticFiles` 和 `UseFileServer` 預設為指向*wwwroot*的檔案提供者。 您可以提供其他 `UseStaticFiles` 的實例，並與其他檔案提供者 `UseFileServer`，以從其他位置服務檔案。 如需詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/15578)。
+`UseStaticFiles` 和 `UseFileServer` 預設為指向*wwwroot*的檔案提供者。 您可以提供其他 `UseStaticFiles` 的實例，並與其他檔案提供者 `UseFileServer`，以從其他位置服務檔案。 如需詳細資訊，請參閱[這個 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/15578) \(英文\)。
 
 ### <a name="considerations"></a>考量
 

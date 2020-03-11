@@ -11,11 +11,11 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 ms.openlocfilehash: 990d392b0e1658774256626eb277701e40287b79
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76726916"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657707"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
@@ -195,7 +195,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在 `OnParametersSetAsync`中指派結果，而不是 `OnInitializedAsync`。 只有第一次具現化元件時，才會呼叫 `OnInitializedAsync`。 如果使用者在相同頁面上繼續流覽至不同的 URL，則稍後不會再次呼叫 `OnInitializedAsync`。 如需詳細資訊，請參閱<xref:blazor/lifecycle>。
+如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在 `OnParametersSetAsync`中指派結果，而不是 `OnInitializedAsync`。 只有第一次具現化元件時，才會呼叫 `OnInitializedAsync`。 如果使用者在相同頁面上繼續流覽至不同的 URL，則稍後不會再次呼叫 `OnInitializedAsync`。 如需詳細資訊，請參閱 <xref:blazor/lifecycle>。
 
 > [!WARNING]
 > 此章節中的範例僅適用于伺服器未啟用預先安裝的情況。 啟用預入功能時，會產生類似下列的錯誤：

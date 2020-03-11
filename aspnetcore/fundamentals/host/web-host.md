@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: bc18b5490d232758b796d33a62cd8d1a7dd7289f
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: e02d6efcb3aec1329469b8654e66ba845870421a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007103"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666709"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
@@ -201,7 +201,7 @@ WebHost.CreateDefaultBuilder(args)
 
 如需詳細資訊，請參閱：
 
-* [Fundamentals：內容根目錄 @ no__t-0
+* [基本概念：內容根](xref:fundamentals/index#content-root)
 * [Web 根目錄](#web-root)
 
 ### <a name="detailed-errors"></a>詳細錯誤
@@ -398,7 +398,7 @@ WebHost.CreateDefaultBuilder(args)
 
 如需詳細資訊，請參閱：
 
-* [Fundamentals：Web 根目錄 @ no__t-0
+* [基本概念：Web 根](xref:fundamentals/index#web-root)
 * [內容根目錄](#content-root)
 
 ## <a name="override-configuration"></a>覆寫組態
@@ -444,9 +444,7 @@ public class Program
 ```
 
 > [!NOTE]
-> [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) 擴充方法目前無法剖析 `GetSection` 傳回的組態區段 (例如 `.UseConfiguration(Configuration.GetSection("section"))`。 `GetSection` 方法會將設定索引鍵篩選到要求的區段，但保留索引鍵上的區段名稱 (例如 `section:urls`、`section:environment`)。 `UseConfiguration` 方法預期索引鍵要符合 `WebHostBuilder` 索引鍵 (例如 `urls`、`environment`)。 索引鍵上的區段名稱存在可避免區段的值設定主機。 這個問題將在近期的版本中解決。 如需詳細資訊和因應措施，請參閱 [Passing configuration section into WebHostBuilder.UseConfiguration uses full keys](https://github.com/aspnet/Hosting/issues/839) (將設定區段傳遞到 WebHostBuilder.UseConfiguration 會使用完整索引鍵)。
->
-> `UseConfiguration` 只會將索引鍵從提供的 `IConfiguration` 複製到主機建立器的組態。 因此，為 JSON、INI 和 XML 設定檔設定 `reloadOnChange: true` 沒有任何作用。
+> [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration)只會將金鑰從提供的 `IConfiguration` 複製到主機產生器設定。 因此，為 JSON、INI 和 XML 設定檔設定 `reloadOnChange: true` 沒有任何作用。
 
 若要指定主機在特定 URL 上執行，所要的值可以在執行 [dotnet run](/dotnet/core/tools/dotnet-run) 時從命令提示字元傳入。 命令列引數會覆寫 *hostsettings.json* 檔案的 `urls` 值，且伺服器會接聽連接埠 8080：
 
@@ -526,7 +524,7 @@ using (var host = WebHost.Start("http://localhost:8080", app => app.Response.Wri
 
 產生與 **Start(RequestDelegate app)** 相同的結果，除了應用程式會在 `http://localhost:8080` 回應。
 
-**開始（動作 @ no__t-1IRouteBuilder > routeBuilder）**
+**開始（動作\<IRouteBuilder > routeBuilder）**
 
 使用 `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) 的執行個體來使用路由中介軟體：
 
@@ -560,7 +558,7 @@ using (var host = WebHost.Start(router => router
 
 `WaitForShutdown` 會封鎖，直到發出中斷 (Ctrl-C/SIGINT 或 SIGTERM)。 應用程式會顯示 `Console.WriteLine` 訊息並等候按鍵動作以便結束。
 
-**Start （字串 url，Action @ no__t-1IRouteBuilder > routeBuilder）**
+**Start （字串 url，Action\<IRouteBuilder > routeBuilder）**
 
 使用 URL 和 `IRouteBuilder` 的執行個體：
 
@@ -581,9 +579,9 @@ using (var host = WebHost.Start("http://localhost:8080", router => router
 }
 ```
 
-會產生與**Start （Action @ no__t-1IRouteBuilder > routeBuilder）** 相同的結果，但應用程式會在 `http://localhost:8080` 回應。
+會產生與**Start （Action\<IRouteBuilder > routeBuilder）** 相同的結果，但應用程式會在 `http://localhost:8080`回應。
 
-**與 startwith （動作 @ no__t-1IApplicationBuilder > 應用程式）**
+**與 startwith （Action\<IApplicationBuilder > 應用程式）**
 
 提供委派以設定 `IApplicationBuilder`：
 
@@ -604,7 +602,7 @@ using (var host = WebHost.StartWith(app =>
 
 在瀏覽器中提出要求給 `http://localhost:5000`，以收到 "Hello World!" 回應 `WaitForShutdown` 會封鎖，直到發出中斷 (Ctrl-C/SIGINT 或 SIGTERM)。 應用程式會顯示 `Console.WriteLine` 訊息並等候按鍵動作以便結束。
 
-**與 startwith （字串 url，動作 @ no__t-1IApplicationBuilder > 應用程式）**
+**與 startwith （字串 url，動作\<IApplicationBuilder > 應用程式）**
 
 提供 URL 和委派以設定 `IApplicationBuilder`：
 
@@ -623,13 +621,13 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 }
 ```
 
-會產生與**與 startwith （Action @ no__t-1IApplicationBuilder > 應用程式）** 相同的結果，但應用程式會在 `http://localhost:8080` 上回應。
+會產生與**與 startwith （Action\<IApplicationBuilder > 應用程式）** 相同的結果，但應用程式會在 `http://localhost:8080`上回應。
 
 ::: moniker range=">= aspnetcore-3.0"
 
 ## <a name="iwebhostenvironment-interface"></a>IWebHostEnvironment 介面
 
-@No__t 0 介面提供應用程式虛擬主機環境的相關資訊。 使用[建構函式插入](xref:fundamentals/dependency-injection)以取得 `IWebHostEnvironment`，才能使用其屬性和擴充方法：
+`IWebHostEnvironment` 介面會提供應用程式的 web 裝載環境的相關資訊。 使用[建構函式插入](xref:fundamentals/dependency-injection)以取得 `IWebHostEnvironment`，才能使用其屬性和擴充方法：
 
 ```csharp
 public class CustomFileReader

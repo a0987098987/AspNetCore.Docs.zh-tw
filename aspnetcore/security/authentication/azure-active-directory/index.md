@@ -7,11 +7,11 @@ ms.date: 01/21/2020
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-active-directory/index
 ms.openlocfilehash: 7829a062d4727238addca051d0599438c99e90dc
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76726752"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661417"
 ---
 # <a name="azure-active-directory-with-aspnet-core"></a>Azure Active Directory 與 ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.locfileid: "76726752"
 * [呼叫其他 web Api 的 web API](/azure/active-directory/develop/scenario-web-api-call-api-overview)
 * [以 Azure AD B2C 登入使用者的 Web 應用程式](xref:security/authentication/azure-ad-b2c)
 
-## <a name="samples"></a>Samples
+## <a name="samples"></a>範例
 
 * [使用 Azure AD V2，讓您的 ASP.NET Core 應用程式登入使用者並呼叫 Web api](/samples/azure-samples/active-directory-aspnetcore-webapp-openidconnect-v2/enable-webapp-signin/)： 
   * 請參閱[這部相關影片](https://channel9.msdn.com/Events/Build/2018/THR5001)

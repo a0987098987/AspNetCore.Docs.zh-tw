@@ -9,11 +9,11 @@ no-loc:
 - SignalR
 uid: aspnetcore-2.2
 ms.openlocfilehash: 97deafd520926476f7653fc3de40d577b394734b
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829123"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661046"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2 的新功能
 
@@ -43,7 +43,7 @@ ASP.NET Core 2.2 使用新的「端點路由」系統來改善要求的分派。
 * [路由參數轉換器](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (請參閱＜Routing＞(路由) 一節)
 * [IRouter 路由與端點路由之間的差異](xref:fundamentals/routing?view=aspnetcore-2.2#differences-from-earlier-versions-of-routing)
 
-## <a name="health-checks"></a>健康狀態檢查
+## <a name="health-checks"></a>健康情況檢查
 
 新的健康狀態檢查服務可讓您更輕鬆地在需要健康狀態檢查的環境中 (例如 Kubernetes) 使用 ASP.NET Core。 健康狀態檢查包括中介軟體，以及定義 `IHealthCheck` 抽象概念和服務的一組程式庫。
 

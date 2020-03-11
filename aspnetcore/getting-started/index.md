@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/07/2020
 uid: getting-started
-ms.openlocfilehash: 4f7e67e1e422afe3f7e2970e0c40380f065390ac
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: 047fd7a74d3d53f68a730d67b63c65fe6bda529f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928323"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658463"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
-本教學課程說明如何使用 .NET Core CLI 來建立及執行 ASP.NET Core web 應用程式。
+本教學課程說明如何使用 .NET Core CLI 建立和執行 ASP.NET Core web 應用程式。
 
-您將了解如何：
+您將學習如何：
 
 > [!div class="checklist"]
 > * 建立 Web 應用程式專案。
@@ -29,7 +29,7 @@ ms.locfileid: "76928323"
 
 ![Web 應用程式首頁](_static/home-page.png)
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE[](~/includes/3.1-SDK.md)]
 
@@ -50,7 +50,7 @@ dotnet new webapp -o aspnetcoreapp
 
 信任 HTTPS 開發憑證：
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -62,7 +62,7 @@ dotnet dev-certs https --trust
 
 若您同意信任開發憑證，請選取 [是]。
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -74,7 +74,7 @@ dotnet dev-certs https --trust
 
 此命令可能會提示您提供密碼，以在系統金鑰鏈上安裝憑證。 若您同意信任開發憑證，請輸入您的密碼。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 請參閱您 Linux 發行版本的文件，來了解如何信任 HTTPS 開發憑證。
 
@@ -103,7 +103,7 @@ dotnet watch run
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web 應用程式專案。

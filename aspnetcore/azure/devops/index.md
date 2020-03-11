@@ -7,11 +7,11 @@ ms.date: 08/07/2018
 ms.custom: mvc, seodec18
 uid: azure/devops/index
 ms.openlocfilehash: f45bb2a5dd4b3d1a820085ede7ce3219045ed80b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64881953"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658078"
 ---
 # <a name="devops-with-aspnet-core-and-azure"></a>ASP.NET Core 與 Azure 的 DevOps
 
@@ -21,7 +21,7 @@ ms.locfileid: "64881953"
 
 本指南提供[可下載的 PDF 電子書](https://aka.ms/devopsbook)。
 
-## <a name="welcome"></a>歡迎畫面 
+## <a name="welcome"></a>歡迎使用 
 
 歡迎使用適用於.NET 的 Azure 開發生命週期指南！ 本指南介紹如何使用.NET 工具及程序，為 Azure 建置開發生命週期的基本概念。 完成本指南之後，您就能充分運用完善 DevOps 工具鏈的各項優點。
 
@@ -37,23 +37,23 @@ ms.locfileid: "64881953"
 
 ## <a name="whats-in-this-guide"></a>本指南內容
 
-### <a name="tools-and-downloadsxrefazuredevopstools-and-downloads"></a>[工具及下載](xref:azure/devops/tools-and-downloads)
+### <a name="tools-and-downloads"></a>[工具及下載](xref:azure/devops/tools-and-downloads)
 
 了解如何取得本指南中使用的工具。
 
-### <a name="deploy-to-app-servicexrefazuredevopsdeploy-to-app-service"></a>[部署到 App Service](xref:azure/devops/deploy-to-app-service)
+### <a name="deploy-to-app-service"></a>[部署到 App Service](xref:azure/devops/deploy-to-app-service)
 
 了解各種如何將 ASP.NET Core 應用程式部署到 Azure App Service 的方法。
 
-### <a name="continuous-integration-and-deploymentxrefazuredevopscicd"></a>[持續整合與部署](xref:azure/devops/cicd)
+### <a name="continuous-integration-and-deployment"></a>[持續整合與部署](xref:azure/devops/cicd)
 
 使用 GitHub、Azure DevOps Services 與 Azure，為您的 ASP.NET Core 應用程式建置端對端的持續整合與部署解決方案。
 
-### <a name="monitor-and-debugxrefazuredevopsmonitor"></a>[監視及偵錯](xref:azure/devops/monitor)
+### <a name="monitor-and-debug"></a>[監視及偵錯](xref:azure/devops/monitor)
 
 使用 Azure 工來監視、疑難排解問題，以及微調您的應用程式。
 
-### <a name="next-stepsxrefazuredevopsnext-steps"></a>[後續步驟](xref:azure/devops/next-steps)
+### <a name="next-steps"></a>[後續步驟](xref:azure/devops/next-steps)
 
 ASP.NET Core 開發人員學習 Azure 的其他學習途徑。
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 12/18/2018
 uid: fundamentals/owin
-ms.openlocfilehash: 980b60512bdeadd2a58b87e633ebf1416f725851
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 14b23ba6d284413e20417bbd4142e19a656350ac
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172096"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666681"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>具有 ASP.NET Core 的 Open Web Interface for .NET (OWIN)
 
@@ -29,7 +29,7 @@ OWIN 提供分離層，可讓兩個利用不同物件模型的架構一起使用
 > [!NOTE]
 > 使用這些配接器將伴隨效能成本增加。 僅使用 ASP.NET Core 元件的應用程式不應使用 `Microsoft.AspNetCore.Owin` 套件或配接器。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/owin/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/owin/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="running-owin-middleware-in-the-aspnet-core-pipeline"></a>在 ASP.NET Core 管線中執行 OWIN 中介軟體
 
@@ -217,7 +217,7 @@ public class Startup
 }
 ```
 
-此[範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/owin/sample)使用與上述相同的 `NowinServer` 進行設定 - 唯一的差異是在其 `Configure` 方法中設定應用程式的方式。 使用[簡單 Websocket 用戶端](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en)的測試示範此應用程式：
+此[範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/owin/sample)使用與上述相同的 `NowinServer` 進行設定 - 唯一的差異是在其 `Configure` 方法中設定應用程式的方式。 使用[簡單 Websocket 用戶端](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en)的測試示範此應用程式：
 
 ![Web 通訊端測試用戶端](owin/_static/websocket-test.png)
 
@@ -252,14 +252,14 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 | Key               | 值 (類型) | 描述 |
 | ----------------- | ------------ | ----------- |
-| owin.RequestId | `String` | 選擇性 |
+| owin.RequestId | `String` | 選用 |
 
 ### <a name="response-data-owin-v100"></a>回應資料 (OWIN 1.0.0 版)
 
 | Key               | 值 (類型) | 描述 |
 | ----------------- | ------------ | ----------- |
-| owin.ResponseStatusCode | `int` | 選擇性 |
-| owin.ResponseReasonPhrase | `String` | 選擇性 |
+| owin.ResponseStatusCode | `int` | 選用 |
+| owin.ResponseReasonPhrase | `String` | 選用 |
 | owin.ResponseHeaders | `IDictionary<string,string[]>`  | |
 | owin.ResponseBody | `Stream`  | |
 
@@ -310,8 +310,8 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 | websocket.ReceiveAsync | `WebSocketReceiveAsync` | 請參閱[委派簽章](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
 | websocket.CloseAsync | `WebSocketCloseAsync` | 請參閱[委派簽章](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
 | websocket.CallCancelled | `CancellationToken` |  |
-| websocket.ClientCloseStatus | `int` | 選擇性 |
-| websocket.ClientCloseDescription | `String` | 選擇性 |
+| websocket.ClientCloseStatus | `int` | 選用 |
+| websocket.ClientCloseDescription | `String` | 選用 |
 
 ## <a name="additional-resources"></a>其他資源
 

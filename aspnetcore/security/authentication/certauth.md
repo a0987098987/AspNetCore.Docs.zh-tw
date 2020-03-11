@@ -7,11 +7,11 @@ ms.author: bdorrans
 ms.date: 01/02/2020
 uid: security/authentication/certauth
 ms.openlocfilehash: 280daa86510d4445c791b6952653122961f13aeb
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447278"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665323"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
@@ -36,7 +36,7 @@ ms.locfileid: "77447278"
 
 如果驗證失敗，此處理程式會傳回 `403 (Forbidden)` 回應，而不是如您所預期的 `401 (Unauthorized)`。 其原因是必須在初始 TLS 連線期間進行驗證。 當它到達處理常式時，就太晚了。 沒有任何方法可將連接從匿名連接升級為具有憑證的連線。
 
-此外，也請在 `Startup.Configure` 方法中新增 `app.UseAuthentication();`。 否則，`HttpContext.User` 將不會設定為從憑證建立 `ClaimsPrincipal`。 例如，
+此外，也請在 `Startup.Configure` 方法中新增 `app.UseAuthentication();`。 否則，`HttpContext.User` 將不會設定為從憑證建立 `ClaimsPrincipal`。 例如：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

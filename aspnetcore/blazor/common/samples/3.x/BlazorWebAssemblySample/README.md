@@ -4,7 +4,7 @@
 
 ## <a name="call-web-api-example"></a>呼叫 Web API 範例
 
-Web API 範例需要根據使用<a href="https://docs.microsoft.com/aspnet/core/tutorials/first-web-api">ASP.NET Core 建立 Web API</a>主題的範例應用程式執行 Web API，其預設會使用與 Blazor 範例應用程式相同的 HTTPS 埠（5001）。 若要同時在同一部電腦上使用這兩個應用程式，請變更 Web API 的埠（例如，使用埠10000）。 範例應用程式會對 Web API 提出 `https://localhost:10000/api/TodoItems` 的要求。 如果使用不同的 Web API 位址，請更新 Razor 元件 `@code` 區塊中的 `ServiceEndpoint` 常數值。</p>
+Web API 範例需要根據使用<a href="https://docs.microsoft.com/aspnet/core/tutorials/first-web-api">ASP.NET Core 建立 Web API</a>主題的範例應用程式執行 Web API，其預設會使用與 Blazor 範例應用程式相同的 HTTPS 埠（5001）。 若要同時在同一部電腦上使用這兩個應用程式，請變更 Web API 的埠（例如，使用埠10000）。 範例應用程式會對 Web API 提出 `https://localhost:10000/api/TodoItems`的要求。 如果使用不同的 Web API 位址，請更新 Razor 元件 `@code` 區塊中的 `ServiceEndpoint` 常數值。</p>
 
 範例應用程式會將<a href="https://docs.microsoft.com/aspnet/core/security/cors">跨原始來源資源分享（CORS）</a>要求從 `http://localhost:5000` 或 `https://localhost:5001` 至 Web API。 允許認證（授權 cookie/標頭）。 將下列 CORS 中介軟體設定新增至 Web API 的 `Startup.Configure` 方法：</p>
 

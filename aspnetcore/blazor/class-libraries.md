@@ -11,11 +11,11 @@ no-loc:
 - SignalR
 uid: blazor/class-libraries
 ms.openlocfilehash: 32088b43f91174596f6b9251d36782e806f966b9
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213245"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660486"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
 
@@ -33,7 +33,7 @@ ms.locfileid: "77213245"
 
 遵循 <xref:blazor/get-started> 文章中的指導方針，設定您的環境以進行 Blazor。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 建立新專案。
 1. 選取 [ **Razor 類別庫**]。 選取 [下一步]。
@@ -56,7 +56,7 @@ ms.locfileid: "77213245"
 >
 > 以手動方式將檔案新增至所產生專案的根目錄。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 1. 使用**Razor 類別庫**範本（`razorclasslib`）搭配命令 shell 中的[dotnet new](/dotnet/core/tools/dotnet-new)命令。 在下列範例中，會建立名為 `MyComponentLib1`的 RCL。 執行命令時，會自動建立保存 `MyComponentLib1` 的資料夾：
 

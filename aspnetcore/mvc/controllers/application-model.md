@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/05/2019
 uid: mvc/controllers/application-model
 ms.openlocfilehash: 4b6c978e5752eb320412a1c204df8e3d288fe4a1
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881097"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666429"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>在 ASP.NET Core 中使用應用程式模型
 
@@ -38,7 +38,7 @@ ASP.NET Core MVC 應用程式模型具有下列結構：
 
 ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iapplicationmodelprovider) 介面定義的提供者模式來載入應用程式模型。 本節涵蓋此提供者運作方式的一些內部實作詳細資料。 這是進階的主題 - 大部分使用應用程式模型的應用程式都應該遵照慣例這樣做。
 
-`IApplicationModelProvider` 介面的實作會彼此「包裝」，每個實作根據其 `Order` 屬性以遞增順序呼叫 `OnProvidersExecuting`。 然後以相反順序呼叫 `OnProvidersExecuted` 方法。 架構會定義數個提供者：
+`IApplicationModelProvider` 介面的實作會彼此「包裝」，每個實作根據其 `OnProvidersExecuting` 屬性以遞增順序呼叫 `Order`。 然後以相反順序呼叫 `OnProvidersExecuted` 方法。 架構會定義數個提供者：
 
 先是 (`Order=-1000`)：
 
@@ -63,7 +63,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 * 將動作方法參數新增至內容
 * 套用路由和其他屬性
 
-某些內建行為由 `DefaultApplicationModelProvider` 實作。 此提供者負責建構 [`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel)，而它則會參考 [`ActionModel` ](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel)、[`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) 和 [`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel) 執行個體。 `DefaultApplicationModelProvider` 類別是內部架構實作詳細資料，未來將會變更。 
+某些內建行為由 `DefaultApplicationModelProvider` 實作。 此提供者負責建構 [`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel)，而它則會參考 [`ActionModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel)、[`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) 和 [`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel) 執行個體。 `DefaultApplicationModelProvider` 類別是內部架構實作詳細資料，未來將會變更。 
 
 `AuthorizationApplicationModelProvider` 負責套用與 `AuthorizeFilter` 和 `AllowAnonymousFilter` 屬性建立關聯的行為。 [進一步了解這些屬性](xref:security/authorization/simple)。
 
@@ -80,7 +80,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 * [`IActionModelConvention`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iactionmodelconvention)
 * [`IParameterModelConvention`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iparametermodelconvention)
 
-藉由將慣例新增至 MVC 選項或實作 `Attribute` 並將其套用至控制器、動作或動作參數 (類似於 [`Filters` ](xref:mvc/controllers/filters)) 來套用慣例。 與篩選條件不同的是，只有在應用程式啟動時才會執行慣例，而不會在每個要求當中執行。
+藉由將慣例新增至 MVC 選項或實作 `Attribute` 並將其套用至控制器、動作或動作參數 (類似於 [`Filters`](xref:mvc/controllers/filters)) 來套用慣例。 與篩選條件不同的是，只有在應用程式啟動時才會執行慣例，而不會在每個要求當中執行。
 
 ### <a name="sample-modifying-the-applicationmodel"></a>範例：修改 ApplicationModel
 
@@ -88,7 +88,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/ApplicationDescription.cs)]
 
-在 `Startup` 中的 `ConfigureServices` 中新增 MVC 時，應用程式模型慣例會套用為選項。
+在 `ConfigureServices` 中的 `Startup` 中新增 MVC 時，應用程式模型慣例會套用為選項。
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Startup.cs?name=ConfigureServices&highlight=5)]
 
@@ -154,7 +154,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 [!code-csharp[](./application-model/sample/src/AppModelSample/Startup.cs?name=ConfigureServices&highlight=6)]
 
 > [!TIP]
-> 您可以藉由使用 `services.Configure<MvcOptions>(c => c.Conventions.Add(YOURCONVENTION));` 存取 `MvcOptions`，將慣例新增到您的[中介軟體](xref:fundamentals/middleware/index)
+> 您可以藉由使用 [ 存取 ](xref:fundamentals/middleware/index)，將慣例新增到您的`MvcOptions`中介軟體`services.Configure<MvcOptions>(c => c.Conventions.Add(YOURCONVENTION));`
 
 這個範例將此慣例套用到不使用控制器名稱中包含 "Namespace" 之屬性路由的路由。 下列控制器示範此慣例：
 
@@ -167,7 +167,7 @@ ASP.NET Core MVC 會使用與 ASP.NET Web API 2 不同的一組慣例。 您可�
 > [!NOTE]
 > 深入了解[從 ASP.NET Web API 移轉](xref:migration/webapi)。
 
-若要使用 Web API 相容性填充碼，您必須將套件新增到您的專案，然後藉由在 `Startup` 中呼叫 `AddWebApiConventions` 來新增慣例：
+若要使用 Web API 相容性填充碼，您必須將套件新增到您的專案，然後藉由在 `AddWebApiConventions` 中呼叫 `Startup` 來新增慣例：
 
 ```csharp
 services.AddMvc().AddWebApiConventions();

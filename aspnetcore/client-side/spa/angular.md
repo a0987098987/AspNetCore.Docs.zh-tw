@@ -7,12 +7,12 @@ ms.author: stevesa
 ms.custom: mvc
 ms.date: 02/06/2020
 uid: spa/angular
-ms.openlocfilehash: 11ad5d4c7cadcc582b3e288a331569f62f0b98ac
-ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
+ms.openlocfilehash: fee872ff237e14cbe491efed9b320809df4c5654
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77044850"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657630"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Angular 專案範本
 
@@ -33,13 +33,13 @@ cd my-new-app
 
 從 Visual Studio 或 .NET Core CLI 執行該應用程式：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
 開啟產生的 *.csproj* 檔案，然後在該處以一般方式來執行該應用程式。
 
 建置程序會在首次執行時還原 npm 相依性，這可能需要幾分鐘時間才能完成。 後續建置所需的時間將會縮短。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
 請確定您有名為 `ASPNETCORE_Environment` 的環境變數，且其值為 `Development`。 在 Windows 上 (於非 PowerShell 提示字元中)，執行 `SET ASPNETCORE_Environment=Development`。 在 Linux 或 macOS 上，執行 `export ASPNETCORE_Environment=Development`。
 
@@ -53,7 +53,8 @@ Now listening on: http://localhost:<port>
 
 在瀏覽器中開啟這個 URL。
 
-應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 系統會記錄一則類似下列的訊息：*NG Live Development Server is listening on localhost:&lt;otherport&gt;, open your browser on http://localhost:&lt;otherport&gt;/* . 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
+> [!WARNING]
+> 應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 會記錄類似下列的訊息： *NG Live 程式開發伺服器接聽 localhost：&lt;otherport&gt;，將瀏覽器開啟至 http://localhost:&lt; otherport&gt;/* 。 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
 
 ---
 

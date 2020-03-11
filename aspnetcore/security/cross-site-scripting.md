@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 10/02/2018
 uid: security/cross-site-scripting
 ms.openlocfilehash: 1d6f605dc336d8768b8a47e4995f119d198a61af
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172639"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667976"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>防止 ASP.NET Core 中的跨網站腳本（XSS）
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 跨網站腳本（XSS）是一種安全性弱點，可讓攻擊者將用戶端腳本（通常是 JavaScript）放入網頁中。 當其他使用者載入受影響的頁面時，會執行攻擊者的腳本，讓攻擊者竊取 cookie 和會話權杖，透過 DOM 操作變更網頁的內容，或將瀏覽器重新導向至另一個頁面。 當應用程式接受使用者輸入並將其輸出至頁面，而未進行驗證、編碼或將它加以轉義時，通常會發生 XSS 弱點。
 
@@ -57,7 +57,7 @@ ms.locfileid: "77172639"
 
 ## <a name="javascript-encoding-using-razor"></a>使用 Razor 的 JavaScript 編碼
 
-有時候，您可能會想要將值插入 JavaScript 中，以便在您的視圖中處理。 有兩種方式可以達成這個目的， 插入值最安全的方式是將值放在標記的資料屬性中，然後在您的 JavaScript 中加以取出。 例如，
+有時候，您可能會想要將值插入 JavaScript 中，以便在您的視圖中處理。 做法有二種。 插入值最安全的方式是將值放在標記的資料屬性中，然後在您的 JavaScript 中加以取出。 例如：
 
 ```cshtml
 @{
@@ -166,7 +166,7 @@ public class HomeController : Controller
 
 ## <a name="encoding-url-parameters"></a>編碼 URL 參數
 
-如果您想要以不受信任的輸入建立 URL 查詢字串做為值，請使用 `UrlEncoder` 來編碼值。 例如：
+如果您想要以不受信任的輸入建立 URL 查詢字串做為值，請使用 `UrlEncoder` 來編碼值。 例如，
 
 ```csharp
 var example = "\"Quoted Value with spaces and &\"";

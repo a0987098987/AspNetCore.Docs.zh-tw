@@ -5,12 +5,12 @@ description: 了解如何使用 ASP.NET Core MVC 建立後端服務，以支援�
 ms.author: riande
 ms.date: 12/05/2019
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 38ac69bfe9d99d6d61f96fde92d86fd752ebbb6b
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: dcd0a29af197ff0ca210c17bdff62b802219fb2d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881153"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664581"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>使用 ASP.NET Core 建立原生行動應用程式的後端服務
 
@@ -18,7 +18,7 @@ ms.locfileid: "74881153"
 
 行動裝置應用程式可以與 ASP.NET Core 後端服務通訊。 如需如何從 iOS 模擬器和 Android 模擬器連線到本機 Web 服務的指示，請參閱[從 iOS 模擬器和 Android 模擬器連線到本機 Web 服務](/xamarin/cross-platform/deploy-test/connect-to-local-web-services)。
 
-[檢視或下載簡易後端服務程式碼範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
+[檢視或下載簡易後端服務程式碼範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
 
 ## <a name="the-sample-native-mobile-app"></a>原生行動應用程式範例
 
@@ -26,7 +26,7 @@ ms.locfileid: "74881153"
 
 ![To Do Rest 應用程式在 Android 智慧型手機上執行](native-mobile-backend/_static/todo-android.png)
 
-### <a name="features"></a>功能
+### <a name="features"></a>特性
 
 ToDoRest 應用程式支援列出、新增、刪除和更新待辦項目。 每個項目都有識別碼、名稱、記事和標示其是否已完成的屬性。
 
@@ -96,7 +96,7 @@ API 方法需要一些方式才能操作資料。 使用原始 Xamarin 範本使
 
 ### <a name="reading-items"></a>讀取項目
 
-您可以藉由對 `List` 方法傳送 GET 要求來要求項目清單。 `List` 方法上的 `[HttpGet]` 屬性表示這項動作應該僅用於處理 GET 要求。 此動作的路由為在控制器上指定的路由。 您不見得需要使用動作名稱作為路由的一部分。 您只需要確認每個動作都有一個唯一且明確的路由。 路由屬性可套用在控制器和方法層級上，以建置特定的路由。
+您可以藉由對 `List` 方法傳送 GET 要求來要求項目清單。 `[HttpGet]` 方法上的 `List` 屬性表示這項動作應該僅用於處理 GET 要求。 此動作的路由為在控制器上指定的路由。 您不見得需要使用動作名稱作為路由的一部分。 您只需要確認每個動作都有一個唯一且明確的路由。 路由屬性可套用在控制器和方法層級上，以建置特定的路由。
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=19-23)]
 
@@ -154,4 +154,4 @@ API 方法需要一些方式才能操作資料。 使用原始 Xamarin 範本使
 
 ## <a name="additional-resources"></a>其他資源
 
-* [驗證與授權](/xamarin/xamarin-forms/enterprise-application-patterns/authentication-and-authorization)
+* [驗證和授權](/xamarin/xamarin-forms/enterprise-application-patterns/authentication-and-authorization)

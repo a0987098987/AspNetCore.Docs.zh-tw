@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 0273a9805dd5db5450f57dcf3fd4d952308df074
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: db9e1a968588410f11e5f137dfdd4542df505ebc
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856204"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662733"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的快取標籤協助程式
 
-作者：[Peter Kellner](https://peterkellner.net) 與 [Luke Latham](https://github.com/guardrex) 
+由 [Peter Kellner](https://peterkellner.net) 提供
 
 快取標籤協助程式可將 ASP.NET Core 應用程式內容快取至內部 ASP.NET Core 快取提供者，以提升應用程式的效能。
 
@@ -31,13 +31,13 @@ ms.locfileid: "67856204"
 
 ## <a name="cache-tag-helper-attributes"></a>快取標籤協助程式屬性
 
-### <a name="enabled"></a>enabled
+### <a name="enabled"></a>已啟用
 
 | 屬性類型  | 範例        | 預設 |
 | --------------- | --------------- | ------- |
-| Boolean         | `true`、 `false` | `true`  |
+| Boolean         | `true`, `false` | `true`  |
 
-`enabled` 會決定是否快取以快取標籤協助程式括住的內容。 預設為 `true`。 如果設定為 `false`，則轉譯輸出**不會**被快取。
+`enabled` 會決定是否快取以快取標籤協助程式括住的內容。 預設值為 `true`。 如果設定為 `false`，則轉譯輸出**不會**被快取。
 
 範例：
 
@@ -101,7 +101,7 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 
 | 屬性類型 | 範例                                    |
 | -------------- | ------------------------------------------- |
-| String         | `User-Agent`、 `User-Agent,content-encoding` |
+| String         | `User-Agent`, `User-Agent,content-encoding` |
 
 `vary-by-header` 接受標頭值的逗號分隔清單，在標頭值變更時，會觸發快取重新整理。
 
@@ -117,9 +117,9 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 
 | 屬性類型 | 範例             |
 | -------------- | -------------------- |
-| String         | `Make`、 `Make,Model` |
+| String         | `Make`, `Make,Model` |
 
-`vary-by-query` 接受查詢字串 (<xref:Microsoft.AspNetCore.Http.HttpRequest.Query*>) 中 <xref:Microsoft.AspNetCore.Http.IQueryCollection.Keys*> 的逗點分隔清單，當任何所列索引碼的值變更時，會觸發快取重新整理。
+`vary-by-query` 接受查詢字串 (<xref:Microsoft.AspNetCore.Http.IQueryCollection.Keys*>) 中 <xref:Microsoft.AspNetCore.Http.HttpRequest.Query*> 的逗點分隔清單，當任何所列索引碼的值變更時，會觸發快取重新整理。
 
 下列範例會監視 `Make` 與 `Model` 的值。 此範例會快取展示給網頁伺服器之每個不同 `Make` 與 `Model` 的內容：
 
@@ -133,7 +133,7 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 
 | 屬性類型 | 範例             |
 | -------------- | -------------------- |
-| String         | `Make`、 `Make,Model` |
+| String         | `Make`, `Make,Model` |
 
 `vary-by-route` 接受路由參數名稱的逗點分隔清單，當路由資料參數值變更時，這些路由參數名稱會觸發快取重新整理。
 
@@ -159,7 +159,7 @@ routes.MapRoute(
 
 | 屬性類型 | 範例                                                                         |
 | -------------- | -------------------------------------------------------------------------------- |
-| String         | `.AspNetCore.Identity.Application`、 `.AspNetCore.Identity.Application,HairColor` |
+| String         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
 
 `vary-by-cookie` 接受 Cookie 名稱的逗點分隔清單，當 Cookie 值變更時，這些 Cookie 名稱會觸發快取重新整理。
 
@@ -175,7 +175,7 @@ routes.MapRoute(
 
 | 屬性類型  | 範例        | 預設 |
 | --------------- | --------------- | ------- |
-| Boolean         | `true`、 `false` | `true`  |
+| Boolean         | `true`, `false` | `true`  |
 
 `vary-by-user` 可指定當登入的使用者 (或內容主體) 變更時，是否重設快取。 目前的使用者也稱為要求內容主體，可在 Razor 檢視中藉由參考 `@User.Identity.Name` 進行檢視。
 

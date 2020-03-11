@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: aspnetcore-2.0
-ms.openlocfilehash: 9d1e1b1154113b8825f4d0faf0f4552b8bd22287
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 5ca43bab1496aa9fda65282cbb0b1177ad8689eb
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828421"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667255"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
@@ -19,12 +19,12 @@ ms.locfileid: "75828421"
 
 ## <a name="razor-pages"></a>Razor Pages
 
-Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
+Razor Pages 是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
 
 如需詳細資訊，請參閱簡介與教學課程：
 
 * [Razor 頁面簡介](xref:razor-pages/index)
-* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
+* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 
 ## <a name="aspnet-core-metapackage"></a>ASP.NET Core 中繼套件
 
@@ -48,7 +48,7 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 
 `IConfiguration` 執行個體預設新增至 ASP.NET Core 2.0 的服務容器中。 服務容器中的 `IConfiguration` 可讓應用程式從容器輕鬆擷取組態值。
 
-如需已規劃文件狀態的資訊，請參閱 [GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/3387)。
+如需已規劃文件狀態的相關資訊，請參閱 [GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/3387)。
 
 ## <a name="logging-update"></a>記錄更新
 
@@ -62,7 +62,7 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 
 新範本可用於為使用 [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/) 之 Web 應用程式及 Web API 設定驗證。
 
-如需已規劃文件狀態的資訊，請參閱 [GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/3054)。
+如需已規劃文件狀態的相關資訊，請參閱 [GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/3054)。
 
 ## <a name="identity-update"></a>身分識別更新
 
@@ -114,7 +114,7 @@ return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNo
 
 在 ASP.NET Core 2.0 中，在 Visual Studio 中偵錯以及 (加入後) 在 Azure 應用程式服務中執行時，此功能可用來自動啟用 Application Insights 診斷。 如此一來，專案範本預設不會再新增 Application Insights 套件和程式碼。
 
-如需已規劃文件狀態的資訊，請參閱 [GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/3389)。
+如需已規劃文件狀態的相關資訊，請參閱 [GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/3389)。
 
 ## <a name="automatic-use-of-anti-forgery-tokens"></a>自動使用防偽權杖
 
@@ -147,7 +147,7 @@ Razor 檢視引擎已更新，可使用新的 Roslyn 編譯器 。 這包括支�
 * [設定 Google 驗證](xref:security/authentication/google-logins)
 * [設定 Microsoft 帳戶驗證](xref:security/authentication/microsoft-logins)
 
-## <a name="migration-guidance"></a>移轉指引
+## <a name="migration-guidance"></a>移轉指導
 
 如需如何將 ASP.NET Core 1.x 應用程式移轉至 ASP.NET Core 2.0的指引，請參閱下列資源：
 

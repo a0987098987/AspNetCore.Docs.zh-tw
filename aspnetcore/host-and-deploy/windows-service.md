@@ -1,30 +1,28 @@
 ---
 title: 在 Windows 服務上裝載 ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 829c282606e60a80682233555e1268acb706090e
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 4eed461788f8fffa2ea00d8c931b0a0f5aaf1b46
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172319"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656181"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
-
-作者：[Luke Latham](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications)，不需要使用 IIS。 當裝載為 Windows 服務時，應用程式將會在伺服器重新開機後自動啟動。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
@@ -149,7 +147,7 @@ powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 1. 選取 [新增使用者或群組]。
 1. 使用下列其中一種方法提供物件名稱 (使用者帳戶)：
    1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定] 將使用者新增至原則。
-   1. 選取 [進階]。 選取 [立即尋找]。 從清單中選取使用者帳戶。 選取 **[確定]** 。 再次選取 [確定] 將使用者新增至原則。
+   1. 選取 [進階]。 選取 [立即尋找]。 從清單中選取使用者帳戶。 選取 [確定]。 再次選取 [確定] 將使用者新增至原則。
 1. 選取 [確定] 或 [套用] 以接受變更。
 
 ## <a name="create-and-manage-the-windows-service"></a>建立及管理 Windows 服務
@@ -307,14 +305,14 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定 `ASPNETCORE_UR
 從 [Windows 錯誤報告 (WER)](/windows/desktop/wer/windows-error-reporting) 取得並分析傾印：
 
 1. 在 `c:\dumps` 中建立資料夾以保存損毀傾印檔案。
-1. 以應用程式可執行檔名稱執行[EnableDumps PowerShell 腳本](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1)：
+1. 以應用程式可執行檔名稱執行[EnableDumps PowerShell 腳本](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1)：
 
    ```console
    .\EnableDumps {APPLICATION EXE} c:\dumps
    ```
 
 1. 在會導致損毀的情況下，執行應用程式。
-1. 發生損毀之後，請執行 [DisableDumps PowerShell 指令碼](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1)：
+1. 發生損毀之後，請執行 [DisableDumps PowerShell 指令碼](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1)：
 
    ```console
    .\DisableDumps {APPLICATION EXE}
@@ -345,9 +343,9 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定 `ASPNETCORE_UR
 
 ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications)，不需要使用 IIS。 當裝載為 Windows 服務時，應用程式將會在伺服器重新開機後自動啟動。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
@@ -461,7 +459,7 @@ powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 1. 選取 [新增使用者或群組]。
 1. 使用下列其中一種方法提供物件名稱 (使用者帳戶)：
    1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定] 將使用者新增至原則。
-   1. 選取 [進階]。 選取 [立即尋找]。 從清單中選取使用者帳戶。 選取 **[確定]** 。 再次選取 [確定] 將使用者新增至原則。
+   1. 選取 [進階]。 選取 [立即尋找]。 從清單中選取使用者帳戶。 選取 [確定]。 再次選取 [確定] 將使用者新增至原則。
 1. 選取 [確定] 或 [套用] 以接受變更。
 
 ## <a name="create-and-manage-the-windows-service"></a>建立及管理 Windows 服務
@@ -641,14 +639,14 @@ CreateWebHostBuilder(args)
 從 [Windows 錯誤報告 (WER)](/windows/desktop/wer/windows-error-reporting) 取得並分析傾印：
 
 1. 在 `c:\dumps` 中建立資料夾以保存損毀傾印檔案。
-1. 以應用程式可執行檔名稱執行[EnableDumps PowerShell 腳本](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1)：
+1. 以應用程式可執行檔名稱執行[EnableDumps PowerShell 腳本](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1)：
 
    ```console
    .\EnableDumps {APPLICATION EXE} c:\dumps
    ```
 
 1. 在會導致損毀的情況下，執行應用程式。
-1. 發生損毀之後，請執行 [DisableDumps PowerShell 指令碼](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1)：
+1. 發生損毀之後，請執行 [DisableDumps PowerShell 指令碼](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1)：
 
    ```console
    .\DisableDumps {APPLICATION EXE}
@@ -679,9 +677,9 @@ CreateWebHostBuilder(args)
 
 ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications)，不需要使用 IIS。 當裝載為 Windows 服務時，應用程式將會在伺服器重新開機後自動啟動。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
@@ -798,7 +796,7 @@ powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 1. 選取 [新增使用者或群組]。
 1. 使用下列其中一種方法提供物件名稱 (使用者帳戶)：
    1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定] 將使用者新增至原則。
-   1. 選取 [進階]。 選取 [立即尋找]。 從清單中選取使用者帳戶。 選取 **[確定]** 。 再次選取 [確定] 將使用者新增至原則。
+   1. 選取 [進階]。 選取 [立即尋找]。 從清單中選取使用者帳戶。 選取 [確定]。 再次選取 [確定] 將使用者新增至原則。
 1. 選取 [確定] 或 [套用] 以接受變更。
 
 ## <a name="create-and-manage-the-windows-service"></a>建立及管理 Windows 服務
@@ -978,14 +976,14 @@ CreateWebHostBuilder(args)
 從 [Windows 錯誤報告 (WER)](/windows/desktop/wer/windows-error-reporting) 取得並分析傾印：
 
 1. 在 `c:\dumps` 中建立資料夾以保存損毀傾印檔案。
-1. 以應用程式可執行檔名稱執行[EnableDumps PowerShell 腳本](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1)：
+1. 以應用程式可執行檔名稱執行[EnableDumps PowerShell 腳本](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1)：
 
    ```console
    .\EnableDumps {APPLICATION EXE} c:\dumps
    ```
 
 1. 在會導致損毀的情況下，執行應用程式。
-1. 發生損毀之後，請執行 [DisableDumps PowerShell 指令碼](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1)：
+1. 發生損毀之後，請執行 [DisableDumps PowerShell 指令碼](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1)：
 
    ```console
    .\DisableDumps {APPLICATION EXE}

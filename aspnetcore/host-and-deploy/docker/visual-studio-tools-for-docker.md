@@ -6,25 +6,25 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: cecec09d3d58a84a7c15630e41d23facdb9b236e
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 0e6747a3de220b97cc7a84f9cd42b0da54b57ee9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356158"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664063"
 ---
 # <a name="visual-studio-container-tools-with-aspnet-core"></a>Visual Studio 容器工具搭配 ASP.NET Core
 
 Visual Studio 2017 及更新版本支援建置、偵錯和執行以 .NET Core 為目標的容器化 ASP.NET Core 應用程式。 同時支援 Windows 和 Linux 容器。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 * [Docker for Windows](https://docs.docker.com/docker-for-windows/install/)
-* 已安裝 **.NET Core 跨平台開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
+* 已安裝 [.NET Core 跨平台開發](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)工作負載的 **Visual Studio 2019**
 
-## <a name="installation-and-setup"></a>安裝和設定
+## <a name="installation-and-setup"></a>安裝與設定
 
 若要進行 Docker 安裝，請先檢閱 [Docker for Windows: What to know before you install](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) 中的資訊。 接下來，安裝 [適用於 Windows 的 Docker](https://docs.docker.com/docker-for-windows/install/)。
 
@@ -99,7 +99,7 @@ Visual Studio 容器工具會將 *docker-compose* 專案新增至包含下列檔
 
 [!code-yaml[](visual-studio-tools-for-docker/samples/2.0/docker-compose.yml?highlight=5)]
 
-在上述範例中，`image: hellodockertools` 會在以**偵錯**模式執行應用程式時產生 `hellodockertools:dev` 映像。 以**發行**模式執行應用程式時，會產生 `hellodockertools:latest` 映像。
+在上述範例中，`image: hellodockertools` 會在以`hellodockertools:dev`偵錯**模式執行應用程式時產生**  映像。 以`hellodockertools:latest`發行**模式執行應用程式時，會產生**  映像。
 
 如果映像會推送至登錄，會在映像名稱前加上 [Docker Hub](https://hub.docker.com/) 使用者名稱 (例如，`dockerhubusername/hellodockertools`)。 或者，根據設定將映像名稱變更為包含私人登錄 URL (例如，`privateregistry.domain.com/hellodockertools`)。
 
@@ -145,7 +145,7 @@ Visual Studio 容器工具會執行下列工作：
 * 應用程式會複製至容器。
 * 預設瀏覽器會在偵錯工具使用動態指派的連接埠附加至容器的情況下啟動。
 
-產生的應用程式 Docker 映像，會標記為 *dev*。 此映像以 *microsoft/dotnet* 基底映像的 *2.1-aspnetcore-runtime* 標籤為基礎。 在 [套件管理員主控台] (PMC) 視窗中，執行 `docker images` 命令。 這會顯示電腦上的映像：
+產生的應用程式 Docker 映像，會標記為 *dev*。 此映像以 *microsoft/dotnet* 基底映像的 *2.1-aspnetcore-runtime* 標籤為基礎。 在 [套件管理員主控台]`docker images` **(PMC) 視窗中，執行** 命令。 這會顯示電腦上的映像：
 
 ```console
 REPOSITORY        TAG                     IMAGE ID      CREATED         SIZE
@@ -163,7 +163,7 @@ microsoft/dotnet  2.1-aspnetcore-runtime  fcc3887985bb  6 days ago      255MB
 * 應用程式會複製至容器。
 * 預設瀏覽器會在偵錯工具使用動態指派的連接埠附加至容器的情況下啟動。
 
-產生的應用程式 Docker 映像，會標記為 *dev*。 映像以 *microsoft/aspnetcore* 基底映像為基礎。 在 [套件管理員主控台] (PMC) 視窗中，執行 `docker images` 命令。 這會顯示電腦上的映像：
+產生的應用程式 Docker 映像，會標記為 *dev*。 映像以 *microsoft/aspnetcore* 基底映像為基礎。 在 [套件管理員主控台]`docker images` **(PMC) 視窗中，執行** 命令。 這會顯示電腦上的映像：
 
 ```console
 REPOSITORY            TAG  IMAGE ID      CREATED        SIZE
@@ -174,7 +174,7 @@ microsoft/aspnetcore  2.0  c69d39472da9  13 days ago    347MB
 ::: moniker-end
 
 > [!NOTE]
-> 因為**偵錯**組態會使用磁碟區掛接來提供重複的體驗，所以 *dev* 映像不會有應用程式內容。 若要推送映像，請使用 [發行] 組態。
+> 因為*偵錯*組態會使用磁碟區掛接來提供重複的體驗，所以 **dev** 映像不會有應用程式內容。 若要推送映像，請使用 [發行] 組態。
 
 在 PMC 中執行 `docker ps` 命令。 請注意是使用容器來執行應用程式：
 
@@ -227,7 +227,7 @@ microsoft/aspnetcore        2.0     c69d39472da9  13 days ago     347MB
 ::: moniker-end
 
 > [!NOTE]
-> `docker images` 命令會傳回存放庫名稱和標記識別為 \<無> (上面未列出) 的中繼映像。 這些未命名的映射是由[多階段組建](https://docs.docker.com/engine/userguide/eng-image/multistage-build/) *Dockerfile*所產生。 它們可以改善最終映像的建置效率 &mdash; 發生變更時只會重建必要層。 當不再需要中繼映像時，請使用 [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) \(英文\) 命令予以刪除。
+> `docker images` 命令會傳回存放庫名稱和標記識別為 *無>\<* (上面未列出) 的中繼映像。 這些未命名的映射是由[多階段組建](https://docs.docker.com/engine/userguide/eng-image/multistage-build/) *Dockerfile*所產生。 它們可以改善最終映像的建置效率 &mdash; 發生變更時只會重建必要層。 當不再需要中繼映像時，請使用 [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) \(英文\) 命令予以刪除。
 
 相較於 *dev* 映像，生產或發行映像的大小可能需要更小。 基於磁碟區對應，偵錯工具和應用程式是從本機電腦執行，而不是在容器內執行。 「最新」映像已封裝在主機上執行應用程式所需的應用程式碼。 因此，差異是應用程式碼的大小。
 

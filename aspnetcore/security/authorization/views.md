@@ -7,11 +7,11 @@ ms.author: riande
 ms.date: 11/08/2019
 uid: security/authorization/views
 ms.openlocfilehash: fc03da9eb98d36ffdda932ee5b16f327c2be9f83
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896984"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663594"
 ---
 # <a name="view-based-authorization-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中以視圖為基礎的授權
 

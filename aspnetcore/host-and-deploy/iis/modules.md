@@ -1,22 +1,20 @@
 ---
 title: 與 ASP.NET Core 搭配運作的 IIS 模組
-author: guardrex
+author: rick-anderson
 description: 探索 ASP.NET Core 應用程式的使用中和非使用中 IIS 模組，管理 IIS 模組的方式。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: ca6cf349aa05db97e145f1cd0cae97a107761fd8
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 0f13ef3eb1da03960ef1fa54d33532b6ebbdc128
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75951804"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657903"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
-
-作者：[Luke Latham](https://github.com/guardrex)
 
 您無法使用部分原生 IIS 模組與所有 IIS 受控模組來處理 ASP.NET Core 應用程式的要求。 在許多情況下，ASP.NET Core 都提供由 IIS 原生與受控模組處理之情節的替代方案。
 
@@ -24,7 +22,7 @@ ms.locfileid: "75951804"
 
 下表指出可搭配 ASP.NET Core 應用程式和 ASP.NET Core 模組運作的原生 IIS 模組。
 
-| Module | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
+| 模組 | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
 | --- | :---: | --- |
 | **匿名驗證**<br>`AnonymousAuthenticationModule`                                  | 是 | |
 | **基本驗證**<br>`BasicAuthenticationModule`                                          | 是 | |
@@ -59,13 +57,13 @@ ms.locfileid: "75951804"
 | **URL 授權**<br>`UrlAuthorizationModule`                                                | 是 | [ASP.NET Core 身分識別](xref:security/authentication/identity) |
 | **Windows 驗證**<br>`WindowsAuthenticationModule`                                      | 是 | |
 
-&#8224;由於[目錄結構](xref:host-and-deploy/directory-structure)變更的緣故，因此「URL 重寫模組」的 `isFile` 和 `isDirectory` 比對類型對 ASP.NET Core 應用程式沒有作用。
+&#8224;由於`isFile`目錄結構`isDirectory`變更的緣故，因此「URL 重寫模組」的 [ 和 ](xref:host-and-deploy/directory-structure) 比對類型對 ASP.NET Core 應用程式沒有作用。
 
 ## <a name="managed-modules"></a>受控模組
 
 當應用程式集區的 .NET CLR 版本已設定為 [沒有 Managed 程式碼] 時，受控模組對所裝載的 ASP.NET Core 應用程式「沒有」作用。 ASP.NET Core 在數種案例中都有提供中介軟體替代方案。
 
-| Module                  | ASP.NET Core 選項 |
+| 模組                  | ASP.NET Core 選項 |
 | ----------------------- | ------------------- |
 | AnonymousIdentification | |
 | DefaultAuthentication   | |
@@ -91,7 +89,7 @@ ms.locfileid: "75951804"
 
 ### <a name="module-deactivation"></a>模組停用
 
-許多模組都有提供可將模組停用而無須從應用程式中移除的組態設定。 這是停用模組的最簡便快速方式。 例如，使用 *web.config* 中的 `<httpRedirect>` 元素，即可停用「HTTP 重新導向模組」：
+許多模組都有提供可將模組停用而無須從應用程式中移除的組態設定。 這是停用模組的最簡便快速方式。 例如，使用 `<httpRedirect>`web.config*中的* 元素，即可停用「HTTP 重新導向模組」：
 
 ```xml
 <configuration>
@@ -101,11 +99,11 @@ ms.locfileid: "75951804"
 </configuration>
 ```
 
-如需有關使用組態設定來停用模組的詳細資訊，請參考 [IIS \<system.webServer>](/iis/configuration/system.webServer/) ＜子元素＞一節中的連結。
+如需有關使用組態設定來停用模組的詳細資訊，請參考 *IIS* system.webServer>[ ＜子元素＞\<](/iis/configuration/system.webServer/)一節中的連結。
 
 ### <a name="module-removal"></a>模組移除
 
-如果選擇透過 *web.config* 中的設定來移除模組，請先將模組解除鎖定，以及將 *web.config* 的 `<modules>` 區段解除鎖定：
+如果選擇透過 *web.config* 中的設定來移除模組，請先將模組解除鎖定，以及將 `<modules>`web.config*的* 區段解除鎖定：
 
 1. 將伺服器層級的模組解除鎖定。 選取「IIS 管理員」[連線] 資訊看板中的 IIS 伺服器。 開啟 [IIS] 區域中的 [模組]。 選取清單中的模組。 在右邊的 [動作] 資訊看板上，選取 [解除鎖定]。 若模組的動作項目顯示為**鎖定**，就代表該模組已經解除鎖定，且不需要任何動作。 將您打算稍後從 *web.config* 移除的模組都解除鎖定。
 
@@ -113,7 +111,7 @@ ms.locfileid: "75951804"
 
 3. 解除鎖定*web.config*的 `<modules>` 區段。在 [**連接**] 提要欄位中，選取 [**網站**] 中的網站。 在 [管理] 區域中，開啟 [設定編輯器]。 使用導覽控制項來選取 `system.webServer/modules` 區段。 在右邊的 [動作] 資訊看板上，選取將區段 [解除鎖定]。 若模組區段的動作項目顯示為**鎖定區段**，就代表該模組區段已經解除鎖定，且不需要任何動作。
 
-4. 將 `<modules>` 區段新增至具有 `<remove>` 元素的應用程式本機 *web.config* 檔案，以從應用程式移除該模組。 新增多個 `<remove>` 元素以移除多個模組。 如果已在伺服器上進行 *web.config* 變更，請立即在本機對專案的 *web.config* 檔案進行相同的變更。 使用此方法移除模組不會影響模組與伺服器上其他應用程式的搭配使用。
+4. 將 `<modules>` 區段新增至具有 *元素的應用程式本機*web.config`<remove>` 檔案，以從應用程式移除該模組。 新增多個 `<remove>` 元素以移除多個模組。 如果已在伺服器上進行 *web.config* 變更，請立即在本機對專案的 *web.config* 檔案進行相同的變更。 使用此方法移除模組不會影響模組與伺服器上其他應用程式的搭配使用。
 
    ```xml
    <configuration>

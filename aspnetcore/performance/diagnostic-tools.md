@@ -1,76 +1,76 @@
 ---
-title: 效能診斷工具
+title: Performance Diagnostics 工具
 author: mjrousos
-description: 適用於診斷 ASP.NET Core 應用程式中的效能問題的有用工具。
+description: 用來診斷 ASP.NET Core 應用程式效能問題的公用程式。
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 04/11/2019
 uid: performance/diagnostic-tools
 ms.openlocfilehash: d273897b9ad26d57eb94b196b58f14019a96d07d
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815627"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661074"
 ---
 # <a name="performance-diagnostic-tools"></a>效能診斷工具
 
-藉由[Mike Rousos](https://github.com/mjrousos)
+由[Mike Rousos](https://github.com/mjrousos)
 
-這篇文章列出對於診斷效能問題，ASP.NET Core 中的工具。
+本文列出用來診斷 ASP.NET Core 中效能問題的工具。
 
 ## <a name="visual-studio-diagnostic-tools"></a>Visual Studio 診斷工具
 
-[分析與診斷工具](/visualstudio/profiling)建置到 Visual Studio 會啟動調查效能問題的好地方。 這些工具是功能強大且方便地從 Visual Studio 開發環境使用。 這項工具會允許 ASP.NET Core 應用程式中分析 CPU 使用量、 記憶體使用量和效能事件。 正在內建可讓您在開發階段的簡單程式碼剖析。
+內建于 Visual Studio 的程式碼[剖析和診斷工具](/visualstudio/profiling)，是開始調查效能問題的好地方。 這些工具在 Visual Studio 開發環境中功能強大且方便使用。 此工具可讓您分析 ASP.NET Core 應用程式中的 CPU 使用量、記憶體使用量和效能事件。 內建功能可讓您在開發期間輕鬆進行分析。
 
-詳細資訊位於[Visual Studio 文件](/visualstudio/profiling/profiling-overview)。
+[Visual Studio 檔](/visualstudio/profiling/profiling-overview)中提供詳細資訊。
 
 ## <a name="application-insights"></a>Application Insights
 
-[Application Insights](/azure/application-insights/app-insights-overview)提供您的應用程式的深入的效能資料。 Application Insights 會自動收集回應率、 失敗率、 相依性回應時間，以及更多的資料。 Application Insights 支援您的應用程式記錄自訂事件和特定的計量。
+[Application Insights](/azure/application-insights/app-insights-overview)為您的應用程式提供深入的效能資料。 Application Insights 會自動收集回應率、失敗率、相依性回應時間等等的相關資料。 Application Insights 支援記錄應用程式特定的自訂事件和計量。
 
-Azure Application Insights 提供多種方法來提供受監視的應用程式的深入資訊：
+Azure 應用程式 Insights 提供多種方式，讓您深入瞭解受監視的應用程式：
 
-- [應用程式對應](/azure/application-insights/app-insights-app-map)– 所有元件的分散式應用程式，幫助找出效能瓶頸或熱點失敗-點。
-- [Azure 計量瀏覽器](/azure/azure-monitor/platform/metrics-getting-started)是可讓您繪製圖表，以視覺方式串連趨勢，Microsoft Azure 入口網站的元件，並調查尖峰和下降中計量的值。
-- [在 Application Insights 入口網站中的 [效能] 刀鋒視窗](/azure/application-insights/app-insights-tutorial-performance):
+- [應用程式對應](/azure/application-insights/app-insights-app-map)-協助找出分散式應用程式所有元件的效能瓶頸或失敗熱點。
+- [Azure 計量瀏覽器](/azure/azure-monitor/platform/metrics-getting-started)是 Microsoft Azure 入口網站的元件，可讓您繪製圖表、以視覺化方式相互關聯趨勢，以及調查計量值的尖峰和下降。
+- [Application Insights 入口網站中的 [效能](/azure/application-insights/app-insights-tutorial-performance)] 分頁：
 
-  - 顯示受監視的應用程式中的不同作業的效能詳細資料。
-  - 允許鑽研至單一作業若要檢查的所有組件/相依性持續時間較長的參與。
-  - Profiler 可以從這裡，以收集效能追蹤隨叫用。
+  - 顯示受監視應用程式中不同作業的效能詳細資料。
+  - 允許深入探索單一作業，以檢查參與長時間的所有部分/相依性。
+  - 您可以從這裡叫用 Profiler，視需要收集效能追蹤。
 
-- [Azure Application Insights Profiler](/azure/azure-monitor/app/profiler)允許規則，以及視分析的.NET 應用程式。  Azure 入口網站會顯示擷取效能追蹤呼叫堆疊和忙碌路徑。 追蹤檔案也可以下載以便使用 PerfView 的深入分析。
+- [Azure 應用程式 Insights Profiler](/azure/azure-monitor/app/profiler)可讓您進行 .net 應用程式的一般和隨選程式碼剖析。  Azure 入口網站會顯示使用呼叫堆疊和最忙碌路徑的已捕捉效能追蹤。 您也可以下載追蹤檔案，以使用 PerfView 進行更深入的分析。
 
-Application Insights 可以用於各種環境中：
+Application Insights 可以在各種環境中使用：
 
-- 最佳化，可在 Azure 中運作。
-- 在生產環境、 開發和預備環境中運作。
-- 從在本機的運作方式[Visual Studio](/azure/application-insights/app-insights-visual-studio)或在其他裝載環境。
+- 已優化，可在 Azure 中工作。
+- 適用于生產、開發和預備環境。
+- 在本機[Visual Studio](/azure/application-insights/app-insights-visual-studio)或其他裝載環境中運作。
 
 如需詳細資訊，請參閱 [ASP.NET Core 的 Application Insights](/azure/application-insights/app-insights-asp-net-core)。
 
 ## <a name="perfview"></a>PerfView
 
-[PerfView](https://github.com/Microsoft/perfview)是一種效能分析工具，專為診斷.NET 效能問題的.NET 團隊所建立。 PerfView 可讓分析 CPU 使用量、 記憶體和 GC 的行為、 效能事件，以及時鐘時間。
+[PerfView](https://github.com/Microsoft/perfview)是由 .net 小組所建立的效能分析工具，專門用來診斷 .net 效能問題。 PerfView 可讓您分析 CPU 使用量、記憶體和 GC 行為、效能事件和時鐘時間。
 
-您可以深入了解 PerfView，以及如何開始使用[PerfView 的影片教學課程](https://channel9.msdn.com/Series/PerfView-Tutorial)或閱讀工具中可用的使用者指南或[在 GitHub 上](https://github.com/Microsoft/perfview)。
+您可以深入瞭解 PerfView，以及如何開始使用[PerfView 影片教學](https://channel9.msdn.com/Series/PerfView-Tutorial)課程，或閱讀工具或[GitHub 上](https://github.com/Microsoft/perfview)提供的使用者指南。
 
 ## <a name="windows-performance-toolkit"></a>Windows 效能工具組
 
-[Windows 效能工具組](/windows-hardware/test/wpt/)(WPT) 是由兩個元件所組成：Windows Performance Recorder (WPR) 和 Windows Performance Analyzer (WPA)。 工具產生 Windows 作業系統和應用程式的深入效能設定的檔。 WPT 有更豐富的方式視覺化資料，但其收集的資料比 PerfView 的權力較小。
+[Windows 效能工具](/windows-hardware/test/wpt/)組（WPT）是由兩個元件所組成： Windows performance 錄製器（WPR）和 Windows performance ANALYZER （WPA）。 這些工具會產生 Windows 作業系統和應用程式的深入效能設定檔。 WPT 有更豐富的方式可將資料視覺化，但其資料收集的功能比 PerfView 的更強大。
 
 ## <a name="perfcollect"></a>PerfCollect
 
-PerfView 是一種實用的效能分析工具.NET 案例，它只能在執行 Windows 讓您無法使用它來在 Linux 環境中執行的 ASP.NET Core 應用程式從收集追蹤。
+雖然 PerfView 是適用于 .NET 案例的實用效能分析工具，但它只會在 Windows 上執行，因此您無法使用它來收集來自在 Linux 環境中執行之 ASP.NET Core 應用程式的追蹤。
 
-[PerfCollect](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/linux-performance-tracing.md)是使用原生 Linux 程式碼剖析工具的 bash 指令碼 ([Perf](https://perf.wiki.kernel.org/index.php/Main_Page)並[LTTng](https://lttng.org/)) 收集追蹤，可依 PerfView 進行分析的 Linux 上。 在其中 PerfView 不能直接使用的 Linux 環境中顯示的效能問題時，則 PerfCollect 會很有用。 相反地，PerfCollect 可以從收集追蹤，以便分析的.NET Core 應用程式在 Windows 電腦上使用 PerfView。
+[PerfCollect](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/linux-performance-tracing.md)是一種 bash 腳本，它會使用原生 Linux 程式碼剖析工具（[Perf](https://perf.wiki.kernel.org/index.php/Main_Page)和[LTTng](https://lttng.org/)）來收集可由 PerfView 分析的 Linux 追蹤。 當效能問題顯示在無法直接使用 PerfView 的 Linux 環境中時，PerfCollect 會很有用。 相反地，PerfCollect 可以從 .NET Core 應用程式收集追蹤，然後使用 PerfView 在 Windows 電腦上進行分析。
 
-提供的詳細資訊如何安裝和開始使用 PerfCollect [GitHub 上](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/linux-performance-tracing.md)。
+有關如何安裝和開始使用 PerfCollect 的詳細資訊，可[在 GitHub 上](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/linux-performance-tracing.md)取得。
 
 ## <a name="other-third-party-performance-tools"></a>其他協力廠商效能工具
 
-以下列出一些可用於效能調查的.NET Core 應用程式的協力廠商效能工具。
+以下列出一些在 .NET Core 應用程式的效能調查中很有用的協力廠商效能工具。
 
-- [MiniProfiler](https://miniprofiler.com/)
-- dotTrace 和 jetbrains dotMemory
-- 從 Intel VTune
+- [Miniprofiler 撼動](https://miniprofiler.com/)
+- 來自 JetBrains 的 dotTrace 和 dotMemory
+- 來自 Intel 的 VTune

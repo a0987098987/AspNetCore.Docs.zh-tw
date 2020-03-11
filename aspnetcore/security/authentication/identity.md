@@ -5,18 +5,18 @@ description: 將身分識別與 ASP.NET Core 應用程式搭配使用。 瞭解�
 ms.author: riande
 ms.date: 01/15/2020
 uid: security/authentication/identity
-ms.openlocfilehash: 164ba10c1d1e2a73ebeb8240293a58f158055699
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 2e0723d34a09109a034f3375c4e94aedab2a5427
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172535"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662341"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET Core 上的身分識別簡介
 
 ::: moniker range=">= aspnetcore-3.0"
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ASP.NET Core 身分識別：
 
@@ -38,7 +38,7 @@ ASP.NET Core 身分識別：
 
 [!INCLUDE[](~/includes/IdentityServer4.md)]
 
-[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample)（[如何下載）](xref:index#how-to-download-a-sample)）。
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample)（[如何下載）](xref:index#how-to-download-a-sample)）。
 
 <a name="adi"></a>
 
@@ -46,14 +46,14 @@ ASP.NET Core 身分識別：
 
 建立具有個別使用者帳戶的 ASP.NET Core Web 應用程式專案。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] > [**新增**>**專案**]。
 * 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]** 。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet new webapp --auth Individual -o WebApp1
@@ -67,7 +67,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-產生的專案會提供[ASP.NET Core 身分識別](xref:security/authentication/identity)做為[Razor 類別庫](xref:razor-pages/ui-class)。 身分識別 Razor 類別庫會公開具有 `Identity` 區域的端點。 例如，
+產生的專案會提供[ASP.NET Core 身分識別](xref:security/authentication/identity)做為[Razor 類別庫](xref:razor-pages/ui-class)。 身分識別 Razor 類別庫會公開具有 `Identity` 區域的端點。 例如：
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -77,13 +77,13 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 套用遷移來初始化資料庫。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在 [套件管理員主控台] （PMC）中執行下列命令：
 
 `PM> Update-Database`
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 使用 SQLite 時，在此步驟中不需要進行遷移。 若是 LocalDB，請執行下列命令：
 
@@ -119,11 +119,11 @@ dotnet ef database update
 
 ## <a name="scaffold-register-login-and-logout"></a>Scaffold 註冊、登入和登出
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 新增註冊、登入和登出檔案。 將[Scaffold 身分識別遵循具有授權指示的 Razor 專案](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization)，以產生本節所示的程式碼。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 如果您已建立名為**WebApp1**的專案，請執行下列命令。 否則，請為 `ApplicationDbContext`使用正確的命名空間：
 
@@ -232,7 +232,7 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需使用 SQLite 設定身分識別的相關資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/5131)。
+* 如需使用 SQLite 設定身分識別的相關資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/5131)。
 * [設定身分識別](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
@@ -246,13 +246,13 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 ::: moniker range="< aspnetcore-3.0"
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ASP.NET Core 身分識別是將登入功能新增至 ASP.NET Core 應用程式的成員資格系統。 使用者可以建立帳戶，其中包含儲存在身分識別中的登入資訊，或可以使用外部登入提供者。 支援的外部登入提供者包括[Facebook、Google、Microsoft 帳戶及 Twitter](xref:security/authentication/social/index)。
 
 您可以使用 SQL Server 資料庫來設定身分識別，以儲存使用者名稱、密碼和設定檔資料。 或者，也可以使用另一個持續性存放區，例如 Azure 表格儲存體。
 
-[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/)（[如何下載）](xref:index#how-to-download-a-sample)）。
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/)（[如何下載）](xref:index#how-to-download-a-sample)）。
 
 在本主題中，您將瞭解如何使用身分識別來註冊、登入和登出使用者。 如需有關建立使用身分識別之應用程式的詳細指示，請參閱本文結尾的後續步驟一節。
 
@@ -272,14 +272,14 @@ ASP.NET Core 身分識別是將登入功能新增至 ASP.NET Core 應用程式�
 
 建立具有個別使用者帳戶的 ASP.NET Core Web 應用程式專案。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] > [**新增**>**專案**]。
 * 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]** 。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet new webapp --auth Individual -o WebApp1
@@ -287,7 +287,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-產生的專案會提供[ASP.NET Core 身分識別](xref:security/authentication/identity)做為[Razor 類別庫](xref:razor-pages/ui-class)。 身分識別 Razor 類別庫會公開具有 `Identity` 區域的端點。 例如，
+產生的專案會提供[ASP.NET Core 身分識別](xref:security/authentication/identity)做為[Razor 類別庫](xref:razor-pages/ui-class)。 身分識別 Razor 類別庫會公開具有 `Identity` 區域的端點。 例如：
 
 * /Identity/Account/Login
 * /Identity/Account/Logout
@@ -297,7 +297,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 套用遷移來初始化資料庫。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在 [套件管理員主控台] （PMC）中執行下列命令：
 
@@ -305,7 +305,7 @@ dotnet new webapp --auth Individual -o WebApp1
 Update-Database
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet ef database update
@@ -339,11 +339,11 @@ dotnet ef database update
 
 將[Scaffold 身分識別遵循具有授權指示的 Razor 專案](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization)，以產生本節所示的程式碼。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 新增註冊、登入和登出檔案。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 如果您已建立名為**WebApp1**的專案，請執行下列命令。 否則，請為 `ApplicationDbContext`使用正確的命名空間：
 
@@ -422,7 +422,7 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需使用 SQLite 設定身分識別的相關資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/5131)。
+* 如需使用 SQLite 設定身分識別的相關資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/5131)。
 * [設定身分識別](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>

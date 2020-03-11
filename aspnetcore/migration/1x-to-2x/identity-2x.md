@@ -5,12 +5,12 @@ description: 本文概述將 ASP.NET Core 1.x 驗證和身分識別遷移至 ASP
 ms.author: scaddie
 ms.date: 06/21/2019
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: f3817fa1808c331f7e167618e3bb00d68ad08571
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: af905f1127d504839f66d9e0e1ca1dfc27e32772
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355184"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667605"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>將驗證和身分識別遷移至 ASP.NET Core 2。0
 
@@ -219,7 +219,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
 ### <a name="microsoft-account-authentication"></a>Microsoft 帳戶驗證
 
-如需 Microsoft 帳戶驗證的詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/14455)。
+如需 Microsoft 帳戶驗證的詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/14455)。
 
 在*Startup.cs*中進行下列變更：
 - 以 `UseAuthentication`取代 `Configure` 方法中的 `UseMicrosoftAccountAuthentication` 方法呼叫：
@@ -330,7 +330,7 @@ Windows 驗證有兩種變化：
 
   > `System.InvalidOperationException`：未指定 authenticationScheme，而且找不到任何 DefaultChallengeScheme。
 
-如需詳細資訊，請參閱<xref:security/authentication/windowsauth>。
+如需詳細資訊，請參閱 <xref:security/authentication/windowsauth>。
 
 <a name="identity-cookie-options"></a>
 

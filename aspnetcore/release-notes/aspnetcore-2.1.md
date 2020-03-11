@@ -8,12 +8,12 @@ ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: 57fe6c4e32ad666987c782fac75ddb19e3d3b5c7
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: af5807b782d4acec8c7d40111dc508dfa6127057
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829136"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667542"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>ASP.NET Core 2.1 的新功能
 
@@ -51,9 +51,9 @@ ASP.NET Core 2.1 將 [ASP.NET Core 身分識別](xref:security/authentication/id
 
 ## <a name="https"></a>HTTPS
 
-隨著安全性與隱私權日益受到重視，為 Web 應用程式啟用 HTTPS 極其重要。 在網站上強制執行 HTTPS 變得日益嚴格。 不使用 HTTPS 的網站會被視為不安全。 瀏覽器 (Chromium、Mozilla) 開始強制執行必須從安全內容使用 Web 功能。 [GDPR](xref:security/gdpr) 需要使用 HTTPS 來保護使用者隱私。 雖然在生產環境中使用 HTTPS 非常重要，但在開發中使用 HTTPS 有助於避免發生部署問題 (例如不安全的連結)。 ASP.NET Core 2.1 包含多項改善，讓您更容易在開發中使用 HTTPS，以及在生產環境中設定 HTTPS。 如需詳細資訊，請參閱[強制執行 HTTPS](xref:security/enforcing-ssl)。
+隨著安全性與隱私權日益受到重視，為 Web 應用程式啟用 HTTPS 極其重要。 在網站上強制執行 HTTPS 變得日益嚴格。 不使用 HTTPS 的網站會被視為不安全。 瀏覽器 (Chromium、Mozilla) 開始強制執行必須從安全內容使用 Web 功能。 [GDPR](xref:security/gdpr) 需要使用 HTTPS 來保護使用者隱私。 雖然在生產環境中使用 HTTPS 非常重要，但在開發中使用 HTTPS 有助於避免發生部署問題 (例如不安全的連結)。 ASP.NET Core 2.1 包含多項改善，讓您更容易在開發中使用 HTTPS，以及在生產環境中設定 HTTPS。 如需詳細資訊，請參閱[強制使用 HTTPS](xref:security/enforcing-ssl)。
 
-### <a name="on-by-default"></a>預設為開啟
+### <a name="on-by-default"></a>依預設開啟
 
 為方便保護網站開發，HTTPS 現在預設為啟用。 自 2.1 開始，當有本機開發憑證存在時，Kestrel 會接聽 `https://localhost:5001`。 開發憑證會建立於：
 
@@ -77,7 +77,7 @@ Web 應用程式通常需要同時接聽 HTTP 和 HTTPS，然後將所有 HTTP �
 
 ## <a name="gdpr"></a>GDPR
 
-ASP.NET Core 提供 API 和範本以利符合某些 [EU General Data Protection Regulation (GDPR)](https://www.eugdpr.org/) (EU 一般資料保護規定 (GDPR)) 需求。 如需詳細資訊，請參閱 [ASP.NET Core 的 GDPR 支援](xref:security/gdpr)。 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)示範如何使用及讓您測試新增至 ASP.NET Core 2.1 範本的大部分 GDPR 擴充點和 API。
+ASP.NET Core 提供 API 和範本以利符合某些 [EU General Data Protection Regulation (GDPR)](https://www.eugdpr.org/) (EU 一般資料保護規定 (GDPR)) 需求。 如需詳細資訊，請參閱 [ASP.NET Core 的 GDPR 支援](xref:security/gdpr)。 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)示範如何使用及讓您測試新增至 ASP.NET Core 2.1 範本的大部分 GDPR 擴充點和 API。
 
 ## <a name="integration-tests"></a>整合測試
 
@@ -147,7 +147,7 @@ ASP.NET Core 2.1 包含新的 `IHttpClientFactory` 服務，讓您在應用程�
 
 Angular 範本以 Angular CLI 為基礎，React 範本以 create-react-app 為基礎。
 
-如需詳細資訊，請參閱＜＞。
+如需詳細資訊，請參閱
 
 * <xref:spa/angular>
 * <xref:spa/react>
@@ -169,7 +169,7 @@ Razor Pages 現可支援[區域](xref:mvc/controllers/areas)。 若要查看區�
 
 <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> 方法可讓應用程式加入或退出 ASP.NET Core MVC 2.1 或更新版本所引入的可能重大行為變更。
 
-如需詳細資訊，請參閱<xref:mvc/compatibility-version>。
+如需詳細資訊，請參閱 <xref:mvc/compatibility-version>。
 
 ## <a name="migrate-from-20-to-21"></a>從 2.0 遷移至 2.1
 

@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
 ms.openlocfilehash: 964072ad276f7e3e411ee41cb03a2efb9d05c585
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856120"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663993"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>ASP.NET Core 的影像標籤協助程式
 
@@ -38,7 +38,7 @@ ms.locfileid: "67856120"
 
 ### <a name="asp-append-version"></a>asp-append-version
 
-使用 `true` 值與 `src` 屬性指定 `asp-append-version` 時，即會叫用影像標籤協助程式。
+使用 `asp-append-version` 值與 `true` 屬性指定 `src` 時，即會叫用影像標籤協助程式。
 
 下列範例使用影像標籤協助程式：
 

@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/claims
 ms.openlocfilehash: e289851aafcbc7e3b3f60ab9fbe4b182a78bdf8a
-ms.sourcegitcommit: de0fc77487a4d342bcc30965ec5c142d10d22c03
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73143424"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661802"
 ---
 # <a name="claims-based-authorization-in-aspnet-core"></a>ASP.NET Core 中以宣告為基礎的授權
 
@@ -146,7 +146,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="multiple-policy-evaluation"></a>多重原則評估
 
-如果您將多個原則套用至控制器或動作，則在授與存取權之前，所有原則都必須通過。 例如:
+如果您將多個原則套用至控制器或動作，則在授與存取權之前，所有原則都必須通過。 例如：
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]

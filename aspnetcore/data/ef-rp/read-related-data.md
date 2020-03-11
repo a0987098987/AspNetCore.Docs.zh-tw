@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2019
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 5feed175999bf021cadc7e18f14e00066b50db5b
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: d244ce1527486466bcbc6557ec35869aa206bc4f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259690"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656573"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -69,7 +69,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 ### <a name="scaffold-course-pages"></a>Scaffold Course 頁面
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 遵循 [Scaffold Student 頁面](xref:data/ef-rp/intro#scaffold-student-pages)中的指示，下列部分除外：
 
@@ -77,13 +77,13 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
   * 使用 `Course` 作為模型類別。
   * 使用現有內容類別，而非建立新的類別。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 建立 *Pages/Courses* 資料夾。
 
 * 執行下列命令來 scaffold Course 頁面。
 
-  **在 Windows 上**：
+  **在 Windows 上：**
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
@@ -141,7 +141,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
 
-如需完整範例，請參閱 [IndexSelect.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml) 和 [IndexSelect.cshtml.cs](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml.cs)。
+如需完整範例，請參閱 [IndexSelect.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml) 和 [IndexSelect.cshtml.cs](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml.cs)。
 
 ## <a name="create-instructor-pages"></a>建立 Instructor 頁面
 
@@ -156,7 +156,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 * 當使用者選取講師時，將會顯示相關的 `Course` 實體。 `Instructor` 與 `Course` 實體具有多對多關聯性。 將會針對 `Course` 實體和其相關 `Department` 實體使用積極式載入。 在此情況下，個別查詢可能更有效率，因為只需要所選取講師的課程。 這個範例示範如何使用導覽屬性中實體之導覽屬性的積極式載入。
 * 當使用者選取課程時，將會顯示來自 `Enrollments` 實體的相關資料。 在上述映像中，將會顯示學生姓名和年級。 `Course` 與 `Enrollment` 實體具有一對多關聯性。
 
-### <a name="create-a-view-model"></a>建立視圖模型
+### <a name="create-a-view-model"></a>建立檢視模型
 
 講師頁面會顯示下列三個不同資料表的資料。 需要檢視模型，其包含代表三個資料表的三個屬性。
 
@@ -166,7 +166,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 ### <a name="scaffold-instructor-pages"></a>Scaffold Instructor 頁面
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 遵循 [Scaffold Students 頁面](xref:data/ef-rp/intro#scaffold-student-pages)中的指示，下列部分除外：
 
@@ -174,13 +174,13 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
   * 使用 `Instructor` 作為模型類別。
   * 使用現有內容類別，而非建立新的類別。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 建立 *Pages/Instructors* 資料夾。
 
 * 執行下列命令來 Scaffold Instructor 頁面。
 
-  **在 Windows 上**：
+  **在 Windows 上：**
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
@@ -332,7 +332,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 在本教學課程中，將會讀取和顯示相關資料。 相關資料是 EF Core 載入到導覽屬性的資料。
 
-若您遇到無法解決的問題，請[下載或檢視完整應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。 [下載指示](xref:index#how-to-download-a-sample)。
+若您遇到無法解決的問題，請[下載或檢視完整應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。 [下載指示](xref:index#how-to-download-a-sample)。
 
 下圖顯示本教學課程的已完成頁面：
 
@@ -382,13 +382,13 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 ### <a name="scaffold-the-course-model"></a>Scaffold Course 模型
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 請遵循[建立學生結構模型](xref:data/ef-rp/intro#scaffold-the-student-model)中的指示，並為模型類別使用 `Course`。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
- 執行下列命令：
+ 執行以下命令：
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
@@ -402,7 +402,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 執行應用程式並選取**課程**連結。 部門資料行便會顯示沒有用的 `DepartmentID`。
 
-以下列程式碼取代 `OnGetAsync` 方法：
+以下列程式碼更新 `OnGetAsync` 方法：
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod)]
 
@@ -444,7 +444,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
 
-如需完整範例，請參閱 [IndexSelect.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) 和 [IndexSelect.cshtml.cs](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs)。
+如需完整範例，請參閱 [IndexSelect.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) 和 [IndexSelect.cshtml.cs](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs)。
 
 ## <a name="create-an-instructors-page-that-shows-courses-and-enrollments"></a>建立顯示「課程」和「註冊」的 Instructors 頁面
 
@@ -469,13 +469,13 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 ### <a name="scaffold-the-instructor-model"></a>Scaffold Instructor 模型
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 請遵循[建立學生結構模型](xref:data/ef-rp/intro#scaffold-the-student-model)中的指示，並為模型類別使用 `Instructor`。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
- 執行下列命令：
+ 執行以下命令：
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries

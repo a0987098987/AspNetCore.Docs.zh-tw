@@ -1,78 +1,78 @@
 ---
 title: ASP.NET Core 中的身分識別模型自訂
 author: ajcvickers
-description: 本文說明如何自訂 ASP.NET Core 識別為基礎的 Entity Framework Core 資料模型。
+description: 本文說明如何自訂 ASP.NET Core 身分識別的基礎 Entity Framework Core 資料模型。
 ms.author: avickers
 ms.date: 07/01/2019
 uid: security/authentication/customize_identity_model
 ms.openlocfilehash: f549fdff4a416b5fadcb2b1078b051bbab8e402e
-ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67500481"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656076"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>ASP.NET Core 中的身分識別模型自訂
 
-藉由[Arthur Vickers](https://github.com/ajcvickers)
+依[Arthur Vickers](https://github.com/ajcvickers)
 
-ASP.NET Core 身分識別可供管理和儲存在 ASP.NET Core 應用程式中的使用者帳戶的架構。 身分識別新增至您的專案時**個別使用者帳戶**選取作為驗證機制。 根據預設，身分識別會使用的 Entity Framework (EF) Core 資料模型。 本文說明如何自訂身分識別模型。
+ASP.NET Core 身分識別提供在 ASP.NET Core 應用程式中管理及儲存使用者帳戶的架構。 當您選取**個別使用者帳戶**做為驗證機制時，即會將身分識別新增至您的專案。 根據預設，身分識別會使用 Entity Framework （EF）核心資料模型。 本文說明如何自訂身分識別模型。
 
-## <a name="identity-and-ef-core-migrations"></a>身分識別和 EF Core 移轉
+## <a name="identity-and-ef-core-migrations"></a>身分識別與 EF Core 遷移
 
-先檢查模型，它是有助於您了解如何識別用於[EF Core 移轉](/ef/core/managing-schemas/migrations/)來建立和更新資料庫。 在最上層處理程序是：
+在檢查模型之前，請先瞭解身分識別如何搭配[EF Core 遷移](/ef/core/managing-schemas/migrations/)來建立和更新資料庫。 在最上層，此程式為：
 
-1. 定義或更新[程式碼中的資料模型](/ef/core/modeling/)。
-1. 新增移轉，將此模型轉譯成可以套用至資料庫的變更。
-1. 請檢查移轉正確地表示您自己的意願。
-1. 適用於移轉至更新資料庫以便與模型保持同步。
-1. 重複步驟 1 到 4，以進一步精簡模型，並讓資料庫保持同步。
+1. [在程式碼中](/ef/core/modeling/)定義或更新資料模型。
+1. 新增遷移，將此模型轉譯成可套用至資料庫的變更。
+1. 檢查此遷移是否正確地代表您的意圖。
+1. 套用「遷移」，以更新要與模型同步的資料庫。
+1. 重複步驟1到4以進一步精簡模型，並讓資料庫保持同步。
 
-您可以使用其中一種下列方法來新增和套用移轉：
+使用下列其中一種方法來新增和套用遷移：
 
-* **Package Manager Console** (PMC) 視窗，如果使用 Visual Studio。 如需詳細資訊，請參閱 < [EF Core PMC 工具](/ef/core/miscellaneous/cli/powershell)。
-* .NET Core CLI 如果使用命令列。 如需詳細資訊，請參閱 < [EF Core.NET 命令列工具](/ef/core/miscellaneous/cli/dotnet)。
-* 按一下 **套用移轉**在應用程式執行時，錯誤 頁面上的按鈕。
+* [**套件管理員主控台**] （PMC）視窗（如果使用 Visual Studio）。 如需詳細資訊，請參閱[EF CORE PMC 工具](/ef/core/miscellaneous/cli/powershell)。
+* 如果使用命令列，則為 .NET Core CLI。 如需詳細資訊，請參閱[EF Core .net 命令列工具](/ef/core/miscellaneous/cli/dotnet)。
+* 在應用程式執行時，按一下 [錯誤] 頁面上的 [套用**遷移**] 按鈕。
 
-ASP.NET Core 具有開發階段的錯誤頁面處理常式。 執行應用程式時，處理常式可以套用移轉。 生產環境應用程式通常會產生 SQL 指令碼從移轉和部署資料庫變更為受控制的應用程式和資料庫部署的一部分。
+ASP.NET Core 有開發階段錯誤頁面處理常式。 處理常式可以在應用程式執行時套用遷移。 生產應用程式通常會從遷移產生 SQL 腳本，並將資料庫變更部署為受控制應用程式和資料庫部署的一部分。
 
-建立新的應用程式，使用身分識別時，已經完成上述步驟 1 和 2。 也就是初始資料模型已存在，並已新增至專案的初始移轉。 初始移轉仍然需要套用至資料庫。 透過下列方法之一，您可以套用初始移轉：
+建立使用身分識別的新應用程式時，上述步驟1和2已完成。 也就是說，初始資料模型已經存在，而且初始遷移已加入至專案。 初始遷移仍然必須套用至資料庫。 初始遷移可透過下列其中一種方法來套用：
 
-* 執行`Update-Database`在 PMC 中。
-* 執行`dotnet ef database update`命令殼層。
-* 按一下 **套用移轉**在應用程式執行時，錯誤 頁面上的按鈕。
+* 在 PMC 中執行 `Update-Database`。
+* 在命令 shell 中執行 `dotnet ef database update`。
+* 當應用程式執行時，按一下 [錯誤] 頁面上的 [套用**遷移**] 按鈕。
 
-模型的變更，請重複上述步驟。
+請重複上述步驟，因為對模型進行了變更。
 
 ## <a name="the-identity-model"></a>身分識別模型
 
 ### <a name="entity-types"></a>實體類型
 
-身分識別模型是由下列的實體類型所組成。
+識別模型是由下列實體類型所組成。
 
 |實體類型|描述                                                  |
 |-----------|-------------------------------------------------------------|
-|`User`     |代表的使用者。                                         |
-|`Role`     |表示角色。                                           |
+|`User`     |代表使用者。                                         |
+|`Role`     |代表角色。                                           |
 |`UserClaim`|表示使用者擁有的宣告。                    |
-|`UserToken`|代表使用者的驗證權杖。               |
-|`UserLogin`|將使用者登入產生關聯。                              |
-|`RoleClaim`|表示會授與角色中的所有使用者的宣告。|
-|`UserRole` |聯結實體產生關聯的使用者和角色。               |
+|`UserToken`|表示使用者的驗證權杖。               |
+|`UserLogin`|將使用者與登入產生關聯。                              |
+|`RoleClaim`|表示授與給角色中所有使用者的宣告。|
+|`UserRole` |關聯使用者和角色的聯結實體。               |
 
-### <a name="entity-type-relationships"></a>實體型別關聯性
+### <a name="entity-type-relationships"></a>實體類型關聯性
 
-[實體類型](#entity-types)透過下列方式與彼此相關：
+[實體類型](#entity-types)會以下列方式彼此相關：
 
-* 每個`User`可以有多個`UserClaims`。
-* 每個`User`可以有多個`UserLogins`。
-* 每個`User`可以有多個`UserTokens`。
-* 每個`Role`可以有多個相關聯`RoleClaims`。
-* 每個`User`可以有多個相關聯`Roles`，而且每個`Role`可以與許多相關聯`Users`。 這是需要在資料庫中的聯結資料表的多對多關聯性。 聯結資料表由`UserRole`實體。
+* 每個 `User` 都可以有許多 `UserClaims`。
+* 每個 `User` 都可以有許多 `UserLogins`。
+* 每個 `User` 都可以有許多 `UserTokens`。
+* 每個 `Role` 都可以有許多相關聯的 `RoleClaims`。
+* 每個 `User` 都可以有許多相關聯的 `Roles`，而且每個 `Role` 都可以與許多 `Users`相關聯。 這是多對多關聯性，需要資料庫中的聯結資料表。 聯結資料表是以 `UserRole` 實體表示。
 
-### <a name="default-model-configuration"></a>預設模型組態
+### <a name="default-model-configuration"></a>預設模型設定
 
-識別定義許多*內容類別*繼承自[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)若要設定及使用模型。 此組態完成使用[EF Core 程式碼 First fluent 應用程式開發介面](/ef/core/modeling/)中[OnModelCreating](/dotnet/api/microsoft.entityframeworkcore.dbcontext.onmodelcreating)內容類別的方法。 預設設定是：
+身分識別會定義從[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)繼承的許多*內容類別*，以設定和使用模型。 這項設定是在 coNtext 類別的[OnModelCreating](/dotnet/api/microsoft.entityframeworkcore.dbcontext.onmodelcreating)方法中，使用[EF CORE Code First 流暢 API](/ef/core/modeling/)來完成。 預設設定為：
 
 ```csharp
 builder.Entity<TUser>(b =>
@@ -195,9 +195,9 @@ builder.Entity<TUserRole>(b =>
 });
 ```
 
-### <a name="model-generic-types"></a>模型的泛型型別
+### <a name="model-generic-types"></a>模型泛型型別
 
-識別定義預設值[Common Language Runtime](/dotnet/standard/glossary#clr)上面所列的每個實體類型 (CLR) 型別。 這些類型都會加上*識別*:
+身分識別會針對上述每個實體類型定義預設的[Common Language Runtime](/dotnet/standard/glossary#clr) （CLR）類型。 這些類型的前面都會加上*Identity*：
 
 * `IdentityUser`
 * `IdentityRole`
@@ -207,9 +207,9 @@ builder.Entity<TUserRole>(b =>
 * `IdentityRoleClaim`
 * `IdentityUserRole`
 
-而不是直接使用這些類型，類型可以作為基底類別的應用程式本身的類型。 `DbContext`身分識別所定義的類別是泛型，使不同的 CLR 型別可以用一或多個模型中的實體類型。 這些泛型型別也允許`User`變更主索引鍵 (PK) 資料類型。
+類型可以當做應用程式本身類型的基類使用，而不是直接使用這些類型。 識別所定義的 `DbContext` 類別是泛型的，因此可以將不同的 CLR 類型用於模型中的一或多個實體類型。 這些泛型型別也允許變更 `User` 主鍵（PK）資料類型。
 
-針對角色，使用支援的身分識別時<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>應該使用類別。 例如:
+搭配角色的支援使用身分識別時，應該使用 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext> 類別。 例如：
 
 ```csharp
 // Uses all the built-in Identity types
@@ -253,7 +253,7 @@ public abstract class IdentityDbContext<
          where TUserToken : IdentityUserToken<TKey>
 ```
 
-您也可使用身分識別，而角色 （僅 「 宣告 」） 不在此情況下<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserContext%601>應該使用類別：
+您也可以使用沒有角色的身分識別（僅限宣告），在此情況下應該使用 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserContext%601> 類別：
 
 ```csharp
 // Uses the built-in non-role Identity types except with a custom User type
@@ -289,14 +289,14 @@ public abstract class IdentityUserContext<
 
 ## <a name="customize-the-model"></a>自訂模型
 
-模型自訂的起始點是衍生自適當的內容類型。 請參閱[模型化泛型類型](#model-generic-types)一節。 此內容類型通常稱為`ApplicationDbContext`和 ASP.NET Core 範本所建立。
+模型自訂的起點是衍生自適當的內容型別。 請參閱[模型泛型型別](#model-generic-types)一節。 此內容類型通常會 `ApplicationDbContext` 呼叫，而且是由 ASP.NET Core 範本所建立。
 
-內容用來設定模型有兩種：
+內容用來以兩種方式設定模型：
 
-* 提供實體和泛型型別參數的索引鍵類型。
-* 覆寫`OnModelCreating`若要修改這些類型的對應。
+* 提供泛型型別參數的實體和索引鍵類型。
+* 覆寫 `OnModelCreating` 以修改這些類型的對應。
 
-當覆寫`OnModelCreating`，`base.OnModelCreating`應該先呼叫; 應該接著呼叫覆寫的組態。 EF Core 通常會有設定的最後一個 wins 原則。 例如，如果`ToTable`實體類型的方法稱為第一次一個資料表名稱，然後再次更新版本不同的資料表名稱，第二次呼叫中的資料表名稱會使用。
+覆寫 `OnModelCreating`時，應該先呼叫 `base.OnModelCreating`。[下一步] 應該會呼叫覆寫設定。 EF Core 通常會有設定的最後一次 wins 原則。 例如，如果實體類型的 `ToTable` 方法先以一個資料表名稱呼叫，然後在稍後使用不同的資料表名稱，則會使用第二個呼叫中的資料表名稱。
 
 ### <a name="custom-user-data"></a>自訂使用者資料
 
@@ -310,7 +310,7 @@ dotnet ef migrations add CreateIdentitySchema
 dotnet ef database update
  -->
 
-[自訂使用者資料](xref:security/authentication/add-user-data)支援藉由繼承自`IdentityUser`。 按照慣例命名此類型`ApplicationUser`:
+[自訂使用者資料](xref:security/authentication/add-user-data)是藉由從 `IdentityUser`繼承來支援。 建議您將此類型命名 `ApplicationUser`：
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -319,7 +319,7 @@ public class ApplicationUser : IdentityUser
 }
 ```
 
-使用`ApplicationUser`作為內容的泛型引數的型別：
+使用 `ApplicationUser` 類型做為內容的泛型引數：
 
 ```csharp
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -336,9 +336,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 }
 ```
 
-不需要覆寫`OnModelCreating`在`ApplicationDbContext`類別。 EF Core 會將對應`CustomTag`依照慣例的屬性。 不過，資料庫必須建立新更新`CustomTag`資料行。 若要建立資料行，新增移轉時，，然後更新資料庫中所述[身分識別和 EF Core 移轉](#identity-and-ef-core-migrations)。
+不需要覆寫 `ApplicationDbContext` 類別中的 `OnModelCreating`。 EF Core 依慣例對應 `CustomTag` 屬性。 不過，必須更新資料庫，才能建立新的 `CustomTag` 資料行。 若要建立資料行，請新增遷移，然後依照身分[識別和 EF Core 遷移](#identity-and-ef-core-migrations)中的說明更新資料庫。
 
-更新*Pages/Shared/_LoginPartial.cshtml* ，並取代`IdentityUser`使用`ApplicationUser`:
+更新*Pages/Shared/_LoginPartial. cshtml* ，並以 `ApplicationUser`取代 `IdentityUser`：
 
 ```cshtml
 @using Microsoft.AspNetCore.Identity
@@ -347,7 +347,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 @inject UserManager<ApplicationUser> UserManager
 ```
 
-更新*Areas/Identity/IdentityHostingStartup.cs*或是`Startup.ConfigureServices`，並取代`IdentityUser`使用`ApplicationUser`。
+更新*Areas/Identity/IdentityHostingStartup*或 `Startup.ConfigureServices`，並以 `ApplicationUser`取代 `IdentityUser`。
 
 ```csharp
 services.AddDefaultIdentity<ApplicationUser>()
@@ -355,20 +355,20 @@ services.AddDefaultIdentity<ApplicationUser>()
         .AddDefaultUI();
 ```
 
-在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。 如需詳細資訊，請參閱:
+在 ASP.NET Core 2.1 或更新版本中，身分識別會當做 Razor 類別庫提供。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫 <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果識別 scaffolder 是用來將身分識別檔案加入至專案，請移除對 `AddDefaultUI`的呼叫。 如需詳細資訊，請參閱
 
 * [Scaffold 身分識別](xref:security/authentication/scaffold-identity)
-* [加入、 下載及刪除身分識別的自訂使用者資料](xref:security/authentication/add-user-data)
+* [新增、下載及刪除自訂使用者資料以進行識別](xref:security/authentication/add-user-data)
 
-### <a name="change-the-primary-key-type"></a>變更主索引鍵類型
+### <a name="change-the-primary-key-type"></a>變更主要金鑰類型
 
-在建立資料庫後的 PK 資料行的資料類型的變更是在許多資料庫系統上有問題。 變更在 PK 作業通常牽涉到卸除並重新建立資料表。 因此，金鑰類型應該指定在初始移轉時建立資料庫。
+在建立資料庫之後，對 PK 資料行的資料類型所做的變更在許多資料庫系統上都有問題。 變更 PK 通常牽涉到卸載並重新建立資料表。 因此，在建立資料庫時，應該在初始遷移中指定金鑰類型。
 
 請遵循下列步驟來變更 PK 類型：
 
-1. 如果資料庫已建立 PK 變更之前，執行`Drop-Database`(PMC) 或`dotnet ef database drop`(.NET Core CLI) 來刪除它。
-2. 確認刪除資料庫之後, 移除與初始移轉`Remove-Migration`(PMC) 或`dotnet ef migrations remove`(.NET Core CLI)。
-3. 更新`ApplicationDbContext`類別來衍生自<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext%603>。 指定新的金鑰類型，如`TKey`。 例如，若要使用`Guid`金鑰類型：
+1. 如果資料庫是在 PK 變更之前建立的，請執行 `Drop-Database` （PMC）或 `dotnet ef database drop` （.NET Core CLI）加以刪除。
+2. 確認刪除資料庫之後，請使用 `Remove-Migration` （PMC）或 `dotnet ef migrations remove` （.NET Core CLI）移除初始遷移。
+3. 將 `ApplicationDbContext` 類別更新為衍生自 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext%603>。 指定 `TKey`的新金鑰類型。 例如，若要使用 `Guid` 金鑰類型：
 
     ```csharp
     public class ApplicationDbContext
@@ -383,17 +383,17 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     ::: moniker range=">= aspnetcore-2.0"
 
-    在上述程式碼的泛型類別<xref:Microsoft.AspNetCore.Identity.IdentityUser%601>和<xref:Microsoft.AspNetCore.Identity.IdentityRole%601>必須指定要使用新的索引鍵類型。
+    在上述程式碼中，必須指定泛型類別 <xref:Microsoft.AspNetCore.Identity.IdentityUser%601> 和 <xref:Microsoft.AspNetCore.Identity.IdentityRole%601>，才能使用新的索引鍵類型。
 
     ::: moniker-end
 
     ::: moniker range="<= aspnetcore-1.1"
 
-    在上述程式碼的泛型類別<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser%601>和<xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole%601>必須指定要使用新的索引鍵類型。
+    在上述程式碼中，必須指定泛型類別 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser%601> 和 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole%601>，才能使用新的索引鍵類型。
 
     ::: moniker-end
 
-    `Startup.ConfigureServices` 必須更新為使用一般的使用者：
+    `Startup.ConfigureServices` 必須更新為使用一般使用者：
 
     ::: moniker range=">= aspnetcore-2.1"
 
@@ -425,7 +425,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     ::: moniker-end
 
-4. 如果自訂`ApplicationUser`類別正在使用中，更新類別繼承自`IdentityUser`。 例如:
+4. 如果正在使用自訂 `ApplicationUser` 類別，請將類別更新為繼承自 `IdentityUser`。 例如：
 
     ::: moniker range="<= aspnetcore-1.1"
 
@@ -439,7 +439,7 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     ::: moniker-end
 
-    更新`ApplicationDbContext`若要參考自訂`ApplicationUser`類別：
+    更新 `ApplicationDbContext` 以參考自訂 `ApplicationUser` 類別：
 
     ```csharp
     public class ApplicationDbContext
@@ -452,7 +452,7 @@ services.AddDefaultIdentity<ApplicationUser>()
     }
     ```
 
-    新增身分識別服務中的註冊自訂的資料庫內容類別`Startup.ConfigureServices`:
+    在 `Startup.ConfigureServices`中新增身分識別服務時，註冊自訂資料庫內容類別：
 
     ::: moniker range=">= aspnetcore-2.1"
 
@@ -463,9 +463,9 @@ services.AddDefaultIdentity<ApplicationUser>()
             .AddDefaultTokenProviders();
     ```
 
-    藉由分析的主索引鍵的資料型別推斷[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件。
+    主要索引鍵的資料類型是藉由分析[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件來推斷。
 
-    在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。
+    在 ASP.NET Core 2.1 或更新版本中，身分識別會當做 Razor 類別庫提供。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫 <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果識別 scaffolder 是用來將身分識別檔案加入至專案，請移除對 `AddDefaultUI`的呼叫。
 
     ::: moniker-end
 
@@ -477,7 +477,7 @@ services.AddDefaultIdentity<ApplicationUser>()
             .AddDefaultTokenProviders();
     ```
 
-    藉由分析的主索引鍵的資料型別推斷[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件。
+    主要索引鍵的資料類型是藉由分析[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件來推斷。
 
     ::: moniker-end
 
@@ -489,27 +489,27 @@ services.AddDefaultIdentity<ApplicationUser>()
             .AddDefaultTokenProviders();
     ```
 
-    <xref:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores*>方法會接受`TKey`表示主索引鍵的資料類型的類型。
+    <xref:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores*> 方法會接受 `TKey` 類型，表示主鍵的資料類型。
 
     ::: moniker-end
 
-5. 如果自訂`ApplicationRole`類別正在使用中，更新類別繼承自`IdentityRole<TKey>`。 例如:
+5. 如果正在使用自訂 `ApplicationRole` 類別，請將類別更新為繼承自 `IdentityRole<TKey>`。 例如：
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Data/ApplicationRole.cs?name=snippet_ApplicationRole&highlight=4)]
 
-    更新`ApplicationDbContext`若要參考自訂`ApplicationRole`類別。 例如，下列類別會參考自訂`ApplicationUser`和自訂`ApplicationRole`:
+    更新 `ApplicationDbContext` 以參考自訂 `ApplicationRole` 類別。 例如，下列類別會參考自訂 `ApplicationUser` 和自訂 `ApplicationRole`：
 
     ::: moniker range=">= aspnetcore-2.1"
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Data/ApplicationDbContext.cs?name=snippet_ApplicationDbContext&highlight=5-6)]
 
-    新增身分識別服務中的註冊自訂的資料庫內容類別`Startup.ConfigureServices`:
+    在 `Startup.ConfigureServices`中新增身分識別服務時，註冊自訂資料庫內容類別：
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=13-16)]
 
-    藉由分析的主索引鍵的資料型別推斷[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件。
+    主要索引鍵的資料類型是藉由分析[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件來推斷。
 
-    在 ASP.NET Core 2.1 或更新版本，Razor 類別庫提供身分識別。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫<xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果身分識別 scaffolder 用來識別檔案加入專案，移除呼叫`AddDefaultUI`。
+    在 ASP.NET Core 2.1 或更新版本中，身分識別會當做 Razor 類別庫提供。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。 因此，上述程式碼需要呼叫 <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>。 如果識別 scaffolder 是用來將身分識別檔案加入至專案，請移除對 `AddDefaultUI`的呼叫。
 
     ::: moniker-end
 
@@ -517,11 +517,11 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     [!code-csharp[](customize-identity-model/samples/2.0/RazorPagesSampleApp/Data/ApplicationDbContext.cs?name=snippet_ApplicationDbContext&highlight=5-6)]
 
-    新增身分識別服務中的註冊自訂的資料庫內容類別`Startup.ConfigureServices`:
+    在 `Startup.ConfigureServices`中新增身分識別服務時，註冊自訂資料庫內容類別：
 
     [!code-csharp[](customize-identity-model/samples/2.0/RazorPagesSampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=7-9)]
 
-    藉由分析的主索引鍵的資料型別推斷[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件。
+    主要索引鍵的資料類型是藉由分析[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)物件來推斷。
 
     ::: moniker-end
 
@@ -529,17 +529,17 @@ services.AddDefaultIdentity<ApplicationUser>()
 
     [!code-csharp[](customize-identity-model/samples/1.1/MvcSampleApp/Data/ApplicationDbContext.cs?name=snippet_ApplicationDbContext&highlight=5-6)]
 
-    新增身分識別服務中的註冊自訂的資料庫內容類別`Startup.ConfigureServices`:
+    在 `Startup.ConfigureServices`中新增身分識別服務時，註冊自訂資料庫內容類別：
 
     [!code-csharp[](customize-identity-model/samples/1.1/MvcSampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=7-9)]
 
-    <xref:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores*>方法會接受`TKey`表示主索引鍵的資料類型的類型。
+    <xref:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores*> 方法會接受 `TKey` 類型，表示主鍵的資料類型。
 
     ::: moniker-end
 
 ### <a name="add-navigation-properties"></a>新增導覽屬性
 
-變更關聯性的模型組態可能會比其他變更更困難。 小心必須取代現有的關聯性，而不是建立新的其他關聯性。 特別是，已變更的關聯性也必須指定相同的外部索引鍵 (FK) 屬性，為現有的關聯性。 比方說，之間的關係`Users`和`UserClaims`是，根據預設，指定方式如下：
+變更關聯性的模型設定可能會比進行其他變更更棘手。 必須小心取代現有的關聯性，而不是建立新的其他關聯性。 特別是，已變更的關聯性必須指定與現有關聯性相同的外鍵（FK）屬性。 例如，`Users` 和 `UserClaims` 之間的關聯性預設為，如下所示：
 
 ```csharp
 builder.Entity<TUser>(b =>
@@ -552,9 +552,9 @@ builder.Entity<TUser>(b =>
 });
 ```
 
-FK 此關聯性指定為`UserClaim.UserId`屬性。 `HasMany` 和`WithOne`呼叫不含引數來建立不含導覽屬性的關聯性。
+此關聯性的 FK 會指定為 `UserClaim.UserId` 屬性。 不需要引數即可呼叫 `HasMany` 和 `WithOne`，以建立沒有導覽屬性的關聯性。
 
-將導覽屬性，加入`ApplicationUser`，可讓相關聯`UserClaims`參考使用者：
+將導覽屬性新增至 `ApplicationUser`，讓使用者可以參考相關聯的 `UserClaims`：
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -563,9 +563,9 @@ public class ApplicationUser : IdentityUser
 }
 ```
 
-`TKey`針對`IdentityUserClaim<TKey>`是指定使用者的主索引鍵的類型。 在此情況下，`TKey`是`string`因為正在使用預設值。 它有**未**PK 類型`UserClaim`實體類型。
+`IdentityUserClaim<TKey>` 的 `TKey` 是為使用者的 PK 指定的類型。 在此情況下，會 `string` `TKey`，因為會使用預設值。 這**不**是 `UserClaim` 實體類型的 PK 類型。
 
-現在，導覽屬性存在，它必須設定在`OnModelCreating`:
+現在導覽屬性已經存在，必須在 `OnModelCreating`中設定：
 
 ```csharp
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -591,13 +591,13 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 }
 ```
 
-請注意關聯性已完全一樣，只與呼叫中指定的導覽屬性`HasMany`。
+請注意，關聯性的設定方式與之前完全相同，只有在 `HasMany`的呼叫中指定了導覽屬性。
 
-導覽屬性只存在於 EF 模型，而不是在資料庫中。 由於關聯性的 FK 沒有變更，這種模型變更不需要更新資料庫。 這可以藉由新增移轉，以進行變更之後檢查。 `Up`和`Down`方法是空的。
+導覽屬性只存在於 EF 模型中，而非資料庫中。 因為關聯性的 FK 尚未變更，所以這種模型變更不需要更新資料庫。 這可以藉由在進行變更後新增遷移來加以檢查。 `Up` 和 `Down` 方法是空的。
 
-### <a name="add-all-user-navigation-properties"></a>新增所有的使用者導覽屬性
+### <a name="add-all-user-navigation-properties"></a>新增所有使用者導覽屬性
 
-使用上的一節做為指引，下列範例會設定使用者的所有關聯性的單向導覽屬性：
+使用上述章節做為指導方針，下列範例會為使用者的所有關聯性設定單向導覽屬性：
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -651,9 +651,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 }
 ```
 
-### <a name="add-user-and-role-navigation-properties"></a>新增使用者和角色的導覽屬性
+### <a name="add-user-and-role-navigation-properties"></a>新增使用者和角色導覽屬性
 
-使用上的一節做為指引，下列範例會設定使用者和角色的所有關聯性的導覽屬性：
+使用上述章節做為指導方針，下列範例會設定使用者和角色上所有關聯性的導覽屬性：
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -732,15 +732,15 @@ public class ApplicationDbContext
 }
 ```
 
-附註：
+注意：
 
-* 這個範例還包括`UserRole`聯結實體，才能瀏覽的使用者角色的多對多關聯性。
-* 請記得要變更類型的導覽屬性反映這一點`ApplicationXxx`類型現在正在使用而不是`IdentityXxx`型別。
-* 請務必使用`ApplicationXxx`在泛型`ApplicationContext`定義。
+* 此範例也包含 `UserRole` join 實體，這是將多對多關聯性從使用者導覽至角色時所需的專案。
+* 請記得變更導覽屬性的類型，以反映現在會使用 `ApplicationXxx` 類型，而不是 `IdentityXxx` 類型。
+* 請記得使用泛型 `ApplicationContext` 定義中的 `ApplicationXxx`。
 
 ### <a name="add-all-navigation-properties"></a>新增所有導覽屬性
 
-使用上的一節做為指引，下列範例會設定所有的實體類型上的所有關聯性的導覽屬性：
+使用上述章節做為指引，下列範例會設定所有實體類型上所有關聯性的導覽屬性：
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -847,11 +847,11 @@ public class ApplicationDbContext
 
 ### <a name="use-composite-keys"></a>使用複合索引鍵
 
-前幾節所示範變更身分識別模型中使用的索引鍵的類型。 變更要使用複合索引鍵的識別索引鍵模型不支援或建議。 使用身分識別的複合索引鍵，牽涉到變更身分識別管理員 」 程式碼與模型之間的互動方式。 這項自訂已超出本文的範圍。
+前面幾節會示範如何變更身分識別模型中所使用的金鑰類型。 不支援或不建議將識別金鑰模型變更為使用複合索引鍵。 使用具有身分識別的複合索引鍵，需要變更 Identity manager 程式碼與模型互動的方式。 此自訂已超出本檔的範圍。
 
-### <a name="change-tablecolumn-names-and-facets"></a>變更資料表/資料行名稱和 facet
+### <a name="change-tablecolumn-names-and-facets"></a>變更資料表/資料行的名稱和 facet
 
-若要變更的資料表和資料行名稱，請呼叫`base.OnModelCreating`。 然後，新增設定，以覆寫任何預設值。 例如，若要變更的身分識別的所有資料表名稱：
+若要變更資料表和資料行的名稱，請呼叫 `base.OnModelCreating`。 然後，新增設定以覆寫任何預設值。 例如，若要變更所有身分識別資料表的名稱：
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -895,9 +895,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-這些範例會使用預設的身分識別類型。 如果使用的應用程式類型，例如`ApplicationUser`，設定該型別，而不是預設類型。
+這些範例會使用預設的識別類型。 如果使用如 `ApplicationUser`之類的應用程式類型，請設定該類型，而不是預設類型。
 
-下列範例會變更某些資料行名稱：
+下列範例會變更一些資料行名稱：
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -917,7 +917,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-可以使用特定設定某些類型的資料庫資料行*facet* (例如，最大值`string`允許的長度)。 下列範例會設定數個資料行的最大長度`string`模型中的屬性：
+某些類型的資料庫資料行可以使用特定*facet*來設定（例如，允許的最大 `string` 長度）。 下列範例會在模型中設定數個 `string` 屬性的資料行最大長度：
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -940,9 +940,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-### <a name="map-to-a-different-schema"></a>對應到不同的結構描述
+### <a name="map-to-a-different-schema"></a>對應至不同的架構
 
-結構描述的行為會跨資料庫提供者。 SQL Server 的預設值是建立中的所有資料表*dbo*結構描述。 可以在不同的結構描述中建立資料表。 例如:
+架構在資料庫提供者之間的行為可能不同。 針對 SQL Server，預設值是在*dbo*架構中建立所有資料表。 資料表可以在不同的架構中建立。 例如：
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -957,15 +957,15 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ### <a name="lazy-loading"></a>消極式載入
 
-在本節中，新增身分識別模型中的消極式載入 proxy 的支援。 「 延遲載入適合，因為它可讓而不用先確保他們載入的導覽屬性。
+在本節中，會新增身分識別模型中的消極式載入 proxy 支援。 消極式載入很有用，因為它允許直接使用導覽屬性，而不需要先確定它們已載入。
 
-實體類型可以進行適用於數種方式的消極式載入中所述[EF Core 文件集](/ef/core/querying/related-data#lazy-loading)。 為了簡單起見，使用消極式載入 proxy，而這需要：
+實體類型可用於以數種方式進行消極式載入，如[EF Core 檔](/ef/core/querying/related-data#lazy-loading)中所述。 為了簡單起見，請使用消極式載入 proxy，這需要：
 
-* 安裝[Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/)封裝。
-* 呼叫<xref:Microsoft.EntityFrameworkCore.ProxiesExtensions.UseLazyLoadingProxies*>內[AddDbContext\<TContext >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)。
-* 公開的實體類型與`public virtual`導覽屬性。
+* 安裝[microsoft.entityframeworkcore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/)封裝。
+* 呼叫[AddDbCoNtext\<TCoNtext >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)內的 <xref:Microsoft.EntityFrameworkCore.ProxiesExtensions.UseLazyLoadingProxies*>。
+* 具有 `public virtual` 導覽屬性的公用實體類型。
 
-下列範例示範如何呼叫`UseLazyLoadingProxies`在`Startup.ConfigureServices`:
+下列範例示範如何呼叫 `Startup.ConfigureServices`中的 `UseLazyLoadingProxies`：
 
 ```csharp
 services
@@ -976,7 +976,7 @@ services
     .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
 
-請參閱前面的範例，如需導覽屬性加入實體類型的指引。
+請參閱上述範例，以取得將導覽屬性加入至實體類型的指引。
 
 ## <a name="additional-resources"></a>其他資源
 

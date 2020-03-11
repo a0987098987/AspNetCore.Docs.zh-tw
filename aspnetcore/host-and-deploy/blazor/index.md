@@ -11,29 +11,29 @@ no-loc:
 - SignalR
 uid: host-and-deploy/blazor/index
 ms.openlocfilehash: 238e7fc8f8d64c7847dc8847fb66e22442a3c8e0
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160258"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667150"
 ---
-# <a name="host-and-deploy-aspnet-core-opno-locblazor"></a>裝載和部署 ASP.NET Core Blazor
+# <a name="host-and-deploy-aspnet-core-blazor"></a>裝載及部署 ASP.NET Core Blazor
 
 作者：[Luke Latham](https://github.com/guardrex)、[Rainer Stropek](https://www.timecockpit.com) 和 [Daniel Roth](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-## <a name="publish-the-app"></a>發行應用程式
+## <a name="publish-the-app"></a>發佈應用程式
 
 應用程式會在發行組態中發佈以供部署。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 從巡覽列中選取 [建置] > [發佈 {應用程式}]。
 1. 選取「發佈目標」。 若要在本機發佈，請選取 [資料夾]。
-1. 接受 [選擇資料夾] 欄位中的預設位置，或指定不同的位置。 選取 [發行] 按鈕。
+1. 接受 [選擇資料夾] 欄位中的預設位置，或指定不同的位置。 選取 [發佈] 按鈕。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 使用 [dotnet publish](/dotnet/core/tools/dotnet-publish) 命令，搭配發行組態來發佈應用程式：
 
@@ -80,7 +80,7 @@ app.UsePathBase("/CoolApp");
 
 若要設定應用程式的基底路徑，請更新*Pages/_Host. cshtml*檔案（Blazor 伺服器）或*wwwroot/index.html*檔（Blazor WebAssembly）的 `<head>` 標記元素內的 `<base>` 標記。 將 `href` 屬性值設定為 `/{RELATIVE URL PATH}/` （需要尾端斜線），其中 `{RELATIVE URL PATH}` 是應用程式的完整相對 URL 路徑。
 
-針對具有非根相對 URL 路徑的 Blazor WebAssembly 應用程式（例如 `<base href="/CoolApp/">`），應用程式*在本機執行時*，無法找到其資源。 若要在本機開發和測試期間解決這個問題，您可以提供「基底路徑」引數，讓它在執行時符合 `<base>` 標籤的 `href` 值。 不要包含尾端斜線。 若要在本機執行應用程式時傳遞 path base 引數，請使用 `--pathbase` 選項，從應用程式的目錄執行 `dotnet run` 命令：
+針對具有非根相對 URL 路徑的 Blazor WebAssembly 應用程式（例如 `<base href="/CoolApp/">`），應用程式*在本機執行時*，無法找到其資源。 若要在本機開發和測試期間解決這個問題，您可以提供「基底路徑」引數，讓它在執行時符合 `href` 標籤的 `<base>` 值。 不要包含尾端斜線。 若要在本機執行應用程式時傳遞 path base 引數，請使用 `--pathbase` 選項，從應用程式的目錄執行 `dotnet run` 命令：
 
 ```dotnetcli
 dotnet run --pathbase=/{RELATIVE URL PATH (no trailing slash)}

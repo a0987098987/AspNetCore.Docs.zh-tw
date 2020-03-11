@@ -1,22 +1,22 @@
 ---
 title: ASP.NET Core 中的整合測試
-author: guardrex
+author: rick-anderson
 description: 了解整合測試如何確保應用程式的元件在基礎結構層級 (包括資料庫、檔案系統和網路) 正確運作。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/06/2019
 uid: test/integration-tests
-ms.openlocfilehash: ccee8957a72da0eb5d870b1bd184ee1ea146a0e6
-ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
+ms.openlocfilehash: 414e47b9c5a1c843755bd79d313f503b554945db
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75693787"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664693"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
-作者： [Luke Latham](https://github.com/guardrex)、 [Javier Calvarro Nelson](https://github.com/javiercn)、 [Steve Smith](https://ardalis.com/)和[Jos van der Til](https://jvandertil.nl)
+作者： [Javier Calvarro Nelson](https://github.com/javiercn)、 [Steve Smith](https://ardalis.com/)和[Jos van der Til](https://jvandertil.nl)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -24,12 +24,12 @@ ms.locfileid: "75693787"
 
 本主題假設對單元測試有基本瞭解。 如果不熟悉測試概念，請參閱[.Net Core 中的單元測試和 .NET Standard](/dotnet/core/testing/)主題及其連結的內容。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 範例應用程式是 Razor Pages 應用程式，並假設對 Razor Pages 有基本瞭解。 如果不熟悉 Razor Pages，請參閱下列主題：
 
 * [Razor 頁面簡介](xref:razor-pages/index)
-* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
+* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Razor 頁面單元測試](xref:test/razor-pages-tests)
 
 > [!NOTE]
@@ -106,7 +106,7 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 * 參考[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing)的封裝。
 * 在專案檔中指定 Web SDK （`<Project Sdk="Microsoft.NET.Sdk.Web">`）。
 
-這些必要條件可在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中看到。 檢查 [*測試]/[RazorPagesProject]/* [測試]/[RazorPagesProject]。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
+這些必要條件可在[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中看到。 檢查 [*測試]/[RazorPagesProject]/* [測試]/[RazorPagesProject]。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
 
 * [xunit](https://www.nuget.org/packages/xunit)
 * [xunit。 visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio)
@@ -146,7 +146,7 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 
    [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)中的資料庫植入是由 `InitializeDbForTests` 方法所執行。 此方法會在[整合測試範例：測試應用程式組織](#test-app-organization)一節中說明。
+   [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)中的資料庫植入是由 `InitializeDbForTests` 方法所執行。 此方法會在[整合測試範例：測試應用程式組織](#test-app-organization)一節中說明。
 
    SUT 的資料庫內容會在其 `Startup.ConfigureServices` 方法中註冊。 測試應用程式的 `builder.ConfigureServices` 回呼會在應用程式的 `Startup.ConfigureServices` 碼執行*之後*執行。 執行順序是 ASP.NET Core 3.0 版本之[泛型主機](xref:fundamentals/host/generic-host)的重大變更。 若要針對測試使用不同于應用程式資料庫的資料庫，應用程式的資料庫內容必須在 `builder.ConfigureServices`中取代。
 
@@ -181,9 +181,9 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 1. 剖析 antiforgery cookie，並從回應要求驗證權杖。
 1. 提出具有 antiforgery cookie 的 POST 要求，並要求驗證權杖。
 
-`GetDocumentAsync`  在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中, helper擴充方法(helper/HttpClientExtensions)和helper方法(helper/HtmlHelpers)會使用[AngleSharp](https://anglesharp.github.io/)剖析器來`SendAsync`處理 antiforgery請使用下列方法進行檢查:
+[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中的 `SendAsync` helper 擴充方法（Helper */HttpClientExtensions*）和 `GetDocumentAsync` helper 方法（helper */HtmlHelpers*）會使用[AngleSharp](https://anglesharp.github.io/)剖析器，利用下列方法來處理 antiforgery 檢查：
 
-* `GetDocumentAsync`接收 [HttpResponseMessage ](/dotnet/api/system.net.http.httpresponsemessage) , 並`IHtmlDocument`傳回&ndash;。 `GetDocumentAsync` 使用可根據原始 `HttpResponseMessage`準備*虛擬回應*的處理站。 如需詳細資訊，請參閱[AngleSharp 檔](https://github.com/AngleSharp/AngleSharp#documentation)。
+* `GetDocumentAsync` &ndash; 接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage)並傳回 `IHtmlDocument`。 `GetDocumentAsync` 使用可根據原始 `HttpResponseMessage`準備*虛擬回應*的處理站。 如需詳細資訊，請參閱[AngleSharp 檔](https://github.com/AngleSharp/AngleSharp#documentation)。
 * `SendAsync` `HttpClient` 撰寫[HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)的擴充方法，並呼叫[SendAsync （HttpRequestMessage）](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) ，將要求提交至 SUT。 `SendAsync` 的多載接受 HTML 表單（`IHtmlFormElement`）和下列各項：
   * 表單的 [提交] 按鈕（`IHtmlElement`）
   * 表單值集合（`IEnumerable<KeyValuePair<string, string>>`）
@@ -196,7 +196,7 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 
 當測試方法中需要額外的設定時， [WithWebHostBuilder](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder)會使用設定進一步自訂的[IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) ，建立新的 `WebApplicationFactory`。
 
-[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)的 `Post_DeleteMessageHandler_ReturnsRedirectToRoot` 測試方法示範如何使用 `WithWebHostBuilder`。 這項測試會藉由觸發在 SUT 中提交表單的方式，在資料庫中執行記錄刪除。
+[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)的 `Post_DeleteMessageHandler_ReturnsRedirectToRoot` 測試方法示範如何使用 `WithWebHostBuilder`。 這項測試會藉由觸發在 SUT 中提交表單的方式，在資料庫中執行記錄刪除。
 
 因為 `IndexPageTests` 類別中的另一個測試會執行刪除資料庫中所有記錄的作業，而且可能會在 `Post_DeleteMessageHandler_ReturnsRedirectToRoot` 方法之前執行，所以在這個測試方法中重新植入資料庫，以確保有記錄存在，供您刪除。 在 sut 的要求中，選取 [`messages`] 表單的第一個 [刪除] 按鈕時，會在該的對中進行模擬：
 
@@ -206,14 +206,14 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 
 下表顯示建立 `HttpClient` 實例時可用的預設[WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) 。
 
-| 選項 | 描述 | 預設值 |
+| 選項 | 描述 | 預設 |
 | ------ | ----------- | ------- |
 | [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | 取得或設定 `HttpClient` 實例是否應自動遵循重新導向回應。 | `true` |
 | [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | 取得或設定 `HttpClient` 實例的基底位址。 | `http://localhost` |
 | [HandleCookies](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) | 取得或設定 `HttpClient` 實例是否應處理 cookie。 | `true` |
 | [MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | 取得或設定 `HttpClient` 實例應遵循的重新導向回應數目上限。 | 7 |
 
-建立類別, 並將它傳遞給 [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) 方法 (程式碼範例中會顯示預設值):  `WebApplicationFactoryClientOptions`
+建立 `WebApplicationFactoryClientOptions` 類別，並將它傳遞至[CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient)方法（程式碼範例中會顯示預設值）：
 
 ```csharp
 // Default client option values are shown
@@ -287,7 +287,7 @@ _client = _factory.CreateClient(clientOptions);
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
 
-在測試中, [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions)會設定為不允許重新導向, 方法是`false`將 [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) 設為:  `Get_SecurePageRedirectsAnUnauthenticatedUser`
+在 `Get_SecurePageRedirectsAnUnauthenticatedUser` 測試中， [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions)會設定為不允許重新導向，方法是將[AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect)設定為 `false`：
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet2)]
 
@@ -326,7 +326,7 @@ protected override IHostBuilder CreateHostBuilder() =>
 
 ## <a name="disable-shadow-copying"></a>停用陰影複製
 
-陰影複製會使測試在與輸出目錄不同的目錄中執行。 若要讓測試正常運作，必須停用陰影複製。 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)會使用 xUnit，並藉由包含具有正確設定的*xUnit*檔案，來停用 xUnit 的陰影複製。 如需詳細資訊，請參閱[使用 JSON 設定 xUnit](https://xunit.github.io/docs/configuring-with-json.html)。
+陰影複製會使測試在與輸出目錄不同的目錄中執行。 若要讓測試正常運作，必須停用陰影複製。 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)會使用 xUnit，並藉由包含具有正確設定的*xUnit*檔案，來停用 xUnit 的陰影複製。 如需詳細資訊，請參閱[使用 JSON 設定 xUnit](https://xunit.github.io/docs/configuring-with-json.html)。
 
 將*xunit*檔案新增至測試專案的根目錄，並包含下列內容：
 
@@ -342,9 +342,9 @@ protected override IHostBuilder CreateHostBuilder() =>
 
 ## <a name="integration-tests-sample"></a>整合測試範例
 
-[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
+[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
 
-| 應用程式 | 專案目錄 | 描述 |
+| App | 專案目錄 | 描述 |
 | --- | ----------------- | ----------- |
 | 訊息應用程式（SUT） | *src/RazorPagesProject* | 可讓使用者加入、刪除一個、刪除全部及分析訊息。 |
 | 測試應用程式 | *測試/RazorPagesProject。測試* | 用來整合測試 SUT。 |
@@ -401,12 +401,12 @@ SUT 的資料庫內容會在其 `Startup.ConfigureServices` 方法中註冊。 �
 
 本主題假設對單元測試有基本瞭解。 如果不熟悉測試概念，請參閱[.Net Core 中的單元測試和 .NET Standard](/dotnet/core/testing/)主題及其連結的內容。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 範例應用程式是 Razor Pages 應用程式，並假設對 Razor Pages 有基本瞭解。 如果不熟悉 Razor Pages，請參閱下列主題：
 
 * [Razor 頁面簡介](xref:razor-pages/index)
-* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
+* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Razor 頁面單元測試](xref:test/razor-pages-tests)
 
 > [!NOTE]
@@ -485,7 +485,7 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
   * [AspNetCore 測試](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * 在專案檔中指定 Web SDK （`<Project Sdk="Microsoft.NET.Sdk.Web">`）。 參考[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)時，需要 Web SDK。
 
-這些必要條件可在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中看到。 檢查 [*測試]/[RazorPagesProject]/* [測試]/[RazorPagesProject]。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
+這些必要條件可在[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中看到。 檢查 [*測試]/[RazorPagesProject]/* [測試]/[RazorPagesProject]。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
 
 * [xunit](https://www.nuget.org/packages/xunit/)
 * [xunit。 visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
@@ -517,7 +517,7 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)中的資料庫植入是由 `InitializeDbForTests` 方法所執行。 此方法會在[整合測試範例：測試應用程式組織](#test-app-organization)一節中說明。
+   [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)中的資料庫植入是由 `InitializeDbForTests` 方法所執行。 此方法會在[整合測試範例：測試應用程式組織](#test-app-organization)一節中說明。
 
 2. 在測試類別中使用自訂 `CustomWebApplicationFactory`。 下列範例會在 `IndexPageTests` 類別中使用 factory：
 
@@ -535,9 +535,9 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 1. 剖析 antiforgery cookie，並從回應要求驗證權杖。
 1. 提出具有 antiforgery cookie 的 POST 要求，並要求驗證權杖。
 
-`GetDocumentAsync`  在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中, helper擴充方法(helper/HttpClientExtensions)和helper方法(helper/HtmlHelpers)會使用[AngleSharp](https://anglesharp.github.io/)剖析器來`SendAsync`處理 antiforgery請使用下列方法進行檢查:
+[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中的 `SendAsync` helper 擴充方法（Helper */HttpClientExtensions*）和 `GetDocumentAsync` helper 方法（helper */HtmlHelpers*）會使用[AngleSharp](https://anglesharp.github.io/)剖析器，利用下列方法來處理 antiforgery 檢查：
 
-* `GetDocumentAsync`接收 [HttpResponseMessage ](/dotnet/api/system.net.http.httpresponsemessage) , 並`IHtmlDocument`傳回&ndash;。 `GetDocumentAsync` 使用可根據原始 `HttpResponseMessage`準備*虛擬回應*的處理站。 如需詳細資訊，請參閱[AngleSharp 檔](https://github.com/AngleSharp/AngleSharp#documentation)。
+* `GetDocumentAsync` &ndash; 接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage)並傳回 `IHtmlDocument`。 `GetDocumentAsync` 使用可根據原始 `HttpResponseMessage`準備*虛擬回應*的處理站。 如需詳細資訊，請參閱[AngleSharp 檔](https://github.com/AngleSharp/AngleSharp#documentation)。
 * `SendAsync` `HttpClient` 撰寫[HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)的擴充方法，並呼叫[SendAsync （HttpRequestMessage）](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) ，將要求提交至 SUT。 `SendAsync` 的多載接受 HTML 表單（`IHtmlFormElement`）和下列各項：
   * 表單的 [提交] 按鈕（`IHtmlElement`）
   * 表單值集合（`IEnumerable<KeyValuePair<string, string>>`）
@@ -550,7 +550,7 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 
 當測試方法中需要額外的設定時， [WithWebHostBuilder](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder)會使用設定進一步自訂的[IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) ，建立新的 `WebApplicationFactory`。
 
-[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)的 `Post_DeleteMessageHandler_ReturnsRedirectToRoot` 測試方法示範如何使用 `WithWebHostBuilder`。 這項測試會藉由觸發在 SUT 中提交表單的方式，在資料庫中執行記錄刪除。
+[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)的 `Post_DeleteMessageHandler_ReturnsRedirectToRoot` 測試方法示範如何使用 `WithWebHostBuilder`。 這項測試會藉由觸發在 SUT 中提交表單的方式，在資料庫中執行記錄刪除。
 
 因為 `IndexPageTests` 類別中的另一個測試會執行刪除資料庫中所有記錄的作業，而且可能會在 `Post_DeleteMessageHandler_ReturnsRedirectToRoot` 方法之前執行，所以在這個測試方法中重新植入資料庫，以確保有記錄存在，供您刪除。 在 sut 的要求中，選取 [`messages`] 表單的第一個 [刪除] 按鈕時，會在該的對中進行模擬：
 
@@ -560,14 +560,14 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 
 下表顯示建立 `HttpClient` 實例時可用的預設[WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) 。
 
-| 選項 | 描述 | 預設值 |
+| 選項 | 描述 | 預設 |
 | ------ | ----------- | ------- |
 | [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | 取得或設定 `HttpClient` 實例是否應自動遵循重新導向回應。 | `true` |
 | [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | 取得或設定 `HttpClient` 實例的基底位址。 | `http://localhost` |
 | [HandleCookies](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) | 取得或設定 `HttpClient` 實例是否應處理 cookie。 | `true` |
 | [MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | 取得或設定 `HttpClient` 實例應遵循的重新導向回應數目上限。 | 7 |
 
-建立類別, 並將它傳遞給 [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) 方法 (程式碼範例中會顯示預設值):  `WebApplicationFactoryClientOptions`
+建立 `WebApplicationFactoryClientOptions` 類別，並將它傳遞至[CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient)方法（程式碼範例中會顯示預設值）：
 
 ```csharp
 // Default client option values are shown
@@ -641,7 +641,7 @@ _client = _factory.CreateClient(clientOptions);
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
 
-在測試中, [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions)會設定為不允許重新導向, 方法是`false`將 [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) 設為:  `Get_SecurePageRedirectsAnUnauthenticatedUser`
+在 `Get_SecurePageRedirectsAnUnauthenticatedUser` 測試中， [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions)會設定為不允許重新導向，方法是將[AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect)設定為 `false`：
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet2)]
 
@@ -680,7 +680,7 @@ protected override IHostBuilder CreateHostBuilder() =>
 
 ## <a name="disable-shadow-copying"></a>停用陰影複製
 
-陰影複製會使測試在與輸出目錄不同的目錄中執行。 若要讓測試正常運作，必須停用陰影複製。 [範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)會使用 xUnit，並藉由包含具有正確設定的*xUnit*檔案，來停用 xUnit 的陰影複製。 如需詳細資訊，請參閱[使用 JSON 設定 xUnit](https://xunit.github.io/docs/configuring-with-json.html)。
+陰影複製會使測試在與輸出目錄不同的目錄中執行。 若要讓測試正常運作，必須停用陰影複製。 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)會使用 xUnit，並藉由包含具有正確設定的*xUnit*檔案，來停用 xUnit 的陰影複製。 如需詳細資訊，請參閱[使用 JSON 設定 xUnit](https://xunit.github.io/docs/configuring-with-json.html)。
 
 將*xunit*檔案新增至測試專案的根目錄，並包含下列內容：
 
@@ -706,9 +706,9 @@ protected override IHostBuilder CreateHostBuilder() =>
 
 ## <a name="integration-tests-sample"></a>整合測試範例
 
-[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
+[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
 
-| 應用程式 | 專案目錄 | 描述 |
+| App | 專案目錄 | 描述 |
 | --- | ----------------- | ----------- |
 | 訊息應用程式（SUT） | *src/RazorPagesProject* | 可讓使用者加入、刪除一個、刪除全部及分析訊息。 |
 | 測試應用程式 | *測試/RazorPagesProject。測試* | 用來整合測試 SUT。 |

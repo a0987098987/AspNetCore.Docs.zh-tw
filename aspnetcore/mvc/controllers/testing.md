@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/07/2019
 uid: mvc/controllers/testing
-ms.openlocfilehash: 449d8791962e4233d599f364b2e8c922f0975d2f
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 597f1472bb30ae3b34fa98659c8c8bb464223e84
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681093"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666282"
 ---
 # <a name="unit-test-controller-logic-in-aspnet-core"></a>ASP.NET Core 中的單元測試控制器邏輯
 
@@ -30,7 +30,7 @@ ms.locfileid: "74681093"
 
 若要進行控制器單元測試，請檢閱下列範例應用程式中的控制器。 
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 主控制器會顯示一份腦力激盪工作階段清單，並允許使用 POST 要求來建立新的腦力激盪工作階段：
 
@@ -40,7 +40,7 @@ ms.locfileid: "74681093"
 
 * 遵循[明確相依性準則](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)。
 * 預期[相依性插入 (DI)](xref:fundamentals/dependency-injection) 以提供 `IBrainstormSessionRepository` 的執行個體。
-* 可以使用模擬物件架構 (例如 [Moq](https://www.nuget.org/packages/Moq/)) 透過模擬 `IBrainstormSessionRepository` 服務進行測試。 「模擬物件」是製作出來的物件，具有一組用於測試的預定屬性和方法行為。 如需詳細資訊，請參閱[整合測試簡介](xref:test/integration-tests#introduction-to-integration-tests)。
+* 可以使用模擬物件架構 (例如 `IBrainstormSessionRepository`Moq[) 透過模擬 ](https://www.nuget.org/packages/Moq/) 服務進行測試。 「模擬物件」是製作出來的物件，具有一組用於測試的預定屬性和方法行為。 如需詳細資訊，請參閱[整合測試簡介](xref:test/integration-tests#introduction-to-integration-tests)。
 
 `HTTP GET Index` 方法有沒有迴圈或分支，而且只會呼叫一個方法。 此動作的單元測試：
 
@@ -57,7 +57,7 @@ ms.locfileid: "74681093"
 
 主控制器的 `HTTP POST Index` 方法測試會驗證：
 
-* 當 [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) 為 `false` 時，動作方法會傳回具有適當資料的 *400 Bad Request* <xref:Microsoft.AspNetCore.Mvc.ViewResult>。
+* 當 `false`[ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*)時，動作方法會傳回*400 錯誤的要求*，<xref:Microsoft.AspNetCore.Mvc.ViewResult> 具有適當的資料。
 * 當 `ModelState.IsValid` 為 `true`：
   * 會呼叫 `Add` 存放庫上的方法。
   * 會傳回具有正確引數的 <xref:Microsoft.AspNetCore.Mvc.RedirectToActionResult>。
@@ -78,17 +78,17 @@ ms.locfileid: "74681093"
 > [!NOTE]
 > 此範例中所使用的 Moq 程式庫，可讓您混合可驗證 (或「嚴格」) 的模擬，以及無法驗證的模擬 (也稱為「鬆散」的模擬或虛設常式)。 如需詳細資訊，請參閱 [Customizing Mock Behavior with Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior) (使用 Moq 自訂模擬行為)。
 
-範例應用程式中的 [SessionController](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs)會顯示與特定腦力激盪工作階段相關的資訊。 控制器包含處理無效 `id` 值的邏輯 (下列範例中有兩個 `return` 案例來說明這些案例)。 最後的 `return` 陳述式會將新的 `StormSessionViewModel` 傳回至檢視 (*Controllers/SessionController.cs*)：
+範例應用程式中的 [SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs)會顯示與特定腦力激盪工作階段相關的資訊。 控制器包含處理無效 `id` 值的邏輯 (下列範例中有兩個 `return` 案例來說明這些案例)。 最後的 `return` 陳述式會將新的 `StormSessionViewModel` 傳回至檢視 (*Controllers/SessionController.cs*)：
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
-單元測試包含工作階段控制器 `Index` 動作中每個 `return` 案例的一項測試：
+單元測試包含工作階段控制器 `return` 動作中每個 `Index` 案例的一項測試：
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs?name=snippet_SessionControllerTests&highlight=2,11-14,18,31-32,36,50-55)]
 
 當移動至構想控制器，應用程式會將功能公開為 `api/ideas` 路徑上的 Web API：
 
-* `ForSession` 方法會傳回與腦力激盪工作階段建立關聯的構想清單 (`IdeaDTO`)。
+* `IdeaDTO` 方法會傳回與腦力激盪工作階段建立關聯的構想清單 (`ForSession`)。
 * `Create` 方法會將新構想新增至工作階段。
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_ForSessionAndCreate&highlight=1-2,21-22)]
@@ -113,7 +113,7 @@ ms.locfileid: "74681093"
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests5&highlight=5,7-8,15-18)]
 
-為了測試 `ModelState` 無效時的 `Create` 方法行為，範例應用程式會將模型錯誤新增至控制器作為測試的一部分。 請勿嘗試在單元測試中測試模型驗證或模型繫結&mdash;只要測試當遇到無效 `ModelState` 時的動作方法行為即可：
+為了測試 `Create` 無效時的 `ModelState` 方法行為，範例應用程式會將模型錯誤新增至控制器作為測試的一部分。 請勿嘗試在單元測試中測試模型驗證或模型繫結&mdash;只要測試當遇到無效 `ModelState` 時的動作方法行為即可：
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests1&highlight=7,13)]
 
@@ -129,7 +129,7 @@ ms.locfileid: "74681093"
 
 在 ASP.NET Core 2.1 或更新版本中， [ActionResult\<t >](xref:web-api/action-return-types#actionresultt-type) （<xref:Microsoft.AspNetCore.Mvc.ActionResult%601>）可讓您傳回衍生自 `ActionResult` 或傳回特定類型的類型。
 
-範例應用程式包含為指定工作階段 `id` 傳回 `List<IdeaDTO>` 的方法。 如果工作階段 `id` 不存在，則控制器會傳回 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*>：
+範例應用程式包含為指定工作階段 `List<IdeaDTO>` 傳回 `id` 的方法。 如果工作階段 `id` 不存在，則控制器會傳回 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*>：
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_ForSessionActionResult&highlight=10,21)]
 
@@ -170,12 +170,12 @@ ms.locfileid: "74681093"
 
 針對有效的工作階段 `id`，最終測試會確認：
 
-* 此方法會以 `BrainstormSession` 類型傳回 `ActionResult`。
-* [ActionResult\<t >。結果](xref:Microsoft.AspNetCore.Mvc.ActionResult%601.Result*)為 <xref:Microsoft.AspNetCore.Mvc.CreatedAtActionResult>。 `CreatedAtActionResult` 類似於具有 `Location` 標頭尸的「201 已建立」回應。
+* 此方法會以 `ActionResult` 類型傳回 `BrainstormSession`。
+* [ActionResult\<t >。結果](xref:Microsoft.AspNetCore.Mvc.ActionResult%601.Result*)為 <xref:Microsoft.AspNetCore.Mvc.CreatedAtActionResult>。 `CreatedAtActionResult` 類似於具有  *標頭尸的「201 已建立」* `Location`回應。
 * [ActionResult\<t >。值](xref:Microsoft.AspNetCore.Mvc.ActionResult%601.Value*)是 `BrainstormSession` 類型。
 * 已叫用更新工作階段 (`UpdateAsync(testSession)`) 的模擬呼叫。 `Verifiable` 方法呼叫會透過在判斷提示中執行 `mockRepo.Verify()` 來檢查。
 * 會為工作階段傳回兩個 `Idea` 物件。
-* 最後一個項目 (模擬呼叫 `UpdateAsync` 新增的 `Idea`) 會與在測試中新增至工作階段的 `newIdea` 相符。
+* 最後一個項目 (模擬呼叫 `Idea` 新增的 `UpdateAsync`) 會與在測試中新增至工作階段的 `newIdea` 相符。
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_CreateActionResult_ReturnsNewlyCreatedIdeaForSession&highlight=20-22,28-34)]
 
@@ -185,7 +185,7 @@ ms.locfileid: "74681093"
 
 [控制器](xref:mvc/controllers/actions)在任何 ASP.NET Core MVC 應用程式中都扮演重要角色。 因此，您應該確信控制器的行為符合預期。 在將應用程式部署至生產環境前，自動化測試可以偵測錯誤。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="unit-tests-of-controller-logic"></a>控制器邏輯的單元測試
 
@@ -203,7 +203,7 @@ ms.locfileid: "74681093"
 
 * 遵循[明確相依性準則](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)。
 * 預期[相依性插入 (DI)](xref:fundamentals/dependency-injection) 以提供 `IBrainstormSessionRepository` 的執行個體。
-* 可以使用模擬物件架構 (例如 [Moq](https://www.nuget.org/packages/Moq/)) 透過模擬 `IBrainstormSessionRepository` 服務進行測試。 「模擬物件」是製作出來的物件，具有一組用於測試的預定屬性和方法行為。 如需詳細資訊，請參閱[整合測試簡介](xref:test/integration-tests#introduction-to-integration-tests)。
+* 可以使用模擬物件架構 (例如 `IBrainstormSessionRepository`Moq[) 透過模擬 ](https://www.nuget.org/packages/Moq/) 服務進行測試。 「模擬物件」是製作出來的物件，具有一組用於測試的預定屬性和方法行為。 如需詳細資訊，請參閱[整合測試簡介](xref:test/integration-tests#introduction-to-integration-tests)。
 
 `HTTP GET Index` 方法有沒有迴圈或分支，而且只會呼叫一個方法。 此動作的單元測試：
 
@@ -220,7 +220,7 @@ ms.locfileid: "74681093"
 
 主控制器的 `HTTP POST Index` 方法測試會驗證：
 
-* 當 [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) 為 `false` 時，動作方法會傳回具有適當資料的 *400 Bad Request* <xref:Microsoft.AspNetCore.Mvc.ViewResult>。
+* 當 `false`[ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*)時，動作方法會傳回*400 錯誤的要求*，<xref:Microsoft.AspNetCore.Mvc.ViewResult> 具有適當的資料。
 * 當 `ModelState.IsValid` 為 `true`：
   * 會呼叫 `Add` 存放庫上的方法。
   * 會傳回具有正確引數的 <xref:Microsoft.AspNetCore.Mvc.RedirectToActionResult>。
@@ -241,17 +241,17 @@ ms.locfileid: "74681093"
 > [!NOTE]
 > 此範例中所使用的 Moq 程式庫，可讓您混合可驗證 (或「嚴格」) 的模擬，以及無法驗證的模擬 (也稱為「鬆散」的模擬或虛設常式)。 如需詳細資訊，請參閱 [Customizing Mock Behavior with Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior) (使用 Moq 自訂模擬行為)。
 
-範例應用程式中的 [SessionController](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs)會顯示與特定腦力激盪工作階段相關的資訊。 控制器包含處理無效 `id` 值的邏輯 (下列範例中有兩個 `return` 案例來說明這些案例)。 最後的 `return` 陳述式會將新的 `StormSessionViewModel` 傳回至檢視 (*Controllers/SessionController.cs*)：
+範例應用程式中的 [SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs)會顯示與特定腦力激盪工作階段相關的資訊。 控制器包含處理無效 `id` 值的邏輯 (下列範例中有兩個 `return` 案例來說明這些案例)。 最後的 `return` 陳述式會將新的 `StormSessionViewModel` 傳回至檢視 (*Controllers/SessionController.cs*)：
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
-單元測試包含工作階段控制器 `Index` 動作中每個 `return` 案例的一項測試：
+單元測試包含工作階段控制器 `return` 動作中每個 `Index` 案例的一項測試：
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs?name=snippet_SessionControllerTests&highlight=2,11-14,18,31-32,36,50-55)]
 
 當移動至構想控制器，應用程式會將功能公開為 `api/ideas` 路徑上的 Web API：
 
-* `ForSession` 方法會傳回與腦力激盪工作階段建立關聯的構想清單 (`IdeaDTO`)。
+* `IdeaDTO` 方法會傳回與腦力激盪工作階段建立關聯的構想清單 (`ForSession`)。
 * `Create` 方法會將新構想新增至工作階段。
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_ForSessionAndCreate&highlight=1-2,21-22)]
@@ -276,7 +276,7 @@ ms.locfileid: "74681093"
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests5&highlight=5,7-8,15-18)]
 
-為了測試 `ModelState` 無效時的 `Create` 方法行為，範例應用程式會將模型錯誤新增至控制器作為測試的一部分。 請勿嘗試在單元測試中測試模型驗證或模型繫結&mdash;只要測試當遇到無效 `ModelState` 時的動作方法行為即可：
+為了測試 `Create` 無效時的 `ModelState` 方法行為，範例應用程式會將模型錯誤新增至控制器作為測試的一部分。 請勿嘗試在單元測試中測試模型驗證或模型繫結&mdash;只要測試當遇到無效 `ModelState` 時的動作方法行為即可：
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests1&highlight=7,13)]
 
@@ -292,7 +292,7 @@ ms.locfileid: "74681093"
 
 在 ASP.NET Core 2.1 或更新版本中， [ActionResult\<t >](xref:web-api/action-return-types#actionresultt-type) （<xref:Microsoft.AspNetCore.Mvc.ActionResult%601>）可讓您傳回衍生自 `ActionResult` 或傳回特定類型的類型。
 
-範例應用程式包含為指定工作階段 `id` 傳回 `List<IdeaDTO>` 的方法。 如果工作階段 `id` 不存在，則控制器會傳回 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*>：
+範例應用程式包含為指定工作階段 `List<IdeaDTO>` 傳回 `id` 的方法。 如果工作階段 `id` 不存在，則控制器會傳回 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*>：
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_ForSessionActionResult&highlight=10,21)]
 
@@ -333,12 +333,12 @@ ms.locfileid: "74681093"
 
 針對有效的工作階段 `id`，最終測試會確認：
 
-* 此方法會以 `BrainstormSession` 類型傳回 `ActionResult`。
-* [ActionResult\<t >。結果](xref:Microsoft.AspNetCore.Mvc.ActionResult%601.Result*)為 <xref:Microsoft.AspNetCore.Mvc.CreatedAtActionResult>。 `CreatedAtActionResult` 類似於具有 `Location` 標頭尸的「201 已建立」回應。
+* 此方法會以 `ActionResult` 類型傳回 `BrainstormSession`。
+* [ActionResult\<t >。結果](xref:Microsoft.AspNetCore.Mvc.ActionResult%601.Result*)為 <xref:Microsoft.AspNetCore.Mvc.CreatedAtActionResult>。 `CreatedAtActionResult` 類似於具有  *標頭尸的「201 已建立」* `Location`回應。
 * [ActionResult\<t >。值](xref:Microsoft.AspNetCore.Mvc.ActionResult%601.Value*)是 `BrainstormSession` 類型。
 * 已叫用更新工作階段 (`UpdateAsync(testSession)`) 的模擬呼叫。 `Verifiable` 方法呼叫會透過在判斷提示中執行 `mockRepo.Verify()` 來檢查。
 * 會為工作階段傳回兩個 `Idea` 物件。
-* 最後一個項目 (模擬呼叫 `UpdateAsync` 新增的 `Idea`) 會與在測試中新增至工作階段的 `newIdea` 相符。
+* 最後一個項目 (模擬呼叫 `Idea` 新增的 `UpdateAsync`) 會與在測試中新增至工作階段的 `newIdea` 相符。
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_CreateActionResult_ReturnsNewlyCreatedIdeaForSession&highlight=20-22,28-34)]
 

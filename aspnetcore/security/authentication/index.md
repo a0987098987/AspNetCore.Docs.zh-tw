@@ -1,32 +1,32 @@
 ---
-title: Overview of ASP.NET Core Authentication
+title: ASP.NET Core 驗證的總覽
 author: mjrousos
-description: Learn about authentication in ASP.NET Core.
+description: 深入瞭解 ASP.NET Core 中的驗證。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/04/2019
+ms.date: 03/03/2020
 uid: security/authentication/index
-ms.openlocfilehash: 40b2fb59b96486435a2ec0a7d69bee5ab4a814d2
-ms.sourcegitcommit: 76d7fff62014c3db02564191ab768acea00f1b26
+ms.openlocfilehash: 24113fd4f090cf76746a7b077212fdab012f82c1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852710"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659625"
 ---
-# <a name="overview-of-aspnet-core-authentication"></a>Overview of ASP.NET Core authentication
+# <a name="overview-of-aspnet-core-authentication"></a>ASP.NET Core 驗證的總覽
 
-By [Mike Rousos](https://github.com/mjrousos)
+由[Mike Rousos](https://github.com/mjrousos)
 
-Authentication is the process of determining a user's identity. [Authorization](xref:security/authorization/introduction) is the process of determining whether a user has access to a resource. In ASP.NET Core, authentication is handled by the `IAuthenticationService`, which is used by authentication [middleware](xref:fundamentals/middleware/index). The authentication service uses registered authentication handlers to complete authentication-related actions. Examples of authentication-related actions include:
+驗證是判斷使用者身分識別的程式。 「授權」（ [Authorization](xref:security/authorization/introduction) ）是判斷使用者是否有權存取資源的程式。 在 ASP.NET Core 中，驗證是由驗證[中介軟體](xref:fundamentals/middleware/index)所使用的 `IAuthenticationService`來處理。 驗證服務會使用已註冊的驗證處理常式來完成驗證相關的動作。 驗證相關動作的範例包括：
 
-* Authenticating a user.
-* Responding when an unauthenticated user tries to access a restricted resource.
+* 驗證使用者。
+* 當未驗證的使用者嘗試存取受限制的資源時回應。
 
-The registered authentication handlers and their configuration options are called "schemes".
+已註冊的驗證處理常式及其設定選項稱為「配置」。
 
-Authentication schemes are specified by registering authentication services in `Startup.ConfigureServices`:
+驗證配置是藉由在 `Startup.ConfigureServices`中註冊驗證服務來指定：
 
-* By calling a scheme-specific extension method after a call to `services.AddAuthentication` (such as `AddJwtBearer` or `AddCookie`, for example). 這些擴充方法會使用[AuthenticationBuilder](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*)來註冊具有適當設定的配置。
+* 藉由在呼叫 `services.AddAuthentication` （例如 `AddJwtBearer` 或 `AddCookie`）後呼叫配置特定的擴充方法。 這些擴充方法會使用[AuthenticationBuilder](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*)來註冊具有適當設定的配置。
 * 較不常用，方法是直接呼叫[AuthenticationBuilder. AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*) 。
 
 例如，下列程式碼會註冊 cookie 和 JWT 持有人驗證配置的驗證服務和處理常式：
@@ -78,16 +78,16 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
   * 他們未經授權存取（禁止）。
   * 未經驗證時（挑戰）。
 
-### <a name="authenticate"></a>驗證
+### <a name="authenticate"></a>Authenticate
 
-驗證配置的驗證動作會負責根據要求內容來建立使用者的身分識別。 它會傳回 <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult>，指出驗證是否成功，以及使用者在驗證票證中的身分識別。 請參閱`HttpContext.AuthenticateAsync`. 驗證範例包括：
+驗證配置的驗證動作會負責根據要求內容來建立使用者的身分識別。 它會傳回 <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult>，指出驗證是否成功，以及使用者在驗證票證中的身分識別。 請參閱＜<xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.AuthenticateAsync%2A>＞。 驗證範例包括：
 
 * Cookie 驗證配置會從 cookie 來建立使用者的身分識別。
 * JWT 持有人配置會還原序列化和驗證 JWT 持有人權杖，以建立使用者的身分識別。
 
 ### <a name="challenge"></a>挑戰
 
-當未驗證的使用者要求需要驗證的端點時，授權就會叫用驗證挑戰。 例如，當匿名使用者要求受限制的資源，或按一下登入連結時，就會發出驗證挑戰。 授權會使用指定的驗證配置，或預設值（如果未指定）來叫用挑戰。 請參閱`HttpContext.ChallengeAsync`. 驗證挑戰範例包括：
+當未驗證的使用者要求需要驗證的端點時，授權就會叫用驗證挑戰。 例如，當匿名使用者要求受限制的資源，或按一下登入連結時，就會發出驗證挑戰。 授權會使用指定的驗證配置，或預設值（如果未指定）來叫用挑戰。 請參閱＜<xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ChallengeAsync%2A>＞。 驗證挑戰範例包括：
 
 * Cookie 驗證配置會將使用者重新導向至登入頁面。
 * JWT 持有人配置會傳回具有 `www-authenticate: bearer` 標頭的401結果。
@@ -96,7 +96,7 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 ### <a name="forbid"></a>禁止
 
-當已驗證的使用者嘗試存取不允許存取的資源時，授權會呼叫驗證配置的禁止動作。 請參閱`HttpContext.ForbidAsync`. 驗證禁止的範例包括：
+當已驗證的使用者嘗試存取不允許存取的資源時，授權會呼叫驗證配置的禁止動作。 請參閱＜<xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ForbidAsync%2A>＞。 驗證禁止的範例包括：
 * Cookie 驗證配置會將使用者重新導向至表示禁止存取的頁面。
 * JWT 持有人配置傳回403結果。
 * 自訂驗證配置會重新導向至頁面，讓使用者可以在其中要求資源的存取權。

@@ -6,12 +6,12 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 12/18/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: a389afe46636155e4703677d362d879a18ea5864
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 19580768679f30131683717792252c03aade68f9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829201"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666275"
 ---
 # <a name="model-binding-in-aspnet-core"></a>ASP.NET Core 中的資料繫結
 
@@ -19,7 +19,7 @@ ms.locfileid: "75829201"
 
 本文會說明何謂模型繫結、其運作方式，以及如何自訂其行為。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="what-is-model-binding"></a>何謂模型繫結
 
@@ -51,7 +51,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 * 查看來源，在查詢字串中找到 "DogsOnly=true"。 名稱比對不區分大小寫。
 * 將字串 "true" 轉換成布林值 `true`。
 
-架構接著會呼叫 `GetById` 方法，針對 `id` 參數傳送 2、`dogsOnly` 參數傳送 `true`。
+架構接著會呼叫 `GetById` 方法，針對 `id` 參數傳送 2、`true` 參數傳送 `dogsOnly`。
 
 在上例中，模型繫結目標都是簡單型別的方法參數。 目標也可以是複雜類型的屬性。 成功系結每個屬性之後，就會針對該屬性進行[模型驗證](xref:mvc/models/validation)。 哪些資料繫結至模型，以及任何繫結或驗證錯誤的記錄，都會儲存在 [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) 或 [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState)。 為了解此程序是否成功，應用程式會檢查 [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid) 旗標。
 
@@ -81,13 +81,13 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/Instructors/Index.cshtml.cs?name=snippet_SupportsGet)]
 
-## <a name="sources"></a>Sources
+## <a name="sources"></a>來源
 
 根據預設，模型繫結會從下列 HTTP 要求的來源中，取得索引鍵/值組形式的資料：
 
 1. 表單欄位
 1. 要求主體（針對[具有 [ApiController] 屬性的控制器](xref:web-api/index#binding-source-parameter-inference)）。
-1. 路由資料
+1. 路由傳送資料
 1. 查詢字串參數
 1. 已上傳的檔案
 
@@ -153,7 +153,7 @@ public class Pet
 * 建立會實作 `IValueProviderFactory` 的類別。
 * 在 `Startup.ConfigureServices` 中註冊 Factory 類別。
 
-範例應用程式包含[值提供者](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs)和從 Cookie 取得值的 [actory](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) 範例。 以下是 `Startup.ConfigureServices` 中的註冊碼：
+範例應用程式包含[值提供者](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs)和從 Cookie 取得值的 [actory](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) 範例。 以下是 `Startup.ConfigureServices` 中的註冊碼：
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=4)]
 
@@ -205,7 +205,7 @@ public class Pet
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter)、[UInt32](xref:System.ComponentModel.UInt32Converter)、[UInt64](xref:System.ComponentModel.UInt64Converter)
-* [URI](xref:System.UriTypeConverter)
+* [Uri](xref:System.UriTypeConverter)
 * [版本](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>複雜類型
@@ -239,7 +239,7 @@ public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 
 ### <a name="prefix--property-name"></a>前置詞 = 屬性名稱
 
-如果要繫結的模型是控制器或 `PageModel` 類別名為 `Instructor` 的屬性：
+如果要繫結的模型是控制器或 `Instructor` 類別名為 `PageModel` 的屬性：
 
 ```csharp
 [BindProperty]
@@ -274,13 +274,13 @@ public IActionResult OnPost(
 
 ### <a name="bindrequired-attribute"></a>[BindRequired] 屬性
 
-只能套用至模型屬性，不能套用到方法參數。 如果模型的屬性不能發生繫結，則會造成模型繫結新增模型狀態錯誤。 以下為範例：
+只能套用至模型屬性，不能套用到方法參數。 如果模型的屬性不能發生繫結，則會造成模型繫結新增模型狀態錯誤。 以下是範例：
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
 ### <a name="bindnever-attribute"></a>[BindNever] 屬性
 
-只能套用至模型屬性，不能套用到方法參數。 避免模型繫結設定模型的屬性。 以下為範例：
+只能套用至模型屬性，不能套用到方法參數。 避免模型繫結設定模型的屬性。 以下是範例：
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
@@ -295,7 +295,7 @@ public IActionResult OnPost(
 public class Instructor
 ```
 
-在下列範例中，當呼叫 `OnPost` 方法時，只會繫結 `Instructor` 模型的指定屬性：
+在下列範例中，當呼叫 `Instructor` 方法時，只會繫結 `OnPost` 模型的指定屬性：
 
 ```csharp
 [HttpPost]
@@ -464,13 +464,13 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 ## <a name="exclude-specified-types-from-model-binding"></a>排除模型繫結中的指定類型
 
-模型繫結和驗證系統的行為是由 [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) 所驅動。 您可以將詳細資料提供者新增至 [MvcOptions.ModelMetadataDetailsProviders](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders)，藉以自訂 `ModelMetadata`。 內建的詳細資料提供者可用於停用模型繫結或驗證所指定類型。
+模型繫結和驗證系統的行為是由 [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) 所驅動。 您可以將詳細資料提供者新增至 `ModelMetadata`MvcOptions.ModelMetadataDetailsProviders[，藉以自訂 ](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders)。 內建的詳細資料提供者可用於停用模型繫結或驗證所指定類型。
 
-若要停用指定類型之所有模型的模型繫結，請在 `Startup.ConfigureServices` 中新增 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider>。 例如，若要對類型為 `System.Version` 的所有模型停用模型繫結：
+若要停用指定類型之所有模型的模型繫結，請在 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider> 中新增 `Startup.ConfigureServices`。 例如，若要對類型為 `System.Version` 的所有模型停用模型繫結：
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=5-6)]
 
-若要停用指定類型屬性的驗證，請在 `Startup.ConfigureServices` 中新增 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider>。 例如，若要針對類型為 `System.Guid` 的屬性停用驗證：
+若要停用指定類型屬性的驗證，請在 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider> 中新增 `Startup.ConfigureServices`。 例如，若要針對類型為 `System.Guid` 的屬性停用驗證：
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=7-8)]
 
@@ -480,7 +480,7 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 ## <a name="manual-model-binding"></a>手動模型系結 
 
-使用 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*> 方法即可手動叫用模型繫結。 此方法已於 `ControllerBase` 和 `PageModel` 類別中定義。 方法多載可讓您指定要使用的前置詞和值提供者。 如果模型繫結失敗，此方法會傳回 `false`。 以下為範例：
+使用 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*> 方法即可手動叫用模型繫結。 此方法已於 `ControllerBase` 和 `PageModel` 類別中定義。 方法多載可讓您指定要使用的前置詞和值提供者。 如果模型繫結失敗，此方法會傳回 `false`。 以下是範例：
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 
@@ -505,7 +505,7 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 本文會說明何謂模型繫結、其運作方式，以及如何自訂其行為。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="what-is-model-binding"></a>何謂模型繫結
 
@@ -537,7 +537,7 @@ http://contoso.com/api/pets/2?DogsOnly=true
 * 查看來源，在查詢字串中找到 "DogsOnly=true"。 名稱比對不區分大小寫。
 * 將字串 "true" 轉換成布林值 `true`。
 
-架構接著會呼叫 `GetById` 方法，針對 `id` 參數傳送 2、`dogsOnly` 參數傳送 `true`。
+架構接著會呼叫 `GetById` 方法，針對 `id` 參數傳送 2、`true` 參數傳送 `dogsOnly`。
 
 在上例中，模型繫結目標都是簡單型別的方法參數。 目標也可以是複雜類型的屬性。 成功系結每個屬性之後，就會針對該屬性進行[模型驗證](xref:mvc/models/validation)。 哪些資料繫結至模型，以及任何繫結或驗證錯誤的記錄，都會儲存在 [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) 或 [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState)。 為了解此程序是否成功，應用程式會檢查 [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid) 旗標。
 
@@ -567,13 +567,13 @@ http://contoso.com/api/pets/2?DogsOnly=true
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Index.cshtml.cs?name=snippet_SupportsGet)]
 
-## <a name="sources"></a>Sources
+## <a name="sources"></a>來源
 
 根據預設，模型繫結會從下列 HTTP 要求的來源中，取得索引鍵/值組形式的資料：
 
 1. 表單欄位
 1. 要求主體（針對[具有 [ApiController] 屬性的控制器](xref:web-api/index#binding-source-parameter-inference)）。
-1. 路由資料
+1. 路由傳送資料
 1. 查詢字串參數
 1. 已上傳的檔案
 
@@ -639,7 +639,7 @@ public class Pet
 * 建立會實作 `IValueProviderFactory` 的類別。
 * 在 `Startup.ConfigureServices` 中註冊 Factory 類別。
 
-範例應用程式包含[值提供者](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs)和從 Cookie 取得值的 [actory](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) 範例。 以下是 `Startup.ConfigureServices` 中的註冊碼：
+範例應用程式包含[值提供者](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs)和從 Cookie 取得值的 [actory](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) 範例。 以下是 `Startup.ConfigureServices` 中的註冊碼：
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=3)]
 
@@ -691,7 +691,7 @@ public class Pet
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter)、[UInt32](xref:System.ComponentModel.UInt32Converter)、[UInt64](xref:System.ComponentModel.UInt64Converter)
-* [URI](xref:System.UriTypeConverter)
+* [Uri](xref:System.UriTypeConverter)
 * [版本](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>複雜類型
@@ -725,7 +725,7 @@ public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 
 ### <a name="prefix--property-name"></a>前置詞 = 屬性名稱
 
-如果要繫結的模型是控制器或 `PageModel` 類別名為 `Instructor` 的屬性：
+如果要繫結的模型是控制器或 `Instructor` 類別名為 `PageModel` 的屬性：
 
 ```csharp
 [BindProperty]
@@ -760,13 +760,13 @@ public IActionResult OnPost(
 
 ### <a name="bindrequired-attribute"></a>[BindRequired] 屬性
 
-只能套用至模型屬性，不能套用到方法參數。 如果模型的屬性不能發生繫結，則會造成模型繫結新增模型狀態錯誤。 以下為範例：
+只能套用至模型屬性，不能套用到方法參數。 如果模型的屬性不能發生繫結，則會造成模型繫結新增模型狀態錯誤。 以下是範例：
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
 ### <a name="bindnever-attribute"></a>[BindNever] 屬性
 
-只能套用至模型屬性，不能套用到方法參數。 避免模型繫結設定模型的屬性。 以下為範例：
+只能套用至模型屬性，不能套用到方法參數。 避免模型繫結設定模型的屬性。 以下是範例：
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
@@ -781,7 +781,7 @@ public IActionResult OnPost(
 public class Instructor
 ```
 
-在下列範例中，當呼叫 `OnPost` 方法時，只會繫結 `Instructor` 模型的指定屬性：
+在下列範例中，當呼叫 `Instructor` 方法時，只會繫結 `OnPost` 模型的指定屬性：
 
 ```csharp
 [HttpPost]
@@ -932,13 +932,13 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 ## <a name="exclude-specified-types-from-model-binding"></a>排除模型繫結中的指定類型
 
-模型繫結和驗證系統的行為是由 [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) 所驅動。 您可以將詳細資料提供者新增至 [MvcOptions.ModelMetadataDetailsProviders](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders)，藉以自訂 `ModelMetadata`。 內建的詳細資料提供者可用於停用模型繫結或驗證所指定類型。
+模型繫結和驗證系統的行為是由 [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) 所驅動。 您可以將詳細資料提供者新增至 `ModelMetadata`MvcOptions.ModelMetadataDetailsProviders[，藉以自訂 ](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders)。 內建的詳細資料提供者可用於停用模型繫結或驗證所指定類型。
 
-若要停用指定類型之所有模型的模型繫結，請在 `Startup.ConfigureServices` 中新增 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider>。 例如，若要對類型為 `System.Version` 的所有模型停用模型繫結：
+若要停用指定類型之所有模型的模型繫結，請在 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider> 中新增 `Startup.ConfigureServices`。 例如，若要對類型為 `System.Version` 的所有模型停用模型繫結：
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=4-5)]
 
-若要停用指定類型屬性的驗證，請在 `Startup.ConfigureServices` 中新增 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider>。 例如，若要針對類型為 `System.Guid` 的屬性停用驗證：
+若要停用指定類型屬性的驗證，請在 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider> 中新增 `Startup.ConfigureServices`。 例如，若要針對類型為 `System.Guid` 的屬性停用驗證：
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=6-7)]
 
@@ -948,7 +948,7 @@ ASP.NET Core 選取以 [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribut
 
 ## <a name="manual-model-binding"></a>手動模型系結
 
-使用 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*> 方法即可手動叫用模型繫結。 此方法已於 `ControllerBase` 和 `PageModel` 類別中定義。 方法多載可讓您指定要使用的前置詞和值提供者。 如果模型繫結失敗，此方法會傳回 `false`。 以下為範例：
+使用 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*> 方法即可手動叫用模型繫結。 此方法已於 `ControllerBase` 和 `PageModel` 類別中定義。 方法多載可讓您指定要使用的前置詞和值提供者。 如果模型繫結失敗，此方法會傳回 `false`。 以下是範例：
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 

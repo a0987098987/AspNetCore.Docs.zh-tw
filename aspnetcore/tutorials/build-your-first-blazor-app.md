@@ -10,11 +10,11 @@ no-loc:
 - Blazor
 uid: tutorials/first-blazor-app
 ms.openlocfilehash: 8830dcf26b58b5f5fdd36b60298e7b365f99bdd9
-ms.sourcegitcommit: 925cdbd94613243f33bc7613a62ea34006219931
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921296"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655306"
 ---
 # <a name="build-your-first-opno-locblazor-app"></a>建立您的第一個 Blazor 應用程式
 
@@ -32,7 +32,7 @@ ms.locfileid: "75921296"
 
 1. 在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 將網頁中的計數器遞增通常需要撰寫 JavaScript。 使用 Blazor，您可以改C#為撰寫。
 
-1. 檢查 *Counter.razor`Counter` 檔案中*  元件的實作。
+1. 檢查 `Counter`Counter.razor*檔案中* 元件的實作。
 
    *Pages/Counter.razor*：
 
@@ -59,15 +59,15 @@ ms.locfileid: "75921296"
 
 使用 HTML 語法來將一個元件包含在另一個元件中。
 
-1. 透過將 `<Counter />` 元素新增至 `Index` 元件 (*Index.razor*)，來將 `Counter` 元件新增至應用程式的 `Index` 元件。
+1. 透過將 `Counter` 元素新增至 `Index` 元件 (`<Counter />`Index.razor`Index`)，來將 *元件新增至應用程式的* 元件。
 
-   如果您使用 Blazor WebAssembly 來進行這項體驗，`Index` 元件會使用 `SurveyPrompt` 元件。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用 Blazor 伺服器應用程式進行這項體驗，請將 `<Counter />` 元素新增至 `Index` 元件：
+   如果您使用 Blazor WebAssembly 來進行這項體驗，`Index` 元件會使用 `SurveyPrompt` 元件。 使用 `<SurveyPrompt>` 元素取代 `<Counter />` 元素。 如果您使用 Blazor 伺服器應用程式進行這項體驗，請將 `<Counter />` 元素新增至 `Index` 元件：
 
    *Pages/Index.razor*：
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/Index1.razor?highlight=7)]
 
-1. 重建並執行應用程式。 `Index` 元件有自己的計數器。
+1. 重新建置並執行應用程式。 `Index` 元件有自己的計數器。
 
 ## <a name="component-parameters"></a>元件參數
 
@@ -87,7 +87,7 @@ ms.locfileid: "75921296"
        > From Visual Studio, you can quickly add a component parameter by using the `para` snippet. Type `para` and press the `Tab` key twice.
    -->
 
-1. 使用屬性在 `Index` 元件的 `<Counter>` 元素中指定 `IncrementAmount` 參數。 設定值來讓計數器以 10 遞增。
+1. 使用屬性在 `IncrementAmount` 元件的 `Index` 元素中指定 `<Counter>` 參數。 設定值來讓計數器以 10 遞增。
 
    *Pages/Index.razor*：
 
@@ -97,7 +97,7 @@ ms.locfileid: "75921296"
 
 ## <a name="route-to-components"></a>路由到元件
 
-*Counter.razor* 檔案頂端的 `@page` 指示詞會指定 `Counter` 元件是路由端點。 `Counter` 元件會處理傳送給 `/counter` 的要求。 若沒有 `@page` 指示詞，元件就不會處理路由傳送的要求，但其他元件仍可使用此元件。
+`@page`Counter.razor*檔案頂端的* 指示詞會指定 `Counter` 元件是路由端點。 `Counter` 元件會處理傳送給 `/counter` 的要求。 若沒有 `@page` 指示詞，元件就不會處理路由傳送的要求，但其他元件仍可使用此元件。
 
 ## <a name="dependency-injection"></a>相依性插入
 
@@ -147,7 +147,7 @@ ms.locfileid: "75921296"
 
    `NavMenu` 元件 (*Shared/NavMenu.razor*) 會用於應用程式的版面配置。 版面配置是可讓您避免應用程式中內容重複的元件。
 
-   透過在 *Shared/NavMenu.razor* 檔案中的現有清單項目下方新增下列清單項目標記，為 `Todo` 元件新增 `<NavLink>` 元素：
+   透過在 `<NavLink>`Shared/NavMenu.razor`Todo` 檔案中的現有清單項目下方新增下列清單項目標記，為 *元件新增* 元素：
 
    ```razor
    <li class="nav-item px-3">
@@ -157,7 +157,7 @@ ms.locfileid: "75921296"
    </li>
    ```
 
-1. 重建並執行應用程式。 瀏覽新的 [待辦事項] 頁面，以確認 `Todo` 元件的連結可以運作。
+1. 重新建置並執行應用程式。 瀏覽新的 [待辦事項] 頁面，以確認 `Todo` 元件的連結可以運作。
 
 1. 將 *TodoItem.cs* 檔案新增至專案的根目錄，以保存代表待辦事項的類別。 請使用下列 `TodoItem` 類別的 C# 程式碼：
 
@@ -170,17 +170,17 @@ ms.locfileid: "75921296"
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo4.razor?highlight=5-10,12-14)]
 
-1. 應用程式需要 UI 元素，才能將待辦事項新增至清單。 在未排序清單 (`<ul>...</ul>`) 下方新增文字輸出 (`<input>`) 與按鈕 (`<button>`)：
+1. 應用程式需要 UI 元素，才能將待辦事項新增至清單。 在未排序清單 (`<input>`) 下方新增文字輸出 (`<button>`) 與按鈕 (`<ul>...</ul>`)：
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo5.razor?highlight=12-13)]
 
-1. 重建並執行應用程式。 選取 [Add todo] \(新增待辦事項\) 按鈕時，不會發生任何情況，因為事件處理常式並未連接至這個按鈕。
+1. 重新建置並執行應用程式。 選取 [Add todo] \(新增待辦事項\) 按鈕時，不會發生任何情況，因為事件處理常式並未連接至這個按鈕。
 
 1. 將 `AddTodo` 方法新增至 `Todo` 元件並註冊，以便使用 `@onclick` 屬性來進行按鈕選取。 當選取按鈕時，就會呼叫 `AddTodo` C# 方法：
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo6.razor?highlight=2,7-10)]
 
-1. 若要取得新待辦事項的標題，請在 `@code` 區塊頂端新增 `newTodo` 字串欄位，然後使用 `<input>` 元素中的 `bind` 屬性將它繫結至文字輸入的值：
+1. 若要取得新待辦事項的標題，請在 `newTodo` 區塊頂端新增 `@code` 字串欄位，然後使用 `bind` 元素中的 `<input>` 屬性將它繫結至文字輸入的值：
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
 
@@ -192,9 +192,9 @@ ms.locfileid: "75921296"
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo8.razor?highlight=19-26)]
 
-1. 重建並執行應用程式。 請將一些待辦事項新增至待辦事項清單，以測試新程式碼。
+1. 重新建置並執行應用程式。 請將一些待辦事項新增至待辦事項清單，以測試新程式碼。
 
-1. 每個待辦事項的標題文字都可設定為可編輯，而核取方塊則可協助使用者記錄已完成的項目。 請為每個待辦事項新增核取方塊輸入，然後將其值繫結至 `IsDone` 屬性。 將 `@todo.Title` 變更為繫結至 `@todo.Title` 的 `<input>` 元素：
+1. 每個待辦事項的標題文字都可設定為可編輯，而核取方塊則可協助使用者記錄已完成的項目。 請為每個待辦事項新增核取方塊輸入，然後將其值繫結至 `IsDone` 屬性。 將 `@todo.Title` 變更為繫結至 `<input>` 的 `@todo.Title` 元素：
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo9.razor?highlight=5-6)]
 
@@ -208,7 +208,7 @@ ms.locfileid: "75921296"
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/Todo.razor)]
 
-1. 重建並執行應用程式。 請新增待辦事項，以測試新程式碼。
+1. 重新建置並執行應用程式。 請新增待辦事項，以測試新程式碼。
 
 > [!div class="nextstepaction"]
 > <xref:blazor/components>

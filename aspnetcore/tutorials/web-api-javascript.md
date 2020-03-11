@@ -7,15 +7,15 @@ ms.custom: mvc
 ms.date: 11/26/2019
 uid: tutorials/web-api-javascript
 ms.openlocfilehash: 2a19a7d16ca8b8f5d6ac8eb99ad919b89f1e368b
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114649"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655250"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>教學課程：使用 JavaScript 呼叫 ASP.NET Core Web API
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 此教學課程會示範如何使用 JavaScript (使用 [Fetch API](https://developer.mozilla.org/docs/Web/API/Fetch_API)) 呼叫 ASP.NET Core Web API。
 

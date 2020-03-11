@@ -9,11 +9,11 @@ no-loc:
 - SignalR
 uid: client-side/libman/libman-cli
 ms.openlocfilehash: 02d88d09805bd23a86ef924766373245fec7ff52
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928355"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664630"
 ---
 # <a name="use-the-libman-cli-with-aspnet-core"></a>搭配 ASP.NET Core 使用 LibMan CLI
 
@@ -21,7 +21,7 @@ ms.locfileid: "76928355"
 
 [LibMan](xref:client-side/libman/index) CLI 是一種跨平臺工具，支援 .net Core 的任何位置。
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 * [!INCLUDE [2.1-SDK](../../includes/2.1-SDK.md)]
 
@@ -43,7 +43,7 @@ dotnet tool install -g Microsoft.Web.LibraryManager.Cli --version 1.0.94-g606058
 
 在上述範例中，.NET Core 通用工具是從本機 Windows 電腦的*C:\Temp\Microsoft.Web.LibraryManager.Cli.1.0.94-g606058a278.nupkg*檔案進行安裝。
 
-## <a name="usage"></a>使用
+## <a name="usage"></a>使用量
 
 成功安裝 CLI 之後，您可以使用下列命令：
 
@@ -103,7 +103,7 @@ libman init [-d|--default-destination] [-p|--default-provider] [--verbosity]
 libman init [-h|--help]
 ```
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 以下是使用 `libman init` 命令時可用的選項：
 
@@ -124,7 +124,7 @@ libman init [-h|--help]
 若要在 ASP.NET Core 專案中建立*libman json*檔案：
 
 * 流覽至專案根目錄。
-* 執行下列命令：
+* 執行以下命令：
 
   ```console
   libman init
@@ -157,13 +157,13 @@ libman install <LIBRARY> [-d|--destination] [--files] [-p|--provider] [--verbosi
 libman install [-h|--help]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `LIBRARY`
 
 要安裝之程式庫的名稱。 此名稱可能包含版本號碼標記法（例如 `@1.2.0`）。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 以下是使用 `libman install` 命令時可用的選項：
 
@@ -173,7 +173,7 @@ libman install [-h|--help]
 
 * `--files <FILE>`
 
-  指定要從程式庫安裝的檔案名。 如果未指定，則會安裝媒體櫃中的所有檔案。 為每個要安裝的檔案提供一個 `--files` 選項。 也支援相對路徑。 例如：`--files dist/browser/signalr.js`。
+  指定要從程式庫安裝的檔案名。 如果未指定，則會安裝媒體櫃中的所有檔案。 為每個要安裝的檔案提供一個 `--files` 選項。 也支援相對路徑。 例如： `--files dist/browser/signalr.js` 。
 
 * `-p|--provider <PROVIDER>`
 
@@ -263,7 +263,7 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 
 ## <a name="restore-library-files"></a>還原程式庫檔案
 
-`libman restore` 命令會安裝*libman*中定義的程式庫檔案。 可套用下列規則：
+`libman restore` 命令會安裝*libman*中定義的程式庫檔案。 適用的規則如下：
 
 * 如果專案根目錄中沒有*libman*檔案存在，則會傳回錯誤。
 * 如果程式庫指定了提供者，則會忽略*libman*中的 `defaultProvider` 屬性。
@@ -276,7 +276,7 @@ libman restore [--verbosity]
 libman restore [-h|--help]
 ```
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 以下是使用 `libman restore` 命令時可用的選項：
 
@@ -301,7 +301,7 @@ libman clean [--verbosity]
 libman clean [-h|--help]
 ```
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 以下是使用 `libman clean` 命令時可用的選項：
 
@@ -336,13 +336,13 @@ libman uninstall <LIBRARY> [--verbosity]
 libman uninstall [-h|--help]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `LIBRARY`
 
 要卸載之程式庫的名稱。 此名稱可能包含版本號碼標記法（例如 `@1.2.0`）。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 以下是使用 `libman uninstall` 命令時可用的選項：
 
@@ -388,13 +388,13 @@ libman update <LIBRARY> [-pre] [--to] [--verbosity]
 libman update [-h|--help]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `LIBRARY`
 
 要更新之程式庫的名稱。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 以下是使用 `libman update` 命令時可用的選項：
 
@@ -440,7 +440,7 @@ libman cache list [--files] [--libraries] [--verbosity]
 libman cache [-h|--help]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `PROVIDER`
 
@@ -448,7 +448,7 @@ libman cache [-h|--help]
 
 [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 以下是使用 `libman cache` 命令時可用的選項：
 

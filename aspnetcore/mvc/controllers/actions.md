@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/05/2019
 uid: mvc/controllers/actions
 ms.openlocfilehash: 715a73863513870d1cbd522e75013d41830da1e7
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881098"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662789"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>在 ASP.NET Core MVC 中處理控制器要求
 
@@ -89,7 +89,7 @@ ms.locfileid: "74881098"
 
 #### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. 在與用戶端協商的內容類型中格式化為非空白回應主體的方法
 
-此類別普遍稱為**內容交涉**。 只要動作傳回 [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) 類型或 [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult) 實作以外的某個項目，就會套用[內容交涉](xref:web-api/advanced/formatting#content-negotiation)。 傳回非 `IActionResult` 實作的動作 (例如，`object`) 也會傳回「格式化回應」。
+此類別普遍稱為**內容交涉**。 只要動作傳回 [ObjectResult](xref:web-api/advanced/formatting#content-negotiation) 類型或 [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) 實作以外的某個項目，就會套用[內容交涉](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult)。 傳回非 `IActionResult` 實作的動作 (例如，`object`) 也會傳回「格式化回應」。
 
 此類型的一些協助程式方法包括 `BadRequest`、`CreatedAtRoute` 和 `Ok`。 這些方法的範例分別包括 `return BadRequest(modelState);`、`return CreatedAtRoute("routename", values, newobject);` 和 `return Ok(value);`。 請注意，只有在傳遞值時，`BadRequest` 和 `Ok` 才會執行內容交涉；如果未傳遞值，則會改成作為「HTTP 狀態碼」結果類型。 相反地，`CreatedAtRoute` 方法一律會執行內容交涉，因為其多載全部都需要傳遞值。
 

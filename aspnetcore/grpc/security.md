@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 07/07/2019
 uid: grpc/security
 ms.openlocfilehash: f84bec0ef485b701b2be36384a2e49b9b28e473d
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310385"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667318"
 ---
 # <a name="security-considerations-in-grpc-for-aspnet-core"></a>ASP.NET Core 的 gRPC 中的安全性考慮
 
@@ -39,7 +39,7 @@ TLS 是在 Kestrel 中設定。 如需設定 Kestrel 端點的詳細資訊，請
 
 gRPC 會使用每個訊息的大小限制來管理傳入和傳出訊息。 根據預設，gRPC 會將傳入訊息限制為 4 MB。 外寄訊息沒有任何限制。
 
-在伺服器上，可以使用下列方式`AddGrpc`為應用程式中的所有服務設定 gRPC 訊息限制：
+在伺服器上，可以針對應用程式中具有 `AddGrpc`的所有服務設定 gRPC 訊息限制：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -52,7 +52,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-您也可以使用`AddServiceOptions<TService>`來設定個別服務的限制。 如需設定訊息大小限制的詳細資訊，請參閱[gRPC configuration](xref:grpc/configuration)。
+您也可以使用 `AddServiceOptions<TService>`來設定個別服務的限制。 如需設定訊息大小限制的詳細資訊，請參閱[gRPC configuration](xref:grpc/configuration)。
 
 ## <a name="client-certificate-validation"></a>用戶端憑證驗證
 

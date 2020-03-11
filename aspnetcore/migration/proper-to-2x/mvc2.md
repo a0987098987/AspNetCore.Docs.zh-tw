@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 10/24/2018
 uid: migration/mvc2
 ms.openlocfilehash: 11bd3b948afaedc675ac4249099969382683f653
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172445"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664609"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>從 ASP.NET 遷移至 ASP.NET Core 2.0
 
@@ -19,7 +19,7 @@ ms.locfileid: "77172445"
 
 這篇文章可作為 ASP.NET 應用程式移轉至 ASP.NET Core 2.0 的參考指南。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 從 .Net 下載安裝下列**其中一**項[： Windows](https://www.microsoft.com/net/download/windows)：
 
@@ -76,7 +76,7 @@ ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 而是透
 * 錯誤頁面
 * 靜態檔案
 * ASP.NET Core MVC
-* 相同比較
+* 身分識別
 
 [!code-csharp[](../../common/samples/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,21&start=58&end=84)]
 

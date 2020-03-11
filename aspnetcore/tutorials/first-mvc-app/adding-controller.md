@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 08/05/2017
 uid: tutorials/first-mvc-app/adding-controller
 ms.openlocfilehash: fb670902b0dafa7dce2b3372e550095387844936
-ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75914242"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666989"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>將控制器新增至 ASP.NET Core MVC 應用程式
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -32,7 +32,7 @@ MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 
 
 ## <a name="add-a-controller"></a>新增控制器
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 在 [方案總管] 中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]
   ![操作功能表](adding-controller/_static/add_controller.png)
@@ -43,13 +43,13 @@ MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 
 
 * 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\) 對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]，將新檔案命名為 *HelloWorldController.cs*。
 
   ![操作功能表](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 在方案總管中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]。
 ![操作功能表](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
@@ -80,19 +80,19 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-您可以在 *Startup.cs* 檔案的 `Configure` 方法中設定路由格式。
+您可以在 `Configure`Startup.cs*檔案的* 方法中設定路由格式。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
 當您瀏覽至應用程式而不提供任何 URL 區段時，則會預設為上方醒目提示之範本行中指定的 "Home" 控制器和 "Index" 方法。
 
-第一個 URL 區段決定要執行的控制器類別。 因此，`localhost:{PORT}/HelloWorld` 會對應到 **HelloWorld**Controller 類別。 URL 區段的第二部分則決定類別上的動作方法。 因此，`localhost:{PORT}/HelloWorld/Index` 會導致 `HelloWorldController` 類別的 `Index` 方法執行。 請注意，您只需要瀏覽至 `localhost:{PORT}/HelloWorld`，根據預設就會呼叫 `Index` 方法。 這是因為，`Index` 是在未明確指定方法名稱時，會在控制器上呼叫的預設方法。 URL 區段的第三個部分 (`id`) 是路由資料。 本教學課程稍後會說明路由資料。
+第一個 URL 區段決定要執行的控制器類別。 因此，`localhost:{PORT}/HelloWorld` 會對應到 **HelloWorld**Controller 類別。 URL 區段的第二部分則決定類別上的動作方法。 因此，`localhost:{PORT}/HelloWorld/Index` 會導致 `Index` 類別的 `HelloWorldController` 方法執行。 請注意，您只需要瀏覽至 `localhost:{PORT}/HelloWorld`，根據預設就會呼叫 `Index` 方法。 這是因為，`Index` 是在未明確指定方法名稱時，會在控制器上呼叫的預設方法。 URL 區段的第三個部分 (`id`) 是路由資料。 本教學課程稍後會說明路由資料。
 
 瀏覽至 `https://localhost:{PORT}/HelloWorld/Welcome`。 `Welcome` 方法隨即執行，並傳回字串 `This is the Welcome action method...`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
 
 ![顯示應用程式回應 "This is the Welcome action method" 的瀏覽器視窗](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 
-修改程式碼 ，將 URL 中的某些參數資訊傳遞到控制器。 例如，`/HelloWorld/Welcome?name=Rick&numtimes=4`。 變更 `Welcome` 方法以包含兩個參數，如下列程式碼所示。
+修改程式碼 ，將 URL 中的某些參數資訊傳遞到控制器。 例如： `/HelloWorld/Welcome?name=Rick&numtimes=4` 。 變更 `Welcome` 方法以包含兩個參數，如下列程式碼所示。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_2)]
 
@@ -100,17 +100,17 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 * 使用 C# 選擇性參數功能來指出若未針對 `numTimes` 參數傳遞任何值時，該參數預設為 1。 <!-- remove for simplified -->
 * 使用 `HtmlEncoder.Default.Encode` 來保護應用程式免於遭受惡意輸入 (也就是 JavaScript) 攻擊。
-* 在 `$"Hello {name}, NumTimes is: {numTimes}"` 中使用[字串插值](/dotnet/articles/csharp/language-reference/keywords/interpolated-strings)。 <!-- remove for simplified -->
+* 在 [ 中使用](/dotnet/articles/csharp/language-reference/keywords/interpolated-strings)字串插值`$"Hello {name}, NumTimes is: {numTimes}"`。 <!-- remove for simplified -->
 
 執行應用程式，然後瀏覽至：
 
    `https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-(Replace `{PORT}` with your port number.) You can try different values for `name` and `numtimes` in the URL. MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
+（將 `{PORT}` 取代為您的埠號碼）。您可以在 URL 中嘗試 `name` 和 `numtimes` 的不同值。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
 
-![Browser window showing an application response of Hello Rick, NumTimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![顯示「Hello Rick」之應用程式回應的瀏覽器視窗，Numtimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
-In the image above, the URL segment (`Parameters`) isn't used, the `name` and `numTimes` parameters are passed in the [query string](https://wikipedia.org/wiki/Query_string). The `?` (question mark) in the above URL is a separator, and the query string follows. The `&` character separates field-value pairs.
+在上圖中，不會使用 URL 區段（`Parameters`），會在[查詢字串](https://wikipedia.org/wiki/Query_string)中傳遞 `name` 和 `numTimes` 參數。 上述 URL 中的 `?` （問號）是分隔符號，而查詢字串則如下所示。 `&` 字元會分隔欄位-值組。
 
 以下列程式碼取代 `Welcome` 方法：
 
@@ -118,7 +118,7 @@ In the image above, the URL segment (`Parameters`) isn't used, the `name` and `n
 
 執行應用程式，並輸入下列 URL：`https://localhost:{PORT}/HelloWorld/Welcome/3?name=Rick`
 
-此時，第三個 URL 區段符合路由參數 `id`。 `Welcome` 方法包含符合 `MapControllerRoute` 方法中 URL 範本的 `id` 參數。 結尾的 `?` (在 `id?` 中) 表示 `id` 是選擇性參數。
+此時，第三個 URL 區段符合路由參數 `id`。 `Welcome` 方法包含符合 `id` 方法中 URL 範本的 `MapControllerRoute` 參數。 結尾的 `?` (在 `id?` 中) 表示 `id` 是選擇性參數。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
@@ -146,7 +146,7 @@ MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 
 
 ## <a name="add-a-controller"></a>新增控制器
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 在 [方案總管] 中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]
   ![操作功能表](adding-controller/_static/add_controller.png)
@@ -157,13 +157,13 @@ MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 
 
 * 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\) 對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]，將新檔案命名為 *HelloWorldController.cs*。
 
   ![操作功能表](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 在方案總管中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]。
 ![操作功能表](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
@@ -194,7 +194,7 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-您可以在 *Startup.cs* 檔案的 `Configure` 方法中設定路由格式。
+您可以在 `Configure`Startup.cs*檔案的* 方法中設定路由格式。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
@@ -205,13 +205,13 @@ Remove link for simplified tutorial.
 
 當您瀏覽至應用程式而不提供任何 URL 區段時，則會預設為上方醒目提示之範本行中指定的 "Home" 控制器和 "Index" 方法。
 
-第一個 URL 區段決定要執行的控制器類別。 因此，`localhost:{PORT}/HelloWorld` 會對應至 `HelloWorldController` 類別。 URL 區段的第二部分則決定類別上的動作方法。 因此，`localhost:{PORT}/HelloWorld/Index` 會導致 `HelloWorldController` 類別的 `Index` 方法執行。 請注意，您只需要瀏覽至 `localhost:{PORT}/HelloWorld`，根據預設就會呼叫 `Index` 方法。 這是因為 `Index` 是未明確指定方法名稱時，在控制器上呼叫的預設方法。 URL 區段的第三個部分 (`id`) 是路由資料。 本教學課程稍後會說明路由資料。
+第一個 URL 區段決定要執行的控制器類別。 因此，`localhost:{PORT}/HelloWorld` 會對應至 `HelloWorldController` 類別。 URL 區段的第二部分則決定類別上的動作方法。 因此，`localhost:{PORT}/HelloWorld/Index` 會導致 `Index` 類別的 `HelloWorldController` 方法執行。 請注意，您只需要瀏覽至 `localhost:{PORT}/HelloWorld`，根據預設就會呼叫 `Index` 方法。 這是因為 `Index` 是未明確指定方法名稱時，在控制器上呼叫的預設方法。 URL 區段的第三個部分 (`id`) 是路由資料。 本教學課程稍後會說明路由資料。
 
 瀏覽至 `https://localhost:{PORT}/HelloWorld/Welcome`。 `Welcome` 方法隨即執行，並傳回字串 `This is the Welcome action method...`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
 
 ![顯示應用程式回應 "This is the Welcome action method" 的瀏覽器視窗](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 
-修改程式碼 ，將 URL 中的某些參數資訊傳遞到控制器。 例如，`/HelloWorld/Welcome?name=Rick&numtimes=4`。 變更 `Welcome` 方法以包含兩個參數，如下列程式碼所示。
+修改程式碼 ，將 URL 中的某些參數資訊傳遞到控制器。 例如： `/HelloWorld/Welcome?name=Rick&numtimes=4` 。 變更 `Welcome` 方法以包含兩個參數，如下列程式碼所示。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_2)]
 
@@ -219,17 +219,17 @@ Remove link for simplified tutorial.
 
 * 使用 C# 選擇性參數功能來指出若未針對 `numTimes` 參數傳遞任何值時，該參數預設為 1。 <!-- remove for simplified -->
 * 使用 `HtmlEncoder.Default.Encode` 來保護應用程式免於遭受惡意輸入 (也就是 JavaScript) 攻擊。
-* 在 `$"Hello {name}, NumTimes is: {numTimes}"` 中使用[字串插值](/dotnet/articles/csharp/language-reference/keywords/interpolated-strings)。 <!-- remove for simplified -->
+* 在 [ 中使用](/dotnet/articles/csharp/language-reference/keywords/interpolated-strings)字串插值`$"Hello {name}, NumTimes is: {numTimes}"`。 <!-- remove for simplified -->
 
 執行應用程式，然後瀏覽至：
 
    `https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-(Replace `{PORT}` with your port number.) You can try different values for `name` and `numtimes` in the URL. MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
+（將 `{PORT}` 取代為您的埠號碼）。您可以在 URL 中嘗試 `name` 和 `numtimes` 的不同值。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
 
-![Browser window showing an application response of Hello Rick, NumTimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![顯示「Hello Rick」之應用程式回應的瀏覽器視窗，Numtimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
-In the image above, the URL segment (`Parameters`) isn't used, the `name` and `numTimes` parameters are passed in the [query string](https://wikipedia.org/wiki/Query_string). The `?` (question mark) in the above URL is a separator, and the query string follows. The `&` character separates field-value pairs.
+在上圖中，不會使用 URL 區段（`Parameters`），會在[查詢字串](https://wikipedia.org/wiki/Query_string)中傳遞 `name` 和 `numTimes` 參數。 上述 URL 中的 `?` （問號）是分隔符號，而查詢字串則如下所示。 `&` 字元會分隔欄位-值組。
 
 以下列程式碼取代 `Welcome` 方法：
 
@@ -237,7 +237,7 @@ In the image above, the URL segment (`Parameters`) isn't used, the `name` and `n
 
 執行應用程式，並輸入下列 URL：`https://localhost:{PORT}/HelloWorld/Welcome/3?name=Rick`
 
-此時，第三個 URL 區段符合路由參數 `id`。 `Welcome` 方法包含符合 `MapRoute` 方法中 URL 範本的 `id` 參數。 結尾的 `?` (在 `id?` 中) 表示 `id` 是選擇性參數。
+此時，第三個 URL 區段符合路由參數 `id`。 `Welcome` 方法包含符合 `id` 方法中 URL 範本的 `MapRoute` 參數。 結尾的 `?` (在 `id?` 中) 表示 `id` 是選擇性參數。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 

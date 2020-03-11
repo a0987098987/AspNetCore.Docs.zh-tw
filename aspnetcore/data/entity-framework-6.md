@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/entity-framework-6
-ms.openlocfilehash: ace937e72efa2343e50b11d52ebc0a2530505758
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 85cf86dcb22ef94cfc87975abaab176e4f1227d3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975589"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656384"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>ASP.NET Core 與 Entity Framework 6 使用者入門
 
@@ -19,11 +19,11 @@ ms.locfileid: "69975589"
 
 本文示範如何在 ASP.NET Core 應用程式中使用 Entity Framework 6。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 若要使用 Entity Framework 6，您的專案必須針對 .NET Framework 進行編譯，因為 Entity Framework 6 不支援 .NET Core。 如果您需要跨平台功能，則必須升級至 [Entity Framework Core](/ef/)。
 
-在 ASP.NET Core 應用程式中使用 Entity Framework 6 的建議方式是，將 EF6 內容和模型類別置於目標為完整 Framework 的類別庫專案中。 從 ASP.NET Core 專案新增類別庫的參考。 請參閱[使用 EF6 和 ASP.NET Core 專案的 Visual Studio 方案](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)範例。
+在 ASP.NET Core 應用程式中使用 Entity Framework 6 的建議方式是將 EF6 內容和模型類別放在以 .NET Framework 為目標的類別庫專案中。 從 ASP.NET Core 專案新增類別庫的參考。 請參閱[使用 EF6 和 ASP.NET Core 專案的 Visual Studio 方案](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)範例。
 
 您無法將 EF6 內容置於 ASP.NET Core 專案中，因為 .NET Core 專案不支援 EF6 命令 (例如 *Enable-Migrations*) 需要的所有功能。
 
@@ -31,7 +31,7 @@ ms.locfileid: "69975589"
 
 ## <a name="reference-full-framework-and-ef6-in-the-aspnet-core-project"></a>在 ASP.NET Core 專案中參考完整 Framework 和 EF6
 
-您的 ASP.NET Core 專案必須參考 .NET Framework 和 EF6。 例如，ASP.NET Core 專案的 *.csproj* 檔案看起來類似下列範例 (只顯示檔案的相關部分)。
+您的 ASP.NET Core 專案必須以 .NET Framework 為目標並參考 EF6。 例如，ASP.NET Core 專案的 *.csproj* 檔案看起來類似下列範例 (只顯示檔案的相關部分)。
 
 [!code-xml[](entity-framework-6/sample/MVCCore/MVCCore.csproj?range=3-9&highlight=2)]
 
@@ -61,18 +61,18 @@ ms.locfileid: "69975589"
 
 ## <a name="sample-application"></a>範例應用程式
 
-如需可用的範例應用程式，請參閱本文所隨附的 [Visual Studio 方案範例 ](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)。
+如需可用的範例應用程式，請參閱本文所隨附的 [Visual Studio 方案範例 ](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)。
 
 此範例可以透過 Visual Studio 中的下列步驟從頭開始建立：
 
 * 建立方案。
 
-* [新增]   > [新專案]   > [Web]   > [ASP.NET Core Web 應用程式] 
+* [新增] > [新專案] > [Web] > [ASP.NET Core Web 應用程式]
   * 在專案範本選取項目對話方塊中，選取下拉式清單中的 API 和.NET Framework
 
-* [新增]   > [新增專案]   > [Windows Desktop]   > [類別庫 (.NET Framework)] 
+* [新增] > [新增專案] > [Windows Desktop] > [類別庫 (.NET Framework)]
 
-* 在這兩個專案的 [套件管理員主控台]  (PMC) 中，執行 `Install-Package Entityframework` 命令。
+* 在這兩個專案的 [套件管理員主控台] (PMC) 中，執行 `Install-Package Entityframework` 命令。
 
 * 在類別庫專案中，建立資料模型類別和內容類別，以及 `IDbContextFactory` 的實作。
 
@@ -86,7 +86,7 @@ ms.locfileid: "69975589"
 
 * 在 Core 專案中，新增控制器和檢視，以確認您可以讀取和寫入資料。 (請注意，ASP.NET Core MVC Scaffolding 不會使用參考自類別庫的 EF6 內容。)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 本文針對在 ASP.NET Core 應用程式中使用 Entity Framework 6 提供了基本指導方針。
 

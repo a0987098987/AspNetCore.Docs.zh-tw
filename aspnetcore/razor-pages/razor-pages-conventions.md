@@ -1,22 +1,20 @@
 ---
 title: ASP.NET Core 中的 Razor 頁面路由和應用程式慣例
-author: guardrex
+author: rick-anderson
 description: 探索路由和應用程式模型提供者慣例如何協助您控制頁面路由、探索與處理。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: d8377c0a0b8a29fe4b6a7fa67beeff84927c8b74
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: f45e327051aba54d1cab67148eb540fb1a5cc149
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114766"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667857"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面路由和應用程式慣例
-
-作者：[Luke Latham](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -28,7 +26,7 @@ ms.locfileid: "77114766"
 
 有保留字無法做為路由區段或參數名稱使用。 如需詳細資訊，請參閱[路由：保留的路由名稱](xref:fundamentals/routing#reserved-routing-names)。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 | 狀況 | 範例會示範 ... |
 | -------- | --------------------------- |
@@ -101,7 +99,7 @@ Razor Pages 路由和 MVC 控制器路由會共用實作。 如需有關 MVC 主
 
 盡可能不要設定 `Order`，這會導致 `Order = 0`。 依賴路由來選取正確的路由。
 
-當 MVC 新增至 `Startup.ConfigureServices`中的服務集合時，會加入 Razor Pages 選項，例如新增 <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>。 如需範例，請參閱[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)。
+當 MVC 新增至 `Startup.ConfigureServices`中的服務集合時，會加入 Razor Pages 選項，例如新增 <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>。 如需範例，請參閱[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)。
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -318,7 +316,7 @@ Razor Pages 會忽略 MVC [動作篩選條件](xref:mvc/controllers/filters#acti
 
 有保留字無法做為路由區段或參數名稱使用。 如需詳細資訊，請參閱[路由：保留的路由名稱](xref:fundamentals/routing#reserved-routing-names)。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 | 狀況 | 範例會示範 ... |
 | -------- | --------------------------- |
@@ -391,7 +389,7 @@ Razor Pages 路由和 MVC 控制器路由會共用實作。 如需有關 MVC 主
 
 盡可能不要設定 `Order`，這會導致 `Order = 0`。 依賴路由來選取正確的路由。
 
-當 MVC 新增至 `Startup.ConfigureServices`中的服務集合時，會加入 Razor Pages 選項，例如新增 <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>。 如需範例，請參閱[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)。
+當 MVC 新增至 `Startup.ConfigureServices`中的服務集合時，會加入 Razor Pages 選項，例如新增 <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>。 如需範例，請參閱[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)。
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -608,7 +606,7 @@ Razor Pages 會忽略 MVC [動作篩選條件](xref:mvc/controllers/filters#acti
 
 有保留字無法做為路由區段或參數名稱使用。 如需詳細資訊，請參閱[路由：保留的路由名稱](xref:fundamentals/routing#reserved-routing-names)。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 | 狀況 | 範例會示範 ... |
 | -------- | --------------------------- |
@@ -681,7 +679,7 @@ Razor Pages 路由和 MVC 控制器路由會共用實作。 如需有關 MVC 主
 
 盡可能不要設定 `Order`，這會導致 `Order = 0`。 依賴路由來選取正確的路由。
 
-當 MVC 新增至 `Startup.ConfigureServices`中的服務集合時，會加入 Razor Pages 選項，例如新增 <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>。 如需範例，請參閱[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)。
+當 MVC 新增至 `Startup.ConfigureServices`中的服務集合時，會加入 Razor Pages 選項，例如新增 <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>。 如需範例，請參閱[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)。
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 

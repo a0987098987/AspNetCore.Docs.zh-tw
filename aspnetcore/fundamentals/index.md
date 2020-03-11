@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 01/15/2020
 uid: fundamentals/index
 ms.openlocfilehash: 3fbfc7c4c0d5e568339bc00a7cbe84a3932acf1f
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146351"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664231"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -33,7 +33,7 @@ ms.locfileid: "76146351"
 
 [!code-csharp[](index/snapshots/2.x/Startup1.cs?highlight=3,12)]
 
-如需詳細資訊，請參閱<xref:fundamentals/startup>。
+如需詳細資訊，請參閱 <xref:fundamentals/startup>。
 
 ## <a name="dependency-injection-services"></a>相依性插入 (服務)
 
@@ -45,13 +45,13 @@ ASP.NET Core 具有內建的相依性插入 (DI) 架構，可讓應用程式的�
 
 雖然 DI 為內建，但其設計用於讓您插入協力廠商的控制反轉 (IoC) 容器 (若您想要的話)。
 
-如需詳細資訊，請參閱<xref:fundamentals/dependency-injection>。
+如需詳細資訊，請參閱 <xref:fundamentals/dependency-injection>。
 
 ## <a name="middleware"></a>中介軟體
 
 要求處理管線是以一系列中介軟體元件組成。 每個元件會在 `HttpContext` 上執行非同步操作，然後叫用管線中下一個中介軟體或終止要求。
 
-依照慣例，中介軟體元件會透過叫用其 `Startup.Configure` 方法中的 `Use...` 延伸模組方法來新增至管線。 例如，若要啟用靜態檔案轉譯，請呼叫 `UseStaticFiles`。
+依照慣例，中介軟體元件會透過叫用其 `Use...` 方法中的 `Startup.Configure` 延伸模組方法來新增至管線。 例如，若要啟用靜態檔案轉譯，請呼叫 `UseStaticFiles`。
 
 下列範例中醒目提示的程式碼會設定要求處理管線：
 
@@ -59,9 +59,9 @@ ASP.NET Core 具有內建的相依性插入 (DI) 架構，可讓應用程式的�
 
 ASP.NET Core 包含一組豐富的內建中介軟體，您也可以撰寫自訂中介軟體。
 
-如需詳細資訊，請參閱<xref:fundamentals/middleware/index>。
+如需詳細資訊，請參閱 <xref:fundamentals/middleware/index>。
 
-## <a name="host"></a>主機
+## <a name="host"></a>Host
 
 ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封裝所有應用程式資源的物件，例如：
 
@@ -87,7 +87,7 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 * 從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。
 * 將記錄輸出傳送到主控台及偵錯提供者。
 
-如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
+如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host>。
 
 ::: moniker-end
 
@@ -105,13 +105,13 @@ ASP.NET Core 應用程式會在啟動時建置一個「主機」。 主機是封
 * 從 *appsettings.json*、*appsettings.{Environment Name}.json*、環境變數與命令列引數載入設定。
 * 將記錄輸出傳送到主控台及偵錯提供者。
 
-如需詳細資訊，請參閱<xref:fundamentals/host/web-host>。
+如需詳細資訊，請參閱 <xref:fundamentals/host/web-host>。
 
 ::: moniker-end
 
 ### <a name="non-web-scenarios"></a>非 Web 案例
 
-一般主機允許其他類型的應用程式，使用交叉剪輯架構延伸模組，例如記錄、相依性插入 (DI)、設定與應用程式存留期管理。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>和<xref:fundamentals/host/hosted-services>。
+一般主機允許其他類型的應用程式，使用交叉剪輯架構延伸模組，例如記錄、相依性插入 (DI)、設定與應用程式存留期管理。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 和 <xref:fundamentals/host/hosted-services>。
 
 ## <a name="servers"></a>伺服器
 
@@ -119,7 +119,7 @@ ASP.NET Core 應用程式使用 HTTP 伺服器實作來接聽 HTTP 要求。 伺
 
 ::: moniker range=">= aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ASP.NET Core 隨附下列伺服器實作：
 
@@ -127,11 +127,11 @@ ASP.NET Core 隨附下列伺服器實作：
 * *IIS HTTP 伺服器*則是適用於使用 IIS Windows 的伺服器。 透過此伺服器，ASP.NET Core 應用程式及 IIS 便可以在相同處理序中執行。
 * *HTTP.sys* 則是適用於並未搭配 IIS 使用 Windows 的伺服器。
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。 Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。 Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。
 
@@ -141,18 +141,18 @@ ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 �
 
 ::: moniker range="< aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ASP.NET Core 隨附下列伺服器實作：
 
 * *Kestrel* 是跨平台的網頁伺服器。 Kestrel 通常會使用 [IIS](https://www.iis.net/)在反向 Proxy 設定中執行。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。
 * *HTTP.sys* 則是適用於並未搭配 IIS 使用 Windows 的伺服器。
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。 Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。 Kestrel 通常會使用 [Nginx](https://nginx.org) 或 [Apache](https://httpd.apache.org/)在反向 Proxy 設定中執行。
 
@@ -160,7 +160,7 @@ ASP.NET Core 提供 *Kestrel* 跨平台伺服器實作。 在 ASP.NET Core 2.0 �
 
 ::: moniker-end
 
-如需詳細資訊，請參閱<xref:fundamentals/servers/index>。
+如需詳細資訊，請參閱 <xref:fundamentals/servers/index>。
 
 ## <a name="configuration"></a>組態
 
@@ -170,9 +170,9 @@ ASP.NET Core 提供組態架構，可從組態提供者的已排序集合中，�
 
 針對管理保密組態資料 (例如密碼)，ASP.NET Core 提供[祕密管理員工具](xref:security/app-secrets)。 針對生產祕密，我們建議使用 [Azure Key Vault](xref:security/key-vault-configuration)。
 
-如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
+如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
 在可能的情況下，ASP.NET Core 會遵循「選項模式」來儲存及擷取組態值。 選項模式使用類別來代表一組相關的設定。
 
@@ -187,7 +187,7 @@ var options = new WebSocketOptions
 app.UseWebSockets(options);
 ```
 
-如需詳細資訊，請參閱<xref:fundamentals/configuration/options>。
+如需詳細資訊，請參閱 <xref:fundamentals/configuration/options>。
 
 ## <a name="environments"></a>環境
 
@@ -197,16 +197,16 @@ app.UseWebSockets(options);
 
 [!code-csharp[](index/snapshots/2.x/Startup2.cs?highlight=3-6)]
 
-如需詳細資訊，請參閱<xref:fundamentals/environments>。
+如需詳細資訊，請參閱 <xref:fundamentals/environments>。
 
 ## <a name="logging"></a>記錄
 
-ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提供者搭配使用。 可用的提供者包括如下：
+ASP.NET Core 支援適用於各種內建和協力廠商記錄提供者的記錄 API。 可用的提供者包括如下：
 
 * 主控台
 * 偵錯
 * Windows 上的事件追蹤
-* Windows 事件日誌
+* Windows 事件記錄檔
 * TraceSource
 * Azure App Service
 * Azure Application Insights
@@ -219,13 +219,13 @@ ASP.NET Core 支援記錄 API，此 API 能與各種內建和第三方記錄提�
 
 `ILogger` 介面可讓您將任何數量的欄位傳遞給記錄提供者。 欄位常用於建構訊息字串，但提供者也可以將它們作為個別欄位，傳送至資料存放區。 這項功能可讓記錄提供者實作 [semantic logging (語意記錄)，又稱為 structured logging (結構化記錄)](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
 
-如需詳細資訊，請參閱<xref:fundamentals/logging/index>。
+如需詳細資訊，請參閱 <xref:fundamentals/logging/index>。
 
 ## <a name="routing"></a>路由
 
 「路由」是一種對應到處理常式的 URL 模式。 處理常式通常是 Razor 頁面、MVC 控制器中的動作方法，或是中介軟體。 ASP.NET Core 路由可讓您控制您應用程式使用的 URL。
 
-如需詳細資訊，請參閱<xref:fundamentals/routing>。
+如需詳細資訊，請參閱 <xref:fundamentals/routing>。
 
 ## <a name="error-handling"></a>錯誤處理
 
@@ -236,7 +236,7 @@ ASP.NET Core 具有處理錯誤的內建功能，例如：
 * 靜態狀態碼頁面
 * 啟動例外狀況處理
 
-如需詳細資訊，請參閱<xref:fundamentals/error-handling>。
+如需詳細資訊，請參閱 <xref:fundamentals/error-handling>。
 
 ## <a name="make-http-requests"></a>發出 HTTP 要求
 
@@ -248,7 +248,7 @@ ASP.NET Core 具有處理錯誤的內建功能，例如：
 * 管理基礎 `HttpClientMessageHandler` 執行個體的共用和存留期，以避免在手動管理 `HttpClient` 存留期時，發生的常見 DNS 問題。
 * 針對透過處理站所建立之用戶端傳送的所有要求，新增可設定的記錄體驗 (透過 `ILogger`)。
 
-如需詳細資訊，請參閱<xref:fundamentals/http-requests>。
+如需詳細資訊，請參閱 <xref:fundamentals/http-requests>。
 
 ## <a name="content-root"></a>內容根目錄
 
@@ -271,13 +271,13 @@ ASP.NET Core 具有處理錯誤的內建功能，例如：
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[建立主機](#host)時，可以指定替代的內容根路徑。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host#contentrootpath>。
+[建立主機](#host)時，可以指定替代的內容根路徑。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host#contentrootpath>。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-[建立主機](#host)時，可以指定替代的內容根路徑。 如需詳細資訊，請參閱<xref:fundamentals/host/web-host#content-root>。
+[建立主機](#host)時，可以指定替代的內容根路徑。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host#content-root>。
 
 ::: moniker-end
 
@@ -293,7 +293,7 @@ Web 根目錄是公用、非程式碼、靜態資源檔的基底路徑，例如�
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Web 根目錄路徑預設為 *{content root}/wwwroot*，但在[建立主機](#host)時，可以指定不同的 web 根目錄。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host#webroot>。
+Web 根目錄路徑預設為 *{content root}/wwwroot*，但在[建立主機](#host)時，可以指定不同的 web 根目錄。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host#webroot>。
 
 ::: moniker-end
 
@@ -319,4 +319,4 @@ Web 根目錄路徑預設為 *{content root}/wwwroot*，但在[建立主機](#ho
 
 在 Razor （*cshtml*）檔案中，波狀符號斜線（`~/`）會指向 web 根目錄。 以 `~/` 開頭的路徑稱為*虛擬路徑*。
 
-如需詳細資訊，請參閱<xref:fundamentals/static-files>。
+如需詳細資訊，請參閱 <xref:fundamentals/static-files>。

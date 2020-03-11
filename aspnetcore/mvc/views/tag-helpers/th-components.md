@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 06/12/2019
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: 070cc3aae08664c13d8eb793a066766d0a5569ee
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 5e2eb2d4322068c5864fbe49acaa6d0859bd319a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880979"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660766"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式元件
 
@@ -21,7 +21,7 @@ ms.locfileid: "74880979"
 
 ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 這兩個標籤協助程式元件位於 <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers> 命名空間，可用於 MVC 和 Razor Pages。 標籤協助程式元件不需要在 *_ViewImports.cshtml* 中註冊應用程式。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="use-cases"></a>使用案例
 
@@ -34,7 +34,7 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 
 ### <a name="inject-into-html-head-element"></a>插入 HTML 標頭項目
 
-在 HTML `<head>` 項目中，CSS 檔案一般與 HTML `<link>` 項目一起匯入。 下列程式碼會使用 `head` 標籤協助程式元件，將 `<link>` 項目插入 `<head>` 項目：
+在 HTML `<head>` 項目中，CSS 檔案一般與 HTML `<link>` 項目一起匯入。 下列程式碼會使用 `<link>` 標籤協助程式元件，將 `<head>` 項目插入 `head` 項目：
 
 [!code-csharp[](th-components/samples/RazorPagesSample/TagHelpers/AddressStyleTagHelperComponent.cs)]
 
@@ -56,7 +56,7 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 
 [!code-html[](th-components/samples/RazorPagesSample/TagHelpers/Templates/AddressToolTipScript.html)]
 
-上述程式碼會將 [ 啟動程序工具提示小工具](https://getbootstrap.com/docs/3.3/javascript/#tooltips)繫結至包含 `printable` 屬性的任何 `<address>` 項目。 當滑鼠指標停留在項目上時，會顯示效果。
+上述程式碼會將 [ 啟動程序工具提示小工具](https://getbootstrap.com/docs/3.3/javascript/#tooltips)繫結至包含 `<address>` 屬性的任何 `printable` 項目。 當滑鼠指標停留在項目上時，會顯示效果。
 
 ## <a name="register-a-component"></a>註冊元件
 
@@ -68,7 +68,7 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 
 ### <a name="registration-via-services-container"></a>透過服務容器註冊
 
-如果標籤協助程式元件類別並未以 <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.ITagHelperComponentManager> 管理，則必須使用[相依性插入 (DI)](xref:fundamentals/dependency-injection) 系統來註冊。 下列 `Startup.ConfigureServices` 程式碼會使用[暫時性存留期](xref:fundamentals/dependency-injection#lifetime-and-registration-options)來註冊 `AddressStyleTagHelperComponent` 與 `AddressScriptTagHelperComponent` 類別：
+如果標籤協助程式元件類別並未以 <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.ITagHelperComponentManager> 管理，則必須使用[相依性插入 (DI)](xref:fundamentals/dependency-injection) 系統來註冊。 下列 `Startup.ConfigureServices` 程式碼會使用`AddressStyleTagHelperComponent`暫時性存留期`AddressScriptTagHelperComponent`來註冊 [ 與 ](xref:fundamentals/dependency-injection#lifetime-and-registration-options) 類別：
 
 [!code-csharp[](th-components/samples/RazorPagesSample/Startup.cs?name=snippet_ConfigureServices&highlight=12-15)]
 
@@ -151,7 +151,7 @@ public class AddressTagHelperComponent : TagHelperComponent
 * 執行內容的 `TagName` 屬性值等於 `address`。
 * 對應的 `<address>` 項目具有 `printable` 屬性。
 
-例如，當處理下列 `<address>` 項目時，`if` 陳述式會評估為 True：
+例如，當處理下列 `if` 項目時，`<address>` 陳述式會評估為 True：
 
 [!code-cshtml[](th-components/samples/RazorPagesSample/Pages/Contact.cshtml?name=snippet_AddressPrintable)]
 

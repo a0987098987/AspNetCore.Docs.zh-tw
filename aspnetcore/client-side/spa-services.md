@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 uid: client-side/spa-services
-ms.openlocfilehash: caff1a735de3274b371f67e6e485dc42e579452c
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: c0c73882afd579510ad9cdf5b485c1d6fbeadd1c
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828213"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663776"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>使用 JavaScript 服務在 ASP.NET Core 中建立單一頁面應用程式
 
@@ -225,7 +225,7 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 隨即會顯示可用的 SPA 範本清單：
 
-| 樣板                                 | 簡短名稱 | 語言 | Tags        |
+| 範本                                 | 簡短名稱 | Language | Tags        |
 | ------------------------------------------| :--------: | :------: | :---------: |
 | 具有角度的 MVC ASP.NET Core             | angular    | [C#]     | Web/MVC/SPA |
 | 具有回應 .js 的 MVC ASP.NET Core            | react      | [C#]     | Web/MVC/SPA |
@@ -278,7 +278,7 @@ SpaServices 範本已預先設定為使用[Karma](https://karma-runner.github.io
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-在*ClientApp*目錄中開啟命令提示字元。 執行下列命令：
+在*ClientApp*目錄中開啟命令提示字元。 執行以下命令：
 
 ```console
 npm test
@@ -288,9 +288,9 @@ npm test
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/test/karma.conf.js?range=4-5,8-11)]
 
-## <a name="publish-the-app"></a>發行應用程式
+## <a name="publish-the-app"></a>發佈應用程式
 
-如需發佈至 Azure 的詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/12474)。
+如需發佈至 Azure 的詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/12474)。
 
 將產生的用戶端資產和已發佈的 ASP.NET Core 成品結合成準備好部署的套件可能會很麻煩。 幸好，SpaServices 會使用名為 `RunWebpack`的自訂 MSBuild 目標來協調整個發行流程：
 

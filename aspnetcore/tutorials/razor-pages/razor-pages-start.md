@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 11/12/2019
 uid: tutorials/razor-pages/razor-pages-start
 ms.openlocfilehash: 6e1d58ccd83f7d7c1083dc2bf9ce7476650812a1
-ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722991"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658540"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ::: moniker range=">= aspnetcore-3.0"
 此教學課程是系列中的第一個課程，教導您建置 ASP.NET Core Razor Pages Web 應用程式的基本概念。
@@ -25,7 +25,7 @@ ms.locfileid: "75722991"
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-在本教學課程中，您已：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。
@@ -36,17 +36,17 @@ ms.locfileid: "75722991"
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
@@ -54,7 +54,7 @@ ms.locfileid: "75722991"
 
 ## <a name="create-a-razor-pages-web-app"></a>建立 Razor 頁面 Web 應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 從**Visual Studio 的**[檔案] 功能表中，選取 [**新增**>**專案**]。
 * 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]。
@@ -68,9 +68,9 @@ ms.locfileid: "75722991"
 
   下列起始專案會隨即建立：
 
-  ![底下提供說明，包括方案總管](razor-pages-start/_static/se2.2.png)
+  ![方案總管](razor-pages-start/_static/se2.2.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
 
@@ -86,11 +86,11 @@ ms.locfileid: "75722991"
   * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會出現一個對話方塊詢問「' RazorPagesMovie ' 缺少建置及偵錯所需的資產。要新增它們嗎?」 選取 [是]。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 選取 **[** 檔案] > [**新增方案**]。
 
@@ -127,23 +127,23 @@ ms.locfileid: "75722991"
 * *.cshtml* 檔案，其中包含 C# 程式碼的 HTML 標記 (使用 Razor 語法)。
 * *.cshtml.cs* 檔案，其中包含處理頁面事件的 C# 程式碼。
 
-支援檔案的名稱以底線開頭。 例如， *_Layout.cshtml* 檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱<xref:mvc/views/layout>。
+支援檔案的名稱以底線開頭。 例如， *_Layout.cshtml* 檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱 <xref:mvc/views/layout>。
 
 ### <a name="wwwroot-folder"></a>wwwroot 資料夾
 
-包含靜態檔案，例如 HTML 檔案、JavaScript 檔案和 CSS 檔案。 如需詳細資訊，請參閱<xref:fundamentals/static-files>。
+包含靜態檔案，例如 HTML 檔案、JavaScript 檔案和 CSS 檔案。 如需詳細資訊，請參閱 <xref:fundamentals/static-files>。
 
 ### <a name="appsettingsjson"></a>appSettings.json
 
-包含組態資料，例如連接字串。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
+包含組態資料，例如連接字串。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 
 ### <a name="programcs"></a>Program.cs
 
-包含程式的進入點。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
+包含程式的進入點。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host>。
 
 ### <a name="startupcs"></a>Startup.cs
 
-包含設定應用程式行為的程式碼。 如需詳細資訊，請參閱<xref:fundamentals/startup>。
+包含設定應用程式行為的程式碼。 如需詳細資訊，請參閱 <xref:fundamentals/startup>。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -166,7 +166,7 @@ ms.locfileid: "75722991"
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-在本教學課程中，您已：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 建立 Razor Pages Web 應用程式。
@@ -177,17 +177,17 @@ ms.locfileid: "75722991"
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
 
@@ -195,7 +195,7 @@ ms.locfileid: "75722991"
 
 ## <a name="create-a-razor-pages-web-app"></a>建立 Razor 頁面 Web 應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 從**Visual Studio 的**[檔案] 功能表中，選取 [**新增**>**專案**]。
 
@@ -213,9 +213,9 @@ ms.locfileid: "75722991"
 
   下列起始專案會隨即建立：
 
-  ![底下提供說明，包括方案總管](razor-pages-start/_static/se2.2.png)
+  ![方案總管](razor-pages-start/_static/se2.2.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
 
@@ -231,11 +231,11 @@ ms.locfileid: "75722991"
   * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會出現一個對話方塊詢問「' RazorPagesMovie ' 缺少建置及偵錯所需的資產。要新增它們嗎?」 選取 [是]。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 選取 **[** 檔案] > [**新增方案**]。
 
@@ -259,7 +259,7 @@ ms.locfileid: "75722991"
 
 ## <a name="run-the-app"></a>執行應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 按 Ctrl+F5 即可執行而不使用偵錯工具。
 
@@ -277,7 +277,7 @@ ms.locfileid: "75722991"
 
   ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
   
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
   [!INCLUDE[](~/includes/trustCertVSC.md)]
 
@@ -295,7 +295,7 @@ ms.locfileid: "75722991"
 
   ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
   
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
   [!INCLUDE[](~/includes/trustCertMac.md)]
 
@@ -328,23 +328,23 @@ ms.locfileid: "75722991"
 * *.cshtml* 檔案，其中包含 C# 程式碼的 HTML 標記 (使用 Razor 語法)。
 * *.cshtml.cs* 檔案，其中包含處理頁面事件的 C# 程式碼。
 
-支援檔案的名稱以底線開頭。 例如， *_Layout.cshtml* 檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱<xref:mvc/views/layout>。
+支援檔案的名稱以底線開頭。 例如， *_Layout.cshtml* 檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱 <xref:mvc/views/layout>。
 
 ### <a name="wwwroot-folder"></a>wwwroot 資料夾
 
-包含靜態檔案，例如 HTML 檔案、JavaScript 檔案和 CSS 檔案。 如需詳細資訊，請參閱<xref:fundamentals/static-files>。
+包含靜態檔案，例如 HTML 檔案、JavaScript 檔案和 CSS 檔案。 如需詳細資訊，請參閱 <xref:fundamentals/static-files>。
 
 ### <a name="appsettingsjson"></a>appSettings.json
 
-包含組態資料，例如連接字串。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
+包含組態資料，例如連接字串。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 
 ### <a name="programcs"></a>Program.cs
 
-包含程式的進入點。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
+包含程式的進入點。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host>。
 
 ### <a name="startupcs"></a>Startup.cs
 
-包含設定應用程式行為的程式碼，例如是否需要同意使用 Cookie。 如需詳細資訊，請參閱<xref:fundamentals/startup>。
+包含設定應用程式行為的程式碼，例如是否需要同意使用 Cookie。 如需詳細資訊，請參閱 <xref:fundamentals/startup>。
 
 ## <a name="additional-resources"></a>其他資源
 

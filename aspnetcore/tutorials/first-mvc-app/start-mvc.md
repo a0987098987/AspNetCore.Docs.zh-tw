@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 10/16/2019
 uid: tutorials/first-mvc-app/start-mvc
 ms.openlocfilehash: 901257efdfbc7b36249233745175f5ed253da2c7
-ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722850"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662474"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -22,7 +22,7 @@ ms.locfileid: "75722850"
 
 本教學課程將教導您建置 ASP.NET Core MVC Web 應用程式的基本概念。
 
-此應用程式會管理電影標題的資料庫。 您將學習如何：
+此應用程式會管理電影標題的資料庫。 您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web 應用程式。
@@ -34,17 +34,17 @@ ms.locfileid: "75722850"
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "75722850"
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 從 Visual Studio 中，選取 [建立新專案]。
 
@@ -70,13 +70,13 @@ ms.locfileid: "75722850"
 
 Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只要輸入專案名稱，然後選取幾個選項，就立刻會有工作中的應用程式。 這是基本的入門專案。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 本教學課程假設您熟悉 VS Code。 如需詳細資訊，請參閱 [VS Code 使用者入門](https://code.visualstudio.com/docs)和 [Visual Studio Code 說明](#visual-studio-code-help)。
 
 * 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
 * 將目錄 (`cd`) 變更為其中包含專案的資料夾。
-* 執行下列命令：
+* 執行以下命令：
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie
@@ -88,7 +88,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
   * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie .csproj*專案檔。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 選取 **[** 檔案] > [**新增方案**]。
 
@@ -108,7 +108,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 ### <a name="run-the-app"></a>執行應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 選取 **Ctrl-F5** 以非偵錯模式執行應用程式。
 
@@ -122,13 +122,13 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 * 您可以選取 [IIS Express] 按鈕偵錯應用程式
 
-  ![[IIS Express]](start-mvc/_static/iis_express.png)
+  ![IIS Express](start-mvc/_static/iis_express.png)
 
   下圖顯示應用程式：
 
   ![Home 或 Index 頁面](start-mvc/_static/home2.2.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 按 Ctrl+F5 即可執行而不使用偵錯工具。
 
@@ -140,7 +140,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   ![Home 或 Index 頁面](start-mvc/_static/home2.2.png)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
 
@@ -160,7 +160,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 在本教學課程的下一個部分中，您會了解 MVC，並開始撰寫一些程式碼。
 
 > [!div class="step-by-step"]
-> [下一步](adding-controller.md)
+> [下一個](adding-controller.md)
 
 ::: moniker-end
 
@@ -170,7 +170,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 本教學課程將教導您建置 ASP.NET Core MVC Web 應用程式的基本概念。
 
-此應用程式會管理電影標題的資料庫。 您將學習如何：
+此應用程式會管理電影標題的資料庫。 您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web 應用程式。
@@ -182,24 +182,24 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
 
 ---
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 從 Visual Studio 中，選取 [建立新專案]。
 
@@ -218,13 +218,13 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只要輸入專案名稱，然後選取幾個選項，就立刻會有工作中的應用程式。 這是基本的入門專案，讓我們從這裡開始吧。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 本教學課程假設您熟悉 VS Code。 如需詳細資訊，請參閱 [VS Code 使用者入門](https://code.visualstudio.com/docs)和 [Visual Studio Code 說明](#visual-studio-code-help)。
 
 * 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
 * 將目錄 (`cd`) 變更為其中包含專案的資料夾。
-* 執行下列命令：
+* 執行以下命令：
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie
@@ -236,7 +236,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
   * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie .csproj*專案檔。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 選取 **[** 檔案] > [**新增方案**]。
 
@@ -256,7 +256,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 ### <a name="run-the-app"></a>執行應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 選取 **Ctrl-F5** 以非偵錯模式執行應用程式。
 
@@ -270,7 +270,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 * 您可以選取 [IIS Express] 按鈕偵錯應用程式
 
-  ![[IIS Express]](start-mvc/_static/iis_express.png)
+  ![IIS Express](start-mvc/_static/iis_express.png)
 
 * 選取 [接受] 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
@@ -280,7 +280,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   ![Home 或 Index 頁面](start-mvc/_static/home2.2.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 按 Ctrl+F5 即可執行而不使用偵錯工具。
 
@@ -298,7 +298,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   ![Home 或 Index 頁面](start-mvc/_static/home2.2.png)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
 
@@ -322,6 +322,6 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 在本教學課程的下一個部分中，您會了解 MVC，並開始撰寫一些程式碼。
 
 > [!div class="step-by-step"]
-> [下一步](adding-controller.md)
+> [下一個](adding-controller.md)
 
 ::: moniker-end

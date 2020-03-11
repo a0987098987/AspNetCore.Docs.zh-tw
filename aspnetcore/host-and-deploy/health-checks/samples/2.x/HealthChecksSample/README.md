@@ -2,9 +2,9 @@
 
 此範例說明如何使用健康狀態檢查中介軟體和服務。 此範例示範 [ASP.NET Core 中的健康狀態檢查](https://docs.microsoft.com/aspnet/core/host-and-deploy/health-checks)主題中所述的案例。
 
-若要在該主題所述案例中執行範例應用程式，請在命令殼層中使用來自專案資料夾的 [dotnet run](https://docs.microsoft.com/dotnet/core/tools/dotnet-run) 命令。 傳遞您要探索的案例參數。 若未提供參數給 `dotnet run`，應用程式會預設為 `basic` 組態。
+若要在該主題所述案例中執行範例應用程式，請在命令殼層中使用來自專案資料夾的 [dotnet run](https://docs.microsoft.com/dotnet/core/tools/dotnet-run) 命令。 傳遞您要探索的案例參數。 若未提供參數給 `basic`，應用程式會預設為 `dotnet run` 組態。
 
-| 情節                                               | 範例應用程式命令               | 說明 |
+| 狀況                                               | 範例應用程式命令               | 描述 |
 | ------------------------------------------------------ | -------------------------------- | ----------- |
 | 基本健康狀態探查 (預設)                           | `dotnet run --scenario basic`    | 確認應用程式可處理 HTTP 要求。 |
 | 資料庫探查                                         | `dotnet run --scenario db`       | 檢查 SQL Server 資料庫連線。 如需指示，請參閱該主題的[資料庫探查](https://docs.microsoft.com/aspnet/core/host-and-deploy/health-checks#database-probe)一節。 |

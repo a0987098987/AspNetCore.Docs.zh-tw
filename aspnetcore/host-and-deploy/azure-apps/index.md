@@ -8,17 +8,17 @@ ms.custom: mvc
 ms.date: 12/16/2019
 uid: host-and-deploy/azure-apps/index
 ms.openlocfilehash: ba9671f68a0faf99ff5232a6d5dd132d0a1d5ac5
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928422"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665141"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
 [Azure App Service](https://azure.microsoft.com/services/app-service/) 是 [Microsoft 雲端運算平台服務](https://azure.microsoft.com/)，用於裝載 Web 應用程式，包括 ASP.NET Core。
 
-## <a name="useful-resources"></a>實用資源
+## <a name="useful-resources"></a>有用的資源
 
 [App Service 文件](/azure/app-service/)是 Azure 應用程式文件、教學課程、範例、使用說明指南與其他資源的首頁。 關於裝載 ASP.NET Core 應用程式，有兩個值得參考的教學課程：
 
@@ -49,9 +49,9 @@ ms.locfileid: "76928422"
 <xref:test/troubleshoot>  
 了解 ASP.NET Core 專案的相關警告和錯誤，並為其進行疑難排解。
 
-## <a name="application-configuration"></a>應用程式組態
+## <a name="application-configuration"></a>應用程式設定
 
-### <a name="platform"></a>Platform
+### <a name="platform"></a>平台
 
 應用程式服務應用程式的平臺架構（x86/x64）會在 Azure 入口網站的應用程式設定中，針對裝載于 A 系列計算（基本）或更高主機層上的應用程式進行設定。 確認應用程式的發佈設定（例如，在 Visual Studio[發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)）中，是否符合應用程式在 Azure 入口網站中的服務設定。
 
@@ -69,7 +69,7 @@ Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執�
 
 如需 .NET Core framework 元件和散發方法的詳細資訊，例如 .NET Core 執行時間和 .NET Core SDK 的相關資訊，請參閱[關於 .Net core：組合](/dotnet/core/about#composition)。
 
-### <a name="packages"></a>package
+### <a name="packages"></a>Packages
 
 包含下列 NuGet 套件，為部署至 Azure App Service 的應用程式提供自動記錄功能：
 
@@ -101,7 +101,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 [IIS 整合中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components) (當裝載[處理序外](xref:host-and-deploy/iis/index#out-of-process-hosting-model)時會設定轉送標頭中介軟體) 與 ASP.NET Core 模組會設定為轉送配置 (HTTP/HTTPS) 與發出要求的遠端 IP 位址。 其他 Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
 
-## <a name="monitoring-and-logging"></a>監視與記錄
+## <a name="monitoring-and-logging"></a>監視和記錄
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -139,11 +139,11 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 當在部署位置間交換時，使用資料保護的任何系統都將無法使用前一位置內的金鑰環，來解密儲存的資料。 ASP.NET Cookie 中介軟體使用資料保護來保護其 Cookie。 這會導致使用標準 ASP.NET Cookie 中介軟體的應用程式將使用者登出。 至於非相依於位置的金鑰環解決方案，請使用外部金鑰環提供者，例如：
 
 * Azure Blob 儲存體
-* Azure Key Vault
+* Azure 金鑰保存庫
 * SQL 存放區
 * Redis 快取
 
-如需詳細資訊，請參閱<xref:security/data-protection/implementation/key-storage-providers>。
+如需詳細資訊，請參閱 <xref:security/data-protection/implementation/key-storage-providers>。
 <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
 
 ## <a name="deploy-an-aspnet-core-app-that-uses-a-net-core-preview"></a>部署使用 .NET Core 預覽的 ASP.NET Core 應用程式
@@ -245,13 +245,13 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 若為64位部署：
 
 * 請使用 64 位元 .NET Core SDK 來建置 64 位元應用程式。
-* 在 App Service 的 [組態] > [一般設定] 中，將 [平台] 設為 [64 位元]。 應用程式必須使用基本或更高的服務方案，才能選擇平台位元。
+* 在 App Service 的 [組態] **[一般設定]** **中，將 [平台]**  >  設為 [64 位元]。 應用程式必須使用基本或更高的服務方案，才能選擇平台位元。
 
 ::: moniker-end
 
 ### <a name="deploy-the-app-framework-dependent"></a>部署依架構不同的應用程式
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 從 Visual Studio 工具列選取 [建置] > [發佈 {應用程式名稱}]，或在 [方案總管] 中以滑鼠右鍵按一下專案，然後選取 [發佈]。
 1. 在 [挑選發佈目標] 對話方塊中，確認已選取 [App Service]。
@@ -264,7 +264,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    * 選取 [儲存]。
 1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
 1. 在專案檔中，請勿指定[執行階段識別碼 (RID)](/dotnet/core/rid-catalog)。
 
@@ -274,7 +274,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    dotnet publish --configuration Release
    ```
 
-1. 將 bin/Release/{目標 FRAMEWORK}/publish 目錄的內容移到 App Service 中的網站。 若要在 [Kudu](https://github.com/projectkudu/kudu/wiki) 主控台將 *publish* 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
+1. 將 bin/Release/{目標 FRAMEWORK}/publish 目錄的內容移到 App Service 中的網站。 若要在 *Kudu* 主控台將 [publish](https://github.com/projectkudu/kudu/wiki) 資料夾內容從本機硬碟或網路共用直接拖曳到 App Service，請將檔案拖曳到 Kudu 主控台中的 `D:\home\site\wwwroot` 資料夾。
 
 ---
 
@@ -282,7 +282,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 使用 Visual Studio 或[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)的 .NET Core CLI。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 從 Visual Studio 工具列選取 [建置] > [發佈 {應用程式名稱}]，或在 [方案總管] 中以滑鼠右鍵按一下專案，然後選取 [發佈]。
 1. 在 [挑選發佈目標] 對話方塊中，確認已選取 [App Service]。
@@ -290,12 +290,12 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 1. 在 [發行] 對話方塊中：
    * 確認已選取 [發行] 設定。
    * 開啟 [部署模式] 下拉式清單，然後選取 [獨立式]。
-   * 從 [目標執行階段] 下拉式清單中選取目標執行階段。 預設為 `win-x86`。
+   * 從 [目標執行階段] 下拉式清單中選取目標執行階段。 預設值為 `win-x86`。
    * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項] 並選取核取方塊，以移除目的地的其他檔案。
    * 選取 [儲存]。
 1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
 1. 在專案檔中，指定一或多個[執行階段識別碼 (RID)](/dotnet/core/rid-catalog)。 針對單一 RID 使用 `<RuntimeIdentifier>` (單數)，或者使用 `<RuntimeIdentifiers>` (複數) 來提供以分號分隔的 RID 清單。 在下列範例中已指定 `win-x86`：
 

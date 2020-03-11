@@ -7,15 +7,15 @@ ms.custom: mvc
 ms.date: 09/24/2019
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
 ms.openlocfilehash: d7514433bee8a138cd7d75bfd15c9798d4fd31a3
-ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76809103"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662726"
 ---
 # <a name="link-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的連結標記協助程式
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 [連結](xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper)標籤協助程式會產生主要或切換回 CSS 檔案的連結。 主要 CSS 檔案通常位於[內容傳遞網路](/office365/enterprise/content-delivery-networks#what-exactly-is-a-cdn)（CDN）上。
 
@@ -47,15 +47,15 @@ ms.locfileid: "76809103"
 
 ### <a name="asp-fallback-test-class"></a>asp-fallback-測試類別
 
-在樣式表單中定義用於回溯測試的類別名稱。 如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>。
+在樣式表單中定義用於回溯測試的類別名稱。 如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>。
 
 ### <a name="asp-fallback-test-property"></a>asp-fallback-測試-屬性
 
-用於回退測試的 CSS 屬性名稱。 如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>。
+用於回退測試的 CSS 屬性名稱。 如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>。
 
 ### <a name="asp-fallback-test-value"></a>asp-fallback-測試-值
 
-要用於 fallback 測試的 CSS 屬性值。 如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>。
+要用於 fallback 測試的 CSS 屬性值。 如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: e2e038fe69da696b67f7aef61795e23dc8512fdf
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: 308e7db47104ebd4d6bb8d08c64f14bbd118898b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856126"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663986"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的環境標籤協助程式
 
-作者：[Peter Kellner](https://peterkellner.net)、[Hisham Bin Ateya](https://twitter.com/hishambinateya) 和 [Luke Latham](https://github.com/guardrex)
+作者：[Peter Kellner](https://peterkellner.net) 和 [Hisham Bin Ateya](https://twitter.com/hishambinateya)
 
 環境標籤協助程式依據目前的[主控環境](xref:fundamentals/environments)，有條件地轉譯含括內容。 環境標籤協助程式的單一屬性 `names`，是以逗號分隔的環境名稱清單。 如果任何提供的環境名稱符合目前環境，則會轉譯含括的內容。
 
@@ -41,7 +41,7 @@ ms.locfileid: "67856126"
 
 ## <a name="include-and-exclude-attributes"></a>include 和 exclude 屬性
 
-`include` & `exclude` 屬性會依據包含或排除的主控環境名稱，來控制含括內容的轉譯。
+`include` & `exclude` 屬性控制項會根據內含或排除的主控環境名稱，來呈現已包含的內容。
 
 ### <a name="include"></a>include
 
@@ -53,9 +53,9 @@ ms.locfileid: "67856126"
 </environment>
 ```
 
-### <a name="exclude"></a>exclude
+### <a name="exclude"></a>排除
 
-與 `include` 屬性相反，當主控環境與 `exclude` 屬性值中列出的環境不相符時，將轉譯 `<environment>` 標記的內容。
+與 `include` 屬性相反，當主控環境與 `<environment>` 屬性值中列出的環境不相符時，將轉譯 `exclude` 標記的內容。
 
 ```cshtml
 <environment exclude="Development">

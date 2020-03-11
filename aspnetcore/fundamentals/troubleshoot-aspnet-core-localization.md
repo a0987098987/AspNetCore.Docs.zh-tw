@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 01/24/2019
 uid: fundamentals/troubleshoot-aspnet-core-localization
 ms.openlocfilehash: 229e274a22e170d984a16d3b1ee64ebc38c4ef77
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963341"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660374"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>針對 ASP.NET Core 當地語系化進行疑難排解
 
@@ -42,7 +42,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ASP.NET Core 已為當地語系化資源檔命名預先定義了規則與方針，其詳細說明請參閱[此處](xref:fundamentals/localization?view=aspnetcore-2.2#resource-file-naming)。
 
-## <a name="missing-resources"></a>缺少資源
+## <a name="missing-resources"></a>遺失資源
 
 找不到資源的常見原因包括：
 
@@ -71,7 +71,7 @@ ASP.NET Core 根據預設會提供讓類別庫能透過 [ResourceLocationAttribu
 
 [CustomRequestCultureProvider](/dotnet/api/microsoft.aspnetcore.localization.customrequestcultureprovider?view=aspnetcore-2.1) 可讓您自訂如何在應用程式中提供當地語系化文化特性 (Culture)。 當預設提供者不符合您的需求時，會使用 `CustomRequestCultureProvider`。
 
-- 自訂提供者無法正常運作的常見原因在於它不是 `RequestCultureProviders` 清單中的第一個提供者。 若要解決此問題︰
+- 自訂提供者無法正常運作的常見原因在於它不是 `RequestCultureProviders` 清單中的第一個提供者。 若要解決此問題：
 
 - 將自訂提供者插入 `RequestCultureProviders` 清單中的位置 0，如下所示：
 

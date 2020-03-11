@@ -6,22 +6,22 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 02/11/2020
 uid: security/authentication/cookie
-ms.openlocfilehash: 62a3d247dade6c83156a8378407d5e3891713fd1
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 64f881441a7a7f9a5529cb6ee5ce81142ccd69e6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172123"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662999"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>使用不含 ASP.NET Core 身分識別的 cookie 驗證
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)和[Luke Latham](https://github.com/guardrex)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 ::: moniker range=">= aspnetcore-3.0"
 
 ASP.NET Core 身分識別是完整且功能完整的驗證提供者，可用於建立和維護登入。 不過，不含 ASP.NET Core 身分識別的 cookie 型驗證提供者可以使用。 如需詳細資訊，請參閱<xref:security/authentication/identity>。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 針對範例應用程式中的示範用途，假設使用者的使用者帳戶（Maria Rodriguez）已硬式編碼到應用程式中。 使用**電子郵件**位址 `maria.rodriguez@contoso.com` 和任何密碼來登入使用者。 使用者會在*頁面/帳戶/登入. cshtml .cs*檔案的 `AuthenticateUser` 方法中進行驗證。 在真實世界的範例中，使用者會針對資料庫進行驗證。
 
@@ -238,7 +238,7 @@ await HttpContext.SignInAsync(
 
 ASP.NET Core 身分識別是完整且功能完整的驗證提供者，可用於建立和維護登入。 不過，您可以使用 cookie 型驗證驗證提供者，而不需要 ASP.NET Core 身分識別。 如需詳細資訊，請參閱<xref:security/authentication/identity>。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 針對範例應用程式中的示範用途，假設使用者的使用者帳戶（Maria Rodriguez）已硬式編碼到應用程式中。 使用**電子郵件**位址 `maria.rodriguez@contoso.com` 和任何密碼來登入使用者。 使用者會在*頁面/帳戶/登入. cshtml .cs*檔案的 `AuthenticateUser` 方法中進行驗證。 在真實世界的範例中，使用者會針對資料庫進行驗證。
 

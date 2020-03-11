@@ -10,23 +10,23 @@ no-loc:
 - SignalR
 uid: signalr/supported-platforms
 ms.openlocfilehash: 054965921c87c1a9be27e5ddaa8a87b0fa1f4113
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146494"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668137"
 ---
-# <a name="aspnet-core-opno-locsignalr-supported-platforms"></a>ASP.NET Core SignalR 支援的平臺
+# <a name="aspnet-core-signalr-supported-platforms"></a>ASP.NET Core SignalR 支援的平臺
 
 ## <a name="server-system-requirements"></a>伺服器系統需求
 
-ASP.NET Core 的 SignalR 支援 ASP.NET Core 支援的任何伺服器平臺。
+SignalR for ASP.NET Core 支援 ASP.NET Core 支援的任何伺服器平臺。
 
 ## <a name="javascript-client"></a>JavaScript 用戶端
 
 [JavaScript 用戶端](xref:signalr/javascript-client)會在 NodeJS 8 和更新版本以及下列瀏覽器上執行：
 
-| 瀏覽器                         | {2&gt;版本&lt;2}         |
+| 瀏覽器                         | 版本         |
 | ------------------------------- | --------------- |
 | Microsoft Edge                  | 目前的&dagger; |
 | Mozilla Firefox                 | 目前的&dagger; |

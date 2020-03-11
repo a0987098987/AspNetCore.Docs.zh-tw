@@ -7,11 +7,11 @@ ms.author: jamesnk
 ms.date: 09/23/2019
 uid: grpc/diagnostics
 ms.openlocfilehash: 17607b734e6d777de9516aa14e81c97f87b61023
-ms.sourcegitcommit: 80286715afb93c4d13c931b008016d6086c0312b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77074519"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667339"
 ---
 # <a name="logging-and-diagnostics-in-grpc-on-net"></a>.NET 上 gRPC 中的記錄和診斷
 
@@ -157,7 +157,7 @@ gRPC 服務裝載于 ASP.NET Core，其會報告傳入 HTTP 要求的相關事�
 > [!NOTE]
 > 遙測程式庫目前不會捕捉 gRPC 特定的 `Grpc.Net.Client.GrpcOut` 遙測。 改善遙測程式庫的工作正在進行追蹤。
 
-## <a name="metrics"></a>計量
+## <a name="metrics"></a>度量
 
 計量是以時間間隔表示的資料量值，例如每秒要求數。 計量資料可讓您觀察高階應用程式的狀態。 .NET gRPC 計量是使用 `EventCounter`發出。
 

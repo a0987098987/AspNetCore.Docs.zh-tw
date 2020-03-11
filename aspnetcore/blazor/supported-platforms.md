@@ -11,13 +11,13 @@ no-loc:
 - SignalR
 uid: blazor/supported-platforms
 ms.openlocfilehash: 505974280b5c96ec2bcae42c6e076ab67a15bb07
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160128"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658855"
 ---
-# <a name="aspnet-core-opno-locblazor-supported-platforms"></a>ASP.NET Core Blazor 支援的平臺
+# <a name="aspnet-core-blazor-supported-platforms"></a>ASP.NET Core Blazor 支援的平臺
 
 作者：[Luke Latham](https://github.com/guardrex)
 
@@ -25,9 +25,9 @@ ms.locfileid: "76160128"
 
 ## <a name="browser-requirements"></a>瀏覽器需求
 
-### <a name="opno-locblazor-webassembly"></a>Blazor WebAssembly
+### <a name="blazor-webassembly"></a>Blazor WebAssembly
 
-| 瀏覽器                          | {2&gt;版本&lt;2}               |
+| 瀏覽器                          | 版本               |
 | -------------------------------- | :-------------------: |
 | Microsoft Edge                   | 目前               |
 | Mozilla Firefox                  | 目前               |
@@ -37,9 +37,9 @@ ms.locfileid: "76160128"
 
 &dagger;Microsoft Internet Explorer 不支援[WebAssembly](https://webassembly.org)。
 
-### <a name="opno-locblazor-server"></a>Blazor 伺服器
+### <a name="blazor-server"></a>Blazor 伺服器
 
-| 瀏覽器                          | {2&gt;版本&lt;2}    |
+| 瀏覽器                          | 版本    |
 | -------------------------------- | :--------: |
 | Microsoft Edge                   | 目前    |
 | Mozilla Firefox                  | 目前    |

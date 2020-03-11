@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 06/17/2019
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: a7a5c40d6c31c4416212c02c1b491dd794f2a1d3
-ms.sourcegitcommit: b3e1e31e5d8bdd94096cf27444594d4a7b065525
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803275"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658267"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>在 ASP.NET Core 中組合及縮小靜態資產
 
@@ -103,7 +103,7 @@ MVC 和 Razor Pages 專案範本提供現成的解決方案，可供包含 JSON 
 > [!NOTE]
 > BuildBundlerMinifier 屬於 GitHub 上的社區驅動專案，Microsoft 不提供任何支援。 問題應在[此](https://github.com/madskristensen/BundlerMinifier/issues)提出。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 將*BuildBundlerMinifier*套件新增至您的專案。
 
@@ -130,7 +130,7 @@ MVC 和 Razor Pages 專案範本提供現成的解決方案，可供包含 JSON 
 ========== Clean: 1 succeeded, 0 failed, 0 skipped ==========
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 將*BuildBundlerMinifier*套件新增至您的專案：
 
@@ -144,7 +144,7 @@ dotnet add package BuildBundlerMinifier
 dotnet restore
 ```
 
-建立專案：
+建置專案：
 
 ```dotnetcli
 dotnet build

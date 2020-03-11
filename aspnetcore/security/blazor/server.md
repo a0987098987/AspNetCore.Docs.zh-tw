@@ -10,22 +10,22 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/server
-ms.openlocfilehash: d87aac02137681e62cf8f5cbd4dc8b0be6f8431e
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: 61030f9b5beb849a7cf03571da425e49b144994c
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146299"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663349"
 ---
-# <a name="secure-aspnet-core-opno-locblazor-server-apps"></a>保護 ASP.NET Core Blazor 伺服器應用程式
+# <a name="secure-aspnet-core-blazor-server-apps"></a>保護 ASP.NET Core Blazor 伺服器應用程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)
 
 Blazor 伺服器應用程式會採用具*狀態*的資料處理模型，其中伺服器和用戶端會維護長期的關聯性。 持續性狀態是由[電路](xref:blazor/state-management)維護，其可跨越也可能很長的連接。
 
-當使用者造訪 Blazor 伺服器網站時，伺服器會在伺服器的記憶體中建立線路。 線路會向瀏覽器指出要呈現哪些內容並回應事件，例如當使用者選取 UI 中的按鈕時。 若要執行這些動作，線路會在使用者的瀏覽器中叫用 JavaScript 函數，並在伺服器上叫用 .NET 方法。 這個雙向以 JavaScript 為基礎的互動稱為[javascript interop （JS interop）](xref:blazor/javascript-interop)。
+當使用者造訪 Blazor 伺服器網站時，伺服器會在伺服器的記憶體中建立線路。 線路會向瀏覽器指出要呈現哪些內容並回應事件，例如當使用者選取 UI 中的按鈕時。 若要執行這些動作，線路會在使用者的瀏覽器中叫用 JavaScript 函數，並在伺服器上叫用 .NET 方法。 這個雙向以 JavaScript 為基礎的互動稱為[javascript interop （JS interop）](xref:blazor/call-javascript-from-dotnet)。
 
-由於 JS interop 是透過網際網路執行，而用戶端使用遠端瀏覽器，因此 Blazor 伺服器應用程式共用大部分的 web 應用程式安全性考慮。 本主題說明 Blazor 伺服器應用程式的常見威脅，並提供著重于網際網路面向應用程式的威脅緩和方針。
+由於 JS interop 是透過網際網路執行，而用戶端使用遠端瀏覽器，因此 Blazor 伺服器應用程式共用大部分的 web 應用程式安全性考慮。 本主題說明 Blazor 伺服器應用程式的常見威脅，並提供著重于網際網路面向應用程式的威脅防護指導方針。
 
 在受限制的環境（例如公司網路或內部網路內部）中，以下是一些緩和措施指引：
 
@@ -38,17 +38,17 @@ Blazor 伺服器應用程式會採用具*狀態*的資料處理模型，其中�
 
 * [CPU](#cpu)
 * [記憶體](#memory)
-* [用戶端連線](#client-connections)
+* [用戶端連接](#client-connections)
 
 阻絕服務（DoS）攻擊通常會設法耗盡應用程式或伺服器的資源。 不過，資源耗盡不一定是系統遭受攻擊的結果。 例如，有限的資源可能會因為高使用者需求而耗盡。 [拒絕服務（dos）攻擊](#denial-of-service-dos-attacks)一節會進一步涵蓋 DoS。
 
-Blazor framework 外部的資源，例如資料庫和檔案控制代碼（用來讀取和寫入檔案），也可能會遇到資源耗盡的情況。 如需詳細資訊，請參閱<xref:performance/performance-best-practices>。
+Blazor framework 外部的資源（例如資料庫和檔案控制代碼，用來讀取和寫入檔案）可能也會遇到資源耗盡的情況。 如需詳細資訊，請參閱 <xref:performance/performance-best-practices>。
 
 ### <a name="cpu"></a>CPU
 
 當一或多個用戶端強制服務器執行密集的 CPU 工作時，可能會發生 CPU 耗盡。
 
-例如，假設有一個 Blazor 的伺服器應用程式會計算*Fibonnacci 號碼*。 Fibonnacci 號碼是從 Fibonnacci 序列產生的，其中序列中的每個數位都是上述兩個數字的總和。 到達答案所需的工作量取決於順序的長度和初始值的大小。 如果應用程式不會對用戶端的要求加上限制，則需要大量 CPU 的計算可能會佔據 CPU 的時間，並降低其他工作的效能。 過多的資源耗用量是影響可用性的安全性考慮。
+例如，假設有一個 Blazor 伺服器應用程式會計算*Fibonnacci 編號*。 Fibonnacci 號碼是從 Fibonnacci 序列產生的，其中序列中的每個數位都是上述兩個數字的總和。 到達答案所需的工作量取決於順序的長度和初始值的大小。 如果應用程式不會對用戶端的要求加上限制，則需要大量 CPU 的計算可能會佔據 CPU 的時間，並降低其他工作的效能。 過多的資源耗用量是影響可用性的安全性考慮。
 
 CPU 耗盡是所有公開應用程式的考慮。 在一般 web 應用程式中，要求和連線會以保護的形式提供，但 Blazor 伺服器應用程式不會提供相同的保護措施。 Blazor 伺服器應用程式必須先包含適當的檢查和限制，才能執行可能耗用大量 CPU 的工作。
 
@@ -56,7 +56,7 @@ CPU 耗盡是所有公開應用程式的考慮。 在一般 web 應用程式中�
 
 當一或多個用戶端強制服務器耗用大量的記憶體時，可能會發生記憶體耗盡。
 
-例如，假設有一個 Blazor伺服器端應用程式，其中包含可接受並顯示專案清單的元件。 如果 Blazor 應用程式不會限制允許的專案數，或轉譯回用戶端的專案數，則記憶體密集型處理和轉譯可能會使伺服器的記憶體在伺服器的效能受到影響的時間點。 伺服器可能當機，或其似乎損毀的時間點變慢。
+例如，假設有一個 Blazor 伺服器端應用程式，其元件會接受並顯示專案清單。 如果 Blazor 應用程式不會限制允許的專案數，或轉譯回用戶端的專案數，則記憶體密集型處理和轉譯可能會讓伺服器的記憶體在伺服器的效能受到影響的時間點。 伺服器可能當機，或其似乎損毀的時間點變慢。
 
 請考慮下列案例，以維護和顯示伺服器上潛在記憶體耗盡案例的相關專案清單：
 
@@ -73,11 +73,11 @@ Blazor 伺服器應用程式會針對具狀態應用程式（例如 WPF、Window
 > [!NOTE]
 > 在開發期間，可以流量分析工具或捕捉到的追蹤來評估用戶端的記憶體需求。 Profiler 或追蹤不會捕獲配置給特定用戶端的記憶體。 若要在開發期間捕捉特定用戶端的記憶體使用量，請捕捉傾印，並檢查以使用者線路為根之所有物件的記憶體需求。
 
-### <a name="client-connections"></a>用戶端連線
+### <a name="client-connections"></a>用戶端連接
 
 當一或多個用戶端開啟太多與伺服器的並行連線，導致其他用戶端無法建立新的連線時，就會發生連線耗盡的情況。
 
-Blazor 用戶端會在每個會話建立單一連線，並且只要開啟瀏覽器視窗，就會讓連線保持開啟狀態。 維護所有連線的伺服器上的需求不是 Blazor 應用程式特有的。 由於連線的持續性和 Blazor 伺服器應用程式的具狀態本質，連接耗盡會對應用程式的可用性造成較大的風險。
+Blazor 用戶端會在每個會話建立單一連線，只要開啟瀏覽器視窗，就會讓連線保持開啟狀態。 維護所有連線的伺服器上的需求不是 Blazor 應用程式特有的。 由於連線的持續性和 Blazor 伺服器應用程式的具狀態本質，連接耗盡會對應用程式的可用性造成較大的風險。
 
 根據預設，Blazor 伺服器應用程式的每個使用者連線數目沒有限制。 如果應用程式需要連線限制，請採取下列一或多種方法：
 
@@ -87,14 +87,14 @@ Blazor 用戶端會在每個會話建立單一連線，並且只要開啟瀏覽�
     * 端點路由擴充性。
     * 需要驗證才能連接到應用程式，並追蹤每位使用者的使用中會話。
     * 在達到限制時拒絕新的會話。
-    * Proxy WebSocket 透過使用 proxy 連線至應用程式，例如從用戶端將分離信號連線到應用程式的[Azure SignalR 服務](/azure/azure-signalr/signalr-overview)。 這會提供比單一用戶端可以建立的連接容量更大的應用程式，以防止用戶端耗盡與伺服器的連接。
+    * Proxy WebSocket 透過使用 proxy 連線至應用程式，例如從用戶端將分離信號連線到應用程式的[Azure SignalR Service](/azure/azure-signalr/signalr-overview) 。 這會提供比單一用戶端可以建立的連接容量更大的應用程式，以防止用戶端耗盡與伺服器的連接。
   * 在伺服器層級：使用應用程式前方的 proxy/閘道。 例如， [Azure Front 門板](/azure/frontdoor/front-door-overview)可讓您定義、管理及監視應用程式的網路流量全域路由。
 
 ## <a name="denial-of-service-dos-attacks"></a>拒絕服務（DoS）攻擊
 
-阻絕服務（DoS）攻擊牽涉到用戶端導致伺服器耗盡其一或多項資源，讓應用程式無法使用。 Blazor 伺服器應用程式包含一些預設限制，而且依賴其他 ASP.NET Core 和 SignalR 限制，以防範 DoS 攻擊：
+阻絕服務（DoS）攻擊牽涉到用戶端導致伺服器耗盡其一或多項資源，讓應用程式無法使用。 Blazor 伺服器應用程式包含一些預設限制，並依賴其他 ASP.NET Core 和 SignalR 限制來防範 DoS 攻擊：
 
-| Blazor 伺服器應用程式限制                            | 描述 | Default |
+| Blazor 伺服器應用程式限制                            | 描述 | 預設 |
 | ------------------------------------------------------- | ----------- | ------- |
 | `CircuitOptions.DisconnectedCircuitMaxRetained`         | 給定伺服器一次保存在記憶體中的中斷連線線路數目上限。 | 100 |
 | `CircuitOptions.DisconnectedCircuitRetentionPeriod`     | 中斷連線的線路在損毀之前，保留在記憶體中的最大時間量。 | 3 分鐘 |
@@ -102,7 +102,7 @@ Blazor 用戶端會在每個會話建立單一連線，並且只要開啟瀏覽�
 | `CircuitOptions.MaxBufferedUnacknowledgedRenderBatches` | 伺服器在指定時間將每個線路保留在記憶體中的未認可轉譯批次數目上限，以支援健全的重新連接。 達到此限制之後，伺服器就會停止產生新的轉譯批次，直到用戶端認可一或多個批次為止。 | 10 |
 
 
-| SignalR 和 ASP.NET Core 限制             | 描述 | Default |
+| SignalR 和 ASP.NET Core 限制             | 描述 | 預設 |
 | ------------------------------------------ | ----------- | ------- |
 | `CircuitOptions.MaximumReceiveMessageSize` | 個別訊息的訊息大小。 | 32 KB |
 
@@ -118,7 +118,7 @@ Blazor 用戶端會在每個會話建立單一連線，並且只要開啟瀏覽�
 針對從 .NET 方法到 JavaScript 的呼叫：
 
 * 所有調用都有一個可設定的超時時間，在這之後，會將 <xref:System.OperationCanceledException> 傳回給呼叫者。
-  * 呼叫（`CircuitOptions.JSInteropDefaultCallTimeout`）的預設超時時間為一分鐘。 若要設定此限制，請參閱 <xref:blazor/javascript-interop#harden-js-interop-calls>。
+  * 呼叫（`CircuitOptions.JSInteropDefaultCallTimeout`）的預設超時時間為一分鐘。 若要設定此限制，請參閱 <xref:blazor/call-javascript-from-dotnet#harden-js-interop-calls>。
   * 可以提供解除標記來控制每個呼叫的取消。 如果提供解除標記，則依賴預設的呼叫超時時間（如果有的話，也可以呼叫用戶端）。
 * 無法信任 JavaScript 呼叫的結果。 在瀏覽器中執行的 Blazor 應用程式用戶端會搜尋要叫用的 JavaScript 函數。 系統會叫用函式，並產生結果或錯誤。 惡意用戶端可以嘗試：
   * 從 JavaScript 函式傳回錯誤，導致應用程式發生問題。
@@ -126,7 +126,7 @@ Blazor 用戶端會在每個會話建立單一連線，並且只要開啟瀏覽�
 
 請採取下列預防措施來防範前述案例：
 
-* 在[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中包裝 JS interop 呼叫，以考慮調用期間可能發生的錯誤。 如需詳細資訊，請參閱<xref:blazor/handle-errors#javascript-interop>。
+* 在[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中包裝 JS interop 呼叫，以考慮調用期間可能發生的錯誤。 如需詳細資訊，請參閱 <xref:blazor/handle-errors#javascript-interop>。
 * 在採取任何動作之前，請先驗證從 JS interop 調用傳回的資料，包括錯誤訊息。
 
 ### <a name="net-methods-invoked-from-the-browser"></a>從瀏覽器叫用的 .NET 方法
@@ -144,7 +144,7 @@ Blazor 用戶端會在每個會話建立單一連線，並且只要開啟瀏覽�
   * 避免將參數中使用者提供的資料傳遞至 JavaScript 呼叫。 如果絕對需要在參數中傳遞資料，請確定 JavaScript 程式碼會在不引進[跨網站腳本（XSS）](#cross-site-scripting-xss)弱點的情況下，處理傳遞資料。 例如，請不要藉由設定元素的 `innerHTML` 屬性，將使用者提供的資料寫入檔物件模型（DOM）。 請考慮使用[內容安全性原則（CSP）](https://developer.mozilla.org/docs/Web/HTTP/CSP)來停用 `eval` 和其他不安全的 JavaScript 基本類型。
 * 避免在架構的分派執行上，執行 .NET 調用的自訂分派。 將 .NET 方法公開至瀏覽器是一個先進的案例，不建議用於一般 Blazor 開發。
 
-### <a name="events"></a>「事件」
+### <a name="events"></a>事件
 
 事件會提供 Blazor 伺服器應用程式的進入點。 Web apps 中保護端點的相同規則適用于 Blazor 伺服器應用程式中的事件處理。 惡意用戶端可以將任何想要傳送的資料傳送為事件的內容。
 
@@ -293,7 +293,7 @@ Blazor 的伺服器事件是非同步，因此可以藉由產生新的轉譯，�
 
 使用下列內容啟用詳細錯誤：
 
-* `CircuitOptions.DetailedErrors`。
+* `CircuitOptions.DetailedErrors`第 1 課：建立 Windows Azure 儲存體物件{2}。
 * `DetailedErrors` 設定金鑰。 例如，將 `ASPNETCORE_DETAILEDERRORS` 環境變數設定為 `true`的值。
 
 > [!WARNING]
@@ -348,7 +348,7 @@ Blazor Server framework 會採取下列步驟來防範先前的威脅：
 
 在保護 XSS 攻擊的過程中，請考慮執行 XSS 緩和措施，例如[內容安全性原則（CSP）](https://developer.mozilla.org/docs/Web/HTTP/CSP)。
 
-如需詳細資訊，請參閱<xref:security/cross-site-scripting>。
+如需詳細資訊，請參閱 <xref:security/cross-site-scripting>。
 
 ### <a name="cross-origin-protection"></a>跨原始來源保護
 
@@ -357,7 +357,7 @@ Blazor Server framework 會採取下列步驟來防範先前的威脅：
 * 除非採取額外的措施來防止此情況，否則可以跨來源存取 Blazor 伺服器應用程式。 若要停用跨原始來源存取，請在端點中停用 CORS，方法是將 CORS 中介軟體新增至管線，然後將 `DisableCorsAttribute` 新增至 Blazor 端點中繼資料，或藉由設定[跨原始來源資源分享的 SignalR](xref:signalr/security#cross-origin-resource-sharing)來限制允許的來源集合。
 * 如果已啟用 CORS，則可能需要額外的步驟來保護應用程式，視 CORS 設定而定。 如果已全域啟用 CORS，則可以在呼叫 `hub.MapBlazorHub()`之後，將 `DisableCorsAttribute` 中繼資料新增至端點中繼資料，藉此停用 Blazor 伺服器中樞的 CORS。
 
-如需詳細資訊，請參閱<xref:security/anti-request-forgery>。
+如需詳細資訊，請參閱 <xref:security/anti-request-forgery>。
 
 ### <a name="click-jacking"></a>按一下-劫持
 
@@ -385,9 +385,9 @@ Blazor Server framework 會採取下列步驟來防範先前的威脅：
 * 可能的話，請使用相對連結。
 * 先驗證絕對連結目的地是否有效，再將它們包含在頁面中。
 
-如需詳細資訊，請參閱<xref:security/preventing-open-redirects>。
+如需詳細資訊，請參閱 <xref:security/preventing-open-redirects>。
 
-## <a name="authentication-and-authorization"></a>驗證與授權
+## <a name="authentication-and-authorization"></a>驗證和授權
 
 如需驗證和授權的指引，請參閱 <xref:security/blazor/index>。
 

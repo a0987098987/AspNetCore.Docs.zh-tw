@@ -1,22 +1,22 @@
 ---
 title: ASP.NET Core 中的檔案提供者
-author: guardrex
+author: rick-anderson
 description: 了解 ASP.NET Core 如何透過使用檔案提供者，將檔案系統存取抽象化。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 11/07/2019
 uid: fundamentals/file-providers
-ms.openlocfilehash: a454ca394546184968222ca2ca44d7159b19a12a
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 34a48bbcf9ffb20bb61f89c80adedc1cc4783988
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944304"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658785"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
-作者：[Steve Smith](https://ardalis.com/) 和 [Luke Latham](https://github.com/guardrex)
+作者：[Steve Smith](https://ardalis.com/)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -27,7 +27,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「
 * [Razor](xref:mvc/views/razor) 使用「檔案提供者」來尋找頁面與檢視。
 * .NET Core 工具使用「檔案提供者」與 Glob 模式來指定應該要發佈哪些檔案。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="file-provider-interfaces"></a>檔案提供者介面
 
@@ -61,7 +61,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「
 
 ### <a name="physicalfileprovider"></a>PhysicalFileProvider
 
-<xref:Microsoft.Extensions.FileProviders.PhysicalFileProvider> 提供對實體檔案系統的存取。 `PhysicalFileProvider` 會使用 <xref:System.IO.File?displayProperty=fullName> 類型 (針對實體提供者) 並將所有路徑的範圍限定為某個目錄與其子系。 此範圍限定動作可防止存取所指定目錄與其子系以外的檔案系統。 建立並使用 `PhysicalFileProvider` 的最常見情節是透過[相依性插入](xref:fundamentals/dependency-injection)在函式中要求 `IFileProvider`。
+<xref:Microsoft.Extensions.FileProviders.PhysicalFileProvider> 提供對實體檔案系統的存取。 `PhysicalFileProvider` 會使用 <xref:System.IO.File?displayProperty=fullName> 類型 (針對實體提供者) 並將所有路徑的範圍限定為某個目錄與其子系。 此範圍限定動作可防止存取所指定目錄與其子系以外的檔案系統。 建立並使用 `PhysicalFileProvider` 的最常見情節是透過`IFileProvider`相依性插入[在函式中要求 ](xref:fundamentals/dependency-injection)。
 
 當直接具現化此提供者時，會需要一個目錄路徑，而且此目錄路徑會做為使用該提供者發出之所有要求的基底路徑。
 
@@ -81,7 +81,7 @@ var fileInfo = provider.GetFileInfo("wwwroot/js/site.js");
 
 「檔案提供者」可用來逐一查看由 `applicationRoot` o所指定的目錄或呼叫 `GetFileInfo` 以取得檔案的資訊。 「檔案提供者」沒有 `applicationRoot` 外部之項目的存取權。
 
-範例應用程式會使用 [IHostingEnvironment.ContentRootFileProvider](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootFileProvider)在應用程式的 `Startup.ConfigureServices` 類別中建立該提供者：
+範例應用程式會使用 `Startup.ConfigureServices`IHostingEnvironment.ContentRootFileProvider[在應用程式的 ](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootFileProvider) 類別中建立該提供者：
 
 ```csharp
 var physicalProvider = _env.ContentRootFileProvider;
@@ -132,8 +132,8 @@ var manifestEmbeddedProvider =
 
 [IFileProvider.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) 方法提供一種情節，用來監視一或多個檔案或目錄是否有變更。 `Watch` 接受路徑字串，該字串可以使用 [Glob 模式](#glob-patterns)來指定多個檔案。 `Watch` 會傳回 <xref:Microsoft.Extensions.Primitives.IChangeToken>。 變更權杖會公開：
 
-* <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged> &ndash; 可檢查以判斷是否發生變更的屬性。
-* <xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*> &ndash; 當偵測到所指定路徑字串發生變更時要呼叫的項目。 每個變更權杖都只會呼叫其相關聯的回呼，以回應單一變更。 若要啟用持續監視，請使用 <xref:System.Threading.Tasks.TaskCompletionSource`1> (如下所示) 或重新建立 `IChangeToken` 執行個體以回應變更。
+* <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged> &ndash; 可以檢查以判斷是否發生變更的屬性。
+* 偵測到指定的路徑字串發生變更時，會呼叫 <xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*> &ndash;。 每個變更權杖都只會呼叫其相關聯的回呼，以回應單一變更。 若要啟用持續監視，請使用 <xref:System.Threading.Tasks.TaskCompletionSource`1> (如下所示) 或重新建立 `IChangeToken` 執行個體以回應變更。
 
 在範例應用程式中，*WatchConsole* 主控台應用程式是設定為在文字檔案被修改時顯示訊息：
 
@@ -160,7 +160,7 @@ var manifestEmbeddedProvider =
 符合特定目錄中具有 *.txt* 副檔名的所有檔案。
 
 **`directory/*/appsettings.json`**  
-符合「目錄」資料夾下一層級之目錄中的所有 `appsettings.json` 檔案。
+符合「目錄」`appsettings.json`*資料夾下一層級之目錄中的所有*  檔案。
 
 **`directory/**/*.txt`**  
 符合在「目錄」資料夾下之任何地方所找到的具有 *.txt* 副檔名的所有檔案。
@@ -176,7 +176,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「
 * [Razor](xref:mvc/views/razor) 使用「檔案提供者」來尋找頁面與檢視。
 * .NET Core 工具使用「檔案提供者」與 Glob 模式來指定應該要發佈哪些檔案。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="file-provider-interfaces"></a>檔案提供者介面
 
@@ -210,7 +210,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「
 
 ### <a name="physicalfileprovider"></a>PhysicalFileProvider
 
-<xref:Microsoft.Extensions.FileProviders.PhysicalFileProvider> 提供對實體檔案系統的存取。 `PhysicalFileProvider` 會使用 <xref:System.IO.File?displayProperty=fullName> 類型 (針對實體提供者) 並將所有路徑的範圍限定為某個目錄與其子系。 此範圍限定動作可防止存取所指定目錄與其子系以外的檔案系統。 建立並使用 `PhysicalFileProvider` 的最常見情節是透過[相依性插入](xref:fundamentals/dependency-injection)在函式中要求 `IFileProvider`。
+<xref:Microsoft.Extensions.FileProviders.PhysicalFileProvider> 提供對實體檔案系統的存取。 `PhysicalFileProvider` 會使用 <xref:System.IO.File?displayProperty=fullName> 類型 (針對實體提供者) 並將所有路徑的範圍限定為某個目錄與其子系。 此範圍限定動作可防止存取所指定目錄與其子系以外的檔案系統。 建立並使用 `PhysicalFileProvider` 的最常見情節是透過`IFileProvider`相依性插入[在函式中要求 ](xref:fundamentals/dependency-injection)。
 
 當直接具現化此提供者時，會需要一個目錄路徑，而且此目錄路徑會做為使用該提供者發出之所有要求的基底路徑。
 
@@ -230,7 +230,7 @@ var fileInfo = provider.GetFileInfo("wwwroot/js/site.js");
 
 「檔案提供者」可用來逐一查看由 `applicationRoot` o所指定的目錄或呼叫 `GetFileInfo` 以取得檔案的資訊。 「檔案提供者」沒有 `applicationRoot` 外部之項目的存取權。
 
-範例應用程式會使用 [IHostingEnvironment.ContentRootFileProvider](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootFileProvider)在應用程式的 `Startup.ConfigureServices` 類別中建立該提供者：
+範例應用程式會使用 `Startup.ConfigureServices`IHostingEnvironment.ContentRootFileProvider[在應用程式的 ](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootFileProvider) 類別中建立該提供者：
 
 ```csharp
 var physicalProvider = _env.ContentRootFileProvider;
@@ -279,8 +279,8 @@ var manifestEmbeddedProvider =
 
 [IFileProvider.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) 方法提供一種情節，用來監視一或多個檔案或目錄是否有變更。 `Watch` 接受路徑字串，該字串可以使用 [Glob 模式](#glob-patterns)來指定多個檔案。 `Watch` 會傳回 <xref:Microsoft.Extensions.Primitives.IChangeToken>。 變更權杖會公開：
 
-* <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged> &ndash; 可檢查以判斷是否發生變更的屬性。
-* <xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*> &ndash; 當偵測到所指定路徑字串發生變更時要呼叫的項目。 每個變更權杖都只會呼叫其相關聯的回呼，以回應單一變更。 若要啟用持續監視，請使用 <xref:System.Threading.Tasks.TaskCompletionSource`1> (如下所示) 或重新建立 `IChangeToken` 執行個體以回應變更。
+* <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged> &ndash; 可以檢查以判斷是否發生變更的屬性。
+* 偵測到指定的路徑字串發生變更時，會呼叫 <xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*> &ndash;。 每個變更權杖都只會呼叫其相關聯的回呼，以回應單一變更。 若要啟用持續監視，請使用 <xref:System.Threading.Tasks.TaskCompletionSource`1> (如下所示) 或重新建立 `IChangeToken` 執行個體以回應變更。
 
 在範例應用程式中，*WatchConsole* 主控台應用程式是設定為在文字檔案被修改時顯示訊息：
 
@@ -307,7 +307,7 @@ var manifestEmbeddedProvider =
 符合特定目錄中具有 *.txt* 副檔名的所有檔案。
 
 **`directory/*/appsettings.json`**  
-符合「目錄」資料夾下一層級之目錄中的所有 `appsettings.json` 檔案。
+符合「目錄」`appsettings.json`*資料夾下一層級之目錄中的所有*  檔案。
 
 **`directory/**/*.txt`**  
 符合在「目錄」資料夾下之任何地方所找到的具有 *.txt* 副檔名的所有檔案。

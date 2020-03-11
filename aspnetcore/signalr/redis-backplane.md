@@ -10,11 +10,11 @@ no-loc:
 - SignalR
 uid: signalr/redis-backplane
 ms.openlocfilehash: 0461fc6a212ba78111bc2054cca74951721c5820
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289031"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661368"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-opno-locsignalr-scale-out"></a>設定 ASP.NET Core SignalR 相應放大的 Redis 背板
 
@@ -32,8 +32,8 @@ ms.locfileid: "74289031"
   如需詳細資訊，請參閱下列資源：
 
   * <xref:signalr/scale>
-  * [Redis 檔](https://redis.io/)
-  * [Azure Redis 快取檔](https://docs.microsoft.com/azure/redis-cache/)
+  * [Redis 文件](https://redis.io/)
+  * [Azure Redis 快取文件](https://docs.microsoft.com/azure/redis-cache/)
 
 ::: moniker range="= aspnetcore-2.1"
 
@@ -229,6 +229,6 @@ services.AddSignalR()
 如需詳細資訊，請參閱下列資源：
 
 * <xref:signalr/scale>
-* [Redis 檔](https://redis.io/documentation)
+* [Redis 文件](https://redis.io/documentation)
 * [Stackexchange.redis Redis 檔](https://stackexchange.github.io/StackExchange.Redis/)
-* [Azure Redis 快取檔](https://docs.microsoft.com/azure/redis-cache/)
+* [Azure Redis 快取文件](https://docs.microsoft.com/azure/redis-cache/)

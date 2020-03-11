@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/26/2017
 uid: tutorials/first-mvc-app/index
 ms.openlocfilehash: 04ab19644d68428246c29a5dac980e8bb91867d0
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882803"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667927"
 ---
 # <a name="create-a-web-app-with-aspnet-core-mvc"></a>使用 ASP.NET Core MVC 建立 Web 應用程式
 

@@ -9,11 +9,11 @@ no-loc:
 - SignalR
 uid: client-side/using-browserlink
 ms.openlocfilehash: 19cc3c2ed91bd9e05df3c036123c78ecbf81fcc0
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828266"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658848"
 ---
 # <a name="browser-link-in-aspnet-core"></a>ASP.NET Core 中的瀏覽器連結
 
@@ -49,7 +49,7 @@ ASP.NET Core 1.x **Web 應用程式**專案範本具有 BrowserLink 套件的套
 
 ### <a name="configuration"></a>組態
 
-呼叫 `Startup.Configure` 方法中的 `UseBrowserLink`：
+呼叫 `UseBrowserLink` 方法中的 `Startup.Configure`：
 
 ```csharp
 app.UseBrowserLink();
@@ -65,7 +65,7 @@ if (env.IsDevelopment())
 }
 ```
 
-如需詳細資訊，請參閱<xref:fundamentals/environments>。
+如需詳細資訊，請參閱 <xref:fundamentals/environments>。
 
 ## <a name="how-to-use-browser-link"></a>如何使用瀏覽器連結
 

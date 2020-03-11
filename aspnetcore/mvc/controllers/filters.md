@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2020
 uid: mvc/controllers/filters
-ms.openlocfilehash: c4bb9d5746e494106ead6ad5bbf972bbcc5a39f1
-ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
+ms.openlocfilehash: 03335811766ea3a1455901199863c6da0e35f7e4
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77034061"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662782"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -33,7 +33,7 @@ ASP.NET Core 中的「篩選條件」可讓程式碼在要求處理管線中的�
 * 此元件內嵌在頁面或視圖中。
 * 頁面或控制器/視圖會使用篩選準則。
 
-[檢視或下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="how-filters-work"></a>篩選條件如何運作
 
@@ -544,7 +544,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet3&highlight=21)]
 
-執行[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample)來測試上述程式碼：
+執行[下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample)來測試上述程式碼：
 
 * 叫用 F12 開發人員工具。
 * 瀏覽至 `https://localhost:5001/Sample/HeaderWithFactory`。
@@ -596,7 +596,7 @@ What's a non-named attribute?
 ## <a name="next-actions"></a>後續動作
 
 * 請參閱[Razor Pages 的篩選方法](xref:razor-pages/filter)。
-* 若要嘗試使用篩選條件，請[下載、測試及修改 GitHub 範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) \(英文\)。
+* 若要嘗試使用篩選條件，請[下載、測試及修改 GitHub 範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) \(英文\)。
 
 ::: moniker-end
 
@@ -615,7 +615,7 @@ ASP.NET Core 中的「篩選條件」可讓程式碼在要求處理管線中的�
 
 本文件適用於 Razor Pages、API 控制器，以及具有檢視的控制器。
 
-[檢視或下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="how-filters-work"></a>篩選條件如何運作
 
@@ -1067,7 +1067,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]
 
-上述程式碼可以透過執行[下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) \(英文\) 來進行測試：
+上述程式碼可以透過執行[下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) \(英文\) 來進行測試：
 
 * 叫用 F12 開發人員工具。
 * 瀏覽至 `https://localhost:5001/Sample/HeaderWithFactory`。
@@ -1119,6 +1119,6 @@ What's a non-named attribute?
 ## <a name="next-actions"></a>後續動作
 
 * 請參閱[Razor Pages 的篩選方法](xref:razor-pages/filter)。
-* 若要嘗試使用篩選條件，請[下載、測試及修改 GitHub 範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) \(英文\)。
+* 若要嘗試使用篩選條件，請[下載、測試及修改 GitHub 範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) \(英文\)。
 
 ::: moniker-end

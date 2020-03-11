@@ -4,14 +4,14 @@ author: jamesnk
 description: 瞭解如何在 ASP.NET Core 上設定 gRPC 服務，以使用 gRPC-Web 從瀏覽器應用程式呼叫。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 02/10/2020
+ms.date: 02/16/2020
 uid: grpc/browser
-ms.openlocfilehash: 333fc8c4277bbac47042d4904c276e963186914a
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 3beeffc26ffd3c2dc85bfc22a46d97d5fd78d3d0
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172268"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664196"
 ---
 # <a name="use-grpc-in-browser-apps"></a>在瀏覽器應用程式中使用 gRPC
 
@@ -49,7 +49,19 @@ ASP.NET Core 中裝載的 gRPC 服務可以設定為支援 gRPC-Web 與 HTTP/2 g
 
 [!code-csharp[](~/grpc/browser/sample/AllServicesSupportExample_Startup.cs?name=snippet_1&highlight=6,13)]
 
-可能需要一些額外的設定，才能從瀏覽器呼叫 gRPC-Web，例如設定 ASP.NET Core 以支援 CORS。 如需詳細資訊，請參閱[支援 CORS](xref:security/cors)。
+### <a name="grpc-web-and-cors"></a>gRPC-Web 和 CORS
+
+瀏覽器安全性可防止網頁向不同于服務網頁的網域提出要求。 這種限制適用于使用瀏覽器應用程式進行 gRPC Web 呼叫。 例如，`https://www.contoso.com` 所提供的瀏覽器應用程式遭到封鎖，無法呼叫裝載于 `https://services.contoso.com`的 gRPC Web 服務。 跨原始來源資源分享（CORS）可以用來放寬這種限制。
+
+若要允許您的瀏覽器應用程式進行跨原始來源的 gRPC 呼叫，請[在 ASP.NET Core 中設定 CORS](xref:security/cors)。 使用內建的 CORS 支援，並使用 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders*>公開 gRPC 特有的標頭。
+
+[!code-csharp[](~/grpc/browser/sample/CORS_Startup.cs?name=snippet_1&highlight=5-11,19,24)]
+
+上述程式碼：
+
+* 呼叫 `AddCors` 來新增 CORS 服務，並設定會公開 gRPC 特定標頭的 CORS 原則。
+* 呼叫 `UseCors` 在路由和結束端點之後新增 CORS 中介軟體。
+* 指定 `endpoints.MapGrpcService<GreeterService>()` 方法支援具有 `RequiresCors`的 CORS。
 
 ## <a name="call-grpc-web-from-the-browser"></a>從瀏覽器呼叫 gRPC-Web
 

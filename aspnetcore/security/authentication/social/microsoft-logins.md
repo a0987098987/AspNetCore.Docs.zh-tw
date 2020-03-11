@@ -8,11 +8,11 @@ ms.date: 12/4/2019
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/microsoft-logins
 ms.openlocfilehash: ddaae1a25a1dcf167ffae0f24b480e2cde6aca5b
-ms.sourcegitcommit: f4cd3828e26e6d549ba8d0c36a17be35ad9e5a51
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74825462"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659793"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>使用 ASP.NET Core 的 Microsoft 帳戶外部登入設定
 
@@ -30,7 +30,7 @@ ms.locfileid: "74825462"
 * 選取 [**新增註冊**]
 * 輸入 [名稱]。
 * 選取**支援的帳戶類型**選項。  <!-- Accounts for any org work with MS domain accounts. Most folks probably want the last option, personal MS accounts -->
-* 在 [重新**導向 URI**] 底下，輸入您的開發 URL，並附上 `/signin-microsoft`。 例如，`https://localhost:5001/signin-microsoft`。 本範例稍後設定的 Microsoft 驗證配置會自動處理 `/signin-microsoft` 路由的要求，以執行 OAuth 流程。
+* 在 [重新**導向 URI**] 底下，輸入您的開發 URL，並附上 `/signin-microsoft`。 例如： `https://localhost:5001/signin-microsoft` 。 本範例稍後設定的 Microsoft 驗證配置會自動處理 `/signin-microsoft` 路由的要求，以執行 OAuth 流程。
 * 選取 [**註冊**]
 
 ### <a name="create-client-secret"></a>建立用戶端密碼

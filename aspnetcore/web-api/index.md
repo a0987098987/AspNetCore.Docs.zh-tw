@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/02/2020
 uid: web-api/index
-ms.openlocfilehash: 3dca07db3d6be4ab219a2e05e3adcf1b24ee5c40
-ms.sourcegitcommit: 80286715afb93c4d13c931b008016d6086c0312b
+ms.openlocfilehash: be88b8d58f1f660f3a815c395c210c05a7b4917c
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77074506"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666002"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建立 Web API
 
@@ -20,7 +20,7 @@ ms.locfileid: "77074506"
 
 ASP.NET Core 支援使用 C# 建立 RESTful 服務，也稱為 Web API。 若要處理要求，Web API 會使用控制器。 Web API 中的「控制器」都衍生自類別 `ControllerBase`。 本文說明如何使用控制器來處理 Web API 要求。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/index/samples)。 ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/index/samples)。 ([如何下載](xref:index#how-to-download-a-sample))。
 
 ## <a name="controllerbase-class"></a>ControllerBase 類別
 
@@ -46,7 +46,7 @@ Web API 由一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase>�
 
 以下是 `ControllerBase` 提供的一些其他方法範例。
 
-|方法   |注意事項    |
+|方法   |注意    |
 |---------|---------|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest%2A>| 傳回 400 狀態碼。|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound%2A>|傳回 404 狀態碼。|
@@ -64,7 +64,7 @@ Web API 由一或多個衍生自 <xref:Microsoft.AspNetCore.Mvc.ControllerBase>�
 
 以下是一些其他可用的屬性範例。
 
-|屬性|注意事項|
+|屬性|注意|
 |---------|-----|
 |[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |指定控制器或動作的 URL 模式。|
 |[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |指定模型繫結要包含的前置詞和屬性。|
@@ -156,7 +156,7 @@ namespace WebApiSample
 
 ## <a name="attribute-routing-requirement"></a>屬性路由需求
 
-`[ApiController]` 屬性會讓屬性路由需求。 例如，
+`[ApiController]` 屬性會讓屬性路由需求。 例如：
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -226,7 +226,7 @@ ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelSt
 
 ### <a name="log-automatic-400-responses"></a>記錄自動 400 回應
 
-請參閱[如何在模型驗證錯誤上記錄自動 400 回應 (aspnet/AspNetCore.Docs #12157)](https://github.com/aspnet/AspNetCore.Docs/issues/12157) \(英文\)。
+請參閱[如何在模型驗證錯誤上記錄自動 400 回應 (aspnet/AspNetCore.Docs #12157)](https://github.com/dotnet/AspNetCore.Docs/issues/12157) \(英文\)。
 
 ### <a name="disable-automatic-400-response"></a>停用自動400回應
 
@@ -256,7 +256,7 @@ ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelSt
 
 |屬性|繫結來源 |
 |---------|---------|
-|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | 要求本文 |
+|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Request body |
 |[`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | 要求本文中的表單資料 |
 |[`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | 要求標頭 |
 |[`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | 要求查詢字串參數 |
@@ -369,7 +369,7 @@ ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelSt
 
 [!code-csharp[](index/samples/2.x/2.2/Controllers/PetsController.cs?name=snippet_ProblemDetailsStatusCode)]
 
-`NotFound` 方法會產生具有 `ProblemDetails` 主體的 HTTP 404 狀態碼。 例如，
+`NotFound` 方法會產生具有 `ProblemDetails` 主體的 HTTP 404 狀態碼。 例如：
 
 ```json
 {
@@ -382,7 +382,7 @@ ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelSt
 
 ### <a name="disable-problemdetails-response"></a>停用 ProblemDetails 回應
 
-當 [<xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressMapClientErrors%2A>] 屬性設定為 [`true`] 時，會停用自動建立 `ProblemDetails` 實例。 將下列程式碼加入 `Startup.ConfigureServices`：
+當 [<xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressMapClientErrors%2A>] 屬性設定為 [`true`] 時，會停用自動建立錯誤狀態碼 `ProblemDetails`。 將下列程式碼加入 `Startup.ConfigureServices`：
 
 ::: moniker-end
 

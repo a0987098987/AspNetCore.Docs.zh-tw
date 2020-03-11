@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 70951085474d88fd57f1b1496a41adcda520b91f
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 574e66e4dedaf0bfd01d600c3ded4bfb5d1865cd
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829149"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664476"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -19,7 +19,7 @@ ms.locfileid: "75829149"
 
 ASP.NET Core 身分識別是可延伸的系統，可讓您建立自訂的儲存提供者，並將它連線到您的應用程式。 本主題說明如何建立 ASP.NET Core 身分識別的自訂存放裝置提供者。 其中涵蓋建立您自己的儲存提供者所需的重要概念，但不是逐步解說。
 
-[從 GitHub 檢視或下載範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample)。
+[從 GitHub 檢視或下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample)。
 
 ## <a name="introduction"></a>簡介
 
@@ -138,7 +138,7 @@ ASP.NET Core 身分識別包含稱為「管理員」和「存放區」的類別�
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)
 * [IUserLockoutStore](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)
 
-選擇性的介面會繼承自 `IUserStore<TUser>`。 您可以在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)中看到部分實作為範例使用者存放區。
+選擇性的介面會繼承自 `IUserStore<TUser>`。 您可以在[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs)中看到部分實作為範例使用者存放區。
 
 在 `UserStore` 類別中，您可以使用您所建立的資料存取類別來執行作業。 這些會使用相依性插入來傳入。 例如，在使用 Dapper 執行的 SQL Server 中，`UserStore` 類別的 `CreateAsync` 方法會使用 `DapperUsersTable` 的實例來插入新的記錄：
 
@@ -185,7 +185,7 @@ public class UserStore : IUserStore<IdentityUser>,
 
 ### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim、IdentityUserLogin 和 IdentityUserRole
 
-命名空間包含[IdentityUserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1)、[IdentityUserLogin](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin) 和 [IdentityUserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) 類別的實作為。`Microsoft.AspNet.Identity.EntityFramework` 如果您使用這些功能，您可能會想要建立您自己的類別版本，並定義應用程式的屬性。 不過，有時候在執行基本作業（例如新增或移除使用者的宣告）時，不會將這些實體載入記憶體的效率較高。 相反地，後端存放區類別可以直接在資料來源上執行這些作業。 例如，`UserStore.GetClaimsAsync` 方法可以呼叫 `userClaimTable.FindByUserId(user.Id)` 方法，直接對該資料表執行查詢，並傳回宣告的清單。
+`Microsoft.AspNet.Identity.EntityFramework` 命名空間包含[IdentityUserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1)、 [IdentityUserLogin](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)和[IdentityUserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1)類別的實作為。 如果您使用這些功能，您可能會想要建立您自己的類別版本，並定義應用程式的屬性。 不過，有時候在執行基本作業（例如新增或移除使用者的宣告）時，不會將這些實體載入記憶體的效率較高。 相反地，後端存放區類別可以直接在資料來源上執行這些作業。 例如，`UserStore.GetClaimsAsync` 方法可以呼叫 `userClaimTable.FindByUserId(user.Id)` 方法，直接對該資料表執行查詢，並傳回宣告的清單。
 
 ## <a name="customize-the-role-class"></a>自訂角色類別
 

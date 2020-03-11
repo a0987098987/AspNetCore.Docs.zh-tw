@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
 uid: security/authentication/social/index
-ms.openlocfilehash: 7d0f6647a6f5a4d41067b13acd3d294144027bb7
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: c698edbd85d665509366287b1dcad08e276e71cc
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727326"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668039"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
@@ -30,16 +30,16 @@ ms.locfileid: "76727326"
 
 ## <a name="create-a-new-aspnet-core-project"></a>建立新的 ASP.NET Core 專案
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 建立新的專案。
+* 建立新專案。
 * 選取 [ASP.NET Core Web 應用程式] 和 [下一步]。
 * 提供**專案名稱**並確認或變更**位置**。 選取 [建立]。
 * 在下拉式（**ASP.NET Core {X. Y}** ）中選取最新版本的 ASP.NET Core，然後選取 [ **Web 應用程式**]。
-* 選取 [驗證] 下的 [變更]，並將驗證設定為 [個別使用者帳戶]。 選取 **[確定]** 。
+* 選取 [驗證] 下的 [變更]，並將驗證設定為 [個別使用者帳戶]。 選取 [確定]。
 * 在 [建立新的 ASP.NET Core Web 應用程式] 視窗中選取 [建立]。
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * 開啟終端機。  對於 Visual Studio Code，您可以開啟[整合式終端](https://code.visualstudio.com/docs/editor/integrated-terminal)機。
 
@@ -111,7 +111,7 @@ ms.locfileid: "76727326"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需如何自訂登入按鈕的相關資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/10563)。
+* 如需如何自訂登入按鈕的相關資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/10563)。
 * 本文介紹了外部驗證，並說明將外部登入新增至 ASP.NET Core 應用程式所需的必要條件。
 * 請參考提供者的特定頁面，以設定應用程式所需的提供者登入項目。
-* 您想要保存有關使用者與其存取和重新整理權杖的額外資料。 如需詳細資訊，請參閱<xref:security/authentication/social/additional-claims>。
+* 您想要保存有關使用者與其存取和重新整理權杖的額外資料。 如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims>。

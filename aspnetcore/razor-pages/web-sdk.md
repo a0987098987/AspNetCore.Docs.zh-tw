@@ -8,11 +8,11 @@ no-loc:
 - Blazor
 uid: razor-pages/web-sdk
 ms.openlocfilehash: 6a9d531efd2188aed525c949bb124914c31119db
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76869762"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661053"
 ---
 # <a name="aspnet-core-web-sdk"></a>ASP.NET Core Web SDK
 

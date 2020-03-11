@@ -5,12 +5,12 @@ description: 了解如何建立和使用 ASP.NET Core 中的 Web API 自訂格�
 ms.author: riande
 ms.date: 02/08/2017
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: 122edfd4ccd06ed62e071691f421d2aeef8002b4
-ms.sourcegitcommit: 488cc779fc71377d9371e7a14356113e9c7eff17
+ms.openlocfilehash: dd25cda460ba758cd07de094eaadd1f2d8c28657
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70913505"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667668"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的自訂格式器
 
@@ -22,7 +22,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 
 本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。 如需純文字的自訂輸入格式器範例，請參閱 GitHub 上的[TextPlainInputFormatter](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.Formatters/TextPlainInputFormatter.cs) 。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-custom-formatters"></a>自訂格式器的使用時機
 
@@ -36,7 +36,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 
 * 如果您想要將資料序列化以傳送到用戶端，請建立輸出格式器類別。
 * 如果您想要將從用戶端接收的資料還原序列化，請建立輸入格式器類別。
-* 將您的格式器執行個體新增至 [MvcOptions](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions) 中的 `InputFormatters` 和 `OutputFormatters` 集合。
+* 將您的格式器執行個體新增至 `InputFormatters`MvcOptions`OutputFormatters` 中的 [ 和 ](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions) 集合。
 
 下列各節將提供每個步驟的指引與程式碼範例。
 
@@ -55,7 +55,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=classdef)]
 
-若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 如需二進位類型，請從 [InputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.inputformatter) 或 [OutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformatter) 基底類別來衍生。
 
@@ -65,7 +65,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=ctor&highlight=3,5-6)]
 
-若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 > [!NOTE]
 > 您無法在格式器類別中執行建構函式的相依性插入。 舉例來說，您無法藉由將記錄器參數新增至建構函式，而取得記錄器。 若要存取服務，您必須使用可傳入方法的內容物件。 [下列](#read-write)程式碼範例會示範這項操作。
@@ -76,7 +76,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=canwritetype)]
 
-若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 #### <a name="the-canwriteresult-method"></a>CanWriteResult 方法
 
@@ -86,7 +86,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 * 在執行階段期間，可能會傳回衍生的類別。
 * 您必須知道在執行階段期間，動作傳回的衍生類別是哪一個。
 
-例如，假設您的動作方法簽章傳回 `Person` 類型，但它可能會傳回衍生自 `Person` 的 `Student` 或 `Instructor` 類型。 如果您希望格式器只處理 `Student` 物件，請檢查您提供給 `CanWriteResult` 方法之內容物件中的[物件](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext.object#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object)類型。 請注意，當動作方法傳回 `IActionResult` 時，您不需要使用 `CanWriteResult`；在此情況下，`CanWriteType` 方法會接收執行階段類型。
+例如，假設您的動作方法簽章傳回 `Person` 類型，但它可能會傳回衍生自 `Student` 的 `Instructor` 或 `Person` 類型。 如果您希望格式器只處理 `Student` 物件，請檢查您提供給 [ 方法之內容物件中的](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext.object#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object)物件`CanWriteResult`類型。 請注意，當動作方法傳回 `CanWriteResult` 時，您不需要使用 `IActionResult`；在此情況下，`CanWriteType` 方法會接收執行階段類型。
 
 <a id="read-write"></a>
 
@@ -96,7 +96,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 
 [!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=writeresponse&highlight=3-4)]
 
-若需要輸入格式器範例，請參考[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
+若需要輸入格式器範例，請參考[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。
 
 ## <a name="how-to-configure-mvc-to-use-a-custom-formatter"></a>如何設定 MVC 以使用自訂格式器
 
@@ -108,7 +108,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 
 ## <a name="next-steps"></a>後續步驟
 
-* [此文件的範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)，其會實作簡單的 vCard 輸入和輸出格式器。 應用程式會讀取並寫入 vCard，如下範例所示：
+* [此文件的範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)，其會實作簡單的 vCard 輸入和輸出格式器。 應用程式會讀取並寫入 vCard，如下範例所示：
 
 ```
 BEGIN:VCARD

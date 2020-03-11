@@ -7,16 +7,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 8d878d692f0488f99385b0bd6944fc6cd276c306
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: e3249df4b7388beeff13fe4b4e0ff481c35725c5
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355690"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667654"
 ---
 # <a name="app-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Tom Dykstra](https://github.com/tdykstra)、[Luke Latham](https://github.com/guardrex) 以及 [Steve Smith](https://ardalis.com)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Tom Dykstra](https://github.com/tdykstra) 以及 [Steve Smith](https://ardalis.com)
 
 `Startup` 類別可設定服務和應用程式的要求管線。
 
@@ -36,7 +36,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 上述範例適用於 [Razor Pages](xref:razor-pages/index)與 MVC 版本類似。
 
 
-一旦建置應用程式[主機](xref:fundamentals/index#host)，就會指定 `Startup` 類別。 `Startup` 類別通常是藉由在主機建立器上呼叫[WebHostBuilderExtensions. UseStartup\<TStartup >](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定。
+一旦建置應用程式`Startup`主機[，就會指定 ](xref:fundamentals/index#host) 類別。 `Startup` 類別通常是藉由在主機建立器上呼叫[WebHostBuilderExtensions. UseStartup\<TStartup >](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定。
 
 [!code-csharp[](startup/3.0_samples/Program3.cs?name=snippet_Program&highlight=12)]
 
@@ -62,13 +62,13 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法為：
 
-* 選擇項。
+* 選擇性。
 * 由主機在 `Configure` 方法之前呼叫，來設定應用程式的服務。
 * [組態選項](xref:fundamentals/configuration/index)依慣例設定的位置。
 
 主機可能會在呼叫 `Startup` 方法之前，設定一些服務。 如需詳細資訊，請參閱[主機](xref:fundamentals/index#host)。
 
-對於需要大量安裝的功能，可從 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> 上取得 `Add{Service}` 擴充方法。 例如 **Add**DbContext、**Add**DefaultIdentity、**Add**EntityFrameworkStores 和 **Add**RazorPages：
+對於需要大量安裝的功能，可從 `Add{Service}` 上取得 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> 擴充方法。 例如 **Add**DbContext、**Add**DefaultIdentity、**Add**EntityFrameworkStores 和 **Add**RazorPages：
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/StartupIdentity.cs?name=snippet)]
 
@@ -143,7 +143,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 ## <a name="add-configuration-at-startup-from-an-external-assembly"></a>在啟動時從外部組件新增組態
 
-<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱<xref:fundamentals/configuration/platform-specific-configuration>。
+<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration>。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -168,7 +168,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 [!code-csharp[](startup/sample_snapshot/Startup1.cs)]
 
-一旦建置應用程式[主機](xref:fundamentals/index#host)，就會指定 `Startup` 類別。 `Startup` 類別通常是藉由在主機建立器上呼叫[WebHostBuilderExtensions. UseStartup\<TStartup >](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定。
+一旦建置應用程式`Startup`主機[，就會指定 ](xref:fundamentals/index#host) 類別。 `Startup` 類別通常是藉由在主機建立器上呼叫[WebHostBuilderExtensions. UseStartup\<TStartup >](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定。
 
 [!code-csharp[](startup/sample_snapshot/Program3.cs?name=snippet_Program&highlight=12)]
 
@@ -194,13 +194,13 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法為：
 
-* 選擇項。
+* 選擇性。
 * 由主機在 `Configure` 方法之前呼叫，來設定應用程式的服務。
 * [組態選項](xref:fundamentals/configuration/index)依慣例設定的位置。
 
 主機可能會在呼叫 `Startup` 方法之前，設定一些服務。 如需詳細資訊，請參閱[主機](xref:fundamentals/index#host)。
 
-對於需要大量安裝的功能，可從 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> 上取得 `Add{Service}` 擴充方法。 例如 **Add**DbContext、**Add**DefaultIdentity、**Add**EntityFrameworkStores 和 **Add**RazorPages：
+對於需要大量安裝的功能，可從 `Add{Service}` 上取得 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> 擴充方法。 例如 **Add**DbContext、**Add**DefaultIdentity、**Add**EntityFrameworkStores 和 **Add**RazorPages：
 
 [!code-csharp[](startup/sample_snapshot/Startup3.cs)]
 
@@ -275,7 +275,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 ## <a name="add-configuration-at-startup-from-an-external-assembly"></a>在啟動時從外部組件新增組態
 
-<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱<xref:fundamentals/configuration/platform-specific-configuration>。
+<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration>。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 03/11/2019
 uid: security/authentication/accconfirm
 ms.openlocfilehash: 49d3d214fd64edc5b17df2df929ddc3c2af47ede
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829266"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665386"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>ASP.NET Core 中的帳戶確認和密碼復原
 
@@ -32,7 +32,7 @@ ms.locfileid: "75829266"
 
 ::: moniker range="> aspnetcore-2.2"
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 [.NET Core 3.0 SDK 或更新版本](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
@@ -91,7 +91,7 @@ Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 安裝 `SendGrid` NuGet 套件：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 從 [套件管理員主控台] 中，輸入下列命令：
 
@@ -99,7 +99,7 @@ Successfully saved SendGridUser = RickAndMSFT to the secret store.
 Install-Package SendGrid
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 從主控台，輸入下列命令：
 
@@ -217,7 +217,7 @@ dotnet add package SendGrid
 
 ::: moniker range="> aspnetcore-2.0 < aspnetcore-3.0"
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 [.NET Core 2.2 SDK 或更新版本](https://www.microsoft.com/net/download/all)
 
@@ -297,7 +297,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 安裝 `SendGrid` NuGet 套件：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 從 [套件管理員主控台] 中，輸入下列命令：
 
@@ -305,7 +305,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 Install-Package SendGrid
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 從主控台，輸入下列命令：
 

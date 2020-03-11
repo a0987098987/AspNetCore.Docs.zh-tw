@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 uid: performance/caching/memory
-ms.openlocfilehash: 23acc17c861c203a87b1c113940e7bf42b51e810
-ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
+ms.openlocfilehash: e01e4a139893297a71aabb1af11b25cf0deb85a9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76972010"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663034"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>ASP.NET Core 中的記憶體快取
 
@@ -19,7 +19,7 @@ ms.locfileid: "76972010"
 
 作者： [Rick Anderson](https://twitter.com/RickAndMSFT)、 [John 羅文](https://github.com/JunTaoLuo)和[Steve Smith](https://ardalis.com/)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/3.0sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/3.0sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>快取基本概念
 
@@ -39,7 +39,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 * 以 .NET Standard 2.0 或更新版本為目標的任何[.net 執行](/dotnet/standard/net-standard#net-implementation-support)。 例如，ASP.NET Core 2.0 或更新版本。
 * .NET Framework 4.5 或更新版本。
 
-/建議使用`IMemoryCache` [MicrosoftExtensions`MemoryCache` . Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) (如本文所述), 因為它已更緊密整合到 ASP.NET Core 中。`System.Runtime.Caching` / 例如，`IMemoryCache` 會以原生方式與 ASP.NET Core 相依性[插入](xref:fundamentals/dependency-injection)搭配運作。
+建議使用/`IMemoryCache` （如本文所述）的[記憶體](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)，而不是 `System.Runtime.Caching`/`MemoryCache`，因為它已更緊密整合到 ASP.NET Core 中。 例如，`IMemoryCache` 會以原生方式與 ASP.NET Core 相依性[插入](xref:fundamentals/dependency-injection)搭配運作。
 
 將 ASP.NET 4.x 的程式碼移植到 ASP.NET Core 時，請使用 `System.Runtime.Caching`/`MemoryCache` 做為相容性橋接器。
 
@@ -158,13 +158,13 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例示範如果相依專案過期，如何讓快取專案過期。 <xref:Microsoft.Extensions.Primitives.CancellationChangeToken> 會新增至快取的項目。 在 `CancellationTokenSource`上呼叫 `Cancel` 時，這兩個快取專案都會被收回。
+下列範例示範如果相依專案過期，如何讓快取專案過期。 已將 <xref:Microsoft.Extensions.Primitives.CancellationChangeToken> 新增至快取的專案。 在 `CancellationTokenSource`上呼叫 `Cancel` 時，這兩個快取專案都會被收回。
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ed)]
 
 使用 <xref:System.Threading.CancellationTokenSource> 可讓多個快取專案收回為群組。 在上述程式碼中使用 `using` 模式時，在 `using` 區塊內建立的快取專案將會繼承觸發程式和到期設定。
 
-## <a name="additional-notes"></a>其他備註
+## <a name="additional-notes"></a>其他注意事項
 
 * 到期不會在背景中發生。 沒有任何計時器會主動掃描快取中是否有過期的專案。 快取上的任何活動（`Get`、`Set`、`Remove`）都可以觸發過期專案的背景掃描。 `CancellationTokenSource` （<xref:System.Threading.CancellationTokenSource.CancelAfter*>）上的計時器也會移除專案，並觸發過期專案的掃描。 下列範例會使用[CancellationTokenSource （TimeSpan）](/dotnet/api/system.threading.cancellationtokensource.-ctor)作為已註冊的權杖。 當此標記引發時，它會立即移除該專案，並引發收回回呼：
 
@@ -196,7 +196,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 <!-- This is the 2.1 version -->
 作者： [Rick Anderson](https://twitter.com/RickAndMSFT)、 [John 羅文](https://github.com/JunTaoLuo)和[Steve Smith](https://ardalis.com/)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>快取基本概念
 
@@ -216,7 +216,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 * 以 .NET Standard 2.0 或更新版本為目標的任何[.net 執行](/dotnet/standard/net-standard#net-implementation-support)。 例如，ASP.NET Core 2.0 或更新版本。
 * .NET Framework 4.5 或更新版本。
 
-/建議使用`IMemoryCache` [MicrosoftExtensions`MemoryCache` . Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) (如本文所述), 因為它已更緊密整合到 ASP.NET Core 中。`System.Runtime.Caching` / 例如，`IMemoryCache` 會以原生方式與 ASP.NET Core 相依性[插入](xref:fundamentals/dependency-injection)搭配運作。
+建議使用/`IMemoryCache` （如本文所述）的[記憶體](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)，而不是 `System.Runtime.Caching`/`MemoryCache`，因為它已更緊密整合到 ASP.NET Core 中。 例如，`IMemoryCache` 會以原生方式與 ASP.NET Core 相依性[插入](xref:fundamentals/dependency-injection)搭配運作。
 
 將 ASP.NET 4.x 的程式碼移植到 ASP.NET Core 時，請使用 `System.Runtime.Caching`/`MemoryCache` 做為相容性橋接器。
 
@@ -330,13 +330,13 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例示範如果相依專案過期，如何讓快取專案過期。 <xref:Microsoft.Extensions.Primitives.CancellationChangeToken> 會新增至快取的項目。 在 `CancellationTokenSource`上呼叫 `Cancel` 時，這兩個快取專案都會被收回。
+下列範例示範如果相依專案過期，如何讓快取專案過期。 已將 <xref:Microsoft.Extensions.Primitives.CancellationChangeToken> 新增至快取的專案。 在 `CancellationTokenSource`上呼叫 `Cancel` 時，這兩個快取專案都會被收回。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 
 使用 `CancellationTokenSource` 可讓多個快取專案收回為群組。 在上述程式碼中使用 `using` 模式時，在 `using` 區塊內建立的快取專案將會繼承觸發程式和到期設定。
 
-## <a name="additional-notes"></a>其他備註
+## <a name="additional-notes"></a>其他注意事項
 
 * 使用回呼來重新擴展快取專案時：
 

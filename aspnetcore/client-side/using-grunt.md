@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/05/2019
 uid: client-side/using-grunt
 ms.openlocfilehash: e516b85da7e94d0c93be642086fede0a11fea3c2
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879797"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657588"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>在 ASP.NET Core 中使用 Grunt
 
@@ -238,7 +238,7 @@ Grunt 是使用名為*gruntfile.js*的資訊清單來設定，它會定義、載
     > [!NOTE]
     > 如需每個套件選項的詳細資訊，請造訪主頁面上 [搜尋] 方塊中的[https://www.npmjs.com/](https://www.npmjs.com/)並查閱封裝名稱。 例如，您可以查詢 grunt-contrib-clean 封裝，以取得說明其所有參數的檔連結。
 
-### <a name="all-together-now"></a>總結
+### <a name="all-together-now"></a>立即整合
 
 使用 Grunt `registerTask()` 方法，以特定循序執行一系列的工作。 例如，若要執行上述的範例步驟，請 > concat-> jshint-> uglify 中，將下列程式碼新增至模組。 在 initConfig 以外，程式碼應該加入與 loadNpmTasks （）呼叫相同的層級。
 
@@ -281,6 +281,6 @@ grunt.loadNpmTasks('grunt-contrib-watch');
 
 卸載並重載專案。 當專案再次載入時，[監看式] 工作會自動開始執行。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 Grunt 是功能強大的工作執行器，可以用來將大部分的用戶端組建作業自動化。 Grunt 會利用 NPM 來傳遞其套件，並使用與 Visual Studio 的功能工具整合。 Visual Studio 的工作執行器 Explorer 會偵測設定檔案的變更，並提供便利的介面來執行工作、查看執行中的工作，以及將工作系結至 Visual Studio 的事件。

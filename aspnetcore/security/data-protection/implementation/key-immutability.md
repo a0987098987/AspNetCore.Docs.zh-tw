@@ -1,32 +1,32 @@
 ---
-title: 金鑰的不變性和 ASP.NET Core 中的機碼設定
+title: ASP.NET Core 中的金鑰不可變性和金鑰設定
 author: rick-anderson
-description: 了解 ASP.NET Core 資料保護金鑰的不變性 Api 的實作詳細資料。
+description: 瞭解 ASP.NET Core 資料保護金鑰永久性 Api 的執行細節。
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/key-immutability
 ms.openlocfilehash: 7796cb102c0f6f03809704016fd36b28c7a82438
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64892285"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664714"
 ---
-# <a name="key-immutability-and-key-settings-in-aspnet-core"></a>金鑰的不變性和 ASP.NET Core 中的機碼設定
+# <a name="key-immutability-and-key-settings-in-aspnet-core"></a>ASP.NET Core 中的金鑰不可變性和金鑰設定
 
-一旦將物件保存至備份存放區，其表示法是永久固定的。 新的資料可以加入至備份存放區，但現有的資料永遠不會變動。 此行為的主要目的是為了避免資料損毀。
+一旦物件保存到備份存放區，其標記法會永久固定。 新的資料可以新增至備份存放區，但現有的資料永遠不會變化。 此行為的主要目的是要防止資料損毀。
 
-此行為的一個結果是，一旦金鑰會寫入備份存放區，它是不變。 其建立、 啟動及到期的日期可以永遠不會變更，但它可以使用撤銷`IKeyManager`。 此外，其基礎的演算法資訊、 主要金鑰材料和加密在 rest 屬性也是不可變。
+這個行為的其中一個結果是，一旦金鑰寫入至備份存放區，它就是不可變的。 它的建立、啟用和到期日永遠不會變更，但可以使用 `IKeyManager`來撤銷。 此外，其基礎演算法資訊、主要金鑰內容和待用加密屬性也是不可變的。
 
-如果開發人員變更任何設定，會影響金鑰持續性，這些變更將不會生效之前會產生金鑰，透過明確呼叫在下一次`IKeyManager.CreateNewKey`或透過資料保護系統本身[自動金鑰產生](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management)行為。 會影響金鑰持續性的設定如下所示：
+如果開發人員變更任何會影響金鑰持續性的設定，這些變更將不會生效，直到下一次產生金鑰為止，不論是透過明確呼叫 `IKeyManager.CreateNewKey` 或透過資料保護系統本身的[自動金鑰產生](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management)行為。 影響金鑰持續性的設定如下：
 
 * [預設金鑰存留期](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management)
 
-* [在 rest 機制金鑰的加密](xref:security/data-protection/implementation/key-encryption-at-rest)
+* [待用金鑰加密機制](xref:security/data-protection/implementation/key-encryption-at-rest)
 
-* [機碼內所包含的演算法資訊](xref:security/data-protection/configuration/overview#changing-algorithms-with-usecryptographicalgorithms)
+* [包含在索引鍵中的演算法資訊](xref:security/data-protection/configuration/overview#changing-algorithms-with-usecryptographicalgorithms)
 
-如果您需要早於下一步 的自動金鑰輪換的時間開始進行這些設定，請考慮進行明確呼叫`IKeyManager.CreateNewKey`強制建立新的金鑰。 請記住，若要提供明確的啟動日期 （{現在 + 2 天} 是很好的經驗法則，讓變更傳播的時間） 和到期日，在呼叫中的。
+如果您需要這些設定，以在下一個自動的金鑰滾動時間之前開始進行，請考慮對 `IKeyManager.CreateNewKey` 進行明確的呼叫，以強制建立新的金鑰。 請記得提供明確的啟用日期（{now + 2 天} 是一個好用的經驗法則，可允許變更傳播的時間）和到期日的呼叫。
 
 >[!TIP]
-> 觸碰存放庫的所有應用程式應指定相同的設定與`IDataProtectionBuilder`擴充方法。 否則，保存金鑰的屬性會取決於特定的應用程式叫用的金鑰產生常式。
+> 所有觸及存放庫的應用程式都應該使用 `IDataProtectionBuilder` 擴充方法來指定相同的設定。 否則，保存的金鑰屬性會相依于叫用金鑰產生常式的特定應用程式。

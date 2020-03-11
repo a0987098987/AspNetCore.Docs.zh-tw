@@ -10,13 +10,13 @@ no-loc:
 - SignalR
 uid: signalr/diagnostics
 ms.openlocfilehash: c5bd2ac27f8ca486b0d75aed8439747f72448625
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963852"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660969"
 ---
-# <a name="logging-and-diagnostics-in-aspnet-core-opno-locsignalr"></a>ASP.NET Core SignalR 中的記錄和診斷
+# <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中的記錄和診斷
 
 [Andrew Stanton-護士](https://twitter.com/anurse)
 
@@ -27,14 +27,14 @@ ms.locfileid: "73963852"
 > [!WARNING]
 > 伺服器端記錄可能包含來自您應用程式的機密資訊。 **絕對不要**將未經處理的記錄從生產應用程式張貼到 GitHub 之類的公用論壇。
 
-由於 SignalR 是 ASP.NET Core 的一部分，因此會使用 ASP.NET Core 記錄系統。 在預設設定中，SignalR 會記錄非常少的資訊，但這可加以設定。 如需設定 ASP.NET Core 記錄的詳細資訊，請參閱有關[ASP.NET Core 記錄](xref:fundamentals/logging/index#configuration)的檔。
+由於 SignalR 是 ASP.NET Core 的一部分，因此它會使用 ASP.NET Core 記錄系統。 在預設設定中，SignalR 會記錄非常少的資訊，但這可加以設定。 如需設定 ASP.NET Core 記錄的詳細資訊，請參閱有關[ASP.NET Core 記錄](xref:fundamentals/logging/index#configuration)的檔。
 
 SignalR 使用兩個記錄器類別：
 
 * `Microsoft.AspNetCore.SignalR` &ndash; 與中樞通訊協定相關的記錄、啟用中樞、叫用方法，以及其他中樞相關的活動。
 * `Microsoft.AspNetCore.Http.Connections` &ndash; 與傳輸相關的記錄，例如 Websocket、長輪詢和伺服器傳送事件，以及低層級的 SignalR 基礎結構。
 
-若要從 SignalR啟用詳細記錄，請在 `Logging`的 `LogLevel` 子區段中新增下列專案，以將上述前置詞設定為*appsettings*中的 `Debug` 層級：
+若要從 SignalR 啟用詳細記錄，請將下列專案新增至 `Logging`中的 `LogLevel` 子區段，將上述前置詞設定為*appsettings json*檔案中的 `Debug` 層級：
 
 [!code-json[](diagnostics/logging-config.json?highlight=7-8)]
 
@@ -57,7 +57,7 @@ SignalR 使用兩個記錄器類別：
 
 ### <a name="as-a-console-app-outside-iis"></a>作為 IIS 外部的主控台應用程式
 
-如果您是在主控台應用程式中執行，預設應該啟用[主控台記錄器](xref:fundamentals/logging/index#console-provider)。 SignalR 的記錄會出現在主控台中。
+如果您是在主控台應用程式中執行，預設應該啟用[主控台記錄器](xref:fundamentals/logging/index#console-provider)。 SignalR 記錄將會出現在主控台中。
 
 ### <a name="within-iis-express-from-visual-studio"></a>從 Visual Studio 的 IIS Express 內
 
@@ -96,7 +96,7 @@ Visual Studio 會在 [**輸出**] 視窗中顯示記錄輸出。 選取 [ **ASP.
 
 設定詳細資訊之後，記錄將會寫入至瀏覽器主控台（或 NodeJS 應用程式中的標準輸出）。
 
-如果您想要將記錄檔傳送至自訂記錄系統，您可以提供執行 `ILogger` 介面的 JavaScript 物件。 唯一需要實作為的方法是 `log`，它會採用事件的層級以及與事件相關聯的訊息。 例如:
+如果您想要將記錄檔傳送至自訂記錄系統，您可以提供執行 `ILogger` 介面的 JavaScript 物件。 唯一需要實作為的方法是 `log`，它會採用事件的層級以及與事件相關聯的訊息。 例如：
 
 [!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
 

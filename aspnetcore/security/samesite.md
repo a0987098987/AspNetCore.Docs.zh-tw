@@ -5,28 +5,78 @@ description: 瞭解如何在 ASP.NET Core 中使用 SameSite cookie
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/03/2019
+no-loc:
+- Electron
 uid: security/samesite
-ms.openlocfilehash: b344ed8f539979210980b3421659207edd513f32
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: eeba2c4403d33312692ed187021a125c22df5d08
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146429"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667738"
 ---
 # <a name="work-with-samesite-cookies-in-aspnet-core"></a>在 ASP.NET Core 中使用 SameSite cookie
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
-[SameSite](https://tools.ietf.org/html/draft-west-first-party-cookies-07)是一種[IETF](https://ietf.org/about/)草稿，其設計目的是要針對跨網站偽造要求（CSRF）攻擊提供一些保護。 [SameSite 2019 草稿](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00)：
+SameSite 是一種[IETF](https://ietf.org/about/)草稿標準，旨在針對跨網站偽造要求（CSRF）攻擊提供一些保護。 初稿標準已于[2016](https://tools.ietf.org/html/draft-west-first-party-cookies-07)開始繪製，已于[2019](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00)更新。 更新的標準不會與前一個標準回溯相容，下列是最顯著的差異：
 
-* 預設會將 cookie 視為 `SameSite=Lax`。
-* 說明明確判斷提示 `SameSite=None` 以啟用跨網站傳遞的 cookie 應標示為 `Secure`。
+* 預設會將不含 SameSite 標頭的 cookie 視為 `SameSite=Lax`。
+* `SameSite=None` 必須用來允許跨網站 cookie 的使用。
+* 判斷提示 `SameSite=None` 的 cookie 也必須標示為 `Secure`。
+* 使用[`<iframe>`](https://developer.mozilla.org/docs/Web/HTML/Element/iframe)的應用程式可能會遇到 `sameSite=Lax` 或 `sameSite=Strict` cookie 的問題，因為 `<iframe>` 會被視為跨網站案例。
+* [2016 標準](https://tools.ietf.org/html/draft-west-first-party-cookies-07)不允許值 `SameSite=None`，而且會導致某些執行將這類 cookie 視為 `SameSite=Strict`。 請參閱本檔中的[支援舊版瀏覽器](#sob)。
 
-`Lax` 適用于大部分的應用程式 cookie。 某些形式的驗證，例如[OpenID connect](https://openid.net/connect/) （OIDC）和[WS-同盟](https://auth0.com/docs/protocols/ws-fed)，預設為以 POST 為基礎的重新導向。 以 POST 為基礎的重新導向會觸發 SameSite 瀏覽器保護，因此這些元件已停用 SameSite。 大部分的[OAuth](https://oauth.net/)登入都不會受到影響，因為要求的流動方式不同。
-
-`None` 參數會導致用戶端的相容性問題，而此標準會實作為先前的2016草稿標準（例如 iOS 12）。 請參閱本檔中的[支援舊版瀏覽器](#sob)。
+[`SameSite=Lax`] 設定適用于大部分的應用程式 cookie。 某些形式的驗證，例如[OpenID connect](https://openid.net/connect/) （OIDC）和[WS-同盟](https://auth0.com/docs/protocols/ws-fed)，預設為以 POST 為基礎的重新導向。 以 POST 為基礎的重新導向會觸發 SameSite 瀏覽器保護，因此這些元件已停用 SameSite。 大部分的[OAuth](https://oauth.net/)登入都不會受到影響，因為要求的流動方式不同。
 
 每個發出 cookie 的 ASP.NET Core 元件都必須決定是否適合 SameSite。
+
+## <a name="samesite-test-sample-code"></a>SameSite 測試範例程式碼
+
+ ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
+
+您可以下載並測試下列範例：
+
+| 範例               | 文件 |
+| ----------------- | ------------ |
+| [.NET Core MVC](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
+| [.NET Core Razor Pages](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+您可以下載並測試下列範例：
+
+
+| 範例               | 文件 |
+| ----------------- | ------------ |
+| [.NET Core Razor Pages](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="net-core-support-for-the-samesite-attribute"></a>SameSite 屬性的 .NET Core 支援
+
+.NET Core 2.2 支援自12月2019的更新發行以來，適用于 SameSite 的 2019 draft standard。 開發人員可以使用 `HttpCookie.SameSite` 屬性，以程式設計方式控制 sameSite 屬性的值。 將 `SameSite` 屬性設為 [Strict]、[寬鬆] 或 [無] 會導致這些值在網路上以 cookie 寫入。 將其設定為等於（SameSiteMode）（-1）表示不應在具有 cookie 的網路上包含任何 sameSite 屬性
+
+[!code-csharp[](samesite/snippets/Privacy.cshtml.cs?name=snippet)]
+
+.NET Core 3.0 支援已更新的 SameSite 值，並將額外的列舉值 `SameSiteMode.Unspecified` 新增至 `SameSiteMode` 列舉。
+這個新的值表示不應使用 cookie 傳送 sameSite。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
+
+## <a name="december-patch-behavior-changes"></a>12月修補程式列為變更
+
+.NET Framework 和 .NET Core 2.1 的特定行為變更是 `SameSite` 屬性解讀 `None` 值的方式。 在修補程式的值 `None` 表示「不要全部發出屬性」之後，在修補程式之後，就代表「發出屬性，其值為 `None`」。 在修補程式之後，`(SameSiteMode)(-1)` 的 `SameSite` 值會導致不發出屬性。
+
+表單驗證和會話狀態 cookie 的預設 SameSite 值已從 `None` 變更為 `Lax`。
+
+::: moniker-end
 
 ## <a name="api-usage-with-samesite"></a>使用 SameSite 的 API 使用方式
 
@@ -36,7 +86,7 @@ SameSite 會將預設值[附加](xref:Microsoft.AspNetCore.Http.IResponseCookies
 
 發出 cookie 的所有 ASP.NET Core 元件都會使用適用于其案例的設定來覆寫先前的預設值。 先前已覆寫的預設值尚未變更。
 
-| 元件 | Cookie | Default |
+| 元件 | 去 | 預設 |
 | ------------- | ------------- |
 | <xref:Microsoft.AspNetCore.Http.CookieBuilder> | <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite> | `Unspecified` |
 | <xref:Microsoft.AspNetCore.Http.HttpContext.Session>  | [SessionOptions. Cookie](xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie) |`Lax` |
@@ -144,6 +194,8 @@ Google 不會提供舊版的 chrome 版本。 請遵循[下載 Chromium](https:/
 * [Chromium 76 Win64](https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64/664998/)
 * [Chromium 74 Win64](https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64/638880/)
 
+從未加上 `80.0.3975.0`的版本開始，您可以使用新的旗標 `--enable-features=SameSiteDefaultChecksMethodRigorously`，針對測試目的停用最寬鬆的 + POST 暫時緩和功能，以允許在已移除緩和措施的最終狀態下測試網站和服務。 如需詳細資訊，請參閱 Chromium Projects [SameSite Updates](https://www.chromium.org/updates/same-site)
+
 ### <a name="test-with-safari"></a>使用 Safari 進行測試
 
 Safari 12 會嚴格實作為先前的草稿，並在新的 `None` 值在 cookie 中失敗。 透過此檔中[支援較舊流覽](#sob)器的瀏覽器偵測程式碼，可避免 `None`。 使用 MSAL、ADAL 或您使用的任何程式庫，測試 Safari 12、Safari 13 和以 WebKit 為基礎的 OS 樣式登入。 問題取決於基礎作業系統版本。 OSX Mojave （10.14）和 iOS 12 已知具有新 SameSite 行為的相容性問題。 將 OS 升級至 OSX Catalina （10.15）或 iOS 13 會修正問題。 Safari 目前沒有加入宣告旗標來測試新的規格行為。
@@ -166,6 +218,23 @@ Electron 的版本包含舊版的 Chromium。 例如，小組所使用的 Electr
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Chromium Blog：開發人員：準備開始新的 SameSite = None;安全 Cookie 設定](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)
+* [Chromium Blog：開發人員：準備開始新的 SameSite = None;安全的 Cookie 設定](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)
 * [SameSite cookie 說明](https://web.dev/samesite-cookies-explained/)
 * [2019年11月修補程式](https://devblogs.microsoft.com/dotnet/net-core-November-2019/)
+
+ ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
+
+| 範例               | 文件 |
+| ----------------- | ------------ |
+| [.NET Core MVC](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
+| [.NET Core Razor Pages](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
+
+::: moniker-end
+
+ ::: moniker range=">= aspnetcore-3.0"
+
+| 範例               | 文件 |
+| ----------------- | ------------ |
+| [.NET Core Razor Pages](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
+
+::: moniker-end

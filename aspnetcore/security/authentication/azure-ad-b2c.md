@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 01/21/2019
 uid: security/authentication/azure-ad-b2c
 ms.openlocfilehash: 136fa47788456492a9a7fe6d9d9e5996c13e8c20
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727283"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663657"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>在 ASP.NET Core 中使用 Azure Active Directory B2C 進行雲端驗證
 
@@ -30,7 +30,7 @@ ms.locfileid: "76727283"
 > * 使用 Visual Studio 建立 ASP.NET Core web 應用程式，並將其設定為使用 Azure AD B2C 的租使用者進行驗證
 > * 設定原則來控制 Azure AD B2C 租使用者的行為
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此逐步解說需要下列各項：
 
@@ -45,9 +45,9 @@ ms.locfileid: "76727283"
 
 在新建立的 Azure AD B2C 租使用者中，使用**註冊 web 應用程式**一節底下[檔中的步驟](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application)來註冊您的應用程式。 停止**建立 web 應用程式用戶端密碼**一節。 本教學課程不需要用戶端密碼。 
 
-使用下列值：
+輸入下列值：
 
-| 設定                       | 值                     | 注意事項                                                                                                                                                                                              |
+| 設定                       | 值                     | 注意                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **名稱**                      | *&lt;應用程式名稱&gt;*        | 輸入應用程式的**名稱**，以向取用者描述您的應用程式。                                                                                                                                 |
 | **包含 Web 應用程式 / Web API** | 是                       |                                                                                                                                                                                                    |
@@ -142,11 +142,11 @@ services.Configure<JwtBearerOptions>(
 
 成功登入之後，瀏覽器會重新導向至 web 應用程式。
 
-![成功](./azure-ad-b2c/_static/success.png)
+![Success](./azure-ad-b2c/_static/success.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
 > * 建立 Active Directory B2C 租用戶

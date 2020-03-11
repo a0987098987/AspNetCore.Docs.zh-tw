@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/21/2019
 uid: grpc/client
-ms.openlocfilehash: 1e7887388a752fb35d00e65db210c3924c6ab192
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 6a6a649f7194354b16f3d67160be02428cc01170
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829097"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667171"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>使用 .NET 用戶端呼叫 gRPC 服務
 
@@ -55,13 +55,16 @@ var counterClient = new Count.CounterClient(channel);
 > [!NOTE]
 > 需要其他設定，才能[使用 .net 用戶端呼叫不安全的 gRPC 服務](xref:grpc/troubleshoot#call-insecure-grpc-services-with-net-core-client)。
 
+> [!NOTE]
+> Xamarin 目前不支援透過 HTTP/2 使用 `Grpc.Net.Client` 呼叫 gRPC。 我們正致力於改善未來 Xamarin 版本中的 HTTP/2 支援。 [Grpc](https://www.nuget.org/packages/Grpc.Core)和[Grpc-Web](xref:grpc/browser)是可行的替代方案。
+
 ## <a name="make-grpc-calls"></a>進行 gRPC 呼叫
 
 GRPC 呼叫是藉由呼叫用戶端上的方法來起始。 GRPC 用戶端會處理訊息序列化，並將 gRPC 呼叫定址至正確的服務。
 
 gRPC 有不同類型的方法。 您使用用戶端進行 gRPC 呼叫的方式，取決於您所呼叫的方法類型。 GRPC 方法類型為：
 
-* 一元
+* 一元 (Unary)
 * 伺服器串流
 * 用戶端串流
 * 雙向串流

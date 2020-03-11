@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/05/2019
 uid: security/authentication/policyschemes
 ms.openlocfilehash: f02d8e5cac20a9b60c5eddbd28253efacf682ea1
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880708"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660731"
 ---
 # <a name="policy-schemes-in-aspnet-core"></a>ASP.NET Core 中的原則配置
 

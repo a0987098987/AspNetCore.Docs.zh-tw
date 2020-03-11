@@ -7,11 +7,11 @@ ms.custom: mvc, seodec18
 ms.date: 10/30/2019
 uid: security/authentication/google-logins
 ms.openlocfilehash: 83f45143eca1be43410880bfd875a3fce1d2e9c9
-ms.sourcegitcommit: de0fc77487a4d342bcc30965ec5c142d10d22c03
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73143462"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667507"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Google external 登入設定
 
@@ -24,7 +24,7 @@ ms.locfileid: "73143462"
 * 安裝[AspNetCore。 Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google)。
 * 流覽至 [將[Google 登入整合到您的 web 應用程式](https://developers.google.com/identity/sign-in/web/devconsole-project)]，然後選取 [**設定專案**]。
 * 在 [**設定您的 OAuth 用戶端**] 對話方塊中，選取 [ **Web 服務器**]。
-* 在 [**授權重新導向 uri** ] 文字輸入方塊中，設定 [重新導向 uri]。 例如：`https://localhost:44312/signin-google`
+* 在 [**授權重新導向 uri** ] 文字輸入方塊中，設定 [重新導向 uri]。 例如， `https://localhost:44312/signin-google`
 * 儲存**用戶端識別碼**和**用戶端密碼**。
 * 部署網站時，從**Google 主控台**註冊新的公用 url。
 
@@ -49,7 +49,7 @@ dotnet user-secrets set "Authentication:Google:ClientSecret" "<client secret>"
 
 [!INCLUDE [default settings configuration](includes/default-settings2-2.md)]
 
-## <a name="sign-in-with-google"></a>使用 Google 登入
+## <a name="sign-in-with-google"></a>以 Google 登入
 
 * 執行應用程式，然後按一下 [**登入**]。 [使用 Google 登入] 選項隨即出現。
 * 按一下 [ **google** ] 按鈕，以重新導向至 google 進行驗證。

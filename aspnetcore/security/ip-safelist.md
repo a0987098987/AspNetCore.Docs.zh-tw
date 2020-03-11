@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: ca5b0f8088773027f7403120247cbeca8900bcf5
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: d25c375f7e659168ab8cc9d8e11753cb7dfde831
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034336"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659772"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>ASP.NET Core 的用戶端 IP 安全
 
@@ -25,7 +25,7 @@ By [Damien Bowden](https://twitter.com/damien_bod)和[Tom 作者: dykstra](https
 
 在每個案例中，包含已核准用戶端 IP 位址的字串會儲存在應用程式設定中。 中介軟體或篩選器會將字串剖析為清單，並檢查遠端 IP 是否在清單中。 如果不是，則會傳回 HTTP 403 禁止狀態碼。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples/2.x/ClientIpAspNetCore) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples/2.x/ClientIpAspNetCore) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="the-safelist"></a>安全的
 
@@ -45,7 +45,7 @@ By [Damien Bowden](https://twitter.com/damien_bod)和[Tom 作者: dykstra](https
 
 ## <a name="action-filter"></a>動作篩選準則
 
-如果您只想要特定的控制器或動作方法的安全，請使用動作篩選準則。 以下為範例： 
+如果您只想要特定的控制器或動作方法的安全，請使用動作篩選準則。 以下是範例： 
 
 [!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Filters/ClientIpCheckFilter.cs)]
 
@@ -61,7 +61,7 @@ By [Damien Bowden](https://twitter.com/damien_bod)和[Tom 作者: dykstra](https
 
 ## <a name="razor-pages-filter"></a>Razor Pages 篩選 
 
-如果您想要 Razor Pages 應用程式的安全，請使用 Razor Pages 篩選器。 以下為範例： 
+如果您想要 Razor Pages 應用程式的安全，請使用 Razor Pages 篩選器。 以下是範例： 
 
 [!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Filters/ClientIpCheckPageFilter.cs)]
 

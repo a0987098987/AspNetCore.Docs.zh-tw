@@ -6,29 +6,29 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/15/2018
 uid: security/authorization/resourcebased
-ms.openlocfilehash: acc931da1be0940fac72b0aabe07ab17ca7e63bd
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 2be611c754583d996db7107f341b1be03cef73cf
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73659995"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664798"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a>ASP.NET Core 中以資源為基礎的授權
 
 授權策略會根據所存取的資源而定。 假設有一個具有 author 屬性的檔。 只有作者可以更新檔。 因此，必須先從資料存放區中取出檔，才能進行授權評估。
 
-屬性評估會在資料系結之前，以及在執行載入檔的頁面處理常式或動作之前進行。 基於這些理由，具有 `[Authorize]` 屬性的宣告式授權並不足夠。 相反地，您可以叫用自訂授權方法 &mdash;a 樣式，也就是「*命令式授權*」。
+屬性評估會在資料系結之前，以及在執行載入檔的頁面處理常式或動作之前進行。 基於這些理由，具有 `[Authorize]` 屬性的宣告式授權並不足夠。 相反地，您可以叫用自訂授權方法，&mdash;稱為*命令式授權*的樣式。
 
 ::: moniker range=">= aspnetcore-3.0"
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/3_0) ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/3_0) ([如何下載](xref:index#how-to-download-a-sample))。
 ::: moniker-end
 
  ::: moniker range=">= aspnetcore-2.0 < aspnetcore-3.0"
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/2_2) ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/2_2) ([如何下載](xref:index#how-to-download-a-sample))。
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-1.1"
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/1_1) ([如何下載](xref:index#how-to-download-a-sample))。
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/1_1) ([如何下載](xref:index#how-to-download-a-sample))。
 ::: moniker-end
 
 [建立具有受授權保護之使用者資料的 ASP.NET Core 應用程式](xref:security/authorization/secure-data)包含使用以資源為基礎之授權的範例應用程式。
@@ -106,7 +106,7 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 在上述範例中，假設 `SameAuthorRequirement` 是更泛型 `SpecificAuthorRequirement` 類別的特殊案例。 `SpecificAuthorRequirement` 類別（未顯示）包含代表作者名稱的 `Name` 屬性。 `Name` 屬性可以設定為目前的使用者。
 
-在 `Startup.ConfigureServices` 中註冊需求和處理常式：
+在 `Startup.ConfigureServices`中註冊需求和處理常式：
 
 ::: moniker range=">= aspnetcore-3.0"
 [!code-csharp[](resourcebased/samples/3_0/ResourceBasedAuthApp2/Startup.cs?name=snippet_ConfigureServicesSample&highlight=4-8,10)]

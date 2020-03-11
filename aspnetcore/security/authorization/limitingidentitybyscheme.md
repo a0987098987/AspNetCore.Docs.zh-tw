@@ -6,16 +6,16 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/08/2019
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: 9c173a4589279b03bc12b4b7dea594fae88cf471
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: a3be2b8171c146beef7e62c8f7e55883ca5dc687
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928391"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661816"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>在 ASP.NET Core 中使用特定配置進行授權
 
-在某些情況下，例如單頁應用程式（Spa），通常會使用多個驗證方法。 例如，應用程式可能會使用以 cookie 為基礎的驗證來登入，並針對 JavaScript 要求進行 JWT 持有人驗證。 在某些情況下，應用程式可能會有多個驗證處理常式實例。 例如，兩個 cookie 處理常式，其中一個包含基本身分識別，而另一個則是在觸發多重要素驗證（MFA）時建立。 因為使用者要求的作業需要額外的安全性，所以可能會觸發 MFA。 如需在使用者要求需要 MFA 的資源時強制執行 MFA 的詳細資訊，請參閱 GitHub 問題[保護區段與 mfa](https://github.com/aspnet/AspNetCore.Docs/issues/15791#issuecomment-580464195)。
+在某些情況下，例如單頁應用程式（Spa），通常會使用多個驗證方法。 例如，應用程式可能會使用以 cookie 為基礎的驗證來登入，並針對 JavaScript 要求進行 JWT 持有人驗證。 在某些情況下，應用程式可能會有多個驗證處理常式實例。 例如，兩個 cookie 處理常式，其中一個包含基本身分識別，而另一個則是在觸發多重要素驗證（MFA）時建立。 因為使用者要求的作業需要額外的安全性，所以可能會觸發 MFA。 如需在使用者要求需要 MFA 的資源時強制執行 MFA 的詳細資訊，請參閱 GitHub 問題[保護區段與 mfa](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195)。
 
 驗證架構會在驗證期間設定驗證服務時命名。 例如：
 

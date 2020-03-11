@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/consumer-apis/password-hashing
 ms.openlocfilehash: 52532f9f4d7f9037609c8273deb8b6964d81c714
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828564"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656048"
 ---
 # <a name="hash-passwords-in-aspnet-core"></a>ASP.NET Core 中的雜湊密碼
 
@@ -26,4 +26,4 @@ ms.locfileid: "75828564"
 
 [!code-csharp[](password-hashing/samples/passwordhasher.cs)]
 
-如需實際使用案例, 請參閱 ASP.NET Core 身分識別`PasswordHasher`類型的[原始程式碼](https://github.com/dotnet/AspNetCore/blob/master/src/Identity/Extensions.Core/src/PasswordHasher.cs)。
+如需實際使用案例，請參閱 ASP.NET Core 身分識別 `PasswordHasher` 類型的[原始程式碼](https://github.com/dotnet/AspNetCore/blob/master/src/Identity/Extensions.Core/src/PasswordHasher.cs)。

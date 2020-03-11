@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: e8b62d795f6444e6dd79e27ace687d5db4db86de
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 43bd4eccfc06d27ade5de0e3387247a753609336
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881005"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662369"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started-with-tag-helpers"></a>開始使用標籤協助程式
 
@@ -133,7 +133,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    **注意：**
 
-   * 此版本使用非同步 `ProcessAsync` 方法。 非同步 `GetChildContentAsync` 會傳回包含 `TagHelperContent` 的 `Task`。
+   * 此版本使用非同步 `ProcessAsync` 方法。 非同步 `GetChildContentAsync` 會傳回包含 `Task` 的 `TagHelperContent`。
 
    * 使用 `output` 參數，以取得 HTML 項目的內容。
 
@@ -151,7 +151,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    * `[HtmlTargetElement]` 屬性會傳遞屬性參數，以指定是否有任何包含名為 "bold" 之 HTML 屬性的 HTML 項目相符，並且執行類別中的 `Process` 覆寫方法。 在我們的範例中，`Process` 方法會移除 "bold" 屬性，並使用 `<strong></strong>` 括住包含標記。
 
-   * 因為您不想要取代現有標籤內容，所以必須使用 `PreContent.SetHtmlContent` 方法來撰寫開頭 `<strong>` 標籤，並使用 `PostContent.SetHtmlContent` 方法來撰寫結尾 `</strong>` 標籤。
+   * 因為您不想要取代現有標籤內容，所以必須使用 `<strong>` 方法來撰寫開頭 `PreContent.SetHtmlContent` 標籤，並使用 `</strong>` 方法來撰寫結尾 `PostContent.SetHtmlContent` 標籤。
 
 1. 修改 *About.cshtml* 檢視，以包含 `bold` 屬性值。 已完成的程式碼如下所示。
 
@@ -245,7 +245,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml)]
 
-1. 將 `Home` 控制器中的 `Index` 方法取代為下列程式碼：
+1. 將 `Index` 控制器中的 `Home` 方法取代為下列程式碼：
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Controllers/HomeController.cs?range=9-18)]
 
@@ -290,7 +290,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    >
    > [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?range=12)]
    >
-   > 也就是說，使用傳入 `ProcessAsync` 方法的 `TagHelperOutput`，即可呼叫 `GetChildContentAsync`。 如前所述，因為已快取輸出，所以會執行最後一個標籤協助程式。 您已使用下列程式碼修正該問題：
+   > 也就是說，使用傳入 `GetChildContentAsync` 方法的 `TagHelperOutput`，即可呼叫 `ProcessAsync`。 如前所述，因為已快取輸出，所以會執行最後一個標籤協助程式。 您已使用下列程式碼修正該問題：
    >
    > [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs?range=34-35)]
    >
@@ -307,7 +307,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 標籤協助程式提供數個屬性來擷取內容。
 
 * `GetChildContentAsync` 的結果可以附加至 `output.Content`。
-* 您可以使用 `GetContent` 來檢查 `GetChildContentAsync` 的結果。
+* 您可以使用 `GetChildContentAsync` 來檢查 `GetContent` 的結果。
 * 如果您修改 `output.Content`，則除非您呼叫 `GetChildContentAsync` 作為自動連結器範例，否則不會執行或轉譯 TagHelper 本文：
 
 [!code-csharp[](../../views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10&range=8-21)]

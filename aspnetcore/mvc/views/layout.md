@@ -5,12 +5,12 @@ description: 了解如何先使用通用配置、共用指示詞，以及執行�
 ms.author: riande
 ms.date: 07/30/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 3ba2f459ca2b04a3001e261acab26880b6582500
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: db8c6c30397593c1a8375ebc800c1c0e34d241cb
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289002"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667899"
 ---
 # <a name="layout-in-aspnet-core"></a>ASP.NET Core 中的配置
 
@@ -109,7 +109,7 @@ Razor 頁面中的本文和每個區段都必須進行轉譯或忽略。
 
 ## <a name="importing-shared-directives"></a>匯入共用指示詞
 
-檢視和頁面可以使用 Razor 指示詞匯入命名空間，並使用[相依性插入](dependency-injection.md)。 許多檢視所共用的指示詞可能指定於通用 *_ViewImports.cshtml* 檔案中。 `_ViewImports` 檔案支援下列指示詞：
+Views 和 pages 可以使用 Razor 指示詞來匯入命名空間，並使用相依性[插入](dependency-injection.md)。 許多檢視所共用的指示詞可能指定於通用 *_ViewImports.cshtml* 檔案中。 `_ViewImports` 檔案支援下列指示詞：
 
 * `@addTagHelper`
 * `@removeTagHelper`

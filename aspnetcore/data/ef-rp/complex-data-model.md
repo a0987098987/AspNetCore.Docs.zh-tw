@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 411c0874d2b2c6ecadd1da9aff7a093f1e8e525a
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: 1d81a0444487c6396bb32381ed2cb26d44312c3a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213424"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665715"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -99,7 +99,7 @@ ms.locfileid: "77213424"
 [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
 ```
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在 [SQL Server 物件總管] (SSOX) 中，按兩下 [Student] 資料表來開啟 Student 資料表設計工具。
 
@@ -107,7 +107,7 @@ ms.locfileid: "77213424"
 
 上述影像顯示了 `Student` 資料表的結構描述。 名稱欄位的型別為 `nvarchar(MAX)`。 在本教學課程稍後建立移轉並套用時，名稱欄位會因為字串長度屬性而變更為 `nvarchar(50)`。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 在您的 SQLite 工具中，檢查 `Student` 資料表的資料行定義。 名稱欄位的型別為 `Text`。 請注意，第一個名稱欄位稱為 `FirstMidName`。 在下一節中，您會將該資料行的名稱變更為 `FirstName`。
 
@@ -157,7 +157,7 @@ public string LastName { get; set; }
 
 執行應用程式並移至 Students 頁面。 擲回例外狀況。 `[Column]` 屬性會造成 EF 預期尋找名為 `FirstName` 的資料行，但資料庫中的資料行名稱仍是 `FirstMidName`。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 錯誤訊息會與下列範例相似：
 
@@ -187,7 +187,7 @@ SqlException: Invalid column name 'FirstName'.
 
   在套用移轉前，名稱資料行的型別為 [nvarchar(MAX)](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)。 名稱資料行現在為 `nvarchar(50)`。 資料行的名稱已從 `FirstMidName` 變更為 `FirstName`。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 錯誤訊息會與下列範例相似：
 
@@ -536,7 +536,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 建置專案。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在 PMC 中，執行下列命令。
 
@@ -561,7 +561,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 在下一節中，您會看到如何針對此錯誤採取動作。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 若您新增移轉和執行 `database update` 命令，即會產生下列錯誤：
 
@@ -591,7 +591,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 強制 EF Core 建立新的資料庫、卸除並更新資料庫：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 在套件管理員主控台 (PMC) 中，執行下列命令：
 
@@ -606,7 +606,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
   Update-Database
   ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 開啟命令視窗並巡覽至專案資料夾。 專案資料夾包含 *ContosoUniversity.csproj* 檔案。
 
@@ -627,7 +627,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 執行應用程式。 執行應用程式會執行 `DbInitializer.Initialize` 方法。 `DbInitializer.Initialize` 會填入新的資料庫。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在 SSOX 中開啟資料庫：
 
@@ -643,7 +643,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
   ![SSOX 中的 CourseAssignment 資料](complex-data-model/_static/ssox-ci-data.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 使用您的 SQLite 工具來檢查資料庫：
 
@@ -691,7 +691,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 * 包含將 `Department` 資料列及相關 `Course` 資料列新增到新 `Department` 資料列的程式碼或指令碼。
 * 不使用 "Temp" 部門或 `Course.DepartmentID` 的預設值。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 在套件管理員主控台 (PMC) 中，執行下列命令：
 
@@ -701,7 +701,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 因為 `DbInitializer.Initialize` 方法的設計僅適用於空白資料庫，所以請使用 SSOX 刪除 Student 和 Course 資料表中的所有資料列。 (串聯刪除會負責處理 Enrollment 資料表。)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 若您正在搭配 Visual Studio Code 使用 SQL Server LocalDB，請執行下列命令：
 
@@ -735,7 +735,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 ![實體圖表](complex-data-model/_static/diagram.png)
 
 若您遭遇到無法解決的問題，請下載[完整應用程式](
-https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
+https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
 
 ## <a name="customize-the-data-model-with-attributes"></a>使用屬性自訂資料模型
 
@@ -830,14 +830,14 @@ SqlException: Invalid column name 'FirstName'.
 * 建置專案。
 * 在專案資料夾中開啟命令視窗。 輸入下列命令來建立新的移轉並更新資料庫：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ```powershell
 Add-Migration ColumnFirstName
 Update-Database
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ```dotnetcli
 dotnet ef migrations add ColumnFirstName
@@ -1244,13 +1244,13 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 建置專案。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ```powershell
 Add-Migration ComplexDataModel
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ```dotnetcli
 dotnet ef migrations add ComplexDataModel
@@ -1286,7 +1286,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 更新的 `DbInitializer` 中的程式碼會為新的實體新增種子資料。 若要強制 EF Core 建立新的資料庫，請卸除並更新資料庫：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在套件管理員主控台 (PMC) 中，執行下列命令：
 
@@ -1297,7 +1297,7 @@ Update-Database
 
 從 PMC 執行 `Get-Help about_EntityFrameworkCore` 以取得說明資訊。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 開啟命令視窗並巡覽至專案資料夾。 專案資料夾中包含 *Startup.cs* 檔案。
 

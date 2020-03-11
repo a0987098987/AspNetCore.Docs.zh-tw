@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 04694f20c7142cc2917df25458e8e335ee933900
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: 8f6561616ccd0fde050276467920da8aa93677c6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2020
-ms.locfileid: "76268775"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657245"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>教學課程：開始在 ASP.NET MVC web 應用程式中使用 EF Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "76268775"
 * 位於*Startup.cs*和*Program.cs*檔案中。
 * 可以在[Razor Pages 版本](xref:data/ef-rp/intro)中找到。 
 
-如需何時可能更新此資訊的詳細資訊，請參閱[此 GitHub 問題](https://github.com/aspnet/AspNetCore.Docs/issues/13920) \(英文\)。
+如需何時可能更新此資訊的詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/13920) \(英文\)。
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
@@ -29,7 +29,7 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 
 這個範例應用程式是虛構的 Contoso 大學網站。 其中包括的功能有學生入學許可、課程建立、教師指派。 這是說明如何從零開始建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 
-在本教學課程中，您將：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 建立 ASP.NET Core MVC Web 應用程式
@@ -42,16 +42,16 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 > * 建立控制器和檢視
 > * 檢視資料庫
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 * [.NET Core SDK 2.2](https://www.microsoft.com/net/download)
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) 和下列工作負載：
+* 包含下列工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)：
   * **ASP.NET 與網頁程式開發**工作負載
   * **.NET Core 跨平台開發**工作負載
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[已完成的專案](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)。 如需常見的錯誤以及如何解決這些問題的清單，請參閱[ 數列中的最後一個教學課程疑難排解 > 一節](advanced.md#common-errors)。 如果您找不到您需要那里，您可以張貼問題的 StackOverflow.com [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) 或 [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core)。
+如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[已完成的專案](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)。 如需常見錯誤和如何解決這些問題的清單，請參閱[ 本系列最後一個教學課程中的疑難排解一節](advanced.md#common-errors)。 如果您找不到您需要那里，您可以張貼問題的 StackOverflow.com [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) 或 [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core)。
 
 > [!TIP]
 > 這是 10 個教學的系列課程，當中的每一個課程都是建置於先前教學課程的成果上。 成功完成每一個教學課程後，請儲存專案的複本。 如果您遇到問題，您可以從上一個教學課程來重新開始，而不需從系列的一開始從頭來過。
@@ -78,7 +78,7 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 
 * 輸入 **ContosoUniversity** 作為名稱，然後按一下 [確定]。
 
-  ![新增專案對話方塊](intro/_static/new-project2.png)
+  ![[新增專案] 對話方塊](intro/_static/new-project2.png)
 
 * 等候 [新增 ASP.NET Core Web 應用程式] 對話方塊出現。
 
@@ -96,11 +96,11 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 
 開啟 *Views/Shared/_Layout.cshtml* 並進行下列變更：
 
-* 將每個出現的 "ContosoUniversity" 都變更為 "Contoso University"。 共有三個發生次數。
+* 將每個出現的 "ContosoUniversity" 都變更為 "Contoso University"。 共出現三次。
 
 * 為 **About**、**Students**、**Courses**、**Instructors** 及 **Departments** 新增功能表項目，並刪除 **Privacy** 功能表項目。
 
-所做的變更已醒目提示。
+所做的變更已醒目標示。
 
 [!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,34-48,63)]
 
@@ -124,7 +124,7 @@ EF SQL Server 套件及其相依性 (`Microsoft.EntityFrameworkCore` 及 `Micros
 
 接下來您會為 Contoso 大學應用程式建立實體類別。 您會從下列三個實體開始。
 
-![Course-Enrollment-Student 資料模型圖表](intro/_static/data-model-diagram.png)
+![Course、Enrollment、Student 資料模型圖表](intro/_static/data-model-diagram.png)
 
 在 `Student` 和 `Enrollment` 實體之間存在一對多關聯性，`Course` 與 `Enrollment` 實體之間也存在一對多關聯性。 換句話說，一位學生可以註冊並參加任何數目的課程，而一個課程也可以有任何數目的學生註冊。
 
@@ -140,7 +140,7 @@ EF SQL Server 套件及其相依性 (`Microsoft.EntityFrameworkCore` 及 `Micros
 
 `ID` 屬性會成為資料庫資料表中的主索引鍵資料行，並對應至這個類別。 Entity Framework 預設會將名為 `ID` 或 `classnameID` 的屬性解譯為主索引鍵。
 
-`Enrollments` 屬性為[導覽屬性](/ef/core/modeling/relationships)。 導覽屬性會保留與此實體相關的其他實體。 在這個案例中，`Student entity` 的 `Enrollments` 屬性會保有與該 `Student` 實體相關的所有 `Enrollment` 實體。 換句話說，若資料庫中給定的學生資料列有兩個相關的 Enrollment 資料列 (包含該學生於其 StudentID 外部索引鍵資料行中主索引鍵值的資料列)，該 `Student` 實體的 `Enrollments` 導覽屬性便會包含這兩個 `Enrollment` 實體。
+`Enrollments` 屬性為[導覽屬性](/ef/core/modeling/relationships)。 導覽屬性會保留與此實體相關的其他實體。 在這個案例中，`Enrollments` 的 `Student entity` 屬性會保有與該 `Enrollment` 實體相關的所有 `Student` 實體。 換句話說，若資料庫中給定的學生資料列有兩個相關的 Enrollment 資料列 (包含該學生於其 StudentID 外部索引鍵資料行中主索引鍵值的資料列)，該 `Student` 實體的 `Enrollments` 導覽屬性便會包含這兩個 `Enrollment` 實體。
 
 若導覽屬性可保有多個實體 (例如在多對多或一對多關聯性中的情況)，其類型必須為一個清單，使得實體可以在該清單中新增、刪除或更新，例如 `ICollection<T>`。 您可以指定 `ICollection<T>` 或如 `List<T>` 或 `HashSet<T>` 等類型。 若您指定了 `ICollection<T>`，EF 會根據預設建立一個 `HashSet<T>` 集合。
 
@@ -152,15 +152,15 @@ EF SQL Server 套件及其相依性 (`Microsoft.EntityFrameworkCore` 及 `Micros
 
 [!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Intro)]
 
-`EnrollmentID` 屬性將為主索引鍵。此實體會使用 `classnameID` 模式，而非您在 `Student` 實體中所見到的自身 `ID`。 通常您會選擇一個模式，然後在您整個資料模型中使用此模式。 在這裡，此變化僅作為向您展示使用不同模式之用。 在[稍後的教學課程](inheritance.md)中，您會了解使用沒有 classname 的識別碼可讓在資料模型中實作繼承變得更為簡單。
+`EnrollmentID` 屬性將為主索引鍵。此實體會使用 `classnameID` 模式，而非您在 `ID` 實體中所見到的自身 `Student`。 通常您會選擇一個模式，然後在您整個資料模型中使用此模式。 在這裡，此變化僅作為向您展示使用不同模式之用。 在[稍後的教學課程](inheritance.md)中，您會了解使用沒有 classname 的識別碼可讓在資料模型中實作繼承變得更為簡單。
 
-`Grade` 屬性為一個 `enum`。 問號之後的 `Grade` 類型宣告表示 `Grade` 屬性可為 Null。 為 Null 的成績不同於成績為零：Null 表示成績未知或尚未指派。
+`Grade` 屬性為 `enum`。 問號之後的 `Grade` 類型宣告表示 `Grade` 屬性可為 Null。 為 Null 的成績不同於成績為零：Null 表示成績未知或尚未指派。
 
 `StudentID` 屬性是外部索引鍵，對應的導覽屬性是 `Student`。 `Enrollment` 實體與一個 `Student` 實體關聯，因此屬性僅能保有單一 `Student` 實體 (不像您先前看到的 `Student.Enrollments` 導覽屬性可保有多個 `Enrollment` 實體)。
 
 `CourseID` 屬性是外部索引鍵，對應的導覽屬性是 `Course`。 一個 `Enrollment` 實體與一個 `Course` 實體建立關聯。
 
-Entity Framework 會將名為 `<navigation property name><primary key property name>` 的屬性解譯為外部索引鍵屬性 (例如 `Student` 導覽屬性的 `StudentID`，因為 `Student` 實體的主索引鍵為 `ID`)。 外部索引鍵屬性也可以簡單的命名為 `<primary key property name>` (例如 `CourseID`，因為 `Course` 實體的主索引鍵為 `CourseID`)。
+Entity Framework 會將名為 `<navigation property name><primary key property name>` 的屬性解譯為外部索引鍵屬性 (例如 `StudentID` 導覽屬性的 `Student`，因為 `Student` 實體的主索引鍵為 `ID`)。 外部索引鍵屬性也可以簡單的命名為 `<primary key property name>` (例如 `CourseID`，因為 `Course` 實體的主索引鍵為 `CourseID`)。
 
 ### <a name="the-course-entity"></a>Course 實體
 
@@ -172,7 +172,7 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 `Enrollments` 屬性為導覽屬性。 `Course` 實體可以與任何數量的 `Enrollment` 實體相關。
 
-我們會在此系列[稍後的教學課程](complex-data-model.md)中進一步討論 `DatabaseGenerated` 屬性。 基本上，此屬性可讓您為課程輸入主索引鍵，而非讓資料庫產生它。
+我們會在此系列`DatabaseGenerated`稍後的教學課程[中進一步討論 ](complex-data-model.md) 屬性。 基本上，此屬性可讓您為課程輸入主索引鍵，而非讓資料庫產生它。
 
 ## <a name="create-the-database-context"></a>建立資料庫內容
 
@@ -200,9 +200,9 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=9-10)]
 
-連接字串的名稱，會透過呼叫 `DbContextOptionsBuilder` 物件上的方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core configuration system](xref:fundamentals/configuration/index) 會從 *appsettings.json* 檔案讀取連接字串。
+連接字串的名稱，會透過呼叫 `DbContextOptionsBuilder` 物件上的方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
 
-為 `ContosoUniversity.Data` 和 `Microsoft.EntityFrameworkCore` 命名空間新增 `using` 陳述式，然後建置專案。
+為 `using` 和 `ContosoUniversity.Data` 命名空間新增 `Microsoft.EntityFrameworkCore` 陳述式，然後建置專案。
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Usings)]
 
@@ -212,7 +212,7 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 ### <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-連接字串會指定 SQL Server LocalDB 資料庫。 LocalDB 是輕量版的 SQL Server Express Database Engine，旨在用於應用程式開發，而不是生產用途。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 預設會在 `C:/Users/<user>` 目錄中建立 *.mdf* 資料庫檔案。
+連接字串會指定 SQL Server LocalDB 資料庫。 LocalDB 是輕量版的 SQL Server Express Database Engine，旨在用於應用程式開發，而不是生產用途。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 LocalDB 預設會在 *目錄中建立*.mdf`C:/Users/<user>` 資料庫檔案。
 
 ## <a name="initialize-db-with-test-data"></a>使用測試資料將 DB 初始化
 
@@ -224,7 +224,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 [!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Intro)]
 
-程式碼會檢查資料庫中是否有任何學生。若沒有的話，它便會假設資料庫是新的資料庫，因此需要植入測試資料。 會將測試資料載入至陣列而非 `List<T>` 集合，以最佳化效能。
+程式碼會檢查資料庫中是否有任何學生。若沒有的話，它便會假設資料庫是新的資料庫，因此需要植入測試資料。 它會將測試資料載入陣列之中，而非 `List<T>` 集合，以最佳化效能。
 
 在 *Program.cs* 中，修改 `Main` 方法來在應用程式啟動期間執行下列動作：
 
@@ -238,7 +238,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 [!code-csharp[](intro/samples/cu/Program.cs?name=snippet_Usings)]
 
-在較舊的教學課程中，您會在 *Startup.cs* 的 `Configure` 方法中看到類似的程式碼。 我們建議您只在設定要求管道時使用 `Configure` 方法。 應用程式啟動程式碼屬於 `Main` 方法。
+在較舊的教學課程中，您會在 `Configure`Startup.cs*的* 方法中看到類似的程式碼。 我們建議您只在設定要求管道時使用 `Configure` 方法。 應用程式啟動程式碼屬於 `Main` 方法。
 
 現在在您首次執行應用程式時，資料庫便會建立並植入測試資料。 每當您變更您的資料模型時，您可以刪除資料庫、更新您的種子方法，然後依照相同的方法取得新的資料庫以重新開始。 在稍後的教學課程中，您會了解如何在資料模型變更時修改資料庫，而不需要刪除和重新建立它。
 
@@ -254,7 +254,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
   * 選取 [使用 Entity Framework 執行檢視的 MVC 控制器]。
 
-  * 按一下 [加入]。 [新增使用 Entity Framework 執行檢視的 MVC 控制器] 對話方塊隨即出現。
+  * 按一下 [新增]。 [新增使用 Entity Framework 執行檢視的 MVC 控制器] 對話方塊隨即出現。
 
     ![Scaffold Student](intro/_static/scaffold-student2.png)
 
@@ -264,7 +264,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
   * 接受預設的 **StudentsController** 作為名稱。
 
-  * 按一下 [加入]。
+  * 按一下 [新增]。
 
   當您按一下 [新增] 時，Visual Studio Scaffolding 引擎便會建立 *StudentsController.cs* 檔案及一組可以使用該控制器的檢視 ( *.cshtml* 檔案)。
 
@@ -320,13 +320,13 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 為了讓 Entity Framework 能夠建立一個完整資料庫，您所需要撰寫的程式碼非常少，多虧了慣例的使用及 Entity Framework 所做出的假設。
 
-* `DbSet` 屬性的名稱會用於資料表名稱。 針對 `DbSet` 屬性並未參考的實體，實體類別名稱會用於資料表名稱。
+* `DbSet` 屬性的名稱會用作資料表的名稱。 針對 `DbSet` 屬性並未參考的實體，實體類別名稱會用於資料表名稱。
 
 * 實體屬性名稱會用於資料行名稱。
 
 * 命名為 ID 或 classnameID 的實體屬性，會辨識為主索引鍵屬性。
 
-* 如果屬性命名為 *\<導覽屬性名稱>\<主索引鍵屬性名稱>* ，系統就會將該屬性解譯為外部索引鍵屬性 (例如，若為 `Student` 導覽屬性，則為 `StudentID`，因為 `Student` 實體的主索引鍵是 `ID`)。 外部索引鍵屬性也可以直接命名為 *\<主索引鍵屬性名稱>* (例如 `EnrollmentID`，因為 `Enrollment` 實體的主索引鍵為 `EnrollmentID`)。
+* 如果屬性命名為 *\<導覽屬性名稱>\<主索引鍵屬性名稱>* ，系統就會將該屬性解譯為外部索引鍵屬性 (例如，若為 `StudentID` 導覽屬性，則為 `Student`，因為 `Student` 實體的主索引鍵是 `ID`)。 外部索引鍵屬性也可以直接命名為 *\<主索引鍵屬性名稱>* (例如 `EnrollmentID`，因為 `Enrollment` 實體的主索引鍵為 `EnrollmentID`)。
 
 慣例行為可以被覆寫。 例如，您可以明確指定資料表名稱，如稍早在本教學課程中您所見到的。 您可以設定資料行名稱以及將任何屬性設為主索引鍵或外部索引鍵，如同您在本系列[稍後的教學課程](complex-data-model.md)中所見。
 
@@ -338,7 +338,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 非同步程式碼雖然的確會在執行階段造成少量的負荷，但在低流量情況下，對效能的衝擊非常微小；在高流量情況下，潛在的效能改善則相當大。
 
-在下列程式碼中，`async` 關鍵字、`Task<T>` 傳回值、`await` 關鍵字和 `ToListAsync` 方法使程式碼以非同步方式執行。
+在下列程式碼中，`async` 關鍵字、`Task<T>` 傳回值、`await` 關鍵字和`ToListAsync` 方法使程式碼以非同步方式執行。
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ScaffoldedIndex)]
 
@@ -346,7 +346,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 * 傳回類型 `Task<IActionResult>` 代表了正在進行的工作，其結果為 `IActionResult` 類型。
 
-* `await` 關鍵字會使編譯器將方法分割為兩部分。 第一個部分會與非同步啟動的作業一同結束。 第二個部分則會放入作業完成時呼叫的回呼方法中。
+* `await` 關鍵字會導致編譯器將方法分成兩個組件。 第一個部分會與非同步啟動的作業一同結束。 第二個部分則會放入作業完成時呼叫的回呼方法中。
 
 * `ToListAsync` 是 `ToList` 擴充方法的非同步版本。
 
@@ -362,11 +362,11 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[下載或檢視已完成的應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您將：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 建立 ASP.NET Core MVC Web 應用程式

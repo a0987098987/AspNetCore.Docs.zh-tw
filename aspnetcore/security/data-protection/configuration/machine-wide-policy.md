@@ -1,71 +1,71 @@
 ---
-title: 在 ASP.NET Core 支援的資料保護整部機器的原則
+title: ASP.NET Core 中的資料保護全電腦原則支援
 author: rick-anderson
-description: 了解支援的設定預設的全機器原則針對取用 ASP.NET Core 資料保護的所有應用程式。
+description: 瞭解針對使用 ASP.NET Core 資料保護的所有應用程式，設定預設全電腦原則的支援。
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/configuration/machine-wide-policy
 ms.openlocfilehash: 70aaca7afcd3df22cebb4466fbd9845a2277688c
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897265"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667948"
 ---
-# <a name="data-protection-machine-wide-policy-support-in-aspnet-core"></a>在 ASP.NET Core 支援的資料保護整部機器的原則
+# <a name="data-protection-machine-wide-policy-support-in-aspnet-core"></a>ASP.NET Core 中的資料保護全電腦原則支援
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
-Windows 上執行時，資料保護系統具有有限的支援設定預設的全機器原則針對取用 ASP.NET Core 資料保護的所有應用程式。 一般概念是系統管理員可能會想要變更預設設定，例如使用的演算法或金鑰的存留期，而不需要手動更新電腦上的每個應用程式。
+在 Windows 上執行時，資料保護系統對於使用 ASP.NET Core 資料保護的所有應用程式，設定預設全電腦原則的支援有限。 一般的概念是，系統管理員可能想要變更預設設定（例如使用的演算法或金鑰存留期），而不需要手動更新電腦上的每個應用程式。
 
 > [!WARNING]
-> 系統管理員可以設定預設原則，但無法強制執行它。 應用程式開發人員一律可以覆寫其中一個自己選擇的任何值。 預設的原則只會影響應用程式開發人員尚未在其中指定明確的值設定。
+> 系統管理員可以設定預設原則，但無法強制執行。 應用程式開發人員一律可以使用自己選擇的其中一個來覆寫任何值。 預設原則只會影響開發人員未指定設定之明確值的應用程式。
 
 ## <a name="setting-default-policy"></a>設定預設原則
 
-若要設定預設原則，系統管理員可以設定下列登錄機碼下的系統登錄中的已知的值：
+若要設定預設原則，管理員可以在系統登錄的下列登錄機碼底下設定已知的值：
 
 **HKLM\SOFTWARE\Microsoft\DotNetPackages\Microsoft.AspNetCore.DataProtection**
 
-如果您是在 64 位元作業系統上，而且想要影響 32 位元應用程式的行為，請記得設定適用 Wow6432Node 相當於上述的機碼。
+如果您是在64位的作業系統上，而且想要影響32位應用程式的行為，請記得設定上述金鑰的 Wow6432Node 對等用法。
 
 支援的值如下所示。
 
 | 值              | 類型   | 描述 |
 | ------------------ | :----: | ----------- |
-| EncryptionType     | 字串 | 指定應該使用資料保護的哪些演算法。 值必須是 CNG CBC、 CNG-GCM 或受管理，並詳細說明如下所述。 |
-| DefaultKeyLifetime | DWORD  | 指定新產生的索引鍵的存留期。 值會指定以天為單位，且必須是 > = 7。 |
-| KeyEscrowSinks     | 字串 | 指定用於金鑰委付的類型。 值是以分號分隔的清單金鑰委付接收器而定，清單中的每個項目所在的組件限定名稱的型別可實作[IKeyEscrowSink](/dotnet/api/microsoft.aspnetcore.dataprotection.keymanagement.ikeyescrowsink)。 |
+| EncryptionType     | 字串 | 指定應該使用哪些演算法來保護資料。 此值必須為 CNG-CBC、CNG-GCM 或 Managed，並會在下面詳細說明。 |
+| DefaultKeyLifetime | DWORD  | 指定新產生之金鑰的存留期。 此值以天為單位指定，且必須 > = 7。 |
+| KeyEscrowSinks     | 字串 | 指定用於金鑰委付的類型。 此值是以分號分隔的金鑰委付接收清單，其中清單中的每個元素都是實[IKeyEscrowSink](/dotnet/api/microsoft.aspnetcore.dataprotection.keymanagement.ikeyescrowsink)類型的元件限定名稱。 |
 
 ## <a name="encryption-types"></a>加密類型
 
-如果 EncryptionType CNG CBC，系統會設定成搭配 Windows CNG 提供的服務驗證使用 CBC 模式的對稱區塊編碼器的機密性和 HMAC (請參閱[指定自訂的 Windows CNG 演算法](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms)的詳細資料）。 支援下列的其他值，其中每個對應於 CngCbcAuthenticatedEncryptionSettings 類型上的屬性。
+如果 EncryptionType 是 CNG-CBC，系統會設定為使用 CBC 模式對稱區塊加密來搭配 Windows CNG 所提供的服務（如需更多詳細資料，請參閱[指定自訂 WINDOWS cng 演算法](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms)）以取得機密性和 HMAC 的真實性。 下列為支援的額外值，其中每一個都對應至 CngCbcAuthenticatedEncryptionSettings 類型上的屬性。
 
 | 值                       | 類型   | 描述 |
 | --------------------------- | :----: | ----------- |
-| EncryptionAlgorithm         | 字串 | 了解 CNG 的對稱區塊加密演算法的名稱。 CBC 模式中開啟此演算法。 |
-| EncryptionAlgorithmProvider | 字串 | 可能會產生 EncryptionAlgorithm 的演算法的 CNG 提供者實作的名稱。 |
-| EncryptionAlgorithmKeySize  | DWORD  | 要衍生的對稱區塊加密演算法的金鑰長度 （以位元為單位）。 |
-| HashAlgorithm               | 字串 | 了解 CNG 的雜湊演算法名稱。 此演算法是以 HMAC 模式開啟。 |
-| HashAlgorithmProvider       | 字串 | 可能會產生演算法 HashAlgorithm CNG 提供者實作的名稱。 |
+| EncryptionAlgorithm         | 字串 | CNG 瞭解的對稱式區塊密碼演算法的名稱。 此演算法會在 CBC 模式中開啟。 |
+| EncryptionAlgorithmProvider | 字串 | 可以產生演算法 EncryptionAlgorithm 的 CNG 提供者實作為名稱。 |
+| EncryptionAlgorithmKeySize  | DWORD  | 要為對稱區塊加密演算法衍生的金鑰長度（以位為單位）。 |
+| HashAlgorithm               | 字串 | CNG 所瞭解之雜湊演算法的名稱。 此演算法會在 HMAC 模式中開啟。 |
+| HashAlgorithmProvider       | 字串 | 可以產生演算法 HashAlgorithm 的 CNG 提供者實作為名稱。 |
 
-系統如果 EncryptionType CNG GCM，設定要用於 Galois/計數器模式的對稱區塊編碼器機密性與驗證與 Windows CNG 提供的服務 (請參閱[指定自訂的 Windows CNG 演算法](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms)如需詳細資訊）。 支援下列的其他值，其中每個對應於 CngGcmAuthenticatedEncryptionSettings 類型上的屬性。
+如果 EncryptionType 是 CNG-GCM，系統會設定為使用 Galois/Counter 模式對稱區塊密碼，以搭配 Windows CNG 提供的服務機密性和真實性（如需詳細資訊，請參閱[指定自訂 WINDOWS CNG 演算法](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms)）。 下列為支援的額外值，其中每一個都對應至 CngGcmAuthenticatedEncryptionSettings 類型上的屬性。
 
 | 值                       | 類型   | 描述 |
 | --------------------------- | :----: | ----------- |
-| EncryptionAlgorithm         | 字串 | 了解 CNG 的對稱區塊加密演算法的名稱。 此演算法是以 Galois/計數器模式開啟。 |
-| EncryptionAlgorithmProvider | 字串 | 可能會產生 EncryptionAlgorithm 的演算法的 CNG 提供者實作的名稱。 |
-| EncryptionAlgorithmKeySize  | DWORD  | 要衍生的對稱區塊加密演算法的金鑰長度 （以位元為單位）。 |
+| EncryptionAlgorithm         | 字串 | CNG 瞭解的對稱式區塊密碼演算法的名稱。 此演算法會在 Galois/Counter 模式中開啟。 |
+| EncryptionAlgorithmProvider | 字串 | 可以產生演算法 EncryptionAlgorithm 的 CNG 提供者實作為名稱。 |
+| EncryptionAlgorithmKeySize  | DWORD  | 要為對稱區塊加密演算法衍生的金鑰長度（以位為單位）。 |
 
-系統如果 EncryptionType 為 Managed，設定要用於受管理的 SymmetricAlgorithm 機密性和 KeyedHashAlgorithm 驗證 (請參閱[指定自訂管理演算法](xref:security/data-protection/configuration/overview#specifying-custom-managed-algorithms)如需詳細資訊)。 支援下列的其他值，其中每個對應於 ManagedAuthenticatedEncryptionSettings 類型上的屬性。
+如果 EncryptionType 是受管理的，系統會設定為使用受控 System.security.cryptography.symmetricalgorithm 的機密性和 KeyedHashAlgorithm 以提供真實性（如需詳細資訊，請參閱[指定自訂的受控演算法](xref:security/data-protection/configuration/overview#specifying-custom-managed-algorithms)）。 下列為支援的額外值，其中每一個都對應至 ManagedAuthenticatedEncryptionSettings 類型上的屬性。
 
 | 值                      | 類型   | 描述 |
 | -------------------------- | :----: | ----------- |
-| EncryptionAlgorithmType    | 字串 | 實作 SymmetricAlgorithm 型別的組件限定名稱。 |
-| EncryptionAlgorithmKeySize | DWORD  | 要衍生的對稱式加密演算法的金鑰長度 （以位元為單位）。 |
-| ValidationAlgorithmType    | 字串 | 型別的 KeyedHashAlgorithm 的實作組件限定名稱。 |
+| EncryptionAlgorithmType    | 字串 | 實 System.security.cryptography.symmetricalgorithm 之型別的元件限定名稱。 |
+| EncryptionAlgorithmKeySize | DWORD  | 要為對稱式加密演算法衍生的金鑰長度（以位為單位）。 |
+| ValidationAlgorithmType    | 字串 | 實 KeyedHashAlgorithm 之型別的元件限定名稱。 |
 
-如果 EncryptionType 具有 null 以外的任何其他值或空的資料保護系統擲回例外狀況在啟動時。
+如果 EncryptionType 具有 null 或空白以外的任何其他值，則資料保護系統會在啟動時擲回例外狀況。
 
 > [!WARNING]
-> 設定時牽涉到 EncryptionAlgorithmType、 ValidationAlgorithmType （KeyEscrowSinks） 的型別名稱的預設原則設定，類型必須能夠使用應用程式。 這表示，針對桌面 CLR 上執行的應用程式，包含這些類型的組件應該會出現在全域組件快取 (GAC) 中。 針對.NET Core 上執行的 ASP.NET Core 應用程式，應安裝包含這些類型的封裝。
+> 設定包含型別名稱（EncryptionAlgorithmType、ValidationAlgorithmType、KeyEscrowSinks）的預設原則設定時，應用程式必須能夠使用這些類型。 這表示，對於在桌面 CLR 上執行的應用程式，包含這些類型的元件應該存在於全域組件快取（GAC）中。 針對在 .NET Core 上執行的 ASP.NET Core 應用程式，應該安裝包含這些類型的封裝。

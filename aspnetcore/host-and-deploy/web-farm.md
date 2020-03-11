@@ -1,22 +1,22 @@
 ---
 title: 在 Web 伺服陣列上裝載 ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: 了解如何在 Web 伺服陣列環境中裝載具有共用資源之 ASP.NET Core 應用程式的多個執行個體。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 5c13e9bc4c514f9b42871d55a430265c8ec2da23
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 316c87e5f49593c05991a94cbe5e55d175a49bb3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75951824"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659366"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>在 Web 伺服陣列上裝載 ASP.NET Core
 
-作者：[Luke Latham](https://github.com/guardrex) 和 [Chris Ross](https://github.com/Tratcher)
+依[Chris Ross](https://github.com/Tratcher)
 
 *Web 伺服陣列*是一組兩個或多個 Web 伺服器 (或稱為「節點」)，用於裝載應用程式的多個執行個體。 當使用者的要求抵達 Web 伺服陣列時，「負載平衡器」會將要求分散到 Web 伺服陣列的節點。 Web 伺服陣列改善：
 
@@ -27,7 +27,7 @@ ms.locfileid: "75951824"
 
 本主題針對依賴共用資源的 Web 伺服陣列，說明其中所裝載 ASP.NET Core 應用程式的設定和相依性。
 
-## <a name="general-configuration"></a>一般組態
+## <a name="general-configuration"></a>一般設定
 
 <xref:host-and-deploy/index>  
 了解如何設定裝載環境及部署 ASP.NET Core 應用程式。 在 Web 伺服陣列的每個節點上設定處理序管理員，以自動啟動和重新啟動應用程式。 每個節點都需要 ASP.NET Core 執行階段。 如需詳細資訊，請參閱文件的[主機和部署](xref:host-and-deploy/index)區段中的主題。
@@ -42,7 +42,7 @@ ms.locfileid: "75951824"
 
 當應用程式擴展到多個執行個體時，便可能需要跨節點共用的應用程式狀態。 如果狀態是暫時性的，請考慮共用 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache)。 如果共用狀態需要持續性，請考慮將共用狀態儲存在資料庫中。
 
-## <a name="required-configuration"></a>必要的設定
+## <a name="required-configuration"></a>必要設定
 
 資料保護和快取需要部署到 Web 伺服陣列的應用程式設定。
 
@@ -50,21 +50,21 @@ ms.locfileid: "75951824"
 
 應用程式使用 [ASP.NET Core 資料保護系統](xref:security/data-protection/introduction)來保護資料。 資料保護會依賴一組儲存在*金鑰環*中的密碼編譯金鑰。 初始化資料保護系統時，會套用在本機儲存金鑰環的[預設設定](xref:security/data-protection/configuration/default-settings)。 在預設設定下，Web 伺服陣列的每個節點上都會儲存一個唯一的金鑰環。 因此，每個 Web 伺服陣列節點都無法解密由任何其他節點上的應用程式加密的資料。 預設設定通常不適用於在 Web 伺服陣列中裝載應用程式。 實作共用金鑰環的替代方式，是一律將使用者要求路由至相同的節點。 如需有關 Web 伺服陣列部署的資料保護系統設定詳細資訊，請參閱 <xref:security/data-protection/configuration/overview>。
 
-### <a name="caching"></a>快取
+### <a name="caching"></a>Caching
 
-在 Web 伺服陣列環境中，快取機制必須跨 Web 伺服陣列節點共用快取項目。 快取必須依賴於通用 Redis 快取、共用的 SQL Server 資料庫，或跨 Web 伺服陣列共用快取項目的自訂快取實作。 如需詳細資訊，請參閱<xref:performance/caching/distributed>。
+在 Web 伺服陣列環境中，快取機制必須跨 Web 伺服陣列節點共用快取項目。 快取必須依賴於通用 Redis 快取、共用的 SQL Server 資料庫，或跨 Web 伺服陣列共用快取項目的自訂快取實作。 如需詳細資訊，請參閱 <xref:performance/caching/distributed>。
 
 ## <a name="dependent-components"></a>相依元件
 
 下列案例不需要額外的設定，但它們取決於需要 Web 伺服陣列設定的技術。
 
-| 情節 | 相依於 &hellip; |
+| 狀況 | 相依於 &hellip; |
 | -------- | ------------------- |
-| 驗證  (可能為英文網頁) | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱<xref:security/authentication/cookie>和<xref:security/cookie-sharing>。 |
-| Identity | 驗證及資料庫設定。<br><br>如需詳細資訊，請參閱<xref:security/authentication/identity>。 |
-| 工作階段 | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 和快取 (請參閱 <xref:performance/caching/distributed>)。<br><br>如需詳細資訊，請參閱[工作階段與應用程式狀態：工作階段狀態](xref:fundamentals/app-state#session-state)。 |
-| TempData | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 或工作階段 (請參閱[工作階段與應用程式狀態：工作階段狀態](xref:fundamentals/app-state#session-state))。<br><br>如需詳細資訊，請參閱[工作階段與應用程式狀態：TempData](xref:fundamentals/app-state#tempdata)。 |
-| 防偽 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱<xref:security/anti-request-forgery>。 |
+| 驗證 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱 <xref:security/authentication/cookie> 和 <xref:security/cookie-sharing>。 |
+| 身分識別 | 驗證及資料庫設定。<br><br>如需詳細資訊，請參閱 <xref:security/authentication/identity>。 |
+| 工作階段 | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 和快取 (請參閱 <xref:performance/caching/distributed>)。<br><br>如需詳細資訊，請參閱[會話和狀態管理：會話狀態](xref:fundamentals/app-state#session-state)。 |
+| TempData | 資料保護（加密的 cookie）（請參閱 <xref:security/data-protection/configuration/overview>）或會話（請參閱[會話和狀態管理：會話狀態](xref:fundamentals/app-state#session-state)）。<br><br>如需詳細資訊，請參閱[會話和狀態管理： TempData](xref:fundamentals/app-state#tempdata)。 |
+| 防偽 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱 <xref:security/anti-request-forgery>。 |
 
 ## <a name="troubleshoot"></a>疑難排解
 
@@ -93,3 +93,4 @@ ms.locfileid: "75951824"
 
 * [適用于 Windows 的自訂腳本擴充](/azure/virtual-machines/extensions/custom-script-windows)功能 &ndash; 會在 Azure 虛擬機器上下載和執行腳本，這對於部署後設定和軟體安裝很有用。
 * <xref:host-and-deploy/proxy-load-balancer>
+ 

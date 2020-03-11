@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/11/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 15899917826fb6559244998766d99d00f56e0521
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: d9beae68cc869b665ff5d2b6cf34f120406098dc
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294724"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661886"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -34,9 +34,9 @@ HTTP「讀取、求值、輸出」迴圈 (REPL) 是：
 * [POST](#test-http-post-requests)
 * [PUT](#test-http-put-requests)
 
-若要跟著做，[請檢視或下載範例 ASP.NET Core web API](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([如何下載](xref:index#how-to-download-a-sample))。
+若要跟著做，[請檢視或下載範例 ASP.NET Core web API](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 * [!INCLUDE [2.1-SDK](~/includes/2.1-SDK.md)]
 
@@ -48,9 +48,9 @@ HTTP「讀取、求值、輸出」迴圈 (REPL) 是：
 dotnet tool install -g Microsoft.dotnet-httprepl
 ```
 
-會從 [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) \(英文\) NuGet 套件安裝 [.NET Core 全域工具](/dotnet/core/tools/global-tools#install-a-global-tool)。
+會從 [Microsoft.dotnet-httprepl](/dotnet/core/tools/global-tools#install-a-global-tool) \(英文\) NuGet 套件安裝 [.NET Core 全域工具](https://www.nuget.org/packages/Microsoft.dotnet-httprepl)。
 
-## <a name="usage"></a>使用
+## <a name="usage"></a>使用量
 
 成功安裝工具後，請執行以下命令來啟動 HTTP REPL：
 
@@ -225,15 +225,15 @@ https://localhost:5001/people~
 
 您可自訂 HTTP RPEL 的預設[色彩](#set-color-preferences)。 此外，還可定義[預設文字編輯器](#set-the-default-text-editor)。 HTTP REPL 喜好設定會存在目前的各工作階段，且會套用至後續的工作階段。 修改後，喜好設定會儲存在以下檔案中：
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 *%HOME%/.httpreplprefs*
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 *%HOME%/.httpreplprefs*
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 *%USERPROFILE%\\.httpreplprefs*
 
@@ -335,19 +335,19 @@ pref set editor.command.default "<EXECUTABLE>"
 
 在上述命令中，`<EXECUTABLE>` 是文字編輯器可執行檔的完整路徑。 舉例來說，執行以下命令將 Visual Studio Code 設為預設文字編輯器：
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```console
 pref set editor.command.default "/usr/bin/code"
 ```
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ```console
 pref set editor.command.default "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
@@ -355,7 +355,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-若要以特定 CLI 引數啟動預設文字編輯器，請設定 `editor.command.default.arguments` 機碼。 假設 Visual Studio Code 是預設文字編輯器，且您希望 HTTP REPL 在新的工作階段開啟 Visual Studio Code，但停用延伸模組。 執行下列命令：
+若要以特定 CLI 引數啟動預設文字編輯器，請設定 `editor.command.default.arguments` 機碼。 假設 Visual Studio Code 是預設文字編輯器，且您希望 HTTP REPL 在新的工作階段開啟 Visual Studio Code，但停用延伸模組。 執行以下命令：
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -384,13 +384,13 @@ pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
 get <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 以下是使用 `get` 命令時可用的選項：
 
@@ -468,13 +468,13 @@ get <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body
 post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -538,13 +538,13 @@ post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-f
 put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -653,13 +653,13 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
 delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -740,13 +740,13 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
 patch <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -760,13 +760,13 @@ patch <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-
 head <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -778,13 +778,13 @@ head <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:bod
 options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
 ```
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>引數
 
 `PARAMETER`
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 

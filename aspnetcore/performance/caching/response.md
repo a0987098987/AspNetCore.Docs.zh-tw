@@ -6,18 +6,18 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 uid: performance/caching/response
-ms.openlocfilehash: ab5d1414ae72edade81ab55aef6b0fa5af30f0f4
-ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
+ms.openlocfilehash: 91358e2553d09c5e7366ba7a2301a798ad921d69
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76971981"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655726"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core 中的回應快取
 
-作者： [John 羅文](https://github.com/JunTaoLuo)、 [Rick Anderson](https://twitter.com/RickAndMSFT)、 [Steve Smith](https://ardalis.com/)和[Luke Latham](https://github.com/guardrex)
+作者： [John 羅文](https://github.com/JunTaoLuo)、 [Rick Anderson](https://twitter.com/RickAndMSFT)和[Steve Smith](https://ardalis.com/)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/response/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/response/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 回應快取可減少用戶端或 proxy 對 web 伺服器提出的要求數目。 回應快取也會減少 web 伺服器執行以產生回應的工作量。 回應快取是由標頭控制，可指定您希望用戶端、proxy 和中介軟體快取回應的方式。
 
@@ -31,7 +31,7 @@ ms.locfileid: "76971981"
 
 下表顯示常見的 `Cache-Control` 指示詞。
 
-| Directive                                                       | 動作 |
+| 指示詞                                                       | 動作 |
 | --------------------------------------------------------------- | ------ |
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | 快取可能會儲存回應。 |
 | [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | 回應不得由共用快取儲存。 私用快取可能會儲存並重複使用回應。 |
@@ -41,9 +41,9 @@ ms.locfileid: "76971981"
 
 下表顯示在快取中扮演角色的其他快取標頭。
 
-| 標頭                                                     | 函數 |
+| 頁首                                                     | 函式 |
 | ---------------------------------------------------------- | -------- |
-| [存在](https://tools.ietf.org/html/rfc7234#section-5.1)     | 在源伺服器上產生或成功驗證回應後的時間量估計（以秒為單位）。 |
+| [年齡](https://tools.ietf.org/html/rfc7234#section-5.1)     | 在源伺服器上產生或成功驗證回應後的時間量估計（以秒為單位）。 |
 | [失效](https://tools.ietf.org/html/rfc7234#section-5.3) | 回應被視為過時的時間。 |
 | [雜](https://tools.ietf.org/html/rfc7234#section-5.4)  | 存在以提供與 HTTP/1.0 快取的回溯相容性，以設定 `no-cache` 行為。 如果 `Cache-Control` 標頭存在，則會忽略 `Pragma` 標頭。 |
 | [相同](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | 指定必須等到快取回應的原始要求和新要求中都符合所有 `Vary` 標頭欄位時，才傳送快取的回應。 |
@@ -62,25 +62,25 @@ ms.locfileid: "76971981"
 
 記憶體內部快取會使用伺服器記憶體來儲存快取的資料。 這種類型的快取適用于單一伺服器，或使用*粘滯會話*的多部伺服器。 「粘滯話」表示用戶端的要求一律會路由傳送至相同的伺服器進行處理。
 
-如需詳細資訊，請參閱<xref:performance/caching/memory>。
+如需詳細資訊，請參閱 <xref:performance/caching/memory>。
 
 ### <a name="distributed-cache"></a>分散式快取
 
 當應用程式裝載于雲端或伺服器陣列時，使用分散式快取將資料儲存在記憶體中。 快取會在處理要求的伺服器之間共用。 如果用戶端的快取資料可供使用，則用戶端可以提交由群組中的任何伺服器所處理的要求。 ASP.NET Core 適用于 SQL Server、 [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)和[NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/)分散式快取。
 
-如需詳細資訊，請參閱<xref:performance/caching/distributed>。
+如需詳細資訊，請參閱 <xref:performance/caching/distributed>。
 
 ### <a name="cache-tag-helper"></a>快取標記協助程式
 
 使用快取標記協助程式，從 MVC 視圖或 Razor 頁面快取內容。 快取標記協助程式會使用記憶體內部快取來儲存資料。
 
-如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>。
 
 ### <a name="distributed-cache-tag-helper"></a>分散式快取標籤協助程式
 
 使用分散式快取標記協助程式，從分散式雲端或 web 伺服陣列案例中的 MVC 視圖或 Razor 頁面快取內容。 分散式快取標記協助程式會使用 SQL Server、 [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)或[NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/)來儲存資料。
 
-如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>。
 
 ## <a name="responsecache-attribute"></a>ResponseCache 屬性
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 65c72d4dd457f85451796c5713bedebafec7a7de
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: 7710a8965771db02e601dafb7da752906bcd43e5
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74239826"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659576"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立具有受授權保護之使用者資料的 ASP.NET Core 應用程式
 
@@ -19,7 +19,7 @@ ms.locfileid: "74239826"
 
 ::: moniker range="<= aspnetcore-1.1"
 
-如需 ASP.NET Core MVC 版本，請參閱[此 PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) 。 本教學課程的 ASP.NET Core 1.1 版本位於[此](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data)資料夾中。 1\.1 ASP.NET Core 範例位於[範例](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2)中。
+如需 ASP.NET Core MVC 版本，請參閱[此 PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) 。 本教學課程的 ASP.NET Core 1.1 版本位於[此](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data)資料夾中。 1\.1 ASP.NET Core 範例位於[範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2)中。
 
 ::: moniker-end
 
@@ -69,7 +69,7 @@ ms.locfileid: "74239826"
 * `ContactManagerAuthorizationHandler`：允許管理員核准或拒絕連絡人。
 * `ContactAdministratorsAuthorizationHandler`：可讓系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程是先進的。 您應該已熟悉：
 
@@ -81,11 +81,11 @@ ms.locfileid: "74239826"
 
 ## <a name="the-starter-and-completed-app"></a>入門和已完成的應用程式
 
-[下載](xref:index#how-to-download-a-sample)[已完成](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples)的應用程式。 [測試](#test-the-completed-app)已完成的應用程式，以熟悉其安全性功能。
+[下載](xref:index#how-to-download-a-sample)[已完成](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples)的應用程式。 [測試](#test-the-completed-app)已完成的應用程式，以熟悉其安全性功能。
 
 ### <a name="the-starter-app"></a>入門應用程式
 
-[下載](xref:index#how-to-download-a-sample) [starter](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/)應用程式。
+[下載](xref:index#how-to-download-a-sample) [starter](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/)應用程式。
 
 執行應用程式，並按一下 [ **ContactManager** ] 連結，並確認您可以建立、編輯和刪除連絡人。
 
@@ -267,7 +267,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="add-or-remove-a-user-to-a-role"></a>新增或移除角色的使用者
 
-如需相關資訊，請參閱[此問題](https://github.com/aspnet/AspNetCore.Docs/issues/8502)：
+如需相關資訊，請參閱[此問題](https://github.com/dotnet/AspNetCore.Docs/issues/8502)：
 
 * 移除使用者的許可權。 例如，將聊天應用程式中的使用者靜音。
 * 將許可權新增至使用者。
@@ -308,7 +308,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * 管理員可以核准/拒絕連絡人資料。 [`Details`] 視圖會顯示 [**核准**] 和 [**拒絕**] 按鈕。
 * 系統管理員可以核准/拒絕和編輯/刪除所有資料。
 
-| 使用者                | 由應用程式植入 | 選項                                  |
+| User                | 由應用程式植入 | 選項。                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | 否                | 編輯/刪除自己的資料。                |
 | manager@contoso.com | 是               | 核准/拒絕和編輯/刪除自己的資料。 |
@@ -355,7 +355,7 @@ dotnet ef database update
 
 ### <a name="seed-the-database"></a>植入資料庫
 
-將[SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs)類別新增至 [*資料*] 資料夾：
+將[SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs)類別新增至 [*資料*] 資料夾：
 
 [!code-csharp[](secure-data/samples/starter3/Data/SeedData.cs)]
 
@@ -405,7 +405,7 @@ dotnet ef database update
 * `ContactManagerAuthorizationHandler`：允許管理員核准或拒絕連絡人。
 * `ContactAdministratorsAuthorizationHandler`：可讓系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程是先進的。 您應該已熟悉：
 
@@ -417,11 +417,11 @@ dotnet ef database update
 
 ## <a name="the-starter-and-completed-app"></a>入門和已完成的應用程式
 
-[下載](xref:index#how-to-download-a-sample)[已完成](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples)的應用程式。 [測試](#test-the-completed-app)已完成的應用程式，以熟悉其安全性功能。
+[下載](xref:index#how-to-download-a-sample)[已完成](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples)的應用程式。 [測試](#test-the-completed-app)已完成的應用程式，以熟悉其安全性功能。
 
 ### <a name="the-starter-app"></a>入門應用程式
 
-[下載](xref:index#how-to-download-a-sample) [starter](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/)應用程式。
+[下載](xref:index#how-to-download-a-sample) [starter](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/)應用程式。
 
 執行應用程式，並按一下 [ **ContactManager** ] 連結，並確認您可以建立、編輯和刪除連絡人。
 
@@ -603,7 +603,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="add-or-remove-a-user-to-a-role"></a>新增或移除角色的使用者
 
-如需相關資訊，請參閱[此問題](https://github.com/aspnet/AspNetCore.Docs/issues/8502)：
+如需相關資訊，請參閱[此問題](https://github.com/dotnet/AspNetCore.Docs/issues/8502)：
 
 * 移除使用者的許可權。 例如，將聊天應用程式中的使用者靜音。
 * 將許可權新增至使用者。
@@ -635,7 +635,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * 管理員可以核准/拒絕連絡人資料。 [`Details`] 視圖會顯示 [**核准**] 和 [**拒絕**] 按鈕。
 * 系統管理員可以核准/拒絕和編輯/刪除所有資料。
 
-| 使用者                | 由應用程式植入 | 選項                                  |
+| User                | 由應用程式植入 | 選項。                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | 否                | 編輯/刪除自己的資料。                |
 | manager@contoso.com | 是               | 核准/拒絕和編輯/刪除自己的資料。 |
@@ -678,7 +678,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ### <a name="seed-the-database"></a>植入資料庫
 
-將[SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs)類別新增至 [ *Data* ] 資料夾。
+將[SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs)類別新增至 [ *Data* ] 資料夾。
 
 從 `Main`呼叫 `SeedData.Initialize`：
 

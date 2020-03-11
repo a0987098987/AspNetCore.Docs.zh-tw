@@ -9,24 +9,24 @@ no-loc:
 - SignalR
 uid: signalr/version-differences
 ms.openlocfilehash: cca9a0cb0c46fc25eb5d1f7127d31fd3ab92f0b4
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880369"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663545"
 ---
-# <a name="differences-between-aspnet-opno-locsignalr-and-aspnet-core-opno-locsignalr"></a>ASP.NET SignalR 與 ASP.NET Core 之間的差異 SignalR
+# <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>ASP.NET SignalR 與 ASP.NET Core SignalR 之間的差異
 
-ASP.NET Core SignalR 與 ASP.NET SignalR的用戶端或伺服器不相容。 本文詳細說明在 ASP.NET Core SignalR中已移除或變更的功能。
+ASP.NET Core SignalR 與 ASP.NET SignalR 的用戶端或伺服器不相容。 本文詳述已在 ASP.NET Core SignalR 中移除或變更的功能。
 
-## <a name="how-to-identify-the-opno-locsignalr-version"></a>如何識別 SignalR 版本
+## <a name="how-to-identify-the-signalr-version"></a>如何識別 SignalR 版本
 
 ::: moniker range=">= aspnetcore-3.0"
 
 |                      | ASP.NET SignalR | ASP.NET Core SignalR |
 | -------------------- | --------------- | -------------------- |
-| 伺服器 NuGet 封裝 | [Microsoft.AspNet.SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | 無。 包含在[AspNetCore](xref:fundamentals/metapackage-app)共用架構中。 |
-| 用戶端 NuGet 套件 | [Microsoft.AspNet.SignalR.Client](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[Microsoft.AspNet.SignalR.JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [Microsoft.AspNetCore.SignalR.Client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
+| 伺服器 NuGet 封裝 | [SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | 無。 包含在[AspNetCore](xref:fundamentals/metapackage-app)共用架構中。 |
+| 用戶端 NuGet 套件 | [SignalR。用戶端](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[SignalR .JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [AspNetCore. SignalR. 用戶端](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
 | JavaScript 用戶端 npm 套件 | [signalr](https://www.npmjs.com/package/signalr) | [`@microsoft/signalr`](https://www.npmjs.com/package/@microsoft/signalr) |
 | Java 用戶端 | [GitHub 存放庫](https://github.com/SignalR/java-client)（已淘汰）  | Maven package [com. signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
 | 伺服器應用程式類型 | ASP.NET （System.web）或 OWIN 自我裝載 | ASP.NET Core |
@@ -38,8 +38,8 @@ ASP.NET Core SignalR 與 ASP.NET SignalR的用戶端或伺服器不相容。 本
 
 |                      | ASP.NET SignalR | ASP.NET Core SignalR |
 | -------------------- | --------------- | -------------------- |
-| 伺服器 NuGet 封裝 | [Microsoft.AspNet.SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | [AspNetCore 應用程式](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)（.net Core）<br>[Microsoft.AspNetCore.SignalR](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) (.NET Framework) |
-| 用戶端 NuGet 套件 | [Microsoft.AspNet.SignalR.Client](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[Microsoft.AspNet.SignalR.JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [Microsoft.AspNetCore.SignalR.Client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
+| 伺服器 NuGet 封裝 | [SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | [AspNetCore 應用程式](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)（.net Core）<br>[AspNetCore。SignalR](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) (.NET Framework) |
+| 用戶端 NuGet 套件 | [SignalR。台](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[SignalR。NODE.JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [AspNetCore.SignalR。台](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
 | JavaScript 用戶端 npm 套件 | [signalr](https://www.npmjs.com/package/signalr) | [`@aspnet/signalr`](https://www.npmjs.com/package/@aspnet/signalr) |
 | Java 用戶端 | [GitHub 存放庫](https://github.com/SignalR/java-client)（已淘汰）  | Maven package [com. signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
 | 伺服器應用程式類型 | ASP.NET （System.web）或 OWIN 自我裝載 | ASP.NET Core |
@@ -137,11 +137,11 @@ ASP.NET SignalR 的向外延展模型可讓用戶端重新連線，並將訊息�
 
 在 ASP.NET Core SignalR中，已簡化連接模型。 直接連接到單一中樞，而不是使用單一連線來共用多個中樞的存取權。
 
-### <a name="streaming"></a>Streaming
+### <a name="streaming"></a>串流
 
 ASP.NET Core SignalR 現在支援從中樞將[資料串流](xref:signalr/streaming)至用戶端。
 
-### <a name="state"></a>狀況
+### <a name="state"></a>State
 
 已移除在用戶端與中樞之間傳遞任意狀態的功能（通常稱為 `HubState`），並支援進度訊息。 目前沒有任何對應的中樞 proxy。
 
@@ -269,7 +269,7 @@ connection = new HubConnectionBuilder()
 
 ASP.NET SignalR 支援 SQL Server 和 Redis。 ASP.NET Core SignalR 支援 Azure SignalR 服務和 Redis。
 
-### <a name="aspnet"></a>[ASP.NET]
+### <a name="aspnet"></a>ASP.NET
 
 * [使用 Azure 服務匯流排 SignalR 向外延展](/aspnet/signalr/overview/performance/scaleout-with-windows-azure-service-bus)
 * [使用 Redis SignalR 向外延展](/aspnet/signalr/overview/performance/scaleout-with-redis)

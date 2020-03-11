@@ -7,11 +7,11 @@ ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
 ms.openlocfilehash: 451171a041f7bbb3711babd73d2fa2e245aadd28
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355132"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664133"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>將 gRPC 服務從 C-核心遷移至 ASP.NET Core
 
@@ -82,7 +82,7 @@ public class GreeterService : Greeter.GreeterBase
 
 ## <a name="grpc-interceptors-vs-middleware"></a>gRPC 攔截器 vs 中介軟體
 
-相較于以 C 核心為基礎的 gRPC 應用程式中的攔截器，ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)提供類似的功能。 ASP.NET Core 中介軟體和攔截器在概念上類似。 兩者：
+相較于以 C 核心為基礎的 gRPC 應用程式中的攔截器，ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)提供類似的功能。 ASP.NET Core 中介軟體和攔截器在概念上類似。 Both (兩者)：
 
 * 是用來建立處理 gRPC 要求的管線。
 * 允許在管線中的下一個元件之前或之後執行工作。

@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 4/05/2019
 uid: test/loadtests
 ms.openlocfilehash: 1fd77a767fb53b9276081dd712e13108094a0382
-ms.sourcegitcommit: cb6015f737b6a93127016ab0f21b58e34b624ff3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77004288"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664686"
 ---
 # <a name="aspnet-core-loadstress-testing"></a>ASP.NET Core 負載/壓力測試
 
@@ -25,7 +25,7 @@ ms.locfileid: "77004288"
 
 Visual Studio 2019 是具有負載測試功能 Visual Studio 的最後一個版本。 對於未來需要負載測試工具的客戶，我們建議替代工具，例如 Apache JMeter、Akamai CloudTest 和 BlazeMeter。 如需詳細資訊，請參閱[Visual Studio 2019 版本](/visualstudio/releases/2019/release-notes-v16.0#test-tools)資訊。
 
-## <a name="visual-studio-tools"></a>Visual Studio Tools
+## <a name="visual-studio-tools"></a>Visual Studio 工具
 
 Visual Studio 可讓使用者建立、開發和調試 web 效能和負載測試。 有一個選項可用來在網頁瀏覽器中錄製動作，以建立測試。
 

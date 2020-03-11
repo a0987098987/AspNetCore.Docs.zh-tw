@@ -10,22 +10,22 @@ no-loc:
 - SignalR
 uid: signalr/publish-to-azure-web-app
 ms.openlocfilehash: d03a007ca883b3d0391b848e3e92c90469ee640a
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963925"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661354"
 ---
-# <a name="publish-an-aspnet-core-opno-locsignalr-app-to-azure-app-service"></a>將 ASP.NET Core SignalR 應用程式發佈至 Azure App Service
+# <a name="publish-an-aspnet-core-signalr-app-to-azure-app-service"></a>將 ASP.NET Core SignalR 應用程式發佈至 Azure App Service
 
 依[Brady Gaster](https://twitter.com/bradygaster)
 
 [Azure App Service](/azure/app-service/app-service-web-overview)是用來裝載 web 應用程式的[Microsoft 雲端](https://azure.microsoft.com/)運算平臺服務，包括 ASP.NET Core。
 
 > [!NOTE]
-> 本文是指從 Visual Studio 發佈 ASP.NET Core SignalR 應用程式。 如需詳細資訊，請參閱[適用于 Azure 的SignalR 服務](https://azure.microsoft.com/services/signalr-service)。
+> 本文是指從 Visual Studio 發佈 ASP.NET Core SignalR 應用程式。 如需詳細資訊，請參閱[SignalR service For Azure](https://azure.microsoft.com/services/signalr-service)。
 
-## <a name="publish-the-app"></a>發行應用程式
+## <a name="publish-the-app"></a>發佈應用程式
 
 本文說明如何使用 Visual Studio 中的工具來發行。 Visual Studio Code 使用者可以使用[Azure CLI](/cli/azure)命令將應用程式發佈到 Azure。 如需詳細資訊，請參閱[使用命令列工具將 ASP.NET Core 應用程式發佈到 Azure](/azure/app-service/app-service-web-get-started-dotnet)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "73963925"
 
    在 [**建立 App Service** ] 對話方塊中，輸入下表所述的資訊，然後選取 [**建立**]。
 
-   | 項目               | 描述 |
+   | Item               | 描述 |
    | ------------------ | ----------- |
    | **名稱**           | 應用程式的唯一名稱。 |
    | **訂用帳戶**   | 應用程式使用的 Azure 訂用帳戶。 |
@@ -46,7 +46,7 @@ ms.locfileid: "73963925"
 
 1. 在 [相依性 > **新增**] 下拉式清單中選取 [ **Azure SignalR 服務** **]** ：
 
-   ![[相依性] 區域顯示 Azure 的選取專案 [！OP.[新增] 下拉式清單中的 [無-LOC （SignalR）] 服務](publish-to-azure-web-app/_static/signalr-service-dependency.png)
+   [![相依性] 區域會在 [新增] 下拉式清單中顯示 Azure SignalR 服務的選取專案](publish-to-azure-web-app/_static/signalr-service-dependency.png)
 
 1. 在 [ **Azure SignalR 服務**] 對話方塊中，選取 [**建立新的 Azure SignalR 服務實例**]。
 

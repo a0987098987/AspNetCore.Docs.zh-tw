@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/13/2019
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 3ff8a52361b4911a5bb3163a8ea6ae90e504e4ef
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 6bfbad39115c7823b5677d3c52ca64cfb0683037
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333943"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664000"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的錨點標籤協助程式
 
@@ -21,7 +21,7 @@ ms.locfileid: "72333943"
 
 如需標籤協助程式的概觀，請參閱 <xref:mvc/views/tag-helpers/intro>。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 這整份文件的範例皆使用 *SpeakerController*：
 
@@ -133,7 +133,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 <a href="/Speaker/Evaluations">Speaker Evaluations</a>
 ```
 
-如果除了 `asp-route`，還指定了 `asp-controller` 或 `asp-action`，產生的路由可能不如預期。 為避免路由衝突，請勿將 `asp-route` 與 `asp-controller` 及 `asp-action` 屬性搭配使用。
+如果除了 `asp-controller`，還指定了 `asp-action` 或 `asp-route`，產生的路由可能不如預期。 為避免路由衝突，請勿將 `asp-route` 與 `asp-controller` 及 `asp-action` 屬性搭配使用。
 
 ### <a name="asp-all-route-data"></a>asp-all-route-data
 
@@ -218,7 +218,7 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
       * **控制器**
         * *HomeController.cs*
       * **檢視**
-        * **Home**
+        * **首頁**
           * *AboutBlog.cshtml*
           * *Index.cshtml*
         * *\_ViewStart.cshtml*
@@ -235,13 +235,13 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 ```
 
 > [!TIP]
-> 若要在 MVC 應用程式中支援區域，路由範本必須包含區域參考 (若其存在)。 該範本將以 *Startup.Configure* 中 `routes.MapRoute` 方法呼叫的第二個參數表示：
+> 若要在 MVC 應用程式中支援區域，路由範本必須包含區域參考 (若其存在)。 該範本將以 `routes.MapRoute`Startup.Configure*中* 方法呼叫的第二個參數表示：
 >
 > [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
 ### <a name="asp-protocol"></a>asp-protocol
 
-[asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) 屬性用於在您的 URL 中指定通訊協定 (例如 `https`)。 例如:
+[asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) 屬性用於在您的 URL 中指定通訊協定 (例如 `https`)。 例如：
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
@@ -255,7 +255,7 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 
 ### <a name="asp-host"></a>asp-host
 
-[asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) 屬性用於在您的 URL 中指定主機名稱。 例如:
+[asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) 屬性用於在您的 URL 中指定主機名稱。 例如：
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 
@@ -297,7 +297,7 @@ ASP.NET Core 2.1 或更新版本支援 Razor Pages 區域。
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Pages/Attendee.cshtml.cs?name=snippet_OnGetProfileHandler)]
 
-頁面模型的相關標記會連結到 `OnGetProfile` 頁面處理常式。 請注意，`asp-page-handler` 屬性值中會省略頁面處理常式方法名稱的 `On<Verb>` 前置詞。 如果這是非同步方法，則 `Async` 後置詞也會一併省略。
+頁面模型的相關標記會連結到 `OnGetProfile` 頁面處理常式。 請注意，`On<Verb>` 屬性值中會省略頁面處理常式方法名稱的 `asp-page-handler` 前置詞。 如果這是非同步方法，則 `Async` 後置詞也會一併省略。
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPageHandler)]
 

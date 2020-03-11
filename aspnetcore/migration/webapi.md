@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: migration/webapi
-ms.openlocfilehash: c68cf83f427f53b110075168c6d5e4d021808782
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 7f61b78c589fc9d01061b50554e5a639e372c3d8
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881137"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661844"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>從 ASP.NET Web API 遷移至 ASP.NET Core
 
@@ -19,9 +19,9 @@ ms.locfileid: "74881137"
 
 ASP.NET 4.x Web API 是一種 HTTP 服務，可觸及各種用戶端，包括瀏覽器和行動裝置。 ASP.NET Core 將 ASP.NET 4.x 的 MVC 和 Web API 應用程式模型統一成較簡單的程式設計模型，稱為 ASP.NET Core MVC。 本文示範從 ASP.NET 4.x Web API 遷移至 ASP.NET Core MVC 所需的步驟。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/migration/webapi/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/migration/webapi/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [prerequisites](../includes/net-core-prereqs-vs2019-2.2.md)]
 
@@ -61,7 +61,7 @@ ASP.NET 4.x Web API 是一種 HTTP 服務，可觸及各種用戶端，包括瀏
 
 ## <a name="migrate-configuration"></a>遷移設定
 
-ASP.NET Core 不會使用*App_Start*資料夾或*global.asax*檔案，而且*web.config*檔案會在發行時加入。 *Startup.cs*是*global.asax*的取代，位於專案根目錄中。 `Startup` 類別會處理所有的應用程式啟動工作。 如需詳細資訊，請參閱<xref:fundamentals/startup>。
+ASP.NET Core 不會使用*App_Start*資料夾或*global.asax*檔案，而且*web.config*檔案會在發行時加入。 *Startup.cs*是*global.asax*的取代，位於專案根目錄中。 `Startup` 類別會處理所有的應用程式啟動工作。 如需詳細資訊，請參閱 <xref:fundamentals/startup>。
 
 在 ASP.NET Core MVC 中，在 `Startup.Configure`中呼叫 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc*> 時，預設會包含屬性路由。 下列 `UseMvc` 呼叫會取代*ProductsApp*專案的*App_Start/webapiconfig.cs*檔案：
 
@@ -69,7 +69,7 @@ ASP.NET Core 不會使用*App_Start*資料夾或*global.asax*檔案，而且*web
 
 ## <a name="migrate-models-and-controllers"></a>遷移模型和控制器
 
-複製*ProductApp*專案的控制器和它所使用的模型。 請依照下列步驟：
+複製*ProductApp*專案的控制器和它所使用的模型。 請遵循下列步驟：
 
 1. 將*控制器/productscontroller.cs*從原始專案複製到新的專案。
 1. 將整個 [*模型*] 資料夾從原始專案複製到新的專案。

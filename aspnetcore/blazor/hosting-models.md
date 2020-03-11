@@ -5,17 +5,17 @@ description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 54be0e032a60c69880f428e52f9d778032385dc5
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: e6ce2be53c35268854e0e8d408b649a8c6ef497e
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447044"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658316"
 ---
 # <a name="aspnet-core-opno-locblazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -33,7 +33,7 @@ Blazor 是一種 web 架構，設計用來在瀏覽器中以[WebAssembly](https:
 
 Blazor 的主要裝載模型會在 WebAssembly 的瀏覽器中執行用戶端。 Blazor 應用程式、其相依性和 .NET 執行時間會下載至瀏覽器。 應用程式會直接在瀏覽器 UI 執行緒上執行。 UI 更新和事件處理會在同一個進程中進行。 應用程式的資產會以靜態檔案的形式部署至 web 伺服器或服務，以提供靜態內容給用戶端。
 
-![[!OP.無-LOC （Blazor）] WebAssembly： [！OP.無 LOC （Blazor）] 應用程式會在瀏覽器內的 UI 執行緒上執行。](hosting-models/_static/blazor-webassembly.png)
+![Blazor WebAssembly： Blazor 應用程式會在瀏覽器內的 UI 執行緒上執行。](hosting-models/_static/blazor-webassembly.png)
 
 若要使用用戶端裝載模型來建立 Blazor 應用程式，請使用 **Blazor WebAssembly 應用程式**範本（[dotnet new blazorwasm](/dotnet/core/tools/dotnet-new)）。
 
@@ -62,7 +62,7 @@ Blazor WebAssembly 裝載有缺點：
 
 在 Blazor 伺服器裝載模型中，應用程式會從 ASP.NET Core 應用程式內的伺服器上執行。 UI 更新、事件處理及 JavaScript 呼叫會透過[SignalR](xref:signalr/introduction)連接來處理。
 
-![瀏覽器會透過 [！，與伺服器上的應用程式互動（裝載于 ASP.NET Core 應用程式內）。OP.無-LOC （SignalR）] 連接。](hosting-models/_static/blazor-server.png)
+![瀏覽器會透過 SignalR 連接，與伺服器上的應用程式互動（裝載于 ASP.NET Core 應用程式內）。](hosting-models/_static/blazor-server.png)
 
 若要使用 Blazor 伺服器裝載模型來建立 Blazor 應用程式，請使用 ASP.NET Core **Blazor 伺服器應用程式**範本（[dotnet new blazorserver](/dotnet/core/tools/dotnet-new)）。 ASP.NET Core 應用程式會裝載 Blazor 伺服器應用程式，並建立用戶端連接的 SignalR 端點。
 
@@ -122,6 +122,8 @@ Blazor 伺服器應用程式建置於[ASP.NET Core SignalR](xref:signalr/introdu
 連接到 Blazor 伺服器應用程式的每個瀏覽器畫面（瀏覽器索引標籤或 iframe）都會使用 SignalR 連接。 相較于一般伺服器呈現的應用程式，這還是另一項重要的差異。 在伺服器呈現的應用程式中，在多個瀏覽器畫面中開啟相同的應用程式，通常不會轉譯成伺服器上的其他資源需求。 在 Blazor 伺服器應用程式中，每個瀏覽器畫面都需要個別的線路，且元件狀態的個別實例會由伺服器管理。
 
 Blazor 考慮關閉瀏覽器索引標籤，或流覽至外部 URL 的*正常*終止。 在正常終止的事件中，會立即釋放線路和相關聯的資源。 用戶端也可能會因為網路中斷而無法正常地中斷連線。 Blazor Server 會儲存已中斷連線的線路，以取得可設定的間隔，以允許用戶端重新連線。
+
+Blazor Server 可讓程式碼定義*電路處理常式*，以允許對使用者線路狀態的變更執行程式碼。 如需詳細資訊，請參閱 <xref:blazor/advanced-scenarios#blazor-server-circuit-handler>。
 
 ### <a name="ui-latency"></a>UI 延遲
 

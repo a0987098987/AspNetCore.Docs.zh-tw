@@ -1,17 +1,17 @@
 ---
 title: 將欄位新增至 ASP.NET Core 中的 Razor 頁面
 author: rick-anderson
-description: 示範如何使用 Entity Framework Core 將新欄位新增至 Razor 頁面
+description: 示範如何使用 Entity Framework Core 將新欄位新增至 Razor Pages
 ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: b31711eb6f797de2de1559a3303e14b32a88f1ff
-ms.sourcegitcommit: b3ebf96560b75b752d0e71161d788da800ad0999
+ms.openlocfilehash: d34b938dbd1b512ddb167cac0c035837889cd38f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72822381"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657812"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
@@ -50,7 +50,7 @@ ms.locfileid: "72822381"
 更新下列頁面：
 
 * 將 `Rating` 欄位新增至 Delete 和 Details 頁面。
-* 使用 [ 欄位更新 ](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)Create.cshtml`Rating`。
+* 使用 [ 欄位更新 ](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)Create.cshtml`Rating`。
 * 將 `Rating` 欄位新增至 Edit 頁面。
 
 在更新資料庫以包含新欄位之前，應用程式無法運作。 在不更新資料庫的情況下執行應用程式會擲回 `SqlException`：
@@ -73,11 +73,11 @@ ms.locfileid: "72822381"
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-請參閱[完整的 SeedData.cs 檔案](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs) (英文)。
+請參閱[完整的 SeedData.cs 檔案](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs) (英文)。
 
 建置方案。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 <a name="pmc"></a>
 
@@ -96,7 +96,7 @@ Update-Database
 * 比較 `Movie` 模型與 `Movie` 資料庫結構描述。
 * 建立程式碼，將資料庫結構描述移轉至新模型。
 
-"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
+"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，更加實用。
 
 `Update-Database` 命令會告訴架構將架構變更套用至資料庫，並保留現有的資料。
 
@@ -116,7 +116,7 @@ Update-Database
   Update-Database
   ```
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 ### <a name="drop-and-re-create-the-database"></a>卸除並重新建立資料庫
 
@@ -175,7 +175,7 @@ dotnet ef database update
 更新下列頁面：
 
 * 將 `Rating` 欄位新增至 Delete 和 Details 頁面。
-* 使用 [ 欄位更新 ](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml)Create.cshtml`Rating`。
+* 使用 [ 欄位更新 ](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml)Create.cshtml`Rating`。
 * 將 `Rating` 欄位新增至 Edit 頁面。
 
 在更新資料庫以包含新欄位之前，應用程式無法運作。 如果立即執行，應用程式會擲回 `SqlException`：
@@ -198,11 +198,11 @@ dotnet ef database update
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-請參閱[完整的 SeedData.cs 檔案](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs) (英文)。
+請參閱[完整的 SeedData.cs 檔案](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs) (英文)。
 
 建置方案。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 <a name="pmc"></a>
 
@@ -221,7 +221,7 @@ Update-Database
 * 比較 `Movie` 模型與 `Movie` 資料庫結構描述。
 * 建立程式碼，將資料庫結構描述移轉至新模型。
 
-"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
+"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，更加實用。
 
 `Update-Database` 命令會指示架構將結構描述變更套用至資料庫。
 
@@ -241,7 +241,7 @@ Update-Database
   Update-Database
   ```
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
 ### <a name="drop-and-re-create-the-database"></a>卸除並重新建立資料庫
 

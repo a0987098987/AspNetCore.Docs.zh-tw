@@ -8,17 +8,17 @@ ms.custom: mvc
 ms.date: 08/03/2019
 uid: fundamentals/localization-extensibility
 ms.openlocfilehash: dfa2efe78b2e1e118e6b3f09bfc41f3330e1d721
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72288935"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662096"
 ---
 # <a name="localization-extensibility"></a>當地語系化擴充性
 
 作者為 [Hisham Bin Ateya](https://github.com/hishamco)
 
-這篇文章：
+本文：
 
 * 列出當地語系化 API 的擴充點。
 * 提供如何擴充 ASP.NET Core 應用程式當地語系化的指示。
@@ -137,7 +137,7 @@ public class AppSettingsRequestCultureProvider : RequestCultureProvider
 
 ## <a name="localization-resources"></a>當地語系化資源
 
-ASP.NET Core 當地語系化會提供 <xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer>。 <xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer> 是使用 `resx` 來儲存當地語系化資源的 <xref:Microsoft.Extensions.Localization.IStringLocalizer> 實作。
+ASP.NET Core 當地語系化會提供 <xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer>。 <xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer> 是使用 <xref:Microsoft.Extensions.Localization.IStringLocalizer> 來儲存當地語系化資源的 `resx` 實作。
 
 您不一定要使用 `resx` 檔案。 藉由實作 `IStringLocalized`，即可使用任何資料來源。
 

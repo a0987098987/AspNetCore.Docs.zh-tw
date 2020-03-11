@@ -11,11 +11,11 @@ no-loc:
 - SignalR
 uid: blazor/routing
 ms.openlocfilehash: 32459f9f42220b01ce04e6444a9bb4a9592ee2da
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928276"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663804"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -67,7 +67,7 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 ```
 
 > [!IMPORTANT]
-> 為了讓 Url 正確解析，應用程式必須在其*wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host. Cshtml*檔案（Blazor 伺服器）中包含 `href` 屬性（`<base href="/">`）中指定的應用程式基底路徑的 `<base>` 標記。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/index#app-base-path>。
+> 為了讓 Url 正確解析，應用程式必須在其*wwwroot/index.html*檔案（Blazor WebAssembly）或*Pages/_Host. Cshtml*檔案（Blazor 伺服器）中包含 `href` 屬性（`<base href="/">`）中指定的應用程式基底路徑的 `<base>` 標記。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/index#app-base-path>。
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>在找不到內容時提供自訂內容
 
@@ -137,16 +137,16 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 
 下表所示的路由條件約束可供使用。 若為符合不因文化特性而異的路由條件約束，請參閱表格下方的警告以取得詳細資訊。
 
-| 條件約束 | 範例           | 範例相符項目                                                                  | 非變異值<br>culture (文化特性)<br>比對 |
+| 條件約束 | 範例           | 範例相符項目                                                                  | 非變異值<br>culture<br>比對 |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
-| `bool`     | `{active:bool}`   | `true`、 `FALSE`                                                                  | 否                               |
-| `datetime` | `{dob:datetime}`  | `2016-12-31`、 `2016-12-31 7:32pm`                                                | 是                              |
-| `decimal`  | `{price:decimal}` | `49.99`、 `-1,000.01`                                                             | 是                              |
-| `double`   | `{weight:double}` | `1.234`、 `-1,001.01e8`                                                           | 是                              |
-| `float`    | `{weight:float}`  | `1.234`、 `-1,001.01e8`                                                           | 是                              |
-| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`、 `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 否                               |
-| `int`      | `{id:int}`        | `123456789`、 `-123456789`                                                        | 是                              |
-| `long`     | `{ticks:long}`    | `123456789`、 `-123456789`                                                        | 是                              |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | 否                               |
+| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | 是                              |
+| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | 是                              |
+| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | 是                              |
+| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | 是                              |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 否                               |
+| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | 是                              |
+| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | 是                              |
 
 > [!WARNING]
 > 確認 URL 可以轉換成 CLR 類型的路由條件約束 (例如 `int` 或 `DateTime`) 一律使用不因國別而異的文化特性。 這些條件約束假設 URL 不可當地語系化。
@@ -167,7 +167,7 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 > [!NOTE]
 > Razor 元件（*razor*）中**不**支援*Catch-all*參數語法（`*`/`**`）。
 
-如需詳細資訊，請參閱<xref:fundamentals/routing>。
+如需詳細資訊，請參閱 <xref:fundamentals/routing>。
 
 ## <a name="navlink-component"></a>NavLink 元件
 
@@ -200,7 +200,7 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 
 使用 `Microsoft.AspNetCore.Components.NavigationManager` 來處理常式代碼中C#的 uri 和導覽。 `NavigationManager` 提供下表所示的事件和方法。
 
-| 成員 | 描述 |
+| member | 描述 |
 | ------ | ----------- |
 | `Uri` | 取得目前的絕對 URI。 |
 | `BaseUri` | 取得可在相對 URI 路徑前面加上的基底 URI （含尾端斜線），以產生絕對 URI。 一般來說，`BaseUri` 會對應至*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host* （Blazor Server）中檔之 `<base>` 元素上的 `href` 屬性。 |

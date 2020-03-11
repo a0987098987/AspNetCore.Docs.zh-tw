@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/28/2019
 uid: security/authentication/community
 ms.openlocfilehash: 68c32515b7d789db86f60cd011632da5c1244c1f
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034248"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665330"
 ---
 # <a name="community-oss-authentication-options-for-aspnet-core"></a>ASP.NET Core 的社區 OSS 驗證選項
 
@@ -20,7 +20,7 @@ ms.locfileid: "73034248"
 
 下列清單會依字母順序排序。
 
-| [屬性] | 描述 |
+| 名稱 | 描述 |
 | ---- | ----------- |
 | [OpenIdConnect. Server （ASOS）](https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server) | ASOS 是適用于 ASP.NET Core 和 OWIN/Katana 的低層級、通訊協定優先 OpenID Connect 伺服器架構。 |
 | [Gluu 伺服器](https://gluu.org/) | 適用于身分識別、存取管理（IAM）和單一登入（SSO）的企業就緒、開放原始碼軟體。 如需詳細資訊，請參閱[Gluu 產品檔](https://gluu.org/docs/)。 |

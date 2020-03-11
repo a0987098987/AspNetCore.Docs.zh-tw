@@ -5,12 +5,12 @@ description: 本教學課程會示範如何在 ASP.NET Core 應用程式中安�
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 053c98ba032c85b61776d5b5644c5575cd4f890c
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: bedb3e6a65839db915ca7bc821a267a14d34bf30
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828993"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667409"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>使用檔案監看員開發 ASP.NET Core 應用程式
 
@@ -20,9 +20,9 @@ ms.locfileid: "75828993"
 
 本教學課程使用現有的 Web API 與兩個端點：一個傳回加總，另一個傳回產品。 本教學課程已修正產品方法的 Bug。
 
-下載[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)。 它包含兩個專案：*WebApp* (ASP.NET Core Web API) 和 *WebAppTests* (Web API 的單元測試)。
+下載[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)。 它包含兩個專案：*WebApp* (ASP.NET Core Web API) 和 *WebAppTests* (Web API 的單元測試)。
 
-在命令殼層中，巡覽至 *WebApp* 資料夾。 執行下列命令：
+在命令殼層中，巡覽至 *WebApp* 資料夾。 執行以下命令：
 
 ```dotnetcli
 dotnet run
@@ -71,14 +71,14 @@ Application started. Press Ctrl+C to shut down.
 
 任何 [.NET Core CLI 命令](/dotnet/core/tools#cli-commands)都可以使用 `dotnet watch` 執行。 例如：
 
-| 命令 | 使用監看式的命令 |
+| Command | 使用監看式的命令 |
 | ---- | ----- |
 | dotnet run | dotnet watch run |
 | dotnet run -f netcoreapp2.0 | dotnet watch run -f netcoreapp2.0 |
 | dotnet run -f netcoreapp2.0 -- --arg1 | dotnet watch run -f netcoreapp2.0 -- --arg1 |
 | dotnet test | dotnet watch test |
 
-執行 *WebApp* 資料夾中的 `dotnet watch run`。 主控台輸出指出 `watch` 已啟動。
+執行 `dotnet watch run`WebApp*資料夾中的*。 主控台輸出指出 `watch` 已啟動。
 
 > [!NOTE]
 > 您可以使用 `dotnet watch --project <PROJECT>` 來指定要監看的專案。 例如，從範例應用程式的根目錄執行 `dotnet watch --project WebApp run` 同時也會執行並監看 *WebApp* 專案。
@@ -87,7 +87,7 @@ Application started. Press Ctrl+C to shut down.
 
 請確認 `dotnet watch` 正在執行。
 
-修正 *MathController.cs* 之 `Product` 方法的 Bug，使其傳回產品而非加總：
+修正 `Product`MathController.cs*之* 方法的 Bug，使其傳回產品而非加總：
 
 ```csharp
 public static int Product(int a, int b)
@@ -102,7 +102,7 @@ public static int Product(int a, int b)
 
 ## <a name="run-tests-using-dotnet-watch"></a>使用 `dotnet watch` 執行測試
 
-1. 將 *MathController.cs* 的 `Product` 方法變更回傳回加總。 儲存檔案。
+1. 將 `Product`MathController.cs*的* 方法變更回傳回加總。 儲存檔案。
 1. 在命令殼層中，瀏覽至 *WebAppTests* 資料夾。
 1. 執行 [dotnet restore](/dotnet/core/tools/dotnet-restore)。
 1. 執行 `dotnet watch test`。 其輸出指出測試失敗，且監看員正在等候檔案變更：

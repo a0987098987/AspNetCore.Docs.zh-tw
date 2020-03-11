@@ -1,5 +1,5 @@
 ---
-title: 教學課程：更新相關資料 - ASP.NET MVC 搭配 EF Core
+title: 教學課程：更新相關的資料-使用 EF Core ASP.NET MVC
 description: 在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
 author: rick-anderson
 ms.author: riande
@@ -7,14 +7,14 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 98f9f780c5814c0bd6e33052ee812b01a2bce306
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 83d662659fb4bc7a2867be563e4e36927d2adafe
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259357"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657140"
 ---
-# <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關資料 - ASP.NET MVC 搭配 EF Core
+# <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關的資料-使用 EF Core ASP.NET MVC
 
 在先前的教學課程中，您顯示了相關資料。在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
 
@@ -24,7 +24,7 @@ ms.locfileid: "72259357"
 
 ![Instructor [編輯] 頁面](update-related-data/_static/instructor-edit-courses.png)
 
-在本教學課程中，您已：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 自訂 Courses 頁面
@@ -33,7 +33,7 @@ ms.locfileid: "72259357"
 > * 更新 [刪除] 頁面
 > * 將辦公室位置和課程新增至 [建立] 頁面
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [讀取相關資料](read-related-data.md)
 
@@ -69,7 +69,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 ### <a name="add-asnotracking-to-details-and-delete-methods"></a>將 .AsNoTracking 新增至 Details 及 Delete 方法
 
-若要最佳化 Course [詳細資料] 和 [刪除] 頁面的效能，請在 `Details` 和 HttpGet `Delete` 方法中新增 `AsNoTracking` 呼叫。
+若要最佳化 Course [詳細資料] 和 [刪除] 頁面的效能，請在 `AsNoTracking` 和 HttpGet `Details` 方法中新增 `Delete` 呼叫。
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_Details)]
 
@@ -101,7 +101,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 ![Course [建立] 頁面](update-related-data/_static/course-create.png)
 
-按一下 [建立]。 Courses [索引] 頁面便會顯示，並且清單中已有新建立的課程。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
+按一下 **[建立]** 。 Courses [索引] 頁面便會顯示，並且清單中已有新建立的課程。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
 
 按一下 Courses [索引] 頁面中課程的 [編輯]。
 
@@ -129,7 +129,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EditPostOA)]
 
-程式碼會執行下列操作：
+此程式碼會執行下列動作：
 
 * 將方法名稱變更為 `EditPost`，因為簽章目前與 HttpGet `Edit` 方法相同 (`ActionName` 屬性指出 `/Edit/` URL 仍在使用中)。
 
@@ -187,11 +187,11 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
-在 *InstructorsController.cs* 中，使用下列程式碼取代 HttpGet `Edit` 方法。 所做的變更已醒目提示。
+在 *InstructorsController.cs* 中，使用下列程式碼取代 HttpGet `Edit` 方法。 所做的變更已醒目標示。
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=10,17,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36&name=snippet_EditGetCourses)]
 
-程式碼會為 `Courses` 導覽屬性新增積極式載入，然後使用 `AssignedCourseData` 檢視模型類別來呼叫新的 `PopulateAssignedCourseData` 方法以提供資訊給核取方塊陣列。
+程式碼會為 `Courses` 導覽屬性新增積極式載入，然後使用 `PopulateAssignedCourseData` 檢視模型類別來呼叫新的 `AssignedCourseData` 方法以提供資訊給核取方塊陣列。
 
 `PopulateAssignedCourseData` 方法中的程式碼會讀取所有的 Course 實體以使用檢視模型類別載入課程清單。 針對每個課程，程式碼會檢查課程是否存在於講師的 `Courses` 導覽屬性中。 為了在檢查課程是否已指派給講師的過程中更有效率，指派給講師的課程會放入一個 `HashSet` 集合中。 `Assigned` 屬性會針對已指派給講師的課程設定為 true。 檢視會使用這個屬性，來判斷哪一個核取方塊必須顯示為已選取。 最後，清單會傳遞至位於 `ViewData` 的檢視中。
 
@@ -252,7 +252,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 * 為 `CourseAssignments` 導覽屬性進行積極式載入。 您必須包含這個，否則 EF 將無法得知相關 `CourseAssignment` 而無法刪除他們。 若要避免在此讀取他們，您可以在資料庫中設定串聯刪除。
 
-* 若要刪除的講師已指派為任何部門的系統管理員，請先從這些部門中移除講師的指派。
+* 若要刪除的講師已指派為任何部門的系統管理員，請先從部門中移除講師的指派。
 
 ## <a name="add-office-location-and-courses-to-create-page"></a>將辦公室位置和課程新增至 [建立] 頁面
 
@@ -301,11 +301,11 @@ public ICollection<CourseAssignment> CourseAssignments
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[下載或檢視已完成的應用程式。](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[下載或檢視已完成的應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已：
+在本教學課程中，您：
 
 > [!div class="checklist"]
 > * 自訂 Courses 頁面

@@ -10,11 +10,11 @@ no-loc:
 - SignalR
 uid: signalr/scale
 ms.openlocfilehash: 260e2f0c16288fec2e0a694d070f357529782d8d
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447330"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668151"
 ---
 # <a name="aspnet-core-signalr-hosting-and-scaling"></a>ASP.NET Core SignalR 裝載和調整
 
@@ -42,7 +42,7 @@ SignalR 要求特定連接的所有 HTTP 要求都必須由相同的伺服器進
 
 SignalR 連接相關資源的大量使用會影響相同伺服器上裝載的其他 web 應用程式。 當 SignalR 開啟並保存最後一個可用的 TCP 連線時，相同伺服器上的其他 web 應用程式也不會有其他可用的連接。
 
-如果伺服器用盡連線，您會看到隨機的通訊端錯誤和連線重設錯誤。 例如，
+如果伺服器用盡連線，您會看到隨機的通訊端錯誤和連線重設錯誤。 例如：
 
 ```
 An attempt was made to access a socket in a way forbidden by its access permissions...
@@ -52,7 +52,7 @@ An attempt was made to access a socket in a way forbidden by its access permissi
 
 若要讓 SignalR 資源使用量不會造成 SignalR 應用程式中的錯誤，請相應放大以限制伺服器必須處理的連線數目。
 
-## <a name="scale-out"></a>擴增
+## <a name="scale-out"></a>相應放大
 
 使用 SignalR 的應用程式必須追蹤其所有連線，這會造成伺服器陣列的問題。 新增伺服器，並取得其他伺服器不知道的新連接。 例如，下圖中的每一部伺服器上的 SignalR，都不知道其他伺服器上的連接。 當其中一部伺服器上的 SignalR 想要將訊息傳送至所有用戶端時，訊息只會移至連線到該伺服器的用戶端。
 

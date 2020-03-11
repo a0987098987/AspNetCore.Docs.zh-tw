@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 12/06/2018
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
 ms.openlocfilehash: 3b344505739bb4292ed1683c73ff314b6e4e01e9
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890093"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660850"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Visual Studio 與 Git 持續部署至 Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "64890093"
 > [!NOTE]
 > 若要完成本教學課程，您需要 Microsoft Azure 帳戶。 若要取得帳戶，請[啟動 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F)或[註冊免費試用](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程假設您已安裝下列軟體：
 
@@ -42,7 +42,7 @@ ms.locfileid: "64890093"
 
 1. 選取 [ASP.NET Core Web 應用程式] 專案範本。 它會出現在 [已安裝] > [範本] > [Visual C#] > [.NET Core] 下。 將專案命名為 `SampleWebAppDemo`。 選取 [建立新的 Git 存放庫] 選項，然後按一下 [確定]。
 
-   ![[新增專案] 對話](azure-continuous-deployment/_static/01-new-project.png)
+   ![[新增專案] 對話方塊](azure-continuous-deployment/_static/01-new-project.png)
 
 1. 在 [新增 ASP.NET Core 專案] 對話方塊中，選取 ASP.NET Core 的 [空白] 範本，然後按一下 [確定]。
 
@@ -71,7 +71,7 @@ ms.locfileid: "64890093"
 
 1. 選取 [Web + 行動] > [Web 應用程式]。
 
-   ![Microsoft Azure 入口網站：[新增] 按鈕：[Marketplace] 下的 [Web + 行動]：[精選應用程式] 下的 [Web 應用程式] 按鈕](azure-continuous-deployment/_static/05-azure-newwebapp.png)
+   ![Microsoft Azure 入口網站：新按鈕：Marketplace 下方的 [Web + 行動]：[精選 App] 下方的 [Web 應用程式] 按鈕](azure-continuous-deployment/_static/05-azure-newwebapp.png)
 
 1. 在 [Web 應用程式] 刀鋒視窗中，為 [App Service 名稱] 輸入唯一值。
 
@@ -86,7 +86,7 @@ ms.locfileid: "64890093"
 
    ![Azure 入口網站：範例 Web 應用程式示範 01 [基本資訊] 刀鋒視窗](azure-continuous-deployment/_static/07-azure-webappblade.png)
 
-## <a name="enable-git-publishing-for-the-new-web-app"></a>啟用新 Web 應用程式的 Git 發行功能
+## <a name="enable-git-publishing-for-the-new-web-app"></a>啟用新 Web 應用程式的 Git 發佈
 
 Git 是一種分散式版本控制系統，可用來部署 Azure App Service Web 應用程式。 Web 應用程式程式碼會儲存在本機 Git 存放庫中，而系統會透過將該程式碼推送至遠端存放庫來將它部署至 Azure。
 
@@ -110,11 +110,11 @@ Git 是一種分散式版本控制系統，可用來部署 Azure App Service Web
 
 1. 在 [Web 應用程式] 刀鋒視窗中，選取 [設定] > [屬性]。 [GIT URL] 下方會顯示作為部署目的地遠端 Git 存放庫的 URL。
 
-1. 複製 **GIT URL** 值，以便於教學課程稍後使用。
+1. 複製 [GIT URL] 值以供教學課程稍後使用。
 
    ![Azure 入口網站：應用程式的 [屬性] 刀鋒視窗](azure-continuous-deployment/_static/09-azure-giturl.png)
 
-## <a name="publish-the-web-app-to-azure-app-service"></a>將 Web 應用程式發行至 Azure App Service
+## <a name="publish-the-web-app-to-azure-app-service"></a>將 Web 應用程式發佈至 Azure App Service
 
 在本節中，使用 Visual Studio 建立本機 Git 存放庫，並將 Web 應用程式從該存放庫推送到 Azure 以進行部署。 其中包括下列步驟：
 
@@ -122,7 +122,7 @@ Git 是一種分散式版本控制系統，可用來部署 Azure App Service Web
 * 認可專案的變更。
 * 將專案變更從本機存放庫推送到 Azure 上的遠端存放庫。
 
-1. 在方案總管中，以滑鼠右鍵按一下 [方案 'SampleWebAppDemo']，然後選取 [認可]。 [Team Explorer] 隨即顯示。
+1. 在方案總管中，以滑鼠右鍵按一下 [方案 'SampleWebAppDemo']，然後選取 [認可]。 **Team Explorer** 隨即顯示。
 
    ![Team Explorer 的 [連線] 索引標籤](azure-continuous-deployment/_static/10-team-explorer.png)
 
@@ -141,7 +141,7 @@ Git 是一種分散式版本控制系統，可用來部署 Azure App Service Web
    >
    > `git remote add Azure-SampleApp https://me@sampleapp.scm.azurewebsites.net:443/SampleApp.git`
 
-1. 選取 [首頁] (首頁圖示) > [設定] > [全域設定]。 確認名稱和電子郵件地址已設定完畢。 必要時，請選取 [更新]。
+1. 選取 [首頁] (首頁圖示) > [設定] > [全域設定]。 確認名稱和電子郵件地址皆已設定。 必要時，請選取 [更新]。
 
 1. 選取 [首頁] > [變更]，即可返回 [變更] 檢視。
 
@@ -193,7 +193,7 @@ Git 是一種分散式版本控制系統，可用來部署 Azure App Service Web
 這可由下列兩種方法來完成：
 
 * 在 Azure 入口網站中，找出該 Web 應用程式的 Web 應用程式刀鋒視窗。 選取 [瀏覽]以在預設瀏覽器中檢視該應用程式。
-* 開啟瀏覽器，並輸入 Web 應用程式的 URL。 範例：`http://SampleWebAppDemo.azurewebsites.net`
+* 開啟瀏覽器，並輸入 Web 應用程式的 URL。 範例： `http://SampleWebAppDemo.azurewebsites.net`
 
 ## <a name="update-the-web-app-and-republish"></a>更新 Web 應用程式，並重新發行
 
@@ -209,7 +209,7 @@ Git 是一種分散式版本控制系統，可用來部署 Azure App Service Web
 
 1. 儲存對 *Startup.cs* 所做的變更。
 
-1. 在方案總管中，以滑鼠右鍵按一下 [方案 'SampleWebAppDemo']，然後選取 [認可]。 [Team Explorer] 隨即顯示。
+1. 在方案總管中，以滑鼠右鍵按一下 [方案 'SampleWebAppDemo']，然後選取 [認可]。 **Team Explorer** 隨即顯示。
 
 1. 輸入認可訊息，例如 `Update #2`。
 
@@ -224,7 +224,7 @@ Git 是一種分散式版本控制系統，可用來部署 Azure App Service Web
 
 ## <a name="view-the-updated-web-app-in-azure"></a>在 Azure 中檢視更新的 Web 應用程式
 
-從 Azure 入口網站的 Web 應用程式刀鋒視窗選取 [瀏覽]，或是開啟瀏覽器並輸入 Web 應用程式的 URL，來檢視更新之後的 Web 應用程式。 範例：`http://SampleWebAppDemo.azurewebsites.net`
+從 Azure 入口網站的 Web 應用程式刀鋒視窗選取 [瀏覽]，或是開啟瀏覽器並輸入 Web 應用程式的 URL，來檢視更新之後的 Web 應用程式。 範例： `http://SampleWebAppDemo.azurewebsites.net`
 
 ## <a name="additional-resources"></a>其他資源
 

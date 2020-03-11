@@ -11,19 +11,19 @@ no-loc:
 - SignalR
 uid: blazor/debug
 ms.openlocfilehash: 1b0035af48b82807a6ae14835a41a1ecbef06bb6
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159985"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661704"
 ---
-# <a name="debug-aspnet-core-opno-locblazor"></a>Debug ASP.NET Core Blazor
+# <a name="debug-aspnet-core-blazor"></a>Debug ASP.NET Core Blazor
 
 [Daniel Roth](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-在以 Chromium 為基礎的瀏覽器中使用瀏覽器開發工具（Chrome/Edge）進行偵錯工具 Blazor WebAssembly 時，會有*早期*支援。 工作進行中：
+在以 Chromium 為基礎的瀏覽器（Chrome/Edge）中使用瀏覽器開發工具來進行偵錯工具的 Blazor WebAssembly 時，會有*早期*支援。 工作進行中：
 
 * 在 Visual Studio 中完全啟用調試。
 * 在 Visual Studio Code 中啟用調試。
@@ -46,7 +46,7 @@ ms.locfileid: "76159985"
 
 開發進一步的偵錯工具，是工程小組的持續焦點。
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>Prerequisites
 
 調試需要下列其中一個瀏覽器：
 
@@ -55,15 +55,15 @@ ms.locfileid: "76159985"
 
 ## <a name="procedure"></a>程序
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 > [!WARNING]
 > Visual Studio 中的偵錯工具支援是在開發的初期階段。 目前不支援**F5**調試。
 
-1. 在 `Debug` 設定中執行 Blazor WebAssembly 應用程式而不進行任何偵測（**Ctrl**+**f5** ，而不是**f5**）。
+1. 在 `Debug` 設定中執行 Blazor WebAssembly 應用程式而不進行偵測（**Ctrl**+**f5** ，而不是**f5**）。
 1. 開啟應用程式的 [Debug] 屬性（[ **debug** ] 功能表中的最後一個專案），然後複製 HTTP**應用程式 URL**。 使用以 Chromium 為基礎的瀏覽器（Edge Beta 或 Chrome），流覽至應用程式的 HTTP 位址（而非 HTTPS 位址）。
 1. 將鍵盤焦點放在應用程式的瀏覽器視窗中，而不是 [開發人員工具] 面板。 最好讓開發人員工具面板在此程式中關閉。 啟動偵錯工具之後，您可以重新開啟 [開發人員工具] 面板。
-1. 選取下列 Blazor特定的鍵盤快速鍵：
+1. 選取下列 Blazor 特定的鍵盤快速鍵：
 
    * Windows 上的 `Shift+Alt+D`
    * macOS 上的 `Shift+Cmd+D`
@@ -72,22 +72,22 @@ ms.locfileid: "76159985"
    
    啟用遠端偵錯之後：
    
-   1\. 新的瀏覽器視窗隨即開啟。 關閉先前的視窗。
+   1\. 一個新的瀏覽器視窗隨即開啟。 關閉先前的視窗。
 
    2\. 將鍵盤焦點放在應用程式的瀏覽器視窗中。
 
-   3\. 在新的瀏覽器視窗中選取 Blazor特定的鍵盤快速鍵：在 Windows 上 `Shift+Alt+D`，或在 macOS 上 `Shift+Cmd+D`。
+   3\. 在新的瀏覽器視窗中選取 Blazor 特定的鍵盤快速鍵： Windows 上的 `Shift+Alt+D` 或 macOS 上的 `Shift+Cmd+D`。
 
    4\. [ **DevTools** ] 索引標籤會在瀏覽器中開啟。 **在瀏覽器視窗中重新選擇應用程式的索引標籤。**
 
    若要將應用程式附加至 Visual Studio，請參閱[Visual Studio 中的附加至進程](#attach-to-process-in-visual-studio)一節。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
 1. 藉由將 `--configuration Debug` 選項傳遞至[dotnet 執行](/dotnet/core/tools/dotnet-run)命令，在 `Debug` 設定中執行 Blazor WebAssembly 應用程式： `dotnet run --configuration Debug`。
 1. 在 shell 視窗中顯示的 HTTP URL 流覽至應用程式。
 1. 將鍵盤焦點放在應用程式，而不是 [開發人員工具] 面板。 最好讓開發人員工具面板在此程式中關閉。 啟動偵錯工具之後，您可以重新開啟 [開發人員工具] 面板。
-1. 選取下列 Blazor特定的鍵盤快速鍵：
+1. 選取下列 Blazor 特定的鍵盤快速鍵：
 
    * Windows 上的 `Shift+Alt+D`
    * macOS 上的 `Shift+Cmd+D`
@@ -96,11 +96,11 @@ ms.locfileid: "76159985"
    
    啟用遠端偵錯之後：
    
-   1\. 新的瀏覽器視窗隨即開啟。 關閉先前的視窗。
+   1\. 一個新的瀏覽器視窗隨即開啟。 關閉先前的視窗。
 
    2\. 將鍵盤焦點放在應用程式的瀏覽器視窗中，而不是 [開發人員工具] 面板。
 
-   3\. 在新的瀏覽器視窗中選取 Blazor特定的鍵盤快速鍵：在 Windows 上 `Shift+Alt+D`，或在 macOS 上 `Shift+Cmd+D`。
+   3\. 在新的瀏覽器視窗中選取 Blazor 特定的鍵盤快速鍵： Windows 上的 `Shift+Alt+D` 或 macOS 上的 `Shift+Cmd+D`。
 
 ---
 

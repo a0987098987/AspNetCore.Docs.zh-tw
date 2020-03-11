@@ -7,15 +7,15 @@ ms.custom: mvc
 ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vs
 ms.openlocfilehash: 7fc3644df3dcb957f2537538aaa9506c6b38a480
-ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75693969"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662201"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 ::: moniker range=">= aspnetcore-3.0"
 
 [!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "75693969"
 
 在 Visual Studio 起始畫面中，選取 [檔案] > [新增] > [專案...]
 
-![檔案功能表](publish-to-azure-webapp-using-vs/_static/file_new_project.png)
+![[檔案] 功能表](publish-to-azure-webapp-using-vs/_static/file_new_project.png)
 
 完成 [新增專案] 對話方塊：
 
@@ -43,14 +43,14 @@ ms.locfileid: "75693969"
 * 在中央窗格中，選取 [ASP.NET Core Web 應用程式]。
 * 選取 [確定]。
 
-![新增專案對話方塊](publish-to-azure-webapp-using-vs/_static/new_prj.png)
+![[新增專案] 對話方塊](publish-to-azure-webapp-using-vs/_static/new_prj.png)
 
 在 [新增 ASP.NET Core Web 應用程式] 對話方塊中：
 
-* 選取 [Web 應用程式]。
+* 選取 **Web 應用程式**。
 * 選取 [變更驗證]。
 
-![新增專案對話方塊](publish-to-azure-webapp-using-vs/_static/new_prj_2.png)
+![[新增專案] 對話方塊](publish-to-azure-webapp-using-vs/_static/new_prj_2.png)
 
 [變更驗證] 對話方塊會隨即出現。 
 
@@ -89,26 +89,26 @@ Visual Studio 會建立解決方案。
 
 在 [發行] 對話方塊中：
 
-* 選取 [Microsoft Azure App Service]。
+* 選取 [ **Microsoft Azure App Service**]。
 * 選取齒輪圖示，然後選取 [建立設定檔]。
 * 選取 [建立設定檔]。
 
-![[發行] 對話方塊](publish-to-azure-webapp-using-vs/_static/maas1.png)
+![發佈對話方塊](publish-to-azure-webapp-using-vs/_static/maas1.png)
 
-### <a name="create-azure-resources"></a>建立 Windows Azure 資源
+### <a name="create-azure-resources"></a>建立 Azure 資源
 
 出現 [建立應用程式服務] 對話方塊：
 
 * 輸入訂用帳戶。
 * 會填入 [應用程式名稱]、[資源群組] 和 [App Service 方案] 輸入欄位。 您可以保留這些名稱，或變更它們。
 
-![[應用程式服務] 對話方塊](publish-to-azure-webapp-using-vs/_static/newrg1.png)
+![App Service 對話方塊](publish-to-azure-webapp-using-vs/_static/newrg1.png)
 
 * 選取 [服務] 索引標籤來建立新的資料庫。
 
 * 選取綠色的 **+** 圖示來建立新的 SQL 資料庫
 
-![新增 SQL 資料庫](publish-to-azure-webapp-using-vs/_static/sql.png)
+![New SQL Database](publish-to-azure-webapp-using-vs/_static/sql.png)
 
 * 在 [設定 SQL 資料庫] 對話方塊上選取 [新增...] 來建立新的資料庫。
 
@@ -146,9 +146,9 @@ Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟
 
 ![[發行] 對話方塊：設定面板](publish-to-azure-webapp-using-vs/_static/pubs.png)
 
-按一下 [發行]。 Visual Studio 會將您的應用程式發佈至 Azure。 部署完成時，會在瀏覽器中開啟應用程式。
+按一下 [發佈]。 Visual Studio 會將您的應用程式發佈至 Azure。 部署完成時，會在瀏覽器中開啟應用程式。
 
-### <a name="test-your-app-in-azure"></a>在 Azure 中測試應用程式
+### <a name="test-your-app-in-azure"></a>在 Azure 測試您的應用程式
 
 * 測試 [關於] 和 [連絡人] 連結
 

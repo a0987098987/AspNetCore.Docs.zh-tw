@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 12/05/2019
 uid: performance/memory
 ms.openlocfilehash: 0ae367e954e21e2f696a3b292fa64f1d2dba98ec
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829019"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667024"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>ASP.NET Core 中的記憶體管理和垃圾收集（GC）
 
 By [Sébastien Ros](https://github.com/sebastienros)和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-記憶體管理是很複雜的，即使是在 .NET 之類的 managed 架構中也一樣。 分析和瞭解記憶體問題可能是一項挑戰。 這篇文章：
+記憶體管理是很複雜的，即使是在 .NET 之類的 managed 架構中也一樣。 分析和瞭解記憶體問題可能是一項挑戰。 本文：
 
 * 有許多*記憶體*流失和*GC 無法運作*的問題。 大部分的問題都是因為不了解記憶體耗用量在 .NET Core 中的運作方式，或不了解其測量方式所造成。
 * 示範有問題的記憶體使用，並建議替代的方法。
@@ -139,7 +139,7 @@ GC 模式可以在專案檔或已發佈應用程式的 *.runtimeconfig.json*中�
 
 變更專案檔中的 `ServerGarbageCollection` 需要重建應用程式。
 
-**注意：** 在具有單一核心的機器上**無法**使用伺服器垃圾收集。 如需詳細資訊，請參閱<xref:System.Runtime.GCSettings.IsServerGC>。
+**注意：** 在具有單一核心的機器上**無法**使用伺服器垃圾收集。 如需詳細資訊，請參閱 <xref:System.Runtime.GCSettings.IsServerGC>。
 
 下圖顯示使用工作站 GC 之已測的 RPS 下的記憶體設定檔。
 
@@ -275,7 +275,7 @@ public int GetLOH1(int size)
 * [ResponseCaching/資料流程/StreamUtilities .cs](https://github.com/dotnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
 * [ResponseCaching/MemoryResponseCache .cs](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
-如需詳細資訊，請參閱＜＞。
+如需詳細資訊，請參閱
 
 * [發現大型物件堆積](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
 * [大型物件堆積](/dotnet/standard/garbage-collection/large-object-heap)

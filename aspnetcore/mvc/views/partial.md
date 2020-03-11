@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/12/2019
 uid: mvc/views/partial
-ms.openlocfilehash: 50c4f41d5d3099184aa3992ed7e176b74c488d2a
-ms.sourcegitcommit: 805f625d16d74e77f02f5f37326e5aceafcb78e3
+ms.openlocfilehash: 04b6d6e620f34ac7154728b1b3048195e87c5860
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985563"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663048"
 ---
 # <a name="partial-views-in-aspnet-core"></a>ASP.NET Core 中的部分檢視
 
-作者：[Steve Smith](https://ardalis.com/)、[Luke Latham](https://github.com/guardrex)、[Maher JENDOUBI](https://twitter.com/maherjend)、[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Scott Sauber](https://twitter.com/scottsauber)
+作者：[Steve Smith](https://ardalis.com/)、[Maher JENDOUBI](https://twitter.com/maherjend)、[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Scott Sauber](https://twitter.com/scottsauber)
 
 部分檢視是 [Razor](xref:mvc/views/razor) 標記檔案 ( *.cshtml*)，可在另一個標記檔案的轉譯輸出*內*轉譯 HTML 輸出。
 
@@ -25,7 +25,7 @@ ms.locfileid: "70985563"
 
 ::: moniker-end
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/partial/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/partial/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-partial-views"></a>使用部分檢視的時機
 
@@ -163,7 +163,7 @@ public IActionResult OnGetPartial() =>
 
 ### <a name="asynchronous-html-helper"></a>非同步 HTML 協助程式
 
-使用 HTML 協助程式時，最佳做法是使用 <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.PartialAsync*>。 `PartialAsync` 會傳回包裝在 <xref:System.Threading.Tasks.Task%601> 的 <xref:Microsoft.AspNetCore.Html.IHtmlContent> 類型。 方法的參考方式，是在等候的呼叫前面加上 `@` 字元：
+使用 HTML 協助程式時，最佳做法是使用 <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.PartialAsync*>。 `PartialAsync` 會傳回包裝在 <xref:Microsoft.AspNetCore.Html.IHtmlContent> 的 <xref:System.Threading.Tasks.Task%601> 類型。 方法的參考方式，是在等候的呼叫前面加上 `@` 字元：
 
 ```cshtml
 @await Html.PartialAsync("_PartialName")
@@ -266,11 +266,11 @@ public IActionResult OnGetPartial() =>
 * 可鏈結部分檢視&mdash;如果呼叫未形成循環參考，則部分檢視可以呼叫另一個部分檢視。 相對路徑一律相對於目前的檔案，而不是相對於檔案的根目錄或父檔案。
 
 > [!NOTE]
-> 父標記檔案不會顯示在部分視圖中定義的 [Razor](xref:mvc/views/razor) `section`。 `section` 只會顯示在具有其定義的部分檢視。
+> 在部分視圖中定義的[Razor](xref:mvc/views/razor) `section` 在父標記檔案中是不可見的。 `section` 只會顯示在具有其定義的部分檢視。
 
 ## <a name="access-data-from-partial-views"></a>從部分檢視存取資料
 
-將部分檢視具現化時，會收到父檢視 `ViewData` 字典的*複本*。 父檢視不會保存部分檢視內的資料更新。 傳回部分檢視時，部分檢視內的 `ViewData` 變更會遺失。
+將部分檢視具現化時，會收到父檢視  *字典的*複本`ViewData`。 父檢視不會保存部分檢視內的資料更新。 傳回部分檢視時，部分檢視內的 `ViewData` 變更會遺失。
 
 下列範例示範如何將 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 的執行個體傳遞給部分檢視：
 
@@ -308,7 +308,7 @@ public IActionResult OnGetPartial() =>
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-20)]
 
-*Views/Shared/_AuthorPartial*是*Read. cshtml*標記檔案所參考的第一個部分視圖：
+*Views/Shared/_AuthorPartial。 cshtml*是*Read. cshtml*標記檔案所參考的第一個部分視圖：
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Shared/_AuthorPartial.cshtml)]
 

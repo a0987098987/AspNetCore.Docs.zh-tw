@@ -10,11 +10,11 @@ no-loc:
 - SignalR
 uid: aspnetcore-3.1
 ms.openlocfilehash: f375022ad3ebdea2990f626320ef295926f88c22
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447434"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662705"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>3\.1 ASP.NET Core 的新功能
 

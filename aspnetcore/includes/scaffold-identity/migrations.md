@@ -1,6 +1,6 @@
 產生的身分識別資料庫程式碼需要[Entity Framework Core 遷移](/ef/core/managing-schemas/migrations/)。 建立遷移並更新資料庫。 例如，執行下列命令：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 在 [Visual Studio**套件管理員主控台**] 中：
 
@@ -10,7 +10,7 @@ Add-Migration CreateIdentitySchema
 Update-Database
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet ef migrations add CreateIdentitySchema

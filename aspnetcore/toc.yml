@@ -315,8 +315,10 @@
           uid: blazor/dependency-injection
         - name: 路由
           uid: blazor/routing
-        - name: JavaScript Interop
-          uid: blazor/javascript-interop
+        - name: 從 .NET 呼叫 JavaScript
+          uid: blazor/call-javascript-from-dotnet
+        - name: 從 JavaScript 呼叫 .NET
+          uid: blazor/call-dotnet-from-javascript
         - name: 裝載模型設定
           uid: blazor/hosting-model-configuration
         - name: 元件程式庫
@@ -325,8 +327,30 @@
           items:
             - name: 總覽
               uid: security/blazor/index
+            - name: Blazor WebAssembly
+              items:
+                - name: 總覽
+                  uid: security/blazor/webassembly/index
+                - name: 獨立的驗證程式庫
+                  uid: security/blazor/webassembly/standalone-with-authentication-library
+                - name: 獨立的 Microsoft 帳戶
+                  uid: security/blazor/webassembly/standalone-with-microsoft-accounts
+                - name: 獨立的 AAD
+                  uid: security/blazor/webassembly/standalone-with-azure-active-directory
+                - name: 獨立的 AAD B2C
+                  uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
+                - name: 使用 Identity Server 託管
+                  uid: security/blazor/webassembly/hosted-with-identity-server
+                - name: 使用 AAD 託管
+                  uid: security/blazor/webassembly/hosted-with-azure-active-directory
+                - name: 使用 AAD B2C 託管
+                  uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
+                - name: 其他案例
+                  uid: security/blazor/webassembly/additional-scenarios
             - name: Blazor 伺服器
               uid: security/blazor/server
+            - name: 內容安全性原則
+              uid: security/blazor/content-security-policy
         - name: 狀態管理
           uid: blazor/state-management
         - name: 處理錯誤
@@ -335,6 +359,8 @@
           uid: blazor/debug
         - name: 呼叫 Web API
           uid: blazor/call-web-api
+        - name: 漸進式 Web 應用程式
+          uid: blazor/progressive-web-app
         - name: 裝載和部署
           items:
             - name: 總覽
@@ -373,7 +399,7 @@
           uid: client-side/bundling-and-minification
         - name: 瀏覽器連結
           uid: client-side/using-browserlink
-    - name: 工作階段和應用程式狀態
+    - name: 工作階段與狀態管理
       uid: fundamentals/app-state
     - name: 配置
       uid: mvc/views/layout
@@ -1066,6 +1092,14 @@
       uid: security/cookie-sharing
     - name: SameSite Cookie
       uid: security/samesite
+    - name: SameSite 範例
+      items:
+        - name: Razor Pages 2.1 SameSite Cookie 範例
+          uid: security/samesite/rp21
+        - name: Razor Pages 3.1 SameSite Cookie 範例
+          uid: security/samesite/rp31
+        - name: MVC SameSite Cookie 範例
+          uid: security/samesite/mvc21
     - name: IP 安全清單
       uid: security/ip-safelist
     - name: 應用程式安全性 - OWASP
@@ -1074,8 +1108,30 @@
       items:
         - name: 總覽
           uid: security/blazor/index
+        - name: Blazor WebAssembly
+          items:
+            - name: 總覽
+              uid: security/blazor/webassembly/index
+            - name: 獨立的驗證程式庫
+              uid: security/blazor/webassembly/standalone-with-authentication-library
+            - name: 獨立的 Microsoft 帳戶
+              uid: security/blazor/webassembly/standalone-with-microsoft-accounts
+            - name: 獨立的 AAD
+              uid: security/blazor/webassembly/standalone-with-azure-active-directory
+            - name: 獨立的 AAD B2C
+              uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
+            - name: 使用 Identity Server 託管
+              uid: security/blazor/webassembly/hosted-with-identity-server
+            - name: 使用 AAD 託管
+              uid: security/blazor/webassembly/hosted-with-azure-active-directory
+            - name: 使用 AAD B2C 託管
+              uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
+            - name: 其他案例
+              uid: security/blazor/webassembly/additional-scenarios
         - name: Blazor 伺服器
           uid: security/blazor/server
+        - name: 內容安全性原則
+          uid: security/blazor/content-security-policy
 - name: 效能
   items:
     - name: 總覽
@@ -1203,4 +1259,4 @@
 - name: 應用程式開發介面參考
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: 參與
-  href: 'https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md'
+  href: 'https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md'

@@ -5,17 +5,17 @@ description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 03/03/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: a051d51e734fec4315da73d3c4df57706df7f363
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: 866bb348180c872d8ab20787283cfb7217183a8d
+ms.sourcegitcommit: 3ca4a2235a8129def9e480d0a6ad54cc856920ec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77465819"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79025419"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>裝載和部署 Blazor 伺服器
 
@@ -87,7 +87,10 @@ Blazor 伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊
 
 #### <a name="iis"></a>IIS
 
-使用 IIS 時，會使用應用程式要求路由來啟用「粘滯會話」。 如需詳細資訊，請參閱[使用應用程式要求路由的 HTTP 負載平衡](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
+使用 IIS 時，請啟用：
+
+* [在 IIS 上的 websocket](xref:fundamentals/websockets#enabling-websockets-on-iis)。
+* [具有應用程式要求路由的粘滯話](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
 
 #### <a name="kubernetes"></a>Kubernetes
 
@@ -107,18 +110,44 @@ metadata:
 
 #### <a name="linux-with-nginx"></a>使用 Nginx 的 Linux
 
-若要讓 SignalR Websocket 正常運作，請將 proxy 的 `Upgrade` 和 `Connection` 標頭設定為下列內容：
+若要讓 SignalR Websocket 正常運作，請確認 proxy 的 `Upgrade` 和 `Connection` 標頭已設定為下列值，而且 `$connection_upgrade` 會對應至其中一個：
+
+* 升級標頭值預設為。
+* 當升級標頭遺失或空白時，`close`。
 
 ```
-proxy_set_header Upgrade $http_upgrade;
-proxy_set_header Connection $connection_upgrade;
+http {
+    map $http_upgrade $connection_upgrade {
+        default Upgrade;
+        ''      close;
+    }
+
+    server {
+        listen      80;
+        server_name example.com *.example.com
+        location / {
+            proxy_pass         http://localhost:5000;
+            proxy_http_version 1.1;
+            proxy_set_header   Upgrade $http_upgrade;
+            proxy_set_header   Connection $connection_upgrade;
+            proxy_set_header   Host $host;
+            proxy_cache_bypass $http_upgrade;
+            proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header   X-Forwarded-Proto $scheme;
+        }
+    }
+}
 ```
 
-如需詳細資訊，請參閱[NGINX as a WebSocket Proxy](https://www.nginx.com/blog/websocket-nginx/)。
+如需詳細資訊，請參閱下列文章：
+
+* [NGINX 做為 WebSocket Proxy](https://www.nginx.com/blog/websocket-nginx/)
+* [WebSocket 代理](http://nginx.org/docs/http/websocket.html)
+* <xref:host-and-deploy/linux-nginx>
 
 ### <a name="measure-network-latency"></a>測量網路延遲
 
-您可以使用[JS interop](xref:blazor/javascript-interop)來測量網路延遲，如下列範例所示：
+您可以使用[JS interop](xref:blazor/call-javascript-from-dotnet)來測量網路延遲，如下列範例所示：
 
 ```razor
 @inject IJSRuntime JS

@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: d3605c0823e9ec3ce34fb781da66a7470aa00622
-ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
+ms.openlocfilehash: 605cf8ebd3e85586f3e479c815f0b9902ce5a91a
+ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77034175"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79083391"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>搭配使用 ASP.NET Core SignalR 與 Blazor WebAssembly
 
@@ -34,23 +34,23 @@ ms.locfileid: "77034175"
 
 在本教學課程結尾，您將會有一個可運作的聊天應用程式。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
 [!INCLUDE[](~/includes/3.1-SDK.md)]
 
@@ -58,15 +58,15 @@ ms.locfileid: "77034175"
 
 ## <a name="create-a-hosted-blazor-webassembly-app-project"></a>建立 hosted Blazor WebAssembly 應用程式專案
 
-安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)範本。 Blazor WebAssembly 處於預覽階段時， [AspNetCore. Blazor](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/)套件具有預覽版本。 在命令 shell 中，執行下列命令：
+安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)範本。 Blazor WebAssembly 處於預覽階段時， [WebAssembly](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Templates/)套件會有預覽版本。 在命令 shell 中，執行下列命令：
 
 ```dotnetcli
-dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
+dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview2.20160.5
 ```
 
 遵循您選擇的工具的指導方針：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 建立新的專案。
 
@@ -83,7 +83,7 @@ dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
 > [!NOTE]
 > 如果您已升級或安裝新版 Visual Studio，且 VS UI 中未出現 Blazor WebAssembly 範本，請使用先前所示的 `dotnet new` 命令重新安裝範本。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. 在命令 shell 中，執行下列命令：
 
@@ -95,7 +95,7 @@ dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
 
 1. 當對話方塊出現以新增資產以建立和偵錯工具時，請選取 **[是**]。 Visual Studio Code 會自動新增*vscode*資料夾，其中包含產生的*啟動 json*和工作 *. json*檔案。
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 1. 在命令 shell 中，執行下列命令：
 
@@ -105,7 +105,7 @@ dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
 
 1. 在 Visual Studio for Mac 中，流覽至專案資料夾，然後開啟專案的方案檔（ *.sln*），以開啟專案。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
 在命令 shell 中，執行下列命令：
 
@@ -117,7 +117,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 ## <a name="add-the-signalr-client-library"></a>新增 SignalR 用戶端程式庫
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
 1. 在**方案總管**中，以滑鼠右鍵按一下 [ **BlazorSignalRApp** ] 專案，然後選取 [**管理 NuGet 套件**]。
 
@@ -131,7 +131,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 1. 如果 [**接受授權**] 對話方塊出現，如果您同意授權條款，請選取 [**我接受**]。
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
 在**整合式終端**機（從工具列中的 [**View** > **終端**機]）中，執行下列命令：
 
@@ -139,7 +139,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 1. 在 [**解決方案**] 提要欄位中，以滑鼠右鍵按一下 [ **BlazorSignalRApp** ] 專案，然後選取 [**管理 NuGet 套件**]。
 
@@ -151,7 +151,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. 如果 [**接受授權**] 對話方塊出現，請選取 [**接受**] （如果您同意授權條款）。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
 在命令 shell 中，執行下列命令：
 
@@ -200,7 +200,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. 遵循您工具的指導方針：
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 在 **方案總管**中，選取  **BlazorSignalRApp**  專案。 按**Ctrl + F5**執行應用程式，而不進行任何偵測。
 
@@ -212,7 +212,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
    引號：*星星 TREK VI：未探索的國家/地區*&copy;1991[重要](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. 選取 [ **Debug** > **執行但不**從工具列進行調試]。
 
@@ -224,7 +224,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
    引號：*星星 TREK VI：未探索的國家/地區*&copy;1991[重要](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 1. 在 [**方案**] 提要欄位中，選取 [ **BlazorSignalRApp** ] 專案。 從功能表中，選取 [**執行**] > [**啟動但不進行調試**]。
 
@@ -236,7 +236,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
    引號：*星星 TREK VI：未探索的國家/地區*&copy;1991[重要](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
 1. 在命令 shell 中，執行下列命令：
 

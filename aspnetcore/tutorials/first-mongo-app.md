@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 08/17/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 1425abbfc7bce6bdc445f4e41d9e004405c96e13
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 0e7881aa93953866c7a90eb62de64c4c000a866c
+ms.sourcegitcommit: 40dc9b00131985abcd99bd567647420d798e798a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880340"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78935446"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
 
@@ -22,7 +22,7 @@ ms.locfileid: "74880340"
 
 此教學課程會建立 Web API，此 API 會在 [MongoDB](https://www.mongodb.com/what-is-mongodb) NoSQL 資料庫上執行建立、讀取、更新及刪除 (CRUD) 作業。
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 設定 MongoDB
@@ -31,24 +31,24 @@ ms.locfileid: "74880340"
 > * 從 Web API 執行 MongoDB CRUD 作業
 > * 自訂 JSON 序列化
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>必要條件
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [.NET Core SDK 3.0 或更新版本](https://www.microsoft.com/net/download/all)
-* 隨附 **ASP.NET 和網頁程式開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)，其中包含 **ASP.NET 和 Web 部署**工作負載
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [.NET Core SDK 3.0 或更新版本](https://www.microsoft.com/net/download/all)
 * [Visual Studio Code](https://code.visualstudio.com/download)
-* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * [.NET Core SDK 3.0 或更新版本](https://www.microsoft.com/net/download/all)
 * [Visual Studio for Mac 7.7 版或更新版本](https://visualstudio.microsoft.com/downloads/)
@@ -147,9 +147,9 @@ ms.locfileid: "74880340"
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>建立 ASP.NET Core Web API 專案
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 前往 [檔案] > [新增] > [專案]。
+1. 移至 檔案 **>** **新**的 >**專案**。
 1. 選取 [ASP.NET Core Web 應用程式] 專案類型，然後選取 [下一步]。
 1. 將專案命名為 *BooksApi*，然後選取 [建立]。
 1. 選取 [.NET Core] 目標架構與 [ASP.NET Core 3.0]。 選取 [API] 專案範本，然後選取 [確定]。
@@ -159,7 +159,7 @@ ms.locfileid: "74880340"
    Install-Package MongoDB.Driver -Version {VERSION}
    ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. 在命令殼層中執行下列命令：
 
@@ -177,12 +177,12 @@ ms.locfileid: "74880340"
    dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
    ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-1. 前往 [檔案] > [新增解決方案] > [.NET Core] > [應用程式]。
+1. 移至 檔案 **>** **新解決方案**> **.net Core** >**應用程式**。
 1. 選取 [ASP.NET Core Web API] C# 專案範本，然後選取 [下一步]。
 1. 從 [目標 Framework] 下拉式清單選取 [.NET Core 3.0]，然後選取 [下一步]。
-1. 在 [專案名稱] 中輸入 *BooksApi*，然後選取 [建立]。
+1. 在 [專案名稱] 中輸入 **BooksApi**，然後選取 [建立]。
 1. 在 [方案] 台中，以滑鼠右鍵按一下專案的 [相依性] 節點並選取 [新增封裝]。
 1. 在搜尋方塊中輸入 *MongoDB.Driver*，然後依序選取 *MongoDB.Driver* 套件和 [新增套件]。
 1. 選取 [授權接受] 對話方塊中的 [接受] 按鈕。
@@ -240,11 +240,11 @@ ms.locfileid: "74880340"
 
 1. 將下列醒目提示的程式碼新增至 `Startup.ConfigureServices`：
 
-   [!code-csharp[](first-mongo-app/samples_snapshot/3.x/SampleApp/Startup.ConfigureServices.AddDbSettings.cs?highlight=3-7)]
+   [!code-csharp[](first-mongo-app/samples_snapshot/3.x/SampleApp/Startup.ConfigureServices.AddDbSettings.cs?highlight=3-8)]
 
    在上述程式碼中：
 
-   * *appsettings.json* 檔案之 `BookstoreDatabaseSettings` 區段所繫結的組態執行個體，是在相依性插入 (DI) 容器中註冊。 例如，`BookstoreDatabaseSettings` 物件的 `ConnectionString` 屬性會填入 *appsettings.json* 中的 `BookstoreDatabaseSettings:ConnectionString` 屬性。
+   * *appsettings.json* 檔案之 `BookstoreDatabaseSettings` 區段所繫結的組態執行個體，是在相依性插入 (DI) 容器中註冊。 例如，`BookstoreDatabaseSettings` 物件的 `ConnectionString` 屬性會填入 `BookstoreDatabaseSettings:ConnectionString`appsettings.json*中的* 屬性。
    * `IBookstoreDatabaseSettings` 介面使用 singleton [服務存留期](xref:fundamentals/dependency-injection#service-lifetimes)在 DI 中註冊。 插入時，介面執行個體會解析成 `BookstoreDatabaseSettings` 物件。
 
 1. 在 *Startup.cs* 的頂端新增下列程式碼，以解析 `BookstoreDatabaseSettings` 和 `IBookstoreDatabaseSettings` 參考：
@@ -258,7 +258,7 @@ ms.locfileid: "74880340"
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Services/BookService.cs?name=snippet_BookServiceClass)]
 
-   在上述程式碼中，透過建構函式插入從 DI 擷取 `IBookstoreDatabaseSettings` 執行個體。 這項技術可讓您存取[新增組態模型](#add-a-configuration-model)一節中已新增的 *appsettings.json* 組態值。
+   在上述程式碼中，透過建構函式插入從 DI 擷取 `IBookstoreDatabaseSettings` 執行個體。 這項技術可讓您存取*新增組態模型*一節中已新增的 [appsettings.json](#add-a-configuration-model) 組態值。
 
 1. 將下列醒目提示的程式碼新增至 `Startup.ConfigureServices`：
 
@@ -272,7 +272,7 @@ ms.locfileid: "74880340"
 
 `BookService` 類別使用下列 `MongoDB.Driver` 成員來對資料庫執行 CRUD 作業：
 
-* [MongoClient](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoClient.htm) &ndash; 讀取用於執行資料庫作業的伺服器執行個體。 此類別的建構函式是使用 MongoDB 連接字串提供：
+* [MongoClient](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoClient.htm) &ndash; 讀取伺服器實例以執行資料庫作業。 此類別的建構函式是使用 MongoDB 連接字串提供：
 
   [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Services/BookService.cs?name=snippet_BookServiceConstructor&highlight=3)]
 
@@ -283,10 +283,10 @@ ms.locfileid: "74880340"
 
 `GetCollection<TDocument>(collection)` 傳回代表集合的 [MongoCollection](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoCollection.htm) 物件。 在此教學課程中，會在集合上叫用下列方法：
 
-* [DeleteOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_DeleteOne.htm) &ndash; 會刪除符合所提供搜尋條件的單一文件。
-* [Find\<TDocument>](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollectionExtensions_Find__1_1.htm) &ndash; 傳回集合中符合所提供搜尋條件的所有文件。
-* [InsertOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm) &ndash; 插入所提供物件作為集合中的新文件。
-* [ReplaceOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm) &ndash; 使用所提供物件取代符合所提供搜尋條件的單一文件。
+* [Collection.deleteone](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_DeleteOne.htm) &ndash; 會刪除符合所提供搜尋條件的單一檔。
+* [尋找\<TDocument >](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollectionExtensions_Find__1_1.htm) &ndash; 會傳回集合中符合所提供搜尋條件的所有檔。
+* [InsertOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm) &ndash; 會在集合中插入提供的物件做為新檔。
+* [ReplaceOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm) &ndash; 會以提供的物件取代符合所提供搜尋條件的單一檔。
 
 ## <a name="add-a-controller"></a>新增控制器
 
@@ -298,11 +298,11 @@ ms.locfileid: "74880340"
 
 * 使用 `BookService` 類別來執行 CRUD 作業。
 * 包含動作方法以支援 GET、POST、PUT 與 DELETE HTTP 要求。
-* 在 `Create` 動作方法中呼叫 <xref:System.Web.Http.ApiController.CreatedAtRoute*>，以傳回 [HTTP 201](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 回應。 對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是狀態碼 201。 `CreatedAtRoute` 也會將 `Location` 標頭新增至回應。 `Location` 標頭指定新建活頁簿的 URI。
+* 在 <xref:System.Web.Http.ApiController.CreatedAtRoute*> 動作方法中呼叫 `Create`，以傳回 [HTTP 201](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 回應。 對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是狀態碼 201。 `CreatedAtRoute` 也會將 `Location` 標頭新增至回應。 `Location` 標頭指定新建活頁簿的 URI。
 
 ## <a name="test-the-web-api"></a>測試 Web API
 
-1. 建置和執行應用程式。
+1. 建置並執行應用程式。
 
 1. 巡覽至 `http://localhost:<port>/api/books`，測試控制器的無參數 `Get` 動作方法。 會顯示下列 JSON 回應：
 
@@ -348,7 +348,7 @@ ms.locfileid: "74880340"
 
 1. 已從 ASP.NET 共用架構移除 JSON.NET。 將套件參考新增至 [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson)。
 
-1. 在 `Startup.ConfigureServices` 中，將下列醒目提示的程式碼鏈結至 `AddMvc` 方法呼叫：
+1. 在 `Startup.ConfigureServices` 中，將下列醒目提示的程式碼鏈結至 `AddControllers` 方法呼叫：
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Startup.cs?name=snippet_ConfigureServices&highlight=12)]
 
@@ -372,7 +372,7 @@ ms.locfileid: "74880340"
 
 此教學課程會建立 Web API，此 API 會在 [MongoDB](https://www.mongodb.com/what-is-mongodb) NoSQL 資料庫上執行建立、讀取、更新及刪除 (CRUD) 作業。
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 設定 MongoDB
@@ -381,24 +381,24 @@ ms.locfileid: "74880340"
 > * 從 Web API 執行 MongoDB CRUD 作業
 > * 自訂 JSON 序列化
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件：
+## <a name="prerequisites"></a>必要條件
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [.NET Core SDK 2.2](https://www.microsoft.com/net/download/all)
-* 隨附 **ASP.NET 和網頁程式開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)，其中包含 **ASP.NET 和 Web 部署**工作負載
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [.NET Core SDK 2.2](https://www.microsoft.com/net/download/all)
 * [Visual Studio Code](https://code.visualstudio.com/download)
-* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * [.NET Core SDK 2.2](https://www.microsoft.com/net/download/all)
 * [Visual Studio for Mac 7.7 版或更新版本](https://visualstudio.microsoft.com/downloads/)
@@ -497,9 +497,9 @@ ms.locfileid: "74880340"
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>建立 ASP.NET Core Web API 專案
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 前往 [檔案] > [新增] > [專案]。
+1. 移至 檔案 **>** **新**的 >**專案**。
 1. 選取 [ASP.NET Core Web 應用程式] 專案類型，然後選取 [下一步]。
 1. 將專案命名為 *BooksApi*，然後選取 [建立]。
 1. 選取 [.NET Core] 目標架構與 [ASP.NET Core 2.2]。 選取 [API] 專案範本，然後選取 [確定]。
@@ -509,7 +509,7 @@ ms.locfileid: "74880340"
    Install-Package MongoDB.Driver -Version {VERSION}
    ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. 在命令殼層中執行下列命令：
 
@@ -527,12 +527,12 @@ ms.locfileid: "74880340"
    dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
    ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-1. 前往 [檔案] > [新增解決方案] > [.NET Core] > [應用程式]。
+1. 移至 檔案 **>** **新解決方案**> **.net Core** >**應用程式**。
 1. 選取 [ASP.NET Core Web API] C# 專案範本，然後選取 [下一步]。
 1. 從 [目標 Framework] 下拉式清單選取 [.NET Core 2.2]，然後選取 [下一步]。
-1. 在 [專案名稱] 中輸入 *BooksApi*，然後選取 [建立]。
+1. 在 [專案名稱] 中輸入 **BooksApi**，然後選取 [建立]。
 1. 在 [方案] 台中，以滑鼠右鍵按一下專案的 [相依性] 節點並選取 [新增封裝]。
 1. 在搜尋方塊中輸入 *MongoDB.Driver*，然後依序選取 *MongoDB.Driver* 套件和 [新增套件]。
 1. 選取 [授權接受] 對話方塊中的 [接受] 按鈕。
@@ -594,7 +594,7 @@ ms.locfileid: "74880340"
 
    在上述程式碼中：
 
-   * *appsettings.json* 檔案之 `BookstoreDatabaseSettings` 區段所繫結的組態執行個體，是在相依性插入 (DI) 容器中註冊。 例如，`BookstoreDatabaseSettings` 物件的 `ConnectionString` 屬性會填入 *appsettings.json* 中的 `BookstoreDatabaseSettings:ConnectionString` 屬性。
+   * *appsettings.json* 檔案之 `BookstoreDatabaseSettings` 區段所繫結的組態執行個體，是在相依性插入 (DI) 容器中註冊。 例如，`BookstoreDatabaseSettings` 物件的 `ConnectionString` 屬性會填入 `BookstoreDatabaseSettings:ConnectionString`appsettings.json*中的* 屬性。
    * `IBookstoreDatabaseSettings` 介面使用 singleton [服務存留期](xref:fundamentals/dependency-injection#service-lifetimes)在 DI 中註冊。 插入時，介面執行個體會解析成 `BookstoreDatabaseSettings` 物件。
 
 1. 在 *Startup.cs* 的頂端新增下列程式碼，以解析 `BookstoreDatabaseSettings` 和 `IBookstoreDatabaseSettings` 參考：
@@ -608,7 +608,7 @@ ms.locfileid: "74880340"
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Services/BookService.cs?name=snippet_BookServiceClass)]
 
-   在上述程式碼中，透過建構函式插入從 DI 擷取 `IBookstoreDatabaseSettings` 執行個體。 這項技術可讓您存取[新增組態模型](#add-a-configuration-model)一節中已新增的 *appsettings.json* 組態值。
+   在上述程式碼中，透過建構函式插入從 DI 擷取 `IBookstoreDatabaseSettings` 執行個體。 這項技術可讓您存取*新增組態模型*一節中已新增的 [appsettings.json](#add-a-configuration-model) 組態值。
 
 1. 將下列醒目提示的程式碼新增至 `Startup.ConfigureServices`：
 
@@ -622,7 +622,7 @@ ms.locfileid: "74880340"
 
 `BookService` 類別使用下列 `MongoDB.Driver` 成員來對資料庫執行 CRUD 作業：
 
-* [MongoClient](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoClient.htm) &ndash; 讀取用於執行資料庫作業的伺服器執行個體。 此類別的建構函式是使用 MongoDB 連接字串提供：
+* [MongoClient](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoClient.htm) &ndash; 讀取伺服器實例以執行資料庫作業。 此類別的建構函式是使用 MongoDB 連接字串提供：
 
   [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Services/BookService.cs?name=snippet_BookServiceConstructor&highlight=3)]
 
@@ -633,10 +633,10 @@ ms.locfileid: "74880340"
 
 `GetCollection<TDocument>(collection)` 傳回代表集合的 [MongoCollection](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoCollection.htm) 物件。 在此教學課程中，會在集合上叫用下列方法：
 
-* [DeleteOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_DeleteOne.htm) &ndash; 會刪除符合所提供搜尋條件的單一文件。
-* [Find\<TDocument>](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollectionExtensions_Find__1_1.htm) &ndash; 傳回集合中符合所提供搜尋條件的所有文件。
-* [InsertOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm) &ndash; 插入所提供物件作為集合中的新文件。
-* [ReplaceOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm) &ndash; 使用所提供物件取代符合所提供搜尋條件的單一文件。
+* [Collection.deleteone](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_DeleteOne.htm) &ndash; 會刪除符合所提供搜尋條件的單一檔。
+* [尋找\<TDocument >](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollectionExtensions_Find__1_1.htm) &ndash; 會傳回集合中符合所提供搜尋條件的所有檔。
+* [InsertOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm) &ndash; 會在集合中插入提供的物件做為新檔。
+* [ReplaceOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm) &ndash; 會以提供的物件取代符合所提供搜尋條件的單一檔。
 
 ## <a name="add-a-controller"></a>新增控制器
 
@@ -648,11 +648,11 @@ ms.locfileid: "74880340"
 
 * 使用 `BookService` 類別來執行 CRUD 作業。
 * 包含動作方法以支援 GET、POST、PUT 與 DELETE HTTP 要求。
-* 在 `Create` 動作方法中呼叫 <xref:System.Web.Http.ApiController.CreatedAtRoute*>，以傳回 [HTTP 201](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 回應。 對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是狀態碼 201。 `CreatedAtRoute` 也會將 `Location` 標頭新增至回應。 `Location` 標頭指定新建活頁簿的 URI。
+* 在 <xref:System.Web.Http.ApiController.CreatedAtRoute*> 動作方法中呼叫 `Create`，以傳回 [HTTP 201](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 回應。 對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是狀態碼 201。 `CreatedAtRoute` 也會將 `Location` 標頭新增至回應。 `Location` 標頭指定新建活頁簿的 URI。
 
 ## <a name="test-the-web-api"></a>測試 Web API
 
-1. 建置和執行應用程式。
+1. 建置並執行應用程式。
 
 1. 巡覽至 `http://localhost:<port>/api/books`，測試控制器的無參數 `Get` 動作方法。 會顯示下列 JSON 回應：
 

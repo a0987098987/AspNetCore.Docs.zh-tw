@@ -5,17 +5,17 @@ description: 藉由使用您選擇的工具來建立 Blazor 應用程式，開�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 03/10/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: bd33d874b3d6122f2ab820e9b147b0e62ba03a58
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.openlocfilehash: 89c7529d2b8ec97db731f7c7268e19937c398115
+ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76869576"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79083248"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -28,16 +28,19 @@ ms.locfileid: "76869576"
 1. 安裝[.Net Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
 
 1. 選擇性安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)範本：
-   * 安裝[.Net Core 3.1 或更新版本（預覽） SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-   * 在命令 shell 中執行下列命令。 Blazor WebAssembly 處於預覽階段時， [AspNetCore. Blazor](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/)套件具有預覽版本。
+   * 安裝[.Net Core 3.1.102 或更新版本（預覽） SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
+   * 在命令 shell 中執行下列命令。 Blazor WebAssembly 處於預覽階段時， [WebAssembly](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Templates/)套件會有預覽版本。
 
    ```dotnetcli
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
+   dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview2.20160.5
    ```
+
+   > [!NOTE]
+   > **需要**.NET Core SDK 版本3.1.102 或更新版本，才能使用 3.2 Preview 2 Blazor WebAssembly 範本。 藉由在命令 shell 中執行 `dotnet --version`，確認已安裝的 .NET Core SDK 版本。
 
 1. 遵循您選擇的工具的指導方針：
 
-   # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+   # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
    1\. 使用**ASP.NET 和 網頁程式開發**工作負載安裝[Visual Studio 2019 16.4 版或更新](https://visualstudio.microsoft.com/vs/preview/)版本。
 
@@ -47,18 +50,18 @@ ms.locfileid: "76869576"
 
    4\. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
-   5\. 如需 Blazor 的 WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
+   5\. 如需 Blazor 的 WebAssembly 體驗，請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。 如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。 如果 Blazor WebAssembly 範本不存在，請回到上一個步驟，然後重新安裝範本。
 
    6\. 按下 **Ctrl**+**F5** 即可執行應用程式。
 
    > [!NOTE]
    > 如果您已安裝 ASP.NET Core Blazor （Preview 6 或更早版本）先前預覽版本的 Blazor Visual Studio 延伸模組，則可以卸載擴充功能。 在命令介面中安裝 Blazor 範本，現在已足以在 Visual Studio 中呈現範本。
 
-   # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+   # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-   1\. 安裝 [Visual Studio Code (英文)](https://code.visualstudio.com/)。
+   1\. 安裝 [Visual Studio Code](https://code.visualstudio.com/)。
 
-   2\. 安裝[ C# Visual Studio Code 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)功能的最新版本。
+   2\. 安裝[ C# Visual Studio Code 擴充](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)功能的最新版本。
 
    3\. 如需 Blazor 的 WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
@@ -82,7 +85,7 @@ ms.locfileid: "76869576"
 
    7\. 在瀏覽器中，巡覽至 `https://localhost:5001`。
 
-   # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+   # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
    1\. 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。
 
@@ -102,7 +105,7 @@ ms.locfileid: "76869576"
 
    如果出現會信任開發憑證的提示，請信任憑證並繼續。
 
-   # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+   # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
    如需 Blazor 的 WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
@@ -160,7 +163,7 @@ ms.locfileid: "76869576"
 元件參數是使用屬性或[子內容](xref:blazor/components#child-content)所指定，可讓您設定子元件上的屬性。 若要將參數新增至 `Counter` 元件，請更新元件的 `@code` 區塊：
 
 * 加入具有 `[Parameter]` 屬性之 `IncrementAmount` 的公用屬性。
-* 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
+* 將 `IncrementCount` 方法變更為在增加 `IncrementAmount`的值時使用 `currentCount`。
 
 *Pages/Counter.razor*：
 

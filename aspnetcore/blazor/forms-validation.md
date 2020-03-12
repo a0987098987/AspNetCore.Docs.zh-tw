@@ -10,18 +10,18 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 2758bcbbc76c8a59716fe224dd2deb4ca8c06929
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: 5aad5a4d4303151ef5be82481dfae7367abeffbc
+ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76726890"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79083232"
 ---
-# <a name="aspnet-core-opno-locblazor-forms-and-validation"></a>ASP.NET Core [!OP.NO-LOC(Blazor)] 表單和驗證
+# <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
-使用[資料批註](xref:mvc/models/validation)的 [!OP.NO-LOC(Blazor)] 中支援表單和驗證。
+使用[資料批註](xref:mvc/models/validation)的 Blazor 支援表單和驗證。
 
 下列 `ExampleModel` 類型會使用資料批註來定義驗證邏輯：
 
@@ -398,17 +398,17 @@ private class MyCustomValidator : ValidationAttribute
 
 ### <a name="opno-locblazor-data-annotations-validation-package"></a>Blazor 資料批註驗證封裝
 
-[AspNetCore.Blazor。DataAnnotations](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation)是使用 `DataAnnotationsValidator` 元件來填滿驗證體驗差距的封裝。 封裝目前為*實驗*性。
+[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)是使用 `DataAnnotationsValidator` 元件來填滿驗證體驗缺口的套件。 封裝目前為*實驗*性。
 
 ### <a name="compareproperty-attribute"></a>[CompareProperty] 屬性
 
-<xref:System.ComponentModel.DataAnnotations.CompareAttribute> 無法與 `DataAnnotationsValidator` 元件搭配運作，因為它不會將驗證結果與特定成員產生關聯。 這可能會導致欄位層級驗證與整個模型在提交時進行驗證時的行為不一致。 [AspNetCore.Blazor。DataAnnotations](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation) *實驗*性封裝引進了額外的驗證屬性 `ComparePropertyAttribute`，這會因應這些限制。 在 Blazor 應用程式中，`[CompareProperty]` 是 `[Compare]` 屬性的直接取代。
+<xref:System.ComponentModel.DataAnnotations.CompareAttribute> 無法與 `DataAnnotationsValidator` 元件搭配運作，因為它不會將驗證結果與特定成員產生關聯。 這可能會導致欄位層級驗證與整個模型在提交時進行驗證時的行為不一致。 [AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)的*實驗*性封裝引進了額外的驗證屬性 `ComparePropertyAttribute`，這會因應這些限制。 在 Blazor 應用程式中，`[CompareProperty]` 是 `[Compare]` 屬性的直接取代。
 
 ### <a name="nested-models-collection-types-and-complex-types"></a>嵌套模型、集合類型和複雜類型
 
 Blazor 支援使用內建 `DataAnnotationsValidator`的資料批註來驗證表單輸入。 不過，`DataAnnotationsValidator` 只會驗證系結至不是集合或複雜型別屬性之表單之模型的最上層屬性。
 
-若要驗證系結模型的整個物件圖形（包括集合和複雜型別屬性），請使用*實驗*性 AspNetCore 所提供的 `ObjectGraphDataAnnotationsValidator`。 [Blazor。DataAnnotations。驗證](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation)套件：
+若要驗證系結模型的整個物件圖形（包括集合和複雜型別屬性），請使用*實驗*性 AspNetCore 所提供的 `ObjectGraphDataAnnotationsValidator` [DataAnnotations。驗證](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)套件：
 
 ```razor
 <EditForm Model="@_model" OnValidSubmit="HandleValidSubmit">

@@ -5,14 +5,16 @@ description: 使用 Facebook、Google、Twitter 等的說明，而不 ASP.NET Co
 ms.author: riande
 ms.date: 12/10/2019
 uid: security/authentication/social/social-without-identity
-ms.openlocfilehash: 612964ec9ed4975cdc81780dda3bac6cce96037f
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: b30ce7055b35b721c7fb83b61a328200d6a136b1
+ms.sourcegitcommit: 3ca4a2235a8129def9e480d0a6ad54cc856920ec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359054"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79025400"
 ---
 # <a name="use-social-sign-in-provider-authentication-without-aspnet-core-identity"></a>使用不含 ASP.NET Core 身分識別的社交登入提供者驗證
+
+By [Kirk Larkin](https://twitter.com/serpent5)和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 

@@ -6,18 +6,18 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 12/05/2019
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 258b34113f3c3d9ef2031a43295ea5806b1e22ff
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: c0312b186bbb35e3b802984484b7213016d8bf04
+ms.sourcegitcommit: 51c86c003ab5436598dbc42f26ea4a83a795fd6e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880683"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78964434"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>ASP.NET Core 的 gRPC 中的驗證和授權
 
 依[James 牛頓-王](https://twitter.com/jamesnk)
 
-[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/grpc/authn-and-authz/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/grpc/authn-and-authz/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
 
 ## <a name="authenticate-users-calling-a-grpc-service"></a>驗證呼叫 gRPC 服務的使用者
 
@@ -35,7 +35,7 @@ public void Configure(IApplicationBuilder app)
 
     app.UseEndpoints(endpoints =>
     {
-        routes.MapGrpcService<GreeterService>();
+        endpoints.MapGrpcService<GreeterService>();
     });
 }
 ```
@@ -144,7 +144,7 @@ public Ticketer.TicketerClient CreateClientWithCert(
 * JWT 權杖
 * OAuth 2.0
 * OpenID Connect
-* WS-Federation
+* WS-同盟
 
 如需有關在伺服器上設定驗證的詳細資訊，請參閱[ASP.NET Core 驗證](xref:security/authentication/identity)。
 

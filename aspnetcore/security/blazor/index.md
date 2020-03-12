@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: c07ffdbd5df58d6b3d19a5d75ce224d830101eac
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: ba00c0370094df4e0ae0479aeb23eceea6ef04f0
+ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447421"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79083343"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
 
@@ -194,7 +194,7 @@ namespace BlazorSample.Services
 在 Blazor WebAssembly 應用程式中，`CustomAuthStateProvider` 服務會在*Program.cs*的 `Main` 中註冊：
 
 ```csharp
-using Microsoft.AspNetCore.Blazor.Hosting;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using BlazorSample.Services;
@@ -513,6 +513,8 @@ Not authorized.
 在 Blazor WebAssembly apps 中，可以略過授權檢查，因為使用者可以修改所有的用戶端程式代碼。 這同樣也適用於所有的用戶端應用程式技術，包括 JavaScript SPA 架構或任何作業系統的原生應用程式。
 
 **請一律在由您用戶端應用程式所存取之任何 API 端點內的伺服器上執行授權檢查。**
+
+如需詳細資訊，請參閱 <xref:security/blazor/webassembly/index>底下的文章。
 
 ## <a name="troubleshoot-errors"></a>針對錯誤進行疑難排解
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 6698e269e0a6480cd5a03c59f9a19da31e23bf69
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: afa71b2c2b75be2c000fadd9545ac3fb4587825a
+ms.sourcegitcommit: 51c86c003ab5436598dbc42f26ea4a83a795fd6e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77089145"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78964469"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -35,7 +35,7 @@ ms.locfileid: "77089145"
 
 ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個呼叫。 下圖說明此概念。 執行緒遵循黑色箭號執行。
 
-![要求處理模式說明要求抵達，經過三個中介軟體所處理，然後應用程式送出回應。 每個中介軟體會執行自己的邏輯，並於 next() 陳述式中將要求遞交給下一個中介軟體。 在第三個中介軟體處理要求後，要求會反向傳回經前兩個中介軟體，以在其 next() 陳述式後，至作為回應離開應用程式傳到用戶端前的期間內，進行額外處理。](index/_static/request-delegate-pipeline.png)
+![要求處理模式說明要求抵達，經過三個中介軟體所處理，然後應用程式送出回應。 每個中介軟體會執行其邏輯，並於 next() 陳述式中將要求遞交至下個中介軟體。 在第三個中介軟體處理要求後，要求會反向傳回經前兩個中介軟體，以在其 next() 陳述式後，至作為回應離開應用程式傳到用戶端前的期間內，進行額外處理。](index/_static/request-delegate-pipeline.png)
 
 每一個委派皆能在下個委派的前後執行作業。 處理例外狀況的委派必須提前在管線中呼叫，以便其可與管線後續階段中所發生的例外狀況達成一致。
 
@@ -60,6 +60,7 @@ ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個�
 <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*> 委派不會收到 `next` 參數。 第一個 `Run` 委派一律是 terminal 並終止管線。 `Run` 是慣例。 某些中介軟體元件可能會公開在管線結尾處執行 `Run[Middleware]` 方法：
 
 [!code-csharp[](index/snapshot/Chain/Startup.cs?highlight=12-15)]
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 在上述範例中，`Run` 委派會將 `"Hello from 2nd delegate."` 寫入至回應，然後終止管線。 如果在 `Run` 委派後面加入另一個 `Use` 或 `Run` 委派，則不會呼叫它。
 
@@ -214,9 +215,9 @@ app.Map("/level1", level1App => {
 | localhost:1234                | Hello from non-Map delegate. |
 | localhost:1234/?branch=master | Branch used = master         |
 
-<xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen*> 也會根據給定述詞的結果來分支要求管線。 與 `MapWhen`不同的是，如果此分支進行短路或包含終端機中介軟體，則會重新加入主要管線：
+<xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen*> 也會根據給定述詞的結果來分支要求管線。 與 `MapWhen`不同的是，如果此分支不是短路或包含終端機中介軟體，則會重新加入主要管線：
 
-[!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=23-24)]
+[!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=25-26)]
 
 在上述範例中，回應為「來自主要管線的 Hello」。 會針對所有要求寫入。 如果要求中包含查詢字串變數 `branch`，則會在重新加入主要管線之前記錄其值。
 
@@ -224,7 +225,7 @@ app.Map("/level1", level1App => {
 
 ASP.NET Core 隨附下列中介軟體元件。 「順序」欄說明 中介軟體在要求處理管線中的位置，以及中介軟體可終止要求處理的情況。 當中介軟體將要求處理管線短路並防止接下來的下游中介軟體處理要求時，這就是所謂的「終端中介軟體」。 如需詳細資訊，請參閱[使用 IApplicationBuilder 建立中介軟體管線](#create-a-middleware-pipeline-with-iapplicationbuilder)。
 
-| 中介軟體 | 描述 | 單 |
+| 中介軟體 | 描述 | 使用 |
 | ---------- | ----------- | ----- |
 | [驗證](xref:security/authentication/identity) | 提供驗證支援。 | 在需要 `HttpContext.User` 之前。 OAuth 回呼的終端機。 |
 | [授權](xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization*) | 提供授權支援。 | 緊接在驗證中介軟體之後。 |
@@ -279,7 +280,7 @@ ASP.NET Core 隨附下列中介軟體元件。 「順序」欄說明 中介軟�
 
 ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個呼叫。 下圖說明此概念。 執行緒遵循黑色箭號執行。
 
-![要求處理模式說明要求抵達，經過三個中介軟體所處理，然後應用程式送出回應。 每個中介軟體會執行自己的邏輯，並於 next() 陳述式中將要求遞交給下一個中介軟體。 在第三個中介軟體處理要求後，要求會反向傳回經前兩個中介軟體，以在其 next() 陳述式後，至作為回應離開應用程式傳到用戶端前的期間內，進行額外處理。](index/_static/request-delegate-pipeline.png)
+![要求處理模式說明要求抵達，經過三個中介軟體所處理，然後應用程式送出回應。 每個中介軟體會執行其邏輯，並於 next() 陳述式中將要求遞交至下個中介軟體。 在第三個中介軟體處理要求後，要求會反向傳回經前兩個中介軟體，以在其 next() 陳述式後，至作為回應離開應用程式傳到用戶端前的期間內，進行額外處理。](index/_static/request-delegate-pipeline.png)
 
 每一個委派皆能在下個委派的前後執行作業。 處理例外狀況的委派必須提前在管線中呼叫，以便其可與管線後續階段中所發生的例外狀況達成一致。
 
@@ -430,7 +431,7 @@ app.Map("/level1", level1App => {
 
 ASP.NET Core 隨附下列中介軟體元件。 「順序」欄說明 中介軟體在要求處理管線中的位置，以及中介軟體可終止要求處理的情況。 當中介軟體將要求處理管線短路並防止接下來的下游中介軟體處理要求時，這就是所謂的「終端中介軟體」。 如需詳細資訊，請參閱[使用 IApplicationBuilder 建立中介軟體管線](#create-a-middleware-pipeline-with-iapplicationbuilder)。
 
-| 中介軟體 | 描述 | 單 |
+| 中介軟體 | 描述 | 使用 |
 | ---------- | ----------- | ----- |
 | [驗證](xref:security/authentication/identity) | 提供驗證支援。 | 在需要 `HttpContext.User` 之前。 OAuth 回呼的終端機。 |
 | [Cookie 原則](xref:security/gdpr) | 追蹤使用者對用於儲存個人資訊的同意，並強制執行 Cookie 欄位的最低標準，例如 `secure` 和 `SameSite`。 | 在發出 Cookie 的中介軟體之前。 範例：驗證、工作階段、MVC (TempData)。 |

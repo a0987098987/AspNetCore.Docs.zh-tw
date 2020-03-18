@@ -5,16 +5,16 @@ description: 逐步建立 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 03/13/2020
 no-loc:
 - Blazor
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 8830dcf26b58b5f5fdd36b60298e7b365f99bdd9
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 8b3802a6ffe3613e5d4ca65c57fafc3f404c8329
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78655306"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434495"
 ---
 # <a name="build-your-first-opno-locblazor-app"></a>建立您的第一個 Blazor 應用程式
 
@@ -24,9 +24,9 @@ ms.locfileid: "78655306"
 
 本教學課程說明如何建立和修改 Blazor 應用程式。
 
-遵循 <xref:blazor/get-started> 文章中的指導方針，為本教學課程建立 Blazor 專案。 將專案命名為 *ToDoList*。
-
 ## <a name="build-components"></a>組建元件
+
+1. 遵循 <xref:blazor/get-started> 文章中的指導方針，為本教學課程建立 Blazor 專案。 將專案命名為 *ToDoList*。
 
 1. 流覽至每個應用程式的 [ *pages* ] 資料夾中的三個頁面： [首頁]、[計數器] 和 [提取資料]。 這些頁面會透過 Razor 元件檔案 *Index.razor*、*Counter.razor* 及 *FetchData.razor* 來實作。
 
@@ -133,14 +133,14 @@ ms.locfileid: "78655306"
 
 在實作簡單待辦事項清單的應用程式中新增元件。
 
-1. 將名為 *Todo.razor* 的空白檔案新增至 *Pages* 資料夾中的應用程式：
+1. 將新的 `Todo` Razor 元件新增至 [ *Pages* ] 資料夾中的應用程式。 在 Visual Studio 中，以滑鼠右鍵按一下 **頁面** 資料夾，**然後選取** 新增 > **新專案** > **Razor 元件**。 將元件的檔案命名為*Todo*。 在其他開發環境中，將空白檔案新增至名為 [ *Todo. razor*] 的 [ **Pages** ] 資料夾。
 
 1. 提供元件的初始標記：
 
    ```razor
    @page "/todo"
 
-   <h1>Todo</h1>
+   <h3>Todo</h3>
    ```
 
 1. 將 `Todo` 元件新增至導覽列。

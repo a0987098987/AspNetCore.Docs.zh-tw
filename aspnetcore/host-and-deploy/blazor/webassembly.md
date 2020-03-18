@@ -5,17 +5,17 @@ description: 瞭解如何使用 ASP.NET Core、內容傳遞網路（CDN）、檔
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/19/2020
+ms.date: 03/11/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: eae12b266e91a30a47daf63ac77ba082c25225aa
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 748ac9969134f4c89cc8c1235958dcc7ac1d1080
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78664098"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434274"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
@@ -59,7 +59,7 @@ Blazor WebAssembly 應用程式中頁面元件的路由要求，並不像 Blazor
 
 裝載的*部署*可從在 web 伺服器上執行的[ASP.NET Core 應用程式](xref:index)，將 Blazor WebAssembly 應用程式提供給瀏覽器。
 
-Blazor 應用程式隨附于已發佈輸出中的 ASP.NET Core 應用程式，因此兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 針對裝載的部署，Visual Studio 包括 **Blazor WebAssembly 應用程式**專案範本（使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的`blazorwasm` 範本）以及選取的**hosted**選項。
+用戶端 Blazor WebAssembly 應用程式會發佈到伺服器應用程式的 */BIN/RELEASE/{TARGET FRAMEWORK}/publish/wwwroot*資料夾，以及伺服器應用程式的任何其他靜態 web 資產。 這兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 針對裝載的部署，Visual Studio 包括 **Blazor WebAssembly 應用程式**專案範本（使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的`blazorwasm` 範本）和選取的**裝載選項（** 使用 `dotnet new` 命令時`-ho|--hosted`）。
 
 如需 ASP.NET Core 應用程式裝載和部署的詳細資訊，請參閱 <xref:host-and-deploy/index>。
 
@@ -69,7 +69,7 @@ Blazor 應用程式隨附于已發佈輸出中的 ASP.NET Core 應用程式，�
 
 *獨立部署*會將 Blazor WebAssembly 應用程式當做一組直接由用戶端要求的靜態檔案來提供。 任何靜態檔案伺服器都可以服務 Blazor 應用程式。
 
-獨立式部署資產會發佈至 [bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist] 資料夾。
+獨立部署資產會發佈到 */BIN/RELEASE/{TARGET FRAMEWORK}/publish/wwwroot*資料夾中。
 
 ### <a name="iis"></a>IIS
 
@@ -318,4 +318,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="configure-the-linker"></a>設定連結器
 
-Blazor 會在每個組建上執行中繼語言（IL）連結，以從輸出元件中移除不必要的 IL。 組件連結可在組建上控制。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/configure-linker>。
+Blazor 會在每個發行組建上執行中繼語言（IL）連結，以從輸出元件中移除不必要的 IL。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/configure-linker>。

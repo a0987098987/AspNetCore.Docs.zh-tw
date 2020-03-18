@@ -5,12 +5,12 @@ description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 01/13/2020
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: d044ae4416c4528791755506314fc81275474f79
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: e7fc0496438734e13cfafcecf432da4a94737897
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78660234"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434508"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
@@ -48,7 +48,7 @@ ms.locfileid: "78660234"
 
 `Movie` 類別包含 `Id` 欄位，該欄位是資料庫的必要欄位，將作為主索引鍵。
 
-[ 上的 ](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter)DateType`ReleaseDate` 屬性會指定資料的型別 (`Date`)。 使用此屬性：
+`ReleaseDate` 上的 <xref:System.ComponentModel.DataAnnotations.DataType> 屬性會指定資料的類型（`Date`）。 使用此屬性：
 
 * 使用者不需要在日期欄位中輸入時間資訊。
 * 只會顯示日期，不會顯示時間資訊。

@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: fundamentals/request-features
 ms.openlocfilehash: d0f3ae521d1f314dd04cb581d9a921da4719273d
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659674"
+ms.lasthandoff: 03/16/2020
+ms.locfileid: "79416223"
 ---
 # <a name="request-features-in-aspnet-core"></a>ASP.NET Core 中的要求功能
 

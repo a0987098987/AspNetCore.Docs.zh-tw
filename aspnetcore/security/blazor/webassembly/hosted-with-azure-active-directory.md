@@ -5,17 +5,17 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 0803e436d66ef7df3c68739e674a8652fde11166
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: 2ddbc9791ec9b31d55c9c6017d9d6d5be5c8dec8
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083843"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434482"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>使用 Azure Active Directory 保護 Blazor WebAssembly 託管應用程式的 ASP.NET Core
 
@@ -258,6 +258,10 @@ builder.Services.AddMsalAuthentication(options =>
 ### <a name="fetchdata-component"></a>FetchData 元件
 
 [!INCLUDE[](~/includes/blazor-security/fetchdata-component.md)]
+
+## <a name="run-the-app"></a>執行應用程式
+
+從伺服器專案執行應用程式。 使用 Visual Studio 時，請選取**方案總管**中的伺服器專案，然後選取工具列中的 [**執行**] 按鈕，或從 [**調試**程式] 功能表啟動應用程式。
 
 [!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
 

@@ -5,17 +5,17 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 0ea42943c908d8cf9d083c1cfc568c1835588ce9
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: b4d32e91b4013cbea37baecb972a535d2874d3d1
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083829"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434456"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 保護 ASP.NET Core Blazor WebAssembly 獨立應用程式
 
@@ -42,7 +42,9 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
      記錄應用程式識別碼（用戶端識別碼）（例如 `11111111-1111-1111-1111-111111111111`）。
 
-   * [建立 & 的使用者流程](/azure/active-directory-b2c/tutorial-create-user-flows);建立註冊和登入使用者流程。
+   * [建立使用者流程](/azure/active-directory-b2c/tutorial-create-user-flows)&ndash; 建立註冊和登入使用者流程。
+
+     至少選取 **應用程式宣告** > **顯示名稱**使用者屬性，以在 `LoginDisplay` 元件（*Shared/LoginDisplay*）中填入 `context.User.Identity.Name`。
 
      記錄為應用程式建立的註冊和登入使用者流程名稱（例如，`B2C_1_signupsignin`）。
 

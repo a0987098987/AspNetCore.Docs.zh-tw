@@ -5,17 +5,17 @@ description: 探索如何裝載和部署 Blazor 應用程式。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 238e7fc8f8d64c7847dc8847fb66e22442a3c8e0
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: ddf70da29a82d462422c1bdf74ff45b92bb10b56
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667150"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434261"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor"></a>裝載及部署 ASP.NET Core Blazor
 
@@ -45,7 +45,12 @@ dotnet publish -c Release
 
 發佈應用程式會觸發專案相依性的[還原](/dotnet/core/tools/dotnet-restore)並[建置](/dotnet/core/tools/dotnet-build)專案，然後才會建立資產以供部署。 在建置程序中，會移除未使用的方法和組件，減少應用程式的下載大小和載入時間。
 
-Blazor WebAssembly 應用程式會發佈至 */BIN/RELEASE/{TARGET FRAMEWORK}/PUBLISH/{ASSEMBLY 名稱}/dist*資料夾。 Blazor 伺服器應用程式會發佈至 */BIN/RELEASE/{TARGET FRAMEWORK}/publish*資料夾。
+發行位置：
+
+* Blazor WebAssembly
+  * 獨立 &ndash; 應用程式會發佈至 */BIN/RELEASE/{TARGET FRAMEWORK}/publish/wwwroot*資料夾中。 若要將應用程式部署為靜態網站，請將*wwwroot*資料夾的內容複寫到靜態網站主機。
+  * 裝載 &ndash; 用戶端 Blazor WebAssembly 應用程式會發佈到伺服器應用程式的 */BIN/RELEASE/{TARGET FRAMEWORK}/publish/wwwroot*資料夾，以及伺服器應用程式的任何其他靜態 web 資產。 將*publish*資料夾的內容部署至主機。
+* 應用程式 &ndash; Blazor 伺服器會發佈到 */BIN/RELEASE/{TARGET FRAMEWORK}/publish*資料夾中。 將*publish*資料夾的內容部署至主機。
 
 該資料夾中的資產均會部署至 Web 伺服器。 部署可能是手動或自動的程序，視使用中的開發工具而定。
 

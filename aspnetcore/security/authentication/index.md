@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2020
 uid: security/authentication/index
-ms.openlocfilehash: 24113fd4f090cf76746a7b077212fdab012f82c1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 404904ecfa30d1fe7e47f0daaa423ddd6f1b06e8
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659625"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434326"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>ASP.NET Core 驗證的總覽
 
@@ -110,6 +110,18 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 * [操作資源處理常式的挑戰和禁止](xref:security/authorization/resourcebased#challenge-and-forbid-with-an-operational-resource-handler)。
 * [挑戰與禁止之間的差異](xref:security/authorization/secure-data#challenge)。
+
+## <a name="authentication-providers-per-tenant"></a>每個租使用者的驗證提供者
+
+ASP.NET Core framework 沒有內建解決方案可進行多租使用者驗證。
+雖然客戶可以使用內建功能來撰寫，但我們建議客戶查看[Orchard Core](https://www.orchardcore.net/)以達成此目的。
+
+Orchard 核心為：
+
+* 以 ASP.NET Core 建立的開放原始碼模組化和多租使用者應用程式架構。
+* 以該應用程式架構為基礎的內容管理系統（CMS）。
+
+如需每個租使用者的驗證提供者範例，請參閱[Orchard 核心](https://github.com/OrchardCMS/OrchardCore)來源。
 
 ## <a name="additional-resources"></a>其他資源
 

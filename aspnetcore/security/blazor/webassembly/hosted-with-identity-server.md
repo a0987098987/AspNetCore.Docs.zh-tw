@@ -5,17 +5,17 @@ description: 從使用[IdentityServer](https://identityserver.io/)後端的 Visu
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 98eb126ab3c483e0a6dc2274db8ffcfd9d5bc59a
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: a3993bf635e5a7aae408d72796015f2414e13c14
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083773"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434469"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-hosted-app-with-identity-server"></a>使用身分識別伺服器保護 ASP.NET Core Blazor WebAssembly 託管應用程式
 
@@ -224,5 +224,9 @@ builder.Services.AddApiAuthorization();
 ### <a name="fetchdata-component"></a>FetchData 元件
 
 [!INCLUDE[](~/includes/blazor-security/fetchdata-component.md)]
+
+## <a name="run-the-app"></a>執行應用程式
+
+從伺服器專案執行應用程式。 使用 Visual Studio 時，請選取**方案總管**中的伺服器專案，然後選取工具列中的 [**執行**] 按鈕，或從 [**調試**程式] 功能表啟動應用程式。
 
 [!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]

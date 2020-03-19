@@ -5,6 +5,6 @@
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[.NET Core 2.1 SDK 或更新版本](https://www.microsoft.com/net/download/windows)
+[.NET Core 2.1 SDK 或更新版本](https://dotnet.microsoft.com/download)
 
 ::: moniker-end

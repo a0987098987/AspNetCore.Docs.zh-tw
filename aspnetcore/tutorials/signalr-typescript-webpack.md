@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 no-loc:
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: e6dd200367278b1697ef232f5d79dfbd138bb82b
-ms.sourcegitcommit: 40dc9b00131985abcd99bd567647420d798e798a
+ms.openlocfilehash: ce5752743912a979a95fb5d504e4bcbb2b69ce1e
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78935484"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511336"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
 
@@ -34,18 +34,18 @@ ms.locfileid: "78935484"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)，其中包含 **ASP.NET 和 Web 部署**工作負載
-* [.NET Core SDK 3.0 或更新版本](https://www.microsoft.com/net/download/all)
+* [.NET Core SDK 3.0 或更新版本](https://dotnet.microsoft.com/download/dotnet-core)
 * 具有 [npm](https://nodejs.org/) 的 [Node.js](https://www.npmjs.com/)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Visual Studio Code](https://code.visualstudio.com/download)
-* [.NET Core SDK 3.0 或更新版本](https://www.microsoft.com/net/download/all)
+* [.NET Core SDK 3.0 或更新版本](https://dotnet.microsoft.com/download/dotnet-core)
 * [適用於 Visual Studio Code 1.17.1 版或更新版本的 C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * 具有 [npm](https://nodejs.org/) 的 [Node.js](https://www.npmjs.com/)
 
@@ -291,18 +291,18 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
 ::: moniker range="< aspnetcore-3.0"
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)，其中包含 **ASP.NET 和 Web 部署**工作負載
-* [.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download/all)
+* [.NET Core SDK 2.2 或更新版本](https://dotnet.microsoft.com/download/dotnet-core)
 * 具有 [npm](https://nodejs.org/) 的 [Node.js](https://www.npmjs.com/)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Visual Studio Code](https://code.visualstudio.com/download)
-* [.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download/all)
+* [.NET Core SDK 2.2 或更新版本](https://dotnet.microsoft.com/download/dotnet-core)
 * [適用於 Visual Studio Code 1.17.1 版或更新版本的 C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * 具有 [npm](https://nodejs.org/) 的 [Node.js](https://www.npmjs.com/)
 

@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: 25ce311373b0aaddfa3bc2728c39e503acbca69d
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 9c1042dd48b9167209b46e97a09e011b80e2609c
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659485"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511141"
 ---
 # <a name="tools-and-downloads"></a>工具及下載
 
@@ -28,7 +28,7 @@ Azure 提供數個介面來布建和管理資源，例如[Azure 入口網站](ht
 需要下列工具：
 
 * [Git](https://git-scm.com/downloads) &mdash; 在本指南中建議使用 git 的基本瞭解。 請參閱[git 檔](https://git-scm.com/doc)，特別是[git 遠端](https://git-scm.com/docs/git-remote)和[git push](https://git-scm.com/docs/git-push)。
-* 需要[.NET Core SDK](https://www.microsoft.com/net/download/) &mdash; 2.1.300 或更新版本，才能建立並執行範例應用程式。 如果 Visual Studio 與 **.Net Core 跨平臺開發**工作負載一起安裝，則已安裝 .NET Core SDK。
+* 需要[.NET Core SDK](https://dotnet.microsoft.com/download/) &mdash; 2.1.300 或更新版本，才能建立並執行範例應用程式。 如果 Visual Studio 與 **.Net Core 跨平臺開發**工作負載一起安裝，則已安裝 .NET Core SDK。
 
     確認您的 .NET Core SDK 安裝。 開啟命令 shell，然後執行下列命令：
 

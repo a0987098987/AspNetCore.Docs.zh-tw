@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: test/troubleshoot
-ms.openlocfilehash: 042e1c84a7226cb4bf56bcc0ff4e576b67e68e1b
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 345967f08cf99ef5f18d0c9bcd59ab29c74454f1
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78655299"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511505"
 ---
 # <a name="troubleshoot-and-debug-aspnet-core-projects"></a>疑難排解和調試 ASP.NET Core 專案
 
@@ -32,7 +32,7 @@ ms.locfileid: "78655299"
 
 > 已安裝32位和64位版本的 .NET Core SDK。 只會顯示安裝在 ' C：\\Program Files\\dotnet\\sdk\\' 的64位版本範本。
 
-當安裝32位（x86）和64位（x64）版本的[.NET Core SDK](https://www.microsoft.com/net/download/all)時，就會出現這個警告。 可能會安裝這兩個版本的常見原因包括：
+當安裝32位（x86）和64位（x64）版本的[.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)時，就會出現這個警告。 可能會安裝這兩個版本的常見原因包括：
 
 * 您一開始是使用32位電腦下載 .NET Core SDK 安裝程式，然後將它複製到64位電腦並加以安裝。
 * 32位 .NET Core SDK 是由另一個應用程式所安裝。

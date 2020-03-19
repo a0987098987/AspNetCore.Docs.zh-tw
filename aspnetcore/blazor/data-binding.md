@@ -1,27 +1,29 @@
 ---
 title: ASP.NET Core Blazor 資料系結
 author: guardrex
-description: 瞭解 Blazor 應用程式中元件和 DOM 元素的資料系結案例。
+description: 瞭解 Blazor 應用程式中元件和 DOM 元素的資料系結功能。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/24/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/data-binding
-ms.openlocfilehash: 92377730b9d353a507ffd384710fb979affe7265
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 5b49d2598a451ee607e034913bd1aeaa03f941c6
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78661284"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511193"
 ---
 # <a name="aspnet-core-opno-locblazor-data-binding"></a>ASP.NET Core Blazor 資料系結
 
 By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com/danroth27)
 
-元件和 DOM 元素的資料系結都是使用[`@bind`](xref:mvc/views/razor#bind)屬性來完成。 下列範例會將 `CurrentValue` 屬性系結至文字方塊的值：
+Razor 元件透過具有欄位、屬性或 Razor 運算式值的 HTML 專案屬性（名為[`@bind`](xref:mvc/views/razor#bind) ）提供資料系結功能。
+
+下列範例會將 `CurrentValue` 屬性系結至文字方塊的值：
 
 ```razor
 <input @bind="CurrentValue" />
@@ -78,6 +80,8 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
     private string _paragraphStyle = "color:red";
 }
 ```
+
+屬性系結會區分大小寫。 例如，`@bind` 有效，而且 `@Bind` 無效。
 
 ## <a name="unparsable-values"></a>無法剖析的值
 

@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 35accdd2f65ac5430525be88cc621094e37d3e40
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 1a4efcd4e9e3296e9c208f1419bc86734951b0c1
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667248"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511518"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>3\.0 ASP.NET Core 的新功能
 
@@ -517,7 +517,7 @@ ASP.NET Core 3.0 包含許多增強功能，可減少記憶體使用量並改善
 
 ## <a name="aspnet-core-30-only-runs-on-net-core-30"></a>ASP.NET Core 3.0 只會在 .NET Core 3.0 上執行
 
-從 ASP.NET Core 3.0，.NET Framework 不再是支援的目標架構。 以 .NET Framework 為目標的專案可以使用[.Net Core 2.1 LTS 版本](https://www.microsoft.com/net/download/dotnet-core/2.1)，以完全支援的方式繼續進行。 大部分的 ASP.NET Core 2.1. x 相關套件會無限期地受到支援，超過 .NET Core 2.1 的三年 LTS 期限。
+從 ASP.NET Core 3.0，.NET Framework 不再是支援的目標架構。 以 .NET Framework 為目標的專案可以使用[.Net Core 2.1 LTS 版本](https://dotnet.microsoft.com/download/dotnet-core/2.1)，以完全支援的方式繼續進行。 大部分的 ASP.NET Core 2.1. x 相關套件會無限期地受到支援，超過 .NET Core 2.1 的三年 LTS 期限。
 
 如需遷移資訊，請參閱[將您的程式碼從 .NET Framework 移植到 .Net Core](/dotnet/core/porting/)。
 
@@ -542,3 +542,4 @@ ASP.NET Core 3.0 包含許多增強功能，可減少記憶體使用量並改善
 ## Additional information
 For the complete list of changes, see the [ASP.NET Core 3.0 Release Notes](WHERE IS THIS????).
 -->
+ 

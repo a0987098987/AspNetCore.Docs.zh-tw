@@ -1,27 +1,27 @@
 ---
 title: ASP.NET Core Blazor 事件處理
 author: guardrex
-description: 瞭解 Blazor的事件處理案例，包括事件引數類型、事件回呼和管理預設瀏覽器事件。
+description: 瞭解 Blazor的事件處理功能，包括事件引數類型、事件回呼和管理預設瀏覽器事件。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/event-handling
-ms.openlocfilehash: 25844ef39aee849072d16f3d73eda0a1c20ee788
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: c144841805e07a136f153c25a78c7f9af7c5801b
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78661872"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511362"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core Blazor 事件處理
 
 By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com/danroth27)
 
-Razor 元件提供事件處理功能。 對於名為 `on{EVENT}` 的 HTML 專案屬性（例如，`onclick` 和 `onsubmit`）與委派類型的值，Razor 元件會將屬性的值視為事件處理常式。 屬性的名稱一律會格式化[`@on{EVENT}`](xref:mvc/views/razor#onevent)。
+Razor 元件提供事件處理功能。 對於名為[`@on{EVENT}`](xref:mvc/views/razor#onevent)的 HTML 專案屬性（例如，`@onclick`）與委派類型的值，Razor 元件會將屬性的值視為事件處理常式。
 
 下列程式碼會在 UI 中選取按鈕時，呼叫 `UpdateHeading` 方法：
 

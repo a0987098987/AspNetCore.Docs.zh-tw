@@ -5,12 +5,12 @@ description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 AS
 ms.author: scaddie
 ms.date: 10/18/2019
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: e9ebfa7352350cf39917e515a1a66d6271829f38
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 68a45dc50e00bead564500a12509b62a4a193ec4
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659254"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511080"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "78659254"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-[.NET Core SDK 2.2 或更新版本](https://www.microsoft.com/net/download)
+[.NET Core SDK 2.2 或更新版本](https://dotnet.microsoft.com/download)
 
 ## <a name="target-frameworks"></a>目標 Framework
 

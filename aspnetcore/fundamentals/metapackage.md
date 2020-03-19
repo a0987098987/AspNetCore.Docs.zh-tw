@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/25/2018
 uid: fundamentals/metapackage
-ms.openlocfilehash: e47f583d0fa75bdeb26b669303747a70619117c1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: cc00c075909da5c17a4aa2fd252c9e662e5a0fc9
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663146"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511063"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>ASP.NET Core 2.0 的 Microsoft.AspNetCore.All 中繼套件
 
@@ -94,6 +94,6 @@ ms.locfileid: "78663146"
 
 建議您移轉到 `Microsoft.AspNetCore.App` 中繼套件 2.1 與更新版本。 若要繼續使用 `Microsoft.AspNetCore.All` 中繼套件並確保已部署最新的更新程式版本：
 
-* 在開發電腦和組建伺服器上：安裝最新的 [.NET Core SDK](https://www.microsoft.com/net/download)。
-* 在部署伺服器上：安裝最新的 [.NET Core 執行階段](https://www.microsoft.com/net/download)。
+* 在開發電腦和組建伺服器上：安裝最新的 [.NET Core SDK](https://dotnet.microsoft.com/download)。
+* 在部署伺服器上：安裝最新的 [.NET Core 執行階段](https://dotnet.microsoft.com/download)。
  您的應用程式會在應用程式重新開機時，向前復原到已安裝的最新版本。

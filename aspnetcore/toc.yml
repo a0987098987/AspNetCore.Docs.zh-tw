@@ -969,6 +969,8 @@
           uid: security/authentication/individual
         - name: 設定憑證驗證
           uid: security/authentication/certauth
+        - name: Multi-Factor Authentication
+          uid: security/authentication/mfa
     - name: 授權
       items:
         - name: 總覽

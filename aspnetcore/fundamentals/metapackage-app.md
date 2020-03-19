@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/24/2019
 uid: fundamentals/metapackage-app
-ms.openlocfilehash: 3ce74bc7329a88ffc6f77baf6b8a311c02951318
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: b30c90116f5a53ba487f88544514f36e388233d3
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663139"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511375"
 ---
 # <a name="microsoftaspnetcoreapp-for-aspnet-core"></a>ASP.NET Core 的 AspNetCore 應用程式
 
@@ -107,8 +107,8 @@ ASP.NET Core 共用架構：
 
 更新 ASP.NET Core：
 
-* 在開發電腦和組建伺服器上：下載並安裝 [.NET Core SDK](https://www.microsoft.com/net/download)。
-* 在部署伺服器上：下載並安裝 [.NET Core 執行階段](https://www.microsoft.com/net/download)。
+* 在開發電腦和組建伺服器上：下載並安裝 [.NET Core SDK](https://dotnet.microsoft.com/download)。
+* 在部署伺服器上：下載並安裝 [.NET Core 執行階段](https://dotnet.microsoft.com/download)。
 
  應用程式會在應用程式重新開機時，向前復原到已安裝的最新版本。 您不必更新專案檔中的 `Microsoft.AspNetCore.App` 版本號碼。 如需詳細資訊，請參閱[向前復原 Framework 相依的應用程式](/dotnet/core/versions/selection#framework-dependent-apps-roll-forward)。
 

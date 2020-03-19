@@ -5,12 +5,12 @@ description: 提供 ASP.NET Core 存放庫中驗證範例的連結。
 ms.author: riande
 ms.date: 01/31/2019
 uid: security/authentication/samples
-ms.openlocfilehash: 3d7e28f6e501bd8bd3908ca4b314a63cee52ebe3
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: b013d02a65e752bbb61a87a0bf502785125378a2
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78658414"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511609"
 ---
 # <a name="authentication-samples-for-aspnet-core"></a>ASP.NET Core 的驗證範例
 
@@ -32,7 +32,7 @@ ms.locfileid: "78658414"
 
 * 選取[分支](https://github.com/dotnet/AspNetCore)。 例如， `Tag:v3.0.0`
 * 複製或下載[ASP.NET Core 存放庫](https://github.com/dotnet/AspNetCore)。
-* 確認您已安裝符合 ASP.NET Core 存放庫複製的[.NET Core SDK](https://www.microsoft.com/net/download/all)版本。
+* 確認您已安裝符合 ASP.NET Core 存放庫複製的[.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)版本。
 * 流覽至*AspNetCore/src/Security/samples*中的範例，並使用 `dotnet run`執行範例。
 
 ::: moniker-end
@@ -53,7 +53,7 @@ ms.locfileid: "78658414"
 
 * 選取[分支](https://github.com/dotnet/AspNetCore)。 例如， `release/2.2`
 * 複製或下載[ASP.NET Core 存放庫](https://github.com/dotnet/AspNetCore)。
-* 確認您已安裝符合 ASP.NET Core 存放庫複製的[.NET Core SDK](https://www.microsoft.com/net/download/all)版本。
+* 確認您已安裝符合 ASP.NET Core 存放庫複製的[.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)版本。
 * 流覽至*AspNetCore/src/Security/samples*中的範例，並使用 `dotnet run`執行範例。
 
 ::: moniker-end

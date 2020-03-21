@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/index
-ms.openlocfilehash: 48136d0717998df3311dd5177688e062d0009176
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: a65d47e55960d6e7bfeb672c0a1e6a7a305ad7ee
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083836"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989478"
 ---
 # <a name="secure-aspnet-core-opno-locblazor-webassembly"></a>安全 ASP.NET Core Blazor WebAssembly
 

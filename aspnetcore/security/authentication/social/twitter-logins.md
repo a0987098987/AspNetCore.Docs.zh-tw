@@ -4,15 +4,15 @@ author: rick-anderson
 description: 本教學課程示範如何將 Twitter 帳戶使用者驗證整合到現有的 ASP.NET Core 應用程式中。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/06/2019
+ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 4710c033018710ce3620f8d7221ae2253b2c0b69
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: b848486415fd72ce6180b4cf8fc1ba00410d694a
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78665925"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989746"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>使用 ASP.NET Core 的 Twitter 外部登錄設定
 
@@ -39,16 +39,19 @@ ms.locfileid: "78665925"
 
 * 填寫表單的其餘部分，然後選取 [**建立**]。 隨即顯示新的應用程式詳細資料：
 
-## <a name="storing-twitter-consumer-api-key-and-secret"></a>儲存 Twitter 取用者 API 金鑰和密碼
+## <a name="store-the-twitter-consumer-api-key-and-secret"></a>儲存 Twitter 取用者 API 金鑰和密碼
 
-執行下列命令，使用[秘密管理員](xref:security/app-secrets)安全地儲存 `ClientId` 和 `ClientSecret`：
+使用[秘密管理員](xref:security/app-secrets)來儲存機密設定，例如 Twitter 取用者 API 金鑰和密碼。 針對此範例，請使用下列步驟：
 
-```dotnetcli
-dotnet user-secrets set Authentication:Twitter:ConsumerAPIKey <Key>
-dotnet user-secrets set Authentication:Twitter:ConsumerSecret <Secret>
-```
+1. 根據[啟用秘密儲存](xref:security/app-secrets#enable-secret-storage)中的指示，初始化秘密儲存的專案。
+1. 將機密設定儲存在本機密碼存放區中，並使用秘密金鑰 `Authentication:Twitter:ConsumerKey` 和 `Authentication:Twitter:ConsumerSecret`：
 
-使用[秘密管理員](xref:security/app-secrets)，將 Twitter `Consumer Key` 和 `Consumer Secret` 等機密設定連結至您的應用程式設定。 基於此範例的目的，請將權杖命名為 `Authentication:Twitter:ConsumerKey` 並 `Authentication:Twitter:ConsumerSecret`。
+    ```dotnetcli
+    dotnet user-secrets set "Authentication:Twitter:ConsumerAPIKey" "<consumer-api-key>"
+    dotnet user-secrets set "Authentication:Twitter:ConsumerSecret" "<consumer-secret>"
+    ```
+
+[!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 在建立新的 Twitter 應用程式之後，您可以在 [**金鑰和存取權杖**] 索引標籤上找到這些權杖：
 

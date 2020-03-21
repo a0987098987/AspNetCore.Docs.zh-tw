@@ -4,15 +4,15 @@ author: rick-anderson
 description: 教學課程中的程式碼範例示範如何將 Facebook 帳戶使用者驗證整合到現有的 ASP.NET Core 應用程式中。
 ms.author: riande
 ms.custom: seoapril2019, mvc, seodec18
-ms.date: 12/02/2019
+ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 2e4cc04c6e7ff8e5f5701cc7f9ede73dbc1b4685
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: bb26a27f026e744c7d4925aa2281bf0625fff8a2
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667465"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989785"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Facebook 外部登入設定
 
@@ -59,18 +59,19 @@ ms.locfileid: "78667465"
 
 * 部署網站時，您必須重新流覽**Facebook 登**入設定頁面，並註冊新的公用 URI。
 
-## <a name="store-facebook-app-id-and-app-secret"></a>儲存 Facebook 應用程式識別碼和應用程式秘密
+## <a name="store-the-facebook-app-id-and-secret"></a>儲存 Facebook 應用程式識別碼和密碼
 
-使用[秘密管理員](xref:security/app-secrets)將機密設定（例如 Facebook `App ID` 和 `App Secret`）連結至您的應用程式設定。 基於本教學課程的目的，請將權杖命名為 `Authentication:Facebook:AppId` 並 `Authentication:Facebook:AppSecret`。
+使用[秘密管理員](xref:security/app-secrets)來儲存機密設定（例如 Facebook 應用程式識別碼和秘密值）。 針對此範例，請使用下列步驟：
+
+1. 根據[啟用秘密儲存](xref:security/app-secrets#enable-secret-storage)中的指示，初始化秘密儲存的專案。
+1. 將敏感性設定儲存在本機密碼存放區中，並使用秘密金鑰 `Authentication:Facebook:AppId` 和 `Authentication:Facebook:AppSecret`：
+
+    ```dotnetcli
+    dotnet user-secrets set "Authentication:Facebook:AppId" "<app-id>"
+    dotnet user-secrets set "Authentication:Facebook:AppSecret" "<app-secret>"
+    ```
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
-
-執行下列命令，使用秘密管理員安全地儲存 `App ID` 和 `App Secret`：
-
-```dotnetcli
-dotnet user-secrets set Authentication:Facebook:AppId <app-id>
-dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
-```
 
 ## <a name="configure-facebook-authentication"></a>設定 Facebook 驗證
 

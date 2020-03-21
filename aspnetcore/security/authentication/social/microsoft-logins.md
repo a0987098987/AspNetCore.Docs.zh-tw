@@ -4,15 +4,15 @@ author: rick-anderson
 description: 這個範例示範如何將 Microsoft 帳戶的使用者驗證整合到現有的 ASP.NET Core 應用程式中。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/4/2019
+ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: ddaae1a25a1dcf167ffae0f24b480e2cde6aca5b
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: bd75efb1d7ce08538d1a67be74d2f40f3964614f
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659793"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989752"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>使用 ASP.NET Core 的 Microsoft 帳戶外部登入設定
 
@@ -46,16 +46,17 @@ ms.locfileid: "78659793"
 > [!NOTE]
 > URI 區段 `/signin-microsoft` 會設定為 Microsoft 驗證提供者的預設回呼。 您可以在設定 Microsoft 驗證中介軟體時，透過[MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性來變更預設的回呼 URI。
 
-## <a name="store-the-microsoft-client-id-and-client-secret"></a>儲存 Microsoft 用戶端識別碼和用戶端秘密
+## <a name="store-the-microsoft-client-id-and-secret"></a>儲存 Microsoft 用戶端識別碼和密碼
 
-執行下列命令，使用[秘密管理員](xref:security/app-secrets)安全地儲存 `ClientId` 和 `ClientSecret`：
+使用[秘密管理員](xref:security/app-secrets)來儲存機密設定（例如 Microsoft 用戶端識別碼和秘密值）。 針對此範例，請使用下列步驟：
 
-```dotnetcli
-dotnet user-secrets set Authentication:Microsoft:ClientId <Client-Id>
-dotnet user-secrets set Authentication:Microsoft:ClientSecret <Client-Secret>
-```
+1. 根據[啟用秘密儲存](xref:security/app-secrets#enable-secret-storage)中的指示，初始化秘密儲存的專案。
+1. 將敏感性設定儲存在本機密碼存放區中，並使用秘密金鑰 `Authentication:Microsoft:ClientId` 和 `Authentication:Microsoft:ClientSecret`：
 
-使用[秘密管理員](xref:security/app-secrets)，將 Microsoft `ClientId` 和 `ClientSecret` 等機密設定連結至您的應用程式設定。 基於此範例的目的，請將權杖命名為 `Authentication:Microsoft:ClientId` 並 `Authentication:Microsoft:ClientSecret`。
+    ```dotnetcli
+    dotnet user-secrets set "Authentication:Microsoft:ClientId" "<client-id>"
+    dotnet user-secrets set "Authentication:Microsoft:ClientSecret" "<client-secret>"
+    ```
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 

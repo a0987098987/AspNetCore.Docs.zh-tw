@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/29/2020
 uid: fundamentals/configuration/index
-ms.openlocfilehash: e1237db2625a127bfa5c31ac29b4394be6941b2f
-ms.sourcegitcommit: 9e2b3aaccc9a41291eb23bf4561159e79cf6bc9d
+ms.openlocfilehash: b4fa082c5a53bc9ecb3c7b8ddcbf243ef0d94ba7
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546337"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989698"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -35,7 +35,7 @@ ASP.NET Core 中的設定是使用一或多個設定[提供者](#cp)來執行。
 
 <a name="default"></a>
 
-## <a name="default-configuration"></a>預設組態
+## <a name="default-configuration"></a>預設的組態
 
 ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建立的 web 應用程式會產生下列程式碼：
 
@@ -43,7 +43,7 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
 
  <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> 會以下列順序提供應用程式的預設組態：
 
-1. [ChainedConfigurationProvider](xref:Microsoft.Extensions.Configuration.ChainedConfigurationSource) ：加入現有的 `IConfiguration` 做為來源。 在預設設定案例中，會新增[主機](#hvac)配置，並將其設為_應用程式_設定的第一個來源。
+1. [ChainedConfigurationProvider](xref:Microsoft.Extensions.Configuration.ChainedConfigurationSource) ：新增現有的 `IConfiguration` 做為來源。 在預設設定案例中，會新增[主機](#hvac)配置，並將其設為_應用程式_設定的第一個來源。
 1. 使用[json 設定提供者](#file-configuration-provider)的[appsettings。](#appsettingsjson)
 1. *appsettings。* 使用[json 設定提供者](#file-configuration-provider)`Environment`*json* 。 例如， *appsettings*。***生產***。*json*和*appsettings*。***開發***。*json*。
 1. 應用程式在 `Development` 環境中執行時的[密碼](xref:security/app-secrets)。
@@ -71,7 +71,7 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
 預設 <xref:Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider> 會依照下列順序載入設定：
 
 1. *appsettings.json*
-1. *appsettings。* `Environment` *. json* ：例如， *appsettings*。***生產***。*json*和*appsettings*。***開發***。*json*檔案。 檔案的環境版本是根據[IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)載入。 如需詳細資訊，請參閱<xref:fundamentals/environments>。
+1. *appsettings。* `Environment`*json* ：例如， *appsettings*。***生產***。*json*和*appsettings*。***開發***。*json*檔案。 檔案的環境版本是根據[IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)載入。 如需詳細資訊，請參閱<xref:fundamentals/environments>。
 
 *appsettings*。`Environment`。*json*值會覆寫*appsettings*中的索引鍵。 例如，預設為：
 
@@ -152,7 +152,7 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
 * 在 Windows 上設定[上述範例](#appsettingsjson)的環境索引鍵和值。
 * 使用[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)時測試設定。 `dotnet run` 命令必須在專案目錄中執行。
 
-```cmd
+```dotnetcli
 set MyKey="My key from Environment"
 set Position__Title=Environment_Editor
 set Position__Name=Environment_Rick
@@ -172,9 +172,9 @@ setx Position__Title Setx_Environment_Editor /M
 setx Position__Name Environment_Rick /M
 ```
 
-若要測試先前的命令是否會覆寫*apsettings*和*appsettings。* `Environment`*json*：
+若要測試先前的命令是否會覆寫*appsettings*和*appsettings。* `Environment`*json*：
 
-* 使用 Visual Studio： [結束] 和 [重新開機] Visual Studio。
+* 使用 Visual Studio：結束並重新啟動 Visual Studio。
 * 使用 CLI：啟動新的命令視窗，並輸入 `dotnet run`。
 
 使用字串呼叫 <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*>，以指定環境變數的前置詞：
@@ -190,7 +190,7 @@ setx Position__Name Environment_Rick /M
 
 下列命令會測試自訂前置詞：
 
-```cmd
+```dotnetcli
 set MyCustomPrefix_MyKey="My key with MyCustomPrefix_ Environment"
 set MyCustomPrefix_Position__Title=Editor_with_customPrefix
 set MyCustomPrefix_Position__Name=Environment_Rick_cp
@@ -199,7 +199,7 @@ dotnet run
 
 [預設](#default)設定會載入前面加上 `DOTNET_` 和 `ASPNETCORE_`的環境變數和命令列引數。 ASP.NET Core 會使用 `DOTNET_` 和 `ASPNETCORE_` 首碼來進行[主機和應用程式](xref:fundamentals/host/generic-host#host-configuration)設定，但不適用於使用者設定。 如需主機和應用程式設定的詳細資訊，請參閱[.Net 泛型主機](xref:fundamentals/host/generic-host)。
 
-在[Azure App Service](https://azure.microsoft.com/services/app-service/)上，選取 [**設定 > 設定**] 頁面上的 [**新增應用程式設定**]。 Azure App Service 的應用程式設定如下：
+在[Azure App Service](https://azure.microsoft.com/services/app-service/)上，選取 [**設定] > 設定** 頁面上的 [**新增應用程式設定**]。 Azure App Service 的應用程式設定如下：
 
 * 待用加密，並透過加密通道傳輸。
 * 公開為環境變數。
@@ -243,7 +243,7 @@ dotnet run --MyKey "Using --" --Position:Title=Cmd-- --Position:Name=Cmd--Rick
 索引鍵值：
 
 * 必須遵循 `=`，否則當值在空格後面時，索引鍵必須具有 `--` 或 `/` 的前置詞。
-* 如果使用 `=`，則不需要。 例如， `MySetting=`。
+* 如果使用 `=`，則不需要。 例如，`MySetting=`。
 
 在相同的命令中，請勿混合使用 `=` 搭配使用空格的機碼值組的命令列引數索引鍵/值組。
 
@@ -325,7 +325,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 下表顯示可供 ASP.NET Core 應用程式使用的設定提供者。
 
-| Provider | 從提供設定 |
+| 提供者 | 從提供設定 |
 | -------- | ----------------------------------- |
 | [Azure Key Vault 組態提供者](xref:security/key-vault-configuration) | Azure Key Vault |
 | [Azure App 設定提供者](/azure/azure-app-configuration/quickstart-aspnet-core-app) | Azure 應用程式組態 |
@@ -357,7 +357,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 設定 API 具有四個連接字串環境變數的特殊處理規則。 這些連接字串牽涉到設定應用程式環境的 Azure 連接字串。 具有資料表中所顯示前置詞的環境變數，會載入至具有[預設](#default)設定的應用程式，或在沒有提供首碼給 `AddEnvironmentVariables`時使用。
 
-| 連接字串前置詞 | Provider |
+| 連接字串前置詞 | 提供者 |
 | ------------------------ | -------- |
 | `CUSTOMCONNSTR_` | 自訂提供者 |
 | `MYSQLCONNSTR_` | [MySQL](https://www.mysql.com/) |
@@ -498,7 +498,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 <xref:Microsoft.Extensions.Configuration.KeyPerFile.KeyPerFileConfigurationProvider> 使用目錄的檔案做為設定機碼值組。 機碼是檔案名稱。 值包含檔案的內容。 Docker 裝載案例中會使用每個檔案的索引鍵設定提供者。
 
-若要啟用每個檔案機碼設定，請在 <xref:Microsoft.Extensions.Configuration.KeyPerFileConfigurationBuilderExtensions.AddKeyPerFile*> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 延伸模組方法。 檔案的 `directoryPath` 必須是絕對路徑。
+若要啟用每個檔案機碼設定，請在 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.KeyPerFileConfigurationBuilderExtensions.AddKeyPerFile*> 延伸模組方法。 檔案的 `directoryPath` 必須是絕對路徑。
 
 多載允許指定：
 
@@ -695,7 +695,7 @@ Index: 5  Value: value5
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
 
-下列程式碼顯示如何在 `EFConfigurationProvider`Program.cs*中使用自訂*：
+下列程式碼顯示如何在 *Program.cs* 中使用自訂 `EFConfigurationProvider`：
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=29-30)]
 
@@ -707,7 +707,7 @@ Index: 5  Value: value5
 
 [!code-csharp[](index/samples/3.x/ConfigSample/StartupKey.cs?name=snippet&highlight=13,18)]
 
-如需使用啟動方便方法來存取設定的範例，請參閱[應用程式啟動：方便方法](xref:fundamentals/startup#convenience-methods)。
+如需使用啟動方便方法來存取設定的範例，請參閱[應用程式啟動：便利的方法](xref:fundamentals/startup#convenience-methods)。
 
 ## <a name="access-configuration-in-razor-pages"></a>Razor Pages 中的存取設定
 
@@ -808,19 +808,19 @@ using Microsoft.Extensions.Configuration;
 
 如需從舊版 ASP.NET 遷移應用程式設定的詳細資訊，請參閱 <xref:migration/proper-to-2x/index#store-configurations>。
 
-## <a name="default-configuration"></a>預設組態
+## <a name="default-configuration"></a>預設的組態
 
 以 ASP.NET Core [dotnet new](/dotnet/core/tools/dotnet-new) 範本為基礎的 Web 應用程式，會在建置主機時呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>。 `CreateDefaultBuilder` 會以下列順序提供應用程式的預設組態：
 
 下列項目適用於使用 [Web 主機](xref:fundamentals/host/web-host)的應用程式。 如需使用[一般主機](xref:fundamentals/host/generic-host)時預設組態的詳細資料，請參閱[本主題的最新版本](xref:fundamentals/configuration/index)。
 
 * 主機組態的提供來源：
-  * 使用`ASPNETCORE_`環境變數組態提供者`ASPNETCORE_ENVIRONMENT`且以 [ 為前置詞 (例如 ](#environment-variables-configuration-provider)) 的環境變數。 載入設定機碼值組時，會移除前置詞 (`ASPNETCORE_`)。
+  * 使用[環境變數組態提供者](#environment-variables-configuration-provider)且以 `ASPNETCORE_` 為前置詞 (例如 `ASPNETCORE_ENVIRONMENT`) 的環境變數。 載入設定機碼值組時，會移除前置詞 (`ASPNETCORE_`)。
   * 使用[命令列組態提供者](#command-line-configuration-provider)的命令列引數。
 * 應用程式設定的提供來源：
-  * 使用*檔案組態提供者*的 [appsettings.json](#file-configuration-provider)。
-  * 使用*檔案組態提供者*的 [appsettings.{Environment}.json](#file-configuration-provider)。
-  * 應用程式在使用項目組件之 [ 環境中執行時的](xref:security/app-secrets)秘密管理員`Development`。
+  * 使用[檔案組態提供者](#file-configuration-provider)的 *appsettings.json*。
+  * 使用[檔案組態提供者](#file-configuration-provider)的 *appsettings.{Environment}.json*。
+  * 應用程式在使用項目組件之 `Development` 環境中執行時的[秘密管理員](xref:security/app-secrets)。
   * 使用[環境變數組態提供者](#environment-variables-configuration-provider)的環境變數。
   * 使用[命令列組態提供者](#command-line-configuration-provider)的命令列引數。
 
@@ -875,7 +875,7 @@ using Microsoft.Extensions.Configuration;
 
 實作變更偵測的組態提供者能夠在基礎設定變更時重新載入組態。 例如，檔案組態提供者 (將於本主題稍後討論) 和 [Azure Key Vault 組態提供者](xref:security/key-vault-configuration)均會實作變更偵測。
 
-您可以在應用程式的<xref:Microsoft.Extensions.Configuration.IConfiguration>相依性插入 (DI)[ 容器中找到 ](xref:fundamentals/dependency-injection)。 <xref:Microsoft.Extensions.Configuration.IConfiguration> 可以插入至 Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 或 MVC <xref:Microsoft.AspNetCore.Mvc.Controller>，以取得類別的設定。
+您可以在應用程式的[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器中找到 <xref:Microsoft.Extensions.Configuration.IConfiguration>。 <xref:Microsoft.Extensions.Configuration.IConfiguration> 可以插入至 Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 或 MVC <xref:Microsoft.AspNetCore.Mvc.Controller>，以取得類別的設定。
 
 在下列範例中，`_config` 欄位是用來存取設定值：
 
@@ -928,7 +928,7 @@ public class HomeController : Controller
 
 下表顯示可供 ASP.NET Core 應用程式使用的設定提供者。
 
-| Provider | 從&hellip;提供設定 |
+| 提供者 | 從&hellip;提供設定 |
 | -------- | ----------------------------------- |
 | [Azure Key Vault 設定提供者](xref:security/key-vault-configuration) (*安全性*主題) | Azure Key Vault |
 | [Azure 應用程式組態提供者](/azure/azure-app-configuration/quickstart-aspnet-core-app) (Azure 文件) | Azure 應用程式組態 |
@@ -1017,7 +1017,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 
 為了啟用命令列設定，<xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> 延伸模組方法會在 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 的執行個體上呼叫。
 
-呼叫 `AddCommandLine` 時，會自動呼叫 `CreateDefaultBuilder(string [])`。 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
+呼叫 `CreateDefaultBuilder(string [])` 時，會自動呼叫 `AddCommandLine`。 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
 
 `CreateDefaultBuilder` 也會載入：
 
@@ -1055,8 +1055,8 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 | 索引鍵前置字元               | 範例                                                |
 | ------------------------ | ------------------------------------------------------ |
 | 沒有前置字元                | `CommandLineKey1=value1`                               |
-| 雙虛線 (`--`)        | `--CommandLineKey2=value2`, `--CommandLineKey2 value2` |
-| 正斜線 (`/`)      | `/CommandLineKey3=value3`, `/CommandLineKey3 value3`   |
+| 雙虛線 (`--`)        | `--CommandLineKey2=value2`、 `--CommandLineKey2 value2` |
+| 正斜線 (`/`)      | `/CommandLineKey3=value3`、 `/CommandLineKey3 value3`   |
 
 在相同的命令中，請不要混合使用等號搭配使用空格之機碼值組的命令列引數。
 
@@ -1125,13 +1125,13 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> 會在執行階段從環境變數機碼值組載入設定。
 
-若要啟用環境變數設定，請在 <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 延伸模組方法。
+若要啟用環境變數設定，請在 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*> 延伸模組方法。
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 [Azure App Service](https://azure.microsoft.com/services/app-service/)允許在 Azure 入口網站中設定環境變數，以使用環境變數設定提供者來覆寫應用程式設定。 如需詳細資訊，請參閱 [Azure App：使用 Azure 入口網站覆寫應用程式設定](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal)。
 
-使用 `AddEnvironmentVariables`Web 主機`ASPNETCORE_`初始化新的主機建立器並呼叫 [ 時，可使用 ](#host-versus-app-configuration) 為[主機組態](xref:fundamentals/host/web-host)載入字首為 `CreateDefaultBuilder` 的環境變數。 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
+使用 [Web 主機](xref:fundamentals/host/web-host)初始化新的主機建立器並呼叫 `CreateDefaultBuilder` 時，可使用 `AddEnvironmentVariables` 為[主機組態](#host-versus-app-configuration)載入字首為 `ASPNETCORE_` 的環境變數。 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
 
 `CreateDefaultBuilder` 也會載入：
 
@@ -1186,7 +1186,7 @@ var config = new ConfigurationBuilder()
 
 設定 API 四個連接字串環境變數的特殊處理規則，這些這些環境變數牽涉到針對應用程式環境設定 Azure 連接字串。 若將前置詞提供給 `AddEnvironmentVariables`具有下表顯示之前置詞的環境變數。
 
-| 連接字串前置詞 | Provider |
+| 連接字串前置詞 | 提供者 |
 | ------------------------ | -------- |
 | `CUSTOMCONNSTR_` | 自訂提供者 |
 | `MYSQLCONNSTR_` | [MySQL](https://www.mysql.com/) |
@@ -1230,7 +1230,7 @@ _config["ConnectionStrings:ReleaseDB"]
 
 <xref:Microsoft.Extensions.Configuration.Ini.IniConfigurationProvider> 會在執行階段從 INI 檔案機碼值組載入設定。
 
-若要啟用 INI 檔案設定，請在 <xref:Microsoft.Extensions.Configuration.IniConfigurationExtensions.AddIniFile*> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 延伸模組方法。
+若要啟用 INI 檔案設定，請在 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.IniConfigurationExtensions.AddIniFile*> 延伸模組方法。
 
 冒號可用來做為 INI 檔案設定中的區段分隔符號。
 
@@ -1279,7 +1279,7 @@ key=value
 
 <xref:Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider> 會在執行階段從 JSON 檔案機碼值組載入設定。
 
-若要啟用 JSON 檔案設定，請在 <xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 延伸模組方法。
+若要啟用 JSON 檔案設定，請在 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*> 延伸模組方法。
 
 多載允許指定：
 
@@ -1336,7 +1336,7 @@ key=value
 
 <xref:Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider> 會在執行階段從 XML 檔案機碼值組載入設定。
 
-若要啟用 XML 檔案設定，請在 <xref:Microsoft.Extensions.Configuration.XmlConfigurationExtensions.AddXmlFile*> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 延伸模組方法。
+若要啟用 XML 檔案設定，請在 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.XmlConfigurationExtensions.AddXmlFile*> 延伸模組方法。
 
 多載允許指定：
 
@@ -1423,7 +1423,7 @@ XML 設定檔可以針對重複的區段使用相異元素名稱：
 
 <xref:Microsoft.Extensions.Configuration.KeyPerFile.KeyPerFileConfigurationProvider> 使用目錄的檔案做為設定機碼值組。 機碼是檔案名稱。 值包含檔案的內容。 每個檔案機碼設定提供者是在 Docker 主機案例中使用。
 
-若要啟用每個檔案機碼設定，請在 <xref:Microsoft.Extensions.Configuration.KeyPerFileConfigurationBuilderExtensions.AddKeyPerFile*> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 延伸模組方法。 檔案的 `directoryPath` 必須是絕對路徑。
+若要啟用每個檔案機碼設定，請在 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.KeyPerFileConfigurationBuilderExtensions.AddKeyPerFile*> 延伸模組方法。 檔案的 `directoryPath` 必須是絕對路徑。
 
 多載允許指定：
 
@@ -1447,7 +1447,7 @@ XML 設定檔可以針對重複的區段使用相異元素名稱：
 
 <xref:Microsoft.Extensions.Configuration.Memory.MemoryConfigurationProvider> 使用記憶體內集合做為設定機碼值組。
 
-若要啟用記憶體內集合設定，請在 <xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 延伸模組方法。
+若要啟用記憶體內集合設定，請在 <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> 的執行個體上呼叫 <xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*> 延伸模組方法。
 
 設定提供者可以使用 `IEnumerable<KeyValuePair<String,String>>` 來初始化。
 
@@ -1477,7 +1477,7 @@ public static readonly Dictionary<string, string> _dict =
 
 [`ConfigurationBinder.GetValue<T>`](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*)會使用指定的索引鍵來解壓縮設定中的單一值，並將其轉換為指定的 noncollection 類型。 多載會接受預設值。
 
-下列範例︰
+下列範例：
 
 * 從具有機碼 `NumberKey` 的組態擷取字串值。 若在組態機碼中找不到 `NumberKey`，則會使用預設值 `99`。
 * 鍵入值為 `int`。
@@ -1542,7 +1542,7 @@ public class IndexModel : PageModel
 
 [IConfiguration.GetSection](xref:Microsoft.Extensions.Configuration.IConfiguration.GetSection*) 會擷取具有所指定子區段機碼的設定子區段。
 
-若要傳回 <xref:Microsoft.Extensions.Configuration.IConfigurationSection> 中只包含一個機碼值組的 `section1`，請呼叫 `GetSection` 並提供區段名稱：
+若要傳回 `section1` 中只包含一個機碼值組的 <xref:Microsoft.Extensions.Configuration.IConfigurationSection>，請呼叫 `GetSection` 並提供區段名稱：
 
 ```csharp
 var configSection = _config.GetSection("section1");
@@ -1562,7 +1562,7 @@ var configSection = _config.GetSection("section2:subsection0");
 
 ### <a name="getchildren"></a>GetChildren
 
-對 [ 上之 ](xref:Microsoft.Extensions.Configuration.IConfiguration.GetChildren*)IConfiguration.GetChildren`section2` 的呼叫會取得包括下列項目的 `IEnumerable<IConfigurationSection>`：
+對 `section2` 上之 [IConfiguration.GetChildren](xref:Microsoft.Extensions.Configuration.IConfiguration.GetChildren*) 的呼叫會取得包括下列項目的 `IEnumerable<IConfigurationSection>`：
 
 * `subsection0`
 * `subsection1`
@@ -1661,7 +1661,7 @@ _config.GetSection("array").Bind(arrayExample);
 
 繫結物件中的索引 &num;3 存放 `array:4` 設定機碼與其 `value4` 的設定資料。 當繫結包含陣列的設定資料時，設定機碼中的陣列索引只會用來列舉設定資料 (當建立物件時)。 設定資料中不能保留 Null 值，當設定機碼中的陣列略過一或多個索引時，不會在繫結物件中建立 Null 值項目。
 
-由會在設定中產生正確機碼值組的任何設定提供者繫結到 &num; 執行個體之前，可以提供索引 `ArrayExample`3 缺少的設定項目。 若範例包含具有缺少之機碼值組的額外 JSON 設定提供者，`ArrayExample.Entries` 會符合完整的設定陣列：
+由會在設定中產生正確機碼值組的任何設定提供者繫結到 `ArrayExample` 執行個體之前，可以提供索引 &num;3 缺少的設定項目。 若範例包含具有缺少之機碼值組的額外 JSON 設定提供者，`ArrayExample.Entries` 會符合完整的設定陣列：
 
 *missing_value.json*：
 
@@ -1684,7 +1684,7 @@ config.AddJsonFile(
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
-在「JSON 設定提供者」包含索引 `ArrayExample`3 的項目之後，若繫結 &num; 類別執行個體，`ArrayExample.Entries` 陣列會包括這些值：
+在「JSON 設定提供者」包含索引 &num;3 的項目之後，若繫結 `ArrayExample` 類別執行個體，`ArrayExample.Entries` 陣列會包括這些值：
 
 | `ArrayExample.Entries` 索引 | `ArrayExample.Entries` 值 |
 | :--------------------------: | :--------------------------: |
@@ -1762,7 +1762,7 @@ config.AddJsonFile(
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
 
-下列程式碼顯示如何在 `EFConfigurationProvider`Program.cs*中使用自訂*：
+下列程式碼顯示如何在 *Program.cs* 中使用自訂 `EFConfigurationProvider`：
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=29-30)]
 
@@ -1792,11 +1792,11 @@ public class Startup
 }
 ```
 
-如需使用啟動方便方法來存取設定的範例，請參閱[應用程式啟動：方便方法](xref:fundamentals/startup#convenience-methods)。
+如需使用啟動方便方法來存取設定的範例，請參閱[應用程式啟動：便利的方法](xref:fundamentals/startup#convenience-methods)。
 
 ## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>存取 Razor Pages 頁面或 MVC 檢視中的設定
 
-若要在 [Razor Pages 頁面] 頁面或 MVC 檢視中存取組態設定，請針對 [Microsoft.Extensions.Configuration 命名空間](xref:mvc/views/razor#using)[using 指示詞](/dotnet/csharp/language-reference/keywords/using-directive) ([C# 參考：using 指示詞](xref:Microsoft.Extensions.Configuration))，並將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 插入到頁面或檢視中。
+若要在 [Razor Pages 頁面] 頁面或 MVC 檢視中存取組態設定，請針對 [Microsoft.Extensions.Configuration 命名空間](xref:Microsoft.Extensions.Configuration)[using 指示詞](xref:mvc/views/razor#using) ([C# 參考：using 指示詞](/dotnet/csharp/language-reference/keywords/using-directive))，並將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 插入到頁面或檢視中。
 
 在 [Razor 頁面] 頁面中：
 

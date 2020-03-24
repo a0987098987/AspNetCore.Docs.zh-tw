@@ -62,16 +62,16 @@
       }
     }
   ],
-"branch_target_mapping": {
-     "live-sxs": [
-           "Publish",
-           "Pdf" 
+  "branch_target_mapping": {
+    "live-sxs": [
+      "Publish",
+      "Pdf"
     ],
     "live": [
-           "Publish",
-           "Pdf"
+      "Publish",
+      "Pdf"
     ]
-},
+  },
   "need_generate_pdf_url_template": true,
   "targets": {
     "Pdf": {
@@ -79,5 +79,8 @@
     }
   },
   "need_generate_pdf": false,
-  "need_generate_intellisense": false
+  "need_generate_intellisense": false,
+  "docs_build_engine": {
+    "name": "docfx_v3"
+  }
 }

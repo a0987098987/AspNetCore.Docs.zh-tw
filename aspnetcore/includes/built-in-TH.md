@@ -4,6 +4,8 @@
 
 **[快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)**
 
+**[元件標記協助程式](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)**
+
 **[分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)**
 
 **[環境標記協助程式](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)**

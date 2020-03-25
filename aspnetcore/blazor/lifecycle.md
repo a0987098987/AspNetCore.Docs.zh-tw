@@ -5,17 +5,17 @@ description: 瞭解如何在 ASP.NET Core Blazor 應用程式中使用 Razor 元
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 03/17/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/lifecycle
-ms.openlocfilehash: ecacd0a9728cbefd716e9dc7cd8a8c62f3df6e0d
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 831f575afa6ce11d06c016d43ecd1bb59d09eab6
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659926"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218904"
 ---
 # <a name="aspnet-core-opno-locblazor-lifecycle"></a>ASP.NET Core Blazor 生命週期
 
@@ -56,6 +56,8 @@ Blazor 伺服器應用程式可將[其內容呼叫呈現](xref:blazor/hosting-mo
 
 當 Blazor 伺服器應用程式進行預先處理時，某些動作（例如呼叫 JavaScript）並不可能，因為尚未建立與瀏覽器的連接。 元件可能需要在資源清單時以不同的方式呈現。 如需詳細資訊，請參閱偵測[應用程式何時進行預呈現](#detect-when-the-app-is-prerendering)一節。
 
+如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
+
 ### <a name="before-parameters-are-set"></a>設定參數之前
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync*> 會在轉譯樹狀結構中設定元件的父系所提供的參數：
@@ -74,6 +76,8 @@ public override async Task SetParametersAsync(ParameterView parameters)
 `SetParametersAsync` 的預設執行會使用在 `ParameterView`中具有對應值的 `[Parameter]` 或 `[CascadingParameter]` 屬性，來設定每個屬性的值。 `ParameterView` 中沒有對應值的參數會保持不變。
 
 如果未叫用 `base.SetParametersAync`，自訂程式碼就可以任何需要的方式解讀傳入的參數值。 例如，不需要將傳入的參數指派給類別的屬性。
+
+如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
 
 ### <a name="after-parameters-are-set"></a>設定參數之後
 
@@ -100,6 +104,8 @@ protected override void OnParametersSet()
     ...
 }
 ```
+
+如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
 
 ### <a name="after-component-render"></a>元件呈現之後
 
@@ -136,6 +142,8 @@ protected override void OnAfterRender(bool firstRender)
 ```
 
 在*伺服器上進行預呈現時，不會呼叫*`OnAfterRender` 和 `OnAfterRenderAsync`。
+
+如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
 
 ### <a name="suppress-ui-refreshing"></a>隱藏 UI 重新整理
 
@@ -188,6 +196,16 @@ Blazor 伺服器範本中的*Pages/FetchData* ：
 
 > [!NOTE]
 > 不支援在 `Dispose` 中呼叫 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged*>。 在卸載轉譯器的過程中，可能會叫用 `StateHasChanged`，因此不支援在該時間點要求 UI 更新。
+
+取消訂閱來自 .NET 事件的事件處理常式。 下列[Blazor 表單](xref:blazor/forms-validation)範例示範如何將 `Dispose` 方法中的事件處理常式解除掛接：
+
+* 私用欄位和 lambda 方法
+
+  [!code-razor[](lifecycle/samples_snapshot/3.x/event-handler-disposal-1.razor?highlight=23,28)]
+
+* 私用方法方法
+
+  [!code-razor[](lifecycle/samples_snapshot/3.x/event-handler-disposal-2.razor?highlight=16,26)]
 
 ## <a name="handle-errors"></a>處理錯誤
 

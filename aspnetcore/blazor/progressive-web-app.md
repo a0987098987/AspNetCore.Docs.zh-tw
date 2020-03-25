@@ -5,17 +5,17 @@ description: 瞭解如何建立以 Blazor為基礎的漸進式 Web 應用程式�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/12/2020
+ms.date: 03/23/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 53e1c4d043c0e8faf13668989cda1f1245c7157a
-ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
+ms.openlocfilehash: fe69e51aefae9c80e5bb4b78151d384ce25d41a7
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "79989554"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218943"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>使用 ASP.NET Core Blazor WebAssembly 建立漸進式 Web 應用程式
 
@@ -128,7 +128,7 @@ Blazor的 PWA 範本會產生兩個服務工作者檔案：
 * **它可確保可靠性。** &ndash; 網路存取不是布林值狀態。 使用者不只是線上或離線：
 
   * 使用者的裝置可能會假設它已上線，但網路可能會很慢，而無法等待。
-  * 他的網路可能會針對特定的 Url 傳回不正確結果，例如，當有一個目前正在封鎖或重新導向特定要求的驗證 WIFI 入口網站時。
+  * 網路可能會針對特定的 Url 傳回不正確結果，例如，當有一個目前正在封鎖或重新導向特定要求的驗證 WIFI 入口網站時。
   
   這就是為什麼瀏覽器的 `navigator.onLine` API 不可靠，且不應依賴的原因。
 

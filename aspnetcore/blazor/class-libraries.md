@@ -5,17 +5,17 @@ description: 探索如何將元件包含在來自外部元件程式庫的 Blazor
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/23/2020
+ms.date: 03/23/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/class-libraries
-ms.openlocfilehash: 32088b43f91174596f6b9251d36782e806f966b9
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: f2cc57638922bd1f6ab036adb2ed37209d14c5b0
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78660486"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218762"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
 
@@ -114,6 +114,10 @@ Welcome to your new app.
 
 在最上層的 *_Import razor*檔案中包含 `@using MyComponentLib1` 指示詞，讓程式庫的元件可供整個專案使用。 將指示詞新增至任何層級的 *_Import razor*檔案，以將命名空間套用至資料夾中的單一頁面或一組頁面。
 
+## <a name="create-a-razor-components-class-library-with-static-assets"></a>建立具有靜態資產的 Razor 元件類別庫
+
+RCL 可以包含靜態資產。 使用該程式庫的任何應用程式都可以使用靜態資產。 如需詳細資訊，請參閱 <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>。
+
 ## <a name="build-pack-and-ship-to-nuget"></a>組建、封裝和寄送至 NuGet
 
 因為元件程式庫是標準的 .NET 程式庫，所以封裝和傳送至 NuGet 的方式與將任何程式庫封裝和傳送至 NuGet 的方式並無不同。 封裝是使用命令 shell 中的[dotnet pack](/dotnet/core/tools/dotnet-pack)命令來執行：
@@ -124,10 +128,7 @@ dotnet pack
 
 使用命令 shell 中的[dotnet NuGet push](/dotnet/core/tools/dotnet-nuget-push)命令，將套件上傳至 nuget。
 
-## <a name="create-a-razor-components-class-library-with-static-assets"></a>建立具有靜態資產的 Razor 元件類別庫
-
-RCL 可以包含靜態資產。 使用該程式庫的任何應用程式都可以使用靜態資產。 如需詳細資訊，請參閱 <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>。
-
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:razor-pages/ui-class>
+* [將 XML 連結器設定檔加入至程式庫](xref:host-and-deploy/blazor/configure-linker#add-an-xml-linker-configuration-file-to-a-library)

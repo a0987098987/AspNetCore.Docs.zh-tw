@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/15/2020
 uid: fundamentals/index
-ms.openlocfilehash: a16a2fbb4ad2a79f96b6646ffdc359619d361a25
-ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
+ms.openlocfilehash: 7533242140c31a937f32cc9082d760103347ce25
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79434313"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219177"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -102,7 +102,7 @@ ASP.NET Core 應用程式使用 HTTP 伺服器實作來接聽 HTTP 要求。 伺
 ASP.NET Core 隨附下列伺服器實作：
 
 * *Kestrel* 是跨平台的網頁伺服器。 Kestrel 通常會使用 [IIS](https://www.iis.net/)在反向 Proxy 設定中執行。 在 ASP.NET Core 2.0 或更新版本中，Kestrel 可以作為直接向網際網路公開的公眾 Edge Server 執行。
-* *IIS HTTP 伺服器*則是適用於使用 IIS Windows 的伺服器。 透過此伺服器，ASP.NET Core 應用程式及 IIS 便可以在相同處理序中執行。
+* *IIS HTTP 伺服器*是使用 Iis 之 Windows 的伺服器。 透過此伺服器，ASP.NET Core 應用程式及 IIS 便可以在相同處理序中執行。
 * *HTTP.sys* 則是適用於並未搭配 IIS 使用 Windows 的伺服器。
 
 # <a name="macos"></a>[macOS](#tab/macos)

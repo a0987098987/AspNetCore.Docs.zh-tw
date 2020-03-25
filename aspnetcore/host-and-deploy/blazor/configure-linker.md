@@ -5,17 +5,17 @@ description: 瞭解如何在建立 Blazor 應用程式時，控制中繼語言�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/10/2020
+ms.date: 03/23/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: b08ec26fb8d139223c57774600bc3cb19a56ac49
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: 109da5ef400c3b9d64ccf3ceb33a5387ea6b5618
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083297"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218657"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>設定 ASP.NET Core Blazor 的連結器
 
@@ -36,7 +36,7 @@ Blazor WebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standa
 
 ## <a name="control-linking-with-an-msbuild-property"></a>使用 MSBuild 屬性的控制項連結
 
-`Release` 組態內建應用程式時，會啟用連結。 若要變更此項，請在專案檔中設定 `BlazorWebAssemblyEnableLinking` MSBuild 屬性：
+`Release` 設定內建應用程式時，會啟用連結。 若要變更此項，請在專案檔中設定 `BlazorWebAssemblyEnableLinking` MSBuild 屬性：
 
 ```xml
 <PropertyGroup>
@@ -50,11 +50,11 @@ Blazor WebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standa
 
 ```xml
 <ItemGroup>
-  <BlazorLinkerDescriptor Include="Linker.xml" />
+  <BlazorLinkerDescriptor Include="LinkerConfig.xml" />
 </ItemGroup>
 ```
 
-*Linker.xml*：
+*LinkerConfig .xml*：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -86,7 +86,21 @@ Blazor WebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standa
 </linker>
 ```
 
-如需詳細資訊，請參閱[IL 連結器： xml 描述元的語法](https://github.com/mono/linker/blob/master/src/linker/README.md#syntax-of-xml-descriptor)。
+如需詳細資訊，請參閱[連結 xml 檔案範例（mono/連結器 GitHub 存放庫）](https://github.com/mono/linker#link-xml-file-examples)。
+
+## <a name="add-an-xml-linker-configuration-file-to-a-library"></a>將 XML 連結器設定檔加入至程式庫
+
+若要設定特定程式庫的連結器，請將 XML 連結器設定檔新增至程式庫做為內嵌資源。 內嵌資源的名稱必須與元件相同。
+
+在下列範例中，會將*LinkerConfig*指定為與程式庫的元件同名的內嵌資源：
+
+```xml
+<ItemGroup>
+  <EmbeddedResource Include="LinkerConfig.xml">
+    <LogicalName>$(MSBuildProjectName).xml</LogicalName>
+  </EmbeddedResource>
+</ItemGroup>
+```
 
 ### <a name="configure-the-linker-for-internationalization"></a>設定國際化的連結器
 
@@ -105,7 +119,7 @@ Blazor WebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standa
 | `all`            | 包含的所有元件 |
 | `cjk`            | *I18N.CJK .dll*          |
 | `mideast`        | *I18N.務必 .dll*      |
-| `none` (預設值) | 無                    |
+| `none` (預設值) | None                    |
 | `other`          | *I18N.其他 .dll*        |
 | `rare`           | *I18N.罕見的 .dll*         |
 | `west`           | *I18N.West .dll*         |

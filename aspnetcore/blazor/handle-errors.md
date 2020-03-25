@@ -5,17 +5,17 @@ description: 探索 ASP.NET Core 如何 Blazor Blazor 如何管理未處理的�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/19/2020
+ms.date: 03/17/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: d8098db3977b7515f2665e4230c2d6d3e415dc58
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 2177edb9c3197588a9335f3d14495b86d5d53f65
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78661697"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218917"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>處理 ASP.NET Core Blazor 應用程式中的錯誤
 
@@ -195,7 +195,7 @@ Blazor 將大部分未處理的例外狀況視為其發生所在的電路的嚴�
 
 ### <a name="opno-locblazor-server-prerendering"></a>Blazor 伺服器已預呈現
 
-Blazor 元件可以使用 `Component` 標籤協助程式來資源清單，如此一來，就會在使用者的初始 HTTP 要求中傳回其呈現的 HTML 標籤。 其運作方式如下：
+Blazor 元件可以使用[元件標記](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)協助程式資源清單，使其呈現的 HTML 標籤會當做使用者的初始 HTTP 要求的一部分傳回。 其運作方式如下：
 
 * 針對屬於相同頁面的所有資源清單元件建立新的電路。
 * 產生初始 HTML。

@@ -5,21 +5,21 @@ description: 瞭解如何從 Blazor 應用程式中的 JavaScript 函式叫用 .
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/19/2020
+ms.date: 03/24/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/call-dotnet-from-javascript
-ms.openlocfilehash: f4964341e261c65269eedafbbd6e676c1054f427
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: dbf44fe7923998c65119e42d97c304890fa95523
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659443"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218787"
 ---
 # <a name="call-net-methods-from-javascript-functions-in-aspnet-core-opno-locblazor"></a>從 ASP.NET Core Blazor 中的 JavaScript 函數呼叫 .NET 方法
 
-By [Javier Calvarro Nelson](https://github.com/javiercn)、 [Daniel Roth](https://github.com/danroth27)和[Luke Latham](https://github.com/guardrex)
+By [Javier Calvarro Nelson](https://github.com/javiercn)、 [Daniel Roth](https://github.com/danroth27)、 [Shashikant](http://wisne.co)Rudrawadi 和[Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
@@ -126,7 +126,7 @@ returnArrayAsyncJs: function () {
 
 *JsInteropClasses/ExampleJsInterop .cs*：
 
-[!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=10-16)]
+[!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=11-18)]
 
 *wwwroot/exampleJsInterop*：
 
@@ -144,66 +144,218 @@ returnArrayAsyncJs: function () {
 Hello, Blazor!
 ```
 
-若要避免記憶體流失，並允許在建立 `DotNetObjectReference`的元件上進行垃圾收集，請處置建立 `DotNetObjectReference` 實例之類別中的物件：
+若要避免記憶體流失，並允許在建立 `DotNetObjectReference`的元件上進行垃圾收集，請採用下列其中一種方法：
 
-```csharp
-public class ExampleJsInterop : IDisposable
-{
-    private readonly IJSRuntime _jsRuntime;
-    private DotNetObjectReference<HelloHelper> _objRef;
+* 在建立 `DotNetObjectReference` 實例的類別中處置物件：
 
-    public ExampleJsInterop(IJSRuntime jsRuntime)
+  ```csharp
+  public class ExampleJsInterop : IDisposable
+  {
+      private readonly IJSRuntime _jsRuntime;
+      private DotNetObjectReference<HelloHelper> _objRef;
+
+      public ExampleJsInterop(IJSRuntime jsRuntime)
+      {
+          _jsRuntime = jsRuntime;
+      }
+
+      public ValueTask<string> CallHelloHelperSayHello(string name)
+      {
+          _objRef = DotNetObjectReference.Create(new HelloHelper(name));
+
+          return _jsRuntime.InvokeAsync<string>(
+              "exampleJsFunctions.sayHello",
+              _objRef);
+      }
+
+      public void Dispose()
+      {
+          _objRef?.Dispose();
+      }
+  }
+  ```
+
+  `ExampleJsInterop` 類別中所顯示的先前模式也可以在元件中執行：
+
+  ```razor
+  @page "/JSInteropComponent"
+  @using BlazorSample.JsInteropClasses
+  @implements IDisposable
+  @inject IJSRuntime JSRuntime
+
+  <h1>JavaScript Interop</h1>
+
+  <button type="button" class="btn btn-primary" @onclick="TriggerNetInstanceMethod">
+      Trigger .NET instance method HelloHelper.SayHello
+  </button>
+
+  @code {
+      private DotNetObjectReference<HelloHelper> _objRef;
+
+      public async Task TriggerNetInstanceMethod()
+      {
+          _objRef = DotNetObjectReference.Create(new HelloHelper("Blazor"));
+
+          await JSRuntime.InvokeAsync<string>(
+              "exampleJsFunctions.sayHello",
+              _objRef);
+      }
+
+      public void Dispose()
+      {
+          _objRef?.Dispose();
+      }
+  }
+  ```
+
+* 當元件或類別未處置 `DotNetObjectReference`時，請藉由呼叫 `.dispose()`來處置用戶端上的物件：
+
+  ```javascript
+  window.myFunction = (dotnetHelper) => {
+    dotnetHelper.invokeMethod('BlazorSample', 'MyMethod');
+    dotnetHelper.dispose();
+  }
+  ```
+
+## <a name="component-instance-method-call"></a>元件實例方法呼叫
+
+若要叫用元件的 .NET 方法：
+
+* 使用 `invokeMethod` 或 `invokeMethodAsync` 函數，對元件進行靜態方法呼叫。
+* 元件的靜態方法會將其實例方法的呼叫包裝為叫用的 `Action`。
+
+在用戶端 JavaScript 中：
+
+```javascript
+function updateMessageCallerJS() {
+  DotNet.invokeMethod('BlazorSample', 'UpdateMessageCaller');
+}
+```
+
+*Pages/JSInteropComponent. razor*：
+
+```razor
+@page "/JSInteropComponent"
+
+<p>
+    Message: @_message
+</p>
+
+<p>
+    <button onclick="updateMessageCallerJS()">Call JS Method</button>
+</p>
+
+@code {
+    private static Action _action;
+    private string _message = "Select the button.";
+
+    protected override void OnInitialized()
     {
-        _jsRuntime = jsRuntime;
+        _action = UpdateMessage;
     }
 
-    public ValueTask<string> CallHelloHelperSayHello(string name)
+    private void UpdateMessage()
     {
-        _objRef = DotNetObjectReference.Create(new HelloHelper(name));
-
-        return _jsRuntime.InvokeAsync<string>(
-            "exampleJsFunctions.sayHello",
-            _objRef);
+        _message = "UpdateMessage Called!";
+        StateHasChanged();
     }
 
-    public void Dispose()
+    [JSInvokable]
+    public static void UpdateMessageCaller()
     {
-        _objRef?.Dispose();
+        _action.Invoke();
     }
 }
 ```
-  
-`ExampleJsInterop` 類別中所顯示的先前模式也可以在元件中執行：
-  
-```razor
-@page "/JSInteropComponent"
-@using BlazorSample.JsInteropClasses
-@implements IDisposable
-@inject IJSRuntime JSRuntime
 
-<h1>JavaScript Interop</h1>
+有數個元件時，每個都有實例方法來呼叫，請使用 helper 類別來叫用每個元件的實例方法（如 `Action`s）。
 
-<button type="button" class="btn btn-primary" @onclick="TriggerNetInstanceMethod">
-    Trigger .NET instance method HelloHelper.SayHello
-</button>
+在下例中︰
 
-@code {
-    private DotNetObjectReference<HelloHelper> _objRef;
+* `JSInterop` 元件包含數個 `ListItem` 元件。
+* 每個 `ListItem` 元件都是由一個訊息和一個按鈕所組成。
+* 選取 [`ListItem` 元件] 按鈕時，`ListItem`的 `UpdateMessage` 方法會變更清單專案文字，並隱藏按鈕。
 
-    public async Task TriggerNetInstanceMethod()
+*MessageUpdateInvokeHelper.cs*：
+
+```csharp
+using System;
+using Microsoft.JSInterop;
+
+public class MessageUpdateInvokeHelper
+{
+    private Action _action;
+
+    public MessageUpdateInvokeHelper(Action action)
     {
-        _objRef = DotNetObjectReference.Create(new HelloHelper("Blazor"));
-
-        await JSRuntime.InvokeAsync<string>(
-            "exampleJsFunctions.sayHello",
-            _objRef);
+        _action = action;
     }
 
-    public void Dispose()
+    [JSInvokable("BlazorSample")]
+    public void UpdateMessageCaller()
     {
-        _objRef?.Dispose();
+        _action.Invoke();
     }
 }
+```
+
+在用戶端 JavaScript 中：
+
+```javascript
+window.updateMessageCallerJS = (dotnetHelper) => {
+    dotnetHelper.invokeMethod('BlazorSample', 'UpdateMessageCaller');
+    dotnetHelper.dispose();
+}
+```
+
+*共用/全部的 razor*：
+
+```razor
+@inject IJSRuntime JsRuntime
+
+<li>
+    @_message
+    <button @onclick="InteropCall" style="display:@_display">InteropCall</button>
+</li>
+
+@code {
+    private string _message = "Select one of these list item buttons.";
+    private string _display = "inline-block";
+    private MessageUpdateInvokeHelper _messageUpdateInvokeHelper;
+
+    protected override void OnInitialized()
+    {
+        _messageUpdateInvokeHelper = new MessageUpdateInvokeHelper(UpdateMessage);
+    }
+
+    protected async Task InteropCall()
+    {
+        await JsRuntime.InvokeVoidAsync("updateMessageCallerJS",
+            DotNetObjectReference.Create(_messageUpdateInvokeHelper));
+    }
+
+    private void UpdateMessage()
+    {
+        _message = "UpdateMessage Called!";
+        _display = "none";
+        StateHasChanged();
+    }
+}
+```
+
+*Pages/JSInterop. razor*：
+
+```razor
+@page "/JSInterop"
+
+<h1>List of components</h1>
+
+<ul>
+    <ListItem />
+    <ListItem />
+    <ListItem />
+    <ListItem />
+</ul>
 ```
 
 [!INCLUDE[Share interop code in a class library](~/includes/blazor-share-interop-code.md)]

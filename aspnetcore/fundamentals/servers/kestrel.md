@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/10/2020
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 8d96118800c47b2c551726342bf4cfba9671a09e
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: e9b4b57ee70e4050f9399b90a6e34e8cc9cca78d
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667367"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218826"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -663,7 +663,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_UnixSocket)]
 
-* 在 Nginx confiuguration 檔中，將 `server` > `location` > `proxy_pass` 專案設定為 [`http://unix:/tmp/{KESTREL SOCKET}:/;`]。 `{KESTREL SOCKET}` 是提供給 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> 的通訊端名稱（例如，上述範例中的 `kestrel-test.sock`）。
+* 在 Nginx 設定檔中，將 `server` > `location` > `proxy_pass` 專案設定為 [`http://unix:/tmp/{KESTREL SOCKET}:/;`]。 `{KESTREL SOCKET}` 是提供給 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> 的通訊端名稱（例如，上述範例中的 `kestrel-test.sock`）。
 * 請確定通訊端可由 Nginx 寫入（例如 `chmod go+w /tmp/kestrel-test.sock`）。
 
 ### <a name="port-0"></a>連接埠 0

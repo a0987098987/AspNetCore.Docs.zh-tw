@@ -5,17 +5,17 @@ description: 深入瞭解 Blazor 驗證和授權案例。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2020
+ms.date: 02/21/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: ba00c0370094df4e0ae0479aeb23eceea6ef04f0
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: f7ffb4c3d5a05cb916b4f00cdfaf5898634a1a6d
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083343"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219021"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證與授權
 
@@ -31,6 +31,8 @@ Blazor 伺服器與 Blazor WebAssembly 應用程式之間的安全性案例不�
 * 適用於應用程式和元件之特定區域的存取規則。
 
 Blazor WebAssembly 應用程式會在用戶端上執行。 授權「僅」會被用來決定要顯示的 UI 選項。 由於用戶端檢查可由使用者修改或略過，因此 Blazor WebAssembly 應用程式無法強制執行授權存取規則。
+
+[Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization)不適用於可路由的 Razor 元件。 如果無法路由傳送的 Razor 元件[內嵌在頁面中](xref:blazor/integrate-components#render-components-from-a-page-or-view)，此頁面的授權慣例會間接影響 Razor 元件以及頁面內容的其餘部分。
 
 ## <a name="authentication"></a>驗證
 

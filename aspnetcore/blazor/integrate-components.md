@@ -5,17 +5,17 @@ description: 瞭解 Blazor 應用程式中元件和 DOM 元素的資料系結案
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 03/17/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/integrate-components
-ms.openlocfilehash: de1a37ffd9456c956e3d84fcc69431ecb794513c
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: cf6056e0985d5433bddecac8dd183ca3f4c2af5b
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663314"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218930"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>將 ASP.NET Core Razor 元件整合至 Razor Pages 和 MVC 應用程式
 
@@ -225,31 +225,10 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
 
 *本節適用于將元件新增至頁面或視圖，其中元件無法直接從使用者要求路由傳送。*
 
-若要從頁面或視圖呈現元件，請使用 `Component` 標籤協助程式：
-
-```cshtml
-<component type="typeof(Counter)" render-mode="ServerPrerendered" 
-    param-IncrementAmount="10" />
-```
-
-參數類型必須是可序列化的 JSON，這通常表示該類型必須有預設的函式和可設定的屬性。 例如，您可以指定 `IncrementAmount` 的值，因為 `IncrementAmount` 的類型是 `int`，這是 JSON 序列化程式所支援的基本類型。
-
-`RenderMode` 設定元件是否：
-
-* 會資源清單到頁面中。
-* 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動 Blazor 應用程式所需的資訊。
-
-| `RenderMode`        | 描述 |
-| ------------------- | ----------- |
-| `ServerPrerendered` | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
-| `Server`            | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
-| `Static`            | 將元件轉譯為靜態 HTML。 |
-
-雖然頁面和視圖可以使用元件，但相反的情況並非如此。 元件不能使用視圖和頁面特定的案例，例如部分視圖和區段。 若要在元件中使用部分視圖的邏輯，請將部分視圖邏輯分解成元件。
-
-不支援從靜態 HTML 網頁轉譯伺服器元件。
+若要從頁面或視圖呈現元件，請使用[元件標記](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)協助程式。
 
 如需有關如何呈現元件、元件狀態和 `Component` 標籤協助程式的詳細資訊，請參閱下列文章：
 
 * <xref:blazor/hosting-models>
 * <xref:blazor/hosting-model-configuration>
+* <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>

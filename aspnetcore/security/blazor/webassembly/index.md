@@ -5,17 +5,17 @@ description: 瞭解如何以單一頁面應用程式（Spa）保護 Blazor WebAs
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/index
-ms.openlocfilehash: a65d47e55960d6e7bfeb672c0a1e6a7a305ad7ee
-ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
+ms.openlocfilehash: 652d4c61110f786396d9d5af4f131b817c40e333
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "79989478"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219242"
 ---
 # <a name="secure-aspnet-core-opno-locblazor-webassembly"></a>安全 ASP.NET Core Blazor WebAssembly
 
@@ -54,3 +54,47 @@ Blazor WebAssembly 中的驗證支援是建置於*oidc-client*程式庫之上，
 * 當 Blazor WebAssembly 應用程式載入登入回呼端點（`/authentication/login-callback`）時，就會處理驗證回應。
   * 如果驗證程式成功完成，則會驗證使用者，並選擇性地將其傳送回給使用者要求的原始受保護 URL。
   * 如果驗證程式因任何原因而失敗，則會將使用者傳送至登入失敗頁面（`/authentication/login-failed`），並顯示錯誤。
+  
+## <a name="options-for-hosted-apps-and-third-party-login-providers"></a>託管應用程式和協力廠商登入提供者的選項
+
+使用協力廠商提供者驗證和授權託管的 Blazor WebAssembly 應用程式時，有數個選項可用來驗證使用者。 您選擇哪一個取決於您的案例。
+
+如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims>。
+
+### <a name="authenticate-users-to-only-call-protected-third-party-apis"></a>驗證使用者只呼叫受保護的協力廠商 Api
+
+對協力廠商 API 提供者的用戶端 oAuth 流程驗證使用者：
+
+ ```csharp
+ builder.services.AddOidcAuthentication(options => { ... });
+ ```
+ 
+ 在此情節中：
+
+* 裝載應用程式的伺服器不扮演角色。
+* 無法保護伺服器上的 Api。
+* 應用程式只能呼叫受保護的協力廠商 Api。
+
+### <a name="authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party"></a>使用協力廠商提供者來驗證使用者，並在主機伺服器和協力廠商上呼叫受保護的 Api
+
+使用協力廠商登入提供者來設定身分識別。 取得協力廠商 API 存取所需的權杖，並加以儲存。
+
+當使用者登入時，身分識別會在驗證程式中收集存取權和重新整理權杖。 此時，有幾個方法可用來對協力廠商 Api 進行 API 呼叫。
+
+#### <a name="use-a-server-access-token-to-retrieve-the-third-party-access-token"></a>使用伺服器存取權杖來取出協力廠商存取權杖
+
+使用伺服器上產生的存取權杖，從伺服器 API 端點抓取協力廠商存取權杖。 從該處，使用協力廠商存取權杖，直接從用戶端上的身分識別呼叫協力廠商 API 資源。
+
+我們不建議採用這種方法。 這種方法需要將協力廠商存取權杖視為針對公用用戶端所產生。 在 oAuth 詞彙中，公用應用程式不會有用戶端密碼，因為它無法受信任而無法安全地儲存秘密，而且會為機密用戶端產生存取權杖。 機密用戶端是具有用戶端密碼的用戶端，並假設能夠安全地儲存秘密。
+
+* 協力廠商存取權杖可能會被授與額外的範圍來執行敏感性作業，這是根據協力廠商針對較受信任的用戶端發出權杖的事實。
+* 同樣地，重新整理權杖不應發給不受信任的用戶端，因為這樣做會讓用戶端無限制存取，除非有其他限制。
+
+#### <a name="make-api-calls-from-the-client-to-the-server-api-in-order-to-call-third-party-apis"></a>從用戶端對伺服器 API 進行 API 呼叫，以便呼叫協力廠商 Api
+
+從用戶端對伺服器 API 進行 API 呼叫。 從伺服器中，取出協力廠商 API 資源的存取權杖，併發出任何需要的呼叫。
+
+雖然這種方法需要透過伺服器額外的網路躍點來呼叫協力廠商 API，但最終會導致更安全的體驗：
+
+* 伺服器可以儲存重新整理權杖，並確保應用程式不會失去協力廠商資源的存取權。
+* 應用程式無法從可能包含更多敏感性許可權的伺服器洩漏存取權杖。

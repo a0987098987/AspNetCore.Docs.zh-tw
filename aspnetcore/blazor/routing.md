@@ -5,17 +5,17 @@ description: 瞭解如何在應用程式中路由傳送要求，以及關於 Nav
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 03/17/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/routing
-ms.openlocfilehash: 32459f9f42220b01ce04e6444a9bb4a9592ee2da
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 87579c88a37e0258921e199db2b5d8c7627f5499
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663804"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218891"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -198,16 +198,16 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 
 ## <a name="uri-and-navigation-state-helpers"></a>URI 和流覽狀態協助程式
 
-使用 `Microsoft.AspNetCore.Components.NavigationManager` 來處理常式代碼中C#的 uri 和導覽。 `NavigationManager` 提供下表所示的事件和方法。
+使用 <xref:Microsoft.AspNetCore.Components.NavigationManager> 來處理常式代碼中C#的 uri 和導覽。 `NavigationManager` 提供下表所示的事件和方法。
 
 | member | 描述 |
 | ------ | ----------- |
-| `Uri` | 取得目前的絕對 URI。 |
-| `BaseUri` | 取得可在相對 URI 路徑前面加上的基底 URI （含尾端斜線），以產生絕對 URI。 一般來說，`BaseUri` 會對應至*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host* （Blazor Server）中檔之 `<base>` 元素上的 `href` 屬性。 |
-| `NavigateTo` | 導覽至指定的 URI。 如果 `forceLoad` 是 `true`：<ul><li>已略過用戶端路由。</li><li>瀏覽器會強制從伺服器載入新頁面，無論 URI 是否通常由用戶端路由器處理。</li></ul> |
-| `LocationChanged` | 導覽位置變更時引發的事件。 |
-| `ToAbsoluteUri` | 將相對 URI 轉換為絕對 URI。 |
-| `ToBaseRelativePath` | 給定基底 URI （例如，先前由 `GetBaseUri`傳回的 URI），會將絕對 URI 轉換成相對於基底 URI 前置詞的 URI。 |
+| Uri | 取得目前的絕對 URI。 |
+| BaseUri | 取得可在相對 URI 路徑前面加上的基底 URI （含尾端斜線），以產生絕對 URI。 一般來說，`BaseUri` 會對應至*wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host* （Blazor Server）中檔之 `<base>` 元素上的 `href` 屬性。 |
+| NavigateTo | 導覽至指定的 URI。 如果 `forceLoad` 是 `true`：<ul><li>已略過用戶端路由。</li><li>瀏覽器會強制從伺服器載入新頁面，無論 URI 是否通常由用戶端路由器處理。</li></ul> |
+| LocationChanged | 導覽位置變更時引發的事件。 |
+| ToAbsoluteUri | 將相對 URI 轉換為絕對 URI。 |
+| <span style="word-break:normal;word-wrap:normal">ToBaseRelativePath</span> | 給定基底 URI （例如，先前由 `GetBaseUri`傳回的 URI），會將絕對 URI 轉換成相對於基底 URI 前置詞的 URI。 |
 
 下列元件會在選取按鈕時，流覽至應用程式的 `Counter` 元件：
 
@@ -228,3 +228,34 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
     }
 }
 ```
+
+下列元件會處理位置已變更事件。 當架構呼叫 `Dispose` 時，`HandleLocationChanged` 方法會解除掛鉤。 Unhooking 方法允許元件的垃圾收集。
+
+```razor
+@implement IDisposable
+@inject NavigationManager NavigationManager
+
+...
+
+protected override void OnInitialized()
+{
+    NavigationManager.LocationChanged += HandleLocationChanged;
+}
+
+private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
+{
+    ...
+}
+
+public void Dispose()
+{
+    NavigationManager.LocationChanged -= HandleLocationChanged;
+}
+```
+
+<xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs> 提供事件的下列相關資訊：
+
+* <xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.Location> &ndash; 新位置的 URL。
+* <xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.IsNavigationIntercepted> &ndash; 如果 `true`，Blazor 會從瀏覽器攔截導覽。 如果 `false`，則[NavigationManager NavigateTo](xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A)會造成導覽。
+
+如需有關元件處置的詳細資訊，請參閱 <xref:blazor/lifecycle#component-disposal-with-idisposable>。

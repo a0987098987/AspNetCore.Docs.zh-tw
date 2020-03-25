@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 02/11/2020
 uid: security/authentication/cookie
-ms.openlocfilehash: 64f881441a7a7f9a5529cb6ee5ce81142ccd69e6
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: b7c8b2cccb27dd6818330b17439675e41bfef013
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78662999"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219203"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>使用不含 ASP.NET Core 身分識別的 cookie 驗證
 
@@ -19,7 +19,7 @@ ms.locfileid: "78662999"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-ASP.NET Core 身分識別是完整且功能完整的驗證提供者，可用於建立和維護登入。 不過，不含 ASP.NET Core 身分識別的 cookie 型驗證提供者可以使用。 如需詳細資訊，請參閱<xref:security/authentication/identity>。
+ASP.NET Core 身分識別是完整且功能完整的驗證提供者，可用於建立和維護登入。 不過，不含 ASP.NET Core 身分識別的 cookie 型驗證提供者可以使用。 如需詳細資訊，請參閱 <xref:security/authentication/identity>。
 
 [檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -27,17 +27,17 @@ ASP.NET Core 身分識別是完整且功能完整的驗證提供者，可用於�
 
 ## <a name="configuration"></a>組態
 
-如果應用程式不使用 [Microsoft.AspNetCore 中繼套件](xref:fundamentals/metapackage-app)，請在Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/)中建立 AspNetCore 的套件參考套件。
+如果應用程式不使用[AspNetCore 中繼套件](xref:fundamentals/metapackage-app)，請在專案檔中建立 AspNetCore 的套件參考。請參閱[Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/)套件。
 
 在 `Startup.ConfigureServices` 方法中，使用 <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> 和 <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> 方法來建立驗證中介軟體服務：
 
 [!code-csharp[](cookie/samples/3.x/CookieSample/Startup.cs?name=snippet1)]
 
-<xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme> 傳遞至 `AddAuthentication` 會設定應用程式的預設驗證配置。 當有多個 cookie 驗證實例，而您想要以[特定的配置進行授權](xref:security/authorization/limitingidentitybyscheme)時，`AuthenticationScheme` 會很有用。 將設定為 [CookieAuthenticationDefaults AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme) 時，會為配置提供 "cookie" 的值。`AuthenticationScheme` 您可以提供可區分配置的任何字串值。
+<xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme> 傳遞至 `AddAuthentication` 會設定應用程式的預設驗證配置。 當有多個 cookie 驗證實例，而您想要以[特定的配置進行授權](xref:security/authorization/limitingidentitybyscheme)時，`AuthenticationScheme` 會很有用。 將 `AuthenticationScheme` 設定為[CookieAuthenticationDefaults。 AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)會為配置提供 "cookie" 的值。 您可以提供可區分配置的任何字串值。
 
 應用程式的驗證配置與應用程式的 cookie 驗證配置不同。 未提供 cookie 驗證配置給 <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*>時，會使用 `CookieAuthenticationDefaults.AuthenticationScheme` （「Cookie」）。
 
-根據預設，驗證 cookie 的 <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> 屬性會設定為 [`true`]。 當網站訪客未同意資料收集時，允許驗證 cookie。 如需詳細資訊，請參閱<xref:security/gdpr#essential-cookies>。
+根據預設，驗證 cookie 的 <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> 屬性會設定為 [`true`]。 當網站訪客未同意資料收集時，允許驗證 cookie。 如需詳細資訊，請參閱 <xref:security/gdpr#essential-cookies>。
 
 在 `Startup.Configure`中，呼叫 `UseAuthentication` 和 `UseAuthorization` 以設定 `HttpContext.User` 屬性，並針對要求執行授權中介軟體。 呼叫 `UseAuthentication` 並 `UseAuthorization` 方法，再呼叫 `UseEndpoints`：
 
@@ -89,6 +89,8 @@ var cookiePolicyOptions = new CookiePolicyOptions
 建立具有任何必要 <xref:System.Security.Claims.Claim>的 <xref:System.Security.Claims.ClaimsIdentity>，並呼叫 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.SignInAsync*> 以登入使用者：
 
 [!code-csharp[](cookie/samples/3.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet1)]
+
+[!INCLUDE[request localized comments](~/includes/code-comments-loc.md)]
 
 `SignInAsync` 會建立加密的 cookie，並將其新增至目前的回應。 如果未指定 `AuthenticationScheme`，則會使用預設配置。
 
@@ -236,7 +238,7 @@ await HttpContext.SignInAsync(
 
 ::: moniker range="< aspnetcore-3.0"
 
-ASP.NET Core 身分識別是完整且功能完整的驗證提供者，可用於建立和維護登入。 不過，您可以使用 cookie 型驗證驗證提供者，而不需要 ASP.NET Core 身分識別。 如需詳細資訊，請參閱<xref:security/authentication/identity>。
+ASP.NET Core 身分識別是完整且功能完整的驗證提供者，可用於建立和維護登入。 不過，您可以使用 cookie 型驗證驗證提供者，而不需要 ASP.NET Core 身分識別。 如需詳細資訊，請參閱 <xref:security/authentication/identity>。
 
 [檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
@@ -244,17 +246,17 @@ ASP.NET Core 身分識別是完整且功能完整的驗證提供者，可用於�
 
 ## <a name="configuration"></a>組態
 
-如果應用程式不使用 [Microsoft.AspNetCore 中繼套件](xref:fundamentals/metapackage-app)，請在Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/)中建立 AspNetCore 的套件參考套件。
+如果應用程式不使用[AspNetCore 中繼套件](xref:fundamentals/metapackage-app)，請在專案檔中建立 AspNetCore 的套件參考。請參閱[Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/)套件。
 
 在 `Startup.ConfigureServices` 方法中，使用 <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> 和 <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> 方法來建立驗證中介軟體服務：
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet1)]
 
-<xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme> 傳遞至 `AddAuthentication` 會設定應用程式的預設驗證配置。 當有多個 cookie 驗證實例，而您想要以[特定的配置進行授權](xref:security/authorization/limitingidentitybyscheme)時，`AuthenticationScheme` 會很有用。 將設定為 [CookieAuthenticationDefaults AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme) 時，會為配置提供 "cookie" 的值。`AuthenticationScheme` 您可以提供可區分配置的任何字串值。
+<xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme> 傳遞至 `AddAuthentication` 會設定應用程式的預設驗證配置。 當有多個 cookie 驗證實例，而您想要以[特定的配置進行授權](xref:security/authorization/limitingidentitybyscheme)時，`AuthenticationScheme` 會很有用。 將 `AuthenticationScheme` 設定為[CookieAuthenticationDefaults。 AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)會為配置提供 "cookie" 的值。 您可以提供可區分配置的任何字串值。
 
 應用程式的驗證配置與應用程式的 cookie 驗證配置不同。 未提供 cookie 驗證配置給 <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*>時，會使用 `CookieAuthenticationDefaults.AuthenticationScheme` （「Cookie」）。
 
-根據預設，驗證 cookie 的 <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> 屬性會設定為 [`true`]。 當網站訪客未同意資料收集時，允許驗證 cookie。 如需詳細資訊，請參閱<xref:security/gdpr#essential-cookies>。
+根據預設，驗證 cookie 的 <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> 屬性會設定為 [`true`]。 當網站訪客未同意資料收集時，允許驗證 cookie。 如需詳細資訊，請參閱 <xref:security/gdpr#essential-cookies>。
 
 在 `Startup.Configure` 方法中，呼叫 `UseAuthentication` 方法，以叫用設定 `HttpContext.User` 屬性的驗證中介軟體。 呼叫 `UseAuthentication` 方法，再呼叫 `UseMvcWithDefaultRoute` 或 `UseMvc`：
 

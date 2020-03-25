@@ -3,14 +3,14 @@ title: 將驗證和身分識別遷移至 ASP.NET Core
 author: ardalis
 description: 瞭解如何將驗證和身分識別從 ASP.NET MVC 專案遷移至 ASP.NET Core MVC 專案。
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 3/22/2020
 uid: migration/identity
-ms.openlocfilehash: f821930dbd36de18db31104cddf34c563009a506
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: c5727c974e455144d04e66fe14ea591e160cb963
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78661851"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219190"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core"></a>將驗證和身分識別遷移至 ASP.NET Core
 
@@ -22,9 +22,13 @@ ms.locfileid: "78661851"
 
 在 ASP.NET MVC 中，驗證和身分識別功能是使用位於*App_Start*資料夾中的*Startup.Auth.cs*和*IdentityConfig.cs*中的 ASP.NET Identity 來設定。 在 ASP.NET Core MVC 中，這些功能會在*Startup.cs*中設定。
 
-安裝 `Microsoft.AspNetCore.Identity.EntityFrameworkCore` 並 `Microsoft.AspNetCore.Authentication.Cookies` NuGet 套件。
+安裝下列 NuGet 套件：
 
-然後，開啟*Startup.cs* ，並更新 `Startup.ConfigureServices` 方法以使用 Entity Framework 和身分識別服務：
+* `Microsoft.AspNetCore.Identity.EntityFrameworkCore`
+* `Microsoft.AspNetCore.Authentication.Cookies`
+* `Microsoft.EntityFrameworkCore.SqlServer`
+
+在*Startup.cs*中，更新 `Startup.ConfigureServices` 方法以使用 Entity Framework 和身分識別服務：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

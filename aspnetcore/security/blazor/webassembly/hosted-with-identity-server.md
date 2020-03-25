@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-identity-server
-ms.openlocfilehash: a3993bf635e5a7aae408d72796015f2414e13c14
-ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
+ms.openlocfilehash: 6c7942a827d88a620e6f295af3f523c23f4b3890
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79434469"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219047"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-hosted-app-with-identity-server"></a>使用身分識別伺服器保護 ASP.NET Core Blazor WebAssembly 託管應用程式
 
@@ -167,7 +167,7 @@ builder.Services.AddApiAuthorization();
 
 ### <a name="index-page"></a>索引頁面
 
-[!INCLUDE[](~/includes/blazor-security/index-page.md)]
+[!INCLUDE[](~/includes/blazor-security/index-page-authentication.md)]
 
 ### <a name="app-component"></a>應用程式元件
 

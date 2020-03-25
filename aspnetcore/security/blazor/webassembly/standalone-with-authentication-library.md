@@ -5,17 +5,17 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/19/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: f9cc2884dcd94c729c45a056ae4327a2c75d34be
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: ea50d94835b044f9c3d6a0561868f081d32cb62a
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083752"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218997"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>使用驗證程式庫保護 ASP.NET Core Blazor WebAssembly 獨立應用程式
 
@@ -24,6 +24,8 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 [!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
+
+*若為 Azure Active Directory （AAD）和 Azure Active Directory B2C （AAD B2C），請不要遵循本主題中的指導方針。請參閱此目錄節點中的 AAD 和 AAD B2C 主題。*
 
 若要建立使用 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 程式庫的 Blazor WebAssembly 獨立應用程式，請在命令 shell 中執行下列命令：
 
@@ -63,11 +65,11 @@ builder.Services.AddOidcAuthentication(options =>
 });
 ```
 
-獨立應用程式的驗證支援是使用 Open ID Connect （OIDC）提供。 `AddOidcAuthentication` 方法會接受回呼，以使用 OIDC 來設定驗證應用程式所需的參數。 設定應用程式所需的值可以從 IP 取得，例如 Google、Microsoft 或其他 OIDC 相容的提供者。 當您註冊應用程式時，請取得這些值，這通常會發生在其線上入口網站中。
+獨立應用程式的驗證支援是使用 Open ID Connect （OIDC）提供。 `AddOidcAuthentication` 方法會接受回呼，以使用 OIDC 來設定驗證應用程式所需的參數。 設定應用程式所需的值可從符合 OIDC 規範的 IP 取得。 當您註冊應用程式時，請取得這些值，這通常會發生在其線上入口網站中。
 
 ## <a name="index-page"></a>索引頁面
 
-[!INCLUDE[](~/includes/blazor-security/index-page.md)]
+[!INCLUDE[](~/includes/blazor-security/index-page-authentication.md)]
 
 ## <a name="app-component"></a>應用程式元件
 

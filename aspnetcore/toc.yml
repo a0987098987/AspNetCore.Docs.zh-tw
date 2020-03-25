@@ -424,6 +424,8 @@
               uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
             - name: 快取
               uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
+            - name: 元件
+              uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
             - name: 分散式快取
               uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
             - name: 環境

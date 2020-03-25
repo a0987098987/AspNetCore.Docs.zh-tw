@@ -1,17 +1,17 @@
 ---
 title: 使用 Visual Studio Code 將 ASP.NET Core 應用程式發佈至 Azure
-author: ricardoserradas
+author: rick-anderson
 description: 了解如何使用 Visual Studio Code 將 ASP.NET Core 應用程式發佈至 Azure App Service
 ms.author: riserrad
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vscode
-ms.openlocfilehash: eaf9cca61b21d04d127ff15a579f3d8da794f7d9
-ms.sourcegitcommit: 40dc9b00131985abcd99bd567647420d798e798a
+ms.openlocfilehash: 5f117cb2867a6e7b54269ef39abe819256b429ec
+ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78935430"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80242674"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio-code"></a>使用 Visual Studio Code 將 ASP.NET Core 應用程式發佈至 Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "78935430"
 
 - 如果您沒有帳戶，請開啟[免費的 Azure 帳戶](https://azure.microsoft.com/free/dotnet/)。
 - 安裝 [.NET Core SDK](https://dotnet.microsoft.com/download)
-- 安裝 [Visual Studio Code](https://code.visualstudio.com/Download)
+- 安裝 [Visual Studio Code](https://code.visualstudio.com/Download) \(英文\)
   - 將 [C# 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)安裝至 Visual Studio Code
   - 安裝[Azure App Service 擴充](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)功能以 Visual Studio Code 並進行設定，然後再繼續
 
@@ -94,7 +94,7 @@ tasks.json
 
 在將應用程式部署至 Azure 之前，請確定其可在本機電腦上正常執行。
 
-- 按 F5 以執行專案
+- 按 F5 執行專案
 
 您的 Web 應用程式會在預設瀏覽器的新索引標籤上開始執行。 啟動時您可能會看到隱私警告。 這是因為您的應用程式會使用 HTTP 或 HTTPS 啟動，且會根據預設巡覽至 HTTPS 端點。
 
@@ -111,13 +111,13 @@ tasks.json
 
 ![發佈資料夾結構](publish-to-azure-webapp-using-vscode/_static/publish-folder.jpg)
 
-## <a name="publish-to-azure-app-service"></a>發佈到 Azure App Service
+## <a name="publish-to-azure-app-service"></a>發佈至 Azure App Service
 
 運用適用於 Visual Studio Code 的 Azure App Service 延伸模組，遵循下列步驟將該網站直接發佈至 Azure App Service。
 
 ### <a name="if-youre-creating-a-new-web-app"></a>您要建立新的 Web 應用程式
 
-- 以滑鼠右鍵按一下 `publish` 資料夾並選取 `Deploy to Web App...`
+- 以右鍵按一下 `publish` 資料夾並選取 `Deploy to Web App...`
 - 選取您希望建立 Web 應用程式的訂用帳戶
 - 選取 `Create New Web App`
 - 輸入 Web 應用程式的名稱
@@ -132,7 +132,7 @@ tasks.json
 
 ### <a name="if-youre-deploying-to-an-existing-web-app"></a>如果您要部署至現有的 Web 應用程式
 
-- 以滑鼠右鍵按一下 `publish` 資料夾並選取 `Deploy to Web App...`
+- 以右鍵按一下 `publish` 資料夾並選取 `Deploy to Web App...`
 - 選取現有 Web 應用程式所在的訂用帳戶
 - 從清單中選取該 Web 應用程式
 - Visual Studio Code 會詢問您是否要覆寫現有的內容。 按一下 `Deploy` 以確認

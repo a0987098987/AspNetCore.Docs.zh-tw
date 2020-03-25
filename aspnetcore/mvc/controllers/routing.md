@@ -3,18 +3,853 @@ title: ASP.NET Core 中的路由至控制器動作
 author: rick-anderson
 description: 了解 ASP.NET Core MVC 如何使用路由中介軟體來比對內送要求的 URL，並將這些 URL 對應至動作。
 ms.author: riande
-ms.date: 12/05/2019
+ms.date: 3/25/2020
 uid: mvc/controllers/routing
-ms.openlocfilehash: 1116cc699f749a137638b75095a7172ad0d4858a
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: be7da9eeaf64c2f52c095b5179ccc22db43d57c3
+ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663720"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80242567"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core 中的路由至控制器動作
 
-作者：[Ryan Nowak](https://github.com/rynowak) 與 [Rick Anderson](https://twitter.com/RickAndMSFT)
+By [Ryan Nowak](https://github.com/rynowak)、 [Kirk Larkin](https://twitter.com/serpent5)和[Rick Anderson](https://twitter.com/RickAndMSFT)
+
+::: moniker range=">= aspnetcore-3.0"
+
+ASP.NET Core 控制器會使用路由[中介軟體](xref:fundamentals/middleware/index)來比對傳入要求的 url，並將其對應至[動作](#action)。  路由範本：
+
+* 會在啟始程式碼或屬性中定義。
+* 描述如何將 URL 路徑與[動作](#action)比對。
+* 是用來產生連結的 Url。 產生的連結通常會在回應中傳回。
+
+動作可以是 [[傳統路由](#cr)] 或 [[屬性路由](#ar)]。 將路由放在控制器或[動作](#action)上，會使其成為屬性路由。 如需詳細資訊，請參閱[混合路由](#routing-mixed-ref-label)。
+
+本檔：
+
+* 說明 MVC 與路由之間的互動：
+  * 一般 MVC 應用程式如何利用路由功能。
+  * 涵蓋兩者：
+    * 一般[路由](#cr)通常與控制器和 views 搭配使用。
+    * 搭配 REST Api 使用的*屬性路由*。 如果您主要對 REST Api 的路由感興趣，請跳至[Rest api 的屬性路由](#ar)一節。
+  * 如需高階路由詳細資料，請參閱[路由](xref:fundamentals/routing)。
+* 指的是在 ASP.NET Core 3.0 中新增的預設路由系統，稱為端點路由。 基於相容性目的，您可以使用具有舊版路由的控制器。 如需相關指示，請參閱[2.2-3.0 遷移指南](xref:migration/22-to-30)。 如需舊版路由系統上的參考資料，請參閱[本檔的2.2 版本](xref:mvc/controllers/routing?view=aspnetcore-2.2)。
+
+<a name="cr"></a>
+
+## <a name="set-up-conventional-route"></a>設定傳統路由
+
+使用[傳統路由](#crd)時，`Startup.Configure` 通常會有類似下列的程式碼：
+
+[!code-csharp[](routing/samples/3.x/main/StartupDefaultMVC.cs?name=snippet)]
+
+在 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>的呼叫內，<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> 用來建立單一路由。 單一路由的名稱 `default` route。 大部分具有控制器和視圖的應用程式都會使用類似于 `default` 路由的路由範本。 REST Api 應該使用[屬性路由](#ar)。
+
+路由範本 `"{controller=Home}/{action=Index}/{id?}"`：
+
+* 符合類似 `/Products/Details/5` 的 URL 路徑
+* 藉由 token 化路徑來解壓縮路由值 `{ controller = Products, action = Details, id = 5 }`。 如果應用程式具有名為 `ProductsController` 的控制器和 `Details` 動作，則路由值的提取會產生相符的結果：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippetA)]
+
+ [MyDisplayRouteInfo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x/main/Extensions/ControllerContextExtensions.cs)方法包含在[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x)中，可用來顯示路由資訊。
+
+  * `/Products/Details/5` 模型會系結 `id = 5` 的值，將 `id` 參數設定為 `5`。 如需詳細資訊，請參閱[模型](xref:mvc/models/model-binding)系結。
+* `{controller=Home}` 將 `Home` 定義為預設 `controller`。
+* `{action=Index}` 將 `Index` 定義為預設 `action`。
+*  `{id?}` 中的 `?` 字元會將 `id` 定義為選擇性。
+  * 預設和選擇性路由參數不一定要全部出現在 URL 路徑中才算相符。 如需路由範本語法的詳細描述，請參閱[路由範本參考](xref:fundamentals/routing#route-template-reference)。
+* 符合 `/`的 URL 路徑。
+* 產生 `{ controller = Home, action = Index }`的路由值。
+* [MyDisplayRouteInfo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x/main/Extensions/ControllerContextExtensions.cs)方法包含在[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x)中，可用來顯示路由資訊。
+
+`controller` 和 `action` 的值會利用預設值。 `id` 不會產生值，因為 URL 路徑中沒有對應的區段。 `/` 只有在有 `HomeController` 和 `Index` 動作時才會相符：
+
+```csharp
+public class HomeController : Controller
+{
+  public IActionResult Index() { ... }
+}
+```
+
+使用先前的控制器定義和路由範本，會針對下列 URL 路徑執行 `HomeController.Index` 動作：
+
+* `/Home/Index/17`
+* `/Home/Index`
+* `/Home`
+* `/`
+
+URL 路徑 `/` 使用路由範本預設 `Home` 控制器和 `Index` 動作。 URL 路徑 `/Home` 使用路由範本預設 `Index` 動作。
+
+<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapDefaultControllerRoute*> 方法很方便：
+
+```csharp
+endpoints.MapDefaultControllerRoute();
+```
+
+代替
+
+```csharp
+endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+```
+
+路由是使用 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*> 和 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> 中介軟體來設定。 若要使用控制器：
+
+* 呼叫 `UseEndpoints` 內的 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> 來對應[屬性路由](#ar)控制器。
+* 呼叫 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> 或 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*>，以對應[傳統路由](#cr)控制器。
+
+<a name="routing-conventional-ref-label"></a>
+<a name="crd"></a>
+
+## <a name="conventional-routing"></a>慣例路由
+
+傳統路由會與控制器和 views 搭配使用。 `default` 路由：
+
+[!code-csharp[](routing/samples/3.x/main/StartupDefaultMVC.cs?name=snippet2)]
+
+即為「慣例路由」的範例。 這稱為「*傳統路由*」，因為它會建立 URL 路徑的*慣例*：
+
+* 第一個路徑區段（`{controller=Home}`）會對應到控制器名稱。
+* 第二個區段（`{action=Index}`）會對應到[動作](#action)名稱。
+* 第三個區段 `{id?}` 用於選擇性 `id`。 `{id?}` 中的 `?` 可讓它成為選擇性的。 `id` 是用來對應至模型實體。
+
+使用此 `default` 路由，URL 路徑：
+
+* `/Products/List` 對應至 `ProductsController.List` 動作。
+* `/Blog/Article/17` 對應至 `BlogController.Article`，而且通常會將 `id` 參數系結至17。
+
+這種對應：
+
+* **僅**以控制器和[動作](#action)名稱為基礎。
+* 不是以命名空間、來源檔案位置或方法參數為基礎。
+
+使用傳統路由搭配預設路由可讓您建立應用程式，而不需要為每個動作加上新的 URL 模式。 針對具有[CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete)樣式動作的應用程式，具有跨控制器的 url 一致性：
+
+* 有助於簡化程式碼。
+* 讓 UI 更容易預測。
+
+> [!WARNING]
+> 上述程式碼中的 `id` 是由路由範本定義為選擇性。 動作可以執行，而不需要提供做為 URL 一部分的選擇性識別碼。 一般來說，從 URL 中省略`id` 時：
+>
+> * `id` 是由模型系結設定為 `0`。
+> * 在資料庫中找不到符合 `id == 0`的實體。
+>
+> [屬性路由](#ar)提供更細微的控制，讓某些動作需要的識別碼，而不是其他動作。 依照慣例，檔會包含選擇性參數，例如 `id` 可能會顯示在正確的使用方式。
+
+大部分應用程式都應該選擇基本的描述性路由傳送配置，讓 URL 可讀且有意義。 預設慣例路由 `{controller=Home}/{action=Index}/{id?}`：
+
+* 支援基本的描述性路由配置。
+* 適合作為 UI 型應用程式的起點。
+* 是許多 web UI 應用程式唯一需要的路由範本。 對於較大的 web UI 應用程式，如果經常需要，請使用[區域](#areas)的另一個路由。
+
+<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> 和 <xref:Microsoft.AspNetCore.Builder.MvcAreaRouteBuilderExtensions.MapAreaRoute*>：
+
+* 根據叫用的順序，自動指派**訂單**值給其端點。
+
+ASP.NET Core 3.0 和更新版本中的端點路由：
+
+* 沒有路由的概念。
+* 不會提供擴充性執行的順序保證，所有端點都會一次處理。
+
+啟用[記錄](xref:fundamentals/logging/index)以查看內建路由實作 (例如 <xref:Microsoft.AspNetCore.Routing.Route>) 如何符合要求。
+
+本檔稍後會說明[屬性路由](#ar)。
+
+<a name="mr"></a>
+
+### <a name="multiple-conventional-routes"></a>多個傳統路由
+
+藉由新增更多對 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> 和 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*>的呼叫，可以在 `UseEndpoints` 內加入多個[傳統路由](#cr)。 這麼做可讓您定義多個慣例，或新增特定[動作](#action)專用的傳統路由，例如：
+
+[!code-csharp[](routing/samples/3.x/main/Startup.cs?name=snippet_1)]
+
+<a name="dcr"></a>
+
+上述程式碼中的 `blog` 路由是**專用的傳統路由**。 這稱為專用的傳統路由，因為：
+
+* 它會使用[傳統路由](#cr)。
+* 其專屬於特定的[動作](#action)。
+
+因為 `controller` 和 `action` 不會出現在路由範本中，`"blog/{*article}"` 做為參數：
+
+* 它們只能有 `{ controller = "Blog", action = "Article" }`的預設值。
+* 此路由一律會對應至 `BlogController.Article`的動作。
+
+`/Blog`、`/Blog/Article`和 `/Blog/{any-string}` 是唯一符合 blog 路由的 URL 路徑。
+
+上述範例：
+
+* `blog` 路由的比對比 `default` 路由的優先順序高，因為它是先新增的。
+* 這是[輔助](https://developer.mozilla.org/docs/Glossary/Slug)專案樣式路由的範例，在此情況下，通常會有發行項名稱做為 URL 的一部分。
+
+> [!WARNING]
+> 在 ASP.NET Core 3.0 和更新版本中，路由不會：
+> * 定義稱為「*路由*」的概念。 `UseRouting` 會將路由對應新增至中介軟體管線。 `UseRouting` 中介軟體會查看應用程式中定義的端點集合，並根據要求選取最佳的端點相符。
+> * 提供有關擴充性（例如 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 或 <xref:Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint>）執行順序的保證。
+>
+>如需路由的參考資料，請參閱[路由](xref:fundamentals/routing)。
+
+<a name="cro"></a>
+
+### <a name="conventional-routing-order"></a>傳統路由順序
+
+傳統路由只會符合應用程式所定義的動作和控制器組合。 這是為了簡化傳統路由重迭的情況。
+使用 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*>、<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapDefaultControllerRoute*>和 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*> 來新增路由，會根據叫用的順序，自動指派訂單值給其端點。 從稍早出現的路由進行比對的優先順序較高。 慣例路由與順序息息相關。 一般而言，具有區域的路由應該放在較早的位置，因為它們比沒有區域的路由更明確。 具有攔截所有路由參數（例如 `{*article}`）的[專用慣例路由](#dcr)，可以讓路由過於[貪婪](xref:fundamentals/routing#greedy)，這表示它會比對您要與其他路由比對的 url。 將貪婪路由放在路由表中，以避免發生貪婪的相符。
+
+<a name="best"></a>
+
+### <a name="resolving-ambiguous-actions"></a>解決不明確的動作
+
+當兩個端點透過路由比對時，路由必須執行下列其中一項：
+
+* 選擇最佳的候選。
+* 擲回例外狀況。
+
+例如，
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet9)]
+
+先前的控制器會定義兩個符合的動作：
+
+* URL 路徑 `/Products33/Edit/17`
+* `{ controller = Products33, action = Edit, id = 17 }`路由資料。
+
+這是 MVC 控制器的一般模式：
+
+* `Edit(int)` 顯示編輯產品的表單。
+* `Edit(int, Product)` 處理張貼的表單。
+
+若要解析正確的路由：
+
+* 當要求是 HTTP `POST`時，會選取 [`Edit(int, Product)`]。
+* 當[HTTP 動詞](#verb)命令為其他任何專案時，就會選取 [`Edit(int)`]。 通常會透過 `GET`來呼叫 `Edit(int)`。
+
+<xref:Microsoft.AspNetCore.Mvc.HttpPostAttribute>（`[HttpPost]`）會提供給路由，讓它可以根據要求的 HTTP 方法進行選擇。 `HttpPostAttribute` 使 `Edit(int, Product)` 比 `Edit(int)`更符合。
+
+請務必瞭解屬性的角色，例如 `HttpPostAttribute`。 也會針對其他[HTTP 動詞](#verb)命令定義類似的屬性。 在[傳統路由](#cr)中，當動作屬於 [顯示表單]、[提交表單工作流程] 的一部分時，通常會使用相同的動作名稱。 例如，請參閱[檢查這兩個編輯動作方法](xref:tutorials/first-mvc-app/controller-methods-views#get-post)。
+
+如果路由無法選擇最佳候選，則會擲回 <xref:System.Reflection.AmbiguousMatchException>，列出多個相符的端點。
+
+<a name="routing-route-name-ref-label"></a>
+
+### <a name="conventional-route-names"></a>傳統路由名稱
+
+下列範例中的字串 `"blog"` 和 `"default"` 是傳統的路由名稱：
+
+[!code-csharp[](routing/samples/3.x/main/Startup.cs?name=snippet_1)]
+
+路由名稱提供路由邏輯名稱。 命名路由可以用於 URL 產生。 當路由順序可能會使 URL 產生變得複雜時，使用命名路由可簡化 URL 的建立。 路由名稱必須是唯一的應用程式範圍。
+
+路由名稱：
+
+* 不會影響對 URL 的對應或處理要求。
+* 僅用於 URL 產生。
+
+路由名稱概念會以[IEndpointNameMetadata](xref:Microsoft.AspNetCore.Routing.IEndpointNameMetadata)的形式呈現。 [**路由名稱**] 和 [**端點名稱**] 詞彙：
+
+* 可互換。
+* 在檔和程式碼中使用哪一個，取決於所述的 API。
+
+<a name="attribute-routing-ref-label"></a>
+<a name="ar"></a>
+
+## <a name="attribute-routing-for-rest-apis"></a>REST Api 的屬性路由
+
+REST Api 應使用屬性路由，將應用程式的功能模型建立為一組資源，其中的作業是由[HTTP 指令動詞](#verb)表示。
+
+屬性路由使用一組屬性，將動作直接對應至路由範本。 下列 `StartUp.Configure` 程式碼適用于 REST API，並在下一個範例中使用：
+
+[!code-csharp[](routing/samples/3.x/main/StartupApi.cs?name=snippet)]
+
+在上述程式碼中，會在 `UseEndpoints` 內呼叫 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> 來對應屬性路由控制器。
+
+在下列範例中：
+
+* 會使用上述的 `Configure` 方法。
+* `HomeController` 符合一組類似預設的傳統路由 `{controller=Home}/{action=Index}/{id?}` 相符的 Url。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/HomeController.cs?name=snippet2)]
+
+`HomeController.Index` 動作會針對任何 URL 路徑 `/`、`/Home`、`/Home/Index`或 `/Home/Index/3`執行。
+
+此範例強調屬性路由和[傳統路由](#cr)之間的主要程式設計差異。 屬性路由需要更多輸入才能指定路由。 傳統的預設路由會更簡潔地處理路由。 不過，屬性路由允許和需要精確控制每個[動作](#action)適用的路由範本。
+
+使用屬性路由，控制器名稱和動作名稱**不**會扮演符合動作的角色。 下列範例會比對與上一個範例相同的 Url：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/MyDemoController.cs?name=snippet)]
+
+下列程式碼會使用 `action` 和 `controller`的標記取代：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/HomeController.cs?name=snippet22)]
+
+下列程式碼會將 `[Route("[controller]/[action]")]` 套用至控制器：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/HomeController.cs?name=snippet24)]
+
+在上述程式碼中，`Index` 方法樣板必須在路由範本前面加上 `/` 或 `~/`。 套用至開頭為 `/` 或 `~/` 之動作的路由範本，無法與套用至控制器的路由範本合併。
+
+如需路由範本選取專案的詳細資訊，請參閱[路由範本優先順序](xref:fundamentals/routing#rtp)。
+
+## <a name="reserved-routing-names"></a>保留的路由名稱
+
+使用控制器或 Razor Pages 時，下列關鍵字是保留的路由參數名稱：
+
+* `action`
+* `area`
+* `controller`
+* `handler`
+* `page`
+
+使用 `page` 做為具有屬性路由的路由參數是常見的錯誤。 這樣做會導致 URL 產生不一致且混亂的行為。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/MyDemo2Controller.cs?name=snippet)]
+
+URL 產生會使用特殊參數名稱來判斷 URL 產生作業是參考 Razor 頁面或控制器。
+
+<a name="verb"></a>
+
+## <a name="http-verb-templates"></a>HTTP 動詞範本
+
+ASP.NET Core 具有下列 HTTP 動詞範本：
+
+* [[HttpGet]](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute)
+* [HttpPost](xref:Microsoft.AspNetCore.Mvc.HttpPostAttribute)
+* [HttpPut](xref:Microsoft.AspNetCore.Mvc.HttpPutAttribute)
+* [HttpDelete](xref:Microsoft.AspNetCore.Mvc.HttpDeleteAttribute)
+* [[HttpHead]](xref:Microsoft.AspNetCore.Mvc.HttpHeadAttribute)
+* [[HttpPatch]](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)
+
+<a name="rt"></a>
+
+### <a name="route-templates"></a>路由範本
+
+ASP.NET Core 具有下列路由範本：
+
+* 所有[HTTP 動詞範本](#verb)都是路由範本。
+* [[Route]](xref:Microsoft.AspNetCore.Mvc.RouteAttribute)
+
+<a name="arx"></a>
+
+### <a name="attribute-routing-with-http-verb-attributes"></a>具有 Http 動詞屬性的屬性路由
+
+請考慮下列控制器：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/Test2Controller.cs?name=snippet)]
+
+在上述程式碼中：
+
+* 每個動作都包含 `[HttpGet]` 屬性，這會限制僅符合 HTTP GET 要求。
+* [`GetProduct`] 動作包括 `"{id}"` 範本，因此 `id` 會附加至控制器上的 `"api/[controller]"` 範本。 `"api/[controller]/"{id}""`的方法樣板。 因此，此動作僅符合的 GET 要求，格式為 `/api/test2/xyz`、`/api/test2/123`、`/api/test2/{any string}`等等。
+  [!code-csharp[](routing/samples/3.x/main/Controllers/Test2Controller.cs?name=snippet2)]
+* [`GetIntProduct`] 動作包含 [`"int/{id:int}")`] 範本。 範本的 `:int` 部分會將 `id` 的路由值限制為可轉換成整數的字串。 `/api/test2/int/abc`的 GET 要求：
+  * 不符合此動作。
+  * 傳回[404 找不到](https://developer.mozilla.org/docs/Web/HTTP/Status/404)的錯誤。
+    [!code-csharp[](routing/samples/3.x/main/Controllers/Test2Controller.cs?name=snippet3)]
+* `GetInt2Product` 動作包含範本中的 `{id}`，但不會將 `id` 限制為可以轉換成整數的值。 `/api/test2/int2/abc`的 GET 要求：
+  * 符合此路由。
+  * 模型系結無法將 `abc` 轉換成整數。 方法的 `id` 參數是整數。
+  * 傳回[400 錯誤的要求](https://developer.mozilla.org/docs/Web/HTTP/Status/400)，因為模型系結無法將`abc` 轉換成整數。
+      [!code-csharp[](routing/samples/3.x/main/Controllers/Test2Controller.cs?name=snippet4)]
+
+屬性路由可以使用 <xref:Microsoft.AspNetCore.Mvc.Routing.HttpMethodAttribute> 屬性，例如 <xref:Microsoft.AspNetCore.Mvc.HttpPostAttribute>、<xref:Microsoft.AspNetCore.Mvc.HttpPutAttribute>和 <xref:Microsoft.AspNetCore.Mvc.HttpDeleteAttribute>。 所有[HTTP 動詞](#verb)命令屬性都會接受路由範本。 下列範例顯示兩個符合相同路由範本的動作：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/MyProductsController.cs?name=snippet1)]
+
+使用 URL 路徑 `/products3`：
+
+* `MyProductsController.ListProducts` 動作會在 `GET`[HTTP 動詞](#verb)命令時執行。
+* `MyProductsController.CreateProduct` 動作會在 `POST`[HTTP 動詞](#verb)命令時執行。
+
+建立 REST API 時，您很少需要在動作方法上使用 `[Route(...)]`，因為動作會接受所有的 HTTP 方法。 最好使用更明確的[HTTP verb 屬性](#verb)，以精確瞭解 API 支援的內容。 REST API 的用戶端必須知道哪些路徑和 HTTP 動詞命令對應至特定邏輯作業。
+
+REST Api 應使用屬性路由，將應用程式的功能模型建立為一組資源，其中的作業是由 HTTP 指令動詞表示。 這表示許多作業（例如，相同邏輯資源上的 GET 和 POST）都會使用相同的 URL。 屬性路由提供仔細設計 API 公用端點配置所需的控制層級。
+
+由於屬性路由會套用至特定動作，因此輕鬆就能將參數設為路由範本定義的必要部分。 在下列範例中，需要 `id` 做為 URL 路徑的一部分：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsApiController.cs?name=snippet2)]
+
+`Products2ApiController.GetProduct(int)` 動作：
+
+* 是以 URL 路徑執行，例如 `/products2/3`
+* 不會使用 `/products2`的 URL 路徑來執行。
+
+[[使用]](<xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute>)屬性允許動作限制支援的要求內容類型。 如需詳細資訊，請參閱[使用使用屬性定義支援的要求內容類型](xref:web-api/index#consumes)。
+
+ 如需路由範本和相關選項的完整描述，請參閱[路由](xref:fundamentals/routing)。
+
+如需 `[ApiController]`的詳細資訊，請參閱[ApiController 屬性](xref:web-api/index##apicontroller-attribute)。
+
+## <a name="route-name"></a>路由名稱
+
+下列程式碼會定義 `Products_List`的路由名稱：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsApiController.cs?name=snippet2)]
+
+您可以使用路由名稱根據特定路由來產生 URL。 路由名稱：
+
+* 不會影響路由的 URL 比對行為。
+* 僅用於 URL 產生。
+
+在整個應用程式內路由名稱必須是唯一的。
+
+將上述程式碼與傳統預設路由相比較，這會將 `id` 參數定義為選擇性（`{id?}`）。 精確指定 Api 的功能有其優點，例如允許 `/products` 和 `/products/5` 分派至不同的動作。
+
+<a name="routing-combining-ref-label"></a>
+
+## <a name="combining-attribute-routes"></a>結合屬性路由
+
+為了避免屬性路由過於重複，控制器上的路由屬性可與個別動作上的路由屬性合併。 控制器上定義的任何路由範本都會附加到動作上的路由範本之前。 將路由屬性放在控制器上，即可讓控制器中的**所有**動作使用屬性路由。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsApiController.cs?name=snippet)]
+
+在上述範例中：
+
+* URL 路徑 `/products` 可以符合 `ProductsApi.ListProducts`
+* `/products/5` 的 URL 路徑可以符合 `ProductsApi.GetProduct(int)`。
+
+這兩個動作都只會符合 HTTP `GET`，因為它們是以 `[HttpGet]` 屬性來標示。
+
+套用至開頭為 `/` 或 `~/` 之動作的路由範本，無法與套用至控制器的路由範本合併。 下列範例會比對一組類似于預設路由的 URL 路徑。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/HomeController.cs?name=snippet)]
+
+下表說明上述程式碼中的 `[Route]` 屬性：
+
+| 屬性               | 結合 `[Route("Home")]` | 定義路由範本 |
+| ----------------- | ------------ | --------- |
+| `[Route("")]` | 是 | `"Home"` |
+| `[Route("Index")]` | 是 | `"Home/Index"` |
+| `[Route("/")]` | **No** | `""` |
+| `[Route("About")]` | 是 | `"Home/About"` |
+
+<a name="routing-ordering-ref-label"></a>
+<a name="oar"></a>
+
+### <a name="attribute-route-order"></a>屬性路由順序
+
+路由會建立樹狀結構並同時符合所有端點：
+
+* 路由專案的行為就像是放入理想的順序一樣。
+* 最特定的路由有機會在較一般的路由之前執行。
+
+例如，`blog/search/{topic}` 之類的屬性路由比屬性路由（例如 `blog/{*article}`）更明確。 根據預設，`blog/search/{topic}` 路由的優先順序較高，因為它是更明確的。 使用[傳統路由](#cr)時，開發人員會負責以所需的順序來放置路由。
+
+屬性路由可以使用 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute.Order> 屬性來設定順序。 所有架構提供的[路由屬性](xref:Microsoft.AspNetCore.Mvc.RouteAttribute)都包含 `Order`。 路由會依 `Order` 屬性的遞增排序來處理。 預設順序為 `0`。 使用 `Order = -1` 設定路由會在未設定順序的路由之前執行。 使用 `Order = 1` 設定路由會在預設路由順序之後執行。
+
+請根據 `Order`來**避免**。 如果應用程式的 URL 空間需要明確的順序值才能正確路由，那麼用戶端也可能會造成混淆。 一般而言，屬性路由會選取 URL 相符的正確路由。 如果用於 URL 產生的預設順序無法運作，使用路由名稱做為覆寫通常會比套用 `Order` 屬性更為簡單。
+
+請考慮下列兩個同時定義路由符合 `/home`的控制器：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/HomeController.cs?name=snippet2)]
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/MyDemoController.cs?name=snippet)]
+
+使用上述程式碼要求 `/home`，會擲回類似下列的例外狀況：
+
+```text
+AmbiguousMatchException: The request matched multiple endpoints. Matches:
+
+ WebMvcRouting.Controllers.HomeController.Index
+ WebMvcRouting.Controllers.MyDemoController.MyIndex
+```
+
+將 `Order` 新增至其中一個路由屬性可解決不明確的情況：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/MyDemo3Controller.cs?name=snippet3& highlight=2)]
+
+使用上述程式碼，`/home` 會執行 `HomeController.Index` 端點。 若要取得 `MyDemoController.MyIndex`，請要求 `/home/MyIndex`。 **注意**：
+
+* 上述程式碼是一個範例或不良的路由設計。 它是用來說明 `Order` 屬性。
+* `Order` 屬性只會解析不明確的情況，該範本無法比對。 最好的做法是移除 `[Route("Home")]` 範本。
+
+如需 Razor Pages 的路由順序資訊，請參閱[Razor Pages 路由和應用程式慣例：路由順序](xref:razor-pages/razor-pages-conventions#route-order)。
+
+在某些情況下，會傳回具有不明確路由的 HTTP 500 錯誤。 使用[記錄](xref:fundamentals/logging/index)來查看哪些端點造成 `AmbiguousMatchException`。
+
+<a name="routing-token-replacement-templates-ref-label"></a>
+
+## <a name="token-replacement-in-route-templates-controller-action-area"></a>路由範本中的權杖取代 [控制器]、[動作]、[區域]
+
+為了方便起見，屬性路由支援保留路由參數的權杖取代，方法是使用下列其中一項來括住權杖：
+
+* 方括弧： `[]`
+* 大括弧： `{}`
+
+`[action]`、`[area]`和 `[controller]` 的 token，會取代為定義路由之動作的動作名稱、區功能變數名稱稱和控制器名稱的值：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet)]
+
+在上述程式碼中：
+
+  [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet10)]
+
+  * 符合 `/Products0/List`
+
+  [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet11)]
+
+  * 符合 `/Products0/Edit/{id}`
+
+語彙基元取代會在建立屬性路由的最後一個步驟發生。 上述範例的行為與下列程式碼相同：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet20)]
+
+[!INCLUDE[](~/includes/MTcomments.md)]
+
+屬性路由也可以透過繼承來合併。 這種功能強大結合了權杖取代。 語彙基元取代也適用於屬性路由所定義的路由名稱。
+`[Route("[controller]/[action]", Name="[controller]_[action]")]`會為每個動作產生唯一的路由名稱：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet5)]
+
+語彙基元取代也適用於屬性路由所定義的路由名稱。
+`[Route("[controller]/[action]", Name="[controller]_[action]")]`
+為每個動作產生唯一的路由名稱。
+
+若要比對常值語彙基元取代分隔符號 `[` 或 `]`，請重複字元 (`[[` 或 `]]`) 來將它逸出。
+
+<a name="routing-token-replacement-transformers-ref-label"></a>
+
+### <a name="use-a-parameter-transformer-to-customize-token-replacement"></a>使用參數轉換程式自訂語彙基元取代
+
+可以使用參數轉換程式自訂語彙基元取代。 參數轉換程式會實作 <xref:Microsoft.AspNetCore.Routing.IOutboundParameterTransformer> 並轉換參數值。 例如，自訂 `SlugifyParameterTransformer` 參數轉換器會將 `SubscriptionManagement` 路由值變更為 `subscription-management`：
+
+[!code-csharp[](routing/samples/3.x/main/StartupSlugifyParamTransformer.cs?name=snippet2)]
+
+<xref:Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention> 是一個應用程式模型慣例，它會：
+
+* 將參數轉換程式套用到應用程式中的所有屬性路由。
+* 在取代屬性路由語彙基元值時自訂它們。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/SubscriptionManagementController.cs?name=snippet)]
+
+前面的 `ListAll` 方法符合 `/subscription-management/list-all`。
+
+`RouteTokenTransformerConvention` 會在 `ConfigureServices` 中註冊為選項。
+
+[!code-csharp[](routing/samples/3.x/main/StartupSlugifyParamTransformer.cs?name=snippet)]
+
+請參閱[MDN web](https://developer.mozilla.org/docs/Glossary/Slug)檔以取得輔助資訊的定義。
+
+<a name="routing-multiple-routes-ref-label"></a>
+
+### <a name="multiple-attribute-routes"></a>多個屬性路由
+
+屬性路由支援定義多個路由來達到相同的動作。 最常見的用法是模擬預設傳統路由的行為，如下列範例所示：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet6x)]
+
+將多個路由屬性放在控制器上，表示每一個都與動作方法上的每個路由屬性結合：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet6)]
+
+所有[HTTP 動詞](#verb)命令路由條件約束都會執行 `IActionConstraint`。
+
+當執行 <xref:Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint> 的多個路由屬性放在動作上時：
+
+* 每個動作條件約束都會與套用至控制器的路由範本結合。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet7)]
+
+在動作上使用多個路由看起來可能很有用且功能強大，因此最好讓應用程式的 URL 空間保持基本且妥善定義。 只有在需要時，**才**在動作上使用多個路由，例如支援現有的用戶端。
+
+<a name="routing-attr-options"></a>
+
+### <a name="specifying-attribute-route-optional-parameters-default-values-and-constraints"></a>指定屬性路由的選擇性參數、預設值和條件約束
+
+屬性路由支援使用與慣例路由相同的內嵌語法，來指定選擇性參數、預設值和條件約束。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet8&highlight=3)]
+
+在上述程式碼中，`[HttpPost("product/{id:int}")]` 會套用路由條件約束。 `ProductsController.ShowProduct` 動作僅符合 `/product/3`之類的 URL 路徑。 路由範本部分 `{id:int}` 會將該區段限制為只有整數。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/HomeController.cs?name=snippet24)]
+
+如需路由範本語法的詳細描述，請參閱[路由範本參考](xref:fundamentals/routing#route-template-reference)。
+
+<a name="routing-cust-rt-attr-irt-ref-label"></a>
+
+### <a name="custom-route-attributes-using-iroutetemplateprovider"></a>使用 IRouteTemplateProvider 自訂路由屬性
+
+所有的[路由屬性](#rt)都會執行 <xref:Microsoft.AspNetCore.Mvc.Routing.IRouteTemplateProvider>。 ASP.NET Core 執行時間：
+
+* 在應用程式啟動時，尋找控制器類別和動作方法上的屬性。
+* 會使用可執行 `IRouteTemplateProvider` 的屬性，以建立初始的路由集合。
+
+執行 `IRouteTemplateProvider` 以定義自訂路由屬性。 每個 `IRouteTemplateProvider` 都可讓您定義具有自訂路由範本、順序和名稱的單一路由：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/MyTestApiController.cs?name=snippet&highlight=1-10)]
+
+前面的 `Get` 方法會傳回 `Order = 2, Template = api/MyTestApi`。
+
+<a name="routing-app-model-ref-label"></a>
+
+### <a name="use-application-model-to-customize-attribute-routes"></a>使用應用程式模型自訂屬性路由
+
+應用程式模型：
+
+* 是在啟動時建立的物件模型。
+* 包含 ASP.NET Core 用來在應用程式中路由及執行動作的所有中繼資料。
+
+應用程式模型包含從路由屬性收集而來的所有資料。 路由屬性中的資料是由 `IRouteTemplateProvider` 實作為提供。 會議
+
+* 可以撰寫來修改應用程式模型，以自訂路由的行為。
+* 會在應用程式啟動時讀取。
+
+本節顯示使用應用程式模型自訂路由的基本範例。 下列程式碼會讓路由大致對齊專案的資料夾結構。
+
+[!code-csharp[](routing/samples/3.x/nsrc/NamespaceRoutingConvention.cs?name=snippet)]
+
+下列程式碼可防止 `namespace` 慣例套用至屬性路由的控制器：
+
+[!code-csharp[](routing/samples/3.x/nsrc/NamespaceRoutingConvention.cs?name=snippet2)]
+
+例如，下列控制器不會使用 `NamespaceRoutingConvention`：
+
+[!code-csharp[](routing/samples/3.x/nsrc/Controllers/ManagersController.cs?name=snippet&highlight=1)]
+
+`NamespaceRoutingConvention.Apply` 方法：
+
+* 如果控制器是屬性路由，則不會執行任何操作。
+* 設定以 `namespace`為基礎的控制器範本，其基底 `namespace` 已移除。
+
+`NamespaceRoutingConvention` 可以套用在 `Startup.ConfigureServices`中：
+
+[!code-csharp[](routing/samples/3.x/nsrc/Startup.cs?name=snippet&highlight=1,14-18)]
+
+例如，請考慮下列控制器：
+
+[!code-csharp[](routing/samples/3.x/nsrc/Controllers/UsersController.cs)]
+
+在上述程式碼中：
+
+* 基底 `namespace` 為 `My.Application`。
+* 先前控制器的完整名稱是 `My.Application.Admin.Controllers.UsersController`。
+* `NamespaceRoutingConvention` 會將控制器範本設定為 `Admin/Controllers/Users/[action]/{id?`。
+
+`NamespaceRoutingConvention` 也可以套用為控制器上的屬性：
+
+[!code-csharp[](routing/samples/3.x/nsrc/Controllers/TestController.cs?name=snippet&highlight=1)]
+
+<a name="routing-mixed-ref-label"></a>
+
+## <a name="mixed-routing-attribute-routing-vs-conventional-routing"></a>混合路由：屬性路由與慣例路由
+
+ASP.NET Core 應用程式可以混合使用傳統路由與屬性路由。 控制器通常會使用慣例路由來提供 HTML 頁面給瀏覽器，並使用屬性路由來提供 REST API。
+
+動作可以使用慣例路由或屬性路由。 將路由放在控制器或動作上，即可讓它使用屬性路由。 定義屬性路由的動作無法透過慣例路由到達，反之亦然。 控制器上的**任何**路由屬性都會讓控制器屬性中的**所有動作都**已路由傳送。
+
+屬性路由和傳統路由會使用相同的路由引擎。
+
+<a name="routing-url-gen-ref-label"></a>
+<a name="ambient"></a>
+
+## <a name="url-generation-and-ambient-values"></a>URL 產生和環境值
+
+應用程式可以使用路由 URL 產生功能來產生動作的 URL 連結。 產生 Url 可排除硬式編碼的 Url，讓程式碼更健全且更容易維護。 本節著重于 MVC 提供的 URL 產生功能，並僅涵蓋 URL 產生運作方式的基本概念。 如需 URL 產生的詳細描述，請參閱[路由](xref:fundamentals/routing)。
+
+<xref:Microsoft.AspNetCore.Mvc.IUrlHelper> 介面是 MVC 與路由之間的基礎結構基礎元素，用於 URL 產生。 `IUrlHelper` 的實例可透過 [控制器]、[views] 和 [view] 元件中的 [`Url`] 屬性取得。
+
+在下列範例中，會透過 `Controller.Url` 屬性使用 `IUrlHelper` 介面，以產生另一個動作的 URL。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/UrlGenerationController.cs?name=snippet_1)]
+
+如果應用程式使用預設的慣例路由，`url` 變數的值就是 URL 路徑字串 `/UrlGeneration/Destination`。 此 URL 路徑是藉由結合而建立：
+
+* 來自目前要求的路由值，稱為「**環境值**」。
+* 傳遞給 `Url.Action` 的值，並將這些值取代為路由範本：
+
+``` text
+ambient values: { controller = "UrlGeneration", action = "Source" }
+values passed to Url.Action: { controller = "UrlGeneration", action = "Destination" }
+route template: {controller}/{action}/{id?}
+
+result: /UrlGeneration/Destination
+```
+
+路由範本中每個路由參數的值都會以相符名稱的值和環境值所取代。 沒有值的路由參數可以：
+
+* 使用預設值（如果有的話）。
+* 如果是選擇性，則略過。 例如，路由範本中的 `id` `{controller}/{action}/{id?}`。
+
+如果任何必要的路由參數沒有對應的值，則 URL 產生會失敗。 如果某個路由的 URL 產生失敗，則會嘗試下一個路由，直到嘗試所有路由或找到相符項目為止。
+
+上述 `Url.Action` 範例會假設採用[傳統路由](#cr)。 URL 產生的運作方式類似于[屬性路由](#ar)，不過概念不同。 使用傳統路由：
+
+* 路由值是用來展開範本。
+* `controller` 和 `action` 的路由值通常會出現在該範本中。 這是可行的，因為路由所比對的 Url 會遵循慣例。
+
+下列範例會使用屬性路由：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/UrlGenerationAttrController.cs?name=snippet_1)]
+
+上述程式碼中的 `Source` 動作會產生 `custom/url/to/destination`。
+
+ASP.NET Core 3.0 中新增了 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 做為 `IUrlHelper`的替代方法。 `LinkGenerator` 提供類似但更具彈性的功能。 `IUrlHelper` 上的方法也在 `LinkGenerator` 上還有對應的方法系列。
+
+### <a name="generating-urls-by-action-name"></a>由動作名稱產生 URL
+
+[Url.Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) [LinkGenerator、GetPathByAction](xref:Microsoft.AspNetCore.Routing.ControllerLinkGeneratorExtensions.GetPathByAction*)和所有相關的多載都是藉由指定控制器名稱和動作名稱，而設計來產生目標端點。
+
+使用 `Url.Action`時，`controller` 和 `action` 的目前路由值是由執行時間所提供：
+
+* `controller` 和 `action` 的值都是[環境值](#ambient)和值的一部分。 方法 `Url.Action` 一律使用 `action` 和 `controller` 的目前值，並產生會路由傳送至目前動作的 URL 路徑。
+
+路由嘗試使用環境值中的值來填入產生 URL 時未提供的資訊。 假設有一個類似 `{a}/{b}/{c}/{d}` 的路由，`{ a = Alice, b = Bob, c = Carol, d = David }`的環境值：
+
+* 路由有足夠的資訊可產生不含任何其他值的 URL。
+* 路由有足夠的資訊，因為所有路由參數都有值。
+
+如果已加入值 `{ d = Donovan }`：
+
+* `{ d = David }` 的值會被忽略。
+* 產生的 URL 路徑為 `Alice/Bob/Carol/Donovan`。
+
+**警告**： URL 路徑為階層式。 在上述範例中，如果已加入值 `{ c = Cheryl }`：
+
+* `{ c = Carol, d = David }` 的兩個值都會被忽略。
+* 已不再有 `d` 的值，且 URL 產生失敗。
+* 您必須指定所需的 `c` 和 `d` 值，才能產生 URL。  
+
+您可能預期會遇到此 `{controller}/{action}/{id?}`預設路由的問題。 這個問題在實務上很罕見，因為 `Url.Action` 一定會明確指定 `controller` 和 `action` 值。
+
+Url 的數個多載[。動作](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*)會接受路由值物件，以提供 `controller` 和 `action`以外的路由參數值。 「路由值」物件經常與 `id`搭配使用。 例如， `Url.Action("Buy", "Products", new { id = 17 })`。 路由值物件：
+
+* 依照慣例，通常是匿名型別的物件。
+* 可以是 `IDictionary<>` 或[POCO](https://wikipedia.org/wiki/Plain_old_CLR_object)）。
+
+不符合路由參數的任何額外路由值都會放在查詢字串中。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/TestController.cs?name=snippet)]
+
+上述程式碼會產生 `/Products/Buy/17?color=red`。
+
+下列程式碼會產生絕對 URL：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/TestController.cs?name=snippet2)]
+
+若要建立絕對 URL，請使用下列其中一項：
+
+* 接受 `protocol`的多載。 例如，上述程式碼。
+* [LinkGenerator. GetUriByAction](xref:Microsoft.AspNetCore.Routing.ControllerLinkGeneratorExtensions.GetUriByAction*)，預設會產生絕對 uri。
+
+<a name="routing-gen-urls-route-ref-label"></a>
+
+### <a name="generate-urls-by-route"></a>依路由產生 Url
+
+上述程式碼示範如何藉由傳入控制器和動作名稱來產生 URL。 `IUrlHelper` 也會提供[RouteUrl](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.RouteUrl*)系列的方法。 這些方法類似于[Url. 動作](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*)，但不會將目前的 `action` 值和 `controller` 複製到路由值。 `Url.RouteUrl`最常見的使用方式：
+
+* 指定用來產生 URL 的路由名稱。
+* 通常不會指定控制器或動作名稱。
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/UrlGeneration2Controller.cs?name=snippet_1)]
+
+下列 Razor 檔案會產生 `Destination_Route`的 HTML 連結：
+
+[!code-cshtml[](routing/samples/3.x/main/Views/Shared/MyLink.cshtml)]
+
+<a name="routing-gen-urls-html-ref-label"></a>
+
+### <a name="generate-urls-in-html-and-razor"></a>以 HTML 和 Razor 產生 Url
+
+<xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper> 提供 <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper> 方法[html.beginform](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.BeginForm*)和[.html](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.ActionLink*)分別產生 `<form>` 和 `<a>` 元素。 這些方法會使用[url. Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*)方法來產生 url，並接受類似的引數。 `Url.RouteUrl` 的成對 `HtmlHelper` 為 `Html.BeginRouteForm` 和 `Html.RouteLink`，這兩者的功能很類似。
+
+TagHelper 透過 `form` TagHelper 和 `<a>` TagHelper 產生 URL。 這兩者使用 `IUrlHelper` 進行實作。 如需詳細資訊，請參閱[表單中的標記](xref:mvc/views/working-with-forms)協助程式。
+
+在檢視中，可透過 `IUrlHelper` 屬性使用 `Url` 來產生上述未涵蓋的任何特定 URL。
+
+<a name="routing-gen-urls-action-ref-label"></a>
+
+### <a name="url-generation-in-action-results"></a>動作結果中的 URL 產生
+
+前述範例顯示在控制器中使用 `IUrlHelper`。 控制器中最常見的用法是在動作結果中產生 URL。
+
+<xref:Microsoft.AspNetCore.Mvc.ControllerBase> 和 <xref:Microsoft.AspNetCore.Mvc.Controller> 基底類別提供便利的方法讓動作結果可參考其他動作。 一個典型的使用方式是在接受使用者輸入之後重新導向：
+
+[!code-csharp[](routing/samples/3.x/main/Controllers/CustomerController.cs?name=snippet)]
+
+動作結果 factory 方法（例如 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToAction*> 和 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> 會遵循 `IUrlHelper`上之方法的類似模式。
+
+<a name="routing-dedicated-ref-label"></a>
+
+### <a name="special-case-for-dedicated-conventional-routes"></a>專用慣例路由的特殊案例
+
+[傳統路由](#cr)可以使用一種特殊的路由定義，稱為[專用](#dcr)的慣例路由。 在下列範例中，名為 `blog` 的路由是專用的傳統路由：
+
+[!code-csharp[](routing/samples/3.x/main/Startup.cs?name=snippet_1)]
+
+使用上述路由定義，`Url.Action("Index", "Home")` 會產生使用 `default` 路由 `/` 的 URL 路徑，但為何？ 您可能會猜想路由值 `{ controller = Home, action = Index }` 便足以使用 `blog` 來產生 URL，且結果會是 `/blog?action=Index&controller=Home`。
+
+[專用的傳統路由](#dcr)會依賴預設值的特殊行為，而不會有對應的路由參數，以防止路由在 URL 產生時過於[貪婪](xref:fundamentals/routing#greedy)。 在本例中，預設值為 `{ controller = Blog, action = Article }`，`controller` 和 `action` 都不會顯示為路由參數。 當路由執行 URL 產生時，所提供的值必須符合預設值。 使用 `blog` 產生 URL 的作業失敗，因為 `{ controller = Home, action = Index }` 的值不符合 `{ controller = Blog, action = Article }`。 路由會接著切換並嘗試 `default`，此時會成功。
+
+<a name="routing-areas-ref-label"></a>
+
+## <a name="areas"></a>區域
+
+[區域](xref:mvc/controllers/areas)是一種 MVC 功能，用來將相關功能組織成不同的群組：
+
+* 控制器動作的路由命名空間。
+* Views 的資料夾結構。
+
+使用區域可讓應用程式擁有多個具有相同名稱的控制器，前提是它們有不同的區域。 使用區域可建立用於路由的階層，方法是將另一個路由參數 `area` 新增至 `controller` 和 `action`。 本節討論路由與區域的互動方式。 如需如何搭配使用區域與視圖的詳細資料，請參閱[區域](xref:mvc/controllers/areas)。
+
+下列範例會將 MVC 設定為使用預設的傳統路由，並將 `area` 路由用於名為 `Blog`的 `area`：
+
+[!code-csharp[](routing/samples/3.x/AreasRouting/Startup.cs?name=snippet1)]
+
+在上述程式碼中，會呼叫 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*> 來建立 `"blog_route"`。 第二個參數（`"Blog"`）是區功能變數名稱稱。
+
+當比對 URL 路徑（如 `/Manage/Users/AddUser`）時，`"blog_route"` 路由會產生 `{ area = Blog, controller = Users, action = AddUser }`的路由值。 `area` 路由值是由 `area`的預設值所產生。 `MapAreaControllerRoute` 所建立的路由相當於下列內容：
+
+[!code-csharp[](routing/samples/3.x/AreasRouting/Startup2.cs?name=snippet2)]
+
+`MapAreaControllerRoute` 會針對使用所提供之區域名稱 (在本例中為 `area`) 的 `Blog`，使用預設值和條件約束來建立路由。 預設值可確保路由一律會產生 `{ area = Blog, ... }`，而條件約束需要 `{ area = Blog, ... }` 值以產生 URL。
+
+慣例路由與順序息息相關。 一般而言，具有區域的路由應該放在較早的位置，因為它們比沒有區域的路由更明確。
+
+使用上述範例，路由值 `{ area = Blog, controller = Users, action = AddUser }` 符合下列動作：
+
+[!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
+
+[[Area]](xref:Microsoft.AspNetCore.Mvc.AreaAttribute)屬性（attribute）會將控制器表示為區域的一部分。 此控制器位於 [`Blog`] 區域中。 沒有 `[Area]` 屬性的控制器不是任何區域的成員，而且當路由提供 `area` 路由值時，**不**符合。 在下列範例中，只有列出的第一個控制器可能符合路由值 `{ area = Blog, controller = Users, action = AddUser }`。
+
+[!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
+
+[!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Zebra/Controllers/UsersController.cs)]
+
+[!code-csharp[](routing/samples/3.x/AreasRouting/Controllers/UsersController.cs)]
+
+這裡會顯示每個控制器的命名空間，以提供完整性。 如果前面的控制器使用相同的命名空間，則會產生編譯器錯誤。 類別命名空間不會影響 MVC 的路由。
+
+前兩個控制器是區域的成員，只有在 `area` 路由值提供其各自的區域名稱時才會符合。 第三個控制器不是任何區域的成員，只有路由未提供任何值給 `area` 時才會符合。
+
+<a name="aa"></a>
+
+在「未符合任何值」的情況下，缺少 `area` 值相當於 `area` 的值為 Null 或空字串。
+
+在區域內執行動作時，`area` 的路由值可做為路由的[環境值](#ambient)，以用於 URL 產生。 這表示區域預設會以「黏性」方式來處理 URL 產生，如下列範例所示。
+
+[!code-csharp[](routing/samples/3.x/AreasRouting/Startup3.cs?name=snippet3)]
+
+[!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Duck/Controllers/UsersController.cs)]
+
+下列程式碼會產生 `/Zebra/Users/AddUser`的 URL：
+
+[!code-csharp[](routing/samples/3.x/AreasRouting/Controllers/HomeController.cs?name=snippet)]
+
+<a name="action"></a>
+
+## <a name="action-definition"></a>動作定義
+
+控制器上的公用方法（除了具有[請以 nonaction](xref:Microsoft.AspNetCore.Mvc.NonActionAttribute)屬性的方法）是動作。
+
+## <a name="sample-code"></a>範例程式碼
+
+ * [MyDisplayRouteInfo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x/main/Extensions/ControllerContextExtensions.cs)方法包含在[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x)中，可用來顯示路由資訊。
+* [檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 ASP.NET Core MVC 使用路由[中介軟體](xref:fundamentals/middleware/index)來比對內送要求的 URL，並將這些 URL 對應至動作。 路由是在啟動程式碼或屬性中定義。 路由描述 URL 路徑應該如何與動作進行比對。 路由也可用來產生回應中所送出的連結 URL。
 
@@ -60,7 +895,7 @@ routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 * `{id?}` 將 `id` 定義為選擇性
 
-預設和選擇性路由參數不一定要全部出現在 URL 路徑中才算相符。 如需路由範本語法的詳細描述，請參閱[路由範本參考](../../fundamentals/routing.md#route-template-reference)。
+預設和選擇性路由參數不一定要全部出現在 URL 路徑中才算相符。 如需路由範本語法的詳細描述，請參閱[路由範本參考](xref:fundamentals/routing#route-template-reference)。
 
 `"{controller=Home}/{action=Index}/{id?}"` 可能符合 URL 路徑 `/`，並將產生路由值 `{ controller = Home, action = Index }`。 `controller` 和 `action` 的值使用預設值；`id` 不會產生值，因為 URL 路徑中沒有對應的區段。 MVC 會使用這些路由值來選取 `HomeController` 和 `Index` 動作：
 
@@ -123,13 +958,11 @@ app.UseRouter(routes.Build());
 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
 ```
 
-即為「慣例路由」的範例。 我們將此樣式稱為「慣例路由」，因為它會建立 URL 路徑的「慣例」：
+上述程式碼是傳統路由的範例。 此樣式稱為「傳統路由」，因為它會建立 URL 路徑的*慣例*：
 
-* 第一個路徑區段對應至控制器名稱
-
-* 第二個對應至動作名稱
-
-* 第三個區段代表用來對應至模型實體的選擇性 `id`
+* 第一個路徑區段會對應到控制器名稱。
+* 第二個對應至動作名稱。
+* 第三個區段用於選擇性的 `id`。 `id` 對應至模型實體。
 
 使用此 `default` 路由，URL 路徑 `/Products/List` 會對應至 `ProductsController.List` 動作；而 `/Blog/Article/17` 會對應至 `BlogController.Article`。 此對應**只會**根據控制器和動作名稱，而不會根據命名空間、來源檔案位置或方法參數。
 
@@ -157,7 +990,7 @@ app.UseMvc(routes =>
 路由集合中的路由已經過排序，並將依其新增順序進行處理。 因此在此範例中，會先嘗試 `blog` 路由，再嘗試 `default` 路由。
 
 > [!NOTE]
-> 「專用慣例路由」通常會使用 `{*article}` 等 catch-all 路由參數，來擷取 URL 路徑的其餘部分。 這可能會讓路由變得「太窮盡」，也就是它會比對您想要讓其他路由比對的 URL。 將這些「窮盡」路由放在路由表後面可解決此問題。
+> *專用的傳統路由*通常會使用**catch-all**路由參數（例如 `{*article}`）來捕捉 URL 路徑的其餘部分。 這可能會讓路由變得「太窮盡」，也就是它會比對您想要讓其他路由比對的 URL。 將這些「窮盡」路由放在路由表後面可解決此問題。
 
 ### <a name="fallback"></a>後援
 
@@ -165,7 +998,7 @@ app.UseMvc(routes =>
 
 ### <a name="disambiguating-actions"></a>釐清動作
 
-若透過路由符合兩個動作，MVC 必須釐清並選擇「最佳」候選項目，否則會擲回例外狀況。 例如：
+若透過路由符合兩個動作，MVC 必須釐清並選擇「最佳」候選項目，否則會擲回例外狀況。 例如，
 
 ```csharp
 public class ProductsController : Controller
@@ -299,7 +1132,7 @@ public class ProductsApiController : Controller
 }
 ```
 
-`ProductsApi.GetProduct(int)` 動作會針對 `/products/3` 等 URL 路徑來執行，但不會針對 `/products` 等 URL 路徑來執行。 如需路由範本和相關選項的完整描述，請參閱[路由](../../fundamentals/routing.md)。
+`ProductsApi.GetProduct(int)` 動作會針對 `/products/3` 等 URL 路徑來執行，但不會針對 `/products` 等 URL 路徑來執行。 如需路由範本和相關選項的完整描述，請參閱[路由](xref:fundamentals/routing)。
 
 ## <a name="route-name"></a>路由名稱
 
@@ -367,7 +1200,7 @@ public class HomeController : Controller
 
 ### <a name="ordering-attribute-routes"></a>排序屬性路由
 
-相較於依已定義順序執行的慣例路由，屬性路由會建立樹狀並同時比對所有路由。 此行為如同依理想的排序來排列路由項目，最明確的路由會有機會在較泛型的路由之前執行。
+相對於以定義的循序執行的傳統路由，屬性路由會建立樹狀結構並同時符合所有路由。 此行為如同依理想的排序來排列路由項目，最明確的路由會有機會在較泛型的路由之前執行。
 
 例如，`blog/search/{topic}` 等路由比 `blog/{*article}` 等路由更明確。 邏輯上來說，預設會先「執行」`blog/search/{topic}`，因為這是唯一合理的排序。 使用慣例路由，開發人員會負責依想要的順序來排列路由。
 
@@ -384,11 +1217,11 @@ Razor Pages 路由和 MVC 控制器路由會共用實作。 如需 Razor Pages �
 
 為了方便起見，屬性路由支援以方括號 ( *、* ) 括住語彙基元的「語彙基元取代」`[``]`。 語彙基元 `[action]`、`[area]` 與 `[controller]` 會分別以定義路由之動作的動作名稱值、區域名稱值和控制器名稱值來取代。 在下列範例中，動作會符合註解中所述的 URL 路徑：
 
-[!code-csharp[](routing/sample/main/Controllers/ProductsController.cs?range=7-11,13-17,20-22)]
+[!code-csharp[](routing/samples/2.x/main/Controllers/ProductsController.cs?range=7-11,13-17,20-22)]
 
 語彙基元取代會在建立屬性路由的最後一個步驟發生。 上述範例的運作方式與下列程式碼相同：
 
-[!code-csharp[](routing/sample/main/Controllers/ProductsController2.cs?range=7-11,13-17,20-22)]
+[!code-csharp[](routing/samples/2.x/main/Controllers/ProductsController2.cs?range=7-11,13-17,20-22)]
 
 屬性路由也可以透過繼承來合併。 這與語彙基元取代結合會特別強大。
 
@@ -410,7 +1243,9 @@ public class ProductsController : MyBaseController
 
 若要比對常值語彙基元取代分隔符號 `[` 或 `]`，請重複字元 (`[[` 或 `]]`) 來將它逸出。
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
 
 <a name="routing-token-replacement-transformers-ref-label"></a>
 
@@ -457,6 +1292,8 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 ::: moniker-end
 
+
+::: moniker range="< aspnetcore-3.0"
 <a name="routing-multiple-routes-ref-label"></a>
 
 ### <a name="multiple-routes"></a>多個路由
@@ -515,7 +1352,7 @@ public IActionResult ShowProduct(int id)
 }
 ```
 
-如需路由範本語法的詳細描述，請參閱[路由範本參考](../../fundamentals/routing.md#route-template-reference)。
+如需路由範本語法的詳細描述，請參閱[路由範本參考](xref:fundamentals/routing#route-template-reference)。
 
 <a name="routing-cust-rt-attr-irt-ref-label"></a>
 
@@ -544,7 +1381,7 @@ public class MyApiControllerAttribute : Attribute, IRouteTemplateProvider
 
 「應用程式模型」是在啟動時建立的物件模型，其中包含 MVC 用來路由及執行動作的所有中繼資料。 「應用程式模型」包含從路由屬性收集的所有資料 (透過 `IRouteTemplateProvider`)。 您可以撰寫「慣例」來修改啟動時的應用程式模型，以自訂路由的運作方式。 本節簡單示範如何使用應用程式模型來自訂路由。
 
-[!code-csharp[](routing/sample/main/NamespaceRoutingConvention.cs)]
+[!code-csharp[](routing/samples/2.x/main/NamespaceRoutingConvention.cs)]
 
 <a name="routing-mixed-ref-label"></a>
 
@@ -565,13 +1402,13 @@ MVC 應用程式可以混用慣例路由與屬性路由。 控制器通常會使
 
 ## <a name="url-generation"></a>URL 產生
 
-MVC 應用程式可以使用路由的 URL 產生功能，來產生動作的 URL 連結。 產生 URL 可排除硬式編碼的 URL，讓程式碼更穩定且更容易維護。 本節著重於 MVC 所提供的 URL 產生功能，並只會涵蓋 URL 產生運作方式的基本概念。 如需 URL 產生的詳細描述，請參閱[路由](../../fundamentals/routing.md)。
+MVC 應用程式可以使用路由的 URL 產生功能，來產生動作的 URL 連結。 產生 URL 可排除硬式編碼的 URL，讓程式碼更穩定且更容易維護。 本節著重於 MVC 所提供的 URL 產生功能，並只會涵蓋 URL 產生運作方式的基本概念。 如需 URL 產生的詳細描述，請參閱[路由](xref:fundamentals/routing)。
 
 `IUrlHelper` 介面是 MVC 與用於產生 URL 的路由之間的基礎結構部分。 您將會透過控制器、檢視和檢視元件中 `IUrlHelper` 屬性，來尋找可用的 `Url` 執行個體。
 
 在此範例中，會透過 `IUrlHelper` 屬性使用 `Controller.Url` 介面來產生另一個動作的 URL。
 
-[!code-csharp[](routing/sample/main/Controllers/UrlGenerationController.cs?name=snippet_1)]
+[!code-csharp[](routing/samples/2.x/main/Controllers/UrlGenerationController.cs?name=snippet_1)]
 
 如果應用程式使用預設慣例路由，`url` 變數的值會是 URL 路徑字串 `/UrlGeneration/Destination`。 此 URL 路徑是透過路由所建立，結合了目前要求中的路由值 (環境值) 與傳遞至 `Url.Action` 的值，並在路由範本中取代這些值：
 
@@ -589,9 +1426,9 @@ result: /UrlGeneration/Destination
 
 此範例使用屬性路由：
 
-[!code-csharp[](routing/sample/main/StartupUseMvc.cs?name=snippet_1)]
+[!code-csharp[](routing/samples/2.x/main/StartupUseMvc.cs?name=snippet_1)]
 
-[!code-csharp[](routing/sample/main/Controllers/UrlGenerationControllerAttr.cs?name=snippet_1)]
+[!code-csharp[](routing/samples/2.x/main/Controllers/UrlGenerationControllerAttr.cs?name=snippet_1)]
 
 MVC 建立所有屬性路由動作的查閱資料表，並將比對 `controller` 和 `action` 值，以選取要用於 URL 產生的路由範本。 在上述範例中，會產生 `custom/url/to/destination`。
 
@@ -609,7 +1446,7 @@ MVC 建立所有屬性路由動作的查閱資料表，並將比對 `controller`
 
 較長的 `Url.Action` 多載還會接受一個額外的「路由值」物件，來為 `controller` 和 `action` 以外的路由參數提供值。 您最常會在搭配 `id` 時看到此用法，例如 `Url.Action("Buy", "Products", new { id = 17 })`。 依照慣例，「路由值」物件通常是匿名型別的物件，但也可以是 `IDictionary<>` 或「純舊 .NET 物件」。 不符合路由參數的任何額外路由值都會放在查詢字串中。
 
-[!code-csharp[](routing/sample/main/Controllers/TestController.cs)]
+[!code-csharp[](routing/samples/2.x/main/Controllers/TestController.cs)]
 
 > [!TIP]
 > 若要建立絕對 URL，請使用接受 `protocol` 的多載：`Url.Action("Buy", "Products", new { id = 17 }, protocol: Request.Scheme)`
@@ -620,7 +1457,7 @@ MVC 建立所有屬性路由動作的查閱資料表，並將比對 `controller`
 
 上述程式碼示範如何藉由傳入控制器和動作名稱來產生 URL。 `IUrlHelper` 也提供 `Url.RouteUrl` 系列方法。 這些方法類似於 `Url.Action`，但不會將 `action` 和 `controller` 的目前值複製到路由值。 最常見的用法是指定路由名稱使用特定路由來產生 URL，通常「不需要」指定控制器或動作名稱。
 
-[!code-csharp[](routing/sample/main/Controllers/UrlGenerationControllerRouting.cs?name=snippet_1)]
+[!code-csharp[](routing/samples/2.x/main/Controllers/UrlGenerationControllerRouting.cs?name=snippet_1)]
 
 <a name="routing-gen-urls-html-ref-label"></a>
 
@@ -681,11 +1518,11 @@ app.UseMvc(routes =>
 
 下列範例會設定 MVC 使用預設慣例路由，並為名為  *的區域設定「區域路由」* `Blog`：
 
-[!code-csharp[](routing/sample/AreasRouting/Startup.cs?name=snippet1)]
+[!code-csharp[](routing/samples/3.x/AreasRouting/Startup.cs?name=snippet1)]
 
 當符合 `/Manage/Users/AddUser` 等 URL 路徑時，第一個路由會產生路由值 `{ area = Blog, controller = Users, action = AddUser }`。 `area` 路由值是由 `area` 的預設值所產生；事實上，`MapAreaRoute` 所建立的路由相當於：
 
-[!code-csharp[](routing/sample/AreasRouting/Startup.cs?name=snippet2)]
+[!code-csharp[](routing/samples/3.x/AreasRouting/Startup.cs?name=snippet2)]
 
 `MapAreaRoute` 會針對使用所提供之區域名稱 (在本例中為 `area`) 的 `Blog`，使用預設值和條件約束來建立路由。 預設值可確保路由一律會產生 `{ area = Blog, ... }`，而條件約束需要 `{ area = Blog, ... }` 值以產生 URL。
 
@@ -694,15 +1531,15 @@ app.UseMvc(routes =>
 
 使用上述範例，路由值會符合下列動作：
 
-[!code-csharp[](routing/sample/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
+[!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
 
 `AreaAttribute` 可用來指定控制器為區域的一部分，假設此控制器在 `Blog` 區域中。 不含 `[Area]` 屬性的控制器不是任何區域的成員，因此當路由提供  **路由值時**不會`area`符合。 在下列範例中，只有列出的第一個控制器可能符合路由值 `{ area = Blog, controller = Users, action = AddUser }`。
 
-[!code-csharp[](routing/sample/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
+[!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
 
-[!code-csharp[](routing/sample/AreasRouting/Areas/Zebra/Controllers/UsersController.cs)]
+[!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Zebra/Controllers/UsersController.cs)]
 
-[!code-csharp[](routing/sample/AreasRouting/Controllers/UsersController.cs)]
+[!code-csharp[](routing/samples/3.x/AreasRouting/Controllers/UsersController.cs)]
 
 > [!NOTE]
 > 為求完整起見，此處顯示每個控制器的命名空間，否則控制器會有命名衝突並產生編譯器錯誤。 類別命名空間不會影響 MVC 的路由。
@@ -713,10 +1550,9 @@ app.UseMvc(routes =>
 > 在「未符合任何值」的情況下，缺少 `area` 值相當於 `area` 的值為 Null 或空字串。
 
 執行區域中的動作時，`area` 的路由值會作為路由用於 URL 產生的「環境值」。 這表示區域預設會以「黏性」方式來處理 URL 產生，如下列範例所示。
+[!code-csharp[](routing/samples/3.x/AreasRouting/Startup.cs?name=snippet3)]
 
-[!code-csharp[](routing/sample/AreasRouting/Startup.cs?name=snippet3)]
-
-[!code-csharp[](routing/sample/AreasRouting/Areas/Duck/Controllers/UsersController.cs)]
+[!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Duck/Controllers/UsersController.cs)]
 
 <a name="iactionconstraint-ref-label"></a>
 
@@ -749,7 +1585,7 @@ public class ProductsController : Controller
 
 實作 `IActionConstraint` 的最簡單方式是建立衍生自 `System.Attribute` 的類別，並將它放在您的動作和控制器上。 MVC 會自動探索作為屬性套用的任何 `IActionConstraint`。 您可以使用應用程式模型來套用條件約束，由於您可以之後編寫其套用方式的程式，因此可能是最彈性的方法。
 
-在下列範例中，條件約束會根據路由資料中的「國碼 (地區碼)」來選擇動作。 [GitHub 上有完整範例](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.ActionConstraintSample.Web/CountrySpecificAttribute.cs)。
+在下列範例中，條件約束會根據路由資料中的*國家（地區）代碼*來選擇動作。 [GitHub 上有完整範例](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.ActionConstraintSample.Web/CountrySpecificAttribute.cs)。
 
 ```csharp
 public class CountrySpecificAttribute : Attribute, IActionConstraint
@@ -785,3 +1621,5 @@ public class CountrySpecificAttribute : Attribute, IActionConstraint
 
 > [!TIP]
 > 若要決定 `Order` 的值，請考慮是否應該在 HTTP 方法之前套用條件約束。 數值愈低會愈先執行。
+
+::: moniker-end

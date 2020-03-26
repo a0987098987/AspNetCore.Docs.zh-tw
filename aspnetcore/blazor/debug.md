@@ -1,138 +1,157 @@
 ---
-title: Debug ASP.NET Core Blazor
+title: Debug ASP.NET Core Blazor WebAssembly
 author: guardrex
 description: 瞭解如何 Blazor 應用程式進行 debug。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/16/2020
+ms.date: 03/26/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 1b0035af48b82807a6ae14835a41a1ecbef06bb6
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 5dbc900ab68682068a7f9e3ffdaabef89a0c7798
+ms.sourcegitcommit: 6ffb583991d6689326605a24565130083a28ef85
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78661704"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80306480"
 ---
-# <a name="debug-aspnet-core-blazor"></a><span data-ttu-id="494b0-103">Debug ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="494b0-103">Debug ASP.NET Core Blazor</span></span>
+# <a name="debug-aspnet-core-opno-locblazor-webassembly"></a><span data-ttu-id="6ee3b-103">Debug ASP.NET Core Blazor WebAssembly</span><span class="sxs-lookup"><span data-stu-id="6ee3b-103">Debug ASP.NET Core Blazor WebAssembly</span></span>
 
-[<span data-ttu-id="494b0-104">Daniel Roth</span><span class="sxs-lookup"><span data-stu-id="494b0-104">Daniel Roth</span></span>](https://github.com/danroth27)
+[<span data-ttu-id="6ee3b-104">Daniel Roth</span><span class="sxs-lookup"><span data-stu-id="6ee3b-104">Daniel Roth</span></span>](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-<span data-ttu-id="494b0-105">在以 Chromium 為基礎的瀏覽器（Chrome/Edge）中使用瀏覽器開發工具來進行偵錯工具的 Blazor WebAssembly 時，會有*早期*支援。</span><span class="sxs-lookup"><span data-stu-id="494b0-105">*Early* support exists for debugging Blazor WebAssembly using the browser dev tools in Chromium-based browsers (Chrome/Edge).</span></span> <span data-ttu-id="494b0-106">工作進行中：</span><span class="sxs-lookup"><span data-stu-id="494b0-106">Work is in progress to:</span></span>
+Blazor<span data-ttu-id="6ee3b-105"> WebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器開發工具（邊緣/Chrome）進行調試。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-105"> WebAssembly apps can be debugged using the browser dev tools in Chromium-based browsers (Edge/Chrome).</span></span>  <span data-ttu-id="6ee3b-106">或者，您可以使用 Visual Studio 或 Visual Studio Code 來對應用程式進行 debug 錯。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-106">Alternatively you can debug your app using Visual Studio or Visual Studio Code.</span></span>
 
-* <span data-ttu-id="494b0-107">在 Visual Studio 中完全啟用調試。</span><span class="sxs-lookup"><span data-stu-id="494b0-107">Fully enable debugging in Visual Studio.</span></span>
-* <span data-ttu-id="494b0-108">在 Visual Studio Code 中啟用調試。</span><span class="sxs-lookup"><span data-stu-id="494b0-108">Enable debugging in Visual Studio Code.</span></span>
+<span data-ttu-id="6ee3b-107">可用的案例包括：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-107">Available scenarios include:</span></span>
 
-<span data-ttu-id="494b0-109">偵錯工具功能有限。</span><span class="sxs-lookup"><span data-stu-id="494b0-109">Debugger capabilities are limited.</span></span> <span data-ttu-id="494b0-110">可用的案例包括：</span><span class="sxs-lookup"><span data-stu-id="494b0-110">Available scenarios include:</span></span>
+* <span data-ttu-id="6ee3b-108">設定和移除中斷點。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-108">Set and remove breakpoints.</span></span>
+* <span data-ttu-id="6ee3b-109">在 Visual Studio 和 Visual Studio Code （<kbd>F5</kbd>支援）中，以支援偵錯工具的方式執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-109">Run the app with debugging support in Visual Studio and Visual Studio Code (<kbd>F5</kbd> support).</span></span>
+* <span data-ttu-id="6ee3b-110">透過程式碼的單一步驟（<kbd>F10</kbd>）。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-110">Single-step (<kbd>F10</kbd>) through the code.</span></span>
+* <span data-ttu-id="6ee3b-111">在瀏覽器中使用<kbd>F8</kbd>或 Visual Studio 或 Visual Studio Code 中的<kbd>F5</kbd>繼續執行程式碼。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-111">Resume code execution with <kbd>F8</kbd> in a browser or <kbd>F5</kbd> in Visual Studio or Visual Studio Code.</span></span>
+* <span data-ttu-id="6ee3b-112">在 [*區域變數*] 顯示中，觀察本機變數的值。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-112">In the *Locals* display, observe the values of local variables.</span></span>
+* <span data-ttu-id="6ee3b-113">查看呼叫堆疊，包括從 JavaScript 轉換成 .NET，以及從 .NET 到 JavaScript 的呼叫鏈。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-113">See the call stack, including call chains that go from JavaScript into .NET and from .NET to JavaScript.</span></span>
 
-* <span data-ttu-id="494b0-111">設定和移除中斷點。</span><span class="sxs-lookup"><span data-stu-id="494b0-111">Set and remove breakpoints.</span></span>
-* <span data-ttu-id="494b0-112">透過程式碼或繼續（`F8`）程式碼執行的單一步驟（`F10`）。</span><span class="sxs-lookup"><span data-stu-id="494b0-112">Single-step (`F10`) through the code or resume (`F8`) code execution.</span></span>
-* <span data-ttu-id="494b0-113">在 [*區域變數*] 顯示中，觀察 `int`、`string`和 `bool`類型的任何本機變數值。</span><span class="sxs-lookup"><span data-stu-id="494b0-113">In the *Locals* display, observe the values of any local variables of type `int`, `string`, and `bool`.</span></span>
-* <span data-ttu-id="494b0-114">查看呼叫堆疊，包括從 JavaScript 轉換成 .NET，以及從 .NET 到 JavaScript 的呼叫鏈。</span><span class="sxs-lookup"><span data-stu-id="494b0-114">See the call stack, including call chains that go from JavaScript into .NET and from .NET to JavaScript.</span></span>
+<span data-ttu-id="6ee3b-114">目前，您*無法*：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-114">For now, you *can't*:</span></span>
 
-<span data-ttu-id="494b0-115">您*不能*：</span><span class="sxs-lookup"><span data-stu-id="494b0-115">You *can't*:</span></span>
+* <span data-ttu-id="6ee3b-115">檢查陣列。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-115">Inspect arrays.</span></span>
+* <span data-ttu-id="6ee3b-116">將滑鼠暫留以檢查成員。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-116">Hover to inspect members.</span></span>
+* <span data-ttu-id="6ee3b-117">逐步執行 managed 程式碼的偵錯工具。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-117">Step debug into or out of managed code.</span></span>
+* <span data-ttu-id="6ee3b-118">具有檢查實數值型別的完整支援。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-118">Have full support for inspecting value types.</span></span>
+* <span data-ttu-id="6ee3b-119">中斷未處理的例外狀況。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-119">Break on unhandled exceptions.</span></span>
+* <span data-ttu-id="6ee3b-120">在應用程式啟動期間叫用中斷點。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-120">Hit breakpoints during app startup.</span></span>
+* <span data-ttu-id="6ee3b-121">使用服務工作者來對應用程式進行 Debug。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-121">Debug an app with a service worker.</span></span>
 
-* <span data-ttu-id="494b0-116">觀察不是 `int`、`string`或 `bool`之任何區域變數的值。</span><span class="sxs-lookup"><span data-stu-id="494b0-116">Observe the values of any locals that aren't an `int`, `string`, or `bool`.</span></span>
-* <span data-ttu-id="494b0-117">觀察任何類別屬性或欄位的值。</span><span class="sxs-lookup"><span data-stu-id="494b0-117">Observe the values of any class properties or fields.</span></span>
-* <span data-ttu-id="494b0-118">將滑鼠停留在變數上以查看其值。</span><span class="sxs-lookup"><span data-stu-id="494b0-118">Hover over variables to see their values.</span></span>
-* <span data-ttu-id="494b0-119">評估主控台中的運算式。</span><span class="sxs-lookup"><span data-stu-id="494b0-119">Evaluate expressions in the console.</span></span>
-* <span data-ttu-id="494b0-120">逐步執行跨非同步呼叫。</span><span class="sxs-lookup"><span data-stu-id="494b0-120">Step across async calls.</span></span>
-* <span data-ttu-id="494b0-121">執行大部分其他的一般調試情況。</span><span class="sxs-lookup"><span data-stu-id="494b0-121">Perform most other ordinary debugging scenarios.</span></span>
+<span data-ttu-id="6ee3b-122">我們將繼續改善即將發行的版本中的調試過程。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-122">We will continue to improve the debugging experience in upcoming releases.</span></span>
 
-<span data-ttu-id="494b0-122">開發進一步的偵錯工具，是工程小組的持續焦點。</span><span class="sxs-lookup"><span data-stu-id="494b0-122">Development of further debugging scenarios is an on-going focus of the engineering team.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="6ee3b-123">Prerequisites</span><span class="sxs-lookup"><span data-stu-id="6ee3b-123">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="494b0-123">Prerequisites</span><span class="sxs-lookup"><span data-stu-id="494b0-123">Prerequisites</span></span>
+<span data-ttu-id="6ee3b-124">調試需要下列其中一個瀏覽器：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-124">Debugging requires either of the following browsers:</span></span>
 
-<span data-ttu-id="494b0-124">調試需要下列其中一個瀏覽器：</span><span class="sxs-lookup"><span data-stu-id="494b0-124">Debugging requires either of the following browsers:</span></span>
+* <span data-ttu-id="6ee3b-125">Microsoft Edge （版本80或更新版本）</span><span class="sxs-lookup"><span data-stu-id="6ee3b-125">Microsoft Edge (version 80 or later)</span></span>
+* <span data-ttu-id="6ee3b-126">Google Chrome （版本70或更新版本）</span><span class="sxs-lookup"><span data-stu-id="6ee3b-126">Google Chrome (version 70 or later)</span></span>
 
-* <span data-ttu-id="494b0-125">Google Chrome （版本70或更新版本）</span><span class="sxs-lookup"><span data-stu-id="494b0-125">Google Chrome (version 70 or later)</span></span>
-* <span data-ttu-id="494b0-126">Microsoft Edge 預覽（[Edge 開發人員通道](https://www.microsoftedgeinsider.com)）</span><span class="sxs-lookup"><span data-stu-id="494b0-126">Microsoft Edge preview ([Edge Dev Channel](https://www.microsoftedgeinsider.com))</span></span>
+## <a name="enable-debugging-for-visual-studio-and-visual-studio-code"></a><span data-ttu-id="6ee3b-127">啟用 Visual Studio 和 Visual Studio Code 的偵錯工具</span><span class="sxs-lookup"><span data-stu-id="6ee3b-127">Enable debugging for Visual Studio and Visual Studio Code</span></span>
 
-## <a name="procedure"></a><span data-ttu-id="494b0-127">程序</span><span class="sxs-lookup"><span data-stu-id="494b0-127">Procedure</span></span>
+<span data-ttu-id="6ee3b-128">使用 ASP.NET Core 3.2 Preview 3 或更新版本 Blazor WebAssembly 專案範本所建立的新專案，會自動啟用偵錯工具。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-128">Debugging is enabled automatically for new projects that are created using the ASP.NET Core 3.2 Preview 3 or later Blazor WebAssembly project template.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="494b0-128">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="494b0-128">Visual Studio</span></span>](#tab/visual-studio)
+<span data-ttu-id="6ee3b-129">若要為現有的 Blazor WebAssembly 應用程式啟用偵錯工具，請更新啟始專案中的*launchsettings.json* ，以在每個啟動設定檔中包含下列 `inspectUri` 屬性：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-129">To enable debugging for an existing Blazor WebAssembly app, update the *launchSettings.json* file in the startup project to include the following `inspectUri` property in each launch profile:</span></span>
 
-> [!WARNING]
-> <span data-ttu-id="494b0-129">Visual Studio 中的偵錯工具支援是在開發的初期階段。</span><span class="sxs-lookup"><span data-stu-id="494b0-129">Debugging support in Visual Studio is at an early stage of development.</span></span> <span data-ttu-id="494b0-130">目前不支援**F5**調試。</span><span class="sxs-lookup"><span data-stu-id="494b0-130">**F5** debugging isn't currently supported.</span></span>
+```json
+"inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}"
+```
 
-1. <span data-ttu-id="494b0-131">在 `Debug` 設定中執行 Blazor WebAssembly 應用程式而不進行偵測（**Ctrl**+**f5** ，而不是**f5**）。</span><span class="sxs-lookup"><span data-stu-id="494b0-131">Run a Blazor WebAssembly app in `Debug` configuration without debugging (**Ctrl**+**F5** instead of **F5**).</span></span>
-1. <span data-ttu-id="494b0-132">開啟應用程式的 [Debug] 屬性（[ **debug** ] 功能表中的最後一個專案），然後複製 HTTP**應用程式 URL**。</span><span class="sxs-lookup"><span data-stu-id="494b0-132">Open the Debug properties of the app (last entry in the **Debug** menu) and copy the HTTP **App URL**.</span></span> <span data-ttu-id="494b0-133">使用以 Chromium 為基礎的瀏覽器（Edge Beta 或 Chrome），流覽至應用程式的 HTTP 位址（而非 HTTPS 位址）。</span><span class="sxs-lookup"><span data-stu-id="494b0-133">Browse to the HTTP address (not the HTTPS address) of the app using a Chromium-based browser (Edge Beta or Chrome).</span></span>
-1. <span data-ttu-id="494b0-134">將鍵盤焦點放在應用程式的瀏覽器視窗中，而不是 [開發人員工具] 面板。</span><span class="sxs-lookup"><span data-stu-id="494b0-134">Place the keyboard focus on the app in the browser window, not the developer tools panel.</span></span> <span data-ttu-id="494b0-135">最好讓開發人員工具面板在此程式中關閉。</span><span class="sxs-lookup"><span data-stu-id="494b0-135">It's best to keep the developer tools panel closed for this procedure.</span></span> <span data-ttu-id="494b0-136">啟動偵錯工具之後，您可以重新開啟 [開發人員工具] 面板。</span><span class="sxs-lookup"><span data-stu-id="494b0-136">After debugging has started, you can re-open the developer tools panel.</span></span>
-1. <span data-ttu-id="494b0-137">選取下列 Blazor 特定的鍵盤快速鍵：</span><span class="sxs-lookup"><span data-stu-id="494b0-137">Select the following Blazor-specific keyboard shortcut:</span></span>
+<span data-ttu-id="6ee3b-130">更新之後， *launchsettings.json*看起來應該類似下列範例：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-130">Once updated, the *launchSettings.json* file should look similar to the following example:</span></span>
 
-   * <span data-ttu-id="494b0-138">Windows 上的 `Shift+Alt+D`</span><span class="sxs-lookup"><span data-stu-id="494b0-138">`Shift+Alt+D` on Windows</span></span>
-   * <span data-ttu-id="494b0-139">macOS 上的 `Shift+Cmd+D`</span><span class="sxs-lookup"><span data-stu-id="494b0-139">`Shift+Cmd+D` on macOS</span></span>
+[!code-json[](debug/launchSettings.json?highlight=14,22)]
 
-   <span data-ttu-id="494b0-140">如果您收到 [**找不到可調試的瀏覽器]** 索引標籤，請參閱[啟用遠端偵錯](#enable-remote-debugging)。</span><span class="sxs-lookup"><span data-stu-id="494b0-140">If you receive the **Unable to find debuggable browser tab**, see [Enable remote debugging](#enable-remote-debugging).</span></span>
-   
-   <span data-ttu-id="494b0-141">啟用遠端偵錯之後：</span><span class="sxs-lookup"><span data-stu-id="494b0-141">After enabling remote debugging:</span></span>
-   
-   <span data-ttu-id="494b0-142">1\.</span><span class="sxs-lookup"><span data-stu-id="494b0-142">1\.</span></span> <span data-ttu-id="494b0-143">一個新的瀏覽器視窗隨即開啟。</span><span class="sxs-lookup"><span data-stu-id="494b0-143">A new browser window opens.</span></span> <span data-ttu-id="494b0-144">關閉先前的視窗。</span><span class="sxs-lookup"><span data-stu-id="494b0-144">Close the prior window.</span></span>
+<span data-ttu-id="6ee3b-131">`inspectUri` 屬性：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-131">The `inspectUri` property:</span></span>
 
-   <span data-ttu-id="494b0-145">2\.</span><span class="sxs-lookup"><span data-stu-id="494b0-145">2\.</span></span> <span data-ttu-id="494b0-146">將鍵盤焦點放在應用程式的瀏覽器視窗中。</span><span class="sxs-lookup"><span data-stu-id="494b0-146">Place the keyboard focus on the app in the browser window.</span></span>
+* <span data-ttu-id="6ee3b-132">可讓 IDE 偵測應用程式是 Blazor WebAssembly 應用程式。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-132">Enables the IDE to detect that the app is a Blazor WebAssembly app.</span></span>
+* <span data-ttu-id="6ee3b-133">指示腳本的偵錯工具，透過 Blazor的偵錯工具 proxy 連接到瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-133">Instructs the script debugging infrastructure to connect to the browser through Blazor's debugging proxy.</span></span>
 
-   <span data-ttu-id="494b0-147">3\.</span><span class="sxs-lookup"><span data-stu-id="494b0-147">3\.</span></span> <span data-ttu-id="494b0-148">在新的瀏覽器視窗中選取 Blazor 特定的鍵盤快速鍵： Windows 上的 `Shift+Alt+D` 或 macOS 上的 `Shift+Cmd+D`。</span><span class="sxs-lookup"><span data-stu-id="494b0-148">Select the Blazor-specific keyboard shortcut in the new browser window: `Shift+Alt+D` on Windows or `Shift+Cmd+D` on macOS.</span></span>
+## <a name="visual-studio"></a><span data-ttu-id="6ee3b-134">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6ee3b-134">Visual Studio</span></span>
 
-   <span data-ttu-id="494b0-149">4\.</span><span class="sxs-lookup"><span data-stu-id="494b0-149">4\.</span></span> <span data-ttu-id="494b0-150">[ **DevTools** ] 索引標籤會在瀏覽器中開啟。</span><span class="sxs-lookup"><span data-stu-id="494b0-150">The **DevTools** tab opens in the browser.</span></span> <span data-ttu-id="494b0-151">**在瀏覽器視窗中重新選擇應用程式的索引標籤。**</span><span class="sxs-lookup"><span data-stu-id="494b0-151">**Reselect the app's tab in the browser window.**</span></span>
+<span data-ttu-id="6ee3b-135">若要在 Visual Studio 中進行 Blazor WebAssembly 應用程式的 debug：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-135">To debug a Blazor WebAssembly app in Visual Studio:</span></span>
 
-   <span data-ttu-id="494b0-152">若要將應用程式附加至 Visual Studio，請參閱[Visual Studio 中的附加至進程](#attach-to-process-in-visual-studio)一節。</span><span class="sxs-lookup"><span data-stu-id="494b0-152">To attach the app to Visual Studio, see the [Attach to process in Visual Studio](#attach-to-process-in-visual-studio) section.</span></span>
+1. <span data-ttu-id="6ee3b-136">請確定您已安裝 Visual Studio 2019 16.6 （preview 2 或更新版本）的[最新預覽版本](https://visualstudio.com/preview)。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-136">Ensure you have [installed the latest preview release of Visual Studio 2019 16.6](https://visualstudio.com/preview) (Preview 2 or later).</span></span>
+1. <span data-ttu-id="6ee3b-137">建立 Blazor WebAssembly 應用程式託管的新 ASP.NET Core。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-137">Create a new ASP.NET Core hosted Blazor WebAssembly app.</span></span>
+1. <span data-ttu-id="6ee3b-138">按<kbd>F5</kbd>以在偵錯工具中執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-138">Press <kbd>F5</kbd> to run the app in the debugger.</span></span>
+1. <span data-ttu-id="6ee3b-139">在 `IncrementCount` 方法中的 [ *razor* ] 中設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-139">Set a breakpoint in *Counter.razor* in the `IncrementCount` method.</span></span>
+1. <span data-ttu-id="6ee3b-140">流覽至 [**計數器**] 索引標籤，然後選取按鈕以點擊中斷點：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-140">Browse to the **Counter** tab and select the button to hit the breakpoint:</span></span>
 
-# <a name="net-core-cli"></a>[<span data-ttu-id="494b0-153">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="494b0-153">.NET Core CLI</span></span>](#tab/netcore-cli/)
+   ![Debug 計數器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-counter.png)
 
-1. <span data-ttu-id="494b0-154">藉由將 `--configuration Debug` 選項傳遞至[dotnet 執行](/dotnet/core/tools/dotnet-run)命令，在 `Debug` 設定中執行 Blazor WebAssembly 應用程式： `dotnet run --configuration Debug`。</span><span class="sxs-lookup"><span data-stu-id="494b0-154">Run a Blazor WebAssembly app in `Debug` configuration by passing the `--configuration Debug` option to the [dotnet run](/dotnet/core/tools/dotnet-run) command: `dotnet run --configuration Debug`.</span></span>
-1. <span data-ttu-id="494b0-155">在 shell 視窗中顯示的 HTTP URL 流覽至應用程式。</span><span class="sxs-lookup"><span data-stu-id="494b0-155">Navigate to the app at the HTTP URL shown in the shell's window.</span></span>
-1. <span data-ttu-id="494b0-156">將鍵盤焦點放在應用程式，而不是 [開發人員工具] 面板。</span><span class="sxs-lookup"><span data-stu-id="494b0-156">Place the keyboard focus on the app, not the developer tools panel.</span></span> <span data-ttu-id="494b0-157">最好讓開發人員工具面板在此程式中關閉。</span><span class="sxs-lookup"><span data-stu-id="494b0-157">It's best to keep the developer tools panel closed for this procedure.</span></span> <span data-ttu-id="494b0-158">啟動偵錯工具之後，您可以重新開啟 [開發人員工具] 面板。</span><span class="sxs-lookup"><span data-stu-id="494b0-158">After debugging has started, you can re-open the developer tools panel.</span></span>
-1. <span data-ttu-id="494b0-159">選取下列 Blazor 特定的鍵盤快速鍵：</span><span class="sxs-lookup"><span data-stu-id="494b0-159">Select the following Blazor-specific keyboard shortcut:</span></span>
+1. <span data-ttu-id="6ee3b-142">查看 [區域變數] 視窗中 [`currentCount`] 欄位的值：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-142">Check out the value of the `currentCount` field in the locals window:</span></span>
 
-   * <span data-ttu-id="494b0-160">Windows 上的 `Shift+Alt+D`</span><span class="sxs-lookup"><span data-stu-id="494b0-160">`Shift+Alt+D` on Windows</span></span>
-   * <span data-ttu-id="494b0-161">macOS 上的 `Shift+Cmd+D`</span><span class="sxs-lookup"><span data-stu-id="494b0-161">`Shift+Cmd+D` on macOS</span></span>
+   ![View 區域變數](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-locals.png)
 
-   <span data-ttu-id="494b0-162">如果您收到 [**找不到可調試的瀏覽器]** 索引標籤，請參閱[啟用遠端偵錯](#enable-remote-debugging)。</span><span class="sxs-lookup"><span data-stu-id="494b0-162">If you receive the **Unable to find debuggable browser tab**, see [Enable remote debugging](#enable-remote-debugging).</span></span>
-   
-   <span data-ttu-id="494b0-163">啟用遠端偵錯之後：</span><span class="sxs-lookup"><span data-stu-id="494b0-163">After enabling remote debugging:</span></span>
-   
-   <span data-ttu-id="494b0-164">1\.</span><span class="sxs-lookup"><span data-stu-id="494b0-164">1\.</span></span> <span data-ttu-id="494b0-165">一個新的瀏覽器視窗隨即開啟。</span><span class="sxs-lookup"><span data-stu-id="494b0-165">A new browser window opens.</span></span> <span data-ttu-id="494b0-166">關閉先前的視窗。</span><span class="sxs-lookup"><span data-stu-id="494b0-166">Close the prior window.</span></span>
+1. <span data-ttu-id="6ee3b-144">按<kbd>F5</kbd>繼續執行。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-144">Press <kbd>F5</kbd> to continue execution.</span></span>
 
-   <span data-ttu-id="494b0-167">2\.</span><span class="sxs-lookup"><span data-stu-id="494b0-167">2\.</span></span> <span data-ttu-id="494b0-168">將鍵盤焦點放在應用程式的瀏覽器視窗中，而不是 [開發人員工具] 面板。</span><span class="sxs-lookup"><span data-stu-id="494b0-168">Place the keyboard focus on the app in the browser window, not the developer tools panel.</span></span>
+<span data-ttu-id="6ee3b-145">在對您的 Blazor WebAssembly 應用程式進行調試時，您也可以對伺服器程式碼進行 debug：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-145">While debugging your Blazor WebAssembly app, you can also debug your server code:</span></span>
 
-   <span data-ttu-id="494b0-169">3\.</span><span class="sxs-lookup"><span data-stu-id="494b0-169">3\.</span></span> <span data-ttu-id="494b0-170">在新的瀏覽器視窗中選取 Blazor 特定的鍵盤快速鍵： Windows 上的 `Shift+Alt+D` 或 macOS 上的 `Shift+Cmd+D`。</span><span class="sxs-lookup"><span data-stu-id="494b0-170">Select the Blazor-specific keyboard shortcut in the new browser window: `Shift+Alt+D` on Windows or `Shift+Cmd+D` on macOS.</span></span>
+1. <span data-ttu-id="6ee3b-146">在 `OnInitializedAsync`的*FetchData razor*頁面中設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-146">Set a breakpoint in the *FetchData.razor* page in `OnInitializedAsync`.</span></span>
+1. <span data-ttu-id="6ee3b-147">在 `Get` 動作方法 的 `WeatherForecastController` 中設定中斷點。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-147">Set a breakpoint in the `WeatherForecastController` in the `Get` action method.</span></span>
+1. <span data-ttu-id="6ee3b-148">流覽至 [**提取資料**] 索引標籤，在發出 HTTP 要求給伺服器之前，先叫用 `FetchData` 元件中的第一個中斷點：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-148">Browse to the **Fetch Data** tab to hit the first breakpoint in the `FetchData` component just before it issues an HTTP request to the server:</span></span>
 
----
+   ![Debug Fetch 資料](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-fetch-data.png)
 
-## <a name="enable-remote-debugging"></a><span data-ttu-id="494b0-171">啟用遠端偵錯</span><span class="sxs-lookup"><span data-stu-id="494b0-171">Enable remote debugging</span></span>
+1. <span data-ttu-id="6ee3b-150">按<kbd>F5</kbd>繼續執行，然後在 `WeatherForecastController`中的伺服器上按下中斷點：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-150">Press <kbd>F5</kbd> to continue execution and then hit the breakpoint on the server in the `WeatherForecastController`:</span></span>
 
-<span data-ttu-id="494b0-172">如果已停用遠端偵錯程式，則 Chrome 會產生 [**找不到可調試的瀏覽器]** 索引標籤錯誤頁面。</span><span class="sxs-lookup"><span data-stu-id="494b0-172">If remote debugging is disabled, an **Unable to find debuggable browser tab** error page is generated by Chrome.</span></span> <span data-ttu-id="494b0-173">錯誤頁面包含執行 Chrome 並開啟偵錯工具埠的指示，讓 Blazor 的偵錯工具 proxy 可以連接到應用程式。</span><span class="sxs-lookup"><span data-stu-id="494b0-173">The error page contains instructions for running Chrome with the debugging port open so that the Blazor debugging proxy can connect to the app.</span></span> <span data-ttu-id="494b0-174">*關閉所有 Chrome 實例*，並依指示重新開機 Chrome。</span><span class="sxs-lookup"><span data-stu-id="494b0-174">*Close all Chrome instances* and restart Chrome as instructed.</span></span>
+   ![Debug server](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-server.png)
 
-## <a name="debug-the-app"></a><span data-ttu-id="494b0-175">偵錯應用程式</span><span class="sxs-lookup"><span data-stu-id="494b0-175">Debug the app</span></span>
+1. <span data-ttu-id="6ee3b-152">再按一次<kbd>F5</kbd> ，讓執行繼續，並查看所轉譯的氣象預測資料表。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-152">Press <kbd>F5</kbd> again to let execution continue and see the weather forecast table rendered.</span></span>
 
-<span data-ttu-id="494b0-176">當 Chrome 在啟用遠端偵錯程式的情況下執行時，[偵錯工具] 鍵盤快速鍵會開啟新的 [偵錯工具]經過一段時間之後，[**來源**] 索引標籤會顯示應用程式中的 .net 元件清單。</span><span class="sxs-lookup"><span data-stu-id="494b0-176">Once Chrome is running with remote debugging enabled, the debugging keyboard shortcut opens a new debugger tab. After a moment, the **Sources** tab shows a list of the .NET assemblies in the app.</span></span> <span data-ttu-id="494b0-177">展開每個元件，並找出可用來進行偵錯工具的 *.cs*/ *. razor*原始程式檔。</span><span class="sxs-lookup"><span data-stu-id="494b0-177">Expand each assembly and find the *.cs*/*.razor* source files available for debugging.</span></span> <span data-ttu-id="494b0-178">設定中斷點、切換回應用程式的索引標籤，並在程式碼執行時叫用中斷點。</span><span class="sxs-lookup"><span data-stu-id="494b0-178">Set breakpoints, switch back to the app's tab, and the breakpoints are hit when the code executes.</span></span> <span data-ttu-id="494b0-179">叫用中斷點之後，透過程式碼或繼續（`F8`）程式碼執行的單一步驟（`F10`）。</span><span class="sxs-lookup"><span data-stu-id="494b0-179">After a breakpoint is hit, single-step (`F10`) through the code or resume (`F8`) code execution normally.</span></span>
+## <a name="visual-studio-code"></a><span data-ttu-id="6ee3b-153">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="6ee3b-153">Visual Studio Code</span></span>
 
-Blazor<span data-ttu-id="494b0-180"> 提供可執行[Chrome DevTools 通訊協定](https://chromedevtools.github.io/devtools-protocol/)，並以擴充通訊協定的偵錯工具 proxy。NET 特定資訊。</span><span class="sxs-lookup"><span data-stu-id="494b0-180"> provides a debugging proxy that implements the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) and augments the protocol with .NET-specific information.</span></span> <span data-ttu-id="494b0-181">當您按下 [調試鍵盤快速鍵] 時，Blazor 會指向位於 proxy 的 Chrome DevTools。</span><span class="sxs-lookup"><span data-stu-id="494b0-181">When debugging keyboard shortcut is pressed, Blazor points the Chrome DevTools at the proxy.</span></span> <span data-ttu-id="494b0-182">Proxy 會連線到您想要進行調試的瀏覽器視窗（因此需要啟用遠端偵錯）。</span><span class="sxs-lookup"><span data-stu-id="494b0-182">The proxy connects to the browser window you're seeking to debug (hence the need to enable remote debugging).</span></span>
+<span data-ttu-id="6ee3b-154">若要在 Visual Studio Code 中進行 Blazor WebAssembly 應用程式的 debug：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-154">To debug a Blazor WebAssembly app in Visual Studio Code:</span></span>
+ 
+1. <span data-ttu-id="6ee3b-155">安裝[ C#擴充](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)功能和[JavaScript 偵錯工具（夜間）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)延伸模組，並將 `debug.javascript.usePreview` 設定為 `true`。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-155">Install the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) and the [JavaScript Debugger (Nightly)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) extension with `debug.javascript.usePreview` set to `true`.</span></span>
 
-## <a name="attach-to-process-in-visual-studio"></a><span data-ttu-id="494b0-183">附加至 Visual Studio 中的進程</span><span class="sxs-lookup"><span data-stu-id="494b0-183">Attach to process in Visual Studio</span></span>
+   ![延伸模組](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-extensions.png)
 
-<span data-ttu-id="494b0-184">在 Visual Studio 中附加至應用程式的進程，是 Blazor WebAssembly 的*暫時性*偵錯工具，而**F5**調試正在開發中。</span><span class="sxs-lookup"><span data-stu-id="494b0-184">Attaching to the app's process in Visual Studio is a *temporary* debugging scenario for Blazor WebAssembly while **F5** debugging is in development.</span></span>
+   ![JS 預覽偵錯工具](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-js-use-preview.png)
 
-<span data-ttu-id="494b0-185">若要將執行中應用程式的進程附加至 Visual Studio：</span><span class="sxs-lookup"><span data-stu-id="494b0-185">To attach the running app's process to Visual Studio:</span></span>
+1. <span data-ttu-id="6ee3b-158">開啟已啟用偵測的現有 Blazor WebAssembly 應用程式。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-158">Open an existing Blazor WebAssembly app with debugging enabled.</span></span>
 
-1. <span data-ttu-id="494b0-186">在 Visual Studio 中，選取  **Debug** > **附加至進程**。</span><span class="sxs-lookup"><span data-stu-id="494b0-186">In Visual Studio, select **Debug** > **Attach to Process**.</span></span>
-1. <span data-ttu-id="494b0-187">針對 [連線**類型**]，選取 [ **Chrome devtools protocol websocket （無驗證）** ]。</span><span class="sxs-lookup"><span data-stu-id="494b0-187">For the **Connection type**, select **Chrome devtools protocol websocket (no authentication)**.</span></span>
-1. <span data-ttu-id="494b0-188">針對 [連線**目標**]，貼上應用程式的 HTTP 位址（而非 HTTPS 位址）。</span><span class="sxs-lookup"><span data-stu-id="494b0-188">For the **Connection target**, paste in the HTTP address (not the HTTPS address) of the app.</span></span>
-1. <span data-ttu-id="494b0-189">選取 **[** 重新整理] 以重新整理 [**可用的進程**] 底下的專案。</span><span class="sxs-lookup"><span data-stu-id="494b0-189">Select **Refresh** to refresh the entries under **Available processes**.</span></span>
-1. <span data-ttu-id="494b0-190">選取瀏覽器進程以進行偵錯工具，然後選取 [**附加**]。</span><span class="sxs-lookup"><span data-stu-id="494b0-190">Select the browser process to debug and select **Attach**.</span></span>
-1. <span data-ttu-id="494b0-191">在 [**選取程式碼類型**] 對話方塊中，選取您要附加到（Edge 或 Chrome）之特定瀏覽器的程式碼類型，然後選取 **[確定]** 。</span><span class="sxs-lookup"><span data-stu-id="494b0-191">In the **Select Code Type** dialog, select the code type for the specific browser you're attaching to (Edge or Chrome) and then select **OK**.</span></span>
+   * <span data-ttu-id="6ee3b-159">如果您收到下列通知，表示需要額外的設定才能啟用偵錯工具，請確認您已安裝正確的延伸模組，並已啟用 JavaScript 預覽偵測，然後重載視窗：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-159">If you get the following notification that additional setup is required to enable debugging, confirm that you have the correct extensions installed and JavaScript preview debugging enabled and then reload the window:</span></span>
 
-## <a name="browser-source-maps"></a><span data-ttu-id="494b0-192">瀏覽器來源對應</span><span class="sxs-lookup"><span data-stu-id="494b0-192">Browser source maps</span></span>
+     ![其他安裝必要](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-additional-setup.png)
 
-<span data-ttu-id="494b0-193">瀏覽器來源對應可讓瀏覽器將已編譯的檔案對應回原始來源檔案，而且通常會用於用戶端的偵錯工具。</span><span class="sxs-lookup"><span data-stu-id="494b0-193">Browser source maps allow the browser to map compiled files back to their original source files and are commonly used for client-side debugging.</span></span> <span data-ttu-id="494b0-194">不過，Blazor 目前不會C#直接對應至 JAVASCRIPT/WASM。</span><span class="sxs-lookup"><span data-stu-id="494b0-194">However, Blazor doesn't currently map C# directly to JavaScript/WASM.</span></span> <span data-ttu-id="494b0-195">相反地，Blazor 會在瀏覽器中執行 IL 轉譯，因此來源對應不相關。</span><span class="sxs-lookup"><span data-stu-id="494b0-195">Instead, Blazor does IL interpretation within the browser, so source maps aren't relevant.</span></span>
+   * <span data-ttu-id="6ee3b-161">通知會提供將所需的資產新增至應用程式，以進行建立和調試。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-161">A notification offers to add the required assets to the app for building and debugging.</span></span> <span data-ttu-id="6ee3b-162">選取 **[是]** ：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-162">Select **Yes**:</span></span>
 
-## <a name="troubleshoot"></a><span data-ttu-id="494b0-196">疑難排解</span><span class="sxs-lookup"><span data-stu-id="494b0-196">Troubleshoot</span></span>
+     ![新增必要的資產](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-required-assets.png)
 
-<span data-ttu-id="494b0-197">如果您遇到錯誤，下列秘訣可能會有説明：</span><span class="sxs-lookup"><span data-stu-id="494b0-197">If you're running into errors, the following tip may help:</span></span>
+1. <span data-ttu-id="6ee3b-164">在偵錯工具中啟動應用程式是兩個步驟的進程：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-164">Starting the app in the debugger is a two-step process:</span></span>
 
-<span data-ttu-id="494b0-198">在 [**偵錯工具**] 索引標籤中，開啟瀏覽器中的開發人員工具。</span><span class="sxs-lookup"><span data-stu-id="494b0-198">In the **Debugger** tab, open the developer tools in your browser.</span></span> <span data-ttu-id="494b0-199">在主控台中，執行 `localStorage.clear()` 以移除任何中斷點。</span><span class="sxs-lookup"><span data-stu-id="494b0-199">In the console, execute `localStorage.clear()` to remove any breakpoints.</span></span>
+   <span data-ttu-id="6ee3b-165">1\.</span><span class="sxs-lookup"><span data-stu-id="6ee3b-165">1\.</span></span> <span data-ttu-id="6ee3b-166">**首先**，使用 **.net Core 啟動（Blazor 獨立）** 啟動設定來啟動應用程式。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-166">**First**, start the app using the **.NET Core Launch (Blazor Standalone)** launch configuration.</span></span>
+
+   <span data-ttu-id="6ee3b-167">2\.</span><span class="sxs-lookup"><span data-stu-id="6ee3b-167">2\.</span></span> <span data-ttu-id="6ee3b-168">**啟動應用程式之後**，請使用 chrome 啟動設定（需要 chrome）**中的 .net Core Debug Blazor Web 元件**來啟動瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-168">**After the app has started**, start the browser using the **.NET Core Debug Blazor Web Assembly in Chrome** launch configuration (requires Chrome).</span></span> <span data-ttu-id="6ee3b-169">若要使用 Edge 而不是 Chrome，請將*vscode/啟動*中的啟動設定 `type` 從 `pwa-chrome` 變更為 `pwa-edge`。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-169">To use Edge instead of Chrome, change the `type` of the launch configuration in *.vscode/launch.json* from `pwa-chrome` to `pwa-edge`.</span></span>
+
+1. <span data-ttu-id="6ee3b-170">在 `Counter` 元件的 `IncrementCount` 方法中設定中斷點，然後選取按鈕以叫用中斷點：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-170">Set a breakpoint in the `IncrementCount` method in the `Counter` component and then select the button to hit the breakpoint:</span></span>
+
+   ![VS Code 中的 Debug 計數器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-debug-counter.png)
+
+## <a name="debug-in-the-browser"></a><span data-ttu-id="6ee3b-172">瀏覽器中的 Debug</span><span class="sxs-lookup"><span data-stu-id="6ee3b-172">Debug in the browser</span></span>
+
+1. <span data-ttu-id="6ee3b-173">在開發環境中執行應用程式的 Debug 組建。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-173">Run a Debug build of the app in the Development environment.</span></span>
+
+1. <span data-ttu-id="6ee3b-174">按<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>D</kbd>。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-174">Press <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>D</kbd>.</span></span>
+
+1. <span data-ttu-id="6ee3b-175">瀏覽器必須在啟用遠端偵錯功能的情況下執行。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-175">The browser must be run with remote debugging enabled.</span></span> <span data-ttu-id="6ee3b-176">如果已停用遠端偵錯程式，就會產生 [找**不到可調試的瀏覽器]** 索引標籤錯誤頁面。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-176">If remote debugging is disabled, an **Unable to find debuggable browser tab** error page is generated.</span></span> <span data-ttu-id="6ee3b-177">錯誤頁面包含在開啟偵錯工具的情況之下執行瀏覽器的指示，讓 Blazor 的偵錯工具 proxy 可以連接到應用程式。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-177">The error page contains instructions for running the browser with the debugging port open so that the Blazor debugging proxy can connect to the app.</span></span> <span data-ttu-id="6ee3b-178">*關閉所有瀏覽器實例*，然後依照指示重新開機瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-178">*Close all browser instances* and restart the browser as instructed.</span></span>
+
+<span data-ttu-id="6ee3b-179">當瀏覽器在啟用遠端偵錯程式的情況下執行時，[偵錯工具] 鍵盤快速鍵會開啟新的 [偵錯工具]經過一段時間之後，[**來源**] 索引標籤會顯示應用程式中的 .net 元件清單。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-179">Once the browser is running with remote debugging enabled, the debugging keyboard shortcut opens a new debugger tab. After a moment, the **Sources** tab shows a list of the .NET assemblies in the app.</span></span> <span data-ttu-id="6ee3b-180">展開每個元件，並找出可用來進行偵錯工具的 *.cs*/ *. razor*原始程式檔。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-180">Expand each assembly and find the *.cs*/*.razor* source files available for debugging.</span></span> <span data-ttu-id="6ee3b-181">設定中斷點、切換回應用程式的索引標籤，並在程式碼執行時叫用中斷點。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-181">Set breakpoints, switch back to the app's tab, and the breakpoints are hit when the code executes.</span></span> <span data-ttu-id="6ee3b-182">叫用中斷點之後，以單一步驟（<kbd>F10</kbd>），透過程式碼或繼續（<kbd>F8</kbd>）程式碼執行正常。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-182">After a breakpoint is hit, single-step (<kbd>F10</kbd>) through the code or resume (<kbd>F8</kbd>) code execution normally.</span></span>
+
+Blazor<span data-ttu-id="6ee3b-183"> 提供可執行[Chrome DevTools 通訊協定](https://chromedevtools.github.io/devtools-protocol/)，並以擴充通訊協定的偵錯工具 proxy。NET 特定資訊。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-183"> provides a debugging proxy that implements the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) and augments the protocol with .NET-specific information.</span></span> <span data-ttu-id="6ee3b-184">當您按下 [調試鍵盤快速鍵] 時，Blazor 會指向位於 proxy 的 Chrome DevTools。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-184">When debugging keyboard shortcut is pressed, Blazor points the Chrome DevTools at the proxy.</span></span> <span data-ttu-id="6ee3b-185">Proxy 會連線到您想要進行調試的瀏覽器視窗（因此需要啟用遠端偵錯）。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-185">The proxy connects to the browser window you're seeking to debug (hence the need to enable remote debugging).</span></span>
+
+## <a name="browser-source-maps"></a><span data-ttu-id="6ee3b-186">瀏覽器來源對應</span><span class="sxs-lookup"><span data-stu-id="6ee3b-186">Browser source maps</span></span>
+
+<span data-ttu-id="6ee3b-187">瀏覽器來源對應可讓瀏覽器將已編譯的檔案對應回原始來源檔案，而且通常會用於用戶端的偵錯工具。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-187">Browser source maps allow the browser to map compiled files back to their original source files and are commonly used for client-side debugging.</span></span> <span data-ttu-id="6ee3b-188">不過，Blazor 目前不會C#直接對應至 JAVASCRIPT/WASM。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-188">However, Blazor doesn't currently map C# directly to JavaScript/WASM.</span></span> <span data-ttu-id="6ee3b-189">相反地，Blazor 會在瀏覽器中執行 IL 轉譯，因此來源對應不相關。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-189">Instead, Blazor does IL interpretation within the browser, so source maps aren't relevant.</span></span>
+
+## <a name="troubleshoot"></a><span data-ttu-id="6ee3b-190">疑難排解</span><span class="sxs-lookup"><span data-stu-id="6ee3b-190">Troubleshoot</span></span>
+
+<span data-ttu-id="6ee3b-191">如果您遇到錯誤，下列秘訣可能會有説明：</span><span class="sxs-lookup"><span data-stu-id="6ee3b-191">If you're running into errors, the following tip may help:</span></span>
+
+<span data-ttu-id="6ee3b-192">在 [**偵錯工具**] 索引標籤中，開啟瀏覽器中的開發人員工具。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-192">In the **Debugger** tab, open the developer tools in your browser.</span></span> <span data-ttu-id="6ee3b-193">在主控台中，執行 `localStorage.clear()` 以移除任何中斷點。</span><span class="sxs-lookup"><span data-stu-id="6ee3b-193">In the console, execute `localStorage.clear()` to remove any breakpoints.</span></span>

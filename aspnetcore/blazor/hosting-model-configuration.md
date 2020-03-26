@@ -5,17 +5,17 @@ description: 深入瞭解 Blazor 裝載模型設定，包括如何將 Razor 元�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-model-configuration
-ms.openlocfilehash: bd44643877e45c5b48b0972bcc2f637fbc5d98f2
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 1f71ac63bbe9dc9d56cfca2ded19a5b863be828f
+ms.sourcegitcommit: 6ffb583991d6689326605a24565130083a28ef85
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78658302"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80306426"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET Core Blazor 裝載模型設定
 
@@ -25,11 +25,26 @@ ms.locfileid: "78658302"
 
 本文涵蓋主控模型設定。
 
-<!-- For future use:
+## <a name="blazor-webassembly"></a>Blazor WebAssembly
 
-## Blazor WebAssembly
+從 ASP.NET Core 3.2 Preview 3 版本開始，Blazor WebAssembly 支援從下列設定：
 
--->
+* *wwwroot/appsettings. json*
+* *wwwroot/appsettings。{環境}. json*
+
+在 Blazor 裝載的應用程式中，[執行時間環境](xref:fundamentals/environments)與伺服器應用程式的值相同。
+
+在本機執行應用程式時，環境會預設為開發。 當應用程式發佈時，環境會預設為 [生產]。 如需詳細資訊，包括如何設定環境，請參閱 <xref:fundamentals/environments>。
+
+> [!WARNING]
+> 使用者可以看到 Blazor WebAssembly 應用程式中的設定。 **請勿在設定中儲存應用程式秘密或認證。**
+
+系統會快取設定檔以供離線使用。 使用[漸進式 Web 應用程式（pwa）](xref:blazor/progressive-web-app)，您只能在建立新的部署時更新設定檔。 在部署之間編輯設定檔沒有任何作用，因為：
+
+* 使用者有檔案的快取版本，這些檔案會繼續使用。
+* PWA 的*service-worker*和*service-worker-assets*檔案必須在編譯時重建，在使用者下一次線上流覽應用程式時，該應用程式會發出通知。
+
+如需 Pwa 如何處理背景更新的詳細資訊，請參閱 <xref:blazor/progressive-web-app#background-updates>。
 
 ## <a name="blazor-server"></a>Blazor 伺服器
 

@@ -5,17 +5,17 @@ description: 建立使用 ASP.NET Core SignalR 搭配 Blazor WebAssembly 的聊�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/31/2020
+ms.date: 03/26/2020
 no-loc:
 - Blazor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 605cf8ebd3e85586f3e479c815f0b9902ce5a91a
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: c4843dc282e1978b39738e206ecc79ded87fcff9
+ms.sourcegitcommit: 6ffb583991d6689326605a24565130083a28ef85
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083391"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80306577"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>搭配使用 ASP.NET Core SignalR 與 Blazor WebAssembly
 
@@ -36,7 +36,7 @@ ms.locfileid: "79083391"
 
 [檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -58,17 +58,17 @@ ms.locfileid: "79083391"
 
 ## <a name="create-a-hosted-blazor-webassembly-app-project"></a>建立 hosted Blazor WebAssembly 應用程式專案
 
-安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)範本。 Blazor WebAssembly 處於預覽階段時， [WebAssembly](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Templates/)套件會有預覽版本。 在命令 shell 中，執行下列命令：
+當不使用 Visual Studio 16.6 版 Preview 2 或更新版本時，請安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)範本。 Blazor WebAssembly 處於預覽階段時， [WebAssembly](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Templates/)套件會有預覽版本。 在命令 shell 中，執行下列命令：
 
 ```dotnetcli
-dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview2.20160.5
+dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview3.20168.3
 ```
 
 遵循您選擇的工具的指導方針：
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 建立新的專案。
+1. 建立新專案。
 
 1. 選取 [ **Blazor 應用程式**] 並選取 **[下一步]** 。
 

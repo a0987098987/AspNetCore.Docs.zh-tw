@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 3/25/2020
 uid: fundamentals/routing
-ms.openlocfilehash: 69d8aa65084d4d2ee13a8ca0e8e275f4344d08c5
-ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
+ms.openlocfilehash: 2ebba716de90f142a66cf7619b5a4b0c77684bd4
+ms.sourcegitcommit: 0c62042d7d030ec5296c73bccd9f9b961d84496a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/25/2020
-ms.locfileid: "80242651"
+ms.locfileid: "80270442"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -24,7 +24,7 @@ By [Ryan Nowak](https://github.com/rynowak)、 [Kirk Larkin](https://twitter.com
 
 應用程式可以使用下列內容來設定路由：
 
-- 控制器
+- Controllers
 - Razor Pages
 - SignalR
 - gRPC 服務
@@ -101,7 +101,7 @@ URL 路徑的第二個區段，`{name:alpha}`：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/AuthorizationStartup.cs?name=snippet)]
 
-[!INCLUDE[](~/includes/MTcomments.md)]
+[!INCLUDE[request localized comments](~/includes/code-comments-loc.md)]
 
 上述範例示範如何：
 
@@ -425,7 +425,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 * `/files/myFile.txt`
 * `/files/myFile`
 
-路由參數可能有「預設值」，指定方法是在參數名稱之後指定預設值，並以等號 (`=`) 分隔。 例如，`{controller=Home}` 定義 `Home` 作為 `controller` 的預設值。 如果 URL 中沒有用於參數的任何值，則會使用預設值。 藉由將問號（`?`）附加至參數名稱的結尾，即可將路由參數設為選擇性。 例如， `id?`。 選擇性值與預設路由參數之間的差異如下：
+路由參數可能有「預設值」，指定方法是在參數名稱之後指定預設值，並以等號 (`=`) 分隔。 例如，`{controller=Home}` 定義 `Home` 作為 `controller` 的預設值。 如果 URL 中沒有用於參數的任何值，則會使用預設值。 藉由將問號（`?`）附加至參數名稱的結尾，即可將路由參數設為選擇性。 例如： `id?` 。 選擇性值與預設路由參數之間的差異如下：
 
 * 具有預設值的路由參數一律會產生值。
 * 選擇性參數只有在要求 URL 提供值時才會有值。
@@ -553,7 +553,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中使用的正則運算式通常會以 `^` 字元開頭，並符合字串的開始位置。 運算式通常以 `$` 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保正則運算式符合整個路由參數值。 如果沒有 `^` 和 `$` 字元，正則運算式會比對字串內的任何子字串，這通常是不需要的。 下表提供範例，並說明它們符合或無法符合的原因：
 
-| 運算式   | String    | 比對 | 註解               |
+| 運算式   | String    | 相符項目 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
@@ -1470,7 +1470,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中使用的正則運算式通常會以插入號 `^` 字元開頭，並符合字串的開始位置。 運算式的結尾通常是貨幣符號 `$` 字元，而比對字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算式   | String    | 比對 | 註解               |
+| 運算式   | String    | 相符項目 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
@@ -1914,7 +1914,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中所使用的規則運算式通常以插入號 (`^`) 字元開頭，並符合字串的開始位置。 運算式通常以貨幣符號 (`$`) 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算式   | String    | 比對 | 註解               |
+| 運算式   | String    | 相符項目 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |

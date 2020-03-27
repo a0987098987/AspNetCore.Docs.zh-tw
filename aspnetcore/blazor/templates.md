@@ -5,17 +5,17 @@ description: 深入瞭解 ASP.NET Core Blazor 應用程式範本和 Blazor 專�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/29/2020
+ms.date: 03/26/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: acfa4b8a42cbd310c6fc6dc973573578e94ef999
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 71a9d9eee8637dda0b3cecac82ff96a0c3bfedb5
+ms.sourcegitcommit: f3b1bcfd108e5d53f73abc0bf2555890869d953b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78664238"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80320986"
 ---
 # <a name="aspnet-core-opno-locblazor-templates"></a>ASP.NET Core Blazor 範本
 
@@ -58,18 +58,17 @@ Blazor 架構會提供範本來為每個 Blazor 裝載模型開發應用程式�
     * 下載 .NET 執行時間、應用程式和應用程式的相依性。
     * 初始化執行時間以執行應用程式。
 
-* *Pages/_Host. cshtml* （Blazor Server） &ndash; 實作為 Razor 頁面的應用程式的根頁面：
-  * 一開始要求應用程式的任何頁面時，會轉譯此頁面並在回應中傳回。
-  * 載入 `_framework/blazor.server.js` JavaScript 檔案，這會在瀏覽器與伺服器之間設定即時 SignalR 連接。
-  * [主機] 頁面會指定要呈現根 `App` 元件（*razor*）的位置。
-
 * *App.config* &ndash; 應用程式的根元件，其會使用 <xref:Microsoft.AspNetCore.Components.Routing.Router> 元件來設定用戶端路由。 `Router` 元件會攔截瀏覽器導覽，並呈現符合所要求位址的頁面。
 
-* *Pages*資料夾 &ndash; 包含組成 Blazor 應用程式的可路由元件/頁面（*razor*）。 每個頁面的路由都是使用[`@page`](xref:mvc/views/razor#page)指示詞來指定。 此範本包含下列元件：
-  * `Index` （*Index. razor*） &ndash; 會執行首頁。
+* *Pages*資料夾 &ndash; 包含組成 Blazor 應用程式的可路由元件/頁面（*razor*），以及 Blazor 伺服器應用程式的根 razor 頁面。 每個頁面的路由都是使用[`@page`](xref:mvc/views/razor#page)指示詞來指定。 此範本包含下列各項：
+  * *_Host. cshtml* （Blazor 伺服器） &ndash; 實作為 Razor 頁面的應用程式的根頁面：
+    * 一開始要求應用程式的任何頁面時，會轉譯此頁面並在回應中傳回。
+    * 載入 `_framework/blazor.server.js` JavaScript 檔案，這會在瀏覽器與伺服器之間設定即時 SignalR 連接。
+    * [主機] 頁面會指定要呈現根 `App` 元件（*razor*）的位置。
   * `Counter` （*razor*） &ndash; 會實行 [計數器] 頁面。
   * `Error` （只有在應用程式中發生未處理的例外狀況時，才會轉譯） &ndash; 轉譯的*錯誤（razor*、Blazor 伺服器應用程式）。
   * `FetchData` （*FetchData razor*） &ndash; 會執行提取資料頁面。
+  * `Index` （*Index. razor*） &ndash; 會執行首頁。
 
 * *共用*資料夾 &ndash; 包含應用程式所使用的其他 UI 元件（*razor*）：
   * `MainLayout` （*MainLayout razor*） &ndash; 應用程式的版面配置元件。

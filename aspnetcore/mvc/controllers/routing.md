@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core MVC 如何使用路由中介軟體來比對內�
 ms.author: riande
 ms.date: 3/25/2020
 uid: mvc/controllers/routing
-ms.openlocfilehash: be7da9eeaf64c2f52c095b5179ccc22db43d57c3
-ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
+ms.openlocfilehash: c1c0d978714718af1de0f627e50a54f66ed391ed
+ms.sourcegitcommit: 4b166b49ec557a03f99f872dd069ca5e56faa524
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80242567"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80362642"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core 中的路由至控制器動作
 
@@ -206,7 +206,7 @@ ASP.NET Core 3.0 和更新版本中的端點路由：
 * 選擇最佳的候選。
 * 擲回例外狀況。
 
-例如，
+例如：
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet9)]
 
@@ -264,7 +264,7 @@ REST Api 應使用屬性路由，將應用程式的功能模型建立為一組�
 
 在上述程式碼中，會在 `UseEndpoints` 內呼叫 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> 來對應屬性路由控制器。
 
-在下列範例中：
+在下例中︰
 
 * 會使用上述的 `Configure` 方法。
 * `HomeController` 符合一組類似預設的傳統路由 `{controller=Home}/{action=Index}/{id?}` 相符的 Url。
@@ -420,7 +420,7 @@ REST Api 應使用屬性路由，將應用程式的功能模型建立為一組�
 | ----------------- | ------------ | --------- |
 | `[Route("")]` | 是 | `"Home"` |
 | `[Route("Index")]` | 是 | `"Home/Index"` |
-| `[Route("/")]` | **No** | `""` |
+| `[Route("/")]` | **否** | `""` |
 | `[Route("About")]` | 是 | `"Home/About"` |
 
 <a name="routing-ordering-ref-label"></a>
@@ -712,7 +712,7 @@ ASP.NET Core 3.0 中新增了 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 
 
 您可能預期會遇到此 `{controller}/{action}/{id?}`預設路由的問題。 這個問題在實務上很罕見，因為 `Url.Action` 一定會明確指定 `controller` 和 `action` 值。
 
-Url 的數個多載[。動作](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*)會接受路由值物件，以提供 `controller` 和 `action`以外的路由參數值。 「路由值」物件經常與 `id`搭配使用。 例如， `Url.Action("Buy", "Products", new { id = 17 })`。 路由值物件：
+Url 的數個多載[。動作](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*)會接受路由值物件，以提供 `controller` 和 `action`以外的路由參數值。 「路由值」物件經常與 `id`搭配使用。 例如： `Url.Action("Buy", "Products", new { id = 17 })` 。 路由值物件：
 
 * 依照慣例，通常是匿名型別的物件。
 * 可以是 `IDictionary<>` 或[POCO](https://wikipedia.org/wiki/Plain_old_CLR_object)）。
@@ -846,6 +846,8 @@ TagHelper 透過 `form` TagHelper 和 `<a>` TagHelper 產生 URL。 這兩者使
 
  * [MyDisplayRouteInfo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x/main/Extensions/ControllerContextExtensions.cs)方法包含在[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x)中，可用來顯示路由資訊。
 * [檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+
+[!INCLUDE[](~/includes/dbg-route.md)]
 
 ::: moniker-end
 
@@ -998,7 +1000,7 @@ app.UseMvc(routes =>
 
 ### <a name="disambiguating-actions"></a>釐清動作
 
-若透過路由符合兩個動作，MVC 必須釐清並選擇「最佳」候選項目，否則會擲回例外狀況。 例如，
+若透過路由符合兩個動作，MVC 必須釐清並選擇「最佳」候選項目，否則會擲回例外狀況。 例如：
 
 ```csharp
 public class ProductsController : Controller

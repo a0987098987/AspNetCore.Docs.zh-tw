@@ -1,4 +1,4 @@
-<span data-ttu-id="7a427-101">如果您遇到架構錯誤，請確認目標 Framework 標記（TFM）符合專案檔中的 NuGet 套件版本。</span><span class="sxs-lookup"><span data-stu-id="7a427-101">If you get a scaffolding error, verify the Target Framework Moniker (TFM) matches the NuGet package version in the project file.</span></span> <span data-ttu-id="7a427-102">例如，下列專案檔包含適用于 .NET Core 的3.1 版和列出的 NuGet 套件：</span><span class="sxs-lookup"><span data-stu-id="7a427-102">For example, the following project file contains the version 3.1 for .NET Core and the listed NuGet packages:</span></span>
+<span data-ttu-id="80912-101">如果出現基架錯誤,請驗證目標框架 Moniker (TFM) 與專案檔中的 NuGet 套件版本匹配。</span><span class="sxs-lookup"><span data-stu-id="80912-101">If you get a scaffolding error, verify the Target Framework Moniker (TFM) matches the NuGet package version in the project file.</span></span> <span data-ttu-id="80912-102">例如,以下項目檔包含 .NET Core 的版本 3.1 和列出的 NuGet 套件:</span><span class="sxs-lookup"><span data-stu-id="80912-102">For example, the following project file contains the version 3.1 for .NET Core and the listed NuGet packages:</span></span>
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">

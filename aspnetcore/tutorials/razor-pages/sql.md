@@ -6,85 +6,85 @@ ms.author: riande
 ms.date: 7/22/2019
 uid: tutorials/razor-pages/sql
 ms.openlocfilehash: b5acb573f8fa39e5300ecdb359113d8697d78934
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78664336"
 ---
-# <a name="work-with-a-database-and-aspnet-core"></a><span data-ttu-id="53bbe-103">使用資料庫和 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="53bbe-103">Work with a database and ASP.NET Core</span></span>
+# <a name="work-with-a-database-and-aspnet-core"></a><span data-ttu-id="54b2f-103">使用資料庫和 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="54b2f-103">Work with a database and ASP.NET Core</span></span>
 
-<span data-ttu-id="53bbe-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette)</span><span class="sxs-lookup"><span data-stu-id="53bbe-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Joe Audette](https://twitter.com/joeaudette)</span></span>
+<span data-ttu-id="54b2f-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette)</span><span class="sxs-lookup"><span data-stu-id="54b2f-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Joe Audette](https://twitter.com/joeaudette)</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-<span data-ttu-id="53bbe-105">`RazorPagesMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。</span><span class="sxs-lookup"><span data-stu-id="53bbe-105">The `RazorPagesMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="53bbe-106">在 [Startup.cs](xref:fundamentals/dependency-injection) 的 `ConfigureServices` 方法中，以*相依性插入*容器登錄資料庫內容：</span><span class="sxs-lookup"><span data-stu-id="53bbe-106">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in *Startup.cs*:</span></span>
+<span data-ttu-id="54b2f-105">`RazorPagesMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。</span><span class="sxs-lookup"><span data-stu-id="54b2f-105">The `RazorPagesMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="54b2f-106">在 *Startup.cs* 的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：</span><span class="sxs-lookup"><span data-stu-id="54b2f-106">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in *Startup.cs*:</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53bbe-107">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53bbe-107">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="54b2f-107">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="54b2f-107">Visual Studio</span></span>](#tab/visual-studio)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53bbe-108">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="53bbe-108">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="54b2f-108">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="54b2f-108">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
 ---
 
-<span data-ttu-id="53bbe-109">ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。</span><span class="sxs-lookup"><span data-stu-id="53bbe-109">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="53bbe-110">對於本機開發，它會從 *appsettings.json* 檔案取得連接字串。</span><span class="sxs-lookup"><span data-stu-id="53bbe-110">For local development, it gets the connection string from the *appsettings.json* file.</span></span>
+<span data-ttu-id="54b2f-109">ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。</span><span class="sxs-lookup"><span data-stu-id="54b2f-109">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="54b2f-110">對於本地開發,它將從*appsettings.json*檔中獲取連接字串。</span><span class="sxs-lookup"><span data-stu-id="54b2f-110">For local development, it gets the connection string from the *appsettings.json* file.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53bbe-111">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53bbe-111">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="54b2f-111">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="54b2f-111">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="53bbe-112">您的產生程式碼會有不同的資料庫 (`Database={Database name}`) 名稱值。</span><span class="sxs-lookup"><span data-stu-id="53bbe-112">The name value for the database (`Database={Database name}`) will be different for your generated code.</span></span> <span data-ttu-id="53bbe-113">名稱值為任意值。</span><span class="sxs-lookup"><span data-stu-id="53bbe-113">The name value is arbitrary.</span></span>
+<span data-ttu-id="54b2f-112">您的產生程式碼會有不同的資料庫 (`Database={Database name}`) 名稱值。</span><span class="sxs-lookup"><span data-stu-id="54b2f-112">The name value for the database (`Database={Database name}`) will be different for your generated code.</span></span> <span data-ttu-id="54b2f-113">名稱值為任意值。</span><span class="sxs-lookup"><span data-stu-id="54b2f-113">The name value is arbitrary.</span></span>
 
 [!code-json[](razor-pages-start/sample/RazorPagesMovie30/appsettings.json?highlight=10-12)]
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53bbe-114">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="53bbe-114">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="54b2f-114">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="54b2f-114">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 
 ---
 
-<span data-ttu-id="53bbe-115">將應用程式部署到測試或生產環境伺服器時，可以使用環境變數來設定實際資料庫伺服器的連接字串。</span><span class="sxs-lookup"><span data-stu-id="53bbe-115">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a real database server.</span></span> <span data-ttu-id="53bbe-116">如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。</span><span class="sxs-lookup"><span data-stu-id="53bbe-116">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
+<span data-ttu-id="54b2f-115">將應用程式部署到測試或生產環境伺服器時，可以使用環境變數來設定實際資料庫伺服器的連接字串。</span><span class="sxs-lookup"><span data-stu-id="54b2f-115">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a real database server.</span></span> <span data-ttu-id="54b2f-116">如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。</span><span class="sxs-lookup"><span data-stu-id="54b2f-116">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53bbe-117">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53bbe-117">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="54b2f-117">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="54b2f-117">Visual Studio</span></span>](#tab/visual-studio)
 
-## <a name="sql-server-express-localdb"></a><span data-ttu-id="53bbe-118">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="53bbe-118">SQL Server Express LocalDB</span></span>
+## <a name="sql-server-express-localdb"></a><span data-ttu-id="54b2f-118">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="54b2f-118">SQL Server Express LocalDB</span></span>
 
-<span data-ttu-id="53bbe-119">LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。</span><span class="sxs-lookup"><span data-stu-id="53bbe-119">LocalDB is a lightweight version of the SQL Server Express database engine that's targeted for program development.</span></span> <span data-ttu-id="53bbe-120">LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。</span><span class="sxs-lookup"><span data-stu-id="53bbe-120">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="53bbe-121">LocalDB 資料庫預設會在 `*.mdf` 目錄中建立 `C:\Users\<user>\` 檔案。</span><span class="sxs-lookup"><span data-stu-id="53bbe-121">By default, LocalDB database creates `*.mdf` files in the `C:\Users\<user>\` directory.</span></span>
+<span data-ttu-id="54b2f-119">LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。</span><span class="sxs-lookup"><span data-stu-id="54b2f-119">LocalDB is a lightweight version of the SQL Server Express database engine that's targeted for program development.</span></span> <span data-ttu-id="54b2f-120">LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。</span><span class="sxs-lookup"><span data-stu-id="54b2f-120">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="54b2f-121">LocalDB 資料庫預設會在 `C:\Users\<user>\` 目錄中建立 `*.mdf` 檔案。</span><span class="sxs-lookup"><span data-stu-id="54b2f-121">By default, LocalDB database creates `*.mdf` files in the `C:\Users\<user>\` directory.</span></span>
 
 <a name="ssox"></a>
-* <span data-ttu-id="53bbe-122">從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。</span><span class="sxs-lookup"><span data-stu-id="53bbe-122">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
+* <span data-ttu-id="54b2f-122">從 [檢視]\*\*\*\* 功能表中，開啟 [SQL Server 物件總管]\*\*\*\* (SSOX)。</span><span class="sxs-lookup"><span data-stu-id="54b2f-122">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
 
   ![檢視功能表](sql/_static/ssox.png)
 
-* <span data-ttu-id="53bbe-124">以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視表設計工具]：</span><span class="sxs-lookup"><span data-stu-id="53bbe-124">Right click on the `Movie` table and select **View Designer**:</span></span>
+* <span data-ttu-id="54b2f-124">以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視表設計工具]\*\*\*\*：</span><span class="sxs-lookup"><span data-stu-id="54b2f-124">Right click on the `Movie` table and select **View Designer**:</span></span>
 
   ![在 Movie 資料表上開啟的操作功能表](sql/_static/design.png)
 
   ![在設計工具中開啟的 Movie 資料表](sql/_static/dv.png)
 
-<span data-ttu-id="53bbe-127">請注意 `ID` 旁的索引鍵圖示。</span><span class="sxs-lookup"><span data-stu-id="53bbe-127">Note the key icon next to `ID`.</span></span> <span data-ttu-id="53bbe-128">根據預設，EF 會為主索引鍵建立名為 `ID` 的屬性。</span><span class="sxs-lookup"><span data-stu-id="53bbe-128">By default, EF creates a property named `ID` for the primary key.</span></span>
+<span data-ttu-id="54b2f-127">請注意 `ID` 旁的索引鍵圖示。</span><span class="sxs-lookup"><span data-stu-id="54b2f-127">Note the key icon next to `ID`.</span></span> <span data-ttu-id="54b2f-128">根據預設，EF 會為主索引鍵建立名為 `ID` 的屬性。</span><span class="sxs-lookup"><span data-stu-id="54b2f-128">By default, EF creates a property named `ID` for the primary key.</span></span>
 
-* <span data-ttu-id="53bbe-129">以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視資料]：</span><span class="sxs-lookup"><span data-stu-id="53bbe-129">Right click on the `Movie` table and select **View Data**:</span></span>
+* <span data-ttu-id="54b2f-129">以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視資料]\*\*\*\*：</span><span class="sxs-lookup"><span data-stu-id="54b2f-129">Right click on the `Movie` table and select **View Data**:</span></span>
 
   ![開啟的電影資料表顯示資料表資料](sql/_static/vd22.png)
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53bbe-131">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="53bbe-131">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="54b2f-131">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="54b2f-131">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
 ---
 
-## <a name="seed-the-database"></a><span data-ttu-id="53bbe-132">植入資料庫</span><span class="sxs-lookup"><span data-stu-id="53bbe-132">Seed the database</span></span>
+## <a name="seed-the-database"></a><span data-ttu-id="54b2f-132">植入資料庫</span><span class="sxs-lookup"><span data-stu-id="54b2f-132">Seed the database</span></span>
 
-<span data-ttu-id="53bbe-133">使用下列程式碼，在 `SeedData`Models*資料夾中建立名為* 的新類別：</span><span class="sxs-lookup"><span data-stu-id="53bbe-133">Create a new class named `SeedData` in the *Models* folder with the following code:</span></span>
+<span data-ttu-id="54b2f-133">使用下列程式碼，在 *Models* 資料夾中建立名為 `SeedData` 的新類別：</span><span class="sxs-lookup"><span data-stu-id="54b2f-133">Create a new class named `SeedData` in the *Models* folder with the following code:</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
-<span data-ttu-id="53bbe-134">如果資料庫中有任何電影，則種子初始設定式會返回，而且不會新增任何電影。</span><span class="sxs-lookup"><span data-stu-id="53bbe-134">If there are any movies in the DB, the seed initializer returns and no movies are added.</span></span>
+<span data-ttu-id="54b2f-134">如果資料庫中有任何電影，則種子初始設定式會返回，而且不會新增任何電影。</span><span class="sxs-lookup"><span data-stu-id="54b2f-134">If there are any movies in the DB, the seed initializer returns and no movies are added.</span></span>
 
 ```csharp
 if (context.Movie.Any())
@@ -95,54 +95,54 @@ if (context.Movie.Any())
 
 <a name="si"></a>
 
-### <a name="add-the-seed-initializer"></a><span data-ttu-id="53bbe-135">新增種子初始設定式</span><span class="sxs-lookup"><span data-stu-id="53bbe-135">Add the seed initializer</span></span>
+### <a name="add-the-seed-initializer"></a><span data-ttu-id="54b2f-135">新增種子初始設定式</span><span class="sxs-lookup"><span data-stu-id="54b2f-135">Add the seed initializer</span></span>
 
-<span data-ttu-id="53bbe-136">在 *Program.cs* 中，修改 `Main` 方法來執行下列動作：</span><span class="sxs-lookup"><span data-stu-id="53bbe-136">In *Program.cs*, modify the `Main` method to do the following:</span></span>
+<span data-ttu-id="54b2f-136">在 *Program.cs* 中，修改 `Main` 方法來執行下列動作：</span><span class="sxs-lookup"><span data-stu-id="54b2f-136">In *Program.cs*, modify the `Main` method to do the following:</span></span>
 
-* <span data-ttu-id="53bbe-137">從相依性插入容器中取得資料庫內容執行個體。</span><span class="sxs-lookup"><span data-stu-id="53bbe-137">Get a DB context instance from the dependency injection container.</span></span>
-* <span data-ttu-id="53bbe-138">呼叫種子方法，並將其傳遞給內容。</span><span class="sxs-lookup"><span data-stu-id="53bbe-138">Call the seed method, passing to it the context.</span></span>
-* <span data-ttu-id="53bbe-139">種子方法完成時處理內容。</span><span class="sxs-lookup"><span data-stu-id="53bbe-139">Dispose the context when the seed method completes.</span></span>
+* <span data-ttu-id="54b2f-137">從相依性插入容器中取得資料庫內容執行個體。</span><span class="sxs-lookup"><span data-stu-id="54b2f-137">Get a DB context instance from the dependency injection container.</span></span>
+* <span data-ttu-id="54b2f-138">呼叫種子方法，並將其傳遞給內容。</span><span class="sxs-lookup"><span data-stu-id="54b2f-138">Call the seed method, passing to it the context.</span></span>
+* <span data-ttu-id="54b2f-139">種子方法完成時處理內容。</span><span class="sxs-lookup"><span data-stu-id="54b2f-139">Dispose the context when the seed method completes.</span></span>
 
-<span data-ttu-id="53bbe-140">下列程式碼顯示已更新的 *Program.cs* 檔案。</span><span class="sxs-lookup"><span data-stu-id="53bbe-140">The following code shows the updated *Program.cs* file.</span></span>
+<span data-ttu-id="54b2f-140">下列程式碼顯示已更新的 *Program.cs* 檔案。</span><span class="sxs-lookup"><span data-stu-id="54b2f-140">The following code shows the updated *Program.cs* file.</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Program.cs)]
 
-<span data-ttu-id="53bbe-141">未執行 `Update-Database` 時，會發生下列例外狀況：</span><span class="sxs-lookup"><span data-stu-id="53bbe-141">The following exception occurs when `Update-Database` has not been run:</span></span>
+<span data-ttu-id="54b2f-141">未執行時`Update-Database`發生以下異常:</span><span class="sxs-lookup"><span data-stu-id="54b2f-141">The following exception occurs when `Update-Database` has not been run:</span></span>
 
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
 
-### <a name="test-the-app"></a><span data-ttu-id="53bbe-142">測試應用程式</span><span class="sxs-lookup"><span data-stu-id="53bbe-142">Test the app</span></span>
+### <a name="test-the-app"></a><span data-ttu-id="54b2f-142">測試應用程式</span><span class="sxs-lookup"><span data-stu-id="54b2f-142">Test the app</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53bbe-143">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53bbe-143">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="54b2f-143">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="54b2f-143">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="53bbe-144">刪除資料庫中的所有記錄。</span><span class="sxs-lookup"><span data-stu-id="53bbe-144">Delete all the records in the DB.</span></span> <span data-ttu-id="53bbe-145">您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行這項操作</span><span class="sxs-lookup"><span data-stu-id="53bbe-145">You can do this with the delete links in the browser or from [SSOX](xref:tutorials/razor-pages/new-field#ssox)</span></span>
-* <span data-ttu-id="53bbe-146">強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。</span><span class="sxs-lookup"><span data-stu-id="53bbe-146">Force the app to initialize (call the methods in the `Startup` class) so the seed method runs.</span></span> <span data-ttu-id="53bbe-147">若要強制初始化，IIS Express 必須停止並重新啟動。</span><span class="sxs-lookup"><span data-stu-id="53bbe-147">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="53bbe-148">您可以使用下列其中一個方法來執行此工作：</span><span class="sxs-lookup"><span data-stu-id="53bbe-148">You can do this with any of the following approaches:</span></span>
+* <span data-ttu-id="54b2f-144">刪除資料庫中的所有記錄。</span><span class="sxs-lookup"><span data-stu-id="54b2f-144">Delete all the records in the DB.</span></span> <span data-ttu-id="54b2f-145">您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行這項操作</span><span class="sxs-lookup"><span data-stu-id="54b2f-145">You can do this with the delete links in the browser or from [SSOX](xref:tutorials/razor-pages/new-field#ssox)</span></span>
+* <span data-ttu-id="54b2f-146">強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。</span><span class="sxs-lookup"><span data-stu-id="54b2f-146">Force the app to initialize (call the methods in the `Startup` class) so the seed method runs.</span></span> <span data-ttu-id="54b2f-147">若要強制初始化，IIS Express 必須停止並重新啟動。</span><span class="sxs-lookup"><span data-stu-id="54b2f-147">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="54b2f-148">您可以使用下列其中一個方法來執行此工作：</span><span class="sxs-lookup"><span data-stu-id="54b2f-148">You can do this with any of the following approaches:</span></span>
 
-  * <span data-ttu-id="53bbe-149">以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束] 或 [停止網站]：</span><span class="sxs-lookup"><span data-stu-id="53bbe-149">Right click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**:</span></span>
+  * <span data-ttu-id="54b2f-149">右鍵按下通知區域中的 IIS Express 系統匣圖示,然後點按 **「離開**」或 **「停止」網站**:</span><span class="sxs-lookup"><span data-stu-id="54b2f-149">Right click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**:</span></span>
 
     ![IIS Express 系統匣圖示](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
     ![操作功能表](sql/_static/stopIIS.png)
 
-    * <span data-ttu-id="53bbe-152">如果您已在非偵錯模式中執行 VS，請按 F5 以偵錯模式執行。</span><span class="sxs-lookup"><span data-stu-id="53bbe-152">If you were running VS in non-debug mode, press F5 to run in debug mode.</span></span>
-    * <span data-ttu-id="53bbe-153">如果您已在偵錯模式中執行 VS，請停止偵錯工具，然後按 F5。</span><span class="sxs-lookup"><span data-stu-id="53bbe-153">If you were running VS in debug mode, stop the debugger and press F5.</span></span>
+    * <span data-ttu-id="54b2f-152">如果您已在非偵錯模式中執行 VS，請按 F5 以偵錯模式執行。</span><span class="sxs-lookup"><span data-stu-id="54b2f-152">If you were running VS in non-debug mode, press F5 to run in debug mode.</span></span>
+    * <span data-ttu-id="54b2f-153">如果您已在偵錯模式中執行 VS，請停止偵錯工具，然後按 F5。</span><span class="sxs-lookup"><span data-stu-id="54b2f-153">If you were running VS in debug mode, stop the debugger and press F5.</span></span>
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53bbe-154">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="53bbe-154">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="54b2f-154">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="54b2f-154">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-<span data-ttu-id="53bbe-155">請刪除資料庫中的所有記錄 (這樣會執行 seed 方法)。</span><span class="sxs-lookup"><span data-stu-id="53bbe-155">Delete all the records in the DB (So the seed method will run).</span></span> <span data-ttu-id="53bbe-156">停止並啟動應用程式來植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="53bbe-156">Stop and start the app to seed the database.</span></span>
+<span data-ttu-id="54b2f-155">請刪除資料庫中的所有記錄 (這樣會執行 seed 方法)。</span><span class="sxs-lookup"><span data-stu-id="54b2f-155">Delete all the records in the DB (So the seed method will run).</span></span> <span data-ttu-id="54b2f-156">停止並啟動應用程式來植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="54b2f-156">Stop and start the app to seed the database.</span></span>
 
-<span data-ttu-id="53bbe-157">應用程式會顯示植入的資料。</span><span class="sxs-lookup"><span data-stu-id="53bbe-157">The app shows the seeded data.</span></span>
+<span data-ttu-id="54b2f-157">應用程式會顯示植入的資料。</span><span class="sxs-lookup"><span data-stu-id="54b2f-157">The app shows the seeded data.</span></span>
 
 ---
 
-<span data-ttu-id="53bbe-158">接下來的教學課程將會改善資料的呈現。</span><span class="sxs-lookup"><span data-stu-id="53bbe-158">The next tutorial will improve the presentation of the data.</span></span>
+<span data-ttu-id="54b2f-158">接下來的教學課程將會改善資料的呈現。</span><span class="sxs-lookup"><span data-stu-id="54b2f-158">The next tutorial will improve the presentation of the data.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="53bbe-159">其他資源</span><span class="sxs-lookup"><span data-stu-id="53bbe-159">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="54b2f-159">其他資源</span><span class="sxs-lookup"><span data-stu-id="54b2f-159">Additional resources</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="53bbe-160">[上一步：包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages/page)
-> [下一步：更新頁面](xref:tutorials/razor-pages/da1)</span><span class="sxs-lookup"><span data-stu-id="53bbe-160">[Previous: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
+> <span data-ttu-id="54b2f-160">[上一篇: 手手架剃刀頁面](xref:tutorials/razor-pages/page)
+> [下一頁: 更新頁面](xref:tutorials/razor-pages/da1)</span><span class="sxs-lookup"><span data-stu-id="54b2f-160">[Previous: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
 [Next: Updating the pages](xref:tutorials/razor-pages/da1)</span></span>
 
 ::: moniker-end
@@ -151,85 +151,85 @@ if (context.Movie.Any())
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-<span data-ttu-id="53bbe-161">`RazorPagesMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。</span><span class="sxs-lookup"><span data-stu-id="53bbe-161">The `RazorPagesMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="53bbe-162">在 [Startup.cs](xref:fundamentals/dependency-injection) 的 `ConfigureServices` 方法中，以*相依性插入*容器登錄資料庫內容：</span><span class="sxs-lookup"><span data-stu-id="53bbe-162">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in *Startup.cs*:</span></span>
+<span data-ttu-id="54b2f-161">`RazorPagesMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。</span><span class="sxs-lookup"><span data-stu-id="54b2f-161">The `RazorPagesMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="54b2f-162">在 *Startup.cs* 的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：</span><span class="sxs-lookup"><span data-stu-id="54b2f-162">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in *Startup.cs*:</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53bbe-163">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53bbe-163">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="54b2f-163">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="54b2f-163">Visual Studio</span></span>](#tab/visual-studio)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53bbe-164">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="53bbe-164">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="54b2f-164">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="54b2f-164">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
 ---
 
-<span data-ttu-id="53bbe-165">如需 `ConfigureServices` 中所用之方法的詳細資訊，請參閱：</span><span class="sxs-lookup"><span data-stu-id="53bbe-165">For more information on the methods used in `ConfigureServices`, see:</span></span>
+<span data-ttu-id="54b2f-165">如需 `ConfigureServices` 中所用之方法的詳細資訊，請參閱：</span><span class="sxs-lookup"><span data-stu-id="54b2f-165">For more information on the methods used in `ConfigureServices`, see:</span></span>
 
-* <span data-ttu-id="53bbe-166">適用於 [ 的 ](xref:security/gdpr)ASP.NET Core 中的 EU 一般資料保護規定 (GDPR) 支援`CookiePolicyOptions`。</span><span class="sxs-lookup"><span data-stu-id="53bbe-166">[EU General Data Protection Regulation (GDPR) support in ASP.NET Core](xref:security/gdpr) for `CookiePolicyOptions`.</span></span>
-* [<span data-ttu-id="53bbe-167">SetCompatibilityVersion</span><span class="sxs-lookup"><span data-stu-id="53bbe-167">SetCompatibilityVersion</span></span>](xref:mvc/compatibility-version)
+* <span data-ttu-id="54b2f-166">適用於 `CookiePolicyOptions` 的 [ASP.NET Core 中的 EU 一般資料保護規定 (GDPR) 支援](xref:security/gdpr)。</span><span class="sxs-lookup"><span data-stu-id="54b2f-166">[EU General Data Protection Regulation (GDPR) support in ASP.NET Core](xref:security/gdpr) for `CookiePolicyOptions`.</span></span>
+* [<span data-ttu-id="54b2f-167">SetCompatibilityVersion</span><span class="sxs-lookup"><span data-stu-id="54b2f-167">SetCompatibilityVersion</span></span>](xref:mvc/compatibility-version)
 
-<span data-ttu-id="53bbe-168">ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。</span><span class="sxs-lookup"><span data-stu-id="53bbe-168">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="53bbe-169">對於本機開發，它會從 *appsettings.json* 檔案取得連接字串。</span><span class="sxs-lookup"><span data-stu-id="53bbe-169">For local development, it gets the connection string from the *appsettings.json* file.</span></span>
+<span data-ttu-id="54b2f-168">ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。</span><span class="sxs-lookup"><span data-stu-id="54b2f-168">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="54b2f-169">對於本地開發,它將從*appsettings.json*檔中獲取連接字串。</span><span class="sxs-lookup"><span data-stu-id="54b2f-169">For local development, it gets the connection string from the *appsettings.json* file.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53bbe-170">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53bbe-170">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="54b2f-170">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="54b2f-170">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="53bbe-171">您的產生程式碼會有不同的資料庫 (`Database={Database name}`) 名稱值。</span><span class="sxs-lookup"><span data-stu-id="53bbe-171">The name value for the database (`Database={Database name}`) will be different for your generated code.</span></span> <span data-ttu-id="53bbe-172">名稱值為任意值。</span><span class="sxs-lookup"><span data-stu-id="53bbe-172">The name value is arbitrary.</span></span>
+<span data-ttu-id="54b2f-171">您的產生程式碼會有不同的資料庫 (`Database={Database name}`) 名稱值。</span><span class="sxs-lookup"><span data-stu-id="54b2f-171">The name value for the database (`Database={Database name}`) will be different for your generated code.</span></span> <span data-ttu-id="54b2f-172">名稱值為任意值。</span><span class="sxs-lookup"><span data-stu-id="54b2f-172">The name value is arbitrary.</span></span>
 
 [!code-json[](razor-pages-start/sample/RazorPagesMovie22/appsettings.json)]
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="53bbe-173">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="53bbe-173">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="54b2f-173">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="54b2f-173">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="53bbe-174">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="53bbe-174">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="54b2f-174">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="54b2f-174">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 
 ---
 
-<span data-ttu-id="53bbe-175">將應用程式部署到測試或生產環境伺服器時，可以使用環境變數來設定實際資料庫伺服器的連接字串。</span><span class="sxs-lookup"><span data-stu-id="53bbe-175">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a real database server.</span></span> <span data-ttu-id="53bbe-176">如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。</span><span class="sxs-lookup"><span data-stu-id="53bbe-176">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
+<span data-ttu-id="54b2f-175">將應用程式部署到測試或生產環境伺服器時，可以使用環境變數來設定實際資料庫伺服器的連接字串。</span><span class="sxs-lookup"><span data-stu-id="54b2f-175">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a real database server.</span></span> <span data-ttu-id="54b2f-176">如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。</span><span class="sxs-lookup"><span data-stu-id="54b2f-176">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53bbe-177">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53bbe-177">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="54b2f-177">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="54b2f-177">Visual Studio</span></span>](#tab/visual-studio)
 
-## <a name="sql-server-express-localdb"></a><span data-ttu-id="53bbe-178">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="53bbe-178">SQL Server Express LocalDB</span></span>
+## <a name="sql-server-express-localdb"></a><span data-ttu-id="54b2f-178">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="54b2f-178">SQL Server Express LocalDB</span></span>
 
-<span data-ttu-id="53bbe-179">LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。</span><span class="sxs-lookup"><span data-stu-id="53bbe-179">LocalDB is a lightweight version of the SQL Server Express database engine that's targeted for program development.</span></span> <span data-ttu-id="53bbe-180">LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。</span><span class="sxs-lookup"><span data-stu-id="53bbe-180">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="53bbe-181">LocalDB 資料庫預設會在 `*.mdf` 目錄中建立 `C:/Users/<user/>` 檔案。</span><span class="sxs-lookup"><span data-stu-id="53bbe-181">By default, LocalDB database creates `*.mdf` files in the `C:/Users/<user/>` directory.</span></span>
+<span data-ttu-id="54b2f-179">LocalDB 為輕量版的 SQL Server Express 資料庫引擎，鎖定程式開發為其目標。</span><span class="sxs-lookup"><span data-stu-id="54b2f-179">LocalDB is a lightweight version of the SQL Server Express database engine that's targeted for program development.</span></span> <span data-ttu-id="54b2f-180">LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。</span><span class="sxs-lookup"><span data-stu-id="54b2f-180">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="54b2f-181">LocalDB 資料庫預設會在 `C:/Users/<user/>` 目錄中建立 `*.mdf` 檔案。</span><span class="sxs-lookup"><span data-stu-id="54b2f-181">By default, LocalDB database creates `*.mdf` files in the `C:/Users/<user/>` directory.</span></span>
 
 <a name="ssox"></a>
-* <span data-ttu-id="53bbe-182">從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。</span><span class="sxs-lookup"><span data-stu-id="53bbe-182">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
+* <span data-ttu-id="54b2f-182">從 [檢視]\*\*\*\* 功能表中，開啟 [SQL Server 物件總管]\*\*\*\* (SSOX)。</span><span class="sxs-lookup"><span data-stu-id="54b2f-182">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
 
   ![檢視功能表](sql/_static/ssox.png)
 
-* <span data-ttu-id="53bbe-184">以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視表設計工具]：</span><span class="sxs-lookup"><span data-stu-id="53bbe-184">Right click on the `Movie` table and select **View Designer**:</span></span>
+* <span data-ttu-id="54b2f-184">以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視表設計工具]\*\*\*\*：</span><span class="sxs-lookup"><span data-stu-id="54b2f-184">Right click on the `Movie` table and select **View Designer**:</span></span>
 
   ![在電影資料表上開啟操作功能表](sql/_static/design.png)
 
   ![在設計工具中開啟電影資料表](sql/_static/dv.png)
 
-<span data-ttu-id="53bbe-187">請注意 `ID` 旁的索引鍵圖示。</span><span class="sxs-lookup"><span data-stu-id="53bbe-187">Note the key icon next to `ID`.</span></span> <span data-ttu-id="53bbe-188">根據預設，EF 會為主索引鍵建立名為 `ID` 的屬性。</span><span class="sxs-lookup"><span data-stu-id="53bbe-188">By default, EF creates a property named `ID` for the primary key.</span></span>
+<span data-ttu-id="54b2f-187">請注意 `ID` 旁的索引鍵圖示。</span><span class="sxs-lookup"><span data-stu-id="54b2f-187">Note the key icon next to `ID`.</span></span> <span data-ttu-id="54b2f-188">根據預設，EF 會為主索引鍵建立名為 `ID` 的屬性。</span><span class="sxs-lookup"><span data-stu-id="54b2f-188">By default, EF creates a property named `ID` for the primary key.</span></span>
 
-* <span data-ttu-id="53bbe-189">以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視資料]：</span><span class="sxs-lookup"><span data-stu-id="53bbe-189">Right click on the `Movie` table and select **View Data**:</span></span>
+* <span data-ttu-id="54b2f-189">以滑鼠右鍵按一下 `Movie` 資料表，並選取 [檢視資料]\*\*\*\*：</span><span class="sxs-lookup"><span data-stu-id="54b2f-189">Right click on the `Movie` table and select **View Data**:</span></span>
 
   ![開啟的電影資料表顯示資料表資料](sql/_static/vd22.png)
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="53bbe-191">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="53bbe-191">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="54b2f-191">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="54b2f-191">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="53bbe-192">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="53bbe-192">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="54b2f-192">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="54b2f-192">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
 ---
 
-## <a name="seed-the-database"></a><span data-ttu-id="53bbe-193">植入資料庫</span><span class="sxs-lookup"><span data-stu-id="53bbe-193">Seed the database</span></span>
+## <a name="seed-the-database"></a><span data-ttu-id="54b2f-193">植入資料庫</span><span class="sxs-lookup"><span data-stu-id="54b2f-193">Seed the database</span></span>
 
-<span data-ttu-id="53bbe-194">使用下列程式碼，在 `SeedData`Models*資料夾中建立名為* 的新類別：</span><span class="sxs-lookup"><span data-stu-id="53bbe-194">Create a new class named `SeedData` in the *Models* folder with the following code:</span></span>
+<span data-ttu-id="54b2f-194">使用下列程式碼，在 *Models* 資料夾中建立名為 `SeedData` 的新類別：</span><span class="sxs-lookup"><span data-stu-id="54b2f-194">Create a new class named `SeedData` in the *Models* folder with the following code:</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedData.cs?name=snippet_1)]
 
-<span data-ttu-id="53bbe-195">如果資料庫中有任何電影，則種子初始設定式會返回，而且不會新增任何電影。</span><span class="sxs-lookup"><span data-stu-id="53bbe-195">If there are any movies in the DB, the seed initializer returns and no movies are added.</span></span>
+<span data-ttu-id="54b2f-195">如果資料庫中有任何電影，則種子初始設定式會返回，而且不會新增任何電影。</span><span class="sxs-lookup"><span data-stu-id="54b2f-195">If there are any movies in the DB, the seed initializer returns and no movies are added.</span></span>
 
 ```csharp
 if (context.Movie.Any())
@@ -240,66 +240,66 @@ if (context.Movie.Any())
 
 <a name="si"></a>
 
-### <a name="add-the-seed-initializer"></a><span data-ttu-id="53bbe-196">新增種子初始設定式</span><span class="sxs-lookup"><span data-stu-id="53bbe-196">Add the seed initializer</span></span>
+### <a name="add-the-seed-initializer"></a><span data-ttu-id="54b2f-196">新增種子初始設定式</span><span class="sxs-lookup"><span data-stu-id="54b2f-196">Add the seed initializer</span></span>
 
-<span data-ttu-id="53bbe-197">在 *Program.cs* 中，修改 `Main` 方法來執行下列動作：</span><span class="sxs-lookup"><span data-stu-id="53bbe-197">In *Program.cs*, modify the `Main` method to do the following:</span></span>
+<span data-ttu-id="54b2f-197">在 *Program.cs* 中，修改 `Main` 方法來執行下列動作：</span><span class="sxs-lookup"><span data-stu-id="54b2f-197">In *Program.cs*, modify the `Main` method to do the following:</span></span>
 
-* <span data-ttu-id="53bbe-198">從相依性插入容器中取得資料庫內容執行個體。</span><span class="sxs-lookup"><span data-stu-id="53bbe-198">Get a DB context instance from the dependency injection container.</span></span>
-* <span data-ttu-id="53bbe-199">呼叫種子方法，並將其傳遞給內容。</span><span class="sxs-lookup"><span data-stu-id="53bbe-199">Call the seed method, passing to it the context.</span></span>
-* <span data-ttu-id="53bbe-200">種子方法完成時處理內容。</span><span class="sxs-lookup"><span data-stu-id="53bbe-200">Dispose the context when the seed method completes.</span></span>
+* <span data-ttu-id="54b2f-198">從相依性插入容器中取得資料庫內容執行個體。</span><span class="sxs-lookup"><span data-stu-id="54b2f-198">Get a DB context instance from the dependency injection container.</span></span>
+* <span data-ttu-id="54b2f-199">呼叫種子方法，並將其傳遞給內容。</span><span class="sxs-lookup"><span data-stu-id="54b2f-199">Call the seed method, passing to it the context.</span></span>
+* <span data-ttu-id="54b2f-200">種子方法完成時處理內容。</span><span class="sxs-lookup"><span data-stu-id="54b2f-200">Dispose the context when the seed method completes.</span></span>
 
-<span data-ttu-id="53bbe-201">下列程式碼顯示已更新的 *Program.cs* 檔案。</span><span class="sxs-lookup"><span data-stu-id="53bbe-201">The following code shows the updated *Program.cs* file.</span></span>
+<span data-ttu-id="54b2f-201">下列程式碼顯示已更新的 *Program.cs* 檔案。</span><span class="sxs-lookup"><span data-stu-id="54b2f-201">The following code shows the updated *Program.cs* file.</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Program.cs)]
 
-<span data-ttu-id="53bbe-202">生產環境應用程式不會呼叫 `Database.Migrate`。</span><span class="sxs-lookup"><span data-stu-id="53bbe-202">A production app would not call `Database.Migrate`.</span></span> <span data-ttu-id="53bbe-203">它會新增至前面的程式碼以免在尚未執行 `Update-Database` 時發生下列例外狀況：</span><span class="sxs-lookup"><span data-stu-id="53bbe-203">It's added to the preceding code to prevent the following exception when `Update-Database` has not been run:</span></span>
+<span data-ttu-id="54b2f-202">生產環境應用程式不會呼叫 `Database.Migrate`。</span><span class="sxs-lookup"><span data-stu-id="54b2f-202">A production app would not call `Database.Migrate`.</span></span> <span data-ttu-id="54b2f-203">它會新增至前面的程式碼以免在尚未執行 `Update-Database` 時發生下列例外狀況：</span><span class="sxs-lookup"><span data-stu-id="54b2f-203">It's added to the preceding code to prevent the following exception when `Update-Database` has not been run:</span></span>
 
-<span data-ttu-id="53bbe-204">SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫。</span><span class="sxs-lookup"><span data-stu-id="53bbe-204">SqlException: Cannot open database "RazorPagesMovieContext-21" requested by the login.</span></span> <span data-ttu-id="53bbe-205">登入失敗。</span><span class="sxs-lookup"><span data-stu-id="53bbe-205">The login failed.</span></span>
-<span data-ttu-id="53bbe-206">使用者 'user name' 登入失敗。</span><span class="sxs-lookup"><span data-stu-id="53bbe-206">Login failed for user 'user name'.</span></span>
+<span data-ttu-id="54b2f-204">SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫。</span><span class="sxs-lookup"><span data-stu-id="54b2f-204">SqlException: Cannot open database "RazorPagesMovieContext-21" requested by the login.</span></span> <span data-ttu-id="54b2f-205">登入失敗。</span><span class="sxs-lookup"><span data-stu-id="54b2f-205">The login failed.</span></span>
+<span data-ttu-id="54b2f-206">使用者 'user name' 登入失敗。</span><span class="sxs-lookup"><span data-stu-id="54b2f-206">Login failed for user 'user name'.</span></span>
 
-### <a name="test-the-app"></a><span data-ttu-id="53bbe-207">測試應用程式</span><span class="sxs-lookup"><span data-stu-id="53bbe-207">Test the app</span></span>
+### <a name="test-the-app"></a><span data-ttu-id="54b2f-207">測試應用程式</span><span class="sxs-lookup"><span data-stu-id="54b2f-207">Test the app</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53bbe-208">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53bbe-208">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="54b2f-208">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="54b2f-208">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="53bbe-209">刪除資料庫中的所有記錄。</span><span class="sxs-lookup"><span data-stu-id="53bbe-209">Delete all the records in the DB.</span></span> <span data-ttu-id="53bbe-210">您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行這項操作</span><span class="sxs-lookup"><span data-stu-id="53bbe-210">You can do this with the delete links in the browser or from [SSOX](xref:tutorials/razor-pages/new-field#ssox)</span></span>
-* <span data-ttu-id="53bbe-211">強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。</span><span class="sxs-lookup"><span data-stu-id="53bbe-211">Force the app to initialize (call the methods in the `Startup` class) so the seed method runs.</span></span> <span data-ttu-id="53bbe-212">若要強制初始化，IIS Express 必須停止並重新啟動。</span><span class="sxs-lookup"><span data-stu-id="53bbe-212">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="53bbe-213">您可以使用下列其中一個方法來執行此工作：</span><span class="sxs-lookup"><span data-stu-id="53bbe-213">You can do this with any of the following approaches:</span></span>
+* <span data-ttu-id="54b2f-209">刪除資料庫中的所有記錄。</span><span class="sxs-lookup"><span data-stu-id="54b2f-209">Delete all the records in the DB.</span></span> <span data-ttu-id="54b2f-210">您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行這項操作</span><span class="sxs-lookup"><span data-stu-id="54b2f-210">You can do this with the delete links in the browser or from [SSOX](xref:tutorials/razor-pages/new-field#ssox)</span></span>
+* <span data-ttu-id="54b2f-211">強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。</span><span class="sxs-lookup"><span data-stu-id="54b2f-211">Force the app to initialize (call the methods in the `Startup` class) so the seed method runs.</span></span> <span data-ttu-id="54b2f-212">若要強制初始化，IIS Express 必須停止並重新啟動。</span><span class="sxs-lookup"><span data-stu-id="54b2f-212">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="54b2f-213">您可以使用下列其中一個方法來執行此工作：</span><span class="sxs-lookup"><span data-stu-id="54b2f-213">You can do this with any of the following approaches:</span></span>
 
-  * <span data-ttu-id="53bbe-214">以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束] 或 [停止站台]：</span><span class="sxs-lookup"><span data-stu-id="53bbe-214">Right-click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**:</span></span>
+  * <span data-ttu-id="54b2f-214">以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束]\*\*\*\* 或 [停止站台]\*\*\*\*：</span><span class="sxs-lookup"><span data-stu-id="54b2f-214">Right-click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**:</span></span>
 
     ![IIS Express 系統匣圖示](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
     ![操作功能表](sql/_static/stopIIS.png)
 
-    * <span data-ttu-id="53bbe-217">如果您已在非偵錯模式中執行 VS，請按 F5 以偵錯模式執行。</span><span class="sxs-lookup"><span data-stu-id="53bbe-217">If you were running VS in non-debug mode, press F5 to run in debug mode.</span></span>
-    * <span data-ttu-id="53bbe-218">如果您已在偵錯模式中執行 VS，請停止偵錯工具，然後按 F5。</span><span class="sxs-lookup"><span data-stu-id="53bbe-218">If you were running VS in debug mode, stop the debugger and press F5.</span></span>
+    * <span data-ttu-id="54b2f-217">如果您已在非偵錯模式中執行 VS，請按 F5 以偵錯模式執行。</span><span class="sxs-lookup"><span data-stu-id="54b2f-217">If you were running VS in non-debug mode, press F5 to run in debug mode.</span></span>
+    * <span data-ttu-id="54b2f-218">如果您已在偵錯模式中執行 VS，請停止偵錯工具，然後按 F5。</span><span class="sxs-lookup"><span data-stu-id="54b2f-218">If you were running VS in debug mode, stop the debugger and press F5.</span></span>
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="53bbe-219">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="53bbe-219">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="54b2f-219">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="54b2f-219">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<span data-ttu-id="53bbe-220">請刪除資料庫中的所有記錄 (這樣會執行 seed 方法)。</span><span class="sxs-lookup"><span data-stu-id="53bbe-220">Delete all the records in the DB (So the seed method will run).</span></span> <span data-ttu-id="53bbe-221">停止並啟動應用程式來植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="53bbe-221">Stop and start the app to seed the database.</span></span>
+<span data-ttu-id="54b2f-220">請刪除資料庫中的所有記錄 (這樣會執行 seed 方法)。</span><span class="sxs-lookup"><span data-stu-id="54b2f-220">Delete all the records in the DB (So the seed method will run).</span></span> <span data-ttu-id="54b2f-221">停止並啟動應用程式來植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="54b2f-221">Stop and start the app to seed the database.</span></span>
 
-<span data-ttu-id="53bbe-222">應用程式會顯示植入的資料。</span><span class="sxs-lookup"><span data-stu-id="53bbe-222">The app shows the seeded data.</span></span>
+<span data-ttu-id="54b2f-222">應用程式會顯示植入的資料。</span><span class="sxs-lookup"><span data-stu-id="54b2f-222">The app shows the seeded data.</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="53bbe-223">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="53bbe-223">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="54b2f-223">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="54b2f-223">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-<span data-ttu-id="53bbe-224">請刪除資料庫中的所有記錄 (這樣會執行 seed 方法)。</span><span class="sxs-lookup"><span data-stu-id="53bbe-224">Delete all the records in the DB (So the seed method will run).</span></span> <span data-ttu-id="53bbe-225">停止並啟動應用程式來植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="53bbe-225">Stop and start the app to seed the database.</span></span>
+<span data-ttu-id="54b2f-224">請刪除資料庫中的所有記錄 (這樣會執行 seed 方法)。</span><span class="sxs-lookup"><span data-stu-id="54b2f-224">Delete all the records in the DB (So the seed method will run).</span></span> <span data-ttu-id="54b2f-225">停止並啟動應用程式來植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="54b2f-225">Stop and start the app to seed the database.</span></span>
 
-<span data-ttu-id="53bbe-226">應用程式會顯示植入的資料。</span><span class="sxs-lookup"><span data-stu-id="53bbe-226">The app shows the seeded data.</span></span>
+<span data-ttu-id="54b2f-226">應用程式會顯示植入的資料。</span><span class="sxs-lookup"><span data-stu-id="54b2f-226">The app shows the seeded data.</span></span>
 
 ---
 
-<span data-ttu-id="53bbe-227">應用程式會顯示植入的資料：</span><span class="sxs-lookup"><span data-stu-id="53bbe-227">The app shows the seeded data:</span></span>
+<span data-ttu-id="54b2f-227">應用程式會顯示植入的資料：</span><span class="sxs-lookup"><span data-stu-id="54b2f-227">The app shows the seeded data:</span></span>
 
 ![在 Chrome 中開啟的電影應用程式顯示電影資料](sql/_static/m55.png)
 
-<span data-ttu-id="53bbe-229">接下來的教學課程將會清除資料的呈現。</span><span class="sxs-lookup"><span data-stu-id="53bbe-229">The next tutorial will clean up the presentation of the data.</span></span>
+<span data-ttu-id="54b2f-229">接下來的教學課程將會清除資料的呈現。</span><span class="sxs-lookup"><span data-stu-id="54b2f-229">The next tutorial will clean up the presentation of the data.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="53bbe-230">其他資源</span><span class="sxs-lookup"><span data-stu-id="53bbe-230">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="54b2f-230">其他資源</span><span class="sxs-lookup"><span data-stu-id="54b2f-230">Additional resources</span></span>
 
-* [<span data-ttu-id="53bbe-231">這個教學課程的 YouTube 版本</span><span class="sxs-lookup"><span data-stu-id="53bbe-231">YouTube version of this tutorial</span></span>](https://youtu.be/A_5ff11sDHY)
+* [<span data-ttu-id="54b2f-231">本教學的 YouTube 版本</span><span class="sxs-lookup"><span data-stu-id="54b2f-231">YouTube version of this tutorial</span></span>](https://youtu.be/A_5ff11sDHY)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="53bbe-232">[上一步：包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages/page)
-> [下一步：更新頁面](xref:tutorials/razor-pages/da1)</span><span class="sxs-lookup"><span data-stu-id="53bbe-232">[Previous: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
+> <span data-ttu-id="54b2f-232">[上一篇: 手手架剃刀頁面](xref:tutorials/razor-pages/page)
+> [下一頁: 更新頁面](xref:tutorials/razor-pages/da1)</span><span class="sxs-lookup"><span data-stu-id="54b2f-232">[Previous: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
 [Next: Updating the pages](xref:tutorials/razor-pages/da1)</span></span>
 
 ::: moniker-end

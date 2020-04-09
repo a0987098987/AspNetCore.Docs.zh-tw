@@ -1082,6 +1082,8 @@
       uid: security/enforcing-ssl
     - name: 使用 HTTPS 執行 Docker
       uid: security/docker-https
+    - name: 使用 HTTPS 執行 Docker Compose
+      uid: security/docker-compose-https
     - name: EU 一般資料保護規定 (GDPR) 支援
       uid: security/gdpr
     - name: 防偽要求

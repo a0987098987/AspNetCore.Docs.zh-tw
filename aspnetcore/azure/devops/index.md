@@ -7,10 +7,10 @@ ms.date: 08/07/2018
 ms.custom: mvc, seodec18
 uid: azure/devops/index
 ms.openlocfilehash: f45bb2a5dd4b3d1a820085ede7ce3219045ed80b
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78658078"
 ---
 # <a name="devops-with-aspnet-core-and-azure"></a>ASP.NET Core 與 Azure 的 DevOps
@@ -45,11 +45,11 @@ ms.locfileid: "78658078"
 
 了解各種如何將 ASP.NET Core 應用程式部署到 Azure App Service 的方法。
 
-### <a name="continuous-integration-and-deployment"></a>[持續整合與部署](xref:azure/devops/cicd)
+### <a name="continuous-integration-and-deployment"></a>[持續整合及部署](xref:azure/devops/cicd)
 
 使用 GitHub、Azure DevOps Services 與 Azure，為您的 ASP.NET Core 應用程式建置端對端的持續整合與部署解決方案。
 
-### <a name="monitor-and-debug"></a>[監視及偵錯](xref:azure/devops/monitor)
+### <a name="monitor-and-debug"></a>[監視並除錯](xref:azure/devops/monitor)
 
 使用 Azure 工來監視、疑難排解問題，以及微調您的應用程式。
 

@@ -8,29 +8,29 @@ ms.custom: mvc
 ms.date: 02/05/2020
 uid: host-and-deploy/linux-apache
 ms.openlocfilehash: 3a3edd961b08c1952e6ded8038ed7ada381c54b0
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78657896"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
 作者：[Shayne Boyer](https://github.com/spboyer)
 
-使用本指南來了解如何在 [CentOS 7](https://httpd.apache.org/) 上將 [Apache](https://www.centos.org/) 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器上執行的 ASP.NET Core Web 應用程式。 [mod_proxy 延伸模組](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html)和相關的模組會建立伺服器的反向 Proxy。
+使用本指南來了解如何在 [CentOS 7](https://www.centos.org/) 上將 [Apache](https://httpd.apache.org/) 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器上執行的 ASP.NET Core Web 應用程式。 [mod_proxy 延伸模組](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html)和相關的模組會建立伺服器的反向 Proxy。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * 執行 CentOS 7 的伺服器搭配具有 sudo 權限的標準使用者帳戶。
 * 在伺服器上安裝 .NET Core 執行階段。
-   1. 請造訪[下載 .Net Core 頁面](https://dotnet.microsoft.com/download/dotnet-core)。
-   1. 選取最新的非預覽 .NET Core 版本。
-   1. 在 [**執行應用程式-運行**時間] 下的表格中，下載最新的非預覽執行時間。
-   1. 選取 [Linux**套件管理員指示**] 連結，並遵循 CentOS 指示。
+   1. 存[取下載 .NET 核心頁面](https://dotnet.microsoft.com/download/dotnet-core)。
+   1. 選擇最新的非預覽 .NET 核心版本。
+   1. 在 **「運行應用 - 執行時**」下,在表中下載最新的非預覽運行時。
+   1. 選擇 Linux**套件管理員說明**連結,然後按照 CentOS 說明操作。
 * 現有的 ASP.NET Core 應用程式。
 
-在未來升級共用架構之後的任何時間點，重新開機伺服器所裝載的 ASP.NET Core 應用程式。
+在升級共用框架后的任何時候,重新啟動伺服器託管的ASP.NET核心應用。
 
 ## <a name="publish-and-copy-over-the-app"></a>跨應用程式發佈與複製
 
@@ -39,7 +39,7 @@ ms.locfileid: "78657896"
 如果應用程式在本機執行且未設定為進行安全連線 (HTTPS)，請採用下列任一方法：
 
 * 設定應用程式以處理安全的本機連線。 如需詳細資訊，請參閱 [HTTPS 組態](#https-configuration)一節。
-* 從 `https://localhost:5001`Properties/launchSettings.json`applicationUrl` 檔案中的 *屬性移除* (如果有的話)。
+* 從 *Properties/launchSettings.json* 檔案中的 `applicationUrl` 屬性移除 `https://localhost:5001` (如果有的話)。
 
 從開發環境執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 將應用程式封裝到可在伺服器上執行的目錄 (例如，*bin/Release/&lt;target_framework_moniker&gt;/publish*)：
 
@@ -60,11 +60,11 @@ dotnet publish --configuration Release
 
 Proxy 伺服器則是會將用戶端要求轉送至另一部伺服器，而不是自己完成這些要求。 反向 Proxy 會轉送至固定目的地，通常代表任意的用戶端。 在本指南中，是將 Apache 設定成反向 Proxy，且執行所在的伺服器與 Kestrel 為 ASP.NET Core 應用程式提供服務的伺服器相同。
 
-由於反向 Proxy 會轉送要求，因此請使用來自 [Microsoft.AspNetCore.HttpOverrides](xref:host-and-deploy/proxy-load-balancer) 套件的[轉送的標頭中介軟體](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/)。 此中介軟體會使用 `Request.Scheme` 標頭來更新 `X-Forwarded-Proto`，以便讓重新導向 URI 及其他安全性原則正確運作。
+由於請求是透過反向代理轉寄的,請使用[Microsoft.AspNetCore.HTTPOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/)套件中的[轉寄標頭中間件](xref:host-and-deploy/proxy-load-balancer)。 此中介軟體會使用 `X-Forwarded-Proto` 標頭來更新 `Request.Scheme`，以便讓重新導向 URI 及其他安全性原則正確運作。
 
 任何依賴配置的元件，例如驗證、連結產生、重新導向和地理位置，都必須在叫用轉送的標頭中介軟體後放置。 轉送的標頭中介軟體是一般規則，應該先於診斷和錯誤處理中介軟體以外的其他中介軟體執行。 這種排序可確保依賴轉送標頭資訊的中介軟體可以耗用用於處理的標頭值。
 
-請先在 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 中叫用 `Startup.Configure` 方法，再呼叫 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 或類似的驗證配置中介軟體。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
+請先在 `Startup.Configure` 中叫用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> 方法，再呼叫 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 或類似的驗證配置中介軟體。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
 
 ```csharp
 // using Microsoft.AspNetCore.HttpOverrides;
@@ -79,7 +79,7 @@ app.UseAuthentication();
 
 如果未將任何 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 指定給中介軟體，則要轉送的預設標頭會是 `None`。
 
-在預設情況下，在回送位址 (127.0.0.0/8, [::1]) 上執行的 Proxy (包括標準的本機位址 (127.0.0.1)) 是受信任的。 如果組織內有其他受信任的 Proxy 或網路處理網際網路與網頁伺服器之間的要求，請使用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*>，將其新增至 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 或 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> 清單。 下列範例會將 IP 位址 10.0.0.100 的受信任 Proxy 伺服器新增至 `KnownProxies` 中「轉送的標頭中介軟體」的 `Startup.ConfigureServices`：
+在預設情況下，在回送位址 (127.0.0.0/8, [::1]) 上執行的 Proxy (包括標準的本機位址 (127.0.0.1)) 是受信任的。 如果組織內有其他受信任的 Proxy 或網路處理網際網路與網頁伺服器之間的要求，請使用 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>，將其新增至 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> 或 <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> 清單。 下列範例會將 IP 位址 10.0.0.100 的受信任 Proxy 伺服器新增至 `Startup.ConfigureServices` 中「轉送的標頭中介軟體」的 `KnownProxies`：
 
 ```csharp
 // using System.Net;
@@ -129,7 +129,7 @@ Complete!
 
 ### <a name="configure-apache"></a>設定 Apache
 
-Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 除了 *(包含載入模組所需的所有設定檔) 中的模組設定檔之外，任何副檔名為*.conf`/etc/httpd/conf.modules.d/` 的檔案也會依字母順序處理。
+Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 除了 `/etc/httpd/conf.modules.d/` (包含載入模組所需的所有設定檔) 中的模組設定檔之外，任何副檔名為 *.conf* 的檔案也會依字母順序處理。
 
 為應用程式建立名為 *helloapp.conf* 的設定檔：
 
@@ -152,9 +152,9 @@ Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 除了 *(包含�
 `VirtualHost` 區塊可以在伺服器上的一或多個檔案中出現多次。 在上述設定檔中，Apache 會在連接埠 80 接受公用流量。 所服務的網域是 `www.example.com`，而 `*.example.com` 別名則會解析成同一個網站。 如需詳細資訊，請參閱[名稱型虛擬主機支援](https://httpd.apache.org/docs/current/vhosts/name-based.html) \(英文\)。 要求會在根目錄透過 Proxy 傳送至位於 127.0.0.1 之伺服器的連接埠 5000。 如需進行雙向通訊，則必須要有 `ProxyPass` 和 `ProxyPassReverse`。 若要變更 Kestrel 的 IP/連接埠，請參閱 [Kestrel：端點組態](xref:fundamentals/servers/kestrel#endpoint-configuration)。
 
 > [!WARNING]
-> 如果無法在 [VirtualHost](https://httpd.apache.org/docs/current/mod/core.html#servername) 區塊中指定適當的 **ServerName 指示詞**，就會讓應用程式暴露在安全性弱點的風險下。 若您擁有整個父網域 (相對於易受攻擊的 `*.example.com`) 的控制權，子網域萬用字元繫結 (例如 `*.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
+> 如果無法在 **VirtualHost** 區塊中指定適當的 [ServerName 指示詞](https://httpd.apache.org/docs/current/mod/core.html#servername)，就會讓應用程式暴露在安全性弱點的風險下。 若您擁有整個父網域 (相對於易受攻擊的 `*.com`) 的控制權，子網域萬用字元繫結 (例如 `*.example.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
-您可以使用 `VirtualHost` 和 `ErrorLog` 指示詞來依 `CustomLog` 設定記錄功能。 `ErrorLog` 是伺服器記錄錯誤的位置，而 `CustomLog` 則會設定記錄檔的檔案名稱和格式。 在此案例中，這就是記錄要求資訊的位置。 每個要求都會有一行。
+您可以使用 `ErrorLog` 和 `CustomLog` 指示詞來依 `VirtualHost` 設定記錄功能。 `ErrorLog` 是伺服器記錄錯誤的位置，而 `CustomLog` 則會設定記錄檔的檔案名稱和格式。 在此案例中，這就是記錄要求資訊的位置。 每個要求都會有一行。
 
 請儲存檔案並測試設定。 如果所有項目都通過，回應應該是 `Syntax [OK]`。
 
@@ -171,7 +171,7 @@ sudo systemctl enable httpd
 
 ## <a name="monitor-the-app"></a>監視應用程式
 
-Apache 現在已設定完成，可將對 `http://localhost:80` 發出的要求轉送給在位於 `http://127.0.0.1:5000` 的 Kestrel 上執行的 ASP.NET Core 應用程式。 不過，並未設定 Apache 來管理 Kestrel 處理序。 請使用 *systemd* 並建立服務檔案，以啟動並監視基礎 Web 應用程式。 *systemd* 是 init 系統，提供許多強大的啟動、停止和管理處理程序功能。
+Apache 現在已設定完成，可將對 `http://localhost:80` 發出的要求轉送給在位於 `http://127.0.0.1:5000` 的 Kestrel 上執行的 ASP.NET Core 應用程式。 不過，並未設定 Apache 來管理 Kestrel 處理序。 請使用 *systemd* 並建立服務檔案，以啟動並監視基礎 Web 應用程式。 *系統化*是一個 init 系統,它為啟動、停止和管理進程提供了許多強大的功能。
 
 ### <a name="create-the-service-file"></a>建立服務檔
 
@@ -202,9 +202,9 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 WantedBy=multi-user.target
 ```
 
-在上述範例中，管理服務的使用者是由 [`User`] 選項所指定。 使用者（`apache`）必須存在，且具有應用程式檔案的適當擁有權。
+在前面的示例中,管理服務的使用者由`User`選項指定。 使用者`apache`( ) 必須存在並且對應用程式的文件擁有適當的擁有權。
 
-使用 `TimeoutStopSec` 可設定應用程式收到初始中斷訊號之後等待關閉的時間。 如果應用程式在此期間後未關閉，則會發出 SIGKILL 來終止應用程式。 提供不具單位的秒值 (例如 `150`)、時間範圍值 (例如 `2min 30s`) 或 `infinity` (表示停用逾時)。 `TimeoutStopSec` 在管理員設定檔 (`DefaultTimeoutStopSec`systemd-system.conf *、* system.conf.d *、* systemd-user.conf *、* user.conf.d *) 的預設值為* 。 大多數發行版本的預設逾時為 90 秒。
+使用 `TimeoutStopSec` 可設定應用程式收到初始中斷訊號之後等待關閉的時間。 如果應用程式在此期間後未關閉，則會發出 SIGKILL 來終止應用程式。 提供不具單位的秒值 (例如 `150`)、時間範圍值 (例如 `2min 30s`) 或 `infinity` (表示停用逾時)。 `TimeoutStopSec` 在管理員設定檔 (*systemd-system.conf*、*system.conf.d*、*systemd-user.conf*、*user.conf.d*) 的預設值為 `DefaultTimeoutStopSec`。 大多數發行版本的預設逾時為 90 秒。
 
 ```
 # The default value is 90 seconds for most distributions.
@@ -323,11 +323,11 @@ rich rules:
 
 **設定應用程式以進行安全的本機連線 (HTTPS)**
 
-[dotnet run](/dotnet/core/tools/dotnet-run) 命令使用應用程式的 *Properties/launchSettings.json* 檔案，其設定應用程式在 `applicationUrl` 屬性所提供的 URL 上接聽 (例如 `https://localhost:5001; http://localhost:5000`)。
+[dotnet run](/dotnet/core/tools/dotnet-run) 命令使用應用程式的 *Properties/launchSettings.json* 檔案，其設定應用程式在 `applicationUrl` 屬性所提供的 URL 上接聽 (例如 `https://localhost:5001;http://localhost:5000`)。
 
 使用下列其中一種方法，設定應用程式將憑證用在針對 `dotnet run` 命令的開發，或用在開發環境 (F5，若在 Visual Studio Code 中則為 Ctrl+F5)：
 
-* [取代組態中的預設憑證](xref:fundamentals/servers/kestrel#configuration) (建議使用)
+* [取代組態中的預設憑證](xref:fundamentals/servers/kestrel#configuration) (建議使用**)
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **設定反向 Prooxy 以進行安全的用戶端連線 (HTTPS)**
@@ -388,9 +388,9 @@ sudo systemctl restart httpd
 
 ## <a name="additional-apache-suggestions"></a>Apache 的其他建議
 
-### <a name="restart-apps-with-shared-framework-updates"></a>使用共用架構更新重新開機應用程式
+### <a name="restart-apps-with-shared-framework-updates"></a>使用共用框架更新重新啟動應用程式
 
-升級伺服器上的共用架構之後，請重新開機伺服器所主控的 ASP.NET Core 應用程式。
+升級伺服器上的共用框架后,重新啟動伺服器託管ASP.NET核心應用。
 
 ### <a name="additional-headers"></a>其他標頭
 
@@ -402,7 +402,7 @@ sudo yum install mod_headers
 
 #### <a name="secure-apache-from-clickjacking-attacks"></a>保護 Apache 免於點閱綁架攻擊
 
-[點閱綁架](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger)(也稱為「UI 偽裝攻擊」) 是一種惡意攻擊，會誘騙網站訪客點選與其目前所瀏覽頁面不同的頁面上連結或按鈕。 請使用 `X-FRAME-OPTIONS` 來保護網站安全。
+[點閱綁架](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger)(也稱為「UI 偽裝攻擊」**) 是一種惡意攻擊，會誘騙網站訪客點選與其目前所瀏覽頁面不同的頁面上連結或按鈕。 請使用 `X-FRAME-OPTIONS` 來保護網站安全。
 
 減輕點擊劫持攻擊：
 
@@ -418,7 +418,7 @@ sudo yum install mod_headers
 
 #### <a name="mime-type-sniffing"></a>MIME 類型探查
 
-`X-Content-Type-Options` 標頭可防止 Internet Explorer 執行「MIME 探查」 (從檔案的內容判斷檔案的 `Content-Type`)。 如果伺服器將 `Content-Type` 標頭設定為 `text/html` 並搭配設定 `nosniff` 選項，則不論檔案內容為何，Internet Explorer 都會將該內容轉譯為 `text/html`。
+`X-Content-Type-Options` 標頭可防止 Internet Explorer 執行「MIME 探查」** (從檔案的內容判斷檔案的 `Content-Type`)。 如果伺服器將 `Content-Type` 標頭設定為 `text/html` 並搭配設定 `nosniff` 選項，則不論檔案內容為何，Internet Explorer 都會將該內容轉譯為 `text/html`。
 
 編輯 *httpd.conf* 檔案：
 
@@ -495,7 +495,7 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
 
 ### <a name="long-request-header-fields"></a>要求標頭欄位太長
 
-Proxy 伺服器預設設定通常會將要求標頭欄位限制為8190個位元組。 應用程式可能需要比預設值更長的欄位（例如，使用[Azure Active Directory](https://azure.microsoft.com/services/active-directory/)的應用程式）。 如果需要較長的欄位，proxy 伺服器的[LimitRequestFieldSize](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize)指示詞需要調整。 要套用的值取決於案例。 如需詳細資訊，請參閱您的伺服器文件。
+代理伺服器默認設置通常將請求標頭欄位限制為 8,190 位元組。 應用可能需要的字段時間可能高於預設值(例如,使用[Azure 活動目錄](https://azure.microsoft.com/services/active-directory/)的應用)。 如果需要較長的欄位,代理伺服器的[「限制請求欄位大小](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize)」指令需要調整。 要應用的值取決於方案。 如需詳細資訊，請參閱您的伺服器文件。
 
 > [!WARNING]
 > 除非必要，否則請勿增加 `LimitRequestFieldSize` 的預設值。 增加此值會提高緩衝區溢位及惡意使用者發動拒絕服務 (DoS) 攻擊的風險。

@@ -6,19 +6,19 @@ ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
 ms.openlocfilehash: 89f1fa84783430f160ca0b840bf7ae9699520cb7
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78662866"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>將搜尋新增至 ASP.NET Core MVC 應用程式
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-在本節中，您會將搜尋功能新增至 `Index` 動作方法，讓您依據「內容類型」或「名稱」搜尋電影。
+在本節中，您會將搜尋功能新增至 `Index` 動作方法，讓您依據「內容類型」** 或「名稱」** 搜尋電影。
 
-使用下列程式碼更新在 `Index`Controllers/MoviesController.cs*中找到的* 方法：
+使用下列程式碼更新在 *Controllers/MoviesController.cs* 中找到的 `Index` 方法：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_1stSearch)]
 
@@ -29,7 +29,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-這時候，系統只會「定義」查詢，而尚**未**對資料庫執行查詢。
+這時候，系統只會「定義」查詢**，而尚**未**對資料庫執行查詢。
 
 如果 `searchString` 參數包含字串，則會修改電影查詢來篩選搜尋字串的值：
 
@@ -43,7 +43,7 @@ var movies = from m in _context.Movie
 
 ![索引檢視](~/tutorials/first-mvc-app/search/_static/ghost.png)
 
-如果您將 `Index` 方法的簽章變更為包含名為 `id` 的參數，則 `id` 參數會比對 `{id}`Startup.cs*中所設定之預設路由的選擇性* 預留位置。
+如果您將 `Index` 方法的簽章變更為包含名為 `id` 的參數，則 `id` 參數會比對 *Startup.cs* 中所設定之預設路由的選擇性 `{id}` 預留位置。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
 
@@ -53,13 +53,13 @@ var movies = from m in _context.Movie
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,6,8&name=snippet_1stSearch)]
 
-含有 `Index` 參數的已更新 `id` 方法：
+含有 `id` 參數的已更新 `Index` 方法：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,6,8&name=snippet_SearchID)]
 
 您現在可以將搜尋標題作為路由資料 (URL 區段) 傳遞，而不是作為查詢字串值。
 
-![已將 ghost 一詞新增至 URL，而傳回的電影清單包含 Ghostbusters 和 Ghostbusters 2 兩個電影的 Index 檢視](~/tutorials/first-mvc-app/search/_static/g2.png)
+![索引檢視，其中已將 ghost 一詞新增至 URL，而傳回的電影清單包含 Ghostbusters 和 Ghostbusters 2 兩部電影](~/tutorials/first-mvc-app/search/_static/g2.png)
 
 但是，您不能期望使用者在每次想要搜尋電影時修改 URL。 因此，現在您將新增可協助他們篩選電影的 UI 項目。 如果您已變更 `Index` 方法的簽章來測試如何傳遞路由繫結的 `ID` 參數，請將其變更回採用一個名為 `searchString` 參數：
 
@@ -71,9 +71,9 @@ var movies = from m in _context.Movie
 
 HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with-forms)，因此當您提交表單時，篩選條件字串會張貼至電影控制器的 `Index` 動作。 儲存變更，然後測試篩選條件。
 
-![已將 ghost 一詞輸入 [標題] 篩選條件文字方塊的 Index 檢視](~/tutorials/first-mvc-app/search/_static/filter.png)
+![索引檢視，其中已將 ghost 一詞輸入 [標題] 篩選條件文字方塊](~/tutorials/first-mvc-app/search/_static/filter.png)
 
-沒有您可能期望的 `[HttpPost]` 方法的 `Index` 多載。 您不需要它，因為方法不會變更應用程式的狀態，而只會篩選資料。
+沒有您可能期望的 `Index` 方法的 `[HttpPost]` 多載。 您不需要它，因為方法不會變更應用程式的狀態，而只會篩選資料。
 
 您可以新增下列 `[HttpPost] Index` 方法。
 
@@ -91,11 +91,11 @@ HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with
 
 您可以在要求本文中看到搜尋參數和 [XSRF](xref:security/anti-request-forgery) 語彙基元。 請注意，如先前的教學課程中所述，[表單標記協助程式](xref:mvc/views/working-with-forms)會產生 [XSRF](xref:security/anti-request-forgery) 防偽語彙基元。 我們不會修改資料，因此不需要驗證控制器方法中的語彙基元。
 
-由於搜尋參數是在要求本文而不是 URL 中，因此您無法擷取該搜尋資訊以加為書籤或與其他人共用。 指定要求應為在 `HTTP GET`Views/Movies/Index.cshtml*檔案中找到的*，來修正此問題。
+由於搜尋參數是在要求本文而不是 URL 中，因此您無法擷取該搜尋資訊以加為書籤或與其他人共用。 指定要求應為在 *Views/Movies/Index.cshtml* 檔案中找到的 `HTTP GET`，來修正此問題。
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGet.cshtml?highlight=12&range=1-23)]
 
-現在當您提交搜尋時，URL 中會包含搜尋查詢字串。 即使您有 `HttpGet Index` 方法，搜尋也會移至 `HttpPost Index` 動作方法。
+現在當您提交搜尋時，URL 中會包含搜尋查詢字串。 即使您有 `HttpPost Index` 方法，搜尋也會移至 `HttpGet Index` 動作方法。
 
 ![顯示 URL 中 searchString=ghost 且傳回的電影 Ghostbusters 和 Ghostbusters 2 包含 ghost 一詞的瀏覽器視窗](~/tutorials/first-mvc-app/search/_static/search_get.png)
 
@@ -118,7 +118,7 @@ HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with
 * 包含所選取內容類型的 `MovieGenre`。
 * `SearchString`，其中包含使用者在搜尋文字方塊中輸入的文字。
 
-以下列程式碼取代 `Index` 中的 `MoviesController.cs` 方法：
+以下列程式碼取代 `MoviesController.cs` 中的 `Index` 方法：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MoviesController.cs?name=snippet_SearchGenre)]
 
@@ -132,7 +132,7 @@ HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with
 
 ## <a name="add-search-by-genre-to-the-index-view"></a>將依內容類型搜尋新增至 Index 檢視
 
-更新在 `Index.cshtml`Views/Movies/*中找到的*，如下所示：
+更新在 *Views/Movies/* 中找到的 `Index.cshtml`，如下所示：
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexFormGenreNoRating.cshtml?highlight=1,15,16,17,19,28,31,34,37,43)]
 
@@ -147,5 +147,5 @@ HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with
 ![顯示 https://localhost:5001/Movies?MovieGenre=Comedy&SearchString=2 結果的瀏覽器視窗](~/tutorials/first-mvc-app/search/_static/s2.png)
 
 > [!div class="step-by-step"]
-> [上一頁](controller-methods-views.md)
-> [下一頁](new-field.md)
+> [前一個](controller-methods-views.md)
+> [下一個](new-field.md)

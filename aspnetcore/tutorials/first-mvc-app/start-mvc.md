@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 10/16/2019
 uid: tutorials/first-mvc-app/start-mvc
 ms.openlocfilehash: 901257efdfbc7b36249233745175f5ed253da2c7
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78662474"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -54,17 +54,17 @@ ms.locfileid: "78662474"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 Visual Studio 中，選取 [建立新專案]。
+* 從 Visual Studio 中，選取 [建立新專案]****。
 
-* 依序選取 [ASP.NET Core Web 應用程式] 和 [下一步]。
+* 依序選取 [ASP.NET Core Web 應用程式]**** 和 [下一步]****。
 
 ![新增 ASP.NET Core Web 應用程式](start-mvc/_static/np_2.1.png)
 
-* 將專案命名為 **MvcMovie**，然後選取 [建立]。 請務必將專案命名為 **MvcMovie**，以便在複製程式碼時，命名空間得以相符。
+* 將專案命名為 **MvcMovie**，然後選取 [建立]****。 請務必將專案命名為 **MvcMovie**，以便在複製程式碼時，命名空間得以相符。
 
   ![新增 ASP.NET Core Web 應用程式](start-mvc/_static/config.png)
 
-* 選取 [Web 應用程式 (Model-View-Controller)]，然後選取 [建立]。
+* 選取 [Web 應用程式 (Model-View-Controller)]****，然後選取 [建立]****。
 
 ![[新增專案] 對話方塊、左窗格中的 [.Net Core]、ASP.NET Core Web ](start-mvc/_static/new_project30.png)
 
@@ -83,26 +83,26 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
    code -r MvcMovie
    ```
 
-  * 此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' MvcMovie ' 中遺漏了 debug。要新增它們嗎？**  選取 [是]
+  * **"MvcMovie"中缺少一個對話框,其中包含用於生成和調試所需的資產。添加它們?**  選取 [是]****。
 
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
-  * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie .csproj*專案檔。
+  * `code -r MvcMovie`:在可視化工作室代碼中載入*MvcMovie.csproj*專案檔。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 **[** 檔案] > [**新增方案**]。
+* 選取 [檔案]** [新增解決方案]** > ****。
 
   ![macOS 新增方案](./start-mvc/_static/new_project_vsmac.png)
 
-* 選取  **.Net Core** >**應用**程式 > **Web 應用程式（模型-視圖控制器）**  **> 下一步**。
+* 選取 [.Net Core]** [應用程式]** > ** [Web應用程式 (Model-View-Controller)]** > ** [下一步]** > ****。
 
   ![macOS [新增專案] 對話方塊](./start-mvc/_static/new_project_mvc_vsmac.png)
 
-* 在 [設定**您的新 ASP.NET Core WEB API** ] 對話方塊中，設定 **.net Core 3.1**的**目標 Framework** 。
+* 在 **'設定新的ASP.NET核心 Web API 對話框**中,設定 **.NET 核心 3.1****的目標框架**。
 
-  ![macOS .NET Core 3.1 選項](./start-mvc/_static/new_project_31_vsmac.png)
+  ![macOS .NET 核心 3.1 選擇](./start-mvc/_static/new_project_31_vsmac.png)
 
-* 將專案命名為 **MvcMovie**，然後選取 [建立]。
+* 將專案命名為 **MvcMovie**，然後選取 [建立]****。
 
 ---
 
@@ -116,11 +116,11 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 * Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。
 * 使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
-* 您可以從 [偵錯] 功能表項目的偵錯或非偵錯模式中啟動應用程式：
+* 您可以從 [偵錯]**** 功能表項目的偵錯或非偵錯模式中啟動應用程式：
 
-  ![偵錯功能表](start-mvc/_static/debug_menu.png)
+  ![[偵錯] 功能表](start-mvc/_static/debug_menu.png)
 
-* 您可以選取 [IIS Express] 按鈕偵錯應用程式
+* 您可以選取 [IIS Express]**** 按鈕偵錯應用程式
 
   ![IIS Express](start-mvc/_static/iis_express.png)
 
@@ -142,12 +142,12 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
+選擇 **「在不** > **除錯的情況下執行啟動**」以啟動應用。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
 
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
 * 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 當您執行應用程式時，會看到不同的連接埠編號。
-* 您可以從 [執行] 功能表的偵錯或非偵錯模式中啟動應用程式。
+* 您可以從 [執行]**** 功能表的偵錯或非偵錯模式中啟動應用程式。
 
   下圖顯示應用程式：
 
@@ -160,7 +160,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 在本教學課程的下一個部分中，您會了解 MVC，並開始撰寫一些程式碼。
 
 > [!div class="step-by-step"]
-> [下一個](adding-controller.md)
+> [下一步](adding-controller.md)
 
 ::: moniker-end
 
@@ -201,18 +201,18 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 Visual Studio 中，選取 [建立新專案]。
+* 從 Visual Studio 中，選取 [建立新專案]****。
 
-* 依序選取 [ASP.NET Core Web 應用程式] 和 [下一步]。
+* 依序選取 [ASP.NET Core Web 應用程式]**** 和 [下一步]****。
 
 ![新增 ASP.NET Core Web 應用程式](start-mvc/_static/np_2.1.png)
 
-* 將專案命名為 **MvcMovie**，然後選取 [建立]。 請務必將專案命名為 **MvcMovie**，以便在複製程式碼時，命名空間得以相符。
+* 將專案命名為 **MvcMovie**，然後選取 [建立]****。 請務必將專案命名為 **MvcMovie**，以便在複製程式碼時，命名空間得以相符。
 
   ![新增 ASP.NET Core Web 應用程式](start-mvc/_static/config.png)
 
 
-* 選取 [Web 應用程式 (Model-View-Controller)]，然後選取 [建立]。
+* 選取 [Web 應用程式 (Model-View-Controller)]****，然後選取 [建立]****。
 
 ![[新增專案] 對話方塊、左窗格中的 [.Net Core]、ASP.NET Core Web ](start-mvc/_static/new_project22-21.png)
 
@@ -231,26 +231,26 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
    code -r MvcMovie
    ```
 
-  * 此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' MvcMovie ' 中遺漏了 debug。要新增它們嗎？**  選取 [是]
+  * **"MvcMovie"中缺少一個對話框,其中包含用於生成和調試所需的資產。添加它們?**  選取 [是]****。
 
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
-  * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie .csproj*專案檔。
+  * `code -r MvcMovie`:在可視化工作室代碼中載入*MvcMovie.csproj*專案檔。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 **[** 檔案] > [**新增方案**]。
+* 選取 [檔案]** [新增解決方案]** > ****。
 
   ![macOS 新增方案](./start-mvc/_static/new_project_vsmac.png)
 
-* 選取  **.Net Core** >**應用**程式 > **Web 應用程式（模型-視圖控制器）**  **> 下一步**。
+* 選取 [.Net Core]** [應用程式]** > ** [Web應用程式 (Model-View-Controller)]** > ** [下一步]** > ****。
 
   ![macOS [新增專案] 對話方塊](./start-mvc/_static/new_project_mvc_vsmac.png)
 
-* 在 [設定您的新 ASP.NET Core Web API] 對話方塊中，接受 **.NET Core 2.2** 的預設**目標 Framework**。
+* 在 **「設定新的ASP.NET核心 Web API**對話框中,接受 **.NET Core 2.2**的預設**目標框架**。
 
   ![macOS .NET Core 2.2 選取項目](./start-mvc/_static/new_project_22_vsmac.png)
 
-* 將專案命名為 **MvcMovie**，然後選取 [建立]。
+* 將專案命名為 **MvcMovie**，然後選取 [建立]****。
 
 ---
 
@@ -264,15 +264,15 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 * Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。
 * 使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
-* 您可以從 [偵錯] 功能表項目的偵錯或非偵錯模式中啟動應用程式：
+* 您可以從 [偵錯]**** 功能表項目的偵錯或非偵錯模式中啟動應用程式：
 
-  ![偵錯功能表](start-mvc/_static/debug_menu.png)
+  ![[偵錯] 功能表](start-mvc/_static/debug_menu.png)
 
-* 您可以選取 [IIS Express] 按鈕偵錯應用程式
+* 您可以選取 [IIS Express]**** 按鈕偵錯應用程式
 
   ![IIS Express](start-mvc/_static/iis_express.png)
 
-* 選取 [接受] 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
+* 選取 [接受]**** 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
   ![Home 或 Index 頁面](start-mvc/_static/privacy.png)
 
@@ -290,7 +290,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式來重新整理頁面並檢視變更。
 
-* 選取 [接受] 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
+* 選取 [接受]**** 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
   ![Home 或 Index 頁面](start-mvc/_static/privacy.png)
 
@@ -300,14 +300,14 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
+選擇 **「在不** > **除錯的情況下執行啟動**」以啟動應用。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
 
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
 * 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 當您執行應用程式時，會看到不同的連接埠編號。
-* 您可以從 [執行] 功能表的偵錯或非偵錯模式中啟動應用程式。
+* 您可以從 [執行]**** 功能表的偵錯或非偵錯模式中啟動應用程式。
 
-* 選取 [接受] 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
+* 選取 [接受]**** 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
   ![Home 或 Index 頁面](./start-mvc/_static/output_privacy_macos.png)
 
@@ -322,6 +322,6 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 在本教學課程的下一個部分中，您會了解 MVC，並開始撰寫一些程式碼。
 
 > [!div class="step-by-step"]
-> [下一個](adding-controller.md)
+> [下一步](adding-controller.md)
 
 ::: moniker-end

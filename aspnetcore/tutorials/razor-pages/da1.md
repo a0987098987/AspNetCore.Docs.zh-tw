@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 12/20/2018
 uid: tutorials/razor-pages/da1
 ms.openlocfilehash: 0f6535462fe2d308825bf7289c10d2b0690cebd4
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78666212"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>更新 ASP.NET Core 應用程式中產生的頁面
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -34,15 +34,15 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 
 瀏覽至 Pages/Movies，然後將滑鼠停留在 **Edit** 連結，以查看目標 URL。
 
-![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 之 URL 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
+![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
 
-在 **Pages/Movies/Index.cshtml** 檔案中，**Edit**、**Details**  和 [Delete](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) 連結是由*錨點標記協助程式*所產生。
+在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、**Details ** 和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
-[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`href` 和路由識別碼 (`asp-page`) 動態產生 HTML `asp-route-id` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。
+[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`asp-page` 和路由識別碼 (`asp-route-id`) 動態產生 HTML `href` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。
 
-從您最愛的瀏覽器中使用 [檢視原始檔] 來檢查產生的標記。 產生的 HTML 部分如下所示：
+從您最愛的瀏覽器中使用 [檢視原始檔]**** 來檢查產生的標記。 產生的 HTML 部分如下所示：
 
 ```html
 <td>
@@ -52,9 +52,9 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 </td>
 ```
 
-動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如 `?id=1` 中的 `https://localhost:5001/Movies/Details?id=1`)。
+動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如 `https://localhost:5001/Movies/Details?id=1` 中的 `?id=1`)。
 
-### <a name="add-route-template"></a>新增路由範本
+### <a name="add-route-template"></a>新增工藝路線範本
 
 更新 Edit、Details 和 Delete Razor 頁面，以使用 "{id:int}" 路由範本。 將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。 執行應用程式，然後檢視原始檔。 產生的 HTML 將識別碼新增至 URL 的路徑部分：
 
@@ -82,7 +82,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 
 ### <a name="review-concurrency-exception-handling"></a>檢閱並行存取例外狀況處理
 
-在 `OnPostAsync`Pages/Movies/Edit.cshtml.cs*檔案中檢閱* 方法：
+在 *Pages/Movies/Edit.cshtml.cs* 檔案中檢閱 `OnPostAsync` 方法：
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
@@ -91,7 +91,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 若要測試 `catch` 區段：
 
 * 在 `catch (DbUpdateConcurrencyException)`上設定中斷點
-* 針對電影選取 [編輯]，進行變更，但不要輸入 [儲存]。
+* 針對電影選取 [編輯]****，進行變更，但不要輸入 [儲存]****。
 * 在另一個瀏覽器視窗中，選取相同電影的 **Delete** 連結，然後刪除電影。
 * 在先前的瀏覽器視窗中，發佈對電影的變更。
 
@@ -126,8 +126,8 @@ Index、Create 和 Delete Razor 頁面中的 HTTP GET 方法都會依循類似�
 ## <a name="additional-resources"></a>其他資源
 
 > [!div class="step-by-step"]
-> [上一步：使用資料庫](xref:tutorials/razor-pages/sql)
-> [下一步：新增搜尋](xref:tutorials/razor-pages/search)
+> [上一篇:](xref:tutorials/razor-pages/sql)
+> [使用資料庫下一步:新增搜尋](xref:tutorials/razor-pages/search)
 
 ::: moniker-end
 
@@ -149,15 +149,15 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 
 瀏覽至 Pages/Movies，然後將滑鼠停留在 **Edit** 連結，以查看目標 URL。
 
-![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 之 URL 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
+![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
 
-在 **Pages/Movies/Index.cshtml** 檔案中，**Edit**、**Details**  和 [Delete](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) 連結是由*錨點標記協助程式*所產生。
+在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、**Details ** 和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
-[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`href` 和路由識別碼 (`asp-page`) 動態產生 HTML `asp-route-id` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。
+[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`asp-page` 和路由識別碼 (`asp-route-id`) 動態產生 HTML `href` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。
 
-從您最愛的瀏覽器中使用 [檢視原始檔] 來檢查產生的標記。 產生的 HTML 部分如下所示：
+從您最愛的瀏覽器中使用 [檢視原始檔]**** 來檢查產生的標記。 產生的 HTML 部分如下所示：
 
 ```html
 <td>
@@ -167,7 +167,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 </td>
 ```
 
-動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如 `?id=1` 中的 `https://localhost:5001/Movies/Details?id=1`)。
+動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如 `https://localhost:5001/Movies/Details?id=1` 中的 `?id=1`)。
 
 更新 Edit、Details 和 Delete Razor 頁面，以使用 "{id:int}" 路由範本。 將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。 執行應用程式，然後檢視原始檔。 產生的 HTML 將識別碼新增至 URL 的路徑部分：
 
@@ -195,7 +195,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 
 ### <a name="review-concurrency-exception-handling"></a>檢閱並行存取例外狀況處理
 
-在 `OnPostAsync`Pages/Movies/Edit.cshtml.cs*檔案中檢閱* 方法：
+在 *Pages/Movies/Edit.cshtml.cs* 檔案中檢閱 `OnPostAsync` 方法：
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
@@ -204,7 +204,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 若要測試 `catch` 區段：
 
 * 在 `catch (DbUpdateConcurrencyException)`上設定中斷點
-* 針對電影選取 [編輯]，進行變更，但不要輸入 [儲存]。
+* 針對電影選取 [編輯]****，進行變更，但不要輸入 [儲存]****。
 * 在另一個瀏覽器視窗中，選取相同電影的 **Delete** 連結，然後刪除電影。
 * 在先前的瀏覽器視窗中，發佈對電影的變更。
 
@@ -240,10 +240,10 @@ Index、Create 和 Delete Razor 頁面中的 HTTP GET 方法都會依循類似�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [這個教學課程的 YouTube 版本](https://youtu.be/yLnnleREMtQ)
+* [本教學的 YouTube 版本](https://youtu.be/yLnnleREMtQ)
 
 > [!div class="step-by-step"]
-> [上一步：使用資料庫](xref:tutorials/razor-pages/sql)
-> [下一步：新增搜尋](xref:tutorials/razor-pages/search)
+> [上一篇:](xref:tutorials/razor-pages/sql)
+> [使用資料庫下一步:新增搜尋](xref:tutorials/razor-pages/search)
 
 ::: moniker-end

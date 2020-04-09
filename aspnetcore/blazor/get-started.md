@@ -1,7 +1,7 @@
 ---
-title: 開始使用 ASP.NET Core Blazor
+title: 開始使用ASP.NET核心Blazor
 author: guardrex
-description: 藉由使用您選擇的工具來建立 Blazor 應用程式，開始使用 Blazor。
+description: Blazor使用您選擇的工具建Blazor構應用,開始入門。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -10,114 +10,114 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: 9ebeb57d2fad7e4c288d61a46911f2bf64cac2fb
-ms.sourcegitcommit: f3b1bcfd108e5d53f73abc0bf2555890869d953b
+ms.openlocfilehash: c49209afde21046a6bc0b197cc4b8d93b164b23e
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80320937"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80471822"
 ---
-# <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
+# <a name="get-started-with-aspnet-core-blazor"></a>開始ASP.NET核心布拉佐爾
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-若要開始使用 Blazor，請遵循您所選工具的指導方針：
+要開始使用 Blazor,請按照您選擇的工具指南操作:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 若要建立 Blazor 伺服器應用程式，請使用**ASP.NET 和 網頁程式開發**工作負載安裝[Visual Studio 2019 16.4 版或更新](https://visualstudio.microsoft.com/vs/preview/)版本。
+1. 要創建 Blazor Server 應用,請使用**ASP.NET 和 Web 開發**工作負載安裝最新版本的[Visual Studio 2019。](https://visualstudio.microsoft.com/downloads/)
 
-   若要建立 Blazor 伺服器和 Blazor WebAssembly 應用程式，請使用**ASP.NET 和 網頁程式開發**工作負載安裝 Visual Studio 2019 16.6 Preview 2 或更新版本。
+   要創建 Blazor Server 和 Blazor WebAssembly 應用,請使用**ASP.NET 和網路開發**工作負載安裝[Visual Studio 2019](https://visualstudio.microsoft.com/vs/preview/)的最新預覽版。
 
-   如需*Blazor WebAssembly*和*Blazor Server*這兩個 Blazor 裝載模型的相關資訊，請參閱 <xref:blazor/hosting-models>。
+   有關兩個布拉佐託管模型,*布拉佐網路大會*和*布拉佐伺服器*的資訊<xref:blazor/hosting-models>,請參閱 。
 
 1. 建立新專案。
 
-1. 選取 [ **Blazor 應用程式**]。 選取 [下一步]。
+1. 選擇**布拉佐爾應用程式**。 選取 [下一步]  。
 
-1. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
+1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 確認 **「位置**」條目正確或為專案提供位置。 選取 [建立]  。
 
-1. 如需 Blazor WebAssembly 體驗（Visual Studio 16.6 Preview 2 或更新版本），請選擇 [ **Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗（Visual Studio 16.4 或更新版本），請選擇 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。
+1. 有關 Blazor Web 組裝體驗(可視化工作室 16.6 預覽版 2 或更高版本),請選擇**Blazor Web 組裝應用**範本。 有關 Blazor 伺服器體驗(可視化工作室 16.4 或更高版本),請選擇**Blazor 伺服器應用**範本。 選取 [建立]  。
 
-1. 按下 <kbd>Ctrl</kbd>+<kbd>F5</kbd> 即可執行應用程式。
+1. 按<kbd>Ctrl</kbd>+<kbd>F5</kbd>運行應用程式。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-1. 安裝[.Net Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
+1. 安裝[.NET 核心 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
 
-1. 藉由執行下列命令，選擇性地安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) preview 範本：
+1. 通過運行以下命令,可選地安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)預覽樣本:
 
    ```dotnetcli
    dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview3.20168.3
    ```
 
    > [!NOTE]
-   > 使用 3.2 Preview 3 Blazor WebAssembly 範本時，**需要** [.NET Core SDK 版本3.1.201 或更新版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)。 藉由在命令 shell 中執行 `dotnet --version`，確認已安裝的 .NET Core SDK 版本。
+   > [.NET 核心 SDK 版本 3.1.201 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)**需要**使用 3.2 預覽 3 Blazor WebAssembly 範本。 通過在命令外殼中運行`dotnet --version`來確認已安裝的 .NET Core SDK 版本。
 
-1. 安裝 [Visual Studio Code](https://code.visualstudio.com/)。
+1. 安裝[視覺化工作室代碼](https://code.visualstudio.com/)。
 
-1. 安裝最新[ C#的 for Visual Studio Code 擴充](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)功能和[JavaScript 偵錯工具（夜間）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)延伸模組，並將 `debug.javascript.usePreview` 設定為 `true`。
+1. 安裝最新的[C# 視覺化工作室碼延伸](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)與[JavaScript 除錯器(夜間)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)延伸,`debug.javascript.usePreview`設定為`true`。
 
-1. 如需 Blazor 伺服器體驗，請在命令 shell 中執行下列命令：
+1. 要獲得 Blazor Server 體驗,請在命令外殼中執行以下命令:
 
    ```dotnetcli
    dotnet new blazorserver -o WebApplication1
    ```
 
-   如需 Blazor 的 WebAssembly 體驗，請在命令 shell 中執行下列命令：
+   要獲得 Blazor WebAssembly 體驗,請在命令外殼中執行以下命令:
 
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1
    ```
 
-   如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
+   有關兩個布拉佐託管模型,*布拉佐伺服器*和*布拉佐網路大會*的資訊<xref:blazor/hosting-models>,請參閱 。
 
-1. 在 Visual Studio Code 中開啟 [ *WebApplication1* ] 資料夾。
+1. 打開視覺化工作室代碼中的*Web 應用程式 1*資料夾。
 
-1. IDE 會要求您新增資產，以建立和對專案進行偵錯工具。 選取 [是]。
+1. IDE 請求添加資源以生成和調試專案。 選取 [是]  。
 
-1. 使用 Visual Studio Code 偵錯工具執行應用程式。
+1. 使用可視化工作室代碼調試器運行應用。
 
 1. 在瀏覽器中，巡覽至 `https://localhost:5001`。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-Visual Studio for Mac 支援 Blazor 伺服器。 目前不支援 Blazor WebAssembly。 若要在 macOS 上建立 Blazor WebAssembly 應用程式，請遵循 [ **.NET Core CLI** ] 索引標籤上的指導方針。
+Mac 視覺工作室支援 Blazor 伺服器。 布拉佐網路組裝目前不受支援。 要在 macOS 上建構 Blazor WebAssembly 應用,請按照 **.NET 核心 CLI**選項卡上的指南操作。
 
-1. 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。
+1. [安裝 Mac 的視覺工作室](https://visualstudio.microsoft.com/vs/mac/)。
 
-1. 選取 **[** 檔案] > [**新增方案**] 或 [建立**新專案**]。
+1. 選擇**檔案** > **新解決方案**或建立新**專案**。
 
-1. 在側邊欄中，選取 [ **.Net Core** > **應用程式**]。
+1. 在側邊列中,選擇 **.NET 核心** > **應用**。
 
-1. 選取 [ **Blazor 伺服器應用程式**] 範本。 選取 [建立]。
+1. 選擇**Blazor 伺服器應用**範本。 選取 [建立]  。
 
-   如需 Blazor 伺服器裝載模型的詳細資訊，請參閱 <xref:blazor/hosting-models>。
+   有關 Blazor 伺服器託管模型的資訊,請<xref:blazor/hosting-models>參閱 。
 
-1. 將**目標 Framework**設定為 **.net Core 3.1** ，然後選取 **[下一步]** 。
+1. 將**目標框架**設置為 **.NET 核心 3.1,** 然後選擇 **「下一步**」 。
 
-1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1`。 選取 [建立]。
+1. 在「**項目名稱」** 欄位中,`WebApplication1`為套用命名 。 選取 [建立]  。
 
-1. 選取 [**執行**] > **執行而不進行調試**程式，以在不進行偵錯工具的*情況下*執行 使用 [**開始調試**程式] 執行應用程式，以*使用調試*程式執行應用程式。
+1. 選擇 **「** > **執行而不除錯執行**」 以在沒有*除錯器的情況下*執行應用程式。 使用 **「開始除錯」** 執行應用,*以便使用除錯器*執行應用。
 
-如果出現會信任開發憑證的提示，請信任憑證並繼續。
+如果出現信任開發證書的提示,請信任證書並繼續。
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
-1. 安裝[.Net Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
+1. 安裝[.NET 核心 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
 
-1. 藉由執行下列命令，選擇性地安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) preview 範本：
+1. 通過運行以下命令,可選地安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)預覽樣本:
 
    ```dotnetcli
    dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview3.20168.3
    ```
 
    > [!NOTE]
-   > 使用 3.2 Preview 3 Blazor WebAssembly 範本時，**需要** [.NET Core SDK 版本3.1.201 或更新版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)。 藉由在命令 shell 中執行 `dotnet --version`，確認已安裝的 .NET Core SDK 版本。
+   > [.NET 核心 SDK 版本 3.1.201 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)**需要**使用 3.2 預覽 3 Blazor WebAssembly 範本。 通過在命令外殼中運行`dotnet --version`來確認已安裝的 .NET Core SDK 版本。
 
-1. 如需 Blazor 伺服器體驗，請在命令 shell 中執行下列命令：
+1. 要獲得 Blazor Server 體驗,請在命令外殼中執行以下命令:
 
    ```dotnetcli
    dotnet new blazorserver -o WebApplication1
@@ -125,7 +125,7 @@ Visual Studio for Mac 支援 Blazor 伺服器。 目前不支援 Blazor WebAssem
    dotnet run
    ```
 
-   如需 Blazor 的 WebAssembly 體驗，請在命令 shell 中執行下列命令：
+   要獲得 Blazor WebAssembly 體驗,請在命令外殼中執行以下命令:
 
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1
@@ -133,59 +133,59 @@ Visual Studio for Mac 支援 Blazor 伺服器。 目前不支援 Blazor WebAssem
    dotnet run
    ```
 
-   如需這兩個 Blazor 裝載模型、 *Blazor 伺服器*和*Blazor WebAssembly*的相關資訊，請參閱 <xref:blazor/hosting-models>。
+   有關兩個布拉佐託管模型,*布拉佐伺服器*和*布拉佐網路大會*的資訊<xref:blazor/hosting-models>,請參閱 。
 
 1. 在瀏覽器中，巡覽至 `https://localhost:5001`。
 
 ---
 
-提要欄位中的索引標籤可使用多個頁面：
+側邊列中的選項卡提供多個頁面:
 
 * Home
 * 計數器
-* 提取資料
+* 取得資料
 
-在 [計數器] 頁面上，選取 [按我] 按鈕以在不重新整理頁面的情況下讓計數器遞增。 將網頁中的計數器遞增通常需要撰寫 JavaScript，但您可以使用C#Blazor。
+在 [計數器] 頁面上，選取 [按我]**** 按鈕以在不重新整理頁面的情況下讓計數器遞增。 在網頁中增加計數器通常需要編寫 JavaScript,但Blazor使用 C# 時可以使用 C#。
 
 *Pages/Counter.razor*：
 
 [!code-razor[](get-started/samples_snapshot/3.x/Counter1.razor?highlight=7,12-15)]
 
-在瀏覽器中 `/counter` 的要求，如同頂端的 `@page` 指示詞所指定，會導致 `Counter` 元件轉譯其內容。 元件會轉譯成轉譯樹狀結構的記憶體中標記法，然後用來以彈性且有效率的方式更新 UI。
+瀏覽器中的請求`/counter`(如頂部`@page`的 指令所指定的`Counter`)會導致 元件呈現其內容。 元件呈現為呈現樹的記憶體中表示形式,然後可用於以靈活、高效的方式更新 UI。
 
-每次選取 [**按我**] 按鈕時：
+每次選擇 **「按下我」** 按鈕時:
 
-* `onclick` 事件會引發。
-* 呼叫 `IncrementCount` 方法。
-* `currentCount` 會遞增。
-* 元件會再次轉譯。
+* 事件`onclick`已觸發。
+* 已呼叫 `IncrementCount` 方法。
+* 遞`currentCount`增。
+* 元件將再次呈現。
 
-執行時間會比較新的內容與先前的內容，而且只會將已變更的內容套用至檔物件模型（DOM）。
+運行時將新內容與以前的內容進行比較,並且僅將更改的內容應用於文檔物件模型 (DOM)。
 
-使用 HTML 語法將元件新增至另一個元件。 例如，藉由將 `<Counter />` 元素新增至 `Index` 元件，將 `Counter` 元件新增至應用程式的首頁。
+使用 HTML 語法將元件新增到另一個元件。 例如,通過將`Counter``<Counter />`元素添加到`Index`元件,將元件添加到應用的主頁。
 
 *Pages/Index.razor*：
 
 [!code-razor[](get-started/samples_snapshot/3.x/Index1.razor?highlight=7)]
 
-執行應用程式。 首頁有自己的計數器，由 `Counter` 元件提供。
+執行應用程式。 主頁有其自己的計數器由`Counter`元件提供。
 
-元件參數是使用屬性或[子內容](xref:blazor/components#child-content)所指定，可讓您設定子元件上的屬性。 若要將參數新增至 `Counter` 元件，請更新元件的 `@code` 區塊：
+元件參數使用屬性或[子內容](xref:blazor/components#child-content)指定,允許您在子元件上設置屬性。 要加入`Counter`元件加入參數,請更新元件的`@code`區塊:
 
-* 加入具有 `[Parameter]` 屬性之 `IncrementAmount` 的公用屬性。
-* 將 `IncrementCount` 方法變更為在增加 `IncrementAmount`的值時使用 `currentCount`。
+* 使用`[Parameter]`屬性添加`IncrementAmount`公共屬性。
+* 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
 
 *Pages/Counter.razor*：
 
 [!code-razor[](get-started/samples_snapshot/3.x/Counter2.razor?highlight=12-13,17)]
 
-使用屬性，在 `Index` 元件的 `<Counter>` 元素中指定 `IncrementAmount`。
+使用屬性`IncrementAmount``Index`在元件`<Counter>`的元素中指定 。
 
 *Pages/Index.razor*：
 
 [!code-razor[](get-started/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
-執行應用程式。 `Index` 元件有自己的計數器，每次選取 [按**我**] 按鈕時，就會遞增10。 `/counter` 的 `Counter` 元件（*razor*）會繼續遞增一。
+執行應用程式。 元件`Index`有自己的計數器,每次選擇 **「按下我」** 按鈕時,該計數器都會增加 10。 在`Counter``/counter`元件 (*反.razor*) 繼續增加一個.
 
 ## <a name="next-steps"></a>後續步驟
 

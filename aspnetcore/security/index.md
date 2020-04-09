@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/index
 ms.openlocfilehash: 0f8e96fb7d5246e746b95f8907745f849de60e24
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78656034"
 ---
 # <a name="overview-of-aspnet-core-security"></a>ASP.NET Core 安全性概觀
@@ -21,7 +21,7 @@ ASP.NET Core 可讓開發人員輕鬆設定應用程式的安全性並進行管�
 
 ASP.NET Core 提供許多工具和程式庫來保護應用程式的安全，包括內建的識別提供者，但您也可以使用協力廠商的識別服務 (如 Facebook、Twitter 或 LinkedIn)。 使用 ASP.NET Core 時，您可以輕鬆管理應用程式密碼，以便使用機密資訊而不在程式碼中公開這些資訊。
 
-## <a name="authentication-vs-authorization"></a>驗證與授權
+## <a name="authentication-vs-authorization"></a>認證與授權
 
 驗證是一道程序，其會將使用者提供的認證與作業系統、資料庫、應用程式或資源中儲存的認證進行比對。 如果相符的話，使用者就能成功通過驗證，並可執行他們在授權程序期間取得授權的動作。 授權則是決定使用者得以執行哪些動作的程序。
 
@@ -32,7 +32,7 @@ ASP.NET Core 提供許多工具和程式庫來保護應用程式的安全，包�
 ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防範安全性缺口的發生。 下列連結清單可帶您前往如何避免 Web 應用程式中最常見資訊安全漏洞的技術詳細文件：
 
 * [Cross site scripting attacks](xref:security/cross-site-scripting) (跨網站指令碼攻擊)
-* [SQL Injection attacks](/ef/core/querying/raw-sql) (SQL 插入式攻擊)
+* [SQL 插入式攻擊](/ef/core/querying/raw-sql)
 * [Cross-Site Request Forgery (CSRF)](xref:security/anti-request-forgery) (跨網站偽造要求 (CSRF))
 * [Open redirect attacks](xref:security/preventing-open-redirects) (開啟重新導向攻擊)
 

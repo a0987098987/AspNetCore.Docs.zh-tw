@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 12/05/2019
 uid: migration/1x-to-2x/index
 ms.openlocfilehash: c46f50a418cf630980ac2ba94407e4370d36e7d5
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78667612"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>從 ASP.NET Core 1.x 遷移至 2.0
@@ -31,11 +31,11 @@ ms.locfileid: "78667612"
 
 ## <a name="update-target-framework-moniker-tfm"></a>更新 Target Framework Moniker (TFM)
 
-以 .NET Core 為目標的專案應該使用版本大於或等於 .NET Core 2.0 的 [TFM](/dotnet/standard/frameworks)。 在 `<TargetFramework>`.csproj*檔案中搜尋* 節點，並以 `netcoreapp2.0` 取代其內部文字：
+以 .NET Core 為目標的專案應該使用版本大於或等於 .NET Core 2.0 的 [TFM](/dotnet/standard/frameworks)。 在 *.csproj* 檔案中搜尋 `<TargetFramework>` 節點，並以 `netcoreapp2.0` 取代其內部文字：
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=3)]
 
-以 .NET Framework 為目標的專案應該使用版本大於或等於 .NET Framework 4.6.1 的 TFM。 在 `<TargetFramework>`.csproj*檔案中搜尋* 節點，並以 `net461` 取代其內部文字：
+以 .NET Framework 為目標的專案應該使用版本大於或等於 .NET Framework 4.6.1 的 TFM。 在 *.csproj* 檔案中搜尋 `<TargetFramework>` 節點，並以 `net461` 取代其內部文字：
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App.csproj?range=4)]
 
@@ -48,7 +48,7 @@ ms.locfileid: "78667612"
 
 ## <a name="update-net-core-sdk-version-in-globaljson"></a>更新 global.json 中的 .NET Core SDK 版本
 
-如果您的解決方案依賴[global json](/dotnet/core/tools/global-json)檔案以特定 .NET Core SDK 版本為目標，請將其 `version` 屬性更新為使用安裝在您電腦上的2.0 版本：
+如果您的方案依賴 [global.json](/dotnet/core/tools/global-json) 檔案而以特定的 .NET Core SDK 版本為目標，請更新其 `version` 屬性，以使用您電腦上安裝的 2.0 版：
 
 [!code-json[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/global.json?highlight=3)]
 
@@ -56,15 +56,15 @@ ms.locfileid: "78667612"
 
 ## <a name="update-package-references"></a>更新套件參考
 
-1\.x 專案中的 *.csproj* 檔案列出專案所使用的每個 NuGet 套件。
+1.x 專案中的 *.csproj* 檔案列出專案所使用的每個 NuGet 套件。
 
-在以 .NET Core 2.0 為目標的 ASP.NET Core 2.0 專案中，[.csproj](xref:fundamentals/metapackage) 檔案中的單一*中繼套件* metapackage 參考會取代套件的集合：
+在以 .NET Core 2.0 為目標的 ASP.NET Core 2.0 專案中，*.csproj* 檔案中的單一[中繼套件](xref:fundamentals/metapackage) metapackage 參考會取代套件的集合：
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=8-10)]
 
 中繼套件包含 ASP.NET Core 2.0 和 Entity Framework Core 2.0 的所有功能。
 
-以 .NET Framework 為目標時，ASP.NET Core 2.0 專案應該繼續參考個別的 NuGet 套件。 將每個 `Version` 節點的 `<PackageReference />` 屬性更新為 2.0.0。
+以 .NET Framework 為目標時，ASP.NET Core 2.0 專案應該繼續參考個別的 NuGet 套件。 將每個 `<PackageReference />` 節點的 `Version` 屬性更新為 2.0.0。
 
 例如，以下是以 .NET Framework 為目標的典型 ASP.NET Core 2.0 專案所使用的 `<PackageReference />` 節點清單：
 
@@ -74,7 +74,7 @@ ms.locfileid: "78667612"
 
 ## <a name="update-net-core-cli-tools"></a>更新 .NET Core CLI 工具
 
-在 *.csproj* 檔案中，將每個 `Version` 節點的 `<DotNetCliToolReference />` 屬性更新為 2.0.0。
+在 *.csproj* 檔案中，將每個 `<DotNetCliToolReference />` 節點的 `Version` 屬性更新為 2.0.0。
 
 例如，以下是以 .NET Core 2.0 為目標的典型 ASP.NET Core 2.0 專案所使用的 CLI 工具清單：
 
@@ -84,7 +84,7 @@ ms.locfileid: "78667612"
 
 ## <a name="rename-package-target-fallback-property"></a>重新命名套件目標後援屬性
 
-1\.x 專案的 *.csproj* 檔案使用 `PackageTargetFallback` 節點和變數：
+1.x 專案的 *.csproj* 檔案使用 `PackageTargetFallback` 節點和變數：
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=5)]
 
@@ -96,11 +96,11 @@ ms.locfileid: "78667612"
 
 ## <a name="update-main-method-in-programcs"></a>更新 Program.cs 中的 Main 方法
 
-在 1.x 專案中，`Main`Program.cs*的*  方法看起來像這樣：
+在 1.x 專案中，*Program.cs*的 `Main` 方法看起來像這樣：
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCs&highlight=8-19)]
 
-在 2.0 專案中，`Main`Program.cs*的*  方法已經過簡化：
+在 2.0 專案中，*Program.cs*的 `Main` 方法已經過簡化：
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Program.cs?highlight=8-11)]
 
@@ -124,11 +124,11 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Startup.cs?name=snippet_2xStartup)]
 
-若要移除 `WebHostBuilder.CreateDefaultBuilder` 所新增的預設提供者，請叫用 `Clear` 內 `IConfigurationBuilder.Sources` 屬性上的 `ConfigureAppConfiguration` 方法。 若要將提供者新增回來，請利用 `ConfigureAppConfiguration`Program.cs*中的* 方法：
+若要移除 `WebHostBuilder.CreateDefaultBuilder` 所新增的預設提供者，請叫用 `ConfigureAppConfiguration` 內 `IConfigurationBuilder.Sources` 屬性上的 `Clear` 方法。 若要將提供者新增回來，請利用 *Program.cs* 中的 `ConfigureAppConfiguration` 方法：
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Program.cs?name=snippet_ProgramMainConfigProviders&highlight=9-14)]
 
-`CreateDefaultBuilder`此處[ \(英文\) 有前述程式碼片段中 ](https://github.com/aspnet/MetaPackages/blob/rel/2.0.0/src/Microsoft.AspNetCore/WebHost.cs#L152) 方法所使用的組態。
+[此處](https://github.com/aspnet/MetaPackages/blob/rel/2.0.0/src/Microsoft.AspNetCore/WebHost.cs#L152) \(英文\) 有前述程式碼片段中 `CreateDefaultBuilder` 方法所使用的組態。
 
 如需詳細資訊，請參閱 [ASP.NET Core 中的組態](xref:fundamentals/configuration/index)。
 
@@ -144,15 +144,15 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 在使用 EF Core 2.0 的 2.0 專案中，則會叫用 `Program.BuildWebHost` 來取得應用程式服務。 與 1.x 不同的是，這會有叫用 `Startup.Configure` 的額外副作用。 如果您的 1.x 應用程式在其 `Configure` 方法中叫用了資料庫初始化程式碼，可能會發生未預期的問題。 例如，如果資料庫尚不存在，植入程式碼會在 EF Core 移轉命令執行前就執行程式碼。 如果資料庫尚不存在，這個問題會造成 `dotnet ef migrations list` 命令失敗。
 
-請考慮在 `Configure`Startup.cs*的* 方法中使用下列 1.x 植入初始化程式碼：
+請考慮在 *Startup.cs* 的 `Configure` 方法中使用下列 1.x 植入初始化程式碼：
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_ConfigureSeedData&highlight=8)]
 
-在 2.0 專案中，將 `SeedData.Initialize` 呼叫移到 `Main`Program.cs*的* 方法：
+在 2.0 專案中，將 `SeedData.Initialize` 呼叫移到 *Program.cs* 的 `Main` 方法：
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Program2.cs?name=snippet_Main2Code&highlight=10)]
 
-從 2.0 開始，除了建置及設定網頁主機外，並不適合在 `BuildWebHost` 中執行任何作業。 有關執行應用程式的任何內容都應該在 `BuildWebHost` 的外部處理 &mdash; 通常是在*Program.cs*的 `Main` 方法中。
+從 2.0 開始，除了建置及設定網頁主機外，並不適合在 `BuildWebHost` 中執行任何作業。 有關執行應用程式的任何作業都應該在  外處理 `BuildWebHost` &mdash; 通常會在 *Program.cs* 的 `Main` 方法中處理。
 
 <a name="view-compilation"></a>
 
@@ -162,7 +162,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 已不再需要將 `MvcRazorCompileOnPublish` 屬性設定為 true。 除非您停用檢視編譯，否則屬性可能會從 *.csproj* 檔案中移除。
 
-以 .NET Framework 為目標時，仍然需要在 [.csproj](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation) 檔案中明確參考 *Microsoft.AspNetCore.Mvc.Razor.ViewCompilation* NuGet 套件：
+以 .NET Framework 為目標時，仍然需要在 *.csproj* 檔案中明確參考 [Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation) NuGet 套件：
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App.csproj?range=15)]
 
@@ -174,11 +174,11 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 根據預設，在 Visual Studio 2017 中建立的 ASP.NET Core 1.1 專案已新增 Application Insights。 如果您不要直接使用 Application Insights SDK，請在 *Program.cs* 和 *Startup.cs* 之外，遵循下列步驟：
 
-1. 如果以 .NET Core 為目標，請從 `<PackageReference />`.csproj*檔案中移除下列* 節點：
+1. 如果以 .NET Core 為目標，請從 *.csproj* 檔案中移除下列 `<PackageReference />` 節點：
 
     [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=10)]
 
-2. 如果以 .NET Core 為目標，請從 `UseApplicationInsights`Program.cs*中移除* 擴充方法引動過程：
+2. 如果以 .NET Core 為目標，請從 *Program.cs* 中移除 `UseApplicationInsights` 擴充方法引動過程：
 
     [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCsMain&highlight=8)]
 
@@ -186,7 +186,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
     [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Shared/_Layout.cshtml?range=1,19&dedent=4)]
 
-如果您要直接使用 Application Insights SDK，請繼續執行這項操作。 2\.0 [中繼套件](xref:fundamentals/metapackage)含有最新版本的 Application Insights，因此如果您參考的是較舊的版本，就會出現套件降級錯誤。
+如果您要直接使用 Application Insights SDK，請繼續執行這項操作。 2.0 [中繼套件](xref:fundamentals/metapackage)含有最新版本的 Application Insights，因此如果您參考的是較舊的版本，就會出現套件降級錯誤。
 
 <a name="auth-and-identity"></a>
 

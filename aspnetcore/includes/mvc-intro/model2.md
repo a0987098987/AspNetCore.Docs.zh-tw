@@ -14,7 +14,7 @@
 
 ### <a name="add-a-database-connection-string"></a>新增資料庫連線字串
 
-將連接字串新增到 *appsettings.json* 檔案：
+將連接字串新增到*appsettings.json*檔:
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
 
@@ -26,7 +26,7 @@
 
 ### <a name="register-the-database-context"></a>登錄資料庫內容
 
-在 `using`Startup.cs*最上方新增下列* 陳述式：
+在 *Startup.cs* 最上方新增下列 `using` 陳述式：
 
 ```csharp
 using MvcMovie.Data;
@@ -53,7 +53,7 @@ using Microsoft.EntityFrameworkCore;
 
 ### <a name="add-a-database-connection-string"></a>新增資料庫連線字串
 
-將連接字串新增到 *appsettings.json* 檔案：
+將連接字串新增到*appsettings.json*檔:
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 
@@ -72,7 +72,7 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 
 ### <a name="register-the-database-context"></a>登錄資料庫內容
 
-在 `using`Startup.cs*最上方新增下列* 陳述式：
+在 *Startup.cs* 最上方新增下列 `using` 陳述式：
 
 ```csharp
 using MvcMovie.Models;

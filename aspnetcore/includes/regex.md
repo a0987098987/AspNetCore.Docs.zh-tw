@@ -1,2 +1,2 @@
 > [!WARNING]
-> 使用 <xref:System.Text.RegularExpressions> 來處理不受信任的輸入時，請傳遞超時。 惡意使用者可以提供輸入給 `RegularExpressions` 造成[拒絕服務的攻擊](https://www.us-cert.gov/ncas/tips/ST04-015)。 使用 `RegularExpressions` 的 ASP.NET Core framework Api 會傳遞超時。
+> 使用來處理<xref:System.Text.RegularExpressions>不受信任的輸入時,傳遞超時。 惡意使用者可以提供導致`RegularExpressions`[拒絕服務攻擊](https://www.us-cert.gov/ncas/tips/ST04-015)的輸入。 ASP.NET使用`RegularExpressions`傳遞超時的核心框架 API。

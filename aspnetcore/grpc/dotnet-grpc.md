@@ -1,27 +1,27 @@
 ---
 title: 使用 dotnet-grpc 管理 Protobuf 參考
 author: juntaoluo
-description: 瞭解如何使用 dotnet-grpc 通用工具新增、更新、移除和列出 Protobuf 參考。
+description: 瞭解如何使用 dotnet-grpc 全域工具添加、更新、刪除和列出 Protobuf 引用。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 10/17/2019
 uid: grpc/dotnet-grpc
 ms.openlocfilehash: 994597c854a95bb33de1686ab025cb3744cf6845
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78667332"
 ---
 # <a name="manage-protobuf-references-with-dotnet-grpc"></a>使用 dotnet-grpc 管理 Protobuf 參考
 
 作者：[John Luo](https://github.com/juntaoluo)
 
-`dotnet-grpc` 是 .NET Core 通用工具，可用於管理 .NET gRPC 專案內的[Protobuf （ *. proto*）](xref:grpc/basics#proto-file)參考。 此工具可以用來新增、重新整理、移除和列出 Protobuf 的參考。
+`dotnet-grpc`是 .NET 核心全域工具,用於管理 .NET gRPC 專案中[的 Protobuf *(.proto*)](xref:grpc/basics#proto-file)引用。 該工具可用於添加、刷新、刪除和列出 Protobuf 引用。
 
 ## <a name="installation"></a>安裝
 
-若要安裝 `dotnet-grpc` [.Net Core 通用工具](/dotnet/core/tools/global-tools)，請執行下列命令：
+要安裝`dotnet-grpc` [.NET 核心全域工具](/dotnet/core/tools/global-tools),請執行以下指令:
 
 ```dotnetcli
 dotnet tool install -g dotnet-grpc
@@ -29,28 +29,28 @@ dotnet tool install -g dotnet-grpc
 
 ## <a name="add-references"></a>新增參考
 
-`dotnet-grpc` 可用來將 Protobuf 參考當做 `<Protobuf />` 專案新增至 *.csproj*檔案：
+`dotnet-grpc`可用於將 Protobuf`<Protobuf />`引用為項目新增*到 .csproj*檔:
 
 ```xml
 <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
 ```
 
-Protobuf 參考是用來產生C#用戶端和/或伺服器資產。 `dotnet-grpc` 工具可以：
+Protobuf 引用用於生成 C# 用戶端和/或伺服器資產。 該工具`dotnet-grpc`可以:
 
-* 從磁片上的本機檔案建立 Protobuf 參考。
-* 從 URL 所指定的遠端檔案建立 Protobuf 參考。
-* 請確定已將正確的 gRPC 套件相依性新增至專案。
+* 從磁碟上的本地檔創建 Protobuf 引用。
+* 從 URL 指定的遠端檔案中創建 Protobuf 引用。
+* 確保向專案添加了正確的 gRPC 包依賴項。
 
-例如，`Grpc.AspNetCore` 套件會新增至 web 應用程式。 `Grpc.AspNetCore` 包含 gRPC 伺服器和用戶端程式庫和工具支援。 或者，只包含 gRPC 用戶端程式庫和工具支援的 `Grpc.Net.Client`、`Grpc.Tools` 和 `Google.Protobuf` 套件會新增至主控台應用程式。
+例如,包`Grpc.AspNetCore`將添加到 Web 應用。 `Grpc.AspNetCore`包含 gRPC 伺服器和用戶端庫以及工具支援。 或者,`Grpc.Net.Client`僅`Grpc.Tools``Google.Protobuf`包含 gRPC 用戶端庫和工具支援的 的和 包將添加到主控台應用。
 
 ### <a name="add-file"></a>新增檔案
 
-`add-file` 命令是用來將磁片上的本機檔案新增為 Protobuf 參考。 提供的檔案路徑：
+該`add-file`命令用於在磁碟上添加本地檔作為 Protobuf 引用。 提供的檔案路徑:
 
-* 可以相對於目前的目錄或絕對路徑。
-* 可能包含以模式為基礎之檔案[通配](https://wikipedia.org/wiki/Glob_(programming))的萬用字元。
+* 可以相對於當前目錄或絕對路徑。
+* 可能包含基於模式的檔案[globing](https://wikipedia.org/wiki/Glob_(programming))的通配符。
 
-如果有任何檔案位於專案目錄外，則會加入 `Link` 元素，以在 Visual Studio 中的資料夾 `Protos` 顯示檔案。
+如果專案目錄之外有任何檔,則添加一`Link`個元素以在 Visual Studio 中的`Protos`資料夾下顯示該檔。
 
 ### <a name="usage"></a>使用量
 
@@ -62,20 +62,20 @@ dotnet grpc add-file [options] <files>...
 
 | 引數 | 描述 |
 |-|-|
-| files | Protobuf 檔案會參考。 這些可以是本機 protobuf 檔案的 glob 路徑。 |
+| files | 原檔引用。 這些可以是本地原體檔 glob 的路徑。 |
 
 #### <a name="options"></a>選項。
 
-| Short 選項 | Long 選項 | 描述 |
+| 短選項 | 長選項 | 描述 |
 |-|-|-|
-| -p | --project | 要操作之專案檔的路徑。 如果未指定檔案，此命令會在目前的目錄中搜尋一個檔案。
-| -S | --服務 | 應產生的 gRPC 服務類型。 如果指定了 `Default`，`Both` 會用於 Web 專案，而 `Client` 則用於非 Web 專案。 接受的值為 `Both`、`Client`、`Default`、`None`、`Server`。
-| -i | --其他-匯入-目錄 | 解析 protobuf 檔案的匯入時，所要使用的其他目錄。 這是以分號分隔的路徑清單。
-| | --access | 要用於產生C#之類別的存取修飾詞。 預設值是 `Public`。 接受的值為 `Internal` 和 `Public`。
+| -p | --專案 | 要操作的專案檔的路徑。 如果未指定檔,該命令將搜索當前目錄。
+| -S | --服務 | 應生成的 gRPC 服務的類型。 如果`Default`指定,`Both`則用於 Web`Client`專案, 用於非 Web 專案。 接受的值是`Both``Client` `Default` `None`, `Server`, , , , , , ,
+| -i | --附加導入-迪爾 | 解析原文件導入時要使用的其他目錄。 這是路徑的分號分隔清單。
+| | --訪問 | 用於生成的 C# 類別的訪問修改器。 預設值是 `Public`。 接受的值為 `Internal` 和 `Public`。
 
 ### <a name="add-url"></a>新增 URL
 
-`add-url` 命令是用來將來源 URL 所指定的遠端檔案新增為 Protobuf 參考。 必須提供檔案路徑，以指定要下載遠端檔案的位置。 檔案路徑可以相對於目前的目錄或絕對路徑。 如果檔案路徑位於專案目錄外，則會加入 `Link` 元素，以在 Visual Studio 中的虛擬資料夾 `Protos` 顯示檔案。
+該`add-url`指令用於添加源網址指定的遠端檔案作為 Protobuf 引用。 必須提供檔案路徑以指定下載遠端檔案的位置。 檔路徑可以是相對於當前目錄或絕對路徑。 如果檔案路徑位於項目目錄之外,則添加一`Link`個元素以在 Visual Studio`Protos`中的虛擬 資料夾下顯示該檔。
 
 ### <a name="usage"></a>使用量
 
@@ -87,24 +87,24 @@ dotnet-grpc add-url [options] <url>
 
 | 引數 | 描述 |
 |-|-|
-| url | 遠端 protobuf 檔的 URL。 |
+| url | 遠端原檔案 URL。 |
 
 #### <a name="options"></a>選項。
 
-| Short 選項 | Long 選項 | 描述 |
+| 短選項 | 長選項 | 描述 |
 |-|-|-|
-| -o | --output | 指定遠端 protobuf 檔的下載路徑。 這是必要選項。
-| -p | --project | 要操作之專案檔的路徑。 如果未指定檔案，此命令會在目前的目錄中搜尋一個檔案。
-| -S | --服務 | 應產生的 gRPC 服務類型。 如果指定了 `Default`，`Both` 會用於 Web 專案，而 `Client` 則用於非 Web 專案。 接受的值為 `Both`、`Client`、`Default`、`None`、`Server`。
-| -i | --其他-匯入-目錄 | 解析 protobuf 檔案的匯入時，所要使用的其他目錄。 這是以分號分隔的路徑清單。
-| | --access | 要用於產生C#之類別的存取修飾詞。 預設值為 `Public`。 接受的值為 `Internal` 和 `Public`。
+| -o | --output | 指定遠端原檔案的下載路徑。 這是必要選項。
+| -p | --專案 | 要操作的專案檔的路徑。 如果未指定檔,該命令將搜索當前目錄。
+| -S | --服務 | 應生成的 gRPC 服務的類型。 如果`Default`指定,`Both`則用於 Web`Client`專案, 用於非 Web 專案。 接受的值是`Both``Client` `Default` `None`, `Server`, , , , , , ,
+| -i | --附加導入-迪爾 | 解析原文件導入時要使用的其他目錄。 這是路徑的分號分隔清單。
+| | --訪問 | 用於生成的 C# 類別的訪問修改器。 預設值為 `Public`。 接受的值為 `Internal` 和 `Public`。
 
 ## <a name="remove"></a>移除
 
-`remove` 命令是用來從 *.csproj*檔案中移除 Protobuf 參考。 命令接受路徑引數和來源 Url 做為引數。 工具：
+該`remove`命令用於從 *.csproj*檔中刪除 Protobuf 引用。 該命令接受路徑參數和源 URL 作為參數。 該工具:
 
-* 只會移除 Protobuf 參考。
-* 不會刪除此*proto*檔案，即使該檔案原本是從遠端 URL 下載也一樣。
+* 僅刪除 Protobuf 引用。
+* 不會刪除 *.proto*檔,即使它最初是從遠端 URL 下載的。
 
 ### <a name="usage"></a>使用量
 
@@ -116,22 +116,22 @@ dotnet-grpc remove [options] <references>...
 
 | 引數 | 描述 |
 |-|-|
-| 參考 | 要移除之 protobuf 參考的 Url 或檔案路徑。 |
+| 參考 | 要刪除的原語引用的 URL 或檔案路徑。 |
 
 ### <a name="options"></a>選項。
 
-| Short 選項 | Long 選項 | 描述 |
+| 短選項 | 長選項 | 描述 |
 |-|-|-|
-| -p | --project | 要操作之專案檔的路徑。 如果未指定檔案，此命令會在目前的目錄中搜尋一個檔案。
+| -p | --專案 | 要操作的專案檔的路徑。 如果未指定檔,該命令將搜索當前目錄。
 
 ## <a name="refresh"></a>Refresh
 
-`refresh` 命令是用來以來源 URL 的最新內容來更新遠端參考。 下載檔案路徑和來源 URL 都可以用來指定要更新的參考。 注意:
+該`refresh`指令用於使用源 URL 中的最新內容更新遠端引用。 下載檔案路徑和源 URL 都可用於指定要更新的引用。 注意:
 
-* 檔案內容的雜湊會進行比較，以判斷是否應該更新本機檔案。
-* 不會比較任何時間戳記資訊。
+* 比較文件內容的哈希,以確定是否應更新本地檔案。
+* 不比較時間戳資訊。
 
-如果需要更新，此工具一律會將本機檔案取代為遠端檔案。
+如果需要更新,該工具始終將本地檔替換為遠端檔。
 
 ### <a name="usage"></a>使用量
 
@@ -143,18 +143,18 @@ dotnet-grpc refresh [options] [<references>...]
 
 | 引數 | 描述 |
 |-|-|
-| 參考 | 應更新之遠端 protobuf 參考的 Url 或檔案路徑。 將此引數保留空白以重新整理所有遠端參考。 |
+| 參考 | 應更新的 URL 或檔案路徑到遠端原代引用引用。 將此參數留空以刷新所有遠端引用。 |
 
 ### <a name="options"></a>選項。
 
-| Short 選項 | Long 選項 | 描述 |
+| 短選項 | 長選項 | 描述 |
 |-|-|-|
-| -p | --project | 要操作之專案檔的路徑。 如果未指定檔案，此命令會在目前的目錄中搜尋一個檔案。
-| | --試執行 | 輸出會更新而不下載任何新內容的檔案清單。
+| -p | --專案 | 要操作的專案檔的路徑。 如果未指定檔,該命令將搜索當前目錄。
+| | --幹跑 | 輸出將在不下載任何新內容的情況下更新的檔案清單。
 
 ## <a name="list"></a>清單
 
-`list` 命令會用來顯示專案檔中的所有 Protobuf 參考。 如果資料行的所有值都是預設值，可能會省略資料行。
+該`list`命令用於在專案檔中顯示所有 Protobuf 引用。 如果列的所有值都是預設值,則可以省略該列。
 
 ### <a name="usage"></a>使用量
 
@@ -164,9 +164,9 @@ dotnet-grpc list [options]
 
 ### <a name="options"></a>選項。
 
-| Short 選項 | Long 選項 | 描述 |
+| 短選項 | 長選項 | 描述 |
 |-|-|-|
-| -p | --project | 要操作之專案檔的路徑。 如果未指定檔案，此命令會在目前的目錄中搜尋一個檔案。
+| -p | --專案 | 要操作的專案檔的路徑。 如果未指定檔,該命令將搜索當前目錄。
 
 ## <a name="additional-resources"></a>其他資源
 

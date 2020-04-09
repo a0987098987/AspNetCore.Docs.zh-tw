@@ -1,4 +1,4 @@
-<a name="codegenerator"></a> 下表詳細列出 ASP.NET Core 程式碼產生器參數：
+<a name="codegenerator"></a>下表詳細介紹了ASP.NET核心代碼產生器參數:
 
 | 參數               | 描述|
 | ----------------- | ------------ |
@@ -14,4 +14,4 @@
 dotnet aspnet-codegenerator razorpage -h
 ```
 
-如需詳細資訊，請參閱[dotnet aspnet-codegenerator](xref:fundamentals/tools/dotnet-aspnet-codegenerator)。
+有關詳細資訊,請參閱[dotnet aspnet 程式碼產生器](xref:fundamentals/tools/dotnet-aspnet-codegenerator)。

@@ -6,17 +6,17 @@ ms.author: riande
 ms.date: 08/17/2019
 uid: tutorials/razor-pages/page
 ms.openlocfilehash: cec4295a2c08c89db0975808583f41c7d09bfc88
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78662446"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Scaffold Razor 頁面
 
 ::: moniker range=">= aspnetcore-3.0"
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 本教學課程會檢查在[上一個教學課程](xref:tutorials/razor-pages/model)中 Scaffolding 所建立的 Razor 頁面。
 
@@ -30,13 +30,13 @@ ms.locfileid: "78662446"
 
 Razor 頁面衍生自 `PageModel`。 依照慣例，`PageModel` 衍生的類別稱為 `<PageName>Model`。 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將 `RazorPagesMovieContext` 新增至頁面中。 所有 Scaffold 頁面都遵循這個模式。 如需使用 Entity Framework 進行非同步程式設計的詳細資訊，請參閱[非同步程式碼](xref:data/ef-rp/intro#asynchronous-code)。
 
-當針對頁面提出要求時，`OnGetAsync` 方法會將電影清單傳回 Razor 頁面。 呼叫 `OnGetAsync` 或 `OnGet` 來初始化頁面的狀態。 在此情況下，`OnGetAsync` 會取得電影清單並加以顯示。
+當針對頁面提出要求時，`OnGetAsync` 方法會將電影清單傳回 Razor 頁面。 `OnGetAsync`或`OnGet`調用 以初始化頁面的狀態。 在此情況下，`OnGetAsync` 會取得電影清單並加以顯示。
 
-當 `OnGet` 傳回 `void` 或 `OnGetAsync` 傳回`Task`時，不會使用 return 語句。 當傳回型別是 `IActionResult` 或 `Task<IActionResult>` 時，必須提供傳回陳述式。 例如， *Pages/電影/Create. cshtml .cs* `OnPostAsync` 方法：
+當`OnGet`返回`void``OnGetAsync`或`Task`返回 時,不使用返回語句。 當傳回型別是 `IActionResult` 或 `Task<IActionResult>` 時，必須提供傳回陳述式。 例如，*Pages/Movies/Create.cshtml.cs* `OnPostAsync` 方法：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml.cs?name=snippet)]
 
-<a name="index"></a> 請檢查 *Pages/Movies/Index.cshtml* Razor 頁面：
+<a name="index"></a>檢查*頁面/電影/索引.cshtml*剃刀頁面:
 
 [!code-cshtml[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Index.cshtml)]
 
@@ -44,7 +44,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 ### <a name="the-page-directive"></a>@page 指示詞
 
-`@page` Razor 指示詞會讓檔案成為 MVC 動作，這表示它可以處理要求。 `@page` 必須是頁面上的第一個 Razor 指示詞。 `@page` 是轉換成 Razor 特定標記的範例。 如需詳細資訊，請參閱 [Razor 語法](xref:mvc/views/razor#razor-syntax)。
+`@page` Razor 指令使檔案成為 MVC 操作,這意味著它可以處理請求。 `@page` 必須是頁面上的第一個 Razor 指示詞。 `@page` 是轉換成 Razor 特定標記的範例。 如需詳細資訊，請參閱 [Razor 語法](xref:mvc/views/razor#razor-syntax)。
 
 檢查下列 HTML 協助程式中使用的 Lambda 運算式：
 
@@ -52,7 +52,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 @Html.DisplayNameFor(model => model.Movie[0].Title)
 ```
 
-`DisplayNameFor` HTML 協助程式會檢查 Lambda 運算式中參考的 `Title` 屬性來判斷顯示名稱。 Lambda 運算式是進行檢查而不是評估。 這表示當 `model`、`model.Movie`或 `model.Movie[0]` `null` 或空白時，不會發生存取違規。 在評估 Lambda 運算式時 (例如，使用 `@Html.DisplayFor(modelItem => item.Title)`)，會評估模型的屬性值。
+`DisplayNameFor` HTML 協助程式會檢查 Lambda 運算式中參考的 `Title` 屬性來判斷顯示名稱。 Lambda 運算式是進行檢查而不是評估。 `model`這意味著,當、`model.Movie`或`model.Movie[0]``null`為或為或為空時,不存在訪問衝突。 在評估 Lambda 運算式時 (例如，使用 `@Html.DisplayFor(modelItem => item.Title)`)，會評估模型的屬性值。
 
 <a name="md"></a>
 
@@ -60,7 +60,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 [!code-cshtml[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 
-`@model` 指示詞會指定傳遞至 Razor 頁面的模型類型。 在上述範例中，`@model` 行可讓 `PageModel` 衍生的類別供 Razor 頁面使用。 此模型會在 `@Html.DisplayNameFor` 中使用，並在頁面上 `@Html.DisplayFor` [HTML](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers)協助程式。
+`@model` 指示詞會指定傳遞至 Razor 頁面的模型類型。 在上述範例中，`@model` 行可讓 `PageModel` 衍生的類別供 Razor 頁面使用。 此模型用於頁面上的 `@Html.DisplayNameFor` 和 `@Html.DisplayFor` [HTML 協助程式](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers)。
 
 ### <a name="the-layout-page"></a>版面配置頁
 
@@ -71,7 +71,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 * 指定在一個位置。
 * 套用於網站中的多個頁面。
 
-找到 `@RenderBody()` 這行。 `RenderBody` 是一個預留位置，可供顯示所有頁面特定檢視 (「包裝」在版面配置頁面中)。 例如，選取 [隱私權] 連結，就會在 *方法內轉譯*Pages/Privacy.cshtml`RenderBody` 檢視。
+找到 `@RenderBody()` 這行。 `RenderBody` 是一個預留位置，可供顯示所有頁面特定檢視 (「包裝」** 在版面配置頁面中)。 例如，選取 [隱私權]**** 連結，就會在 `RenderBody` 方法內轉譯 *Pages/Privacy.cshtml* 檢視。
 
 <a name="vd"></a>
 
@@ -83,9 +83,9 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 上述強調顯示的標記是 Razor 轉換成 C# 的範例。 `{` 和 `}` 字元中含括 C# 程式碼的區塊。
 
-`PageModel` 基類包含可用來將資料傳遞至 View 的 `ViewData` dictionary 屬性。 物件會使用機碼/值模式新增至 `ViewData` 字典。 在上述範例中，`"Title"` 屬性會新增至 `ViewData` 字典。
+基`PageModel`類包含一`ViewData`個 字典屬性,可用於將數據傳遞到檢視。 物件會使用機碼/值模式新增至 `ViewData` 字典。 在上述範例中，`"Title"` 屬性會新增至 `ViewData` 字典。
 
-`"Title"`Pages/Shared/_Layout.cshtml*檔案中使用* 屬性。 下列標記會顯示 *_Layout.cshtml* 檔案的前幾行。
+*Pages/Shared/_Layout.cshtml* 檔案中使用 `"Title"` 屬性。 下列標記會顯示 *_Layout.cshtml* 檔案的前幾行。
 
 <!-- we need a snapshot copy of layout because we are
 changing in in the next step.
@@ -96,7 +96,7 @@ changing in in the next step.
 
 ### <a name="update-the-layout"></a>更新配置
 
-變更 `<title>`Pages/Shared/_Layout.cshtml*檔案中的* 項目，以顯示 **Movie** 而不是 **RazorPagesMovie**。
+變更 *Pages/Shared/_Layout.cshtml* 檔案中的 `<title>` 項目，以顯示 **Movie** 而不是 **RazorPagesMovie**。
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
@@ -116,7 +116,7 @@ changing in in the next step.
 
 儲存變更，並按一下 **RpMovie** 連結來測試應用程式。 如有任何問題，請參閱 GitHub 中的 [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) 檔案。
 
-測試其他連結 (**Home**、**RpMovie**、**Create**、**Edit** 和 **Delete**)。 每個頁面都會設定標題，您可以在 [瀏覽器] 索引標籤中看到它。當您將頁面加入書簽時，會將標題用於書簽。
+測試其他連結 (**Home**、**RpMovie**、**Create**、**Edit** 和 **Delete**)。 每個頁面設置標題,您可以在瀏覽器選項卡中看到。為頁面添加書籤時,標題將用於書籤。
 
 > [!NOTE]
 > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期欄位支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 請參閱此 [GitHub 問題 4076](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) \(英文\)，以取得加入十進位逗號的指示。
@@ -191,25 +191,25 @@ Scaffolding 引擎會在模型中建立每個欄位的 Razor 標記 (除了識�
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Create.cshtml?range=15-20)]
 
-[驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers) (`<div asp-validation-summary` 和 `<span asp-validation-for`) 會顯示驗證錯誤。 驗證將於本文稍後詳細討論到。
+[驗證標記說明程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)(`<div asp-validation-summary``<span asp-validation-for`和 ) 顯示驗證錯誤。 驗證將於本文稍後詳細討論到。
 
-[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper) (`<label asp-for="Movie.Title" class="control-label"></label>`) 會產生 `for` 屬性 (property) 的標籤標題和 `Title` 屬性 (attribute)。
+[標籤標籤說明器](xref:mvc/views/working-with-forms#the-label-tag-helper)`<label asp-for="Movie.Title" class="control-label"></label>`()`for``Title`產生 屬性的標籤標題和屬性。
 
-[輸入標記協助程式](xref:mvc/views/working-with-forms) (`<input asp-for="Movie.Title" class="form-control">`) 會使用[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。
+[輸入標籤說明器](xref:mvc/views/working-with-forms)()`<input asp-for="Movie.Title" class="form-control">`使用[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)屬性,並在用戶端生成 jQuery 驗證所需的 HTML 屬性。
 
 如需標籤協助程式 (例如 `<form method="post">`) 的詳細資訊，請參閱 [ASP.NET Core 中的標籤協助程式](xref:mvc/views/tag-helpers/intro)。
 
 ## <a name="additional-resources"></a>其他資源
 
 > [!div class="step-by-step"]
-> [上一步：新增模型](xref:tutorials/razor-pages/model)
-> [下一個：資料庫](xref:tutorials/razor-pages/sql)
+> [上一篇:添加模型](xref:tutorials/razor-pages/model)
+> [下一個:資料庫](xref:tutorials/razor-pages/sql)
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 本教學課程會檢查在[上一個教學課程](xref:tutorials/razor-pages/model)中 Scaffolding 所建立的 Razor 頁面。
 
@@ -225,11 +225,11 @@ Razor 頁面衍生自 `PageModel`。 依照慣例，`PageModel` 衍生的類別�
 
 當針對頁面提出要求時，`OnGetAsync` 方法會將電影清單傳回 Razor 頁面。 在 Razor 頁面上會呼叫 `OnGetAsync` 或 `OnGet` 來初始化頁面的狀態。 在此情況下，`OnGetAsync` 會取得電影清單並加以顯示。
 
-當 `OnGet` 傳回 `void` 或 `OnGetAsync` 傳回 `Task` 時，並未使用任何傳回方法。 當傳回型別是 `IActionResult` 或 `Task<IActionResult>` 時，必須提供傳回陳述式。 例如， *Pages/電影/Create. cshtml .cs* `OnPostAsync` 方法：
+當 `OnGet` 傳回 `void` 或 `OnGetAsync` 傳回 `Task` 時，並未使用任何傳回方法。 當傳回型別是 `IActionResult` 或 `Task<IActionResult>` 時，必須提供傳回陳述式。 例如，*Pages/Movies/Create.cshtml.cs* `OnPostAsync` 方法：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml.cs?name=snippet)]
 
-<a name="index"></a> 請檢查 *Pages/Movies/Index.cshtml* Razor 頁面：
+<a name="index"></a>檢查*頁面/電影/索引.cshtml*剃刀頁面:
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml)]
 
@@ -251,13 +251,13 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 
-`@model` 指示詞會指定傳遞至 Razor 頁面的模型類型。 在上述範例中，`@model` 行可讓 `PageModel` 衍生的類別供 Razor 頁面使用。 此模型會在 `@Html.DisplayNameFor` 中使用，並在頁面上 `@Html.DisplayFor` [HTML](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers)協助程式。
+`@model` 指示詞會指定傳遞至 Razor 頁面的模型類型。 在上述範例中，`@model` 行可讓 `PageModel` 衍生的類別供 Razor 頁面使用。 此模型用於頁面上的 `@Html.DisplayNameFor` 和 `@Html.DisplayFor` [HTML 協助程式](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers)。
 
 ### <a name="the-layout-page"></a>版面配置頁
 
 選取功能表連結 (**RazorPagesMovie**、**Home** 及 **Privacy**)。 每個頁面會顯示相同的功能表配置。 功能表配置會在 *Pages/Shared/_Layout.cshtml* 檔案中實作。 開啟 *Pages/Shared/_Layout.cshtml* 檔案。
 
-[版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是一個「包裝」在版面配置頁中的預留位置，可供顯示您建立的所有頁面特定檢視。 例如，如果您選取 [Privacy] 連結，就會在 **方法內呈現**Pages/Privacy.cshtml`RenderBody` 檢視。
+[版面配置](xref:mvc/views/layout)範本可讓您在某個位置指定網站的 HTML 容器配置，然後將它套用到網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是一個「包裝」** 在版面配置頁中的預留位置，可供顯示您建立的所有頁面特定檢視。 例如，如果您選取 [Privacy]**** 連結，就會在 `RenderBody` 方法內呈現 **Pages/Privacy.cshtml** 檢視。
 
 <a name="vd"></a>
 
@@ -282,7 +282,7 @@ changing in in the next step.
 
 ### <a name="update-the-layout"></a>更新配置
 
-變更 `<title>`Pages/Shared/_Layout.cshtml*檔案中的* 項目，以顯示 **Movie** 而不是 **RazorPagesMovie**。
+變更 *Pages/Shared/_Layout.cshtml* 檔案中的 `<title>` 項目，以顯示 **Movie** 而不是 **RazorPagesMovie**。
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
@@ -302,7 +302,7 @@ changing in in the next step.
 
 儲存變更，並按一下 **RpMovie** 連結來測試應用程式。 如有任何問題，請參閱 GitHub 中的 [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) 檔案。
 
-測試其他連結 (**Home**、**RpMovie**、**Create**、**Edit** 和 **Delete**)。 每個頁面都會設定標題，您可以在 [瀏覽器] 索引標籤中看到它。當您將頁面加入書簽時，會將標題用於書簽。
+測試其他連結 (**Home**、**RpMovie**、**Create**、**Edit** 和 **Delete**)。 每個頁面設置標題,您可以在瀏覽器選項卡中看到。為頁面添加書籤時,標題將用於書籤。
 
 > [!NOTE]
 > 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期欄位支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 這個 [GitHub 問題 4076](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) 有加入小數逗號的指示。
@@ -359,18 +359,18 @@ Scaffolding 引擎會在模型中建立每個欄位的 Razor 標記 (除了識�
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=15-20)]
 
-[驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers) (`<div asp-validation-summary` 和 `<span asp-validation-for`) 會顯示驗證錯誤。 驗證將於本文稍後詳細討論到。
+[驗證標記說明程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)(`<div asp-validation-summary``<span asp-validation-for`和 ) 顯示驗證錯誤。 驗證將於本文稍後詳細討論到。
 
-[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper) (`<label asp-for="Movie.Title" class="control-label"></label>`) 會產生 `for` 屬性 (property) 的標籤標題和 `Title` 屬性 (attribute)。
+[標籤標籤說明器](xref:mvc/views/working-with-forms#the-label-tag-helper)`<label asp-for="Movie.Title" class="control-label"></label>`()`for``Title`產生 屬性的標籤標題和屬性。
 
-[輸入標記協助程式](xref:mvc/views/working-with-forms) (`<input asp-for="Movie.Title" class="form-control">`) 會使用[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。
+[輸入標籤說明器](xref:mvc/views/working-with-forms)()`<input asp-for="Movie.Title" class="form-control">`使用[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)屬性,並在用戶端生成 jQuery 驗證所需的 HTML 屬性。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [這個教學課程的 YouTube 版本](https://youtu.be/zxgKjPYnOMM)
+* [本教學的 YouTube 版本](https://youtu.be/zxgKjPYnOMM)
 
 > [!div class="step-by-step"]
-> [上一步：新增模型](xref:tutorials/razor-pages/model)
-> [下一個：資料庫](xref:tutorials/razor-pages/sql)
+> [上一篇:添加模型](xref:tutorials/razor-pages/model)
+> [下一個:資料庫](xref:tutorials/razor-pages/sql)
 
 ::: moniker-end

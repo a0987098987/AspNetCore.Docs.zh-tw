@@ -9,10 +9,10 @@ no-loc:
 - SignalR
 uid: aspnetcore-2.1
 ms.openlocfilehash: af5807b782d4acec8c7d40111dc508dfa6127057
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78667542"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>ASP.NET Core 2.1 的新功能
@@ -21,7 +21,7 @@ ms.locfileid: "78667542"
 
 ## SignalR
 
-已針對 ASP.NET Core 2.1 重寫 SignalR。 ASP.NET Core SignalR 包含一些改良功能：
+SignalR已為ASP.NET核心2.1重寫。 ASP.NET核心SignalR包括多項改進:
 
 * 簡化的向外延展模型。
 * 沒有 jQuery 相依性的新 JavaScript 用戶端。
@@ -30,7 +30,7 @@ ms.locfileid: "78667542"
 * 新的資料流處理回應模型。
 * 支援以裸機 WebSockets 為基礎的用戶端。
 
-如需詳細資訊，請參閱[ASP.NET Core SignalR](xref:signalr/introduction)。
+有關詳細資訊,請參閱[ASP.NETSignalR核心](xref:signalr/introduction)。
 
 ## <a name="razor-class-libraries"></a>Razor 類別庫
 
@@ -51,7 +51,7 @@ ASP.NET Core 2.1 將 [ASP.NET Core 身分識別](xref:security/authentication/id
 
 ## <a name="https"></a>HTTPS
 
-隨著安全性與隱私權日益受到重視，為 Web 應用程式啟用 HTTPS 極其重要。 在網站上強制執行 HTTPS 變得日益嚴格。 不使用 HTTPS 的網站會被視為不安全。 瀏覽器 (Chromium、Mozilla) 開始強制執行必須從安全內容使用 Web 功能。 [GDPR](xref:security/gdpr) 需要使用 HTTPS 來保護使用者隱私。 雖然在生產環境中使用 HTTPS 非常重要，但在開發中使用 HTTPS 有助於避免發生部署問題 (例如不安全的連結)。 ASP.NET Core 2.1 包含多項改善，讓您更容易在開發中使用 HTTPS，以及在生產環境中設定 HTTPS。 如需詳細資訊，請參閱[強制使用 HTTPS](xref:security/enforcing-ssl)。
+隨著安全性與隱私權日益受到重視，為 Web 應用程式啟用 HTTPS 極其重要。 在網站上強制執行 HTTPS 變得日益嚴格。 不使用 HHH 的網站被視為不安全。 瀏覽器 (Chromium、Mozilla) 開始強制執行必須從安全內容使用 Web 功能。 [GDPR](xref:security/gdpr) 需要使用 HTTPS 來保護使用者隱私。 雖然在生產環境中使用 HTTPS 非常重要，但在開發中使用 HTTPS 有助於避免發生部署問題 (例如不安全的連結)。 ASP.NET Core 2.1 包含多項改善，讓您更容易在開發中使用 HTTPS，以及在生產環境中設定 HTTPS。 如需詳細資訊，請參閱[強制使用 HTTPS](xref:security/enforcing-ssl)。
 
 ### <a name="on-by-default"></a>依預設開啟
 
@@ -83,7 +83,7 @@ ASP.NET Core 提供 API 和範本以利符合某些 [EU General Data Protection 
 
 引進新套件簡化測試的建立和執行。 [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) 套件處理下列工作：
 
-* 將相依性檔案 ( *\*.deps*) 從已測試的應用程式複製到測試專案的 *bin* 資料夾。
+* 將依賴項檔*\*(.deps*) 從測試的應用程式複製到測試專案的*bin*資料夾中。
 * 將內容的根目錄設定為經過測試之應用程式的專案根目錄，以便在執行測試時找到靜態檔案和頁面/檢視。
 * 提供 [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) 類別來簡化以 [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) 啟動載入經過測試的應用程式。
 

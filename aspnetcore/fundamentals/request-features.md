@@ -6,10 +6,10 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: fundamentals/request-features
 ms.openlocfilehash: d0f3ae521d1f314dd04cb581d9a921da4719273d
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/16/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "79416223"
 ---
 # <a name="request-features-in-aspnet-core"></a>ASP.NET Core 中的要求功能
@@ -53,7 +53,7 @@ ASP.NET Core 可定義 `Microsoft.AspNetCore.Http.Features` 中伺服器用來�
 
 ## <a name="feature-collections"></a>功能集合
 
-`Features` 的 `HttpContext` 屬性提供一個介面來取得和設定目前要求的可用 HTTP 功能。 由於功能集合即使在要求內容中都是可變動的，因此可以使用中介軟體來修改該集合，並新增其他功能的支援。
+`HttpContext` 的 `Features` 屬性提供一個介面來取得和設定目前要求的可用 HTTP 功能。 由於功能集合即使在要求內容中都是可變動的，因此可以使用中介軟體來修改該集合，並新增其他功能的支援。
 
 ## <a name="middleware-and-request-features"></a>中介軟體和要求功能
 
@@ -70,5 +70,5 @@ ASP.NET Core 可定義 `Microsoft.AspNetCore.Http.Features` 中伺服器用來�
 ## <a name="additional-resources"></a>其他資源
 
 * [伺服器](xref:fundamentals/servers/index)
-* [中介軟體](xref:fundamentals/middleware/index)
+* [中間件](xref:fundamentals/middleware/index)
 * [開啟 Web Interface for .NET (OWIN)](xref:fundamentals/owin)

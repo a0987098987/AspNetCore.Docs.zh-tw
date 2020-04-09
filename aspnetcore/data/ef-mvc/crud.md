@@ -1,5 +1,5 @@
 ---
-title: 教學課程：使用 EF Core 來執行 CRUD 功能-ASP.NET MVC
+title: 教學:實現 CRUD 功能 - 使用 EF 核心ASP.NET MVC
 description: 在本教學課程中，您將檢閱並自訂 MVC Scaffolding 自動為您在控制器及檢視中建立的 CRUD (建立、讀取、更新、刪除) 程式碼。
 author: rick-anderson
 ms.author: riande
@@ -8,13 +8,13 @@ ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
 ms.openlocfilehash: 2aa4ef48509b9a34f3b25eb657b1ecac51c1374b
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/16/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "79416209"
 ---
-# <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學課程：使用 EF Core 來執行 CRUD 功能-ASP.NET MVC
+# <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學:實現 CRUD 功能 - 使用 EF 核心ASP.NET MVC
 
 在前一個教學課程中，您建立了一個使用 Entity Framework 及 SQL Server LocalDB 來儲存及顯示資料的 MVC 應用程式。 在本教學課程中，您將檢閱並自訂 MVC Scaffolding 自動為您在控制器及檢視中建立的 CRUD (建立、讀取、更新、刪除) 程式碼。
 
@@ -36,7 +36,7 @@ ms.locfileid: "79416209"
 
 ## <a name="customize-the-details-page"></a>自訂 [詳細資料] 頁面
 
-為 Students [索引] 頁面建立的 Scaffold 程式碼省略了 `Enrollments` 屬性，因為該屬性的值為一個集合。 在 [詳細資料] 頁面中，您會在一個 HTML 表格中顯示集合的內容。
+為 Students [索引] 頁面建立的 Scaffold 程式碼省略了 `Enrollments` 屬性，因為該屬性的值為一個集合。 在 [詳細資料]**** 頁面中，您會在一個 HTML 表格中顯示集合的內容。
 
 在 *Controllers/StudentsController.cs* 中，[詳細資料] 檢視的動作方法會使用 `SingleOrDefaultAsync` 方法來擷取單一 `Student` 實體。 新增呼叫 `Include` 的程式碼。 `ThenInclude`，以及 `AsNoTracking` 方法，如下列醒目提示的程式碼所示。
 
@@ -48,7 +48,7 @@ ms.locfileid: "79416209"
 
 ### <a name="route-data"></a>路由傳送資料
 
-傳遞至 `Details` 方法的索引鍵值是來自「路由資料」。 路由資料是模型繫結器在 URL 區段中找到的資料。 例如，預設路由指定了控制器、動作，以及識別碼區段：
+傳遞至 `Details` 方法的索引鍵值是來自「路由資料」**。 路由資料是模型繫結器在 URL 區段中找到的資料。 例如，預設路由指定了控制器、動作，以及識別碼區段：
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Route&highlight=5)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "79416209"
 http://localhost:1230/Instructor/Index/1?courseID=2021
 ```
 
-URL 最後的部分 ("?courseID=2021") 為查詢字串的值。 模型繫結器也會將識別碼的值作為 `Index` 參數傳遞給 `id` 方法 (若您將其作為查詢字串的值傳遞)：
+URL 最後的部分 ("?courseID=2021") 為查詢字串的值。 模型繫結器也會將識別碼的值作為 `id` 參數傳遞給 `Index` 方法 (若您將其作為查詢字串的值傳遞)：
 
 ```
 http://localhost:1230/Instructor/Index?id=1&CourseID=2021
@@ -102,23 +102,23 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 若在您貼上程式碼之後，程式碼的縮排發生錯誤，請按 CTRL-K-D 修正它。
 
-此程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 針對每個註冊，它會顯示課程標題及成績。 課程標題會從儲存於 Enrollments 實體之 `Course` 導覽屬性中的課程 (Course) 實體擷取。
+此程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 針對每個註冊，會顯示課程標題及成績。 課程標題會從儲存於 Enrollments 實體之 `Course` 導覽屬性中的課程 (Course) 實體擷取。
 
-執行應用程式，選取 [Students] 索引標籤，然後按一下學生的 [詳細資料] 連結。 您會看到選取學生的課程及成績清單：
+執行應用程式，選取 [Students]**** 索引標籤，然後按一下學生的 [詳細資料]**** 連結。 您會看到選取學生的課程及成績清單：
 
 ![Student [詳細資料] 頁面](crud/_static/student-details.png)
 
 ## <a name="update-the-create-page"></a>更新 [建立] 頁面
 
-在 *StudentsController.cs* 中，藉由新增 try-catch 區塊並從 `Create` 屬性移除識別碼來修改 HttpPost `Bind` 方法。
+在 *StudentsController.cs* 中，藉由新增 try-catch 區塊並從 `Bind` 屬性移除識別碼來修改 HttpPost `Create` 方法。
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
 此程式碼會將 ASP.NET Core MVC 模型繫結器建立的 Student 實體新增至 Student 實體集，然後將變更儲存至資料庫。 (模型繫結器指的是 ASP.NET Core MVC 功能，它可讓您更輕鬆地操作由表單送出的資料；模型繫結器會將以 POST 方式送出的表單值轉換為 CLR 類型，然後傳遞給參數中的動作方法。 在此案例中，模型繫結器會使用來自表單 (Form) 集合的屬性值，為您執行個體化 Student 實體。)
 
-您從 `ID` 屬性移除了 `Bind`，因為該識別碼是 SQL Server 在插入該資料列時自動為其建立的主索引鍵值。 使用者輸入的內容不會設定識別碼值。
+您從 `Bind` 屬性移除了 `ID`，因為該識別碼是 SQL Server 在插入該資料列時自動為其建立的主索引鍵值。 使用者輸入的內容不會設定識別碼值。
 
-除了 `Bind` 屬性外，try-catch 區塊是您對 Scaffold 程式碼進行的唯一變更。 若在儲存變更時捕捉到衍生自 `DbUpdateException` 的例外狀況，則會顯示一般錯誤訊息。 `DbUpdateException` 例外狀況有時候是因為某些外部因素造成的，而非程式設計上的錯誤，因此系統會建議使用者再試一次。 雖然在此範例中並未實作，但生產環境品質的應用程式應記錄例外狀況。 如需詳細資訊，請參閱**監視及遙測 (使用 Azure 建置現實世界的雲端應用程式)** 中的[深入解析記錄檔](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)一節。
+除了 `Bind` 屬性外，try-catch 區塊是您對 Scaffold 程式碼進行的唯一變更。 若在儲存變更時捕捉到衍生自 `DbUpdateException` 的例外狀況，則會顯示一般錯誤訊息。 `DbUpdateException` 例外狀況有時候是因為某些外部因素造成的，而非程式設計上的錯誤，因此系統會建議使用者再試一次。 雖然在此範例中並未實作，但生產環境品質的應用程式應記錄例外狀況。 如需詳細資訊，請參閱[監視及遙測 (使用 Azure 建置現實世界的雲端應用程式)](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)中的**深入解析記錄檔**一節。
 
 `ValidateAntiForgeryToken` 屬性可協助防止跨網站偽造要求 (CSRF) 攻擊。 [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) 會自動將權杖插入檢視中，並在使用者提交表單時包含在內。 權杖會由 `ValidateAntiForgeryToken` 屬性進行驗證。 如需 CSRF 的詳細資訊，請參閱[防偽要求](../../security/anti-request-forgery.md)。
 
@@ -126,7 +126,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 ### <a name="security-note-about-overposting"></a>關於大量指派 (overposting) 的安全性注意事項
 
-Scaffold 程式碼在 `Bind` 方法上包含的 `Create` 屬性是在建立案例中防止大量指派 (overposting) 的一種方法。 例如，假設 Student 實體包含了一個 `Secret` 屬性，而您不希望這個網頁設定這個屬性。
+Scaffold 程式碼在 `Create` 方法上包含的 `Bind` 屬性是在建立案例中防止大量指派 (overposting) 的一種方法。 例如，假設 Student 實體包含了一個 `Secret` 屬性，而您不希望這個網頁設定這個屬性。
 
 ```csharp
 public class Student
@@ -141,7 +141,7 @@ public class Student
 
 即使您在網頁上並未包含 `Secret` 欄位，駭客仍有可能會使用像是 Fiddler 等工具，或撰寫一些 JavaScript，來在表單中提交 `Secret` 值。 若沒有 `Bind` 屬性限制模型繫結器在建立 Student 執行個體時能夠使用的欄位，則模型繫結器會揀選 `Secret` 表單值並使用它建立 Student 實體執行個體。 則無論駭客在 `Secret` 表單欄位中指定了什麼值，該值都會更新到您的資料庫中。 下列影響顯示了 Fiddler 工具將 `Secret` 欄位 (其值為 "OverPost") 新增到表單的值中。
 
-![Fiddler 新增 Secret 欄位](crud/_static/fiddler.png)
+![Fiddler 新增 [Secret] 欄位](crud/_static/fiddler.png)
 
 "OverPost" 的值會成功新增到插入資料列的 `Secret` 屬性中，即使您沒有要讓網頁設定該屬性。
 
@@ -151,11 +151,11 @@ public class Student
 
 ### <a name="test-the-create-page"></a>測試 [建立] 頁面
 
-在 *Views/Students/Create.cshtml* 中的程式碼會針對各個欄位使用 `label`、`input`，以及 `span` (以驗證訊息) 標籤協助程式。
+*檢視/學生/Create.cshtml*中的代碼為每個`label`欄`input`位`span`使用和 (用於驗證訊息) 標記説明程式。
 
-執行應用程式，選取 [Students] 索引標籤，然後按一下 [新建]。
+執行應用程式，選取 [Students]**** 索引標籤，然後按一下 [新建]****。
 
-輸入名稱和日期。 嘗試輸入無效的日期 (若您的瀏覽器允許的話)。 （有些瀏覽器會強制您使用日期選擇器）。然後按一下 [**建立**]，以查看錯誤訊息。
+輸入名稱和日期。 嘗試輸入無效的日期 (若您的瀏覽器允許的話)。 (某些瀏覽器強制您使用日期選取器。然後按下 **「創建**」以檢視錯誤訊息。
 
 ![日期驗證錯誤](crud/_static/date-error.png)
 
@@ -163,7 +163,7 @@ public class Student
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=8)]
 
-將日期變更為有效的值，然後按一下 [建立] 來在 [索引] 頁面上查看新增的學生。
+將日期變更為有效的值，然後按一下 [建立]**** 來在 [索引]**** 頁面上查看新增的學生。
 
 ## <a name="update-the-edit-page"></a>更新 [編輯] 頁面
 
@@ -179,7 +179,7 @@ public class Student
 
 新的程式碼會讀取現有的實體，呼叫 `TryUpdateModel` 來[根據使用者在 Post 表單資料中輸入的內容](xref:mvc/models/model-binding)來更新已擷取實體中的欄位。 Entity Framework 的自動變更追蹤會在表單輸入變更的欄位上設定 `Modified` 旗標。 當呼叫 `SaveChanges` 方法時，Entity Framework 會建立 SQL 陳述式來更新資料庫的資料列。 系統會忽略並行衝突，並且只有使用者更新的資料表資料行會在資料庫中獲得更新。 (之後的教學課程會顯示如何處理並行衝突。)
 
-作為防止大量指派的最佳做法，您要允許 [編輯] 頁面更新的欄位會在 `TryUpdateModel` 參數的允許清單中。 （參數清單中欄位清單前面的空字串，是要搭配表單欄位名使用的前置詞）。目前沒有任何其他您要保護的欄位，但會列出您想要讓模型系結器系結的欄位，確保在未來將欄位加入至資料模型時，它們會自動受到保護，直到您明確地將它們加入到這裡。
+作為防止大量指派的最佳做法，您要允許 [編輯]**** 頁面更新的欄位會在 `TryUpdateModel` 參數的允許清單中。 (參數清單中欄位清單前面的空字串是用於表單欄位名稱的前置碼。目前沒有要保護的額外欄位,但列出您希望模型活頁夾綁定的欄位可確保,如果將來向資料模型添加欄位,則這些欄位將自動受到保護,直到您在此處顯式添加欄位。
 
 作為這些變更的結果，HttpPost `Edit` 方法的方法簽章會與 HttpGet `Edit` 方法的簽章一樣；因此，您已將方法重新命名為 `EditPost`。
 
@@ -199,15 +199,15 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 實體可為下列狀態中的其中一個：
 
-* `Added`第 1 課：建立 Windows Azure 儲存體物件{2}。 實體尚未存在於資料庫中。 `SaveChanges` 方法會發出 INSERT 陳述式。
+* `Added`. 實體尚未存在於資料庫中。 `SaveChanges` 方法會發出 INSERT 陳述式。
 
-* `Unchanged`第 1 課：建立 Windows Azure 儲存體物件{2}。 `SaveChanges` 方法針對這個實體不需要進行任何動作。 當您從資料庫讀取一個實體時，實體便會以此狀態開始。
+* `Unchanged`. `SaveChanges` 方法針對這個實體不需要進行任何動作。 當您從資料庫讀取一個實體時，實體便會以此狀態開始。
 
-* `Modified`第 1 課：建立 Windows Azure 儲存體物件{2}。 實體中一部分或全部的屬性值已經過修改。 `SaveChanges` 方法會發出 UPDATE 陳述式。
+* `Modified`. 實體中一部分或全部的屬性值已經過修改。 `SaveChanges` 方法會發出 UPDATE 陳述式。
 
-* `Deleted`第 1 課：建立 Windows Azure 儲存體物件{2}。 實體已遭標示刪除。 `SaveChanges` 方法會發出 DELETE 陳述式。
+* `Deleted`. 實體已遭標示刪除。 `SaveChanges` 方法會發出 DELETE 陳述式。
 
-* `Detached`第 1 課：建立 Windows Azure 儲存體物件{2}。 實體未獲得資料庫內容追蹤。
+* `Detached`. 實體未獲得資料庫內容追蹤。
 
 在桌面應用程式中，狀態變更通常會自動進行設定。 您讀取了一個實體並對其中的一些屬性值進行變更。 這會使得其實體狀態自動變更為 `Modified`。 當您呼叫 `SaveChanges` 時，Entity Framework 會產生 SQL UPDATE 陳述式，並且只會更新您實際變更的屬性。
 
@@ -219,11 +219,11 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 ### <a name="test-the-edit-page"></a>測試 [編輯] 頁面
 
-執行應用程式，選取 [Students] 索引標籤，然後按一下 [編輯] 超連結。
+執行應用程式，選取 [Students]**** 索引標籤，然後按一下 [編輯]**** 超連結。
 
 ![Students [編輯] 頁面](crud/_static/student-edit.png)
 
-變更一部分的資料，然後按一下 [儲存]。 [索引] 頁面便會開啟，而您會看到更新的資料。
+變更一部分的資料，然後按一下 [儲存]****。 [索引]**** 頁面便會開啟，而您會看到更新的資料。
 
 ## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
 
@@ -261,11 +261,11 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 [!code-html[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
-執行應用程式，選取 [Students] 索引標籤，然後按一下**刪除**超連結：
+執行應用程式，選取 [Students]**** 索引標籤，然後按一下**刪除**超連結：
 
 ![刪除確認頁面](crud/_static/student-delete.png)
 
-按一下 **[刪除]** 。 顯示的 [索引] 頁面將不會包含遭刪除的學生。 (您會在並行教學課程中看到錯誤處理程式碼範例的實際情況。)
+按一下 [刪除]****。 顯示的 [索引] 頁面將不會包含遭刪除的學生。 (您會在並行教學課程中看到錯誤處理程式碼範例的實際情況。)
 
 ## <a name="close-database-connections"></a>關閉資料庫連線
 
@@ -289,7 +289,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 * 您想要連結到一個實體以更新它，但稍早之前您才為了不同的目的擷取過相同的實體。 由於實體已由資料庫內容進行追蹤，您無法連結到您想要變更的實體。 處理這種情況的一種方法，便是在稍早之前的查詢中呼叫 `AsNoTracking`。
 
-如需詳細資訊，請參閱[追蹤與不追蹤](/ef/core/querying/tracking)。
+有關詳細資訊,請參閱[追蹤與無追蹤](/ef/core/querying/tracking)。
 
 ## <a name="get-the-code"></a>取得程式碼
 
@@ -306,7 +306,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 > * 更新 [刪除] 頁面
 > * 關閉資料庫連線
 
-若要了解如何藉由新增排序、篩選及分頁來擴充 [索引] 頁面的功能，請前往下一個教學課程。
+若要了解如何藉由新增排序、篩選及分頁來擴充 [索引]**** 頁面的功能，請前往下一個教學課程。
 
 > [!div class="nextstepaction"]
-> [下一步：排序、篩選和分頁](sort-filter-page.md)
+> [下一頁:排序、篩選和分頁](sort-filter-page.md)

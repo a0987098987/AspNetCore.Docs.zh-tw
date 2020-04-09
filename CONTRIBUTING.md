@@ -4,7 +4,7 @@
 
 ## <a name="how-to-make-a-simple-correction-or-suggestion"></a>如何提出簡單的修正或建議
 
-文章會以 Markdown 檔案形式儲存在存放庫中。 您可以在瀏覽器中，選取瀏覽器視窗右上角的 [編輯] 連結，對 Markdown 檔案內容進行簡易變更。 （在窄的瀏覽器視窗中，展開 [**選項**] 列以查看 [**編輯**] 連結）。遵循指示來建立提取要求（PR）。 我們將檢閱 PR 並接受它，或建議變更。
+文章會以 Markdown 檔案形式儲存在存放庫中。 您可以在瀏覽器中，選取瀏覽器視窗右上角的 [編輯]**** 連結，對 Markdown 檔案內容進行簡易變更。 (在狹窄的瀏覽器視窗中,展開**選項**列以查看 **"編輯"** 連結。按照說明創建拉取請求 (PR)。 我們將檢閱 PR 並接受它，或建議變更。
 
 ## <a name="how-to-make-a-more-complex-submission"></a>如何進行更複雜的提交
 
@@ -69,7 +69,7 @@
 
 文章通常會包含程式碼片段，作重點說明之用。 DFM 可讓您將程式碼複製到 Markdown 檔案中，或參考不同的程式碼檔案。 建議盡可能使用不同的程式碼檔案，將程式碼中的錯誤機率降到最低。 程式碼檔案會儲存在存放庫 (使用於先前範例專案所述的資料夾結構) 中。 
 
-下列範例說明 [configuration/index.md](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html#code-snippet) 檔案中所使用的 *DFM 程式碼片段語法*。
+下列範例說明 *configuration/index.md* 檔案中所使用的 [DFM 程式碼片段語法](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html#code-snippet)。
 
 若要將完整程式碼檔案轉譯為程式碼片段：
 
@@ -112,7 +112,7 @@ DocFX 需要：
 
 ### <a name="windows-instructions"></a>Windows 指示
 
-* 請從 *DocFX 版本*下載並解壓縮 [docfx.zip](https://github.com/dotnet/docfx/releases)。
+* 請從 [DocFX 版本](https://github.com/dotnet/docfx/releases)下載並解壓縮 *docfx.zip*。
 * 將 DocFX 新增至您的 PATH。
 * 在命令殼層中，巡覽至包含 *docfx.json* 檔案的資料夾 (若是 ASP.NET 內容則為 *aspnet*；若是 ASP.NET Core 內容則為 *aspnetcore*)，然後執行下列命令：
 
@@ -149,7 +149,7 @@ DocFX 需要：
 
 ## <a name="voice-and-tone"></a>語態和語氣
 
-我們撰寫文件的目標是盡可能讓愈多使用者輕易即可了解愈好。 為此，我們制定了書寫樣式方針，並要求參與者務必遵循。 如需詳細資訊，請參閱 .NET 存放庫中的 [Voice and tone guidelines](https://github.com/dotnet/docs/blob/master/styleguide/voice-tone.md) (語態和語氣方針)。
+我們撰寫文件的目標是盡可能讓越多使用者輕鬆了解越好。 為此，我們制定了書寫樣式方針，並要求參與者務必遵循。 如需詳細資訊，請參閱 .NET 存放庫中的 [Voice and tone guidelines](https://github.com/dotnet/docs/blob/master/styleguide/voice-tone.md) (語態和語氣方針)。
 
 ## <a name="microsoft-writing-style-guide"></a>Microsoft 書寫樣式指南
 

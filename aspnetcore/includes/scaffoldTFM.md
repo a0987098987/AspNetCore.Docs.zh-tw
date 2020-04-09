@@ -1,4 +1,4 @@
-如果您遇到架構錯誤，請確認目標 Framework 標記（TFM）符合專案檔中的 NuGet 套件版本。 例如，下列專案檔包含適用于 .NET Core 的3.1 版和列出的 NuGet 套件：
+如果出現基架錯誤,請驗證目標框架 Moniker (TFM) 與專案檔中的 NuGet 套件版本匹配。 例如,以下項目檔包含 .NET Core 的版本 3.1 和列出的 NuGet 套件:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">

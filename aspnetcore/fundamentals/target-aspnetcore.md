@@ -1,62 +1,62 @@
 ---
-title: 在類別庫中使用 ASP.NET Core Api
+title: 在類別庫中使用ASP.NET核心 API
 author: scottaddie
-description: 瞭解如何在類別庫中使用 ASP.NET Core Api。
+description: 瞭解如何在類庫中使用ASP.NET核心 API。
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/16/2019
 no-loc:
 - Blazor
 uid: fundamentals/target-aspnetcore
-ms.openlocfilehash: 72096fc2f03033dfe8325b5129e074913a2fbd1f
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 5374d7eec4334223a4bba7ee26cb6e2f208ed20b
+ms.sourcegitcommit: f0aeeab6ab6e09db713bb9b7862c45f4d447771b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78658064"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80977193"
 ---
-# <a name="use-aspnet-core-apis-in-a-class-library"></a>在類別庫中使用 ASP.NET Core Api
+# <a name="use-aspnet-core-apis-in-a-class-library"></a>在類別庫中使用ASP.NET核心 API
 
 作者：[Scott Addie](https://github.com/scottaddie)
 
-本檔提供在類別庫中使用 ASP.NET Core Api 的指引。 如需所有其他程式庫指引，請參閱[開放原始碼程式庫指引](/dotnet/standard/library-guidance/)。
+本文件提供有關在類庫中使用ASP.NET核心 API 的指導。 有關所有其他庫指南,請參閱[開源庫指南](/dotnet/standard/library-guidance/)。
 
-## <a name="determine-which-aspnet-core-versions-to-support"></a>判斷支援的 ASP.NET Core 版本
+## <a name="determine-which-aspnet-core-versions-to-support"></a>確定哪些ASP.NET核心版本要支援
 
-ASP.NET Core 遵守[.Net Core 支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。 判斷要在程式庫中支援的 ASP.NET Core 版本時，請參閱支援原則。 程式庫應該：
+ASP.NET核心遵守[.NET 核心支援策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。 在確定庫中要支援哪些ASP.NET核心版本時,請參閱支援策略。 庫應:
 
-* 請致力於支援分類為*長期支援*（LTS）的所有 ASP.NET Core 版本。
-* 不是為了支援分類為*生命週期結束*（EOL）的 ASP.NET Core 版本而感到義務。
+* 努力支援分類為*長期支援*(LTS) 的所有 ASP.NET 核心版本。
+* 不覺得有義務支援ASP.NET核心版本歸類為*生命終止*(EOL)。
 
-當 ASP.NET Core 的預覽版本可供使用時，會在[aspnet/公告](https://github.com/aspnet/Announcements/issues)GitHub 存放庫中公佈重大變更。 在開發架構功能時，可以執行程式庫的相容性測試。
+當ASP.NET核心的預覽版本可用時,重大更改將張貼在[aspnet/公告](https://github.com/aspnet/Announcements/issues)GitHub 儲存庫中。 在開發框架功能時,可以對庫進行相容性測試。
 
-## <a name="use-the-aspnet-core-shared-framework"></a>使用 ASP.NET Core 共用架構
+## <a name="use-the-aspnet-core-shared-framework"></a>使用ASP.NET核心共用框架
 
-隨著 .NET Core 3.0 的發行，許多 ASP.NET Core 元件不再發佈至 NuGet 作為套件。 相反地，元件會包含在與 .NET Core SDK 和執行時間安裝程式一起安裝的 `Microsoft.AspNetCore.App` 共用架構中。 如需不再發佈的封裝清單，請參閱[移除過時的套件參考](xref:migration/22-to-30#remove-obsolete-package-references)。
+隨著 .NET Core 3.0 的發佈,許多ASP.NET核心程式集不再作為包發佈到 NuGet。 相反,程式集包含在共用框架中`Microsoft.AspNetCore.App`,該框架與 .NET Core SDK 和運行時安裝程式一起安裝。 有關不再發布的套件的清單,請參閱[刪除過時的套件參考](xref:migration/22-to-30#remove-obsolete-package-references)。
 
-從 .NET Core 3.0，使用 `Microsoft.NET.Sdk.Web` MSBuild SDK 的專案會隱含地參考共用架構。 使用 `Microsoft.NET.Sdk` 或 `Microsoft.NET.Sdk.Razor` SDK 的專案必須參考 ASP.NET Core，才能在共用架構中使用 ASP.NET Core Api。
+自 .NET Core 3.0 起`Microsoft.NET.Sdk.Web`,使用 MSBuild SDK 的專案隱式引用共用框架。 使用`Microsoft.NET.Sdk`或`Microsoft.NET.Sdk.Razor`SDK 的項目必須引用 ASP.NET 核心在共用框架中使用 ASP.NET 核心 API。
 
-若要參考 ASP.NET Core，請將下列 `<FrameworkReference>` 元素新增至您的專案檔：
+要參考ASP.NET核心,請向專案`<FrameworkReference>`檔案加入以下元素:
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-basic-library.csproj?highlight=8)]
 
-只有以 .NET Core 3.x 為目標的專案才支援以這種方式參考 ASP.NET Core。
+僅支援以這種方式引用ASP.NET核心。""專案的目標是 .NET Core 3.x。
 
-## <a name="include-blazor-extensibility"></a>包含 Blazor 擴充性
+## <a name="include-blazor-extensibility"></a>包括布拉佐可擴充性
 
-Blazor 支援 WebAssembly （WASM）和伺服器[裝載模型](xref:blazor/hosting-models)。 除非有特定的理由不這麼做，否則[Razor 元件](xref:blazor/components)程式庫應該支援這兩種裝載模型。 Razor 元件程式庫必須使用[NET.TCP sdk](xref:razor-pages/sdk)。
+布拉佐爾支援網路組裝 (WASM) 與伺服器[託管模型](xref:blazor/hosting-models)。 除非有特定原因,否則[Razor 元件](xref:blazor/components)庫應支援這兩個託管模型。 Razor 元件庫必須使用[Microsoft.NET.Sdk.Razor SDK](xref:razor-pages/sdk)。
 
-### <a name="support-both-hosting-models"></a>同時支援這兩種裝載模型
+### <a name="support-both-hosting-models"></a>支援兩種託管模式
 
-若要支援來自[Blazor 伺服器](xref:blazor/hosting-models#blazor-server)和[Blazor WASM](xref:blazor/hosting-models#blazor-webassembly)專案的 Razor 元件耗用量，請針對您的編輯器使用下列指示。
+要支援[Blazor 伺服器](xref:blazor/hosting-models#blazor-server)和[Blazor WASM](xref:blazor/hosting-models#blazor-webassembly)專案的 Razor 元件消耗,請使用以下說明為您的編輯器。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-使用 [ **Razor 類別庫**] 專案範本。 應取消選取範本的 [**支援頁面和流覽**器] 核取方塊。
+使用**Razor 類庫**專案範本。 應取消選中範本的支持**頁面和視圖**複選框。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-在整合式終端機中執行下列命令：
+在整合終端機中執行以下指令:
 
 ```dotnetcli
 dotnet new razorclasslib
@@ -64,63 +64,63 @@ dotnet new razorclasslib
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-使用 [ **Razor 類別庫**] 專案範本。
+使用**Razor 類庫**專案範本。
 
 ---
 
-從範本產生的專案會執行下列動作：
+從樣本產生的項目執行以下操作:
 
-* 目標 .NET Standard 2.0。
-* 將 `RazorLangVersion` 屬性設定為 `3.0`。 `3.0` 是 .NET Core 3.x 的預設值。
-* 新增下列套件參考：
-  * [AspNetCore 元件](https://www.nuget.org/packages/Microsoft.AspNetCore.Components)
-  * [AspNetCore。 Web](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Web)
+* 目標 .NET 標準 2.0.
+* 將 `RazorLangVersion` 屬性設定為 `3.0`。 `3.0`是 .NET 核心 3.x 的預設值。
+* 新增以下包引言:
+  * [微軟.AspNetCore.元件](https://www.nuget.org/packages/Microsoft.AspNetCore.Components)
+  * [微軟.AspNetCore.元件.Web](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Web)
 
 例如：
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netstandard2.0-razor-components-library.csproj)]
 
-### <a name="support-a-specific-hosting-model"></a>支援特定的主控模型
+### <a name="support-a-specific-hosting-model"></a>支援特定的託管模型
 
-支援單一 Blazor 裝載模型的情況較不常見。 例如，僅支援來自[Blazor 伺服器](xref:blazor/hosting-models#blazor-server)專案的 Razor 元件耗用量：
+支援單個 Blazor 託管模式並不常見。 例如,要僅支援[Blazor Server](xref:blazor/hosting-models#blazor-server)專案中的 Razor 元件消耗:
 
-* 以 .NET Core 3.x 為目標。
-* 新增共用架構的 `<FrameworkReference>` 元素。
+* 目標 .NET 核心 3.x.
+* 為`<FrameworkReference>`共用框架添加元素。
 
 例如：
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-razor-components-library.csproj)]
 
-如需包含 Razor 元件之程式庫的詳細資訊，請參閱[ASP.NET Core Razor 元件類別庫](xref:blazor/class-libraries)。
+有關包含 Razor 元件的函式庫的詳細資訊,請參閱[ASP.NET 核心剃刀元件類庫](xref:blazor/class-libraries)。
 
-## <a name="include-mvc-extensibility"></a>包含 MVC 擴充性
+## <a name="include-mvc-extensibility"></a>包含 MVC 可擴充性
 
-本節概述程式庫的建議，包括：
+本節概述了對庫的建議,其中包括:
 
-* [Razor views 或 Razor Pages](#razor-views-or-razor-pages)
-* [標記協助程式](#tag-helpers)
+* [剃刀檢視或剃刀頁面](#razor-views-or-razor-pages)
+* [標記說明器](#tag-helpers)
 * [檢視元件](#view-components)
 
-本節不會討論多個目標，以支援多個版本的 MVC。 如需支援多個 ASP.NET Core 版本的指引，請參閱[支援多個 ASP.NET Core 版本](#support-multiple-aspnet-core-versions)。
+本節不討論多目標以支援多個版本的 MVC。 有關支援多個ASP.NET核心版本的指南,請參閱[支援多個ASP.NET核心版本](#support-multiple-aspnet-core-versions)。
 
-### <a name="razor-views-or-razor-pages"></a>Razor views 或 Razor Pages
+### <a name="razor-views-or-razor-pages"></a>剃刀檢視或剃刀頁面
 
-包含[Razor views](xref:mvc/views/overview)或[Razor Pages](xref:razor-pages/index)的專案必須使用[Microsoft. net.tcp sdk](xref:razor-pages/sdk)。
+包含 Razor[檢視](xref:mvc/views/overview)或[Razor 頁面](xref:razor-pages/index)的項目必須使用[Microsoft.NET.Sdk.Razor SDK](xref:razor-pages/sdk)。
 
-如果專案是以 .NET Core 3.x 為目標，則需要：
+如果項目的目標是 .NET Core 3.x,則需要:
 
-* `AddRazorSupportForMvc` MSBuild 屬性設定為 `true`。
-* 共用架構的 `<FrameworkReference>` 元素。
+* 設定為`AddRazorSupportForMvc``true`的 MSBuild 屬性設定為 。
+* `<FrameworkReference>`共用框架的元素。
 
-**Razor 類別庫**專案範本滿足上述以 .net Core 3.x 為目標的專案需求。 針對您的編輯器使用下列指示。
+**Razor 函式庫**專案樣本滿足針對 .NET Core 3.x 的專案的上述要求。 對編輯器使用以下說明。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-使用 [ **Razor 類別庫**] 專案範本。 應選取範本的 [**支援頁面和流覽**器] 核取方塊。
+使用**Razor 類庫**專案範本。 應選擇範本的支持**頁面和視圖**複選框。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-在整合式終端機中執行下列命令：
+在整合終端機中執行以下指令:
 
 ```dotnetcli
 dotnet new razorclasslib -s
@@ -128,7 +128,7 @@ dotnet new razorclasslib -s
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-目前沒有任何專案範本支援。
+目前不支援專案範本。
 
 ---
 
@@ -136,101 +136,101 @@ dotnet new razorclasslib -s
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-razor-views-pages-library.csproj)]
 
-如果專案是以 .NET Standard 為目標，則需要[AspNetCore 的 Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc)封裝參考。 `Microsoft.AspNetCore.Mvc` 套件已移至 ASP.NET Core 3.0 中的共用架構，因此不再發佈。 例如：
+如果專案以 .NET 標準為目標,則需要[Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc)包引用。 該`Microsoft.AspNetCore.Mvc`包在ASP.NET Core 3.0 中進入共用框架,因此不再發佈。 例如：
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netstandard2.0-razor-views-pages-library.csproj?highlight=8)]
 
 ### <a name="tag-helpers"></a>標籤協助程式
 
-包含[標記](xref:mvc/views/tag-helpers/intro)協助程式的專案應該使用 `Microsoft.NET.Sdk` SDK。 如果目標是 .NET Core 3.x，請加入共用架構的 `<FrameworkReference>` 元素。 例如：
+包含[標記說明器](xref:mvc/views/tag-helpers/intro)的專案應`Microsoft.NET.Sdk`使用 SDK。 如果以 .NET Core`<FrameworkReference>`3.x 為目標,則為共用框架添加一個元素。 例如：
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-basic-library.csproj)]
 
-如果目標 .NET Standard （以支援早于 ASP.NET Core 3.x 的版本），請將套件參考新增至[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor)。 `Microsoft.AspNetCore.Mvc.Razor` 套件已移至共用架構中，因此不會再發佈。 例如：
+如果定位為 .NET 標準(以支援ASP.NET Core 3.x 之前的版本),則添加對[Microsoft.AspNetCore.Mvc.Razor](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor)的包引用。 該`Microsoft.AspNetCore.Mvc.Razor`包移動到共用框架中,因此不再發佈。 例如：
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netstandard2.0-tag-helpers-library.csproj)]
 
 ### <a name="view-components"></a>檢視元件
 
-包含[View 元件](xref:mvc/views/view-components)的專案應該使用 `Microsoft.NET.Sdk` SDK。 如果目標是 .NET Core 3.x，請加入共用架構的 `<FrameworkReference>` 元素。 例如：
+包含[檢視元件](xref:mvc/views/view-components)的專案應使用`Microsoft.NET.Sdk`SDK。 如果以 .NET Core`<FrameworkReference>`3.x 為目標,則為共用框架添加一個元素。 例如：
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-basic-library.csproj)]
 
-如果目標 .NET Standard （以支援早于 ASP.NET Core 3.x 的版本），請將套件參考新增至[AspNetCore ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures)。 `Microsoft.AspNetCore.Mvc.ViewFeatures` 套件已移至共用架構中，因此不會再發佈。 例如：
+如果針對 .NET 標準(以支援早於 ASP.NET Core 3.x 的版本),則添加指向[Microsoft.AspNetCore.Mvc.View 功能](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures)的包引用。 該`Microsoft.AspNetCore.Mvc.ViewFeatures`包移動到共用框架中,因此不再發佈。 例如：
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netstandard2.0-view-components-library.csproj)]
 
-## <a name="support-multiple-aspnet-core-versions"></a>支援多個 ASP.NET Core 版本
+## <a name="support-multiple-aspnet-core-versions"></a>支援多個ASP.NET核心版本
 
-撰寫支援多個 ASP.NET Core 變體的程式庫時，需要多目標。 假設有一個標記協助程式程式庫必須支援下列 ASP.NET Core 變體的情況：
+需要多目標來編寫支援ASP.NET核心的多個變體的庫。 請考慮標記說明器庫必須支援以下ASP.NET核心變體的情況:
 
-* ASP.NET Core 2.1 目標 .NET Framework 4.6。1
-* 以 .NET Core 2.x 為目標的 ASP.NET Core 2。x
-* 以 .NET Core 3.x 為目標的 ASP.NET Core 3。x
+* ASP.NET核心 2.1 目標 .NET 框架 4.6.1
+* ASP.NET核心 2.x 目標 .NET 核心 2.x
+* ASP.NET核心 3.x 目標 .NET 核心 3.x
 
-下列專案檔透過 `TargetFrameworks` 屬性來支援這些變體：
+以下項目檔使用`TargetFrameworks`屬性支援這些變體:
 
 [!code-xml[](target-aspnetcore/samples/multi-tfm/recommended-tag-helpers-library.csproj)]
 
-使用上述專案檔：
+使用前面的項目檔:
 
-* 會為所有取用者新增 `Markdig` 套件。
-* 針對以 .NET Framework 4.6.1 或更新版本或 .NET Core 2.x 為目標的取用者，會加入[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor)的參考。 由於回溯相容性，套件的版本2.1.0 會與 ASP.NET Core 2.2 搭配運作。
-* 針對以 .NET Core 3.x 為目標的取用者，會參考共用架構。 `Microsoft.AspNetCore.Mvc.Razor` 套件包含在共用架構中。
+* 該`Markdig`包將針對所有消費者添加。
+* 為面向 .NET 框架 4.6.1 或更高版本或 .NET Core 2.x 的消費者添加了對[Microsoft.AspNetCore.Mvc.Razor](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor)的引用。 由於向後相容性,包的版本 2.1.0 與 ASP.NET Core 2.2 相容。
+* 面向 .NET Core 3.x 的消費者引用了共用框架。 該`Microsoft.AspNetCore.Mvc.Razor`包包含在共用框架中。
 
-或者，.NET Standard 2.0 可能會以為目標，而不是以 .NET Core 2.1 和 .NET Framework 4.6.1 為目標：
+或者,.NET 標準 2.0 可以針對目標,而不是同時定位 .NET 核心 2.1 和 .NET 框架 4.6.1:
 
 [!code-xml[](target-aspnetcore/samples/multi-tfm/alternative-tag-helpers-library.csproj?highlight=4)]
 
-使用上述專案檔時，會有下列注意事項：
+使用前面的項目檔,存在以下注意事項:
 
-* 由於程式庫只包含標籤協助程式，因此以 ASP.NET Core 執行的特定平臺為目標會更直接： .NET Core 和 .NET Framework。 標籤協助程式無法供其他 .NET Standard 2.0 相容的目標架構（例如 Unity、UWP 和 Xamarin）使用。
-* 使用 .NET Framework 中的 .NET Standard 2.0，會有一些在 .NET Framework 4.7.2 中已經解決的問題。 您可以藉由將目標設為 .NET Framework 4.6.1，藉由使用 .NET Framework 4.6.1 透過4.7.1 來改善取用者的體驗。
+* 由於庫僅包含標記説明器,因此將目標ASP.NET Core 運行的特定平臺定位起來更為簡單:.NET Core 和 .NET 框架。 標記説明器不能由其他符合 .NET 標準 2.0 的目標框架(如 Unity、UWP 和 Xamarin)使用。
+* 使用 .NET Framework 中的 .NET Standard 2.0，會有一些在 .NET Framework 4.7.2 中已經解決的問題。 您可以通過定位 .NET 框架 4.6.1 來改善使用 .NET 框架 4.6.1 到 4.7.1 的消費者體驗。
 
-如果您的程式庫需要呼叫平臺特定的 Api，請以特定的 .NET 部署為目標，而不是 .NET Standard。 如需詳細資訊，請參閱[多目標](/dotnet/standard/library-guidance/cross-platform-targeting#multi-targeting)。
+如果您的庫需要調用特定於平臺的 API,請針對特定的 .NET 實現而不是 .NET 標準。 有關詳細資訊,請參閱[多目標](/dotnet/standard/library-guidance/cross-platform-targeting#multi-targeting)。
 
 ## <a name="use-an-api-that-hasnt-changed"></a>使用未變更的 API
 
-想像您要將中介軟體程式庫從 .NET Core 2.2 升級至3.0 的案例。 程式庫中使用的 ASP.NET Core 中介軟體 Api 未在 ASP.NET Core 2.2 和3.0 之間變更。 若要繼續支援 .NET Core 3.0 中的中介軟體程式庫，請執行下列步驟：
+設想一個方案,您將中間件庫從 .NET Core 2.2 升級到 3.0。 庫中正在使用的ASP.NET核心中間件 API 在 ASP.NET 酷 2.2 和 3.0 之間沒有變化。 要繼續支援 .NET Core 3.0 中的中間件庫,請執行以下步驟:
 
-* 遵循[標準程式庫指引](/dotnet/standard/library-guidance/)。
-* 如果對應的元件不存在於共用架構中，則為每個 API 的 NuGet 套件新增套件參考。
+* 遵循[標準庫指南](/dotnet/standard/library-guidance/)。
+* 如果共用框架中不存在相應的程式集,則為每個 API 的 NuGet 包添加包引用。
 
 ## <a name="use-an-api-that-changed"></a>使用已變更的 API
 
-假設您要將程式庫從 .NET Core 2.2 升級至 .NET Core 3.0。 程式庫中使用的 ASP.NET Core API 在 ASP.NET Core 3.0 中有[重大變更](/dotnet/core/compatibility/breaking-changes)。 請考慮是否可以將程式庫改寫成不要在所有版本中使用中斷的 API。
+設想一個將庫從 .NET Core 2.2 升級到 .NET Core 3.0 的方案。 函式庫中正在使用ASP.NET核心 API 在 ASP.NET Core 3.0[中發生重大變更](/dotnet/core/compatibility/breaking-changes)。 考慮是否可以重寫庫,以便在所有版本中不使用損壞的 API。
 
-如果您可以重新撰寫程式庫，請執行此動作，並繼續以較早的目標架構（例如，.NET Standard 2.0 或 .NET Framework 4.6.1）為目標，並搭配套件參考。
+如果可以重寫庫,請重寫庫,然後繼續使用包引用來定位較早的目標框架(例如 .NET 標準 2.0 或 .NET 框架 4.6.1)。
 
-如果您無法重寫程式庫，請採取下列步驟：
+如果無法重寫庫,請執行以下步驟:
 
-* 新增 .NET Core 3.0 的目標。
-* 新增共用架構的 `<FrameworkReference>` 元素。
-* 使用[#if 預處理器](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if)指示詞搭配適當的目標 framework 符號，以有條件地編譯器代碼。
+* 添加 .NET 核心 3.0 的目標。
+* 為`<FrameworkReference>`共用框架添加元素。
+* 使用帶有相應目標框架符號[#if预处理器指令](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if)有條件地編譯代碼。
 
-例如，HTTP 要求和回應資料流程的同步讀取和寫入預設會停用，從 ASP.NET Core 3.0。 ASP.NET Core 2.2 預設支援同步行為。 假設有一個中介軟體程式庫，在發生 IO 時應該啟用同步讀取和寫入。 程式庫應該括住程式碼，以在適當的預處理器指示詞中啟用同步功能。 例如：
+例如,默認情況下,從ASP.NET Core 3.0 起,HTTP 請求和回應流的同步讀取和寫入將禁用。 默認情況下,ASP.NET Core 2.2 支援同步行為。 考慮一個中間件庫,其中應啟用同步讀取和寫入,其中發生I/O。 庫應包含代碼,以便在相應的預處理器指令中啟用同步功能。 例如：
 
 [!code-csharp[](target-aspnetcore/samples/middleware.cs?highlight=9-24)]
 
-## <a name="use-an-api-introduced-in-30"></a>使用3.0 中引進的 API
+## <a name="use-an-api-introduced-in-30"></a>使用 3.0 中引入的 API
 
-假設您想要使用 ASP.NET Core 3.0 中引進的 ASP.NET Core API。 請考慮下列問題：
+假設您要使用ASP.NET Core 3.0 中引入的ASP.NET核心 API。 請考慮下列問題：
 
-1. 程式庫的功能是否需要新的 API？
-1. 程式庫可以用不同的方式來執行這項功能嗎？
+1. 庫在功能上是否需要新的 API?
+1. 庫能否以不同的方式實現此功能?
 
-如果程式庫的功能需要 API，而且沒有任何方法可將它執行于下層：
+如果庫在功能上需要 API,並且無法在級別下實現它:
 
-* 僅以 .NET Core 2.x 為目標。
-* 新增共用架構的 `<FrameworkReference>` 元素。
+* 僅目標 .NET 核心 3.x。
+* 為`<FrameworkReference>`共用框架添加元素。
 
-如果程式庫可以使用不同的方式來執行功能：
+如果庫可以以不同的方式實現該功能:
 
-* 新增 .NET Core 3.x 做為目標架構。
-* 新增共用架構的 `<FrameworkReference>` 元素。
-* 使用[#if 預處理器](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if)指示詞搭配適當的目標 framework 符號，以有條件地編譯器代碼。
+* 將 .NET Core 3.x 添加為目標框架。
+* 為`<FrameworkReference>`共用框架添加元素。
+* 使用帶有相應目標框架符號[#if预处理器指令](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if)有條件地編譯代碼。
 
-例如，下列標記協助程式會使用 ASP.NET Core 3.0 中引進的 <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> 介面。 以 .NET Core 3.0 為目標的取用者，會執行 `NETCOREAPP3_0` 目標 framework 符號所定義的程式碼路徑。 標籤協助程式的函式參數類型會變更為 .NET Core 2.1 和 .NET Framework 4.6.1 取用者的 <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment>。 這是必要的變更，因為 ASP.NET Core 3.0 標示 `IHostingEnvironment` 為過時，並建議 `IWebHostEnvironment` 取代。
+例如,以下標記説明程式使用<xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment>ASP.NET Core 3.0 中引入的介面。 面向 .NET Core 3.0`NETCOREAPP3_0`的使用者執行 目標框架符號定義的代碼路徑。 標記説明器的建構函數參數類型更改為<xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment>.NET Core 2.1 和 .NET 框架 4.6.1 消費者。 這一更改是必要的,因為ASP.NET Core `IHostingEnvironment` 3.0`IWebHostEnvironment`標記為過時,建議作為替換。
 
 ```csharp
 [HtmlTargetElement("script", Attributes = "asp-inline")]
@@ -251,15 +251,15 @@ public class ScriptInliningTagHelper : TagHelper
 }
 ```
 
-下列多目標專案檔支援此標記協助程式案例：
+以下多目標項目檔案支援此標記説明程式方案:
 
 [!code-xml[](target-aspnetcore/samples/multi-tfm/recommended-tag-helpers-library.csproj)]
 
-## <a name="use-an-api-removed-from-the-shared-framework"></a>使用從共用架構移除的 API
+## <a name="use-an-api-removed-from-the-shared-framework"></a>使用從共享框架中移除的 API
 
-若要使用已從共用架構中移除的 ASP.NET Core 元件，請新增適當的套件參考。 如需 ASP.NET Core 3.0 中從共用架構移除的套件清單，請參閱[移除過時的套件參考](xref:migration/22-to-30#remove-obsolete-package-references)。
+要使用從共用框架中刪除的ASP.NET核心程式集,添加相應的包引用。 有關從 ASP.NET Core 3.0 中的共用框架中移除的套件的清單,請參閱[刪除過時的包參考](xref:migration/22-to-30#remove-obsolete-package-references)。
 
-例如，若要新增 Web API 用戶端：
+例如,要新增 Web API 用戶端:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -283,5 +283,5 @@ public class ScriptInliningTagHelper : TagHelper
 
 * <xref:razor-pages/ui-class>
 * <xref:blazor/class-libraries>
-* [.NET 執行支援](/dotnet/standard/net-standard#net-implementation-support)
+* [.NET 實作支援](/dotnet/standard/net-standard#net-implementation-support)
 * [.NET 支援原則](https://dotnet.microsoft.com/platform/support/policy)

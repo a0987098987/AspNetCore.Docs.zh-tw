@@ -11,11 +11,11 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 
 上述命令會新增：
 
-* [Aspnet-codegenerator](xref:fundamentals/tools/dotnet-aspnet-codegenerator)的「架構」工具。
-* .NET Core CLI 的 Entity Framework Core 工具。
+* [阿斯普內特代碼產生器文手架工具](xref:fundamentals/tools/dotnet-aspnet-codegenerator)。
+* .NET 核心 CLI 的實體框架核心工具。
 * EF Core SQLite 提供者，該提供者會將 EF Core 套件作為相依性安裝。
 * Scaffolding `Microsoft.VisualStudio.Web.CodeGeneration.Design` 和 `Microsoft.EntityFrameworkCore.SqlServer` 需要的套件。
 
-如需允許應用程式依環境設定其資料庫內容的多個環境設定的指引，請參閱 <xref:fundamentals/environments#environment-based-startup-class-and-methods>。
+有關允許應用按環境設定其資料庫上下文的多個環境配置的指導,請參閱<xref:fundamentals/environments#environment-based-startup-class-and-methods>。
 
 [!INCLUDE[](~/includes/scaffoldTFM.md)]

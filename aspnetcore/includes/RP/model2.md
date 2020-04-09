@@ -6,7 +6,7 @@
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Data/RazorPagesMovieContext.cs)]
 
-上述程式碼會建立實體集的 `DbSet` 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表，而實體則對應至資料表中的資料列。 在後續步驟中新增相依性之前，程式碼不會進行編譯。
+上述程式碼會建立實體集的 `DbSet` 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表，而實體則對應至資料表中的資料列。 在以後的步驟中添加依賴項之前,代碼不會編譯。
 
 <a name="cs"></a>
 
@@ -26,7 +26,7 @@
 
 ### <a name="register-the-database-context"></a>登錄資料庫內容
 
-在 `using`Startup.cs*最上方新增下列* 陳述式：
+在 *Startup.cs* 最上方新增下列 `using` 陳述式：
 
 ```csharp
 using RazorPagesMovie.Data;
@@ -45,7 +45,7 @@ using Microsoft.EntityFrameworkCore;
 
 ### <a name="add-required-nuget-packages"></a>新增必要的 NuGet 封裝
 
-執行下列 .NET Core CLI 命令，將 SQLite 和 Nswag.codegeneration.csharp 新增至專案：
+執行以下 .NET 核心 CLI 指令,向專案新增 SQLite 和代碼產生.設計:
 
 ```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.SQLite
@@ -59,7 +59,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 
 ### <a name="register-the-database-context"></a>登錄資料庫內容
 
-在 `using`Startup.cs*最上方新增下列* 陳述式：
+在 *Startup.cs* 最上方新增下列 `using` 陳述式：
 
 ```csharp
 using RazorPagesMovie.Models;

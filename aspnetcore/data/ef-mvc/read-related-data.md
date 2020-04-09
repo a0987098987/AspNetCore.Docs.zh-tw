@@ -1,5 +1,5 @@
 ---
-title: 教學課程：讀取相關資料-使用 EF Core ASP.NET MVC
+title: 教學:讀取相關資料 - 使用 EF 核心ASP.NET MVC
 description: 在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 author: rick-anderson
 ms.author: riande
@@ -7,13 +7,13 @@ ms.date: 09/28/2019
 ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
 ms.openlocfilehash: a6e63723101ab09219db81ee9796c3938a612226
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78657105"
 ---
-# <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>教學課程：讀取相關資料-使用 EF Core ASP.NET MVC
+# <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>教學:讀取相關資料 - 使用 EF 核心ASP.NET MVC
 
 在上一個教學課程中，您已完成 School 資料模型。 在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 
@@ -67,29 +67,29 @@ Course 實體包括一個導覽屬性，其中包含已指派課程之部門的 
 
 ![新增課程控制器](read-related-data/_static/add-courses-controller.png)
 
-開啟 *CoursesController.cs*，並檢查 `Index` 方法。 自動 Scaffolding 已使用 `Department` 方法，針對 `Include` 導覽屬性指定積極式載入。
+開啟 *CoursesController.cs*，並檢查 `Index` 方法。 自動 Scaffolding 已使用 `Include` 方法，針對 `Department` 導覽屬性指定積極式載入。
 
 以下列程式碼取代 `Index` 方法，以針對傳回 Course 實體的 `IQueryable` 使用更合適的名稱 (`courses` 而不是 `schoolContext`)：
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_RevisedIndexMethod)]
 
-開啟 *Views/Courses/Index.cshtml*，並以下列程式碼取代範本程式碼。 所做的變更已醒目標示：
+開啟 *Views/Courses/Index.cshtml*，並以下列程式碼取代範本程式碼。 所做的變更已醒目提示：
 
 [!code-html[](intro/samples/cu/Views/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
 
 您已對包含 Scaffold 的程式碼進行下列變更：
 
-* 已將標題從 Index 變更為 Courses。
+* 已將標題從「索引」) 變更為「課程」。
 
-* 新增顯示  **屬性值的 [編號]** `CourseID` 資料行。 主索引鍵預設不會進行 Scaffold，因為它們對終端使用者通常沒有任何意義。 不過，在此情況下主索引鍵有意義，因此您想要顯示它。
+* 新增顯示 `CourseID` 屬性值的 [編號]**** 資料行。 主索引鍵預設不會進行 Scaffold，因為它們對終端使用者通常沒有任何意義。 不過，在此情況下主索引鍵有意義，因此您想要顯示它。
 
-* 變更 [部門] 資料行來顯示部門名稱。 此程式碼會顯示已載入到 `Name` 導覽屬性之 Department 實體的 `Department` 屬性：
+* 變更 [部門]**** 資料行來顯示部門名稱。 此程式碼會顯示已載入到 `Department` 導覽屬性之 Department 實體的 `Name` 屬性：
 
   ```html
   @Html.DisplayFor(modelItem => item.Department.Name)
   ```
 
-執行應用程式，並選取 [Courses] 索引標籤來查看含有部門名稱的清單。
+執行應用程式，並選取 [Courses]**** 索引標籤來查看含有部門名稱的清單。
 
 ![Courses [索引] 頁面](read-related-data/_static/courses-index.png)
 
@@ -107,7 +107,7 @@ Course 實體包括一個導覽屬性，其中包含已指派課程之部門的 
 
 * 當使用者選取課程時，將會顯示來自 Enrollments 實體集的相關資料。 Course 與 Enrollment 實體具有一對多關聯性。 您將針對 Enrollment 實體和其相關的 Student 實體使用個別查詢。
 
-### <a name="create-a-view-model-for-the-instructor-index-view"></a>建立 Instructor 索引檢視的檢視模型
+### <a name="create-a-view-model-for-the-instructor-index-view"></a>建立 Instructor [索引] 檢視的檢視模型
 
 Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您將建立包含三個屬性的檢視模型，每個保留其中一個資料表的資料。
 
@@ -151,7 +151,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 `Where` 方法會傳回集合，但在此情況下，傳遞至該方法的準則將導致只傳回單一 Instructor 實體。 `Single` 方法會將集合轉換單一 Instructor 實體，這可讓您存取該實體的 `CourseAssignments` 屬性。 `CourseAssignments` 屬性包含 `CourseAssignment` 實體，您只想要來自該實體的相關 `Course` 實體。
 
-當您知道集合只會有一個項目時，就可以在集合上使用 `Single` 方法。 如果傳遞的集合是空的或有多個項目，Single 方法會擲回例外狀況。 替代方式是 `SingleOrDefault`，它會在集合為空時傳回預設值 (在此情況下為 Null)。 不過，在此情況下仍然會造成例外狀況 (由於嘗試在 Null 參考上尋找 `Courses` 屬性)，而例外狀況訊息會不太清楚地指出問題的原因。 當您呼叫 `Single` 方法時，也可以傳入 Where 條件，而不是分別呼叫 `Where` 方法：
+當您知道集合只會有一個項目時，就可以在集合上使用 `Single` 方法。 如果傳遞的集合是空的或有多個項目，Single 方法會擲回例外狀況。 替代方式是 `SingleOrDefault`，它會在集合是空的時傳回預設值 (在此情況下為 Null)。 不過，在此情況下仍然會造成例外狀況 (由於嘗試在 Null 參考上尋找 `Courses` 屬性)，而例外狀況訊息會不太清楚地指出問題的原因。 當您呼叫 `Single` 方法時，也可以傳入 Where 條件，而不是分別呼叫 `Where` 方法：
 
 ```csharp
 .Single(i => i.ID == id.Value)
@@ -169,7 +169,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 ### <a name="modify-the-instructor-index-view"></a>修改 Instructor [索引] 檢視
 
-在 *Views/Instructors/Index.cshtml* 中，以下列程式碼取代範本程式碼。 所做的變更已醒目標示。
+在 *Views/Instructors/Index.cshtml* 中，以下列程式碼取代範本程式碼。 所做的變更已醒目提示。
 
 [!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
 
@@ -179,7 +179,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 * 已將頁面標題從**索引**變更為**講師**。
 
-* 新增 [辦公室] 資料行，該資料行只有在 `item.OfficeAssignment.Location` 不是 Null 時才會顯示 `item.OfficeAssignment`。 (因為這是一對零或一關聯性，所有可能沒有相關的 OfficeAssignment 實體。)
+* 新增 [辦公室]**** 資料行，該資料行只有在 `item.OfficeAssignment` 不是 Null 時才會顯示 `item.OfficeAssignment.Location`。 (因為這是一對零或一關聯性，所有可能沒有相關的 OfficeAssignment 實體。)
 
   ```html
   @if (item.OfficeAssignment != null)
@@ -188,7 +188,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
   }
   ```
 
-* 新增 課程 資料行，以顯示每位講師所教授課程。 如需詳細資訊，請參閱 Razor 語法文章的[明確行轉換](xref:mvc/views/razor#explicit-line-transition)一節。
+* 新增 [課程]**** 資料行，以顯示每位講師所教授的課程。 有關詳細資訊,請參閱 Razor 語法文章的[顯式行轉換](xref:mvc/views/razor#explicit-line-transition)部分。
 
 * 新增程式碼，將 `class="success"` 動態新增至所選取講師的 `tr` 項目。 這會使用啟動程序類別設定所選取資料列的背景色彩。
 
@@ -207,7 +207,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 
-執行應用程式，然後選取 [**講師**] 索引標籤。當沒有相關的 OfficeAssignment 實體時，此頁面會顯示相關 OfficeAssignment 實體的 Location 屬性和空的資料表資料格。
+執行應用並選擇「**講師」** 選項卡。如果沒有相關的 Office 分配實體,該頁將顯示相關 Office 分配實體的位置屬性和空錶單元格。
 
 ![Instructors [索引] 頁面未選取任何項目](read-related-data/_static/instructors-index-no-selection.png)
 

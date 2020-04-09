@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 02/06/2020
 uid: spa/angular
 ms.openlocfilehash: fee872ff237e14cbe491efed9b320809df4c5654
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78657630"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Angular 專案範本
@@ -54,7 +54,7 @@ Now listening on: http://localhost:<port>
 在瀏覽器中開啟這個 URL。
 
 > [!WARNING]
-> 應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 會記錄類似下列的訊息： *NG Live 程式開發伺服器接聽 localhost：&lt;otherport&gt;，將瀏覽器開啟至 http://localhost:&lt; otherport&gt;/* 。 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
+> 應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 記錄類似以下內容的訊息 *:NG 即時開發伺服器正在偵聽&lt;本地主機&gt;:其他埠,http://localhost:&lt開啟瀏覽器;&gt;其他連接埠*。 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
 
 ---
 
@@ -91,7 +91,7 @@ npm install --save <package_name>
 
 在開發時，應用程式會以方便開發人員操作的模式執行。 例如，JavaScript 組合會包含來源對應 (以便在偵錯時，您可以看到原始的 TypeScript 程式碼)。 應用程式會監看磁碟上的 TypeScript、HTML 和 CSS 檔案變更，並在發現檔案變更時，自動重新編譯並重新載入。
 
-在實際執行環境中，請提供具有最佳效能的應用程式版本。 這是設定為自動進行的。 當您發行時，組建組態會發出精簡、預先 (AoT) 編譯的用戶端程式碼組建。 不同于開發組建，生產組建不需要在伺服器上安裝 Node.js （除非您已啟用伺服器端呈現（SSR））。
+在實際執行環境中，請提供具有最佳效能的應用程式版本。 這是設定為自動進行的。 當您發行時，組建組態會發出精簡、預先 (AoT) 編譯的用戶端程式碼組建。 與開發生成不同,生產生成不需要在伺服器上安裝 Node.js(除非您啟用了伺服器端呈現 (SSR)。
 
 您可以使用標準 [ASP.NET Core 裝載和部署方法](xref:host-and-deploy/index)。
 
@@ -109,7 +109,7 @@ npm install --save <package_name>
     ```
 
     > [!IMPORTANT]
-    > 使用 `npm start` 來啟動 Angular CLI 程式開發伺服器，而不是 `ng serve`，以遵守 *package.json* 中的設定。 若要將其他參數傳遞給 Angular CLI 伺服器，請將它們新增至 `scripts`package.json*檔案中相關的* 行。
+    > 使用 `npm start` 來啟動 Angular CLI 程式開發伺服器，而不是 `ng serve`，以遵守 *package.json* 中的設定。 若要將其他參數傳遞給 Angular CLI 伺服器，請將它們新增至 *package.json* 檔案中相關的 `scripts` 行。
 
 2. 修改您的 ASP.NET Core 應用程式來使用外部的 Angular CLI 執行個體，而非自行啟動執行個體。 在 *Startup* 類別中，將 `spa.UseAngularCliServer` 引動過程取代為：
 

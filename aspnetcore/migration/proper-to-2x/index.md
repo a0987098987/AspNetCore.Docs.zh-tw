@@ -6,10 +6,10 @@ ms.author: scaddie
 ms.date: 10/18/2019
 uid: migration/proper-to-2x/index
 ms.openlocfilehash: 68a45dc50e00bead564500a12509b62a4a193ec4
-ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "79511080"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
@@ -20,7 +20,7 @@ ms.locfileid: "79511080"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-[.NET Core SDK 2.2 或更新版本](https://dotnet.microsoft.com/download)
+[.NET 核心 SDK 2.2 或更高版本](https://dotnet.microsoft.com/download)
 
 ## <a name="target-frameworks"></a>目標 Framework
 
@@ -60,7 +60,7 @@ ASP.NET Core 導入了啟動應用程式的新機制。 ASP.NET 應用程式的�
 
 這會設定您的預設路由，並透過 JSON 將 XmlSerialization 設為預設值。 視需要在此管線新增其他中介軟體 (載入服務、組態設定、靜態檔案等等)。
 
-ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 而是透過*Program.cs* `Main` 方法（類似于主控台應用程式）來完成，而且 `Startup` 會透過該處載入。
+ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 相反地，這會透過 *Program.cs* `Main` 方法完成 (類似主控台應用程式)，而 `Startup` 也是透過該處載入。
 
 [!code-csharp[](samples/program.cs)]
 
@@ -80,11 +80,11 @@ ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 而是透
 
 ## <a name="store-configurations"></a>儲存組態
 
-ASP.NET 支援儲存設定。 例如，這些設定是用來支援要部署應用程式的環境。 過去的常見做法是將所有自訂機碼值組儲存在 `<appSettings>`Web.config*檔案的* 區段中：
+ASP.NET 支援儲存設定。 例如，這些設定是用來支援要部署應用程式的環境。 過去的常見做法是將所有自訂機碼值組儲存在 *Web.config* 檔案的 `<appSettings>` 區段中：
 
 [!code-xml[](samples/webconfig-sample.xml)]
 
-應用程式會讀取 `ConfigurationManager.AppSettings` 命名空間中這些使用 `System.Configuration` 集合的設定：
+應用程式會讀取 `System.Configuration` 命名空間中這些使用 `ConfigurationManager.AppSettings` 集合的設定：
 
 [!code-csharp[](samples/read-webconfig.cs)]
 
@@ -116,11 +116,11 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 在 ASP.NET 應用程式中，開發人員仰賴協力廠商程式庫來實作插入相依性。 Microsoft 模式和實務提供的 [Unity](https://github.com/unitycontainer/unity) 就是這樣的程式庫。
 
-使用 Unity 設定相依性插入的範例，是實作包裝 `IDependencyResolver` 的 `UnityContainer`：
+使用 Unity 設定相依性插入的範例，是實作包裝 `UnityContainer` 的 `IDependencyResolver`：
 
 [!code-csharp[](samples/sample8.cs)]
 
-建立您 `UnityContainer` 的執行個體、註冊您的服務，以及為容器設定 `HttpConfiguration` 新執行個體的 `UnityResolver` 相依性解析程式：
+建立您 `UnityContainer` 的執行個體、註冊您的服務，以及為容器設定 `UnityResolver` 新執行個體的 `HttpConfiguration` 相依性解析程式：
 
 [!code-csharp[](samples/sample9.cs)]
 
@@ -128,7 +128,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 [!code-csharp[](samples/sample5.cs)]
 
-因為相依性插入是 ASP.NET Core 的一部分，所以您可以在 `ConfigureServices`Startup.cs*的* 方法中新增服務：
+因為相依性插入是 ASP.NET Core 的一部分，所以您可以在 *Startup.cs* 的 `ConfigureServices` 方法中新增服務：
 
 [!code-csharp[](samples/configure-services.cs)]
 
@@ -143,25 +143,25 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 在 ASP.NET 中，靜態檔案會儲存在不同目錄中，於檢視中提供參考。
 
-在 ASP.NET Core 中，靜態檔案會儲存在「Web 根目錄」( *&lt;內容根目錄&gt;/wwwroot*) 中，除非另行設定。 從 `UseStaticFiles` 叫用 `Startup.Configure` 擴充方法，將檔案載入至要求管線：
+在ASP.NET核心中,靜態檔存儲在"Web 根"(*&lt;&gt;內容根 /wwwroot)* 中,除非另有配置。 從 `Startup.Configure` 叫用 `UseStaticFiles` 擴充方法，將檔案載入至要求管線：
 
 [!code-csharp[](../../fundamentals/static-files/samples/1x/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 
 > [!NOTE]
 > 如以 .NET Framework 為目標，請安裝 NuGet 套件 `Microsoft.AspNetCore.StaticFiles`。
 
-例如，位在 *等位置的瀏覽器可存取*wwwroot/images`http://<app>/images/<imageFileName>` 資料夾中的影像資產。
+例如，位在 `http://<app>/images/<imageFileName>` 等位置的瀏覽器可存取 *wwwroot/images* 資料夾中的影像資產。
 
 > [!NOTE]
 > 如需在 ASP.NET Core 中提供靜態檔案更深入的參考，請參閱[靜態檔案](xref:fundamentals/static-files)。
 
-## <a name="multi-value-cookies"></a>多重值 cookie
+## <a name="multi-value-cookies"></a>多價值餅乾
 
-ASP.NET Core 中不支援[多重值的 cookie](xref:System.Web.HttpCookie.Values) 。 為每個值建立一個 cookie。
+ASP.NET核心不支援[多值 Cookie。](xref:System.Web.HttpCookie.Values) 每個值創建一個 Cookie。
 
-## <a name="partial-app-migration"></a>部分應用程式遷移
+## <a name="partial-app-migration"></a>部分應用移轉
 
-部分應用程式遷移的其中一個方法是建立 IIS 子應用程式，並只將特定路由從 ASP.NET 4.x 移至 ASP.NET Core，同時保留該應用程式的 URL 結構。 例如，請考慮*applicationhost.config*檔案中應用程式的 URL 結構：
+部分應用遷移的一種方法是創建 IIS 子應用程式,並且僅在保留應用的 URL 結構的同時,將某些路由從 ASP.NET 4.x 移動到 ASP.NET 酷睿。 例如,考慮*應用程式從應用程式Host.config*檔案中的網址結構:
 
 ```xml
 <sites>
@@ -181,7 +181,7 @@ ASP.NET Core 中不支援[多重值的 cookie](xref:System.Web.HttpCookie.Values
 </sites>
 ```
 
-目錄結構：
+目錄結構:
 
 ```
 .

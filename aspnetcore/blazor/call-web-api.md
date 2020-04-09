@@ -1,7 +1,7 @@
 ---
-title: 從 ASP.NET Core 呼叫 Web API Blazor
+title: 從ASP.NET核心呼叫 Web APIBlazor
 author: guardrex
-description: 瞭解如何使用 JSON helper 從 Blazor 應用程式呼叫 Web API，包括建立跨原始來源資源分享（CORS）要求。
+description: 瞭解如何使用 JSON 説明Blazor器從 應用呼叫 Web API,包括進行跨源資源分享 (CORS) 請求。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -11,55 +11,55 @@ no-loc:
 - SignalR
 uid: blazor/call-web-api
 ms.openlocfilehash: e6996f0e6731b05038d0a9329152b8afd5f6796d
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78660143"
 ---
-# <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>從 ASP.NET Core 呼叫 Web API Blazor
+# <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>從ASP.NET核心呼叫 Web APIBlazor
 
-By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.com/danroth27)和[Juan De la Cruz](https://github.com/juandelacruz23)
+由[盧克·萊瑟姆](https://github.com/guardrex),[丹尼爾·羅斯](https://github.com/danroth27)和[胡安·德拉克魯茲](https://github.com/juandelacruz23)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) apps 會使用預先設定的 `HttpClient` 服務來呼叫 web api。 撰寫要求，其中可包含 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)選項、使用 Blazor JSON helper 或 <xref:System.Net.Http.HttpRequestMessage>。 Blazor WebAssembly 應用程式中的 `HttpClient` 服務，著重于向原始伺服器提出要求。 本主題中的指導方針僅適用于 Blazor WebAssembly 應用程式。
+Web組裝應用使用預配置`HttpClient`的服務調用 Web [ Blazor ](xref:blazor/hosting-models#blazor-webassembly) API。 撰寫要求,其中可能包括 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)Blazor選項<xref:System.Net.Http.HttpRequestMessage>、使用 JSON 說明器或與 。 Blazor WebAssembly 應用`HttpClient`中 的服務側重於將請求發回源伺服器。 本主題中的指南僅與BlazorWeb 組裝應用相關。
 
-[Blazor 伺服器](xref:blazor/hosting-models#blazor-server)應用程式會使用 <xref:System.Net.Http.HttpClient> 實例呼叫 web api，通常是使用 <xref:System.Net.Http.IHttpClientFactory>來建立的。 本主題中的指導方針與 Blazor 伺服器應用程式無關。 在開發 Blazor 伺服器應用程式時，請遵循 <xref:fundamentals/http-requests>中的指引。
+伺服器應用使用<xref:System.Net.Http.HttpClient>實例調用 Web API,通常使用<xref:System.Net.Http.IHttpClientFactory>[Blazor](xref:blazor/hosting-models#blazor-server)創建實例。 本主題中的指南與Blazor伺服器應用無關。 開發Blazor伺服器應用時,請按照<xref:fundamentals/http-requests>中的指南操作。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)） &ndash; 選取*BlazorWebAssemblySample*應用程式。
+[查看或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)([如何下載](xref:index#how-to-download-a-sample))&ndash;選擇*BlazorWebAssemblySample*應用程式。
 
-請參閱*BlazorWebAssemblySample*範例應用程式中的下列元件：
+請參閱*BlazorWebAssembly 範例*應用程式中的以下元件:
 
-* 呼叫 Web API （*Pages/CallWebAPI. razor*）
-* HTTP 要求測試器（*元件/HTTPRequestTester razor*）
+* 呼叫 Web API (*頁面/呼叫 WebAPI.razor*)
+* HTTP 要求測試器 (*元件/ HTTPRequestTester.razor*)
 
 ## <a name="packages"></a>Packages
 
-參考*實驗*性[AspNetCore.Blazor。HttpClient](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.HttpClient/)專案檔中的 NuGet 套件。 `Microsoft.AspNetCore.Blazor.HttpClient` 是以 `HttpClient` 和[system.web](https://www.nuget.org/packages/System.Text.Json/)為基礎。
+參考*實驗性*[微軟.AspNetCore.Blazor. . . .HTTPClient](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.HttpClient/) NuGet 套件在專案檔中。 `Microsoft.AspNetCore.Blazor.HttpClient`基於`HttpClient`與[系統.Text.Json](https://www.nuget.org/packages/System.Text.Json/)。
 
-若要使用穩定的 API，請使用[WebApi. 用戶端](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)套件，其使用[Newtonsoft](https://www.nuget.org/packages/Newtonsoft.Json/)/[Json.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm)。 在 `Microsoft.AspNet.WebApi.Client` 中使用穩定 API，並不會提供本主題中所述的 JSON helper，這對實驗性 `Microsoft.AspNetCore.Blazor.HttpClient` 套件而言是唯一的。
+要使用穩定的 API,請使用[Microsoft.AspNet.WebApi.Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)套件,該程式使用[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)/[Json.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm)。 在 中`Microsoft.AspNet.WebApi.Client`使用穩定的 API 不會提供本主題中描述的 JSON`Microsoft.AspNetCore.Blazor.HttpClient`説明程式,這是實驗 包獨有的。
 
-## <a name="httpclient-and-json-helpers"></a>HttpClient 和 JSON 協助程式
+## <a name="httpclient-and-json-helpers"></a>HTTPClient 和 JSON 說明人員
 
-在 Blazor WebAssembly 應用程式中， [HttpClient](xref:fundamentals/http-requests)是以預先設定的服務形式提供，可讓要求回到源伺服器。
+在BlazorWebAssembly 應用中[,HttpClient](xref:fundamentals/http-requests)可作為預先設定的服務,用於將請求發回源伺服器。
 
-Blazor 伺服器應用程式預設不包含 `HttpClient` 服務。 使用[HttpClient factory 基礎結構](xref:fundamentals/http-requests)提供應用程式的 `HttpClient`。
+默認情況下Blazor,伺服器應用不`HttpClient`包括 服務。 使用`HttpClient`[HTTPClient 工廠基礎結構](xref:fundamentals/http-requests)向應用提供 。
 
-`HttpClient` 和 JSON 協助程式也用來呼叫協力廠商 Web API 端點。 `HttpClient` 是使用瀏覽器[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)來執行，並受限於其限制，包括強制執行相同的來源原則。
+`HttpClient`JSON 幫助器也用於調用第三方 Web API 終結點。 `HttpClient`使用瀏覽器 Fetch [API](https://developer.mozilla.org/docs/Web/API/Fetch_API)實現,並受其限制,包括實施相同的源策略。
 
-用戶端的基底位址會設定為源伺服器的位址。 使用 `@inject` 指示詞插入 `HttpClient` 實例：
+用戶端的基本位址設置為原始伺服器的位址。 使用`@inject``HttpClient`指令注入實體:
 
 ```razor
 @using System.Net.Http
 @inject HttpClient Http
 ```
 
-在下列範例中，Todo Web API 處理建立、讀取、更新和刪除（CRUD）作業。 這些範例是以儲存的 `TodoItem` 類別為基礎：
+在以下範例中,Todo Web API 行程創建、讀取、更新和刪除 (CRUD) 操作。 這些範例以儲存`TodoItem`以下項目的類別:
 
-* 識別碼（`Id`，`long`） &ndash; 專案的唯一識別碼。
-* 專案的名稱（`Name`、`string`） &ndash; 名稱。
-* 如果 Todo 專案已完成，則為狀態（`IsComplete`、`bool`） &ndash; 指示。
+* 項的`Id``long`識別&ndash;碼 ( 、 ) 唯一 ID。
+* 項的名稱`Name``string` &ndash; ( 、 ) 項目名稱。
+* 狀態`IsComplete` `bool` &ndash; ( 、 ) 指示"Dodo" 項目是否已完成。
 
 ```csharp
 private class TodoItem
@@ -70,11 +70,11 @@ private class TodoItem
 }
 ```
 
-JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並處理回應：
+JSON 說明器方法將要求傳送到 URI(以下範例中的 Web API)並處理回應:
 
-* `GetJsonAsync` &ndash; 傳送 HTTP GET 要求，並剖析 JSON 回應主體以建立物件。
+* `GetJsonAsync`&ndash;發送 HTTP GET 請求並分析 JSON 回應正文以創建物件。
 
-  在下列程式碼中，元件會顯示 `_todoItems`。 當元件完成呈現（[OnInitializedAsync](xref:blazor/lifecycle#component-initialization-methods)）時，就會觸發 `GetTodoItems` 方法。 如需完整範例，請參閱範例應用程式。
+  在以下代碼中,`_todoItems`元件顯示 。 `GetTodoItems`當元件完成渲染時([初始化 Async),](xref:blazor/lifecycle#component-initialization-methods)將觸發該方法。 有關完整示例,請參閱示例應用。
 
   ```razor
   @using System.Net.Http
@@ -88,9 +88,9 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   }
   ```
 
-* `PostJsonAsync` &ndash; 傳送 HTTP POST 要求，包括 JSON 編碼的內容，並剖析 JSON 回應主體以建立物件。
+* `PostJsonAsync`&ndash;發送 HTTP POST 請求(包括 JSON 編碼的內容),並分析 JSON 回應正文以創建物件。
 
-  在下列程式碼中，`_newItemName` 是由元件的繫結項目所提供。 `AddItem` 方法是藉由選取 `<button>` 元素來觸發。 如需完整範例，請參閱範例應用程式。
+  在以下代碼中,`_newItemName`由元件的綁定元素提供。 該方法`AddItem`透過選擇元素觸`<button>`發 。 有關完整示例,請參閱示例應用。
 
   ```razor
   @using System.Net.Http
@@ -110,9 +110,9 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   }
   ```
 
-* `PutJsonAsync` &ndash; 傳送 HTTP PUT 要求，包括 JSON 編碼的內容。
+* `PutJsonAsync`&ndash;發送 HTTP PUT 請求,包括 JSON 編碼的內容。
 
-  在下列程式碼中，`Name` 和 `IsCompleted` 的 `_editItem` 值是由元件的繫結項目所提供。 當專案在 UI 的另一個部分中選取，且呼叫 `EditItem` 時，會設定專案的 `Id`。 藉由選取 [儲存 `<button>`] 元素，即可觸發 `SaveItem` 方法。 如需完整範例，請參閱範例應用程式。
+  在以下代碼中,`_editItem``IsCompleted``Name`和的值由元件的綁定元素提供。 當在`Id`UI 的另一部分選擇`EditItem`項並 調用該專案時,將設置項。 該方法`SaveItem`通過選擇"保存`<button>`" 元素觸發。 有關完整示例,請參閱示例應用。
 
   ```razor
   @using System.Net.Http
@@ -137,9 +137,9 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   }
   ```
 
-<xref:System.Net.Http> 包含傳送 HTTP 要求和接收 HTTP 回應的其他擴充方法。 [HttpClient](xref:System.Net.Http.HttpClient.DeleteAsync*)是用來將 HTTP DELETE 要求傳送至 Web API。
+<xref:System.Net.Http>包括用於發送 HTTP 請求和接收 HTTP 回應的其他擴充方法。 [HTTPClient.DeleteAsync](xref:System.Net.Http.HttpClient.DeleteAsync*)用於向 Web API 發送 HTTP DELETE 請求。
 
-在下列程式碼中，Delete `<button>` 元素會呼叫 `DeleteItem` 方法。 系結的 `<input>` 元素會提供要刪除之專案的 `id`。 如需完整範例，請參閱範例應用程式。
+在以下代碼中,Delete`<button>`元素調`DeleteItem`用 方法。 綁定`<input>`元素提供要`id`刪除的項。 有關完整示例,請參閱示例應用。
 
 ```razor
 @using System.Net.Http
@@ -156,17 +156,17 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 }
 ```
 
-## <a name="cross-origin-resource-sharing-cors"></a>跨原始來源資源分享（CORS）
+## <a name="cross-origin-resource-sharing-cors"></a>跨源資源分享 (CORS)
 
-瀏覽器安全性可防止網頁向不同于服務網頁的網域提出要求。 這種限制稱為「*相同來源原則*」。 相同來源的原則可防止惡意網站從另一個網站讀取敏感性資料。 若要將來自瀏覽器的要求傳送至具有不同來源的端點，*端點*必須啟用[跨原始來源資源分享（CORS）](https://www.w3.org/TR/cors/)。
+流覽器安全性可防止網頁向與服務網頁的域不同的域發出請求。 此限制稱為*同源原則*。 同源策略可防止惡意網站從其他網站讀取敏感數據。 要從瀏覽器向具有不同源的終結點發出請求,*終結點*必須啟用[跨源資源分享 (CORS)。](https://www.w3.org/TR/cors/)
 
-[Blazor WebAssembly 範例應用程式（BlazorWebAssemblySample）](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)示範如何在呼叫 Web API 元件（*Pages/CallWebAPI razor*）中使用 CORS。
+[WebAssembly 範例應用程式 (BlazorWebAssemblySample) 展示在呼叫 Web API 元件(頁面/CallWebAPI.razor)中Blazor使用 CORS。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) *Pages/CallWebAPI.razor*
 
-若要允許其他網站對您的應用程式進行跨原始來源資源分享（CORS）要求，請參閱 <xref:security/cors>。
+要允許其他網站向應用程式發出跨源資源分享 (CORS) 要求,請參<xref:security/cors>閱 。
 
-## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>具有 Fetch API 要求選項的 HttpClient 和 HttpRequestMessage
+## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>使用取得 API 要求選項的 HTTPClient 與 HTTPRequestMessage
 
-在 Blazor WebAssembly 應用程式的 WebAssembly 上執行時，請使用[HttpClient](xref:fundamentals/http-requests)和 <xref:System.Net.Http.HttpRequestMessage> 來自訂要求。 例如，您可以指定要求 URI、HTTP 方法，以及任何所需的要求標頭。
+在BlazorWebAssembly 應用中在 WebAssembly 上運行<xref:System.Net.Http.HttpRequestMessage>時,請使用[HttpClient](xref:fundamentals/http-requests)並自訂請求。 例如,您可以指定請求 URI、HTTP 方法以及任何所需的請求標頭。
 
 ```razor
 @using System.Net.Http
@@ -202,16 +202,16 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 }
 ```
 
-如需有關提取 API 選項的詳細資訊，請參閱[MDN web 檔： WindowOrWorkerGlobalScope。 Fetch （）:P arameters](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)。
+有關取得 API 選項的詳細資訊,請參閱[MDN Web 文件:WindowOrWorkerGlobalScope.fetch():P參數](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)。
 
-在 CORS 要求上傳送認證（授權 cookie/標頭）時，CORS 原則必須允許 `Authorization` 標頭。
+在 CORS 請求上發送認證(授權 Cookie/標`Authorization`頭) 時,CORS 策略必須允許標頭。
 
-下列原則包含的設定：
+以下政策包括以下設定:
 
-* 要求來源（`http://localhost:5000`、`https://localhost:5001`）。
-* Any 方法（動詞）。
-* `Content-Type` 和 `Authorization` 標頭。 若要允許自訂標頭（例如 `x-custom-header`），請在呼叫 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>時列出標頭。
-* 用戶端 JavaScript 程式碼（`credentials` 屬性設定為 `include`）所設定的認證。
+* 要求原點`http://localhost:5000`(、 ... `https://localhost:5001`
+* 任何方法(動詞)。
+* `Content-Type`和`Authorization`標題。 要允許自訂標頭(例如),`x-custom-header`請列出調<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>用 時的標題。
+* 由用戶端 JavaScript`credentials`代碼 (`include`屬性設置為 ) 設置的認證。
 
 ```csharp
 app.UseCors(policy => 
@@ -221,11 +221,11 @@ app.UseCors(policy =>
     .AllowCredentials());
 ```
 
-如需詳細資訊，請參閱 <xref:security/cors> 和範例應用程式的 HTTP 要求測試器元件（*Components/HTTPRequestTester*）。
+有關詳細資訊,請參閱<xref:security/cors>和範例應用的 HTTP 請求測試元件 (*元件/ HTTPRequestTester.razor*)。
 
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:fundamentals/http-requests>
 * <xref:security/enforcing-ssl>
-* [Kestrel HTTPS 端點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)
-* [位於 W3C 的跨原始來源資源分享（CORS）](https://www.w3.org/TR/cors/)
+* [凱斯特雷爾 HTTPS 端點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)
+* [W3C 的跨源資源分享 (CORS)](https://www.w3.org/TR/cors/)

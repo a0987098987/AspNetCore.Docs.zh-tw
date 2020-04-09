@@ -1,7 +1,7 @@
 ---
-title: ASP.NET Core Razor 元件類別庫
+title: ASP.NET核心剃刀元件類庫
 author: guardrex
-description: 探索如何將元件包含在來自外部元件程式庫的 Blazor 應用程式中。
+description: 瞭解如何從外部元件庫中將元件Blazor包含在應用中。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -11,69 +11,69 @@ no-loc:
 - SignalR
 uid: blazor/class-libraries
 ms.openlocfilehash: f2cc57638922bd1f6ab036adb2ed37209d14c5b0
-ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80218762"
 ---
-# <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
+# <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET核心剃刀元件類庫
 
-依[Simon Timms](https://github.com/stimms)
+由[西蒙·蒂姆斯](https://github.com/stimms)
 
-元件可以在跨專案的[Razor 類別庫（RCL）](xref:razor-pages/ui-class)中共用。 *Razor 元件類別庫*可以包含在：
+元件可以在跨專案的[Razor 類庫 (RCL)](xref:razor-pages/ui-class)中共用。 *Razor 元件類庫*可以從:
 
-* 方案中的另一個專案。
-* NuGet 套件。
-* 參考的 .NET 程式庫。
+* 解決方案中的另一個專案。
+* NuGet 包。
+* 引用的 .NET 庫。
 
-就像元件是一般的 .NET 類型，RCL 所提供的元件是一般的 .NET 元件。
+正如元件是一般的 .NET 類型一樣,RCL 提供的元件是普通 .NET 程式集。
 
 ## <a name="create-an-rcl"></a>建立 RCL
 
-遵循 <xref:blazor/get-started> 文章中的指導方針，設定您的環境以進行 Blazor。
+按照本文中的<xref:blazor/get-started>指南為 Blazor 配置環境。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 建立新專案。
-1. 選取 [ **Razor 類別庫**]。 選取 [下一步]。
-1. 在 [**建立新的 Razor 類別庫**] 對話方塊中，選取 [**建立**]。
-1. 在 [專案名稱] 欄位中提供專案名稱，或接受預設專案名稱。 本主題中的範例會使用專案名稱 `MyComponentLib1`。 選取 [建立]。
-1. 將 RCL 新增至方案：
-   1. 以滑鼠右鍵按一下方案。 選取 [**新增** > **現有專案**]。
-   1. 流覽至 RCL 的專案檔。
-   1. 選取 RCL 的專案檔（ *.csproj*）。
-1. 從應用程式新增參考 RCL：
-   1. 以滑鼠右鍵按一下應用程式專案。 選取 [**新增** > **參考**]。
-   1. 選取 [RCL] 專案。 選取 [確定]。
+1. 選擇**Razor 函式庫**。 選取 [下一步]  。
+1. 在 **"創建新 Razor 類庫**"對話框中,選擇 **"創建**"。
+1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 這個主題中的範例使用項目名稱`MyComponentLib1`。 選取 [建立]  。
+1. 新增 RCL 新增到解決方案:
+   1. 右鍵單擊解決方案。 選擇 **「添加** > **現有專案**」。
+   1. 導航到 RCL 的專案檔。
+   1. 選擇 RCL 的專案檔 *(.csproj*)。
+1. 從應用程式新增 RCL 的參考:
+   1. 右鍵單擊應用專案。 選擇 **「添加** > **參考**」。
+   1. 選擇 RCL 專案。 選取 [確定]  。
 
 > [!NOTE]
-> 從範本產生 RCL 時，如果已選取 [**支援頁面和視圖**] 核取方塊，則也會使用下列內容，將 *_Imports razor*檔案新增至所產生專案的根目錄，以啟用 razor 元件撰寫：
+> 如果在從樣本產生 RCL 時選擇了 **「支援頁面和檢視**」複選框,則還會將 *_Imports.razor*檔案添加到生成的專案的根目錄,其中包含以下內容,以啟用 Razor 元件創作:
 >
 > ```razor
 > @using Microsoft.AspNetCore.Components.Web
 > ```
 >
-> 以手動方式將檔案新增至所產生專案的根目錄。
+> 手動將檔添加到生成的專案的根目錄。
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-1. 使用**Razor 類別庫**範本（`razorclasslib`）搭配命令 shell 中的[dotnet new](/dotnet/core/tools/dotnet-new)命令。 在下列範例中，會建立名為 `MyComponentLib1`的 RCL。 執行命令時，會自動建立保存 `MyComponentLib1` 的資料夾：
+1. 在命令 shell`razorclasslib`中使用**Razor 函式庫**樣本 ( ) 與[dotnet 新](/dotnet/core/tools/dotnet-new)命令一起。 在下面的示例中,將創建名為`MyComponentLib1`的 RCL。 執行命令時自動`MyComponentLib1`建立保留的資料夾:
 
    ```dotnetcli
    dotnet new razorclasslib -o MyComponentLib1
    ```
 
    > [!NOTE]
-   > 如果從範本產生 RCL 時使用了 `-s|--support-pages-and-views` 參數，則也請將 *_Imports razor*檔案新增至產生之專案的根目錄，並具有下列內容，以啟用 razor 元件撰寫：
+   > 如果從`-s|--support-pages-and-views`樣本產生 RCL 時使用交換機,則還會將 *_Imports.razor*檔案加入到產生的專案的根目錄,其中包含以下內容,以啟用 Razor 元件創作:
    >
    > ```razor
    > @using Microsoft.AspNetCore.Components.Web
    > ```
    >
-   > 以手動方式將檔案新增至所產生專案的根目錄。
+   > 手動將檔添加到生成的專案的根目錄。
 
-1. 若要將程式庫新增至現有的專案，請在命令 shell 中使用[dotnet add reference](/dotnet/core/tools/dotnet-add-reference)命令。 在下列範例中，會將 RCL 新增至應用程式。 從應用程式的專案資料夾中，使用程式庫的路徑執行下列命令：
+1. 要將函式庫加入到現有專案,請使用[dotnet 在](/dotnet/core/tools/dotnet-add-reference)命令 shell 加入引用命令。 在下面的示例中,RCL將添加到應用中。 使用函式庫的路徑從應用程式的項目資料夾中執行以下指令:
 
    ```dotnetcli
    dotnet add reference {PATH TO LIBRARY}
@@ -81,16 +81,16 @@ ms.locfileid: "80218762"
 
 ---
 
-## <a name="consume-a-library-component"></a>使用程式庫元件
+## <a name="consume-a-library-component"></a>使用函式庫元件
 
-若要使用另一個專案中的程式庫中所定義的元件，請使用下列其中一種方法：
+為了使用在另一個專案中的庫中定義的元件,請使用以下任一方法:
 
-* 使用命名空間的完整類型名稱。
-* 使用 Razor 的[\@using](xref:mvc/views/razor#using)指示詞。 個別元件可以依名稱新增。
+* 使用完整類型名稱與命名空間。
+* 使用 Razor[\@的使用](xref:mvc/views/razor#using)指令。 可以按名稱添加單個元件。
 
-在下列範例中，`MyComponentLib1` 是包含 `SalesReport` 元件的元件庫。
+在以下範例中,`MyComponentLib1`是包含元件的`SalesReport`元件庫。
 
-您可以使用命名空間的完整型別名稱來參考 `SalesReport` 元件：
+可以使用`SalesReport`使用一個命名空間的全類型名稱引用此元件:
 
 ```razor
 <h1>Hello, world!</h1>
@@ -100,7 +100,7 @@ Welcome to your new app.
 <MyComponentLib1.SalesReport />
 ```
 
-如果程式庫是使用 `@using` 指示詞帶入範圍中，則也可以參考此元件：
+如果函式庫被`@using`引入具有指令的範圍,也可以參考該元件:
 
 ```razor
 @using MyComponentLib1
@@ -112,23 +112,23 @@ Welcome to your new app.
 <SalesReport />
 ```
 
-在最上層的 *_Import razor*檔案中包含 `@using MyComponentLib1` 指示詞，讓程式庫的元件可供整個專案使用。 將指示詞新增至任何層級的 *_Import razor*檔案，以將命名空間套用至資料夾中的單一頁面或一組頁面。
+將`@using MyComponentLib1`指令包含在頂級 *_Import.razor*檔中,以使庫的元件可用於整個專案。 將指令添加到任何級別的 *_Import.razor*檔,以將命名空間應用於資料夾中的單個頁面或頁面集。
 
-## <a name="create-a-razor-components-class-library-with-static-assets"></a>建立具有靜態資產的 Razor 元件類別庫
+## <a name="create-a-razor-components-class-library-with-static-assets"></a>使用靜態資產建立 Razor 元件類庫
 
-RCL 可以包含靜態資產。 使用該程式庫的任何應用程式都可以使用靜態資產。 如需詳細資訊，請參閱 <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>。
+RCL 可以包括靜態資產。 靜態資產可用於使用庫的任何應用。 如需詳細資訊，請參閱 <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>。
 
-## <a name="build-pack-and-ship-to-nuget"></a>組建、封裝和寄送至 NuGet
+## <a name="build-pack-and-ship-to-nuget"></a>建置、打包及運送到 NuGet
 
-因為元件程式庫是標準的 .NET 程式庫，所以封裝和傳送至 NuGet 的方式與將任何程式庫封裝和傳送至 NuGet 的方式並無不同。 封裝是使用命令 shell 中的[dotnet pack](/dotnet/core/tools/dotnet-pack)命令來執行：
+因為元件庫是標準的 .NET 庫,因此打包並將其運送到 NuGet 與打包和將任何庫運送到 NuGet 沒有什麼不同。 使用命令 shell 中的[dotnet pack](/dotnet/core/tools/dotnet-pack)命令執行封包:
 
 ```dotnetcli
 dotnet pack
 ```
 
-使用命令 shell 中的[dotnet NuGet push](/dotnet/core/tools/dotnet-nuget-push)命令，將套件上傳至 nuget。
+使用命令 shell 中的[dotnet nuget 推送](/dotnet/core/tools/dotnet-nuget-push)指令將包上載到 NuGet。
 
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:razor-pages/ui-class>
-* [將 XML 連結器設定檔加入至程式庫](xref:host-and-deploy/blazor/configure-linker#add-an-xml-linker-configuration-file-to-a-library)
+* [新增 XML 連結器設定檔到函式庫](xref:host-and-deploy/blazor/configure-linker#add-an-xml-linker-configuration-file-to-a-library)

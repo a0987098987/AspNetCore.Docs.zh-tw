@@ -1,4 +1,4 @@
-`:` 分隔符號不適用於所有平臺上的環境變數階層式索引鍵。 `__`，雙底線是：
+`:`分隔符不適用於所有平臺上的環境變數分層鍵。 `__`,雙下劃線是:
 
-* 所有平臺都支援。 例如， [Bash](https://linuxhint.com/bash-environment-variables/)不支援 `:` 分隔符號，但 `__` 為。
-* 自動取代為 `:`
+* 支援所有平臺。 例如`:`[,Bash](https://linuxhint.com/bash-environment-variables/)不支援分隔符`__`,但是 。
+* 自動取代為`:`

@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 08/14/2018
 uid: client-side/libman/index
 ms.openlocfilehash: 87987446b7f2c625da90951510e697e06569ba36
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78664665"
 ---
 # <a name="client-side-library-acquisition-in-aspnet-core-with-libman"></a>使用 LibMan 讓 ASP.NET Core 取得用戶端程式庫
 
 作者：[Scott Addie](https://twitter.com/Scott_Addie)
 
-程式庫管理員 (LibMan) 是輕量型的用戶端程式庫取得工具。 LibMan 會從檔案系統或[內容傳遞網路 (CDN)](https://wikipedia.org/wiki/Content_delivery_network)下載熱門的程式庫和架構。 支援的 Cdn 包括[CDNJS](https://cdnjs.com/)、 [jsDelivr](https://www.jsdelivr.com/)和[unpkg](https://unpkg.com/#/)。 所選程式庫檔會擷取並放置在 ASP.NET Core 專案中的適當位置。
+程式庫管理員 (LibMan) 是輕量型的用戶端程式庫取得工具。 LibMan 會從檔案系統或[內容傳遞網路 (CDN)](https://wikipedia.org/wiki/Content_delivery_network)下載熱門的程式庫和架構。 支援的CDN包括[CDNJS、jsDelivr](https://cdnjs.com/)和[unpkg。](https://unpkg.com/#/) [jsDelivr](https://www.jsdelivr.com/) 所選程式庫檔會擷取並放置在 ASP.NET Core 專案中的適當位置。
 
 ## <a name="libman-use-cases"></a>LibMan 使用案例
 

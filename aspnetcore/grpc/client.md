@@ -7,31 +7,31 @@ ms.author: jamesnk
 ms.date: 08/21/2019
 uid: grpc/client
 ms.openlocfilehash: 6a6a649f7194354b16f3d67160be02428cc01170
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78667171"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>使用 .NET 用戶端呼叫 gRPC 服務
 
-.NET gRPC 用戶端程式庫可在[gRPC .net. 用戶端](https://www.nuget.org/packages/Grpc.Net.Client)NuGet 套件中取得。 本檔說明如何：
+.NET gRPC 用戶端庫在[Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client) NuGet 包中可用。 此文件說明如何:
 
-* 將 gRPC 用戶端設定為呼叫 gRPC 服務。
-* 對一元、伺服器資料流程、用戶端資料流程和雙向串流方法進行 gRPC 呼叫。
+* 配置 gRPC 用戶端以呼叫 gRPC 服務。
+* 對一元、伺服器流、用戶端流和雙向流式處理方法進行 gRPC 調用。
 
 ## <a name="configure-grpc-client"></a>設定 gRPC 用戶端
 
-gRPC 用戶端是[從 *\*的 proto*檔案產生](xref:grpc/basics#generated-c-assets)的具體用戶端類型。 具體 gRPC 用戶端的方法會轉譯為 *\*的 proto*檔案中的 gRPC 服務。
+gRPC 用戶端是從[*\*.proto*檔生成的](xref:grpc/basics#generated-c-assets)具體用戶端類型。 具體的 gRPC 用戶端具有在*\*.proto*檔中轉換為 gRPC 服務的方法。
 
-GRPC 用戶端是從通道建立的。 首先，使用 `GrpcChannel.ForAddress` 建立通道，然後使用通道來建立 gRPC 用戶端：
+gRPC 用戶端是從通道創建的。 首先使用`GrpcChannel.ForAddress`建立通道,然後使用通道建立 gRPC 用戶端:
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
 var client = new Greet.GreeterClient(channel);
 ```
 
-通道代表 gRPC 服務的長時間連接。 建立通道時，會使用與呼叫服務相關的選項進行設定。 例如，用來進行呼叫的 `HttpClient`、傳送和接收訊息大小上限，以及記錄可以在 `GrpcChannelOptions` 上指定，並與 `GrpcChannel.ForAddress`搭配使用。 如需完整的選項清單，請參閱[用戶端設定選項](xref:grpc/configuration#configure-client-options)。
+通道表示與 gRPC 服務的長時間連接。 創建通道時,將配置與調用服務相關的選項。 例如,`HttpClient`用於進行調用、最大發送和接收消息大小以及日誌記錄可以指定`GrpcChannelOptions`並`GrpcChannel.ForAddress`隨 使用。 有關選項的完整清單,請參閱[客戶端設定選項](xref:grpc/configuration#configure-client-options)。
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
@@ -42,36 +42,36 @@ var counterClient = new Count.CounterClient(channel);
 // Use clients to call gRPC services
 ```
 
-通道和用戶端效能和使用方式：
+通路和用戶端效能與使用方式:
 
-* 建立通道可能是昂貴的作業。 重複使用 gRPC 呼叫的通道可提供效能優勢。
-* 系統會使用通道來建立 gRPC 用戶端。 gRPC 用戶端是輕量物件，不需要快取或重複使用。
-* 您可以從通道建立多個 gRPC 用戶端，包括不同類型的用戶端。
-* 通道和從通道建立的用戶端可以安全地由多個執行緒使用。
-* 從通道建立的用戶端可以進行多個同時呼叫。
+* 創建通道可能是一項昂貴的操作。 對 gRPC 調用重用通道可提供性能優勢。
+* gRPC 用戶端是使用通道創建的。 gRPC 客戶端是輕量級物件,不需要緩存或重用。
+* 可以從通道創建多個 gRPC 用戶端,包括不同類型的用戶端。
+* 從通道創建的通道和用戶端可以安全地由多個線程使用。
+* 從通道創建的用戶端可以同時進行多個調用。
 
-`GrpcChannel.ForAddress` 不是建立 gRPC 用戶端的唯一選項。 如果您是從 ASP.NET Core 應用程式呼叫 gRPC services，請考慮[gRPC 用戶端工廠整合](xref:grpc/clientfactory)。 gRPC 與 `HttpClientFactory` 整合提供了建立 gRPC 用戶端的集中式替代方案。
-
-> [!NOTE]
-> 需要其他設定，才能[使用 .net 用戶端呼叫不安全的 gRPC 服務](xref:grpc/troubleshoot#call-insecure-grpc-services-with-net-core-client)。
+`GrpcChannel.ForAddress`不是創建 gRPC 用戶端的唯一選項。 如果您從ASP.NET酷睿應用呼叫 gRPC 服務,請考慮[gRPC 客戶端工廠整合](xref:grpc/clientfactory)。 gRPC`HttpClientFactory`整合提供建立 gRPC 用戶端的集中替代方案。
 
 > [!NOTE]
-> Xamarin 目前不支援透過 HTTP/2 使用 `Grpc.Net.Client` 呼叫 gRPC。 我們正致力於改善未來 Xamarin 版本中的 HTTP/2 支援。 [Grpc](https://www.nuget.org/packages/Grpc.Core)和[Grpc-Web](xref:grpc/browser)是可行的替代方案。
+> 使用[.NET 用戶端呼叫不安全的 gRPC 服務](xref:grpc/troubleshoot#call-insecure-grpc-services-with-net-core-client)需要額外的配置。
 
-## <a name="make-grpc-calls"></a>進行 gRPC 呼叫
+> [!NOTE]
+> Xamarin 上目前不支援`Grpc.Net.Client`通過 HTTP/2 調用 gRPC。 我們正在努力在未來 Xamarin 版本中改進 HTTP/2 支援。 [Grpc.Core](https://www.nuget.org/packages/Grpc.Core)和[gRPC-Web](xref:grpc/browser)是當今可行的替代方案。
 
-GRPC 呼叫是藉由呼叫用戶端上的方法來起始。 GRPC 用戶端會處理訊息序列化，並將 gRPC 呼叫定址至正確的服務。
+## <a name="make-grpc-calls"></a>撥打 gRPC 呼叫
 
-gRPC 有不同類型的方法。 您使用用戶端進行 gRPC 呼叫的方式，取決於您所呼叫的方法類型。 GRPC 方法類型為：
+gRPC 調用通過在用戶端上調用方法來啟動。 gRPC 客戶端將處理消息序列化和處理 gRPC 對正確服務的調用。
+
+gRPC 具有不同類型的方法。 如何使用用戶端進行 gRPC 調用取決於要調用的方法的類型。 gRPC 方法類型為:
 
 * 一元 (Unary)
-* 伺服器串流
-* 用戶端串流
-* 雙向串流
+* 伺服器流程處理
+* 用戶端流程式處理
+* 雙向流式處理
 
-### <a name="unary-call"></a>一元呼叫
+### <a name="unary-call"></a>一元撥打電話
 
-一元呼叫會從傳送要求訊息的用戶端開始。 當服務完成時，就會傳迴響應消息。
+一元呼叫從發送請求消息的客戶端開始。 服務完成後返回回應消息。
 
 ```csharp
 var client = new Greet.GreeterClient(channel);
@@ -81,14 +81,14 @@ Console.WriteLine("Greeting: " + response.Message);
 // Greeting: Hello World
 ```
 
-*\** 中的每個一元服務方法都會在具體 gRPC 用戶端類型上產生兩個 .net 方法，以呼叫方法：非同步方法和封鎖方法。 例如，在 `GreeterClient` 上，有兩種方式可呼叫 `SayHello`：
+.proto 檔中的每個一元服務方法將導致在具體 gRPC 客戶端類型上產生兩個 .NET 方法來調用該方法:非同步*\** 方法和阻塞方法。 例如,在`GreeterClient`有兩種調`SayHello`用 方法:
 
-* `GreeterClient.SayHelloAsync`-以非同步方式呼叫 `Greeter.SayHello` 服務。 可以等候。
-* `GreeterClient.SayHello`-呼叫 `Greeter.SayHello` 服務並封鎖直到完成為止。 不要在非同步程式碼中使用。
+* `GreeterClient.SayHelloAsync`-`Greeter.SayHello`非同步調用服務。 可以等待。
+* `GreeterClient.SayHello`-`Greeter.SayHello`調用服務和阻止,直到完成。 不要在異步代碼中使用。
 
-### <a name="server-streaming-call"></a>伺服器串流呼叫
+### <a name="server-streaming-call"></a>伺服器流式呼叫
 
-伺服器串流呼叫會從傳送要求訊息的用戶端開始。 `ResponseStream.MoveNext()` 讀取從服務資料流程處理的訊息。 當 `ResponseStream.MoveNext()` 傳回 `false`時，就會完成伺服器資料流程呼叫。
+伺服器流式處理調用從發送請求消息的客戶端開始。 `ResponseStream.MoveNext()`讀取從服務流式傳輸的消息。 返回`ResponseStream.MoveNext()`時 ,伺服器流`false`式處理 調用已完成。
 
 ```csharp
 var client = new Greet.GreeterClient(channel);
@@ -102,7 +102,7 @@ using (var call = client.SayHellos(new HelloRequest { Name = "World" }))
 }
 ```
 
-如果您使用C# 8 或更新版本，則可以使用 `await foreach` 語法來讀取訊息。 `IAsyncStreamReader<T>.ReadAllAsync()` 擴充方法會讀取來自回應資料流程的所有訊息：
+如果使用 C# 8 或`await foreach`更高版本, 則語法可用於讀取消息。 擴`IAsyncStreamReader<T>.ReadAllAsync()`充方法從回應串流讀取所有訊息:
 
 ```csharp
 var client = new Greet.GreeterClient(channel);
@@ -116,9 +116,9 @@ using (var call = client.SayHellos(new HelloRequest { Name = "World" }))
 }
 ```
 
-### <a name="client-streaming-call"></a>用戶端串流呼叫
+### <a name="client-streaming-call"></a>用戶端串流式呼叫
 
-用戶端串流呼叫會在沒有用戶端傳送訊息的*情況下*啟動。 用戶端可以選擇傳送具有 `RequestStream.WriteAsync`的訊息。 當用戶端完成傳送訊息時 `RequestStream.CompleteAsync` 應該呼叫來通知服務。 當服務傳迴響應消息時，就會完成呼叫。
+用戶端流式處理調用啟動*而不*發送消息的用戶端。 用戶端可以選擇使用`RequestStream.WriteAsync`發送消息。 當用戶端完成發送訊息時,`RequestStream.CompleteAsync`應呼叫以通知服務。 當服務返回回應消息時,呼叫已完成。
 
 ```csharp
 var client = new Counter.CounterClient(channel);
@@ -136,9 +136,9 @@ using (var call = client.AccumulateCount())
 }
 ```
 
-### <a name="bi-directional-streaming-call"></a>雙向串流呼叫
+### <a name="bi-directional-streaming-call"></a>雙向流式處理呼叫
 
-雙向串流呼叫會在沒有用戶端傳送訊息的*情況下*啟動。 用戶端可以選擇傳送具有 `RequestStream.WriteAsync`的訊息。 從服務串流處理的訊息可以透過 `ResponseStream.MoveNext()` 或 `ResponseStream.ReadAllAsync()`來存取。 當 `ResponseStream` 沒有其他訊息時，雙向串流呼叫會完成。
+雙向流式處理調用啟動*而不*由客戶端發送消息。 用戶端可以選擇使用`RequestStream.WriteAsync`發送消息。 從服務流式傳輸的消息可通過`ResponseStream.MoveNext()``ResponseStream.ReadAllAsync()`或訪問。 當 沒有更多消息時`ResponseStream`, 雙向流式處理調用即完成。
 
 ```csharp
 using (var call = client.Echo())
@@ -172,7 +172,7 @@ using (var call = client.Echo())
 }
 ```
 
-在雙向串流呼叫期間，用戶端和服務可以隨時傳送訊息給彼此。 與雙向呼叫互動的最佳用戶端邏輯會根據服務邏輯而有所不同。
+在雙向流式處理呼叫期間,客戶端和服務可以隨時相互發送消息。 與雙向調用交互的最佳用戶端邏輯因服務邏輯而異。
 
 ## <a name="additional-resources"></a>其他資源
 

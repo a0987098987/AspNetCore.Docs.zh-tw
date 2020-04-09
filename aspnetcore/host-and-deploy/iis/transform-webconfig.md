@@ -8,27 +8,27 @@ ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/iis/transform-webconfig
 ms.openlocfilehash: 069b9bb516644a1a722235b33d4916460488ebf2
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78657931"
 ---
 # <a name="transform-webconfig"></a>轉換 web.config
 
-依[Vijay Ramakrishnan](https://github.com/vijayrkn)
+由[維傑·拉馬克里什南](https://github.com/vijayrkn)
 
 對 *web.config* 檔案的轉換可在發佈應用程式時，根據下列條件進行套用：
 
-* [組建組態](#build-configuration)
+* [建置組態](#build-configuration)
 * [設定檔](#profile)
 * [環境](#environment)
-* [Custom](#custom)
+* [自訂](#custom)
 
 這些轉換會針對下列任一 *web.config* 產生案例進行：
 
 * 由 `Microsoft.NET.Sdk.Web` SDK 自動產生。
-* 由開發人員在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中提供。
+* 由應用[內容根](xref:fundamentals/index#content-root)中的開發人員提供。
 
 ## <a name="build-configuration"></a>建置組態
 

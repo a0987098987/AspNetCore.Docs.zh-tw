@@ -1,7 +1,7 @@
 ---
-title: .NET Core 中的 gRPC 用戶端 factory 整合
+title: gRPC 客戶端工廠整合在 .NET 核心
 author: jamesnk
-description: 瞭解如何使用用戶端 factory 建立 gRPC 用戶端。
+description: 瞭解如何使用用戶端工廠創建 gRPC 用戶端。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 11/12/2019
@@ -9,25 +9,25 @@ no-loc:
 - SignalR
 uid: grpc/clientfactory
 ms.openlocfilehash: 3042bb61367f8b9a9f3142217ad329270ab2cca5
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78667164"
 ---
-# <a name="grpc-client-factory-integration-in-net-core"></a>.NET Core 中的 gRPC 用戶端 factory 整合
+# <a name="grpc-client-factory-integration-in-net-core"></a>gRPC 客戶端工廠整合在 .NET 核心
 
-gRPC 與 `HttpClientFactory` 整合提供了建立 gRPC 用戶端的集中方式。 它可以用來做為設定[獨立 gRPC 用戶端實例](xref:grpc/client)的替代方案。 Factory 整合可在[Grpc ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) NuGet 套件中取得。
+gRPC`HttpClientFactory`整合提供建立 gRPC 用戶端的集中式方法。 它可以用作[配置獨立 gRPC 客戶端實例的](xref:grpc/client)替代方法。 工廠整合在[Grpc.Net.ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) NuGet 套件中提供。
 
-Factory 提供下列優點：
+工廠提供以下優勢:
 
-* 提供設定邏輯 gRPC 用戶端實例的集中位置
-* 管理基礎 `HttpClientMessageHandler` 的存留期
-* 在 ASP.NET Core gRPC 服務中自動傳播期限和取消
+* 提供設定邏輯 gRPC 客戶端實體的中心位置
+* 管理基礎的存留期`HttpClientMessageHandler`
+* 在ASP.NET核心 gRPC 服務中自動傳播截止時間並取消
 
 ## <a name="register-grpc-clients"></a>註冊 gRPC 用戶端
 
-若要註冊 gRPC 用戶端，可以在 `Startup.ConfigureServices`內使用泛型 `AddGrpcClient` 擴充方法，並指定 gRPC 具類型的用戶端類別和服務位址：
+要註冊 gRPC 客戶`AddGrpcClient`端`Startup.ConfigureServices`,可以在 中 使用泛型擴充方法,指定 gRPC 鍵入的用戶端類和服務位址:
 
 ```csharp
 services.AddGrpcClient<Greeter.GreeterClient>(o =>
@@ -36,7 +36,7 @@ services.AddGrpcClient<Greeter.GreeterClient>(o =>
 });
 ```
 
-GRPC 用戶端類型會使用相依性插入（DI）註冊為暫時性。 現在可以在 DI 所建立的類型中直接插入和取用用戶端。 ASP.NET Core MVC 控制器，SignalR 中樞和 gRPC 服務是可自動插入 gRPC 用戶端的位置：
+gRPC 客戶端類型註冊為臨時依賴項注入 (DI)。 用戶端現在可以直接注入和使用 DI 創建的類型。 ASP.NET核心 MVCSignalR控制器、集線器和 gRPC 服務是可自動注入 gRPC 用戶端的地方:
 
 ```csharp
 public class AggregatorService : Aggregator.AggregatorBase
@@ -63,9 +63,9 @@ public class AggregatorService : Aggregator.AggregatorBase
 }
 ```
 
-## <a name="configure-httpclient"></a>設定 HttpClient
+## <a name="configure-httpclient"></a>設定 HTTPClient
 
-`HttpClientFactory` 會建立 gRPC 用戶端所使用的 `HttpClient`。 標準 `HttpClientFactory` 方法可以用來新增連出要求中介軟體或設定 `HttpClient`的基礎 `HttpClientHandler`：
+`HttpClientFactory`創建`HttpClient`gRPC 用戶端使用。 標準`HttpClientFactory`方法可用於新增傳出要求中間元件或`HttpClientHandler`設定的基礎`HttpClient`:
 
 ```csharp
 services
@@ -81,14 +81,14 @@ services
     });
 ```
 
-如需詳細資訊，請參閱[使用 IHttpClientFactory 提出 HTTP 要求](xref:fundamentals/http-requests)。
+有關詳細資訊,請參閱使用[IHTTPClientFactory 發出 HTTP 請求](xref:fundamentals/http-requests)。
 
-## <a name="configure-channel-and-interceptors"></a>設定通道和攔截器
+## <a name="configure-channel-and-interceptors"></a>設定通道與攔截器
 
-gRPC 特有的方法適用于：
+gRPC 特定方法可用於:
 
-* 設定 gRPC 用戶端的基礎通道。
-* 新增用戶端在進行 gRPC 呼叫時將使用的 `Interceptor` 實例。
+* 配置 gRPC 客戶端的基礎通道。
+* 添加`Interceptor`用戶端在進行 gRPC 調用時將使用的實例。
 
 ```csharp
 services
@@ -103,11 +103,11 @@ services
     });
 ```
 
-## <a name="deadline-and-cancellation-propagation"></a>期限和取消傳播
+## <a name="deadline-and-cancellation-propagation"></a>截止日期和取消傳播
 
-在 gRPC 服務中，由 factory 建立的 gRPC 用戶端可以使用 `EnableCallContextPropagation()` 設定，以自動將期限和取消權杖傳播至子呼叫。 `EnableCallContextPropagation()` 的擴充方法可在[Grpc. AspNetCore. ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) NuGet 套件中取得。
+工廠在 gRPC 服務中創建的 gRPC`EnableCallContextPropagation()`用戶端可以配置為 自動將截止時間通知和取消權杖傳播到子調用。 擴`EnableCallContextPropagation()`充方法在[Grpc.AspNetCore.Server.ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) NuGet 包中可用。
 
-呼叫內容傳播的運作方式是從目前的 gRPC 要求內容讀取期限和解除標記，並自動將它們傳播至 gRPC 用戶端所發出的撥出電話。 呼叫內容傳播是確保複雜的嵌套 gRPC 案例一律會傳播期限和取消的絕佳方式。
+調用上下文傳播的工作原理是從當前 gRPC 請求上下文中讀取截止時間並取消權杖,並自動將它們傳播到 gRPC 客戶端發出的傳出調用。 調用上下文傳播是確保複雜嵌套 gRPC 方案始終傳播截止時間並取消的絕佳方式。
 
 ```csharp
 services
@@ -118,7 +118,7 @@ services
     .EnableCallContextPropagation();
 ```
 
-如需有關期限和 RPC 取消的詳細資訊，請參閱[rpc 生命週期](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle)。
+有關截止日期和 RPC 取消的詳細資訊,請參閱[RPC 生命週期](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle)。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -1,69 +1,148 @@
 ---
-title: 安全 ASP.NET Core Blazor WebAssembly
+title: 安全ASP.NET核心Blazor網路組裝
 author: guardrex
-description: 瞭解如何以單一頁面應用程式（Spa）保護 Blazor WebAssemlby 應用程式的安全。
+description: 瞭解如何將 WebAssemby 應用程式作為單頁應用程式 (SPA) 保護Blazor。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/12/2020
+ms.date: 03/31/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/index
-ms.openlocfilehash: 652d4c61110f786396d9d5af4f131b817c40e333
-ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
+ms.openlocfilehash: be286d770cd8d6e5cf7885b91be8654f74ffd743
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80219242"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80538976"
 ---
-# <a name="secure-aspnet-core-opno-locblazor-webassembly"></a>安全 ASP.NET Core Blazor WebAssembly
+# <a name="secure-aspnet-core-opno-locblazor-webassembly"></a>安全ASP.NET核心Blazor網路組裝
 
-By [Javier Calvarro Nelson](https://github.com/javiercn)
+哈威爾[·卡爾瓦羅·納爾遜](https://github.com/javiercn)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 [!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
 
-Blazor WebAssembly 應用程式的保護方式與單一頁面應用程式（Spa）相同。 有數種方法可以向 Spa 驗證使用者，但最常見且完整的方法是使用以[oAuth 2.0 通訊協定](https://oauth.net/)為基礎的執行，例如[Open ID Connect （OIDC）](https://openid.net/connect/)。
+BlazorWeb組裝應用的安全方式與單頁應用程式 (SPA) 相同。 有幾種方法可以對使用者進行對SP的身份驗證,但最常見和全面的方法是基於[OAuth 2.0協定的](https://oauth.net/)實現,如[開放ID連接 (OIDC)。](https://openid.net/connect/)
 
-## <a name="authentication-library"></a>驗證程式庫
+## <a name="authentication-library"></a>認證庫
 
-Blazor WebAssembly 支援透過 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 程式庫使用 OIDC 來驗證和授權應用程式。 程式庫提供一組基本類型，可針對 ASP.NET Core 後端順暢地進行驗證。 程式庫整合了 ASP.NET Core 身分識別與以身分[識別伺服器](https://identityserver.io/)為基礎的 API 授權支援。 程式庫可以針對支援 OIDC 的任何協力廠商身分識別提供者（IP）進行驗證，稱為 OpenID 提供者（OP）。
+BlazorWebAssembly 支援`Microsoft.AspNetCore.Components.WebAssembly.Authentication`透過庫使用 OIDC 對應用進行身份驗證和授權。 該庫提供了一組基元,用於針對ASP.NET核心後端無縫驗證。 該庫將ASP.NET核心識別與建構在[識別伺服器](https://identityserver.io/)之上的API授權支援整合。 庫可以針對支援 OIDC 的任何第三方識別提供者 (IP) 進行身份驗證,後者稱為 OpenID 提供者 (OP)。
 
-Blazor WebAssembly 中的驗證支援是建置於*oidc-client*程式庫之上，這是用來處理基礎驗證通訊協定的詳細資料。
+WebAssemblyBlazor中的 認證支援建立在*oidc-client.js*庫之上,該庫用於處理基礎身份驗證協定的詳細資訊。
 
-驗證 Spa 的其他選項是否存在，例如使用 SameSite cookie。 不過，Blazor WebAssembly 的工程設計會以 oAuth 和 OIDC 的形式，在 Blazor WebAssembly 應用程式中做為驗證的最佳選擇。 以[JSON Web 權杖（jwt）](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)為基礎的[權杖型驗證](xref:security/anti-request-forgery#token-based-authentication)是針對功能和安全性原因而選擇，而不是以[cookie 為基礎的驗證](xref:security/anti-request-forgery#cookie-based-authentication)：
+存在用於驗證 SPA 的其他選項,例如使用 SameSite Cookie。 但是,WebAssemblyBlazor的工程設計在 OAuth 和 OIDCBlazor上確定,作為 Web 組裝應用中身份驗證的最佳選擇。 基於[JSON Web 權杖 (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)的[基於權杖的身份驗證](xref:security/anti-request-forgery#token-based-authentication)選擇於[基於 Cookie 的身份驗證](xref:security/anti-request-forgery#cookie-based-authentication),原因包括功能和安全:
 
-* 使用以權杖為基礎的通訊協定提供較小的受攻擊面，因為權杖不會在所有要求中傳送。
-* 伺服器端點不需要保護[跨網站偽造要求（CSRF）](xref:security/anti-request-forgery) ，因為權杖是明確傳送的。 這可讓您將 Blazor WebAssembly 應用程式與 MVC 或 Razor pages 應用程式裝載在一起。
-* 權杖的許可權比 cookie 窄。 例如，除非明確地執行這類功能，否則權杖無法用來管理使用者帳戶或變更使用者的密碼。
-* 權杖的存留期很短，預設為一小時，這會限制攻擊時段。 權杖也可以隨時撤銷。
-* 獨立 Jwt 提供驗證程式的用戶端和伺服器保證。 例如，用戶端的方法是偵測並驗證它所收到的權杖是否合法，並在指定的驗證程式中發出。 如果協力廠商嘗試在驗證程式中途切換權杖，用戶端就可以偵測出切換的權杖，並避免使用它。
-* OAuth 和 OIDC 的權杖不依賴使用者代理程式正確運作，以確保應用程式的安全。
-* 以權杖為基礎的通訊協定，例如 oAuth 和 OIDC，可讓您使用相同的安全性特性集來驗證和授權託管和獨立應用程式。
+* 使用基於權杖的協定可提供較小的攻擊表面積,因為權杖不會在所有請求中發送。
+* 伺服器終結點不需要保護防止[跨網站請求偽造 (CSRF),](xref:security/anti-request-forgery)因為權杖是顯式發送的。 這允許您與 MVC 或 Razor 頁面應用Blazor一起託管 Web 組裝應用。
+* 令牌的許可權比 Cookie 窄。 例如,令牌不能用於管理使用者帳戶或更改使用者的密碼,除非顯式實現此類功能。
+* 令牌的存留期很短,默認情況下為 1 小時,這限制了攻擊視窗。 令牌也可以在任何時候被吊銷。
+* 自包含的 JWT 向用戶端和伺服器提供有關身份驗證過程的保證。 例如,用戶端具有檢測和驗證其接收的權杖是否合法並作為給定身份驗證過程的一部分發出的方法。 如果第三方嘗試在身份驗證過程中切換令牌,用戶端可以檢測交換權杖並避免使用它。
+* 具有 OAuth 和 OIDC 的權杖不依賴於使用者代理行為正確,以確保應用的安全。
+* 基於權杖的協定(如OAuth和OIDC)允許對具有相同安全特徵集的託管和獨立應用進行身份驗證和授權。
 
-## <a name="authentication-process-with-oidc"></a>使用 OIDC 的驗證程式
+## <a name="authentication-process-with-oidc"></a>OIDC 的身分驗證程序
 
-`Microsoft.AspNetCore.Components.WebAssembly.Authentication` 程式庫提供數個基本專案，以使用 OIDC 來執行驗證和授權。 就廣義而言，驗證的運作方式如下：
+該`Microsoft.AspNetCore.Components.WebAssembly.Authentication`庫提供了幾個基元,以便使用 OIDC 實現身份驗證和授權。 從廣義上講,身份驗證的工作原理如下:
 
-* 當匿名使用者選取 [登入] 按鈕或要求已套用[`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)屬性的頁面時，系統會將使用者重新導向至應用程式的登入頁面（`/authentication/login`）。
-* 在登入頁面中，驗證程式庫會準備重新導向至授權端點。 授權端點位於 Blazor WebAssembly 應用程式之外，而且可以在不同的來源託管。 端點負責判斷使用者是否已驗證，以及是否要在回應中發出一或多個權杖。 驗證程式庫會提供登入回呼，以接收驗證回應。
-  * 如果使用者未經過驗證，則會將使用者重新導向至基礎驗證系統，這通常是 ASP.NET Core 身分識別。
-  * 如果使用者已經過驗證，則授權端點會產生適當的權杖，並將瀏覽器重新導向回登入回呼端點（`/authentication/login-callback`）。
-* 當 Blazor WebAssembly 應用程式載入登入回呼端點（`/authentication/login-callback`）時，就會處理驗證回應。
-  * 如果驗證程式成功完成，則會驗證使用者，並選擇性地將其傳送回給使用者要求的原始受保護 URL。
-  * 如果驗證程式因任何原因而失敗，則會將使用者傳送至登入失敗頁面（`/authentication/login-failed`），並顯示錯誤。
+* 當匿名使用者選擇登錄按鈕或請求應用該屬性的[`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)頁面時,使用者將重定向到應用的登錄頁 ()。`/authentication/login`
+* 在登錄頁中,身份驗證庫準備重定向到授權終結點。 授權終結點位於BlazorWebAssembly 應用之外,可以託管在單獨的源源。 終結點負責確定使用者是否經過身份驗證,並負責在回應中發出一個或多個令牌。 身份驗證庫提供登錄回調以接收身份驗證回應。
+  * 如果使用者未經過身份驗證,則使用者將重定向到基礎身份驗證系統,該身份驗證系統通常ASP.NET核心標識。
+  * 如果用戶已經過身份驗證,則授權終結點將生成相應的令牌,並將瀏覽器重定向回登錄回調終結點 ()。`/authentication/login-callback`
+* 當BlazorWebAssembly 應用載入登入回`/authentication/login-callback`檔時 (), 身份驗證回應將處理。
+  * 如果身份驗證過程成功完成,則對使用者進行身份驗證,並選擇性地將發送回使用者請求的原始受保護 URL。
+  * 如果身份驗證過程由於任何原因失敗,則使用者將發送到登錄失敗頁 (),`/authentication/login-failed`並顯示錯誤。
+
+## <a name="support-prerendering-with-authentication"></a>支援透過身份驗證預像
+
+在遵循託管BlazorWebAssembly 應用主題中的指南後,使用以下說明建立具有以下功能的應用:
+
+* 預呈現不需要授權的路徑。
+* 不預渲染需要授權的路徑。
+
+在用戶端應用的`Program`類別 *(Program.cs),* 將公用服務註冊分解為單獨的方法`ConfigureCommonServices`(例如:
+
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.RootComponents.Add<App>("app");
+
+        services.AddBaseAddressHttpClient();
+        services.Add...;
+
+        ConfigureCommonServices(builder.Services);
+
+        await builder.Build().RunAsync();
+    }
+
+    public static void ConfigureCommonServices(IServiceCollection services)
+    {
+        // Common service registrations
+    }
+}
+```
+
+在「伺服器」應用中,`Startup.ConfigureServices`註冊以下附加服務:
+
+```csharp
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Server;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+
+    services.AddRazorPages();
+    services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
+    services.AddScoped<SignOutSessionStateManager>();
+
+    Client.Program.ConfigureCommonServices(services);
+}
+```
+
+在「伺服器」應用程式的方法`Startup.Configure`中,取代為`endpoints.MapFallbackToFile("index.html")``endpoints.MapFallbackToPage("/_Host")`:
+
+```csharp
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapFallbackToPage("/_Host");
+});
+```
+
+在「伺服器」應用中,如果*頁面*資料夾不存在,則創建該資料夾。 在「伺服器」應用的 *「頁面」* 資料夾中創建 *_Host.cshtml*頁面。 將用戶端應用*wwwroot/index.html*檔案中的內容貼上*到 「頁面/_Host.cshtml」* 檔案中。 更新檔案的內容:
+
+* 將 `@page "_Host"` 新增到檔案的頂端。
+* 將`<app>Loading...</app>`標記取代為以下內容:
+
+  ```cshtml
+  <app>
+      @if (!HttpContext.Request.Path.StartsWithSegments("/authentication"))
+      {
+          <component type="typeof(Wasm.Authentication.Client.App)" render-mode="Static" />
+      }
+      else
+      {
+          <text>Loading...</text>
+      }
+  </app>
+  ```
   
-## <a name="options-for-hosted-apps-and-third-party-login-providers"></a>託管應用程式和協力廠商登入提供者的選項
+## <a name="options-for-hosted-apps-and-third-party-login-providers"></a>託管應用和第三方登入者的選項
 
-使用協力廠商提供者驗證和授權託管的 Blazor WebAssembly 應用程式時，有數個選項可用來驗證使用者。 您選擇哪一個取決於您的案例。
+使用第三方提供者驗證和授權Blazor託管 WebAssembly 應用時,可以使用多種選項進行身份驗證。 您選擇的一個取決於您的方案。
 
 如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims>。
 
-### <a name="authenticate-users-to-only-call-protected-third-party-apis"></a>驗證使用者只呼叫受保護的協力廠商 Api
+### <a name="authenticate-users-to-only-call-protected-third-party-apis"></a>將使用者驗證為僅呼叫受保護的第三方 API
 
-對協力廠商 API 提供者的用戶端 oAuth 流程驗證使用者：
+透過用戶端 OAuth 串流對第三方 API 提供程式進行身份驗證:
 
  ```csharp
  builder.services.AddOidcAuthentication(options => { ... });
@@ -71,30 +150,30 @@ Blazor WebAssembly 中的驗證支援是建置於*oidc-client*程式庫之上，
  
  在此情節中：
 
-* 裝載應用程式的伺服器不扮演角色。
-* 無法保護伺服器上的 Api。
-* 應用程式只能呼叫受保護的協力廠商 Api。
+* 託管應用的伺服器不扮演角色。
+* 無法保護伺服器上的 API。
+* 應用只能調用受保護的第三方 API。
 
-### <a name="authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party"></a>使用協力廠商提供者來驗證使用者，並在主機伺服器和協力廠商上呼叫受保護的 Api
+### <a name="authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party"></a>使用第三方提供者對使用者進行身份驗證,並在主機伺服器和第三方上調用受保護的 API
 
-使用協力廠商登入提供者來設定身分識別。 取得協力廠商 API 存取所需的權杖，並加以儲存。
+使用第三方登錄提供程式配置標識。 獲取第三方 API 訪問所需的權杖並儲存它們。
 
-當使用者登入時，身分識別會在驗證程式中收集存取權和重新整理權杖。 此時，有幾個方法可用來對協力廠商 Api 進行 API 呼叫。
+當用戶登錄時,標識將收集訪問和刷新權杖,作為身份驗證過程的一部分。 此時,有幾種方法可以對第三方 API 進行 API 調用。
 
-#### <a name="use-a-server-access-token-to-retrieve-the-third-party-access-token"></a>使用伺服器存取權杖來取出協力廠商存取權杖
+#### <a name="use-a-server-access-token-to-retrieve-the-third-party-access-token"></a>使用伺服器存取權杖取得三方存取權杖
 
-使用伺服器上產生的存取權杖，從伺服器 API 端點抓取協力廠商存取權杖。 從該處，使用協力廠商存取權杖，直接從用戶端上的身分識別呼叫協力廠商 API 資源。
+使用伺服器上生成的訪問權杖從伺服器 API 終結點檢索第三方存取權杖。 從那裡,使用第三方訪問權杖直接從用戶端上的標識調用第三方 API 資源。
 
-我們不建議採用這種方法。 這種方法需要將協力廠商存取權杖視為針對公用用戶端所產生。 在 oAuth 詞彙中，公用應用程式不會有用戶端密碼，因為它無法受信任而無法安全地儲存秘密，而且會為機密用戶端產生存取權杖。 機密用戶端是具有用戶端密碼的用戶端，並假設能夠安全地儲存秘密。
+我們不建議此方法。 此方法需要將第三方訪問權杖視為為公共用戶端生成的權杖。 在 OAuth 術語中,公共應用沒有用戶端機密,因為它不能被信任安全地儲存機密,並且訪問令牌是為機密用戶端生成的。 機密用戶端是具有客戶端機密且假定能夠安全地儲存機密的用戶端。
 
-* 協力廠商存取權杖可能會被授與額外的範圍來執行敏感性作業，這是根據協力廠商針對較受信任的用戶端發出權杖的事實。
-* 同樣地，重新整理權杖不應發給不受信任的用戶端，因為這樣做會讓用戶端無限制存取，除非有其他限制。
+* 第三方訪問權杖可能會被授予其他作用域,以便根據第三方為更受信任的用戶端發出權杖來執行敏感操作。
+* 同樣,刷新令牌不應頒發給不受信任的客戶端,因為這樣做可以授予用戶端無限制的訪問許可權,除非實施其他限制。
 
-#### <a name="make-api-calls-from-the-client-to-the-server-api-in-order-to-call-third-party-apis"></a>從用戶端對伺服器 API 進行 API 呼叫，以便呼叫協力廠商 Api
+#### <a name="make-api-calls-from-the-client-to-the-server-api-in-order-to-call-third-party-apis"></a>從用戶端對伺服器 API 進行 API 呼叫,以便呼叫第三方 API
 
-從用戶端對伺服器 API 進行 API 呼叫。 從伺服器中，取出協力廠商 API 資源的存取權杖，併發出任何需要的呼叫。
+從用戶端對伺服器 API 進行 API 呼叫。 從伺服器中檢索第三方 API 資源的訪問權杖,併發出任何必要的調用。
 
-雖然這種方法需要透過伺服器額外的網路躍點來呼叫協力廠商 API，但最終會導致更安全的體驗：
+雖然此方法需要透過伺服器進行額外的網路跳機來調用第三方 API,但它最終會導致更安全的體驗:
 
-* 伺服器可以儲存重新整理權杖，並確保應用程式不會失去協力廠商資源的存取權。
-* 應用程式無法從可能包含更多敏感性許可權的伺服器洩漏存取權杖。
+* 伺服器可以存儲刷新權杖,並確保應用不會失去對第三方資源的訪問許可權。
+* 應用無法從可能包含更敏感許可權的伺服器洩漏訪問令牌。

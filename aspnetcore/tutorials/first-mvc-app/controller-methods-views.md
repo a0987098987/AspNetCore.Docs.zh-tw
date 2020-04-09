@@ -6,21 +6,21 @@ ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
 ms.openlocfilehash: 87b3cb2f4429157123d30274d1f12cd589c1cc99
-ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80242506"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>ASP.NET Core 中的控制器方法和檢視
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 此電影應用程式有個不錯的開始，但呈現效果不盡理想，例如 **ReleaseDate** 應該是兩個字。
 
 ![索引檢視：Release Date (發行日期) 是一個字 (不含空格)，且每個電影的發行日期均顯示 12 AM 的時間](working-with-sql/_static/m55.png)
 
-開啟 *Models/Movie.cs* 檔案，然後新增醒目提示的程式碼行，如下所示：
+開啟 *Models/Movie.cs* 檔案，然後新增反白顯示的程式碼行，如下所示：
 
 [!code-csharp[](start-mvc/sample/MvcMovie22/Models/MovieDateFixed.cs?name=snippet_1&highlight=2,3,12-13,17)]
 
@@ -30,13 +30,13 @@ ms.locfileid: "80242506"
 
 瀏覽至 `Movies` 控制器，並將滑鼠指標停留在 **Edit** 連結，以查看目標 URL。
 
-![滑鼠停留在 Edit 連結並顯示 https://localhost:5001/Movies/Edit/5 之 URL 的瀏覽器視窗](~/tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
+![滑鼠停留在 Edit 連結並顯示 https://localhost:5001/Movies/Edit/5 的 Url 的瀏覽器視窗](~/tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-在 **Views/Movies/Index.cshtml** 檔案中，**Edit**、**Details**  和 *Delete* 連結是由 Core MVC 錨點標記協助程式所產生。
+在 *Views/Movies/Index.cshtml* 檔案中，**Edit**、**Details ** 和 **Delete** 連結是由 Core MVC 錨點標記協助程式所產生。
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
-[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從控制器動作方法和路由識別碼動態產生 HTML `href` 屬性值。您可以從您慣用的瀏覽器使用**View Source** ，或使用開發人員工具來檢查產生的標記。 產生的 HTML 部分如下所示：
+[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上面的代碼中,`AnchorTagHelper`動態生成來自控制器操作方法和路`href`由 ID 的 HTML 屬性值。使用您最喜愛的瀏覽器**中的 View Source**或使用開發人員工具檢查生成的標記。 產生的 HTML 部分如下所示：
 
 ```html
  <td>
@@ -46,11 +46,11 @@ ms.locfileid: "80242506"
 </td>
 ```
 
-回想在 [Startup.cs](xref:mvc/controllers/routing) 檔案中設定的*路由*格式：
+回想在 *Startup.cs* 檔案中設定的[路由](xref:mvc/controllers/routing)格式：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
-ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Edit` 控制器的 `Movies` 動作方法的要求，其參數 `Id` 為 4 (控制器方法也稱為動作方法)。
+ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies` 控制器的 `Edit` 動作方法的要求，其參數 `Id` 為 4 (控制器方法也稱為動作方法)。
 
 [標記協助程式](xref:mvc/views/tag-helpers/intro)是 ASP.NET Core 的其中一種最受歡迎的新功能。 如需詳細資訊，請參閱[其他資源](#additional-resources)。
 
@@ -94,13 +94,13 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Edit` �
 
 ::: moniker-end
 
-`HttpPost` 屬性指定「只」`Edit`*能為*  要求叫用這個 `POST` 方法。 您可以將 `[HttpGet]` 屬性套用至第一個編輯方法，但不需要執行此動作，因為 `[HttpGet]` 是預設值。
+`HttpPost` 屬性指定「只」** 能為 `POST` 要求叫用這個 `Edit` 方法。 您可以將 `[HttpGet]` 屬性套用至第一個編輯方法，但不需要執行此動作，因為 `[HttpGet]` 是預設值。
 
 `ValidateAntiForgeryToken` 屬性是用來[防範要求偽造](xref:security/anti-request-forgery)，並與編輯檢視檔案 (*Views/Movies/Edit.cshtml*) 所產生的防偽語彙基元成對。 編輯檢視檔案使用[表單標記協助程式](xref:mvc/views/working-with-forms)產生防偽語彙基元。
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 
-[表單標記協助程式](xref:mvc/views/working-with-forms)會產生隱藏的防偽語彙基元，其必須符合電影控制器的 `[ValidateAntiForgeryToken]` 方法中 `Edit` 產生的防偽語彙基元。 如需詳細資訊，請參閱[反要求偽造](xref:security/anti-request-forgery)。
+[表單標記協助程式](xref:mvc/views/working-with-forms)會產生隱藏的防偽語彙基元，其必須符合電影控制器的 `Edit` 方法中 `[ValidateAntiForgeryToken]` 產生的防偽語彙基元。 如需詳細資訊，請參閱[反要求偽造](xref:security/anti-request-forgery)。
 
 `HttpGet Edit` 方法會採用電影 `ID` 參數，使用 Entity Framework `FindAsync` 方法查詢電影，並將選取的電影傳回 Edit 檢視。 如果找不到電影，會傳回 `NotFound` (HTTP 404)。
 
@@ -114,11 +114,11 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Edit` �
 
 包含 Scaffold 的程式碼會使用數個標記協助程式方法來簡化 HTML 標記。 [標籤標記協助程式](xref:mvc/views/working-with-forms)顯示欄位的名稱 ("Title"、"ReleaseDate"、"Genre" 或 "Price")。 [輸入標記協助程式](xref:mvc/views/working-with-forms)轉譯 HTML `<input>` 元素。 [驗證標記協助程式](xref:mvc/views/working-with-forms)則顯示與該屬性相關聯的任何驗證訊息。
 
-執行應用程式，並巡覽至 `/Movies` URL。 按一下 **Edit** 連結。 在瀏覽器中，檢視頁面的原始檔。 `<form>` 元素產生的 HTML 如下所示。
+執行應用程式，並巡覽至 `/Movies` URL。 按下 **「編輯」** 連結。 在瀏覽器中，檢視頁面的原始檔。 `<form>` 元素產生的 HTML 如下所示。
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/edit_view_source.html?highlight=1,6,10,17,24,28)]
 
-`<input>` 元素位於 `HTML <form>` 元素中，而後者的 `action` 屬性設定為發佈到 `/Movies/Edit/id` URL。 按一下 `Save` 按鈕時，表單資料將發佈至伺服器。 在結尾 `</form>` 元素之前的最後一行會顯示[表單標記協助程式](xref:security/anti-request-forgery)所產生的隱藏 [XSRF](xref:mvc/views/working-with-forms) 語彙基元。
+`<input>` 元素位於 `HTML <form>` 元素中，而後者的 `action` 屬性設定為發佈到 `/Movies/Edit/id` URL。 按一下 `Save` 按鈕時，表單資料將發佈至伺服器。 在結尾 `</form>` 元素之前的最後一行會顯示[表單標記協助程式](xref:mvc/views/working-with-forms)所產生的隱藏 [XSRF](xref:security/anti-request-forgery) 語彙基元。
 
 ## <a name="processing-the-post-request"></a>處理 POST 要求
 
@@ -136,11 +136,11 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Edit` �
 
 ::: moniker-end
 
-`[ValidateAntiForgeryToken]` 屬性會驗證[表單標記協助程式](xref:security/anti-request-forgery) 中的防偽語彙基元產生器所產生的隱藏 [XSRF](xref:mvc/views/working-with-forms) 語彙基元
+`[ValidateAntiForgeryToken]` 屬性會驗證[表單標記協助程式](xref:mvc/views/working-with-forms) 中的防偽語彙基元產生器所產生的隱藏 [XSRF](xref:security/anti-request-forgery) 語彙基元
 
-[模型繫結](xref:mvc/models/model-binding)系統採用已發佈的表單值，並建立以 `Movie` 參數傳遞的 `movie` 物件。 `ModelState.IsValid` 方法會驗證表單中提交的資料可用於修改 (編輯或更新) `Movie` 物件。 如果資料有效，則會進行儲存。 藉由呼叫資料庫內容的 `SaveChangesAsync` 方法，更新 (編輯) 的電影資料會儲存到資料庫。 儲存資料之後，程式碼將使用者重新導向至 `Index` 類別的 `MoviesController` 動作方法，此方法會顯示電影集合，包括剛剛所進行的變更。
+[模型繫結](xref:mvc/models/model-binding)系統採用已發佈的表單值，並建立以 `movie` 參數傳遞的 `Movie` 物件。 `ModelState.IsValid` 方法會驗證表單中提交的資料可用於修改 (編輯或更新) `Movie` 物件。 如果資料有效，則會進行儲存。 藉由呼叫資料庫內容的 `SaveChangesAsync` 方法，更新 (編輯) 的電影資料會儲存到資料庫。 儲存資料之後，程式碼將使用者重新導向至 `MoviesController` 類別的 `Index` 動作方法，此方法會顯示電影集合，包括剛剛所進行的變更。
 
-在表單發佈至伺服器之前，用戶端驗證會對欄位檢查任何驗證規則。 如果出現任何驗證錯誤，即會顯示錯誤訊息，且不會發佈該表單。 如果已停用 JavaScript，就不會進行用戶端驗證，但伺服器偵測到無效的發佈值，因此會重新顯示表單值並顯示錯誤訊息。 稍後在本教學課程中，我們會更詳細檢查[模型驗證](xref:mvc/models/validation)。 [Views/Movies/Edit.cshtml](xref:mvc/views/working-with-forms) 檢視範本中的*驗證標記協助程式*負責顯示適當的錯誤訊息。
+在表單發佈至伺服器之前，用戶端驗證會對欄位檢查任何驗證規則。 如果出現任何驗證錯誤，即會顯示錯誤訊息，且不會發佈該表單。 如果已停用 JavaScript，就不會進行用戶端驗證，但伺服器偵測到無效的發佈值，因此會重新顯示表單值並顯示錯誤訊息。 稍後在本教學課程中，我們會更詳細檢查[模型驗證](xref:mvc/models/validation)。 *Views/Movies/Edit.cshtml* 檢視範本中的[驗證標記協助程式](xref:mvc/views/working-with-forms)負責顯示適當的錯誤訊息。
 
 ![Edit 檢視：Price 值 abc 不正確的例外狀況指出 Price 欄位必須是數字。 Release Date 值 xyz 不正確的例外狀況指出請輸入有效的日期。](~/tutorials/first-mvc-app/controller-methods-views/_static/val.png)
 
@@ -150,7 +150,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Edit` �
 
 * [全球化和當地語系化](xref:fundamentals/localization)
 * [標記協助程式簡介](xref:mvc/views/tag-helpers/intro)
-* [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
+* [編寫標籤協助程式](xref:mvc/views/tag-helpers/authoring)
 * [防偽要求](xref:security/anti-request-forgery)
 * 保護控制器避免[過度發佈](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
 * [ViewModels](https://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
@@ -161,5 +161,5 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Edit` �
 * [驗證標記協助程式](xref:mvc/views/working-with-forms)
 
 > [!div class="step-by-step"]
-> [上一頁](working-with-sql.md)
-> [下一頁](search.md)  
+> [前一個](working-with-sql.md)
+> [下一個](search.md)  

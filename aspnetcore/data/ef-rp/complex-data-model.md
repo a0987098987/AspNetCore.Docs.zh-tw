@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
 ms.openlocfilehash: 1d81a0444487c6396bb32381ed2cb26d44312c3a
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78665715"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
@@ -59,9 +59,9 @@ ms.locfileid: "78665715"
 
 針對學生註冊日期，所有頁面目前都會同時顯示日期和一天當中的時間，雖然只要日期才是重要項目。 透過使用資料註解屬性，您便可以只透過單一程式碼變更來修正每個顯示資料頁面中的顯示格式。 
 
-[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。`DataType` 屬性也可以讓應用程式自動提供類型特有的功能。 例如：
+[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [數據類型枚舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供了許多數據類型,如日期、時間、電話號碼、貨幣、電子郵寄地址等。該`DataType`屬性還可以使應用自動提供特定於類型的功能。 例如：
 
-* `mailto:` 會自動建立 `DataType.EmailAddress` 連結。
+* `DataType.EmailAddress` 會自動建立 `mailto:` 連結。
 * `DataType.Date` 在大多數的瀏覽器中都會提供日期選取器。
 
 `DataType` 屬性會發出 HTML5 `data-` (發音為 data dash) 屬性。 `DataType` 屬性不會提供驗證。
@@ -81,7 +81,7 @@ ms.locfileid: "78665715"
 * 瀏覽器可以啟用 HTML5 功能。 例如，顯示日曆控制項、適合地區設定的貨幣符號、電子郵件連結和用戶端輸入驗證。
 * 根據預設，瀏覽器將根據地區設定，使用正確的格式呈現資料。
 
-如需詳細資訊，請參閱 [\<input> 標籤協助程式文件](xref:mvc/views/working-with-forms#the-input-tag-helper)。
+有關詳細資訊,請參閱[\<標籤說明程式文件>輸入](xref:mvc/views/working-with-forms#the-input-tag-helper)。
 
 ### <a name="the-stringlength-attribute"></a>StringLength 屬性
 
@@ -101,7 +101,7 @@ ms.locfileid: "78665715"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [SQL Server 物件總管] (SSOX) 中，按兩下 [Student] 資料表來開啟 Student 資料表設計工具。
+在 [SQL Server 物件總管]**** (SSOX) 中，按兩下 [Student]**** 資料表來開啟 Student 資料表設計工具。
 
 ![移轉之前於 SSOX 中的 Students 資料表](complex-data-model/_static/ssox-before-migration.png)
 
@@ -124,7 +124,7 @@ public string FirstMidName { get; set; }
 
 建立資料庫時，模型上的屬性名稱會用來作為資料行名稱 (使用 `Column` 屬性時除外)。 `Student` 模型針對名字欄位使用 `FirstMidName`，因為欄位中可能也會包含中間名。
 
-透過 `[Column]` 屬性，資料模型中 `Student.FirstMidName` 會對應到 `FirstName` 資料表的 `Student` 資料行。 新增 `Column` 屬性會變更支援 `SchoolContext` 的模型。 支援 `SchoolContext` 的模型不再符合資料庫。 這種不一致會透過在本教學課程中稍後部分新增移轉來解決。
+透過 `[Column]` 屬性，資料模型中 `Student.FirstMidName` 會對應到 `Student` 資料表的 `FirstName` 資料行。 新增 `Column` 屬性會變更支援 `SchoolContext` 的模型。 支援 `SchoolContext` 的模型不再符合資料庫。 這種不一致會透過在本教學課程中稍後部分新增移轉來解決。
 
 ### <a name="the-required-attribute"></a>Required 屬性
 
@@ -132,7 +132,7 @@ public string FirstMidName { get; set; }
 [Required]
 ```
 
-`Required` 屬性會讓名稱屬性成為必要欄位。 針對不可為 Null 型別的實值型別 (例如 `Required`、`DateTime` 和 `int`)，`double` 屬性並非必要項目。 不可為 Null 的類型會自動視為必要欄位。
+`Required` 屬性會讓名稱屬性成為必要欄位。 針對不可為 Null 型別的實值型別 (例如 `DateTime`、`int` 和 `double`)，`Required` 屬性並非必要項目。 不可為 Null 的類型會自動視為必要欄位。
 
 `Required` 屬性必須搭配 `MinimumLength` 使用，才能強制執行 `MinimumLength`。
 
@@ -155,7 +155,7 @@ public string LastName { get; set; }
 
 ### <a name="create-a-migration"></a>建立移轉
 
-執行應用程式並移至 Students 頁面。 擲回例外狀況。 `[Column]` 屬性會造成 EF 預期尋找名為 `FirstName` 的資料行，但資料庫中的資料行名稱仍是 `FirstMidName`。
+執行應用程式並移至 Students 頁面。 隨即擲回例外狀況。 `[Column]` 屬性會造成 EF 預期尋找名為 `FirstName` 的資料行，但資料庫中的資料行名稱仍是 `FirstMidName`。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -225,12 +225,12 @@ SqliteException: SQLite Error 1: 'no such column: s.FirstName'.
 
 * 執行應用程式並移至 Students 頁面。
 * 請注意時間並未輸入或和日期一同顯示。
-* 選取 [新建] 然後嘗試輸入超過 50 個字元的名稱。
+* 選取 [新建]**** 然後嘗試輸入超過 50 個字元的名稱。
 
 > [!Note]
 > 在下列各節中，在某些階段建置應用程式會產生編譯器錯誤。 指令會指定何時應建置應用程式。
 
-## <a name="the-instructor-entity"></a>[Instructor] 實體
+## <a name="the-instructor-entity"></a>Instructor 實體
 
 ![Instructor 實體](complex-data-model/_static/instructor-entity.png)
 
@@ -301,7 +301,7 @@ public int InstructorID { get; set; }
 
 `Course` 實體具有外部索引鍵 (FK) 屬性`DepartmentID`。 `DepartmentID` 會指向相關的 `Department` 實體。 `Course` 實體具有一個 `Department` 導覽屬性。
 
-若模型針對相關實體已有導覽屬性，則 EF Core 針對資料模型便不需要外部索引鍵屬性。 EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 但是，在資料模型中明確包含 FK (外部索引鍵) 可讓更新更簡單且更有效率。 例如，假設有一個模型，當中「不」`DepartmentID`*包含*  FK 屬性。 當擷取課程實體以進行編輯時：
+若模型針對相關實體已有導覽屬性，則 EF Core 針對資料模型便不需要外部索引鍵屬性。 EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 但是，在資料模型中明確包含 FK (外部索引鍵) 可讓更新更簡單且更有效率。 例如，假設有一個模型，當中「不」** 包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
 
 * 若 `Department` 屬性未明確載入，則其為 Null。
 * 若要更新課程實體，必須先擷取 `Department` 實體。
@@ -364,7 +364,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 public decimal Budget { get; set; }
 ```
 
-通常您不需要資料行對應。 EF Core 會根據屬性的 CLR 型別來選擇適當 SQL Server 資料型別。 CLR `decimal` 類型會對應到 SQL Server `decimal` 類型。 由於 `Budget` 是貨幣，因此金額資料類型會比較適合貨幣。
+通常您不需要資料行對應。 EF Core 會根據屬性的 CLR 型別來選擇適當 SQL Server 資料型別。 CLR `decimal` 類型會對應到 SQL Server 的 `decimal` 類型。 由於 `Budget` 是貨幣，因此金額資料類型會比較適合貨幣。
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵及導覽屬性
 
@@ -390,7 +390,7 @@ public ICollection<Course> Courses { get; set; }
 
 根據慣例，EF Core 會為不可為 Null 的 FK 和多對多關聯性啟用串聯刪除。 此預設行為可能會導致循環串聯刪除規則。 循環串聯刪除規則會在新增移轉時造成例外狀況。
 
-例如，若 `Department.InstructorID` 屬性已定義成不可為 Null，EF Core 便會設定串聯刪除規則。 在這種情況下，若指派為部門管理員的講師遭到刪除，則會同時刪除部門。 在這種情況下，限制規則會更有意義。 下列[Fluent API](#fluent-api-alternative-to-attributes)會設定 [限制規則] 和 [停用串聯刪除]。
+例如，若 `Department.InstructorID` 屬性已定義成不可為 Null，EF Core 便會設定串聯刪除規則。 在這種情況下，若指派為部門管理員的講師遭到刪除，則會同時刪除部門。 在這種情況下，限制規則會更有意義。 以下[流暢的 API](#fluent-api-alternative-to-attributes)將設置限制規則並禁用級聯刪除。
 
   ```csharp
   modelBuilder.Entity<Department>()
@@ -429,11 +429,11 @@ public Student Student { get; set; }
 
 ## <a name="many-to-many-relationships"></a>Many-to-Many Relationships
 
-在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
+在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」** 的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
 
 下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表是使用 EF 6.x 的 [EF Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition) 產生的。 建立圖表並不是此教學課程的一部分)。
 
-![學生-課程多對多關聯性](complex-data-model/_static/student-course.png)
+![「學生-課程」多對多關聯性](complex-data-model/_static/student-course.png)
 
 每個關聯性線條都在其中一端有一個「1」，並在另外一端有一個「星號 (*)」，顯示其為一對多關聯性。
 
@@ -453,7 +453,7 @@ public Student Student { get; set; }
 
 Instructor 對 Courses 的多對多關聯性需要聯結資料表，而該聯結資料表的實體為 CourseAssignment。
 
-![講師對課程 m:M](complex-data-model/_static/courseassignment.png)
+![講師-課程 m:M](complex-data-model/_static/courseassignment.png)
 
 通常會將聯結實體命名為 `EntityName1EntityName2`。 例如，使用此模式的 Instructor 對 Courses 聯結資料表將會是 `CourseInstructor`。 不過，我們建議使用可描述關聯性的名稱。
 
@@ -510,7 +510,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 * 僅 EF Core 組態 (例如，`HasKey`)。
 * 驗證及 EF Core 組態 (例如，`[StringLength(50)]`)。
 
-如需屬性與 Fluent API 的詳細資訊，請參閱[方法](/ef/core/modeling/)。
+如需屬性與 Fluent API 的詳細資訊，請參閱[組態方法](/ef/core/modeling/)。
 
 ## <a name="entity-diagram"></a>實體圖表
 
@@ -579,7 +579,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 現在您已經具有現有的資料庫，您需要思考如何將變更套用到該資料庫。 本教學課程示範兩種替代方法：
 
 * [卸除並重新建立資料庫](#drop)。 若您正在使用 SQLite，請選擇此節。
-* [將移轉套用至現有資料庫](#applyexisting)。 本節中的說明僅適用於 SQL Server，不適用於 **SQLite**。 
+* [將移轉應用於現有資料庫](#applyexisting)。 本節中的說明僅適用於 SQL Server，不適用於 **SQLite**。 
 
 這兩種選擇都適用於 SQL Server。 雖然套用移轉方法更複雜且耗時，但它是現實世界生產環境的慣用方法。 
 
@@ -593,7 +593,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在套件管理員主控台 (PMC) 中，執行下列命令：
+* 在 [套件管理員主控台]**** (PMC) 中，執行下列命令：
 
   ```powershell
   Drop-Database
@@ -631,14 +631,14 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 在 SSOX 中開啟資料庫：
 
-* 若先前已開啟過 SSOX，按一下 [重新整理] 按鈕。
+* 若先前已開啟過 SSOX，按一下 [重新整理]**** 按鈕。
 * 展開 **Tables** 節點。 建立的資料表便會顯示。
 
   ![SSOX 中的資料表](complex-data-model/_static/ssox-tables.png)
 
 * 檢查 **CourseAssignment** 資料表：
 
-  * 以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]。
+  * 以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]****。
   * 驗證 **CourseAssignment** 資料表中是否包含資料。
 
   ![SSOX 中的 CourseAssignment 資料](complex-data-model/_static/ssox-ci-data.png)
@@ -693,7 +693,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在套件管理員主控台 (PMC) 中，執行下列命令：
+* 在 [套件管理員主控台]**** (PMC) 中，執行下列命令：
 
   ```powershell
   Update-Database
@@ -718,8 +718,8 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 接下來的兩個教學課程會示範如何讀取和更新相關資料。
 
 > [!div class="step-by-step"]
-> [上一個教學課程](xref:data/ef-rp/migrations)
-> [下一個教學課程](xref:data/ef-rp/read-related-data)
+> [前面的教學](xref:data/ef-rp/migrations)
+> [下一個教學](xref:data/ef-rp/read-related-data)
 
 ::: moniker-end
 
@@ -734,7 +734,7 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=723262.
 
 ![實體圖表](complex-data-model/_static/diagram.png)
 
-若您遭遇到無法解決的問題，請下載[完整應用程式](
+若您遇到無法解決的問題，請下載[完整應用程式](
 https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
 
 ## <a name="customize-the-data-model-with-attributes"></a>使用屬性自訂資料模型
@@ -749,9 +749,9 @@ https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。`DataType` 屬性也可以讓應用程式自動提供類型特有的功能。 例如：
+[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [數據類型枚舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供了許多數據類型,如日期、時間、電話號碼、貨幣、電子郵寄地址等。該`DataType`屬性還可以使應用自動提供特定於類型的功能。 例如：
 
-* `mailto:` 會自動建立 `DataType.EmailAddress` 連結。
+* `DataType.EmailAddress` 會自動建立 `mailto:` 連結。
 * `DataType.Date` 在大多數的瀏覽器中都會提供日期選取器。
 
 `DataType` 屬性會發出 HTML 5 `data-` (發音為 data dash) 屬性，可讓 HTML 5 瀏覽器取用。 `DataType` 屬性不會提供驗證。
@@ -771,7 +771,7 @@ https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 * 瀏覽器可以啟用 HTML5 功能。 例如，顯示日曆控制項、適合地區設定的貨幣符號、電子郵件連結、用戶端輸入驗證等。
 * 根據預設，瀏覽器將根據地區設定，使用正確的格式呈現資料。
 
-如需詳細資訊，請參閱 [\<input> 標籤協助程式文件](xref:mvc/views/working-with-forms#the-input-tag-helper)。
+有關詳細資訊,請參閱[\<標籤說明程式文件>輸入](xref:mvc/views/working-with-forms#the-input-tag-helper)。
 
 執行應用程式。 巡覽至 Students [索引] 頁面。 時間將不再顯示。 使用 `Student` 模型的每個檢視現在都只會顯示日期，而不會顯示時間。
 
@@ -794,12 +794,12 @@ https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 執行應用程式：
 
 * 巡覽至 Students 頁面。
-* 選取 [新建]，然後輸入超過 50 個字元的名稱。
-* 選取 [建立]，用戶端驗證便會顯示錯誤訊息。
+* 選取 [新建]****，然後輸入超過 50 個字元的名稱。
+* 選取 [建立]****，用戶端驗證便會顯示錯誤訊息。
 
 ![顯示字元長度錯誤的 Students [索引] 頁面](complex-data-model/_static/string-length-errors.png)
 
-在 [SQL Server 物件總管] (SSOX) 中，按兩下 [Student] 資料表來開啟 Student 資料表設計工具。
+在 [SQL Server 物件總管]**** (SSOX) 中，按兩下 [Student]**** 資料表來開啟 Student 資料表設計工具。
 
 ![移轉之前於 SSOX 中的 Students 資料表](complex-data-model/_static/ssox-before-migration.png)
 
@@ -817,7 +817,7 @@ https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intr
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
-經過上述變更之後，應用程式中的 `Student.FirstMidName` 會對應到 `FirstName` 資料表的 `Student` 資料行。
+經過上述變更之後，應用程式中的 `Student.FirstMidName` 會對應到 `Student` 資料表的 `FirstName` 資料行。
 
 新增 `Column` 屬性會變更支援 `SchoolContext` 的模型。 支援 `SchoolContext` 的模型不再符合資料庫。 若應用程式在套用移轉之前執行，便會產生下列例外狀況：
 
@@ -876,7 +876,7 @@ Please review the migration for accuracy.
 
 ### <a name="the-required-attribute"></a>Required 屬性
 
-`Required` 屬性會讓名稱屬性成為必要欄位。 針對不可為 Null 的類型，例如實值型別 (`Required`、`DateTime`、`int` 等) 等，`double` 屬性是不需要的。 不可為 Null 的類型會自動視為必要欄位。
+`Required` 屬性會讓名稱屬性成為必要欄位。 針對不可為 Null 的類型，例如實值型別 (`DateTime`、`int`、`double` 等) 等，`Required` 屬性是不需要的。 不可為 Null 的類型會自動視為必要欄位。
 
 `Required` 屬性可由 `StringLength` 屬性中的最小長度參數取代：
 
@@ -965,7 +965,7 @@ public int InstructorID { get; set; }
 
 ### <a name="the-instructor-navigation-property"></a>Instructor 導覽屬性
 
-`OfficeAssignment` 實體的 `Instructor` 導覽屬性可為 Null，因為：
+`Instructor` 實體的 `OfficeAssignment` 導覽屬性可為 Null，因為：
 
 * 參考型別 (例如類別可為 Null)。
 * 講師可能沒有辦公室指派。
@@ -998,7 +998,7 @@ public Instructor Instructor { get; set; }
 
 當資料模型針對相關實體有一個導覽屬性時，EF Core 不需要針對該模型具備 FK 屬性。
 
-EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」`DepartmentID`*包含*  FK 屬性。 當擷取課程實體以進行編輯時：
+EF Core 會自動在資料庫中需要的任何地方建立 FK。 EF Core 會為了自動建立的 FK 建立[陰影屬性](/ef/core/modeling/shadow-properties)。 在資料模型中具備 FK 可讓更新變得更為簡單和有效率。 例如，假設有一個模型，當中「不」** 包含 `DepartmentID` FK 屬性。 當擷取課程實體以進行編輯時：
 
 * 若沒有明確載入，`Department` 實體將為 Null。
 * 若要更新課程實體，必須先擷取 `Department` 實體。
@@ -1061,7 +1061,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 public decimal Budget { get; set; }
 ```
 
-通常您不需要資料行對應。 EF Core 通常會根據屬性的 CLR 類型選擇適當的 SQL Server 資料類型。 CLR `decimal` 類型會對應到 SQL Server `decimal` 類型。 由於 `Budget` 是貨幣，因此金額資料類型會比較適合貨幣。
+通常您不需要資料行對應。 EF Core 通常會根據屬性的 CLR 類型選擇適當的 SQL Server 資料類型。 CLR `decimal` 類型會對應到 SQL Server 的 `decimal` 類型。 由於 `Budget` 是貨幣，因此金額資料類型會比較適合貨幣。
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵及導覽屬性
 
@@ -1091,7 +1091,7 @@ public ICollection<Course> Courses { get; set; }
 
 * EF Core 會設定串聯刪除規則，以便在刪除講師時刪除部門。
 * 在刪除講師時刪除部門並非預期的行為。
-* 下列[Fluent API](#fluent-api-alternative-to-attributes)會設定限制規則，而不是 cascade。
+* 以下[流暢的 API](#fluent-api-alternative-to-attributes)將設置限制規則,而不是級聯。
 
    ```csharp
    modelBuilder.Entity<Department>()
@@ -1132,11 +1132,11 @@ public Student Student { get; set; }
 
 ## <a name="many-to-many-relationships"></a>Many-to-Many Relationships
 
-在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
+在 `Student` 和 `Course` 實體之間存在一個多對多關聯性。 `Enrollment` 實體的功能為資料庫中一個「具有承載」** 的多對多聯結資料表。 「具有承載」表示 `Enrollment` 資料表除了聯結資料表 (在此案例中為 PK 和 `Grade`) 的 FK 之外，還包含了額外的資料。
 
 下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表是使用 EF 6.x 的 [EF Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition) 產生的。 建立圖表並不是此教學課程的一部分)。
 
-![學生-課程多對多關聯性](complex-data-model/_static/student-course.png)
+![「學生-課程」多對多關聯性](complex-data-model/_static/student-course.png)
 
 每個關聯性線條都在其中一端有一個「1」，並在另外一端有一個「星號 (*)」，顯示其為一對多關聯性。
 
@@ -1156,7 +1156,7 @@ public Student Student { get; set; }
 
 ### <a name="instructor-to-courses"></a>講師-課程
 
-![講師對課程 m:M](complex-data-model/_static/courseassignment.png)
+![講師-課程 m:M](complex-data-model/_static/courseassignment.png)
 
 講師-課程多對多關聯性：
 
@@ -1218,7 +1218,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 * 僅 EF Core 組態 (例如，`HasKey`)。
 * 驗證及 EF Core 組態 (例如，`[StringLength(50)]`)。
 
-如需屬性與 Fluent API 的詳細資訊，請參閱[方法](/ef/core/modeling/)。
+如需屬性與 Fluent API 的詳細資訊，請參閱[組態方法](/ef/core/modeling/)。
 
 ## <a name="entity-diagram-showing-relationships"></a>顯示關聯性的實體圖表
 
@@ -1277,8 +1277,8 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 現在您有了現有的資料庫，您需要思考如何對其套用未來變更。 本教學課程示範兩種方法：
 
-* [卸除並重新建立資料庫](#drop)
-* [將移轉套用至現有資料庫](#applyexisting)。 雖然這個方法更複雜且耗時，卻是實際生產環境的慣用方法。 **請注意**：這是本教學課程的選擇性章節。 您可以執行卸除並重新建立步驟，然後略過本節。 如果您希望遵循本章節中的步驟，請不要執行卸除並重新建立的步驟。 
+* [刪除並重新建立資料庫](#drop)
+* [將移轉應用於現有資料庫](#applyexisting)。 雖然這個方法更複雜且耗時，卻是實際生產環境的慣用方法。 **請注意**：這是本教學課程的選擇性章節。 您可以執行卸除並重新建立步驟，然後略過本節。 如果您希望遵循本章節中的步驟，請不要執行卸除並重新建立的步驟。 
 
 <a name="drop"></a>
 
@@ -1288,7 +1288,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在套件管理員主控台 (PMC) 中，執行下列命令：
+在 [套件管理員主控台]**** (PMC) 中，執行下列命令：
 
 ```powershell
 Drop-Database
@@ -1314,14 +1314,14 @@ dotnet ef database update
 
 在 SSOX 中開啟資料庫：
 
-* 若先前已開啟過 SSOX，按一下 [重新整理] 按鈕。
+* 若先前已開啟過 SSOX，按一下 [重新整理]**** 按鈕。
 * 展開 **Tables** 節點。 建立的資料表便會顯示。
 
 ![SSOX 中的資料表](complex-data-model/_static/ssox-tables.png)
 
 檢查 **CourseAssignment** 資料表：
 
-* 以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]。
+* 以滑鼠右鍵按一下 **CourseAssignment** 資料表，然後選取 [檢視資料]****。
 * 驗證 **CourseAssignment** 資料表中是否包含資料。
 
 ![SSOX 中的 CourseAssignment 資料](complex-data-model/_static/ssox-ci-data.png)
@@ -1358,7 +1358,7 @@ dotnet ef database update
 
 [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
-隨著上述變更，現有 `Course` 的資料列會在 `ComplexDataModel` `Up` 方法執行之後，與「Temp」部門相關。
+透過上述變更，現有的 `Course` 資料列將會在執行 `ComplexDataModel` `Up` 方法後與 "Temp" 部門相關。
 
 生產環境的應用程式會：
 
@@ -1373,7 +1373,7 @@ dotnet ef database update
 * [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=Je0Z5K1TNmY)
 
 > [!div class="step-by-step"]
-> [上一頁](xref:data/ef-rp/migrations)
-> [下一頁](xref:data/ef-rp/read-related-data)
+> [前一個](xref:data/ef-rp/migrations)
+> [下一個](xref:data/ef-rp/read-related-data)
 
 ::: moniker-end

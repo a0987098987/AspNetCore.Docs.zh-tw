@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 08/05/2017
 uid: tutorials/first-mvc-app/adding-controller
 ms.openlocfilehash: fb670902b0dafa7dce2b3372e550095387844936
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78666989"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>將控制器新增至 ASP.NET Core MVC 應用程式
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -26,35 +26,35 @@ ms.locfileid: "78666989"
 
 * 控制器 (**C**)：處理瀏覽器要求的類別。 它們會擷取模型資料，並呼叫傳回回應的檢視範本。 在 MVC 應用程式中，檢視只能顯示資訊；控制器則會處理和回應使用者輸入和互動。 例如，控制器會處理路由資料和查詢字串值，並將這些值傳遞至模型。 此模型可能會使用這些值來查詢資料庫。 例如，`https://localhost:5001/Home/Privacy` 具有 `Home` (控制器) 和 `Privacy` (在首頁控制器上呼叫的動作方法) 的路由資料。 `https://localhost:5001/Movies/Edit/5` 是要使用電影控制器編輯識別碼 = 5 之電影的要求。 本教學課程稍後會說明路由資料。
 
-MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 (輸入邏輯、商務邏輯和 UI 邏輯)，同時提供這些項目之間的鬆散結合。 此模式指定每一種邏輯應該位於應用程式中的位置。 UI 邏輯應該位在檢視中， 輸入邏輯應該位在控制器中， 商務邏輯則應該位在模型中。 這項隔離可協助您管理建置應用程式時的複雜度，因為它可讓您一次處理實作的其中一個層面，而不影響另一個層面的程式碼。 例如，您可以處理檢視程式碼，而不需要根據商務邏輯程式碼。
+MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 (輸入邏輯、商務邏輯和 UI 邏輯)，同時提供這些項目之間的鬆散結合。 此模式指定每一種邏輯應該位於應用程式中的位置。 UI 邏輯位於檢視。 輸入邏輯位於控制器。 商務邏輯則位於模型。 這項隔離可協助您管理建置應用程式時的複雜度，因為它可讓您一次處理實作的其中一個層面，而不影響另一個層面的程式碼。 例如，您可以處理檢視程式碼，而不需要根據商務邏輯程式碼。
 
-本教學課程系列中涵蓋了這些概念，並且顯示如何使用它們來建置電影應用程式。 MVC 專案包含｢控制器｣和｢檢視｣的資料夾。
+本教學課程系列中涵蓋了這些概念，並且顯示如何使用它們來建置電影應用程式。 MVC 專案包含｢控制器｣** 和｢檢視｣** 的資料夾。
 
 ## <a name="add-a-controller"></a>新增控制器
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [方案總管] 中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]
-  ![操作功能表](adding-controller/_static/add_controller.png)
+* 在**解決方案資源管理員**中,右鍵按一**下控制器>添加>控制器**
+  ![上下文選單](adding-controller/_static/add_controller.png)
 
-* 在 [新增 Scaffold] 對話方塊中，選取 [MVC 控制器 - 空白]
+* 在 [新增 Scaffold]**** 對話方塊中，選取 [MVC 控制器 - 空白]****
 
   ![新增 MVC 控制器並將其命名](adding-controller/_static/ac.png)
 
-* 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\) 對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]。
+* 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\)**** 對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]****。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]，將新檔案命名為 *HelloWorldController.cs*。
+選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]****，將新檔案命名為 *HelloWorldController.cs*。
 
   ![操作功能表](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-在方案總管中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]。
+在方案總管**** 中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]****。
 ![操作功能表](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-選取 [ASP.NET Core] 和 [MVC 控制器類別]。
+選取 [ASP.NET Core]**** 和 [MVC 控制器類別]****。
 
 將控制器命名為 **HelloWorldController**。
 
@@ -80,13 +80,13 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-您可以在 `Configure`Startup.cs*檔案的* 方法中設定路由格式。
+您可以在 *Startup.cs* 檔案的 `Configure` 方法中設定路由格式。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
 當您瀏覽至應用程式而不提供任何 URL 區段時，則會預設為上方醒目提示之範本行中指定的 "Home" 控制器和 "Index" 方法。
 
-第一個 URL 區段決定要執行的控制器類別。 因此，`localhost:{PORT}/HelloWorld` 會對應到 **HelloWorld**Controller 類別。 URL 區段的第二部分則決定類別上的動作方法。 因此，`localhost:{PORT}/HelloWorld/Index` 會導致 `Index` 類別的 `HelloWorldController` 方法執行。 請注意，您只需要瀏覽至 `localhost:{PORT}/HelloWorld`，根據預設就會呼叫 `Index` 方法。 這是因為，`Index` 是在未明確指定方法名稱時，會在控制器上呼叫的預設方法。 URL 區段的第三個部分 (`id`) 是路由資料。 本教學課程稍後會說明路由資料。
+第一個 URL 區段決定要執行的控制器類別。 因此，`localhost:{PORT}/HelloWorld` 會對應到 **HelloWorld**Controller 類別。 URL 區段的第二部分則決定類別上的動作方法。 因此，`localhost:{PORT}/HelloWorld/Index` 會導致 `HelloWorldController` 類別的 `Index` 方法執行。 請注意，您只需要瀏覽至 `localhost:{PORT}/HelloWorld`，根據預設就會呼叫 `Index` 方法。 這是因為，`Index` 是在未明確指定方法名稱時，會在控制器上呼叫的預設方法。 URL 區段的第三個部分 (`id`) 是路由資料。 本教學課程稍後會說明路由資料。
 
 瀏覽至 `https://localhost:{PORT}/HelloWorld/Welcome`。 `Welcome` 方法隨即執行，並傳回字串 `This is the Welcome action method...`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
 
@@ -100,17 +100,17 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 * 使用 C# 選擇性參數功能來指出若未針對 `numTimes` 參數傳遞任何值時，該參數預設為 1。 <!-- remove for simplified -->
 * 使用 `HtmlEncoder.Default.Encode` 來保護應用程式免於遭受惡意輸入 (也就是 JavaScript) 攻擊。
-* 在 [ 中使用](/dotnet/articles/csharp/language-reference/keywords/interpolated-strings)字串插值`$"Hello {name}, NumTimes is: {numTimes}"`。 <!-- remove for simplified -->
+* 在 `$"Hello {name}, NumTimes is: {numTimes}"` 中使用[字串插值](/dotnet/articles/csharp/language-reference/keywords/interpolated-strings)。 <!-- remove for simplified -->
 
 執行應用程式，然後瀏覽至：
 
    `https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-（將 `{PORT}` 取代為您的埠號碼）。您可以在 URL 中嘗試 `name` 和 `numtimes` 的不同值。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
+(替換為`{PORT}`埠號。您可以嘗試不同的值`name`,`numtimes`並在 URL 中。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
 
-![顯示「Hello Rick」之應用程式回應的瀏覽器視窗，Numtimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![瀏覽器視窗顯示 Hello Rick 的應用程式回應,NumTimes\:是 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
-在上圖中，不會使用 URL 區段（`Parameters`），會在[查詢字串](https://wikipedia.org/wiki/Query_string)中傳遞 `name` 和 `numTimes` 參數。 上述 URL 中的 `?` （問號）是分隔符號，而查詢字串則如下所示。 `&` 字元會分隔欄位-值組。
+在上面的影像中,不使用 URL`Parameters`欄位`name``numTimes`(), 與 參數在[查詢字串](https://wikipedia.org/wiki/Query_string)中傳遞 。 上述`?`URL 中的(問號)是分隔元,查詢字串緊隨其後。 字元`&`分隔欄位值對。
 
 以下列程式碼取代 `Welcome` 方法：
 
@@ -118,15 +118,15 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 執行應用程式，並輸入下列 URL：`https://localhost:{PORT}/HelloWorld/Welcome/3?name=Rick`
 
-此時，第三個 URL 區段符合路由參數 `id`。 `Welcome` 方法包含符合 `id` 方法中 URL 範本的 `MapControllerRoute` 參數。 結尾的 `?` (在 `id?` 中) 表示 `id` 是選擇性參數。
+此時，第三個 URL 區段符合路由參數 `id`。 `Welcome` 方法包含符合 `MapControllerRoute` 方法中 URL 範本的 `id` 參數。 結尾的 `?` (在 `id?` 中) 表示 `id` 是選擇性參數。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
 在這些範例中，控制器已執行 MVC 的 "VC" 部分，也就是 **V**iew 和 **C**ontroller 工作。 控制器會直接傳回 HTML。 一般來說，您不希望控制器直接傳回 HTML，因為撰寫程式碼和維護會變得很麻煩。 相反地，您通常使用個別的 Razor 檢視範本檔案來產生 HTML 回應。 您可在接下來的教學課程中這麼做。
 
 > [!div class="step-by-step"]
-> [上一頁](start-mvc.md)
-> [下一頁](adding-view.md)
+> [前一個](start-mvc.md)
+> [下一個](adding-view.md)
 
 ::: moniker-end
 
@@ -140,35 +140,35 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 * 控制器 (**C**)：處理瀏覽器要求的類別。 它們會擷取模型資料，並呼叫傳回回應的檢視範本。 在 MVC 應用程式中，檢視只能顯示資訊；控制器則會處理和回應使用者輸入和互動。 例如，控制器會處理路由資料和查詢字串值，並將這些值傳遞至模型。 此模型可能會使用這些值來查詢資料庫。 例如，`https://localhost:5001/Home/About` 具有 `Home` (控制器) 和 `About` (在首頁控制器上呼叫的動作方法) 的路由資料。 `https://localhost:5001/Movies/Edit/5` 是要使用電影控制器編輯識別碼 = 5 之電影的要求。 本教學課程稍後會說明路由資料。
 
-MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 (輸入邏輯、商務邏輯和 UI 邏輯)，同時提供這些項目之間的鬆散結合。 此模式指定每一種邏輯應該位於應用程式中的位置。 UI 邏輯應該位在檢視中， 輸入邏輯應該位在控制器中， 商務邏輯則應該位在模型中。 這項隔離可協助您管理建置應用程式時的複雜度，因為它可讓您一次處理實作的其中一個層面，而不影響另一個層面的程式碼。 例如，您可以處理檢視程式碼，而不需要根據商務邏輯程式碼。
+MVC 模式可協助您建立應用程式，用來隔離應用程的不同層面 (輸入邏輯、商務邏輯和 UI 邏輯)，同時提供這些項目之間的鬆散結合。 此模式指定每一種邏輯應該位於應用程式中的位置。 UI 邏輯位於檢視。 輸入邏輯位於控制器。 商務邏輯則位於模型。 這項隔離可協助您管理建置應用程式時的複雜度，因為它可讓您一次處理實作的其中一個層面，而不影響另一個層面的程式碼。 例如，您可以處理檢視程式碼，而不需要根據商務邏輯程式碼。
 
-本教學課程系列中涵蓋了這些概念，並且顯示如何使用它們來建置電影應用程式。 MVC 專案包含｢控制器｣和｢檢視｣的資料夾。
+本教學課程系列中涵蓋了這些概念，並且顯示如何使用它們來建置電影應用程式。 MVC 專案包含｢控制器｣** 和｢檢視｣** 的資料夾。
 
 ## <a name="add-a-controller"></a>新增控制器
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [方案總管] 中，以滑鼠右鍵按一下 [控制器] > [新增] > [控制器]
-  ![操作功能表](adding-controller/_static/add_controller.png)
+* 在**解決方案資源管理員**中,右鍵按一**下控制器>添加>控制器**
+  ![上下文選單](adding-controller/_static/add_controller.png)
 
-* 在 [新增 Scaffold] 對話方塊中，選取 [MVC 控制器 - 空白]
+* 在 [新增 Scaffold]**** 對話方塊中，選取 [MVC 控制器 - 空白]****
 
   ![新增 MVC 控制器並將其命名](adding-controller/_static/ac.png)
 
-* 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\) 對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]。
+* 在 [Add Empty MVC Controller] \(新增空白 MVC 控制器\)**** 對話方塊中，輸入 **HelloWorldController**，然後選取 [新增]****。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]，將新檔案命名為 *HelloWorldController.cs*。
+選取**總管**圖示，然後 Control+按一下 (按一下滑鼠右鍵) [控制器] > [新增檔案]****，將新檔案命名為 *HelloWorldController.cs*。
 
   ![操作功能表](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-在方案總管中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]。
+在方案總管**** 中，以滑鼠右鍵按一下 [控制器] > [新增] > [新增檔案]****。
 ![操作功能表](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-選取 [ASP.NET Core] 和 [MVC 控制器類別]。
+選取 [ASP.NET Core]**** 和 [MVC 控制器類別]****。
 
 將控制器命名為 **HelloWorldController**。
 
@@ -194,7 +194,7 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-您可以在 `Configure`Startup.cs*檔案的* 方法中設定路由格式。
+您可以在 *Startup.cs* 檔案的 `Configure` 方法中設定路由格式。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
@@ -205,7 +205,7 @@ Remove link for simplified tutorial.
 
 當您瀏覽至應用程式而不提供任何 URL 區段時，則會預設為上方醒目提示之範本行中指定的 "Home" 控制器和 "Index" 方法。
 
-第一個 URL 區段決定要執行的控制器類別。 因此，`localhost:{PORT}/HelloWorld` 會對應至 `HelloWorldController` 類別。 URL 區段的第二部分則決定類別上的動作方法。 因此，`localhost:{PORT}/HelloWorld/Index` 會導致 `Index` 類別的 `HelloWorldController` 方法執行。 請注意，您只需要瀏覽至 `localhost:{PORT}/HelloWorld`，根據預設就會呼叫 `Index` 方法。 這是因為 `Index` 是未明確指定方法名稱時，在控制器上呼叫的預設方法。 URL 區段的第三個部分 (`id`) 是路由資料。 本教學課程稍後會說明路由資料。
+第一個 URL 區段決定要執行的控制器類別。 因此，`localhost:{PORT}/HelloWorld` 會對應至 `HelloWorldController` 類別。 URL 區段的第二部分則決定類別上的動作方法。 因此，`localhost:{PORT}/HelloWorld/Index` 會導致 `HelloWorldController` 類別的 `Index` 方法執行。 請注意，您只需要瀏覽至 `localhost:{PORT}/HelloWorld`，根據預設就會呼叫 `Index` 方法。 這是因為 `Index` 是未明確指定方法名稱時，在控制器上呼叫的預設方法。 URL 區段的第三個部分 (`id`) 是路由資料。 本教學課程稍後會說明路由資料。
 
 瀏覽至 `https://localhost:{PORT}/HelloWorld/Welcome`。 `Welcome` 方法隨即執行，並傳回字串 `This is the Welcome action method...`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
 
@@ -219,17 +219,17 @@ Remove link for simplified tutorial.
 
 * 使用 C# 選擇性參數功能來指出若未針對 `numTimes` 參數傳遞任何值時，該參數預設為 1。 <!-- remove for simplified -->
 * 使用 `HtmlEncoder.Default.Encode` 來保護應用程式免於遭受惡意輸入 (也就是 JavaScript) 攻擊。
-* 在 [ 中使用](/dotnet/articles/csharp/language-reference/keywords/interpolated-strings)字串插值`$"Hello {name}, NumTimes is: {numTimes}"`。 <!-- remove for simplified -->
+* 在 `$"Hello {name}, NumTimes is: {numTimes}"` 中使用[字串插值](/dotnet/articles/csharp/language-reference/keywords/interpolated-strings)。 <!-- remove for simplified -->
 
 執行應用程式，然後瀏覽至：
 
    `https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-（將 `{PORT}` 取代為您的埠號碼）。您可以在 URL 中嘗試 `name` 和 `numtimes` 的不同值。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
+(替換為`{PORT}`埠號。您可以嘗試不同的值`name`,`numtimes`並在 URL 中。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數對應至方法中的參數。 如需詳細資訊，請參閱[模型繫結](xref:mvc/models/model-binding)。
 
-![顯示「Hello Rick」之應用程式回應的瀏覽器視窗，Numtimes is\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![瀏覽器視窗顯示 Hello Rick 的應用程式回應,NumTimes\:是 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
-在上圖中，不會使用 URL 區段（`Parameters`），會在[查詢字串](https://wikipedia.org/wiki/Query_string)中傳遞 `name` 和 `numTimes` 參數。 上述 URL 中的 `?` （問號）是分隔符號，而查詢字串則如下所示。 `&` 字元會分隔欄位-值組。
+在上面的影像中,不使用 URL`Parameters`欄位`name``numTimes`(), 與 參數在[查詢字串](https://wikipedia.org/wiki/Query_string)中傳遞 。 上述`?`URL 中的(問號)是分隔元,查詢字串緊隨其後。 字元`&`分隔欄位值對。
 
 以下列程式碼取代 `Welcome` 方法：
 
@@ -237,14 +237,14 @@ Remove link for simplified tutorial.
 
 執行應用程式，並輸入下列 URL：`https://localhost:{PORT}/HelloWorld/Welcome/3?name=Rick`
 
-此時，第三個 URL 區段符合路由參數 `id`。 `Welcome` 方法包含符合 `id` 方法中 URL 範本的 `MapRoute` 參數。 結尾的 `?` (在 `id?` 中) 表示 `id` 是選擇性參數。
+此時，第三個 URL 區段符合路由參數 `id`。 `Welcome` 方法包含符合 `MapRoute` 方法中 URL 範本的 `id` 參數。 結尾的 `?` (在 `id?` 中) 表示 `id` 是選擇性參數。
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 在這些範例中，控制器已執行 MVC 的 "VC" 部分，也就是檢視和控制器工作。 控制器會直接傳回 HTML。 一般來說，您不希望控制器直接傳回 HTML，因為撰寫程式碼和維護會變得很麻煩。 相反地，您通常使用個別的 Razor 檢視範本檔案來協助產生 HTML 回應。 您可在接下來的教學課程中這麼做。
 
 > [!div class="step-by-step"]
-> [上一頁](start-mvc.md)
-> [下一頁](adding-view.md)
+> [前一個](start-mvc.md)
+> [下一個](adding-view.md)
 
 ::: moniker-end

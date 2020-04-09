@@ -1,7 +1,7 @@
 ---
-title: ASP.NET Core Blazor 裝載模型設定
+title: ASP.NET核心Blazor託管模型設定
 author: guardrex
-description: 深入瞭解 Blazor 裝載模型設定，包括如何將 Razor 元件整合到 Razor Pages 和 MVC 應用程式中。
+description: 瞭解Blazor託管模型配置,包括如何將 Razor 元件整合到 Razor 頁面和 MVC 應用中。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -11,48 +11,48 @@ no-loc:
 - SignalR
 uid: blazor/hosting-model-configuration
 ms.openlocfilehash: 1f71ac63bbe9dc9d56cfca2ded19a5b863be828f
-ms.sourcegitcommit: 6ffb583991d6689326605a24565130083a28ef85
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80306426"
 ---
-# <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET Core Blazor 裝載模型設定
+# <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET核心布拉佐託管模型配置
 
-依[Daniel Roth](https://github.com/danroth27)
+由[丹尼爾·羅斯](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-本文涵蓋主控模型設定。
+本文介紹託管模型配置。
 
 ## <a name="blazor-webassembly"></a>Blazor WebAssembly
 
-從 ASP.NET Core 3.2 Preview 3 版本開始，Blazor WebAssembly 支援從下列設定：
+自 ASP.NET 酷睿 3.2 預覽 3 版中,Blazor WebAssembly 支援以下配置:
 
-* *wwwroot/appsettings. json*
-* *wwwroot/appsettings。{環境}. json*
+* *wwwroot/appsettings.json*
+* *wwwroot/應用設置。[環境].json*
 
-在 Blazor 裝載的應用程式中，[執行時間環境](xref:fundamentals/environments)與伺服器應用程式的值相同。
+在 Blazor 託管應用中,[執行時環境](xref:fundamentals/environments)與伺服器應用的值相同。
 
-在本機執行應用程式時，環境會預設為開發。 當應用程式發佈時，環境會預設為 [生產]。 如需詳細資訊，包括如何設定環境，請參閱 <xref:fundamentals/environments>。
+在本地運行應用時,環境預設為"開發"。 發佈應用時,環境預設為"生產"。 有關詳細資訊(包括如何設定環境),請參閱<xref:fundamentals/environments>。
 
 > [!WARNING]
-> 使用者可以看到 Blazor WebAssembly 應用程式中的設定。 **請勿在設定中儲存應用程式秘密或認證。**
+> Blazor WebAssembly 應用中的配置對用戶可見。 **不要在配置中存儲應用機密或憑據。**
 
-系統會快取設定檔以供離線使用。 使用[漸進式 Web 應用程式（pwa）](xref:blazor/progressive-web-app)，您只能在建立新的部署時更新設定檔。 在部署之間編輯設定檔沒有任何作用，因為：
+配置檔將緩存供離線使用。 使用[漸進式 Web 應用程式 (PWA),](xref:blazor/progressive-web-app)只能在建立新部署時更新配置檔。 在部署之間編輯設定檔不起作用,因為:
 
-* 使用者有檔案的快取版本，這些檔案會繼續使用。
-* PWA 的*service-worker*和*service-worker-assets*檔案必須在編譯時重建，在使用者下一次線上流覽應用程式時，該應用程式會發出通知。
+* 使用者已緩存了他們繼續使用的檔的版本。
+* PWA 的服務*工作者.js* *和服務工作者資產.js*檔必須在編譯時重新生成,這向使用者下一次連線訪問時的應用發出信號,表明應用程式已重新部署。
 
-如需 Pwa 如何處理背景更新的詳細資訊，請參閱 <xref:blazor/progressive-web-app#background-updates>。
+有關 PWA 如何處理後臺更新的詳細資訊,請<xref:blazor/progressive-web-app#background-updates>參閱 。
 
 ## <a name="blazor-server"></a>Blazor 伺服器
 
-### <a name="reflect-the-connection-state-in-the-ui"></a>反映 UI 中的連接狀態
+### <a name="reflect-the-connection-state-in-the-ui"></a>反映 UI 的連線狀態
 
-當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。
+當用戶端檢測到連接已丟失時,在用戶端嘗試重新連接時向使用者顯示預設 UI。 如果重新連接失敗,則為使用者提供重試的選項。
 
-若要自訂 UI，請在 *_Host*的 [Razor 頁面] `<body>` 中，定義具有 `components-reconnect-modal` `id` 的元素：
+要自訂 UI,請在 *_Host.cshtml* `<body>`Razor`id`頁`components-reconnect-modal`中定義具有 的元素:
 
 ```cshtml
 <div id="components-reconnect-modal">
@@ -60,18 +60,18 @@ ms.locfileid: "80306426"
 </div>
 ```
 
-下表描述套用至 `components-reconnect-modal` 元素的 CSS 類別。
+下表描述了應用於元素的`components-reconnect-modal`CSS 類。
 
 | CSS 類別                       | 表示&hellip; |
 | ------------------------------- | ----------------- |
-| `components-reconnect-show`     | 遺失的連接。 用戶端正在嘗試重新連線。 顯示強制回應。 |
-| `components-reconnect-hide`     | 系統會將使用中的連接重新建立至伺服器。 隱藏強制回應。 |
-| `components-reconnect-failed`   | 重新連接失敗，可能是因為網路失敗。 若要嘗試重新連接，請呼叫 `window.Blazor.reconnect()`。 |
-| `components-reconnect-rejected` | 已拒絕重新連接。 已達到伺服器但拒絕連線，而且伺服器上的使用者狀態遺失。 若要重載應用程式，請呼叫 `location.reload()`。 當下列情況發生時，可能會產生此連接狀態：<ul><li>伺服器端線路發生損毀。</li><li>用戶端中斷連線的時間夠長，伺服器才會捨棄使用者的狀態。 系統會處置與使用者互動之元件的實例。</li><li>伺服器會重新開機，或回收應用程式的背景工作進程。</li></ul> |
+| `components-reconnect-show`     | 失去連接。 用戶端正在嘗試重新連接。 顯示模式。 |
+| `components-reconnect-hide`     | 活動連接將重新建立到伺服器。 隱藏模式。 |
+| `components-reconnect-failed`   | 重新連接失敗,可能是由於網路故障。 要嘗試重新連線,請`window.Blazor.reconnect()`呼叫 。 |
+| `components-reconnect-rejected` | 重新連接被拒絕。 已到達伺服器,但拒絕連接,並且使用者在伺服器上的狀態將丟失。 要重新載入套用,請呼`location.reload()`叫 。 在:<ul><li>伺服器端電路中發生崩潰。</li><li>用戶端斷開連接的時間足夠長,以便伺服器刪除使用者的狀態。 將釋放使用者與之交互的元件的實例。</li><li>重新啟動伺服器,或者回收應用的工作進程。</li></ul> |
 
 ### <a name="render-mode"></a>轉譯模式
 
-在建立伺服器的用戶端連接之前，預設會設定 Blazor 伺服器應用程式，以預先呈現伺服器上的 UI。 這會在 *_Host. cshtml* Razor 頁面中設定：
+默認情況下,布拉佐伺服器應用設置為在建立與伺服器的用戶端連接之前在伺服器上預呈現 UI。 這在 *_Host.cshtml* Razor 頁面中設定:
 
 ```cshtml
 <body>
@@ -83,30 +83,30 @@ ms.locfileid: "80306426"
 </body>
 ```
 
-`RenderMode` 設定元件是否：
+`RenderMode`設定元件是否:
 
-* 會資源清單到頁面中。
-* 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動 Blazor 應用程式所需的資訊。
+* 預置到頁面中。
+* 在頁面上呈現為靜態 HTML,或者如果它包含從使用者代理引導 Blazor 應用的必要資訊。
 
 | `RenderMode`        | 描述 |
 | ------------------- | ----------- |
-| `ServerPrerendered` | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
-| `Server`            | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
-| `Static`            | 將元件轉譯為靜態 HTML。 |
+| `ServerPrerendered` | 將元件呈現為靜態 HTML,並包含伺服器應用的Blazor標記。 當使用者代理啟動時,此標記用於引導Blazor應用。 |
+| `Server`            | 渲染伺服器應用的Blazor標記。 不包括元件的輸出。 當使用者代理啟動時,此標記用於引導Blazor應用。 |
+| `Static`            | 將元件呈現為靜態 HTML。 |
 
-不支援從靜態 HTML 網頁轉譯伺服器元件。
+不支援從靜態 HTML 頁呈現伺服器元件。
 
-### <a name="render-stateful-interactive-components-from-razor-pages-and-views"></a>從 Razor 頁面和 views 轉譯具狀態的互動式元件
+### <a name="render-stateful-interactive-components-from-razor-pages-and-views"></a>從 Razor 頁面與檢視成有狀態的互動式元件
 
-可設定狀態的互動式元件可以新增至 Razor 頁面或視圖。
+可有狀態的互動式元件可以添加到 Razor 頁面或檢視中。
 
-當頁面或視圖呈現時：
+當頁面或檢視呈現時:
 
-* 此元件是使用頁面或視圖所資源清單。
-* 用來進行預呈現的初始元件狀態會遺失。
-* 建立 SignalR 連接時，會建立新的元件狀態。
+* 元件預呈現為頁面或視圖。
+* 用於預渲染的初始元件狀態將丟失。
+* 建立連接時,將創建新的SignalR元件狀態。
 
-下列 Razor 頁面會呈現 `Counter` 元件：
+以下 Razor 頁面`Counter`呈現元件:
 
 ```cshtml
 <h1>My Razor Page</h1>
@@ -120,9 +120,9 @@ ms.locfileid: "80306426"
 }
 ```
 
-### <a name="render-noninteractive-components-from-razor-pages-and-views"></a>從 Razor 頁面和 views 轉譯非互動式元件
+### <a name="render-noninteractive-components-from-razor-pages-and-views"></a>從 Razor 頁面與檢視呈現非互動式元件
 
-在下列 Razor 頁面中，`Counter` 元件會以靜態方式轉譯，並使用以表單指定的初始值：
+在以下 Razor`Counter`頁中 ,元件使用使用表單指定的初始值靜態呈現:
 
 ```cshtml
 <h1>My Razor Page</h1>
@@ -141,16 +141,16 @@ ms.locfileid: "80306426"
 }
 ```
 
-由於 `MyComponent` 是以靜態方式呈現，因此元件不能是互動式的。
+由於`MyComponent`是靜態呈現的,因此元件不能是互動式的。
 
-### <a name="configure-the-opno-locsignalr-client-for-opno-locblazor-server-apps"></a>設定 Blazor 伺服器應用程式的 SignalR 用戶端
+### <a name="configure-the-opno-locsignalr-client-for-opno-locblazor-server-apps"></a>為SignalRBlazor伺服器應用設定客戶端
 
-有時候，您需要設定 Blazor 伺服器應用程式所使用的 SignalR 用戶端。 例如，您可能會想要在 SignalR 用戶端上設定記錄，以診斷連接問題。
+有時,您需要配置SignalRBlazor伺服器應用使用的用戶端。 例如,您可能希望在用戶端上SignalR配置日誌記錄以診斷連接問題。
 
-若要設定*Pages/_Host. cshtml*檔案中的 SignalR 用戶端：
+要在SignalR*頁面/_Host.cshtml*檔中設定客戶端,請進行以下分析:
 
-* 將 `autostart="false"` 屬性加入至 `blazor.server.js` 腳本的 `<script>` 標記。
-* 呼叫 `Blazor.start` 並傳入指定 SignalR 產生器的設定物件。
+* 向`autostart="false"``blazor.server.js`文稿的`<script>`標記添加屬性。
+* 呼叫`Blazor.start`並傳遞指定生成器的SignalR配置物件。
 
 ```html
 <script src="_framework/blazor.server.js" autostart="false"></script>

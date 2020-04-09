@@ -1,7 +1,7 @@
 ---
-title: 開始使用 ASP.NET Core SignalR
+title: 開始使用ASP.NET核心SignalR
 author: bradygaster
-description: 在本教學課程中，您會建立使用 ASP.NET Core SignalR的聊天應用程式。
+description: 在本教學中,您將創建一個使用ASP.NET酷睿的SignalR聊天應用。
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/21/2019
@@ -9,10 +9,10 @@ no-loc:
 - SignalR
 uid: tutorials/signalr
 ms.openlocfilehash: 55ebdbfa4556deca74a6cdf0638307425cd1a01a
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78666744"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
@@ -52,15 +52,15 @@ ms.locfileid: "78666744"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* 從功能表中選取 [檔案] > [新增專案]。
+* 從功能表中選取 [檔案] > [新增專案] ****。
 
-* 在 [建立新專案] 對話方塊中，選取 [ASP.NET Core Web 應用程式]，然後選取 [下一步]。
+* 在 [建立新專案]**** 對話方塊中，選取 [ASP.NET Core Web 應用程式]****，然後選取 [下一步]****。
 
-* 在 [設定新專案] 對話方塊中，將專案命名為 *SignalRChat*，然後選取 [建立]。
+* 在 [設定新專案]**** 對話方塊中，將專案命名為 *SignalRChat*，然後選取 [建立]****。
 
-* 在 [**建立新的 ASP.NET Core Web 應用程式**] 對話方塊中，選取 [ **.net Core** ] 和 [ **ASP.NET Core 3.0**]。 
+* 在 **"建立新ASP.NET核心 Web 應用程式**' 對話框中,選擇 **.NET 核心****和ASP.NET核心 3.0**。 
 
-* 選取 [Web 應用程式] 建立使用 Razor Pages 的專案，然後選取 [建立]。
+* 選取 [Web 應用程式]**** 建立使用 Razor Pages 的專案，然後選取 [建立]****。
 
   ![Visual Studio 的 [新增專案] 對話方塊](signalr/_static/3.x/signalr-new-project-dialog.png)
 
@@ -77,13 +77,13 @@ ms.locfileid: "78666744"
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 從功能表中選取 [檔案] > [新增方案]。
+* 從功能表中選取 [檔案] > [新增方案] ****。
 
-* 選取 [.NET Core] > [應用程式] > [Web 應用程式] (不選取 [Web 應用程式 (模型-檢視-控制器)])，然後選取 [下一步]。
+* 選取 [.NET Core] > [應用程式] > [Web 應用程式]**** (不選取 [Web 應用程式 (模型-檢視-控制器)]****)，然後選取 [下一步]****。
 
-* 請確認 [目標 Framework] 設為 **.NET Core 3.0**，然後選取 [下一步]。
+* 請確認 [目標 Framework]**** 設為 **.NET Core 3.0**，然後選取 [下一步]****。
 
-* 將專案命名為 *SignalRChat*，然後選取 [建立]。
+* 將專案命名為 *SignalRChat*，然後選取 [建立]****。
 
 ---
 
@@ -93,19 +93,19 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* 在**方案總管**中，以滑鼠右鍵按一下專案，然後選取 [**新增**> 用戶端連結**庫**]。
+* 在 [方案總管]**** 中，以滑鼠右鍵按一下專案，然後選取 [新增]**[用戶端程式庫]** > ****。
 
-* 在 [新增用戶端程式庫] 對話方塊中，針對 [提供者] 選取 [unpkg]。
+* 在 [新增用戶端程式庫]**** 對話方塊中，針對 [提供者]**** 選取 [unpkg]****。
 
-* 針對 [程式庫] 輸入 `@microsoft/signalr@latest`。
+* 針對 [程式庫]**** 輸入 `@microsoft/signalr@latest`。
 
-* 選取 [選擇特定檔案]、展開 [散發者/瀏覽器] 資料夾，然後選取 *signalr.js* 與 *signalr.min.js*。
+* 選取 [選擇特定檔案]****、展開 [散發者/瀏覽器]** 資料夾，然後選取 *signalr.js* 與 *signalr.min.js*。
 
-* 將 [**目標位置**] 設定為*wwwroot/js/signalr/* ，然後選取 [**安裝**]。
+* 將**目標位置**設定為*wwwroot/js/信號器/,* 然後選擇 **「安裝**」 。
 
   ![[新增用戶端程式庫] 對話方塊 - 選取程式庫](signalr/_static/3.x/find-signalr-client-libs-select-files.png)
 
-  LibMan 會建立*wwwroot/js/signalr*資料夾，並將選取的檔案複製到其中。
+  LibMan 創建*wwwroot/js/訊號資料夾*,並將選取檔案複製到該資料夾。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
@@ -123,7 +123,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
   參數指定下列選項：
   * 使用 unpkg 提供者。
-  * 將檔案複製到*wwwroot/js/signalr*目的地。
+  * 將檔案複製到*wwwroot/js/信號器*目標。
   * 只複製指定的檔案。
 
   輸出看起來會像下列範例：
@@ -136,7 +136,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在 [終端機] 中執行下列命令以安裝 LibMan。
+* 在 [終端機]**** 中執行下列命令以安裝 LibMan。
 
   ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
@@ -152,7 +152,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
   參數指定下列選項：
   * 使用 unpkg 提供者。
-  * 將檔案複製到*wwwroot/js/signalr*目的地。
+  * 將檔案複製到*wwwroot/js/信號器*目標。
   * 只複製指定的檔案。
 
   輸出看起來會像下列範例：
@@ -227,13 +227,13 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 從功能表中選取 [執行] > [啟動但不偵錯]。
+* 從功能表中選取 [執行] > [啟動但不偵錯]****。
 
 ---
 
 * 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
-* 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送訊息] 按鈕。
+* 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送訊息]**** 按鈕。
 
   名稱和訊息會立即顯示在兩個頁面上。
 
@@ -242,7 +242,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 > [!TIP]
 > * 如果應用程式無法運作，請開啟您的瀏覽器開發人員工具 (F12)，然後移至主控台。 您可能會看到與 HTML 和 JavaScript 程式碼相關的錯誤。 例如，假設您將 *signalr.js* 放置在與指示不同的資料夾中。 在此情況下，該檔案的參考無法運作，您會在主控台中看到 404 錯誤。
 >   ![signalr.js 找不到錯誤](signalr/_static/3.x/f12-console.png)
-> * 如果您在 Chrome 中收到錯誤 ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY，請執行下列命令來更新您的開發憑證：
+> * 如果您在 Chrome 中收到錯誤ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY,請執行這些指令以更新您的開發證書:
 >
 >   ```dotnetcli
 >   dotnet dev-certs https --clean
@@ -261,7 +261,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 > * 建立 SignalR 中樞。   
 > * 設定專案以使用 SignalR。   
 > * 新增程式碼，以將訊息從任何用戶端傳送至所有連線的用戶端。  
-最後，您將會有一個可運作的聊天應用程式： ![SignalR 範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png) 
+最後,您將有工作聊天應用程式:SignalR![範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png) 
 
 ## <a name="prerequisites"></a>Prerequisites    
 
@@ -283,15 +283,15 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 
-* 從功能表中選取 [檔案] > [新增專案]。 
+* 從功能表中選取 [檔案] > [新增專案] ****。 
 
-* 在 [新增專案] 對話方塊中，選取 [已安裝] > [Visual C++] > [Web] > [ASP.NET Core Web 應用程式]。 將專案命名為 *SignalRChat*。 
+* 在 [新增專案]**** 對話方塊中，選取 [已安裝] > [Visual C++] > [Web] > [ASP.NET Core Web 應用程式]****。 將專案命名為 *SignalRChat*。 
 
   ![Visual Studio 的 [新增專案] 對話方塊](signalr/_static/2.x/signalr-new-project-dialog.png)    
 
-* 選取 [Web 應用程式] 建立使用 Razor Pages 的專案。 
+* 選取 [Web 應用程式]**** 建立使用 Razor Pages 的專案。 
 
-* 選取 **.NET Core** 作為目標 Framework、選取 [ASP.NET Core 2.2]，然後按一下 [確定]。    
+* 選取 **.NET Core** 作為目標 Framework、選取 [ASP.NET Core 2.2]****，然後按一下 [確定]****。    
 
   ![Visual Studio 的 [新增專案] 對話方塊](signalr/_static/2.x/signalr-new-project-choose-type.png)   
 
@@ -308,13 +308,13 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)   
 
-* 從功能表中選取 [檔案] > [新增方案]。    
+* 從功能表中選取 [檔案] > [新增方案] ****。    
 
-* 選取 [.NET Core] > [應用程式] > [ASP.NET Core Web 應用程式] (不要選取 [ASP.NET Core Web 應用程式 (MVC)])。  
+* 選取 [.NET Core] > [應用程式] > [ASP.NET Core Web 應用程式]**** (不要選取 [ASP.NET Core Web 應用程式 (MVC)]****)。  
 
-* 選取 [下一步]。  
+* 選取 [下一步]  。  
 
-* 將專案命名為 *SignalRChat*，然後選取 [建立]。   
+* 將專案命名為 *SignalRChat*，然後選取 [建立]****。   
 
 --- 
 
@@ -324,21 +324,21 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 
-* 在**方案總管**中，以滑鼠右鍵按一下專案，然後選取 [**新增**> 用戶端連結**庫**]。  
+* 在 [方案總管]**** 中，以滑鼠右鍵按一下專案，然後選取 [新增]**[用戶端程式庫]** > ****。  
 
-* 在 [新增用戶端程式庫] 對話方塊中，針對 [提供者] 選取 [unpkg]。 
+* 在 [新增用戶端程式庫]**** 對話方塊中，針對 [提供者]**** 選取 [unpkg]****。 
 
-* 針對 [程式庫]，輸入 `@microsoft/signalr@3`，然後選取非預覽版的最新版本。  
+* 針對 [程式庫]****，輸入 `@microsoft/signalr@3`，然後選取不是預覽版的最新版本。  
 
   ![[新增用戶端程式庫] 對話方塊 - 選取程式庫](signalr/_static/2.x/libman1.png)   
 
-* 選取 [選擇特定檔案]、展開 [散發者/瀏覽器] 資料夾，然後選取 *signalr.js* 與 *signalr.min.js*。 
+* 選取 [選擇特定檔案]****、展開 [散發者/瀏覽器]** 資料夾，然後選取 *signalr.js* 與 *signalr.min.js*。 
 
-* 將 [目標位置] 設定為 *wwwroot/lib/signalr/* ，然後選取 [安裝]。    
+* 將 [目標位置]**** 設定為 *wwwroot/lib/signalr/*，然後選取 [安裝]****。    
 
   ![[新增用戶端程式庫] 對話方塊 - 選取檔案與目的地](signalr/_static/2.x/libman2.png) 
 
-  LibMan 會建立 *wwwroot/lib/signalr* 資料夾，並將選取的檔案複製到其中。    
+  LibMan 會建立 *wwwroot/lib/signalr* 資料夾並將選取的檔案複製到其中。    
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)    
 
@@ -369,7 +369,7 @@ SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內�
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)   
 
-* 在 [終端機] 中執行下列命令以安裝 LibMan。 
+* 在 [終端機]**** 中執行下列命令以安裝 LibMan。 
 
   ```dotnetcli  
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli   
@@ -460,17 +460,17 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 從功能表中選取 [執行] > [啟動但不偵錯]。
+* 從功能表中選取 [執行] > [啟動但不偵錯]****。
 
 ---
 
 * 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
-* 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送訊息] 按鈕。  
+* 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送訊息]**** 按鈕。  
 
   名稱和訊息會立即顯示在兩個頁面上。   
 
-  ![SignalR 範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png) 
+  ![SignalR範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png) 
 
 > [!TIP]    
 > 如果應用程式無法運作，請開啟您的瀏覽器開發人員工具 (F12)，然後移至主控台。 您可能會看到與 HTML 和 JavaScript 程式碼相關的錯誤。 例如，假設您將 *signalr.js* 放置在與指示不同的資料夾中。 在此情況下，該檔案的參考無法運作，您會在主控台中看到 404 錯誤。   

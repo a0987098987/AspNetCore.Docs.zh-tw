@@ -8,30 +8,30 @@
 
 * `AddRedirect("redirect-rule/(.*)", "redirected/$1")`
   - 成功的狀態碼：302 (已找到)
-  - 範例 (重新導向)： **/redirect-rule/{capture_group}** 至 **/redirected/{capture_group}**
+  - 範例 (重新導向)：**/redirect-rule/{capture_group}** 至 **/redirected/{capture_group}**
 * `AddRewrite(@"^rewrite-rule/(\d+)/(\d+)", "rewritten?var1=$1&var2=$2", skipRemainingRules: true)`
   - 成功的狀態碼：200 (沒問題)
-  - 範例 (重寫)： **/rewrite-rule/{capture_group_1}/{capture_group_2}** 至 **/rewritten?var1={capture_group_1}&var2={capture_group_2}**
+  - 範例 (重寫)：**/rewrite-rule/{capture_group_1}/{capture_group_2}** 至 **/rewritten?var1={capture_group_1}&var2={capture_group_2}**
 * `AddApacheModRewrite(env.ContentRootFileProvider, "ApacheModRewrite.txt")`
   - 成功的狀態碼：302 (已找到)
-  - 範例 (重新導向)： **/apache-mod-rules-redirect/{capture_group}** 至 **/redirected?id={capture_group}**
+  - 範例 (重新導向)：**/apache-mod-rules-redirect/{capture_group}** 至 **/redirected?id={capture_group}**
 * `AddIISUrlRewrite(env.ContentRootFileProvider, "IISUrlRewrite.xml")`
   - 成功的狀態碼：200 (沒問題)
-  - 範例 (重寫)： **/iis-rules-rewrite/{capture_group}** 至 **/rewritten?id={capture_group}**
+  - 範例 (重寫)：**/iis-rules-rewrite/{capture_group}** 至 **/rewritten?id={capture_group}**
 * `Add(RedirectXmlFileRequests)`
   - 成功的狀態碼：301 (已永久移動)
-  - 範例 (重新導向)： **/file.xml** 至 **/xmlfiles/file.xml**
+  - 範例 (重新導向)：**/file.xml** 至 **/xmlfiles/file.xml**
 * `Add(RewriteTextFileRequests)`
   - 成功的狀態碼：200 (沒問題)
-  - 範例 (重寫)： **/some_file.txt** 至 **/file.txt**
+  - 範例 (重寫)：**/some_file.txt** 至 **/file.txt**
 * `Add(new RedirectImageRequests(".png", "/png-images")))`<br>`Add(new RedirectImageRequests(".jpg", "/jpg-images")))`
   - 成功的狀態碼：301 (已永久移動)
-  - 範例 (重新導向)： **/image.png** 至 **/png-images/image.png**
-  - 範例 (重新導向)： **/image.jpg** 至 **/jpg-images/image.jpg**
+  - 範例 (重新導向)：**/image.png** 至 **/png-images/image.png**
+  - 範例 (重新導向)：**/image.jpg** 至 **/jpg-images/image.jpg**
 
 ## <a name="use-a-physicalfileprovider"></a>使用 PhysicalFileProvider
 
-藉由建立 `IFileProvider` 以傳入 `PhysicalFileProvider` 和 `AddApacheModRewrite()` 方法，您也可以取得 `AddIISUrlRewrite()`：
+藉由建立 `PhysicalFileProvider` 以傳入 `AddApacheModRewrite()` 和 `AddIISUrlRewrite()` 方法，您也可以取得 `IFileProvider`：
 
 ```csharp
 using Microsoft.Extensions.FileProviders;
@@ -40,7 +40,7 @@ PhysicalFileProvider fileProvider = new PhysicalFileProvider(Directory.GetCurren
 
 ## <a name="secure-redirection-extensions"></a>安全的重新導向延伸模組
 
-此範例包含應用程式的 `WebHostBuilder` 組態，以便使用 URL (`https://localhost:5001`、`https://localhost`) 和測試憑證 (*testCert.pfx*) 來協助瀏覽這些安全的重新導向方法。 如果伺服器已指派或正在使用連接埠 443，則 `https://localhost` 範例不適用&mdash;請從 `ListenOptions`Program.cs`CreateWebHostBuilder` 檔案的 *方法中移除連接埠 443 的*，或解除繫結伺服器上的連接埠 443，讓 Kestrel 可以使用該連接埠。
+此範例包含應用程式的 `WebHostBuilder` 組態，以便使用 URL (`https://localhost:5001`、`https://localhost`) 和測試憑證 (*testCert.pfx*) 來協助瀏覽這些安全的重新導向方法。 如果伺服器已指派或正在使用連接埠 443，則 `https://localhost` 範例不適用&mdash;請從 *Program.cs* 檔案的 `CreateWebHostBuilder` 方法中移除連接埠 443 的 `ListenOptions`，或解除繫結伺服器上的連接埠 443，讓 Kestrel 可以使用該連接埠。
 
 | 方法                           | 狀態碼 |    連接埠    |
 | -------------------------------- | :---------: | :--------: |

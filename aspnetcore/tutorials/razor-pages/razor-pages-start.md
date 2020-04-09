@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 11/12/2019
 uid: tutorials/razor-pages/razor-pages-start
 ms.openlocfilehash: 6e1d58ccd83f7d7c1083dc2bf9ce7476650812a1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78658540"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 此教學課程是系列中的第一個課程，教導您建置 ASP.NET Core Razor Pages Web 應用程式的基本概念。
@@ -56,13 +56,13 @@ ms.locfileid: "78658540"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從**Visual Studio 的**[檔案] 功能表中，選取 [**新增**>**專案**]。
-* 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]。
+* 從 Visual Studio 的 [檔案]**** 功能表中，選取 [新增]**[專案]** > **** 。
+* 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]****。
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2.1.png)
 * 將專案命名為 **RazorPagesMovie**。 請務必將專案命名為 *RazorPagesMovie*，以便在您複製並貼上程式碼時，名稱空間會相符。
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/config.png)
 
-* 在下拉式清單 [ **Web 應用程式**] 中選取 [ **ASP.NET Core 3.1** ]，然後選取 [**建立**]。
+* 在下拉清單中選擇**ASP.NET核心 3.1,** 然後選擇**Web Application****"創建**"。
 
 ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/3/npx.png)
 
@@ -86,25 +86,25 @@ ms.locfileid: "78658540"
   * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
+* 在狀態列的 OmniSharp 火焰圖示變為綠色後,一個對話框會請求 **「RazorPages Movie」中缺少需要的資產進行構建和調試。添加它們?** 選取 [是]  。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 **[** 檔案] > [**新增方案**]。
+* 選取 [檔案]** [新增解決方案]** > ****。
 
 ![macOS 新增方案](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* 選取  **.Net Core** >**應用**程式 > **Web 應用程式**  **> 下一步**。
+* 選取 [.NET Core]** [應用程式]** > ** [Web 應用程式] ** > ** [下一步]** > ****。
 
   ![macOS [新增專案] 對話方塊](razor-pages-start/_static/webapp.png)
 
-* 在 [設定**新的 Web 應用程式**] 對話方塊中，將 [**目標 Framework** ] 設為 [ **.net Core 3.1**]。
+* 在 **「設定新的 Web 應用程式**」 對話框中,將**目標框架**設定為 **.NET 核心 3.1**。
 
-  ![macOS .NET Core 3.1 選項](razor-pages-start/_static/targetframework3.png)
+  ![macOS .NET 核心 3.1 選擇](razor-pages-start/_static/targetframework3.png)
 
-* 將專案命名為 **RazorPagesMovie**，然後選取 [建立]。
+* 將專案命名為 **RazorPagesMovie**，然後選取 [建立]****。
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "78658540"
 * *.cshtml* 檔案，其中包含 C# 程式碼的 HTML 標記 (使用 Razor 語法)。
 * *.cshtml.cs* 檔案，其中包含處理頁面事件的 C# 程式碼。
 
-支援檔案的名稱以底線開頭。 例如， *_Layout.cshtml* 檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱 <xref:mvc/views/layout>。
+支援檔案的名稱以底線開頭。 例如 *,_Layout.cshtml*檔配置所有頁面共有的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱 <xref:mvc/views/layout>。
 
 ### <a name="wwwroot-folder"></a>wwwroot 資料夾
 
@@ -197,9 +197,9 @@ ms.locfileid: "78658540"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從**Visual Studio 的**[檔案] 功能表中，選取 [**新增**>**專案**]。
+* 從 Visual Studio 的 [檔案]**** 功能表中，選取 [新增]**[專案]** > **** 。
 
-* 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]。
+* 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]****。
 
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2.1.png)
 
@@ -207,7 +207,7 @@ ms.locfileid: "78658540"
 
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/config.png)
 
-* 在下拉式清單中選取 [ASP.NET Core 2.2]，然後選取 [Web 應用程式] 及 [建立]。
+* 在下拉式清單中選取 [ASP.NET Core 2.2]****，然後選取 [Web 應用程式]**** 及 [建立]****。
 
 ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2_2.2.png)
 
@@ -231,25 +231,25 @@ ms.locfileid: "78658540"
   * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
+* 在狀態列的 OmniSharp 火焰圖示變為綠色後,一個對話框會請求 **「RazorPages Movie」中缺少需要的資產進行構建和調試。添加它們?** 選取 [是]  。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 選取 **[** 檔案] > [**新增方案**]。
+* 選取 [檔案]** [新增解決方案]** > ****。
 
 ![macOS 新增方案](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* 選取  **.Net Core** >**應用**程式 > **Web 應用程式**  **> 下一步**。
+* 選取 [.NET Core]** [應用程式]** > ** [Web 應用程式] ** > ** [下一步]** > ****。
 
   ![macOS [新增專案] 對話方塊](razor-pages-start/_static/webapp.png)
 
-* 在 [設定**您的新 ASP.NET Core WEB API** ] 對話方塊中，將 [**目標 Framework** ] 設為 [ **.net Core 3.1**]。
+* 在 **「設定新的ASP.NET核心 Web API**對話框中,將**目標框架**設定為 **.NET Core 3.1**。
 
   ![macOS .NET Core 3.0 選取項目](razor-pages-start/_static/targetframework3.png)
 
-* 將專案命名為 **RazorPagesMovie**，然後選取 [建立]。
+* 將專案命名為 **RazorPagesMovie**，然後選取 [建立]****。
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -267,7 +267,7 @@ ms.locfileid: "78658540"
 
   Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。
 
-* 在應用程式的首頁上，選取 [接受] 同意追蹤。
+* 在應用程式的首頁上，選取 [接受]**** 同意追蹤。
 
   此應用程式不會追蹤個人資訊，但專案範本會包含同意功能，以防您需要同意才符合歐盟的[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
@@ -285,7 +285,7 @@ ms.locfileid: "78658540"
 
   Visual Studio Code 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)、啟動瀏覽器，然後瀏覽至 `http://localhost:5001`。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。
 
-* 在應用程式的首頁上，選取 [接受] 同意追蹤。
+* 在應用程式的首頁上，選取 [接受]**** 同意追蹤。
 
   此應用程式不會追蹤個人資訊，但專案範本會包含同意功能，以防您需要同意才符合歐盟的[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
@@ -303,7 +303,7 @@ ms.locfileid: "78658540"
 
   Visual Studio 會啟動 [Kestrel](xref:fundamentals/servers/kestrel)啟動瀏覽器，然後巡覽至 `http://localhost:5001`。
 
-* 在應用程式的首頁上，選取 [接受] 同意追蹤。
+* 在應用程式的首頁上，選取 [接受]**** 同意追蹤。
 
   此應用程式不會追蹤個人資訊，但專案範本會包含同意功能，以防您需要同意才符合歐盟的[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
@@ -328,7 +328,7 @@ ms.locfileid: "78658540"
 * *.cshtml* 檔案，其中包含 C# 程式碼的 HTML 標記 (使用 Razor 語法)。
 * *.cshtml.cs* 檔案，其中包含處理頁面事件的 C# 程式碼。
 
-支援檔案的名稱以底線開頭。 例如， *_Layout.cshtml* 檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱 <xref:mvc/views/layout>。
+支援檔案的名稱以底線開頭。 例如 *,_Layout.cshtml*檔配置所有頁面共有的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱 <xref:mvc/views/layout>。
 
 ### <a name="wwwroot-folder"></a>wwwroot 資料夾
 

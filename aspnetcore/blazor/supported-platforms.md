@@ -1,7 +1,7 @@
 ---
-title: ASP.NET Core Blazor 支援的平臺
+title: ASP.NET核心Blazor支援的平臺
 author: guardrex
-description: 瞭解 ASP.NET Core Blazor的支援平臺。
+description: 瞭解受支援的平台,用於ASP.NET核心Blazor。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -11,13 +11,13 @@ no-loc:
 - SignalR
 uid: blazor/supported-platforms
 ms.openlocfilehash: 505974280b5c96ec2bcae42c6e076ab67a15bb07
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78658855"
 ---
-# <a name="aspnet-core-blazor-supported-platforms"></a>ASP.NET Core Blazor 支援的平臺
+# <a name="aspnet-core-blazor-supported-platforms"></a>ASP.NET核心布拉佐爾支援的平臺
 
 作者：[Luke Latham](https://github.com/guardrex)
 
@@ -31,11 +31,11 @@ ms.locfileid: "78658855"
 | -------------------------------- | :-------------------: |
 | Microsoft Edge                   | 目前               |
 | Mozilla Firefox                  | 目前               |
-| Google Chrome，包括 Android | 目前               |
-| Safari，包括 iOS            | 目前               |
+| 谷歌瀏覽器,包括安卓 | 目前               |
+| 野生動物園,包括 iOS            | 目前               |
 | Microsoft Internet Explorer      | 不支援&dagger; |
 
-&dagger;Microsoft Internet Explorer 不支援[WebAssembly](https://webassembly.org)。
+&dagger;微軟網際網路瀏覽器不支援[網路組裝](https://webassembly.org)。
 
 ### <a name="blazor-server"></a>Blazor 伺服器
 
@@ -43,11 +43,11 @@ ms.locfileid: "78658855"
 | -------------------------------- | :--------: |
 | Microsoft Edge                   | 目前    |
 | Mozilla Firefox                  | 目前    |
-| Google Chrome，包括 Android | 目前    |
-| Safari，包括 iOS            | 目前    |
+| 谷歌瀏覽器,包括安卓 | 目前    |
+| 野生動物園,包括 iOS            | 目前    |
 | Microsoft Internet Explorer      | 11&dagger; |
 
-需要 &dagger;其他 polyfills （例如，可透過[Polyfill.io](https://polyfill.io/v3/)配套新增承諾）。
+&dagger;需要額外的多填充(例如,可以通過[Polyfill.io](https://polyfill.io/v3/)捆綁包添加承諾)。
 
 ## <a name="additional-resources"></a>其他資源
 

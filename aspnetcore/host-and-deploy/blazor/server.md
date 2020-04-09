@@ -1,7 +1,7 @@
 ---
-title: 裝載和部署 ASP.NET Core Blazor 伺服器
+title: 託管與部署ASP.NET核心Blazor伺服器
 author: guardrex
-description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應用程式。
+description: 瞭解如何使用 ASP.NET 核心Blazor託管和部署伺服器應用。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -11,55 +11,55 @@ no-loc:
 - SignalR
 uid: host-and-deploy/blazor/server
 ms.openlocfilehash: 866bb348180c872d8ab20787283cfb7217183a8d
-ms.sourcegitcommit: 3ca4a2235a8129def9e480d0a6ad54cc856920ec
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "79025419"
 ---
-# <a name="host-and-deploy-opno-locblazor-server"></a>裝載和部署 Blazor 伺服器
+# <a name="host-and-deploy-opno-locblazor-server"></a>託管與部署Blazor伺服器
 
 作者：[Luke Latham](https://github.com/guardrex)、[Rainer Stropek](https://www.timecockpit.com) 和 [Daniel Roth](https://github.com/danroth27)
 
 ## <a name="host-configuration-values"></a>主機組態值
 
-[Blazor 伺服器應用程式](xref:blazor/hosting-models#blazor-server)可以接受[一般主機設定值](xref:fundamentals/host/generic-host#host-configuration)。
+伺服器應用可以接受[通用主機設定值](xref:fundamentals/host/generic-host#host-configuration) [ Blazor ](xref:blazor/hosting-models#blazor-server) 。
 
 ## <a name="deployment"></a>部署
 
-使用[Blazor 伺服器裝載模型](xref:blazor/hosting-models#blazor-server)，Blazor 會在伺服器上從 ASP.NET Core 應用程式中執行。 UI 更新、事件處理及 JavaScript 呼叫會透過[SignalR](xref:signalr/introduction)連接來處理。
+使用[Blazor伺服器託管模型](xref:blazor/hosting-models#blazor-server),Blazor在伺服器上執行 ASP.NET 酷應用程式。 UI 更新、事件處理和 JAVAScript[SignalR](xref:signalr/introduction)呼叫透過連接處理。
 
-需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。 Visual Studio 包含 **Blazor 伺服器應用程式**專案範本（使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的`blazorserverside` 範本）。
+需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。 Visual Studio**Blazor包括伺服器應用**`blazorserverside`專案範本 (使用[dotnet 新](/dotnet/core/tools/dotnet-new)命令時的範本)。
 
 ## <a name="scalability"></a>延展性
 
-規劃部署，以充分運用 Blazor 伺服器應用程式可用的基礎結構。 請參閱下列資源，以解決 Blazor 伺服器應用程式的擴充性：
+規劃部署以充分利用Blazor伺服器應用的可用基礎結構。 請參考以下資源來解決Blazor伺服器應用可伸縮性:
 
-* [Blazor 伺服器應用程式的基本概念](xref:blazor/hosting-models#blazor-server)
+* [伺服器應用的Blazor基礎知識](xref:blazor/hosting-models#blazor-server)
 * <xref:security/blazor/server>
 
 ### <a name="deployment-server"></a>部署伺服器
 
-在考慮單一伺服器的擴充性（相應增加）時，應用程式可用的記憶體可能是應用程式在使用者需求增加時將耗盡的第一個資源。 伺服器上的可用記憶體會影響：
+在考慮單個伺服器的可伸縮性(向上擴展)時,應用可用的記憶體可能是應用隨著使用者需求增加而耗盡的第一個資源。 伺服器上的可用記憶體會影響:
 
-* 伺服器可支援的現用線路數目。
+* 伺服器可以支援的有源電路數。
 * 用戶端上的 UI 延遲。
 
-如需建立安全且可擴充的 Blazor 伺服器應用程式的指引，請參閱 <xref:security/blazor/server>。
+有關建構安全和可Blazor擴充的伺服器應用的指導,請<xref:security/blazor/server>參閱 。
 
-每個線路都使用大約 250 KB 的記憶體來進行最小的*Hello World*樣式應用程式。 線路的大小取決於應用程式的程式碼，以及與每個元件相關聯的狀態維護需求。 我們建議您在開發應用程式和基礎結構期間測量資源需求，但下列基準可以是規劃部署目標的起點：如果您預期應用程式支援5000並行使用者，請考慮在應用程式最少 1.3 GB 的伺服器記憶體（或每位使用者約 273 KB）。
+每個電路使用大約 250 KB 的記憶體,以進行最少的*Hello World*風格的應用。 電路的大小取決於應用的代碼以及與每個元件關聯的狀態維護要求。 我們建議您在開發應用和基礎結構期間測量資源需求,但以下基線可能是規劃部署目標的起點:如果您希望應用支援 5,000 個併發使用者,請考慮為應用至少預算 1.3 GB 的伺服器記憶體(或每個使用者 273 KB)。
 
-### <a name="opno-locsignalr-configuration"></a>SignalR 設定
+### <a name="opno-locsignalr-configuration"></a>SignalR設定
 
-Blazor 伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊。 [SignalR的裝載和調整規模條件](xref:signalr/publish-to-azure-web-app)適用于 Blazor 伺服器應用程式。
+Blazor伺服器應用使用SignalRASP.NET 核心與瀏覽器通信。 託管和縮放條件適用於[SignalR](xref:signalr/publish-to-azure-web-app)Blazor伺服器應用。
 
-因為延遲、可靠性和[安全性](xref:signalr/security)較低，所以使用 websocket 作為 SignalR 傳輸時，Blazor 的效果最佳。 當 Websocket 無法使用時，或當應用程式明確設定為使用長輪詢時，SignalR 會使用長輪詢。 部署到 Azure App Service 時，請將應用程式設定為在服務的 Azure 入口網站設定中使用 Websocket。 如需設定應用程式以進行 Azure App Service 的詳細資訊，請參閱[SignalR 發佈指導方針](xref:signalr/publish-to-azure-web-app)。
+Blazor由於延遲、可靠性和[安全性](xref:signalr/security)較低,使用SignalRWebSocket 作為傳輸時效果最佳。 當 WebSocketSignalR不可用或應用被顯式配置為使用長輪詢時,使用長輪詢。 部署到 Azure 應用服務時,請將應用配置為在服務的 Azure 門戶設置中使用 WebSocket。 有關為 Azure 應用服務設定應用的詳細資訊,[SignalR請參閱發佈指南](xref:signalr/publish-to-azure-web-app)。
 
-#### <a name="azure-opno-locsignalr-service"></a>Azure SignalR 服務
+#### <a name="azure-opno-locsignalr-service"></a>AzureSignalR服務
 
-我們建議使用適用于 Blazor 伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr)。 此服務可將 Blazor 伺服器應用程式相應增加為大量的並行 SignalR 連線。 此外，SignalR 服務的全球範圍和高效能資料中心會大幅協助減少因地理位置而造成的延遲。 若要設定應用程式（並選擇性地布建） Azure SignalR 服務：
+我們建議將[AzureSignalR服務](/azure/azure-signalr)用於Blazor伺服器應用。 該服務允許將Blazor伺服器應用擴展到大量併SignalR發 連接。 此外,SignalR該服務的全球覆蓋範圍和高性能資料中心大大有助於減少因地理位置而導致的延遲。 要配置應用(並選擇性預配)AzureSignalR服務:
 
-1. 啟用服務以支援「固定*會話*」，在此情況下，用戶端會在進行[回溯時重新導向至相同的伺服器](xref:blazor/hosting-models#connection-to-the-server)。 將 [`ServerStickyMode` 選項] 或 [設定] 值設為 [`Required`]。 一般而言，應用程式會使用下列**其中一**種方法來建立設定：
+1. 使服務支援*粘滯會話*,其中用戶端在[預算時重定向回同一伺服器](xref:blazor/hosting-models#connection-to-the-server)。 設定`ServerStickyMode`值或設定值值值`Required`為 。 通常,應用使用以下方法**之一**創建配置:
 
    * `Startup.ConfigureServices`:
   
@@ -71,30 +71,30 @@ Blazor 伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊
      });
      ```
 
-   * 設定（使用下列**其中一**種方法）：
+   * 設定(使用以下方法**之一**):
   
-     * *appsettings.json*：
+     * *應用程式設定.json*:
 
        ```json
        "Azure:SignalR:ServerStickyMode": "Required"
        ```
 
-     * App service 的設定 ** > Azure 入口網站中的** **應用程式設定**（**名稱**： `Azure:SignalR:ServerStickyMode`，**值**： `Required`）。
+     * 套用服務在 Azure 門戶中的**設定** > `Azure:SignalR:ServerStickyMode`**應用程式設定**( `Required`**名稱**: 、**數值**): 。
 
-1. 在 Blazor 伺服器應用程式的 Visual Studio 中建立 Azure 應用程式發佈設定檔。
-1. 將**Azure SignalR 服務**相依性新增至設定檔。 如果 Azure 訂用帳戶沒有要指派給應用程式的既有 Azure SignalR 服務實例，請選取 [**建立新的 azure SignalR 服務實例**] 以布建新的服務實例。
+1. 在「Blazor伺服器」應用的可視化工作室中創建 Azure 應用發佈配置檔。
+1. 將**AzureSignalR服務**依賴項添加到配置檔。 如果 Azure 訂閱沒有預先存在的SignalRAzure 服務實例分配給應用,請選擇 **「SignalR創建新 Azure 服務實例**以預配新的服務實例」。
 1. 將應用程式發佈至 Azure。
 
 #### <a name="iis"></a>IIS
 
-使用 IIS 時，請啟用：
+使用 IIS 時,啟用:
 
-* [在 IIS 上的 websocket](xref:fundamentals/websockets#enabling-websockets-on-iis)。
-* [具有應用程式要求路由的粘滯話](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
+* [IIS 上的 Web 插座](xref:fundamentals/websockets#enabling-websockets-on-iis)。
+* [具有應用程式要求路由的粘滯工作階段](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
 
 #### <a name="kubernetes"></a>Kubernetes
 
-使用下列[Kubernetes 注釋來建立輸入定義：適用于粘滯會話](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/)。
+建立具有以下[Kubernetes 註釋的黏滯工作階段](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/)入口定義:
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -110,10 +110,10 @@ metadata:
 
 #### <a name="linux-with-nginx"></a>使用 Nginx 的 Linux
 
-若要讓 SignalR Websocket 正常運作，請確認 proxy 的 `Upgrade` 和 `Connection` 標頭已設定為下列值，而且 `$connection_upgrade` 會對應至其中一個：
+對於SignalRWebSocket 正常工作,請確認`Upgrade``Connection`代理和標頭設定為以下`$connection_upgrade`值, 並映射到以下任一值:
 
-* 升級標頭值預設為。
-* 當升級標頭遺失或空白時，`close`。
+* 默認情況下,「升級標頭」值。
+* `close`當升級標頭丟失或為空時。
 
 ```
 http {
@@ -141,13 +141,13 @@ http {
 
 如需詳細資訊，請參閱下列文章：
 
-* [NGINX 做為 WebSocket Proxy](https://www.nginx.com/blog/websocket-nginx/)
-* [WebSocket 代理](http://nginx.org/docs/http/websocket.html)
+* [NGINX 為 WebSocket 代理程式](https://www.nginx.com/blog/websocket-nginx/)
+* [WebSocket 代理程式](http://nginx.org/docs/http/websocket.html)
 * <xref:host-and-deploy/linux-nginx>
 
 ### <a name="measure-network-latency"></a>測量網路延遲
 
-您可以使用[JS interop](xref:blazor/call-javascript-from-dotnet)來測量網路延遲，如下列範例所示：
+[JS 互通](xref:blazor/call-javascript-from-dotnet)可用於測量網路延遲,如下例所示:
 
 ```razor
 @inject IJSRuntime JS
@@ -175,4 +175,4 @@ else
 }
 ```
 
-如需合理的 UI 體驗，我們建議使用250毫秒或更少的持續性 UI 延遲。
+為了獲得合理的 UI 體驗,我們建議持續延遲 250ms 或更少。

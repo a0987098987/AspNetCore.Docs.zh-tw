@@ -1,21 +1,21 @@
 ---
 title: 搭配 ASP.NET Core 的 gRPC 服務
 author: juntaoluo
-description: 瞭解使用 ASP.NET Core 撰寫 gRPC 服務時的基本概念。
+description: 使用 ASP.NET 核心編寫 gRPC 服務時,瞭解基本概念。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/03/2019
 uid: grpc/aspnetcore
 ms.openlocfilehash: 6107704a4b4d9c629a7abe907efd5b1932019130
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78667626"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>搭配 ASP.NET Core 的 gRPC 服務
 
-本檔說明如何使用 ASP.NET Core 開始使用 gRPC services。
+本文檔展示如何使用ASP.NET酷睿開始使用 gRPC 服務。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -39,7 +39,7 @@ ms.locfileid: "78667626"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-如需如何建立 gRPC 專案的詳細指示，請參閱[開始使用 gRPC services](xref:tutorials/grpc/grpc-start) 。
+有關如何創建 gRPC 專案的詳細說明,請參閱[gRPC 服務入門](xref:tutorials/grpc/grpc-start)。
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -47,61 +47,61 @@ ms.locfileid: "78667626"
 
 ---
 
-## <a name="add-grpc-services-to-an-aspnet-core-app"></a>將 gRPC 服務新增至 ASP.NET Core 應用程式
+## <a name="add-grpc-services-to-an-aspnet-core-app"></a>將 gRPC 服務新增到 ASP.NET 核心應用
 
-gRPC 需要[gRPC. AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore)套件。
+gRPC 需要[Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore)包。
 
 ### <a name="configure-grpc"></a>設定 gRPC
 
 在 *Startup.cs* 中：
 
-* gRPC 是以 `AddGrpc` 方法啟用。
-* 每個 gRPC 服務都會透過 `MapGrpcService` 方法加入至路由管線。
+* 使用`AddGrpc`方法啟用 gRPC。
+* 通過`MapGrpcService`該方法將每個 gRPC 服務添加到路由管道中。
 
 [!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Startup.cs?name=snippet&highlight=7,24)]
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
-ASP.NET Core 中介軟體和功能共用路由管線，因此可以將應用程式設定為提供額外的要求處理常式。 其他要求處理常式（例如 MVC 控制器）會與已設定的 gRPC 服務平行處理。
+ASP.NET核心中間件和功能共用路由管道,因此可以配置應用以提供其他請求處理程式。 其他請求處理程式(如MVC控制器)與配置的gRPC服務並行工作。
 
-### <a name="configure-kestrel"></a>設定 Kestrel
+### <a name="configure-kestrel"></a>設定凱斯特雷爾
 
-Kestrel gRPC 端點：
+凱斯特雷爾 gRPC 終結點:
 
 * 需要 HTTP/2。
-* 應使用[傳輸層安全性（TLS）](https://tools.ietf.org/html/rfc5246)來保護。
+* 應使用[傳輸層安全 (TLS)](https://tools.ietf.org/html/rfc5246)進行保護。
 
 #### <a name="http2"></a>HTTP/2
 
-gRPC 需要 HTTP/2。 ASP.NET Core 的 gRPC 會驗證[HttpRequest。通訊協定](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*)`HTTP/2`。
+gRPC 需要 HTTP/2。 gRPCASP.NET核心驗證[HTTPRequest.協定](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*)是`HTTP/2`。
 
-Kestrel 支援大多數新式作業系統上的[HTTP/2](xref:fundamentals/servers/kestrel#http2-support) 。 根據預設，Kestrel 端點會設定為支援 HTTP/1.1 和 HTTP/2 連接。
+Kestrel 在大多數現代作業系統上[支持 HTTP/2。](xref:fundamentals/servers/kestrel#http2-support) 預設情況下,Kestrel 終結點配置為支援 HTTP/1.1 和 HTTP/2 連接。
 
 #### <a name="tls"></a>TLS
 
-用於 gRPC 的 Kestrel 端點應使用 TLS 來保護。 在開發時，會在 ASP.NET Core 開發憑證存在時，于 `https://localhost:5001` 自動建立以 TLS 保護的端點。 不需要組態。 `https` 前置詞會驗證 Kestrel 端點是否使用 TLS。
+用於 gRPC 的 Kestrel 端點應用 TLS 進行保護。 在開發中,當存在ASP.NET核心開發證書`https://localhost:5001`時,將自動創建使用TLS保護的終結點。 不需要組態。 前置`https`授權 Kestrel 終結點正在使用 TLS。
 
-在生產環境中，必須明確設定 TLS。 在下列*appsettings*範例中，會提供使用 TLS 保護的 HTTP/2 端點：
+在生產中,必須顯式配置 TLS。 在下面的*應用設定.json*範例中,提供了一個使用 TLS 保護的 HTTP/2 終結點:
 
 [!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 
-或者，您也可以在*Program.cs*中設定 Kestrel 端點：
+或者,Kestrel 終結點可以在*Program.cs*中配置:
 
 [!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 
 #### <a name="protocol-negotiation"></a>通訊協定交涉
 
-TLS 用於保護通訊安全。 當端點支援多個通訊協定時，會使用 TLS[應用層通訊協定協商（ALPN）](https://tools.ietf.org/html/rfc7301#section-3)交握來協調用戶端與伺服器之間的連接通訊協定。 此協商會判斷連接使用的是 HTTP/1.1 或 HTTP/2。
+TLS 僅用於保護通信。 當終結點支援多個協定時,TLS[應用程式層協議協商 (ALPN)](https://tools.ietf.org/html/rfc7301#section-3)握手用於協商客戶端和伺服器之間的連接協定。 此協商確定連接是使用 HTTP/1.1 還是 HTTP/2。
 
-如果在沒有 TLS 的情況下設定 HTTP/2 端點，則端點的[listenoptions 來](xref:fundamentals/servers/kestrel#listenoptionsprotocols)必須設定為 `HttpProtocols.Http2`。 具有多個通訊協定（例如 `HttpProtocols.Http1AndHttp2`）的端點不能在沒有 TLS 的情況下使用，因為沒有任何協商。 不安全端點的所有連接預設為 HTTP/1.1，而 gRPC 呼叫會失敗。
+如果 HTTP/2 終結點設定時沒有 TLS,則終結點的[ListenOptions.協定](xref:fundamentals/servers/kestrel#listenoptionsprotocols)必須設定為`HttpProtocols.Http2`。 沒有 TLS,不能使用具有多個協議`HttpProtocols.Http1AndHttp2`的終結點(例如,)。如果不存在協商。 與不安全的終結點的所有連接預設為 HTTP/1.1,gRPC 調用失敗。
 
-如需使用 Kestrel 啟用 HTTP/2 和 TLS 的詳細資訊，請參閱[Kestrel 端點](xref:fundamentals/servers/kestrel#endpoint-configuration)設定。
+有關使用 Kestrel 啟用 HTTP/2 與 TLS 的詳細資訊,請參閱[Kestrel 端點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)。
 
 > [!NOTE]
 > macOS 不支援具有 TLS 的 ASP.NET Core gRPC。 您需要額外的組態才能在 macOS 上成功執行 gRPC 服務。 如需詳細資訊，請參閱[無法在 macOS 上啟動 ASP.NET Core gRPC 應用程式](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos)。
 
-## <a name="integration-with-aspnet-core-apis"></a>與 ASP.NET Core Api 整合
+## <a name="integration-with-aspnet-core-apis"></a>與ASP.NET核心 API 整合
 
-gRPC 服務具有 ASP.NET Core 功能的完整存取權，例如相依性[插入](xref:fundamentals/dependency-injection)（DI）和[記錄](xref:fundamentals/logging/index)。 例如，服務執行可以透過此函式從 DI 容器解析記錄器服務：
+gRPC 服務具有對ASP.NET核心功能(如[依賴項注入](xref:fundamentals/dependency-injection)(DI) 和[日誌記錄](xref:fundamentals/logging/index))的完全訪問許可權。 例如,服務實現可以透過構造函數從 DI 容器解析記錄器服務:
 
 ```csharp
 public class GreeterService : Greeter.GreeterBase
@@ -112,15 +112,15 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-根據預設，gRPC 服務執行可以使用任何存留期（單一、限定範圍或暫時性）來解析其他 DI 服務。
+默認情況下,gRPC 服務實現可以解決具有任何存留期的其他 DI 服務(單例、作用域或瞬態)。
 
-### <a name="resolve-httpcontext-in-grpc-methods"></a>解析 gRPC 方法中的 HttpCoNtext
+### <a name="resolve-httpcontext-in-grpc-methods"></a>在 gRPC 方法解析 HTTP:/ 1: HTTPContext
 
-GRPC API 可讓您存取某些 HTTP/2 訊息資料，例如方法、主機、標頭和結尾。 存取會透過傳遞至每個 gRPC 方法的 `ServerCallContext` 引數來進行：
+gRPC API 提供對某些 HTTP/2 消息數據(如方法、主機、標頭和預告片)的訪問。 存取是透過以提供`ServerCallContext`每個 gRPC 方法的參數:
 
 [!code-csharp[](~/grpc/aspnetcore/sample/GrcpService/GreeterService.cs?highlight=3-4&name=snippet)]
 
-`ServerCallContext` 不會提供所有 ASP.NET Api 中 `HttpContext` 的完整存取權。 `GetHttpContext` 擴充方法會提供代表 ASP.NET Api 中基礎 HTTP/2 訊息之 `HttpContext` 的完整存取權：
+`ServerCallContext`不提供對所有`HttpContext`ASP.NET API 的完全訪問許可權。 擴`GetHttpContext`充方法提供對 ASP.NET`HttpContext`API 中表示基礎 HTTP/2 消息的完全存取權限:
 
 [!code-csharp[](~/grpc/aspnetcore/sample/GrcpService/GreeterService2.cs?highlight=6-7&name=snippet)]
 

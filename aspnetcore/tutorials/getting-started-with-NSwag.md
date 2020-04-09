@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/get-started-with-nswag
 ms.openlocfilehash: 3eae5d3c66204a10806a8036c8f114af6c501b2c
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78666051"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>NSwag 與 ASP.NET Core 使用者入門
@@ -19,13 +19,13 @@ ms.locfileid: "78666051"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag)([如何下載](xref:index#how-to-download-a-sample))
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.0"
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag)([如何下載](xref:index#how-to-download-a-sample))
 
 ::: moniker-end
 
@@ -49,8 +49,8 @@ NSwag 提供下列功能：
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 從 [套件管理員主控台] 視窗中：
-  * 移至 [檢視] > [其他視窗] > [套件管理員主控台]
+* 從 [套件管理員主控台]**** 視窗中：
+  * 跳到**檢視** > **其他 Windows** > **套件管理員主控台**
   * 巡覽至 *TodoApi.csproj* 檔案所在目錄
   * 執行下列命令：
 
@@ -58,18 +58,18 @@ NSwag 提供下列功能：
     Install-Package NSwag.AspNetCore
     ```
 
-* 從 [管理 NuGet 套件] 對話方塊中：
-  * 在 [方案總管] > [管理 NuGet 套件] 中，以滑鼠右鍵按一下專案
-  * 將 [套件來源] 設定為 "nuget.org"
+* 從 [管理 NuGet 套件]**** 對話方塊中：
+  * 右鍵按下**解決方案資源管理員** > **管理 NuGet 套件**中的專案
+  * 將 [套件來源]**** 設定為 "nuget.org"
   * 在搜尋方塊中輸入 "NSwag.AspNetCore"
-  * 從 [瀏覽] 索引標籤中選取 "NSwag.AspNetCore" 套件，並按一下 [安裝]
+  * 從 [瀏覽]**** 索引標籤中選取 "NSwag.AspNetCore" 套件，並按一下 [安裝]****
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在 [Solution Pad] **[新增套件...]**  >  中，以滑鼠右鍵按一下 **Packages** 資料夾
-* 將 [新增套件] 視窗的 [來源] 下拉式清單設定為 "nuget.org"
+* 在 [Solution Pad]**** > [新增套件...]**** 中，以滑鼠右鍵按一下 *Packages* 資料夾
+* 將 [新增套件]**** 視窗的 [來源]**** 下拉式清單設定為 "nuget.org"
 * 在搜尋方塊中輸入 "NSwag.AspNetCore"
-* 從結果窗格中選取 "NSwag.AspNetCore" 套件，並按一下 [新增套件]
+* 從結果窗格中選擇"NSwag.AspNetCore"包,然後單擊"**添加包**"
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -101,22 +101,22 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 您可以選擇下列其中一個選項來利用 NSwag 的程式碼產生功能：
 
-* [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) &ndash; Windows 桌面應用程式，以在或 TypeScript 中C#產生 API 用戶端程式代碼。
+* [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) &ndash; 一個能夠以 C# 或 TypeScript 產生 API 用戶端程式碼的 Windows 傳統型應用程式。
 * 可在您專案內產生程式碼的 [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) 或 [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) NuGet 套件。
 * 從[命令列](https://github.com/RicoSuter/NSwag/wiki/CommandLine)使用 NSwag。
 * [NSwag.MSBuild](https://github.com/RicoSuter/NSwag/wiki/NSwag.MSBuild) NuGet 套件。
-* [Unchase OpenAPI （Swagger）聯機服務](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice)&ndash; Visual Studio 聯機服務，以在或 TypeScript 中C#產生 API 用戶端程式代碼。 也會使用 NSwag 產生用於 OpenAPI 服務的 C# 控制器。
+* [Unchase OpenAPI (Swagger) Connected Service](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; 以 C# 或 TypeScript 產生 API 用戶端程式碼的 Visual Studio 已連線服務。 也會使用 NSwag 產生用於 OpenAPI 服務的 C# 控制器。
 
 ### <a name="generate-code-with-nswagstudio"></a>使用 NSwagStudio 來產生程式碼
 
-* 依照 [NSwagStudio GitHub 存放庫](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) \(英文\) 的指示來安裝 NSwagStudio。 在 [NSwag 版本] 頁面上，您可以下載 xcopy 版本，而不需安裝和系統管理員許可權即可啟動。
-* 啟動 NSwagStudio，然後在 [Swagger Specification URL] \(Swagger 規格 URL\) 文字方塊中輸入 **swagger.json** 檔案 URL。 例如： *http://localhost:44354/swagger/v1/swagger.json* 。
-* 按一下 [Create local Copy] \(建立本機複本\) 按鈕，以產生 Swagger 規格的 JSON 表示法。
+* 依照 [NSwagStudio GitHub 存放庫](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) \(英文\) 的指示來安裝 NSwagStudio。 在 NSwag 發表頁面上,您可以下載 xcopy 版本,該版本無需安裝和管理許可權即可啟動。
+* 啟動 NSwagStudio，然後在 [Swagger Specification URL] \(Swagger 規格 URL\)**** 文字方塊中輸入 *swagger.json* 檔案 URL。 例如, *http://localhost:44354/swagger/v1/swagger.json*.
+* 按一下 [Create local Copy] \(建立本機複本\)**** 按鈕，以產生 Swagger 規格的 JSON 表示法。
 
   ![建立 Swagger 規格的本機複本](web-api-help-pages-using-swagger/_static/CreateLocalCopy-NSwagStudio.PNG)
 
-* 在 [Outputs] \(輸出\) 區域中，按一下 [CSharp Client] \(CSharp 用戶端\) 核取方塊。 視您的專案而定，您也可以選擇 [TypeScript Client] \(TypeScript 用戶端\)或 [CSharp Web API Controller] \(CSharp Web API 控制器\)。 如果您選取 [CSharp Web API Controller] \(CSharp Web API 控制器\)，服務規格會重建服務，作為反向產生。
-* 按一下 [Generate Outputs] \(產生輸出\)，以產生 *TodoApi.NSwag* 專案 的完整 C# 用戶端實作。 若要查看所產生的用戶端程式碼，請按一下 [CSharp Client] \(CSharp 用戶端\) 索引標籤：
+* 在 [Outputs] \(輸出\)**** 區域中，按一下 [CSharp Client] \(CSharp 用戶端\)**** 核取方塊。 視您的專案而定，您也可以選擇 [TypeScript Client] \(TypeScript 用戶端\)**** 或 [CSharp Web API Controller] \(CSharp Web API 控制器\)****。 如果您選取 [CSharp Web API Controller] \(CSharp Web API 控制器\)****，服務規格會重建服務，作為反向產生。
+* 按一下 [Generate Outputs] \(產生輸出\)****，以產生 *TodoApi.NSwag* 專案 的完整 C# 用戶端實作。 若要查看所產生的用戶端程式碼，請按一下 [CSharp Client] \(CSharp 用戶端\)**** 索引標籤：
 
 ```csharp
 //----------------------
@@ -157,7 +157,7 @@ namespace MyNamespace
 ```
 
 > [!TIP]
-> C#用戶端程式代碼會根據 [**設定**] 索引標籤中的選取專案來產生。請修改設定以執行工作，例如預設命名空間重新命名和同步方法產生。
+> C# 用戶端代碼基於 **「設定」** 選項卡中的選擇生成。修改設定以執行預設命名空間重新命名和同步方法生成等任務。
 
 * 將產生的 C# 程式碼複製到將取用 API 的用戶端專案中檔案。
 * 開始取用 Web API：
@@ -197,7 +197,7 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* 以滑鼠右鍵按一下 [方案總管] 中的專案，然後選取 [編輯 <專案名稱>.csproj]。
+* 以滑鼠右鍵按一下 [方案總管]**** 中的專案，然後選取 [編輯 <專案名稱>.csproj]****。
 * 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
@@ -206,8 +206,8 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* 以滑鼠右鍵按一下方案總管中的專案，然後選取 [屬性]
-* 核取 [組建] 索引標籤的 [輸出] 區段下方的 [XML 文件檔] 方塊
+* 以滑鼠右鍵按一下方案總管**** 中的專案，然後選取 [屬性]****
+* 在 **'產生**'選項卡的**輸出'** 部分下選取**XML 文件檔**框
 
 ::: moniker-end
 
@@ -215,7 +215,7 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* 從 [Solution Pad] 中，按下 [控制項]，然後按一下專案名稱。 巡覽至 [工具] > [編輯檔案]。
+* 從 [Solution Pad]** 中，按下 [控制項]****，然後按一下專案名稱。 瀏覽到**工具** > **編輯檔案**。
 * 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
@@ -224,8 +224,8 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* 開啟 [**專案選項**] 對話方塊 >**組建**>**編譯器**
-* 核取 [一般選項] 區段下方的 [產生 XML 文件] 方塊
+* 開啟 [專案選項]**** 對話方塊 > [組建]**[編譯器]** > ****
+* 勾選「**一般選項**」 部份下的 **「產生 xml 文件**」 框
 
 ::: moniker-end
 
@@ -257,7 +257,7 @@ Swagger UI 會顯示版本資訊：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-上述動作會傳回 `IActionResult`，但在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*) 或 [BadRequest](xref:System.Web.Http.ApiController.BadRequest*)。 請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。 使用下列屬性來標記動作：
+上述動作會傳回 `IActionResult`，但在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*) 或 [BadRequest](xref:System.Web.Http.ApiController.BadRequest*)。 請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。 使用以下屬性標記操作:
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
@@ -271,7 +271,7 @@ Swagger UI 會顯示版本資訊：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-上述動作會傳回 `ActionResult<T>`。 在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*)。 由於控制器具有[`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute)屬性，因此也可以[BadRequest](xref:System.Web.Http.ApiController.BadRequest*)回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。 請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。 使用下列屬性來標記動作：
+上述動作會傳回 `ActionResult<T>`。 在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*)。 由於控制器具有該[`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute)屬性,因此也可以進行[BadRequest](xref:System.Web.Http.ApiController.BadRequest*)回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。 請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。 使用以下屬性標記操作:
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
@@ -279,6 +279,6 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker-end
 
-Swagger 產生器現在可以正確描述此動作，而產生的用戶端會知道呼叫端點時它們所接收的內容。 建議使用這些屬性來標記所有動作。
+Swagger 產生器現在可以正確描述此動作，而產生的用戶端會知道呼叫端點時它們所接收的內容。 作為建議,使用這些屬性標記所有操作。
 
 如需 API 動作應該傳回哪些 HTTP 回應的指導方針，請參閱 [RFC 7231 規格](https://tools.ietf.org/html/rfc7231#section-4.3)。

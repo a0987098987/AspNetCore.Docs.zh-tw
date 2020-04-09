@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/index
 ms.openlocfilehash: 464d19bd63e1f0f06bd7d218e7644afde04a5672
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78657917"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>裝載及部署 ASP.NET Core
@@ -32,7 +32,7 @@ ms.locfileid: "78657917"
 
 *publish* 資料夾包含一或多個應用程式組件檔、相依性，也可能會有 .NET 執行階段。
 
-.NET Core 應用程式可以發行為「自主式部署」或「相依於架構的部署」。 如果應用程式是自主式，包含 .NET 執行階段的組件檔會包含在 *publish* 資料夾中。 如果應用程式是與 Framework 相依的應用程式，則不會包含 .NET 執行階段檔案，因為應用程式具有對伺服器上已安裝之 .NET 版本的參考。 預設部署模式是與 Framework 相依。 如需詳細資訊，請參閱 [.NET Core 應用程式部署](/dotnet/core/deploying/)。
+.NET Core 應用程式可以發行為「自主式部署」** 或「相依於架構的部署」**。 如果應用程式是自主式，包含 .NET 執行階段的組件檔會包含在 *publish* 資料夾中。 如果應用程式是與 Framework 相依的應用程式，則不會包含 .NET 執行階段檔案，因為應用程式具有對伺服器上已安裝之 .NET 版本的參考。 預設部署模式是與 Framework 相依。 如需詳細資訊，請參閱 [.NET Core 應用程式部署](/dotnet/core/deploying/)。
 
 除了 *.exe* 和 *.dll* 檔案之外，ASP.NET Core 應用程式的 *publish* 資料夾通常還包含組態檔、靜態資產和 MVC 檢視。 如需詳細資訊，請參閱 <xref:host-and-deploy/directory-structure>。
 
@@ -44,7 +44,7 @@ ASP.NET Core 應用程式是一種主控台應用程式，必須在伺服器開�
   * [Nginx](xref:host-and-deploy/linux-nginx)
   * [Apache](xref:host-and-deploy/linux-apache)
 * Windows
-  * [IIS](xref:host-and-deploy/iis/index)
+  * [Iis](xref:host-and-deploy/iis/index)
   * [Windows 服務](xref:host-and-deploy/windows-service)
 
 ## <a name="set-up-a-reverse-proxy"></a>設定反向 Proxy
@@ -73,7 +73,7 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 ## <a name="internet-information-services-iis"></a>網際網路資訊服務 (IIS)
 
-若要*使用 web.config 檔案所提供*的設定來部署至 INTERNET INFORMATION SERVICES （IIS），請參閱 <xref:host-and-deploy/iis/index>底下的文章。
+有關*Web.config*檔提供的配置的 Internet 資訊服務 (IIS) 的<xref:host-and-deploy/iis/index>部署,請參閱下的文章。
 
 ## <a name="host-in-a-web-farm"></a>裝載於 Web 伺服陣列
 
@@ -90,7 +90,7 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:test/troubleshoot>
-* [ASP.NET 裝載](https://dotnet.microsoft.com/apps/aspnet/hosting)
+* [ASP.NET託管](https://dotnet.microsoft.com/apps/aspnet/hosting)
 
 ::: moniker-end
 
@@ -110,7 +110,7 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 *publish* 資料夾包含一或多個應用程式組件檔、相依性，也可能會有 .NET 執行階段。
 
-.NET Core 應用程式可以發行為「自主式部署」或「相依於架構的部署」。 如果應用程式是自主式，包含 .NET 執行階段的組件檔會包含在 *publish* 資料夾中。 如果應用程式是與 Framework 相依的應用程式，則不會包含 .NET 執行階段檔案，因為應用程式具有對伺服器上已安裝之 .NET 版本的參考。 預設部署模式是與 Framework 相依。 如需詳細資訊，請參閱 [.NET Core 應用程式部署](/dotnet/core/deploying/)。
+.NET Core 應用程式可以發行為「自主式部署」** 或「相依於架構的部署」**。 如果應用程式是自主式，包含 .NET 執行階段的組件檔會包含在 *publish* 資料夾中。 如果應用程式是與 Framework 相依的應用程式，則不會包含 .NET 執行階段檔案，因為應用程式具有對伺服器上已安裝之 .NET 版本的參考。 預設部署模式是與 Framework 相依。 如需詳細資訊，請參閱 [.NET Core 應用程式部署](/dotnet/core/deploying/)。
 
 除了 *.exe* 和 *.dll* 檔案之外，ASP.NET Core 應用程式的 *publish* 資料夾通常還包含組態檔、靜態資產和 MVC 檢視。 如需詳細資訊，請參閱 <xref:host-and-deploy/directory-structure>。
 
@@ -122,7 +122,7 @@ ASP.NET Core 應用程式是一種主控台應用程式，必須在伺服器開�
   * [Nginx](xref:host-and-deploy/linux-nginx)
   * [Apache](xref:host-and-deploy/linux-apache)
 * Windows
-  * [IIS](xref:host-and-deploy/iis/index)
+  * [Iis](xref:host-and-deploy/iis/index)
   * [Windows 服務](xref:host-and-deploy/windows-service)
 
 ## <a name="set-up-a-reverse-proxy"></a>設定反向 Proxy
@@ -151,7 +151,7 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 ## <a name="internet-information-services-iis"></a>網際網路資訊服務 (IIS)
 
-若要*使用 web.config 檔案所提供*的設定來部署至 INTERNET INFORMATION SERVICES （IIS），請參閱 <xref:host-and-deploy/iis/index>底下的文章。
+有關*Web.config*檔提供的配置的 Internet 資訊服務 (IIS) 的<xref:host-and-deploy/iis/index>部署,請參閱下的文章。
 
 ## <a name="host-in-a-web-farm"></a>裝載於 Web 伺服陣列
 
@@ -164,6 +164,6 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:test/troubleshoot>
-* [ASP.NET 裝載](https://dotnet.microsoft.com/apps/aspnet/hosting)
+* [ASP.NET託管](https://dotnet.microsoft.com/apps/aspnet/hosting)
 
 ::: moniker-end

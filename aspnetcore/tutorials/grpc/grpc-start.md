@@ -6,13 +6,13 @@ ms.author: johluo
 ms.date: 12/05/2019
 uid: tutorials/grpc/grpc-start
 ms.openlocfilehash: 0cedeb021427455c3f60a8a8cc36b52794a055bc
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78665820"
 ---
-# <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端和伺服器
+# <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學:在 ASP.NET核心中建立 gRPC 客戶端和伺服器
 
 作者：[John Luo](https://github.com/juntaoluo)
 
@@ -49,16 +49,16 @@ ms.locfileid: "78665820"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 啟動 Visual Studio，然後選取 [建立新專案]。 或者，從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案]。
-* 在 [**建立新專案**] 對話方塊中，選取 [ **gRPC 服務**]，然後選取 **[下一步]** ：
+* 啟動 Visual Studio，然後選取 [建立新專案]****。 或者，從 Visual Studio 的 [檔案]**** 功能表中，選取 [新增]**** > [專案]****。
+* 在 **'建立新項目**'對話框中,選擇**gRPC 服務**並選擇 **'下一步**' :
 
-  ![[建立新專案] 對話方塊](~/tutorials/grpc/grpc-start/static/cnp.png)
+  ![建立新項目對話框](~/tutorials/grpc/grpc-start/static/cnp.png)
 
 * 將專案命名為 **GrpcGreeter**。 請務必將專案命名為 *GrpcGreeter*，如此當您複製並貼上程式碼時，命名空間才會相符。
-* 選取 [建立]。
-* 在 [建立新的 gRPC 服務] 對話方塊中：
-  * 已選取 [gRPC 服務] 範本。
-  * 選取 [建立]。
+* 選取 [建立]  。
+* 在 [建立新的 gRPC 服務]**** 對話方塊中：
+  * 已選取 [gRPC 服務]**** 範本。
+  * 選取 [建立]  。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -71,11 +71,11 @@ ms.locfileid: "78665820"
   code -r GrpcGreeter
   ```
 
-  * `dotnet new` 命令會在 [GrpcGreeter] 資料夾中建立一個新的 gRPC 服務。
-  * `code` 命令會在新的 Visual Studio Code 執行個體中開啟 [GrpcGreeter] 資料夾。
+  * `dotnet new` 命令會在 [GrpcGreeter]** 資料夾中建立一個新的 gRPC 服務。
+  * `code` 命令會在新的 Visual Studio Code 執行個體中開啟 [GrpcGreeter]** 資料夾。
 
-  此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' GrpcGreeter ' 中遺漏了 debug。要新增它們嗎？**
-* 選取 [是]。
+  **"GrpcGreeter"中缺少一個對話框,其中包含用於生成和調試所需的資產。添加它們?**
+* 選取 [是]  。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -90,7 +90,7 @@ cd GrpcGreeter
 
 ### <a name="open-the-project"></a>開啟專案
 
-從 Visual Studio 選取 [**檔案** > **開啟**]，然後選取*GrpcGreeter .csproj*檔案。
+從視覺化工作室中,選擇 **「打開檔** > **Open**」,然後選擇*GrpcGreeter.csproj*檔。
 
 ---
 
@@ -118,19 +118,19 @@ info: Microsoft.Hosting.Lifetime[0]
 
 *GrpcGreeter* 專案檔：
 
-* *歡迎 &ndash;：* *Protos/歡迎*檔案會定義 `Greeter` gRPC，並用於產生 gRPC 伺服器資產。 如需詳細資訊，請參閱 [gRPC 簡介](xref:grpc/index)。
-* *Services*資料夾：包含 `Greeter` 服務的執行。
-* *appSettings* &ndash; 包含設定資料，例如 Kestrel 所使用的通訊協定。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
+* *greet.proto* &ndash;*Protos/greet.proto* 檔案會定義 `Greeter` gRPC，並會用來產生 gRPC 伺服器資產。 如需詳細資訊，請參閱 [gRPC 簡介](xref:grpc/index)。
+* *服務*資料夾:`Greeter`包含 服務的實現。
+* *appSettings.json* &ndash; 包含設定資料，例如 Kestrel 所使用的通訊協定。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 * *Program.cs* &ndash; 包含 gRPC 服務的進入點。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host>。
-* *Startup.cs* &ndash; 包含可設定應用程式行為的程式碼。 如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
+* *Startup.cs* &ndash; 包含設定應用程式行為的程式碼。 如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
 
 ## <a name="create-the-grpc-client-in-a-net-console-app"></a>在 .NET 主控台應用程式中建立 gRPC 用戶端
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 開啟第二個 Visual Studio 執行個體，並選取 [建立新專案]。
-* 在 [建立新專案] 對話方塊中，選取 [主控台應用程式 (.NET Core)] 並選取 [下一步]。
-* 在 [名稱] 文字方塊中，輸入 **GrpcGreeterClient**，並選取 [建立]。
+* 開啟第二個 Visual Studio 執行個體，並選取 [建立新專案]****。
+* 在 [建立新專案]**** 對話方塊中，選取 [主控台應用程式 (.NET Core)]**** 並選取 [下一步]****。
+* 在 [名稱]**** 文字方塊中，輸入 **GrpcGreeterClient**，並選取 [建立]****。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -163,8 +163,8 @@ gRPC 用戶端專案需要下列套件：
 
 #### <a name="pmc-option-to-install-packages"></a>安裝套件的 PMC 選項
 
-* 從 Visual Studio 選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]
-* 從 [套件管理員主控台] 視窗，執行 `cd GrpcGreeterClient` 以變更包含 *GrpcGreeterClient.csproj* 檔案之資料夾的目錄。
+* 從視覺化工作室,選擇**工具** > **NuGet 套件管理員** > **管理員主控台**
+* 從 [套件管理員主控台]**** 視窗，執行 `cd GrpcGreeterClient` 以變更包含 *GrpcGreeterClient.csproj* 檔案之資料夾的目錄。
 * 執行下列命令：
 
   ```powershell
@@ -175,15 +175,15 @@ gRPC 用戶端專案需要下列套件：
 
 #### <a name="manage-nuget-packages-option-to-install-packages"></a>管理 NuGet 套件選項來安裝套件
 
-* 在 [方案總管] > [管理 NuGet 套件] 中，以滑鼠右鍵按一下專案
-* 選取 [瀏覽] 索引標籤。
+* 右鍵按下**解決方案資源管理員** > **管理 NuGet 套件**中的專案
+* 選取 [瀏覽]**** 索引標籤。
 * 在搜尋方塊中輸入 **Grpc.Net.Client**。
-* 從 [瀏覽] 索引標籤選取 [Grpc.Net.Client] 套件，然後選取 [安裝]。
+* 從 [瀏覽]**** 索引標籤選取 [Grpc.Net.Client]**** 套件，然後選取 [安裝]****。
 * 對 `Google.Protobuf` 與 `Grpc.Tools` 重複進行。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-從 [整合式終端] 執行下列命令：
+從 [整合式終端]**** 執行下列命令：
 
 ```dotnetcli
 dotnet add GrpcGreeterClient.csproj package Grpc.Net.Client
@@ -193,34 +193,34 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在 [Solution Pad] **[新增套件]**  >  中，以滑鼠右鍵按一下 [套件] 資料夾
+* 右鍵按下**解決方案板** > **新增套件**中的**套件**資料夾
 * 在搜尋方塊中輸入 **Grpc.Net.Client**。
-* 從結果窗格中選取 [Grpc.Net.Client] 套件，然後選取 [新增套件]
+* 從結果窗格中選取 [Grpc.Net.Client]**** 套件，然後選取 [新增套件]****
 * 對 `Google.Protobuf` 與 `Grpc.Tools` 重複進行。
 
 ---
 
 ### <a name="add-greetproto"></a>新增 greet.proto
 
-* 在 gRPC 用戶端專案中建立 [Protos] 資料夾。
+* 在 gRPC 用戶端專案中建立 [Protos]** 資料夾。
 * 將 *Protos\greet.proto* 檔案從 gRPC Greeter 服務複製到 gRPC 用戶端專案。
 * 編輯 *GrpcGreeterClient.csproj* 專案檔：
 
   # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-  以滑鼠右鍵按一下專案，然後選取 [編輯專案檔]。
+  以滑鼠右鍵按一下專案，然後選取 [編輯專案檔]****。
 
   # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-  選取 [GrpcGreeterClient.csproj] 檔案。
+  選取 [GrpcGreeterClient.csproj]** 檔案。
 
   # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-  以滑鼠右鍵按一下專案，然後選取 [工具] > [編輯檔案]。
+  右鍵按一下專案並選擇 **「工具** > **編輯檔**」。
 
   ---
 
-* 新增具有代表 `<Protobuf>`greet.proto*檔案之* 元素的項目群組：
+* 新增具有代表 *greet.proto* 檔案之 `<Protobuf>` 元素的項目群組：
 
   ```xml
   <ItemGroup>
@@ -269,7 +269,7 @@ Greeter 用戶端會呼叫非同步的 `SayHello` 方法。 顯示 `SayHello` �
 
 ---
 
-用戶端會以包含其名稱 *GreeterClient* 的訊息向服務傳送問候語。 該服務會傳送 "Hello GreeterClient" 訊息做為回應。 "Hello GreeterClient" 回應會顯示在命令提示字元中：
+用戶端向服務發送一個問候語,其中包含其名稱*GreeterClient*的消息。 該服務會傳送 "Hello GreeterClient" 訊息做為回應。 "Hello GreeterClient" 回應會顯示在命令提示字元中：
 
 ```console
 Greeting: Hello GreeterClient

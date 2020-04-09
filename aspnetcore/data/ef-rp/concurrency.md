@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/concurrency
 ms.openlocfilehash: c4d43f26ba80e7922c3cbd37d9a5f8e1561b11ad
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78656909"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 並行 - 8/8
@@ -44,13 +44,13 @@ ms.locfileid: "78656909"
 
 ![將預算變更為 0](concurrency/_static/change-budget30.png)
 
-在 Jane 按一下 [儲存] 前，John 造訪了相同的頁面並將 [開始日期] 欄位從 2007/9/1 變更為 2013/9/1。
+在 Jane 按一下 [儲存]**** 前，John 造訪了相同的頁面並將 [開始日期] 欄位從 2007/9/1 變更為 2013/9/1。
 
 ![將開始日期變更為 2013 年](concurrency/_static/change-date30.png)
 
-Jane 先按了一下 [儲存] 並看到她所做的變更生效，因為瀏覽器顯示 Budget 金額為零的 Index 頁。
+Jane 先按了一下 [儲存]**** 並看到她所做的變更生效，因為瀏覽器顯示 Budget 金額為零的 Index 頁。
 
-John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 [儲存]。 接下來將發生情況是由您處理並行衝突的方式決定：
+John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 [儲存]****。 接下來將發生情況是由您處理並行衝突的方式決定：
 
 * 您可以追蹤使用者修改的屬性，然後僅在資料庫中更新相對應的資料行。
 
@@ -62,7 +62,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 * 您可以讓 John 的變更覆寫 Jane 的變更。
 
-  下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」或「最後寫入為準 (Last in Wins)」案例。 （用戶端的所有值會優先于資料存放區中的內容）。如果您未執行任何並行處理的編碼，用戶端會自動進行。
+  下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」** 或「最後寫入為準 (Last in Wins)」** 案例。 (來自用戶端的所有值都優先於資料存儲中的值。如果不對併發處理進行任何編碼,則客戶端勝利會自動發生。
 
 * 您可以防止 John 的變更更新到資料庫中。 一般而言，應用程式會：
 
@@ -70,7 +70,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
   * 顯示資料的目前狀態。
   * 允許使用者重新套用變更。
 
-  這稱之為「存放區獲勝 (Store Wins)」案例。 （資料存放區的值會優先于用戶端所提交的值。）在本教學課程中，您會執行存放區的 Wins 案例。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
+  這稱為「存放區獲勝 (Store Wins)」** 案例。 (數據存儲值優先於用戶端提交的值。在本教程中實現"商店獲勝"方案。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
 
 ## <a name="conflict-detection-in-ef-core"></a>EF Core 中的衝突偵測
 
@@ -121,7 +121,7 @@ modelBuilder.Entity<Department>()
 
 [!code-sql[](intro/samples/cu30snapshots/8-concurrency/sql.txt?highlight=4-6)]
 
-[@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) 會傳回上一個陳述式所影響的資料列數目。 若沒有更新任何資料列，則 EF Core 會擲回 `DbUpdateConcurrencyException`。
+[返回@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql)受最後一個語句影響的行數。 若沒有更新任何資料列，則 EF Core 會擲回 `DbUpdateConcurrencyException`。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -214,13 +214,13 @@ modelBuilder.Entity<Department>()
 
 * 執行下列命令來 Scaffold Department 頁面。
 
-  **在 Windows 上：**
+  **在 Windows 上:**
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
   ```
 
-  **在 Linux 或 macOS 上：**
+  **Linux 或 macOS 上:**
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages/Departments --referenceScriptLibraries
@@ -246,11 +246,11 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 ## <a name="update-the-edit-page-model"></a>更新 [編輯] 頁面模型
 
-使用下列程式碼更新 *Pages\Departments\Edit.cshtml.cs*：
+使用以下代碼更新*頁面_部門\編輯.cshtml.cs:*
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_All)]
 
-[OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) 會在於 `rowVersion` 方法中進行擷取時，使用實體的 `OnGet` 值來進行更新。 EF Core 會產生一個帶有包含了原始 `RowVersion` 值 WHERE 子句的 SQL UPDATE 命令。 若 UPDATE 命令並未影響任何資料列 (即沒有任何資料列具有原始的 `RowVersion` 值)，則便會擲回 `DbUpdateConcurrencyException` 例外狀況。
+[OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) 會在於 `OnGet` 方法中進行擷取時，使用實體的 `rowVersion` 值來進行更新。 EF Core 會產生一個帶有包含了原始 `RowVersion` 值 WHERE 子句的 SQL UPDATE 命令。 若 UPDATE 命令並未影響任何資料列 (即沒有任何資料列具有原始的 `RowVersion` 值)，則便會擲回 `DbUpdateConcurrencyException` 例外狀況。
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_RowVersion&highlight=17-18)]
 
@@ -258,7 +258,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 * `Department.RowVersion` 中的值是原先在 Edit 頁面 Get 要求中所擷取實體中的內容。 該值會透過 Razor 頁面中隱藏欄位的方式提供給 `OnPost` 方法，而 Razor 頁面會顯示要編輯的實體。 隱藏欄位的值會由模型繫結器複製到 `Department.RowVersion`。
 * `OriginalValue` 是 EF Core 將在 Where 子句中使用的內容。 在執行醒目提示的程式碼區段前，`OriginalValue` 會擁有在此方法中呼叫 `FirstOrDefaultAsync` 時原先在資料庫內的值，而該值可能會和 Edit 頁面上顯示的內容不同。
-* 醒目提示的程式碼會確保 EF Core 使用 SQL UPDATE 陳述式 WHERE 子句中所顯示 `RowVersion` 實體原始 `Department` 值。
+* 醒目提示的程式碼會確保 EF Core 使用 SQL UPDATE 陳述式 WHERE 子句中所顯示 `Department` 實體原始 `RowVersion` 值。
 
 發生並行錯誤時，下列醒目提示的程式碼會取得用戶端值 (POST 到此方法的值) 及資料庫值。
 
@@ -268,7 +268,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_Error)]
 
-下列醒目提示的程式碼會將 `RowVersion` 值設為從資料庫所擷取新值。 下一次當使用者按一下 [儲存] 時，只有在上一次顯示 [編輯] 頁面之後發生的並行錯誤會被捕捉到。
+下列醒目提示的程式碼會將 `RowVersion` 值設為從資料庫所擷取新值。 下一次當使用者按一下 [儲存]**** 時，只有在上一次顯示 [編輯] 頁面之後發生的並行錯誤會被捕捉到。
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_TryUpdateModel&highlight=28)]
 
@@ -285,19 +285,19 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 * 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int}"`。
 * 新增一個隱藏的資料列版本。 您必須新增 `RowVersion`，以讓回傳繫結值。
 * 顯示 `RowVersion` 的最後一個位元組，作為偵錯用途。
-* 使用強型別的 `ViewData` 取代 `InstructorNameSL`。
+* 使用強型別的 `InstructorNameSL` 取代 `ViewData`。
 
 ### <a name="test-concurrency-conflicts-with-the-edit-page"></a>使用 [編輯] 頁面測試並行衝突
 
 開啟兩個英文部門上 [編輯] 頁面的瀏覽器執行個體：
 
 * 執行應用程式並選取 Departments。
-* 以滑鼠右鍵按一下英文部門的**編輯**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)。
+* 以滑鼠右鍵按一下英文部門的**編輯**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)****。
 * 在第一個索引標籤中，按一下英文部門的**編輯**超連結。
 
 兩個瀏覽器索引標籤會顯示相同的資訊。
 
-在第一個瀏覽器索引標籤中變更名稱，然後按一下 [儲存]。
+在第一個瀏覽器索引標籤中變更名稱，然後按一下 [儲存]****。
 
 ![變更之後的 Department [編輯] 頁面 1](concurrency/_static/edit-after-change-130.png)
 
@@ -307,13 +307,13 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 ![變更之後的 Department [編輯] 頁面 2](concurrency/_static/edit-after-change-230.png)
 
-按一下 [檔案]。 您會看到所有不符合資料庫值欄位的錯誤訊息：
+按一下 [檔案]  。 您會看到所有不符合資料庫值欄位的錯誤訊息：
 
 ![Department [編輯] 頁面錯誤訊息](concurrency/_static/edit-error30.png)
 
-此瀏覽器視窗並未嘗試變更 [名稱] 欄位。 複製並將目前的值 (語言 (Language)) 貼上 [名稱] 欄位。 Tab 鍵移出。用戶端驗證會移除錯誤訊息。
+此瀏覽器視窗並未嘗試變更 [名稱] 欄位。 複製並將目前的值 (語言 (Language)) 貼上 [名稱] 欄位。 選項卡出。用戶端驗證將刪除錯誤消息。
 
-再按一下 [儲存]。 您在第二個瀏覽器索引標籤中輸入的值已儲存。 您會在 [索引] 頁面中看到儲存的值。
+再按一下 [儲存]****。 您在第二個瀏覽器索引標籤中輸入的值已儲存。 您會在 [索引] 頁面中看到儲存的值。
 
 ## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
 
@@ -325,7 +325,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 * SQL DELETE 命令中 `RowVersion` 與資料庫中 `RowVersion` 不相符。
 * 擲回 DbUpdateConcurrencyException。
-* 使用 `OnGetAsync` 呼叫 `concurrencyError`。
+* 使用 `concurrencyError` 呼叫 `OnGetAsync`。
 
 ### <a name="update-the-delete-razor-page"></a>更新刪除 Razor 頁面
 
@@ -337,7 +337,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 * 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int}"`。
 * 新增錯誤訊息。
-* 在 [系統管理員] 欄位中將 FirstMidName 取代為 FullName。
+* 在 [系統管理員]**** 欄位中將 FirstMidName 取代為 FullName。
 * 變更 `RowVersion` 以顯示最後一個位元組。
 * 新增一個隱藏的資料列版本。 您必須新增 `RowVersion`，以讓 postgit add back 繫結值。
 
@@ -348,16 +348,16 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 開啟兩個測試部門上 [刪除] 頁面的瀏覽器執行個體：
 
 * 執行應用程式並選取 Departments。
-* 以滑鼠右鍵按一下測試部門的**刪除**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)。
+* 以滑鼠右鍵按一下測試部門的**刪除**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)****。
 * 按一下測試部門的**編輯**超連結。
 
 兩個瀏覽器索引標籤會顯示相同的資訊。
 
-在第一個瀏覽器索引標籤中變更預算，然後按一下 [儲存]。
+在第一個瀏覽器索引標籤中變更預算，然後按一下 [儲存]****。
 
 瀏覽器會顯示 [索引] 頁面，當中包含了變更之後的值和更新後的 rowVersion 指標。 請注意更新後的 rowVersion 指標。它會顯示在另一個索引標籤中的第二個回傳上。
 
-從第二個索引標籤中刪除測試部門。並行處理錯誤會顯示資料庫中的目前值。 按一下 [刪除] 會刪除實體，除非 `RowVersion` 已更新。部門已刪除。
+從第二個選項卡中刪除測試部門。與資料庫中的當前值顯示併發錯誤。 按一下 [刪除]**** 會刪除實體，除非 `RowVersion` 已更新。部門已刪除。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -376,7 +376,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 ::: moniker range="< aspnetcore-3.0"
 
-本教學課程會顯示如何在多位使用者同時並行更新實體時處理衝突。 若您遇到無法解決的問題，請[下載或檢視完整應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。 [下載指示](xref:index#how-to-download-a-sample)。
+本教學課程會顯示如何在多位使用者同時並行更新實體時處理衝突。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載標題](xref:index#how-to-download-a-sample)。
 
 ## <a name="concurrency-conflicts"></a>並行衝突
 
@@ -396,15 +396,15 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 ![將預算變更為 0](concurrency/_static/change-budget.png)
 
-在 Jane 按一下 [儲存] 前，John 造訪了相同的頁面並將 [開始日期] 欄位從 2007/9/1 變更為 2013/9/1。
+在 Jane 按一下 [儲存]**** 前，John 造訪了相同的頁面並將 [開始日期] 欄位從 2007/9/1 變更為 2013/9/1。
 
 ![將開始日期變更為 2013 年](concurrency/_static/change-date.png)
 
-Jane 先按了一下 [儲存]，並且在瀏覽器顯示 [索引] 頁面時看到她作出的變更。
+Jane 先按了一下 [儲存]****，並且在瀏覽器顯示 [索引] 頁面時看到她作出的變更。
 
 ![預算已變更為 0](concurrency/_static/budget-zero.png)
 
-John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 [儲存]。 接下來發生的情況便是由您處理並行衝突的方式決定。
+John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 [儲存]****。 接下來發生的情況便是由您處理並行衝突的方式決定。
 
 開放式並行存取包含下列選項：
 
@@ -418,7 +418,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 * 您可以讓 John 的變更覆寫 Jane 的變更。
 
-  下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」或「最後寫入為準 (Last in Wins)」案例。 （用戶端的所有值會優先于資料存放區中的內容）。如果您未執行任何並行處理的編碼，用戶端會自動進行。
+  下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」** 或「最後寫入為準 (Last in Wins)」** 案例。 (來自用戶端的所有值都優先於資料存儲中的值。如果不對併發處理進行任何編碼,則客戶端勝利會自動發生。
 
 * 您可以防止 John 的變更更新到資料庫中。 一般而言，應用程式會：
 
@@ -426,7 +426,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
   * 顯示資料的目前狀態。
   * 允許使用者重新套用變更。
 
-  這稱之為「存放區獲勝 (Store Wins)」案例。 （資料存放區的值會優先于用戶端所提交的值。）在本教學課程中，您會執行存放區的 Wins 案例。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
+  這稱為「存放區獲勝 (Store Wins)」** 案例。 (數據存儲值優先於用戶端提交的值。在本教程中實現"商店獲勝"方案。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
 
 ## <a name="handling-concurrency"></a>處理並行 
 
@@ -445,7 +445,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 ### <a name="detecting-concurrency-conflicts-on-a-row"></a>在資料列上偵測並行衝突
 
-為了偵測並行衝突，一個 [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) 追蹤資料行會新增到模型中。  `rowversion`：
+為了偵測並行衝突，一個 [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) 追蹤資料行會新增到模型中。  `rowversion` :
 
 * 是 SQL Server 的特定功能。 其他資料庫可能不會提供類似的功能。
 * 是用來判斷實體在從資料庫擷取之後是否有變更。 
@@ -464,7 +464,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
-[Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) 屬性表示此資料行會包含在 `Where` 和 `Update` 命令的 `Delete` 子句中。 該屬性稱為 `Timestamp`，因為先前版本的 SQL Server 在以 SQL `timestamp` 類型取代之前使用了 SQL `rowversion` 資料類型。
+[Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) 屬性表示此資料行會包含在 `Update` 和 `Delete` 命令的 `Where` 子句中。 該屬性稱為 `Timestamp`，因為先前版本的 SQL Server 在以 SQL `rowversion` 類型取代之前使用了 SQL `timestamp` 資料類型。
 
 Fluent API 也可以指定追蹤屬性：
 
@@ -484,7 +484,7 @@ modelBuilder.Entity<Department>()
 
 [!code-sql[](intro/samples/cu21snapshots/sql.txt?highlight=4-6)]
 
-[@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) 會傳回上一個陳述式所影響的資料列數目。 當沒有更新任何資料列時，EF Core 便會擲回 `DbUpdateConcurrencyException`。
+[返回@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql)受最後一個語句影響的行數。 當沒有更新任何資料列時，EF Core 便會擲回 `DbUpdateConcurrencyException`。
 
 您可以在 Visual Studio 的輸出視窗中看到 EF Core 產生的 T-SQL。
 
@@ -546,11 +546,11 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 ### <a name="update-the-edit-page-model"></a>更新 [編輯] 頁面模型
 
-使用下列程式碼更新 *Pages\Departments\Edit.cshtml.cs*：
+使用以下代碼更新*頁面_部門\編輯.cshtml.cs:*
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet)]
 
-為了偵測並行問題，系統會使用擷取實體時的 [ 值更新 ](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue)OriginalValue`rowVersion`。 EF Core 會產生一個帶有包含了原始 `RowVersion` 值 WHERE 子句的 SQL UPDATE 命令。 若 UPDATE 命令並未影響任何資料列 (即沒有任何資料列具有原始的 `RowVersion` 值)，則便會擲回 `DbUpdateConcurrencyException` 例外狀況。
+為了偵測並行問題，系統會使用擷取實體時的 `rowVersion` 值更新 [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue)。 EF Core 會產生一個帶有包含了原始 `RowVersion` 值 WHERE 子句的 SQL UPDATE 命令。 若 UPDATE 命令並未影響任何資料列 (即沒有任何資料列具有原始的 `RowVersion` 值)，則便會擲回 `DbUpdateConcurrencyException` 例外狀況。
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_rv&highlight=24-999)]
 
@@ -564,7 +564,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_err)]
 
-下列醒目提示程式碼會將 `RowVersion` 的值設為從資料庫取得的新值。 下一次當使用者按一下 [儲存] 時，只有在上一次顯示 [編輯] 頁面之後發生的並行錯誤會被捕捉到。
+下列醒目提示程式碼會將 `RowVersion` 的值設為從資料庫取得的新值。 下一次當使用者按一下 [儲存]**** 時，只有在上一次顯示 [編輯] 頁面之後發生的並行錯誤會被捕捉到。
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=23)]
 
@@ -581,19 +581,19 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 * 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int}"`。
 * 新增一個隱藏的資料列版本。 您必須新增 `RowVersion`，以讓回傳繫結值。
 * 顯示 `RowVersion` 的最後一個位元組，作為偵錯用途。
-* 使用強型別的 `ViewData` 取代 `InstructorNameSL`。
+* 使用強型別的 `InstructorNameSL` 取代 `ViewData`。
 
 ## <a name="test-concurrency-conflicts-with-the-edit-page"></a>使用 [編輯] 頁面測試並行衝突
 
 開啟兩個英文部門上 [編輯] 頁面的瀏覽器執行個體：
 
 * 執行應用程式並選取 Departments。
-* 以滑鼠右鍵按一下英文部門的**編輯**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)。
+* 以滑鼠右鍵按一下英文部門的**編輯**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)****。
 * 在第一個索引標籤中，按一下英文部門的**編輯**超連結。
 
 兩個瀏覽器索引標籤會顯示相同的資訊。
 
-在第一個瀏覽器索引標籤中變更名稱，然後按一下 [儲存]。
+在第一個瀏覽器索引標籤中變更名稱，然後按一下 [儲存]****。
 
 ![變更之後的 Department [編輯] 頁面 1](concurrency/_static/edit-after-change-1.png)
 
@@ -603,15 +603,15 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 ![變更之後的 Department [編輯] 頁面 2](concurrency/_static/edit-after-change-2.png)
 
-按一下 [檔案]。 您會看到所有不符合資料庫值之欄位的錯誤訊息：
+按一下 [檔案]  。 您會看到所有不符合資料庫值之欄位的錯誤訊息：
 
 ![Department [編輯] 頁面錯誤訊息](concurrency/_static/edit-error.png)
 
-此瀏覽器視窗並未嘗試變更 [名稱] 欄位。 複製並將目前的值 (語言 (Language)) 貼上 [名稱] 欄位。 Tab 鍵移出。用戶端驗證會移除錯誤訊息。
+此瀏覽器視窗並未嘗試變更 [名稱] 欄位。 複製並將目前的值 (語言 (Language)) 貼上 [名稱] 欄位。 選項卡出。用戶端驗證將刪除錯誤消息。
 
 ![Department [編輯] 頁面錯誤訊息](concurrency/_static/cv.png)
 
-再按一下 [儲存]。 您在第二個瀏覽器索引標籤中輸入的值已儲存。 您會在 [索引] 頁面中看到儲存的值。
+再按一下 [儲存]****。 您在第二個瀏覽器索引標籤中輸入的值已儲存。 您會在 [索引] 頁面中看到儲存的值。
 
 ## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
 
@@ -623,7 +623,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 * 表示 SQL DELETE 命令中的 `RowVersion` 不符合資料庫中的 `RowVersion`。
 * 擲回 DbUpdateConcurrencyException。
-* 使用 `OnGetAsync` 呼叫 `concurrencyError`。
+* 使用 `concurrencyError` 呼叫 `OnGetAsync`。
 
 ### <a name="update-the-delete-page"></a>更新 [刪除] 頁面
 
@@ -635,7 +635,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 * 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int}"`。
 * 新增錯誤訊息。
-* 在 [系統管理員] 欄位中將 FirstMidName 取代為 FullName。
+* 在 [系統管理員]**** 欄位中將 FirstMidName 取代為 FullName。
 * 變更 `RowVersion` 以顯示最後一個位元組。
 * 新增一個隱藏的資料列版本。 您必須新增 `RowVersion`，以讓回傳繫結值。
 
@@ -646,16 +646,16 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 開啟兩個測試部門上 [刪除] 頁面的瀏覽器執行個體：
 
 * 執行應用程式並選取 Departments。
-* 以滑鼠右鍵按一下測試部門的**刪除**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)。
+* 以滑鼠右鍵按一下測試部門的**刪除**超連結，然後選取 [Open in new tab] (在新索引標籤中開啟)****。
 * 按一下測試部門的**編輯**超連結。
 
 兩個瀏覽器索引標籤會顯示相同的資訊。
 
-在第一個瀏覽器索引標籤中變更預算，然後按一下 [儲存]。
+在第一個瀏覽器索引標籤中變更預算，然後按一下 [儲存]****。
 
 瀏覽器會顯示 [索引] 頁面，當中包含了變更之後的值和更新後的 rowVersion 指標。 請注意更新後的 rowVersion 指標。它會顯示在另一個索引標籤中的第二個回傳上。
 
-從第二個索引標籤中刪除測試部門。同步處理錯誤會顯示資料庫中的目前值。 按一下 [刪除] 會刪除實體，除非 `RowVersion` 已更新。部門已刪除。
+從第二個選項卡中刪除測試部門。與來自資料庫的當前值顯示併發錯誤。 按一下 [刪除]**** 會刪除實體，除非 `RowVersion` 已更新。部門已刪除。
 
 請參閱[繼承](xref:data/ef-mvc/inheritance)以了解如何繼承資料模型。
 
@@ -668,7 +668,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 * [這個教學課程的 YouTube 版本 (第 3 部分)](https://www.youtube.com/watch?v=d4RbpfvELRs)
 
 > [!div class="step-by-step"]
-> [[上一步]](xref:data/ef-rp/update-related-data)
+> [上一步](xref:data/ef-rp/update-related-data)
 
 ::: moniker-end
 

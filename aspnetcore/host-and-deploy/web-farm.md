@@ -8,22 +8,22 @@ ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/web-farm
 ms.openlocfilehash: 316c87e5f49593c05991a94cbe5e55d175a49bb3
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78659366"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>在 Web 伺服陣列上裝載 ASP.NET Core
 
-依[Chris Ross](https://github.com/Tratcher)
+由[克裡斯·羅斯](https://github.com/Tratcher)
 
-*Web 伺服陣列*是一組兩個或多個 Web 伺服器 (或稱為「節點」)，用於裝載應用程式的多個執行個體。 當使用者的要求抵達 Web 伺服陣列時，「負載平衡器」會將要求分散到 Web 伺服陣列的節點。 Web 伺服陣列改善：
+*Web 伺服陣列*是一組兩個或多個 Web 伺服器 (或稱為「節點」**)，用於裝載應用程式的多個執行個體。 當使用者的要求抵達 Web 伺服陣列時，「負載平衡器」** 會將要求分散到 Web 伺服陣列的節點。 Web 伺服陣列改善：
 
-* **可靠性/可用性**&ndash; 當一或多個節點失敗時，負載平衡器可以將要求路由至其他正常運作的節點，以繼續處理要求。
-* **容量/效能**&ndash; 多個節點可以處理比單一伺服器更多的要求。 負載平衡器可以將要求分散到節點，藉以平衡工作負載。
-* 擴充**性**&ndash; 當需要更多或更少的容量時，可以增加或減少作用中節點的數目，以符合工作負載。 Web 伺服陣列的平台技術 (例如 [Azure App Service](https://azure.microsoft.com/services/app-service/)) 可以依系統管理員的要求自動新增或移除節點，也可以在沒有人為介入的情況下自動新增或移除節點。
-* 可**維護性**&ndash; web 伺服陣列的節點可以依賴一組共用服務，這會導致系統管理變得更容易。 例如，Web 伺服陣列的節點可以依賴單一資料庫伺服器和靜態資源的通用網路位置，例如影像和可下載檔案。
+* **可靠性/可用性** &ndash; 當一或多個節點失敗時，負載平衡器可以將要求路由至其他運作的節點，以繼續處理要求。
+* **容量/效能** &ndash; 多個節點可以處理比單一伺服器更多的要求。 負載平衡器可以將要求分散到節點，藉以平衡工作負載。
+* **延展性** &ndash; 當需要較多或較少的容量時，可以增加或減少作用中的節點數目以符合工作負載。 Web 伺服陣列的平台技術 (例如 [Azure App Service](https://azure.microsoft.com/services/app-service/)) 可以依系統管理員的要求自動新增或移除節點，也可以在沒有人為介入的情況下自動新增或移除節點。
+* **可維護性** &ndash; Web 伺服陣列的節點可以依賴一組共用服務，從而簡化系統管理。 例如，Web 伺服陣列的節點可以依賴單一資料庫伺服器和靜態資源的通用網路位置，例如影像和可下載檔案。
 
 本主題針對依賴共用資源的 Web 伺服陣列，說明其中所裝載 ASP.NET Core 應用程式的設定和相依性。
 
@@ -62,8 +62,8 @@ ms.locfileid: "78659366"
 | -------- | ------------------- |
 | 驗證 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱 <xref:security/authentication/cookie> 和 <xref:security/cookie-sharing>。 |
 | 身分識別 | 驗證及資料庫設定。<br><br>如需詳細資訊，請參閱 <xref:security/authentication/identity>。 |
-| 工作階段 | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 和快取 (請參閱 <xref:performance/caching/distributed>)。<br><br>如需詳細資訊，請參閱[會話和狀態管理：會話狀態](xref:fundamentals/app-state#session-state)。 |
-| TempData | 資料保護（加密的 cookie）（請參閱 <xref:security/data-protection/configuration/overview>）或會話（請參閱[會話和狀態管理：會話狀態](xref:fundamentals/app-state#session-state)）。<br><br>如需詳細資訊，請參閱[會話和狀態管理： TempData](xref:fundamentals/app-state#tempdata)。 |
+| 工作階段 | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 和快取 (請參閱 <xref:performance/caching/distributed>)。<br><br>有關詳細資訊,請參閱[工作階段和狀態管理:工作階段狀態](xref:fundamentals/app-state#session-state)。 |
+| TempData | 數據保護(加密 Cookie)(請參<xref:security/data-protection/configuration/overview>閱 )或會話(請參閱[工作階段和狀態管理:工作階段狀態](xref:fundamentals/app-state#session-state))。<br><br>有關詳細資訊,請參閱[工作階段和狀態管理:TempData](xref:fundamentals/app-state#tempdata)。 |
 | 防偽 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱 <xref:security/anti-request-forgery>。 |
 
 ## <a name="troubleshoot"></a>疑難排解
@@ -91,6 +91,6 @@ ms.locfileid: "78659366"
 
 ## <a name="additional-resources"></a>其他資源
 
-* [適用于 Windows 的自訂腳本擴充](/azure/virtual-machines/extensions/custom-script-windows)功能 &ndash; 會在 Azure 虛擬機器上下載和執行腳本，這對於部署後設定和軟體安裝很有用。
+* [Windows](/azure/virtual-machines/extensions/custom-script-windows)&ndash;下載的自定義腳本擴展在 Azure 虛擬機器上執行文稿,這對於部署後配置和軟體安裝非常有用。
 * <xref:host-and-deploy/proxy-load-balancer>
  

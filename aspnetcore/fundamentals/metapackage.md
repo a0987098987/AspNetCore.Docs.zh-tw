@@ -8,17 +8,17 @@ ms.custom: mvc
 ms.date: 10/25/2018
 uid: fundamentals/metapackage
 ms.openlocfilehash: cc00c075909da5c17a4aa2fd252c9e662e5a0fc9
-ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "79511063"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>ASP.NET Core 2.0 的 Microsoft.AspNetCore.All 中繼套件
 
 ::: moniker range=">= aspnetcore-3.0"
 
-`Microsoft.AspNetCore.All` 中繼套件不包含在 ASP.NET Core 3.0 和更新版本中。 如需詳細資訊，請參閱[這個 GitHub 問題](https://github.com/aspnet/Announcements/issues/314) \(英文\)。
+`Microsoft.AspNetCore.All`元包不包括在ASP.NET核心3.0及更高版本。 如需詳細資訊，請參閱[這個 GitHub 問題](https://github.com/aspnet/Announcements/issues/314) \(英文\)。
 
 ::: moniker-end
 
@@ -27,7 +27,7 @@ ms.locfileid: "79511063"
 
 這項功能需要以 .NET Core 2.x 為目標的 ASP.NET Core 2.x。
 
-[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) \(英文\) 是參考共用架構的中繼套件。 「共用的架構」是一組不在應用程式資料夾內的組件 ( *.dll* 檔案)。 共用的架構必須安裝於要執行應用程式的機器上。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
+[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) \(英文\) 是參考共用架構的中繼套件。 「共用的架構」** 是一組不在應用程式資料夾內的組件 (*.dll* 檔案)。 共用的架構必須安裝於要執行應用程式的機器上。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
 
 `Microsoft.AspNetCore.All` 所參考的共用架構包含：
 
@@ -55,7 +55,7 @@ ms.locfileid: "79511063"
 
 在專案檔中，專案的 SDK 必須設定為 `Microsoft.NET.Sdk.Web`，才能使用 `Microsoft.AspNetCore.All` 的隱含版本。 當指定 `Microsoft.NET.Sdk` SDK 時 (專案檔頂端的 `<Project Sdk="Microsoft.NET.Sdk">`)，就會產生以下警告：
 
-*警告 NU1604：專案相依性 AspNetCore。全部不包含內含下限。請在相依性版本中包含下限，以確保一致的還原結果。*
+*警告 NU1604: 專案依賴項 Microsoft.AspNetCore.所有不包含包含的下限。在依賴項版本中包含下限,以確保一致的還原結果。*
 
 這是.NET Core 2.1 SDK 的已知的問題，並將於 .NET Core 2.2 SDK 中修正。
 

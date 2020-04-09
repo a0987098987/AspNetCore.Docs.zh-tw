@@ -6,17 +6,17 @@ ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
 ms.openlocfilehash: bedb3e6a65839db915ca7bc821a267a14d34bf30
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78667409"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>使用檔案監看員開發 ASP.NET Core 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Victor Hurdugaci](https://twitter.com/victorhurdugaci)
 
-[dotnet watch](https://www.nuget.org/packages/dotnet-watch)是一種工具，會在來源檔案變更時執行[.NET Core CLI](/dotnet/core/tools)命令。 例如，檔案變更會觸發編譯、測試執行或部署。
+[點網監視](https://www.nuget.org/packages/dotnet-watch)是在源檔更改時運行[.NET Core CLI](/dotnet/core/tools)命令的工具。 例如，檔案變更會觸發編譯、測試執行或部署。
 
 本教學課程使用現有的 Web API 與兩個端點：一個傳回加總，另一個傳回產品。 本教學課程已修正產品方法的 Bug。
 
@@ -78,7 +78,7 @@ Application started. Press Ctrl+C to shut down.
 | dotnet run -f netcoreapp2.0 -- --arg1 | dotnet watch run -f netcoreapp2.0 -- --arg1 |
 | dotnet test | dotnet watch test |
 
-執行 `dotnet watch run`WebApp*資料夾中的*。 主控台輸出指出 `watch` 已啟動。
+執行 *WebApp* 資料夾中的 `dotnet watch run`。 主控台輸出指出 `watch` 已啟動。
 
 > [!NOTE]
 > 您可以使用 `dotnet watch --project <PROJECT>` 來指定要監看的專案。 例如，從範例應用程式的根目錄執行 `dotnet watch --project WebApp run` 同時也會執行並監看 *WebApp* 專案。
@@ -87,7 +87,7 @@ Application started. Press Ctrl+C to shut down.
 
 請確認 `dotnet watch` 正在執行。
 
-修正 `Product`MathController.cs*之* 方法的 Bug，使其傳回產品而非加總：
+修正 *MathController.cs* 之 `Product` 方法的 Bug，使其傳回產品而非加總：
 
 ```csharp
 public static int Product(int a, int b)
@@ -102,7 +102,7 @@ public static int Product(int a, int b)
 
 ## <a name="run-tests-using-dotnet-watch"></a>使用 `dotnet watch` 執行測試
 
-1. 將 `Product`MathController.cs*的* 方法變更回傳回加總。 儲存檔案。
+1. 將 *MathController.cs* 的 `Product` 方法變更回傳回加總。 儲存檔案。
 1. 在命令殼層中，瀏覽至 *WebAppTests* 資料夾。
 1. 執行 [dotnet restore](/dotnet/core/tools/dotnet-restore)。
 1. 執行 `dotnet watch test`。 其輸出指出測試失敗，且監看員正在等候檔案變更：
@@ -154,7 +154,7 @@ public static int Product(int a, int b)
 
 `dotnet-watch` 不限制為 C# 專案。 您可以建立自訂的監看式專案來處理不同的案例。 請考慮下列專案配置：
 
-* **test/**
+* **測試/**
   * *UnitTests/UnitTests.csproj*
   * *IntegrationTests/IntegrationTests.csproj*
 
@@ -185,4 +185,4 @@ dotnet watch msbuild /t:Test
 
 ## <a name="dotnet-watch-in-github"></a>GitHub 中的 `dotnet-watch`
 
-`dotnet-watch` 是 GitHub [dotnet/AspNetCore 存放庫](https://github.com/dotnet/AspNetCore/tree/master/src/Tools/dotnet-watch)的一部分。
+`dotnet-watch`是 GitHub[點網/ AspNetCore 儲存庫](https://github.com/dotnet/AspNetCore/tree/master/src/Tools/dotnet-watch)的一部分。

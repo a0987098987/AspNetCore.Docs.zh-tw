@@ -1,35 +1,35 @@
 ---
-title: ASP.NET Core 驗證的總覽
+title: ASP.NET核心身份驗證概述
 author: mjrousos
-description: 深入瞭解 ASP.NET Core 中的驗證。
+description: 瞭解ASP.NET核心中的身份驗證。
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2020
 uid: security/authentication/index
 ms.openlocfilehash: 404904ecfa30d1fe7e47f0daaa423ddd6f1b06e8
-ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "79434326"
 ---
-# <a name="overview-of-aspnet-core-authentication"></a>ASP.NET Core 驗證的總覽
+# <a name="overview-of-aspnet-core-authentication"></a>ASP.NET核心身份驗證概述
 
-由[Mike Rousos](https://github.com/mjrousos)
+由[邁克·盧梭斯](https://github.com/mjrousos)
 
-驗證是判斷使用者身分識別的程式。 「授權」（ [Authorization](xref:security/authorization/introduction) ）是判斷使用者是否有權存取資源的程式。 在 ASP.NET Core 中，驗證是由驗證[中介軟體](xref:fundamentals/middleware/index)所使用的 `IAuthenticationService`來處理。 驗證服務會使用已註冊的驗證處理常式來完成驗證相關的動作。 驗證相關動作的範例包括：
+身份驗證是確定使用者身份的過程。 [授權](xref:security/authorization/introduction)是確定使用者是否有權訪問資源的過程。 在ASP.NET核心中,身份驗證由`IAuthenticationService`由身份驗證[中間件](xref:fundamentals/middleware/index)使用。 身份驗證服務使用已註冊的身份驗證處理程式完成與身份驗證相關的操作。 與認證相關的操作的範例包括:
 
 * 驗證使用者。
-* 當未驗證的使用者嘗試存取受限制的資源時回應。
+* 當未經身份驗證的用戶嘗試訪問受限資源時回應。
 
-已註冊的驗證處理常式及其設定選項稱為「配置」。
+註冊的身份驗證處理程式及其配置選項稱為"方案"。
 
-驗證配置是藉由在 `Startup.ConfigureServices`中註冊驗證服務來指定：
+認證專案通過在 中`Startup.ConfigureServices`註冊身份驗證服務來指定:
 
-* 藉由在呼叫 `services.AddAuthentication` （例如 `AddJwtBearer` 或 `AddCookie`）後呼叫配置特定的擴充方法。 這些擴充方法會使用[AuthenticationBuilder](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*)來註冊具有適當設定的配置。
-* 較不常用，方法是直接呼叫[AuthenticationBuilder. AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*) 。
+* 以在呼叫後呼叫特定於機制的延伸方法`services.AddAuthentication`(`AddJwtBearer`例如`AddCookie`, 或 。 這些擴充方法使用[身份驗證生成器.AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*)註冊具有適當設置的方案。
+* 不太常見,通過直接調用[身份驗證生成器.AddScheme。](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*)
 
-例如，下列程式碼會註冊 cookie 和 JWT 持有人驗證配置的驗證服務和處理常式：
+例如,以下代碼註冊 Cookie 和 JWT 承載身份驗證方案的身份驗證服務和處理程式:
 
 ```csharp
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -37,91 +37,91 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options => Configuration.Bind("CookieSettings", options));
 ```
 
-`AddAuthentication` 參數 `JwtBearerDefaults.AuthenticationScheme` 是在不要求特定配置時，預設所要使用的配置名稱。
+參數`AddAuthentication``JwtBearerDefaults.AuthenticationScheme`是默認情況下在未請求特定方案時要使用的方案的名稱。
 
-如果使用多個配置，授權原則（或授權屬性）可以[指定它們所依賴的驗證配置（或配置）](xref:security/authorization/limitingidentitybyscheme)來驗證使用者。 在上述範例中，您可以藉由指定名稱來使用 cookie 驗證配置（`CookieAuthenticationDefaults.AuthenticationScheme` 預設為，雖然呼叫 `AddCookie`時，可以提供不同的名稱）。
+如果使用多個方案,授權策略(或授權屬性)可以指定它們所依賴的[身份驗證方案(或方案)](xref:security/authorization/limitingidentitybyscheme)以對使用者進行身份驗證。 在上面的示例中,Cookie 身份驗證方案可以通過指定其`CookieAuthenticationDefaults.AuthenticationScheme`名稱( 預設情況下,儘管`AddCookie`在調用 時可能提供不同名稱)來使用。
 
-在某些情況下，`AddAuthentication` 的呼叫會由其他擴充方法自動進行。 例如，使用 ASP.NET Core 身分[識別](xref:security/authentication/identity)時，會在內部呼叫 `AddAuthentication`。
+在某些情況下,調用`AddAuthentication`是由其他擴展方法自動進行的。 例如,在使用[ASP.NET 核心標識](xref:security/authentication/identity)時,`AddAuthentication`在內部調用。
 
-驗證中介軟體會在 `Startup.Configure` 中，藉由在應用程式的 `IApplicationBuilder`上呼叫 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 擴充方法來新增。 呼叫 `UseAuthentication` 會註冊使用先前註冊之驗證配置的中介軟體。 在相依于要驗證之使用者的任何中介軟體之前，呼叫 `UseAuthentication`。 使用端點路由時，`UseAuthentication` 的呼叫必須執行下列動作：
+透過在應用程式的 呼叫`Startup.Configure`裝置,<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>將新增身份認證的`IApplicationBuilder`中間件 。 調用`UseAuthentication`註冊使用以前註冊的身份驗證方案的中間件。 在`UseAuthentication`依賴於使用者經過身份驗證的任何中間件之前調用。 使用終結點路由時,調用`UseAuthentication`必須轉到:
 
-* `UseRouting`之後，即可使用路由資訊來進行驗證決策。
-* 在 `UseEndpoints`之前，會先驗證使用者，然後再存取端點。
+* 之後`UseRouting`,以便路由資訊可用於身份驗證決策。
+* 在`UseEndpoints`之前,以便在訪問終結點之前對用戶進行身份驗證。
 
 ## <a name="authentication-concepts"></a>驗證概念
 
 ### <a name="authentication-scheme"></a>驗證配置
 
-驗證配置是對應至的名稱：
+認證專案是對應於:
 
 * 驗證處理常式。
-* 用於設定該特定處理常式實例的選項。
+* 用於配置處理程式的特定實例的選項。
 
-配置可做為一種機制，用來參考相關處理常式的驗證、挑戰和禁止行為。 例如，授權原則可以使用配置名稱來指定應該使用哪一種驗證配置（或配置）來驗證使用者。 設定驗證時，通常會指定預設的驗證配置。 除非資源要求特定的配置，否則會使用預設配置。 也可以：
+方案作為引用關聯處理程序的身份驗證、質詢和禁止行為的機制非常有用。 例如,授權策略可以使用方案名稱來指定應使用哪些身份驗證方案(或方案)對使用者進行身份驗證。 配置身份驗證時,通常指定預設身份驗證方案。 除非資源請求特定方案,否則將使用預設方案。 也可以:
 
-* 指定要用於驗證、挑戰和禁止動作的不同預設配置。
-* 使用[原則](xref:security/authentication/policyschemes)配置，將多個配置結合成一個。
+* 指定用於身份驗證、質詢和禁止操作的不同預設方案。
+* 使用[策略方案](xref:security/authentication/policyschemes)將多個方案合併為一個方案。
 
 ### <a name="authentication-handler"></a>驗證處理常式
 
-驗證處理常式：
+認證處理者:
 
-* 是實作為配置行為的類型。
-* 衍生自 <xref:Microsoft.AspNetCore.Authentication.IAuthenticationHandler> 或 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1>。
-* 主要負責驗證使用者。
+* 是實現方案行為的類型。
+* 衍生或<xref:Microsoft.AspNetCore.Authentication.IAuthenticationHandler><xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1>。
+* 對用戶進行身份驗證負有主要責任。
 
-根據驗證配置的設定和連入要求內容，驗證處理常式：
+根據身份驗證配置與傳入的要求上下文,身份驗證處理程式:
 
-* 如果驗證成功，請建立代表使用者身分識別的 <xref:Microsoft.AspNetCore.Authentication.AuthenticationTicket> 物件。
-* 如果驗證失敗，則傳回「沒有結果」或「失敗」。
-* 在使用者嘗試存取資源時，有挑戰和禁止動作的方法：
-  * 他們未經授權存取（禁止）。
-  * 未經驗證時（挑戰）。
+* 如果<xref:Microsoft.AspNetCore.Authentication.AuthenticationTicket>身份驗證成功,則構造表示用戶標識的物件。
+* 如果身份驗證不成功,則返回"無結果"或"失敗"。
+* 在使用者嘗試存取資源時,具有質詢和禁止操作的方法:
+  * 它們未經授權訪問(禁止)。
+  * 當他們未經身份驗證時(質詢)。
 
 ### <a name="authenticate"></a>Authenticate
 
-驗證配置的驗證動作會負責根據要求內容來建立使用者的身分識別。 它會傳回 <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult>，指出驗證是否成功，以及使用者在驗證票證中的身分識別。 請參閱＜<xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.AuthenticateAsync%2A>＞。 驗證範例包括：
+身份驗證方案的身份驗證操作負責根據請求上下文構造使用者的身份。 它返回指示<xref:Microsoft.AspNetCore.Authentication.AuthenticateResult>身份驗證是否成功,如果是,則返回身份驗證票證中的用戶標識。 請參閱＜<xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.AuthenticateAsync%2A>＞。 認證範例包括:
 
-* Cookie 驗證配置會從 cookie 來建立使用者的身分識別。
-* JWT 持有人配置會還原序列化和驗證 JWT 持有人權杖，以建立使用者的身分識別。
+* 從 Cookie 構造用戶標識的 Cookie 身份驗證方案。
+* JWT 承載方案可反序列化和驗證 JWT 承載權杖以建構使用者的身份。
 
 ### <a name="challenge"></a>挑戰
 
-當未驗證的使用者要求需要驗證的端點時，授權就會叫用驗證挑戰。 例如，當匿名使用者要求受限制的資源，或按一下登入連結時，就會發出驗證挑戰。 授權會使用指定的驗證配置，或預設值（如果未指定）來叫用挑戰。 請參閱＜<xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ChallengeAsync%2A>＞。 驗證挑戰範例包括：
+當未經身份驗證的使用者請求需要身份驗證的終結點時,授權會調用身份驗證質詢。 例如,當匿名使用者請求受限資源或單擊登錄連結時,將發出身份驗證質詢。 授權使用指定的身份驗證方案調用質詢,或者在未指定任何身份驗證方案時調用預設值。 請參閱＜<xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ChallengeAsync%2A>＞。 認證質詢範例包括:
 
-* Cookie 驗證配置會將使用者重新導向至登入頁面。
-* JWT 持有人配置會傳回具有 `www-authenticate: bearer` 標頭的401結果。
+* Cookie 身份驗證方案將使用者重定向到登錄頁。
+* 返回帶標頭的 401`www-authenticate: bearer`結果的 JWT 承載方案。
 
-挑戰動作應讓使用者知道要使用哪種驗證機制來存取要求的資源。
+質詢操作應讓使用者知道使用什麼身份驗證機制來訪問請求的資源。
 
 ### <a name="forbid"></a>禁止
 
-當已驗證的使用者嘗試存取不允許存取的資源時，授權會呼叫驗證配置的禁止動作。 請參閱＜<xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ForbidAsync%2A>＞。 驗證禁止的範例包括：
-* Cookie 驗證配置會將使用者重新導向至表示禁止存取的頁面。
-* JWT 持有人配置傳回403結果。
-* 自訂驗證配置會重新導向至頁面，讓使用者可以在其中要求資源的存取權。
+當經過身份驗證的用戶嘗試訪問不允許其訪問的資源時,授權調用身份驗證方案的禁止操作。 請參閱＜<xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ForbidAsync%2A>＞。 禁止身份驗證的範例包括:
+* 禁止將用戶重定向到指示訪問許可權的頁面的 Cookie 身份驗證方案。
+* 返回 403 結果的 JWT 承載計劃。
+* 自定義身份驗證方案重定向到使用者可以請求訪問資源的頁面。
 
-禁止動作可讓使用者知道：
+禁止操作可以讓使用者知道:
 
-* 它們會經過驗證。
-* 不允許他們存取要求的資源。
+* 它們經過身份驗證。
+* 不允許他們訪問請求的資源。
 
-請參閱下列連結，以瞭解挑戰與禁止的差異：
+有關挑戰和禁止之間的差異,請參閱以下連結:
 
-* [操作資源處理常式的挑戰和禁止](xref:security/authorization/resourcebased#challenge-and-forbid-with-an-operational-resource-handler)。
-* [挑戰與禁止之間的差異](xref:security/authorization/secure-data#challenge)。
+* [使用操作資源處理程式挑戰和禁止](xref:security/authorization/resourcebased#challenge-and-forbid-with-an-operational-resource-handler)。
+* [挑戰與關閉的差異](xref:security/authorization/secure-data#challenge)。
 
-## <a name="authentication-providers-per-tenant"></a>每個租使用者的驗證提供者
+## <a name="authentication-providers-per-tenant"></a>每個租戶的身份驗證提供者
 
-ASP.NET Core framework 沒有內建解決方案可進行多租使用者驗證。
-雖然客戶可以使用內建功能來撰寫，但我們建議客戶查看[Orchard Core](https://www.orchardcore.net/)以達成此目的。
+ASP.NET核心框架沒有用於多租戶身份驗證的內置解決方案。
+雖然客戶當然可以使用內建功能編寫一個功能,但我們建議客戶為此查看[Orchard Core。](https://www.orchardcore.net/)
 
-Orchard 核心為：
+果園核心是:
 
-* 以 ASP.NET Core 建立的開放原始碼模組化和多租使用者應用程式架構。
-* 以該應用程式架構為基礎的內容管理系統（CMS）。
+* 使用 ASP.NET Core 構建的開源模組化和多租戶應用框架。
+* 構建在應用框架之上的內容管理系統 (CMS)。
 
-如需每個租使用者的驗證提供者範例，請參閱[Orchard 核心](https://github.com/OrchardCMS/OrchardCore)來源。
+有關每個租戶的身份驗證提供程式的範例,請參閱[Orchard Core](https://github.com/OrchardCMS/OrchardCore)源。
 
 ## <a name="additional-resources"></a>其他資源
 

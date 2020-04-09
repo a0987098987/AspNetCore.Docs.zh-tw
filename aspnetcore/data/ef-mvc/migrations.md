@@ -1,5 +1,5 @@
 ---
-title: 教學課程：使用遷移功能-ASP.NET MVC 搭配 EF Core
+title: 教學:使用要移植功能 - 使用 EF 核心ASP.NET MVC
 description: 在本教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。
 author: rick-anderson
 ms.author: riande
@@ -8,13 +8,13 @@ ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
 ms.openlocfilehash: 8b3417205457a5ce5fa16994701a06e2a4d7d350
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78665722"
 ---
-# <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>教學課程：使用遷移功能-ASP.NET MVC 搭配 EF Core
+# <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>教學:使用要移植功能 - 使用 EF 核心ASP.NET MVC
 
 在本教學課程中，您會先使用 EF Core 移轉功能來管理資料模型變更。 在稍後的教學課程中，您將在變更資料模型時新增更多移轉作業。
 
@@ -38,7 +38,7 @@ ms.locfileid: "78665722"
 
 在您將應用程式部署到生產環境之前，都可以使用上述方法讓資料庫與資料模型保持同步。 但當應用程式在生產環境中執行時，通常會儲存您想要保留的資料，而您也不想在每次資料變更 (例如新增資料行) 時遺失任何項目。 為了解決上述問題，EF Core 移轉功能可讓 EF 更新資料庫結構描述，而不是建立新的資料庫。
 
-若要使用遷移，您可以使用**套件管理員主控台**（PMC）或 CLI。  這些教學課程會示範如何使用 CLI 命令。 PMC 的資訊位於[本教學課程結尾](#pmc)。
+要處理遷移,可以使用**包管理器主控台**(PMC) 或 CLI。  這些教學課程會示範如何使用 CLI 命令。 PMC 的資訊則位於[本教學課程結尾](#pmc)。
 
 ## <a name="change-the-connection-string"></a>變更連接字串
 
@@ -49,7 +49,7 @@ ms.locfileid: "78665722"
 這項變更會設定專案，以讓第一次移轉建立新的資料庫。 即使不採取上述動作，仍可開始進行移轉作業，但稍後您會了解這麼做的好處何在。
 
 > [!NOTE]
-> 如果您不想變更資料庫名稱，替代方法是刪除資料庫。 使用 [SQL Server 物件總管] (SSOX) 或 `database drop` CLI 命令：
+> 如果您不想變更資料庫名稱，替代方法是刪除資料庫。 使用 [SQL Server 物件總管]**** (SSOX) 或 `database drop` CLI 命令：
 >
 > ```dotnetcli
 > dotnet ef database drop
@@ -61,7 +61,7 @@ ms.locfileid: "78665722"
 
 儲存您的變更，並建置專案。 接著，開啟命令視窗並巡覽至專案資料夾。 以下是執行這個動作的快速方法：
 
-* 在 [方案總管] 中，於專案上按一下滑鼠右鍵，然後從操作功能表中選擇 [在檔案總管中開啟資料夾]。
+* 在 [方案總管]**** 中，於專案上按一下滑鼠右鍵，然後從操作功能表中選擇 [在檔案總管中開啟資料夾]****。
 
   ![[在檔案總管中開啟] 功能表項目](migrations/_static/open-in-file-explorer.png)
 
@@ -84,27 +84,27 @@ Done. To undo this action, use 'ef migrations remove'
 ```
 
 > [!NOTE]
-> 如果您看到錯誤訊息：「找不到符合命令 "dotnet-ef" 的可執行檔」，請參閱[這篇部落格文章](https://thedatafarm.com/data-access/no-executable-found-matching-command-dotnet-ef/)以取得疑難排解說明。
+> 如果您看到錯誤訊息：「找不到符合命令 "dotnet-ef" 的可執行檔」**，請參閱[這篇部落格文章](https://thedatafarm.com/data-access/no-executable-found-matching-command-dotnet-ef/)以取得疑難排解說明。
 
-如果您看到錯誤訊息「*無法存取檔案 .。。ContosoUniversity，因為另一個進程正在使用此檔案。* 」，請在 Windows 系統匣中尋找 IIS Express 圖示，並在其上按一下滑鼠右鍵，然後按一下 [ **ContosoUniversity > 停止網站**]。
+如果您看到錯誤訊息「*無法存取該檔案...ContosoUniversity.dll 因為它正被另一個行程使用。",* 在 Windows 系統匣中找到 IIS Express 圖示,然後右鍵按下它,然後單擊**ContosoUniversity >停止网站**。
 
 ## <a name="examine-up-and-down-methods"></a>檢查 Up 和 Down 方法
 
-當您執行 `migrations add` 命令時，EF 產生的程式碼會從頭開始建立資料庫。 您可以在 *Migrations* 資料夾，名為 *時間戳記>_InitialCreate.cs\<* 的檔案中，找到這個程式碼。 `Up` 類別的 `InitialCreate` 方法會建立對應至資料模型實體集的資料庫資料表，而 `Down` 方法則會刪除它們，如下列範例所示。
+當您執行 `migrations add` 命令時，EF 產生的程式碼會從頭開始建立資料庫。 您可以在 *Migrations* 資料夾，名為 \<時間戳記>_InitialCreate.cs** 的檔案中，找到這個程式碼。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表，而 `Down` 方法則會刪除它們，如下列範例所示。
 
 [!code-csharp[](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
-移轉會呼叫 `Up` 方法，以實作資料模型變更來進行移轉。 當您輸入命令以復原更新時，Migrations 會呼叫 `Down` 方法。
+Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。 當您輸入命令以復原更新時，Migrations 會呼叫 `Down` 方法。
 
-這個程式碼適用於您之前輸入 `migrations add InitialCreate` 命令時所建立的初始移轉。 移轉名稱參數 (在此範例中為 "InitialCreate") 可作為檔案名稱，您也可以任意命名。 您最好選擇單字或片語來摘要列出移轉中所要完成的作業。 例如，您可以將稍後的移轉命名為 "AddDepartmentTable"。
+這個程式碼適用於您之前輸入 `migrations add InitialCreate` 命令時所建立的初始移轉。 移轉名稱參數 (在此範例中為 "InitialCreate") 可作為檔案名稱，您也可以任意命名。 建議您選擇某個單字或片語，以摘要說明移轉中所要完成的作業。 例如，您可以將稍後的移轉命名為 "AddDepartmentTable"。
 
 如果在您建立初始移轉時資料庫已經存在，系統會產生資料庫建立程式碼，但不需要執行，因為資料庫已經符合資料模型。 當您將應用程式部署到資料庫尚未存在的其他環境中時，即會執行這個程式碼以建立您的資料庫；建議您先進行測試。 這就是為什麼稍早要您變更連接字串中資料庫名稱的原因，這樣一來，移轉即可從頭建立一個資料庫。
 
 ## <a name="the-data-model-snapshot"></a>資料模型快照集
 
-移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照集」。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
+移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照集」**。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
 
-使用 [ [dotnet ef 遷移](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)] [移除] 命令來移除遷移。 `dotnet ef migrations remove` 會刪除移轉，並確保正確地重設快照集。 如果 `dotnet ef migrations remove` 失敗，請使用 `dotnet ef migrations remove -v` 來取得失敗的詳細資訊。
+使用[dotnet ef 遷移刪除](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)命令刪除遷移。 `dotnet ef migrations remove` 會刪除移轉，並確保正確地重設快照集。 如果`dotnet ef migrations remove`失敗,請`dotnet ef migrations remove -v`使用 獲取有關故障的詳細資訊。
 
 如需如何使用快照集檔案的詳細資訊，請參閱[小組環境中的 EF Core 移轉](/ef/core/managing-schemas/migrations/teams)。
 
@@ -147,7 +147,7 @@ info: Microsoft.EntityFrameworkCore.Database.Command[20101]
 Done.
 ```
 
-按照第一個教學課程的做法，使用 [SQL Server 物件總管] 檢查資料庫。  您會發現新增 \_\_EFMigrationsHistory 資料表，其會持續追蹤哪些移轉已套用至資料庫。 檢視該資料表中的資料，您會看到其中一個資料列代表第一個移轉。 (上述 CLI 輸出範例中的最後一則記錄會顯示建立此資料列的 INSERT 陳述式。)
+按照第一個教學課程的做法，使用 [SQL Server 物件總管]**** 檢查資料庫。  您會發現新增 \_\_EFMigrationsHistory 資料表，其會持續追蹤哪些移轉已套用至資料庫。 檢視該資料表中的資料，您會看到其中一個資料列代表第一個移轉。 (上述 CLI 輸出範例中的最後一則記錄會顯示建立此資料列的 INSERT 陳述式。)
 
 執行應用程式，以驗證一切如往常般運作。
 
@@ -157,11 +157,11 @@ Done.
 
 ## <a name="compare-cli-and-pmc"></a>比較 CLI 與 PMC
 
-您可以透過 .NET Core CLI 命令或 Visual Studio [套件管理員主控台] (PMC) 視窗中的 PowerShell Cmdlet，取得適用於管理移轉的 EF 工具。 本教學課程示範如何使用 CLI，但是您也可以視習慣使用 PMC。
+您可以透過 .NET Core CLI 命令或 Visual Studio [套件管理員主控台]**** (PMC) 視窗中的 PowerShell Cmdlet，取得適用於管理移轉的 EF 工具。 本教學課程示範如何使用 CLI，但是您也可以視習慣使用 PMC。
 
 適用於 PMC 命令的 EF 命令位於 [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools) 套件中。 此套件包含在 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) 中；因此，如果您的應用程式具有 `Microsoft.AspNetCore.App` 的套件參考，則您不需要新增套件參考。
 
-**重要事項：** 此套件與透過編輯 *.csproj* 檔案為 CLI 安裝的套件不同。 這個套件的名稱以 `Tools` 結尾，不同於以 `Tools.DotNet` 結尾的 CLI 套件名稱。
+**重要事項：** 此套件與您為 CLI 安裝的套件不同 (透過編輯 *.csproj* 檔案來進行)。 這個套件的名稱以 `Tools` 結尾，不同於以 `Tools.DotNet` 結尾的 CLI 套件名稱。
 
 如需 CLI 命令的詳細資訊，請參閱 [.NET Core CLI](/ef/core/miscellaneous/cli/dotnet)。
 

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 02/05/2020
 uid: fundamentals/logging/index
 ms.openlocfilehash: 58e236ad7f0863b87907d5585e1cb6bf61d46e99
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78663300"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>.NET Core 與 ASP.NET Core 中的記錄
@@ -22,13 +22,13 @@ ms.locfileid: "78663300"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-本文中顯示的大部分程式碼範例都來自 ASP.NET Core 應用程式。 這些程式碼片段的記錄特定部分適用于任何使用[泛型主機](xref:fundamentals/host/generic-host)的 .net Core 應用程式。 如需如何在非 web 主控台應用程式中使用泛型主機的範例，請參閱[背景工作範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples)的*Program.cs*檔案（<xref:fundamentals/host/hosted-services>）。
+本文中顯示的大部分程式碼範例都來自 ASP.NET Core 應用程式。 這些代碼段的特定於日誌記錄的部分適用於使用[通用主機](xref:fundamentals/host/generic-host)的任何 .NET Core 應用。 有關如何在非 Web 控制台應用中使用通用主機的範例,請參閱[後台任務範例應用](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples)() 的<xref:fundamentals/host/hosted-services>*Program.cs*檔。
 
 不含一般主機的應用程式記錄程式碼，會因[新增提供者](#add-providers)和[建立記錄器](#create-logs)的方式而有所不同。 非主機程式碼範例顯示於本文的這些章節中。
 
 ::: moniker-end
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/logging/index/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/logging/index/samples)([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="add-providers"></a>新增提供者
 
@@ -48,10 +48,10 @@ ms.locfileid: "78663300"
 
 預設 ASP.NET Core 專案範本會呼叫 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A> 新增下列記錄提供者：
 
-* [Console](#console-provider)
+* [主控台](#console-provider)
 * [偵錯](#debug-provider)
-* [EventSource](#event-source-provider)
-* [EventLog](#windows-eventlog-provider) （僅適用于在 Windows 上執行時）
+* [事件來源](#event-source-provider)
+* [事件紀錄](#windows-eventlog-provider)(只有 Windows 執行時)
 
 您可以使用您想要的提供者來取代預設提供者。 呼叫 <xref:Microsoft.Extensions.Logging.LoggingBuilderExtensions.ClearProviders%2A> 並新增您要的提供者。
 
@@ -87,7 +87,7 @@ ms.locfileid: "78663300"
 
 若要建立記錄，請使用 <xref:Microsoft.Extensions.Logging.ILogger%601> 物件。 在 Web 應用程式或託管服務中，從相依性插入 (DI) 取得 `ILogger`。 在非主機主控台應用程式中，使用 `LoggerFactory` 來建立 `ILogger`。
 
-下列 ASP.NET Core 範例會建立以 `TodoApiSample.Pages.AboutModel` 作為類別的記錄器。 記錄「類別」是與每個記錄關聯的字串。 由 DI 提供的 `ILogger<T>` 執行個體，會建立使用型別 `T` 作為類別的完整名稱記錄。 
+下列 ASP.NET Core 範例會建立以 `TodoApiSample.Pages.AboutModel` 作為類別的記錄器。 記錄「類別」** 是與每個記錄關聯的字串。 由 DI 提供的 `ILogger<T>` 執行個體，會建立使用型別 `T` 作為類別的完整名稱記錄。 
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -105,7 +105,7 @@ ms.locfileid: "78663300"
 
 ::: moniker-end
 
-在下列 ASP.NET Core 和主控台應用程式範例中，記錄器會用於以 `Information` 作為層級來建立記錄。 記錄「層級」 指出已記錄事件的嚴重性。 
+在下列 ASP.NET Core 和主控台應用程式範例中，記錄器會用於以 `Information` 作為層級來建立記錄。 記錄「層級」** 指出已記錄事件的嚴重性。 
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -131,7 +131,7 @@ ms.locfileid: "78663300"
 
 [!code-csharp[](index/samples_snapshot/3.x/TodoApiSample/Program.cs?highlight=9,10)]
 
-不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用 [Serilog](https://serilog.net/) 記錄器來記錄 `CreateHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
+不支援在主機構造期間進行日誌記錄。 但是,可以使用單獨的記錄器。 在下列範例中，會使用 [Serilog](https://serilog.net/) 記錄器來記錄 `CreateHostBuilder`。  `AddSerilog`使用 在`Log.Logger`中指定的靜態配置。
 
 ```csharp
 using System;
@@ -231,7 +231,7 @@ public class Program
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
 
-不直接支援在主機結構期間進行記錄。 不過，您可以使用個別的記錄器。 在下列範例中，會使用 [Serilog](https://serilog.net/) 記錄器來記錄 `CreateWebHostBuilder`。 `AddSerilog` 會使用 `Log.Logger`中指定的靜態設定：
+不支援在主機構造期間進行日誌記錄。 但是,可以使用單獨的記錄器。 在下列範例中，會使用 [Serilog](https://serilog.net/) 記錄器來記錄 `CreateWebHostBuilder`。  `AddSerilog`使用 在`Log.Logger`中指定的靜態配置。
 
 ```csharp
 using System;
@@ -295,7 +295,7 @@ public class Program
 
 ### <a name="no-asynchronous-logger-methods"></a>無非同步記錄器方法
 
-記錄速度應該很快，不值得花費非同步程式碼的效能成本來處理。 若您的記錄資料存放區很慢，請不要直接寫入其中。 請考慮一開始將記錄寫入到快速的存放區，稍後再將它們移到慢速存放區。 例如，如果您要記錄到 SQL Server，您不希望在 `Log` 方法中直接執行，因為 `Log` 方法是同步的。 相反地，以同步方式將記錄訊息新增到記憶體內佇列，並讓背景工作角色提取出佇列的訊息，藉此執行推送資料到 SQL Server 的非同步工作。 如需詳細資訊，請參閱[此](https://github.com/dotnet/AspNetCore.Docs/issues/11801)GitHub 問題。
+記錄速度應該很快，不值得花費非同步程式碼的效能成本來處理。 若您的記錄資料存放區很慢，請不要直接寫入其中。 請考慮一開始將記錄寫入到快速的存放區，稍後再將它們移到慢速存放區。 例如，如果您要記錄到 SQL Server，您不希望在 `Log` 方法中直接執行，因為 `Log` 方法是同步的。 相反地，以同步方式將記錄訊息新增到記憶體內佇列，並讓背景工作角色提取出佇列的訊息，藉此執行推送資料到 SQL Server 的非同步工作。 有關詳細資訊,請參閱[此](https://github.com/dotnet/AspNetCore.Docs/issues/11801)GitHub 問題。
 
 ## <a name="configuration"></a>組態
 
@@ -331,11 +331,11 @@ public class Program
 
 `Logging` 下的 `LogLevel` 屬性會指定要針對所選類記錄的最小[層級](#log-level)。 在範例中，`System` 與d `Microsoft` 類別會在 `Information` 層級記錄，而所有其他記錄則會在 `Debug` 層級記錄。
 
-`Logging` 下的其他屬性可指定記錄提供者。 範例使用主控台提供者。 若提供者支援[記錄範圍](#log-scopes)，`IncludeScopes` 會指出是否已啟用記錄範圍。 提供者屬性 (例如範例中的 `Console`) 可能也會指定 `LogLevel` 屬性。 提供者下的 `LogLevel` 會指定提供者的記錄層級。
+`Logging` 下的其他屬性可指定記錄提供者。 範例使用主控台提供者。 如果提供程式支援[日誌作用域](#log-scopes),`IncludeScopes`則指示它們是否已啟用。 提供者屬性 (例如範例中的 `Console`) 可能也會指定 `LogLevel` 屬性。 提供者下的 `LogLevel` 會指定提供者的記錄層級。
 
 若已在 `Logging.{providername}.LogLevel` 中指定層級，它們會覆寫 `Logging.LogLevel` 中設定的所有項目。
 
-記錄 API 不包含在應用程式執行時變更記錄層級的案例。 不過，某些設定提供者能夠重載設定，這會立即影響記錄設定。 例如，檔案設定[提供者](xref:fundamentals/configuration/index#file-configuration-provider)（由 `CreateDefaultBuilder` 新增以讀取設定檔案），預設會重載記錄設定。 如果應用程式正在執行時，程式碼中的設定有所變更，應用程式可以呼叫[IConfigurationRoot](xref:Microsoft.Extensions.Configuration.IConfigurationRoot.Reload*)來更新應用程式的記錄設定。
+日誌記錄 API 不包括在應用運行時更改日誌級別的方案。 但是,某些配置提供程式能夠重新載入配置,這將立即對日誌記錄配置產生影響。 例如,[檔案設定提供者](xref:fundamentals/configuration/index#file-configuration-provider)`CreateDefaultBuilder`() 被添加到讀取設定檔,預設情況下重新載入紀錄記錄配置。 如果在應用運行時的代碼中更改了配置,則應用可以調用[I配置Root.Reload](xref:Microsoft.Extensions.Configuration.IConfigurationRoot.Reload*)以更新應用的日誌記錄配置。
 
 如需有關如何實作設定提供者的詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 
@@ -431,9 +431,9 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 `ILogger` 和 `ILoggerFactory` 介面位於 [Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) 中，其預設實作則位於 [Microsoft.Extensions.Logging](https://www.nuget.org/packages/microsoft.extensions.logging/) 中。
 
-## <a name="log-category"></a>記錄類別
+## <a name="log-category"></a>記錄分類
 
-建立 `ILogger` 物件時，會為它指定「類別」。 該類別會包含在每個由該 `ILogger` 執行個體所產生的記錄訊息中。 類別可以是任意字串，但慣例是使用類別名稱，例如 "TodoApi.Controllers.TodoController"。
+建立 `ILogger` 物件時，會為它指定「類別」**。 該類別會包含在每個由該 `ILogger` 執行個體所產生的記錄訊息中。 類別可以是任意字串，但慣例是使用類別名稱，例如 "TodoApi.Controllers.TodoController"。
 
 使用 `ILogger<T>` 來取得`ILogger` 執行個體，它使用 `T` 的完整類型名稱做為類別：
 
@@ -491,19 +491,19 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 追蹤 = 0
 
-  針對通常只對偵錯有價值的資訊。 這些訊息可能包含敏感性應用程式資料，因此不應該在生產環境中啟用。 預設為停用。
+  針對通常只對偵錯有價值的資訊。 這些訊息可能包含敏感性應用程式資料，因此不應該在生產環境中啟用。 *預設為停用。*
 
 * 偵錯 = 1
 
-  針對可在開發與偵錯中使用的資訊。 範例：`Entering method Configure with flag set to true.` 只有在進行疑難排解時才在生產環境中啟用 `Debug` 層級記錄，因為此類記錄的數目非常多。
+  針對可在開發與偵錯中使用的資訊。 範例：`Entering method Configure with flag set to true.` 由於記錄的數目很龐大，因此除非您正在進行疑難排解，否則通常不會在生產環境中啟用 `Debug` 層級記錄。
 
 * 資訊 = 2
 
-  針對一般應用程式流程的追蹤。 這些記錄通常有一些長期值。 範例：`Request received for path /api/todo`
+  針對一般應用程式流程的追蹤。 這些記錄通常有一些長期值。 範例： `Request received for path /api/todo`
 
 * 警告 = 3
 
-  針對應用程式流程中發生的異常或意外事件。 這些記錄可能包含不會造成應用程式停止，但可能需要進行調查的錯誤或其他狀況。 已處理的例外狀況即為使用 `Warning` 記錄層級的常見位置。 範例：`FileNotFoundException for file quotes.txt.`
+  針對應用程式流程中發生的異常或意外事件。 這些記錄可能包含不會造成應用程式停止，但可能需要進行調查的錯誤或其他狀況。 已處理的例外狀況即為使用 `Warning` 記錄層級的常見位置。 範例： `FileNotFoundException for file quotes.txt.`
 
 * 錯誤 = 4
 
@@ -513,14 +513,14 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
   發生需要立即注意的失敗。 範例：資料遺失情況、磁碟空間不足。
 
-使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如:
+使用此記錄層級來控制要寫入至特定儲存媒體或顯示視窗的記錄輸出量。 例如：
 
-* 在生產環境中：
-  * 在 `Trace` 透過 `Information` 層級進行記錄，會產生大量的詳細記錄訊息。 若要控制成本，而不超過資料儲存體限制，請透過 `Information` 層級的訊息，將 `Trace` 記錄到高容量、低成本的資料存放區。
-  * 透過 `Critical` 層級的 `Warning` 記錄通常會產生較少、較小的記錄檔訊息。 因此，成本和儲存體限制通常不會造成問題，因此可讓您更靈活地選擇資料存放區。
-* 在開發期間：
-  * 透過 `Critical` 訊息，將 `Warning` 記錄到主控台。
-  * 進行疑難排解時，透過 `Information` 訊息新增 `Trace`。
+* 在生產中:
+  * 在`Trace``Information`通過級別日誌記錄會產生大量詳細的日誌消息。 為了控制成本且不超過數據存儲限制,請將`Trace``Information`級別消息記錄到高容量、低成本數據存儲。
+  * 在通過`Warning``Critical`級別進行日誌記錄通常會產生更少、更小的日誌消息。 因此,成本和存儲限制通常不是問題,因此在選擇數據存儲時具有更大的靈活性。
+* 在開發過程中:
+  * 將`Warning``Critical`消息記錄到主控台。
+  * 故障排除`Trace``Information`時 添加消息。
 
 本文稍後的[記錄篩選](#log-filtering)一節將說明如何控制提供者所處理的記錄層級。
 
@@ -604,7 +604,7 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
 
 ## <a name="log-event-id"></a>記錄事件識別碼
 
-每個記錄都可以指定「事件識別碼」。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行此動作：
+每個記錄都可以指定「事件識別碼」**。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行此動作：
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -704,7 +704,7 @@ System.Exception: Item not found exception.
 
 ### <a name="create-filter-rules-in-configuration"></a>在組態中建立篩選規則
 
-專案範本程式碼會呼叫 `CreateDefaultBuilder`，以設定主控台、Debug 和 EventSource （ASP.NET Core 2.2 或更新版本）提供者的記錄。 `CreateDefaultBuilder` 方法會設定記錄以尋找 `Logging` 區段中的組態，如[本文先前所述](#configuration)。
+專案範本代碼調用`CreateDefaultBuilder`為主控台、除錯和事件來源(ASP.NET核心 2.2或更高版本)提供程式設定日誌記錄。 `CreateDefaultBuilder` 方法會設定記錄以尋找 `Logging` 區段中的組態，如[本文先前所述](#configuration)。
 
 組態資料會依提供者和類別指定最低記錄層級，如下列範例所示：
 
@@ -746,13 +746,13 @@ System.Exception: Item not found exception.
 
 | Number | 提供者      | 開頭如下的類別...          | 最低記錄層級 |
 | :----: | ------------- | --------------------------------------- | ----------------- |
-| 1      | 偵錯         | 所有類別                          | 內容       |
+| 1      | 偵錯         | 所有類別                          | 資訊       |
 | 2      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Internal | 警告           |
 | 3      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Razor    | 偵錯             |
-| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
-| 5      | 主控台       | 所有類別                          | 內容       |
+| 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | 錯誤             |
+| 5      | 主控台       | 所有類別                          | 資訊       |
 | 6      | 所有提供者 | 所有類別                          | 偵錯             |
-| 7      | 所有提供者 | System                                  | 偵錯             |
+| 7      | 所有提供者 | 系統                                  | 偵錯             |
 | 8      | 偵錯         | Microsoft                               | 追蹤             |
 
 建立 `ILogger` 物件時，`ILoggerFactory` 物件會針對每個提供者選取一個規則來套用到該記錄器。 由 `ILogger` 執行個體寫入的所有訊息都會根據選取的規則進行篩選。 系統會從可用的規則中，盡可能選取對每個提供者和類別配對最明確的規則。
@@ -773,7 +773,7 @@ System.Exception: Item not found exception.
 
 ### <a name="provider-aliases"></a>提供者別名
 
-每個提供者都會定義「別名」，可在設定中用來取代完整類型名稱。  針對內建提供者，請使用下列別名：
+每個提供者都會定義「別名」**，可在設定中用來取代完整類型名稱。  針對內建提供者，請使用下列別名：
 
 * 主控台
 * 偵錯
@@ -802,9 +802,9 @@ System.Exception: Item not found exception.
 
 如果您未明確設定最低層級，預設值為 `Information`，這表示會略過 `Trace` 和 `Debug` 記錄。
 
-### <a name="filter-functions"></a>篩選函式
+### <a name="filter-functions"></a>篩選函數
 
-針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如:
+針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可以存取提供者類型、類別與記錄層級。 例如：
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -822,7 +822,7 @@ System.Exception: Item not found exception.
 
 以下是由 ASP.NET Core 與 Entity Framework Core 所使用的一些類別，以及有關它們可傳回哪些記錄的附註：
 
-| 分類                            | 注意 |
+| 類別                            | 注意 |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | 一般 ASP.NET Core 診斷。 |
 | Microsoft.AspNetCore.DataProtection | 已考慮、發現及使用哪些金鑰。 |
@@ -836,7 +836,7 @@ System.Exception: Item not found exception.
 
 ## <a name="log-scopes"></a>記錄範圍
 
- 「範圍」可用來將邏輯作業組成群組。 此分組功能可用來將相同的資料附加到已建立為集合之一部分的每個記錄。 例如，在處理邀交易時建立的每個記錄都可以包括該交易識別碼。
+ 「範圍」** 可用來將邏輯作業組成群組。 此分組功能可用來將相同的資料附加到已建立為集合之一部分的每個記錄。 例如，在處理邀交易時建立的每個記錄都可以包括該交易識別碼。
 
 範圍是 <xref:Microsoft.Extensions.Logging.ILogger.BeginScope*> 方法所傳回的 `IDisposable` 類型，並會持續到被處置為止。 透過將記錄器呼叫封裝在 `using` 區塊中以使用範圍：
 
@@ -854,7 +854,7 @@ System.Exception: Item not found exception.
 
 下列程式碼會啟用主控台提供者的範圍：
 
-*Program.cs*：
+*Program.cs*:
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -888,14 +888,14 @@ warn: TodoApiSample.Controllers.TodoController[4000]
 
 ASP.NET Core 隨附下列提供者：
 
-* [Console](#console-provider)
+* [主控台](#console-provider)
 * [偵錯](#debug-provider)
-* [EventSource](#event-source-provider)
+* [事件來源](#event-source-provider)
 * [EventLog](#windows-eventlog-provider)
 * [TraceSource](#tracesource-provider)
 * [AzureAppServicesFile](#azure-app-service-provider)
 * [AzureAppServicesBlob](#azure-app-service-provider)
-* [ApplicationInsights](#azure-application-insights-trace-logging)
+* [應用洞察](#azure-application-insights-trace-logging)
 
 如需 ASP.NET Core 模組的 StdOut 和偵錯記錄相關資訊，請參閱 <xref:test/troubleshoot-azure-iis> 和 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
 
@@ -925,45 +925,45 @@ logging.AddDebug();
 
 ### <a name="event-source-provider"></a>事件來源提供者
 
-然後，會將名稱為 `Microsoft-Extensions-Logging`的事件來源跨平臺寫入至[記錄 EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource)提供者套件。 在 Windows 上，提供者會使用[ETW](https://msdn.microsoft.com/library/windows/desktop/bb968803)。
+[Microsoft.擴展.日誌記錄.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource)提供程式包寫入具有`Microsoft-Extensions-Logging`名稱 的事件源跨平臺。 在 Windows 上,提供者使用[ETW](https://msdn.microsoft.com/library/windows/desktop/bb968803)。
 
 ```csharp
 logging.AddEventSourceLogger();
 ```
 
-呼叫 `CreateDefaultBuilder` 來建立主機時，會自動新增事件來源提供者。
+調用事件源提供程式以生成主機時`CreateDefaultBuilder`自動添加。
 
 ::: moniker range=">= aspnetcore-3.0"
 
-#### <a name="dotnet-trace-tooling"></a>dotnet 追蹤工具
+#### <a name="dotnet-trace-tooling"></a>點網追蹤工具
 
-[Dotnet 追蹤](/dotnet/core/diagnostics/dotnet-trace)工具是一種跨平臺 CLI 全域工具，可讓您收集執行中進程的 .net Core 追蹤。 此工具會使用 <xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource>收集 <xref:Microsoft.Extensions.Logging.EventSource> 提供者資料。
+[點網追蹤](/dotnet/core/diagnostics/dotnet-trace)工具是一個跨平臺 CLI 全域工具,用於收集正在運行的進程的 .NET Core 跟蹤。 該工具使用收集<xref:Microsoft.Extensions.Logging.EventSource>提供程式<xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource>資料 。
 
-使用下列命令安裝 dotnet 追蹤工具：
+使用以下指令安裝 dotnet 追蹤工具:
 
 ```dotnetcli
 dotnet tool install --global dotnet-trace
 ```
 
-使用 dotnet 追蹤工具，從應用程式收集追蹤：
+使用點網追蹤工具從應用程式收集追蹤:
 
-1. 如果應用程式未使用 `CreateDefaultBuilder`建立主機，請將[事件來源提供者](#event-source-provider)新增至應用程式的記錄設定。
+1. 如果應用未使用`CreateDefaultBuilder`生成主機,則將[事件源提供程式](#event-source-provider)添加到應用的日誌記錄配置中。
 
-1. 使用 `dotnet run` 命令執行應用程式。
+1. 使用`dotnet run`命令運行應用。
 
-1. 判斷 .NET Core 應用程式的處理序識別碼（PID）：
+1. 確定 .NET Core 應用程式識別碼 (PID):
 
-   * 在 Windows 上，請使用下列其中一種方法：
-     * 工作管理員（Ctrl + Alt + Del）
-     * [tasklist 命令](/windows-server/administration/windows-commands/tasklist)
-     * [取得進程 Powershell 命令](/powershell/module/microsoft.powershell.management/get-process)
-   * 在 Linux 上，請使用[pidof 命令](https://refspecs.linuxfoundation.org/LSB_5.0.0/LSB-Core-generic/LSB-Core-generic/pidof.html)。
+   * 在 Windows 上,使用以下方法之一:
+     * 工作管理員 (Ctrl_Alt_Del)
+     * [工作清單命令](/windows-server/administration/windows-commands/tasklist)
+     * [取得行程電源外殼命令](/powershell/module/microsoft.powershell.management/get-process)
+   * 在 Linux 上,使用[pidof 指令](https://refspecs.linuxfoundation.org/LSB_5.0.0/LSB-Core-generic/LSB-Core-generic/pidof.html)。
 
-   尋找與應用程式元件同名之進程的 PID。
+   尋找與應用程式集同名的程序的 PID。
 
-1. 執行 `dotnet trace` 命令。
+1. 執行指令`dotnet trace`。
 
-   一般命令語法：
+   一般命令語法:
 
    ```dotnetcli
    dotnet trace collect -p {PID} 
@@ -975,7 +975,7 @@ dotnet tool install --global dotnet-trace
                {Logger Category N}:{Event Level N}\"
    ```
 
-   使用 PowerShell 命令 shell 時，請以單引號括住 `--providers` 值（`'`）：
+   使用 PowerShell 命令外殼時,`--providers`以單 引號括`'`起來的值 ( :
 
    ```dotnetcli
    dotnet trace collect -p {PID} 
@@ -987,14 +987,14 @@ dotnet tool install --global dotnet-trace
                {Logger Category N}:{Event Level N}\"'
    ```
 
-   在非 Windows 平臺上，加入 `-f speedscope` 選項，將輸出追蹤檔案的格式變更為 `speedscope`。
+   在非 Windows 平臺`-f speedscope`上, 添加將輸出追蹤檔案的`speedscope`格式更改為的選項。
 
    | 關鍵字 | 描述 |
    | :-----: | ----------- |
-   | 1       | 記錄有關 `LoggingEventSource`的中繼事件。 不會從 `ILogger`記錄事件）。 |
-   | 2       | 在呼叫 `ILogger.Log()` 時開啟 `Message` 事件。 以程式設計方式（未格式化）提供資訊。 |
-   | 4       | 在呼叫 `ILogger.Log()` 時開啟 `FormatMessage` 事件。 提供資訊的格式化字串版本。 |
-   | 8       | 在呼叫 `ILogger.Log()` 時開啟 `MessageJson` 事件。 提供引數的 JSON 標記法。 |
+   | 1       | 記錄有關的`LoggingEventSource`元事件。 不記錄事件`ILogger`。 |
+   | 2       | 調用時`Message``ILogger.Log()`打開事件。 以程式設計(未格式化)方式提供資訊。 |
+   | 4       | 調用時`FormatMessage``ILogger.Log()`打開事件。 提供資訊的格式化字串版本。 |
+   | 8       | 調用時`MessageJson``ILogger.Log()`打開事件。 提供參數的 JSON 表示形式。 |
 
    | 事件層級 | 描述     |
    | :---------: | --------------- |
@@ -1005,41 +1005,41 @@ dotnet tool install --global dotnet-trace
    | 4           | `Informational` |
    | 5           | `Verbose`       |
 
-   `{Logger Category}` 和 `{Event Level}` 的 `FilterSpecs` 專案表示其他記錄篩選準則。 以分號（`;`）分隔 `FilterSpecs` 專案。
+   `FilterSpecs`條目`{Logger Category}`,`{Event Level}`並表示其他日誌篩選條件。 分`FilterSpecs`號 (`;`的單獨條目)。
 
-   使用 Windows 命令 shell 的範例（`--providers` 值周圍**沒有**單引號）：
+   使用 Windows 命令外殼的範`--providers`例(**value 周圍沒有**單個引號):
 
    ```dotnetcli
    dotnet trace collect -p {PID} --providers Microsoft-Extensions-Logging:4:2:FilterSpecs=\"Microsoft.AspNetCore.Hosting*:4\"
    ```
 
-   上述命令會啟用：
+   前面的指令啟動:
 
-   * 事件來源記錄器，用來產生錯誤（`2`）的格式化字串（`4`）。
-   * `Microsoft.AspNetCore.Hosting` 記錄在 `Informational` 記錄層級（`4`）。
+   * 事件來源記錄器產生錯誤的格式化字串 (`4`(`2`)
+   * `Microsoft.AspNetCore.Hosting``Informational`紀錄紀錄等級(`4`。
 
-1. 按 Enter 鍵或 Ctrl + C 來停止 dotnet 追蹤工具。
+1. 通過按 Enter 鍵或 Ctrl_C 停止點網跟蹤工具。
 
-   追蹤會以名稱*nettrace*儲存在執行 `dotnet trace` 命令的資料夾中。
+   追蹤將隨執行`dotnet trace`指令的資料夾中的名稱*trace*一起儲存。
 
-1. 使用[Perfview](#perfview)開啟追蹤。 開啟*nettrace*檔案，並流覽追蹤事件。
+1. 用[Perfview](#perfview)打開追蹤。 打開*追蹤.net 追蹤*檔案並瀏覽追蹤事件。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
-* [效能分析公用程式追蹤（dotnet-追蹤）](/dotnet/core/diagnostics/dotnet-trace) （.net Core 檔）
-* [效能分析公用程式追蹤（dotnet 追蹤）](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md) （dotnet/診斷 GitHub 存放庫檔）
-* [LoggingEventSource 類別](xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource)（.Net API 瀏覽器）
+* [追蹤效能分析實用程式 (點網追蹤)( .NET](/dotnet/core/diagnostics/dotnet-trace)核心文檔)
+* [追蹤效能分析實用程式 (點網追蹤) (](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md)點網 / 診斷 GitHub 儲存函式庫文件 )
+* [紀錄記錄事件來源類別](xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource)(.NET API 瀏覽器)
 * <xref:System.Diagnostics.Tracing.EventLevel>
-* [LoggingEventSource 參考來源（3.0）](https://github.com/dotnet/extensions/blob/release/3.0/src/Logging/Logging.EventSource/src/LoggingEventSource.cs) &ndash; 若要取得不同版本的參考來源，請將分支變更為 `release/{Version}`，其中 `{Version}` 是所需 ASP.NET Core 的版本。
-* [Perfview](#perfview) &ndash; 用於查看事件來源追蹤。
+* [記錄紀錄事件來源來源 (3.0)](https://github.com/dotnet/extensions/blob/release/3.0/src/Logging/Logging.EventSource/src/LoggingEventSource.cs)&ndash;要取得不同版本的引用來源,將分支更改為`release/{Version}`,ASP.NET `{Version}` Core 所需的版本所在的位置。
+* [Perfview](#perfview)&ndash;可用於查看事件源追蹤。
 
-#### <a name="perfview"></a>Perfview
+#### <a name="perfview"></a>佩爾夫維
 
 ::: moniker-end
 
-使用[PerfView 公用程式](https://github.com/Microsoft/perfview)來收集及查看記錄。 此外還有一些其他工具可檢視 ETW 記錄，但 PerfView 提供處理 ASP.NET Core 所發出 ETW 事件的最佳體驗。
+使用[PerfView 實用程式](https://github.com/Microsoft/perfview)收集和查看日誌。 此外還有一些其他工具可檢視 ETW 記錄，但 PerfView 提供處理 ASP.NET Core 所發出 ETW 事件的最佳體驗。
 
-若要設定 PerfView 以收集此提供者所記錄的事件，請將字串 `*Microsoft-Extensions-Logging` 新增至 [其他提供者] 清單 (請勿遺漏字串開頭的星號)。
+若要設定 PerfView 以收集此提供者所記錄的事件，請將字串 `*Microsoft-Extensions-Logging` 新增至 [其他提供者]**** 清單 (請勿遺漏字串開頭的星號)。
 
 ![PerfView 的其他提供者](index/_static/perfview-additional-providers.png)
 
@@ -1051,13 +1051,13 @@ dotnet tool install --global dotnet-trace
 logging.AddEventLog();
 ```
 
-[AddEventLog 多載](xref:Microsoft.Extensions.Logging.EventLoggerFactoryExtensions)可讓您傳入 <xref:Microsoft.Extensions.Logging.EventLog.EventLogSettings>。 如果 `null` 或未指定，則會使用下列預設設定：
+[AddEventLog 多載](xref:Microsoft.Extensions.Logging.EventLoggerFactoryExtensions)可讓您傳入 <xref:Microsoft.Extensions.Logging.EventLog.EventLogSettings>。 如果`null`或未指定,則使用以下預設設定:
 
-* `LogName` &ndash; 「應用程式」
-* `SourceName` &ndash; 「.NET 執行時間」
+* `LogName`&ndash; "申請"
+* `SourceName`&ndash; ".NET 運行時"
 * `MachineName` &ndash; 本機電腦
 
-記錄[警告層級和更新版本](#log-level)的事件。 若要記錄低於 `Warning`的事件，請明確設定記錄層級。 例如，將下列內容新增至*appsettings*檔案：
+事件記錄為[警告等級和更高](#log-level)。 要記錄低於`Warning`的事件,請顯式設置日誌級別。 例如,將以下內容添加到*appsettings.json*檔:
 
 ```json
 "EventLog": {
@@ -1121,7 +1121,7 @@ logging.AddAzureWebAppDiagnostics();
 
 ::: moniker-end
 
-當您部署到 App Service 應用程式時，應用程式會遵循 Azure 入口網站 [App Service] 頁面中 [App Service 記錄](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag)區段的設定。 當下列設定更新時，變更會立即生效，而不需要重新啟動或重新部署應用程式。
+當您部署到 App Service 應用程式時，應用程式會遵循 Azure 入口網站 [App Service]**** 頁面中 [App Service 記錄](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag)區段的設定。 當下列設定更新時，變更會立即生效，而不需要重新啟動或重新部署應用程式。
 
 * **應用程式記錄 (檔案系統)**
 * **應用程式記錄 (Blob)**
@@ -1140,11 +1140,11 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 
 若要設定 Azure 記錄資料流：
 
-* 從您應用程式的入口網站頁面瀏覽到 [App Service 記錄]。
-* 將 [應用程式記錄 (檔案系統)] 設定為 [開啟]。
-* 選擇記錄 [層級]。 此設定僅適用于 Azure 記錄串流，而不適用於應用程式中的其他記錄提供者。
+* 從您應用程式的入口網站頁面瀏覽到 [App Service 記錄]****。
+* 將 [應用程式記錄 (檔案系統)]**** 設定為 [開啟]****。
+* 選擇記錄 [層級]****。 此設置僅適用於 Azure 日誌流,不適用於應用中的其他日誌記錄提供程式。
 
-瀏覽到 [記錄資料流] 頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面產生的訊息。
+瀏覽到 [記錄資料流]**** 頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面產生的訊息。
 
 ### <a name="azure-application-insights-trace-logging"></a>Azure Application Insights 追蹤記錄
 
@@ -1170,7 +1170,7 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 * [Gelf](https://docs.graylog.org/en/2.3/pages/gelf.html) ([GitHub 存放庫](https://github.com/mattwcole/gelf-extensions-logging))
 * [JSNLog](https://jsnlog.com/) ([GitHub 存放庫](https://github.com/mperdeck/jsnlog))
 * [KissLog.net](https://kisslog.net/) ([GitHub 存放庫](https://github.com/catalingavan/KissLog-net))
-* [Log4Net](https://logging.apache.org/log4net/) （[GitHub](https://github.com/huorswords/Microsoft.Extensions.Logging.Log4Net.AspNetCore)存放庫）
+* [紀錄4Net](https://logging.apache.org/log4net/) ([GitHub 儲存函式庫](https://github.com/huorswords/Microsoft.Extensions.Logging.Log4Net.AspNetCore))
 * [Loggr](https://loggr.net/) ([GitHub 存放庫](https://github.com/imobile3/Loggr.Extensions.Logging))
 * [NLog](https://nlog-project.org/) ([GitHub 存放庫](https://github.com/NLog/NLog.Extensions.Logging))
 * [Sentry](https://sentry.io/welcome/) ([GitHub 存放庫](https://github.com/getsentry/sentry-dotnet))
@@ -1182,7 +1182,7 @@ Azure 記錄串流可讓您即時檢視來自下列位置的記錄活動：
 使用協力廠商架構類似於使用內建的提供者之一：
 
 1. 將 NuGet 套件新增至專案。
-1. 通話記錄架構所提供的 `ILoggerFactory` 擴充方法。
+1. 調用日誌記錄`ILoggerFactory`框架提供的擴展方法。
 
 如需詳細資訊，請參閱每個提供者的文件。 Microsoft 不支援第三方記錄提供者。
 

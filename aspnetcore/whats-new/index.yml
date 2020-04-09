@@ -1,22 +1,24 @@
 ### YamlMime:Landing
-title: ASP.NET Core 檔-新功能
-summary: 歡迎使用 ASP.NET Core 檔中的新功能。使用此頁面快速尋找最新的變更。
+title: ASP.NET核心文檔 - 新增功能是什麼?
+summary: 歡迎瞭解ASP.NET核心文檔中的新增功能。使用此頁面可快速查找最新更改。
 metadata:
-  title: ASP.NET Core 檔-新功能
-  description: 瞭解 ASP.NET Core 檔中的新增和更新內容。
+  title: ASP.NET核心文檔 - 新增功能是什麼?
+  description: 瞭解ASP.NET核心文檔中的新內容和更新內容。
   ms.topic: landing-page
-  ms.date: 03/02/2020
-  ms.openlocfilehash: dd10c004215718e372a43afacdef117aab7ef05a
-  ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+  ms.date: 04/01/2020
+  ms.openlocfilehash: 4d1e63bafe1a40110c0b514fcaf0f1eb2f180722
+  ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/06/2020
-  ms.locfileid: "78663797"
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80538995"
 landingContent:
-- title: 尋找 ASP.NET Core 檔更新
+- title: 尋找核心文件更新ASP.NET
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 2020 年 3 月
+      url: 2020-03.md
     - text: 2020 年 2 月
       url: 2020-02.md
     - text: 2020 年 1 月
@@ -27,39 +29,37 @@ landingContent:
       url: 2019-11.md
     - text: 2019 年 10 月
       url: 2019-10.md
-    - text: 2019 年 9 月
-      url: 2019-09.md
-- title: 參與-參與 ASP.NET Core 檔
+- title: 參與 - 參與 ASP.NET 核心文件
   linkLists:
   - linkListType: overview
     links:
-    - text: ASP.NET Core 檔存放庫
+    - text: ASP.NET核心文件儲存庫
       url: https://github.com/dotnet/AspNetCore.Docs/blob/master/README.md
-    - text: 問題和提取要求的專案結構和標籤
+    - text: 問題與拉取要求的項目結構和分頁
       url: https://github.com/dotnet/docs/blob/master/styleguide/labels-projects.md
   - linkListType: concept
     links:
-    - text: Microsoft 檔參與者指南
+    - text: 微軟文件貢獻者指南
       url: https://docs.microsoft.com/contribute
-    - text: ASP.NET Core 檔參與者指南
+    - text: ASP.NET核心文件參與者指南
       url: https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md
-    - text: ASP.NET Core API 參考檔參與者指南
+    - text: ASP.NET核心 API 參考文件參與者指南
       url: https://github.com/dotnet/AspNetApiDocs/blob/master/CONTRIBUTING.md
-- title: 相關的新功能頁面
+- title: 相關新頁面
   linkLists:
   - linkListType: whats-new
     links:
-    - text: Xamarin 檔更新
+    - text: Xamarin 文件更新
       url: /xamarin/whats-new/
-    - text: .NET Core 版本資訊
+    - text: .NET 核心發行說明
       url: https://github.com/dotnet/core/blob/master/release-notes/README.md
-    - text: ASP.NET Core 版本資訊
+    - text: ASP.NET核心發行說明
       url: /aspnet/core/release-notes/aspnetcore-3.1
-    - text: C#編譯器（Roslyn）版本資訊
+    - text: C# 編譯器 (羅斯林) 發行說明
       url: https://github.com/dotnet/roslyn/tree/master/docs/ide
-    - text: Visual Studio 版本資訊
+    - text: 視覺化工作室發行說明
       url: /visualstudio/releases/2019/release-notes
-    - text: Visual Studio for Mac 版本資訊
+    - text: 適用於 Mac 發行筆記的可視化工作室
       url: /visualstudio/releasenotes/vs2019-mac-relnotes
-    - text: Visual Studio Code 版本資訊
+    - text: 視覺化工作室代碼發行說明
       url: https://code.visualstudio.com/updates

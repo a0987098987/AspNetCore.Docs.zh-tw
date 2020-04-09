@@ -7,21 +7,21 @@ ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/validation
 ms.openlocfilehash: f283234ed8a32dc9b7904bc6fee1cc9c04741029
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78666016"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 在本節中將驗證邏輯新增至 `Movie` 模型。 使用者建立或編輯電影時，就會強制執行驗證規則。
 
 ## <a name="validation"></a>驗證
 
-軟體開發的核心原則稱為 [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself)("**D**on't **R**epeat **Y**ourself", 不重複原則)。 Razor 頁面可促進開發，只要指定功能一次，就能在整個應用程式中運用。 DRY 有助於：
+軟體開發的核心原則稱為 [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself)("**D**on't **R**epeat **Y**ourself", 不重複原則)。 Razor Pages可促進開發，只要指定功能一次，就能在整個應用程式中運用。 DRY 有助於：
 
 * 降低應用程式中的程式碼數量。
 * 使程式碼較少出現錯誤，而且更容易進行測試和維護。
@@ -67,11 +67,11 @@ DataAnnotations 命名空間提供一組內建的驗證屬性 (attribute)，其�
 
 請注意表單在包含無效值的每個欄位中自動呈現驗證錯誤訊息的方式。 用戶端 (使用 JavaScript 和 jQuery) 與伺服器端 (當使用者已停用 JavaScript 時) 都會強制執行這些錯誤。
 
-明顯的好處是：**不**需要在 Create 或 Edit 頁面中進行程式碼變更。 一旦 DataAnnotations 套用至模型，就會啟用驗證 UI。 本教學課程中建立的 Razor 頁面會自動拾取驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 Edit 頁面測試驗證，會套用相同的驗證。
+明顯的好處是：**不**需要在 Create 或 Edit 頁面中進行程式碼變更。 一旦 DataAnnotations 套用至模型，就會啟用驗證 UI。 本教學課程中建立的 Razor Pages 會自動拾取驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 Edit 頁面測試驗證，會套用相同的驗證。
 
 要一直到沒有任何用戶端驗證錯誤之後，才會將表單資料發佈到伺服器。 請確認表單資料不會經由下列一或多種方式發佈：
 
-* 將中斷點放置在 `OnPostAsync` 方法中。 提交表單 (選取 [建立] 或 [儲存])。 永遠不會叫用中斷點。
+* 將中斷點放置在 `OnPostAsync` 方法中。 提交表單 (選取 [建立]**** 或 [儲存]****)。 永遠不會叫用中斷點。
 * 使用 [Fiddler 工具](https://www.telerik.com/fiddler)。
 * 使用瀏覽器開發人員工具來監視網路流量。
 
@@ -93,7 +93,7 @@ DataAnnotations 命名空間提供一組內建的驗證屬性 (attribute)，其�
    }
   ```
   
-或者，您可以[停用伺服器上的用戶端驗證](xref:mvc/models/validation#disable-client-side-validation)。
+或, 您可以在[伺服器上關閉客戶端認證](xref:mvc/models/validation#disable-client-side-validation)。
 
 下列程式碼顯示稍早在此教學課程中包含 Scaffold 的部分 *Create.cshtml* 頁面。 Create 和 Edit 頁面會使用它來顯示初始表單，以及在發生錯誤時重新顯示格式。
 
@@ -101,7 +101,7 @@ DataAnnotations 命名空間提供一組內建的驗證屬性 (attribute)，其�
 
 [輸入標記協助程式](xref:mvc/views/working-with-forms)會使用 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
 
-Create 和 Edit 頁面中沒有任何驗證規則。 驗證規則和錯誤字串只在 `Movie` 類別中指定。 這些驗證規則會自動套用至編輯 `Movie` 模型的 Razor 頁面。
+Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中才能指定驗證規則和錯誤字串。 這些驗證規則會自動套用至編輯 `Movie` 模型的 Razor 頁面。
 
 當驗證邏輯需要變更時，它只會在模型中進行。 驗證會一致地套用在整個應用程式中(驗證邏輯定義於一個位置)。 位於一個位置的驗證有助於讓程式碼保持整潔，並可讓您更容易進行維護和更新。
 
@@ -113,7 +113,7 @@ Create 和 Edit 頁面中沒有任何驗證規則。 驗證規則和錯誤字串
 
 `DataType` 屬性只提供檢視引擎將資料格式化的提示 (以及提供一些屬性，例如用於 URL 的 `<a>` 和用於電子郵件的 `<a href="mailto:EmailAddress.com">`)。 使用 `RegularExpression` 屬性來驗證資料的格式。 `DataType` 屬性可用於指定比資料庫內建類型更特定的資料類型。 `DataType` 屬性不是驗證屬性。 在範例應用程式中，只會顯示日期，而不含時間。
 
-`DataType` 列舉可提供給許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可針對 `mailto:` 建立 `DataType.EmailAddress` 連結。 在支援 HTML5 的瀏覽器中，可以為 `DataType.Date` 提供日期選取器。 `DataType` 屬性會發出 HTML 5 瀏覽器使用的 HTML 5 `data-` (唸成的 data dash) 屬性。 `DataType` 屬性**不**會提供任何驗證。
+`DataType` 列舉可提供給許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可針對 `DataType.EmailAddress` 建立 `mailto:` 連結。 在支援 HTML5 的瀏覽器中，可以為 `DataType.Date` 提供日期選取器。 `DataType` 屬性會發出 HTML 5 瀏覽器使用的 HTML 5 `data-` (唸成的 data dash) 屬性。 `DataType` 屬性**不**會提供任何驗證。
 
 `DataType.Date` 未指定顯示日期的格式。 根據預設，將依據以伺服器 `CultureInfo` 為基礎的預設格式顯示資料欄位。
 
@@ -175,7 +175,7 @@ CREATE TABLE [dbo].[Movie] (
 
 上述結構描述變更不會造成 EF 擲回例外狀況。 不過，請建立移轉，讓結構描述與模型一致。
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+ 從 [工具]**** 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]****。
 在 PMC 中，輸入下列命令：
 
 ```powershell
@@ -183,7 +183,7 @@ Add-Migration New_DataAnnotations
 Update-Database
 ```
 
-`Update-Database` 會執行 `Up` 類別的 `New_DataAnnotations` 方法。 檢查 `Up` 方法：
+`Update-Database` 會執行 `New_DataAnnotations` 類別的 `Up` 方法。 檢查 `Up` 方法：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Migrations/20190724163003_New_DataAnnotations.cs?name=snippet)]
 
@@ -209,7 +209,7 @@ SQLite 不需要移轉。
 
 ### <a name="publish-to-azure"></a>發佈至 Azure
 
-如需部署至 Azure 的詳細資訊，請參閱[教學課程：在 Azure 中使用 SQL Database 建立 ASP.NET Core 應用程式](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)。
+有關部署到 Azure 的資訊,請參閱[教學:使用 SQL 資料庫在 Azure 中建構 ASP.NET 核心應用](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)。
 
 感謝您看完這份 Razor 頁面簡介。 完成本教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
 
@@ -219,7 +219,7 @@ SQLite 不需要移轉。
 * <xref:fundamentals/localization>
 * <xref:mvc/views/tag-helpers/intro>
 * <xref:mvc/views/tag-helpers/authoring>
-* [這個教學課程的 YouTube 版本](https://youtu.be/b63m66eu7us)
+* [本教學的 YouTube 版本](https://youtu.be/b63m66eu7us)
 
 > [!div class="step-by-step"]
 > [上一步：新增欄位](xref:tutorials/razor-pages/new-field)

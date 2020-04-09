@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/update-related-data
 ms.openlocfilehash: fdfdb14ff8414b8bf30f9b95be7ba0a6bcbd2995
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78656419"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 更新相關資料 - 7/8
 
-作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
+湯姆[·戴克斯特拉](https://github.com/tdykstra)和[里克·安德森](https://twitter.com/RickAndMSFT)
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
@@ -66,7 +66,7 @@ Course 會指派給 Department。 Create 和 Edit 頁面的基底類別會提供
 上述程式碼會進行下列變更：
 
 * 將標題從 **DepartmentID** 變更為 **Department**。
-* 以 `"ViewBag.DepartmentID"` (來自基底類別) 取代 `DepartmentNameSL`。
+* 以 `DepartmentNameSL` (來自基底類別) 取代 `"ViewBag.DepartmentID"`。
 * 新增 [選取部門] 選項。 此變更會在尚未選取任何部門時，在下拉式清單中轉譯「選取部門」而非第一個部門。
 * 未選取部門時，請新增驗證訊息。
 
@@ -94,9 +94,9 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 * 顯示課程識別碼。 通常不會顯示實體的主索引鍵 (PK)。 PK 對使用者來說通常是沒有意義的。 在此情況下，PK 是課程編號。
 * 將 Department 下拉式清單的標題從 **DepartmentID** 變更為 **Department**。
-* 以 `"ViewBag.DepartmentID"` (來自基底類別) 取代 `DepartmentNameSL`。
+* 以 `DepartmentNameSL` (來自基底類別) 取代 `"ViewBag.DepartmentID"`。
 
-此頁面包含課程編號的隱藏欄位 (`<input type="hidden">`)。 新增 `<label>` 標籤協助程式與 `asp-for="Course.CourseID"` 無法免除隱藏欄位的需求。 當使用者按一下 [儲存] `<input type="hidden">`**時，需要有** 才能將課程編號包含在張貼資料中。
+此頁面包含課程編號的隱藏欄位 (`<input type="hidden">`)。 新增 `<label>` 標籤協助程式與 `asp-for="Course.CourseID"` 無法免除隱藏欄位的需求。 當使用者按一下 [儲存] **** 時，需要有 `<input type="hidden">` 才能將課程編號包含在張貼資料中。
 
 ## <a name="update-the-course-details-and-delete-pages"></a>更新 Course Detail 和 Delete 頁面
 
@@ -182,12 +182,12 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 上述程式碼：
 
-* 使用 `Instructor`、`OfficeAssignment` 和 `CourseAssignment` 導覽屬性的積極式載入，從資料庫取得目前的 `CourseAssignment.Course` 實體。
+* 使用 `OfficeAssignment`、`CourseAssignment` 和 `CourseAssignment.Course` 導覽屬性的積極式載入，從資料庫取得目前的 `Instructor` 實體。
 * 使用從模型繫結器取得的值更新擷取的 `Instructor` 實體。 `TryUpdateModel` 會防止[大量指派](xref:data/ef-rp/crud#overposting) (overposting)。
 * 如果辦公室位置為空白，請將 `Instructor.OfficeAssignment` 設定為 Null。 當 `Instructor.OfficeAssignment` 為 Null 時，將會刪除 `OfficeAssignment` 資料表中的相關資料列。
-* 在 `PopulateAssignedCourseData` 中呼叫 `OnGetAsync` 來使用 `AssignedCourseData` 檢視模型類別，以提供資訊給核取方塊。
-* 在 `UpdateInstructorCourses` 中呼叫 `OnPostAsync` 來將核取方塊的資訊套用到正在編輯的 Instructor 實體。
-* 若 `PopulateAssignedCourseData` 失敗，則在 `UpdateInstructorCourses` 中呼叫 `OnPostAsync` 和 `TryUpdateModel`。 這些方法呼叫會在重新顯示並附帶錯誤訊息時，還原在頁面上輸入的已指派課程資料。
+* 在 `OnGetAsync` 中呼叫 `PopulateAssignedCourseData` 來使用 `AssignedCourseData` 檢視模型類別，以提供資訊給核取方塊。
+* 在 `OnPostAsync` 中呼叫 `UpdateInstructorCourses` 來將核取方塊的資訊套用到正在編輯的 Instructor 實體。
+* 若 `TryUpdateModel` 失敗，則在 `OnPostAsync` 中呼叫 `PopulateAssignedCourseData` 和 `UpdateInstructorCourses`。 這些方法呼叫會在重新顯示並附帶錯誤訊息時，還原在頁面上輸入的已指派課程資料。
 
 ### <a name="update-the-instructor-edit-razor-page"></a>更新 Instructor Edit Razor 頁面
 
@@ -230,14 +230,14 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="step-by-step"]
-> [上一個教學課程](xref:data/ef-rp/read-related-data)
-> [下一個教學課程](xref:data/ef-rp/concurrency)
+> [前面的教學](xref:data/ef-rp/read-related-data)
+> [下一個教學](xref:data/ef-rp/concurrency)
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-本教學課程將示範如何更新相關資料。 若您遇到無法解決的問題，請[下載或檢視完整應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。 [下載指示](xref:index#how-to-download-a-sample)。
+本教學課程將示範如何更新相關資料。 若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載標題](xref:index#how-to-download-a-sample)。
 
 下圖顯示一些完成的頁面。
 
@@ -270,7 +270,7 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 * 衍生自 `DepartmentNamePageModel`。
 * 使用 `TryUpdateModelAsync` 來防止[大量指派](xref:data/ef-rp/crud#overposting) (overposting)。
-* 以 `ViewData["DepartmentID"]` (來自基底類別) 取代 `DepartmentNameSL`。
+* 以 `DepartmentNameSL` (來自基底類別) 取代 `ViewData["DepartmentID"]`。
 
 `ViewData["DepartmentID"]` 已取代為強型別的 `DepartmentNameSL`。 強型別的模型優先於弱型別。 如需詳細資訊，請參閱[弱型別資料 (ViewData 和 ViewBag)](xref:mvc/views/overview#VD_VB)。
 
@@ -283,7 +283,7 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 上述標記會進行下列變更：
 
 * 將標題從 **DepartmentID** 變更為 **Department**。
-* 以 `"ViewBag.DepartmentID"` (來自基底類別) 取代 `DepartmentNameSL`。
+* 以 `DepartmentNameSL` (來自基底類別) 取代 `"ViewBag.DepartmentID"`。
 * 新增 [選取部門] 選項。 這項變更會呈現 [選取部門] ，而不是第一個部門。
 * 未選取部門時，請新增驗證訊息。
 
@@ -309,9 +309,9 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 * 顯示課程識別碼。 通常不會顯示實體的主索引鍵 (PK)。 PK 對使用者來說通常是沒有意義的。 在此情況下，PK 是課程編號。
 * 將標題從 **DepartmentID** 變更為 **Department**。
-* 以 `"ViewBag.DepartmentID"` (來自基底類別) 取代 `DepartmentNameSL`。
+* 以 `DepartmentNameSL` (來自基底類別) 取代 `"ViewBag.DepartmentID"`。
 
-此頁面包含課程編號的隱藏欄位 (`<input type="hidden">`)。 新增 `<label>` 標籤協助程式與 `asp-for="Course.CourseID"` 無法免除隱藏欄位的需求。 當使用者按一下 [儲存] `<input type="hidden">`**時，需要有** 才能將課程編號包含在張貼資料中。
+此頁面包含課程編號的隱藏欄位 (`<input type="hidden">`)。 新增 `<label>` 標籤協助程式與 `asp-for="Course.CourseID"` 無法免除隱藏欄位的需求。 當使用者按一下 [儲存] **** 時，需要有 `<input type="hidden">` 才能將課程編號包含在張貼資料中。
 
 測試更新過的程式碼。 建立、編輯和刪除課程。
 
@@ -321,7 +321,7 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 
-在 `OnGetAsync`Pages/Courses/Details.cshtml.cs*檔案中更新* 方法：
+在 *Pages/Courses/Details.cshtml.cs* 檔案中更新 `OnGetAsync` 方法：
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
 
@@ -355,7 +355,7 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 上述程式碼：
 
-* 針對 `Instructor` 導覽屬性使用積極式載入從資料庫中取得目前的 `OfficeAssignment` 實體。
+* 針對 `OfficeAssignment` 導覽屬性使用積極式載入從資料庫中取得目前的 `Instructor` 實體。
 * 使用從模型繫結器取得的值更新擷取的 `Instructor` 實體。 `TryUpdateModel` 會防止[大量指派](xref:data/ef-rp/crud#overposting) (overposting)。
 * 如果辦公室位置為空白，請將 `Instructor.OfficeAssignment` 設定為 Null。 當 `Instructor.OfficeAssignment` 為 Null 時，將會刪除 `OfficeAssignment` 資料表中的相關資料列。
 
@@ -450,7 +450,7 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 * [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=mOAankB_Zgc)
 
 > [!div class="step-by-step"]
-> [上一頁](xref:data/ef-rp/read-related-data)
-> [下一頁](xref:data/ef-rp/concurrency)
+> [前一個](xref:data/ef-rp/read-related-data)
+> [下一個](xref:data/ef-rp/concurrency)
 
 ::: moniker-end

@@ -10,10 +10,10 @@ no-loc:
 - SignalR
 uid: fundamentals/websockets
 ms.openlocfilehash: a8040003374906fd93e12c9fde44c4a5ccc2cf37
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78655782"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core 中的 WebSockets 支援
@@ -62,13 +62,13 @@ ms.locfileid: "78655782"
 ## <a name="configure-the-middleware"></a>設定中介軟體
 
 
-在 `Configure` 類別的 `Startup` 方法中新增 WebSocket 中介軟體：
+在 `Startup` 類別的 `Configure` 方法中新增 WebSocket 中介軟體：
 
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSockets)]
 
 ::: moniker range="< aspnetcore-2.2"
 
-可設定下列設定：
+您可以設定下列設定：
 
 * `KeepAliveInterval` - 要將 "ping" 框架傳送到用戶端，以確保 Proxy 保持連線開啟的頻率。 預設為兩分鐘。
 * `ReceiveBufferSize` - 用來接收資料的緩衝區大小。 進階使用者可能需要變更此設定，以便根據資料的大小進行效能調整。 預設為 4 KB。
@@ -77,7 +77,7 @@ ms.locfileid: "78655782"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-可設定下列設定：
+您可以設定下列設定：
 
 * `KeepAliveInterval` - 要將 "ping" 框架傳送到用戶端，以確保 Proxy 保持連線開啟的頻率。 預設為兩分鐘。
 * <xref:Microsoft.AspNetCore.Builder.WebSocketOptions.ReceiveBufferSize> - 用來接收資料的緩衝區大小。 進階使用者可能需要變更此設定，以便根據資料的大小進行效能調整。 預設為 4 KB。
@@ -170,27 +170,27 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 > [!NOTE]
 > 使用 IIS Express 時，不需要這些步驟
 
-1. 使用來自 [管理] 功能表的 [新增角色及功能] 精靈，或是 [伺服器管理員] 中的連結。
-1. 選取 [角色型或功能型安裝]。 選取 [下一步]。
-1. 選取適當的伺服器 (預設會選取本機伺服器)。 選取 [下一步]。
-1. 展開 [角色] 樹狀目錄中的 [網頁伺服器 (IIS)]，展開 [網頁伺服器]，然後展開 [應用程式開發]。
-1. 選取 [WebSocket 通訊協定]。 選取 [下一步]。
-1. 如果不需要額外的功能，請選取 [下一步]。
-1. 選取 [安裝]。
-1. 當安裝完成時，選取 [關閉] 來結束精靈。
+1. 使用來自 [管理]**** 功能表的 [新增角色及功能]**** 精靈，或是 [伺服器管理員]**** 中的連結。
+1. 選取 [角色型或功能型安裝]****。 選取 [下一步]  。
+1. 選取適當的伺服器 (預設會選取本機伺服器)。 選取 [下一步]  。
+1. 展開 [角色]**** 樹狀目錄中的 [網頁伺服器 (IIS)]****，展開 [網頁伺服器]****，然後展開 [應用程式開發]****。
+1. 選取 [WebSocket 通訊協定]****。 選取 [下一步]  。
+1. 如果不需要額外的功能，請選取 [下一步]****。
+1. 選取 [安裝]  。
+1. 當安裝完成時，選取 [關閉]**** 來結束精靈。
 
 若要在 Windows 8 或更新版本中啟用 WebSocket 通訊協定的支援：
 
 > [!NOTE]
 > 使用 IIS Express 時，不需要這些步驟
 
-1. 瀏覽至控制台 > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] (畫面左側)。
-1. 開啟下列節點：[Internet Information Services] > [全球資訊網服務] > [應用程式開發功能]。
-1. 選取 [WebSocket 通訊協定] 功能。 選取 [確定]。
+1. 導航到**控制面板** > **程式和** > **功能** > **打開或關閉 Windows 功能**(螢幕左側)。
+1. 開啟以下節點:**網際網路資訊服務** > **萬維網服務** > **應用程式開發功能**。
+1. 選取 [WebSocket 通訊協定]**** 功能。 選取 [確定]  。
 
 ### <a name="disable-websocket-when-using-socketio-on-nodejs"></a>在 Node.js 上使用 socket.io 時停用 WebSocket
 
-如果在[node.js](https://nodejs.org/)上使用[Socket.io](https://socket.io/)中的 WebSocket 支援，請使用*web.config*或*applicationhost.config*中的 `webSocket` 元素來停用預設的 IIS WebSocket 模組。如果未執行此步驟，IIS WebSocket 模組會嘗試處理 WebSocket 通訊，而不是 node.js 和應用程式。
+如果在[Node.js](https://nodejs.org/)`webSocket`上的[socket.io](https://socket.io/)中使用 WebSocket 支援,請使用*Web.config 或應用程式 Host.config*中*applicationHost.config*的元素禁用預設的 IIS WebSocket 模組。如果未執行此步驟,IIS WebSocket 模組將嘗試處理 WebSocket 通信,而不是 Node.js 和應用。
 
 ```xml
 <system.webServer>
@@ -204,7 +204,7 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 
 ![網頁的初始狀態](websockets/_static/start.png)
 
-選取 [連線] 將 WebSocket 要求傳送到顯示的 URL。 輸入測試訊息，然後選取 [傳送]。 完成後，請選取 [關閉通訊端]。 [通訊記錄檔] 區段會報告每次進行的開啟、傳送和關閉動作。
+選取 [連線]**** 將 WebSocket 要求傳送到顯示的 URL。 輸入測試訊息，然後選取 [傳送]****。 完成後，請選取 [關閉通訊端]****。 [通訊記錄檔]**** 區段會報告每次進行的開啟、傳送和關閉動作。
 
 ![網頁的初始狀態](websockets/_static/end.png)
 

@@ -1,47 +1,47 @@
 ---
-title: 使用驗證程式庫保護 ASP.NET Core Blazor WebAssembly 獨立應用程式
+title: 使用認證庫保護BlazorASP.NET核心 Web 大會獨立應用
 author: guardrex
 description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/19/2020
+ms.date: 04/08/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: ea50d94835b044f9c3d6a0561868f081d32cb62a
-ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
+ms.openlocfilehash: 893fff10df37e1c2be549604f4cb83cd20049108
+ms.sourcegitcommit: f0aeeab6ab6e09db713bb9b7862c45f4d447771b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80218997"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80977037"
 ---
-# <a name="secure-an-aspnet-core-opno-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>使用驗證程式庫保護 ASP.NET Core Blazor WebAssembly 獨立應用程式
+# <a name="secure-an-aspnet-core-opno-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>使用認證庫保護BlazorASP.NET核心 Web 大會獨立應用
 
-By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
+哈威爾[·卡爾瓦羅·納爾遜](https://github.com/javiercn)和[盧克·萊瑟姆](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 [!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
 
-*若為 Azure Active Directory （AAD）和 Azure Active Directory B2C （AAD B2C），請不要遵循本主題中的指導方針。請參閱此目錄節點中的 AAD 和 AAD B2C 主題。*
+*對於 Azure 活動目錄 (AAD) 和 Azure 活動目錄 B2C (AAD B2C),不要遵循本主題中的指南。請參閱此目錄節點中的 AAD 和 AAD B2C 主題。*
 
-若要建立使用 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 程式庫的 Blazor WebAssembly 獨立應用程式，請在命令 shell 中執行下列命令：
+要建立Blazor`Microsoft.AspNetCore.Components.WebAssembly.Authentication`使用函式庫的 WebAssembly 獨立應用,請在命令外殼中執行以下命令:
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual
 ```
 
-若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如 `-o BlazorSample`）的輸出選項。 資料夾名稱也會成為專案名稱的一部分。
+要指定輸出位置(如果不存在,則創建項目資料夾)請在命令中包含具有路徑的輸出選項(例如。 `-o BlazorSample` 資料夾名稱也將成為專案名稱的一部分。
 
-在 Visual Studio 中，[建立 Blazor WebAssembly 應用程式](xref:blazor/get-started)。 使用 [**儲存使用者帳戶應用程式內**] 選項，將**驗證**設定為**個別使用者帳戶**。
+在視覺化工作室[中,建立BlazorWeb 組裝應用](xref:blazor/get-started)。 使用**應用程式商店使用者帳戶套用內**選項將**認證**設定為**單個使用者帳戶**。
 
-## <a name="authentication-package"></a>驗證套件
+## <a name="authentication-package"></a>驗證驗證
 
-建立應用程式以使用個別使用者帳戶時，應用程式會在應用程式的專案檔中自動接收 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 套件的套件參考。 封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。
+創建應用以使用個人使用者帳戶時,應用會自動在應用的專案檔中接收`Microsoft.AspNetCore.Components.WebAssembly.Authentication`包的包引用。 該包提供一組基元,可幫助應用對使用者進行身份驗證,並獲取令牌來調用受保護的 API。
 
-如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：
+如果向應用程式加入認證,則手動將套件加入到應用程式的項目檔中:
 
 ```xml
 <PackageReference 
@@ -49,13 +49,13 @@ dotnet new blazorwasm -au Individual
     Version="{VERSION}" />
 ```
 
-以 <xref:blazor/get-started> 文章中顯示的 `Microsoft.AspNetCore.Blazor.Templates` 套件版本取代先前套件參考中的 `{VERSION}`。
+在前面`{VERSION}`的包引用中替換`Microsoft.AspNetCore.Blazor.Templates`<xref:blazor/get-started>為 本文中顯示的包版本。
 
-## <a name="authentication-service-support"></a>驗證服務支援
+## <a name="authentication-service-support"></a>認證服務支援
 
-驗證使用者的支援是以 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 套件所提供的 `AddOidcAuthentication` 擴充方法，在服務容器中註冊。 這個方法會設定應用程式與身分識別提供者（IP）互動所需的所有服務。
+使用`AddOidcAuthentication``Microsoft.AspNetCore.Components.WebAssembly.Authentication`包提供的擴充方法在服務容器中註冊對使用者進行身份驗證的支援。 此方法設置應用與標識提供者 (IP) 互動所需的所有服務。
 
-*Program.cs*：
+*Program.cs*:
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>
@@ -65,21 +65,52 @@ builder.Services.AddOidcAuthentication(options =>
 });
 ```
 
-獨立應用程式的驗證支援是使用 Open ID Connect （OIDC）提供。 `AddOidcAuthentication` 方法會接受回呼，以使用 OIDC 來設定驗證應用程式所需的參數。 設定應用程式所需的值可從符合 OIDC 規範的 IP 取得。 當您註冊應用程式時，請取得這些值，這通常會發生在其線上入口網站中。
+使用開放 ID 連接 (OIDC) 為獨立應用提供身份驗證支援。 該方法`AddOidcAuthentication`接受回調以配置使用 OIDC 對應用進行身份驗證所需的參數。 配置應用所需的值可以從符合 OIDC 的 IP 獲得。 註冊應用時獲取值,這些值通常發生在其連線門戶中。
+
+## <a name="access-token-scopes"></a>存取權杖範圍
+
+WebAssemblyBlazor範本不會自動配置應用以請求安全 API 的訪問權杖。 要將權杖預先設定登入串流的一部分,請將作用網域`OidcProviderOptions`加入預設的權限的功能的功能的功能:
+
+```csharp
+builder.Services.AddOidcAuthentication(options =>
+{
+    ...
+    options.ProviderOptions.DefaultScopes.Add("{SCOPE URI}");
+});
+```
+
+> [!NOTE]
+> 如果 Azure 門戶提供作用域 URI,並且應用在收到來自 API 的*401 未授權*回應時**引發未處理的異常**,請嘗試使用不包括方案和主機的範圍 URI。 例如,Azure 門戶可以提供以下作用域 URI 格式之一:
+>
+> * `https://{ORGANIZATION}.onmicrosoft.com/{API CLIENT ID OR CUSTOM VALUE}/{SCOPE NAME}`
+> * `api://{API CLIENT ID OR CUSTOM VALUE}/{SCOPE NAME}`
+>
+> 提供無方案和主機的範圍 URI:
+>
+> ```csharp
+> options.ProviderOptions.DefaultScopes.Add(
+>     "{API CLIENT ID OR CUSTOM VALUE}/{SCOPE NAME}");
+> ```
+
+如需詳細資訊，請參閱 <xref:security/blazor/webassembly/additional-scenarios#request-additional-access-tokens>。
+
+## <a name="imports-file"></a>匯入檔案
+
+[!INCLUDE[](~/includes/blazor-security/imports-file-standalone.md)]
 
 ## <a name="index-page"></a>索引頁面
 
 [!INCLUDE[](~/includes/blazor-security/index-page-authentication.md)]
 
-## <a name="app-component"></a>應用程式元件
+## <a name="app-component"></a>套用元件
 
 [!INCLUDE[](~/includes/blazor-security/app-component.md)]
 
-## <a name="redirecttologin-component"></a>RedirectToLogin 元件
+## <a name="redirecttologin-component"></a>重定到登入元件
 
 [!INCLUDE[](~/includes/blazor-security/redirecttologin-component.md)]
 
-## <a name="logindisplay-component"></a>LoginDisplay 元件
+## <a name="logindisplay-component"></a>登入元件
 
 [!INCLUDE[](~/includes/blazor-security/logindisplay-component.md)]
 
@@ -88,3 +119,7 @@ builder.Services.AddOidcAuthentication(options =>
 [!INCLUDE[](~/includes/blazor-security/authentication-component.md)]
 
 [!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
+
+## <a name="additional-resources"></a>其他資源
+
+* [要求其他存取權杖](xref:security/blazor/webassembly/additional-scenarios#request-additional-access-tokens)

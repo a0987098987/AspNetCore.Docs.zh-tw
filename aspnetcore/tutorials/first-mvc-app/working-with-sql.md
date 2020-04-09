@@ -6,19 +6,19 @@ ms.author: riande
 ms.date: 8/16/2019
 uid: tutorials/first-mvc-app/working-with-sql
 ms.openlocfilehash: d556f07111fb2022a1c2f1a066459566e302835d
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78665036"
 ---
 # <a name="work-with-sql-in-aspnet-core"></a>在 ASP.NET Core 中使用 SQL
 
 ::: moniker range=">= aspnetcore-3.0"
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-`MvcMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 [Startup.cs](xref:fundamentals/dependency-injection) 檔案的 `ConfigureServices` 方法中，以*相依性插入*容器登錄資料庫內容：
+`MvcMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 檔案的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -44,13 +44,13 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/{user}* 目錄中建立 *.mdf* 檔案。
+LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 預設情況下,LocalDB 資料庫在*C:/使用者/ [使用者]* 目錄中創建 *.mdf*檔。
 
-* 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
+* 從 [檢視]**** 功能表中，開啟 [SQL Server 物件總管]**** (SSOX)。
 
   ![檢視功能表](working-with-sql/_static/ssox.png)
 
-* 以滑鼠右鍵按一下 `Movie` 資料表 > [檢視表設計工具]
+* 以滑鼠右鍵按一下 `Movie` 資料表 > [檢視表設計工具]****
 
   ![在電影資料表上開啟操作功能表](working-with-sql/_static/design.png)
 
@@ -58,7 +58,7 @@ LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發�
 
 請注意 `ID` 旁的索引鍵圖示。 根據預設，EF 會將名為 `ID` 的屬性設為主索引鍵。
 
-* 以滑鼠右鍵按一下 `Movie` 資料表 > [檢視資料]
+* 以滑鼠右鍵按一下 `Movie` 資料表 > [檢視資料]****
 
   ![在電影資料表上開啟操作功能表](working-with-sql/_static/ssox2.png)
 
@@ -74,7 +74,7 @@ LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發�
 
 ## <a name="seed-the-database"></a>植入資料庫
 
-在 `SeedData`Models*資料夾中建立名為* 的新類別。 使用下列程式碼取代產生的程式碼：
+在 *Models* 資料夾中建立名為 `SeedData` 的新類別。 使用下列程式碼取代產生的程式碼：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Models/SeedData.cs?name=snippet_1)]
 
@@ -91,7 +91,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>新增種子初始設定式
 
-以下列程式碼取代 *Program.cs* 的內容：
+將*Program.cs*的內容取代為以下代碼:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Program.cs)]
 
@@ -102,7 +102,7 @@ if (context.Movie.Any())
 * 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 SSOX 的刪除連結來執行這項操作。
 * 強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。 若要強制初始化，IIS Express 必須停止並重新啟動。 您可以使用下列其中一個方法來執行此工作：
 
-  * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束] 或 [停止網站]
+  * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束]**** 或 [停止網站]****
 
     ![IIS Express 系統匣圖示](working-with-sql/_static/iisExIcon.png)
 
@@ -122,15 +122,15 @@ if (context.Movie.Any())
 ![在 Microsoft Edge 中開啟 MVC 電影應用程式顯示電影資料](working-with-sql/_static/m55.png)
 
 > [!div class="step-by-step"]
-> [上一頁](adding-model.md)
-> [下一頁](controller-methods-views.md)
+> [前一個](adding-model.md)
+> [下一個](controller-methods-views.md)
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-`MvcMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 [Startup.cs](xref:fundamentals/dependency-injection) 檔案的 `ConfigureServices` 方法中，以*相依性插入*容器登錄資料庫內容：
+`MvcMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 檔案的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -156,13 +156,13 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/{user}* 目錄中建立 *.mdf* 檔案。
+LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 預設情況下,LocalDB 資料庫在*C:/使用者/ [使用者]* 目錄中創建 *.mdf*檔。
 
-* 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
+* 從 [檢視]**** 功能表中，開啟 [SQL Server 物件總管]**** (SSOX)。
 
   ![檢視功能表](working-with-sql/_static/ssox.png)
 
-* 以滑鼠右鍵按一下 `Movie` 資料表 > [檢視表設計工具]
+* 以滑鼠右鍵按一下 `Movie` 資料表 > [檢視表設計工具]****
 
   ![在電影資料表上開啟操作功能表](working-with-sql/_static/design.png)
 
@@ -170,7 +170,7 @@ LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發�
 
 請注意 `ID` 旁的索引鍵圖示。 根據預設，EF 會將名為 `ID` 的屬性設為主索引鍵。
 
-* 以滑鼠右鍵按一下 `Movie` 資料表 > [檢視資料]
+* 以滑鼠右鍵按一下 `Movie` 資料表 > [檢視資料]****
 
   ![在電影資料表上開啟操作功能表](working-with-sql/_static/ssox2.png)
 
@@ -186,7 +186,7 @@ LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發�
 
 ## <a name="seed-the-database"></a>植入資料庫
 
-在 `SeedData`Models*資料夾中建立名為* 的新類別。 使用下列程式碼取代產生的程式碼：
+在 *Models* 資料夾中建立名為 `SeedData` 的新類別。 使用下列程式碼取代產生的程式碼：
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/SeedData.cs?name=snippet_1)]
 
@@ -203,7 +203,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>新增種子初始設定式
 
-以下列程式碼取代 *Program.cs* 的內容：
+將*Program.cs*的內容取代為以下代碼:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Program.cs)]
 
@@ -214,7 +214,7 @@ if (context.Movie.Any())
 * 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 SSOX 的刪除連結來執行這項操作。
 * 強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。 若要強制初始化，IIS Express 必須停止並重新啟動。 您可以使用下列其中一個方法來執行此工作：
 
-  * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束] 或 [停止網站]
+  * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束]**** 或 [停止網站]****
 
     ![IIS Express 系統匣圖示](working-with-sql/_static/iisExIcon.png)
 
@@ -234,7 +234,7 @@ if (context.Movie.Any())
 ![在 Microsoft Edge 中開啟 MVC 電影應用程式顯示電影資料](working-with-sql/_static/m55_mac.png)
 
 > [!div class="step-by-step"]
-> [上一頁](adding-model.md)
-> [下一頁](controller-methods-views.md)
+> [前一個](adding-model.md)
+> [下一個](controller-methods-views.md)
 
 ::: moniker-end

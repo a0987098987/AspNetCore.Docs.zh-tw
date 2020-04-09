@@ -1,152 +1,154 @@
 ---
-title: ASP.NET Core Blazor 裝載模型
+title: ASP.NET核心Blazor託管模型
 author: guardrex
-description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
+description: 瞭解BlazorBlazorWeb 組裝和伺服器託管模型。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/18/2020
+ms.date: 03/31/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: e6ce2be53c35268854e0e8d408b649a8c6ef497e
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 0dfc991f76acb227ce9ea27a07fbae50571f0117
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78658316"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80471824"
 ---
-# <a name="aspnet-core-opno-locblazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
+# <a name="aspnet-core-opno-locblazor-hosting-models"></a>ASP.NET核心Blazor託管模型
 
-依[Daniel Roth](https://github.com/danroth27)
+由[丹尼爾·羅斯](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor 是一種 web 架構，設計用來在瀏覽器中以[WebAssembly](https://webassembly.org/)為基礎的 .net 執行時間（ *Blazor WebAssembly*）或伺服器端在 ASP.NET Core （ *Blazor server*）中執行用戶端。 無論裝載模型為何，應用程式和元件模型*都相同*。
+Blazor是一個 Web 架構,旨在在瀏覽器中執行用戶端在基於[Webassembly](https://webassembly.org/)的 .NET 執行時*Blazor(WebAssembly)* 或伺服器端 ASP.NET 核心 (*Blazor伺服器*) 中。 無論託管模型如何,應用程式和元件模型*都是相同的*。
 
-若要為本文所述的主控模型建立專案，請參閱 <xref:blazor/get-started>。
+要為本文中描述的託管模型建立專案,請參閱<xref:blazor/get-started>。
 
-如需 advanced configuration，請參閱 <xref:blazor/hosting-model-configuration>。
+有關進階設定,請參<xref:blazor/hosting-model-configuration>閱 。
 
-## <a name="opno-locblazor-webassembly"></a>Blazor WebAssembly
+## <a name="opno-locblazor-webassembly"></a>Blazor網路組裝
 
-Blazor 的主要裝載模型會在 WebAssembly 的瀏覽器中執行用戶端。 Blazor 應用程式、其相依性和 .NET 執行時間會下載至瀏覽器。 應用程式會直接在瀏覽器 UI 執行緒上執行。 UI 更新和事件處理會在同一個進程中進行。 應用程式的資產會以靜態檔案的形式部署至 web 伺服器或服務，以提供靜態內容給用戶端。
+的主要Blazor託管模型是在 WebAssembly 上的瀏覽器中運行用戶端。 應用Blazor、其依賴項和 .NET 運行時將下載到瀏覽器。 應用程式會直接在瀏覽器 UI 執行緒上執行。 UI 更新和事件處理在同一進程中進行。 應用的資產作為靜態檔部署到能夠向用戶端提供靜態內容的 Web 伺服器或服務。
 
-![Blazor WebAssembly： Blazor 應用程式會在瀏覽器內的 UI 執行緒上執行。](hosting-models/_static/blazor-webassembly.png)
+![BlazorWeb 組裝Blazor: 應用在瀏覽器內的 UI 線程上運行。](hosting-models/_static/blazor-webassembly.png)
 
-若要使用用戶端裝載模型來建立 Blazor 應用程式，請使用 **Blazor WebAssembly 應用程式**範本（[dotnet new blazorwasm](/dotnet/core/tools/dotnet-new)）。
+要使用用戶端Blazor託管模型創建應用,請使用**BlazorWebAssembly 應用程式**樣本[(dotnet 新 blazorwasm](/dotnet/core/tools/dotnet-new))。
 
-選取 [ **Blazor WebAssembly 應用程式**] 範本之後，您可以選擇將應用程式設定為使用 ASP.NET Core 後端，方法是選取 [裝載的**ASP.NET Core** ] 核取方塊（[dotnet] [新增] [blazorwasm] [[託管](/dotnet/core/tools/dotnet-new)]）。 ASP.NET Core 應用程式會將 Blazor 應用程式提供給用戶端。 Blazor WebAssembly 應用程式可以使用 Web API 呼叫或[SignalR](xref:signalr/introduction) （<xref:tutorials/signalr-blazor-webassembly>），透過網路與伺服器互動。
+選擇**BlazorWebAssembly 應用**樣本後,您可以選擇透過選擇**ASP.NET 核心託管**複選框[(dotnet new blazorwasm -- 託管](/dotnet/core/tools/dotnet-new))來配置應用以使用ASP.NET核心後端介面。 ASP.NET核心應用將Blazor應用服務到用戶端。 WebAssemblyBlazor應用可以使用 Web API[SignalR](xref:signalr/introduction)呼<xref:tutorials/signalr-blazor-webassembly>叫或 () 透過網路與伺服器進行互動。
 
-這些範本包含的 `blazor.webassembly.js` 腳本會處理：
+樣本包括處理以下情況`blazor.webassembly.js`的腳本:
 
-* 下載 .NET 執行時間、應用程式和應用程式的相依性。
-* 初始化執行時間以執行應用程式。
+* 下載 .NET 運行時、應用和應用的依賴項。
+* 初始化運行應用的運行時。
 
-Blazor WebAssembly 裝載模型提供數個優點：
+Blazor WebAssembly 託管模型具有以下幾個優點:
 
-* 沒有 .NET 伺服器端相依性。 應用程式會在下載至用戶端之後完全正常運作。
-* 用戶端資源和功能都可以充分運用。
-* 工作會從伺服器卸載至用戶端。
-* 不需要 ASP.NET Core web 伺服器來裝載應用程式。 無伺服器部署案例可行（例如，從 CDN 提供應用程式）。
+* 沒有 .NET 伺服器端依賴項。 應用程式在下載到用戶端後已完全正常運行。
+* 充分利用客戶端資源和功能。
+* 工作從伺服器卸載到用戶端。
+* ASP.NET 酷網路伺服器不需要託管應用。 可以使用無伺服器部署方案(例如,從CDN為應用提供服務)。
 
-Blazor WebAssembly 裝載有缺點：
+Blazor Web 組裝託管有缺點:
 
-* 應用程式僅限於瀏覽器的功能。
-* 需要支援的用戶端硬體和軟體（例如 WebAssembly 支援）。
-* 下載大小較大，且應用程式需要較長的時間來載入。
-* .NET 執行時間和工具支援較不成熟。 例如， [.NET Standard](/dotnet/standard/net-standard)支援和偵錯工具中有限制。
+* 該應用程式僅限於瀏覽器的功能。
+* 需要有能力的用戶端硬體和軟體(例如,Web 組裝支援)。
+* 下載大小較大,並且載入應用需要更長的時間。
+* .NET 運行時和工具支援不太成熟。 例如[,.NET 標準](/dotnet/standard/net-standard)支持和調試中存在限制。
 
-## <a name="opno-locblazor-server"></a>Blazor 伺服器
+管理系統Blazor應用程式模型支援[Docker 容器](/dotnet/standard/microservices-architecture/container-docker-introduction/index)。 右鍵按一下可視化工作室中的伺服器項目,然後選擇 **「添加** > **Docker 支援**」。。
 
-在 Blazor 伺服器裝載模型中，應用程式會從 ASP.NET Core 應用程式內的伺服器上執行。 UI 更新、事件處理及 JavaScript 呼叫會透過[SignalR](xref:signalr/introduction)連接來處理。
+## <a name="opno-locblazor-server"></a>Blazor伺服器
 
-![瀏覽器會透過 SignalR 連接，與伺服器上的應用程式互動（裝載于 ASP.NET Core 應用程式內）。](hosting-models/_static/blazor-server.png)
+使用Blazor伺服器託管模型,應用將在伺服器上從ASP.NET核心應用內執行。 UI 更新、事件處理和 JAVAScript[SignalR](xref:signalr/introduction)呼叫透過連接處理。
 
-若要使用 Blazor 伺服器裝載模型來建立 Blazor 應用程式，請使用 ASP.NET Core **Blazor 伺服器應用程式**範本（[dotnet new blazorserver](/dotnet/core/tools/dotnet-new)）。 ASP.NET Core 應用程式會裝載 Blazor 伺服器應用程式，並建立用戶端連接的 SignalR 端點。
+![瀏覽器透過SignalR連接與伺服器上的應用(託管在ASP.NET核心應用內)進行交互。](hosting-models/_static/blazor-server.png)
 
-ASP.NET Core 應用程式會參考要新增的應用程式 `Startup` 類別：
+Blazor要使用Blazor伺服器託管模型創建應用,請使用ASP.NET核心**Blazor伺服器應用程式**範本[(dotnet 新的 blazorserver)。](/dotnet/core/tools/dotnet-new) ASP.NET核心應用託管Blazor伺服器應用並SignalR創建用戶端連接的終結點。
+
+ASP.NET核心應用引用應用的`Startup`類別以新增:
 
 * 伺服器端服務。
-* 應用程式至要求處理管線。
+* 到請求處理管道的應用。
 
-`blazor.server.js` 腳本&dagger; 會建立用戶端連接。 應用程式會負責保存和還原所需的應用程式狀態（例如，萬一網路連線中斷時）。
+文本`blazor.server.js`建立用戶端連接。 應用有責任根據需要保持和恢復應用狀態(例如,在網路連接丟失時)。 文本`blazor.server.js`從ASP.NET核心共用框架中的嵌入式資源提供。
 
-Blazor 伺服器裝載模型提供數個優點：
+伺服器Blazor託管模型具有以下幾個優點:
 
-* 下載大小明顯小於 Blazor WebAssembly 應用程式，而應用程式載入速度會更快。
-* 應用程式會充分利用伺服器功能，包括使用任何 .NET Core 相容的 Api。
-* 伺服器上的 .NET Core 是用來執行應用程式，因此現有的 .NET 工具（例如，「偵測」）會如預期般運作。
-* 支援瘦用戶端。 例如，Blazor 伺服器應用程式使用不支援 WebAssembly 的瀏覽器，以及在資源限制的裝置上。
-* 應用程式的 .NET/C#程式碼基底（包括應用程式的元件代碼）不會提供給用戶端。
+* 下載大小明顯小於BlazorWebAssembly 應用,並且該應用載入速度更快。
+* 該應用程式充分利用了伺服器功能,包括使用任何.NET Core 相容 API。
+* 伺服器上的 .NET Core 用於運行應用,因此現有的 .NET 工具(如調試)按預期工作。
+* 支援精簡用戶端。 例如,Blazor伺服器應用適用於不支援 WebAssembly 和資源受限的設備上的瀏覽器。
+* 應用程式的 .NET/C++ 代碼庫(包括應用的元件代碼)不提供給用戶端。
 
-Blazor 伺服器裝載有缺點：
+Blazor伺服器託管有缺點:
 
-* 通常會有較高的延遲。 每個使用者互動都牽涉到網路躍點。
-* 沒有離線支援。 如果用戶端連線失敗，應用程式就會停止運作。
-* 對於具有許多使用者的應用程式而言，擴充性是極具挑戰性的。 伺服器必須管理多個用戶端連接並處理用戶端狀態。
-* 需要 ASP.NET Core 伺服器才能服務應用程式。 無伺服器部署案例不可行（例如，從 CDN 提供應用程式）。
+* 通常存在更高的延遲。 每個使用者交互都涉及網路躍點。
+* 沒有離線支援。 如果用戶端連接失敗,應用將停止工作。
+* 對於許多用戶的應用來說,可擴充性具有挑戰性。 伺服器必須管理多個用戶端連接並處理用戶端狀態。
+* 需要ASP.NET核心伺服器才能為應用提供服務。 無法使用無伺服器部署方案(例如,從CDN為應用提供服務)。
 
-&dagger;`blazor.server.js` 腳本是從 ASP.NET Core 共用架構中的內嵌資源所提供。
+伺服器Blazor應用模型支援[Docker 容器](/dotnet/standard/microservices-architecture/container-docker-introduction/index)。 右鍵單擊可視化工作室中的項目,然後選擇 **「添加** > **Docker 支援**」。。
 
-### <a name="comparison-to-server-rendered-ui"></a>與伺服器呈現的 UI 比較
+### <a name="comparison-to-server-rendered-ui"></a>與伺服器呈現的 UI 進行比較
 
-瞭解 Blazor Server 應用程式的其中一種方式，就是了解它與傳統模型有何不同，可以使用 Razor views 或 Razor Pages，在 ASP.NET Core 應用程式中呈現 UI。 這兩種模型都使用 Razor 語言來描述 HTML 內容，但在標記呈現的方式上有很大的差異。
+瞭解Blazor伺服器應用的一種方法是瞭解它與使用 Razor 檢視或 Razor 頁面在 ASP.NET 核心應用中呈現 UI 的傳統模型有何不同。 這兩種模型都使用 Razor 語言來描述 HTML 內容,但它們在呈現標記的方式上存在顯著差異。
 
-當 Razor 頁面或視圖呈現時，每一行 Razor 程式碼都會以文字格式發出 HTML。 呈現之後，伺服器會處置頁面或 view 實例，包括任何已產生的狀態。 當頁面的另一個要求發生時（例如，當伺服器驗證失敗且顯示驗證摘要時）：
+呈現 Razor 頁面或檢視時,每行 Razor 代碼都會以文本形式發出 HTML。 呈現後,伺服器將釋放頁面或視圖實例,包括生成的任何狀態。 當發生另一個頁面請求時,例如伺服器驗證失敗並顯示驗證摘要時:
 
-* 整個頁面會再次重新顯示為 HTML 文字。
-* 此頁面會傳送至用戶端。
+* 整個頁面將再次重新呈現為 HTML 文本。
+* 該頁將發送到用戶端。
 
-Blazor 應用程式是由可重複使用的 UI 元素（稱為「*元件*」）所組成。 元件包含C#程式碼、標記和其他元件。 當元件呈現時，Blazor 會產生類似于 HTML 或 XML 檔物件模型（DOM）的內含元件圖形。 此圖表包含屬性和欄位中保留的元件狀態。 Blazor 會評估元件圖形，以產生標記的二進位標記法。 二進位格式可以是：
+應用Blazor由稱為*元件*的 UI 的可重用元素組成。 元件包含 C# 代碼、標記和其他元件。 顯示元件時,Blazor產生類似於 HTML 或 XML 文件物件模型 (DOM) 的包含元件的圖形。 此圖形包括屬性和欄位中持有的元件狀態。 Blazor計算元件圖以生成標記的二進位表示形式。 二進位格式可以是:
 
-* 轉換成 HTML 文字（在匯入&dagger;期間）。
-* 用來在一般轉譯期間有效率地更新標記。
+* 轉換為 HTML 文本(&dagger;在預渲染期間)。
+* 用於在常規渲染期間有效地更新標記。
 
-&dagger;預先*呈現*&ndash; 要求的 Razor 元件會在伺服器上編譯為靜態 HTML，並傳送至用戶端，並在其中呈現給使用者。 在用戶端與伺服器之間建立連接之後，元件的靜態資源清單元素會取代為互動式元素。 進行預進行，讓應用程式更能回應使用者。
+&dagger;*預成*&ndash;一個使用者的 Razor 元件在伺服器上編譯為靜態 HTML 並發送到用戶端,並呈現給使用者。 在用戶端和伺服器之間建立連接后,元件的靜態預渲染元素將被互動式元素替換。 預渲染使應用對用戶的反應更快。
 
-會觸發 Blazor 中的 UI 更新：
+的BlazorUI 更新由:
 
-* 使用者互動，例如選取按鈕。
-* 應用程式觸發程式，例如計時器。
+* 使用者互動,例如選擇按鈕。
+* 應用觸發器,如計時器。
 
-圖形為重新顯示，且會計算 UI*差異*（差異）。 這項差異是更新用戶端上的 UI 所需的最小一組 DOM 編輯。 差異會以二進位格式傳送至用戶端，並由瀏覽器套用。
+重新渲染圖形,並計算 UI*差異*(差異)。 此差異是更新用戶端上的 UI 所需的最小 DOM 編輯集。 差異以二進位格式發送到用戶端,並由瀏覽器應用。
 
-元件會在使用者從用戶端導覽出去之後處置。 當使用者與元件互動時，元件的狀態（服務、資源）必須保留在伺服器的記憶體中。 因為許多元件的狀態可能會由伺服器同時維護，所以記憶體耗盡是必須解決的問題。 如需如何撰寫 Blazor Server 應用程式以確保最佳使用伺服器記憶體的指引，請參閱 <xref:security/blazor/server>。
+使用者在用戶端上導航后釋放元件。 當使用者與元件交互時,元件的狀態(服務、資源)必須保持在伺服器的記憶體中。 由於伺服器可能同時維護許多元件的狀態,因此記憶體耗盡是必須解決的問題。 有關如何創作Blazor伺服器應用以確保最佳使用伺服器記憶體的指導,請參閱<xref:security/blazor/server>。
 
-### <a name="circuits"></a>獲得
+### <a name="circuits"></a>電路
 
-Blazor 伺服器應用程式建置於[ASP.NET Core SignalR](xref:signalr/introduction)上。 每個用戶端會透過一或多個稱為*線路*的 SignalR 連線來與伺服器通訊。 線路是 Blazor的抽象概念，而不是可容忍暫時網路中斷的 SignalR 連接。 當 Blazor 用戶端發現 SignalR 連線已中斷連線時，它會嘗試使用新的 SignalR 連接重新連接到伺服器。
+伺服器應用程式構建在[ASP.NETSignalR核心](xref:signalr/introduction)之上Blazor。 每個客戶端透過一個或多個稱為電SignalR路 連線與伺服器*通訊*。 電路是Blazor可以容忍臨時網路中SignalR斷 的連接的抽象。 當Blazor用戶端看到SignalR連接斷開連接時,它會嘗試使用SignalR新 連接重新連接到伺服器。
 
-連接到 Blazor 伺服器應用程式的每個瀏覽器畫面（瀏覽器索引標籤或 iframe）都會使用 SignalR 連接。 相較于一般伺服器呈現的應用程式，這還是另一項重要的差異。 在伺服器呈現的應用程式中，在多個瀏覽器畫面中開啟相同的應用程式，通常不會轉譯成伺服器上的其他資源需求。 在 Blazor 伺服器應用程式中，每個瀏覽器畫面都需要個別的線路，且元件狀態的個別實例會由伺服器管理。
+連接到Blazor伺服器應用的每個瀏覽器螢幕(瀏覽器選項卡或 iframe)SignalR都使用 連接。 與典型的伺服器呈現應用相比,這是另一個重要區別。 在伺服器呈現的應用中,在多個瀏覽器螢幕中打開同一應用通常不會轉化為伺服器上的其他資源需求。 在BlazorServer 應用中,每個瀏覽器螢幕都需要由伺服器管理的單獨的電路和元件狀態的單獨實例。
 
-Blazor 考慮關閉瀏覽器索引標籤，或流覽至外部 URL 的*正常*終止。 在正常終止的事件中，會立即釋放線路和相關聯的資源。 用戶端也可能會因為網路中斷而無法正常地中斷連線。 Blazor Server 會儲存已中斷連線的線路，以取得可設定的間隔，以允許用戶端重新連線。
+Blazor考慮關閉瀏覽器選項卡或以*正常*終止形式導航到外部 URL。 如果正常終止,電路和相關資源將立即釋放。 用戶端也可能非正常斷開連接,例如由於網路中斷。 Blazor伺服器在可配置的間隔記憶體儲存斷開連接的電路,以允許用戶端重新連接。
 
-Blazor Server 可讓程式碼定義*電路處理常式*，以允許對使用者線路狀態的變更執行程式碼。 如需詳細資訊，請參閱 <xref:blazor/advanced-scenarios#blazor-server-circuit-handler>。
+Blazor伺服器允許代碼定義*電路處理程式*,它允許在更改使用者電路的狀態時運行代碼。 如需詳細資訊，請參閱 <xref:blazor/advanced-scenarios#blazor-server-circuit-handler>。
 
 ### <a name="ui-latency"></a>UI 延遲
 
-UI 延遲是從起始的動作到 UI 更新時間所花費的時間。 較小的 UI 延遲值是應用程式對使用者進行回應的必要行為。 在 Blazor 伺服器應用程式中，會將每個動作傳送至伺服器、進行處理，並傳回 UI 差異。 因此，UI 延遲是網路延遲和處理動作之伺服器延遲的總和。
+UI 延遲是從啟動的操作到更新 UI 所需的時間。 對於應用來說,UI 延遲的較小值對於用戶進行回應是勢在必行的。 在BlazorServer 應用中,每個操作都發送到伺服器,處理併發送回 UI 差異。 因此,UI 延遲是處理操作時網路延遲和伺服器延遲的總和。
 
-對於僅限於私人商業網路的企業營運應用程式，通常會 imperceptible 因網路延遲而對使用者的延遲所造成的影響。 對於透過網際網路部署的應用程式，使用者的延遲可能會很明顯，尤其是在地理位置廣泛散佈的使用者時。
+對於僅限於私有公司網路的業務線應用,通常無法察覺到網路延遲對使用者感知延遲的影響。 對於通過 Internet 部署的應用,延遲可能會對使用者造成明顯注意,尤其是在使用者在地理位置上分佈廣泛時。
 
-記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。 如需詳細資訊，請參閱 <xref:security/blazor/server>。
+記憶體使用還會導致應用延遲。 記憶體使用量增加會導致頻繁的垃圾回收或將記憶體分到磁碟,這兩者都降低了應用性能,從而增加了 UI 延遲。 如需詳細資訊，請參閱 <xref:security/blazor/server>。
 
-Blazor 伺服器應用程式應該經過優化，藉由減少網路延遲和記憶體使用量，將 UI 延遲降到最低。 如需測量網路延遲的方法，請參閱 <xref:host-and-deploy/blazor/server#measure-network-latency>。 如需 SignalR 和 Blazor的詳細資訊，請參閱：
+Blazor應優化伺服器應用,通過減少網路延遲和記憶體使用量來最大程度地減少 UI 延遲。 有關測量網路延遲的方法,請參閱<xref:host-and-deploy/blazor/server#measure-network-latency>。 有關BlazorSignalR和 的詳細資訊,請參閱:
 
 * <xref:host-and-deploy/blazor/server>
 * <xref:security/blazor/server>
 
-### <a name="connection-to-the-server"></a>連接到伺服器
+### <a name="connection-to-the-server"></a>連線到伺服器
 
-Blazor 伺服器應用程式需要伺服器的作用中 SignalR 連接。 如果連接中斷，應用程式會嘗試重新連線到伺服器。 只要用戶端的狀態仍在記憶體中，用戶端會話就會繼續，而不會失去狀態。
+Blazor伺服器應用需要與伺服器SignalR的有效連接。 如果連接丟失,應用將嘗試重新連接到伺服器。 只要客戶端的狀態仍在記憶體中,用戶端會話將恢復而不丟失狀態。
 
-Blazor 伺服器應用程式會 prerenders，以回應第一個用戶端要求，這會在伺服器上設定 UI 狀態。 當用戶端嘗試建立 SignalR 連接時，用戶端必須重新連線到相同的伺服器。 使用多個後端伺服器的 Blazor 伺服器應用程式應該為 SignalR 連線執行*粘滯會話*。
+伺服器Blazor應用預先呈現以回應第一個用戶端請求,該請求在伺服器上設置 UI 狀態。 當用戶端嘗試建立連接時,SignalR客戶端必須重新連接到同一伺服器。 Blazor使用多後端伺服器的伺服器套用應該SignalR為 連線來*黏性作業階段*。
 
-我們建議使用適用于 Blazor 伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr)。 此服務可將 Blazor 伺服器應用程式相應增加為大量的並行 SignalR 連線。 您可以將服務的 `ServerStickyMode` 選項或設定值設為 [`Required`]，以針對 Azure SignalR 服務啟用 [粘滯會話]。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/server#signalr-configuration>。
+我們建議將[AzureSignalR服務](/azure/azure-signalr)用於Blazor伺服器應用。 該服務允許將Blazor伺服器應用擴展到大量併SignalR發 連接。 透過此選項SignalR`ServerStickyMode`或設定值設定為,為 Azure 服務啟用黏滯工作階段`Required`。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/server#signalr-configuration>。
 
-使用 IIS 時，會使用應用程式要求路由來啟用「粘滯會話」。 如需詳細資訊，請參閱[使用應用程式要求路由的 HTTP 負載平衡](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
+使用 IIS 時,將使用應用程式請求路由啟用粘滯會話。 有關詳細資訊,請參閱[使用應用程式請求路由](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)的 HTTP 負載平衡。
 
 ## <a name="additional-resources"></a>其他資源
 

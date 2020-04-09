@@ -7,15 +7,15 @@ ms.custom: mvc
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/new-field
 ms.openlocfilehash: a5ea9b75cf8bb1f31cb07a2b32f361bdbfd4efa3
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78662901"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>將欄位新增至 ASP.NET Core MVC 應用程式
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 在本節中，您會使用 [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First 移轉：
 
@@ -51,7 +51,7 @@ Command ⌘ + B
 
 ------
 
-因為您已將欄位新增至 `Movie` 類別，所以需要更新繫結允許清單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `[Bind]` 和 `Create` 這兩個動作方法的 `Edit` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
+因為您已將欄位新增至 `Movie` 類別，所以需要更新繫結允許清單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `Create` 和 `Edit` 這兩個動作方法的 `[Bind]` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
 
 ```csharp
 [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")]
@@ -63,7 +63,7 @@ Command ⌘ + B
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-64)]
 
-使用 *欄位更新*/Views/Movies/Create.cshtml`Rating`。
+使用 `Rating` 欄位更新 */Views/Movies/Create.cshtml*。
 
 # <a name="visual-studio--visual-studio-for-mac"></a>[Visual Studio / Visual Studio for Mac](#tab/visual-studio+visual-studio-mac)
 
@@ -77,7 +77,7 @@ Command ⌘ + B
 
 ---
 
-更新其餘的範本。
+更新其餘範本。
 
 更新 `SeedData` 類別，使其提供新資料行的值。 範例變更如下所示，但您會想要為每個 `new Movie` 進行這項變更。
 
@@ -101,7 +101,7 @@ Command ⌘ + B
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+ 從 [工具]**** 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]****。
 
   ![PMC 功能表](adding-model/_static/pmc.png)
 
@@ -114,7 +114,7 @@ Update-Database
 
 `Add-Migration` 命令會告知移轉架構，檢查目前的 `Movie` 模型與目前的 `Movie` 資料庫結構描述，並建立必要的程式碼以將資料庫移轉至新的模型。
 
-"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，更加實用。
+"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
 
 如果刪除資料庫中的所有記錄，初始化方法會將內容植入資料庫，並包含 `Rating` 欄位。
 
@@ -131,11 +131,11 @@ dotnet ef database update
 ---
 <!-- End of VS tabs -->
 
-執行應用程式，並確認您可以使用 `Rating` 欄位來建立、編輯和顯示電影。 更新應用程式：
+運行應用並驗證您可以使用`Rating`欄位創建、編輯和顯示影片。 更新應用:
 
-* 將 [`Rating`] 欄位加入至 [`Edit`]、[`Details`] 和 [`Delete` 視圖] 範本。
-* 在 `MoviesController`的 [編輯動作] 方法中更新系結。
+* 將`Rating`欄位添加`Edit`到`Details``Delete`和檢視範本。
+* 在的編輯操作方法中更新繫結`MoviesController`。
 
 > [!div class="step-by-step"]
-> [上一頁](search.md)
-> [下一頁](validation.md)
+> [前一個](search.md)
+> [下一個](validation.md)

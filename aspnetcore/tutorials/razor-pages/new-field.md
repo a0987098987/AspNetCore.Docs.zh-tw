@@ -1,21 +1,21 @@
 ---
 title: 將欄位新增至 ASP.NET Core 中的 Razor 頁面
 author: rick-anderson
-description: 示範如何使用 Entity Framework Core 將新欄位新增至 Razor Pages
+description: 示範如何使用 Entity Framework Core 將新欄位新增至 Razor 頁面
 ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/new-field
 ms.openlocfilehash: d34b938dbd1b512ddb167cac0c035837889cd38f
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78657812"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -28,7 +28,7 @@ ms.locfileid: "78657812"
 
 使用 EF Code First 自動建立資料庫時，Code First 會：
 
-* 將 `__EFMigrationsHistory` 資料表加入至資料庫，以追蹤資料庫的架構是否與其產生的模型類別同步。
+* 向資料庫`__EFMigrationsHistory`添加表,以追蹤資料庫的架構是否與生成的模型類同步。
 * 如果模型類別與資料庫不同步，EF 會擲回例外狀況。
 
 自動驗證結構描述/模型是否同步，讓您更容易發現不一致的資料庫/程式碼問題。
@@ -50,14 +50,14 @@ ms.locfileid: "78657812"
 更新下列頁面：
 
 * 將 `Rating` 欄位新增至 Delete 和 Details 頁面。
-* 使用 [ 欄位更新 ](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)Create.cshtml`Rating`。
+* 使用 `Rating` 欄位更新 [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)。
 * 將 `Rating` 欄位新增至 Edit 頁面。
 
-在更新資料庫以包含新欄位之前，應用程式無法運作。 在不更新資料庫的情況下執行應用程式會擲回 `SqlException`：
+在更新資料庫以包含新欄位之前，應用程式無法運作。 在不更新資料庫的情況下執行應用將引發`SqlException`:
 
 `SqlException: Invalid column name 'Rating'.`
 
-`SqlException` 例外狀況是因為更新的電影模型類別與資料庫之電影資料表的架構不同。 (資料庫資料表中沒有任何 `Rating` 資料行)。
+異常`SqlException`是由更新的 Movie 模型類與資料庫的 Movie 表的架構不同引起的。 (資料庫資料表中沒有任何 `Rating` 資料行)。
 
 有幾個方法可以解決這個錯誤：
 
@@ -83,7 +83,7 @@ ms.locfileid: "78657812"
 
 ### <a name="add-a-migration-for-the-rating-field"></a>新增評等欄位的移轉
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+ 從 [工具]**** 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]****。
 在 PMC 中，輸入下列命令：
 
 ```powershell
@@ -96,9 +96,9 @@ Update-Database
 * 比較 `Movie` 模型與 `Movie` 資料庫結構描述。
 * 建立程式碼，將資料庫結構描述移轉至新模型。
 
-"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，更加實用。
+"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
 
-`Update-Database` 命令會告訴架構將架構變更套用至資料庫，並保留現有的資料。
+該`Update-Database`命令告訴框架將架構更改應用於資料庫並保留現有數據。
 
 <a name="ssox"></a>
 
@@ -107,10 +107,10 @@ Update-Database
 另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要在 SSOX 中刪除資料庫：
 
 * 在 SSOX 中選取資料庫。
-* 以滑鼠右鍵按一下資料庫，然後選取 [刪除]。
-* 核取 [關閉現有的連接]。
-* 選取 [確定]。
-* 在 [PMC](xref:tutorials/razor-pages/new-field#pmc) 中，更新資料庫：
+* 以滑鼠右鍵按一下資料庫，然後選取 [刪除]**。
+* 檢查**關閉現有連線**。
+* 選取 [確定]  。
+* 在[PMC 中](xref:tutorials/razor-pages/new-field#pmc),更新資料庫:
 
   ```powershell
   Update-Database
@@ -136,11 +136,11 @@ dotnet ef database update
 
 ## <a name="additional-resources"></a>其他資源
 
-* [這個教學課程的 YouTube 版本](https://youtu.be/3i7uMxiGGR8)
+* [本教學的 YouTube 版本](https://youtu.be/3i7uMxiGGR8)
 
 > [!div class="step-by-step"]
-> [上一步：新增搜尋](xref:tutorials/razor-pages/search)
-> [下一步：新增驗證](xref:tutorials/razor-pages/validation)
+> [上一篇:新增搜尋](xref:tutorials/razor-pages/search)
+> [下一步:添加驗證](xref:tutorials/razor-pages/validation)
 
 ::: moniker-end
 
@@ -175,7 +175,7 @@ dotnet ef database update
 更新下列頁面：
 
 * 將 `Rating` 欄位新增至 Delete 和 Details 頁面。
-* 使用 [ 欄位更新 ](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml)Create.cshtml`Rating`。
+* 使用 `Rating` 欄位更新 [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml)。
 * 將 `Rating` 欄位新增至 Edit 頁面。
 
 在更新資料庫以包含新欄位之前，應用程式無法運作。 如果立即執行，應用程式會擲回 `SqlException`：
@@ -208,7 +208,7 @@ dotnet ef database update
 
 ### <a name="add-a-migration-for-the-rating-field"></a>新增評等欄位的移轉
 
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+ 從 [工具]**** 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]****。
 在 PMC 中，輸入下列命令：
 
 ```powershell
@@ -221,7 +221,7 @@ Update-Database
 * 比較 `Movie` 模型與 `Movie` 資料庫結構描述。
 * 建立程式碼，將資料庫結構描述移轉至新模型。
 
-"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，更加實用。
+"Rating" 是用來命名移轉檔案的任意名稱。 建議您針對移轉檔案使用有意義的名稱，這更加實用。
 
 `Update-Database` 命令會指示架構將結構描述變更套用至資料庫。
 
@@ -232,10 +232,10 @@ Update-Database
 另一個選擇是刪除資料庫並使用移轉重新建立資料庫。 若要在 SSOX 中刪除資料庫：
 
 * 在 SSOX 中選取資料庫。
-* 以滑鼠右鍵按一下資料庫，然後選取 [刪除]。
-* 核取 [關閉現有的連接]。
-* 選取 [確定]。
-* 在 [PMC](xref:tutorials/razor-pages/new-field#pmc) 中，更新資料庫：
+* 以滑鼠右鍵按一下資料庫，然後選取 [刪除]**。
+* 檢查**關閉現有連線**。
+* 選取 [確定]  。
+* 在[PMC 中](xref:tutorials/razor-pages/new-field#pmc),更新資料庫:
 
   ```powershell
   Update-Database
@@ -259,10 +259,10 @@ dotnet ef database update
 
 ## <a name="additional-resources"></a>其他資源
 
-* [這個教學課程的 YouTube 版本](https://youtu.be/3i7uMxiGGR8)
+* [本教學的 YouTube 版本](https://youtu.be/3i7uMxiGGR8)
 
 > [!div class="step-by-step"]
-> [上一步：新增搜尋](xref:tutorials/razor-pages/search)
-> [下一步：新增驗證](xref:tutorials/razor-pages/validation)
+> [上一篇:新增搜尋](xref:tutorials/razor-pages/search)
+> [下一步:添加驗證](xref:tutorials/razor-pages/validation)
 
 ::: moniker-end

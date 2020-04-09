@@ -1,5 +1,5 @@
 ---
-title: 教學課程：執行繼承-使用 EF Core 的 ASP.NET MVC
+title: 教學:實現繼承 - 使用 EF 核心ASP.NET MVC
 description: 本教學課程將說明如何在 ASP.NET Core 應用程式中使用 Entity Framework Core，以實作資料模型中的繼承。
 author: rick-anderson
 ms.author: riande
@@ -8,13 +8,13 @@ ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/inheritance
 ms.openlocfilehash: dab3d2b057162f6d986db10e74e3681acc0ada3b
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78657238"
 ---
-# <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>教學課程：執行繼承-使用 EF Core 的 ASP.NET MVC
+# <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>教學:實現繼承 - 使用 EF 核心ASP.NET MVC
 
 在上一個教學課程中，您已處理並行存取例外狀況。 本教學課程將示範如何在資料模型中實作繼承。
 
@@ -99,7 +99,7 @@ dotnet ef migrations add Inheritance
 
 還不要執行 `database update` 命令。 該命令將導致資料遺失，因為它會卸除 Instructor 資料表，然後將 Student 資料表重新命名為 Person。 您必須提供自訂程式碼來保留現有的資料。
 
-開啟 Migrations/*時間戳記>_Inheritance.cs\<* ，並以下列程式碼取代 `Up` 方法：
+開啟 Migrations/\<時間戳記>_Inheritance.cs**，並以下列程式碼取代 `Up` 方法：
 
 [!code-csharp[](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
 
@@ -140,11 +140,11 @@ dotnet ef database update
 
 執行應用程式，然後嘗試各種頁面。 一切項目的運作與之前一樣。
 
-在 [SQL Server 物件總管] 中，展開 [資料連線/SchoolContext]，然後展開 [資料表]，您會看到 Person 資料表已取代 Student 和 Instructor 資料表。 開啟 Person 資料表設計工具，您會看到它包含了過去位在 Student 和 Instructor 資料表中的所有資料行。
+在 [SQL Server 物件總管]**** 中，展開 [資料連線/SchoolContext]****，然後展開 [資料表]****，您會看到 Person 資料表已取代 Student 和 Instructor 資料表。 開啟 Person 資料表設計工具，您會看到它包含了過去位在 Student 和 Instructor 資料表中的所有資料行。
 
 ![SSOX 中的 Person 資料表](inheritance/_static/ssox-person-table.png)
 
-以滑鼠右鍵按一下 Person 資料表，然後按一下 [顯示資料表資料] 以查看鑑別子資料行。
+以滑鼠右鍵按一下 Person 資料表，然後按一下 [顯示資料表資料]**** 以查看鑑別子資料行。
 
 ![SSOX 中的 Person 資料 - 資料表資料](inheritance/_static/ssox-person-data.png)
 
@@ -171,4 +171,4 @@ dotnet ef database update
 若要了解如何處理各種較進階的 Entity Framework 案例，請前往下一個教學課程。
 
 > [!div class="nextstepaction"]
-> [下一步： Advanced 主題](advanced.md)
+> [下一頁:進階主題](advanced.md)

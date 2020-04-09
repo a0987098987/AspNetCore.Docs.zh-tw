@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/26/2020
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: d24807d1ea675448536ab865d41ae46f80043666
-ms.sourcegitcommit: 6ffb583991d6689326605a24565130083a28ef85
+ms.openlocfilehash: 943ea30c2e4887638f69b6dcdb7e323bcee40240
+ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80306514"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80405984"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -24,11 +24,11 @@ ASP.NET Core 支援相依性插入 (DI) 軟體設計模式，這是用來在類�
 
 如需有關 MVC 控制器內相依性插入的特定詳細資訊，請參閱 <xref:mvc/controllers/dependency-injection>。
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples)([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="overview-of-dependency-injection"></a>相依性插入概觀
 
-「相依性」是另一個物件所需的任何物件。 檢查具有 `MyDependency` 方法的下列 `WriteMessage` 物件，應用程式中的其他類別相依於此物件：
+「相依性」** 是另一個物件所需的任何物件。 檢查具有 `WriteMessage` 方法的下列 `MyDependency` 物件，應用程式中的其他類別相依於此物件：
 
 ```csharp
 public class MyDependency
@@ -72,7 +72,7 @@ public class IndexModel : PageModel
 
 * 使用介面或基底類別來將相依性資訊抽象化。
 * 在服務容器中註冊相依性。 ASP.NET Core 提供內建服務容器 <xref:System.IServiceProvider>。 服務會在應用程式的 `Startup.ConfigureServices` 方法中註冊。
-* 將服務「插入」到服務使用位置之類別的建構函式。 架構會負責建立相依性的執行個體，並在不再需要時將它捨棄。
+* 將服務「插入」** 到服務使用位置之類別的建構函式。 架構會負責建立相依性的執行個體，並在不再需要時將它捨棄。
 
 在[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples)中，`IMyDependency` 介面定義了服務提供給應用程式的方法：
 
@@ -82,11 +82,11 @@ public class IndexModel : PageModel
 
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
 
-`MyDependency` 在其建構函式中會要求 <xref:Microsoft.Extensions.Logging.ILogger`1>。 以鏈結方式使用相依性插入並非不尋常。 每個要求的相依性接著會要求其自己的相依性。 容器會解決圖形中的相依性，並傳回完全解析的服務。 必須先解析的相依性集合組通常稱為「相依性樹狀結構」、「相依性圖形」或「物件圖形」。
+`MyDependency` 在其建構函式中會要求 <xref:Microsoft.Extensions.Logging.ILogger`1>。 以鏈結方式使用相依性插入並非不尋常。 每個要求的相依性接著會要求其自己的相依性。 容器會解決圖形中的相依性，並傳回完全解析的服務。 必須先解析的相依性集合組通常稱為「相依性樹狀結構」**、「相依性圖形」** 或「物件圖形」**。
 
 `IMyDependency` 與 `ILogger<TCategoryName>` 必須在服務容器中註冊。 `IMyDependency` 是在 `Startup.ConfigureServices` 中註冊。 `ILogger<TCategoryName>` 是由記錄抽象基礎結構所註冊，所以它是預設由架構所註冊的[架構提供的服務](#framework-provided-services)。
 
-容器會利用 `ILogger<TCategoryName>`(泛型) 開放類型[ 解析 ](/dotnet/csharp/language-reference/language-specification/types#open-and-closed-types)，讓您不需註冊每個 [(泛型) 建構的型別](/dotnet/csharp/language-reference/language-specification/types#constructed-types)：
+容器會利用 [(泛型) 開放類型](/dotnet/csharp/language-reference/language-specification/types#open-and-closed-types) 解析 `ILogger<TCategoryName>`，讓您不需註冊每個 [(泛型) 建構的型別](/dotnet/csharp/language-reference/language-specification/types#constructed-types)：
 
 ```csharp
 services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
@@ -121,15 +121,15 @@ public class MyDependency : IMyDependency
 
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3,6,13,29-30)]
 
-## <a name="services-injected-into-startup"></a>插入至啟動的服務
+## <a name="services-injected-into-startup"></a>注入開機服務
 
-使用泛型主機（<xref:Microsoft.Extensions.Hosting.IHostBuilder>）時，只能將下列服務類型插入 `Startup` 的函數：
+使用泛型主機時,只能將以下服務`Startup`型態注入建構函<xref:Microsoft.Extensions.Hosting.IHostBuilder>數 ( : )
 
 * `IWebHostEnvironment`
 * <xref:Microsoft.Extensions.Hosting.IHostEnvironment>
 * <xref:Microsoft.Extensions.Configuration.IConfiguration>
 
-服務可以插入 `Startup.Configure`：
+服務可以注入到`Startup.Configure`:
 
 ```csharp
 public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
@@ -142,7 +142,7 @@ public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
 
 ## <a name="framework-provided-services"></a>架構提供的服務
 
-`Startup.ConfigureServices` 方法負責定義應用程式所使用的服務，包括平臺功能，例如 Entity Framework Core 和 ASP.NET Core MVC。 一開始，根據[主機的設定方式](xref:fundamentals/index#host)，提供給 `ConfigureServices` 的 `IServiceCollection` 具有架構所定義的服務。 以 ASP.NET Core 範本為基礎的應用程式，在架構中註冊數百項服務並不常見。 下表列出架構註冊服務的小型範例。
+該方法`Startup.ConfigureServices`負責定義應用使用的服務,包括平臺功能,如實體框架核心和ASP.NET核心 MVC。 最初,提供給`IServiceCollection``ConfigureServices`的服務由框架定義,具體取決於[主機的配置方式](xref:fundamentals/index#host)。 基於ASP.NET核心範本的應用在框架註冊數百個服務方面並不少見。 下表列出了框架註冊服務的一小部分。
 
 | 服務類型 | 存留期 |
 | ------------ | -------- |
@@ -161,9 +161,9 @@ public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
 | <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> | 單一 |
 | <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> | 單一 |
 
-## <a name="register-additional-services-with-extension-methods"></a>以擴充方法註冊其他服務
+## <a name="register-additional-services-with-extension-methods"></a>使用擴充方法註冊其他服務
 
-當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 下列程式碼範例說明如何使用擴充方法[AddDbCoNtext\<TCoNtext >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)和 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*>，將其他服務新增至容器：
+當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 以下代碼是如何使用擴充方法[AddDbContext\<TContext 將](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)其他服務新增到<xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*>容器>和 的範例:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -200,14 +200,14 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="singleton"></a>單一
 
-當第一次收到有關單一資料庫存留期服務的要求時 (或是當執行 <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*> 且隨著服務註冊指定執行個體時)，即會建立單一資料庫存留期服務 (`Startup.ConfigureServices`)。 每個後續要求都會使用相同的執行個體。 若應用程式要求單一資料庫行為，建議您允許服務容器管理服務的存留期。 不要實作單一資料庫設計模式並為使用者提供可用來管理類別中物件存留期的程式碼。
+當第一次收到有關單一資料庫存留期服務的要求時 (或是當執行 `Startup.ConfigureServices` 且隨著服務註冊指定執行個體時)，即會建立單一資料庫存留期服務 (<xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*>)。 每個後續要求都會使用相同的執行個體。 若應用程式要求單一資料庫行為，建議您允許服務容器管理服務的存留期。 不要實作單一資料庫設計模式並為使用者提供可用來管理類別中物件存留期的程式碼。
 
 > [!WARNING]
 > 從單一資料庫解析具範圍服務是非常危險的。 處理後續要求時，它可能會導致服務有不正確的狀態。
 
 ## <a name="service-registration-methods"></a>服務註冊方法
 
-服務註冊擴充方法提供在特定案例中很有用的多載。
+服務註冊擴展方法提供在特定方案中有用的重載。
 
 | 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
@@ -221,7 +221,7 @@ public void ConfigureServices(IServiceCollection services)
 
 如果還未註冊任何實作，則 `TryAdd{LIFETIME}` 方法只會註冊服務。
 
-在下列範例中，第一行會為 `MyDependency` 註冊 `IMyDependency`。 第二行則沒有任何作用，因為 `IMyDependency` 已具有註冊的實作：
+在下列範例中，第一行會為 `IMyDependency` 註冊 `MyDependency`。 第二行則沒有任何作用，因為 `IMyDependency` 已具有註冊的實作：
 
 ```csharp
 services.AddSingleton<IMyDependency, MyDependency>();
@@ -236,9 +236,9 @@ services.TryAddSingleton<IMyDependency, DifferentDependency>();
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddScoped*>
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddSingleton*>
 
-如果還沒有 [相同類型的](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*) 實作，則 *TryAddEnumerable(ServiceDescriptor)* 方法只會註冊服務。 多個服務會透過 `IEnumerable<{SERVICE}>` 解析。 註冊服務時，如果尚未新增相同類型的執行個體，則開發人員只會希望新增執行個體。 程式庫作者通常會使用此方法來避免註冊容器中某個執行個體的兩個複本。
+如果還沒有「相同類型的」** 實作，則 [TryAddEnumerable(ServiceDescriptor)](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*) 方法只會註冊服務。 多個服務會透過 `IEnumerable<{SERVICE}>` 解析。 註冊服務時，如果尚未新增相同類型的執行個體，則開發人員只會希望新增執行個體。 程式庫作者通常會使用此方法來避免註冊容器中某個執行個體的兩個複本。
 
-在下列範例中，第一行會為 `MyDep` 註冊 `IMyDep1`。 第二行會為 `MyDep` 註冊 `IMyDep2`。 第三行則沒有任何作用，因為 `IMyDep1` 已具有 `MyDep` 的已註冊實作：
+在下列範例中，第一行會為 `IMyDep1` 註冊 `MyDep`。 第二行會為 `IMyDep2` 註冊 `MyDep`。 第三行則沒有任何作用，因為 `IMyDep1` 已具有 `MyDep` 的已註冊實作：
 
 ```csharp
 public interface IMyDep1 {}
@@ -257,7 +257,7 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 服務可以透過兩個機制來解析：
 
 * <xref:System.IServiceProvider>
-* <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities> &ndash; 允許在相依性插入容器中不進行服務註冊，即可建立物件。 搭配使用者面向抽象 (例如標籤協助程式、MVC 控制器與模型繫結器) 使用 `ActivatorUtilities`。
+* <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities>&ndash;允許在依賴項注入容器中創建沒有服務註冊的物件。 搭配使用者面向抽象 (例如標籤協助程式、MVC 控制器與模型繫結器) 使用 `ActivatorUtilities`。
 
 建構函式可以接受不是由相依性插入提供的引數，但引數必須指派預設值。
 
@@ -279,10 +279,10 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Models/Operation.cs?name=snippet1)]
 
-會註冊相依於每種其他 `OperationService` 類型的 `Operation`。 當透過相依性插入要求 `OperationService` 時，它會根據相依服務的存留期擷取每個服務的新執行個體或現有執行個體。
+會註冊相依於每種其他 `Operation` 類型的 `OperationService`。 當透過相依性插入要求 `OperationService` 時，它會根據相依服務的存留期擷取每個服務的新執行個體或現有執行個體。
 
-* 當因收到來自容器的要求而建立暫時性服務時，`OperationId` 服務的 `IOperationTransient` 會與 `OperationId` 的 `OperationService` 不同。 `OperationService` 會收到 `IOperationTransient` 類別的新執行個體。 新執行個體會產生不同的 `OperationId`。
-* 當因用戶端要求而建立具範圍的服務時，`OperationId` 服務與用戶端要求中 `IOperationScoped` 的 `OperationService` 皆相同。 在不同的用戶端要求中，兩個服務的 `OperationId` 值都不同。
+* 當因收到來自容器的要求而建立暫時性服務時，`IOperationTransient` 服務的 `OperationId` 會與 `OperationService` 的 `OperationId` 不同。 `OperationService` 會收到 `IOperationTransient` 類別的新執行個體。 新執行個體會產生不同的 `OperationId`。
+* 當因用戶端要求而建立具範圍的服務時，`IOperationScoped` 服務與用戶端要求中 `OperationService` 的 `OperationId` 皆相同。 在不同的用戶端要求中，兩個服務的 `OperationId` 值都不同。
 * 當建立一次 singleton 與 singleton 執行個體服務，並在所有用戶端要求與所有服務中使用時，`OperationId` 在所有服務要求中會固定不變。
 
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Services/OperationService.cs?name=snippet1)]
@@ -333,13 +333,13 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 觀察哪些 `OperationId` 值在要求內以及要求之間不同：
 
-* 「暫時性」 物件一律不同。 第一個與第二個用戶端要求的暫時性 `OperationId` 值在兩個 `OperationService` 作業之間與各用戶端要求之間都不同。 新執行個體會提供給每個服務要求以及用戶端要求。
-* 「具範圍」物件在同一個用戶端要求內皆相同，但在不同的用戶端要求之間則不同。
-* 「單一資料庫」物件對於每個物件與每個要求都相同 (不論 `Operation` 執行個體是否提供於 `Startup.ConfigureServices`)。
+* 「暫時性」** 物件一律不同。 第一個與第二個用戶端要求的暫時性 `OperationId` 值在兩個 `OperationService` 作業之間與各用戶端要求之間都不同。 新執行個體會提供給每個服務要求以及用戶端要求。
+* 「具範圍」** 物件在同一個用戶端要求內皆相同，但在不同的用戶端要求之間則不同。
+* *單例*物件對於每個物件和每個請求都是相同的,而不管`Operation`是否`Startup.ConfigureServices`在中提供了實例。
 
 ## <a name="call-services-from-main"></a>從主要呼叫服務
 
-使用 <xref:Microsoft.Extensions.DependencyInjection.IServiceScope>IServiceScopeFactory.CreateScope[ 建立 ](xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope*)，以解析應用程式範圍中的範圍服務。 此法可用於在開機時存取範圍服務，以執行初始化工作。 下列範例示範如何在 `MyScopedService` 中取得 `Program.Main`：
+使用 [IServiceScopeFactory.CreateScope](xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope*) 建立 <xref:Microsoft.Extensions.DependencyInjection.IServiceScope>，以解析應用程式範圍中的範圍服務。 此法可用於在開機時存取範圍服務，以執行初始化工作。 下列範例示範如何在 `Program.Main` 中取得 `MyScopedService`：
 
 ```csharp
 using System;
@@ -384,9 +384,9 @@ public class Program
 
 ## <a name="scope-validation"></a>範圍驗證
 
-當應用程式在開發環境中執行並呼叫[CreateDefaultBuilder](xref:fundamentals/host/generic-host#default-builder-settings)來建立主機時，預設服務提供者會執行檢查以確認：
+當應用在開發環境中執行並呼叫[CreateDefaultBuilder](xref:fundamentals/host/generic-host#default-builder-settings)產生主機時,預設服務提供者將執行檢查以驗證:
 
-* 範圍服務不是直接或間接由根服務提供者解析。
+* 範圍服務不是直接或間接由開機服務提供者解析。
 * 範圍服務不是直接或間接插入至單一服務。
 
 根服務提供者會在呼叫 <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider*> 時建立。 當提供者啟動應用程式時，根服務提供者的存留期與應用程式/伺服器的存留期一致，並會在應用程式關閉時處置。
@@ -401,7 +401,7 @@ public class Program
 
 要求服務代表您在應用程式中設定和要求的服務。 當物件指定相依性時，這些會由在 `RequestServices` 中找到的類型來滿足，而非 `ApplicationServices`。
 
-一般而言，應用程式不應該直接使用這些屬性。 相反地，透過類別建構函式要求類別所需的型別，以及允許架構插入相依性。 這會產生容易測試的類別。
+一般而言，應用程式不應該直接使用這些屬性。 相反,通過類構造函數請求類所需的類型,並允許框架注入依賴項。 這會產生容易測試的類別。
 
 > [!NOTE]
 > 偏好要求相依性作為建構函式參數，而不要存取 `RequestServices` 集合。
@@ -411,7 +411,7 @@ public class Program
 最佳做法是：
 
 * 設計服務以使用相依性插入來取得其相依性。
-* 避免具狀態的靜態類別和成員。 將應用程式設計成使用單一服務，以避免建立全域狀態。
+* 避免有狀態的靜態類和成員。 設計應用以改用單例服務,避免創建全域狀態。
 * 避免直接在服務內具現化相依類別。 直接具現化會將程式碼耦合到特定實作。
 * 讓應用程式類別維持在小型、情況良好且可輕鬆測試的狀態。
 
@@ -419,9 +419,9 @@ public class Program
 
 ### <a name="disposal-of-services"></a>處置服務
 
-容器會為它建立的 <xref:System.IDisposable.Dispose*> 類型呼叫 <xref:System.IDisposable>。 若執行個體由使用者程式碼新增到容器中，它將不會自動處置。
+容器會為它建立的 <xref:System.IDisposable> 類型呼叫 <xref:System.IDisposable.Dispose*>。 若執行個體由使用者程式碼新增到容器中，它將不會自動處置。
 
-在下列範例中，服務會建立服務容器並自動處置：
+在下面的範例中,服務由服務容器建立並自動釋放:
 
 ```csharp
 public class Service1 : IDisposable {}
@@ -440,10 +440,10 @@ public void ConfigureServices(IServiceCollection services)
 
 在下例中︰
 
-* 服務容器不會建立服務實例。
-* 架構不知道預期的服務存留期。
-* 架構不會自動處置服務。
-* 如果服務未在開發人員程式碼中明確處置，它們會持續存在，直到應用程式關閉為止。
+* 服務實例不是由服務容器創建的。
+* 框架不知道預期的服務存留期。
+* 框架不會自動釋放服務。
+* 如果服務未在開發人員代碼中顯式釋放,則它們將一直持續到應用關閉。
 
 ```csharp
 public class Service1 : IDisposable {}
@@ -456,30 +456,30 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-如需服務處置選項的討論，請參閱[在 ASP.NET Core 中處置 IDisposables 的四種方式](https://andrewlock.net/four-ways-to-dispose-idisposables-in-asp-net-core/)。
+有關服務處置選項的討論,請參閱[ASP.NET 核心 中處置 IIIIAs 的四種方法](https://andrewlock.net/four-ways-to-dispose-idisposables-in-asp-net-core/)。
 
 ## <a name="default-service-container-replacement"></a>預設服務容器取代
 
-內建的服務容器是設計用來滿足架構和大部分取用者應用程式的需求。 我們建議使用內建容器，除非您需要內建容器不支援的特定功能，例如：
+內建服務容器旨在滿足框架和大多數使用者應用的需求。 我們建議您使用內建容器,除非您需要內置容器不支援的特定功能,例如:
 
 * 屬性插入
 * 根據名稱插入
 * 子容器
 * 自訂生命週期管理
 * `Func<T>` 支援延遲初始設定
-* 以慣例為基礎的註冊
+* 基於公約的註冊
 
-下列協力廠商容器可以與 ASP.NET Core 應用程式搭配使用：
+以下第三方容器可與 ASP.NET 核心應用一起使用:
 
-* [Autofac](https://autofac.readthedocs.io/en/latest/integration/aspnetcore.html)
-* [DryIoc](https://www.nuget.org/packages/DryIoc.Microsoft.DependencyInjection)
-* [寬限](https://www.nuget.org/packages/Grace.DependencyInjection.Extensions)
-* [LightInject](https://github.com/seesharper/LightInject.Microsoft.DependencyInjection)
-* [Lamar](https://jasperfx.github.io/lamar/)
-* [Stashbox](https://github.com/z4kn4fein/stashbox-extensions-dependencyinjection)
+* [自動法卡](https://autofac.readthedocs.io/en/latest/integration/aspnetcore.html)
+* [乾奧科](https://www.nuget.org/packages/DryIoc.Microsoft.DependencyInjection)
+* [Grace](https://www.nuget.org/packages/Grace.DependencyInjection.Extensions)
+* [淺噴射](https://github.com/seesharper/LightInject.Microsoft.DependencyInjection)
+* [拉馬爾](https://jasperfx.github.io/lamar/)
+* [斯塔什盒](https://github.com/z4kn4fein/stashbox-extensions-dependencyinjection)
 * [Unity](https://www.nuget.org/packages/Unity.Microsoft.DependencyInjection)
 
-### <a name="thread-safety"></a>執行緒安全性
+### <a name="thread-safety"></a>執行緒安全
 
 建立具備執行緒安全性的 singleton 服務。 如果 singleton 服務相依於暫時性服務，暫時性服務可能也需要具備執行緒安全性，取決於 singleton 如何使用它。
 
@@ -493,9 +493,9 @@ public void ConfigureServices(IServiceCollection services)
 
 * 避免以靜態方式存取服務 (例如，以靜態方式設定 [IApplicationBuilder.ApplicationServices](xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices) 型別以四處使用)。
 
-* 避免使用「服務定位器模式」。 例如，當您可以改用 DI 時，請勿叫用 <xref:System.IServiceProvider.GetService*> 來取得服務執行個體：
+* 避免使用「服務定位器模式」**。 例如，當您可以改用 DI 時，請勿叫用 <xref:System.IServiceProvider.GetService*> 來取得服務執行個體：
 
-  **不正確：**
+  **錯誤:**
 
   ```csharp
   public class MyClass()
@@ -511,7 +511,7 @@ public void ConfigureServices(IServiceCollection services)
   }
   ```
 
-  **正確**：
+  **修正**:
 
   ```csharp
   public class MyClass
@@ -538,7 +538,7 @@ public void ConfigureServices(IServiceCollection services)
 
 就像所有的建議集，您可能會遇到需要忽略建議的情況。 例外狀況很少見&mdash;大部分是架構本身內的特殊案例。
 
-DI 是靜態/全域物件存取模式的「替代」選項。 如果您將 DI 與靜態物件存取混合，則可能無法實現 DI 的優點。
+DI 是靜態/全域物件存取模式的「替代」** 選項。 如果您將 DI 與靜態物件存取混合，則可能無法實現 DI 的優點。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -561,11 +561,11 @@ ASP.NET Core 支援相依性插入 (DI) 軟體設計模式，這是用來在類�
 
 如需有關 MVC 控制器內相依性插入的特定詳細資訊，請參閱 <xref:mvc/controllers/dependency-injection>。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[檢視或下載範例代碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples)([如何下載](xref:index#how-to-download-a-sample))
 
 ## <a name="overview-of-dependency-injection"></a>相依性插入概觀
 
-「相依性」是另一個物件所需的任何物件。 檢查具有 `MyDependency` 方法的下列 `WriteMessage` 物件，應用程式中的其他類別相依於此物件：
+「相依性」** 是另一個物件所需的任何物件。 檢查具有 `WriteMessage` 方法的下列 `MyDependency` 物件，應用程式中的其他類別相依於此物件：
 
 ```csharp
 public class MyDependency
@@ -609,7 +609,7 @@ public class IndexModel : PageModel
 
 * 使用介面或基底類別來將相依性資訊抽象化。
 * 在服務容器中註冊相依性。 ASP.NET Core 提供內建服務容器 <xref:System.IServiceProvider>。 服務會在應用程式的 `Startup.ConfigureServices` 方法中註冊。
-* 將服務「插入」到服務使用位置之類別的建構函式。 架構會負責建立相依性的執行個體，並在不再需要時將它捨棄。
+* 將服務「插入」** 到服務使用位置之類別的建構函式。 架構會負責建立相依性的執行個體，並在不再需要時將它捨棄。
 
 在[範例應用程式](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples)中，`IMyDependency` 介面定義了服務提供給應用程式的方法：
 
@@ -619,11 +619,11 @@ public class IndexModel : PageModel
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
 
-`MyDependency` 在其建構函式中會要求 <xref:Microsoft.Extensions.Logging.ILogger`1>。 以鏈結方式使用相依性插入並非不尋常。 每個要求的相依性接著會要求其自己的相依性。 容器會解決圖形中的相依性，並傳回完全解析的服務。 必須先解析的相依性集合組通常稱為「相依性樹狀結構」、「相依性圖形」或「物件圖形」。
+`MyDependency` 在其建構函式中會要求 <xref:Microsoft.Extensions.Logging.ILogger`1>。 以鏈結方式使用相依性插入並非不尋常。 每個要求的相依性接著會要求其自己的相依性。 容器會解決圖形中的相依性，並傳回完全解析的服務。 必須先解析的相依性集合組通常稱為「相依性樹狀結構」**、「相依性圖形」** 或「物件圖形」**。
 
 `IMyDependency` 與 `ILogger<TCategoryName>` 必須在服務容器中註冊。 `IMyDependency` 是在 `Startup.ConfigureServices` 中註冊。 `ILogger<TCategoryName>` 是由記錄抽象基礎結構所註冊，所以它是預設由架構所註冊的[架構提供的服務](#framework-provided-services)。
 
-容器會利用 `ILogger<TCategoryName>`(泛型) 開放類型[ 解析 ](/dotnet/csharp/language-reference/language-specification/types#open-and-closed-types)，讓您不需註冊每個 [(泛型) 建構的型別](/dotnet/csharp/language-reference/language-specification/types#constructed-types)：
+容器會利用 [(泛型) 開放類型](/dotnet/csharp/language-reference/language-specification/types#open-and-closed-types) 解析 `ILogger<TCategoryName>`，讓您不需註冊每個 [(泛型) 建構的型別](/dotnet/csharp/language-reference/language-specification/types#constructed-types)：
 
 ```csharp
 services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
@@ -658,15 +658,15 @@ public class MyDependency : IMyDependency
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3,6,13,29-30)]
 
-## <a name="services-injected-into-startup"></a>插入至啟動的服務
+## <a name="services-injected-into-startup"></a>注入開機服務
 
-使用泛型主機（<xref:Microsoft.Extensions.Hosting.IHostBuilder>）時，只能將下列服務類型插入 `Startup` 的函數：
+使用泛型主機時,只能將以下服務`Startup`型態注入建構函<xref:Microsoft.Extensions.Hosting.IHostBuilder>數 ( : )
 
 * `IWebHostEnvironment`
 * <xref:Microsoft.Extensions.Hosting.IHostEnvironment>
 * <xref:Microsoft.Extensions.Configuration.IConfiguration>
 
-服務可以插入 `Startup.Configure`：
+服務可以注入到`Startup.Configure`:
 
 ```csharp
 public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
@@ -679,7 +679,7 @@ public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
 
 ## <a name="framework-provided-services"></a>架構提供的服務
 
-`Startup.ConfigureServices` 方法負責定義應用程式所使用的服務，包括平臺功能，例如 Entity Framework Core 和 ASP.NET Core MVC。 一開始，根據[主機的設定方式](xref:fundamentals/index#host)，提供給 `ConfigureServices` 的 `IServiceCollection` 具有架構所定義的服務。 以 ASP.NET Core 範本為基礎的應用程式，在架構中註冊數百項服務並不常見。 下表列出架構註冊服務的小型範例。
+該方法`Startup.ConfigureServices`負責定義應用使用的服務,包括平臺功能,如實體框架核心和ASP.NET核心 MVC。 最初,提供給`IServiceCollection``ConfigureServices`的服務由框架定義,具體取決於[主機的配置方式](xref:fundamentals/index#host)。 基於ASP.NET核心範本的應用在框架註冊數百個服務方面並不少見。 下表列出了框架註冊服務的一小部分。
 
 | 服務類型 | 存留期 |
 | ------------ | -------- |
@@ -698,9 +698,9 @@ public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
 | <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> | 單一 |
 | <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> | 單一 |
 
-## <a name="register-additional-services-with-extension-methods"></a>以擴充方法註冊其他服務
+## <a name="register-additional-services-with-extension-methods"></a>使用擴充方法註冊其他服務
 
-當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 下列程式碼範例說明如何使用擴充方法[AddDbCoNtext\<TCoNtext >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)和 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*>，將其他服務新增至容器：
+當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 以下代碼是如何使用擴充方法[AddDbContext\<TContext 將](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)其他服務新增到<xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*>容器>和 的範例:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -737,14 +737,14 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="singleton"></a>單一
 
-當第一次收到有關單一資料庫存留期服務的要求時 (或是當執行 <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*> 且隨著服務註冊指定執行個體時)，即會建立單一資料庫存留期服務 (`Startup.ConfigureServices`)。 每個後續要求都會使用相同的執行個體。 若應用程式要求單一資料庫行為，建議您允許服務容器管理服務的存留期。 不要實作單一資料庫設計模式並為使用者提供可用來管理類別中物件存留期的程式碼。
+當第一次收到有關單一資料庫存留期服務的要求時 (或是當執行 `Startup.ConfigureServices` 且隨著服務註冊指定執行個體時)，即會建立單一資料庫存留期服務 (<xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*>)。 每個後續要求都會使用相同的執行個體。 若應用程式要求單一資料庫行為，建議您允許服務容器管理服務的存留期。 不要實作單一資料庫設計模式並為使用者提供可用來管理類別中物件存留期的程式碼。
 
 > [!WARNING]
 > 從單一資料庫解析具範圍服務是非常危險的。 處理後續要求時，它可能會導致服務有不正確的狀態。
 
 ## <a name="service-registration-methods"></a>服務註冊方法
 
-服務註冊擴充方法提供在特定案例中很有用的多載。
+服務註冊擴展方法提供在特定方案中有用的重載。
 
 | 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
@@ -758,7 +758,7 @@ public void ConfigureServices(IServiceCollection services)
 
 如果還未註冊任何實作，則 `TryAdd{LIFETIME}` 方法只會註冊服務。
 
-在下列範例中，第一行會為 `MyDependency` 註冊 `IMyDependency`。 第二行則沒有任何作用，因為 `IMyDependency` 已具有註冊的實作：
+在下列範例中，第一行會為 `IMyDependency` 註冊 `MyDependency`。 第二行則沒有任何作用，因為 `IMyDependency` 已具有註冊的實作：
 
 ```csharp
 services.AddSingleton<IMyDependency, MyDependency>();
@@ -773,9 +773,9 @@ services.TryAddSingleton<IMyDependency, DifferentDependency>();
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddScoped*>
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddSingleton*>
 
-如果還沒有[「相同類型的」](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*)實作，則 *TryAddEnumerable(ServiceDescriptor)* 方法只會註冊服務。 多個服務會透過 `IEnumerable<{SERVICE}>` 解析。 註冊服務時，如果尚未新增相同類型的執行個體，則開發人員只會希望新增執行個體。 程式庫作者通常會使用此方法來避免註冊容器中某個執行個體的兩個複本。
+如果還沒有「相同類型的」** 實作，則 [TryAddEnumerable(ServiceDescriptor)](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*) 方法只會註冊服務。 多個服務會透過 `IEnumerable<{SERVICE}>` 解析。 註冊服務時，如果尚未新增相同類型的執行個體，則開發人員只會希望新增執行個體。 程式庫作者通常會使用此方法來避免註冊容器中某個執行個體的兩個複本。
 
-在下列範例中，第一行會為 `MyDep` 註冊 `IMyDep1`。 第二行會為 `MyDep` 註冊 `IMyDep2`。 第三行則沒有任何作用，因為 `IMyDep1` 已具有 `MyDep` 的已註冊實作：
+在下列範例中，第一行會為 `IMyDep1` 註冊 `MyDep`。 第二行會為 `IMyDep2` 註冊 `MyDep`。 第三行則沒有任何作用，因為 `IMyDep1` 已具有 `MyDep` 的已註冊實作：
 
 ```csharp
 public interface IMyDep1 {}
@@ -794,7 +794,7 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 服務可以透過兩個機制來解析：
 
 * <xref:System.IServiceProvider>
-* <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities> &ndash; 允許在相依性插入容器中不進行服務註冊，即可建立物件。 搭配使用者面向抽象 (例如標籤協助程式、MVC 控制器與模型繫結器) 使用 `ActivatorUtilities`。
+* <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities>&ndash;允許在依賴項注入容器中創建沒有服務註冊的物件。 搭配使用者面向抽象 (例如標籤協助程式、MVC 控制器與模型繫結器) 使用 `ActivatorUtilities`。
 
 建構函式可以接受不是由相依性插入提供的引數，但引數必須指派預設值。
 
@@ -816,10 +816,10 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Models/Operation.cs?name=snippet1)]
 
-會註冊相依於每種其他 `OperationService` 類型的 `Operation`。 當透過相依性插入要求 `OperationService` 時，它會根據相依服務的存留期擷取每個服務的新執行個體或現有執行個體。
+會註冊相依於每種其他 `Operation` 類型的 `OperationService`。 當透過相依性插入要求 `OperationService` 時，它會根據相依服務的存留期擷取每個服務的新執行個體或現有執行個體。
 
-* 當因收到來自容器的要求而建立暫時性服務時，`OperationId` 服務的 `IOperationTransient` 會與 `OperationId` 的 `OperationService` 不同。 `OperationService` 會收到 `IOperationTransient` 類別的新執行個體。 新執行個體會產生不同的 `OperationId`。
-* 當因用戶端要求而建立具範圍的服務時，`OperationId` 服務與用戶端要求中 `IOperationScoped` 的 `OperationService` 皆相同。 在不同的用戶端要求中，兩個服務的 `OperationId` 值都不同。
+* 當因收到來自容器的要求而建立暫時性服務時，`IOperationTransient` 服務的 `OperationId` 會與 `OperationService` 的 `OperationId` 不同。 `OperationService` 會收到 `IOperationTransient` 類別的新執行個體。 新執行個體會產生不同的 `OperationId`。
+* 當因用戶端要求而建立具範圍的服務時，`IOperationScoped` 服務與用戶端要求中 `OperationService` 的 `OperationId` 皆相同。 在不同的用戶端要求中，兩個服務的 `OperationId` 值都不同。
 * 當建立一次 singleton 與 singleton 執行個體服務，並在所有用戶端要求與所有服務中使用時，`OperationId` 在所有服務要求中會固定不變。
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/OperationService.cs?name=snippet1)]
@@ -870,13 +870,13 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 觀察哪些 `OperationId` 值在要求內以及要求之間不同：
 
-* 「暫時性」 物件一律不同。 第一個與第二個用戶端要求的暫時性 `OperationId` 值在兩個 `OperationService` 作業之間與各用戶端要求之間都不同。 新執行個體會提供給每個服務要求以及用戶端要求。
-* 「具範圍」物件在同一個用戶端要求內皆相同，但在不同的用戶端要求之間則不同。
-* 「單一資料庫」物件對於每個物件與每個要求都相同 (不論 `Operation` 執行個體是否提供於 `Startup.ConfigureServices`)。
+* 「暫時性」** 物件一律不同。 第一個與第二個用戶端要求的暫時性 `OperationId` 值在兩個 `OperationService` 作業之間與各用戶端要求之間都不同。 新執行個體會提供給每個服務要求以及用戶端要求。
+* 「具範圍」** 物件在同一個用戶端要求內皆相同，但在不同的用戶端要求之間則不同。
+* *單例*物件對於每個物件和每個請求都是相同的,而不管`Operation`是否`Startup.ConfigureServices`在中提供了實例。
 
 ## <a name="call-services-from-main"></a>從主要呼叫服務
 
-使用 <xref:Microsoft.Extensions.DependencyInjection.IServiceScope>IServiceScopeFactory.CreateScope[ 建立 ](xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope*)，以解析應用程式範圍中的範圍服務。 此法可用於在開機時存取範圍服務，以執行初始化工作。 下列範例示範如何在 `MyScopedService` 中取得 `Program.Main`：
+使用 [IServiceScopeFactory.CreateScope](xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope*) 建立 <xref:Microsoft.Extensions.DependencyInjection.IServiceScope>，以解析應用程式範圍中的範圍服務。 此法可用於在開機時存取範圍服務，以執行初始化工作。 下列範例示範如何在 `Program.Main` 中取得 `MyScopedService`：
 
 ```csharp
 using System;
@@ -921,7 +921,7 @@ public class Program
 
 當應用程式在開發環境中執行時，預設服務提供者會執行檢查以確認：
 
-* 範圍服務不是直接或間接由根服務提供者解析。
+* 範圍服務不是直接或間接由開機服務提供者解析。
 * 範圍服務不是直接或間接插入至單一服務。
 
 根服務提供者會在呼叫 <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider*> 時建立。 當提供者啟動應用程式時，根服務提供者的存留期與應用程式/伺服器的存留期一致，並會在應用程式關閉時處置。
@@ -946,7 +946,7 @@ public class Program
 最佳做法是：
 
 * 設計服務以使用相依性插入來取得其相依性。
-* 避免具狀態的靜態類別和成員。 將應用程式設計成使用單一服務，以避免建立全域狀態。
+* 避免有狀態的靜態類和成員。 設計應用以改用單例服務,避免創建全域狀態。
 * 避免直接在服務內具現化相依類別。 直接具現化會將程式碼耦合到特定實作。
 * 讓應用程式類別維持在小型、情況良好且可輕鬆測試的狀態。
 
@@ -954,9 +954,9 @@ public class Program
 
 ### <a name="disposal-of-services"></a>處置服務
 
-容器會為它建立的 <xref:System.IDisposable.Dispose*> 類型呼叫 <xref:System.IDisposable>。 若執行個體由使用者程式碼新增到容器中，它將不會自動處置。
+容器會為它建立的 <xref:System.IDisposable> 類型呼叫 <xref:System.IDisposable.Dispose*>。 若執行個體由使用者程式碼新增到容器中，它將不會自動處置。
 
-在下列範例中，服務會建立服務容器並自動處置：
+在下面的範例中,服務由服務容器建立並自動釋放:
 
 ```csharp
 public class Service1 : IDisposable {}
@@ -975,10 +975,10 @@ public void ConfigureServices(IServiceCollection services)
 
 在下例中︰
 
-* 服務容器不會建立服務實例。
-* 架構不知道預期的服務存留期。
-* 架構不會自動處置服務。
-* 如果服務未在開發人員程式碼中明確處置，它們會持續存在，直到應用程式關閉為止。
+* 服務實例不是由服務容器創建的。
+* 框架不知道預期的服務存留期。
+* 框架不會自動釋放服務。
+* 如果服務未在開發人員代碼中顯式釋放,則它們將一直持續到應用關閉。
 
 ```csharp
 public class Service1 : IDisposable {}
@@ -993,26 +993,26 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="default-service-container-replacement"></a>預設服務容器取代
 
-內建的服務容器是設計用來滿足架構和大部分取用者應用程式的需求。 我們建議使用內建容器，除非您需要內建容器不支援的特定功能，例如：
+內建服務容器旨在滿足框架和大多數使用者應用的需求。 我們建議您使用內建容器,除非您需要內置容器不支援的特定功能,例如:
 
 * 屬性插入
 * 根據名稱插入
 * 子容器
 * 自訂生命週期管理
 * `Func<T>` 支援延遲初始設定
-* 以慣例為基礎的註冊
+* 基於公約的註冊
 
-下列協力廠商容器可以與 ASP.NET Core 應用程式搭配使用：
+以下第三方容器可與 ASP.NET 核心應用一起使用:
 
-* [Autofac](https://autofac.readthedocs.io/en/latest/integration/aspnetcore.html)
-* [DryIoc](https://www.nuget.org/packages/DryIoc.Microsoft.DependencyInjection)
-* [寬限](https://www.nuget.org/packages/Grace.DependencyInjection.Extensions)
-* [LightInject](https://github.com/seesharper/LightInject.Microsoft.DependencyInjection)
-* [Lamar](https://jasperfx.github.io/lamar/)
-* [Stashbox](https://github.com/z4kn4fein/stashbox-extensions-dependencyinjection)
+* [自動法卡](https://autofac.readthedocs.io/en/latest/integration/aspnetcore.html)
+* [乾奧科](https://www.nuget.org/packages/DryIoc.Microsoft.DependencyInjection)
+* [Grace](https://www.nuget.org/packages/Grace.DependencyInjection.Extensions)
+* [淺噴射](https://github.com/seesharper/LightInject.Microsoft.DependencyInjection)
+* [拉馬爾](https://jasperfx.github.io/lamar/)
+* [斯塔什盒](https://github.com/z4kn4fein/stashbox-extensions-dependencyinjection)
 * [Unity](https://www.nuget.org/packages/Unity.Microsoft.DependencyInjection)
 
-### <a name="thread-safety"></a>執行緒安全性
+### <a name="thread-safety"></a>執行緒安全
 
 建立具備執行緒安全性的 singleton 服務。 如果 singleton 服務相依於暫時性服務，暫時性服務可能也需要具備執行緒安全性，取決於 singleton 如何使用它。
 
@@ -1026,11 +1026,11 @@ public void ConfigureServices(IServiceCollection services)
 
 * 避免以靜態方式存取服務 (例如，以靜態方式設定 [IApplicationBuilder.ApplicationServices](xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices) 型別以四處使用)。
 
-* 避免使用*服務定位器模式*，這會混用控制策略的[反轉](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion)。
+* 避免使用*服務定位器模式*,該模式混合了[控制策略的反轉](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion)。
 
-  * 當您可以改用 DI 時，請勿叫用 <xref:System.IServiceProvider.GetService*> 來取得服務實例：
+  * 當可以使用<xref:System.IServiceProvider.GetService*>DI 時,不要呼叫以取得服務實例:
 
-    **不正確：**
+    **錯誤:**
 
     ```csharp
     public class MyClass()
@@ -1046,7 +1046,7 @@ public void ConfigureServices(IServiceCollection services)
     }
     ```
 
-    **正確**：
+    **修正**:
 
     ```csharp
     public class MyClass
@@ -1067,13 +1067,13 @@ public void ConfigureServices(IServiceCollection services)
     }
     ```
 
-  * 避免在執行時間使用 <xref:System.IServiceProvider.GetService*>來插入解析相依性的 factory。
+  * 避免使用<xref:System.IServiceProvider.GetService*>注入在運行時解決依賴項的工廠。
 
 * 避免以靜態方式存取 `HttpContext` (例如 [IHttpContextAccessor.HttpContext](xref:Microsoft.AspNetCore.Http.IHttpContextAccessor.HttpContext))。
 
 就像所有的建議集，您可能會遇到需要忽略建議的情況。 例外狀況很少見&mdash;大部分是架構本身內的特殊案例。
 
-DI 是靜態/全域物件存取模式的「替代」選項。 如果您將 DI 與靜態物件存取混合，則可能無法實現 DI 的優點。
+DI 是靜態/全域物件存取模式的「替代」** 選項。 如果您將 DI 與靜態物件存取混合，則可能無法實現 DI 的優點。
 
 ## <a name="additional-resources"></a>其他資源
 

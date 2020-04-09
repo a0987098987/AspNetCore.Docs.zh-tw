@@ -3,25 +3,25 @@ title: ASP.NET Core 中的區域
 author: rick-anderson
 description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功能組織成群組，作為個別命名空間 (適用於路由) 和資料夾結構 (適用於檢視)。
 ms.author: riande
-ms.date: 12/05/2019
+ms.date: 03/21/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 41f7bdd6dbb3e33f843cb2a765dd30f98c81ce21
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 8859bc52416ff657036198c73f63b8b0a0201e11
+ms.sourcegitcommit: 9675db7bf4b67ae269f9226b6f6f439b5cce4603
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78665400"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625935"
 ---
 # <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
-作者：[Dhananjay Kumar](https://twitter.com/debug_mode) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
+由[達南賈伊·庫瑪律](https://twitter.com/debug_mode)和[里克·安德森](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-區域是 ASP.NET 功能，用來將相關功能組織成群組中的個別：
+區域是 ASP.NET 功能,用於將相關功能組織到群組中作為單獨的功能:
 
-* 用於路由的命名空間。
-* Views 和 Razor Pages 的資料夾結構。
+* 路由的命名空間。
+* 視圖和 Razor 頁面的資料夾結構。
 
 使用區域可基於路由的目的，藉由將另一個路由參數 `area` 新增至 `controller` 和 `action` 或 Razor 頁面 `page` 來建立階層。
 
@@ -41,35 +41,35 @@ ms.locfileid: "78665400"
 使用區域、控制器及檢視的典型 ASP.NET Core Web 應用程式包含下列項目：
 
 * 一個[區域資料夾結構](#area-folder-structure)。
-* 具有[`[Area]`](#attribute)屬性的控制器，可讓控制器與區域產生關聯：
+* 具有[`[Area]`](#attribute)屬性的控制器將控制器與區域相關聯:
 
   [!code-csharp[](areas/31samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
 
-* [已新增至啟動的區域路由](#add-area-route)：
+* [新增到啟動的區域路由](#add-area-route):
 
   [!code-csharp[](areas/31samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
 
 ### <a name="area-folder-structure"></a>區域資料夾結構
 
-假設應用程式具有兩個邏輯群組：「產品」和「服務」。 使用區域，資料夾結構應該如下：
+假設應用程式具有兩個邏輯群組：「產品」** 和「服務」**。 使用區域，資料夾結構應該如下：
 
-* Project name
+* 專案名稱
   * 區域
-    * 產品
-      * 控制器
+    * Products
+      * Controllers
         * HomeController.cs
         * ManageController.cs
       * 檢視
-        * 首頁
+        * Home
           * Index.cshtml
         * 管理
           * Index.cshtml
           * About.cshtml
     * 服務
-      * 控制器
+      * Controllers
         * HomeController.cs
       * 檢視
-        * 首頁
+        * Home
           * Index.cshtml
 
 儘管上述配置通常會在使用區域時使用，但是只需有檢視檔案，就能使用此資料夾結構。 檢視探索會依下列順序搜尋相符的區域檢視檔案：
@@ -85,22 +85,22 @@ ms.locfileid: "78665400"
 
 ### <a name="associate-the-controller-with-an-area"></a>使控制器與區域產生關聯
 
-區域控制器會透過 [&lbrack;Area&rbrack;](xref:Microsoft.AspNetCore.Mvc.AreaAttribute) 屬性來指定：
+區域控制器使用[&lbrack;「區域&rbrack;」](xref:Microsoft.AspNetCore.Mvc.AreaAttribute)屬性指定:
 
 [!code-csharp[](areas/31samples/MVCareas/Areas/Products/Controllers/ManageController.cs?highlight=5&name=snippet)]
 
 ### <a name="add-area-route"></a>新增區域路由
 
-區域路由通常會使用[傳統路由](xref:mvc/controllers/routing#cr)，而不是[屬性路由](xref:mvc/controllers/routing#ar)。 慣例路由與順序息息相關。 一般而言，具有區域的路由應該放在路由表前面，因為這些路由比沒有區域的路由更明確。
+區域路由通常使用[一般路由](xref:mvc/controllers/routing#cr),而不是[屬性路由](xref:mvc/controllers/routing#ar)。 慣例路由與順序息息相關。 一般而言，具有區域的路由應該放在路由表前面，因為這些路由比沒有區域的路由更明確。
 
 如果 URL 空間在所有區域中都是統一的，則可使用 `{area:...}` 作為路由範本中的語彙基元：
 
 [!code-csharp[](areas/31samples/MVCareas/Startup.cs?name=snippet&highlight=21-23)]
 
-在上述程式碼中，`exists` 會套用路由必須與區域相符的條件約束。 搭配 `MapControllerRoute`使用 `{area:...}`：
+在上述程式碼中，`exists` 會套用路由必須與區域相符的條件約束。 與`{area:...}``MapControllerRoute`一起使用。
 
-* 是將路由新增至區域的最不復雜機制。
-* 符合具有 `[Area("Area name")]` 屬性的所有控制器。
+* 是將路由添加到區域的最不複雜的機制。
+* 將所有控制器與屬性比`[Area("Area name")]`相 。
 
 下列程式碼會使用 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*> 來建立兩個具名的區域路由：
 
@@ -114,35 +114,35 @@ ms.locfileid: "78665400"
 
 [!code-cshtml[](areas/31samples/MVCareas/Views/Shared/_testLinksPartial.cshtml?name=snippet)]
 
-範例下載包含[部分視圖](xref:mvc/views/partial)，其中包含：
+範例下載包含以下[部份檢視的部份檢視](xref:mvc/views/partial):
 
-* 上述連結。
-* 未指定類似上述 `area` 的連結。
+* 前面的連結。
+* 與上述連結類似的連結,`area`但未指定。
 
 部分檢視會在[配置檔案](xref:mvc/views/layout)中進行參考，因此，應用程式中的每個頁面都會顯示產生的連結。 在未指定區域的情況下產生的連結，只有在從相同區域與控制器中的頁面進行參考時才有效。
 
-未指定區域或控制站時，路由即會取決於[「環境」](xref:mvc/controllers/routing#ambient)值。 目前要求的目前路由值被視為用於連結產生的環境值。 在範例應用程式的許多情況下，使用環境值會產生不正確的連結，且標記未指定區域。
+未指定區域或控制站時，路由即會取決於「環境」[](xref:mvc/controllers/routing#ambient)值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多情況下,對於示例應用,使用環境值會生成不正確的連結,標記不指定區域。
 
 如需詳細資訊，請參閱[路由至控制器動作](xref:mvc/controllers/routing)。
 
 ### <a name="shared-layout-for-areas-using-the-_viewstartcshtml-file"></a>使用 _ViewStart.cshtml 檔案共用區域的配置
 
-若要共用整個應用程式的一般版面配置，請在[應用程式根資料夾](#arf)中保留 *_ViewStart. cshtml* 。 如需詳細資訊，請參閱<xref:mvc/views/layout>。
+要分享整個應用程式的一般佈局,請將 *_ViewStart.cshtml*保留在[應用程式根資料夾中](#arf)。 如需詳細資訊，請參閱＜<xref:mvc/views/layout>＞
 
 <a name="arf"></a>
 
 ### <a name="application-root-folder"></a>應用程式根資料夾
 
-應用程式根資料夾是包含以 ASP.NET Core 範本建立之 web 應用程式中*Startup.cs*的資料夾。
+應用程式根資料夾是包含使用ASP.NET核心範本創建的 Web 應用中*Startup.cs*的資料夾。
 
 ### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
 
- */Views/_ViewImports. cshtml*、for MVC 和 */Pages/_ViewImports. cshtml* for Razor Pages 不會匯入區域中的 Views。 使用下列其中一種方法，將視圖匯入提供給所有視圖：
+ */檢視/_ViewImports.cshtml*,用於 MVC 和 */Pages/_ViewImports.cshtml*的 Razor 頁面,不會導入到區域中的檢視。 使用以下方法之一為所有檢視提供檢視匯入:
 
-* 將 *_ViewImports. cshtml*新增至[應用程式根資料夾](#arf)。 應用程式根資料夾中的 *_ViewImports. cshtml*會套用至應用程式中的所有視圖。
-* 將 *_ViewImports. cshtml*檔案複製到適當的 [區域] 底下的 [view] 資料夾。
+* 將 *_ViewImports.cshtml*加入到[應用程式根資料夾](#arf)。 應用程式根資料夾中的 *_ViewImports.cshtml*將應用於應用程式中的所有檢視。
+* 將 *_ViewImports.cshtml*檔案複製到區域下的相應檢視資料夾。
 
-*_ViewImports 的 cshtml*檔案通常包含[標記](xref:mvc/views/tag-helpers/intro)協助程式匯入、`@using`和 `@inject` 語句。 如需詳細資訊，請參閱匯[入共用](xref:mvc/views/layout#importing-shared-directives)指示詞。
+*_ViewImports.cshtml*檔案通常包含[標籤説明器](xref:mvc/views/tag-helpers/intro)`@using`匯`@inject`入和語句。 有關詳細資訊,請參閱[匯入共享指令](xref:mvc/views/layout#importing-shared-directives)。
 
 <a name="rename"></a>
 
@@ -156,11 +156,11 @@ ms.locfileid: "78665400"
 
 ## <a name="areas-with-razor-pages"></a>使用 Razor Pages 的區域
 
-具有 Razor Pages 的區域需要應用程式根目錄中的 `Areas/<area name>/Pages` 資料夾。 下列資料夾結構搭配[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples)一起使用：
+具有 Razor 頁面`Areas/<area name>/Pages`的區域 需要應用根目錄中的資料夾。 下列資料夾結構搭配[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples)一起使用：
 
-* Project name
+* 專案名稱
   * 區域
-    * 產品
+    * Products
       * 頁面
         * _ViewImports
         * 關於
@@ -179,13 +179,13 @@ ms.locfileid: "78665400"
 
 範例下載包括[部分檢視](xref:mvc/views/partial)，其中可在未指定區域的情況下包含上述連結和相同連結。 部分檢視會在[配置檔案](xref:mvc/views/layout)中進行參考，因此，應用程式中的每個頁面都會顯示產生的連結。 在未指定區域的情況下產生的連結，只有在從相同區域中的頁面進行參考時才有效。
 
-未指定區域時，路由即會取決於「環境」值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。 例如，試想從下列程式碼產生的連結：
+未指定區域時，路由即會取決於「環境」** 值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。 例如，試想從下列程式碼產生的連結：
 
 [!code-cshtml[](areas/31samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
 
 針對上述程式碼：
 
-* 僅當最後一個要求是針對 `Services` 區域中的頁面時，從 `<a asp-page="/Manage/About">` 產生的連結才是正確的。 例如 `/Services/Manage/`、`/Services/Manage/Index` 或 `/Services/Manage/About`。
+* 僅當最後一個要求是針對 `Services` 區域中的頁面時，從 `<a asp-page="/Manage/About">` 產生的連結才是正確的。 例如，`/Services/Manage/`、`/Services/Manage/Index` 或 `/Services/Manage/About`。
 * 僅當最後一個要求是針對 `/Home` 中的頁面時，從 `<a asp-page="/About">` 產生的連結才是正確的。
 * 程式碼來自[下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples/RPareas)。
 
@@ -243,35 +243,35 @@ ms.locfileid: "78665400"
 使用區域、控制器及檢視的典型 ASP.NET Core Web 應用程式包含下列項目：
 
 * 一個[區域資料夾結構](#area-folder-structure)。
-* 具有[`[Area]`](#attribute)屬性的控制器，可讓控制器與區域產生關聯：
+* 具有[`[Area]`](#attribute)屬性的控制器將控制器與區域相關聯:
 
   [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
 
-* [已新增至啟動的區域路由](#add-area-route)：
+* [新增到啟動的區域路由](#add-area-route):
 
   [!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
 
 ### <a name="area-folder-structure"></a>區域資料夾結構
 
-假設應用程式具有兩個邏輯群組：「產品」和「服務」。 使用區域，資料夾結構應該如下：
+假設應用程式具有兩個邏輯群組：「產品」** 和「服務」**。 使用區域，資料夾結構應該如下：
 
-* Project name
+* 專案名稱
   * 區域
-    * 產品
-      * 控制器
+    * Products
+      * Controllers
         * HomeController.cs
         * ManageController.cs
       * 檢視
-        * 首頁
+        * Home
           * Index.cshtml
         * 管理
           * Index.cshtml
           * About.cshtml
     * 服務
-      * 控制器
+      * Controllers
         * HomeController.cs
       * 檢視
-        * 首頁
+        * Home
           * Index.cshtml
 
 儘管上述配置通常會在使用區域時使用，但是只需有檢視檔案，就能使用此資料夾結構。 檢視探索會依下列順序搜尋相符的區域檢視檔案：
@@ -287,7 +287,7 @@ ms.locfileid: "78665400"
 
 ### <a name="associate-the-controller-with-an-area"></a>使控制器與區域產生關聯
 
-區域控制器會透過 [&lbrack;Area&rbrack;](xref:Microsoft.AspNetCore.Mvc.AreaAttribute) 屬性來指定：
+區域控制器使用[&lbrack;「區域&rbrack;」](xref:Microsoft.AspNetCore.Mvc.AreaAttribute)屬性指定:
 
 [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?highlight=5&name=snippet)]
 
@@ -319,7 +319,7 @@ ms.locfileid: "78665400"
 
 範例下載包括[部分檢視](xref:mvc/views/partial)，其中可在未指定區域的情況下包含上述連結和相同連結。 部分檢視會在[配置檔案](xref:mvc/views/layout)中進行參考，因此，應用程式中的每個頁面都會顯示產生的連結。 在未指定區域的情況下產生的連結，只有在從相同區域與控制器中的頁面進行參考時才有效。
 
-未指定區域或控制站時，路由即會取決於「環境」值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。
+未指定區域或控制站時，路由即會取決於「環境」** 值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。
 
 如需詳細資訊，請參閱[路由至控制器動作](xref:mvc/controllers/routing)。
 
@@ -329,7 +329,7 @@ ms.locfileid: "78665400"
 
 ### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
 
-在其標準位置中， */Views/_ViewImports.cshtml* 不適用於區域。 若要在您的區域中使用一般[標記協助程式](xref:mvc/views/tag-helpers/intro)、`@using` 或 `@inject`，請確定適當的 *_ViewImports* 檔案[適用於您的區域檢視](xref:mvc/views/layout#importing-shared-directives)。 如果您希望在所有檢視中都有相同的行為，請將 */Views/_ViewImports.cshtml* 移至應用程式根目錄。
+在其標準位置中，*/Views/_ViewImports.cshtml* 不適用於區域。 要使用常見的[標籤說明器](xref:mvc/views/tag-helpers/intro)`@using`,或`@inject`您所在區域中,請確保正確的 *_ViewImports.cshtml*檔案[適用於您的區域檢視](xref:mvc/views/layout#importing-shared-directives)。 如果您希望在所有檢視中都有相同的行為，請將 */Views/_ViewImports.cshtml* 移至應用程式根目錄。
 
 <a name="rename"></a>
 
@@ -343,11 +343,11 @@ ms.locfileid: "78665400"
 
 ## <a name="areas-with-razor-pages"></a>使用 Razor Pages 的區域
 
-具有 Razor Pages 的區域需要應用程式根目錄中的 `Areas/<area name>/Pages` 資料夾。 下列資料夾結構搭配[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)一起使用：
+具有 Razor 頁面`Areas/<area name>/Pages`的區域 需要應用根目錄中的資料夾。 下列資料夾結構搭配[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)一起使用：
 
-* Project name
+* 專案名稱
   * 區域
-    * 產品
+    * Products
       * 頁面
         * _ViewImports
         * 關於
@@ -368,13 +368,13 @@ ms.locfileid: "78665400"
 
 範例下載包括[部分檢視](xref:mvc/views/partial)，其中可在未指定區域的情況下包含上述連結和相同連結。 部分檢視會在[配置檔案](xref:mvc/views/layout)中進行參考，因此，應用程式中的每個頁面都會顯示產生的連結。 在未指定區域的情況下產生的連結，只有在從相同區域中的頁面進行參考時才有效。
 
-未指定區域時，路由即會取決於「環境」值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。 例如，試想從下列程式碼產生的連結：
+未指定區域時，路由即會取決於「環境」** 值。 目前要求的目前路由值被視為用於連結產生的環境值。 在許多適用於範例應用程式的案例中，使用環境值會產生不正確的連結。 例如，試想從下列程式碼產生的連結：
 
 [!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
 
 針對上述程式碼：
 
-* 僅當最後一個要求是針對 `Services` 區域中的頁面時，從 `<a asp-page="/Manage/About">` 產生的連結才是正確的。 例如 `/Services/Manage/`、`/Services/Manage/Index` 或 `/Services/Manage/About`。
+* 僅當最後一個要求是針對 `Services` 區域中的頁面時，從 `<a asp-page="/Manage/About">` 產生的連結才是正確的。 例如，`/Services/Manage/`、`/Services/Manage/Index` 或 `/Services/Manage/About`。
 * 僅當最後一個要求是針對 `/Home` 中的頁面時，從 `<a asp-page="/About">` 產生的連結才是正確的。
 * 程式碼來自[下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas)。
 

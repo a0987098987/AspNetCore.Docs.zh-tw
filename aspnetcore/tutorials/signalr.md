@@ -8,12 +8,12 @@ ms.date: 11/21/2019
 no-loc:
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 55ebdbfa4556deca74a6cdf0638307425cd1a01a
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 869eb325ee95a78e4b16c61c5b0573bb094292e3
+ms.sourcegitcommit: 9a46e78c79d167e5fa0cddf89c1ef584e5fe1779
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78666744"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80994614"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
@@ -89,7 +89,7 @@ ms.locfileid: "78666744"
 
 ## <a name="add-the-signalr-client-library"></a>新增 SignalR 用戶端程式庫
 
-SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容傳遞網路 (CDN)，可以傳遞在 Node.js 套件管理員 (npm) 中找到的任何項目。
+SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容交付網路 (CDN),可以交付在 npm 找到的任何內容,Node.js 包管理器。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
@@ -320,7 +320,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 ## <a name="add-the-signalr-client-library"></a>新增 SignalR 用戶端程式庫   
 
-SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容傳遞網路 (CDN)，可以傳遞在 Node.js 套件管理員 (npm) 中找到的任何項目。    
+SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容交付網路 (CDN),可以交付在 npm 找到的任何內容,Node.js 包管理器。 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 

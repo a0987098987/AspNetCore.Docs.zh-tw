@@ -5,14 +5,14 @@ description: 了解已發行之 ASP.NET Core 應用程式的目錄結構。
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/20/2020
+ms.date: 04/09/2020
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: 0e7bf40520385b7719cb37120709e0a3fd2442e3
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 3ed27db31c5fda8376ed108568ea74b657d30531
+ms.sourcegitcommit: 4506a8f71ece921010ad6b7edebc8b200618f40d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "79989733"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81002934"
 ---
 # <a name="aspnet-core-directory-structure"></a>ASP.NET Core 目錄結構
 
@@ -28,7 +28,7 @@ ms.locfileid: "79989733"
 
 | 應用程式類型 | 目錄結構 |
 | -------- | ------------------- |
-| [與框架相關的執行 (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>查看&dagger;MVC 應用;如果檢視未預寫</li><li>頁面&dagger;MVC 或 Razor 頁面應用(如果頁面未預編譯)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>【程式集名稱]{.延伸* *.exe*延伸在 Windows 上,macOS 或 Linux 上沒有擴展</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li><li>建立傾印([Linux 建立轉印實用程式](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*.所以(Linux 共用物件庫)</li><li>\*.a(macOS 存檔)</li><li>\*.dylib(macOS 動態庫)</li></ul></li></ul> |
+| [與框架相關的執行 (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>查看&dagger;MVC 應用;如果檢視未預寫</li><li>頁面&dagger;MVC 或 Razor 頁面應用(如果頁面未預編譯)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>【程式集名稱]{.延伸* .exe 延伸在 Windows 上,macOS 或 Linux 上沒有擴展</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li><li>建立傾印([Linux 建立轉印實用程式](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*.所以(Linux 共用物件庫)</li><li>\*.a(macOS 存檔)</li><li>\*.dylib(macOS 動態庫)</li></ul></li></ul> |
 | [自包含部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>檢視&dagger;MVC 應用程式(如果檢視未預編譯)</li><li>頁面&dagger;MVC 或 Razor 頁面應用(如果頁面未預編譯)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{組件名稱}.exe</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
 
 &dagger;表示是目錄
@@ -58,9 +58,9 @@ ms.locfileid: "79989733"
 
 | 應用程式類型 | 目錄結構 |
 | -------- | ------------------- |
-| [與框架相關的執行 (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>查看&dagger;MVC 應用;如果檢視未預寫</li><li>頁面&dagger;MVC 或 Razor 頁面應用(如果頁面未預編譯)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>【程式集名稱]{.延伸* *.exe*延伸在 Windows 上,macOS 或 Linux 上沒有擴展</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li><li>建立傾印([Linux 建立轉印實用程式](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*.所以(Linux 共用物件庫)</li><li>\*.a(macOS 存檔)</li><li>\*.dylib(macOS 動態庫)</li></ul></li></ul> |
+| [與框架相關的執行 (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>查看&dagger;MVC 應用;如果檢視未預寫</li><li>頁面&dagger;MVC 或 Razor 頁面應用(如果頁面未預編譯)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>【程式集名稱]{.延伸* .exe 延伸在 Windows 上,macOS 或 Linux 上沒有擴展</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li><li>建立傾印([Linux 建立轉印實用程式](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*.所以(Linux 共用物件庫)</li><li>\*.a(macOS 存檔)</li><li>\*.dylib(macOS 動態庫)</li></ul></li></ul> |
 | [自包含部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>檢視&dagger;MVC 應用程式(如果檢視未預編譯)</li><li>頁面&dagger;MVC 或 Razor 頁面應用(如果頁面未預編譯)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{組件名稱}.exe</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
--
+
 &dagger;表示是目錄
 
 *publish* 目錄代表部署的「內容根目錄路徑」**(也稱為「應用程式基底路徑」**)。 不論給予伺服器上所部署應用程式的 *publish* 目錄什麼名稱，其位置都會作為所裝載應用程式的伺服器實體路徑。

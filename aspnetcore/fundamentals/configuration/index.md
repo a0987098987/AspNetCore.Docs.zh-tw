@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 3/29/2020
 uid: fundamentals/configuration/index
-ms.openlocfilehash: d76ca78bc988f859b4e99752a0e88735e1df1d82
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 506f01ace72d6e915c0f3ebdaae5b4a3328a79b9
+ms.sourcegitcommit: e72a58d6ebde8604badd254daae8077628f9d63e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80501333"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81007154"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -311,7 +311,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 * 階層式機碼
   * 在設定 API 內，冒號分隔字元 (`:`) 可在所有平台上運作。
   * 在環境變數中，冒號分隔字元可能無法在所有平台上運作。 雙下劃線`__`由所有平台支援,並自動轉換為冒`:`號 。
-  * 在 Azure 金鑰保管庫`--`中, 分層鍵用作分隔符。 編寫程式以在將`--`機密載`:`入到應用設定中時取代為 。
+  * 在 Azure 金鑰保管庫`--`中, 分層鍵用作分隔符。 當機密載入到套用的設定中`--`[時 ,Azure 金鑰保管庫設定提供程式](xref:security/key-vault-configuration)會`:`自動取代為 。
 * <xref:Microsoft.Extensions.Configuration.ConfigurationBinder> 支援在設定機碼中使用陣列索引將陣列繫結到物件。 [將陣列繫結到類別](#boa)一節說明陣列繫結。
 
 設定值:

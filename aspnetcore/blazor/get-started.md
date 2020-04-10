@@ -5,17 +5,17 @@ description: Blazor使用您選擇的工具建Blazor構應用,開始入門。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/26/2020
+ms.date: 04/09/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: c49209afde21046a6bc0b197cc4b8d93b164b23e
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: e9e6eeeb1d29aa529e43d75f5d3951d2c4384d7e
+ms.sourcegitcommit: 4506a8f71ece921010ad6b7edebc8b200618f40d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80471822"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81002908"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始ASP.NET核心布拉佐爾
 
@@ -78,7 +78,9 @@ ms.locfileid: "80471822"
 
 1. IDE 請求添加資源以生成和調試專案。 選取 [是]  。
 
-1. 使用可視化工作室代碼調試器運行應用。
+1. 使用 Blazor 伺服器,使用可視化工作室代碼調試器運行應用程式。
+
+   使用 Blazor WebAssembly,使用 **.NET 核心啟動 (Blazor 獨立)** 啟動配置啟動應用程式,然後在 Chrome 啟動配置中使用 **.NET 核心調試 Blazor 網路程式集**啟動瀏覽器(需要 Chrome)。 如需詳細資訊，請參閱 <xref:blazor/debug#visual-studio-code>。
 
 1. 在瀏覽器中，巡覽至 `https://localhost:5001`。
 

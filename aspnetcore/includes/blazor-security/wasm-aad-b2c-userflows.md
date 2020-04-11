@@ -1,0 +1,5 @@
+## <a name="custom-user-flows"></a><span data-ttu-id="1b747-101">自訂使用者流</span><span class="sxs-lookup"><span data-stu-id="1b747-101">Custom user flows</span></span>
+
+<span data-ttu-id="1b747-102">預設情況下,Microsoft 身份`Microsoft.Authentication.WebAssembly.Msal`驗證函式庫 ( ) 不支援[AAD B2C 使用者流](/azure/active-directory-b2c/user-flow-overview)。</span><span class="sxs-lookup"><span data-stu-id="1b747-102">The Microsoft Authentication Library (`Microsoft.Authentication.WebAssembly.Msal`) doesn't support [AAD B2C user flows](/azure/active-directory-b2c/user-flow-overview) by default.</span></span> <span data-ttu-id="1b747-103">在開發人員代碼中創建自定義使用者流。</span><span class="sxs-lookup"><span data-stu-id="1b747-103">Create custom user flows in developer code.</span></span>
+
+<span data-ttu-id="1b747-104">有關如何為自訂使用者流建構質詢的詳細資訊,請參閱[Azure 活動目錄 B2C 中的使用者流](/azure/active-directory-b2c/user-flow-overview)。</span><span class="sxs-lookup"><span data-stu-id="1b747-104">For more information on how to build a challenge for a custom user flow, see [User flows in Azure Active Directory B2C](/azure/active-directory-b2c/user-flow-overview).</span></span>

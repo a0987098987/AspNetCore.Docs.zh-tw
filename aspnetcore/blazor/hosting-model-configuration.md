@@ -5,17 +5,17 @@ description: 瞭解Blazor託管模型配置,包括如何將 Razor 元件整合�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-model-configuration
-ms.openlocfilehash: 1f71ac63bbe9dc9d56cfca2ded19a5b863be828f
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: ca1b3ea9092640ca561b3fbe02ddce6f974c525e
+ms.sourcegitcommit: e8dc30453af8bbefcb61857987090d79230a461d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80306426"
+ms.lasthandoff: 04/11/2020
+ms.locfileid: "81123378"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET核心布拉佐託管模型配置
 
@@ -27,14 +27,73 @@ ms.locfileid: "80306426"
 
 ## <a name="blazor-webassembly"></a>Blazor WebAssembly
 
+### <a name="environment"></a>環境
+
+在本地運行應用時,環境預設為"開發"。 發佈應用時,環境預設為"生產"。
+
+託管的 Blazor WebAssembly 應用透過中間件從伺服器拾取環境,該中間件`blazor-environment`透過添加標頭將環境傳達給瀏覽器。 標頭的值是環境。 託管的 Blazor 應用和伺服器應用共用相同的環境。 有關詳細資訊(包括如何設定環境),請參閱<xref:fundamentals/environments>。
+
+對於在本地運行的獨立應用,開發伺服器將添加`blazor-environment`標頭以指定開發環境。 要指定其他託管環境的環境,請`blazor-environment`添加標頭。
+
+在下面的 IIS 範例中,將自訂標頭添加到已發布*的 Web.config*檔中。 *Web.config*檔案位於*bin/發行/[目標框架]/發佈*資料夾中:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <system.webServer>
+
+    ...
+
+    <httpProtocol>
+      <customHeaders>
+        <add name="blazor-environment" value="Staging" />
+      </customHeaders>
+    </httpProtocol>
+  </system.webServer>
+</configuration>
+```
+
+> [!NOTE]
+> 要對 IIS 使用自訂*Web.config*檔案,該檔在將套用到*的*資料夾時不會覆<xref:host-and-deploy/blazor/webassembly#use-a-custom-webconfig>寫,請參考 。
+
+通過注入`IWebAssemblyHostEnvironment`與讀`Environment`取 屬性,取得元件中的應用環境:
+
+```razor
+@page "/"
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@inject IWebAssemblyHostEnvironment HostEnvironment
+
+<h1>Environment example</h1>
+
+<p>Environment: @HostEnvironment.Environment</p>
+```
+
+### <a name="configuration"></a>組態
+
 自 ASP.NET 酷睿 3.2 預覽 3 版中,Blazor WebAssembly 支援以下配置:
 
 * *wwwroot/appsettings.json*
 * *wwwroot/應用設置。[環境].json*
 
-在 Blazor 託管應用中,[執行時環境](xref:fundamentals/environments)與伺服器應用的值相同。
+在*wwwroot*資料夾中新增*應用設定.json*檔:
 
-在本地運行應用時,環境預設為"開發"。 發佈應用時,環境預設為"生產"。 有關詳細資訊(包括如何設定環境),請參閱<xref:fundamentals/environments>。
+```json
+{
+  "message": "Hello from config!"
+}
+```
+
+將<xref:Microsoft.Extensions.Configuration.IConfiguration>實體編寫入元件以存取設定資料:
+
+```razor
+@page "/"
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<h1>Configuration example</h1>
+
+<p>Message: @Configuration["message"]</p>
+```
 
 > [!WARNING]
 > Blazor WebAssembly 應用中的配置對用戶可見。 **不要在配置中存儲應用機密或憑據。**

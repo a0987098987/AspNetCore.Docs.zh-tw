@@ -5,17 +5,17 @@ description: 瞭解Blazor應用中元件和 DOM 元素的數據繫結方案。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/17/2020
+ms.date: 04/01/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/integrate-components
-ms.openlocfilehash: cf6056e0985d5433bddecac8dd183ca3f4c2af5b
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 6efa84c550a4605bde5e1f2bca4f2d1aa4a2667b
+ms.sourcegitcommit: e8dc30453af8bbefcb61857987090d79230a461d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80218930"
+ms.lasthandoff: 04/11/2020
+ms.locfileid: "81123368"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>將ASP.NET核心剃刀元件整合到剃刀頁面和 MVC 應用中
 
@@ -60,13 +60,13 @@ ms.locfileid: "80218930"
    @using MyAppNamespace
    ```
 
-1. 在`Startup.ConfigureServices`中,Blazor註冊伺服器服務:
+1. 在`Startup.ConfigureServices`中,註冊 Blazor 伺服器服務:
 
    ```csharp
    services.AddServerSideBlazor();
    ```
 
-1. 在`Startup.Configure`中,Blazor將中心終結`app.UseEndpoints`點 新增到 :
+1. 在`Startup.Configure`中,將 Blazor`app.UseEndpoints`中心終結點加入 :
 
    ```csharp
    endpoints.MapBlazorHub();
@@ -112,6 +112,19 @@ ms.locfileid: "80218930"
    ```
 
    元件使用共用 *_Layout.cshtml*文件進行佈局。
+
+   <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode>設定`App`元件是否:
+
+   * 預置到頁面中。
+   * 在頁面上呈現為靜態 HTML,或者如果它包含從使用者代理引導 Blazor 應用的必要資訊。
+
+   | 成像模式 | 描述 |
+   | ----------- | ----------- |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將`App`元件呈現為靜態 HTML,並包含伺服器應用Blazor的標記。 當使用者代理啟動時,此標記用於引導Blazor應用。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 渲染伺服器應用的Blazor標記。 不包括元件的`App`輸出。 當使用者代理啟動時,此標記用於引導Blazor應用。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 將`App`元件呈現為靜態 HTML。 |
+
+   有關元件標記說明程式的詳細資訊,請參閱<xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
 
 1. 將 *_Host.cshtml*頁的低優先權路由新增到 中的終結`Startup.Configure`點設定:
 

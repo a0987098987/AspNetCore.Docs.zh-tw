@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/1/2020
 uid: fundamentals/routing
-ms.openlocfilehash: 5742ac6879ce46e01247ddd2f8bfe3e3b8a2a02a
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 0fc89ccf15c14c67f284a7084a21159af300a195
+ms.sourcegitcommit: 5af16166977da598953f82da3ed3b7712d38f6cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80751156"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81277219"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -454,6 +454,8 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 通過以[非貪婪](#greedy)的方式從右向左匹配文本分隔符來處理複雜的段。 例如,`[Route("/a{b}c{d}")]`是一個複雜的段。
 複雜段以特定的方式工作,必須理解這些方式才能成功使用它們。 本節中的示例演示了為什麼複雜段只有在分隔符文本未顯示在參數值內時才真正正常工作。 對於更複雜的情況,需要使用[正則表達式](/dotnet/standard/base-types/regular-expressions)並手動提取值。
+
+[!INCLUDE[](~/includes/regex.md)]
 
 這是路由使用範本`/a{b}c{d}`和 URL`/abcd`路徑執行的步驟的摘要。 協助`|`視覺化演演算法的工作原理:
 

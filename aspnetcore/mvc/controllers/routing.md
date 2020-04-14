@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core MVC 如何使用路由中介軟體來比對內�
 ms.author: riande
 ms.date: 3/25/2020
 uid: mvc/controllers/routing
-ms.openlocfilehash: 74afd0a076ca8bd753000f547ef0a26308e8a884
-ms.sourcegitcommit: e8dc30453af8bbefcb61857987090d79230a461d
+ms.openlocfilehash: 9f7a26a482cb115697a0a3d7439c14a062677c92
+ms.sourcegitcommit: 5af16166977da598953f82da3ed3b7712d38f6cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/11/2020
-ms.locfileid: "81123495"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81277128"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core 中的路由至控制器動作
 
@@ -530,6 +530,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 
 有關 Slug 的定義,請參閱[Slug 上的 MDN Web 文件](https://developer.mozilla.org/docs/Glossary/Slug)。
 
+[!INCLUDE[](~/includes/regex.md)]
 <a name="routing-multiple-routes-ref-label"></a>
 
 ### <a name="multiple-attribute-routes"></a>多屬性路由

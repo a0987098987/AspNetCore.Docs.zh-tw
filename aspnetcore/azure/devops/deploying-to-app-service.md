@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: df41f296e9c4e1eff6e31d45b29ec30ee1e20cf4
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: d7ee3e42d320d35c2aaff6e097203c45289ec5b1
+ms.sourcegitcommit: fbdb8b9ab5a52656384b117ff6e7c92ae070813c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78657742"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81228123"
 ---
 # <a name="deploy-an-app-to-app-service"></a>套用應用到應用服務
 
@@ -85,7 +85,7 @@ ms.locfileid: "78657742"
 
     b. 建立資源群組。 資源組提供了一種聚合要作為組管理的 Azure 資源的方法。
 
-    ```azure-cli
+    ```azurecli
     az group create --location centralus --name AzureTutorial
     ```
 
@@ -93,25 +93,25 @@ ms.locfileid: "78657742"
 
     c. 在 S1 層中創建應用服務計畫。 應用服務計劃是共用相同定價層的 Web 應用的分組。 S1 層不是免費的,但它是暫存槽功能所必需的。
 
-    ```azure-cli
+    ```azurecli
     az appservice plan create --name $webappname --resource-group AzureTutorial --sku S1
     ```
 
     d. 使用同一資源組中的應用服務計劃創建 Web 應用資源。
 
-    ```azure-cli
+    ```azurecli
     az webapp create --name $webappname --resource-group AzureTutorial --plan $webappname
     ```
 
     e. 設置部署憑據。 這些部署憑據適用於訂閱中的所有 Web 應用。 不要在使用者名中使用特殊字元。
 
-    ```azure-cli
+    ```azurecli
     az webapp deployment user set --user-name REPLACE_WITH_USER_NAME --password REPLACE_WITH_PASSWORD
     ```
 
     f. 將 Web 應用設定為接受來自本地 Git 部署並顯示*Git 部署 URL。* **請注意此網址 回報**。
 
-    ```azure-cli
+    ```azurecli
     echo Git deployment URL: $(az webapp deployment source config-local-git --name $webappname --resource-group AzureTutorial --query url --output tsv)
     ```
 
@@ -170,13 +170,13 @@ ms.locfileid: "78657742"
 
     a. 創建名稱*暫存*的部署槽。
 
-    ```azure-cli
+    ```azurecli
     az webapp deployment slot create --name $webappname --resource-group AzureTutorial --slot staging
     ```
 
     b. 將暫存槽配置為使用本地 Git 的部署,並獲取**暫存**部署 URL。 **請注意此網址 回報**。
 
-    ```azure-cli
+    ```azurecli
     echo Git deployment URL for staging: $(az webapp deployment source config-local-git --name $webappname --resource-group AzureTutorial --slot staging --query url --output tsv)
     ```
 
@@ -216,7 +216,7 @@ ms.locfileid: "78657742"
 
 7. 在雲外殼中,將已驗證/預熱的暫存槽交換到生產中。
 
-    ```azure-cli
+    ```azurecli
     az webapp deployment slot swap --name $webappname --resource-group AzureTutorial --slot staging
     ```
 
@@ -224,7 +224,7 @@ ms.locfileid: "78657742"
 
     ![比較交換瀏覽器視窗](./media/deploying-to-app-service/swapped.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本節中,已完成以下任務:
 

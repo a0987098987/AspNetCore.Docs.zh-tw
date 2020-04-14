@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2019
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: d244ce1527486466bcbc6557ec35869aa206bc4f
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 0835dbf6b5434e4224d9f56ea3335df4b5d9e119
+ms.sourcegitcommit: 5af16166977da598953f82da3ed3b7712d38f6cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78656573"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81277323"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -136,6 +136,8 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 下列程式碼使用 `Select` 方法載入相關資料：
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=6)]
+
+前面的代碼不返回任何實體類型,因此不會執行跟蹤。 有關 EF 追蹤的詳細資訊,請參閱[追蹤與無追蹤查詢](/ef/core/querying/tracking)。
 
 `CourseViewModel`：
 

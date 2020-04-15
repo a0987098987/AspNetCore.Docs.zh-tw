@@ -5,12 +5,12 @@ description: 了解檢視如何處理 ASP.NET Core MVC 中的應用程式資料�
 ms.author: riande
 ms.date: 12/05/2019
 uid: mvc/views/overview
-ms.openlocfilehash: de78624bafeee16a3ace322643cf89337531eef8
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 70b8c2c01a28f99dd384351041a3b77d23f46a48
+ms.sourcegitcommit: f29a12486313e38e0163a643d8a97c8cecc7e871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78665106"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81384073"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
@@ -18,9 +18,9 @@ ms.locfileid: "78665106"
 
 本文件說明 ASP.NET Core MVC 應用程式中所使用的檢視。 如需 Razor 頁面的資訊，請參閱 [Razor 頁面簡介](xref:razor-pages/index)。
 
-在模型檢視控制器 (MVC) 模式中，「檢視」會處理應用程式的資料呈現和使用者互動。 檢視是具有內嵌 [Razor 標記](xref:mvc/views/razor)的 HTML 範本。 Razor 標記是與 HTML 標記互動的程式碼，可以產生傳送至用戶端的網頁。
+在模型檢視控制器 (MVC) 模式中，*view* 會處理應用程式的資料呈現和使用者互動。 檢視是具有內嵌 [Razor 標記](xref:mvc/views/razor)的 HTML 範本。 Razor 標記是與 HTML 標記互動的程式碼，可以產生傳送至用戶端的網頁。
 
-在 ASP.NET Core MVC 中，檢視是在 Razor 標記中使用 *C# 程式設計語言*的 [.cshtml](/dotnet/csharp/) 檔案。 通常，檢視檔案會分組成針對每個應用程式之[控制器](xref:mvc/controllers/actions)而命名的資料夾。 資料夾會儲存至應用程式根目錄的 *Views* 資料夾中：
+在 ASP.NET Core MVC 中，檢視是在 Razor 標記中使用 [C# 程式設計語言](/dotnet/csharp/)的 *.cshtml* 檔案。 通常，檢視檔案會分組成針對每個應用程式之[控制器](xref:mvc/controllers/actions)而命名的資料夾。 資料夾會儲存至應用程式根目錄的 *Views* 資料夾中：
 
 ![Visual Studio 方案總管中的 Views 資料夾是與 Home 資料夾一起開啟，以顯示 About.cshtml、Contact.cshtml 和 Index.cshtml 檔案](overview/_static/views_solution_explorer.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "78665106"
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
-*Razor* 標記的開頭為 `@` 符號。 在大括弧 ([) 所設定的 ](xref:mvc/views/razor#razor-code-blocks)Razor 程式碼區塊`{ ... }`內放入 C# 程式碼，即可執行 C# 陳述式。 例如，請參閱上方將 "About" 指派給 `ViewData["Title"]`。 只要使用 `@` 符號參考值，就可以在 HTML 內顯示值。 請參閱上方 `<h2>` 和 `<h3>` 項目的內容。
+*Razor* 標記的開頭為 `@` 符號。 在大括弧 (`{ ... }`) 所設定的 [Razor 程式碼區塊](xref:mvc/views/razor#razor-code-blocks)內放入 C# 程式碼，即可執行 C# 陳述式。 例如，請參閱上方將 "About" 指派給 `ViewData["Title"]`。 只要使用 `@` 符號參考值，就可以在 HTML 內顯示值。 請參閱上方 `<h2>` 和 `<h3>` 項目的內容。
 
 上述檢視內容只是轉譯給使用者之整個網頁的一部分。 其餘的頁面配置以及檢視的其他通用層面指定於其他檢視檔案中。 若要深入了解，請參閱[配置主題](xref:mvc/views/layout)。
 
@@ -85,11 +85,11 @@ ms.locfileid: "78665106"
 
 ### <a name="view-discovery"></a>檢視探索
 
-動作傳回檢視時，會進行稱為「檢視探索」的程序。 此程序根據檢視名稱來決定使用的檢視檔案。 
+動作傳回檢視時，會進行稱為「檢視探索」** 的程序。 此程序根據檢視名稱來決定使用的檢視檔案。 
 
-`View` 方法的預設行為 (`return View();`) 是傳回的檢視與從中呼叫它的動作方法同名。 例如，控制器的*關於*`ActionResult` 方法名稱是用來搜尋名為*About. cshtml*的視圖檔案。 首先，執行階段會在 *Views/[ControllerName]* 資料夾中尋找檢視。 如果在這裡找不到相符的檢視，則會搜尋檢視的 *Shared* 資料夾。
+`View` 方法的預設行為 (`return View();`) 是傳回的檢視與從中呼叫它的動作方法同名。 例如，使用控制器的 *About* `ActionResult` 方法名稱來搜尋名為 *About.cshtml* 的檢視檔案。 首先，執行階段會在 *Views/[ControllerName]* 資料夾中尋找檢視。 如果在這裡找不到相符的檢視，則會搜尋檢視的 *Shared* 資料夾。
 
-如果您使用 `ViewResult` 以隱含方式傳回 `return View();`，或使用 `View` 將檢視名稱明確地傳遞至 `return View("<ViewName>");` 方法，則不重要。 在這兩種情況下，檢視探索會依此順序搜尋相符的檢視檔案：
+如果您使用 `return View();` 以隱含方式傳回 `ViewResult`，或使用 `return View("<ViewName>");` 將檢視名稱明確地傳遞至 `View` 方法，則不重要。 在這兩種情況下，檢視探索會依此順序搜尋相符的檢視檔案：
 
    1. *Views/\[ControllerName]/\[ViewName].cshtml*
    1. *Views/Shared/\[ViewName].cshtml*
@@ -133,7 +133,7 @@ return View("./About");
 
 最穩健的方法是在檢視中指定 [model](xref:mvc/models/model-binding) 類型。 此模型通常稱為 *viewmodel*。 您可以透過動作將 viewmodel 類型執行個體傳遞至檢視。
 
-使用 viewmodel 將資料傳遞至檢視，讓檢視利用「強式」檢查。 *強式型別* (或*強型別*) 代表每個變數與常數都有明確定義的類型 (例如，`string`、`int` 或 `DateTime`)。 在編譯時期檢查檢視中所使用之類型的有效性。
+使用 viewmodel 將資料傳遞至檢視，讓檢視利用「強式」** 檢查。 *強式型別* (或*強型別*) 代表每個變數與常數都有明確定義的類型 (例如，`string`、`int` 或 `DateTime`)。 在編譯時期檢查檢視中所使用之類型的有效性。
 
 [Visual Studio](https://visualstudio.microsoft.com) 與 [Visual Studio Code](https://code.visualstudio.com/) 會使用稱為 [IntelliSense](/visualstudio/ide/using-intellisense) 的功能，列出強型別類別成員。 當您想要查看 viewmodel 的屬性時，請鍵入 viewmodel 的變數名稱，後面接著句號 (`.`)。 這有助於更快速地撰寫程式碼，並且減少錯誤。
 
@@ -192,25 +192,25 @@ namespace WebApplication1.ViewModels
 
 ### <a name="weakly-typed-data-viewdata-viewdata-attribute-and-viewbag"></a>弱型別資料 (ViewData、ViewData 屬性與 ViewBag)
 
-`ViewBag`*在 Razor Pages 中無法使用。*
+Razor 頁面中沒有 。`ViewBag` **
 
-除了強型別檢視之外，檢視還可以存取*弱型別* (也稱為*鬆散型別*) 資料集合。 與強式型別不同，「弱式型別」 (或「鬆散型別」) 表示您未明確宣告所使用資料的類型。 您可以使用弱型別資料的集合，對控制器與檢視傳遞將少量的資料進出。
+除了強型別檢視之外，檢視還可以存取*弱型別* (也稱為*鬆散型別*) 資料集合。 與強式型別不同，「弱式型別」** (或「鬆散型別」**) 表示您未明確宣告所使用資料的類型。 您可以使用弱型別資料的集合，對控制器與檢視傳遞將少量的資料進出。
 
 | 在 ... 之間傳遞資料                        | 範例                                                                        |
 | ------------------------------------------------- | ------------------------------------------------------------------------------ |
 | 控制器和檢視                             | 使用資料填入下拉式清單。                                          |
-| 檢視和[配置檢視](xref:mvc/views/layout)   | 透過檢視檔案，在配置檢視中設定 **\<title>** 項目內容。  |
+| 檢視和[配置檢視](xref:mvc/views/layout)   | 從檢視檔中設定**\<標題>** 佈局檢視中的元素內容。  |
 | [部分檢視](xref:mvc/views/partial)和檢視 | 一種小工具，可根據使用者所要求的網頁來顯示資料。      |
 
-此集合可以透過控制器和檢視上的 `ViewData` 或 `ViewBag` 屬性進行參考。 `ViewData` 屬性是弱型別物件的字典。 `ViewBag` 屬性是 `ViewData` 中提供基礎 `ViewData` 集合之動態屬性的包裝函式。 注意： `ViewData` 和 `ViewBag`的索引鍵查閱都不區分大小寫。
+此集合可以透過控制器和檢視上的 `ViewData` 或 `ViewBag` 屬性進行參考。 `ViewData` 屬性是弱型別物件的字典。 `ViewBag` 屬性是 `ViewData` 中提供基礎 `ViewData` 集合之動態屬性的包裝函式。 注意: 金鑰尋找對`ViewData``ViewBag`和 都不區分大小寫。
 
 `ViewData` 和 `ViewBag` 是在執行階段動態解析。 因為它們未提供編譯時間類型檢查，所以兩者通常會比使用 viewmodel 更容易發生錯誤。 因此，有些開發人員會盡量少使用或不使用 `ViewData` 和 `ViewBag`。
 
 <a name="VD"></a>
 
-**ViewData**
+**檢視資料**
 
-`ViewData` 是透過 [ 索引鍵存取的 ](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)ViewDataDictionary`string` 物件。 字串資料可以直接儲存和使用，而不需要轉換；但必須在擷取其他 `ViewData` 物件值時將其轉換為特定類型。 您可以使用 `ViewData` 將資料從控制器傳遞至檢視以及在檢視內傳遞資料，包括[部分檢視](xref:mvc/views/partial)和[配置](xref:mvc/views/layout)。
+`ViewData` 是透過 `string` 索引鍵存取的 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 物件。 字串資料可以直接儲存和使用，而不需要轉換；但必須在擷取其他 `ViewData` 物件值時將其轉換為特定類型。 您可以使用 `ViewData` 將資料從控制器傳遞至檢視以及在檢視內傳遞資料，包括[部分檢視](xref:mvc/views/partial)和[配置](xref:mvc/views/layout)。
 
 下列範例使用運作中 `ViewData` 來設定問候語和地址的值：
 
@@ -252,9 +252,9 @@ public IActionResult SomeAction()
 
 **ViewData 屬性**
 
-使用 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 的另一種方法是 [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute)。 以 `[ViewData]` 屬性標示之控制器或 Razor 頁面模型上的屬性，其值會從字典儲存和載入。
+使用 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 的另一種方法是 [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute)。 標有該屬性的`[ViewData]`控制器或 Razor Page 模型上的屬性從字典中存儲和載入其值。
 
-在下列範例中，Home 控制器包含標記為 `[ViewData]`的 `Title` 屬性。 `About` 方法會設定 [About] 檢視的標題：
+在下面的示例中,Home 控制器包含一`Title`個 標`[ViewData]`記為的屬性。 `About` 方法會設定 [About] 檢視的標題：
 
 ```csharp
 public class HomeController : Controller
@@ -272,12 +272,6 @@ public class HomeController : Controller
 }
 ```
 
-在 [About] 檢視上，存取 `Title` 屬性作為模型屬性：
-
-```cshtml
-<h1>@Model.Title</h1>
-```
-
 在此配置中，標題會從 ViewData 字典中讀取：
 
 ```cshtml
@@ -292,9 +286,9 @@ public class HomeController : Controller
 
 **ViewBag**
 
-`ViewBag`*在 Razor Pages 中無法使用。*
+Razor 頁面中沒有 。`ViewBag` **
 
-`ViewBag` 是可動態存取 [ 中所儲存物件的 ](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)DynamicViewData`ViewData` 物件。 `ViewBag` 的使用更為方便，因為它不需要進行轉換。 下列範例示範如何使用 `ViewBag`，而其結果與上方使用 `ViewData` 相同：
+`ViewBag` 是可動態存取 `ViewData` 中所儲存物件的 [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata) 物件。 `ViewBag` 的使用更為方便，因為它不需要進行轉換。 下列範例示範如何使用 `ViewBag`，而其結果與上方使用 `ViewData` 相同：
 
 ```csharp
 public IActionResult SomeAction()
@@ -325,11 +319,11 @@ public IActionResult SomeAction()
 
 **同時使用 ViewData 和 ViewBag**
 
-`ViewBag`*在 Razor Pages 中無法使用。*
+Razor 頁面中沒有 。`ViewBag` **
 
 因為 `ViewData` 和 `ViewBag` 參照相同的基礎 `ViewData` 集合，所以您可以同時使用 `ViewData` 和 `ViewBag`，並在讀取和寫入值時於其間混合使用和比對。
 
-使用 `ViewBag` 設定標題，並使用 `ViewData`About.cshtml*檢視頂端的* 來設定描述：
+使用 `ViewBag` 設定標題，並使用 *About.cshtml* 檢視頂端的 `ViewData` 來設定描述：
 
 ```cshtml
 @{
@@ -368,7 +362,7 @@ public IActionResult SomeAction()
  Razor 頁面中沒有 `ViewBag`。
 
 * `ViewData`
-  * 衍生自 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)，因此它的字典屬性十分有用，例如 `ContainsKey`、`Add`、`Remove` 和 `Clear`。
+  * 派生自[ViewData字典](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)`ContainsKey`,因此它有非常有用的字典屬性,`Add``Remove`例如`Clear`, 和 。
   * 字典中的索引鍵是字串，因此允許空白字元。 範例： `ViewData["Some Key With Whitespace"]`
   * 在檢視中必須轉換任何 `string` 以外的類型，才能使用 `ViewData`。
 * `ViewBag`

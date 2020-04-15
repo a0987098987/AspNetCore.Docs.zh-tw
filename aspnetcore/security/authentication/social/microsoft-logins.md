@@ -7,18 +7,18 @@ ms.custom: mvc
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 32315267e0672b0747917228f08591a15e4449f8
-ms.sourcegitcommit: 5af16166977da598953f82da3ed3b7712d38f6cb
+ms.openlocfilehash: 12c86456dad86731b86487a3a4dd725f36677002
+ms.sourcegitcommit: f29a12486313e38e0163a643d8a97c8cecc7e871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81277245"
+ms.locfileid: "81384050"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>微軟帳戶外部登錄設置與ASP.NET核心
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-此示例演示如何允許使用者使用[上一頁上](xref:security/authentication/social/index)創建的ASP.NET Core 3.0 專案使用其 Microsoft 帳戶登錄。
+此示例演示如何允許使用者使用[上一頁上](xref:security/authentication/social/index)創建的 ASP.NET Core 3.0 專案使用他們的工作、學校或個人 Microsoft 帳戶登錄。
 
 ## <a name="create-the-app-in-microsoft-developer-portal"></a>在 Microsoft 開發人員門戶中建立應用
 

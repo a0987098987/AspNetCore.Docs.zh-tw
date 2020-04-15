@@ -5,17 +5,17 @@ description: 瞭解Blazor應用中元件和 DOM 元素的數據繫結方案。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/integrate-components
-ms.openlocfilehash: 6efa84c550a4605bde5e1f2bca4f2d1aa4a2667b
-ms.sourcegitcommit: e8dc30453af8bbefcb61857987090d79230a461d
+ms.openlocfilehash: c242fbef70d289929d5c005abc0aa431619862b3
+ms.sourcegitcommit: f29a12486313e38e0163a643d8a97c8cecc7e871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/11/2020
-ms.locfileid: "81123368"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383961"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>將ASP.NET核心剃刀元件整合到剃刀頁面和 MVC 應用中
 
@@ -23,7 +23,14 @@ ms.locfileid: "81123368"
 
 剃刀元件可以集成到剃刀頁面和 MVC 應用中。 呈現頁面或視圖時,可以同時預呈現元件。
 
-## <a name="prepare-the-app-to-use-components-in-pages-and-views"></a>準備應用以在頁面和檢視中使用元件
+[準備應用](#prepare-the-app)后,根據應用的要求,在以下部分中使用指南:
+
+* 可路由元件&ndash;用於直接從使用者請求路由的元件。 當訪問者應該能夠在其瀏覽器中對帶有指令的[`@page`](xref:mvc/views/razor#page)元件發出 HTTP 請求時,請遵循本指南。
+  * [在 Razor 頁面套用使用可路由元件](#use-routable-components-in-a-razor-pages-app)
+  * [在 MVC 應用程式使用可路由元件](#use-routable-components-in-an-mvc-app)
+* [從頁面或檢視](#render-components-from-a-page-or-view)&ndash;呈現元件 對於不能直接從使用者請求路由的元件。 當應用使用[元件標記説明器](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)將元件嵌入到現有頁面和視圖中時,請遵循本指南。
+
+## <a name="prepare-the-app"></a>準備應用程式
 
 現有的 Razor 頁面或 MVC 應用可以將 Razor 元件整合到頁面和檢視中:
 
@@ -80,7 +87,7 @@ ms.locfileid: "81123368"
 
 要在 Razor 頁面應用中支援可路由的剃刀元件,可以:
 
-1. 依「[準備應用程式」 的指南在頁面與檢視部份中使用元件](#prepare-the-app-to-use-components-in-pages-and-views)。
+1. 依「[準備應用程式」 部分的指南進行操作](#prepare-the-app)。
 
 1. 將*App.razor*檔案新增到專案根,包含以下內容:
 
@@ -120,8 +127,8 @@ ms.locfileid: "81123368"
 
    | 成像模式 | 描述 |
    | ----------- | ----------- |
-   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將`App`元件呈現為靜態 HTML,並包含伺服器應用Blazor的標記。 當使用者代理啟動時,此標記用於引導Blazor應用。 |
-   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 渲染伺服器應用的Blazor標記。 不包括元件的`App`輸出。 當使用者代理啟動時,此標記用於引導Blazor應用。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將`App`元件呈現為靜態 HTML,並包含 Blazor Server 應用的標記。 當使用者代理啟動時,此標記用於引導 Blazor 應用。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 渲染 Blazor 伺服器應用的標記。 不包括元件的`App`輸出。 當使用者代理啟動時,此標記用於引導 Blazor 應用。 |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 將`App`元件呈現為靜態 HTML。 |
 
    有關元件標記說明程式的詳細資訊,請參閱<xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
@@ -147,7 +154,7 @@ ms.locfileid: "81123368"
    ...
    ```
 
-   有關命名空間的詳細資訊,請參閱[元件命名空間](#component-namespaces)部分。
+有關命名空間的詳細資訊,請參閱[元件命名空間](#component-namespaces)部分。
 
 ## <a name="use-routable-components-in-an-mvc-app"></a>在 MVC 應用程式使用可路由元件
 
@@ -155,7 +162,7 @@ ms.locfileid: "81123368"
 
 要在MVC應用中支援可路由的剃刀元件,
 
-1. 依「[準備應用程式」 的指南在頁面與檢視部份中使用元件](#prepare-the-app-to-use-components-in-pages-and-views)。
+1. 依「[準備應用程式」 部分的指南進行操作](#prepare-the-app)。
 
 1. 將*App.razor*檔案新增到專案的根目錄,包含以下內容:
 
@@ -186,6 +193,19 @@ ms.locfileid: "81123368"
    ```
 
    元件使用共用 *_Layout.cshtml*文件進行佈局。
+   
+   <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode>設定`App`元件是否:
+
+   * 預置到頁面中。
+   * 在頁面上呈現為靜態 HTML,或者如果它包含從使用者代理引導 Blazor 應用的必要資訊。
+
+   | 成像模式 | 描述 |
+   | ----------- | ----------- |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將`App`元件呈現為靜態 HTML,並包含伺服器應用Blazor的標記。 當使用者代理啟動時,此標記用於引導Blazor應用。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 渲染伺服器應用的Blazor標記。 不包括元件的`App`輸出。 當使用者代理啟動時,此標記用於引導Blazor應用。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 將`App`元件呈現為靜態 HTML。 |
+
+   有關元件標記說明程式的詳細資訊,請參閱<xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
 
 1. 新增控制器
 
@@ -217,7 +237,19 @@ ms.locfileid: "81123368"
    ...
    ```
 
-   有關命名空間的詳細資訊,請參閱[元件命名空間](#component-namespaces)部分。
+有關命名空間的詳細資訊,請參閱[元件命名空間](#component-namespaces)部分。
+
+## <a name="render-components-from-a-page-or-view"></a>從頁面或檢視成元件
+
+*本節涉及向頁面或視圖添加元件,其中元件不能直接從使用者請求中路由。*
+
+要從頁面或檢視呈現元件,請使用[元件標記說明程式](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)。
+
+有關如何呈現元件、元件狀態和`Component`標記説明程式的詳細資訊,請參閱以下文章:
+
+* <xref:blazor/hosting-models>
+* <xref:blazor/hosting-model-configuration>
+* <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>
 
 ## <a name="component-namespaces"></a>元件命名空間
 
@@ -233,15 +265,3 @@ ms.locfileid: "81123368"
 *_ViewImports.cshtml*檔案位於 Razor Pages 應用的 *「頁面」* 資料夾或 MVC 應用的 *「檢視」* 資料夾中。
 
 如需詳細資訊，請參閱 <xref:blazor/components#import-components>。
-
-## <a name="render-components-from-a-page-or-view"></a>從頁面或檢視成元件
-
-*本節涉及向頁面或視圖添加元件,其中元件不能直接從使用者請求中路由。*
-
-要從頁面或檢視呈現元件,請使用[元件標記說明程式](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)。
-
-有關如何呈現元件、元件狀態和`Component`標記説明程式的詳細資訊,請參閱以下文章:
-
-* <xref:blazor/hosting-models>
-* <xref:blazor/hosting-model-configuration>
-* <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>

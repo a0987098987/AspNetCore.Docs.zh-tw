@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2020
 uid: fundamentals/index
-ms.openlocfilehash: da2b42a7cf5d116a36d1dd9fa586d40ab31fc52d
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: c675644d8480ef7a5290045067e6cec2ea6f4764
+ms.sourcegitcommit: f29a12486313e38e0163a643d8a97c8cecc7e871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80417647"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81384054"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -205,7 +205,7 @@ ASP.NET Core 具有處理錯誤的內建功能，例如：
   * 資料檔案(*.db*)
 * [Web 根](#web-root),通常是*wwwroot*資料夾。
 
-在開發過程中,內容根預設為專案的根目錄。 此目錄也是應用的內容檔和[Web 根](#web-root)目錄的基本路徑。 通過在[構建主機](#host)時設置其路徑來指定其他內容根。 如需詳細資訊，請參閱[內容根](xref:fundamentals/host/generic-host#contentrootpath-1)。
+在開發過程中,內容根預設為專案的根目錄。 此目錄也是應用的內容檔和[Web 根](#web-root)目錄的基本路徑。 通過在[構建主機](#host)時設置其路徑來指定其他內容根。 如需詳細資訊，請參閱[內容根](xref:fundamentals/host/generic-host#contentroot)。
 
 ## <a name="web-root"></a>Web 根目錄
 
@@ -215,7 +215,7 @@ Web 根是公共靜態資源檔的基本路徑,例如:
 * JavaScript (*.js*)
 * 圖片 (*.png*, *.jpg*)
 
-預設情況下,靜態檔僅從 Web 根目錄及其子目錄提供。 Web 根路徑預設為 *[內容根]/wwwroot*。 通過在[構建主機](#host)時設置其路徑來指定其他 Web 根。 如需詳細資訊，請參閱 [Web 根目錄](xref:fundamentals/host/generic-host#webroot-1)。
+預設情況下,靜態檔僅從 Web 根目錄及其子目錄提供。 Web 根路徑預設為 *[內容根]/wwwroot*。 通過在[構建主機](#host)時設置其路徑來指定其他 Web 根。 如需詳細資訊，請參閱 [Web 根目錄](xref:fundamentals/host/generic-host#webroot)。
 
 防止在*wwwroot*中使用專案檔中[\<的內容>專案項](/visualstudio/msbuild/common-msbuild-project-items#content)發佈檔。 以下範例防止在*wwwroot/local*及其子目錄中發表內容:
 

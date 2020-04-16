@@ -1,92 +1,92 @@
 ---
-title: ASP.NET Core 中的記憶體管理和模式
+title: ASP.NET核心中的記憶體管理和模式
 author: rick-anderson
-description: 瞭解記憶體在 ASP.NET Core 中的管理方式，以及垃圾收集行程（GC）的運作方式。
+description: 瞭解如何在ASP.NET核心中管理記憶體,以及垃圾回收器 (GC) 的工作原理。
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 4/05/2019
 uid: performance/memory
-ms.openlocfilehash: 0ae367e954e21e2f696a3b292fa64f1d2dba98ec
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: b2af9cb567cdb1d7b2d0942601fcc3ebd999a5d9
+ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667024"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81440944"
 ---
-# <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>ASP.NET Core 中的記憶體管理和垃圾收集（GC）
+# <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>ASP.NET核心中的記憶體管理和垃圾回收 (GC)
 
-By [Sébastien Ros](https://github.com/sebastienros)和[Rick Anderson](https://twitter.com/RickAndMSFT)
+由[塞巴斯蒂安·羅斯](https://github.com/sebastienros)和[里克·安德森](https://twitter.com/RickAndMSFT)
 
-記憶體管理是很複雜的，即使是在 .NET 之類的 managed 架構中也一樣。 分析和瞭解記憶體問題可能是一項挑戰。 本文：
+記憶體管理很複雜,即使在像 .NET 這樣的託管框架中也是如此。 分析和理解記憶體問題可能具有挑戰性。 本文：
 
-* 有許多*記憶體*流失和*GC 無法運作*的問題。 大部分的問題都是因為不了解記憶體耗用量在 .NET Core 中的運作方式，或不了解其測量方式所造成。
-* 示範有問題的記憶體使用，並建議替代的方法。
+* 受許多*記憶體洩漏*和*GC 不工作*問題引起的。 這些問題大多是由於不瞭解記憶體消耗在 .NET Core 中的工作方式,或者不瞭解如何測量記憶體消耗造成的。
+* 演示有問題的記憶體使用,並建議替代方法。
 
-## <a name="how-garbage-collection-gc-works-in-net-core"></a>垃圾收集（GC）在 .NET Core 中的運作方式
+## <a name="how-garbage-collection-gc-works-in-net-core"></a>垃圾回收 (GC) 在 .NET 核心中的工作方式
 
-GC 會配置堆積區段，其中每個區段都是連續的記憶體範圍。 放在堆積中的物件會分類成3個層代中的其中一個：0、1或2。 產生會決定 GC 嘗試釋放應用程式不再參考之受管理物件記憶體的頻率。 較低編號的層代會更頻繁地進行 GC。
+GC 分配堆段,其中每個段是連續的記憶體範圍。 放置在堆中的物件分為 3 代之一:0、1 或 2。 生成確定 GC 嘗試釋放應用程式不再引用的託管物件上的記憶體的頻率。 編號較低的代是 GC 更頻繁地使用。
 
-物件會根據其存留期從一個世代移至另一個層代。 隨著物件的存留時間較久，它們會移至較高的層代。 如先前所述，較高的層代是較不常的 GC。 短期存留期的物件一律會保留在層代0中。 例如，在 web 要求存留期間所參考的物件會短暫存留。 應用層級[單次個體](xref:fundamentals/dependency-injection#service-lifetimes)通常會遷移至層代2。
+對象根據其生存期從一代移動到另一代。 隨著物件壽命的延長,它們被移動到更高的一代。 如前所述,較高一代是 GC 的較少頻率。 短期生存對象始終保留在第 0 代中。 例如,在 Web 請求期間引用的對像是短暫的。 應用程式級[單例](xref:fundamentals/dependency-injection#service-lifetimes)通常遷移到第 2 代。
 
-當 ASP.NET Core 應用程式啟動時，GC：
+當 ASP.NET 核心應用啟動時,GC:
 
-* 會針對初始堆積區段保留一些記憶體。
-* 載入執行時間時，認可記憶體的一小部分。
+* 為初始堆段保留一些記憶體。
+* 載入運行時時提交一小部分記憶體。
 
-先前的記憶體配置是基於效能考慮而完成。 效能優勢來自連續記憶體中的堆積區段。
+出於性能原因,上述記憶體分配完成。 性能優勢來自連續記憶體中的堆段。
 
-### <a name="call-gccollect"></a>呼叫 GC。收集
+### <a name="call-gccollect"></a>調用 GC。收集
 
-呼叫[GC。](xref:System.GC.Collect*)明確地收集：
+調用[GC。明確收集](xref:System.GC.Collect*):
 
-* **不**應該由生產 ASP.NET Core 應用程式來完成。
-* 在調查記憶體流失時很有用。
-* 進行調查時，會確認 GC 已從記憶體中移除所有無關聯物件，以便測量記憶體。
+* **不應**通過生產ASP.NET核心應用來完成。
+* 在調查記憶體洩漏時很有用。
+* 調查時,驗證 GC 從記憶體中刪除了所有懸空物件,以便可以測量記憶體。
 
-## <a name="analyzing-the-memory-usage-of-an-app"></a>分析應用程式的記憶體使用量
+## <a name="analyzing-the-memory-usage-of-an-app"></a>分析應用的記憶體使用方式
 
-專用工具可以協助分析記憶體使用量：
+專用工具可幫助分析記憶體使用方式:
 
-- 計算物件參考
-- 測量 GC 對 CPU 使用量有多少影響
-- 測量每個層代所使用的記憶體空間
+- 計數物件參照
+- 測量 GC 對 CPU 使用率的影響
+- 測量每一代使用的記憶體空間
 
-使用下列工具來分析記憶體使用量：
+使用以下工具分析記憶體使用方式:
 
-* [dotnet-trace](/dotnet/core/diagnostics/dotnet-trace)：可用於生產機器。
-* [不使用 Visual Studio 偵錯工具分析記憶體使用量](/visualstudio/profiling/memory-usage-without-debugging2)
-* [分析 Visual Studio 中的記憶體使用狀況](/visualstudio/profiling/memory-usage)
+* [點網跟蹤](/dotnet/core/diagnostics/dotnet-trace):可用於生產機器。
+* [無需視覺化工作室調試器即可分析記憶體使用方式](/visualstudio/profiling/memory-usage-without-debugging2)
+* [分析 Visual Studio 中的記憶體使用量](/visualstudio/profiling/memory-usage)
 
 ### <a name="detecting-memory-issues"></a>偵測記憶體問題
 
-工作管理員可用來瞭解 ASP.NET 應用程式所使用的記憶體數量。 [工作管理員記憶體] 值：
+任務管理器可用於瞭解應用使用的ASP.NET記憶體量。 工作管理員記憶體值:
 
-* 代表 ASP.NET 進程所使用的記憶體數量。
-* 包含應用程式的生活物件以及其他記憶體取用者，例如原生記憶體使用量。
+* 表示ASP.NET進程使用的記憶體量。
+* 包括應用的活物件和其他記憶體消費者,如本機記憶體使用方式。
 
-如果工作管理員記憶體值無限期地增加，而且永遠不會壓平合併，應用程式就會發生記憶體流失的情況。 下列各節將示範和說明數個記憶體使用模式。
+如果任務管理器記憶體值無限增加且從不變展,則應用會洩漏記憶體。 以下各節演示並解釋幾種記憶體使用模式。
 
-## <a name="sample-display-memory-usage-app"></a>範例顯示記憶體使用量應用程式
+## <a name="sample-display-memory-usage-app"></a>範例顯示記憶體使用方式套用
 
-[MemoryLeak 範例應用程式](https://github.com/sebastienros/memoryleak)可在 GitHub 上取得。 MemoryLeak 應用程式：
+[記憶體洩漏示例應用](https://github.com/sebastienros/memoryleak)在 GitHub 上可用。 記憶體洩漏應用:
 
-* 包含診斷控制器，可收集應用程式的即時記憶體和 GC 資料。
-* 具有顯示記憶體和 GC 資料的 [索引] 頁面。 [索引] 頁面會每秒重新整理一次。
-* 包含可提供各種記憶體負載模式的 API 控制器。
-* 不是支援的工具，不過，它可以用來顯示 ASP.NET Core 應用程式的記憶體使用模式。
+* 包括一個診斷控制器,用於收集應用的即時記憶體和 GC 數據。
+* 具有顯示記憶體和 GC 數據的索引頁。 每秒刷新一次索引頁。
+* 包含 API 控制器,該控制器提供各種記憶體載入模式。
+* 不是受支援的工具,但是,它可用於顯示ASP.NET核心應用的記憶體使用模式。
 
-執行 MemoryLeak。 配置的記憶體會慢慢增加，直到發生 GC 為止。 記憶體會增加，因為此工具會配置自訂物件來捕獲資料。 下圖顯示發生 Gen 0 GC 時的 MemoryLeak 索引頁面。 此圖表顯示0個 RPS （每秒的要求數），因為尚未呼叫來自 API 控制器的 API 端點。
+運行記憶體洩漏。 分配的記憶體會緩慢增加,直到發生 GC。 記憶體增加,因為該工具分配自定義物件以捕獲數據。 下圖顯示了發生第 0 代 GC 時記憶體洩漏索引頁。 該圖表顯示 0 RPS(每秒請求),因為未調用來自 API 控制器的 API 終結點。
 
-![先前的圖表](memory/_static/0RPS.png)
+![前一圖表](memory/_static/0RPS.png)
 
-此圖表會顯示記憶體使用量的兩個值：
+圖表顯示記憶體使用方式的兩個值:
 
-- 已配置：受管理物件所佔用的記憶體數量
-- [工作集](/windows/win32/memory/working-set)：目前位於實體記憶體中的進程虛擬位址空間內的一組頁面。 所顯示的工作集與 [工作管理員] 會顯示相同的值。
+- 已分配:託管物件佔用的記憶體量
+- [工作集](/windows/win32/memory/working-set):進程虛擬位址空間中的頁面集,當前駐留在物理記憶體中。 顯示的工作集與任務管理器顯示的值相同。
 
-### <a name="transient-objects"></a>暫時性物件
+### <a name="transient-objects"></a>瞬態物件
 
-下列 API 會建立一個 10 KB 的字串實例，並將它傳回給用戶端。 在每個要求上，會在記憶體中配置新的物件，並將其寫入至回應。 字串會在 .NET 中儲存為 UTF-16 字元，因此每個字元會在記憶體中使用2個位元組。
+以下 API 創建一個 10 KB 字串實例並將其返回到用戶端。 在每個請求上,一個新對象在記憶體中分配並寫入回應。 字串在 .NET 中儲存為 UTF-16 字元,因此每個字元在記憶體中需要 2 個字節。
 
 ```csharp
 [HttpGet("bigstring")]
@@ -96,40 +96,40 @@ public ActionResult<string> GetBigString()
 }
 ```
 
-下圖會以相對較小的負載產生，以顯示 GC 如何影響記憶體配置。
+以下圖形的負載相對較小,以顯示記憶體分配如何受到 GC 的影響。
 
-![先前的圖表](memory/_static/bigstring.png)
+![前一圖表](memory/_static/bigstring.png)
 
-上圖顯示：
+上圖顯示:
 
-* 4K RPS （每秒的要求數）。
-* 層代 0 GC 回收大約每兩秒發生一次。
-* 工作集在大約 500 MB 是常數。
-* CPU 為12%。
-* 記憶體耗用量和釋放（透過 GC）是穩定的。
+* 4K RPS(每秒請求)。
+* 第 0 代 GC 集合大約每兩秒發生一次。
+* 工作集保持不變,約為 500 MB。
+* CPU 為 12%。
+* 記憶體消耗和釋放(通過 GC)穩定。
 
-下圖是以機器可以處理的最大輸送量為依據。
+下圖以機器可以處理的最大輸送量進行。
 
-![先前的圖表](memory/_static/bigstring2.png)
+![前一圖表](memory/_static/bigstring2.png)
 
-上圖顯示：
+上圖顯示:
 
 * 22K RPS
-* 層代 0 GC 回收每秒發生數次。
-* 系統會觸發第1代集合，因為應用程式每秒配置的記憶體會大幅增加。
-* 工作集在大約 500 MB 是常數。
-* CPU 為33%。
-* 記憶體耗用量和釋放（透過 GC）是穩定的。
-* CPU （33%）未過度使用，因此垃圾收集可能會跟上大量的配置。
+* 第 0 代 GC 集合每秒發生多次。
+* 第 1 代集合被觸發,因為應用每秒分配的記憶體顯著增加。
+* 工作集保持不變,約為 500 MB。
+* CPU 為 33%。
+* 記憶體消耗和釋放(通過 GC)穩定。
+* CPU (33%)未過度使用,因此垃圾回收可以跟上大量分配。
 
-### <a name="workstation-gc-vs-server-gc"></a>工作站 GC 與伺服器 GC 的比較
+### <a name="workstation-gc-vs-server-gc"></a>工作站 GC 與伺服器 GC
 
-.NET 垃圾收集行程有兩種不同的模式：
+.NET 垃圾回收器有兩種不同的模式:
 
-* **工作站 GC**：針對桌面優化。
-* **伺服器 GC**。 ASP.NET Core 應用程式的預設 GC。 已針對伺服器進行優化。
+* **工作站 GC**:針對桌面進行了優化。
+* **伺服器 GC**。 ASP.NET核心應用的預設 GC。 針對伺服器進行了優化。
 
-GC 模式可以在專案檔或已發佈應用程式的 *.runtimeconfig.json*中明確設定。 下列標記會顯示在專案檔中設定 `ServerGarbageCollection`：
+GC 模式可以在專案檔或已發佈應用程式的*運行時 config.json*檔中顯式設置。 以下標記顯示項目檔中的`ServerGarbageCollection`設定:
 
 ```xml
 <PropertyGroup>
@@ -137,27 +137,33 @@ GC 模式可以在專案檔或已發佈應用程式的 *.runtimeconfig.json*中�
 </PropertyGroup>
 ```
 
-變更專案檔中的 `ServerGarbageCollection` 需要重建應用程式。
+在`ServerGarbageCollection`專案檔中更改需要重新生成應用。
 
-**注意：** 在具有單一核心的機器上**無法**使用伺服器垃圾收集。 如需詳細資訊，請參閱 <xref:System.Runtime.GCSettings.IsServerGC>。
+**註:** 伺服器垃圾資源在具有單個核心的電腦上**無法使用**。 如需詳細資訊，請參閱 <xref:System.Runtime.GCSettings.IsServerGC>。
 
-下圖顯示使用工作站 GC 之已測的 RPS 下的記憶體設定檔。
+下圖顯示了使用工作站 GC 的 5K RPS 下的記憶體配置檔。
 
-![先前的圖表](memory/_static/workstation.png)
+![前一圖表](memory/_static/workstation.png)
 
-此圖表與伺服器版本之間的差異很重要：
+此圖表和伺服器版本之間的差異很大:
 
-- 工作集從 500 MB 降到 70 MB。
-- GC 每秒會執行層代0回收多次，而不是每兩秒。
-- GC 從 300 MB 降到 10 MB。
+- 工作集從 500 MB 下降到 70 MB。
+- GC 每秒生成數次集合,而不是每兩秒生成一次。
+- GC 從 300 MB 下降到 10 MB。
 
-在典型的 web 伺服器環境中，CPU 使用量比記憶體更重要，因此伺服器 GC 會比較好。 如果記憶體使用率很高，且 CPU 使用率相對較低，則工作站 GC 可能更具效能。 例如，在記憶體不足的情況下，裝載數個 web 應用程式的高密度。
+在典型的 Web 伺服器環境中,CPU 使用率比記憶體更重要,因此伺服器 GC 更好。 如果記憶體利用率高且 CPU 使用率相對較低,則工作站 GC 可能更具有性能。 例如,高密度託管多個記憶體不足的 Web 應用。
 
-### <a name="persistent-object-references"></a>持續性物件參考
+<a name="sc"></a>
 
-GC 無法釋放所參考的物件。 已參考但不再需要的物件會導致記憶體流失。 如果應用程式經常設定物件，而且不再需要時無法加以釋放，記憶體使用量會隨著時間而增加。
+### <a name="gc-using-docker-and-small-containers"></a>使用 Docker 與小型容器的 GC
 
-下列 API 會建立一個 10 KB 的字串實例，並將它傳回給用戶端。 上一個範例的差異在於，此實例是由靜態成員所參考，這表示它永遠無法用於集合。
+當在一台電腦上運行多個容器化應用時,工作站 GC 可能比伺服器 GC 更具預製功能。 有關詳細資訊,請參閱[在小型容器中使用伺服器 GC 執行](https://devblogs.microsoft.com/dotnet/running-with-server-gc-in-a-small-container-scenario-part-0/),並在[小型容器方案第 1 部分中使用伺服器 GC 執行 = GC 堆的硬限制](https://devblogs.microsoft.com/dotnet/running-with-server-gc-in-a-small-container-scenario-part-1-hard-limit-for-the-gc-heap/)。
+
+### <a name="persistent-object-references"></a>持久物件參照
+
+GC 無法釋放引用的物件。 引用但不再需要的物件會導致記憶體洩漏。 如果應用經常分配物件,並且在不再需要物件后無法釋放它們,則記憶體使用量將隨著時間的推移而增加。
+
+以下 API 創建一個 10 KB 字串實例並將其返回到用戶端。 與上一個示例的區別是此實例由靜態成員引用,這意味著它永遠不會可用於收集。
 
 ```csharp
 private static ConcurrentBag<string> _staticStrings = new ConcurrentBag<string>();
@@ -173,24 +179,24 @@ public ActionResult<string> GetStaticString()
 
 上述程式碼：
 
-* 是一般記憶體流失的範例。
-* 使用頻繁的呼叫，會導致應用程式記憶體增加，直到進程損毀並出現 `OutOfMemory` 例外狀況。
+* 是典型的記憶體洩漏的示例。
+* 頻繁調用時,會導致應用記憶體增加,直到進程崩潰,`OutOfMemory`出現異常。
 
-![先前的圖表](memory/_static/eternal.png)
+![前一圖表](memory/_static/eternal.png)
 
-在上圖中：
+在前面的影像中:
 
-* 負載測試 `/api/staticstring` 端點會導致記憶體中的線性增加。
-* GC 會藉由呼叫第2代回收，在記憶體壓力增加時，嘗試釋放記憶體。
-* GC 無法釋放洩漏的記憶體。 已配置和工作集增加了一段時間。
+* 負載測試`/api/staticstring`終結點會導致記憶體線性增加。
+* GC 嘗試通過調用第 2 代集合來釋放記憶體,因為記憶體壓力增大。
+* GC 無法釋放洩漏的記憶體。 分配和工作集會隨時間而增加。
 
-某些案例（例如快取）需要保留物件參考，直到記憶體壓力強制釋放它們為止。 <xref:System.WeakReference> 類別可以用於這種類型的快取程式碼。 記憶體壓力下會收集 `WeakReference` 物件。 <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache> 的預設執行會使用 `WeakReference`。
+某些方案(如緩存)要求保持物件引用,直到記憶體壓力強制釋放它們。 類<xref:System.WeakReference>可用於這種類型的緩存代碼。 對`WeakReference`像是在記憶體壓力下收集的。 <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>使用的`WeakReference`默認實現。
 
-### <a name="native-memory"></a>原生記憶體
+### <a name="native-memory"></a>本機記憶體
 
-有些 .NET Core 物件依賴原生記憶體。 GC**無法**收集原生記憶體。 使用原生記憶體的 .NET 物件必須使用機器碼釋放它。
+某些 .NET Core 物件依賴於本機記憶體。 GC**無法**收集本機記憶體。 使用本機記憶體的 .NET物件必須使用本機代碼釋放它。
 
-.NET 提供 <xref:System.IDisposable> 介面，讓開發人員釋放原生記憶體。 即使未呼叫 <xref:System.IDisposable.Dispose*>，在完成項執行時，正確實作為[的類別](/dotnet/csharp/programming-guide/classes-and-structs/destructors)也會呼叫 `Dispose`。
+.NET<xref:System.IDisposable>提供允許開發人員釋放本機記憶體的介面。 即使<xref:System.IDisposable.Dispose*>未調用,在[終結器](/dotnet/csharp/programming-guide/classes-and-structs/destructors)運行時`Dispose`,也會正確實現類調用。
 
 請考慮下列程式碼：
 
@@ -203,44 +209,44 @@ public void GetFileProvider()
 }
 ```
 
-[PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider?view=dotnet-plat-ext-3.0)是 managed 類別，因此會在要求結束時收集任何實例。
+[物理檔提供程式](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider?view=dotnet-plat-ext-3.0)是託管類,因此將在請求結束時收集任何實例。
 
-下圖顯示連續叫用 `fileprovider` API 時的記憶體設定檔。
+下圖顯示連續調用 API`fileprovider`時的 記憶體配置檔。
 
-![先前的圖表](memory/_static/fileprovider.png)
+![前一圖表](memory/_static/fileprovider.png)
 
-上圖顯示此類別的執行明顯問題，因為它會持續增加記憶體使用量。 這是在[此問題](https://github.com/dotnet/aspnetcore/issues/3110)中追蹤的已知問題。
+前面的圖表顯示了此類實現的一個明顯問題,因為它不斷增加記憶體使用量。 這是一個已知的問題,正在跟蹤[在此問題](https://github.com/dotnet/aspnetcore/issues/3110)。
 
-在使用者程式碼中，可能會發生相同的流失，如下所示：
+使用者代碼中也可能發生相同的洩漏,其原因之一如下:
 
-* 未正確釋放類別。
-* 忘記叫用應處置之相依物件的 `Dispose`方法。
+* 未正確釋放類。
+* 忘記調用應釋放的`Dispose`從屬物件的方法。
 
-### <a name="large-objects-heap"></a>大型物件堆積
+### <a name="large-objects-heap"></a>大型物件堆
 
-頻繁的記憶體配置/免費週期可以分割記憶體，特別是在配置大型記憶體區塊時。 物件會配置在連續的記憶體區塊中。 為了減輕片段，當 GC 釋放記憶體時，它嘗試重組。 此進程稱為「**壓縮**」。 壓縮牽涉到移動物件。 移動大型物件會對效能造成負面影響。 基於這個理由，GC 會為_大型_物件（稱為[大型物件堆積](/dotnet/standard/garbage-collection/large-object-heap)（LOH））建立一個特殊的記憶體區域。 大於85000位元組（大約 83 KB）的物件為：
+頻繁的記憶體分配/空閒週期可能會分散記憶體,尤其是在分配大塊記憶體時。 對象以連續的記憶體塊分配。 為了緩解碎片,當 GC 釋放記憶體時,它會嘗試對它進行碎片整理。 此過程為**壓縮**。 壓實涉及移動物件。 移動大型物件會造成性能損失。 因此,GC 會為_大型_物件(稱為[大型物件堆](/dotnet/standard/garbage-collection/large-object-heap)(LOH) 創建特殊內存區域。 大於 85,000 位元組(約 83 KB)的物件是:
 
-* 放在 LOH 上。
+* 放置在 LOH 上。
 * 未壓縮。
-* 在層代 2 Gc 期間收集。
+* 在第 2 代 GC 期間收集。
 
-當 LOH 已滿時，GC 將會觸發層代2回收。 第2代集合：
+當 LOH 已滿時,GC 將觸發第 2 代集合。 第二代集合:
 
-* 本質上很慢。
-* 此外，也會產生在所有其他層代上觸發集合的成本。
+* 本質上是緩慢的。
+* 此外,還要承擔觸發所有其他代的集合的成本。
 
-下列程式碼會立即壓縮 LOH：
+以下代碼可立即壓縮 LOH:
 
 ```csharp
 GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
 GC.Collect();
 ```
 
-如需有關壓縮 LOH 的詳細資訊，請參閱 <xref:System.Runtime.GCSettings.LargeObjectHeapCompactionMode>。
+有關<xref:System.Runtime.GCSettings.LargeObjectHeapCompactionMode>壓縮 LOH 的資訊,請參閱。
 
-在使用 .NET Core 3.0 和更新版本的容器中，會自動壓縮 LOH。
+在使用 .NET Core 3.0 及更高版本的容器中,LOH 會自動壓縮。
 
-下列 API 會說明這個行為：
+以下說明此行為的 API:
 
 ```csharp
 [HttpGet("loh/{size=85000}")]
@@ -250,48 +256,48 @@ public int GetLOH1(int size)
 }
 ```
 
-下圖顯示在 [最大負載] 底下呼叫 `/api/loh/84975` 端點的記憶體設定檔：
+下圖顯示了在最大負載下調用終結點的`/api/loh/84975`記憶體配置檔:
 
-![先前的圖表](memory/_static/loh1.png)
+![前一圖表](memory/_static/loh1.png)
 
-下圖顯示呼叫 `/api/loh/84976` 端點的記憶體設定檔，*只配置一個位元組*：
+下圖顯示了呼叫終結點的`/api/loh/84976`記憶體設定檔,僅分配*了一個字節*:
 
-![先前的圖表](memory/_static/loh2.png)
+![前一圖表](memory/_static/loh2.png)
 
-注意： `byte[]` 結構有額外的位元組。 這就是為什麼84976個位元組會觸發85000限制的原因。
+注意:結構`byte[]`具有開銷位元組。 這就是為什麼 84,976 位元組觸發 85,000 限制的原因。
 
-比較上述兩個圖表：
+比較前面的兩個圖表:
 
-* 這兩種案例的工作集都很類似，大約是 450 MB。
-* [LOH 要求（84975位元組）] 底下顯示大部分的層代0回收。
-* Over LOH 要求會產生常數層代2回收。 第2代回收的成本很高。 需要更多的 CPU，輸送量幾乎下降了50%。
+* 這兩種情況的工作集都類似,大約 450 MB。
+* LOH 下的請求(84,975 位元組)主要顯示第0代集合。
+* 過 LOH 請求生成恆定的第 2 代集合。 第 2 代集合成本高昂。 需要更多的 CPU,輸送量下降近 50%。
 
-暫存大型物件特別有問題，因為它們會造成 gen2 Gc。
+臨時大型物件特別成問題,因為它們會導致第 2 代 GC。
 
-為了達到最大效能，應該將大型物件使用降至最低。 可能的話，請分割大型物件。 例如，ASP.NET Core 中的[回應](xref:performance/caching/response)快取中介軟體會將快取專案分割成小於85000個位元組的區塊。
+為了達到最佳性能,應盡量減少大型物件的使用。 如果可能,拆分大型物件。 例如,ASP.NET Core 中的[回應緩存](xref:performance/caching/response)中間件將緩存條目拆分為小於 85,000 位元組的塊。
 
-下列連結顯示將物件保留在 LOH 限制之下的 ASP.NET Core 方法：
+以下連結顯示了將物件保持在 LOH 限制下的 ASP.NET 核心方法:
 
-* [ResponseCaching/資料流程/StreamUtilities .cs](https://github.com/dotnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
-* [ResponseCaching/MemoryResponseCache .cs](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
+* [回應快取/流/流實用程式。cs](https://github.com/dotnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
+* [回應快取/記憶體回應快取.cs](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
 如需詳細資訊，請參閱
 
-* [發現大型物件堆積](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
-* [大型物件堆積](/dotnet/standard/garbage-collection/large-object-heap)
+* [未覆寫的大物件堆](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
+* [大型物件堆](/dotnet/standard/garbage-collection/large-object-heap)
 
 ### <a name="httpclient"></a>HttpClient
 
-不正確地使用 <xref:System.Net.Http.HttpClient> 會導致資源洩漏。 系統資源，例如資料庫連接、通訊端、檔案控制代碼等：
+使用<xref:System.Net.Http.HttpClient>不當可能會導致資源洩漏。 系統資源,如資料庫連接、套接字、檔句柄等:
 
-* 比記憶體更少。
-* 當洩漏記憶體時，會有更多的問題。
+* 比記憶更稀缺。
+* 洩漏時比記憶體問題更大。
 
-有經驗的 .NET 開發人員知道要在執行 <xref:System.IDisposable>的物件上呼叫 <xref:System.IDisposable.Dispose*>。 不處置執行 `IDisposable` 的物件，通常會導致記憶體流失或系統資源洩漏。
+經驗豐富的 .NET 開發<xref:System.IDisposable.Dispose*>人員知道<xref:System.IDisposable>調用實現 的物件。 不釋放實現`IDisposable`的物件通常會導致記憶體洩漏或系統資源洩漏。
 
-`HttpClient` 會執行 `IDisposable`，但**不**應該在每次叫用時加以處置。 相反地，應該重複使用 `HttpClient`。
+`HttpClient`實現`IDisposable`,但**不應**在每一次調用時都處置。 相反,`HttpClient`應該重複使用。
 
-下列端點會在每個要求上建立和處置新的 `HttpClient` 實例：
+以下終結點在每個請求上建立並釋放一`HttpClient`個新實例:
 
 ```csharp
 [HttpGet("httpclient1")]
@@ -305,7 +311,7 @@ public async Task<int> GetHttpClient1(string url)
 }
 ```
 
-在負載之下，會記錄下列錯誤訊息：
+在負載下,將記錄以下錯誤訊息:
 
 ```
 fail: Microsoft.AspNetCore.Server.Kestrel[13]
@@ -319,9 +325,9 @@ System.Net.Http.HttpRequestException: Only one usage of each socket address
     CancellationToken cancellationToken)
 ```
 
-雖然會處置 `HttpClient` 實例，但實際的網路連線需要一些時間才能由作業系統釋放。 藉由持續建立新的連接，就會發生_埠耗盡_。 每個用戶端連接都需要自己的用戶端埠。
+即使`HttpClient`實例已釋放,操作系統也會釋放實際網路連接。 以不斷建立新連線,_連接埠耗盡_。 每個用戶端連接都需要其自己的用戶端埠。
 
-防止埠耗盡的方法之一，就是重複使用相同的 `HttpClient` 實例：
+防止連接埠耗盡的一種方法是重用同一`HttpClient`實例:
 
 ```csharp
 private static readonly HttpClient _httpClient = new HttpClient();
@@ -334,27 +340,27 @@ public async Task<int> GetHttpClient2(string url)
 }
 ```
 
-當應用程式停止時，就會釋放 `HttpClient` 實例。 這個範例顯示，每次使用之後，不應處置每個可處置的資源。
+`HttpClient`當應用停止時,實例將被釋放。 此示例顯示,在每次使用后,不應釋放每個一次性資源。
 
-請參閱下列內容，以取得更好的方法來處理 `HttpClient` 實例的存留期：
+有關處理`HttpClient`實例存留期的更好方法,請參閱以下內容:
 
 * [HttpClient 和存留期管理](/aspnet/core/fundamentals/http-requests#httpclient-and-lifetime-management)
-* [HTTPClient factory 的 blog](https://devblogs.microsoft.com/aspnet/asp-net-core-2-1-preview1-introducing-httpclient-factory/)
+* [HTTPClient 工廠部落格](https://devblogs.microsoft.com/aspnet/asp-net-core-2-1-preview1-introducing-httpclient-factory/)
  
-### <a name="object-pooling"></a>物件共用
+### <a name="object-pooling"></a>物件池
 
-先前的範例示範如何將 `HttpClient` 實例設為靜態，並由所有要求重複使用。 重複使用會導致資源不足。
+前面的示例演示如何使`HttpClient`實例成為靜態的,並被所有請求重用。 重用可防止資源耗盡。
 
-物件共用：
+物件池:
 
-* 會使用重複使用模式。
-* 是針對建立成本昂貴的物件所設計。
+* 使用重用模式。
+* 專為創建成本高昂的對象而設計。
 
-集區是預先初始化的物件集合，可以線上程之間保留和釋放。 集區可以定義配置規則，例如限制、預先定義的大小或成長率。
+池是預初始化物件的集合,可以在線程之間保留和釋放。 池可以定義分配規則,如限制、預定義大小或增長率。
 
-[ObjectPool](https://www.nuget.org/packages/Microsoft.Extensions.ObjectPool/)的 NuGet 套件包含可協助管理這類集區的類別。
+NuGet 包[Microsoft.擴展.ObjectPool](https://www.nuget.org/packages/Microsoft.Extensions.ObjectPool/)包含有助於管理此類池的類。
 
-下列 API 端點會具現化在每個要求上填入亂數字的 `byte` 緩衝區：
+以下 API 終結點實例`byte`化了 在每個請求上填充隨機數的緩衝區:
 
 ```csharp
         [HttpGet("array/{size}")]
@@ -368,25 +374,25 @@ public async Task<int> GetHttpClient2(string url)
         }
 ```
 
-下列圖表顯示使用中等負載呼叫先前的 API：
+下圖顯示了使用中等負載呼叫前面的 API 的圖表顯示:
 
-![先前的圖表](memory/_static/array.png)
+![前一圖表](memory/_static/array.png)
 
-在上圖中，層代0回收大約每秒發生一次。
+在前面的圖表中,第 0 代集合大約每秒發生一次。
 
-上述程式碼可以藉由使用[ArrayPool\<t >](xref:System.Buffers.ArrayPool`1)來將 `byte` 緩衝區進行優化。 靜態實例會在要求之間重複使用。
+可以通過使用[ArrayPool\<T>](xref:System.Buffers.ArrayPool`1)`byte`池化緩衝區來優化前面的代碼。 靜態實例跨請求重用。
 
-這種方法的不同之處在于，會從 API 傳回集區物件。 這表示：
+此方法的不同做法是從 API 返回池物件。 這意味著:
 
-* 當您從方法傳回時，物件就會從您的控制項移出。
-* 您無法釋放物件。
+* 從 方法返回時,物件將失去控制。
+* 無法釋放物件。
 
-若要設定物件的處置：
+要設定物件的處置:
 
-* 將集區陣列封裝在可處置的物件中。
-* 使用[HttpCoNtext. RegisterForDispose](xref:Microsoft.AspNetCore.Http.HttpResponse.RegisterForDispose*)註冊集區物件。
+* 將池陣組封裝在一次性物件中。
+* 使用[HttpContext.Response.註冊為 Dispose](xref:Microsoft.AspNetCore.Http.HttpResponse.RegisterForDispose*)註冊池物件。
 
-`RegisterForDispose` 會負責呼叫目標物件上的 `Dispose`，使其只有在 HTTP 要求完成時才會釋放。
+`RegisterForDispose`將負責對目標物件的`Dispose`調用,以便僅在 HTTP 請求完成時釋放它。
 
 ```csharp
 private static ArrayPool<byte> _arrayPool = ArrayPool<byte>.Create();
@@ -420,15 +426,15 @@ public byte[] GetPooledArray(int size)
 }
 ```
 
-套用與非集區版本相同的負載，會導致下列圖表：
+應用與非池式版本相同的負載會導致以下圖表:
 
-![先前的圖表](memory/_static/pooledarray.png)
+![前一圖表](memory/_static/pooledarray.png)
 
-主要差異是配置的位元組，因此產生的層代0回收量會較少。
+主要區別是分配位元組,因此,第 0 代集合要少得多。
 
 ## <a name="additional-resources"></a>其他資源
 
 * [記憶體回收](/dotnet/standard/garbage-collection/)
-* [瞭解使用並行視覺化的不同 GC 模式](https://blogs.msdn.microsoft.com/seteplia/2017/01/05/understanding-different-gc-modes-with-concurrency-visualizer/)
-* [發現大型物件堆積](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
-* [大型物件堆積](/dotnet/standard/garbage-collection/large-object-heap)
+* [使用並發視覺化工具瞭解不同的 GC 模式](https://blogs.msdn.microsoft.com/seteplia/2017/01/05/understanding-different-gc-modes-with-concurrency-visualizer/)
+* [未覆寫的大物件堆](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
+* [大型物件堆](/dotnet/standard/garbage-collection/large-object-heap)

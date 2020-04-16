@@ -4,14 +4,14 @@ author: jamesnk
 description: 瞭解如何在ASP.NET酷睿配置 gRPC 服務,以便使用 gRPC-Web 從瀏覽器應用調用 gRPC 服務。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 02/16/2020
+ms.date: 04/15/2020
 uid: grpc/browser
-ms.openlocfilehash: 0bb8157525ccd32991d8925816c1b599c3d21a92
-ms.sourcegitcommit: f0aeeab6ab6e09db713bb9b7862c45f4d447771b
+ms.openlocfilehash: a20e604488b1fb919f18932599ba690bfa308f0c
+ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80977141"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81440762"
 ---
 # <a name="use-grpc-in-browser-apps"></a>在瀏覽器應用程式中使用 gRPC
 
@@ -28,6 +28,15 @@ ms.locfileid: "80977141"
 > 請留下回饋,[https://github.com/grpc/grpc-dotnet](https://github.com/grpc/grpc-dotnet)以確保我們建構開發者喜歡並高效使用的東西。
 
 無法從基於瀏覽器的應用調用 HTTP/2 gRPC 服務。 [gRPC-Web](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md)是一種協定,允許瀏覽器 JavaScript 和 Blazor 應用調用 gRPC 服務。 本文介紹如何在 .NET 核心中使用 gRPC-Web。
+
+## <a name="grpc-web-in-aspnet-core-vs-envoy"></a>gRPC-Web ASP.NET核心與特使
+
+有關如何將 gRPC-Web 新增到 ASP.NET 核心應用有兩種選擇:
+
+* 在 ASP.NET核心中支援 gRPC-Web 與 gRPC HTTP/2 一起。 此選項使用`Grpc.AspNetCore.Web`包提供的中間件。
+* 使用[特使代理的](https://www.envoyproxy.io/)gRPC-Web 支援將 gRPC-Web 轉換為 gRPC HTTP/2。 然後,翻譯的呼叫將轉發到ASP.NET核心應用。
+
+每種方法都有優缺點。 如果您已經在應用環境中使用特使作為代理,則使用它提供 gRPC-Web 支援可能也有意義。 如果想要一個簡單的 gRPC-Web 解決方案,只需要ASP.NET`Grpc.AspNetCore.Web`核心, 這是一個不錯的選擇。
 
 ## <a name="configure-grpc-web-in-aspnet-core"></a>在 ASP.NET核心中設定 gRPC-Web
 

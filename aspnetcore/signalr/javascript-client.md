@@ -9,12 +9,12 @@ ms.date: 04/08/2020
 no-loc:
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: a99c1dd2aba6ef6ff925783762a98e2c81ed7225
-ms.sourcegitcommit: 9a46e78c79d167e5fa0cddf89c1ef584e5fe1779
+ms.openlocfilehash: 43b2cacf9f415ec422a00b28246f30c8ad74de29
+ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80994576"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81440853"
 ---
 # <a name="aspnet-core-opno-locsignalr-javascript-client"></a>ASP.NET核心SignalRJavaScript 用戶端
 
@@ -145,7 +145,7 @@ SignalR以符合與中`SendAsync`定義的名稱與參數來決定要呼叫的�
 
 將`catch`方法連結到方法的末尾,`start`以處理用戶端錯誤。 用於`console.error`將錯誤輸出到瀏覽器的主控台。
 
-[!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=49-51)]
+[!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=50)]
 
 通過傳遞記錄器和事件類型來在建立連接時記錄客戶端日誌跟蹤。 消息記錄與指定的日誌級別和更高。 可用紀錄等級如下:
 
@@ -178,7 +178,7 @@ const connection = new signalR.HubConnectionBuilder()
 在開始任何重新連線嘗試之前,`HubConnection``HubConnectionState.Reconnecting`將轉換為`onreconnecting`狀態 並觸發其回調,而不是`Disconnected`轉換到 狀態並`onclose`觸發其回調,就像未配置自動`HubConnection`重新連接一樣。 這提供了一個機會來警告使用者連接已丟失並禁用 UI 元素。
 
 ```javascript
-connection.onreconnecting((error) => {
+connection.onreconnecting(error => {
     console.assert(connection.state === signalR.HubConnectionState.Reconnecting);
 
     document.getElementById("messageInput").disabled = true;
@@ -197,7 +197,7 @@ connection.onreconnecting((error) => {
 > 如果`onreconnected`配置為[跳過協商](xref:signalr/configuration#configure-client-options)`connectionId`,`HubConnection`則回調的參數將未定義。
 
 ```javascript
-connection.onreconnected((connectionId) => {
+connection.onreconnected(connectionId => {
     console.assert(connection.state === signalR.HubConnectionState.Connected);
 
     document.getElementById("messageInput").disabled = false;
@@ -227,7 +227,7 @@ async function start() {
 如果用戶端在前四次嘗試中未成功重新連接,則將`HubConnection`轉換為`Disconnected`狀態並觸發其[關閉](/javascript/api/%40aspnet/signalr/hubconnection#onclose)回調。 這提供了一個機會,通知使用者連接已永久丟失,並建議刷新頁面:
 
 ```javascript
-connection.onclose((error) => {
+connection.onclose(error => {
     console.assert(connection.state === signalR.HubConnectionState.Disconnected);
 
     document.getElementById("messageInput").disabled = true;

@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內�
 ms.author: riande
 ms.date: 11/30/2019
 uid: fundamentals/localization
-ms.openlocfilehash: b175354220a8a71c029e005f27443d5a72749a11
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 91db83eb8685c7bee5e976f386c2a12c4090b734
+ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78662117"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81440814"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -120,11 +120,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures 和 SupportedUICultures
 
-ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這兩個文化特性值。 `SupportedCultures` 的 [CultureInfo](/dotnet/api/system.globalization.cultureinfo) 物件可決定文化特性相依函式的結果，例如日期、時間、數字及貨幣格式。 `SupportedCultures` 也可決定文字排列順序、大小寫慣例和字串比較。 如需伺服器如何取得文化特性的詳細資訊，請參閱 [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture)。 `SupportedUICultures` 可決定 [ResourceManager](/dotnet/api/system.resources.resourcemanager) 要查閱哪些翻譯的字串 (來自 *.resx* 檔案)。 `ResourceManager` 僅會查閱 `CurrentUICulture` 所決定之文化特性特有的字串。 .NET 中的每個執行緒都有 `CurrentCulture` 和 `CurrentUICulture` 物件。 ASP.NET Core 會在轉譯文化特性相依函式時檢查這些值。 比方說，如果目前執行緒的文化特性設定為 "en-US" (英文 - 美國)，`DateTime.Now.ToLongDateString()` 會顯示 "Thursday, February 18, 2016"，但如果 `CurrentCulture` 設定為 "es-ES" (西班牙文 - 西班牙)，則輸出會是 "jueves, 18 de febrero de 2016"。
+ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這兩個文化特性值。 `SupportedCultures` 的 [CultureInfo](/dotnet/api/system.globalization.cultureinfo) 物件可決定文化特性相依函式的結果，例如日期、時間、數字及貨幣格式。 `SupportedCultures` 也可決定文字排列順序、大小寫慣例和字串比較。 如需伺服器如何取得文化特性的詳細資訊，請參閱 [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture)。 確定`SupportedUICultures`[資源管理員](/dotnet/api/system.resources.resourcemanager)會尋找哪些翻譯的字串(來自 *.resx*檔案)。 `ResourceManager` 僅會查閱 `CurrentUICulture` 所決定之文化特性特有的字串。 .NET 中的每個執行緒都有 `CurrentCulture` 和 `CurrentUICulture` 物件。 ASP.NET Core 會在轉譯文化特性相依函式時檢查這些值。 比方說，如果目前執行緒的文化特性設定為 "en-US" (英文 - 美國)，`DateTime.Now.ToLongDateString()` 會顯示 "Thursday, February 18, 2016"，但如果 `CurrentCulture` 設定為 "es-ES" (西班牙文 - 西班牙)，則輸出會是 "jueves, 18 de febrero de 2016"。
 
 ## <a name="resource-files"></a>資源檔
 
-資源檔是一種實用的機制，可讓您將可當地語系化的字串與代碼區隔開來。 您可以將非預設語言的翻譯字串作為隔離的 *.resx* 資源檔。 例如，您可以建立名為 *Welcome.es.resx* 的西班牙文資源檔，以包含翻譯的字串。 "es" 是西班牙文的語言代碼。 若要在 Visual Studio 中建立這個資源檔：
+資源檔是一種實用的機制，可讓您將可當地語系化的字串與代碼區隔開來。 非預設語言的翻譯字串在 *.resx*資源檔中隔離。 例如，您可以建立名為 *Welcome.es.resx* 的西班牙文資源檔，以包含翻譯的字串。 "es" 是西班牙文的語言代碼。 若要在 Visual Studio 中建立這個資源檔：
 
 1. 在方案總管**** 中，以滑鼠右鍵按一下要放置資源檔的資料夾 > [新增]**** > [新增項目]****。
 

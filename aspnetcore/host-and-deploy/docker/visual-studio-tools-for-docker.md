@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: 0e6747a3de220b97cc7a84f9cd42b0da54b57ee9
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: ba79f0af8192ad9e8b263d4304ccc0df36c50f00
+ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78664063"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81440749"
 ---
 # <a name="visual-studio-container-tools-with-aspnet-core"></a>Visual Studio 容器工具搭配 ASP.NET Core
 
@@ -28,7 +28,7 @@ Visual Studio 2017 及更新版本支援建置、偵錯和執行以 .NET Core �
 
 若要進行 Docker 安裝，請先檢閱 [Docker for Windows: What to know before you install](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) 中的資訊。 接下來，安裝 [適用於 Windows 的 Docker](https://docs.docker.com/docker-for-windows/install/)。
 
-Docker for Windows 中的 **[Shared Drives](https://docs.docker.com/docker-for-windows/#shared-drives)** (共用磁碟機) 必須設定為支援磁碟區對應和偵錯。 右鍵按一下系統匣的 Docker 圖示,選擇 **「設定」** 並選擇 **「共用驅動器**」 。。 選取 Docker 儲存檔案的磁碟機。 按一下 [套用]****。
+Docker for Windows 中的 **[Shared Drives](https://docs.docker.com/docker-for-windows/#shared-drives)** (共用磁碟機) 必須設定為支援磁碟區對應和偵錯。 右鍵按一下系統匣的 Docker 圖示,選擇 **「設定」** 並選擇 **「共用驅動器**」 。。 選取 Docker 儲存檔案的磁碟機。 按一下 [套用]  。
 
 ![為容器選取共用本機 C 磁碟機的對話方塊](visual-studio-tools-for-docker/_static/settings-shared-drives-win.png)
 
@@ -238,3 +238,4 @@ microsoft/aspnetcore        2.0     c69d39472da9  13 days ago     347MB
 * [將 Windows 容器中的 .NET 應用程式部署至 Azure Service Fabric](/azure/service-fabric/service-fabric-host-app-in-a-container)
 * [對使用 Docker 進行的 Visual Studio 開發進行疑難排解](/azure/vs-azure-tools-docker-troubleshooting-docker-errors)
 * [GitHub 存放庫上的 Visual Studio 容器工具](https://github.com/Microsoft/DockerTools)
+* [使用 Docker 與小型容器的 GC](xref:performance/memory#sc)

@@ -1,21 +1,21 @@
 ---
-title: 從ASP.NET核心呼叫 Web APIBlazor
+title: 從ASP.NET核心BlazorWeb 程式集呼叫 Web API
 author: guardrex
-description: 瞭解如何使用 JSON 説明Blazor器從 應用呼叫 Web API,包括進行跨源資源分享 (CORS) 請求。
+description: 瞭解如何使用 JSON 説明Blazor器從 WebAssembly 應用呼叫 Web API,包括進行跨源資源分享 (CORS) 請求。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/22/2020
+ms.date: 04/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: e6996f0e6731b05038d0a9329152b8afd5f6796d
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 2f2d4150f4fa1e7f47310f2a88b816f445cd1d3a
+ms.sourcegitcommit: 49c91ad4b69f4f8032394cbf2d5ae1b19a7f863b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78660143"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81544852"
 ---
 # <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>從ASP.NET核心呼叫 Web APIBlazor
 
@@ -36,9 +36,19 @@ Web組裝應用使用預配置`HttpClient`的服務調用 Web [ Blazor ](xref:bl
 
 ## <a name="packages"></a>Packages
 
-參考*實驗性*[微軟.AspNetCore.Blazor. . . .HTTPClient](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.HttpClient/) NuGet 套件在專案檔中。 `Microsoft.AspNetCore.Blazor.HttpClient`基於`HttpClient`與[系統.Text.Json](https://www.nuget.org/packages/System.Text.Json/)。
+在專案檔中引用[系統.Net.Http.Json](https://www.nuget.org/packages/System.Net.Http.Json/) NuGet 包。
 
-要使用穩定的 API,請使用[Microsoft.AspNet.WebApi.Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)套件,該程式使用[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)/[Json.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm)。 在 中`Microsoft.AspNet.WebApi.Client`使用穩定的 API 不會提供本主題中描述的 JSON`Microsoft.AspNetCore.Blazor.HttpClient`説明程式,這是實驗 包獨有的。
+## <a name="add-the-httpclient-service"></a>新增 HTTPClient 服務
+
+在`Program.Main`中,`HttpClient`如果服務不存在,則新增該服務:
+
+```csharp
+builder.Services.AddSingleton(
+    new HttpClient
+    {
+        BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+    });
+```
 
 ## <a name="httpclient-and-json-helpers"></a>HTTPClient 和 JSON 說明人員
 
@@ -72,7 +82,7 @@ private class TodoItem
 
 JSON 說明器方法將要求傳送到 URI(以下範例中的 Web API)並處理回應:
 
-* `GetJsonAsync`&ndash;發送 HTTP GET 請求並分析 JSON 回應正文以創建物件。
+* `GetFromJsonAsync`&ndash;發送 HTTP GET 請求並分析 JSON 回應正文以創建物件。
 
   在以下代碼中,`_todoItems`元件顯示 。 `GetTodoItems`當元件完成渲染時([初始化 Async),](xref:blazor/lifecycle#component-initialization-methods)將觸發該方法。 有關完整示例,請參閱示例應用。
 
@@ -84,11 +94,11 @@ JSON 說明器方法將要求傳送到 URI(以下範例中的 Web API)並處理�
       private TodoItem[] _todoItems;
 
       protected override async Task OnInitializedAsync() => 
-          _todoItems = await Http.GetJsonAsync<TodoItem[]>("api/TodoItems");
+          _todoItems = await Http.GetFromJsonAsync<TodoItem[]>("api/TodoItems");
   }
   ```
 
-* `PostJsonAsync`&ndash;發送 HTTP POST 請求(包括 JSON 編碼的內容),並分析 JSON 回應正文以創建物件。
+* `PostAsJsonAsync`&ndash;發送 HTTP POST 請求(包括 JSON 編碼的內容),並分析 JSON 回應正文以創建物件。
 
   在以下代碼中,`_newItemName`由元件的綁定元素提供。 該方法`AddItem`透過選擇元素觸`<button>`發 。 有關完整示例,請參閱示例應用。
 
@@ -105,12 +115,14 @@ JSON 說明器方法將要求傳送到 URI(以下範例中的 Web API)並處理�
       private async Task AddItem()
       {
           var addItem = new TodoItem { Name = _newItemName, IsComplete = false };
-          await Http.PostJsonAsync("api/TodoItems", addItem);
+          await Http.PostAsJsonAsync("api/TodoItems", addItem);
       }
   }
   ```
+  
+  要`PostAsJsonAsync`返回的<xref:System.Net.Http.HttpResponseMessage>調用。
 
-* `PutJsonAsync`&ndash;發送 HTTP PUT 請求,包括 JSON 編碼的內容。
+* `PutAsJsonAsync`&ndash;發送 HTTP PUT 請求,包括 JSON 編碼的內容。
 
   在以下代碼中,`_editItem``IsCompleted``Name`和的值由元件的綁定元素提供。 當在`Id`UI 的另一部分選擇`EditItem`項並 調用該專案時,將設置項。 該方法`SaveItem`通過選擇"保存`<button>`" 元素觸發。 有關完整示例,請參閱示例應用。
 
@@ -133,9 +145,11 @@ JSON 說明器方法將要求傳送到 URI(以下範例中的 Web API)並處理�
       }
 
       private async Task SaveItem() =>
-          await Http.PutJsonAsync($"api/TodoItems/{_editItem.Id}, _editItem);
+          await Http.PutAsJsonAsync($"api/TodoItems/{_editItem.Id}, _editItem);
   }
   ```
+  
+  要`PutAsJsonAsync`返回的<xref:System.Net.Http.HttpResponseMessage>調用。
 
 <xref:System.Net.Http>包括用於發送 HTTP 請求和接收 HTTP 回應的其他擴充方法。 [HTTPClient.DeleteAsync](xref:System.Net.Http.HttpClient.DeleteAsync*)用於向 Web API 發送 HTTP DELETE 請求。
 

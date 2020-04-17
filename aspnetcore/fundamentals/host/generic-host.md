@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/17/2020
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: b528a33fa52bfe56faaf9f3ff8c7e43db0d4e184
-ms.sourcegitcommit: f29a12486313e38e0163a643d8a97c8cecc7e871
+ms.openlocfilehash: 46a56c278e889778e58a1fbb41ec217aaf023b13
+ms.sourcegitcommit: 77c046331f3d633d7cc247ba77e58b89e254f487
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384029"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81488770"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
 ::: moniker range=">= aspnetcore-3.0 <= aspnetcore-3.1"
 
-ASP.NET核心範本創建 .NET 核心通用主機<xref:Microsoft.Extensions.Hosting.HostBuilder>()。
+ASP.NET核心範本創建 .NET 核心通用主<xref:Microsoft.Extensions.Hosting.HostBuilder>機。
 
 ## <a name="host-definition"></a>主機定義
 
@@ -40,7 +40,7 @@ ASP.NET核心範本創建 .NET 核心通用主機<xref:Microsoft.Extensions.Host
 * 呼叫 `CreateHostBuilder` 方法來建立及設定建立器物件。
 * 在建立器物件上呼叫 `Build` 和 `Run` 方法。
 
-ASP.NET核心 Web 樣本產生以下代碼以建立主機:
+ASP.NET核心 Web 樣本產生以下代碼以建立通用主機:
 
 ```csharp
 public class Program
@@ -59,7 +59,7 @@ public class Program
 }
 ```
 
-以下代碼建立非 HTTP 工作負載,`IHostedService`其中將實現添加到 DI 容器中。
+以下代碼使用非 HTTP 工作負載創建通用主機。 將`IHostedService`新增到 DI 容器:
 
 ```csharp
 public class Program
@@ -88,6 +88,8 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
             webBuilder.UseStartup<Startup>();
         });
 ```
+
+前面的代碼由ASP.NET核心範本生成。
 
 如果應用程式使用 Entity Framework Core，請勿變更 `CreateHostBuilder` 方法的名稱或簽章。 [Entity Framework Core 工具](/ef/core/miscellaneous/cli/)預期找到 `CreateHostBuilder` 方法，其在不執行應用程式的情況下設定主機。 如需詳細資訊，請參閱[設計階段 DbContext 建立](/ef/core/miscellaneous/cli/dbcontext-creation)。
 

@@ -5,17 +5,17 @@ description: 瞭解Blazor託管模型配置,包括如何將 Razor 元件整合�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/07/2020
+ms.date: 04/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-model-configuration
-ms.openlocfilehash: ca1b3ea9092640ca561b3fbe02ddce6f974c525e
-ms.sourcegitcommit: e8dc30453af8bbefcb61857987090d79230a461d
+ms.openlocfilehash: 1b0f5f4071be7134d7de08615ec016ca6567385d
+ms.sourcegitcommit: 49c91ad4b69f4f8032394cbf2d5ae1b19a7f863b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/11/2020
-ms.locfileid: "81123378"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81544839"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET核心布拉佐託管模型配置
 
@@ -68,9 +68,39 @@ ms.locfileid: "81123378"
 <p>Environment: @HostEnvironment.Environment</p>
 ```
 
+在啟動期間,`WebAssemblyHostBuilder``IWebAssemblyHostEnvironment`公開`HostEnvironment`使用屬性,使開發者的代碼中具有特定於環境的邏輯:
+
+```csharp
+if (builder.HostEnvironment.Environment == "Custom")
+{
+    ...
+};
+```
+
+以下便利擴充方法允許檢查開發、生產、暫存和自訂環境名稱的當前環境:
+
+* `IsDevelopment()`
+* `IsProduction()`
+* `IsStaging()`
+* "是環境"("環境名稱")
+
+```csharp
+if (builder.HostEnvironment.IsStaging())
+{
+    ...
+};
+
+if (builder.HostEnvironment.IsEnvironment("Custom"))
+{
+    ...
+};
+```
+
+當`IWebAssemblyHostEnvironment.BaseAddress`服務不可用時`NavigationManager`, 可以在啟動期間使用該屬性。
+
 ### <a name="configuration"></a>組態
 
-自 ASP.NET 酷睿 3.2 預覽 3 版中,Blazor WebAssembly 支援以下配置:
+自ASP.NET酷睿 3.2 預覽 3 版本([目前版本為 3.2 預覽](xref:blazor/get-started)4),Blazor WebAssembly 支援以下設定:
 
 * *wwwroot/appsettings.json*
 * *wwwroot/應用設置。[環境].json*

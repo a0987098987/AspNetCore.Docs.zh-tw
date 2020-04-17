@@ -5,17 +5,17 @@ description: 瞭解如何調試Blazor應用。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/26/2020
+ms.date: 04/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: eaa67d63f6d15249885d78d3de197ae53e73f072
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 8b63444ba5c8cd45e64e722c8978ba4e6d90af36
+ms.sourcegitcommit: 77c046331f3d633d7cc247ba77e58b89e254f487
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80381869"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81488744"
 ---
 # <a name="debug-aspnet-core-opno-locblazor-webassembly"></a>除錯ASP.NET核心BlazorWeb 組裝
 
@@ -55,7 +55,7 @@ Blazor可以使用基於鉻瀏覽器(邊緣/Chrome)中的瀏覽器開發工具�
 
 ## <a name="enable-debugging-for-visual-studio-and-visual-studio-code"></a>啟用視覺化工作室和視覺化工作室代碼的除錯
 
-對於使用ASP.NET酷 3.2 預覽 3Blazor或更高版本的 WebAssembly 專案範本建立的新專案,將自動啟用調試。
+對於使用 ASP.NET酷 3.2 預覽 3Blazor或更高版本的 WebAssembly 專案樣本([目前版本為 3.2 預覽 4)](xref:blazor/get-started)創建的新專案,將自動啟用調試。
 
 要開啟現有BlazorWebAssembly 應用的除錯,請在啟動項目中更新*啟動設定.json*檔,以便`inspectUri`在每個啟動 設定檔中包括以下屬性:
 

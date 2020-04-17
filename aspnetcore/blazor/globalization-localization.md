@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 0883a67e0129590f7a3fb68689eaba8d85e5523f
-ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
+ms.openlocfilehash: 1b0db66b23c0caffc6b7c4e4af723c020609612a
+ms.sourcegitcommit: d5d45d84fe488427d418de770000f7df44a08370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81440710"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81539657"
 ---
 # <a name="aspnet-core-opno-locblazor-globalization-and-localization"></a>ASP.NET核心Blazor全球化和當地語系化
 
@@ -62,19 +62,13 @@ Blazor功能`@bind`根據使用者當前區域性執行格式並分析顯示值�
 
 ### <a name="opno-locblazor-webassembly"></a>Blazor網路組裝
 
+BlazorWebAssembly 應用使用使用者[的語言首選項](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages)設置區域性。
+
+要顯示式設定區域性,請設定`CultureInfo.DefaultThreadCurrentCulture`與`CultureInfo.DefaultThreadCurrentUICulture``Program.Main`。
+
 默認情況下BlazorBlazor,WebAssembly 應用的連結器配置會剝離國際化資訊,但顯式請求區域設置除外。 有關控制連結器行為的詳細資訊和指導,請參閱<xref:host-and-deploy/blazor/configure-linker#configure-the-linker-for-internationalization>。
 
-<!-- HOLD FOR 3.2 PREVIEW 4: Replace prior paragraph with ...
-
-Blazor WebAssembly apps set the culture using the user's [language preference](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages).
-
-To explicitly configure the culture, set `CultureInfo.DefaultThreadCurrentCulture` and `CultureInfo.DefaultThreadCurrentUICulture` in `Program.Main`.
-
-By default, Blazor's linker configuration for Blazor WebAssembly apps strips out internationalization information except for locales explicitly requested. For more information and guidance on controlling the linker's behavior, see <xref:host-and-deploy/blazor/configure-linker#configure-the-linker-for-internationalization>.
-
-While the culture that Blazor selects by default might be sufficient for most users, consider offering a way for users to specify their preferred locale. For a Blazor WebAssembly sample app with a culture picker, see the [LocSample](https://github.com/pranavkm/LocSample) localization sample app.
-
--->
+雖然默認情況下Blazor選擇的區域性對於大多數用戶來說可能就足夠了,但請考慮為使用者提供一種指定其首選區域設置的方法。 有關具有Blazor區域性選取器的 WebAssembly 範例應用程式,請參閱[LocSample](https://github.com/pranavkm/LocSample)當地語系化範例應用程式。
 
 ### <a name="opno-locblazor-server"></a>Blazor伺服器
 

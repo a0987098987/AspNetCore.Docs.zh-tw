@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 12/05/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: f6dbac81b4efceb30c379ab06dd715005d879228
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 7f7c2a09b74e6007ee3ea9c038398bac54988186
+ms.sourcegitcommit: 77c046331f3d633d7cc247ba77e58b89e254f487
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78658932"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81488867"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -20,7 +20,7 @@ ms.locfileid: "78658932"
 
 <!-- In the next update on the CLI version, let the scaffolder do the same work the VS driven scaffolder does. That is, create the DB context, etc -->
 
-在本節中,將添加類,用於在跨平臺[SQLite 資料庫中](https://www.sqlite.org/index.html)管理影片。 從ASP.NET核心範本創建的應用使用SQLite資料庫。 該應用程式的模型類與[實體框架核心 (EF Core)](/ef/core) [(SQLite EF 核心資料庫提供者](/ef/core/providers/sqlite)) 一起使用,以便與資料庫一起使用。 EF Core 是一種物件關聯式對應 (ORM) 架構，可簡化資料存取。
+在本節中,將添加用於管理影片的類。 應用的模型類使用[實體框架核心 (EF Core)](/ef/core)處理資料庫。 EF Core 是一種物件關係映射器 (O/RM),可簡化數據存取。
 
 模型類別稱為 POCO 類別 (來自「簡單的 CLR 物件」)，因為它們對 EF Core 沒有任何相依性。 它們會定義資料儲存在資料庫中的屬性。
 

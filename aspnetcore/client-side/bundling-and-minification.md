@@ -4,14 +4,14 @@ author: scottaddie
 description: 瞭解如何透過應用捆綁和最小化技術來優化ASP.NET核心 Web 應用程式中的靜態資源。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 06/17/2019
+ms.date: 04/15/2020
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: a7a5c40d6c31c4416212c02c1b491dd794f2a1d3
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 670ac6a96c3affd2b2ac699836f536aea7d85ff3
+ms.sourcegitcommit: 77c046331f3d633d7cc247ba77e58b89e254f487
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78658267"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81488685"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>捆綁和整理 ASP.NET 核心中的靜態資產
 
@@ -63,7 +63,7 @@ KB 已傳輸 | 156 | 264.68 | 70%
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>選擇捆綁與最小化原則
 
-MVC 和 Razor Pages 專案範本提供了一個開箱即用的解決方案,用於捆綁和分明,包括 JSON 配置檔。 第三方工具(如[Grunt](xref:client-side/using-grunt)任務運行者)以稍微複雜一點完成相同的任務。 當您的開發工作流需要超越捆綁和縮編&mdash;(如鑲合和圖像優化)的處理時,第三方工具非常合適。 通過使用設計時捆綁和小化,在應用部署之前創建已創建已化的檔。 部署前捆綁和簡化可提供減少伺服器負載的優勢。 但是,請務必認識到,設計時捆綁和小化會增加構建複雜性,並且僅適用於靜態檔。
+MVC 和 Razor Pages 專案範本提供了一個解決方案,用於捆綁和整理 JSON 配置檔。 第三方工具(如[Grunt](xref:client-side/using-grunt)任務運行者)以稍微複雜一點完成相同的任務。 當您的開發工作流需要超越捆綁和縮編&mdash;(如鑲合和圖像優化)的處理時,第三方工具非常合適。 通過使用設計時捆綁和小化,在應用部署之前創建已創建已化的檔。 部署前捆綁和簡化可提供減少伺服器負載的優勢。 但是,請務必認識到,設計時捆綁和小化會增加構建複雜性,並且僅適用於靜態檔。
 
 ## <a name="configure-bundling-and-minification"></a>設定捆繫與最小化
 
@@ -95,109 +95,6 @@ MVC 和 Razor Pages 專案範本提供了一個開箱即用的解決方案,用�
 * `includeInProject`:指示是否將生成的檔添加到專案檔的標誌。 **選擇**,*預設 - 假*
 * `sourceMap`:指示是否為捆綁檔生成源映射的標誌。 **選擇**,*預設 - 假*
 * `sourceMapRootPath`:用於存儲生成的源映射檔的根路徑。
-
-## <a name="build-time-execution-of-bundling-and-minification"></a>捆繫和最小化的建置時間
-
-[BuildBundlerMinifier](https://www.nuget.org/packages/BuildBundlerMinifier/) NuGet 包允許在生成時執行捆綁和分化。 該套件注入在產生和清潔時間執行的[MSBuild 目標](/visualstudio/msbuild/msbuild-targets)。 生成過程分析*bundleconfig.json*檔,以便根據定義的配置生成輸出檔。
-
-> [!NOTE]
-> BuildBundlerMinifier 屬於 GitHub 上的社區驅動專案,Microsoft 不為其提供任何支援。 問題應[在此處](https://github.com/madskristensen/BundlerMinifier/issues)提交。
-
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
-
-將*BuildBundlerMinifier*包添加到專案中。
-
-建置專案。 輸出視窗中會顯示以下內容:
-
-```console
-1>------ Build started: Project: BuildBundlerMinifierApp, Configuration: Debug Any CPU ------
-1>
-1>Bundler: Begin processing bundleconfig.json
-1>  Minified wwwroot/css/site.min.css
-1>  Minified wwwroot/js/site.min.js
-1>Bundler: Done processing bundleconfig.json
-1>BuildBundlerMinifierApp -> C:\BuildBundlerMinifierApp\bin\Debug\netcoreapp2.0\BuildBundlerMinifierApp.dll
-========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
-```
-
-清理專案。 輸出視窗中會顯示以下內容:
-
-```console
-1>------ Clean started: Project: BuildBundlerMinifierApp, Configuration: Debug Any CPU ------
-1>
-1>Bundler: Cleaning output from bundleconfig.json
-1>Bundler: Done cleaning output file from bundleconfig.json
-========== Clean: 1 succeeded, 0 failed, 0 skipped ==========
-```
-
-# <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
-
-將*BuildBundlerMinifier*套件加入您的專案:
-
-```dotnetcli
-dotnet add package BuildBundlerMinifier
-```
-
-如果使用 ASP.NET 酷 1.x,請還原新添加的套件:
-
-```dotnetcli
-dotnet restore
-```
-
-建置專案：
-
-```dotnetcli
-dotnet build
-```
-
-出現以下內容:
-
-```console
-Microsoft (R) Build Engine version 15.4.8.50001 for .NET Core
-Copyright (C) Microsoft Corporation. All rights reserved.
-
-
-    Bundler: Begin processing bundleconfig.json
-    Bundler: Done processing bundleconfig.json
-    BuildBundlerMinifierApp -> C:\BuildBundlerMinifierApp\bin\Debug\netcoreapp2.0\BuildBundlerMinifierApp.dll
-```
-
-清除專案:
-
-```dotnetcli
-dotnet clean
-```
-
-即會出現下列輸出：
-
-```console
-Microsoft (R) Build Engine version 15.4.8.50001 for .NET Core
-Copyright (C) Microsoft Corporation. All rights reserved.
-
-
-  Bundler: Cleaning output from bundleconfig.json
-  Bundler: Done cleaning output file from bundleconfig.json
-```
-
----
-
-## <a name="ad-hoc-execution-of-bundling-and-minification"></a>臨時執行捆綁和小化
-
-無需構建專案,即可臨時運行捆綁和分化任務。 將[捆綁器 Minifier.Core](https://www.nuget.org/packages/BundlerMinifier.Core/) NuGet 套件加入您的專案:
-
-[!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=10)]
-
-> [!NOTE]
-> BundlerMinifier.Core 屬於 GitHub 上的社區驅動專案,Microsoft 不為其提供任何支援。 問題應[在此處](https://github.com/madskristensen/BundlerMinifier/issues)提交。
-
-此包擴展 .NET 核心 CLI 以包括*點網捆綁*工具。 以下命令可以在套件管理員主控台 (PMC) 視窗或命令 shell 中執行:
-
-```dotnetcli
-dotnet bundle
-```
-
-> [!IMPORTANT]
-> NuGet 套件管理員將依賴項`<PackageReference />`作為節點添加到 *.csproj 檔。 僅當`dotnet bundle``<DotNetCliToolReference />`使用節點時,該命令才會註冊到 .NET Core CLI。 相應地修改 @.csproj 檔。
 
 ## <a name="add-files-to-workflow"></a>新增檔案到工作流
 
@@ -258,32 +155,7 @@ dotnet bundle
 
 在某些情況下,應用的捆綁和小化工作流需要額外的處理。 示例包括圖像優化、緩存破壞和CDN資產處理。 為了滿足這些要求,您可以將捆綁和最小化工作流轉換為使用 Gulp。
 
-### <a name="use-the-bundler--minifier-extension"></a>使用捆綁器&最小值延伸器
-
-可視化工作室[捆綁器&最小值擴展](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.BundlerMinifier)處理轉換為 Gulp。
-
-> [!NOTE]
-> 捆綁器& Minifier 擴展屬於 GitHub 上的社區驅動專案,Microsoft 不支援該專案。 問題應[在此處](https://github.com/madskristensen/BundlerMinifier/issues)提交。
-
-右鍵按一下解決方案資源管理程式中的*bundleconfig.json*檔,然後選擇**捆綁器&最小值** > **轉換為 Gulp...**
-
-![轉換為 Gulp 上下文選單項目](../client-side/bundling-and-minification/_static/convert-to-gulp.png)
-
-*gulpfile.js*和*包.json*檔將添加到專案中。 將安裝*包.json*檔`devDependencies`部分中列出的支援[npm](https://www.npmjs.com/)包。
-
-在 PMC 視窗執行以下指令,以將 Gulp CLI 安裝為全域相依項:
-
-```console
-npm i -g gulp-cli
-```
-
-*gulpfile.js*檔讀取輸入、輸出和設置的*bundleconfig.json*檔。
-
-[!code-javascript[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/gulpfile.js?range=1-12&highlight=10)]
-
-### <a name="convert-manually"></a>手動轉換
-
-如果 Visual Studio 和/或捆綁器&最小值擴展不可用,則手動轉換。
+### <a name="manually-convert-the-bundling-and-minification-workflow-to-use-gulp"></a>手動轉換捆綁和最小化工作流以使用 Gulp
 
 將包含以下內容`devDependencies`的*套件.json*檔加入到專案根:
 

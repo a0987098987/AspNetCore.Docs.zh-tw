@@ -5,17 +5,17 @@ description: 瞭解如何使用ASP.NET核心、內容傳遞Blazor網路 (CDN)、
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/06/2020
+ms.date: 04/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: f364d94085d175fde5596c222ef21852c0106ec1
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: f3508144f1e472ee906a35e427fc57f536008ab6
+ms.sourcegitcommit: 77c046331f3d633d7cc247ba77e58b89e254f487
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80751127"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81488854"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor-webassembly"></a>託管與部署ASP.NET核心BlazorWeb 組裝
 
@@ -25,13 +25,17 @@ ms.locfileid: "80751127"
 
 與[BlazorWeb 群組載託管模型](xref:blazor/hosting-models#blazor-webassembly):
 
-* 應用Blazor、其依賴項和 .NET 運行時將下載到瀏覽器。
+* 應用Blazor、其依賴項和 .NET 運行時將並行下載到瀏覽器。
 * 應用程式會直接在瀏覽器 UI 執行緒上執行。
 
 支援以下部署政策:
 
 * 該應用程式Blazor由ASP.NET核心應用提供。 此策略已於[搭配 ASP.NET Core 的已裝載部署](#hosted-deployment-with-aspnet-core)一節中涵蓋。
 * 該應用程式Blazor放置在靜態託管 Web 伺服器或服務上,其中 .NETBlazor不用於為 應用提供服務。 此策略在[「獨立部署](#standalone-deployment)」部分中介紹,其中包括Blazor有關將 WebAssembly 應用託管為 IIS 子應用的資訊。
+
+## <a name="brotli-precompression"></a>布羅特利預壓縮
+
+發佈BlazorWebAssembly 應用時,將使用最高級別的[Brotli 壓縮演演演算法](https://tools.ietf.org/html/rfc7932)預壓縮輸出,以減小應用大小並消除運行時壓縮的需要。
 
 ## <a name="rewrite-urls-for-correct-routing"></a>重寫 URL 以便正確地路由
 

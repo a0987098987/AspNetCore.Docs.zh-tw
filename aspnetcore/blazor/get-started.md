@@ -5,17 +5,17 @@ description: Blazor使用您選擇的工具建Blazor構應用,開始入門。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/09/2020
+ms.date: 04/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: e9e6eeeb1d29aa529e43d75f5d3951d2c4384d7e
-ms.sourcegitcommit: 4506a8f71ece921010ad6b7edebc8b200618f40d
+ms.openlocfilehash: 7fe4fbb082f08d4f71684c836a826d8b6dd888f6
+ms.sourcegitcommit: 77c046331f3d633d7cc247ba77e58b89e254f487
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81002908"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81488724"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始ASP.NET核心布拉佐爾
 
@@ -32,6 +32,12 @@ ms.locfileid: "81002908"
    要創建 Blazor Server 和 Blazor WebAssembly 應用,請使用**ASP.NET 和網路開發**工作負載安裝[Visual Studio 2019](https://visualstudio.microsoft.com/vs/preview/)的最新預覽版。
 
    有關兩個布拉佐託管模型,*布拉佐網路大會*和*布拉佐伺服器*的資訊<xref:blazor/hosting-models>,請參閱 。
+
+1. 透過執行以下指令安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)預覽樣本:
+
+   ```dotnetcli
+   dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview4.20210.8
+   ```
 
 1. 建立新專案。
 
@@ -50,11 +56,11 @@ ms.locfileid: "81002908"
 1. 通過運行以下命令,可選地安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)預覽樣本:
 
    ```dotnetcli
-   dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview3.20168.3
+   dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview4.20210.8
    ```
 
    > [!NOTE]
-   > [.NET 核心 SDK 版本 3.1.201 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)**需要**使用 3.2 預覽 3 Blazor WebAssembly 範本。 通過在命令外殼中運行`dotnet --version`來確認已安裝的 .NET Core SDK 版本。
+   > [.NET 核心 SDK 版本 3.1.201 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)**需要**使用 3.2 預覽 4 Blazor WebAssembly 範本。 通過在命令外殼中運行`dotnet --version`來確認已安裝的 .NET Core SDK 版本。
 
 1. 安裝[視覺化工作室代碼](https://code.visualstudio.com/)。
 
@@ -113,11 +119,11 @@ Mac 視覺工作室支援 Blazor 伺服器。 布拉佐網路組裝目前不受�
 1. 通過運行以下命令,可選地安裝[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)預覽樣本:
 
    ```dotnetcli
-   dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview3.20168.3
+   dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview4.20210.8
    ```
 
    > [!NOTE]
-   > [.NET 核心 SDK 版本 3.1.201 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)**需要**使用 3.2 預覽 3 Blazor WebAssembly 範本。 通過在命令外殼中運行`dotnet --version`來確認已安裝的 .NET Core SDK 版本。
+   > [.NET 核心 SDK 版本 3.1.201 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)**需要**使用 3.2 預覽 4 Blazor WebAssembly 範本。 通過在命令外殼中運行`dotnet --version`來確認已安裝的 .NET Core SDK 版本。
 
 1. 要獲得 Blazor Server 體驗,請在命令外殼中執行以下命令:
 

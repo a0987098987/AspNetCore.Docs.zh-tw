@@ -4,14 +4,14 @@ author: rick-anderson
 description: 瞭解 CORS 如何作為在 ASP.NET 酷應用中允許或拒絕跨源請求的標準。
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/23/2020
+ms.date: 04/17/2020
 uid: security/cors
-ms.openlocfilehash: e7731fd967c206679ac93209fdb84f40367bea37
-ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
+ms.openlocfilehash: 56a339d9018f619af38aecc6f4c2ff40c3c43d2f
+ms.sourcegitcommit: 3d07e21868dafc503530ecae2cfa18a7490b58a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81440905"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81642690"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>在 ASP.NET 核心中開啟跨源要求 (CORS)
 
@@ -71,7 +71,7 @@ CORS 中間件處理跨源請求。 以下代碼將 CORS 政策應用於具有�
 上述程式碼：
 
 * 將策略名稱設定到`_myAllowSpecificOrigins`。 策略名稱是任意的。
-* 調用<xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*>擴充方法`_myAllowSpecificOrigins`並指定 CORS 策略。 `UseCors`添加 CORS 中間件。
+* 調用<xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*>擴充方法`_myAllowSpecificOrigins`並指定 CORS 策略。 `UseCors`添加 CORS 中間件。 呼叫`UseCors`後`UseRouting`必須發出`UseAuthorization`,但之前 。 有關詳細資訊,請參閱[中間件訂單](xref:fundamentals/middleware/index#middleware-order)。
 * 使用<xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*> [lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)的調用。 lambda 取<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder>一個物件。 [配置選項](#cors-policy-options)(`WithOrigins`如 )在本文的後面部分介紹。
 * 為所有控制器`_myAllowSpecificOrigins`終結點啟用 CORS 策略。 請參閱[終結點路由](#ecors),將 CORS 策略應用於特定終結點。
 

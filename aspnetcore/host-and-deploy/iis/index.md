@@ -5,16 +5,27 @@ description: 了解如何在 Windows Server Internet Information Services (IIS) 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/07/2020
+ms.date: 04/17/2020
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 819c53f945c1e5bb2cedcef8fc39d4c8761e4549
-ms.sourcegitcommit: f0aeeab6ab6e09db713bb9b7862c45f4d447771b
+ms.openlocfilehash: 77f07ba89de4449c6d13006a5fd61499cb5cdfc0
+ms.sourcegitcommit: 3d07e21868dafc503530ecae2cfa18a7490b58a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80977024"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81642742"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
+
+<!-- 
+
+    NOTE FOR 5.0
+    
+    When making the 5.0 version of this topic, remove the Hosting Bundle
+    direct download section from the (new) <5.0 & >2.2 version and modify 
+    the text and heading for the *Earlier versions of the installer* 
+    section. See the 2.2 version for an example.
+    
+-->
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -250,9 +261,9 @@ services.Configure<IISOptions>(options =>
 若要取得安裝程式的先前版本：
 
 1. 導航到[下載 .NET 核心](https://dotnet.microsoft.com/download/dotnet-core)頁面。
-1. 按一下所需的 .NET 核心版本。
+1. 選擇所需的 .NET 核心版本。
 1. 在 [執行應用程式 - 執行階段]**** 欄中，尋找想要的 .NET Core 執行階段版本列。
-1. 使用**執行階段與裝載套件組合**連結。
+1. 使用**託管捆綁包**連結下載安裝程式。
 
 > [!WARNING]
 > 某些安裝程式包含已達到期生命週期結束 (EOL) 的發行版本，這些發行版本已不受 Microsoft 支援。 如需詳細資訊，請參閱[支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) \(英文 \)。
@@ -846,20 +857,12 @@ services.Configure<IISOptions>(options =>
 >
 > 如果在安裝 64 位元 (x64) 版本的 .NET Core 後才安裝裝載套件組合，那麼可能會遺漏 SDK ([未偵測到 .NET Core SDK](xref:test/troubleshoot#no-net-core-sdks-were-detected))。 若要解決此問題，請參閱 <xref:test/troubleshoot#missing-sdk-after-installing-the-net-core-hosting-bundle>。
 
-### <a name="direct-download-current-version"></a>直接下載 (目前版本)
-
-使用下列連結下載安裝程式：
-
-[目前的 .NET Core 裝載套件組合安裝程式 (直接下載)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
-
-### <a name="earlier-versions-of-the-installer"></a>安裝程式的先前版本
-
-若要取得安裝程式的先前版本：
+### <a name="download"></a>下載
 
 1. 導航到[下載 .NET 核心](https://dotnet.microsoft.com/download/dotnet-core)頁面。
-1. 按一下所需的 .NET 核心版本。
+1. 選擇所需的 .NET 核心版本。
 1. 在 [執行應用程式 - 執行階段]**** 欄中，尋找想要的 .NET Core 執行階段版本列。
-1. 使用**執行階段與裝載套件組合**連結。
+1. 使用**託管捆綁包**連結下載安裝程式。
 
 > [!WARNING]
 > 某些安裝程式包含已達到期生命週期結束 (EOL) 的發行版本，這些發行版本已不受 Microsoft 支援。 如需詳細資訊，請參閱[支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) \(英文 \)。
@@ -1422,20 +1425,12 @@ services.Configure<IISOptions>(options =>
 >
 > 如果在安裝 64 位元 (x64) 版本的 .NET Core 後才安裝裝載套件組合，那麼可能會遺漏 SDK ([未偵測到 .NET Core SDK](xref:test/troubleshoot#no-net-core-sdks-were-detected))。 若要解決此問題，請參閱 <xref:test/troubleshoot#missing-sdk-after-installing-the-net-core-hosting-bundle>。
 
-### <a name="direct-download-current-version"></a>直接下載 (目前版本)
-
-使用下列連結下載安裝程式：
-
-[目前的 .NET Core 裝載套件組合安裝程式 (直接下載)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
-
-### <a name="earlier-versions-of-the-installer"></a>安裝程式的先前版本
-
-若要取得安裝程式的先前版本：
+### <a name="download"></a>下載
 
 1. 導航到[下載 .NET 核心](https://dotnet.microsoft.com/download/dotnet-core)頁面。
-1. 按一下所需的 .NET 核心版本。
+1. 選擇所需的 .NET 核心版本。
 1. 在 [執行應用程式 - 執行階段]**** 欄中，尋找想要的 .NET Core 執行階段版本列。
-1. 使用**執行階段與裝載套件組合**連結。
+1. 使用**託管捆綁包**連結下載安裝程式。
 
 > [!WARNING]
 > 某些安裝程式包含已達到期生命週期結束 (EOL) 的發行版本，這些發行版本已不受 Microsoft 支援。 如需詳細資訊，請參閱[支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) \(英文 \)。

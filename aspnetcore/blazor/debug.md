@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 8b63444ba5c8cd45e64e722c8978ba4e6d90af36
-ms.sourcegitcommit: 77c046331f3d633d7cc247ba77e58b89e254f487
+ms.openlocfilehash: 7273ae3d240de0b59a58069fdcc1880247379751
+ms.sourcegitcommit: 5547d920f322e5a823575c031529e4755ab119de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81488744"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81661599"
 ---
 # <a name="debug-aspnet-core-opno-locblazor-webassembly"></a>除錯ASP.NET核心BlazorWeb 組裝
 
@@ -103,6 +103,8 @@ Blazor可以使用基於鉻瀏覽器(邊緣/Chrome)中的瀏覽器開發工具�
    ![除錯伺服器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-server.png)
 
 1. 再次按<kbd>F5</kbd>以允許執行繼續,並查看已呈現的天氣預報表。
+
+<a id="vscode"></a>
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 

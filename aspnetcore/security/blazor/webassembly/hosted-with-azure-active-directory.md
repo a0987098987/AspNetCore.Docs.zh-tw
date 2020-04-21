@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 8fec9f585f42469665cf29069674a199e1626629
-ms.sourcegitcommit: f0aeeab6ab6e09db713bb9b7862c45f4d447771b
+ms.openlocfilehash: a80be8d145b7c58be35e2c353a448db7e234e20b
+ms.sourcegitcommit: 5547d920f322e5a823575c031529e4755ab119de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80977128"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81661845"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>使用 AzureBlazor活動目錄保護ASP.NET核心 Web 元件託管應用
 
@@ -24,8 +24,6 @@ ms.locfileid: "80977128"
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 [!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
-
-
 
 本文介紹如何建立使用[Azure 活動目錄 (AAD)](https://azure.microsoft.com/services/active-directory/)進行身份認證的[BlazorWebAssembly 託管應用](xref:blazor/hosting-models#blazor-webassembly)。
 
@@ -91,7 +89,7 @@ ms.locfileid: "80977128"
 1. 從 **「名稱」** 列中選擇*伺服器 API 應用*(例如,**Blazor伺服器 AAD**)。
 1. 開啟**API**清單。
 1. 啟用對 API 的訪問(`API.Access`例如,
-1. 選取 [新增權限]****。
+1. 選取 [新增權限]  。
 1. 選擇 **[TENANT 名稱] 按鈕的管理員內容**。 選取 [是] **** 加以確認。
 
 記錄*客戶端應用*應用程式ID(用戶端ID)(`33333333-3333-3333-3333-333333333333`例如。

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 671f68da2ea261cb8ae32a9d5ef875217859054d
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: f994cd1274bda9082a7cd8b637968b2769db1671
+ms.sourcegitcommit: 5547d920f322e5a823575c031529e4755ab119de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78655327"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81661704"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>在 Azure 應用服務和 IIS 上 ASP.NET 核心故障
 
@@ -159,6 +159,15 @@ The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
 ANCM 無法在提供的啟動時間限制內啟動。 根據預設，逾時值為 120 秒。
 
 在同一部電腦上啟動大量的應用程式時，就會發生此錯誤。 檢查伺服器在啟動期間是否出現 CPU/記憶體的使用量尖峰。 多個應用程式的啟動程序可能需要交錯進行。
+
+### <a name="50038-ancm-application-dll-not-found"></a>500.38 未找到 ANCM 應用程式 DLL
+
+ANCM 未能找到應用程式 DLL,該應用程式應位於可執行檔旁邊。
+
+使用進程內託管模型託管打包為[單檔可執行檔](/dotnet/core/whats-new/dotnet-core-3-0#single-file-executables)的應用時,將發生此錯誤。 進程內模型要求 ANCM 將 .NET Core 應用載入到現有的 IIS 進程中。 單檔部署模型不支援此方案。 使用應用的項目檔中的以下方法**之一**來修復此錯誤:
+
+1. 通過將`PublishSingleFile`MSBuild 屬性`false`設置為禁用單檔發佈。
+1. 通過將`AspNetCoreHostingModel`MSBuild 屬性`OutOfProcess`設置為 ,切換到進程外託管模型。
 
 ### <a name="5025-process-failure"></a>502.5 處理序失敗
 

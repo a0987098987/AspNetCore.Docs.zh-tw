@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/26/2020
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 943ea30c2e4887638f69b6dcdb7e323bcee40240
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 4e990329b7ebcfc9cbbff8a3c9895604a22461d3
+ms.sourcegitcommit: 5547d920f322e5a823575c031529e4755ab119de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80405984"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81661702"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -196,7 +196,7 @@ public void ConfigureServices(IServiceCollection services)
 具範圍存留期服務 (<xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped*>) 會在每次用戶端要求 (連線) 時建立一次。
 
 > [!WARNING]
-> 在中介軟體中使用具範圍服務時，請將該服務插入 `Invoke` 或 `InvokeAsync` 方法中。 因為其會強制服務執行單一服務的行為，所以請勿透過建構函式插入進行插入。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/write#per-request-middleware-dependencies>。
+> 在中介軟體中使用具範圍服務時，請將該服務插入 `Invoke` 或 `InvokeAsync` 方法中。 不要通過[建構函數注入](xref:mvc/controllers/dependency-injection#constructor-injection)注入,因為它強制服務像單例一樣工作。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/write#per-request-middleware-dependencies>。
 
 ### <a name="singleton"></a>單一
 
@@ -261,9 +261,9 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 建構函式可以接受不是由相依性插入提供的引數，但引數必須指派預設值。
 
-當服務由 `IServiceProvider` 或 `ActivatorUtilities` 解析時，建構函式插入會要求 *public*建構函式。
+當由`IServiceProvider``ActivatorUtilities`或解析服務 時[,建構函數注入](xref:mvc/controllers/dependency-injection#constructor-injection)需要*公共*構造函數。
 
-當服務由 `ActivatorUtilities` 解析時，建構函式插入只要求只能有一個適用的建構函式存在。 支援建構函式多載，但只能有一個多載存在，其引數可以藉由相依性插入而完成。
+當透過`ActivatorUtilities`解析服務時,[建構函數注入](xref:mvc/controllers/dependency-injection#constructor-injection)要求僅存在一個適用的建構函數。 支援建構函式多載，但只能有一個多載存在，其引數可以藉由相依性插入而完成。
 
 ## <a name="entity-framework-contexts"></a>Entity Framework 內容
 
@@ -733,7 +733,7 @@ public void ConfigureServices(IServiceCollection services)
 具範圍存留期服務 (<xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped*>) 會在每次用戶端要求 (連線) 時建立一次。
 
 > [!WARNING]
-> 在中介軟體中使用具範圍服務時，請將該服務插入 `Invoke` 或 `InvokeAsync` 方法中。 因為其會強制服務執行單一服務的行為，所以請勿透過建構函式插入進行插入。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/write#per-request-middleware-dependencies>。
+> 在中介軟體中使用具範圍服務時，請將該服務插入 `Invoke` 或 `InvokeAsync` 方法中。 不要通過[建構函數注入](xref:mvc/controllers/dependency-injection#constructor-injection)注入,因為它強制服務像單例一樣工作。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/write#per-request-middleware-dependencies>。
 
 ### <a name="singleton"></a>單一
 
@@ -798,9 +798,9 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 建構函式可以接受不是由相依性插入提供的引數，但引數必須指派預設值。
 
-當服務由 `IServiceProvider` 或 `ActivatorUtilities` 解析時，建構函式插入會要求 *public*建構函式。
+當由`IServiceProvider``ActivatorUtilities`或解析服務 時[,建構函數注入](xref:mvc/controllers/dependency-injection#constructor-injection)需要*公共*構造函數。
 
-當服務由 `ActivatorUtilities` 解析時，建構函式插入只要求只能有一個適用的建構函式存在。 支援建構函式多載，但只能有一個多載存在，其引數可以藉由相依性插入而完成。
+當透過`ActivatorUtilities`解析服務時,[建構函數注入](xref:mvc/controllers/dependency-injection#constructor-injection)要求僅存在一個適用的建構函數。 支援建構函式多載，但只能有一個多載存在，其引數可以藉由相依性插入而完成。
 
 ## <a name="entity-framework-contexts"></a>Entity Framework 內容
 

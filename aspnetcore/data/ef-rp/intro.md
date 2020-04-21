@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 uid: data/ef-rp/intro
-ms.openlocfilehash: 94783aa9014aef4c5f775fc8f36a2c3a7715e4b6
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 07faf5e596e7ea8b134d13caa0259c1e9d74ff1b
+ms.sourcegitcommit: 5547d920f322e5a823575c031529e4755ab119de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78656818"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81661620"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>ASP.NET Core 中的 Razor 頁面與 Entity Framework Core 教學課程 - 1/8
 
@@ -159,7 +159,7 @@ Visual Studio Code 說明則會使用 [SQLite](https://www.sqlite.org/)，它是
 
   [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Models/Student.cs)]
 
-`ID` 屬性會成為對應到此類別資料庫資料表的主索引鍵資料行。 EF Core 預設會解譯名為 `ID` 或 `classnameID` 作為主索引鍵的屬性。 因此 `Student` 類別主索引鍵的替代自動識別名稱為 `StudentID`。
+`ID` 屬性會成為對應到此類別資料庫資料表的主索引鍵資料行。 EF Core 預設會解譯名為 `ID` 或 `classnameID` 作為主索引鍵的屬性。 因此 `Student` 類別主索引鍵的替代自動識別名稱為 `StudentID`。 關於詳細資訊,請參閱[EF 核心 - 金鑰](/ef/core/modeling/keys?tabs=data-annotations)。
 
 `Enrollments` 屬性為[導覽屬性](/ef/core/modeling/relationships)。 導覽屬性會保留與此實體相關的其他實體。 在這種情況下，`Student` 實體的 `Enrollments` 屬性會保留所有與該 Student 相關的 `Enrollment` 實體。 例如，若資料庫中的 Student 資料列有兩個相關的 Enrollment 資料列，則 `Enrollments` 導覽屬性便會包含這兩個 Enrollment 項目。 
 

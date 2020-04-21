@@ -5,17 +5,17 @@ description: 瞭解如何使用 JSON 説明Blazor器從 WebAssembly 應用呼叫
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/16/2020
+ms.date: 04/19/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 2f2d4150f4fa1e7f47310f2a88b816f445cd1d3a
-ms.sourcegitcommit: 49c91ad4b69f4f8032394cbf2d5ae1b19a7f863b
+ms.openlocfilehash: 943f9d440adbe11ac1977f28aebee53a5510a86b
+ms.sourcegitcommit: 5547d920f322e5a823575c031529e4755ab119de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81544852"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81661585"
 ---
 # <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>從ASP.NET核心呼叫 Web APIBlazor
 
@@ -120,7 +120,11 @@ JSON 說明器方法將要求傳送到 URI(以下範例中的 Web API)並處理�
   }
   ```
   
-  要`PostAsJsonAsync`返回的<xref:System.Net.Http.HttpResponseMessage>調用。
+  要`PostAsJsonAsync`返回的<xref:System.Net.Http.HttpResponseMessage>調用。 要從回應訊息中取消序列化 JSON 內容,`ReadFromJsonAsync<T>`請使用 擴充方法:
+  
+  ```csharp
+  var content = response.content.ReadFromJsonAsync<WeatherForecast>();
+  ```
 
 * `PutAsJsonAsync`&ndash;發送 HTTP PUT 請求,包括 JSON 編碼的內容。
 
@@ -149,7 +153,11 @@ JSON 說明器方法將要求傳送到 URI(以下範例中的 Web API)並處理�
   }
   ```
   
-  要`PutAsJsonAsync`返回的<xref:System.Net.Http.HttpResponseMessage>調用。
+  要`PutAsJsonAsync`返回的<xref:System.Net.Http.HttpResponseMessage>調用。 要從回應訊息中取消序列化 JSON 內容,`ReadFromJsonAsync<T>`請使用 擴充方法:
+  
+  ```csharp
+  var content = response.content.ReadFromJsonAsync<WeatherForecast>();
+  ```
 
 <xref:System.Net.Http>包括用於發送 HTTP 請求和接收 HTTP 回應的其他擴充方法。 [HTTPClient.DeleteAsync](xref:System.Net.Http.HttpClient.DeleteAsync*)用於向 Web API 發送 HTTP DELETE 請求。
 

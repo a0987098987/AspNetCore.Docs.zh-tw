@@ -5,17 +5,17 @@ description: 瞭解如何在ASP.NET核心Blazor應用中使用Razor元件生命�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/17/2020
+ms.date: 04/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/lifecycle
-ms.openlocfilehash: 831f575afa6ce11d06c016d43ecd1bb59d09eab6
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: e7450ad57acc87500bb977aa8349c6ee009e3bf4
+ms.sourcegitcommit: c9d1208e86160615b2d914cce74a839ae41297a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80218904"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791458"
 ---
 # <a name="aspnet-core-opno-locblazor-lifecycle"></a>ASP.NET核心Blazor生命週期
 
@@ -213,7 +213,7 @@ Blazor伺服器樣本中的*頁面/FetchData.razor:*
 
 ## <a name="stateful-reconnection-after-prerendering"></a>預先成圖狀態重新連線
 
-在BlazorServer`RenderMode`應用`ServerPrerendered`中, 當 是 時,元件最初作為頁面的一部分以靜態方式呈現。 一旦瀏覽器建立回伺服器的連接,元件*將再次*呈現,並且元件現在具有交互性。 如果存在用於初始化元件的[On 初始化 {Async}](xref:blazor/lifecycle#component-initialization-methods)生命週期方法,則執行該方法*兩次*:
+在BlazorServer`RenderMode`應用`ServerPrerendered`中, 當 是 時,元件最初作為頁面的一部分以靜態方式呈現。 一旦瀏覽器建立回伺服器的連接,元件*將再次*呈現,並且元件現在具有交互性。 如果存在用於初始化元件的[On 初始化 {Async}](#component-initialization-methods)生命週期方法,則執行該方法*兩次*:
 
 * 靜態預呈現元件時。
 * 建立伺服器連接後。

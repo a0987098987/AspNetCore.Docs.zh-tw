@@ -5,17 +5,17 @@ description: 創建使用 ASP.NETSignalR核心Blazor與 Web 組裝的聊天應�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/16/2020
+ms.date: 04/21/2020
 no-loc:
 - Blazor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 798068c83e16070d3279c88c44af0cd96d182fe2
-ms.sourcegitcommit: 77c046331f3d633d7cc247ba77e58b89e254f487
+ms.openlocfilehash: 03db8b48bdacec1d6877a4ea09f97c242761c42d
+ms.sourcegitcommit: f976dce28ad887bbd31720c318fd4a97cf96cc6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81488880"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81738015"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>將ASP.NET核心信號R與布拉佐爾網路組裝一起使用
 
@@ -168,7 +168,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Hubs/ChatHub.cs)]
 
-## <a name="add-signalr-services-and-an-endpoint-for-the-signalr-hub"></a>SignalR 中心加入 SignalR 服務和終結點
+## <a name="add-services-and-an-endpoint-for-the-signalr-hub"></a>為 SignalR 中心新增服務和終結點
 
 1. 在**BlazorSignalRApp.Server**專案中,打開*Startup.cs*檔。
 
@@ -178,15 +178,13 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
    using BlazorSignalRApp.Server.Hubs;
    ```
 
-1. 新增 SignalR`Startup.ConfigureServices`服務
+1. 將訊號 R 和回應壓縮中間元件`Startup.ConfigureServices`服務加入 :
 
-   ```csharp
-   services.AddSignalR();
-   ```
+   [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
 
-1. 在`Startup.Configure`預設控制器路由的終結點和用戶端回退之間,為中心添加終結點:
+1. 在`Startup.Configure`控制器的終結點和客戶端回退之間,為集線器添加終結點:
 
-   [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet&highlight=4)]
+   [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_UseEndpoints&highlight=4)]
 
 ## <a name="add-razor-component-code-for-chat"></a>新增用於聊天的 Razor 元件碼
 
@@ -202,7 +200,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 在**解決方案資源管理器**中,選擇**BlazorSignalRApp.Server**專案。 按**Ctrl+F5**可執行應用程式而不進行調試。
+1. 在**解決方案資源管理器**中,選擇**BlazorSignalRApp.Server**專案。 按<kbd>F5</kbd>以運行具有調試的應用,或<kbd>按 Ctrl</kbd>+<kbd>F5</kbd>運行應用而不進行調試。
 
 1. 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
@@ -214,7 +212,13 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-1. 從**Debug** > 工具列中選擇 **「調試運行而不調試**」。。
+1. 當 VS Code 提供為伺服器應用 *(.vscode/launch.json)* 建立啟動`program`設定檔時,該項目將顯示類似於以下內容以指向應用程式集`{APPLICATION NAME}.Server.dll`():
+
+   ```json
+   "program": "${workspaceFolder}/Server/bin/Debug/netcoreapp3.1/{APPLICATION NAME}.Server.dll"
+   ```
+
+1. 按<kbd>F5</kbd>以運行具有調試的應用,或<kbd>按 Ctrl</kbd>+<kbd>F5</kbd>運行應用而不進行調試。
 
 1. 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
@@ -226,7 +230,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-1. 在 **「解決方案**」側邊欄中,選擇**BlazorSignalRApp.Server**專案。 從選單中,選擇「 > **不調試即可運行啟動** **Run** 」。
+1. 在 **「解決方案**」側邊欄中,選擇**BlazorSignalRApp.Server**專案。 按<kbd>[</kbd>+<kbd>↩</kbd>] 以執行應用程式與<kbd>⌥</kbd>+除錯或[ <kbd>↩</kbd>+<kbd>↩</kbd>執行應用程式而不進行除錯。
 
 1. 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 

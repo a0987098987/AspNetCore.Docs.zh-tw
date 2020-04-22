@@ -5,21 +5,21 @@ description: 瞭解如何創建和使用 Razor 元件,包括如何綁定到數�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/25/2020
+ms.date: 04/21/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/components
-ms.openlocfilehash: bc1d07aef9cd60b89343a034168daa6754f4421b
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 4434636992cb2506ef6525996690946f97c43764
+ms.sourcegitcommit: c9d1208e86160615b2d914cce74a839ae41297a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80306503"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791481"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立與使用ASP.NET核心剃鬚刀元件
 
-由[盧克·萊瑟姆](https://github.com/guardrex)和[丹尼爾·羅斯](https://github.com/danroth27)
+由[盧克·萊瑟姆](https://github.com/guardrex),[丹尼爾·羅斯](https://github.com/danroth27)和[托比亞斯·巴特施](https://www.aveo-solutions.com/)
 
 [檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)([如何下載](xref:index#how-to-download-a-sample))
 
@@ -141,6 +141,9 @@ Razor 元件 *(.razor*)**不支援**擷取跨多個資料夾邊界的路徑的 *
 *頁面/父元件.razor*:
 
 [!code-razor[](components/samples_snapshot/ParentComponent.razor?highlight=5-6)]
+
+> [!WARNING]
+> 不要建立寫入其自己的*元件參數的元件*,而是使用私有欄位。 有關詳細資訊,請參閱[「不創建寫入其自己的參數屬性的元件](#dont-create-components-that-write-to-their-own-parameter-properties)」部分。
 
 ## <a name="child-content"></a>子內容
 
@@ -400,7 +403,7 @@ public class NotifierService
 
 `People`集合的內容可能會隨著插入、刪除或重新排序的條目而更改。 當元件重新成成成時`<DetailsEditor>`, 元件可能會更改為接收`Details`不同的 參數值。 這可能導致比預期更複雜的重新渲染。 在某些情況下,重新渲染可能會導致明顯的行為差異,例如元素焦點丟失。
 
-可以使用`@key`指令屬性控制映射過程。 `@key`使擴散演算法保證根據鍵的值保留元素或元件:
+可以使用[`@key`](xref:mvc/views/razor#key)指令屬性控制映射過程。 `@key`使擴散演算法保證根據鍵的值保留元素或元件:
 
 ```csharp
 @foreach (var person in People)
@@ -453,6 +456,99 @@ public class NotifierService
 * 唯一識別碼(例如,類型的主要`int`鍵值`string``Guid`。
 
 確保用於的值`@key`不衝突。 如果在同一父元素中檢測到衝突值,則Blazor引發異常,因為它無法確定將舊元素或元件映射到新元素或元件。 僅使用不同的值,如物件實例或主鍵值。
+
+## <a name="dont-create-components-that-write-to-their-own-parameter-properties"></a>不要建立寫入其自身參數屬性的元件
+
+參數在以下條件下被覆寫:
+
+* 子元件的內容使用 呈現。 `RenderFragment`
+* <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>在父元件中調用。
+
+參數被重置,因為調用時<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>父元件重新呈現,並且向子元件提供了新的參數值。
+
+請考慮以下`Expander`元件:
+
+* 渲染子內容。
+* 切換顯示具有元件參數的子內容。
+
+```razor
+<div @onclick="@Toggle">
+    Toggle (Expanded = @Expanded)
+
+    @if (Expanded)
+    {
+        @ChildContent
+    }
+</div>
+
+@code {
+    [Parameter]
+    public bool Expanded { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private void Toggle()
+    {
+        Expanded = !Expanded;
+    }
+}
+```
+
+此`Expander`元件將新增到可能呼叫`StateHasChanged`的父元件中:
+
+```razor
+<Expander Expanded="true">
+    <h1>Hello, world!</h1>
+</Expander>
+
+<Expander Expanded="true" />
+
+<button @onclick="@(() => StateHasChanged())">
+    Call StateHasChanged
+</button>
+```
+
+最初,當`Expander`元件的屬性切換時,它們`Expanded`的行為是獨立的。 子元件按預期保持其狀態。 在`StateHasChanged`父級中調用時,`Expanded`第一個子元件的參數將重置回其初始值 ()。`true` 第二`Expander`個元件`Expanded`的值不會重置,因為第二個元件中沒有呈現子內容。
+
+要在上述方案中保持狀態,請使用元件`Expander`中的*私有欄位*來保持其切換狀態。
+
+以下`Expander`元件:
+
+* 接受父`Expanded`級的元件參數值。
+* 將元件參數值分配到[On 初始化事件中](xref:blazor/lifecycle#component-initialization-methods)的*專用欄位*`_expanded`() 。
+* 使用專用欄位保持其內部切換狀態。
+
+```razor
+<div @onclick="@Toggle">
+    Toggle (Expanded = @_expanded)
+
+    @if (_expanded)
+    {
+        @ChildContent
+    }
+</div>
+
+@code {
+    [Parameter]
+    public bool Expanded { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private bool _expanded;
+
+    protected override void OnInitialized()
+    {
+        _expanded = Expanded;
+    }
+
+    private void Toggle()
+    {
+        _expanded = !_expanded;
+    }
+}
+```
 
 ## <a name="partial-class-support"></a>部分類別支援
 

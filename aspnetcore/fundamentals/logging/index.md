@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/17/2020
 uid: fundamentals/logging/index
-ms.openlocfilehash: a3c63b738d3eaa51249475b88d78572038348a7a
-ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
+ms.openlocfilehash: b897d0d775da62a11f01a64f39b47b6c5abebc8b
+ms.sourcegitcommit: c9d1208e86160615b2d914cce74a839ae41297a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81440736"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791567"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>.NET Core 與 ASP.NET Core 中的記錄
 
@@ -164,6 +164,23 @@ public class Program
 [!code-csharp[](index/samples/3.x/TodoApiSample/Startup.cs?name=snippet_ConfigureServices&highlight=6-10)]
 
 前面的醒目提示程式碼是 `Func`，會在 DI 容器第一次需要建立 `MyService` 的執行個體時執行。 您可以用此方式存取任何已註冊的服務。
+
+### <a name="create-logs-in-blazor-webassembly"></a>在 Blazor WebAssembly 建立紀錄
+
+在 Blazor WebAssembly`WebAssemblyHostBuilder.Logging`應用程式中設定`Program.Main`紀錄紀錄, 該屬性位於 :
+
+```csharp
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+
+...
+
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+builder.Logging.SetMinimumLevel(LogLevel.Debug);
+builder.Logging.AddProvider(new CustomLoggingProvider());
+```
+
+屬性`Logging`的類型<xref:Microsoft.Extensions.Logging.ILoggingBuilder>,因此<xref:Microsoft.Extensions.Logging.ILoggingBuilder>上的所有擴充方法也可`Logging`用於 。
 
 ### <a name="no-asynchronous-logger-methods"></a>無非同步記錄器方法
 

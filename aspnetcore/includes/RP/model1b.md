@@ -6,7 +6,7 @@
 `Movie` 類別包含：
 
 * `ID` 欄位是資料庫對於主索引鍵的必要欄位。
-* `[DataType(DataType.Date)]`[:DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter)屬性指定數據類型(日期)。 使用此屬性：
+* `[DataType(DataType.Date)]`[:DataType](xref:System.ComponentModel.DataAnnotations.DataTypeAttribute)屬性指定數據類型(日期)。 使用此屬性：
 
   * 使用者不需要在日期欄位中輸入時間資訊。
   * 只會顯示日期，不會顯示時間資訊。

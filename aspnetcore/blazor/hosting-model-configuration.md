@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-model-configuration
-ms.openlocfilehash: 1b0f5f4071be7134d7de08615ec016ca6567385d
-ms.sourcegitcommit: 49c91ad4b69f4f8032394cbf2d5ae1b19a7f863b
+ms.openlocfilehash: 6a3731657d11faed0b005b429058343b2be4c44b
+ms.sourcegitcommit: c9d1208e86160615b2d914cce74a839ae41297a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81544839"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791469"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET核心布拉佐託管模型配置
 
@@ -134,6 +134,10 @@ if (builder.HostEnvironment.IsEnvironment("Custom"))
 * PWA 的服務*工作者.js* *和服務工作者資產.js*檔必須在編譯時重新生成,這向使用者下一次連線訪問時的應用發出信號,表明應用程式已重新部署。
 
 有關 PWA 如何處理後臺更新的詳細資訊,請<xref:blazor/progressive-web-app#background-updates>參閱 。
+
+### <a name="logging"></a>記錄
+
+有關 Blazor WebAssembly 日誌<xref:fundamentals/logging/index#create-logs-in-blazor-webassembly>記錄支援的資訊 ,請參閱。
 
 ## <a name="blazor-server"></a>Blazor 伺服器
 

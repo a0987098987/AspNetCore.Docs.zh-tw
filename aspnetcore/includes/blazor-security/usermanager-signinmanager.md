@@ -1,9 +1,9 @@
-## <a name="usermanager-and-signinmanager"></a>使用者管理員與登入管理員
+## <a name="usermanager-and-signinmanager"></a>UserManager 和使用
 
-在伺服器應用需要時設定使用者識別符聲明類型:
+當伺服器應用程式需要時，設定使用者識別碼宣告類型：
 
-* <xref:Microsoft.AspNetCore.Identity.UserManager%601>或在<xref:Microsoft.AspNetCore.Identity.SignInManager%601>API 終結點中。
-* <xref:Microsoft.AspNetCore.Identity.IdentityUser>詳細資訊,例如使用者名、電子郵寄地址或鎖定結束時間。
+* <xref:Microsoft.AspNetCore.Identity.UserManager%601>或<xref:Microsoft.AspNetCore.Identity.SignInManager%601>在 API 端點中。
+* <xref:Microsoft.AspNetCore.Identity.IdentityUser>詳細資料，例如使用者的名稱、電子郵件地址或鎖定結束時間。
 
 在 `Startup.ConfigureServices` 中：
 
@@ -12,7 +12,7 @@ services.Configure<IdentityOptions>(options =>
     options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
 ```
 
-呼叫`WeatherForecastController`<xref:Microsoft.AspNetCore.Identity.IdentityUser%601.UserName>`Get`方法時,以下紀錄 :
+<xref:Microsoft.AspNetCore.Identity.IdentityUser%601.UserName>當呼叫`Get`方法時，下列`WeatherForecastController`會記錄：
 
 ```csharp
 using System;
@@ -23,10 +23,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using BlazorAppIdentityServer.Server.Models;
-using BlazorAppIdentityServer.Shared;
+using {APP NAMESPACE}.Server.Models;
+using {APP NAMESPACE}.Shared;
 
-namespace BlazorAppIdentityServer.Server.Controllers
+namespace {APP NAMESPACE}.Server.Controllers
 {
     [Authorize]
     [ApiController]

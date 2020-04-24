@@ -1,35 +1,38 @@
 ---
-title: ASP.NET核心BlazorWeb 組裝其他安全方案
+title: ASP.NET Core Blazor WebAssembly 其他安全性案例
 author: guardrex
 description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/19/2020
+ms.date: 04/23/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/additional-scenarios
-ms.openlocfilehash: 314a7b54ab87295b8ca814f5e369942ae911407e
-ms.sourcegitcommit: 5547d920f322e5a823575c031529e4755ab119de
+ms.openlocfilehash: 2dbb2bbd07c427c594a12b8037f35cfff2228191
+ms.sourcegitcommit: 7bb14d005155a5044c7902a08694ee8ccb20c113
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661587"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111171"
 ---
-# <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET核心 Blazor WebAssembly 其他安全方案
+# <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 其他安全性案例
 
-哈威爾[·卡爾瓦羅·納爾遜](https://github.com/javiercn)
+By [Javier Calvarro Nelson](https://github.com/javiercn)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 [!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
 
+> [!NOTE]
+> 本文中的指導方針適用于 ASP.NET Core 3.2 Preview 4。 本主題將在4月24日星期五更新為涵蓋 Preview 5。
+
 ## <a name="request-additional-access-tokens"></a>要求其他存取權杖
 
-大多數應用僅需要訪問權杖才能與其使用的受保護資源進行交互。 在某些情況下,應用可能需要多個權杖才能與兩個或多個資源進行交互。
+大部分的應用程式只需要存取權杖，即可與他們使用的受保護資源互動。 在某些情況下，應用程式可能需要一個以上的權杖，才能與兩個或多個資源互動。
 
-在下面的範例中,應用需要其他 Azure 活動目錄 (AAD) Microsoft 圖形 API 作用域來讀取使用者數據和發送郵件。 在 Azure AAD 門戶中添加 Microsoft 圖形 API 許可權後`Program.Main`,其他作用域在用戶端應用 *(Program.cs)* 中配置。
+在下列範例中，應用程式需要額外的 Azure Active Directory （AAD） Microsoft Graph API 範圍，才能讀取使用者資料和傳送郵件。 在 Azure AAD 入口網站中新增 Microsoft Graph API 許可權之後，會在用戶端應用程式（`Program.Main`， *Program.cs*）中設定額外的範圍：
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>
@@ -43,7 +46,7 @@ builder.Services.AddMsalAuthentication(options =>
 }
 ```
 
-該方法`IAccessTokenProvider.RequestToken`提供重載,允許應用使用一組給定的範圍預配令牌,如下例所示:
+`IAccessTokenProvider.RequestToken`方法提供多載，可讓應用程式使用一組指定的範圍來布建權杖，如下列範例所示：
 
 ```csharp
 var tokenResult = await AuthenticationService.RequestAccessToken(
@@ -59,41 +62,143 @@ if (tokenResult.TryGetToken(out var token))
 }
 ```
 
-`TryGetToken`返回:
+`TryGetToken`傳回
 
-* `true`與`token`使用。
-* `false`如果未檢索令牌。
+* `true``token`包含使用的。
+* `false`如果未抓取權杖，則為。
+
+## <a name="attach-tokens-to-outgoing-requests"></a>將權杖附加到連出要求
+
+此`AuthorizationMessageHandler`服務可與`HttpClient`搭配使用，將存取權杖附加至傳出要求。 您可以使用現有`IAccessTokenProvider`的服務來取得權杖。 如果無法取得權杖， `AccessTokenNotAvailableException`就會擲回。 `AccessTokenNotAvailableException`具有`Redirect`方法，可以用來將使用者導覽至識別提供者，以取得新的權杖。 `AuthorizationMessageHandler`可以使用`ConfigureHandler`方法，透過授權的 url、範圍和傳回 URL 來設定。
+
+在下列範例中， `AuthorizationMessageHandler`會`HttpClient`在（ `Program.Main` *Program.cs*）中設定：
+
+```csharp
+builder.Services.AddSingleton(sp =>
+{
+    return new HttpClient(sp.GetRequiredService<AuthorizationMessageHandler>()
+        .ConfigureHandler(
+            new [] { "https://www.example.com/base" },
+            scopes: new[] { "example.read", "example.write" }))
+        {
+            BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+        };
+});
+```
+
+為了方便起見， `BaseAddressAuthorizationMessageHandler`會包含以應用程式基底位址預先設定為授權 URL 的。 已啟用驗證的 Blazor WebAssembly 範本現在會使用[IHttpClientFactory](https://docs.microsoft.com/aspnet/core/fundamentals/http-requests)來設定`HttpClient`具有下列內容`BaseAddressAuthorizationMessageHandler`的：
+
+```csharp
+builder.Services.AddHttpClient("BlazorWithIdentityApp1.ServerAPI", 
+    client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+        .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+
+builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("BlazorWithIdentityApp1.ServerAPI"));
+```
+
+在上述範例中，會`CreateClient`使用建立用戶端，而`HttpClient`在對伺服器專案提出要求時，會提供包含存取權杖的實例。
+
+接著會`HttpClient`使用設定的，透過簡單`try-catch`模式來提出授權的要求。 下列`FetchData`元件會要求氣象預報資料：
+
+```csharp
+protected override async Task OnInitializedAsync()
+{
+    try
+    {
+        forecasts = 
+            await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+    }
+    catch (AccessTokenNotAvailableException exception)
+    {
+        exception.Redirect();
+    }
+}
+```
+
+或者，您可以定義具型別用戶端，以處理單一類別內所有的 HTTP 和權杖取得考慮：
+
+*WeatherClient.cs*：
+
+```csharp
+public class WeatherClient
+{
+    private readonly HttpClient httpClient;
+ 
+    public WeatherClient(HttpClient httpClient)
+    {
+        this.httpClient = httpClient;
+    }
+ 
+    public async Task<IEnumerable<WeatherForecast>> GetWeatherForeacasts()
+    {
+        IEnumerable<WeatherForecast> forecasts = new WeatherForecast[0];
+
+        try
+        {
+            forecasts = await httpClient.GetFromJsonAsync<WeatherForecast[]>(
+                "WeatherForecast");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+
+        return forecasts;
+    }
+}
+```
+
+*Program.cs*：
+
+```csharp
+builder.Services.AddHttpClient<WeatherClient>(
+    client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+    .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+```
+
+*FetchData razor*：
+
+```razor
+@inject WeatherClient WeatherClient
+
+...
+
+protected override async Task OnInitializedAsync()
+{
+    forecasts = await WeatherClient.GetWeatherForeacasts();
+}
+```
 
 ## <a name="handle-token-request-errors"></a>處理權杖要求錯誤
 
-當單頁應用程式 (SPA) 使用開放 ID 連接 (OIDC) 對使用者進行身份驗證時,身份驗證狀態將在 SPA 中本地和標識提供者 (IP) 中以會話 Cookie 的形式維護,該狀態是使用者提供認證而設定的。
+當單一頁面應用程式（SPA）使用 Open ID Connect （OIDC）來驗證使用者時，驗證狀態會在 SPA 和識別提供者（IP）中的本機維護，其格式為使用者提供其認證時所設定的會話 cookie。
 
-IP 為使用者發出的權杖通常在短時間內有效,通常大約一小時,因此用戶端應用必須定期獲取新令牌。 否則,使用者將在授予的權杖過期後註銷。 在大多數情況下,由於IP中的身份驗證狀態或"工作階段",OIDC客戶端能夠預配新權杖,而無需使用者再次進行身份驗證。
+IP 為使用者發出的權杖通常會在短時間內有效，大約一小時，因此用戶端應用程式必須定期提取新的權杖。 否則，在授與的權杖過期之後，使用者會被登出。 在大多數情況下，OIDC 用戶端可以布建新的權杖，而不需要使用者重新驗證，因為它會保留在 IP 內的驗證狀態或「會話」。
 
-在某些情況下,客戶端在沒有使用者交互的情況下無法獲取令牌,例如,由於某種原因,使用者顯式註銷了 IP。 如果用戶訪問`https://login.microsoftonline.com`並註銷,將發生此情況。在這些情況下,應用不會立即知道使用者已註銷。用戶端持有的任何權杖可能不再有效。 此外,在當前權杖過期後,用戶端無法預配沒有使用者互動的新權杖。
+在某些情況下，用戶端無法在沒有使用者互動的情況下取得權杖，例如，基於某些原因，使用者明確地登出了 IP。 如果使用者造訪`https://login.microsoftonline.com`和登出，就會發生這種情況。在這些情況下，應用程式不會立即得知使用者是否已登出。用戶端持有的任何權杖可能不再有效。 此外，用戶端無法在目前權杖過期之後，不需要使用者互動就布建新權杖。
 
-這些方案不特定於基於令牌的身份驗證。 它們是 SPA 性質的一部分。 如果刪除身份驗證 Cookie,則使用 Cookie 的 SPA 也無法呼叫伺服器 API。
+這些案例並不是以權杖為基礎的驗證所特有。 它們屬於 Spa 的本質。 如果移除驗證 cookie，使用 cookie 的 SPA 也無法呼叫伺服器 API。
 
-當應用對受保護的資源執行 API 呼叫時,您必須注意以下事項:
+當應用程式對受保護的資源執行 API 呼叫時，您必須注意下列事項：
 
-* 要預配新的訪問權杖以調用 API,可能需要使用者再次進行身份驗證。
-* 即使用戶端具有看似有效的權杖,對伺服器的調用也可能失敗,因為令牌已被使用者吊銷。
+* 若要布建新的存取權杖以呼叫 API，使用者可能需要再次進行驗證。
+* 即使用戶端的權杖看似有效，對伺服器的呼叫可能會失敗，因為使用者已撤銷權杖。
 
-當應用請求權杖時,有兩種可能的結果:
+當應用程式要求權杖時，會有兩種可能的結果：
 
-* 請求成功,並且應用具有有效的權杖。
-* 請求失敗,應用必須再次對使用者進行身份驗證才能獲得新令牌。
+* 要求成功，且應用程式具有有效的權杖。
+* 要求失敗，且應用程式必須再次驗證使用者，才能取得新的權杖。
 
-當權杖請求失敗時,您需要在執行重定向之前決定是否要儲存任何當前狀態。 存在幾種方法,複雜性越來越高:
+當令牌要求失敗時，您必須決定是否要在執行重新導向之前，先儲存任何目前的狀態。 有數種方法存在，並增加複雜性層級：
 
-* 將當前頁面狀態存儲在會話存儲中。 在`OnInitializeAsync`期間,檢查是否可以在繼續之前恢復狀態。
-* 添加查詢字串參數,並將其用作向應用發出信號,使其需要重新補充以前保存的狀態的一種方式。
-* 添加具有唯一標識符的查詢字串參數,將數據存儲在會話存儲中,而不會冒與其他項發生衝突的風險。
+* 將目前的頁面狀態儲存在會話儲存體中。 在`OnInitializeAsync`期間，檢查是否可以還原狀態，再繼續進行。
+* 新增查詢字串參數，並使用它來通知應用程式它需要重新序列化先前儲存的狀態。
+* 新增具有唯一識別碼的查詢字串參數，以將資料儲存在會話儲存體中，而不會有風險與其他專案衝突。
 
 下列範例示範如何執行：
 
-* 在重定向到登錄頁之前保留狀態。
-* 使用查詢字串參數恢復以前的狀態后身份驗證。
+* 在重新導向至登入頁面之前保留狀態。
+* 使用查詢字串參數，在驗證之後復原先前的狀態。
 
 ```razor
 <EditForm Model="User" @onsubmit="OnSaveAsync">
@@ -154,11 +259,11 @@ IP 為使用者發出的權杖通常在短時間內有效,通常大約一小時,
 }
 ```
 
-## <a name="save-app-state-before-an-authentication-operation"></a>在認證操作之前儲存套用狀態
+## <a name="save-app-state-before-an-authentication-operation"></a>在驗證操作之前儲存應用程式狀態
 
-在身份驗證操作期間,在某些情況下,您希望在瀏覽器重定向到 IP 之前保存應用狀態。 當您使用狀態容器之類的內容,並且希望在身份驗證成功后還原狀態時,情況可能如此。 可以使用自定義身份驗證狀態物件保留特定於應用的狀態或對它的引用,並在身份驗證操作成功完成後還原該狀態。
+在驗證作業期間，某些情況下，您會想要在瀏覽器重新導向至 IP 之前，先儲存應用程式狀態。 當您使用類似狀態容器的情況，而且您想要在驗證成功之後還原狀態時，就可能發生這種情況。 您可以使用自訂驗證狀態物件來保留應用程式特定狀態或其參考，並在驗證作業成功完成後還原該狀態。
 
-`Authentication`元件 (*頁 / 身份認證. razor) :*
+`Authentication`元件（*Pages/Authentication. razor*）：
 
 ```razor
 @page "/authentication/{action}"
@@ -202,27 +307,27 @@ IP 為使用者發出的權杖通常在短時間內有效,通常大約一小時,
 }
 ```
 
-## <a name="customize-app-routes"></a>自訂應用路由
+## <a name="customize-app-routes"></a>自訂應用程式路由
 
-預設情況下,`Microsoft.AspNetCore.Components.WebAssembly.Authentication`庫使用下表中顯示的路由來表示不同的身份驗證狀態。
+根據預設，連結`Microsoft.AspNetCore.Components.WebAssembly.Authentication`庫會使用下表所示的路由來代表不同的驗證狀態。
 
-| 路由                            | 目的 |
+| 路由                            | 用途 |
 | -------------------------------- | ------- |
-| `authentication/login`           | 觸發登錄操作。 |
-| `authentication/login-callback`  | 處理任何登錄操作的結果。 |
-| `authentication/login-failed`    | 當登錄操作由於某種原因失敗時顯示錯誤消息。 |
-| `authentication/logout`          | 觸發註銷操作。 |
-| `authentication/logout-callback` | 處理註銷操作的結果。 |
-| `authentication/logout-failed`   | 當註銷操作由於某種原因失敗時顯示錯誤消息。 |
-| `authentication/logged-out`      | 指示使用者已成功註銷。 |
-| `authentication/profile`         | 觸發操作以編輯使用者配置檔。 |
-| `authentication/register`        | 觸發操作以註冊新使用者。 |
+| `authentication/login`           | 觸發登入作業。 |
+| `authentication/login-callback`  | 處理任何登入作業的結果。 |
+| `authentication/login-failed`    | 當登入作業因某些原因而失敗時，會顯示錯誤訊息。 |
+| `authentication/logout`          | 觸發登出作業。 |
+| `authentication/logout-callback` | 處理登出作業的結果。 |
+| `authentication/logout-failed`   | 當登出作業因某些原因而失敗時，會顯示錯誤訊息。 |
+| `authentication/logged-out`      | 表示使用者已成功登出。 |
+| `authentication/profile`         | 觸發操作以編輯使用者設定檔。 |
+| `authentication/register`        | 觸發操作以註冊新的使用者。 |
 
-上表中顯示的路由可通過`RemoteAuthenticationOptions<TProviderOptions>.AuthenticationPaths`進行配置。 設置選項以提供自定義路由時,請確認應用具有處理每個路徑的路由。
+上表中顯示的路由可透過來設定`RemoteAuthenticationOptions<TProviderOptions>.AuthenticationPaths`。 設定選項以提供自訂路由時，請確認應用程式具有處理每個路徑的路由。
 
-在下面的範例中,所有路徑都預定了`/security`。
+在下列範例中，所有路徑的前面都會加`/security`上。
 
-`Authentication`元件 (*頁 / 身份認證. razor) :*
+`Authentication`元件（*Pages/Authentication. razor*）：
 
 ```razor
 @page "/security/{action}"
@@ -236,7 +341,7 @@ IP 為使用者發出的權杖通常在短時間內有效,通常大約一小時,
 }
 ```
 
-`Program.Main`*(Program.cs*):
+`Program.Main`（*Program.cs*）：
 
 ```csharp
 builder.Services.AddApiAuthorization(options => { 
@@ -252,7 +357,7 @@ builder.Services.AddApiAuthorization(options => {
 });
 ```
 
-如果要求對完全不同的路徑進行調用,請按照前面所述設置路由,並`RemoteAuthenticatorView`呈現顯式操作參數:
+如果需求會呼叫完全不同的路徑，請如先前所述設定路由，並`RemoteAuthenticatorView`使用明確的 action 參數來呈現：
 
 ```razor
 @page "/register"
@@ -260,13 +365,13 @@ builder.Services.AddApiAuthorization(options => {
 <RemoteAuthenticatorView Action="@RemoteAuthenticationActions.Register" />
 ```
 
-如果選擇這樣做,則可以將UI分解為不同的頁面。
+如果您選擇這樣做，則可以將 UI 分成不同的頁面。
 
-## <a name="customize-the-authentication-user-interface"></a>自訂身份驗證使用者介面
+## <a name="customize-the-authentication-user-interface"></a>自訂驗證使用者介面
 
-`RemoteAuthenticatorView`包括每個身份驗證狀態的預設 UI 部分集。 每個狀態都可以通過傳入自定義`RenderFragment`來自定義。 在初始登入時自訂顯示的文字,可以按以下的`RemoteAuthenticatorView`變更 。
+`RemoteAuthenticatorView`針對每個驗證狀態包含一組預設的 UI 元件。 您可以藉由傳入自訂`RenderFragment`來自訂每個狀態。 若要在初始登入程式期間自訂顯示的文字， `RemoteAuthenticatorView`可以變更，如下所示。
 
-`Authentication`元件 (*頁 / 身份認證. razor) :*
+`Authentication`元件（*Pages/Authentication. razor*）：
 
 ```razor
 @page "/security/{action}"
@@ -284,7 +389,7 @@ builder.Services.AddApiAuthorization(options => {
 }
 ```
 
-有`RemoteAuthenticatorView`一個片段,可以按下表中顯示的每個身份驗證路由使用。
+`RemoteAuthenticatorView`有一個片段，可用於下表所示的每個驗證路由。
 
 | 路由                            | 片段                |
 | -------------------------------- | ----------------------- |
@@ -297,3 +402,130 @@ builder.Services.AddApiAuthorization(options => {
 | `authentication/logged-out`      | `<LogOutSucceeded>`     |
 | `authentication/profile`         | `<UserProfile>`         |
 | `authentication/register`        | `<Registering>`         |
+
+## <a name="support-prerendering-with-authentication"></a>支援使用驗證來進行預呈現
+
+遵循其中一個託管Blazor WebAssembly 應用程式主題中的指導方針之後，請使用下列指示來建立應用程式：
+
+* 不需要授權的 Prerenders 路徑。
+* 不需要授權的已呈現路徑。
+
+在用戶端應用程式`Program`的類別（*Program.cs*）中，將常見的服務註冊因素劃分為不同的`ConfigureCommonServices`方法（例如，）：
+
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.RootComponents.Add<App>("app");
+
+        builder.Services.AddSingleton(new HttpClient 
+        {
+            BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+        });
+
+        services.Add...;
+
+        ConfigureCommonServices(builder.Services);
+
+        await builder.Build().RunAsync();
+    }
+
+    public static void ConfigureCommonServices(IServiceCollection services)
+    {
+        // Common service registrations
+    }
+}
+```
+
+在伺服器應用程式的`Startup.ConfigureServices`中，註冊下列其他服務：
+
+```csharp
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Server;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+
+    services.AddRazorPages();
+    services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
+    services.AddScoped<SignOutSessionStateManager>();
+
+    Client.Program.ConfigureCommonServices(services);
+}
+```
+
+在伺服器應用程式的`Startup.Configure`方法中， `endpoints.MapFallbackToFile("index.html")`將`endpoints.MapFallbackToPage("/_Host")`取代為：
+
+```csharp
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapFallbackToPage("/_Host");
+});
+```
+
+在伺服器應用程式中，建立*Pages*資料夾（如果不存在）。 在伺服器應用程式的*Pages*資料夾內建立 *_Host 的 cshtml*頁面。 將用戶端應用程式*wwwroot/index.html*檔的內容貼到*Pages/_Host. cshtml*檔案中。 更新檔案的內容：
+
+* 將 `@page "_Host"` 新增到檔案的頂端。
+* 將`<app>Loading...</app>`標記取代為下列內容：
+
+  ```cshtml
+  <app>
+      @if (!HttpContext.Request.Path.StartsWithSegments("/authentication"))
+      {
+          <component type="typeof(Wasm.Authentication.Client.App)" render-mode="Static" />
+      }
+      else
+      {
+          <text>Loading...</text>
+      }
+  </app>
+  ```
+  
+## <a name="options-for-hosted-apps-and-third-party-login-providers"></a>託管應用程式和協力廠商登入提供者的選項
+
+使用協力廠商提供者Blazor驗證和授權託管 WebAssembly 應用程式時，有數個選項可用來驗證使用者。 您選擇哪一個取決於您的案例。
+
+如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims>。
+
+### <a name="authenticate-users-to-only-call-protected-third-party-apis"></a>驗證使用者只呼叫受保護的協力廠商 Api
+
+對協力廠商 API 提供者的用戶端 OAuth 流程驗證使用者：
+
+ ```csharp
+ builder.services.AddOidcAuthentication(options => { ... });
+ ```
+ 
+ 在此情節中：
+
+* 裝載應用程式的伺服器不扮演角色。
+* 無法保護伺服器上的 Api。
+* 應用程式只能呼叫受保護的協力廠商 Api。
+
+### <a name="authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party"></a>使用協力廠商提供者來驗證使用者，並在主機伺服器和協力廠商上呼叫受保護的 Api
+
+使用協力廠商登入提供者來設定身分識別。 取得協力廠商 API 存取所需的權杖，並加以儲存。
+
+當使用者登入時，身分識別會在驗證程式中收集存取權和重新整理權杖。 此時，有幾個方法可用來對協力廠商 Api 進行 API 呼叫。
+
+#### <a name="use-a-server-access-token-to-retrieve-the-third-party-access-token"></a>使用伺服器存取權杖來取出協力廠商存取權杖
+
+使用伺服器上產生的存取權杖，從伺服器 API 端點抓取協力廠商存取權杖。 從該處，使用協力廠商存取權杖，直接從用戶端上的身分識別呼叫協力廠商 API 資源。
+
+我們不建議採用這種方法。 這種方法需要將協力廠商存取權杖視為針對公用用戶端所產生。 在 OAuth 詞彙中，公用應用程式不會有用戶端密碼，因為它無法受信任而無法安全地儲存秘密，而且會為機密用戶端產生存取權杖。 機密用戶端是具有用戶端密碼的用戶端，並假設能夠安全地儲存秘密。
+
+* 協力廠商存取權杖可能會被授與額外的範圍來執行敏感性作業，這是根據協力廠商針對較受信任的用戶端發出權杖的事實。
+* 同樣地，重新整理權杖不應發給不受信任的用戶端，因為這樣做會讓用戶端無限制存取，除非有其他限制。
+
+#### <a name="make-api-calls-from-the-client-to-the-server-api-in-order-to-call-third-party-apis"></a>從用戶端對伺服器 API 進行 API 呼叫，以便呼叫協力廠商 Api
+
+從用戶端對伺服器 API 進行 API 呼叫。 從伺服器中，取出協力廠商 API 資源的存取權杖，併發出任何需要的呼叫。
+
+雖然這種方法需要透過伺服器額外的網路躍點來呼叫協力廠商 API，但最終會導致更安全的體驗：
+
+* 伺服器可以儲存重新整理權杖，並確保應用程式不會失去協力廠商資源的存取權。
+* 應用程式無法從可能包含更多敏感性許可權的伺服器洩漏存取權杖。

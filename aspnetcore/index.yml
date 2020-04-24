@@ -1,68 +1,68 @@
 ### YamlMime:Hub
 title: ASP.NET 文件
-summary: 瞭解如何使用 ASP.NET 核心創建快速、安全、跨平臺和基於雲端的 Web 應用和服務。 瀏覽教程、範例代碼、基礎知識、API 參考等。
+summary: 了解如何使用 ASP.NET Core 來建立快速、安全、跨平台和雲端式的 Web 應用程式和服務。 瀏覽教學課程、範例程式碼、基本概念、API 參考等資源。
 brand: aspnet
 metadata:
   title: ASP.NET 文件
-  description: 瞭解如何使用 ASP.NET 核心創建快速、安全、跨平臺和基於雲端的 Web 應用和服務。 瀏覽教程、範例代碼、基礎知識、API 參考等。
+  description: 了解如何使用 ASP.NET Core 來建立快速、安全、跨平台和雲端式的 Web 應用程式和服務。 瀏覽教學課程、範例程式碼、基本概念、API 參考等資源。
   ms.product: aspnet
   ms.topic: hub-page
   author: WadePickett
   ms.author: wpickett
-  ms.date: 03/27/2020
-  ms.openlocfilehash: fb6d03616560649a336df8a624e7fb59006a7ea8
-  ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
-  ms.translationtype: MT
+  ms.date: 04/15/2020
+  ms.openlocfilehash: c0f987396a4bfcdbc8c189938125eb2a65dadc8a
+  ms.sourcegitcommit: d5d45d84fe488427d418de770000f7df44a08370
+  ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80366649"
+  ms.lasthandoff: 04/17/2020
+  ms.locfileid: "81542399"
 highlightedContent:
   items:
-  - title: 在 5 分鐘內在任何平台上建立 ASP.NET 核心應用
+  - title: 5 分鐘內完成在任何平台上建立 ASP.NET Core 應用程式
     itemType: get-started
     url: getting-started/index.md
-  - title: ASP.NET核心概述
+  - title: ASP.NET Core 概觀
     itemType: overview
     url: introduction-to-aspnet-core.md
-  - title: ASP.NET核心視訊教學
+  - title: ASP.NET Core 影片教學課程
     itemType: video
     url: https://www.youtube.com/playlist?list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy
   - title: ASP.NET Core 的新功能文件
     itemType: whats-new
     url: whats-new/index.yml
-  - title: 建立網頁介面
+  - title: 建立您的第一個 Web UI
     itemType: get-started
     url: tutorials/build-your-first-blazor-app.md
-  - title: 建立第一個 Web API
+  - title: 建立您的第一個 Web API
     itemType: get-started
     url: tutorials/first-web-api.md
-  - title: 建立第一個即時 Web 應用
+  - title: 建立您的第一個即時 Web 應用程式
     itemType: get-started
     url: tutorials/signalr.md
-  - title: 建立第一個資料驅動的 MVC Web 應用
+  - title: 建立您的第一個資料驅動 MVC Web 應用程式
     itemType: get-started
-    url: tutorials/first-mvc-app/index.md
+    url: tutorials/first-mvc-app//start-mvc.md
 conceptualContent:
   title: 開發 ASP.NET Core 應用程式
-  summary: 選擇互動式 Web 應用程式、Web API、MVC 模式應用程式、即時應用等
+  summary: 有互動式 Web 應用程式、Web API、MVC 模式應用程式、即時應用程式等類型可供選擇
   items:
   - title: 互動式用戶端 Blazor 應用程式
-    summary: 使用可重用的 UI 元件進行開發,這些元件可以利用 WebAssembly 獲得近乎本機的效能
+    summary: 利用可重複使用的 UI 元件進行開發，這些元件運用 WebAssembly 來達到近乎原生的效能
     links:
     - url: blazor/index.md
       itemType: overview
-      text: 概觀
+      text: 總覽
     - url: blazor/get-started.md
       itemType: get-started
       text: 建立您的第一個 Blazor 應用程式
     - url: tutorials/build-your-first-blazor-app.md
       itemType: get-started
-      text: 使用可重用元件來建構您的群組
+      text: 利用可重複使用的元件建置您的第一個 Blazor 應用程式
     - url: blazor/hosting-models.md
       itemType: concept
-      text: 布拉佐託管模型
-  - title: RESTful Web API 應用
-    summary: 使用ASP.NET核心 Web API 開發 RESTful HTTP 服務
+      text: Blazor 主控模型
+  - title: RESTful Web API 應用程式
+    summary: 利用 ASP.NET Core Web API 開發 RESTful HTTP 服務
     links:
     - url: tutorials/first-web-api.md
       itemType: get-started
@@ -72,7 +72,7 @@ conceptualContent:
       text: 使用 ASP.NET Core 建立 Web API
     - url: tutorials/web-api-help-pages-using-swagger.md
       itemType: tutorial
-      text: 使用斯瓦格/OpenAPI 產生 Web API 說明頁
+      text: 利用 Swagger/OpenAPI 產生 Web API 說明頁面
     - url: web-api/action-return-types.md
       itemType: concept
       text: 控制器動作的傳回類型
@@ -85,33 +85,33 @@ conceptualContent:
     - url: tutorials/web-api-javascript.md
       itemType: tutorial
       text: 使用 JavaScript 呼叫 ASP.NET Core Web API
-  - title: 以頁面為中心的 Web UI,帶剃刀頁面
-    summary: 開發以頁面為中心的 Web 應用,徹底分離關注點
+  - title: 利用 Razor Pages 的網頁導向 Web UI
+    summary: 在清楚分隔考量點的環境下開發頁面導向 Web 應用程式
     links:
     - url: tutorials/razor-pages/razor-pages-start.md
       itemType: get-started
-      text: 建立第一個剃刀網頁應用
+      text: 建立您的第一個 Razor Pages Web 應用程式
     - url: https://docs.microsoft.com/learn/modules/create-razor-pages-aspnet-core/
       itemType: tutorial
-      text: 建立 Web API 的頁面為中心的 Web UI
+      text: 建立使用 Web API 的網頁導向 Web UI
     - url: mvc/views/razor.md
       itemType: concept
       text: Razor 語法
     - url: razor-pages/filter.md
       itemType: concept
-      text: 篩選器
+      text: 篩選條件
     - url: razor-pages/razor-pages-conventions.md
       itemType: concept
       text: 路由
-  - title: 以 MVC 的頁面焦點 Web UI
-    summary: 使用模型檢視-控制器設計模式開發 Web 應用程式
+  - title: 利用 MVC 的網頁導向 Web UI
+    summary: 使用 Model-View-Controller 設計模式來開發 Web 應用程式
     links:
     - url: mvc/overview.md
       itemType: overview
-      text: 概觀
+      text: 總覽
     - url: tutorials/first-mvc-app/index.md
       itemType: get-started
-      text: 建立您的第一個ASP.NET核心 MVC 應用程式
+      text: 建立您的第一個 ASP.NET Core MVC 應用程式
     - url: mvc/views/overview.md
       itemType: concept
       text: 檢視
@@ -120,22 +120,22 @@ conceptualContent:
       text: 部分檢視
     - url: mvc/controllers/actions.md
       itemType: concept
-      text: Controllers
+      text: 控制器
     - url: mvc/controllers/routing.md
       itemType: concept
-      text: 路由控制器操作
+      text: 路由至控制器動作
     - url: mvc/controllers/testing.md
       itemType: concept
       text: 單元測試
-  - title: 頻訊號R的即時 Web 應用程式
-    summary: 新增網頁應用程式新增即時功能,啟用伺服器端代碼可立即推送內容
+  - title: 利用 SignalR 的即時 Web 應用程式
+    summary: 在您的 Web 應用程式中新增即時功能，讓伺服器端程式碼立即推送內容
     links:
     - url: signalr/introduction.md
       itemType: overview
-      text: 概觀
+      text: 總覽
     - url: signalr/introduction.md
       itemType: get-started
-      text: 建立您的第一個 SignalR 應用
+      text: 建立您的第一個 SignalR 應用程式
     - url: tutorials/signalr-blazor-webassembly.md
       itemType: tutorial
       text: 搭配 Blazor WebAssembly 的 SignalR
@@ -147,25 +147,25 @@ conceptualContent:
       text: 範例
     - url: signalr/hubs.md
       itemType: concept
-      text: 集線器
+      text: 中樞
     - url: signalr/client-features.md
       itemType: concept
       text: SignalR 用戶端功能
     - url: signalr/scale.md
       itemType: concept
       text: 主機與規模調整
-  - title: 遠端程式撥號 (RPC) 應用 - gRPC 服務
-    summary: 與 gRPC 在 ASP.NET核心中開發合同優先、高性能的服務
+  - title: 遠端程序呼叫 (RPC) 應用程式 - gRPC 服務
+    summary: 在 ASP.NET Core 中利用 gRPC 開發合約優先、高效能的服務
     links:
     - url: grpc/index.md
       itemType: overview
-      text: 概觀
+      text: 總覽
     - url: tutorials/grpc/grpc-start.md
       itemType: get-started
       text: 建立 gRPC 用戶端及伺服器
     - url: grpc/basics.md
       itemType: concept
-      text: gRPC 服務概念(C)#
+      text: C# 的 gRPC 服務概念
     - url: https://github.com/grpc/grpc-dotnet/tree/master/examples
       itemType: sample
       text: 範例
@@ -174,31 +174,31 @@ conceptualContent:
       text: 比較 gRPC 服務與 HTTP API
     - url: grpc/aspnetcore.md
       itemType: tutorial
-      text: 將 gRPC 服務新增到 ASP.NET 核心應用
+      text: 將 gRPC 服務新增至 ASP.NET Core 應用程式
     - url: grpc/client.md
       itemType: tutorial
-      text: 使用 .NET 用戶端呼叫 gRPC 服務
+      text: 利用 .NET 用戶端呼叫 gRPC 服務
     - url: grpc/browser.md
       itemType: tutorial
       text: 在瀏覽器應用程式中使用 gRPC
-  - title: 資料驅動的 Web 應用
-    summary: 在 ASP.NET 核心中建立資料驅動的 Web 應用
+  - title: 資料驅動 Web 應用程式
+    summary: 在 ASP.NET Core 中建立資料驅動 Web 應用程式
     links:
-    - url: tutorials/first-mvc-app/working-with-sql.md
+    - url: tutorials/first-mvc-app/start-mvc.md
       itemType: tutorial
-      text: 帶有ASP.NET核心的 SQL
+      text: 利用 ASP.NET Core 的 SQL
     - url: blazor/data-binding.md
       itemType: concept
-      text: ASP.NET核心布拉佐爾中的數據綁定
-    - url: tutorials/razor-pages/sql.md
+      text: ASP.NET Core Blazor 中的資料繫結
+    - url: tutorials/razor-pages/razor-pages-start.md
       itemType: tutorial
-      text: SQL 伺服器快速與剃刀頁面
+      text: SQL Server Express 和 Razor Pages
     - url: data/ef-rp/intro.md
       itemType: tutorial
-      text: 實體框架核心與剃刀頁面
+      text: 搭配 Razor Pages 的 Entity Framework Core
     - url: data/ef-rp/intro.md
       itemType: tutorial
-      text: 具有ASP.NET核心 MVC 的實體架構核心
+      text: 搭配 ASP.NET Core MVC 的 Entity Framework Core
     - url: https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-connected-services-storage?view=vs-2019&viewFallbackFrom=aspnetcore-3.1
       itemType: tutorial
       text: Azure 儲存體
@@ -208,8 +208,8 @@ conceptualContent:
     - url: https://docs.microsoft.com/azure/visual-studio/vs-storage-aspnet5-getting-started-tables?toc=%2Faspnet%2Fcore%2Ftoc.json&bc=%2Faspnet%2Fcore%2Fbreadcrumb%2Ftoc.json&view=aspnetcore-3.1
       itemType: concept
       text: Azure 表格儲存體
-  - title: 以前的ASP.NET架構版本
-    summary: 瞭解早期ASP.NET架構版本的概述、教程、基本概念、體系結構和 API 參考
+  - title: 舊版 ASP.NET 架構
+    summary: 探索舊版 ASP.NET 架構的概觀、教學課程、基本概念、結構和 API 參考
     links:
     - url: https://docs.microsoft.com/aspnet/overview
       itemType: concept
@@ -218,14 +218,14 @@ additionalContent:
   sections:
   - title: 概念和功能
     items:
-    - title: ASP.NET核心的 API 引用
+    - title: ASP.NET Core 的 API 參考
       links:
       - url: https://docs.microsoft.com/dotnet/api/?view=aspnetcore-3.1
         text: .NET API 瀏覽器
     - title: 裝載和部署
       links:
       - url: host-and-deploy/index.md
-        text: 概觀
+        text: 總覽
       - url: host-and-deploy/azure-apps/index.md
         text: 部署到 Azure App Service
       - url: azure/devops/index.md
@@ -243,13 +243,13 @@ additionalContent:
     - title: 安全性與身分識別
       links:
       - url: security/index.md
-        text: 概觀
+        text: 總覽
       - url: security/authentication/index.md
         text: 驗證
       - url: security/authorization/introduction.md
         text: 授權
       - url: https://docs.microsoft.com/learn/modules/secure-aspnet-core-identity/
-        text: 課程:使用識別框架保護ASP.NET核心 Web 應用
+        text: 課程：利用 Identity Framework 保護 ASP.NET Core Web 應用程式的安全
       - url: security/data-protection/introduction.md
         text: 資料保護
       - url: security/app-secrets.md
@@ -261,14 +261,14 @@ additionalContent:
     - title: 全球化和當地語系化
       links:
       - url: fundamentals/localization.md
-        text: 概觀
+        text: 總覽
       - url: fundamentals/portable-object-localization.md
         text: 可攜式物件當地語系化
       - url: fundamentals/localization-extensibility.md
-        text: 本地化可擴充性
+        text: 當地語系化擴充性
       - url: fundamentals/troubleshoot-aspnet-core-localization.md
         text: 疑難排解
-    - title: 測試、除錯和故障排除
+    - title: 測試、偵錯及疑難排解
       links:
       - url: test/razor-pages-tests.md
         text: Razor Pages 單元測試
@@ -285,29 +285,29 @@ additionalContent:
       - url: fundamentals/logging/index.md
         text: 記錄
       - url: https://docs.microsoft.com/learn/modules/load-test-web-app-azure-devops/
-        text: 使用 Azure DevOps 對 Azure Web 應用程式進行負載測試
-    - title: Azure 和 ASP.NET核心
+        text: 使用 Azure DevOps 進行 Azure Web 應用程式的負載測試
+    - title: Azure.和 ASP.NET Core
       links:
       - url: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet
         text: 部署 ASP.NET Web 應用程式
       - url: https://docs.microsoft.com/visualstudio/containers/container-tools?view=vs-2019.md
-        text: ASP.NET核心和碼頭
+        text: ASP.NET Core 和 Docker
       - url: https://docs.microsoft.com/learn/modules/host-a-web-app-with-azure-app-service/
-        text: 使用 Azure App Service 裝載 Web 應用程式
+        text: 利用 Azure App Service 裝載 Web 應用程式
       - url: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase
-        text: 套用服務與 Azure SQL 資料庫
+        text: App Service 和 Azure SQL Database
       - url: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-connect-msi
-        text: 使用ASP.NET和 Azure SQL 資料庫的託管識別
+        text: 用於 ASP.NET 和 Azure SQL Database 的受控識別
       - url: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api
-        text: Azure 應用服務中含 CORS 的 Web API
+        text: Azure App Service 中具有 CORS 支援的 Web API
       - url: https://docs.microsoft.com/learn/modules/capture-application-logs-app-service/
-        text: 透過 App Service 診斷記錄擷取 Web 應用程式記錄檔
+        text: 利用 App Service 診斷記錄擷取 Web 應用程式記錄
     - title: 效能
       links:
       - url: performance/performance-best-practices.md
-        text: 概觀
+        text: 總覽
       - url: performance/memory.md
-        text: 記憶體和垃圾回收
+        text: 記憶體與記憶體回收
       - url: performance/caching/response.md
         text: 回應快取
       - url: performance/response-compression.md
@@ -328,16 +328,16 @@ additionalContent:
         text: 要求和回應作業
       - url: fundamentals/url-rewriting.md
         text: URL 重寫
-    - title: 遷移
+    - title: 移轉
       links:
       - url: migration/31-to-50.md
-        text: ASP.NET核心 3.1 到 5.0
+        text: ASP.NET Core 3.1 到 5.0
       - url: migration/30-to-31.md
-        text: ASP.NET核心 3.0 到 3.1
+        text: ASP.NET Core 3.0 到 3.1
       - url: migration/22-to-30.md
-        text: ASP.NET核心 2.2 到 3.0
+        text: ASP.NET Core 2.2 到 3.0
       - url: migration/21-to-22.md
-        text: ASP.NET核心 2.1 到 2.2
+        text: ASP.NET Core 2.1 到 2.2
       - url: migration/20_21.md
         text: ASP.NET Core 2.0 到 2.1
       - url: migration/1x-to-2x/index.md
@@ -347,13 +347,13 @@ additionalContent:
     - title: 架構
       links:
       - url: https://docs.microsoft.com/dotnet/architecture/modern-web-apps-azure/choose-between-traditional-web-and-single-page-apps
-        text: 在傳統 Web 應用與單頁應用 (SP) 之間進行選擇
+        text: 選擇傳統 Web 應用程式或單頁應用程式 (SPA)
       - url: https://docs.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles
         text: 架構原則
       - url: https://docs.microsoft.com/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures
         text: 一般 Web 應用程式架構
       - url: https://docs.microsoft.com/dotnet/architecture/modern-web-apps-azure/common-client-side-web-technologies
-        text: 常見的用戶端 Web 技術
+        text: 通用用戶端 Web 技術
       - url: https://docs.microsoft.com/dotnet/architecture/modern-web-apps-azure/development-process-for-azure
         text: Azure 開發程序
-  footer: 協助ASP.NET文檔。閱讀我們的[貢獻者指南](https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md)。
+  footer: 參與 ASP.NET 文件。請參閱 [參與者指南](https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md)(英文)。

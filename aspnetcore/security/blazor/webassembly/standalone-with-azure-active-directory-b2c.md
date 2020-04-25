@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 1cfedaac336d43fd67541e19dbcf11bbcf402fed
-ms.sourcegitcommit: 4f91da9ce4543b39dba5e8920a9500d3ce959746
+ms.openlocfilehash: 4ccf86550a520f1d001088859ef5909041178781
+ms.sourcegitcommit: 6d271f4b4c3cd1e82267f51d9bfb6de221c394fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82138557"
+ms.locfileid: "82149991"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 保護Blazor ASP.NET Core WebAssembly 獨立應用程式
 
@@ -80,12 +80,6 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 ```csharp
 builder.Services.AddMsalAuthentication(options =>
 {
-    var authentication = options.ProviderOptions.Authentication;
-    authentication.Authority = 
-        "{AAD B2C INSTANCE}{DOMAIN}/{SIGN UP OR SIGN IN POLICY}";
-    authentication.ClientId = "{CLIENT ID}";
-    authentication.ValidateAuthority = false;
-
     builder.Configuration.Bind("AzureAdB2C", options.ProviderOptions.Authentication);
 });
 ```

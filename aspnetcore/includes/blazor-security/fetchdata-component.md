@@ -39,5 +39,3 @@
     }
 }
 ```
-
-如需詳細資訊，請參閱[在驗證作業之前儲存應用程式狀態](xref:security/blazor/webassembly/additional-scenarios#save-app-state-before-an-authentication-operation)。

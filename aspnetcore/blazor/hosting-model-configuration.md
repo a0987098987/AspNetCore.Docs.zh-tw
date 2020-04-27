@@ -5,17 +5,17 @@ description: 瞭解Blazor主控模型設定，包括如何將 Razor 元件整合
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/23/2020
+ms.date: 04/25/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-model-configuration
-ms.openlocfilehash: cf5776109368dc7353d7e21bcad1e947561e7eb4
-ms.sourcegitcommit: 7bb14d005155a5044c7902a08694ee8ccb20c113
+ms.openlocfilehash: c7e8d1f2dcba6432072a5cc11a6c5d78e50c2398
+ms.sourcegitcommit: c6f5ea6397af2dd202632cf2be66fc30f3357bcc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82111054"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159615"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET Core Blazor 裝載模型設定
 
@@ -98,7 +98,7 @@ if (builder.HostEnvironment.IsEnvironment("Custom"))
 
 當`IWebAssemblyHostEnvironment.BaseAddress` `NavigationManager`服務無法使用時，可以在啟動期間使用此屬性。
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 Blazor WebAssembly 支援下列設定：
 
@@ -295,60 +295,13 @@ var hostname = builder.Configuration["HostName"];
 * 會資源清單到頁面中。
 * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動 Blazor 應用程式所需的資訊。
 
-| `RenderMode`        | 說明 |
+| `RenderMode`        | 描述 |
 | ------------------- | ----------- |
 | `ServerPrerendered` | 將元件轉譯為靜態 HTML，並包含Blazor伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動Blazor應用程式。 |
 | `Server`            | 呈現Blazor伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動Blazor應用程式。 |
 | `Static`            | 將元件轉譯為靜態 HTML。 |
 
 不支援從靜態 HTML 網頁轉譯伺服器元件。
-
-### <a name="render-stateful-interactive-components-from-razor-pages-and-views"></a>從 Razor 頁面和 views 轉譯具狀態的互動式元件
-
-可設定狀態的互動式元件可以新增至 Razor 頁面或視圖。
-
-當頁面或視圖呈現時：
-
-* 此元件是使用頁面或視圖所資源清單。
-* 用來進行預呈現的初始元件狀態會遺失。
-* 建立連接時，會建立新SignalR的元件狀態。
-
-下列 Razor 頁面會呈現`Counter`元件：
-
-```cshtml
-<h1>My Razor Page</h1>
-
-<component type="typeof(Counter)" render-mode="ServerPrerendered" 
-    param-InitialValue="InitialValue" />
-
-@code {
-    [BindProperty(SupportsGet=true)]
-    public int InitialValue { get; set; }
-}
-```
-
-### <a name="render-noninteractive-components-from-razor-pages-and-views"></a>從 Razor 頁面和 views 轉譯非互動式元件
-
-在下列 Razor 頁面中， `Counter`元件是使用以表單指定的初始值進行靜態轉譯：
-
-```cshtml
-<h1>My Razor Page</h1>
-
-<form>
-    <input type="number" asp-for="InitialValue" />
-    <button type="submit">Set initial value</button>
-</form>
-
-<component type="typeof(Counter)" render-mode="Static" 
-    param-InitialValue="InitialValue" />
-
-@code {
-    [BindProperty(SupportsGet=true)]
-    public int InitialValue { get; set; }
-}
-```
-
-由於`MyComponent`是以靜態方式呈現，因此元件不能是互動式的。
 
 ### <a name="configure-the-opno-locsignalr-client-for-opno-locblazor-server-apps"></a>設定Blazor伺服器SignalR應用程式的用戶端
 

@@ -299,14 +299,14 @@
           uid: blazor/data-binding
         - name: 事件處理
           uid: blazor/event-handling
+        - name: 生命週期
+          uid: blazor/lifecycle
         - name: 樣板化元件
           uid: blazor/templated-components
         - name: 整合元件
           uid: blazor/integrate-components
         - name: 全球化和當地語系化
           uid: blazor/globalization-localization
-        - name: 生命週期
-          uid: blazor/lifecycle
         - name: 版面配置
           uid: blazor/layouts
         - name: 表單和驗證

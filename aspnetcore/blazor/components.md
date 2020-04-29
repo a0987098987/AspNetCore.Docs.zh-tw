@@ -1,7 +1,7 @@
 ---
-title: 建立與使用ASP.NET核心剃鬚刀元件
+title: 建立和使用 ASP.NET Core Razor 元件
 author: guardrex
-description: 瞭解如何創建和使用 Razor 元件,包括如何綁定到數據、處理事件和管理元件生命週期。
+description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資料、處理事件，以及管理元件生命週期。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -10,35 +10,35 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/components
-ms.openlocfilehash: 4434636992cb2506ef6525996690946f97c43764
-ms.sourcegitcommit: c9d1208e86160615b2d914cce74a839ae41297a8
+ms.openlocfilehash: a9ae84c36716bfc07ae3cf86214e48ad24770401
+ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791481"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82205952"
 ---
-# <a name="create-and-use-aspnet-core-razor-components"></a><span data-ttu-id="b550c-103">建立與使用ASP.NET核心剃鬚刀元件</span><span class="sxs-lookup"><span data-stu-id="b550c-103">Create and use ASP.NET Core Razor components</span></span>
+# <a name="create-and-use-aspnet-core-razor-components"></a><span data-ttu-id="b71cc-103">建立和使用 ASP.NET Core Razor 元件</span><span class="sxs-lookup"><span data-stu-id="b71cc-103">Create and use ASP.NET Core Razor components</span></span>
 
-<span data-ttu-id="b550c-104">由[盧克·萊瑟姆](https://github.com/guardrex),[丹尼爾·羅斯](https://github.com/danroth27)和[托比亞斯·巴特施](https://www.aveo-solutions.com/)</span><span class="sxs-lookup"><span data-stu-id="b550c-104">By [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), and [Tobias Bartsch](https://www.aveo-solutions.com/)</span></span>
+<span data-ttu-id="b71cc-104">By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.com/danroth27)和[Tobias Bartsch](https://www.aveo-solutions.com/)</span><span class="sxs-lookup"><span data-stu-id="b71cc-104">By [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), and [Tobias Bartsch](https://www.aveo-solutions.com/)</span></span>
 
-<span data-ttu-id="b550c-105">[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)([如何下載](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="b550c-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="b71cc-105">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="b71cc-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-Blazor<span data-ttu-id="b550c-106">應用程式是使用*元件*構建的。</span><span class="sxs-lookup"><span data-stu-id="b550c-106"> apps are built using *components*.</span></span> <span data-ttu-id="b550c-107">元件是用戶介面 (UI) 的自包含塊,如頁面、對話框或窗體。</span><span class="sxs-lookup"><span data-stu-id="b550c-107">A component is a self-contained chunk of user interface (UI), such as a page, dialog, or form.</span></span> <span data-ttu-id="b550c-108">元件包括 HTML 標記和注入資料或回應 UI 事件所需的處理邏輯。</span><span class="sxs-lookup"><span data-stu-id="b550c-108">A component includes HTML markup and the processing logic required to inject data or respond to UI events.</span></span> <span data-ttu-id="b550c-109">元件靈活輕巧。</span><span class="sxs-lookup"><span data-stu-id="b550c-109">Components are flexible and lightweight.</span></span> <span data-ttu-id="b550c-110">它們可以嵌套、重用和在項目之間共用。</span><span class="sxs-lookup"><span data-stu-id="b550c-110">They can be nested, reused, and shared among projects.</span></span>
+Blazor<span data-ttu-id="b71cc-106">應用程式是使用*元件*所建立。</span><span class="sxs-lookup"><span data-stu-id="b71cc-106"> apps are built using *components*.</span></span> <span data-ttu-id="b71cc-107">「元件」（component）是一種獨立的使用者介面（UI）區塊，例如頁面、對話方塊或表單。</span><span class="sxs-lookup"><span data-stu-id="b71cc-107">A component is a self-contained chunk of user interface (UI), such as a page, dialog, or form.</span></span> <span data-ttu-id="b71cc-108">元件包含 HTML 標籤，以及插入資料或回應 UI 事件所需的處理邏輯。</span><span class="sxs-lookup"><span data-stu-id="b71cc-108">A component includes HTML markup and the processing logic required to inject data or respond to UI events.</span></span> <span data-ttu-id="b71cc-109">元件具有彈性且輕量。</span><span class="sxs-lookup"><span data-stu-id="b71cc-109">Components are flexible and lightweight.</span></span> <span data-ttu-id="b71cc-110">它們可以在專案之間進行嵌套、重複使用及共用。</span><span class="sxs-lookup"><span data-stu-id="b71cc-110">They can be nested, reused, and shared among projects.</span></span>
 
-## <a name="component-classes"></a><span data-ttu-id="b550c-111">元件類</span><span class="sxs-lookup"><span data-stu-id="b550c-111">Component classes</span></span>
+## <a name="component-classes"></a><span data-ttu-id="b71cc-111">元件類別</span><span class="sxs-lookup"><span data-stu-id="b71cc-111">Component classes</span></span>
 
-<span data-ttu-id="b550c-112">元件在[Razor](xref:mvc/views/razor)元件檔 *(.razor*) 中使用 C# 和 HTML 標記的組合實現。</span><span class="sxs-lookup"><span data-stu-id="b550c-112">Components are implemented in [Razor](xref:mvc/views/razor) component files (*.razor*) using a combination of C# and HTML markup.</span></span> <span data-ttu-id="b550c-113">中Blazor一個元件被稱為 Razor*元件*。</span><span class="sxs-lookup"><span data-stu-id="b550c-113">A component in Blazor is formally referred to as a *Razor component*.</span></span>
+<span data-ttu-id="b71cc-112">元件會使用 c # 和 HTML 標籤的組合，在[razor](xref:mvc/views/razor)元件檔案（*razor*）中執行。</span><span class="sxs-lookup"><span data-stu-id="b71cc-112">Components are implemented in [Razor](xref:mvc/views/razor) component files (*.razor*) using a combination of C# and HTML markup.</span></span> <span data-ttu-id="b71cc-113">中Blazor的元件正式地稱為*Razor 元件*。</span><span class="sxs-lookup"><span data-stu-id="b71cc-113">A component in Blazor is formally referred to as a *Razor component*.</span></span>
 
-<span data-ttu-id="b550c-114">元件的名稱必須以大寫字元開頭。</span><span class="sxs-lookup"><span data-stu-id="b550c-114">A component's name must start with an uppercase character.</span></span> <span data-ttu-id="b550c-115">例如 *,MyCool 元件.razor*是有效的,*而 myCool元件.razor*無效。</span><span class="sxs-lookup"><span data-stu-id="b550c-115">For example, *MyCoolComponent.razor* is valid, and *myCoolComponent.razor* is invalid.</span></span>
+<span data-ttu-id="b71cc-114">元件的名稱必須以大寫字元開頭。</span><span class="sxs-lookup"><span data-stu-id="b71cc-114">A component's name must start with an uppercase character.</span></span> <span data-ttu-id="b71cc-115">例如， *MyCoolComponent*有效，而*MyCoolComponent*則無效。</span><span class="sxs-lookup"><span data-stu-id="b71cc-115">For example, *MyCoolComponent.razor* is valid, and *myCoolComponent.razor* is invalid.</span></span>
 
-<span data-ttu-id="b550c-116">元件的 UI 使用 HTML 定義。</span><span class="sxs-lookup"><span data-stu-id="b550c-116">The UI for a component is defined using HTML.</span></span> <span data-ttu-id="b550c-117">動態轉譯邏輯 (例如迴圈、條件、運算式) 是使用內嵌的 C# 語法 (稱為 [Razor](xref:mvc/views/razor)) 來新增的。</span><span class="sxs-lookup"><span data-stu-id="b550c-117">Dynamic rendering logic (for example, loops, conditionals, expressions) is added using an embedded C# syntax called [Razor](xref:mvc/views/razor).</span></span> <span data-ttu-id="b550c-118">編譯應用時,HTML 標記和 C# 呈現邏輯將轉換為元件類。</span><span class="sxs-lookup"><span data-stu-id="b550c-118">When an app is compiled, the HTML markup and C# rendering logic are converted into a component class.</span></span> <span data-ttu-id="b550c-119">生成的類的名稱與檔的名稱匹配。</span><span class="sxs-lookup"><span data-stu-id="b550c-119">The name of the generated class matches the name of the file.</span></span>
+<span data-ttu-id="b71cc-116">元件的 UI 是使用 HTML 定義的。</span><span class="sxs-lookup"><span data-stu-id="b71cc-116">The UI for a component is defined using HTML.</span></span> <span data-ttu-id="b71cc-117">動態轉譯邏輯 (例如迴圈、條件、運算式) 是使用內嵌的 C# 語法 (稱為 [Razor](xref:mvc/views/razor)) 來新增的。</span><span class="sxs-lookup"><span data-stu-id="b71cc-117">Dynamic rendering logic (for example, loops, conditionals, expressions) is added using an embedded C# syntax called [Razor](xref:mvc/views/razor).</span></span> <span data-ttu-id="b71cc-118">編譯應用程式時，會將 HTML 標籤和 c # 轉譯邏輯轉換成元件類別。</span><span class="sxs-lookup"><span data-stu-id="b71cc-118">When an app is compiled, the HTML markup and C# rendering logic are converted into a component class.</span></span> <span data-ttu-id="b71cc-119">產生的類別名稱與檔案的名稱相符。</span><span class="sxs-lookup"><span data-stu-id="b71cc-119">The name of the generated class matches the name of the file.</span></span>
 
-<span data-ttu-id="b550c-120">元件類別的成員均定義於 `@code` 區塊中。</span><span class="sxs-lookup"><span data-stu-id="b550c-120">Members of the component class are defined in an `@code` block.</span></span> <span data-ttu-id="b550c-121">在塊`@code`中,元件狀態(屬性、欄位)使用事件處理或定義其他元件邏輯的方法指定。</span><span class="sxs-lookup"><span data-stu-id="b550c-121">In the `@code` block, component state (properties, fields) is specified with methods for event handling or for defining other component logic.</span></span> <span data-ttu-id="b550c-122">允許一個以上的 `@code` 區塊。</span><span class="sxs-lookup"><span data-stu-id="b550c-122">More than one `@code` block is permissible.</span></span>
+<span data-ttu-id="b71cc-120">元件類別的成員均定義於 `@code` 區塊中。</span><span class="sxs-lookup"><span data-stu-id="b71cc-120">Members of the component class are defined in an `@code` block.</span></span> <span data-ttu-id="b71cc-121">在`@code`區塊中，會使用事件處理或定義其他元件邏輯的方法來指定元件狀態（屬性、欄位）。</span><span class="sxs-lookup"><span data-stu-id="b71cc-121">In the `@code` block, component state (properties, fields) is specified with methods for event handling or for defining other component logic.</span></span> <span data-ttu-id="b71cc-122">允許一個以上的 `@code` 區塊。</span><span class="sxs-lookup"><span data-stu-id="b71cc-122">More than one `@code` block is permissible.</span></span>
 
-<span data-ttu-id="b550c-123">元件成員可以使用 以`@`開頭的 C# 運算式用作元件呈現邏輯的一部分。</span><span class="sxs-lookup"><span data-stu-id="b550c-123">Component members can be used as part of the component's rendering logic using C# expressions that start with `@`.</span></span> <span data-ttu-id="b550c-124">例如,C# 字段通過`@`前置字位名稱來呈現。</span><span class="sxs-lookup"><span data-stu-id="b550c-124">For example, a C# field is rendered by prefixing `@` to the field name.</span></span> <span data-ttu-id="b550c-125">以下範例計算和渲染:</span><span class="sxs-lookup"><span data-stu-id="b550c-125">The following example evaluates and renders:</span></span>
+<span data-ttu-id="b71cc-123">元件成員可以使用開頭為的 c # 運算式，做為元件轉譯邏輯的一部分`@`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-123">Component members can be used as part of the component's rendering logic using C# expressions that start with `@`.</span></span> <span data-ttu-id="b71cc-124">例如，c # 欄位是藉由在功能變數名稱`@`前面加上的方式來呈現。</span><span class="sxs-lookup"><span data-stu-id="b71cc-124">For example, a C# field is rendered by prefixing `@` to the field name.</span></span> <span data-ttu-id="b71cc-125">下列範例會評估並呈現：</span><span class="sxs-lookup"><span data-stu-id="b71cc-125">The following example evaluates and renders:</span></span>
 
-* <span data-ttu-id="b550c-126">`_headingFontStyle`到`font-style`的 CSS 屬性值。</span><span class="sxs-lookup"><span data-stu-id="b550c-126">`_headingFontStyle` to the CSS property value for `font-style`.</span></span>
-* <span data-ttu-id="b550c-127">`_headingText`元素的內容`<h1>`。</span><span class="sxs-lookup"><span data-stu-id="b550c-127">`_headingText` to the content of the `<h1>` element.</span></span>
+* <span data-ttu-id="b71cc-126">`_headingFontStyle`至的 CSS 屬性值`font-style`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-126">`_headingFontStyle` to the CSS property value for `font-style`.</span></span>
+* <span data-ttu-id="b71cc-127">`_headingText`至`<h1>`元素的內容。</span><span class="sxs-lookup"><span data-stu-id="b71cc-127">`_headingText` to the content of the `<h1>` element.</span></span>
 
 ```razor
 <h1 style="font-style:@_headingFontStyle">@_headingText</h1>
@@ -49,62 +49,62 @@ Blazor<span data-ttu-id="b550c-106">應用程式是使用*元件*構建的。</s
 }
 ```
 
-<span data-ttu-id="b550c-128">最初呈現元件后,元件將重新生成其呈現樹以回應事件。</span><span class="sxs-lookup"><span data-stu-id="b550c-128">After the component is initially rendered, the component regenerates its render tree in response to events.</span></span> Blazor<span data-ttu-id="b550c-129">然後,將新的呈現樹與上一個呈現樹進行比較,並將任何修改應用於瀏覽器的文檔物件模型 (DOM)。</span><span class="sxs-lookup"><span data-stu-id="b550c-129"> then compares the new render tree against the previous one and applies any modifications to the browser's Document Object Model (DOM).</span></span>
+<span data-ttu-id="b71cc-128">一開始呈現元件之後，元件會重新產生其轉譯樹狀結構，以回應事件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-128">After the component is initially rendered, the component regenerates its render tree in response to events.</span></span> Blazor<span data-ttu-id="b71cc-129">然後比較新的轉譯樹狀結構與上一個，並將任何修改套用至瀏覽器的檔物件模型（DOM）。</span><span class="sxs-lookup"><span data-stu-id="b71cc-129"> then compares the new render tree against the previous one and applies any modifications to the browser's Document Object Model (DOM).</span></span>
 
-<span data-ttu-id="b550c-130">元件是普通的 C# 類,可以放置在專案中的任意位置。</span><span class="sxs-lookup"><span data-stu-id="b550c-130">Components are ordinary C# classes and can be placed anywhere within a project.</span></span> <span data-ttu-id="b550c-131">生成網頁的元件通常駐留在 *「頁面」* 資料夾中。</span><span class="sxs-lookup"><span data-stu-id="b550c-131">Components that produce webpages usually reside in the *Pages* folder.</span></span> <span data-ttu-id="b550c-132">非頁面元件經常放置在 *「共用」* 資料夾或添加到專案的自訂資料夾中。</span><span class="sxs-lookup"><span data-stu-id="b550c-132">Non-page components are frequently placed in the *Shared* folder or a custom folder added to the project.</span></span>
+<span data-ttu-id="b71cc-130">元件是一般的 c # 類別，可以放在專案內的任何位置。</span><span class="sxs-lookup"><span data-stu-id="b71cc-130">Components are ordinary C# classes and can be placed anywhere within a project.</span></span> <span data-ttu-id="b71cc-131">產生網頁的元件通常會位於*Pages*資料夾中。</span><span class="sxs-lookup"><span data-stu-id="b71cc-131">Components that produce webpages usually reside in the *Pages* folder.</span></span> <span data-ttu-id="b71cc-132">非頁面元件通常會放在*共用*資料夾中，或加入至專案的自訂資料夾中。</span><span class="sxs-lookup"><span data-stu-id="b71cc-132">Non-page components are frequently placed in the *Shared* folder or a custom folder added to the project.</span></span>
 
-<span data-ttu-id="b550c-133">通常,元件的命名空間派生自應用的根命名空間和應用中元件的位置(資料夾)。</span><span class="sxs-lookup"><span data-stu-id="b550c-133">Typically, a component's namespace is derived from the app's root namespace and the component's location (folder) within the app.</span></span> <span data-ttu-id="b550c-134">若套用的根命名空間`BlazorApp`是`Counter`, 並且元件駐留在 *「 頁面」* 資料夾中:</span><span class="sxs-lookup"><span data-stu-id="b550c-134">If the app's root namespace is `BlazorApp` and the `Counter` component resides in the *Pages* folder:</span></span>
+<span data-ttu-id="b71cc-133">一般而言，元件的命名空間是從應用程式的根命名空間和元件在應用程式內的位置（資料夾）衍生而來。</span><span class="sxs-lookup"><span data-stu-id="b71cc-133">Typically, a component's namespace is derived from the app's root namespace and the component's location (folder) within the app.</span></span> <span data-ttu-id="b71cc-134">如果應用程式的根命名空間`BlazorApp`為， `Counter`且元件位於*Pages*資料夾中：</span><span class="sxs-lookup"><span data-stu-id="b71cc-134">If the app's root namespace is `BlazorApp` and the `Counter` component resides in the *Pages* folder:</span></span>
 
-* <span data-ttu-id="b550c-135">元件`Counter`的命名空間為`BlazorApp.Pages`。</span><span class="sxs-lookup"><span data-stu-id="b550c-135">The `Counter` component's namespace is `BlazorApp.Pages`.</span></span>
-* <span data-ttu-id="b550c-136">元件的完全限定類型名稱稱為`BlazorApp.Pages.Counter`。</span><span class="sxs-lookup"><span data-stu-id="b550c-136">The fully qualified type name of the component is `BlazorApp.Pages.Counter`.</span></span>
+* <span data-ttu-id="b71cc-135">`Counter`元件的命名空間是`BlazorApp.Pages`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-135">The `Counter` component's namespace is `BlazorApp.Pages`.</span></span>
+* <span data-ttu-id="b71cc-136">元件的完整類型名稱為`BlazorApp.Pages.Counter`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-136">The fully qualified type name of the component is `BlazorApp.Pages.Counter`.</span></span>
 
-<span data-ttu-id="b550c-137">有關詳細資訊,請參閱[導入元件](#import-components)部分。</span><span class="sxs-lookup"><span data-stu-id="b550c-137">For more information, see the [Import components](#import-components) section.</span></span>
+<span data-ttu-id="b71cc-137">如需詳細資訊，請參閱匯[入元件](#import-components)一節。</span><span class="sxs-lookup"><span data-stu-id="b71cc-137">For more information, see the [Import components](#import-components) section.</span></span>
 
-<span data-ttu-id="b550c-138">要使用自訂資料夾,請將自訂資料夾的命名空間添加到父元件或應用的 *_Imports.razor*檔中。</span><span class="sxs-lookup"><span data-stu-id="b550c-138">To use a custom folder, add the custom folder's namespace to either the parent component or to the app's *_Imports.razor* file.</span></span> <span data-ttu-id="b550c-139">例如, 當套用的根命名`BlazorApp`空間為 : 時,以下命名空間使*元件*資料夾中的元件可用:</span><span class="sxs-lookup"><span data-stu-id="b550c-139">For example, the following namespace makes components in a *Components* folder available when the app's root namespace is `BlazorApp`:</span></span>
+<span data-ttu-id="b71cc-138">若要使用自訂資料夾，請將自訂資料夾的命名空間新增至父元件或應用程式的 *_Imports razor*檔案。</span><span class="sxs-lookup"><span data-stu-id="b71cc-138">To use a custom folder, add the custom folder's namespace to either the parent component or to the app's *_Imports.razor* file.</span></span> <span data-ttu-id="b71cc-139">例如，下列命名空間會在應用程式的*Components*根命名空間為`BlazorApp`時，讓元件資料夾中的元件可供使用：</span><span class="sxs-lookup"><span data-stu-id="b71cc-139">For example, the following namespace makes components in a *Components* folder available when the app's root namespace is `BlazorApp`:</span></span>
 
 ```razor
 @using BlazorApp.Components
 ```
 
-## <a name="static-assets"></a><span data-ttu-id="b550c-140">靜態資產</span><span class="sxs-lookup"><span data-stu-id="b550c-140">Static assets</span></span>
+## <a name="static-assets"></a><span data-ttu-id="b71cc-140">靜態資產</span><span class="sxs-lookup"><span data-stu-id="b71cc-140">Static assets</span></span>
 
-Blazor<span data-ttu-id="b550c-141">遵循ASP.NET核心應用將靜態資產放在專案的[Web 根 (wwwroot) 資料夾下的](xref:fundamentals/index#web-root)約定。</span><span class="sxs-lookup"><span data-stu-id="b550c-141"> follows the convention of ASP.NET Core apps placing static assets under the project's [web root (wwwroot) folder](xref:fundamentals/index#web-root).</span></span>
+Blazor<span data-ttu-id="b71cc-141">遵循 ASP.NET Core 應用程式在專案的[web 根目錄（wwwroot）資料夾](xref:fundamentals/index#web-root)下放置靜態資產的慣例。</span><span class="sxs-lookup"><span data-stu-id="b71cc-141"> follows the convention of ASP.NET Core apps placing static assets under the project's [web root (wwwroot) folder](xref:fundamentals/index#web-root).</span></span>
 
-<span data-ttu-id="b550c-142">使用基礎相對路徑`/`( ) 引用靜態資產的 Web 根。</span><span class="sxs-lookup"><span data-stu-id="b550c-142">Use a base-relative path (`/`) to refer to the web root for a static asset.</span></span> <span data-ttu-id="b550c-143">在下面的範例中 *,logo.png*實際位於 *[PROJECT ROOT]/wwwroot/影像*資料夾中:</span><span class="sxs-lookup"><span data-stu-id="b550c-143">In the following example, *logo.png* is physically located in the *{PROJECT ROOT}/wwwroot/images* folder:</span></span>
+<span data-ttu-id="b71cc-142">使用基底相對路徑（`/`）來參考靜態資產的 web 根目錄。</span><span class="sxs-lookup"><span data-stu-id="b71cc-142">Use a base-relative path (`/`) to refer to the web root for a static asset.</span></span> <span data-ttu-id="b71cc-143">在下列範例中，*標誌 .png*實際上位於 *{PROJECT ROOT}/wwwroot/images*資料夾中：</span><span class="sxs-lookup"><span data-stu-id="b71cc-143">In the following example, *logo.png* is physically located in the *{PROJECT ROOT}/wwwroot/images* folder:</span></span>
 
 ```razor
 <img alt="Company logo" src="/images/logo.png" />
 ```
 
-<span data-ttu-id="b550c-144">剃刀元件**不支援**波浪斜槓表示法`~/`( 。</span><span class="sxs-lookup"><span data-stu-id="b550c-144">Razor components do **not** support tilde-slash notation (`~/`).</span></span>
+<span data-ttu-id="b71cc-144">Razor 元件**不**支援以波狀符號標記法`~/`（）。</span><span class="sxs-lookup"><span data-stu-id="b71cc-144">Razor components do **not** support tilde-slash notation (`~/`).</span></span>
 
-<span data-ttu-id="b550c-145">有關設定應用基本路徑的資訊,請參<xref:host-and-deploy/blazor/index#app-base-path>閱 。</span><span class="sxs-lookup"><span data-stu-id="b550c-145">For information on setting an app's base path, see <xref:host-and-deploy/blazor/index#app-base-path>.</span></span>
+<span data-ttu-id="b71cc-145">如需設定應用程式基底路徑的詳細資訊<xref:host-and-deploy/blazor/index#app-base-path>，請參閱。</span><span class="sxs-lookup"><span data-stu-id="b71cc-145">For information on setting an app's base path, see <xref:host-and-deploy/blazor/index#app-base-path>.</span></span>
 
-## <a name="tag-helpers-arent-supported-in-components"></a><span data-ttu-id="b550c-146">元件中不支援標記說明器</span><span class="sxs-lookup"><span data-stu-id="b550c-146">Tag Helpers aren't supported in components</span></span>
+## <a name="tag-helpers-arent-supported-in-components"></a><span data-ttu-id="b71cc-146">元件中不支援標記協助程式</span><span class="sxs-lookup"><span data-stu-id="b71cc-146">Tag Helpers aren't supported in components</span></span>
 
-<span data-ttu-id="b550c-147">Razor 元件 *(.razor*檔案)不支援[標籤說明器](xref:mvc/views/tag-helpers/intro)。</span><span class="sxs-lookup"><span data-stu-id="b550c-147">[Tag Helpers](xref:mvc/views/tag-helpers/intro) aren't supported in Razor components (*.razor* files).</span></span> <span data-ttu-id="b550c-148">要在Blazor中 提供類似標記説明程式的功能,請創建與標記説明程式具有相同功能的元件,然後改用該元件。</span><span class="sxs-lookup"><span data-stu-id="b550c-148">To provide Tag Helper-like functionality in Blazor, create a component with the same functionality as the Tag Helper and use the component instead.</span></span>
+<span data-ttu-id="b71cc-147">Razor 元件（*razor*檔案）中不支援[標記](xref:mvc/views/tag-helpers/intro)協助程式。</span><span class="sxs-lookup"><span data-stu-id="b71cc-147">[Tag Helpers](xref:mvc/views/tag-helpers/intro) aren't supported in Razor components (*.razor* files).</span></span> <span data-ttu-id="b71cc-148">若要在中Blazor提供標籤協助程式的功能，請建立元件，其功能與標記協助程式相同，並改用元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-148">To provide Tag Helper-like functionality in Blazor, create a component with the same functionality as the Tag Helper and use the component instead.</span></span>
 
-## <a name="use-components"></a><span data-ttu-id="b550c-149">使用元件</span><span class="sxs-lookup"><span data-stu-id="b550c-149">Use components</span></span>
+## <a name="use-components"></a><span data-ttu-id="b71cc-149">使用元件</span><span class="sxs-lookup"><span data-stu-id="b71cc-149">Use components</span></span>
 
-<span data-ttu-id="b550c-150">元件可以透過使用 HTML 元素語法聲明它們來包括其他元件。</span><span class="sxs-lookup"><span data-stu-id="b550c-150">Components can include other components by declaring them using HTML element syntax.</span></span> <span data-ttu-id="b550c-151">使用元件的標記看起來像是 HTML 標籤，其中標籤名稱是元件類型。</span><span class="sxs-lookup"><span data-stu-id="b550c-151">The markup for using a component looks like an HTML tag where the name of the tag is the component type.</span></span>
+<span data-ttu-id="b71cc-150">元件可以包含其他元件，方法是使用 HTML 專案語法來宣告它們。</span><span class="sxs-lookup"><span data-stu-id="b71cc-150">Components can include other components by declaring them using HTML element syntax.</span></span> <span data-ttu-id="b71cc-151">使用元件的標記看起來像是 HTML 標籤，其中標籤名稱是元件類型。</span><span class="sxs-lookup"><span data-stu-id="b71cc-151">The markup for using a component looks like an HTML tag where the name of the tag is the component type.</span></span>
 
-<span data-ttu-id="b550c-152">*Index.razor*中列標記呈現實體`HeadingComponent`:</span><span class="sxs-lookup"><span data-stu-id="b550c-152">The following markup in *Index.razor* renders a `HeadingComponent` instance:</span></span>
+<span data-ttu-id="b71cc-152">在*Index*中的下列標記會呈現`HeadingComponent`實例：</span><span class="sxs-lookup"><span data-stu-id="b71cc-152">The following markup in *Index.razor* renders a `HeadingComponent` instance:</span></span>
 
 ```razor
 <HeadingComponent />
 ```
 
-<span data-ttu-id="b550c-153">*元件/標題元件.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-153">*Components/HeadingComponent.razor*:</span></span>
+<span data-ttu-id="b71cc-153">*Components/HeadingComponent. razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-153">*Components/HeadingComponent.razor*:</span></span>
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/HeadingComponent.razor)]
 
-<span data-ttu-id="b550c-154">如果元件包含具有大寫第一個字母與元件名稱不匹配的 HTML 元素,則會發出警告,指示該元素具有意外的名稱。</span><span class="sxs-lookup"><span data-stu-id="b550c-154">If a component contains an HTML element with an uppercase first letter that doesn't match a component name, a warning is emitted indicating that the element has an unexpected name.</span></span> <span data-ttu-id="b550c-155">為`@using`元件的命名空間添加指令使元件可用,從而解決警告。</span><span class="sxs-lookup"><span data-stu-id="b550c-155">Adding an `@using` directive for the component's namespace makes the component available, which resolves the warning.</span></span>
+<span data-ttu-id="b71cc-154">如果元件包含的 HTML 專案具有大寫的第一個字母，但不符合元件名稱，則會發出警告，指出該元素有未預期的名稱。</span><span class="sxs-lookup"><span data-stu-id="b71cc-154">If a component contains an HTML element with an uppercase first letter that doesn't match a component name, a warning is emitted indicating that the element has an unexpected name.</span></span> <span data-ttu-id="b71cc-155">`@using`為元件的命名空間加入指示詞可讓元件可用，這會解析警告。</span><span class="sxs-lookup"><span data-stu-id="b71cc-155">Adding an `@using` directive for the component's namespace makes the component available, which resolves the warning.</span></span>
 
-## <a name="routing"></a><span data-ttu-id="b550c-156">路由</span><span class="sxs-lookup"><span data-stu-id="b550c-156">Routing</span></span>
+## <a name="routing"></a><span data-ttu-id="b71cc-156">路由</span><span class="sxs-lookup"><span data-stu-id="b71cc-156">Routing</span></span>
 
-<span data-ttu-id="b550c-157">路由Blazor是通過向應用中的每個可訪問元件提供路由範本來實現的。</span><span class="sxs-lookup"><span data-stu-id="b550c-157">Routing in Blazor is achieved by providing a route template to each accessible component in the app.</span></span>
+<span data-ttu-id="b71cc-157">中Blazor的路由會藉由提供路由範本給應用程式中每個可存取的元件來達成。</span><span class="sxs-lookup"><span data-stu-id="b71cc-157">Routing in Blazor is achieved by providing a route template to each accessible component in the app.</span></span>
 
-<span data-ttu-id="b550c-158">編譯具有`@page`指令的 Razor 檔時,將為生成<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>的類指定 路由範本。</span><span class="sxs-lookup"><span data-stu-id="b550c-158">When a Razor file with an `@page` directive is compiled, the generated class is given a <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> specifying the route template.</span></span> <span data-ttu-id="b550c-159">在運行時,路由器查找具有的`RouteAttribute`元件類,並呈現具有與請求 URL 匹配的路由範本的元件。</span><span class="sxs-lookup"><span data-stu-id="b550c-159">At runtime, the router looks for component classes with a `RouteAttribute` and renders whichever component has a route template that matches the requested URL.</span></span>
+<span data-ttu-id="b71cc-158">編譯含有`@page`指示詞的 Razor 檔案時，系統會<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>指定路由範本給產生的類別。</span><span class="sxs-lookup"><span data-stu-id="b71cc-158">When a Razor file with an `@page` directive is compiled, the generated class is given a <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> specifying the route template.</span></span> <span data-ttu-id="b71cc-159">在執行時間，路由器會尋找具有的`RouteAttribute`元件類別，並轉譯哪個元件具有符合所要求 URL 的路由範本。</span><span class="sxs-lookup"><span data-stu-id="b71cc-159">At runtime, the router looks for component classes with a `RouteAttribute` and renders whichever component has a route template that matches the requested URL.</span></span>
 
 ```razor
 @page "/ParentComponent"
@@ -112,63 +112,63 @@ Blazor<span data-ttu-id="b550c-141">遵循ASP.NET核心應用將靜態資產放�
 ...
 ```
 
-<span data-ttu-id="b550c-160">如需詳細資訊，請參閱 <xref:blazor/routing>。</span><span class="sxs-lookup"><span data-stu-id="b550c-160">For more information, see <xref:blazor/routing>.</span></span>
+<span data-ttu-id="b71cc-160">如需詳細資訊，請參閱 <xref:blazor/routing>。</span><span class="sxs-lookup"><span data-stu-id="b71cc-160">For more information, see <xref:blazor/routing>.</span></span>
 
-## <a name="parameters"></a><span data-ttu-id="b550c-161">參數</span><span class="sxs-lookup"><span data-stu-id="b550c-161">Parameters</span></span>
+## <a name="parameters"></a><span data-ttu-id="b71cc-161">參數</span><span class="sxs-lookup"><span data-stu-id="b71cc-161">Parameters</span></span>
 
-### <a name="route-parameters"></a><span data-ttu-id="b550c-162">路由參數</span><span class="sxs-lookup"><span data-stu-id="b550c-162">Route parameters</span></span>
+### <a name="route-parameters"></a><span data-ttu-id="b71cc-162">路由參數</span><span class="sxs-lookup"><span data-stu-id="b71cc-162">Route parameters</span></span>
 
-<span data-ttu-id="b550c-163">元件可以從`@page`指令中提供的路由範本接收路由參數。</span><span class="sxs-lookup"><span data-stu-id="b550c-163">Components can receive route parameters from the route template provided in the `@page` directive.</span></span> <span data-ttu-id="b550c-164">路由器使用路由參數填充相應的元件參數。</span><span class="sxs-lookup"><span data-stu-id="b550c-164">The router uses route parameters to populate the corresponding component parameters.</span></span>
+<span data-ttu-id="b71cc-163">元件可以從指示詞中`@page`提供的路由範本接收路由參數。</span><span class="sxs-lookup"><span data-stu-id="b71cc-163">Components can receive route parameters from the route template provided in the `@page` directive.</span></span> <span data-ttu-id="b71cc-164">路由器會使用路由參數來填入對應的元件參數。</span><span class="sxs-lookup"><span data-stu-id="b71cc-164">The router uses route parameters to populate the corresponding component parameters.</span></span>
 
-<span data-ttu-id="b550c-165">*頁面/路由參數.剃鬚刀*:</span><span class="sxs-lookup"><span data-stu-id="b550c-165">*Pages/RouteParameter.razor*:</span></span>
+<span data-ttu-id="b71cc-165">*Pages/RouteParameter. razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-165">*Pages/RouteParameter.razor*:</span></span>
 
 [!code-razor[](components/samples_snapshot/RouteParameter.razor?highlight=2,7-8)]
 
-<span data-ttu-id="b550c-166">不支援可選參數,因此在前面的示例中應用了`@page`兩個指令。</span><span class="sxs-lookup"><span data-stu-id="b550c-166">Optional parameters aren't supported, so two `@page` directives are applied in the preceding example.</span></span> <span data-ttu-id="b550c-167">第一個允許在沒有參數的情況下導航到元件。</span><span class="sxs-lookup"><span data-stu-id="b550c-167">The first permits navigation to the component without a parameter.</span></span> <span data-ttu-id="b550c-168">第二`@page`個指令接收`{text}`路由參數並將值分配給`Text`屬性 。</span><span class="sxs-lookup"><span data-stu-id="b550c-168">The second `@page` directive receives the `{text}` route parameter and assigns the value to the `Text` property.</span></span>
+<span data-ttu-id="b71cc-166">不支援選擇性參數，因此在`@page`上述範例中會套用兩個指示詞。</span><span class="sxs-lookup"><span data-stu-id="b71cc-166">Optional parameters aren't supported, so two `@page` directives are applied in the preceding example.</span></span> <span data-ttu-id="b71cc-167">第一個則允許不使用參數導覽至元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-167">The first permits navigation to the component without a parameter.</span></span> <span data-ttu-id="b71cc-168">第二`@page`個指示詞`{text}`會接收路由參數，並將值`Text`指派給屬性。</span><span class="sxs-lookup"><span data-stu-id="b71cc-168">The second `@page` directive receives the `{text}` route parameter and assigns the value to the `Text` property.</span></span>
 
-<span data-ttu-id="b550c-169">Razor 元件 *(.razor*)**不支援**擷取跨多個資料夾邊界的路徑的 *「全部」* 參數語法 (`*`/`**`)</span><span class="sxs-lookup"><span data-stu-id="b550c-169">*Catch-all* parameter syntax (`*`/`**`), which captures the path across multiple folder boundaries, is **not** supported in Razor components (*.razor*).</span></span>
+<span data-ttu-id="b71cc-169">Razor 元件（*razor*）**不**支援*Catch-all*參數語法（`*`/`**`），它會跨多個資料夾界限來捕捉路徑。</span><span class="sxs-lookup"><span data-stu-id="b71cc-169">*Catch-all* parameter syntax (`*`/`**`), which captures the path across multiple folder boundaries, is **not** supported in Razor components (*.razor*).</span></span>
 
-### <a name="component-parameters"></a><span data-ttu-id="b550c-170">元件參數</span><span class="sxs-lookup"><span data-stu-id="b550c-170">Component parameters</span></span>
+### <a name="component-parameters"></a><span data-ttu-id="b71cc-170">元件參數</span><span class="sxs-lookup"><span data-stu-id="b71cc-170">Component parameters</span></span>
 
-<span data-ttu-id="b550c-171">元件可以具有*元件參數*,這些參數使用具有`[Parameter]`屬性的元件類上的公共屬性進行定義。</span><span class="sxs-lookup"><span data-stu-id="b550c-171">Components can have *component parameters*, which are defined using public properties on the component class with the `[Parameter]` attribute.</span></span> <span data-ttu-id="b550c-172">使用這些屬性來指定標記中元件的引數。</span><span class="sxs-lookup"><span data-stu-id="b550c-172">Use attributes to specify arguments for a component in markup.</span></span>
+<span data-ttu-id="b71cc-171">元件可以具有*元件參數*，其定義方式是在元件類別上使用具有`[Parameter]`屬性的公用屬性。</span><span class="sxs-lookup"><span data-stu-id="b71cc-171">Components can have *component parameters*, which are defined using public properties on the component class with the `[Parameter]` attribute.</span></span> <span data-ttu-id="b71cc-172">使用這些屬性來指定標記中元件的引數。</span><span class="sxs-lookup"><span data-stu-id="b71cc-172">Use attributes to specify arguments for a component in markup.</span></span>
 
-<span data-ttu-id="b550c-173">*元件/子元件.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-173">*Components/ChildComponent.razor*:</span></span>
+<span data-ttu-id="b71cc-173">*Components/ChildComponent. razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-173">*Components/ChildComponent.razor*:</span></span>
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=2,11-12)]
 
-<span data-ttu-id="b550c-174">在範例應用程式中的以下範例中,`ParentComponent`將設定`Title``ChildComponent`屬性的值。</span><span class="sxs-lookup"><span data-stu-id="b550c-174">In the following example from the sample app, the `ParentComponent` sets the value of the `Title` property of the `ChildComponent`.</span></span>
+<span data-ttu-id="b71cc-174">在範例應用程式的下列範例中，會`ParentComponent`設定的`Title`屬性值`ChildComponent`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-174">In the following example from the sample app, the `ParentComponent` sets the value of the `Title` property of the `ChildComponent`.</span></span>
 
-<span data-ttu-id="b550c-175">*頁面/父元件.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-175">*Pages/ParentComponent.razor*:</span></span>
+<span data-ttu-id="b71cc-175">*Pages/ParentComponent. razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-175">*Pages/ParentComponent.razor*:</span></span>
 
 [!code-razor[](components/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
 > [!WARNING]
-> <span data-ttu-id="b550c-176">不要建立寫入其自己的*元件參數的元件*,而是使用私有欄位。</span><span class="sxs-lookup"><span data-stu-id="b550c-176">Don't create components that write to their own *component parameters*, use a private field instead.</span></span> <span data-ttu-id="b550c-177">有關詳細資訊,請參閱[「不創建寫入其自己的參數屬性的元件](#dont-create-components-that-write-to-their-own-parameter-properties)」部分。</span><span class="sxs-lookup"><span data-stu-id="b550c-177">For more information, see the [Don't create components that write to their own parameter properties](#dont-create-components-that-write-to-their-own-parameter-properties) section.</span></span>
+> <span data-ttu-id="b71cc-176">請勿建立可寫入其本身*元件參數*的元件，請改用私用欄位。</span><span class="sxs-lookup"><span data-stu-id="b71cc-176">Don't create components that write to their own *component parameters*, use a private field instead.</span></span> <span data-ttu-id="b71cc-177">如需詳細資訊，請參閱[不要建立可寫入自己的參數屬性的元件](#dont-create-components-that-write-to-their-own-parameter-properties)一節。</span><span class="sxs-lookup"><span data-stu-id="b71cc-177">For more information, see the [Don't create components that write to their own parameter properties](#dont-create-components-that-write-to-their-own-parameter-properties) section.</span></span>
 
-## <a name="child-content"></a><span data-ttu-id="b550c-178">子內容</span><span class="sxs-lookup"><span data-stu-id="b550c-178">Child content</span></span>
+## <a name="child-content"></a><span data-ttu-id="b71cc-178">子內容</span><span class="sxs-lookup"><span data-stu-id="b71cc-178">Child content</span></span>
 
-<span data-ttu-id="b550c-179">元件可以設置另一個元件的內容。</span><span class="sxs-lookup"><span data-stu-id="b550c-179">Components can set the content of another component.</span></span> <span data-ttu-id="b550c-180">分配元件提供指定接收元件的標記之間的內容。</span><span class="sxs-lookup"><span data-stu-id="b550c-180">The assigning component provides the content between the tags that specify the receiving component.</span></span>
+<span data-ttu-id="b71cc-179">元件可以設定另一個元件的內容。</span><span class="sxs-lookup"><span data-stu-id="b71cc-179">Components can set the content of another component.</span></span> <span data-ttu-id="b71cc-180">指派元件會在指定接收元件的標記之間提供內容。</span><span class="sxs-lookup"><span data-stu-id="b71cc-180">The assigning component provides the content between the tags that specify the receiving component.</span></span>
 
-<span data-ttu-id="b550c-181">在下面的範例中,`ChildComponent`具有`ChildContent``RenderFragment`表示 屬性, 表示要呈現的 UI 段。</span><span class="sxs-lookup"><span data-stu-id="b550c-181">In the following example, the `ChildComponent` has a `ChildContent` property that represents a `RenderFragment`, which represents a segment of UI to render.</span></span> <span data-ttu-id="b550c-182">的值`ChildContent`位於元件的標記中,其中應呈現內容。</span><span class="sxs-lookup"><span data-stu-id="b550c-182">The value of `ChildContent` is positioned in the component's markup where the content should be rendered.</span></span> <span data-ttu-id="b550c-183">的值`ChildContent`從父元件接收,並在 Bootstrap`panel-body`面板的 中呈現。</span><span class="sxs-lookup"><span data-stu-id="b550c-183">The value of `ChildContent` is received from the parent component and rendered inside the Bootstrap panel's `panel-body`.</span></span>
+<span data-ttu-id="b71cc-181">在下列範例中， `ChildComponent`有一個`ChildContent`代表的屬性`RenderFragment`，代表要呈現的 UI 區段。</span><span class="sxs-lookup"><span data-stu-id="b71cc-181">In the following example, the `ChildComponent` has a `ChildContent` property that represents a `RenderFragment`, which represents a segment of UI to render.</span></span> <span data-ttu-id="b71cc-182">的值`ChildContent`位於元件的標記中，應在其中呈現內容。</span><span class="sxs-lookup"><span data-stu-id="b71cc-182">The value of `ChildContent` is positioned in the component's markup where the content should be rendered.</span></span> <span data-ttu-id="b71cc-183">的值`ChildContent`會從父元件接收，並在啟動載入面板的`panel-body`內轉譯。</span><span class="sxs-lookup"><span data-stu-id="b71cc-183">The value of `ChildContent` is received from the parent component and rendered inside the Bootstrap panel's `panel-body`.</span></span>
 
-<span data-ttu-id="b550c-184">*元件/子元件.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-184">*Components/ChildComponent.razor*:</span></span>
+<span data-ttu-id="b71cc-184">*Components/ChildComponent. razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-184">*Components/ChildComponent.razor*:</span></span>
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=3,14-15)]
 
 > [!NOTE]
-> <span data-ttu-id="b550c-185">接收`RenderFragment`內容的屬性必須按約定`ChildContent`命名 。</span><span class="sxs-lookup"><span data-stu-id="b550c-185">The property receiving the `RenderFragment` content must be named `ChildContent` by convention.</span></span>
+> <span data-ttu-id="b71cc-185">接收`RenderFragment`內容的屬性必須依照慣例命名`ChildContent` 。</span><span class="sxs-lookup"><span data-stu-id="b71cc-185">The property receiving the `RenderFragment` content must be named `ChildContent` by convention.</span></span>
 
-<span data-ttu-id="b550c-186">`ParentComponent`範例應用中可以通過將內容放置`<ChildComponent>`在 標記中來`ChildComponent`提供用於呈現 的內容。</span><span class="sxs-lookup"><span data-stu-id="b550c-186">The `ParentComponent` in the sample app can provide content for rendering the `ChildComponent` by placing the content inside the `<ChildComponent>` tags.</span></span>
+<span data-ttu-id="b71cc-186">範例`ParentComponent`應用程式中的會將內容放在卷`ChildComponent`標內`<ChildComponent>` ，藉以提供呈現的內容。</span><span class="sxs-lookup"><span data-stu-id="b71cc-186">The `ParentComponent` in the sample app can provide content for rendering the `ChildComponent` by placing the content inside the `<ChildComponent>` tags.</span></span>
 
-<span data-ttu-id="b550c-187">*頁面/父元件.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-187">*Pages/ParentComponent.razor*:</span></span>
+<span data-ttu-id="b71cc-187">*Pages/ParentComponent. razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-187">*Pages/ParentComponent.razor*:</span></span>
 
 [!code-razor[](components/samples_snapshot/ParentComponent.razor?highlight=7-8)]
 
-## <a name="attribute-splatting-and-arbitrary-parameters"></a><span data-ttu-id="b550c-188">屬性計算與任意參數</span><span class="sxs-lookup"><span data-stu-id="b550c-188">Attribute splatting and arbitrary parameters</span></span>
+## <a name="attribute-splatting-and-arbitrary-parameters"></a><span data-ttu-id="b71cc-188">屬性展開和任意參數</span><span class="sxs-lookup"><span data-stu-id="b71cc-188">Attribute splatting and arbitrary parameters</span></span>
 
-<span data-ttu-id="b550c-189">除了元件聲明的參數之外,元件還可以捕獲和呈現其他屬性。</span><span class="sxs-lookup"><span data-stu-id="b550c-189">Components can capture and render additional attributes in addition to the component's declared parameters.</span></span> <span data-ttu-id="b550c-190">可以在字典中捕獲其他屬性,然後在使用[`@attributes`](xref:mvc/views/razor#attributes)Razor 指令呈現元件時*將其壓縮*到元素上。</span><span class="sxs-lookup"><span data-stu-id="b550c-190">Additional attributes can be captured in a dictionary and then *splatted* onto an element when the component is rendered using the [`@attributes`](xref:mvc/views/razor#attributes) Razor directive.</span></span> <span data-ttu-id="b550c-191">在定義生成支援各種自定義的標記元素的元件時,此方案非常有用。</span><span class="sxs-lookup"><span data-stu-id="b550c-191">This scenario is useful when defining a component that produces a markup element that supports a variety of customizations.</span></span> <span data-ttu-id="b550c-192">例如,單獨定義支援許多參數的的屬性`<input>`可能很乏味。</span><span class="sxs-lookup"><span data-stu-id="b550c-192">For example, it can be tedious to define attributes separately for an `<input>` that supports many parameters.</span></span>
+<span data-ttu-id="b71cc-189">除了元件的宣告參數之外，元件還可以捕捉和轉譯其他屬性。</span><span class="sxs-lookup"><span data-stu-id="b71cc-189">Components can capture and render additional attributes in addition to the component's declared parameters.</span></span> <span data-ttu-id="b71cc-190">您可以在字典中捕捉其他屬性，然後*splatted*在使用[`@attributes`](xref:mvc/views/razor#attributes) Razor 指示詞轉譯元件時，splatted 至元素。</span><span class="sxs-lookup"><span data-stu-id="b71cc-190">Additional attributes can be captured in a dictionary and then *splatted* onto an element when the component is rendered using the [`@attributes`](xref:mvc/views/razor#attributes) Razor directive.</span></span> <span data-ttu-id="b71cc-191">當定義的元件會產生支援各種自訂的標記專案時，這個案例就很有用。</span><span class="sxs-lookup"><span data-stu-id="b71cc-191">This scenario is useful when defining a component that produces a markup element that supports a variety of customizations.</span></span> <span data-ttu-id="b71cc-192">例如，針對`<input>`支援許多參數的，分別定義屬性可能會很繁瑣。</span><span class="sxs-lookup"><span data-stu-id="b71cc-192">For example, it can be tedious to define attributes separately for an `<input>` that supports many parameters.</span></span>
 
-<span data-ttu-id="b550c-193">在下面的`<input>`範例中,第一個`id="useIndividualParams"`元素 ( ) 使用單個元件`<input>`參數,`id="useAttributesDict"`而第二個元素 ( ) 使用屬性 splatt:</span><span class="sxs-lookup"><span data-stu-id="b550c-193">In the following example, the first `<input>` element (`id="useIndividualParams"`) uses individual component parameters, while the second `<input>` element (`id="useAttributesDict"`) uses attribute splatting:</span></span>
+<span data-ttu-id="b71cc-193">在下列範例中，第一個`<input>`元素（`id="useIndividualParams"`）會使用個別的元件參數，而`<input>`第二`id="useAttributesDict"`個元素（）則使用屬性展開：</span><span class="sxs-lookup"><span data-stu-id="b71cc-193">In the following example, the first `<input>` element (`id="useIndividualParams"`) uses individual component parameters, while the second `<input>` element (`id="useAttributesDict"`) uses attribute splatting:</span></span>
 
 ```razor
 <input id="useIndividualParams"
@@ -205,9 +205,9 @@ Blazor<span data-ttu-id="b550c-141">遵循ASP.NET核心應用將靜態資產放�
 }
 ```
 
-<span data-ttu-id="b550c-194">參數的類型必須使用字串鍵 。`IEnumerable<KeyValuePair<string, object>>`</span><span class="sxs-lookup"><span data-stu-id="b550c-194">The type of the parameter must implement `IEnumerable<KeyValuePair<string, object>>` with string keys.</span></span> <span data-ttu-id="b550c-195">在這種情況下`IReadOnlyDictionary<string, object>`,使用也是一個選項。</span><span class="sxs-lookup"><span data-stu-id="b550c-195">Using `IReadOnlyDictionary<string, object>` is also an option in this scenario.</span></span>
+<span data-ttu-id="b71cc-194">參數的類型必須使用字串索引`IEnumerable<KeyValuePair<string, object>>`鍵來執行。</span><span class="sxs-lookup"><span data-stu-id="b71cc-194">The type of the parameter must implement `IEnumerable<KeyValuePair<string, object>>` with string keys.</span></span> <span data-ttu-id="b71cc-195">在`IReadOnlyDictionary<string, object>`此案例中，使用也是一個選項。</span><span class="sxs-lookup"><span data-stu-id="b71cc-195">Using `IReadOnlyDictionary<string, object>` is also an option in this scenario.</span></span>
 
-<span data-ttu-id="b550c-196">使用這兩`<input>`種方法的呈現元素是相同的:</span><span class="sxs-lookup"><span data-stu-id="b550c-196">The rendered `<input>` elements using both approaches is identical:</span></span>
+<span data-ttu-id="b71cc-196">使用這`<input>`兩種方法的轉譯元素都相同：</span><span class="sxs-lookup"><span data-stu-id="b71cc-196">The rendered `<input>` elements using both approaches is identical:</span></span>
 
 ```html
 <input id="useIndividualParams"
@@ -223,7 +223,7 @@ Blazor<span data-ttu-id="b550c-141">遵循ASP.NET核心應用將靜態資產放�
        size="50">
 ```
 
-<span data-ttu-id="b550c-197">要接受任何屬性,請使用`[Parameter]``CaptureUnmatchedValues`屬性將 元件參數定義為`true`:</span><span class="sxs-lookup"><span data-stu-id="b550c-197">To accept arbitrary attributes, define a component parameter using the `[Parameter]` attribute with the `CaptureUnmatchedValues` property set to `true`:</span></span>
+<span data-ttu-id="b71cc-197">若要接受任意屬性，請使用`[Parameter]` `CaptureUnmatchedValues`屬性設定為的屬性來`true`定義元件參數：</span><span class="sxs-lookup"><span data-stu-id="b71cc-197">To accept arbitrary attributes, define a component parameter using the `[Parameter]` attribute with the `CaptureUnmatchedValues` property set to `true`:</span></span>
 
 ```razor
 @code {
@@ -232,17 +232,17 @@ Blazor<span data-ttu-id="b550c-141">遵循ASP.NET核心應用將靜態資產放�
 }
 ```
 
-<span data-ttu-id="b550c-198">上`CaptureUnmatchedValues``[Parameter]`的屬性允許參數匹配與任何其他參數不匹配的所有屬性。</span><span class="sxs-lookup"><span data-stu-id="b550c-198">The `CaptureUnmatchedValues` property on `[Parameter]` allows the parameter to match all attributes that don't match any other parameter.</span></span> <span data-ttu-id="b550c-199">元件只能使用`CaptureUnmatchedValues`定義單個參數。</span><span class="sxs-lookup"><span data-stu-id="b550c-199">A component can only define a single parameter with `CaptureUnmatchedValues`.</span></span> <span data-ttu-id="b550c-200">使用的屬性類型`CaptureUnmatchedValues``Dictionary<string, object>`必須與字串鍵一起分配。</span><span class="sxs-lookup"><span data-stu-id="b550c-200">The property type used with `CaptureUnmatchedValues` must be assignable from `Dictionary<string, object>` with string keys.</span></span> <span data-ttu-id="b550c-201">`IEnumerable<KeyValuePair<string, object>>`或`IReadOnlyDictionary<string, object>`此方案中的選項。</span><span class="sxs-lookup"><span data-stu-id="b550c-201">`IEnumerable<KeyValuePair<string, object>>` or `IReadOnlyDictionary<string, object>` are also options in this scenario.</span></span>
+<span data-ttu-id="b71cc-198">上`CaptureUnmatchedValues` `[Parameter]`的屬性允許參數比對與任何其他參數不相符的所有屬性。</span><span class="sxs-lookup"><span data-stu-id="b71cc-198">The `CaptureUnmatchedValues` property on `[Parameter]` allows the parameter to match all attributes that don't match any other parameter.</span></span> <span data-ttu-id="b71cc-199">元件只能定義具有`CaptureUnmatchedValues`的單一參數。</span><span class="sxs-lookup"><span data-stu-id="b71cc-199">A component can only define a single parameter with `CaptureUnmatchedValues`.</span></span> <span data-ttu-id="b71cc-200">搭配使用的屬性類型`CaptureUnmatchedValues`必須可從`Dictionary<string, object>`使用字串索引鍵來指派。</span><span class="sxs-lookup"><span data-stu-id="b71cc-200">The property type used with `CaptureUnmatchedValues` must be assignable from `Dictionary<string, object>` with string keys.</span></span> <span data-ttu-id="b71cc-201">`IEnumerable<KeyValuePair<string, object>>`或`IReadOnlyDictionary<string, object>`也是此案例中的選項。</span><span class="sxs-lookup"><span data-stu-id="b71cc-201">`IEnumerable<KeyValuePair<string, object>>` or `IReadOnlyDictionary<string, object>` are also options in this scenario.</span></span>
 
-<span data-ttu-id="b550c-202">`@attributes`相對於元素屬性位置的位置非常重要。</span><span class="sxs-lookup"><span data-stu-id="b550c-202">The position of `@attributes` relative to the position of element attributes is important.</span></span> <span data-ttu-id="b550c-203">在`@attributes`元素上進行壓縮時,從右向左處理屬性(最後處理到第一個)。</span><span class="sxs-lookup"><span data-stu-id="b550c-203">When `@attributes` are splatted on the element, the attributes are processed from right to left (last to first).</span></span> <span data-ttu-id="b550c-204">請考慮使用`Child`元件的以下元件範例:</span><span class="sxs-lookup"><span data-stu-id="b550c-204">Consider the following example of a component that consumes a `Child` component:</span></span>
+<span data-ttu-id="b71cc-202">`@attributes`相對於元素屬性位置的位置很重要。</span><span class="sxs-lookup"><span data-stu-id="b71cc-202">The position of `@attributes` relative to the position of element attributes is important.</span></span> <span data-ttu-id="b71cc-203">當`@attributes`在專案上 splatted 時，會從右至左（最後一個）處理屬性。</span><span class="sxs-lookup"><span data-stu-id="b71cc-203">When `@attributes` are splatted on the element, the attributes are processed from right to left (last to first).</span></span> <span data-ttu-id="b71cc-204">請考慮使用`Child`元件的下列元件範例：</span><span class="sxs-lookup"><span data-stu-id="b71cc-204">Consider the following example of a component that consumes a `Child` component:</span></span>
 
-<span data-ttu-id="b550c-205">*父元件.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-205">*ParentComponent.razor*:</span></span>
+<span data-ttu-id="b71cc-205">*ParentComponent razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-205">*ParentComponent.razor*:</span></span>
 
 ```razor
 <ChildComponent extra="10" />
 ```
 
-<span data-ttu-id="b550c-206">*子元件.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-206">*ChildComponent.razor*:</span></span>
+<span data-ttu-id="b71cc-206">*ChildComponent razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-206">*ChildComponent.razor*:</span></span>
 
 ```razor
 <div @attributes="AdditionalAttributes" extra="5" />
@@ -251,21 +251,21 @@ Blazor<span data-ttu-id="b550c-141">遵循ASP.NET核心應用將靜態資產放�
 public IDictionary<string, object> AdditionalAttributes { get; set; }
 ```
 
-<span data-ttu-id="b550c-207">元件`Child`屬性`extra`設定為 右`@attributes`方 。</span><span class="sxs-lookup"><span data-stu-id="b550c-207">The `Child` component's `extra` attribute is set to the right of `@attributes`.</span></span> <span data-ttu-id="b550c-208">元件`Parent`的渲染`<div>`包含在透過額外屬性`extra="5"`時,因為屬性從右向左處理(最後處理到第一):</span><span class="sxs-lookup"><span data-stu-id="b550c-208">The `Parent` component's rendered `<div>` contains `extra="5"` when passed through the additional attribute because the attributes are processed right to left (last to first):</span></span>
+<span data-ttu-id="b71cc-207">`Child`元件的`extra`屬性會設定為的右邊`@attributes`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-207">The `Child` component's `extra` attribute is set to the right of `@attributes`.</span></span> <span data-ttu-id="b71cc-208">當`Parent`您透過其他`<div>`屬性`extra="5"`傳遞時，元件的會包含，因為屬性是由右至左（最後一個）來處理：</span><span class="sxs-lookup"><span data-stu-id="b71cc-208">The `Parent` component's rendered `<div>` contains `extra="5"` when passed through the additional attribute because the attributes are processed right to left (last to first):</span></span>
 
 ```html
 <div extra="5" />
 ```
 
-<span data-ttu-id="b550c-209">`extra`在下面的範例中,與`@attributes`的順序在`Child`元件的`<div>`中顛倒了 :</span><span class="sxs-lookup"><span data-stu-id="b550c-209">In the following example, the order of `extra` and `@attributes` is reversed in the `Child` component's `<div>`:</span></span>
+<span data-ttu-id="b71cc-209">在下列範例中`extra` ，和`@attributes`的順序會在`Child`元件的`<div>`中反轉：</span><span class="sxs-lookup"><span data-stu-id="b71cc-209">In the following example, the order of `extra` and `@attributes` is reversed in the `Child` component's `<div>`:</span></span>
 
-<span data-ttu-id="b550c-210">*父元件.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-210">*ParentComponent.razor*:</span></span>
+<span data-ttu-id="b71cc-210">*ParentComponent razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-210">*ParentComponent.razor*:</span></span>
 
 ```razor
 <ChildComponent extra="10" />
 ```
 
-<span data-ttu-id="b550c-211">*子元件.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-211">*ChildComponent.razor*:</span></span>
+<span data-ttu-id="b71cc-211">*ChildComponent razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-211">*ChildComponent.razor*:</span></span>
 
 ```razor
 <div extra="5" @attributes="AdditionalAttributes" />
@@ -274,18 +274,18 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 public IDictionary<string, object> AdditionalAttributes { get; set; }
 ```
 
-<span data-ttu-id="b550c-212">透過額外屬性`<div>``extra="10"`時,`Parent`元件中呈現的包含:</span><span class="sxs-lookup"><span data-stu-id="b550c-212">The rendered `<div>` in the `Parent` component contains `extra="10"` when passed through the additional attribute:</span></span>
+<span data-ttu-id="b71cc-212">在元件中轉譯的會在透過其他屬性傳遞時包含`extra="10"` `<div>` `Parent`</span><span class="sxs-lookup"><span data-stu-id="b71cc-212">The rendered `<div>` in the `Parent` component contains `extra="10"` when passed through the additional attribute:</span></span>
 
 ```html
 <div extra="10" />
 ```
 
-## <a name="capture-references-to-components"></a><span data-ttu-id="b550c-213">捕捉對元件的參考</span><span class="sxs-lookup"><span data-stu-id="b550c-213">Capture references to components</span></span>
+## <a name="capture-references-to-components"></a><span data-ttu-id="b71cc-213">捕獲元件的參考</span><span class="sxs-lookup"><span data-stu-id="b71cc-213">Capture references to components</span></span>
 
-<span data-ttu-id="b550c-214">元件參照提供參考元件的實體, 以便您可以向該實體的指令,例如`Show`或`Reset`。</span><span class="sxs-lookup"><span data-stu-id="b550c-214">Component references provide a way to reference a component instance so that you can issue commands to that instance, such as `Show` or `Reset`.</span></span> <span data-ttu-id="b550c-215">要捕獲元件引用,</span><span class="sxs-lookup"><span data-stu-id="b550c-215">To capture a component reference:</span></span>
+<span data-ttu-id="b71cc-214">元件參考提供參考元件實例的方法，讓您可以對該實例發出命令，例如`Show`或。 `Reset`</span><span class="sxs-lookup"><span data-stu-id="b71cc-214">Component references provide a way to reference a component instance so that you can issue commands to that instance, such as `Show` or `Reset`.</span></span> <span data-ttu-id="b71cc-215">若要捕捉元件參考：</span><span class="sxs-lookup"><span data-stu-id="b71cc-215">To capture a component reference:</span></span>
 
-* <span data-ttu-id="b550c-216">向子[`@ref`](xref:mvc/views/razor#ref)元件添加屬性。</span><span class="sxs-lookup"><span data-stu-id="b550c-216">Add an [`@ref`](xref:mvc/views/razor#ref) attribute to the child component.</span></span>
-* <span data-ttu-id="b550c-217">定義與子元件類型相同的欄位。</span><span class="sxs-lookup"><span data-stu-id="b550c-217">Define a field with the same type as the child component.</span></span>
+* <span data-ttu-id="b71cc-216">將[`@ref`](xref:mvc/views/razor#ref)屬性加入至子元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-216">Add an [`@ref`](xref:mvc/views/razor#ref) attribute to the child component.</span></span>
+* <span data-ttu-id="b71cc-217">定義與子元件類型相同的欄位。</span><span class="sxs-lookup"><span data-stu-id="b71cc-217">Define a field with the same type as the child component.</span></span>
 
 ```razor
 <MyLoginDialog @ref="_loginDialog" ... />
@@ -300,23 +300,23 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 }
 ```
 
-<span data-ttu-id="b550c-218">呈現元件時,`_loginDialog`該欄位將填充`MyLoginDialog`子元件實例。</span><span class="sxs-lookup"><span data-stu-id="b550c-218">When the component is rendered, the `_loginDialog` field is populated with the `MyLoginDialog` child component instance.</span></span> <span data-ttu-id="b550c-219">然後,您可以在元件實例上調用 .NET 方法。</span><span class="sxs-lookup"><span data-stu-id="b550c-219">You can then invoke .NET methods on the component instance.</span></span>
+<span data-ttu-id="b71cc-218">當元件呈現時， `_loginDialog`欄位會填入`MyLoginDialog`子元件實例。</span><span class="sxs-lookup"><span data-stu-id="b71cc-218">When the component is rendered, the `_loginDialog` field is populated with the `MyLoginDialog` child component instance.</span></span> <span data-ttu-id="b71cc-219">接著，您可以在元件實例上叫用 .NET 方法。</span><span class="sxs-lookup"><span data-stu-id="b71cc-219">You can then invoke .NET methods on the component instance.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="b550c-220">僅當`_loginDialog`呈現元件及其輸出包括`MyLoginDialog`元素后,才會填充該變數。</span><span class="sxs-lookup"><span data-stu-id="b550c-220">The `_loginDialog` variable is only populated after the component is rendered and its output includes the `MyLoginDialog` element.</span></span> <span data-ttu-id="b550c-221">在那之前,沒有什麼可參考的。</span><span class="sxs-lookup"><span data-stu-id="b550c-221">Until that point, there's nothing to reference.</span></span> <span data-ttu-id="b550c-222">您可以在元件完成呈現後操作元件參考,請使用[On 後 RenderAsync 或 On 後渲染方法](xref:blazor/lifecycle#after-component-render)。</span><span class="sxs-lookup"><span data-stu-id="b550c-222">To manipulate components references after the component has finished rendering, use the [OnAfterRenderAsync or OnAfterRender methods](xref:blazor/lifecycle#after-component-render).</span></span>
+> <span data-ttu-id="b71cc-220">只有`_loginDialog`在轉譯元件之後才會填入變數，而且其輸出會包含`MyLoginDialog`元素。</span><span class="sxs-lookup"><span data-stu-id="b71cc-220">The `_loginDialog` variable is only populated after the component is rendered and its output includes the `MyLoginDialog` element.</span></span> <span data-ttu-id="b71cc-221">直到該點為止，沒有任何可參考的內容。</span><span class="sxs-lookup"><span data-stu-id="b71cc-221">Until that point, there's nothing to reference.</span></span> <span data-ttu-id="b71cc-222">若要在元件完成呈現之後操作元件參考，請使用[OnAfterRenderAsync 或 OnAfterRender 方法](xref:blazor/lifecycle#after-component-render)。</span><span class="sxs-lookup"><span data-stu-id="b71cc-222">To manipulate components references after the component has finished rendering, use the [OnAfterRenderAsync or OnAfterRender methods](xref:blazor/lifecycle#after-component-render).</span></span>
 
-<span data-ttu-id="b550c-223">要參考循環中的元件,請參考[擷取擷取對多個類似子元件(dotnet/aspnetcore #13358) 的參考](https://github.com/dotnet/aspnetcore/issues/13358)。</span><span class="sxs-lookup"><span data-stu-id="b550c-223">To reference components in a loop, see [Capture references to multiple similar child-components (dotnet/aspnetcore #13358)](https://github.com/dotnet/aspnetcore/issues/13358).</span></span>
+<span data-ttu-id="b71cc-223">若要參考迴圈中的元件，請參閱[捕捉多個類似子元件的參考（dotnet/aspnetcore #13358）](https://github.com/dotnet/aspnetcore/issues/13358)。</span><span class="sxs-lookup"><span data-stu-id="b71cc-223">To reference components in a loop, see [Capture references to multiple similar child-components (dotnet/aspnetcore #13358)](https://github.com/dotnet/aspnetcore/issues/13358).</span></span>
 
-<span data-ttu-id="b550c-224">雖然捕獲元件引用使用類似的語法來[捕獲元素引用](xref:blazor/call-javascript-from-dotnet#capture-references-to-elements),但它不是 JAVAScript 互通功能。</span><span class="sxs-lookup"><span data-stu-id="b550c-224">While capturing component references use a similar syntax to [capturing element references](xref:blazor/call-javascript-from-dotnet#capture-references-to-elements), it isn't a JavaScript interop feature.</span></span> <span data-ttu-id="b550c-225">元件引用不會傳遞給僅在 .NET&mdash;代碼 中使用的 JavaScript 代碼。</span><span class="sxs-lookup"><span data-stu-id="b550c-225">Component references aren't passed to JavaScript code&mdash;they're only used in .NET code.</span></span>
+<span data-ttu-id="b71cc-224">雖然捕捉元件參考使用類似的語法來[捕捉元素參考](xref:blazor/call-javascript-from-dotnet#capture-references-to-elements)，但它並不是 JavaScript interop 功能。</span><span class="sxs-lookup"><span data-stu-id="b71cc-224">While capturing component references use a similar syntax to [capturing element references](xref:blazor/call-javascript-from-dotnet#capture-references-to-elements), it isn't a JavaScript interop feature.</span></span> <span data-ttu-id="b71cc-225">元件參考不會傳遞至 JavaScript&mdash;程式碼，而只會在 .net 程式碼中使用。</span><span class="sxs-lookup"><span data-stu-id="b71cc-225">Component references aren't passed to JavaScript code&mdash;they're only used in .NET code.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b550c-226">**請勿**使用元件引用來更改子元件的狀態。</span><span class="sxs-lookup"><span data-stu-id="b550c-226">Do **not** use component references to mutate the state of child components.</span></span> <span data-ttu-id="b550c-227">相反,使用普通聲明性參數將數據傳遞給子元件。</span><span class="sxs-lookup"><span data-stu-id="b550c-227">Instead, use normal declarative parameters to pass data to child components.</span></span> <span data-ttu-id="b550c-228">使用正常聲明性參數會導致子元件在正確時間自動重新呈現。</span><span class="sxs-lookup"><span data-stu-id="b550c-228">Use of normal declarative parameters result in child components that rerender at the correct times automatically.</span></span>
+> <span data-ttu-id="b71cc-226">請勿**使用元件**參考來改變子元件的狀態。</span><span class="sxs-lookup"><span data-stu-id="b71cc-226">Do **not** use component references to mutate the state of child components.</span></span> <span data-ttu-id="b71cc-227">請改用一般宣告式參數，將資料傳遞至子元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-227">Instead, use normal declarative parameters to pass data to child components.</span></span> <span data-ttu-id="b71cc-228">使用一般宣告式參數會導致子元件自動 rerender 正確的時間。</span><span class="sxs-lookup"><span data-stu-id="b71cc-228">Use of normal declarative parameters result in child components that rerender at the correct times automatically.</span></span>
 
-## <a name="invoke-component-methods-externally-to-update-state"></a><span data-ttu-id="b550c-229">外部呼叫元件方法以更新狀態</span><span class="sxs-lookup"><span data-stu-id="b550c-229">Invoke component methods externally to update state</span></span>
+## <a name="invoke-component-methods-externally-to-update-state"></a><span data-ttu-id="b71cc-229">在外部叫用元件方法來更新狀態</span><span class="sxs-lookup"><span data-stu-id="b71cc-229">Invoke component methods externally to update state</span></span>
 
-Blazor<span data-ttu-id="b550c-230">使用`SynchronizationContext`強制執行的單個邏輯線程。</span><span class="sxs-lookup"><span data-stu-id="b550c-230"> uses a `SynchronizationContext` to enforce a single logical thread of execution.</span></span> <span data-ttu-id="b550c-231">元件的[生命週期方法和](xref:blazor/lifecycle)由Blazor引發的任何事件回調都`SynchronizationContext`在此 執行。</span><span class="sxs-lookup"><span data-stu-id="b550c-231">A component's [lifecycle methods](xref:blazor/lifecycle) and any event callbacks that are raised by Blazor are executed on this `SynchronizationContext`.</span></span> <span data-ttu-id="b550c-232">如果必須根據外部事件(如計時器或其他通知)更新元件,請使用方法`InvokeAsync`,該方法將調度到Blazor的`SynchronizationContext`。</span><span class="sxs-lookup"><span data-stu-id="b550c-232">In the event a component must be updated based on an external event, such as a timer or other notifications, use the `InvokeAsync` method, which will dispatch to Blazor's `SynchronizationContext`.</span></span>
+Blazor<span data-ttu-id="b71cc-230">會使用`SynchronizationContext`來強制執行單一邏輯執行緒。</span><span class="sxs-lookup"><span data-stu-id="b71cc-230"> uses a `SynchronizationContext` to enforce a single logical thread of execution.</span></span> <span data-ttu-id="b71cc-231">Blazor會在這個`SynchronizationContext`上執行元件的[生命週期方法](xref:blazor/lifecycle)和所引發的任何事件回呼。</span><span class="sxs-lookup"><span data-stu-id="b71cc-231">A component's [lifecycle methods](xref:blazor/lifecycle) and any event callbacks that are raised by Blazor are executed on this `SynchronizationContext`.</span></span> <span data-ttu-id="b71cc-232">在事件中，必須根據外來事件（例如計時器或其他通知）更新元件，請使用會分派至`InvokeAsync` Blazor的`SynchronizationContext`方法。</span><span class="sxs-lookup"><span data-stu-id="b71cc-232">In the event a component must be updated based on an external event, such as a timer or other notifications, use the `InvokeAsync` method, which will dispatch to Blazor's `SynchronizationContext`.</span></span>
 
-<span data-ttu-id="b550c-233">例如,考慮通知*器服務*,該服務可以通知任何已更新狀態的偵聽元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-233">For example, consider a *notifier service* that can notify any listening component of the updated state:</span></span>
+<span data-ttu-id="b71cc-233">例如，假設有一個通知程式*服務*可通知任何處于已更新狀態的「接聽」元件：</span><span class="sxs-lookup"><span data-stu-id="b71cc-233">For example, consider a *notifier service* that can notify any listening component of the updated state:</span></span>
 
 ```csharp
 public class NotifierService
@@ -334,21 +334,21 @@ public class NotifierService
 }
 ```
 
-<span data-ttu-id="b550c-234">註冊為`NotifierService`單項:</span><span class="sxs-lookup"><span data-stu-id="b550c-234">Register the `NotifierService` as a singletion:</span></span>
+<span data-ttu-id="b71cc-234">將註冊`NotifierService`為 singletion：</span><span class="sxs-lookup"><span data-stu-id="b71cc-234">Register the `NotifierService` as a singletion:</span></span>
 
-* <span data-ttu-id="b550c-235">在BlazorWebAssembly 中`Program.Main`,在 中註冊服務:</span><span class="sxs-lookup"><span data-stu-id="b550c-235">In Blazor WebAssembly, register the service in `Program.Main`:</span></span>
+* <span data-ttu-id="b71cc-235">在Blazor WebAssembly 中，于中`Program.Main`註冊服務：</span><span class="sxs-lookup"><span data-stu-id="b71cc-235">In Blazor WebAssembly, register the service in `Program.Main`:</span></span>
 
   ```csharp
   builder.Services.AddSingleton<NotifierService>();
   ```
 
-* <span data-ttu-id="b550c-236">在Blazor「伺服器」中,`Startup.ConfigureServices`在中註冊服務:</span><span class="sxs-lookup"><span data-stu-id="b550c-236">In Blazor Server, register the service in `Startup.ConfigureServices`:</span></span>
+* <span data-ttu-id="b71cc-236">在Blazor [伺服器] 中，于`Startup.ConfigureServices`註冊服務：</span><span class="sxs-lookup"><span data-stu-id="b71cc-236">In Blazor Server, register the service in `Startup.ConfigureServices`:</span></span>
 
   ```csharp
   services.AddSingleton<NotifierService>();
   ```
 
-<span data-ttu-id="b550c-237">使用`NotifierService`更新元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-237">Use the `NotifierService` to update a component:</span></span>
+<span data-ttu-id="b71cc-237">使用`NotifierService`來更新元件：</span><span class="sxs-lookup"><span data-stu-id="b71cc-237">Use the `NotifierService` to update a component:</span></span>
 
 ```razor
 @page "/"
@@ -381,13 +381,13 @@ public class NotifierService
 }
 ```
 
-<span data-ttu-id="b550c-238">在前面的`NotifierService`範例中,呼叫元件`OnNotify`的方法以外的Blazor `SynchronizationContext` '</span><span class="sxs-lookup"><span data-stu-id="b550c-238">In the preceding example, `NotifierService` invokes the component's `OnNotify` method outside of Blazor's `SynchronizationContext`.</span></span> <span data-ttu-id="b550c-239">`InvokeAsync`用於切換到正確的上下文並排隊渲染。</span><span class="sxs-lookup"><span data-stu-id="b550c-239">`InvokeAsync` is used to switch to the correct context and queue a render.</span></span>
+<span data-ttu-id="b71cc-238">在上述範例中， `NotifierService`會叫用位於`OnNotify`的之外Blazor的元件`SynchronizationContext`方法。</span><span class="sxs-lookup"><span data-stu-id="b71cc-238">In the preceding example, `NotifierService` invokes the component's `OnNotify` method outside of Blazor's `SynchronizationContext`.</span></span> <span data-ttu-id="b71cc-239">`InvokeAsync`用來切換至正確的內容，並將轉譯排入佇列。</span><span class="sxs-lookup"><span data-stu-id="b71cc-239">`InvokeAsync` is used to switch to the correct context and queue a render.</span></span>
 
-## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a><span data-ttu-id="b550c-240">使用\@鍵控制元素與元件的保留</span><span class="sxs-lookup"><span data-stu-id="b550c-240">Use \@key to control the preservation of elements and components</span></span>
+## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a><span data-ttu-id="b71cc-240">使用\@金鑰來控制元素和元件的保留</span><span class="sxs-lookup"><span data-stu-id="b71cc-240">Use \@key to control the preservation of elements and components</span></span>
 
-<span data-ttu-id="b550c-241">在呈現元素或元件的清單以及隨後更改的元素或元件時,Blazor其擴散演演演算法必須決定保留以前的元素或元件中的哪些元素或元件,以及模型物件應該如何映射到它們。</span><span class="sxs-lookup"><span data-stu-id="b550c-241">When rendering a list of elements or components and the elements or components subsequently change, Blazor's diffing algorithm must decide which of the previous elements or components can be retained and how model objects should map to them.</span></span> <span data-ttu-id="b550c-242">通常,此過程是自動的,可以忽略,但在某些情況下,您可能需要控制該過程。</span><span class="sxs-lookup"><span data-stu-id="b550c-242">Normally, this process is automatic and can be ignored, but there are cases where you may want to control the process.</span></span>
+<span data-ttu-id="b71cc-241">當轉譯專案或元件清單，以及後續變更的專案或元件時， Blazor的比較演算法必須決定哪些先前的專案或元件可以保留，以及模型物件應如何對應至這些專案。</span><span class="sxs-lookup"><span data-stu-id="b71cc-241">When rendering a list of elements or components and the elements or components subsequently change, Blazor's diffing algorithm must decide which of the previous elements or components can be retained and how model objects should map to them.</span></span> <span data-ttu-id="b71cc-242">一般來說，此程式是自動的，可以忽略，但在某些情況下，您可能會想要控制進程。</span><span class="sxs-lookup"><span data-stu-id="b71cc-242">Normally, this process is automatic and can be ignored, but there are cases where you may want to control the process.</span></span>
 
-<span data-ttu-id="b550c-243">請考慮下列範例：</span><span class="sxs-lookup"><span data-stu-id="b550c-243">Consider the following example:</span></span>
+<span data-ttu-id="b71cc-243">請考慮下列範例：</span><span class="sxs-lookup"><span data-stu-id="b71cc-243">Consider the following example:</span></span>
 
 ```csharp
 @foreach (var person in People)
@@ -401,9 +401,9 @@ public class NotifierService
 }
 ```
 
-<span data-ttu-id="b550c-244">`People`集合的內容可能會隨著插入、刪除或重新排序的條目而更改。</span><span class="sxs-lookup"><span data-stu-id="b550c-244">The contents of the `People` collection may change with inserted, deleted, or re-ordered entries.</span></span> <span data-ttu-id="b550c-245">當元件重新成成成時`<DetailsEditor>`, 元件可能會更改為接收`Details`不同的 參數值。</span><span class="sxs-lookup"><span data-stu-id="b550c-245">When the component rerenders, the `<DetailsEditor>` component may change to receive different `Details` parameter values.</span></span> <span data-ttu-id="b550c-246">這可能導致比預期更複雜的重新渲染。</span><span class="sxs-lookup"><span data-stu-id="b550c-246">This may cause more complex rerendering than expected.</span></span> <span data-ttu-id="b550c-247">在某些情況下,重新渲染可能會導致明顯的行為差異,例如元素焦點丟失。</span><span class="sxs-lookup"><span data-stu-id="b550c-247">In some cases, rerendering can lead to visible behavior differences, such as lost element focus.</span></span>
+<span data-ttu-id="b71cc-244">`People`集合的內容可能會隨著插入、刪除或重新排序的專案而變更。</span><span class="sxs-lookup"><span data-stu-id="b71cc-244">The contents of the `People` collection may change with inserted, deleted, or re-ordered entries.</span></span> <span data-ttu-id="b71cc-245">當元件 rerenders 時， `<DetailsEditor>`元件可能會變更以接收不同`Details`的參數值。</span><span class="sxs-lookup"><span data-stu-id="b71cc-245">When the component rerenders, the `<DetailsEditor>` component may change to receive different `Details` parameter values.</span></span> <span data-ttu-id="b71cc-246">這可能會導致比預期更複雜的 rerendering。</span><span class="sxs-lookup"><span data-stu-id="b71cc-246">This may cause more complex rerendering than expected.</span></span> <span data-ttu-id="b71cc-247">在某些情況下，rerendering 可能會導致可見的行為差異，例如失去元素的焦點。</span><span class="sxs-lookup"><span data-stu-id="b71cc-247">In some cases, rerendering can lead to visible behavior differences, such as lost element focus.</span></span>
 
-<span data-ttu-id="b550c-248">可以使用[`@key`](xref:mvc/views/razor#key)指令屬性控制映射過程。</span><span class="sxs-lookup"><span data-stu-id="b550c-248">The mapping process can be controlled with the [`@key`](xref:mvc/views/razor#key) directive attribute.</span></span> <span data-ttu-id="b550c-249">`@key`使擴散演算法保證根據鍵的值保留元素或元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-249">`@key` causes the diffing algorithm to guarantee preservation of elements or components based on the key's value:</span></span>
+<span data-ttu-id="b71cc-248">您可以使用[`@key`](xref:mvc/views/razor#key)指示詞屬性來控制對應進程。</span><span class="sxs-lookup"><span data-stu-id="b71cc-248">The mapping process can be controlled with the [`@key`](xref:mvc/views/razor#key) directive attribute.</span></span> <span data-ttu-id="b71cc-249">`@key`導致比較演算法根據索引鍵的值，保證保留元素或元件：</span><span class="sxs-lookup"><span data-stu-id="b71cc-249">`@key` causes the diffing algorithm to guarantee preservation of elements or components based on the key's value:</span></span>
 
 ```csharp
 @foreach (var person in People)
@@ -417,22 +417,22 @@ public class NotifierService
 }
 ```
 
-<span data-ttu-id="b550c-250">當`People`集合變更時,擴散演演演算法將`<DetailsEditor>``person`保留實例和 實體之間的關聯:</span><span class="sxs-lookup"><span data-stu-id="b550c-250">When the `People` collection changes, the diffing algorithm retains the association between `<DetailsEditor>` instances and `person` instances:</span></span>
+<span data-ttu-id="b71cc-250">當`People`集合變更時，比較演算法會保留實例和`<DetailsEditor>` `person`實例之間的關聯：</span><span class="sxs-lookup"><span data-stu-id="b71cc-250">When the `People` collection changes, the diffing algorithm retains the association between `<DetailsEditor>` instances and `person` instances:</span></span>
 
-* <span data-ttu-id="b550c-251">如果從`Person``People`清單中刪除了 , 則`<DetailsEditor>`僅從 UI 中刪除相應的實例。</span><span class="sxs-lookup"><span data-stu-id="b550c-251">If a `Person` is deleted from the `People` list, only the corresponding `<DetailsEditor>` instance is removed from the UI.</span></span> <span data-ttu-id="b550c-252">其他實例保持不變。</span><span class="sxs-lookup"><span data-stu-id="b550c-252">Other instances are left unchanged.</span></span>
-* <span data-ttu-id="b550c-253">如果將`Person`插入到清單中的某個位置,則在相應的`<DetailsEditor>`位置 插入一個新實例。</span><span class="sxs-lookup"><span data-stu-id="b550c-253">If a `Person` is inserted at some position in the list, one new `<DetailsEditor>` instance is inserted at that corresponding position.</span></span> <span data-ttu-id="b550c-254">其他實例保持不變。</span><span class="sxs-lookup"><span data-stu-id="b550c-254">Other instances are left unchanged.</span></span>
-* <span data-ttu-id="b550c-255">如果`Person`重新排序了條目,則`<DetailsEditor>`相應的 實例將保留並在 UI 中重新排序。</span><span class="sxs-lookup"><span data-stu-id="b550c-255">If `Person` entries are re-ordered, the corresponding `<DetailsEditor>` instances are preserved and re-ordered in the UI.</span></span>
+* <span data-ttu-id="b71cc-251">`Person`如果從`People`清單中刪除，則只會從 UI `<DetailsEditor>`移除對應的實例。</span><span class="sxs-lookup"><span data-stu-id="b71cc-251">If a `Person` is deleted from the `People` list, only the corresponding `<DetailsEditor>` instance is removed from the UI.</span></span> <span data-ttu-id="b71cc-252">其他實例則保持不變。</span><span class="sxs-lookup"><span data-stu-id="b71cc-252">Other instances are left unchanged.</span></span>
+* <span data-ttu-id="b71cc-253">`Person`如果在清單中的某個位置插入，則會在對應`<DetailsEditor>`的位置插入一個新的實例。</span><span class="sxs-lookup"><span data-stu-id="b71cc-253">If a `Person` is inserted at some position in the list, one new `<DetailsEditor>` instance is inserted at that corresponding position.</span></span> <span data-ttu-id="b71cc-254">其他實例則保持不變。</span><span class="sxs-lookup"><span data-stu-id="b71cc-254">Other instances are left unchanged.</span></span>
+* <span data-ttu-id="b71cc-255">如果`Person`重新排序專案，則會保留對應`<DetailsEditor>`的實例，並在 UI 中重新排序。</span><span class="sxs-lookup"><span data-stu-id="b71cc-255">If `Person` entries are re-ordered, the corresponding `<DetailsEditor>` instances are preserved and re-ordered in the UI.</span></span>
 
-<span data-ttu-id="b550c-256">在某些情況下,使用`@key`可最大程度地降低重新渲染的複雜性,並避免 DOM 的有狀態部分(如焦點位置)發生潛在問題。</span><span class="sxs-lookup"><span data-stu-id="b550c-256">In some scenarios, use of `@key` minimizes the complexity of rerendering and avoids potential issues with stateful parts of the DOM changing, such as focus position.</span></span>
+<span data-ttu-id="b71cc-256">在某些情況下，使用`@key`可將 rerendering 的複雜性降到最低，並避免 DOM 的具狀態部分可能發生的問題，例如焦點位置。</span><span class="sxs-lookup"><span data-stu-id="b71cc-256">In some scenarios, use of `@key` minimizes the complexity of rerendering and avoids potential issues with stateful parts of the DOM changing, such as focus position.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="b550c-257">鍵是每個容器元素或元件的本地。</span><span class="sxs-lookup"><span data-stu-id="b550c-257">Keys are local to each container element or component.</span></span> <span data-ttu-id="b550c-258">不會跨文檔全域比較密鑰。</span><span class="sxs-lookup"><span data-stu-id="b550c-258">Keys aren't compared globally across the document.</span></span>
+> <span data-ttu-id="b71cc-257">索引鍵在每個容器元素或元件的本機。</span><span class="sxs-lookup"><span data-stu-id="b71cc-257">Keys are local to each container element or component.</span></span> <span data-ttu-id="b71cc-258">金鑰不會在檔之間進行全域比較。</span><span class="sxs-lookup"><span data-stu-id="b71cc-258">Keys aren't compared globally across the document.</span></span>
 
-### <a name="when-to-use-key"></a><span data-ttu-id="b550c-259">何時使用\@金鑰</span><span class="sxs-lookup"><span data-stu-id="b550c-259">When to use \@key</span></span>
+### <a name="when-to-use-key"></a><span data-ttu-id="b71cc-259">使用\@金鑰的時機</span><span class="sxs-lookup"><span data-stu-id="b71cc-259">When to use \@key</span></span>
 
-<span data-ttu-id="b550c-260">通常,每當呈現清單(例如`@key`,在`@foreach`塊中)並且存在合適的值來定義`@key`時 ,使用 都有意義。</span><span class="sxs-lookup"><span data-stu-id="b550c-260">Typically, it makes sense to use `@key` whenever a list is rendered (for example, in a `@foreach` block) and a suitable value exists to define the `@key`.</span></span>
+<span data-ttu-id="b71cc-260">一般來說，每當轉譯清單（例如`@key` ，在`@foreach`區塊中），而且有適合的值來定義時，就有合理的`@key`使用方式。</span><span class="sxs-lookup"><span data-stu-id="b71cc-260">Typically, it makes sense to use `@key` whenever a list is rendered (for example, in a `@foreach` block) and a suitable value exists to define the `@key`.</span></span>
 
-<span data-ttu-id="b550c-261">您還可以使用`@key`Blazor防止 在物件變更時保留元素或元件子樹:</span><span class="sxs-lookup"><span data-stu-id="b550c-261">You can also use `@key` to prevent Blazor from preserving an element or component subtree when an object changes:</span></span>
+<span data-ttu-id="b71cc-261">當物件變更時`@key` ，您Blazor也可以使用來防止保留元素或元件子樹：</span><span class="sxs-lookup"><span data-stu-id="b71cc-261">You can also use `@key` to prevent Blazor from preserving an element or component subtree when an object changes:</span></span>
 
 ```razor
 <div @key="currentPerson">
@@ -440,36 +440,36 @@ public class NotifierService
 </div>
 ```
 
-<span data-ttu-id="b550c-262">如果`@currentPerson`發生變更`@key`, 屬性Blazor指令將`<div>`強制放棄整個 及其後代,並在 UI 中使用新元素和元件重建子樹。</span><span class="sxs-lookup"><span data-stu-id="b550c-262">If `@currentPerson` changes, the `@key` attribute directive forces Blazor to discard the entire `<div>` and its descendants and rebuild the subtree within the UI with new elements and components.</span></span> <span data-ttu-id="b550c-263">如果需要保證在更改時`@currentPerson`不保留任何 UI 狀態,則此功能非常有用。</span><span class="sxs-lookup"><span data-stu-id="b550c-263">This can be useful if you need to guarantee that no UI state is preserved when `@currentPerson` changes.</span></span>
+<span data-ttu-id="b71cc-262">如果`@currentPerson`變更， `@key` attribute 指示詞會Blazor強制捨棄整個`<div>`及其下階，並使用新的元素和元件重建 UI 內的子樹。</span><span class="sxs-lookup"><span data-stu-id="b71cc-262">If `@currentPerson` changes, the `@key` attribute directive forces Blazor to discard the entire `<div>` and its descendants and rebuild the subtree within the UI with new elements and components.</span></span> <span data-ttu-id="b71cc-263">如果您需要保證變更時`@currentPerson`不會保留任何 UI 狀態，這會很有用。</span><span class="sxs-lookup"><span data-stu-id="b71cc-263">This can be useful if you need to guarantee that no UI state is preserved when `@currentPerson` changes.</span></span>
 
-### <a name="when-not-to-use-key"></a><span data-ttu-id="b550c-264">何時不使用\@鍵</span><span class="sxs-lookup"><span data-stu-id="b550c-264">When not to use \@key</span></span>
+### <a name="when-not-to-use-key"></a><span data-ttu-id="b71cc-264">不使用\@金鑰的時機</span><span class="sxs-lookup"><span data-stu-id="b71cc-264">When not to use \@key</span></span>
 
-<span data-ttu-id="b550c-265">與`@key`時發生梭差會有性能成本。</span><span class="sxs-lookup"><span data-stu-id="b550c-265">There's a performance cost when diffing with `@key`.</span></span> <span data-ttu-id="b550c-266">性能成本並不大,但僅指定`@key`控制元素或元件保留規則是否有利於應用。</span><span class="sxs-lookup"><span data-stu-id="b550c-266">The performance cost isn't large, but only specify `@key` if controlling the element or component preservation rules benefit the app.</span></span>
+<span data-ttu-id="b71cc-265">與`@key`比較時，會產生效能成本。</span><span class="sxs-lookup"><span data-stu-id="b71cc-265">There's a performance cost when diffing with `@key`.</span></span> <span data-ttu-id="b71cc-266">效能成本並不大，但只會`@key`指定控制元素或元件保留規則是否能讓應用程式受益。</span><span class="sxs-lookup"><span data-stu-id="b71cc-266">The performance cost isn't large, but only specify `@key` if controlling the element or component preservation rules benefit the app.</span></span>
 
-<span data-ttu-id="b550c-267">即使`@key`不使用Blazor, 也會盡可能保留子元素和元件實例。</span><span class="sxs-lookup"><span data-stu-id="b550c-267">Even if `@key` isn't used, Blazor preserves child element and component instances as much as possible.</span></span> <span data-ttu-id="b550c-268">使用`@key`的唯一優點是控制模型實例*如何*映射到保留的元件實例,而不是選擇映射的擴散演演演算法。</span><span class="sxs-lookup"><span data-stu-id="b550c-268">The only advantage to using `@key` is control over *how* model instances are mapped to the preserved component instances, instead of the diffing algorithm selecting the mapping.</span></span>
+<span data-ttu-id="b71cc-267">即使`@key`未使用， Blazor也會盡可能保留子項目和元件實例。</span><span class="sxs-lookup"><span data-stu-id="b71cc-267">Even if `@key` isn't used, Blazor preserves child element and component instances as much as possible.</span></span> <span data-ttu-id="b71cc-268">使用的唯一優點是`@key`控制模型實例*如何*對應至保留的元件實例，而不是用來選取對應的比較演算法。</span><span class="sxs-lookup"><span data-stu-id="b71cc-268">The only advantage to using `@key` is control over *how* model instances are mapped to the preserved component instances, instead of the diffing algorithm selecting the mapping.</span></span>
 
-### <a name="what-values-to-use-for-key"></a><span data-ttu-id="b550c-269">鍵使用\@的值</span><span class="sxs-lookup"><span data-stu-id="b550c-269">What values to use for \@key</span></span>
+### <a name="what-values-to-use-for-key"></a><span data-ttu-id="b71cc-269">要用於金鑰的\@值</span><span class="sxs-lookup"><span data-stu-id="b71cc-269">What values to use for \@key</span></span>
 
-<span data-ttu-id="b550c-270">通常,為`@key`:</span><span class="sxs-lookup"><span data-stu-id="b550c-270">Generally, it makes sense to supply one of the following kinds of value for `@key`:</span></span>
+<span data-ttu-id="b71cc-270">一般來說，提供下列其中一種類型的值是合理的`@key`：</span><span class="sxs-lookup"><span data-stu-id="b71cc-270">Generally, it makes sense to supply one of the following kinds of value for `@key`:</span></span>
 
-* <span data-ttu-id="b550c-271">對物件實例建模(例如,如前面的`Person`示例中所示的實例)。</span><span class="sxs-lookup"><span data-stu-id="b550c-271">Model object instances (for example, a `Person` instance as in the earlier example).</span></span> <span data-ttu-id="b550c-272">這可確保基於物件引用相等性保存。</span><span class="sxs-lookup"><span data-stu-id="b550c-272">This ensures preservation based on object reference equality.</span></span>
-* <span data-ttu-id="b550c-273">唯一識別碼(例如,類型的主要`int`鍵值`string``Guid`。</span><span class="sxs-lookup"><span data-stu-id="b550c-273">Unique identifiers (for example, primary key values of type `int`, `string`, or `Guid`).</span></span>
+* <span data-ttu-id="b71cc-271">模型物件實例（例如，如先前`Person`範例所示的實例）。</span><span class="sxs-lookup"><span data-stu-id="b71cc-271">Model object instances (for example, a `Person` instance as in the earlier example).</span></span> <span data-ttu-id="b71cc-272">這可確保根據物件參考的相等性進行保留。</span><span class="sxs-lookup"><span data-stu-id="b71cc-272">This ensures preservation based on object reference equality.</span></span>
+* <span data-ttu-id="b71cc-273">唯一識別碼（例如，、或`int` `string` `Guid`類型的主要索引鍵值）。</span><span class="sxs-lookup"><span data-stu-id="b71cc-273">Unique identifiers (for example, primary key values of type `int`, `string`, or `Guid`).</span></span>
 
-<span data-ttu-id="b550c-274">確保用於的值`@key`不衝突。</span><span class="sxs-lookup"><span data-stu-id="b550c-274">Ensure that values used for `@key` don't clash.</span></span> <span data-ttu-id="b550c-275">如果在同一父元素中檢測到衝突值,則Blazor引發異常,因為它無法確定將舊元素或元件映射到新元素或元件。</span><span class="sxs-lookup"><span data-stu-id="b550c-275">If clashing values are detected within the same parent element, Blazor throws an exception because it can't deterministically map old elements or components to new elements or components.</span></span> <span data-ttu-id="b550c-276">僅使用不同的值,如物件實例或主鍵值。</span><span class="sxs-lookup"><span data-stu-id="b550c-276">Only use distinct values, such as object instances or primary key values.</span></span>
+<span data-ttu-id="b71cc-274">請確定用於的值`@key`不會造成衝突。</span><span class="sxs-lookup"><span data-stu-id="b71cc-274">Ensure that values used for `@key` don't clash.</span></span> <span data-ttu-id="b71cc-275">如果在相同的父元素中偵測到衝突值Blazor ，則會擲回例外狀況，因為它無法以決定性的方式將舊專案或元件對應到新的專案或元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-275">If clashing values are detected within the same parent element, Blazor throws an exception because it can't deterministically map old elements or components to new elements or components.</span></span> <span data-ttu-id="b71cc-276">只使用不同的值，例如物件實例或主鍵值。</span><span class="sxs-lookup"><span data-stu-id="b71cc-276">Only use distinct values, such as object instances or primary key values.</span></span>
 
-## <a name="dont-create-components-that-write-to-their-own-parameter-properties"></a><span data-ttu-id="b550c-277">不要建立寫入其自身參數屬性的元件</span><span class="sxs-lookup"><span data-stu-id="b550c-277">Don't create components that write to their own parameter properties</span></span>
+## <a name="dont-create-components-that-write-to-their-own-parameter-properties"></a><span data-ttu-id="b71cc-277">不要建立會寫入自己的參數屬性的元件</span><span class="sxs-lookup"><span data-stu-id="b71cc-277">Don't create components that write to their own parameter properties</span></span>
 
-<span data-ttu-id="b550c-278">參數在以下條件下被覆寫:</span><span class="sxs-lookup"><span data-stu-id="b550c-278">Parameters are overwritten under the following conditions:</span></span>
+<span data-ttu-id="b71cc-278">在下列情況下，會覆寫參數：</span><span class="sxs-lookup"><span data-stu-id="b71cc-278">Parameters are overwritten under the following conditions:</span></span>
 
-* <span data-ttu-id="b550c-279">子元件的內容使用 呈現。 `RenderFragment`</span><span class="sxs-lookup"><span data-stu-id="b550c-279">A child component's content is rendered with a `RenderFragment`.</span></span>
-* <span data-ttu-id="b550c-280"><xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>在父元件中調用。</span><span class="sxs-lookup"><span data-stu-id="b550c-280"><xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> is called in the parent component.</span></span>
+* <span data-ttu-id="b71cc-279">子元件的內容會以呈現`RenderFragment`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-279">A child component's content is rendered with a `RenderFragment`.</span></span>
+* <span data-ttu-id="b71cc-280"><xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>在父元件中呼叫。</span><span class="sxs-lookup"><span data-stu-id="b71cc-280"><xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> is called in the parent component.</span></span>
 
-<span data-ttu-id="b550c-281">參數被重置,因為調用時<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>父元件重新呈現,並且向子元件提供了新的參數值。</span><span class="sxs-lookup"><span data-stu-id="b550c-281">Parameters are reset because the parent component rerenders when <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> is called and new parameter values are supplied to the child component.</span></span>
+<span data-ttu-id="b71cc-281">參數會重設，因為呼叫時會<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> rerenders 父元件，並將新的參數值提供給子元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-281">Parameters are reset because the parent component rerenders when <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> is called and new parameter values are supplied to the child component.</span></span>
 
-<span data-ttu-id="b550c-282">請考慮以下`Expander`元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-282">Consider the following `Expander` component that:</span></span>
+<span data-ttu-id="b71cc-282">請考慮下列`Expander`元件：</span><span class="sxs-lookup"><span data-stu-id="b71cc-282">Consider the following `Expander` component that:</span></span>
 
-* <span data-ttu-id="b550c-283">渲染子內容。</span><span class="sxs-lookup"><span data-stu-id="b550c-283">Renders child content.</span></span>
-* <span data-ttu-id="b550c-284">切換顯示具有元件參數的子內容。</span><span class="sxs-lookup"><span data-stu-id="b550c-284">Toggles showing child content with a component parameter.</span></span>
+* <span data-ttu-id="b71cc-283">呈現子內容。</span><span class="sxs-lookup"><span data-stu-id="b71cc-283">Renders child content.</span></span>
+* <span data-ttu-id="b71cc-284">使用元件參數來顯示子內容的切換。</span><span class="sxs-lookup"><span data-stu-id="b71cc-284">Toggles showing child content with a component parameter.</span></span>
 
 ```razor
 <div @onclick="@Toggle">
@@ -495,7 +495,7 @@ public class NotifierService
 }
 ```
 
-<span data-ttu-id="b550c-285">此`Expander`元件將新增到可能呼叫`StateHasChanged`的父元件中:</span><span class="sxs-lookup"><span data-stu-id="b550c-285">The `Expander` component is added to a parent component that may call `StateHasChanged`:</span></span>
+<span data-ttu-id="b71cc-285">`Expander`元件會新增至可能呼叫`StateHasChanged`的父元件：</span><span class="sxs-lookup"><span data-stu-id="b71cc-285">The `Expander` component is added to a parent component that may call `StateHasChanged`:</span></span>
 
 ```razor
 <Expander Expanded="true">
@@ -509,15 +509,15 @@ public class NotifierService
 </button>
 ```
 
-<span data-ttu-id="b550c-286">最初,當`Expander`元件的屬性切換時,它們`Expanded`的行為是獨立的。</span><span class="sxs-lookup"><span data-stu-id="b550c-286">Initially, the `Expander` components behave independently when their `Expanded` properties are toggled.</span></span> <span data-ttu-id="b550c-287">子元件按預期保持其狀態。</span><span class="sxs-lookup"><span data-stu-id="b550c-287">The child components maintain their states as expected.</span></span> <span data-ttu-id="b550c-288">在`StateHasChanged`父級中調用時,`Expanded`第一個子元件的參數將重置回其初始值 ()。`true`</span><span class="sxs-lookup"><span data-stu-id="b550c-288">When `StateHasChanged` is called in the parent, the `Expanded` parameter of the first child component is reset back to its initial value (`true`).</span></span> <span data-ttu-id="b550c-289">第二`Expander`個元件`Expanded`的值不會重置,因為第二個元件中沒有呈現子內容。</span><span class="sxs-lookup"><span data-stu-id="b550c-289">The second `Expander` component's `Expanded` value isn't reset because no child content is rendered in the second component.</span></span>
+<span data-ttu-id="b71cc-286">一開始， `Expander`元件會在其`Expanded`屬性切換時獨立行為。</span><span class="sxs-lookup"><span data-stu-id="b71cc-286">Initially, the `Expander` components behave independently when their `Expanded` properties are toggled.</span></span> <span data-ttu-id="b71cc-287">子元件會如預期般維護其狀態。</span><span class="sxs-lookup"><span data-stu-id="b71cc-287">The child components maintain their states as expected.</span></span> <span data-ttu-id="b71cc-288">在`StateHasChanged`父系中呼叫時，第一個`Expanded`子元件的參數會重設回其初始值（`true`）。</span><span class="sxs-lookup"><span data-stu-id="b71cc-288">When `StateHasChanged` is called in the parent, the `Expanded` parameter of the first child component is reset back to its initial value (`true`).</span></span> <span data-ttu-id="b71cc-289">第二`Expander`個元件`Expanded`的值不會重設，因為第二個元件中不會轉譯任何子內容。</span><span class="sxs-lookup"><span data-stu-id="b71cc-289">The second `Expander` component's `Expanded` value isn't reset because no child content is rendered in the second component.</span></span>
 
-<span data-ttu-id="b550c-290">要在上述方案中保持狀態,請使用元件`Expander`中的*私有欄位*來保持其切換狀態。</span><span class="sxs-lookup"><span data-stu-id="b550c-290">To maintain state in the preceding scenario, use a *private field* in the `Expander` component to maintain its toggled state.</span></span>
+<span data-ttu-id="b71cc-290">若要維護上述案例中的狀態，請*private field*使用`Expander`元件中的私用欄位來維護其切換狀態。</span><span class="sxs-lookup"><span data-stu-id="b71cc-290">To maintain state in the preceding scenario, use a *private field* in the `Expander` component to maintain its toggled state.</span></span>
 
-<span data-ttu-id="b550c-291">以下`Expander`元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-291">The following `Expander` component:</span></span>
+<span data-ttu-id="b71cc-291">下列`Expander`元件：</span><span class="sxs-lookup"><span data-stu-id="b71cc-291">The following `Expander` component:</span></span>
 
-* <span data-ttu-id="b550c-292">接受父`Expanded`級的元件參數值。</span><span class="sxs-lookup"><span data-stu-id="b550c-292">Accepts the `Expanded` component parameter value from the parent.</span></span>
-* <span data-ttu-id="b550c-293">將元件參數值分配到[On 初始化事件中](xref:blazor/lifecycle#component-initialization-methods)的*專用欄位*`_expanded`() 。</span><span class="sxs-lookup"><span data-stu-id="b550c-293">Assigns the component parameter value to a *private field* (`_expanded`) in the [OnInitialized event](xref:blazor/lifecycle#component-initialization-methods).</span></span>
-* <span data-ttu-id="b550c-294">使用專用欄位保持其內部切換狀態。</span><span class="sxs-lookup"><span data-stu-id="b550c-294">Uses the private field to maintain its internal toggle state.</span></span>
+* <span data-ttu-id="b71cc-292">接受來自`Expanded`父系的元件參數值。</span><span class="sxs-lookup"><span data-stu-id="b71cc-292">Accepts the `Expanded` component parameter value from the parent.</span></span>
+* <span data-ttu-id="b71cc-293">將元件參數值指派給[OnInitialized 事件](xref:blazor/lifecycle#component-initialization-methods)中的`_expanded`私用*欄位*（）。</span><span class="sxs-lookup"><span data-stu-id="b71cc-293">Assigns the component parameter value to a *private field* (`_expanded`) in the [OnInitialized event](xref:blazor/lifecycle#component-initialization-methods).</span></span>
+* <span data-ttu-id="b71cc-294">會使用私用欄位來維護其內部切換狀態。</span><span class="sxs-lookup"><span data-stu-id="b71cc-294">Uses the private field to maintain its internal toggle state.</span></span>
 
 ```razor
 <div @onclick="@Toggle">
@@ -550,16 +550,16 @@ public class NotifierService
 }
 ```
 
-## <a name="partial-class-support"></a><span data-ttu-id="b550c-295">部分類別支援</span><span class="sxs-lookup"><span data-stu-id="b550c-295">Partial class support</span></span>
+## <a name="partial-class-support"></a><span data-ttu-id="b71cc-295">部分類別支援</span><span class="sxs-lookup"><span data-stu-id="b71cc-295">Partial class support</span></span>
 
-<span data-ttu-id="b550c-296">剃刀元件作為部分類生成。</span><span class="sxs-lookup"><span data-stu-id="b550c-296">Razor components are generated as partial classes.</span></span> <span data-ttu-id="b550c-297">剃刀元件使用以下任一方法創作:</span><span class="sxs-lookup"><span data-stu-id="b550c-297">Razor components are authored using either of the following approaches:</span></span>
+<span data-ttu-id="b71cc-296">Razor 元件是以部分類別的形式產生。</span><span class="sxs-lookup"><span data-stu-id="b71cc-296">Razor components are generated as partial classes.</span></span> <span data-ttu-id="b71cc-297">Razor 元件是使用下列其中一種方法來撰寫的：</span><span class="sxs-lookup"><span data-stu-id="b71cc-297">Razor components are authored using either of the following approaches:</span></span>
 
-* <span data-ttu-id="b550c-298">C# 程式碼[`@code`](xref:mvc/views/razor#code)在塊中定義,在單個檔中包含 HTML 標記和 Razor 程式碼。</span><span class="sxs-lookup"><span data-stu-id="b550c-298">C# code is defined in an [`@code`](xref:mvc/views/razor#code) block with HTML markup and Razor code in a single file.</span></span> Blazor<span data-ttu-id="b550c-299">樣本使用此方法定義其 Razor 元件。</span><span class="sxs-lookup"><span data-stu-id="b550c-299"> templates define their Razor components using this approach.</span></span>
-* <span data-ttu-id="b550c-300">C# 程式碼放置在定義為部分類的代碼後面檔中。</span><span class="sxs-lookup"><span data-stu-id="b550c-300">C# code is placed in a code-behind file defined as a partial class.</span></span>
+* <span data-ttu-id="b71cc-298">C # 程式碼定義于[`@code`](xref:mvc/views/razor#code)區塊中，並在單一檔案中使用 HTML 標籤和 Razor 程式碼。</span><span class="sxs-lookup"><span data-stu-id="b71cc-298">C# code is defined in an [`@code`](xref:mvc/views/razor#code) block with HTML markup and Razor code in a single file.</span></span> Blazor<span data-ttu-id="b71cc-299">範本會使用這種方法來定義其 Razor 元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-299"> templates define their Razor components using this approach.</span></span>
+* <span data-ttu-id="b71cc-300">C # 程式碼會放在定義為部分類別的程式碼後置檔案中。</span><span class="sxs-lookup"><span data-stu-id="b71cc-300">C# code is placed in a code-behind file defined as a partial class.</span></span>
 
-<span data-ttu-id="b550c-301">下面的範例顯示從範本生成的`Counter`應用中`@code`具有塊Blazor的 預設元件。</span><span class="sxs-lookup"><span data-stu-id="b550c-301">The following example shows the default `Counter` component with an `@code` block in an app generated from a Blazor template.</span></span> <span data-ttu-id="b550c-302">HTML 標籤、Razor 代碼與 C# 程式碼位於同一檔中:</span><span class="sxs-lookup"><span data-stu-id="b550c-302">HTML markup, Razor code, and C# code are in the same file:</span></span>
+<span data-ttu-id="b71cc-301">下列範例顯示在從`Counter` `@code` Blazor範本產生的應用程式中具有區塊的預設元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-301">The following example shows the default `Counter` component with an `@code` block in an app generated from a Blazor template.</span></span> <span data-ttu-id="b71cc-302">HTML 標籤、Razor 程式碼和 c # 程式碼位於相同的檔案中：</span><span class="sxs-lookup"><span data-stu-id="b71cc-302">HTML markup, Razor code, and C# code are in the same file:</span></span>
 
-<span data-ttu-id="b550c-303">*計數器.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-303">*Counter.razor*:</span></span>
+<span data-ttu-id="b71cc-303">*Counter. razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-303">*Counter.razor*:</span></span>
 
 ```razor
 @page "/counter"
@@ -580,9 +580,9 @@ public class NotifierService
 }
 ```
 
-<span data-ttu-id="b550c-304">也可以`Counter`使用帶有部分類別的代碼後面檔案建立元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-304">The `Counter` component can also be created using a code-behind file with a partial class:</span></span>
+<span data-ttu-id="b71cc-304">您`Counter`也可以使用具有部分類別的程式碼後置檔案來建立元件：</span><span class="sxs-lookup"><span data-stu-id="b71cc-304">The `Counter` component can also be created using a code-behind file with a partial class:</span></span>
 
-<span data-ttu-id="b550c-305">*計數器.razor*:</span><span class="sxs-lookup"><span data-stu-id="b550c-305">*Counter.razor*:</span></span>
+<span data-ttu-id="b71cc-305">*Counter. razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-305">*Counter.razor*:</span></span>
 
 ```razor
 @page "/counter"
@@ -594,7 +594,7 @@ public class NotifierService
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 ```
 
-<span data-ttu-id="b550c-306">*Counter.razor.cs*:</span><span class="sxs-lookup"><span data-stu-id="b550c-306">*Counter.razor.cs*:</span></span>
+<span data-ttu-id="b71cc-306">*Counter.razor.cs*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-306">*Counter.razor.cs*:</span></span>
 
 ```csharp
 namespace BlazorApp.Pages
@@ -611,7 +611,7 @@ namespace BlazorApp.Pages
 }
 ```
 
-<span data-ttu-id="b550c-307">根據需要向部分類檔添加任何必需的命名空間。</span><span class="sxs-lookup"><span data-stu-id="b550c-307">Add any required namespaces to the partial class file as needed.</span></span> <span data-ttu-id="b550c-308">Razor 元件使用的典型命名空間包括:</span><span class="sxs-lookup"><span data-stu-id="b550c-308">Typical namespaces used by Razor components include:</span></span>
+<span data-ttu-id="b71cc-307">視需要將任何必要的命名空間新增至部分類別檔案。</span><span class="sxs-lookup"><span data-stu-id="b71cc-307">Add any required namespaces to the partial class file as needed.</span></span> <span data-ttu-id="b71cc-308">Razor 元件所使用的一般命名空間包括：</span><span class="sxs-lookup"><span data-stu-id="b71cc-308">Typical namespaces used by Razor components include:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Authorization;
@@ -622,11 +622,11 @@ using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components.Web;
 ```
 
-## <a name="specify-a-base-class"></a><span data-ttu-id="b550c-309">指定基類別</span><span class="sxs-lookup"><span data-stu-id="b550c-309">Specify a base class</span></span>
+## <a name="specify-a-base-class"></a><span data-ttu-id="b71cc-309">指定基類</span><span class="sxs-lookup"><span data-stu-id="b71cc-309">Specify a base class</span></span>
 
-<span data-ttu-id="b550c-310">該[`@inherits`](xref:mvc/views/razor#inherits)指令可用於為元件指定基類。</span><span class="sxs-lookup"><span data-stu-id="b550c-310">The [`@inherits`](xref:mvc/views/razor#inherits) directive can be used to specify a base class for a component.</span></span> <span data-ttu-id="b550c-311">下面的範例展示如何繼承基類,`BlazorRocksBase`以提供元件的屬性和方法。</span><span class="sxs-lookup"><span data-stu-id="b550c-311">The following example shows how a component can inherit a base class, `BlazorRocksBase`, to provide the component's properties and methods.</span></span> <span data-ttu-id="b550c-312">基類應派生自`ComponentBase`。</span><span class="sxs-lookup"><span data-stu-id="b550c-312">The base class should derive from `ComponentBase`.</span></span>
+<span data-ttu-id="b71cc-310">[`@inherits`](xref:mvc/views/razor#inherits)指示詞可以用來指定元件的基類。</span><span class="sxs-lookup"><span data-stu-id="b71cc-310">The [`@inherits`](xref:mvc/views/razor#inherits) directive can be used to specify a base class for a component.</span></span> <span data-ttu-id="b71cc-311">下列範例會顯示元件如何繼承基類， `BlazorRocksBase`以提供元件的屬性和方法。</span><span class="sxs-lookup"><span data-stu-id="b71cc-311">The following example shows how a component can inherit a base class, `BlazorRocksBase`, to provide the component's properties and methods.</span></span> <span data-ttu-id="b71cc-312">基類應該衍生自`ComponentBase`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-312">The base class should derive from `ComponentBase`.</span></span>
 
-<span data-ttu-id="b550c-313">*頁面/布拉佐羅克斯.剃鬚刀*:</span><span class="sxs-lookup"><span data-stu-id="b550c-313">*Pages/BlazorRocks.razor*:</span></span>
+<span data-ttu-id="b71cc-313">*Pages/BlazorRocks. razor*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-313">*Pages/BlazorRocks.razor*:</span></span>
 
 ```razor
 @page "/BlazorRocks"
@@ -635,7 +635,7 @@ using Microsoft.AspNetCore.Components.Web;
 <h1>@BlazorRocksText</h1>
 ```
 
-<span data-ttu-id="b550c-314">*BlazorRocksBase.cs*:</span><span class="sxs-lookup"><span data-stu-id="b550c-314">*BlazorRocksBase.cs*:</span></span>
+<span data-ttu-id="b71cc-314">*BlazorRocksBase.cs*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-314">*BlazorRocksBase.cs*:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Components;
@@ -650,28 +650,28 @@ namespace BlazorSample
 }
 ```
 
-## <a name="specify-an-attribute"></a><span data-ttu-id="b550c-315">指定屬性</span><span class="sxs-lookup"><span data-stu-id="b550c-315">Specify an attribute</span></span>
+## <a name="specify-an-attribute"></a><span data-ttu-id="b71cc-315">指定屬性</span><span class="sxs-lookup"><span data-stu-id="b71cc-315">Specify an attribute</span></span>
 
-<span data-ttu-id="b550c-316">屬性可以在 Razor 元件中使用[`@attribute`](xref:mvc/views/razor#attribute)指令 指定。</span><span class="sxs-lookup"><span data-stu-id="b550c-316">Attributes can be specified in Razor components with the [`@attribute`](xref:mvc/views/razor#attribute) directive.</span></span> <span data-ttu-id="b550c-317">以下範例將`[Authorize]`該屬性套用於元件類別:</span><span class="sxs-lookup"><span data-stu-id="b550c-317">The following example applies the `[Authorize]` attribute to the component class:</span></span>
+<span data-ttu-id="b71cc-316">您可以使用指示詞， [`@attribute`](xref:mvc/views/razor#attribute)在 Razor 元件中指定屬性。</span><span class="sxs-lookup"><span data-stu-id="b71cc-316">Attributes can be specified in Razor components with the [`@attribute`](xref:mvc/views/razor#attribute) directive.</span></span> <span data-ttu-id="b71cc-317">下列範例會將`[Authorize]`屬性套用至元件類別：</span><span class="sxs-lookup"><span data-stu-id="b71cc-317">The following example applies the `[Authorize]` attribute to the component class:</span></span>
 
 ```razor
 @page "/"
 @attribute [Authorize]
 ```
 
-## <a name="import-components"></a><span data-ttu-id="b550c-318">匯入元件</span><span class="sxs-lookup"><span data-stu-id="b550c-318">Import components</span></span>
+## <a name="import-components"></a><span data-ttu-id="b71cc-318">匯入元件</span><span class="sxs-lookup"><span data-stu-id="b71cc-318">Import components</span></span>
 
-<span data-ttu-id="b550c-319">使用 Razor 創作的元件的命名空間基於(按優先順序順序):</span><span class="sxs-lookup"><span data-stu-id="b550c-319">The namespace of a component authored with Razor is based on (in priority order):</span></span>
+<span data-ttu-id="b71cc-319">以 Razor 撰寫之元件的命名空間是根據（依優先順序排列）：</span><span class="sxs-lookup"><span data-stu-id="b71cc-319">The namespace of a component authored with Razor is based on (in priority order):</span></span>
 
-* <span data-ttu-id="b550c-320">[`@namespace`](xref:mvc/views/razor#namespace)Razor 檔案(*.razor*`@namespace BlazorSample.MyNamespace`) 標記( )中指定 。</span><span class="sxs-lookup"><span data-stu-id="b550c-320">[`@namespace`](xref:mvc/views/razor#namespace) designation in Razor file (*.razor*) markup (`@namespace BlazorSample.MyNamespace`).</span></span>
-* <span data-ttu-id="b550c-321">專案檔`RootNamespace`中 (`<RootNamespace>BlazorSample</RootNamespace>`。</span><span class="sxs-lookup"><span data-stu-id="b550c-321">The project's `RootNamespace` in the project file (`<RootNamespace>BlazorSample</RootNamespace>`).</span></span>
-* <span data-ttu-id="b550c-322">專案名稱,取自專案檔的檔名 *(.csproj*) 以及從專案根到元件的路徑。</span><span class="sxs-lookup"><span data-stu-id="b550c-322">The project name, taken from the project file's file name (*.csproj*), and the path from the project root to the component.</span></span> <span data-ttu-id="b550c-323">例如,框架解析 *[PROJECT ROOT]/頁面/索引.razor* *(BlazorSample.csproj*) 到命名`BlazorSample.Pages`空間 。</span><span class="sxs-lookup"><span data-stu-id="b550c-323">For example, the framework resolves *{PROJECT ROOT}/Pages/Index.razor* (*BlazorSample.csproj*) to the namespace `BlazorSample.Pages`.</span></span> <span data-ttu-id="b550c-324">元件遵循 C# 名稱綁定規則。</span><span class="sxs-lookup"><span data-stu-id="b550c-324">Components follow C# name binding rules.</span></span> <span data-ttu-id="b550c-325">對於此範例`Index`中的元件,作用網域中的元件都是所有元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-325">For the `Index` component in this example, the components in scope are all of the components:</span></span>
-  * <span data-ttu-id="b550c-326">在同一個資料夾中,*頁面*。</span><span class="sxs-lookup"><span data-stu-id="b550c-326">In the same folder, *Pages*.</span></span>
-  * <span data-ttu-id="b550c-327">專案根中的元件不顯式指定其他命名空間。</span><span class="sxs-lookup"><span data-stu-id="b550c-327">The components in the project's root that don't explicitly specify a different namespace.</span></span>
+* <span data-ttu-id="b71cc-320">[`@namespace`](xref:mvc/views/razor#namespace)Razor file （*razor*）標記中的指定（`@namespace BlazorSample.MyNamespace`）。</span><span class="sxs-lookup"><span data-stu-id="b71cc-320">[`@namespace`](xref:mvc/views/razor#namespace) designation in Razor file (*.razor*) markup (`@namespace BlazorSample.MyNamespace`).</span></span>
+* <span data-ttu-id="b71cc-321">專案`RootNamespace`在專案檔中的（`<RootNamespace>BlazorSample</RootNamespace>`）。</span><span class="sxs-lookup"><span data-stu-id="b71cc-321">The project's `RootNamespace` in the project file (`<RootNamespace>BlazorSample</RootNamespace>`).</span></span>
+* <span data-ttu-id="b71cc-322">從專案檔的檔案名（*.csproj*）取得的專案名稱，以及從專案根目錄到元件的路徑。</span><span class="sxs-lookup"><span data-stu-id="b71cc-322">The project name, taken from the project file's file name (*.csproj*), and the path from the project root to the component.</span></span> <span data-ttu-id="b71cc-323">例如，架構會將 *{PROJECT ROOT}/Pages/Index.razor* （*BlazorSample*）解析為命名空間`BlazorSample.Pages`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-323">For example, the framework resolves *{PROJECT ROOT}/Pages/Index.razor* (*BlazorSample.csproj*) to the namespace `BlazorSample.Pages`.</span></span> <span data-ttu-id="b71cc-324">元件遵循 c # 名稱系結規則。</span><span class="sxs-lookup"><span data-stu-id="b71cc-324">Components follow C# name binding rules.</span></span> <span data-ttu-id="b71cc-325">針對此`Index`範例中的元件，範圍內的元件都是元件：</span><span class="sxs-lookup"><span data-stu-id="b71cc-325">For the `Index` component in this example, the components in scope are all of the components:</span></span>
+  * <span data-ttu-id="b71cc-326">在相同的資料夾中，*頁面*。</span><span class="sxs-lookup"><span data-stu-id="b71cc-326">In the same folder, *Pages*.</span></span>
+  * <span data-ttu-id="b71cc-327">專案根目錄中未明確指定不同命名空間的元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-327">The components in the project's root that don't explicitly specify a different namespace.</span></span>
 
-<span data-ttu-id="b550c-328">使用 Razor[`@using`](xref:mvc/views/razor#using)的 指令將不同命名空間中定義的元件引入範圍。</span><span class="sxs-lookup"><span data-stu-id="b550c-328">Components defined in a different namespace are brought into scope using Razor's [`@using`](xref:mvc/views/razor#using) directive.</span></span>
+<span data-ttu-id="b71cc-328">使用 Razor 的[`@using`](xref:mvc/views/razor#using)指示詞，在不同的命名空間中定義的元件會帶入範圍中。</span><span class="sxs-lookup"><span data-stu-id="b71cc-328">Components defined in a different namespace are brought into scope using Razor's [`@using`](xref:mvc/views/razor#using) directive.</span></span>
 
-<span data-ttu-id="b550c-329">如果另一個`NavMenu.razor`元件 (中)存在於*BlazorSample/共用/* 資料夾中,則`Index.razor`該元件`@using`可用於以下 語句:</span><span class="sxs-lookup"><span data-stu-id="b550c-329">If another component, `NavMenu.razor`, exists in the *BlazorSample/Shared/* folder, the component can be used in `Index.razor` with the following `@using` statement:</span></span>
+<span data-ttu-id="b71cc-329">如果*BlazorSample/Shared/* 資料夾中有另一個元件`Index.razor` `@using` `NavMenu.razor`，則可以在中使用此元件，並搭配下列語句：</span><span class="sxs-lookup"><span data-stu-id="b71cc-329">If another component, `NavMenu.razor`, exists in the *BlazorSample/Shared/* folder, the component can be used in `Index.razor` with the following `@using` statement:</span></span>
 
 ```razor
 @using BlazorSample.Shared
@@ -681,7 +681,7 @@ This is the Index page.
 <NavMenu></NavMenu>
 ```
 
-<span data-ttu-id="b550c-330">也可以使用完全限定的名稱引用元件,這不需要指令[`@using`](xref:mvc/views/razor#using):</span><span class="sxs-lookup"><span data-stu-id="b550c-330">Components can also be referenced using their fully qualified names, which doesn't require the [`@using`](xref:mvc/views/razor#using) directive:</span></span>
+<span data-ttu-id="b71cc-330">元件也可以使用其完整名稱來參考，而不需要[`@using`](xref:mvc/views/razor#using)指示詞：</span><span class="sxs-lookup"><span data-stu-id="b71cc-330">Components can also be referenced using their fully qualified names, which doesn't require the [`@using`](xref:mvc/views/razor#using) directive:</span></span>
 
 ```razor
 This is the Index page.
@@ -690,17 +690,17 @@ This is the Index page.
 ```
 
 > [!NOTE]
-> <span data-ttu-id="b550c-331">不支持`global::`資格認證。</span><span class="sxs-lookup"><span data-stu-id="b550c-331">The `global::` qualification isn't supported.</span></span>
+> <span data-ttu-id="b71cc-331">不`global::`支援該限定性。</span><span class="sxs-lookup"><span data-stu-id="b71cc-331">The `global::` qualification isn't supported.</span></span>
 >
-> <span data-ttu-id="b550c-332">不支援使用別名`using`語句導入元件(例如,)。 `@using Foo = Bar`</span><span class="sxs-lookup"><span data-stu-id="b550c-332">Importing components with aliased `using` statements (for example, `@using Foo = Bar`) isn't supported.</span></span>
+> <span data-ttu-id="b71cc-332">不支援使用具有`using`別名的語句來匯`@using Foo = Bar`入元件（例如）。</span><span class="sxs-lookup"><span data-stu-id="b71cc-332">Importing components with aliased `using` statements (for example, `@using Foo = Bar`) isn't supported.</span></span>
 >
-> <span data-ttu-id="b550c-333">不支援部分限定名稱。</span><span class="sxs-lookup"><span data-stu-id="b550c-333">Partially qualified names aren't supported.</span></span> <span data-ttu-id="b550c-334">例如,不支援新增`@using BlazorSample`和引用`NavMenu.razor` `<Shared.NavMenu></Shared.NavMenu>` 。</span><span class="sxs-lookup"><span data-stu-id="b550c-334">For example, adding `@using BlazorSample` and referencing `NavMenu.razor` with `<Shared.NavMenu></Shared.NavMenu>` isn't supported.</span></span>
+> <span data-ttu-id="b71cc-333">不支援部分限定的名稱。</span><span class="sxs-lookup"><span data-stu-id="b71cc-333">Partially qualified names aren't supported.</span></span> <span data-ttu-id="b71cc-334">例如， `<Shared.NavMenu></Shared.NavMenu>`不支援`@using BlazorSample`新增和`NavMenu.razor`參考。</span><span class="sxs-lookup"><span data-stu-id="b71cc-334">For example, adding `@using BlazorSample` and referencing `NavMenu.razor` with `<Shared.NavMenu></Shared.NavMenu>` isn't supported.</span></span>
 
-## <a name="conditional-html-element-attributes"></a><span data-ttu-id="b550c-335">檔案 HTML 元素屬性</span><span class="sxs-lookup"><span data-stu-id="b550c-335">Conditional HTML element attributes</span></span>
+## <a name="conditional-html-element-attributes"></a><span data-ttu-id="b71cc-335">條件式 HTML 元素屬性</span><span class="sxs-lookup"><span data-stu-id="b71cc-335">Conditional HTML element attributes</span></span>
 
-<span data-ttu-id="b550c-336">HTML 元素屬性根據 .NET 值有條件地呈現。</span><span class="sxs-lookup"><span data-stu-id="b550c-336">HTML element attributes are conditionally rendered based on the .NET value.</span></span> <span data-ttu-id="b550c-337">如果值為`false``null`或 ,則不呈現屬性。</span><span class="sxs-lookup"><span data-stu-id="b550c-337">If the value is `false` or `null`, the attribute isn't rendered.</span></span> <span data-ttu-id="b550c-338">如果值為`true`,則屬性將最小化。</span><span class="sxs-lookup"><span data-stu-id="b550c-338">If the value is `true`, the attribute is rendered minimized.</span></span>
+<span data-ttu-id="b71cc-336">HTML 專案屬性會根據 .NET 值有條件地呈現。</span><span class="sxs-lookup"><span data-stu-id="b71cc-336">HTML element attributes are conditionally rendered based on the .NET value.</span></span> <span data-ttu-id="b71cc-337">如果值為`false`或`null`，則不會呈現屬性。</span><span class="sxs-lookup"><span data-stu-id="b71cc-337">If the value is `false` or `null`, the attribute isn't rendered.</span></span> <span data-ttu-id="b71cc-338">如果值為`true`，則會以最小化的方式呈現屬性。</span><span class="sxs-lookup"><span data-stu-id="b71cc-338">If the value is `true`, the attribute is rendered minimized.</span></span>
 
-<span data-ttu-id="b550c-339">在下面的範例中,`IsCompleted`確定`checked`是否呈現在元素的標籤中:</span><span class="sxs-lookup"><span data-stu-id="b550c-339">In the following example, `IsCompleted` determines if `checked` is rendered in the element's markup:</span></span>
+<span data-ttu-id="b71cc-339">在下列範例中， `IsCompleted` `checked`會判斷是否呈現在專案的標記中：</span><span class="sxs-lookup"><span data-stu-id="b71cc-339">In the following example, `IsCompleted` determines if `checked` is rendered in the element's markup:</span></span>
 
 ```razor
 <input type="checkbox" checked="@IsCompleted" />
@@ -711,31 +711,31 @@ This is the Index page.
 }
 ```
 
-<span data-ttu-id="b550c-340">如果是`IsCompleted``true`,則複選框將呈現為:</span><span class="sxs-lookup"><span data-stu-id="b550c-340">If `IsCompleted` is `true`, the check box is rendered as:</span></span>
+<span data-ttu-id="b71cc-340">如果`IsCompleted`為`true`，則會將核取方塊轉譯為：</span><span class="sxs-lookup"><span data-stu-id="b71cc-340">If `IsCompleted` is `true`, the check box is rendered as:</span></span>
 
 ```html
 <input type="checkbox" checked />
 ```
 
-<span data-ttu-id="b550c-341">如果是`IsCompleted``false`,則複選框將呈現為:</span><span class="sxs-lookup"><span data-stu-id="b550c-341">If `IsCompleted` is `false`, the check box is rendered as:</span></span>
+<span data-ttu-id="b71cc-341">如果`IsCompleted`為`false`，則會將核取方塊轉譯為：</span><span class="sxs-lookup"><span data-stu-id="b71cc-341">If `IsCompleted` is `false`, the check box is rendered as:</span></span>
 
 ```html
 <input type="checkbox" />
 ```
 
-<span data-ttu-id="b550c-342">如需詳細資訊，請參閱 <xref:mvc/views/razor>。</span><span class="sxs-lookup"><span data-stu-id="b550c-342">For more information, see <xref:mvc/views/razor>.</span></span>
+<span data-ttu-id="b71cc-342">如需詳細資訊，請參閱 <xref:mvc/views/razor>。</span><span class="sxs-lookup"><span data-stu-id="b71cc-342">For more information, see <xref:mvc/views/razor>.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="b550c-343">當 .NET[aria-pressed](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons)`bool`類型為 時,某些 HTML 屬性(如 aria 按下)無法正常工作。</span><span class="sxs-lookup"><span data-stu-id="b550c-343">Some HTML attributes, such as [aria-pressed](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons), don't function properly when the .NET type is a `bool`.</span></span> <span data-ttu-id="b550c-344">在這些情況下,請使用`string`型態而不是`bool`。</span><span class="sxs-lookup"><span data-stu-id="b550c-344">In those cases, use a `string` type instead of a `bool`.</span></span>
+> <span data-ttu-id="b71cc-343">當 .NET 類型為時，某些 HTML 屬性（例如，[按下的 aria](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons)）無法正常`bool`運作。</span><span class="sxs-lookup"><span data-stu-id="b71cc-343">Some HTML attributes, such as [aria-pressed](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons), don't function properly when the .NET type is a `bool`.</span></span> <span data-ttu-id="b71cc-344">在這些情況下，請`string`使用型別， `bool`而不是。</span><span class="sxs-lookup"><span data-stu-id="b71cc-344">In those cases, use a `string` type instead of a `bool`.</span></span>
 
-## <a name="raw-html"></a><span data-ttu-id="b550c-345">原始 HTML</span><span class="sxs-lookup"><span data-stu-id="b550c-345">Raw HTML</span></span>
+## <a name="raw-html"></a><span data-ttu-id="b71cc-345">原始 HTML</span><span class="sxs-lookup"><span data-stu-id="b71cc-345">Raw HTML</span></span>
 
-<span data-ttu-id="b550c-346">字串通常使用 DOM 文字節點呈現,這意味著它們可能包含的任何標記都將被忽略並視為文本文本。</span><span class="sxs-lookup"><span data-stu-id="b550c-346">Strings are normally rendered using DOM text nodes, which means that any markup they may contain is ignored and treated as literal text.</span></span> <span data-ttu-id="b550c-347">要呈現原始 HTML,`MarkupString`在值中包裝 HTML 內容。</span><span class="sxs-lookup"><span data-stu-id="b550c-347">To render raw HTML, wrap the HTML content in a `MarkupString` value.</span></span> <span data-ttu-id="b550c-348">該值被解析為 HTML 或 SVG 並插入到 DOM 中。</span><span class="sxs-lookup"><span data-stu-id="b550c-348">The value is parsed as HTML or SVG and inserted into the DOM.</span></span>
+<span data-ttu-id="b71cc-346">字串通常會使用 DOM 文位元組點來呈現，這表示它們可能包含的任何標記都會被忽略，並視為常值。</span><span class="sxs-lookup"><span data-stu-id="b71cc-346">Strings are normally rendered using DOM text nodes, which means that any markup they may contain is ignored and treated as literal text.</span></span> <span data-ttu-id="b71cc-347">若要轉譯原始 HTML，請將 HTML 內容包裝`MarkupString`在值中。</span><span class="sxs-lookup"><span data-stu-id="b71cc-347">To render raw HTML, wrap the HTML content in a `MarkupString` value.</span></span> <span data-ttu-id="b71cc-348">此值會剖析為 HTML 或 SVG，並插入 DOM 中。</span><span class="sxs-lookup"><span data-stu-id="b71cc-348">The value is parsed as HTML or SVG and inserted into the DOM.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="b550c-349">渲染從任何不受信任的源構造的原始 HTML 存在**安全風險**,應避免使用!</span><span class="sxs-lookup"><span data-stu-id="b550c-349">Rendering raw HTML constructed from any untrusted source is a **security risk** and should be avoided!</span></span>
+> <span data-ttu-id="b71cc-349">轉譯從任何未受信任來源所建立的原始 HTML 會有**安全性風險**，應予以避免！</span><span class="sxs-lookup"><span data-stu-id="b71cc-349">Rendering raw HTML constructed from any untrusted source is a **security risk** and should be avoided!</span></span>
 
-<span data-ttu-id="b550c-350">下面的範例顯示使用`MarkupString`類型將靜態 HTML 內容區塊加入元件的呈現輸出中:</span><span class="sxs-lookup"><span data-stu-id="b550c-350">The following example shows using the `MarkupString` type to add a block of static HTML content to the rendered output of a component:</span></span>
+<span data-ttu-id="b71cc-350">下列範例顯示如何使用`MarkupString`類型，將靜態 HTML 內容的區塊新增至元件的轉譯輸出：</span><span class="sxs-lookup"><span data-stu-id="b71cc-350">The following example shows using the `MarkupString` type to add a block of static HTML content to the rendered output of a component:</span></span>
 
 ```html
 @((MarkupString)_myMarkup)
@@ -746,15 +746,15 @@ This is the Index page.
 }
 ```
 
-## <a name="cascading-values-and-parameters"></a><span data-ttu-id="b550c-351">階層與參數</span><span class="sxs-lookup"><span data-stu-id="b550c-351">Cascading values and parameters</span></span>
+## <a name="cascading-values-and-parameters"></a><span data-ttu-id="b71cc-351">級聯的值和參數</span><span class="sxs-lookup"><span data-stu-id="b71cc-351">Cascading values and parameters</span></span>
 
-<span data-ttu-id="b550c-352">在某些情況下,使用[元件參數](#component-parameters)將數據從祖先元件流向後代元件不方便,尤其是在有多個元件層時。</span><span class="sxs-lookup"><span data-stu-id="b550c-352">In some scenarios, it's inconvenient to flow data from an ancestor component to a descendent component using [component parameters](#component-parameters), especially when there are several component layers.</span></span> <span data-ttu-id="b550c-353">級聯值和參數為祖先元件提供了一種為其所有後代元件提供值的便捷方法,從而解決了此問題。</span><span class="sxs-lookup"><span data-stu-id="b550c-353">Cascading values and parameters solve this problem by providing a convenient way for an ancestor component to provide a value to all of its descendent components.</span></span> <span data-ttu-id="b550c-354">級聯值和參數也為元件提供了一種協調方法。</span><span class="sxs-lookup"><span data-stu-id="b550c-354">Cascading values and parameters also provide an approach for components to coordinate.</span></span>
+<span data-ttu-id="b71cc-352">在某些情況下，使用[元件參數](#component-parameters)將資料從上階元件傳送到子元件是不方便的，特別是在有數個元件層時。</span><span class="sxs-lookup"><span data-stu-id="b71cc-352">In some scenarios, it's inconvenient to flow data from an ancestor component to a descendent component using [component parameters](#component-parameters), especially when there are several component layers.</span></span> <span data-ttu-id="b71cc-353">串聯的值和參數可讓上階元件提供一個值給其所有子系元件，藉此解決這個問題。</span><span class="sxs-lookup"><span data-stu-id="b71cc-353">Cascading values and parameters solve this problem by providing a convenient way for an ancestor component to provide a value to all of its descendent components.</span></span> <span data-ttu-id="b71cc-354">級聯的值和參數也會提供一種方法來協調元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-354">Cascading values and parameters also provide an approach for components to coordinate.</span></span>
 
-### <a name="theme-example"></a><span data-ttu-id="b550c-355">主題範例</span><span class="sxs-lookup"><span data-stu-id="b550c-355">Theme example</span></span>
+### <a name="theme-example"></a><span data-ttu-id="b71cc-355">主題範例</span><span class="sxs-lookup"><span data-stu-id="b71cc-355">Theme example</span></span>
 
-<span data-ttu-id="b550c-356">在範例應用程式中的以下範例中,`ThemeInfo`類別指定向到元件層次結構的主題資訊,以便應用給定部分中的所有按鈕共用相同的樣式。</span><span class="sxs-lookup"><span data-stu-id="b550c-356">In the following example from the sample app, the `ThemeInfo` class specifies the theme information to flow down the component hierarchy so that all of the buttons within a given part of the app share the same style.</span></span>
+<span data-ttu-id="b71cc-356">在範例應用程式的下列範例中， `ThemeInfo`類別會指定主題資訊以向下流動元件階層，讓應用程式中指定部分內的所有按鈕共用相同的樣式。</span><span class="sxs-lookup"><span data-stu-id="b71cc-356">In the following example from the sample app, the `ThemeInfo` class specifies the theme information to flow down the component hierarchy so that all of the buttons within a given part of the app share the same style.</span></span>
 
-<span data-ttu-id="b550c-357">*UIThemeclasses/主題資訊.cs*:</span><span class="sxs-lookup"><span data-stu-id="b550c-357">*UIThemeClasses/ThemeInfo.cs*:</span></span>
+<span data-ttu-id="b71cc-357">*UIThemeClasses/ThemeInfo .cs*：</span><span class="sxs-lookup"><span data-stu-id="b71cc-357">*UIThemeClasses/ThemeInfo.cs*:</span></span>
 
 ```csharp
 public class ThemeInfo
@@ -763,11 +763,11 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="b550c-358">祖先元件可以使用級聯值元件提供級聯值。</span><span class="sxs-lookup"><span data-stu-id="b550c-358">An ancestor component can provide a cascading value using the Cascading Value component.</span></span> <span data-ttu-id="b550c-359">元件`CascadingValue`包裝元件層次結構的子樹,並向該子樹中的所有元件提供單個值。</span><span class="sxs-lookup"><span data-stu-id="b550c-359">The `CascadingValue` component wraps a subtree of the component hierarchy and supplies a single value to all components within that subtree.</span></span>
+<span data-ttu-id="b71cc-358">祖系元件可以使用串聯值元件來提供串聯值。</span><span class="sxs-lookup"><span data-stu-id="b71cc-358">An ancestor component can provide a cascading value using the Cascading Value component.</span></span> <span data-ttu-id="b71cc-359">此`CascadingValue`元件會包裝元件階層的子樹，並提供單一值給該子樹內的所有元件。</span><span class="sxs-lookup"><span data-stu-id="b71cc-359">The `CascadingValue` component wraps a subtree of the component hierarchy and supplies a single value to all components within that subtree.</span></span>
 
-<span data-ttu-id="b550c-360">例如,範例應用將應用佈局之一的主題資訊`ThemeInfo`( )`@Body`指定為構成 屬性佈局正文的所有元件的級聯參數。</span><span class="sxs-lookup"><span data-stu-id="b550c-360">For example, the sample app specifies theme information (`ThemeInfo`) in one of the app's layouts as a cascading parameter for all components that make up the layout body of the `@Body` property.</span></span> <span data-ttu-id="b550c-361">`ButtonClass`在佈局元件中分配`btn-success`的值。</span><span class="sxs-lookup"><span data-stu-id="b550c-361">`ButtonClass` is assigned a value of `btn-success` in the layout component.</span></span> <span data-ttu-id="b550c-362">任何後代元件都可以通過`ThemeInfo`級聯物件使用此屬性。</span><span class="sxs-lookup"><span data-stu-id="b550c-362">Any descendent component can consume this property through the `ThemeInfo` cascading object.</span></span>
+<span data-ttu-id="b71cc-360">例如，範例應用程式會在其中一個應用`ThemeInfo`程式的配置中，將主題資訊（）指定為構成`@Body`屬性版面配置主體之所有元件的串聯參數。</span><span class="sxs-lookup"><span data-stu-id="b71cc-360">For example, the sample app specifies theme information (`ThemeInfo`) in one of the app's layouts as a cascading parameter for all components that make up the layout body of the `@Body` property.</span></span> <span data-ttu-id="b71cc-361">`ButtonClass`在版面配置元件中`btn-success` ，會指派的值。</span><span class="sxs-lookup"><span data-stu-id="b71cc-361">`ButtonClass` is assigned a value of `btn-success` in the layout component.</span></span> <span data-ttu-id="b71cc-362">任何子代元件都可以透過`ThemeInfo`串聯物件使用此屬性。</span><span class="sxs-lookup"><span data-stu-id="b71cc-362">Any descendent component can consume this property through the `ThemeInfo` cascading object.</span></span>
 
-<span data-ttu-id="b550c-363">`CascadingValuesParametersLayout`元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-363">`CascadingValuesParametersLayout` component:</span></span>
+<span data-ttu-id="b71cc-363">`CascadingValuesParametersLayout`成分</span><span class="sxs-lookup"><span data-stu-id="b71cc-363">`CascadingValuesParametersLayout` component:</span></span>
 
 ```razor
 @inherits LayoutComponentBase
@@ -793,11 +793,11 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="b550c-364">要使用級聯值,元件使用 屬性`[CascadingParameter]`聲明級聯參數。</span><span class="sxs-lookup"><span data-stu-id="b550c-364">To make use of cascading values, components declare cascading parameters using the `[CascadingParameter]` attribute.</span></span> <span data-ttu-id="b550c-365">級聯值按類型綁定到級聯參數。</span><span class="sxs-lookup"><span data-stu-id="b550c-365">Cascading values are bound to cascading parameters by type.</span></span>
+<span data-ttu-id="b71cc-364">為了利用串聯值，元件會使用`[CascadingParameter]`屬性宣告串聯式參數。</span><span class="sxs-lookup"><span data-stu-id="b71cc-364">To make use of cascading values, components declare cascading parameters using the `[CascadingParameter]` attribute.</span></span> <span data-ttu-id="b71cc-365">串聯式值會依類型系結至串聯式參數。</span><span class="sxs-lookup"><span data-stu-id="b71cc-365">Cascading values are bound to cascading parameters by type.</span></span>
 
-<span data-ttu-id="b550c-366">在範例應用中,`CascadingValuesParametersTheme`元件將`ThemeInfo`級聯值綁定到級聯參數。</span><span class="sxs-lookup"><span data-stu-id="b550c-366">In the sample app, the `CascadingValuesParametersTheme` component binds the `ThemeInfo` cascading value to a cascading parameter.</span></span> <span data-ttu-id="b550c-367">該參數用於為元件顯示的按鈕之一設置 CSS 類。</span><span class="sxs-lookup"><span data-stu-id="b550c-367">The parameter is used to set the CSS class for one of the buttons displayed by the component.</span></span>
+<span data-ttu-id="b71cc-366">在範例應用程式中， `CascadingValuesParametersTheme`元件`ThemeInfo`會將串聯值系結至串聯式參數。</span><span class="sxs-lookup"><span data-stu-id="b71cc-366">In the sample app, the `CascadingValuesParametersTheme` component binds the `ThemeInfo` cascading value to a cascading parameter.</span></span> <span data-ttu-id="b71cc-367">參數是用來為元件所顯示的其中一個按鈕設定 CSS 類別。</span><span class="sxs-lookup"><span data-stu-id="b71cc-367">The parameter is used to set the CSS class for one of the buttons displayed by the component.</span></span>
 
-<span data-ttu-id="b550c-368">`CascadingValuesParametersTheme`元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-368">`CascadingValuesParametersTheme` component:</span></span>
+<span data-ttu-id="b71cc-368">`CascadingValuesParametersTheme`成分</span><span class="sxs-lookup"><span data-stu-id="b71cc-368">`CascadingValuesParametersTheme` component:</span></span>
 
 ```razor
 @page "/cascadingvaluesparameterstheme"
@@ -833,7 +833,7 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="b550c-369">要在同一子樹中級聯同一類型的多個值,請為每個`Name``CascadingValue`元件及其相應的`CascadingParameter`提供唯一字串。</span><span class="sxs-lookup"><span data-stu-id="b550c-369">To cascade multiple values of the same type within the same subtree, provide a unique `Name` string to each `CascadingValue` component and its corresponding `CascadingParameter`.</span></span> <span data-ttu-id="b550c-370">在下面的範例中,兩個`CascadingValue`元件`MyCascadingType`依名稱級聯不同的實例:</span><span class="sxs-lookup"><span data-stu-id="b550c-370">In the following example, two `CascadingValue` components cascade different instances of `MyCascadingType` by name:</span></span>
+<span data-ttu-id="b71cc-369">若要在相同的子樹中串聯多個相同類型的值， `Name`請提供唯一`CascadingValue`的字串給每`CascadingParameter`個元件及其對應的。</span><span class="sxs-lookup"><span data-stu-id="b71cc-369">To cascade multiple values of the same type within the same subtree, provide a unique `Name` string to each `CascadingValue` component and its corresponding `CascadingParameter`.</span></span> <span data-ttu-id="b71cc-370">在下列範例中，兩`CascadingValue`個元件依名稱串聯`MyCascadingType`不同的實例：</span><span class="sxs-lookup"><span data-stu-id="b71cc-370">In the following example, two `CascadingValue` components cascade different instances of `MyCascadingType` by name:</span></span>
 
 ```razor
 <CascadingValue Value=@_parentCascadeParameter1 Name="CascadeParam1">
@@ -852,7 +852,7 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="b550c-371">在子體元件中,級聯參數從祖先元件中的相應級聯值接收其值:</span><span class="sxs-lookup"><span data-stu-id="b550c-371">In a descendant component, the cascaded parameters receive their values from the corresponding cascaded values in the ancestor component by name:</span></span>
+<span data-ttu-id="b71cc-371">在子系元件中，串聯的參數會以名稱從上階元件中對應的串聯值接收其值：</span><span class="sxs-lookup"><span data-stu-id="b71cc-371">In a descendant component, the cascaded parameters receive their values from the corresponding cascaded values in the ancestor component by name:</span></span>
 
 ```razor
 ...
@@ -866,15 +866,15 @@ public class ThemeInfo
 }
 ```
 
-### <a name="tabset-example"></a><span data-ttu-id="b550c-372">選項卡集範例</span><span class="sxs-lookup"><span data-stu-id="b550c-372">TabSet example</span></span>
+### <a name="tabset-example"></a><span data-ttu-id="b71cc-372">TabSet 範例</span><span class="sxs-lookup"><span data-stu-id="b71cc-372">TabSet example</span></span>
 
-<span data-ttu-id="b550c-373">級聯參數還使元件能夠跨元件層次結構進行協作。</span><span class="sxs-lookup"><span data-stu-id="b550c-373">Cascading parameters also enable components to collaborate across the component hierarchy.</span></span> <span data-ttu-id="b550c-374">例如,在示例應用中考慮以下*TabSet*示例。</span><span class="sxs-lookup"><span data-stu-id="b550c-374">For example, consider the following *TabSet* example in the sample app.</span></span>
+<span data-ttu-id="b71cc-373">串聯式參數也可以讓元件在元件階層之間共同作業。</span><span class="sxs-lookup"><span data-stu-id="b71cc-373">Cascading parameters also enable components to collaborate across the component hierarchy.</span></span> <span data-ttu-id="b71cc-374">例如，請考慮範例應用程式中的下列*TabSet*範例。</span><span class="sxs-lookup"><span data-stu-id="b71cc-374">For example, consider the following *TabSet* example in the sample app.</span></span>
 
-<span data-ttu-id="b550c-375">範例應用程式具有介面`ITab`,用於選項卡實現:</span><span class="sxs-lookup"><span data-stu-id="b550c-375">The sample app has an `ITab` interface that tabs implement:</span></span>
+<span data-ttu-id="b71cc-375">範例應用程式具有可`ITab`執行 tab 鍵的介面：</span><span class="sxs-lookup"><span data-stu-id="b71cc-375">The sample app has an `ITab` interface that tabs implement:</span></span>
 
 [!code-csharp[](common/samples/3.x/BlazorWebAssemblySample/UIInterfaces/ITab.cs)]
 
-<span data-ttu-id="b550c-376">元件`CascadingValuesParametersTabSet`使用包含多個`TabSet``Tab`元件的元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-376">The `CascadingValuesParametersTabSet` component uses the `TabSet` component, which contains several `Tab` components:</span></span>
+<span data-ttu-id="b71cc-376">`CascadingValuesParametersTabSet`元件會使用`TabSet`元件，其中包含數個`Tab`元件：</span><span class="sxs-lookup"><span data-stu-id="b71cc-376">The `CascadingValuesParametersTabSet` component uses the `TabSet` component, which contains several `Tab` components:</span></span>
 
 ```razor
 <TabSet>
@@ -900,27 +900,27 @@ public class ThemeInfo
 </TabSet>
 ```
 
-<span data-ttu-id="b550c-377">子`Tab`元件不會顯示參數為參數傳遞給`TabSet`。</span><span class="sxs-lookup"><span data-stu-id="b550c-377">The child `Tab` components aren't explicitly passed as parameters to the `TabSet`.</span></span> <span data-ttu-id="b550c-378">相反,子`Tab`元件是子`TabSet`內容的一部分。</span><span class="sxs-lookup"><span data-stu-id="b550c-378">Instead, the child `Tab` components are part of the child content of the `TabSet`.</span></span> <span data-ttu-id="b550c-379">但是,仍`TabSet`需要瞭解每個`Tab`元件,以便它可以呈現標頭和活動選項卡。為了啟用這種協調而無需其他代碼,`TabSet`元件*可以作為級聯值提供自身*,然後由`Tab`後代 元件選取。</span><span class="sxs-lookup"><span data-stu-id="b550c-379">However, the `TabSet` still needs to know about each `Tab` component so that it can render the headers and the active tab. To enable this coordination without requiring additional code, the `TabSet` component *can provide itself as a cascading value* that is then picked up by the descendent `Tab` components.</span></span>
+<span data-ttu-id="b71cc-377">子`Tab`元件不會明確地當做參數傳遞至`TabSet`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-377">The child `Tab` components aren't explicitly passed as parameters to the `TabSet`.</span></span> <span data-ttu-id="b71cc-378">相反地，子`Tab`元件是的子內容的一部分`TabSet`。</span><span class="sxs-lookup"><span data-stu-id="b71cc-378">Instead, the child `Tab` components are part of the child content of the `TabSet`.</span></span> <span data-ttu-id="b71cc-379">不過， `TabSet`仍然需要知道每個`Tab`元件，使其可以呈現標頭和使用中的索引標籤。若要啟用這項協調而不需要額外`TabSet`的程式碼，元件*可以提供本身作為*串聯的值，然後由子代`Tab`元件挑選。</span><span class="sxs-lookup"><span data-stu-id="b71cc-379">However, the `TabSet` still needs to know about each `Tab` component so that it can render the headers and the active tab. To enable this coordination without requiring additional code, the `TabSet` component *can provide itself as a cascading value* that is then picked up by the descendent `Tab` components.</span></span>
 
-<span data-ttu-id="b550c-380">`TabSet`元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-380">`TabSet` component:</span></span>
+<span data-ttu-id="b71cc-380">`TabSet`成分</span><span class="sxs-lookup"><span data-stu-id="b71cc-380">`TabSet` component:</span></span>
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/TabSet.razor)]
 
-<span data-ttu-id="b550c-381">後代`Tab`元件將包含`TabSet`捕獲為級聯參數,因此`Tab`元件將自己添加到 和座標上`TabSet`哪個選項卡處於活動狀態。</span><span class="sxs-lookup"><span data-stu-id="b550c-381">The descendent `Tab` components capture the containing `TabSet` as a cascading parameter, so the `Tab` components add themselves to the `TabSet` and coordinate on which tab is active.</span></span>
+<span data-ttu-id="b71cc-381">子系`Tab`元件會以串聯`TabSet`式參數的形式捕捉包含的`Tab` ，因此元件會將`TabSet`自己加入至索引標籤作用中的和座標。</span><span class="sxs-lookup"><span data-stu-id="b71cc-381">The descendent `Tab` components capture the containing `TabSet` as a cascading parameter, so the `Tab` components add themselves to the `TabSet` and coordinate on which tab is active.</span></span>
 
-<span data-ttu-id="b550c-382">`Tab`元件:</span><span class="sxs-lookup"><span data-stu-id="b550c-382">`Tab` component:</span></span>
+<span data-ttu-id="b71cc-382">`Tab`成分</span><span class="sxs-lookup"><span data-stu-id="b71cc-382">`Tab` component:</span></span>
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/Tab.razor)]
 
-## <a name="razor-templates"></a><span data-ttu-id="b550c-383">剃刀範本</span><span class="sxs-lookup"><span data-stu-id="b550c-383">Razor templates</span></span>
+## <a name="razor-templates"></a><span data-ttu-id="b71cc-383">Razor 範本</span><span class="sxs-lookup"><span data-stu-id="b71cc-383">Razor templates</span></span>
 
-<span data-ttu-id="b550c-384">可以使用 Razor 樣本語法定義渲染片段。</span><span class="sxs-lookup"><span data-stu-id="b550c-384">Render fragments can be defined using Razor template syntax.</span></span> <span data-ttu-id="b550c-385">Razor 樣本是定義 UI 代碼段並採用以下格式的一種方式:</span><span class="sxs-lookup"><span data-stu-id="b550c-385">Razor templates are a way to define a UI snippet and assume the following format:</span></span>
+<span data-ttu-id="b71cc-384">轉譯片段可以使用 Razor 範本語法來定義。</span><span class="sxs-lookup"><span data-stu-id="b71cc-384">Render fragments can be defined using Razor template syntax.</span></span> <span data-ttu-id="b71cc-385">Razor 範本是定義 UI 程式碼片段並採用下列格式的方式：</span><span class="sxs-lookup"><span data-stu-id="b71cc-385">Razor templates are a way to define a UI snippet and assume the following format:</span></span>
 
 ```razor
 @<{HTML tag}>...</{HTML tag}>
 ```
 
-<span data-ttu-id="b550c-386">下面的範例說明了如何在元件中直接`RenderFragment`指定`RenderFragment<T>`和值和呈現範本。</span><span class="sxs-lookup"><span data-stu-id="b550c-386">The following example illustrates how to specify `RenderFragment` and `RenderFragment<T>` values and render templates directly in a component.</span></span> <span data-ttu-id="b550c-387">成像片段也可以為參數傳遞為[樣本化的元件](xref:blazor/templated-components)。</span><span class="sxs-lookup"><span data-stu-id="b550c-387">Render fragments can also be passed as arguments to [templated components](xref:blazor/templated-components).</span></span>
+<span data-ttu-id="b71cc-386">下列範例說明如何指定`RenderFragment`和`RenderFragment<T>`值，並直接在元件中呈現範本。</span><span class="sxs-lookup"><span data-stu-id="b71cc-386">The following example illustrates how to specify `RenderFragment` and `RenderFragment<T>` values and render templates directly in a component.</span></span> <span data-ttu-id="b71cc-387">轉譯片段也可以當做引數傳遞至樣板[化元件](xref:blazor/templated-components)。</span><span class="sxs-lookup"><span data-stu-id="b71cc-387">Render fragments can also be passed as arguments to [templated components](xref:blazor/templated-components).</span></span>
 
 ```razor
 @_timeTemplate
@@ -938,7 +938,7 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="b550c-388">上述代碼的呈現輸出:</span><span class="sxs-lookup"><span data-stu-id="b550c-388">Rendered output of the preceding code:</span></span>
+<span data-ttu-id="b71cc-388">上述程式碼的轉譯輸出：</span><span class="sxs-lookup"><span data-stu-id="b71cc-388">Rendered output of the preceding code:</span></span>
 
 ```html
 <p>The time is 10/04/2018 01:26:52.</p>
@@ -946,15 +946,15 @@ public class ThemeInfo
 <p>Pet: Rex</p>
 ```
 
-## <a name="scalable-vector-graphics-svg-images"></a><span data-ttu-id="b550c-389">可延伸向量圖形 (SVG) 影像</span><span class="sxs-lookup"><span data-stu-id="b550c-389">Scalable Vector Graphics (SVG) images</span></span>
+## <a name="scalable-vector-graphics-svg-images"></a><span data-ttu-id="b71cc-389">可擴充向量圖形（SVG）影像</span><span class="sxs-lookup"><span data-stu-id="b71cc-389">Scalable Vector Graphics (SVG) images</span></span>
 
-<span data-ttu-id="b550c-390">由於Blazor成像 HTML,瀏覽器支援的影像,包括可延伸向量圖形 (SVG) 影像 *(.svg*) 透過`<img>`標記支援:</span><span class="sxs-lookup"><span data-stu-id="b550c-390">Since Blazor renders HTML, browser-supported images, including Scalable Vector Graphics (SVG) images (*.svg*), are supported via the `<img>` tag:</span></span>
+<span data-ttu-id="b71cc-390">由於Blazor會轉譯 HTML，瀏覽器支援的影像（包括可擴充的向量圖形（svg）影像（*svg*））可透過`<img>`標記來支援：</span><span class="sxs-lookup"><span data-stu-id="b71cc-390">Since Blazor renders HTML, browser-supported images, including Scalable Vector Graphics (SVG) images (*.svg*), are supported via the `<img>` tag:</span></span>
 
 ```html
 <img alt="Example image" src="some-image.svg" />
 ```
 
-<span data-ttu-id="b550c-391">同樣,樣式表檔的 CSS 規則 *(.css)* 中支援 SVG 圖像。</span><span class="sxs-lookup"><span data-stu-id="b550c-391">Similarly, SVG images are supported in the CSS rules of a stylesheet file (*.css*):</span></span>
+<span data-ttu-id="b71cc-391">同樣地，樣式表單檔案（*.css*）的 CSS 規則也支援 SVG 影像：</span><span class="sxs-lookup"><span data-stu-id="b71cc-391">Similarly, SVG images are supported in the CSS rules of a stylesheet file (*.css*):</span></span>
 
 ```css
 .my-element {
@@ -962,8 +962,8 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="b550c-392">但是,並非所有方案都支援內聯 SVG 標記。</span><span class="sxs-lookup"><span data-stu-id="b550c-392">However, inline SVG markup isn't supported in all scenarios.</span></span> <span data-ttu-id="b550c-393">如果將`<svg>`標記直接放入元件檔 *(.razor),* 則支援基本圖像呈現,但不支援許多高級方案。</span><span class="sxs-lookup"><span data-stu-id="b550c-393">If you place an `<svg>` tag directly into a component file (*.razor*), basic image rendering is supported but many advanced scenarios aren't yet supported.</span></span> <span data-ttu-id="b550c-394">例如,`<use>`標記目前不受尊重`@bind`, 並且不能與某些 SVG 標記一起使用。</span><span class="sxs-lookup"><span data-stu-id="b550c-394">For example, `<use>` tags aren't currently respected, and `@bind` can't be used with some SVG tags.</span></span> <span data-ttu-id="b550c-395">我們期望在未來的版本中解決這些限制。</span><span class="sxs-lookup"><span data-stu-id="b550c-395">We expect to address these limitations in a future release.</span></span>
+<span data-ttu-id="b71cc-392">不過，在所有案例中不支援內嵌 SVG 標記。</span><span class="sxs-lookup"><span data-stu-id="b71cc-392">However, inline SVG markup isn't supported in all scenarios.</span></span> <span data-ttu-id="b71cc-393">如果您將`<svg>`標記直接放入元件檔案（*razor*），則會支援基本映射轉譯，但尚不支援許多先進的案例。</span><span class="sxs-lookup"><span data-stu-id="b71cc-393">If you place an `<svg>` tag directly into a component file (*.razor*), basic image rendering is supported but many advanced scenarios aren't yet supported.</span></span> <span data-ttu-id="b71cc-394">例如， `<use>`目前未遵守標記，而且`@bind`無法與某些 SVG 標記搭配使用。</span><span class="sxs-lookup"><span data-stu-id="b71cc-394">For example, `<use>` tags aren't currently respected, and `@bind` can't be used with some SVG tags.</span></span> <span data-ttu-id="b71cc-395">我們希望在未來的版本中解決這些限制。</span><span class="sxs-lookup"><span data-stu-id="b71cc-395">We expect to address these limitations in a future release.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="b550c-396">其他資源</span><span class="sxs-lookup"><span data-stu-id="b550c-396">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="b71cc-396">其他資源</span><span class="sxs-lookup"><span data-stu-id="b71cc-396">Additional resources</span></span>
 
-* <span data-ttu-id="b550c-397"><xref:security/blazor/server>&ndash;包括有關構建Blazor必須應對資源耗盡的伺服器應用的指導。</span><span class="sxs-lookup"><span data-stu-id="b550c-397"><xref:security/blazor/server> &ndash; Includes guidance on building Blazor Server apps that must contend with resource exhaustion.</span></span>
+* <span data-ttu-id="b71cc-397"><xref:security/blazor/server/threat-mitigation>&ndash;包含有關建立Blazor伺服器應用程式的指導方針，必須對抗資源耗盡。</span><span class="sxs-lookup"><span data-stu-id="b71cc-397"><xref:security/blazor/server/threat-mitigation> &ndash; Includes guidance on building Blazor Server apps that must contend with resource exhaustion.</span></span>

@@ -348,7 +348,13 @@
                 - name: 其他案例
                   uid: security/blazor/webassembly/additional-scenarios
             - name: Blazor 伺服器
-              uid: security/blazor/server
+              items:
+                - name: 總覽
+                  uid: security/blazor/server/index
+                - name: 威脅防護
+                  uid: security/blazor/server/threat-mitigation
+                - name: 其他案例
+                  uid: security/blazor/server/additional-scenarios
             - name: 內容安全性原則
               uid: security/blazor/content-security-policy
         - name: 狀態管理
@@ -1135,7 +1141,13 @@
             - name: 其他案例
               uid: security/blazor/webassembly/additional-scenarios
         - name: Blazor 伺服器
-          uid: security/blazor/server
+          items:
+            - name: 總覽
+              uid: security/blazor/server/index
+            - name: 威脅防護
+              uid: security/blazor/server/threat-mitigation
+            - name: 其他案例
+              uid: security/blazor/server/additional-scenarios
         - name: 內容安全性原則
           uid: security/blazor/content-security-policy
 - name: 效能

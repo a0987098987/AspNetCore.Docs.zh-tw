@@ -1,21 +1,21 @@
 ---
 title: ASP.NET Core Blazor WebAssembly 其他安全性案例
 author: guardrex
-description: ''
+description: 瞭解如何設定Blazor WebAssembly 以進行其他安全性案例。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/24/2020
+ms.date: 04/27/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/additional-scenarios
-ms.openlocfilehash: cd1433d5716b9b595270209fa874a8cb93fdf699
-ms.sourcegitcommit: 4f91da9ce4543b39dba5e8920a9500d3ce959746
+ms.openlocfilehash: 093498c3e0d42430c66c66a0998bcc44f62d1e0d
+ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82138426"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82206147"
 ---
 # <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 其他安全性案例
 
@@ -309,7 +309,7 @@ IP 為使用者發出的權杖通常會在短時間內有效，大約一小時�
 
 根據預設，連結`Microsoft.AspNetCore.Components.WebAssembly.Authentication`庫會使用下表所示的路由來代表不同的驗證狀態。
 
-| 路由                            | 用途 |
+| 路由                            | 目的 |
 | -------------------------------- | ------- |
 | `authentication/login`           | 觸發登入作業。 |
 | `authentication/login-callback`  | 處理任何登入作業的結果。 |
@@ -430,7 +430,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
 public class CustomAccountFactory 
     : AccountClaimsPrincipalFactory<OidcAccount>
 {
-    public AccountClaimsPrincipalFactory(NavigationManager navigationManager, 
+    public CustomAccountFactory(NavigationManager navigationManager, 
         IAccessTokenProviderAccessor accessor) : base(accessor)
     {
     }

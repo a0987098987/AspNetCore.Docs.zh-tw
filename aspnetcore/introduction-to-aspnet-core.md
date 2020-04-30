@@ -1,7 +1,7 @@
 ---
 title: ASP.NET Core 簡介
 author: rick-anderson
-description: 瞭解 ASP.NET Core 簡介,這是一個跨平臺、高性能、開源框架,用於構建現代、支援雲的 Internet 應用程式。
+description: 取得 ASP.NET Core 的簡介，這是一種跨平臺、高效能、開放原始碼的架構，可用於建立現代化、具備雲端功能的網際網路連線應用程式。
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/17/2020
@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: index
-ms.openlocfilehash: c5a5a0ada996d88cb9252da25b5580fe0cf46f0b
-ms.sourcegitcommit: 636efd1afc0a1e6fd4b12ae3a542917b356abb93
+ms.openlocfilehash: d70998d0149a0cc7018946a93ab63b5e10b76b78
+ms.sourcegitcommit: f9a5069577e8f7c53f8bcec9e13e117950f4f033
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81615943"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82558922"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -22,16 +22,16 @@ ms.locfileid: "81615943"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-ASP.NET Core 是一個跨平臺、高性能、[開源](https://github.com/dotnet/aspnetcore)的框架,用於構建現代、支援雲端的網路連接應用程式。 利用 ASP.NET Core，您可以：
+ASP.NET Core 是一種跨平臺、高效能、[開放原始](https://github.com/dotnet/aspnetcore)碼的架構，可用於建立現代化、具備雲端功能的網際網路連線應用程式。 利用 ASP.NET Core，您可以：
 
-* 構建 Web 應用和服務、[物聯網 (IoT)](https://www.microsoft.com/internet-of-things/)應用和行動後端。
+* 建立 web 應用程式和服務、[物聯網（IoT）](https://www.microsoft.com/internet-of-things/)應用程式，以及行動後端。
 * 在 Windows、macOS 和 Linux 上使用您最愛的開發工具。
 * 部署到雲端或在內部部署。
-* 在[.NET 核心](/dotnet/core/introduction)執行 。
+* 在[.Net Core](/dotnet/core/introduction)上執行。
 
 ## <a name="why-choose-aspnet-core"></a>為什麼要選擇 ASP.NET Core？
 
-數百萬開發人員使用或已經使用[ASP.NET 4.x](/aspnet/overview)創建 Web 應用。 ASP.NET Core 是 ASP.NET 4.x 的重新設計,包括架構更改,這些更改導致框架更精簡、更模組化。
+數百萬名開發人員使用或已使用[ASP.NET](/aspnet/overview) 4.x 來建立 web 應用程式。 ASP.NET Core 是 ASP.NET 4.x 的重新設計，包括會導致更精簡、更模組化架構的架構變更。
 
 [!INCLUDE[](~/includes/benefits.md)]
 
@@ -40,7 +40,7 @@ ASP.NET Core 是一個跨平臺、高性能、[開源](https://github.com/dotnet
 ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/first-web-api) 和 [Web 應用程式](xref:tutorials/razor-pages/index)的功能：
 
 * [模型檢視控制器 (MVC) 模式](xref:mvc/overview)有助於讓您的 Web API 和 Web 應用程式可測試。
-* [Razor Pages](xref:razor-pages/index)是一種基於頁面的程式設計模型,它使建構 Web UI 變得更加輕鬆和高效。
+* [Razor Pages](xref:razor-pages/index)是以頁面為基礎的程式設計模型，可讓建立 web UI 變得更容易且更具生產力。
 * [Razor 標記](xref:mvc/views/razor)提供了適用於 [Razor 頁面](xref:razor-pages/index)和 [MVC 檢視](xref:mvc/views/overview)的高效率語法。
 * [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。
 * [多個資料格式和內容交涉](xref:web-api/advanced/formatting)的內建支援可讓您的 Web API 連線到各種用戶端，包括瀏覽器和行動裝置。
@@ -53,64 +53,64 @@ ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Blazo
 
 <a name="target-framework"></a>
 
-## <a name="aspnet-core-target-frameworks"></a>ASP.NET核心目標架構
+## <a name="aspnet-core-target-frameworks"></a>ASP.NET Core 目標 framework
 
-ASP.NET核心 3.x 和更高版本只能定位 .NET 核心。 通常,ASP.NET核心庫由[.NET標準](/dotnet/standard/net-standard)庫組成。 使用 .NET Standard 2.0 撰寫的程式庫可在[任何實作 .NET Standard 2.0 的 .NET 平台](/dotnet/standard/net-standard#net-implementation-support)上執行。
+ASP.NET Core 3.x 和更新版本只能以 .NET Core 為目標。 一般來說，ASP.NET Core 是由[.NET Standard](/dotnet/standard/net-standard)程式庫所組成。 使用 .NET Standard 2.0 撰寫的程式庫可在[任何實作 .NET Standard 2.0 的 .NET 平台](/dotnet/standard/net-standard#net-implementation-support)上執行。
 
 將目標指向 .NET Core 有多個好處，而這些好處也隨著版本更新越來越多。 NET Core 較 .NET Framework 多的好處包含：
 
-* 跨平台。 在 Windows、macOS 和 Linux 上運行。
+* 跨平台。 在 Windows、macOS 和 Linux 上執行。
 * 提升效能
-* [平行版本控制](/dotnet/standard/choosing-core-framework-server#a-need-for-side-by-side-of-net-versions-per-application-level)
+* [並存版本控制](/dotnet/standard/choosing-core-framework-server#side-by-side-net-versions-per-application-level)
 * 新的 API
 * 開放原始碼
 
 ## <a name="recommended-learning-path"></a>建議學習路徑
 
-對於開發ASP.NET核心應用的介紹,我們建議提供以下教程系列:
+如需開發 ASP.NET Core 應用程式的簡介，建議使用下列教學課程的順序：
 
-1. 有關要開發或維護的應用類型的教程,請遵循教程。
+1. 遵循您想要開發或維護之應用程式類型的教學課程。
 
    |應用程式類型  |狀況  |教學課程  |
    |----------|----------|----------|
-   |Web 應用程式                   | 新的伺服器端 Web UI 開發 |[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
+   |Web 應用程式                   | 新的伺服器端 web UI 開發 |[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
    |Web 應用程式                   | 維護 MVC 應用程式 |[開始使用 MVC](xref:tutorials/first-mvc-app/start-mvc)|
-   |Web 應用程式                   | 用戶端 Web UI 開發 |[開始與布拉佐](xref:tutorials/first-blazor-app) |
+   |Web 應用程式                   | 用戶端 web UI 開發 |[開始使用 Blazor](xref:tutorials/first-blazor-app) |
    |Web API                   | RESTful HTTP 服務 |[建立 Web API](xref:tutorials/first-web-api)&dagger; |
-   |遠端程序呼叫應用程式 | 使用協定緩衝區的合同優先服務 |[開始使用 gRPC 服務](xref:tutorials/grpc/grpc-start) |
-   |即時應用程式             | 伺服器與連線的客戶端之間的雙向通訊 |[開始使用 SignalR](xref:tutorials/signalr) |
+   |遠端程序呼叫應用程式 | 使用通訊協定緩衝區的合約優先服務 |[開始使用 gRPC 服務](xref:tutorials/grpc/grpc-start) |
+   |即時應用程式             | 伺服器和連線用戶端之間的雙向通訊 |[開始使用 SignalR](xref:tutorials/signalr) |
 
-1. 請按照教程演示如何執行基本數據訪問。
+1. 遵循示範如何執行基本資料存取的教學課程。
 
    |狀況  |教學課程  |
    |----------|----------|
-   |新發展        |[搭配 Entity Framework Core 的 Razor 頁面](xref:data/ef-rp/intro) |
+   |新開發        |[搭配 Entity Framework Core 的 Razor 頁面](xref:data/ef-rp/intro) |
    |維護 MVC 應用程式 |[搭配 Entity Framework Core 的 MVC](xref:data/ef-mvc/intro) |
 
-1. 閱讀適用於所有應用類型的ASP.NET核心[基礎知識](xref:fundamentals/index)的概述。
+1. 閱讀適用于所有應用程式類型之 ASP.NET Core[基本](xref:fundamentals/index)概念的總覽。
 
-1. 瀏覽目錄,流覽其他感興趣的主題。
+1. 流覽目錄中的其他相關主題。
 
-&dagger;還有一個[互動式WebAPI教學](/learn/modules/build-web-api-net-core)。 無需本地安裝開發工具。 代碼在瀏覽器中的[Azure 雲外殼](https://azure.microsoft.com/features/cloud-shell/)中運行,[捲曲](https://curl.haxx.se/)用於測試。
+&dagger;另外還有[互動式 Web API 教學](/learn/modules/build-web-api-net-core)課程。 不需要任何本機安裝的開發工具。 程式碼會在瀏覽器的[Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)中執行，而[捲曲](https://curl.haxx.se/)則用來進行測試。
 
-## <a name="migrate-from-net-framework"></a>從 .NET 框架移轉
+## <a name="migrate-from-net-framework"></a>從 .NET Framework 遷移
 
-有關將ASP.NET 4.x 應用遷移到 ASP.NET<xref:migration/proper-to-2x/index>核心的參考指南 ,請參閱 。
+如需將 ASP.NET 4.x 應用程式遷移至 ASP.NET Core 的參考指南，請<xref:migration/proper-to-2x/index>參閱。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-ASP.NET Core 是一個跨平臺、高性能、[開源](https://github.com/dotnet/aspnetcore)的框架,用於構建現代、支援雲端的網路連接應用程式。 利用 ASP.NET Core，您可以：
+ASP.NET Core 是一種跨平臺、高效能、[開放原始](https://github.com/dotnet/aspnetcore)碼的架構，可用於建立現代化、具備雲端功能的網際網路連線應用程式。 利用 ASP.NET Core，您可以：
 
-* 構建 Web 應用和服務、[物聯網 (IoT)](https://www.microsoft.com/internet-of-things/)應用和行動後端。
+* 建立 web 應用程式和服務、[物聯網（IoT）](https://www.microsoft.com/internet-of-things/)應用程式，以及行動後端。
 * 在 Windows、macOS 和 Linux 上使用您最愛的開發工具。
 * 部署到雲端或在內部部署。
 * 在 [.NET Core 或 .NET Framework](/dotnet/articles/standard/choosing-core-framework-server) 上執行。
 
 ## <a name="why-choose-aspnet-core"></a>為什麼要選擇 ASP.NET Core？
 
-數百萬開發人員使用或已經使用[ASP.NET 4.x](/aspnet/overview)創建 Web 應用。 ASP.NET Core 是 ASP.NET 4.x 的重新設計，其架構變更可產生更為精簡且更加模組化的架構。
+數百萬名開發人員使用或已使用[ASP.NET](/aspnet/overview) 4.x 來建立 web 應用程式。 ASP.NET Core 是 ASP.NET 4.x 的重新設計，其架構變更可產生更為精簡且更加模組化的架構。
 
 [!INCLUDE[](~/includes/benefits.md)]
 
@@ -119,7 +119,7 @@ ASP.NET Core 是一個跨平臺、高性能、[開源](https://github.com/dotnet
 ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/first-web-api) 和 [Web 應用程式](xref:tutorials/razor-pages/index)的功能：
 
 * [模型檢視控制器 (MVC) 模式](xref:mvc/overview)有助於讓您的 Web API 和 Web 應用程式可測試。
-* [Razor Pages](xref:razor-pages/index)是一種基於頁面的程式設計模型,它使建構 Web UI 變得更加輕鬆和高效。
+* [Razor Pages](xref:razor-pages/index)是以頁面為基礎的程式設計模型，可讓建立 web UI 變得更容易且更具生產力。
 * [Razor 標記](xref:mvc/views/razor)提供了適用於 [Razor 頁面](xref:razor-pages/index)和 [MVC 檢視](xref:mvc/views/overview)的高效率語法。
 * [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。
 * [多個資料格式和內容交涉](xref:web-api/advanced/formatting)的內建支援可讓您的 Web API 連線到各種用戶端，包括瀏覽器和行動裝置。
@@ -138,7 +138,7 @@ ASP.NET Core 2.x 的目標可以是 NET Core 或 .NET Framework。 將目標指�
 
 實作 .NET Standard 2.0 的 .NET Framework 版本支援 ASP.NET Core 2.x：
 
-* .NET 框架最新版本推薦。
+* 建議使用 .NET Framework 最新版本。
 * .NET Framework 4.6.1 和更新版本。
 
 ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更的詳細資料，請參閱[A first look at changes coming in ASP.NET Core 3.0](https://blogs.msdn.microsoft.com/webdev/2018/10/29/a-first-look-at-changes-coming-in-asp-net-core-3-0/) (搶先看 ASP.NET Core 3.0 的變更)。
@@ -147,17 +147,17 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
 * 跨平台。 可在 macOS、Linux 及 Windows 上執行。
 * 提升效能
-* [平行版本控制](/dotnet/standard/choosing-core-framework-server#a-need-for-side-by-side-of-net-versions-per-application-level)
+* [並存版本控制](/dotnet/standard/choosing-core-framework-server#side-by-side-net-versions-per-application-level)
 * 新的 API
 * 開放原始碼
 
-我們正致力於縮短 .NET Framework 與 .NET Core 之間的 API 差距。 [Windows 相容性套件](/dotnet/core/porting/windows-compat-pack)在 .NET Core 中發佈了上千個僅供 Windows 使用的 API。 這些 API 並不適用於 .NET Core 1.x。
+為了協助關閉從 .NET Framework 到 .NET Core 的 API 差距， [Windows 相容性套件](/dotnet/core/porting/windows-compat-pack)在 .net core 中提供了數千種僅限 Windows 的 api。 這些 API 並不適用於 .NET Core 1.x。
 
 ## <a name="recommended-learning-path"></a>建議學習路徑
 
 我們建議遵循一系列的教學課程和文章，取得開發 ASP.NET Core 應用程式的簡介：
 
-1. 有關要開發或維護的應用類型的教程。
+1. 遵循教學課程以瞭解您想要開發或維護的應用程式類型。
 
    |應用程式類型  |狀況  |教學課程  |
    |----------|----------|----------|
@@ -166,22 +166,22 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
    |Web API                   |                            |[建立 Web API](xref:tutorials/first-web-api)&dagger; |
    |即時應用程式             |                            |[開始使用 SignalR](xref:tutorials/signalr) |
 
-1. 請按照教程演示如何執行基本數據訪問。
+1. 遵循示範如何執行基本資料存取的教學課程。
 
    |狀況  |教學課程  |
    |----------|----------|
    | 針對全新開發        |[搭配 Entity Framework Core 的 Razor 頁面](xref:data/ef-rp/intro) |
    | 針對維護 MVC 應用程式 |[搭配 Entity Framework Core 的 MVC](xref:data/ef-mvc/intro) |
 
-1. 閱讀適用於所有應用類型的ASP.NET核心[基礎知識](xref:fundamentals/index)的概述。
+1. 閱讀適用于所有應用程式類型之 ASP.NET Core[基本](xref:fundamentals/index)概念的總覽。
 
 1. 瀏覽其他您感興趣主題的目錄。
 
-&dagger;還有一個[Web API 教程,您完全在瀏覽器中遵循](/learn/modules/build-web-api-net-core),無需本地 IDE 安裝。 程式碼會在 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) 中執行，且會使用 [curl](https://curl.haxx.se/) 來進行測試。
+&dagger;另外還有一個 Web API 的教學課程，[您會在瀏覽器中完全遵循](/learn/modules/build-web-api-net-core)，不需要本機 IDE 安裝。 程式碼會在 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) 中執行，且會使用 [curl](https://curl.haxx.se/) 來進行測試。
 
-## <a name="migrate-from-net-framework"></a>從 .NET 框架移轉
+## <a name="migrate-from-net-framework"></a>從 .NET Framework 遷移
 
-有關將ASP.NET應用遷移到 ASP.NET 核心的參考指南,請<xref:migration/proper-to-2x/index>參閱 。
+如需將 ASP.NET 應用程式遷移至 ASP.NET Core 的參考指南<xref:migration/proper-to-2x/index>，請參閱。
 
 ::: moniker-end
 
@@ -195,7 +195,7 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
 ### <a name="preprocessor-directives-in-sample-code"></a>範例程式碼中的前置處理器指示詞
 
-為了示範多個方案,範例應用使用`#define`和`#if-#else/#elif-#endif`預處理器指令有選擇地編譯和運行範例代碼的不同部分。 對於使用此方法的範例,將`#define`指令設置在 C# 檔的頂部,以定義與要運行的方案關聯的符號。 某些範例需要定義多個文件頂部的符號才能運行方案。
+為了示範多個案例，範例應用程式`#define`會`#if-#else/#elif-#endif`使用和預處理器指示詞，選擇性地編譯和執行範例程式碼的不同區段。 針對使用這種方法的範例，請在 c # `#define`檔案頂端設定指示詞，以定義與您要執行之情節相關聯的符號。 有些範例需要在多個檔案的頂端定義符號，才能執行案例。
 
 例如下列 `#define` 符號清單指出其提供四個情節 (每個符號一個情節)。 目前的範例設定會執行 `TemplateCode` 情節：
 
@@ -213,7 +213,7 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
 ### <a name="regions-in-sample-code"></a>範例程式碼中的區域
 
-某些範例應用包含由[#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region)和[c# 指令包圍的代碼部分#endregion。](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion) 文件建置系統會將這些區域插入轉譯的文件主題中。  
+部分範例應用程式包含[#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region)和[#endregion](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion) c # 指示詞括住的程式碼區段。 文件建置系統會將這些區域插入轉譯的文件主題中。  
 
 區域名稱通常包含字組 "snippet"。 下列範例顯示了名為 `snippet_WebHostDefaults` 的區域：
 
@@ -233,7 +233,7 @@ Host.CreateDefaultBuilder(args)
 [!code-csharp[](sample/SampleApp/Program.cs?name=snippet_WebHostDefaults)]
 ```
 
-您可以安全地忽略(或刪除)代碼周圍的`#region``#endregion`和指令。 如果計劃運行本主題中描述的範例方案,請不要更改這些指令中的代碼。 您可以在試驗其他案例時自由改變程式碼。
+您可以放心地忽略（或移除） `#region`程式`#endregion`代碼周圍的和指示詞。 如果您打算執行主題中所述的範例案例，請不要更改這些指示詞內的程式碼。 您可以在試驗其他案例時自由改變程式碼。
 
 如需詳細資訊，請參閱 [Contribute to the ASP.NET documentation: Code snippets](https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md#code-snippets) (參與 ASP.NET 文件：程式碼片段)。
 

@@ -9,13 +9,13 @@ metadata:
   ms.topic: hub-page
   author: WadePickett
   ms.author: wpickett
-  ms.date: 04/15/2020
-  ms.openlocfilehash: c0f987396a4bfcdbc8c189938125eb2a65dadc8a
-  ms.sourcegitcommit: d5d45d84fe488427d418de770000f7df44a08370
+  ms.date: 04/26/2020
+  ms.openlocfilehash: a818ac9201cfb0bc3139d29dae8e8812978528fb
+  ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "81542399"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82205795"
 highlightedContent:
   items:
   - title: 5 分鐘內完成在任何平台上建立 ASP.NET Core 應用程式
@@ -24,9 +24,9 @@ highlightedContent:
   - title: ASP.NET Core 概觀
     itemType: overview
     url: introduction-to-aspnet-core.md
-  - title: ASP.NET Core 影片教學課程
-    itemType: video
-    url: https://www.youtube.com/playlist?list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy
+  - title: 下載 .NET
+    itemType: download
+    url: https://dotnet.microsoft.com/download
   - title: ASP.NET Core 的新功能文件
     itemType: whats-new
     url: whats-new/index.yml
@@ -214,6 +214,23 @@ conceptualContent:
     - url: https://docs.microsoft.com/aspnet/overview
       itemType: concept
       text: ASP.NET 4.x
+  - title: ASP.NET Core 影片教學課程
+    links:
+    - url: https://www.youtube.com/playlist?list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy
+      itemType: video
+      text: ASP.NET Core 101 影片系列
+    - url: https://www.youtube.com/playlist?list=PLdo4fOcmZ0oX7uTkjYwvCJDG2qhcSzwZ6
+      itemType: video
+      text: 含 .NET Core 與 ASP.NET Core 的 Entity Framework Core 101 影片系列
+    - url: https://www.youtube.com/watch?v=RyHDWlIq6vI
+      itemType: video
+      text: 含 ASP.NET Core 的微服務架構
+    - url: https://www.youtube.com/watch?v=KlngrOF6RPw&list=PLdo4fOcmZ0oWlP1Qpzg7Dwzxr298ewdUQ
+      itemType: video
+      text: 專注於 Blazor 影片系列
+    - url: https://www.youtube.com/channel/UCvtT19MZW8dq5Wwfu6B0oxw/
+      itemType: video
+      text: .NET 頻道
 additionalContent:
   sections:
   - title: 概念和功能
